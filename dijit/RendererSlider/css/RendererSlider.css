@@ -1,0 +1,153 @@
+.esriRendererSlider {
+  position: relative;
+  display: inline-block;
+  margin: 10px; 
+  
+}
+
+.esriRendererSlider .sliderNode {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  padding: 10px 4px; 
+  white-space: nowrap;
+  margin: 0 0 0 80px;
+}
+
+.dj_rtl .esriRendererSlider .sliderNode {
+   margin: 0 80px 0 0;
+}
+
+.esriRendererSlider .sliderArea {
+  display: inline-block;
+  box-sizing: border-box;
+  border: 1px solid #888;
+  width: 2px;
+  height: 200px;
+}
+
+.esriRendererSlider .sliderAreaRight {
+  width: 140px;
+  height: 200px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.esriRendererSlider .moveable {
+  position: absolute;
+  left: 0;
+}
+
+
+.dj_rtl .esriRendererSlider .handler {
+
+}
+
+.esriRendererSlider .handler {
+  position: absolute;
+  box-sizing: border-box;
+  border: 1px solid #ccc; 
+  cursor: pointer;
+  background-color: #000; 
+  width: 10px; 
+  height: 20px; 
+  background-image: url("../images/handles.png");
+  background-position: -16px -4px;
+}
+
+.esriRendererSlider .handler:hover{
+  background-position: -31px -4px;
+}
+
+.esriRendererSlider .handlerLabel {
+  position: absolute;
+  right: 5px;
+  top: 3px;
+  min-width:100px;
+  text-align:right;
+}
+
+.dj_rtl .esriRendererSlider .sliderNode .handlerLabel {
+  direction: ltr;
+  unicode-bidi: embed;
+  left: 0;
+  position: absolute;
+  right: auto;
+  text-align: left;
+  top: 3px;
+}
+
+.esriRendererSlider .moveable .dijitNumberTextBox {
+  text-align:start;
+  position: relative;
+  width:100px;
+  top: -3px;
+  left: 117px;
+  z-index: 99;
+}
+
+.dj_rtl .esriRendererSlider .moveable .dijitNumberTextBox{
+  left: -112px;
+  text-align: right;
+}
+
+
+.esriRendererSlider .handlerTick {
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #FFF;
+  box-sizing: border-box;
+  height: 1px;
+  left: 10px;
+  position: absolute;
+  top: 10px;
+  width: 32px;
+  z-index: 2;
+}
+.dj_rtl .esriRendererSlider .handlerTick {
+  left: -42px;
+}
+
+.esriRendererSlider .handlerTickTop {
+  border-top: 1px solid #FFF;
+  border-bottom: 1px solid #000;
+}
+
+.esriRendererSlider .handlerTickBottom {
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #FFF;
+}
+
+.esriRendererSlider .topLabelNode {
+  margin-bottom: 4px;
+} 
+
+.esriRendererSlider .topLabelNode, .esriRendererSlider .bottomLabelNode{
+  height: 20px;
+  margin:auto;
+  text-align: center;
+}
+
+.dj_rtl .esriRendererSlider .topLabelNode,
+.dj_rtl .esriRendererSlider .bottomLabelNode{
+  direction: ltr;
+  unicode-bidi: embed;
+}
+
+
+.esriRendererSlider .topLabelNode, .esriRendererSlider .bottomLabelNode, .esriRendererSlider .handlerLabel{
+  font-family: Verdana, Helvetica, sans-serif;
+  font-size: 10px;
+  color: #444;
+}
+
+.esriRendererSlider .handlerTickSize {
+  border-top: none !important;
+  border-bottom: 1px solid #000 !important;
+  width: 32px !important;
+}
+
+.esriRendererSlider .heatmapTick{
+  width:34px !important;
+}
+
+

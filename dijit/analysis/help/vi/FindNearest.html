@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Tìm Vị trí Gần nhất</h2><p/>
+        <h2><img src="../images/GUID-150C2484-7459-405A-8835-B4E72CD49738-web.png" alt="T&igrave;m Vị tr&iacute; Gần nhất"></h2>
+        <hr/>
+    <p>C&ocirc;ng cụ n&agrave;y gi&uacute;p t&igrave;m thấy c&aacute;c vị tr&iacute; gần nhất v&agrave; b&aacute;o c&aacute;o cũng như xếp hạng khoảng c&aacute;ch đến c&aacute;c vị tr&iacute; gần đ&oacute;. Để t&igrave;m thấy vị tr&iacute; gần nhất, c&ocirc;ng cụ c&oacute; thể đo khoảng c&aacute;ch đường thẳng hoặc phương thức đi lại được chọn. C&oacute; một số lựa chọn gi&uacute;p hạn chế số lượng c&aacute;c vị tr&iacute; gần nhất hoặc giới hạn phạm vi t&igrave;m kiếm để dễ d&agrave;ng t&igrave;m thấy ch&uacute;ng. C&aacute;c kết quả từ c&ocirc;ng cụ n&agrave;y c&oacute; thể gi&uacute;p bạn trả lời những loại c&acirc;u hỏi sau đ&acirc;y:
+        <ul>
+            <li>C&ocirc;ng vi&ecirc;n n&agrave;o gần nhất t&iacute;nh từ đ&acirc;y?
+            </li>
+            <li>Bệnh viện n&agrave;o t&ocirc;i c&oacute; thể đến trong khoảng thời gian l&aacute;i xe ngắn nhất? Chuyến đi mất bao l&acirc;u khi khởi h&agrave;nh v&agrave;o thứ ba l&uacute;c 5:30 chiều trong giờ cao điểm?
+            </li>
+            <li>Khoảng c&aacute;ch đường bộ giữa c&aacute;c th&agrave;nh phố lớn?
+            </li>
+            <li>Bệnh nh&acirc;n n&agrave;o trong số n&agrave;y cư tr&uacute; trong phạm vi c&aacute;ch nh&agrave; m&aacute;y h&oacute;a chất hai dặm?
+            </li>
+        </ul>
+        
+    </p>
+    <p>T&igrave;m Vị tr&iacute; Gần nhất sẽ trả về một lớp c&oacute; chứa c&aacute;c vị tr&iacute; gần nhất v&agrave; một lớp đường li&ecirc;n kết c&aacute;c vị tr&iacute; đầu với vị tr&iacute; gần nhất. Lớp đường n&agrave;y chứa th&ocirc;ng tin về vị tr&iacute; bắt đầu v&agrave; gần nhất cũng như khoảng c&aacute;ch giữa c&aacute;c vị tr&iacute;.
+    </p>
+    <p>Nếu chọn  <b>Sử dụng phạm vi bản đồ hiện tại</b>, th&igrave; chỉ c&aacute;c đối tượng nh&igrave;n thấy trong phạm vi bản đồ hiện tại sẽ được xem l&agrave; c&aacute;c vị tr&iacute; bắt đầu v&agrave; c&oacute; khả năng gần nhất. Nếu bỏ chọn, tất cả c&aacute;c đối tượng trong lớp đầu v&agrave;o sẽ được xem x&eacute;t, ngay cả khi ch&uacute;ng nằm ngo&agrave;i phạm vi bản đồ hiện tại.  
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="analysisLayer">
+        <div><h2>Chọn lớp điểm để từ đó tìm thấy các vị trí gần nhất</h2></div>
+        <hr/>
+        <div>
+            <p>T&igrave;m Vị tr&iacute; Gần nhất đo từ điểm tr&ecirc;n lớp m&agrave; bạn x&aacute;c định ở đ&acirc;y (vị tr&iacute; bắt đầu) đến điểm m&agrave; bạn x&aacute;c định trong th&ocirc;ng số tiếp theo. C&ocirc;ng cụ hỗ trợ tối đa 1.000 vị tr&iacute; ở mỗi lớp.
+
+            </p>
+        </div>
+    </div>
+    <div id="NearbyLocationsLayer">
+        <div><h2>Tìm các vị trí gần nhất tại</h2></div>
+        <hr/>
+        <div>
+            <p>T&igrave;m Vị tr&iacute; Gần nhất gi&uacute;p đo lường từ từng vị tr&iacute; trong lớp đầu ti&ecirc;n đến c&aacute;c vị tr&iacute; trong lớp n&agrave;y. C&ocirc;ng cụ hỗ trợ tối đa 1.000 vị tr&iacute; ở mỗi lớp.
+            </p>
+            <p>B&ecirc;n cạnh việc chọn một lớp từ bản đồ của bạn, bạn cần chọn  <b>Chọn Lớp Ph&acirc;n t&iacute;ch Atlas Sinh sống</b> nằm dưới c&ugrave;ng trong danh s&aacute;ch xổ xuống 
+Thao t&aacute;c n&agrave;y mở ra một b&ocirc;̣ sưu t&acirc;̣p c&oacute; chứa c&aacute;c lớp hữu &iacute;ch cho nhiều sự ph&acirc;n t&iacute;ch kh&aacute;c nhau. 
+            </p>
+        </div>
+    </div>
+    <div id="MeasurementMethod">
+        <div><h2>Đo lường</h2></div>
+        <hr/>
+        <div>
+            <p>Lựa chọn t&igrave;m vị tr&iacute; gần nhất theo khoảng c&aacute;ch đường thẳng hoặc phương thức đi lại được chọn. Chỉ c&oacute; thể k&iacute;ch hoạt phương thức đi lại khi lớp đầu v&agrave;o của bạn c&oacute; chứa c&aacute;c điểm. Người quản trị của tổ chức của bạn c&oacute; thể x&aacute;c định c&aacute;c phương thức đi lại khả dụng. Khi sử dụng một trong c&aacute;c phương thức đi lại, thực hiện c&aacute;c ph&eacute;p đo dọc theo con đường hoặc lối đi, v&agrave; tu&acirc;n theo c&aacute;c quy tắc hiện h&agrave;nh, v&iacute; dụ như đường một chiều hay cấm quay đầu xe, v.v.
+            </p>
+            <p>Khi đo lường giữa c&aacute;c con đường hoặc khu vực, khoảng c&aacute;ch bắt đầu từ điểm gần nhất hoặc đến điểm gần nhất sẽ chạy dọc theo đường hoặc ranh giới khu vực được t&igrave;m thấy. 
+            </p> 
+            <p>Nếu bạn chọn  <b>Thời gian l&aacute;i xe</b>, bạn sẽ c&oacute; một số t&ugrave;y chọn về c&aacute;ch đo đạc thời gian l&aacute;i xe.
+                <ul>
+                    <li>
+                        <p>Bỏ chọn  <b>Sử dụng Giao th&ocirc;ng</b> để t&igrave;m c&aacute;c vị tr&iacute; gần nhất dựa tr&ecirc;n tốc độ di chuyển tĩnh, v&iacute; dụ như giới hạn tốc độ, ngo&agrave;i tốc độ biến đổi g&acirc;y ra khi điều kiện giao th&ocirc;ng thay đổi.
+                        </p>
+                        <p>Đ&acirc;y l&agrave; t&ugrave;y chọn để lựa chọn nếu bạn muốn biết c&aacute;i gần nhất th&ocirc;ng thường, nhưng kh&ocirc;ng nhất thiết phải l&agrave; điều kiện giao th&ocirc;ng gần nhất cụ thể đối với một thời gian hay ng&agrave;y cụ thể.
+                        </p>
+                    </li>
+                    <li>
+                        <p>Chọn  <b>Sử dụng Giao th&ocirc;ng</b> để t&igrave;m ra c&aacute;c vị tr&iacute; gần nhất dựa tr&ecirc;n một thời gian bắt đầu cho trước v&agrave; điều kiện giao th&ocirc;ng thay đổi. Đồng thời bằng c&aacute;ch chọn t&ugrave;y chọn <b>Giao th&ocirc;ng trực tiếp</b>, thời gian khởi h&agrave;nh từ vị tr&iacute; bắt đầu được thiết lập đến thời gian hiện tại, tốc độ giao th&ocirc;ng hiện tại v&agrave; dự kiến được tham chiếu từ bộ cảm biến v&agrave; nguồn cấp dữ liệu để x&aacute;c định vị tr&iacute; gần nhất. Tốc độ giao th&ocirc;ng dự kiến được t&iacute;nh to&aacute;n bằng c&aacute;ch tham chiếu tốc độ giao th&ocirc;ng trực tiếp, tốc độ lịch sử v&agrave; sự kiện hiện tại như thời tiết. Tốc độ giao th&ocirc;ng dự kiến đến 12 giờ trong tương lai, do đ&oacute; bạn c&oacute; thể di chuyển thanh trượt để thiết lập trước thời gian khởi h&agrave;nh l&ecirc;n tới 12 giờ.
+                        </p>
+                        <p>Sử dụng c&aacute;c thiết lập giao th&ocirc;ng trực tiếp n&agrave;y để t&igrave;m ra c&aacute;c vị tr&iacute; c&oacute; thể đi đến trong khoảng thời gian ngắn nhất khi khởi h&agrave;nh ngay b&acirc;y giờ hoặc khởi h&agrave;nh trong một giờ nữa, v.v.
+                        </p>
+                    </li>
+                    <li>
+                        <p>Bằng c&aacute;ch chọn  <b>Sử dụng Giao th&ocirc;ng</b> v&agrave; chọn <b>Giao th&ocirc;ng dựa tr&ecirc;n điều kiện đặc trưng cho</b> ng&agrave;y v&agrave; thời gian, c&ocirc;ng cụ t&igrave;m c&aacute;c vị tr&iacute; gần nhất dựa tr&ecirc;n tốc độ trung b&igrave;nh lịch sử cho tất cả c&aacute;c khoảng thời gian th&ocirc;ng thường như l&agrave; năm ph&uacute;t trong một tuần. C&aacute;c kết quả bao gồm giao th&ocirc;ng nhưng loại bỏ ảnh hưởng của điều kiện giao th&ocirc;ng hiện tại v&agrave; c&aacute;c sự kiện, c&oacute; thể thay đổi đ&aacute;ng kể so với định mức.
+                        </p>
+                        <p>Bạn c&oacute; thể sử dụng c&aacute;c thiết lập giao th&ocirc;ng lịch sử để hỏi c&aacute;c c&acirc;u hỏi như &quot;T&ocirc;i c&oacute; thể đến vị tr&iacute; n&agrave;o nhanh nhất khi khởi h&agrave;nh v&agrave;o l&uacute;c 11:30 s&aacute;ng v&agrave;o thứ tư?&quot; 
+                        </p>
+                        <p>Thời gian bạn thiết lập li&ecirc;n quan đến m&uacute;i giờ nơi đặt vị tr&iacute; bắt đầu. V&igrave; vậy, nếu bạn thiết lập thời gian đến 8:00 s&aacute;ng v&agrave; c&oacute; hai vị tr&iacute; bắt đầu, một ở Th&agrave;nh phố New York v&agrave; một ở Los Angeles, c&aacute;c vị tr&iacute; gần nhất sẽ được t&igrave;m thấy bằng c&aacute;ch giả định thời gian khởi h&agrave;nh 8:00 s&aacute;ng Theo Giờ ph&iacute;a Đ&ocirc;ng v&agrave; 8:00 s&aacute;ng Theo Giờ Th&aacute;i B&igrave;nh Dương tương ứng.
+                        </p>
+                    </li>
+                </ul>
+                Lưu &yacute; rằng khi một phương tiện được l&aacute;i ra ngo&agrave;i từ một điểm, thời gian tr&ocirc;i qua v&agrave; điều kiện giao th&ocirc;ng sẽ thay đổi. C&ocirc;ng cụ xem x&eacute;t c&aacute;c thay đổi n&agrave;y khi bạn chọn <b>Sử dụng giao th&ocirc;ng</b>; tuy nhi&ecirc;n, kh&ocirc;ng hỗ trợ giao th&ocirc;ng tất cả c&aacute;c v&ugrave;ng. Bấm v&agrave;o li&ecirc;n kết <b>Xem t&iacute;nh khả dụng</b> tr&ecirc;n c&ocirc;ng cụ để t&igrave;m xem liệu t&iacute;nh năng c&oacute; được cung cấp tại khu vực nghi&ecirc;n cứu của bạn kh&ocirc;ng. 
+            </p>
+        </div>
+    </div>
+    <div id="Cutoffs">
+        <div><h2>Cho từng vị trí trong lớp đầu vào</h2></div>
+        <hr/>
+        <div>
+            <p>Bạn c&oacute; hai t&ugrave;y chọn để giới hạn t&igrave;m kiếm vị tr&iacute; gần nhất. Một t&ugrave;y chọn l&agrave; giới hạn số lượng vị tr&iacute; gần nhất tối đa để t&igrave;m ra từng vị tr&iacute; bắt đầu. Bạn c&oacute; thể t&igrave;m ra một c&ocirc;ng vi&ecirc;n gần nhất, hai c&ocirc;ng vi&ecirc;n gần nhất, v.v. T&ugrave;y chọn thứ hai l&agrave; thiết lập một khoảng c&aacute;ch t&igrave;m kiếm hoặc thời gian l&aacute;i xe tối đa.
+            </p>
+            <p>Bằng c&aacute;ch bỏ chọn c&aacute;c t&ugrave;y chọn, số lượng vị tr&iacute; gần nhất tối đa được t&igrave;m ra l&agrave; 100 (giới hạn của c&ocirc;ng cụ), v&agrave; phạm vi t&igrave;m kiếm tối đa l&agrave; kh&ocirc;ng giới hạn.
+            </p>
+            <p>Thời gian xử l&yacute; phụ thuộc v&agrave;o số lượng vị tr&iacute; bắt đầu, số lượng vị tr&iacute; gần kề, v&agrave; phạm vi t&igrave;m kiếm tối đa. Phải mất nhiều thời gian hơn để xử l&yacute; khi c&oacute; nhiều vị tr&iacute; hoặc phạm vi t&igrave;m kiếm lớn hơn.
+            </p>
+            <p>Lưu &yacute; rằng khi một giới hạn được thiết lập tr&ecirc;n phạm vi t&igrave;m kiếm, c&ocirc;ng cụ c&oacute; thể kh&ocirc;ng t&igrave;m thấy bất kỳ vị tr&iacute; gần nhất trong phạm vi đ&oacute;, hoặc t&igrave;m thấy c&aacute;c vị tr&iacute; &iacute;t hơn so với số lượng vị tr&iacute; gần nhất tối đa bạn chỉ định.
+            </p>
+        </div>
+    </div>
+    <div id="OutputNearestLocationsLayer">
+        <div><h2>Tên lớp kết quả</h2></div>
+        <hr/>
+        <div>
+            <p>Lớp kết quả n&agrave;y sẽ bao gồm hai lớp: một trong những vị tr&iacute; gần nhất v&agrave; một trong những đường kết nối c&aacute;c vị tr&iacute; bắt đầu đến c&aacute;c vị tr&iacute; gần nhất.
+            </p>
+            <p>Bởi v&igrave; đường hiển thị c&aacute;c đường đi được đo lường, n&ecirc;n ch&uacute;ng đi theo c&aacute;c đường thẳng khi đo khoảng c&aacute;ch đường thẳng, đường đi ngắn nhất dọc theo c&aacute;c con đường khi đo khoảng c&aacute;ch l&aacute;i xe, hoặc đường đi nhanh nhất dọc c&aacute;c con đường khi đo thời gian l&aacute;i xe. Bảng l&agrave; một phần của lớp đường t&ugrave;y chọn gồm c&aacute;c th&ocirc;ng tin sau: c&aacute;c ph&eacute;p đo khoảng c&aacute;ch hoặc thời gian l&aacute;i xe được thể hiện bằng c&aacute;c đường; x&aacute;c định c&aacute;c th&ocirc;ng tin về vị tr&iacute; đầu v&agrave; điểm cuối được kết nối; bảng xếp hạng gần kề được chia nhỏ theo vị tr&iacute; bắt đầu, cho ph&eacute;p bạn xem x&eacute;t vị tr&iacute; gần nhất, vị tr&iacute; gần nhất thứ hai, v.v. Khi đo thời gian l&aacute;i xe với giao th&ocirc;ng, bảng cũng bao gồm thời gian khởi h&agrave;nh v&agrave; thời gian đến.
+            </p>
+            <p>Bạn c&oacute; thể sử dụng t&ecirc;n mặc định hoặc chỉ định một t&ecirc;n mới cho c&aacute;c lớp n&agrave;y, ch&uacute;ng sẽ được tạo ra trong  <b>Nội dung của T&ocirc;i</b> v&agrave; th&ecirc;m v&agrave;o bản đồ. C&aacute;c t&ecirc;n mặc định dựa v&agrave;o t&ecirc;n lớp đầu v&agrave;o. Nếu lớp đ&atilde; tồn tại, bạn sẽ cần cung cấp t&ecirc;n mới.
+            </p>
+            <p>Sử dụng chức năng  <b>Lưu kết quả trong</b> hộp xổ xuống, bạn c&oacute; thể chỉ định t&ecirc;n thư mục trong mục <b>Nội dung của T&ocirc;i</b> nơi sẽ lưu trữ kết quả của bạn.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

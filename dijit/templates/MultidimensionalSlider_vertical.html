@@ -1,0 +1,20 @@
+<div class="esriMdSliderVertical">
+  <table class="esriMdSliderTableVertical" data-dojo-attach-point="mdSliderTable">
+    <tr>
+      <td class="esriMdSliderDimensionInfoCellVertical" align="middle">
+        <div data-dojo-attach-point="dimensionInfo" class="esriMdSliderDimensionInfo">
+          <br/><br/><br/>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="esriMdSliderCellVertical" data-dojo-attach-point="mdSliderCell"></td>
+    </tr>
+    <tr  class="esriMdsSliderPlayButtonRow"  data-dojo-attach-point="playPauseBtnRow">
+      <td align="middle" valign="middle" class="esriMdsSliderPlayButtonCell">
+        <button data-dojo-type="dijit/form/Button" data-dojo-props="iconClass: 'mdsButton mdsPlayButton'" data-dojo-attach-event="onClick:_onPlay" data-dojo-attach-point="playPauseBtn" type="button"
+                title="${_i18n.widgets.mdSlider.NLS_play}">
+        </button></td>
+    </tr>
+  </table>
+</div>

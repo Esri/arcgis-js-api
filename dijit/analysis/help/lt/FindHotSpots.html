@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Rasti aktyvius židinius</h2><p/>
+        <h2><img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" alt="Rasti kar&scaron;tuosius ta&scaron;kus"></h2>
+        <hr/>
+    <p>Įrankis Rasti kar&scaron;tuosius ta&scaron;kus nustatys, ar jūsų duomenyse galimas statisti&scaron;kai reik&scaron;mingas grupavimas pagal erdvinį požymį. 
+        <ul>
+            <li>Ar jūsų ta&scaron;kai (nusikaltimai, medžiai, avarijos) yra pasiskirstę sankaupomis?Kaip galite įsitikinti?
+            </li>
+            <li>Ar i&scaron; tikrųjų aptikote statisti&scaron;kai reik&scaron;mingą (didelės apyvartos, mirtingumo ar auk&scaron;tų įvertinimų) elementų sankaupą, ar pakeistas žemėlapio atvaizdavimas suteiktų papildomos informacijos?
+            </li>
+        </ul>
+        Įrankis Rasti kar&scaron;tuosius ta&scaron;kus patikimai atsako į &scaron;iuos klausimus.
+    </p>
+    <p>Net ir atsitiktiniai rei&scaron;kiniai pasiskirsto nežymiomis sankaupomis.  Be to, mūsų rega natūraliai bando atpažinti pasikartojimus ar dėsningumus net ten, kur jų nėra. Taigi, gali būti pakankamai sudėtinga nustatyti ar duomenų elementai yra pasiskirstę atsitiktinai, ar vis dėlto galima aptikti tam tikrus vidinius dėsningumus. &Scaron;tai kodėl tyrinėtojai naudoja tokius analizės metodus kaip aktyvių židinių paie&scaron;ka (Getis-Ord Gi*), kad galėtų apskaičiuoti pasiskirstymo dėsningumus. Statisti&scaron;kai reik&scaron;mingų sankaupų nustatymas leidžia gauti labai vertingos informacijos. Žinant, kur ir kada susidaro duomenų elementų sankaupos, galima kurti prielaidas apie procesus, lemiančius tokį i&scaron;sidėstymą. Žinant, kad vagystės i&scaron; butų dažniau įvyksta tam tikruose rajonuose, galima kurti efektyvesnes prevencijos programas, paskirstyti policijos i&scaron;teklius, stebėti ir nustatyti potencialius įtariamuosius.   
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="analysisLayer">
+        <div><h2>Pasirinkite sluoksnį, kurio karštuosius taškus norite apskaičiuoti</h2></div>
+        <hr/>
+        <div>
+            <p>Ta&scaron;kų arba plotų sluoksnis, kuriame bus ie&scaron;koma kar&scaron;tųjų ir &scaron;altųjų ta&scaron;kų.
+
+            </p>
+        </div>
+    </div>
+    <div id="analysisField">
+        <div><h2>Raskite didelių ir mažų reikšmių sankaupas</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;i analizė atsako į klausimą: Kur yra didelių ir mažų reik&scaron;mių erdvinės sankaupos?
+            </p>
+            <p>Jei jūsų duomenys yra ta&scaron;kai ir jūs pasirenkate  <b>Ta&scaron;kų skaičiavimą</b>, &scaron;is įrankis įvertins erdvinį ta&scaron;kų elementų i&scaron;sidėstymą tam, kad atsakytų į klausimą: Kuriose vietose ta&scaron;kai i&scaron;sidėstę sankaupomis, o kur ne?
+            </p>
+            <p>Jei pasirinksite lauką, &scaron;is įrankis įvertins reik&scaron;mių, susijusių su kiekvienu elementu, erdvinį i&scaron;sidėstymą, kad atsakytų į klausimą: Kur yra didelių ir mažų reik&scaron;mių sankaupos?
+            </p>
+        </div>
+    </div>
+    <div id="aggregationPolygonLayer">
+        <div><h2>Skaičiuoti taškus, patenkančius į</h2></div>
+        <hr/>
+        <div>
+            <p>Pagal nutylėjimą, remiantis Jūsų ta&scaron;kų duomenimis, bus skaičiuojami ta&scaron;kai, patenkantys į įrankio sukurtą tinklą. Taip pat galite pasirinkti plotų sluoksnį (pavyzdžiui, administracinio suskirstymo ribų, savivaldybių, seniūnijų, gyvenviečių), kad atsakytumėte į klausimą: Ar yra vietų su statisti&scaron;kai reik&scaron;mingomis erdvinėmis ta&scaron;kų sankaupomis, atsižvelgiant į ta&scaron;kų, patenkančių į kiekvieną ploto elementą, skaičių?   
+            </p>
+        </div>
+    </div>
+    <div id="boundingPolygonLayer">
+        <div><h2>Nurodykite, kur yra galimi taškai</h2></div>
+        <hr/>
+        <div>
+            <p>Nupie&scaron;kite arba pateikite sluoksnį, apibrėžiantį, kur įvykiai galimi, kad atsakytumėte į klausimą: Ar &scaron;iame plote (-uose) yra vietų su neįprastai didelėmis ar mažomis ta&scaron;kų koncentracijomis?   
+            </p>
+            <p>Nubrėžti arba nurodyto sluoksnio plotiniai objektai apibrė&scaron; tokių įvykių ribas. Norėdami nupie&scaron;ti &scaron;iuos plotus, spustelėkite pie&scaron;imo mygtuką, tada spustelėkite vietą žemėlapyje, kur norite sukurti plotą.  Jei norite nupie&scaron;ti papildomų plotų, spustelėkite pie&scaron;imo mygtuką dar kartą, tada spustelėkite vietą žemėlapyje ir tęskite.
+            </p>
+        </div>
+    </div>
+    <div id="dividedByField">
+        <div><h2>Dalinti iš</h2></div>
+        <hr/>
+        <div>
+            <p>Kartais gali prireikti analizuoti dėsningumus, atsirandančius dėl esamų pasiskirstymų. Pavyzdžiui, jei Jūsų ta&scaron;kai vaizduoja nusikaltimus, jų skaičių padaliję i&scaron; viso gyventojų skaičiaus, gausite vienam žmogui tenkančių nusikaltimų analizę, o ne vien tik sausą nusikaltimų skaičių.  Atributo, i&scaron; kurio bus dalinama, pasirinkimas dažnai vadinamas normalizavimu.
+            </p>
+            <p>Pasirinkus  <i>Esri Population</i>, kiekvieno ploto elementai bus praturtinti viso gyventojų skaičiaus reik&scaron;mėmis, kurios bus naudojamos kaip atributai, i&scaron; kurių dalinama.  &Scaron;i parinktis naudoja kreditus.
+            </p>
+        </div>
+    </div>
+    <div id="hotSpotsResultLayer">
+        <div><h2>Rezultatų sluoksnio pavadinimas</h2></div>
+        <hr/>
+        <div>
+            <p>Pateikite pavadinimą sluoksnio, kuris bus sukurtas  <b>Turinyje</b> bei pridėtas žemėlapyje. Rezultato sluoksnis rodys statisti&scaron;kai svarbias auk&scaron;tų ar žemų verčių ar ta&scaron;kų sankaupas. Jei toks sluoksnio pavadinimas jau egzistuoja, galėsite pasirinkti jį perra&scaron;yti.
+            </p>
+            <p>Pasirinkę  <b>Rezultatą įra&scaron;yti į</b>, galite nurodyti <b>Turinyje</b> esančio aplanko pavadinimą.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

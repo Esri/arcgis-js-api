@@ -1,0 +1,45 @@
+<div class="gxePrimaryToolbar" data-dojo-attach-point="containerNode">
+  <div class="gxeTabs gxeFloatLeft">
+    <div data-dojo-type="esri/dijit/metadata/base/TabButton" data-dojo-attach-point="viewButton"
+      data-dojo-props="label:'${i18nBase.editor.primaryToolbar.view}'"
+      data-dojo-attach-event="onClick: _onViewClick">'
+    </div><div data-dojo-type="esri/dijit/metadata/base/TabButton" data-dojo-attach-point="viewXmlButton"
+      data-dojo-props="label:'${i18nBase.editor.primaryToolbar.viewXml}'"
+      data-dojo-attach-event="onClick: _onViewXmlClick">
+    </div><div data-dojo-type="esri/dijit/metadata/base/TabButton" data-dojo-attach-point="editButton"
+      data-dojo-props="label:'${i18nBase.editor.primaryToolbar.edit}'"
+      data-dojo-attach-event="onClick: _onEditClick">
+    </div>
+    <div class="gxeMessageArea" data-dojo-attach-point="messageArea" style="display:none">
+      <div class="gxeIconWorking" data-dojo-attach-point="workingIcon" style="display:none"></div>
+      <span class="gxeWorkingMessage" data-dojo-attach-point="workingNode"></span>
+    </div>
+  </div>
+  <div class="gxeToolsets gxeFloatRight">
+    <div class="gxeToolset" data-dojo-attach-point="viewToolset" style="display:none;">
+      <button class="gxeButton" data-dojo-attach-event="onclick: _onDownloadClick"
+        data-dojo-attach-point="downloadButton">${i18nBase.editor.download.caption}</button>
+    </div>
+    <div class="gxeToolset" data-dojo-attach-point="editToolset" style="display:none;">  
+      <button class="gxeButton" data-dojo-attach-event="onclick: _onValidateClick"
+        data-dojo-attach-point="validateButton">${i18nBase.editor.validate.caption}</button>  
+      <button class="gxeButton" data-dojo-attach-event="onclick: _onSaveClick"
+        data-dojo-attach-point="saveButton">${i18nBase.editor.save.caption}</button>
+      <button class="gxeButton" data-dojo-attach-event="onclick: _onSaveAndCloseClick"
+        data-dojo-attach-point="saveAndCloseButton">${i18nBase.editor.saveAndClose.caption}</button>
+      <button class="gxeButton" data-dojo-attach-event="onclick: _onSaveDraftClick"
+        data-dojo-attach-point="saveDraftButton">${i18nBase.editor.saveDraft.caption}</button>
+      <button class="gxeButton" data-dojo-attach-event="onclick: _onLoadClick"
+        data-dojo-attach-point="loadButton">${i18nBase.editor.load.caption}</button>
+      <button class="gxeButton" data-dojo-attach-event="onclick: _onTransformClick"
+        data-dojo-attach-point="transformButton">${i18nBase.editor.transform.caption}</button>
+      <button class="gxeButton" data-dojo-attach-event="onclick: _onDeleteClick"
+        data-dojo-attach-point="deleteButton">${i18nBase.editor.del.caption}</button>
+    </div>
+    <div class="gxeToolset" data-dojo-attach-point="commonToolset" style="display:none;">
+      <button class="gxeButton" data-dojo-attach-event="onclick: _onCloseClick"
+        data-dojo-attach-point="closeButton">${i18nBase.general.close}</button>
+    </div>
+  </div>
+  <div class="gxeClear"></div>
+</div>

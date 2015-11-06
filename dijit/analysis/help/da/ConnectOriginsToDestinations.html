@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Forbind udgangspunkter med destinationer</h2><p/>
+        <h2><img src="../images/GUID-7266D30B-0250-4132-B1A5-9B59F0212FAD-web.png" alt="Forbind udgangspunkter med destinationer"></h2>
+        <hr/>
+    <p>  Forbind udgangspunkter til destinationer m&aring;ler rejsetiden eller afstanden mellem parpunkter. V&aelig;rkt&oslash;jet kan rapportere afstande i fugleflugtslinje; afstande baseret p&aring; en rejsetilstand, f.eks. g&aring; eller k&oslash;re; eller rejsevarigheder baseret p&aring; en rejsetilstand. Du kan g&oslash;re f&oslash;lgende ved at bruge v&aelig;rkt&oslash;jet:
+    </p>
+    <p>
+        <ul>
+            <li>Beregne den samlede afstand eller tid, som pendlerne rejser p&aring; deres hjem til arbejde-ture.
+            </li>
+            <li>M&aring;le, hvor langt kunder k&oslash;rer for at k&oslash;be ind i dine forretninger. Bruge disse oplysninger til at definere din markedsr&aelig;kkevidde, is&aelig;r i forbindelse med m&aring;lrettede reklamekampagner eller valg af placering til nye forretninger.
+            </li>
+            <li>Beregne det forventede antal k&oslash;rte kilometer for din fl&aring;de af k&oslash;ret&oslash;jer. Derefter skal du k&oslash;re v&aelig;rkt&oslash;jet Opsumm&eacute;r inden for, for at rapportere antal k&oslash;rte kilometer efter stat eller anden region.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Du skal angive start- og slutpunkter, hvorefter v&aelig;rkt&oslash;jet returnerer et lag, som indeholder rutelinjer, herunder m&aring;linger, mellem parrede udgangspunkter og destinationer.  
+    </p>
+    <p>Hvis feltet  <b>Brug aktuel kortudstr&aelig;kning</b> er markeret, er det kun objekterne, der er synlige inden for den aktuelle kortudstr&aelig;kning, der medtages i analysen. Hvis markeringen fjernes, medtages alle objekter i inputlaget, ogs&aring; selv om de er uden for den aktuelle kortudstr&aelig;kning.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="originsLayer">
+        <div><h2>Vælg det punklag, der repræsenterer udgangspunkter.</h2></div>
+        <hr/>
+        <div>
+            <p>V&aelig;lg det punklag, der repr&aelig;senterer udgangspunktet eller udgangspunkterne. V&aelig;rkt&oslash;jet underst&oslash;tter op til  5.000 udgangspunkter og  5.000 destinationer. </p>
+            <p>Hvis du v&aelig;lger et lag, som har n&oslash;jagtigt &eacute;t udgangspunkt, vil det blive forbundet med alle destinationer.
+            </p>
+            <p>Ud over at v&aelig;lge et lag fra dit kort kan du v&aelig;lge  <b>V&aelig;lg Living Atlas-analyselag</b> nederst p&aring; rullelisten. Dette &aring;bner et galleri med en samling lag, der er nyttige til mange analysetyper. 
+            </p>
+        </div>
+    </div>
+    <div id="destinationsLayer">
+        <div><h2>Vælg destinationslaget</h2></div>
+        <hr/>
+        <div>
+            <p>V&aelig;lg det lag, der repr&aelig;senterer den destination eller de destinationer, som udgangspunkterne skal forbindes til. V&aelig;rkt&oslash;jet underst&oslash;tter op til  5.000 udgangspunkter og  5.000 destinationer. </p>
+            <p>Hvis du v&aelig;lger et lag, som har &eacute;n destination, vil alle udgangspunkterne blive forbundet til denne destination. 
+            </p>
+            <p>Hvis der er &eacute;t udgangspunkt og mange destinationer, forbinder v&aelig;rkt&oslash;jet udgangspunktet til hver enkelt destination.
+            </p>
+            <p>Ud over at v&aelig;lge et lag fra dit kort kan du v&aelig;lge  <b>V&aelig;lg Living Atlas-analyselag</b> nederst p&aring; rullelisten. Dette &aring;bner et galleri med en samling lag, der er nyttige til mange analysetyper. 
+            </p>
+            <p> Hvis der er mange udgangspunkter og mange destinationer, skal du have to felter, som beskriver udgangspunkt-destinationsparrene: <b>Id-felt i udgangspunkter</b> og <b>Matchende id-felt i destinationer</b>. V&aelig;rkt&oslash;jet forbindes til udgangspunkt-destinationsparrene under analysen. Forestil dig f.eks., at du har to udgangspunkter med ID-feltv&aelig;rdier for <code>Rosie</code> og <code>Harold</code> og to destinationer med de samme ID-v&aelig;rdier. <code>Rosie</code>-udgangspunktet forbindes til <code>Rosie</code>-destinationen og <code>Harold</code> forbindes til <code>Harold</code>. Der foretages ingen andre forbindelser eller m&aring;linger.
+            </p>
+            <p>ID-v&aelig;rdierne skal v&aelig;re unikke inden for hvert lag; eksempelvis kan destinationslaget ikke have to  <code>Rosie</code>-v&aelig;rdier. V&aelig;rdierne i udgangspunkt- og destinationslagene skal matche hinanden n&oslash;jagtigt for at danne par; <code>Harold</code> vil ikke forbindes til den forkert stavede v&aelig;rdi <code>Harodl</code>. 
+            </p>
+        </div>
+    </div>
+    <div id="measurementType">
+        <div><h2>Opmål</h2></div>
+        <hr/>
+        <div>
+            
+            <p>V&aelig;lg, om du vil forbinde udgangspunkter med destinationer ved at bruge afstand i fugleflugtslinje eller en rejsetilstand. Outputruterne vil  f&oslash;lge veje eller g&aring;stier, og de vil overholde g&aelig;ldende regler, s&aring;som ensrettede gader, ulovlige vendinger for k&oslash;rsel med biler eller lastbiler. De tilg&aelig;ngelige rejsetilstande fasts&aelig;ttes af administratoren for din organisation.  
+            </p>
+            <p>N&aring;r du v&aelig;lger  <b>K&oslash;retid</b>, kan du v&aelig;lge, hvordan k&oslash;retiden skal m&aring;les.
+                <ul>
+                    <li>
+                        <p>Fjern markeringen af  <b>Brug trafik</b> for at finde de hurtigste ruter baseret p&aring; faste hastigheder.
+                        </p>
+                        <p>V&aelig;lg denne indstilling, hvis du &oslash;nsker et generelt k&oslash;retidsomr&aring;de og ikke et, der er beregnet ved at tage h&oslash;jde for skiftende trafikforhold p&aring; et bestemt afgangstidspunkt.
+                        </p>
+                    </li>
+                    <li>
+                        <p>Mark&eacute;r feltet  <b>Brug trafik</b> for at finde de hurtigste ruter baseret p&aring; et givent starttidspunkt og skiftende trafikforhold. Hvis du ogs&aring; v&aelig;lger <b>Aktuel trafik</b>, angives afgangstidspunktet fra inputpunkterne til den aktuelle tid, og den aktuelle trafikhastighed, samt prognoser for trafikhastighed hentes fra sensorer og feeds for at oprette ruterne. De forventede k&oslash;rehastigheder beregnes under henvisning til trafikkens aktuelle hastigheder, historiske hastigheder og aktuelle forhold som f.eks. vejret. Trafikkens hastighed forudsiges 12 12 timer frem, s&aring; afgangstidspunktet kan indstilles ved at flytte skyderen op til  12 timer frem. </p>
+                        <p>Brug disse indstillinger for den aktuelle trafik til at finde ud af, hvilke omr&aring;der der kan n&aring;s ved afgang nu, afgang en time fra nu osv.
+                        </p>
+                    </li>
+                    <li>
+                        <p>Hvis du markerer  <b>Brug trafik</b> og v&aelig;lger <b>Trafik baseret p&aring; fysiske forhold for</b> en dag og et klokkesl&aelig;t, finder v&aelig;rkt&oslash;jet de hurtigste ruter baseret p&aring; gennemsnittet af historisk hastighed for hvert femte minut i en normal uge.. Resultaterne omfatter trafik, men fjerner p&aring;virkningen af aktuelle trafikforhold og h&aelig;ndelser, som i betydelig grad kan skille sig ud fra normen.
+                        </p>
+                        <p>Du kan bruge disse historiske trafikindstillinger til eksempelvis at f&aring; svar p&aring; sp&oslash;rgsm&aring;let: &quot;hvor lang tid vil det generelt tage at n&aring; frem til disse destinationer, hvis jeg k&oslash;rer fra udgangspunktet kl. 11.30 p&aring; en onsdag?&quot;
+                        </p>
+                        <p>Klokkesl&aelig;ttet, du indstiller, henviser til tidszonen, som udgangspunkterne befinder sig i. S&aring; hvis du indstiller tidspunktet til kl. 8.00 og har to udgangspunkter - &eacute;t i New York City og et andet i Los Angeles, genereres ruterne til afgangstidspunkt kl. 8.00 p&aring; &oslash;stkysten (Eastern Time) og kl. 8.00 p&aring; vestkysten (Pacific Time).
+                        </p>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Bem&aelig;rk, at n&aring;r et k&oslash;ret&oslash;j begiver sig v&aelig;k fra et punkt, s&aring; g&aring;r tiden, og trafikforholdene &aelig;ndrer sig. V&aelig;rkt&oslash;jet Forbind udgangspunkter til destinationer tager h&oslash;jde for disse variationer, hvis du markerer  <b>Brug trafik</b>; men ikke alle regioner underst&oslash;tter trafik. Klik p&aring; linket <b>Se tilg&aelig;ngelighed</b> i v&aelig;rkt&oslash;jet for at finde ud af, hvorvidt det er tilf&aelig;ldet i det omr&aring;de, du unders&oslash;ger.
+            </p>
+        </div>
+    </div>
+    <div id="outputLayer">
+        <div><h2>Navn på resultatlag</h2></div>
+        <hr/>
+        <div>
+            <p>Dette er navnet p&aring; det lag, som oprettes i  <b>Mit indhold</b> og f&oslash;jes til kortet. Standardnavnet er baseret p&aring; navnet p&aring; v&aelig;rkt&oslash;jet og navnet p&aring; inputlaget. Hvis laget allerede findes, vil du blive bedt om at angive et andet navn.
+            </p>
+            <p>Ved hj&aelig;lp af rullelisten  <b>Gem resultat i</b> kan du angive navnet p&aring; en mappe i <b>Mit indhold</b>, hvor resultatet skal gemmes.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

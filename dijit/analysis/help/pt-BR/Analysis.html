@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="SummarizeDataCategory" class="regularsize">
+        <h2>Resumir Dados</h2>
+        <hr/>
+        <p>Estas ferramentas calculam a contagem total, comprimentos, &aacute;reas, e estat&iacute;stica descritiva b&aacute;sica de fei&ccedil;&otilde;es e seus atributos dentro de &aacute;reas ou pr&oacute;ximas de outras fei&ccedil;&otilde;es.
+            <ul>
+                <li> <b>Agregar Pontos</b> calcula estat&iacute;sticas sobre pontos que caem dentro de &aacute;reas especificadas.
+                </li>
+                <li> <b>Resumir Mais Pr&oacute;ximo</b> calcula estat&iacute;sticas para fei&ccedil;&otilde;es e seus atributos que est&atilde;o dentro de uma dist&acirc;ncia especificada.
+                </li>
+                <li> <b>Resumir Dentro</b> calcula estat&iacute;sticas para fei&ccedil;&otilde;es de &aacute;rea e atributos que sobrep&otilde;em uns aos outros.
+                </li>
+            </ul>
+            
+        </p>
+        <p> 
+        </p>
+    </div>
+        <div id="AggregatePointsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Agregar Pontos</h2></td>
+                    <td>
+                    <img src="../images/GUID-60C59C66-3038-4D0E-8F6A-EC6C53FEAA02-web.png" class="titleImage" alt="Agregar Pontos">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Utilizando uma camada de fei&ccedil;&otilde;es de ponto e uma camada de fei&ccedil;&otilde;es de &aacute;rea, esta ferramenta determina quais pontos caem dentro de cada &aacute;rea e calcula a estat&iacute;stica sobre todos os pontos dentro de cada &aacute;rea. Por exemplo:
+                <ul>
+                    <li>Determinados locais de ponto dos incidentes de crime, contagem do n&uacute;mero de crimes por munic&iacute;pio ou outro distrito administrativo.
+                    </li>
+                    <li>Encontrar as rendas mais altas e mais baixas para locais de franquia por estado.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeNearbyTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Resumir Mais Próximo</h2></td>
+                    <td>
+                    <img src="../images/GUID-A5033D27-81B6-42E7-BA38-50D25C1CCCCA-web.png" class="titleImage" alt="Resumir Mais Pr&oacute;ximo">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Localiza as fei&ccedil;&otilde;es que est&atilde;o dentro de uma dist&acirc;ncia espec&iacute;fica das fei&ccedil;&otilde;es na camada de entrada.   A dist&acirc;ncia pode ser medida ao longo de linhas retas ou caminhos vi&aacute;veis de um modo de viagem. As estat&iacute;sticas s&atilde;o ent&atilde;o calculadas para as fei&ccedil;&otilde;es mais pr&oacute;ximas. Por exemplo:
+                <ul>
+                    <li>Calcular a popula&ccedil;&atilde;o total dentro de cinco minutos de um novo local de loja proposto.
+                    </li>
+                    <li>Calcular o n&uacute;mero das rampas de acesso da auto-estrada dentro de cinco minutos de um novo local de loja proposto para utilizar como uma medida de acessibilidade da loja.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeWithinTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Resumir Dentro</h2></td>
+                    <td>
+                    <img src="../images/GUID-9B12DB3F-AA7B-41EB-87C6-D2DEC3D52DA9-web.png" class="titleImage" alt="Resumir Dentro">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Localiza &aacute;reas (e por&ccedil;&otilde;es de &aacute;reas) que sobrep&otilde;em entre duas camadas e calcula a estat&iacute;stica da sobreposi&ccedil;&atilde;o. Por exemplo:
+                <ul>
+                    <li>Fornecidas uma camada de &aacute;reas de bacia e uma camada de &aacute;reas de uso da superf&iacute;cie por tipo de uso do solo, calcular a &aacute;rea total em acres do tipo de uso do solo para cada bacia. 
+                    </li>
+                    <li>Fornecidas uma camada de lotes em um munic&iacute;pio e uma camada de limites da cidade, resumir o valor m&eacute;dio de lotes desocupados dentro de cada cidade.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="EnrichLocationsCategory" class="smallsize">
+        <h2>Enriquecimento de Dados</h2>
+        <hr/>
+        <p>Estas ferramentas ajudam voc&ecirc; a explorar o car&aacute;ter das &aacute;reas. Estat&iacute;sticas e dados demogr&aacute;ficos detalhados s&atilde;o retornados para suas &aacute;reas selecionadas. 
+            <ul>
+                <li> <b>Enriquecer Camada</b> recupera informa&ccedil;&otilde;es sobre as pessoas, lugares e neg&oacute;cios em uma &aacute;rea espec&iacute;fica ou dentro de uma dist&acirc;ncia ou tempo de percurso a partir de um local.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="EnrichLayerTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Enriquecer Camada</h2></td>
+                    <td>
+                    <img src="../images/GUID-5B2D9742-AFD2-4054-8D05-ED6A80EDAF4D-web.png" class="titleImage" alt="Enriquecer Camada">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Recupera informa&ccedil;&otilde;es sobre as pessoas, lugares e neg&oacute;cios em uma &aacute;rea espec&iacute;fica ou dentro de uma dist&acirc;ncia ou tempo de percurso selecionado a partir de um local.
+
+            </p>
+            <br/>
+        </div>
+    <div id="FindLocationsCategory" class="largesize">
+        <h2>Encontrar Locais</h2>
+        <hr/>
+        <p>Estas ferramentas s&atilde;o utilizadas para identificar &aacute;reas que atendem v&aacute;rios crit&eacute;rios diferentes que voc&ecirc; especifica. Estes crit&eacute;rios podem ser baseados em consultas de atributo (por exemplo, lotes que est&atilde;o desocupados) e consultas espaciais (por exemplo, dentro de 1 quil&ocirc;metro de um rio). As &aacute;reas que s&atilde;o localizadas podem ser selecionadas a partir de fei&ccedil;&otilde;es existentes (como lotes de terra existentes) ou novas fei&ccedil;&otilde;es podem ser criadas onde todos os requisitos s&atilde;o atendidos.
+            <ul>
+                <li> <b>Encontrar Locais Existentes</b> procura &aacute;reas existentes em uma camada que atende uma s&eacute;rie de crit&eacute;rios.
+                </li>
+                <li> <b>Derivar Novos Locais</b> cria novas &aacute;reas a partir de locais em sua &aacute;rea de estudo que atendem uma s&eacute;rie de crit&eacute;rios.
+                </li>
+                <li> <b>Encontrar Locais Semelhantes</b> encontra locais mais semelhantes a um ou mais locais de refer&ecirc;ncia baseada em crit&eacute;rios que voc&ecirc; especifica.
+                </li>
+                <li> <b>Criar Panorama</b> crie &aacute;reas que s&atilde;o vis&iacute;veis baseadas em locais que voc&ecirc; especifica.
+                </li>
+                <li> <b>Criar Bacias</b> cria &aacute;reas de capta&ccedil;&atilde;o baseadas em locais que voc&ecirc; especifica.
+                </li>
+                <li> <b>Tra&ccedil;ar Jusante</b> determina os caminhos de fluxo em uma dire&ccedil;&atilde;o da jusante a partir de locais que voc&ecirc; especifica.
+                </li>
+            </ul>
+            
+        </p>
+        <p> 
+        </p>
+    </div>
+        <div id="FindExistingLocationsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Encontrar Locais Existentes</h2></td>
+                    <td>
+                    <img src="../images/GUID-FEF355B4-CF3B-48F6-9EC1-A00A1D53C81F-web.png" class="titleImage" alt="Encontrar Locais Existentes">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Seleciona fei&ccedil;&otilde;es existentes em sua &aacute;rea de estudo que atendem uma s&eacute;rie de crit&eacute;rios que voc&ecirc; especifica. Estes crit&eacute;rios podem ser baseados em consultas de atributo (por exemplo, lotes que est&atilde;o desocupados) e consultas espaciais (por exemplo, dentro de 1 milha de um rio).
+
+            </p>
+            <br/>
+        </div>
+        <div id="DeriveNewLocationsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Derivar Novos Locais</h2></td>
+                    <td>
+                    <img src="../images/GUID-4A756008-8431-4AA5-BD42-7135296560DD-web.png" class="titleImage" alt="Derivar Novos Locais">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Cria novas fei&ccedil;&otilde;es em sua &aacute;rea de estudo que atendem uma s&eacute;rie de crit&eacute;rios que voc&ecirc; especifica. Estes crit&eacute;rios podem ser baseados em consultas de atributo (por exemplo, lotes que est&atilde;o desocupados) e consultas espaciais (por exemplo, dentro de 1 milha de um rio).
+
+            </p>
+            <br/>
+        </div>
+        <div id="FindSimilarLocationsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Encontrar Locais Semelhantes</h2></td>
+                    <td>
+                    <img src="../images/GUID-6262A84E-9087-4E48-930E-E9B89FECC836-web.png" class="titleImage" alt="Encontrar Locais Semelhantes">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Encontra os locais que s&atilde;o mais semelhantes a um ou mais locais de refer&ecirc;ncia baseada em crit&eacute;rios que voc&ecirc; especifica.
+            </p>
+            <br/>
+        </div>
+        <div id="CreateViewshedTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Criar Panorama</h2></td>
+                    <td>
+                    <img src="../images/GUID-491E9A75-30CC-4526-9F71-E47FD25536DE-web.png" class="titleImage" alt="Criar Panorama">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Cria &aacute;reas que s&atilde;o vis&iacute;veis baseadas em locais que voc&ecirc; especifica.
+            </p>
+            <br/>
+        </div>
+        <div id="CreateWatershedsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Criar Vertentes</h2></td>
+                    <td>
+                    <img src="../images/GUID-4DE64CF6-2A02-46F6-8AE4-4D9227AAB71C-web.png" class="titleImage" alt="Criar Vertentes">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Cria &aacute;reas de capta&ccedil;&atilde;o baseadas em locais que voc&ecirc; especifica.
+            </p>
+            <br/>
+        </div>
+        <div id="TraceDownstreamTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Traçar Jusante</h2></td>
+                    <td>
+                    <img src="../images/GUID-1700E318-5F2D-4D4D-BF21-B12663F5D3C4-web.png" class="titleImage" alt="Tra&ccedil;ar Jusante">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Determina os caminhos de fluxo em uma dire&ccedil;&atilde;o da jusante a partir de locais que voc&ecirc; especifica.
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzePatternsCategory" class="regularsize">
+        <h2>Analisar Modelos</h2>
+        <hr/>
+        <p>Estas ferramentas ajudam voc&ecirc; a identificar, quantificar e visualizar modelos espaciais em seus dados.  
+            <ul>
+                <li> <b>Calcular Densidade</b> obt&eacute;m quantidades conhecidas de algum fen&ocirc;meno e distribui estas quantidades pelo mapa.
+                </li>
+                <li> <b>Localizar Alto Valor de Incid&ecirc;ncia</b> identifica agrupamentos estatisticamente significativos no modelo espacial dos seus dados.
+                </li>
+                <li> <b>Interpolar Pontos</b> prev&ecirc; valores em novos locais baseado em medidas localizadas em uma cole&ccedil;&atilde;o de pontos.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateDensityTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Calcular Densidade</h2></td>
+                    <td>
+                    <img src="../images/GUID-20E554EC-1F41-4951-99FE-B3FE71DB2E17-web.png" class="titleImage" alt="Calcular Densidade">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>A an&aacute;lise de densidade obt&eacute;m quantidades conhecidas de algum fen&ocirc;meno e distribui estas quantidades pelo mapa. Voc&ecirc; pode utilizar esta ferramenta, por exemplo, para mostrar concentra&ccedil;&otilde;es de raios ou tornados, acessar instala&ccedil;&otilde;es de atendimento &agrave; sa&uacute;de e densidades da popula&ccedil;&atilde;o.
+            </p>
+            <br/>
+        </div>
+        <div id="FindHotSpotsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Localizar Valor Alto de Incidência</h2></td>
+                    <td>
+                    <img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" class="titleImage" alt="Localizar Pontos de Incid&ecirc;ncia">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Esta ferramenta cria um mapa mostrando qualquer agrupamento espacial estatisticamente significativo presente em seus dados. Utilize esta ferramenta para descobrir pontos altos de incid&ecirc;ncia (vermelho) e pontos baixos de incid&ecirc;ncia (azuis) inesperados de valores locais altos e baixos, densidades de crime, fatalidades de acidente de tr&aacute;fego, desemprego ou biodiversidade, por exemplo.
+            </p>
+            <br/>
+        </div>
+        <div id="InterpolatePointsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Interpolar Pontos</h2></td>
+                    <td>
+                    <img src="../images/GUID-28FC50AA-7B10-487C-949B-241EF2F8028E-web.png" class="titleImage" alt="Interpolar Pontos">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Esta ferramenta permite a voc&ecirc; prever os valores em novos locais baseado em medidas localizadas em uma cole&ccedil;&atilde;o de pontos. A ferramenta obt&eacute;m dados do ponto com valores em cada ponto e retorna &aacute;reas classificadas por valores preditos. Voc&ecirc; pode utilizar esta ferramenta, por exemplo, predizer n&iacute;veis de chuva atrav&eacute;s de uma bacia baseado em medidas obtidas em pluvi&ocirc;metros individuais.
+            </p>
+            <br/>
+        </div>
+    <div id="UseProximityCategory" class="largesize">
+        <h2>Utilizar Proximidade</h2>
+        <hr/>
+        <p>  Estas ferramentas ajudam voc&ecirc; a responder uma das perguntas mais comuns apresentada na an&aacute;lise espacial: &quot;O que est&aacute; pr&oacute;ximo do que?&quot;
+            <ul>
+                <li> <b>Conectar Origens aos Destinos</b> mede o tempo de percurso ou dist&acirc;ncia entre os pares de pontos.
+                </li>
+                <li> <b>Criar Buffers</b> cria &aacute;reas de dist&acirc;ncias iguais a partir das fei&ccedil;&otilde;es.
+                </li>
+                <li> <b>Criar &Aacute;reas de Tempo do Percurso</b> localiza &aacute;reas ao redor de locais que podem ser alcan&ccedil;ados dentro de um determinado per&iacute;odo de tempo.
+                </li>
+                <li> <b>Localizar Mais Pr&oacute;ximo</b> &eacute; utilizado para identificar estes lugares que s&atilde;o os locais conhecidos mais pr&oacute;ximos.
+                </li>
+                <li> <b>Planejar Rotas</b> determina o melhor modo para criar a rota em uma frota de ve&iacute;culos para visitar muitas paradas.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="ConnectOriginsToDestinationsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Conectar Origens aos Destinos</h2></td>
+                    <td>
+                    <img src="../images/GUID-7266D30B-0250-4132-B1A5-9B59F0212FAD-web.png" class="titleImage" alt="Conectar Origens aos Destinos">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Conectar Origens aos Destinos mede o tempo de percurso ou dist&acirc;ncia entre os pares de pontos. A ferramenta pode reportar dist&acirc;ncias de linhas retas, dist&acirc;ncias de estrada ou tempos de percursos. Com a utiliza&ccedil;&atilde;o desta ferramenta, voc&ecirc; pode
+            </p>
+            <p>
+                <ul>
+                    <li>Calcule a dist&acirc;ncia total ou comutadores de tempo do percurso em suas viagens do trabalho para casa.
+                    </li>
+                    <li>Medir a que dist&acirc;ncia os clientes est&atilde;o viajando para fazer compras em suas lojas. Utilize estas informa&ccedil;&otilde;es para definir o alcance do seu mercado, especialmente ao definir o alvo dos an&uacute;ncios das campanhas ou escolher novos locais de lojas.
+                    </li>
+                    <li>Calcule a milhagem de viagem esperada para sua frota de ve&iacute;culos. Posteriormente, execute a ferramenta Resumir Dentro para reportar a milhagem por estado ou outra regi&atilde;o.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Voc&ecirc; fornece os pontos iniciais e finais e a ferramenta retorna uma camada contendo linhas de rotas, inclusive medidas, entre origens e destinos.
+            </p>
+            <br/>
+        </div>
+        <div id="CreateBuffersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Criar Buffers</h2></td>
+                    <td>
+                    <img src="../images/GUID-7F4A8E4D-42E3-41C1-9238-16619CE65079-web.png" class="titleImage" alt="Criar Buffers">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>O buffer &eacute; uma &aacute;rea que cobre uma determinada dist&acirc;ncia a partir de uma fei&ccedil;&atilde;o de ponto, linha ou &aacute;rea. 
+            </p>
+            <p>Buffers s&atilde;o normalmente utilizados para criar &aacute;reas que tamb&eacute;m podem ser analisadas utilizando outras ferramentas como Sobrepor Camadas. Por exemplo, se a pergunta for &quot;Quais edif&iacute;cios est&atilde;o dentro de uma milha da escola?&quot;, a resposta poder&aacute; ser encontrada ao criar um buffer de uma milha em torno da escola e sobrepor o buffer com a camada contendo as &aacute;reas de cobertura dos edif&iacute;cios. O resultado final &eacute; uma camada destes edif&iacute;cios dentro de uma milha da escola.  
+            </p>
+            <br/>
+        </div>
+        <div id="CreateDriveTimeAreasTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Criar Áreas de Tempo do Percurso</h2></td>
+                    <td>
+                    <img src="../images/GUID-6F629A09-768D-4C04-88A4-AB941811ADE9-web.png" class="titleImage" alt="Criar &Aacute;reas de Tempo do Percurso">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>A &aacute;rea de tempo do percurso &eacute; a &aacute;rea que pode ser alcan&ccedil;ada dentro de um tempo ou dist&acirc;ncia de percurso espec&iacute;fica. &Aacute;reas de tempo de dire&ccedil;&atilde;o podem ajudar voc&ecirc; a responder perguntas tais como:
+                <ul>
+                    <li>Onde eu posso ir daqui dentro de um percurso de 30 minutos?
+                    </li>
+                    <li>Onde eu posso ir daqui dentro de um percurso de 30 minutos &agrave;s 06:00:00 p.m durante o hor&aacute;rio de pico?
+                    </li>
+                    <li>Quais &aacute;reas da cidade o corpo de bombeiros pode alcan&ccedil;ar dentro de cinco minutos? Como a cobertura de resposta ao inc&ecirc;ndio ser&aacute; otimizada ao construir um novo corpo de bombeiros aqui?
+                    </li>
+                    <li>Quais &aacute;reas do mercado atendem minha cobertura de neg&oacute;cios? Quais &aacute;reas est&atilde;o dentro de 10 milhas das minhas lojas?
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="FindNearestTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Localizar Mais Próximo</h2></td>
+                    <td>
+                    <img src="../images/GUID-150C2484-7459-405A-8835-B4E72CD49738-web.png" class="titleImage" alt="Localizar Mais Pr&oacute;ximo">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Me&ccedil;a o custo do percurso entre incidentes e instala&ccedil;&otilde;es e determine quais s&atilde;o mais pr&oacute;ximos uns dos outros. O resultado &eacute; uma camada mostrando as melhores rotas entre incidentes e instala&ccedil;&otilde;es junto com o custo da viagem (tempo e dist&acirc;ncia) de cada rota. Por exemplo, voc&ecirc; pode utilizar esta ferramenta para localizar o hospital mais pr&oacute;ximo para um acidente ou um Banco 24 horas mais pr&oacute;ximo do seu local atual.
+            </p>
+            <br/>
+        </div>
+        <div id="PlanRoutesTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Planejar Rotas</h2></td>
+                    <td>
+                    <img src="../images/GUID-09CC6D60-3C72-42D7-968E-B0663F0B1EBB-web.png" class="titleImage" alt="Planejar Rotas">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Voc&ecirc; fornece um conjunto de paradas e o n&uacute;mero de ve&iacute;culos dispon&iacute;veis para visitar as paradas, e a ferramenta Planejar Rotas determina como atribuir as paradas para os ve&iacute;culos e rotas dos ve&iacute;culos para as paradas de forma eficaz.
+            </p>
+            <p>Utilize esta ferramenta para planejar o trabalho para uma equipe m&oacute;vel de inspetores, suporte aos provedores de servi&ccedil;o e outros; entregar ou buscar itens de locais remotos; ou oferecer servi&ccedil;os de transporte para usu&aacute;rios.
+            </p>
+            <br/>
+        </div>
+    <div id="ManageDataCategory" class="regularsize">
+        <h2>Gerenciar Dados</h2>
+        <hr/>
+        <p>Estas ferramentas s&atilde;o utilizadas para gerenciamento de dados geogr&aacute;ficos do dia a dia e para combinar dados antes da an&aacute;lise.
+  
+            <ul>
+                <li> <b>Dissolver Limites</b> junta as &aacute;reas que compartilham um valor de atributo e limite em comum.
+                </li>
+                <li> <b>Extrair Dados</b> cria novos conjuntos de dados extraindo fei&ccedil;&otilde;es dos seus dados existentes.
+                </li>
+                <li> <b>Juntar Camadas</b> copia todas as fei&ccedil;&otilde;es a partir de duas ou mais camadas existentes em uma nova camada.
+                </li>
+                <li> <b>Sobrepor Camadas</b> combina duas ou mais camadas em uma &uacute;nica camada. 
+Voc&ecirc; pode pensar da sobreposi&ccedil;&atilde;o como a troca de uma pilha de mapas e cria&ccedil;&atilde;o de um &uacute;nico mapa contendo todas as informa&ccedil;&otilde;es localizadas na pilha.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="DissolveBoundariesTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Dissolver Limites</h2></td>
+                    <td>
+                    <img src="../images/GUID-7B5F69B0-3625-404F-8B52-2B562766C0BB-web.png" class="titleImage" alt="Dissolver Limites">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>As &aacute;reas que sobrep&otilde;em ou compartilham um limite em comum s&atilde;o unidas para formarem juntas uma &uacute;nica &aacute;rea.
+    
+            </p>
+            <p>Voc&ecirc; pode controlar quais limites s&atilde;o unidos especificando um campo.
+ 
+Por exemplo, se voc&ecirc; tiver uma camada de munic&iacute;pios, e cada munic&iacute;pio tiver um atributo  <i>State_Name</i>, voc&ecirc; poder&aacute; dissolver os limites utilizando o atributo <i>State_Name</i>.
+ 
+Os munic&iacute;pios adjacentes ser&atilde;o unidos se tiverem o mesmo valor para <i>State_Name</i>.
+ 
+O resultado final &eacute; uma camada de limites do estado.
+            </p>
+            <br/>
+        </div>
+        <div id="ExtractDataTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Extrair Dados</h2></td>
+                    <td>
+                    <img src="../images/GUID-CE24332B-74C0-412F-BB94-31415A02195A-web.png" class="titleImage" alt="Extrair Dados">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Cria um arquivo compactado, CSV ou KMZ de dados a partir de suas camadas e uma &aacute;rea de interesse que voc&ecirc; especifica.
+            </p>
+            <p> 
+            </p>
+            <br/>
+        </div>
+        <div id="MergeLayersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Juntar Camadas</h2></td>
+                    <td>
+                    <img src="../images/GUID-BDDD6517-4EE7-4EEC-AE15-15DD9B709131-web.png" class="titleImage" alt="Juntar Camadas">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Copie fei&ccedil;&otilde;es de duas ou mais camadas existentes em uma nova camada, por exemplo:
+                <ul>
+                    <li>Eu tenho tr&ecirc;s camadas para a Inglaterra, Pa&iacute;s de Gales e Esc&oacute;cia e desejo uma &uacute;nica camada da Gr&atilde;-Bretanha. 
+                    </li>
+                    <li>Eu tenho 12 camadas e cada uma cont&eacute;m informa&ccedil;&otilde;es de lote para distritos municipais cont&iacute;guos.
+ Eu desejo junt&aacute;-las em uma &uacute;nica camada, mantendo somente os atributos que t&ecirc;m o mesmo nome e tipo nas 12 camadas de entrada.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="OverlayLayersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Sobrepor Camadas</h2></td>
+                    <td>
+                    <img src="../images/GUID-CE1E0E84-F3B5-446B-9FDE-4DA057F106CC-web.png" class="titleImage" alt="Sobrepor Camadas">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>A sobreposi&ccedil;&atilde;o combina duas ou mais camadas em uma &uacute;nica camada. Voc&ecirc; pode pensar da sobreposi&ccedil;&atilde;o como a troca de uma pilha de mapas e cria&ccedil;&atilde;o de um &uacute;nico mapa contendo todas as informa&ccedil;&otilde;es localizadas na pilha, por exemplo:
+                <ul>
+                    <li>Quais lotes est&atilde;o dentro da plan&iacute;cie alagada de 100 anos?
+ 
+(Dentro &eacute; somente outro modo de dizer sobre.)
+
+                          
+                    </li>
+                    <li>Quias estradas est&atilde;o dentro de quais munic&iacute;pios?
+
+                    </li>
+                    <li>Qual uso do solo est&aacute; sobre qual tipo de solo?
+
+                         
+                    </li>
+                    <li>Quais po&ccedil;os est&atilde;o dentro de bases militares abandonadas?
+
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+</div>
+</html>

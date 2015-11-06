@@ -1,0 +1,324 @@
+.DataCategoriesPage_Country {
+    margin: 14px 0 0 0;
+    text-align: center;
+}
+
+.DataCategoriesPage_Search {
+    position: absolute;
+    top: 55px;
+    right: 20px;
+    left: 20px;
+    width: auto;
+    max-width:350px;
+}
+
+.DataCategoriesPage_Triangle {
+    position: absolute;
+    top: 50%;
+    width: 20px;
+    height: 60px;
+    margin-top: -30px;
+    cursor: pointer;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.DataCategoriesPage_TriangleBack {
+    background-image: url(./images/leftArrow_Normal.png);
+    left: 10px;
+}
+
+.DataCategoriesPage_TriangleBack:hover {
+    background-image: url(./images/leftArrow_hover.png);
+}
+
+.DataCategoriesPage_TriangleForward {
+    background-image: url(./images/rightArrow_Normal.png);
+    right: 10px;
+}
+
+.DataCategoriesPage_TriangleForward:hover {
+    background-image: url(./images/rightArrow_hover.png);
+}
+
+.DataCategoriesPage_Pagination {
+    min-height:160px;
+    top:15px;
+}
+
+.DataCategoriesPage_Pagination .Pagination_PageAndArrows {
+    top: 15px;
+    left: 20px;
+    right: 20px;
+    border:1px #bcbcbc solid;
+    background-color:white;
+}
+
+.DataCategoriesPage_Pagination .Pagination_Items {
+}
+
+.DataCategoriesPage_Item {
+    display: inline-block;
+    width: 100px;
+    height: 80px;
+    margin: 0 7px 0 7px;
+    padding-left: 50px;
+    line-height: 74px;
+    background-image: url(./images/dataCollections/Default_normal.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin-top: 5px;
+}
+
+.dj_rtl .DataCategoriesPage_Item {
+    padding-right: 50px;
+    padding-left: 0;
+    background-position: right center;
+}
+
+.DataCategoriesPage_Item span {
+    display: inline-block;
+    line-height: normal;
+    vertical-align: middle;
+}
+
+.DataCategoriesPage .GridCell_Measure {
+    width: 100% !important;
+}
+
+.DataCategoriesPage_Item.DataBrowser_Clickable:hover {
+    background-image: url(./images/dataCollections/default_over.png);
+}
+
+.DataCategoriesPage_Item_age {
+    background-image: url(./images/dataCollections/age_normal.png);
+}
+
+.DataCategoriesPage_Item_age.DataBrowser_Clickable:hover {
+    background-image: url(./images/dataCollections/age_over.png);
+}
+
+.DataCategoriesPage_Item_at_risk {
+    background-image: url(./images/dataCollections/populationsAtRisk_normal.png);
+}
+
+.DataCategoriesPage_Item_at_risk.DataBrowser_Clickable:hover {
+    background-image: url(./images/dataCollections/populationsAtRisk_over.png);
+}
+
+.DataCategoriesPage_Item_behaviors {
+    background-image: url(./images/dataCollections/Behavior_normal.png);
+}
+
+.DataCategoriesPage_Item_behaviors.DataBrowser_Clickable:hover {
+    background-image: url(./images/dataCollections/Behavior_over.png);
+}
+
+
+.DataCategoriesPage_Item_business {
+    background-image: url(./images/dataCollections/Business_normal.png);
+}
+
+.DataCategoriesPage_Item_business.DataBrowser_Clickable:hover {
+    background-image: url(./images/dataCollections/Business_over.png);
+}
+
+.DataCategoriesPage_Item_education {
+    background-image: url(./images/dataCollections/education_normal.png);
+}
+
+.DataCategoriesPage_Item_education.DataBrowser_Clickable:hover {
+    background-image: url(./images/dataCollections/education_over.png);
+}
+
+.DataCategoriesPage_Item_households {
+    background-image: url(./images/dataCollections/households_normal.png);
+}
+
+.DataCategoriesPage_Item_households.DataBrowser_Clickable:hover {
+    background-image: url(./images/dataCollections/households_over.png);
+}
+
+.DataCategoriesPage_Item_housing {
+    background-image: url(./images/dataCollections/housing_normal.png);
+}
+
+.DataCategoriesPage_Item_housing.DataBrowser_Clickable:hover {
+    background-image: url(./images/dataCollections/housing_over.png);
+}
+
+.DataCategoriesPage_Item_income {
+    background-image: url(./images/dataCollections/Wealth_normal.png);
+}
+
+.DataCategoriesPage_Item_income.DataBrowser_Clickable:hover  {
+    background-image: url(./images/dataCollections/Wealth_over.png);
+}
+
+.DataCategoriesPage_Item_jobs {
+    background-image: url(./images/dataCollections/jobs_normal.png);
+}
+
+.DataCategoriesPage_Item_jobs.DataBrowser_Clickable:hover  {
+    background-image: url(./images/dataCollections/jobs_over.png);
+}
+
+.DataCategoriesPage_Item_keyfacts {
+    background-image: url(./images/dataCollections/keyFacts_normal.png);
+}
+
+.DataCategoriesPage_Item_keyfacts.DataBrowser_Clickable:hover  {
+    background-image: url(./images/dataCollections/keyFacts_over.png);
+}
+
+.DataCategoriesPage_Item_maritalstatus {
+    background-image: url(./images/dataCollections/maritalStatus_normal.png);
+}
+
+.DataCategoriesPage_Item_maritalstatus.DataBrowser_Clickable:hover  {
+    background-image: url(./images/dataCollections/maritalStatus_over.png);
+}
+
+.DataCategoriesPage_Item_policy {
+    background-image: url(./images/dataCollections/Policy_normal.png);
+}
+
+.DataCategoriesPage_Item_policy.DataBrowser_Clickable:hover {
+    background-image: url(./images/dataCollections/Policy_over.png);
+}
+
+.DataCategoriesPage_Item_poverty {
+    background-image: url(./images/dataCollections/Poverty_normal.png);
+}
+
+.DataCategoriesPage_Item_poverty.DataBrowser_Clickable:hover {
+    background-image: url(./images/dataCollections/Poverty_over.png);
+}
+
+.DataCategoriesPage_Item_population {
+    background-image: url(./images/dataCollections/KeyDemographics_normal.png);
+}
+
+.DataCategoriesPage_Item_population.DataBrowser_Clickable:hover {
+    background-image: url(./images/dataCollections/KeyDemographics_over.png);
+}
+
+.DataCategoriesPage_Item_race {
+    background-image: url(./images/dataCollections/race_normal.png);
+}
+
+.DataCategoriesPage_Item_race.DataBrowser_Clickable:hover {
+    background-image: url(./images/dataCollections/race_over.png);
+}
+    
+.DataCategoriesPage_Item_supply_and_demand{
+    background-image: url(./images/dataCollections/supplyanddemand_normal.png);
+}
+
+.DataCategoriesPage_Item_supply_and_demand.DataBrowser_Clickable:hover {
+    background-image: url(./images/dataCollections/supplyanddemand_over.png);
+}
+    
+.DataCategoriesPage_Item_spending {
+    background-image: url(./images/dataCollections/spending_normal.png);
+}
+
+.DataCategoriesPage_Item_spending.DataBrowser_Clickable:hover {
+    background-image: url(./images/dataCollections/spending_over.png);
+}
+
+.DataCategoriesPage_Item_tapestry {
+    background-image: url(./images/dataCollections/tapestry_normal.png);
+}
+
+.DataCategoriesPage_Item_tapestry.DataBrowser_Clickable:hover {
+    background-image: url(./images/dataCollections/Tapestry_over.png);
+}
+
+.DataCategoriesPage_Bullets {
+    height: 45px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: center;
+    color:#d1d1d1;
+}
+
+.DataCategoriesPage_Bullet {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0 3px;
+    cursor: pointer;
+}
+
+.DataCategoriesPage_BulletCurrent {
+    color: #898989;
+}
+
+.DataCategoriesPage_SlideAnim {
+    position: absolute;
+    white-space: nowrap;
+    width: 100%;
+}
+
+    .DataCategoriesPage_SlideAnim > div {
+        display: inline-block;
+        width: 100%;
+        white-space: normal;
+        vertical-align: top;
+    }
+
+.DataCategoriesPage_SlideForward {
+    animation-name: MoveLeft;
+    -webkit-animation-name: MoveLeft;
+}
+
+.DataCategoriesPage_SlideBack {
+    animation-name: MoveRight;
+    -webkit-animation-name: MoveRight;
+}
+
+.DataCategoriesPage_FadeAnim {
+    position: absolute;
+    width: 100%;
+    top: 0;
+}
+
+@keyframes MoveLeft {
+    from {
+        margin-left: 0;
+    }
+
+    to {
+        margin-left: -100%;
+    }
+}
+
+@-webkit-keyframes MoveLeft {
+    from {
+        margin-left: 0;
+    }
+
+    to {
+        margin-left: -100%;
+    }
+}
+
+@keyframes MoveRight {
+    from {
+        margin-left: -100%;
+    }
+
+    to {
+        margin-left: 0;
+    }
+}
+
+@-webkit-keyframes MoveRight {
+    from {
+        margin-left: -100%;
+    }
+
+    to {
+        margin-left: 0;
+    }
+}

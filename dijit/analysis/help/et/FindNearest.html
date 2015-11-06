@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Leia lähim</h2><p/>
+        <h2><img src="../images/GUID-150C2484-7459-405A-8835-B4E72CD49738-web.png" alt="Leia l&auml;him"></h2>
+        <hr/>
+    <p>See t&ouml;&ouml;riist leiab l&auml;himad objektid ning raporteerib ja reastab vahemaad l&auml;hedalasuvate objektideni,L&auml;hima leidmisel v&otilde;ib t&ouml;&ouml;riist m&otilde;&otilde;tmisel kasutada kas sirgjoonelist lineaarset vahemaad v&otilde;i valitud liikumisviisi. Otsitavate l&auml;himate objektide arvu v&otilde;i soovitud otsinguulatust saate vajadusel piirata. Selle t&ouml;&ouml;riistaga saadud tulemused aitavad Teil leida vastuseid muuhulgas j&auml;rgmistele k&uuml;simustele:
+        <ul>
+            <li>Milline park asub mulle k&otilde;ige l&auml;hemal?
+            </li>
+            <li>Millisesse haiglasse on v&otilde;imalik j&otilde;uda l&uuml;hima s&otilde;iduajaga?Kui kaua kestab s&otilde;it algusega kell 5:30 teisip&auml;eva &otilde;htusel tipptunnil?
+            </li>
+            <li>Milline on kahe linna vahemaa piki maanteed?
+            </li>
+            <li>Millised neist patsientidest elavad neist keemiatehastest kolme kilomeetri raadiuses?
+            </li>
+        </ul>
+        
+    </p>
+    <p>L&auml;hima leidmise funktsioon tagastab kihi, mis sisaldab l&auml;himaid objekte ja joonekihi, mis seostab alguspunktid neile l&auml;himate asukohtadega. Joonekiht sisaldab teavet alguspunkti ja l&auml;himate asukohtade ning nendevaheliste vahemaade kohta.
+    </p>
+    <p>Kui ruut  <b>Kasuta praegust kaardi ulatust</b> on m&auml;rgitud, kaalutakse v&otilde;imalike alguspunktide ja potentsiaalsete l&auml;himate objektidena &uuml;ksnes neid objekte, mis on kaardil n&auml;ha.  Kui see ruut pole m&auml;rgitud, kasutatakse k&otilde;iki sisendkihis olevaid objekte ka siis, kui need pole praegu kaardil n&auml;ha.  
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="analysisLayer">
+        <div><h2>Vali punktikiht, kust lähimaid objekte otsitakse</h2></div>
+        <hr/>
+        <div>
+            <p>L&auml;hima asukoha leidmise funktsioon m&otilde;&otilde;dab siin m&auml;&auml;ratud kihi punktide (alguspunktide) vahemaa j&auml;rgmises parameetris m&auml;&auml;ratud punktideni.  Kaasata saab kuni 1000 asukohta kihi kohta.
+
+            </p>
+        </div>
+    </div>
+    <div id="NearbyLocationsLayer">
+        <div><h2>Leia lähimad asukohad</h2></div>
+        <hr/>
+        <div>
+            <p>L&auml;hima asukoha leidmise funktsioon m&otilde;&otilde;dab esimeses kihis asuvate asukohtade vahemaa selle kihi asukohtadeni. Kaasata saab kuni 1000 asukohta kihi kohta.
+            </p>
+            <p>Lisaks kaardil asuvale kihile saate valida variandi  <b>Vali elukeskkonna atlase anal&uuml;&uuml;sikiht</b>, mille leiate ripploendi allosast. Nii avaneb galerii, mis sisaldab mitmete anal&uuml;&uuml;side jaoks tarvilikku kihtide kollektsiooni. 
+            </p>
+        </div>
+    </div>
+    <div id="MeasurementMethod">
+        <div><h2>Mõõda</h2></div>
+        <hr/>
+        <div>
+            <p>Saate valida, kas soovite l&auml;himad asukohad leida sirgjoonelise vahemaa v&otilde;i valitud liikumisviisi p&otilde;hjal. Liikumisviisid on lubatud &uuml;ksnes juhul, kui teie sisendkiht sisaldab punkte. Lubatud reisiviisid m&auml;&auml;rab Teie asutuse administraator.  Liikumisviisi kasutamisel m&otilde;&otilde;detakse vahemaad piki maanteid v&otilde;i jalgteid ning arvesse v&otilde;etakse kehtivad reeglid (nt &uuml;hesuunalised teed, keelatud p&ouml;&ouml;rdeid jne).
+            </p>
+            <p>Kui m&otilde;&otilde;date vahemaad joonte v&otilde;i alade vahel, leitakse vahemaa l&auml;himast punktist v&otilde;i l&auml;hima punktini piki joont v&otilde;i ala piiri. 
+            </p> 
+            <p>Valiku  <b>S&otilde;iduaeg</b> korral saate s&otilde;iduaja m&otilde;&otilde;tmiseks mitme variandi vahel valida.
+                <ul>
+                    <li>
+                        <p>T&uuml;hjendage ruut  <b>Kasuta liiklusinfot</b>, kui soovite l&auml;himate objektide leidmisel v&otilde;tta aluseks staatilise s&otilde;idukiiruse (nt kiirusepiirangutest l&auml;htudes), mitte muutuvatest liiklusoludest tingitud muutuvad kiirused.
+                        </p>
+                        <p>Selle variandi v&otilde;iksite valida juhul, kui soovite teada saada &uuml;ldiselt l&auml;himat objekti, mitte tingimata seda, mis oleks teile k&otilde;ige l&auml;hemal konkreetse p&auml;eva ja kellaaja liiklusolusid arvestades.
+                        </p>
+                    </li>
+                    <li>
+                        <p>M&auml;rkige ruut  <b>Kasuta liiklusinfot</b>, kui soovite l&auml;himate objektide leidmisel l&auml;htuda kindlast alguskellaajast ja muutuvatest liiklusoludest. Kui m&auml;rgite ka ruudu <b>Reaalajas liiklus</b>, m&auml;&auml;ratakse alguspunktist v&auml;ljumise ajaks praegune kellaaeg ning l&auml;himate objektide tuvastamisel v&otilde;etakse arvesse andurite ja voogude kaudu hangitavat teavet praeguse ja prognoositud liikluskiiruse kohta. Prognoositud liikluskiirused arvutatakse l&auml;htuvalt liikluse kiirusest reaalajas, varem m&otilde;&otilde;detud kiirustest ja muudest tingimustest (nt ilm). Liikluskiirust saab prognoosida kuni 12 tundi edasi. Seega saate liugurit liigutades m&auml;&auml;rata v&auml;ljumisaja, mis on praegusest kuni 12 tundi edasi.
+                        </p>
+                        <p>Reaalajas liikluse seadete abil saate v&auml;lja selgitada, milliste objektideni j&otilde;uaksite k&otilde;ige l&uuml;hema ajaga praegu v&auml;ljudes, s&otilde;itu n&auml;iteks tunni aja p&auml;rast alustades jne.
+                        </p>
+                    </li>
+                    <li>
+                        <p>Kui m&auml;rgite ruudu  <b>Kasuta liiklusinfot</b> ja valite seade <b>Liiklusinfo p&otilde;hineb tavap&auml;rastel tingimustel</b> koos kindla p&auml;eva ja kellaajaga, leiab t&ouml;&ouml;riist l&auml;himad objektid, v&otilde;ttes aluseks varasemalt viieminutise intervalliga m&otilde;&otilde;detud keskmised kiirused tavap&auml;rasel n&auml;dalal. Tulemused sisaldavad liiklusinfot, kuid ei sisalda praeguste liiklusolude ja s&uuml;ndmuste m&otilde;ju, mis v&otilde;ib s&otilde;ltuvalt p&auml;evast oluliselt varieeruda.
+                        </p>
+                        <p>Neid ajaloolisi liikluse andmeid saate kasutada n&auml;iteks selleks, et k&uuml;sida: &quot;Milliste objektideni j&otilde;uab k&otilde;ige l&uuml;hema ajaga, kui v&auml;ljuda 11:30 kolmap&auml;eval?&quot; 
+                        </p>
+                        <p>Teie m&auml;&auml;ratud kellaaeg viitab konkreetsele ajav&ouml;&ouml;ndile, kus teie algusobjektid asuvad. Kui m&auml;&auml;rate kellaaja 8:00 (hommikul) ning teie kaks alguspunkti asuvad erinevates ajav&ouml;&ouml;ndites, siis arvestatakse vastavalt teekonna genereerimisel m&otilde;lemas erinevas ajav&ouml;&ouml;ndis v&auml;ljumiskellaaega 8:00.
+                        </p>
+                    </li>
+                </ul>
+                V&otilde;tke arvesse, et s&otilde;iduki liikumisel l&auml;htepunktist edasi aeg kulub ja liiklusolud muutuvad. See t&ouml;&ouml;riist arvestab nende variatsioonidega, kui m&auml;rgite ruudu <b>Kasuta liiklusinfot</b>, kuid k&otilde;ik piirkonnad ei toeta liiklusteabe kasutamist. Kl&otilde;psake linki <b>Vaata k&auml;ttesaadavust</b>, et teada saada, kas antud funktsioon on teie piirkonnas k&auml;ttesaadav. 
+            </p>
+        </div>
+    </div>
+    <div id="Cutoffs">
+        <div><h2>Iga sisendkihi asukoha jaoks</h2></div>
+        <hr/>
+        <div>
+            <p>L&auml;himate asukohtade otsingu piiramiseks on Teil kaks varianti. Esimene variant on piirata &uuml;he alguspunkti kohta leitavate l&auml;himate asukohtade arvu. N&auml;iteks saate otsida kas &uuml;hte l&auml;himat parki, kahte k&otilde;ige l&auml;hemal asuvat parki jne. Teine v&otilde;imalus on m&auml;&auml;rata maksimaalne otsinguulatus v&otilde;i s&otilde;iduaeg.
+            </p>
+            <p>J&auml;ttes need valikud v&auml;lja on maksimaalne leitavate l&auml;himate asukohtade arv 100 (t&ouml;&ouml;vahendi limiit) ning maksimaalne otsingu ulatus on piiramatu.
+            </p>
+            <p>T&ouml;&ouml;tlemiseks kuluv aeg s&otilde;ltub alguspunktide ja l&auml;himate asukohtade arvust ning maksimaalsest otsinguulatusest. Kui asukohti on rohkem ja otsinguulatus suurem, kulub anal&uuml;&uuml;simiseks rohkem aega.
+            </p>
+            <p>Pane t&auml;hele, et kui otsingu kaugusele on seatud limiit, siis on v&otilde;imalik, et leia l&auml;him t&ouml;&ouml;riist ei leia asukohti antud vahemikust v&otilde;i leitakse v&auml;hem asukohti kui on teie t&auml;psustatud maksimum arv.
+            </p>
+        </div>
+    </div>
+    <div id="OutputNearestLocationsLayer">
+        <div><h2>Tulemkihi nimi</h2></div>
+        <hr/>
+        <div>
+            <p>See tulemuste kiht koosneb kahest kihist - l&auml;himate asukohtadega kihist ja kihist, milles sisalduvad jooned, mis &uuml;hendavad sisendpunktid l&auml;himate asukohtadega.
+            </p>
+            <p>Kuna jooned n&auml;itavad m&otilde;&otilde;detud teed, j&auml;rgivad need vahemaa lineaarse m&otilde;&otilde;tmise korral sirgeid teel&otilde;ike, s&otilde;iduvahemaa kasutamisel l&uuml;himat teekonda piki maanteid v&otilde;i s&otilde;iduaja kasutamisel k&otilde;ige kiiremat teed piki maanteid. Valikulise joontekihi osaks olev tabel sisaldab j&auml;rgmist teavet: joontena esitatud vahemaad v&otilde;i s&otilde;iduaja m&otilde;&otilde;tmised; &uuml;hendatud algus- ja l&otilde;ppasukohti tuvastav teave; l&auml;heduse &quot;pingerida&quot; alguspunktide l&otilde;ikes, mis v&otilde;imaldab n&auml;ha asukohti nende kauguste j&auml;rgi jne. Kui m&otilde;&otilde;ta s&otilde;iduaega liikluse alusel, sisalduvad tabelis ka lahkumise ja saabumise ajad.
+            </p>
+            <p>V&otilde;ite kasutada vaikenimesid, kuid soovi korral saate nende jaotises  <b>Minu sisu</b> loodavate ja kaardile lisatavate kihtide jaoks ka uued nimed m&auml;&auml;rata.  Vaikenimed p&otilde;hinevad sisendkihi nimel. Kui kiht on juba olemas, peate sisestama m&otilde;ne muu nime.
+            </p>
+            <p>Rippmen&uuml;&uuml;  <b>Salvesta tulemused</b> kaudu saate m&auml;&auml;rata jaotises <b>Minu sisu</b> selle kausta nime, kuhu tulemused salvestatakse.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

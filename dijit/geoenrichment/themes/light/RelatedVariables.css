@@ -1,0 +1,24 @@
+.light .RelatedVariables_ColumnHeader
+{
+	color: #000000;
+}
+
+.light .RelatedVariables_DifferenceColumn_Positive
+{
+	color: #339900;	
+}
+
+.light .RelatedVariables_DifferenceColumn_Negative
+{
+	color: #2a71d8;	
+}
+
+.light .RelatedVariables_PositiveBar
+{
+	background-color: #339900;
+}
+
+.light .RelatedVariables_NegativeBar
+{
+	background-color: #2a71d8;
+}

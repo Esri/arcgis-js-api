@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Crea aree tempo di guida</h2><p/>
+        <h2><img src="../images/GUID-6F629A09-768D-4C04-88A4-AB941811ADE9-web.png" alt="Crea aree tempo di guida"></h2>
+        <hr/>
+    <p>La funzione Crea aree tempo di guida consente di creare aree raggiungibili entro un tempo o una distanza di guida o una distanza a piedi specifici. La misurazione viene effettuata da uno o pi&ugrave; punti (fino a 1.000), lungo le strade o i passaggi pedonali, per creare un layer che possa aiutare l'utente a rispondere a domande quali:
+        <ul>
+            <li>Dove &egrave; possibile andare da qui guidando per 30 minuti?
+            </li>
+            <li>Dove &egrave; possibile andare da qui guidando per 30 minuti alle 17.30 in ora di punta?
+            </li>
+            <li>Che cosa si trova a una distanza di 2 chilometri a piedi da questo albergo?
+            </li>
+            <li>Quali zone della citt&agrave; sono raggiungibili dai pompieri entro cinque minuti? 
+            </li>
+            <li>Quale sarebbe l'impatto di una nuova caserma dei vigili del fuoco in termini di copertura anti-incendio?
+            </li>
+            <li>Quali aree commerciali riguardano una determinata attivit&agrave;?
+            </li>
+        </ul>
+        
+    </p>
+    <p>&Egrave; possibile rispondere a queste domande solo mediante la visualizzazione delle aree di output. In alternativa, &egrave; possibile effettuare un'ulteriore analisi spaziale utilizzando le aree di output. Ad esempio, l'esecuzione della funzione Aggrega punti utilizzando aree di tempo di guida con dati demografici pu&ograve; aiutare a determinare quale potenziale posizione di un negozio potrebbe probabilmente fornire la migliore clientela per il proprio tipo di attivit&agrave;. 
+    </p>
+    <p>
+        <table>
+        <tr><td colspan="3"><hr size="1" noshade="noshade"></td></tr>
+        <tr><td valign="baseline"><img src="../images/tip.png"></td><td valign="baseline"><h2>Tip:&ensp;</h2></td>
+        <td valign="baseline">
+            <p>Per creare aree mediante la misurazione della distanza in linea retta anzich&eacute; lungo le strade, utilizzare invece lo strumento Crea buffer.
+            </p>
+        </td></tr>
+        <tr><td colspan="3"><hr size="1" noshade="noshade"></td></tr>
+        </table>
+    </p>
+    <p>Se si seleziona  <b>Usa estensione mappa corrente</b>, vengono utilizzate solo le feature visibili all'interno dell'estensione mappa corrente per creare aree di tempo di guida o aree basate sulla distanza di guida. Se questa opzione &egrave; deselezionata, vengono utilizzate tutte le feature presenti nel layer di input, anche se esterne all'estensione mappa corrente.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Scegli il layer di punti per calcolare le aree del tempo di guida nei dintorni</h2></div>
+        <hr/>
+        <div>
+            <p>Le feature punto intorno alle quali verranno calcolate le aree. &Egrave; possibile scegliere come vengono calcolate le aree in base alla modalit&agrave; di viaggio (in auto, con camion o a piedi) e al tipo di misurazione (tempo o distanza).
+            </p>
+            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi dell'atlante attivo</b> in fondo all'elenco a discesa. Verr&agrave; aperta una galleria contenente una raccolta di layer utili per numerose analisi. 
+            </p>
+        </div>
+    </div>
+    <div id="MeasurementMethod">
+        <div><h2>Misura</h2></div>
+        <hr/>
+        <div>
+            <p>Scegliere la modalit&agrave; di viaggio (in auto, con camion o a piedi) e il tipo di misurazione (tempo o distanza). Le modalit&agrave; di viaggio disponibili sono determinate dall'amministratore dell'organizzazione.   Dopo aver selezionato modalit&agrave; e tipo di misurazione, immettere una durata o una distanza pari a un massimo di  5 ore (300 minuti) o  300 miglia (482.80 chilometri). 
+            </p>
+            <p>Se si seleziona  <b>Tempo di percorrenza</b>, vengono visualizzate le opzioni di misurazione del tempo di guida.
+                <ul>
+                    <li>
+                        <p>Deselezionare  <b>Usa traffico</b> per creare aree di tempo di guida basate su velocit&agrave; fisse. Si tratta dell'opzione da scegliere se si desidera ottenere un'area di tempo di guida generica e non una calcolata utilizzando condizioni di traffico variabili per un'ora di partenza specifica.
+                        </p>
+                    </li>
+                    <li>
+                        <p>Selezionare  <b>Usa traffico</b> per creare aree di tempo di guida basate su un orario di partenza specifico e su condizioni di traffico variabili. Inoltre, selezionando l'opzione <b>Traffico in tempo reale</b>, l'orario di partenza dai punti di input viene impostato sull'ora corrente e le velocit&agrave; di traffico corrente e previsto in futuro fanno riferimento a sensori e feed per creare le aree di tempo di guida. Le velocit&agrave; di traffico previsto vengono calcolate facendo riferimento a velocit&agrave; di traffico in tempo reale, velocit&agrave; storiche ed eventi correnti (ad esempio condizioni meteorologiche). Le velocit&agrave; di traffico sono previste con 12 ore di anticipo, quindi &egrave; possibile spostare il cursore per impostare l'orario di partenza fino a 12 ore in avanti.
+                        </p>
+                        <p>Utilizzare queste impostazioni del traffico in tempo reale per scoprire quali aree sono raggiungibili partendo adesso, tra un'ora da adesso, ecc.
+                        </p>
+                    </li>
+                    <li>
+                        <p>Se si seleziona  <b>Usa traffico</b> e quindi <b>Traffico basato su condizioni tipiche per</b> giorno e ora, &egrave; possibile creare aree di tempo di guida basate su medie storiche delle velocit&agrave; per ogni intervallo di cinque minuti in una settimana standard. Nei risultati &egrave; incluso il traffico, ma non &egrave; inclusa l'influenza delle condizioni di traffico e degli eventi correnti che possono variare in modo significativo rispetto alla norma.
+                        </p>
+                        <p>&Egrave; possibile utilizzare queste impostazioni del traffico storico per rispondere ad esempio alla domanda &quot;Quali aree sono in genere raggiungibili se si parte alle 11.30 di mercoled&igrave;?&quot;. 
+                        </p>
+                        <p>L'orario impostato fa riferimento al fuso orario in cui si trovano i punti di input. Pertanto, se si imposta l'orario alle 8:00 e si dispone di due punti, uno nella citt&agrave; di New York e l'altro a Los Angeles, le aree di tempo di guida verranno generate per le 8:00. nel fuso orario orientale e le 8:00nel fuso orario del Pacifico.
+                        </p>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Si noti che quando una vettura si allontana da un punto, il tempo passa e le condizioni di traffico cambiano. Lo strumento Aree tempo di guida tiene conto di queste variazioni quando si sceglie  <b>Tempo di guida</b> e si seleziona <b>Usa traffico</b>; tuttavia, tale funzione non &egrave; supportata per tutte le regioni. Fare clic sul collegamento <b>Visualizza disponibilit&agrave;</b> sullo strumento per scoprire se la funzione &egrave; supportata nella propria area di studio.
+            </p>
+            <p>Con  <b>Tempo a piedi</b> e <b>Distanza a piedi</b> viene utilizzata una velocit&agrave; fissa pari a 5 chilometri orari (3.1 miglia all'ora) e vengono seguiti percorsi pedonali oltre alle normali strade indicate, ignorando invece le regole previste per le automobili, ad esempio le strade a senso unico. </p>
+            <p>Con  <b>Tempo in camion</b> e <b>Distanza in camion</b> vengono utilizzate velocit&agrave; fisse e regole applicabili ai camion.
+            </p> 
+        </div>
+    </div>
+    <div id="DissolveType">
+        <div><h2>Aree da punti diversi</h2></div>
+        <hr/>
+        <div>
+            <p>Scegliere come gestire aree condivise quando vengono raggiunte reciprocamente da punti di input differenti. &Egrave; possibile impostare le opzioni seguenti:
+                <ul>
+                    <li> <b>Sovrapponi</b>: aree da punti di input differenti possono includere la stessa strada. Questa funzione &egrave; utile quando si desidera conoscere tutti i punti di input da cui &egrave; possibile raggiungere una posizione specifica entro un dato tempo o distanza.
+                    </li>
+                    <li> <b>Dissolvi</b>: tutte le aree vengono incorporate in un'unica area e una posizione specifica non pu&ograve; essere inclusa in pi&ugrave; aree. Questa funzione &egrave; utile quando si desidera solo sapere se un'area &egrave; raggiungibile entro un dato tempo o una data distanza e non si necessita sapere da quali punti di input specifici &egrave; possibile raggiungere la posizione.
+                    </li>
+                    <li> <b>Dividi</b>: le aree da posizioni di input differenti, che verrebbero sovrapposte una all'altra, vengono divise a met&agrave; in modo da risultare confinanti. Questa funzione &egrave; utile quando si desidera visualizzare le aree raggiungibili entro un dato tempo o una data distanza dai punti di input e, allo stesso tempo, per determinare quale punto di input &egrave; pi&ugrave; vicino a un'area specifica.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="OutputLayer">
+        <div><h2>Nome layer risultati</h2></div>
+        <hr/>
+        <div>
+            <p>Questo &egrave; il nome del layer che verr&agrave; creato in  <b>I miei contenuti</b> e aggiunto alla mappa.  Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, verr&agrave; chiesto di fornire un altro nome.
+            </p>
+            <p>Utilizzare la casella a discesa  <b>Salva risultato in</b> per specificare il nome di una cartella di <b>I miei contenuti</b> in cui salvare il risultato.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

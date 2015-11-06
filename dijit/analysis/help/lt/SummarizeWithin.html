@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Sumuoti viduje</h2><p/>
+        <h2><img src="../images/GUID-9B12DB3F-AA7B-41EB-87C6-D2DEC3D52DA9-web.png" alt="Sumuoti viduje"></h2>
+        <hr/>
+    <p>Įrankis randa elementus (ar jų dalis), esančius pirmojo įvesties sluoksnio plotų ribose.  Pavyzdžiui:
+        <ul>
+            <li>Suskaičiuoti kiekvienos žemėnaudos dalį procentais upės baseine. 
+            </li>
+            <li>Turint sklypų ir savivaldybių sluoksnius apskaičiuoti neužstatytų sklypų kiekvienos savivaldybės ribose skaičių.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Jei  <b>Naudoti esamą žemėlapio aprėptį</b> pažymėta, bus analizuojami tik į esamo žemėlapio aprėptį patenkantys įvesties ir sumuojamo sluoksnių elementai.  Jei nepažymėta, bus analizuojami visi abiejų sluoksnių (įvesties sluoksnio ir sumuojamo sluoksnio) elementai, net jei jie nepatenka į esamo žemėlapio aprėpties ribas.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="sumWithinLayer">
+        <div><h2>Pasirinkite plotų sluoksnį, kurio ribose sumuoti kitus elementus</h2></div>
+        <hr/>
+        <div>
+            <p>Plotų sluoksnis, kuris bus naudojamas elementams, kurie patenka į jo ribas, sumuoti.
+
+            </p>
+            <p>Pasirinkę sluoksnį žemėlapyje, galite pasirinkti  <b>Pasirinkite Gyvojo pasaulio atlaso analizės sluoksnį</b>, kurį rasite i&scaron;plečiamo sąra&scaron;o apačioje. &Scaron;i parinktis atidarys galeriją, kurioje yra kolekcija sluoksnių, naudingų daugeliui analizių. 
+            </p>
+        </div>
+    </div>
+    <div id="Summarize">
+        <div><h2>Pasirinkite sluoksnį sumavimui</h2></div>
+        <hr/>
+        <div>
+            <p>Bus sumuojami &scaron;io sluoksnio elementai, kurie patenka į auk&scaron;čiau nurodyto įvesties sluoksnio elementų ribas. 
+            </p>
+            <p>Pasirinkę sluoksnį žemėlapyje, galite pasirinkti  <b>Pasirinkite Gyvojo pasaulio atlaso analizės sluoksnį</b>, kurį rasite i&scaron;plečiamo sąra&scaron;o apačioje. &Scaron;i parinktis atidarys galeriją, kurioje yra kolekcija sluoksnių, naudingų daugeliui analizių. 
+            </p>
+        </div>
+    </div>
+    <div id="StatisticsPoint">
+        <div><h2>Pridėti statistiką iš sumavimo sluoksnio</h2></div>
+        <hr/>
+        <div>
+            <p>Taip pat galite apskaičiuoti ta&scaron;kų, patenkančių į nurodytas ribas, skaitinių atributų reik&scaron;mių statistinius rodiklius. 
+            </p>
+            <p>Pažymėjus  <b>Ta&scaron;kų kiekis</b> apskaičiuos bendrą kiekviename plote esančių ta&scaron;kų skaičių. Galite apskaičiuoti ta&scaron;kų, patenkančių į nurodytas ribas, skaitinių atributų reik&scaron;mių statistinius rodiklius.
+            </p>
+            <ul>
+                <li> <b>Suma</b> &ndash; nurodyto lauko reik&scaron;mių suma.
+                </li>
+                <li> <b>Vidurkis</b> &ndash; apskaičiuoja nurodyto lauko reik&scaron;mių vidurkį.
+                </li>
+                <li> <b>Minimumas</b> &ndash; mažiausia nurodyto lauko reik&scaron;mė.
+                </li>
+                <li> <b>Maksimumas</b> &ndash; didžiausia nurodyto lauko reik&scaron;mė.
+                </li>
+                <li> <b>Standartinis nuokrypis</b> &ndash; nurodyto lauko standartinis arba vidutinis kvadratinis nuokrypis.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="StatisticsLine">
+        <div><h2>Pridėti statistinį rodiklį iš</h2></div>
+        <hr/>
+        <div>
+            <p>Taip pat galite apskaičiuoti &scaron;alia esančių linijų skaitinių atributų statistinius rodiklius. 
+            </p>
+            <p>Pažymėjus  <b>Bendras ilgis</b> apskaičiuos bendrą kiekviename plote esančių linijų ilgį. Galite apskaičiuoti linijų, patenkančių į nurodytas ribas, skaitinių atributų reik&scaron;mių statistinius rodiklius.
+            </p>
+            <ul>
+                <li> <b>Suma</b> &ndash; nurodyto lauko reik&scaron;mių suma.
+                </li>
+                <li> <b>Vidurkis</b> &ndash; apskaičiuoja nurodyto lauko reik&scaron;mių vidurkį.
+                </li>
+                <li> <b>Minimumas</b> &ndash; mažiausia nurodyto lauko reik&scaron;mė.
+                </li>
+                <li> <b>Maksimumas</b> &ndash; didžiausia nurodyto lauko reik&scaron;mė.&lrm;
+                </li>
+                <li> <b>Standartinis nuokrypis</b> &ndash; nurodyto lauko standartinis arba vidutinis kvadratinis nuokrypis.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="StatisticsPolygon">
+        <div><h2>Pridėti statistinį rodiklį iš</h2></div>
+        <hr/>
+        <div>
+            <p>Taip pat galite apskaičiuoti &scaron;alia esančių plotų skaitinių atributų statistinius rodiklius. 
+            </p>
+            <p>Pažymėjus  <b>Sumuoti plotą naudojant</b>, apskaičiuos bendrą &scaron;alia esančių plotinių elementų, kurie yra pirmojo įvesties sluoksnio ribose, plotą.  Galite apskaičiuoti plotų, patenkančių į nurodytas ribas, skaitinių atributų reik&scaron;mių statistinius rodiklius.
+            </p>
+            <ul>
+                <li> <b>Suma</b> &ndash; nurodyto lauko reik&scaron;mių suma.
+                </li>
+                <li> <b>Vidurkis</b> &ndash; apskaičiuoja nurodyto lauko reik&scaron;mių vidurkį.
+                </li>
+                <li> <b>Minimumas</b> &ndash; mažiausia nurodyto lauko reik&scaron;mė.
+                </li>
+                <li> <b>Maksimumas</b> &ndash; didžiausia nurodyto lauko reik&scaron;mė.
+                </li>
+                <li> <b>Standartinis nuokrypis</b> &ndash; nurodyto lauko standartinis arba vidutinis kvadratinis nuokrypis.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="GroupBy">
+        <div><h2>Pasirinkite grupavimo lauką</h2></div>
+        <hr/>
+        <div>
+            <p>Tai  <b>Sumuojamų</b> elementų atributas, leidžiantis suskirstyti elementus pagal skirtingas atributo reik&scaron;mes. Tarkime, kad pirmajame įvesties sluoksnyje yra miesto ribos, o sumuojami elementai yra sklypai.  Vienas i&scaron; sklypo atributų yra <i>Būsena</i>, kuri turi dvi reik&scaron;mes: LAISVAS ir UŽIMTAS. Bendro laisvų ir užimtų sklypų ploto miestų ribose apskaičiavimui naudokite atributą <i>Būsena</i> kaip grupavimo atributą.
+ Kiekvienos grupės statistika ir elementų kiekis kiekvieno ploto ribose bus rodomi rezultatų sluoksnio i&scaron;kylančiame lange.
+            </p>
+        </div>
+    </div>
+    <div id="MinorityMajority">
+        <div><h2>Pridėti mažumą, daugumą</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;is žymės langelis įgalinamas, kai pasirenkate lauką, pagal kurį grupuosite. Jei norite sužinoti, kurios grupės atributų reik&scaron;mės, patenkančios į kiekvienas ribas, yra įvesties sluoksnio mažuma (mažiausiai dominuojančios) arba dauguma (labiausiai dominuojančios), pasirinkite  <b>Pridėti mažumą, daugumą</b>.   Kai pasirenkate <b>Pridėti mažumą, daugumą</b>, į rezultatų sluoksnį įtraukiami du nauji laukai. Jei pasirinksite ir <b>Pridėti procentus</b>, į rezultatų sluoksnį bus įtraukti du papildomi laukai, kuriuose bus nurodytos kiekvienos grupės mažumos ir daugumos atributų reik&scaron;mių procentai.
+            </p>
+            <ul>
+                <li>Jei sumuojate ta&scaron;kus, mažumos ir daugumos reik&scaron;mės apskaičiuojamos remiantis ta&scaron;kų, esančių kiekviename įvesties plotų sluoksnio ribojamame plote, skaičiumi.  
+                </li>
+                <li>Jei sumuojate linijas, mažumos ir daugumos reik&scaron;mės apskaičiuojamos remiantis linijų, esančių kiekviename įvesties plotų sluoksnio ribojamame plote, ilgiu.  
+                </li>
+                <li>Jei sumuojate plotus, mažumos ir daugumos reik&scaron;mės apskaičiuojamos remiantis plotais, esančiais kiekviename įvesties plotų sluoksnio ribojamame plote.  
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="PercentShape">
+        <div><h2>Pridėti procentus</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;is žymės langelis aktyvus, pasirenkus lauką, pagal kurį grupuosite. Pasirinkite  <b>Pridėti procentus</b>, jei norite sužinoti kiekvienos grupės kiekvienos atributo reik&scaron;mės procentą. Į rezultatų lentelę įtraukiamas naujas laukas, kuriame nurodytas kiekvienos grupės kiekvienos atributo reik&scaron;mės procentas. Jei pažymėta ir <b>Pridėti mažumą, daugumą</b>, į rezultatų sluoksnį bus įtraukti du papildomi laukai, kuriuose bus nurodytos kiekvienos grupės mažumos ir daugumos atributų reik&scaron;mių procentai.
+            </p>
+        </div>
+    </div>
+    <div id="ResultLayerName">
+        <div><h2>Rezultatų sluoksnio pavadinimas</h2></div>
+        <hr/>
+        <div>
+            <p>Tai sluoksnio, kuris bus sukurtas ir patalpintas  <b>Turinyje</b> ir pridėtas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas pagal įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau egzistuoja, jūsų papra&scaron;ys pateikti kitą pavadinimą.
+            </p>
+            <p>Pasirinkę  <b>Rezultatą įra&scaron;yti į</b>, galite nurodyti <b>Turinyje</b> esančio aplanko pavadinimą.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

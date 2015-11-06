@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Phân rã các Ranh giới</h2><p/>
+        <h2><img src="../images/GUID-7B5F69B0-3625-404F-8B52-2B562766C0BB-web.png" alt="Ph&acirc;n r&atilde; c&aacute;c Ranh giới"></h2>
+        <hr/>
+    <p>C&aacute;c v&ugrave;ng chồng ch&eacute;o hoặc chia sẻ một ranh giới chung được trộn v&agrave;o nhau để tạo th&agrave;nh một v&ugrave;ng duy nhất.    
+    </p>
+    <p>Bạn c&oacute; thể điều khiển c&aacute;c ranh giới được chọn bằng c&aacute;ch chỉ định một trường. V&iacute; dụ, nếu bạn c&oacute; một lớp quận, v&agrave; mỗi quận c&oacute; một thuộc t&iacute;nh  <i>State_Name</i>, bạn c&oacute; thể x&oacute;a bỏ c&aacute;c ranh giới bằng thuộc t&iacute;nh <i>State_Name</i>.  C&aacute;c quận liền kề sẽ được gộp v&agrave;o nhau nếu ch&uacute;ng c&oacute; gi&aacute; trị <i>State_Name</i> giống nhau. Kết quả cuối c&ugrave;ng l&agrave; một lớp ranh giới tiểu bang.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Chọn lớp khu vực mà các ranh giới sẽ bị phân rã.</h2></div>
+        <hr/>
+        <div>
+            <p>Lớp chứa đối tượng khu vực sẽ bị ph&acirc;n r&atilde;.
+
+            </p>
+            <p>B&ecirc;n cạnh việc chọn một lớp từ bản đồ của bạn, bạn cần chọn  <b>Chọn Lớp Ph&acirc;n t&iacute;ch Atlas Sinh sống</b> nằm dưới c&ugrave;ng trong danh s&aacute;ch xổ xuống 
+Thao t&aacute;c n&agrave;y mở ra một b&ocirc;̣ sưu t&acirc;̣p c&oacute; chứa c&aacute;c lớp hữu &iacute;ch cho nhiều sự ph&acirc;n t&iacute;ch kh&aacute;c nhau. 
+            </p>
+        </div>
+    </div>
+    <div id="DissolveFields">
+        <div><h2>Chọn phương pháp xóa bỏ</h2></div>
+        <hr/>
+        <div>
+            <p>Bạn c&oacute; thể chọn một trong hai phương ph&aacute;p để gộp c&aacute;c đối tượng v&ugrave;ng:
+                <ul>
+                    <li> <b>C&aacute;c khu vực chồng lắp l&ecirc;n nhau hoặc liền kề</b>&mdash;Hai hoặc nhiều v&ugrave;ng c&oacute; ranh giới chồng lắp nhau sẽ được gộp v&agrave;o th&agrave;nh một khu vực.
+Ngo&agrave;i ra, c&aacute;c khu vực liền kề (c&oacute; nghĩa l&agrave;, ch&uacute;ng c&oacute; c&ugrave;ng ranh giới chung) sẽ được gộp v&agrave;o th&agrave;nh một khu vực.
+                    </li>
+                    <li> <b>C&aacute;c khu vực c&oacute; gi&aacute; trị trường giống nhau</b>&mdash;C&aacute;c khu vực chồng lắp hoặc c&oacute; c&ugrave;ng ranh giới chung sẽ được gộp v&agrave;o th&agrave;nh một khu vực nếu ch&uacute;ng c&oacute; gi&aacute; trị trường giống nhau.
+                        <p>V&iacute; dụ, nếu bạn c&oacute; một lớp quận, v&agrave; mỗi quận c&oacute; một trường  <i>State_Name</i>, bạn c&oacute; thể x&oacute;a bỏ c&aacute;c ranh giới bằng trường <i>State_Name</i>. C&aacute;c quận liền kề sẽ được gộp v&agrave;o nhau nếu ch&uacute;ng c&oacute; gi&aacute; trị <i>State_Name</i> giống nhau. Kết quả cuối c&ugrave;ng l&agrave; một lớp ranh giới tiểu bang.
+                        </p>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Nếu chọn  <b>Sử dụng phạm vi bản đồ hiện tại</b>, th&igrave; chỉ c&aacute;c đối tượng nh&igrave;n thấy trong lớp đầu v&agrave;o b&ecirc;n trong phạm vi bản đồ hiện tại mới được ph&acirc;n r&atilde;. Nếu bỏ chọn, tất cả c&aacute;c đối tượng trong lớp đầu v&agrave;o sẽ được ph&acirc;n r&atilde;, ngay cả khi ch&uacute;ng nằm ngo&agrave;i phạm vi bản đồ hiện tại.
+            </p>
+        </div>
+    </div>
+    <div id="SummaryFields">
+        <div><h2>Thêm số liệu thống kê</h2></div>
+        <hr/>
+        <div>
+            <p>Khi c&aacute;c khu vực được trộn, bạn c&oacute; thể t&oacute;m tắt c&aacute;c thuộc t&iacute;nh. V&iacute; dụ, nếu bạn đang x&oacute;a bỏ ranh giới giữa c&aacute;c quận dựa tr&ecirc;n  <i>State_Name</i>, v&agrave; mỗi quận c&oacute; một trường <i>Population</i>, bạn c&oacute; thể t&iacute;nh to&aacute;n tổng số <i>Population</i> cho tiểu bang.
+            </p>
+            <p>C&aacute;c loại thống k&ecirc; c&oacute; sẵn:
+            </p>
+            <ul>
+                <li> <b>Tổng</b>&mdash;Th&ecirc;m gi&aacute; trị tổng đối với trường chỉ định.
+                    
+
+                </li>
+                <li> <b>Trung b&igrave;nh</b>&mdash;T&iacute;nh to&aacute;n trung b&igrave;nh đối với trường chỉ định
+                    
+
+                </li>
+                <li> <b>Tối thiểu</b>&mdash;T&igrave;m gi&aacute; trị nhỏ nhất cho tất cả c&aacute;c bản ghi của trường chỉ định
+                    
+
+                </li>
+                <li> <b>Tối đa</b>&mdash;T&igrave;m gi&aacute; trị lớn nhất cho tất cả c&aacute;c bản ghi của trường chỉ định
+                    
+
+                </li>
+                <li> <b>Độ lệch chuẩn</b>&mdash;T&igrave;m độ lệch chuẩn đối với c&aacute;c gi&aacute; trị trong trường chỉ định
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="OutputName">
+        <div><h2>Tên lớp kết quả</h2></div>
+        <hr/>
+        <div>
+            <p>Đ&acirc;y l&agrave; t&ecirc;n lớp sẽ được tạo trong mục  <b>Nội dung của T&ocirc;i</b> v&agrave; th&ecirc;m v&agrave;o bản đồ. T&ecirc;n mặc định dựa v&agrave;o t&ecirc;n c&ocirc;ng cụ v&agrave; t&ecirc;n lớp đầu v&agrave;o. Nếu lớp đ&atilde; tồn tại, bạn sẽ được y&ecirc;u cầu cung cấp t&ecirc;n mới.
+            </p>
+            <p>Sử dụng hộp xổ xuống  <b>Lưu kết quả trong</b>, bạn c&oacute; thể chỉ định t&ecirc;n thư mục trong mục <b>Nội dung của T&ocirc;i</b> nơi sẽ lưu trữ kết quả của bạn.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

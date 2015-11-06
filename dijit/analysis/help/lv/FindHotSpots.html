@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Atrast karstos punktus</h2><p/>
+        <h2><img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" alt="Atrast karstos punktus"></h2>
+        <hr/>
+    <p>Atrast karstos punktus rīks nosaka, vai jūsu telpiskajos datos ir kādi statistiski nozīmīgi klasteri. 
+        <ul>
+            <li>Vai jūsu punkti (noziedzība, koki, satiksmes negadījumi) tie&scaron;ām veido klasterus?Kā jūs varat būt dro&scaron;s?
+            </li>
+            <li>Vai jūs esat atklāju&scaron;i patie&scaron;ām nozīmīgu karsto punktu (tērē&scaron;anas paradumu, zīdaiņu mirstības, nemainīgi augsti pārbaužu rezultāti) vai jūsu karte stāstītu citu stāstu, ja jūs mainītu veidu kā tā ir simbolizēta?
+            </li>
+        </ul>
+        Atrast karstos punktus rīks palīdzēs jums atbildēt uz &scaron;iem jautājumiem ar pārliecību.
+    </p>
+    <p>Pat nejau&scaron;os telpiskajos modeļos ir novērojama klasterizācija.  Bez tam, mūsu acis un smadzenes dabīgi mēģina atrast piemērus, pat ja to nav bijis. Līdz ar to, var būt grūti zināt, vai jūsu datu piemēri ir reālu telpiskos procesu, vai nejau&scaron;ības rezultāts. Tāpēc pētnieki un analītiķi izmanto statistikas metodes, kā Atrast karstos punktus (Getis-Ord Gi*), lai skaitļotu telpiskos piemērus. Kad jūs atrodat statistiski nozīmīgus klasterus jūsu datos, jums ir vērtīga informācija. Zinot, kur un kad gadās klasteri, var sniegt svarīgus pavedienus par veicino&scaron;iem procesiem. Zinot, ka piem., dzīvokļu laupī&scaron;anas ir augstākas atsevi&scaron;ķos rajonus, ir svarīga informācija profilakses stratēģijās, lai sadalītu ierobežotos policijas resursus, uzsāktu kvartālu novēro&scaron;anas programmas, atļautu padziļinātu izmeklē&scaron;anu krimināllietās, vai konstatētu iespējamos aizdomās turamos.   
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="analysisLayer">
+        <div><h2>Izvēlieties slāni, kuram tiks aprēķināti karstie punkti</h2></div>
+        <hr/>
+        <div>
+            <p>Punkta vai laukuma slānis, kuram tiks meklēti karstie un aukstie punkti.
+
+            </p>
+        </div>
+    </div>
+    <div id="analysisField">
+        <div><h2>Atrast augsta un zema kopas</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;ī analīze atbildēs uz jautājumu: Kur telpiski rodas augstu un zemu vērtību klasteri?
+            </p>
+            <p>Ja jūsu dati ir punkti un izvēlēsities iespēju  <b>Punktu skaits</b>, &scaron;is rīks novērtēs punktu elementu telpisko izkārtojumu, lai atbildētu uz jautājumu: Kur ir punkti, kas negaidīti veido klasterus vai izkliedējas?
+            </p>
+            <p>Ja izvēlēsities lauku, &scaron;is rīks novērtēs ar katru elementu saistīto vērtību telpisko izkārtojumu, lai atbildētu uz jautājumu: Kur telpiski rodas augstu un zemu vērtību klasteri?
+            </p>
+        </div>
+    </div>
+    <div id="aggregationPolygonLayer">
+        <div><h2>Skaitīt punktus šajās robežās:</h2></div>
+        <hr/>
+        <div>
+            <p>Pēc noklusējuma tiek skaitīti punkti zvejas tīkla režģī, ko rīks izveido, ņemot vērā jūsu punktu datus. Varat arī nodro&scaron;ināt laukumu slāni (parasti tie atspoguļo administratīvās ziņo&scaron;anas rajonus, piem., tautas skaitī&scaron;anu, pa&scaron;valdību robežas vai apgabalus), lai atbildētu uz jautājumu: Ņemot vērā punktu skaitu katrā laukuma elementā, vai ir vietas ar statistiski nozīmīgu telpisko klasteru augstu vai zemu punktu skaitu?   
+            </p>
+        </div>
+    </div>
+    <div id="boundingPolygonLayer">
+        <div><h2>Nosakiet, kur punkti ir iespējami</h2></div>
+        <hr/>
+        <div>
+            <p>Vai nu uzzīmējiet vai norādiet slāni, kas definē, kur iespējami incidenti, lai atbildētu uz jautājumu: Vai laukumā(-os) ir izvietojumi ar negaidīti augstu vai zemu punktu koncentrāciju?   
+            </p>
+            <p>Uzzīmētais laukums vai jūsu norādītie laukuma elementi, kur punkti iespējami varēs gadīties. Lai zīmētu &scaron;os laukumus, noklik&scaron;ķiniet uz zīmē&scaron;anas pogas un pēc noklik&scaron;ķiniet uz atra&scaron;anās vietas kartē, lai izveidotu laukuma formu.  Lai zīmētu papildu laukumus, vēlreiz noklik&scaron;ķiniet uz zīmē&scaron;anas pogas, pēc tam noklik&scaron;ķiniet uz atra&scaron;anās vietas kartē un turpiniet.
+            </p>
+        </div>
+    </div>
+    <div id="dividedByField">
+        <div><h2>Dalīt ar</h2></div>
+        <hr/>
+        <div>
+            <p>Reizēm var būt nepiecie&scaron;ams analizēt modeļus, kuri ņem vērā pamata sadalījumus. Piemēram, ja jūsu punkti atspoguļo noziedzību, dalot ar kopējo iedzīvotāju skaitu, iegūsit noziegumu analīzi uz vienu iedzīvotāju, nevis neapstrādātu noziegumu skaitu.  Atribūta&nbsp;dalītāja izvēli nereti dēvē par normalizē&scaron;anu.
+            </p>
+            <p>Ja izvēlēsities  <i>Esri iedzīvotāji</i>, laukuma elementi tiks ģeogrāfiski bagātināti ar iedzīvotāju vērtībām, kuras tiks izmantotas kā atribūts&nbsp;&mdash; dalītājs.  &Scaron;ī opcija patērē kredītus.
+            </p>
+        </div>
+    </div>
+    <div id="hotSpotsResultLayer">
+        <div><h2>Rezultāta slāņa nosaukums</h2></div>
+        <hr/>
+        <div>
+            <p>Norādiet slāņa nosaukumu, kas tiks izveidots sadaļā  <b>Mans saturs</b> un pievienots kartei. Rezultāta slānis rādīs statistiski nozīmīgus augstu un zemu vērtību klasterus vai punktu skaitu. Ja rezultāta slāņa nosaukums jau pastāv, jums tiks uzdots jautājums, vai vēlaties to pārdēvēt.
+            </p>
+            <p>Lietojot  <b>Saglabāt rezultātus</b> nolaižamajā sarakstlodziņā, jūs varat norādīt nosaukumu mapē <b>Mans saturs</b>, kur tiks saglabāti rezultāti.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

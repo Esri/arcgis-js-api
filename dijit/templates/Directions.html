@@ -1,0 +1,47 @@
+<div class="${options.theme}" role="presentation">
+    <div data-dojo-attach-point="_widgetContainer" class="${_css.widgetContainerClass}" role="presentation">
+        <div class="${_css.stopsContainerClass}" role="presentation">
+            <table class="${_css.stopsClass}" data-dojo-attach-point="_dndNode"></table>
+            <div class="${_css.clearClass}"></div>
+            <div class="${_css.stopsButtonContainerClass}">
+                <div class="${_css.stopsAddDestinationClass}">
+                    <div tabindex="0" role="button" data-dojo-attach-point="_activateButtonNode" title="${_i18n.widgets.directions.activate}" class="${_css.activateButtonClass} ${_css.stopsButtonClass} ${_css.stopsButtonTabClass} ${_css.stopsPressedButtonClass}"></div>
+                    <div role="button" tabindex="0" class="${_css.linkButtonClass} ${_css.stopsAddDestinationBtnClass}" data-dojo-attach-point="_addDestinationNode">${_i18n.widgets.directions.addDestination}</div>
+                </div>
+                <div class="${_css.travelModesContainerClass}" data-dojo-attach-point="_travelModeContainerNode">
+                    <div data-dojo-attach-point="_travelModeSelectorContainer"></div>
+                </div>
+                <div tabindex="0" role="button" class="${_css.linkButtonClass} ${_css.stopsOptionsButtonClass}" data-dojo-attach-point="_optionsButtonNode">${_i18n.widgets.directions.showOptions}</div>
+            	<div class="${_css.clearClass}"></div>
+            </div>
+            <div role="presentation" class="${_css.stopsOptionsMenuClass}" data-dojo-attach-point="_optionsMenuNode">
+                <div class="${_css.stopsOptionsCheckboxesClass}">
+                    <ul>
+                        <li class="${_css.stopsFindOptimalOrderClass}" data-dojo-attach-point="_findOptimalOrderItemNode"><input tabindex="0" data-dojo-attach-point="_findOptimalOrderNode" type="checkbox" id="${id}_find_optimal_order" /><label for="${id}_find_optimal_order">${_i18n.widgets.directions.findOptimalOrder}</label></li>
+                        <li class="${_css.stopsReturnToStartClass}" data-dojo-attach-point="_returnToStartItemNode"><input tabindex="0" data-dojo-attach-point="_returnToStartNode" type="checkbox" id="${id}_stopsReturnToStart" /><label for="${id}_stopsReturnToStart">${_i18n.widgets.directions.returnToStart}</label></li>
+                        <li class="${_css.stopsUseTrafficClass}" data-dojo-attach-point="_useTrafficItemNode"><input tabindex="0" data-dojo-attach-point="_useTrafficNode" type="checkbox" id="${id}_stopsUseTraffic" /><label for="${id}_stopsUseTraffic">${_i18n.widgets.directions.useTraffic}</label></li>
+                    </ul>
+                </div>
+                <div class="${_css.stopsOptionsToggleContainerClass}">
+                    <div class="${_css.stopsOptionsUnitsContainerClass}"  data-dojo-attach-point="_agolDistanceUnitsNode">
+                        <div tabindex="0" role="button" class="${_css.stopsOptionsUnitsMiClass} ${_css.stopsButtonClass} ${_css.stopsButtonTabClass}" data-dojo-attach-point="_useMilesNode">${_i18n.widgets.directions.units.MILES.abbr}</div>
+                        <div tabindex="0" role="button" class="${_css.stopsOptionsUnitsKmClass} ${_css.stopsButtonClass} ${_css.stopsButtonTabClass} ${_css.stopsButtonTabLastClass} ${_css.stopsPressedButtonClass}" data-dojo-attach-point="_useKilometersNode">${_i18n.widgets.directions.units.KILOMETERS.abbr}</div>
+                        <div class="${_css.clearClass}"></div>
+                    </div>
+                    <div class="${_css.clearClass}"></div>
+                </div>
+                <div class="${_css.clearClass}"></div>
+            </div>
+            <div class="${_css.stopsGetDirectionsContainerClass}">
+                <div tabindex="0" role="button" class="${_css.stopsButtonClass} ${_css.stopsGetDirectionsClass}" data-dojo-attach-point="_getDirectionsButtonNode">${_i18n.widgets.directions.getDirections}</div>
+                <div tabindex="0" role="button" class="${_css.linkButtonClass} ${_css.stopsClearDirectionsClass}" data-dojo-attach-point="_clearDirectionsButtonNode">${_i18n.widgets.directions.clearDirections}</div>
+                <div class="${_css.clearClass}"></div>
+            </div>
+    	</div>
+    	<div class="${_css.clearClass}"></div>
+    	<div data-dojo-attach-point="_errorNode" role="presentation"></div>
+    	<div class="${_css.resultsContainerClass}" role="presentation">
+        	<div class="${_css.routesContainerClass}" data-dojo-attach-point="_resultsNode" role="presentation"></div>
+    	</div>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<table class="esriMultidimensionalFilterItemTable">
+   <tbody>
+      <col class="esriMultidimensionalFilterCol1"/>
+      <col class="esriMultidimensionalFilterCol2"/>
+      <col class="esriMultidimensionalFilterCol3"/>
+      <tr>
+         <td colspan="2">
+            <input id="${dimension}" name="dimensionCheckbox" data-dojo-type="dijit/form/CheckBox" data-dojo-attach-event="onChange:_onDimensionCheckboxChange" checked/> <label for="${dimension}" class="esriMultidimensionalFilterDimensionText" data-dojo-attach-point="dimensionAlias">${dimensionAlias}</label> 
+            <span data-dojo-attach-point="dimensionUnit"></span>
+            <div class="esriMultidimensionalFilterInfoDiv" id="${dimension}Info">
+               <div data-dojo-type="dijit/Tooltip" data-dojo-props="connectId:'${dimension}Info',position:['after']">
+                  <div class="esriMultidimensionalFilterInfoTooltip">
+                     <b>${dimensionAlias}</b> 
+                     <span data-dojo-attach-point="tooltipUnit"></span>
+                     <br/>   <span class="esriMultidimensionalFilterTooltipLeftText">Minimum:</span> <span data-dojo-attach-point="tooltipFromValue"></span>
+                     <br/>   <span class="esriMultidimensionalFilterTooltipLeftText">Maximum:</span> <span data-dojo-attach-point="tooltipToValue"></span>
+                     <br/>   <span class="esriMultidimensionalFilterTooltipLeftText">Count:</span> <span data-dojo-attach-point="tooltipValueCount"></span>
+                     <span data-dojo-attach-point="disabledDimText" class="esriMultidimensionalFilterTooltipDisabledDimensionText"></span>
+                  </div>
+               </div>
+            </div>
+         </td>
+         <td><span id="${dimension}RangeSpan" data-dojo-attach-point="${dimension}RangeSpan"><input id="${dimension}RangeCheckbox" data-dojo-type="dijit/form/CheckBox" data-dojo-attach-event="onChange:_onRangeCheckboxChange"/> <label for="${dimension}RangeCheckbox" class="rangeText">${_i18n.widgets.multidimensionalFilter.rangeText}</label>
+             <div class="esriMultidimensionalFilterInfoDiv" id="${dimension}hasRangesInfo" data-dojo-attach-point="hasRangesInfo" style="visibility:hidden;">
+               <div data-dojo-type="dijit/Tooltip" data-dojo-props="connectId:'${dimension}hasRangesInfo',position:['after']">
+                 <div class="esriMultidimensionalFilterInfoTooltip">
+                   ${_i18n.widgets.multidimensionalFilter.hasRangesInfoText1}<br/>
+                   ${_i18n.widgets.multidimensionalFilter.hasRangesInfoText2}
+                 </div>
+               </div>
+             </div>
+           </span>
+         </td>
+      </tr>
+      <tr data-dojo-attach-point="${dimension}MinRow" id="${dimension}MinRow">
+         <td><label for="min${dimension}Value" id="min${dimension}ValueText" data-dojo-attach-point="min${dimension}ValueText">${_i18n.widgets.multidimensionalFilter.sliceNumberText}</label></td>
+         <td colspan="2">
+             <span data-dojo-attach-point="minNumberSelector"></span>
+         </td>
+      </tr>
+      <tr data-dojo-attach-point="${dimension}MaxRow" id="${dimension}MaxRow" style="display:none;">
+         <td><label for="max${dimension}Value">${toText}</label></td>
+         <td colspan="2">
+             <span data-dojo-attach-point="maxNumberSelector"></span>
+         </td>
+      </tr>
+   </tbody>
+</table>

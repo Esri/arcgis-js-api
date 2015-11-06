@@ -1,0 +1,231 @@
+.Breadcrumb {
+    position: absolute;
+    z-index: 1;
+}
+
+.BreadcrumbHeight {
+    height: 70px;
+    margin-top: 35px;
+}
+
+.Breadcrumb_Categories {
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    text-align: center;
+}
+
+.dj_rtl .Breadcrumb_Categories {
+    left: auto;
+    right: 15px;
+}
+
+
+.Breadcrumb_CategoriesIcon {
+    background: url('./images/dataCollections/AllCategories_normal.png') no-repeat center center;
+    width: 60px;
+    height: 42px;
+    cursor: pointer;
+}
+
+.Breadcrumb_CategoriesIcon:hover {
+    background: url('./images/dataCollections/AllCategories_over.png') no-repeat center center;
+}
+
+.Breadcrumb_DataCollections {
+    position: absolute;
+    left: 93px;
+    top: 15px;
+    width: 55px;
+    height: 43px;
+    background-image: url(./images/dataCollections/Default_normal.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.dj_rtl .Breadcrumb_DataCollections {
+    right: 93px;
+    left: auto;
+}
+
+
+.Breadcrumb_DataCollections.DataBrowser_Clickable:hover {
+    background-image: url(./images/dataCollections/default_over.png);
+}
+
+.Breadcrumb_Variales {
+    position: absolute !important;
+    top: 21px;
+    left: 170px;
+}
+
+.dj_rtl .Breadcrumb_Variales {
+    right: 170px;
+    left: auto;
+}
+
+
+.Breadcrumb_SelectCategory {
+    animation-name: Breadcrumb_SelectCategory;
+    -webkit-animation-name: Breadcrumb_SelectCategory;
+}
+
+@keyframes Breadcrumb_SelectCategory {
+    from {
+    }
+
+    to {
+        left: 100px;
+        top: 32px;
+    }
+}
+
+@-webkit-keyframes Breadcrumb_SelectCategory {
+    from {
+    }
+
+    to {
+        left: 100px;
+        top: 32px;
+    }
+}
+
+.dj_rtl .Breadcrumb_SelectCategory {
+    animation-name: RTLBreadcrumb_SelectCategory;
+    -webkit-animation-name: RTLBreadcrumb_SelectCategory;
+}
+
+@keyframes RTLBreadcrumb_SelectCategory {
+    from {
+    }
+
+    to {
+        right: 100px;
+        top: 32px;
+    }
+}
+
+@-webkit-keyframes RTLBreadcrumb_SelectCategory {
+    from {
+    }
+
+    to {
+        right: 100px;
+        top: 32px;
+    }
+}
+
+
+
+.Breadcrumb_SelectDC {
+    animation-name: Breadcrumb_SelectDC;
+    -webkit-animation-name: Breadcrumb_SelectDC;
+}
+
+@keyframes Breadcrumb_SelectDC {
+    from {
+    }
+
+    to {
+        top: 56px;
+        left: 170px;
+    }
+}
+
+@-webkit-keyframes Breadcrumb_SelectDC {
+    from {
+    }
+
+    to {
+        top: 56px;
+        left: 170px;
+    }
+}
+
+.dj_rtl .Breadcrumb_SelectDC {
+    animation-name: RTLBreadcrumb_SelectDC;
+    -webkit-animation-name: RTLBreadcrumb_SelectDC;
+}
+
+@keyframes RTLBreadcrumb_SelectDC {
+    from {
+    }
+
+    to {
+        top: 56px;
+        right: 170px;
+    }
+}
+
+@-webkit-keyframes RTLBreadcrumb_SelectDC {
+    from {
+    }
+
+    to {
+        top: 56px;
+        right: 170px;
+    }
+}
+
+.Breadcrumb_Line {
+    position: absolute;
+    top: 36px;
+    width: 30px;
+    height: 34px;
+    border-style: solid;
+    border-color: #9b9b9b;
+}
+
+.Breadcrumb_Connect1 {
+    left: 70px;
+    border-width: 1px 0 0 0;
+}
+
+.dj_rtl .Breadcrumb_Connect1 {
+    right: 70px;
+    left: auto;
+}
+
+.Breadcrumb_AngularConnect1 {
+    left: 141px;
+    border-width: 1px 1px 0 0;
+}
+
+.dj_rtl .Breadcrumb_AngularConnect1 {
+    right: 141px;
+    left: auto;
+    border-width: 1px 0 0 1px;
+}
+
+.Breadcrumb_1andHalf{
+    left: 100px;
+    width: 41px;
+    border-width: 1px 0 0 0;
+}
+
+.dj_rtl .Breadcrumb_1andHalf {
+    right: 100px;
+    left: auto;
+}
+
+.Breadcrumb_Connect2 {
+    left: 141px;
+    border-width: 1px 0 0 0;
+}
+
+.dj_rtl .Breadcrumb_Connect2 {
+    right: 141px;
+    left: auto;
+}
+
+.Breadcrumb_AngularConnect2 {
+    left: 360px;
+    border-width: 1px 1px 0 0;
+}
+
+.dj_rtl .Breadcrumb_AngularConnect2 {
+    border-width: 1px 0 0 1px;
+    right: 360px;
+    left: auto;
+}
+

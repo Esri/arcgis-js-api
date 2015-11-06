@@ -1,0 +1,139 @@
+.DataBrowser {
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.DataBrowser_Title {
+    margin-top: 16px;
+    margin-left: 19px;
+    font-size: 1.2em;
+    color: #2892CD;
+}
+
+.dj_rtl .DataBrowser_Title {
+    margin-right: 18px;
+}
+
+.DataBrowser .dgrid-selected {
+    background: none;
+}
+
+.DataBrowser_Clickable {
+    cursor: pointer !important;
+}
+
+.DataBrowserInfoIcon {
+    background: url(./images/InfoIcon.png) no-repeat center center;
+    height:16px;
+    width:16px;
+    margin-left:7px;
+    margin-right:7px;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    top: -0.14em;
+}
+
+.DataBrowser .dgrid-row {
+    white-space: nowrap;
+    cursor: default;
+}
+
+.VarCheck {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    top: -0.14em;
+}
+
+.dj_rtl .VarCheck {
+    margin-left:2px !important;
+}
+
+.VarLabel {
+}
+
+.DataBrowser_SelectVar {
+    animation-name: DataBrowser_SelectVar;
+    -webkit-animation-name: DataBrowser_SelectVar;
+}
+
+
+@keyframes DataBrowser_SelectVar {
+    0% {
+    }
+
+    60% {
+        opacity: 1;
+    }
+
+    100% {
+        right: 0px;
+        top: 20px;
+        opacity: 0;
+        transform: scale(0.5, 0.5);
+        transform-origin: right top;
+    }
+}
+
+@-webkit-keyframes DataBrowser_SelectVar {
+    0% {
+    }
+
+    60% {
+        opacity: 1;
+    }
+
+    100% {
+        right: 0px;
+        top: 20px;
+        opacity: 0;
+        -webkit-transform: scale(0.5, 0.5);
+        -webkit-transform-origin: right top;
+    }
+}
+
+
+
+
+.dj_rtl .DataBrowser_SelectVar {
+    animation-name: RTLDataBrowser_SelectVar;
+    -webkit-animation-name: RTLDataBrowser_SelectVar;
+}
+
+
+@keyframes RTLDataBrowser_SelectVar {
+    0% {
+    }
+
+    60% {
+        opacity: 1;
+    }
+
+    100% {
+        left: 0px;
+        top: 20px;
+        opacity: 0;
+        transform: scale(0.5, 0.5);
+        transform-origin: left top;
+    }
+}
+
+@-webkit-keyframes RTLDataBrowser_SelectVar {
+    0% {
+    }
+
+    60% {
+        opacity: 1;
+    }
+
+    100% {
+        left: 0px;
+        top: 20px;
+        opacity: 0;
+        -webkit-transform: scale(0.5, 0.5);
+        -webkit-transform-origin: left top;
+    }
+}

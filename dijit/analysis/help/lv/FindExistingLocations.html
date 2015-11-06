@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Atrast pašreizējo izvietojumu</h2><p/>
+        <h2><img src="../images/GUID-FEF355B4-CF3B-48F6-9EC1-A00A1D53C81F-web.png" alt="Atrast pa&scaron;reizējo izvietojumu"></h2>
+        <hr/>
+    <p>Rīks izvēlās eksistējo&scaron;us elementus jūsu izpētes areālā, kas atbilst jūsu norādītajai kritēriju sērijai. &Scaron;ie kritēriji var pamatoties uz atribūtu vaicājumiem (piem., brīvi zemes gabali) un telpiskajiem vaicājumiem (piem., 1 jūdzes attālumā no upes).
+
+    </p>
+    <p>Ja ir atzīmēta iespēja  <b>lietot pa&scaron;reizējo kartes pārklājumu</b>, tad tiks analizēti tikai ievades slāņa elementi pa&scaron;reizējā kartes pārklājumā.  Ja nav atzīmēts, visi analīzes slāņa elementi tiks analizēti, arī pa&scaron;reizējā kartes pārklājuma ārpusē.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayers">
+        <div><h2>Izvēlieties slāni, kas satur elementus, kurus vēlaties atrast, izmantojot atribūtu un telpiskus vaicājumus</h2></div>
+        <hr/>
+        <div>
+            <p>Punkta, līnijas vai laukuma slānis, kuram vēlaties meklēt elementus, ņemot vērā tālāk norādīto atribūtu un telpisko vaicājumu kombināciju.
+            </p>
+            <p>Papildus slāņa izvēlei no kartes varat atlasīt  <b>Izvēlēties Living Atlas analīzes slāni</b> nolaižamā saraksta apak&scaron;ā. Tādējādi tiek atvērta galerija, kurā ir daudzām analīzēm noderīgu slāņu galerija. 
+            </p>
+        </div>
+    </div>
+    <div id="Expression">
+        <div><h2>Izveidojiet vaicājumu, lai atrastu elementus</h2></div>
+        <hr/>
+        <div>
+            <p>Klik&scaron;ķiniet uz  <b>Pievienot izteiksmi</b> pogas, lai definētu izteiksmi. Jūs varat pievienot vairākas izteiksmes. Pēc izteiksmju ievadī&scaron;anas un noklik&scaron;ķinā&scaron;anas uz pogas <b>Palaist analīzi</b> elementi ievades slānī tiek filtrēti pēc katras izteiksmes nosacījumiem.  Elementi, kas atbilst visām izteiksmēm tiek ierakstīti rezultātu slānī.
+            </p>
+            <p>Divi galvenie veidi, kā Jūs varat izveidot izteiksmes; atribūtu un telpiskāsAtribūtu izteiksmes ir vaicājumi par lauku vērtībām, kā piemēram,  <code>kur nosaukums ir 'San Francisco'</code>. Telpiskajām izteiksmēm ir četri veidi:
+                <ul>
+                    <li> <b>attālumā</b>: elementam jāatrodas noteiktā attālumā no elementa citā slānī.  Piemēram, atrasts parceles, 500 metru attālumā no Losandželosas upes.
+                    </li>
+                    <li> <b>pilnībā satur</b>: elementam jāietver visi cita slāņa elementi.  piemēram, atrast ūdenskrātuves, kas pilnībā ietver rūpnieciskās izmanto&scaron;anas parceles zonas. Parceles daļa nevar būt ārpus ūdenskrātuves.
+                    </li>
+                    <li> <b>pilnībā ietver</b>: elements pilnībā ietver cita slāņa elementus.  Piemēram, meklēt skolu rajonus, kas pilnībā atrodas pilsētas robežās. Neviena daļa no skolu rajoniem nevar atrasties ārpus pilsētas robežām.
+                    </li>
+                    <li> <b>&scaron;ķērso</b>: elements ietver elementa daļu no cita slāņa.  Piemēram, atrast parceles kas &scaron;ķērso upes. Jebkura upes daļa, kas iet caur parceli vai pieskaras parceles robežai, &scaron;ķērso parceli.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Katrai telpiskai izteiksmei ir atbilsto&scaron;a negācija;  <b>neatrodas attālumā</b>, <b>pilnībā nesatur</b>, <b>pilnībā neietver</b>, un <b>ne&scaron;ķērso</b>.
+            </p> 
+        </div>
+    </div>
+    <div id="OuputName">
+        <div><h2>Rezultāta slāņa nosaukums</h2></div>
+        <hr/>
+        <div>
+            <p>Tas ir slāņa nosaukuns, kas tiks izveidots  <b>Mans saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja slānis jau pastāv, jums tiks lūgts norādīt citu nosaukumu.
+            </p>
+            <p>Lietojot  <b>Saglabāt rezultātus</b> nolaižamajā sarakstlodziņā, jūs varat norādīt nosaukumu mapē <b>Mans saturs</b>, kur tiks saglabāti rezultāti.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

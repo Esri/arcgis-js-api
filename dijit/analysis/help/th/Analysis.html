@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="SummarizeDataCategory" class="regularsize">
+        <h2>รวมข้อมูล</h2>
+        <hr/>
+        <p>เครื่องมือเหล่านี้คำนวณจำนวนรวม  ความยาว  พื้นที่ และค่าสถิติเชิงพรรณนาพื้นฐานของฟีเจอร์ และฟิลด์ของฟิเจอร์ภายในพื้นที่ หรือที่อยู่ใกล้กับฟีเจอร์อื่น
+            <ul>
+                <li> <b>คะแนนรวม</b> คำนวณค่าสถิติจากจุดที่อยู่ภายในบริเวณที่กำหนด
+                </li>
+                <li> <b>การสรุปโดยระยะทาง</b> คำนวณค่าสถิติของฟีทเจอร์หรือข้อมูลคุณลักษณะที่อยู่ภายในระยะทางที่กำหนด
+                </li>
+                <li> <b>การสรุปข้อมูลที่อยู่ภายใน</b> คำนวณค่าสถิติของพื้นที่ที่สนใจหรือข้อมูลคุณลักษณะที่มีการซ้อนทับกัน
+                </li>
+            </ul>
+            
+        </p>
+        <p> 
+        </p>
+    </div>
+        <div id="AggregatePointsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>รวมจุด</h2></td>
+                    <td>
+                    <img src="../images/GUID-60C59C66-3038-4D0E-8F6A-EC6C53FEAA02-web.png" class="titleImage" alt="รวมจุด">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>การใช้ชั้นข้อมูลประเภทจุดและชั้นข้อมูลประเภทพื้นที่ เครื่องมือนี้จะทำการเลือกจุดที่อยู่ในแต่ละพื้นที่และคำนวณค่าทางสถิติของจุดทุกจุดที่อยู่ในพื้นที่นั้นๆ ตัวอย่างเช่น
+                <ul>
+                    <li>แสดงจุดเกิดเหตุอาชญากรรม แล้วนับจำนวนอาชญากรรมที่เกิดขึ้นในหนึ่งเขตการปกครองหรือในท้องที่นั้นๆ
+                    </li>
+                    <li>ค้นหากำไรสูงสุดและต่ำสุดที่ได้จากยอดขายสาขาแฟรนไชส์ในแต่ละรัฐ
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeNearbyTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>สรุปใกล้เคียง</h2></td>
+                    <td>
+                    <img src="../images/GUID-A5033D27-81B6-42E7-BA38-50D25C1CCCCA-web.png" class="titleImage" alt="สรุปใกล้เคียง">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>ค้นหาฟีเจอร์ที่อยู่ภายในระยะทางที่ระบุของฟีเจอร์ในชั้นข้อมูลอินพุท ระยะทางนั้นสามารถวัดตามความยาวของทางที่เป็นเส้นตรงหรือเส้นทางผันแปรของรูปแบบการเดินทางและค่าสถิติที่ถูกคำนวณโดยใช้ฟีเจอร์ที่อยู่ใกล้เคียงตัวอย่างเช่น
+                <ul>
+                    <li>คำนวณหาจำนวนประชากรทั้งหมดที่อยู่ในระยะเวลาการเดินทาง 5 นาทีจากตำแหน่งร้านค้าที่จะเปิดใหม่
+                    </li>
+                    <li>คำนวณจำนวนทางหลวงที่สามารถเข้าถึงตำแหน่งร้านค้าเปิดใหม่ได้ภายใน 5 นาที โดยการวัดความสามารถในการเข้าถึงร้านค้า
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeWithinTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>สรุปภายใน</h2></td>
+                    <td>
+                    <img src="../images/GUID-9B12DB3F-AA7B-41EB-87C6-D2DEC3D52DA9-web.png" class="titleImage" alt="สรุปภายใน">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>ค้นหาพื้นที่ (และบางส่วนของพื้นที่) ที่ซ้อนทับกันระหว่างชั้นข้อมูล 2 ชั้น และคำนวณค่าสถิติที่มีการซ้อนทับกันตัวอย่างเช่น
+                <ul>
+                    <li>กำหนดชั้นข้อมูลพื้นที่รับน้ำและชั้นข้อมูลการใช้ที่ดินตามประเภทที่ดิน แล้วคำนวณพื้นที่การใช้ที่ดินทั้งหมดในแต่ละพื้นที่รับน้ำ 
+                    </li>
+                    <li>กำหนดชั้นข้อมูลพื้นที่เมืองและชั้นข้อมูลขอบเขตเมือง แล้วสรุปค่าเฉลี่ยของพื้นที่ว่างเปล่าที่มีในแต่ละเมือง
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="EnrichLocationsCategory" class="smallsize">
+        <h2>การเพิ่มคุณภาพข้อมูล</h2>
+        <hr/>
+        <p>เครื่องมือเหล่านี้ช่วยคุณในการสำรวจลักษณะของพื้นที่ข้อมูลรายละเอียดประชากรและสถิติจะถูกส่งกลับมาตามพื้นที่ที่คุณเลือก
+            <ul>
+                <li> <b>ชั้นข้อมูลเอ็นริช </b> จะดึงข้อมูลเกี่ยวกับประชากร สถานที่ และธุรกิจในพื้นที่ที่กำหนด หรือภายในระยะเวลาการเดินทางที่เลือกหรือระยะทางจากที่ตั้ง
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="EnrichLayerTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>ชั้นข้อมูลเพิ่มค่า</h2></td>
+                    <td>
+                    <img src="../images/GUID-5B2D9742-AFD2-4054-8D05-ED6A80EDAF4D-web.png" class="titleImage" alt="ชั้นข้อมูลเพิ่มค่า">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>ดึงข้อมูลเกี่ยวกับประชากร สถานที่ และธุรกิจในพื้นที่ที่กำหนด หรือภายในระยะเวลาการเดินทางที่เลือกหรือระยะทางจากที่ตั้ง
+
+            </p>
+            <br/>
+        </div>
+    <div id="FindLocationsCategory" class="largesize">
+        <h2>ค้นหาตำแหน่ง</h2>
+        <hr/>
+        <p>เครื่องมือนี้ใช้ในการระบุพื้นที่ที่ตรงกับจำนวนเงื่อนไขที่คุณระบุไว้ต่างๆ กันเงื่อนไขเหล่านี้ขึ้นอยู่กับคำสั่งเชิงคุณลักษณะ (เช่น แปลงที่ดินที่ว่างเปล่า) และคำสั่งเชิงพื้นที่ (เช่น ภายในระยะทาง 1 กิโลเมตรจากแม่น้ำ)พื้นที่ที่พบสามารถเลือกได้จากฟีเจอร์ที่มีอยู่ (เช่น ที่ดินแปลงที่มีอยู่) หรือฟีเจอร์ใหม่ที่สามารถสร้างขึ้นตามความต้องการได้
+            <ul>
+                <li> <b>ค้นหาตำแหน่งที่มีอยู่แล้ว</b>  ค้นหาพื้นที่ที่มีอยู่ในชั้นข้อมูลตามลำดับเงื่อนไขที่กำหนด
+                </li>
+                <li> <b>ค้นหาตำแหน่งใหม่จากข้อมูลที่มีอยู่</b> สร้างพื้นที่ขึ้นมาใหม่จากตำแหน่งที่คุณกำลังศึกษาและสอดคล้องกับเงื่อนไขต่างๆ ที่กำหนดไว้
+                </li>
+                <li> <b>ค้นหาตำแหน่งที่ใกล้เคียง</b> ค้นหาตำแหน่งที่ใกล้เคียงกับอีกตำแหน่งหนึ่งหรือตำแหน่งอื่นๆ ที่อ้างอิงจากเงื่อนไขที่คุณกำหนดขึ้น
+                </li>
+                <li> <b>สร้างวิวเฉด</b> สร้างพื้นที่แสดงบริเวณที่มองเห็นจากตำแหน่งที่คุณระบุ
+                </li>
+                <li> <b>สร้างพื้นที่รับน้ำ </b> สร้างพื้นที่ที่สามารถเก็บกักน้ำจากตำแหน่งที่คุณระบุ
+                </li>
+                <li> <b>วาดทางน้ำไหล</b> ตรวจสอบเส้นทางการไหลของน้ำลงไปในทิศทางน้ำจากตำแหน่งที่คุณระบุ
+                </li>
+            </ul>
+            
+        </p>
+        <p> 
+        </p>
+    </div>
+        <div id="FindExistingLocationsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>ค้นหาตำแหน่งที่มีอยู่แล้ว</h2></td>
+                    <td>
+                    <img src="../images/GUID-FEF355B4-CF3B-48F6-9EC1-A00A1D53C81F-web.png" class="titleImage" alt="ค้นหาตำแหน่งที่มีอยู่แล้ว">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>เลือกฟีเจอร์ที่มีอยู่จากพื้นที่ที่คุณกำลังศึกษาเพื่อให้สอดคล้องกับชุดเงื่อนไขที่คุณกำหนดไว้เงื่อนไขเหล่านี้ขึ้นอยู่กับคำสั่งเชิงคุณลักษณะ (เช่น แปลงที่ดินที่ว่างเปล่า) และคำสั่งเชิงพื้นที่ (เช่น ภายในระยะทาง 1 กิโลเมตรจากแม่น้ำ)
+
+            </p>
+            <br/>
+        </div>
+        <div id="DeriveNewLocationsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>ได้รับตำแหน่งใหม่</h2></td>
+                    <td>
+                    <img src="../images/GUID-4A756008-8431-4AA5-BD42-7135296560DD-web.png" class="titleImage" alt="ได้รับตำแหน่งใหม่">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>เลือกฟีเจอร์ที่มีอยู่จากพื้นที่ที่คุณกำลังศึกษาเพื่อให้สอดคล้องกับชุดเงื่อนไขที่คุณกำหนดไว้เงื่อนไขเหล่านี้ขึ้นอยู่กับคำสั่งเชิงคุณลักษณะ (เช่น แปลงที่ดินที่ว่างเปล่า) และคำสั่งเชิงพื้นที่ (เช่น ภายในระยะทาง 1 กิโลเมตรจากแม่น้ำ)
+
+            </p>
+            <br/>
+        </div>
+        <div id="FindSimilarLocationsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>ค้นหาตำแหน่งที่ใกล้เคียง</h2></td>
+                    <td>
+                    <img src="../images/GUID-6262A84E-9087-4E48-930E-E9B89FECC836-web.png" class="titleImage" alt="ค้นหาตำแหน่งที่ใกล้เคียง">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>ค้นหาตำแหน่งที่ใกล้เคียงกับอีกตำแหน่งหนึ่งหรือตำแหน่งอื่นๆ ที่อ้างอิงจากเงื่อนไขที่คุณกำหนดขึ้น
+            </p>
+            <br/>
+        </div>
+        <div id="CreateViewshedTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>สร้างพื้นที่การมองเห็น</h2></td>
+                    <td>
+                    <img src="../images/GUID-491E9A75-30CC-4526-9F71-E47FD25536DE-web.png" class="titleImage" alt="สร้างพื้นที่การมองเห็น">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>สร้างพื้นที่ที่สามารถมองเห็นได้ขึ้นอยู่กับสถานที่ที่คุณระบุ
+            </p>
+            <br/>
+        </div>
+        <div id="CreateWatershedsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>สร้างพื้นที่สันปันน้ำ</h2></td>
+                    <td>
+                    <img src="../images/GUID-4DE64CF6-2A02-46F6-8AE4-4D9227AAB71C-web.png" class="titleImage" alt="สร้างพื้นที่สันปันน้ำ">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>สร้างพื้นที่รับน้ำโดยอิงจากตำแหน่งที่คุณระบุ
+            </p>
+            <br/>
+        </div>
+        <div id="TraceDownstreamTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>ค้นหาตามน้ำ</h2></td>
+                    <td>
+                    <img src="../images/GUID-1700E318-5F2D-4D4D-BF21-B12663F5D3C4-web.png" class="titleImage" alt="วิเคราะห์ทางน้ำไหล">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>ตรวจสอบเส้นทางการไหลในทิศทางที่น้ำจากสถานที่ที่คุณระบุ
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzePatternsCategory" class="regularsize">
+        <h2>รูปแบบการวิเคราะห์</h2>
+        <hr/>
+        <p>เครื่องมือเหล่านี้มีหน้าที่ในการระบุตัวตน คำนวณปริมาณ และแสดงผลลัพธ์ข้อมูลของคุณในรูปแบบเชิงพื้นที่  
+            <ul>
+                <li> <b>คำนวณความหนาแน่น</b> ตอบคำถามเกี่ยวกับจำนวนเหตุการณ์และการกระจายตัวของเหตุการณ์เหล่านั้นผ่านแผนที่
+                </li>
+                <li> <b>ค้นหาจุดฮอตสปอต</b> ระบุจากข้อมูลรูปแบบเชิงพื้นที่ที่ได้จากการรวบกลุ่มทางสถิติที่สำคัญ
+                </li>
+                <li> <b>เพิ่มจุดข้อมูล</b> คาดการณ์ข้อมูลที่จะเกิดขึ้นในตำแหน่งใหม่ๆ โดยอ้างอิงจากระยะข้อมูลที่พบในชุดข้อมูลที่สะสมไว้
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateDensityTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>คำนวณความหนาแน่น</h2></td>
+                    <td>
+                    <img src="../images/GUID-20E554EC-1F41-4951-99FE-B3FE71DB2E17-web.png" class="titleImage" alt="คำนวณความหนาแน่น">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>การวิเคราะห์หาความหนาแน่น เป็นการตอบคำถามเกี่ยวกับจำนวนเหตุการณ์และการกระจายตัวของเหตุการณ์เหล่านั้นผ่านแผนที่ ตัวอย่างในการใช้เครื่องมือนี้ ได้แก่ การแสดงจำนวนการเกิดฟ้าผ่าหรือพายุทอร์นาโด การเข้าถึงการสิ่งอำนวยความสะดวกในการดูแลสุขภาพ และความหนาแน่นประชากร
+            </p>
+            <br/>
+        </div>
+        <div id="FindHotSpotsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>ค้นหาจุดสูงสุด</h2></td>
+                    <td>
+                    <img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" class="titleImage" alt="ค้นหาจุดสูงสุด">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>เครื่องมือนี้ใช้ในการสร้างแผนที่สำหรับแสดงข้อมูลเชิงพื้นที่ที่ได้จากการรวบข้อมูลทางสถิติที่สำคัญ   ใช้เครื่องมือนี้ในการยกเลิกจุดที่ไม่ต้องการ ทั้งจุดที่มีความถี่สูงสุด(สีแดง) และจุดที่มีความถี่น้อยสุด (สีน้ำเงิน) ไม่ว่าจะเป็นค่าใดก็ตาม เช่น มูลค่าบ้านเรือน ความถี่ในการเกิดอุบัติเหตุบนท้องถนน อัตราการจ้างงาน หรือค่าความหลากหลายทางชีวภาพ เป็นต้น
+            </p>
+            <br/>
+        </div>
+        <div id="InterpolatePointsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>คำนวณจุด</h2></td>
+                    <td>
+                    <img src="../images/GUID-28FC50AA-7B10-487C-949B-241EF2F8028E-web.png" class="titleImage" alt="คำนวณจุด">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>ด้วยเครื่องมือนี้ คุณสามารถคาดการณ์ข้อมูลที่จะเกิดขึ้นในตำแหน่งใหม่ๆ ได้ โดยอ้างอิงจากระยะข้อมูลที่พบในชุดข้อมูลที่สะสมไว้ โดยเครื่องมือนี้จะนำเอาข้อมูลจุดที่มีค่าตัวแปรแต่ละค่า และแก้ไขพื้นที่ให้เป็นไปตามกลุ่มที่มีการคาดการณ์ค่าตัวแปรไว้ ตัวอย่างในการใช้เครื่องมือนี้ ได้แก่ ใช้คาดการณ์ระดับปริมาณฝนในพื้นที่รับน้ำ โดยอ้างอิงจากปริมาณระดับน้ำฝนที่วัดได้ในแต่ละจุด
+            </p>
+            <br/>
+        </div>
+    <div id="UseProximityCategory" class="regularsize">
+        <h2>ใช้ระยะใกล้เคียง</h2>
+        <hr/>
+        <p>  เครื่องมือเหล่านี้ช่วยให้คุณตอบคำถามทั่วไปที่เกี่ยวกับการวิเคราะห์เชิงพื้นที่ได้: &quot;อะไรใกล้กับอะไร&quot;
+            <ul>
+                <li> <b>การเชื่อมโยงจากจุดเริ่มต้นไปยังจุดหมายปลายทาง</b> ช่วยวัดระยะเวลาในการเดินทางหรือระยะทางระหว่างจุดสองจุด
+                </li>
+                <li> <b>การสร้างระยะกันชน</b> ใช้ในการสร้างพื้นที่ที่ออกจากจุดสนใจเป็นระยะทางเท่าๆ กัน
+                </li>
+                <li> <b>การสร้างพื้นที่จากระยะเวลาการขับขี่</b> ค้นหาพื้นที่รอบๆ ตำแหน่งที่ต้องการเข้าถึงภายในระยะเวลาที่กำหนด
+                </li>
+                <li> <b>การค้นหาระยะที่ใกล้ที่สุด</b> กำหนดตำแหน่งต่างๆ ที่ใกล้กับตำแหน่งที่เลือกมากที่สุด
+                </li>
+                <li> <b>การวางแผนเส้นทาง</b> พิจารณาเลือกเส้นทางที่ดีที่สุดในการเดินทางไปยังจุดต่างๆ โดยใช้พาหนะต่างๆ
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="ConnectOriginsToDestinationsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>เชื่อมต่อจุดเริ่มต้นไปยังจุดสิ้นสุด</h2></td>
+                    <td>
+                    <img src="../images/GUID-7266D30B-0250-4132-B1A5-9B59F0212FAD-web.png" class="titleImage" alt="เชื่อมต่อจุดเริ่มต้นไปยังจุดสิ้นสุด">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>การเชื่อมโยงจากจุดเริ่มต้นไปยังจุดหมายปลายทางช่วยวัดระยะเวลาในการเดินทางหรือระยะทางระหว่างจุดสองจุด เครื่องมือนี้สามารถรายงานระยะทางเส้นตรง เส้นทางถนน หรือระยะเวลาในการเดินทาง คุณสามารถใช้งานเครื่องมือนี้ได้ดังนี้
+            </p>
+            <p>
+                <ul>
+                    <li>คำนวณระยะทางหรือเวลาโดยรวมของคนเดินทางที่ใช้เดินทางไปกลับระหว่างบ้านและที่ทำงาน
+                    </li>
+                    <li>คำนวณระยะทางที่ลูกค้าจะเดินทางเพื่อไปจับจ่ายซื้อของที่ร้านค้าของคุณ ใช้ข้อมูลนี้ในการระบุกลุ่มตลาดที่ต้องการ โดยเฉพาะการสร้างแคมเปญโฆษณาหรือการเลือกตำแหน่งที่ตั้งร้านค้าใหม่
+                    </li>
+                    <li>คำนวณระยะทางในการเดินทางที่คาดไว้สำหรับยานพาหนะของคุณ หลังจากนั้น ทำการประมวลผลด้วยเครื่องมือ การสรุปผลภายใน เพื่อรายงานระยะทางภายในเมืองหรือภูมิภาคอื่นๆ
+                    </li>
+                </ul>
+                
+            </p>
+            <p>คุณจัดเตรียมข้อมูลจุดเริ่มต้นและจุดสิ้นสุด และเครื่องมือนี้จะปรับชั้นข้อมูลที่ประกอบด้วยเส้นถนน และเครื่องมือวัด ระหว่างจุดเริ่มต้นและจุดหมายปลายทาง
+            </p>
+            <br/>
+        </div>
+        <div id="CreateBuffersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>สร้างแนวกันชน</h2></td>
+                    <td>
+                    <img src="../images/GUID-7F4A8E4D-42E3-41C1-9238-16619CE65079-web.png" class="titleImage" alt="สร้างแนวกันชน">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>ระยะกันชน คือ พื้นที่ที่ครอบคลุมทั้งข้อมูลจุด เส้น หรือพื้นที่ที่สนใจ โดยมีระยะทางที่ขยายออกไปเท่าๆ กัน 
+            </p>
+            <p>ระยะกันชน มักใช้สร้างพื้นที่ใหม่ที่สามารถนำไปวิเคราะห์ร่วมกับเครื่องมืออื่นๆ ได้ เช่น ชั้นข้อมูลซ้อนทับ ตัวอย่างเช่น จากคำถาม &quot;ในระยะ 1 ไมล์จากโรงเรียนนี้ มีสิ่งก่อสร้างใดบ้าง&quot; คุณสามารถหาคำตอบได้จากการสร้างระยะกันชน 1 ไมล์ จากโรงเรียน และทำการซ้อนทับระหว่างระยะกันชนกับชั้นข้อมูลที่มีสิ่งก่อสร้างต่างๆ   ผลลัพธ์ที่ได้คือ ชั้นข้อมูลแสดงสิ่งก่อสร้างที่อยู่ในระยะ 1 ไมล์จากโรงเรียน  
+            </p>
+            <br/>
+        </div>
+        <div id="CreateDriveTimeAreasTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>สร้างพื้นที่ เวลาขับขี่</h2></td>
+                    <td>
+                    <img src="../images/GUID-6F629A09-768D-4C04-88A4-AB941811ADE9-web.png" class="titleImage" alt="สร้างพื้นที่เวลาขับขี่">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>พื้นที่ที่ได้จากระยะเวลาการขับรถ คือ พื้นที่ที่สามารถเข้าถึงได้ในระยะเวลาหรือระยะทางที่ได้จากการขับขี่ที่กำหนด พื้นที่ดังกล่าวนี้ ช่วยให้คุณตอบคำถามเหล่านี้ได้:
+                <ul>
+                    <li>สถานที่ใดที่ฉันสามารถไปจากตรงนี้ภายในการขับรถ 30 นาที
+                    </li>
+                    <li>ฉันสามารถขับรถไปที่ใดได้บ้างในระยะเวลา 30 นาที ในช่วงเวลาเร่งด่วนอย่างนี้
+                    </li>
+                    <li>พื้นที่ใดในเมืองที่เจ้าหน้าที่ดับเพลิงไปถึงภายใน 5 นาที การปรับปรุงการให้ความช่วยเหลือในเหตุการณ์ไฟไหม้ โดยการสร้างสถานีดับเพลิงใหม่ที่นี่จะทำได้อย่างไร
+                    </li>
+                    <li>ธุรกิจของฉันครอบคลุมพื้นที่การตลาดใดบ้าง มีพื้นที่ใดบ้างในระยะ 10 ไมล์จากร้านค้าของฉัน
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="FindNearestTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>ค้นหาใกล้เคียง</h2></td>
+                    <td>
+                    <img src="../images/GUID-150C2484-7459-405A-8835-B4E72CD49738-web.png" class="titleImage" alt="ค้นหาพื้นที่ใกล้ที่สุด">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>คำนวณค่าใช้จ่ายในการท่องเที่ยวว่าแบบใดใกล้เคียงกันมากที่สุด ระหว่างแบบไม่เตรียมการ แบบมีสิ่งอำนวยความสะดวก และแบบเตรียมพร้อมทุกอย่าง ผลลัพธ์ที่ได้คือ ชั้นข้อมูลที่แสดงเส้นทางที่ดีที่สุดระหว่างแบบไม่เตรียมการและแบบมีสิ่งอำนวยความสะดวก พร้อมกับค่าใช้จ่ายระหว่างการเดินทาง (เวลาและระยะทาง) ในแต่ละเส้นทาง  ตัวอย่างเช่น คุณสามารถใช้เครื่องมือนี้ค้นหาโรงพยาบาลที่ใกล้ที่สุดในกรณีที่เกิดอุบัติเหตุ หรือตู้ ATM ที่ใกล้ที่สุดจากจุดที่คุณอยู่ ณ ตอนนี้
+            </p>
+            <br/>
+        </div>
+        <div id="PlanRoutesTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>วางแผนเส้นทาง</h2></td>
+                    <td>
+                    <img src="../images/GUID-09CC6D60-3C72-42D7-968E-B0663F0B1EBB-web.png" class="titleImage" alt="วางแผนเส้นทาง">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>คุณจัดเตรียมชุดข้อมูลประเภทตำแหน่งที่ต้องหยุด และจำนวนยานพานหะที่ใช้งานจริง โดยการวางแผนเส้นทางจะช่วยพิจารณาจุดที่พาหนะควรหยุดหรือเส้นทางที่พาหนะหยุดแล้วจะเกิดประสิทธิภาพมากที่สุด
+            </p>
+            <p>ใช้เครื่องมือนี้ในการวางแผนการทำงานสำหรับทีมสำรวจ ทีมประเมินราคา ทีมผู้ให้บริการถึงบ้านลูกค้า และอื่นๆ ทั้งการบริการส่งหรือการไปรับสินค้าจากตำแหน่งที่ห่างไกล หรือการบริการขนส่งมวลชน
+            </p>
+            <br/>
+        </div>
+    <div id="ManageDataCategory" class="regularsize">
+        <h2>จัดการข้อมูล</h2>
+        <hr/>
+        <p>เครื่องมือเหล่านี้ใช้ได้กับทั้งการจัดการข้อมูลทางภูมิศาสตร์แบบวันต่อวันและแบบรวบรวมข้อมูลก่อนที่จะนำไปวิเคราะห์  
+            <ul>
+                <li> <b>การรวมขอบเขตของข้อมูล</b> เชื่อมพื้นที่ที่มีขอบเขตและข้อมูลในตารางคุณลักษณะทั่วไปร่วมกัน
+                </li>
+                <li> <b>การค้ดลอกข้อมูล</b> สร้างชุดข้อมูลใหม่โดยการคัดลอกฟีเจอร์จากข้อมูลที่คุณมีอยู่แล้ว
+                </li>
+                <li> <b>Merge Layers</b> copies all the features from two or more existing layers into a new layer.
+                </li>
+                <li> <b>Overlay Layers</b> combines two or more layers into one single layer.  You can think of overlay as peering through a stack of maps and creating a single map containing all the information found in the stack.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="DissolveBoundariesTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>รวมพื้นที่</h2></td>
+                    <td>
+                    <img src="../images/GUID-7B5F69B0-3625-404F-8B52-2B562766C0BB-web.png" class="titleImage" alt="รวมพื้นที่">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>พื้นที่ที่ซ้อนทับกันหรือมีการใช้ขอบเขตร่วมกัน จะถูกผสานเข้าด้วยกันให้เป็นพื้นที่เดียวกัน    
+            </p>
+            <p>คุณสามารถกำหนดขอบเขตที่ต้องการทำการรวมข้อมูลได้ด้วยการกำหนดที่ฟิลด์ For example, if you have a layer of counties, and each county has a  <i>State_Name</i> attribute, you can dissolve boundaries using the <i>State_Name</i> attribute.  Adjacent counties will be merged together if they have the same value for <i>State_Name</i>.  ผลลัพธ์ที่ได้คือชั้นข้อมูลที่แสดงขอบเขตในระดับเขต
+            </p>
+            <br/>
+        </div>
+        <div id="ExtractDataTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>สร้างข้อมูล</h2></td>
+                    <td>
+                    <img src="../images/GUID-CE24332B-74C0-412F-BB94-31415A02195A-web.png" class="titleImage" alt="สร้างข้อมูล">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Creates a zip file, CSV, or KMZ of data from your layers and an area of interest that you specify.
+            </p>
+            <p> 
+            </p>
+            <br/>
+        </div>
+        <div id="MergeLayersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>เชื่อมชั้นข้อมูล</h2></td>
+                    <td>
+                    <img src="../images/GUID-BDDD6517-4EE7-4EEC-AE15-15DD9B709131-web.png" class="titleImage" alt="เชื่อมชั้นข้อมูล">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Copies features from two or more existing layers into a new layer,    for example:
+                <ul>
+                    <li>I have three layers for England, Wales, and Scotland and I want a single layer of Great Britain. 
+                    </li>
+                    <li>I have 12 layers and each contains parcel information for contiguous townships.  I want to join them together into a single layer, keeping only the attributes that have the same name and type on the 12 input layers.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="OverlayLayersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>ซ้อนทับชั้นข้อมูล</h2></td>
+                    <td>
+                    <img src="../images/GUID-CE1E0E84-F3B5-446B-9FDE-4DA057F106CC-web.png" class="titleImage" alt="ซ้อนทับชั้นข้อมูล">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>การซ้อนทับชั้นข้อมูล คือการผสมผสานชั้นข้อมูล 2 ชั้น หรือมากกว่านั้นให้เหลือเพียงชั้นข้อมูลเดียว  You can think of overlay as peering through a stack of maps and creating a single map containing all the information found in the stack,    for example:
+                <ul>
+                    <li>What parcels are within the 100-year floodplain? (Within is just another way of saying on top of.)
+                          
+                    </li>
+                    <li>มีถนนสายใดบ้างที่อยู่ในเมืองนี้?
+                    </li>
+                    <li>ดินประเภทนี้ มีการใช้ที่ดินอย่างไรบ้าง?
+                         
+                    </li>
+                    <li>มีอะไรหลงเหลืออยู่ในหลุมของทหารที่ถูกทิ้งร้างบ้าง?
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+</div>
+</html>

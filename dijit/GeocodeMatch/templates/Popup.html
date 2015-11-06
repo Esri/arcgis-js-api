@@ -1,0 +1,15 @@
+<div>
+  <div  class="esri-popup-con" data-dojo-attach-point='esri_popupHeader'>
+    <div><span>${i18n.widgets.geocodeMatch.popup.addressTitle}</span></div>
+    <p data-dojo-attach-point='_addressTag'>${i18n.widgets.geocodeMatch.popup.loadingPH}</p>
+  </div>
+  <div  class="esri-popup-con" data-dojo-attach-point='esri_popupContent'>
+    <div><span>${i18n.widgets.geocodeMatch.popup.locationTitle}</span></div>
+    <p data-dojo-attach-point='_Xtag'></p>
+    <p data-dojo-attach-point='_Ytag'></p>
+  </div>
+  <div class="esri-popup-button-con">
+    <div data-dojo-attach-point='_matchButton' data-dojo-type="dijit.form.Button">${i18n.widgets.geocodeMatch.popup.matchButtonLabel}</div>
+    <div data-dojo-attach-point='_discardButton' data-dojo-type="dijit.form.Button">${i18n.widgets.geocodeMatch.popup.discardButtonLabel}</div>
+  </div>
+</div>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Disolver límites</h2><p/>
+        <h2><img src="../images/GUID-7B5F69B0-3625-404F-8B52-2B562766C0BB-web.png" alt="Disolver l&iacute;mites"></h2>
+        <hr/>
+    <p>Las &aacute;reas que se superponen o comparten un l&iacute;mite se fusionan para formar una sola &aacute;rea.    
+    </p>
+    <p>Puedes controlar qu&eacute; l&iacute;mites est&aacute;n fusionados especificando un campo. Por ejemplo, si trabajas con una capa de condados y cada condado tiene un atributo  <i>State_Name</i>, puedes disolver los l&iacute;mites utilizando el atributo <i>State_Name</i>.  Los condados adyacentes se fusionar&aacute;n si tienen el mismo valor de <i>State_Name</i>.  El resultado final es una capa de l&iacute;mites de estado.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Elegir la capa de áreas cuyos límites se disolverán</h2></div>
+        <hr/>
+        <div>
+            <p>La capa que contiene las entidades de &aacute;reas que se van a disolver.
+
+            </p>
+            <p>Adem&aacute;s de elegir una capa en el mapa, puedes seleccionar  <b>Elegir capa de an&aacute;lisis de atlas vivo</b>, que se encuentra al final de la lista desplegable. Esto abre una galer&iacute;a que contiene un conjunto de capas que resultan &uacute;tiles para numerosos an&aacute;lisis. 
+            </p>
+        </div>
+    </div>
+    <div id="DissolveFields">
+        <div><h2>Seleccionar método de disolución</h2></div>
+        <hr/>
+        <div>
+            <p>Puede elegir entre dos m&eacute;todos para fusionar las entidades de &aacute;reas:
+
+                <ul>
+                    <li> <b>&Aacute;reas que se superponen o son adyacentes</b>: cuando los l&iacute;mites de dos o m&aacute;s &aacute;reas se superponen, estas &aacute;reas se fusionar&aacute;n en una sola &aacute;rea.  Las &aacute;reas adyacentes (es decir, las que comparten un l&iacute;mite) tambi&eacute;n se fusionar&aacute;n en una sola &aacute;rea.
+                    </li>
+                    <li> <b>&Aacute;reas con el mismo valor de campo</b>: las &aacute;reas que se superponen o comparten un l&iacute;mite se fusionar&aacute;n en una sola &aacute;rea si tienen el mismo valor de campo.
+                        <p>Por ejemplo, si trabajas con una capa de condados y cada condado tiene un campo  <i>State_Name</i>, puedes disolver los l&iacute;mites utilizando el campo <i>State_Name</i>.  Los condados adyacentes se fusionar&aacute;n si tienen el mismo valor de <i>State_Name</i>.  El resultado final es una capa de l&iacute;mites de estado.
+                        </p>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Si se ha activado  <b>Usar la extensi&oacute;n del mapa actual</b>, solo se disolver&aacute;n las entidades de la capa de entrada que est&aacute;n visibles en la extensi&oacute;n de mapa actual.  Si la opci&oacute;n est&aacute; desactivada, se disolver&aacute;n todas las entidades de la capa de entrada, aunque est&eacute;n fuera de la extensi&oacute;n de mapa actual.
+            </p>
+        </div>
+    </div>
+    <div id="SummaryFields">
+        <div><h2>Agregar estadísticas</h2></div>
+        <hr/>
+        <div>
+            <p>Cuando se fusionan las &aacute;reas, puedes resumir sus atributos. Por ejemplo, si est&aacute;s disolviendo un l&iacute;mite entre condados en funci&oacute;n del campo  <i>State_Name</i> y cada condado tiene un campo <i>Population</i>, puedes calcular la suma de <i>Population</i> correspondiente al estado.
+            </p>
+            <p>Los tipos de estad&iacute;sticas disponibles son:
+            </p>
+            <ul>
+                <li> <b>Suma</b>: a&ntilde;ade el valor total del campo especificado.
+                    
+
+                </li>
+                <li> <b>Valor medio</b>: calcula el valor medio o media del campo especificado.
+                    
+
+                </li>
+                <li> <b>M&iacute;nimo</b>: busca el valor m&aacute;s bajo de todos los registros del campo especificado.
+                    
+
+                </li>
+                <li> <b>M&aacute;ximo</b>: busca el valor m&aacute;s alto de todos los registros del campo especificado.
+                    
+
+                </li>
+                <li> <b>Desviaci&oacute;n est&aacute;ndar</b>: busca la desviaci&oacute;n est&aacute;ndar de los valores del campo especificado.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="OutputName">
+        <div><h2>Nombre de capa de resultados</h2></div>
+        <hr/>
+        <div>
+            <p>Este es el nombre de la capa que se crear&aacute; en  <b>Mi contenido</b> y se agregar&aacute; al mapa.  El nombre predeterminado se basa en nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, se te pedir&aacute; que indiques otro nombre.
+            </p>
+            <p>En el cuadro desplegable  <b>Guardar el resultado en</b>, puedes especificar el nombre de una carpeta de <b>Mi contenido</b> en la que se guardar&aacute; el resultado.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>경계 디졸브</h2><p/>
+        <h2><img src="../images/GUID-7B5F69B0-3625-404F-8B52-2B562766C0BB-web.png" alt="경계 디졸브"></h2>
+        <hr/>
+    <p>공통 경계를 공유하거나 중첩되는 영역이 병합되어 단일 영역을 형성합니다.    
+    </p>
+    <p>필드를 지정하여 병합할 경계를 제어할 수 있습니다.예를 들어 카운티 레이어가 있는 경우 각 카운티에  <i>State_Name</i> 속성이 있으면 <i>State_Name</i> 속성을 사용하여 경계를 디졸브할 수 있습니다.  인접 카운티는 <i>State_Name</i> 값이 같은 경우에 병합됩니다.  이 도구에서 생성되는 최종 결과는 주 경계 레이어입니다.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>경계가 디졸브되는 영역 레이어 선택</h2></div>
+        <hr/>
+        <div>
+            <p>디졸브할 영역 피처를 포함하는 레이어입니다.
+
+            </p>
+            <p>맵에서 레이어를 선택하는 것 외에도 드롭다운 목록 하단에서  <b>생동감 있는 세계 지도 분석 레이어를 선택</b>할 수 있습니다. 선택 시 다수의 분석 용도에 유용하게 사용할 수 있는 여러 레이어가 포함된 갤러리가 열립니다. 
+            </p>
+        </div>
+    </div>
+    <div id="DissolveFields">
+        <div><h2>디졸브 방법 선택</h2></div>
+        <hr/>
+        <div>
+            <p>다음 두 가지 방법 중 하나를 선택하여 영역 피처를 병합할 수 있습니다.
+                <ul>
+                    <li> <b>겹치거나 인접한 영역</b> - 서로 경계가 겹치는 둘 이상의 영역이 하나의 영역으로 병합됩니다.  또한 인접한 영역, 즉 공통 경계를 공유하는 영역이 하나의 영역으로 병합됩니다.
+                    </li>
+                    <li> <b>필드 값이 같은 영역</b> - 공통 경계를 공유하거나 겹치는 영역이 같은 필드 값을 가진 경우 하나의 영역으로 병합됩니다.
+                        <p>예를 들어 카운티 레이어가 있는 경우 각 카운티에  <i>State_Name</i> 필드가 있으면 <i>State_Name</i> 필드를 사용하여 경계를 디졸브할 수 있습니다.  인접 카운티는 <i>State_Name</i> 값이 같은 경우에 병합됩니다.  이 도구에서 생성되는 최종 결과는 주 경계 레이어입니다.
+                        </p>
+                    </li>
+                </ul>
+                
+            </p>
+            <p> <b>현재 맵 범위 사용</b>을 선택한 경우 현재 맵 범위 내에 표시된 입력 레이어의 피처만 해제됩니다.  선택하지 않으면 현재 맵 범위 외부에 있는 피처를 포함하여 입력 레이어에 있는 모든 피처가 디졸브됩니다.
+            </p>
+        </div>
+    </div>
+    <div id="SummaryFields">
+        <div><h2>통계 추가</h2></div>
+        <hr/>
+        <div>
+            <p>영역이 병합된 경우 해당 속성을 요약할 수 있습니다.예를 들어  <i>State_Name</i>에 따라 구/군 간의 경계를 디졸브하는 경우 각 구/군에 <i>Population</i> 필드가 있으면 해당 도에 대한 <i>Population</i> 합계를 계산할 수 있습니다.
+            </p>
+            <p>사용 가능한 통계 유형은 다음과 같습니다.
+            </p>
+            <ul>
+                <li> <b>합계</b> - 지정된 필드의 전체 값을 더합니다.
+                    
+
+                </li>
+                <li> <b>평균</b> - 지정된 필드의 평균을 계산합니다.
+                    
+
+                </li>
+                <li> <b>최소</b> - 지정된 필드의 모든 레코드에서 가장 작은 값을 찾습니다.
+                    
+
+                </li>
+                <li> <b>최대</b> - 지정된 필드의 모든 레코드에서 가장 큰 값을 찾습니다.
+                    
+
+                </li>
+                <li> <b>표준 편차</b> - 지정된 필드의 값에 대한 표준 편차를 구합니다.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="OutputName">
+        <div><h2>결과 레이어 이름</h2></div>
+        <hr/>
+        <div>
+            <p> <b>내 컨텐츠</b>에서 생성되어 맵에 추가되는 레이어의 이름입니다. 기본 이름은 도구 이름과 입력 레이어 이름을 기반으로 합니다. 레이어가 이미 있는 경우 다른 이름을 제공하라는 메시지가 나타납니다.
+            </p>
+            <p> <b>결과 저장:</b> 드롭다운 상자를 사용하여 <b>내 콘텐츠</b>에서 결과를 저장할 폴더의 이름을 지정할 수 있습니다.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

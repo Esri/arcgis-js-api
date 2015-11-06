@@ -1,0 +1,90 @@
+.esriImageServiceMeasure,.dijitMenuItemLabel {
+  font-family: verdana,helvetica !important;
+  font-size: 12px;  
+}
+
+.esriImageServiceMeasure .dijitDropDownButton .dijitButtonNode{
+  background-color: white;
+} 
+
+.esriImageServiceMeasure .esriMeasureIcon {
+  background-image: url(../images/ImageServiceMeasureTool16.png);
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+  text-align: center;  
+}
+
+.esriOPERATION_BASE_TOP {
+  background-image: url(../images/ImageServiceMeasureHeightTopBase16.png);
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+  text-align: center;    
+}
+
+.esriOPERATION_POINT {
+  background-image: url(../images/ImageServiceMeasurePoint16.png);
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+  text-align: center;    
+}
+
+.esriOPERATION_DISTANCE_ANGLE {
+  background-image: url(../images/ImageServiceMeasureDistance16.png);
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+  text-align: center;    
+}
+
+.esriOPERATION_AREA_PERIMETER {
+  background-image: url(../images/ImageServiceMeasureArea16.png);
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+  text-align: center;    
+}
+
+.esriOPERATION_CENTROID {
+  background-image: url(../images/ImageServiceMeasureCentroid16.png);
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+  text-align: center;    
+}
+
+.esriOPERATION_TOP_TOP_SHADOW {
+  background-image: url(../images/ImageServiceMeasureHeightTopShadow16.png);
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+  text-align: center;    
+}
+
+.esriOPERATION_BASE_TOP_SHADOW {
+  background-image: url(../images/ImageServiceMeasureHeightShadow16.png);
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+  text-align: center;    
+}
+
+.esriSelectedOption {
+  font-weight:600;
+  background: rgb(238,238,238) !important; 
+  background: -moz-linear-gradient(top,  rgba(238,238,238,1) 0%, rgba(204,204,204,1) 100%) !important; 
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(238,238,238,1)), color-stop(100%,rgba(204,204,204,1))) !important; 
+  background: -webkit-linear-gradient(top,  rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%) !important; 
+  background: -o-linear-gradient(top,  rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%) !important; 
+  background: -ms-linear-gradient(top,  rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%) !important; 
+  background: linear-gradient(to bottom,  rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%) !important; 
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ) !important; 
+}
+
+.esriCheckedMeasureButton {
+  background-image: none !important;
+  border: 1px solid #0079C1 !important;
+  background-color: #D1E9F9 !important;
+}

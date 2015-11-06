@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Kết nối Điểm đầu với Điểm đến</h2><p/>
+        <h2><img src="../images/GUID-7266D30B-0250-4132-B1A5-9B59F0212FAD-web.png" alt="Kết nối Điểm đầu với Điểm đến"></h2>
+        <hr/>
+    <p>  Kết nối Điểm đầu với Điểm đến gi&uacute;p đo thời gian đi lại hoặc khoảng c&aacute;ch giữa c&aacute;c cặp điểm. C&ocirc;ng cụ n&agrave;y c&oacute; thể b&aacute;o c&aacute;o c&aacute;c khoảng c&aacute;ch theo đường thẳng; khoảng c&aacute;ch theo phương thức đi lại; v&iacute; dụ như đi bộ hoặc l&aacute;i xe; hoặc khoảng thời gian của chuyến đi theo phương thức đi lại. Sử dụng c&ocirc;ng cụ n&agrave;y, bạn c&oacute; thể l&agrave;m c&aacute;c việc sau:
+    </p>
+    <p>
+        <ul>
+            <li>T&iacute;nh to&aacute;n tổng khoảng c&aacute;ch hoặc khoảng thời gian m&agrave; người đi l&agrave;m di chuyển tr&ecirc;n tuyến đường từ nh&agrave; đến cơ quan.
+            </li>
+            <li>Đo qu&atilde;ng đường m&agrave; kh&aacute;ch h&agrave;ng đang đến mua sắm tại cửa h&agrave;ng của bạn. Sử dụng th&ocirc;ng tin n&agrave;y để x&aacute;c định c&aacute;ch tiếp cận thị trường, đặc biệt khi hướng đến c&aacute;c chiến dịch quảng c&aacute;o hoặc lựa chọn vị tr&iacute; x&acirc;y dựng cửa h&agrave;ng mới.
+            </li>
+            <li>T&iacute;nh to&aacute;n tổng số dặm tuyến đường dự t&iacute;nh cho phương tiện của bạn. Sau đ&oacute;, chạy c&ocirc;ng cụ Tổng kết trong Phạm vi để b&aacute;o c&aacute;o số dặm theo quận hoặc khu vực kh&aacute;c.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Bạn cung cấp c&aacute;c điểm bắt đầu, kết th&uacute;c v&agrave; c&ocirc;ng cụ n&agrave;y sẽ trả về một lớp c&oacute; chứa c&aacute;c tuyến đường, bao gồm c&aacute;c ph&eacute;p đo, giữa cặp điểm đầu v&agrave; điểm đến.  
+    </p>
+    <p>Nếu chọn  <b>Sử dụng phạm vi bản đồ hiện tại</b>, th&igrave; chỉ c&aacute;c đối tượng được nh&igrave;n thấy trong phạm vi bản đồ hiện tại mới được xem x&eacute;t khi ph&acirc;n t&iacute;ch. Nếu bỏ chọn, tất cả c&aacute;c đối tượng trong lớp đầu v&agrave;o sẽ được xem x&eacute;t, ngay cả khi ch&uacute;ng nằm ngo&agrave;i phạm vi bản đồ hiện tại.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="originsLayer">
+        <div><h2>Chọn lớp điểm biểu diễn các điểm đầu</h2></div>
+        <hr/>
+        <div>
+            <p>Chọn lớp điểm biểu diễn một điểm đầu hoặc nhiều điểm đầu C&ocirc;ng cụ n&agrave;y hỗ trợ tối đa  5.000 điểm đầu v&agrave;  5.000 điểm đến. </p>
+            <p>Nếu bạn chọn một lớp c&oacute; đ&uacute;ng một điểm đến, tất cả c&aacute;c điểm đầu sẽ kết nối tới điểm đến đ&oacute;.
+            </p>
+            <p>B&ecirc;n cạnh việc chọn một lớp từ bản đồ của bạn, bạn cần chọn  <b>Chọn Lớp Ph&acirc;n t&iacute;ch Atlas Sinh sống</b> nằm dưới c&ugrave;ng trong danh s&aacute;ch xổ xuống 
+Thao t&aacute;c n&agrave;y mở ra một b&ocirc;̣ sưu t&acirc;̣p c&oacute; chứa c&aacute;c lớp hữu &iacute;ch cho nhiều sự ph&acirc;n t&iacute;ch kh&aacute;c nhau. 
+            </p>
+        </div>
+    </div>
+    <div id="destinationsLayer">
+        <div><h2>Chọn lớp điểm đến</h2></div>
+        <hr/>
+        <div>
+            <p>Chọn lớp đại diện cho điểm đến hoặc c&aacute;c điểm đến m&agrave; điểm đầu n&ecirc;n kết nối. C&ocirc;ng cụ n&agrave;y hỗ trợ tối đa  5.000 điểm đầu v&agrave;  5.000 điểm đến. </p>
+            <p>Nếu bạn chọn một lớp c&oacute; đ&uacute;ng một điểm đến, tất cả c&aacute;c điểm đầu sẽ kết nối tới điểm đến đ&oacute;. 
+            </p>
+            <p>Nếu c&oacute; một điểm đầu v&agrave; nhiều điểm đến, c&ocirc;ng cụ kết nối điểm đầu tới từng điểm đến trong đ&oacute;.
+            </p>
+            <p>B&ecirc;n cạnh việc chọn một lớp từ bản đồ của bạn, bạn cần chọn  <b>Chọn Lớp Ph&acirc;n t&iacute;ch Atlas Sinh sống</b> nằm dưới c&ugrave;ng trong danh s&aacute;ch xổ xuống 
+Thao t&aacute;c n&agrave;y mở ra một b&ocirc;̣ sưu t&acirc;̣p c&oacute; chứa c&aacute;c lớp hữu &iacute;ch cho nhiều sự ph&acirc;n t&iacute;ch kh&aacute;c nhau. 
+            </p>
+            <p> Nếu c&oacute; nhiều điểm đầu v&agrave; nhiều điểm đến, bạn cần phải c&oacute; hai trường m&ocirc; tả c&aacute;c cặp điểm đầu - điểm đến: <b>Trường ID tại điểm đầu</b> v&agrave; <b>Trường ID Tương ứng tại điểm đến</b>. C&ocirc;ng cụ kết nối c&aacute;c cặp điểm đầu - điểm đến trong khi ph&acirc;n t&iacute;ch. V&iacute; dụ: tưởng tượng bạn c&oacute; hai điểm đầu với c&aacute;c gi&aacute; trị trường ID l&agrave; <code>Rosie</code> v&agrave; <code>Harold</code> v&agrave; hai điểm đến với c&aacute;c gi&aacute; trị ID tương tự. Điểm đầu <code>Rosie</code> sẽ kết nối với điểm đến <code>Rosie</code> v&agrave; <code>Harold</code> sẽ kết nối với <code>Harold</code>. Kh&ocirc;ng thực hiện c&aacute;c kết nối hoặc ph&eacute;p đo kh&aacute;c.
+            </p>
+            <p>C&aacute;c gi&aacute; trị ID phải duy nhất trong từng lớp, v&iacute; dụ: lớp điểm đến kh&ocirc;ng thể c&oacute; hai gi&aacute; trị  <code>Rosie</code>. C&aacute;c gi&aacute; trị trong lớp điểm đầu v&agrave; điểm đến phải ho&agrave;n to&agrave;n ph&ugrave; hợp để tạo c&aacute;c cặp; <code>Harold</code> sẽ kh&ocirc;ng kết nối với gi&aacute; trị viết sai, <code>Harodl</code>. 
+            </p>
+        </div>
+    </div>
+    <div id="measurementType">
+        <div><h2>Đo lường</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Chọn kết nối điểm đầu với điểm đến bằng khoảng c&aacute;ch theo đường thẳng hoặc phương thức đi lại. C&aacute;c tuyến đường đầu ra sẽ theo c&aacute;c con đường hoặc lối đi v&agrave; tu&acirc;n theo quy tắc hiện h&agrave;nh, v&iacute; dụ như đường một chiều v&agrave; cấm quay đầu xe đối với người l&aacute;i xe hoặc vận tải đường bộ. Người quản trị của tổ chức của bạn c&oacute; thể x&aacute;c định c&aacute;c phương thức đi lại khả dụng.  
+            </p>
+            <p>Nếu bạn chọn  <b>Thời gian l&aacute;i xe</b>, bạn sẽ c&oacute; một số t&ugrave;y chọn về c&aacute;ch đo đạc thời gian l&aacute;i xe.
+                <ul>
+                    <li>
+                        <p>Bỏ chọn  <b>Sử dụng Giao th&ocirc;ng</b> để t&igrave;m c&aacute;c tuyến đường nhanh nhất dựa tr&ecirc;n tốc độ cố định.
+                        </p>
+                        <p>Đ&acirc;y l&agrave; t&ugrave;y chọn để lựa chọn nếu bạn muốn c&oacute; một ph&eacute;p đo thời gian l&aacute;i xe th&ocirc;ng thường, kh&ocirc;ng phải c&aacute;ch t&iacute;nh to&aacute;n bằng c&aacute;c điều kiện giao th&ocirc;ng thay đổi trong một thời gian khởi h&agrave;nh cụ thể.
+                        </p>
+                    </li>
+                    <li>
+                        <p>Chọn  <b>Sử dụng Giao th&ocirc;ng</b> để t&igrave;m ra c&aacute;c tuyến đường nhanh nhất dựa tr&ecirc;n một thời gian bắt đầu cho trước v&agrave; điều kiện giao th&ocirc;ng thay đổi. Đồng thời bằng c&aacute;ch chọn t&ugrave;y chọn <b>Giao th&ocirc;ng trực tiếp</b>, thời gian khởi h&agrave;nh từ điểm đầu được đặt đến thời gian hiện tại, v&agrave; tốc độ giao th&ocirc;ng hiện tại v&agrave; dự t&iacute;nh được tham chiếu từ bộ cảm biến v&agrave; nguồn cung cấp dữ liệu để tạo ra c&aacute;c tuyến đường. Tốc độ giao th&ocirc;ng dự kiến được t&iacute;nh to&aacute;n bằng c&aacute;ch tham chiếu tốc độ giao th&ocirc;ng trực tiếp, tốc độ lịch sử v&agrave; sự kiện hiện tại như thời tiết. Tốc độ giao th&ocirc;ng c&oacute; thể dự kiến đến khoảng 12 giờ trong tương lai, do đ&oacute; bạn c&oacute; thể di chuyển thanh trượt để thiết lập trước thời gian khởi h&agrave;nh l&ecirc;n tới  12 giờ. </p>
+                        <p>Sử dụng c&aacute;c thiết lập giao th&ocirc;ng trực tiếp n&agrave;y để t&igrave;m ra thời gian l&aacute;i xe để khởi h&agrave;nh ngay b&acirc;y giờ hay khởi h&agrave;nh trong một giờ nữa, v.v.
+                        </p>
+                    </li>
+                    <li>
+                        <p>Bằng c&aacute;ch chọn  <b>Sử dụng Giao th&ocirc;ng</b> v&agrave; chọn <b>th&ocirc;ng tin Giao th&ocirc;ng dựa tr&ecirc;n điều kiện điển h&igrave;nh theo</b> ng&agrave;y v&agrave; thời gian, c&ocirc;ng cụ sẽ tạo c&aacute;c khu vực thời gian l&aacute;i xe nhanh nhất dựa tr&ecirc;n tốc độ trung b&igrave;nh lưu trong lịch sử theo từng khoảng thời gian năm ph&uacute;t trong v&ograve;ng một tuần.
+C&aacute;c kết quả bao gồm giao th&ocirc;ng nhưng loại bỏ ảnh hưởng của điều kiện giao th&ocirc;ng hiện tại v&agrave; c&aacute;c sự kiện, c&oacute; thể thay đổi đ&aacute;ng kể so với định mức.
+                        </p>
+                        <p>Bạn c&oacute; thể sử dụng c&aacute;c thiết lập giao th&ocirc;ng lịch sử để hỏi, v&iacute; dụ: &quot;Thường mất bao l&acirc;u để tới c&aacute;c điểm đến n&agrave;y khi khởi h&agrave;nh v&agrave;o l&uacute;c 11:30 s&aacute;ng v&agrave;o thứ tư?&quot;
+                        </p>
+                        <p>Thời gian bạn thiết lập li&ecirc;n quan đến m&uacute;i giờ nơi đặt điểm đầu. V&igrave; vậy, nếu bạn thiết lập thời gian đến 8:00 s&aacute;ng v&agrave; c&oacute; hai điểm đầu, một ở Th&agrave;nh phố New York v&agrave; một ở Los Angeles, c&aacute;c tuyến đường sẽ được tạo ra cho thời gian 8:00 s&aacute;ng Theo Giờ ph&iacute;a Đ&ocirc;ng v&agrave; 8:00 s&aacute;ng Theo Giờ Th&aacute;i B&igrave;nh Dương tương ứng.
+                        </p>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Lưu &yacute; rằng khi một phương tiện được l&aacute;i đi từ điểm đầu, thời gian tr&ocirc;i qua v&agrave; điều kiện giao th&ocirc;ng sẽ thay đổi. C&ocirc;ng cụ Kết nối Điểm đầu Với Điểm đến xem x&eacute;t c&aacute;c thay đổi n&agrave;y khi bạn chọn  <b>Sử dụng giao th&ocirc;ng</b>; tuy nhi&ecirc;n, th&ocirc;ng tin giao th&ocirc;ng kh&ocirc;ng được hỗ trợ cho tất cả c&aacute;c v&ugrave;ng. 
+Bấm v&agrave;o li&ecirc;n kết <b>Xem t&iacute;nh khả dụng</b> tr&ecirc;n c&ocirc;ng cụ để t&igrave;m xem liệu t&iacute;nh năng c&oacute; được cung cấp tại khu vực nghi&ecirc;n cứu của bạn kh&ocirc;ng.
+            </p>
+        </div>
+    </div>
+    <div id="outputLayer">
+        <div><h2>Tên lớp kết quả</h2></div>
+        <hr/>
+        <div>
+            <p>Đ&acirc;y l&agrave; t&ecirc;n lớp sẽ được tạo trong mục  <b>Nội dung của T&ocirc;i</b> v&agrave; th&ecirc;m v&agrave;o bản đồ. T&ecirc;n mặc định dựa v&agrave;o t&ecirc;n c&ocirc;ng cụ v&agrave; t&ecirc;n lớp đầu v&agrave;o. Nếu lớp đ&atilde; tồn tại, bạn sẽ được y&ecirc;u cầu cung cấp t&ecirc;n mới.
+            </p>
+            <p>Sử dụng hộp xổ xuống  <b>Lưu kết quả trong</b>, bạn c&oacute; thể chỉ định t&ecirc;n thư mục trong mục <b>Nội dung của T&ocirc;i</b> nơi sẽ lưu trữ kết quả của bạn.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

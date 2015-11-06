@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Localizar Hot Spots</h2><p/>
+        <h2><img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" alt="Localizar Hot Spots"></h2>
+        <hr/>
+    <p>A ferramenta Localizar Hot Spots permite determinar se existe algum tipo de clustering com relev&acirc;ncia estat&iacute;stica no padr&atilde;o espacial dos seus dados. 
+        <ul>
+            <li>Os seus pontos (ocorr&ecirc;ncias de crime, &aacute;rvores, acidentes de via&ccedil;&atilde;o) est&atilde;o efetivamente agrupados num cluster?Como pode ter a certeza?
+            </li>
+            <li>Descobriu efetivamente um hot spot com relev&acirc;ncia estat&iacute;stica (para despesas, mortalidade infantil, resultados de testes consistentemente elevados) ou ser&aacute; que o mapa contaria uma hist&oacute;ria diferente se alterasse a forma como est&aacute; simbolizado?
+            </li>
+        </ul>
+        A ferramenta Localizar Hot Spots ajuda-o a responder a essas perguntas com confian&ccedil;a.
+    </p>
+    <p>Mesmo padr&otilde;es espaciais aleat&oacute;rios demonstram algum n&iacute;vel de clustering. Al&eacute;m disso, os olhos e o c&eacute;rebro tentam naturalmente encontrar padr&otilde;es mesmo que estes n&atilde;o existam. Consequentemente, pode ser dif&iacute;cil saber se os padr&otilde;es encontrados nos seus dados s&atilde;o o resultado de processos espaciais verdadeiros ou se resultam apenas de algo aleat&oacute;rio. &Eacute; por esta raz&atilde;o que os investigadores e analistas utilizam m&eacute;todos estat&iacute;sticos como o Encontrar Hot Spot (Getis-Ord Gi*) para quantificar os padr&otilde;es espaciais. Quando encontra efetivamente um clustering com relev&acirc;ncia estat&iacute;stica nos seus dados, tem acesso a informa&ccedil;&otilde;es importantes. Saber onde e quando ocorre um clustering pode fornecer pistas importantes sobre os processos que est&atilde;o na base dos padr&otilde;es detetados. Por exemplo, saber que o n&uacute;mero de assaltos a resid&ecirc;ncias &eacute; consistentemente elevado em determinados bairros &eacute; uma informa&ccedil;&atilde;o essencial para o caso de ser necess&aacute;rio elaborar estrat&eacute;gias de preven&ccedil;&atilde;o eficazes, distribuir recursos policiais escassos, iniciar programas de vigil&acirc;ncia nos bairros, autorizar investiga&ccedil;&otilde;es criminais profundadas ou identificar poss&iacute;veis suspeitos.   
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="analysisLayer">
+        <div><h2>Escolher camada para a qual os Hot Spots serão calculados</h2></div>
+        <hr/>
+        <div>
+            <p>O ponto ou camada de &aacute;rea a partir da qual v&atilde;o ser encontrados Hot e Cold Spots.
+
+            </p>
+        </div>
+    </div>
+    <div id="analysisField">
+        <div><h2>Encontre clusters de alta e baixa intensidade</h2></div>
+        <hr/>
+        <div>
+            <p>Esta an&aacute;lise responde &agrave; pergunta: Onde se agrupam espacialmente clusters de valores altos e baixos?
+            </p>
+            <p>Se os seus dados s&atilde;o pontos e voc&ecirc; escolher  <b>Contagens de Pontos</b>, esta ferramenta ir&aacute; avaliar a distribui&ccedil;&atilde;o espacial dos elementos pontos para responder &agrave; quest&atilde;o: Onde est&atilde;o os pontos agrupados em clusters de forma inesperada ou onde &eacute; que est&atilde;o dispersos?
+            </p>
+            <p>Se escolher um campo, esta ferramenta ir&aacute; avaliar a distribui&ccedil;&atilde;o espacial dos valores associados com cada elemento para responder &agrave; quest&atilde;o: Onde est&atilde;o os valores altos e baixos a agruparem-se em clusters?
+            </p>
+        </div>
+    </div>
+    <div id="aggregationPolygonLayer">
+        <div><h2>Contagem de pontos dentro</h2></div>
+        <hr/>
+        <div>
+            <p>O padr&atilde;o &eacute; contar pontos numa grade de arrast&atilde;o criado pela ferramenta com base nos seus dados de ponto. Em alternativa, pode escolher fornecer uma camada com uma &aacute;rea (normalmente reflete relat&oacute;rios administrativos, tais como os censos ou limites municipais) de forma a responder &agrave; pergunta: Dado o n&uacute;mero de pontos dentro de cada elemento da &aacute;rea , existem locais com um clustering espacial estatisticamente significativo de pontos altos ou baixos?   
+            </p>
+        </div>
+    </div>
+    <div id="boundingPolygonLayer">
+        <div><h2>Definir onde os pontos são possíveis</h2></div>
+        <hr/>
+        <div>
+            <p>Desenhe ou forne&ccedil;a uma camada definindo onde os incidentes podem ocorrer de forma a responder &agrave; pergunta: Dentro da(s) &aacute;rea(s) existem locais com concentra&ccedil;&otilde;es inesperadas de pontos altos ou baixos?   
+            </p>
+            <p>Os elementos da &aacute;rea desenhada ou os elementos na &aacute;rea da camada especificada definem onde os pontos devem ocorrer. Para desenhar essas &aacute;reas, clique no bot&atilde;o desenhar, de seguida, clique num local no mapa para criar uma forma de &aacute;rea.  Para desenhar &aacute;reas adicionais, clique novamente no bot&atilde;o desenhar, de seguida, clique num local no mapa e continue.
+            </p>
+        </div>
+    </div>
+    <div id="dividedByField">
+        <div><h2>Dividido por</h2></div>
+        <hr/>
+        <div>
+            <p>Por vezes pode querer analisar os padr&otilde;es que levam em conta as distribui&ccedil;&otilde;es subjacentes. Por exemplo, se seus pontos representam crimes, dividindo pelo total da popula&ccedil;&atilde;o resultaria numa an&aacute;lise de crimes per capita em vez de contagens de crime cruas.  Escolher um atributo a dividir por &eacute; muitas vezes referida como normaliza&ccedil;&atilde;o.
+            </p>
+            <p>Escolher  <i>Popula&ccedil;&atilde;o Esri</i> ir&aacute; geoenriquecer cada elemento de &aacute;rea com valores da popula&ccedil;&atilde;o, que ser&atilde;o ent&atilde;o usados como o atributo para dividir por.  Esta opc&ccedil;&atilde;o ir&aacute; usar cr&eacute;ditos.
+            </p>
+        </div>
+    </div>
+    <div id="hotSpotsResultLayer">
+        <div><h2>Nome da camada resultante</h2></div>
+        <hr/>
+        <div>
+            <p>Forne&ccedil;a um nome para a camada que ser&aacute; criada no  <b>O Meu Conte&uacute;do</b> e adicionada ao mapa. A camada de resultados deve exibir agrupamentos estatisticamente significativos de valores altos e baixos ou contagem de pontos. Se a camada j&aacute; existir, ser&aacute; questionado se pretende substituir a camada existente.
+            </p>
+            <p>Ao utilizar a caixa suspensa  <b>Guardar resultado em</b> pode definir o nome da pasta em <b>O Meu Conte&uacute;do</b> onde o resultado ser&aacute; guardado.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Truy vết Hạ lưu</h2><p/>
+        <h2><img src="../images/GUID-1700E318-5F2D-4D4D-BF21-B12663F5D3C4-web.png" alt="Truy vết Hạ lưu"></h2>
+        <hr/>
+    <p>C&ocirc;ng cụ n&agrave;y sẽ x&aacute;c định dấu vết, hoặc đường dẫn d&ograve;ng chảy, theo hướng hạ lưu từ c&aacute;c điểm trong lớp đầu v&agrave;o của bạn.
+    </p>
+    <p>V&iacute; dụ, giả sử bạn c&oacute; c&aacute;c đối tượng điểm thể hiện cho c&aacute;c nguồn nhiễm bẩn v&agrave; bạn muốn x&aacute;c định xem khu vực nghi&ecirc;n cứu của bạn c&oacute; nguồn nhiễm bẩn chảy qua kh&ocirc;ng. Bạn c&oacute; thể sử dụng Truy vết Hạ lưu để x&aacute;c định đường dẫn xảy ra nhiễm bẩn. C&oacute; thể ph&acirc;n chia truy t&igrave;m n&agrave;y th&agrave;nh c&aacute;c ph&acirc;n đoạn đường ri&ecirc;ng bằng c&aacute;ch chỉ định gi&aacute; trị khoảng c&aacute;ch v&agrave; đơn vị. Đường được trả về c&oacute; thể l&agrave; tổng độ d&agrave;i của đường dẫn d&ograve;ng chảy, độ d&agrave;i truy t&igrave;m tối đa được chỉ định, hoặc chỉ c&oacute; c&aacute;c đối tượng nằm trong khu vực chỉ định chẳng hạn như khu vực nghi&ecirc;n cứu của bạn. Trong nhiều trường hợp, nếu thu được tổng độ d&agrave;i của đường dẫn truy t&igrave;m th&igrave; n&oacute; sẽ từ nguồn chảy ra đại dương theo bất kỳ c&aacute;ch n&agrave;o.
+    </p>
+    <p>Kết quả l&agrave; một đường thể hiện cho qu&aacute; tr&igrave;nh truy vết hạ lưu. Nếu chỉ định một khoảng c&aacute;ch để  <b>Ph&acirc;n chia truy t&igrave;m th&agrave;nh c&aacute;c ph&acirc;n đoạn đường</b>, đường truy t&igrave;m sẽ được ph&acirc;n chia th&agrave;nh nhiều đoạn, ở đ&oacute; mỗi đường c&oacute; độ d&agrave;i chỉ định. V&iacute; dụ, nếu điểm đầu v&agrave;o của bạn thể hiện cho một điểm tr&agrave;n nhiễm bẩn v&agrave; n&oacute; chảy v&agrave;o d&ograve;ng s&ocirc;ng với tốc độ 0,6 dặm/giờ, hoặc 15 dặm/ng&agrave;y, bạn c&oacute; thể muốn ph&acirc;n chia d&ograve;ng s&ocirc;ng th&agrave;nh c&aacute;c ph&acirc;n đoạn mỗi ph&acirc;n đoạn d&agrave;i 15 dặm. Ph&acirc;n chia truy t&igrave;m th&agrave;nh c&aacute;c khoảng d&agrave;i 15 dặm sẽ cho biết nơi điểm tr&agrave;n sẽ đi qua h&agrave;ng ng&agrave;y. Đường sẽ được biểu dẫn bằng k&yacute; hiệu m&agrave;u sắc theo thang bậc dựa tr&ecirc;n khoảng c&aacute;ch v&agrave; được d&aacute;n nh&atilde;n với khoảng c&aacute;ch từ điểm bắt đầu truy t&igrave;m. 
+    </p>
+    <p>Kết quả truy t&igrave;m sẽ c&oacute; tất cả c&aacute;c thuộc t&iacute;nh của điểm đầu v&agrave;o cũng như c&aacute;c thuộc t&iacute;nh bổ sung. 
+        <ul>
+            <li> <i>ID Điểm</i>&mdash;Chứa gi&aacute; trị ID từ điểm đầu v&agrave;o.
+            </li>
+            <li> <i>Độ d&agrave;i Km</i>&mdash;Chứa độ d&agrave;i bằng kil&ocirc;m&eacute;t đối với to&agrave;n bộ qu&aacute; tr&igrave;nh truy t&igrave;m về hạ lưu.
+            </li>
+            <li> <i>M&ocirc; tả</i> v&agrave; <i>Độ ph&acirc;n giải Dữ liệu</i>&mdash;Chứa th&ocirc;ng tin li&ecirc;n quan đến dữ liệu thủy văn để t&iacute;nh to&aacute;n truy t&igrave;m.
+            </li>
+            <li> <i>Khoảng c&aacute;ch Từ</i> v&agrave; <i>Khoảng c&aacute;ch Đến</i>&mdash;Chứa khoảng c&aacute;ch từ v&agrave; đến của từng ph&acirc;n đoạn đường. C&aacute;c thuộc t&iacute;nh n&agrave;y được ghi lại nếu sử dụng <b>Ph&acirc;n chia truy t&igrave;m th&agrave;nh c&aacute;c ph&acirc;n đoạn đường</b>.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Nếu chọn  <b>Sử dụng phạm vi bản đồ hiện tại</b>, th&igrave; chỉ c&aacute;c đối tượng điểm trong lớp đầu v&agrave;o được nh&igrave;n thấy trong phạm vi bản đồ hiện tại mới được ph&acirc;n t&iacute;ch. Nếu bỏ chọn, tất cả đối tượng trong lớp đầu v&agrave;o sẽ được sử dụng, ngay cả khi ch&uacute;ng ngo&agrave;i phạm vi bản đồ hiện tại.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Các đối tượng điểm được sử dụng làm vị trí bắt đầu cho từng việc truy vết hạ lưu.</h2></div>
+        <hr/>
+        <div>
+            <p>C&aacute;c đối tượng điểm được sử dụng l&agrave;m vị tr&iacute; bắt đầu cho việc truy vết hạ lưu. Đầu ra sẽ c&oacute; chứa một d&ograve;ng cho từng điểm đầu v&agrave;o. 
+            </p>
+            <p>B&ecirc;n cạnh việc chọn một lớp từ bản đồ của bạn, bạn cần chọn  <b>Chọn Lớp Ph&acirc;n t&iacute;ch Atlas Sinh sống</b> nằm dưới c&ugrave;ng trong danh s&aacute;ch xổ xuống 
+Thao t&aacute;c n&agrave;y mở ra một b&ocirc;̣ sưu t&acirc;̣p c&oacute; chứa c&aacute;c lớp hữu &iacute;ch cho nhiều sự ph&acirc;n t&iacute;ch kh&aacute;c nhau. 
+            </p>
+        </div>
+    </div>
+    <div id="SplitDistance">
+        <div><h2>Phân chia truy tìm thành các phân đoạn đường</h2></div>
+        <hr/>
+        <div>
+            <p>Đường truy t&igrave;m sẽ được ph&acirc;n chia th&agrave;nh nhiều đường ở đ&oacute; mỗi đường c&oacute; độ d&agrave;i chỉ định. V&iacute; dụ, nếu điểm đầu v&agrave;o của bạn thể hiện cho một điểm tr&agrave;n nhiễm bẩn v&agrave; n&oacute; chảy v&agrave;o d&ograve;ng s&ocirc;ng với tốc độ 0,6 dặm/giờ, hoặc 15 dặm/ng&agrave;y, bạn c&oacute; thể muốn ph&acirc;n chia d&ograve;ng s&ocirc;ng th&agrave;nh c&aacute;c ph&acirc;n đoạn mỗi ph&acirc;n đoạn d&agrave;i 15 dặm. Ph&acirc;n chia truy t&igrave;m th&agrave;nh c&aacute;c khoảng d&agrave;i 15 dặm sẽ cho biết nơi điểm tr&agrave;n sẽ đi qua h&agrave;ng ng&agrave;y. Đường sẽ được biểu dẫn bằng k&yacute; hiệu m&agrave;u sắc theo thang bậc dựa tr&ecirc;n khoảng c&aacute;ch v&agrave; được d&aacute;n nh&atilde;n với khoảng c&aacute;ch từ điểm bắt đầu truy t&igrave;m. Kết quả truy t&igrave;m sẽ c&oacute; nhiều ph&acirc;n đoạn đường, mỗi loại c&oacute; trường  <i>Khoảng c&aacute;ch Từ</i> v&agrave; <i>Khoảng c&aacute;ch Đến</i>.
+            </p> 
+        </div>
+    </div>
+    <div id="MaxDistance">
+        <div><h2>Khoảng cách tối đa của truy tìm</h2></div>
+        <hr/>
+        <div>
+            <p>X&aacute;c định tổng độ d&agrave;i của đường sẽ được trả về. Nếu bạn cung cấp c&aacute;c đối tượng v&ugrave;ng để cắt kết quả truy t&igrave;m th&igrave; kết quả sẽ được l&agrave; c&aacute;c đối tượng nằm trong khu vực cắt, bất kể khoảng c&aacute;ch bạn nhập ở đ&acirc;y.
+            </p>
+        </div>
+    </div>
+    <div id="ClipArea">
+        <div><h2>Cắt xén đầu vào tới</h2></div>
+        <hr/>
+        <div>
+            <p>Vẽ hoặc cung cấp một lớp v&ugrave;ng nơi bạn muốn cắt kết quả truy t&igrave;m. V&iacute; dụ, nếu bạn muốn kết quả truy t&igrave;m nằm trong khu vực nghi&ecirc;n cứu của m&igrave;nh, v&iacute; dụ như quận của bạn, h&atilde;y sử dụng đối tượng quận l&agrave;m đầu v&agrave;o n&ecirc;n kết quả truy t&igrave;m sẽ dừng tại ranh giới quận.   
+            </p>
+        </div>
+    </div>
+    <div id="OutputTrace">
+        <div><h2>Tên lớp kết quả</h2></div>
+        <hr/>
+        <div>
+            <p>Đ&acirc;y l&agrave; t&ecirc;n lớp sẽ được tạo trong mục  <b>Nội dung của T&ocirc;i</b> v&agrave; th&ecirc;m v&agrave;o bản đồ. T&ecirc;n mặc định dựa v&agrave;o t&ecirc;n c&ocirc;ng cụ v&agrave; t&ecirc;n lớp đầu v&agrave;o. Nếu lớp đ&atilde; tồn tại, bạn sẽ được y&ecirc;u cầu cung cấp t&ecirc;n mới.
+            </p>
+            <p>Sử dụng hộp xổ xuống  <b>Lưu kết quả trong</b>, bạn c&oacute; thể chỉ định t&ecirc;n thư mục trong mục <b>Nội dung của T&ocirc;i</b> nơi sẽ lưu trữ kết quả của bạn.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="SummarizeDataCategory" class="regularsize">
+        <h2>Veriyi Özetle</h2>
+        <hr/>
+        <p>Bu ara&ccedil;lar, alanlardaki detayların ya da yakın diğer detayların toplam sayısını, uzunluğunu, alanını ve temel a&ccedil;ıklayıcı istatistiklerini ve bunların &ouml;zniteliklerini hesaplar.
+            <ul>
+                <li> <b>Noktaları Birleştir</b>, belirtilen alanlar i&ccedil;inde kalan noktalar hakkındaki istatistikleri hesaplar.
+                </li>
+                <li> <b>Yakındakini &Ouml;zetle</b>, belirtilen bir mesafedeki &ouml;zelliklerin istatistiklerini ve bunların &ouml;zniteliklerini hesaplar.
+                </li>
+                <li> <b>Dahilinde &Ouml;zetle</b>, alanın birbiriyle &ouml;rt&uuml;şen detayların ve &ouml;zniteliklerinin istatistiklerini hesaplar.
+                </li>
+            </ul>
+            
+        </p>
+        <p> 
+        </p>
+    </div>
+        <div id="AggregatePointsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Noktaları Birleştir</h2></td>
+                    <td>
+                    <img src="../images/GUID-60C59C66-3038-4D0E-8F6A-EC6C53FEAA02-web.png" class="titleImage" alt="Noktaları Birleştir">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Bu ara&ccedil; bir nokta detayları katmanı ve bir alan detayları katmanı kullanarak her bir alana hangi noktanın d&uuml;şt&uuml;ğ&uuml;n&uuml; belirtir ve her bir alan i&ccedil;indeki noktaların t&uuml;m&uuml; hakkındaki istatistikleri hesaplar. &Ouml;rneğin:
+                <ul>
+                    <li>Su&ccedil; olaylarının nokta konumlarını ele alarak il&ccedil;e ve diğer idari b&ouml;lgeler başına su&ccedil; sayımını yapın.
+                    </li>
+                    <li>Eyalete g&ouml;re franchise konumlarının en y&uuml;ksek ve en d&uuml;ş&uuml;k gelirlerini bulun.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeNearbyTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Yakındakileri Özetle</h2></td>
+                    <td>
+                    <img src="../images/GUID-A5033D27-81B6-42E7-BA38-50D25C1CCCCA-web.png" class="titleImage" alt="Yakını &Ouml;zetle">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Girdi katmanındaki detayların belirli bir mesafesi dahilinde olan detayları bulur.   Mesafe, d&uuml;z &ccedil;izgiler boyunca veya seyahat modunun ge&ccedil;erli rotaları ile &ouml;l&ccedil;&uuml;lebilir. Daha sonra yakın detaylar i&ccedil;in istatistikler hesaplanır. &Ouml;rneğin:
+                <ul>
+                    <li>&Ouml;nerilen yeni mağaza konumuna beş dakikalık mesafedeki toplam n&uuml;fusu hesaplayın.
+                    </li>
+                    <li>Mağazaya erişilebilirliğin bir &ouml;l&ccedil;&uuml;t&uuml; olarak kullanmak &uuml;zere &ouml;nerilen yeni mağaza konumuna beş dakika mesafedeki toplam otoban &ccedil;ıkışı sayısını hesaplayın.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeWithinTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>İçinde Özetle</h2></td>
+                    <td>
+                    <img src="../images/GUID-9B12DB3F-AA7B-41EB-87C6-D2DEC3D52DA9-web.png" class="titleImage" alt="Dahilinde &Ouml;zetle">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>İki katman arasında bindirme yapan alanları (ve alanların kısımlarını) bulur ve bindirme hakkındaki istatistikleri hesaplar. &Ouml;rneğin:
+                <ul>
+                    <li>Bir boşaltma havzası alanları katmanı ve arazi kullanım t&uuml;r&uuml;ne g&ouml;re bir arazi kullanım alanları katmanı verildiğinde, her boşaltma havzası i&ccedil;in arazi kullanım t&uuml;r&uuml;n&uuml;n toplam y&uuml;z &ouml;l&ccedil;&uuml;m&uuml;n&uuml; hesaplayın. 
+                    </li>
+                    <li>Bir il&ccedil;edeki parsellerin bir katmanı ve şehir sınırlarının bir katmanı verildiğinde, her bir şehir dahilindeki boş parsellerin ortalama değerini &ouml;zetleyin.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="EnrichLocationsCategory" class="smallsize">
+        <h2>Veri Zenginleştirme</h2>
+        <hr/>
+        <p>Bu ara&ccedil;lar alanların karakterini keşfetmenize yardımcı olur. Ayrıntılı demografik veri ve istatistikler se&ccedil;ilen alanlarınıza d&ouml;nd&uuml;r&uuml;l&uuml;r. 
+            <ul>
+                <li> <b>Katmanı Zenginleştir</b>, belirli bir alanda bulunan ya da konumdan belirli bir seyahat s&uuml;resi veya mesafe i&ccedil;inde olan insanlar, yerler ve şirketler hakkındaki bilgileri alır.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="EnrichLayerTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Katmanı Zenginleştir</h2></td>
+                    <td>
+                    <img src="../images/GUID-5B2D9742-AFD2-4054-8D05-ED6A80EDAF4D-web.png" class="titleImage" alt="Katmanı Zenginleştir">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Belirli bir alanda bulunan ya da konumdan belirli bir seyahat s&uuml;resi veya mesafe i&ccedil;inde olan insanlar, yerler ve şirketler hakkındaki bilgileri alır.
+
+            </p>
+            <br/>
+        </div>
+    <div id="FindLocationsCategory" class="largesize">
+        <h2>Konum Bul</h2>
+        <hr/>
+        <p>Bu ara&ccedil;lar, belirlediğiniz bir dizi farklı kriteri karşılayan alanları tanımlamak i&ccedil;in kullanılır. Bu kriterler &ouml;znitelik sorgularını (&ouml;rneğin boş parseller) ve mekansal (&ouml;rneğin, bir nehre bir kilometre mesafedeki t&uuml;m parseller) sorguları temel alabilir. Bulunan alanlar mevcut detaylardan (mevcut arazi parselleri gibi) se&ccedil;ilebilir ya da t&uuml;m gereksinimleri karşılayan yeni detaylar oluşturulabilir.
+            <ul>
+                <li> <b>Mevcut Konumları Bul</b>, katmanda bir dizi kriteri karşılayan mevcut alanları arar.
+                </li>
+                <li> <b>Yeni Konumlar T&uuml;ret</b>, &ccedil;alışma alanınızdaki konumlardan, bir dizi kriteri karşılayan yeni alanlar &uuml;retir.
+                </li>
+                <li> <b>Benzer Konumları Bul</b>, belirlediğiniz kriterlere g&ouml;re bir ya da daha fazla referans konuma en benzeyen konumları bulur.
+                </li>
+                <li> <b>G&ouml;r&uuml;ş Alanı Oluştur</b>, belirttiğiniz konumlara bağlı olarak g&ouml;r&uuml;n&uuml;r olan alanlar oluşturur.
+                </li>
+                <li> <b>Su Toplama Oluştur</b>, belirttiğiniz konumlara bağlı olarak su tutma alanları oluşturur.
+                </li>
+                <li> <b>Akış Y&ouml;n&uuml;nde İzle</b>, belirttiğiniz konumlardan aşağı akış y&ouml;nl&uuml; akış yollarını belirler.
+                </li>
+            </ul>
+            
+        </p>
+        <p> 
+        </p>
+    </div>
+        <div id="FindExistingLocationsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Mevcut Konumları Bul</h2></td>
+                    <td>
+                    <img src="../images/GUID-FEF355B4-CF3B-48F6-9EC1-A00A1D53C81F-web.png" class="titleImage" alt="Mevcut Konumları Bul">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>&Ccedil;alışma alanınızda belirlediğiniz bir dizi kritere uygun mevcut &ouml;zellikleri se&ccedil;er. Bu kriterler &ouml;znitelik sorgularını (&ouml;rneğin boş parseller) ve mekansal (&ouml;rneğin, bir nehre 1 mil mesafedeki t&uuml;m parseller) sorguları temel alabilir.
+
+            </p>
+            <br/>
+        </div>
+        <div id="DeriveNewLocationsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Yeni Konumlar Türet</h2></td>
+                    <td>
+                    <img src="../images/GUID-4A756008-8431-4AA5-BD42-7135296560DD-web.png" class="titleImage" alt="Yeni Konumlar T&uuml;ret">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>&Ccedil;alışma alanınızda belirlediğiniz bir dizi kritere uygun yeni detaylar oluşturur. Bu kriterler &ouml;znitelik sorgularını (&ouml;rneğin boş parseller) ve mekansal (&ouml;rneğin, bir nehre 1 mil mesafedeki t&uuml;m parseller) sorguları temel alabilir.
+
+            </p>
+            <br/>
+        </div>
+        <div id="FindSimilarLocationsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Benzer Konumlar Bul</h2></td>
+                    <td>
+                    <img src="../images/GUID-6262A84E-9087-4E48-930E-E9B89FECC836-web.png" class="titleImage" alt="Benzer Konumları Bul">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Belirlediğiniz kriterlere g&ouml;re bir ya da daha fazla referans konuma en &ccedil;ok benzeyen konumları bulur.
+            </p>
+            <br/>
+        </div>
+        <div id="CreateViewshedTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Görüş Alanı Oluştur</h2></td>
+                    <td>
+                    <img src="../images/GUID-491E9A75-30CC-4526-9F71-E47FD25536DE-web.png" class="titleImage" alt="G&ouml;r&uuml;ş Alanı Oluştur">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Belirttiğiniz konumlara bağlı olarak g&ouml;r&uuml;n&uuml;r alanlar oluşturur.
+            </p>
+            <br/>
+        </div>
+        <div id="CreateWatershedsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Havza Oluştur</h2></td>
+                    <td>
+                    <img src="../images/GUID-4DE64CF6-2A02-46F6-8AE4-4D9227AAB71C-web.png" class="titleImage" alt="Havza Oluştur">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Belirttiğiniz konumlara bağlı olarak havza oluşturur.
+            </p>
+            <br/>
+        </div>
+        <div id="TraceDownstreamTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Akış Yönünde İzle</h2></td>
+                    <td>
+                    <img src="../images/GUID-1700E318-5F2D-4D4D-BF21-B12663F5D3C4-web.png" class="titleImage" alt="Akış Y&ouml;n&uuml; İzle">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Belirttiğiniz konumlardan aşağı akış y&ouml;nl&uuml; akış yollarını belirler.
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzePatternsCategory" class="regularsize">
+        <h2>Modelleri Analiz Et</h2>
+        <hr/>
+        <p>Bu ara&ccedil;lar, mekansal modelleri tanımlamanıza, sayısallaştırmanıza ve g&ouml;rselleştirmenize yardımcı olur.  
+            <ul>
+                <li> <b>Yoğunluğu Hesapla</b>, bazı olayların bilinen miktarlarını alır ve bu miktarları haritada dağıtır.
+                </li>
+                <li> <b>Etkin Nokta Bul</b> aracı, verinizin mekansal modelindeki istatistiksel a&ccedil;ıdan &ouml;nemli k&uuml;melenmeyi tanımlar.
+                </li>
+                <li> <b>Nokta Ara Değerlerini Hesaplama</b> aracı, toplama noktalarında bulunan &ouml;l&ccedil;&uuml;mlere dayanarak yeni konumlardaki değerleri tahmin eder.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateDensityTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Yoğunluğu Hesapla</h2></td>
+                    <td>
+                    <img src="../images/GUID-20E554EC-1F41-4951-99FE-B3FE71DB2E17-web.png" class="titleImage" alt="Yoğunluğu Hesapla">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Yoğunluk analizi, bazı olayların bilinen miktarlarını alır ve bu miktarları haritada dağıtır. Bu aracı, &ouml;rneğin, yıldırım d&uuml;şmesi veya kasırga yoğunluğunu, sağlık kurumlarına erişimi ve n&uuml;fus yoğunluğunu g&ouml;stermek amacıyla kullanabilirsiniz.
+            </p>
+            <br/>
+        </div>
+        <div id="FindHotSpotsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Duyarlı Noktaları Bul</h2></td>
+                    <td>
+                    <img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" class="titleImage" alt="Etkin Nokta Bul">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Bu ara&ccedil;, yalnızca verinizde yer alan istatistiksel a&ccedil;ıdan &ouml;nemli k&uuml;meleri g&ouml;steren bir harita oluşturur. Bu aracı, y&uuml;ksek ve d&uuml;ş&uuml;k ev değerlerinin, su&ccedil; yoğunluklarının, trafik kazası &ouml;l&uuml;mlerinin, işsizlik ya da biyo &ccedil;eşitliliğin vb. beklenmeyen etkin noktalarını (kırmızı) ve etkin olmayan noktalarını (mavi) ortaya &ccedil;ıkarmak i&ccedil;in kullanın.
+            </p>
+            <br/>
+        </div>
+        <div id="InterpolatePointsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Nokta Ara Değerlerini Hesapla</h2></td>
+                    <td>
+                    <img src="../images/GUID-28FC50AA-7B10-487C-949B-241EF2F8028E-web.png" class="titleImage" alt="Nokta Ara Değerlerini Hesapla">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Bu ara&ccedil;, toplama noktalarında bulunan &ouml;l&ccedil;&uuml;mlere dayanarak yeni konumlardaki değerleri tahmin etmenize olanak tanır. Ara&ccedil;, nokta verilerinin her noktadaki değerlerini alır ve tahmini değerlerle sınıflandırılan alanları d&ouml;nd&uuml;r&uuml;r. Bu aracı, &ouml;rneğin, tek tek alınan yağış &ouml;l&ccedil;&uuml;mlerine dayanarak bir havzadaki yağış d&uuml;zeylerini tahmin etmek i&ccedil;in kullanabilirsiniz.
+            </p>
+            <br/>
+        </div>
+    <div id="UseProximityCategory" class="regularsize">
+        <h2>Yakınlık Kullan</h2>
+        <hr/>
+        <p>  Bu ara&ccedil;lar mekansal analizdeki en yaygın sorulardan birine yanıt verir: &quot;Ne, neyin yakınında?&quot;
+            <ul>
+                <li> <b>&Ccedil;ıkışları Hedeflere Bağla</b>, nokta &ccedil;iftleri arasındaki seyahat s&uuml;resini veya mesafeyi &ouml;l&ccedil;er.
+                </li>
+                <li> <b>Tampon Oluştur</b>, detaylardan eşit mesafede alanlar oluşturur.
+                </li>
+                <li> <b>S&uuml;r&uuml;ş S&uuml;resi Alanları Oluştur</b>, konumlar &ccedil;evresindeki belirli bir s&uuml;rede ulaşılabilecek alanları bulur.
+                </li>
+                <li> <b>En Yakındakini Bul</b>, bilinen konumlara en yakın olan yerleri belirler.
+                </li>
+                <li> <b>Rotaları Planla</b>, ara&ccedil; filosunu olabildiğince &ccedil;ok durağa uğrayacak şekilde y&ouml;nlendirmenin yolunu bulur.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="ConnectOriginsToDestinationsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Çıkışları Hedeflere Bağla</h2></td>
+                    <td>
+                    <img src="../images/GUID-7266D30B-0250-4132-B1A5-9B59F0212FAD-web.png" class="titleImage" alt="&Ccedil;ıkışları Hedeflere Bağla">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>&Ccedil;ıkışları Hedeflere Bağla, nokta &ccedil;iftleri arasındaki seyahat s&uuml;resini ve mesafeyi &ouml;l&ccedil;er. Ara&ccedil;, d&uuml;z &ccedil;izgi mesafeleri, yol mesafelerini ve seyahat s&uuml;relerini bildirebilir. Bu aracı kullanarak şunları yapabilirsiniz
+            </p>
+            <p>
+                <ul>
+                    <li>Evden işe gidenlerin katettikleri toplam mesafeyi veya yolda ge&ccedil;irdikleri toplam s&uuml;reyi hesaplayın.
+                    </li>
+                    <li>M&uuml;şterilerin mağazalarınızda alışveriş yapmak i&ccedil;in ne kadar mesafe gittiklerini &ouml;l&ccedil;&uuml;n. Bu bilgileri kullanarak, &ouml;zellikle reklam kampanyalarını y&ouml;nlendirirken veya yeni mağaza konumları se&ccedil;erken pazar eriminizi tanımlamak.
+                    </li>
+                    <li>Ara&ccedil; filonuzun katetmesi beklenen kilometreyi hesaplamak. Daha sonra, eyalete veya diğer b&ouml;lgelere g&ouml;re kilometreyi raporlamak &uuml;zere İ&ccedil;inde &Ouml;zetle aracını &ccedil;alıştırın.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>&Ccedil;ıkış ve hedef noktaları girerseniz, ara&ccedil;, &ouml;l&ccedil;&uuml;mleriyle birlikte &ccedil;ıkış ve hedef &ccedil;iftleri arasındaki rota &ccedil;izgilerini i&ccedil;eren bir katman d&ouml;nd&uuml;r&uuml;r.
+            </p>
+            <br/>
+        </div>
+        <div id="CreateBuffersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Tampon Bölge Oluştur</h2></td>
+                    <td>
+                    <img src="../images/GUID-7F4A8E4D-42E3-41C1-9238-16619CE65079-web.png" class="titleImage" alt="Tampon Oluştur">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Tampon noktaya, &ccedil;izgiye ya da alan detayına g&ouml;re verilen mesafeyi kapsayan bir alandır. 
+            </p>
+            <p>Tamponlar genelde, Katmanları Bindir gibi diğer ara&ccedil;lar kullanarak daha fazla analiz edilebilecek alanlar oluşturmak i&ccedil;in kullanılır. &Ouml;rneğin, &quot;Okula bir kilometre mesafedeki binalar nelerdir?&quot; sorusu sorulduğunda, yanıt okul &ccedil;evresinde bir kilometrelik bir tampon oluşturularak ve tamponu bina ayak izlerini i&ccedil;eren katman ile bindirmek i&ccedil;in kullanılır. Nihai sonu&ccedil; okulun bir kilometre &ccedil;evresi i&ccedil;inde yer alan binalardan oluşan bir katmandır.  
+            </p>
+            <br/>
+        </div>
+        <div id="CreateDriveTimeAreasTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Sürüş Süresi Alanları Oluştur</h2></td>
+                    <td>
+                    <img src="../images/GUID-6F629A09-768D-4C04-88A4-AB941811ADE9-web.png" class="titleImage" alt="S&uuml;r&uuml;ş S&uuml;resi Alanları Oluştur">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>S&uuml;r&uuml;ş s&uuml;resi alanı, belirtilen bir s&uuml;r&uuml;ş s&uuml;resi ya da s&uuml;r&uuml;ş mesafesi dahilinde ulaşılabilecek bir alandır. S&uuml;r&uuml;ş s&uuml;resi alanları şu gibi sorulara yanıt sağlayabilir:
+                <ul>
+                    <li>30 dakikalık bir s&uuml;r&uuml;şle buradan nereye gidebilirim?
+                    </li>
+                    <li>Yoğun saatlerde saat 18:00'da 30 dakikalık bir s&uuml;r&uuml;şle buradan nereye gidebilirim?
+                    </li>
+                    <li>Kentin hangi alanları itfaiyenin beş dakikada erişebileceği yerlerdir? Yangına m&uuml;dahale s&uuml;resi, buraya yeni bir itfaiye istasyonu inşa edilerek nasıl iyileştirilir?
+                    </li>
+                    <li>İşim hangi pazar alanlarını kapsıyor? Hangi alanlar mağazama 10 mil mesafede?
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="FindNearestTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>En Yakındakini Bul</h2></td>
+                    <td>
+                    <img src="../images/GUID-150C2484-7459-405A-8835-B4E72CD49738-web.png" class="titleImage" alt="En Yakın Bul">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Olaylarla tesisler arasındaki seyahatin maliyetini &ouml;l&ccedil;er ve hangisinin bir diğerine daha yakın olduğunu belirler. Sonu&ccedil;, her rotanın seyahat maliyeti (s&uuml;re ve mesafe) ile birlikte olaylar ve tesisler arasındaki en iyi rotaları g&ouml;steren bir katmandır. &Ouml;rneğin, bu aracı bir kazaya en yakın hastaneyi ya da mevcut konumunuza en yakın ATM'yi bulmak i&ccedil;in kullanabilirsiniz.
+            </p>
+            <br/>
+        </div>
+        <div id="PlanRoutesTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Rotaları Planla</h2></td>
+                    <td>
+                    <img src="../images/GUID-09CC6D60-3C72-42D7-968E-B0663F0B1EBB-web.png" class="titleImage" alt="Rotaları Planla">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Durak grubu ve duraklara uğramak i&ccedil;in kullanılabilecek ara&ccedil;ların sayısını sağlarsanız, Rotaları Planla durakların ara&ccedil;lara verimli olarak nasıl atanacağını ve ara&ccedil;ların duraklara nasıl y&ouml;nlendirileceğini belirler.
+            </p>
+            <p>Gezgin denet&ccedil;i, değer bi&ccedil;ici, ev i&ccedil;i servis sağlayıcı vb. ekiplerinin işlerini planlamak; uzak yerlere mal g&ouml;t&uuml;r&uuml;p buralardan mal getirmek; veya insanlara ulaşım hizmetleri sunmak i&ccedil;in bu aracı kullanın.
+            </p>
+            <br/>
+        </div>
+    <div id="ManageDataCategory" class="regularsize">
+        <h2>Veri Yönet</h2>
+        <hr/>
+        <p>Bu ara&ccedil;lar hem g&uuml;nl&uuml;k coğrafi veri y&ouml;netimi hem de analiz &ouml;ncesinde verinin y&ouml;netimi i&ccedil;in kullanılır.  
+            <ul>
+                <li> <b>Sınırları Birleştir</b> ortak bir sınırı ya da ortak bir &ouml;znitelik değerini paylaşan alanları birleştirir.
+                </li>
+                <li> <b>Veri &Ccedil;ıkart</b>, mevcut veriden detaylar &ccedil;ıkartarak yeni veri k&uuml;meleri oluşturur.
+                </li>
+                <li> <b>Katmanları Birleştir</b> iki ya da daha fazla mevcut katmandaki t&uuml;m detayları yeni bir katmana kopyalar.
+                </li>
+                <li> <b>Katmanları Bindir</b>, iki ya da daha fazla katmanı tek bir katmana birleştirir. Bir &ccedil;akıştırmayı bir dizi haritanın &uuml;st &uuml;ste getirilerek istifteki t&uuml;m bilgileri i&ccedil;eren tek bir harita oluşturulması olarak d&uuml;ş&uuml;nebilirsiniz.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="DissolveBoundariesTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Sınırları Bütünleştir</h2></td>
+                    <td>
+                    <img src="../images/GUID-7B5F69B0-3625-404F-8B52-2B562766C0BB-web.png" class="titleImage" alt="Sınırları Birleştir">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Bindirilen ya da ortak bir sınırı paylaşan alanlar tek bir alan oluşturmak i&ccedil;in birleştirilir.    
+            </p>
+            <p>Hangi sınırların birleştirileceğini bir alan belirleyerek denetleyebilirsiniz. &Ouml;rneğin, bir il&ccedil;eler katmanınız varsa ve her il&ccedil;enin bir  <i>State_Name</i> &ouml;zniteliği varsa, <i>State_Name</i> &ouml;zniteliğini kullanarak sınırları birleştirebilirsiniz. Bitişik il&ccedil;eler aynı <i>State_Name</i> değerine sahipse birleştirilecektir. Nihai sonu&ccedil; bir il&ccedil;e sınırları katmandır.
+            </p>
+            <br/>
+        </div>
+        <div id="ExtractDataTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Verileri Çıkar</h2></td>
+                    <td>
+                    <img src="../images/GUID-CE24332B-74C0-412F-BB94-31415A02195A-web.png" class="titleImage" alt="Veri Ayıkla">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Katmanlarınızdan ve belirlediğiniz ilgi alanından zip dosyası, CSV veya KMZ verileri oluşturur.
+            </p>
+            <p> 
+            </p>
+            <br/>
+        </div>
+        <div id="MergeLayersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Katmanları Birleştir</h2></td>
+                    <td>
+                    <img src="../images/GUID-BDDD6517-4EE7-4EEC-AE15-15DD9B709131-web.png" class="titleImage" alt="Katmanları Birleştir">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>İki ya da daha fazla mevcut katmandaki detayları yeni bir katmana kopyalar, &ouml;rneğin:
+                <ul>
+                    <li>İngiltere, Galler ve İsko&ccedil;ya i&ccedil;in &uuml;&ccedil; katmanım var B&uuml;y&uuml;k Britanya i&ccedil;in tek bir katman istiyorum. 
+                    </li>
+                    <li>Her birinde bitişik kasabalar i&ccedil;in parsel bilgileri olan 12 katmanım var. Bunları tek bir katman olarak birleştirmek ve 12 giriş katmanında yalnızca aynı ada ve t&uuml;re sahip &ouml;znitelikleri tutmak istiyorum.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="OverlayLayersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Katmanları Çakıştır</h2></td>
+                    <td>
+                    <img src="../images/GUID-CE1E0E84-F3B5-446B-9FDE-4DA057F106CC-web.png" class="titleImage" alt="Katmanları &Ccedil;akıştır">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>&Ccedil;akıştırma aracı iki ya da daha fazla katmanı tek bir katmana &ccedil;akıştırır. Bindirmeyi bir dizi haritanın &uuml;st &uuml;ste getirilerek istifteki t&uuml;m bilgileri i&ccedil;eren tek bir harita oluşturulması olarak d&uuml;ş&uuml;nebilirsiniz, &ouml;rneğin:
+                <ul>
+                    <li>Hangi parseller 100 ayaklık a&ccedil;ış d&uuml;zlemi i&ccedil;inde? (&quot;Dahilinde&quot;, &quot;&uuml;st&uuml;nde&quot; demenin bir diğer yoludur.)
+                          
+                    </li>
+                    <li>Hangi yollar hangi il&ccedil;eler dahilinde?
+                    </li>
+                    <li>Hangi arası kullanımı hangi toprak t&uuml;r&uuml; &uuml;zerinde?
+                         
+                    </li>
+                    <li>Hangi kuyular terk edilmiş askeri &uuml;slerin i&ccedil;inde?
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+</div>
+</html>

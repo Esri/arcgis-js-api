@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Dichtstbijzijnde zoeken</h2><p/>
+        <h2><img src="../images/GUID-150C2484-7459-405A-8835-B4E72CD49738-web.png" alt="Dichtstbijzijnde zoeken"></h2>
+        <hr/>
+    <p>Met deze tool vindt u de dichtstbijzijnde objecten en worden de afstanden tot de objecten in de buurt in volgorde gemeld. Om te weten wat het dichtste bij is, kan de tool metingen uitvoeren op basis van de afstand hemelsbreed of een gekozen manier van reizen. Er zijn opties om het resultaat van de zoekactie naar de dichtstbijzijnde objecten te beperken tot een aantal of een bereik. De resultaten van deze tool kunnen u helpen de volgende soorten vragen te beantwoorden:
+        <ul>
+            <li>Wat is het dichtstbijzijnde park hiervandaan?
+            </li>
+            <li>Welk ziekenhuis kan ik in de kortst mogelijke reistijd bereiken?Hoe lang duurt de rit op een dinsdag om 17:30 uur tijdens de spits?
+            </li>
+            <li>Wat is de afstand via de weg tussen deze grote steden?
+            </li>
+            <li>Welke van deze pati&euml;nten wonen binnen 3 kilometer van deze chemische fabrieken?
+            </li>
+        </ul>
+        
+    </p>
+    <p>Met Dichtstbijzijnde zoeken wordt een kaartlaag geretourneerd met de dichtstbijzijnde objecten en een lijnlaag waarin de vertreklocaties worden gekoppeld aan de dichtstbijzijnde locaties. De lijnlaag bevat informatie over de vertreklocaties en de dichtstbijzijnde locaties en de afstanden daartussen.
+    </p>
+    <p>Als  <b>Huidige kaartextent gebruiken</b> is geselecteerd, worden alleen de objecten die zichtbaar zijn binnen de huidige kaartextent, beschouwd als startobject en mogelijke dichtstbijzijnde objecten. Als deze optie niet wordt geselecteerd, worden alle objecten in de invoerlaag in aanmerking genomen, ook als ze zich buiten de huidige kaartomvang bevinden.  
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="analysisLayer">
+        <div><h2>Kies puntlaag waar de locaties in de buurt worden gevonden</h2></div>
+        <hr/>
+        <div>
+            <p>Met Dichtstbijzijnde zoeken wordt gemeten vanaf de punten in de laag die u hier opgeeft (de startlocaties) tot de punten die u opgeeft in de volgende parameter. De tool ondersteunt maximaal 1.000 locaties in elke kaartlaag.
+
+            </p>
+        </div>
+    </div>
+    <div id="NearbyLocationsLayer">
+        <div><h2>Dichtstbijzijnde locaties zoeken in</h2></div>
+        <hr/>
+        <div>
+            <p>Met Dichtstbijzijnde zoeken wordt gemeten vanaf elke locatie in de eerste laag tot aan de locaties in deze laag. De tool ondersteunt maximaal 1.000 locaties in elke kaartlaag.
+            </p>
+            <p>Naast het kiezen van een laag uit uw kaart, kunt u  <b>Analyselaag Levende Atlas kiezen</b> selecteren onderaan de vervolgkeuzelijst. Er wordt een galerij geopend met een verzameling lagen die handig zijn voor veel analyses. 
+            </p>
+        </div>
+    </div>
+    <div id="MeasurementMethod">
+        <div><h2>Meten</h2></div>
+        <hr/>
+        <div>
+            <p>Kies of u de dichtstbijzijnde locaties wilt vinden op basis van de afstand hemelsbreed of een geselecteerde manier van reizen. Reismethoden kunnen alleen worden ingeschakeld als uw invoerlaag punten bevat. De beschikbare manieren van reizen worden bepaald door de beheerder van uw organisatie. Bij gebruik van de reismanieren worden de metingen gedaan over wegen of wandelpaden en er wordt rekening gehouden met geldende regels zoals eenrichtingswegen, keerverboden, etcetera.
+            </p>
+            <p>Bij het meten tussen lijnen of gebieden wordt de afstand van of naar het dichtstbijzijnde punt langs de lijn of de grens van het gebied gezocht. 
+            </p> 
+            <p>Als u  <b>reistijd</b> kiest, hebt u opties voor het meten van de reistijd.
+                <ul>
+                    <li>
+                        <p>Schakel  <b>Verkeer gebruiken</b> uit om de dichtstbijzijnde objecten te vinden op basis van statische reistijden, zoals snelheidslimieten in plaats van op basis van wisselende snelheden ten gevolge van veranderende verkeersomstandigheden.
+                        </p>
+                        <p>Kies deze optie als u wilt weten welke locatie in het algemeen het dichtst bij is, en niet de dichtstbijzijnde locatie met betrekking tot bepaalde verkeersomstandigheden voor een bepaalde dag en tijdstip.
+                        </p>
+                    </li>
+                    <li>
+                        <p>Schakel het selectievakje  <b>Verkeer gebruiken</b> in om de dichtstbijzijnde objecten te vinden op basis van een gegeven vertrektijd en veranderende verkeersomstandigheden. Door eveneens de optie <b>Actueel verkeer</b> te kiezen wordt de vertrektijd van de vertreklocaties ingesteld op de huidige tijd, en wordt gebruikgemaakt van huidige en voorspelde verkeerssnelheden via sensors en invoergegevens om te bepalen welke objecten het dichtstbij zijn. De voorspelde verkeerssnelheden worden berekend op basis van actuele verkeerssnelheden, historische snelheden en huidige omstandigheden zoals het weer. Verkeerssnelheden worden tot 12 uur in de toekomst voorspeld, dus u kunt de schuifregelaar verplaatsen om de vertrektijd maximaal 12 uur naar de toekomst te verplaatsen.
+                        </p>
+                        <p>Gebruik deze actuele verkeersinstellingen om te ontdekken welke objecten bereikbaar zijn in de kortst mogelijke tijd als u nu vertrekt, over een uur vertrekt, enzovoort.
+                        </p>
+                    </li>
+                    <li>
+                        <p>Als u  <b>Verkeer gebruiken</b> selecteert en <b>Verkeer op basis van gemiddelde omstandigheden voor</b> een dag en een tijdstip, zoekt de tool de dichtstbijzijnde objecten op basis van historische gemiddelde snelheden voor elk interval van vijf minuten gedurende een gewone week. De resultaten houden rekening met het verkeer, maar laten de invloed van huidige verkeersomstandigheden en gebeurtenissen buiten beschouwing die aanzienlijk van het gemiddelde kunnen verschillen.
+                        </p>
+                        <p>U kunt deze historische verkeersinstellingen gebruiken om bijvoorbeeld de vraag te stellen: Welke objecten kan ik het snelst bereiken wanneer ik op een woensdag vanuit de startobjecten om 11:30 uur vertrek? 
+                        </p>
+                        <p>De tijd die u instelt, verwijst naar de tijdzone waarop uw startobjecten zich bevinden. Als u de tijd dus instelt op 8:00 uur en twee startobjecten hebt, een in New York City en een ander in Los Angeles, worden de dichtstbijzijnde locaties gevonden met een vertrektijd van  respectievelijk 8:00 uurEastern Time en 8:00 uurPacific Time als uitgangspunt.
+                        </p>
+                    </li>
+                </ul>
+                Houd er rekening mee dat wanneer een voertuig wegrijdt vanaf een bepaald punt, de tijd verstrijkt en de verkeersomstandigheden wijzigen. Deze tool houdt rekening met deze variaties wanneer u <b>Verkeer gebruiken</b> selecteert; maar niet alle regio's ondersteunen verkeer. Klik op de koppeling <b>Beschikbaarheid bekijken</b> om erachter te komen of deze optie voor uw onderzoeksgebied van toepassing is. 
+            </p>
+        </div>
+    </div>
+    <div id="Cutoffs">
+        <div><h2>Voor elke locatie in de invoerlaag</h2></div>
+        <hr/>
+        <div>
+            <p>U hebt twee opties voor het beperken van de zoekactie naar dichtstbijzijnde locaties. E&eacute;n optie is het maximum aantal te zoeken dichtstbijzijnde locaties per vertreklocatie te beperken. U kunt het dichtstbijzijnde park, of de twee dichtstbijzijnde parken zoeken, enzovoort. De andere optie is een maximale zoekafstand of reistijd in te stellen.
+            </p>
+            <p>Als u de opties uitschakelt, is het maximum aantal dichtstbijzijnde locaties 100 (de bovengrens van de tool), en het maximale zoekbereik is onbeperkt.
+            </p>
+            <p>De verwerkingstijd hangt af van het aantal vertreklocaties, het aantal locaties in de buurt en het maximale zoekbereik. De verwerkingstijd is langer naarmate er meer locaties zijn of het zoekbereik groter is.
+            </p>
+            <p>Houd er rekening mee dat als een limiet wordt ingesteld op het zoekbereik, het mogelijk is dat de tool geen dichtstbijzijnde locaties binnen het bereik vindt of dat er minder locaties worden gevonden dan het maximale aantal dichtstbijzijnde locaties dat u opgeeft.
+            </p>
+        </div>
+    </div>
+    <div id="OutputNearestLocationsLayer">
+        <div><h2>Resultaat laagnaam</h2></div>
+        <hr/>
+        <div>
+            <p>Deze resultaatlaag bevat twee lagen: een met de dichtstbijzijnde locaties en een met de lijnen die de invoerlocaties verbinden met de dichtstbijzijnde locaties.
+            </p>
+            <p>Omdat de lijnen de gemeten paden laten zien, volgen ze rechte paden bij het meten van afstanden volgens een rechte lijn, de kortste paden langs wegen bij het meten van reisafstanden, of de snelste paden langs wegen bij het meten van reistijden. De tabel is onderdeel van de optionele lijnlaag en bevat de volgende informatie: de metingen van de afstand of de reistijd zoals weergegeven door de lijnen, identificerende gegevens over de verbonden vertrek- en aankomstlocaties, en een volgorde van nabijheid per vertreklocatie, waardoor u kunt zien wat de dichtstbijzijnde locatie is, de op een na dichtstbijzijnde locatie, enzovoort. Bij het meten van de reistijd met verkeer bevat de tabel ook vertrek- en aankomsttijden.
+            </p>
+            <p>U kunt de standaardnamen gebruiken of nieuwe namen opgeven voor deze kaartlagen, die worden gemaakt in  <b>Mijn Content</b> en aan de kaart worden toegevoegd. De standaardnamen zijn gebaseerd op de naam van de invoerlaag. Als de laag al bestaat, wordt u gevraagd een nieuwe naam te geven.
+            </p>
+            <p>Als u de vervolgkeuzelijst  <b>Resultaat opslaan in</b> gebruikt, kunt u de naam opgeven van een map in <b>Mijn Content</b> waarin het resultaat wordt opgeslagen.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

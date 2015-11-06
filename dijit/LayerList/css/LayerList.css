@@ -1,0 +1,104 @@
+.esriLayerList .esriList {
+  background-color: #ededed;
+  border-top: 1px solid #e0e0e0;
+}
+
+.esriLayerList .esriNoLayers .esriList {
+  display: none;
+}
+
+.esriLayerList .esriNoLayersText {
+  display: none;
+}
+
+.esriLayerList .esriNoLayers .esriNoLayersText {
+  display: block;
+  padding: 10px;
+}
+
+.esriLayerList .esriList ul {
+  background-color: #d3d3d3;
+  background-color: rgba(0, 0, 0, 0.025);
+}
+
+.esriLayerList .esriList,
+.esriLayerList .esriLayer,
+.esriLayerList .esriSubList,
+.esriLayerList .esriSubListLayer {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.esriLayerList .esriSubList {
+  margin: 0 0 0 12px;
+}
+
+.dj_rtl .esriLayerList .esriSubList {
+  margin: 0 20px 0 0;
+}
+
+.esriLayerList .esriTitle {
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 16px;
+  line-height: 20px;
+  background-color: #f8f8f8;
+  color: #555;
+}
+
+.esriLayerList .esriLabel {
+  display: block;
+  padding: 10px 20px 10px 32px;
+  margin: 0;
+  word-wrap: break-word;
+}
+
+.dj_rtl .esriLayerList .esriLabel {
+  padding: 10px 32px 10px 20px;
+}
+
+.esriLayerList .esriScaleInvisible .esriLabel {
+  color: #999;
+}
+
+.esriLayerList .esriCheckbox {
+  float: left;
+  height: 16px;
+  width: 16px;
+  padding: 0;
+  margin: 12px 5px 12px 10px;
+}
+
+.dj_rtl .esriLayerList .esriCheckbox {
+  float: right;
+  margin: 12px 10px 12px 5px;
+}
+
+.esriLayerList .esriButton {
+  float: right;
+  font-size: 16px;
+  line-height: 20px;
+  cursor: pointer;
+  color: #999;
+}
+
+.esriLayerList .esriButton:hover,
+.esriLayerList .esriButton:active {
+  color: #333;
+}
+
+.esriLayerList .esriContent {
+  margin: 0 20px 5px 32px;
+}
+
+.dj_rtl .esriLayerList .esriContent {
+  margin: 0 32px 5px 20px;
+}
+
+.dj_rtl .esriLayerList .esriButton {
+  float: left;
+}
+
+.esriLayerList .esriClear {
+  clear: both;
+}

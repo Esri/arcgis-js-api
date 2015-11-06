@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Crear zonas de influencia</h2><p/>
+        <h2><img src="../images/GUID-7F4A8E4D-42E3-41C1-9238-16619CE65079-web.png" alt="Crear zonas de influencia"></h2>
+        <hr/>
+    <p>Una zona de influencia es un &aacute;rea que cubre una distancia dada desde una entidad de puntos, de l&iacute;nea o de &aacute;rea. 
+    </p>
+    <p>Las zonas de influencia se suelen utilizar para crear &aacute;reas que se pueden analizar m&aacute;s a fondo usando una herramienta como Superponer capas. Por ejemplo, si la pregunta es &quot;&iquest;Qu&eacute; edificios est&aacute;n a un kil&oacute;metro del colegio?&quot;, la respuesta se puede encontrar creando una zona de influencia de un kil&oacute;metro en torno al colegio y utilizando la herramienta Superponer capas para superponer la zona de influencia con la capa que contiene las superficies de los edificios. El resultado final es una capa con los edificios que se encuentran a un kil&oacute;metro del colegio.  
+    </p>
+    <p>Si  <b>Utilizar la extensi&oacute;n de mapa actual al buscar ubicaciones</b> se ha activado, solo se crear&aacute;n zonas de influencia para las entidades que est&eacute;n visibles en la extensi&oacute;n de mapa actual.  Si no se ha activado, se crear&aacute;n zonas de influencia para todas las entidades de la capa de an&aacute;lisis, aunque est&eacute;n fuera de la extensi&oacute;n de mapa actual.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Elegir una capa que contenga entidades que se puedan incluir en zonas de influencia</h2></div>
+        <hr/>
+        <div>
+            <p>Las entidades de puntos, l&iacute;neas o &aacute;reas que se deben incluir en la zona de influencia.
+
+            </p>
+            <p>Adem&aacute;s de elegir una capa en el mapa, puedes seleccionar  <b>Elegir capa de an&aacute;lisis de atlas vivo</b>, que se encuentra al final de la lista desplegable. Esto abre una galer&iacute;a que contiene un conjunto de capas que resultan &uacute;tiles para numerosos an&aacute;lisis. 
+            </p>
+        </div>
+    </div>
+    <div id="BufferSize">
+        <div><h2>Introducir tamaño de zona de influencia</h2></div>
+        <hr/>
+        <div>
+            <p>Puedes introducir uno o varios valores de distancia separ&aacute;ndolos entre s&iacute; con un espacio. Tambi&eacute;n puedes especificar en la capa de entrada un atributo que contenga el valor de la distancia haciendo clic en  <b>Campo</b>.
+            </p> 
+        </div>
+    </div>
+    <div id="OptionPoint">
+        <div><h2>Opciones</h2></div>
+        <hr/>
+        <div>
+            <p>Elige c&oacute;mo deseas tratar las zonas de influencia que se superponen. Si una zona de influencia se encuentra encima de otra, las &aacute;reas en com&uacute;n se pueden conservar (superponer) o combinar (disolver).
+            </p>  
+            <p> Cuando uses varias distancias, puedes optar por representar la distancia con respecto a la &uacute;ltima distancia de zona de influencia; por ejemplo, si las distancias son 10 y 14:
+                <ul>
+                    <li>Al elegir  <b>Anillos</b> se generan zonas de influencia que van de 0 a 10 y de 10 a 14.
+                    </li>
+                    <li>Al elegir  <b>Discos</b> se generan zonas de influencia que van de 0 a 10 y de 0 a 14.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="OptionPoly">
+        <div><h2>Opciones</h2></div>
+        <hr/>
+        <div>
+            <p>Elige c&oacute;mo deseas tratar las zonas de influencia que se superponen. Si una zona de influencia se encuentra encima de otra, las &aacute;reas en com&uacute;n se pueden conservar (superponer) o combinar (disolver).
+            </p>
+            <p>Cuando crees una sola zona de influencia en torno a las entidades de &aacute;rea (una distancia introducida), puedes elegir si la entidad para la que se est&aacute; creando la zona de influencia se incluye en la zona de influencia resultante o se excluye de ella.
+            </p>
+            <p>Cuando uses varias distancias, puedes optar por representar la distancia con respecto a la &uacute;ltima distancia de zona de influencia; por ejemplo, si las distancias son 10 y 14:
+                <ul>
+                    <li>Al elegir  <b>Anillos</b> se generan zonas de influencia que van de 0 a 10 y de 10 a 14.
+                    </li>
+                    <li>Al elegir  <b>Discos</b> se generan zonas de influencia que van de 0 a 10 y de 0 a 14.
+                    </li>
+                </ul>
+                
+            </p> 
+        </div>
+    </div>
+    <div id="OptionLine">
+        <div><h2>Opciones</h2></div>
+        <hr/>
+        <div>
+            <p>Elige c&oacute;mo deseas tratar las zonas de influencia que se superponen. Si una zona de influencia se encuentra encima de otra, las &aacute;reas en com&uacute;n se pueden conservar (superponer) o combinar (disolver).
+            </p>
+            <p>Cuando crees una sola zona de influencia en torno a l&iacute;neas (una distancia introducida), puedes elegir para qu&eacute; lado de la l&iacute;nea se va a crear la zona de influencia. Normalmente, se eligen los dos lados. La izquierda y la derecha se determinan como si estuvieras caminando desde la primera coordenada x,y de la l&iacute;nea (la coordenada inicial) hasta la &uacute;ltima coordenada x,y de la l&iacute;nea (la coordenada final). A menudo, elegir izquierda o derecha significa que sabes que las entidades de l&iacute;nea se han creado y almacenado en una direcci&oacute;n concreta (por ejemplo, aguas arriba o aguas abajo en una red fluvial). En los extremos de las l&iacute;neas, la zona de influencia puede ser redondeada (Redondo) o recta (Plano).
+            </p>
+            <p>Cuando crees varias zonas de influencia (m&aacute;s de una distancia), puedes optar por representar la distancia con respecto a la &uacute;ltima distancia de zona de influencia; por ejemplo, si las distancias son 10 y 14:
+                <ul>
+                    <li>Al elegir  <b>Anillos</b> se generan zonas de influencia que van de 0 a 10 y de 10 a 14.
+                    </li>
+                    <li>Al elegir  <b>Discos</b> se generan zonas de influencia que van de 0 a 10 y de 0 a 14.
+                    </li>
+                </ul>
+                
+            </p> 
+        </div>
+    </div>
+    <div id="BufferLayer">
+        <div><h2>Nombre de capa de resultados</h2></div>
+        <hr/>
+        <div>
+            <p>Este es el nombre de la capa que se crear&aacute; en  <b>Mi contenido</b> y se agregar&aacute; al mapa.  El nombre predeterminado se basa en nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, se te pedir&aacute; que indiques otro nombre.
+            </p>
+            <p>En el cuadro desplegable  <b>Guardar el resultado en</b>, puedes especificar el nombre de una carpeta de <b>Mi contenido</b> en la que se guardar&aacute; el resultado.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

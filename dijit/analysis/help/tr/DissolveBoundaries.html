@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Sınırları Bütünleştir</h2><p/>
+        <h2><img src="../images/GUID-7B5F69B0-3625-404F-8B52-2B562766C0BB-web.png" alt="Sınırları Birleştir"></h2>
+        <hr/>
+    <p>Bindirilen ya da ortak bir sınırı paylaşan alanlar tek bir alan oluşturmak i&ccedil;in birleştirilir.    
+    </p>
+    <p>Hangi sınırların birleştirileceğini bir alan belirleyerek denetleyebilirsiniz. &Ouml;rneğin, bir il&ccedil;eler katmanınız varsa ve her il&ccedil;enin bir  <i>State_Name</i> &ouml;zniteliği varsa, <i>State_Name</i>&ouml;zniteliğini kullanarak sınırları birleştirebilirsiniz.  Aynı <i>State_Name</i> değerine sahip olan bitişik il&ccedil;eler birleştirilir.  Nihai sonu&ccedil; bir il&ccedil;e sınırları katmandır.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Sınırları birleştirilecek alan katmanını seç</h2></div>
+        <hr/>
+        <div>
+            <p>Birleştirilecek alan detaylarını kapsayan katmandır.
+
+            </p>
+            <p>Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, aşağı a&ccedil;ılan listenin altında bulunan  <b>Living Atlas Analiz Katmanı Se&ccedil;</b> &ouml;ğesini de belirleyebilirsiniz. Bu, pek &ccedil;ok analiz i&ccedil;in kullanılabilen katman koleksiyonu i&ccedil;eren bir galeri a&ccedil;ar. 
+            </p>
+        </div>
+    </div>
+    <div id="DissolveFields">
+        <div><h2>Bütünleme yöntemini seç</h2></div>
+        <hr/>
+        <div>
+            <p>Alan &ouml;zelliklerini birleştirmek i&ccedil;in iki y&ouml;ntemden birini se&ccedil;ebilirsiniz:
+                <ul>
+                    <li> <b>&Ouml;rt&uuml;şen ya da bitişik alanlar</b>; Sınırları birbiriyle &ouml;rt&uuml;şen iki ya da daha fazla alan bir alan olarak birleştirilir.  Ek olarak bitişik (yani aynı ortak sınırı paylaşan) alanlar bir alan olarak birleştirilir.
+                    </li>
+                    <li> <b>Aynı alan değerine sahip alanlar</b>; &Ouml;rt&uuml;şen ya da ortak bir sınır paylaşan alanlar, aynı alan değerine sahiplerse bir alan olarak birleştirilir.
+                        <p>&Ouml;rneğin, bir il&ccedil;eler katmanınız varsa ve her il&ccedil;enin bir  <i>State_Name</i> alanı varsa, <i>State_Name</i> alanını kullanarak sınırları birleştirebilirsiniz.  Aynı <i>State_Name</i> değerine sahip olan bitişik il&ccedil;eler birleştirilir.  Nihai sonu&ccedil; bir il&ccedil;e sınırları katmandır.
+                        </p>
+                    </li>
+                </ul>
+                
+            </p>
+            <p> <b>Ge&ccedil;erli harita kapsamını kullan</b> işaretli ise, yalnızca ge&ccedil;erli harita yayılımında g&ouml;r&uuml;n&uuml;r olan girdi katmanındaki detaylar birleştirilir.  İşaretli değilse, girdi katmanındaki t&uuml;m detaylar, ge&ccedil;erli harita yayılımının dışında bile olsa birleştirilir.
+            </p>
+        </div>
+    </div>
+    <div id="SummaryFields">
+        <div><h2>İstatistik ekle</h2></div>
+        <hr/>
+        <div>
+            <p>Alanlar birleştirildiğinde, bunların &ouml;zniteliklerini &ouml;zetleyebilirsiniz. &Ouml;rneğin il&ccedil;eler arasındaki sınırı  <i>State_Name</i> &ouml;ğesine g&ouml;re birleştiriyorsanız ve her il&ccedil;enin bir <i>Population</i> alanı varsa, o il&ccedil;e i&ccedil;in <i>Population</i> toplamını hesaplayabilirsiniz.
+            </p>
+            <p>Kullanılabilir istatistik t&uuml;rleri şunlardır:
+            </p>
+            <ul>
+                <li> <b>Toplam</b>; Belirtilen alanın toplam değerini ekler
+                    
+
+                </li>
+                <li> <b>Ortalama</b>; Belirtilen alanın ortalamasını hesaplar
+                    
+
+                </li>
+                <li> <b>Minimum</b>; Belirtilen alanın t&uuml;m kayıtları i&ccedil;in en k&uuml;&ccedil;&uuml;k değeri bulur
+                    
+
+                </li>
+                <li> <b>Maksimum</b>; Belirtilen alanın t&uuml;m kayıtları i&ccedil;in en b&uuml;y&uuml;k değeri bulur
+                    
+
+                </li>
+                <li> <b>Std. Sapma</b>&mdash;Belirtilen alanda yer alan değerlerdeki standart sapmayı bulur
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="OutputName">
+        <div><h2>Sonuç katmanı adı</h2></div>
+        <hr/>
+        <div>
+            <p>Bu,  <b>İ&ccedil;eriğim</b>'de oluşturulacak ve haritaya eklenecek katmanın adıdır.  Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Katman zaten mevcutsa, başka bir ad sağlamanız istenir.
+            </p>
+            <p> <b>Sonu&ccedil;ları kaydet</b> a&ccedil;ılır kutusunu kullanarak <b>İ&ccedil;eriğim</b> alanında sonucun kaydedileceği klas&ouml;r adını belirleyebilirsiniz.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

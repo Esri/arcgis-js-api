@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Tạo Khu vực Thời gian Lái xe</h2><p/>
+        <h2><img src="../images/GUID-6F629A09-768D-4C04-88A4-AB941811ADE9-web.png" alt="Tạo Khu vực Thời gian L&aacute;i xe"></h2>
+        <hr/>
+    <p>Tạo Khu vực Thời gian L&aacute;i xe sẽ tạo c&aacute;c khu vực c&oacute; thể đến trong thời gian l&aacute;i xe, khoảng c&aacute;ch l&aacute;i xe, khoảng c&aacute;ch đi bộ cụ thể, v.v. Khu vực n&agrave;y được đo từ một hoặc nhiều điểm (tối đa 1.000), dọc theo con đường hoặc lối đi, để tạo ra một lớp c&oacute; thể gi&uacute;p bạn trả lời những c&acirc;u hỏi như:
+        <ul>
+            <li>T&ocirc;i c&oacute; thể đến nơi n&agrave;o từ đ&acirc;y trong v&ograve;ng 30 ph&uacute;t l&aacute;i xe?
+            </li>
+            <li>T&ocirc;i c&oacute; thể đến nơi n&agrave;o từ đ&acirc;y trong v&ograve;ng 30 ph&uacute;t l&aacute;i xe v&agrave;o l&uacute;c 5:30 chiều trong giờ cao điểm?
+            </li>
+            <li>C&oacute; g&igrave; trong phạm vi đi bộ hai kil&ocirc;m&eacute;t từ kh&aacute;ch sạn của t&ocirc;i?
+            </li>
+            <li>Khu vực n&agrave;o trong thị x&atilde; c&oacute; thể gọi bộ phận cứu hỏa trong v&ograve;ng năm ph&uacute;t? 
+            </li>
+            <li>L&agrave;m thế n&agrave;o để cải thiện phạm vi ph&ograve;ng ch&aacute;y chữa ch&aacute;y bằng c&aacute;ch x&acirc;y dựng một trạm cứu hỏa mới ở đ&acirc;y?
+            </li>
+            <li>Khu vực thị trường n&agrave;o c&oacute; hoạt động kinh doanh của t&ocirc;i?
+            </li>
+        </ul>
+        
+    </p>
+    <p>Bạn chỉ c&oacute; thể trả lời c&aacute;c c&acirc;u hỏi bằng c&aacute;ch trực quan h&oacute;a c&aacute;c khu vực đầu ra. Ngo&agrave;i ra, bạn c&oacute; thể thực hiện ph&acirc;n t&iacute;ch kh&ocirc;ng gian kh&aacute;c bằng c&aacute;c khu vực đầu ra. V&iacute; dụ: chạy Điểm Tổng hợp sử dụng c&aacute;c khu vực thời gian l&aacute;i xe với c&aacute;c dữ liệu nh&acirc;n khẩu học c&oacute; thể gi&uacute;p x&aacute;c định vị tr&iacute; nh&agrave; kho tiềm năng n&agrave;o c&oacute; thể cung cấp cơ sở kh&aacute;ch h&agrave;ng tốt nhất cho loại h&igrave;nh kinh doanh của bạn. 
+    </p>
+    <p>
+        <table>
+        <tr><td colspan="3"><hr size="1" noshade="noshade"></td></tr>
+        <tr><td valign="baseline"><img src="../images/tip.png"></td><td valign="baseline"><h2>Tip:&ensp;</h2></td>
+        <td valign="baseline">
+            <p>Để tạo c&aacute;c khu vực bằng c&aacute;ch đo khoảng c&aacute;ch đường thẳng chứ kh&ocirc;ng phải bằng c&aacute;ch đo dọc theo đường giao th&ocirc;ng, thay v&agrave;o đ&oacute; sử dụng c&ocirc;ng cụ Tạo V&ugrave;ng đệm.
+            </p>
+        </td></tr>
+        <tr><td colspan="3"><hr size="1" noshade="noshade"></td></tr>
+        </table>
+    </p>
+    <p>Nếu chọn  <b>Sử dụng phạm vi bản đồ hiện tại</b>, th&igrave; chỉ c&aacute;c đối tượng nh&igrave;n thấy trong phạm vi bản đồ hiện tại sẽ được d&ugrave;ng để tạo c&aacute;c khu vực theo thời gian l&aacute;i xe hoặc khoảng c&aacute;ch l&aacute;i xe. Nếu bỏ chọn, tất cả đối tượng trong lớp đầu v&agrave;o sẽ được sử dụng, ngay cả khi ch&uacute;ng ngo&agrave;i phạm vi bản đồ hiện tại.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Chọn lớp điểm để tính toán xung quanh khu vực thời gian lái xe</h2></div>
+        <hr/>
+        <div>
+            <p>C&aacute;c đối tượng điểm xung quanh khu vực đ&oacute; sẽ được t&iacute;nh to&aacute;n. Bạn c&oacute; thể chọn phương thức đi lại của bạn (l&aacute;i xe, đi xe kh&aacute;ch hoặc đi bộ) v&agrave; đo lường (thời gian hoặc khoảng c&aacute;ch).
+            </p>
+            <p>B&ecirc;n cạnh việc chọn một lớp từ bản đồ của bạn, bạn cần chọn  <b>Chọn Lớp Ph&acirc;n t&iacute;ch Atlas Sinh sống</b> nằm dưới c&ugrave;ng trong danh s&aacute;ch xổ xuống 
+Thao t&aacute;c n&agrave;y mở ra một b&ocirc;̣ sưu t&acirc;̣p c&oacute; chứa c&aacute;c lớp hữu &iacute;ch cho nhiều sự ph&acirc;n t&iacute;ch kh&aacute;c nhau. 
+            </p>
+        </div>
+    </div>
+    <div id="MeasurementMethod">
+        <div><h2>Đo lường</h2></div>
+        <hr/>
+        <div>
+            <p>Chọn phương thức đi lại của bạn (l&aacute;i xe, đi xe kh&aacute;ch hoặc đi bộ) v&agrave; đo lường (thời gian hoặc khoảng c&aacute;ch). Người quản trị của tổ chức của bạn c&oacute; thể x&aacute;c định c&aacute;c phương thức đi lại khả dụng. Sau khi chọn phương thức v&agrave; đo lường, nhập khoảng thời gian v&agrave; khoảng c&aacute;ch tối đa  5 giờ (300 ph&uacute;t) hoặc  300 dặm (482,80 kil&ocirc;m&eacute;t). 
+            </p>
+            <p>Nếu bạn chọn  <b>Thời gian l&aacute;i xe</b>, bạn sẽ c&oacute; một số t&ugrave;y chọn về c&aacute;ch đo đạc thời gian l&aacute;i xe.
+                <ul>
+                    <li>
+                        <p>Bỏ chọn  <b>Sử dụng Giao th&ocirc;ng</b> để tạo c&aacute;c khu vực thời gian l&aacute;i xe dựa tr&ecirc;n tốc độ cố định. Đ&acirc;y l&agrave; t&ugrave;y chọn để lựa chọn nếu bạn muốn c&oacute; một khu vực thời gian l&aacute;i xe th&ocirc;ng thường, kh&ocirc;ng phải c&aacute;ch t&iacute;nh to&aacute;n bằng c&aacute;c điều kiện giao th&ocirc;ng thay đổi trong một thời gian khởi h&agrave;nh cụ thể.
+                        </p>
+                    </li>
+                    <li>
+                        <p>Chọn  <b>Sử dụng Giao th&ocirc;ng</b> để tạo c&aacute;c khu vực thời gian l&aacute;i xe dựa tr&ecirc;n một thời gian bắt đầu cho trước v&agrave; điều kiện giao th&ocirc;ng thay đổi. Đồng thời bằng c&aacute;ch chọn t&ugrave;y chọn <b>Giao th&ocirc;ng trực tiếp</b>, thời gian khởi h&agrave;nh từ điểm đầu v&agrave;o được đặt đến thời gian hiện tại, v&agrave; tốc độ giao th&ocirc;ng hiện tại v&agrave; dự kiến được tham chiếu từ cảm biến v&agrave; nguồn cấp dữ liệu để tạo c&aacute;c khu vực thời gian l&aacute;i xe. Tốc độ giao th&ocirc;ng dự kiến được t&iacute;nh to&aacute;n bằng c&aacute;ch tham chiếu tốc độ giao th&ocirc;ng trực tiếp, tốc độ lịch sử v&agrave; sự kiện hiện tại như thời tiết. Tốc độ giao th&ocirc;ng dự kiến đến 12 giờ trong tương lai, do đ&oacute; bạn c&oacute; thể di chuyển thanh trượt để thiết lập trước thời gian khởi h&agrave;nh l&ecirc;n tới 12 giờ.
+                        </p>
+                        <p>Sử dụng c&aacute;c thiết đặt giao th&ocirc;ng trực tiếp n&agrave;y để t&igrave;m ra c&aacute;c khu vực c&oacute; thể đến để khởi h&agrave;nh ngay b&acirc;y giờ, khởi h&agrave;nh trong một giờ nữa, v.v.
+                        </p>
+                    </li>
+                    <li>
+                        <p>Bằng c&aacute;ch chọn  <b>Sử dụng Giao th&ocirc;ng</b> v&agrave; chọn th&ocirc;ng tin <b>Giao th&ocirc;ng dựa tr&ecirc;n điều kiện điển h&igrave;nh theo</b> ng&agrave;y v&agrave; thời gian, c&ocirc;ng cụ sẽ tạo c&aacute;c khu vực thời gian l&aacute;i xe nhanh nhất dựa tr&ecirc;n tốc độ trung b&igrave;nh lưu trong lịch sử theo từng khoảng thời gian năm ph&uacute;t trong v&ograve;ng một tuần.      	C&aacute;c kết quả bao gồm giao th&ocirc;ng nhưng loại bỏ ảnh hưởng của điều kiện giao th&ocirc;ng hiện tại v&agrave; c&aacute;c sự kiện, c&oacute; thể thay đổi đ&aacute;ng kể so với định mức.
+                        </p>
+                        <p>Bạn c&oacute; thể sử dụng c&aacute;c thiết đặt giao th&ocirc;ng lịch sử để hỏi, v&iacute; dụ: &quot;Th&ocirc;ng thường t&ocirc;i c&oacute; thể đến khu vực n&agrave;o khi khởi h&agrave;nh v&agrave;o l&uacute;c 11:30 s&aacute;ng v&agrave;o thứ tư?&quot; 
+                        </p>
+                        <p>Thời gian bạn thiết lập li&ecirc;n quan đến m&uacute;i giờ nơi đặt điểm đầu v&agrave;o. V&igrave; vậy, nếu bạn thiết lập thời gian đến 8:00 s&aacute;ng v&agrave; c&oacute; hai điểm, một ở Th&agrave;nh phố New York v&agrave; một ở Los Angeles, c&aacute;c khu vực thời gian l&aacute;i xe sẽ được tạo ra cho thời gian 8:00 s&aacute;ng Theo Giờ ph&iacute;a Đ&ocirc;ng v&agrave; 8:00 s&aacute;ng Theo Giờ Th&aacute;i B&igrave;nh Dương tương ứng.
+                        </p>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Lưu &yacute; rằng khi một phương tiện được l&aacute;i ra ngo&agrave;i từ một điểm, thời gian tr&ocirc;i qua v&agrave; điều kiện giao th&ocirc;ng sẽ thay đổi. C&ocirc;ng cụ Khu vực Thời gian L&aacute;i xe xem x&eacute;t c&aacute;c thay đổi n&agrave;y khi bạn chọn  <b>Thời gian L&aacute;i xe</b> v&agrave; chọn <b>Sử dụng giao th&ocirc;ng</b>; tuy nhi&ecirc;n kh&ocirc;ng hỗ trợ giao th&ocirc;ng cho tất cả c&aacute;c v&ugrave;ng. Bấm v&agrave;o li&ecirc;n kết <b>Xem t&iacute;nh khả dụng</b> tr&ecirc;n c&ocirc;ng cụ để t&igrave;m xem liệu t&iacute;nh năng c&oacute; được cung cấp tại khu vực nghi&ecirc;n cứu của bạn kh&ocirc;ng.
+            </p>
+            <p> <b>Thời gian Đi bộ</b> v&agrave; <b>Khoảng c&aacute;ch Đi bộ</b> sử dụng tốc độ cố định 5 kil&ocirc;m&eacute;t/giờ (3,1 dặm/giờ) v&agrave; theo lối đi d&agrave;nh cho người đi bộ cũng như tuyến phố quy định (trong khi bỏ qua c&aacute;c quy tắc &aacute;p dụng với &ocirc; t&ocirc;, như đường một chiều). </p>
+            <p> <b>Thời gian Vận chuyển bằng Xe tải</b> v&agrave; <b>Khoảng c&aacute;ch Vận chuyển bằng Xe tải</b> sử dụng tốc độ cố định v&agrave; theo c&aacute;c quy tắc &aacute;p dụng với xe tải hạng nặng.
+            </p> 
+        </div>
+    </div>
+    <div id="DissolveType">
+        <div><h2>Khu vực từ các điểm khác nhau</h2></div>
+        <hr/>
+        <div>
+            <p>Chọn c&aacute;ch xử l&yacute; c&aacute;c khu vực chung từ c&aacute;c điểm đầu v&agrave;o kh&aacute;c nhau khi đi từ chỗ n&agrave;y đến chỗ kia. Ch&uacute;ng c&oacute; thể:
+                <ul>
+                    <li> <b>Chồng lắp</b>&mdash;C&aacute;c khu vực từ c&aacute;c điểm đầu v&agrave;o kh&aacute;c nhau c&oacute; thể bao phủ c&ugrave;ng một con đường. 
+ Điều n&agrave;y rất hữu &iacute;ch khi bạn cần phải biết tất cả c&aacute;c điểm đầu v&agrave;o m&agrave; c&oacute; thể đến một vị tr&iacute; cụ thể trong một khoảng thời gian hoặc một khoảng c&aacute;ch nhất định.
+                    </li>
+                    <li> <b>Loại bỏ ph&acirc;n mảnh</b>&mdash;Tất cả c&aacute;c khu vực được trộn v&agrave;o th&agrave;nh một v&agrave; chỉ một khu vực c&oacute; thể bao gồm một vị tr&iacute; cụ thể. Điều n&agrave;y rất hữu &iacute;ch khi tất cả những g&igrave; bạn cần biết l&agrave; một khu vực c&oacute; thể đi đến trong một khoảng thời gian hoặc một khoảng c&aacute;ch nhất định.
+                    </li>
+                    <li> <b>Ph&acirc;n cắt</b>&mdash;C&aacute;c khu vực tạo ra từ c&aacute;c vị tr&iacute; đầu v&agrave;o kh&aacute;c nhau khi chồng lắp sẽ được cắt bỏ ở giữa, v&igrave; vậy c&aacute;c khu vực sẽ th&agrave;nh tiếp gi&aacute;p với nhau. Điều n&agrave;y rất hữu &iacute;ch khi bạn muốn xem khu vực n&agrave;o nằm trong một khoảng thời gian hoặc một khoảng c&aacute;ch điểm đầu v&agrave;o nhất định, đồng thời, quyết định điểm đầu v&agrave;o n&agrave;o gần khu vực đ&oacute; nhất.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="OutputLayer">
+        <div><h2>Tên Lớp Kết quả</h2></div>
+        <hr/>
+        <div>
+            <p>Đ&acirc;y l&agrave; t&ecirc;n lớp sẽ được tạo trong mục  <b>Nội dung của T&ocirc;i</b> v&agrave; th&ecirc;m v&agrave;o bản đồ. T&ecirc;n mặc định dựa v&agrave;o t&ecirc;n c&ocirc;ng cụ v&agrave; t&ecirc;n lớp đầu v&agrave;o. Nếu lớp đ&atilde; tồn tại, bạn sẽ được y&ecirc;u cầu cung cấp t&ecirc;n mới.
+            </p>
+            <p>Sử dụng hộp xổ xuống  <b>Lưu kết quả trong</b>, bạn c&oacute; thể chỉ định t&ecirc;n thư mục trong mục <b>Nội dung của T&ocirc;i</b> nơi sẽ lưu trữ kết quả của bạn.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Gebieden op basis van reistijd maken</h2><p/>
+        <h2><img src="../images/GUID-6F629A09-768D-4C04-88A4-AB941811ADE9-web.png" alt="Gebieden op basis van reistijd maken"></h2>
+        <hr/>
+    <p>Met Gebieden op basis van reistijd maken kunt u gebieden maken die kunnen worden bereikt binnen een opgegeven reistijd, reisafstand, wandelafstand enzovoort. Het meet de afstanden vanaf een of meerdere punten (maximaal 1000) langs wegen of wandelpaden om een laag te maken die u helpt de volgende vragen te beantwoorden:
+        <ul>
+            <li>Waar kan ik heen binnen een reisduur van 30 minuten vanaf hier?
+            </li>
+            <li>Waar kan ik naartoe binnen een reisduur van 30 minuten vanaf hier om 17.30 uur tijdens het spitsuur?
+            </li>
+            <li>Wat bevindt zich binnen een afstand van twee kilometer wandelen van mijn hotel?
+            </li>
+            <li>Welke stadsdelen kan de brandweer binnen vijf minuten bereiken? 
+            </li>
+            <li>In hoeverre zou de dekking van de reactietijd bij een brandalarm verbeteren door hier een nieuwe brandweerkazerne te bouwen?
+            </li>
+            <li>Welke marktgebieden worden door mijn bedrijf gedekt?
+            </li>
+        </ul>
+        
+    </p>
+    <p>Misschien kunt u uw vragen alleen al beantwoorden door de uitvoergebieden te visualiseren. U kunt ook een verdere ruimtelijke analyse uitvoeren aan de hand van de uitvoergebieden. Als u bijvoorbeeld Punten aggregeren uitvoert met behulp van reistijdgebieden met demografische gegevens, kunt u daarmee bepalen welke potenti&euml;le winkellocatie de beste klantbasis zou zijn voor uw type bedrijf. 
+    </p>
+    <p>
+        <table>
+        <tr><td colspan="3"><hr size="1" noshade="noshade"></td></tr>
+        <tr><td valign="baseline"><img src="../images/tip.png"></td><td valign="baseline"><h2>Tip:&ensp;</h2></td>
+        <td valign="baseline">
+            <p>Voor het maken van gebieden door afstanden in rechte lijnen te meten in plaats van langs wegen, gebruikt u in plaats daarvan de tool Buffers maken.
+            </p>
+        </td></tr>
+        <tr><td colspan="3"><hr size="1" noshade="noshade"></td></tr>
+        </table>
+    </p>
+    <p>Als  <b>Huidig kaartextent gebruiken</b> is geselecteerd, worden alleen de objecten die binnen het huidige kaartextent zichtbaar zijn, gebruikt om gebieden op basis van reistijd of reisafstand te maken. Als deze optie niet is aangevinkt, worden alle objecten in de invoerlaag gebruikt, ook als ze zich buiten het huidige kaartextent bevinden.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Kies puntlaag om gebieden op basis van reistijd te berekenen rond</h2></div>
+        <hr/>
+        <div>
+            <p>De puntobjecten rond welke gebieden worden berekend. U kunt kiezen hoe gebieden berekend worden op basis van reismethode (rijden, vrachtverkeer of wandelen) en (tijd of afstand) meten.
+            </p>
+            <p>Naast het kiezen van een laag uit uw kaart, kunt u  <b>Analyselaag Levende Atlas kiezen</b> selecteren onderaan de vervolgkeuzelijst. Er wordt een galerij geopend met een verzameling lagen die handig zijn voor veel analyses. 
+            </p>
+        </div>
+    </div>
+    <div id="MeasurementMethod">
+        <div><h2>Meten</h2></div>
+        <hr/>
+        <div>
+            <p>Kies uw manier van reizen (auto, vrachtwagen, wandelen) en meeteenheid (tijd of afstand). De beschikbare manieren van reizen worden bepaald door de beheerder van uw organisatie.  Nadat u uw manier van reizen en uw meeteenheid hebt gekozen, voert u een duur of afstand in van maximaal  5 uur (300 minuten) of  300 mijl (482,80 kilometer). 
+            </p>
+            <p>Als u  <b>reistijd</b> kiest, hebt u opties voor het meten van de reistijd.
+                <ul>
+                    <li>
+                        <p>Vink  <b>Verkeer gebruiken</b> uit om gebieden voor reistijd te maken op basis van vaste snelheden. Dit is een geschikte optie als u een algemeen reistijdgebied wilt, en niet een gebied dat wordt berekend aan de hand van vari&euml;rende verkeersomstandigheden voor een bepaalde vertrektijd.
+                        </p>
+                    </li>
+                    <li>
+                        <p>Vink  <b>Verkeer gebruiken</b> aan om reistijdgebieden te maken op basis van een gegeven vertrektijd en veranderende verkeersomstandigheden. Door eveneens de optie <b>Actueel verkeer</b> te kiezen wordt de vertrektijd van de invoerpunten ingesteld op de huidige tijd, en wordt gebruikgemaakt van huidige en voorspelde verkeerssnelheden via sensors en invoergegevens om de reistijdgebieden te maken. De voorspelde verkeerssnelheden worden berekend op basis van actuele verkeerssnelheden, historische snelheden en huidige omstandigheden zoals het weer. Verkeerssnelheden worden tot 12 uur in de toekomst voorspeld, dus u kunt de schuifregelaar verplaatsen om de vertrektijd maximaal 12 uur naar de toekomst te verplaatsen.
+                        </p>
+                        <p>Gebruik deze actuele verkeersinstellingen om te ontdekken welke gebieden bereikbaar zijn als u nu vertrekt, over een uur vertrekt, enzovoort.
+                        </p>
+                    </li>
+                    <li>
+                        <p>Als u  <b>Verkeer gebruiken</b> aanvinkt en <b>Verkeer op basis van gemiddelde omstandigheden voor</b> een dag en een tijdstip selecteert, maakt de tool reistijdgebieden op basis van historische gemiddelde snelheden voor elk interval van vijf minuten gedurende een gewone week. De resultaten houden rekening met het verkeer, maar laten de invloed van huidige verkeersomstandigheden en gebeurtenissen buiten beschouwing die aanzienlijk van het gemiddelde kunnen verschillen.
+                        </p>
+                        <p>U kunt deze historische verkeersinstellingen bijvoorbeeld gebruiken voor de vraag: 'Welke gebieden kan ik gewoonlijk bereiken wanneer ik op een woensdag om 11:30 uur vertrek?' 
+                        </p>
+                        <p>De tijd die u instelt, verwijst naar de tijdzone waarop uw invoerpunten zich bevinden. Als u de tijd dus instelt op 8:00 uur en twee startpunten hebt, een in New York City en een ander in Los Angeles, worden de reistijdgebieden gegenereerd voor respectievelijk 8:00 uurEastern Time en 8:00 uurPacific Time als uitgangspunt.
+                        </p>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Houd er rekening mee dat wanneer een voertuig wegrijdt vanaf een bepaald punt, de tijd verstrijkt en de verkeersomstandigheden wijzigen. De tool Reistijdgebieden houdt rekening met deze variaties wanneer u  <b>Reistijd</b> kiest en <b>Verkeer gebruiken</b> selecteert. Niet alle regio's echter ondersteunen verkeer. Klik op de koppeling <b>Beschikbaarheid bekijken</b> om erachter te komen of deze optie voor uw onderzoeksgebied van toepassing is.
+            </p>
+            <p> <b>Wandeltijd</b> en <b>Wandelafstand</b> gebruiken een vaste snelheid van 5 kilometer per uur (3,1 mijl per uur) en volgen wandelpaden en straten voor voetgangers (zonder rekening te houden met regels die van toepassing zijn op automobilisten, zoals eenrichtingswegen). </p>
+            <p> <b>Trucktijd</b> en <b>Truckafstand</b> gebruiken vaste snelheden en volgen regels die van toepassing zijn op zware vrachtwagens.
+            </p> 
+        </div>
+    </div>
+    <div id="DissolveType">
+        <div><h2>Gebieden vanaf verschillende punten</h2></div>
+        <hr/>
+        <div>
+            <p>Kies hoe met gedeelde gebieden van verschillende invoerpunten wordt omgegaan wanneer ze elkaar bereiken. Ze kunnen:
+                <ul>
+                    <li> <b>Overlappen</b>&mdash;Gebieden van verschillende invoerpunten dekken dezelfde weg. Dit is handig wanneer u alle invoerpunten moet weten vanwaar een bepaalde locatie bereikbaar is binnen de gegeven tijd of afstand.
+                    </li>
+                    <li> <b>Oplossen</b>&mdash;Alle gebieden worden tot &eacute;&eacute;n gebied samengevoegd, en slechts &eacute;&eacute;n gebied dekt een bepaalde locatie. Dit is handig wanneer u alleen maar hoeft te weten dat een gebied bereikbaar is binnen een gegeven tijd of afstand, maar u niet hoeft te weten vanaf welke specifieke invoerpunten de locatie kan worden bereikt.
+                    </li>
+                    <li> <b>Splitsen</b>&mdash;De gebieden van verschillende invoerpunten die elkaar zouden overlappen, worden in het midden gesplitst, zodat ze nu aan elkaar grenzen. Dit is handig wanneer u wilt zien welke gebieden zich binnen een gegeven tijd of afstand van de invoerpunten bevinden, en u tegelijk wilt vaststellen welk invoerpunt het dichtst bij dat gebied ligt.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="OutputLayer">
+        <div><h2>Naam resultaatlaag</h2></div>
+        <hr/>
+        <div>
+            <p>Dit is de naam van de laag die in  <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, wordt u gevraagd een nieuwe naam te geven.
+            </p>
+            <p>Als u de vervolgkeuzelijst  <b>Resultaat opslaan in</b> gebruikt, kunt u de naam opgeven van een map in <b>Mijn Content</b> waarin het resultaat wordt opgeslagen.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

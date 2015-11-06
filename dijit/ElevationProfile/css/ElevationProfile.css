@@ -1,0 +1,112 @@
+.esriElevationProfile, .esriElevationProfileChartNode {
+    height: 100%;
+    width: 100%;
+    min-height: 200px;
+    margin: 0 auto 0 auto;
+    overflow: hidden;
+}
+
+.esriElevationProfile .esriElevationProfileToolbar {
+    position: absolute;
+    float: right;
+    text-align: right;
+    width: 100%;
+    padding: 0;
+    background: none;
+    border: none;
+}
+
+.esriElevationProfile .esriRTL .esriElevationProfileToolbar {
+    float: left;
+    text-align: left;
+}
+
+.esriElevationProfile .esriElevationProfileToolbar .dijitButtonText {
+    color: #eee;
+    font-size: smaller;
+    font-weight: bolder;
+}
+
+.esriElevationProfile .esriElevationProfileToolbar .dijitButtonNode {
+    margin: 0;
+    padding: 2px;
+    background: none ;
+    border: solid 1px transparent ;
+    border-radius: 3px ;
+}
+
+.esriElevationProfile .esriElevationProfileToolbar .dijitHover {
+    border: solid 1px #666 ;
+}
+
+.esriElevationProfile .esriElevationProfileToolbar .dijitActive {
+    border: solid 1px #333 ;
+}
+
+.esriElevationProfile .esriElevationProfileToolbar .dijitArrowButtonInner {
+    background-image: url(../images/buttonArrows.png) ;
+}
+
+.esriElevationProfile .esriElevationProfileMeasurePane {
+    position: absolute;
+    float: right;
+    top: 32px;
+    right: 6px;
+    width: 250px;
+    padding: 10px;
+    background-color: #eee;
+    color: #333;
+    border-radius: 4px;
+    border: solid 1px silver ;
+    font-size: smaller;
+}
+
+.esriElevationProfile .esriElevationProfileMeasurePane .dijitDialogCloseIcon {
+    z-index: 99;
+}
+
+.esriElevationProfile .esriElevationProfileLabel {
+    color: #eee;
+    font-weight: bolder;
+    font-size: 0.7em;
+    line-height: 1.0em;
+}
+
+.esriElevationProfile .esriElevationProfileGainLossLabel {
+    width: 30%;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    text-align: left;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.esriElevationProfile .esriRTL .esriElevationProfileGainLossLabel {
+    right: 10px;
+    text-align: right;
+}
+
+.esriElevationProfile .esriElevationProfileSourceLabel {
+    width: 30%;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    text-align: right;
+    overflow: hidden;
+    white-space: nowrap;
+    word-break: keep-all;
+    word-wrap: normal;
+    text-overflow: ellipsis;
+}
+
+.esriElevationProfile .esriRTL .esriElevationProfileSourceLabel {
+    left: 10px;
+    text-align: left;
+}
+
+.esriElevationProfile .esriElevationProfilePopupRequirementLabel {
+    color: #ccc;
+    padding-left: 6px;
+    font-size: smaller;
+}

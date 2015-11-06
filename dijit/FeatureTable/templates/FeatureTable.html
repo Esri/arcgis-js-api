@@ -1,0 +1,17 @@
+<div class="${baseClass}" >
+  <div id= "${bcNodeId}" class="esriFeatureTable_bc" data-dojo-attach-point= "_bcNode" data-dojo-type="dijit.layout.BorderContainer" gutters="false">
+    <div id= "${gridMenuId}" class="esriFeatureTable_cp esriFeatureTable_menu" data-dojo-attach-point= "_gridMenu" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'top'">
+      <div class="esriFeatureTable_menuItem gridLoadingIndicator" data-dojo-attach-point= "_gridLoadingIndicatorNode" style="display:none;"></div>
+      <div class="esriFeatureTable_menuItem gridTitle" data-dojo-attach-point= "_gridHeaderNode"></div>
+      <div class="esriFeatureTable_menuItem gridCloser"><a class= "esriFeatureTable_closer toggleOpened" data-dojo-attach-point="tableCloseButton" href="JavaScript:void(0);" title="Hide Table"></a></div>   
+      <div data-dojo-attach-point= "_optionNode" class="esriFeatureTable_menuItem esriFeatureTable_menuOptions">
+        <div id="${optionNodeId}"></div>
+      </div>
+
+    </div>
+    <div id= "${gridContainerId}" class="esriFeatureTable_cp" data-dojo-attach-point= "_gridContainer" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'center'">
+         <div id="${gridId}" class="esriFeatureTable_Table" data-dojo-attach-point="_gridNode"></div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Plánovat trasy</h2><p/>
+        <h2><img src="../images/GUID-09CC6D60-3C72-42D7-968E-B0663F0B1EBB-web.png" alt="Pl&aacute;nov&aacute;n&iacute; tras"></h2>
+        <hr/>
+    <p>N&aacute;stroj Pl&aacute;nov&aacute;n&iacute; tras určuje, jak efektivně rozdělit &uacute;koly mezi mobiln&iacute; pracovn&iacute;ky.
+    </p>
+    <p>Do n&aacute;stroje zad&aacute;te sadu zast&aacute;vek a počet dostupn&yacute;ch vozidel, kter&aacute; maj&iacute; zast&aacute;vky nav&scaron;t&iacute;vit. N&aacute;stroj vozidlům přiřad&iacute; zast&aacute;vky a vypoč&iacute;t&aacute; trasy, pomoc&iacute; kter&yacute;ch každ&eacute; vozidlo nav&scaron;t&iacute;v&iacute; přiřazen&eacute; zast&aacute;vky v nejkrat&scaron;&iacute;m možn&eacute;m čase.
+    </p>
+    <p>S n&aacute;strojem Pl&aacute;nov&aacute;n&iacute; tras mobiln&iacute; pracovn&iacute;ci nav&scaron;t&iacute;v&iacute; v&iacute;ce m&iacute;st za krat&scaron;&iacute; čas, což zv&yacute;&scaron;&iacute; produktivitu a zlep&scaron;&iacute; p&eacute;či o z&aacute;kazn&iacute;ky.
+        <ul>
+            <li>Prov&aacute;dějte inspekce domů, restaurac&iacute; nebo staveni&scaron;ť
+                
+
+            </li>
+            <li>Poskytujte opravy, instalace nebo technick&eacute; služby
+            </li>
+            <li>Doručujte předměty a mal&eacute; bal&iacute;čky
+            </li>
+            <li>Uskutečňujte obchodn&iacute; telefon&aacute;ty
+            </li>
+            <li>Přev&aacute;žejte lidi z domovů na akci
+            </li>
+        </ul>
+        
+    </p>
+    <p>V&yacute;stup z n&aacute;stroje Pl&aacute;nov&aacute;n&iacute; tras obsahuje vrstvu zast&aacute;vek k&oacute;dovan&yacute;ch podle tras, ke kter&yacute;m jsou přiřazeny, vrstvu tras, kter&aacute; zobrazuje nejkrat&scaron;&iacute; cesty k přiřazen&yacute;m zast&aacute;vk&aacute;m a, pokud se k někter&yacute;m zast&aacute;vk&aacute;m nelze dostat, vrstvu nepřiřazen&yacute;ch zast&aacute;vek. 
+    </p>
+    <p>Pokud je za&scaron;krtnuto pole  <b>Použ&iacute;t aktu&aacute;ln&iacute; rozsah mapy</b>, budou do anal&yacute;zy zahrnuty pouze prvky viditeln&eacute; v aktu&aacute;ln&iacute;m rozsahu mapy.  Pokud pole za&scaron;krtnuto nen&iacute;, budou použity v&scaron;echny prvky ve vstupn&iacute; vrstvě, včetně těch, kter&eacute; se nach&aacute;z&iacute; mimo aktu&aacute;ln&iacute; rozsah mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="stopsLayer">
+        <div><h2>Zvolte vrstvu bodů, která představuje navštěvované zastávky.</h2></div>
+        <hr/>
+        <div>
+            <p>Vyberte vrstvu bodů nav&scaron;těvovan&yacute;ch trasami (nebo vozidly).  Z těchto bodů ve v&yacute;stupu vzniknou přiřazen&eacute; nebo nepřiřazen&eacute; zast&aacute;vky.
+
+            </p>
+            <p>Vrstvu můžete vybrat ze sv&eacute; mapy nebo můžete zvolit možnost  <b>Vybrat vrstvu anal&yacute;zy živ&eacute;ho atlasu</b>, kter&aacute; se nach&aacute;z&iacute; na konci rozbalovac&iacute;ho seznamu. Otevře se galerie obsahuj&iacute;c&iacute; sb&iacute;rku vrstev určen&yacute;ch pro mnoho různ&yacute;ch anal&yacute;z. 
+            </p>
+        </div>
+    </div>
+    <div id="travelMode">
+        <div><h2>Způsob přepravy pro trasy</h2></div>
+        <hr/>
+        <div>
+            <p>Zvolte způsob přepravy. V&yacute;sledn&eacute; trasy povedou po silnic&iacute;ch nebo chodn&iacute;c&iacute;ch a budou respektovat př&iacute;slu&scaron;n&aacute; pravidla, jako jsou jednosměrn&eacute; ulice a nepovolen&eacute; man&eacute;vry při j&iacute;zdě autem nebo n&aacute;kladn&iacute;m vozem. Dostupn&eacute; způsoby přepravy jsou určeny administr&aacute;torem organizace.  
+            </p>
+        </div>
+    </div>
+    <div id="startLayer">
+        <div><h2>Trasy začínají v</h2></div>
+        <hr/>
+        <div>
+            <p>Určete, kde a kdy vozidla zač&iacute;naj&iacute; sv&eacute; trasy.
+            </p>
+            <p>V n&aacute;stroji Pl&aacute;nov&aacute;n&iacute; tras můžete určit jedno nebo v&iacute;ce poč&aacute;tečn&iacute;ch um&iacute;stěn&iacute; va&scaron;ich vozidel.
+            </p>
+            <p>Je-li určeno jedno bodov&eacute; um&iacute;stěn&iacute;, vyj&iacute;žděj&iacute; v&scaron;echna vozidla z tohoto bodu bez ohledu na počet dostupn&yacute;ch vozidel. Můžete zvolit bodovou vrstvu s jedn&iacute;m bodem nebo můžete bod přidat do mapy pomoc&iacute; volby  <b>Přidat bod do mapy</b>, kliknut&iacute;m na vedle um&iacute;stěn&eacute; tlač&iacute;tko &uacute;prav bodů a kliknut&iacute;m na mapu. 
+            </p>
+            <p>Je-li určeno v&iacute;ce um&iacute;stěn&iacute;, mus&iacute; b&yacute;t každ&eacute; vozidlo spojeno s vlastn&iacute;m bodem. Počet vozidel mus&iacute; odpov&iacute;dat počtu bodů ve vrstvě. Zvolte vrstvu s v&iacute;ce body a v rozbalovac&iacute; nab&iacute;dce  <b>Pole ID trasy</b> určete pole, kter&eacute; jedinečně identifikuje jednotliv&eacute; trasy, vozidla nebo řidiče.
+            </p>
+            <p>Čas zač&aacute;tku je stejn&yacute; pro v&scaron;echny trasy. Časov&eacute; p&aacute;smo pro čas zač&aacute;tku je stejn&eacute; jako časov&eacute; p&aacute;smo, ve kter&eacute;m se nach&aacute;z&iacute; poč&aacute;tečn&iacute; bod nebo body, takže se ujistěte, že zad&aacute;v&aacute;te m&iacute;stn&iacute; čas. Předpokl&aacute;dejme např&iacute;klad, že jste v p&aacute;smu tichomořsk&eacute;ho času (PST, tedy UTC-8:00) a vozidla, pro kter&aacute; tvoř&iacute;te trasy, se nach&aacute;zej&iacute; v p&aacute;smu horsk&eacute;ho času (MST, tedy UTC-7:00). Pokud je pr&aacute;vě 9:30PST (10:30MST) a va&scaron;e vozidla mus&iacute; vyjet na sv&eacute; trasy za 30 minut, nastav&iacute;te tedy čas zač&aacute;tku na 11:00. 
+            </p>
+            <p>Va&scaron;e vozidla startuj&iacute; z různ&yacute;ch časov&yacute;ch p&aacute;sem, takže čas zač&aacute;tku nemůže b&yacute;t simult&aacute;nn&iacute;. Jsou posunuty. Pokud např&iacute;klad jedna trasa zač&iacute;n&aacute; v bodě s PST a dal&scaron;&iacute; trasa zač&iacute;n&aacute; v MST a vy zad&aacute;te čas zač&aacute;tku 11:00, trasa v PST začne v 11:00. PST a trasa v MST začne v 11:00MST &ndash; hodinov&yacute; rozd&iacute;l.
+            </p>
+        </div>
+    </div>
+    <div id="endLayer">
+        <div><h2>Trasy končí v</h2></div>
+        <hr/>
+        <div>
+            <p>Určete, kde vozidla konč&iacute; sv&eacute; trasy.
+            </p>
+            <p>Můžete nastavit, aby trasy končily v jednom ze tř&iacute; um&iacute;stěn&iacute;: 
+                <ul>
+                    <li>Stejn&eacute; um&iacute;stěn&iacute;, kde začaly, bez ohledu na to, zda začaly v jednom nebo v&iacute;ce um&iacute;stěn&iacute;ch
+                    </li>
+                    <li>Jedin&eacute; um&iacute;stěn&iacute;
+                    </li>
+                    <li>Mnoho um&iacute;stěn&iacute;, tzn. jeden koncov&yacute; bod pro každou trasu
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Pokud maj&iacute; trasy vozidel zač&iacute;nat a končit na stejn&eacute;m m&iacute;stě, za&scaron;krtněte možnost  <b>Zpět na zač&aacute;tek</b>.
+            </p>
+            <p>K naveden&iacute; v&scaron;ech vozidel do společn&eacute;ho koncov&eacute;ho bodu, kter&yacute; se li&scaron;&iacute; od bodu zač&aacute;tku, zru&scaron;te za&scaron;krtnut&iacute; možnosti  <b>Zpět na zač&aacute;tek</b> a buď přidejte do mapy bod, nebo zvolte vrstvu, kter&aacute; obsahuje přesně jeden bod.
+            </p>
+            <p>Pokud maj&iacute; trasy končit v jedinečn&yacute;ch um&iacute;stěn&iacute;ch, zru&scaron;te za&scaron;krtnut&iacute; možnosti  <b>Zpět na zač&aacute;tek</b> a zvolte vrstvu, kter&aacute; obsahuje v&iacute;ce než jeden bod. Počet vozidel se mus&iacute; rovnat počtu bodů ve zvolen&eacute; vrstvě. V rozbalovac&iacute; nab&iacute;dce <b>Pole ID trasy</b> zvolte pole, kter&eacute; jedinečně identifikuje jednotliv&eacute; trasy, vozidla nebo řidiče. Pokud vozidla zač&iacute;naj&iacute; na v&iacute;ce um&iacute;stěn&iacute;ch a konč&iacute; na v&iacute;ce um&iacute;stěn&iacute;ch, mus&iacute; si ID tras pro vrstvy zač&aacute;tku a konce odpov&iacute;dat.
+            </p>
+        </div>
+    </div>
+    <div id="routeCount">
+        <div><h2>Maximální počet vozidel k trasování</h2></div>
+        <hr/>
+        <div>
+            <p>Určete počet dostupn&yacute;ch vozidel, kter&aacute; maj&iacute; nav&scaron;t&iacute;vit zast&aacute;vky. N&aacute;stroj podporuje až  100 vozidel. 
+            </p>
+            <p>N&aacute;stroj může b&yacute;t schopen v z&aacute;vislosti na celkov&eacute;m počtu zast&aacute;vek, povolen&eacute;m počtu zast&aacute;vek na vozidlo, vzd&aacute;lenosti mezi zast&aacute;vkami, čase str&aacute;ven&eacute;m na každ&eacute; zast&aacute;vce a jak&eacute;mkoli př&iacute;padn&eacute;m limitu celkov&eacute; doby j&iacute;zdy jednotliv&yacute;ch vozidel naj&iacute;t ře&scaron;en&iacute;, kter&eacute; použije m&eacute;ně vozidel, než zde určen&eacute; č&iacute;slo.
+            </p>
+        </div>
+    </div>
+    <div id="maxStopsPerRoute">
+        <div><h2>Maximální počet zastávek na vozidlo</h2></div>
+        <hr/>
+        <div>
+            <p>Toto je jeden ze dvou parametrů, kter&eacute; vyvažuj&iacute; celkov&eacute; vyt&iacute;žen&iacute; např&iacute;č trasami. Můžete určit hodnotu mezi 1 a  200. 
+            </p>
+            <p>Sn&iacute;žen&iacute;m maxim&aacute;ln&iacute;ho počtu zast&aacute;vek, kter&eacute; lze přiřadit jednotliv&yacute;m vozidlům, se zvy&scaron;uje pravděpodobnost, že bude vozidlům přiřazen stejn&yacute; počet zast&aacute;vek. To pom&aacute;h&aacute; vyv&aacute;žit vyt&iacute;žen&iacute; mezi řidiči. Nev&yacute;hodou je, že v&yacute;sledn&eacute; ře&scaron;en&iacute; může b&yacute;t m&eacute;ně efektivn&iacute;.
+            </p>
+            <p>Zv&yacute;&scaron;en&iacute;m počtu zast&aacute;vek na vozidlo m&aacute; n&aacute;stroj v&iacute;ce svobody pro nalezen&iacute; efektivn&iacute;ch ře&scaron;en&iacute;, nicm&eacute;ně vyt&iacute;žen&iacute; může b&yacute;t mezi řidiče a vozidla rozděleno nerovnoměrně. Vyv&aacute;žen&eacute;ho vyt&iacute;žen&iacute; můžete kromě počtu zast&aacute;vek dos&aacute;hnout i nastaven&iacute;m času, když urč&iacute;te hodnotu parametru  <b>Omezit celkov&yacute; čas trasy na vozidlo</b>.
+            </p>
+            <p>N&aacute;sleduj&iacute;c&iacute; př&iacute;klady ukazuj&iacute; &uacute;činky limitu maxim&aacute;ln&iacute;ho počtu zast&aacute;vek na vozidlo nebo celkov&eacute;ho času na vozidlo. Ve v&scaron;ech př&iacute;kladech je &scaron;est zast&aacute;vek a dvě trasy, kter&eacute; zač&iacute;naj&iacute; na stejn&eacute;m m&iacute;stě.
+            </p>
+            <table border="1">
+            <tr>
+                <td> <img src="../images/GUID-820BDC1E-97CB-457F-9235-7105D274AFEB-web.png" alt="Vyv&aacute;žen&eacute; zast&aacute;vky a doby j&iacute;zdy">
+                </td>
+                <td>
+                    <p>Vyv&aacute;žen&eacute; doby j&iacute;zdy a zast&aacute;vky na trasu:
+                    </p>
+                    <p>Zast&aacute;vky jsou rozloženy v&iacute;cem&eacute;ně pravidelně, takže rozložen&iacute;m vyt&iacute;žen&iacute; pomoc&iacute; nastaven&iacute; maxim&aacute;ln&iacute;ho počtu zast&aacute;vek na vozidlo z&iacute;sk&aacute;te trasy, kter&eacute; trvaj&iacute; zhruba stejně.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td> <img src="../images/GUID-813F72FE-500D-4A4D-A030-B3450F09154B-web.png" alt="Nevyv&aacute;žen&eacute; doby tras">
+                </td>
+                <td>
+                    <p>Vyv&aacute;žen&yacute; počet zast&aacute;vek na trasu ale nevyv&aacute;žen&eacute; doby j&iacute;zdy:
+                    </p>
+                    <p>Pět ze &scaron;esti zast&aacute;vek jsou shluknuty bl&iacute;zko poč&aacute;tečn&iacute;ho um&iacute;stěn&iacute;, ale jedna zast&aacute;vka se nach&aacute;z&iacute; d&aacute;le a vyžaduje mnohem del&scaron;&iacute; dobu j&iacute;zdy. Rovnoměrn&eacute; rozdělen&iacute; zast&aacute;vek mezi trasami m&aacute; za n&aacute;sledek nevyv&aacute;žen&eacute; doby j&iacute;zdy.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td> <img src="../images/GUID-082615A2-7F07-49AB-92AF-C82CEB813E6F-web.png" alt="Vyv&aacute;žen&eacute; doby j&iacute;zdy">
+                </td>
+                <td>
+                    <p>Nevyv&aacute;žen&eacute; počty zast&aacute;vek na trasu ale vyv&aacute;žen&eacute; doby j&iacute;zdy:
+                    </p>
+                    <p>Zast&aacute;vky jsou na stejn&eacute;m m&iacute;stě jako v předchoz&iacute;m obr&aacute;zku, ale zv&yacute;&scaron;en&iacute;m maxim&aacute;ln&iacute;ho počtu zast&aacute;vek na trasu a omezen&iacute;m celkov&eacute; doby j&iacute;zdy na vozidlo do&scaron;lo k vyrovn&aacute;n&iacute; dob j&iacute;zdy.
+                    </p>
+                </td>
+            </tr>
+            </table>
+        </div>
+    </div>
+    <div id="serviceTimeAtStops">
+        <div><h2>Čas strávený na každé zastávce</h2></div>
+        <hr/>
+        <div>
+            <p>Nastavte předpokl&aacute;danou průměrnou dobu str&aacute;venou na každ&eacute; zast&aacute;vce. Pokud např&iacute;klad pl&aacute;nujete pracovn&iacute; den pro inspektory a průměrn&aacute; d&eacute;lka inspekce je 45 minut, zadejte  <code>45</code>.
+            </p>
+            <p>Předpokl&aacute;d&aacute; se, že str&aacute;ven&aacute; doba je na v&scaron;ech zast&aacute;vk&aacute;ch stejn&aacute;.
+            </p>
+        </div>
+    </div>
+    <div id="maxTotalRouteTime">
+        <div><h2>Omezte celkový čas trasy na vozidlo</h2></div>
+        <hr/>
+        <div>
+            <p>Určete maxim&aacute;ln&iacute; dobu, kterou by trasa od zač&aacute;tku do konce měla trvat. Sem patř&iacute; předpokl&aacute;dan&aacute; doba j&iacute;zdy a čas str&aacute;ven&yacute; na zast&aacute;vk&aacute;ch na trase. Řidiči by neměli za den pracovat d&eacute;le než dan&yacute; čas, např. 8 hodin. Tento limit urč&iacute;te zde.
+            </p>
+            <p>V n&aacute;povědě pro  <b>Maxim&aacute;ln&iacute; počet zast&aacute;vek na vozidlo</b> najdete postřehy t&yacute;kaj&iacute;c&iacute; se rovnoměrn&eacute;ho rozložen&iacute; vyt&iacute;žen&iacute;.
+            </p>
+        </div>
+    </div>
+    <div id="resultsLayer">
+        <div><h2>Název výsledné vrstvy</h2></div>
+        <hr/>
+        <div>
+            <p>Toto je n&aacute;zev skupinov&eacute; vrstvy, kter&aacute; se vytvoř&iacute; ve složce  <b>Můj obsah</b>
+a přid&aacute; se do mapy. Tato skupina vrstev bude obsahovat vrstvy pro trasy, zast&aacute;vky a pokyny k tras&aacute;m.
+            </p>
+            <p>V&nbsp;rozbalovac&iacute;m seznamu  <b>Uložit v&yacute;sledek do</b> můžete zadat n&aacute;zev složky ve složce <b>Můj obsah</b>, do kter&eacute; se m&aacute; v&yacute;sledek uložit.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

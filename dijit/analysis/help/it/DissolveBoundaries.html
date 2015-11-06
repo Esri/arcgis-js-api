@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Dissolvi confini</h2><p/>
+        <h2><img src="../images/GUID-7B5F69B0-3625-404F-8B52-2B562766C0BB-web.png" alt="Dissolvi confini"></h2>
+        <hr/>
+    <p>Le aree che si sovrappongono o che condividono un confine comune vengono unite per formare una singola area.    
+    </p>
+    <p>Per controllare i confini che verranno uniti, specificare un campo. Ad esempio, se si dispone di un layer di regioni e ciascuna regione dispone di un attributo  <i>State_Name</i>, &egrave; possibile dissolvere i confini utilizzando l'attributo <i>State_Name</i>.  Le regioni adiacenti vengono unite se presentano lo stesso valore per <i>State_Name</i>.  Il risultato finale &egrave; un layer di confini di stato.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Scegli il layer di area i cui confini verranno dissolti</h2></div>
+        <hr/>
+        <div>
+            <p>Il layer contenente le feature di area che verranno dissolte.
+
+            </p>
+            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi dell'atlante attivo</b> in fondo all'elenco a discesa. Verr&agrave; aperta una galleria contenente una raccolta di layer utili per numerose analisi. 
+            </p>
+        </div>
+    </div>
+    <div id="DissolveFields">
+        <div><h2>Scegli metodo di dissolvenza</h2></div>
+        <hr/>
+        <div>
+            <p>&Egrave; possibile selezionare uno dei due metodi per unire feature area:
+                <ul>
+                    <li> <b>Aree sovrapposte o adiacenti</b>: due o pi&ugrave; aree i cui confini si sovrappongono vengono unite in un'unica area.  Inoltre, anche le aree adiacenti (ovvero, che condividono un confine comune) vengono unite in un'unica area.
+                    </li>
+                    <li> <b>Aree con lo stesso valore di attributo</b>: aree che si sovrappongono o che condividono un confine comune vengono unite in un'unica area se dispongono dello stesso valore di attributo.
+                        <p>Ad esempio, se si dispone di un layer di regioni e ciascuna regione dispone di un campo  <i>State_Name</i>, &egrave; possibile dissolvere i confini utilizzando il campo <i>State_Name</i>.  Le regioni adiacenti vengono unite se presentano lo stesso valore per <i>State_Name</i>.  Il risultato finale &egrave; un layer di confini di stato.
+                        </p>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Se si seleziona  <b>Usa estensione mappa corrente</b>, vengono dissolte solo le feature nel layer di input visibili all'interno dell'estensione mappa corrente.  Se &egrave; deselezionata, verranno dissolte tutte le feature presenti nel layer di input, anche se sono esterne all'estensione mappa corrente.
+            </p>
+        </div>
+    </div>
+    <div id="SummaryFields">
+        <div><h2>Aggiungi statistiche</h2></div>
+        <hr/>
+        <div>
+            <p>Quando le aree vengono unite, &egrave; possibile riepilogare i relativi attributi. Ad esempio, se si dissolve il confine tra regioni in base a  <i>State_Name</i>, e ciascuna regione dispone di un campo <i>Popolazione</i>, &egrave; possibile calcolare la somma della <i>Popolazione</i> dello stato.
+            </p>
+            <p>Sono disponibili i seguenti tipi di statistiche:
+            </p>
+            <ul>
+                <li> <b>Somma</b>: consente di sommare il valore totale del campo specificato.
+                    
+
+                </li>
+                <li> <b>Media</b>: consente di calcolare il valore medio del campo specificato.
+                    
+
+                </li>
+                <li> <b>Minimo</b>: consente di trovare il valore minimo di tutti i record del campo specificato.
+                    
+
+                </li>
+                <li> <b>Massimo</b>: consente di trovare il valore massimo di tutti i record del campo specificato.
+                    
+
+                </li>
+                <li> <b>Deviazione standard</b>: consente di trovare la deviazione standard di valori nel campo specificato.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="OutputName">
+        <div><h2>Nome layer risultati</h2></div>
+        <hr/>
+        <div>
+            <p>Questo &egrave; il nome del layer che verr&agrave; creato in  <b>I miei contenuti</b> e aggiunto alla mappa.  Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, verr&agrave; chiesto di fornire un altro nome.
+            </p>
+            <p>Utilizzare la casella a discesa  <b>Salva risultato in</b> per specificare il nome di una cartella di <b>I miei contenuti</b> in cui salvare il risultato.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

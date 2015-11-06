@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Connect Origins to Destinations</h2><p/>
+        <h2><img src="./images/GUID-7266D30B-0250-4132-B1A5-9B59F0212FAD-web.png" alt="Connect Origins to Destinations"></h2>
+        <hr/>
+    <p>  Connect Origins to Destinations measures the travel time or distance between pairs of points. The tool can report straight-line distances; distances based on a travel mode, such as walking or driving; or trip durations based on a travel mode. Using this tool, you can do the following:
+    </p>
+    <p>
+        <ul>
+            <li>Calculate the total distance or time commuters travel on their  home-to-work trips.
+            </li>
+            <li>Measure how far customers are traveling to shop at your stores. Use this information to define your market reach, especially when targeting advertising campaigns or choosing new store locations.
+            </li>
+            <li>Calculate the expected trip mileage for your fleet of vehicles. Afterward, run the Summarize Within tool to report mileage by state or other region.
+            </li>
+        </ul>
+        
+    </p>
+    <p>You provide starting and ending points, and the tool returns a layer containing route lines, including measurements, between the paired origins and destinations.  
+    </p>
+    <p>If  <b>Use current map extent</b> is checked, only the features that are visible within the current map extent will be considered in the analysis.  If unchecked, all features in the input layer will be considered, even if they are outside the current map extent.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="originsLayer">
+        <div><h2>Choose point layer representing the origin locations</h2></div>
+        <hr/>
+        <div>
+            <p>Choose the point layer representing the origin or origins.  
+The tool supports up to  5,000 origins and  5,000 destinations. </p>
+            <p>If you choose a layer that has exactly one origin, it will connect to all destinations.
+            </p>
+            <p>In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            </p>
+        </div>
+    </div>
+    <div id="destinationsLayer">
+        <div><h2>Choose the destinations layer</h2></div>
+        <hr/>
+        <div>
+            <p>Choose the layer 
+representing the destination or destinations to which the origins should connect. The tool supports up to  5,000 origins and  5,000 destinations. </p>
+            <p>If you choose a layer that has exactly one destination, all the origins will connect to that destination. 
+            </p>
+            <p>If there is one origin and many destinations, the tool connects the origin to each of the destinations.
+            </p>
+            <p>In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            </p>
+            <p> If there are many origins and many destinations, you need to have two fields that describe the origin-destination pairs: <b>ID field in origins</b> and <b>Matching ID field in destinations</b>. The tool connects the origin-destination pairs during the analysis. For instance, imagine you have two origins with ID field values of <code>Rosie</code> and <code>Harold</code> and two destinations with the same ID values. The <code>Rosie</code> origin will connect to the <code>Rosie</code> destination, and <code>Harold</code> will connect to <code>Harold</code>. No other connections or measurements are made.
+            </p>
+            <p>The ID values must be unique within each layer; for instance, the destinations layer cannot have two  <code>Rosie</code> values. The values in the origin and destination layers must match exactly to make pairs; <code>Harold</code> won't connect to the misspelled value, <code>Harodl</code>. 
+            </p>
+        </div>
+    </div>
+    <div id="measurementType">
+        <div><h2>Measure</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Choose whether to connect origins to destinations using straight-line distance or a travel mode. The output routes will  follow roads or walkways and honor applicable rules, such as one-way streets and illegal turns for driving or trucking.  The available travel modes are determined by the administrator of your organization.  
+            </p>
+            <p>When you choose  <b>Driving time</b>, you have options on how to measure the drive time.
+                <ul>
+                    <li>
+                        <p>Uncheck  <b>Use Traffic</b> to find the quickest routes based on fixed speeds.
+                        </p>
+                        <p>This is the option to choose if you want a general drive-time measurement, not one that is calculated using changing traffic conditions for a specific departure time.
+                        </p>
+                    </li>
+                    <li>
+                        <p>Check  <b>Use Traffic</b> to find the quickest routes based on a given start time and changing traffic conditions. By also choosing the <b>Live traffic</b> option, the departure time from the origins is set to the current time, and current and predicted traffic speeds are referenced from sensors and feeds to create the routes. The predicted traffic speeds are calculated by referencing live traffic speeds, historical speeds, and current events such as weather. Traffic speeds are predicted 12 hours into the future, so you can move the slider to set the departure time ahead by up to  12 hours. </p>
+                        <p>Use these live-traffic settings to find the drive times for  departing now, departing in one hour from now, and so on.
+                        </p>
+                    </li>
+                    <li>
+                        <p>By checking  <b>Use Traffic</b> and choosing <b>Traffic based on typical conditions for</b> a day and time, the tool finds the quickest routes based on historical speed averages for every five-minute  interval across a routine week. The results include traffic but remove the influence of current traffic conditions and events, which may vary significantly from the norm.
+                        </p>
+                        <p>You can use these historical traffic settings to ask, for instance, &quot;How long would it generally take to reach these destinations when departing at 11:30 a.m. on a Wednesday?&quot;
+                        </p>
+                        <p>The time you set refers to the time zone in which your origins are located. So if you set the time to 8:00 a.m. and have two origins, one in New York City and another in Los Angeles, the routes will be generated for a departure time of 8:00 a.m. Eastern Time and 8:00 a.m. Pacific Time, respectively.
+                        </p>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Note that as a vehicle drives away from the origin, time elapses and traffic conditions change. The Connect Origins to Destinations tool accounts for these variations when you check  <b>Use traffic</b>; however, not all regions support traffic. Click the <b>See availability</b> link on the tool to find out whether it is offered in  your study area.
+            </p>
+        </div>
+    </div>
+    <div id="outputLayer">
+        <div><h2>Result layer name</h2></div>
+        <hr/>
+        <div>
+            <p>This is the name of the layer that will be created in  <b>My Content</b>  and added to the map.  The default  name is based on the tool name and the input layer name. If the layer already exists, you will be asked to provide another name.
+            </p>
+            <p>Using the  <b>Save result in</b> drop-down box, you can  specify the name of a folder in <b>My Content</b> where the result will be saved.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

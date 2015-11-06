@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Połącz punkty początkowe z docelowymi</h2><p/>
+        <h2><img src="../images/GUID-7266D30B-0250-4132-B1A5-9B59F0212FAD-web.png" alt="Połącz punkty początkowe z docelowymi"></h2>
+        <hr/>
+    <p>  Narzędzie Połącz Punkty początkowe z&nbsp;Docelowymi służy do pomiaru czasu podr&oacute;ży lub odległości między parami punkt&oacute;w. Narzędzie może wyświetlić odległość w&nbsp;linii prostej; odległość w&nbsp;oparciu o&nbsp;tryb podr&oacute;żowania, np. trasa piesza lub przejazd; lub czas przejazdu w&nbsp;oparciu o&nbsp;tryb podr&oacute;żowania. Dzięki temu narzędziu można wykonywać następujące czynności:
+    </p>
+    <p>
+        <ul>
+            <li>Obliczyć całkowitą odległość lub czas podr&oacute;żowania z domu do pracy przez osoby dojeżdżające do pracy.
+            </li>
+            <li>Zmierzyć, jak daleko jeżdżą klienci, by zrobić zakupy w sklepach. Użyć tej informacji, aby określić zasięg rynkowy, szczeg&oacute;lnie przy wybieraniu grupy docelowej kampanii reklamowych lub nowych lokalizacji sklep&oacute;w.
+            </li>
+            <li>Obliczyć przewidywany przebieg floty pojazd&oacute;w. Następnie należy uruchomić narzędzie Sumuj w obrębie, aby wyświetlić przebieg według kraju lub innego regionu.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Po podaniu punkt&oacute;w początkowych i&nbsp;docelowych narzędzie zwraca warstwę zawierającą linie tras między parami punkt&oacute;w początkowych i&nbsp;docelowych wraz z&nbsp;pomiarami.  
+    </p>
+    <p>Jeśli zaznaczono opcję  <b>Użyj bieżącego zasięgu mapy</b>, w&nbsp;analizie będą uwzględniane tylko obiekty widoczne w&nbsp;bieżącym zasięgu mapy. Jeśli powyższa opcja nie jest zaznaczona, zostaną uwzględnione wszystkie obiekty w&nbsp;warstwie wejściowej, nawet jeśli będą znajdować się poza bieżącym zasięgiem mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="originsLayer">
+        <div><h2>Wybierz warstwę punktową reprezentującą lokalizację punktów początkowych</h2></div>
+        <hr/>
+        <div>
+            <p>Wybierz warstwę punktową reprezentującą punkt lub punkty początkowe. Narzędzie obsługuje maksymalnie  5 000 punkt&oacute;w początkowych oraz  5 000 punkt&oacute;w docelowych. </p>
+            <p>Jeśli wybierzesz warstwę z&nbsp;dokładnie jednym punktem początkowym, wszystkie punkty docelowe będą z&nbsp;nim połączone.
+            </p>
+            <p>Poza wybraniem warstwy na mapie można wybrać opcję  <b>Wybierz warstwę analizy Living Atlas</b> dostępną w dolnej części menu rozwijanego. Zostanie wtedy otwarta galeria zawierająca kolekcje warstw przydatnych podczas wielu analiz. 
+            </p>
+        </div>
+    </div>
+    <div id="destinationsLayer">
+        <div><h2>Wybierz warstwę punktów docelowych</h2></div>
+        <hr/>
+        <div>
+            <p>Wybierz warstwę reprezentującą punkt docelowy lub punkty docelowe, z&nbsp;kt&oacute;rymi powinny łączyć się punkty początkowe. Narzędzie obsługuje maksymalnie  5 000 punkt&oacute;w początkowych oraz  5 000 punkt&oacute;w docelowych. </p>
+            <p>Jeśli wybierzesz warstwę z&nbsp;dokładnie jednym punktem docelowym, wszystkie punkty początkowe będą z&nbsp;nim połączone. 
+            </p>
+            <p>Jeśli istnieje jeden punkt początkowy i&nbsp;wiele punkt&oacute;w docelowych, narzędzie połączy punkt początkowy z&nbsp;każdym punktem docelowym.
+            </p>
+            <p>Poza wybraniem warstwy na mapie można wybrać opcję  <b>Wybierz warstwę analizy Living Atlas</b> dostępną w dolnej części menu rozwijanego. Zostanie wtedy otwarta galeria zawierająca kolekcje warstw przydatnych podczas wielu analiz. 
+            </p>
+            <p> Jeśli istnieje wiele punkt&oacute;w początkowych i&nbsp;docelowych, potrzebne są dwa pola opisujące pary punkt początkowy-punkt docelowy: <b>Pole identyfikatora ID w&nbsp;punktach początkowych</b> oraz <b>pole dopasowanego identyfikatora ID w&nbsp;punktach docelowych</b>. Podczas analizy narzędzie łączy pary punkt początkowy-punkt docelowy. Zał&oacute;żmy, że występują dwa punkty początkowe z&nbsp;wartościami pola identyfikatora <code>Rosie</code> i <code>Harold</code> oraz dwa punkty docelowe o&nbsp;takich samych wartościach identyfikatora. Punkt początkowy <code>Rosie</code> połączy się z&nbsp;punktem docelowym <code>Rosie</code>, a&nbsp;punkt <code>Harold</code> połączy się z&nbsp;punktem <code>Harold</code>. Nie są wykonywane żadne inne połączenia ani pomiary.
+            </p>
+            <p>Wartości identyfikatora muszą być unikalne w&nbsp;obrębie każdej warstwy, na przykład w&nbsp;warstwie punkt&oacute;w docelowych nie mogą występować dwie wartości  <code>Rosie</code>. Wartości w&nbsp;warstwie punkt&oacute;w początkowych i&nbsp;warstwie punkt&oacute;w docelowych muszą sobie dokładnie odpowiadać, tak aby tworzyć pary; punkt <code>Harold</code> nie połączy się z&nbsp;błędnie zapisaną wartością <code>Harodl</code>. 
+            </p>
+        </div>
+    </div>
+    <div id="measurementType">
+        <div><h2>Zmierz</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Wybierz czy połączyć punkty początkowe z&nbsp;punktami docelowymi z&nbsp;zastosowaniem odległości w&nbsp;linii prostej, czy trybu podr&oacute;żowania. Trasy wynikowe będą obejmować drogi lub pasaże i&nbsp;respektować obowiązujące zasady, takie jak drogi jednokierunkowe i&nbsp;skręty w&nbsp;niedozwolonych miejscach dla samochod&oacute;w osobowych i&nbsp;samochod&oacute;w ciężarowych. Dostępne typy podr&oacute;żowania są określane przez administratora instytucji.  
+            </p>
+            <p>Po wybraniu opcji  <b>Czas przejazdu</b> należy wybrać spos&oacute;b pomiaru czasu przejazdu.
+                <ul>
+                    <li>
+                        <p>Aby znaleźć najkr&oacute;tsze trasy na podstawie stałych prędkości, usuń zaznaczenie opcji  <b>Uwzględnij dane o&nbsp;natężeniu ruchu drogowego</b>.
+                        </p>
+                        <p>Opcja ta służy do uzyskania og&oacute;lnego pomiaru czasu dojazdu, a&nbsp;nie pomiaru obliczonego z&nbsp;uwzględnieniem zmieniających się warunk&oacute;w drogowych dotyczących określonego momentu wyjazdu.
+                        </p>
+                    </li>
+                    <li>
+                        <p>Aby znaleźć najkr&oacute;tsze trasy na podstawie podanego czasu wyjazdu oraz zmieniających się warunk&oacute;w drogowych, zaznacz opcję  <b>Uwzględnij dane o&nbsp;natężeniu ruchu drogowego</b>. Jeśli w celu utworzenia trasy dodatkowo wybierzesz opcję <b>Aktualne natężenie ruchu drogowego</b>, czas wyjazdu z punkt&oacute;w początkowych zostanie ustawiony na aktualną godzinę oraz bieżące i przewidywane prędkości ruchu ulicznego pobrane z czujnik&oacute;w i przekaźnik&oacute;w. Przewidywana prędkość ruchu ulicznego obliczana jest poprzez odniesienie do bieżących i&nbsp;historycznych wartości prędkości ruchu oraz aktualnych zdarzeń i&nbsp;warunk&oacute;w, takich jak pogoda. Prędkość ruchu drogowego jest przewidywana z 12-godzinnym wyprzedzeniem, więc można przesunąć suwak, aby ustawić czas wyjazdu wyprzedzeniem do  12 godzin. </p>
+                        <p>Użyj ustawień aktualnego ruchu drogowego, aby sprawdzić czasy przejazdu, jeśli wyjeżdżasz w tej chwili, za godzinę, itd.
+                        </p>
+                    </li>
+                    <li>
+                        <p>Po zaznaczeniu opcji  <b>Uwzględnij dane o natężeniu ruchu drogowego</b> i wybraniu opcji <b>Ruch drogowy w oparciu o typowe warunki dla</b> danego dnia i godziny, narzędzie wyszuka najkr&oacute;tsze trasy na podstawie historycznych średnich prędkości dla każdego cyklu pięciominutowego w całym tygodniu pracy. W&nbsp;wynikach brany jest pod uwagę ruch drogowy, ale nie jest uwzględniany wpływ aktualnych warunk&oacute;w na drodze i&nbsp;zdarzeń, kt&oacute;re mogą r&oacute;żnić się znacznie od normy.
+                        </p>
+                        <p>Można skorzystać z&nbsp;historii ustawień ruchu drogowego, aby na przykład zadać pytanie: &bdquo;Ile og&oacute;łem potrzeba czasu na przejazd do tych punkt&oacute;w docelowych, jeśli wyjazd nastąpiłby o&nbsp;godz. 11:30 w&nbsp;środę?&rdquo;.
+                        </p>
+                        <p>Skonfigurowany czas odnosi się do strefy czasowej, w&nbsp;kt&oacute;rej zlokalizowane są punkty początkowe. Jeśli zatem czas zostanie skonfigurowany na godz. 8:00 i&nbsp;występują dwa punkty początkowe (jeden w&nbsp;Nowym Jorku, a&nbsp;drugi w&nbsp;Los Angeles), trasy zostaną wygenerowane z&nbsp;uwzględnieniem wyjazdu odpowiednio o&nbsp;godz. 8:00czasu wschodniego i&nbsp;godz. 8:00czasu pacyficznego.
+                        </p>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Uwaga: kiedy pojazd wyjeżdża z&nbsp;punktu początkowego, upływa czas i&nbsp;zmieniają się warunki drogowe. Narzędzie Połącz punkty początkowe z&nbsp;docelowymi uwzględnia te zmienne, jeśli zaznaczono opcję  <b>Uwzględnij dane o&nbsp;natężeniu ruchu drogowego</b>, jednak nie wszystkie regiony przekazują dane o&nbsp;ruchu drogowym. Aby dowiedzieć się, czy ta usługa jest obsługiwana na badanym obszarze, w oknie narzędzia kliknij łącze <b>Sprawdź dostępność</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputLayer">
+        <div><h2>Nazwa warstwy wynikowej</h2></div>
+        <hr/>
+        <div>
+            <p>Jest to nazwa warstwy, kt&oacute;ra zostanie utworzona w zakładce  <b>Moje zasoby</b> i zostanie dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, wyświetlony zostanie komunikat z&nbsp;prośbą o&nbsp;podanie innej nazwy.
+            </p>
+            <p>Używając listy rozwijanej  <b>Zapisz wynik w</b>, można określić nazwę folderu w zakładce <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

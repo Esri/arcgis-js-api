@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Ühenda algpunktid sihtpunktidega</h2><p/>
+        <h2><img src="../images/GUID-7266D30B-0250-4132-B1A5-9B59F0212FAD-web.png" alt="&Uuml;henda algpunktid sihtpunktidega"></h2>
+        <hr/>
+    <p>  K&auml;suga &Uuml;henda algpunktid sihtpunktidega saate m&otilde;&otilde;ta reisiaega v&otilde;i vahemaad punktipaaride vahel. T&ouml;&ouml;riist saab raporteerida linnulennu vahemaid, reisimisviisil (nt jalgsi v&otilde;i autoga) p&otilde;hinevaid vahemaid ning reisi kestust vastavalt reisimisviisile. Selle t&ouml;&ouml;riista abil saate teha j&auml;rgmist:
+    </p>
+    <p>
+        <ul>
+            <li>Arvuta kogu vahemaa v&otilde;i aeg, mis kulub kodu-t&ouml;&ouml; teekonna reisidele.
+            </li>
+            <li>m&otilde;&otilde;ta, kui pika maa kliendid l&auml;bi s&otilde;idavad, et teie poodi k&uuml;lastada;kasutada seda teavet oma turuosa m&auml;&auml;ratlemiseks, eriti reklaamikampaaniate sihtimisel v&otilde;i uute poodide jaoks asukohtade valimisel;
+            </li>
+            <li>arvutada oma s&otilde;idukite jaoks eeldatava l&auml;bitud vahemaa. Seej&auml;rel k&auml;ivitage t&ouml;&ouml;riist &quot;Summeeri piirides&quot;, et raporteerida kilometraaž omavalitsuse v&otilde;i muu piirkonna kaupa.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Teil tuleb sisestada algus- ja l&otilde;pp-punkt; t&ouml;&ouml;riist tagastab kihi, mis sisaldab marsruudijooni (sh m&otilde;&otilde;detud vahemaad l&auml;htekoha ja sihtkoha punktipaaride vahel).  
+    </p>
+    <p>Kui ruut  <b>Kasuta praeguse kaardi ulatust</b> on m&auml;rgitud, siis arvestatakse anal&uuml;&uuml;sis ainult praeguses kuvaulatuses n&auml;htavaid objekte.  Kui see ruut pole m&auml;rgitud, kasutatakse k&otilde;iki sisendkihis olevaid objekte ka siis, kui need pole praegu kaardil n&auml;ha.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="originsLayer">
+        <div><h2>Vali lähtekohta tähistav punktikiht</h2></div>
+        <hr/>
+        <div>
+            <p>Valige l&auml;htekohta v&otilde;i l&auml;htekohti t&auml;histav punktikiht.  See t&ouml;&ouml;riist toetab kuni  5,000 l&auml;htekohta ja  5,000 sihtkohta. </p>
+            <p>Kui valite &uuml;he l&auml;htekohaga kihi, &uuml;henduvad sellega k&otilde;ik sihtkohad.
+            </p>
+            <p>Lisaks kaardil asuvale kihile saate valida variandi  <b>Vali elukeskkonna atlase anal&uuml;&uuml;sikiht</b>, mille leiate ripploendi allosast. Nii avaneb galerii, mis sisaldab mitmete anal&uuml;&uuml;side jaoks tarvilikku kihtide kollektsiooni. 
+            </p>
+        </div>
+    </div>
+    <div id="destinationsLayer">
+        <div><h2>Vali sihtkohtade kiht</h2></div>
+        <hr/>
+        <div>
+            <p>Valige kiht, kus asub sihtkoht (v&otilde;i sihtkohad), millega l&auml;htekohad peaksid &uuml;henduma. See t&ouml;&ouml;riist toetab kuni  5,000 l&auml;htekohta ja  5,000 sihtkohta. </p>
+            <p>Kui valite &uuml;he sihtkohaga kihi, &uuml;henduvad selle sihtkohaga k&otilde;ik l&auml;htekohad. 
+            </p>
+            <p>Kui on &uuml;ks l&auml;htekoht ja mitu sihtkohta, &uuml;hendab t&ouml;&ouml;riist l&auml;htekoha k&otilde;igi sihtkohtadega.
+            </p>
+            <p>Lisaks kaardil asuvale kihile saate valida variandi  <b>Vali elukeskkonna atlase anal&uuml;&uuml;sikiht</b>, mille leiate ripploendi allosast. Nii avaneb galerii, mis sisaldab mitmete anal&uuml;&uuml;side jaoks tarvilikku kihtide kollektsiooni. 
+            </p>
+            <p> Kui on mitu l&auml;hte- ja sihtkohta, vajate kahte v&auml;lja, mis kirjeldavad l&auml;htekoha ja sihtkoha paare: <b>ID v&auml;li l&auml;htepunktis</b>ja <b>Vastav ID v&auml;li sihtkohtades </b>. T&ouml;&ouml;riist &uuml;hendab l&auml;htekoha&ndash;sihtkoha paarid anal&uuml;&uuml;si k&auml;igus. Oletagem n&auml;iteks, et Teil on kaks l&auml;htekohta, mille ID-v&auml;ljade v&auml;&auml;rtused on <code>Mari</code> ja <code>Mati</code> ja kaks samade ID-v&auml;&auml;rtustega sihtkohta. L&auml;htekoht <code>Mari</code> &uuml;hendatakse sihtkohaga <code>Mari</code> ja l&auml;htekoht <code>Mati</code> sihtkohaga <code>Mati</code>. Teisi &uuml;hendusi v&otilde;i m&otilde;&otilde;distusi ei tehta.
+            </p>
+            <p>ID-v&auml;&auml;rtused peavad &uuml;he kihi piirides olema unikaalsed: n&auml;iteks sihtkohtade kiht ei saa sisaldada kahte v&auml;&auml;rtust  <code>Mari</code>. Paari loomiseks peavad v&auml;&auml;rtused l&auml;hte- ja sihtkohtade kihtides t&auml;ielikult kattuma: <code>Mati</code> ei &uuml;hendu valesti kirjutatud v&auml;&auml;rtusega <code>Mait</code>. 
+            </p>
+        </div>
+    </div>
+    <div id="measurementType">
+        <div><h2>Mõõda</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Valige, kas soovite l&auml;htepunktid sihtpunktidega &uuml;hendada sirgjoonelise vahemaa v&otilde;i liikumisviisi kaudu. V&auml;ljundmarsruudid j&auml;rgivad teid v&otilde;i jalgteid ja v&otilde;tavad arvesse kehtivaid reegleid (nt &uuml;hesuunalised t&auml;navad v&otilde;i keelatud p&ouml;&ouml;rded autode jaoks). Lubatud reisiviisid m&auml;&auml;rab Teie asutuse administraator.  
+            </p>
+            <p>Valiku  <b>S&otilde;iduaeg</b> korral saate s&otilde;iduaja m&otilde;&otilde;tmiseks mitme variandi vahel valida.
+                <ul>
+                    <li>
+                        <p>Kindlal kiirusel p&otilde;hinevate kiireimate marsruutide leidmiseks t&uuml;hjendage m&auml;rkeruut  <b>Kasuta liiklust</b>.
+                        </p>
+                        <p>Seda valikut tuleks kasutada juhul, kui soovite &uuml;ldist s&otilde;iduaja m&otilde;&otilde;tmist, arvestamata liiklusolusid kindlal v&auml;ljumisajal.
+                        </p>
+                    </li>
+                    <li>
+                        <p>M&auml;rkige ruut  <b>Kasuta liiklust</b>, et leida etteantud algusajal ja muutuvatel liiklusoludel p&otilde;hinevad kiireimad marsruudid. Kui valite lisaks ka variandi <b>Reaalajas liiklus</b>, m&auml;&auml;ratakse l&auml;htepunktist v&auml;ljumise ajaks praegune kellaaeg ning marsruutide koostamiseks kasutatakse nii praegust kui ka prognoositud liikluskiirust (v&otilde;ttes aluseks andurite ja andmevoogude teabe). Prognoositud liikluskiirused arvutatakse l&auml;htuvalt liikluse kiirusest reaalajas, varem m&otilde;&otilde;detud kiirustest ja muudest tingimustest (nt ilm). Liikluskiirust prognoositakse kuni 12 tundi edasi. Seega saate liugurit liigutada ja m&auml;&auml;rata v&auml;ljumisaja, mis on kuni  12 tundi edasi. </p>
+                        <p>Kasuta neid hetke liikluse seadeid, et leida s&otilde;iduajad praegu v&auml;ljudes, tunniaja p&auml;rast v&auml;ljudes jne.
+                        </p>
+                    </li>
+                    <li>
+                        <p>Kui m&auml;rgite ruudu  <b>Kasuta liiklusinfot</b> ja valite seade <b>Liiklusinfo p&otilde;hineb tavap&auml;rastel tingimustel</b> koos kindla p&auml;eva ja kellaajaga, leiab t&ouml;&ouml;riist kiireima teekonna, v&otilde;ttes aluseks varasemalt viieminutise intervalliga m&otilde;&otilde;detud keskmised kiirused tavap&auml;rasel n&auml;dalal. Tulemused sisaldavad liiklusinfot, kuid ei sisalda praeguste liiklusolude ja s&uuml;ndmuste m&otilde;ju, mis v&otilde;ib s&otilde;ltuvalt p&auml;evast oluliselt varieeruda.
+                        </p>
+                        <p>Neid ajaloolisi liikluse andmeid saate kasutada n&auml;iteks selleks, et k&uuml;sida: &quot;Kui kaua &uuml;ldiselt v&otilde;tab aega nende konkreetsete sihtkohtadeni j&otilde;udmine, kui v&auml;ljuda 11:30 kolmap&auml;eval?&quot;
+                        </p>
+                        <p>Teie m&auml;&auml;ratud kellaaeg viitab konkreetsele ajav&ouml;&ouml;ndile, kus Teie l&auml;htepunktid asuvad. Kui m&auml;&auml;rate kellaaja 8:00 (hommikul) ning Teie kaks l&auml;htepunkti asuvad erinevates ajav&ouml;&ouml;ndites, siis arvestatakse vastavalt teekonna genereerimisel m&otilde;lemas erinevas ajav&ouml;&ouml;ndis v&auml;ljumiskellaaega 8:00.
+                        </p>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Pange t&auml;hele, et kui Teie s&otilde;iduk eemaldub l&auml;htepunktist, siis aeg kulub edasi ja liiklusolud muutuvad. L&auml;htepunktide sihtpunktidega &uuml;hendamise t&ouml;&ouml;riist arvestab nende variatsioonidega, kui m&auml;rgite ruudu  <b>Kasuta liiklust</b>, kuid k&otilde;ik piirkonnad ei toeta liiklusteabe kasutamist. Kl&otilde;psake linki <b>Vaata k&auml;ttesaadavust</b>, et teada saada, kas antud funktsioon on Teie piirkonnas k&auml;ttesaadav.
+            </p>
+        </div>
+    </div>
+    <div id="outputLayer">
+        <div><h2>Tulemkihi nimi</h2></div>
+        <hr/>
+        <div>
+            <p>See on selle kihi nimi, mis luuakse jaotises  <b>Minu sisu</b> ja lisatakse kaardile.  Vaikenimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui kiht on juba olemas, palutakse teil sisestada m&otilde;ni muu nimi.
+            </p>
+            <p>Kasutades rippmen&uuml;&uuml;d  <b>Salvesta tulemused</b>, saate jaotises <b>Minu sisu</b> m&auml;&auml;rata kausta nime, kuhu tulemused salvestatakse.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

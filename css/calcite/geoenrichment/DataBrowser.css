@@ -1,0 +1,42 @@
+@import url(Breadcrumb.css);
+@import url(DataCategoriesPage.css);
+@import url(DataCollectionsPage.css);
+@import url(DataVariablesPage.css);
+@import url(SearchTextBox.css);
+@import url(ShoppingCart.css);
+@import url(VariableInfo.css);
+@import url(Pagination.css);
+
+.calcite .DataBrowser {
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.calcite .DataBrowser_Title {
+    margin-top: 16px;
+    margin-left: 19px;
+    font-size: 14pt;
+    color: #2892CD;
+}
+
+.calcite .DataBrowser .dgrid-selected {
+    background: none;
+}
+
+.calcite .DataBrowserInfoIcon {
+    background: url("../images/ago_sprite.png") no-repeat -64px -64px;
+    height:16px;
+    width:16px;
+    margin-left:7px;
+    margin-right:7px;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    top: -0.14em;
+}
+
+.calcite .VarLabel {
+    padding: 0.5em;
+}

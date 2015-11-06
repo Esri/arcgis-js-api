@@ -1,0 +1,120 @@
+.Pagination {
+}
+
+.Pagination_PageAndArrows {
+    position: absolute;
+    top: 0;
+    bottom: 45px;
+    left: 0;
+    right: 0;
+}
+
+.Pagination_Triangle {
+    position: absolute;
+    top: 50%;
+    width: 20px;
+    height: 60px;
+    margin-top: -30px;
+    cursor: pointer;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.Pagination_TriangleBack {
+    background: url(./images/leftArrow_Normal.png) no-repeat right center;
+    left:0;
+    float:left;
+    margin-left:20px;
+}
+
+.dj_rtl .Pagination_TriangleBack {
+    background-image: url(./images/rightArrow_Normal.png);
+    float:right;
+    right:0;
+    margin-left:auto;
+    margin-right:20px;
+}
+
+.Pagination_TriangleBack:hover {
+    background-image: url(./images/leftArrow_hover.png);
+}
+
+.dj_rtl .Pagination_TriangleBack:hover {
+    background-image: url(./images/rightArrow_hover.png);
+}
+
+.Pagination_TriangleForward {
+    background: url(./images/rightArrow_Normal.png) no-repeat left center;
+    float:right;
+    right:0;
+    margin-right:20px;
+}
+
+.dj_rtl .Pagination_TriangleForward {
+    background-image: url(./images/leftArrow_Normal.png);
+    left:0;
+    float:left;
+    margin-left:20px;
+    margin-right:auto;
+}
+
+.Pagination_TriangleForward:hover {
+    background-image: url(./images/rightArrow_hover.png);
+}
+
+.dj_rtl .Pagination_TriangleForward:hover {
+    background-image: url(./images/leftArrow_hover.png);
+}
+
+.Pagination_Items {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+
+    left: 50px;
+    right: 50px;
+}
+
+.Pagination_Bullets {
+    position: absolute;
+    bottom: 0px;
+    left: 80px;
+    right: 80px;
+
+    height: 45px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: center;
+    color:#d1d1d1;
+}
+
+.Pagination_Bullet {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0 3px;
+    cursor: pointer;
+}
+
+.Pagination_BulletCurrent {
+    color: #898989;
+}
+
+.Pagination_SlideAnim {
+    position: absolute;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.Pagination_SlideAnim > div {
+    display: inline-block;
+    width: 100%;
+    white-space: normal;
+    vertical-align: top;
+}
+
+.Pagination_FadeAnim {
+    position: absolute;
+    width: 100%;
+    top: 0;
+}

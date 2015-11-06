@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Rezumat în apropiere</h2><p/>
+        <h2><img src="../images/GUID-A5033D27-81B6-42E7-BA38-50D25C1CCCCA-web.png" alt="Rezumat &icirc;n apropiere"></h2>
+        <hr/>
+    <p>  Acest instrument găseşte şi furnizează un rezumat al obiectelor spaţiale care se află &icirc;ntr-un anumit interval de distanţă faţă de obiectele spaţiale din primul strat tematic de intrare.  Distanţa poate fi măsurată ca distanţă &icirc;n linie dreaptă sau folosind un mod de deplasare selectat.  Opţiunile modului de deplasare sunt distanţa de deplasare cu autoturismul, timpul de deplasare cu autoturismul, distanţa de deplasare cu camionul, timpul de deplasare cu camionul, distanţa de deplasare pe jos şi timpul de deplasare pe jos.   Apoi sunt calculate statistici pentru obiectele spaţiale din apropiere. De exemplu
+        <ul>
+            <li>Calculaţi populaţia totală pe o rază de cinci minute de conducere faţă de o nouă locaţie de magazin propusă.
+            </li>
+            <li>Calculaţi numărul de rampe de acces la autostradă pe o distanţă de conducere de o milă faţă de o nouă locaţie de magazin propusă pentru a evalua accesibilitatea magazinului.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Dacă se bifează  <b>Utilizare extindere curentă hartă</b>, vor fi analizate numai obiectele spaţiale din stratul tematic de intrare şi din stratul tematic de sumarizat care sunt vizibile din extinderea curentă a hărţii.  Dacă nu se bifează, vor fi analizate toate obiectele spaţiale at&acirc;t din stratul tematic de intrare, c&acirc;t şi din stratul tematic de analizat, chiar dacă acestea se află &icirc;n afara extinderii curente a hărţii.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="sumNearbyLayer">
+        <div><h2>Alegeţi stratul tematic din care vor fi măsurate distanţele către obiectele spaţiale din stratul tematic care va fi rezumat</h2></div>
+        <hr/>
+        <div>
+            <p>Stratul tematic de puncte, linii sau suprafeţe care vor fi utilizate ca locaţii de pornire pentru a rezuma obiectele spaţiale din apropiere.
+            </p>
+            <p>Pe l&acirc;ngă alegerea unui strat tematic din harta dvs., puteţi selecta  <b>Alegere strat tematic de analiză din atlasul actualizat</b>, care se găseşte &icirc;n partea de jos a listei verticale. Această acţiune deschide o galerie care conţine o colecţie de straturi tematice utile pentru numeroase analize. 
+            </p>
+        </div>
+    </div>
+    <div id="Summarize">
+        <div><h2>Alegere strat tematic pentru rezumat</h2></div>
+        <hr/>
+        <div>
+            <p>Vor fi rezumate obiectele spaţiale din acest strat tematic, care se află la o distanţă egală sau mai mică dec&acirc;t cea specificată faţă de obiecte spaţiale din stratul tematic specificat mai sus. 
+            </p>
+            <p>Pe l&acirc;ngă alegerea unui strat tematic din harta dvs., puteţi selecta  <b>Alegere strat tematic de analiză din atlasul actualizat</b>, care se găseşte &icirc;n partea de jos a listei verticale. Această acţiune deschide o galerie care conţine o colecţie de straturi tematice utile pentru numeroase analize. 
+            </p> 
+        </div>
+    </div>
+    <div id="BufferOption">
+        <div><h2>Realizare rezumat pentru cele mai apropiate obiecte spațiale prin intermediul</h2></div>
+        <hr/>
+        <div>
+            <p> Puteţi defini tipul de măsurare a distanţei pe care doriţi să &icirc;l utilizaţi, folosind o distanţă &icirc;n linie dreaptă sau un mod de deplasare selectat. Modurile de deplasare sunt activate doar atunci c&acirc;nd primul strat tematic de intrare (stratul tematic de la care sunt măsurate distanţele) conţine puncte.  Modurile de deplasare disponibile sunt determinate de administratorul organizaţiei dvs. C&acirc;nd utilizaţi unul dintre modurile de deplasare, măsurătorile se fac de-a lungul drumurilor sau traseelor pietonale şi respectă regulile &icirc;n vigoare, cum ar fi sensurile unice, interdicţiile de schimbare a direcţiei şi aşa mai departe. Timpii de deplasare cu autoturismul sau camionul respectă selecţiile dvs. &icirc;n privinţa vitezei de deplasare, at&acirc;t cele bazate pe traficul &icirc;n timp real, c&acirc;t şi cele bazate pe traficul anticipat. Vitezele &icirc;n timp real sunt colectate prin valori prelevate de la senzorii actuali, iar vitezele tipice sunt calculate pe baza mediilor istorice.
+            </p>
+            <p>Puteţi introduce mai multe distanţe. Vor fi sumarizate obiectele spaţiale care se &icirc;ncadrează &icirc;n distanţele pe care le introduceţi.  
+            </p>
+            <p>Dacă se bifează caseta de selectare  <b>Rezultat zone limită</b>, se va obţine un strat tematic de rezultate referitoare la zonele definite prin măsurarea distanţei specificate. Stratul tematic de rezultate va include rezumatul tuturor informaţiilor solicitate. De exemplu, atunci c&acirc;nd creaţi rezumatul punctelor din apropiere, dacă utilizaţi o <b>Distanţă liniară</b> de 5 mile (8 km), rezultatul dvs. va conţine zone cu o rază de 5 mile (8 km) &icirc;n jurul obiectelor spaţiale de intrare, c&acirc;t şi rezumatul tuturor informaţiilor de tip număr de puncte şi orice alte statistici adăugate. Dacă nu se bifează caseta de selectare, stratul tematic de rezultate va consta &icirc;n aceleaşi obiecte spaţiale ale primului strat tematic de intrare, alături de rezumatul tuturor informaţiilor solicitate.
+            </p>
+        </div>
+    </div>
+    <div id="StatisticsPoint">
+        <div><h2>Adăugare statistică din stratul tematic care va fi rezumat</h2></div>
+        <hr/>
+        <div>
+            <p>Opţional, puteţi calcula statistici pentru toate atributele numerice ale punctelor din apropiere. 
+            </p>
+            <p>Caseta de validare  <b>Număr de puncte</b>, dacă este bifată, va calcula numărul total de puncte din apropiere.  &Icirc;n plus, puteţi calcula statistici pentru c&acirc;mpurile numerice ale punctelor din apropiere.
+            </p>
+            <ul>
+                <li> <b>Sumă</b>&mdash;Valoarea totală pentru c&acirc;mpul specificat
+                </li>
+                <li> <b>Medie</b>&mdash;Media pentru c&acirc;mpul specificat
+                </li>
+                <li> <b>Minim</b>&mdash;Cea mai mică valoare din c&acirc;mpul specificat
+                </li>
+                <li> <b>Maxim</b>&mdash;Cea mai mare valoare pentru c&acirc;mpul specificat
+                </li>
+                <li> <b>Abatere standard</b>&mdash;Abaterea standard a valorilor din c&acirc;mpul specificat
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="StatisticsLine">
+        <div><h2>Adăugare statistică din stratul tematic care va fi rezumat</h2></div>
+        <hr/>
+        <div>
+            <p>Opţional, puteţi calcula statistici pentru toate atributele numerice ale liniilor din apropiere. 
+            </p>
+            <p>Caseta de validare  <b>Lungime totală</b>, dacă este bifată, va calcula lungimea totală a liniilor din apropiere.  &Icirc;n plus, puteţi calcula statistici pentru c&acirc;mpurile numerice ale liniilor din apropiere.
+            </p>
+            <ul>
+                <li> <b>Sumă</b>&mdash;Valoarea totală pentru c&acirc;mpul specificat
+                </li>
+                <li> <b>Medie</b>&mdash;Media pentru c&acirc;mpul specificat
+                </li>
+                <li> <b>Minim</b>&mdash;Cea mai mică valoare din c&acirc;mpul specificat
+                </li>
+                <li> <b>Maxim</b>&mdash;Cea mai mare valoare pentru c&acirc;mpul specificat
+                </li>
+                <li> <b>Abatere standard</b>&mdash;Abaterea standard a valorilor din c&acirc;mpul specificat
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="StatisticsPolygon">
+        <div><h2>Adăugare statistică din stratul tematic care va fi rezumat</h2></div>
+        <hr/>
+        <div>
+            <p>Opţional, puteţi calcula statistici pentru toate atributele numerice ale suprafeţelor din apropiere. 
+            </p>
+            <p>Caseta de validare  <b>Suprafaţă totală</b>, dacă este bifată, va calcula suprafaţa totală a obiectelor spaţiale din apropiere.  &Icirc;n plus, puteţi calcula statistici pentru c&acirc;mpurile numerice ale obiectelor spaţiale din apropiere.
+            </p>
+            <ul>
+                <li> <b>Sumă</b>&mdash;Valoarea totală pentru c&acirc;mpul specificat
+                </li>
+                <li> <b>Medie</b>&mdash;Media pentru c&acirc;mpul specificat
+                </li>
+                <li> <b>Minim</b>&mdash;Cea mai mică valoare din c&acirc;mpul specificat
+                </li>
+                <li> <b>Maxim</b>&mdash;Cea mai mare valoare pentru c&acirc;mpul specificat
+                </li>
+                <li> <b>Abatere standard</b>&mdash;Abaterea standard a valorilor din c&acirc;mpul specificat
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="GroupBy">
+        <div><h2>Alegere câmp după care să se facă gruparea</h2></div>
+        <hr/>
+        <div>
+            <p> Acesta este un atribut al obiectelor spaţiale din apropiere, pe care &icirc;l puteţi utiliza pentru a calcula statistici separate pentru fiecare valoare de atribut unică. De exemplu, să presupunem că primul strat tematic de intrare (stratul tematic de la care sunt măsurate distanţele) conţine parcele de teren libere de v&acirc;nzare şi obiectele dvs. spaţiale din apropiere sunt amprente de clădiri.  Unul din atributele amprentelor de clădiri este <i>UseType</i>, care conţine valori precum RETAIL (Comerţ), RESIDENTIAL (Rezidenţial), MANUFACTURING (Producţie), PUBLIC (Interes public) şi aşa mai departe.  Pentru a caracteriza amestecul de utilizări ale clădirilor din apropierea fiecărei parcele libere, puteţi calcula suprafaţa totală pentru fiecare tip unic de utilizare a clădirilor de pe o rază de doi kilometri faţă de parcelele libere, utiliz&acirc;nd <i>UseType</i> drept atribut de grupare.   Statistica pentru fiecare punct &icirc;mpreună cu numărul de obiecte spaţiale din apropiere vor fi afişate &icirc;n ferestra pop-up a stratului tematic rezultat.
+            </p>    
+        </div>
+    </div>
+    <div id="MinorityMajority">
+        <div><h2>Adăugare minoritate, majoritate</h2></div>
+        <hr/>
+        <div>
+            <p>Această casetă de selectare este activată c&acirc;nd alegeţi un c&acirc;mp după care să efectuaţi gruparea.    Dacă doriţi să aflaţi ce valori de atribute din fiecare grup reprezintă minoritatea (cele mai puţin frecvente) sau majoritatea (cele mai frecvente) &icirc;n cadrul distanţei sau intervalului de timp pe care l-aţi specificat, selectaţi  <b>Adăugare minoritate, majoritate</b>.   C&acirc;nd selectaţi <b>Adăugare minoritate, majoritate</b>, &icirc;n stratul tematic rezultat sunt adăugate două c&acirc;mpuri noi.   Dacă selectaţi şi opţiunea <b>Adăugare procentaje</b>, &icirc;n stratul tematic rezultat sunt adăugate &icirc;ncă două c&acirc;mpuri, conţin&acirc;nd procentajele valorilor de atribute aflate &icirc;n minoritate şi majoritate &icirc;n fiecare grup.
+            </p>
+            <ul>
+                <li>&Icirc;n cazul &icirc;n care creaţi un rezumat al punctelor din apropiere, valorile aflate &icirc;n minoritate şi majoritate sunt calculate pe baza numărului de puncte din cadrul distanţei sau intervalului de timp pe care l-aţi specificat.
+                </li>
+                <li>&Icirc;n cazul &icirc;n care creaţi un rezumat al liniilor din apropiere, valorile aflate &icirc;n minoritate şi majoritate sunt calculate pe baza lungimilor liniilor din cadrul distanţei sau intervalului de timp pe care l-aţi specificat.  
+                </li>
+                <li>&Icirc;n cazul &icirc;n care creaţi un rezumat al zonelor din apropiere, valorile aflate &icirc;n minoritate şi majoritate sunt calculate pe baza zonelor din cadrul distanţei sau intervalului de timp pe care l-aţi specificat.
+                </li>
+            </ul>
+             
+        </div>
+    </div>
+    <div id="PercentShape">
+        <div><h2>Adăugare procente</h2></div>
+        <hr/>
+        <div>
+            <p>Această casetă de selectare este activată c&acirc;nd alegeţi un c&acirc;mp după care să efectuaţi gruparea. Selectaţi  <b>Adăugare procentaje</b> dacă doriţi să aflaţi procentajul fiecărei valori de atribut din fiecare grup. &Icirc;n tabelul de rezultate este adăugat un nou c&acirc;mp, care conţine procentajele fiecărei valori de atribut din fiecare grup. Dacă este bifată şi opţiunea <b>Adăugare minoritate, majoritate</b>, &icirc;n stratul tematic rezultat sunt adăugate &icirc;ncă două c&acirc;mpuri cu procentajele valorilor de atribute aflate &icirc;n minoritate şi majoritate &icirc;n fiecare grup.
+            </p>
+        </div>
+    </div>
+    <div id="OutputName">
+        <div><h2>Nume strat tematic rezultat</h2></div>
+        <hr/>
+        <div>
+            <p>Acesta este numele stratului tematic care va fi creat &icirc;n  <b>Resursele mele</b> şi adăugat &icirc;n hartă.  Numele implicit se bazează pe numele instrumentului şi numele stratului tematic de intrare. Dacă stratul tematic rezultat există deja, vi se va solicita să furnizaţi un alt nume.
+            </p>
+            <p>Utiliz&acirc;nd caseta derulantă  <b>Salvare rezultat &icirc;n</b>, puteţi specifica numele unui director din <b>Resursele mele</b> &icirc;n care va fi salvat rezultatul.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

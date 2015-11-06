@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Iegūt jaunu izvietojumu</h2><p/>
+        <h2><img src="../images/GUID-4A756008-8431-4AA5-BD42-7135296560DD-web.png" alt="Iegūt jaunu izvietojumu"></h2>
+        <hr/>
+    <p>&Scaron;is rīks gūst jaunas iespējas savā studiju jomā, kas atbilst virknei norādītajiem kritērijiem. &Scaron;ie kritēriji var tikt balstīti uz atribūtu vaicājumu (piemēram, parcele, kas ir tuk&scaron;a) un telpiskiem vaicājumiem (piemēram, parcele, kas atrodas plūdu zonā).
+
+    </p>
+    <p>Ja ir izvēlēts  <b>Izmantot pa&scaron;reizējo kartes apmēru</b>, tad tikai tie elementi, kas ir redzami pa&scaron;reizējā kartes skatā, tiks analizēti. Ja nav atzīmēts, visi analīzes slāņa elementi tiks analizēti, arī pa&scaron;reizējā kartes pārklājuma ārpusē.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="Expression">
+        <div><h2>Iegūt jaunus izvietojumus, kas atbilst sekojošam izteiksmēm</h2></div>
+        <hr/>
+        <div>
+            <p>Klik&scaron;ķiniet uz  <b>Pievienot izteiksmi</b> pogas, lai definētu izteiksmi. Jūs varat pievienot vairākas izteiksmes. Pēc izteiksmes ievadī&scaron;anas un uzklik&scaron;ķinā&scaron;anas uz <b>Palaist analīzi</b> pogas, elementi analīzes slānī tiek filtrēti pēc katras izteiksmes nosacījumiem. Elementa daļas, kas atbilst visām izteiksmēm tiek rakstītas rezultātu slānī.
+            </p>
+            <p>Divi galvenie veidi, kā Jūs varat izveidot izteiksmes; atribūtu un telpiskāsAtribūtu izteiksmes ir vaicājumi par lauku vērtībām, kā piemēram,  <code>kur nosaukums ir 'San Francisco'</code>. Telpiskajām izteiksmēm ir četri veidi:
+                <ul>
+                    <li> <b>attālumā</b>: elementu daļas, kas atrodas noteiktā attālumā no elementa citā slānī.  Piemēram, meklēt parceles daļas, kas atrodas 500 metru attālumā no Losandželosas upes.
+                    </li>
+                    <li> <b>pilnībā satur</b>: elementam jāietver visi cita slāņa elementi.  piemēram, atrast ūdenskrātuves, kas pilnībā ietver rūpnieciskās izmanto&scaron;anas parceles zonas. Parceles daļa nevar būt ārpus ūdenskrātuves.
+                    </li>
+                    <li> <b>pilnībā ietver</b>: elements pilnībā ietver cita slāņa elementus.  Piemēram, meklēt skolu rajonus, kas pilnībā atrodas pilsētas robežās. Neviena daļa no skolu rajoniem nevar atrasties ārpus pilsētas robežām.
+                    </li>
+                    <li> <b>krustot</b>: iezīmes vai daļas elementiem ir jāpārklāj vai jākrustojas ar elementiem citā slānī.  Piemēram, atrast teritorijas ar izdegu&scaron;u augu valsti no vairākiem ugunsgrēkiem nacionālajā parkā. Izdegu&scaron;ās teritorijas ārpus parka robežām netiks iekļautas.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Katrai telpiskai izteiksmei ir atbilsto&scaron;a negācija;  <b>neatrodas attālumā</b>, <b>pilnībā nesatur</b>, <b>pilnībā neietver</b>, un <b>ne&scaron;ķērso</b>.
+            </p> 
+        </div>
+    </div>
+    <div id="OutputName">
+        <div><h2>Rezultāta slāņa nosaukums</h2></div>
+        <hr/>
+        <div>
+            <p>Tas ir slāņa nosaukuns, kas tiks izveidots  <b>Mans saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja slānis jau pastāv, jums tiks lūgts norādīt citu nosaukumu.
+            </p>
+            <p>Lietojot  <b>Saglabāt rezultātus</b> nolaižamajā sarakstlodziņā, jūs varat norādīt nosaukumu mapē <b>Mans saturs</b>, kur tiks saglabāti rezultāti.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

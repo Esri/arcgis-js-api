@@ -1,0 +1,94 @@
+.esriCalcField .esriCalcTitleLabel {
+  font-weight: bold;
+}
+
+.esriCalcField .esriCalcFieldValidateIcon {
+  background-image: url("../images/validateicon16.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 16px;
+  height: 16px;
+  margin: 0.25px;  
+}
+
+.esriCalcFieldValidateDisabledIcon {
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 16px;
+  height: 16px;
+  margin: 0.25px;  
+}
+
+.esriCalcField .esriActionButton {
+  background-color: transparent;
+  background: none;
+  border: 1px solid #F7F8F8;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  padding-top: 0.5em;
+  height: 3em;
+  width: 4em;
+}
+
+.esriCalcField .esriCalcFieldClearIcon {
+  background-image: url("../analysis/images/GenericEraser16.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 16px;
+  height: 16px;
+  margin: 0.25px;  
+}
+
+.esriCalcField .esriCalcFieldClearDisabledIcon {
+  background-image: url("../analysis/images/GenericEraserDisabled16.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 16px;
+  height: 16px;
+  margin: 0.25px;  
+}
+
+.esriCalcField .esriCalExpRowOuter {
+  padding: 0.25em; 
+}
+
+.esriCalcField .esriCalcExpLabelRow {
+  cursor: pointer;  
+  color: #000;
+  border: 1px solid white;
+  background-color: #fff;
+}
+
+.esriCalcField .esriCalcFieldTextTrimWithEllipses {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;  
+}
+
+.esriCalcField .esriLoading  {
+  background: url(../images/ajax-loader-arrow-lightblue.gif) center center no-repeat;
+}
+
+.esriCalcField .esriLoadingLarge  {
+  background: url(../images/ajax-loader-segments-circle-64.gif);
+  background-repeat: no-repeat;
+  background-position: 43% 50%;
+  background-size: auto;
+}
+
+
+.esriCalcField .esriFormWarning {
+  padding: 1.2em;
+  margin: 0.7em 0;
+  border: 1px solid #a67032;
+  background-color: #F4DA6E;
+}
+
+.esriCalcField .esriFormSuccess {
+  padding: 1.2em;
+  margin: 0.7em 0;
+  border: 1px solid #257824;
+  background-color: #D2E959;
+}

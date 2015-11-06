@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Grenzen oplossen</h2><p/>
+        <h2><img src="../images/GUID-7B5F69B0-3625-404F-8B52-2B562766C0BB-web.png" alt="Grenzen oplossen"></h2>
+        <hr/>
+    <p>Gebieden die elkaar overlappen of een gemeenschappelijke grens hebben, worden samengevoegd tot &eacute;&eacute;n gebied.    
+    </p>
+    <p>U kunt bepalen welke grenzen worden samengevoegd door een veld op te geven. Als u bijvoorbeeld een laag met regio's hebt en elke regio een  <i>State_Name</i>-attribuut heeft, kunt u grenzen oplossen op basis van het <i>State_Name</i>-attribuut. Aangrenzende regio's worden samengevoegd als ze dezelfde waarde hebben voor <i>State_Name</i>. Het eindresultaat is een laag met grenzen van provincies.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Kies de vlakkenlaag waarvan de grenzen worden opgelost.</h2></div>
+        <hr/>
+        <div>
+            <p>Geef de laag op met gebiedsobjecten die worden opgelost.
+
+            </p>
+            <p>Naast het kiezen van een laag uit uw kaart, kunt u  <b>Analyselaag Levende Atlas kiezen</b> selecteren onderaan de vervolgkeuzelijst. Er wordt een galerij geopend met een verzameling lagen die handig zijn voor veel analyses. 
+            </p>
+        </div>
+    </div>
+    <div id="DissolveFields">
+        <div><h2>Oplossingsmethode kiezen</h2></div>
+        <hr/>
+        <div>
+            <p>U kunt een van deze twee methoden kiezen voor het samenvoegen van vlakken:
+                <ul>
+                    <li> <b>Gebieden die elkaar overlappen of aan elkaar grenzen</b>&mdash;Twee of meer gebieden met overlappende grenzen worden samengevoegd tot &eacute;&eacute;n gebied. Daarnaast worden aangrenzende gebieden (dus gebieden met een gemeenschappelijke grens) samengevoegd tot &eacute;&eacute;n gebied.
+                    </li>
+                    <li> <b>Gebieden met dezelfde veldwaarde</b>&mdash;Gebieden die elkaar overlappen of die een gemeenschappelijke grens hebben, worden samengevoegd tot &eacute;&eacute;n gebied als ze dezelfde attribuutwaarde hebben.
+                        <p>Als u bijvoorbeeld een laag met regio's hebt en elke regio een  <i>State_Name</i>-attribuut heeft, kunt u grenzen oplossen op basis van het <i>State_Name</i>-veld. Aangrenzende regio's worden samengevoegd als ze dezelfde waarde hebben voor <i>State_Name</i>. Het eindresultaat is een laag met grenzen van provincies.
+                        </p>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Als  <b>Huidige kaartextent gebruiken</b> is geselecteerd, worden alleen de objecten opgelost in de invoerlaag die zichtbaar is binnen het huidige kaartextent. Als deze optie niet wordt geselecteerd, worden alle objecten in de invoerlaag opgelost, ook als ze zich buiten de huidige kaartomvang bevinden.
+            </p>
+        </div>
+    </div>
+    <div id="SummaryFields">
+        <div><h2>Statistieken toevoegen</h2></div>
+        <hr/>
+        <div>
+            <p>Wanneer gebieden worden samengevoegd, kunt u een samenvatting van hun attributen maken. Als u bijvoorbeeld de grens tussen regio's oplost op basis van  <i>State_Name</i>, en elke regio een <i>Bevolking</i>-veld heeft, kunt u de som van <i>Bevolking</i> voor de staat berekenen.
+            </p>
+            <p>Beschikbare soorten statistieken zijn:
+            </p>
+            <ul>
+                <li> <b>Som</b>&mdash;Hiermee wordt de totale waarde voor het opgegeven veld toegevoegd
+                    
+
+                </li>
+                <li> <b>Gemiddelde</b>&mdash;Hiermee wordt het gemiddelde voor het opgegeven veld berekend
+                    
+
+                </li>
+                <li> <b>Minimum</b>&mdash;Hiermee wordt de kleinste waarde gegeven van alle records van het opgegeven veld
+                    
+
+                </li>
+                <li> <b>Maximum</b>&mdash;Hiermee wordt de grootste waarde gegeven van alle records van het opgegeven veld
+                    
+
+                </li>
+                <li> <b>Std. afwijking</b>&mdash;Hiermee wordt de standaardafwijking gegeven van de waarden in het opgegeven veld
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="OutputName">
+        <div><h2>Resultaat laagnaam</h2></div>
+        <hr/>
+        <div>
+            <p>Dit is de naam van de laag die in  <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, wordt u gevraagd een nieuwe naam te geven.
+            </p>
+            <p>Als u de vervolgkeuzelijst  <b>Resultaat opslaan in</b> gebruikt, kunt u de naam opgeven van een map in <b>Mijn Content</b> waarin het resultaat wordt opgeslagen.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

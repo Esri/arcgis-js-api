@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Leia tulipunktid</h2><p/>
+        <h2><img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" alt="Leia tulipunktid"></h2>
+        <hr/>
+    <p>T&ouml;&ouml;riist Leia tulipunktid m&auml;&auml;rab, kas andmete ruumimustris on statistiliselt olulisi klastreid. 
+        <ul>
+            <li>Kas Teie punktilised n&auml;htused (nt kuritegevuse s&uuml;ndmused, puud, liiklus&otilde;nnetused jms) on t&otilde;esti klasterdatud?Kuidas saate olla selles kindel?
+            </li>
+            <li>Kas olete uurinud statistiliselt olulisi tulipunkte (nt kulutused, imikusuremus p&uuml;sivalt k&otilde;rge skooriga jms) v&otilde;i muutub kaardi sisu vastavalt s&uuml;mboloogiale?
+            </li>
+        </ul>
+        T&ouml;&ouml;riista Leia tulipunktid abil saate nendele k&uuml;simustele vastusi hankida.
+    </p>
+    <p>Isegi korrap&auml;ratul ruumimustril esineb teatud laadi klasterdumine.  Lisaks p&uuml;&uuml;avad meie silmad ja meeled intuitiivselt leida mustreid ka seal, kus neid ei eksisteeri. Seega v&otilde;ib olla raske teada, kas mustrid Teie andmetes on tingitud reaalsete ruumilise protsesside tulemusena v&otilde;i on need lihtsalt juhusliku kokkusattumuse tulemus. Seet&otilde;ttu kasutavad uurijad ja anal&uuml;&uuml;tikud spetsiaalselt numbriliste v&auml;&auml;rtuste lokaalse koondumise n&auml;itajaid nagu n&auml;iteks Getis-Ord Gi. Kui olete andmetes leidnud statistiliselt olulised klastrid, on see v&auml;&auml;rtuslik info. Teadmus, kus ja millal klasterdumine esineb, v&otilde;imaldab pakkuda olulisi vihjeid protsesside kohta. Teades, et n&auml;iteks eluhoonetesse murdvarguste arv on p&uuml;sivalt suurem eriti eeslinnades, on see oluliseks infoks, kui Teil on vaja kaaluda t&otilde;husamaid ennetuse strateegiaid, jaotada piiratud kaitseressursse, algatada naabrivalve programme, lubada p&otilde;hjalikumat eeluurimist v&otilde;i tuvastada v&otilde;imalikke kahtlusaluseid.   
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="analysisLayer">
+        <div><h2>Vali kiht, mille jaoks arvutatakse tulipunktid</h2></div>
+        <hr/>
+        <div>
+            <p>Punkti- v&otilde;i alakiht, millest tuli- ja k&uuml;lmpunkte otsitakse.
+
+            </p>
+        </div>
+    </div>
+    <div id="analysisField">
+        <div><h2>Leia kõrged ja madalad klastrid</h2></div>
+        <hr/>
+        <div>
+            <p>Antud anal&uuml;&uuml;s vastab k&uuml;simusele: kus paiknevad k&otilde;rge ja madala v&auml;&auml;rtusega klastrid ruumiliselt?
+            </p>
+            <p>Kui Teie andmeteks on punktid ja tegite valiku  <b>Punktide arv</b>, hindab t&ouml;&ouml;riist punktobjektide paiknemise ruumilist korrap&auml;ra, saamaks vastust k&uuml;simusele: Kus on punktid oodatust teisiti klasterdatud v&otilde;i hajutatud?
+            </p>
+            <p>Kui valisite v&auml;lja, hindab t&ouml;&ouml;riist iga objektiga seotud v&auml;&auml;rtuste paiknemise ruumilist korrap&auml;ra, saamaks vastust k&uuml;simusele: kus paiknevad k&otilde;rge ja madala v&auml;&auml;rtusega klastrid?
+            </p>
+        </div>
+    </div>
+    <div id="aggregationPolygonLayer">
+        <div><h2>Loenda piiresse jäävaid punkte</h2></div>
+        <hr/>
+        <div>
+            <p>Vaikimisi loendatakse v&otilde;rgustikus olevaid punkte. T&ouml;&ouml;riist loob v&otilde;rgustiku punktandmete p&otilde;hjal. Teise v&otilde;imalusena saate sisestada alakihi (tavap&auml;raselt v&otilde;iksid need kajastada linnaosade rahvastikku, omavalitsuste piire, maakondasid jms), et vastata k&uuml;simusele: arvestades iga pindobjekti piires loendatud punktide arvu, kas eksisteerib kohti, kus k&otilde;rge v&otilde;i madala tasemega punktide ruumiline klasterdus on statistiliselt oluline?   
+            </p>
+        </div>
+    </div>
+    <div id="boundingPolygonLayer">
+        <div><h2>Määratle, kus on punktid võimalikud</h2></div>
+        <hr/>
+        <div>
+            <p>Joonistage v&otilde;i sisestage kiht, mis m&auml;&auml;ratleb, kus on s&uuml;ndmused v&otilde;imalikud, et vastata k&uuml;simusele: kas alades on olemas kohad, kus esineb ootamatult k&otilde;rgeid v&otilde;i madalaid punktide leviku kontsentratsioone?   
+            </p>
+            <p>Pindobjektid, mida skitseerite v&otilde;i objektid vastavas kihis, mille m&auml;&auml;rate, annavad ettekujutuse, kus punktid v&otilde;iksid teatud t&otilde;en&auml;osusega esineda. Nende alade joonistamiseks kl&otilde;psake joonistamisnuppu ning kl&otilde;psake seej&auml;rel ala kujundi loomiseks asukohta kaardil.  T&auml;iendavate alade joonistamiseks kl&otilde;psake uuesti joonistamisnuppu, kl&otilde;psake asukohta kaardil ning j&auml;tkake.
+            </p>
+        </div>
+    </div>
+    <div id="dividedByField">
+        <div><h2>Jagamine</h2></div>
+        <hr/>
+        <div>
+            <p>Vahel v&otilde;ite soovida anal&uuml;&uuml;sida mustreid, mis v&otilde;tavad arvesse alusjaotusi. Kui Teie punktid t&auml;histavad n&auml;iteks kuritegusid, t&auml;hendab kogurahvastiku alusel jagamine, et kuritegusid anal&uuml;&uuml;sitakse inimese kohta mitte nende &uuml;ldarvu j&auml;rgi.  Jagamise aluseks oleva atribuudi valimist nimetatakse sageli normimiseks.
+            </p>
+            <p>Kui teete valiku  <i>Esri rahvastik</i>, georikastatakse iga pindobjekti rahvastiku v&auml;&auml;rtustega, mida kasutatakse seej&auml;rel jagamise aluse atribuudina.  Selle valiku puhul kasutatakse krediite.
+            </p>
+        </div>
+    </div>
+    <div id="hotSpotsResultLayer">
+        <div><h2>Tulemkihi nimi</h2></div>
+        <hr/>
+        <div>
+            <p>Sisestage kihi nimi, mis luuakse jaotises  <b>Minu sisu</b> ja lisatakse kaardile.  See kiht n&auml;itab statistiliselt olulisi k&otilde;rgete ja madalate v&auml;&auml;rtustega punktihulkade klastreid. Kui see kiht juba eksisteerib, saate selle soovi korral &uuml;mber nimetada.
+            </p>
+            <p>Kasutades rippmen&uuml;&uuml;d  <b>Salvesta tulemused</b>, saate jaotises <b>Minu sisu</b> m&auml;&auml;rata kausta nime, kuhu tulemused salvestatakse.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

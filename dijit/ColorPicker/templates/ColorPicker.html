@@ -1,0 +1,36 @@
+<div class="${css.container}">
+  <div class="${css.header}" data-dojo-attach-point="dap_header">
+    <span class="${css.swatchPreview} ${css.container}">
+      <span class="${css.swatch} ${css.swatchTransparencyBackground}"></span>
+      <span data-dojo-attach-point="dap_previewSwatch" class="${css.swatch}"></span>
+    </span>
+  </div>
+  <div class="${css.middle}">
+    <div data-dojo-attach-point="dap_paletteContainer" class="${css.palette} ${css.container}">
+      <div data-dojo-attach-point="dap_primaryPalette" class="${css.palette}"></div><!--
+      --><div data-dojo-attach-point="dap_secondaryPalette" class="${css.palette}"></div>
+    </div>
+    <div class="${css.paletteOptions}">
+      <input type="text" data-dojo-type="dijit/form/TextBox" data-dojo-attach-point="dap_hexInput" class="${css.hexInput}"/>
+      <input class="${css.paletteToggle}" type="button" data-dojo-type="dijit/form/ToggleButton" data-dojo-attach-point="dap_paletteToggle" label="${labels.more}"/>
+    </div>
+  </div>
+  <div class="${css.footer}" data-dojo-attach-point="dap_footer">
+    <div class="${css.section}" data-dojo-attach-point="dap_suggestedColorSection">
+      <div class="${css.label}">${labels.suggested}</div>
+      <div data-dojo-attach-point="dap_suggestedColorPalette" class="${css.suggested} ${css.palette} ${css.swatchRow}"></div>
+    </div>
+    <div class="${css.section}" data-dojo-attach-point="dap_recentColorSection">
+      <div class="${css.label}">${labels.recent}</div>
+      <div data-dojo-attach-point="dap_recentColorPalette" class="${css.recent} ${css.palette} ${css.swatchRow}"></div>
+    </div>
+    <div class="${css.section}" data-dojo-attach-point="dap_transparencySection">
+      <div data-dojo-attach-point="dap_transparencyLabel" class="${css.label}">${labels.transparency}</div>
+      <div class="${css.transparencySlider}"
+           data-dojo-attach-point="dap_transparencySlider"
+           data-dojo-type="esri/dijit/HorizontalSlider"
+           data-dojo-props="minimum: 0, maximum: 1, discreteValues: 100, labels: ['0%', '50%', '100%']">
+      </div>
+    </div>
+  </div>
+</div>

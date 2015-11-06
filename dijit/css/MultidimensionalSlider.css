@@ -1,0 +1,42 @@
+.esriMdSliderVertical
+{
+  z-index: 999;
+}
+
+.claro .esriMdSliderVertical .dijitSliderImageHandleV
+{
+ background-position: -289px 0;
+}
+
+.esriMdSliderCellVertical table
+{
+   margin-left: 10px;
+}
+
+.esriMdSliderDimensionInfoCellVertical,
+.esriMdSliderDimensionInfoCellHorizontal{
+  font-size: 80%;
+  height: 20px;
+}
+
+.esriMdSliderTableVertical,
+.esriMdSliderTableHorizontal{
+  height: 100%;
+  width: 100%;
+}
+
+.esriMdSliderHorizontal
+{
+  z-index: 999;
+  width: 100%;
+}
+
+.esriMdSliderHorizontal .mdsButton,  .esriMdSliderVertical .mdsButton
+{ width:16px; height:16px;background-repeat:no-repeat;background-image:url(../images/time_slider_sprite.png) }
+
+.esriMdSliderVertical .mdsPlayButton, .esriMdSliderHorizontal .mdsPlayButton{ background-position  : -32px -0px;  }
+.esriMdSliderVertical .mdsPauseButton, .esriMdSliderHorizontal .mdsPauseButton{ background-position  : -16px -0px; }
+
+.esriMdSliderVertical .esriMdsSliderPlayButtonRow {height: 20px;}
+.esriMdSliderDimensionInfoCellVertical {height: 35px;}
+.esriMdSliderHorizontalCol1{width: 30px;}

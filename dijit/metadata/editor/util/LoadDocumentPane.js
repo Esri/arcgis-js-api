@@ -1,0 +1,25 @@
+// COPYRIGHT © 2015 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/3.15/esri/copyright.txt for details.
+
+define(["dojo/_base/declare","dojo/_base/lang","dojo/_base/array","dojo/aspect","dojo/dom-class","dojo/dom-construct","dojo/dom-style","dojo/has","../../base/xml/xmlUtil","../../base/xml/XmlInterrogator","../../base/Templated","dojo/text!./templates/LoadDocumentPane.html","dojo/i18n!../../nls/i18nBase","../../base/TabButton","../../../../kernel"],function(e,t,i,o,n,s,a,d,l,r,h,c,p,m,g){var u=e([h],{_escapeSingleQuotes:!0,_inputFileNode:null,_working:!1,editor:null,dialogBroker:null,prompt:null,templateString:c,postCreate:function(){this.inherited(arguments),this.fileSection.xtnAsTemplate=!1,this._initialize()},onSelect:function(){},onSelectPullItem:function(){},_addBrowseButton:function(){var e=s.create("div",{},this.importNode);this._inputFileNode=s.create("input",{"class":"gxeLine",type:"file",onchange:t.hitch(this,function(e){this._loadXmlFile(e)})},e)},_addDocType:function(e){var i=s.create("div",{},this.typesNode),o=s.create("div",{"class":"gxeClickableText gxeLine",onclick:t.hitch(this,function(){this._working||this._loadDocType(e)})},i);this.setI18nNodeText(o,p.editor.load.templatePrompt)},_initialize:function(){null!==this.prompt&&(this.setI18nNodeText(this.promptNode,this.prompt),this.promptNode.style.display="");var e=this.editor.getEditDocument(),t=window&&window.FileReader,o=e&&this.editor.gxeAdaptor.getAllowPullItem(),n=this.editor.gxeContext.filterDocumentTypes();this._setMode("file"),i.forEach(n,function(e){this._addDocType(e)},this),t?this._addBrowseButton():a.set(this.fileTab.domNode,"display","none"),o||a.set(this.itemTab.domNode,"display","none"),a.set(this.typeTab.domNode,"display","none"),a.set(this.itemTab.domNode,"display","none"),this.astCheckBoxNode.checked=!1},_loadDocType:function(e){this._working||this.onSelect(e,null,!1)},_loadXmlFile:function(e){if(this.importWarningNode.innerHTML="",this.importWarningSection.style.display="none",e&&e.target&&e.target.files&&FileReader){var i=null,n=e.target.files;if(n&&1===n.length&&(i=n[0]),i){this._showMessage(p.editor.load.loading);var s=new FileReader;this.own(o.after(s,"onload",t.hitch(this,function(e){e&&e.target&&e.target.result?this._working||(this._showMessage(p.editor.load.loading),this._parseAndLoad(e.target.result)):this._showUnrecognizedXml(p.editor.load.warnings.badFile)}),!0)),s.readAsText(i)}}},_onFileTabClick:function(e){this._working||this._setMode(e.xtnMode)},_onItemTabClick:function(e){this._working||this._setMode(e.xtnMode)},_onPullItemClick:function(){this._working||this.onSelectPullItem()},_onTemplateTabClick:function(e){this._working||this._setMode(e.xtnMode)},_onTypeTabClick:function(e){this._working||this._setMode(e.xtnMode)},_parseAndLoad:function(e){var t=null;try{t=l.parseFromString(e)}catch(i){return console.error(i),void this._showUnrecognizedXml(p.editor.load.warnings.badFile)}var o=this.editor.gxeContext.filterDocumentTypes(),n=new r,s=n.interrogate(t,o),a=this.astCheckBoxNode.checked&&!0;s?this.onSelect(s,t,a):this._showUnrecognizedXml(p.editor.load.warnings.notSupported)},_setMode:function(e){var t=[this.typeTab,this.fileTab,this.itemTab];i.forEach(t,function(t){e===t.xtnMode?n.add(t.domNode,"current"):n.remove(t.domNode,"current")}),this.fileSection.xtnAsTemplate="template"===e,"type"===e?(a.set(this.fileSection,"display","none"),a.set(this.itemSection,"display","none"),a.set(this.typesSection,"display","")):"item"===e?(a.set(this.typesSection,"display","none"),a.set(this.fileSection,"display","none"),a.set(this.itemSection,"display","")):(a.set(this.typesSection,"display","none"),a.set(this.itemSection,"display","none"),a.set(this.fileSection,"display",""))},_showMessage:function(e){if(this.dialogBroker){var t=this.dialogBroker.okCancelBar;t&&t.showWorking(e)}},_showUnrecognizedXml:function(){this.setNodeText(this.importWarningNode,p.editor.load.importWarning),this.importWarningSection.style.display="block",this.dialogBroker&&this.dialogBroker.okCancelBar&&this.dialogBroker.okCancelBar.hideWorking()}});return d("extend-esri")&&t.setObject("dijit.metadata.editor.util.LoadDocumentPane",u,g),u});

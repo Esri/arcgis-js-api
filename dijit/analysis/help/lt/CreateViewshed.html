@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Matymo lauko kūrimas</h2><p/>
+        <h2><img src="../images/GUID-491E9A75-30CC-4526-9F71-E47FD25536DE-web.png" alt="Matymo lauko kūrimas"></h2>
+        <hr/>
+    <p>Įrankis Kurti matymo lauką sukuria plotus, kuriose stebėtojas gali matyti ant žemės esančius objektus. Įvesties stebėjimo ta&scaron;kai gali būti stebėtojai (pvz., žmonės ant žemės arba stebėtojai ugniagesių bok&scaron;telyje) arba stebėjimo objektai (pvz., vėjo jėgainės, vandens bok&scaron;tai, transporto priemonės arba kiti žmonės). Rezultatų plotai yra tie plotai, kuriose stebėtojai gali matyti stebimus objektus ir atvirk&scaron;čiai: stebimi objektai gali matyti stebėtojus.
+    </p>
+    <p>Tiek stebėtojams, tiek stebimiems objektams gali būti nurodytas aukstis vir&scaron; žemės, auk&scaron;tis yra naudojamas nustatant matomumą. Pavyzdžiui, matymo laukas, apskaičiuotas 120 m vėjo jėgainei ir 1.8 m ūgio ant žemės stovintiems žmonėms, paprastai bus platesnis nei matymo laukas, apskaičiuotas 60 m jėgainėms ir 1.8 m ūgio žmonėms.
+    </p>
+    <p>Atminkite, kad skaičiuojant matymo lauką nekreipiamas dėmesys į trukdančius objektus, pvz., medžius ar pastatus. Įsivaizduokite, kad skaičiuojant matoma tik plika žemė be nieko, i&scaron;skyrus stebėtoją ir stebimus objektus.
+    </p>
+    <p>Rezultatų sluoksnį sudaro matomas vietas reprezentuojantys plotai. Lauke  <i>Dažnis</i> įra&scaron;omas stebėjimo ta&scaron;kų, matomų kiekvienoje vietoje, skaičius. Pavyzdžiui, turite penkis įvesties ta&scaron;kus, kurių kiekvienas rei&scaron;kia gaisro stebėjimo bok&scaron;telį, lauke <i>Dažnis</i> bus nurodyta reik&scaron;mė nuo vieno iki penkių. Vieta, kurios reik&scaron;mė vienas, gali būti matoma tik i&scaron; vieno bok&scaron;telio, o vietos, kurių reik&scaron;mė penki, gali būti matomos i&scaron; visų bok&scaron;telių. Be to, rezultatų sluoksnyje yra laukas <i>DEMResolution</i>, kuris įra&scaron;o skaitmeninio auk&scaron;čio modelio (DEM) skiriamąją gebą, naudojamą kuriant matymo laukus.
+    </p>
+    <p>Jei  <b>Naudoti esamą žemėlapio aprėptį</b> pažymėtas, bus analizuojami tik aprėptyje matomi stebėjimo objektai.  Jei nepažymėta, bus analizuojami visi įvesties sluoksnio stebėjimo ta&scaron;kai, net jei jie nepatenka į esamą žemėlapio aprėptį.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Taškų ypatybės, nurodančios stebėjimo vietoves</h2></div>
+        <hr/>
+        <div>
+            <p>Ta&scaron;kai, kuriuos galima naudoti kaip stebėjimo vietas.
+
+            </p>
+            <p>Pasirinkę sluoksnį žemėlapyje, galite pasirinkti  <b>Pasirinkite Gyvojo pasaulio atlaso analizės sluoksnį</b>, kurį rasite i&scaron;plečiamo sąra&scaron;o apačioje. &Scaron;i parinktis atidarys galeriją, kurioje yra kolekcija sluoksnių, naudingų daugeliui analizių. 
+            </p>
+        </div>
+    </div>
+    <div id="ObserverHeight">
+        <div><h2>Stebėjimo taškų aukštis</h2></div>
+        <hr/>
+        <div>
+            <p>Tai auk&scaron;tis nuo stebėjimo vietų iki žemės.    Pagal numatytąjį nustatymą &scaron;is auk&scaron;tis yra vidutinis žmogaus ūgis.  
+            </p>
+        </div>
+    </div>
+    <div id="TargetHeight">
+        <div><h2>Kitų ant žemės esančių objektų aukštis</h2></div>
+        <hr/>
+        <div>
+            <p>Tai ant žemės esančių konstrukcijų arba žmonių auk&scaron;tis/ūgis, naudojamas matomumui nustatyti. Gautą matymo lauką sudaro tie plotai, i&scaron; kurių stebėjimo ta&scaron;kas gali matyti tuos kitus objektus.  Gali būti ir atvirk&scaron;čiai &ndash; kiti objektai gali matyti stebėjimo ta&scaron;ką. 
+            </p>
+            <p>
+                <ul>
+                    <li>Jei jūsų stebėjimo ta&scaron;kai yra vėjo jėgainės ir norite nustatyti, ar ant žemės stovintys žmonės gali matyti vėjo jėgaines, įveskite vidutinį žmogaus ūgį (apie 1,8 m).  Rezultatas bus tos vietos, kuriose ant žemės stovintis žmogus gali matyti vėjo jėgaines.
+                    </li>
+                    <li>Jei jūsų stebėjimo ta&scaron;kai yra gaisro stebėjimo bok&scaron;teliai ir jūs norite nustatyti, i&scaron; kurių bok&scaron;telių galima matyti 6 m ar auk&scaron;tesnį dūmų debesį, įveskite 6 m auk&scaron;tį.  Rezultatas bus tos vietos, kuriose esantis gaisro stebėjimo bok&scaron;telis leidžia matyti bent 6 m auk&scaron;čio dūmų debesį.
+                    </li>
+                    <li>Jei jūsų stebėjimo ta&scaron;kai yra kelių ir takų panoraminės apžvalgos bok&scaron;teliai ir norite nustatyti, i&scaron; kur galima matyti 120m auk&scaron;čio vėjo jėgaines, įveskite 120m auk&scaron;tį.  Rezultatas bus tos vietos, kuriose apžvalgos bok&scaron;telyje stovintis žmogus gali matyti ne žemesnę nei 120 m auk&scaron;čio vėjo jėgainę.
+                    </li>
+                    <li>Jei jūsų stebėjimo ta&scaron;kai yra apžvalgos bok&scaron;teliai ir jūs norite nustatyti, kiek vietovės gali matyti apžvalgos bok&scaron;telyje stovintys žmonės, įveskite nulį.  Rezultatas bus tos vietos, kurias galima matyti i&scaron; panoramos apžvalgos bok&scaron;telio.  
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="MaximumDistance">
+        <div><h2>Maksimalus matymo atstumas</h2></div>
+        <hr/>
+        <div>
+            <p>Tai trumpiausias atstumas iki ta&scaron;ko, kuriame nebeskaičiuojamos matomos vietos. Jei atstumas didesnis, nėra žinoma, ar stebėjimo ta&scaron;kai ir kito objektai gali matyti vienas kitą. Kuo didesnės reik&scaron;mės, tuo ilgesnė skaičiavimo trukmė. Didžiausia leistina reik&scaron;mė yra 31 mylios (50 kilometrų).
+            </p>
+        </div>
+    </div>
+    <div id="OutputLayer">
+        <div><h2>Rezultatų sluoksnio pavadinimas</h2></div>
+        <hr/>
+        <div>
+            <p>Tai sluoksnio, kuris bus sukurtas ir patalpintas  <b>Turinyje</b> ir pridėtas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas pagal įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau egzistuoja, jūsų papra&scaron;ys pateikti kitą pavadinimą.
+            </p>
+            <p>Pasirinkę  <b>Rezultatą įra&scaron;yti į</b>, galite nurodyti <b>Turinyje</b> esančio aplanko pavadinimą.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

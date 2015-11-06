@@ -1,0 +1,55 @@
+.calcite .Breadcrumb_CategoriesIcon {
+    background-image: url("images/analysisSprite.png");
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    background-position: 0 -900px;
+    margin: 4px 0px 0px 8px;
+}
+
+.calcite .Breadcrumb_CategoriesIcon:hover {
+    background-image: url("images/analysisSprite.png");
+    background-position: 0 -36px;
+}
+
+.calcite .Breadcrumb_DataCollections {
+    position: absolute;
+    left: 102px;
+    top: 15px;
+    width: 32px;
+    height: 32px;
+    background-image: url("images/analysisSprite.png");
+    background-position: 0 -1008px;
+    background-repeat: no-repeat;
+}
+
+.dj_rtl .calcicte .Breadcrumb_DataCollections {
+    right: 102px;
+    left: auto;
+}
+.calcite .Breadcrumb_DataCollections.DataBrowser_Clickable:hover {
+    background-position: 0 -144px;
+}
+
+.calcite .Breadcrumb_DataCollections.DataBrowser_Clickable:hover {
+    background-image: url("images/analysisSprite.png");
+}
+
+.calcite .Breadcrumb_Connect1 {
+    left: 62px;
+    border-width: 1px 0 0 0;
+}
+
+
+.dj_rtl .calcite .Breadcrumb_Connect1 {
+    right: 72px;
+    left: auto;
+}
+
+.calcite .Breadcrumb_SelectCategory {
+    left: 100px;
+    top: -3px;
+    animation-name: Breadcrumb_SelectCategory;
+    -webkit-animation-name: Breadcrumb_SelectCategory;
+}
+

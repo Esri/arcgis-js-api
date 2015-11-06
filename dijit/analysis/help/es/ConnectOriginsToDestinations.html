@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Conectar orígenes con destinos</h2><p/>
+        <h2><img src="../images/GUID-7266D30B-0250-4132-B1A5-9B59F0212FAD-web.png" alt="Conectar or&iacute;genes con destinos"></h2>
+        <hr/>
+    <p>  Conectar or&iacute;genes con destinos mide el tiempo de recorrido o la distancia entre pares de puntos. La herramienta puede notificar distancias en l&iacute;nea recta, distancias basadas en un modo de viaje, como por ejemplo a pie o en coche; o bien las duraciones del trayecto sobre la base de un modo de viaje. Si utilizas esta herramienta, podr&aacute;s realizar lo siguiente:
+    </p>
+    <p>
+        <ul>
+            <li>Calcula la distancia o el tiempo total que los trabajadores emplean en sus desplazamientos de casa al trabajo.
+            </li>
+            <li>Mide a qu&eacute; distancia viajan los clientes para comprar en tus establecimientos. Usa esta informaci&oacute;n para definir el alcance de tu mercado, en especial al elegir los destinatarios de las campa&ntilde;as publicitarias o elegir las ubicaciones de los nuevos establecimientos.
+            </li>
+            <li>Calcular el kilometraje esperado para tu flota de veh&iacute;culos. Despu&eacute;s de eso, ejecuta la herramienta Resumir dentro de para conocer el kilometraje por estado o por otra regi&oacute;n.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Debes proporcionar puntos iniciales y finales, y la herramienta devuelve una capa que contiene l&iacute;neas de rutas, incluidas las mediciones, entre los pares de or&iacute;genes y destinos.  
+    </p>
+    <p>Si  <b>Usar la extensi&oacute;n del mapa actual</b> se ha activado, solo se tendr&aacute;n en cuenta en el an&aacute;lisis las entidades que est&eacute;n visibles en la extensi&oacute;n de mapa actual.  
+Si no se ha activado, se tendr&aacute;n en cuenta todas las entidades de la capa de entrada, aunque est&eacute;n fuera de la extensi&oacute;n de mapa actual.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="originsLayer">
+        <div><h2>Elegir la capa de puntos que representa las ubicaciones de origen</h2></div>
+        <hr/>
+        <div>
+            <p>Elige la capa de puntos que representa el origen o los or&iacute;genes.  La herramienta admite un m&aacute;ximo de  5000 or&iacute;genes y  5000 destinos. </p>
+            <p>Si eliges una capa que tiene exactamente un origen, se conectar&aacute; con todos los destinos.
+            </p>
+            <p>Adem&aacute;s de elegir una capa en el mapa, puedes seleccionar  <b>Elegir capa de an&aacute;lisis de atlas vivo</b>, que se encuentra al final de la lista desplegable. Esto abre una galer&iacute;a que contiene un conjunto de capas que resultan &uacute;tiles para numerosos an&aacute;lisis. 
+            </p>
+        </div>
+    </div>
+    <div id="destinationsLayer">
+        <div><h2>Elegir la capa de los destinos</h2></div>
+        <hr/>
+        <div>
+            <p>Elige la capa que representa el destino o los destinos con los que deben conectarse los or&iacute;genes. La herramienta admite un m&aacute;ximo de  5000 or&iacute;genes y  5000 destinos. </p>
+            <p>Si eliges una capa que tiene exactamente un destino, todos los or&iacute;genes se conectan con ese destino. 
+            </p>
+            <p>Si hay un origen y muchos destinos, la herramienta conecta el origen con cada uno de los destinos.
+            </p>
+            <p>Adem&aacute;s de elegir una capa en el mapa, puedes seleccionar  <b>Elegir capa de an&aacute;lisis de atlas vivo</b>, que se encuentra al final de la lista desplegable. Esto abre una galer&iacute;a que contiene un conjunto de capas que resultan &uacute;tiles para numerosos an&aacute;lisis. 
+            </p>
+            <p> Si hay muchos or&iacute;genes y muchos destinos, debes tener dos campos que describan los pares origen-destino: <b>Campo de Id. de ruta en or&iacute;genes</b> y <b>Campo de Id. coincidente en destinos</b>. La herramienta conecta los pares origen-destino durante el an&aacute;lisis. Por ejemplo, imagina que tienes dos or&iacute;genes con los valores de campo de Id. <code>Rosie</code> y <code>Harold</code> y dos destinos con los mismos valores de Id. El origen <code>Rosie</code> se conectar&aacute; con el destino <code>Rosie</code> y <code>Harold</code> se conectar&aacute; con el destino <code>Harold</code>. No se realizar&aacute;n otras conexiones ni mediciones.
+            </p>
+            <p>Los valores de Id. deben ser &uacute;nicos en cada capa. Por ejemplo, la capa de los destinos no puede tener dos valores  <code>Rosie</code>. Los valores de las capas de origen y destino deben coincidir exactamente para formar pares; <code>Harold</code> no se conectar&aacute; con el valor <code>Harodl</code>, que est&aacute; mal escrito. 
+            </p>
+        </div>
+    </div>
+    <div id="measurementType">
+        <div><h2>Medición</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Elige si deseas conectar los or&iacute;genes con los destinos mediante la distancia en l&iacute;nea recta o un modo de viaje. Las rutas resultantes seguir&aacute;n carreteras o caminos y respetar&aacute;n las reglas aplicables, como por ejemplo las v&iacute;as de sentido &uacute;nico y los giros prohibidos en coche o en cami&oacute;n.  Los modos de viaje disponibles vienen determinados por el administrador de tu organizaci&oacute;n.  
+            </p>
+            <p>Cuando eliges  <b>Tiempo de conducci&oacute;n</b>, dispones de distintas opciones para medir el tiempo de recorrido.
+                <ul>
+                    <li>
+                        <p>Desactiva  <b>Utilizar tr&aacute;fico</b> para buscar las rutas m&aacute;s r&aacute;pidas con velocidades predeterminadas.
+                        </p>
+                        <p>Esta es la opci&oacute;n que debes elegir si deseas una medici&oacute;n de tiempo de recorrido general, y no una que se calcule utilizando las condiciones de tr&aacute;fico variables para una hora de salida espec&iacute;fica.
+                        </p>
+                    </li>
+                    <li>
+                        <p>Activa  <b>Utilizar tr&aacute;fico</b> para buscar las rutas m&aacute;s r&aacute;pidas basadas en una hora de inicio dada y unas condiciones de tr&aacute;fico variables. Si adem&aacute;s eliges la opci&oacute;n <b>Tr&aacute;fico en directo</b>, la hora de salida desde los or&iacute;genes se define en la hora actual, y se toman como referencia las velocidades de tr&aacute;fico actuales y previstas de los sensores y las fuentes para crear las rutas. Las velocidades de tr&aacute;fico previstas se calculan por referencia a las velocidades de tr&aacute;fico en directo, las velocidades hist&oacute;ricas y eventos actuales como las condiciones meteorol&oacute;gicas. Las velocidades de tr&aacute;fico se predicen con 12 horas de antelaci&oacute;n, de modo que puedes mover la barra deslizante para establecer la hora de salida hasta  12 horas m&aacute;s tarde. </p>
+                        <p>Utiliza esta configuraci&oacute;n de tr&aacute;fico en directo para averiguar los tiempos de recorrido si se sale ahora, dentro de una hora, etc.
+                        </p>
+                    </li>
+                    <li>
+                        <p>Al activar  <b>Utilizar tr&aacute;fico</b> y elegir <b>Tr&aacute;fico basado en las condiciones t&iacute;picas para</b> un d&iacute;a y una hora, la herramienta busca las rutas m&aacute;s r&aacute;pidas bas&aacute;ndose en las velocidades medias hist&oacute;ricas para cada intervalo de cinco minutos de una semana normal. Los resultados incluyen el tr&aacute;fico pero eliminan la influencia de las condiciones de tr&aacute;fico y los eventos de ese momento, que pueden variar considerablemente de lo habitual.
+                        </p>
+                        <p>Puedes utilizar esta configuraci&oacute;n de tr&aacute;fico hist&oacute;rica para preguntar, por ejemplo: &quot;En general, &iquest;cu&aacute;nto se tarda en llegar a estos destinos saliendo a las 11:30 de la ma&ntilde;ana de un mi&eacute;rcoles?&quot;.
+                        </p>
+                        <p>La hora que establezcas utilizar&aacute; la zona horaria en la que se encuentran tus or&iacute;genes. Es decir, si estableces la hora a las 8:00 de la ma&ntilde;ana y tienes dos or&iacute;genes, uno en la ciudad de Nueva York y otro en Los &Aacute;ngeles, las rutas se generar&aacute;n para una hora de salida definida a las 8:00 de la ma&ntilde;anahora del Este y las 8:00 de la ma&ntilde;anahora del Pac&iacute;fico, respectivamente.
+                        </p>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Ten en cuenta que, cuando un veh&iacute;culo se aleja del origen, el tiempo pasa y las condiciones de tr&aacute;fico cambian. La herramienta Conectar or&iacute;genes con destinos tiene en cuenta estas variaciones si se activa  <b>Utilizar tr&aacute;fico</b>; sin embargo, no todas las regiones admiten tr&aacute;fico. Haz clic en el v&iacute;nculo <b>Ver disponibilidad</b> de la herramienta para averiguar si se ofrece en tu &aacute;rea de estudio.
+            </p>
+        </div>
+    </div>
+    <div id="outputLayer">
+        <div><h2>Nombre de capa de resultados</h2></div>
+        <hr/>
+        <div>
+            <p>Este es el nombre de la capa que se crear&aacute; en  <b>Mi contenido</b> y se agregar&aacute; al mapa.  El nombre predeterminado se basa en nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, se te pedir&aacute; que indiques otro nombre.
+            </p>
+            <p>En el cuadro desplegable  <b>Guardar el resultado en</b>, puedes especificar el nombre de una carpeta de <b>Mi contenido</b> en la que se guardar&aacute; el resultado.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

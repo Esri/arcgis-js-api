@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Vertrekpunten en bestemmingen met elkaar verbinden</h2><p/>
+        <h2><img src="../images/GUID-7266D30B-0250-4132-B1A5-9B59F0212FAD-web.png" alt="Vertrekpunten en bestemmingen met elkaar verbinden"></h2>
+        <hr/>
+    <p>  Beginpunten aan bestemmingen koppelen meet de reistijd of afstand tussen paren van beginpunten en bestemmingen. De tool kan afstanden zowel hemelsbreed weergeven als de afstanden baseren op een manier van reizen, zoals lopen of rijden en kan tevens de reisduur baseren op een manier van reizen. Met deze tool kunt u het volgende doen:
+    </p>
+    <p>
+        <ul>
+            <li>De totale afstand berekenen die forensen tussen hun woon- en werkplaats afleggen of de tijd die dit in beslag neemt.
+            </li>
+            <li>Meten hoe ver klanten reizen om bij uw winkels te winkelen. Gebruik deze informatie om uw marktbereik te bepalen, met name voor gerichte reclamecampagnes of het kiezen van nieuwe winkellocaties.
+            </li>
+            <li>Het verwachte aantal kilometers voor uw wagenpark berekenen. Gebruik achteraf de tool Samenvatten in om de afstand per provincie of andere regio te rapporteren.
+            </li>
+        </ul>
+        
+    </p>
+    <p>U levert de begin- en eindpunten en de tool geeft een laag terug met routes, inclusief metingen, tussen de gekoppelde beginpunten en bestemmingen.  
+    </p>
+    <p>Als  <b>Huidig kaartextent van de kaart gebruiken</b> is aangevinkt, worden alleen de objecten geanalyseerd die binnen het huidige extent van de kaart zichtbaar zijn. Als deze optie niet wordt geselecteerd, worden alle objecten in de invoerlaag in aanmerking genomen, ook als ze zich buiten de huidige kaartomvang bevinden.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="originsLayer">
+        <div><h2>Kies puntlaag die de oorspronkelijke locaties weergeeft</h2></div>
+        <hr/>
+        <div>
+            <p>Kies puntlaag die het beginpunt of de beginpunten weergeeft. De tool ondersteunt maximaal  5.000 beginpunten en  5.000 bestemmingen. </p>
+            <p>Als u een laag kiest die precies &eacute;&eacute;n beginpunt heeft, wordt het met alle bestemmingen verbonden.
+            </p>
+            <p>Naast het kiezen van een laag uit uw kaart, kunt u  <b>Analyselaag Levende Atlas kiezen</b> selecteren onderaan de vervolgkeuzelijst. Er wordt een galerij geopend met een verzameling lagen die handig zijn voor veel analyses. 
+            </p>
+        </div>
+    </div>
+    <div id="destinationsLayer">
+        <div><h2>De bestemmingslaag kiezen</h2></div>
+        <hr/>
+        <div>
+            <p>Kies de laag die de bestemming of bestemmingen weergeeft waarmee de beginpunten verbonden moeten worden. De tool ondersteunt maximaal  5.000 beginpunten en  5.000 bestemmingen. </p>
+            <p>Als u een laag kiest die precies &eacute;&eacute;n bestemming heeft, worden alle beginpunten met die bestemming verbonden. 
+            </p>
+            <p>Als er &eacute;&eacute;n beginpunt en veel bestemmingen zijn, verbindt de tool het beginpunt met alle bestemmingen.
+            </p>
+            <p>Naast het kiezen van een laag uit uw kaart, kunt u  <b>Analyselaag Levende Atlas kiezen</b> selecteren onderaan de vervolgkeuzelijst. Er wordt een galerij geopend met een verzameling lagen die handig zijn voor veel analyses. 
+            </p>
+            <p> Als er veel begin- en eindpunten zijn, hebt u twee velden nodig om de paren met beginpunten en eindbestemmingen te beschrijven: <b>ID-veld in oorsprongen</b> en <b>Overeenkomend ID-veld in bestemmingen</b>. De tool verbindt de begin- en eindpuntparen tijdens de analyse. Stel bijvoorbeeld dat u twee beginpunten hebt met de ID-waarden <code>Rosie</code> en <code>Harold</code> en twee bestemmingen met dezelfde ID-waarden. Het beginpunt <code>Rosie</code> wordt verbonden met de bestemming <code>Rosie</code> en <code>Harold</code> wordt verbonden met <code>Harold</code>. Andere verbindingen of metingen worden niet uitgevoerd.
+            </p>
+            <p>De ID-waarden moeten uniek zijn binnen elke laag; zo kan de bestemmingenlaag geen twee waarden  <code>Rosie</code> bevatten. De waarden in de beginpunt- en bestemmingslagen moeten exact overeenkomen om paren te maken; <code>Harold</code> maakt geen verbinding met de onjuist gespelde waarde, <code>Harodl</code>. 
+            </p>
+        </div>
+    </div>
+    <div id="measurementType">
+        <div><h2>Meten</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Kies of u vertrekpunten en bestemmingen met elkaar wilt verbinden door middel van afstanden hemelsbreed of een manier van reizen. De uitvoer van routes volgt wegen of wandelpaden en houdt rekening met geldende regels zoals eenrichtingswegen en keerverboden voor gemotoriseerd verkeer en vrachtwagens. De beschikbare manieren van reizen worden bepaald door de beheerder van uw organisatie.  
+            </p>
+            <p>Als u  <b>reistijd</b> kiest, hebt u opties voor het meten van de reistijd.
+                <ul>
+                    <li>
+                        <p>Vink  <b>Verkeer gebruiken</b> uit om de snelste routes te vinden op basis van vaste snelheden.
+                        </p>
+                        <p>Dit is een geschikte optie als u een algemene reistijdmeting wilt en niet een die wordt berekend aan de hand van vari&euml;rende verkeersomstandigheden voor een bepaalde vertrektijd.
+                        </p>
+                    </li>
+                    <li>
+                        <p>Schakel het selectievakje  <b>Verkeer gebruiken</b> in om de snelste routes te vinden op basis van een bepaalde vertrektijd en veranderende verkeersomstandigheden. Door eveneens de optie <b>Actueel verkeer</b> te kiezen, wordt de vertrektijd vanaf de beginpunten ingesteld op de huidige tijd en wordt gebruikgemaakt van huidige en voorspelde verkeerssnelheden via sensoren en invoergegevens om de routes te maken. De voorspelde verkeerssnelheden worden berekend op basis van actuele verkeerssnelheden, historische snelheden en huidige omstandigheden zoals het weer. Verkeerssnelheden worden tot 12 uur in de toekomst voorspeld, dus u kunt de schuifregelaar verplaatsen om de vertrektijd maximaal  12 uur naar de toekomst te verplaatsen. </p>
+                        <p>Gebruik deze actuele verkeersinstellingen om te ontdekken wat de reistijden zijn als u nu vertrekt, over een uur vertrekt, enzovoort.
+                        </p>
+                    </li>
+                    <li>
+                        <p>Als u  <b>Verkeer gebruiken</b> selecteert en <b>Verkeer op basis van gemiddelde omstandigheden voor</b> een dag en een tijdstip, zoekt de tool de snelste routes op basis van historische gemiddelde snelheden voor elk interval van vijf minuten gedurende een gewone week. De resultaten houden rekening met het verkeer, maar laten de invloed van huidige verkeersomstandigheden en gebeurtenissen buiten beschouwing die aanzienlijk van het gemiddelde kunnen verschillen.
+                        </p>
+                        <p>U kunt deze historische verkeersinstellingen bijvoorbeeld gebruiken voor de vraag: 'Hoe lang duurt het gewoonlijk om deze bestemmingen te bereiken als ik op een woensdag om 11:30 uur vertrek?'
+                        </p>
+                        <p>De tijd die u instelt, verwijst naar de tijdzone waarop uw beginpunten zich bevinden. Als u de tijd dus instelt op 8:00 uur en twee beginpunten hebt, een in New York City en een ander in Los Angeles, worden de routes gegenereerd met een vertrektijd van respectievelijk 8:00 uurEastern Time en 8:00 uurPacific Time als uitgangspunt.
+                        </p>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Houd er rekening mee dat wanneer een voertuig wegrijdt vanaf een bepaald beginpunt, de tijd verstrijkt en de verkeersomstandigheden wijzigen. De tool Beginpunten aan bestemmingen koppelen houdt rekening met deze variaties wanneer u  <b>Verkeer gebruiken</b> selecteert; maar niet alle regio's ondersteunen verkeer. Klik op de koppeling <b>Beschikbaarheid bekijken</b> om erachter te komen of deze optie voor uw onderzoeksgebied van toepassing is.
+            </p>
+        </div>
+    </div>
+    <div id="outputLayer">
+        <div><h2>Resultaat laagnaam</h2></div>
+        <hr/>
+        <div>
+            <p>Dit is de naam van de laag die in  <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, wordt u gevraagd een nieuwe naam te geven.
+            </p>
+            <p>Als u de vervolgkeuzelijst  <b>Resultaat opslaan in</b> gebruikt, kunt u de naam opgeven van een map in <b>Mijn Content</b> waarin het resultaat wordt opgeslagen.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

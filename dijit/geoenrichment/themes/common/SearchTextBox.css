@@ -1,0 +1,32 @@
+.SearchTextBox {
+    white-space: nowrap;
+}
+
+.SearchTextBox .dijitInputContainer {
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    vertical-align: middle;
+}
+
+.SearchTextBox_PromptMode {
+    color: #b6b6b6 !important;
+    font-style: italic;
+}
+
+.SearchTextBox_SearchBox {
+    display: inline-block;
+    position: relative;
+    background: url('./images/dataSearchIcon.png') no-repeat center center;
+    width: 16px;
+    height: 16px;
+    margin-left: -22px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.dj_rtl .SearchTextBox_SearchBox {
+    margin-left: auto;
+    margin-right: -22px;
+}

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Créer des zones de desserte</h2><p/>
+        <h2><img src="../images/GUID-6F629A09-768D-4C04-88A4-AB941811ADE9-web.png" alt="Cr&eacute;er des zones de desserte"></h2>
+        <hr/>
+    <p>L'option Cr&eacute;er des zones de desserte permet de cr&eacute;er des zones de desserte accessibles dans un temps de conduite donn&eacute;, &agrave; une distance de conduite donn&eacute;e, &agrave; une distance de marche donn&eacute;e, etc. Elle &eacute;tablit des mesures &agrave; partir d'un ou de plusieurs points (1 000 points au maximum), le long des routes ou des sentiers, pour cr&eacute;er une couche susceptible de vous aider &agrave; r&eacute;pondre &agrave; des questions, telles que les suivantes&nbsp;:
+        <ul>
+            <li>Jusqu'o&ugrave; puis-je aller &agrave; partir d'ici dans un rayon de 30 minutes de conduite ?
+            </li>
+            <li>Jusqu'o&ugrave; puis-je aller &agrave; partir d'ici dans un rayon de 30 minutes de conduite si je pars &agrave; 17h30 pendant les heures de pointe ?
+            </li>
+            <li>Que puis-je trouver &agrave; moins de deux kilom&egrave;tres de marche de mon h&ocirc;tel ?
+            </li>
+            <li>Quelles sont les parties de la ville que les pompiers peuvent atteindre en moins de cinq minutes ? 
+            </li>
+            <li>Est-ce que la r&eacute;activit&eacute; serait am&eacute;lior&eacute;e en construisant une nouvelle caserne des pompiers ici ?
+            </li>
+            <li>Quelles sont les zones commer&ccedil;antes couvertes par mon commerce ?
+            </li>
+        </ul>
+        
+    </p>
+    <p>Il est possible que vous ne puissiez r&eacute;pondre &agrave; vos questions qu'&agrave; travers la visualisation des surfaces en sortie. Vous pouvez aussi effectuer d'autres analyses spatiales &agrave; l'aide des surfaces en sortie. Par exemple, l'ex&eacute;cution de l'option Agr&eacute;ger des points &agrave; l'aide de zones de desserte avec des donn&eacute;es d&eacute;mographiques peut vous aider &agrave; d&eacute;terminer l'emplacement d'un magasin potentiel susceptible de vous apporter la meilleure client&egrave;le pour votre type d'activit&eacute;. 
+    </p>
+    <p>
+        <table>
+        <tr><td colspan="3"><hr size="1" noshade="noshade"></td></tr>
+        <tr><td valign="baseline"><img src="../images/tip.png"></td><td valign="baseline"><h2>Tip:&ensp;</h2></td>
+        <td valign="baseline">
+            <p>Pour cr&eacute;er des surfaces en mesurant la distance en ligne droite au lieu de mesurer le long des routes, utilisez plut&ocirc;t l'outil Cr&eacute;er des zones tampon.
+            </p>
+        </td></tr>
+        <tr><td colspan="3"><hr size="1" noshade="noshade"></td></tr>
+        </table>
+    </p>
+    <p>Si l'option  <b>Utiliser l'&eacute;tendue courante de la carte</b> est s&eacute;lectionn&eacute;e, seules les entit&eacute;s qui sont visibles au sein de l'&eacute;tendue courante seront utilis&eacute;es pour cr&eacute;er des zones de desserte ou des zones bas&eacute;es sur la distance. Si l'option n'est pas s&eacute;lectionn&eacute;e, toutes les entit&eacute;s qui se trouvent dans la couche en entr&eacute;e seront utilis&eacute;es, m&ecirc;me si elles se trouvent en dehors de l'&eacute;tendue courante de la carte.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Choisissez la couche de points autour de laquelle calculer des zones isochrones</h2></div>
+        <hr/>
+        <div>
+            <p>Entit&eacute;s ponctuelles autour desquelles les zones seront calcul&eacute;es. Vous pouvez choisir le mode de calcul des zones en fonction du mode de d&eacute;placement (voiture, camion ou marche) et de la mesure (temps ou distance).
+            </p>
+            <p>Outre le choix d'une couche pour votre carte, vous pouvez s&eacute;lectionner  <b>Choisir la couche d'analyse de l'atlas dynamique</b> au bas de la liste d&eacute;roulante. Cette op&eacute;ration ouvre une biblioth&egrave;que de couches utiles pour de nombreuses analyses. 
+            </p>
+        </div>
+    </div>
+    <div id="MeasurementMethod">
+        <div><h2>Mesurer</h2></div>
+        <hr/>
+        <div>
+            <p>Choisissez votre mode de d&eacute;placement (voiture, camion ou marche) et votre mesure (temps ou distance). Les modes de d&eacute;placement &agrave; votre disposition sont d&eacute;termin&eacute;s par l'administrateur de votre organisation.   Apr&egrave;s avoir choisi votre mode et votre mesure, entrez une dur&eacute;e ou une distance de  5&nbsp;heures (300&nbsp;minutes) ou  300&nbsp;miles (482.80&nbsp;kilom&egrave;tres). 
+            </p>
+            <p>Lorsque vous choisissez  <b>Temps de trajet</b>, des options vous permettent de choisir comment mesurer le temps de conduite.
+                <ul>
+                    <li>
+                        <p>D&eacute;cochez  <b>Utiliser le trafic</b> pour cr&eacute;er des zones de desserte bas&eacute;es sur des vitesses constantes. Choisissez cette option si vous souhaitez une zone de desserte g&eacute;n&eacute;rale, et non pas une zone de desserte calcul&eacute;e avec des conditions de trafic changeantes pour une heure de d&eacute;part sp&eacute;cifique.
+                        </p>
+                    </li>
+                    <li>
+                        <p>Cochez  <b>Utiliser le trafic</b> pour cr&eacute;er des zones de desserte bas&eacute;es sur une heure de d&eacute;part pr&eacute;cise et des conditions de trafic changeantes. Si vous choisissez l'option <b>Trafic r&eacute;el</b>, l'heure de d&eacute;part &agrave; partir des points en entr&eacute;e est d&eacute;finie sur l'heure actuelle, et les vitesses de trafic actuelles et pr&eacute;vues sont issues de capteurs et de flux afin de cr&eacute;er des zones de desserte. Les vitesses de trafic pr&eacute;vues sont calcul&eacute;es en faisant r&eacute;f&eacute;rence aux vitesses du trafic r&eacute;el, aux vitesses historiques et aux &eacute;v&eacute;nements actuels (la m&eacute;t&eacute;o par exemple). Les vitesses de trafic &eacute;tant pr&eacute;vues sur 12 heures, vous pouvez d&eacute;placer le curseur pour d&eacute;finir l'heure de d&eacute;part jusqu'&agrave; 12 heures &agrave; l'avance.
+                        </p>
+                        <p>Utilisez ces param&egrave;tres de trafic r&eacute;el pour identifier les zones accessibles en partant maintenant, en partant dans une heure, et ainsi de suite.
+                        </p>
+                    </li>
+                    <li>
+                        <p>En cochant  <b>Utiliser le trafic</b> et en choisissant <b>Trafic bas&eacute; sur des conditions typiques pour</b> un jour et une heure, l'outil cr&eacute;e des zones de desserte en se basant sur les vitesses historiques moyennes pour chaque intervalle de cinq minutes sur une semaine classique. Les r&eacute;sultats incluent le trafic mais ne tiennent pas compte des conditions de trafic actuelles et des &eacute;v&eacute;nements en cours, qui peuvent varier de mani&egrave;re significative par rapport &agrave; la normale.
+                        </p>
+                        <p>Vous pouvez utiliser ces param&egrave;tres de trafic historique pour demander, par exemple, &quot;Quelles sont les zones que je peux g&eacute;n&eacute;ralement atteindre si je pars &agrave; 11h30 un mercredi ?&quot; 
+                        </p>
+                        <p>L'heure que vous indiquez se rapporte au fuseau horaire dans lequel vos points en entr&eacute;e se situent. Par cons&eacute;quent, si vous d&eacute;finissez l'heure sur 8h00 et que vous avez deux points, un dans la ville de New York et l'autre &agrave; Los Angeles, les zones de desserte sont g&eacute;n&eacute;r&eacute;es pour 8h00. Heure de la c&ocirc;te est et 8h00Heure du Pacifique, respectivement.
+                        </p>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Notez qu'au fur et &agrave; mesure qu'un v&eacute;hicule s'&eacute;loigne d'un point, le temps s'&eacute;coule et les conditions de trafic &eacute;voluent. L'outil Zone de desserte tient compte de ces variations lorsque vous choisissez  <b>Temps de trajet</b> et cochez <b>Utiliser le trafic</b>. Cependant, toutes les r&eacute;gions ne prennent pas en charge le trafic. Cliquez sur le lien <b>Voir la disponibilit&eacute;</b> sur l'outil pour savoir si le trafic est disponible dans votre zone d'&eacute;tude.
+            </p>
+            <p> <b>Dur&eacute;e du trajet &agrave; pied</b> et <b>Distance &agrave; pied</b> utilisent une vitesse fixe de 5&nbsp;kilom&egrave;tres par heure (3.1&nbsp;miles par heure) et suivent les voies pi&eacute;tonnes, ainsi que les rues adapt&eacute;es (tout en ignorant la r&eacute;glementation pour automobiles, comme les rues &agrave; sens unique). </p>
+            <p> <b>Dur&eacute;e du trajet pour camions</b> et <b>Distance pour camions</b> utilisent des vitesses fixes et suivent la r&eacute;glementation applicable aux poids-lourds.
+            </p> 
+        </div>
+    </div>
+    <div id="DissolveType">
+        <div><h2>Zones depuis différents points</h2></div>
+        <hr/>
+        <div>
+            <p>Choisissez comment g&eacute;rer les surfaces partag&eacute;es &agrave; partir de diff&eacute;rents points en entr&eacute;e lorsqu'elles se rencontrent. Elles peuvent&nbsp;:
+                <ul>
+                    <li> <b>se superposer</b>&nbsp;: les surfaces de diff&eacute;rents points en entr&eacute;e peuvent couvrir la m&ecirc;me route. Ceci est utile si vous avez besoin de conna&icirc;tre tous les points en entr&eacute;e capables d'atteindre un endroit sp&eacute;cifique dans un temps donn&eacute; ou dans une distance pr&eacute;cise.
+                    </li>
+                    <li> <b>fusionner</b>&nbsp;: toutes les surfaces sont combin&eacute;es en une surface unique et une seule surface peut couvrir un endroit sp&eacute;cifique. Ceci est utile si vous avez uniquement besoin de savoir qu'une surface est accessible dans un temps donn&eacute; ou une distance pr&eacute;cise, sans avoir &agrave; conna&icirc;tre pr&eacute;cis&eacute;ment quels points en entr&eacute;e sont capables d'atteindre l'endroit ;
+                    </li>
+                    <li> <b>se fractionner</b>&nbsp;: les surfaces de diff&eacute;rents emplacements en entr&eacute;e qui se superposeraient sont fractionn&eacute;es au milieu, afin d'&ecirc;tre contigu&euml;s &agrave; la place. Ceci est utile si vous voulez voir quelles surfaces sont accessibles dans un temps donn&eacute; ou une distance pr&eacute;cise des points en entr&eacute;e et, en m&ecirc;me temps, d&eacute;terminer quel point en entr&eacute;e est le plus proche de cette surface.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="OutputLayer">
+        <div><h2>Nom de la couche résultat</h2></div>
+        <hr/>
+        <div>
+            <p>Il s'agit du nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>Mon contenu</b> et ajout&eacute;e &agrave; la carte.  Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom.
+            </p>
+            <p>La zone de liste d&eacute;roulante  <b>Enregistrer le r&eacute;sultat dans</b> vous permet de sp&eacute;cifier le nom d'un dossier dans <b>Mon contenu</b> o&ugrave; le r&eacute;sultat sera enregistr&eacute;.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

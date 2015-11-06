@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Opprett kjøretidsområder</h2><p/>
+        <h2><img src="../images/GUID-6F629A09-768D-4C04-88A4-AB941811ADE9-web.png" alt="Opprett kj&oslash;retidsomr&aring;der"></h2>
+        <hr/>
+    <p>Verkt&oslash;yet Opprett kj&oslash;retidsomr&aring;der oppretter arealer som kan n&aring;s i l&oslash;pet av en angitt kj&oslash;retid eller kj&oslash;reavstand, gangavstand osv. Verkt&oslash;yet m&aring;ler langs veiene eller gangstiene ut fra ett eller flere punkt (opptil 1&nbsp;000) og oppretter et lag som gir deg svar p&aring; sp&oslash;rsm&aring;l som: 
+        <ul>
+            <li>Hvor kan jeg kj&oslash;re herfra i l&oslash;pet av 30 minutter?
+            </li>
+            <li>Hvor kan jeg kj&oslash;re herfra i l&oslash;pet av 30 minutter klokken 16.00 i rushtiden?
+            </li>
+            <li>Hva ligger innenfor en to kilometer lang spasertur fra hotellet mitt?
+            </li>
+            <li>Hvilke deler av byen kan brannvesenet n&aring; i l&oslash;pet av fem minutter? 
+            </li>
+            <li>Hvordan vil en ny brannstasjon her kunne bedre brannvesenets responstid og dekning?
+            </li>
+            <li>Hvilke markedsomr&aring;der dekker virksomheten min?
+            </li>
+        </ul>
+        
+    </p>
+    <p>Det kan hende du f&aring;r svar p&aring; sp&oslash;rsm&aring;lene dine bare ved &aring; visualisere utdataomr&aring;dene. Alternativt kan du utf&oslash;re ytterligere geografiske analyser ved hjelp av utdataomr&aring;dene. Hvis du for eksempel kj&oslash;rer Summer punkter ved hjelp av kj&oslash;retidsomr&aring;der med demografiske data, kan du finne ut hvilken potensiell butikkplassering som vil gi st&oslash;rst kundegrunnlag for den type virksomhet du driver. 
+    </p>
+    <p>
+        <table>
+        <tr><td colspan="3"><hr size="1" noshade="noshade"></td></tr>
+        <tr><td valign="baseline"><img src="../images/tip.png"></td><td valign="baseline"><h2>Tip:&ensp;</h2></td>
+        <td valign="baseline">
+            <p>Bruk heller verkt&oslash;yet Opprett buffere for &aring; opprette omr&aring;der ved &aring; m&aring;le avstander i luftlinje i stedet for langs veiene.
+            </p>
+        </td></tr>
+        <tr><td colspan="3"><hr size="1" noshade="noshade"></td></tr>
+        </table>
+    </p>
+    <p>Hvis det er merket av for  <b>Bruk gjeldende kartutstrekning</b>, er det kun geoobjektene som vises i gjeldende kartutstrekning, som brukes til &aring; opprette kj&oslash;retids- eller kj&oslash;reavstandsbaserte omr&aring;der. Hvis det ikke er merket av for dette alternativet, brukes alle geoobjektene i inndatalaget, selv om de befinner seg utenfor gjeldende kartutstrekning.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Velg punktlaget som beregningen av kjøretidsområder skal baseres på</h2></div>
+        <hr/>
+        <div>
+            <p>Punktgeoobjektene som omr&aring;dene beregnes rundt. Du kan velge hvordan omr&aring;dene beregnes basert p&aring; reisem&aring;te (bil, lastebil, til fots) og m&aring;ling (tid eller avstand).
+            </p>
+            <p>In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            </p>
+        </div>
+    </div>
+    <div id="MeasurementMethod">
+        <div><h2>Mål</h2></div>
+        <hr/>
+        <div>
+            <p>Velg reisem&aring;te (kj&oslash;ring, lastebil eller gange) og m&aring;ling (tid eller avstand). Tilgjengelige reisem&aring;ter defineres av administratoren i organisasjonen. N&aring;r du har valgt m&aring;te og m&aring;ling, skriver du inn en varighet p&aring; opptil  5 timer(300 minutter) eller  300 miles (482,80 kilometer). 
+            </p>
+            <p>N&aring;r du velger  <b>Kj&oslash;retid</b>, vises ulike alternativer for m&aring;ling av kj&oslash;retid.
+                <ul>
+                    <li>
+                        <p>Fjern merket for  <b>Bruk trafikk</b> for &aring; opprette kj&oslash;retidsomr&aring;der basert p&aring; faste hastigheter. Velg dette alternativet hvis du vil opprette et generelt kj&oslash;retidsomr&aring;de og ikke et som er beregnet ved hjelp av trafikkforholdene for et bestemt avreisetidspunkt.
+                        </p>
+                    </li>
+                    <li>
+                        <p>Merk av for  <b>Bruk trafikk</b> for &aring; opprette kj&oslash;retidsomr&aring;der basert p&aring; et gitt starttidspunkt og skiftende  trafikkforhold. Hvis du i tillegg velger alternativet <b>Live traffic</b>, settes avreisetidspunktet fra inndatapunktene til gjeldende klokkeslett og gjeldende og estimerte hastigheter innhentes fra sensorer og feeder for &aring; opprette kj&oslash;retidsomr&aring;dene. De estimerte trafikkhastighetene beregnes basert p&aring; faktiske trafikkhastigheter, historiske hastigheter og gjeldende hendelser, for eksempel v&aelig;rforhold. Trafikkhastighetene beregnes 12 timer frem i tid, slik at du kan dra glidebryteren for &aring; angi avreisetidspunktet opptil 12 timer frem i tid.
+                        </p>
+                        <p>Bruk disse live trafikkinnstillingene til &aring; finne ut hvilke omr&aring;der du kan n&aring; hvis du kj&oslash;rer n&aring;, kj&oslash;rer om &eacute;n time og s&aring; videre.
+                        </p>
+                    </li>
+                    <li>
+                        <p>Hvis du merker av for  <b>Bruk trafikk</b> og velger <b>Trafikk basert p&aring; typiske forhold for</b> en dag eller et klokkeslett, oppretter verkt&oslash;yet kj&oslash;retidsomr&aring;der basert p&aring; historiske gjennomsnittshastigheter for hvert femte minutt i l&oslash;pet av en vanlig uke. Resultatet omfatter trafikk, men tar ikke hensyn til gjeldende trafikale forhold og hendelser, som kan avvike mye fra normen.
+                        </p>
+                        <p>Du kan bruke disse historiske trafikkinnstillingen til &aring; stille sp&oslash;rsm&aring;l som &quot;Hvilke omr&aring;der vil jeg som regel kunne n&aring; hvis jeg kj&oslash;rer klokken 11.30 p&aring; en onsdag?&quot;. 
+                        </p>
+                        <p>Klokkeslettet du angir, refererer til tidssonen som inndatapunktene befinner seg i. S&aring; hvis du for eksempel velger klokkeslettet 8.00 og du har to punkter, ett i New York og ett i Los Angeles, genereres kj&oslash;retidsomr&aring;dene for henholdsvis klokken 8.00EST og kl. 8.00PST.
+                        </p>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Legg merke til at idet et kj&oslash;ret&oslash;y kj&oslash;rer fra et punkt, s&aring; g&aring;r tiden og trafikkforholdene endres. Verkt&oslash;yet for kj&oslash;retidsomr&aring;der tar hensyn til disse variasjonene n&aring;r du velger  <b>Kj&oslash;retid</b> og merker av for <b>Bruk trafikk</b>. Sistnevnte funksjon st&oslash;ttes imidlertid ikke i alle omr&aring;der. Klikk p&aring; koblingen <b>Vis tilgjengelighet</b> i verkt&oslash;yet for &aring; finne ut om funksjonen st&oslash;ttes i ditt studieomr&aring;de.
+            </p>
+            <p> <b>G&aring;tid</b> og <b>Gangavstand</b> bruker en fast hastighet p&aring; 5 kilometer i timen (3,1 miles per time) og f&oslash;lger fortau og gangveier i tillegg til g&aring;gater (regler som angir biler, f.eks. enveiskj&oslash;rte gater, ignoreres). </p>
+            <p> <b>Lastebiltid</b> og <b>Lastebilavstand</b> bruker faste hastigheter og f&oslash;lger regler som gjelder tungtransport.
+            </p> 
+        </div>
+    </div>
+    <div id="DissolveType">
+        <div><h2>Områder fra ulike punkter</h2></div>
+        <hr/>
+        <div>
+            <p>Angi hvordan delte omr&aring;der fra ulike inndatapunkter skal h&aring;ndteres n&aring;r de n&aring;r hverandre. Du kan velge: 
+                <ul>
+                    <li> <b>Overlapp</b> &ndash; Omr&aring;der fra ulike inndatapunkter kan dekke samme vei. Dette er praktisk n&aring;r du vil vite alle inndatapunktene som kan n&aring; en bestemt lokasjon innenfor den angitte tiden eller avstanden.
+                    </li>
+                    <li> <b>L&oslash;s opp</b> &ndash; Alle omr&aring;dene sl&aring;s sammen til ett omr&aring;de, og det er bare ett omr&aring;de som kan dekke en bestemt lokasjon. Dette er praktisk n&aring;r du vil vite om et omr&aring;de kan n&aring;s i l&oslash;pet av et gitt tidsrom eller avstand, men du ikke har behov for &aring; vite hvilke spesifikke inndatapunkter som kan n&aring; lokasjonen.
+                    </li>
+                    <li> <b>Del opp</b> &ndash; Omr&aring;dene fra ulike inndatalokasjoner som overlapper hverandre, deles p&aring; midten slik at de grenser inntil hverandre i stedet. Dette er praktisk n&aring;r du vil se hvilke omr&aring;der som er innenfor et gitt tidsrom eller avstand fra inndatapunktene, og samtidig finne ut hvilket inndatapunkt som er n&aelig;rmest omr&aring;det.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="OutputLayer">
+        <div><h2>Navn på resultatlag</h2></div>
+        <hr/>
+        <div>
+            <p>Dette er navnet p&aring; laget som opprettes i  <b>Mitt innhold</b> og legges til kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget allerede finnes, blir du bedt om &aring; oppgi et annet navn.
+            </p>
+            <p>Bruk rullegardinlisten  <b>Lagre resultat i</b> til &aring; angi navnet p&aring; en mappe i <b>Mitt innhold</b> som resultatene skal lagres i.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

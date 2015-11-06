@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>尋找熱點</h2><p/>
+        <h2><img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" alt="尋找熱點"></h2>
+        <hr/>
+    <p>「尋找熱點」工具可根據資料的空間分佈確定是否存在具有統計顯著性的叢集。
+        <ul>
+            <li>各個點（犯罪事件、樹木、交通事故）是否可進行叢集？ 您是如何確定的？
+            </li>
+            <li>您是否確實發現了具有統計顯著性的熱點（消費、嬰兒死亡率、始終偏高的測試分數）？或者說如果更改地圖的符號化方式，地圖會呈現出另一種結果嗎？
+            </li>
+        </ul>
+        「尋找熱點」工具可協助您充滿信心地回答這些問題。
+    </p>
+    <p>即使是隨機的空間模式也會呈現一定程度的叢集。 此外，我們的眼睛與大腦會在付之闕如時，仍會依本能嘗試找出模式。 因此，很難辨別您資料中的模式是作業中實際空間處理所產生的結果，或者只是隨機的結果。 這是為什麼研究人員與分析人員使用像「尋找熱點」 (Getis-Ord Gi*) 等統計學方法以量化空間模式的原因。 當您在資料中確實找到具有統計顯著性的叢集時，你會獲得非常有價值的資訊。 瞭解叢集發生的時間與地點，可以為您所看到之模式形成過程提供重要線索。 例如，如果需要制定有效的預防手段、分配有限的警力、發起小區監督計劃、授權深入的刑事調查，或者識別潛在嫌疑人，則掌握特定社區持續偏高的住宅入侵盜竊資訊就十分重要。   
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="analysisLayer">
+        <div><h2>選擇要計算熱點的圖層</h2></div>
+        <hr/>
+        <div>
+            <p>可在其中找到熱點和冷點的點圖層或區域圖層。
+
+            </p>
+        </div>
+    </div>
+    <div id="analysisField">
+        <div><h2>尋找高叢集和低叢集</h2></div>
+        <hr/>
+        <div>
+            <p>此分析將回答以下問題：高值和低值在空間上叢集於何處？
+            </p>
+            <p>如果您的資料是點，且您選擇了 <b>點計數</b>，則該工具將評估點圖徵的空間排列以回答以下問題：點在哪裡出現異常叢集或擴散？
+            </p>
+            <p>如果您選擇了某個欄位，則該工具將評估與各圖徵相關的值的空間排列以回答如下問題：高值和低值會聚集在哪裏？
+            </p>
+        </div>
+    </div>
+    <div id="aggregationPolygonLayer">
+        <div><h2>範圍內點計數</h2></div>
+        <hr/>
+        <div>
+            <p>預設情況下，將對根據您的點資料所建立的漁網網格內的點進行計數。 或者，您可以選擇提供一個區域圖層（通常這些圖層反映行政報告區，如人口普查區、市界或各縣）回答以下問題：給定每個區域圖徵內的點數，是否存在具有統計顯著性之高點計數或低點計數的空間叢集的位置？   
+            </p>
+        </div>
+    </div>
+    <div id="boundingPolygonLayer">
+        <div><h2>定義可能存在點的區域</h2></div>
+        <hr/>
+        <div>
+            <p>繪製或提供一個定義可能發生事故的邊界區域圖層，回答以下問題：邊界區域內，是否存在具有異常高或低的點叢集的位置？   
+            </p>
+            <p>所繪製的區域圖徵或者所指定之區域圖層中的圖徵，應該定義點可能出現的位置。 要繪製這些區域，請按一下繪製按鈕，然後按一下地圖上的某個位置以建立區域形狀。 要繼續繪製其他區域，請再次按一下繪製按鈕，然後按一下地圖的某個位置，並繼續操作。
+            </p>
+        </div>
+    </div>
+    <div id="dividedByField">
+        <div><h2>除以</h2></div>
+        <hr/>
+        <div>
+            <p>有時，您可能希望分析那些將基礎分佈列入考量的模式。 例如，如果點代表犯罪案件，則將其除以總人口數可以得到比原始犯罪數更具價值的人均犯罪分析。 選擇對屬性進行除法計算通常稱為正規化。
+            </p>
+            <p>選擇  <i>Esri 人口數</i> 將利用人口數值對每個區域圖徵進行地理豐富，人口數值之後將作為屬性用於除法計算中。 該選項將使用點數。
+            </p>
+        </div>
+    </div>
+    <div id="hotSpotsResultLayer">
+        <div><h2>結果圖層名稱</h2></div>
+        <hr/>
+        <div>
+            <p>為在 <b>我的內容</b>中建立並新增到地圖中的圖層命名。 此結果圖層將顯示具有統計顯著性的叢集（高值和低值或點計數）。 如果結果圖層名稱已存在，則系統會要求您重新命名該圖層。
+            </p>
+            <p>使用 <b>將結果儲存到</b>下拉式方塊，可以在 <b>我的內容</b>中指定儲存結果的資料夾名稱。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

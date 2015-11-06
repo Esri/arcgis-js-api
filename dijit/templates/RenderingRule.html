@@ -1,0 +1,140 @@
+<div data-dojo-attach-point="_renderingRuleContainer" class="esriRenderingRuleContainer">
+  <table class="esriRenderingRuleTable">
+    <tbody>
+      <col class="esriRenderingRuleCol1"/>
+      <col class="esriRenderingRuleCol2"/>
+      <col class="esriRenderingRuleCol3"/>
+      <tr>
+        <td colspan="3">
+          <label class="esriRenderingRuleHeadingLabel" data-dojo-attach-point="rendererLabel">${_i18n.widgets.renderingRule.rendererLabelTitle}</label>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3" data-dojo-attach-point="rasterFunctionRow">
+          <div data-dojo-attach-point="rasterFunctionList" data-dojo-type="dijit/form/FilteringSelect"
+            class="esriRenderingRuleRasterFunctionList dijitSelect">
+          </div>
+        </td>
+      </tr>
+      <tr data-dojo-attach-point="bandIdsLabelBlock">
+        <td colspan="3">
+          <label class="esriRenderingRuleHeadingLabel" data-dojo-attach-point="bandIdsLabel">${_i18n.widgets.renderingRule.bandCombinationLabelTitle}</label>
+        </td>
+      </tr>
+      <tr data-dojo-attach-point="bandIdsBlock">
+        <td>
+          <div data-dojo-attach-point="bandIdsRedList" data-dojo-type="dijit/form/FilteringSelect"
+            class="esriRenderingRuleBandIdsRedList dijitSelect">
+          </div>
+        </td>
+        <td>
+          <div data-dojo-attach-point="bandIdsGreenList" data-dojo-type="dijit/form/FilteringSelect"
+            class="esriRenderingRuleBandIdsGreenList dijitSelect">
+          </div>
+        </td>
+        <td>
+          <div data-dojo-attach-point="bandIdsBlueList" data-dojo-type="dijit/form/FilteringSelect"
+            class="esriRenderingRuleBandIdsBlueList dijitSelect">
+          </div>
+        </td>
+      </tr>
+      <tr data-dojo-attach-point="bandIdsMsgBlock">
+        <td/>
+        <td colspan="2">
+          <div data-dojo-attach-point="msgLabel" class="esriRenderingRuleMsgLabel">
+          </div>
+        </td>
+      </tr>      
+      <tr>
+        <td colspan="3">
+          <label class="esriRenderingRuleEnhancementHeadingLabel" data-dojo-attach-point="imageEnhancementLabel">${_i18n.widgets.renderingRule.imageEnhancementLabelTitle}</label>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          <label data-dojo-attach-point="stretchDescLabel">${_i18n.widgets.renderingRule.stretchDescLabel}</label>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          <label data-dojo-attach-point="stretchMethodLabel">${_i18n.widgets.renderingRule.stretchMethodLabel}</label>
+        </td>
+      </tr>      
+      <tr>
+        <td colspan="3">
+          <select data-dojo-attach-point="stretchMethodList" style="width:100%;" data-dojo-type="dijit/form/Select" class="esriRenderingRuleStretchMethodList">
+          </select>
+        </td>
+      </tr>
+      <tr data-dojo-attach-point="stretchMethodNoneDescBlock">
+        <td colspan="3">
+          <label data-dojo-attach-point="stretchMethodNoneDesc">${_i18n.widgets.renderingRule.stretchMethodNoneDesc}</label>
+        </td>
+      </tr> 
+      <tr data-dojo-attach-point="stretchMethodMinMaxDescBlock">
+        <td colspan="3">
+          <label data-dojo-attach-point="stretchMethodMinMaxDesc">${_i18n.widgets.renderingRule.stretchMethodMinMaxDesc}</label>
+        </td>
+      </tr>       
+      <tr data-dojo-attach-point="numStdDevBlock">
+        <td colspan="3">
+          <label data-dojo-attach-point="numStdDevLabel">${_i18n.widgets.renderingRule.numStdDevLabelTitle}</label>
+          <input type="text" value="2.0" data-dojo-attach-point="numStdDevText" class="esriRenderingRuleFixedInput">
+          </input>
+          <label data-dojo-attach-point="numStdDevLabel">${_i18n.widgets.renderingRule.numStdDevEndLabelTitle}</label>
+        </td>
+        <td/>
+        <td/>
+      </tr>
+      <tr data-dojo-attach-point="minMaxPercentDescBlock">
+        <td colspan="3">
+          <label data-dojo-attach-point="numStdDescLabel">${_i18n.widgets.renderingRule.minMaxDescLabelTitle}</label>
+        </td>
+      </tr>      
+      <tr data-dojo-attach-point="maxPercentBlock">
+        <td>
+          <label data-dojo-attach-point="maxPercentLabel">${_i18n.widgets.renderingRule.maxPercentLabelTitle}</label>
+        </td>
+        <td colspan="2">
+          <input type="text" value="2.0" data-dojo-attach-point="maxPercentText" class="esriRenderingRuleFixedInput">
+          </input>
+          <label data-dojo-attach-point="percentLabel">${_i18n.widgets.renderingRule.percentLabelTitle}</label>
+        </td>
+        </td>
+      </tr>      
+      <tr data-dojo-attach-point="minPercentBlock">
+        <td>
+          <label data-dojo-attach-point="minPercentLabel">${_i18n.widgets.renderingRule.minPercentLabelTitle}</label>
+        </td>
+        <td colspan="2">
+          <input type="text" value="2.0" data-dojo-attach-point="minPercentText" class="esriRenderingRuleFixedInput">
+          </input>
+          <label data-dojo-attach-point="percentLabel">${_i18n.widgets.renderingRule.percentLabelTitle}</label>
+        </td>
+      </tr>
+      <tr data-dojo-attach-point="draBlock">
+        <td colspan="3">
+          <input type="checkbox" value="true" data-dojo-attach-point="draCheckbox" class="esriRenderingRuleDraCheckbox">
+          </input>
+          <label class="esriRenderingRuleDraLabel" data-dojo-attach-point="draLabel">${_i18n.widgets.renderingRule.draLabelTitle}</label>
+        <td/>
+      </tr>
+      <tr data-dojo-attach-point="gammaBlock">
+        <td>
+          <label data-dojo-attach-point="gammaLabel">${_i18n.widgets.renderingRule.gammaLabelTitle}</label>
+        </td>
+        <td colspan="2">
+          <div id="gammaSliderID" data-dojo-attach-point="gammaSlider" class="esriRenderingRuleGammaSlider" data-dojo-type="dijit.form.HorizontalSlider" showbuttons="true" value="0.0" minimum="-1" maximum="1" intermediatechanges="true">
+            <div data-dojo-type="dijit.form.HorizontalRuleLabels" container="bottomDecoration" labels="${_i18n.widgets.renderingRule.minGammaLabel}, ${_i18n.widgets.renderingRule.maxGammaLabel}" style="height: 1.5em; font-size: 0.8em; color: #666">
+            </div>        
+          </div> 
+        </td>
+      </tr>    
+      <tr>
+        <td colspan="3">
+          <center><input type="button" data-dojo-attach-point="_apply" value="APPLY" size="15" class="esriRenderingRuleApplyButton" /></center>
+        </td>
+      </tr>      
+    </tbody>
+  </table>
+</div>

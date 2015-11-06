@@ -1,0 +1,197 @@
+.esriBrowseItems {
+  margin: 0 auto;
+  width: 100%;
+}
+
+
+.esriBrowseItems .dgrid .gallery-view h5 {
+  width: 100%;
+  height: 2.0em;
+  line-height: 1.0em;
+  font-size: 15px;
+  word-wrap: break-word;
+}
+
+.esriBrowseItems .dgrid .gallery-view img {
+  border: 1px solid #838383;
+}
+
+.esriBrowseItems .dgrid .dgrid-row .gallery-view {
+  float: left;
+  width: 30.1%;
+  padding: 1.5% 1.6%;
+  margin: auto;
+}
+
+.esriBrowsePopup p {
+  padding: 3px;
+  margin: 0px;
+}
+
+.esriBrowsePopup .dijitTooltipContainer {
+  padding: 0px;
+  margin: 0px;
+}
+
+
+.esriContent .dijitPopup {
+  height: 105px;
+  max-height: 105px;
+}
+
+.esriBrowsePopup.quiet-scroll {
+  width: 155px;
+  min-height:120px;
+  height: auto;
+  max-height:185px;
+  padding: 3px;
+  overflow: auto;
+}
+
+
+.esriBrowsePopup.quiet-scroll pre::-webkit-scrollbar, .quiet-scroll::-webkit-scrollbar {
+  width: 1px;
+  height: 1px;
+  border-left: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.esriBrowsePopup.quiet-scroll pre::-webkit-scrollbar-thumb, .quiet-scroll::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 0;
+}
+
+.esriBrowsePopup.quiet-scroll pre::-webkit-scrollbar-track, .quiet-scroll::-webkit-scrollbar-track {
+  background: none;
+}
+
+
+.esriBrowseItems .dgrid {
+  border: 1px solid #CBCBCB;
+  min-height: 400px;
+  clear:both;
+}
+
+.esriBrowseItems .dgrid .dgrid-scroller {
+    position: relative;
+    overflow-y: hidden;
+}
+
+
+.esriBrowseItems .dgrid .dgrid-row .gallery-view:hover {
+    cursor: pointer;
+    background-color: #ededed;
+}
+
+.esriBrowseItems .dgrid-row.dgrid-selected .gallery-view,
+.esriBrowseItems .dgrid .dgrid-row.dgrid-selected .gallery-view:hover {
+  background-color: #bfd6eb;
+}
+
+
+.esriBrowseItems .dgrid .dgrid-footer {
+  background: none repeat scroll 0 0 #FFF !important;
+}
+
+.esriBrowseItems .dgrid .dgrid-navigation {
+  float: right;
+  margin: 0 auto;
+  width: 525px;
+}
+
+.esriBrowseItems .dgrid .dgrid-status {
+  display: none !important;
+  visibility: hidden;
+}
+
+.esriBrowseItems .dgrid .dgrid-pagination .dgrid-page-link,
+.esriBrowseItems .dgrid .dgrid-pagination .dgrid-page-skip{
+    background: none repeat scroll 0 0 #F2F2F2;
+    border: 1px solid #EDEDED;
+    border-radius: 4px 4px 4px 4px;
+    -webkit-border-radius: 4px 4px 4px 4px;
+    -moz-border-radius: 4px 4px 4px 4px;
+    -ms-border-radius: 4px 4px 4px 4px;
+    -o-border-radius: 4px 4px 4px 4px;
+    color: #999999;
+    font-size: 1em;
+    line-height: 1.5em;
+    margin: 5px;
+    padding: 5px 10px;
+    float: left;
+}
+
+.esriBrowseItems .dgrid .dgrid-pagination .dgrid-page-disabled,
+.esriBrowseItems .dgrid .dgrid-pagination .dgrid-page-link:hover,
+.esriBrowseItems .dgrid .dgrid-pagination .dgrid-first:hover,
+.esriBrowseItems .dgrid .dgrid-pagination .dgrid-previous:hover,
+.esriBrowseItems .dgrid .dgrid-pagination .dgrid-next:hover,
+.esriBrowseItems .dgrid .dgrid-pagination .dgrid-last:hover {
+    background-color: #007AC2;
+    color: #FFF;
+}
+
+.esriBrowseItems .dgrid .dgrid-pagination .dgrid-first,
+.esriBrowseItems .dgrid .dgrid-pagination .dgrid-previous,
+.esriBrowseItems .dgrid .dgrid-pagination .dgrid-next,
+.esriBrowseItems .dgrid .dgrid-pagination .dgrid-last {
+    background: none repeat scroll 0 0 #F2F2F2;
+    border: 1px solid #EDEDED;
+    border-radius: 4px 4px 4px 4px;
+    -webkit-border-radius: 4px 4px 4px 4px;
+    -moz-border-radius: 4px 4px 4px 4px;
+    -ms-border-radius: 4px 4px 4px 4px;
+    -o-border-radius: 4px 4px 4px 4px;
+    color: #999999;
+    font-size: 1em;
+    line-height: 1.5em;
+    margin: 5px;
+    padding: 5px 10px;
+    float: left;
+}
+
+.esriBrowseItems p {
+    margin:0;
+}
+
+.esriBrowseItems .esriSearchBox {
+    background: #fff url("../images/search.png") 98% center no-repeat !important;
+    border: 1px solid #CBCBCB;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+    width: 20em;
+    height: 1.0em;
+    padding: 0.5em;
+    margin: 0.5em 0 0.5em 0;
+    float: left;
+}
+
+.esriBrowseItems .esriSearchBox:focus {
+    border: 1px solid #0079C1
+}
+
+.esriRtl .esriBrowseItems .dgrid .dgrid-navigation{
+    float:left;
+}
+
+.esriRtl .esriBrowseItems .dgrid .dgrid-pagination .dgrid-page-link,
+.esriRtl .esriBrowseItems .dgrid .dgrid-pagination .dgrid-page-skip {
+    float:right;
+}
+
+.esriRtl .esriCreateApp .dojoxWizardButtons {
+    right: inherit;
+    left: 5px;
+}
+
+.esriRtl .esriBrowseItems .dgrid .dgrid-row .gallery-view {
+    float: right;
+}
+
+.esriBrowseItems .categorySelect {
+  width: 45%;
+  margin-top: 1em;
+}

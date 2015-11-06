@@ -1,0 +1,55 @@
+.esriBookmarkTable{
+width: 208px;
+border-spacing: 0px;
+border-collapse:collapse;
+}
+.esriBookmarkLabel{
+position: relative;
+float: left;
+width: 136px;
+overflow:hidden;
+line-height:20px;
+height: 20px;
+white-space: nowrap;
+margin-left: 5px;
+font-size:12px;
+text-align:left;
+vertical-align:middle;
+color:black;
+font-family: Verdana, Helvetica, sans-serif;
+cursor: pointer;
+}
+.esriBookmarks{
+width:215px;
+border-style: solid;
+border-color: #769DC0;
+border-width: 1px;
+}
+.esriBookmarkItem{
+width:208px;
+height: 20px;
+}
+.esriAddBookmark{
+margin-left: 5px;
+}
+.esriBookmarkHighlight{
+background-color: #D9E6F9;
+}
+.esriBookmarkEditImage{
+float:right;
+width:30px;
+cursor: pointer;
+background: transparent url("../images/edit.png") no-repeat scroll center center;
+}
+.esriBookmarkRemoveImage{
+float:right;
+width: 30px;
+cursor: pointer;
+background: transparent url("../images/close.gif") no-repeat scroll center center;
+}
+.esriBookmarkEditBox{
+position: fixed;
+font-size:12px;
+height:13px; 
+width:180px;
+}

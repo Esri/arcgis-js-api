@@ -1,0 +1,41 @@
+{
+    "version": "1.0",
+    "map": {
+        "DeriveNewLocations": {
+            "toolDescription": "derive-new-locations.htm",
+            "Expression": "derive-new-locations.htm"
+        },
+        "EnrichLayer": {
+            "toolDescription": "../../esri-demographics/data/data.htm",
+            "DataCollection": "../../esri-demographics/data/data.htm"
+        },
+        "ExtractData": {
+            "toolDescription": "extract-data.htm",
+            "InputLayers": "extract-data.htm"
+        },
+        "FindExistingLocations": {
+            "toolDescription": "find-existing-locations.htm",
+            "Expression": "find-existing-locations.htm"
+        },
+        "FindHotSpots": {
+            "toolDescription": "find-hot-spots.htm",
+            "AnalysisFieldPoly": "find-hot-spots.htm#ESRI_SECTION1_7743ED5A2AE3411B83140D82EEB8A41B",
+            "AnalysisFieldPoint": "find-hot-spots.htm#ESRI_SECTION2_1B09039F95004047B30B0B957F2FA893",
+            "BoundingPolygonLayer": "find-hot-spots.htm#ESRI_SECTION3_F9D255E9146E44CF99DCC140A3BB9CBB",
+            "AggregationPolygonLayer": "find-hot-spots.htm#ESRI_SECTION3_4AFB54649EC44003A2DDE65953B54AE3"
+        },
+        "FindSimilarLocations": {
+            "toolDescription": "find-similar-locations.htm",
+            "inputLayer": "find-similar-locations.htm#ESRI_SECTION1_0D6D235A87A64F6F9752C5BA98EAE90E",
+            "searchLayer": "find-similar-locations.htm#ESRI_SECTION1_8C13F0F96EA942B98A9314048BFA0350",
+            "analysisFields": "find-similar-locations.htm#ESRI_SECTION1_C219239BE9C7430394B8A2BD23626406",
+            "numberOfResults": "find-similar-locations.htm#ESRI_SECTION1_5F3346BC953B44F28940E0FD6D7FF629"
+        },
+        "PlanRoutes": {
+            "toolDescription": "plan-routes.htm",
+            "endLayer": "plan-routes.htm#ESRI_SECTION1_C980820DF2F447288C60E659E97E6523",
+            "startLayer": "plan-routes.htm#ESRI_SECTION1_C980820DF2F447288C60E659E97E6523"
+        }
+    }
+}
+

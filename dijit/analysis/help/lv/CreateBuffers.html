@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Izveidot buferus</h2><p/>
+        <h2><img src="../images/GUID-7F4A8E4D-42E3-41C1-9238-16619CE65079-web.png" alt="Izveidot buferus"></h2>
+        <hr/>
+    <p>Buferis ir platība, kas aptver noteiktu attālumu no kāda punkta, līnijas vai laukuma elementa. 
+    </p>
+    <p>Buferus parasti izmanto, lai radītu platības, ko var vēl vairāk analizēt, izmantojot rīku, piemēram, Pārklājuma slāņus. Piemēram, ja jautājums ir &ldquo;Kuras ēkas atrodas viena kilometra attālumā no skolas?&rdquo;, atbildi var atrast, izveidojot viena km buferi ap skolu un pārklājot ar buferi slāni, kas satur ēkas. Gala rezultāts ir &scaron;o ēku slānis viena kilometra attālumā no skolas.  
+    </p>
+    <p>Ja  <b>Lietot pa&scaron;reizējo kartes pārklājumu</b> ir atzīmēts, tad buferi veidosies tikai elementiem pa&scaron;reizējā kartes pārklājumā. Ja nav atzīmēts, visi elementi ievades slānī tiks buferēti, pat ja atrodas ārpus pa&scaron;reizējā kartes pārklājuma.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Izvēlieties slāni, kas satur buferējamos elementus</h2></div>
+        <hr/>
+        <div>
+            <p>Var buferēt punktu, līniju vai apgabala elementus.
+
+            </p>
+            <p>Papildus slāņa izvēlei no kartes varat atlasīt  <b>Izvēlēties Living Atlas analīzes slāni</b> nolaižamā saraksta apak&scaron;ā. Tādējādi tiek atvērta galerija, kurā ir daudzām analīzēm noderīgu slāņu galerija. 
+            </p>
+        </div>
+    </div>
+    <div id="BufferSize">
+        <div><h2>Ievadiet bufera izmēru</h2></div>
+        <hr/>
+        <div>
+            <p>Jūs varat ievadīt vienu vai daudzas distances vērtības, atdalot vērtības ar atstarpi. Varat arī norādīt atribūtu ievades slānī, kas satur distances vērtību, noklik&scaron;ķinot uz  <b>Lauks</b>.
+            </p> 
+        </div>
+    </div>
+    <div id="OptionPoint">
+        <div><h2>Opcijas</h2></div>
+        <hr/>
+        <div>
+            <p>Izvēlieties, kā jūs vēlaties buferu pārklā&scaron;anos. Attiecībā uz jebkuru buferi, kas ir uz cita bufera, kopīgos laukumus var saglabāt (pārklājas), vai apvienot (iz&scaron;ķīdina).
+            </p>  
+            <p> Izmantojot vairākus attālumus, varat izvēlēties, kā parādīt attālumu no pēdējā bufera attāluma. Piemēram, ja attālumi ir 10 un 14:
+                <ul>
+                    <li>Izvēloties rezultātus  <b>Gredzeni</b> buferos (diapazonā 0&ndash;10 un 10&ndash;14).
+                    </li>
+                    <li>Izvēloties rezultātus  <b>Diski</b> buferos (diapazonā 0&ndash;10 un 10&ndash;14).
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="OptionPoly">
+        <div><h2>Opcijas</h2></div>
+        <hr/>
+        <div>
+            <p>Izvēlieties, kā jūs vēlaties buferu pārklā&scaron;anos. Attiecībā uz jebkuru buferi, kas ir uz cita bufera, kopīgos laukumus var saglabāt (pārklājas), vai apvienot (iz&scaron;ķīdina).
+            </p>
+            <p>Kad veidojat vienu buferi apkārt laukuma elementiem (ievadīta viena distance), jūs varat izvēlēties vai elementi, kuriem veido buferus, ir iekļauti vai izslēgti no rezultātu bufera.
+            </p>
+            <p>Izmantojot vairākus attālumus, varat izvēlēties, kā parādīt attālumu no pēdējā bufera attāluma. Piemēram, ja attālumi ir 10 un 14:
+                <ul>
+                    <li>Izvēloties rezultātus  <b>Gredzeni</b> buferos (diapazonā 0&ndash;10 un 10&ndash;14).
+                    </li>
+                    <li>Izvēloties rezultātus  <b>Diski</b> buferos (diapazonā 0&ndash;10 un 10&ndash;14).
+                    </li>
+                </ul>
+                
+            </p> 
+        </div>
+    </div>
+    <div id="OptionLine">
+        <div><h2>Opcijas</h2></div>
+        <hr/>
+        <div>
+            <p>Izvēlieties, kā jūs vēlaties buferu pārklā&scaron;anos. Attiecībā uz jebkuru buferi, kas ir uz cita bufera, kopīgos laukumus var saglabāt (pārklājas), vai apvienot (iz&scaron;ķīdina).
+            </p>
+            <p>Kad izveido vienu buferi ap līniju (ievadīta viena distance), varat izvēlēties, kuru līnijas pusi buferēt. Tipiski, jūs izvēlaties abas puses. Labā un kreisā tiek noteiktas, it kā jūs ietu no pirmās x, y koordinātes uz līnijas (starta) uz pēdējo x, y koordināti (beigu). Izvēloties labo vai kreiso pusi parasti nozīmē, ka jūs zinat, kā līnijas veidotas virzienos (piem., upju tīkla aug&scaron;puse un lejpuse). Līniju beigās buferi var būt noapaļoti (Apaļ&scaron;) vai taisni (Līdzens).
+            </p>
+            <p>Veidojot vairākus buferus (vairāk nekā vienu attālumu), varat izvēlēties, kā parādīt attālumu no pēdējā bufera attāluma. Piemēram, ja attālumi ir 10 un 14:
+                <ul>
+                    <li>Izvēloties rezultātus  <b>Gredzeni</b> buferos (diapazonā 0&ndash;10 un 10&ndash;14).
+                    </li>
+                    <li>Izvēloties rezultātus  <b>Diski</b> buferos (diapazonā 0&ndash;10 un 10&ndash;14).
+                    </li>
+                </ul>
+                
+            </p> 
+        </div>
+    </div>
+    <div id="BufferLayer">
+        <div><h2>Rezultāta slāņa nosaukums</h2></div>
+        <hr/>
+        <div>
+            <p>Tas ir slāņa nosaukuns, kas tiks izveidots  <b>Mans saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja slānis jau pastāv, jums tiks lūgts norādīt citu nosaukumu.
+            </p>
+            <p>Lietojot  <b>Saglabāt rezultātus</b> nolaižamajā sarakstlodziņā, jūs varat norādīt nosaukumu mapē <b>Mans saturs</b>, kur tiks saglabāti rezultāti.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

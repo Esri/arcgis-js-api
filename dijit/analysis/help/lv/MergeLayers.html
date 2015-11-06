@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Apvienot slāņus</h2><p/>
+        <h2><img src="../images/GUID-BDDD6517-4EE7-4EEC-AE15-15DD9B709131-web.png" alt="Apvienot slāņus"></h2>
+        <hr/>
+    <p>&Scaron;is rīks kopē elementus no diviem slāņiem uz jaunu slāni. Slāņiem, ko apvienos, visiem ir jābūt tiem pa&scaron;iem elementu tipiem (punkti, līnijas vai laukumi). Jūs varat kontrolēt, kā no ievades slāņiem lauki ir savienoti un kopēti. Piemēram:
+        <ul>
+            <li>Man ir trīs slāņi priek&scaron; Anglijas, Velsas un Skotijas, un es gribu vienu Lielbritānijas slāni. 
+            </li>
+            <li>Man ir 12 slāņi un katrs satur parceļu informāciju par kaimiņu apgabalu. Es vēlos savienot tos kopā viena slānī, saglabājot tikai tos atribūtus, kam ir tāds pats nosaukums un veids no 12 ievades slāņiem.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Ja <b>Lietot pa&scaron;reizējo kartes pārklājumu</b> ir atzīmēts, tad tiks apvienoti tikai elementi pa&scaron;reizējā kartes pārklājumā. Ja nav atzīmēts, visi elementi abos slāņos tiks apvienoti, arī pa&scaron;reizējā kartes pārklājuma ārpusē.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Izvēlieties slāni</h2></div>
+        <hr/>
+        <div>
+            <p>Punkts, līnija vai apgabala elementi tiek apvienoti ar tālāk norādīto slāni.
+
+            </p>
+        </div>
+    </div>
+    <div id="MergeLayer">
+        <div><h2>Izvēlieties slāni ko apvienot</h2></div>
+        <hr/>
+        <div>
+            <p>Izvēlieties slāni ko apvienot ar pirmo slāni.
+            </p>
+        </div>
+    </div>
+    <div id="MergingAttributes">
+        <div><h2>Modificēt apvienojamos laukus</h2></div>
+        <hr/>
+        <div>
+            <p>Pēc noklusējuma, visi lauki no abām ievadēm tiks pārnesti uz izvadi. Jūs varat mainīt kā lauki tiek pārnesti uz izvadi:
+                <ul>
+                    <li> <b>Pārsaukt</b>&nbsp;&mdash; izvadē lauks tiks pārsaukts.
+                    </li>
+                    <li> <b>Noņemt</b>&nbsp;&mdash; lauks tiks noņemts no izvades.
+                    </li>
+                    <li> <b>Saskaņot</b> &mdash; lauku nosaukumi tiek izveidoti ekvivalenti.  Apvienotā slāņa lauka vērtības tiks kopētas uz saskaņoto izvades lauku.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="OutputName">
+        <div><h2>Rezultāta slāņa nosaukums</h2></div>
+        <hr/>
+        <div>
+            <p>Tas ir slāņa nosaukuns, kas tiks izveidots  <b>Mans saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja slānis jau pastāv, jums tiks lūgts norādīt citu nosaukumu.
+            </p>
+            <p>Lietojot  <b>Saglabāt rezultātus</b> nolaižamajā sarakstlodziņā, jūs varat norādīt nosaukumu mapē <b>Mans saturs</b>, kur tiks saglabāti rezultāti.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

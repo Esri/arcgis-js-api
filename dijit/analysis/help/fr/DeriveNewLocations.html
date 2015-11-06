@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Dériver de nouveaux emplacements</h2><p/>
+        <h2><img src="../images/GUID-4A756008-8431-4AA5-BD42-7135296560DD-web.png" alt="D&eacute;river de nouveaux emplacements"></h2>
+        <hr/>
+    <p>Cet outil g&eacute;n&egrave;re de nouvelles entit&eacute;s dans votre zone d'&eacute;tude r&eacute;pondant &agrave; une s&eacute;rie de crit&egrave;res que vous d&eacute;finissez. Ces crit&egrave;res peuvent reposer sur des requ&ecirc;tes attributaires (par exemple, des parcelles vacantes) et des requ&ecirc;tes spatiales (par exemple, des parcelles situ&eacute;es au sein des zones inondables).
+
+    </p>
+    <p>Si l'option  <b>Utiliser l'&eacute;tendue courante de la carte</b> est s&eacute;lectionn&eacute;e, seules les entit&eacute;s qui sont visibles au sein de l'&eacute;tendue courante de la carte seront analys&eacute;es.  Si l'option n'est pas s&eacute;lectionn&eacute;e, toutes les entit&eacute;s seront analys&eacute;es, m&ecirc;me si elles se trouvent en dehors de l'&eacute;tendue courante de la carte.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="Expression">
+        <div><h2>Dériver de nouveaux emplacements qui correspondent aux expressions suivantes</h2></div>
+        <hr/>
+        <div>
+            <p>Cliquez sur le bouton  <b>Ajouter une expression</b> pour d&eacute;finir une expression.  Vous pouvez ajouter plusieurs expressions. Apr&egrave;s avoir entr&eacute; les expressions et cliqu&eacute; sur le bouton <b>Ex&eacute;cuter l'analyse</b>, les entit&eacute;s de votre couche d'analyse sont filtr&eacute;es &agrave; travers chaque expression.  Les portions d'entit&eacute;s qui respectent toutes les expressions sont &eacute;crites dans la couche r&eacute;sultat.
+            </p>
+            <p>Vous pouvez cr&eacute;er deux types &eacute;l&eacute;mentaires d'expressions&nbsp;: attributaires et spatiales. Les expressions attributaires sont des requ&ecirc;tes sur des valeurs de champs, telles que  <code>o&ugrave; le nom est 'San Francisco'</code>.  Il existe quatre types d'expressions spatiales&nbsp;:
+                <ul>
+                    <li> <b>&agrave; une certaine distance de</b> : portions d'une entit&eacute; situ&eacute;es &agrave; une certaine distance d'une entit&eacute; dans une autre couche.  Par exemple, recherchez les portions de parcelles qui se situent &agrave; moins de 500&nbsp;m&egrave;tres du fleuve Los Angeles.
+                    </li>
+                    <li> <b>englobe enti&egrave;rement</b> : l'entit&eacute; doit englober l'int&eacute;gralit&eacute; d'une entit&eacute; dans une autre couche.  Par exemple, recherchez les bassins versants qui englobent enti&egrave;rement des parcelles industrielles. Aucune partie de la parcelle ne peut se trouver en dehors du bassin versant.
+                    </li>
+                    <li> <b>compl&egrave;tement dans</b> : l'entit&eacute; doit &ecirc;tre enti&egrave;rement entour&eacute;e d'une entit&eacute; dans une autre couche.  Par exemple, recherchez les zones scolaires qui se trouvent enti&egrave;rement dans la limite d'une ville. Aucune partie de la zone scolaire ne peut se trouver en dehors de la limite de la ville.
+                    </li>
+                    <li> <b>intersectent</b> : l'entit&eacute; ou les portions de l'entit&eacute; doivent recouvrir ou intersecter une entit&eacute; dans une autre couche.  Par exemple, recherchez des zones de v&eacute;g&eacute;tation br&ucirc;l&eacute;e par plusieurs feux dans un parc national. Les zones br&ucirc;l&eacute;es en-dehors des limites du parc ne sont pas englob&eacute;es.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Une n&eacute;gation correspond &agrave; chaque expression spatiale :  <b>pas &agrave; une certaine distance de</b>, <b>n'englobe pas enti&egrave;rement</b>, <b>pas compl&egrave;tement dans</b> et <b>n'intersecte pas</b>.
+            </p> 
+        </div>
+    </div>
+    <div id="OutputName">
+        <div><h2>Nom de la couche résultat</h2></div>
+        <hr/>
+        <div>
+            <p>Il s'agit du nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>Mon contenu</b> et ajout&eacute;e &agrave; la carte.  Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom.
+            </p>
+            <p>La zone de liste d&eacute;roulante  <b>Enregistrer le r&eacute;sultat dans</b> vous permet de sp&eacute;cifier le nom d'un dossier dans <b>Mon contenu</b> o&ugrave; le r&eacute;sultat sera enregistr&eacute;.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

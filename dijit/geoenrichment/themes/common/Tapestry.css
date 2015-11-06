@@ -1,0 +1,193 @@
+.Tapestry_Table
+{
+	border-collapse: collapse;
+	width: 98%;
+    font-size:115%;
+}
+
+.Tapestry_PrcCell
+{ 
+    font-size:27pt;
+    text-align:right;
+}
+
+.Tapestry_HeaderCell
+{ 
+    font-size:13.5pt;
+    height:13.5pt;
+}
+
+.Tapestry_ValueCell
+{ 
+    font-size:9pt;
+}
+
+.Tapestry_AttrCell
+{ 
+    color:#e2e2e2;
+    text-align:right;
+    white-space: nowrap;
+}
+
+.Tapestry_TextCell
+{ 
+    color:#ffffff;
+    padding-left:0.5em;
+}
+
+.Tapestry_ValueCell, .Tapestry_AttrCell, .Tapestry_TextCell
+{
+    height:1em;
+    padding-top:0;
+    padding-bottom:0;
+    margin-top:0;
+    margin-bottom:0;
+}
+
+.Tapestry_TopCell
+{ 
+    padding-top:1em;
+}
+
+.Tapestry_LeftArrowCell
+{
+	background-image: url(./images/leftArrowTail.png);
+    min-width:22.5pt;
+}
+
+.Tapestry_RightArrowCell
+{
+	background-image: url(./images/rightArrowTail.png);
+}
+
+.Tapestry_LeftArrowCell, .Tapestry_RightArrowCell
+{
+    display: inline-block;
+    background-repeat: no-repeat;
+	width: 18.75pt;
+	height: 18.75pt;
+	cursor: pointer;
+    vertical-align:middle;
+    background-position-y:center;
+}
+
+.Tapestry_TopOne
+{    
+    color:#6eef37;
+}
+
+.Tapestry_TopTwo
+{
+   color:#f0a2f4;
+}
+
+.Tapestry_TopThree
+{
+    color:#79a7eb;
+}
+
+.Tapestry_ViewImage
+{
+    width:123.75pt;
+    height:105pt;
+}
+
+.Tapestry_LeftCell
+{
+    padding-left: 7.5pt;
+}
+
+.dj_rtl .Tapestry_LeftArrowCell
+{
+	background-image: url(./images/rightArrowTail.png);
+    background-position:right;
+    width:100%;
+}
+
+.dj_rtl .Tapestry_RightArrowCell
+{
+	background-image: url(./images/leftArrowTail.png);
+    background-position:right;
+    width:100%;
+}
+
+.dj_rtl .Tapestry_LeftCell
+{
+    padding-left:0;
+    padding-right: 7.5pt;
+    text-align:right;
+}
+
+.dj_rtl .Tapestry_PrcCell
+{ 
+    text-align:left;
+}
+
+.dj_rtl .Tapestry_HeaderCell
+{ 
+    text-align:right;
+}
+
+.dj_rtl .Tapestry_AttrCell
+{ 
+    text-align:left;
+}
+
+.dj_rtl .Tapestry_TextCell
+{ 
+    padding-left:0em;
+    padding-right:0.5em;
+    text-align:right;
+}
+
+.Collapsed .Tapestry_Table
+{
+    font-size:100%;
+}
+
+.Collapsed .Tapestry_PrcCell
+{ 
+    font-size:16.5pt;
+    font-weight:bold;
+}
+
+.Collapsed .Tapestry_LeftCell
+{
+    height: 9pt;
+    padding-left: 3.75pt;
+}
+
+.Collapsed .Tapestry_HeaderCell
+{
+    font-size:9pt;
+    vertical-align:middle;
+}
+
+.Collapsed .Tapestry_LeftCell,
+.Collapsed .Tapestry_AttrCell,
+.Collapsed .Tapestry_TextCell
+{ 
+    font-size:7.5pt;
+}
+
+.Collapsed .Tapestry_ListCell
+{ 
+    padding-top:11.25pt;
+}
+
+.Collapsed .Tapestry_ViewCell
+{ 
+    padding-top:0.7em;
+}
+
+.Collapsed .Tapestry_LeftArrowCell
+{
+    min-width:15pt;
+}
+
+.Collapsed .Tapestry_LeftArrowCell,
+.Collapsed .Tapestry_RightArrowCell
+{
+    width: 15pt;
+    background-size:13.5pt;
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Izšķīdināt robežas</h2><p/>
+        <h2><img src="../images/GUID-7B5F69B0-3625-404F-8B52-2B562766C0BB-web.png" alt="Noņemt robežas"></h2>
+        <hr/>
+    <p>Laukumi, kas pārklājas, vai koplieto kopīgo robežu, tiek apvienoti kopā, izveidojot vienu laukumu.    
+    </p>
+    <p>Jūs varat kontrolēt, kuras robežas tiek apvienotas, norādot lauku. Piemēram, ja jums ir apgabalu slānis un katram slānim ir atribūts  <i>State_Name</i>, varat noņemt robežas, lietojot atribūtu <i>State_Name</i>.  Apgabali, kas pieskaras, tiks apvienoti, ja tiem ir tāda pati <i>State_Name</i> vērtība.  Rezultāts ir robežu slānis.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Izvēlieties apgabala slāni, kura robežas tiks noņemtas</h2></div>
+        <hr/>
+        <div>
+            <p>Slānis, kas satur apgabala elementus, kuri tiks noņemti.
+
+            </p>
+            <p>Papildus slāņa izvēlei no kartes varat atlasīt  <b>Izvēlēties Living Atlas analīzes slāni</b> nolaižamā saraksta apak&scaron;ā. Tādējādi tiek atvērta galerija, kurā ir daudzām analīzēm noderīgu slāņu galerija. 
+            </p>
+        </div>
+    </div>
+    <div id="DissolveFields">
+        <div><h2>Izvēlieties nojaukšanas metodi</h2></div>
+        <hr/>
+        <div>
+            <p>Varat izvēlēties vienu no divām metodēm, lai apvienotu apgabala elementus:
+                <ul>
+                    <li> <b>Apgabali, kas daļēji apklājas vai atrodas kaimiņos</b>&nbsp;&mdash; divi vai vairāki apgabali, kuru robežas savstarpēji pārklājas tiks apvienotas vienā apgabalā.  Papildus, areāli, kas atrodas kaimiņos (tas ir, tiem ir kopēja robeža), tiks apvienoti vienā areālā.
+                    </li>
+                    <li> <b>Apgabali ar vienādu lauku vērtību</b>&nbsp;&mdash; apgabali, kas daļēji pārklājas vai kuriem ir kopēja robeža, tiks apvienoti vienā apgabalā, ja tiem ir vienādas lauku vērtības.
+                        <p>Piemēram, ja jums ir apgabalu slānis un katram slānim ir atribūts  <i>State_Name</i>, varat noņemt robežas, lietojot lauku <i>State_Name</i>.  Apgabali, kas pieskaras, tiks apvienoti, ja tiem ir tāda pati <i>State_Name</i> vērtība.  Rezultāts ir robežu slānis.
+                        </p>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Ja ir atzīmēta izvēles rūtiņa  <b>Lietot pa&scaron;reizējo kartes pārklājumu</b>, tiks noņemti tikai ievades slāņa redzamās daļas elementi pa&scaron;reizējā kartes pārklājumā.  Ja nav atzīmēts, visi elementi ievades slānī tiks noņemti, arī pa&scaron;reizējā kartes pārklājuma ārpusē.
+            </p>
+        </div>
+    </div>
+    <div id="SummaryFields">
+        <div><h2>Pievienot statistiku</h2></div>
+        <hr/>
+        <div>
+            <p>Ja areāli ir apvienoti, jūs varat apkopot to atribūtus. Piemēram, ja tiek noņemta robeža starp apgabaliem, pamatojoties uz  <i>State_Name</i>, un katram apgabalam ir lauks <i>Iedzīvotāji</i>, varat aprēķināt vienuma <i>Iedzīvotāji</i> summu &scaron;ai valstij.
+            </p>
+            <p>Pieejamie statistikas tipi ir:
+            </p>
+            <ul>
+                <li> <b>Summa</b>&nbsp;&mdash; pievieno kopējo vērtību norādītajam laukam
+                    
+
+                </li>
+                <li> <b>Vidējais</b>&nbsp;&mdash; aprēķina norādītā lauka vidējo vērtību
+                    
+
+                </li>
+                <li> <b>Minimums</b>&nbsp;&mdash; atrod mazāko vērtību visiem norādītā lauka ierakstiem
+                    
+
+                </li>
+                <li> <b>Maksimums</b>&nbsp;&mdash; atrod lielāko vērtību visiem norādītā lauka ierakstiem
+                    
+
+                </li>
+                <li> <b>Standarta Novirze</b>&nbsp;&mdash; atrod standarta novirzi norādītā lauka vērtībām
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="OutputName">
+        <div><h2>Rezultāta slāņa nosaukums</h2></div>
+        <hr/>
+        <div>
+            <p>Tas ir slāņa nosaukuns, kas tiks izveidots  <b>Mans saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja slānis jau pastāv, jums tiks lūgts norādīt citu nosaukumu.
+            </p>
+            <p>Lietojot  <b>Saglabāt rezultātus</b> nolaižamajā sarakstlodziņā, jūs varat norādīt nosaukumu mapē <b>Mans saturs</b>, kur tiks saglabāti rezultāti.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

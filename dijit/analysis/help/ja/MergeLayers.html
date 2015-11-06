@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>レイヤのマージ</h2><p/>
+        <h2><img src="../images/GUID-BDDD6517-4EE7-4EEC-AE15-15DD9B709131-web.png" alt="レイヤーのマージ"></h2>
+        <hr/>
+    <p>このツールは、2 つのレイヤのフィーチャを 1 つの新しいレイヤにコピーします。マージされるすべてのレイヤは、同じフィーチャ タイプ（ポイント、ライン、エリア）を含んでいる必要があります。入力レイヤのフィールドを結合およびコピーする方法を制御できます。次に例を示します。
+        <ul>
+            <li>イングランド、ウェールズ、スコットランドの 3 つのレイヤから、1 つのイギリスのレイヤを作成する。 
+            </li>
+            <li>12 のレイヤがあり、それぞれに隣接するタウンシップの土地区画情報が含まれている。これらを 1 つのレイヤに結合し、12 の入力レイヤで同じ名前とタイプを持つフィールドだけを保持する。
+            </li>
+        </ul>
+        
+    </p>
+    <p> <b>[現在のマップ範囲を使用]</b> がオンの場合、現在のマップ範囲に表示されるフィーチャだけがマージされます。 オフの場合、両方のレイヤ内にあるすべてのフィーチャが、現在のマップ範囲内になくてもマージされます。
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>レイヤの選択</h2></div>
+        <hr/>
+        <div>
+            <p>下記のレイヤーにマージするポイント フィーチャ、ライン フィーチャ、またはエリア フィーチャ。
+
+            </p>
+        </div>
+    </div>
+    <div id="MergeLayer">
+        <div><h2>マージするレイヤーの選択</h2></div>
+        <hr/>
+        <div>
+            <p>最初のレイヤーにマージするレイヤーを選択します。
+            </p>
+        </div>
+    </div>
+    <div id="MergingAttributes">
+        <div><h2>マージするフィールドの変更</h2></div>
+        <hr/>
+        <div>
+            <p>デフォルトでは、入力レイヤのすべてのフィールドが出力レイヤに引き継がれます。フィールドを出力レイヤに引き継ぐ方法は、次のように変更できます。フィールドを出力に引き継ぐ方法は、次のように変更できます。
+                <ul>
+                    <li> <b>[名前変更]</b> - フィールド名を変更して、出力レイヤーに追加します。
+                    </li>
+                    <li> <b>[削除]</b> - フィールドを出力レイヤーから削除します。
+                    </li>
+                    <li> <b>[一致]</b> - フィールド名をマージ先レイヤーのフィールド名と同じ名前にします。 マージされるレイヤのフィールドの値は、一致させる出力フィールドにコピーされます。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="OutputName">
+        <div><h2>結果レイヤの名前</h2></div>
+        <hr/>
+        <div>
+            <p>これは、 <b>[マイ コンテンツ]</b> で作成され、マップに追加されるレイヤーの名前です。  デフォルト名は、ツール名と入力レイヤー名に基づいて設定されます。 レイヤーがすでに存在する場合は、別の名前を設定するよう求められます。
+            </p>
+            <p>Using the  <b>[出力の保存先]</b>ドロップダウン ボックスを使用して、結果を保存する <b>[マイ コンテンツ]</b> 内のフォルダーの名前を指定できます。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

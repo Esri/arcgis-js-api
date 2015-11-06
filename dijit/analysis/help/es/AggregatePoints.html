@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpId;
+                helpId = window.location.hash.substring(1);
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Consolidar puntos</h2><p/>
+        <h2><img src="../images/GUID-60C59C66-3038-4D0E-8F6A-EC6C53FEAA02-web.png" alt="Agregar puntos"></h2>
+        <hr/>
+    <p>Esta herramienta funciona con una capa de entidades de puntos y una capa de entidades de &aacute;rea. Primero, determina los puntos que se encuentran dentro de cada &aacute;rea. Despu&eacute;s de determinar esta relaci&oacute;n espacial de punto en &aacute;rea, se calculan las estad&iacute;sticas sobre los puntos del &aacute;rea y se asignan al &aacute;rea. La estad&iacute;stica m&aacute;s b&aacute;sica es el recuento del n&uacute;mero de puntos dentro del &aacute;rea, pero se pueden obtener tambi&eacute;n otras estad&iacute;sticas. 
+    </p>
+    <p>Por ejemplo, sup&oacute;n que tienes entidades de puntos de ubicaciones de cafeter&iacute;as y entidades de &aacute;rea de condados, y que deseas resumir las ventas de caf&eacute; por condado. Suponiendo que las cafeter&iacute;as tengan un atributo  <i>TOTAL_SALES</i>, puedes obtener la suma de todas las <i>TOTAL_SALES</i> dentro de cada condado, los valores m&iacute;nimo o m&aacute;ximo de <i>TOTAL_SALES</i>
+ dentro de cada condado, o la desviaci&oacute;n est&aacute;ndar de todas las ventas dentro de cada condado.
+    </p>
+    <p>El resultado es un mapa en el que el color de cada &aacute;rea se basa en el n&uacute;mero total de puntos divididos por el tama&ntilde;o del &aacute;rea. La divisi&oacute;n de recuentos por &aacute;rea se conoce como normalizaci&oacute;n y es una t&eacute;cnica que los cart&oacute;grafos emplean siempre para mostrar los datos por &aacute;reas. La normalizaci&oacute;n ayuda a entender mejor los patrones espaciales porque el tama&ntilde;o del &aacute;rea se tiene en cuenta cuando las &aacute;reas se comparan visualmente entre s&iacute;.
+    </p>
+    <p>Si se ha activado  <b>Utilizar la extensi&oacute;n del mapa actual</b>, solo se analizar&aacute;n las entidades de la capa de &aacute;reas y de la capa de puntos de entrada que est&aacute;n visibles en la extensi&oacute;n de mapa actual.  Si la opci&oacute;n est&aacute; desactivada, se analizar&aacute;n todas las entidades de la capa de &aacute;reas y de la capa de puntos de entrada, aunque est&eacute;n fuera de la extensi&oacute;n de mapa actual.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="pointLayer">
+        <div><h2>Elegir la capa que contiene los puntos que se deben agregar a las áreas</h2></div>
+        <hr/>
+        <div>
+            <p>La capa de puntos que se agregar&aacute;n a las &aacute;reas.
+            </p>
+            <p>Adem&aacute;s de elegir una capa en el mapa, puedes seleccionar  <b>Elegir capa de an&aacute;lisis de atlas vivo</b>, que se encuentra al final de la lista desplegable. Esto abre una galer&iacute;a que contiene un conjunto de capas que resultan &uacute;tiles para numerosos an&aacute;lisis. 
+            </p>
+        </div>
+    </div>
+    <div id="polygonLayer">
+        <div><h2>Elegir la capa que contiene áreas de agregación</h2></div>
+        <hr/>
+        <div>
+            <p>La capa de &aacute;reas en la que se agregar&aacute;n los puntos. Todos los puntos contenidos en los l&iacute;mites de las &aacute;reas de esta capa se contar&aacute;n y se podr&aacute;n resumir usando las opciones de estad&iacute;sticas que hayas elegido.
+            </p>
+            <p>Adem&aacute;s de elegir una capa en el mapa, puedes seleccionar  <b>Elegir capa de an&aacute;lisis de atlas vivo</b>, que se encuentra al final de la lista desplegable. Esto abre una galer&iacute;a que contiene un conjunto de capas que resultan &uacute;tiles para numerosos an&aacute;lisis. 
+            </p>
+        </div>
+    </div>
+    <div id="KeepBoundaryNoPoints">
+        <div><h2>Mantener áreas sin puntos</h2></div>
+        <hr/>
+        <div>
+            <p>Determina si las &aacute;reas que no contienen puntos aparecen en la capa de resultados. Si est&aacute; desactivada, las &aacute;reas sin puntos no aparecer&aacute;n en el resultado. Si est&aacute; activada, las &aacute;reas sin puntos aparecer&aacute;n en el resultado.  
+            </p>
+        </div>
+    </div>
+    <div id="SummaryFields">
+        <div><h2>Agregar estadísticas</h2></div>
+        <hr/>
+        <div>
+            <p>Puedes calcular estad&iacute;sticas sobre los atributos de la capa de puntos de entrada, como suma, valor medio, m&iacute;nimo, m&aacute;ximo y desviaci&oacute;n est&aacute;ndar. La capa de resultados contendr&aacute; un nuevo atributo para cada estad&iacute;stica calculada. Puedes agregar cualquier n&uacute;mero de estad&iacute;sticas eligiendo un atributo y una estad&iacute;stica (aparecer&aacute; un nuevo cuadro desplegable).
+ 
+            </p>
+        </div>
+    </div>
+    <div id="GroupByField">
+        <div><h2>Seleccionar campo para agrupar</h2></div>
+        <hr/>
+        <div>
+            <p> Puedes crear grupos estad&iacute;sticos usando un atributo en la capa de puntos de entrada.    Por ejemplo, si has agregado cr&iacute;menes en los l&iacute;mites de la vecindad, es posible que tengas un atributo <i>Crime_type</i> con cinco tipos de cr&iacute;menes distintos.  Cada tipo de crimen &uacute;nico constituye un grupo y las estad&iacute;sticas que elijas se calcular&aacute;n para cada valor &uacute;nico de <i>Crime_type</i>.  Las estad&iacute;sticas de cada grupo, as&iacute; como el recuento de puntos, se mostrar&aacute;n en la ventana emergente de la capa de resultados. Cuando elijas un atributo de agrupaci&oacute;n, se crean dos resultados: la capa de resultados y una tabla de resultados que contiene las estad&iacute;sticas de cada grupo &uacute;nico.
+            </p>
+        </div>
+    </div>
+    <div id="MinorityMajority">
+        <div><h2>Agregar minoría, mayoría</h2></div>
+        <hr/>
+        <div>
+            <p>Esta casilla de verificaci&oacute;n est&aacute; habilitada cuando se selecciona un campo por el que agrupar. Si quieres saber qu&eacute; valores de atributo son minor&iacute;a (menos dominantes) en cada grupo o cu&aacute;les son mayor&iacute;a (m&aacute;s dominantes) en cada l&iacute;mite, activa la casilla  <b>Agregar minor&iacute;a, mayor&iacute;a</b>.   Al activar la casilla <b>Agregar minor&iacute;a, mayor&iacute;a</b>, se agregar&aacute;n dos campos nuevos a la capa resultante.   Al activar tambi&eacute;n la casilla <b>Agregar porcentajes</b>, se agregan dos campos adicionales a la capa resultante, que contienen los porcentajes de los valores de atributo de mayor&iacute;a y de minor&iacute;a dentro de cada grupo.
+            </p>
+            <p>Por ejemplo, si eres urbanista y quieres saber qu&eacute; especies de &aacute;rboles son una minor&iacute;a y cu&aacute;les son mayor&iacute;a en los parques de la ciudad, agrega los datos de &aacute;rboles en las &aacute;reas de parques y marca esta casilla.
+            </p>
+        </div>
+    </div>
+    <div id="PercentPoints">
+        <div><h2>Agregar porcentajes</h2></div>
+        <hr/>
+        <div>
+            <p>Esta casilla de verificaci&oacute;n est&aacute; habilitada cuando se selecciona un campo por el que agrupar. Selecciona  <b>Agregar porcentajes</b> si quieres obtener el porcentaje de cada valor de atributo en cada grupo. Se agregar&aacute; un nuevo campo a la tabla de resultados, que contiene los porcentajes de cada valor de atributo en cada grupo. Si se activa tambi&eacute;n la casilla <b>Agregar minor&iacute;a, mayor&iacute;a</b>, se agregan dos campos adicionales a la capa resultante, que contienen los porcentajes de los valores de atributo de mayor&iacute;a y de minor&iacute;a dentro de cada grupo.
+            </p>
+        </div>
+    </div>
+    <div id="OutputLayer">
+        <div><h2>Nombre de capa de resultados</h2></div>
+        <hr/>
+        <div>
+            <p>Este es el nombre de la capa que se crear&aacute; en  <b>Mi contenido</b> y se agregar&aacute; al mapa.  El nombre predeterminado se basa en nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, se te pedir&aacute; que indiques otro nombre.
+            </p>
+            <p>En el cuadro desplegable  <b>Guardar el resultado en</b>, puedes especificar el nombre de una carpeta de <b>Mi contenido</b> en la que se guardar&aacute; el resultado.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

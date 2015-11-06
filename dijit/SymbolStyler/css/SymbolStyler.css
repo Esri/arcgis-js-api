@@ -1,0 +1,256 @@
+.esriSymbolStyler {
+  width: 236px;
+  font-family: "Avenir LT W01 65 Medium", Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  color: #4d4d4d;
+  position: relative;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.esriSymbolStyler .esriLink {
+  margin: 8px 0;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.esriSymbolStyler .esriLink .dijitButtonText {
+  padding: 0;
+  text-decoration: underline;
+}
+
+.esriSymbolStyler .esriSymbolPreview {
+  margin: auto auto 10px;
+  transition: background-color .25s;
+}
+
+.esriSymbolStyler .esriSymbolPreview.esriAlt {
+  background-color: #ddd;
+  padding: 2px;
+}
+
+.esriSymbolStyler .esriMarkerSymbolPicker {
+  width: auto;
+}
+
+.esriSymbolStyler .esriInlineInput .dijitDisabled + .esriText {
+  opacity: 0.5;
+}
+
+.esriSymbolStyler .esriColorPicker {
+  width: 100%;
+}
+
+.esriSymbolStyler .esriColorPicker.esriContainer {
+  border: none;
+  padding: 0;
+}
+
+.esriSymbolStyler .esriColorPicker .esriSwatch {
+  width: 18px;
+  height: 18px;
+}
+
+.esriSymbolStyler .esriColorPicker .esriHeader {
+  display: none;
+}
+
+.esriSymbolStyler .esriColorPicker .esriFooter {
+  margin-bottom: 0;
+}
+
+.esriSymbolStyler .esriColorPicker .esriSection:first-child {
+  margin-top: 0;
+}
+
+.esriSymbolStyler .esriContent {
+  height: 100%;
+}
+
+.esriSymbolStyler .esriTabBar {
+  display: block;
+  margin: 10px 0;
+  white-space: nowrap;
+}
+
+.esriSymbolStyler .esriTabBar .dijitToggleButton {
+  background: none;
+  color: #4d4d4d;
+  font-size: 11px;
+  padding: 4px 10px;
+  border: none;
+  box-shadow: none;
+  text-transform: uppercase;
+}
+
+.esriSymbolStyler .esriTabBar .dijitDisabled .dijitButtonNode,
+.esriSymbolStyler .esriTabBar .dijitDisabled .dijitButtonContents,
+.esriSymbolStyler .esriTabBar .dijitDisabled .dijitButtonText {
+  cursor: auto;
+  color: #c3c3c3;
+}
+
+.esriSymbolStyler .esriTabBar .dijitToggleButtonChecked {
+  background-color: #CEE7F8;
+  border-radius: 4px;
+}
+
+.esriSymbolStyler .esriLabel {
+  margin: 10px 0 4px;
+}
+
+.esriSymbolStyler .esriColorPicker .esriHorizontalSlider .dijitRuleContainer {
+  padding: 10px 0 14px;
+}
+
+.esriSymbolStyler .esriSymbolSizeInput .esriHorizontalSlider,
+.esriSymbolStyler .esriLineWidthInput .esriHorizontalSlider {
+  width: 68%;
+}
+
+.esriSymbolStyler .esriInlineInput {
+  white-space: nowrap;
+}
+
+.esriSymbolStyler .esriInlineInput .esriHorizontalSlider,
+.esriSymbolStyler .esriInlineInput .dijitTextBox {
+  display: inline-block;
+}
+
+.esriSymbolStyler .esriInlineInput .dijitTextBox {
+  width: 4.2em;
+  margin: 0 4px;
+}
+
+.esriSymbolStyler .esriLinePatternInput .dijitButtonContents {
+  width: 100%;
+}
+
+.esriSymbolStyler .esriLinePatternInput {
+  margin: 0;
+}
+
+.esriSymbolStyler .esriLabel.esriDisabled,
+.esriSymbolStyler .esriLinePatternInput.dijitDisabled {
+  opacity: 0.6;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+}
+
+.esriSymbolStyler .esriLinePatternInput .dijitButtonText {
+  padding: 0;
+}
+
+.esriSymbolStylerMenu.esriLinePatternInputMenu .dijitMenuItemIconCell {
+  margin: 0 2px;
+}
+
+.esriSymbolStylerMenu.esriLinePatternInputMenu .dijitMenuItemIcon {
+  width: 100%;
+  display: block;
+}
+
+.esriSymbolStylerMenu.esriLinePatternInputMenu .dijitMenuArrowCell,
+.esriSymbolStylerMenu.esriLinePatternInputMenu .dijitMenuItemLabel {
+  display: none;
+}
+
+.esriSymbolStylerMenu.esriLinePatternInputMenu .dijitMenuItemLabel .dijitSelect {
+  padding: 0;
+  margin: 0 5px;
+}
+
+.esriSymbolStyler .esriLinePattern,
+.esriSymbolStylerMenu .esriLinePattern {
+  background: url("../images/line-patterns.png") repeat-x;
+  height: 15px;
+  width: 100%;
+}
+
+.esriSymbolStyler .solid,
+.esriSymbolStylerMenu .solid {
+  background-position: 0 0;
+}
+
+.esriSymbolStyler .dot,
+.esriSymbolStylerMenu .dot {
+  background-position: 0 -15px;
+}
+
+.esriSymbolStyler .dash,
+.esriSymbolStylerMenu .dash {
+  background-position: 0 -30px;
+}
+
+.esriSymbolStyler .dashdot,
+.esriSymbolStylerMenu .dashdot {
+  background-position: 0 -45px;
+}
+
+.esriSymbolStyler .dashdotdot,
+.esriSymbolStylerMenu .dashdotdot {
+  background-position: 0 -60px;
+}
+
+.esriSymbolStyler .esriSymbolPreviewContainer {
+  text-align: center;
+}
+
+.esriSymbolStyler .esriTabBar .dijitToggleButton {
+  vertical-align: middle;
+}
+
+.esriSymbolStyler .esriAddIcon {
+  background: url("../images/add.png") no-repeat;
+  background-size: 18px;
+  height: 18px;
+  width: 18px;
+}
+
+.esriSymbolStyler .dijitDisabled .addIcon {
+  cursor: auto;
+}
+
+.esriSymbolStyler .dijitLayoutContainer,
+.esriSymbolStyler .dijitContentPane {
+  padding: 0;
+  overflow: visible;
+}
+
+.esriSymbolStyler .esriSymbolPreviewContainer ~ .esriTabBar .dijitButton .dijitButtonNode,
+.esriSymbolStyler .esriSymbolPreviewContainer ~ .esriContent .dijitButton .dijitButtonNode,
+.esriSymbolStyler .esriSymbolPreviewContainer ~ .dijitContentPane .dijitButton .dijitButtonNode,
+.esriSymbolStyler .esriSymbolPreviewContainer ~ .esriTabBar .dijitToggleButton .dijitButtonNode,
+.esriSymbolStyler .esriSymbolPreviewContainer ~ .esriContent .dijitToggleButton .dijitButtonNode,
+.esriSymbolStyler .esriSymbolPreviewContainer ~ .dijitContentPane .dijitToggleButton .dijitButtonNode {
+  box-shadow: none;
+  border: none;
+  padding: 0;
+  background: none;
+}
+
+.esriSymbolStyler .esriErrorDisplay {
+  padding: 8px 0 4px 0;
+}
+
+.esriSymbolStyler .esriShapeImageUrlContainer .esriUrlInput {
+  width: 80%;
+}
+
+.esriSymbolStyler .esriShapeImageUrlContainer .esriErrorDisplay {
+  color: #aaa;
+}
+
+.esriSymbolStyler .esriHidden {
+  display: none;
+}
+
+.esriSymbolStyler .esriColorRampPicker .esriViewport {
+  width: 200px;
+}
+
+.esriSymbolStyler .dijitCheckBox + .esriLabel {
+  margin-left: 4px;
+  margin-right: 4px;
+  vertical-align: middle;
+}
