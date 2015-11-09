@@ -33,7 +33,7 @@ This repo has dependencies on the following repos.
 | xstyle | https://github.com/Esri/xstyle/tree/0.1.3-esri | /xstyle |
 | put-selector | https://github.com/kriszyp/put-selector | /put-selector |
 
-Please see our [recommended guide](https://github.com/Esri/jsapi-resources/bower).
+Please see our [recommended guide](https://github.com/Esri/jsapi-resources/tree/master/bower).
 
 ## Resources
 
