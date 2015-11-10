@@ -1,27 +1,3 @@
-// COPYRIGHT © 2015 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 'use strict';var fa;
 (function(ha){function L(c){return r.Lb.zL(c)}function P(c){return null===c?null:void 0!==c.wkt?r.Yg.EL(c.wkt):void 0!==c.wkid?r.Yg.create(c.wkid):null}function O(c){if(null===c||void 0===c||c.l())return null;switch(c.t()){case r.h.Point:return{x:c.dk(),y:c.ek()};case r.h.Polygon:return{rings:ga(c)};case r.h.Polyline:return{paths:ga(c)};case r.h.MultiPoint:var p=c.hasAttribute(r.Qj.M);c.hasAttribute(r.Qj.Z)&&c.dc(r.Qj.Z);p&&c.dc(r.Qj.M);for(var p=new r.b,g=c.u(),b=[],a=0;a<g;a++)c.p(a,p),b.push([p.x,
 p.y]);return{points:b};case r.h.Envelope:return{xmin:c.I.o,ymin:c.I.s,xmax:c.I.r,ymax:c.I.v}}return null}function ga(c){var p=c.hasAttribute(r.Qj.Z),g=c.hasAttribute(r.Qj.M),b=[],a=c.X(),e=null,d=null;p&&(e=c.dc(r.Qj.Z));g&&(d=c.dc(r.Qj.M));for(var f=new r.b,h=0;h<a;h++){for(var k=c.xa(h),m=c.Aa(h),l=0,v=0,q=NaN,n=NaN,t=NaN,u=NaN,x=c.mc(h),w=[],H=k;H<k+m;H++){c.p(H,f);var u=t=NaN,D=[f.x,f.y];p&&(t=e.get(H),D.push(t));g&&(a=d.get(H),D.push(u));H==k&&x&&(l=f.x,v=f.y,q=t,n=u);w.push(D)}!x||l==f.x&&v==
