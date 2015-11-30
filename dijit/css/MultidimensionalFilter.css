@@ -5,6 +5,14 @@ div.esriMultidimensionalFilterContainer {
   font-size: 12px;  
 }
 
+.esriMultidimensionalFilterDimensionFilterGrid {
+  margin-top:-10px;
+}
+
+.esriMultidimensionalFilterDimensionHeadingLabelTd {
+  padding-top:5px;
+}
+
 .esriMultidimensionalFilterHeadingLabel {
   font-weight:bold;
   padding-bottom:10px;
@@ -16,13 +24,13 @@ div.esriMultidimensionalFilterContainer {
 }
 
 .esriMultidimensionalFilterItemTable {
-    table-layout:fixed;
-    border-collapse: separate;
-    text-align: left;
-    border-spacing: 0px 10px;
-    width: 100%;
-    max-width: 400px;
-    margin-top: -10px;
+  table-layout:fixed;
+  border-collapse: separate;
+  text-align: left;
+  border-spacing: 0px 10px;
+  width: 100%;
+  max-width: 400px;
+  margin-top: -10px;
 }
 
 .esriMultidimensionalFilterCol1 {
@@ -38,29 +46,42 @@ div.esriMultidimensionalFilterContainer {
 }
 
 .esriMultidimensionalFilterInfoDiv {
-    cursor:pointer;
-    background-position:center bottom;
-    background-repeat:no-repeat;
-    display:inline-block;
-    background-image:url(../images/infoimg.png);
-    width: 16px;
-    height: 16px;
-    position: relative;
-    top: 2px;
+  cursor:pointer;
+  background-position:center bottom;
+  background-repeat:no-repeat;
+  display:inline-block;
+  background-image:url(../images/infoimg.png);
+  width: 16px;
+  height: 16px;
+  position: relative;
+  top: 2px;
+}
+
+.esriMultidimensionalFilterRangeInfoDiv {
+  cursor:pointer;
+  background-position:center bottom;
+  background-repeat:no-repeat;
+  display:inline-block;
+  background-image:url(../images/infoimg.png);
+  width: 16px;
+  height: 16px;
+  position: relative;
+  top: 2px;
+  visibility:hidden;
 }
 
 .esriMultidimensionalFilterVariableList {
-    margin:0px;
-    width: 99%;
+  margin:0px;
+  width: 99%;
 }
 
 .esriMultidimensionalFilterTable {
-    table-layout:fixed;
-    border-collapse: separate;
-    text-align: left;
-    border-spacing: 0px 10px;
-    width: 100%;
-    max-width: 400px;
+  table-layout:fixed;
+  border-collapse: separate;
+  text-align: left;
+  border-spacing: 0px 10px;
+  width: 100%;
+  max-width: 400px;
 }
 
 .esriMultidimensionalFilterVariableList .dijitReset {
@@ -92,47 +113,46 @@ div.esriMultidimensionalFilterContainer {
 }
 
 .esriMultidimensionalFilterItemTable .dijitButtonNode {
-    border-style: none !important;
+  border-style: none !important;
 }
 
 .esriMultidimensionalFilterDimensionText {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .esriMultidimensionalFilterInfoTooltip { 
-    font-size: 11px!important;
+  font-size: 11px!important;
 }
 
 .esriMultidimensionalFilterTooltipLeftText {
-    font-style: italic;
+  font-style: italic;
 }
 
 .esriMultidimensionalFilterTooltipDisabledDimensionText {
-    color:#5daddd;
-    font-weight:bold
+  color:#5daddd;
+  font-weight:bold;
 }
 
 div.esriMultidimensionalFilterContainer .dijitComboBox.dijitDateTextBox .dijitArrowButton .dijitArrowButtonInner {
-    margin-top:3px!important;
+  margin-top:3px!important;
 }
 
 div.esriMultidimensionalFilterContainer .tsButton { 
-    width:14px; 
-    height:20px;
-    padding:0px !important;
-    margin:0px !important;
-    zoom: 0.8;
-    cursor: pointer;
-    background-repeat:no-repeat;
-    background-image:url(../images/spriteTime.png) 
+  width:14px; 
+  height:20px;
+  padding:0px !important;
+  margin:0px !important;
+  zoom: 0.8;
+  background-repeat:no-repeat;
+  background-image:url(../images/spriteTime.png);
 }
 
 div.esriMultidimensionalFilterContainer .dijitButton {
-    margin : 0px !important;
+  margin : 0px !important;
 }
 
 div.esriMultidimensionalFilterContainer .dijitButtonNode {
-    background: white;
+  background: white;
 }
 
 div.esriMultidimensionalFilterContainer .tsPrevButton { background-position  : -157px 0px;}
@@ -140,14 +160,40 @@ div.esriMultidimensionalFilterContainer .tsNextButton { background-position  : -
 div.esriMultidimensionalFilterContainer .tsStartButton { background-position  : -65px 0px;}
 div.esriMultidimensionalFilterContainer .tsEndButton { background-position  : -95px 0px; }
 
-div.esriConnectorLine {
+.esriMultidimensionalFilterSelectorDiv {
+  position:relative;
+  display:inline;
+}
+
+.esriTimeSelectDisplayNone {
   display: none;
 }
 
-.esriMultidimensionalFilterInfoHidden {
+.esriDomHide {
+  display: none;
+}
+
+.esriRowShow {
+  display: table-row;
+}
+
+.esriInlineShow {
+  display: inline;
+}
+
+.esriDisabled {
+  color : #969696;
+}
+
+.esriEnabled {
+  color : #000000;
+}
+
+.esriRangeInfoVisible {
+  visibility: visible;
+}
+
+.esriRangeInfoHide {
   visibility: hidden;
 }
 
-.esriMultidimensionalFilterInfoVisible {
-  visibility: visible;
-}

@@ -21,5 +21,4 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 define({documentTypes:{data:{caption:"GEMINI (dati)",description:""},service:{caption:"GEMINI (serviss)",description:""}},LanguageCode:{eng:"Angļu",cym:"Velsiešu",gle:"Gēlu (īru)",gla:"Gēlu (skotu)",cor:"Korniešu",sco:"Ulsteras reģiona skoti"},verticalCRS:{reference:"Atsauce (piemēram, urn:ogc:def:crs:EPSG::5701 )"}});

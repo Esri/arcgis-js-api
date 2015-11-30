@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -26,9 +44,9 @@
         <h2>Matymo lauko kūrimas</h2><p/>
         <h2><img src="../images/GUID-491E9A75-30CC-4526-9F71-E47FD25536DE-web.png" alt="Matymo lauko kūrimas"></h2>
         <hr/>
-    <p>Įrankis Kurti matymo lauką sukuria plotus, kuriose stebėtojas gali matyti ant žemės esančius objektus. Įvesties stebėjimo ta&scaron;kai gali būti stebėtojai (pvz., žmonės ant žemės arba stebėtojai ugniagesių bok&scaron;telyje) arba stebėjimo objektai (pvz., vėjo jėgainės, vandens bok&scaron;tai, transporto priemonės arba kiti žmonės). Rezultatų plotai yra tie plotai, kuriose stebėtojai gali matyti stebimus objektus ir atvirk&scaron;čiai: stebimi objektai gali matyti stebėtojus.
+    <p>Įrankis Kurti matymo lauką sukuria plotus, kuriose stebėtojas gali matyti ant žemės esančius objektus. Įvesties stebėjimo ta&scaron;kai gali būti stebėtojai (pvz., žmonės ant žemės arba stebėtojai ugniagesių bok&scaron;telyje) arba stebėjimo objektai (pvz., vėjo jėgainės, vandens bok&scaron;tai, transporto priemonės arba kiti žmonės). Rezultatų plotai yra tie plotai, kuriuose stebėtojai gali matyti stebimus objektus ir atvirk&scaron;čiai: stebimi objektai gali matyti stebėtojus.
     </p>
-    <p>Tiek stebėtojams, tiek stebimiems objektams gali būti nurodytas aukstis vir&scaron; žemės, auk&scaron;tis yra naudojamas nustatant matomumą. Pavyzdžiui, matymo laukas, apskaičiuotas 120 m vėjo jėgainei ir 1.8 m ūgio ant žemės stovintiems žmonėms, paprastai bus platesnis nei matymo laukas, apskaičiuotas 60 m jėgainėms ir 1.8 m ūgio žmonėms.
+    <p>Tiek stebėtojams, tiek stebimiems objektams gali būti nurodytas auk&scaron;tis vir&scaron; žemės, auk&scaron;tis yra naudojamas nustatant matomumą. Pavyzdžiui, matymo laukas, apskaičiuotas 120 m vėjo jėgainei ir 1.8 m ūgio ant žemės stovintiems žmonėms, paprastai bus platesnis nei matymo laukas, apskaičiuotas 60 m jėgainėms ir 1.8 m ūgio žmonėms.
     </p>
     <p>Atminkite, kad skaičiuojant matymo lauką nekreipiamas dėmesys į trukdančius objektus, pvz., medžius ar pastatus. Įsivaizduokite, kad skaičiuojant matoma tik plika žemė be nieko, i&scaron;skyrus stebėtoją ir stebimus objektus.
     </p>
@@ -42,10 +60,9 @@
         <div><h2>Taškų ypatybės, nurodančios stebėjimo vietoves</h2></div>
         <hr/>
         <div>
-            <p>Ta&scaron;kai, kuriuos galima naudoti kaip stebėjimo vietas.
-
+            <p>Ta&scaron;kai, kuriuos galima naudoti kaip stebėjimo vietas. 
             </p>
-            <p>Pasirinkę sluoksnį žemėlapyje, galite pasirinkti  <b>Pasirinkite Gyvojo pasaulio atlaso analizės sluoksnį</b>, kurį rasite i&scaron;plečiamo sąra&scaron;o apačioje. &Scaron;i parinktis atidarys galeriją, kurioje yra kolekcija sluoksnių, naudingų daugeliui analizių. 
+            <p class="OnlineOnly">Pasirinkę sluoksnį žemėlapyje, galite pasirinkti  <b>Pasirinkite Gyvojo pasaulio atlaso analizės sluoksnį</b>, kurį rasite i&scaron;plečiamo sąra&scaron;o apačioje. &Scaron;i parinktis atidarys galeriją, kurioje yra kolekcija sluoksnių, naudingų daugeliui analizių. 
             </p>
         </div>
     </div>

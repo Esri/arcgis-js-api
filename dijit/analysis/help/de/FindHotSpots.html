@@ -7,46 +7,61 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Hot Spots suchen</h2><p/>
-        <h2><img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" alt="Hot Spots suchen"></h2>
+        <h2>Hot-Spots suchen</h2><p/>
+        <h2><img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" alt="Hot-Spots suchen"></h2>
         <hr/>
-    <p>Das Werkzeug &quot;Hot Spots suchen&quot; ermittelt, ob die r&auml;umlichen Muster in den Daten eine statistisch signifikante Cluster-Bildung aufweisen.
- 
+    <p>Das Werkzeug &quot;Hot-Spots suchen&quot; ermittelt, ob die r&auml;umlichen Muster in den Daten eine statistisch signifikante Cluster-Bildung aufweisen. 
         <ul>
-            <li>Sind Ihre Punkte (Verbrechensf&auml;lle, B&auml;ume, Verkehrsunf&auml;lle) wirklich geclustert?Wie kann dies sichergestellt werden?
+            <li>Sind Ihre Punkte (Verbrechensf&auml;lle, B&auml;ume, Verkehrsunf&auml;lle) wirklich geclustert? Wie kann dies sichergestellt werden?
             </li>
-            <li>Haben Sie wirklich einen statistisch signifikanten Hot Spot (f&uuml;r Ausgaben, Kindersterblichkeit, durchweg hohe Pr&uuml;fungsergebnisse) gefunden oder w&uuml;rde die Karte andere Informationen bereitstellen, wenn Sie die Art der Symbolisierung ge&auml;ndert h&auml;tten?
+            <li>Haben Sie wirklich einen statistisch signifikanten Hot-Spot (f&uuml;r Ausgaben, Kindersterblichkeit, durchweg hohe Pr&uuml;fungsergebnisse) gefunden oder w&uuml;rde die Karte andere Informationen bereitstellen, wenn Sie die Art der Symbolisierung ge&auml;ndert h&auml;tten?
             </li>
         </ul>
-        
-Mithilfe des Werkzeugs &quot;Hot Spots suchen&quot; k&ouml;nnen Sie diese Fragen mit Sicherheit beantworten.
+        Mithilfe des Werkzeugs &quot;Hot-Spots suchen&quot; k&ouml;nnen Sie diese Fragen mit Sicherheit beantworten.
     </p>
-    <p>Selbst zuf&auml;llige r&auml;umliche Muster weisen eine gewisse Cluster-Bildung auf. Zudem suchen unsere Augen und Gehirne naturgem&auml;&szlig; auch dann nach Mustern, wenn keine vorhanden sind. Demzufolge kann es schwierig sein, zu wissen, ob die Muster in den Daten das Ergebnis echter r&auml;umlicher Prozesse sind oder ob es sich lediglich um ein zuf&auml;lliges Ergebnis handelt. Aus diesem Grund verwenden Forscher und Analysten Methoden wie &quot;Hot Spots suchen&quot; (Getis-Ord Gi*), um r&auml;umliche Muster zu quantifizieren. Wenn Sie eine statistisch signifikante Cluster-Bildung in Ihren Daten finden, verf&uuml;gen Sie &uuml;ber wertvolle Informationen. Zu wissen, wo und wann Cluster-Bildung auftritt, kann wichtige Aufschl&uuml;sse &uuml;ber die Prozesse geben, die die Muster f&ouml;rdern, die Sie sehen. Zu wissen, dass die Anzahl der Wohnungseinbr&uuml;che in bestimmten Nachbarschaften beispielsweise st&auml;ndig h&ouml;her ausf&auml;llt, kann eine wichtige Rolle spielen, wenn Sie effektive Pr&auml;ventionsstrategien entwerfen, knappe Polizeikr&auml;fte verteilen, Nachbarschafts&uuml;berwachungsprogramme initiieren, strafrechtliche Ermittlungen durchf&uuml;hren oder potenzielle Verd&auml;chtige identifizieren m&uuml;ssen.   
+    <p>Selbst zuf&auml;llige r&auml;umliche Muster weisen eine gewisse Cluster-Bildung auf. Zudem suchen unsere Augen und Gehirne naturgem&auml;&szlig; auch dann nach Mustern, wenn keine vorhanden sind. Demzufolge kann es schwierig sein, zu wissen, ob die Muster in den Daten das Ergebnis echter r&auml;umlicher Prozesse sind oder ob es sich lediglich um ein zuf&auml;lliges Ergebnis handelt. Aus diesem Grund verwenden Forscher und Analysten Methoden wie &quot;Hot-Spots suchen&quot; (Getis-Ord Gi*), um r&auml;umliche Muster zu quantifizieren. Wenn Sie eine statistisch signifikante Cluster-Bildung in Ihren Daten finden, verf&uuml;gen Sie &uuml;ber wertvolle Informationen. Zu wissen, wo und wann Cluster-Bildung auftritt, kann wichtige Aufschl&uuml;sse &uuml;ber die Prozesse geben, die die Muster f&ouml;rdern, die Sie sehen. Zu wissen, dass die Anzahl der Wohnungseinbr&uuml;che in bestimmten Nachbarschaften beispielsweise st&auml;ndig h&ouml;her ausf&auml;llt, kann eine wichtige Rolle spielen, wenn Sie effektive Pr&auml;ventionsstrategien entwerfen, knappe Polizeikr&auml;fte verteilen, Nachbarschafts&uuml;berwachungsprogramme initiieren, strafrechtliche Ermittlungen durchf&uuml;hren oder potenzielle Verd&auml;chtige identifizieren m&uuml;ssen.   
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="analysisLayer">
-        <div><h2>Layer auswählen, für die Hot Spots berechnet werden</h2></div>
+        <div><h2>Layer auswählen, für den Hot-Spots berechnet werden</h2></div>
         <hr/>
         <div>
-            <p>Der Punkt- oder Fl&auml;chen-Layer, zu dem Hot und Cold Spots gefunden werden.
-
+            <p>Der Punkt- oder Fl&auml;chen-Layer, zu dem Hot- und Cold-Spots gefunden werden. 
             </p>
         </div>
     </div>

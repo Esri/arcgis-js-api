@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -45,7 +63,9 @@
         <div>
             <p>Punkt-, linje- eller omr&aring;delaget som brukes som startlokasjoner for summering av n&aelig;rliggende funksjoner.
             </p>
-            <p>In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            <p class="OnlineOnly">In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            </p>
+            <p>Verkt&oslash;yet st&oslash;tter opptil 1&nbsp;000 geoobjekter i dette laget. 
             </p>
         </div>
     </div>
@@ -55,7 +75,7 @@
         <div>
             <p>Geoobjekter i dette laget som er innenfor den angitte avstanden til geoobjekter i laget som er angitt ovenfor, blir summert. 
             </p>
-            <p>In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            <p class="OnlineOnly">In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
             </p> 
         </div>
     </div>
@@ -138,6 +158,29 @@
                 </li>
             </ul>
             
+        </div>
+    </div>
+    <div id="StatisticsNoLayer">
+        <div><h2>Legg til statistikk fra laget for å summere</h2></div>
+        <hr/>
+        <div>
+            <p>N&aring;r du har valgt et lag som skal summeres, kan du eventuelt beregne statistikk for numeriske attributter for de n&aelig;rliggende punktene, linjene eller omr&aring;dene. 
+            </p>
+            <ul>
+                <li> <b>Sum</b> &ndash; Totalverdien for det angitte feltet.
+                </li>
+                <li> <b>Gjennomsnitt</b> &ndash; Gjennomsnittet eller middelverdien for det angitte feltet.
+                </li>
+                <li> <b>Minimum</b> &ndash; Den minste verdien i det angitte feltet.
+                </li>
+                <li> <b>Maksimum</b> &ndash; Den st&oslash;rste verdien i det angitte feltet.
+                </li>
+                <li> <b>Standard avvik</b>&ndash; Standardavviket for verdiene i det angitte feltet.
+                </li>
+            </ul>
+            
+            <p>Avhengig av typen geoobjekter du summerer, kan du beregne samlet antall n&aelig;rliggende punkter, samlet linjelengde for n&aelig;rliggende linjer eller samlet omr&aring;de for n&aelig;rliggende omr&aring;degeoobjekter.
+            </p>
         </div>
     </div>
     <div id="GroupBy">

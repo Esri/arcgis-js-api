@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -32,8 +50,7 @@
             </li>
             <li>Prognozējiet smago metālu koncentrāciju ražā, pamatojoties uz paraugiem, kas iegūti no atsevi&scaron;ķiem augiem.
             </li>
-            <li>Prognozējiet augsnes barības vielu līmeņus (slāpeklis, fosfors, kālijs u.c.) un citus indikatorus (piemēram, elektrovadītspēju), lai izpētītu to relāciju ar ražas apjomu un noteiktu precīzu mēslojuma daudzumu katram izvietojumam laukā.
-
+            <li>Prognozējiet augsnes barības vielu līmeņus (slāpeklis, fosfors, kālijs u.c.) un citus indikatorus (piemēram, elektrovadītspēju), lai izpētītu to relāciju ar ražas apjomu un noteiktu precīzu mēslojuma daudzumu katram izvietojumam laukā. 
             </li>
             <li>Meteoroloģiskais lietojums ietver temperatūru, lietavu un citu saistīto mainīgo prognozes (piemēram, skābā lietus). 
             </li>
@@ -49,7 +66,7 @@
             <p>Punkta slānis, kas jāizmanto kā interpolācijas pamats.  
 
             </p>
-            <p>Papildus slāņa izvēlei no kartes varat atlasīt  <b>Izvēlēties Living Atlas analīzes slāni</b> nolaižamā saraksta apak&scaron;ā. Tādējādi tiek atvērta galerija, kurā ir daudzām analīzēm noderīgu slāņu galerija. 
+            <p class="OnlineOnly">Papildus slāņa izvēlei no kartes varat atlasīt  <b>Izvēlēties Living Atlas analīzes slāni</b> nolaižamā saraksta apak&scaron;ā. Tādējādi tiek atvērta galerija, kurā ir daudzām analīzēm noderīgu slāņu galerija. 
             </p>
         </div>
     </div>
@@ -83,7 +100,7 @@
         <div><h2>Klasificēt pēc</h2></div>
         <hr/>
         <div>
-            <p>Izvēlieties, kā prognozētās vērtības tiks klasificētas apgabalos.
+            <p>Izvēlieties, kā prognozētās vērtības tiks klasificētas teritorijās.
                 <ul>
                     <li>Ģeometrisks intervāls&nbsp;&mdash; teritorijas tiek izveidotas, pamatojoties uz kla&scaron;u intervāliem, kuros ir ģeometriskas sērijas. &Scaron;ī metode garantē, ka katras klases diapazonā ir aptuveni tāds pats vērtību skaits un ka starpība starp intervāliem ir konstanta.
                     </li>

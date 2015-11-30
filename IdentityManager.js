@@ -21,5 +21,4 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 define(["./IdentityManagerDialog","./kernel","./OAuthSignInHandler","dojo/_base/declare"],function(e,n,i,a){var d=new e;return n.id=a.safeMixin(d,i),n.id});

@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -52,10 +70,9 @@
         <div><h2>Vali punkti- või joonekiht, mille põhjal tihedus arvutada</h2></div>
         <hr/>
         <div>
-            <p>Punkti- v&otilde;i joonekiht, mille p&otilde;hjal tihedust arvutatakse.
-
+            <p>Punkti- v&otilde;i joonekiht, mille p&otilde;hjal tihedust arvutatakse. 
             </p>
-            <p>Lisaks kaardil asuvale kihile saate valida variandi  <b>Vali elukeskkonna atlase anal&uuml;&uuml;sikiht</b>, mille leiate ripploendi allosast. Nii avaneb galerii, mis sisaldab mitmete anal&uuml;&uuml;side jaoks tarvilikku kihtide kollektsiooni. 
+            <p class="OnlineOnly">Lisaks kaardil asuvale kihile saate valida variandi  <b>Vali elukeskkonna atlase anal&uuml;&uuml;sikiht</b>, mille leiate ripploendi allosast. Nii avaneb galerii, mis sisaldab mitmete anal&uuml;&uuml;side jaoks tarvilikku kihtide kollektsiooni. 
             </p>
         </div>
     </div>
@@ -98,8 +115,7 @@
                     </li>
                     <li>Geomeetriline intervall &ndash; alad p&otilde;hinevad geomeetrilise jadaga klassi intervallidel. See meetod tagab, et iga klassi ulatuses on umbes sama palju v&auml;&auml;rtusi ning intervallide muutumine on &uuml;htlane.
                     </li>
-                    <li>Loomulikud vahemikud &ndash; alade klassi intervallid p&otilde;hinevad andmete loomulikel r&uuml;hmitustel. Klassi vahemikud r&uuml;hmitavad k&otilde;ige paremini sarnaseid v&auml;&auml;rtusi ja maksimeerivad klassidevahelisi erinevusi.
-
+                    <li>Loomulikud vahemikud &ndash; alade klassi intervallid p&otilde;hinevad andmete loomulikel r&uuml;hmitustel. Klassi vahemikud r&uuml;hmitavad k&otilde;ige paremini sarnaseid v&auml;&auml;rtusi ja maksimeerivad klassidevahelisi erinevusi. 
                     </li>
                     <li>Kvantiil &ndash; alad luuakse nii, et iga ala suurus on v&otilde;rdne. Kui tulemkihis on n&auml;iteks enam k&otilde;rge tihedusega v&auml;&auml;rtusi, luuakse rohkem k&otilde;rge tihedusega alasid.
                     </li>

@@ -21,7 +21,6 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 /* Copyright 2014 Mozilla Foundation
  *
  * Licensed under the Apache License, Version 2.0 (the 'License');

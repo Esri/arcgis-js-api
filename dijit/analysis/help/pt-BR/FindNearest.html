@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -30,7 +48,7 @@
         <ul>
             <li>Qual &eacute; o parque mais pr&oacute;ximo daqui?
             </li>
-            <li>Qual hospital eu posso alcan&ccedil;ar no menor tempo de percurso?Quanto tempo levar&aacute; a viagem em uma ter&ccedil;a-feira &agrave;s 5:30 p.m durante o hor&aacute;rio de pico?
+            <li>Qual hospital eu posso alcan&ccedil;ar no menor tempo de percurso? Quanto tempo levar&aacute; a viagem em uma ter&ccedil;a-feira &agrave;s 5:30 p.m durante o hor&aacute;rio de pico?
             </li>
             <li>Quais s&atilde;o as dist&acirc;ncias da estrada entre estas maiores cidades?
             </li>
@@ -46,10 +64,10 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="analysisLayer">
-        <div><h2>Escolha a camada de ponto da qual os locais mais próximos estão localizados</h2></div>
+        <div><h2>Escolha a camada da qual os locais mais próximos são localizados</h2></div>
         <hr/>
         <div>
-            <p>A ferramenta Localizar Mais Pr&oacute;ximo mede a partir dos pontos na camada que voc&ecirc; especifica aqui (os locais iniciais) at&eacute; os pontos que voc&ecirc; especifica no pr&oacute;ximo par&acirc;metro.  A ferramenta suporta at&eacute; 1.000 locais em cada camada.
+            <p>A ferramenta Localizar Mais Pr&oacute;ximo mede a partir das fei&ccedil;&otilde;es na camada que voc&ecirc; especifica aqui (os locais iniciais) at&eacute; os locais que voc&ecirc; especifica no pr&oacute;ximo par&acirc;metro.  A ferramenta suporta at&eacute; 1.000 fei&ccedil;&otilde;es em cada camada.
 
             </p>
         </div>
@@ -58,9 +76,9 @@
         <div><h2>Localizar os locais mais próximos em</h2></div>
         <hr/>
         <div>
-            <p>A ferramenta Localizar Mais Pr&oacute;ximo mede de cada um dos locais na primeira camada at&eacute; os locais nesta camada. A ferramenta suporta at&eacute; 1.000 locais em cada camada.
+            <p>A ferramenta Localizar Mais Pr&oacute;ximo mede de cada um dos fei&ccedil;&otilde;es na primeira camada at&eacute; os locais nesta camada. A ferramenta suporta at&eacute; 1.000 locais em cada camada.
             </p>
-            <p>Al&eacute;m de escolher uma camada do seu mapa, voc&ecirc; pode selecionar  <b>Escolher Camada de An&aacute;lise do Atlas em Tempo Real</b> localizado na parte inferior da lista suspensa. Isto abre uma galeria contendo uma cole&ccedil;&atilde;o de camadas &uacute;til para muitas an&aacute;lises. 
+            <p class="OnlineOnly">Al&eacute;m de escolher uma camada do seu mapa, voc&ecirc; pode selecionar  <b>Escolher Camada de An&aacute;lise do Atlas em Tempo Real</b> localizado na parte inferior da lista suspensa. Isto abre uma galeria contendo uma cole&ccedil;&atilde;o de camadas &uacute;til para muitas an&aacute;lises. 
             </p>
         </div>
     </div>

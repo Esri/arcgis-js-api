@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -44,7 +62,7 @@
             <p>La couche ponctuelle, lin&eacute;aire ou surfacique contenant les emplacements de r&eacute;f&eacute;rence &agrave; apparier.
 
             </p>
-            <p>Outre le choix d'une couche pour votre carte, vous pouvez s&eacute;lectionner  <b>Choisir la couche d'analyse de l'atlas dynamique</b> au bas de la liste d&eacute;roulante. Cette op&eacute;ration ouvre une biblioth&egrave;que de couches utiles pour de nombreuses analyses. 
+            <p class="OnlineOnly">Outre le choix d'une couche pour votre carte, vous pouvez s&eacute;lectionner  <b>Choisir la couche d'analyse de l'atlas dynamique</b> au bas de la liste d&eacute;roulante. Cette op&eacute;ration ouvre une biblioth&egrave;que de couches utiles pour de nombreuses analyses. 
             </p>
         </div>
     </div>
@@ -66,7 +84,7 @@
             <p>Les emplacements de recherche de candidats dans cette couche sont class&eacute;s du plus similaire au moins similaire. La similarit&eacute; repose sur le degr&eacute; de correspondance de chaque emplacement avec l'emplacement de r&eacute;f&eacute;rence dans les champs que vous avez sp&eacute;cifi&eacute;s.
 
             </p>
-            <p>Outre le choix d'une couche pour votre carte, vous pouvez s&eacute;lectionner  <b>Choisir la couche d'analyse de l'atlas dynamique</b> au bas de la liste d&eacute;roulante. Cette op&eacute;ration ouvre une biblioth&egrave;que de couches utiles pour de nombreuses analyses. 
+            <p class="OnlineOnly">Outre le choix d'une couche pour votre carte, vous pouvez s&eacute;lectionner  <b>Choisir la couche d'analyse de l'atlas dynamique</b> au bas de la liste d&eacute;roulante. Cette op&eacute;ration ouvre une biblioth&egrave;que de couches utiles pour de nombreuses analyses. 
             </p>
         </div>
     </div>

@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -43,10 +61,9 @@
         <div><h2>Scegli layer di area per riepilogare altre feature entro i suoi confini</h2></div>
         <hr/>
         <div>
-            <p>Il layer di area che verr&agrave; utilizzato per riepilogare le feature che rientrano nei suoi confini.
-
+            <p>Il layer di area che verr&agrave; utilizzato per riepilogare le feature che rientrano nei suoi confini. 
             </p>
-            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi dell'atlante attivo</b> in fondo all'elenco a discesa. Verr&agrave; aperta una galleria contenente una raccolta di layer utili per numerose analisi. 
+            <p class="OnlineOnly">Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi dell'atlante attivo</b> in fondo all'elenco a discesa. Verr&agrave; aperta una galleria contenente una raccolta di layer utili per numerose analisi. 
             </p>
         </div>
     </div>
@@ -56,7 +73,7 @@
         <div>
             <p>Vengono riepilogate le feature in questo layer che si trovano entro i confini di feature presenti nel layer di input su menzionato. 
             </p>
-            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi dell'atlante attivo</b> in fondo all'elenco a discesa. Verr&agrave; aperta una galleria contenente una raccolta di layer utili per numerose analisi. 
+            <p class="OnlineOnly">Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi dell'atlante attivo</b> in fondo all'elenco a discesa. Verr&agrave; aperta una galleria contenente una raccolta di layer utili per numerose analisi. 
             </p>
         </div>
     </div>
@@ -87,7 +104,7 @@
         <div><h2>Aggiungi statistiche da</h2></div>
         <hr/>
         <div>
-            <p>Facoltativamente, &egrave; possibile calcolare statistiche per attributi numerici delle linee nelle vicinanze. 
+            <p>Facoltativamente, &egrave; possibile calcolare statistiche per attributi numerici delle linee da riepilogare. 
             </p>
             <p>Se si seleziona la casella di controllo  <b>Lunghezza totale di linee in</b>, viene calcolata la lunghezza totale di linee all'interno di ciascun confine di area.  Inoltre, &egrave; possibile calcolare statistiche per attributi numerici delle linee che si trovano entro ciascun confine di area.
             </p>
@@ -110,7 +127,7 @@
         <div><h2>Aggiungi statistiche da</h2></div>
         <hr/>
         <div>
-            <p>Facoltativamente, &egrave; possibile calcolare statistiche per attributi numerici delle aree nelle vicinanze. 
+            <p>Facoltativamente, &egrave; possibile calcolare statistiche per attributi numerici delle aree da riepilogare. 
             </p>
             <p>Se la casella di controllo  <b>Area totale usando</b> &egrave; selezionata, viene calcolata l'area totale delle feature che si trovano entro ciascun confine di area del primo layer di input.  Inoltre, &egrave; possibile calcolare statistiche per attributi numerici delle feature che si trovano entro ciascun confine di area.
             </p>
@@ -129,12 +146,34 @@
             
         </div>
     </div>
+    <div id="StatisticsNoLayer">
+        <div><h2>Aggiungi statistiche da</h2></div>
+        <hr/>
+        <div>
+            <p>Dopo aver scelto un layer da riepilogare, &egrave; possibile, se lo si desidera, calcolare statistiche di qualsiasi attributo numerico dei punti, delle linee o delle aree che si trovano nel layer di area di input. 
+            </p>
+            <ul>
+                <li> <b>Somma</b>: il valore totale del campo specificato.
+                </li>
+                <li> <b>Media</b>: il valore medio del campo specificato.
+                </li>
+                <li> <b>Minimo</b>: il valore minimo nel campo specificato.
+                </li>
+                <li> <b>Massimo</b>: il valore massimo nel campo specificato.
+                </li>
+                <li> <b>Deviazione standard</b>: la deviazione standard dei valori nel campo specificato.
+                </li>
+            </ul>
+            
+            <p>In base ai tipi di feature che si stanno riepilogando, &egrave; possibile calcolare il conteggio totale di punti vicini, la lunghezza totale delle linee o l'area totale.
+            </p>
+        </div>
+    </div>
     <div id="GroupBy">
         <div><h2>Scegli campo in base a cui raggruppare</h2></div>
         <hr/>
         <div>
-            <p>Questo &egrave; un attributo delle feature  <b>Riepiloga</b> utilizzabile per calcolare statistiche di ciascun valore di attributo univoco separatamente. Ad esempio, si supponga che il primo layer di input contenga confini di citt&agrave; e che le feature di riepilogo corrispondano a lotti.  Uno degli attributi dei lotti &egrave; <i>Stato</i> e contiene due valori: NON OCCUPATO e OCCUPATO. Per calcolare l'area totale dei lotti occupati e non occupati entro i confini delle citt&agrave;, utilizzare <i>Stato</i> come gruppo per attributo.
- Le statistiche relative a ciascun gruppo, nonch&eacute; il conteggio delle feature incluse in ogni confine di area, verranno visualizzate nel popup del layer dei risultati.
+            <p>Questo &egrave; un attributo delle feature  <b>Riepiloga</b> utilizzabile per calcolare statistiche di ciascun valore di attributo univoco separatamente. Ad esempio, si supponga che il primo layer di input contenga confini di citt&agrave; e che le feature di riepilogo corrispondano a lotti.  Uno degli attributi dei lotti &egrave; <i>Stato</i> e contiene due valori: NON OCCUPATO e OCCUPATO. Per calcolare l'area totale dei lotti occupati e non occupati entro i confini delle citt&agrave;, utilizzare <i>Stato</i> come gruppo per attributo. Le statistiche relative a ciascun gruppo, nonch&eacute; il conteggio delle feature incluse in ogni confine di area, verranno visualizzate nel popup del layer dei risultati.
             </p>
         </div>
     </div>

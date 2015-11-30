@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -25,7 +43,7 @@
     <div id="SummarizeDataCategory" class="regularsize">
         <h2>Apkopot datus</h2>
         <hr/>
-        <p>&Scaron;ie rīki aprēķina elementu kopskaitu, garumu, laukumu un pamata apraksto&scaron;o statistiku un to atribūtus apgabalos vai netālu no citiem elementiem.
+        <p>&Scaron;ie rīki aprēķina elementu kopējos skaitu, garumu, laukumu un pamata apraksto&scaron;o statistiku un to atribūtus apgabalos vai netālu no citiem elementiem.
             <ul>
                 <li> <b>Sakopot punktus</b> aprēķina statistiku par punktiem, kas iekrīt norādītajos apgabalos.
                 </li>
@@ -45,7 +63,7 @@
                 <tbody><tr>
                     <td><h2>Sakopot punktus</h2></td>
                     <td>
-                    <img src="../images/GUID-60C59C66-3038-4D0E-8F6A-EC6C53FEAA02-web.png" class="titleImage" alt="Apkopotie punkti">
+                    <img src="../images/GUID-60C59C66-3038-4D0E-8F6A-EC6C53FEAA02-web.png" class="titleImage" alt="Sakopotie punkti">
                     </td>
                 </tr></tbody>
             </table>
@@ -89,7 +107,7 @@
                 <tbody><tr>
                     <td><h2>Apkopot ietvaros</h2></td>
                     <td>
-                    <img src="../images/GUID-9B12DB3F-AA7B-41EB-87C6-D2DEC3D52DA9-web.png" class="titleImage" alt="Apkopot robežās">
+                    <img src="../images/GUID-9B12DB3F-AA7B-41EB-87C6-D2DEC3D52DA9-web.png" class="titleImage" alt="Apkopot">
                     </td>
                 </tr></tbody>
             </table>
@@ -122,20 +140,19 @@
                 <tbody><tr>
                     <td><h2>Uzlabot slāni</h2></td>
                     <td>
-                    <img src="../images/GUID-5B2D9742-AFD2-4054-8D05-ED6A80EDAF4D-web.png" class="titleImage" alt="Bagātināt slāni">
+                    <img src="../images/GUID-5B2D9742-AFD2-4054-8D05-ED6A80EDAF4D-web.png" class="titleImage" alt="Uzlabot slāni">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Iegūst informāciju par cilvēkiem, vietām un uzņēmumiem konkrētā apgabalā, atlasītā brauk&scaron;anas laikā vai attālumā no kādas vietas.
-
+            <p>Iegūst informāciju par cilvēkiem, vietām un uzņēmumiem konkrētā apgabalā, atlasītā brauk&scaron;anas laikā vai attālumā no kādas vietas. 
             </p>
             <br/>
         </div>
     <div id="FindLocationsCategory" class="largesize">
         <h2>Atrast izvietojumus</h2>
         <hr/>
-        <p>&Scaron;ie rīki tiek lietoti, lai identificētu areālus, kas atbilst jūsu norādītajiem dažādiem kritērijiem. &Scaron;ie kritēriji var pamatoties uz atribūtu vaicājumiem (piem., brīvi zemes gabali) un telpiskajiem vaicājumiem (piem., 1 km attālumā no upes). Atrastos laukus var atlasīt no eso&scaron;iem elementiem (piemēram, eso&scaron;as zemes parceles) vai, ja ir izpildīti visi kritēriji, var izveidot jaunus elementus.
+        <p>&Scaron;ie rīki tiek lietoti, lai identificētu areālus, kas atbilst jūsu norādītajiem dažādiem kritērijiem. &Scaron;ie kritēriji var pamatoties uz atribūtu vaicājumiem (piem., brīvi zemes gabali) un telpiskajiem vaicājumiem (piem., 1 km attālumā no upes). Atrastie lauki var tikt izvēlēti no eksistējo&scaron;iem elementiem (piemēram, eksistējo&scaron;as zemes parceles) vai var tikt izveidoti jauni elementi, gadījumos, kad visi kritēriji ir izpildīti.
             <ul>
                 <li> <b>Atrast eso&scaron;as vietas</b> meklē eso&scaron;us apgabalus slānī, kas atbilst kritēriju sērijai.
                 </li>
@@ -166,8 +183,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Izvēlas eksistējo&scaron;us elementus jūsu areālā, kas atbilst norādīto kritēriju sērijai. &Scaron;ie kritēriji var pamatoties uz atribūtu vaicājumiem (piem., brīvi zemes gabali) un telpiskajiem vaicājumiem (piem., 1 km attālumā no upes).
-
+            <p>Izvēlas eksistējo&scaron;us elementus jūsu areālā, kas atbilst norādīto kritēriju sērijai. &Scaron;ie kritēriji var pamatoties uz atribūtu vaicājumiem (piem., brīvi zemes gabali) un telpiskajiem vaicājumiem (piem., 1 km attālumā no upes). 
             </p>
             <br/>
         </div>
@@ -182,8 +198,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Izveido jūsu studiju areālā jaunus izvietojumus, kas atbilst jūsu norādītajai kritēriju sērijai. &Scaron;ie kritēriji var pamatoties uz atribūtu vaicājumiem (piem., brīvi zemes gabali) un telpiskajiem vaicājumiem (piem., 1 km attālumā no upes).
-
+            <p>Izveido jūsu studiju areālā jaunus izvietojumus, kas atbilst jūsu norādītajai kritēriju sērijai. &Scaron;ie kritēriji var pamatoties uz atribūtu vaicājumiem (piem., brīvi zemes gabali) un telpiskajiem vaicājumiem (piem., 1 km attālumā no upes). 
             </p>
             <br/>
         </div>
@@ -213,7 +228,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Izveido redzamos apgabalus, pamatojoties uz nor&Auml;d&Auml;&laquo;taj&Auml;m atra&Aring;an&Auml;s viet&Auml;m.
+            <p>Izveido redzamos apgabalus, pamatojoties uz norādītajām atra&scaron;anās vietām.
             </p>
             <br/>
         </div>
@@ -228,7 +243,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Izveido sateces apgabalus, pamatojoties uz nor&Auml;d&Auml;&laquo;taj&Auml;m atra&Aring;an&Auml;s viet&Auml;m.
+            <p>Izveido sateces apgabalus, pamatojoties uz norādītajām atra&scaron;anās vietām.
             </p>
             <br/>
         </div>
@@ -243,7 +258,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Nosaka pl&Aring;&laquo;smas ce&Auml;&frac14;us virzien&Auml; uz lejteci no nor&Auml;d&Auml;&laquo;taj&Auml;m viet&Auml;m.
+            <p>Nosaka plūsmas ceļus virzienā uz lejteci no norādītajām vietām.
             </p>
             <br/>
         </div>
@@ -320,7 +335,7 @@
                 </li>
                 <li> <b>Atrast tuvāko</b> identificē tās vietas, kas ir vistuvāk zināmajām vietām.
                 </li>
-                <li> <b>Mar&scaron;rutu plāno&scaron;ana</b> nosaka labākos ceļus kā mar&scaron;rutēt autotransporta līdzekļus, lai apmeklētu vairākas pieturvietas.
+                <li> <b>Mar&scaron;rutu plāno&scaron;ana</b> nosaka labākais ceļus kā mar&scaron;rutēt autotransporta līdzekļus, lai apmeklētu vairākas pieturvietas.
                 </li>
             </ul>
             
@@ -377,7 +392,7 @@
                 <tbody><tr>
                     <td><h2>Izveidot braukšanas laika laukumus</h2></td>
                     <td>
-                    <img src="../images/GUID-6F629A09-768D-4C04-88A4-AB941811ADE9-web.png" class="titleImage" alt="Izveidot brauk&scaron;anas laika laukumus">
+                    <img src="../images/GUID-6F629A09-768D-4C04-88A4-AB941811ADE9-web.png" class="titleImage" alt="Izveidot brauk&scaron;anas laika apgabalus">
                     </td>
                 </tr></tbody>
             </table>
@@ -401,7 +416,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Atrast tuvākos</h2></td>
+                    <td><h2>Atrast tuvāko</h2></td>
                     <td>
                     <img src="../images/GUID-150C2484-7459-405A-8835-B4E72CD49738-web.png" class="titleImage" alt="Atrast tuvāko">
                     </td>
@@ -440,7 +455,7 @@
                 </li>
                 <li> <b>Apvienot slāņus</b> tiek kopēti visi divu vai vairāku eso&scaron;u slāņu elementi jaunā slānī.
                 </li>
-                <li> <b>Pārklājuma slāņi</b> apvieno divus vai vairākus slāņus vienā slānī. Jūs varat iedomāties pārklā&scaron;anu kā kar&scaron;u kaudzes izlīdzinā&scaron;anu, izveidojot vienotu karti, kas satur visu kaudzes informāciju.
+                <li> <b>Pārklājuma slāņi</b> apvieno divus vai vairākus slāņus vienā slānī.  Jūs varat iedomāties pārklā&scaron;anu kā kar&scaron;u kaudzes izlīdzinā&scaron;anu, izveidojot vienotu karti, kas satur visu kaudzes informāciju.
                 </li>
             </ul>
             
@@ -459,7 +474,7 @@
 <hr/>
             <p>Laukumi, kas pārklājas, vai koplieto kopīgo robežu, tiek apvienoti kopā, izveidojot vienu laukumu.    
             </p>
-            <p>Jūs varat kontrolēt, kuras robežas tiek apvienotas, norādot lauku. Piemēram, ja jums ir apgabalu slānis, un katram slānim ir  <i>State_Name</i> atribūts, jūs varat iz&scaron;ķīdināt robežas, lietojot <i>State_Name</i> atribūtu. Apgabali, kas pieskaras, tiks apvienoti kopā, ja tiem ir tāda pati vērtība <i>State_Name</i>. Rezultāts ir robežu slānis.
+            <p>Jūs varat kontrolēt, kuras robežas tiek apvienotas, norādot lauku. Piemēram, ja jums ir apgabalu slānis un katram slānim ir atribūts  <i>State_Name</i>, varat noņemt robežas, lietojot atribūtu <i>State_Name</i>.  Apgabali, kas pieskaras, tiks apvienoti, ja tiem ir tāda pati <i>State_Name</i> vērtība.  Rezultāts ir robežu slānis.
             </p>
             <br/>
         </div>

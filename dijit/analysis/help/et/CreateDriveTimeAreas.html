@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -64,9 +82,12 @@
         <div><h2>Vali punktikiht, mille põhjal arvutada sõiduaja pinnad</h2></div>
         <hr/>
         <div>
-            <p>Punktobjektid, mille p&otilde;hjal arvutatakse pinnad. Saate valida, kuidas pinnad arvutatakse &ndash; liikumisviisi (auto ja/v&otilde;i veoautoga s&otilde;itmine v&otilde;i k&otilde;ndimine) ja m&otilde;&otilde;tmise (aeg v&otilde;i vahemaa) alusel.
+            <p>Punktobjektid, mille p&otilde;hjal arvutatakse pinnad. Saate valida, kuidas pinnad arvutatakse &ndash; liikumisviisi (auto ja/v&otilde;i veoautoga s&otilde;itmine v&otilde;i k&otilde;ndimine) ja m&otilde;&otilde;du (aeg v&otilde;i vahemaa) p&otilde;hjal.
             </p>
-            <p>Lisaks kaardil asuvale kihile saate valida variandi  <b>Vali elukeskkonna atlase anal&uuml;&uuml;sikiht</b>, mille leiate ripploendi allosast. Nii avaneb galerii, mis sisaldab mitmete anal&uuml;&uuml;side jaoks tarvilikku kihtide kollektsiooni. 
+            <p class="OnlineOnly">Lisaks kaardil asuvale kihile saate valida variandi  <b>Vali elukeskkonna atlase anal&uuml;&uuml;sikiht</b>, mille leiate ripploendi allosast. Nii avaneb galerii, mis sisaldab mitmete anal&uuml;&uuml;side jaoks tarvilikku kihtide kollektsiooni. 
+            </p>
+            <p>See algoritm toetab kuni 1000 objekti igas sisendkihis.
+
             </p>
         </div>
     </div>
@@ -74,7 +95,7 @@
         <div><h2>Mõõda</h2></div>
         <hr/>
         <div>
-            <p>Vali liikumisviis (auto ja/v&otilde;i veoautoga s&otilde;itmine v&otilde;i k&otilde;ndimine) ja m&otilde;&otilde;da aega v&otilde;i vahemaad. Lubatud reisiviisid m&auml;&auml;rab Teie asutuse administraator.   Kui olete liikumisviisi ja m&otilde;&otilde;tmise vahendi valinud, sisestage kestus v&otilde;i vahemaa, milleks v&otilde;ib maksimaalselt olla  5 tundi (300 minutit) v&otilde;i  300 miili (482.80 kilomeetrit). 
+            <p>Vali liikumisviis (auto ja/v&otilde;i veoautoga s&otilde;itmine v&otilde;i k&otilde;ndimine) ja m&otilde;&otilde;da aega v&otilde;i vahemaad. Lubatud reisiviisid m&auml;&auml;rab teie asutuse administraator.   Kui olete liikumisviisi ja m&otilde;&otilde;tmise vahendi valinud, sisestage kestus v&otilde;i vahemaa, milleks v&otilde;ib maksimaalselt olla  5 tundi (300 minutit) v&otilde;i  300 miili (482,80 kilomeetrit). 
             </p>
             <p>Valiku  <b>S&otilde;iduaeg</b> korral saate s&otilde;iduaja m&otilde;&otilde;tmiseks mitme variandi vahel valida.
                 <ul>
@@ -101,7 +122,7 @@
             </p>
             <p>V&otilde;tke arvesse, et s&otilde;iduki liikumisel l&auml;htepunktist edasi aeg kulub ja liiklusolud muutuvad. S&otilde;iduaja pindade t&ouml;&ouml;riist arvestab nende variatsioonidega, kui valite funktsiooni  <b>S&otilde;iduaeg</b> ja m&auml;rgite ruudu <b>Kasuta liiklusinfot</b>, kuid k&otilde;ik piirkonnad ei toeta liiklusteabe kasutamist. Kl&otilde;psake linki <b>Vaata k&auml;ttesaadavust</b>, et teada saada, kas antud funktsioon on Teie piirkonnas k&auml;ttesaadav.
             </p>
-            <p>Funktsioonid  <b>K&otilde;ndimise aeg</b> ja <b>K&otilde;ndimise vahemaa</b> kasutavad fikseeritud kiirust, milleks on 5 kilomeetrit tunnis (3.1 miili tunnis) ja v&otilde;tavad liikumise aluseks jalgteed ning otstarbelised t&auml;navad (eirates samas autosid m&otilde;jutavaid reegleid, nt &uuml;hesuunalisi t&auml;navaid). </p>
+            <p>Funktsioonid  <b>K&otilde;ndimise aeg</b> ja <b>K&otilde;ndimise vahemaa</b> kasutavad fikseeritud kiirust, milleks on 5 kilomeetrit tunnis (3,1 miili tunnis) ja v&otilde;tavad liikumise aluseks jalgteed ning otstarbelised t&auml;navad (eirates samas autosid m&otilde;jutavaid reegleid, nt &uuml;hesuunalisi t&auml;navaid). </p>
             <p>Funktsioonid  <b>Autoveo s&otilde;iduaeg</b> ja <b>Autoveo s&otilde;iduvahemaa</b> kasutavad fikseeritud kiirusi ja j&auml;rgivad raskeveokitele rakenduvaid reegleid.
             </p> 
         </div>

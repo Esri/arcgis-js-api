@@ -21,5 +21,4 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 define({documentTypes:{data:{caption:"GEMINI (duomenys)",description:""},service:{caption:"GEMINI (paslauga)",description:""}},LanguageCode:{eng:"Anglų",cym:"Valų",gle:"Gėlų (airių)",gla:"Gėlų (škotų)",cor:"Kornų",sco:"Alsterio škotų"},verticalCRS:{reference:"Nuoroda (pvz., urn:ogc:def:crs:EPSG::5701 )"}});

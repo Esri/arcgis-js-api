@@ -21,5 +21,4 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 define(["dojo/_base/declare","dojo/_base/lang","dojo/Deferred","dojo/has","../../../../../kernel","./InputSelectBoolean","../../../form/Option","dojo/i18n!../../../nls/i18nArcGIS"],function(e,a,n,t,l,s,o,r){var u=e([s],{allInline:!1,serializeIfFalse:!0,falseLabel:r.dqInfo.report.ConResult.conPass._0,trueLabel:r.dqInfo.report.ConResult.conPass._1,falseValue:"0",trueValue:"1",postCreate:function(){this.inherited(arguments)},fetchOptionWidgets:function(){var e=new n,a=[];return a.push(new o({label:"",value:""})),a.push(new o({label:this.trueLabel,value:this.trueValue})),a.push(new o({label:this.falseLabel,value:this.falseValue})),e.resolve(a),e}});return t("extend-esri")&&a.setObject("dijit.metadata.types.arcgis.form.InputConformanceDegree",u,l),u});

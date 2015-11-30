@@ -21,5 +21,4 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 define(["./ArcGISMapServiceLayer","./LayerInfo","./TimeInfo","./LayerTimeOptions","./TimeReference","./Field","./Domain","./RangeDomain","./CodedValueDomain","./InheritedDomain","./LayerSource","./LayerMapSource","./LayerDataSource","./DataSource","./TableDataSource","./QueryDataSource","./JoinDataSource","./RasterDataSource","./DynamicLayerInfo","./LayerDrawingOptions","../geometry","../utils"],function(){return{}});

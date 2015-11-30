@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -38,10 +56,9 @@
         <div><h2>Vælg lag, der indeholder objekter, der skal placeres i bufferen</h2></div>
         <hr/>
         <div>
-            <p>Punkt-, linje eller omr&aring;deobjekter, der skal placeres i bufferen.
-
+            <p>Punkt-, linje eller omr&aring;deobjekter, der skal placeres i bufferen. 
             </p>
-            <p>Ud over at v&aelig;lge et lag fra dit kort kan du v&aelig;lge  <b>V&aelig;lg Living Atlas-analyselag</b> nederst p&aring; rullelisten. Dette &aring;bner et galleri med en samling lag, der er nyttige til mange analysetyper. 
+            <p class="OnlineOnly">Ud over at v&aelig;lge et lag fra dit kort kan du v&aelig;lge  <b>V&aelig;lg Living Atlas-analyselag</b> nederst p&aring; rullelisten. Dette &aring;bner et galleri med en samling lag, der er nyttige til mange analysetyper. 
             </p>
         </div>
     </div>
@@ -86,7 +103,7 @@
                     </li>
                 </ul>
                 
-            </p> 
+            </p>
         </div>
     </div>
     <div id="OptionLine">
@@ -106,6 +123,14 @@
                 </ul>
                 
             </p> 
+        </div>
+    </div>
+    <div id="OptionNolayer">
+        <div><h2>Indstillinger</h2></div>
+        <hr/>
+        <div>
+            <p>N&aring;r du har valgt et lag, der skal placeres i bufferen, kan du v&aelig;lge, hvordan overlappende buffere skal h&aring;ndteres. For enhver buffer, der er placeret oven p&aring; en anden buffer, kan du bevare de omr&aring;der, de har til f&aelig;lles (Overlap), eller de kan kombineres (Opl&oslash;s). Desuden kan du angive, hvordan flere afstande skal vises.   For lag med linjeobjekter kan du v&aelig;lge, hvilken side af linjen der skal placeres i bufferen.  For lag med omr&aring;deobjekter kan du v&aelig;lge, om det objekt, der placeres i bufferen, skal medtages eller udelukkes i resultatbufferen.
+            </p>
         </div>
     </div>
     <div id="BufferLayer">

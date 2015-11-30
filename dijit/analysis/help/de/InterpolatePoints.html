@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -32,8 +50,7 @@
             </li>
             <li>Treffen Sie Vorhersagen zu Schwermetallkonzentrationen in bestimmten Pflanzenarten basierend auf Proben einzelner Pflanzen.
             </li>
-            <li>Sagen Sie den N&auml;hrstoffgehalt in B&ouml;den (Stickstoff, Phosphor, Kalium usw.) sowie andere Indikatoren (z. B. elektrische Leitf&auml;higkeit) voraus, um deren Beziehung zum Ernteertrag zu untersuchen und genaue Dosierungen von D&uuml;ngemitteln f&uuml;r jedes Gebiet vor Ort vorzuschreiben.
-
+            <li>Sagen Sie den N&auml;hrstoffgehalt in B&ouml;den (Stickstoff, Phosphor, Kalium usw.) sowie andere Indikatoren (z. B. elektrische Leitf&auml;higkeit) voraus, um deren Beziehung zum Ernteertrag zu untersuchen und genaue Dosierungen von D&uuml;ngemitteln f&uuml;r jedes Gebiet vor Ort vorzuschreiben. 
             </li>
             <li>Meteorologische Anwendungen beinhalten die Vorhersage von Temperaturen, Niederschlag und damit verkn&uuml;pften Variablen (wie saurer Regen). 
             </li>
@@ -49,7 +66,7 @@
             <p>Der Punkt-Layer, der als Grundlage der Interpolation verwendet wird.  
 
             </p>
-            <p>Neben einem Layer aus Ihrer Karte k&ouml;nnen Sie auch die Option  <b>Analyse-Layer des Living Atlas ausw&auml;hlen</b> unten in der Dropdown-Liste ausw&auml;hlen. Hiermit wird eine Galerie mit einer Sammlung von Layern ge&ouml;ffnet, die f&uuml;r viele Analysen hilfreich sind. 
+            <p class="OnlineOnly">Neben einem Layer aus Ihrer Karte k&ouml;nnen Sie auch die Option  <b>Analyse-Layer des Living Atlas ausw&auml;hlen</b> unten in der Dropdown-Liste ausw&auml;hlen. Hiermit wird eine Galerie mit einer Sammlung von Layern ge&ouml;ffnet, die f&uuml;r viele Analysen hilfreich sind. 
             </p>
         </div>
     </div>
@@ -70,7 +87,7 @@
         </div>
     </div>
     <div id="outputPredictionError">
-        <div><h2>Ausgabe Vorhersagefehler</h2></div>
+        <div><h2>Fehler in der Prognose</h2></div>
         <hr/>
         <div>
             <p> Bei Aktivierung dieser Option wird ein Layer mit Standardfehlern f&uuml;r die Interpolierungsvorhersagen erstellt.  Der Name des Ausgabe-Layers ist der Name des Ergebnis-Layers mit angeh&auml;ngtem 'Errors'.
@@ -89,7 +106,7 @@
                     </li>
                     <li>Gleiches Intervall &ndash; Fl&auml;chen werden so erstellt, dass der Bereich der vorhergesagten Werte f&uuml;r jede Fl&auml;che gleich ist.
                     </li>
-                    <li>Fl&auml;chentreu &ndash; Fl&auml;chen werden so erstellt, dass die Anzahl der Datenwerte in jeder Fl&auml;che gleich ist. Wenn die Datenwerte beispielsweise mehr hohe als niedrige Werte aufweisen, werden mehr Fl&auml;chen f&uuml;r hohe Werte erstellt.
+                    <li>Gleiche Fl&auml;che &ndash; Fl&auml;chen werden so erstellt, dass die Anzahl der Datenwerte in jeder Fl&auml;che gleich ist. Wenn die Datenwerte beispielsweise mehr hohe als niedrige Werte aufweisen, werden mehr Fl&auml;chen f&uuml;r hohe Werte erstellt.
                     </li>
                     <li>Manuell &ndash; Diese Option erm&ouml;glicht die Definition eines eigenen Wertebereichs f&uuml;r Fl&auml;chen. Diese Werte werden in den Parameter  <b>Werte der Klassengrenzen</b> unten eingegeben.
                     </li>
@@ -129,7 +146,7 @@
         <div>
             <p>Zeichnen Sie oder stellen Sie einen Layer bereit, der Punktpositionen angibt, um Vorhersagewerte zu berechnen. Auf diese Weise k&ouml;nnen Sie Vorhersagen an bestimmten Positionen Ihres Interesses machen. Wenn der Eingabe-Layer beispielsweise Messungen des Verschmutzungsgrades darstellt, k&ouml;nnen Sie diesen Parameter verwenden, um den Verschmutzungsgrad von Positionen mit gro&szlig;en Risikogruppen, wie Schulen oder Krankenh&auml;user, vorherzusagen.  Anhand dieser Informationen k&ouml;nnen Sie Gesundheits&auml;mtern an diesen Standorten entsprechende Empfehlungen geben.
             </p>
-            <p>Falls geliefert, gibt dieses Werkzeug einen Punkt-Layer mit Vorhersagen an den angegebenen Positionen aus. Der Name des Ausgabe-Layers ist der Name des Ergebnis-Layers mit angeh&auml;ngtem 'Points'.  
+            <p>Das Werkzeug gibt in diesem Fall einen Punkt-Layer mit Vorhersagen an den angegebenen Positionen aus. Der Name des Ausgabe-Layers ist der Name des Ergebnis-Layers mit angeh&auml;ngtem 'Points'.  
             </p>
         </div>
     </div>

@@ -1350,4 +1350,10 @@ td.subsectionLineDivider {
   height: 2em;
 }
 
+.esriLoading  {
+  background: url(../../images/ajax-loader-transparent.gif) center center no-repeat;
+  width: 16px;
+  height: 16px;
+}
+
 

@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -45,7 +63,9 @@
         <div>
             <p>Warstwy punktowe, liniowe lub powierzchniowe, kt&oacute;re zostaną użyte jako lokalizacje początkowe w celu zsumowania pobliskich obiekt&oacute;w.
             </p>
-            <p>Poza wybraniem warstwy na mapie można wybrać opcję  <b>Wybierz warstwę analizy Living Atlas</b> dostępną w dolnej części menu rozwijanego. Zostanie wtedy otwarta galeria zawierająca kolekcje warstw przydatnych podczas wielu analiz. 
+            <p class="OnlineOnly">Poza wybraniem warstwy na mapie można wybrać opcję  <b>Wybierz warstwę analizy Living Atlas</b> dostępną w dolnej części menu rozwijanego. Zostanie wtedy otwarta galeria zawierająca kolekcje warstw przydatnych podczas wielu analiz. 
+            </p>
+            <p>Narzędzie jest w&nbsp;stanie obsłużyć do 1000 obiekt&oacute;w w&nbsp;tej warstwie. 
             </p>
         </div>
     </div>
@@ -55,7 +75,7 @@
         <div>
             <p>Zsumowane zostaną obiekty, kt&oacute;re znajdują się w&nbsp;tej warstwie w&nbsp;zasięgu określonej odległości do obiekt&oacute;w w&nbsp;warstwie określonej powyżej. 
             </p>
-            <p>Poza wybraniem warstwy na mapie można wybrać opcję  <b>Wybierz warstwę analizy Living Atlas</b> dostępną w dolnej części menu rozwijanego. Zostanie wtedy otwarta galeria zawierająca kolekcje warstw przydatnych podczas wielu analiz. 
+            <p class="OnlineOnly">Poza wybraniem warstwy na mapie można wybrać opcję  <b>Wybierz warstwę analizy Living Atlas</b> dostępną w dolnej części menu rozwijanego. Zostanie wtedy otwarta galeria zawierająca kolekcje warstw przydatnych podczas wielu analiz. 
             </p> 
         </div>
     </div>
@@ -138,6 +158,29 @@
                 </li>
             </ul>
             
+        </div>
+    </div>
+    <div id="StatisticsNoLayer">
+        <div><h2>Dodaj statystyki z warstwy do podsumowania</h2></div>
+        <hr/>
+        <div>
+            <p>Po wybraniu warstwy sumowania można także obliczyć dane statystyczne jakichkolwiek atrybut&oacute;w numerycznych pobliskich punkt&oacute;w, linii lub obszar&oacute;w. 
+            </p>
+            <ul>
+                <li> <b>Suma</b> &mdash; całkowita wartość określonego pola.
+                </li>
+                <li> <b>Średnia</b> &mdash; wartość średnia określonego pola.
+                </li>
+                <li> <b>Minimum</b> &mdash; najniższa wartość określonego pola.
+                </li>
+                <li> <b>Maksimum</b> &mdash; najwyższa wartość określonego pola.
+                </li>
+                <li> <b>Odchylenie standardowe</b> &mdash; odchylenie standardowe wartości dla określonego pola.
+                </li>
+            </ul>
+            
+            <p>W zależności od rodzaju sumowanych obiekt&oacute;w istnieje możliwość obliczenia całkowitej liczby pobliskich punkt&oacute;w, całkowitej długości pobliskich linii lub całkowitej powierzchni pobliskiego obszaru.
+            </p>
         </div>
     </div>
     <div id="GroupBy">

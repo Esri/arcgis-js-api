@@ -21,5 +21,4 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 define(["../../declare","./StudyArea"],function(e,r){return e("esri.tasks.geoenrichment.AddressStudyArea",[r],{address:null,constructor:function(e){e&&e.address&&(this.address=e.address)},toJson:function(){var e=this.inherited(arguments);return e.address=this.address,e},getGeomType:function(){return"point"}})});

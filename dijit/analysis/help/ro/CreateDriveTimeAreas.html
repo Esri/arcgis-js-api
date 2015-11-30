@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -66,7 +84,10 @@
         <div>
             <p>Obiectele spaţiale punctuale &icirc;n jurul cărora vor fi calculate zonele. Puteţi alege cum sunt calculate zonele &icirc;n baza modului de deplasare (cu maşina, cu camionul sau pe jos) şi măsuraţi (timpul sau distanţa).
             </p>
-            <p>Pe l&acirc;ngă alegerea unui strat tematic din harta dvs., puteţi selecta  <b>Alegere strat tematic de analiză din atlasul actualizat</b>, care se găseşte &icirc;n partea de jos a listei verticale. Această acţiune deschide o galerie care conţine o colecţie de straturi tematice utile pentru numeroase analize. 
+            <p class="OnlineOnly">Pe l&acirc;ngă alegerea unui strat tematic din harta dvs., puteţi selecta  <b>Alegere strat tematic de analiză din atlasul actualizat</b>, care se găseşte &icirc;n partea de jos a listei verticale. Această acţiune deschide o galerie care conţine o colecţie de straturi tematice utile pentru numeroase analize. 
+            </p>
+            <p>Instrumentul acceptă p&acirc;nă la 1.000 de obiecte spaţiale &icirc;n stratul tematic de intrare.
+
             </p>
         </div>
     </div>
@@ -101,7 +122,7 @@
             </p>
             <p>Reţineţi că, pe măsură ce un vehicul se deplasează &icirc;nainte dintr-un punct, timpul se scurge şi condiţiile de trafic se modifică. Instrumentul Suprafeţe pentru timpul de conducere ţine cont de aceste variaţii c&acirc;nd selectaţi  <b>Timp conducere</b> şi bifaţi <b>Utilizare trafic</b>; cu toate acestea, nu &icirc;n toate regiunile este oferit suport pentru trafic. Faceţi clic pe linkul <b>Vizualizare disponibilitate</b> de pe instrument pentru a afla dacă acest suport este oferit &icirc;n zona care vă interesează.
             </p>
-            <p> <b>Timpul de mers pe jos</b> şi <b>Distanţa de mers pe jos</b> utilizează o viteză fixă de 5 kilometri pe oră (3.1 mile pe oră) şi urmează traseele pietonale şi străzile disponbile (ignoră regulile de circulaţie pentru autovehicule, precum drumurile cu sens unic). </p>
+            <p> <b>Timpul de mers pe jos</b> şi <b>Distanţa de mers pe jos</b> utilizează o viteză fixă de 5 kilometri pe oră (3.1 mile pe oră) şi urmează traseele pietonale şi străzile disponibile (ignoră regulile de circulaţie pentru autovehicule, precum drumurile cu sens unic). </p>
             <p> <b>Timpul de deplasare cu camionul</b> şi <b>Distanţa de deplasare cu camionul</b> utilizează viteze fixe şi respectă regulile aplicabile vehiculelor grele.
             </p> 
         </div>

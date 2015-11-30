@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -26,22 +44,22 @@
         <h2>Startpunkte mit Zielen verbinden</h2><p/>
         <h2><img src="../images/GUID-7266D30B-0250-4132-B1A5-9B59F0212FAD-web.png" alt="Startpunkte mit Zielen verbinden"></h2>
         <hr/>
-    <p>  Mit &quot;Startpunkten mit Zielen verbinden&quot; wird die Fahrzeit oder Entfernung zwischen Punktepaaren gemessen. Mit diesem Werkzeug k&ouml;nnen geradlinige Entfernungen, Entfernungen in Abh&auml;ngigkeit von einem Reisemodus wie etwa &quot;Gehen&quot; oder &quot;Fahren&quot; oder Fahrzeiten in Abh&auml;ngigkeit von einem Reisemodus erfasst werden. Mit diesem Werkzeug haben Sie folgende M&ouml;glichkeiten:
+    <p>  Mit &quot;Startpunkte mit Zielen verbinden&quot; wird die Fahrzeit oder Entfernung zwischen Punktepaaren gemessen. Mit diesem Werkzeug k&ouml;nnen geradlinige Entfernungen, Entfernungen in Abh&auml;ngigkeit von einem Reisemodus wie etwa &quot;Gehen&quot; oder &quot;Fahren&quot; oder Fahrzeiten in Abh&auml;ngigkeit von einem Reisemodus erfasst werden. Mit diesem Werkzeug haben Sie folgende M&ouml;glichkeiten:
     </p>
     <p>
         <ul>
             <li>Berechnen Sie die Gesamtstrecke oder -zeit, die Pendler von ihrem Wohnort zum Arbeitsplatz aufwenden m&uuml;ssen.
             </li>
-            <li>Messen, wie weit Kunden fahren, um in ihren Gesch&auml;ften einzukaufen. Verwenden Sie diese Informationen, um Ihr Marktpotenzial zu definieren, insbesondere bei der gezielten Ausrichtung von Werbekampagnen oder der Auswahl neuer Gesch&auml;ftsstandorte.
+            <li>Ermitteln Sie, wie weit Kunden fahren, um in Ihrem Gesch&auml;ft einzukaufen. Verwenden Sie diese Informationen, um Ihr Marktpotenzial zu definieren, insbesondere bei der gezielten Ausrichtung von Werbekampagnen oder der Auswahl neuer Gesch&auml;ftsstandorte.
             </li>
-            <li>Berechnen Sie die erwarteten Reisekilometer f&uuml;r Ihr Fahrzeugflotte. F&uuml;hren Sie anschlie&szlig;end das Werkzeug &quot;Zusammenfassen (innerhalb)&quot; aus, um die Kilometerzahl nach Bundesstaat oder anderen Regionen zu erfassen.
+            <li>Berechnen Sie die erwarteten Reisekilometer f&uuml;r Ihr Fahrzeugflotte. F&uuml;hren Sie anschlie&szlig;end das Werkzeug &quot;Zusammenfassen (innerhalb)&quot; aus, um die Kilometerzahl nach Bundesland oder anderen Regionen zu erfassen.
             </li>
         </ul>
         
     </p>
-    <p>Sie stellen Start- und Endpunkte bereit, und das Werkzeug gibt einen Layer mit Routenlinien, einschlie&szlig;lich Messungen, zwischen den zugeordneten Startpunkten und Zielen zur&uuml;ck.  
+    <p>Auf der Basis der angegebenen Start- und Endpunkte erstellt das Werkzeug einen Layer mit Routenlinien und Messwerten zwischen den zugeordneten Startpunkten und Zielen.  
     </p>
-    <p>Wenn die Option  <b>Aktuelle Kartenausdehnung verwenden</b> aktiviert ist, werden nur die Features in der Analyse ber&uuml;cksichtigt, die in der aktuellen Kartenausdehnung sichtbar sind.  Wenn diese Option deaktiviert ist, werden auch dann alle Features im Eingabe-Layer ber&uuml;cksichtigt, wenn sie sich au&szlig;erhalb der aktuellen Kartenausdehnung befinden.
+    <p>Wenn die Option  <b>Aktuelle Kartenausdehnung verwenden</b> aktiviert ist, werden nur die Features in der Analyse ber&uuml;cksichtigt, die in der aktuellen Kartenausdehnung sichtbar sind.  Wenn diese Option deaktiviert ist, werden alle Features im Eingabe-Layer ber&uuml;cksichtigt, auch diejenigen, die sich au&szlig;erhalb der aktuellen Kartenausdehnung befinden.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -52,7 +70,7 @@
             <p>Den Punkt-Layer ausw&auml;hlen, der den/die Startpunkt(e) darstellt.  Das Werkzeug unterst&uuml;tzt bis zu  5.000 Startpunkte und  5.000 Ziele. </p>
             <p>Wenn Sie einen Layer mit genau einem Startpunkt ausw&auml;hlen, wird er mit allen Zielen verbunden.
             </p>
-            <p>Neben einem Layer aus Ihrer Karte k&ouml;nnen Sie auch die Option  <b>Analyse-Layer des Living Atlas ausw&auml;hlen</b> unten in der Dropdown-Liste ausw&auml;hlen. Hiermit wird eine Galerie mit einer Sammlung von Layern ge&ouml;ffnet, die f&uuml;r viele Analysen hilfreich sind. 
+            <p class="OnlineOnly">Neben einem Layer aus Ihrer Karte k&ouml;nnen Sie auch die Option  <b>Analyse-Layer des Living Atlas ausw&auml;hlen</b> unten in der Dropdown-Liste ausw&auml;hlen. Hiermit wird eine Galerie mit einer Sammlung von Layern ge&ouml;ffnet, die f&uuml;r viele Analysen hilfreich sind. 
             </p>
         </div>
     </div>
@@ -65,7 +83,7 @@
             </p>
             <p>Wenn ein Startpunkt und viele Ziele vorhanden sind, verbindet das Werkzeug den Startpunkt mit jedem Ziel.
             </p>
-            <p>Neben einem Layer aus Ihrer Karte k&ouml;nnen Sie auch die Option  <b>Analyse-Layer des Living Atlas ausw&auml;hlen</b> unten in der Dropdown-Liste ausw&auml;hlen. Hiermit wird eine Galerie mit einer Sammlung von Layern ge&ouml;ffnet, die f&uuml;r viele Analysen hilfreich sind. 
+            <p class="OnlineOnly">Neben einem Layer aus Ihrer Karte k&ouml;nnen Sie auch die Option  <b>Analyse-Layer des Living Atlas ausw&auml;hlen</b> unten in der Dropdown-Liste ausw&auml;hlen. Hiermit wird eine Galerie mit einer Sammlung von Layern ge&ouml;ffnet, die f&uuml;r viele Analysen hilfreich sind. 
             </p>
             <p> Wenn viele Startpunkte und viele Ziele vorhanden sind, ben&ouml;tigen Sie zwei Felder zur Definition der Startpunkt-Ziel-Paare: <b>ID-Feld in Startpunkten</b> und <b>&Uuml;bereinstimmendes ID-Feld in Zielen</b>. Das Werkzeug verbindet die Startpunkt-Ziel-Paare w&auml;hrend der Analyse. Angenommen, Sie verf&uuml;gen &uuml;ber zwei Startpunkte mit den ID-Feldwerten <code>Rosie</code> und <code>Harold</code> und zwei Ziele mit denselben ID-Werten. Der Startpunkt <code>Rosie</code> wird mit dem Ziel <code>Rosie</code> und <code>Harold</code> wird mit <code>Harold</code> verbunden. Es werden keine anderen Verbindungen hergestellt bzw. Messungen durchgef&uuml;hrt.
             </p>
@@ -74,7 +92,7 @@
         </div>
     </div>
     <div id="measurementType">
-        <div><h2>Messwerkzeug</h2></div>
+        <div><h2>Messen</h2></div>
         <hr/>
         <div>
             
@@ -98,13 +116,13 @@
                         </p>
                         <p>Sie k&ouml;nnen diese Einstellungen f&uuml;r historische Verkehrsdaten verwenden, um beispielsweise folgende Frage zu stellen: Wie lange dauert es im Allgemeinen, diese Ziele zu erreichen, wenn an einem Mittwoch um 11:30 Uhr losgefahren wird?&quot;.
                         </p>
-                        <p>Die festgelegte Zeit bezieht sich auf die Zeitzone, in der sich die Startpunkte befinden. Wenn Sie die Uhrzeit also auf 8:00 Uhr festlegen und &uuml;ber zwei Startpunkte verf&uuml;gen, einen in New York und den anderen in Los Angeles, werden die Routen f&uuml;r die Abfahrtzeit von 8:00 Uhr erstellt. Eastern Time und 8:00 Uhr. Bzw. Pacific Time.
+                        <p>Die festgelegte Zeit bezieht sich auf die Zeitzone, in der sich die Startpunkte befinden. Wenn Sie die Uhrzeit also auf 8:00 Uhr festlegen und &uuml;ber zwei Startpunkte verf&uuml;gen, einen in New York und den anderen in Los Angeles, werden die Routen f&uuml;r die Abfahrtzeit von 8:00 Uhr Eastern Time bzw. 8:00 Uhr Pacific Time erstellt.
                         </p>
                     </li>
                 </ul>
                 
             </p>
-            <p>Beachten Sie, dass Zeit vergeht und Verkehrslagen sich &auml;ndern w&auml;hrend sich ein Fahrzeug vom Startpunkt wegbewegt. Das Werkzeug &quot;Startpunkte mit Zielen verbinden&quot; ber&uuml;cksichtigt diese Unterschiede, wenn Sie die Option  <b>Verkehrsdaten verwenden</b> aktivieren. Allerdings unterst&uuml;tzen nicht alle Regionen Verkehrsdaten. 
+            <p>Beachten Sie, dass Zeit vergeht und Verkehrslagen sich &auml;ndern, w&auml;hrend sich ein Fahrzeug vom Startpunkt wegbewegt. Das Werkzeug &quot;Startpunkte mit Zielen verbinden&quot; ber&uuml;cksichtigt diese Unterschiede, wenn Sie die Option  <b>Verkehrsdaten verwenden</b> aktivieren. Allerdings unterst&uuml;tzen nicht alle Regionen Verkehrsdaten. 
 Klicken Sie in dem Werkzeug auf den Link <b>Verf&uuml;gbarkeit anzeigen</b>, um zu ermitteln, ob dies f&uuml;r Ihr Einzugsgebiet zutrifft.
             </p>
         </div>

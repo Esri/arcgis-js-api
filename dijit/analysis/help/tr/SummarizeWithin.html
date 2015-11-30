@@ -7,24 +7,42 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>İçinde Özetle</h2><p/>
-        <h2><img src="../images/GUID-9B12DB3F-AA7B-41EB-87C6-D2DEC3D52DA9-web.png" alt="Dahilinde &Ouml;zetle"></h2>
+        <h2><img src="../images/GUID-9B12DB3F-AA7B-41EB-87C6-D2DEC3D52DA9-web.png" alt="İ&ccedil;inde &Ouml;zetle"></h2>
         <hr/>
     <p>Bu ara&ccedil; ilk girdi katmanındaki alanların sınırları dahilinde olan detayları (ve detay kısımlarını) bulur.  &Ouml;rneğin:
         <ul>
@@ -43,10 +61,9 @@
         <div><h2>Sınırları içindeki diğer detayları özetlemek için alan katmanı seçin</h2></div>
         <hr/>
         <div>
-            <p>Sınırları i&ccedil;inde kalan detayları &ouml;zetlemek i&ccedil;in kullanılacak alan katmanıdır.
-
+            <p>Sınırları i&ccedil;inde kalan detayları &ouml;zetlemek i&ccedil;in kullanılacak alan katmanıdır. 
             </p>
-            <p>Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, aşağı a&ccedil;ılan listenin altında bulunan  <b>Living Atlas Analiz Katmanı Se&ccedil;</b> &ouml;ğesini de belirleyebilirsiniz. Bu, pek &ccedil;ok analiz i&ccedil;in kullanılabilen katman koleksiyonu i&ccedil;eren bir galeri a&ccedil;ar. 
+            <p class="OnlineOnly">Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, aşağı a&ccedil;ılan listenin altında bulunan  <b>Living Atlas Analiz Katmanı Se&ccedil;</b> &ouml;ğesini de belirleyebilirsiniz. Bu, pek &ccedil;ok analiz i&ccedil;in kullanılabilen katman koleksiyonu i&ccedil;eren bir galeri a&ccedil;ar. 
             </p>
         </div>
     </div>
@@ -56,7 +73,7 @@
         <div>
             <p>Yukarıdaki girdi katmanındaki detayların sınırları i&ccedil;inde kalan bu katmandaki detaylar &ouml;zetlenecek. 
             </p>
-            <p>Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, aşağı a&ccedil;ılan listenin altında bulunan  <b>Living Atlas Analiz Katmanı Se&ccedil;</b> &ouml;ğesini de belirleyebilirsiniz. Bu, pek &ccedil;ok analiz i&ccedil;in kullanılabilen katman koleksiyonu i&ccedil;eren bir galeri a&ccedil;ar. 
+            <p class="OnlineOnly">Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, aşağı a&ccedil;ılan listenin altında bulunan  <b>Living Atlas Analiz Katmanı Se&ccedil;</b> &ouml;ğesini de belirleyebilirsiniz. Bu, pek &ccedil;ok analiz i&ccedil;in kullanılabilen katman koleksiyonu i&ccedil;eren bir galeri a&ccedil;ar. 
             </p>
         </div>
     </div>
@@ -87,7 +104,7 @@
         <div><h2>İstatistik ekleme kaynağı</h2></div>
         <hr/>
         <div>
-            <p>Yakın &ccedil;izgilerin i&ccedil;inde sayısal &ouml;zniteliklerinin istatistiklerini isteğe bağlı olarak hesaplayabilirsiniz. 
+            <p>&Ouml;zetlenecek &ccedil;izgilerin sayısal &ouml;zniteliklerine ait istatistikleri isteğe bağlı olarak hesaplayabilirsiniz. 
             </p>
             <p> <b>İ&ccedil;te kalan &ccedil;izgilerin toplam uzunluğu</b> onay kutusu, işaretlendiğinde, her alan sınırı dahilindeki &ccedil;izgilerin toplam uzunluğunu hesaplayacaktır.  Ek olarak her alan sınırının i&ccedil;indeki &ccedil;izgilerin sayısal &ouml;zniteliklerinin istatistiklerini de hesaplayabilirsiniz.
             </p>
@@ -110,7 +127,7 @@
         <div><h2>İstatistik ekleme kaynağı</h2></div>
         <hr/>
         <div>
-            <p>Yakın alanların i&ccedil;inde sayısal &ouml;zniteliklerinin istatistiklerini isteğe bağlı olarak hesaplayabilirsiniz. 
+            <p>&Ouml;zetlenecek alanların sayısal &ouml;zniteliklerine ait istatistikleri isteğe bağlı olarak hesaplayabilirsiniz. 
             </p>
             <p> <b>Toplam alan kullanımı</b> onay kutusu, işaretlendiğinde, ilk girdi katmanının her alan sınırı dahilindeki detayların toplam alanını hesaplar.  Ek olarak her alan sınırının i&ccedil;indeki &ouml;zelliklerin sayısal &ouml;zniteliklerinin istatistiklerini de hesaplayabilirsiniz.
             </p>
@@ -127,6 +144,29 @@
                 </li>
             </ul>
             
+        </div>
+    </div>
+    <div id="StatisticsNoLayer">
+        <div><h2>İstatistik ekleme kaynağı</h2></div>
+        <hr/>
+        <div>
+            <p>&Ouml;zetlenecek bir katman se&ccedil;tikten sonra, girdi alanı katmanı i&ccedil;inde kalan noktaların, &ccedil;izgileri veya alanların sayısal &ouml;zniteliklerine ait istatistikleri isteğe bağlı olarak hesaplayabilirsiniz. 
+            </p>
+            <ul>
+                <li> <b>Toplam</b> - Belirtilen alanın toplam değeri.
+                </li>
+                <li> <b>Ortalama</b> - Belirtilen alanın ortalaması veya orta değeri.
+                </li>
+                <li> <b>Minimum</b> - Belirtilen alandaki en k&uuml;&ccedil;&uuml;k değer.
+                </li>
+                <li> <b>Maksimum</b> - Belirtilen alandaki en b&uuml;y&uuml;k değer.
+                </li>
+                <li> <b>Std. Sapma</b>&mdash;Belirtilen alandaki değerlerin standart sapmasıdır
+                </li>
+            </ul>
+            
+            <p>&Ouml;zetlediğiniz detay t&uuml;rlerine bağlı olarak yakın nokta sayısını, toplam &ccedil;izgi uzunluğunu veya toplam alanı hesaplayabilirsiniz.
+            </p>
         </div>
     </div>
     <div id="GroupBy">

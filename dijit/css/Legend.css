@@ -40,6 +40,10 @@
   height: 120px;
 }
 
+.esriLegendTransparencyRamp {
+  background-image: url("../images/transparent-bg.png");
+}
+
 .esriLegendColorRampTick {
   position: absolute; 
   width: 4px; 

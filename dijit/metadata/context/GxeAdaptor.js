@@ -21,5 +21,4 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 define(["dojo/_base/declare","dojo/_base/lang","dojo/_base/array","dojo/has","dojo/Deferred","dijit/_WidgetBase","../../../kernel"],function(e,t,n,r,o,a,u){var i=e([a],{postCreate:function(){this.inherited(arguments)},afterEditDocumentLoad:function(){},afterViewDocumentLoad:function(){},deleteMetadata:function(){var e=new o;return e.resolve(),e},getAllowEditMetadata:function(){return!1},getAllowDeleteMetadata:function(){return!1},getAllowPullItem:function(){return!1},getAllowPushToItem:function(){return!1},getOriginalXml:function(){return null},pullItem:function(){var e=new o;return e.resolve(),e},saveXml:function(){var e=new o;return e.resolve(),e}});return r("extend-esri")&&t.setObject("dijit.metadata.context.GxeAdaptor",i,u),i});

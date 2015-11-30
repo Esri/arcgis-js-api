@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -65,7 +83,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Σύνοψη πλησιέστερων</h2></td>
+                    <td><h2>Σύνοψη Πλησιέστερων</h2></td>
                     <td>
                     <img src="../images/GUID-A5033D27-81B6-42E7-BA38-50D25C1CCCCA-web.png" class="titleImage" alt="&Sigma;ύ&nu;&omicron;&psi;&eta; &Pi;&lambda;&eta;&sigma;&iota;έ&sigma;&tau;&epsilon;&rho;&omega;&nu;">
                     </td>
@@ -87,7 +105,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Σύνοψη εντός</h2></td>
+                    <td><h2>Σύνοψη στο Εσωτερικό</h2></td>
                     <td>
                     <img src="../images/GUID-9B12DB3F-AA7B-41EB-87C6-D2DEC3D52DA9-web.png" class="titleImage" alt="&Sigma;ύ&nu;&omicron;&psi;&eta; &sigma;&tau;&omicron; &Epsilon;&sigma;&omega;&tau;&epsilon;&rho;&iota;&kappa;ό">
                     </td>
@@ -401,7 +419,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Εύρεση πλησιέστερου</h2></td>
+                    <td><h2>Εύρεση Πλησιέστερου</h2></td>
                     <td>
                     <img src="../images/GUID-150C2484-7459-405A-8835-B4E72CD49738-web.png" class="titleImage" alt="&Epsilon;ύ&rho;&epsilon;&sigma;&eta; &Pi;&lambda;&eta;&sigma;&iota;έ&sigma;&tau;&epsilon;&rho;&omicron;&upsilon;">
                     </td>
@@ -416,7 +434,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Προγραμματισμός διαδρομών</h2></td>
+                    <td><h2>Προγραμματισμός Διαδρομών</h2></td>
                     <td>
                     <img src="../images/GUID-09CC6D60-3C72-42D7-968E-B0663F0B1EBB-web.png" class="titleImage" alt="&Pi;&rho;&omicron;&gamma;&rho;&alpha;&mu;&mu;&alpha;&tau;&iota;&sigma;&mu;ό&sigmaf; &Delta;&iota;&alpha;&delta;&rho;&omicron;&mu;ώ&nu;">
                     </td>

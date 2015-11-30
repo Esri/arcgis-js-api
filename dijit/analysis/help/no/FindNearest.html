@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -30,7 +48,7 @@
         <ul>
             <li>Hvor er n&aelig;rmeste park?
             </li>
-            <li>Til hvilket sykehus er det kortest kj&oslash;retid herfra?Hvor lang tid vil turen ta en tirsdag ettermiddag klokken fire i rushtrafikken?
+            <li>Til hvilket sykehus er det kortest kj&oslash;retid herfra? Hvor lang tid vil turen ta en tirsdag ettermiddag klokken fire i rushtrafikken?
             </li>
             <li>Hva er veiavstanden mellom disse storbyene?
             </li>
@@ -46,10 +64,10 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="analysisLayer">
-        <div><h2>Velg punktlaget som som de nærmeste lokasjonene skal finnes fra</h2></div>
+        <div><h2>Velg laget som de nærmeste lokasjonene skal finnes fra</h2></div>
         <hr/>
         <div>
-            <p>Verkt&oslash;yet Finn n&aelig;rmeste m&aring;ler fra punktene i laget du angir her (startlokasjonene), til punktene du angir i den neste parameteren. Verkt&oslash;yet st&oslash;tter opptil 1&nbsp;000 lokasjoner i hver lag.
+            <p>Verkt&oslash;yet Finn n&aelig;rmeste m&aring;ler fra geoobjektene i laget du angir her (startlokasjonene), til lokasjonene du angir i den neste parameteren. Verkt&oslash;yet st&oslash;tter opptil 1&nbsp;000 geoobjekter i hvert lag.
 
             </p>
         </div>
@@ -58,9 +76,9 @@
         <div><h2>Finn de nærmeste lokasjonene i</h2></div>
         <hr/>
         <div>
-            <p>Verkt&oslash;yet Finn n&aelig;rmeste m&aring;ler fra hver av lokasjonene i det f&oslash;rste laget til lokasjonene i dette laget. Verkt&oslash;yet st&oslash;tter opptil 1&nbsp;000 lokasjoner i hver lag.
+            <p>Verkt&oslash;yet Finn n&aelig;rmeste m&aring;ler fra hvert av geoobjektene i det f&oslash;rste laget til lokasjonene i dette laget. Verkt&oslash;yet st&oslash;tter opptil 1&nbsp;000 lokasjoner i hver lag.
             </p>
-            <p>In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            <p class="OnlineOnly">In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
             </p>
         </div>
     </div>
@@ -91,11 +109,11 @@
                         </p>
                         <p>Du kan bruke disse historiske trafikkinnstillingen til &aring; stille sp&oslash;rsm&aring;l som &quot;Hvilke geoobjekter n&aring;r jeg raskeste hvis jeg reier fra startgeoobjektet klokken 11.30 p&aring; en onsdag?&quot;. 
                         </p>
-                        <p>Klokkeslettet du angir, refererer til tidssonen som startgeoobjektene befinner seg i. S&aring; hvis du for eksempel velger klokkeslettet 8.00 og du har to startgeoobjekter, ett i New York og ett i Los Angeles, blir de n&aelig;rmeste lokasjonene funnet ved &aring; anta at avreisetidspunktet er henholdsvis klokken 8.00EST og kl. 8.00PST.
+                        <p>Klokkeslettet du angir, refererer til tidssonen som startgeoobjektene befinner seg i. S&aring; hvis du for eksempel velger klokkeslettet 8.00 og du har to startgeoobjekter, ett i New York og ett i Los Angeles, blir de n&aelig;rmeste lokasjonene funnet ved &aring; anta at avreisetidspunktet er henholdsvis klokken 8.00 EST og kl. 8.00 PST.
                         </p>
                     </li>
                 </ul>
-                V&aelig;r oppmerksom p&aring; at idet et kj&oslash;ret&oslash;y kj&oslash;rer fra et punkt, s&aring; g&aring;r tiden og trafikkforholdene endrer seg. Verkt&oslash;yet tar hensyn til disse variasjonene n&aring;r du merker av for <b>Bruk trafikk</b>. Det er imidlertid ikke st&oslash;tte for denne funksjonen i alle omr&aring;der. Klikk p&aring; koblingen <b>Vis tilgjengelighet</b> i verkt&oslash;yet for &aring; finne ut om funksjonen st&oslash;ttes i ditt studieomr&aring;de. 
+                Legg merke til at idet et kj&oslash;ret&oslash;y kj&oslash;rer fra et punkt, s&aring; g&aring;r tiden og trafikkforholdene endres. Verkt&oslash;yet tar hensyn til disse variasjonene n&aring;r du merker av for <b>Bruk trafikk</b>. Det er imidlertid ikke st&oslash;tte for denne funksjonen i alle omr&aring;der. Klikk p&aring; koblingen <b>Vis tilgjengelighet</b> i verkt&oslash;yet for &aring; finne ut om funksjonen st&oslash;ttes i ditt studieomr&aring;de. 
             </p>
         </div>
     </div>

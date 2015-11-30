@@ -21,5 +21,4 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 define(["../PopupManager"],function(p){return{add:function(a,n){a.popupManager||(a.popupManager=new p(n),a.popupManager.setMap(a))},remove:function(p){var a=p.popupManager;a&&(a.unsetMap(),p.popupManager=void 0)}}});

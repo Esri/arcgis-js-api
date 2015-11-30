@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -30,7 +48,7 @@
     </p>
     <p>Jūs sniedzat rīkam virkni pieturas un transportlīdzekļu skaitu, lai apmeklētu pieturvietas. Rīks pie&scaron;ķir apstā&scaron;anās vietas transportlīdzekļiem un atgriež mar&scaron;rutus parādot, kā katrs transportlīdzeklis var sasniegt sev uzticētās apstā&scaron;anās vietas, kas prasītu vismazāk laika.
     </p>
-    <p>Izmantojot mar&scaron;rutu plāno&scaron;anu, mobilais darbaspēks nokļūst lielākā skaitā darba vietu, patērējot mazāk laika, tādējādi tiek uzlabota produktivitāte un klientu apkalpo&scaron;ana.
+    <p>Izmantojot iespēju Plānot mar&scaron;rutus, mobilais darbaspēks var sasniegt vairāk darba objektu mazākā laikā, uzlabojot produktivitāti un klientu apkalpo&scaron;anu.
         <ul>
             <li>Iepazīt mājas, restorānus, vai būvlaukumus
                 
@@ -54,13 +72,14 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="stopsLayer">
-        <div><h2>Izvēlieties punkta slāni, kas pārstāv apmeklējamās pieturas</h2></div>
+        <div><h2>Izvēlieties punkta slāni, kas parāda apmeklējamās pieturas</h2></div>
         <hr/>
         <div>
-            <p>Izvēlieties punktu slāni, kas mar&scaron;rutiem (vai transportlīdzekļiem) jāapmeklē.  &Scaron;ie punkti izvadē kļūst par pie&scaron;ķirtām vai nepie&scaron;ķirtām pieturām.
-
+            <p>Izvēlieties to punktu slāni, kas jāapmeklē mar&scaron;rutiem (vai transportlīdzekļiem).  &Scaron;ie punkti izvadē kļūst par pie&scaron;ķirtām vai nepie&scaron;ķirtām pieturām. 
             </p>
-            <p>Papildus slāņa izvēlei no kartes varat atlasīt  <b>Izvēlēties Living Atlas analīzes slāni</b> nolaižamā saraksta apak&scaron;ā. Tādējādi tiek atvērta galerija, kurā ir daudzām analīzēm noderīgu slāņu galerija. 
+            <p class="OnlineOnly">Papildus slāņa izvēlei no kartes varat atlasīt  <b>Izvēlēties Living Atlas analīzes slāni</b> nolaižamā saraksta apak&scaron;ā. Tādējādi tiek atvērta galerija, kurā ir daudzām analīzēm noderīgu slāņu galerija. 
+            </p>
+            <p>Rīks atbalsta līdz pat 2000&nbsp;ievades elementiem. 
             </p>
         </div>
     </div>
@@ -82,9 +101,9 @@
             </p>
             <p>Kad ir norādīta viena punkta vieta, visi transportlīdzekļi dodas ceļā no &scaron;ī punkta neatkarīgi no tā, kāds transportlīdzekļu skaits ir pieejams. Jūs varat izvēlēties punktu slāni ar vienu punktu vai pievienot kādu punktu kartē&nbsp;&mdash; izvēlieties  <b>Pievienot punktu kartē</b>, noklik&scaron;ķiniet uz blakus eso&scaron;ā punkta rediģē&scaron;anas pogas un pēc tam noklik&scaron;ķiniet kartē. 
             </p>
-            <p>Kad vairākās vietas ir norādītas, katram transportlīdzeklim ir jābūt saistītam ar savu punktu. Transportlīdzekļu skaitam jāatbilst punktu skaitam &scaron;ajā slānī. Izvēlieties slāni ar vairākiem punktiem un norādat lauks, kas unikāli identificē atsevi&scaron;ķus mar&scaron;rutus, transportlīdzekļus vai vadītājus  <b>Mar&scaron;ruta ID laukā</b> izkrīto&scaron;ajā sarakstlodziņā.
+            <p>Kad vairākās vietas ir norādītas, katram transportlīdzeklim ir jābūt saistītam ar savu punktu. Transportlīdzekļu skaitam jāatbilst punktu skaitam &scaron;ajā slānī. Izvēlieties slāni ar vairākiem punktiem un norādiet lauks, kas unikāli identificē atsevi&scaron;ķus mar&scaron;rutus, transportlīdzekļus vai vadītājus  <b>Mar&scaron;ruta ID laukā</b> izkrīto&scaron;ajā sarakstlodziņā.
             </p>
-            <p>Sākuma laiks ir vienāds visiem mar&scaron;rutiem. Laika josla starta laikam ir tāda pats kā laika zona, kurā sākumpunkts vai punkti atrodas, tāpēc pārliecieties, vai laiks, ko ievadījāt, ir vietējais laiks. Piemēram, pieņemsim, ka jums ir Pacific Standard Time (UTC-8: 00), un transportlīdzekļiem, kuriem veicat mar&scaron;rutē&scaron;anu ir Mountain Standard Time (UTC-7: 00). Ja pa&scaron;laik ir 9:30 pēc Klusā okeāna laika (10:30 pēc Kalnu standarta laika joslas), un jūsu transportlīdzekļiem jādodas ceļā pēc 30&nbsp;minūtēm, jums jāiestata sākuma laiks 11:00. 
+            <p>Sākuma laiks ir vienāds visiem mar&scaron;rutiem. Laika josla starta laikam ir tāda pats kā laika zona, kurā sākumpunkts vai punkti atrodas, tāpēc pārliecieties, vai laiks, ko ievadījāt, ir vietējais laiks. Piemēram, pieņemsim, ka jums ir Pacific Standard Time (UTC-8: 00), un transportlīdzekļiem, kuriem veicat mar&scaron;rutē&scaron;anu ir Mountain Standard Time (UTC-7: 00). Ja pa&scaron;laik ir 9:30 pēc Klusā okeāna laika (10:30 pēc Kalnu standarta laika), un jūsu transportlīdzekļiem jādodas ceļā pēc 30&nbsp;minūtēm, jums jāiestata sākuma laiks 11:00. 
             </p>
             <p>Ja jūsu transportlīdzekļi sāk no dažādām laika joslām, sākuma laiks nevar būt sinhrons, tā vietā, viņi tiek kompensēti. Piemēram, ja viens mar&scaron;ruts sākas no vietas Klusā okeāna laika joslā, bet otrs&nbsp;&mdash; no vietas Kalnu standarta laika joslā, un jūs ievadāt sākuma laiku 11:00, mar&scaron;ruts Klusā okeāna laika joslā sāksies 11:00 pēc Klusā okeāna laika, bet mar&scaron;ruts Kalnu standarta laika joslā sāksies 11:00 pēc Kalnu standarta laika, t.i., ar vienas stundas starpību.
             </p>
@@ -96,7 +115,7 @@
         <div>
             <p>Norādiet, kur transportlīdzekļi beigs savus mar&scaron;rutus.
             </p>
-            <p>Jūs varat konfigurēt ceļus, lai beigtu vienā no trim vietām: 
+            <p>Varat konfigurēt mar&scaron;rutus, lai beigtu vienā no trim vietām: 
                 <ul>
                     <li>Tajā pa&scaron;ā vietā, kur ceļi sākās, neatkarīgi no tā, vai tie nāk no vienas vai daudzām vietām
                     </li>
@@ -129,17 +148,17 @@
         <div><h2>Maksimālais pieturu skaits vienam transportlīdzeklim</h2></div>
         <hr/>
         <div>
-            <p>&Scaron;is ir viens no diviem parametriem, kas līdzsvaro kopējo slodzi pāri ceļiem. Varat norādīt vērtību starp 1&nbsp;un  200. 
+            <p>&Scaron;is ir viens no diviem parametriem, kas līdzsvaro kopējo slodzi pāri ceļiem. Varat norādīt vērtību starp 1 un  200. 
             </p>
             <p>Samazinot maksimālo skaitu pieturām, kas var tikt pie&scaron;ķirts katram transportlīdzeklim, transportlīdzekļiem, visticamāk, tiks pie&scaron;ķirts vienāds skaits ar pieturām, kas tiem pie&scaron;ķirtas. Tas palīdz līdzsvarot darba slodzi autovadītāju vidū. Trūkums, tomēr, ir tāds, ka tas var izraisīt risinājumu, kas ir mazāk efektīvs.
             </p>
-            <p>Palielinot apstā&scaron;anos skaitu uz vienu transportlīdzekli, rīkam ir vairāk iespēju atrast efektīvākus risinājumus, taču darba apjoms var tikt sadalīts nevienlīdzīgi starp autovadītājiem un transportlīdzekļiem. Ņemiet vērā, ka varat līdzsvarot slodzi ar laiku, kā arī ar pieturvietu skaitu, norādot vērtību parametram  <b>Ierobežots kopējā mar&scaron;ruta laiks katram transportlīdzeklim</b>.
+            <p>Palielinot pieturas uz vienu transportlīdzekli, rīkam ir vairāk brīvības, lai atrastu efektīvākus risinājumus, taču darba apjoms var tikt nevienlīdzīgi sadalīts starp autovadītājiem un transportlīdzekļiem. Ņemiet vērā, ka varat līdzsvarot slodzi ar laiku, kā arī ar pieturvietu skaitu, norādot vērtību parametram  <b>Ierobežots kopējā mar&scaron;ruta laiks katram transportlīdzeklim</b>.
             </p>
             <p>&Scaron;ie piemēri demonstrē sekas, ierobežojot maksimālās apstā&scaron;anās uz vienu transporta līdzekli, vai kopējo laiku uz vienu transportlīdzekli. Visos piemēros ir se&scaron;as pieturvietas un divi ceļi, kas sākas tajā pa&scaron;ā vietā.
             </p>
             <table border="1">
             <tr>
-                <td> <img src="../images/GUID-820BDC1E-97CB-457F-9235-7105D274AFEB-web.png" alt="Līdzsvarotas pieturas un ceļojuma laiks">
+                <td> <img src="../images/GUID-820BDC1E-97CB-457F-9235-7105D274AFEB-web.png" alt="Līdzsvaroti pieturu un ceļojumu laiki">
                 </td>
                 <td>
                     <p>Līdzsvarotas ceļojuma reizes un pieturas vienā mar&scaron;rutā:
@@ -159,10 +178,10 @@
                 </td>
             </tr>
             <tr>
-                <td> <img src="../images/GUID-082615A2-7F07-49AB-92AF-C82CEB813E6F-web.png" alt="Līdzsvarots ceļojuma laiks">
+                <td> <img src="../images/GUID-082615A2-7F07-49AB-92AF-C82CEB813E6F-web.png" alt="Līdzsvaroti ceļojumu laiki">
                 </td>
                 <td>
-                    <p>Nesabalancētas mar&scaron;ruta pieturas, bet līdzsvarots ceļojuma laiks:
+                    <p>Nesabalansētas mar&scaron;ruta pieturas, bet līdzsvarots ceļojuma laiks:
                     </p>
                     <p>Apstā&scaron;anās ir tajā pa&scaron;ā vietā, kur iepriek&scaron;ējā grafikā, bet palielinot maksimālo apstā&scaron;anos vienā mar&scaron;rutā, un ierobežojot kopējo ceļojuma laiku uz vienu transportlīdzekli, ceļa laiki tiek līdzsvaroti.
                     </p>
@@ -192,10 +211,10 @@
         </div>
     </div>
     <div id="resultsLayer">
-        <div><h2>Rezultāta slāņa nosaukums</h2></div>
+        <div><h2>Rezultātu slāņa nosaukums</h2></div>
         <hr/>
         <div>
-            <p>Tas ir grupas slāņa nosaukums, kas tiks izveidots sadaļā  <b>Mans Saturs</b> un pievienots kartei. Grupas slānī tiks ietverts katras tālāk minētās vienības slānis: mar&scaron;ruti, apstā&scaron;anās un virzieni.
+            <p>Tas ir grupas slāņa nosaukums, kas tiks izveidots sadaļā  <b>Mans saturs</b> un pievienots kartei. Grupas slānī tiks ietverts katras tālāk minētās vienības slānis: mar&scaron;ruti, pieturas un virzieni.
             </p>
             <p>Izmantojot nolaižamo sarakstu  <b>Saglabāt rezultātus</b>, varat norādīt mapes nosaukumu sadaļā <b>Mans saturs</b>, kur rezultāts tiks saglabāts.
             </p>

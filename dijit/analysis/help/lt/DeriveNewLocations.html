@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -39,20 +57,20 @@
         <div>
             <p>Paspauskite  <b>Pridėti i&scaron;rai&scaron;ką</b> mygtuką, kad įvestumėte i&scaron;rai&scaron;ką. Galite pridėti kelias i&scaron;rai&scaron;kas. Įvedus i&scaron;rai&scaron;kas ir paspaudus <b>Vykdyti analizę</b> mygtuką, elementai analizės sluoksnyje filtruojami pagal kiekvieną i&scaron;rai&scaron;ką. Elementų dalys, tinkančios pagal visas i&scaron;rai&scaron;kas, įra&scaron;omos į rezultatų sluoksnį.
             </p>
-            <p>Yra du pagrindiniai i&scaron;rai&scaron;kų, kurias galite sukurti, tipai; atributinės ir erdvinės. Atributinės i&scaron;rai&scaron;kos yra laukų reik&scaron;mių užklausos, tokios kaip  <code>kur pavadinimas yra 'San Franciskas'</code>. Galite pasirinkti vieną i&scaron; keturių erdvinių i&scaron;rai&scaron;kų tipų:
+            <p>Yra du pagrindiniai i&scaron;rai&scaron;kų, kurias galite sukurti, tipai; atributinės ir erdvinės. Atributinės i&scaron;rai&scaron;kos yra laukų reik&scaron;mių užklausos, tokios, kaip  <code>kur pavadinimas yra 'San Franciskas'</code>. Yra keturi erdvinių i&scaron;rai&scaron;kų tipai:
                 <ul>
                     <li> <b>nutolęs atstumu</b>: elemento dalys, esančios tam tikru atstumu nuo kito sluoksnio elemento.  Pavyzdžiui, rasti sklypų dalis, esančias 500 metrų nuo Los Andželo upės.
                     </li>
                     <li> <b>pilnai talpina</b>: elementas turi pilnai talpinti visą kito sluoksnio elementą.  Pavyzdžiui, rasti baseinus, į kuriuos pilnai patenka pramonės paskirties sklypai. Jokia sklypo dalis negali būti už baseino ribų.
                     </li>
-                    <li> <b>pilnai viduje</b>: elementas turi būti pilnai pakliūti į kito sluoksnio elementą.  Pavyzdžiui, rasti mokyklų apylinkes, kurios pilnai patenka į miesto ribas. Jokia mokyklos apylinkės dalis negali būti už miesto ribų.
+                    <li> <b>pilnai viduje</b>: elementas turi būti pilnai supamas kito sluoksnio elemento.  Pavyzdžiui, rasti mokyklų apylinkes, kurios pilnai patenka į miesto ribas. Jokia mokyklos apylinkės dalis negali būti už miesto ribų.
                     </li>
                     <li> <b>sukirsti</b>: elementai ar jų dalys, kurie persidengia su kito sluoksnio elementais.  Pavyzdžiui, rasti mi&scaron;ko vietas nuniokotas kelių gaisrų nacionaliniame parke. I&scaron;degusi teritorija už parko ribų nebus įtraukta.
                     </li>
                 </ul>
                 
             </p>
-            <p>Kiekviena erdvinė i&scaron;rai&scaron;ka turi atitinkamą neiginį;  <b>nėra pasirinktu atstumu </b>, <b>netalpina pilnai</b>, <b>nėra pilnai viduje</b> ir <b>nesikerta</b>.
+            <p>Kiekviena erdvinė i&scaron;rai&scaron;ka turi atitinkamą neiginį;  <b>nėra pasirinktu atstumu</b>, <b>netalpina pilnai</b>, <b>nėra pilnai viduje</b> ir <b>nesikerta</b>.
             </p> 
         </div>
     </div>

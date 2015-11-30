@@ -21,5 +21,4 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../kernel"],function(e,a,s,d){var l=e(null,{declaredClass:"esri.tasks.LegendLayer",layerId:null,subLayerIds:null});return s("extend-esri")&&a.setObject("tasks.LegendLayer",l,d),l});

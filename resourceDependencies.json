@@ -56,6 +56,8 @@
         "esri/layers/RasterFunction",
         "esri/layers/StreamLayer",
         "esri/layers/TileInfo",
+        "esri/layers/vector-tile",
+        "esri/layers/VectorTileLayer",
         "esri/virtualearth/VETiledLayer",
         "esri/layers/WebTiledLayer",
         "esri/layers/WMSLayer",
@@ -356,6 +358,13 @@
     "esri/layers/FeatureLayer": [
         "esri/plugins/spatialIndex"
     ],
+    "esri/layers/GraphicsLayer": [
+        "dojox/gfx/filters",
+        "dojox/gfx/svgext"
+    ],
+    "esri/layers/HeatmapManager": [
+        "esri/workers/heatmapCalculator"
+    ],
     "esri/layers/Raster": [
         "esri/layers/rasterFormats/JpgPlus",
         "esri/layers/rasterFormats/Png",
@@ -363,6 +372,9 @@
     ],
     "esri/layers/rasterFormats/ImageCanvasDecoder": [
         "esri/layers/rasterFormats/Zlib"
+    ],
+    "esri/layers/VectorTileLayer": [
+        "esri/layers/vector-tile"
     ],
     "esri/layers/WMSLayer": [
         "esri/images/pixel.png"

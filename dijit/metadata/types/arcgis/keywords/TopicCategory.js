@@ -21,5 +21,4 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../../../kernel","../../../base/Descriptor","dojo/text!./templates/TopicCategory.html","dojo/i18n!../../../nls/i18nCodelists"],function(e,t,o,i,a,s,d){var r=e(a,{i18nCodelists:d,i18nTopicCat:d.MD_TopicCategoryCode,templateString:s});return o("extend-esri")&&t.setObject("dijit.metadata.types.arcgis.keywords.TopicCategory",r,i),r});

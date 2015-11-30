@@ -21,7 +21,6 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 /*
     * Extracted from pdf.js
     * https://github.com/andreasgal/pdf.js

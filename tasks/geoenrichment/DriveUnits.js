@@ -21,5 +21,4 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 define(["dojo/_base/lang","../../units"],function(i,n){var e=i.clone(n);return i.mixin(e,{MINUTES:"esriDriveTimeUnitsMinutes"}),e});

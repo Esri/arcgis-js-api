@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -47,9 +65,9 @@
         </ul>
         
     </p>
-    <p>Įrankio Planuoti mar&scaron;rutus i&scaron;vestyje yra sustojimų sluoksnis, sukoduotų pagal mar&scaron;rutus, kuriems jie priskirti, mar&scaron;rutų sluoksnis, rodantis trumpiausius kelius priskirtiems sustojimams pasiekti, ir nepriskirtų sustojimų sluoksnis, jei yra sustojimų, kurių nepavyko pasiekti. 
+    <p>Įrankio Planuoti mar&scaron;rutus i&scaron;vestyje yra sustojimų sluoksnis, sukoduotas pagal mar&scaron;rutus, kuriems jie priskirti, mar&scaron;rutų sluoksnis, rodantis trumpiausius kelius priskirtiems sustojimams pasiekti, ir nepriskirtų sustojimų sluoksnis, jei yra sustojimų, kurių nepavyko pasiekti. 
     </p>
-    <p>Jei pažymėta  <b>Naudoti esamą žemėlapio aprėptį</b>, bus analizuojami bus tik apie aprėptyje matomi elementai. Jei nepažymėta &ndash; analizuojami visi elementai, net jei jie patenka už matomo žemėlapio ribų.
+    <p>Jei pažymėta  <b>Naudoti esamą žemėlapio aprėptį</b>, bus analizuojami tik apie aprėptyje matomi elementai. Jei nepažymėta &ndash; analizuojami visi elementai, net jei jie patenka už matomo žemėlapio ribų.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -57,10 +75,11 @@
         <div><h2>Pasirinkite taškų sluoksnį, nurodantį vietas, į kurias reikia nuvažiuoti</h2></div>
         <hr/>
         <div>
-            <p>Pasirinkite sluoksnį ta&scaron;kų, kuriuos mar&scaron;rutai (ar transporto priemonės) turi pasiekti.  I&scaron;vestyje &scaron;ie ta&scaron;kai tampa priskirtomis arba nepriskirtomis sustojimo vietomis.
-
+            <p>Pasirinkite sluoksnį ta&scaron;kų, kuriuos mar&scaron;rutai (ar transporto priemonės) turi pasiekti.  I&scaron;vestyje &scaron;ie ta&scaron;kai tampa priskirtomis arba nepriskirtomis sustojimo vietomis. 
             </p>
-            <p>Pasirinkę sluoksnį žemėlapyje, galite pasirinkti  <b>Pasirinkite Gyvojo pasaulio atlaso analizės sluoksnį</b>, kurį rasite i&scaron;plečiamo sąra&scaron;o apačioje. &Scaron;i parinktis atidarys galeriją, kurioje yra kolekcija sluoksnių, naudingų daugeliui analizių. 
+            <p class="OnlineOnly">Pasirinkę sluoksnį žemėlapyje, galite pasirinkti  <b>Pasirinkite Gyvojo pasaulio atlaso analizės sluoksnį</b>, kurį rasite i&scaron;plečiamo sąra&scaron;o apačioje. &Scaron;i parinktis atidarys galeriją, kurioje yra kolekcija sluoksnių, naudingų daugeliui analizių. 
+            </p>
+            <p>&gt; Įrankis leidžia naudoti iki 2 000 įvesties elementų. 
             </p>
         </div>
     </div>
@@ -68,7 +87,7 @@
         <div><h2>Kelionės režimas maršrutams</h2></div>
         <hr/>
         <div>
-            <p>Pasirinkite savo kelionės režimąGaunami mar&scaron;rutai atkartos kelius arba pėsčiųjų takus ir laikysis taikomų taisyklių, pvz., gatvių su vienpusiu eismu ar neleistinų apsisukimų vairuojant ar važiuojant sunkvežimiu. Galimus kelionės režimus nustato jūsų organizacijos administratorius.  
+            <p>Pasirinkite savo kelionės režimą. Gaunami mar&scaron;rutai atkartos kelius arba pėsčiųjų takus ir laikysis taikomų taisyklių, pvz., gatvių su vienpusiu eismu ar neleistinų apsisukimų vairuojant ar važiuojant sunkvežimiu. Galimus kelionės režimus nustato jūsų organizacijos administratorius.  
             </p>
         </div>
     </div>
@@ -98,7 +117,7 @@
             </p>
             <p>Galima nurodyti pasirinkus vieną i&scaron; trijų vietų: 
                 <ul>
-                    <li>Toje pačioje vietoje, kur mar&scaron;rutas prasidėjo, nepaisant ar buvo vienas ar daugiau pradžios ta&scaron;kų
+                    <li>Toje pačioje vietoje, kur mar&scaron;rutas prasidėjo, nepaisant, ar buvo vienas ar daugiau pradžios ta&scaron;kų
                     </li>
                     <li>Viename ta&scaron;ke
                     </li>
@@ -109,7 +128,7 @@
             </p>
             <p>Pažymėkite  <b>Grįžti į pradžią</b>, jei transporto priemonių mar&scaron;rutų pradžios ir pabaigos ta&scaron;kai sutampa.
             </p>
-            <p>Jei transporto priemonės turi nuvykti į bendrą pabaigos ta&scaron;ką, kuris skiriasi nuo pradžios ta&scaron;ko, atžymėkite  <b>Grįžti į pradžią</b> ir arba pridėkite ta&scaron;ką žemėlapyje, arba pasirinkite sluoksnį, kurį sudaro vienas ta&scaron;kas.
+            <p>Jei transporto priemonės turi nuvykti į bendrą pabaigos ta&scaron;ką, kuris skiriasi nuo pradžios ta&scaron;ko, atžymėkite  <b>Grįžti į pradžią</b> arba pridėkite ta&scaron;ką žemėlapyje, arba pasirinkite sluoksnį, kurį sudaro vienas ta&scaron;kas.
             </p>
             <p>Jei mar&scaron;rutai turi baigtis atskiruose ta&scaron;kuose, atžymėkite  <b>Grįžti į pradžią</b> ir pasirinkite sluoksnį su daugiau nei vienu ta&scaron;ku. Transporto priemonių skaičius turi sutapti su ta&scaron;kų pasirinktame sluoksnyje skaičiumi. <b>Mar&scaron;ruto ID lauko</b> sąra&scaron;e pasirinkite lauką, kuris identifikuoja atskirus mar&scaron;rutus, transporto priemones ar vairuotojus. Jei transporto priemonės pradeda ir pabaigia mar&scaron;rutus skirtinguose ta&scaron;kuose, mar&scaron;ruto ID pradžios ir pabaigos ta&scaron;kų sluoksniuose turi sutapti.
             </p>
@@ -175,7 +194,7 @@
         <div><h2>Sustojimo laikas kiekviename taške</h2></div>
         <hr/>
         <div>
-            <p>Nustatykite numatomą sustojimo kiekviename ta&scaron;ke laikąPavyzdžiui, jei planuojama inspektorių darbo diena ir vidutinis inspektavimo laikas yra 45 minutės, įveskite  <code>45</code>.
+            <p>Nustatykite numatomą sustojimo kiekviename ta&scaron;ke laiką. Pavyzdžiui, jei planuojama inspektorių darbo diena ir vidutinis inspektavimo laikas yra 45 minutės, įveskite  <code>45</code>.
             </p>
             <p>Sustojimo laikas laikomas vienodu kiekviename sustojime.
             </p>

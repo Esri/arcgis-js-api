@@ -21,7 +21,6 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 var profile = (function(){
   var testResourceRe = /^esri\/(.*\/)?tests\//,
     
@@ -36,6 +35,7 @@ var profile = (function(){
         "esri/esri.profile":          1,
         "esri/esri.js":               1,
         "esri/geometry/geometryenginewebworker": 1,
+        "esri/layers/vector-tile": 1,
         "esri/workers/requestWorker": 1,
         "esri/workers/mutableWorker": 1,
         "esri/workers/indexWorker":   1,

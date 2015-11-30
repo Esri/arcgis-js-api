@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -67,7 +85,7 @@
                 <tbody><tr>
                     <td><h2>Summeeri lähedusest</h2></td>
                     <td>
-                    <img src="../images/GUID-A5033D27-81B6-42E7-BA38-50D25C1CCCCA-web.png" class="titleImage" alt="Summeeri ligidusest">
+                    <img src="../images/GUID-A5033D27-81B6-42E7-BA38-50D25C1CCCCA-web.png" class="titleImage" alt="Summeeri l&auml;hedusest">
                     </td>
                 </tr></tbody>
             </table>
@@ -120,15 +138,14 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Analüüsi kihti</h2></td>
+                    <td><h2>Rikasta kihti</h2></td>
                     <td>
                     <img src="../images/GUID-5B2D9742-AFD2-4054-8D05-ED6A80EDAF4D-web.png" class="titleImage" alt="Rikasta kihti">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Toob teavet kindlas piirkonnas v&otilde;i asukohast l&auml;htuva valitud s&otilde;iduaja v&otilde;i vahemaa raadiuses asuvate inimeste, paikade ja ettev&otilde;tete kohta.
-
+            <p>Toob teavet kindlas piirkonnas v&otilde;i asukohast l&auml;htuva valitud s&otilde;iduaja v&otilde;i vahemaa raadiuses asuvate inimeste, paikade ja ettev&otilde;tete kohta. 
             </p>
             <br/>
         </div>
@@ -166,8 +183,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Valib Teie uuringualas olemasolevad objektid, mis vastavad Teie m&auml;&auml;ratud kriteeriumidele. Need kriteeriumid v&otilde;ivad baseeruda atribuutide p&auml;ringutel (n&auml;iteks vabad maat&uuml;kid) ja ruumilistel p&auml;ringutel (n&auml;iteks k&otilde;ik maat&uuml;kid 1 km ulatuses j&otilde;est jne)
-
+            <p>Valib Teie uuringualas olemasolevad objektid, mis vastavad Teie m&auml;&auml;ratud kriteeriumidele. Need kriteeriumid v&otilde;ivad baseeruda atribuutide p&auml;ringutel (n&auml;iteks vabad maat&uuml;kid) ja ruumilistel p&auml;ringutel (n&auml;iteks k&otilde;ik maat&uuml;kid 1 km ulatuses j&otilde;est jne) 
             </p>
             <br/>
         </div>
@@ -182,8 +198,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Loob Teie uuringualas uued objektid, mis vastavad Teie m&auml;&auml;ratud kriteeriumidele. Need kriteeriumid v&otilde;ivad baseeruda atribuutide p&auml;ringutel (n&auml;iteks vabad maat&uuml;kid) ja ruumilistel p&auml;ringutel (n&auml;iteks k&otilde;ik maat&uuml;kid 1 km ulatuses j&otilde;est jne)
-
+            <p>Loob Teie uuringualas uued objektid, mis vastavad Teie m&auml;&auml;ratud kriteeriumidele. Need kriteeriumid v&otilde;ivad baseeruda atribuutide p&auml;ringutel (n&auml;iteks vabad maat&uuml;kid) ja ruumilistel p&auml;ringutel (n&auml;iteks k&otilde;ik maat&uuml;kid 1 km ulatuses j&otilde;est jne) 
             </p>
             <br/>
         </div>
@@ -254,7 +269,7 @@
             <ul>
                 <li>Funktsiooniga  <b>Arvuta tihedus</b> saate v&otilde;tta m&otilde;nede n&auml;htuste teadaolevad kogused ja jaotada need kaardil &uuml;htlaselt.
                 </li>
-                <li> <b>Leia tulipunktid</b> m&auml;&auml;rab, kas andmete ruumimustris on statistiliselt olulisi klastreid.
+                <li> <b>Leia tulipunktid</b> funktsioon m&auml;&auml;rab, kas andmete ruumimustris on statistiliselt olulisi klastreid.
                 </li>
                 <li> <b>Interpoleeri punktid</b> prognoosib uute asukohtade v&auml;&auml;rtusi olemasolevate punktide m&otilde;&otilde;tmistulemuste p&otilde;hjal.
                 </li>
@@ -310,7 +325,7 @@
     <div id="UseProximityCategory" class="regularsize">
         <h2>Kasuta lähedust</h2>
         <hr/>
-        <p>  Need t&ouml;&ouml;riistad aitavad vastata k&otilde;ige levinumatele k&uuml;simustele ruumianal&uuml;&uuml;side kontekstis: &quot;Mis on mille l&auml;hedal?&quot;
+        <p>  Need t&ouml;&ouml;riistad aitavad vastata ruumianal&uuml;&uuml;si k&auml;igus sageli tekkivale k&uuml;simusele: &quot;Mis on mille l&auml;hedal?&quot;
             <ul>
                 <li>K&auml;suga  <b>&Uuml;henda algpunktid sihtpunktidega</b> saate m&otilde;&otilde;ta reisiaega v&otilde;i vahemaad punktipaaride vahel.
                 </li>
@@ -320,7 +335,7 @@
                 </li>
                 <li>T&ouml;&ouml;riistaga  <b>Leia l&auml;him</b> saate leida teadaolevatele asukohtadele l&auml;himad kohad.
                 </li>
-                <li> <b>Kavanda marsruudid</b> m&auml;&auml;rab kindlaks parima teekonna s&otilde;idukite suunamiseks mitmesse peatusse.
+                <li> <b>Kavanda marsruudid</b> leiab parima teekonna s&otilde;idukite suunamiseks mitmete peatuste k&uuml;lastamiseks.
                 </li>
             </ul>
             
@@ -341,7 +356,7 @@
             </p>
             <p>
                 <ul>
-                    <li>arvutada kogu vahemaa v&otilde;i aja, mis kulub kodu-t&ouml;&ouml; teekonna reisidele;
+                    <li>Arvutada kogu vahemaa v&otilde;i aega, mis kulub kodu-t&ouml;&ouml; teekonna reisidele.
                     </li>
                     <li>m&otilde;&otilde;ta, kui pika maa kliendid l&auml;bi s&otilde;idavad, et teie poodi k&uuml;lastada; kasutada seda teavet oma turuosa m&auml;&auml;ratlemiseks, eriti reklaamikampaaniate sihtimisel v&otilde;i uute poodide jaoks asukohtade valimisel;
                     </li>
@@ -382,7 +397,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>S&otilde;iduaja pind on piirkond, mille j&otilde;uab l&auml;bida kindla m&auml;&auml;ratud s&otilde;iduaja jooksul v&otilde;i s&otilde;iduvahemaa ulatuses. S&otilde;iduaja pindade kasutamisel saate leida vastused n&auml;iteks j&auml;rgmistele k&uuml;simustele:
+            <p>S&otilde;iduaja pind on piirkond, mille j&otilde;uab l&auml;bida kindla m&auml;&auml;ratud s&otilde;iduaja jooksul v&otilde;i s&otilde;iduvahemaa ulatuses. S&otilde;iduaja alad saavad anda vastused allj&auml;rgnevatele k&uuml;simustele:
                 <ul>
                     <li>Kui kaugele ma j&otilde;uan siit 30 minutit kestva s&otilde;idu tulemusena?
                     </li>
@@ -440,7 +455,7 @@
                 </li>
                 <li> <b>&Uuml;henda kihid</b> kopeerib k&otilde;ik kahe v&otilde;i enama kihi objektid uude tulemkihti.
                 </li>
-                <li> <b>Kattuvad kihid</b> &uuml;hendab kahe v&otilde;i enama sisendkihi sisu &uuml;heks terviklikuks kihiks. V&otilde;ite m&otilde;ista kihtide &uuml;lekatet kui hulga kaartide l&auml;bimist ja &uuml;he konkreetse kaardi loomist k&otilde;ikide nende l&auml;bi t&ouml;&ouml;deldud kaartide informatsiooni hulgast.
+                <li> <b>Kattuvad kihid</b> &uuml;hendab kahe v&otilde;i enama sisendkihi sisu &uuml;heks terviklikuks kihiks.  V&otilde;ite m&otilde;ista kihtide &uuml;lekatet kui hulga kaartide l&auml;bimist ja &uuml;he konkreetse kaardi loomist k&otilde;ikide nende l&auml;bi t&ouml;&ouml;deldud kaartide informatsiooni hulgast.
                 </li>
             </ul>
             
@@ -452,14 +467,14 @@
                 <tbody><tr>
                     <td><h2>Sulanda piirajad</h2></td>
                     <td>
-                    <img src="../images/GUID-7B5F69B0-3625-404F-8B52-2B562766C0BB-web.png" class="titleImage" alt="Sulanda piirid">
+                    <img src="../images/GUID-7B5F69B0-3625-404F-8B52-2B562766C0BB-web.png" class="titleImage" alt="Sulanda piirajad">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
             <p>&Uuml;hist piiri omavad v&otilde;i kattuvuses olevad alad liidetakse &uuml;heks tervikuks.    
             </p>
-            <p>Te saate kontrollida, kas piirajad &uuml;hendatakse m&auml;&auml;ratud v&auml;lja alusel. Situatsioonis, kus Teil on kasutada n&auml;iteks maakondade kiht, milles iga maakond omab  <i>State_Name</i> atribuuti, saate te piiride &uuml;leminekud sulatada, kasutades selleks <i>State_Name</i> atribuuti. K&uuml;lgnevad maakonnad &uuml;hendatakse kokku juhul, kui neil on sama v&auml;&auml;rtus v&auml;ljas <i>State_Name</i>. L&otilde;pptulemusena tekib suurema ulatusega haldus&uuml;ksuste kiht.
+            <p>Te saate kontrollida, kas piirajad &uuml;hendatakse m&auml;&auml;ratud v&auml;lja alusel. N&auml;iteks kui Teil on kasutada maakondade kiht, milles igal maakonnal on atribuut  <i>State_Name</i>, saate piiride &uuml;leminekud sulatada atribuudi <i>State_Name</i> kaudu.  K&uuml;lgnevad maakonnad &uuml;hendatakse kokku juhul, kui nende atribuudi <i>State_Name</i> v&auml;&auml;rtus on sama.  L&otilde;pptulemusena tekib suurema ulatusega haldus&uuml;ksuste kiht.
             </p>
             <br/>
         </div>

@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -26,7 +44,7 @@
         <h2>Resumir Próximo</h2><p/>
         <h2><img src="../images/GUID-A5033D27-81B6-42E7-BA38-50D25C1CCCCA-web.png" alt="Resumir nas Proximidades"></h2>
         <hr/>
-    <p>  Esta ferramenta descobre e resume elementos que est&atilde;o dentro de uma distancia especifica de elemento na primeira camada de entrada.  Distancia pode ser medida quer seja um modo de viagem seleccionado quer seja uma dist&acirc;ncia em linha reta. As op&ccedil;&otilde;es de modo de viagem s&atilde;o dist&acirc;ncia de condu&ccedil;&atilde;o, tempo de condu&ccedil;&atilde;o, dist&acirc;ncia de transporte por caminh&atilde;o, tempo de condu&ccedil;&atilde;o de cami&atilde;o, distancia de caminhada, e tempo de caminhada. As estat&iacute;sticas s&atilde;o ent&atilde;o calculados para os elementos mais pr&oacute;ximosPor exemplo
+    <p>  Esta ferramenta descobre e resume elementos que est&atilde;o dentro de uma distancia especifica de elemento na primeira camada de entrada.  Distancia pode ser medida quer seja um modo de viagem seleccionado quer seja uma dist&acirc;ncia em linha reta. As op&ccedil;&otilde;es de modo de viagem s&atilde;o dist&acirc;ncia de condu&ccedil;&atilde;o, tempo de condu&ccedil;&atilde;o, dist&acirc;ncia de transporte por caminh&atilde;o, tempo de condu&ccedil;&atilde;o de cami&atilde;o, distancia de caminhada, e tempo de caminhada. As estat&iacute;sticas s&atilde;o ent&atilde;o calculados para os elementos mais pr&oacute;ximos Por exemplo
         <ul>
             <li>Calcular o total de popula&ccedil;&atilde;o que se encontra a cinco minutos de uma proposta de localiza&ccedil;&atilde;o de uma nova loja.
             </li>
@@ -45,7 +63,9 @@
         <div>
             <p>O ponto, linha ou camada de &aacute;rea que ser&aacute; utilizada como os locais de partida para resumir elementos pr&oacute;ximos.
             </p>
-            <p>In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            <p class="OnlineOnly">In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            </p>
+            <p>A ferramenta suporta at&eacute; 1000 elementos nesta camada. 
             </p>
         </div>
     </div>
@@ -55,7 +75,7 @@
         <div>
             <p>Elementos nesta camada que est&atilde;o dentro de uma distancia especifica de elementos na camada especificada abaixo ser&atilde;o resumidos. 
             </p>
-            <p>In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            <p class="OnlineOnly">In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
             </p> 
         </div>
     </div>
@@ -138,6 +158,29 @@
                 </li>
             </ul>
             
+        </div>
+    </div>
+    <div id="StatisticsNoLayer">
+        <div><h2>Adicionar estatisticas a partir da camada para resumir</h2></div>
+        <hr/>
+        <div>
+            <p>Assim que escolha uma camada para resumir, pode opcionalmente calcular estat&iacute;sticas de qualquer atributo num&eacute;rico dos pontos pr&oacute;ximos, linhas, ou &aacute;reas. 
+            </p>
+            <ul>
+                <li> <b>Soma</b>-O valor total para o campo especificado.
+                </li>
+                <li> <b>M&eacute;dia</b>-M&eacute;dia do campo especificado.
+                </li>
+                <li> <b>M&iacute;nimo</b>-O menor valor no campo especificado.
+                </li>
+                <li> <b>M&aacute;ximo</b>-O maior valor no campo especificado.
+                </li>
+                <li> <b>Desvio Padr&atilde;o</b>-O desvio padr&atilde;o dos valores no campo especificado.
+                </li>
+            </ul>
+            
+            <p>Dependendo dos tipos de elementos que est&aacute; a resumir, pode calcular a contagem total de pontos pr&oacute;ximos, comprimento total de linhas pr&oacute;ximas, ou &aacute;rea total de elementos &aacute;rea pr&oacute;ximos.
+            </p>
         </div>
     </div>
     <div id="GroupBy">

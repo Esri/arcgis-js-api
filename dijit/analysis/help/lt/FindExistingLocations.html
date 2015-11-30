@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -26,8 +44,7 @@
         <h2>Rasti esamas vietas</h2><p/>
         <h2><img src="../images/GUID-FEF355B4-CF3B-48F6-9EC1-A00A1D53C81F-web.png" alt="Rasti esamas vietas"></h2>
         <hr/>
-    <p>&Scaron;is įrankis pažymi esamus elementus tiriamame plote, atitinkančius nurodytus kriterijus. &Scaron;ie kriterijai gali būti sudaryti i&scaron; atributinių užklausų (pavyzdžiui, sklypai, kurie yra laisvi) ir erdvinių užklausų (pavyzdžiui, mylios atstumu nuo upės).
-
+    <p>&Scaron;is įrankis pažymi esamus elementus tiriamame plote, atitinkančius nurodytus kriterijus. &Scaron;ie kriterijai gali būti sudaryti i&scaron; atributinių užklausų (pavyzdžiui, sklypai, kurie yra laisvi) ir erdvinių užklausų (pavyzdžiui, mylios atstumu nuo upės). 
     </p>
     <p>Jei  <b>Naudoti esamą žemėlapio aprėptį</b> pažymėta, bus analizuojami tik tie įvesties ta&scaron;kų sluoksnio elementai, kurie patenka į esamo žemėlapio aprėptį  Jei nepažymėtas, analizuojami visi elementai, net jei jie yra už esamos žemėlapio aprėpties ribų.
     </p>
@@ -39,7 +56,7 @@
         <div>
             <p>Ta&scaron;kų, linijų arba plotų sluoksnis, kuriame norite rasti elementus, remdamiesi toliau nurodytų atributų ar erdvinių užklausų kombinacija.
             </p>
-            <p>Pasirinkę sluoksnį žemėlapyje, galite pasirinkti  <b>Pasirinkite Gyvojo pasaulio atlaso analizės sluoksnį</b>, kurį rasite i&scaron;plečiamo sąra&scaron;o apačioje. &Scaron;i parinktis atidarys galeriją, kurioje yra kolekcija sluoksnių, naudingų daugeliui analizių. 
+            <p class="OnlineOnly">Pasirinkę sluoksnį žemėlapyje, galite pasirinkti  <b>Pasirinkite Gyvojo pasaulio atlaso analizės sluoksnį</b>, kurį rasite i&scaron;plečiamo sąra&scaron;o apačioje. &Scaron;i parinktis atidarys galeriją, kurioje yra kolekcija sluoksnių, naudingų daugeliui analizių. 
             </p>
         </div>
     </div>
@@ -49,7 +66,7 @@
         <div>
             <p>Paspauskite  <b>Pridėti i&scaron;rai&scaron;ką</b> mygtuką, kad įvestumėte i&scaron;rai&scaron;ką. Galite pridėti kelias i&scaron;rai&scaron;kas. Įvedus i&scaron;rai&scaron;kas ir paspaudus mygtuką <b>Vykdyti analizę</b>, įvesties sluoksnio elementai filtruojami pagal kiekvieną i&scaron;rai&scaron;ką.  Elementai, tinkantys pagal visas i&scaron;rai&scaron;kas yra įra&scaron;omi į rezultatų sluoksnį.
             </p>
-            <p>Yra du pagrindiniai i&scaron;rai&scaron;kų, kurias galite sukurti, tipai; atributinės ir erdvinės. Atributinės i&scaron;rai&scaron;kos yra laukų reik&scaron;mių užklausos, tokios kaip  <code>kur pavadinimas yra 'San Franciskas'</code>. Galite pasirinkti vieną i&scaron; keturių erdvinių i&scaron;rai&scaron;kų tipų:
+            <p>Yra du pagrindiniai i&scaron;rai&scaron;kų, kurias galite sukurti, tipai: atributinės ir erdvinės. Atributinės i&scaron;rai&scaron;kos yra laukų reik&scaron;mių užklausos, tokios, kaip  <code>kur pavadinimas yra 'San Franciskas'</code>. Yra keturi erdvinių i&scaron;rai&scaron;kų tipai:
                 <ul>
                     <li> <b>nutolęs atstumu</b>: elementas turi būti nutolęs tam tikru atstumu nuo kito sluoksnio elemento.  Pavyzdžiui, rasti sklypus, esančius 500 metrų nuo Los Andželo upės.
                     </li>

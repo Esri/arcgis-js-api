@@ -91,13 +91,15 @@
     width: 30%;
     position: absolute;
     bottom: 10px;
-    right: 10px;
+    right: 40px;
     text-align: right;
     overflow: hidden;
     white-space: nowrap;
     word-break: keep-all;
     word-wrap: normal;
     text-overflow: ellipsis;
+    color: rgb(106,106,106);
+    font-family: verdana;
 }
 
 .esriElevationProfile .esriRTL .esriElevationProfileSourceLabel {

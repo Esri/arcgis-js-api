@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -38,10 +56,9 @@
         <div><h2>Alegeţi straturi tematice care conţin obiecte spaţiale care să fie incluse în buffer</h2></div>
         <hr/>
         <div>
-            <p>Obiectele spaţiale punctuale, liniare sau de suprafaţă care vor fi incluse &icirc;n buffer.
-
+            <p>Obiectele spaţiale punctuale, liniare sau de suprafaţă care vor fi incluse &icirc;n buffer. 
             </p>
-            <p>Pe l&acirc;ngă alegerea unui strat tematic din harta dvs., puteţi selecta  <b>Alegere strat tematic de analiză din atlasul actualizat</b>, care se găseşte &icirc;n partea de jos a listei verticale. Această acţiune deschide o galerie care conţine o colecţie de straturi tematice utile pentru numeroase analize. 
+            <p class="OnlineOnly">Pe l&acirc;ngă alegerea unui strat tematic din harta dvs., puteţi selecta  <b>Alegere strat tematic de analiză din atlasul actualizat</b>, care se găseşte &icirc;n partea de jos a listei verticale. Această acţiune deschide o galerie care conţine o colecţie de straturi tematice utile pentru numeroase analize. 
             </p>
         </div>
     </div>
@@ -86,7 +103,7 @@
                     </li>
                 </ul>
                 
-            </p> 
+            </p>
         </div>
     </div>
     <div id="OptionLine">
@@ -106,6 +123,14 @@
                 </ul>
                 
             </p> 
+        </div>
+    </div>
+    <div id="OptionNolayer">
+        <div><h2>Opţiuni</h2></div>
+        <hr/>
+        <div>
+            <p>După ce alegeţi un strat tematic pentru a-l include &icirc;n buffer, puteţi alege cum doriţi să fie gestionate bufferele suprapuse. Pentru orice buffer aflat deasupra altui buffer, suprafeţele &icirc;n comun pot fi păstrate (Suprapunere) sau combinate (Dizolvare). &Icirc;n plus, puteţi specifica cum să fie reprezentate distanţele multiple.   Pentru straturile tematice care conţin obiecte spaţiale liniare, puteţi alege pe ce parte a liniei să se creeze bufferul.  Pentru straturile tematice care conţin obiectelor spaţiale de tip suprafaţă, puteţi alege dacă obiectele spaţiale introduse &icirc;n buffer sunt incluse sau excluse din bufferul rezultat.
+            </p>
         </div>
     </div>
     <div id="BufferLayer">

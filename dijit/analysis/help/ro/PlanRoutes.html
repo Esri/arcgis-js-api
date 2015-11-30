@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -49,7 +67,7 @@
     </p>
     <p>Rezultatul pentru Rute planificate include un strat tematic de opriri codificate după rutele &icirc;n care sunt alocate, un strat tematic de rute care prezintă cele mai scurte drumuri pentru vizitarea opririlor alocate şi, &icirc;n funcţie de posibilitate ca vreo oprire să nu poată fi atinsă, un strat tematic de opriri nealocate. 
     </p>
-    <p>Dacă se bifează  <b>Utilizare extindere curentă hartă</b>, vor fi analizate numai obiectele spaţiale care sunt vizibile &icirc;n extinderea curentă a hărţii.  Dacă nu se bifează, vor fi luate &icirc;n considerare toate obiectele spaţiale din stratul tematic de intrare, chiar dacă se află &icirc;n afara extinderii curente a hărţii.
+    <p>Dacă se bifează  <b>Utilizare extindere curentă hartă</b>, vor fi analizate numai obiectele spaţiale care sunt vizibile &icirc;n extinderea curentă a hărţii.  Dacă nu se bifează, vor fi luate &icirc;n considerare toate obiectele spaţiale din stratul tematic introdus, chiar dacă se află &icirc;n afara extinderii curente a hărţii.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -57,10 +75,11 @@
         <div><h2>Alegeţi stratul tematic de puncte care reprezintă opriri pentru vizite</h2></div>
         <hr/>
         <div>
-            <p>Alegeţi stratul tematic de puncte la care ar trebui să ajungă rutele (sau vehiculele).  Aceste puncte sunt puncte atribuite sau neatribuite &icirc;n rezultat.
-
+            <p>Alegeţi stratul tematic de puncte la care ar trebui să ajungă rutele (sau vehiculele).  Aceste puncte sunt puncte atribuite sau neatribuite &icirc;n rezultat. 
             </p>
-            <p>Pe l&acirc;ngă alegerea unui strat tematic din harta dvs., puteţi selecta  <b>Alegere strat tematic de analiză din atlasul actualizat</b>, care se găseşte &icirc;n partea de jos a listei verticale. Această acţiune deschide o galerie care conţine o colecţie de straturi tematice utile pentru numeroase analize. 
+            <p class="OnlineOnly">Pe l&acirc;ngă alegerea unui strat tematic din harta dvs., puteţi selecta  <b>Alegere strat tematic de analiză din atlasul actualizat</b>, care se găseşte &icirc;n partea de jos a listei verticale. Această acţiune deschide o galerie care conţine o colecţie de straturi tematice utile pentru numeroase analize. 
+            </p>
+            <p>Instrumentul acceptă p&acirc;nă la 2.000 de obiecte spaţiale de intrare. 
             </p>
         </div>
     </div>
@@ -84,7 +103,7 @@
             </p>
             <p>C&acirc;nd se specifică mai multe locaţii, fiecare vehicul trebuie să fie asociat cu propriul punct. Numărul de vehicule trebuie să corespundă numărului de puncte din stratul tematic. Alegeţi un strat tematic cu mai multe puncte şi specificaţi un c&acirc;mp care identifică &icirc;n mod unic fiecare rută, fiecare vehicul sau fiecare şofer, din lista derulantă  <b>C&acirc;mp ID rută</b>.
             </p>
-            <p>Ora de pornire va fi aceeaşi pentru toate rutele. Fusul orar pentru ora de plecare este identic cu fusul orar &icirc;n care se află punctul sau punctele de plecare. Prin urmare, asiguraţi-vă că ora introdusă este ora locală. De exemplu, să presupunem că vă aflaţi &icirc;n fusul orar aferent orei Pacificului (UTC-8:00), iar vehiculele pe care le direcţionaţi sunt staţionate &icirc;n ora standard a regiunii muntoase (UTC-7:00)Dacă ora curentă este 9:30 a.m. PST (10:30 a.m. MST), iar vehiculele dvs. trebuie să-şi &icirc;nceapă ruta &icirc;n 30 de minute, dvs. veţi stabili ca oră de plecare 11:00 a.m. 
+            <p>Ora de pornire va fi aceeaşi pentru toate rutele. Fusul orar pentru ora de plecare este identic cu fusul orar &icirc;n care se află punctul sau punctele de plecare. Prin urmare, asiguraţi-vă că ora introdusă este ora locală. De exemplu, să presupunem că vă aflaţi &icirc;n fusul orar aferent orei Pacificului (UTC-8:00), iar vehiculele pe care le direcţionaţi sunt staţionate &icirc;n ora standard a regiunii muntoase (UTC-7:00) Dacă ora curentă este 9:30 a.m. PST (10:30 a.m. MST), iar vehiculele dvs. trebuie să-şi &icirc;nceapă ruta &icirc;n 30 de minute, dvs. veţi stabili ca oră de plecare 11:00 a.m. 
             </p>
             <p>Dacă vehiculele &icirc;şi &icirc;ncep rutele din fusuri orare diferite, ora de pornire nu poate fi aceeaşi, ci este necesar să selectaţi ore diferite. De exemplu, dacă o rută porneşte dintr-un punct aflat &icirc;n fusul orar PST şi o altă rută porneşte dintr-un punct aflat &icirc;n fusul orar MST, iar dvs. introduceţi ora 11:00 a.m. ca oră de pornire, ruta din PST va &icirc;ncepe la ora 11:00 a.m. PST, iar ruta din MST va &icirc;ncepe la 11:00 a.m. MST &mdash; ceea ce &icirc;nseamnă o diferenţă de o oră.
             </p>
@@ -196,7 +215,7 @@
         <hr/>
         <div>
             <p>Acesta este numele stratului tematic cu grupuri care va fi creat &icirc;n  <b>Resursele mele</b>
-şi adăugat &icirc;n hartă. Stratul tematic cu grupuri va conţine c&acirc;te un strat tematic pentru fiecare din următoarele elemente: rute, opriri şi direcţii.
+și adăugat &icirc;n hartă. Stratul tematic cu grupuri va conţine c&acirc;te un strat tematic pentru fiecare din următoarele elemente: rute, opriri şi direcţii.
             </p>
             <p>Utiliz&acirc;nd lista derulantă  <b>Salvare rezultat &icirc;n</b>, puteţi specifica numele unui director din <b>Resursele mele</b> &icirc;n care va fi salvat rezultatul.
             </p>

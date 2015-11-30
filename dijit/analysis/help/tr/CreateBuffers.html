@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -38,10 +56,9 @@
         <div><h2>Ön belleğe alınacak detayları içeren katmanı seç</h2></div>
         <hr/>
         <div>
-            <p>&Ouml;n belleğe alınacak nokta, &ccedil;izgi ya da alan detayları.
-
+            <p>&Ouml;n belleğe alınacak nokta, &ccedil;izgi ya da alan detayları. 
             </p>
-            <p>Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, aşağı a&ccedil;ılan listenin altında bulunan  <b>Living Atlas Analiz Katmanı Se&ccedil;</b> &ouml;ğesini de belirleyebilirsiniz. Bu, pek &ccedil;ok analiz i&ccedil;in kullanılabilen katman koleksiyonu i&ccedil;eren bir galeri a&ccedil;ar. 
+            <p class="OnlineOnly">Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, aşağı a&ccedil;ılan listenin altında bulunan  <b>Living Atlas Analiz Katmanı Se&ccedil;</b> &ouml;ğesini de belirleyebilirsiniz. Bu, pek &ccedil;ok analiz i&ccedil;in kullanılabilen katman koleksiyonu i&ccedil;eren bir galeri a&ccedil;ar. 
             </p>
         </div>
     </div>
@@ -86,7 +103,7 @@
                     </li>
                 </ul>
                 
-            </p> 
+            </p>
         </div>
     </div>
     <div id="OptionLine">
@@ -106,6 +123,14 @@
                 </ul>
                 
             </p> 
+        </div>
+    </div>
+    <div id="OptionNolayer">
+        <div><h2>Seçenekler</h2></div>
+        <hr/>
+        <div>
+            <p>&Ouml;nbelleğe almak i&ccedil;in bir katman se&ccedil;tikten sonra &ouml;rt&uuml;şen tampon b&ouml;lgelerin nasıl işleneceğini belirleyebilirsiniz. Başka bir tampon &uuml;zerinde yer alan herhangi bir tamponda, genel olan alanlar korunabilir (Bindir) ya da birleştirilebilir (Birleştir). Buna ek olarak birden &ccedil;ok mesafenin nasıl g&ouml;sterileceğini de belirtebilirsiniz.   &Ccedil;izgi detayları i&ccedil;eren katmanlar i&ccedil;in tampon olacak &ccedil;izgi tarafını belirleyebilirsiniz.  Alan detayları i&ccedil;eren katmanlar i&ccedil;in tampon olacak detayın sonu&ccedil; tamponuna alınıp alınmayacağını belirleyebilirsiniz.
+            </p>
         </div>
     </div>
     <div id="BufferLayer">

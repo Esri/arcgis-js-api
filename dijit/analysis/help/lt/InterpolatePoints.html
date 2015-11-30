@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -26,14 +44,13 @@
         <h2>Interpoliuoti taškus</h2><p/>
         <h2><img src="../images/GUID-28FC50AA-7B10-487C-949B-241EF2F8028E-web.png" alt="Interpoliuoti ta&scaron;kus"></h2>
         <hr/>
-    <p>   Įrankis Interpoliuoti ta&scaron;kus leidžia prognozuoti reik&scaron;mes naujose vietose pagal esamo ta&scaron;kų rinkinio matavimus. Įrankis surenka ta&scaron;kų duomenis su reik&scaron;mėmis kiekviename ta&scaron;ke ir pateikia plotus, klasifikuotus pagal prognozuotas reik&scaron;mes. Pavyzdžiui:
+    <p>   Įrankis Interpoliuoti ta&scaron;kus leidžia prognozuoti reik&scaron;mes naujose vietose pagal esamo ta&scaron;kų rinkinio matavimus. Įrankis surenka ta&scaron;kų duomenis su reik&scaron;mėmis kiekviename ta&scaron;ke ir pateikia plotus, klasifikuotus pagal prognozuotas reik&scaron;mes. Pavyzdžiui
         <ul>
             <li>Oro kokybės valdymo apylinkėje yra sensorių, matuojančių užter&scaron;tumo lygį. Ta&scaron;kų interpoliavimo įrankį galima naudoti užter&scaron;tumo lygiui prognozuoti vietose, neturinčiose sensorių, pvz., vietose, kuriose kyla pavojus gyventojams &ndash; mokyklose arba ligoninėse.
             </li>
             <li>Sunkiųjų metalų koncentracijos pasėliuose prognozė, atsižvelgiant į atskirų augalų mėginius.
             </li>
-            <li>Dirvožemio trą&scaron;ų lygio (azotas fosforas, kalis ir t. t.) ir kitų indikatorių (pvz., elektros laidumo) prognozė, siekiant i&scaron;tirti jų ry&scaron;į su pasėlių derliumi ir nustatyti tikslius kiekvienos lauko vietos trą&scaron;ų kiekius.
-
+            <li>Dirvožemio trą&scaron;ų lygio (azotas fosforas, kalis ir t. t.) ir kitų indikatorių (pvz., elektros laidumo) prognozė, siekiant i&scaron;tirti jų ry&scaron;į su pasėlių derliumi ir nustatyti tikslius kiekvienos lauko vietos trą&scaron;ų kiekius. 
             </li>
             <li>Taikymas meteorologijoje apima temperatūros, kritulių ir susijusių kintamųjų (pvz., rūg&scaron;tinio lietaus) prognozes. 
             </li>
@@ -49,7 +66,7 @@
             <p>Ta&scaron;kų sluoksnis, kuris bus naudojamas kaip interpoliacijos pagrindas.  
 
             </p>
-            <p>Pasirinkę sluoksnį žemėlapyje, galite pasirinkti  <b>Pasirinkite Gyvojo pasaulio atlaso analizės sluoksnį</b>, kurį rasite i&scaron;plečiamo sąra&scaron;o apačioje. &Scaron;i parinktis atidarys galeriją, kurioje yra kolekcija sluoksnių, naudingų daugeliui analizių. 
+            <p class="OnlineOnly">Pasirinkę sluoksnį žemėlapyje, galite pasirinkti  <b>Pasirinkite Gyvojo pasaulio atlaso analizės sluoksnį</b>, kurį rasite i&scaron;plečiamo sąra&scaron;o apačioje. &Scaron;i parinktis atidarys galeriją, kurioje yra kolekcija sluoksnių, naudingų daugeliui analizių. 
             </p>
         </div>
     </div>

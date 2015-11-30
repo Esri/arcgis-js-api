@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -26,9 +44,9 @@
         <h2>Pārklājuma slāņi</h2><p/>
         <h2><img src="../images/GUID-CE1E0E84-F3B5-446B-9FDE-4DA057F106CC-web.png" alt="Pārklāt slāņus"></h2>
         <hr/>
-    <p>Pārklā&scaron;ana apvieno divus vai vairāk slāņus vienā slānī. Jūs varat iedomāties pārklā&scaron;anu kā kar&scaron;u kaudzes izlīdzinā&scaron;anu, izveidojot vienotu karti, kas satur visu kaudzes informāciju. Pārklājums ir daudz vairāk nekā darbu savieno&scaron;ana, visi pārklājuma atribūti tika pārnesti uz gala produktu. Pārklājums tiek izmantots, lai atbildētu uz vienu no ģeogrāfijas pamatjautājumiem, &quot;Kas ir virsū kam?&quot;Piemēram:
+    <p>Pārklā&scaron;ana apvieno divus vai vairāk slāņus vienā slānī. Jūs varat iedomāties pārklā&scaron;anu kā kar&scaron;u kaudzes izlīdzinā&scaron;anu, izveidojot vienotu karti, kas satur visu kaudzes informāciju. Pārklājums ir daudz vairāk nekā darbu savieno&scaron;ana, visi pārklājuma atribūti tika pārnesti uz gala produktu. Pārklājums tiek izmantots, lai atbildētu uz vienu no ģeogrāfijas pamatjautājumiem, &quot;Kas ir virsū kam?&quot; Piemēram:
         <ul>
-            <li>Kuri zemes gabali atrodas 100 gadu palienē?(Ietvaros ir tikai vēl viens veids, kā pateikt, kas ir virsū kam.)
+            <li>Kuri zemes gabali atrodas 100 gadu palienē? (Ietvaros ir tikai vēl viens veids, kā pateikt, kas ir virsū kam.)
                   
             </li>
             <li>Kādi ceļi atrodas kuros apgabalos?
@@ -46,12 +64,12 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Izvēlēties ievades slāni</h2></div>
+        <div><h2>Izvēlieties ievades slāni</h2></div>
         <hr/>
         <div>
             <p>Punkts, līnija vai apgabala slānis, kas tiks pārklāts.
             </p>
-            <p>Papildus slāņa izvēlei no kartes varat atlasīt  <b>Izvēlēties Living Atlas analīzes slāni</b> nolaižamā saraksta apak&scaron;ā. Tādējādi tiek atvērta galerija, kurā ir daudzām analīzēm noderīgu slāņu galerija. 
+            <p class="OnlineOnly">Papildus slāņa izvēlei no kartes varat atlasīt  <b>Izvēlēties Living Atlas analīzes slāni</b> nolaižamā saraksta apak&scaron;ā. Tādējādi tiek atvērta galerija, kurā ir daudzām analīzēm noderīgu slāņu galerija. 
             </p>
         </div>
     </div>
@@ -61,7 +79,7 @@
         <div>
             <p>Pārklājamais slānis uz ievades slāņa.  
             </p>
-            <p>Papildus slāņa izvēlei no kartes varat atlasīt  <b>Izvēlēties Living Atlas analīzes slāni</b> nolaižamā saraksta apak&scaron;ā. Tādējādi tiek atvērta galerija, kurā ir daudzām analīzēm noderīgu slāņu galerija. 
+            <p class="OnlineOnly">Papildus slāņa izvēlei no kartes varat atlasīt  <b>Izvēlēties Living Atlas analīzes slāni</b> nolaižamā saraksta apak&scaron;ā. Tādējādi tiek atvērta galerija, kurā ir daudzām analīzēm noderīgu slāņu galerija. 
             </p> 
         </div>
     </div>

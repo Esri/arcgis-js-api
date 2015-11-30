@@ -21,5 +21,4 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","./IsoDocumentType","./ServiceRoot","dojo/i18n!../../../nls/i18nIso","../../../../../kernel"],function(e,t,o,a,n,i,r){var s=e(a,{caption:i.documentTypes.service.caption,description:i.documentTypes.service.description,key:"iso-19119",isService:!0,metadataStandardName:"ISO 19139/19119 Metadata for Web Services",metadataStandardVersion:"2005",newRootDescriptor:function(){return new n}});return o("extend-esri")&&t.setObject("dijit.metadata.types.iso.base.ServiceDocumentType",s,r),s});

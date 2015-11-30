@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -52,7 +70,7 @@
             <p>Velg punktlaget som inneholder startpunktet eller startpunktene. Verkt&oslash;yet st&oslash;tter opptil  5 000startlokasjoner og  5 000 destinasjoner. </p>
             <p>Hvis du velger et lag som har ett startpunkt, kobles det til alle destinasjonene.
             </p>
-            <p>In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            <p class="OnlineOnly">In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
             </p>
         </div>
     </div>
@@ -65,7 +83,7 @@
             </p>
             <p>Hvis det er ett startpunkt og flere destinasjoner, kobler verkt&oslash;yet startpunktet til hver av destinasjonene.
             </p>
-            <p>In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            <p class="OnlineOnly">In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
             </p>
             <p> Hvis det er mange startpunkter og mange destinasjoner, m&aring; du ha to felter som beskriver startpunkt-destinasjon-parene: <b>ID-felt p&aring; startsteder</b> og <b>Matchende ID-felt p&aring; destinasjoner</b>. Verkt&oslash;yet kobler sammen startpunkt og destinasjoner under analysen. Du kan f.eks. tenke deg at du har to startpunkter med ID-feltverdiene <code>Kari</code> og <code>Knut</code> og to destinasjoner med samme ID-verdier. <code>Kari</code>-startpunktet kobles til <code>Kari</code>-destinasjonen og <code>Knut</code> blir koblet til <code>Knut</code>. Det gj&oslash;res ingen andre koblinger eller m&aring;linger.
             </p>

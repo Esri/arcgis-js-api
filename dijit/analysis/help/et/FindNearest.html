@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -26,11 +44,11 @@
         <h2>Leia lähim</h2><p/>
         <h2><img src="../images/GUID-150C2484-7459-405A-8835-B4E72CD49738-web.png" alt="Leia l&auml;him"></h2>
         <hr/>
-    <p>See t&ouml;&ouml;riist leiab l&auml;himad objektid ning raporteerib ja reastab vahemaad l&auml;hedalasuvate objektideni,L&auml;hima leidmisel v&otilde;ib t&ouml;&ouml;riist m&otilde;&otilde;tmisel kasutada kas sirgjoonelist lineaarset vahemaad v&otilde;i valitud liikumisviisi. Otsitavate l&auml;himate objektide arvu v&otilde;i soovitud otsinguulatust saate vajadusel piirata. Selle t&ouml;&ouml;riistaga saadud tulemused aitavad Teil leida vastuseid muuhulgas j&auml;rgmistele k&uuml;simustele:
+    <p>See t&ouml;&ouml;riist leiab l&auml;himad objektid ning raporteerib ja reastab vahemaad l&auml;hedalasuvate objektideni, L&auml;hima leidmisel v&otilde;ib t&ouml;&ouml;riist m&otilde;&otilde;tmisel kasutada kas sirgjoonelist lineaarset vahemaad v&otilde;i valitud liikumisviisi. Otsitavate l&auml;himate objektide arvu v&otilde;i soovitud otsinguulatust saate vajadusel piirata. Selle t&ouml;&ouml;riistaga saadud tulemused aitavad Teil leida vastuseid muuhulgas j&auml;rgmistele k&uuml;simustele:
         <ul>
             <li>Milline park asub mulle k&otilde;ige l&auml;hemal?
             </li>
-            <li>Millisesse haiglasse on v&otilde;imalik j&otilde;uda l&uuml;hima s&otilde;iduajaga?Kui kaua kestab s&otilde;it algusega kell 5:30 teisip&auml;eva &otilde;htusel tipptunnil?
+            <li>Millisesse haiglasse on v&otilde;imalik j&otilde;uda l&uuml;hima s&otilde;iduajaga? Kui kaua kestab s&otilde;it algusega kell 5:30 teisip&auml;eva &otilde;htusel tipptunnil?
             </li>
             <li>Milline on kahe linna vahemaa piki maanteed?
             </li>
@@ -46,10 +64,10 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="analysisLayer">
-        <div><h2>Vali punktikiht, kust lähimaid objekte otsitakse</h2></div>
+        <div><h2>Vali punktikiht, kust lähimaid asukohti otsitakse</h2></div>
         <hr/>
         <div>
-            <p>L&auml;hima asukoha leidmise funktsioon m&otilde;&otilde;dab siin m&auml;&auml;ratud kihi punktide (alguspunktide) vahemaa j&auml;rgmises parameetris m&auml;&auml;ratud punktideni.  Kaasata saab kuni 1000 asukohta kihi kohta.
+            <p>L&auml;hima leidmise funktsioon m&otilde;&otilde;dab siin m&auml;&auml;ratud kihi objektide (alguspunktide) vahemaa j&auml;rgmises parameetris m&auml;&auml;ratud asukohtadeni.  Kaasata saab kuni 1000 objekti iga kihi kohta.
 
             </p>
         </div>
@@ -58,9 +76,9 @@
         <div><h2>Leia lähimad asukohad</h2></div>
         <hr/>
         <div>
-            <p>L&auml;hima asukoha leidmise funktsioon m&otilde;&otilde;dab esimeses kihis asuvate asukohtade vahemaa selle kihi asukohtadeni. Kaasata saab kuni 1000 asukohta kihi kohta.
+            <p>L&auml;hima leidmise funktsioon m&otilde;&otilde;dab esimeses kihis asuvate objektide vahemaa selle kihi asukohtadeni. Kaasata saab kuni 1000 asukohta kihi kohta.
             </p>
-            <p>Lisaks kaardil asuvale kihile saate valida variandi  <b>Vali elukeskkonna atlase anal&uuml;&uuml;sikiht</b>, mille leiate ripploendi allosast. Nii avaneb galerii, mis sisaldab mitmete anal&uuml;&uuml;side jaoks tarvilikku kihtide kollektsiooni. 
+            <p class="OnlineOnly">Lisaks kaardil asuvale kihile saate valida variandi  <b>Vali elukeskkonna atlase anal&uuml;&uuml;sikiht</b>, mille leiate ripploendi allosast. Nii avaneb galerii, mis sisaldab mitmete anal&uuml;&uuml;side jaoks tarvilikku kihtide kollektsiooni. 
             </p>
         </div>
     </div>
@@ -68,7 +86,7 @@
         <div><h2>Mõõda</h2></div>
         <hr/>
         <div>
-            <p>Saate valida, kas soovite l&auml;himad asukohad leida sirgjoonelise vahemaa v&otilde;i valitud liikumisviisi p&otilde;hjal. Liikumisviisid on lubatud &uuml;ksnes juhul, kui teie sisendkiht sisaldab punkte. Lubatud reisiviisid m&auml;&auml;rab Teie asutuse administraator.  Liikumisviisi kasutamisel m&otilde;&otilde;detakse vahemaad piki maanteid v&otilde;i jalgteid ning arvesse v&otilde;etakse kehtivad reeglid (nt &uuml;hesuunalised teed, keelatud p&ouml;&ouml;rdeid jne).
+            <p>Saate valida, kas soovite l&auml;himad asukohad leida sirgjoonelise vahemaa v&otilde;i valitud liikumisviisi p&otilde;hjal. Liikumisviisid on lubatud &uuml;ksnes juhul, kui teie sisendkiht sisaldab punkte. Lubatud reisiviisid m&auml;&auml;rab teie asutuse administraator.  Liikumisviisi kasutamisel m&otilde;&otilde;detakse vahemaad piki maanteid v&otilde;i jalgteid ning arvesse v&otilde;etakse kehtivad reeglid (nt &uuml;hesuunalised teed, keelatud p&ouml;&ouml;rdeid jne).
             </p>
             <p>Kui m&otilde;&otilde;date vahemaad joonte v&otilde;i alade vahel, leitakse vahemaa l&auml;himast punktist v&otilde;i l&auml;hima punktini piki joont v&otilde;i ala piiri. 
             </p> 
@@ -103,13 +121,13 @@
         <div><h2>Iga sisendkihi asukoha jaoks</h2></div>
         <hr/>
         <div>
-            <p>L&auml;himate asukohtade otsingu piiramiseks on Teil kaks varianti. Esimene variant on piirata &uuml;he alguspunkti kohta leitavate l&auml;himate asukohtade arvu. N&auml;iteks saate otsida kas &uuml;hte l&auml;himat parki, kahte k&otilde;ige l&auml;hemal asuvat parki jne. Teine v&otilde;imalus on m&auml;&auml;rata maksimaalne otsinguulatus v&otilde;i s&otilde;iduaeg.
+            <p>L&auml;himate asukohtade otsingu piiramiseks on teil kaks varianti. Esimene variant on piirata &uuml;he alguspunkti kohta leitavate l&auml;himate asukohtade arvu. N&auml;iteks saate otsida kas &uuml;hte l&auml;himat parki, kahte k&otilde;ige l&auml;hemal asuvat parki jne. Teine v&otilde;imalus on m&auml;&auml;rata maksimaalne otsinguulatus v&otilde;i s&otilde;iduaeg.
             </p>
-            <p>J&auml;ttes need valikud v&auml;lja on maksimaalne leitavate l&auml;himate asukohtade arv 100 (t&ouml;&ouml;vahendi limiit) ning maksimaalne otsingu ulatus on piiramatu.
+            <p>Kui j&auml;tate need ruudud m&auml;rkimata, on leitavate l&auml;himate asukohtade arv maksimaalselt 100 (t&ouml;&ouml;riista piirm&auml;&auml;r) ja suurimat otsinguulatust ei piirata.
             </p>
             <p>T&ouml;&ouml;tlemiseks kuluv aeg s&otilde;ltub alguspunktide ja l&auml;himate asukohtade arvust ning maksimaalsest otsinguulatusest. Kui asukohti on rohkem ja otsinguulatus suurem, kulub anal&uuml;&uuml;simiseks rohkem aega.
             </p>
-            <p>Pane t&auml;hele, et kui otsingu kaugusele on seatud limiit, siis on v&otilde;imalik, et leia l&auml;him t&ouml;&ouml;riist ei leia asukohti antud vahemikust v&otilde;i leitakse v&auml;hem asukohti kui on teie t&auml;psustatud maksimum arv.
+            <p>Pange t&auml;hele, et kui otsinguulatus on piiratud, v&otilde;ib juhtuda, et t&ouml;&ouml;riist ei leia selles ulatuses &uuml;htegi l&auml;himat asukohta v&otilde;i leitakse Teie m&auml;&auml;ratud l&auml;himate asukohtade maksimaalsest arvust v&auml;hem asukohti.
             </p>
         </div>
     </div>
@@ -119,7 +137,7 @@
         <div>
             <p>See tulemuste kiht koosneb kahest kihist - l&auml;himate asukohtadega kihist ja kihist, milles sisalduvad jooned, mis &uuml;hendavad sisendpunktid l&auml;himate asukohtadega.
             </p>
-            <p>Kuna jooned n&auml;itavad m&otilde;&otilde;detud teed, j&auml;rgivad need vahemaa lineaarse m&otilde;&otilde;tmise korral sirgeid teel&otilde;ike, s&otilde;iduvahemaa kasutamisel l&uuml;himat teekonda piki maanteid v&otilde;i s&otilde;iduaja kasutamisel k&otilde;ige kiiremat teed piki maanteid. Valikulise joontekihi osaks olev tabel sisaldab j&auml;rgmist teavet: joontena esitatud vahemaad v&otilde;i s&otilde;iduaja m&otilde;&otilde;tmised; &uuml;hendatud algus- ja l&otilde;ppasukohti tuvastav teave; l&auml;heduse &quot;pingerida&quot; alguspunktide l&otilde;ikes, mis v&otilde;imaldab n&auml;ha asukohti nende kauguste j&auml;rgi jne. Kui m&otilde;&otilde;ta s&otilde;iduaega liikluse alusel, sisalduvad tabelis ka lahkumise ja saabumise ajad.
+            <p>Kuna jooned n&auml;itavad m&otilde;&otilde;detud teed, j&auml;rgivad need vahemaa lineaarse m&otilde;&otilde;tmise korral sirgeid teel&otilde;ike, s&otilde;iduvahemaa kasutamisel l&uuml;himat teekonda piki maanteid v&otilde;i s&otilde;iduaja kasutamisel k&otilde;ige kiiremat teed piki maanteid. Valikulise joontekihi osaks olev tabel sisaldab j&auml;rgmist teavet: joontena esitatud vahemaad v&otilde;i s&otilde;iduaja m&otilde;&otilde;tmised; &uuml;hendatud algus- ja l&otilde;ppasukohti tuvastav teave; l&auml;heduse &quot;pingerida&quot; alguspunktide l&otilde;ikes, mis v&otilde;imaldab n&auml;ha asukohti nende kauguste j&auml;rgi jne. Kui m&otilde;&otilde;ta s&otilde;iduaega liikluse alusel, sisaldab tabel ka v&auml;ljumis- ja saabumisaega.
             </p>
             <p>V&otilde;ite kasutada vaikenimesid, kuid soovi korral saate nende jaotises  <b>Minu sisu</b> loodavate ja kaardile lisatavate kihtide jaoks ka uued nimed m&auml;&auml;rata.  Vaikenimed p&otilde;hinevad sisendkihi nimel. Kui kiht on juba olemas, peate sisestama m&otilde;ne muu nime.
             </p>

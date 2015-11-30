@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -52,7 +70,7 @@
             <p>選擇代表一個或多個起點的點圖層。 此工具最多支援  5,000 個起點和  個目的地。 </p>
             <p>如果所選擇的圖層剛好只有一個起點，則此起點將連接到所有的目的地。
             </p>
-            <p>除了從地圖選擇圖層，您也可以選擇下拉清單底部的 <b>選擇生動地圖集分析圖層</b>。 此操作將開啟一個圖庫，其中包含可用於多種分析的圖層集合。 
+            <p class="OnlineOnly">除了從地圖選擇圖層，您也可以選擇下拉清單底部的 <b>選擇生動地圖集分析圖層</b>。 此操作將開啟一個圖庫，其中包含可用於多種分析的圖層集合。 
             </p>
         </div>
     </div>
@@ -65,7 +83,7 @@
             </p>
             <p>如果有一個起點和多個目的地，則此工具會將該起點連接到每一個目的地。
             </p>
-            <p>除了從地圖選擇圖層，您也可以選擇下拉清單底部的 <b>選擇生動地圖集分析圖層</b>。 此操作將開啟一個圖庫，其中包含可用於多種分析的圖層集合。 
+            <p class="OnlineOnly">除了從地圖選擇圖層，您也可以選擇下拉清單底部的 <b>選擇生動地圖集分析圖層</b>。 此操作將開啟一個圖庫，其中包含可用於多種分析的圖層集合。 
             </p>
             <p> 如果有多個起點和多個目的地，則需要兩個描述起點和目的地對的欄位： <b>起點中的 ID 欄位</b>和 <b>目的地中匹配的 ID 欄位</b>。 此工具在分析期間連接起點和目的地對。 例如，假設有兩個 ID 欄位值分別為 <code>Rosie</code> 和 <code>Harold</code>  的起點以及兩個帶有與起點相同 ID 值的目的地。 此 <code>Rosie</code> 起點將連接到 <code>Rosie</code> 目的地，並且 <code>Harold</code> 起點將連接到 <code>Harold</code> 目的地。 不會執行其他連接或測量。
             </p>

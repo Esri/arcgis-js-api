@@ -21,5 +21,4 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 define({documentTypes:{data:{caption:"GEMINI (Δεδομένα)",description:""},service:{caption:"GEMINI (Υπηρεσία)",description:""}},LanguageCode:{eng:"Αγγλικά",cym:"Ουαλικά",gle:"Κελτικά (Ιρλανδικά)",gla:"Κελτικά (Σκωτικά)",cor:"Κορνουαλικά",sco:"Γλώσσα των Σκώτων της Ulster"},verticalCRS:{reference:"Αναφορά (π.χ. urn:ogc:def:crs:EPSG::5701 )"}});

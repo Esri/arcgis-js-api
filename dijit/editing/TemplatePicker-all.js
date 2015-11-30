@@ -21,5 +21,4 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 define(["../../layers/FeatureLayer","../../toolbars/draw","../../toolbars/edit","./TemplatePicker"],function(){return{}});

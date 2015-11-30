@@ -7,28 +7,46 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Sakopot punktus</h2><p/>
-        <h2><img src="../images/GUID-60C59C66-3038-4D0E-8F6A-EC6C53FEAA02-web.png" alt="Apkopotie punkti"></h2>
+        <h2><img src="../images/GUID-60C59C66-3038-4D0E-8F6A-EC6C53FEAA02-web.png" alt="Sakopotie punkti"></h2>
         <hr/>
     <p>&Scaron;is rīks darbojas ar punkta elementu slāni un apgabala elementu slāni. Vispirms tiek noteikts, kuri punkti ietilpst katrā laukumā. Pēc tam, kad ir noteikta punktu skaita apgabalā telpiskā attiecība, tiek aprēķināta un pie&scaron;ķirta statistika par visiem punktiem laukumā. Visvienkār&scaron;ākā statistika ir punktu skaits laukumā, bet jūs varat iegūt arī citu statistiku. 
     </p>
-    <p>Piemēram, pieņemsim, ka jums ir kafijas veikalu izvietojuma punktu elementi un apgabala laukumu elementi un jūs vēlaties apkopot kafijas pārdo&scaron;anas apjomus apgabalā. Pieņemot, ka kafijas veikaliem ir atribūts  <i>TOTAL_SALES</i>, varat iegūt visu summu
+    <p>Pieņemsim, ka jums ir kafijas veikalu izvietojuma punktu elementi un apgabala laukumu elementi un jūs vēlaties apkopot kafijas pārdo&scaron;anas apjomus apgabalā. Pieņemot, ka kafijas veikaliem ir atribūts  <i>TOTAL_SALES</i>, varat iegūt visu summu
 vienumu <i>TOTAL_SALES</i> katrā apgabalā vai arī minimālo vai maksimālo vērtību <i>TOTAL_SALES</i>
  katra apgabala ietvaros, vai standarta novirzi no visām pārdo&scaron;anām katra apgabala ietvaros.
     </p>
@@ -44,17 +62,17 @@ vienumu <i>TOTAL_SALES</i> katrā apgabalā vai arī minimālo vai maksimālo v�
         <div>
             <p>Punktu slānis,kas tiks apkopots apgabalos.
             </p>
-            <p>Papildus slāņa izvēlei no kartes varat atlasīt  <b>Izvēlēties Living Atlas analīzes slāni</b> nolaižamā saraksta apak&scaron;ā. Tādējādi tiek atvērta galerija, kurā ir daudzām analīzēm noderīgu slāņu galerija. 
+            <p class="OnlineOnly">Papildus slāņa izvēlei no kartes varat atlasīt  <b>Izvēlēties Living Atlas analīzes slāni</b> nolaižamā saraksta apak&scaron;ā. Tādējādi tiek atvērta galerija, kurā ir daudzām analīzēm noderīgu slāņu galerija. 
             </p>
         </div>
     </div>
     <div id="polygonLayer">
-        <div><h2>Izvēlieties slāni, kas satur apkopošanas apgabalus</h2></div>
+        <div><h2>Izvēlieties slāni, kas satur apkopojuma apgabalus</h2></div>
         <hr/>
         <div>
             <p>Apgabala slānis, kuram tiks apkopoti punkti. Visi punkti, kas ietilpst &scaron;ī slāņa apgabala robežās, tiks saskaitīti un pēc izvēles apkopoti, izmantojot jūsu izvēlēto statistiku.
             </p>
-            <p>Papildus slāņa izvēlei no kartes varat atlasīt  <b>Izvēlēties Living Atlas analīzes slāni</b> nolaižamā saraksta apak&scaron;ā. Tādējādi tiek atvērta galerija, kurā ir daudzām analīzēm noderīgu slāņu galerija. 
+            <p class="OnlineOnly">Papildus slāņa izvēlei no kartes varat atlasīt  <b>Izvēlēties Living Atlas analīzes slāni</b> nolaižamā saraksta apak&scaron;ā. Tādējādi tiek atvērta galerija, kurā ir daudzām analīzēm noderīgu slāņu galerija. 
             </p>
         </div>
     </div>

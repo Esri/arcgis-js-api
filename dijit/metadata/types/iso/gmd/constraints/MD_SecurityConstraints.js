@@ -21,5 +21,4 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../../base/Descriptor","../../../../form/Element","../../../../form/iso/AbstractObject","../../../../form/iso/CodeListReference","../../../../form/iso/GcoElement","./MD_ClassificationCode","dojo/text!./templates/MD_SecurityConstraints.html","../../../../../../kernel"],function(e,t,o,s,i,r,a,n,c,d,m){var l=e(s,{templateString:d});return o("extend-esri")&&t.setObject("dijit.metadata.types.iso.gmd.constraints.MD_SecurityConstraints",l,m),l});

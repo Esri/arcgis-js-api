@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -43,10 +61,9 @@
         <div><h2>경계 내에 다른 피처를 요악할 영역 레이어 선택</h2></div>
         <hr/>
         <div>
-            <p>피처 요약에 사용되는 영역 레이어로서 경계 내에 속합니다.
-
+            <p>피처 요약에 사용되는 영역 레이어로서 경계 내에 속합니다. 
             </p>
-            <p>맵에서 레이어를 선택하는 것 외에도 드롭다운 목록 하단에서  <b>생동감 있는 세계 지도 분석 레이어를 선택</b>할 수 있습니다. 선택 시 다수의 분석 용도에 유용하게 사용할 수 있는 여러 레이어가 포함된 갤러리가 열립니다. 
+            <p class="OnlineOnly">맵에서 레이어를 선택하는 것 외에도 드롭다운 목록 하단에서  <b>생동감 있는 세계 지도 분석 레이어를 선택</b>할 수 있습니다. 선택 시 다수의 분석 용도에 유용하게 사용할 수 있는 여러 레이어가 포함된 갤러리가 열립니다. 
             </p>
         </div>
     </div>
@@ -54,9 +71,9 @@
         <div><h2>요약할 레이어 선택</h2></div>
         <hr/>
         <div>
-            <p>항기 입력 레이어의 피처 경계 내에 있는 이 레이어의 피처가 요약됩니다. 
+            <p>이 레이어의 피처 중 위의 입력 레이어 피처의 경계 내에 있는 피처가 요약됩니다. 
             </p>
-            <p>맵에서 레이어를 선택하는 것 외에도 드롭다운 목록 하단에서  <b>생동감 있는 세계 지도 분석 레이어를 선택</b>할 수 있습니다. 선택 시 다수의 분석 용도에 유용하게 사용할 수 있는 여러 레이어가 포함된 갤러리가 열립니다. 
+            <p class="OnlineOnly">맵에서 레이어를 선택하는 것 외에도 드롭다운 목록 하단에서  <b>생동감 있는 세계 지도 분석 레이어를 선택</b>할 수 있습니다. 선택 시 다수의 분석 용도에 유용하게 사용할 수 있는 여러 레이어가 포함된 갤러리가 열립니다. 
             </p>
         </div>
     </div>
@@ -87,7 +104,7 @@
         <div><h2>통계 추가</h2></div>
         <hr/>
         <div>
-            <p>필요한 경우 주변 라인의 수치 속성에 대한 통계를 계산할 수 있습니다. 
+            <p>필요한 경우 요약할 라인의 수치 속성에 대한 통계를 계산할 수 있습니다. 
             </p>
             <p> <b>범위 내 라인의 총 길이</b> 체크박스를 선택하면 각 영역 경계 내의 전체 라인 길이가 계산됩니다.  또한 각 영역 경계 내에 있는 라인의 수치 속성에 대한 통계를 계산할 수 있습니다.
             </p>
@@ -110,7 +127,7 @@
         <div><h2>통계 추가</h2></div>
         <hr/>
         <div>
-            <p>필요한 경우 주변 영역의 수치 속성에 대한 통계를 계산할 수 있습니다. 
+            <p>필요한 경우 요약할 영역의 수치 속성에 대한 통계를 계산할 수 있습니다. 
             </p>
             <p> <b>면적 합계</b> 체크박스를 선택하면 첫 번째 입력 레이어의 각 영역 경계 내에 있는 피처의 전체 면적이 계산됩니다.  또한 각 영역 경계 내에 있는 피처의 수치 속성에 대한 통계를 계산할 수 있습니다.
             </p>
@@ -129,6 +146,29 @@
             
         </div>
     </div>
+    <div id="StatisticsNoLayer">
+        <div><h2>통계 추가</h2></div>
+        <hr/>
+        <div>
+            <p>요약할 레이어를 선택하면, 필요한 경우 입력 영역 레이어 내에 있는 포인트, 라인 또는 영역의 수치 속성에 대한 통계를 계산할 수 있습니다. 
+            </p>
+            <ul>
+                <li> <b>합계</b> - 지정된 필드의 합계 값입니다.
+                </li>
+                <li> <b>평균</b> - 지정된 필드의 평균값입니다.
+                </li>
+                <li> <b>최소</b> - 지정된 필드의 가장 작은 값입니다.
+                </li>
+                <li> <b>최대</b> - 지정된 필드의 가장 큰 값입니다.
+                </li>
+                <li> <b>표준 편차</b> - 지정된 필드의 값에 대한 표준 편차입니다.
+                </li>
+            </ul>
+            
+            <p>요약하는 피처의 유형에 따라 주변 포인트의 총 수, 라인의 전체 길이 또는 전체 영역을 계산할 수 있습니다.
+            </p>
+        </div>
+    </div>
     <div id="GroupBy">
         <div><h2>그룹화할 필드 선택</h2></div>
         <hr/>
@@ -142,7 +182,7 @@
         <div><h2>소수, 다수 추가</h2></div>
         <hr/>
         <div>
-            <p>그룹화할 필드를 선택하면 체크박스가 활성화됩니다.첫 번째 입력 레이어의 각 경계 내에서 어떤 속성 값이 각 그룹의 소수(열세)인지 또는 다수(우세)인지 알아 보려면  <b>소수, 다수 추가</b>를 선택하세요. <b>소수/다수 추가</b>를 선택하면 새로운 필드 두 개가 결과 레이어에 추가됩니다. <b>백분율 추가</b>를 선택하는 경우에도 새로운 필드 두 개가 각 그룹 내의 소수, 다수 속성 값의 백분율을 포함한 결과 레이어에 추가됩니다.
+            <p>그룹화할 필드를 선택하면 체크박스가 활성화됩니다. 첫 번째 입력 레이어의 각 경계 내에서 어떤 속성 값이 각 그룹의 소수(열세)인지 또는 다수(우세)인지 알아 보려면  <b>소수, 다수 추가</b>를 선택하세요. <b>소수, 다수 추가</b>를 선택하면 새로운 필드 두 개가 결과 레이어에 추가됩니다. <b>백분율 추가</b>를 선택하는 경우에도 새로운 필드 두 개가 각 그룹 내의 소수, 다수 속성 값의 백분율을 포함한 결과 레이어에 추가됩니다.
             </p>
             <ul>
                 <li>포인트를 요약하면 첫 번째 입력 레이어의 각 경계 영역 내에 있는 포인트 개수에 따라 소수, 다수 값이 계산됩니다.  

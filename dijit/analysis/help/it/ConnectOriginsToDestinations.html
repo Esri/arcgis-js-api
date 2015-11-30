@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -52,7 +70,7 @@
             <p>Scegliere il layer di punti che rappresenta l'origine o le origini.  Lo strumento supporta fino a  5,000 origini e  5,000 destinazioni. </p>
             <p>Se si sceglie un layer contenente una sola origine, questa verr&agrave; utilizzata per connettere tutte le destinazioni.
             </p>
-            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi dell'atlante attivo</b> in fondo all'elenco a discesa. Verr&agrave; aperta una galleria contenente una raccolta di layer utili per numerose analisi. 
+            <p class="OnlineOnly">Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi dell'atlante attivo</b> in fondo all'elenco a discesa. Verr&agrave; aperta una galleria contenente una raccolta di layer utili per numerose analisi. 
             </p>
         </div>
     </div>
@@ -65,7 +83,7 @@
             </p>
             <p>Se invece &egrave; presente una sola origine ma pi&ugrave; destinazioni, lo strumento connetter&agrave; l'origine a ciascuna destinazione.
             </p>
-            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi dell'atlante attivo</b> in fondo all'elenco a discesa. Verr&agrave; aperta una galleria contenente una raccolta di layer utili per numerose analisi. 
+            <p class="OnlineOnly">Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi dell'atlante attivo</b> in fondo all'elenco a discesa. Verr&agrave; aperta una galleria contenente una raccolta di layer utili per numerose analisi. 
             </p>
             <p> Se sono presenti pi&ugrave; origini e pi&ugrave; destinazioni, sar&agrave; necessario disporre di due campi che descrivono le coppie origine-destinazione: <b>Campo ID in origini</b> e <b>Campo ID corrispondente in destinazioni</b>. Lo strumento connette le coppie origine-destinazione durante l'analisi. Si immagini ad esempio di disporre di due origini il cui campo ID &egrave; <code>Rosie</code> e <code>Harold</code> e di due destinazioni con gli stessi ID. L'origine <code>Rosie</code> verr&agrave; connessa alla destinazione <code>Rosie</code>, mentre l'origine <code>Harold</code> verr&agrave; connessa alla destinazione <code>Harold</code>. Non vengono effettuate altre connessioni o misurazioni.
             </p>

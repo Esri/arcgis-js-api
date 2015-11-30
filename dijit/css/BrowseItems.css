@@ -1,10 +1,10 @@
-.esriBrowseItems {
+.esriBrowseItemsCtr {
   margin: 0 auto;
   width: 100%;
 }
 
 
-.esriBrowseItems .dgrid .gallery-view h5 {
+.esriBrowseItemsCtr .dgrid .gallery-view h5 {
   width: 100%;
   height: 2.0em;
   line-height: 1.0em;
@@ -12,34 +12,34 @@
   word-wrap: break-word;
 }
 
-.esriBrowseItems .dgrid .gallery-view img {
+.esriBrowseItemsCtr .dgrid .gallery-view img {
   border: 1px solid #838383;
 }
 
-.esriBrowseItems .dgrid .dgrid-row .gallery-view {
+.esriBrowseItemsCtr .dgrid .dgrid-row .gallery-view {
   float: left;
   width: 30.1%;
   padding: 1.5% 1.6%;
   margin: auto;
 }
 
-.esriBrowsePopup p {
+.esriBrowsePopupCtr p {
   padding: 3px;
   margin: 0px;
 }
 
-.esriBrowsePopup .dijitTooltipContainer {
+.esriBrowsePopupCtr .dijitTooltipContainer {
   padding: 0px;
   margin: 0px;
 }
 
 
-.esriContent .dijitPopup {
+.esriContentCtr .dijitPopup {
   height: 105px;
   max-height: 105px;
 }
 
-.esriBrowsePopup.quiet-scroll {
+.esriBrowsePopupCtr.quiet-scroll {
   width: 155px;
   min-height:120px;
   height: auto;
@@ -49,63 +49,63 @@
 }
 
 
-.esriBrowsePopup.quiet-scroll pre::-webkit-scrollbar, .quiet-scroll::-webkit-scrollbar {
+.esriBrowsePopupCtr.quiet-scroll pre::-webkit-scrollbar, .quiet-scroll::-webkit-scrollbar {
   width: 1px;
   height: 1px;
   border-left: 0;
   background: rgba(0, 0, 0, 0.1);
 }
 
-.esriBrowsePopup.quiet-scroll pre::-webkit-scrollbar-thumb, .quiet-scroll::-webkit-scrollbar-thumb {
+.esriBrowsePopupCtr.quiet-scroll pre::-webkit-scrollbar-thumb, .quiet-scroll::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.4);
   border-radius: 0;
 }
 
-.esriBrowsePopup.quiet-scroll pre::-webkit-scrollbar-track, .quiet-scroll::-webkit-scrollbar-track {
+.esriBrowsePopupCtr.quiet-scroll pre::-webkit-scrollbar-track, .quiet-scroll::-webkit-scrollbar-track {
   background: none;
 }
 
 
-.esriBrowseItems .dgrid {
+.esriBrowseItemsCtr .dgrid {
   border: 1px solid #CBCBCB;
   min-height: 400px;
   clear:both;
 }
 
-.esriBrowseItems .dgrid .dgrid-scroller {
+.esriBrowseItemsCtr .dgrid .dgrid-scroller {
     position: relative;
     overflow-y: hidden;
 }
 
 
-.esriBrowseItems .dgrid .dgrid-row .gallery-view:hover {
+.esriBrowseItemsCtr .dgrid .dgrid-row .gallery-view:hover {
     cursor: pointer;
     background-color: #ededed;
 }
 
-.esriBrowseItems .dgrid-row.dgrid-selected .gallery-view,
-.esriBrowseItems .dgrid .dgrid-row.dgrid-selected .gallery-view:hover {
+.esriBrowseItemsCtr .dgrid-row.dgrid-selected .gallery-view,
+.esriBrowseItemsCtr .dgrid .dgrid-row.dgrid-selected .gallery-view:hover {
   background-color: #bfd6eb;
 }
 
 
-.esriBrowseItems .dgrid .dgrid-footer {
+.esriBrowseItemsCtr .dgrid .dgrid-footer {
   background: none repeat scroll 0 0 #FFF !important;
 }
 
-.esriBrowseItems .dgrid .dgrid-navigation {
+.esriBrowseItemsCtr .dgrid .dgrid-navigation {
   float: right;
   margin: 0 auto;
   width: 525px;
 }
 
-.esriBrowseItems .dgrid .dgrid-status {
+.esriBrowseItemsCtr .dgrid .dgrid-status {
   display: none !important;
   visibility: hidden;
 }
 
-.esriBrowseItems .dgrid .dgrid-pagination .dgrid-page-link,
-.esriBrowseItems .dgrid .dgrid-pagination .dgrid-page-skip{
+.esriBrowseItemsCtr .dgrid .dgrid-pagination .dgrid-page-link,
+.esriBrowseItemsCtr .dgrid .dgrid-pagination .dgrid-page-skip{
     background: none repeat scroll 0 0 #F2F2F2;
     border: 1px solid #EDEDED;
     border-radius: 4px 4px 4px 4px;
@@ -121,20 +121,20 @@
     float: left;
 }
 
-.esriBrowseItems .dgrid .dgrid-pagination .dgrid-page-disabled,
-.esriBrowseItems .dgrid .dgrid-pagination .dgrid-page-link:hover,
-.esriBrowseItems .dgrid .dgrid-pagination .dgrid-first:hover,
-.esriBrowseItems .dgrid .dgrid-pagination .dgrid-previous:hover,
-.esriBrowseItems .dgrid .dgrid-pagination .dgrid-next:hover,
-.esriBrowseItems .dgrid .dgrid-pagination .dgrid-last:hover {
+.esriBrowseItemsCtr .dgrid .dgrid-pagination .dgrid-page-disabled,
+.esriBrowseItemsCtr .dgrid .dgrid-pagination .dgrid-page-link:hover,
+.esriBrowseItemsCtr .dgrid .dgrid-pagination .dgrid-first:hover,
+.esriBrowseItemsCtr .dgrid .dgrid-pagination .dgrid-previous:hover,
+.esriBrowseItemsCtr .dgrid .dgrid-pagination .dgrid-next:hover,
+.esriBrowseItemsCtr .dgrid .dgrid-pagination .dgrid-last:hover {
     background-color: #007AC2;
     color: #FFF;
 }
 
-.esriBrowseItems .dgrid .dgrid-pagination .dgrid-first,
-.esriBrowseItems .dgrid .dgrid-pagination .dgrid-previous,
-.esriBrowseItems .dgrid .dgrid-pagination .dgrid-next,
-.esriBrowseItems .dgrid .dgrid-pagination .dgrid-last {
+.esriBrowseItemsCtr .dgrid .dgrid-pagination .dgrid-first,
+.esriBrowseItemsCtr .dgrid .dgrid-pagination .dgrid-previous,
+.esriBrowseItemsCtr .dgrid .dgrid-pagination .dgrid-next,
+.esriBrowseItemsCtr .dgrid .dgrid-pagination .dgrid-last {
     background: none repeat scroll 0 0 #F2F2F2;
     border: 1px solid #EDEDED;
     border-radius: 4px 4px 4px 4px;
@@ -150,11 +150,11 @@
     float: left;
 }
 
-.esriBrowseItems p {
+.esriBrowseItemsCtr p {
     margin:0;
 }
 
-.esriBrowseItems .esriSearchBox {
+.esriBrowseItemsCtr .esriSearchBox {
     background: #fff url("../images/search.png") 98% center no-repeat !important;
     border: 1px solid #CBCBCB;
     -webkit-border-radius: 4px;
@@ -169,16 +169,16 @@
     float: left;
 }
 
-.esriBrowseItems .esriSearchBox:focus {
+.esriBrowseItemsCtr .esriSearchBox:focus {
     border: 1px solid #0079C1
 }
 
-.esriRtl .esriBrowseItems .dgrid .dgrid-navigation{
+.esriRtl .esriBrowseItemsCtr .dgrid .dgrid-navigation{
     float:left;
 }
 
-.esriRtl .esriBrowseItems .dgrid .dgrid-pagination .dgrid-page-link,
-.esriRtl .esriBrowseItems .dgrid .dgrid-pagination .dgrid-page-skip {
+.esriRtl .esriBrowseItemsCtr .dgrid .dgrid-pagination .dgrid-page-link,
+.esriRtl .esriBrowseItemsCtr .dgrid .dgrid-pagination .dgrid-page-skip {
     float:right;
 }
 
@@ -187,11 +187,11 @@
     left: 5px;
 }
 
-.esriRtl .esriBrowseItems .dgrid .dgrid-row .gallery-view {
+.esriRtl .esriBrowseItemsCtr .dgrid .dgrid-row .gallery-view {
     float: right;
 }
 
-.esriBrowseItems .categorySelect {
+.esriBrowseItemsCtr .categorySelect {
   width: 45%;
   margin-top: 1em;
 }

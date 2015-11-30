@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -30,7 +48,7 @@
         <ul>
             <li>Qual &egrave; il parco pi&ugrave; vicino da qui?
             </li>
-            <li>Quale ospedale &egrave; possibile raggiungere con il minor tempo di percorrenza?Quanto tempo si impiegherebbe il marted&igrave; nell'ora di punta alle 17:30?
+            <li>Quale ospedale &egrave; possibile raggiungere con il minor tempo di percorrenza? Quanto tempo si impiegherebbe il marted&igrave; nell'ora di punta alle 17:30?
             </li>
             <li>Quali sono le distanze stradali tra queste citt&agrave; principali?
             </li>
@@ -46,10 +64,10 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="analysisLayer">
-        <div><h2>Scegli il layer di punti da cui trovare le località più vicine</h2></div>
+        <div><h2>Scegli il layer da cui trovare le località più vicine</h2></div>
         <hr/>
         <div>
-            <p>La funzione Trova pi&ugrave; vicine consente di misurare la distanza dai punti nel layer specificato qui (le posizioni di partenza) ai punti specificati nel parametro successivo.  Lo strumento supporta fino a 1000 posizioni in ogni layer.
+            <p>La funzione Trova pi&ugrave; vicine consente di misurare la distanza dalle feature nel layer specificato qui (le posizioni di partenza) alle posizione specificate nel parametro successivo.  Lo strumento supporta fino a 1000 feature in ogni layer.
 
             </p>
         </div>
@@ -58,9 +76,9 @@
         <div><h2>Trova le posizioni più vicine in</h2></div>
         <hr/>
         <div>
-            <p>La funzione Trova pi&ugrave; vicine consente di misurare la distanza da ciascuna delle posizioni presenti nel primo layer alle posizioni presenti nel layer corrente. Lo strumento supporta fino a 1000 posizioni in ogni layer.
+            <p>La funzione Trova pi&ugrave; vicine consente di misurare la distanza da ciascuna delle feature presenti nel primo layer alle posizioni presenti nel layer corrente. Lo strumento supporta fino a 1000 posizioni in ogni layer.
             </p>
-            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi dell'atlante attivo</b> in fondo all'elenco a discesa. Verr&agrave; aperta una galleria contenente una raccolta di layer utili per numerose analisi. 
+            <p class="OnlineOnly">Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi dell'atlante attivo</b> in fondo all'elenco a discesa. Verr&agrave; aperta una galleria contenente una raccolta di layer utili per numerose analisi. 
             </p>
         </div>
     </div>
@@ -83,7 +101,7 @@
                     <li>
                         <p>Selezionare  <b>Usa traffico</b> per trovare le feature pi&ugrave; vicine in base a un orario di partenza specifico e a condizioni di traffico variabili. Inoltre, selezionando l'opzione <b>Traffico in tempo reale</b>, l'orario di partenza dalle posizioni iniziali viene impostato sull'ora corrente e le velocit&agrave; di traffico corrente e previsto fanno riferimento a sensori e feed per determinare quali feature sono pi&ugrave; vicine. Le velocit&agrave; di traffico previsto vengono calcolate facendo riferimento a velocit&agrave; di traffico in tempo reale, velocit&agrave; storiche ed eventi correnti (ad esempio condizioni meteorologiche). Le velocit&agrave; di traffico sono previste con 12 ore di anticipo, quindi &egrave; possibile spostare il cursore per impostare l'orario di partenza fino a 12 ore in avanti.
                         </p>
-                        <p>Utilizzare queste impostazioni del traffico in tempo reale per scoprire quali aree sono raggiungibili partendo adesso, tra un'ora, e cos&igrave; via.
+                        <p>Utilizzare queste impostazioni del traffico in tempo reale per scoprire quali aree sono raggiungibili partendo adesso, tra un'ora e cos&igrave; via.
                         </p>
                     </li>
                     <li>
@@ -91,7 +109,7 @@
                         </p>
                         <p>&Egrave; possibile utilizzare queste impostazioni del traffico storico per rispondere, ad esempio, alla domanda &quot;Quali feature sono raggiungibili pi&ugrave; rapidamente impostando le feature iniziali il mercoled&igrave; alle 11:30?&quot; 
                         </p>
-                        <p>L'orario impostato fa riferimento al fuso orario in cui si trovano le feature iniziali. Pertanto, se si imposta l'orario alle 8:00 e si dispone di due feature di origine, una nella citt&agrave; di New York e l'altra a Los Angeles, le posizioni pi&ugrave; vicine verranno generate considerando rispettivamente le 8:00 come orario di partenzanel fuso orario orientale e le 8:00nel fuso orario del Pacifico.
+                        <p>L'orario impostato fa riferimento al fuso orario in cui si trovano le feature iniziali. Pertanto, se si imposta l'orario alle 8:00 e si dispone di due feature di origine, una nella citt&agrave; di New York e l'altra a Los Angeles, le posizioni pi&ugrave; vicine verranno generate considerando rispettivamente le 8:00 come orario di partenza nel fuso orario orientale e le 8:00 nel fuso orario del Pacifico.
                         </p>
                     </li>
                 </ul>
@@ -103,7 +121,7 @@
         <div><h2>Per ogni posizione nel layer di input</h2></div>
         <hr/>
         <div>
-            <p>Per limitare la ricerca delle posizioni pi&ugrave; vicine sono disponibili due opzioni. Un'opzione consiste nel limitare il numero massimo di posizioni pi&ugrave; vicine da trovare per ciascuna posizione iniziale. &Egrave; possibile trovare il parco pi&ugrave; vicino, i due parchi pi&ugrave; vicini, ecc.. La seconda opzione consiste nell'impostazione di una distanza di ricerca o di un tempo di percorrenza massimi.
+            <p>Per limitare la ricerca delle posizioni pi&ugrave; vicine sono disponibili due opzioni. Un'opzione consiste nel limitare il numero massimo di posizioni pi&ugrave; vicine da trovare per ciascuna posizione iniziale. &Egrave; possibile trovare il parco pi&ugrave; vicino, i due parchi pi&ugrave; vicini e cos&igrave; via. La seconda opzione consiste nell'impostazione di una distanza di ricerca o di un tempo di percorrenza massimi.
             </p>
             <p>Se si deseleziona l'opzione, il numero massimo di posizioni pi&ugrave; vicine da trovare &egrave; 100 (numero limite dello strumento) e l'intervallo massimo di ricerca &egrave; illimitato.
             </p>
@@ -121,7 +139,7 @@
             </p>
             <p>Poich&eacute; mostrano i percorsi misurati, queste linee seguono i percorsi rettilinei quando si misurano le distanze in linea retta, i percorsi stradali pi&ugrave; brevi quando si misurano le distanze di percorrenza oppure i percorsi stradali pi&ugrave; rapidi quando si misurano i tempi di percorrenza. La tabella che fa parte del layer linea opzionale contiene le seguenti informazioni: le misurazioni della distanza o del tempo di guida rappresentate dalle linee, le informazioni di identificazione relative alle posizioni iniziali e finali collegate e le classifiche di prossimit&agrave; suddivise in base alla posizione iniziale, che consentono di visualizzare la posizione pi&ugrave; vicina, la seconda posizione pi&ugrave; vicina e cos&igrave; via. Quando si misura il tempo di percorrenza tenendo conto del traffico, la tabella include anche i tempi di partenza e di arrivo.
             </p>
-            <p>Per questi layer che verranno creati in  <b>I miei contenuti</b> e aggiunti alla mappa, &egrave; possibile utilizzare i nomi predefiniti o specificarne uno nuovo.  I nomi predefiniti sono basati sul nome del layer di input. Se il layer esiste gi&agrave;, sar&agrave; necessario fornire un altro nome.
+            <p>Per questi layer che verranno creati in  <b>I miei contenuti</b> e aggiunti alla mappa, &egrave; possibile utilizzare i nomi predefiniti o specificarne di nuovi.  I nomi predefiniti sono basati sul nome del layer di input. Se il layer esiste gi&agrave;, sar&agrave; necessario fornire un altro nome.
             </p>
             <p>Utilizzare la casella a discesa  <b>Salva risultato in</b> per specificare il nome di una cartella di <b>I miei contenuti</b> in cui salvare i risultati.
             </p>

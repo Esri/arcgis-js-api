@@ -21,7 +21,6 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 // No attribution data, No copyright - just ignore this layer
 
 // No need to update layers that just have copyright

@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -57,10 +75,11 @@
         <div><h2>Escolher camada de ponto representando paragens a visitar</h2></div>
         <hr/>
         <div>
-            <p>Escolher a camada de pontos que as rotas (ou ve&iacute;culos) dever&atilde;o visitar.  Estes pontos tornam-se paragens atribuidas e n&atilde;o atribuidas de sa&iacute;da.
-
+            <p>Escolher a camada de pontos que as rotas (ou ve&iacute;culos) dever&atilde;o visitar.  Estes pontos tornam-se paragens atribuidas e n&atilde;o atribuidas de sa&iacute;da. 
             </p>
-            <p>In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            <p class="OnlineOnly">In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            </p>
+            <p>A ferramenta suporta at&eacute; 2&nbsp;000 elementos de entrada. 
             </p>
         </div>
     </div>
@@ -96,7 +115,7 @@
         <div>
             <p>Especifique o local onde os ve&iacute;culos terminam o seus percursos.
             </p>
-            <p>Voc&ecirc; pode configurar os percursos para acabar em um dos tr&ecirc;s locais: 
+            <p>Pode configurar as rotas para o fim numa das tr&ecirc;s localiza&ccedil;&otilde;es: 
                 <ul>
                     <li>O mesmo local onde os percursos come&ccedil;aram, independentemente se a sua origem foi de um ou v&aacute;rios locais
                     </li>

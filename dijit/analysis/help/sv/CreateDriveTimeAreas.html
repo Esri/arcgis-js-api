@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -66,7 +84,10 @@
         <div>
             <p>Punktfunktionerna runt de omr&aring;den som ska ber&auml;knas. Du kan v&auml;lja hur omr&aring;dena ska ber&auml;knas baserat p&aring; f&auml;rdl&auml;ge (bil, lastbil eller till fots) och m&aring;tt (tid eller avst&aring;nd).
             </p>
-            <p>F&ouml;rutom att v&auml;lja ett lager p&aring; din karta kan du v&auml;lja  <b>V&auml;lj analyslager i den levande v&auml;rldsatlasen</b>, som du hittar l&auml;ngst ned i listrutan. D&aring; &ouml;ppnas ett galleri med en samling lager som kan vara praktiska att anv&auml;nda vid m&aring;nga analyser. 
+            <p class="OnlineOnly">F&ouml;rutom att v&auml;lja ett lager p&aring; din karta kan du v&auml;lja  <b>V&auml;lj analyslager i den levande v&auml;rldsatlasen</b>, som du hittar l&auml;ngst ned i listrutan. D&aring; &ouml;ppnas ett galleri med en samling lager som kan vara praktiska att anv&auml;nda vid m&aring;nga analyser. 
+            </p>
+            <p>Verktyget har st&ouml;d f&ouml;r upp till 1&nbsp;000 geoobjekt i indatalagret.
+
             </p>
         </div>
     </div>
@@ -93,13 +114,13 @@
                         </p>
                         <p>Du kan anv&auml;nda dessa historiska trafikinst&auml;llningar f&ouml;r att till exempel ta reda p&aring; &quot;Vilka omr&aring;den kan jag normalt sett komma till om jag &aring;ker klockan 11:30 p&aring; en onsdag?&quot; 
                         </p>
-                        <p>Den tid du anger refererar till den tidszon d&auml;r dina indatapunkter finns. Om du st&auml;ller in tiden 08:00 och har tv&aring; startpunkter, en i New York City och en annan i Los Angeles, genereras rutterna baserat p&aring; avresetiden 08:00Eastern Time respektive 08:00Pacific Time.
+                        <p>Den tid du anger refererar till den tidszon d&auml;r dina indatapunkter finns. Om du st&auml;ller in tiden 08:00 och har tv&aring; startpunkter, en i New York City och en annan i Los Angeles, genereras rutterna baserat p&aring; avresetiden 08:00 Eastern Time respektive 08:00 Pacific Time.
                         </p>
                     </li>
                 </ul>
                 
             </p>
-            <p>Observera att tiden g&aring;r och trafikf&ouml;rh&aring;llandena &auml;ndras medan bilen k&ouml;r ut&aring;t fr&aring;n startpunkten. Verktyget K&ouml;rtidsomr&aring;den tar med dessa variationer i ber&auml;kningarna om du v&auml;ljer  <b>K&ouml;rtid</b> och markerar <b>Anv&auml;nd trafik</b>, trafikfunktionen st&ouml;ds dock inte i alla regioner. Klicka p&aring; l&auml;nken <b>Se tillg&auml;nglighet</b> i verktyget f&ouml;r att se om funktionen st&ouml;ds i ditt unders&ouml;kningsomr&aring;de.
+            <p>Observera att tiden g&aring;r och trafikf&ouml;rh&aring;llandena &auml;ndras medan bilen k&ouml;r ut&aring;t fr&aring;n startpunkten. Verktyget K&ouml;rtidsomr&aring;den tar med dessa variationer i ber&auml;kningarna om du v&auml;ljer  <b>K&ouml;rtid</b> och markerar <b>Anv&auml;nd trafik</b>, trafikfunktionen st&ouml;ds dock inte i alla regioner. Klicka p&aring; l&auml;nken <b>Se tillg&auml;nglighet</b> i verktyget f&ouml;r att ta reda p&aring; om funktionen finns tillg&auml;nglig i ditt unders&ouml;kningsomr&aring;de.
             </p>
             <p> <b>G&aring;ngtid</b> och <b>G&aring;ngavst&aring;nd</b> anv&auml;nder en fast hastighet p&aring; 5 kilometer i timmen (3,1 engelska mil per timme) och f&ouml;ljer g&aring;ngv&auml;gar och angivna gator (utan h&auml;nsyn till regler som p&aring;verkar bilar, till exempel enkelriktade gator). </p>
             <p> <b>Tid med lastbil</b> och <b>Avst&aring;nd med lastbil</b> anv&auml;nder fasta hastigheter och f&ouml;ljer regler som g&auml;ller tunga lastbilar.

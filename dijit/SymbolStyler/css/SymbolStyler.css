@@ -106,7 +106,7 @@
 
 .esriSymbolStyler .esriSymbolSizeInput .esriHorizontalSlider,
 .esriSymbolStyler .esriLineWidthInput .esriHorizontalSlider {
-  width: 68%;
+  width: 66%;
 }
 
 .esriSymbolStyler .esriInlineInput {
@@ -119,8 +119,9 @@
 }
 
 .esriSymbolStyler .esriInlineInput .dijitTextBox {
-  width: 4.2em;
-  margin: 0 4px;
+  width: 4.4em;
+  margin: 0 2px;
+  box-sizing: border-box;
 }
 
 .esriSymbolStyler .esriLinePatternInput .dijitButtonContents {
@@ -128,6 +129,7 @@
 }
 
 .esriSymbolStyler .esriLinePatternInput {
+  box-sizing: border-box;
   margin: 0;
 }
 
@@ -234,7 +236,7 @@
 }
 
 .esriSymbolStyler .esriShapeImageUrlContainer .esriUrlInput {
-  width: 80%;
+  width: 90%;
 }
 
 .esriSymbolStyler .esriShapeImageUrlContainer .esriErrorDisplay {

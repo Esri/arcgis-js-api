@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -38,10 +56,9 @@
         <div><h2>Välj lager som innehåller geoobjekt som ska bilda buffert</h2></div>
         <hr/>
         <div>
-            <p>Det punkt-, linje- eller omr&aring;desgeoobjekt som ska bilda bufferten.
-
+            <p>Det punkt-, linje- eller omr&aring;desgeoobjekt som ska bilda bufferten. 
             </p>
-            <p>F&ouml;rutom att v&auml;lja ett lager p&aring; din karta kan du v&auml;lja  <b>V&auml;lj analyslager i den levande v&auml;rldsatlasen</b>, som du hittar l&auml;ngst ned i listrutan. D&aring; &ouml;ppnas ett galleri med en samling lager som kan vara praktiska att anv&auml;nda vid m&aring;nga analyser. 
+            <p class="OnlineOnly">F&ouml;rutom att v&auml;lja ett lager p&aring; din karta kan du v&auml;lja  <b>V&auml;lj analyslager i den levande v&auml;rldsatlasen</b>, som du hittar l&auml;ngst ned i listrutan. D&aring; &ouml;ppnas ett galleri med en samling lager som kan vara praktiska att anv&auml;nda vid m&aring;nga analyser. 
             </p>
         </div>
     </div>
@@ -86,7 +103,7 @@
                     </li>
                 </ul>
                 
-            </p> 
+            </p>
         </div>
     </div>
     <div id="OptionLine">
@@ -97,7 +114,7 @@
             </p>
             <p>N&auml;r du skapar en enstaka buffert runt linjer (anger ett avst&aring;nd) kan du v&auml;lja vilken sida av linjen som ska buffras. Normalt sett v&auml;ljer du b&aring;da sidor. V&auml;nster och h&ouml;ger avg&ouml;rs som om du gick fr&aring;n den f&ouml;rsta x,y-koordinaten f&ouml;r linjen (startkoordinaten) till den sista x,y-koordinaten f&ouml;r linjen (slutkoordinaten). Om du v&auml;ljer v&auml;nster eller h&ouml;ger inneb&auml;r det vanligtvis att du vet att linjegeoobjekten har skapats och lagrats i en riktning (till exempel uppstr&ouml;ms eller nedstr&ouml;ms i ett flodsystem). I linjens &auml;ndar kan bufferten avrundas (Rund) eller vara rak (Platt).
             </p>
-            <p>N&auml;r du skapar flera buffertar (fler &auml;n ett avst&aring;nd) kan du v&auml;lja hur du vill &aring;terge avst&aring;ndet fr&aring;n det senaste buffertavst&aring;ndet. Om avst&aring;nden till exempel &auml;r 10 och 14 kan du g&ouml;ra p&aring; f&ouml;ljande s&auml;tt:
+            <p>N&auml;r du skapar flera buffertar (mer &auml;n ett avst&aring;nd) kan du v&auml;lja hur du vill &aring;terge avst&aring;ndet fr&aring;n det senaste buffertavst&aring;ndet. Om avst&aring;nden till exempel &auml;r 10 och 14 kan du g&ouml;ra p&aring; f&ouml;ljande s&auml;tt:
                 <ul>
                     <li>V&auml;lj  <b>Ringar</b> om du vill ha buffertar som g&aring;r fr&aring;n 0 till 10 och 10 till 14.
                     </li>
@@ -106,6 +123,14 @@
                 </ul>
                 
             </p> 
+        </div>
+    </div>
+    <div id="OptionNolayer">
+        <div><h2>Alternativ</h2></div>
+        <hr/>
+        <div>
+            <p>N&auml;r du v&auml;ljer ett lager som buffert kan du v&auml;lja hur du vill att &ouml;verlappande buffertar ska hanteras. F&ouml;r varje buffert som ligger &ouml;ver en annan buffert kan de gemensamma omr&aring;dena beh&aring;llas (&Ouml;verlappa) eller kombineras (L&ouml;s upp). Dessutom kan du ange hur flera distanser ska representeras.   F&ouml;r lager som inneh&aring;ller linjegeoobjekt kan du v&auml;lja vilken sida av linjen som ska ing&aring; i bufferten.  F&ouml;r lager som inneh&aring;ll omr&aring;desgeoobjekt kan du v&auml;lja om geoobjektet som buffras ska tas med eller utel&auml;mnas i resultatbufferten.
+            </p>
         </div>
     </div>
     <div id="BufferLayer">

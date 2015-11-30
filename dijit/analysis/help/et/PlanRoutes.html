@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -26,7 +44,7 @@
         <h2>Kavanda marsruudid</h2><p/>
         <h2><img src="../images/GUID-09CC6D60-3C72-42D7-968E-B0663F0B1EBB-web.png" alt="Kavanda marsruudid"></h2>
         <hr/>
-    <p>Marsruutide kavandamise t&ouml;&ouml;riist aitab Teil &uuml;lesanded v&auml;lit&ouml;&ouml;tajate vahel t&otilde;husalt &auml;ra jagada.
+    <p>Marsruutide kavandamise t&ouml;&ouml;riist aitab teil &uuml;lesanded v&auml;lit&ouml;&ouml;tajate vahel t&otilde;husalt &auml;ra jagada.
     </p>
     <p>Teil tuleb t&ouml;&ouml;riistale anda hulk peatusi ja peatustesse s&otilde;itmiseks saadaolevate s&otilde;idukite arv. T&ouml;&ouml;riist m&auml;&auml;rab s&otilde;idukitele peatused ja tagastab marsruudid, mis n&auml;itavad, kuidas iga s&otilde;iduk j&otilde;uab oma m&auml;&auml;ratud peatusteni v&auml;hima aja jooksul.
     </p>
@@ -49,7 +67,7 @@
     </p>
     <p>Marsruutide kavandamise t&ouml;&ouml;riista v&auml;ljund koosneb peatusi sisaldavast kihist, kus peatused on t&auml;histatud neile m&auml;&auml;ratud marsruutidega, marsruutide kihist, mis n&auml;itab l&uuml;himaid teid m&auml;&auml;ratud peatuste k&uuml;lastamiseks, ja m&auml;&auml;ramata peatusi sisaldavast kihist, kui m&otilde;ne peatuseni ei j&otilde;utud. 
     </p>
-    <p>Kui ruut  <b>Kasuta praeguse kaardi ulatust</b> on m&auml;rgitud, siis arvestatakse anal&uuml;&uuml;sis ainult praeguses kuvaulatuses n&auml;htavaid objekte.  Kui see ruut pole m&auml;rgitud, kasutatakse k&otilde;iki sisendkihis olevaid objekte ka siis, kui need pole praegu kaardil n&auml;ha.
+    <p>Kui ruut  <b>Kasuta praeguse kaardi ulatust</b> on m&auml;rgitud, siis arvestatakse anal&uuml;&uuml;sis ainult praeguses kuvaulatuses n&auml;htavaid objekte.  Kui see ruut pole m&auml;rgitud, kaalutakse k&otilde;iki sisendkihis olevaid objekte ka siis, kui need pole praegu kaardil n&auml;ha.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -57,10 +75,11 @@
         <div><h2>Vali punktikiht, mis tähistab külastatavaid peatusi</h2></div>
         <hr/>
         <div>
-            <p>Valige punktide kiht, mida marsruudi k&auml;igus (v&otilde;i s&otilde;ites) tuleks k&uuml;lastada.  Nendest punktidest saavad v&auml;ljundis m&auml;&auml;ratud v&otilde;i m&auml;&auml;ramata peatused.
-
+            <p>Valige punktide kiht, mida marsruudi k&auml;igus (v&otilde;i s&otilde;ites) tuleks k&uuml;lastada.  Nendest punktidest saavad v&auml;ljundis m&auml;&auml;ratud v&otilde;i m&auml;&auml;ramata peatused. 
             </p>
-            <p>Lisaks kaardil asuvale kihile saate valida variandi  <b>Vali elukeskkonna atlase anal&uuml;&uuml;sikiht</b>, mille leiate ripploendi allosast. Nii avaneb galerii, mis sisaldab mitmete anal&uuml;&uuml;side jaoks tarvilikku kihtide kollektsiooni. 
+            <p class="OnlineOnly">Lisaks kaardil asuvale kihile saate valida variandi  <b>Vali elukeskkonna atlase anal&uuml;&uuml;sikiht</b>, mille leiate ripploendi allosast. Nii avaneb galerii, mis sisaldab mitmete anal&uuml;&uuml;side jaoks tarvilikku kihtide kollektsiooni. 
+            </p>
+            <p>See t&ouml;&ouml;riist toetab kuni 2000 sisendobjekti. 
             </p>
         </div>
     </div>
@@ -68,7 +87,7 @@
         <div><h2>Liikumisviis marsruutide jaoks</h2></div>
         <hr/>
         <div>
-            <p>Valige soovitud liikumisviis. V&auml;ljundmarsruudid j&auml;rgivad teid v&otilde;i jalgteid ja v&otilde;tavad arvesse kehtivaid reegleid (nt &uuml;hesuunalised t&auml;navad v&otilde;i keelatud p&ouml;&ouml;rded autode jaoks). Lubatud reisiviisid m&auml;&auml;rab Teie asutuse administraator.  
+            <p>Valige soovitud liikumisviis. V&auml;ljundmarsruudid j&auml;rgivad teid v&otilde;i jalgteid ja v&otilde;tavad arvesse kehtivaid reegleid (nt &uuml;hesuunalised t&auml;navad v&otilde;i keelatud p&ouml;&ouml;rded autode jaoks). Lubatud reisiviisid m&auml;&auml;rab teie asutuse administraator.  
             </p>
         </div>
     </div>
@@ -96,7 +115,7 @@
         <div>
             <p>Saate m&auml;&auml;rata, kus s&otilde;idukid teekonna l&otilde;petavad.
             </p>
-            <p>V&otilde;ite konfigureerida teekonnad l&otilde;ppema &uuml;hes kolmest asukohast: 
+            <p>Teekonnad saate konfigureerida l&otilde;ppema &uuml;hes kolmest asukohast: 
                 <ul>
                     <li>teekonna alguspunktis (s&otilde;ltumata sellest, kas s&otilde;idukid startisid &uuml;hest v&otilde;i mitmest asukohast);
                     </li>
@@ -121,7 +140,7 @@
         <div>
             <p>Saate m&auml;&auml;rata peatuste k&uuml;lastamiseks saadaolevate s&otilde;idukite arvu. See t&ouml;&ouml;riist toetab kuni  100 s&otilde;idukit. 
             </p>
-            <p>See t&ouml;&ouml;riist v&otilde;ib olla v&otilde;imeline leidma lahendusi, mis kasutavad v&auml;hem s&otilde;idukeid kui t&auml;psustatud number, arvestades kogu peatumiste arvu, lubatud peatuste arvu s&otilde;iduki kohta, peatuste kaugust, peatuses kulutatud aega, kogu teekonnale seatud piiranguid s&otilde;iduki kohta.
+            <p>T&ouml;&ouml;riist v&otilde;ib vahel leida sellise lahenduse, mis kasutab teie poolt m&auml;&auml;ratust v&auml;hem s&otilde;idukeid, v&otilde;ttes arvesse peatuste koguarvu, lubatud peatuste arvu s&otilde;iduki kohta, peatuste omavahelist vahemaad, igas peatuses kuluvat aega ning kogu marsruudile seatud piiranguid s&otilde;iduki kohta.
             </p>
         </div>
     </div>
@@ -195,8 +214,7 @@
         <div><h2>Tulemkihi nimi</h2></div>
         <hr/>
         <div>
-            <p>See on jaotises  <b>Minu sisu</b> loodava
-ja kaardile lisatava kihtide grupi nimi. Kihtide grupp sisaldab j&auml;rgnevaid kihte: marsruudid, peatused, teejuhised.
+            <p>See on  <b>Minu sisu</b> alla loodava ja kaardile lisatava kihtide grupi nimi. Kihtide grupp sisaldab j&auml;rgnevaid kihte: marsruudid, peatused, teejuhised.
             </p>
             <p>Rippmen&uuml;&uuml;  <b>Salvesta tulemused</b> kaudu saate m&auml;&auml;rata jaotises <b>Minu sisu</b> selle kausta nime, kuhu tulemused salvestatakse.
             </p>

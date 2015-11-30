@@ -21,5 +21,4 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 define({documentTypes:{data:{caption:"GEMINI (Veri)",description:""},service:{caption:"GEMINI (Hizmet)",description:""}},LanguageCode:{eng:"İngilizce",cym:"Galler dili",gle:"Gaelic (İrlanda lehçesi)",gla:"Gaelic (İskoç lehçesi)",cor:"Korn dili",sco:"Ulster İskoçları"},verticalCRS:{reference:"Başvuru (örnek; urn:ogc:def:crs:EPSG::5701 )"}});

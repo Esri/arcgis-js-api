@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -45,7 +63,9 @@
         <div>
             <p>A camada de ponto, linha ou &aacute;rea que ser&aacute; utilizada como local inicial para resumir fei&ccedil;&otilde;es pr&oacute;ximas.
             </p>
-            <p>Al&eacute;m de escolher uma camada do seu mapa, voc&ecirc; pode selecionar  <b>Escolher Camada de An&aacute;lise do Atlas em Tempo Real</b> localizado na parte inferior da lista suspensa. Isto abre uma galeria contendo uma cole&ccedil;&atilde;o de camadas &uacute;til para muitas an&aacute;lises. 
+            <p class="OnlineOnly">Al&eacute;m de escolher uma camada do seu mapa, voc&ecirc; pode selecionar  <b>Escolher Camada de An&aacute;lise do Atlas em Tempo Real</b> localizado na parte inferior da lista suspensa. Isto abre uma galeria contendo uma cole&ccedil;&atilde;o de camadas &uacute;til para muitas an&aacute;lises. 
+            </p>
+            <p>A ferramenta suporta at&eacute; 1.000 fei&ccedil;&otilde;es nesta camada. 
             </p>
         </div>
     </div>
@@ -55,7 +75,7 @@
         <div>
             <p>As fei&ccedil;&otilde;es nesta camada que est&atilde;o dentro da dist&acirc;ncia especificada para fei&ccedil;&otilde;es na camada especificada acima ser&atilde;o resumidas. 
             </p>
-            <p>Al&eacute;m de escolher uma camada do seu mapa, voc&ecirc; pode selecionar  <b>Escolher Camada de An&aacute;lise do Atlas em Tempo Real</b> localizado na parte inferior da lista suspensa. Isto abre uma galeria contendo uma cole&ccedil;&atilde;o de camadas &uacute;til para muitas an&aacute;lises. 
+            <p class="OnlineOnly">Al&eacute;m de escolher uma camada do seu mapa, voc&ecirc; pode selecionar  <b>Escolher Camada de An&aacute;lise do Atlas em Tempo Real</b> localizado na parte inferior da lista suspensa. Isto abre uma galeria contendo uma cole&ccedil;&atilde;o de camadas &uacute;til para muitas an&aacute;lises. 
             </p> 
         </div>
     </div>
@@ -138,6 +158,29 @@
                 </li>
             </ul>
             
+        </div>
+    </div>
+    <div id="StatisticsNoLayer">
+        <div><h2>Adicionar estatística da camada para resumir</h2></div>
+        <hr/>
+        <div>
+            <p>Ap&oacute;s voc&ecirc; escolher uma camada para resumir, voc&ecirc; pode opcionalmente calcular estat&iacute;sticas de quaisquer atributos num&eacute;ricos dos pontos pr&oacute;ximos, linhas ou &aacute;reas. 
+            </p>
+            <ul>
+                <li> <b>Soma</b>&mdash;O valor total do campo especificado
+                </li>
+                <li> <b>M&eacute;dia</b>&mdash;Calcula a m&eacute;dia do campo especificado
+                </li>
+                <li> <b>M&iacute;nimo</b>&mdash;O menor valor no campo especificado
+                </li>
+                <li> <b>M&aacute;ximo</b>&mdash;O maior valor no campo especificado
+                </li>
+                <li> <b>Desvio Padr&atilde;o</b>&mdash;O desvio padr&atilde;o dos valores no campo especificado
+                </li>
+            </ul>
+            
+            <p>Dependendo dos tipos de fei&ccedil;&otilde;es que voc&ecirc; ir&aacute; resumir, voc&ecirc; pode calcular a contagem total dos pontos pr&oacute;ximos, comprimento total das linhas pr&oacute;ximas ou &aacute;rea total das fei&ccedil;&otilde;es pr&oacute;ximas.
+            </p>
         </div>
     </div>
     <div id="GroupBy">

@@ -21,5 +21,4 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 define(["./SpatialReference","./ImageSpatialReference","./kernel","./sniff","dojo/_base/lang"],function(e,n,i,r,a){function t(e){var n=!1;return e&&(e.ics||e.icsid)&&(n=!0),n}function c(i){var r=null;return i&&(r=t(i)?new n(i):new e(i)),r}var f={isICS:t,createSpatialReference:c};return r("extend-esri")&&a.mixin(i,f),f});

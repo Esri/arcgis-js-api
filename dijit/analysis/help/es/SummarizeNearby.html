@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -45,7 +63,9 @@
         <div>
             <p>La capa de puntos, l&iacute;neas o &aacute;reas que se usar&aacute; como ubicaci&oacute;n de inicio para resumir las entidades cercanas.
             </p>
-            <p>Adem&aacute;s de elegir una capa en el mapa, puedes seleccionar  <b>Elegir capa de an&aacute;lisis de atlas vivo</b>, que se encuentra al final de la lista desplegable. Esto abre una galer&iacute;a que contiene un conjunto de capas que resultan &uacute;tiles para numerosos an&aacute;lisis. 
+            <p class="OnlineOnly">Adem&aacute;s de elegir una capa en el mapa, puedes seleccionar  <b>Elegir capa de an&aacute;lisis de atlas vivo</b>, que se encuentra al final de la lista desplegable. Esto abre una galer&iacute;a que contiene un conjunto de capas que resultan &uacute;tiles para numerosos an&aacute;lisis. 
+            </p>
+            <p>La herramienta admite hasta 1000 entidades en esta capa. 
             </p>
         </div>
     </div>
@@ -55,7 +75,7 @@
         <div>
             <p>Se resumir&aacute;n las entidades de esta capa que est&eacute;n dentro de la distancia especificada a las entidades de la capa especificada anteriormente. 
             </p>
-            <p>Adem&aacute;s de elegir una capa en el mapa, puedes seleccionar  <b>Elegir capa de an&aacute;lisis de atlas vivo</b>, que se encuentra al final de la lista desplegable. Esto abre una galer&iacute;a que contiene un conjunto de capas que resultan &uacute;tiles para numerosos an&aacute;lisis. 
+            <p class="OnlineOnly">Adem&aacute;s de elegir una capa en el mapa, puedes seleccionar  <b>Elegir capa de an&aacute;lisis de atlas vivo</b>, que se encuentra al final de la lista desplegable. Esto abre una galer&iacute;a que contiene un conjunto de capas que resultan &uacute;tiles para numerosos an&aacute;lisis. 
             </p> 
         </div>
     </div>
@@ -141,11 +161,34 @@
             
         </div>
     </div>
+    <div id="StatisticsNoLayer">
+        <div><h2>Agregar estadísticas desde la capa que se va a resumir</h2></div>
+        <hr/>
+        <div>
+            <p>Una vez que elijas una capa para resumir, puedes calcular las estad&iacute;sticas de cualquiera de los atributos num&eacute;ricos de los puntos, l&iacute;neas o &aacute;reas pr&oacute;ximos. 
+            </p>
+            <ul>
+                <li> <b>Suma</b>: valor total del campo especificado
+                </li>
+                <li> <b>Valor medio</b>: valor medio o media del campo especificado
+                </li>
+                <li> <b>M&iacute;nimo</b>: valor m&aacute;s bajo del campo especificado
+                </li>
+                <li> <b>M&aacute;ximo</b>: valor m&aacute;s alto del campo especificado
+                </li>
+                <li> <b>Desviaci&oacute;n est&aacute;ndar</b>: desviaci&oacute;n est&aacute;ndar de los valores del campo especificado
+                </li>
+            </ul>
+            
+            <p>Seg&uacute;n el tipo de entidades que est&eacute;s resumiendo, puedes calcular el total de puntos pr&oacute;ximos, la longitud total de las l&iacute;neas pr&oacute;ximas o el &aacute;rea total de las &aacute;reas pr&oacute;ximas.
+            </p>
+        </div>
+    </div>
     <div id="GroupBy">
         <div><h2>Seleccionar campo para agrupar</h2></div>
         <hr/>
         <div>
-            <p> Este es un atributo de las entidades pr&oacute;ximas que puedes utilizar para calcular las estad&iacute;sticas individuales de cada valor de atributo exclusivo. Por ejemplo, supongamos que tu primera capa de entrada (la capa desde la cual se miden las distancias) contiene parcelas vacantes en venta y que tus entidades pr&oacute;ximas son huellas de edificios.  Uno de los atributos de las huellas de edificios es <i>UseType</i>, que contiene valores como RETAIL, RESIDENTIAL, MANUFACTURING, PUBLIC, etc.  Para caracterizar la mezcla de usos de edificios junto a cada parcela vacante, puedes calcular el &aacute;rea total de cada tipo exclusivo de uso de edificio en un &aacute;rea de dos kil&oacute;metros de las parcelas vacantes utilizando <i>UseType</i> como el grupo por atributo.   Las estad&iacute;sticas de cada grupo, as&iacute; como el recuento de entidades cercanas, se mostrar&aacute;n en la ventana emergente de la capa de resultados.
+            <p> Este es un atributo de las entidades pr&oacute;ximas que puedes utilizar para calcular las estad&iacute;sticas individuales de cada valor de atributo exclusivo. Por ejemplo, supongamos que tu primera capa de entrada (la capa desde la cual se miden las distancias) contiene parcelas vacantes en venta y que tus entidades pr&oacute;ximas son huellas de edificios.  Uno de los atributos de las huellas de edificios es <i>UseType</i>, que contiene valores como RETAIL, RESIDENTIAL, MANUFACTURING, PUBLIC, etc.  Para caracterizar la mezcla de usos de edificios junto a cada parcela vacante, puedes calcular el &aacute;rea total de cada tipo de uso de edificio en un &aacute;rea de dos kil&oacute;metros de las parcelas vacantes utilizando <i>UseType</i> como atributo para agrupar.   Las estad&iacute;sticas de cada grupo, as&iacute; como el recuento de entidades cercanas, se mostrar&aacute;n en la ventana emergente de la capa de resultados.
             </p>    
         </div>
     </div>

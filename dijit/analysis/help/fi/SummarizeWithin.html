@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -43,10 +61,9 @@
         <div><h2>Valitse aluekarttataso, jonka rajojen sisällä olevat muut kohteet sisällytetään yhteenvetoon</h2></div>
         <hr/>
         <div>
-            <p>Aluekarttataso, jota k&auml;ytet&auml;&auml;n sen rajojen sis&auml;puolella olevien kohteiden yhteenvedon laatimiseen.
-
+            <p>Aluekarttataso, jota k&auml;ytet&auml;&auml;n sen rajojen sis&auml;puolella olevien kohteiden yhteenvedon laatimiseen. 
             </p>
-            <p>Kartasta valittavan karttatason lis&auml;ksi voit valita alareunan avattavasta luettelosta valittavan  <b>Valitse maailmankartaston analyysikarttataso</b> -vaihtoehdon. T&auml;m&auml; vaihtoehto avaa gallerian, joka sis&auml;lt&auml;&auml; monissa analyyseissa hy&ouml;dyllisten karttatasojen kokoelman. 
+            <p class="OnlineOnly">Kartasta valittavan karttatason lis&auml;ksi voit valita alareunan avattavasta luettelosta valittavan  <b>Valitse maailmankartaston analyysikarttataso</b> -vaihtoehdon. T&auml;m&auml; vaihtoehto avaa gallerian, joka sis&auml;lt&auml;&auml; monissa analyyseissa hy&ouml;dyllisten karttatasojen kokoelman. 
             </p>
         </div>
     </div>
@@ -56,7 +73,7 @@
         <div>
             <p>Yhteenvetoon sis&auml;llytet&auml;&auml;n t&auml;ss&auml; karttatasossa olevat kohteet, jotka sijaitsevat edell&auml; kuvatun l&auml;ht&ouml;karttatason kohteiden rajojen sis&auml;ll&auml;. 
             </p>
-            <p>Kartasta valittavan karttatason lis&auml;ksi voit valita alareunan avattavasta luettelosta valittavan  <b>Valitse maailmankartaston analyysikarttataso</b> -vaihtoehdon. T&auml;m&auml; vaihtoehto avaa gallerian, joka sis&auml;lt&auml;&auml; monissa analyyseissa hy&ouml;dyllisten karttatasojen kokoelman. 
+            <p class="OnlineOnly">Kartasta valittavan karttatason lis&auml;ksi voit valita alareunan avattavasta luettelosta valittavan  <b>Valitse maailmankartaston analyysikarttataso</b> -vaihtoehdon. T&auml;m&auml; vaihtoehto avaa gallerian, joka sis&auml;lt&auml;&auml; monissa analyyseissa hy&ouml;dyllisten karttatasojen kokoelman. 
             </p>
         </div>
     </div>
@@ -87,7 +104,7 @@
         <div><h2>Lisää tilastotiedot kohteesta</h2></div>
         <hr/>
         <div>
-            <p>Vaihtoehtoisesti voit laskea tilastotietoja l&auml;heisten viivojen numeromuotoisille ominaisuustiedoille. 
+            <p>Vaihtoehtoisesti voit laskea tilastotietoja niiden viivojen numeromuotoisille ominaisuustiedoille, joista yhteenveto tehd&auml;&auml;n. 
             </p>
             <p>Jos valitset  <b>Viivojen kokonaispituus alueella</b> -valintaruudun, ty&ouml;kalu laskee kunkin aluerajan sis&auml;ll&auml; olevien viivojen kokonaispituuden. Voit my&ouml;s laskea tilastotietoja niiden viivojen numeromuotoisille ominaisuustiedoille, jotka ovat kunkin aluerajan sis&auml;ll&auml;.
             </p>
@@ -110,7 +127,7 @@
         <div><h2>Lisää tilastotiedot kohteesta</h2></div>
         <hr/>
         <div>
-            <p>Vaihtoehtoisesti voit laskea tilastotietoja l&auml;heisten alueiden numeromuotoisille ominaisuustiedoille. 
+            <p>Vaihtoehtoisesti voit laskea tilastotietoja niiden alueiden numeromuotoisille ominaisuustiedoille, joista yhteenveto tehd&auml;&auml;n. 
             </p>
             <p>Jos  <b>K&auml;ytetyn alueen kokonaispinta-ala</b> -valintaruutu on valittuna, ty&ouml;kalu laskee ensimm&auml;isen l&auml;ht&ouml;karttatason kunkin aluerajan sis&auml;ll&auml; olevien kohteiden kokonaispinta-alan. Voit my&ouml;s laskea tilastotietoja kunkin aluerajan sis&auml;ll&auml; olevien kohteiden numeromuotoisille ominaisuustiedoille.
             </p>
@@ -127,6 +144,29 @@
                 </li>
             </ul>
             
+        </div>
+    </div>
+    <div id="StatisticsNoLayer">
+        <div><h2>Lisää tilastotiedot kohteesta</h2></div>
+        <hr/>
+        <div>
+            <p>Valittuasi tason, josta yhteenveto tehd&auml;&auml;n, voit vaihtoehtoisesti laskea tilastotietoja l&auml;ht&ouml;aineiston aluekarttatason pisteiden, viivojen tai alueiden kaikille numeromuotoisille ominaisuustiedoille. 
+            </p>
+            <ul>
+                <li> <b>Summa</b>: m&auml;&auml;ritetyn kent&auml;n kokonaisarvo.
+                </li>
+                <li> <b>Keskiarvo</b>: m&auml;&auml;ritetyn kent&auml;n keskiarvo.
+                </li>
+                <li> <b>Minimi</b>: m&auml;&auml;ritetyn kent&auml;n pienin arvo.
+                </li>
+                <li> <b>Maksimi</b>: m&auml;&auml;ritetyn kent&auml;n suurin arvo.
+                </li>
+                <li> <b>Keski Hajonta</b>: m&auml;&auml;ritetyn kent&auml;n arvojen keskihajonta
+                </li>
+            </ul>
+            
+            <p>Niiden kohteiden tyyppien mukaan, joista yhteenveto tehd&auml;&auml;n, voit laskea l&auml;heisten pisteiden kokonaism&auml;&auml;r&auml;n, viivojen kokonaispituuden tai kokonaisalueen.
+            </p>
         </div>
     </div>
     <div id="GroupBy">

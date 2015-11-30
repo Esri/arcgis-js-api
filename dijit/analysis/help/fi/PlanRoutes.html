@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -40,14 +58,14 @@
             </li>
             <li>Toimita kohteita ja pieni&auml; paketteja
             </li>
-            <li>Soita myyntipuheluja
+            <li>Tee myyntik&auml;yntej&auml;
             </li>
             <li>Kuljeta ihmisi&auml; kodeista tapahtumaan
             </li>
         </ul>
         
     </p>
-    <p>Suunnittele reitit &ndash;ty&ouml;kalun tuloksena on karttataso, joka n&auml;ytt&auml;&auml; lyhimm&auml;t reitit pys&auml;hdyspaikkojen v&auml;lill&auml; sek&auml; reitteihin liitetyt pys&auml;hdyspaikat. Tuloksena syntyv&auml; karttataso n&auml;ytt&auml;&auml; my&ouml;s kaikki pys&auml;hdyspaikat, joita ei saavutettu annettujen parametriasetusten takia sek&auml; suuntakarttatason, joka sis&auml;lt&auml;&auml; kunkin reitin matkasuunnitelman. 
+    <p>Suunnittele reitit &ndash;ty&ouml;kalun tuloksena on karttataso, joka n&auml;ytt&auml;&auml; lyhimm&auml;t reitit pys&auml;hdyspaikkojen v&auml;lill&auml; sek&auml; reitteihin liitetyt pys&auml;hdyspaikat. Tuloksena syntyv&auml; karttataso n&auml;ytt&auml;&auml; my&ouml;s kaikki pys&auml;hdyspaikat, joita ei saavutettu annettujen parametriasetusten takia, sek&auml; ohjekarttatason, joka sis&auml;lt&auml;&auml; kunkin reitin matkasuunnitelman. 
     </p>
     <p>Jos vaihtoehto  <b>K&auml;yt&auml; nykyist&auml; karttalaajuutta</b> on valittuna, analyysi k&auml;ytt&auml;&auml; vain nykyisess&auml; karttalaajuudessa n&auml;kyviss&auml; olevia kohteita. Jos toimintoa ei ole valittu, huomioon otetaan kaikki sy&ouml;tekarttatason kohteet &ndash; my&ouml;s kohteet, jotka ovat nykyisen karttalaajuuden ulkopuolella.
     </p>
@@ -57,10 +75,11 @@
         <div><h2>Valitse pistekarttataso, joka esittää pysähdyspaikat</h2></div>
         <hr/>
         <div>
-            <p>Valitse niiden pisteiden karttataso, joiden kautta reitin (tai ajoneuvojen) tulisi kulkea. N&auml;ist&auml; pisteist&auml; tulee tulosaineiston m&auml;&auml;ritettyj&auml; tai m&auml;&auml;ritt&auml;m&auml;tt&ouml;mi&auml; pys&auml;hdyksi&auml;.
-
+            <p>Valitse niiden pisteiden karttataso, joiden kautta reitin (tai ajoneuvojen) tulisi kulkea. N&auml;ist&auml; pisteist&auml; tulee tulosaineiston m&auml;&auml;ritettyj&auml; tai m&auml;&auml;ritt&auml;m&auml;tt&ouml;mi&auml; pys&auml;hdyksi&auml;. 
             </p>
-            <p>Kartasta valittavan karttatason lis&auml;ksi voit valita alareunan avattavasta luettelosta valittavan  <b>Valitse maailmankartaston analyysikarttataso</b> -vaihtoehdon. T&auml;m&auml; vaihtoehto avaa gallerian, joka sis&auml;lt&auml;&auml; monissa analyyseissa hy&ouml;dyllisten karttatasojen kokoelman. 
+            <p class="OnlineOnly">Kartasta valittavan karttatason lis&auml;ksi voit valita alareunan avattavasta luettelosta valittavan  <b>Valitse maailmankartaston analyysikarttataso</b> -vaihtoehdon. T&auml;m&auml; vaihtoehto avaa gallerian, joka sis&auml;lt&auml;&auml; monissa analyyseissa hy&ouml;dyllisten karttatasojen kokoelman. 
+            </p>
+            <p>Ty&ouml;kalu tukee jopa 2&nbsp;000 l&auml;ht&ouml;aineistokohdetta. 
             </p>
         </div>
     </div>
@@ -84,9 +103,9 @@
             </p>
             <p>Kun m&auml;&auml;rit&auml;t useita sijainteja, kullekin ajoneuvolle on m&auml;&auml;ritett&auml;v&auml; oma piste. Ajoneuvojen m&auml;&auml;r&auml;n on vastattava karttatason pisteiden m&auml;&auml;r&auml;&auml;. Valitse useita pisteit&auml; sis&auml;lt&auml;v&auml; karttataso, ja m&auml;&auml;rit&auml; kentt&auml;, joka m&auml;&auml;ritt&auml;&auml; yksil&ouml;llisesti avattavan  <b>Reitin tunnus -kentt&auml;</b> -luettelon yksitt&auml;iset reitit, ajoneuvot tai kuljettajat.
             </p>
-            <p>Aloitusaika on sama kaikilla reiteill&auml;. Aloitusajan aikavy&ouml;hyke on sama kuin aloituspisteen tai -pisteiden sijainnin aikavy&ouml;hyke, joten varmista, ett&auml; antamasi aika on paikallista aikaa. Oletetaan esimerkiksi, ett&auml; olet Tyynenmeren normaaliajassa (PST, UTC-8) ja reititett&auml;v&auml;t ajoneuvot sijaitsevat Kalliovuorten normaaliajassa (MNT, UTC-7). Jos kello on t&auml;ll&auml; hetkell&auml; 9.30Tyynenmeren normaaliajassa (10.30Kalliovuorten normaaliajassa) ja ajoneuvojen on aloitettava reittins&auml; 30 minuutin kuluessa, m&auml;&auml;rit&auml; aloitusajaksi klo 11.00. 
+            <p>Aloitusaika on sama kaikilla reiteill&auml;. Aloitusajan aikavy&ouml;hyke on sama kuin aloituspisteen tai -pisteiden sijainnin aikavy&ouml;hyke, joten varmista, ett&auml; antamasi aika on paikallista aikaa. Oletetaan esimerkiksi, ett&auml; olet Tyynenmeren normaaliajassa (PST, UTC-8) ja reititett&auml;v&auml;t ajoneuvot sijaitsevat Kalliovuorten normaaliajassa (MNT, UTC-7). Jos kello on t&auml;ll&auml; hetkell&auml; 9.30 Tyynenmeren normaaliajassa (10.30 Kalliovuorten normaaliajassa) ja ajoneuvojen on aloitettava reittins&auml; 30 minuutin kuluessa, m&auml;&auml;rit&auml; aloitusajaksi klo 11.00. 
             </p>
-            <p>Jos ajoneuvot l&auml;htev&auml;t liikkeelle eri aikavy&ouml;hykkeilt&auml;, aloitusaika ei voi olla samanaikainen, vaan ajoneuvot l&auml;htev&auml;t liikkeelle eri aikaan. Jos esimerkiksi yksi reitti alkaa Tyynenmeren normaaliajassa (PST) olevasta pisteest&auml; ja toinen reitti alkaa Kalliovuorten normaaliajassa (MST) olevasta pisteest&auml; ja jos m&auml;&auml;rit&auml;t aloitusajaksi klo 11.00, Tyynenmeren normaaliajassa oleva reitti alkaa klo 11.00PST ja Kalliovuorten normaaliajassa oleva reitti alkaa klo 11.00MST eli tunnin aikaerolla.
+            <p>Jos ajoneuvot l&auml;htev&auml;t liikkeelle eri aikavy&ouml;hykkeilt&auml;, aloitusaika ei voi olla samanaikainen, vaan ajoneuvot l&auml;htev&auml;t liikkeelle eri aikaan. Jos esimerkiksi yksi reitti alkaa Tyynenmeren normaaliajassa (PST) olevasta pisteest&auml; ja toinen reitti alkaa Kalliovuorten normaaliajassa (MST) olevasta pisteest&auml; ja jos m&auml;&auml;rit&auml;t aloitusajaksi klo 11.00, Tyynenmeren normaaliajassa oleva reitti alkaa klo 11.00 PST ja Kalliovuorten normaaliajassa oleva reitti alkaa klo 11.00 MST eli tunnin aikaerolla.
             </p>
         </div>
     </div>
@@ -96,7 +115,7 @@
         <div>
             <p>M&auml;&auml;rit&auml;, mihin ajoneuvot p&auml;&auml;tt&auml;v&auml;t reittins&auml;.
             </p>
-            <p>Voit m&auml;&auml;ritt&auml;&auml; reitit p&auml;&auml;ttym&auml;&auml;n johonkin kolmesta sijainnista:
+            <p>Voit m&auml;&auml;ritt&auml;&auml; reitit p&auml;&auml;ttym&auml;&auml;n johonkin kolmesta sijainnista: 
                 <ul>
                     <li>samaan sijaintiin, josta reitit alkoivat, riippumatta siit&auml;, ovatko reitit alkaneet yhdest&auml; vai useammasta sijainnista
                     </li>

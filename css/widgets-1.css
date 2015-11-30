@@ -19,3 +19,14 @@
 @import url("../dijit/css/PopupMobile.css");
 @import url("../dijit/css/MultidimensionalFilter.css");
 @import url("../dijit/css/ImageServiceMeasure.css");
+@import url("../dijit/css/Print.css");
+@import url("../dijit/css/Scalebar.css");
+@import url("../../dojox/form/resources/RangeSlider.css");
+@import url("../dijit/css/TimeSlider.css");
+@import url("../dijit/css/MultidimensionalSlider.css");
+@import url("../dijit/css/VectorFieldRenderer.css");
+@import url("../dijit/css/MultidimensionalFilter.css");
+@import url("../dijit/css/temporal.css");
+@import url("../dijit/css/RenderingRule.css");
+@import url("../dijit/css/MosaicRule.css");
+

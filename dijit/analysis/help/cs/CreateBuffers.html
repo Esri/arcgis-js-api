@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -38,10 +56,9 @@
         <div><h2>Vyberte vrstvu obsahující prvky, pro které se mají vytvořit obalové zóny.</h2></div>
         <hr/>
         <div>
-            <p>Bodov&eacute;, liniov&eacute; nebo polygonov&eacute; prvky, pro kter&eacute; maj&iacute; b&yacute;t vytvořeny obalov&eacute; z&oacute;ny.
-
+            <p>Bodov&eacute;, liniov&eacute; nebo polygonov&eacute; prvky, pro kter&eacute; maj&iacute; b&yacute;t vytvořeny obalov&eacute; z&oacute;ny. 
             </p>
-            <p>Vrstvu můžete vybrat ze sv&eacute; mapy nebo můžete zvolit možnost  <b>Vybrat vrstvu anal&yacute;zy živ&eacute;ho atlasu</b>, kter&aacute; se nach&aacute;z&iacute; na konci rozbalovac&iacute;ho seznamu. Otevře se galerie obsahuj&iacute;c&iacute; sb&iacute;rku vrstev určen&yacute;ch pro mnoho různ&yacute;ch anal&yacute;z. 
+            <p class="OnlineOnly">Vrstvu můžete vybrat ze sv&eacute; mapy nebo můžete zvolit možnost  <b>Vybrat vrstvu anal&yacute;zy živ&eacute;ho atlasu</b>, kter&aacute; se nach&aacute;z&iacute; na konci rozbalovac&iacute;ho seznamu. Otevře se galerie obsahuj&iacute;c&iacute; sb&iacute;rku vrstev určen&yacute;ch pro mnoho různ&yacute;ch anal&yacute;z. 
             </p>
         </div>
     </div>
@@ -86,7 +103,7 @@
                     </li>
                 </ul>
                 
-            </p> 
+            </p>
         </div>
     </div>
     <div id="OptionLine">
@@ -106,6 +123,14 @@
                 </ul>
                 
             </p> 
+        </div>
+    </div>
+    <div id="OptionNolayer">
+        <div><h2>Možnosti</h2></div>
+        <hr/>
+        <div>
+            <p>Po v&yacute;běru vrstvy, kter&aacute; m&aacute; b&yacute;t souč&aacute;st&iacute; obalov&eacute; z&oacute;ny, můžete určit, jak&yacute;m způsobem maj&iacute; b&yacute;t zpracov&aacute;ny překr&yacute;vaj&iacute;c&iacute; se obalov&eacute; z&oacute;ny. Pokud se nad obalovou z&oacute;nou nach&aacute;z&iacute; jin&aacute; obalov&aacute; z&oacute;na, mohou b&yacute;t společn&eacute; oblasti ponech&aacute;ny (Přesah) nebo spojeny (Sloučit). Kromě toho lze určit, jak m&aacute; b&yacute;t zn&aacute;zorněno v&iacute;ce vzd&aacute;lenost&iacute;.   U vrstev obsahuj&iacute;c&iacute;ch liniov&eacute; prvky můžete zvolit, kter&aacute; strana linie m&aacute; b&yacute;t souč&aacute;st&iacute; obalov&eacute; z&oacute;ny.  U vrstev obsahuj&iacute;c&iacute;ch prvky oblasti můžete zvolit, zda m&aacute; b&yacute;t ve v&yacute;sledn&eacute; obalov&eacute; z&oacute;ně zahrnut i obalovan&yacute; prvek.
+            </p>
         </div>
     </div>
     <div id="BufferLayer">

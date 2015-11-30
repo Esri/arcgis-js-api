@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -26,9 +44,9 @@
         <h2>Routen planen</h2><p/>
         <h2><img src="../images/GUID-09CC6D60-3C72-42D7-968E-B0663F0B1EBB-web.png" alt="Routen planen"></h2>
         <hr/>
-    <p>Mit &quot;Routen planen&quot; wird bestimmt, wie effizient Aufgaben im mobilen Au&szlig;endienstteam aufgeteilt werden.
+    <p>&quot;Routen planen&quot; bietet die M&ouml;glichkeit, Aufgaben im mobilen Au&szlig;endienstteam effizient aufzuteilen.
     </p>
-    <p>Sie stellen das Werkzeug mit einer Reihe von Stopps und der Anzahl von Fahrzeugen bereit, von denen die Stopps angefahren werden sollen. Das Werkzeug weist Fahrzeugen die Stopps zu und gibt Routen zur&uuml;ck, die anzeigen, wie die einzelnen Fahrzeuge ihre zugewiesenen Stopps in k&uuml;rzester Zeit erreichen k&ouml;nnen.
+    <p>Sie geben eine Reihe von Stopps und die Anzahl der Fahrzeuge ein, die diese Stopps anfahren werden. Das Werkzeug weist Fahrzeugen die Stopps zu und gibt Routen zur&uuml;ck, die anzeigen, wie die einzelnen Fahrzeuge ihre zugewiesenen Stopps in k&uuml;rzester Zeit erreichen k&ouml;nnen.
     </p>
     <p>Mit &quot;Routen planen&quot; erreichen mobile Au&szlig;endienstteams mehr Einsatzorte in weniger Zeit, was zu einer Erh&ouml;hung der Produktivit&auml;t und zur Verbesserung des Kundenservice f&uuml;hrt.
         <ul>
@@ -38,7 +56,7 @@
             </li>
             <li>Bereitstellung von Reparatur-, Montage- oder technischen Diensten
             </li>
-            <li>Lieferung von Artikeln und kleinen Paketen
+            <li>Lieferdienste
             </li>
             <li>Kundenbesuche
             </li>
@@ -47,9 +65,9 @@
         </ul>
         
     </p>
-    <p>Die Ausgabe von &quot;Routen planen&quot; umfasst einen Layer von Stopps, die durch die Routen kodiert sind, denen sie zugewiesen sind, einen Routen-Layer, der die k&uuml;rzesten Wege zu den Stopps anzeigt, und je nachdem, ob alle Stopps erreicht werden konnten oder nicht, einen Layer mit nicht zugewiesenen Stopps. 
+    <p>Die Ausgabe von &quot;Routen planen&quot; umfasst einen Layer von Stopps, die durch die Routen codiert sind, denen sie zugewiesen sind, einen Routen-Layer, der die k&uuml;rzesten Wege zu den Stopps anzeigt, und je nachdem, ob alle Stopps erreicht werden konnten oder nicht, einen Layer mit nicht zugewiesenen Stopps. 
     </p>
-    <p>Wenn die Option  <b>Aktuelle Kartenausdehnung verwenden</b> aktiviert ist, werden nur die Features in der Analyse ber&uuml;cksichtigt, die in der aktuellen Kartenausdehnung sichtbar sind.  Wenn diese Option deaktiviert ist, werden auch dann alle Features im Eingabe-Layer ber&uuml;cksichtigt, wenn sie sich au&szlig;erhalb der aktuellen Kartenausdehnung befinden.
+    <p>Wenn die Option  <b>Aktuelle Kartenausdehnung verwenden</b> aktiviert ist, werden nur die Features in der Analyse ber&uuml;cksichtigt, die in der aktuellen Kartenausdehnung sichtbar sind.  Wenn diese Option deaktiviert ist, werden alle Features im Eingabe-Layer ber&uuml;cksichtigt, auch diejenigen, die sich au&szlig;erhalb der aktuellen Kartenausdehnung befinden.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -57,10 +75,11 @@
         <div><h2>Punkt-Layer auswählen, der die zu besuchenden Ziele darstellt</h2></div>
         <hr/>
         <div>
-            <p>W&auml;hlen Sie den Layer mit Punkten aus, die die Routen (oder Fahrzeuge) ber&uuml;cksichtigen sollen.  Diese Punkte werden in der Ausgabe zu zugewiesenen oder nicht zugewiesenen Stopps.
-
+            <p>W&auml;hlen Sie den Layer mit Punkten aus, die die Routen (oder Fahrzeuge) ber&uuml;cksichtigen sollen.  Diese Punkte werden in der Ausgabe zu zugewiesenen oder nicht zugewiesenen Stopps. 
             </p>
-            <p>Neben einem Layer aus Ihrer Karte k&ouml;nnen Sie auch die Option  <b>Analyse-Layer des Living Atlas ausw&auml;hlen</b> unten in der Dropdown-Liste ausw&auml;hlen. Hiermit wird eine Galerie mit einer Sammlung von Layern ge&ouml;ffnet, die f&uuml;r viele Analysen hilfreich sind. 
+            <p class="OnlineOnly">Neben einem Layer aus Ihrer Karte k&ouml;nnen Sie auch die Option  <b>Analyse-Layer des Living Atlas ausw&auml;hlen</b> unten in der Dropdown-Liste ausw&auml;hlen. Hiermit wird eine Galerie mit einer Sammlung von Layern ge&ouml;ffnet, die f&uuml;r viele Analysen hilfreich sind. 
+            </p>
+            <p>Das Werkzeug unterst&uuml;tzt bis zu 2.000 Eingabe-Features. 
             </p>
         </div>
     </div>
@@ -84,9 +103,9 @@
             </p>
             <p>Bei Angabe mehrerer Positionen muss jedes Fahrzeug mit dem eigenen Punkt verkn&uuml;pft werden. Die Anzahl der Fahrzeuge muss mit der Anzahl der Punkte im Layer &uuml;bereinstimmen. W&auml;hlen Sie einen Layer mit mehreren Punkten aus, und legen Sie ein Feld fest, das die einzelnen Routen, Fahrzeuge oder Fahrer in der Dropdown-Liste  <b>Routen-ID-Feld</b> eindeutig identifiziert.
             </p>
-            <p>Die Startzeit ist f&uuml;r alle Routen gleich. Da die Zeitzone f&uuml;r die Startzeit der Zeitzone entspricht, in der sich der/die Startpunkt(e) befinden, m&uuml;ssen Sie sicherstellen, dass Sie die lokale Uhrzeit eingeben. Angenommen, Sie befinden sich in der Zeitzone Pacific Standard Time (UTC-8:00) und die Fahrzeuge, f&uuml;r die Sie eine Route erstellen, sind in der Zeitzone Mountain Standard Time (UTC-7:00) stationiert. Wenn es aktuell 9:30 UhrPST (10:30 UhrMST) ist und Ihre Fahrzeuge ihre Routen in 30 Minuten starten sollen, m&uuml;ssen Sie die Startzeit auf 11:00 Uhr festlegen. 
+            <p>Die Startzeit ist f&uuml;r alle Routen gleich. Da die Zeitzone f&uuml;r die Startzeit der Zeitzone entspricht, in der sich der/die Startpunkt(e) befinden, m&uuml;ssen Sie sicherstellen, dass Sie die lokale Uhrzeit eingeben. Angenommen, Sie befinden sich in der Zeitzone Pacific Standard Time (UTC-8:00) und die Fahrzeuge, f&uuml;r die Sie eine Route erstellen, befinden sich in der Zeitzone Mountain Standard Time (UTC-7:00). Wenn es aktuell 9:30 Uhr PST (10:30 Uhr MST) ist und Ihre Fahrzeuge ihre Routen in 30 Minuten starten sollen, m&uuml;ssen Sie die Startzeit auf 11:00 Uhr festlegen. 
             </p>
-            <p>Wenn Ihre Fahrzeuge in einer anderen Zeitzone starten, kann die Startzeit nicht zeitgleich sein, sondern sie sind versetzt. Wenn eine Route beispielsweise von einem Punkt in PST und eine andere Route in MST startet und Sie 11:00 Uhr als Startzeit eingeben, startet die Route in PST um 11:00 UhrPST und die Route in MST um 11:00 UhrMST &ndash; also mit einer Differenz von einer Stunde.
+            <p>Wenn sich Ihre Fahrzeuge in unterschiedlichen Zeitzonen befinden, kann die Startzeit nicht zeitgleich sein. Sie starten stattdessen versetzt. Wenn eine Route beispielsweise von einem Punkt in PST und eine andere Route in MST startet und Sie 11:00 Uhr als Startzeit eingeben, startet die Route in PST um 11:00 Uhr PST und die Route in MST um 11:00 Uhr MST &ndash; also mit einer Differenz von einer Stunde.
             </p>
         </div>
     </div>
@@ -187,7 +206,7 @@
         <div>
             <p>Legen Sie die maximal zul&auml;ssige Zeitdauer einer Route vom Start bis zum Ende fest. Dies umfasst erwartete Reise- und Servicezeiten, die an den Stopps entlang der Route aufgewendet werden. Wenn Fahrer nicht l&auml;nger als eine angegebene Zeit pro Tag arbeiten sollen, etwa 8 Stunden, k&ouml;nnen Sie hier das Zeitlimit festlegen.
             </p>
-            <p>Weitere &Uuml;berlegungen zu einer ausgewogenen Verteilung von Arbeitslasten finden Sie unter  <b>Maximale Anzahl von Stopps pro Fahrzeug</b>.
+            <p>Weitere &Uuml;berlegungen zu einer ausgewogenen Verteilung von Arbeitslasten finden Sie unter  <b>Maximale Anzahl der Stopps pro Fahrzeug</b>.
             </p>
         </div>
     </div>

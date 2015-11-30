@@ -7,24 +7,42 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Criar Áreas de Tempo do Percurso</h2><p/>
-        <h2><img src="../images/GUID-6F629A09-768D-4C04-88A4-AB941811ADE9-web.png" alt="Criar &Aacute;reas de Tempo de Percurso"></h2>
+        <h2><img src="../images/GUID-6F629A09-768D-4C04-88A4-AB941811ADE9-web.png" alt="Criar &Aacute;reas de Tempo do Percurso"></h2>
         <hr/>
     <p>Criar &Aacute;reas de Tempo do Percurso-Cria &aacute;reas que podem ser alcan&ccedil;ados dentro de um per&iacute;odo especificado tempo de condu&ccedil;&atilde;o, dist&acirc;ncia de carro, a p&eacute;, e assim por diante. Mede a partir de um ou v&aacute;rios pontos (at&eacute; 1,000), ao longo das estradas ou caminhos, para criar uma camada que pode ajud&aacute;-lo a responder a perguntas como:
         <ul>
@@ -66,7 +84,10 @@
         <div>
             <p>Os elementos de ponto ao redor do qual as &aacute;reas ser&atilde;o calculadas- Pode escolher como as &aacute;reas s&atilde;o calculadas com base no modo de viagem (condu&ccedil;&atilde;o, cami&atilde;o ou caminhar) e medida (tempo e distancia).
             </p>
-            <p>In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            <p class="OnlineOnly">In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            </p>
+            <p>A ferramenta suporta at&eacute; 1000 elementos na camada de entrada.
+
             </p>
         </div>
     </div>

@@ -21,5 +21,4 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../../base/Descriptor","../../../../form/Attribute","../../../../form/Element","../../../../form/ElementChoice","../../../../form/InputNumber","../../../../form/InputSelectOne","../../../../form/Options","../../../../form/Option","../../../../form/iso/AbstractObject","../../../../form/iso/CodeListReference","../../../../form/iso/GcoElement","../../../../form/iso/ObjectReference","../../../iso/gmd/identification/MD_SpatialRepresentationTypeCode","dojo/text!./templates/DataRepresentation.html","../../../../../../kernel"],function(e,t,o,i,n,r,a,m,s,f,d,c,p,l,b,j,u,O){var g=e(i,{templateString:u});return o("extend-esri")&&t.setObject("dijit.metadata.types.gemini.gmd.identification.DataRepresentation",g,O),g});

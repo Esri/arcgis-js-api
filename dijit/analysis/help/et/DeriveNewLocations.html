@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -26,7 +44,7 @@
         <h2>Tuleta uued asukohad</h2><p/>
         <h2><img src="../images/GUID-4A756008-8431-4AA5-BD42-7135296560DD-web.png" alt="Tuleta uued asukohad"></h2>
         <hr/>
-    <p>See t&ouml;&ouml;riist tuletab uued asukohad huvipakkuvast piirkonnast, mis vastavad seatavatele kriteeriumitele. Need kriteeriumid v&otilde;ivad baseeruda atribuutide p&auml;ringutel (n&auml;iteks vabad maat&uuml;kid) ja ruumilistel p&auml;ringutel (n&auml;iteks k&otilde;ik maat&uuml;kid &uuml;leujutus tsoonis).
+    <p>See t&ouml;&ouml;riist tuletab uued asukohad huvipakkuvast piirkonnast, mis vastavad seatavatele kriteeriumitele. Need kriteeriumid v&otilde;ivad baseeruda atribuutide p&auml;ringutel (n&auml;iteks vabad maat&uuml;kid) ja ruumilistel p&auml;ringutel (n&auml;iteks k&otilde;ik maat&uuml;kid &uuml;leujutustsoonis).
 
     </p>
     <p>Kui  <b>Kasuta hetke kaardi kuvaulatust</b> on valitud, anal&uuml;&uuml;sitakse ainult objekte, mis on hetke kaardi kuvaulatuses n&auml;htavad.  Kui ei ole m&auml;rgistatud, anal&uuml;&uuml;sitakse k&otilde;iki objekte, sh neid, mis asuvad kaardi kuvaulatusest v&auml;ljaspool.
@@ -37,7 +55,7 @@
         <div><h2>Tuleta uued asukohad, mis vastavad järgneva(te)le avaldis(t)ele</h2></div>
         <hr/>
         <div>
-            <p>Avaldise kirjeldamiseks kl&otilde;psake nuppu  <b>Lisa avaldis</b>.  V&otilde;ite lisada mitu avaldist. P&auml;rast avaldise sisestamist ja nupu <b>K&auml;ivita anal&uuml;&uuml;s</b> kl&otilde;psamist filtreeritakse anal&uuml;&uuml;sitava kihi objektid vastavalt igale avaldisele.  Objektide osad, mis vastavad k&otilde;ikidele avaldistele, kirjutatakse tulemuste kihti.
+            <p>Avaldise defineerimiseks kl&otilde;psake nuppu  <b>Lisa avaldis</b>.  V&otilde;ite lisada mitu avaldist. P&auml;rast avaldise sisestamist ja nupu <b>K&auml;ivita anal&uuml;&uuml;s</b> kl&otilde;psamist filtreeritakse anal&uuml;&uuml;sitava kihi objektid vastavalt igale avaldisele.  Objektide osad, mis vastavad k&otilde;ikidele avaldistele, kirjutatakse tulemuste kihti.
             </p>
             <p>V&otilde;ite luua kaht t&uuml;&uuml;pi avaldisi: atribuutide ja ruumip&otilde;hiseid. Atribuutide avaldised on p&auml;ringud v&auml;lja v&auml;&auml;rtustest, n&auml;iteks  <code>kus nimi on 'Tallinn'</code>.  Esineb nelja t&uuml;&uuml;pi ruumilisi avaldisi
                 <ul>

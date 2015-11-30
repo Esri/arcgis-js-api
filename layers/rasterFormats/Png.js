@@ -21,7 +21,6 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 /*
 # MIT LICENSE
 # Copyright (c) 2011 Devon Govett

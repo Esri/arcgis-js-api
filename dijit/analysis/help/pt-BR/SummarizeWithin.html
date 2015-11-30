@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -43,10 +61,9 @@
         <div><h2>Escolha a camada de área para resumir outras feições dentro dos seus limites</h2></div>
         <hr/>
         <div>
-            <p>A camada de &aacute;rea que ser&aacute; utilizada para resumir as fei&ccedil;&otilde;es que caem dentro dos seus limites.
-
+            <p>A camada de &aacute;rea que ser&aacute; utilizada para resumir as fei&ccedil;&otilde;es que caem dentro dos seus limites. 
             </p>
-            <p>Al&eacute;m de escolher uma camada do seu mapa, voc&ecirc; pode selecionar  <b>Escolher Camada de An&aacute;lise do Atlas em Tempo Real</b> localizado na parte inferior da lista suspensa. Isto abre uma galeria contendo uma cole&ccedil;&atilde;o de camadas &uacute;til para muitas an&aacute;lises. 
+            <p class="OnlineOnly">Al&eacute;m de escolher uma camada do seu mapa, voc&ecirc; pode selecionar  <b>Escolher Camada de An&aacute;lise do Atlas em Tempo Real</b> localizado na parte inferior da lista suspensa. Isto abre uma galeria contendo uma cole&ccedil;&atilde;o de camadas &uacute;til para muitas an&aacute;lises. 
             </p>
         </div>
     </div>
@@ -56,12 +73,12 @@
         <div>
             <p>As fei&ccedil;&otilde;es nesta camada que caem dentro dos limites das fei&ccedil;&otilde;es na camada de entrada acima ser&atilde;o resumidas. 
             </p>
-            <p>Al&eacute;m de escolher uma camada do seu mapa, voc&ecirc; pode selecionar  <b>Escolher Camada de An&aacute;lise do Atlas em Tempo Real</b> localizado na parte inferior da lista suspensa. Isto abre uma galeria contendo uma cole&ccedil;&atilde;o de camadas &uacute;til para muitas an&aacute;lises. 
+            <p class="OnlineOnly">Al&eacute;m de escolher uma camada do seu mapa, voc&ecirc; pode selecionar  <b>Escolher Camada de An&aacute;lise do Atlas em Tempo Real</b> localizado na parte inferior da lista suspensa. Isto abre uma galeria contendo uma cole&ccedil;&atilde;o de camadas &uacute;til para muitas an&aacute;lises. 
             </p>
         </div>
     </div>
     <div id="StatisticsPoint">
-        <div><h2>Adicione estatística da camada para resumir</h2></div>
+        <div><h2>Adicionar estatística da camada para resumir</h2></div>
         <hr/>
         <div>
             <p>Voc&ecirc; pode opcionalmente calcular estat&iacute;sticas para atributos num&eacute;ricos dos pontos que caem dentro dos limites das fei&ccedil;&otilde;es. 
@@ -87,7 +104,7 @@
         <div><h2>Adicionar estatística de</h2></div>
         <hr/>
         <div>
-            <p>Voc&ecirc; pode opcionalmente calcular estat&iacute;sticas para atributos num&eacute;ricos das linhas mais pr&oacute;ximas. 
+            <p>Voc&ecirc; pode opcionalmente calcular estat&iacute;sticas para atributos num&eacute;ricos das linhas a serem resumidas. 
             </p>
             <p>A caixa de sele&ccedil;&atilde;o  <b>Comprimento total das linhas em</b> se selecionada, calcular&aacute; o comprimento total das linhas dentro de cada limite de &aacute;rea.  Al&eacute;m disso, voc&ecirc; pode calcular estat&iacute;sticas para atributos num&eacute;ricos das linhas que est&atilde;o dentro de cada limite de &aacute;rea.
             </p>
@@ -110,7 +127,7 @@
         <div><h2>Adicionar estatística de</h2></div>
         <hr/>
         <div>
-            <p>Voc&ecirc; pode opcionalmente calcular estat&iacute;sticas para atributos num&eacute;ricos das &aacute;reas mais pr&oacute;ximas. 
+            <p>Voc&ecirc; pode opcionalmente calcular estat&iacute;sticas para atributos num&eacute;ricos das &aacute;reas a serem resumidas. 
             </p>
             <p>A caixa de sele&ccedil;&atilde;o  <b>Somar &aacute;rea utilizando</b> se selecionada, calcular&aacute; a &aacute;rea total das fei&ccedil;&otilde;es que est&atilde;o dentro de cada limite de &aacute;rea da primeira camada de entrada.  Al&eacute;m disso, voc&ecirc; pode calcular estat&iacute;sticas para atributos num&eacute;ricos das fei&ccedil;&otilde;es que est&atilde;o dentro de cada limite de &aacute;rea.
             </p>
@@ -127,6 +144,29 @@
                 </li>
             </ul>
             
+        </div>
+    </div>
+    <div id="StatisticsNoLayer">
+        <div><h2>Adicionar estatística de</h2></div>
+        <hr/>
+        <div>
+            <p>Ap&oacute;s voc&ecirc; escolher uma camada para resumir, voc&ecirc; pode opcionalmente calcular estat&iacute;sticas de quaisquer atributos num&eacute;ricos dos pontos, linhas ou &aacute;reas dentro da camada de &aacute;rea de entrada. 
+            </p>
+            <ul>
+                <li> <b>Soma</b>&mdash;O valor total do campo especificado
+                </li>
+                <li> <b>M&eacute;dia</b>&mdash;Calcula a m&eacute;dia do campo especificado
+                </li>
+                <li> <b>M&iacute;nimo</b>&mdash;O menor valor no campo especificado
+                </li>
+                <li> <b>M&aacute;ximo</b>&mdash;O maior valor no campo especificado
+                </li>
+                <li> <b>Desvio Padr&atilde;o</b>&mdash;O desvio padr&atilde;o dos valores no campo especificado
+                </li>
+            </ul>
+            
+            <p>Dependendo dos tipos de fei&ccedil;&otilde;es que voc&ecirc; ir&aacute; resumir, voc&ecirc; pode calcular a contagem total dos pontos pr&oacute;ximos, comprimento total das linhas ou &aacute;rea total.
+            </p>
         </div>
     </div>
     <div id="GroupBy">

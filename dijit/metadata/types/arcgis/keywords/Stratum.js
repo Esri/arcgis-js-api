@@ -21,5 +21,4 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../../../kernel","../../../base/Descriptor","dojo/text!./templates/Stratum.html","./KwElements"],function(e,t,a,r,s,o){var d=e(s,{templateString:o});return a("extend-esri")&&t.setObject("dijit.metadata.types.arcgis.keywords.Stratum",d,r),d});

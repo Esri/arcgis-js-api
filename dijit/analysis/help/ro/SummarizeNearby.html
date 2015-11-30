@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -45,7 +63,9 @@
         <div>
             <p>Stratul tematic de puncte, linii sau suprafeţe care vor fi utilizate ca locaţii de pornire pentru a rezuma obiectele spaţiale din apropiere.
             </p>
-            <p>Pe l&acirc;ngă alegerea unui strat tematic din harta dvs., puteţi selecta  <b>Alegere strat tematic de analiză din atlasul actualizat</b>, care se găseşte &icirc;n partea de jos a listei verticale. Această acţiune deschide o galerie care conţine o colecţie de straturi tematice utile pentru numeroase analize. 
+            <p class="OnlineOnly">Pe l&acirc;ngă alegerea unui strat tematic din harta dvs., puteţi selecta  <b>Alegere strat tematic de analiză din atlasul actualizat</b>, care se găseşte &icirc;n partea de jos a listei verticale. Această acţiune deschide o galerie care conţine o colecţie de straturi tematice utile pentru numeroase analize. 
+            </p>
+            <p>Instrumentul acceptă p&acirc;nă la 1.000 de obiecte spaţiale pentru acest strat tematic. 
             </p>
         </div>
     </div>
@@ -55,7 +75,7 @@
         <div>
             <p>Vor fi rezumate obiectele spaţiale din acest strat tematic, care se află la o distanţă egală sau mai mică dec&acirc;t cea specificată faţă de obiecte spaţiale din stratul tematic specificat mai sus. 
             </p>
-            <p>Pe l&acirc;ngă alegerea unui strat tematic din harta dvs., puteţi selecta  <b>Alegere strat tematic de analiză din atlasul actualizat</b>, care se găseşte &icirc;n partea de jos a listei verticale. Această acţiune deschide o galerie care conţine o colecţie de straturi tematice utile pentru numeroase analize. 
+            <p class="OnlineOnly">Pe l&acirc;ngă alegerea unui strat tematic din harta dvs., puteţi selecta  <b>Alegere strat tematic de analiză din atlasul actualizat</b>, care se găseşte &icirc;n partea de jos a listei verticale. Această acţiune deschide o galerie care conţine o colecţie de straturi tematice utile pentru numeroase analize. 
             </p> 
         </div>
     </div>
@@ -65,7 +85,7 @@
         <div>
             <p> Puteţi defini tipul de măsurare a distanţei pe care doriţi să &icirc;l utilizaţi, folosind o distanţă &icirc;n linie dreaptă sau un mod de deplasare selectat. Modurile de deplasare sunt activate doar atunci c&acirc;nd primul strat tematic de intrare (stratul tematic de la care sunt măsurate distanţele) conţine puncte.  Modurile de deplasare disponibile sunt determinate de administratorul organizaţiei dvs. C&acirc;nd utilizaţi unul dintre modurile de deplasare, măsurătorile se fac de-a lungul drumurilor sau traseelor pietonale şi respectă regulile &icirc;n vigoare, cum ar fi sensurile unice, interdicţiile de schimbare a direcţiei şi aşa mai departe. Timpii de deplasare cu autoturismul sau camionul respectă selecţiile dvs. &icirc;n privinţa vitezei de deplasare, at&acirc;t cele bazate pe traficul &icirc;n timp real, c&acirc;t şi cele bazate pe traficul anticipat. Vitezele &icirc;n timp real sunt colectate prin valori prelevate de la senzorii actuali, iar vitezele tipice sunt calculate pe baza mediilor istorice.
             </p>
-            <p>Puteţi introduce mai multe distanţe. Vor fi sumarizate obiectele spaţiale care se &icirc;ncadrează &icirc;n distanţele pe care le introduceţi.  
+            <p>Puteţi introduce mai multe distanţe. Vor fi rezumate obiectele spaţiale care se &icirc;ncadrează &icirc;n distanţele pe care le introduceţi.  
             </p>
             <p>Dacă se bifează caseta de selectare  <b>Rezultat zone limită</b>, se va obţine un strat tematic de rezultate referitoare la zonele definite prin măsurarea distanţei specificate. Stratul tematic de rezultate va include rezumatul tuturor informaţiilor solicitate. De exemplu, atunci c&acirc;nd creaţi rezumatul punctelor din apropiere, dacă utilizaţi o <b>Distanţă liniară</b> de 5 mile (8 km), rezultatul dvs. va conţine zone cu o rază de 5 mile (8 km) &icirc;n jurul obiectelor spaţiale de intrare, c&acirc;t şi rezumatul tuturor informaţiilor de tip număr de puncte şi orice alte statistici adăugate. Dacă nu se bifează caseta de selectare, stratul tematic de rezultate va consta &icirc;n aceleaşi obiecte spaţiale ale primului strat tematic de intrare, alături de rezumatul tuturor informaţiilor solicitate.
             </p>
@@ -140,11 +160,34 @@
             
         </div>
     </div>
+    <div id="StatisticsNoLayer">
+        <div><h2>Adăugare statistică din stratul tematic care va fi rezumat</h2></div>
+        <hr/>
+        <div>
+            <p>După ce alegeţi un strat tematic pentru a fi sumarizat, opţional, puteţi calcula statistici pentru oricare dintre atributele numerice ale punctelor, liniilor sau suprafeţelor din apropiere. 
+            </p>
+            <ul>
+                <li> <b>Sumă</b>&mdash;Valoarea totală pentru c&acirc;mpul specificat
+                </li>
+                <li> <b>Medie</b>&mdash;Media pentru c&acirc;mpul specificat
+                </li>
+                <li> <b>Minim</b>&mdash;Cea mai mică valoare din c&acirc;mpul specificat
+                </li>
+                <li> <b>Maxim</b>&mdash;Cea mai mare valoare pentru c&acirc;mpul specificat
+                </li>
+                <li> <b>Abatere standard</b>&mdash;Abaterea standard a valorilor din c&acirc;mpul specificat
+                </li>
+            </ul>
+            
+            <p>&Icirc;n funcţie de tipurile de obiecte spaţiale pe care le sumarizaţi, puteţi calcula numărul total de puncte din apropiere, lungimile totale ale liniilor din apropiere sau suprafaţa totală a obiectelor spaţiale de suprafaţă din apropiere.
+            </p>
+        </div>
+    </div>
     <div id="GroupBy">
         <div><h2>Alegere câmp după care să se facă gruparea</h2></div>
         <hr/>
         <div>
-            <p> Acesta este un atribut al obiectelor spaţiale din apropiere, pe care &icirc;l puteţi utiliza pentru a calcula statistici separate pentru fiecare valoare de atribut unică. De exemplu, să presupunem că primul strat tematic de intrare (stratul tematic de la care sunt măsurate distanţele) conţine parcele de teren libere de v&acirc;nzare şi obiectele dvs. spaţiale din apropiere sunt amprente de clădiri.  Unul din atributele amprentelor de clădiri este <i>UseType</i>, care conţine valori precum RETAIL (Comerţ), RESIDENTIAL (Rezidenţial), MANUFACTURING (Producţie), PUBLIC (Interes public) şi aşa mai departe.  Pentru a caracteriza amestecul de utilizări ale clădirilor din apropierea fiecărei parcele libere, puteţi calcula suprafaţa totală pentru fiecare tip unic de utilizare a clădirilor de pe o rază de doi kilometri faţă de parcelele libere, utiliz&acirc;nd <i>UseType</i> drept atribut de grupare.   Statistica pentru fiecare punct &icirc;mpreună cu numărul de obiecte spaţiale din apropiere vor fi afişate &icirc;n ferestra pop-up a stratului tematic rezultat.
+            <p> Acesta este un atribut al obiectelor spaţiale din apropiere, pe care &icirc;l puteţi utiliza pentru a calcula statistici separate pentru fiecare valoare de atribut unică. De exemplu, să presupunem că primul strat tematic de intrare (stratul tematic de la care sunt măsurate distanţele) conţine parcele de teren libere de v&acirc;nzare şi obiectele dvs. spaţiale din apropiere sunt amprente de clădiri.  Unul din atributele amprentelor de clădiri este <i>UseType</i>, care conţine valori precum RETAIL (Comerţ), RESIDENTIAL (Rezidenţial), MANUFACTURING (Producţie), PUBLIC (Interes public) şi aşa mai departe.  Pentru a caracteriza amestecul de utilizări ale clădirilor din apropierea fiecărei parcele libere, puteţi calcula suprafaţa totală pentru fiecare tip unic de utilizare a clădirilor de pe o rază de doi kilometri faţă de parcelele libere, utiliz&acirc;nd <i>UseType</i> drept atribut de grupare.   Statistica pentru fiecare punct &icirc;mpreună cu numărul de obiecte spaţiale din apropiere vor fi afişate &icirc;n fereastra pop-up a stratului tematic rezultat.
             </p>    
         </div>
     </div>

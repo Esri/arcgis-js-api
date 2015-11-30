@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -52,7 +70,7 @@
             <p>Escolher camada de ponto representando origem ou origens.  A ferramenta suporta at&eacute;  5,000 origens e  5,000 destinos. </p>
             <p>Se escolher uma camada que tem exactamente uma origem, ele ir&aacute; ligar-se a todos os destinos.
             </p>
-            <p>In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            <p class="OnlineOnly">In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
             </p>
         </div>
     </div>
@@ -65,7 +83,7 @@
             </p>
             <p>Se h&aacute; uma origem e muitos destinos, a ferramenta liga a origem a cada um dos destinos.
             </p>
-            <p>In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            <p class="OnlineOnly">In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
             </p>
             <p> Se houver muitas origens e muitos destinos, precisa ter dois campos que descrevem os pares de origem-destino: <b>Campo Identifica&ccedil;&atilde;o (ID) em origens</b> e <b>campo Correspond&ecirc;ncia de Identifica&ccedil;&atilde;o (Matching ID) em destinos</b> A ferramenta liga os pares origem-destino durante a an&aacute;lise. Por exemplo, imagine que tem duas origens, com valores de campo de identifica&ccedil;&atilde;o de <code>Rosie</code> e <code>Harold</code> e dois destinos com os mesmos valores de identifica&ccedil;&atilde;o.  A origem <code>Rosie</code> ir&aacute; ligar-se ao destino <code>Rosie</code>, e <code>Harold</code> vai ligar-se a <code>Harold</code>. N&atilde;o s&atilde;o feitas outras liga&ccedil;&otilde;es ou medi&ccedil;&otilde;es
             </p>

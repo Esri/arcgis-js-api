@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -49,10 +67,10 @@
         <div><h2>Izvēlieties punkta slāni, kas pārstāv izcelsmes vietas</h2></div>
         <hr/>
         <div>
-            <p>Izvēlieties punkta slāni, kas pārstāv izcelsmes vietu vai vietas.  Rīks atbalsta līdz  5,000 koordinātu sākuma punktiem un  5,000 galamērķiem. </p>
+            <p>Izvēlieties punkta slāni, kas pārstāv izcelsmes vietu vai vietas.  Rīks atbalsta līdz  5000 koordinātu sākuma punktiem un  5000 galamērķiem. </p>
             <p>Ja izvēlēsities slāni, kam ir tie&scaron;i viena izcelsme, tiks izveidots savienojums ar visiem galamērķiem.
             </p>
-            <p>Papildus slāņa izvēlei no kartes varat atlasīt  <b>Izvēlēties Living Atlas analīzes slāni</b> nolaižamā saraksta apak&scaron;ā. Tādējādi tiek atvērta galerija, kurā ir daudzām analīzēm noderīgu slāņu galerija. 
+            <p class="OnlineOnly">Papildus slāņa izvēlei no kartes varat atlasīt  <b>Izvēlēties Living Atlas analīzes slāni</b> nolaižamā saraksta apak&scaron;ā. Tādējādi tiek atvērta galerija, kurā ir daudzām analīzēm noderīgu slāņu galerija. 
             </p>
         </div>
     </div>
@@ -60,12 +78,12 @@
         <div><h2>Izvēlieties galamērķa slāni</h2></div>
         <hr/>
         <div>
-            <p>Izvēlaties slāni, kas pārstāv galamērķi vai galamērķus, ar kuru koordinātu sākuma punktus ir jāsavieno. Rīks atbalsta līdz  5,000 koordinātu sākuma punktiem un  5,000 galamērķiem. </p>
+            <p>Izvēlaties slāni, kas pārstāv galamērķi vai galamērķus, ar kuru koordinātu sākuma punktus ir jāsavieno. Rīks atbalsta līdz  5000 koordinātu sākuma punktiem un  5000 galamērķiem. </p>
             <p>Ja jūs izvēlaties slāni, kam ir tie&scaron;i viens galamērķis, visi koordinātu sākuma punkti tiks savienoti ar &scaron;o galamērķi. 
             </p>
             <p>Ja ir viens koordinātu sākuma punkts un daudz galamērķi, rīks savienos koordinātu sākuma punktus ar katru no vietām.
             </p>
-            <p>Papildus slāņa izvēlei no kartes varat atlasīt  <b>Izvēlēties Living Atlas analīzes slāni</b> nolaižamā saraksta apak&scaron;ā. Tādējādi tiek atvērta galerija, kurā ir daudzām analīzēm noderīgu slāņu galerija. 
+            <p class="OnlineOnly">Papildus slāņa izvēlei no kartes varat atlasīt  <b>Izvēlēties Living Atlas analīzes slāni</b> nolaižamā saraksta apak&scaron;ā. Tādējādi tiek atvērta galerija, kurā ir daudzām analīzēm noderīgu slāņu galerija. 
             </p>
             <p> Ja ir daudz sākuma punktu un daudz galamērķu, jums ir nepiecie&scaron;ami divi lauki, kas raksturo sākumpunkta &ndash; galamērķa pāri: <b>ID lauks sākuma punktam</b> un <b>atbilsto&scaron;ais ID lauks galamērķim</b>. Rīks savieno sākumpunkta-galamērķa pārus analīzes laikā. Piemēram, iedomājaties, ka jums ir divi sākumpunkti ar ID lauku vērtībām <code>Rosie</code> un <code>Harold</code> un divi galamērķi ar tām pa&scaron;ām ID vērtībām. <code>Rosie</code> sākumpunkts savienosies ar <code>Rosie</code> galamērķi un <code>Harold</code> savienosies ar <code>Harold</code>. Nekādi citi savienojumi vai mērījumi netika veikti.
             </p>

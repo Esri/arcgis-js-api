@@ -21,5 +21,4 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 define(["../../declare"],function(e){return e("esri.tasks.geoenrichment.StudyAreaOptions",null,{toJson:function(){throw"'toJson' method is not implemented"}})});

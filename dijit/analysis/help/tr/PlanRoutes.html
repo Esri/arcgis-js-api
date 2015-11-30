@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -57,10 +75,11 @@
         <div><h2>Gidilecek durakları temsil eden nokta katmanını seç</h2></div>
         <hr/>
         <div>
-            <p>Yolların (veya ara&ccedil;ların) ge&ccedil;mesi gereken noktaların katmanını se&ccedil;in.  Bu noktalar &ccedil;ıktıda atanmış veya atanmamış durak halini alır.
-
+            <p>Yolların (veya ara&ccedil;ların) ge&ccedil;mesi gereken noktaların katmanını se&ccedil;in.  Bu noktalar &ccedil;ıktıda atanmış veya atanmamış durak halini alır. 
             </p>
-            <p>Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, aşağı a&ccedil;ılan listenin altında bulunan  <b>Living Atlas Analiz Katmanı Se&ccedil;</b> &ouml;ğesini de belirleyebilirsiniz. Bu, pek &ccedil;ok analiz i&ccedil;in kullanılabilen katman koleksiyonu i&ccedil;eren bir galeri a&ccedil;ar. 
+            <p class="OnlineOnly">Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, aşağı a&ccedil;ılan listenin altında bulunan  <b>Living Atlas Analiz Katmanı Se&ccedil;</b> &ouml;ğesini de belirleyebilirsiniz. Bu, pek &ccedil;ok analiz i&ccedil;in kullanılabilen katman koleksiyonu i&ccedil;eren bir galeri a&ccedil;ar. 
+            </p>
+            <p>Ara&ccedil; en fazla 2.000 girdi detayını destekler. 
             </p>
         </div>
     </div>
@@ -84,9 +103,9 @@
             </p>
             <p>Birden &ccedil;ok konum belirtildiğinde, her aracın kendi noktasıyla ilişkilendirilmesi gerekir. Ara&ccedil; sayısı katmandaki nokta sayısıyla eşleşmelidir. Birden &ccedil;ok noktası olan bir katman se&ccedil;in ve  <b>Rota kimliği alanı</b> aşağı a&ccedil;ılır listesinde ayrı ayrı rotaları, ara&ccedil;ları veya s&uuml;r&uuml;c&uuml;leri tek olarak tanımlayan bir alan se&ccedil;in.
             </p>
-            <p>Başlangı&ccedil; saati t&uuml;m rotalar i&ccedil;in aynıdır. Başlangı&ccedil; saatinin saat dilimi, başlangı&ccedil; noktasının veya noktalarının bulunduğu yerdeki saat dilimiyle aynıdır, bu y&uuml;zden girdiğiniz saatin yerel saat olduğundan emin olun. &Ouml;rneğin, Pasifik Standart Saati'nde (UTC-8:00) olduğunuzu ve y&ouml;nlendirdiğiniz ara&ccedil;ların Sıradağlar Standart Saati (UTC-7:00) olduğunu varsayalım. Şu anda saat 9:30PST (10:30MST) ise ve ara&ccedil;larınızın 30 dakika i&ccedil;inde rotalarında yola koyulması gerekiyorsa, başlangı&ccedil; saatini 11:00 olarak ayarlarsınız. 
+            <p>Başlangı&ccedil; saati t&uuml;m rotalar i&ccedil;in aynıdır. Başlangı&ccedil; saatinin saat dilimi, başlangı&ccedil; noktasının veya noktalarının bulunduğu yerdeki saat dilimiyle aynıdır, bu y&uuml;zden girdiğiniz saatin yerel saat olduğundan emin olun. &Ouml;rneğin, Pasifik Standart Saati'nde (UTC-8:00) olduğunuzu ve y&ouml;nlendirdiğiniz ara&ccedil;ların Sıradağlar Standart Saati (UTC-7:00) olduğunu varsayalım. Şu anda saat 9:30 PST (10:30 MST) ise ve ara&ccedil;larınızın 30 dakika i&ccedil;inde rotalarında yola koyulması gerekiyorsa, başlangı&ccedil; saatini 11:00 olarak ayarlarsınız. 
             </p>
-            <p>Ara&ccedil;larınız farklı saat dilimlerinden başlıyorsa, başlangı&ccedil; saati aynı olamaz; kaydırılır. &Ouml;rneğin, bir rota PST'deki bir noktadan başka bir rota ise MST'den başlıyorsa ve başlangı&ccedil; saatini 11:00 olarak girerseniz, PST'deki rota 11:00 de başlayacaktır. PST'de, MST'deki rota 11:00MST'de; yani bir saatlik bir farkla başlar.
+            <p>Ara&ccedil;larınız farklı saat dilimlerinden başlıyorsa, başlangı&ccedil; saati aynı olamaz; kaydırılır. &Ouml;rneğin, bir rota PST'deki bir noktadan başka bir rota ise MST'den başlıyorsa ve başlangı&ccedil; saatini 11:00 olarak girerseniz, PST'deki rota 11:00 de başlayacaktır. PST'de, MST'deki rota 11:00 MST'de; yani bir saatlik bir farkla başlar.
             </p>
         </div>
     </div>
@@ -129,7 +148,7 @@
         <div><h2>Araç başına maksimum durak sayısı</h2></div>
         <hr/>
         <div>
-            <p>Bu, genel iş y&uuml;k&uuml;n&uuml; rotalar arasında dengeleyen iki parametreden biridir.1 ve  200 arasında bir değer belirtebilirsiniz. 
+            <p>Bu, genel iş y&uuml;k&uuml;n&uuml; rotalar arasında dengeleyen iki parametreden biridir. 1 ve  200 arasında bir değer belirtebilirsiniz. 
             </p>
             <p>Her araca atanabilecek maksimum durak sayısı d&uuml;ş&uuml;r&uuml;lerek ara&ccedil;lara atanan durak sayısının eşit olmasını sağlamak daha olasıdır. Bu, s&uuml;r&uuml;c&uuml;ler arasında iş y&uuml;k&uuml;n&uuml; dengelemeye yardımcı olur. Ancak bunun bir sakıncası, daha az verimli bir sonu&ccedil; ortaya &ccedil;ıkarma ihtimalinin olmasıdır.
             </p>

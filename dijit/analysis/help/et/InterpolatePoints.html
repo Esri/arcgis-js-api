@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -32,8 +50,7 @@
             </li>
             <li>Saate ennustada raskmetallide kontsentratsiooni p&otilde;llusaagis &uuml;ksikutest taimedest v&otilde;etud proovide alusel.
             </li>
-            <li>Saate ennustada mulla toitainete (nt l&auml;mmastik, fosfor, kaalium jne) ja muude n&auml;itajate (nt elektrijuhtivus) taset, et uurida nende seost saagikusega ja anda iga asukoha jaoks p&otilde;llul t&auml;pse hulga v&auml;etist.
-
+            <li>Saate ennustada mulla toitainete (nt l&auml;mmastik, fosfor, kaalium jne) ja muude n&auml;itajate (nt elektrijuhtivus) taset, et uurida nende seost saagikusega ja anda iga asukoha jaoks p&otilde;llul t&auml;pse hulga v&auml;etist. 
             </li>
             <li>Meteoroloogiliste rakenduste hulka kuuluvad temperatuuri, sademete ja nendega seotud muutujate (nt happevihm) ennustamine. 
             </li>
@@ -49,7 +66,7 @@
             <p>Punktikiht, mida kasutatakse interpoleerimise alusena.  
 
             </p>
-            <p>Lisaks kaardil asuvale kihile saate valida variandi  <b>Vali elukeskkonna atlase anal&uuml;&uuml;sikiht</b>, mille leiate ripploendi allosast. Nii avaneb galerii, mis sisaldab mitmete anal&uuml;&uuml;side jaoks tarvilikku kihtide kollektsiooni. 
+            <p class="OnlineOnly">Lisaks kaardil asuvale kihile saate valida variandi  <b>Vali elukeskkonna atlase anal&uuml;&uuml;sikiht</b>, mille leiate ripploendi allosast. Nii avaneb galerii, mis sisaldab mitmete anal&uuml;&uuml;side jaoks tarvilikku kihtide kollektsiooni. 
             </p>
         </div>
     </div>

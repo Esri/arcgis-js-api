@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -28,7 +46,7 @@
         <hr/>
     <p>Dieses Werkzeug kann mit einem Punkt-Feature-Layer und einem Fl&auml;chen-Feature-Layer verwendet werden. Es ermittelt zun&auml;chst, welche Punkte in den einzelnen Fl&auml;chen liegen. Nachdem diese r&auml;umliche Beziehung der Punkte in diesen Fl&auml;chen bestimmt wurde, werden Statistiken zu allen Punkten in der Fl&auml;che berechnet und der Fl&auml;che zugewiesen. Die einfachste Statistik ist die Anzahl der Punkte innerhalb der Fl&auml;che. Sie k&ouml;nnen jedoch auch andere Statistiken abrufen. 
     </p>
-    <p>Nehmen Sie beispielsweise an, Sie verf&uuml;gen &uuml;ber Punkt-Features f&uuml;r Caf&eacute;standorte und Fl&auml;chen-Features f&uuml;r Landkreise und Sie m&ouml;chten die Umsatzzahlen von Kaffee nach Landkreis zusammenfassen. Angenommen, die Caf&eacute;s weisen das Attribut  <i>TOTAL_SALES</i> auf und Sie k&ouml;nnen die Summe aller <i>TOTAL_SALES</i> in jedem Landkreis oder den Minimal- bzw. Maximalwert f&uuml;r <i>TOTAL_SALES</i>
+    <p>Nehmen Sie beispielsweise an, Sie verf&uuml;gen &uuml;ber Punkt-Features f&uuml;r Caf&eacute;standorte und Fl&auml;chen-Features f&uuml;r Landkreise und Sie m&ouml;chten die Umsatzzahlen der Caf&eacute;s nach Landkreis zusammenfassen. Angenommen, die Caf&eacute;s weisen das Attribut  <i>TOTAL_SALES</i> auf und Sie k&ouml;nnen die Summe aller <i>TOTAL_SALES</i> in jedem Landkreis oder den Minimal- bzw. Maximalwert f&uuml;r <i>TOTAL_SALES</i>
  in jedem Landkreis oder die Standardabweichung s&auml;mtlicher Umsatzzahlen in jedem Landkreis abrufen.
     </p>
     <p>Das Ergebnis ist eine Karte, in der die Farbe jeder Fl&auml;che auf der Gesamtzahl der Punkte geteilt durch die Gr&ouml;&szlig;e der Fl&auml;che basiert. Das Teilen von Anzahlwerten nach Fl&auml;che wird als Normalisierung bezeichnet und ist eine Technik, die Kartografen stets zum Anzeigen von Daten nach Fl&auml;chen verwenden. Die Normalisierung gibt Aufschluss &uuml;ber r&auml;umliche Muster, da die Gr&ouml;&szlig;e der Fl&auml;che ber&uuml;cksichtigt wird, wenn Fl&auml;chen visuell miteinander verglichen werden.
@@ -43,7 +61,7 @@
         <div>
             <p>Der Punkt-Layer wird in die Fl&auml;chen aggregiert.
             </p>
-            <p>Neben einem Layer aus Ihrer Karte k&ouml;nnen Sie auch die Option  <b>Analyse-Layer des Living Atlas ausw&auml;hlen</b> unten in der Dropdown-Liste ausw&auml;hlen. Hiermit wird eine Galerie mit einer Sammlung von Layern ge&ouml;ffnet, die f&uuml;r viele Analysen hilfreich sind. 
+            <p class="OnlineOnly">Neben einem Layer aus Ihrer Karte k&ouml;nnen Sie auch die Option  <b>Analyse-Layer des Living Atlas ausw&auml;hlen</b> unten in der Dropdown-Liste ausw&auml;hlen. Hiermit wird eine Galerie mit einer Sammlung von Layern ge&ouml;ffnet, die f&uuml;r viele Analysen hilfreich sind. 
             </p>
         </div>
     </div>
@@ -53,7 +71,7 @@
         <div>
             <p>Der Fl&auml;chen-Layer, zu dem die Punkte aggregiert werden. Alle Punkte, die innerhalb der Grenzen von Fl&auml;chen in diesem Layer liegen, werden gez&auml;hlt und optional anhand der von Ihnen ausgew&auml;hlten Statistiken zusammengefasst.
             </p>
-            <p>Neben einem Layer aus Ihrer Karte k&ouml;nnen Sie auch die Option  <b>Analyse-Layer des Living Atlas ausw&auml;hlen</b> unten in der Dropdown-Liste ausw&auml;hlen. Hiermit wird eine Galerie mit einer Sammlung von Layern ge&ouml;ffnet, die f&uuml;r viele Analysen hilfreich sind. 
+            <p class="OnlineOnly">Neben einem Layer aus Ihrer Karte k&ouml;nnen Sie auch die Option  <b>Analyse-Layer des Living Atlas ausw&auml;hlen</b> unten in der Dropdown-Liste ausw&auml;hlen. Hiermit wird eine Galerie mit einer Sammlung von Layern ge&ouml;ffnet, die f&uuml;r viele Analysen hilfreich sind. 
             </p>
         </div>
     </div>
@@ -96,7 +114,7 @@
         <div><h2>Prozentsätze hinzufügen</h2></div>
         <hr/>
         <div>
-            <p>Dieses Kontrollk&auml;stchen ist aktiviert, wenn Sie ein Feld ausw&auml;hlen, nach dem gruppiert werden soll. W&auml;hlen Sie  <b>Prozents&auml;tze hinzuf&uuml;gen</b> aus, wenn Sie den Prozentsatz jedes Attributwertes innerhalb einer Gruppe ermitteln m&ouml;chten. Der Ergebnistabelle wird ein neues Feld hinzugef&uuml;gt, das die Prozents&auml;tze jedes Attributwertes innerhalb jeder Gruppe enth&auml;lt. Wenn die Option <b>Minderheit, Mehrheit hinzuf&uuml;gen</b> ebenfalls aktiviert ist, werden dem Ergebnis-Layer zwei weitere Felder hinzugef&uuml;gt, die die Prozents&auml;tze der Minderheits- und Mehrheitsattributwerte in jeder Gruppe enthalten.
+            <p>Dieses Kontrollk&auml;stchen ist aktiviert, wenn Sie ein Feld ausw&auml;hlen, nach dem gruppiert werden soll. W&auml;hlen Sie  <b>Prozents&auml;tze hinzuf&uuml;gen</b> aus, wenn Sie den Prozentsatz jedes Attributwertes innerhalb einer Gruppe ermitteln m&ouml;chten.  Der Ergebnistabelle wird ein neues Feld hinzugef&uuml;gt, das die Prozents&auml;tze jedes Attributwertes innerhalb jeder Gruppe enth&auml;lt. Wenn die Option <b>Minderheit, Mehrheit hinzuf&uuml;gen</b> ebenfalls aktiviert ist, werden dem Ergebnis-Layer zwei weitere Felder hinzugef&uuml;gt, die die Prozents&auml;tze der Minderheits- und Mehrheitsattributwerte in jeder Gruppe enthalten.
             </p>
         </div>
     </div>

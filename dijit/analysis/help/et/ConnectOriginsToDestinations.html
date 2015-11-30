@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -32,7 +50,7 @@
         <ul>
             <li>Arvuta kogu vahemaa v&otilde;i aeg, mis kulub kodu-t&ouml;&ouml; teekonna reisidele.
             </li>
-            <li>m&otilde;&otilde;ta, kui pika maa kliendid l&auml;bi s&otilde;idavad, et teie poodi k&uuml;lastada;kasutada seda teavet oma turuosa m&auml;&auml;ratlemiseks, eriti reklaamikampaaniate sihtimisel v&otilde;i uute poodide jaoks asukohtade valimisel;
+            <li>m&otilde;&otilde;ta, kui pika maa kliendid l&auml;bi s&otilde;idavad, et teie poodi k&uuml;lastada; kasutada seda teavet oma turuosa m&auml;&auml;ratlemiseks, eriti reklaamikampaaniate sihtimisel v&otilde;i uute poodide jaoks asukohtade valimisel;
             </li>
             <li>arvutada oma s&otilde;idukite jaoks eeldatava l&auml;bitud vahemaa. Seej&auml;rel k&auml;ivitage t&ouml;&ouml;riist &quot;Summeeri piirides&quot;, et raporteerida kilometraaž omavalitsuse v&otilde;i muu piirkonna kaupa.
             </li>
@@ -49,10 +67,10 @@
         <div><h2>Vali lähtekohta tähistav punktikiht</h2></div>
         <hr/>
         <div>
-            <p>Valige l&auml;htekohta v&otilde;i l&auml;htekohti t&auml;histav punktikiht.  See t&ouml;&ouml;riist toetab kuni  5,000 l&auml;htekohta ja  5,000 sihtkohta. </p>
+            <p>Valige l&auml;htekohta v&otilde;i l&auml;htekohti t&auml;histav punktikiht.  See t&ouml;&ouml;riist toetab kuni  5 000 l&auml;htekohta ja  5 000 sihtkohta. </p>
             <p>Kui valite &uuml;he l&auml;htekohaga kihi, &uuml;henduvad sellega k&otilde;ik sihtkohad.
             </p>
-            <p>Lisaks kaardil asuvale kihile saate valida variandi  <b>Vali elukeskkonna atlase anal&uuml;&uuml;sikiht</b>, mille leiate ripploendi allosast. Nii avaneb galerii, mis sisaldab mitmete anal&uuml;&uuml;side jaoks tarvilikku kihtide kollektsiooni. 
+            <p class="OnlineOnly">Lisaks kaardil asuvale kihile saate valida variandi  <b>Vali elukeskkonna atlase anal&uuml;&uuml;sikiht</b>, mille leiate ripploendi allosast. Nii avaneb galerii, mis sisaldab mitmete anal&uuml;&uuml;side jaoks tarvilikku kihtide kollektsiooni. 
             </p>
         </div>
     </div>
@@ -60,12 +78,12 @@
         <div><h2>Vali sihtkohtade kiht</h2></div>
         <hr/>
         <div>
-            <p>Valige kiht, kus asub sihtkoht (v&otilde;i sihtkohad), millega l&auml;htekohad peaksid &uuml;henduma. See t&ouml;&ouml;riist toetab kuni  5,000 l&auml;htekohta ja  5,000 sihtkohta. </p>
+            <p>Valige kiht, kus asub sihtkoht (v&otilde;i sihtkohad), millega l&auml;htekohad peaksid &uuml;henduma. See t&ouml;&ouml;riist toetab kuni  5 000 l&auml;htekohta ja  5 000 sihtkohta. </p>
             <p>Kui valite &uuml;he sihtkohaga kihi, &uuml;henduvad selle sihtkohaga k&otilde;ik l&auml;htekohad. 
             </p>
             <p>Kui on &uuml;ks l&auml;htekoht ja mitu sihtkohta, &uuml;hendab t&ouml;&ouml;riist l&auml;htekoha k&otilde;igi sihtkohtadega.
             </p>
-            <p>Lisaks kaardil asuvale kihile saate valida variandi  <b>Vali elukeskkonna atlase anal&uuml;&uuml;sikiht</b>, mille leiate ripploendi allosast. Nii avaneb galerii, mis sisaldab mitmete anal&uuml;&uuml;side jaoks tarvilikku kihtide kollektsiooni. 
+            <p class="OnlineOnly">Lisaks kaardil asuvale kihile saate valida variandi  <b>Vali elukeskkonna atlase anal&uuml;&uuml;sikiht</b>, mille leiate ripploendi allosast. Nii avaneb galerii, mis sisaldab mitmete anal&uuml;&uuml;side jaoks tarvilikku kihtide kollektsiooni. 
             </p>
             <p> Kui on mitu l&auml;hte- ja sihtkohta, vajate kahte v&auml;lja, mis kirjeldavad l&auml;htekoha ja sihtkoha paare: <b>ID v&auml;li l&auml;htepunktis</b>ja <b>Vastav ID v&auml;li sihtkohtades </b>. T&ouml;&ouml;riist &uuml;hendab l&auml;htekoha&ndash;sihtkoha paarid anal&uuml;&uuml;si k&auml;igus. Oletagem n&auml;iteks, et Teil on kaks l&auml;htekohta, mille ID-v&auml;ljade v&auml;&auml;rtused on <code>Mari</code> ja <code>Mati</code> ja kaks samade ID-v&auml;&auml;rtustega sihtkohta. L&auml;htekoht <code>Mari</code> &uuml;hendatakse sihtkohaga <code>Mari</code> ja l&auml;htekoht <code>Mati</code> sihtkohaga <code>Mati</code>. Teisi &uuml;hendusi v&otilde;i m&otilde;&otilde;distusi ei tehta.
             </p>

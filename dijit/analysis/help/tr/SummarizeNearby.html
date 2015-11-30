@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -45,7 +63,9 @@
         <div>
             <p>Yakındaki detayları &ouml;zetlemek i&ccedil;in başlangı&ccedil; konumu olarak kullanılacak nokta, &ccedil;izgi veya alan katmanı.
             </p>
-            <p>Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, aşağı a&ccedil;ılan listenin altında bulunan  <b>Living Atlas Analiz Katmanı Se&ccedil;</b> &ouml;ğesini de belirleyebilirsiniz. Bu, pek &ccedil;ok analiz i&ccedil;in kullanılabilen katman koleksiyonu i&ccedil;eren bir galeri a&ccedil;ar. 
+            <p class="OnlineOnly">Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, aşağı a&ccedil;ılan listenin altında bulunan  <b>Living Atlas Analiz Katmanı Se&ccedil;</b> &ouml;ğesini de belirleyebilirsiniz. Bu, pek &ccedil;ok analiz i&ccedil;in kullanılabilen katman koleksiyonu i&ccedil;eren bir galeri a&ccedil;ar. 
+            </p>
+            <p>Ara&ccedil; bu katmanda 1.000 detaya kadar destekler. 
             </p>
         </div>
     </div>
@@ -55,7 +75,7 @@
         <div>
             <p>Yukarıda belirtilen katmandaki detaylara belirtilen mesafe i&ccedil;inde kalan bu katmandaki detaylar &ouml;zetlenir. 
             </p>
-            <p>Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, aşağı a&ccedil;ılan listenin altında bulunan  <b>Living Atlas Analiz Katmanı Se&ccedil;</b> &ouml;ğesini de belirleyebilirsiniz. Bu, pek &ccedil;ok analiz i&ccedil;in kullanılabilen katman koleksiyonu i&ccedil;eren bir galeri a&ccedil;ar. 
+            <p class="OnlineOnly">Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, aşağı a&ccedil;ılan listenin altında bulunan  <b>Living Atlas Analiz Katmanı Se&ccedil;</b> &ouml;ğesini de belirleyebilirsiniz. Bu, pek &ccedil;ok analiz i&ccedil;in kullanılabilen katman koleksiyonu i&ccedil;eren bir galeri a&ccedil;ar. 
             </p> 
         </div>
     </div>
@@ -82,13 +102,13 @@
             <ul>
                 <li> <b>Toplam</b> - Belirtilen alanın toplam değeri.
                 </li>
-                <li> <b>Ortalama</b> - Belirtilen alanın ortalaması.
+                <li> <b>Ortalama</b> - Belirtilen alanın ortalaması veya orta değeri.
                 </li>
                 <li> <b>Minimum</b> - Belirtilen alandaki en k&uuml;&ccedil;&uuml;k değer.
                 </li>
                 <li> <b>Maksimum</b> - Belirtilen alandaki en b&uuml;y&uuml;k değer.
                 </li>
-                <li> <b>Std. Sapma</b>&mdash;Belirtilen alandaki değerlerin standart sapması
+                <li> <b>Std. Sapma</b>&mdash;Belirtilen alandaki değerlerin standart sapmasıdır
                 </li>
             </ul>
             
@@ -105,13 +125,13 @@
             <ul>
                 <li> <b>Toplam</b> - Belirtilen alanın toplam değeri.
                 </li>
-                <li> <b>Ortalama</b> - Belirtilen alanın ortalaması.
+                <li> <b>Ortalama</b> - Belirtilen alanın ortalaması veya orta değeri.
                 </li>
                 <li> <b>Minimum</b> - Belirtilen alandaki en k&uuml;&ccedil;&uuml;k değer.
                 </li>
                 <li> <b>Maksimum</b> - Belirtilen alandaki en b&uuml;y&uuml;k değer.
                 </li>
-                <li> <b>Std. Sapma</b>&mdash;Belirtilen alandaki değerlerin standart sapması
+                <li> <b>Std. Sapma</b>&mdash;Belirtilen alandaki değerlerin standart sapmasıdır
                 </li>
             </ul>
             
@@ -128,23 +148,46 @@
             <ul>
                 <li> <b>Toplam</b> - Belirtilen alanın toplam değeri.
                 </li>
-                <li> <b>Ortalama</b> - Belirtilen alanın ortalaması.
+                <li> <b>Ortalama</b> - Belirtilen alanın ortalaması veya orta değeri.
                 </li>
                 <li> <b>Minimum</b> - Belirtilen alandaki en k&uuml;&ccedil;&uuml;k değer.
                 </li>
                 <li> <b>Maksimum</b> - Belirtilen alandaki en b&uuml;y&uuml;k değer.
                 </li>
-                <li> <b>Std. Sapma</b>&mdash;Belirtilen alandaki değerlerin standart sapması
+                <li> <b>Std. Sapma</b>&mdash;Belirtilen alandaki değerlerin standart sapmasıdır
                 </li>
             </ul>
             
+        </div>
+    </div>
+    <div id="StatisticsNoLayer">
+        <div><h2>Özetlenecek katmandan istatistik ekle</h2></div>
+        <hr/>
+        <div>
+            <p>&Ouml;zetlenecek bir katman se&ccedil;tikten sonra yakın noktaların, &ccedil;izgilerin veya alanların sayısal &ouml;zniteliklerine ait istatistikleri isteğe bağlı olarak hesaplayabilirsiniz. 
+            </p>
+            <ul>
+                <li> <b>Toplam</b> - Belirtilen alanın toplam değeri.
+                </li>
+                <li> <b>Ortalama</b> - Belirtilen alanın ortalaması veya orta değeri.
+                </li>
+                <li> <b>Minimum</b> - Belirtilen alandaki en k&uuml;&ccedil;&uuml;k değer.
+                </li>
+                <li> <b>Maksimum</b> - Belirtilen alandaki en b&uuml;y&uuml;k değer.
+                </li>
+                <li> <b>Std. Sapma</b>&mdash;Belirtilen alandaki değerlerin standart sapmasıdır
+                </li>
+            </ul>
+            
+            <p>&Ouml;zetlediğiniz detay t&uuml;rlerine bağlı olarak yakın nokta sayısını, yakın &ccedil;izgilerin toplam uzunluğunu veya yakın alan detaylarının toplam alanını hesaplayabilirsiniz.
+            </p>
         </div>
     </div>
     <div id="GroupBy">
         <div><h2>Gruplanacak alanları seçme kriteri</h2></div>
         <hr/>
         <div>
-            <p> Bu, yakındaki detayların bir &ouml;zniteliğidir ve istatistikleri her bir benzersiz &ouml;znitelik değeri i&ccedil;in ayrı ayrı hesaplamak amacıyla kullanılır. &Ouml;rneğin, diyelim ki ilk girdi katmanınız (mesafelerin &ouml;l&ccedil;&uuml;ld&uuml;ğ&uuml; katman) satış i&ccedil;in boş parseller ve yakın detaylarınızın bina ayak izi olduğu alanlar i&ccedil;eriyor.  Bina ayak izi &ouml;zniteliklerinden biri olan <i>UseType</i>; RETAIL, RESIDENTIAL, MANUFACTURING, PUBLIC vb. değerlerini i&ccedil;erir.  Her boş parsel yakınındaki bina kullanımlarının karışımını karakterize etmek i&ccedil;in, <i>UseType</i> &ouml;ğesini &ouml;zniteliğe g&ouml;re grup olarak kullanarak boş parsellerin iki kilometre civarındaki bina kullanımının her bağımsız t&uuml;r&uuml; i&ccedil;in toplam alanı hesaplayabilirsiniz.   Yakındaki detay sayısının yanı sıra, her grubun istatistikleri de a&ccedil;ılan sonu&ccedil; katmanında g&ouml;r&uuml;nt&uuml;lenir.
+            <p> Bu, yakındaki detayların bir &ouml;zniteliğidir ve istatistikleri her bir benzersiz &ouml;znitelik değeri i&ccedil;in ayrı ayrı hesaplamak amacıyla kullanılır. &Ouml;rneğin, diyelim ki ilk girdi katmanınız (mesafelerin &ouml;l&ccedil;&uuml;ld&uuml;ğ&uuml; katman) satış i&ccedil;in boş parseller ve yakın detaylarınızın bina alanları i&ccedil;eriyor.  Bina ayak izi &ouml;zniteliklerinden biri olan <i>UseType</i>; RETAIL, RESIDENTIAL, MANUFACTURING, PUBLIC vb. değerlerini i&ccedil;erir.  Her boş parsel yakınındaki bina kullanımlarının karışımını karakterize etmek i&ccedil;in, <i>UseType</i> &ouml;ğesini &ouml;zniteliğe g&ouml;re grup olarak kullanarak boş parsellerin iki kilometre civarındaki bina kullanımının her bağımsız t&uuml;r&uuml; i&ccedil;in toplam alanı hesaplayabilirsiniz.   Yakındaki detay sayısının yanı sıra, her grubun istatistikleri de a&ccedil;ılan sonu&ccedil; katmanında g&ouml;r&uuml;nt&uuml;lenir.
             </p>    
         </div>
     </div>

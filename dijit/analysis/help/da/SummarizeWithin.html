@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -43,10 +61,9 @@
         <div><h2>Vælg det områdelag, der skal summere andre objekter inden for sine grænser</h2></div>
         <hr/>
         <div>
-            <p>Det omr&aring;delag, der skal benyttes til at summere objekter, der falder inden for omr&aring;dets gr&aelig;nser.
-
+            <p>Det omr&aring;delag, der skal benyttes til at summere objekter, der falder inden for omr&aring;dets gr&aelig;nser. 
             </p>
-            <p>Ud over at v&aelig;lge et lag fra dit kort kan du v&aelig;lge  <b>V&aelig;lg Living Atlas-analyselag</b> nederst p&aring; rullelisten. Dette &aring;bner et galleri med en samling lag, der er nyttige til mange analysetyper. 
+            <p class="OnlineOnly">Ud over at v&aelig;lge et lag fra dit kort kan du v&aelig;lge  <b>V&aelig;lg Living Atlas-analyselag</b> nederst p&aring; rullelisten. Dette &aring;bner et galleri med en samling lag, der er nyttige til mange analysetyper. 
             </p>
         </div>
     </div>
@@ -56,7 +73,7 @@
         <div>
             <p>Objekter i dette lag, der falder inden for objekternes gr&aelig;nser i inputlaget, opsummeres. 
             </p>
-            <p>Ud over at v&aelig;lge et lag fra dit kort kan du v&aelig;lge  <b>V&aelig;lg Living Atlas-analyselag</b> nederst p&aring; rullelisten. Dette &aring;bner et galleri med en samling lag, der er nyttige til mange analysetyper. 
+            <p class="OnlineOnly">Ud over at v&aelig;lge et lag fra dit kort kan du v&aelig;lge  <b>V&aelig;lg Living Atlas-analyselag</b> nederst p&aring; rullelisten. Dette &aring;bner et galleri med en samling lag, der er nyttige til mange analysetyper. 
             </p>
         </div>
     </div>
@@ -87,7 +104,7 @@
         <div><h2>Tilføj statistik fra</h2></div>
         <hr/>
         <div>
-            <p>Du kan v&aelig;lge at udarbejde statistikker for numeriske attributter for linjer i n&aelig;rheden. 
+            <p>Du kan v&aelig;lge at beregne statistikker for numeriske attributter for de linjer, der skal summeres. 
             </p>
             <p>Afkrydsningsfeltet  <b>Samlet l&aelig;ngde for linjer i</b> vil, hvis det er markeret, beregne det samlede antal punkter inden for hver omr&aring;degr&aelig;nse. Du kan desuden udarbejde statistikker for numeriske attributter for de linjer, som er inden for hver omr&aring;degr&aelig;nse.
             </p>
@@ -110,7 +127,7 @@
         <div><h2>Tilføj statistik fra</h2></div>
         <hr/>
         <div>
-            <p>Du kan v&aelig;lge at udarbejde statistikker for numeriske attributter for omr&aring;der i n&aelig;rheden. 
+            <p>Du kan v&aelig;lge at beregne statistikker for numeriske attributter for de omr&aring;der, der skal summeres. 
             </p>
             <p>Afkrydsningsfeltet  <b>Opsumm&eacute;r omr&aring;deanvendelse</b> vil, hvis det er markeret, beregne det samlede omr&aring;de af objekter, som er inden for hver af det f&oslash;rste inputlags omr&aring;degr&aelig;nser. Du kan desuden udarbejde statistikker for numeriske attributter for de objekter, som er inden for hver omr&aring;degr&aelig;nse.
             </p>
@@ -127,6 +144,29 @@
                 </li>
             </ul>
             
+        </div>
+    </div>
+    <div id="StatisticsNoLayer">
+        <div><h2>Tilføj statistik fra</h2></div>
+        <hr/>
+        <div>
+            <p>N&aring;r du har valgt et lag, der skal summeres, kan du v&aelig;lge at beregne statistikker for eventuelle numeriske attributter best&aring;ende af punkter, linjer eller omr&aring;der inden for inputomr&aring;delaget. 
+            </p>
+            <ul>
+                <li> <b>Sum</b> &ndash; Den samlede v&aelig;rdi for det angivne felt
+                </li>
+                <li> <b>Gennemsnit</b> &ndash; Gennemsnittet eller middelv&aelig;rdien for det angivne felt
+                </li>
+                <li> <b>Minimum</b> &ndash; Den mindste v&aelig;rdi i det angivne felt
+                </li>
+                <li> <b>Maksimum</b> &ndash; Den st&oslash;rste v&aelig;rdi i det angivne felt
+                </li>
+                <li> <b>Std. Afvigelse</b> &ndash; Standardafvigelsen for v&aelig;rdier i det angivne felt
+                </li>
+            </ul>
+            
+            <p>Afh&aelig;ngigt af de objekttyper, du summerer, kan du beregne det samlede antal punkter i n&aelig;rheden, den samlede linjel&aelig;ngde eller det samlede areal.
+            </p>
         </div>
     </div>
     <div id="GroupBy">

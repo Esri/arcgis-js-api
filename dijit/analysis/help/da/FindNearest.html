@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -30,7 +48,7 @@
         <ul>
             <li>Hvilken park er n&aelig;rmest?
             </li>
-            <li>Til hvilket hospital er k&oslash;retiden kortest?Hvor lang tid tager turen p&aring; en tirsdag kl. 17.30 i myldretiden?
+            <li>Til hvilket hospital er k&oslash;retiden kortest? Hvor lang tid tager turen p&aring; en tirsdag kl. 17.30 i myldretiden?
             </li>
             <li>Hvor lang er k&oslash;reafstandene mellem disse st&oslash;rre byer?
             </li>
@@ -46,10 +64,10 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="analysisLayer">
-        <div><h2>Vælg det punktlag, hvorfra de nærmeste steder skal findes</h2></div>
+        <div><h2>Vælg det lag, hvorfra de nærmeste steder skal findes</h2></div>
         <hr/>
         <div>
-            <p>Find n&aelig;rmeste m&aring;ler fra de punkter i laget, som du angiver her (startstederne), til de punkter, som du angiver i den n&aelig;ste parameter. V&aelig;rkt&oslash;jet underst&oslash;tter op til 1.000 steder i hvert lag.
+            <p>Find n&aelig;rmeste m&aring;ler fra de objekter i laget, som du angiver her (startstederne), til de steder, som du angiver i den n&aelig;ste parameter. V&aelig;rkt&oslash;jet underst&oslash;tter op til 1.000 objekter i hvert lag.
 
             </p>
         </div>
@@ -58,9 +76,9 @@
         <div><h2>Find nærmeste steder i</h2></div>
         <hr/>
         <div>
-            <p>Med Find n&aelig;rmeste kan du m&aring;le fra hvert af stederne i det f&oslash;rste lag til stederne i dette lag. V&aelig;rkt&oslash;jet underst&oslash;tter op til 1.000 steder i hvert lag.
+            <p>Find n&aelig;rmeste m&aring;ler fra hvert af objekterne i det f&oslash;rste lag til stederne i dette lag. V&aelig;rkt&oslash;jet underst&oslash;tter op til 1.000 steder i hvert lag.
             </p>
-            <p>Ud over at v&aelig;lge et lag fra dit kort kan du v&aelig;lge  <b>V&aelig;lg Living Atlas-analyselag</b> nederst p&aring; rullelisten. Dette &aring;bner et galleri med en samling lag, der er nyttige til mange analysetyper. 
+            <p class="OnlineOnly">Ud over at v&aelig;lge et lag fra dit kort kan du v&aelig;lge  <b>V&aelig;lg Living Atlas-analyselag</b> nederst p&aring; rullelisten. Dette &aring;bner et galleri med en samling lag, der er nyttige til mange analysetyper. 
             </p>
         </div>
     </div>
@@ -72,7 +90,7 @@
             </p>
             <p>Ved m&aring;ling mellem linjer eller omr&aring;der findes afstanden fra eller til n&aelig;rmeste punkt langs linjen eller omr&aring;degr&aelig;nsen. 
             </p> 
-            <p>N&aring;r du v&aelig;lger  <b>K&oslash;retid</b>, kan du v&aelig;lge, hvordan k&oslash;retiden skal m&aring;les.
+            <p>Hvis du v&aelig;lger  <b>K&oslash;retid</b>, kan du v&aelig;lge, hvordan k&oslash;retiden skal m&aring;les.
                 <ul>
                     <li>
                         <p>Fjern markeringen ud for  <b>Brug trafik</b>, hvis du vil finde de n&aelig;rmeste objekter p&aring; basis af statiske rejsehastigheder, f.eks. hastighedsgr&aelig;nser, i stedet for varierende hastigheder, der er for&aring;rsaget af &aelig;ndrede trafikforhold.
@@ -95,7 +113,7 @@
                         </p>
                     </li>
                 </ul>
-                Bem&aelig;rk, at n&aring;r et k&oslash;ret&oslash;j k&oslash;rer v&aelig;k fra et punkt, s&aring; g&aring;r tiden, og trafikforholdene &aelig;ndrer sig. Dette v&aelig;rkt&oslash;j tager h&oslash;jde for disse variationer, hvis du markerer <b>Brug trafik</b>; men ikke alle regioner underst&oslash;tter trafik. Klik p&aring; linket <b>Se tilg&aelig;ngelighed</b> i v&aelig;rkt&oslash;jet for at finde ud af, hvorvidt det er tilf&aelig;ldet i det omr&aring;de, du unders&oslash;ger. 
+                Bem&aelig;rk, at n&aring;r et k&oslash;ret&oslash;j begiver sig v&aelig;k fra et punkt, s&aring; g&aring;r tiden, og trafikforholdene &aelig;ndrer sig. Dette v&aelig;rkt&oslash;j tager h&oslash;jde for disse variationer, hvis du markerer <b>Brug trafik</b>; men ikke alle regioner underst&oslash;tter trafik. Klik p&aring; linket <b>Se tilg&aelig;ngelighed</b> i v&aelig;rkt&oslash;jet for at finde ud af, hvorvidt det er tilf&aelig;ldet i det omr&aring;de, du unders&oslash;ger. 
             </p>
         </div>
     </div>

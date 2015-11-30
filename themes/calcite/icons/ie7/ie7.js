@@ -21,7 +21,6 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 /* To avoid CSS expressions while still supporting IE 7 and IE 6, use this script */
 /* The script tag referencing this file must be placed before the ending body tag. */
 
@@ -69,8 +68,8 @@
 		'esri-icon-map-pin': '&#xe61d;',
 		'esri-icon-blank-map-pin': '&#xe61e;',
 		'esri-icon-table': '&#xe61f;',
-		'esri-icon-zoom-in': '&#xe620;',
-		'esri-icon-zoom-out': '&#xe621;',
+		'esri-icon-plus': '&#xe620;',
+		'esri-icon-minus': '&#xe621;',
 		'esri-icon-beginning': '&#xe622;',
 		'esri-icon-reverse': '&#xe623;',
 		'esri-icon-pause': '&#xe624;',
@@ -96,8 +95,8 @@
 		'esri-icon-arrow-down-circled': '&#xe638;',
 		'esri-icon-arrow-left-circled': '&#xe639;',
 		'esri-icon-arrow-right-circled': '&#xe63a;',
-		'esri-icon-delete': '&#xe63b;',
-		'esri-icon-add': '&#xe63c;',
+		'esri-icon-minus-circled': '&#xe63b;',
+		'esri-icon-plus-circled': '&#xe63c;',
 		'esri-icon-add-attachment': '&#xe63d;',
 		'esri-icon-attachment': '&#xe63e;',
 		'esri-icon-calendar': '&#xe63f;',
@@ -165,6 +164,14 @@
 		'esri-icon-locked': '&#xe67d;',
 		'esri-icon-unlocked': '&#xe67e;',
 		'esri-icon-favorites': '&#xe67f;',
+		'esri-icon-compass': '&#xe680;',
+		'esri-icon-down': '&#xe681;',
+		'esri-icon-up': '&#xe682;',
+		'esri-icon-chat': '&#xe683;',
+		'esri-icon-dock-bottom': '&#xe684;',
+		'esri-icon-dock-left': '&#xe685;',
+		'esri-icon-dock-right': '&#xe686;',
+		'esri-icon-organization': '&#xe687;',
 		'0': 0
 		},
 		els = document.getElementsByTagName('*'),

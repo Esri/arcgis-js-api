@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -26,8 +44,7 @@
         <h2>Atrast pašreizējo izvietojumu</h2><p/>
         <h2><img src="../images/GUID-FEF355B4-CF3B-48F6-9EC1-A00A1D53C81F-web.png" alt="Atrast pa&scaron;reizējo izvietojumu"></h2>
         <hr/>
-    <p>Rīks izvēlās eksistējo&scaron;us elementus jūsu izpētes areālā, kas atbilst jūsu norādītajai kritēriju sērijai. &Scaron;ie kritēriji var pamatoties uz atribūtu vaicājumiem (piem., brīvi zemes gabali) un telpiskajiem vaicājumiem (piem., 1 jūdzes attālumā no upes).
-
+    <p>Rīks izvēlās eksistējo&scaron;us elementus jūsu izpētes areālā, kas atbilst jūsu norādītajai kritēriju sērijai. &Scaron;ie kritēriji var pamatoties uz atribūtu vaicājumiem (piem., brīvi zemes gabali) un telpiskajiem vaicājumiem (piem., 1 jūdzes attālumā no upes). 
     </p>
     <p>Ja ir atzīmēta iespēja  <b>lietot pa&scaron;reizējo kartes pārklājumu</b>, tad tiks analizēti tikai ievades slāņa elementi pa&scaron;reizējā kartes pārklājumā.  Ja nav atzīmēts, visi analīzes slāņa elementi tiks analizēti, arī pa&scaron;reizējā kartes pārklājuma ārpusē.
     </p>
@@ -39,7 +56,7 @@
         <div>
             <p>Punkta, līnijas vai laukuma slānis, kuram vēlaties meklēt elementus, ņemot vērā tālāk norādīto atribūtu un telpisko vaicājumu kombināciju.
             </p>
-            <p>Papildus slāņa izvēlei no kartes varat atlasīt  <b>Izvēlēties Living Atlas analīzes slāni</b> nolaižamā saraksta apak&scaron;ā. Tādējādi tiek atvērta galerija, kurā ir daudzām analīzēm noderīgu slāņu galerija. 
+            <p class="OnlineOnly">Papildus slāņa izvēlei no kartes varat atlasīt  <b>Izvēlēties Living Atlas analīzes slāni</b> nolaižamā saraksta apak&scaron;ā. Tādējādi tiek atvērta galerija, kurā ir daudzām analīzēm noderīgu slāņu galerija. 
             </p>
         </div>
     </div>
@@ -49,7 +66,7 @@
         <div>
             <p>Klik&scaron;ķiniet uz  <b>Pievienot izteiksmi</b> pogas, lai definētu izteiksmi. Jūs varat pievienot vairākas izteiksmes. Pēc izteiksmju ievadī&scaron;anas un noklik&scaron;ķinā&scaron;anas uz pogas <b>Palaist analīzi</b> elementi ievades slānī tiek filtrēti pēc katras izteiksmes nosacījumiem.  Elementi, kas atbilst visām izteiksmēm tiek ierakstīti rezultātu slānī.
             </p>
-            <p>Divi galvenie veidi, kā Jūs varat izveidot izteiksmes; atribūtu un telpiskāsAtribūtu izteiksmes ir vaicājumi par lauku vērtībām, kā piemēram,  <code>kur nosaukums ir 'San Francisco'</code>. Telpiskajām izteiksmēm ir četri veidi:
+            <p>Divi galvenie veidi, kā Jūs varat izveidot izteiksmes; atribūtu un telpiskās Atribūtu izteiksmes ir vaicājumi par lauku vērtībām, kā piemēram,  <code>kur nosaukums ir 'San Francisco'</code>. Telpiskajām izteiksmēm ir četri veidi:
                 <ul>
                     <li> <b>attālumā</b>: elementam jāatrodas noteiktā attālumā no elementa citā slānī.  Piemēram, atrasts parceles, 500 metru attālumā no Losandželosas upes.
                     </li>

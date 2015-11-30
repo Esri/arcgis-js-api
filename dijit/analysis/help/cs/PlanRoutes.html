@@ -7,28 +7,46 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Plánovat trasy</h2><p/>
+        <h2>Plánování tras</h2><p/>
         <h2><img src="../images/GUID-09CC6D60-3C72-42D7-968E-B0663F0B1EBB-web.png" alt="Pl&aacute;nov&aacute;n&iacute; tras"></h2>
         <hr/>
-    <p>N&aacute;stroj Pl&aacute;nov&aacute;n&iacute; tras určuje, jak efektivně rozdělit &uacute;koly mezi mobiln&iacute; pracovn&iacute;ky.
+    <p>N&aacute;stroj Pl&aacute;nov&aacute;n&iacute; tras určuje, jak efektivně rozdělit pr&aacute;ci mezi mobiln&iacute; pracovn&iacute;ky.
     </p>
-    <p>Do n&aacute;stroje zad&aacute;te sadu zast&aacute;vek a počet dostupn&yacute;ch vozidel, kter&aacute; maj&iacute; zast&aacute;vky nav&scaron;t&iacute;vit. N&aacute;stroj vozidlům přiřad&iacute; zast&aacute;vky a vypoč&iacute;t&aacute; trasy, pomoc&iacute; kter&yacute;ch každ&eacute; vozidlo nav&scaron;t&iacute;v&iacute; přiřazen&eacute; zast&aacute;vky v nejkrat&scaron;&iacute;m možn&eacute;m čase.
+    <p>Do n&aacute;stroje zad&aacute;te soubor zast&aacute;vek a počet dostupn&yacute;ch vozidel, kter&aacute; maj&iacute; zast&aacute;vky nav&scaron;t&iacute;vit. N&aacute;stroj vozidlům přiřad&iacute; zast&aacute;vky a vypoč&iacute;t&aacute; trasy, pomoc&iacute; kter&yacute;ch každ&eacute; vozidlo nav&scaron;t&iacute;v&iacute; přiřazen&eacute; zast&aacute;vky v nejkrat&scaron;&iacute;m možn&eacute;m čase.
     </p>
     <p>S n&aacute;strojem Pl&aacute;nov&aacute;n&iacute; tras mobiln&iacute; pracovn&iacute;ci nav&scaron;t&iacute;v&iacute; v&iacute;ce m&iacute;st za krat&scaron;&iacute; čas, což zv&yacute;&scaron;&iacute; produktivitu a zlep&scaron;&iacute; p&eacute;či o z&aacute;kazn&iacute;ky.
         <ul>
@@ -57,10 +75,11 @@
         <div><h2>Zvolte vrstvu bodů, která představuje navštěvované zastávky.</h2></div>
         <hr/>
         <div>
-            <p>Vyberte vrstvu bodů nav&scaron;těvovan&yacute;ch trasami (nebo vozidly).  Z těchto bodů ve v&yacute;stupu vzniknou přiřazen&eacute; nebo nepřiřazen&eacute; zast&aacute;vky.
-
+            <p>Vyberte vrstvu bodů nav&scaron;těvovan&yacute;ch trasami (nebo vozidly).  Z těchto bodů ve v&yacute;stupu vzniknou přiřazen&eacute; nebo nepřiřazen&eacute; zast&aacute;vky. 
             </p>
-            <p>Vrstvu můžete vybrat ze sv&eacute; mapy nebo můžete zvolit možnost  <b>Vybrat vrstvu anal&yacute;zy živ&eacute;ho atlasu</b>, kter&aacute; se nach&aacute;z&iacute; na konci rozbalovac&iacute;ho seznamu. Otevře se galerie obsahuj&iacute;c&iacute; sb&iacute;rku vrstev určen&yacute;ch pro mnoho různ&yacute;ch anal&yacute;z. 
+            <p class="OnlineOnly">Vrstvu můžete vybrat ze sv&eacute; mapy nebo můžete zvolit možnost  <b>Vybrat vrstvu anal&yacute;zy živ&eacute;ho atlasu</b>, kter&aacute; se nach&aacute;z&iacute; na konci rozbalovac&iacute;ho seznamu. Otevře se galerie obsahuj&iacute;c&iacute; sb&iacute;rku vrstev určen&yacute;ch pro mnoho různ&yacute;ch anal&yacute;z. 
+            </p>
+            <p>N&aacute;stroj podporuje až 2 000 vstupn&iacute;ch prvků. 
             </p>
         </div>
     </div>
@@ -84,9 +103,9 @@
             </p>
             <p>Je-li určeno v&iacute;ce um&iacute;stěn&iacute;, mus&iacute; b&yacute;t každ&eacute; vozidlo spojeno s vlastn&iacute;m bodem. Počet vozidel mus&iacute; odpov&iacute;dat počtu bodů ve vrstvě. Zvolte vrstvu s v&iacute;ce body a v rozbalovac&iacute; nab&iacute;dce  <b>Pole ID trasy</b> určete pole, kter&eacute; jedinečně identifikuje jednotliv&eacute; trasy, vozidla nebo řidiče.
             </p>
-            <p>Čas zač&aacute;tku je stejn&yacute; pro v&scaron;echny trasy. Časov&eacute; p&aacute;smo pro čas zač&aacute;tku je stejn&eacute; jako časov&eacute; p&aacute;smo, ve kter&eacute;m se nach&aacute;z&iacute; poč&aacute;tečn&iacute; bod nebo body, takže se ujistěte, že zad&aacute;v&aacute;te m&iacute;stn&iacute; čas. Předpokl&aacute;dejme např&iacute;klad, že jste v p&aacute;smu tichomořsk&eacute;ho času (PST, tedy UTC-8:00) a vozidla, pro kter&aacute; tvoř&iacute;te trasy, se nach&aacute;zej&iacute; v p&aacute;smu horsk&eacute;ho času (MST, tedy UTC-7:00). Pokud je pr&aacute;vě 9:30PST (10:30MST) a va&scaron;e vozidla mus&iacute; vyjet na sv&eacute; trasy za 30 minut, nastav&iacute;te tedy čas zač&aacute;tku na 11:00. 
+            <p>Čas zač&aacute;tku je stejn&yacute; pro v&scaron;echny trasy. Časov&eacute; p&aacute;smo pro čas zač&aacute;tku je stejn&eacute; jako časov&eacute; p&aacute;smo, ve kter&eacute;m se nach&aacute;z&iacute; poč&aacute;tečn&iacute; bod nebo body, takže se ujistěte, že zad&aacute;v&aacute;te m&iacute;stn&iacute; čas. Předpokl&aacute;dejme např&iacute;klad, že jste v p&aacute;smu tichomořsk&eacute;ho času (PST, tedy UTC-8:00) a vozidla, pro kter&aacute; tvoř&iacute;te trasy, se nach&aacute;zej&iacute; v p&aacute;smu horsk&eacute;ho času (MST, tedy UTC-7:00). Pokud je pr&aacute;vě 9:30 PST (10:30 MST) a va&scaron;e vozidla mus&iacute; vyjet na sv&eacute; trasy za 30 minut, nastav&iacute;te tedy čas zač&aacute;tku na 11:00. 
             </p>
-            <p>Va&scaron;e vozidla startuj&iacute; z různ&yacute;ch časov&yacute;ch p&aacute;sem, takže čas zač&aacute;tku nemůže b&yacute;t simult&aacute;nn&iacute;. Jsou posunuty. Pokud např&iacute;klad jedna trasa zač&iacute;n&aacute; v bodě s PST a dal&scaron;&iacute; trasa zač&iacute;n&aacute; v MST a vy zad&aacute;te čas zač&aacute;tku 11:00, trasa v PST začne v 11:00. PST a trasa v MST začne v 11:00MST &ndash; hodinov&yacute; rozd&iacute;l.
+            <p>Va&scaron;e vozidla startuj&iacute; z různ&yacute;ch časov&yacute;ch p&aacute;sem, takže čas zač&aacute;tku nemůže b&yacute;t simult&aacute;nn&iacute;. Jsou posunuty. Pokud např&iacute;klad jedna trasa zač&iacute;n&aacute; v bodě s PST a dal&scaron;&iacute; trasa zač&iacute;n&aacute; v MST a vy zad&aacute;te čas zač&aacute;tku 11:00, trasa v PST začne v 11:00. PST a trasa v MST začne v 11:00 MST &ndash; hodinov&yacute; rozd&iacute;l.
             </p>
         </div>
     </div>

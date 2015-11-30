@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -34,7 +52,7 @@
             </li>
             <li>Mit&auml; paikkoja on kahden kilometrin k&auml;velyet&auml;isyydell&auml; hotellistani?
             </li>
-            <li>Mihin kaupunginosiin palomiehet ehtiv&auml;t viidess&auml; minuutissa? 
+            <li>Mille alueille palomiehet ehtiv&auml;t viidess&auml; minuutissa? 
             </li>
             <li>Miten palontorjuntavalmius paranisi, jos t&auml;h&auml;n rakennettaisiin uusi paloasema?
             </li>
@@ -66,7 +84,10 @@
         <div>
             <p>Pistekohteet, joiden l&auml;hist&ouml;ll&auml; olevat alueet lasketaan. Voit valita alueiden laskentatavan matkustustavan (ajaminen autolla tai rekka-autolla tai k&auml;vely) ja mittaustavan (aika tai et&auml;isyys) perusteella.
             </p>
-            <p>Kartasta valittavan karttatason lis&auml;ksi voit valita alareunan avattavasta luettelosta valittavan  <b>Valitse maailmankartaston analyysikarttataso</b> -vaihtoehdon. T&auml;m&auml; vaihtoehto avaa gallerian, joka sis&auml;lt&auml;&auml; monissa analyyseissa hy&ouml;dyllisten karttatasojen kokoelman. 
+            <p class="OnlineOnly">Kartasta valittavan karttatason lis&auml;ksi voit valita alareunan avattavasta luettelosta valittavan  <b>Valitse maailmankartaston analyysikarttataso</b> -vaihtoehdon. T&auml;m&auml; vaihtoehto avaa gallerian, joka sis&auml;lt&auml;&auml; monissa analyyseissa hy&ouml;dyllisten karttatasojen kokoelman. 
+            </p>
+            <p>Ty&ouml;kalu voi n&auml;ytt&auml;&auml; enint&auml;&auml;n 1 000 kohdetta kussakin l&auml;ht&ouml;karttatasossa.
+
             </p>
         </div>
     </div>
@@ -76,7 +97,7 @@
         <div>
             <p>Valitse matkustustapa (auto, rekkaliikenne tai k&auml;vely) ja mittaustapa (aika tai et&auml;isyys). Organisaatiosi p&auml;&auml;k&auml;ytt&auml;j&auml; m&auml;&auml;ritt&auml;&auml; k&auml;ytett&auml;viss&auml; olevat matkustustavat. Kun olet valinnut matkustus- ja mittaustavan, anna kesto tai et&auml;isyys, joka voi olla enint&auml;&auml;n  5 tuntia (300 minuuttia) tai  300 mailia (482,80 kilometri&auml;). 
             </p>
-            <p>Kun valitset vaihtoehdon  <b>Ajoaika</b>, k&auml;ytett&auml;viss&auml; on ajoajan eri mittausvaihtoehtoja.
+            <p>Kun valitset vaihtoehdon  <b>Ajoaika</b>, voit valita eri vaihtoehdoista, miten ajoaika mitataan.
                 <ul>
                     <li>
                         <p>Valitse  <b>K&auml;yt&auml; liikennett&auml;</b>, kun haluat ajoaika-alueita tietyn aloitusajan ja muuttuvien liikenneolojen mukaan. T&auml;m&auml;n toiminnon avulla voit k&auml;ytt&auml;&auml; yleist&auml; ajoaika-aluetta sen alueen sijasta, joka lasketaan l&auml;ht&ouml;ajan ja muuttuvien liikenneolojen mukaan.
@@ -93,7 +114,7 @@
                         </p>
                         <p>Liikenteen historia-asetusten avulla voi kysy&auml; esimerkiksi &quot;Mitk&auml; alueet voin yleens&auml; saavuttaa, kun l&auml;hden liikkeelle kello 11.30 keskiviikkona?&quot;. 
                         </p>
-                        <p>Asettamasi aika noudattaa l&auml;ht&ouml;pisteiden mukaista aikavy&ouml;hykett&auml;. Jos l&auml;ht&ouml;aika on esimerkiksi klo 8 ja l&auml;ht&ouml;pisteit&auml; on kaksi, toinen New Yorkissa ja toinen Los Angelesissa, ajoaika-alueiden luomiseen k&auml;ytet&auml;&auml;nUSA:n it&auml;rannikon aikavy&ouml;hykkeen (Eastern Time) l&auml;ht&ouml;aikaa klo 8 jaTyynenmeren aikavy&ouml;hykkeen (Pacific Time) klo 8.
+                        <p>Asettamasi aika noudattaa l&auml;ht&ouml;pisteiden mukaista aikavy&ouml;hykett&auml;. Jos l&auml;ht&ouml;aika on esimerkiksi klo 8 ja l&auml;ht&ouml;pisteit&auml; on kaksi, toinen New Yorkissa ja toinen Los Angelesissa, ajoaika-alueiden luomiseen k&auml;ytet&auml;&auml;n USA:n it&auml;rannikon aikavy&ouml;hykkeen (Eastern Time) l&auml;ht&ouml;aikaa klo 8 ja Tyynenmeren aikavy&ouml;hykkeen (Pacific Time) klo 8.
                         </p>
                     </li>
                 </ul>

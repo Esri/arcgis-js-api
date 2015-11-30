@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -38,10 +56,9 @@
         <div><h2>Escolha a camada contendo as feições para gerar o buffer</h2></div>
         <hr/>
         <div>
-            <p>As fei&ccedil;&otilde;es de ponto, linha ou &aacute;rea a serem geradas com o buffer.
-
+            <p>As fei&ccedil;&otilde;es de ponto, linha ou &aacute;rea a serem geradas com o buffer. 
             </p>
-            <p>Al&eacute;m de escolher uma camada do seu mapa, voc&ecirc; pode selecionar  <b>Escolher Camada de An&aacute;lise do Atlas em Tempo Real</b> localizado na parte inferior da lista suspensa. Isto abre uma galeria contendo uma cole&ccedil;&atilde;o de camadas &uacute;til para muitas an&aacute;lises. 
+            <p class="OnlineOnly">Al&eacute;m de escolher uma camada do seu mapa, voc&ecirc; pode selecionar  <b>Escolher Camada de An&aacute;lise do Atlas em Tempo Real</b> localizado na parte inferior da lista suspensa. Isto abre uma galeria contendo uma cole&ccedil;&atilde;o de camadas &uacute;til para muitas an&aacute;lises. 
             </p>
         </div>
     </div>
@@ -86,7 +103,7 @@
                     </li>
                 </ul>
                 
-            </p> 
+            </p>
         </div>
     </div>
     <div id="OptionLine">
@@ -106,6 +123,14 @@
                 </ul>
                 
             </p> 
+        </div>
+    </div>
+    <div id="OptionNolayer">
+        <div><h2>Opções</h2></div>
+        <hr/>
+        <div>
+            <p>Ap&oacute;s escolher uma camada para gerar o buffer, voc&ecirc; pode escolher como deseja que os de sobreposi&ccedil;&atilde;o sejam tratados. Para qualquer buffer que esteja sobre outro buffer, as &aacute;reas em comum poder&atilde;o ser mantidas (Sobrepor) ou combinadas (Dissolver). Al&eacute;m disso, voc&ecirc; pode especificar como as dist&acirc;ncias m&uacute;ltiplas s&atilde;o representadas.   Para camadas contendo fei&ccedil;&otilde;es de linha, voc&ecirc; pode escolher que lado da linha deseja gerar o buffer.  Para camadas contendo fei&ccedil;&otilde;es de &aacute;rea, voc&ecirc; pode escolher se a fei&ccedil;&atilde;o que ser&aacute; gerada o buffer &eacute; inclu&iacute;da ou exclu&iacute;da no resultado do buffer.
+            </p>
         </div>
     </div>
     <div id="BufferLayer">

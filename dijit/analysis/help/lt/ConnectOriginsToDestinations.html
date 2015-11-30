@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -41,7 +59,7 @@
     </p>
     <p>Pagal nurodytus pradžios ir pabaigos ta&scaron;kus, įrankis pateikia sluoksnį, susidedantį i&scaron; mar&scaron;rutų linijų bei jų verčių tarp i&scaron;vykimo ir atvykimo vietų porų.  
     </p>
-    <p>Jei pažymėta  <b>Naudoti esamą žemėlapio aprėptį</b>, bus analizuojami bus tik apie aprėptyje matomi elementai. Jei nepažymėta &ndash; analizuojami visi elementai, net jei jie patenka už matomo žemėlapio ribų.
+    <p>Jei pažymėta  <b>Naudoti esamą žemėlapio aprėptį</b>, bus analizuojami tik apie aprėptyje matomi elementai. Jei nepažymėta &ndash; analizuojami visi elementai, net jei jie patenka už matomo žemėlapio ribų.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -52,7 +70,7 @@
             <p>Pasirinkite ta&scaron;kų sluoksnį, nurodantį i&scaron;vykimo vietą arba vietas.  Įrankis leidžia naudoti iki  5 000 i&scaron;vykimo ir  5 000 atvykimo vietų. </p>
             <p>Jei pasirinktame sluoksnyje yra tik viena i&scaron;vykimo vieta, ji bus sujungta su visomis atvykimo vietomis.
             </p>
-            <p>Pasirinkę sluoksnį žemėlapyje, galite pasirinkti  <b>Pasirinkite Gyvojo pasaulio atlaso analizės sluoksnį</b>, kurį rasite i&scaron;plečiamo sąra&scaron;o apačioje. &Scaron;i parinktis atidarys galeriją, kurioje yra kolekcija sluoksnių, naudingų daugeliui analizių. 
+            <p class="OnlineOnly">Pasirinkę sluoksnį žemėlapyje, galite pasirinkti  <b>Pasirinkite Gyvojo pasaulio atlaso analizės sluoksnį</b>, kurį rasite i&scaron;plečiamo sąra&scaron;o apačioje. &Scaron;i parinktis atidarys galeriją, kurioje yra kolekcija sluoksnių, naudingų daugeliui analizių. 
             </p>
         </div>
     </div>
@@ -65,7 +83,7 @@
             </p>
             <p>Jei yra viena i&scaron;vykimo vieta ir kelios atvykimo vietos, įrankis sujungs i&scaron;vykimo vietą su kiekviena atvykimo vieta.
             </p>
-            <p>Pasirinkę sluoksnį žemėlapyje, galite pasirinkti  <b>Pasirinkite Gyvojo pasaulio atlaso analizės sluoksnį</b>, kurį rasite i&scaron;plečiamo sąra&scaron;o apačioje. &Scaron;i parinktis atidarys galeriją, kurioje yra kolekcija sluoksnių, naudingų daugeliui analizių. 
+            <p class="OnlineOnly">Pasirinkę sluoksnį žemėlapyje, galite pasirinkti  <b>Pasirinkite Gyvojo pasaulio atlaso analizės sluoksnį</b>, kurį rasite i&scaron;plečiamo sąra&scaron;o apačioje. &Scaron;i parinktis atidarys galeriją, kurioje yra kolekcija sluoksnių, naudingų daugeliui analizių. 
             </p>
             <p> Jei yra daug i&scaron;vykimo ir atvykimo vietų, reikalingi du laukai, kuriuose bus apra&scaron;ytos i&scaron;vykimo-atvykimo vietų poros: <b>i&scaron;vykimo vietos lauko ID</b> ir <b>atitinkamas atvykimo vietos ID laukas</b>. Įrankis analizės metu sujungia i&scaron;vykimo ir atvykimo vietas. Pavyzdžiui, jei yra dvi i&scaron;vykimo vietos su ID reik&scaron;mėmis <code>Rosie</code> ir <code>Harold</code> bei dvi atvykimo vietos su tokiomis pačiomis ID reik&scaron;mėmis. <code>Rosie</code> i&scaron;vykimo vieta bus sujungta su <code>Rosie</code> atvykimo vieta, o <code>Harold</code> sujungtas su <code>Harold</code>. Kiti sujungimai ar matavimai neatliekami.
             </p>
@@ -89,7 +107,7 @@
                         </p>
                     </li>
                     <li>
-                        <p>Pažymėkite  <b>Naudoti eismo būseną</b> jei ie&scaron;kote mar&scaron;rutų pagal kelionės pradžios laiką ir kintančias transporto sąlygas. Pasirinkus <b>Esamos sąlygos</b>, kelionės pradžios laikas bus prilygintas analizės vykdymo laikui, bus įvertintos esamos transporto sąlygos ir prognozuojamas važiavimo greitis pagal sensorių pateiktą informaciją. Prognozuojamas važiavimo greitis bus apskaičiuotas pagal esamas transporto sąlygas, istorinius greičio duomenis bei papildomus, pavyzdžiui, meteorologinius, įvykius. Važiavimo greitis prognozuojamas 12 valandų, todėl kelionės pradžią galite nurodyti iki  12 val. nuo esamo laiko. </p>
+                        <p>Pažymėkite  <b>Naudoti eismo būseną</b> jei ie&scaron;kote mar&scaron;rutų pagal kelionės pradžios laiką ir kintančias transporto sąlygas. Pasirinkus <b>Esamos sąlygos</b>, kelionės pradžios laikas bus prilygintas analizės vykdymo laikui, bus įvertintos esamos transporto sąlygos ir prognozuojamas važiavimo greitis pagal sensorių pateiktą informaciją. Prognozuojamas važiavimo greitis bus apskaičiuotas pagal esamas transporto sąlygas, istorinius greičio duomenis bei papildomus, pavyzdžiui, meteorologinius įvykius. Važiavimo greitis prognozuojamas 12 valandų, todėl kelionės pradžią galite nurodyti iki  12 val. nuo esamo laiko. </p>
                         <p>Naudokite esamas transporto sąlygas, jei norite rasti trumpiausius atstumus i&scaron;vykdami &scaron;iuo ar artimu laiku, pavyzdžiui, po valandos.
                         </p>
                     </li>
@@ -104,7 +122,7 @@
                 </ul>
                 
             </p>
-            <p>Atkreipkite dėmesį, kad automobiliui judant ir bėgant laikui keičiasi transporto sąlygos. Įrankis Jungti i&scaron;vykimo vietas su atvykimo vietomis įvertins sąlygas pažymėjus  <b>Naudoti eismo būseną</b>, tačiau tokie duomenys prieinami ne visuose regionuose. Paspauskite <b>Tikrinti prieinamumą</b>, jei norite sužinoti ar duomenys prieinami jūsų regione.
+            <p>Atkreipkite dėmesį, kad automobiliui judant ir bėgant laikui keičiasi transporto sąlygos. Įrankis Jungti i&scaron;vykimo vietas su atvykimo vietomis įvertins sąlygas pažymėjus  <b>Naudoti eismo būseną</b>, tačiau tokie duomenys prieinami ne visuose regionuose. Paspauskite <b>Tikrinti prieinamumą</b>, jei norite sužinoti, ar duomenys prieinami jūsų regione.
             </p>
         </div>
     </div>

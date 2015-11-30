@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -36,10 +54,9 @@
         <div><h2>Izvēlieties apgabala slāni, kura robežas tiks noņemtas</h2></div>
         <hr/>
         <div>
-            <p>Slānis, kas satur apgabala elementus, kuri tiks noņemti.
-
+            <p>Slānis, kas satur apgabala elementus, kuri tiks noņemti. 
             </p>
-            <p>Papildus slāņa izvēlei no kartes varat atlasīt  <b>Izvēlēties Living Atlas analīzes slāni</b> nolaižamā saraksta apak&scaron;ā. Tādējādi tiek atvērta galerija, kurā ir daudzām analīzēm noderīgu slāņu galerija. 
+            <p class="OnlineOnly">Papildus slāņa izvēlei no kartes varat atlasīt  <b>Izvēlēties Living Atlas analīzes slāni</b> nolaižamā saraksta apak&scaron;ā. Tādējādi tiek atvērta galerija, kurā ir daudzām analīzēm noderīgu slāņu galerija. 
             </p>
         </div>
     </div>
@@ -47,7 +64,7 @@
         <div><h2>Izvēlieties nojaukšanas metodi</h2></div>
         <hr/>
         <div>
-            <p>Varat izvēlēties vienu no divām metodēm, lai apvienotu apgabala elementus:
+            <p>Jūs varat izvēlēties vienu no divām metodēm lai apvienotu areālu elementus:
                 <ul>
                     <li> <b>Apgabali, kas daļēji apklājas vai atrodas kaimiņos</b>&nbsp;&mdash; divi vai vairāki apgabali, kuru robežas savstarpēji pārklājas tiks apvienotas vienā apgabalā.  Papildus, areāli, kas atrodas kaimiņos (tas ir, tiem ir kopēja robeža), tiks apvienoti vienā areālā.
                     </li>

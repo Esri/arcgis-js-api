@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -87,7 +105,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Synthétiser - A l\'intérieur</h2></td>
+                    <td><h2>Synthétiser - A l'intérieur</h2></td>
                     <td>
                     <img src="../images/GUID-9B12DB3F-AA7B-41EB-87C6-D2DEC3D52DA9-web.png" class="titleImage" alt="Synth&eacute;tiser - A l'int&eacute;rieur">
                     </td>
@@ -213,7 +231,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Cr&eacute;e des zones visibles d\'apr&egrave;s les emplacements que vous sp&eacute;cifiez.
+            <p>Cr&eacute;e des zones visibles d'apr&egrave;s les emplacements que vous sp&eacute;cifiez.
             </p>
             <br/>
         </div>
@@ -228,7 +246,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Cr&eacute;e des zones de captation d\'apr&egrave;s les emplacements que vous sp&eacute;cifiez.
+            <p>Cr&eacute;e des zones de captation d'apr&egrave;s les emplacements que vous sp&eacute;cifiez.
             </p>
             <br/>
         </div>
@@ -243,7 +261,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>D&eacute;termine les chemins des flux vers l\'aval &agrave; partir des emplacements que vous sp&eacute;cifiez.
+            <p>D&eacute;termine les chemins des flux vers l'aval &agrave; partir des emplacements que vous sp&eacute;cifiez.
             </p>
             <br/>
         </div>

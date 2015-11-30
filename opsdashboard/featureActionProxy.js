@@ -21,5 +21,4 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 define(["dojo/_base/declare","dojo/_base/lang","../tasks/FeatureSet","./core/ExtensionBase"],function(e,t,a,n){var o=e([n],{_messageReceived:function(e){"execute"===e.functionName.toLowerCase()&&this.getDataSourceProxy(e.args.dataSourceId).then(t.hitch(this,function(t){this._execute(t,new a(e.args.featureSet),e.args.config)}))},_execute:function(e,t,a){this.emit("execute",{dataSourceProxy:e,features:t,config:a})}});return new o});

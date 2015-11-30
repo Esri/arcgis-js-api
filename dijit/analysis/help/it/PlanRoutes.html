@@ -7,24 +7,42 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Pianifica itinerari</h2><p/>
-        <h2><img src="../images/GUID-09CC6D60-3C72-42D7-968E-B0663F0B1EBB-web.png" alt="Pianifica itinerari"></h2>
+        <h2><img src="../images/GUID-09CC6D60-3C72-42D7-968E-B0663F0B1EBB-web.png" alt="Pianifica Itinerari"></h2>
         <hr/>
     <p>Pianifica itinerari consente di stabilire come dividere in modo efficiente le attivit&agrave; tra gli addetti che operano sul campo.
     </p>
@@ -57,10 +75,11 @@
         <div><h2>Scegli il layer punto che rappresenta le fermate da visitare</h2></div>
         <hr/>
         <div>
-            <p>Scegliere il layer di punti che gli itinerari (o veicoli) devono visitare.  Questi punti diventano fermate assegnate o non assegnate nell'output.
-
+            <p>Scegliere il layer di punti che gli itinerari (o veicoli) devono visitare.  Questi punti diventano fermate assegnate o non assegnate nell'output. 
             </p>
-            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi dell'atlante attivo</b> in fondo all'elenco a discesa. Verr&agrave; aperta una galleria contenente una raccolta di layer utili per numerose analisi. 
+            <p class="OnlineOnly">Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi dell'atlante attivo</b> in fondo all'elenco a discesa. Verr&agrave; aperta una galleria contenente una raccolta di layer utili per numerose analisi. 
+            </p>
+            <p>Lo strumento supporta fino a 2.000 feature di input. 
             </p>
         </div>
     </div>
@@ -84,9 +103,9 @@
             </p>
             <p>Quando si specificano pi&ugrave; localit&agrave;, &egrave; necessario associare un punto a ogni veicolo. Il numero di veicoli deve essere uguale al numero di punti nel layer. Selezionare un layer contenente pi&ugrave; punti e specificare un campo che identifica in modo univoco i singoli itinerari, veicoli o autisti nell'elenco a discesa  <b>Campo ID itinerario</b>.
             </p>
-            <p>L'ora di inizio &egrave; uguale per tutti gli itinerari. Il fuso orario dell'ora di inizio &egrave; uguale a quello della zona in cui si trovano i punti di partenza, di conseguenza assicurarsi di specificare l'ora locale. Ad esempio, si supponga che il fuso orario corrente sia Ora del Pacifico (PST) (UTC-8.00) e che quello dei veicoli utilizzati per l'itinerario &egrave; sia Ora solare fuso occidentale (MST) (UTC-7.00). Se sono al momento le 9:30PST (10:30MST) e i veicoli devono iniziare il giro tra 30 minuti, impostare l'ora di inizio alle 11:00. 
+            <p>L'ora di inizio &egrave; uguale per tutti gli itinerari. Il fuso orario dell'ora di inizio &egrave; uguale a quello della zona in cui si trovano i punti di partenza, di conseguenza assicurarsi di specificare l'ora locale. Ad esempio, si supponga che il fuso orario corrente sia Ora del Pacifico (PST) (UTC-8.00) e che quello dei veicoli utilizzati per l'itinerario &egrave; sia Ora solare fuso occidentale (MST) (UTC-7.00). Se sono al momento le 9:30 PST (10:30 MST) e i veicoli devono iniziare il giro tra 30 minuti, impostare l'ora di inizio alle 11:00. 
             </p>
-            <p>Se i veicoli partono in zone con fusi orari diversi, l'ora di inizio non pu&ograve; essere simultanea, ma risulta sfalsata. Ad esempio, se un itinerario inizia in un punto con fuso orario PST e un altro itinerario inizia in un punto con fuso orario MST, immettendo le 11:00 come ora di inizio, l'itinerario con fuso PST inizier&agrave; alle 11:00PST e quello con fuso MST inizier&agrave; alle 11:00MST, ovvero con un'ora di differenza.
+            <p>Se i veicoli partono in zone con fusi orari diversi, l'ora di inizio non pu&ograve; essere simultanea, ma risulta sfalsata. Ad esempio, se un itinerario inizia in un punto con fuso orario PST e un altro itinerario inizia in un punto con fuso orario MST, immettendo le 11:00 come ora di inizio, l'itinerario con fuso PST inizier&agrave; alle 11:00 PST e quello con fuso MST inizier&agrave; alle 11:00 MST, ovvero con un'ora di differenza.
             </p>
         </div>
     </div>
@@ -96,7 +115,7 @@
         <div>
             <p>Specificare la localit&agrave; di arrivo degli itinerari.
             </p>
-            <p>&Egrave; possibile configurare gli itinerari in modo che terminino in una delle tre localit&agrave;: 
+            <p>&Egrave; possibile configurare gli itinerari in modo che terminino in tre diverse localit&agrave;: 
                 <ul>
                     <li>La stessa localit&agrave; in cui sono iniziati, indipendentemente dal fatto che l'origine sia una o pi&ugrave; localit&agrave;
                     </li>
@@ -182,7 +201,7 @@
         </div>
     </div>
     <div id="maxTotalRouteTime">
-        <div><h2>Limita la durata totale dell\'itinerario per veicolo</h2></div>
+        <div><h2>Limita la durata totale dell'itinerario per veicolo</h2></div>
         <hr/>
         <div>
             <p>Specificare la durata massima di un itinerario dalla partenza all'arrivo. Sono inclusi i tempi di percorrenza e di servizio per le fermate previste dall'itinerario. Se gli autisti non devono lavorare oltre un tempo indicato durante una giornata, ad esempio otto ore, &egrave; possibile specificare qui tale limite.

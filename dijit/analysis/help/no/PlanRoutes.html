@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -57,10 +75,11 @@
         <div><h2>Velg punktlaget med stoppene som skal besøkes</h2></div>
         <hr/>
         <div>
-            <p>Velg laget med punkt som rutene (eller kj&oslash;ret&oslash;yene) skal bes&oslash;ke. Disse punktene blir tilordnede eller utilordnede stopp i utdataene.
-
+            <p>Velg laget med punkt som rutene (eller kj&oslash;ret&oslash;yene) skal bes&oslash;ke. Disse punktene blir tilordnede eller utilordnede stopp i utdataene. 
             </p>
-            <p>In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            <p class="OnlineOnly">In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            </p>
+            <p>Verkt&oslash;yet st&oslash;tter opptil 2&nbsp;000 geoobjekter som inndata .
             </p>
         </div>
     </div>
@@ -85,9 +104,9 @@
             <p>N&aring;r flere lokasjoner er angitt, m&aring; hver bil knyttes til sitt eget punkt. Antallet biler m&aring; samsvare med antall punkter i laget. Velg et lag med flere punkter, og angi et felt som unikt identifiserer de enkelte rutene, bilene eller sj&aring;f&oslash;rer i  <b>Rute-ID</b>-feltet i rullegardinlisten.
             </p>
             <p>Starttidspunktet er det samme for alle ruter. Tidssonen for starttidspunktet er den samme som den tidssonen hvor startpunktet eller punktene er plassert i, s&aring; s&oslash;rg for at den tiden du angir, er lokal tid. La oss f.eks. anta at du er i Pacific Standard Time (UTC-8.00), og bilene du ruter er stasjonert i Mountain Standard Time (UTC-7.00). Hvis
-klokken for &oslash;yeblikket er 9.30PST (10.30MST), og kj&oslash;ret&oslash;yene m&aring; starte p&aring; rutene om 30 minutter, b&oslash;r du sette starttiden til kl. 11.00. 
+klokken for &oslash;yeblikket er 9.30 PST (10.30 MST), og kj&oslash;ret&oslash;yene m&aring; starte p&aring; rutene om 30 minutter, b&oslash;r du sette starttiden til kl. 11.00. 
             </p>
-            <p>Hvis bilene starter fra forskjellige tidssoner, kan ikke starttidspunktet v&aelig;re samtidig, de blir i stedet forskj&oslash;vet. Hvis en rute for eksempel starter fra et punkt i PST og en annen rute starter fra MST, og du skriver inn 11.00 som starttid, vil ruten i PST starte kl. 11.00PST og ruten i MST starte kl. 11.00MST &ndash; en times forskjell.
+            <p>Hvis bilene starter fra forskjellige tidssoner, kan ikke starttidspunktet v&aelig;re samtidig, de blir i stedet forskj&oslash;vet. Hvis en rute for eksempel starter fra et punkt i PST og en annen rute starter fra MST, og du skriver inn 11.00 som starttid, vil ruten i PST starte kl. 11.00 PST og ruten i MST starte kl. 11.00 MST &ndash; en times forskjell.
             </p>
         </div>
     </div>
@@ -97,7 +116,7 @@ klokken for &oslash;yeblikket er 9.30PST (10.30MST), og kj&oslash;ret&oslash;yen
         <div>
             <p>Angi hvor bilene avslutter sine ruter.
             </p>
-            <p>Du kan konfigurere rutene slik at de avsluttes p&aring; en av tre lokasjoner:
+            <p>Du kan konfigurere rutene slik at de avsluttes p&aring; en av tre lokasjoner: 
                 <ul>
                     <li>Samme lokasjon som ruten begynte p&aring;, uansett om de startet p&aring; ett eller flere lokasjoner
                     </li>

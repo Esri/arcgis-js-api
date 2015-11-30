@@ -26,6 +26,12 @@
   width: 420px;
 }
 
+@media screen and (max-width: 480px){ 
+  .esriHelpPopup .sizer {
+    width: 40%;
+  }
+}
+
 .esriHelpPopup a {
   color: #336699;
   text-decoration: underline;

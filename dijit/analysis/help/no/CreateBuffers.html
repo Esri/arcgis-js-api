@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -35,13 +53,12 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Velg laget som innholder geoobjektene som skal</h2></div>
+        <div><h2>Velg laget som inneholder geoobjektene som skal bufres</h2></div>
         <hr/>
         <div>
-            <p>Punkt-, linje- eller omr&aring;degeoobjektene som skal bufres.
-
+            <p>Punkt-, linje- eller omr&aring;degeoobjektene som skal bufres. 
             </p>
-            <p>In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            <p class="OnlineOnly">In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
             </p>
         </div>
     </div>
@@ -78,7 +95,7 @@
             </p>
             <p>N&aring;r du oppretter en enkelt buffer rundt geoobjektsomr&aring;der (det angis &eacute;n avstand), kan du velge om geoobjektet som bufres, skal inkluderes eller ekskluderes i resultatbufferen.
             </p>
-            <p>N&aring;r du bruker flere avstander, kan du velge hvordan du vil vise avstanden fra den siste bufferavstanden. Hvis for eksempel avstandene er 10 og 14: 
+            <p>N&aring;r du bruker flere avstander, kan du velge hvordan du vil vise avstanden fra den siste bufferavstanden. Hvis for eksempel avstandene er 10 og 14:
                 <ul>
                     <li>Velger du  <b>Ringer</b>, gir det buffere som g&aring;r fra 0 til 10 og 10 til 14.
                     </li>
@@ -86,7 +103,7 @@
                     </li>
                 </ul>
                 
-            </p> 
+            </p>
         </div>
     </div>
     <div id="OptionLine">
@@ -97,7 +114,7 @@
             </p>
             <p>N&aring;r du oppretter en enkelt buffer rundt linjer (det angis &eacute;n avstand), kan du velge hvilken side av linjen som skal bufres. Du velger vanligvis begge sidene. Venstre og h&oslash;yre fastsettes som om du g&aring;r fra den f&oslash;rste x/y-koordinaten for linjen (startkoordinaten) til den siste x/y-koordinaten for linjen (sluttkoordinaten). N&aring;r du velger venstre eller h&oslash;yre, betyr det vanligvis at du vet at linjegeoobjektene ble opprettet og lagret i en bestemt retning (for eksempel oppstr&oslash;ms eller nedstr&oslash;ms i et elvenettverk). P&aring; slutten av linjene kan bufferen v&aelig;re avrundet (rund) eller tvers over (flat).
             </p>
-            <p>N&aring;r du oppretter flere buffere (flere avstander), kan du velge hvordan du vil vise avstanden fra den siste bufferavstanden. Hvis for eksempel avstandene er 10 og 14: 
+            <p>N&aring;r du oppretter flere buffere (flere avstander), kan du velge hvordan du vil vise avstanden fra den siste bufferavstanden. Hvis for eksempel avstandene er 10 og 14:
                 <ul>
                     <li>Velger du  <b>Ringer</b>, gir det buffere som g&aring;r fra 0 til 10 og 10 til 14.
                     </li>
@@ -106,6 +123,14 @@
                 </ul>
                 
             </p> 
+        </div>
+    </div>
+    <div id="OptionNolayer">
+        <div><h2>Alternativer</h2></div>
+        <hr/>
+        <div>
+            <p>N&aring;r du har valgt et lag som skal bufres, kan du velge hvordan du vil at overlappende buffere skal h&aring;ndteres. Hvis en buffer er opp&aring; en annen buffer, kan omr&aring;dene som er felles for begge, beholdes (overlappe) eller sl&aring;s sammen (l&oslash;ses opp). Du kan i tillegg angi hvordan flere avstander skal vises. For lag som inneholder linjegeoobjekter kan du velge hvilken side av linjen som skal bufres. For lag som inneholder omr&aring;degeoobjekter kan du velge om geoobjektet som bufres, skal inkluderes eller ekskluderes i resultatbufferen.
+            </p>
         </div>
     </div>
     <div id="BufferLayer">

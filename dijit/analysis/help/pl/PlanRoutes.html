@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -57,10 +75,11 @@
         <div><h2>Wybierz warstwę punktową reprezentującą odwiedzane lokalizacje przystanków</h2></div>
         <hr/>
         <div>
-            <p>Wybierz warstwę punktową, przez kt&oacute;rą powinna przebiec trasa (lub do kt&oacute;rej powinny dotrzeć pojazdy). W danych wyjściowych te punkty będą przypisanymi lub nieprzypisanymi przystankami.
-
+            <p>Wybierz warstwę punktową, przez kt&oacute;rą powinna przebiec trasa (lub do kt&oacute;rej powinny dotrzeć pojazdy). W danych wyjściowych te punkty będą przypisanymi lub nieprzypisanymi przystankami. 
             </p>
-            <p>Poza wybraniem warstwy na mapie można wybrać opcję  <b>Wybierz warstwę analizy Living Atlas</b> dostępną w dolnej części menu rozwijanego. Zostanie wtedy otwarta galeria zawierająca kolekcje warstw przydatnych podczas wielu analiz. 
+            <p class="OnlineOnly">Poza wybraniem warstwy na mapie można wybrać opcję  <b>Wybierz warstwę analizy Living Atlas</b> dostępną w dolnej części menu rozwijanego. Zostanie wtedy otwarta galeria zawierająca kolekcje warstw przydatnych podczas wielu analiz. 
+            </p>
+            <p>Narzędzie jest w&nbsp;stanie obsłużyć do 2000 obiekt&oacute;w wejściowych. 
             </p>
         </div>
     </div>
@@ -91,10 +110,10 @@ zgodna z&nbsp;liczbą punkt&oacute;w w&nbsp;warstwie. Wybierz warstwę z wieloma
 W&nbsp;związku z&nbsp;tym należy się upewnić, że wprowadzany jest czas lokalny. Zał&oacute;żmy na przykład, że przebywasz 
 w&nbsp;strefie standardowego czasu pacyficznego (PST, UTC-8:00), 
 a&nbsp;pojazdy, dla kt&oacute;rych planujesz trasę, znajdują się w&nbsp;strefie standardowego czasu g&oacute;rskiego (MST, UTC-7:00). Jeśli 
-teraz jest godzina 9:30PST (10:30MST) i&nbsp;pojazdy wyruszają na trasę 
+teraz jest godzina 9:30 PST (10:30 MST) i&nbsp;pojazdy wyruszają na trasę 
 za 30&nbsp;minut, należy skonfigurować czas początkowy na godzinę 11:00. 
             </p>
-            <p>Jeśli pojazdy rozpoczynają trasę w&nbsp;r&oacute;żnych strefach czasowych, czasy początkowe nie będą identyczne, ale przesunięte. Jeśli na przykład jedna trasa ma początek w&nbsp;punkcie w&nbsp;strefie PST, a&nbsp;druga w&nbsp;strefie MST, i&nbsp;wpisany zostanie czas początkowy 11:00, trasa w strefie PST rozpocznie się o&nbsp;godzinie 11:00PST, a&nbsp;trasa w&nbsp;strefie MST o&nbsp;godzinie 11:00MST, czyli z&nbsp;r&oacute;żnicą jednej godziny.
+            <p>Jeśli pojazdy rozpoczynają trasę w&nbsp;r&oacute;żnych strefach czasowych, czasy początkowe nie będą identyczne, ale przesunięte. Jeśli na przykład jedna trasa ma początek w&nbsp;punkcie w&nbsp;strefie PST, a&nbsp;druga w&nbsp;strefie MST, i&nbsp;wpisany zostanie czas początkowy 11:00, trasa w strefie PST rozpocznie się o&nbsp;godzinie 11:00 PST, a&nbsp;trasa w&nbsp;strefie MST o&nbsp;godzinie 11:00 MST, czyli z&nbsp;r&oacute;żnicą jednej godziny.
             </p>
         </div>
     </div>

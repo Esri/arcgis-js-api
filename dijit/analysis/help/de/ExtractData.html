@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -34,7 +52,7 @@
         <div><h2>Zu extrahierende Layer</h2></div>
         <hr/>
         <div>
-            <p>Dies sind die Layer im Inhaltsverzeichnis, aus dem Features extrahiert werden k&ouml;nnen. Aktivierte Layer werden extrahiert und in die resultierende ZIP- oder CSV-Datei eingef&uuml;gt.
+            <p>Dies sind die Layer im Inhaltsverzeichnis, aus denen Features extrahiert werden k&ouml;nnen. Aktivierte Layer werden extrahiert und in die resultierende ZIP- oder CSV-Datei eingef&uuml;gt.
             </p>
             <p>Damit der Layer in der Liste der zu extrahierenden Layer angezeigt wird, m&uuml;ssen Sie entweder der Besitzer der Daten sein oder der Besitzer der Daten muss das Exportieren der Daten aktivieren. So aktivieren Sie den Datenexport f&uuml;r Daten, die Sie besitzen:
                 <ul>
@@ -49,7 +67,7 @@
                 </ul>
                 
             </p>
-            <p>Wenn Ihre Analyse-Layer Anh&auml;nge enth&auml;lt, dann werden diese Anh&auml;nge nur dann extrahiert, wenn die Ausgabedaten im Format einer File-Geodatabase ausgegeben werden und die Option  <b>Features ausschneiden</b> deaktiviert ist.
+            <p>Wenn Ihr Analyse-Layer Anh&auml;nge enth&auml;lt, dann werden diese Anh&auml;nge nur dann extrahiert, wenn die Ausgabedaten im Format einer File-Geodatabase ausgegeben werden und die Option  <b>Features ausschneiden</b> deaktiviert ist.
             </p>
         </div>
     </div>
@@ -57,20 +75,20 @@
         <div><h2>Kartenausschnitt</h2></div>
         <hr/>
         <div>
-            <p>Die Fl&auml;che zur Definition welche Features in die Ausgabe-ZIP- bzw. die CSV-Datei eingef&uuml;gt werden. Ihnen steht Folgendes zur Auswahl:
+            <p>Die Fl&auml;che, die definiert, welche Features in die Ausgabe-ZIP- bzw. CSV-Datei eingef&uuml;gt werden. Ihnen steht Folgendes zur Auswahl:
                 <ul>
-                    <li>Die aktuell sichtbare Ausdehnung der Karte ( <b>Gleich wie Anzeige</b>).
+                    <li>die aktuell sichtbare Ausdehnung der Karte ( <b>Gleich wie Anzeige</b>)
                     </li>
-                    <li>Einer der Layer in Ihrem Inhaltsverzeichnis.
+                    <li>einer der Layer in Ihrem Inhaltsverzeichnis
                     </li>
-                    <li>Zeichnen einer Fl&auml;che zum Definieren des Interessensbereichs.
+                    <li>Festlegen einer Fl&auml;che zum Definieren des Interessenbereichs
                     </li>
                 </ul>
-                 Alle Features, die sich vollst&auml;ndig innerhalb der Kartenausdehnung befinden, werden extrahiert.  F&uuml;r Features, die die Grenze der Kartenausdehnung kreuzen oder &uuml;berschneiden, sich jedoch nicht vollst&auml;ndig innerhalb der Ausdehnung befinden, sind zwei Optionen verf&uuml;gbar:
+                 Alle Features, die sich vollst&auml;ndig innerhalb der Kartenausdehnung befinden, werden extrahiert. F&uuml;r Features, die die Grenze der Kartenausdehnung kreuzen oder &uuml;berschneiden, sich jedoch nicht vollst&auml;ndig innerhalb der Ausdehnung befinden, sind zwei Optionen verf&uuml;gbar:
                 <ul>
-                    <li> <b>Features ausw&auml;hlen</b> &ndash; Ganze Features, die die Grenze des Untersuchungsgebiets kreuzen, werden extrahiert.
+                    <li> <b>Features selektieren</b> &ndash; Ganze Features, die die Grenze des Untersuchungsgebiets kreuzen, werden extrahiert.
                     </li>
-                    <li> <b>Features ausschneiden</b> &ndash; Nur die Teile des Features, die sich innerhalb des Untersuchungsgebietes befinden, werden extrahiert.
+                    <li> <b>Features ausschneiden</b> &ndash; Nur die Teile der Features, die sich innerhalb des Untersuchungsgebietes befinden, werden extrahiert.
                     </li>
                 </ul>
                 

@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -127,8 +145,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Suteikia informacijos apie žmones, vietas, verslą nurodytoje teritorijoje arba teritorijoje, nutolusioje tam tikru atstumu nuo vietos ar pasiekiamoje per tam tikrą važiavimo laiką
-
+            <p>Suteikia informacijos apie žmones, vietas, verslą nurodytoje teritorijoje arba teritorijoje, nutolusioje tam tikru atstumu nuo vietos ar pasiekiamoje per tam tikrą važiavimo laiką 
             </p>
             <br/>
         </div>
@@ -166,8 +183,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>I&scaron;renka esamus elementus tiriamame plote, atitinkančius eilę jūsų nurodytų kriterijų. Kriterijai gali būti apibrėžti atributų užklausomis (pavyzdžiui, sklypai, kurie yra laisvi) arba erdvinėmis užklausomis (pavyzdžiui, 1 kilometro atstumu nuo upės).
-
+            <p>I&scaron;renka esamus elementus tiriamame plote, atitinkančius eilę jūsų nurodytų kriterijų. Kriterijai gali būti apibrėžti atributų užklausomis (pavyzdžiui, sklypai, kurie yra laisvi) arba erdvinėmis užklausomis (pavyzdžiui, 1 kilometro atstumu nuo upės). 
             </p>
             <br/>
         </div>
@@ -182,8 +198,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Sukuria naujus elementus tiriamajame plote, atitinkančius eilę jūsų nurodytų kriterijų. Kriterijai gali būti apibrėžti atributų užklausomis (pavyzdžiui, sklypai, kurie yra laisvi) arba erdvinėmis užklausomis (pavyzdžiui, 1 kilometro atstumu nuo upės).
-
+            <p>Sukuria naujus elementus tiriamajame plote, atitinkančius eilę jūsų nurodytų kriterijų. Kriterijai gali būti apibrėžti atributų užklausomis (pavyzdžiui, sklypai, kurie yra laisvi) arba erdvinėmis užklausomis (pavyzdžiui, 1 kilometro atstumu nuo upės). 
             </p>
             <br/>
         </div>
@@ -303,7 +318,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>&Scaron;is įrankis leidžia prognozuoti reik&scaron;mes naujose vietose, remiantis esamais ta&scaron;kų rinkinio matavimais. Įrankis naudoja ta&scaron;kų duomenis su reik&scaron;mėmis kiekviename ta&scaron;ke ir sukuria plotus, klasifikuotus pagal prognozuotas reik&scaron;mes. &Scaron;į įrankį galite naudoti, pavyzdžiui, kritulių lygiui baseine prognozuoti, atsižvelgiant į atskirų kritulių matuoklių matavimus.
+            <p>&Scaron;is įrankis leidžia prognozuoti reik&scaron;mes naujose vietose, remiantis esamais ta&scaron;kų rinkinio matavimais. Įrankis surenka ta&scaron;kų duomenis su reik&scaron;mėmis kiekviename ta&scaron;ke ir pateikia plotus, klasifikuotus pagal prognozuotas reik&scaron;mes. &Scaron;į įrankį galite naudoti, pavyzdžiui, kritulių lygiui baseine prognozuoti, atsižvelgiant į atskirų kritulių matuoklių matavimus.
             </p>
             <br/>
         </div>
@@ -440,7 +455,7 @@
                 </li>
                 <li> <b>Sujungti sluoksnius</b> kopijuoja visus dviejų ar daugiau sluoksnių elementus į naują sluoksnį.
                 </li>
-                <li> <b>Perdengti sluoksnius</b> apjungia dviejų ar daugiau sluoksnių informaciją į vieną sluoksnį. Sluoksnių perdengimą galite įsivaizduoti kaip vienas ant kito sudėtų sluoksnių pervėrimo metu gautą informaciją.
+                <li> <b>Perdengti sluoksnius</b> apjungia dviejų ar daugiau sluoksnių informaciją į vieną sluoksnį.  Sluoksnių perdengimą galite įsivaizduoti kaip vienas ant kito sudėtų sluoksnių pervėrimo metu gautą informaciją.
                 </li>
             </ul>
             
@@ -459,7 +474,7 @@
 <hr/>
             <p>Persidengiantys ar bendrą ribą turintys objektai bus apjungti į vieną plotą.    
             </p>
-            <p>Galite pasirinkti, kurie elementai bus apjungiami, nurodydami lauką. Pavyzdžiui, jei turite seniūnijų sluoksnį, kuriame kiekvienas administracinis vienetas turi pavadinimą  <i>State_Name</i> atributiniame lauke, galite apjungti naudodami <i>State_Name</i> atributą. Besiribojančios savivaldybės bus apjungtos, jei turės tą pačią <i>State_Name</i> reik&scaron;mę. Rezultatas bus savivaldybių teritorijos.
+            <p>Galite pasirinkti, kurie elementai bus apjungiami, nurodydami lauką. Pavyzdžiui, jei turite seniūnijų sluoksnį, kuriame kiekviena seniūnija turi  <i>State_Name</i> atributą, galite sulieti ribas, naudodami <i>State_Name</i> atributą.  Besiribojančios savivaldybės bus apjungtos, jei turės tą pačią <i>State_Name</i> reik&scaron;mę.  Rezultatas bus savivaldybių teritorijos.
             </p>
             <br/>
         </div>

@@ -21,5 +21,4 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../kernel","../../OperationBase","./Add"],function(e,d,t,r,a,i){var o=e(a,{declaredClass:"esri.dijit.editing.Delete",type:"edit",label:"Delete Features",constructor:function(e){e=e||{},this._add=new i({featureLayer:e.featureLayer,addedGraphics:e.deletedGraphics})},performUndo:function(){this._add.performRedo()},performRedo:function(){this._add.performUndo()}});return t("extend-esri")&&d.setObject("dijit.editing.Delete",o,r),o});

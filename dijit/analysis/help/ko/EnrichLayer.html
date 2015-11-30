@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -41,7 +59,7 @@
             <p>새 속성 데이터로 보강될 포인트, 라인 또는 영역 레이어입니다.
 
             </p>
-            <p>맵에서 레이어를 선택하는 것 외에도 드롭다운 목록 하단에서  <b>생동감 있는 세계 지도 분석 레이어를 선택</b>할 수 있습니다. 선택 시 다수의 분석 용도에 유용하게 사용할 수 있는 여러 레이어가 포함된 갤러리가 열립니다. 
+            <p class="OnlineOnly">맵에서 레이어를 선택하는 것 외에도 드롭다운 목록 하단에서  <b>생동감 있는 세계 지도 분석 레이어를 선택</b>할 수 있습니다. 선택 시 다수의 분석 용도에 유용하게 사용할 수 있는 여러 레이어가 포함된 갤러리가 열립니다. 
             </p>
         </div>
     </div>

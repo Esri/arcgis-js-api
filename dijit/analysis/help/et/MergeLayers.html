@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -43,8 +61,7 @@
         <div><h2>Vali kiht</h2></div>
         <hr/>
         <div>
-            <p>Punkt-, joon- v&otilde;i pindobjektid, mis allpool m&auml;&auml;ratud kihiga &uuml;hendatakse.
-
+            <p>Punkt-, joon- v&otilde;i pindobjektid, mis allpool m&auml;&auml;ratud kihiga &uuml;hendatakse. 
             </p>
         </div>
     </div>
@@ -60,7 +77,7 @@
         <div><h2>Muuda ühendatavaid välju</h2></div>
         <hr/>
         <div>
-            <p>Vaikimisi kantakse k&otilde;ik sisendkihtides olevad v&auml;ljad v&auml;ljundisse &uuml;le. Saate muuta v&auml;ljade &uuml;leviimist j&auml;rgmiste meetodite alusel:
+            <p>Vaikimisi kantakse k&otilde;ik sisendkihtides olevad v&auml;ljad v&auml;ljundisse &uuml;le. Te saate muuta v&auml;ljade &uuml;leviimist j&auml;rgmiste meetodite alusel:
                 <ul>
                     <li> <b>Nimeta &uuml;mber</b> &ndash; v&auml;lja nimi muudetakse v&auml;ljundi jaoks &uuml;mber.
                     </li>

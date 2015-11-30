@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -52,7 +70,7 @@
             <p>Başlangı&ccedil; konumu veya konumlarını temsil eden nokta katmanını se&ccedil;in.  Ara&ccedil; en &ccedil;ok  5,000 başlangı&ccedil; noktasını ve  5,000 hedefi destekler. </p>
             <p>Yalnızca bir başlangı&ccedil; noktası olan bir katman se&ccedil;erseniz, t&uuml;m hedef noktalarına bağlanılır.
             </p>
-            <p>Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, aşağı a&ccedil;ılan listenin altında bulunan  <b>Living Atlas Analiz Katmanı Se&ccedil;</b> &ouml;ğesini de belirleyebilirsiniz. Bu, pek &ccedil;ok analiz i&ccedil;in kullanılabilen katman koleksiyonu i&ccedil;eren bir galeri a&ccedil;ar. 
+            <p class="OnlineOnly">Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, aşağı a&ccedil;ılan listenin altında bulunan  <b>Living Atlas Analiz Katmanı Se&ccedil;</b> &ouml;ğesini de belirleyebilirsiniz. Bu, pek &ccedil;ok analiz i&ccedil;in kullanılabilen katman koleksiyonu i&ccedil;eren bir galeri a&ccedil;ar. 
             </p>
         </div>
     </div>
@@ -65,7 +83,7 @@
             </p>
             <p>Bir &ccedil;ıkış noktası ve bir&ccedil;ok hedef varsa, ara&ccedil; &ccedil;ıkış noktasını hedeflerin her birine bağlar.
             </p>
-            <p>Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, aşağı a&ccedil;ılan listenin altında bulunan  <b>Living Atlas Analiz Katmanı Se&ccedil;</b> &ouml;ğesini de belirleyebilirsiniz. Bu, pek &ccedil;ok analiz i&ccedil;in kullanılabilen katman koleksiyonu i&ccedil;eren bir galeri a&ccedil;ar. 
+            <p class="OnlineOnly">Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, aşağı a&ccedil;ılan listenin altında bulunan  <b>Living Atlas Analiz Katmanı Se&ccedil;</b> &ouml;ğesini de belirleyebilirsiniz. Bu, pek &ccedil;ok analiz i&ccedil;in kullanılabilen katman koleksiyonu i&ccedil;eren bir galeri a&ccedil;ar. 
             </p>
             <p> Bir&ccedil;ok &ccedil;ıkış ve hedef noktası varsa, &ccedil;ıkış-hedef &ccedil;iftlerini tanımlayan iki alanınız olması gerekir: <b>&Ccedil;ıkış noktalarındaki kimlik alanı</b> ve <b>Hedeflerde eşleşen kimlik alanı</b>. Ara&ccedil;, analiz sırasında &ccedil;ıkış-hedef &ccedil;iftlerini birbirine bağlar. &Ouml;rneğin, kimlik alanı değerleri <code>G&uuml;l</code> ve <code>Kemal</code> olan iki &ccedil;ıkış noktası ve aynı kimlik değerine sahip iki hedef d&uuml;ş&uuml;n&uuml;n. <code>G&uuml;l</code> &ccedil;ıkış noktası <code>G&uuml;l</code> hedefine, <code>Kemal</code> ise <code>Kemal</code>'e bağlanır. Başka hi&ccedil;bir bağlantı veya &ouml;l&ccedil;&uuml;m yapılmaz.
             </p>

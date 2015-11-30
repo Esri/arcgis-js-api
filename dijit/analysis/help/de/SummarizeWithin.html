@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -28,9 +46,9 @@
         <hr/>
     <p>Dieses Werkzeug findet Features (und Teile von Features), die sich innerhalb der Grenzen von Fl&auml;chen im ersten Eingabe-Layer befinden.  Beispiel:
         <ul>
-            <li>Anhand eines Layers mit Grenzen von Wassereinzugsgebieten und eines Layers mit Grenzen von Landnutzungsfl&auml;chen nach Landnutzungstyp die Gesamtlandwirtschaftsfl&auml;che des Landnutzungstyps f&uuml;r jedes Wassereinzugsgebiet ermitteln. 
+            <li>anhand eines Layers mit Grenzen von Wassereinzugsgebieten und eines Layers mit Grenzen von Landnutzungsfl&auml;chen nach Landnutzungstyp die Gesamtlandwirtschaftsfl&auml;che des Landnutzungstyps f&uuml;r jedes Wassereinzugsgebiet ermitteln 
             </li>
-            <li>Den durchschnittlichen Grundst&uuml;ckswert unbebauter Flurst&uuml;cke je Stadt anhand eines Flurst&uuml;cks-Layers in einem Landkreis und eines Stadtgrenzen-Layers zusammenfassen.
+            <li>den durchschnittlichen Grundst&uuml;ckswert unbebauter Flurst&uuml;cke je Stadt anhand eines Flurst&uuml;cks-Layers in einem Landkreis und eines Stadtgrenzen-Layers zusammenfassen
             </li>
         </ul>
         
@@ -43,10 +61,9 @@
         <div><h2>Flächen-Layer auswählen, um andere Features innerhalb dessen Grenzen zusammenzufassen</h2></div>
         <hr/>
         <div>
-            <p>Der Fl&auml;chen-Layer, anhand dessen Features zusammengefasst werden, die innerhalb seiner Grenzen liegen.
-
+            <p>Der Fl&auml;chen-Layer, anhand dessen Features zusammengefasst werden, die innerhalb seiner Grenzen liegen. 
             </p>
-            <p>Neben einem Layer aus Ihrer Karte k&ouml;nnen Sie auch die Option  <b>Analyse-Layer des Living Atlas ausw&auml;hlen</b> unten in der Dropdown-Liste ausw&auml;hlen. Hiermit wird eine Galerie mit einer Sammlung von Layern ge&ouml;ffnet, die f&uuml;r viele Analysen hilfreich sind. 
+            <p class="OnlineOnly">Neben einem Layer aus Ihrer Karte k&ouml;nnen Sie auch die Option  <b>Analyse-Layer des Living Atlas ausw&auml;hlen</b> unten in der Dropdown-Liste ausw&auml;hlen. Hiermit wird eine Galerie mit einer Sammlung von Layern ge&ouml;ffnet, die f&uuml;r viele Analysen hilfreich sind. 
             </p>
         </div>
     </div>
@@ -56,7 +73,7 @@
         <div>
             <p>Features in diesem Layer, die innerhalb der Grenzen der Features im oben genannten Eingabe-Layer liegen, werden zusammengefasst. 
             </p>
-            <p>Neben einem Layer aus Ihrer Karte k&ouml;nnen Sie auch die Option  <b>Analyse-Layer des Living Atlas ausw&auml;hlen</b> unten in der Dropdown-Liste ausw&auml;hlen. Hiermit wird eine Galerie mit einer Sammlung von Layern ge&ouml;ffnet, die f&uuml;r viele Analysen hilfreich sind. 
+            <p class="OnlineOnly">Neben einem Layer aus Ihrer Karte k&ouml;nnen Sie auch die Option  <b>Analyse-Layer des Living Atlas ausw&auml;hlen</b> unten in der Dropdown-Liste ausw&auml;hlen. Hiermit wird eine Galerie mit einer Sammlung von Layern ge&ouml;ffnet, die f&uuml;r viele Analysen hilfreich sind. 
             </p>
         </div>
     </div>
@@ -66,8 +83,7 @@
         <div>
             <p>Sie k&ouml;nnen auch die Statistiken f&uuml;r numerische Attribute der Punkte berechnen, die innerhalb der Grenzen von Features liegen. 
             </p>
-            <p>Wenn das Kontrollk&auml;stchen  <b>Anzahl von Punkten</b> aktiviert ist, wird die Gesamtzahl der Punkte innerhalb jeder Fl&auml;chengrenze berechnet.
-  Zudem haben Sie die M&ouml;glichkeit, Statistiken f&uuml;r numerische Attribute der Punkte zu berechnen, die innerhalb der einzelnen Fl&auml;chengrenzen liegen.
+            <p>Wenn das Kontrollk&auml;stchen  <b>Anzahl von Punkten</b> aktiviert ist, wird die Gesamtzahl der Punkte innerhalb jeder Fl&auml;chengrenze berechnet.  Zudem haben Sie die M&ouml;glichkeit, Statistiken f&uuml;r numerische Attribute der Punkte zu berechnen, die innerhalb der einzelnen Fl&auml;chengrenzen liegen.
             </p>
             <ul>
                 <li> <b>Summe</b> &ndash; Der Gesamtwert f&uuml;r das angegebene Feld.
@@ -88,10 +104,9 @@
         <div><h2>Statistiken hinzufügen aus</h2></div>
         <hr/>
         <div>
-            <p>Sie k&ouml;nnen optional Statistiken f&uuml;r numerische Attribute der nahe gelegenen Linien berechnen. 
+            <p>Sie k&ouml;nnen optional Statistiken f&uuml;r numerische Attribute der Linien berechnen, die zusammengefasst werden sollen. 
             </p>
-            <p>Wenn das Kontrollk&auml;stchen  <b>Gesamtl&auml;nge der Linien in</b> aktiviert ist, wird die Gesamtl&auml;nge der Linien innerhalb jeder Fl&auml;chengrenze berechnet.
-  Zudem haben Sie die M&ouml;glichkeit, Statistiken f&uuml;r numerische Attribute der Linien zu berechnen, die innerhalb der einzelnen Fl&auml;chengrenzen liegen.
+            <p>Wenn das Kontrollk&auml;stchen  <b>Gesamtl&auml;nge der Linien in</b> aktiviert ist, wird die Gesamtl&auml;nge der Linien innerhalb jeder Fl&auml;chengrenze berechnet.  Zudem haben Sie die M&ouml;glichkeit, Statistiken f&uuml;r numerische Attribute der Linien zu berechnen, die innerhalb der einzelnen Fl&auml;chengrenzen liegen.
             </p>
             <ul>
                 <li> <b>Summe</b> &ndash; Der Gesamtwert f&uuml;r das angegebene Feld.
@@ -112,9 +127,9 @@
         <div><h2>Statistiken hinzufügen aus</h2></div>
         <hr/>
         <div>
-            <p>Sie k&ouml;nnen optional Statistiken f&uuml;r numerische Attribute der nahe gelegenen Fl&auml;chen berechnen. 
+            <p>Sie k&ouml;nnen optional Statistiken f&uuml;r numerische Attribute der Fl&auml;chen berechnen, die zusammengefasst werden sollen. 
             </p>
-            <p>Wenn das Kontrollk&auml;stchen  <b>Fl&auml;chensumme erstellen mit</b> aktiviert ist, wird die Gesamtfl&auml;che der Features berechnet, die sich innerhalb der einzelnen Fl&auml;chengrenzen des ersten Eingabe-Layers befinden.  Zudem haben Sie die M&ouml;glichkeit, Statistiken f&uuml;r numerische Attribute der Features innerhalb der einzelnen Fl&auml;chengrenzen zu berechnen.
+            <p>Wenn das Kontrollk&auml;stchen  <b>Fl&auml;chensumme in</b> aktiviert ist, wird die Gesamtfl&auml;che der Features berechnet, die sich innerhalb der einzelnen Fl&auml;chengrenzen des ersten Eingabe-Layers befinden.  Zudem haben Sie die M&ouml;glichkeit, Statistiken f&uuml;r numerische Attribute der Features innerhalb der einzelnen Fl&auml;chengrenzen zu berechnen.
             </p>
             <ul>
                 <li> <b>Summe</b> &ndash; Der Gesamtwert f&uuml;r das angegebene Feld.
@@ -131,12 +146,34 @@
             
         </div>
     </div>
+    <div id="StatisticsNoLayer">
+        <div><h2>Statistiken hinzufügen aus</h2></div>
+        <hr/>
+        <div>
+            <p>Nachdem Sie einen Layer ausgew&auml;hlt haben, der zusammengefasst werden soll, k&ouml;nnen Sie optional Statistiken aller numerischen Attribute der Punkte, Linien oder Fl&auml;chen innerhalb des Eingabe-Fl&auml;chen-Layers berechnen. 
+            </p>
+            <ul>
+                <li> <b>Summe</b> &ndash; Der Gesamtwert f&uuml;r das angegebene Feld
+                </li>
+                <li> <b>Durchschnitt</b> &ndash; Der Durchschnitt bzw. Mittelwert f&uuml;r das angegebene Feld
+                </li>
+                <li> <b>Minimum</b> &ndash; Der kleinste Wert im angegebenen Feld
+                </li>
+                <li> <b>Maximum</b> &ndash; Der gr&ouml;&szlig;te Wert im angegebenen Feld
+                </li>
+                <li> <b>Standard abweichung</b> &ndash; Die Standardabweichung der Werte im angegebenen Feld.
+                </li>
+            </ul>
+            
+            <p>Je nach Feature-Typen, die Sie zusammenfassen, k&ouml;nnen Sie die Gesamtzahl nahe gelegener Punkte, die Gesamtl&auml;nge der Linien oder die Gesamtfl&auml;che berechnen.
+            </p>
+        </div>
+    </div>
     <div id="GroupBy">
         <div><h2>Feld für die Gruppierung auswählen</h2></div>
         <hr/>
         <div>
-            <p>Dies ist ein Attribut der  <b>Feldstatistik</b>-Features, mit denen Statistiken f&uuml;r jeden eindeutigen Attributwert getrennt berechnet werden k&ouml;nnen. Angenommen der erste Eingabe-Layer enth&auml;lt beispielsweise Stadtgrenzen und die Zusammenfassungs-Features sind Flurst&uuml;cke.  Eines der Attribute der Flurst&uuml;cke lautet <i>Status</i> und enth&auml;lt zwei Werte: &quot;VACANT&quot; und &quot;OCCUPIED&quot;. Um die Gesamtfl&auml;che unbebauter oder bebauter Flurst&uuml;cke innerhalb der Grenzen einer Stadt zu berechnen, verwenden Sie <i>Status</i> als Attribut, nach dem gruppiert werden soll.
- Die Statistik f&uuml;r jede Gruppe und die Anzahl der Features innerhalb jeder Fl&auml;chengrenze werden im Pop-up des Ergebnis-Layers angezeigt.
+            <p>Dies ist ein Attribut der  <b>Feldstatistik</b>-Features, mit denen Statistiken f&uuml;r jeden eindeutigen Attributwert getrennt berechnet werden k&ouml;nnen. Angenommen der erste Eingabe-Layer enth&auml;lt beispielsweise Stadtgrenzen und die Zusammenfassungs-Features sind Flurst&uuml;cke.  Eines der Attribute der Flurst&uuml;cke lautet <i>Status</i> und enth&auml;lt zwei Werte: &quot;VACANT&quot; und &quot;OCCUPIED&quot;. Um die Gesamtfl&auml;che unbebauter oder bebauter Flurst&uuml;cke innerhalb der Grenzen einer Stadt zu berechnen, verwenden Sie <i>Status</i> als Attribut, nach dem gruppiert werden soll. Die Statistik f&uuml;r jede Gruppe und die Anzahl der Features innerhalb jeder Fl&auml;chengrenze werden im Pop-up des Ergebnis-Layers angezeigt.
             </p>
         </div>
     </div>
@@ -161,7 +198,7 @@
         <div><h2>Prozentsätze hinzufügen</h2></div>
         <hr/>
         <div>
-            <p>Dieses Kontrollk&auml;stchen ist aktiviert, wenn Sie ein Feld ausw&auml;hlen, nach dem gruppiert werden soll. W&auml;hlen Sie  <b>Prozents&auml;tze hinzuf&uuml;gen</b> aus, wenn Sie den Prozentsatz jedes Attributwertes innerhalb einer Gruppe ermitteln m&ouml;chten. Der Ergebnistabelle wird ein neues Feld hinzugef&uuml;gt, das die Prozents&auml;tze jedes Attributwertes innerhalb jeder Gruppe enth&auml;lt. Wenn die Option <b>Minderheit, Mehrheit hinzuf&uuml;gen</b> ebenfalls aktiviert ist, werden dem Ergebnis-Layer zwei weitere Felder hinzugef&uuml;gt, die die Prozents&auml;tze der Minderheits- und Mehrheitsattributwerte in jeder Gruppe enthalten.
+            <p>Dieses Kontrollk&auml;stchen ist aktiviert, wenn Sie ein Feld ausw&auml;hlen, nach dem gruppiert werden soll. W&auml;hlen Sie  <b>Prozents&auml;tze hinzuf&uuml;gen</b> aus, wenn Sie den Prozentsatz jedes Attributwertes innerhalb einer Gruppe ermitteln m&ouml;chten.  Der Ergebnistabelle wird ein neues Feld hinzugef&uuml;gt, das die Prozents&auml;tze jedes Attributwertes innerhalb jeder Gruppe enth&auml;lt. Wenn die Option <b>Minderheit, Mehrheit hinzuf&uuml;gen</b> ebenfalls aktiviert ist, werden dem Ergebnis-Layer zwei weitere Felder hinzugef&uuml;gt, die die Prozents&auml;tze der Minderheits- und Mehrheitsattributwerte in jeder Gruppe enthalten.
             </p>
         </div>
     </div>

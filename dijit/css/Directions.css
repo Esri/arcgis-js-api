@@ -10,8 +10,11 @@
     padding: 4px;
     margin-top: 18px;
     height: 14px;
-    background: url(../images/Directions/reverse.png) no-repeat center center;
+    background: url(../images/Directions/reverse.png) no-repeat 5px center;
     cursor: pointer;
+}
+.dj_rtl .simpleDirections .esriStopsReverse {
+    background: url(../images/Directions/reverse.png) no-repeat 3px center;
 }
 .dojoDndMove .simpleDirections .esriStopsReverse {
     display: none;
@@ -69,7 +72,7 @@
 }
 .simpleDirections .LocateButton{
     position: absolute;
-    top: 5px;
+    bottom: 5px;
     right: 0px;
     z-index: 2;
 }
@@ -400,7 +403,7 @@
 }
 .simpleDirections .esriStop .esriStopDnDHandle{
     width: 9px;
-    background: url("../images/Directions/dndHandle.png") no-repeat center 7px;
+    background: url("../images/Directions/dndHandle.png") no-repeat center;
     cursor: n-resize;
 }
 .simpleDirections .esriStop .esriStopDnDHandle:Hover,
@@ -444,6 +447,8 @@
     display: table-cell;
     *display: block;
     _display: block;
+    vertical-align: bottom;
+    padding: 0 0 15px 0;
 }
 .simpleDirections .esriStop .esriStopIcon {
     width: 27px;
@@ -781,7 +786,9 @@
 .simpleDirections .arcgisSearch .searchGroup .searchInput{
     width: 100%
 }
-
+.simpleDirections .arcgisSearch .showSources .searchMenu{
+    top: 18px;
+}
 .simpleDirections .arcgisSearch .searchGroup .searchInput,
 .dj_rtl .simpleDirections .arcgisSearch .searchGroup .searchInput {
     padding: 6px 0px 6px 4px;
@@ -793,7 +800,52 @@
 }
 .simpleDirections .arcgisSearch .searchIcon {
     font-size: 10px;
+    height: 15px;
 }
+.simpleDirections .arcgisSearch .searchBtn:hover,
+.simpleDirections .arcgisSearch .searchBtn:focus {
+    background-color: transparent;
+}
+
+
+.simpleDirections .esriSearchSourceContainer {
+    margin: 0 10px;
+    height: 19px;
+}
+.simpleDirections .esriSearchSourcesDDL{
+    height: 18px;
+    width: 100px;
+    float: right;
+    border: none;
+}
+.simpleDirections #search-source-container .dijitInputField{
+    float: right;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 16px;
+    font-size: 12px;
+    color: #1f78af;
+}
+.simpleDirections #search-source-container .dijitSelectLabel:hover {
+    text-decoration: underline;
+}
+.simpleDirections #search-source-container .dijitButtonContents{
+    border: none;
+}
+.simpleDirections #search-source-container .dijitArrowButton,
+.simpleDirections #search-source-container .dijitSelectHover{
+    border: none;
+    background-color: transparent;
+    background-image: none;
+    padding: 0;
+}
+.dj_rtl .simpleDirections .esriSearchSourcesDDL{
+    float: left;
+}
+.dj_rtl .simpleDirections #search-source-container .dijitInputField{
+    float: left;
+}
+
 
 
 .esriDndDragDirection .dojoDndAvatar {

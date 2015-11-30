@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -66,7 +84,10 @@
         <div>
             <p>De punktobjekter, der skal beregnes omr&aring;der omkring. Du kan v&aelig;lge, hvordan omr&aring;der beregnes p&aring; grundlag af rejsetilstand (bilk&oslash;rsel, lastbilk&oslash;rsel eller gang) og m&aring;ling (tid eller afstand).
             </p>
-            <p>Ud over at v&aelig;lge et lag fra dit kort kan du v&aelig;lge  <b>V&aelig;lg Living Atlas-analyselag</b> nederst p&aring; rullelisten. Dette &aring;bner et galleri med en samling lag, der er nyttige til mange analysetyper. 
+            <p class="OnlineOnly">Ud over at v&aelig;lge et lag fra dit kort kan du v&aelig;lge  <b>V&aelig;lg Living Atlas-analyselag</b> nederst p&aring; rullelisten. Dette &aring;bner et galleri med en samling lag, der er nyttige til mange analysetyper. 
+            </p>
+            <p>V&aelig;rkt&oslash;jet underst&oslash;tter op til 1.000 objekter i hvert inputlag.
+
             </p>
         </div>
     </div>
@@ -74,9 +95,9 @@
         <div><h2>Opmål</h2></div>
         <hr/>
         <div>
-            <p>V&aelig;lg din rejsem&aring;de (k&oslash;rsel, lastbil eller gang) og m&aring;l (tid eller afstandDe tilg&aelig;ngelige rejsetilstande fasts&aelig;ttes af administratoren for din organisation. N&aring;r du har valgt tilstand og m&aring;l, skal du angive en varighed eller afstand p&aring; op til  5 timer (300 minutter) eller  300 miles (482,80 kilometer). 
+            <p>V&aelig;lg din rejsem&aring;de (k&oslash;rsel, lastbil eller gang) og m&aring;l (tid eller afstand De tilg&aelig;ngelige rejsetilstande fasts&aelig;ttes af administratoren for din organisation. N&aring;r du har valgt tilstand og m&aring;l, skal du angive en varighed eller afstand p&aring; op til  5 timer (300 minutter) eller  300 miles (482,80 kilometer). 
             </p>
-            <p>N&aring;r du v&aelig;lger  <b>K&oslash;retid</b>, kan du v&aelig;lge, hvordan k&oslash;retiden skal m&aring;les.
+            <p>Hvis du v&aelig;lger  <b>K&oslash;retid</b>, kan du v&aelig;lge, hvordan k&oslash;retiden skal m&aring;les.
                 <ul>
                     <li>
                         <p>Fjern markeringen af  <b>Brug trafik</b> for at oprette k&oslash;retidsomr&aring;der baseret p&aring; faste hastigheder. V&aelig;lg denne indstilling, hvis du &oslash;nsker et generelt k&oslash;retidsomr&aring;de og ikke et, der er beregnet ved at tage h&oslash;jde for skiftende trafikforhold p&aring; et bestemt afgangstidspunkt.

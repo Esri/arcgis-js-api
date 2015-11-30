@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -52,7 +70,7 @@
             <p>اختيار طبقة النقاط التي تُمثل الأصل أو الأصول.  تدعم الأداة حتى  5,000 أصل وكذلك  5,000 وجهة. </p>
             <p>إذا اخترت طبقة ليس لها إلا وجهة واحدة فقط، ستتصل بكل الوجهات.
             </p>
-            <p>بالإضافة إلى اختيار الطبقة من الخريطة، يمكنك تحديد  <b>اختيار طبقة تحليل أطلس الحي</b> الموجودة أسفل القائمة المنسدلة. يفتح المعرض الحالي الذي يحتوي على مجموعة من الطبقات المفيدة للعديد من عمليات التحليل. 
+            <p class="OnlineOnly">بالإضافة إلى اختيار الطبقة من الخريطة، يمكنك تحديد  <b>اختيار طبقة تحليل أطلس الحي</b> الموجودة أسفل القائمة المنسدلة. يفتح المعرض الحالي الذي يحتوي على مجموعة من الطبقات المفيدة للعديد من عمليات التحليل. 
             </p>
         </div>
     </div>
@@ -65,7 +83,7 @@
             </p>
             <p>إذا كان هناك أصل واحد ووجهات عديدة، فإن الأداة تقوم بعمل اتصال الأصل بكل وجهة من الوجهات.
             </p>
-            <p>بالإضافة إلى اختيار الطبقة من الخريطة، يمكنك تحديد  <b>اختيار طبقة تحليل أطلس الحي</b> الموجودة أسفل القائمة المنسدلة. يفتح المعرض الحالي الذي يحتوي على مجموعة من الطبقات المفيدة للعديد من عمليات التحليل. 
+            <p class="OnlineOnly">بالإضافة إلى اختيار الطبقة من الخريطة، يمكنك تحديد  <b>اختيار طبقة تحليل أطلس الحي</b> الموجودة أسفل القائمة المنسدلة. يفتح المعرض الحالي الذي يحتوي على مجموعة من الطبقات المفيدة للعديد من عمليات التحليل. 
             </p>
             <p> إن وُجد العديد من نقاط الأصل والعديد من الوجهات، ستحتاج الحصول على حقلين يقومون بوصف نقاط الأصل-الوجهة معًا: <b>حقل المُعرف في النقاط الأصلية</b> و <b>تطابق حقل المُعرف في الوجهات</b>. تقوم الأداة بعمل اتصال بأزواج الأصل-الوجهة أثناء عملية التحليل.فعلى سبيل المثال، تخيل أنه لديك أصلان مع قيم حقل مُعرف <code>Rosie&lrm;</code> و <code>Harold</code> واثنين من الوجهات بنفس قيم المُعرف. سوف يتصل أصل <code>Rosie</code> بوجهة <code>Rosie</code> و <code>Harold</code> سوف يتصل بـ <code>Harold</code>. لم تتم أي اتصالات أو قياسات أخرى.
             </p>

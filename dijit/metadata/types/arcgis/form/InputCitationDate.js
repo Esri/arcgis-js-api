@@ -21,5 +21,4 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../../../kernel","../../../base/etc/docUtil","./InputDate"],function(e,t,a,n,r,i){var o=e([i],{allowTime:!0,postCreate:function(){this.inherited(arguments)},emitInteractionOccurred:function(){this.inherited(arguments);try{var e=this.parentXNode.target;if("pubDate"!==e){var t=this.parentXNode.parentElement.gxePath+"/",a=this.parentXNode.domNode.parentNode,n=r.findInputWidget(t+"pubDate",a);n&&n.emitInteractionOccurred()}}catch(i){console.error(i)}}});return a("extend-esri")&&t.setObject("dijit.metadata.types.arcgis.form.InputCitationDate",o,n),o});

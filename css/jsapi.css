@@ -1,13 +1,43 @@
 
-.map { overflow:hidden; }
-.map .container { position:relative; border:none; padding:0px; margin:0px; left:0px; top:0px; overflow:hidden; width:100%; height:100%; }
-.map .container .layersDiv { position:relative; left:0px; top:0px; width:100%; height:100%; z-index: 0;}
-.map .container .layersDiv .layerTile { position:absolute; border:none; margin:0px; padding:0px; }
-.map .container .layersDiv > div { pointer-events: none; }
-.map .container .layersDiv > div[data-reference="true"] { z-index: 1; }
+.map { overflow: hidden; }
+
+.map .esriMapContainer { 
+  position: relative; 
+  border: none; 
+  padding: 0px; 
+  margin: 0px; 
+  left: 0px; 
+  top: 0px; 
+  overflow: hidden; 
+  width: 100%; 
+  height: 100%;
+  
+  
+  text-align: left;
+}
+
+.map .esriMapContainer .esriMapLayers { 
+  position: relative; 
+  left: 0px; 
+  top: 0px; 
+  width: 100%; 
+  height: 100%; 
+  z-index: 0;
+}
+
+.map .esriMapContainer .esriMapLayers .layerTile { 
+  position: absolute; 
+  border: none; 
+  margin: 0px; 
+  padding: 0px; 
+}
+
+.map .esriMapContainer .esriMapLayers > div { pointer-events: none; }
+
+.map .esriMapContainer .esriMapLayers > div[data-reference="true"] { z-index: 1; }
 
 
-.map .container .container {
+.map .esriMapContainer .esriMapContainer {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);  
 }
 
@@ -104,15 +134,15 @@
 }
 
 
-.map .container .fixedPan { position:absolute; width:15px; height:15px; background-image:url(../images/map/fixed-pan-sprite.png); overflow:hidden; cursor:pointer; }
-.map .container .panUp { background-position:-16px 0px; top:5px; }
-.map .container .panUpperRight { background-position:-32px 0px; right:5px; top:5px; }
-.map .container .panRight { background-position:-32px -16px; right:5px; }
-.map .container .panLowerRight { background-position:-32px -32px; right:5px; bottom:5px; }
-.map .container .panDown { background-position:-16px -32px; bottom:5px; }
-.map .container .panLowerLeft { background-position:-47px -32px; left:5px; bottom:5px; }
-.map .container .panLeft { background-position:-47px -16px; left:5px; }
-.map .container .panUpperLeft { background-position:-47px 0px; left:5px; top:5px; }
+.map .esriMapContainer .fixedPan { position:absolute; width:15px; height:15px; background-image:url(../images/map/fixed-pan-sprite.png); overflow:hidden; cursor:pointer; }
+.map .esriMapContainer .panUp { background-position:-16px 0px; top:5px; }
+.map .esriMapContainer .panUpperRight { background-position:-32px 0px; right:5px; top:5px; }
+.map .esriMapContainer .panRight { background-position:-32px -16px; right:5px; }
+.map .esriMapContainer .panLowerRight { background-position:-32px -32px; right:5px; bottom:5px; }
+.map .esriMapContainer .panDown { background-position:-16px -32px; bottom:5px; }
+.map .esriMapContainer .panLowerLeft { background-position:-47px -32px; left:5px; bottom:5px; }
+.map .esriMapContainer .panLeft { background-position:-47px -16px; left:5px; }
+.map .esriMapContainer .panUpperLeft { background-position:-47px 0px; left:5px; top:5px; }
 
 .map .tooltip {
   width: 100px;

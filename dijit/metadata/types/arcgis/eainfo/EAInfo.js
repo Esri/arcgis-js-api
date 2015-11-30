@@ -21,5 +21,4 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../../../kernel","../../../base/Descriptor","dojo/text!./templates/EAInfo.html","./AttrElements","./Hidden"],function(e,t,a,n,o,d){var r=e(o,{templateString:d});return a("extend-esri")&&t.setObject("dijit.metadata.types.arcgis.eainfo.EAInfo",r,n),r});

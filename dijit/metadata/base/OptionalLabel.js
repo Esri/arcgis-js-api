@@ -21,5 +21,4 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 define(["dojo/_base/declare","dojo/_base/lang","dojo/dom-class","dojo/dom-construct","dojo/dom-style","dojo/has","../../../kernel","./Templated","dojo/text!./templates/OptionalLabel.html"],function(e,t,o,c,d,i,n,s,h){var a=e([s],{checkedAttr:"",label:null,templateString:h,postCreate:function(){this.inherited(arguments),null!=this.checkedAttr&&this.checkedAttr.length>0&&this.setChecked(!0)},_onClick:function(){var e=o.contains(this.switchNode,"checked");this.setChecked(!e),this.onClick(!e)},onClick:function(){},setChecked:function(e){e?o.add(this.switchNode,"checked"):o.remove(this.switchNode,"checked")}});return i("extend-esri")&&t.setObject("dijit.metadata.base.OptionalLabel",a,n),a});

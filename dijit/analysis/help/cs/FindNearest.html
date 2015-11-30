@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -26,11 +44,11 @@
         <h2>Vyhledat nejbližší</h2><p/>
         <h2><img src="../images/GUID-150C2484-7459-405A-8835-B4E72CD49738-web.png" alt="Vyhledat nejbliž&scaron;&iacute;"></h2>
         <hr/>
-    <p>Tento n&aacute;stroj vyhled&aacute;v&aacute; nejbliž&scaron;&iacute; prvky, vytv&aacute;ř&iacute; přehledy a seřazuje vzd&aacute;lenosti k nejbliž&scaron;&iacute;m prvkům. Za &uacute;čelem nalezen&iacute; nejbliž&scaron;&iacute;ch prvků lze měřit vzd&aacute;lenost vzdu&scaron;nou čarou nebo podle vybran&eacute;ho způsobu přepravy. K dispozici jsou možnosti pro omezen&iacute; počtu hledan&yacute;ch nejbliž&scaron;&iacute;ch prvků nebo omezen&iacute; rozmez&iacute; pro vyhled&aacute;v&aacute;n&iacute;. V&yacute;sledky anal&yacute;zy tohoto n&aacute;stroje mohou zodpovědět např&iacute;klad n&aacute;sleduj&iacute;c&iacute; ot&aacute;zky:
+    <p>Tento n&aacute;stroj vyhled&aacute;v&aacute; nejbliž&scaron;&iacute; prvky, vytv&aacute;ř&iacute; přehledy a seřazuje vzd&aacute;lenosti k nejbliž&scaron;&iacute;m prvkům. Za &uacute;čelem nalezen&iacute; nejbliž&scaron;&iacute;ch prvků lze měřit vzd&aacute;lenost vzdu&scaron;nou čarou nebo podle vybran&eacute;ho způsobu přepravy. K dispozici jsou možnosti pro omezen&iacute; počtu hledan&yacute;ch nejbliž&scaron;&iacute;ch prvků nebo omezen&iacute; rozmez&iacute; pro vyhled&aacute;v&aacute;n&iacute;. V&yacute;sledky anal&yacute;zy tohoto n&aacute;stroje mohou zodpovědět např&iacute;klad na n&aacute;sleduj&iacute;c&iacute; ot&aacute;zky:
         <ul>
             <li>Kter&yacute; park je odsud nejbl&iacute;že?
             </li>
-            <li>Do kter&eacute; nemocnice se dostanu za nejkrat&scaron;&iacute; dobu j&iacute;zdy?Jak dlouho by tato cesta trvala v 17:30 v &uacute;ter&yacute; v dopravn&iacute; &scaron;pičce?
+            <li>Do kter&eacute; nemocnice se dostanu za nejkrat&scaron;&iacute; dobu j&iacute;zdy? Jak dlouho by tato cesta trvala v 17:30 v &uacute;ter&yacute; v dopravn&iacute; &scaron;pičce?
             </li>
             <li>Jak&aacute; je silničn&iacute; vzd&aacute;lenost mezi těmito hlavn&iacute;mi městy?
             </li>
@@ -46,10 +64,10 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="analysisLayer">
-        <div><h2>Vyberte vrstvu bodových prvků, které se použijí k vyhledání nejbližších umístění</h2></div>
+        <div><h2>Vyberte vrstvu, která se použije k vyhledání nejbližších umístění.</h2></div>
         <hr/>
         <div>
-            <p>Funkce Vyhledat nejbliž&scaron;&iacute; měř&iacute; z každ&eacute;ho bodu ve vrstvě, kterou zde urč&iacute;te (poč&aacute;tečn&iacute; um&iacute;stěn&iacute;) k bodům, kter&eacute; urč&iacute;te v n&aacute;sleduj&iacute;c&iacute;m parametru.  Tento n&aacute;stroj podporuje až 1 000 um&iacute;stěn&iacute; v každ&eacute; vrstvě.
+            <p>Funkce Vyhledat nejbliž&scaron;&iacute; měř&iacute; vzd&aacute;lenost od prvků ve vrstvě, kterou zde urč&iacute;te (poč&aacute;tečn&iacute; um&iacute;stěn&iacute;), k um&iacute;stěn&iacute;m, kter&eacute; urč&iacute;te v n&aacute;sleduj&iacute;c&iacute;m parametru.  N&aacute;stroj podporuje až 1 000 prvků v každ&eacute; vrstvě.
 
             </p>
         </div>
@@ -58,9 +76,9 @@
         <div><h2>Vyhledat nejbližší lokality v</h2></div>
         <hr/>
         <div>
-            <p>Funkce Vyhledat nejbliž&scaron;&iacute; lokalitu měř&iacute; z každ&eacute;ho um&iacute;stěn&iacute; v prvn&iacute; vrstvě do um&iacute;stěn&iacute; v t&eacute;to vrstvě. Tento n&aacute;stroj podporuje až 1 000 um&iacute;stěn&iacute; v každ&eacute; vrstvě.
+            <p>Funkce Vyhledat nejbliž&scaron;&iacute; měř&iacute; vzd&aacute;lenost od jednotliv&yacute;ch prvků v prvn&iacute; vrstvě k um&iacute;stěn&iacute;m v t&eacute;to vrstvě. N&aacute;stroj podporuje až 1 000 um&iacute;stěn&iacute; v každ&eacute; vrstvě.
             </p>
-            <p>Vrstvu můžete vybrat ze sv&eacute; mapy nebo můžete zvolit možnost  <b>Vybrat vrstvu anal&yacute;zy živ&eacute;ho atlasu</b>, kter&aacute; se nach&aacute;z&iacute; na konci rozbalovac&iacute;ho seznamu. Otevře se galerie obsahuj&iacute;c&iacute; sb&iacute;rku vrstev určen&yacute;ch pro mnoho různ&yacute;ch anal&yacute;z. 
+            <p class="OnlineOnly">Vrstvu můžete vybrat ze sv&eacute; mapy nebo můžete zvolit možnost  <b>Vybrat vrstvu anal&yacute;zy živ&eacute;ho atlasu</b>, kter&aacute; se nach&aacute;z&iacute; na konci rozbalovac&iacute;ho seznamu. Otevře se galerie obsahuj&iacute;c&iacute; sb&iacute;rku vrstev určen&yacute;ch pro mnoho různ&yacute;ch anal&yacute;z. 
             </p>
         </div>
     </div>
@@ -91,7 +109,7 @@
                         </p>
                         <p>Pomoc&iacute; nastaven&iacute; těchto historick&yacute;ch dopravn&iacute;ch informac&iacute; se např&iacute;klad můžete zeptat na ot&aacute;zku, &bdquo;Ke kter&yacute;m prvkům se mohu obyčejně nejrychleji dostat, pokud vyjedu v 11:30 ve středu?&ldquo; 
                         </p>
-                        <p>Nastaven&yacute; čas se ř&iacute;d&iacute; časov&yacute;m p&aacute;smem, ve kter&eacute;m se nach&aacute;z&iacute; poč&aacute;tečn&iacute; prvky. Pokud tedy nastav&iacute;te čas na 8:00 a m&aacute;te dva poč&aacute;tečn&iacute; prvky tras, jeden v New York City a druh&yacute; v Los Angeles, budou nejbliž&scaron;&iacute; um&iacute;stěn&iacute; hled&aacute;ny pro předpokl&aacute;dan&yacute; čas odjezdu 8:00v&yacute;chodn&iacute;ho času a 8:00tichomořsk&eacute;ho času.
+                        <p>Nastaven&yacute; čas se ř&iacute;d&iacute; časov&yacute;m p&aacute;smem, ve kter&eacute;m se nach&aacute;z&iacute; poč&aacute;tečn&iacute; prvky. Pokud tedy nastav&iacute;te čas na 8:00 a m&aacute;te dva poč&aacute;tečn&iacute; prvky tras, jeden v New York City a druh&yacute; v Los Angeles, budou nejbliž&scaron;&iacute; um&iacute;stěn&iacute; hled&aacute;ny pro předpokl&aacute;dan&yacute; čas odjezdu 8:00 v&yacute;chodn&iacute;ho času a 8:00 tichomořsk&eacute;ho času.
                         </p>
                     </li>
                 </ul>
@@ -107,7 +125,7 @@
             </p>
             <p>Pokud tyto možnosti neza&scaron;krtnete, bude maxim&aacute;ln&iacute; počet nejbliž&scaron;&iacute;ch hledan&yacute;ch lokalit nastaven na 100 (maximum n&aacute;stroje) a maxim&aacute;ln&iacute; rozmez&iacute; pro vyhled&aacute;v&aacute;n&iacute; bude neomezen&eacute;.
             </p>
-            <p>Doba zpracov&aacute;n&iacute; z&aacute;lež&iacute; na počtu poč&aacute;tečn&iacute;ch bodů, počtu nejbliž&scaron;&iacute;ch bodů a maxim&aacute;ln&iacute;m rozmez&iacute; pro vyhled&aacute;v&aacute;n&iacute;. Vět&scaron;&iacute; množstv&iacute; ubodů nebo rozs&aacute;hlej&scaron;&iacute; rozmez&iacute; pro vyhled&aacute;v&aacute;n&iacute; prodlužuj&iacute; dobu zpracov&aacute;n&iacute;.
+            <p>Doba zpracov&aacute;n&iacute; z&aacute;lež&iacute; na počtu poč&aacute;tečn&iacute;ch bodů, počtu nejbliž&scaron;&iacute;ch bodů a maxim&aacute;ln&iacute;m rozmez&iacute; pro vyhled&aacute;v&aacute;n&iacute;. Vět&scaron;&iacute; množstv&iacute; bodů nebo rozs&aacute;hlej&scaron;&iacute; rozmez&iacute; pro vyhled&aacute;v&aacute;n&iacute; prodlužuj&iacute; dobu zpracov&aacute;n&iacute;.
             </p>
             <p>Berte na vědom&iacute;, že pokud je nastaveno omezen&iacute; rozmez&iacute; pro vyhled&aacute;v&aacute;n&iacute;, může se st&aacute;t, že n&aacute;stroj v dan&eacute;m rozsahu nenalezne ž&aacute;dn&aacute; nejbliž&scaron;&iacute; um&iacute;stěn&iacute; nebo že nalezne m&eacute;ně um&iacute;stěn&iacute;, než je v&aacute;mi nastaven&yacute; maxim&aacute;ln&iacute; počet nejbliž&scaron;&iacute;ch um&iacute;stěn&iacute;.
             </p>

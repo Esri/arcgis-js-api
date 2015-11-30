@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -32,7 +50,7 @@
     </p>
     <p>Rezultatas &ndash; linija, kuri nurodo tėkmę pasroviui. Jei ties  <b>I&scaron;skaidyti trasavimą į linijos segmentus</b> nurodytas atstumas, trasavimo linija bus suskaidyta į kelias konkretaus ilgio linijas. Pavyzdžiui, jei jūsų įvesties ta&scaron;kas rei&scaron;kia ter&scaron;alų i&scaron;siliejimą, o upė plukdo juos 0,6 km per valandą greičiu arba 15 km per dieną, galbūt norėsite padalyti upę į 15 kilometrų segmentus. Padaliję trasavimą į 15 kilometrų intervalus, apytiksliai sužinosite, kur kiekvieną dieną bus ter&scaron;alai. Linija bus pažymėta kintančiomis spalvomis pagal atstumą ir bus žymimas atstumas nuo trasavimo pradžios. 
     </p>
-    <p>Gauta trasa turės visus įvesties ta&scaron;kų atributus ir papildomus atributus.     
+    <p>Gautas trasa turės visus įvesties ta&scaron;kų atributus ir papildomus atributus.     
         <ul>
             <li>Lauke  <i>PointID</i> nurodoma įvesties ta&scaron;ko ID reik&scaron;mė.
             </li>
@@ -55,7 +73,7 @@
         <div>
             <p>Ta&scaron;kų ypatybės, kurias galima naudoti kaip pradinius kiekvieno trasavimo pasroviui ta&scaron;kus  I&scaron;vestyje bus kiekvieno įvesties ta&scaron;ko linija. 
             </p>
-            <p>Pasirinkę sluoksnį žemėlapyje, galite pasirinkti  <b>Pasirinkite Gyvojo pasaulio atlaso analizės sluoksnį</b>, kurį rasite i&scaron;plečiamo sąra&scaron;o apačioje. &Scaron;i parinktis atidarys galeriją, kurioje yra kolekcija sluoksnių, naudingų daugeliui analizių. 
+            <p class="OnlineOnly">Pasirinkę sluoksnį žemėlapyje, galite pasirinkti  <b>Pasirinkite Gyvojo pasaulio atlaso analizės sluoksnį</b>, kurį rasite i&scaron;plečiamo sąra&scaron;o apačioje. &Scaron;i parinktis atidarys galeriją, kurioje yra kolekcija sluoksnių, naudingų daugeliui analizių. 
             </p>
         </div>
     </div>

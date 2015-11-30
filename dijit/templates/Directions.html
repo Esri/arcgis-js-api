@@ -1,6 +1,9 @@
 <div class="${options.theme}" role="presentation">
     <div data-dojo-attach-point="_widgetContainer" class="${_css.widgetContainerClass}" role="presentation">
         <div class="${_css.stopsContainerClass}" role="presentation">
+            <div id="search-source-container" class="${_css.searchSourceContainerClass}" data-dojo-attach-point="_searchSourceContainerNode">
+                <div data-dojo-attach-point="_searchSourceSelectorContainer"></div>
+            </div>
             <table class="${_css.stopsClass}" data-dojo-attach-point="_dndNode"></table>
             <div class="${_css.clearClass}"></div>
             <div class="${_css.stopsButtonContainerClass}">

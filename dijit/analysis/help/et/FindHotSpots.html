@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -28,12 +46,12 @@
         <hr/>
     <p>T&ouml;&ouml;riist Leia tulipunktid m&auml;&auml;rab, kas andmete ruumimustris on statistiliselt olulisi klastreid. 
         <ul>
-            <li>Kas Teie punktilised n&auml;htused (nt kuritegevuse s&uuml;ndmused, puud, liiklus&otilde;nnetused jms) on t&otilde;esti klasterdatud?Kuidas saate olla selles kindel?
+            <li>Kas Teie punktilised n&auml;htused (nt kuritegevuse s&uuml;ndmused, puud, liiklus&otilde;nnetused jms) on t&otilde;esti klasterdatud? Kuidas saate olla selles kindel?
             </li>
             <li>Kas olete uurinud statistiliselt olulisi tulipunkte (nt kulutused, imikusuremus p&uuml;sivalt k&otilde;rge skooriga jms) v&otilde;i muutub kaardi sisu vastavalt s&uuml;mboloogiale?
             </li>
         </ul>
-        T&ouml;&ouml;riista Leia tulipunktid abil saate nendele k&uuml;simustele vastusi hankida.
+        Neile k&uuml;simustele vastuse saamisel h&otilde;lbustab tulipunktide kasutus Teid igati.
     </p>
     <p>Isegi korrap&auml;ratul ruumimustril esineb teatud laadi klasterdumine.  Lisaks p&uuml;&uuml;avad meie silmad ja meeled intuitiivselt leida mustreid ka seal, kus neid ei eksisteeri. Seega v&otilde;ib olla raske teada, kas mustrid Teie andmetes on tingitud reaalsete ruumilise protsesside tulemusena v&otilde;i on need lihtsalt juhusliku kokkusattumuse tulemus. Seet&otilde;ttu kasutavad uurijad ja anal&uuml;&uuml;tikud spetsiaalselt numbriliste v&auml;&auml;rtuste lokaalse koondumise n&auml;itajaid nagu n&auml;iteks Getis-Ord Gi. Kui olete andmetes leidnud statistiliselt olulised klastrid, on see v&auml;&auml;rtuslik info. Teadmus, kus ja millal klasterdumine esineb, v&otilde;imaldab pakkuda olulisi vihjeid protsesside kohta. Teades, et n&auml;iteks eluhoonetesse murdvarguste arv on p&uuml;sivalt suurem eriti eeslinnades, on see oluliseks infoks, kui Teil on vaja kaaluda t&otilde;husamaid ennetuse strateegiaid, jaotada piiratud kaitseressursse, algatada naabrivalve programme, lubada p&otilde;hjalikumat eeluurimist v&otilde;i tuvastada v&otilde;imalikke kahtlusaluseid.   
     </p>
@@ -43,8 +61,7 @@
         <div><h2>Vali kiht, mille jaoks arvutatakse tulipunktid</h2></div>
         <hr/>
         <div>
-            <p>Punkti- v&otilde;i alakiht, millest tuli- ja k&uuml;lmpunkte otsitakse.
-
+            <p>Punkti- v&otilde;i alakiht, millest tuli- ja k&uuml;lmpunkte otsitakse. 
             </p>
         </div>
     </div>

@@ -1,13 +1,3 @@
-@import url("../dijit/css/Print.css");
-@import url("../dijit/css/Scalebar.css");
-@import url("../../dojox/form/resources/RangeSlider.css");
-@import url("../dijit/css/TimeSlider.css");
-@import url("../dijit/css/MultidimensionalSlider.css");
-@import url("../dijit/css/VectorFieldRenderer.css");
-@import url("../dijit/css/MultidimensionalFilter.css");
-@import url("../dijit/css/temporal.css");
-@import url("../dijit/css/RenderingRule.css");
-@import url("../dijit/css/MosaicRule.css");
 @import url("../dijit/editing/css/attachment.css");
 @import url("../dijit/editing/css/drawingToolbar.css");
 @import url("../dijit/editing/css/editor.css");
@@ -19,6 +9,7 @@
 @import url("../dijit/analysis/css/analysis.css");
 @import url("../dijit/css/SingleFilter.css");
 @import url("../dijit/css/SymbolEditor.css");
+@import url("../dijit/HaloStyler/css/HaloStyler.css");
 @import url("../dijit/css/FontAlignment.css");
 @import url("../dijit/css/CalculateField.css");
 @import url("../dijit/geoenrichment/themes/common/main.css");
@@ -37,3 +28,6 @@
 @import url("../themes/calcite/icons/ie7/ie7.css");
 @import url("../dijit/ObliqueViewer/css/ObliqueRotationWidget.css");
 @import url("../dijit/ObliqueViewer/css/RasterList.css");
+
+
+

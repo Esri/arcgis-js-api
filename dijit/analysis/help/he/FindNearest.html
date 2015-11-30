@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -46,10 +64,10 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="analysisLayer">
-        <div><h2>Choose point layer from which the nearest locations are found</h2></div>
+        <div><h2>Choose layer from which the nearest locations are found</h2></div>
         <hr/>
         <div>
-            <p>Find Nearest measures from the points in the layer you specify here (the start locations) to the points you specify in the next parameter.  The tool supports up to 1,000 locations in each layer.
+            <p>Find Nearest measures from features in the layer you specify here (the start locations) to the locations you specify in the next parameter.  The tool supports up to 1,000 features in each layer.
 
 
             </p>
@@ -59,9 +77,9 @@
         <div><h2>Find the nearest locations in</h2></div>
         <hr/>
         <div>
-            <p>Find Nearest measures from each of the locations in the first layer to the locations in this layer. The tool supports up to 1,000 locations in each layer.
+            <p>Find Nearest measures from each of the features in the first layer to the locations in this layer. The tool supports up to 1,000 locations in each layer.
             </p>
-            <p>In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            <p class="OnlineOnly">In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
             </p>
         </div>
     </div>

@@ -21,5 +21,4 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../kernel","../../OperationBase","./Cut"],function(e,t,r,d,i,a){var n=e(i,{declaredClass:"esri.dijit.editing.Union",type:"edit",label:"Union Features",constructor:function(e){e=e||{},this._cut=new a({featureLayer:e.featureLayer,addedGraphics:e.deletedGraphics,preUpdatedGraphics:e.preUpdatedGraphics,postUpdatedGraphics:e.postUpdatedGraphics})},performUndo:function(){this._cut.performRedo()},performRedo:function(){this._cut.performUndo()}});return r("extend-esri")&&t.setObject("dijit.editing.Union",n,d),n});

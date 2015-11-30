@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -58,10 +76,11 @@ Si no se ha activado, se tendr&aacute;n en cuenta todas las entidades de la capa
         <div><h2>Elegir la capa de puntos que representa las paradas que se deben visitar</h2></div>
         <hr/>
         <div>
-            <p>Elige la capa de puntos que las rutas (o veh&iacute;culos) deben visitar.  Estos puntos se convierten en paradas asignadas o sin asignar en la salida.
-
+            <p>Elige la capa de puntos que las rutas (o veh&iacute;culos) deben visitar.  Estos puntos se convierten en paradas asignadas o sin asignar en la salida. 
             </p>
-            <p>Adem&aacute;s de elegir una capa en el mapa, puedes seleccionar  <b>Elegir capa de an&aacute;lisis de atlas vivo</b>, que se encuentra al final de la lista desplegable. Esto abre una galer&iacute;a que contiene un conjunto de capas que resultan &uacute;tiles para numerosos an&aacute;lisis. 
+            <p class="OnlineOnly">Adem&aacute;s de elegir una capa en el mapa, puedes seleccionar  <b>Elegir capa de an&aacute;lisis de atlas vivo</b>, que se encuentra al final de la lista desplegable. Esto abre una galer&iacute;a que contiene un conjunto de capas que resultan &uacute;tiles para numerosos an&aacute;lisis. 
+            </p>
+            <p>La herramienta admite un m&aacute;ximo de 2000 entidades de entrada. 
             </p>
         </div>
     </div>
@@ -85,9 +104,9 @@ Si no se ha activado, se tendr&aacute;n en cuenta todas las entidades de la capa
             </p>
             <p>Cuando se especifican varias ubicaciones, cada veh&iacute;culo se tiene que asociar con su propio punto. El n&uacute;mero de veh&iacute;culos debe coincidir con el n&uacute;mero de puntos de la capa. Elige una capa con varios puntos y especifica un campo que identifique de forma &uacute;nica cada ruta, cada veh&iacute;culo o cada conductor en la lista desplegable  <b>Campo de Id. de ruta</b>.
             </p>
-            <p>La hora de inicio es la misma para todas las rutas. La zona horaria de la hora de inicio coincide con la zona horaria en la que se encuentran el punto o los puntos iniciales. Aseg&uacute;rate de que la hora que especifiques sea local. Por ejemplo, imaginemos que est&aacute;s en una ubicaci&oacute;n con la hora est&aacute;ndar del pac&iacute;fico o PST (UTC-8:00) y que los veh&iacute;culos cuyas rutas deseas definir est&aacute;n estacionados en una zona con la hora est&aacute;ndar de las monta&ntilde;as o MST (UTC-7:00). Si son las 9:30PST (10:30MST) y tus veh&iacute;culos tienen que iniciar sus rutas en 30 minutos, debes definir la hora de inicio como 11:00. 
+            <p>La hora de inicio es la misma para todas las rutas. La zona horaria de la hora de inicio coincide con la zona horaria en la que se encuentran el punto o los puntos iniciales. Aseg&uacute;rate de que la hora que especifiques sea local. Por ejemplo, imaginemos que est&aacute;s en una ubicaci&oacute;n con la hora est&aacute;ndar del pac&iacute;fico o PST (UTC-8:00) y que los veh&iacute;culos cuyas rutas deseas definir est&aacute;n estacionados en una zona con la hora est&aacute;ndar de las monta&ntilde;as o MST (UTC-7:00). Si son las 9:30 PST (10:30 MST) y tus veh&iacute;culos tienen que iniciar sus rutas en 30 minutos, debes definir la hora de inicio como 11:00. 
             </p>
-            <p>Si tus veh&iacute;culos parten de diferentes zonas horarias, la hora de inicio no puede ser simult&aacute;nea, deben estar desfasados. Por ejemplo, si una ruta parte de un punto en la zona PST y otra se inicia en la zona MST, y especificas las 11:00 como hora de inicio, la ruta de la zona PST comenzar&aacute; a las 11:00PST y la ruta MST comenzar&aacute; a las 11:00MST, con una hora de diferencia.
+            <p>Si tus veh&iacute;culos parten de diferentes zonas horarias, la hora de inicio no puede ser simult&aacute;nea, tendr&aacute; un desfase. Por ejemplo, si una ruta parte de un punto en la zona PST y otra se inicia en la zona MST, y especificas las 11:00 como hora de inicio, la ruta de la zona PST comenzar&aacute; a las 11:00 PST y la ruta MST comenzar&aacute; a las 11:00 MST, con una hora de diferencia.
             </p>
         </div>
     </div>

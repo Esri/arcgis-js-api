@@ -21,5 +21,4 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 define(["../../declare","dojo/Evented"],function(e,t){return e([t],{metadata:null,constructor:function(){this.metadata={name:"StdGeographyName",address:"address"}},getData:function(){throw new Error("Not implemented")}})});

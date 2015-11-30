@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -30,7 +48,7 @@
         <ul>
             <li>Qual &eacute; o parque mais pr&oacute;ximo?
             </li>
-            <li>Qual o hospital onde posso chegar na unidade de tempo mais curta?Quanto tempo demora uma viagem numa ter&ccedil;a-feira &agrave;s 5:30 da tarde em plena hora de ponta?
+            <li>Qual o hospital onde posso chegar na unidade de tempo mais curta? Quanto tempo demora uma viagem numa ter&ccedil;a-feira &agrave;s 5:30 da tarde em plena hora de ponta?
             </li>
             <li>Quais s&atilde;o as dist&acirc;ncias rodovi&aacute;rias entre as grandes cidades?
             </li>
@@ -39,17 +57,17 @@
         </ul>
         
     </p>
-    <p>A ferramenta Localizar local de invers&atilde;o de marcha mais pr&oacute;ximo devolve uma camada que cont&eacute;m os elementos mais pr&oacute;ximos e uma camada de linha que liga os locais de in&iacute;cio aos locais mais pr&oacute;ximos. A camada de linha cont&eacute;m informa&ccedil;&atilde;o sobre o in&iacute;cio e as localiza&ccedil;&otilde;es mais pr&oacute;ximas e as dist&acirc;ncias entre elas.
+    <p>A ferramenta Localizar Mais Pr&oacute;ximo devolve uma camada que cont&eacute;m os elementos mais pr&oacute;ximos e uma camada de linha que liga os locais de in&iacute;cio aos locais mais pr&oacute;ximos. A camada de linha cont&eacute;m informa&ccedil;&atilde;o sobre o in&iacute;cio e as localiza&ccedil;&otilde;es mais pr&oacute;ximas e as dist&acirc;ncias entre elas.
     </p>
     <p>Se marcar a op&ccedil;&atilde;o  <b>Utilizar a extens&atilde;o atual do mapa</b>, apenas os elementos vis&iacute;veis na extens&atilde;o atual do mapa ser&atilde;o considerados elementos iniciais e, potencialmente, elementos pr&oacute;ximos. Se n&atilde;o marcar a op&ccedil;&atilde;o, ser&atilde;o considerados todos os elementos na camada de entrada, mesmo que estejam fora da extens&atilde;o atual do mapa.  
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="analysisLayer">
-        <div><h2>Escolher camada de ponto a partir do qual os locais mais próximos são encontradas</h2></div>
+        <div><h2>Escolha a camada a partir da qual serão calculados os locais mais próximos.</h2></div>
         <hr/>
         <div>
-            <p>Encontrar medidas mais pr&oacute;ximas dos pontos na camada que especificou aqui (os locais de in&iacute;cio) para os pontos que especificar no par&acirc;metro seguinte.  A ferramenta suporta at&eacute; 1000 localiza&ccedil;&otilde;es em cada camada.
+            <p>A ferramenta Localizar Mais Pr&oacute;ximo mede desde os elementos na camada que indicar aqui (os locais de partida) at&eacute; &agrave;s localiza&ccedil;&otilde;es que indicar no pr&oacute;ximo par&acirc;metro.  A ferramenta suporta at&eacute; 1000 localiza&ccedil;&otilde;es em cada camada.
 
             </p>
         </div>
@@ -58,9 +76,9 @@
         <div><h2>Encontrar as localizações mais próximas em</h2></div>
         <hr/>
         <div>
-            <p>Encontre medidas mais pr&oacute;ximas de cada um dos locais na primeira camada para os locais nesta camada. A ferramenta suporta at&eacute; 1000 localiza&ccedil;&otilde;es em cada camada.
+            <p>A ferramenta Localizar Mais Pr&oacute;ximo faz a medi&ccedil;&atilde;o a partir de cada uma das localiza&ccedil;&otilde;es na primeira camada at&eacute; &agrave;s localiza&ccedil;&otilde;es nesta camada. A ferramenta suporta at&eacute; 1000 localiza&ccedil;&otilde;es em cada camada.
             </p>
-            <p>In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            <p class="OnlineOnly">In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
             </p>
         </div>
     </div>

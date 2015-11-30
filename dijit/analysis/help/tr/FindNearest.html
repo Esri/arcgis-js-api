@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -30,7 +48,7 @@
         <ul>
             <li>Buraya en yakın park nerede?
             </li>
-            <li>Hangi hastaneye en kısa s&uuml;r&uuml;ş s&uuml;resiyle ulaşabilirim?Salı saat 17:30'da yoğun saatlerde yolculuk ne kadar s&uuml;rebilir?
+            <li>Hangi hastaneye en kısa s&uuml;r&uuml;ş s&uuml;resiyle ulaşabilirim? Salı saat 17:30'da yoğun saatlerde yolculuk ne kadar s&uuml;rebilir?
             </li>
             <li>Bu ana şehirler arasındaki yol mesafeleri nelerdir?
             </li>
@@ -46,10 +64,10 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="analysisLayer">
-        <div><h2>En yakın konumların bulunması için kullanılan nokta katmanını seç</h2></div>
+        <div><h2>En yakın konumların bulunması için kullanılan katmanı seçin</h2></div>
         <hr/>
         <div>
-            <p>En Yakın Bul, burada belirttiğiniz katmandaki noktalardan (başlangı&ccedil; konumları) bir sonraki parametrede belirttiğiniz noktalara kadar &ouml;l&ccedil;&uuml;m yapar.  Ara&ccedil;, her katmanda 1.000 konuma kadar destekler.
+            <p>En Yakın Bul, burada belirttiğiniz katmandan (başlangı&ccedil; konumları) bir sonraki parametrede belirttiğiniz konumlara kadar &ouml;l&ccedil;&uuml;m yapar.  Ara&ccedil;, her katmanda 1.000 detaya kadar destekler.
 
             </p>
         </div>
@@ -58,9 +76,9 @@
         <div><h2>En yakın konumları bul</h2></div>
         <hr/>
         <div>
-            <p>En Yakın Bul, ilk katmanındaki konumların her birinden bu katmandaki konumlara &ouml;l&ccedil;&uuml;m yapar. Ara&ccedil;, her katmanda 1.000 konuma kadar destekler.
+            <p>En Yakın Bul, ilk katmanındaki detayların her birinden bu katmandaki konumlara &ouml;l&ccedil;&uuml;m yapar. Ara&ccedil;, her katmanda 1.000 konuma kadar destekler.
             </p>
-            <p>Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, aşağı a&ccedil;ılan listenin altında bulunan  <b>Living Atlas Analiz Katmanı Se&ccedil;</b> &ouml;ğesini de belirleyebilirsiniz. Bu, pek &ccedil;ok analiz i&ccedil;in kullanılabilen katman koleksiyonu i&ccedil;eren bir galeri a&ccedil;ar. 
+            <p class="OnlineOnly">Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, aşağı a&ccedil;ılan listenin altında bulunan  <b>Living Atlas Analiz Katmanı Se&ccedil;</b> &ouml;ğesini de belirleyebilirsiniz. Bu, pek &ccedil;ok analiz i&ccedil;in kullanılabilen katman koleksiyonu i&ccedil;eren bir galeri a&ccedil;ar. 
             </p>
         </div>
     </div>

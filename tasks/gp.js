@@ -21,5 +21,4 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 define(["./Geoprocessor","./JobInfo","./GPMessage","./LinearUnit","./DataFile","./RasterData","./Date","./ParameterValue","./GPResultImageLayer"],function(){return{}});

@@ -21,5 +21,4 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 define(["./recommendedScales","dojo/_base/declare"],function(e,a){return a(null,{declaredClass:"esri.dijit.VisibleScaleRangeSlider._RecommendedScaleRangeBounds",beyondMinScale:function(a){var n=this.get("firstRange"),c=n.minScale,d=e.getRecommendedScale(n.id)||n.maxScale;return c>=a&&a>d},beyondMaxScale:function(a){var n=this.get("lastRange"),c=n.maxScale,d=e.getRecommendedScale(n.id)||n.minScale;return d>a&&a>=c}})});

@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -26,7 +44,7 @@
         <h2>Utwórz obszary czasu dojazdu</h2><p/>
         <h2><img src="../images/GUID-6F629A09-768D-4C04-88A4-AB941811ADE9-web.png" alt="Utw&oacute;rz obszary czasu dojazdu"></h2>
         <hr/>
-    <p>Opcja Utw&oacute;rz obszary czasu dojazdu umożliwia tworzenie obszar&oacute;w, do kt&oacute;rych można dotrzeć w określonym czasie przejazdu lub po pokonaniu określonej odległości pojazdem bądź pieszo itd. Polega na wykonywaniu pomiar&oacute;w z co najmniej jednego punktu (maksymalnie 1000) wzdłuż dr&oacute;g bądź pasaży i tworzeniu warstwy, dzięki kt&oacute;rej można udzielić odpowiedzi na pytania, takie jak:
+    <p>Opcja Utw&oacute;rz obszary czasu dojazdu umożliwia tworzenie obszar&oacute;w, do kt&oacute;rych można dotrzeć w określonym czasie przejazdu lub po pokonaniu określonej odległości pojazdem bądź pieszo itd. Polega na wykonywaniu pomiar&oacute;w z jednego lub wielu punkt&oacute;w (do 1000) wzdłuż dr&oacute;g bądź pasaży i tworzeniu warstwy, dzięki kt&oacute;rej można udzielić odpowiedzi na pytania, takie jak:
         <ul>
             <li>Gdzie mogę dostać się z tego miejsca w ciągu 30 minut jazdy?
             </li>
@@ -66,7 +84,10 @@
         <div>
             <p>Obiekty punktowe, wok&oacute;ł kt&oacute;rych zostaną wyznaczone obszary. Można wybrać spos&oacute;b obliczania obszar&oacute;w na podstawie trybu podr&oacute;ży (samochodem osobowym, samochodem ciężarowym lub pieszo) i&nbsp;mierzonej wielkości (czas bądź odległość).
             </p>
-            <p>Poza wybraniem warstwy na mapie można wybrać opcję  <b>Wybierz warstwę analizy Living Atlas</b> dostępną w dolnej części menu rozwijanego. Zostanie wtedy otwarta galeria zawierająca kolekcje warstw przydatnych podczas wielu analiz. 
+            <p class="OnlineOnly">Poza wybraniem warstwy na mapie można wybrać opcję  <b>Wybierz warstwę analizy Living Atlas</b> dostępną w dolnej części menu rozwijanego. Zostanie wtedy otwarta galeria zawierająca kolekcje warstw przydatnych podczas wielu analiz. 
+            </p>
+            <p>Narzędzie jest w&nbsp;stanie obsłużyć do 1000 obiekt&oacute;w w warstwie wejściowej.
+
             </p>
         </div>
     </div>
@@ -93,7 +114,7 @@
                         </p>
                         <p>Można skorzystać z&nbsp;historii ustawień ruchu drogowego, aby odpowiedzieć na przykład na następujące pytanie: &rdquo;Do jakich obszar&oacute;w można dotrzeć, wyjeżdżając o godz. 11:30 w środę?&rdquo; 
                         </p>
-                        <p>Czas, kt&oacute;ry zostanie skonfigurowany odnosi się do strefy czasowej, w&nbsp;kt&oacute;rej zlokalizowane są punkty wejściowe. Jeśli zatem czas zostanie skonfigurowany na godz. 8:00 i&nbsp;występują dwa punkty (jeden w&nbsp;Nowym Jorku, a&nbsp;drugi w&nbsp;Los Angeles), zostaną wygenerowane obszary czasu przejazdu z&nbsp;uwzględnieniem odpowiednio godz.&nbsp;8:00czasu wschodniego i&nbsp;godz. 8:00czasu pacyficznego.
+                        <p>Czas, kt&oacute;ry zostanie skonfigurowany odnosi się do strefy czasowej, w&nbsp;kt&oacute;rej zlokalizowane są punkty wejściowe. Jeśli zatem czas zostanie skonfigurowany na godz. 8:00 i&nbsp;występują dwa punkty (jeden w&nbsp;Nowym Jorku, a&nbsp;drugi w&nbsp;Los Angeles), zostaną wygenerowane obszary czasu przejazdu z&nbsp;uwzględnieniem odpowiednio godz.&nbsp;8:00 czasu wschodniego i&nbsp;godz. 8:00 czasu pacyficznego.
                         </p>
                     </li>
                 </ul>

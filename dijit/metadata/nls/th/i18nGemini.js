@@ -21,5 +21,4 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 define({documentTypes:{data:{caption:"GEMINI (ข้อมูล)",description:""},service:{caption:"GEMINI (บริการ)",description:""}},LanguageCode:{eng:"อังกฤษ",cym:"เวลส์",gle:"แกลิก (ไอริช)",gla:"แกลิก (สกอตติช)",cor:"ภาษาคอร์นวอลล์",sco:"ไอร์แลนด์เหนือ"},verticalCRS:{reference:"อ้างอิงถึง (e.g. urn:ogc:def:crs:EPSG::5701 )"}});

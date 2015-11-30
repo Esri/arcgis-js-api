@@ -21,5 +21,4 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 define(["dojo/_base/declare","dojo/_base/lang","dojo/_base/array","dojo/has","../../../../../kernel","./codelistData","dojo/i18n!../../../nls/i18nArcGIS"],function(e,a,o,t,n,l){var r=e(null,{constructor:function(e){a.mixin(this,e)},makeCodelist:function(e,a){var o=l.makeCodelist(a);return("CountryCode"===a||"LanguageCode"===a||"MonetaryUnits"===a)&&o.codes.sort(function(e,a){return""===e.value?0:"zxx"===e.value?0:e.label===a.label?0:e.label>a.label?1:-1}),o}});return t("extend-esri")&&a.setObject("dijit.metadata.types.arcgis.base.Codelists",r,n),r});

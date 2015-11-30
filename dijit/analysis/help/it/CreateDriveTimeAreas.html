@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -66,7 +84,10 @@
         <div>
             <p>Le feature punto intorno alle quali verranno calcolate le aree. &Egrave; possibile scegliere come vengono calcolate le aree in base alla modalit&agrave; di viaggio (in auto, con camion o a piedi) e al tipo di misurazione (tempo o distanza).
             </p>
-            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi dell'atlante attivo</b> in fondo all'elenco a discesa. Verr&agrave; aperta una galleria contenente una raccolta di layer utili per numerose analisi. 
+            <p class="OnlineOnly">Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi dell'atlante attivo</b> in fondo all'elenco a discesa. Verr&agrave; aperta una galleria contenente una raccolta di layer utili per numerose analisi. 
+            </p>
+            <p>Lo strumento supporta fino a 1000 feature nel layer di input.
+
             </p>
         </div>
     </div>
@@ -93,7 +114,7 @@
                         </p>
                         <p>&Egrave; possibile utilizzare queste impostazioni del traffico storico per rispondere ad esempio alla domanda &quot;Quali aree sono in genere raggiungibili se si parte alle 11.30 di mercoled&igrave;?&quot;. 
                         </p>
-                        <p>L'orario impostato fa riferimento al fuso orario in cui si trovano i punti di input. Pertanto, se si imposta l'orario alle 8:00 e si dispone di due punti, uno nella citt&agrave; di New York e l'altro a Los Angeles, le aree di tempo di guida verranno generate per le 8:00. nel fuso orario orientale e le 8:00nel fuso orario del Pacifico.
+                        <p>L'orario impostato fa riferimento al fuso orario in cui si trovano i punti di input. Pertanto, se si imposta l'orario alle 8:00 e si dispone di due punti, uno nella citt&agrave; di New York e l'altro a Los Angeles, le aree di tempo di guida verranno generate per le 8:00. nel fuso orario orientale e le 8:00 nel fuso orario del Pacifico.
                         </p>
                     </li>
                 </ul>
@@ -101,7 +122,7 @@
             </p>
             <p>Si noti che quando una vettura si allontana da un punto, il tempo passa e le condizioni di traffico cambiano. Lo strumento Aree tempo di guida tiene conto di queste variazioni quando si sceglie  <b>Tempo di guida</b> e si seleziona <b>Usa traffico</b>; tuttavia, tale funzione non &egrave; supportata per tutte le regioni. Fare clic sul collegamento <b>Visualizza disponibilit&agrave;</b> sullo strumento per scoprire se la funzione &egrave; supportata nella propria area di studio.
             </p>
-            <p>Con  <b>Tempo a piedi</b> e <b>Distanza a piedi</b> viene utilizzata una velocit&agrave; fissa pari a 5 chilometri orari (3.1 miglia all'ora) e vengono seguiti percorsi pedonali oltre alle normali strade indicate, ignorando invece le regole previste per le automobili, ad esempio le strade a senso unico. </p>
+            <p>Con  <b>Tempo a piedi</b> e <b>Distanza a piedi</b> viene utilizzata una velocit&agrave; fissa pari a 5 chilometri orari (3.1 miglia orarie) e vengono seguiti percorsi pedonali oltre alle normali strade indicate, ignorando invece le regole previste per le automobili, ad esempio le strade a senso unico. </p>
             <p>Con  <b>Tempo in camion</b> e <b>Distanza in camion</b> vengono utilizzate velocit&agrave; fisse e regole applicabili ai camion.
             </p> 
         </div>

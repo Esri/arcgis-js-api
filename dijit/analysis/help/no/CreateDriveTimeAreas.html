@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -26,7 +44,7 @@
         <h2>Opprett kjøretidsområder</h2><p/>
         <h2><img src="../images/GUID-6F629A09-768D-4C04-88A4-AB941811ADE9-web.png" alt="Opprett kj&oslash;retidsomr&aring;der"></h2>
         <hr/>
-    <p>Verkt&oslash;yet Opprett kj&oslash;retidsomr&aring;der oppretter arealer som kan n&aring;s i l&oslash;pet av en angitt kj&oslash;retid eller kj&oslash;reavstand, gangavstand osv. Verkt&oslash;yet m&aring;ler langs veiene eller gangstiene ut fra ett eller flere punkt (opptil 1&nbsp;000) og oppretter et lag som gir deg svar p&aring; sp&oslash;rsm&aring;l som: 
+    <p>Verkt&oslash;yet Opprett kj&oslash;retidsomr&aring;der oppretter arealer som kan n&aring;s i l&oslash;pet av en angitt kj&oslash;retid eller kj&oslash;reavstand, gangavstand osv. Verkt&oslash;yet m&aring;ler langs veiene eller gangstiene ut fra ett eller flere punkt (opptil 1&nbsp;000) og oppretter et lag som gir deg svar p&aring; sp&oslash;rsm&aring;l som:
         <ul>
             <li>Hvor kan jeg kj&oslash;re herfra i l&oslash;pet av 30 minutter?
             </li>
@@ -66,7 +84,10 @@
         <div>
             <p>Punktgeoobjektene som omr&aring;dene beregnes rundt. Du kan velge hvordan omr&aring;dene beregnes basert p&aring; reisem&aring;te (bil, lastebil, til fots) og m&aring;ling (tid eller avstand).
             </p>
-            <p>In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            <p class="OnlineOnly">In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            </p>
+            <p>Verkt&oslash;yet st&oslash;tter opptil 1&nbsp;000 geoobjekter i inndatalaget.
+
             </p>
         </div>
     </div>
@@ -93,7 +114,7 @@
                         </p>
                         <p>Du kan bruke disse historiske trafikkinnstillingen til &aring; stille sp&oslash;rsm&aring;l som &quot;Hvilke omr&aring;der vil jeg som regel kunne n&aring; hvis jeg kj&oslash;rer klokken 11.30 p&aring; en onsdag?&quot;. 
                         </p>
-                        <p>Klokkeslettet du angir, refererer til tidssonen som inndatapunktene befinner seg i. S&aring; hvis du for eksempel velger klokkeslettet 8.00 og du har to punkter, ett i New York og ett i Los Angeles, genereres kj&oslash;retidsomr&aring;dene for henholdsvis klokken 8.00EST og kl. 8.00PST.
+                        <p>Klokkeslettet du angir, refererer til tidssonen som inndatapunktene befinner seg i. S&aring; hvis du for eksempel velger klokkeslettet 8.00 og du har to punkter, ett i New York og ett i Los Angeles, genereres kj&oslash;retidsomr&aring;dene for henholdsvis klokken 8.00 EST og kl. 8.00 PST.
                         </p>
                     </li>
                 </ul>
@@ -110,7 +131,7 @@
         <div><h2>Områder fra ulike punkter</h2></div>
         <hr/>
         <div>
-            <p>Angi hvordan delte omr&aring;der fra ulike inndatapunkter skal h&aring;ndteres n&aring;r de n&aring;r hverandre. Du kan velge: 
+            <p>Angi hvordan delte omr&aring;der fra ulike inndatapunkter skal h&aring;ndteres n&aring;r de n&aring;r hverandre. Du kan velge f&oslash;lgende:
                 <ul>
                     <li> <b>Overlapp</b> &ndash; Omr&aring;der fra ulike inndatapunkter kan dekke samme vei. Dette er praktisk n&aring;r du vil vite alle inndatapunktene som kan n&aring; en bestemt lokasjon innenfor den angitte tiden eller avstanden.
                     </li>

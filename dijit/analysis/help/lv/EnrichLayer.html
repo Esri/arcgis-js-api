@@ -7,26 +7,44 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Uzlabot slāni</h2><p/>
-        <h2><img src="../images/GUID-5B2D9742-AFD2-4054-8D05-ED6A80EDAF4D-web.png" alt="Bagātināt slāni"></h2>
+        <h2><img src="../images/GUID-5B2D9742-AFD2-4054-8D05-ED6A80EDAF4D-web.png" alt="Uzlabot slāni"></h2>
         <hr/>
-    <p>&Scaron;is rīks uzlabo jūsu datus, iegūstot faktus par cilvēkiem, vietām un biznesa datiem, kas atrodas ap jūsu datu izvietojumu, un iespējo jūs atbildēt uz jauniem jautājumiem par izvietojumiem, uz kuriem jūs nevarat atbildēt, izmantojot tikai kartes. Piemēram: Kādi cilvēki &scaron;eit dzīvo? Ko cilvēkiem &scaron;eit patīk darīt?Kādi ir viņu paradumi un dzīvesveids?Kāda veida uzņēmumi pastāv &scaron;inī areālā?
+    <p>&Scaron;is rīks uzlabo jūsu datus, iegūstot faktus par cilvēkiem, vietām un biznesa datiem, kas atrodas ap jūsu datu izvietojumu, un iespējo jūs atbildēt uz jauniem jautājumiem par izvietojumiem, uz kuriem jūs nevarat atbildēt, izmantojot tikai kartes. Piemēram: Kādi cilvēki &scaron;eit dzīvo? Ko cilvēkiem &scaron;eit patīk darīt? Kādi ir viņu paradumi un dzīvesveids? Kāda veida uzņēmumi pastāv &scaron;inī areālā?
     </p>
     <p>Rezultāts būs jauns slānis, kas saturēs visu demogrāfisko un ģeogrāfisko informāciju no dotajām datu kolekcijām. &Scaron;ī jaunā informācija tiek pievienota tabulai kā lauki.
     </p>
@@ -38,10 +56,9 @@
         <div><h2>Izvēlieties slāni, ko bagātināt ar jauniem datiem</h2></div>
         <hr/>
         <div>
-            <p>Punkta, līnijas vai laukuma slānis, kas tiks uzlabots ar jauniem atribūtu datiem.
-
+            <p>Punkta, līnijas vai laukuma slānis, kas tiks uzlabots ar jauniem atribūtu datiem. 
             </p>
-            <p>Papildus slāņa izvēlei no kartes varat atlasīt  <b>Izvēlēties Living Atlas analīzes slāni</b> nolaižamā saraksta apak&scaron;ā. Tādējādi tiek atvērta galerija, kurā ir daudzām analīzēm noderīgu slāņu galerija. 
+            <p class="OnlineOnly">Papildus slāņa izvēlei no kartes varat atlasīt  <b>Izvēlēties Living Atlas analīzes slāni</b> nolaižamā saraksta apak&scaron;ā. Tādējādi tiek atvērta galerija, kurā ir daudzām analīzēm noderīgu slāņu galerija. 
             </p>
         </div>
     </div>

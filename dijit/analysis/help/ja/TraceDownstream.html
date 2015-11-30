@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -55,7 +73,7 @@
         <div>
             <p>下流解析の開始場所として使用されるポイント フィーチャ。  出力には、各入力ポイントのラインが含まれます。 
             </p>
-            <p>マップからレイヤーを選択するだけでなく、ドロップダウン リストの下部にある  <b>[リビング アトラス解析レイヤーの選択]</b> を選択することもできます。 これにより、さまざまな解析に役立つ一連のレイヤーを含むギャラリーが表示されます。 
+            <p class="OnlineOnly">マップからレイヤーを選択するだけでなく、ドロップダウン リストの下部にある  <b>[リビング アトラス解析レイヤーの選択]</b> を選択することもできます。 これにより、さまざまな解析に役立つ一連のレイヤーを含むギャラリーが表示されます。 
             </p>
         </div>
     </div>

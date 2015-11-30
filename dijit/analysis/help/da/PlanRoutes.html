@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -30,7 +48,7 @@
     </p>
     <p>Du indtaster en r&aelig;kke stop og antallet af tilg&aelig;ngelige k&oslash;ret&oslash;jer for disse stop i v&aelig;rkt&oslash;jet. V&aelig;rkt&oslash;jet tildeler stoppene til k&oslash;ret&oslash;jer og returnerer ruter, som viser, hvordan hvert k&oslash;ret&oslash;j kan n&aring; deres tildelte stop med det mindst mulige tidsforbrug.
     </p>
-    <p>Med Planl&aelig;g ruter kan mobile arbejdsstyrker n&aring; frem til flere arbejdssteder p&aring; mindre tid, hvilket &oslash;ger produktiviteten og forbedrer kundeservicen.
+    <p>Med Planl&aelig;g ruter kan mobile medarbejdere n&aring; frem til flere arbejdssteder p&aring; mindre tid, hvilket &oslash;ger produktiviteten og forbedrer kundeservicen.
         <ul>
             <li>Inspicere husstande, restauranter eller byggepladser
                 
@@ -57,10 +75,11 @@
         <div><h2>Vælg det punklag, der repræsenterer stop, der skal besøges</h2></div>
         <hr/>
         <div>
-            <p>V&aelig;lg det lag med punkter, som ruterne (eller k&oslash;ret&oslash;jerne) skal bes&oslash;ge. Disse punkter bliver tildelte eller ikke-tildelte stop i outputtet.
-
+            <p>V&aelig;lg det lag med punkter, som ruterne (eller k&oslash;ret&oslash;jerne) skal bes&oslash;ge. Disse punkter bliver tildelte eller ikke-tildelte stop i outputtet. 
             </p>
-            <p>Ud over at v&aelig;lge et lag fra dit kort kan du v&aelig;lge  <b>V&aelig;lg Living Atlas-analyselag</b> nederst p&aring; rullelisten. Dette &aring;bner et galleri med en samling lag, der er nyttige til mange analysetyper. 
+            <p class="OnlineOnly">Ud over at v&aelig;lge et lag fra dit kort kan du v&aelig;lge  <b>V&aelig;lg Living Atlas-analyselag</b> nederst p&aring; rullelisten. Dette &aring;bner et galleri med en samling lag, der er nyttige til mange analysetyper. 
+            </p>
+            <p>V&aelig;rkt&oslash;jet underst&oslash;tter op til 2.000 inputobjekter. 
             </p>
         </div>
     </div>

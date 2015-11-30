@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -38,10 +56,9 @@
         <div><h2>Layer auswählen, der zu puffernde Features enthält</h2></div>
         <hr/>
         <div>
-            <p>Die Punkt-, Linien- oder Fl&auml;chen-Features, die gepuffert werden sollen.
-
+            <p>Die Punkt-, Linien- oder Fl&auml;chen-Features, die gepuffert werden sollen. 
             </p>
-            <p>Neben einem Layer aus Ihrer Karte k&ouml;nnen Sie auch die Option  <b>Analyse-Layer des Living Atlas ausw&auml;hlen</b> unten in der Dropdown-Liste ausw&auml;hlen. Hiermit wird eine Galerie mit einer Sammlung von Layern ge&ouml;ffnet, die f&uuml;r viele Analysen hilfreich sind. 
+            <p class="OnlineOnly">Neben einem Layer aus Ihrer Karte k&ouml;nnen Sie auch die Option  <b>Analyse-Layer des Living Atlas ausw&auml;hlen</b> unten in der Dropdown-Liste ausw&auml;hlen. Hiermit wird eine Galerie mit einer Sammlung von Layern ge&ouml;ffnet, die f&uuml;r viele Analysen hilfreich sind. 
             </p>
         </div>
     </div>
@@ -78,7 +95,7 @@
             </p>
             <p>Beim Erstellen eines einzelnen Puffers um Fl&auml;chen-Features (Eingabe einer Entfernung) k&ouml;nnen Sie festlegen, ob das gepufferte Feature in den Ergebnispuffer einbezogen oder daraus ausgeschlossen werden soll.
             </p>
-            <p>Bei Verwendung mehrerer Entfernungen k&ouml;nnen Sie festlegen, wie die Entfernung von der letzten Pufferentfernung dargestellt werden soll; beispielsweise, wenn die Entfernungen 10 und 14 betragen:
+            <p>Bei Verwendung mehrerer Entfernungen k&ouml;nnen Sie festlegen, wie die Entfernung von der letzten Pufferentfernung dargestellt werden soll; beispielsweise, ob die Entfernungen 10 und 14 betragen:
                 <ul>
                     <li>Die Auswahl von  <b>Ringe</b> f&uuml;hrt zu Puffern von 0 bis 10 und 10 bis 14.
                     </li>
@@ -86,7 +103,7 @@
                     </li>
                 </ul>
                 
-            </p> 
+            </p>
         </div>
     </div>
     <div id="OptionLine">
@@ -97,7 +114,7 @@
             </p>
             <p>Beim Erstellen eines einzelnen Puffers um Linien (Eingabe einer Entfernung) k&ouml;nnen Sie festlegen, welche Seite der Linie gepuffert werden soll. In der Regel werden beide Seiten ausgew&auml;hlt. Links und rechts wird festgelegt, als gingen Sie von der ersten XY-Koordinate der Linie (Startkoordinate) zur letzten XY-Koordinate der Linie (Endkoordinate). Wenn Sie links oder rechts ausw&auml;hlen, bedeutet dies, dass Ihnen bekannt ist, dass die Linien-Features in einer bestimmten Richtung erstellt und gespeichert wurden (beispielsweise flussaufw&auml;rts bzw. flussabw&auml;rts in einem Flussnetz). An den Linienenden kann der Puffer gerundet (Round) oder geradlinig (Flat) sein.
             </p>
-            <p>Beim Erstellen mehrerer Puffer (mehr als eine Entfernung) k&ouml;nnen Sie festlegen, wie die Entfernung von der letzten Pufferentfernung dargestellt werden soll; beispielsweise, wenn die Entfernungen 10 und 14 betragen:
+            <p>Beim Erstellen mehrerer Puffer (mehr als eine Entfernung) k&ouml;nnen Sie festlegen, wie die Entfernung von der letzten Pufferentfernung dargestellt werden soll; beispielsweise, ob die Entfernungen 10 und 14 betragen:
                 <ul>
                     <li>Die Auswahl von  <b>Ringe</b> f&uuml;hrt zu Puffern von 0 bis 10 und 10 bis 14.
                     </li>
@@ -106,6 +123,14 @@
                 </ul>
                 
             </p> 
+        </div>
+    </div>
+    <div id="OptionNolayer">
+        <div><h2>Optionen</h2></div>
+        <hr/>
+        <div>
+            <p>Nachdem Sie einen zu puffernden Layer ausgew&auml;hlt haben, k&ouml;nnen Sie festlegen, wie die &uuml;berlappenden Puffer verarbeitet werden sollen. F&uuml;r jeden Puffer, der sich &uuml;ber einem anderen Puffer befindet, k&ouml;nnen die gemeinsamen Fl&auml;chen beibehalten (&Uuml;berlappen) oder kombiniert (Zusammenf&uuml;hren) werden. Au&szlig;erdem k&ouml;nnen Sie festlegen, wie viele Entfernungen dargestellt werden sollen.   F&uuml;r Layer, die Linien-Features enthalten, k&ouml;nnen Sie festlegen, welche Seite der Linie gepuffert werden soll.  F&uuml;r Layer mit Fl&auml;chen-Features k&ouml;nnen Sie ausw&auml;hlen, ob das gepufferte Feature in den Ergebnis-Puffer eingeschlossen bzw. daraus ausgeschlossen werden soll.
+            </p>
         </div>
     </div>
     <div id="BufferLayer">

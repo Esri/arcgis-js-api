@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -26,7 +44,7 @@
         <h2>Crear áreas de tiempo de recorrido</h2><p/>
         <h2><img src="../images/GUID-6F629A09-768D-4C04-88A4-AB941811ADE9-web.png" alt="Crear &aacute;reas de tiempo de recorrido"></h2>
         <hr/>
-    <p>Crea &aacute;reas de tiempo de recorrido a las que se pueda llegar en un tiempo de recorrido especificado o que est&eacute;n a una distancia de conducci&oacute;n o a pie dada, etc. Se mide desde uno o varios puntos (hasta 1000) en las carreteras o los caminos para crear una capa que pueda ayudarte a responder preguntas como las siguientes:
+    <p>Crear &aacute;reas de tiempo de recorrido crea &aacute;reas a las que se pueda llegar dentro de un tiempo o distancia conduciendo, caminando, etc. Se mide desde uno o varios puntos (hasta 1000) en las carreteras o los caminos para crear una capa que pueda ayudarte a responder preguntas como las siguientes:
         <ul>
             <li>&iquest;A d&oacute;nde puedo ir desde aqu&iacute; conduciendo 30 minutos?
             </li>
@@ -61,12 +79,15 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Elegir la capa de puntos a partir de la cual se deben calcular las áreas de tiempo de recorrido por vehículo</h2></div>
+        <div><h2>Elegir la capa de puntos a partir de la cual se deben calcular las áreas de tiempo de recorrido</h2></div>
         <hr/>
         <div>
             <p>Las entidades de puntos en torno a las cuales se calcular&aacute;n las &aacute;reas. Puedes elegir c&oacute;mo se calculan las &aacute;reas en funci&oacute;n del modo de viaje (en coche, en cami&oacute;n o a pie) y la medida (tiempo o distancia).
             </p>
-            <p>Adem&aacute;s de elegir una capa en el mapa, puedes seleccionar  <b>Elegir capa de an&aacute;lisis de atlas vivo</b>, que se encuentra al final de la lista desplegable. Esto abre una galer&iacute;a que contiene un conjunto de capas que resultan &uacute;tiles para numerosos an&aacute;lisis. 
+            <p class="OnlineOnly">Adem&aacute;s de elegir una capa en el mapa, puedes seleccionar  <b>Elegir capa de an&aacute;lisis de atlas vivo</b>, que se encuentra al final de la lista desplegable. Esto abre una galer&iacute;a que contiene un conjunto de capas que resultan &uacute;tiles para numerosos an&aacute;lisis. 
+            </p>
+            <p>La herramienta admite hasta 1000 entidades en la capa de entrada.
+
             </p>
         </div>
     </div>
@@ -74,7 +95,7 @@
         <div><h2>Medición</h2></div>
         <hr/>
         <div>
-            <p>Elige tu modo de viaje (en coche, en cami&oacute;n o a pie) y mide (tiempo o distancia). Los modos de viaje disponibles vienen determinados por el administrador de tu organizaci&oacute;n.   Despu&eacute;s de elegir tu modo y medir, introduce una duraci&oacute;n o una distancia de hasta  5 horas (300 minutos) o  300 millas (482.80 kil&oacute;metros). 
+            <p>Elige tu modo de viaje (en coche, en cami&oacute;n o caminando) y mide el tiempo o la distancia. Los modos de viaje disponibles vienen determinados por el administrador de tu organizaci&oacute;n.   Despu&eacute;s de elegir tu modo y medir, introduce una duraci&oacute;n o una distancia de hasta  5 horas (300 minutos) o  300 millas (482.80 kil&oacute;metros). 
             </p>
             <p>Cuando eliges  <b>Tiempo de conducci&oacute;n</b>, dispones de distintas opciones para medir el tiempo de recorrido.
                 <ul>
@@ -83,17 +104,17 @@
                         </p>
                     </li>
                     <li>
-                        <p>Activa  <b>Utilizar tr&aacute;fico</b> para crear &aacute;reas de tiempo de recorrido a una hora de inicio dada y en condiciones de tr&aacute;fico variables. Si adem&aacute;s eliges la opci&oacute;n <b>Tr&aacute;fico en directo</b>, la hora de salida desde los puntos de entrada se fija como la hora actual, y se toman como referencia las velocidades de tr&aacute;fico actuales y previstas de los sensores y las fuentes para crear las &aacute;reas de tiempo de recorrido por veh&iacute;culo. Las velocidades de tr&aacute;fico previstas se calculan por referencia a las velocidades de tr&aacute;fico en directo, las velocidades hist&oacute;ricas y eventos actuales como las condiciones meteorol&oacute;gicas. Las velocidades de tr&aacute;fico se predicen con 12 horas de antelaci&oacute;n, de modo que puedes mover la barra deslizante para establecer la hora de salida hasta 12 horas antes.
+                        <p>Activa  <b>Utilizar tr&aacute;fico</b> para crear &aacute;reas de tiempo de recorrido a una hora de inicio dada y en condiciones de tr&aacute;fico variables. Si adem&aacute;s eliges la opci&oacute;n <b>Tr&aacute;fico en directo</b>, la hora de salida desde los puntos de entrada se establece en la hora actual, y se toman como referencia las velocidades de tr&aacute;fico actuales y previstas de los sensores y las fuentes para crear las &aacute;reas de tiempo de recorrido. Las velocidades de tr&aacute;fico previstas se calculan en funci&oacute;n de las velocidades de tr&aacute;fico en directo, las velocidades hist&oacute;ricas y eventos actuales como las condiciones meteorol&oacute;gicas. Las velocidades de tr&aacute;fico se predicen con 12 horas de antelaci&oacute;n, de modo que puedes mover la barra deslizante para establecer la hora de salida hasta 12 horas antes.
                         </p>
                         <p>Utiliza esta configuraci&oacute;n de tr&aacute;fico en directo para averiguar a qu&eacute; &aacute;reas se puede llegar saliendo ahora, dentro de una hora, etc.
                         </p>
                     </li>
                     <li>
-                        <p>Al activar  <b>Utilizar tr&aacute;fico</b> y elegir <b>Tr&aacute;fico basado en las condiciones t&iacute;picas para</b> un d&iacute;a y una hora, la herramienta crea las &aacute;reas de tiempo de recorrido por veh&iacute;culo bas&aacute;ndose en las velocidades medias hist&oacute;ricas para cada intervalo de cinco minutos de una semana normal. Los resultados incluyen el tr&aacute;fico pero eliminan la influencia de las condiciones de tr&aacute;fico y los eventos de ese momento, que pueden variar considerablemente de lo habitual.
+                        <p>Al activar  <b>Utilizar tr&aacute;fico</b> y elegir <b>Tr&aacute;fico basado en las condiciones t&iacute;picas para</b> un d&iacute;a y una hora, la herramienta crea las &aacute;reas de tiempo de recorrido bas&aacute;ndose en las velocidades medias hist&oacute;ricas para cada intervalo de cinco minutos de una semana normal. Los resultados incluyen el tr&aacute;fico pero eliminan la influencia de las condiciones de tr&aacute;fico y los eventos de ese momento, que pueden variar considerablemente de lo habitual.
                         </p>
                         <p>Puedes utilizar esta configuraci&oacute;n de tr&aacute;fico hist&oacute;rica para preguntar, por ejemplo, &quot;En general, &iquest;a qu&eacute; &aacute;reas puedo llegar saliendo a las 11:30 de la ma&ntilde;ana de un mi&eacute;rcoles?&quot; 
                         </p>
-                        <p>La hora que establezcas utilizar&aacute; la zona horaria en la que se sit&uacute;an tus puntos de entrada. Es decir, si estableces la hora a las 8:00 de la ma&ntilde;ana y tienes dos puntos, uno en la ciudad de Nueva York y otro en Los Angeles, las &aacute;reas de tiempo de recorrido se generar&aacute;n para las 8:00 de la ma&ntilde;ana.hora del Este y las 8:00 de la ma&ntilde;anahora del Pac&iacute;fico, respectivamente.
+                        <p>La hora que establezcas utilizar&aacute; la zona horaria en la que se sit&uacute;an tus puntos de entrada. Es decir, si estableces la hora a las 8:00 de la ma&ntilde;ana y tienes dos puntos, uno en la ciudad de Nueva York y otro en Los Angeles, las &aacute;reas de tiempo de recorrido se generar&aacute;n para las 8:00 de la ma&ntilde;ana. hora del Este y las 8:00 de la ma&ntilde;ana hora del Pac&iacute;fico, respectivamente.
                         </p>
                     </li>
                 </ul>
@@ -110,7 +131,7 @@
         <div><h2>Áreas desde diferentes puntos</h2></div>
         <hr/>
         <div>
-            <p>Elige c&oacute;mo se deben manejar las &aacute;reas compartidas desde puntos de entrada diferentes cuando estos confluyen. Se pueden:
+            <p>Elige c&oacute;mo se deben manejar las &aacute;reas compartidas de puntos de entrada diferentes cuando estos confluyen. Se pueden:
                 <ul>
                     <li> <b>Superponer</b>: las &aacute;reas desde puntos de entrada diferentes pueden abarcar la misma carretera. Esto resulta &uacute;til cuando necesitas conocer todos los puntos de entrada que pueden llegar a una ubicaci&oacute;n determinada en la distancia o el tiempo dado.
                     </li>

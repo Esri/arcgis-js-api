@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -52,7 +70,7 @@
             <p>กำหนดชั้นข้อมูลจุด เพื่อแทนที่จุดเริ่มต้น เครื่องมือสนับสนุน  5,000 เริ่มต้น และ  5,000 สิ้นสุด </p>
             <p>หากคุณเลือกชั้นข้อมูลจากจุดเริ่มต้นเดียว มันจะเชื่องโยงสู่จุดปลายทางได้ทั้งหมด
             </p>
-            <p>นอกจากนี้ยังสามารถเลือกชั้นข้อมูลจากแผนที่ของคุณ  โดยคุณสามารถกำหนด <b>เลือกชั้นข้อมูลที่วิเคราะห์จาก Living Atlas </b> ในปุ่มด้านล่างของรายการ การเปิดแกลเลอรี่ที่มีคอลเลกชันของชั้นข้อมูลที่มีประโยชน์สำหรับการวิเคราะห์หลายหลายอย่าง 
+            <p class="OnlineOnly">นอกจากนี้ยังสามารถเลือกชั้นข้อมูลจากแผนที่ของคุณ  โดยคุณสามารถกำหนด <b>เลือกชั้นข้อมูลที่วิเคราะห์จาก Living Atlas </b> ในปุ่มด้านล่างของรายการ การเปิดแกลเลอรี่ที่มีคอลเลกชันของชั้นข้อมูลที่มีประโยชน์สำหรับการวิเคราะห์หลายหลายอย่าง 
             </p>
         </div>
     </div>
@@ -65,7 +83,7 @@
             </p>
             <p>หากมีจุดเริ่มต้นหนึ่งจุดและจุดหมายปลายทางหลายจุด เครื่องมือจะทำหน้าที่เชื่อมจุดเริ่มต้นไปยังจุดหมายปลายทางแต่ละจุด
             </p>
-            <p>นอกจากนี้ยังสามารถเลือกชั้นข้อมูลจากแผนที่ของคุณ  โดยคุณสามารถกำหนด <b>เลือกชั้นข้อมูลที่วิเคราะห์จาก Living Atlas </b> ในปุ่มด้านล่างของรายการ การเปิดแกลเลอรี่ที่มีคอลเลกชันของชั้นข้อมูลที่มีประโยชน์สำหรับการวิเคราะห์หลายหลายอย่าง 
+            <p class="OnlineOnly">นอกจากนี้ยังสามารถเลือกชั้นข้อมูลจากแผนที่ของคุณ  โดยคุณสามารถกำหนด <b>เลือกชั้นข้อมูลที่วิเคราะห์จาก Living Atlas </b> ในปุ่มด้านล่างของรายการ การเปิดแกลเลอรี่ที่มีคอลเลกชันของชั้นข้อมูลที่มีประโยชน์สำหรับการวิเคราะห์หลายหลายอย่าง 
             </p>
             <p> ถ้ามีจุดเริ่มต้น และจุดสิ้นสุดหลายจุด คุณจำเป็นต้องมีฟิลด์ที่ใช้บอกวิธีการจับคู่ระหว่างจุดเริ่มต้น และจุดสิ้นสุด ดังนี้: <b>ฟิลด์ ID ในจุดเริ่มต้น</b> และ <b>ฟิลด์ ID ของจุดสิ้นสุดที่คู่กัน</b> เครื่องมือทำหน้าที่เชื่อมโยงระหว่างจุดเริ่มต้นกับจุดหมายปลายทางระหว่างการวิเคราะห์ยกตัวอย่างเช่น ให้คิดว่าคุณมีจุดเริ่มต้นสองสุด มีค่าฟิลด์ ID เป็นคำว่า <code>Rosie</code> และ <code>Harold</code> ส่วนจุดสิ้นสุดต้องมีค่าในฟิลด์ ID เหมือนกัน จุดที่มีคำว่า <code>Rosie</code> ในข้อมูลจุดเริ่มต้นจะเชื่อมต่อไปยัง จุดที่มีคำว่า <code>Rosie</code> ในข้อมูลจุดสิ้นสุด และจุด <code>Harold</code> จะเชื่อมต่อไปยัง <code>Harold</code> ไม่มีการสร้างการเชื่อมโยงหรือการวัดระยะอื่นๆ
             </p>

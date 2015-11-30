@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -45,7 +63,9 @@
         <div>
             <p>Il layer di punti, linea o area che verr&agrave; utilizzato come posizione di partenza per riepilogare le feature nelle vicinanze.
             </p>
-            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi dell'atlante attivo</b> in fondo all'elenco a discesa. Verr&agrave; aperta una galleria contenente una raccolta di layer utili per numerose analisi. 
+            <p class="OnlineOnly">Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi dell'atlante attivo</b> in fondo all'elenco a discesa. Verr&agrave; aperta una galleria contenente una raccolta di layer utili per numerose analisi. 
+            </p>
+            <p>Lo strumento supporta fino a 1000 feature in questo layer. 
             </p>
         </div>
     </div>
@@ -55,12 +75,12 @@
         <div>
             <p>Verranno riepilogate le feature nel layer che si trovano entro la distanza specificata dalle feature nel layer specificato sopra. 
             </p>
-            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi dell'atlante attivo</b> in fondo all'elenco a discesa. Verr&agrave; aperta una galleria contenente una raccolta di layer utili per numerose analisi. 
+            <p class="OnlineOnly">Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi dell'atlante attivo</b> in fondo all'elenco a discesa. Verr&agrave; aperta una galleria contenente una raccolta di layer utili per numerose analisi. 
             </p> 
         </div>
     </div>
     <div id="BufferOption">
-        <div><h2>Riepiloga  le feature più vicine utilizzando</h2></div>
+        <div><h2>Riepiloga le feature più vicine utilizzando</h2></div>
         <hr/>
         <div>
             <p> &Egrave; possibile stabilire quale tipo di misurazione delle distanze si desidera usare: la distanza in linea retta o una modalit&agrave; di viaggio selezionata. Le modalit&agrave; di viaggio sono abilitate solo quando il primo layer di input (il layer da cui vengono misurate le distanze) contiene dei punti.  Le modalit&agrave; di viaggio disponibili sono determinate dall'amministratore dell'organizzazione. Quando si usa una delle modalit&agrave; di viaggio, le misurazioni vengono effettuate su strade o passaggi pedonali, rispettando le norme stradali vigenti come, ad esempio, le strade a senso unico, le svolte non consentite e cos&igrave; via. Il tempo di percorrenza dipende dall'opzione selezionata per la velocit&agrave; di viaggio, ovvero in base al traffico in tempo reale o al traffico standard. Le velocit&agrave; per il traffico in tempo reale vengono raccolte tramite i valori di appositi sensori, mentre quelle per il traffico standard vengono calcolate in base a medie storiche.
@@ -140,11 +160,34 @@
             
         </div>
     </div>
+    <div id="StatisticsNoLayer">
+        <div><h2>Aggiungi statistiche dal layer da riepilogare</h2></div>
+        <hr/>
+        <div>
+            <p>Dopo aver scelto un layer da riepilogare &egrave; possibile, se lo si desidera, calcolare statistiche di qualsiasi attributo numerico dei punti vicini, delle linee o delle aree. 
+            </p>
+            <ul>
+                <li> <b>Somma</b>: il valore totale del campo specificato.
+                </li>
+                <li> <b>Media</b>: il valore medio del campo specificato.
+                </li>
+                <li> <b>Minimo</b>: il valore minimo nel campo specificato.
+                </li>
+                <li> <b>Massimo</b>: il valore massimo nel campo specificato.
+                </li>
+                <li> <b>Deviazione standard</b>: la deviazione standard dei valori nel campo specificato.
+                </li>
+            </ul>
+            
+            <p>In base ai tipi di feature che si stanno riepilogando, &egrave; possibile calcolare il conteggio totale di punti vicini, la lunghezza totale di punti vicini o l'area totale di feature area vicine.
+            </p>
+        </div>
+    </div>
     <div id="GroupBy">
         <div><h2>Scegli campo in base a cui raggruppare</h2></div>
         <hr/>
         <div>
-            <p> Questo &egrave; un attributo delle feature nelle vicinanze utilizzabile per calcolare statistiche di ciascun valore di attributo univoco separatamente. Ad esempio, si supponga che il primo layer di input (il layer da cui vengono misurate le distanze) contenga lotti di terreno non occupati in vendita e che le proprie feature nelle vicinanze corrispondano a ingombri planimetrici di edifici.  Uno degli attributi degli ingombri planimetrici di edifici &egrave; <i>UseType</i>, che contiene valori quali VENDITA AL DETTAGLIO, RESIDENZIALE, PRODUTTIVO, PUBBLICO, ecc..  Per caratterizzare i vari tipi di usi degli edifici vicini a ciascun lotto non occupato, si potrebbe calcolare l'area totale di ciascun tipo di uso degli edifici entro un raggio di due chilometri dai lotti non occupati, utilizzando <i>UseType</i> come gruppo per attributo.   Le statistiche relative a ciascun gruppo, nonch&eacute; il conteggio delle feature nelle vicinanze, verranno visualizzate nel popup del layer dei risultati.
+            <p> Questo &egrave; un attributo delle feature nelle vicinanze utilizzabile per calcolare statistiche di ciascun valore di attributo univoco separatamente. Ad esempio, si supponga che il primo layer di input (il layer da cui vengono misurate le distanze) contenga lotti di terreno non occupati in vendita e che le proprie feature nelle vicinanze corrispondano a ingombri planimetrici di edifici.  Uno degli attributi degli ingombri planimetrici di edifici &egrave; <i>UseType</i>, che contiene valori quali VENDITA AL DETTAGLIO, RESIDENZIALE, PRODUTTIVO, PUBBLICO e cos&igrave; via.  Per caratterizzare i vari tipi di usi degli edifici vicini a ciascun lotto non occupato, si potrebbe calcolare l'area totale di ciascun tipo di uso degli edifici entro un raggio di due chilometri dai lotti non occupati, utilizzando <i>UseType</i> come gruppo per attributo.   Le statistiche relative a ciascun gruppo, nonch&eacute; il conteggio delle feature nelle vicinanze, verranno visualizzate nel popup del layer dei risultati.
             </p>    
         </div>
     </div>

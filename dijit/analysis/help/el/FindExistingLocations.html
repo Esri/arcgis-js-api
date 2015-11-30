@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -39,7 +57,7 @@
         <div>
             <p>&Tau;&omicron; &sigma;&eta;&mu;&epsilon;&iota;&alpha;&kappa;ό, &gamma;&rho;&alpha;&mu;&mu;&iota;&kappa;ό ή &pi;&omicron;&lambda;&upsilon;&gamma;&omega;&nu;&iota;&kappa;ό &theta;&epsilon;&mu;&alpha;&tau;&iota;&kappa;ό &epsilon;&pi;ί&pi;&epsilon;&delta;&omicron; &gamma;&iota;&alpha; &tau;&omicron; &omicron;&pi;&omicron;ί&omicron; &theta;έ&lambda;&epsilon;&tau;&epsilon; &nu;&alpha; &beta;&rho;&epsilon;ί&tau;&epsilon; &sigma;&tau;&omicron;&iota;&chi;&epsilon;ί&alpha; &mu;&epsilon; &beta;ά&sigma;&eta; έ&nu;&alpha; &sigma;&upsilon;&nu;&delta;&upsilon;&alpha;&sigma;&mu;ό &epsilon;&rho;&omega;&tau;&eta;&mu;ά&tau;&omega;&nu; &pi;&epsilon;&rho;&iota;&gamma;&rho;&alpha;&phi;&iota;&kappa;ώ&nu; &gamma;&nu;&omega;&rho;&iota;&sigma;&mu;ά&tau;&omega;&nu; &kappa;&alpha;&iota; &chi;&omega;&rho;&iota;&kappa;ώ&nu; &delta;&epsilon;&delta;&omicron;&mu;έ&nu;&omega;&nu; ό&pi;&omega;&sigmaf; &kappa;&alpha;&theta;&omicron;&rho;ί&zeta;&epsilon;&tau;&alpha;&iota; &pi;&alpha;&rho;&alpha;&kappa;ά&tau;&omega;.
             </p>
-            <p>&Epsilon;&kappa;&tau;ό&sigmaf; &alpha;&pi;ό &tau;&eta;&nu; &epsilon;&pi;&iota;&lambda;&omicron;&gamma;ή &epsilon;&nu;ό&sigmaf; &theta;&epsilon;&mu;&alpha;&tau;&iota;&kappa;&omicron;ύ &epsilon;&pi;&iota;&pi;έ&delta;&omicron;&upsilon; &alpha;&pi;ό &tau;&omicron; &chi;ά&rho;&tau;&eta; &sigma;&alpha;&sigmaf;, &mu;&pi;&omicron;&rho;&epsilon;ί&tau;&epsilon; &epsilon;&pi;ί&sigma;&eta;&sigmaf; &nu;&alpha; &epsilon;&pi;&iota;&lambda;έ&xi;&epsilon;&tau;&epsilon;  <b>&Epsilon;&pi;&iota;&lambda;&omicron;&gamma;ή &theta;&epsilon;&mu;&alpha;&tau;&iota;&kappa;&omicron;ύ &epsilon;&pi;&iota;&pi;έ&delta;&omicron;&upsilon; &alpha;&nu;ά&lambda;&upsilon;&sigma;&eta;&sigmaf; &zeta;&omega;&nu;&tau;&alpha;&nu;&omicron;ύ Ά&tau;&lambda;&alpha;&nu;&tau;&alpha;</b> &alpha;&pi;ό &tau;&omicron; &kappa;ά&tau;&omega; &mu;έ&rho;&omicron;&sigmaf; &tau;&eta;&sigmaf; &alpha;&nu;&alpha;&pi;&tau;&upsilon;&sigma;&sigma;ό&mu;&epsilon;&nu;&eta;&sigmaf; &lambda;ί&sigma;&tau;&alpha;&sigmaf;. &Alpha;&upsilon;&tau;ό &alpha;&nu;&omicron;ί&gamma;&epsilon;&iota; &mu;&iota;&alpha; &sigma;&upsilon;&lambda;&lambda;&omicron;&gamma;ή &theta;&epsilon;&mu;&alpha;&tau;&iota;&kappa;ώ&nu; &epsilon;&pi;&iota;&pi;έ&delta;&omega;&nu; &pi;&omicron;&upsilon; &epsilon;ί&nu;&alpha;&iota; &chi;&rho;ή&sigma;&iota;&mu;&alpha; &gamma;&iota;&alpha; &pi;&omicron;&lambda;&lambda;έ&sigmaf; &alpha;&nu;&alpha;&lambda;ύ&sigma;&epsilon;&iota;&sigmaf;. 
+            <p class="OnlineOnly">&Epsilon;&kappa;&tau;ό&sigmaf; &alpha;&pi;ό &tau;&eta;&nu; &epsilon;&pi;&iota;&lambda;&omicron;&gamma;ή &epsilon;&nu;ό&sigmaf; &theta;&epsilon;&mu;&alpha;&tau;&iota;&kappa;&omicron;ύ &epsilon;&pi;&iota;&pi;έ&delta;&omicron;&upsilon; &alpha;&pi;ό &tau;&omicron; &chi;ά&rho;&tau;&eta; &sigma;&alpha;&sigmaf;, &mu;&pi;&omicron;&rho;&epsilon;ί&tau;&epsilon; &epsilon;&pi;ί&sigma;&eta;&sigmaf; &nu;&alpha; &epsilon;&pi;&iota;&lambda;έ&xi;&epsilon;&tau;&epsilon;  <b>&Epsilon;&pi;&iota;&lambda;&omicron;&gamma;ή &theta;&epsilon;&mu;&alpha;&tau;&iota;&kappa;&omicron;ύ &epsilon;&pi;&iota;&pi;έ&delta;&omicron;&upsilon; &alpha;&nu;ά&lambda;&upsilon;&sigma;&eta;&sigmaf; &zeta;&omega;&nu;&tau;&alpha;&nu;&omicron;ύ Ά&tau;&lambda;&alpha;&nu;&tau;&alpha;</b> &alpha;&pi;ό &tau;&omicron; &kappa;ά&tau;&omega; &mu;έ&rho;&omicron;&sigmaf; &tau;&eta;&sigmaf; &alpha;&nu;&alpha;&pi;&tau;&upsilon;&sigma;&sigma;ό&mu;&epsilon;&nu;&eta;&sigmaf; &lambda;ί&sigma;&tau;&alpha;&sigmaf;. &Alpha;&upsilon;&tau;ό &alpha;&nu;&omicron;ί&gamma;&epsilon;&iota; &mu;&iota;&alpha; &sigma;&upsilon;&lambda;&lambda;&omicron;&gamma;ή &theta;&epsilon;&mu;&alpha;&tau;&iota;&kappa;ώ&nu; &epsilon;&pi;&iota;&pi;έ&delta;&omega;&nu; &pi;&omicron;&upsilon; &epsilon;ί&nu;&alpha;&iota; &chi;&rho;ή&sigma;&iota;&mu;&alpha; &gamma;&iota;&alpha; &pi;&omicron;&lambda;&lambda;έ&sigmaf; &alpha;&nu;&alpha;&lambda;ύ&sigma;&epsilon;&iota;&sigmaf;. 
             </p>
         </div>
     </div>

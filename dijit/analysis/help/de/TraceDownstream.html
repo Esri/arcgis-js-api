@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -32,7 +50,7 @@
     </p>
     <p>Das Ergebnis ist eine Linie, die die Verfolgung flussabw&auml;rts darstellt. Wenn f&uuml;r  <b>Verfolgung in Liniensegmente aufteilen</b> eine Entfernung angegeben ist, wird die Linie der Verfolgung in mehrere Linien aufgeteilt, wobei jede einzelne eine festgelegte L&auml;nge hat.  Wenn beispielsweise Ihr Eingabepunkt die Einlaufstelle von verschmutztem Wasser in einen Fluss darstellt und selbiger eine Str&ouml;mungsgeschwindigkeit von etwa einem Kilometer pro Stunde bzw. von 24 Kilometern pro Tag hat, dann k&ouml;nnten Sie den Fluss in Segmente mit einer L&auml;nge von je 24 Kilometern aufteilen. Die Aufteilung der Verfolgung in 24-Kilometer-Intervalle zeigt dann in etwa, welche Entfernung die Verschmutzung pro Tag zur&uuml;cklegt. Die Linie wird je nach ihrer Entfernung mit abgestuften Farben symbolisiert und mit der entsprechenden Entfernung vom Startpunkt der Verfolgung beschriftet. 
     </p>
-    <p>Die sich ergebende Verfolgung verf&uuml;gt &uuml;ber alle Attribute Ihrer Eingabepunkte sowie diese zus&auml;tzlichen Attribute.     
+    <p>Die sich ergebende Verfolgung verf&uuml;gt &uuml;ber alle Attribute Ihrer Eingabepunkte sowie diese zus&auml;tzlichen Attribute:     
         <ul>
             <li> <i>PointID</i> &ndash; Enth&auml;lt den ID-Wert des Eingabepunktes.
             </li>
@@ -45,7 +63,7 @@
         </ul>
         
     </p>
-    <p>Wenn die Option  <b>Aktuelle Kartenausdehnung verwenden</b> aktiviert ist, werden nur die Punkt-Features im Eingabe-Layer analysiert, die in der aktuellen Kartenausdehnung sichtbar sind.  Wenn diese Option deaktiviert ist, werden auch dann alle Features im Eingabe-Layer verwendet, wenn sie sich au&szlig;erhalb der aktuellen Kartenausdehnung befinden.
+    <p>Wenn die Option  <b>Aktuelle Kartenausdehnung verwenden</b> aktiviert ist, werden nur die Punkt-Features im Eingabe-Layer analysiert, die in der aktuellen Kartenausdehnung sichtbar sind.  Wenn diese Option deaktiviert ist, werden alle Features im Eingabe-Layer verwendet, auch wenn sie sich au&szlig;erhalb der aktuellen Kartenausdehnung befinden.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -55,7 +73,7 @@
         <div>
             <p>Die Punkt-Features, die als Startposition der Verfolgung flussabw&auml;rts verwendet werden.  Die Ausgabe enth&auml;lt eine Linie f&uuml;r jeden Eingabepunkt. 
             </p>
-            <p>Neben einem Layer aus Ihrer Karte k&ouml;nnen Sie auch die Option  <b>Analyse-Layer des Living Atlas ausw&auml;hlen</b> unten in der Dropdown-Liste ausw&auml;hlen. Hiermit wird eine Galerie mit einer Sammlung von Layern ge&ouml;ffnet, die f&uuml;r viele Analysen hilfreich sind. 
+            <p class="OnlineOnly">Neben einem Layer aus Ihrer Karte k&ouml;nnen Sie auch die Option  <b>Analyse-Layer des Living Atlas ausw&auml;hlen</b> unten in der Dropdown-Liste ausw&auml;hlen. Hiermit wird eine Galerie mit einer Sammlung von Layern ge&ouml;ffnet, die f&uuml;r viele Analysen hilfreich sind. 
             </p>
         </div>
     </div>

@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -45,7 +63,10 @@
         <div>
             <p>The point, line, or area layer that will be used as the starting locations to summarize nearby features.
             </p>
-            <p>In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            <p class="OnlineOnly">In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            </p>
+            <p>The tool supports up to 1,000 features in this layer.
+
             </p>
         </div>
     </div>
@@ -55,7 +76,7 @@
         <div>
             <p>Features in this layer that are within the specified distance to features in the layer specified above will be summarized. 
             </p>
-            <p>In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            <p class="OnlineOnly">In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
             </p> 
         </div>
     </div>
@@ -155,6 +176,35 @@ values in the specified field
                 </li>
             </ul>
             
+        </div>
+    </div>
+    <div id="StatisticsNoLayer">
+        <div><h2>Add statistics
+from the  layer to summarize</h2></div>
+        <hr/>
+        <div>
+            <p>Once you choose a layer to summarize, you can optionally calculate statistics of
+any numerical attributes of the nearby points, lines, or areas. 
+            </p>
+            <ul>
+                <li> <b>Sum</b>&mdash;The total value for the specified
+field
+                </li>
+                <li> <b>Average</b>&mdash;The average or mean for the specified field
+                </li>
+                <li> <b>Minimum</b>&mdash;The smallest value in the specified
+field
+                </li>
+                <li> <b>Maximum</b>&mdash;The largest value in the specified
+field
+                </li>
+                <li> <b>Std. Deviation</b>&mdash;The standard deviation of the
+values in the specified field
+                </li>
+            </ul>
+            
+            <p>Depending on the types of features you are summarizing, you can calculate total count of nearby points, total length of nearby lines, or total area of nearby area features.
+            </p>
         </div>
     </div>
     <div id="GroupBy">

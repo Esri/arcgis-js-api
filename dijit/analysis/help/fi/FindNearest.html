@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -30,7 +48,7 @@
         <ul>
             <li>Mik&auml; on l&auml;hin puisto?
             </li>
-            <li>Mihin sairaalaan on lyhin ajoaika?Kuinka pitk&auml;&auml;n matka kest&auml;&auml; tiistaina, klo 1.00 eli ruuhka-aikaan?
+            <li>Mihin sairaalaan on lyhin ajoaika? Kuinka pitk&auml;&auml;n matka kest&auml;&auml; tiistaina, klo 13:00 eli ruuhka-aikaan?
             </li>
             <li>Kuinka pitk&auml; et&auml;isyys n&auml;iden kahden kaupungin v&auml;lill&auml; on tiet&auml; pitkin mitattuna?
             </li>
@@ -46,10 +64,10 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="analysisLayer">
-        <div><h2>Valitse pistekarttataso, josta lähimmät sijainnit löytyvät</h2></div>
+        <div><h2>Valitse karttataso, josta lähimmät sijainnit löytyvät</h2></div>
         <hr/>
         <div>
-            <p>Hae l&auml;hin -toiminto mittaa et&auml;isyyden t&auml;ss&auml; m&auml;&auml;ritt&auml;m&auml;si karttatason pisteist&auml; (l&auml;ht&ouml;sijainneista) pisteisiin, jotka m&auml;&auml;rit&auml;t seuraavassa parametrissa. Ty&ouml;kalu voi n&auml;ytt&auml;&auml; enint&auml;&auml;n 1 000 sijaintia kussakin karttatasossa.
+            <p>Hae l&auml;hin -toiminto mittaa et&auml;isyyden t&auml;ss&auml; m&auml;&auml;ritt&auml;m&auml;si kohteen pisteist&auml; (l&auml;ht&ouml;sijainneista) sijainteihin, jotka m&auml;&auml;rit&auml;t seuraavassa parametrissa. Ty&ouml;kalu voi n&auml;ytt&auml;&auml; enint&auml;&auml;n 1 000 kohdetta kussakin karttatasossa.
 
             </p>
         </div>
@@ -58,9 +76,9 @@
         <div><h2>Etsi lähimmät sijainnit kohteessa</h2></div>
         <hr/>
         <div>
-            <p>Hae l&auml;hin mittaa et&auml;isyyden kaikista ensimm&auml;isen karttatason sijainneista nykyisen karttatason sijainteihin. Ty&ouml;kalu voi n&auml;ytt&auml;&auml; enint&auml;&auml;n 1 000 sijaintia kussakin karttatasossa.
+            <p>Hae l&auml;hin -toiminto mittaa et&auml;isyyden kustakin ensimm&auml;isen karttatason kohteesta nykyisen karttatason sijainteihin. Ty&ouml;kalu voi n&auml;ytt&auml;&auml; enint&auml;&auml;n 1 000 sijaintia kussakin karttatasossa.
             </p>
-            <p>Kartasta valittavan karttatason lis&auml;ksi voit valita alareunan avattavasta luettelosta valittavan  <b>Valitse maailmankartaston analyysikarttataso</b> -vaihtoehdon. T&auml;m&auml; vaihtoehto avaa gallerian, joka sis&auml;lt&auml;&auml; monissa analyyseissa hy&ouml;dyllisten karttatasojen kokoelman. 
+            <p class="OnlineOnly">Kartasta valittavan karttatason lis&auml;ksi voit valita alareunan avattavasta luettelosta valittavan  <b>Valitse maailmankartaston analyysikarttataso</b> -vaihtoehdon. T&auml;m&auml; vaihtoehto avaa gallerian, joka sis&auml;lt&auml;&auml; monissa analyyseissa hy&ouml;dyllisten karttatasojen kokoelman. 
             </p>
         </div>
     </div>
@@ -72,7 +90,7 @@
             </p>
             <p>Kun mitataan viivojen tai alueiden v&auml;lisi&auml; et&auml;isyyksi&auml;, toiminto hakee et&auml;isyyden l&auml;himm&auml;st&auml; pisteest&auml; tai l&auml;himp&auml;&auml;n pisteeseen viivaa tai alueen rajaa pitkin. 
             </p> 
-            <p>Kun valitset vaihtoehdon  <b>Ajoaika</b>, k&auml;ytett&auml;viss&auml; on ajoajan eri mittausvaihtoehtoja.
+            <p>Kun valitset vaihtoehdon  <b>Ajoaika</b>, voit valita eri vaihtoehdoista, miten ajoaika mitataan.
                 <ul>
                     <li>
                         <p>Jos haluat hakea l&auml;himpi&auml; kohteita perustuen staattisiin ajonopeuksiin, kuten nopeusrajoituksiin, etk&auml; halua hakea l&auml;himpi&auml; kohteita muuttuvien liikenneolojen aiheuttamien vaihtelevien ajonopeuksien perusteella, poista  <b>K&auml;yt&auml; liikennett&auml;</b> -kohdan valinta.
@@ -91,11 +109,11 @@
                         </p>
                         <p>Historiallisten liikenneolojen avulla voit esimerkiksi selvitt&auml;&auml;, mihin kohteisiin p&auml;&auml;set nopeimmin, kun l&auml;ht&ouml;aika l&auml;ht&ouml;kohteesta on klo 11.30 keskiviikkona. 
                         </p>
-                        <p>Asettamasi aika on sen alueen aikavy&ouml;hykkeen aika, jolla l&auml;ht&ouml;kohteet sijaitsevat. Jos l&auml;ht&ouml;aika on esimerkiksi klo 8 ja l&auml;ht&ouml;pisteit&auml; on kaksi, toinen New Yorkissa ja toinen Los Angelesissa, l&auml;himpien sijaintien m&auml;&auml;ritt&auml;miseen k&auml;ytet&auml;&auml;nUSA:n it&auml;rannikon aikavy&ouml;hykkeen (Eastern Time) l&auml;ht&ouml;aikaa klo 8 jaTyynenmeren aikavy&ouml;hykkeen (Pacific Time) klo 8.
+                        <p>Asettamasi aika on sen alueen aikavy&ouml;hykkeen aika, jolla l&auml;ht&ouml;kohteet sijaitsevat. Jos l&auml;ht&ouml;aika on esimerkiksi klo 8 ja l&auml;ht&ouml;pisteit&auml; on kaksi, toinen New Yorkissa ja toinen Los Angelesissa, l&auml;himpien sijaintien m&auml;&auml;ritt&auml;miseen k&auml;ytet&auml;&auml;n USA:n it&auml;rannikon aikavy&ouml;hykkeen (Eastern Time) l&auml;ht&ouml;aikaa klo 8 ja Tyynenmeren aikavy&ouml;hykkeen (Pacific Time) klo 8.
                         </p>
                     </li>
                 </ul>
-                Huomaa, ett&auml; auton liikkuessa pisteest&auml; poisp&auml;in aika kuluu ja liikenneolot muuttuvat. Jos <b>K&auml;yt&auml; liikennett&auml;</b> -toiminto on valittuna, ty&ouml;kalu huomioi n&auml;m&auml; vaihtelut. Toimintoa ei kuitenkaan tueta kaikilla alueilla. Napsauta ty&ouml;kalun <b>Katso saatavuus</b> -linkki&auml;, jotta n&auml;et, onko se saatavilla tarkastelualueellasi. 
+                Huomaa, ett&auml; kun auto liikkuu pisteest&auml; poisp&auml;in, aika kuluu ja liikenneolot muuttuvat. Jos <b>K&auml;yt&auml; liikennett&auml;</b> -toiminto on valittuna, ty&ouml;kalu huomioi n&auml;m&auml; vaihtelut. Toimintoa ei kuitenkaan tueta kaikilla alueilla. Napsauta ty&ouml;kalun <b>Katso saatavuus</b> -linkki&auml;, jotta n&auml;et, onko se saatavilla tarkastelualueellasi. 
             </p>
         </div>
     </div>

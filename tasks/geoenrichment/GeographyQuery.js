@@ -21,5 +21,4 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 define(["../../declare","./GeographyQueryBase"],function(e,r){return e("esri.tasks.geoenrichment.GeographyQuery",[r],{geographyLayerIDs:null,geographyIDs:null,where:null,constructor:function(e){e&&(this.geographyLayerIDs=e.geographyLayerIDs||e.geographyLayers.split(";"),this.geographyIDs=e.geographyIDs,this.where=e.where||e.geographyQuery)},toJson:function(){var e=this.inherited(arguments);return this.geographyLayerIDs&&(e.geographyLayers=this.geographyLayerIDs.join(";")),this.geographyIDs&&(e.geographyIDs=this.geographyIDs),this.where&&(e.geographyQuery=this.where),e}})});

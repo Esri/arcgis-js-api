@@ -21,5 +21,4 @@
 // email: contracts@esri.com
 //
 // See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../../base/Descriptor","../../../../form/Element","../../../../form/InputDelimitedTextArea","../../../../form/iso/AbstractObject","../../../../form/iso/CodeListAttribute","../../../../form/iso/CodeListValueAttribute","../../../../form/iso/CodeListElement","../../../../form/iso/CodeListReference","../../../../form/iso/ObjectReference","../../../../form/iso/gemet/GemetThemeTool","dojo/text!./templates/DataThemeKeywords.html","../../../../../../kernel"],function(e,t,o,i,r,s,m,a,d,n,f,l,c,b,j){var p=e(i,{templateString:b});return o("extend-esri")&&t.setObject("dijit.metadata.types.inspire.gmd.identification.DataThemeKeywords",p,j),p});

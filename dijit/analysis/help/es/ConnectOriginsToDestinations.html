@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -53,7 +71,7 @@ Si no se ha activado, se tendr&aacute;n en cuenta todas las entidades de la capa
             <p>Elige la capa de puntos que representa el origen o los or&iacute;genes.  La herramienta admite un m&aacute;ximo de  5000 or&iacute;genes y  5000 destinos. </p>
             <p>Si eliges una capa que tiene exactamente un origen, se conectar&aacute; con todos los destinos.
             </p>
-            <p>Adem&aacute;s de elegir una capa en el mapa, puedes seleccionar  <b>Elegir capa de an&aacute;lisis de atlas vivo</b>, que se encuentra al final de la lista desplegable. Esto abre una galer&iacute;a que contiene un conjunto de capas que resultan &uacute;tiles para numerosos an&aacute;lisis. 
+            <p class="OnlineOnly">Adem&aacute;s de elegir una capa en el mapa, puedes seleccionar  <b>Elegir capa de an&aacute;lisis de atlas vivo</b>, que se encuentra al final de la lista desplegable. Esto abre una galer&iacute;a que contiene un conjunto de capas que resultan &uacute;tiles para numerosos an&aacute;lisis. 
             </p>
         </div>
     </div>
@@ -66,7 +84,7 @@ Si no se ha activado, se tendr&aacute;n en cuenta todas las entidades de la capa
             </p>
             <p>Si hay un origen y muchos destinos, la herramienta conecta el origen con cada uno de los destinos.
             </p>
-            <p>Adem&aacute;s de elegir una capa en el mapa, puedes seleccionar  <b>Elegir capa de an&aacute;lisis de atlas vivo</b>, que se encuentra al final de la lista desplegable. Esto abre una galer&iacute;a que contiene un conjunto de capas que resultan &uacute;tiles para numerosos an&aacute;lisis. 
+            <p class="OnlineOnly">Adem&aacute;s de elegir una capa en el mapa, puedes seleccionar  <b>Elegir capa de an&aacute;lisis de atlas vivo</b>, que se encuentra al final de la lista desplegable. Esto abre una galer&iacute;a que contiene un conjunto de capas que resultan &uacute;tiles para numerosos an&aacute;lisis. 
             </p>
             <p> Si hay muchos or&iacute;genes y muchos destinos, debes tener dos campos que describan los pares origen-destino: <b>Campo de Id. de ruta en or&iacute;genes</b> y <b>Campo de Id. coincidente en destinos</b>. La herramienta conecta los pares origen-destino durante el an&aacute;lisis. Por ejemplo, imagina que tienes dos or&iacute;genes con los valores de campo de Id. <code>Rosie</code> y <code>Harold</code> y dos destinos con los mismos valores de Id. El origen <code>Rosie</code> se conectar&aacute; con el destino <code>Rosie</code> y <code>Harold</code> se conectar&aacute; con el destino <code>Harold</code>. No se realizar&aacute;n otras conexiones ni mediciones.
             </p>

@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -29,9 +47,9 @@
             <ul>
                 <li> <b>Punkte aggregieren</b> berechnet Statistiken zu Punkten, die sich innerhalb bestimmter Bereiche befinden.
                 </li>
-                <li> <b>Zusammenfassen &quot;In der N&auml;he&quot;</b> berechnet Statistiken f&uuml;r Features und ihre Attribute, die sich innerhalb einer angegebenen Entfernung befinden.
+                <li> <b>Zusammenfassen (in der N&auml;he)</b> berechnet Statistiken f&uuml;r Features und ihre Attribute, die sich innerhalb einer angegebenen Entfernung befinden.
                 </li>
-                <li> <b>Zusammenfassen &quot;Innerhalb&quot;</b> berechnet Statistiken f&uuml;r Fl&auml;chen-Features und Attribute, die sich &uuml;berlappen.
+                <li> <b>Zusammenfassen (innerhalb)</b> berechnet Statistiken f&uuml;r Fl&auml;chen-Features und Attribute, die sich &uuml;berlappen.
                 </li>
             </ul>
             
@@ -52,9 +70,9 @@
 <hr/>
             <p>Dieses Werkzeug ermittelt anhand eines Punkt-Feature-Layers und eines Fl&auml;chen-Feature-Layers, welche Punkte sich innerhalb der einzelnen Bereiche befinden, und berechnet Statistiken zu allen Punkten in jedem Bereich. Beispiel:
                 <ul>
-                    <li>Anhand der Punktpositionen von Kriminaldelikten die Anzahl der Delikte pro Landkreis oder Verwaltungsbezirk ermitteln.
+                    <li>anhand der Punktpositionen von Kriminaldelikten die Anzahl der Delikte pro Landkreis oder Verwaltungsbezirk ermitteln
                     </li>
-                    <li>Die h&ouml;chsten und niedrigsten Umsatzzahlen f&uuml;r Franchise-Standorte pro Bundesstaat ermitteln.
+                    <li>die h&ouml;chsten und niedrigsten Umsatzzahlen f&uuml;r Franchise-Standorte pro Bundesstaat ermitteln
                     </li>
                 </ul>
                 
@@ -74,9 +92,9 @@
 <hr/>
             <p>Sucht Features, die sich innerhalb einer angegebenen Entfernung von Features im Eingabe-Layer befinden.   Die Entfernung kann entlang gerader Linien oder der tats&auml;chlichen Strecke eines Reisemodus gemessen werden. Anschlie&szlig;end werden Statistiken f&uuml;r die nahe gelegenen Features berechnet. Beispiel:
                 <ul>
-                    <li>Die Gesamtbev&ouml;lkerungszahl innerhalb der zeitlichen Entfernung von f&uuml;nf Minuten von einem vorgeschlagenen neuen Ladenstandort ermitteln.
+                    <li>die Gesamtbev&ouml;lkerungszahl innerhalb der zeitlichen Entfernung von f&uuml;nf Minuten von einem vorgeschlagenen neuen Ladenstandort ermitteln
                     </li>
-                    <li>Die Anzahl der Autobahnzufahrten innerhalb der zeitlichen Entfernung von f&uuml;nf Minuten von einem vorgeschlagenen neuen Ladenstandort ermitteln, um diese als Ma&szlig; f&uuml;r die Erreichbarkeit von Gesch&auml;ften zu verwenden.
+                    <li>die Anzahl der Autobahnzufahrten innerhalb der zeitlichen Entfernung von f&uuml;nf Minuten von einem vorgeschlagenen neuen Ladenstandort ermitteln, um diese als Ma&szlig; f&uuml;r die Erreichbarkeit von Gesch&auml;ften zu verwenden
                     </li>
                 </ul>
                 
@@ -94,11 +112,11 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Findet Fl&auml;chen (und Teile von Fl&auml;chen), die sich zwischen zwei Layern &uuml;berlappen, und berechnet Statistiken zu der &Uuml;berlappung. Beispiel:
+            <p>Ermittelt Fl&auml;chen (und Teile von Fl&auml;chen), die sich zwischen zwei Layern &uuml;berlappen, und berechnet Statistiken zu der &Uuml;berlappung. Beispiel:
                 <ul>
-                    <li>Anhand eines Layers mit Wassereinzugsgebieten und eines Layers mit Landnutzungsfl&auml;chen nach Landnutzungstyp die Gesamtlandwirtschaftsfl&auml;che des Landnutzungstyps f&uuml;r jedes Wassereinzugsgebiet ermitteln. 
+                    <li>anhand eines Layers mit Wassereinzugsgebieten und eines Layers mit Landnutzungsfl&auml;chen nach Landnutzungstyp die Gesamtlandwirtschaftsfl&auml;che des Landnutzungstyps f&uuml;r jedes Wassereinzugsgebiet ermitteln 
                     </li>
-                    <li>Den Durchschnittswert unbebauter Flurst&uuml;cke innerhalb jeder Stadt anhand eines Flurst&uuml;cks-Layers in einem Landkreis und eines Stadtgrenzen-Layers zusammenfassen.
+                    <li>den Durchschnittswert unbebauter Flurst&uuml;cke innerhalb jeder Stadt anhand eines Flurst&uuml;cks-Layers in einem Landkreis und eines Stadtgrenzen-Layers zusammenfassen
                     </li>
                 </ul>
                 
@@ -127,15 +145,14 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Ruft Informationen zu Personen, Orten und Unternehmen in einem bestimmten Gebiet oder innerhalb einer ausgew&auml;hlten Reisezeit bzw. Entfernung von einem Standort ab.
-
+            <p>Ruft Informationen zu Personen, Orten und Unternehmen in einem bestimmten Gebiet oder innerhalb einer ausgew&auml;hlten Reisezeit bzw. Entfernung von einem Standort ab. 
             </p>
             <br/>
         </div>
     <div id="FindLocationsCategory" class="largesize">
         <h2>Positionen suchen</h2>
         <hr/>
-        <p>Diese Werkzeuge werden zum Identifizieren von Fl&auml;chen verwendet, die einer Reihe von unterschiedlichen Kriterien entsprechen, die Sie angeben. Diese Kriterien k&ouml;nnen auf Attributabfragen (beispielsweise unbebaute Flurst&uuml;cke) und r&auml;umlichen Abfragen (beispielsweise innerhalb einer Entfernung von einem Kilometer von einem Fluss) basieren. Die gefundenen Fl&auml;chen k&ouml;nnen aus vorhandenen Features (wie vorhandene Flurst&uuml;cke) ausgew&auml;hlt oder es k&ouml;nnen neue Features dort erstellt werden, wo alle Anforderungen erf&uuml;llt sind.
+        <p>Mithilfe dieser Werkzeuge lassen sich Fl&auml;chen identifizieren, die verschiedenen von Ihnen definierten Kriterien entsprechen. Diese Kriterien k&ouml;nnen auf Attributabfragen (beispielsweise unbebaute Flurst&uuml;cke) und r&auml;umlichen Abfragen (beispielsweise innerhalb einer Entfernung von einem Kilometer von einem Fluss) basieren. Die gefundenen Fl&auml;chen k&ouml;nnen aus vorhandenen Features (wie vorhandene Flurst&uuml;cke) ausgew&auml;hlt oder es k&ouml;nnen neue Features dort erstellt werden, wo alle Anforderungen erf&uuml;llt sind.
             <ul>
                 <li>Mit der Option  <b>Vorhandene Positionen suchen</b> werden vorhandene Fl&auml;chen in einem Layer gesucht, die eine Reihe von Kriterien erf&uuml;llen.
                 </li>
@@ -144,9 +161,9 @@ Untersuchungsgebiets, die eine Reihe von Kriterien erf&uuml;llen.
                 </li>
                 <li>Mit dem neuen Werkzeug  <b>&Auml;hnliche Positionen suchen</b> ermitteln Sie Positionen, die basierend auf den angegebenen Kriterien mindestens einer Referenzposition am &auml;hnlichsten sind.
                 </li>
-                <li>Mit  <b>Erstellen von Sichtfeldern</b> werden Fl&auml;chen erstellt, die abh&auml;ngig von angegebenen Positionen zu sehen sind.
+                <li>Mit  <b>Sichtfelder erstellen</b> werden Fl&auml;chen erstellt, die abh&auml;ngig von angegebenen Positionen zu sehen sind.
                 </li>
-                <li> <b>Erstellen von Wassereinzugsgebieten</b> erstellt Einzugsgebiete basierend auf Positionen, die Sie angeben.
+                <li> <b>Wassereinzugsgebiete erstellen</b> k&ouml;nnen Einzugsgebiete auf der Basis der angegebenen Positionen erstellt werden.
                 </li>
                 <li> <b>Flussabw&auml;rts verfolgen</b> ermittelt von den angegebenen Positionen aus die Flie&szlig;richtungen flussabw&auml;rts.
                 </li>
@@ -167,8 +184,7 @@ Untersuchungsgebiets, die eine Reihe von Kriterien erf&uuml;llen.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Mit dieser Funktion werden vorhandene Features im Untersuchungsgebiet ausgew&auml;hlt, die den angegebenen Kriterien entsprechen. Diese Kriterien k&ouml;nnen auf Attributabfragen (beispielsweise unbebaute Flurst&uuml;cke) und r&auml;umlichen Abfragen (beispielsweise innerhalb einer Entfernung von einem Kilometer von einem Fluss) basieren.
-
+            <p>Mit dieser Funktion werden vorhandene Features im Untersuchungsgebiet ausgew&auml;hlt, die den angegebenen Kriterien entsprechen. Diese Kriterien k&ouml;nnen auf Attributabfragen (beispielsweise unbebaute Flurst&uuml;cke) und r&auml;umlichen Abfragen (beispielsweise innerhalb einer Entfernung von einem Kilometer von einem Fluss) basieren. 
             </p>
             <br/>
         </div>
@@ -183,8 +199,7 @@ Untersuchungsgebiets, die eine Reihe von Kriterien erf&uuml;llen.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Mit dieser Funktion werden neue Features im Untersuchungsgebiet erstellt, die den angegebenen Kriterien entsprechen. Diese Kriterien k&ouml;nnen auf Attributabfragen (beispielsweise unbebaute Flurst&uuml;cke) und r&auml;umlichen Abfragen (beispielsweise innerhalb einer Entfernung von einem Kilometer von einem Fluss) basieren.
-
+            <p>Mit dieser Funktion werden neue Features im Untersuchungsgebiet erstellt, die den angegebenen Kriterien entsprechen. Diese Kriterien k&ouml;nnen auf Attributabfragen (beispielsweise unbebaute Flurst&uuml;cke) und r&auml;umlichen Abfragen (beispielsweise innerhalb einer Entfernung von einem Kilometer von einem Fluss) basieren. 
             </p>
             <br/>
         </div>
@@ -207,9 +222,9 @@ Untersuchungsgebiets, die eine Reihe von Kriterien erf&uuml;llen.
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Erstellen von Sichtfeldern</h2></td>
+                    <td><h2>Sichtfelder erstellen</h2></td>
                     <td>
-                    <img src="../images/GUID-491E9A75-30CC-4526-9F71-E47FD25536DE-web.png" class="titleImage" alt="Erstellen von Sichtfeldern">
+                    <img src="../images/GUID-491E9A75-30CC-4526-9F71-E47FD25536DE-web.png" class="titleImage" alt="Sichtfelder erstellen">
                     </td>
                 </tr></tbody>
             </table>
@@ -222,14 +237,14 @@ Untersuchungsgebiets, die eine Reihe von Kriterien erf&uuml;llen.
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Erstellen von Wassereinzugsgebieten</h2></td>
+                    <td><h2>Wassereinzugsgebiete erstellen</h2></td>
                     <td>
-                    <img src="../images/GUID-4DE64CF6-2A02-46F6-8AE4-4D9227AAB71C-web.png" class="titleImage" alt="Erstellen von Wassereinzugsgebieten">
+                    <img src="../images/GUID-4DE64CF6-2A02-46F6-8AE4-4D9227AAB71C-web.png" class="titleImage" alt="Wassereinzugsgebiete erstellen">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Diese Funktion erstellt Einzugsgebiete basierend auf Positionen, die Sie angeben.
+            <p>Diese Funktion erstellt Einzugsgebiete auf der Basis der angegebenen Positionen.
             </p>
             <br/>
         </div>
@@ -251,11 +266,11 @@ Untersuchungsgebiets, die eine Reihe von Kriterien erf&uuml;llen.
     <div id="AnalyzePatternsCategory" class="regularsize">
         <h2>Muster analysieren</h2>
         <hr/>
-        <p>Mit diesem Werkzeug k&ouml;nnen Sie r&auml;umliche Muster in Daten identifizieren, quantifizieren und visualisieren.  
+        <p>Mit diesen Werkzeugen k&ouml;nnen Sie r&auml;umliche Muster in Daten identifizieren, quantifizieren und visualisieren.  
             <ul>
-                <li>Das Werkzeug  <b>Dichte berechnen</b> verwendet bekannte Mengen einiger Ph&auml;nomene und verteilt sie auf der Karte.
+                <li>Das Werkzeug  <b>Dichte berechnen</b> stellt die Anzahl der angegebenen Daten auf der Karte dar.
                 </li>
-                <li>Mit  <b>Hot Spots suchen</b> werden statistisch signifikante Cluster im r&auml;umlichen Muster Ihrer Daten identifiziert.
+                <li>Mit  <b>Hot-Spots suchen</b> werden statistisch signifikante Cluster im r&auml;umlichen Muster Ihrer Daten identifiziert.
                 </li>
                 <li>Mit dem Werkzeug  <b>Punkte interpolieren</b> k&ouml;nnen Sie Werte an neuen Positionen basierend auf Messwerten aus einer Sammlung von Punkten vorhersagen.
                 </li>
@@ -282,14 +297,14 @@ Untersuchungsgebiets, die eine Reihe von Kriterien erf&uuml;llen.
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Hot Spots suchen</h2></td>
+                    <td><h2>Hot-Spots suchen</h2></td>
                     <td>
-                    <img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" class="titleImage" alt="Hot Spots suchen">
+                    <img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" class="titleImage" alt="Hot-Spots suchen">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Dieses Werkzeug erstellt eine Karte mit statistisch signifikanten Clustern, die in den Daten vorhanden sind. Verwenden Sie dieses Werkzeug, um beispielsweise unerwartete Hot Spots (rot) und Cold Spots (blau) hoher und niedriger Haushaltseinkommen, Kriminalit&auml;tsdichte, Verkehrsunfallzahlen mit Todesopfern, Arbeitslosigkeit oder Biodiversit&auml;t aufzudecken.
+            <p>Dieses Werkzeug erstellt eine Karte mit statistisch signifikanten Clustern, die in den Daten vorhanden sind. Verwenden Sie dieses Werkzeug, um beispielsweise unerwartete Hot-Spots (rot) und Cold-Spots (blau) hoher und niedriger Haushaltseinkommen, Kriminalit&auml;tsdichte, Verkehrsunfallzahlen mit Todesopfern, Arbeitslosigkeit oder Biodiversit&auml;t aufzudecken.
             </p>
             <br/>
         </div>
@@ -344,14 +359,14 @@ Untersuchungsgebiets, die eine Reihe von Kriterien erf&uuml;llen.
                 <ul>
                     <li>Berechnen Sie die Gesamtstrecke oder -zeit, die Pendler von ihrem Wohnort zum Arbeitsplatz aufwenden m&uuml;ssen.
                     </li>
-                    <li>Messen, wie weit Kunden fahren, um in ihren Gesch&auml;ften einzukaufen. Verwenden Sie diese Informationen, um Ihr Marktpotenzial zu definieren, insbesondere bei der gezielten Ausrichtung von Werbekampagnen oder der Auswahl neuer Gesch&auml;ftsstandorte.
+                    <li>Ermitteln Sie, wie weit Kunden fahren, um in Ihrem Gesch&auml;ft einzukaufen. Verwenden Sie diese Informationen, um Ihr Marktpotenzial zu definieren, insbesondere bei der gezielten Ausrichtung von Werbekampagnen oder der Auswahl neuer Gesch&auml;ftsstandorte.
                     </li>
-                    <li>Berechnen Sie die erwarteten Reisekilometer f&uuml;r Ihr Fahrzeugflotte. F&uuml;hren Sie anschlie&szlig;end das Werkzeug &quot;Zusammenfassen (innerhalb)&quot; aus, um die Kilometerzahl nach Bundesstaat oder anderen Regionen zu erfassen.
+                    <li>Berechnen Sie die erwarteten Reisekilometer f&uuml;r Ihr Fahrzeugflotte. F&uuml;hren Sie anschlie&szlig;end das Werkzeug &quot;Zusammenfassen (innerhalb)&quot; aus, um die Kilometerzahl nach Bundesland oder anderen Regionen zu erfassen.
                     </li>
                 </ul>
                 
             </p>
-            <p>Sie stellen Start- und Endpunkte bereit, und das Werkzeug gibt einen Layer mit Routenlinien, einschlie&szlig;lich Messungen, zwischen den zugeordneten Startpunkten und Zielen zur&uuml;ck.
+            <p>Auf der Basis der angegebenen Start- und Endpunkte erstellt das Werkzeug einen Layer mit Routenlinien und Messwerten zwischen den zugeordneten Startpunkten und Zielen.
             </p>
             <br/>
         </div>
@@ -426,15 +441,14 @@ Untersuchungsgebiets, die eine Reihe von Kriterien erf&uuml;llen.
 <hr/>
             <p>Sie geben eine Reihe von Stopps und die Anzahl der zum Anfahren der Stopps verf&uuml;gbaren Fahrzeuge an und &quot;Routen planen&quot; bestimmt, wie die Stopps den Fahrzeugen effizient zugewiesen und Routen f&uuml;r die Fahrzeuge zu den Stopps erstellt werden.
             </p>
-            <p>Verwenden Sie dieses Werkzeug f&uuml;r die Arbeitsplanung eines mobilen Teams von Inspektoren, Gutachtern, In-Home Supportive Services-Anbietern usw., f&uuml;r die Lieferung oder Abholung von Artikeln an entfernten Standorten oder die Bereitstellung von Dienstleistungen der Personenbef&ouml;rderung.
+            <p>Verwenden Sie dieses Werkzeug f&uuml;r die Arbeitsplanung eines mobilen Teams von Inspektoren, Gutachtern, Pflegekr&auml;ften usw., f&uuml;r die Lieferung oder Abholung von Artikeln an entfernten Standorten oder die Bereitstellung von Dienstleistungen der Personenbef&ouml;rderung.
             </p>
             <br/>
         </div>
     <div id="ManageDataCategory" class="regularsize">
         <h2>Daten verwalten</h2>
         <hr/>
-        <p>Diese Werkzeuge werden f&uuml;r die t&auml;gliche Verwaltung geographischer Daten und zum Kombinieren von Daten vor Analysen herangezogen.
-  
+        <p>Diese Werkzeuge werden f&uuml;r die t&auml;gliche Verwaltung geographischer Daten und zum Kombinieren von Daten vor Analysen herangezogen.  
             <ul>
                 <li> <b>Grenzen zusammenf&uuml;hren</b> f&uuml;hrt Fl&auml;chen mit gemeinsamer Grenze und gemeinsamem Attributwert zusammen.
                 </li>
@@ -443,7 +457,7 @@ Untersuchungsgebiets, die eine Reihe von Kriterien erf&uuml;llen.
                 <li> <b>Layer zusammenf&uuml;hren</b> kopiert alle Features aus mindestens zwei vorhandenen Layern in einen neuen Layer.
                 </li>
                 <li> <b>Layer &uuml;berlagern</b> kombiniert mindestens zwei Layer zu einem einzelnen Layer.
- 
+  
 Sie k&ouml;nnen sich eine &Uuml;berlagerung als einen Stapel von Karten vorstellen, durch den Sie hindurchsehen und anhand dessen Sie eine einzelne Karte erstellen, die alle Informationen aus diesem Stapel enth&auml;lt.
                 </li>
             </ul>
@@ -461,20 +475,13 @@ Sie k&ouml;nnen sich eine &Uuml;berlagerung als einen Stapel von Karten vorstell
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Fl&auml;chen, die sich &uuml;berlappen oder eine gemeinsame Grenze haben, werden zu einer Fl&auml;che zusammengef&uuml;hrt.
-    
+            <p>Fl&auml;chen, die sich &uuml;berlappen oder eine gemeinsame Grenze haben, werden zu einer Fl&auml;che zusammengef&uuml;hrt.    
             </p>
-            <p>Durch Angabe eines Feldes k&ouml;nnen Sie steuern, welche Grenzen zusammengef&uuml;hrt werden.
- 
-Wenn Sie beispielsweise &uuml;ber einen Landkreis-Layer verf&uuml;gen und jeder Landkreis das Attribut  <i>State_Name</i> aufweist, k&ouml;nnen Sie Grenzen anhand des Attributs <i>State_Name</i> aufl&ouml;sen.
- 
-Benachbarte Landkreise werden zusammengef&uuml;hrt, wenn sie den gleichen Wert f&uuml;r <i>State_Name</i> haben.
- 
-Das Endresultat ist ein Layer der Bundeslandgrenzen.
+            <p>Durch Angabe eines Feldes k&ouml;nnen Sie steuern, welche Grenzen zusammengef&uuml;hrt werden. Wenn Sie beispielsweise &uuml;ber einen Landkreis-Layer verf&uuml;gen und jeder Landkreis das Attribut  <i>State_Name</i> aufweist, k&ouml;nnen Sie Grenzen anhand des Attributs <i>State_Name</i> aufl&ouml;sen.  Benachbarte Landkreise werden zusammengef&uuml;hrt, wenn sie den gleichen Wert f&uuml;r <i>State_Name</i> haben.  Das Endresultat ist ein Layer der Bundeslandgrenzen.
             </p>
             <br/>
         </div>
-        <div id="ExtractDataTool" class="regularsize">
+        <div id="ExtractDataTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -485,7 +492,7 @@ Das Endresultat ist ein Layer der Bundeslandgrenzen.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Erstellt eine ZIP-, CSV- oder KMZ-Datei aus den Daten der Layer sowie f&uuml;r einen angegebenen Interessenbereich.
+            <p>Erstellt eine ZIP-, CSV- oder KMZ-Datei aus den Daten der Layer sowie einen angegebenen Interessenbereich.
             </p>
             <p> 
             </p>
@@ -503,15 +510,10 @@ Das Endresultat ist ein Layer der Bundeslandgrenzen.
             </table>
 <hr/>
             <p>Kopiert Features aus mindestens zwei vorhandenen Layern in einen neuen Layer. Beispiel:
-
                 <ul>
-                    <li>Sie verf&uuml;gen &uuml;ber drei Layer, f&uuml;r England, Wales und Schottland, und Sie m&ouml;chten einen einzelnen Gro&szlig;britannien-Layer erstellen.
- 
+                    <li>Sie verf&uuml;gen &uuml;ber drei Layer, f&uuml;r England, Wales und Schottland, und Sie m&ouml;chten einen einzelnen Gro&szlig;britannien-Layer erstellen. 
                     </li>
-                    <li>Sie verf&uuml;gen &uuml;ber 12 Layer, die jeweils Flurst&uuml;cksinformationen f&uuml;r zusammenh&auml;ngende Stadtgebiete enthalten.
- 
-Sie m&ouml;chten sie zu einem einzelnen Layer zusammenf&uuml;hren und nur die Attribute beibehalten, die in den 12 Eingabe-Layern den gleichen Namen und Typ aufweisen.
-
+                    <li>Sie verf&uuml;gen &uuml;ber 12 Layer, die jeweils Flurst&uuml;cksinformationen f&uuml;r zusammenh&auml;ngende Stadtgebiete enthalten. Sie m&ouml;chten sie zu einem einzelnen Layer zusammenf&uuml;hren und nur die Attribute beibehalten, die in den 12 Eingabe-Layern den gleichen Namen und Typ aufweisen.
                     </li>
                 </ul>
                 
@@ -529,26 +531,17 @@ Sie m&ouml;chten sie zu einem einzelnen Layer zusammenf&uuml;hren und nur die At
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Bei einer &Uuml;berlagerung werden zwei oder mehr Layer zu einem einzelnen Layer kombiniert.
- 
-Sie k&ouml;nnen sich eine &Uuml;berlagerung als einen Stapel von Karten vorstellen, durch den Sie hindurchsehen und anhand dessen Sie eine einzelne Karte erstellen, die alle Informationen aus diesem Stapel enth&auml;lt. Beispiel:
-
+            <p>Bei einer &Uuml;berlagerung werden zwei oder mehr Layer zu einem einzelnen Layer kombiniert. Sie k&ouml;nnen sich eine &Uuml;berlagerung als einen Stapel von Karten vorstellen, durch den Sie hindurchsehen und anhand dessen Sie eine einzelne Karte erstellen, die alle Informationen aus diesem Stapel enth&auml;lt. Beispiel:
                 <ul>
-                    <li>Welche Flurst&uuml;cke befinden sich in einem 100-Jahres-&Uuml;berschwemmungsgebiet?
- 
-(&quot;In&quot; ist hier nur ein Synonym f&uuml;r &quot;&uuml;ber&quot; bzw. &quot;&uuml;berlagern&quot;.)
-
+                    <li>Welche Flurst&uuml;cke befinden sich in einem 100-Jahres-&Uuml;berschwemmungsgebiet? (&quot;In&quot; ist hier nur ein Synonym f&uuml;r &quot;&uuml;ber&quot; bzw. &quot;&uuml;berlagern&quot;.)
                           
                     </li>
                     <li>Welche Stra&szlig;en befinden sich in welchen Landkreisen?
-
                     </li>
                     <li>Welche Landnutzung liegt &uuml;ber welchem Bodentyp?
-
                          
                     </li>
                     <li>Welche Quellen befinden sich in aufgegebenen milit&auml;rischen Einrichtungen?
-
                     </li>
                 </ul>
                 

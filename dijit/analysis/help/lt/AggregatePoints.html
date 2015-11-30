@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -28,7 +46,7 @@
         <hr/>
     <p>&Scaron;is įrankis veikia su sluoksniu, sudarytu i&scaron; ta&scaron;kų elementų, ir sluoksniu, sudarytu i&scaron; plotų elementų. Pirmiausia jis nustato, kurie ta&scaron;kai patenka į kiekvieną plotą. Nustačius plotų ir į juos patenkančių ta&scaron;kų erdvinį ry&scaron;į, apskaičiuojama ir plotui priskiriama jo ta&scaron;kų statistika. Pats paprasčiausias apskaičiuojamas rodiklis &ndash; ta&scaron;kų skaičius, tačiau galite apskaičiuoti ir kitus statistinius rodiklius. 
     </p>
-    <p>Pavyzdžiui, jei turite kavinių ir seniūnijų sluoksnius, galite sužinoti, kiek kavinių yra kiekvienoje seniūnijoje, bei apskaičiuoti apyvartą kiekvienoje seniūnijoje. Jei kavinės turi atributą  <i>TOTAL_SALES</i>, galite gauti visų <i>TOTAL_SALES</i> reik&scaron;mių sumą kiekvienoje seniūnijoje, arba <i>TOTAL_SALES</i> minimumo ar maksimumo reik&scaron;mes
+    <p>Pavyzdžiui, jei turite kavinių ir seniūnijų sluoksnius, galite sužinoti, kiek kavinių yra kiekvienoje seniūnijoje bei apskaičiuoti apyvartą kiekvienoje seniūnijoje. Jei kavinės turi atributą  <i>TOTAL_SALES</i>, galite gauti visų <i>TOTAL_SALES</i> reik&scaron;mių sumą kiekvienoje seniūnijoje, arba <i>TOTAL_SALES</i> minimumo ar maksimumo reik&scaron;mes
  kiekvienoje seniūnijoje arba standartinį pardavimų nuokrypį.
     </p>
     <p>Analizės rezultatas - žemėlapis, kuriame kiekvienos teritorijos spalva priklauso nuo bendro ta&scaron;kų skaičiaus ir teritorijos ploto santykio. Elementų skaičiaus dalinimas i&scaron; ploto vadinamas normalizavimu, tai metodas, kurį kartografai naudoja duomenų atvaizdavimui pagal plotus. Normalizavimas leidžia geriau vizualiai atskleisti geografinį pasiskirstymą, nes įvertinamas skirtingas teritorijų plotas.
@@ -43,7 +61,7 @@
         <div>
             <p>Ta&scaron;kų sluoksnis, kuris bus agreguotas į plotus.
             </p>
-            <p>Pasirinkę sluoksnį žemėlapyje, galite pasirinkti  <b>Pasirinkite Gyvojo pasaulio atlaso analizės sluoksnį</b>, kurį rasite i&scaron;plečiamo sąra&scaron;o apačioje. &Scaron;i parinktis atidarys galeriją, kurioje yra kolekcija sluoksnių, naudingų daugeliui analizių. 
+            <p class="OnlineOnly">Pasirinkę sluoksnį žemėlapyje, galite pasirinkti  <b>Pasirinkite Gyvojo pasaulio atlaso analizės sluoksnį</b>, kurį rasite i&scaron;plečiamo sąra&scaron;o apačioje. &Scaron;i parinktis atidarys galeriją, kurioje yra kolekcija sluoksnių, naudingų daugeliui analizių. 
             </p>
         </div>
     </div>
@@ -53,7 +71,7 @@
         <div>
             <p>Plotų sluoksnis, į kurį bus agreguojami ta&scaron;kai. Bus apskaičiuotas ta&scaron;kų, patenkančių į &scaron;io sluoksnio teritorijas, skaičius bei kiti pasirinkti statistiniai rodikliai.
             </p>
-            <p>Pasirinkę sluoksnį žemėlapyje, galite pasirinkti  <b>Pasirinkite Gyvojo pasaulio atlaso analizės sluoksnį</b>, kurį rasite i&scaron;plečiamo sąra&scaron;o apačioje. &Scaron;i parinktis atidarys galeriją, kurioje yra kolekcija sluoksnių, naudingų daugeliui analizių. 
+            <p class="OnlineOnly">Pasirinkę sluoksnį žemėlapyje, galite pasirinkti  <b>Pasirinkite Gyvojo pasaulio atlaso analizės sluoksnį</b>, kurį rasite i&scaron;plečiamo sąra&scaron;o apačioje. &Scaron;i parinktis atidarys galeriją, kurioje yra kolekcija sluoksnių, naudingų daugeliui analizių. 
             </p>
         </div>
     </div>
@@ -96,7 +114,7 @@
         <div><h2>Pridėti procentus</h2></div>
         <hr/>
         <div>
-            <p>&Scaron;is žymės langelis aktyvus, pasirenkus lauką, pagal kurį grupuosite. Pasirinkite  <b>Pridėti procentus</b>, jei norite sužinoti kiekvienos grupės kiekvienos atributo reik&scaron;mės procentą. Į rezultatų lentelę įtraukiamas naujas laukas, kuriame nurodytas kiekvienos grupės kiekvienos atributo reik&scaron;mės procentas. Jei pažymėta ir <b>Pridėti mažumą, daugumą</b>, į rezultatų sluoksnį bus įtraukti du papildomi laukai, kuriuose bus nurodytos kiekvienos grupės mažumos ir daugumos atributų reik&scaron;mių procentai.
+            <p>&Scaron;is žymės langelis įgalinamas, kai pasirenkate lauką, pagal kurį grupuosite. Pasirinkite  <b>Pridėti procentus</b>, jei norite sužinoti kiekvienos grupės kiekvienos atributo reik&scaron;mės procentą. Į rezultatų lentelę įtraukiamas naujas laukas, kuriame nurodytas kiekvienos grupės kiekvienos atributo reik&scaron;mės procentas. Jei pažymėta ir <b>Pridėti mažumą, daugumą</b>, į rezultatų sluoksnį bus įtraukti du papildomi laukai, kuriuose bus nurodytos kiekvienos grupės mažumos ir daugumos atributų reik&scaron;mių procentai.
             </p>
         </div>
     </div>
