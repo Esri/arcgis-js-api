@@ -122,3 +122,16 @@
 }
 
 
+.esriBookmarksRTL .esriBookmarkEditImage{
+  float:left;
+}
+.esriBookmarksRTL .esriBookmarkRemoveImage{
+  float:left;
+}
+.esriBookmarksRTL .esriBookmarkLabel{
+  float:right;
+}
+.esriBookmarksRTL .esriBookmarkEditBox{
+  float:right;
+}
+

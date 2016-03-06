@@ -1,4 +1,4 @@
-// COPYRIGHT © 2015 Esri
+// COPYRIGHT © 2016 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,5 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.16/esri/copyright.txt for details.
+
 define(["dojo/_base/declare","dojo/_base/lang","dojo/_base/array","dojo/topic","dojo/has","../../../../../../kernel","dojo/i18n!../../../../nls/i18nArcGIS","../../../../base/Conditional","../../../../base/etc/docUtil"],function(e,t,a,n,o,i,r,d,s){var c=e(d,{key:"FGDC_Temporal",postCreate:function(){this.inherited(arguments);var e=this;this.own(n.subscribe("gxe/optional-content-toggled",function(t){try{if(e.parentXNode&&t&&t.src&&t.src.target){var a=t.src.target;("dataExt"===a||"tempEle"===a)&&e.emitInteractionOccurred()}}catch(n){console.error(n)}})),this.own(n.subscribe("gxe/after-xnode-destroyed",function(t){try{if(e.parentXNode&&t&&t.xnode){var a=t.xnode.gxePath;"/metadata/dataIdInfo/dataExt"===a?e.emitInteractionOccurred():"/metadata/dataIdInfo/dataExt/tempEle"===a&&e.emitInteractionOccurred()}}catch(n){console.error(n)}}))},ensureFocus:function(){s.ensureVisibility(this.parentXNode),a.some(this.parentXNode.getChildren(),function(e){return e._isGxeTabs?(a.some(e.getChildren(),function(t){return t.isExtentSection?(e.ensureActiveTab(t),!0):void 0}),!0):void 0})},validateConditionals:function(e){var t=this.newStatus({message:r.conditionals[this.key]}),a=!1,n=this.parentXNode.domNode,o="/metadata/dataIdInfo/dataExt/tempEle";return this.forActiveXNodes(o,n,function(){a=!0}),t.isValid=a,this.track(t,e),t}});return o("extend-esri")&&t.setObject("dijit.metadata.types.arcgis.base.conditionals.FGDC_Temporal",c,i),c});

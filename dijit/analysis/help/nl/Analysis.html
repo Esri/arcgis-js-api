@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -120,7 +138,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Laag verrijken</h2></td>
+                    <td><h2>Enrich Layer</h2></td>
                     <td>
                     <img src="../images/GUID-5B2D9742-AFD2-4054-8D05-ED6A80EDAF4D-web.png" class="titleImage" alt="Laag verrijken">
                     </td>
@@ -141,13 +159,15 @@
                 </li>
                 <li> <b>Nieuwe locaties afleiden</b> maakt nieuwe gebieden op basis van locaties in uw onderzoeksgebied die voldoen aan een reeks criteria.
                 </li>
-                <li> <b>Gelijksoortige locaties zoeken</b> zoekt naar locaties die het meest of het minst lijken op een of meer referentielocaties op basis van de criteria die u opgeeft.
+                <li> <b>Gelijksoortige locaties zoeken</b> zoekt naar overeenkomende locaties onder een of meer referentielocaties op basis van de criteria die u opgeeft.
+                </li>
+                <li> <b>Beste voorzieningen kiezen</b> kies de beste locaties voor voorzieningen door locaties toe te wijzen die vragen naar deze voorzieningen op een manier die voldoet aan een bepaald doel.
                 </li>
                 <li> <b>Viewshed maken</b> maakt gebieden die zichtbaar zijn op basis van locaties die u opgeeft.
                 </li>
                 <li> <b>Stroomgebieden maken</b> maakt stroomgebieden op basis van locaties die u opgeeft.
                 </li>
-                <li> <b>Stroomafwaarts traceren</b> bepaal de stromingstrajecten stroomafwaarts van de locaties die u opgeeft.
+                <li> <b>Stroomafwaarts traceren</b> bepaalt de stromingstrajecten stroomafwaarts van de locaties die u opgeeft.
                 </li>
             </ul>
             
@@ -166,8 +186,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Selecteert bestaande objecten in uw onderzoeksgebied die voldoen aan een reeks door u opgegeven criteria. Deze criteria kunnen gebaseerd zijn op attribuutquery's (bijvoorbeeld percelen die vrij zijn) en ruimtelijke query's (bijvoorbeeld binnen anderhalve kilometer van een rivier).
-
+            <p>Selecteert bestaande objecten in uw onderzoeksgebied die voldoen aan een reeks door u opgegeven criteria. Deze criteria kunnen gebaseerd zijn op attribuutquery's (bijvoorbeeld percelen die vrij zijn) en ruimtelijke query's (bijvoorbeeld binnen anderhalve kilometer van een rivier). 
             </p>
             <br/>
         </div>
@@ -182,8 +201,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Maakt nieuwe objecten in uw onderzoeksgebied die voldoen aan een reeks door u opgegeven criteria. Deze criteria kunnen gebaseerd zijn op attribuutquery's (bijvoorbeeld percelen die vrij zijn) en ruimtelijke query's (bijvoorbeeld binnen anderhalve kilometer van een rivier).
-
+            <p>Maakt nieuwe objecten in uw onderzoeksgebied die voldoen aan een reeks door u opgegeven criteria. Deze criteria kunnen gebaseerd zijn op attribuutquery's (bijvoorbeeld percelen die vrij zijn) en ruimtelijke query's (bijvoorbeeld binnen anderhalve kilometer van een rivier). 
             </p>
             <br/>
         </div>
@@ -199,6 +217,21 @@
             </table>
 <hr/>
             <p>Zoekt naar locaties die het meest of het minst lijken op een of meer referentielocaties op basis van de criteria die u opgeeft.
+            </p>
+            <br/>
+        </div>
+        <div id="ChooseBestFacilitiesTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Beste voorzieningen kiezen</h2></td>
+                    <td>
+                    <img src="../images/GUID-E57BEC1A-C404-436B-B389-65711FF83088-web.png" class="titleImage" alt="Beste voorzieningen kiezen">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Kies de beste locaties voor voorzieningen door locaties toe te wijzen die vragen naar deze voorzieningen op een manier die voldoet aan een bepaald doel.
             </p>
             <br/>
         </div>

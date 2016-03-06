@@ -1,4 +1,4 @@
-// COPYRIGHT © 2015 Esri
+// COPYRIGHT © 2016 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,5 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.16/esri/copyright.txt for details.
+
 define({display:{elevationProfileTitle:"Профиль рельефа",showMe:"показать",selectLine:"<b>Выберите</b> объект на карте.",popupRequirement:"Примечание: объект должен быть в слое с включенными всплывающими окнами.",digitizeDistanceMeasureTool:"Используйте инструменты группы <b>Измерение</b>.",selectFeatureHelpUrl:"http://help.arcgis.com/ru/arcgisonline/help/010q/010q0000004s000000.htm#ESRI_SECTION1_DAA22E89DF67448E8F3682309F39BE5D",measureToolHelpUrl:"http://help.arcgis.com/ru/arcgisonline/help/index.html#//010q00000096000000",hoverOver:"Наведите курсор мыши или щелкните график профиля рельефа для отображения высот и местоположений на карте."},buttons:{measureLabel:"Измерить",helpLabel:"Справка"},chart:{title:"Профиль рельефа",demResolution:"Разрешение ЦМР",elevationTitleTemplate:"Высота в {0}",distanceTitleTemplate:"Расстояние в {0}",gainLossTemplate:"Мин:{min}   Макс:{max}   Начало:{start}   Конец:{end}   Изменено:{gainloss}"},errors:{MissingConstructorParameters:"Пропуск параметра конструктора.",InvalidConfiguration:"Некорректная конфигурация",UnableToProcessResults:"Не удалось обработать результаты анализа."}});

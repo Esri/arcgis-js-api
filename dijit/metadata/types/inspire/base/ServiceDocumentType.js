@@ -1,4 +1,4 @@
-// COPYRIGHT © 2015 Esri
+// COPYRIGHT © 2016 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,5 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.16/esri/copyright.txt for details.
+
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","./InspireDocumentType","./ServiceRoot","dojo/i18n!../../../nls/i18nInspire"],function(e,n,i,t,a,o,s){var r=e(t,{caption:o.documentTypes.service.caption,description:o.documentTypes.service.description,key:"inspire-iso-19119",isService:!0,metadataStandardName:"INSPIRE Metadata Implementing Rules",metadataStandardVersion:"Technical Guidelines based on EN ISO 19115 and EN ISO 19119 (Version 1.2)",newRootDescriptor:function(){return new a}});return i("extend-esri")&&n.setObject("dijit.metadata.types.inspire.base.ServiceDocumentType",r,s),r});

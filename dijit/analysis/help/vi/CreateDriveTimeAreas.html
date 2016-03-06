@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -66,8 +84,11 @@
         <div>
             <p>C&aacute;c đối tượng điểm xung quanh khu vực đ&oacute; sẽ được t&iacute;nh to&aacute;n. Bạn c&oacute; thể chọn phương thức đi lại của bạn (l&aacute;i xe, đi xe kh&aacute;ch hoặc đi bộ) v&agrave; đo lường (thời gian hoặc khoảng c&aacute;ch).
             </p>
-            <p>B&ecirc;n cạnh việc chọn một lớp từ bản đồ của bạn, bạn cần chọn  <b>Chọn Lớp Ph&acirc;n t&iacute;ch Atlas Sinh sống</b> nằm dưới c&ugrave;ng trong danh s&aacute;ch xổ xuống 
+            <p class="OnlineOnly">B&ecirc;n cạnh việc chọn một lớp từ bản đồ của bạn, bạn cần chọn  <b>Chọn Lớp Ph&acirc;n t&iacute;ch Atlas Sinh sống</b> nằm dưới c&ugrave;ng trong danh s&aacute;ch xổ xuống 
 Thao t&aacute;c n&agrave;y mở ra một b&ocirc;̣ sưu t&acirc;̣p c&oacute; chứa c&aacute;c lớp hữu &iacute;ch cho nhiều sự ph&acirc;n t&iacute;ch kh&aacute;c nhau. 
+            </p>
+            <p>C&ocirc;ng cụ hỗ trợ tối đa 1.000 đối tượng trong lớp đầu v&agrave;o.
+
             </p>
         </div>
     </div>
@@ -90,7 +111,7 @@ Thao t&aacute;c n&agrave;y mở ra một b&ocirc;̣ sưu t&acirc;̣p c&oacute; c
                         </p>
                     </li>
                     <li>
-                        <p>Bằng c&aacute;ch chọn  <b>Sử dụng Giao th&ocirc;ng</b> v&agrave; chọn th&ocirc;ng tin <b>Giao th&ocirc;ng dựa tr&ecirc;n điều kiện điển h&igrave;nh theo</b> ng&agrave;y v&agrave; thời gian, c&ocirc;ng cụ sẽ tạo c&aacute;c khu vực thời gian l&aacute;i xe nhanh nhất dựa tr&ecirc;n tốc độ trung b&igrave;nh lưu trong lịch sử theo từng khoảng thời gian năm ph&uacute;t trong v&ograve;ng một tuần.      	C&aacute;c kết quả bao gồm giao th&ocirc;ng nhưng loại bỏ ảnh hưởng của điều kiện giao th&ocirc;ng hiện tại v&agrave; c&aacute;c sự kiện, c&oacute; thể thay đổi đ&aacute;ng kể so với định mức.
+                        <p>Bằng c&aacute;ch chọn  <b>Sử dụng Giao th&ocirc;ng</b> v&agrave; chọn <b>th&ocirc;ng tin Giao th&ocirc;ng dựa tr&ecirc;n điều kiện điển h&igrave;nh</b> theo ng&agrave;y v&agrave; thời gian, c&ocirc;ng cụ sẽ tạo c&aacute;c khu vực thời gian l&aacute;i xe nhanh nhất dựa tr&ecirc;n tốc độ trung b&igrave;nh lưu trong lịch sử theo từng khoảng thời gian năm ph&uacute;t trong v&ograve;ng một tuần. C&aacute;c kết quả bao gồm giao th&ocirc;ng nhưng loại bỏ ảnh hưởng của điều kiện giao th&ocirc;ng hiện tại v&agrave; c&aacute;c sự kiện, c&oacute; thể thay đổi đ&aacute;ng kể so với định mức.
                         </p>
                         <p>Bạn c&oacute; thể sử dụng c&aacute;c thiết đặt giao th&ocirc;ng lịch sử để hỏi, v&iacute; dụ: &quot;Th&ocirc;ng thường t&ocirc;i c&oacute; thể đến khu vực n&agrave;o khi khởi h&agrave;nh v&agrave;o l&uacute;c 11:30 s&aacute;ng v&agrave;o thứ tư?&quot; 
                         </p>

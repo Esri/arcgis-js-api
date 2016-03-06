@@ -1,4 +1,4 @@
-// COPYRIGHT © 2015 Esri
+// COPYRIGHT © 2016 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,7 +20,8 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.16/esri/copyright.txt for details.
+
 /* To avoid CSS expressions while still supporting IE 7 and IE 6, use this script */
 /* The script tag referencing this file must be placed before the ending body tag. */
 
@@ -172,6 +173,9 @@
 		'esri-icon-dock-left': '&#xe685;',
 		'esri-icon-dock-right': '&#xe686;',
 		'esri-icon-organization': '&#xe687;',
+		'esri-icon-north-navigation': '&#xe900;',
+		'esri-icon-locate-circled': '&#xe901;',
+		'esri-icon-dial': '&#xe902;',
 		'0': 0
 		},
 		els = document.getElementsByTagName('*'),

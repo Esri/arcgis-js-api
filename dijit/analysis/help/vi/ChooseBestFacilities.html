@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Chọn các Cơ sở Tốt nhất</h2><p/>
+        <h2><img src="../images/GUID-E57BEC1A-C404-436B-B389-65711FF83088-web.png" alt="Chọn c&aacute;c Cơ sở Tốt nhất"></h2>
+        <hr/>
+    <p>Chọn c&aacute;c Cơ sở Tốt nhất cho ph&eacute;p bạn chọn c&aacute;c vị tr&iacute; tốt nhất cho cơ sở. C&ocirc;ng cụ ph&acirc;n bổ c&aacute;c vị tr&iacute; c&oacute; nhu cầu cho c&aacute;c cơ sở theo c&aacute;ch l&agrave;m thỏa m&atilde;n mục ti&ecirc;u cụ thể.
+    </p>
+    <p>C&aacute;c cơ sở thể hiện c&aacute;c vị tr&iacute; cung cấp một số loại h&igrave;nh dịch vụ chẳng hạn như trạm cứu hỏa, trường học, thư viện, cửa h&agrave;ng, hoặc c&aacute;c trung t&acirc;m ph&acirc;n phối. C&aacute;c vị tr&iacute; c&oacute; nhu cầu thể hiện c&aacute;c vị tr&iacute; c&oacute; nhu cầu đối với c&aacute;c dịch vụ do c&aacute;c cơ sở cung cấp, chẳng hạn như c&aacute;c điểm khối điều tra d&acirc;n số tổng kết số d&acirc;n trong một khu vực nhất định.
+    </p>
+    <p>C&ocirc;ng cụ Chọn c&aacute;c Cơ sở Tốt nhất c&oacute; thể gi&uacute;p bạn trả lời c&aacute;c c&acirc;u hỏi chẳng hạn như
+        <ul>
+            <li>Trong trường hợp khẩn cấp, c&aacute;c hộ gia đ&igrave;nh c&oacute; thể được chỉ định tới đ&uacute;ng trung t&acirc;m cứu trợ thảm họa bằng c&aacute;ch n&agrave;o, khi m&agrave; số giường bị hạn chế v&agrave; kh&ocirc;ng được vượt qu&aacute; hạn chế đ&oacute;?
+            </li>
+            <li>L&agrave;m c&aacute;ch n&agrave;o bạn c&oacute; thể g&aacute;n c&aacute;c khu vực l&acirc;n cận với chi nh&aacute;nh thư viện gần nhất v&agrave; t&igrave;m số lượng kh&aacute;ch h&agrave;ng tiềm năng m&agrave; mỗi chi nh&aacute;nh đang phục vụ? 
+            </li>
+            <li>L&agrave;m c&aacute;ch n&agrave;o bạn c&oacute; thể t&igrave;m thấy vị tr&iacute; tốt nhất cho một trung t&acirc;m ph&acirc;n phối h&agrave;ng tạp h&oacute;a gi&uacute;p giảm thiểu tổng thời gian đi lại (v&agrave; cả chi ph&iacute;) cho việc ph&acirc;n phối đến một chuỗi c&aacute;c cửa h&agrave;ng tạp h&oacute;a?
+            </li>
+            <li>Một c&ocirc;ng vi&ecirc;n mới sẽ được đặt ở đ&acirc;u để đảm bảo số lượng d&acirc;n cư th&agrave;nh phố lớn nhất sống trong phạm vi năm ph&uacute;t đi bộ tới c&ocirc;ng vi&ecirc;n?
+            </li>
+            <li>C&aacute;c vị tr&iacute; tốt nhất n&agrave;o cho một số cửa h&agrave;ng b&aacute;n th&uacute; cưng trong một quận m&agrave; 40 phần trăm chủ sở hữu th&uacute; cưng của quận đ&oacute; kh&ocirc;ng cần l&aacute;i xe qu&aacute; mười ph&uacute;t từ một trong những cửa h&agrave;ng?
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="goal">
+        <div><h2>Mục tiêu</h2></div>
+        <hr/>
+        <div>
+            <p>X&aacute;c định r&otilde; mục ti&ecirc;u cần phải được đ&aacute;p ứng khi ph&acirc;n bổ c&aacute;c vị tr&iacute; c&oacute; nhu cầu cho c&aacute;c cơ sở.
+            </p>
+            <p>Với Chọn c&aacute;c Cơ sở Tốt nhất, bạn c&oacute; thể x&aacute;c định r&otilde; loại vấn đề m&agrave; m&igrave;nh đang giải quyết&mdash;Mục ti&ecirc;u. C&ocirc;ng cụ n&agrave;y được tối ưu để cung cấp một giải ph&aacute;p cho mục ti&ecirc;u cụ thể đ&oacute;. Bất kể mục ti&ecirc;u n&agrave;o, về cơ bản th&igrave; đều sử dụng c&ugrave;ng phương ph&aacute;p cơ bản để tiếp cận một giải ph&aacute;p&mdash;số lượng c&oacute; nhu cầu từ một vị tr&iacute; c&oacute; nhu cầu nhất định được ph&acirc;n bổ cho cơ sở gần nhất. C&aacute;c mục ti&ecirc;u thay đổi theo c&aacute;ch xử l&yacute; t&aacute;c động lẫn nhau giữa khoảng c&aacute;ch (hoặc thời gian) v&agrave; nhu cầu. C&ocirc;ng cụ n&agrave;y c&acirc;n nhắc cả khoảng c&aacute;ch/thời gian di chuyển v&agrave; lượng nhu cầu, v&agrave;&mdash;trong một số trường hợp&mdash;sức chứa của c&aacute;c cơ sở. Nếu một mục ti&ecirc;u thi&ecirc;n về giảm thiểu thời gian di chuyển, v&iacute; dụ, c&ocirc;ng cụ vẫn sẽ cố gắng tối đa nhu cầu được ph&acirc;n bổ. Tương tự, nếu mục ti&ecirc;u l&agrave; tối ưu nhu cầu được ph&acirc;n bổ, c&ocirc;ng cụ sẽ l&agrave;m vậy bằng c&aacute;ch giảm thiểu thời gian di chuyển (bằng c&aacute;ch g&aacute;n c&aacute;c vị tr&iacute; c&oacute; nhu cầu cho cơ sở gần nhất chứ kh&ocirc;ng phải l&agrave; bất kỳ cơ sở n&agrave;o).
+            </p>
+            <p>T&ugrave;y thuộc v&agrave;o dữ liệu của bạn v&agrave; c&aacute;c thiết lập bạn sử dụng, c&aacute;c mục ti&ecirc;u kh&aacute;c nhau c&oacute; thể cho ra c&ugrave;ng kết quả hoặc kết quả tương tự. Tuy nhi&ecirc;n, bạn cần x&aacute;c định r&otilde; mục ti&ecirc;u n&agrave;o ph&ugrave; hợp nhất cho ph&acirc;n t&iacute;ch của m&igrave;nh.
+            </p> 
+        </div>
+    </div>
+    <div id="allocateToExistingFacilities">
+        <div><h2>Phân bổ cho các cơ sở hiện có</h2></div>
+        <hr/>
+        <div>
+            <p>Sử dụng mục ti&ecirc;u n&agrave;y nếu bạn kh&ocirc;ng muốn định vị c&aacute;c cơ sở mới v&agrave; muốn g&aacute;n nhu cầu cho c&aacute;c cơ sở hiện c&oacute; m&agrave; c&oacute; thể c&oacute; sức chứa hạn chế hoặc kh&ocirc;ng hạn chế.    
+            </p>
+            <p>Mục ti&ecirc;u n&agrave;y g&aacute;n nhu cầu cho c&aacute;c cơ sở dựa tr&ecirc;n sức chứa tại cơ sở v&agrave; lượng nhu cầu từ khu vực xung quanh. Nhu cầu được ph&acirc;n bổ cho cơ sở gần nhất cho đến khi đ&aacute;p ứng được sức chứa khả dụng. Nếu bạn x&aacute;c định r&otilde; phạm vi di chuyển tối đa, bất kỳ vị tr&iacute; c&oacute; nhu cầu n&agrave;o vượt qu&aacute; phạm vi sẽ kh&ocirc;ng được g&aacute;n cho một cơ sở, ngay cả khi tất cả c&aacute;c nhu cầu chưa được ph&acirc;n bổ ho&agrave;n to&agrave;n.
+            </p> 
+        </div>
+    </div>
+    <div id="minimizeTravel">
+        <div><h2>Giảm thiểu việc di chuyển</h2></div>
+        <hr/>
+        <div>
+            <p>Sử dụng mục ti&ecirc;u n&agrave;y nếu bạn muốn định vị c&aacute;c cơ sở m&agrave; giảm thiểu được tổng thời gian di chuyển hoặc khoảng c&aacute;ch di chuyển giữa c&aacute;c vị tr&iacute; c&oacute; nhu cầu v&agrave; c&aacute;c cơ sở.
+            </p>
+            <p>Thường &aacute;p dụng mục ti&ecirc;u n&agrave;y khi cần phải di chuyển giữa cơ sở v&agrave; tất cả c&aacute;c vị tr&iacute; c&oacute; nhu cầu tr&ecirc;n cơ sở thường xuy&ecirc;n. Bạn sẽ sử dụng mục ti&ecirc;u n&agrave;y, v&iacute; dụ, để giảm thiểu tổng khoảng c&aacute;ch di chuyển để di chuyển h&agrave;ng h&oacute;a từ c&aacute;c trung t&acirc;m ph&acirc;n phối đến c&aacute;c cửa h&agrave;ng, hoặc để chọn một địa điểm cho một cuộc họp theo c&aacute;ch giảm thiểu thời gian di chuyển cho tất cả người tham dự.
+            </p> 
+        </div>
+    </div>
+    <div id="maximizeCoverage">
+        <div><h2>Tối đa phạm vi</h2></div>
+        <hr/>
+        <div>
+            <p>Sử dụng mục ti&ecirc;u n&agrave;y nếu bạn muốn tối đa lượng nhu cầu c&oacute; trong một thời gian hoặc khoảng c&aacute;ch cụ thể của c&aacute;c cơ sở.    
+            </p>
+            <p>Mục ti&ecirc;u n&agrave;y chọn c&aacute;c cơ sở m&agrave; lượng nhu cầu tối đa được ph&acirc;n bổ, với tất cả c&aacute;c nhu cầu từ mỗi vị tr&iacute; c&oacute; nhu cầu được ph&acirc;n bổ cho một cơ sở gần nhất.
+            </p>
+            <p>Cần c&oacute; phạm vi di chuyển tối đa hữu hạn cho mục ti&ecirc;u n&agrave;y; nếu kh&ocirc;ng, tất cả c&aacute;c nhu cầu c&oacute; thể được ph&acirc;n bổ cho một cơ sở duy nhất. C&aacute;c vị tr&iacute; c&oacute; nhu cầu vượt qu&aacute; khoảng c&aacute;ch hoặc thời gian của bất kỳ cơ sở n&agrave;o sẽ kh&ocirc;ng được ph&acirc;n bổ (điều n&agrave;y sẽ cho bạn thấy nhu cầu kh&ocirc;ng được đ&aacute;p ứng ở đ&acirc;u v&agrave; c&oacute; thể cần th&ecirc;m cơ sở ở đ&acirc;u).
+            </p> 
+        </div>
+    </div>
+    <div id="maximizeCoverageWithCapacity">
+        <div><h2>Tối đa phạm vi với sức chứa</h2></div>
+        <hr/>
+        <div>
+            <p>Sử dụng mục ti&ecirc;u n&agrave;y nếu bạn muốn tối đa lượng nhu cầu c&oacute; trong c&aacute;c cơ sở nhưng c&aacute;c cơ sở n&agrave;y lại c&oacute; sức chứa hạn chế.    
+            </p>
+            <p>Mục ti&ecirc;u n&agrave;y chọn c&aacute;c cơ sở m&agrave; lượng nhu cầu tối đa được ph&acirc;n bổ m&agrave; kh&ocirc;ng vượt qu&aacute; sức chứa của bất kỳ cơ sở. Tất cả c&aacute;c nhu cầu từ mỗi vị tr&iacute; nhu cầu được ph&acirc;n bổ cho một cơ sở duy nhất gần nhất c&oacute; sức chứa khả dụng (nghĩa l&agrave;, nếu g&aacute;n một vị tr&iacute; c&oacute; nhu cầu cho một cơ sở sẽ vượt qu&aacute; sức chứa khả dụng của cơ sở, vị tr&iacute; c&oacute; nhu cầu sẽ kh&ocirc;ng được g&aacute;n, thay v&igrave; g&aacute;n một phần nhu cầu).
+            </p> 
+        </div>
+    </div>
+    <div id="coverAPercentageOfDemand">
+        <div><h2>Đưa vào tỷ lệ phần trăm nhu cầu</h2></div>
+        <hr/>
+        <div>
+            <p>Sử dụng mục ti&ecirc;u n&agrave;y nếu bạn muốn t&igrave;m hiểu số lượng cơ sở tối thiểu m&agrave; bạn cần phải đưa v&agrave;o tỷ lệ phần trăm nhu cầu nhất định.
+            </p>
+            <p>Mục ti&ecirc;u n&agrave;y chọn số lượng cơ sở tối thiểu cần đạt được tỷ lệ phần trăm nhu cầu cụ thể. Một vị tr&iacute; c&oacute; nhu cầu nằm trong phạm vi di chuyển tối đa của hai hay nhiều cơ sở sẽ c&oacute; nhu cầu được ph&acirc;n chia theo tỷ lệ giữa c&aacute;c cơ sở dựa tr&ecirc;n khoảng c&aacute;ch của vị tr&iacute; từ mỗi cơ sở. Mục ti&ecirc;u n&agrave;y thường được sử dụng khi mọi người c&oacute; lựa chọn đến cơ sở n&agrave;o v&agrave; giả thiết đưa ra l&agrave; họ sẽ tới cơ sở gần nhất (tất cả những yếu tố kh&aacute;c l&agrave; như nhau).
+            </p>
+            <p>Kh&ocirc;ng giống như c&aacute;c mục ti&ecirc;u chọn cơ sở kh&aacute;c, trong đ&oacute; bạn x&aacute;c định r&otilde; cần chọn bao nhi&ecirc;u cơ sở, mục ti&ecirc;u n&agrave;y chọn số lượng cơ sở cho bạn dựa tr&ecirc;n tỷ lệ phần trăm nhu cầu bạn muốn đ&aacute;p ứng. Giả sử c&aacute;c cơ sở kh&ocirc;ng c&oacute; sức chứa hạn chế.
+            </p> 
+        </div>
+    </div>
+    <div id="measure">
+        <div><h2>Đo lường</h2></div>
+        <hr/>
+        <div>
+            <p>Như với c&aacute;c c&ocirc;ng cụ kh&aacute;c c&oacute; t&iacute;nh việc di chuyển trong ph&acirc;n t&iacute;ch, bạn c&oacute; thể x&aacute;c định r&otilde; liệu việc di chuyển c&oacute; được đo bằng khoảng c&aacute;ch hoặc thời gian, v&agrave; c&oacute; thể chọn từ c&aacute;c phương thức di chuyển kh&aacute;c nhau chẳng hạn như thời gian đi bộ, thời gian l&aacute;i xe, qu&atilde;ng đường l&aacute;i xe ở n&ocirc;ng th&ocirc;ng, vv... Người quản trị của tổ chức của bạn c&oacute; thể x&aacute;c định c&aacute;c phương thức đi lại khả dụng. Khi sử dụng Thời gian L&aacute;i xe hoặc Thời gian L&aacute;i xe ở N&ocirc;ng th&ocirc;n, bạn c&oacute; thể t&ugrave;y &yacute; đưa v&agrave;o cả điều kiện giao th&ocirc;ng cho một ng&agrave;y cụ thể trong tuần v&agrave; thời gian trong ng&agrave;y. 
+            </p>
+            <p> Để ph&acirc;n bổ ch&iacute;nh x&aacute;c c&aacute;c vị tr&iacute; c&oacute; nhu cầu cho c&aacute;c cơ sở, bạn x&aacute;c định r&otilde; việc di chuyển l&agrave; từ c&aacute;c cơ sở đến c&aacute;c vị tr&iacute; c&oacute; nhu cầu (v&iacute; dụ như từ trạm cứu hỏa đến nh&agrave;) hay từ c&aacute;c vị tr&iacute; c&oacute; nhu cầu đến c&aacute;c cơ sở (như với kh&aacute;ch h&agrave;ng quen đến thư viện). Chọn c&aacute;c Cơ sở Tốt nhất sẽ t&iacute;nh hướng đi tr&ecirc;n đường một chiều, d&ugrave; bạn c&oacute; thể chuyển từ đường n&agrave;y sang đường kh&aacute;c, d&ugrave; c&aacute;c giao lộ kh&ocirc;ng c&oacute; rẽ tr&aacute;i, vv..., t&ugrave;y thuộc v&agrave;o việc liệu c&oacute; đi ra khỏi cơ sở đến c&aacute;c vị tr&iacute; c&oacute; nhu cầu, hay đi v&agrave;o từ c&aacute;c vị tr&iacute; c&oacute; nhu cầu đến c&aacute;c cơ sở.
+            </p>
+        </div>
+    </div>
+    <div id="demandLocationsLayer">
+        <div><h2>Lớp Vị trí có Nhu cầu</h2></div>
+        <hr/>
+        <div>
+            <p>C&aacute;c đối tượng điểm thể hiện c&aacute;c vị tr&iacute; c&oacute; nhu cầu đối với c&aacute;c dịch vụ do cơ sở cung cấp. C&ocirc;ng cụ g&aacute;n c&aacute;c vị tr&iacute; c&oacute; nhu cầu n&agrave;y cho c&aacute;c cơ sở th&iacute;ch hợp dựa tr&ecirc;n mục ti&ecirc;u đ&atilde; chọn.
+            </p>
+            <p>C&aacute;c vị tr&iacute; c&oacute; nhu cầu c&oacute; lượng nhu cầu kết hợp. Sử dụng một hằng số để x&aacute;c định gi&aacute; trị nếu tất cả c&aacute;c vị tr&iacute; nhu cầu c&oacute; c&ugrave;ng nhu cầu. Nếu lượng nhu cầu kh&aacute;c nhau theo vị tr&iacute; c&oacute; nhu cầu, h&atilde;y sử dụng một trường trong Lớp Vị tr&iacute; c&oacute; Nhu cầu để x&aacute;c định gi&aacute; trị cho mỗi vị tr&iacute; c&oacute; nhu cầu.
+            </p>
+            <p>Nhu cầu sẽ được ph&acirc;n bổ cho c&aacute;c cơ sở cho đến khi tất cả c&aacute;c nhu cầu đ&atilde; được ph&acirc;n bổ, bất kể vị tr&iacute; c&oacute; nhu cầu c&aacute;ch cơ sở bao xa. Bạn c&oacute; thể g&aacute;n phạm vi di chuyển tối đa cho Lớp Vị tr&iacute; c&oacute; Nhu cầu để tạo ra ngưỡng khoảng c&aacute;ch hoặc thời gian&mdash;bất kỳ vị tr&iacute; c&oacute; nhu cầu vượt qu&aacute; ngưỡng gi&aacute; trị sẽ kh&ocirc;ng được ph&acirc;n bổ. Sử dụng một hằng số để x&aacute;c định gi&aacute; trị nếu tất cả c&aacute;c vị tr&iacute; nhu cầu c&oacute; c&ugrave;ng phạm vi di chuyển tối đa. Nếu phạm vi di chuyển tối đa kh&aacute;c nhau theo vị tr&iacute; c&oacute; nhu cầu, h&atilde;y sử dụng một trường trong Lớp Vị tr&iacute; c&oacute; Nhu cầu để x&aacute;c định gi&aacute; trị cho mỗi vị tr&iacute; c&oacute; nhu cầu.
+            </p>
+            <p>Nếu loại mục ti&ecirc;u l&agrave;  <b>Đưa v&agrave;o tỷ lệ phần trăm nhu cầu</b>, bạn c&oacute; thể cần x&aacute;c định tỷ lệ phần trăm nhu cầu tối thiểu m&agrave; bạn muốn c&aacute;c cơ sở nắm bắt.
+            </p>
+            <p class="OnlineOnly">B&ecirc;n cạnh việc chọn một lớp từ bản đồ của bạn, bạn cần chọn  <b>Chọn Lớp Ph&acirc;n t&iacute;ch Atlas Sinh sống</b> nằm dưới c&ugrave;ng trong danh s&aacute;ch xổ xuống 
+Thao t&aacute;c n&agrave;y mở ra một b&ocirc;̣ sưu t&acirc;̣p c&oacute; chứa c&aacute;c lớp hữu &iacute;ch cho nhiều sự ph&acirc;n t&iacute;ch kh&aacute;c nhau. 
+            </p>
+            <p>C&ocirc;ng cụ hỗ trợ tối đa 10.000 đối tượng ở Lớp Vị tr&iacute; c&oacute; Nhu cầu.
+            </p>  
+        </div>
+    </div>
+    <div id="requiredFacilitiesLayer">
+        <div><h2>Lớp Cơ sở Bắt buộc</h2></div>
+        <hr/>
+        <div>
+            <p>C&aacute;c đối tượng điểm thể hiện c&aacute;c vị tr&iacute; đ&oacute;ng vai tr&ograve; l&agrave; c&aacute;c cơ sở bằng c&aacute;ch cung cấp một số loại h&igrave;nh dịch vụ. C&aacute;c cơ sở bắt buộc thường thể hiện c&aacute;c vị tr&iacute; đ&atilde; tồn tại khi so s&aacute;nh với c&aacute;c cơ sở ứng vi&ecirc;n m&agrave; thường thể hiện c&aacute;c vị tr&iacute; tại đ&oacute; sẽ x&acirc;y dựng hoặc đặt c&aacute;c cơ sở mới. Khi ph&acirc;n bổ c&aacute;c vị tr&iacute; c&oacute; nhu cầu, c&ocirc;ng cụ sử dụng c&aacute;c cơ sở trong  <b>Lớp Cơ sở Bắt buộc</b> trước bất kỳ cơ sở từ <b>Lớp Cơ sở Ứng vi&ecirc;n</b>.
+            </p>
+            <p>C&aacute;c cơ sở bắt buộc c&oacute; thể c&oacute; sức chứa kh&ocirc;ng hạn chế (nghĩa l&agrave;, c&aacute;c cơ sở n&agrave;y c&oacute; thể đ&aacute;p ứng mọi nhu cầu được g&aacute;n cho ch&uacute;ng) hoặc c&oacute; thể c&oacute; sức chứa hạn chế. Nếu tất cả c&aacute;c cơ sở c&oacute; c&ugrave;ng sức chứa hạn chế (chẳng hạn như số hộ gia đ&igrave;nh m&agrave; một trạm cứu hỏa c&oacute; thể phục vụ&mdash;giả sử l&agrave; 4.000), h&atilde;y x&aacute;c định r&otilde; một gi&aacute; trị hằng số. Nếu sức chứa kh&aacute;c nhau giữa c&aacute;c cơ sở (chẳng hạn như số lượng chỉ ti&ecirc;u đầu v&agrave;o cho học sinh mới tại mỗi trường trung học), h&atilde;y x&aacute;c định r&otilde; một trường c&oacute; chứa gi&aacute; trị sức chứa cho mỗi cơ sở.
+            </p>
+            <p>C&ocirc;ng cụ hỗ trợ tối đa 100 đối tượng ở  <b>Lớp Cơ sở Bắt buộc</b>.
+            </p>  
+        </div>
+    </div>
+    <div id="candidateFacilitiesLayer">
+        <div><h2>Lớp Cơ sở Ứng viên</h2></div>
+        <hr/>
+        <div>
+            <p>C&aacute;c đối tượng điểm thể hiện c&aacute;c vị tr&iacute; đ&oacute;ng vai tr&ograve; l&agrave; c&aacute;c cơ sở bằng c&aacute;ch cung cấp một số loại h&igrave;nh dịch vụ. C&aacute;c cơ sở ứng vi&ecirc;n thường thể hiện c&aacute;c vị tr&iacute; tại đ&oacute; sẽ x&acirc;y dựng hoặc đặt c&aacute;c cơ sở mới ngược với c&aacute;c cơ sở bắt buộc thường thể hiện c&aacute;c vị tr&iacute; đ&atilde; tồn tại.
+            </p>
+            <p>T&ugrave;y thuộc v&agrave;o mục ti&ecirc;u ph&acirc;n t&iacute;ch của bạn, bạn cần x&aacute;c định số lượng cơ sở ứng vi&ecirc;n để chọn từ tập hợp c&aacute;c ứng vi&ecirc;n. Khi bạn x&aacute;c định cả cơ sở bắt buộc v&agrave; ứng vi&ecirc;n, c&ocirc;ng cụ sử dụng c&aacute;c cơ sở trong  <b>Lớp Cơ sở Bắt buộc</b> trước bất kỳ cơ sở từ <b>Lớp Cơ sở Ứng vi&ecirc;n</b>.
+            </p>
+            <p>C&aacute;c cơ sở ứng vi&ecirc;n c&oacute; thể c&oacute; sức chứa kh&ocirc;ng hạn chế (nghĩa l&agrave;, c&aacute;c cơ sở n&agrave;y c&oacute; thể đ&aacute;p ứng mọi nhu cầu được g&aacute;n cho ch&uacute;ng) hoặc c&oacute; thể c&oacute; sức chứa hạn chế. Nếu tất cả c&aacute;c cơ sở c&oacute; c&ugrave;ng sức chứa hạn chế (chẳng hạn như số hộ gia đ&igrave;nh m&agrave; một trạm cứu hỏa c&oacute; thể phục vụ&mdash;giả sử l&agrave; 4.000), h&atilde;y x&aacute;c định r&otilde; một gi&aacute; trị hằng số. Nếu sức chứa kh&aacute;c nhau giữa c&aacute;c cơ sở (chẳng hạn như số c&aacute;c vị tr&iacute; khả dụng cho c&aacute;c học sinh mới tại mỗi trường trung học), h&atilde;y x&aacute;c định r&otilde; một trường c&oacute; chứa gi&aacute; trị sức chứa cho mỗi cơ sở.
+            </p>
+            <p>C&ocirc;ng cụ hỗ trợ tối đa 1.000 đối tượng ở  <b>Lớp Cơ sở Ứng vi&ecirc;n</b>.
+            </p>  
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tên lớp kết quả</h2></div>
+        <hr/>
+        <div>
+            <p>Đ&acirc;y l&agrave; t&ecirc;n lớp sẽ được tạo trong mục  <b>Nội dung của T&ocirc;i</b> v&agrave; th&ecirc;m v&agrave;o bản đồ. T&ecirc;n mặc định dựa v&agrave;o t&ecirc;n c&ocirc;ng cụ v&agrave; t&ecirc;n lớp đầu v&agrave;o. Nếu lớp đ&atilde; tồn tại, bạn sẽ được y&ecirc;u cầu cung cấp t&ecirc;n mới.
+            </p>
+            <p>Lớp kết quả sẽ chứa một lớp cho mỗi cơ sở sau đ&acirc;y: c&aacute;c cơ sở được g&aacute;n c&aacute;c nhu cầu, c&aacute;c vị tr&iacute; nhu cầu được ph&acirc;n bổ cho c&aacute;c cơ sở, v&agrave; c&aacute;c đường ph&acirc;n bổ kết nối c&aacute;c vị tr&iacute; c&oacute; nhu cầu với c&aacute;c cơ sở được g&aacute;n của ch&uacute;ng. C&aacute;c đường ph&acirc;n bổ được vẽ dưới dạng c&aacute;c đường thẳng, tuy nhi&ecirc;n thời gian di chuyển hoặc khoảng c&aacute;ch đi lại giữa cơ sở v&agrave; vị tr&iacute; c&oacute; nhu cầu lu&ocirc;n được dựa tr&ecirc;n phương thức đi lại m&agrave; bạn x&aacute;c định chứ kh&ocirc;ng sử dụng c&aacute;c khoảng c&aacute;ch đường thẳng.
+            </p>
+            <p>Sử dụng hộp xổ xuống  <b>Lưu kết quả trong</b>, bạn c&oacute; thể chỉ định t&ecirc;n thư mục trong mục <b>Nội dung của T&ocirc;i</b> nơi sẽ lưu trữ kết quả của bạn.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

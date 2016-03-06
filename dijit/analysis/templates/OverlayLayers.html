@@ -37,14 +37,14 @@
         </tr>
         <tr data-dojo-attach-point="_selectAnalysisRow" style="display:none;">
           <td  colspan="3" style="padding-top:0">
-            <select class="esriLeadingMargin1 longInput esriLongLabel"  style="margin-top:1.0em;" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_analysisSelect" data-dojo-attach-event="onChange:_handleAnalysisLayerChange"></select>
+            <select class="esriLeadingMargin1 longInput esriLongLabel"  style="margin-top:1.0em;" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_analysisSelect" data-dojo-props="required:true" data-dojo-attach-event="onChange:_handleAnalysisLayerChange"></select>
           </td>
         </tr>          
         <tr>
           <td colspan="2">
             <label data-dojo-attach-point="_labelOne" class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.oneLabel}</label>
             <label data-dojo-attach-point="_polylabel" class="esriAnalysisStepsLabel">${i18n.chooseOverlayLayer}</label>
-            <select class="esriLeadingMargin1  longInput esriAnalysisSelect esriLongLabel"  style="width:125%;margin-top:10px;table-layout:fixed;" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_overlayFeaturesSelect" data-dojo-attach-event="onChange:_handleLayerChange"></select>
+            <select class="esriLeadingMargin1  longInput esriAnalysisSelect esriLongLabel"  style="width:125%;margin-top:10px;table-layout:fixed;" data-dojo-type="dijit/form/Select" data-dojo-props="required:true" data-dojo-attach-point="_overlayFeaturesSelect" data-dojo-attach-event="onChange:_handleLayerChange"></select>
           </td>
           <td class="shortTextInput" width="1%">
             <a href="#" class='esriFloatTrailing helpIcon' data-dojo-attach-point="_analysisFieldHelpLink" esriHelpTopic="OverlayLayer"></a> 

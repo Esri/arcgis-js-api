@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -33,7 +51,7 @@
             <li>基于遭受最严重疾病的村庄所具有的各项特征，其他哪些村庄有较高的风险？
             </li>
         </ul>
-        要回答此类问题，应提供参考位置、候选搜索位置和表示匹配条件的字段。 第一个输入图层应包含参考位置或基准位置。 例如，这可能是包含绩效最佳的商店或遭受最严重疾病的村庄所在的图层。然后指定包含候选搜索位置的图层。这可能是所有商店或所有其他村庄。最后，标识出一个或多个用来测量相似性的字段。随后，&ldquo;查找相似位置&rdquo;工具将在所有已选字段中，按候选搜索位置与参考位置之间的相近程度，为所有候选搜索位置划分等级。
+        要回答此类问题，应提供参考位置、候选搜索位置和表示匹配条件的字段。第一个输入图层应包含参考位置或基准位置。例如，这可能是包含绩效最佳的商店或遭受最严重疾病的村庄所在的图层。然后指定包含候选搜索位置的图层。这可能是所有商店或所有其他村庄。最后，标识出一个或多个用来测量相似性的字段。随后，&ldquo;查找相似位置&rdquo;工具将在所有已选字段中，按候选搜索位置与参考位置之间的相近程度，为所有候选搜索位置划分等级。
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -42,9 +60,8 @@
         <hr/>
         <div>
             <p>包含待匹配参考位置的点图层、线图层或区域图层。
-
             </p>
-            <p>除了从地图选择图层，您也可以选择下拉列表底部的 <b>选择生动地图集分析图层</b>。 此操作将打开包含可用于许多分析的图层集合的图库。 
+            <p class="OnlineOnly">除了从地图选择图层，您也可以选择下拉列表底部的 <b>选择 Living Atlas 分析图层</b>。此操作将打开包含可用于许多分析的图层集合的图库。 
             </p>
         </div>
     </div>
@@ -53,7 +70,6 @@
         <hr/>
         <div>
             <p>如有必要，请使用选择按钮标识参考位置。例如，如果输入图层包含所有位置（参考位置以及候选搜索位置），则需要使用其中一个选择工具来标识参考位置。如果创建两个独立的图层，其中一个包含参考位置而另一个包含所有候选搜索位置，则不需要进行选择。
-
             </p>
             <p>如果存在多个参考位置，则通过对每个用于分析相似性的字段求平均值来创建单个位置。
             </p>
@@ -64,9 +80,8 @@
         <hr/>
         <div>
             <p>从最相似到最不相似为此图层中的候选搜索位置划分等级。相似性基于在指定字段中每个位置与参考位置之间的相近程度。
-
             </p>
-            <p>除了从地图选择图层，您也可以选择下拉列表底部的 <b>选择生动地图集分析图层</b>。 此操作将打开包含可用于许多分析的图层集合的图库。 
+            <p class="OnlineOnly">除了从地图选择图层，您也可以选择下拉列表底部的 <b>选择 Living Atlas 分析图层</b>。此操作将打开包含可用于许多分析的图层集合的图库。 
             </p>
         </div>
     </div>
@@ -75,7 +90,6 @@
         <hr/>
         <div>
             <p>所选字段将成为用于评估相似性的条件。例如，如果选择人口和收入字段，则具有最低（最佳）等级的候选搜索位置将是那些与参考位置具有相似人口和收入值的位置。
-
             </p>
         </div>
     </div>
@@ -98,10 +112,10 @@
         <div><h2>结果图层名称</h2></div>
         <hr/>
         <div>
-            <p>为在 <b>我的内容</b>中创建并添加到地图中的图层命名。 该结果图层将包含参考位置和指定的已划分等级的候选搜索位置的数量。如果结果图层名称已存在，则系统会要求您重命名该图层。
+            <p>为在 <b>我的内容</b>中创建并添加到地图中的图层命名。该结果图层将包含参考位置和指定的已划分等级的候选搜索位置的数量。如果结果图层名称已存在，则系统会要求您重命名该图层。
             </p>
             <p>使用 <b>将结果保存到</b>下拉框，可以在 <b>我的内容</b>中指定文件夹的名称，结果将保存到该文件夹中。
-            </p>
+            </p>  
         </div>
     </div>
 </div>

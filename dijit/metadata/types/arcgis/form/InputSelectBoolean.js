@@ -1,4 +1,4 @@
-// COPYRIGHT © 2015 Esri
+// COPYRIGHT © 2016 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,5 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.16/esri/copyright.txt for details.
+
 define(["dojo/_base/declare","dojo/_base/lang","dojo/Deferred","dojo/has","../../../../../kernel","../../../form/InputSelectOne","../../../form/Option","dojo/i18n!../../../nls/i18nArcGIS"],function(e,t,a,l,n,s,i,r){var u=e([s],{allInline:!0,serializeIfFalse:!1,falseLabel:r.booleanOptions._false,trueLabel:r.booleanOptions._true,falseValue:"False",trueValue:"True",postCreate:function(){this.inherited(arguments)},fetchOptionWidgets:function(){var e=new a,t=[];return t.push(new i({label:this.falseLabel,value:this.falseValue})),t.push(new i({label:this.trueLabel,value:this.trueValue})),e.resolve(t),e},getXmlValue:function(){var e=this.inherited(arguments);return null===e||this.serializeIfFalse||e!==this.falseValue?e:null},importValue:function(e,t){if("undefined"!=typeof t&&null!==t&&t.toLowerCase){var a=t.toLowerCase();"true"===a||"1"===a?t=this.trueValue:("false"===a||"0"===a)&&(t=this.falseValue)}this.setInputValue(t)}});return l("extend-esri")&&t.setObject("dijit.metadata.types.arcgis.form.InputSelectBoolean",u,n),u});

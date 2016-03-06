@@ -1,4 +1,4 @@
-// COPYRIGHT © 2015 Esri
+// COPYRIGHT © 2016 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,5 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.16/esri/copyright.txt for details.
+
 define(["dojo/has","./kernel"],function(e,r){var E={CENTIMETERS:"esriCentimeters",DECIMAL_DEGREES:"esriDecimalDegrees",DEGREE_MINUTE_SECONDS:"esriDegreeMinuteSeconds",DECIMETERS:"esriDecimeters",FEET:"esriFeet",INCHES:"esriInches",KILOMETERS:"esriKilometers",METERS:"esriMeters",MILES:"esriMiles",MILLIMETERS:"esriMillimeters",NAUTICAL_MILES:"esriNauticalMiles",POINTS:"esriPoints",UNKNOWN:"esriUnknownUnits",YARDS:"esriYards",ACRES:"esriAcres",ARES:"esriAres",SQUARE_KILOMETERS:"esriSquareKilometers",SQUARE_MILES:"esriSquareMiles",SQUARE_FEET:"esriSquareFeet",SQUARE_METERS:"esriSquareMeters",HECTARES:"esriHectares",SQUARE_YARDS:"esriSquareYards",SQUARE_INCHES:"esriSquareInches",SQUARE_MILLIMETERS:"esriSquareMillimeters",SQUARE_CENTIMETERS:"esriSquareCentimeters",SQUARE_DECIMETERS:"esriSquareDecimeters",SQUARE_NAUTICAL_MILES:"esriSquareNauticalMiles",METERS_PER_SECOND:"esriMetersPerSecond",KILOMETERS_PER_HOUR:"esriKilometersPerHour",KNOTS:"esriKnots",FEET_PER_SECOND:"esriFeetPerSecond",MILES_PER_HOUR:"esriMilesPerHour",RADIANS:"esriDURadians"};return e("extend-esri")&&(r.Units=E),E});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2015 Esri
+// COPYRIGHT © 2016 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,5 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.16/esri/copyright.txt for details.
+
 define(["../../declare","../../geometry/Point","./LocationProviderClientBase"],function(e,i,t){return e("esri.tasks.locationproviders.CoordinatesLocationProvider",t,{xField:null,yField:null,geometryType:"esriGeometryPoint",getGeometry:function(e){var t=parseFloat(e.attributes[this.xField]),r=parseFloat(e.attributes[this.yField]);return isNaN(t)||isNaN(r)?void 0:new i(t,r,this.inSpatialReference)}})});

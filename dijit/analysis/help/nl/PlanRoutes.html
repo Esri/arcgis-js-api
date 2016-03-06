@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -54,13 +72,14 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="stopsLayer">
-        <div><h2>Kies puntlaag die de stopplaatsen weergeeft</h2></div>
+        <div><h2>Kies de puntenlaag die de stopplaatsen weergeeft</h2></div>
         <hr/>
         <div>
-            <p>Kies de laag met punten die de routes (of voertuigen) moeten bezoeken. Deze punten worden toegewezen of niet-toegewezen stopplaatsen in de uitvoer.
-
+            <p>Kies de laag met punten die de routes (of voertuigen) moeten bezoeken. Deze punten worden toegewezen of niet-toegewezen stopplaatsen in de uitvoer. 
             </p>
-            <p>Naast het kiezen van een laag uit uw kaart, kunt u  <b>Analyselaag Levende Atlas kiezen</b> selecteren onderaan de vervolgkeuzelijst. Er wordt een galerij geopend met een verzameling lagen die handig zijn voor veel analyses. 
+            <p class="OnlineOnly">Naast het kiezen van een laag uit uw kaart, kunt u  <b>Analyselaag Levende Atlas kiezen</b> selecteren onderaan de vervolgkeuzelijst. Er wordt een galerij geopend met een verzameling lagen die handig zijn voor veel analyses. 
+            </p>
+            <p>De tool ondersteunt maximaal 2.000 invoerobjecten. 
             </p>
         </div>
     </div>
@@ -85,9 +104,9 @@
             <p>Als meerdere locaties zijn opgegeven, moet elk voertuig met zijn eigen punt worden geassocieerd. Het aantal voertuigen moet overeenkomen met het aantal punten op de laag. Kies een laag met meerdere punten en geef een veld op dat de individuele routes, voertuigen of chauffeurs uniek identificeert in de vervolgkeuzelijst  <b>Route ID</b>
             </p>
             <p>De begintijd is voor alle routes gelijk. De tijdzone voor de begintijd is gelijk aan de tijdzone waarin het beginpunt of -punten zich bevinden, dus zorg dat de tijd die u invoert de lokale tijd is. Stel bijvoorbeeld dat u zich in de tijdzone Pacific Standard Time (UTC-8:00) bevindt en dat de voertuigen die u routeert in de tijdzone Mountain Standard Time (UTC-7:00) zijn. Als
-het op dit moment 9:30 uurPST (10:30 uurMST) is en uw voertuigen moeten hun routes over 30 minuten starten, moet u de begintijd instellen op 11:00 uur. 
+het op dit moment 9:30 uur PST (10:30 uur MST) is en uw voertuigen moeten hun routes over 30 minuten starten, moet u de begintijd instellen op 11:00 uur. 
             </p>
-            <p>Als de voertuigen in verschillende tijdzones starten, kunnen de starttijden niet overeenkomen; ze zijn dan ten opzichte van elkaar verschoven. Als bijvoorbeeld een route op een punt in PST begint en een andere route in MST en u voert 11:00 uur in als starttijd, start de route in PST om 11:00 uurPST en de route in MST om 11:00 uurMST - een verschil van een uur.
+            <p>Als de voertuigen in verschillende tijdzones starten, kunnen de starttijden niet overeenkomen; ze zijn dan ten opzichte van elkaar verschoven. Als bijvoorbeeld een route op een punt in PST begint en een andere route in MST en u voert 11:00 uur in als starttijd, start de route in PST om 11:00 uur PST en de route in MST om 11:00 uur MST - een verschil van een uur.
             </p>
         </div>
     </div>

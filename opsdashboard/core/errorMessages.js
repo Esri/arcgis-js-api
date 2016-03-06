@@ -1,4 +1,4 @@
-// COPYRIGHT © 2015 Esri
+// COPYRIGHT © 2016 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,5 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.16/esri/copyright.txt for details.
+
 define([],function(){return{invalidArguments:"Invalid arguments",hostNotReady:"Host is not yet ready. Override the function hostReady to know when the host is ready.",selectionNotSupported:"DataSource does not support selection.",invalidObjectIdArray:"objectIds argument must be an array of object ids.",messageTimeout:"The function has timed out. The host could not reply or an error occured in the host."}});

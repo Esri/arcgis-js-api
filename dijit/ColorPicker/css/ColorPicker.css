@@ -205,14 +205,6 @@
   left: -100%;
 }
 
-.esriColorPicker .esriPalette.esriContainer .esriPalette:last-child {
-  visibility: hidden;
-}
-
-.esriColorPicker .esriPalette.esriContainer.esriAlt .esriPalette:last-child {
-  visibility: visible;
-}
-
 .esriColorPicker .esriPalette.esriContainer {
   width: 100%;
   overflow: hidden;
@@ -230,4 +222,20 @@
   -ms-transition: left 0.15s, visibility 0.1s;
   -o-transition: left 0.15s, visibility 0.1s;
   transition: left 0.15s, visibility 0.1s;
+}
+
+.dijitRtl .esriColorPicker .esriPalette {
+  left: auto;
+  right: 0;
+
+  -webkit-transition-property: right;
+  -moz-transition-property: right;
+  -ms-transition-property: right;
+  -o-transition-property: right;
+  transition-property: right;
+}
+
+.dijitRtl .esriColorPicker .esriPalette.esriContainer.esriAlt .esriPalette {
+  right: -100%;
+  left: 0;
 }

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2015 Esri
+// COPYRIGHT © 2016 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,5 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.16/esri/copyright.txt for details.
+
 define({documentTypes:{data:{caption:"GEMINI (Δεδομένα)",description:""},service:{caption:"GEMINI (Υπηρεσία)",description:""}},LanguageCode:{eng:"Αγγλικά",cym:"Ουαλικά",gle:"Κελτικά (Ιρλανδικά)",gla:"Κελτικά (Σκωτικά)",cor:"Κορνουαλικά",sco:"Γλώσσα των Σκώτων της Ulster"},verticalCRS:{reference:"Αναφορά (π.χ. urn:ogc:def:crs:EPSG::5701 )"}});

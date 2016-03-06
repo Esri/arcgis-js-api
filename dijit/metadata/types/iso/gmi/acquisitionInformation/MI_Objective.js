@@ -1,4 +1,4 @@
-// COPYRIGHT © 2015 Esri
+// COPYRIGHT © 2016 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,5 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.16/esri/copyright.txt for details.
+
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../../base/Descriptor","../../../../form/Attribute","../../../../form/Element","../../../../form/Section","../../../../form/Tabs","../../../../form/iso/AbstractObject","../../../../form/iso/CodeListReference","../../../../form/iso/GcoElement","../../../../form/iso/ObjectReference","../../gmd/identification/SimpleMD_Identifier","../../gmd/extent/GeographicElement","../../gmd/extent/TemporalElement","./MI_ObjectiveTypeCode","./MI_Event","dojo/text!./templates/MI_Objective.html","../../../../../../kernel"],function(e,t,o,i,r,n,m,a,s,c,d,f,b,l,j,p,g,_,I){var O=e(i,{templateString:_});return o("extend-esri")&&t.setObject("dijit.metadata.types.iso.gmi.acquisitionInformation.MI_Objective",O,I),O});

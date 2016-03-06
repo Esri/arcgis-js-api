@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -30,7 +48,7 @@
         <ul>
             <li>Wat is het dichtstbijzijnde park hiervandaan?
             </li>
-            <li>Welk ziekenhuis kan ik in de kortst mogelijke reistijd bereiken?Hoe lang duurt de rit op een dinsdag om 17:30 uur tijdens de spits?
+            <li>Welk ziekenhuis kan ik in de kortst mogelijke reistijd bereiken? Hoe lang duurt de rit op een dinsdag om 17:30 uur tijdens de spits?
             </li>
             <li>Wat is de afstand via de weg tussen deze grote steden?
             </li>
@@ -39,17 +57,17 @@
         </ul>
         
     </p>
-    <p>Met Dichtstbijzijnde zoeken wordt een kaartlaag geretourneerd met de dichtstbijzijnde objecten en een lijnlaag waarin de vertreklocaties worden gekoppeld aan de dichtstbijzijnde locaties. De lijnlaag bevat informatie over de vertreklocaties en de dichtstbijzijnde locaties en de afstanden daartussen.
+    <p>Met Dichtstbijzijnde zoeken wordt een kaartlaag geretourneerd met de dichtstbijzijnde objecten en een lijnenlaag waarin de vertreklocaties worden gekoppeld aan de dichtstbijzijnde locaties.  De lijnlaag bevat informatie over de vertreklocaties en de dichtstbijzijnde locaties en de afstanden daartussen.
     </p>
     <p>Als  <b>Huidige kaartextent gebruiken</b> is geselecteerd, worden alleen de objecten die zichtbaar zijn binnen de huidige kaartextent, beschouwd als startobject en mogelijke dichtstbijzijnde objecten. Als deze optie niet wordt geselecteerd, worden alle objecten in de invoerlaag in aanmerking genomen, ook als ze zich buiten de huidige kaartomvang bevinden.  
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="analysisLayer">
-        <div><h2>Kies puntlaag waar de locaties in de buurt worden gevonden</h2></div>
+        <div><h2>Kies de laag waar de locaties in de buurt worden gevonden</h2></div>
         <hr/>
         <div>
-            <p>Met Dichtstbijzijnde zoeken wordt gemeten vanaf de punten in de laag die u hier opgeeft (de startlocaties) tot de punten die u opgeeft in de volgende parameter. De tool ondersteunt maximaal 1.000 locaties in elke kaartlaag.
+            <p>Met Dichtstbijzijnde zoeken wordt gemeten vanaf de punten in de laag die u hier opgeeft (de startlocaties) tot de punten die u opgeeft in de volgende parameter. De tool ondersteunt maximaal 1.000 objecten in elke kaartlaag.
 
             </p>
         </div>
@@ -60,7 +78,7 @@
         <div>
             <p>Met Dichtstbijzijnde zoeken wordt gemeten vanaf elke locatie in de eerste laag tot aan de locaties in deze laag. De tool ondersteunt maximaal 1.000 locaties in elke kaartlaag.
             </p>
-            <p>Naast het kiezen van een laag uit uw kaart, kunt u  <b>Analyselaag Levende Atlas kiezen</b> selecteren onderaan de vervolgkeuzelijst. Er wordt een galerij geopend met een verzameling lagen die handig zijn voor veel analyses. 
+            <p class="OnlineOnly">Naast het kiezen van een laag uit uw kaart, kunt u  <b>Analyselaag Levende Atlas kiezen</b> selecteren onderaan de vervolgkeuzelijst. Er wordt een galerij geopend met een verzameling lagen die handig zijn voor veel analyses. 
             </p>
         </div>
     </div>
@@ -72,7 +90,7 @@
             </p>
             <p>Bij het meten tussen lijnen of gebieden wordt de afstand van of naar het dichtstbijzijnde punt langs de lijn of de grens van het gebied gezocht. 
             </p> 
-            <p>Als u  <b>reistijd</b> kiest, hebt u opties voor het meten van de reistijd.
+            <p>Als u  <b>Reistijd</b> kiest, hebt u opties voor het meten van de reistijd.
                 <ul>
                     <li>
                         <p>Schakel  <b>Verkeer gebruiken</b> uit om de dichtstbijzijnde objecten te vinden op basis van statische reistijden, zoals snelheidslimieten in plaats van op basis van wisselende snelheden ten gevolge van veranderende verkeersomstandigheden.
@@ -91,7 +109,7 @@
                         </p>
                         <p>U kunt deze historische verkeersinstellingen gebruiken om bijvoorbeeld de vraag te stellen: Welke objecten kan ik het snelst bereiken wanneer ik op een woensdag vanuit de startobjecten om 11:30 uur vertrek? 
                         </p>
-                        <p>De tijd die u instelt, verwijst naar de tijdzone waarop uw startobjecten zich bevinden. Als u de tijd dus instelt op 8:00 uur en twee startobjecten hebt, een in New York City en een ander in Los Angeles, worden de dichtstbijzijnde locaties gevonden met een vertrektijd van  respectievelijk 8:00 uurEastern Time en 8:00 uurPacific Time als uitgangspunt.
+                        <p>De tijd die u instelt, verwijst naar de tijdzone waarop uw startobjecten zich bevinden. Als u de tijd dus instelt op 8:00 uur en twee startobjecten hebt, een in New York City en een ander in Los Angeles, worden de dichtstbijzijnde locaties gevonden met een vertrektijd van  respectievelijk 8:00 uur Eastern Time en 8:00 uur Pacific Time als uitgangspunt.
                         </p>
                     </li>
                 </ul>

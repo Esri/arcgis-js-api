@@ -31,20 +31,7 @@
       <div data-dojo-attach-point="dap_lineWidthLabel" class="${css.label}">${labels.lineWidth}</div>
       <div class="${css.lineWidthInput} ${css.inlineInput}" data-dojo-attach-point="dap_lineWidthOptions">
         <div data-dojo-type="esri/dijit/HorizontalSlider" data-dojo-attach-point="dap_lineWidthSlider"></div>
-        <select data-dojo-type="dijit/form/ComboBox" data-dojo-attach-point="dap_lineWidthTextBox">
-          <option>1</option>
-          <option>1.2</option>
-          <option>1.5</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-          <option>6</option>
-          <option>7</option>
-          <option>8</option>
-          <option>9</option>
-          <option>10</option>
-        </select>
+        <select data-dojo-attach-point="dap_lineWidthTextBox"><!--values added dynamically--></select>
         <span class="${css.text}">${labels.px}</span>
       </div>
       <div class="${css.label}" data-dojo-attach-point="dap_linePatternSelectLabel">${labels.pattern}</div>

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2015 Esri
+// COPYRIGHT © 2016 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,5 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.16/esri/copyright.txt for details.
+
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../../base/Descriptor","../../../../form/Element","../../../../form/InputNumber","../../../../form/InputTextArea","../../../../form/iso/AbstractObject","../../../../form/iso/GcoElement","dojo/text!./templates/MI_EnvironmentalRecord.html","../../../../../../kernel"],function(e,t,o,r,n,a,i,m,s,d,c){var l=e(r,{templateString:d});return o("extend-esri")&&t.setObject("dijit.metadata.types.iso.gmi.acquisitionInformation.MI_EnvironmentalRecord",l,c),l});

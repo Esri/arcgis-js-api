@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -143,6 +161,8 @@
                 </li>
                 <li> <b>T&igrave;m c&aacute;c Vị tr&iacute; Tương tự</b> t&igrave;m ra c&aacute;c vị tr&iacute; giống nhiều nhất với vị tr&iacute; một hoặc nhiều vị tr&iacute; tham chiếu dựa tr&ecirc;n ti&ecirc;u ch&iacute; bạn chỉ định.
                 </li>
+                <li> <b>Chọn c&aacute;c Cơ sở Tốt nhất</b> chọn c&aacute;c vị tr&iacute; tốt nhất cho c&aacute;c cơ sở bằng c&aacute;ch ph&acirc;n bổ c&aacute;c vị tr&iacute; c&oacute; nhu cầu đối với c&aacute;c cơ sở n&agrave;y theo c&aacute;ch l&agrave;m thỏa m&atilde;n một mục ti&ecirc;u đ&atilde; cho.
+                </li>
                 <li> <b>Tạo Tầm nh&igrave;n</b> sẽ tạo ra c&aacute;c khu vực c&oacute; thể nh&igrave;n thấy dựa tr&ecirc;n c&aacute;c vị tr&iacute; bạn chỉ định.
                 </li>
                 <li> <b>Tạo Lưu vực s&ocirc;ng</b> sẽ tạo ra c&aacute;c khu vực lưu vực dựa tr&ecirc;n c&aacute;c vị tr&iacute; bạn chỉ định.
@@ -166,8 +186,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Lựa chọn c&aacute;c đối tượng hiện tại trong khu vực nghi&ecirc;n cứu của bạn đ&aacute;p ứng một loạt c&aacute;c ti&ecirc;u ch&iacute; bạn chỉ định. C&aacute;c ti&ecirc;u ch&iacute; n&agrave;y c&oacute; thể dựa v&agrave;o c&aacute;c truy vấn thuộc t&iacute;nh (v&iacute; dụ, l&ocirc; đất để trống) v&agrave; c&aacute;c truy vấn kh&ocirc;ng gian (v&iacute; dụ, trong phạm vi s&ocirc;ng 1 dặm).
-
+            <p>Lựa chọn c&aacute;c đối tượng hiện tại trong khu vực nghi&ecirc;n cứu của bạn đ&aacute;p ứng một loạt c&aacute;c ti&ecirc;u ch&iacute; bạn chỉ định. C&aacute;c ti&ecirc;u ch&iacute; n&agrave;y c&oacute; thể dựa v&agrave;o c&aacute;c truy vấn thuộc t&iacute;nh (v&iacute; dụ, l&ocirc; đất để trống) v&agrave; c&aacute;c truy vấn kh&ocirc;ng gian (v&iacute; dụ, trong phạm vi s&ocirc;ng 1 dặm). 
             </p>
             <br/>
         </div>
@@ -182,8 +201,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Tạo c&aacute;c đối tượng hiện tại trong khu vực nghi&ecirc;n cứu của bạn đ&aacute;p ứng một loạt c&aacute;c ti&ecirc;u ch&iacute; bạn chỉ định. C&aacute;c ti&ecirc;u ch&iacute; n&agrave;y c&oacute; thể dựa v&agrave;o c&aacute;c truy vấn thuộc t&iacute;nh (v&iacute; dụ, l&ocirc; đất để trống) v&agrave; c&aacute;c truy vấn kh&ocirc;ng gian (v&iacute; dụ, trong phạm vi s&ocirc;ng 1 dặm).
-
+            <p>Tạo c&aacute;c đối tượng hiện tại trong khu vực nghi&ecirc;n cứu của bạn đ&aacute;p ứng một loạt c&aacute;c ti&ecirc;u ch&iacute; bạn chỉ định. C&aacute;c ti&ecirc;u ch&iacute; n&agrave;y c&oacute; thể dựa v&agrave;o c&aacute;c truy vấn thuộc t&iacute;nh (v&iacute; dụ, l&ocirc; đất để trống) v&agrave; c&aacute;c truy vấn kh&ocirc;ng gian (v&iacute; dụ, trong phạm vi s&ocirc;ng 1 dặm). 
             </p>
             <br/>
         </div>
@@ -199,6 +217,21 @@
             </table>
 <hr/>
             <p>T&igrave;m ra c&aacute;c vị tr&iacute; giống nhiều nhất với vị tr&iacute; một hoặc nhiều vị tr&iacute; tham chiếu dựa tr&ecirc;n ti&ecirc;u ch&iacute; bạn chỉ định.
+            </p>
+            <br/>
+        </div>
+        <div id="ChooseBestFacilitiesTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Chọn các Cơ sở Tốt nhất</h2></td>
+                    <td>
+                    <img src="../images/GUID-E57BEC1A-C404-436B-B389-65711FF83088-web.png" class="titleImage" alt="Chọn c&aacute;c Cơ sở Tốt nhất">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Chọn c&aacute;c vị tr&iacute; tốt nhất cho c&aacute;c cơ sở bằng c&aacute;ch ph&acirc;n bổ c&aacute;c vị tr&iacute; c&oacute; nhu cầu đối với c&aacute;c cơ sở n&agrave;y theo c&aacute;ch l&agrave;m thỏa m&atilde;n một mục ti&ecirc;u đ&atilde; cho.
             </p>
             <br/>
         </div>

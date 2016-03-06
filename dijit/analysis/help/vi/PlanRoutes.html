@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -29,7 +47,7 @@
     <p>Lập kế hoạch Định tuyến gi&uacute;p x&aacute;c định c&aacute;ch ph&acirc;n chia c&aacute;c nhiệm vụ hiệu quả trong một lực lượng lao động di động.
     </p>
     <p>Bạn cung cấp cho c&ocirc;ng cụ một tập hợp c&aacute;c điểm dừng v&agrave; số phương tiện khả dụng đến c&aacute;c điểm dừng.
-C&ocirc;ng cụ n&agrave;y sẽ g&aacute;n c&aacute;c điểm dừng với phương tiện v&agrave; trả về c&aacute;c tuyến đường sao cho từng phương tiện c&oacute; thể đi đến điểm dừng được g&aacute;n với số lượng thời gian &iacute;t nhất.
+ C&ocirc;ng cụ n&agrave;y sẽ g&aacute;n c&aacute;c điểm dừng với phương tiện v&agrave; trả về c&aacute;c tuyến đường sao cho từng phương tiện c&oacute; thể đi đến điểm dừng được g&aacute;n với số lượng thời gian &iacute;t nhất.
     </p>
     <p>Với Lập kế hoạch Định tuyến, c&ocirc;ng nh&acirc;n vi&ecirc;n khi đi đến c&aacute;c địa điểm l&agrave;m việc sẽ mất &iacute;t thời gian hơn, gi&uacute;p tăng năng suất lao động v&agrave; cải thiện chất lượng dịch vụ kh&aacute;ch h&agrave;ng.
         <ul>
@@ -58,11 +76,12 @@ C&ocirc;ng cụ n&agrave;y sẽ g&aacute;n c&aacute;c điểm dừng với phư�
         <div><h2>Chọn lớp điểm biểu diễn các điểm dừng sẽ đến</h2></div>
         <hr/>
         <div>
-            <p>Chọn lớp c&aacute;c điểm m&agrave; đường (hoặc phương tiện) sẽ đi qua. C&aacute;c điểm n&agrave;y trở th&agrave;nh c&aacute;c điểm dừng được chỉ định hoặc bỏ chỉ định trong đầu ra.
-
+            <p>Chọn lớp c&aacute;c điểm m&agrave; đường (hoặc phương tiện) sẽ đi qua. C&aacute;c điểm n&agrave;y trở th&agrave;nh c&aacute;c điểm dừng được chỉ định hoặc bỏ chỉ định trong đầu ra. 
             </p>
-            <p>B&ecirc;n cạnh việc chọn một lớp từ bản đồ của bạn, bạn cần chọn  <b>Chọn Lớp Ph&acirc;n t&iacute;ch Atlas Sinh sống</b> nằm dưới c&ugrave;ng trong danh s&aacute;ch xổ xuống 
+            <p class="OnlineOnly">B&ecirc;n cạnh việc chọn một lớp từ bản đồ của bạn, bạn cần chọn  <b>Chọn Lớp Ph&acirc;n t&iacute;ch Atlas Sinh sống</b> nằm dưới c&ugrave;ng trong danh s&aacute;ch xổ xuống 
 Thao t&aacute;c n&agrave;y mở ra một b&ocirc;̣ sưu t&acirc;̣p c&oacute; chứa c&aacute;c lớp hữu &iacute;ch cho nhiều sự ph&acirc;n t&iacute;ch kh&aacute;c nhau. 
+            </p>
+            <p>C&ocirc;ng cụ hỗ trợ tối đa 2.000 đối tượng đầu v&agrave;o. 
             </p>
         </div>
     </div>
@@ -83,7 +102,7 @@ Thao t&aacute;c n&agrave;y mở ra một b&ocirc;̣ sưu t&acirc;̣p c&oacute; c
             <p>Với Lập kế hoạch Định tuyến, bạn c&oacute; thể x&aacute;c định một hoặc nhiều vị tr&iacute; bắt đầu cho phương tiện.
             </p>
             <p>Khi một vị tr&iacute; điểm được chỉ định, tất cả c&aacute;c xe khởi h&agrave;nh từ điểm đ&oacute; kh&ocirc;ng phụ thuộc v&agrave;o số lượng xe khả dụng.
-Bạn c&oacute; thể chọn một lớp điểm chỉ với một điểm hoặc th&ecirc;m mới một điểm v&agrave;o bản đồ bằng c&aacute;ch chọn  <b>Th&ecirc;m điểm v&agrave;o bản đồ</b>, bấm v&agrave;o n&uacute;t b&ecirc;n cạnh chỉnh sửa điểm liền kề, v&agrave; bấm v&agrave;o bản đồ. 
+ Bạn c&oacute; thể chọn một lớp điểm chỉ với một điểm hoặc th&ecirc;m mới một điểm v&agrave;o bản đồ bằng c&aacute;ch chọn  <b>Th&ecirc;m điểm v&agrave;o bản đồ</b>, bấm v&agrave;o n&uacute;t b&ecirc;n cạnh chỉnh sửa điểm liền kề, v&agrave; bấm v&agrave;o bản đồ. 
             </p>
             <p>Khi nhiều địa điểm được chỉ định, mỗi phương tiện cần phải được li&ecirc;n kết với điểm ri&ecirc;ng của m&igrave;nh. Số lượng phương tiện phải ph&ugrave; hợp với số điểm trong lớp. Chọn một lớp với nhiều điểm v&agrave; chỉ định một trường duy nhất để x&aacute;c định c&aacute;c tuyến đường, phương tiện, hoặc người l&aacute;i xe ri&ecirc;ng lẻ trong danh s&aacute;ch xổ xuống  <b>Trường ID Tuyến đường</b>.
             </p>
@@ -201,7 +220,7 @@ Bạn c&oacute; thể chọn một lớp điểm chỉ với một điểm hoặ
             <p>Đ&acirc;y l&agrave; t&ecirc;n lớp nh&oacute;m sẽ được tạo trong mục  <b>Nội dung của T&ocirc;i</b>
 v&agrave; th&ecirc;m v&agrave;o bản đồ. Lớp nh&oacute;m sẽ chứa một lớp một trong c&aacute;c nội dung sau: tuyến đường, điểm dừng v&agrave; chỉ đường.
             </p>
-            <p>Sử dụng chức năng  <b>Lưu kết quả trong</b> danh s&aacute;ch xổ xuống , bạn c&oacute; thể chỉ định t&ecirc;n thư mục trong mục <b>Nội dung của T&ocirc;i</b> nơi sẽ lưu trữ kết quả của bạn.
+            <p>Sử dụng danh s&aacute;ch xổ xuống  <b>Lưu kết quả trong</b>, bạn c&oacute; thể chỉ định t&ecirc;n thư mục trong mục <b>Nội dung của T&ocirc;i</b> nơi sẽ lưu trữ kết quả của bạn.
             </p>
         </div>
     </div>

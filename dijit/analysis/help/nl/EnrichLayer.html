@@ -7,26 +7,44 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Laag verrijken</h2><p/>
+        <h2>Enrich Layer</h2><p/>
         <h2><img src="../images/GUID-5B2D9742-AFD2-4054-8D05-ED6A80EDAF4D-web.png" alt="Laag verrijken"></h2>
         <hr/>
-    <p>Met deze tool worden uw gegevens verrijkt door feiten op te halen over de bevolking, plaatsen en bedrijven rondom uw gegevenslocaties en kunt u nieuwe vragen over locaties beantwoorden die u niet met kaarten alleen kunt beantwoorden. Bijvoorbeeld: wat voor mensen wonen er?Wat doen mensen in dit gebied graag?Wat zijn hun gewoonten en levensstijlen?Wat voor soorten bedrijven zijn er in dit gebied?
+    <p>Met deze tool worden uw gegevens verrijkt door feiten op te halen over de bevolking, plaatsen en bedrijven rondom uw gegevenslocaties en kunt u nieuwe vragen over locaties beantwoorden die u niet met kaarten alleen kunt beantwoorden. Bijvoorbeeld: wat voor mensen wonen er? Wat doen mensen in dit gebied graag? Wat zijn hun gewoonten en levensstijlen? Wat voor soorten bedrijven zijn er in dit gebied?
     </p>
     <p>Het resultaat wordt een nieuwe kaartlaag met alle demografische en geografische gegevens uit bepaalde gegevensverzamelingen. Deze nieuwe gegevens worden toegevoegd als velden in de tabel.
     </p>
@@ -38,10 +56,9 @@
         <div><h2>Kies laag om met nieuwe data te verrijken.</h2></div>
         <hr/>
         <div>
-            <p>De punt-, lijn- of vlakkenlaag die worden verrijkt met nieuwe attribuutgegevens.
-
+            <p>De punt-, lijn- of vlakkenlaag die worden verrijkt met nieuwe attribuutgegevens. 
             </p>
-            <p>Naast het kiezen van een laag uit uw kaart, kunt u  <b>Analyselaag Levende Atlas kiezen</b> selecteren onderaan de vervolgkeuzelijst. Er wordt een galerij geopend met een verzameling lagen die handig zijn voor veel analyses. 
+            <p class="OnlineOnly">Naast het kiezen van een laag uit uw kaart, kunt u  <b>Analyselaag Levende Atlas kiezen</b> selecteren onderaan de vervolgkeuzelijst. Er wordt een galerij geopend met een verzameling lagen die handig zijn voor veel analyses. 
             </p>
         </div>
     </div>
@@ -67,6 +84,8 @@
         <hr/>
         <div>
             <p>Definieer het gebied rond uw invoerpunten of lijnen die verrijkt worden door een afstand hemelsbreed of een geselecteerde manier van reizen te gebruiken. Voer voor een afstand hemelsbreed een waarde in van maximaal 1609 kilometer. Reismethoden kunnen alleen worden gebruikt als uw invoerlaag punten bevat. De beschikbare manieren van reizen worden bepaald door de beheerder van uw organisatie. Bij gebruik van de reismanieren worden de metingen gedaan over wegen of wandelpaden en er wordt rekening gehouden met geldende regels zoals eenrichtingswegen, keerverboden, etcetera. Nadat u uw methode van reizen en uw meeteenheid hebt gekozen, voert u een duur of afstand in van maximaal  5 uur (300 minuten) of 300 mijl (482,8 kilometer).
+            </p>
+            <p>Als  <b>Resultaat als grensgebieden retourneren</b> is aangevinkt, wordt het geretourneerde resultaat gedefinieerd door de tijd- of afstandswaarden hierboven. Indien niet aangevinkt, bestaat het geretourneerde resultaat uit puntobjecten.
             </p>
         </div>
     </div>

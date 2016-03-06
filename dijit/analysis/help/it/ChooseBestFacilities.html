@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Scegli strutture migliori</h2><p/>
+        <h2><img src="../images/GUID-E57BEC1A-C404-436B-B389-65711FF83088-web.png" alt="Scegli strutture migliori"></h2>
+        <hr/>
+    <p>Scegli strutture migliori consente di scegliere le localit&agrave; ideali per le strutture. Questo strumento consente di allocare localit&agrave; con richiesta di strutture in un modo che soddisfa l'obiettivo specificato.
+    </p>
+    <p>Le strutture rappresentano localit&agrave; che offrono un qualche tipo di servizio, ad esempio stazioni dei pompieri, scuole, biblioteche, negozi o centri di distribuzione. Le localit&agrave; di richiesta rappresentano localit&agrave; che richiedono i servizi offerti dalle strutture, ad esempio punti di censimento che riepilogano la popolazione in un'area specifica.
+    </p>
+    <p>Lo strumento Scegli strutture migliori consente di rispondere alle seguenti domande
+        <ul>
+            <li>In caso di emergenza, in che modo &egrave; possibile assegnare unit&agrave; abitative al centro di soccorso corretto, quando il numero di posti letto &egrave; limitato e non deve essere superato?
+            </li>
+            <li>In che modo &egrave; possibile assegnare i quartieri alla biblioteca di quartiere pi&ugrave; vicina e trovare il numero di potenziali mecenati che si servono della biblioteca? 
+            </li>
+            <li>Come &egrave; possibile individuare la migliore localit&agrave; per un centro di distribuzione alimentare che riduca al minimo il tempo di spostamento complessivo (e pertanto i costi) per la consegna a una catena di negozi di alimentari?
+            </li>
+            <li>Dove deve essere ubicato un nuovo parco per essere certi che il maggior numero di residenti della citt&agrave; si trovi a cinque minuti di cammino dalla stesso?
+            </li>
+            <li>Quali sono le migliori localit&agrave; per diversi negozi di animali in un'area urbana in modo che il 40% dei possessori di animali di quell'area non si trovi a pi&ugrave; di 10 minuti di macchina da uno dei negozi?
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="goal">
+        <div><h2>Obiettivo</h2></div>
+        <hr/>
+        <div>
+            <p>Specificare l'obiettivo che deve essere soddisfatto durante l'allocazione di localit&agrave; di richiesta a strutture.
+            </p>
+            <p>Grazie a Scegli strutture migliori &egrave; possibile specificare il tipo di problema che si sta cercando di risolvere: l'obiettivo. Questo strumento &egrave; ottimizzato per fornire una soluzione per il particolare obiettivo. A prescindere dall'obiettivo, lo stesso metodo sottostante viene in pratica utilizzato per raggiungere una soluzione: la quantit&agrave; di richiesta da una localit&agrave; di richiesta specifica viene allocata alla struttura pi&ugrave; vicina. Gli obiettivi variano il modo in cui viene gestita l'interazione tra distanza (o tempo) e richiesta. Lo strumento considera sia la distanza/tempo di viaggio sia la quantit&agrave; di richiesta e, in alcuni casi, la capacit&agrave; delle strutture. Se un obiettivo favorisce, ad esempio, la riduzione del tempo di viaggio, lo strumento tenter&agrave;, in via secondaria, di massimizzare la richiesta che viene allocata. Analogamente, se l'obiettivo &egrave; quello massimizzare la richiesta allocata, lo strumento ridurr&agrave; il tempo di viaggio (assegnando localit&agrave; di richiesta alla struttura pi&ugrave; vicina anzich&eacute; a qualsiasi struttura).
+            </p>
+            <p>In base ai dati e alle impostazioni utilizzate, obiettivi diversi possono produrre gli stessi risultati o risultati simili. Tuttavia, &egrave; necessario specificare l'obiettivo pi&ugrave; appropriato per l'analisi.
+            </p> 
+        </div>
+    </div>
+    <div id="allocateToExistingFacilities">
+        <div><h2>Assegna a strutture esistenti</h2></div>
+        <hr/>
+        <div>
+            <p>Utilizzare questo obiettivo se non si desidera individuare nuove strutture e si desidera assegnare la richiesta a strutture esistenti con capacit&agrave; limitata o illimitata.    
+            </p>
+            <p>Questo obiettivo assegna la richiesta a strutture in base alla capacit&agrave; presso la struttura e alla quantit&agrave; di richiesta dall'area circostante. La richiesta viene allocata alla struttura pi&ugrave; vicina finch&eacute; la capacit&agrave; non viene soddisfatta. Se si specifica un intervallo di spostamento massimo, qualsiasi localit&agrave; di richiesta oltre tale intervallo non verr&agrave; assegnata a una struttura, anche se la richiesta non &egrave; stata completamente allocata.
+            </p> 
+        </div>
+    </div>
+    <div id="minimizeTravel">
+        <div><h2>Riduci viaggio</h2></div>
+        <hr/>
+        <div>
+            <p>Utilizzare questo obiettivo se si desidera individuare strutture in modo che il tempo o la distanza di viaggio complessiva tra le localit&agrave; di richiesta e le strutture sia ridotto.
+            </p>
+            <p>Questo obiettivo &egrave; spesso applicabile quando occorre spostarsi regolarmente tra la struttura e tutte le localit&agrave; di richiesta. Utilizzare questo obiettivo, ad esempio, per ridurre la distanza di viaggio complessiva per spostare beni dai centri di distribuzione ai negozi o per selezionare una sede per una conferenza in modo tale da ridurre il tempo di viaggio per tutti i partecipanti.
+            </p> 
+        </div>
+    </div>
+    <div id="maximizeCoverage">
+        <div><h2>Ottimizza coverage</h2></div>
+        <hr/>
+        <div>
+            <p>Utilizzare questo obiettivo per massimizzare la quantit&agrave; di richiesta coperta entro un tempo o una distanza specifica delle strutture.    
+            </p>
+            <p>Questo obiettivo consente di scegliere strutture in modo tale da allocare la quantit&agrave; massima di richiesta, in cui tutta la richiesta da ogni localit&agrave; di richiesta viene allocata alla singola struttura pi&ugrave; vicina.
+            </p>
+            <p>Un intervallo di spostamento massimo finito &egrave; obbligatorio per questo obiettivo; in caso contrario, tutta la richiesta potrebbe essere assegnata a una singola struttura. Le localit&agrave; di richiesta che si trovano a una distanza (in termini di spazio o tempo) superiore a quella di una qualsiasi delle strutture, non verranno allocate (questo mostra i punti in cui la richiesta non &egrave; soddisfatta e i punti in cui potrebbero essere necessarie altre strutture).
+            </p> 
+        </div>
+    </div>
+    <div id="maximizeCoverageWithCapacity">
+        <div><h2>Ottimizza copertura con capacità</h2></div>
+        <hr/>
+        <div>
+            <p>Utilizzare questo obiettivo per massimizzare la quantit&agrave; di richiesta coperta dalla strutture, ma la capacit&agrave; delle strutture &egrave; limitata.    
+            </p>
+            <p>Questo obiettivo consente di scegliere le strutture in modo da allocare la quantit&agrave; massima di richiesta senza superare la capacit&agrave; di qualsiasi struttura. Tutta la richiesta da ciascuna localit&agrave; di richiesta viene allocata alla singola struttura pi&ugrave; vicina che dispone di capacit&agrave; (ovvero, se l'assegnazione di una localit&agrave; di richiesta a una struttura supera la capacit&agrave; disponibile della struttura, anzich&eacute; assegnare una porzione della richiesta, la localit&agrave; di richiesta non verr&agrave; assegnata).
+            </p> 
+        </div>
+    </div>
+    <div id="coverAPercentageOfDemand">
+        <div><h2>Copri una percentuale di richiesta</h2></div>
+        <hr/>
+        <div>
+            <p>Utilizzare questo obiettivo per individuare il numero minimo di strutture richieste per coprire una percentuale di richiesta specificata.
+            </p>
+            <p>Questo obiettivo consente di scegliere il numero minimo di strutture necessarie per raggiungere la percentuale di richiesta specificata. Per una localit&agrave; di richiesta che si trova all'interno dell'intervallo di spostamento massimo di due o pi&ugrave; strutture, la richiesta verr&agrave; suddivisa in maniera proporzionale tra le strutture in base alla sua distanza da ciascuna. Questo obiettivo viene spesso utilizzato quando le persone possono scegliere la struttura da visitare e si presume che, in generale, verr&agrave; visitata la struttura pi&ugrave; vicina (a parit&agrave; di tutte le altre condizioni).
+            </p>
+            <p>A differenza degli altri obiettivi che scelgono le strutture, in cui viene specificato quante strutture scegliere, questo obiettivo consente di scegliere il numero di strutture per l'utente, in base alla percentuale di richiesta che si desidera soddisfare. Si presume che la capacit&agrave; delle strutture non sia limitata.
+            </p> 
+        </div>
+    </div>
+    <div id="measure">
+        <div><h2>Misura</h2></div>
+        <hr/>
+        <div>
+            <p>Analogamente ad altri strumenti che implicano il viaggio nell'analisi, &egrave; possibile specificare se il viaggio viene misurato utilizzando la distanza o il tempo e scegliere tra diverse modalit&agrave; di viaggio, ad esempio tempo a piedi, tempo di guida, distanza di guida in aree non urbane e cos&igrave; via. Le modalit&agrave; di viaggio disponibili sono determinate dall'amministratore dell'organizzazione. Quando si utilizza Tempo di guida o Tempo di guida in aree non urbane, &egrave; possibile facoltativamente includere il traffico per un giorno specifico della settimana e un'ora del giorno. 
+            </p>
+            <p> Per allocare in modo accurato localit&agrave; di richiesta alle strutture, specificare se il viaggio &egrave; dalle strutture alle localit&agrave; di richiesta (ad esempio, da stazioni dei pompieri ad abitazioni) o da localit&agrave; di richiesta a strutture (come nel caso dei mecenati alle biblioteche). Scegli strutture migliori tiene conto della direzione di viaggio in strade a senso unico, se &egrave; possibile svoltare da una strada a un'altra, se gli incroci sono del tipo divieto di svolta a sinistra e cos&igrave; via, a seconda che il viaggio sia in uscita, dalla struttura alle localit&agrave; di richiesta, o in entrata, dalle localit&agrave; di richiesta alle strutture.
+            </p>
+        </div>
+    </div>
+    <div id="demandLocationsLayer">
+        <div><h2>Layer posizioni di richiesta</h2></div>
+        <hr/>
+        <div>
+            <p>Le feature puntuali rappresentano localit&agrave; che richiedono i servizi offerti dalle strutture. Lo strumento consente di assegnare queste localit&agrave; di richiesta a strutture appropriate in base all'obiettivo selezionato.
+            </p>
+            <p>Alle localit&agrave; di richiesta &egrave; associata una quantit&agrave; di richiesta. Utilizzare una costante per specificare il valore se tutte le localit&agrave; di richiesta hanno la stessa richiesta. Se la quantit&agrave; di richiesta varia in base alla localit&agrave; di richiesta, utilizzare un campo nel Layer posizioni di richiesta per specificare il valore per ogni localit&agrave; di richiesta.
+            </p>
+            <p>La richiesta verr&agrave; allocata a strutture finch&eacute; tutta la richiesta non &egrave; stata allocata, a prescindere dalla distanza delle localit&agrave; di richiesta dalle strutture. &Egrave; possibile assegnare un intervallo di spostamento massimo al Layer posizioni di richiesta per creare una distanza o tempo limite: qualsiasi localit&agrave; di richiesta che si trova oltre questo valore limite non verr&agrave; allocata. Utilizzare una costante per specificare il valore se tutte le localit&agrave; di richiesta hanno lo stesso intervallo di spostamento massimo. Se l'intervallo di spostamento massimo varia in base alla localit&agrave; di richiesta, utilizzare un campo nel Layer posizioni di richiesta per specificare il valore per ogni localit&agrave; di richiesta.
+            </p>
+            <p>Se il tipo di obiettivo &egrave;  <b>Copri una percentuale di richiesta</b>, &egrave; necessario specificare la percentuale di richiesta minima che deve essere acquisita dalle strutture.
+            </p>
+            <p class="OnlineOnly">Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi dell'atlante attivo</b> in fondo all'elenco a discesa. Verr&agrave; aperta una galleria contenente una raccolta di layer utili per numerose analisi. 
+            </p>
+            <p>Lo strumento supporta fino a 10000 feature nel Layer posizioni di richiesta.
+            </p>  
+        </div>
+    </div>
+    <div id="requiredFacilitiesLayer">
+        <div><h2>Layer strutture obbligatorie</h2></div>
+        <hr/>
+        <div>
+            <p>Le feature puntuali rappresentano localit&agrave; che svolgono la funzione di strutture fornendo un qualche tipo di servizio. Le strutture obbligatorie rappresentano in genere localit&agrave; gi&agrave; esistenti, al contrario di strutture candidate che in genere rappresentano le localit&agrave; in cui le nuove strutture verranno realizzate o ubicate. Durante l'allocazione di localit&agrave; di richiesta, lo strumento utilizza le strutture nel  <b>Layer strutture obbligatorie</b> prima di qualsiasi struttura del <b>Layer strutture candidate</b>.
+            </p>
+            <p>Le strutture obbligatorie possono avere capacit&agrave; illimitata (ovvero, possono soddisfare tutta la richiesta a loro assegnata) o limitata. Se tutte le strutture hanno la stessa capacit&agrave; limitata (ad esempio il numero di unit&agrave; abitative che possono essere servite da una stazione dei pompieri, ad esempio 4000), specificare un valore costante. Se la capacit&agrave; varia tra le strutture (ad esempio il numero di posti disponibili per le matricole presso ciascuna scuola superiore), specificare un campo contenente il valore di capacit&agrave; per ogni struttura.
+            </p>
+            <p>Lo strumento supporta fino a 100 feature nel  <b>Layer strutture obbligatorie</b>.
+            </p>  
+        </div>
+    </div>
+    <div id="candidateFacilitiesLayer">
+        <div><h2>Layer strutture candidate</h2></div>
+        <hr/>
+        <div>
+            <p>Le feature puntuali rappresentano localit&agrave; che svolgono la funzione di strutture fornendo un qualche tipo di servizio. Le strutture candidate rappresentano in genere le localit&agrave; in cui le nuove strutture verranno realizzate o posizionate, al contrario delle strutture obbligatorie che in genere rappresentano localit&agrave; gi&agrave; esistenti.
+            </p>
+            <p>In base all'obiettivo di analisi, &egrave; necessario specificare il numero di strutture candidate da cui scegliere l'insieme di candidati. Se si specificano strutture obbligatorie e candidate, lo strumento utilizza le strutture nel  <b>Layer strutture obbligatorie</b> prima di qualsiasi struttura del <b>Layer strutture candidate</b>.
+            </p>
+            <p>Le strutture candidate possono avere capacit&agrave; illimitata (ovvero, possono soddisfare tutta la richiesta a loro assegnata) o limitata. Se tutte le strutture hanno la stessa capacit&agrave; limitata (ad esempio il numero di unit&agrave; abitative che possono essere servite da una stazione dei pompieri, ad esempio 4000), specificare un valore costante. Se la capacit&agrave; varia tra le strutture (ad esempio il numero di posti disponibili per le matricole presso ciascuna scuola superiore), specificare un campo contenente il valore di capacit&agrave; per ogni struttura.
+            </p>
+            <p>Lo strumento supporta fino a 1000 feature nel  <b>Layer strutture candidate</b>.
+            </p>  
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nome layer risultati</h2></div>
+        <hr/>
+        <div>
+            <p>Questo &egrave; il nome del layer che verr&agrave; creato in  <b>I miei contenuti</b> e aggiunto alla mappa.  Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, verr&agrave; chiesto di fornire un altro nome.
+            </p>
+            <p>Il layer risultati conterr&agrave; un layer per strutture cui sono assegnate richieste, localit&agrave; di richiesta che sono allocate a strutture e linee di allocazione che collegano le localit&agrave; di richiesta alle loro strutture assegnate. Le linee di allocazione sono disegnate come linee rette; tuttavia, il tempo o la distanza di viaggio tra la struttura e la localit&agrave; di richiesta &egrave; sempre basata sulla modalit&agrave; di viaggio specificata e non sull'utilizzo di distanze in linea retta.
+            </p>
+            <p>Utilizzare la casella a discesa  <b>Salva risultato in</b> per specificare il nome di una cartella di <b>I miei contenuti</b> in cui salvare il risultato.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

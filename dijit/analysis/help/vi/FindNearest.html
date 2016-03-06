@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -26,7 +44,7 @@
         <h2>Tìm Vị trí Gần nhất</h2><p/>
         <h2><img src="../images/GUID-150C2484-7459-405A-8835-B4E72CD49738-web.png" alt="T&igrave;m Vị tr&iacute; Gần nhất"></h2>
         <hr/>
-    <p>C&ocirc;ng cụ n&agrave;y gi&uacute;p t&igrave;m thấy c&aacute;c vị tr&iacute; gần nhất v&agrave; b&aacute;o c&aacute;o cũng như xếp hạng khoảng c&aacute;ch đến c&aacute;c vị tr&iacute; gần đ&oacute;. Để t&igrave;m thấy vị tr&iacute; gần nhất, c&ocirc;ng cụ c&oacute; thể đo khoảng c&aacute;ch đường thẳng hoặc phương thức đi lại được chọn. C&oacute; một số lựa chọn gi&uacute;p hạn chế số lượng c&aacute;c vị tr&iacute; gần nhất hoặc giới hạn phạm vi t&igrave;m kiếm để dễ d&agrave;ng t&igrave;m thấy ch&uacute;ng. C&aacute;c kết quả từ c&ocirc;ng cụ n&agrave;y c&oacute; thể gi&uacute;p bạn trả lời những loại c&acirc;u hỏi sau đ&acirc;y:
+    <p>C&ocirc;ng cụ n&agrave;y gi&uacute;p t&igrave;m thấy c&aacute;c vị tr&iacute; gần nhất v&agrave; b&aacute;o c&aacute;o cũng như xếp hạng khoảng c&aacute;ch đến c&aacute;c vị tr&iacute; gần đ&oacute;. Để t&igrave;m thấy vị tr&iacute; gần nhất, c&ocirc;ng cụ c&oacute; thể đo khoảng c&aacute;ch đường thẳng hoặc phương thức đi lại được chọn. C&oacute; một số lựa chọn gi&uacute;p hạn chế số lượng c&aacute;c đối tượng gần nhất hoặc giới hạn phạm vi t&igrave;m kiếm để dễ d&agrave;ng t&igrave;m thấy ch&uacute;ng. C&aacute;c kết quả từ c&ocirc;ng cụ n&agrave;y c&oacute; thể gi&uacute;p bạn trả lời những loại c&acirc;u hỏi sau đ&acirc;y:
         <ul>
             <li>C&ocirc;ng vi&ecirc;n n&agrave;o gần nhất t&iacute;nh từ đ&acirc;y?
             </li>
@@ -46,10 +64,10 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="analysisLayer">
-        <div><h2>Chọn lớp điểm để từ đó tìm thấy các vị trí gần nhất</h2></div>
+        <div><h2>Chọn lớp để từ đó tìm thấy các vị trí gần nhất</h2></div>
         <hr/>
         <div>
-            <p>T&igrave;m Vị tr&iacute; Gần nhất đo từ điểm tr&ecirc;n lớp m&agrave; bạn x&aacute;c định ở đ&acirc;y (vị tr&iacute; bắt đầu) đến điểm m&agrave; bạn x&aacute;c định trong th&ocirc;ng số tiếp theo. C&ocirc;ng cụ hỗ trợ tối đa 1.000 vị tr&iacute; ở mỗi lớp.
+            <p>T&igrave;m Vị tr&iacute; Gần nhất đo lường từ đối tượng tr&ecirc;n lớp m&agrave; bạn x&aacute;c định ở đ&acirc;y (vị tr&iacute; bắt đầu) đến vị tr&iacute; m&agrave; bạn x&aacute;c định trong th&ocirc;ng số tiếp theo. C&ocirc;ng cụ hỗ trợ tối đa 1.000 đối tượng ở mỗi lớp.
 
             </p>
         </div>
@@ -58,9 +76,9 @@
         <div><h2>Tìm các vị trí gần nhất tại</h2></div>
         <hr/>
         <div>
-            <p>T&igrave;m Vị tr&iacute; Gần nhất gi&uacute;p đo lường từ từng vị tr&iacute; trong lớp đầu ti&ecirc;n đến c&aacute;c vị tr&iacute; trong lớp n&agrave;y. C&ocirc;ng cụ hỗ trợ tối đa 1.000 vị tr&iacute; ở mỗi lớp.
+            <p>T&igrave;m Vị tr&iacute; Gần nhất đo lường từ từng đối tượng trong lớp đầu ti&ecirc;n đến c&aacute;c vị tr&iacute; trong lớp n&agrave;y. C&ocirc;ng cụ hỗ trợ tối đa 1.000 vị tr&iacute; ở mỗi lớp.
             </p>
-            <p>B&ecirc;n cạnh việc chọn một lớp từ bản đồ của bạn, bạn cần chọn  <b>Chọn Lớp Ph&acirc;n t&iacute;ch Atlas Sinh sống</b> nằm dưới c&ugrave;ng trong danh s&aacute;ch xổ xuống 
+            <p class="OnlineOnly">B&ecirc;n cạnh việc chọn một lớp từ bản đồ của bạn, bạn cần chọn  <b>Chọn Lớp Ph&acirc;n t&iacute;ch Atlas Sinh sống</b> nằm dưới c&ugrave;ng trong danh s&aacute;ch xổ xuống 
 Thao t&aacute;c n&agrave;y mở ra một b&ocirc;̣ sưu t&acirc;̣p c&oacute; chứa c&aacute;c lớp hữu &iacute;ch cho nhiều sự ph&acirc;n t&iacute;ch kh&aacute;c nhau. 
             </p>
         </div>

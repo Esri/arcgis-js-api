@@ -1,4 +1,4 @@
-// COPYRIGHT © 2015 Esri
+// COPYRIGHT © 2016 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,5 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.16/esri/copyright.txt for details.
+
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../../base/Descriptor","../../../../form/Tabs","../../../../form/iso/AbstractObject","../../../../form/iso/CodeListReference","../../../../form/iso/ObjectReference","../../../iso/gmd/citation/ResourceCitation","../../../iso/gmd/citation/ResourceContact","../../../iso/gmd/identification/ResourceDescription","../../../iso/gmd/identification/ResourceThumbnail","../../../iso/gmd/maintenance/MD_MaintenanceFrequencyCode","../../../inspire/gmd/identification/DataResourceKeywords","../../../inspire/gmd/constraints/ResourceConstraints","./DataResourceTab","dojo/text!./templates/DataIdentification.html","../../../../../../kernel"],function(e,i,t,o,n,a,s,c,r,d,m,f,g,u,b,R,j){var l=e(o,{templateString:R});return t("extend-esri")&&i.setObject("dijit.metadata.types.gemini.gmd.identification.DataIdentification",l,j),l});

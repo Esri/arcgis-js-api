@@ -1,29 +1,62 @@
-.light .Tapestry_ValueCell
-{ 
-    color:#999999;
+
+.light .Tapestry_Main_Table {
+    background: #EFEEEF;
 }
 
-.light .Tapestry_AttrCell
-{ 
-    color:#999999;
+.light .Tapestry_Main_Pct {
+    border-left: 1px solid #cbcbcb;
 }
 
-.light .Tapestry_TextCell
-{ 
-    color:#999999;
+.dj_rtl .light .Tapestry_Main_Pct{
+	border-right: 1px solid #cbcbcb;
+	border-left: none;
 }
 
-.light .Tapestry_TopOne
-{    
-    color:#339933;
+	.light .Collapsed .Tapestry_Main_Pct {
+		border-left: none;
+	}
+
+.light .Tapestry_Main_Button {
+    border-bottom: 2px solid #F7F8F8;
 }
 
-.light .Tapestry_TopTwo
-{
-   color:#cc6600;
+.light .Tapestry_LifeMode .LifeModeColor{
+	color: #4c4c4c;
 }
 
-.light .Tapestry_TopThree
-{
-    color:#3366cc;
+.light .Tapestry_Main_Value {
+	color: #7f8183;
+}
+
+.light .Tapestry_Main_Arrow div{
+	background-image: url("images/upDown.png");
+}
+
+.light .Tapestry_LifeMode:hover{
+    background-color: #e5e5e5;
+}
+
+.light .Tapestry_Main_PctLabel{
+	color: #7f8183;
+}
+
+.light .Tapestry_Details_FieldCell > div{
+	border-left: 2px solid #7f8183;
+}
+
+.light .Tapestry_Details_Name{
+	background-image: url("images/acrobat.png");
+	color: #336699;
+}
+
+.light .Tapestry_Details_Title a {
+    color: #000;
+}
+
+.light .Tapestry_Details_Label {
+    color: #000;
+}
+
+.light .Tapestry_Details_Table{
+	border-bottom: 2px solid #F7F8F8;
 }

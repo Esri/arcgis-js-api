@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -61,12 +79,15 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Kies puntlaag om gebieden op basis van reistijd te berekenen rond</h2></div>
+        <div><h2>Kies de puntenlaag om gebieden op basis van reistijd te berekenen rond</h2></div>
         <hr/>
         <div>
             <p>De puntobjecten rond welke gebieden worden berekend. U kunt kiezen hoe gebieden berekend worden op basis van reismethode (rijden, vrachtverkeer of wandelen) en (tijd of afstand) meten.
             </p>
-            <p>Naast het kiezen van een laag uit uw kaart, kunt u  <b>Analyselaag Levende Atlas kiezen</b> selecteren onderaan de vervolgkeuzelijst. Er wordt een galerij geopend met een verzameling lagen die handig zijn voor veel analyses. 
+            <p class="OnlineOnly">Naast het kiezen van een laag uit uw kaart, kunt u  <b>Analyselaag Levende Atlas kiezen</b> selecteren onderaan de vervolgkeuzelijst. Er wordt een galerij geopend met een verzameling lagen die handig zijn voor veel analyses. 
+            </p>
+            <p>De tool ondersteunt maximaal 1.000 objecten in de invoerlaag.
+
             </p>
         </div>
     </div>
@@ -76,7 +97,7 @@
         <div>
             <p>Kies uw manier van reizen (auto, vrachtwagen, wandelen) en meeteenheid (tijd of afstand). De beschikbare manieren van reizen worden bepaald door de beheerder van uw organisatie.  Nadat u uw manier van reizen en uw meeteenheid hebt gekozen, voert u een duur of afstand in van maximaal  5 uur (300 minuten) of  300 mijl (482,80 kilometer). 
             </p>
-            <p>Als u  <b>reistijd</b> kiest, hebt u opties voor het meten van de reistijd.
+            <p>Als u  <b>Reistijd</b> kiest, hebt u opties voor het meten van de reistijd.
                 <ul>
                     <li>
                         <p>Vink  <b>Verkeer gebruiken</b> uit om gebieden voor reistijd te maken op basis van vaste snelheden. Dit is een geschikte optie als u een algemeen reistijdgebied wilt, en niet een gebied dat wordt berekend aan de hand van vari&euml;rende verkeersomstandigheden voor een bepaalde vertrektijd.
@@ -93,7 +114,7 @@
                         </p>
                         <p>U kunt deze historische verkeersinstellingen bijvoorbeeld gebruiken voor de vraag: 'Welke gebieden kan ik gewoonlijk bereiken wanneer ik op een woensdag om 11:30 uur vertrek?' 
                         </p>
-                        <p>De tijd die u instelt, verwijst naar de tijdzone waarop uw invoerpunten zich bevinden. Als u de tijd dus instelt op 8:00 uur en twee startpunten hebt, een in New York City en een ander in Los Angeles, worden de reistijdgebieden gegenereerd voor respectievelijk 8:00 uurEastern Time en 8:00 uurPacific Time als uitgangspunt.
+                        <p>De tijd die u instelt, verwijst naar de tijdzone waarop uw invoerpunten zich bevinden. Als u de tijd dus instelt op 8:00 uur en twee startpunten hebt, een in New York City en een ander in Los Angeles, worden de reistijdgebieden gegenereerd voor respectievelijk 8:00 uur Eastern Time en 8:00 uur Pacific Time als uitgangspunt.
                         </p>
                     </li>
                 </ul>

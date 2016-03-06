@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -135,7 +153,7 @@
     <div id="FindLocationsCategory" class="regularsize">
         <h2>查找位置</h2>
         <hr/>
-        <p>这些工具用于确定符合多种不同指定标准的区域。这些标准基于属性查询（如闲置宗地）和空间查询（如距离河流 1 千米以内）。查找的区域可从现有要素（例如现有地块）中选择，也可创建满足所有要求的新区域。
+        <p>这些工具用于确定符合多种不同指定标准的区域。这些标准可基于属性查询（如闲置宗地）和空间查询（如距离河流 1 千米以内）。查找的区域可从现有要素（例如现有地块）中选择，也可创建满足所有要求的新区域。
             <ul>
                 <li> <b>查找现有位置</b>用于在图层中查找满足一系列条件的现有区域。
                 </li>
@@ -143,11 +161,13 @@
                 </li>
                 <li> <b>查找相似位置</b>可根据指定条件查找与一个或多个参考位置最相似的位置。
                 </li>
+                <li> <b>选择最佳设施点</b>可通过满足给定目标的方式为设施点分配请求位置来选择设施点的最佳位置。
+                </li>
                 <li> <b>创建视域</b>根据您指定的位置创建可见区域。
                 </li>
                 <li> <b>创建流域</b>根据您指定的位置创建集水区。
                 </li>
-                <li> <b>追踪下游</b>在您指定位置的下游方向确定水流路径。
+                <li> <b>网络下溯追踪</b>在您指定位置的下游方向确定水流路径。
                 </li>
             </ul>
             
@@ -166,8 +186,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>在研究区域中选择满足所指定的一系列标准的现有要素。这些标准基于属性查询（如闲置宗地）和空间查询（如距离河流 1 英里以内）。
-
+            <p>在研究区域中选择满足所指定的一系列标准的现有要素。这些标准可基于属性查询（如闲置宗地）和空间查询（如距离河流 1 英里以内）。
             </p>
             <br/>
         </div>
@@ -182,8 +201,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>在研究区域中创建满足所指定的一系列标准的新要素。这些标准基于属性查询（如闲置宗地）和空间查询（如距离河流 1 英里以内）。
-
+            <p>在研究区域中创建满足所指定的一系列标准的新要素。这些标准可基于属性查询（如闲置宗地）和空间查询（如距离河流 1 英里以内）。
             </p>
             <br/>
         </div>
@@ -199,6 +217,21 @@
             </table>
 <hr/>
             <p>根据指定条件查找与一个或多个参考位置最相似的位置。
+            </p>
+            <br/>
+        </div>
+        <div id="ChooseBestFacilitiesTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>选择最佳设施点</h2></td>
+                    <td>
+                    <img src="../images/GUID-E57BEC1A-C404-436B-B389-65711FF83088-web.png" class="titleImage" alt="选择最佳设施点">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>通过满足给定目标的方式为设施点分配请求位置来选择设施点的最佳位置。
             </p>
             <br/>
         </div>

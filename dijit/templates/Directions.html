@@ -4,7 +4,10 @@
             <div id="search-source-container" class="${_css.searchSourceContainerClass}" data-dojo-attach-point="_searchSourceContainerNode">
                 <div data-dojo-attach-point="_searchSourceSelectorContainer"></div>
             </div>
-            <table class="${_css.stopsClass}" data-dojo-attach-point="_dndNode"></table>
+            <div class="${_css.stopsTableContainerClass}">
+                <table class="${_css.stopsClass}" data-dojo-attach-point="_dndNode"></table>
+                <div class="${_css.stopsTableCoverClass}" data-dojo-attach-point="_stopsTableCover"></div>
+            </div>
             <div class="${_css.clearClass}"></div>
             <div class="${_css.stopsButtonContainerClass}">
                 <div class="${_css.stopsAddDestinationClass}">

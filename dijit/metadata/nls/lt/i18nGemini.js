@@ -1,4 +1,4 @@
-// COPYRIGHT © 2015 Esri
+// COPYRIGHT © 2016 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,5 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.16/esri/copyright.txt for details.
+
 define({documentTypes:{data:{caption:"GEMINI (duomenys)",description:""},service:{caption:"GEMINI (paslauga)",description:""}},LanguageCode:{eng:"Anglų",cym:"Valų",gle:"Gėlų (airių)",gla:"Gėlų (škotų)",cor:"Kornų",sco:"Alsterio škotų"},verticalCRS:{reference:"Nuoroda (pvz., urn:ogc:def:crs:EPSG::5701 )"}});

@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -35,7 +53,7 @@
         </ul>
         
     </p>
-    <p>Als  <b>Huidige kaartextent gebruiken</b> is geselecteerd, worden alleen de objecten in de invoerlaag en de samen te vatten kaartlaag geanalyseerd die zichtbaar zijn binnen het huidige kaartextent. Als deze optie niet is aangevinkt, worden alle objecten in de invoerlaag en de samen te vatten kaartlaag geanalyseerd, ook als ze zich buiten het huidige kaartextent bevinden.
+    <p>Als  <b>Huidige kaartextent gebruiken</b> is aangevinkt, worden alleen de objecten in de invoerlaag en de samen te vatten kaartlaag geanalyseerd die zichtbaar zijn binnen het huidige kaartextent. Als deze optie niet is aangevinkt, worden alle objecten in de invoerlaag en de samen te vatten kaartlaag geanalyseerd, ook als ze zich buiten het huidige kaartextent bevinden.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -43,10 +61,9 @@
         <div><h2>Kies gebiedslaag om andere objecten samen te vatten binnen de grenzen</h2></div>
         <hr/>
         <div>
-            <p>De gebiedslaag die gebruikt wordt om objecten samen te vatten die binnen de grenzen vallen.
-
+            <p>De gebiedslaag die gebruikt wordt om objecten samen te vatten die binnen de grenzen vallen. 
             </p>
-            <p>Naast het kiezen van een laag uit uw kaart, kunt u  <b>Analyselaag Levende Atlas kiezen</b> selecteren onderaan de vervolgkeuzelijst. Er wordt een galerij geopend met een verzameling lagen die handig zijn voor veel analyses. 
+            <p class="OnlineOnly">Naast het kiezen van een laag uit uw kaart, kunt u  <b>Analyselaag Levende Atlas kiezen</b> selecteren onderaan de vervolgkeuzelijst. Er wordt een galerij geopend met een verzameling lagen die handig zijn voor veel analyses. 
             </p>
         </div>
     </div>
@@ -56,7 +73,7 @@
         <div>
             <p>Objecten in deze laag die binnen de grenzen van objecten in de bovenstaande invoerlaag vallen, worden samengevat. 
             </p>
-            <p>Naast het kiezen van een laag uit uw kaart, kunt u  <b>Analyselaag Levende Atlas kiezen</b> selecteren onderaan de vervolgkeuzelijst. Er wordt een galerij geopend met een verzameling lagen die handig zijn voor veel analyses. 
+            <p class="OnlineOnly">Naast het kiezen van een laag uit uw kaart, kunt u  <b>Analyselaag Levende Atlas kiezen</b> selecteren onderaan de vervolgkeuzelijst. Er wordt een galerij geopend met een verzameling lagen die handig zijn voor veel analyses. 
             </p>
         </div>
     </div>
@@ -77,7 +94,7 @@
                 </li>
                 <li> <b>Maximum</b>&mdash;De grootste waarde in het opgegeven veld.
                 </li>
-                <li> <b>Std. afwijking</b>&mdash;De standaardafwijking van de waarden in het opgegeven veld.
+                <li> <b>Std. Afwijking</b>&mdash;De standaardafwijking van de waarden in het opgegeven veld.
                 </li>
             </ul>
             
@@ -87,7 +104,7 @@
         <div><h2>Statistieken toevoegen van</h2></div>
         <hr/>
         <div>
-            <p>U kunt statistieken berekenen voor numerieke attributen van de nabijgelegen lijnen. 
+            <p>U kunt optioneel statistieken berekenen voor numerieke attributen van de samen te vatten lijnen. 
             </p>
             <p>Als  <b>Totale lengte van lijnen in</b> is aangevinkt, wordt de totale lengte van de lijnen binnen elke gebiedsgrens berekend. Daarnaast kunt u statistieken berekenen voor numerieke attributen van de lijnen binnen elke stadsgrens.
             </p>
@@ -100,7 +117,7 @@
                 </li>
                 <li> <b>Maximum</b>&mdash;De grootste waarde in het opgegeven veld.
                 </li>
-                <li> <b>Std. afwijking</b>&mdash;De standaardafwijking van de waarden in het opgegeven veld.
+                <li> <b>Std. Afwijking</b>&mdash;De standaardafwijking van de waarden in het opgegeven veld.
                 </li>
             </ul>
             
@@ -110,7 +127,7 @@
         <div><h2>Statistieken toevoegen van</h2></div>
         <hr/>
         <div>
-            <p>U kunt statistieken berekenen voor numerieke attributen van de nabijgelegen gebieden. 
+            <p>U kunt optioneel statistieken berekenen voor numerieke attributen van de samen te vatten oppervlakten. 
             </p>
             <p>Als  <b>Som van gebied met</b> is aangevinkt, wordt het totale gebied berekend van objecten die zich binnen elke gebiedsgrens van de eerste invoerlaag bevinden. Daarnaast kunt u statistieken berekenen voor numerieke attributen van de objecten binnen elke gebiedsgrens.
             </p>
@@ -123,17 +140,40 @@
                 </li>
                 <li> <b>Maximum</b>&mdash;De grootste waarde in het opgegeven veld.
                 </li>
-                <li> <b>Std. afwijking</b>&mdash;De standaardafwijking van de waarden in het opgegeven veld.
+                <li> <b>Std. Afwijking</b>&mdash;De standaardafwijking van de waarden in het opgegeven veld.
                 </li>
             </ul>
             
+        </div>
+    </div>
+    <div id="StatisticsNoLayer">
+        <div><h2>Statistieken toevoegen van</h2></div>
+        <hr/>
+        <div>
+            <p>Zodra u een samen te vatten laag kiest, kunt u optioneel statistieken berekenen van alle numerieke attributen van de punten, lijnen of oppervlakten in de invoerlaag. 
+            </p>
+            <ul>
+                <li> <b>Som</b>&mdash;De totale waarde voor het opgegeven veld
+                </li>
+                <li> <b>Gemiddelde</b>&mdash;Het gemiddelde voor het opgegeven veld
+                </li>
+                <li> <b>Minimum</b>&mdash;De kleinste waarde in het opgegeven veld
+                </li>
+                <li> <b>Maximum</b>&mdash;De grootste waarde in het opgegeven veld
+                </li>
+                <li> <b>Std. Afwijking</b>&mdash;De standaardafwijking van de waarden in het opgegeven veld.
+                </li>
+            </ul>
+            
+            <p>Afhankelijk van de objecttypes die u samenvat, kunt u het totale aantal van dichtstbijzijnde punten, totale lengte van lijnen of totale oppervlakte berekenen.
+            </p>
         </div>
     </div>
     <div id="GroupBy">
         <div><h2>Kies veld om op te groeperen</h2></div>
         <hr/>
         <div>
-            <p>Dit is een attribuut van de  <b>Samenvatten</b>-objecten die u kunt gebruiken om statistieken afzonderlijk te berekenen voor elke unieke attribuutwaarde. Stel bijvoorbeeld dat de eerste invoerlaag stadsgrenzen bevat en dat de Samenvatten-objecten percelen zijn. Een van de attributen van de percelen is <i>Status</i> en dit bevat twee waarden: VACANT en OCCUPIED. Als u het totale gebied wilt berekenen van lege en bezette percelen binnen de grenzen van steden, gebruikt u <i>Status</i> als groep per attribuut. De statistieken voor elke groep en het aantal objecten binnen elke gebiedsgrens worden weergegeven in de pop-up van de resultaatlaag.
+            <p>Dit is een attribuut van de  <b>Samenvatten</b>-objecten die u kunt gebruiken om statistieken afzonderlijk te berekenen voor elke unieke attribuutwaarde. Stel bijvoorbeeld dat de eerste invoerlaag stadsgrenzen bevat en dat de samengevatte objecten percelen zijn. Een van de attributen van de percelen is <i>Status</i> en dit bevat twee waarden: VACANT en OCCUPIED. Als u het totale gebied wilt berekenen van lege en bezette percelen binnen de grenzen van steden, gebruikt u <i>Status</i> als groep per attribuut. De statistieken voor elke groep en het aantal objecten binnen elke gebiedsgrens worden weergegeven in de pop-up van de resultaatlaag.
             </p>
         </div>
     </div>
@@ -141,7 +181,7 @@
         <div><h2>Minderheid, meerderheid toevoegen</h2></div>
         <hr/>
         <div>
-            <p>Dit selectievakje wordt ingeschakeld wanneer u een veld kiest om op te groeperen. Als u wilt weten welke attribuutwaarden binnen elke groep in de minderheid zijn (minst dominant) of in de meerderheid (meest dominant) binnen elke grens van de eerste invoerlaag, selecteer dan  <b>Minderheid, meerderheid toevoegen</b>. Als u <b>Minderheid, meerderheid toevoegen</b> selecteert, worden er twee nieuwe velden toegevoegd aan uw resultaatlaag. Als u ook <b>Percentages toevoegen</b> selecteert, worden twee extra velden toegevoegd aan de resultaatlaag met de percentages van de minderheid en de meerderheid van de attribuutwaarden binnen elke groep.
+            <p>Dit selectievakje wordt ingeschakeld wanneer u een veld kiest om op te groeperen. Als u wilt weten welke attribuutwaarden binnen elke groep in de minderheid zijn (minst dominant) of in de meerderheid (meest dominant) binnen elke grens van de eerste invoerlaag, selecteer dan  <b>Minderheid, meerderheid toevoegen</b>. Als u <b>Minderheid, meerderheid toevoegen</b> selecteert, worden er twee nieuwe velden toegevoegd aan uw resultaatlaag. Als u ook <b>Percentages toevoegen</b> worden twee extra velden toegevoegd aan de resultaatlaag met de percentages van de minderheid en de meerderheid van de attribuutwaarden binnen elke groep.
             </p>
             <ul>
                 <li>Als u punten samenvat, worden waarden in de minderheid en meerderheid berekend op basis van het aantal punten binnen elk grensgebied in de invoergebiedslaag.  

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2015 Esri
+// COPYRIGHT © 2016 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,5 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.16/esri/copyright.txt for details.
+
 define(["dojo/_base/declare","dojo/_base/lang","dojo/_base/array","dojo/has","../kernel","../graphic","../SpatialReference","./DirectionsFeatureSet","./NAMessage"],function(s,e,r,i,n,t,o,a,l){var c=s(null,{declaredClass:"esri.tasks.ClosestFacilitySolveResult",constructor:function(s){s.directions&&(this.directions=[],r.forEach(s.directions,function(s,e){var i=[],n=[];r.forEach(s.features,function(s,e){n[e]=s.compressedGeometry,i[e]=s.strings}),s.strings=i,this.directions[e]=new a(s,n)},this)),s.routes&&(this.routes=this._graphicsFromJson(s.routes)),s.facilities&&(this.facilities=this._graphicsFromJson(s.facilities)),s.incidents&&(this.incidents=this._graphicsFromJson(s.incidents)),s.barriers&&(this.pointBarriers=this._graphicsFromJson(s.barriers)),s.polylineBarriers&&(this.polylineBarriers=this._graphicsFromJson(s.polylineBarriers)),s.polygonBarriers&&(this.polygonBarriers=this._graphicsFromJson(s.polygonBarriers)),s.messages&&(this.messages=r.map(s.messages,function(s){return new l(s)}))},routes:null,facilities:null,incidents:null,pointBarriers:null,polylineBarriers:null,polygonBarriers:null,directions:null,messages:null,_graphicsFromJson:function(s){var e=new o(s.spatialReference),i=s.features;return r.map(i,function(s){var r=new t(s);return r.geometry.setSpatialReference(e),r})}});return i("extend-esri")&&e.setObject("tasks.ClosestFacilitySolveResult",c,n),c});

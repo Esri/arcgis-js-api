@@ -4,14 +4,14 @@
       <td class="shortTextInput" colspan="3" style="padding-bottom:0;">
         <div class="esriLeadingMargin1">
           <label>
-            <input type="checkbox" data-dojo-attach-point="_useTrafficCheck" data-dojo-type="dijit/form/CheckBox" data-dojo-attach-event="onChange:_handleUseTrafficCheckChange" data-dojo-props="checked:false" style="margin-bottom:0.25em;">
+            <input id="${id}_usetrafficcheck" type="checkbox" data-dojo-attach-point="_useTrafficCheck" data-dojo-type="dijit/form/CheckBox" data-dojo-attach-event="onChange:_handleUseTrafficCheckChange" data-dojo-props="checked:false" style="margin-bottom:0.25em;">
             </input>
-            <label class="esriLeadingMargin025">${i18n.trafficLabel}</label>
+            <label for="${id}_usetrafficcheck" data-dojo-attach-point="_useTrafficLabel" class="esriLeadingMargin025">${i18n.trafficLabel}</label>
          </label>
         </div>
       </td>
     </tr>
-    <tr>
+    <tr data-dojo-attach-point="_liveTrafficRadioRow">
       <td colspan="3">
         <div class="esriLeadingMargin2">
           <label>
@@ -21,7 +21,7 @@
         </div>
       </td>
     </tr>
-    <tr>
+    <tr data-dojo-attach-point="_liveTrafficCtrlRow">
       <td colspan="3">
         <div class="esriLeadingMargin2 longInput" value="0" data-dojo-props="intermediateChanges:true,showButtons:false,minimum:0, maximum:12,discreteValues:49" data-dojo-attach-point="_liveTimeSlider" data-dojo-attach-event="onChange:_handleLiveTimeSliderChange" type="range" data-dojo-type="dijit/form/HorizontalSlider">
           <div data-dojo-type="dijit/form/HorizontalRule"  style="width:86%" data-dojo-props="container: 'topDecoration',count: 13,style: 'height: 0.55em;'"></div>
@@ -36,7 +36,7 @@
          <!-- create rules and labels below horizontal slider -->
       </td>
     </tr>    
-    <tr>
+    <tr data-dojo-attach-point="_typicalTrafficRadioRow">
       <td colspan="3">
         <div class="esriLeadingMargin2">
           <label>
@@ -61,7 +61,7 @@
         </input>
       </td>
     </tr>
-    <tr>
+    <tr data-dojo-attach-point="_availabilityRow">
       <td colspan="3" style="padding-top:0;">
         <a class="esriLeadingMargin3 esriSmallFont" href="http://www.arcgis.com/home/item.html?id=b7a893e8e1e04311bd925ea25cb8d7c7" target="_available">${i18n.seeAvailability}</a>
       </td>

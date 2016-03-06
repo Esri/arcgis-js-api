@@ -35,7 +35,18 @@
             "toolDescription": "plan-routes.htm",
             "endLayer": "plan-routes.htm#ESRI_SECTION1_C980820DF2F447288C60E659E97E6523",
             "startLayer": "plan-routes.htm#ESRI_SECTION1_C980820DF2F447288C60E659E97E6523"
+        },
+        "ChooseBestFacilities": {
+            "toolDescription": "choose-best-facilities.htm",
+            "allocateToExistingFacilities": "choose-best-facilities.htm#ESRI_SECTION2_811106C1272D44F28F4A6F0B69DFC185",
+            "minimizeTravel": "choose-best-facilities.htm#ESRI_SECTION2_FC6691F587C84EA28105FFBE43F1512A",
+            "maximizeCoverage": "choose-best-facilities.htm#ESRI_SECTION2_DB9A96B209454B4B9C684C91D283E867",
+            "maximizeCoverageWithCapacity": "choose-best-facilities.htm#ESRI_SECTION2_57024B2A2DBC4B13816E152CC3DCC9F7",
+            "coverAPercentageOfDemand": "choose-best-facilities.htm#ESRI_SECTION2_1BAE3636B5A542A8ADABB4409991D752",
+            "demandLocationsLayer": "choose-best-facilities.htm#ESRI_SECTION1_402F93C2B16541ECBDCD06B9C0F18F5D",
+            "requiredFacilitiesLayer": "choose-best-facilities.htm#GUID-6332E48E-EA35-4D25-8C41-4A907203D875",
+            "candidateFacilitiesLayer": "choose-best-facilities.htm#GUID-6332E48E-EA35-4D25-8C41-4A907203D875",
+            "goal": "choose-best-facilities.htm#ESRI_SECTION1_4A4428B0C3FB41069B16FB2BC11F37DC"
         }
     }
 }
-

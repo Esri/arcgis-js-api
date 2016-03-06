@@ -3,6 +3,18 @@
 .simpleDirections .esriStopsContainer {
     margin: 0 0 10px 0;
 }
+.simpleDirections .esriStopsTableContainer{
+    position: relative;
+}
+.simpleDirections .esriStopsTableCover{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255,255,255,0.5);
+    z-index: 1000;
+}
 .simpleDirections .esriStopsButtons {
     margin: 0;
 }
@@ -479,6 +491,8 @@
 
 .simpleDirections .esriRoutesError {
     padding: 10px 0;
+    text-align: center;
+    color: red;
 }
 .simpleDirections .esriRoutesError ul {
     margin: 0;
@@ -491,21 +505,28 @@
 }
 .simpleDirections .esriRoutes table {
     margin: 0;
-    padding: 0;
-    border-collapse: collapse;
+    padding: 1px;
     border-spacing: 0;
     width: 100%;
 }
 .simpleDirections .esriRouteIconColumn {
     width: 21px;
     padding: 10px;
-    vertical-align: top;
-    border-bottom: 1px solid #8b8b8b;
+    vertical-align: middle;
+    border-bottom: 1px solid #b5bcc7;
 }
 .simpleDirections .esriRouteTextColumn {
-    padding: 10px 5px 10px 0;
+    padding: 20px 5px 0px 0px;
     vertical-align: top;
-    border-bottom: 1px solid #8b8b8b;
+    border-bottom: 1px solid #b5bcc7;
+}
+.simpleDirections .esriRoutesTooltip .esriRouteIconColumn {
+    border: none;
+    padding: 0 3px 0 0;
+}
+.simpleDirections .esriRoutesTooltip .esriRouteTextColumn {
+    padding: 0;
+    border: none;
 }
 .dj_rtl .simpleDirections .esriRouteTextColumn {
     padding: 10px 0 10px 5px;
@@ -648,6 +669,19 @@
 .esriDMTStopDestination .esriRouteIcon {
     background-image: url(../images/Directions/maneuvers/esriDMTStopDestination.png);
 }
+.esriDirectionsRouteTooltip{
+    display: none;
+    position: absolute;
+    background: white;
+    padding: 5px;
+    border: 1px solid #8b8b8b;
+    color: #444;
+    font-family: Verdana, Helvetica, sans-serif;
+    font-size: 12px;
+    border-radius: 3px;
+    margin-left: 20px;
+    margin-top: -10px;
+}
 .simpleDirections .esriRouteZoom {
     cursor: pointer;
     outline: 0;
@@ -656,12 +690,18 @@
 .simpleDirections .esriDMTStopLast .esriRouteTextColumn {
     border-bottom: 0;
 }
-.simpleDirections .esriRouteZoom:hover,
-.simpleDirections .esriRouteZoom:focus {
+.simpleDirections .esriRouteZoom:hover{
     background: #e2f1fc;
+}
+.simpleDirections .esriRouteZoom:focus {
+    background: #5cace1;
 }
 .simpleDirections .esriRouteInfo {
     color: #666;
+}
+.simpleDirections .esriRouteZoom:focus .esriRouteInfo,
+.simpleDirections .esriRouteZoom:focus .esriRouteInfo strong {
+    color: #ffffff;
 }
 .simpleDirections .esriRouteInfo strong {
     color: #444;
@@ -669,10 +709,27 @@
 .simpleDirections .esriDMTStopDestination .esriRouteInfo {
     border: 0;
 }
+.simpleDirections .esriRouteZoom:focus .esriRouteLength{
+    background: #5cace1;
+    color:#ffffff;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
 .simpleDirections .esriRouteLength {
     font-size: 11px;
-    line-height: 14px;
     min-width: 65px;
+    position: relative;
+    top: 8px;
+    display: inline;
+    padding: 0 5px 0 5px;
+    border-radius: 3px;
+    background-color: #f0f0f0;
+}
+.simpleDirections .esriRoutesTooltip .esriRouteLength,
+.simpleDirections .esriPrintDirections .esriRouteLength{
+    top: 0;
+    background: transparent;
 }
 .simpleDirections .esriResultsContainer {
     background: #fff;
@@ -809,9 +866,9 @@
 
 
 .simpleDirections .esriSearchSourceContainer {
-    margin: 0 10px;
-    height: 19px;
-}
+     margin: 0 10px;
+     height: 19px;
+ }
 .simpleDirections .esriSearchSourcesDDL{
     height: 18px;
     width: 100px;
@@ -952,7 +1009,6 @@
     filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#F2F2F2', endColorstr='#D1D1D1', GradientType=0);
     
     margin: 10px 20px;
-    font-size: 11px;
     line-height: 16px;
     display: block;
     padding: 5px 10px;
@@ -961,7 +1017,6 @@
     cursor: pointer;
     font-weight: 400;
     white-space: nowrap;
-    text-decoration: none;
     float: right;
 }
 .dj_rtl .simpleDirections .esriPrintButton,

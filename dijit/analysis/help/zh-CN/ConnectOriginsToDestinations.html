@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -52,7 +70,7 @@
             <p>选择表示一个或多个起始点的点图层。 此工具最多支持  5,000 个起始点和  5,000 个目的地。 </p>
             <p>如果您选择的图层仅有一个起始点，则所有的目的地都会连接到该起始点。
             </p>
-            <p>除了从地图选择图层，您也可以选择下拉列表底部的 <b>选择生动地图集分析图层</b>。 此操作将打开包含可用于许多分析的图层集合的图库。 
+            <p class="OnlineOnly">除了从地图选择图层，您也可以选择下拉列表底部的 <b>选择 Living Atlas 分析图层</b>。此操作将打开包含可用于许多分析的图层集合的图库。 
             </p>
         </div>
     </div>
@@ -65,7 +83,7 @@
             </p>
             <p>如果有一个起始点和多个目的地，则此工具会将该起始点连接到每一个目的地。
             </p>
-            <p>除了从地图选择图层，您也可以选择下拉列表底部的 <b>选择生动地图集分析图层</b>。 此操作将打开包含可用于许多分析的图层集合的图库。 
+            <p class="OnlineOnly">除了从地图选择图层，您也可以选择下拉列表底部的 <b>选择 Living Atlas 分析图层</b>。此操作将打开包含可用于许多分析的图层集合的图库。 
             </p>
             <p> 如果有多个起始点和多个目的地，您需要具有两个描述起始点和目的地对的字段： <b>起始点中的 ID 字段</b>和 <b>目的地中的匹配 ID 字段</b>。 此工具在分析期间连接起始点和目的地对。例如，假设您有两个 ID 字段值分别为 <code>Rosie</code> 和 <code>Harold</code> 的起始点以及两个带有相同 ID 值的目的地。 此 <code>Rosie</code> 起始点将连接到 <code>Rosie</code> 目的地，并且 <code>Harold</code> 起始点将连接到 <code>Harold</code> 目的地。 不会执行其他连接或测量。
             </p>

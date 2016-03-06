@@ -1,4 +1,4 @@
-// COPYRIGHT © 2015 Esri
+// COPYRIGHT © 2016 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,5 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.16/esri/copyright.txt for details.
+
 define([],function(){return{getCeiling:function(t,n){if(0===t)return 0;var r;0>t?(t=-t,r=-1):r=1;var a=2,e=Math.pow(10,Math.ceil(Math.log(t)/Math.LN10)-1),i=Math.ceil(t/e/a)*a*e;return n&&Math.log(i)/Math.LN10%1===0&&(i*=a),i*r},supportsComparison:function(t,n){return"OneVar"==t||"Tapestry"!=t&&n}}});

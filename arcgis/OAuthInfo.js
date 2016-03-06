@@ -1,4 +1,4 @@
-// COPYRIGHT © 2015 Esri
+// COPYRIGHT © 2016 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,5 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-define(["../kernel","../lang","dojo/_base/declare","dojo/_base/lang","dojo/has"],function(i,t,a,o,e){var p=a(null,{declaredClass:"esri.arcgis.OAuthInfo",constructor:function(i){var t={expiration:20160,minTimeUntilExpiration:30,portalUrl:"https://www.arcgis.com",authNamespace:"/",forceLogin:!1,popup:!1,popupCallbackUrl:"oauth-callback.html",popupWindowFeatures:"height=480,width=800,location,resizable,scrollbars,status"};o.mixin(this,t,i)},_oAuthCred:null,toJson:function(){return t.fixJson({appId:this.appId,expiration:this.expiration,locale:this.locale,minTimeUntilExpiration:this.minTimeUntilExpiration,portalUrl:this.portalUrl,authNamespace:this.authNamespace,forceLogin:this.forceLogin,popup:this.popup,popupCallbackUrl:this.popupCallbackUrl,popupWindowFeatures:this.popupWindowFeatures})}});return e("extend-esri")&&o.setObject("arcgis.OAuthInfo",p,i),p});
+// See http://js.arcgis.com/3.16/esri/copyright.txt for details.
+
+define(["../kernel","../lang","dojo/_base/declare","dojo/_base/lang","dojo/has"],function(i,o,a,t,e){var p=a(null,{declaredClass:"esri.arcgis.OAuthInfo",constructor:function(i){var o={expiration:20160,minTimeUntilExpiration:30,portalUrl:"https://www.arcgis.com",authNamespace:"/",forceLogin:!1,showSocialLogins:!1,popup:!1,popupCallbackUrl:"oauth-callback.html",popupWindowFeatures:"height=480,width=800,location,resizable,scrollbars,status"};t.mixin(this,o,i)},_oAuthCred:null,toJson:function(){return o.fixJson({appId:this.appId,expiration:this.expiration,locale:this.locale,minTimeUntilExpiration:this.minTimeUntilExpiration,portalUrl:this.portalUrl,authNamespace:this.authNamespace,forceLogin:this.forceLogin,showSocialLogins:this.showSocialLogins,popup:this.popup,popupCallbackUrl:this.popupCallbackUrl,popupWindowFeatures:this.popupWindowFeatures})}});return e("extend-esri")&&t.setObject("arcgis.OAuthInfo",p,i),p});

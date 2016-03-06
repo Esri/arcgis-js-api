@@ -136,6 +136,19 @@
 	background-image: url(./images/leftarrowwhite.png);
 }
 
+.Browser_BackTd .Browser_Back.Browser_Disabled,
+.Browser_BackTd:hover .Browser_Back.Browser_Disabled,
+.dj_rtl .Browser_BackTd .Browser_Back.Browser_Disabled,
+.dj_rtl .Browser_BackTd:hover .Browser_Back.Browser_Disabled,
+.Browser_ForwardTd .Browser_Forward.Browser_Disabled,
+.Browser_ForwardTd:hover .Browser_Forward.Browser_Disabled,
+.dj_rtl .Browser_ForwardTd .Browser_Forward.Browser_Disabled,
+.dj_rtl .Browser_ForwardTd:hover .Browser_Forward.Browser_Disabled
+{
+    background-image: none;
+    cursor: default;
+}
+
 .Browser_HostBorder
 {
 	position: relative;

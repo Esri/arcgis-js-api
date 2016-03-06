@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -135,13 +153,15 @@
     <div id="FindLocationsCategory" class="regularsize">
         <h2>尋找位置</h2>
         <hr/>
-        <p>這些工具用於識別滿足多個不同指定條件的區域。 這些條件基於屬性查詢（如閒置宗地）和空間查詢（如距離河流 1 公里以內）。 尋找的區域可從現有圖徵（例如現有地塊）中選擇，也可建立滿足所有要求的新圖徵。
+        <p>這些工具用於識別滿足多個不同指定條件的區域。這些條件基於屬性查詢（如閒置宗地）和空間查詢（如距離河流 1 公里以內）。尋找的區域可從現有圖徵（例如現有地塊）中選擇，也可建立滿足所有要求的新圖徵。
             <ul>
                 <li> <b>尋找現有位置</b>用於在圖層中尋找滿足一系列條件的現有區域。
                 </li>
                 <li> <b>衍生新位置</b>可在研究區域中建立滿足一系列條件的新區域。
                 </li>
                 <li> <b>尋找相似位置</b>可根據指定的條件，尋找與一個或多個參考位置最相似的位置。
+                </li>
+                <li> <b>選擇最佳機構</b>會根據指定的目標，為機構配置有需求的位置來選擇這些機構的最佳位置。
                 </li>
                 <li> <b>建立視域</b>根據指定的位置建立可見的區域。
                 </li>
@@ -166,8 +186,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>在研究區域中選擇滿足一系列指定條件的現有圖徵。 這些條件基於屬性查詢（如閒置宗地）和空間查詢（如距離河流 1 英里以內）。
-
+            <p>在研究區域中選擇滿足一系列指定條件的現有圖徵。這些條件基於屬性查詢（如閒置宗地）和空間查詢（如距離河流 1 英里以內）。
             </p>
             <br/>
         </div>
@@ -182,8 +201,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>在研究區域中建立滿足一系列指定條件的新圖徵。 這些條件基於屬性查詢（如閒置宗地）和空間查詢（如距離河流 1 英里以內）。
-
+            <p>在研究區域中建立滿足一系列指定條件的新圖徵。這些條件基於屬性查詢（如閒置宗地）和空間查詢（如距離河流 1 英里以內）。
             </p>
             <br/>
         </div>
@@ -199,6 +217,21 @@
             </table>
 <hr/>
             <p>根據指定條件尋找與一個或多個參考位置最相似的位置。
+            </p>
+            <br/>
+        </div>
+        <div id="ChooseBestFacilitiesTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>選擇最佳機構</h2></td>
+                    <td>
+                    <img src="../images/GUID-E57BEC1A-C404-436B-B389-65711FF83088-web.png" class="titleImage" alt="選擇最佳機構">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>根據指定的目標，為機構配置有需求的位置，從而選擇這些機構的最佳位置。
             </p>
             <br/>
         </div>
@@ -403,7 +436,7 @@
                 <tbody><tr>
                     <td><h2>尋找最近</h2></td>
                     <td>
-                    <img src="../images/GUID-150C2484-7459-405A-8835-B4E72CD49738-web.png" class="titleImage" alt="尋找最近">
+                    <img src="../images/GUID-150C2484-7459-405A-8835-B4E72CD49738-web.png" class="titleImage" alt="尋找最近點">
                     </td>
                 </tr></tbody>
             </table>
@@ -416,9 +449,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>規劃路徑</h2></td>
+                    <td><h2>計劃路徑</h2></td>
                     <td>
-                    <img src="../images/GUID-09CC6D60-3C72-42D7-968E-B0663F0B1EBB-web.png" class="titleImage" alt="規劃路徑">
+                    <img src="../images/GUID-09CC6D60-3C72-42D7-968E-B0663F0B1EBB-web.png" class="titleImage" alt="計劃路徑">
                     </td>
                 </tr></tbody>
             </table>

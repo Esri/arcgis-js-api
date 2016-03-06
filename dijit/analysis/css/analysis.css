@@ -6,6 +6,10 @@
   font-weight: bold;
 }
 
+.toolLabel {
+  font-weight: normal;
+}
+
 .esriSmallLabel {
   font-size: smaller;
   color: grey;
@@ -31,6 +35,77 @@
   margin: .75em .25em;
   border-bottom: .1em solid #e5e5e5;   	
 }
+
+.analysisTooltip {
+  max-width: 18em; 
+}
+
+.esriAnalysis .esriChoosePane .toolContainer,
+.esriAnalysis .esriChoosePane .toolContainerSelected{
+  display: block;
+  width: 95%;
+  height: auto;
+  margin: .75em .25em;
+  border: .1em solid #e5e5e5;
+  border-radius: 5px;
+}
+
+.esriAnalysis .esriChoosePane .toolContainer{
+  
+  
+  
+  box-shadow: inset 0 0 0 1px #27496d;
+  border: none;
+  border-radius: 5px;
+}
+
+.esriAnalysis .esriChoosePane .toolContainer:hover,
+.esriAnalysis .esriChoosePane .toolContainer.hover {
+  box-shadow: inset 0 0 0 1px #27496d,0 5px 15px #193047;
+}
+
+.esriAnalysis .esriChoosePane .toolContainer:active,
+.esriAnalysis .esriChoosePane .toolContainer.active,
+.esriAnalysis .esriChoosePane .toolContainer:visited,
+.esriAnalysis .esriChoosePane .toolContainer.visited{
+  box-shadow: inset 0 0 0 1px #27496d,inset 0 5px 30px #193047;
+}
+
+.esriAnalysis .esriChoosePane .toolContainer.toolSelected {
+  box-shadow: inset 0 0 0 1px #27496d,inset 0 5px 30px #193047;
+}
+
+.esriAnalysis .esriChoosePane .toolContainer .toolContent {
+  margin-top: -4.75em;
+}
+
+.esriAnalysis .esriChoosePane .toolDesc {
+  padding-bottom: 1em;
+  margin: 1em;
+  word-break: keep-all;
+}
+
+.esriChoosePane .toolLabel {
+  font-weight: bold;
+}
+
+.esriAnalysis .esriCBLtoolContent {
+  
+}
+
+.esriAnalysis .esriCBLtoolContainer {
+  display: block;
+  width: 95%;
+  height: auto;
+  margin: 0;
+  padding: 1em .25em 0;
+  border-bottom: .1em solid #e5e5e5;
+}
+
+.esriAnalysis .esriCBLfirstGoal {
+  margin-top: 2.2em;
+  border-top: .1em solid #e5e5e5;
+ }
 
 .esriToolContainerDisabled {
   background-color: #e5e5e5;
@@ -327,6 +402,15 @@
 
 .createWatershedIcon {
   background-image: url("../images/Watershed32.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 32px;
+  height: 32px;
+  margin: 8px;
+}
+
+.chooseBestFacilitiesIcon {
+  background-image: url("../images/ChooseBestFacilities32.png");
   background-repeat: no-repeat;
   background-size: 100%;
   width: 32px;
@@ -657,6 +741,10 @@ td.subsectionLineDivider {
   width: 90%;
 }
 
+.esriAnalysis .esriLongLabel.dijitError  .dijitButtonText {
+  width: 80%;
+}
+
 .esriAnalysis .esriLongLabel .dijitSelectLabel, .esriLongLabel.dojoxCheckedMultiSelect{
   width: 100%;
   text-align: left; 
@@ -669,6 +757,11 @@ td.subsectionLineDivider {
 .esriAnalysis  .dijitInputField.dijitValidationIcon  {
   position: relative;
   top: 0.5em;
+}
+
+.esriAnalysis .dijitSelect  .dijitInputField.dijitValidationIcon {
+  position: relative;
+  top: 0;
 }
 
 .esriAnalysis .esriMediumlabel .dijitSelectLabel{
@@ -772,7 +865,7 @@ td.subsectionLineDivider {
 
 .bufferSelector .bufferIcon{
   border:2px solid #FFF;
-  margin:5px 15px;
+  margin: 5px auto;
 }
 
 .bufferSelector .bufferIcon:hover {
@@ -887,6 +980,26 @@ td.subsectionLineDivider {
 
 .esriStraightLineDistanceDisabledIcon {
   background-image: url("../images/StraightLineDistanceDisabled32.png");
+}
+
+.facilityDemandIcon {
+  background-image: url("../images/FacilityToDemand32.png");
+}
+
+.demandFacilityIcon {
+  background-image: url("../images/DemandToFacility32.png");
+}
+
+.constantIcon {
+  background-image: url("../images/Constant32.png");
+}
+
+.unlimitedIcon {
+  background-image: url("../images/Unlimited32.png");
+}
+
+.attributeIcon {
+  background-image: url("../images/Field32.png");
 }
 
 .btn-container {
@@ -1357,3 +1470,79 @@ td.subsectionLineDivider {
 }
 
 
+.allocateIcon {
+  background-image: url("../images/Allocate.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 80px;
+  height: 80px;
+  margin: 3px 5px;
+  position:relative;
+  top: 5px;
+}
+
+.maximizeIcon {
+  background-image: url("../images/maximize.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 80px;
+  height: 80px;
+  margin: 3px 5px;
+  position:relative;
+  top: 5px;
+}
+
+.minimizeIcon {
+  background-image: url("../images/minimize.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 80px;
+  height: 80px;
+  margin: 3px 5px;
+  position:relative;
+  top: 5px;
+}
+
+.maximizelimIcon {
+  background-image: url("../images/maximizelim.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 80px;
+  height: 80px;
+  margin: 3px 5px;
+  position:relative;
+  top: 5px;
+}
+
+.percentageIcon {
+  background-image: url("../images/percentage.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 80px;
+  height: 80px;
+  margin: 3px 5px;
+  position:relative;
+  top: 5px;
+}
+
+.goalIcon {
+  background-image: url("../images/transparent.gif");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 32px;
+  height: 32px;
+  margin: 10px;;
+}
+
+
+.esriChooseBestTool .esriAnalysisCloseIcon {
+  background-image: url("../../../css/calcite/images/ago_sprite.png");
+  background-position: -30px -10px;
+  width: 14px;
+  height: 14px;
+  display:block; 
+}
+
+.esriRtl .esriChooseBestTool .esriAnalysisCloseIcon {
+  background-position: -45px -10px;
+}

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2015 Esri
+// COPYRIGHT © 2016 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,5 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.16/esri/copyright.txt for details.
+
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../tools/ClickableTool","../../../base/etc/docUtil","./ThemeDialog","../../../../../kernel"],function(e,t,o,n,i,a,l){var s=e([n],{postCreate:function(){this.inherited(arguments)},startup:function(){if(!this._started){var e=i.findGxeContext(this);e&&e.gemetUrl&&e.gemetInspireThemeThesaurus||(this.domNode.style.display="none")}},whenToolClicked:function(e,o){if(o&&o.parentXNode){var n=o.getInputValue();null===n||n.push||(n=[n]);var i=new a({gxeDocument:o.parentXNode.gxeDocument,initiallySelectedValues:n,onSelect:t.hitch(this,function(e){o.importValues(null,e)})});i.show()}}});return o("extend-esri")&&t.setObject("dijit.metadata.form.iso.gemet.GemetThemeTool",s,l),s});

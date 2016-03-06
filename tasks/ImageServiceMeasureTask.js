@@ -1,4 +1,4 @@
-// COPYRIGHT © 2015 Esri
+// COPYRIGHT © 2016 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,5 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.16/esri/copyright.txt for details.
+
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../kernel","../request","../geometry/normalizeUtils","./Task"],function(e,r,t,a,s,n,o){var i=e(o,{declaredClass:"esri.tasks.ImageServiceMeasureTask",constructor:function(){this._url.path+="/measure",this._handler=r.hitch(this,this._handler)},__msigns:[{n:"execute",c:3,a:[{i:0,p:["fromGeometry","toGeometry"]}],e:2}],_handler:function(e,r,t,a,s){try{var n=e;this._successHandler([n],"onComplete",t,s)}catch(o){this._errorHandler(o,a,s)}},execute:function(e,t,a,n){var o=n.assembly,i=this._encode(r.mixin({},this._url.query,{f:"json"},e.toJson(o&&o[0]))),c=this._handler,l=this._errorHandler;return s({url:this._url.path,content:i,callbackParamName:"callback",load:function(e,r){c(e,r,t,a,n.dfd)},error:function(e){l(e,a,n.dfd)}})},onComplete:function(){}});return n._createWrappers(i),t("extend-esri")&&r.setObject("tasks.ImageServiceMeasureTask",i,a),i});

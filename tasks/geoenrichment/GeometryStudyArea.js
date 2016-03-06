@@ -1,4 +1,4 @@
-// COPYRIGHT © 2015 Esri
+// COPYRIGHT © 2016 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,5 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.16/esri/copyright.txt for details.
+
 define(["../../declare","../../geometry/jsonUtils","../../geometry/Geometry","./StudyArea"],function(e,t,r,o){return e("esri.tasks.geoenrichment.GeometryStudyArea",[o],{geometry:null,constructor:function(e){e&&e.geometry&&(this.geometry=e.geometry instanceof r?e.geometry:t.fromJson(e.geometry))},toJson:function(){var e=this.inherited(arguments);return e.geometry=this.geometry.toJson(),e},getGeomType:function(){return this.geometry.type}})});

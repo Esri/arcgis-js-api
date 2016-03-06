@@ -13,6 +13,10 @@
 .esriLegendLayer { 
 }
 
+.esriLegendSubFragment {
+  margin-top: 10px;
+}
+
 .esriLegendGroupLayer { 
   padding-top: 10px;
 }

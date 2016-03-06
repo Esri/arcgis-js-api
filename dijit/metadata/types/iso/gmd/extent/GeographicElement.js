@@ -1,4 +1,4 @@
-// COPYRIGHT © 2015 Esri
+// COPYRIGHT © 2016 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,5 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.16/esri/copyright.txt for details.
+
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../../base/Descriptor","../../../../form/Element","../../../../form/InputNumber","../../../../form/iso/AbstractObject","../../../../form/iso/GcoElement","../../../../form/iso/GeoExtentTool","../../../../form/iso/ObjectReference","dojo/text!./templates/GeographicElement.html","../../../../../../kernel"],function(e,t,o,r,m,n,a,s,i,c,l,d){var f=e(r,{templateString:l});return o("extend-esri")&&t.setObject("dijit.metadata.types.iso.gmd.extent.GeographicElement",f,d),f});

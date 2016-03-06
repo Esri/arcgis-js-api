@@ -11,7 +11,7 @@
           </form>
           <div role="button" class="${css.searchClear}" tabindex="0" data-dojo-attach-point="clearNode"><span aria-hidden="true" class="${css.searchClearIcon}"></span><span aria-hidden="true" class="${css.searchSpinner}"></span>
           </div>
-          <div aria-labelledby="${id}_input" data-dojo-attach-point="suggestionsNode" class="${css.searchMenu} ${css.suggestionsMenu}" role="menu"></div>
+          <div data-dojo-attach-point="suggestionsNode" class="${css.searchMenu} ${css.suggestionsMenu}"></div>
         </div>
       </div>
     </div>
@@ -19,7 +19,7 @@
       <span aria-hidden="true" role="presentation" class="${css.searchIcon}"></span>
       <span class="${css.searchButtonText}">${_i18n.widgets.Search.main.searchButtonTitle}</span>
     </div>
-    <div aria-labelledby="${id}_menu_button" data-dojo-attach-point="sourcesNode" class="${css.searchMenu} ${css.sourcesMenu}" role="menu"></div>
+    <div data-dojo-attach-point="sourcesNode" class="${css.searchMenu} ${css.sourcesMenu}"></div>
     <div data-dojo-attach-point="noResultsMenuNode" class="${css.searchMenu} ${css.searchNoResultsMenu}"></div>
     <div class="${css.searchClearFloat}"></div>
   </div>

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2015 Esri
+// COPYRIGHT © 2016 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,5 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.15/esri/copyright.txt for details.
-define(["dijit/popup"],function(e){var n={bindSliderAndTextBox:function(e,n){e.on("change",function(e){n.set("value",e,!1)}),n.on("change",function(n){var i,t,o,a;return isNaN(n)?void this.set("value",e.get("value"),!1):(t=this.get("constraints"),o=t.min,a=t.max,i=n>a?a:o>n?o:n,this.set("value",i,!1),void e.set("value",i,!1))})},silentlyUpdateIntermediateChangingValueWidget:function(e,n){e.intermediateChanges=!1,e.set("value",n,!1),e.intermediateChanges=!0},ensureEnabledChildSelection:function(e){var n,i,t=e.selectedChildWidget||{};if(t.disabled){n=e.getChildren(),i=n.length;for(var o=0;i>o;o++)if(!n[o].disabled){e.selectChild(n[o]);break}}},enable:function(e){e.set("disabled",!1)},disable:function(e){e.set("disabled",!0)},popUp:function(n,i){var t,o;t=n.on("styling-commit",function(){t.remove(),o.remove(),e.close(n)}),o=n.on("styling-stop",function(){t.remove(),o.remove(),e.close(n)}),e.open({popup:n,around:i,orient:["above"]})}};return n});
+// See http://js.arcgis.com/3.16/esri/copyright.txt for details.
+
+define(["dijit/popup","dojo/number"],function(e,n){var t={bindSliderAndTextBox:function(e,t){e.on("change",function(e){t.set("value",e,!1)}),t.on("change",function(t){var i,o,a,s;return"string"==typeof t&&(t=n.parse(t)),isNaN(t)?void this.set("value",e.get("value"),!1):(o=this.get("constraints"),a=o.min,s=o.max,i=t>s?s:a>t?a:t,this.set("value",i,!1),void e.set("value",i,!1))})},silentlyUpdateIntermediateChangingValueWidget:function(e,n){e.intermediateChanges=!1,e.set("value",n,!1),e.intermediateChanges=!0},ensureEnabledChildSelection:function(e){var n,t,i=e.selectedChildWidget||{};if(i.disabled){n=e.getChildren(),t=n.length;for(var o=0;t>o;o++)if(!n[o].disabled){e.selectChild(n[o]);break}}},enable:function(e){e.set("disabled",!1)},disable:function(e){e.set("disabled",!0)},popUp:function(n,t){var i,o;i=n.on("styling-commit",function(){i.remove(),o.remove(),e.close(n)}),o=n.on("styling-stop",function(){i.remove(),o.remove(),e.close(n)}),e.open({popup:n,around:t,orient:["above"]})}};return t});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2015 Esri
+// COPYRIGHT © 2016 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,5 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.16/esri/copyright.txt for details.
+
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../../../kernel","../../../base/etc/docUtil","../../../form/OpenElement","dojo/i18n!../../../nls/i18nArcGIS"],function(e,t,a,n,i,o,d){var s=e([o],{postCreate:function(){this.inherited(arguments)},beforeValidateValue:function(e,a,n){var o=this.gxeDocument;if("rpOrgName"===this.target&&!o.isAgsItemDescription){if(o.isAgsINSPIRE){if(0===this.gxePath.indexOf("/metadata/mdContact/"))return;if(0===this.gxePath.indexOf("/metadata/dataIdInfo/idPoC/"))return}var s=!0,r=!0,l=!0,m=!0,c=!0,g=!0,u=this.parentElement.gxePath+"/",f=this.domNode.parentNode;m=n,s=null===m||0===t.trim(m).length,c=i.findInputWidget(u+"rpIndName",f).getInputValue(),r=null===c||0===t.trim(c).length,a.label=d.contact.conditionalName.caption,o.isAgsFGDC?s&&r&&(a.isValid=!1,a.message=d.contact.conditionalName.msg_fgdc):(g=i.findInputWidget(u+"rpPosName",f).getInputValue(),l=null===g||0===t.trim(g).length,s&&r&&l&&(a.isValid=!1,a.message=d.contact.conditionalName.msg))}}});return a("extend-esri")&&t.setObject("dijit.metadata.types.arcgis.form.ContactNameElement",s,n),s});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2015 Esri
+// COPYRIGHT © 2016 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,5 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.16/esri/copyright.txt for details.
+
 define(["./RingBuffer","./DriveBuffer","./IntersectingGeographies","../../extend"],function(e,r,n,t){var i=function(t){if(t){switch(t.areaType){case"DriveTimeBuffer":return new r(t);case"StandardGeography":return new n(t)}switch(t.type){case"DriveTime":return new r(t);case"StdGeo":return new n(t)}return new e(t)}return new e};return t("esri.tasks.geoenrichment.studyAreaOptionsFromJson",i),i});

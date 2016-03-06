@@ -7,17 +7,35 @@
     <script type="text/javascript">
         function init() {
             if (window.location.hash) {
-                var parentDiv, nodes, i, helpId;
-                helpId = window.location.hash.substring(1);
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
                 parentDiv = document.getElementById("topics");
                 nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
                 for(i=0; i < nodes.length; i++) {
                     if(nodes[i].id !== helpId) {
                         nodes[i].style.display ="none";
                     }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
                 }
             }
-        }
     </script>
 </head>
 <body onload="init()">
@@ -44,21 +62,20 @@ Nếu bỏ chọn, tất cả c&aacute;c tổng hợp trong cả lớp đầu v&
         <div><h2>Chọn lớp vùng để tổng kết các đối tượng khác trong ranh giới của khu vực đó</h2></div>
         <hr/>
         <div>
-            <p>Lớp v&ugrave;ng sẽ được sử dụng để tổng kết c&aacute;c đối tượng nằm trong ranh giới của khu vực đ&oacute;.
-
+            <p>Lớp v&ugrave;ng sẽ được sử dụng để tổng kết c&aacute;c đối tượng nằm trong ranh giới của khu vực đ&oacute;. 
             </p>
-            <p>B&ecirc;n cạnh việc chọn một lớp từ bản đồ của bạn, bạn cần chọn  <b>Chọn Lớp Ph&acirc;n t&iacute;ch Atlas Sinh sống</b> nằm dưới c&ugrave;ng trong danh s&aacute;ch xổ xuống 
+            <p class="OnlineOnly">B&ecirc;n cạnh việc chọn một lớp từ bản đồ của bạn, bạn cần chọn  <b>Chọn Lớp Ph&acirc;n t&iacute;ch Atlas Sinh sống</b> nằm dưới c&ugrave;ng trong danh s&aacute;ch xổ xuống 
 Thao t&aacute;c n&agrave;y mở ra một b&ocirc;̣ sưu t&acirc;̣p c&oacute; chứa c&aacute;c lớp hữu &iacute;ch cho nhiều sự ph&acirc;n t&iacute;ch kh&aacute;c nhau. 
             </p>
         </div>
     </div>
     <div id="Summarize">
-        <div><h2>Chọn lớp để tóm tắt</h2></div>
+        <div><h2>Chọn lớp để tổng kết</h2></div>
         <hr/>
         <div>
             <p>C&aacute;c đối tượng thuộc lớp n&agrave;y nằm trong ranh giới đối tượng của lớp đầu v&agrave;o b&ecirc;n tr&ecirc;n sẽ được tổng kết. 
             </p>
-            <p>B&ecirc;n cạnh việc chọn một lớp từ bản đồ của bạn, bạn cần chọn  <b>Chọn Lớp Ph&acirc;n t&iacute;ch Atlas Sinh sống</b> nằm dưới c&ugrave;ng trong danh s&aacute;ch xổ xuống 
+            <p class="OnlineOnly">B&ecirc;n cạnh việc chọn một lớp từ bản đồ của bạn, bạn cần chọn  <b>Chọn Lớp Ph&acirc;n t&iacute;ch Atlas Sinh sống</b> nằm dưới c&ugrave;ng trong danh s&aacute;ch xổ xuống 
 Thao t&aacute;c n&agrave;y mở ra một b&ocirc;̣ sưu t&acirc;̣p c&oacute; chứa c&aacute;c lớp hữu &iacute;ch cho nhiều sự ph&acirc;n t&iacute;ch kh&aacute;c nhau. 
             </p>
         </div>
@@ -90,7 +107,7 @@ Thao t&aacute;c n&agrave;y mở ra một b&ocirc;̣ sưu t&acirc;̣p c&oacute; c
         <div><h2>Thêm số liệu thống kê từ</h2></div>
         <hr/>
         <div>
-            <p>Bạn c&oacute; thể t&ugrave;y &yacute; t&iacute;nh to&aacute;n số liệu thống k&ecirc; cho c&aacute;c thuộc t&iacute;nh số của c&aacute;c đường gần đ&oacute;. 
+            <p>Bạn c&oacute; thể t&ugrave;y &yacute; t&iacute;nh to&aacute;n số liệu thống k&ecirc; cho c&aacute;c thuộc t&iacute;nh số của c&aacute;c đường được tổng hợp. 
             </p>
             <p>Hộp chọn  <b>Tổng độ d&agrave;i đường b&ecirc;n trong</b>, nếu được chọn, sẽ t&iacute;nh to&aacute;n tổng độ d&agrave;i đường trong ranh giới từng v&ugrave;ng. 
 Ngo&agrave;i ra, bạn c&oacute; thể t&iacute;nh to&aacute;n số liệu thống k&ecirc; cho c&aacute;c thuộc t&iacute;nh số của c&aacute;c đường c&oacute; trong ranh giới từng v&ugrave;ng.
@@ -114,7 +131,7 @@ Ngo&agrave;i ra, bạn c&oacute; thể t&iacute;nh to&aacute;n số liệu thố
         <div><h2>Thêm số liệu thống kê từ</h2></div>
         <hr/>
         <div>
-            <p>Bạn c&oacute; thể t&ugrave;y &yacute; t&iacute;nh to&aacute;n số liệu thống k&ecirc; cho c&aacute;c thuộc t&iacute;nh số của c&aacute;c v&ugrave;ng gần đ&oacute;. 
+            <p>Bạn c&oacute; thể t&ugrave;y &yacute; t&iacute;nh to&aacute;n số liệu thống k&ecirc; cho c&aacute;c thuộc t&iacute;nh số của c&aacute;c v&ugrave;ng được tổng hợp. 
             </p>
             <p>Hộp chọn  <b>Tổng diện t&iacute;ch sử dụng</b>, nếu được chọn, sẽ t&iacute;nh to&aacute;n tổng diện t&iacute;ch của đối tượng c&oacute; trong ranh giới từng v&ugrave;ng thuộc lớp đầu v&agrave;o đầu ti&ecirc;n. Ngo&agrave;i ra, bạn c&oacute; thể t&iacute;nh to&aacute;n số liệu thống k&ecirc; cho c&aacute;c thuộc t&iacute;nh số của c&aacute;c đối tượng c&oacute; trong ranh giới từng v&ugrave;ng.
             </p>
@@ -133,14 +150,36 @@ Ngo&agrave;i ra, bạn c&oacute; thể t&iacute;nh to&aacute;n số liệu thố
             
         </div>
     </div>
+    <div id="StatisticsNoLayer">
+        <div><h2>Thêm số liệu thống kê từ</h2></div>
+        <hr/>
+        <div>
+            <p>Sau khi chọn một lớp để tổng hợp, bạn c&oacute; thể t&ugrave;y &yacute; t&iacute;nh to&aacute;n số liệu thống k&ecirc; của bất kỳ thuộc t&iacute;nh số n&agrave;o của điểm, đường hoặc v&ugrave;ng trong lớp v&ugrave;ng đầu v&agrave;o. 
+            </p>
+            <ul>
+                <li> <b>Tổng</b>&mdash;Tổng gi&aacute; trị cho trường chỉ định.
+                </li>
+                <li> <b>Trung b&igrave;nh</b>&mdash;Trung b&igrave;nh hoặc b&igrave;nh qu&acirc;n cho trường chỉ định
+                </li>
+                <li> <b>Tối thiểu</b>&mdash;Gi&aacute; trị nhỏ nhất trong trường chỉ định
+                </li>
+                <li> <b>Tối đa</b>&mdash;Gi&aacute; trị lớn nhất trong trường chỉ định
+                </li>
+                <li> <b>Độ lệch chuẩn</b>&mdash;Độ lệch chuẩn đối với c&aacute;c gi&aacute; trị trong trường chỉ định
+                </li>
+            </ul>
+            
+            <p>T&ugrave;y thuộc v&agrave;o loại đối tượng đang tổng hợp, bạn c&oacute; thể t&iacute;nh to&aacute;n tổng số điểm l&acirc;n cận, tổng chiều d&agrave;i của đường hoặc tổng diện t&iacute;ch.
+            </p>
+        </div>
+    </div>
     <div id="GroupBy">
         <div><h2>Chọn trường để nhóm theo</h2></div>
         <hr/>
         <div>
             <p>Đ&acirc;y l&agrave; một thuộc t&iacute;nh của chức năng  <b>Tổng kết</b> c&aacute;c đối tượng m&agrave; bạn c&oacute; thể sử dụng để t&iacute;nh to&aacute;n c&aacute;c số liệu thống k&ecirc; ri&ecirc;ng biệt cho từng gi&aacute; trị thuộc t&iacute;nh duy nhất. 
 V&iacute; dụ, giả sử đầu v&agrave;o đầu ti&ecirc;n c&oacute; chứa ranh giới th&agrave;nh phố v&agrave; tổng kết của c&aacute;c đối tượng l&agrave; c&aacute;c l&ocirc; đất. 
-Một trong c&aacute;c thuộc t&iacute;nh của l&ocirc; đất l&agrave; <i>Trạng th&aacute;i</i> c&oacute; chứa hai gi&aacute; trị: ĐỂ TRỐNG v&agrave; Đ&Atilde; D&Ugrave;NG. Để t&iacute;nh to&aacute;n tổng diện t&iacute;ch l&ocirc; đất trống v&agrave; đ&atilde; d&ugrave;ng trong ranh giới c&aacute;c th&agrave;nh phố, sử dụng <i>Trạng th&aacute;i</i> gom nh&oacute;m theo thuộc t&iacute;nh.
- Số liệu thống k&ecirc; cho từng nh&oacute;m, cũng như số lượng c&aacute;c đối tượng, sẽ được hiển thị trong cửa sổ pop-up.
+Một trong c&aacute;c thuộc t&iacute;nh của l&ocirc; đất l&agrave; <i>Trạng th&aacute;i</i> c&oacute; chứa hai gi&aacute; trị: ĐỂ TRỐNG v&agrave; Đ&Atilde; D&Ugrave;NG. Để t&iacute;nh to&aacute;n tổng diện t&iacute;ch l&ocirc; đất trống v&agrave; đ&atilde; d&ugrave;ng trong ranh giới c&aacute;c th&agrave;nh phố, sử dụng <i>Trạng th&aacute;i</i> gom nh&oacute;m theo thuộc t&iacute;nh. Số liệu thống k&ecirc; cho từng nh&oacute;m, cũng như số lượng c&aacute;c đối tượng, sẽ được hiển thị trong cửa sổ pop-up.
             </p>
         </div>
     </div>

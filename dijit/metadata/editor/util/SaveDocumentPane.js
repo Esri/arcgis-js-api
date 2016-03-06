@@ -1,4 +1,4 @@
-// COPYRIGHT © 2015 Esri
+// COPYRIGHT © 2016 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,5 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.16/esri/copyright.txt for details.
+
 define(["dojo/_base/declare","dojo/_base/lang","dojo/_base/array","dojo/dom-class","dojo/dom-style","dojo/has","../../base/Templated","dojo/text!./templates/SaveDocumentPane.html","dojo/i18n!../../nls/i18nBase","../../../../kernel"],function(e,t,n,i,o,a,s,d,l,r){var u=e([s],{_disabled:!1,dialogBroker:null,editor:null,gxeDocument:null,templateString:d,postCreate:function(){this.inherited(arguments),this._initialize()},_getPushToItem:function(){return!0},_initialize:function(){var e=this.editor&&this.editor.dialogBroker;e||o.set(this.saveAndCloseButton,"display","none")},onCancel:function(){},onSave:function(){},_onCancelClick:function(){this._disabled||this.onCancel()},_onSaveClick:function(){this._disabled||this.onSave(!1,this._getPushToItem())},_onSaveAndCloseClick:function(){this._disabled||this.onSave(!0,this._getPushToItem())}});return a("extend-esri")&&t.setObject("dijit.metadata.editor.util.SaveDocumentPane",u,r),u});

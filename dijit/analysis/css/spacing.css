@@ -149,6 +149,9 @@ html[dir='rtl'] th {
 .esriTrailingMargin12 {
   margin-right: 1.2em;
 }
+.esriTrailingMargin10 {
+  margin-right: 10em;
+}
 
 .esriLeadingPadding05 {
   padding-left: 0.5em;
@@ -260,6 +263,9 @@ html[dir='rtl'] th {
 }
 .esriRtl .esriTrailingMargin63 {
   margin-left: 6.3em;
+}
+.esriRtl .esriTrailingMargin10 {
+  margin-left: 10em;
 }
 
 .esriRtl .esriLeadingPadding05 {

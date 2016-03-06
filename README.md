@@ -32,6 +32,7 @@ This repo has dependencies on the following repos.
 | dstore | https://github.com/SitePen/dstore | /dstore |
 | xstyle | https://github.com/Esri/xstyle/tree/0.1.3-esri | /xstyle |
 | put-selector | https://github.com/kriszyp/put-selector | /put-selector |
+| moment | https://github.com/moment/moment/tree/2.11.2 | /moment |
 
 Please see our [recommended guide](https://github.com/Esri/jsapi-resources/tree/master/bower).
 

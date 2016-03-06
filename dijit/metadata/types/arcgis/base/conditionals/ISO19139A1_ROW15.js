@@ -1,4 +1,4 @@
-// COPYRIGHT © 2015 Esri
+// COPYRIGHT © 2016 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,5 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.16/esri/copyright.txt for details.
+
 define(["dojo/_base/declare","dojo/_base/lang","dojo/_base/array","dojo/topic","dojo/has","../../../../../../kernel","dojo/i18n!../../../../nls/i18nArcGIS","../../../../base/Conditional"],function(t,e,i,o,n,a,r,s){var d=t(s,{key:"ISO19139A1_ROW15",postCreate:function(){this.inherited(arguments);var t=this;this.own(o.subscribe("gxe/interaction-occurred",function(e){try{if(t.parentXNode&&e&&e.inputWidget&&e.inputWidget.parentXNode){var i=e.inputWidget.parentXNode.gxePath;"/metadata/spatRepInfo/Georect/chkPtAv"===i?t.emitInteractionOccurred():"/metadata/spatRepInfo/Georect/chkPtDesc"===i&&t.emitInteractionOccurred()}}catch(o){console.error(o)}}))},validateConditionals:function(t){var e=this.newStatus({message:r.conditionals[this.key]}),i=!0,o=this.parentXNode.parentElement,n="/metadata/spatRepInfo/Georect/chkPtAv";return this.focusNode||(this.focusNode=this.parentXNode.inputWidget.focusNode),this.isXNodeOff(this.parentXNode)||this.isXNodeInputEmpty(this.parentXNode)&&this.forActiveXNodes(n,o.domNode,function(t){var e=t.inputWidget.getInputValue();return"True"===e?(i=!1,!0):void 0}),e.isValid=i,this.track(e,t),e}});return n("extend-esri")&&e.setObject("dijit.metadata.types.arcgis.base.conditionals.ISO19139A1_ROW15",d,a),d});

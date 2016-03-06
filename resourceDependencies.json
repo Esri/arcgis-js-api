@@ -336,14 +336,12 @@
         "esri/dijit/geoenrichment/AgePyramid",
         "esri/dijit/geoenrichment/Tapestry"
     ],
-    "esri/dijit/geoenrichment/Tapestry": [
-        "esri/dijit/geoenrichment/images/*"
-    ],
     "esri/dijit/geoenrichment/theme": [
         "esri/dijit/geoenrichment/themes/common/*",
         "esri/dijit/geoenrichment/themes/common/AgePyramid",
         "esri/dijit/geoenrichment/themes/common/images/*",
         "esri/dijit/geoenrichment/themes/common/images/dataCollections/*",
+        "esri/dijit/geoenrichment/themes/common/images/tapestry/*"
         "esri/dijit/geoenrichment/themes/light/*",
         "esri/dijit/geoenrichment/themes/light/AgePyramid",
         "esri/dijit/geoenrichment/themes/light/images/*"

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2015 Esri
+// COPYRIGHT © 2016 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,5 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.16/esri/copyright.txt for details.
+
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../base/Descriptor","../../../form/Tabs","../../inspire/srv/ServiceType","../../iso/srv/OperatesOn","./ContainsOperations","./CouplingType","./ServiceExtent","dojo/text!./templates/ServiceResourceTab.html","../../../../../kernel"],function(e,t,r,s,i,a,o,n,c,p,d,v){var b=e(s,{templateString:d});return r("extend-esri")&&t.setObject("dijit.metadata.types.gemini.srv.ServiceResourceTab",b,v),b});

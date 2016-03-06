@@ -1,4 +1,4 @@
-// COPYRIGHT © 2015 Esri
+// COPYRIGHT © 2016 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,5 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.16/esri/copyright.txt for details.
+
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../kernel","../lang","./DataSource","../SpatialReference"],function(e,t,i,o,r,s,a){var n=e(s,{declaredClass:"esri.layers.QueryDataSource",constructor:function(e){e&&(e.oidFields&&t.isString(e.oidFields)&&(this.oidFields=e.oidFields.split(",")),e.spatialReference&&(this.spatialReference=new a(e.spatialReference)))},toJson:function(){var e={type:"queryTable",workspaceId:this.workspaceId,query:this.query,oidFields:this.oidFields&&this.oidFields.join(),spatialReference:this.spatialReference&&this.spatialReference.toJson()};if(this.geometryType){var t;t="point"===this.geometryType.toLowerCase()?"esriGeometryPoint":"multipoint"===this.geometryType.toLowerCase()?"esriGeometryMultipoint":"polyline"===this.geometryType.toLowerCase()?"esriGeometryPolyline":"polygon"===this.geometryType.toLowerCase()?"esriGeometryPolygon":this.geometryType,e.geometryType=t}return r.fixJson(e)}});return i("extend-esri")&&t.setObject("layers.QueryDataSource",n,o),n});

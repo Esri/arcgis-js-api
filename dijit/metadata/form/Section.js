@@ -1,4 +1,4 @@
-// COPYRIGHT © 2015 Esri
+// COPYRIGHT © 2016 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,5 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.16/esri/copyright.txt for details.
+
 define(["dojo/_base/declare","dojo/_base/lang","dojo/dom-attr","dojo/dom-class","dojo/dom-construct","dojo/has","../base/Templated","dojo/text!./templates/Section.html","../../../kernel"],function(e,t,i,o,d,n,l,a,s){var r=e([l],{templateString:a,label:null,showHeader:!0,postCreate:function(){this.inherited(arguments)},startup:function(){this._started||(this.initializeSection(),this.inherited(arguments))},getLabelString:function(){var e=this.label;return"undefined"!=typeof e&&null!=e?e:null},initializeSection:function(){this.showHeader?this.setLabel(this.getLabelString()):this.headerNode&&(d.destroy(this.headerNode),this.headerNode=null,this.labelNode=null)},setLabel:function(e){this.labelNode||(this.labelNode=d.create("div",{},this.domNode,"first")),this.labelNode&&("undefined"==typeof e&&(e=null),this.label=e,this.setI18nNodeText(this.labelNode,e),null!==e&&o.add(this.domNode,"gxeIndent"))}});return n("extend-esri")&&t.setObject("dijit.metadata.form.Section",r,s),r});

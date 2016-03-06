@@ -1,4 +1,4 @@
-// COPYRIGHT © 2015 Esri
+// COPYRIGHT © 2016 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,5 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.16/esri/copyright.txt for details.
+
 define(["dojo/_base/declare","dojo/_base/lang","./core/ExtensionConfigurationBase"],function(e,i,n){return e([n],{_initializeResponseReceived:function(){this.inherited(arguments).then(i.hitch(this,function(){return this.getMapWidgetProxy(this.config.mapWidgetId).then(function(e){this.mapWidgetProxy=e})}))}})});
