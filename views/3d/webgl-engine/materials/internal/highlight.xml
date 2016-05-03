@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<snippets>
+
+<!--
+===============================================================================
+5-tap gaussian blur with linear sampling
+This technique requires linear filtering on source texture
+http://rastergrid.com/blog/2010/09/efficient-gaussian-blur-with-linear-sampling/
+===============================================================================
+-->
+<snippet name="vsHighlightBlurL5"><![CDATA[
+
+  precision mediump float;
+
+  attribute vec3 $position;
+  attribute vec2 $uv0;
+
+  uniform vec2 blurSize;
+
+  varying vec2 blurCoordinates[5];
+  varying vec2 uv;
+
+  void main()
+  {
+    gl_Position = vec4($position.x, $position.y, .0, 1.0);
+    uv = $position.xy * .5 + vec2(.5); 
+
+    blurCoordinates[0] = uv;
+    blurCoordinates[1] = uv + blurSize * 1.407333;
+    blurCoordinates[2] = uv - blurSize * 1.407333;
+    blurCoordinates[3] = uv + blurSize * 3.294215;
+    blurCoordinates[4] = uv - blurSize * 3.294215;
+  }
+]]></snippet>
+
+<snippet name="fsHighlightBlurL5"><![CDATA[
+
+  precision mediump float;
+
+  uniform sampler2D tex;
+
+  varying vec2 blurCoordinates[5];
+  varying vec2 uv;
+
+  void main()
+  {
+    vec4 sum = vec4(0.0);
+    sum += texture2D(tex, blurCoordinates[0]) * 0.204164;
+    sum += texture2D(tex, blurCoordinates[1]) * 0.304005;
+    sum += texture2D(tex, blurCoordinates[2]) * 0.304005;
+    sum += texture2D(tex, blurCoordinates[3]) * 0.093913;
+    sum += texture2D(tex, blurCoordinates[4]) * 0.093913;
+    gl_FragColor = sum;
+  }
+]]></snippet>
+
+<!--
+===============================================================================
+7-tap gaussian blur with sigma=1.5
+===============================================================================
+-->
+<snippet name="vsHighlightBlurG7"><![CDATA[
+
+  precision mediump float;
+
+  attribute vec3 $position;
+  attribute vec2 $uv0;
+
+  uniform vec2 blurSize;
+
+  varying vec2 blurCoordinates[7];
+  varying vec2 uv;
+
+  void main()
+  {
+    gl_Position = vec4($position.x, $position.y, .0, 1.0);
+    uv = $position.xy * .5 + vec2(.5); 
+
+    blurCoordinates[0] = uv;
+    blurCoordinates[1] = uv + blurSize * 1.0;
+    blurCoordinates[2] = uv - blurSize * 1.0;
+    blurCoordinates[3] = uv + blurSize * 2.0;
+    blurCoordinates[4] = uv - blurSize * 2.0;
+    blurCoordinates[5] = uv + blurSize * 3.0;
+    blurCoordinates[6] = uv - blurSize * 3.0;
+  }
+]]></snippet>
+
+<snippet name="fsHighlightBlurG7"><![CDATA[
+
+  precision mediump float;
+
+  uniform sampler2D tex;
+
+  varying vec2 blurCoordinates[7];
+  varying vec2 uv;
+
+  void main()
+  {
+    vec4 sum = vec4(0.0);
+    sum += texture2D(tex, blurCoordinates[0]) * 0.266346;
+    sum += texture2D(tex, blurCoordinates[1]) * 0.215007;
+    sum += texture2D(tex, blurCoordinates[2]) * 0.215007;
+    sum += texture2D(tex, blurCoordinates[3]) * 0.113085;
+    sum += texture2D(tex, blurCoordinates[4]) * 0.113085;
+    sum += texture2D(tex, blurCoordinates[5]) * 0.038735;
+    sum += texture2D(tex, blurCoordinates[6]) * 0.038735;
+    gl_FragColor = sum;
+  }
+]]></snippet>
+
+<!--
+===============================================================================
+9-tap gaussian blur with sigma=2.0
+===============================================================================
+-->
+<snippet name="vsHighlightBlurG9"><![CDATA[
+
+  precision mediump float;
+
+  attribute vec3 $position;
+  attribute vec2 $uv0;
+
+  uniform vec2 blurSize;
+
+  varying vec2 blurCoordinates[9];
+  varying vec2 uv;
+
+  void main()
+  {
+    gl_Position = vec4($position.x, $position.y, .0, 1.0);
+    uv = $position.xy * .5 + vec2(.5); 
+
+    blurCoordinates[0] = uv;
+    blurCoordinates[1] = uv + blurSize * 1.0;
+    blurCoordinates[2] = uv - blurSize * 1.0;
+    blurCoordinates[3] = uv + blurSize * 2.0;
+    blurCoordinates[4] = uv - blurSize * 2.0;
+    blurCoordinates[5] = uv + blurSize * 3.0;
+    blurCoordinates[6] = uv - blurSize * 3.0;
+    blurCoordinates[7] = uv + blurSize * 4.0;
+    blurCoordinates[8] = uv - blurSize * 4.0;
+  }
+]]></snippet>
+
+<snippet name="fsHighlightBlurG9"><![CDATA[
+
+  precision mediump float;
+
+  uniform sampler2D tex;
+
+  varying vec2 blurCoordinates[9];
+  varying vec2 uv;
+
+  void main()
+  {
+    vec4 sum = vec4(0.0);
+    sum += texture2D(tex, blurCoordinates[0]) * 0.202360;
+    sum += texture2D(tex, blurCoordinates[1]) * 0.179044;
+    sum += texture2D(tex, blurCoordinates[2]) * 0.179044;
+    sum += texture2D(tex, blurCoordinates[3]) * 0.124009;
+    sum += texture2D(tex, blurCoordinates[4]) * 0.124009;
+    sum += texture2D(tex, blurCoordinates[5]) * 0.067234;
+    sum += texture2D(tex, blurCoordinates[6]) * 0.067234;
+    sum += texture2D(tex, blurCoordinates[7]) * 0.028532;
+    sum += texture2D(tex, blurCoordinates[8]) * 0.028532;
+    gl_FragColor = sum;
+  }
+]]></snippet>
+
+<!--
+===============================================================================
+9-tap manhattan distance
+===============================================================================
+-->
+<snippet name="vsHighlightBlurM9"><![CDATA[
+
+  precision mediump float;
+
+  attribute vec3 $position;
+  attribute vec2 $uv0;
+
+  uniform vec2 blurSize;
+
+  varying vec2 blurCoordinates[9];
+  varying vec2 uv;
+
+  void main()
+  {
+    gl_Position = vec4($position.x, $position.y, .0, 1.0);
+    uv = $position.xy * .5 + vec2(.5); 
+
+    blurCoordinates[0] = uv;
+    blurCoordinates[1] = uv + blurSize * 1.0;
+    blurCoordinates[2] = uv - blurSize * 1.0;
+    blurCoordinates[3] = uv + blurSize * 2.0;
+    blurCoordinates[4] = uv - blurSize * 2.0;
+    blurCoordinates[5] = uv + blurSize * 3.0;
+    blurCoordinates[6] = uv - blurSize * 3.0;
+    blurCoordinates[7] = uv + blurSize * 4.0;
+    blurCoordinates[8] = uv - blurSize * 4.0;
+  }
+]]></snippet>
+
+<snippet name="fsHighlightBlurM9"><![CDATA[
+
+  precision mediump float;
+
+  uniform sampler2D tex;
+
+  varying vec2 blurCoordinates[9];
+  varying vec2 uv;
+
+  void main()
+  {
+    float f0 = texture2D(tex, blurCoordinates[0]).x;
+    float f1 = texture2D(tex, blurCoordinates[1]).x - 1.0 / 5.0;
+    float f2 = texture2D(tex, blurCoordinates[2]).x - 1.0 / 5.0;
+    float f3 = texture2D(tex, blurCoordinates[3]).x - 2.0 / 5.0;
+    float f4 = texture2D(tex, blurCoordinates[4]).x - 2.0 / 5.0;
+    float f5 = texture2D(tex, blurCoordinates[5]).x - 3.0 / 5.0;
+    float f6 = texture2D(tex, blurCoordinates[6]).x - 3.0 / 5.0;
+    float f7 = texture2D(tex, blurCoordinates[7]).x - 4.0 / 5.0;
+    float f8 = texture2D(tex, blurCoordinates[8]).x - 4.0 / 5.0;
+
+    vec4 m1 = max(vec4(f1,f2,f3,f4), vec4(f5,f6,f7,f8));
+    vec2 m2 = max(m1.xy, m1.zw);
+    float m3 = max(f0, max(m2.x, m2.y));
+    gl_FragColor = vec4(m3, 0, 0, 0);
+  }
+]]></snippet>
+
+
+<!--
+===============================================================================
+17-tap manhattan+diagonal distance
+===============================================================================
+-->
+<snippet name="vsHighlightBlurM17"><![CDATA[
+
+  precision mediump float;
+
+  attribute vec3 $position;
+  attribute vec2 $uv0;
+
+  uniform vec2 blurSize;
+
+  varying vec2 blurCoordinates[17];
+  varying vec2 uv;
+
+  void main()
+  {
+    gl_Position = vec4($position.x, $position.y, .0, 1.0);
+    uv = $position.xy * .5 + vec2(.5); 
+
+    vec2 blurSizeD = vec2(blurSize.x * sign(blurSize.x + blurSize.y), blurSize.y * sign(blurSize.x - blurSize.y));
+
+    blurCoordinates[0] = uv;
+    blurCoordinates[1] = uv + blurSize * 1.0;
+    blurCoordinates[2] = uv - blurSize * 1.0;
+    blurCoordinates[3] = uv + blurSize * 2.0;
+    blurCoordinates[4] = uv - blurSize * 2.0;
+    blurCoordinates[5] = uv + blurSize * 3.0;
+    blurCoordinates[6] = uv - blurSize * 3.0;
+    blurCoordinates[7] = uv + blurSize * 4.0;
+    blurCoordinates[8] = uv - blurSize * 4.0;
+
+    blurCoordinates[ 9] = uv + blurSizeD * 1.0;
+    blurCoordinates[10] = uv - blurSizeD * 1.0;
+    blurCoordinates[11] = uv + blurSizeD * 2.0;
+    blurCoordinates[12] = uv - blurSizeD * 2.0;
+    blurCoordinates[13] = uv + blurSizeD * 3.0;
+    blurCoordinates[14] = uv - blurSizeD * 3.0;
+    blurCoordinates[15] = uv + blurSizeD * 4.0;
+    blurCoordinates[16] = uv - blurSizeD * 4.0;
+  }
+]]></snippet>
+
+<snippet name="fsHighlightBlurM17"><![CDATA[
+
+  precision mediump float;
+
+  uniform sampler2D tex;
+
+  varying vec2 blurCoordinates[17];
+  varying vec2 uv;
+
+  void main()
+  {
+    float f0 = texture2D(tex, blurCoordinates[0]).x;
+    float f1 = texture2D(tex, blurCoordinates[1]).x - 1.0 / 5.0;
+    float f2 = texture2D(tex, blurCoordinates[2]).x - 1.0 / 5.0;
+    float f3 = texture2D(tex, blurCoordinates[3]).x - 2.0 / 5.0;
+    float f4 = texture2D(tex, blurCoordinates[4]).x - 2.0 / 5.0;
+    float f5 = texture2D(tex, blurCoordinates[5]).x - 3.0 / 5.0;
+    float f6 = texture2D(tex, blurCoordinates[6]).x - 3.0 / 5.0;
+    float f7 = texture2D(tex, blurCoordinates[7]).x - 4.0 / 5.0;
+    float f8 = texture2D(tex, blurCoordinates[8]).x - 4.0 / 5.0;
+
+    float f9 = texture2D(tex, blurCoordinates[ 9]).x - 1.0 * 1.41421356237 / 5.0;
+    float f10 = texture2D(tex, blurCoordinates[10]).x - 1.0 * 1.41421356237 / 5.0;
+    float f11 = texture2D(tex, blurCoordinates[11]).x - 2.0 * 1.41421356237 / 5.0;
+    float f12 = texture2D(tex, blurCoordinates[12]).x - 2.0 * 1.41421356237 / 5.0;
+    float f13 = texture2D(tex, blurCoordinates[13]).x - 3.0 * 1.41421356237 / 5.0;
+    float f14 = texture2D(tex, blurCoordinates[14]).x - 3.0 * 1.41421356237 / 5.0;
+    float f15 = texture2D(tex, blurCoordinates[15]).x - 4.0 * 1.41421356237 / 5.0;
+    float f16 = texture2D(tex, blurCoordinates[16]).x - 4.0 * 1.41421356237 / 5.0;
+
+    vec4 m1 = max(vec4(f1,f2,f3,f4), vec4(f5,f6,f7,f8));
+    vec4 m2 = max(vec4(f9,f10,f11,f12), vec4(f13,f14,f15,f16));
+    vec4 m3 = max(m1, m2);
+    vec2 m4 = max(m3.xy, m3.zw);
+    float m6 = max(f0, max(m4.x, m4.y));
+    gl_FragColor = vec4(m6, 0, 0, 0);
+  }
+]]></snippet>
+
+
+<!--
+===============================================================================
+(2N+1)^2-tap distance field
+===============================================================================
+-->
+<snippet name="vsHighlightBlurDF"><![CDATA[
+
+  precision mediump float;
+
+  attribute vec3 $position;
+  attribute vec2 $uv0;
+
+  uniform vec2 blurSize;
+
+  varying vec2 blurCoordinates;
+  varying vec2 uv;
+
+  void main()
+  {
+    gl_Position = vec4($position.x, $position.y, .0, 1.0);
+    uv = $position.xy * .5 + vec2(.5);
+    blurCoordinates = blurSize;
+  }
+]]></snippet>
+
+<snippet name="fsHighlightBlurDF"><![CDATA[
+
+  precision mediump float;
+
+  uniform sampler2D tex;
+
+  varying vec2 blurCoordinates;
+  varying vec2 uv;
+
+  void main()
+  {
+    float result = 0.0;
+    for (float x=-5.0; x<=5.0; ++x) {
+      for (float y=-5.0; y<=5.0; ++y) {
+        vec2 duv = vec2(x, y);
+        vec2 uv2 = uv + duv * blurCoordinates;
+        result = max(result, texture2D(tex, uv2).x - length(duv) / 5.0);
+      }
+    }
+    gl_FragColor = vec4(result, 0, 0, 0);
+  }
+]]></snippet>
+
+<!--
+===============================================================================
+Merging blurred halos with source image
+===============================================================================
+-->
+<snippet name="vsHighlightApply"><![CDATA[
+
+  precision mediump float;
+
+  attribute vec3 $position;
+
+  varying vec2 uv;
+
+  void main()
+  {
+    gl_Position = vec4($position.x, $position.y, .0, 1.0); 
+    uv = $position.xy * .5 + vec2(.5); 
+  }
+]]></snippet>
+
+<snippet name="fsHighlightApply"><![CDATA[
+
+  precision mediump float;
+
+  uniform sampler2D tex;
+  uniform sampler2D origin;
+
+  uniform vec4 color;
+  uniform float exponent;
+  uniform float fill;
+
+  varying vec2 uv;
+
+  void main()
+  {
+    // Read the highlight intensity from the blurred highlight image
+    float highlight = texture2D(tex, uv).x;
+
+    // Discard all pixels which are not affected by highlight
+    if (highlight == 0.0) {
+      discard;
+    }
+
+    // Discard the interior of highlighted objects, so that only the halo remain
+    vec4 origin_color = texture2D(origin, uv);
+    if (any(notEqual(origin_color,vec4(0,0,0,0)))) {
+      gl_FragColor = vec4(color.xyz, fill);
+      return;
+    }
+
+    // Transfer function
+    // highlight = pow(highlight, 0.5); // increase contrast, for gaussian blur
+    // highlight = pow(highlight, 2.0); // decrease constrast, for manhattan distance
+    // highlight = tanh(10*highlight); // test
+    highlight = smoothstep(0.0, exponent, highlight);
+    // highlight = pow(highlight, exponent);
+
+    // Blending equation: gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+    // I.e., color should not be premultiplied with alpha
+    gl_FragColor = vec4(color.xyz, highlight);
+  }
+]]></snippet>
+
+
+</snippets>

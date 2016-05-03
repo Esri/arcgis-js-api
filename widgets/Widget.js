@@ -1,0 +1,25 @@
+// COPYRIGHT © 2016 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+
+define(["../core/Accessor","../core/declare","dijit/_WidgetBase","dijit/Destroyable","dijit/registry","dojo/_base/lang","dojo/_base/window","dojo/dom","dojo/dom-attr","dojo/dom-class","dojo/on"],function(e,t,o,i,s,r,d,n,c,a,u){function l(e,t){var o=t.set;return"function"==typeof o?o:null===o?h(t.name):"string"==typeof o||"object"==typeof o?f(e,o):void 0}function h(e){return function(t){this._set(e,t)}}function f(e,t){return function(o){p.call(this,e,t,o),this._set(e,o)}}function p(e,t,o){var i=Array.isArray(t)?t:[t];i.forEach(function(t){var i=this[t.node||t||"domNode"],s=t.type||"attribute";switch(s){case"attribute":r.isFunction(o)&&(o=o.bind(this));var d=t.attribute?t.attribute:/^on[A-Z][a-zA-Z]*$/.test(e)?e.toLowerCase():e;i.tagName?c.set(i,d,o):i.set(d,o);break;case"innerText":i.innerHTML="",i.appendChild(this.ownerDocument.createTextNode(o));break;case"innerHTML":i.innerHTML=o;break;case"class":var n=this._get(e);a.replace(i,o,n)}},this)}t.before(function(e,o){if(o.declaredClass===y||t.hasMixin(e,y)){var i=o.properties;Object.keys(i).forEach(function(e){var t=i[e];t.set=l(e,t)})}});var y="esri.widgets._WidgetBase",g=e.createSubclass([i],{properties:{"class":{},domNode:{},focused:{},id:{},srcNodeRef:{},style:{},widgetId:{}},declaredClass:y,postscript:function(e){var t,o=this.__accessor__,i=o.ctorArgs||e;if(t=this.getDefaults?this.getDefaults(i?i:{}):null,t&&Object.getOwnPropertyNames(t).forEach(function(e){o.setDefault(e,t[e],!0)},this),this.postMixInProperties(),this.ownerDocument=this.ownerDocument||(this.srcNodeRef?this.srcNodeRef.ownerDocument:document),this.ownerDocumentBody=d.body(this.ownerDocument),s.add(this),this.buildRendering(),this.__accessor__.initialize(),i&&(this.set(i),o.ctorArgs=null),o.initialize(),this.initialize(),this.postCreate(),this.domNode){var r,n=this.srcNodeRef;n&&n.parentNode&&this.domNode!==n&&(n.parentNode.replaceChild(this.domNode,n),r=!0),c.set(this.domNode,{widgetId:this.id,id:this.id}),r&&delete this.srcNodeRef}this._created=!0},getDefaults:function(e){var t={};if(e.id)t.id=e.id,delete e.id;else{var o=e.srcNodeRef&&e.srcNodeRef.id;t.id=o||s.getUniqueId(this.declaredClass.replace(/\./g,"_")),delete e.id}return e.srcNodeRef&&(t.srcNodeRef=e.srcNodeRef,delete e.srcNodeRef),r.mixin(this.inherited(arguments),t)},normalizeCtorArgs:function(e,t){return e=e||{},(e.srcNodeRef||t)&&(e.srcNodeRef=n.byId(t||e.srcNodeRef)),e},destroy:function(){this._customWidgetBaseDestroy()},postMixInProperties:o.prototype.postMixInProperties,buildRendering:o.prototype.buildRendering,postCreate:o.prototype.postCreate,startup:o.prototype.startup,_beingDestroyed:!1,_destroyed:!1,_created:!1,"class":"",_setClassAttr:{node:"domNode",type:"class"},domNode:null,id:"",srcNodeRef:null,style:null,_setStyleAttr:o.prototype._setStyleAttr,destroyDescendants:o.prototype.destroyDescendants,destroyRecursive:o.prototype.destroyRecursive,destroyRendering:o.prototype.destroyRendering,emit:o.prototype.emit,on:function(e,t){return this.own(u(this.domNode,e,t))[0]},toString:o.prototype.toString,getChildren:o.prototype.getChildren,getParent:o.prototype.getParent,isLeftToRight:o.prototype.isLeftToRight,placeAt:o.prototype.placeAt,focused:!1,onFocus:function(){},onBlur:function(){},_onFocus:function(){this.onFocus()},_onBlur:function(){this.onBlur()},dojoAttachEvent:"",dojoAttachPoint:"",_customWidgetBaseDestroy:function(e){function t(t){t.destroyRecursive?t.destroyRecursive(e):t.destroy&&t.destroy(e)}this._beingDestroyed=!0,this.domNode&&s.findWidgets(this.domNode,this.containerNode).forEach(t),this.destroyRendering(e),s.remove(this.id),this._destroyed=!0}}),m={root:"esri-widget",hidden:"esri-hidden"},N=g.createSubclass({properties:{viewModel:{},visible:{}},declaredClass:"esri.widgets.Widget",getDefaults:function(){return r.mixin(this.inherited(arguments),{viewModel:{}})},buildRendering:function(){this.inherited(arguments),a.add(this.domNode,m.root)},destroy:function(){this.viewModel.destroy&&this.viewModel.destroy(),this.viewModel=null},viewModel:null,visible:!0,_setVisibleAttr:function(e){this._set("visible",e),a.toggle(this.domNode,m.hidden,!e)}});return N});

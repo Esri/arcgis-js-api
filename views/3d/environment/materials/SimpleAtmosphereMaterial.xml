@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<snippets>
+
+<snippet name="vsSimpleAtmosphere"><![CDATA[
+  uniform mat4 proj;
+  uniform mat4 view;
+
+#ifndef PANORAMIC
+
+  const float TWICEPI = 2.0*3.14159265;
+  const float ATMOSPHERE_RIM_SEGMENTS = 128.0;
+
+  uniform vec3 silCircleCenter;
+  uniform vec3 silCircleV1;
+  uniform vec3 silCircleV2;
+  uniform vec2 texV;
+
+#endif
+
+  uniform vec3 lightDirection;
+
+  attribute vec3 $position;
+  varying vec2 vtc;
+  varying float falloff;
+
+  void main(void) {
+
+#ifdef PANORAMIC
+
+    vec3 pos = $position;
+    float ndotl = lightDirection.z;
+    vtc = vec2(0, $position.z+0.05);
+
+#else
+
+    float phi = $position.x * (TWICEPI / ATMOSPHERE_RIM_SEGMENTS) + 1.0;
+    vec3 pos = (sin(phi) * silCircleV1 + cos(phi) * silCircleV2 + silCircleCenter) * $position.y;
+    float ndotl = dot(normalize(pos), lightDirection);
+
+    vtc.x = $position.x / ATMOSPHERE_RIM_SEGMENTS;
+    vtc.y = texV.x * (1.0 - $position.z) + texV.y * $position.z;
+
+#endif
+
+    falloff = max(0.0, (smoothstep(-1.0, 0.8, ndotl + ndotl)));
+
+    gl_Position = proj * view * vec4(pos, 1.0);
+    gl_Position.z = gl_Position.w; // project atmosphere onto the far plane
+  }
+]]></snippet>
+
+<snippet name="fsSimpleAtmosphere"><![CDATA[
+  precision mediump float;
+
+  uniform sampler2D tex;
+  uniform vec4 color;
+  varying vec2 vtc;
+  varying float falloff;
+
+  void main() {
+    vec4 texColor = texture2D(tex, vtc);
+    gl_FragColor = texColor * color * falloff;
+  }
+]]></snippet>
+
+</snippets>

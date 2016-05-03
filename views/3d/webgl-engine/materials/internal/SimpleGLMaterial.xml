@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<snippets>
+
+<snippet name="vertexShaderSimple"><![CDATA[
+	uniform mat4 proj;
+	uniform mat4 view;
+	uniform mat4 model;
+	attribute vec3 $position;
+
+	void main(void) {
+		gl_Position = proj * view * vec4((model * vec4($position, 1.0)).xyz, 1.0);
+	}
+]]></snippet>
+
+<snippet name="fragmentShaderSimple"><![CDATA[
+	precision mediump float;
+
+	uniform vec4 color;
+
+	void main() {
+		gl_FragColor = color;
+	}
+]]></snippet>
+</snippets>

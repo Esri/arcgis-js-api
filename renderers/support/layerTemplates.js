@@ -1,0 +1,25 @@
+// COPYRIGHT © 2016 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+
+define(["require","exports","dojo/has","../Renderer","../SimpleRenderer","../UniqueValueRenderer","../../symbols/support/jsonUtils","../../core/urlUtils","../../core/promiseUtils","../../core/Error","../../request","../../portal/PortalQueryParams"],function(e,r,t,n,s,l,o,a,i,u,y,m){function f(e){return e?e.styleUrl||e.styleName?"renderer":e.symbol&&e.symbol.type&&"styleSymbolReference"===e.symbol.type?"symbol":!1:!1}function c(e,r){var t=f(e);return"renderer"===t?N(e,r):"symbol"===t?U(e,r):i.resolve(null)}function p(e){return h(e),(t("ie")||t("trident"))&&g(e),o.fromJSON(e)}function d(e){return e="https:"===location.protocol?e.replace(/^http:/,"https:"):e.replace(/^https:/,"http:")}function b(e,r){var t=e;if(t.symbolLayers)for(var n=0;n<t.symbolLayers.length;n++){var s=t.symbolLayers[n];if(s.resource){var l=s.resource;l.href&&(l.href=r(l.href))}}}function h(e){b(e,function(e){return d(a.fixUrl(e))})}function g(e){b(e,function(e){return I(e,".svg")?(e.slice(0,e.length-4)+".png").replace("/resource/","/resource/png/"):e})}function v(e){return y(d(e),{query:{f:"json"},responseType:"json"}).then(function(e){return e.data})}function w(e,r){return r?r.load().then(function(){if(!r.stylesGroupQuery)throw new u("layer-templates:styles-group-query-missing","The styles group query needs to be configured in the portal to query styles");var e=new m({disableExtraQuery:!0,query:r.stylesGroupQuery});return r.queryGroups(e)}).then(function(r){var t=r.results;if(!t||!Array.isArray(t)||0===t.length)throw new u("layer-templates:styles-missing","The styles group does not contain any styles");var n=t[0],s=new m({disableExtraQuery:!0,query:'typekeywords:"'+e+'"'});return n.queryItems(s)}).then(function(r){var t=r.results;if(!t||!Array.isArray(t)||0===t.length)throw new u("layer-templates:style-missing","The style '${styleName}' is not part of the styles group",{styleName:e});return t[0].load()}).then(function(e){return e.fetchData()}):i.reject(new u("layer-templates:portal-missing","A portal is required to query styles, but non was provided"))}function q(e){return e.symbolSetUrl?y(d(e.symbolSetUrl),{query:{f:"json"},responseType:"json"}).then(function(r){var t=r.data;if(0===t.length||!t[0].name)throw new u("layer-templates:symbol-set-missing-data","Invalid syntax or missing data in symbol set",{style:e});for(var n={},s=0;s<t.length;s++){var l=p(t[s]);n[t[s].name]=l,t[s].name===e.defaultItem&&(n.defaultSymbol=l)}return n.defaultSymbol||(n.defaultSymbol=n[t[0].name]),n}):i.reject(new u("layer-templates:symbol-set-url-missing","Style does not provide symbol set url",{style:e}))}function S(e,r){for(var t=0;t<e.items.length;t++)if(e.items[t].name===r)return y(d(e.items[t].webRef),{query:{f:"json"},responseType:"json"}).then(function(e){return p(e.data)});return i.reject(new u("layer-templates:symbol-name-not-found","The symbol name '${symbolName}' could not be found",{symbolName:r}))}function j(e,r){var t=n.fromJSON(e);return t.sizeInfo&&(r.sizeInfo=t.sizeInfo),t.colorInfo&&(r.colorInfo=t.colorInfo),t.visualVariables&&(r.visualVariables=t.visualVariables),r}function U(e,r){var t=e.symbol;if(!t.name)return i.reject(new u("layer-templates:style-symbol-reference-name-missing","Missing name in style symbol reference"));var n;if(t.styleUrl)n=v(t.styleUrl);else{if(!t.styleName)return i.reject(new u("layer-templates:style-url-and-name-missing","Either styleUrl or styleName is required in layerDefinition"));n=w(t.styleName,r)}return n.then(function(e){return S(e,t.name)}).then(function(r){var t=new s({symbol:r});return j(e,t)})}function N(e,r){var t;if(e.styleUrl)t=v(e.styleUrl);else{if(!e.styleName)return i.reject(new u("layer-templates:style-symbol-reference-name-missing","Missing name in style symbol reference"));t=w(e.styleName,r)}return t.then(function(e){return q(e)}).then(function(r){var t;t=e.defaultSymbol&&r[e.defaultSymbol.name]?r[e.defaultSymbol.name]:r.defaultSymbol;var n=new l({defaultSymbol:t,field:e.field1});for(var s in r)r.hasOwnProperty(s)&&n.addUniqueValueInfo(s,r[s]);return j(e,n)})}function I(e,r){return-1!==e.indexOf(r,e.length-r.length)}r.hasContentByReference=f,r.createRenderer=c});

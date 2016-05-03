@@ -1,0 +1,25 @@
+// COPYRIGHT © 2016 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+
+define(["../../core/declare","../../core/Accessoire","./LODInfo"],function(t,e,n){var l=Math.max,o=Math.min,i=Math.floor,s=Math.ceil,r=function(t,e,n,l){this.lodInfo=t,this.row=e,this.colFrom=n,this.colTo=l},a=function(t,e,n,l,o,i,s,r){this.x=t,this.ymin=e,this.ymax=n,this.invM=l,this.leftAdjust=o,this.rightAdjust=i,this.leftBound=s,this.rightBound=r};a.prototype.incrRow=function(){this.x+=this.invM},a.prototype.getLeftCol=function(){return l(this.x+this.leftAdjust,this.leftBound)},a.prototype.getRightCol=function(){return o(this.x+this.rightAdjust,this.rightBound)},a.create=function(t,e){var n;t[1]>e[1]&&(n=t,t=e,e=n);var l=t[0],o=t[1],r=e[0],c=e[1],f=r-l,u=c-o,h=0!==u?f/u:0,m=(s(o)-o)*h,d=(i(o)-o)*h;return new a(l,i(o),s(c),h,0>f?m:d,0>f?d:m,0>f?r:l,0>f?l:r)};var c=[[0,0],[0,0],[0,0],[0,0]],f=t([e],{normalizeCtorArgs:function(t){var e=t.tileInfo,n=e.lods,l=t.constraints||{};if(n&&n.length){var o,i=l.minZoom,s=l.maxZoom,r=l.minScale,a=l.maxScale,c=-1,f=-1,u=!1,h=!1;for(o=0;o<n.length;o++)!u&&r>0&&r>=n[o].scale&&(c=n[o].level,u=!0),!h&&a>0&&a>=n[o].scale&&(f=o>0?n[o-1].level:-1,h=!0);null==i&&(i=null==r?n[0].level:c),null==s&&(s=null==a?n[n.length-1].level:f)}return{tileInfo:e,fullExtent:t.fullExtent,constraints:{minZoom:i,maxZoom:s}}},getDefaults:function(t){return{wrap:t.tileInfo.spatialReference.isWrappable}},initialize:function(){var t=this.tileInfo,e=this.fullExtent,l=this.dpi/t.dpi,o=this.constraints||{minZoom:-1/0,maxZoom:+1/0},i=o.minZoom,s=o.maxZoom,r=t.lods;this._infoByZoom={},this._infoByScale={},this.zooms=[],this.scales=[],r=r.map(function(t){return t=t.clone(),t.scale=t.scale*l,t}).filter(function(t){return t.level>=i&&t.level<=s}).sort(function(t,e){return e.scale-t.scale}),this.lodInfos=r.map(function(l){return new n(t,l,e)}),r.forEach(function(t,e){this._infoByZoom[t.level]=this.lodInfos[e],this._infoByScale[t.scale]=this.lodInfos[e],this.zooms[e]=t.level,this.scales[e]=t.scale},this),this.lods=r,i=this.zooms[0],s=this.zooms[this.zooms.length-1],this.constraints={minZoom:i,maxZoom:s,minScale:this._infoByZoom[i].scale,maxScale:this._infoByZoom[s].scale},this.wrap=this.wrap&&t.spatialReference.isWrappable},_infoByZoom:null,_infoByScale:null,constraints:null,dpi:96,lods:null,scales:null,wrap:!1,zooms:null,getZoomForScale:function(t){var e=this.lods,n=null,l=null,o=0,i=e.length-1;for(o;i>o;o++){if(n=e[o],l=e[o+1],n.scale<=t)return n.level;if(l.scale===t)return l.level;if(n.scale>t&&l.scale<t)return l.level-(t-l.scale)/(n.scale-l.scale)}},getScaleForZoom:function(t){var e=this.lods,n=null,l=null,o=0,i=e.length-1;for(o;i>o;o++){if(n=e[o],l=e[o+1],n.level<=t)return n.scale;if(l.level===t)return l.scale;if(n.level>t&&l.level<t)return l.scale-(t-l.level)/(n.level-l.level)}},getInfoForZoom:function(t){return this._infoByZoom[t]},getInfoForScale:function(t){return this._infoByScale[t]},getTileOrigin:function(t,e){var n=this._infoByZoom[e[2]];return n?n.getTileOrigin(t,e):null},getTileSpans:function(t){var e,n,s,f,u,h,m,d,g=this._getClosestInfoForScale(t.scale),v=this.wrap,p=+1/0,y=-1/0,S=[],Z=[];for(c[0][0]=c[0][1]=c[1][1]=c[3][0]=0,c[1][0]=c[2][0]=t.size[0],c[2][1]=c[3][1]=t.size[1],d=c.map(function(e){return t.toMap(e,e),e[0]=g.toGridCol(e[0]),e[1]=g.toGridRow(e[1]),e}),u=3,f=0;4>f;f++)d[f][1]!==d[u][1]?(h=a.create(d[f],d[u]),p=o(h.ymin,p),y=l(h.ymax,y),void 0===S[h.ymin]&&(S[h.ymin]=[]),S[h.ymin].push(h),u=f):u=f;if(null==p||null==y||y-p>100)return[];for(m=[],e=p;y>e;){for(null!=S[e]&&(m=m.concat(S[e])),n=+1/0,s=-1/0,f=m.length-1;f>=0;f--)h=m[f],n=o(n,h.getLeftCol()),s=l(s,h.getRightCol());if(n=i(n),s=i(s),e>=g.start[1]&&e<=g.end[1])if(v)if(g.size[0]<g.worldSize[0])for(f=i(n/g.worldSize[0]),u=i(s/g.worldSize[0]);u>=f;f++)Z.push(new r(g,e,l(g.getWorldStartCol(f),n),o(g.getWorldEndCol(f),s)));else Z.push(new r(g,e,n,s));else n>g.end[0]||s<g.start[0]||(n=l(n,g.start[0]),s=o(s,g.end[0]),Z.push(new r(g,e,n,s)));for(e+=1,f=m.length-1;f>=0;f--)h=m[f],h.ymax>=e?h.incrRow():m.splice(f,1)}return Z},clone:function(){return new f(this.tileInfo?this.tileInfo.clone():null)},_getClosestInfoForScale:function(t){var e=this.scales;return this._infoByScale[t]?this._infoByScale[t]:(t=e.reduce(function(e,n){return Math.abs(n-t)<Math.abs(e-t)?n:e},e[0],this),this._infoByScale[t])}});return f});

@@ -1,0 +1,99 @@
+<div role="presentation" class="${_css.invisible}">
+  <!-- Popup Container -->
+  <div data-dojo-attach-point="_containerNode" class="${_css.container} ${_css.top} ${_css.shadow}">
+    <div class="${_css.main}">
+      <!-- Popup Docked Pagination -->
+      <section class="${_css.paginationDocked}">
+        <div role="presentation" class="${_css.loadingContainer}" title="${_i18n.loading}">
+          <span aria-hidden="true" class="${_css.icon} ${_css.loadingIcon}"></span>
+          <span class="${_css.iconText}">${_i18n.loading}</span>
+        </div>
+        <div class="${_css.paginationDockedButtons}">
+          <div role="button" tabindex="0" data-dojo-attach-point="_previousDockedNode" class="${_css.btn} ${_css.previous}" title="${_i18n.previous}">
+            <span aria-hidden="true" class="${_css.icon} ${_css.previousIconLTR}"></span>
+            <span aria-hidden="true" class="${_css.icon} ${_css.previousIconRTL}"></span>
+            <span class="${_css.iconText}">${_i18n.previous}</span>
+          </div>
+          <div data-dojo-attach-point="_pageTextDockedNode" class="${_css.pageText}"></div>
+          <div role="button" tabindex="0" data-dojo-attach-point="_nextDockedNode" class="${_css.btn} ${_css.next}" title="${_i18n.next}">
+            <span aria-hidden="true" class="${_css.icon} ${_css.nextIconLTR}"></span>
+            <span aria-hidden="true" class="${_css.icon} ${_css.nextIconRTL}"></span>
+            <span class="${_css.iconText}">${_i18n.next}</span>
+          </div>
+          <div role="button" tabindex="0" data-dojo-attach-point="_pageMenuDockedNode" class="${_css.btn} ${_css.pageMenuBtn}" title="${_i18n.menu}">
+            <span aria-hidden="true" class="${_css.icon} ${_css.pageMenuIcon}"></span>
+            <span class="${_css.iconText}">${_i18n.menu}</span>
+          </div>
+        </div>
+      </section>
+      <!-- /Popup Docked Pagination -->
+      <!-- Popup Header -->
+      <header class="${_css.header}">
+        <h1 data-dojo-attach-point="_titleNode" class="${_css.title}"></h1>
+        <div class="${_css.headerButtons}">
+          <div role="button" tabindex="0" data-dojo-attach-point="_dockNode" class="${_css.btn} ${_css.dockBtn}">
+            <span aria-hidden="true" class="${_css.icon} ${_css.dockIcon} ${_css.dockIconRight}"></span>
+            <span aria-hidden="true" class="${_css.icon} ${_css.dockIcon} ${_css.dockIconTop}"></span>
+            <span aria-hidden="true" class="${_css.icon} ${_css.dockIcon} ${_css.dockIconLeft}"></span>
+            <span aria-hidden="true" class="${_css.icon} ${_css.dockIcon} ${_css.dockIconBottom}"></span>
+            <span class="${_css.iconText} ${_css.dockIconText}">${_i18n.dock}</span>
+            <span aria-hidden="true" class="${_css.icon} ${_css.undockIcon}"></span>
+            <span class="${_css.iconText} ${_css.undockIconText}">${_i18n.undock}</span>
+          </div>
+          <div role="button" tabindex="0" data-dojo-attach-point="_closeNode" class="${_css.btn} ${_css.close}" title="${_i18n.close}">
+            <span aria-hidden="true" class="${_css.icon} ${_css.closeIcon}"></span>
+            <span class="${_css.iconText}">${_i18n.close}</span>
+          </div>
+        </div>
+      </header>
+      <!-- /Popup Header -->
+      <!-- Popup Content -->
+      <article class="${_css.content}" data-dojo-attach-point="_bodyContentNode"></article>
+      <!-- /Popup Content -->
+      <!-- Popup Footer -->
+      <footer class="${_css.footer}">
+        <!-- Popup Actions -->
+        <div data-dojo-attach-point="_actionsNode" class="${_css.actions}"></div>
+        <!-- /Popup Actions -->
+        <!-- Popup Pagination -->
+        <section class="${_css.pagination}">
+          <div role="presentation" class="${_css.loadingContainer}" title="${_i18n.loading}">
+            <span aria-hidden="true" class="${_css.icon} ${_css.loadingIcon}"></span>
+            <span class="${_css.iconText}">${_i18n.loading}</span>
+          </div>
+          <div role="button" tabindex="0" data-dojo-attach-point="_previousNode" class="${_css.btn} ${_css.previous}" title="${_i18n.previous}">
+            <span aria-hidden="true" class="${_css.icon} ${_css.previousIconLTR}"></span>
+            <span aria-hidden="true" class="${_css.icon} ${_css.previousIconRTL}"></span>
+            <span class="${_css.iconText}">${_i18n.previous}</span>
+          </div>
+          <div data-dojo-attach-point="_pageTextNode" class="${_css.pageText}"></div>
+          <div role="button" tabindex="0" data-dojo-attach-point="_nextNode" class="${_css.btn} ${_css.next}" title="${_i18n.next}">
+            <span aria-hidden="true" class="${_css.icon} ${_css.nextIconLTR}"></span>
+            <span aria-hidden="true" class="${_css.icon} ${_css.nextIconRTL}"></span>
+            <span class="${_css.iconText}">${_i18n.next}</span>
+          </div>
+          <div role="button" tabindex="0" data-dojo-attach-point="_pageMenuNode" class="${_css.btn} ${_css.pageMenuBtn}" title="${_i18n.menu}">
+            <span aria-hidden="true" class="${_css.icon} ${_css.pageMenuIcon}"></span>
+            <span class="${_css.iconText}">${_i18n.menu}</span>
+          </div>
+        </section>
+        <!-- /Popup Pagination -->
+      </footer>
+      <!-- /Popup Footer -->
+      <!-- Popup Menu -->
+      <section class="${_css.pageMenu}" data-dojo-attach-point="_pageMenuSectionNode" aria-hidden="true">
+        <h2 class="${_css.pageMenuHeader}" data-dojo-attach-point="_pageMenuInfoNode"></h2>
+        <nav class="${_css.pageMenuViewport}">
+          <ol class="${_css.pageMenuList}" role="menu" data-dojo-attach-point="_paginationNode"></ol>
+        </nav>
+      </section>
+      <!-- /Popup Menu -->
+    </div>
+    <!-- Popup Pointer -->
+    <div data-dojo-attach-point="_pointerNode" class="${_css.pointer}" role="presentation">
+      <div class="${_css.pointerDirection} ${_css.shadow}"></div>
+    </div>
+    <!-- /Popup Pointer -->
+  </div>
+  <!-- /Popup Container -->
+</div>

@@ -1,0 +1,25 @@
+// COPYRIGHT © 2016 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+
+define(["require","exports","dojo/_base/lang","./I3SUtil"],function(e,t,r,n){function a(e,t,r){for(var n="",a=0,o=0,u=0,i=0;r>a;)if(o=e[t+a],128>o)n+=String.fromCharCode(o),a++;else if(o>191&&224>o){if(a+1>=r)throw new Error("UTF-8 Decode failed. Two byte character was truncated.");u=e[t+a+1],n+=String.fromCharCode((31&o)<<6|63&u),a+=2}else{if(a+2>=r)throw new Error("UTF-8 Decode failed. Multi byte character was truncated.");u=e[t+a+1],i=e[t+a+2],n+=String.fromCharCode((15&o)<<12|(63&u)<<6|63&i),a+=3}return n}function o(e,t){for(var r={byteOffset:0,byteCount:0,fields:Object.create(null)},a=0,o=0;o<t.length;o++){var u=t[o],i=u.valueType||u.type,s=n.valueType2TypedArrayClassMap[i],f=new s(e,a,1);r.fields[u.property]=f[0],a+=f.byteLength}return r.byteCount=a,r}function u(e,t,r){var n,o,u=[],i=0;for(o=0;e>o;o+=1){if(n=t[o],n>0){if(u.push(a(r,i,n-1)),0!==r[i+n-1])throw new Error("invalid string array: missing null termination.")}else u.push(null);i+=n}return u}function i(e,t){var r=n.valueType2TypedArrayClassMap[t.valueType];return new r(e,t.byteOffset,t.count*t.valuesPerElement)}function s(e,t){return new Uint8Array(e,t.byteOffset,t.byteCount)}function f(e,t){for(var a=o(e,t.header),u={header:a,byteOffset:a.byteCount,byteCount:0,entries:Object.create(null)},i=a.byteCount,s=0;s<t.ordering.length;s++){var f=t.ordering[s],l=r.clone(t[f]);if(l.count=a.fields.count,"String"===l.valueType){if(l.byteOffset=i,l.byteCount=a.fields[f+"ByteCount"],"UTF-8"!==l.encoding)throw new Error("Unsupported String encoding: '"+l.encoding+"'.")}else{if(!n.isValueType(l.valueType))throw new Error("Unsupported valueType: '"+l.valueType+"'.");var y=n.getBytesPerValue(l.valueType);i+=i%y!==0?y-i%y:0,l.byteOffset=i,l.byteCount=y*l.valuesPerElement*l.count}i+=l.byteCount,u.entries[f]=l}return u.byteCount=i-u.byteOffset,u}function l(e,t,a){var u=o(e,t.header),i=u.byteCount,s={header:u,byteOffset:u.byteCount,byteCount:0,vertexAttributes:r.clone(t.vertexAttributes)},f=s.vertexAttributes;a||null==f.region||delete f.region;for(var l=0;l<t.ordering.length;l++){var y=t.ordering[l];null!=f[y]&&(f[y].byteOffset=i,f[y].count=u.fields.vertexCount,i+=n.getBytesPerValue(f[y].valueType)*f[y].valuesPerElement*u.fields.vertexCount)}if(t.faces){s.faces=r.clone(t.faces);for(var b=s.faces,l=0;l<t.ordering.length;l++)name=t.ordering[l],b[name].byteOffset=i,b[name].count=u.fields.vertexCount;i+=n.getBytesPerValue(b[name].valueType)*b[name].valuesPerElement*u.fields.vertexCount}if(t.featureAttributes&&t.featureAttributeOrder&&u.fields.featureCount){s.featureAttributes=r.clone(t.featureAttributes);for(var d=s.featureAttributes,l=0;l<t.featureAttributeOrder.length;l++){name=t.featureAttributeOrder[l],d[name].byteOffset=i,d[name].count=u.fields.featureCount;var c=n.getBytesPerValue(d[name].valueType);"UInt64"===d[name].valueType&&(c=8),i+=c*d[name].valuesPerElement*u.fields.featureCount}}if(e.byteLength<i)throw new Error("Invalid geometry size ( expected: "+i+", actual: "+e.byteLength+")");return e.byteLength>i&&console.warn("Invalid geometry size ( expected: "+i+", actual: "+e.byteLength+")"),s.byteCount=i-s.byteOffset,s}function y(e,t){e["attributeByteCounts "]&&!e.attributeByteCounts&&(console.error("Warning: Trailing space in 'attributeByteCounts '."),e.attributeByteCounts=e["attributeByteCounts "]),"ObjectIds"===e.ordering[0]&&e.hasOwnProperty("objectIds")&&(console.error("Warning: Case error in objectIds"),e.ordering[0]="objectIds");var r=f(t,e),n=r.byteOffset+r.byteCount;if(n>t.byteLength)throw new Error("invalid attribute array length\n(expected: "+n+" bytes, got: "+t.byteLength+" bytes).");n<t.byteLength&&console.error("Warning: attribute array too long\n(expected: "+n+" bytes, got: "+t.byteLength+" bytes).");var a=r.entries.attributeValues||r.entries.objectIds;if(a){if("String"===a.valueType){var o=r.entries.attributeByteCounts,l=i(t,o),y=s(t,a);return u(o.count,l,y)}return i(t,a)}throw new Error("Bad attributeStorageInfo specification.")}t.readHeader=o,t.readStringArray=u,t.createTypedView=i,t.createRawView=s,t.createAttributeDataIndex=f,t.createGeometryDataIndex=l,t.readBinaryAttribute=y});

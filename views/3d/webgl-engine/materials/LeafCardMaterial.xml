@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<snippets>
+
+<snippet name="vertexShaderLeafCard">
+	<![CDATA[
+	uniform mat4 proj;
+	uniform mat4 view;
+	uniform mat4 model;
+	uniform mat4 modelNormal;
+	attribute vec3 $position;
+	attribute vec4 $normal;
+	attribute vec4 $uv0;
+	varying vec2 vtc;
+	varying vec3 vnormal;
+	varying float ambientLeaf;
+
+	uniform float trafoScale;
+	varying vec3 vpos;
+
+	// TODO optimize?
+	vec2 rotate(vec2 pos, float angle) {
+		float c = cos(angle);
+		float s = sin(angle);
+		return vec2(c * pos.x - s * pos.y, s * pos.x + c * pos.y);
+	}
+
+	void main(void) {
+
+		vpos = (model * vec4($position, 1.0)).xyz;
+
+		vec3 pos = (view * model * vec4($position, 1.0)).xyz;
+		vec2 uv01 = floor($uv0.xy);
+		vec2 uv = $uv0.xy - uv01;
+
+   		vec2 up = rotate(vec2(1,0), $uv0.z);
+   		vec3 xDir =  vec3(up.x,up.y,0.0);
+   		vec3 yDir =  vec3(-up.y,up.x,0.0);
+
+		pos += xDir * (uv01.x - .5) * $uv0.w *trafoScale;
+		pos += yDir * (uv01.y - .5) * $uv0.w *trafoScale;;
+		vec4 pos4 = proj * vec4(pos, 1.0);
+		gl_Position = pos4;
+		vtc = uv;
+		ambientLeaf = normal.w;
+		vnormal = normalize((modelNormal * vec4($normal.xyz, 1.0)).xyz);
+	}
+]]>
+</snippet>
+
+<snippet name="fragmentShaderLeafCard">
+<![CDATA[
+	precision mediump float;
+
+	uniform vec3 camPos;
+
+	uniform vec4 lightAmbient;
+	uniform vec4 lightDiffuse;
+	uniform vec4 lightSpecular;
+	uniform vec3 lightDirection;
+
+	uniform vec3 ambient;
+	uniform vec3 diffuse;
+	uniform vec3 specular;
+	uniform float shininess;
+
+	uniform sampler2D tex;
+	varying vec2 vtc;
+	varying vec3 vnormal;
+	varying float ambientLeaf;
+
+	varying vec3 vpos;
+
+	void main() {
+		vec4 texColor = texture2D(tex, vtc);
+		if (texColor.a < .33) discard;
+
+		vec3 a = ambient * lightAmbient.rgb * lightAmbient.w;
+		vec3 d = diffuse * lightDiffuse.rgb * lightDiffuse.w * clamp(dot(vnormal, lightDirection), .0, 1.0);
+
+		vec3 reflDir = normalize(reflect(vpos - camPos, vnormal));
+		float specDot = max(dot(reflDir, lightDirection), .001);
+		vec3 s = specular * lightSpecular.rgb * lightSpecular.w * pow(specDot, shininess);
+
+		gl_FragColor = vec4(ambientLeaf * texColor.rgb * (a + d) + s, texColor.a);
+
+		//gl_FragColor = vec4(ambient,1.0);
+
+	}
+]]></snippet>
+
+
+<snippet name="vertexShaderLeafCardDepth"><![CDATA[
+   	uniform mat4 proj;
+   	uniform mat4 view;
+   	uniform mat4 model;
+   	uniform vec2 nearFar;
+
+   	attribute vec3 $position;
+   	attribute vec4 $uv0;
+
+   	uniform float trafoScale;
+
+   	varying vec2 vtc;
+   	varying float depth;
+
+   	// TODO optimize?
+   	vec2 rotate(vec2 pos, float angle) {
+   		float c = cos(angle);
+   		float s = sin(angle);
+   		return vec2(c * pos.x - s * pos.y, s * pos.x + c * pos.y);
+   	}
+
+   	void main(void) {
+   		vec3 pos = (view * model * vec4($position, 1.0)).xyz;
+   		vec2 uv01 = floor($uv0.xy);
+   		vec2 uv = $uv0.xy - uv01;
+
+   		vec2 up = rotate(vec2(1,0), $uv0.z);
+   		vec3 xDir =  vec3(up.x,up.y,0.0);
+   		vec3 yDir =  vec3(-up.y,up.x,0.0);
+
+   		pos += xDir * (uv01.x - .5) * $uv0.w*trafoScale;
+   		pos += yDir * (uv01.y - .5) * $uv0.w*trafoScale;
+   		vec4 pos4 = proj * vec4(pos, 1.0);
+   		gl_Position = pos4;
+   		vtc = uv;
+
+   		depth = (-pos.z - nearFar[0]) / (nearFar[1] - nearFar[0]);
+
+   	}
+ ]]></snippet>
+
+</snippets>

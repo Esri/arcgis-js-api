@@ -1,0 +1,25 @@
+// COPYRIGHT © 2016 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+
+define(["require","exports"],function(){function e(e,i){return null!==e&&e>0&&8e7>e||i>1e3}var i="VISIBILITY_SCALERANGE",a="VISIBILITY_SCALERANGE_LABEL",t=function(){function t(){this._scaleRangeActive=!1,this.layerScaleRangeVisibility=!0,this.layerScaleRangeVisibilityDirty=!0,this.layerScaleRangeVisibilityQuery=!1,this.scaleChangeEventHandle=null,this.layerView=null,this.layer=null,this.spatialIndex=null,this.extent=null,this.graphicsCore=null,this.basemapTerrain=null}return t.prototype.initialize=function(i,a,t,l,s){this.layerView=i,this.layer=a,this.spatialIndex=t,this.graphicsCore=l,this._scaleRangeActive=e(a.minScale,a.maxScale),this.basemapTerrain=s,this.layerMinMaxScaleChangeHandler()},t.prototype.destroy=function(){this.layerView=null,this.extent=null,this.spatialIndex=null,this.graphicsCore=null},t.prototype.needsIdleUpdate=function(){return this.layerView.view.basemapTerrain&&this.layerScaleRangeVisibilityDirty},t.prototype.canResume=function(){return this.layerScaleRangeVisibility},t.prototype.setExtent=function(e){this.extent=e,this.layerScaleRangeVisibilityDirty=!0},t.prototype.idleUpdate=function(e){this.layerView.view.basemapTerrain&&(e.done()||this.layerScaleRangeVisibilityDirty&&(this.updateSuspendScaleVisible(),this.layerScaleRangeVisibilityDirty=!1))},t.prototype.scaleRangeActive=function(){return this._scaleRangeActive},t.prototype.updateSuspendScaleVisibleFinish=function(e){this.layerScaleRangeVisibilityQuery=!1,this.layerScaleRangeVisibility!==e&&(this.layerScaleRangeVisibility=e,this.layerView._notifySuspendedChange())},t.prototype.updateSuspendScaleVisible=function(){var e=this,i=this.layerView.view.basemapTerrain;this.extent&&i&&this._scaleRangeActive?this.layerScaleRangeVisibilityQuery||(this.layerScaleRangeVisibilityQuery=!0,i.queryVisibleScaleRange(this.extent,this.layer.minScale,this.layer.maxScale,function(i){return e.updateSuspendScaleVisibleFinish(i)})):this.updateSuspendScaleVisibleFinish(!0)},t.prototype.visibleAtScale=function(e){var i=this.layer.minScale,a=this.layer.maxScale;return e>a&&(!i||i>e)},t.prototype.visibleAtScaleLabel=function(e,i){return e>i.maxScale&&(!i.minScale||e<i.minScale)},t.prototype.graphicVisible=function(e,i){var a;if(i.centroid?a=i.centroid:"point"===e.geometry.type&&(a=e.geometry),a){var t=this.layerView.view.basemapTerrain,l=t?this.layerView.view.basemapTerrain.getScale(a):1;return this.visibleAtScale(l)}return!0},t.prototype.updateGraphicScaleVisibility=function(e,a){if(this._scaleRangeActive&&a.addedToSpatialIndex){var t=this.graphicVisible(e,a);return a.setVisibilityFlag(i,t)}return!1},t.prototype.scaleUpdateHandler=function(e){var t=this;if(!this.layerView.suspended&&this.spatialIndex.hasGraphics()){var l=e.extent,s=e.scale;this.spatialIndex.intersects(l,e.spatialReference,function(e,n){for(var r=t.visibleAtScale(s),c=!1,h=0;n>h;h++){var y=e[h],p=t.graphicsCore.getGraphics3DGraphicById(y);if(p){var o=p.centroid;if(o&&(l[0]>o.x||l[1]>o.y||l[2]<o.x||l[3]<o.y))continue;for(var u=p.setVisibilityFlag(i,r),d=0;d<p._labelGraphics.length;d++){var S=p._labelGraphics[d];if(S._labelClass&&null!=S._labelClass.minScale&&null!=S._labelClass.maxScale){var g=t.visibleAtScaleLabel(s,S._labelClass);u=u||S.setVisibilityFlag(a,g)}}u&&t.layerView.view.labelManager.setDirty(),u&&p.isDraped()&&(c=!0)}}c&&t.layerView._notifyDrapedDataChange()})}this.layerScaleRangeVisibilityDirty=!0},t.prototype.layerMinMaxScaleChangeHandler=function(){var i=this,a=this.layer;this._scaleRangeActive=e(a.minScale,a.maxScale),this._scaleRangeActive&&!this.scaleChangeEventHandle?(this.scaleChangeEventHandle=this.basemapTerrain.on("scale-change",function(e){return i.scaleUpdateHandler(e)}),this.layerView.suspended||this.spatialIndex.addGraphicsToSpatialIndex(this._scaleRangeActive)):!this._scaleRangeActive&&this.scaleChangeEventHandle&&(this.scaleChangeEventHandle.remove(),this.scaleChangeEventHandle=null),this.layerView.suspended||this.graphicsCore.updateAllGraphicsVisibility(),this.layerScaleRangeVisibilityDirty=!0},t}();return t});

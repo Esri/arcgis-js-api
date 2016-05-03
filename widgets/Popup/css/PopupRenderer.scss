@@ -1,0 +1,246 @@
+@import '../../css/CommonVariables';
+@import '../../css/CommonMixins';
+
+.esri-popup-renderer-media,
+.esri-popup-renderer-attachments,
+.esri-popup-renderer-media-container {
+  @include flexDisplay();
+}
+
+.esri-popup-renderer-loading-container {
+  width: 100%;
+  @include justifyContent(center);
+  display: none;
+}
+
+.esri-icon-loading-indicator {
+  display: inline-block;
+}
+
+.esri-popup-renderer.esri-popup-renderer-loading {
+  .esri-popup-renderer-loading-container {
+    @include flexDisplay();
+    padding: $cap_spacing 0;
+  }
+}
+
+.esri-popup-renderer {
+  width: 100%;
+  h1 {
+    font-size: $h1_text_size;
+    font-weight: $text_weight_header;
+  }
+  h2 {
+    font-size: $h2_text_size;
+    font-weight: $text_weight_header;
+  }
+  img {
+    max-width: 100%;
+  }
+  figcaption {
+    font-size: $caption_text_size;
+    font-style: italic;
+    padding: 0;
+    margin: .2em 0 0;
+    display: block;
+  }
+  ul {
+    margin: 0 0 1.2em 0;
+    padding: 0 0 0 1rem;
+  }
+  li {
+    font-size: $body_text_size;
+    list-style-type: square;
+    margin: .3em 0;
+  }
+  .esri-popup-renderer-content-element {
+    padding: 0 floor($side_spacing/2) $cap_spacing*2;
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+  .esri-popup-renderer-attachments-title {
+    margin: 0 auto 0 0;
+    font-weight: $text_weight_header;
+  }
+  ////////////////////////////////////////
+  // Attachmets
+  .esri-popup-renderer-attachments {
+    @include flexFlow(row, wrap);
+    @include alignItems(flex-start);
+    ul {
+      @include flex(0, 0, 100%);
+      padding: 0;
+      margin: floor($cap_spacing/2) 0;
+      li {
+        list-style-type: none;
+        padding: 0;
+        margin: floor($cap_spacing * 0.75) 0;
+        line-height: 1.2em;
+        a {
+          text-decoration: none;
+          font-size: $body_text_size;
+          color: $button_text_color;
+          max-width: 100%;
+          -ms-word-break: break-all;
+          word-break: break-all;
+          @include flexDisplay();
+          @include alignItems(center);
+          &:hover {
+            color: $button_text_hover_color;
+          }
+        }
+      }
+    }
+    .esri-popup-renderer-attachments-item {
+      @include flex(2, 0);
+    }
+    .esri-popup-renderer-attachments-item-icon {
+      @include flex(0, 1, 5%);
+      padding: 0 .5em 0 0;
+    }
+  }
+  ////////////////////////////////////////
+  // Media
+  .esri-popup-renderer-media {
+    @include flexFlow(row, wrap);
+    @include alignItems(center);
+  }
+  .esri-popup-renderer-media-summary {
+    @include flexFlow(row, nowrap);
+    @include alignItems(center);
+    display: none;
+    margin: 0 floor($side_spacing/2) 0 auto;
+    padding: 0;
+    .esri-popup-renderer-media-image-summary {
+      list-style-type: none;
+      margin: 0 0 0 .5em;
+    }
+  }
+  .esri-popup-renderer-media-summary li span {
+    display: inline-block;
+    vertical-align: text-bottom;
+    margin: 0 0 0 .25em;
+  }
+  .esri-popup-renderer-media-item-title {
+    font-size: $h2_text_size;
+    padding: 0.3rem 0 0;
+  }
+  .esri-popup-renderer-media-item-caption {
+    font-size: $body_text_size;
+    padding: 0.1rem 0 0;
+  }
+  .esri-popup-renderer-media-container {
+    @include flexFlow(row, nowrap);
+    @include alignItems(stretch);
+    @include justifyContent(center);
+    width: 100%;
+    min-height: 150px;
+    margin-top: floor($cap_spacing/2);
+    .esri-popup-renderer-button {
+      @include justifyContent(center);
+      @include alignItems(center);
+      @include flex(0, 1, 15%);
+      font-size: 20px;
+      color: $button_text_color;
+      display: none;
+      &:hover {
+        cursor: pointer;
+        color: $button_text_hover_color;
+      }
+    }
+  }
+  .esri-popup-renderer-media-item {
+    max-width: 100%;
+    height: auto;
+    @include flexDisplay();
+    @include alignItems(flex-start);
+    @include justifyContent(center);
+  }
+  .esri-chart {
+    //  Dimensions on containing div are required
+    //  for Chart library to know how big to make the chart.
+    width: 250px;
+    height: 250px;
+  }
+}
+
+////////////////////////////////////////
+// Multiple Media Items
+.esri-popup-renderer-show-media-pagination {
+  .esri-popup-renderer-media-container {
+    .esri-popup-renderer-media-item-container {
+      @include flex(0, 0, 70%);
+    }
+    .esri-popup-renderer-button {
+      @include flexDisplay();
+    }
+  }
+  .esri-popup-renderer-media-summary {
+    @include flexDisplay();
+  }
+  .esri-chart {
+    //  Accounts for media items being smaller
+    //  when there are pagination buttons.
+    width: 225px;
+    height: 225px;
+  }
+}
+
+@mixin mediaImgMaxWidth($max_width) {
+  .esri-popup-renderer {
+    .esri-popup-renderer-media-item {
+      img {
+        max-width: #{$max_width}px;
+      }
+    }
+    .esri-popup-renderer-show-media-pagination {
+      .esri-popup-renderer-media-item {
+        img {
+          max-width: #{($max_width - 60)}px;
+        }
+      }
+    }
+  }
+}
+
+.esri-view-width-xlarge {
+  @include mediaImgMaxWidth(380);
+}
+
+.esri-view-width-large {
+  @include mediaImgMaxWidth(280);
+}
+
+.esri-view-width-medium {
+  @include mediaImgMaxWidth(240);
+}
+
+.esri-view-width-small {
+  @include mediaImgMaxWidth(225);
+}
+
+.esri-view-width-xsmall {
+  @include mediaImgMaxWidth(180);
+}
+
+.esri-view-width-xsmall .esri-docked {
+  @include mediaImgMaxWidth(300);
+}
+
+html[dir="rtl"] .esri-popup-renderer {
+  .esri-popup-renderer-attachments-title {
+    margin: 0 0 0 auto;
+  }
+  .esri-popup-renderer-attachments {
+    .esri-popup-renderer-attachments-item-icon {
+      padding: 0 0 0 .5em;
+    }
+  }
+  .esri-popup-renderer-media-summary {
+    margin: 0 auto 0 0;
+    .esri-popup-renderer-media-image-summary {
+      margin: 0 .5em 0 0;
+    }
+  }
+}

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<snippets>
+
+<snippet name="vertexShaderStar"><![CDATA[
+	precision mediump float;
+	uniform mat4 proj;
+	uniform mat4 view;
+	uniform mat4 model;
+	uniform vec4 viewport;
+
+	attribute vec3 $position;
+	attribute vec4 $color;
+  attribute float $size;
+
+	varying vec4 vcolor;
+	varying float vsize;
+
+	$matchPixelCenter
+
+	void main(void) {
+		vec4 posProj = proj * view * model*vec4($position*1.0e25,1.0);//move infinitely far away
+		gl_Position = matchPixelCenter(posProj, viewport.zw); //pixel align position
+    gl_Position.z = gl_Position.w; // project atmosphere onto the far plane
+		vcolor = $color/1.2;
+		vsize = size*5.0;
+		gl_PointSize = vsize;
+	}
+]]></snippet>
+
+<snippet name="fragmentShaderStar"><![CDATA[
+	precision mediump float;
+
+	varying vec4 vcolor;
+	varying float vsize;
+
+	void main() {
+		float cap = 0.7;
+		float scale = 1.0/cap;
+		float helper = clamp(length(abs(gl_PointCoord-vec2(0.5))),0.0,cap);
+		float alpha = clamp((cap-helper)*scale,0.0,1.0);
+		float intensity = alpha*alpha*alpha;
+		if (vsize < 3.0)
+			intensity *= 0.5;
+		gl_FragColor = vec4(1.0,1.0,1.0,intensity);
+		gl_FragColor.xyz *= vcolor.xyz;
+	}
+]]></snippet>
+</snippets>

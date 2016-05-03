@@ -1,0 +1,25 @@
+// COPYRIGHT © 2016 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+
+define(["./core/Accessor","./core/JSONSupporter","./core/jsonDictionary","./core/Collection","./core/lang","dojo/_base/lang"],function(t,e,o,n,i,r){var s=o({richtext:"rich-text",textarea:"text-area",textbox:"text-box"}),a=o({shortDate:"short-date",shortDateLE:"short-date-le",longDate:"long-date",dayShortMonthYear:"day-short-month-year",longMonthDayYear:"long-month-day-year",shortDateLongTime:"short-date-long-time",shortDateLELongTime:"short-date-le-long-time",shortDateShortTime:"short-date-short-time",shortDateLEShortTime:"short-date-le-short-time",shortDateShortTime24:"short-date-short-time-24",shortDateLEShortTime24:"short-date-le-short-time-24",shortDateLongTime24:"short-date-long-time-24",shortDateLELongTime24:"short-date-le-long-time-24",longMonthYear:"long-month-year",shortMonthYear:"short-month-year",year:"year"}),l=o({image:"image",barchart:"bar-chart",columnchart:"column-chart",linechart:"line-chart",piechart:"pie-chart"}),d=t.createSubclass({properties:{className:{},temporary:{},image:{},id:{},title:{},visible:{}},className:"",temporary:!1,image:"",id:"",title:"",visible:!0,clone:function(){return new this.constructor({className:this.className,image:this.image,id:this.id,title:this.title,visible:this.visible})}}),c={attachments:"attachments",fields:"fields",media:"media",text:"text"},f="list",h=e.createSubclass({classMetadata:{properties:{actions:{type:n.ofType(d)}},reader:{add:["content"],exclude:["popupElements","description","mediaInfos","showAttachments"]}},declaredClass:"esri.PopupTemplate",actions:null,content:"",fieldInfos:null,_fieldInfosReader:function(t){return this._readFieldInfos(t)},overwriteActions:!1,title:"",relatedRecordsInfo:null,_relatedRecordsInfoReader:function(t){return t?i.clone(t):t},getDefaults:function(){return r.mixin(this.inherited(arguments),{actions:[],content:"",fieldInfos:null,overwriteActions:!1,relatedRecordsInfo:null,title:""})},_dateFormatJsonDict:a,clone:function(){var t=this.actions;return t&&(t=i.clone(t.toArray())),new h({actions:t||[],content:Array.isArray(this.content)?i.clone(this.content):this.content,fieldInfos:this.fieldInfos?i.clone(this.fieldInfos):null,overwriteActions:this.overwriteActions,relatedRecordsInfo:this.relatedRecordsInfo?i.clone(this.relatedRecordsInfo):null,title:this.title})},toJSON:function(){var t={fieldInfos:this.fieldInfos?i.clone(this.fieldInfos):null,relatedRecordsInfo:this.relatedRecordsInfo?i.clone(this.relatedRecordsInfo):null,showAttachments:!1,title:this.title};t.fieldInfos&&(t.fieldInfos=this._writeFieldInfos(t.fieldInfos));var e=this.content;return"string"==typeof e?t.description=e:Array.isArray(e)&&(t.popupElements=i.clone(e),t.popupElements.forEach(function(e){return e.type!==c.attachments||t.showAttachments?e.type!==c.media||t.mediaInfos?e.type!==c.text||t.description?e.type!==c.fields||t.fieldInfos||(e.fieldInfos&&(t.fieldInfos=this._writeFieldInfos(i.clone(e.fieldInfos))),delete e.fieldInfos):(e.text&&(t.description=e.text),delete e.text):(e.mediaInfos&&(t.mediaInfos=i.clone(e.mediaInfos),t.mediaInfos.forEach(function(t){t.type=l.toJSON(t.type)})),delete e.mediaInfos):t.showAttachments=!0,e}.bind(this))),t},_contentReader:function(t,e){var o=e.description,n=[],i=e.popupElements;return i&&i.length?n=i.map(function(t){return t.type!==c.text||t.text?t.type===c.media&&(t.mediaInfos||e.mediaInfos)&&(t.mediaInfos||(t.mediaInfos=e.mediaInfos),t.mediaInfos=this._readMediaInfos(t.mediaInfos)):t.text=e.description,t}.bind(this)):(n.push(e.description?{type:c.text,text:e.description}:{type:c.fields}),e.mediaInfos&&e.mediaInfos.length&&n.push({type:c.media,mediaInfos:this._readMediaInfos(e.mediaInfos)}),e.showAttachments&&n.push({type:c.attachments,displayType:f})),n.length&&(o=n),o},_readFieldInfos:function(t){return t&&t.forEach(function(t){var e=t.format&&t.format.dateFormat,o=t.stringFieldOption;e&&(t.format.dateFormat=a.fromJSON(e)),o&&(t.stringFieldOption=s.fromJSON(o))}),t},_writeFieldInfos:function(t){return t.forEach(function(t){var e=t.format&&t.format.dateFormat,o=t.stringFieldOption;e&&(t.format.dateFormat=a.toJSON(e)),o&&(t.stringFieldOption=s.toJSON(o))}),t},_readMediaInfos:function(t){return t.forEach(function(t){t.type=l.fromJSON(t.type)}),t}});return h.Action=d,h});

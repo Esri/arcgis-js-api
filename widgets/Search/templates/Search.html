@@ -1,0 +1,21 @@
+<div role="presentation">
+  <div role="presentation" class="${_css.container}" data-dojo-attach-point="_containerNode">
+    <div role="button" title="${_i18n.searchIn}" id="${id}_menu_button" class="${_css.sourcesButton} ${_css.button}" tabindex="0" data-dojo-attach-point="_sourceButtonNode">
+      <span aria-hidden="true" role="presentation" class="${_css.dropdownIcon}"></span><span aria-hidden="true" role="presentation" class="${_css.dropupIcon}"></span><span class="${_css.sourceName}" data-dojo-attach-point="_sourceNameNode"></span>
+    </div>
+    <div data-dojo-attach-point="_sourcesNode" class="${_css.menu} ${_css.sourcesMenu}" role="menu"></div>
+    <div class="${_css.inputContainer}">
+      <form class="${_css.form}" data-dojo-attach-point="_formNode" role="search">
+        <input aria-label="${_i18n.searchButtonTitle}" maxlength="${viewModel.maxInputLength}" autocomplete="off" type="text" tabindex="0" class="${_css.input}" value="${viewModel.searchTerm}" aria-haspopup="true" id="${id}_input" data-dojo-attach-point="_inputNode" role="textbox">
+      </form>
+      <div role="button" class="${_css.clearButton} ${_css.button}" tabindex="0" data-dojo-attach-point="_clearNode"><span aria-hidden="true" class="${_css.clearIcon}"></span><span aria-hidden="true" class="${_css.spinnerIcon} ${_css.rotating}"></span>
+      </div>
+      <div data-dojo-attach-point="_suggestionsNode" class="${_css.menu} ${_css.suggestionsMenu}" role="menu"></div>
+    </div>
+    <div role="button" title="${_i18n.searchButtonTitle}" class="${_css.submitButton} ${_css.button}" tabindex="0" data-dojo-attach-point="_submitNode">
+      <span aria-hidden="true" role="presentation" class="${_css.searchIcon}"></span>
+      <span class="${_css.fallbackText}">${_i18n.searchButtonTitle}</span>
+    </div>
+    <div data-dojo-attach-point="_noResultsMenuNode" class="${_css.menu} ${_css.noResultsMenu}"></div>
+  </div>
+</div>

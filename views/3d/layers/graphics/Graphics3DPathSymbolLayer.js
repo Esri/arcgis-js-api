@@ -1,0 +1,25 @@
+// COPYRIGHT © 2016 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+
+define(["../../../../core/declare","./Graphics3DSymbolLayer","./Graphics3DGraphicLayer","./Graphics3DSymbolCommonCode","../../support/projectionUtils","../../../../views/3d/lib/glMatrix","../../webgl-engine/Stage","../../webgl-engine/lib/Object3D","../../webgl-engine/lib/Geometry","../../webgl-engine/lib/GeometryUtil","../../webgl-engine/materials/Material","../../webgl-engine/lib/Util"],function(e,t,r,i,a,n,o,s,l,h,p,c){var g=n.vec3d,d=n.mat4d,y=c.assert,m=g.create(),f={},u=10,v=e([t],{_prepareResources:function(){var e=this.symbol,t="c3dsymbol"+e.id,r=this._getMaterialOpacityAndColor(),i=g.create(r),a=r[3],n={diffuse:i,ambient:i,opacity:a,transparent:1>a||this._isPropertyDriven("opacity"),vertexColors:this._isPropertyDriven("color")||this._isPropertyDriven("opacity")};this._material=new p(n,t+"_3dlinemat"),this._context.stage.add(o.ModelContentType.MATERIAL,this._material),this.resolve()},destroy:function(){this.isFulfilled()||this.reject(),this._material&&(this._context.stage.remove(o.ModelContentType.MATERIAL,this._material.getId()),this._material=null)},createGraphics3DGraphic:function(e,t){var r=e.geometry;if("polyline"!==r.type)return this._logWarning("unsupported geometry type for path symbol: "+r.type),null;var i="polygon"===r.type?"rings":"paths",a="graphic"+e.id,n=this._getGraphicElevationInfo(e);return this._createAs3DShape(e,i,t,n,a,e.id)},layerPropertyChanged:function(e,t,r){if("opacity"===e){var a=this._getMaterialOpacity(),n=1>a||this._isPropertyDriven("opacity");return this._material.setParameterValues({opacity:a,transparent:n}),!0}if("elevationInfo"===e){this._updateElevationInfo();var o=this._context.elevationProvider,s=this._context.renderCoordsHelper,l=i.ELEV_MODES.ABSOLUTE_HEIGHT;for(var h in t){var p=t[h],c=p._graphics[r];if(c){var g=p.graphic,d=this._getGraphicElevationInfo(g);c.elevationAligner=d.mode!==l?x:null,c.elevationInfo.set(d),x(c,o,s)}}return!0}return!1},_getPathSize:function(e){var t=e.size&&this._isPropertyDriven("size")?i.getSingleSizeDriver(e.size):this.symbol.size||this.symbol.width||1;return t/=this._context.renderCoordsHelper.unitInMeters},_createAs3DShape:function(e,t,n,o,p,c){var y=e.geometry,m=y.hasZ,f=y[t],v=f.length;if(v>0){for(var _=[],b=[],E=[],A=g.create(),D=this._context.renderSpatialReference,S=D===a.SphericalRenderSpatialReference,I=new Array(6),P=this._getPathSize(n,this.symbol),w=i.getGeometryVertexData3D(f,m,y.spatialReference,this._context.renderSpatialReference,this._context.elevationProvider,o),C=w.geometryData.outlines,G=w.eleVertexData,O=w.vertexData,T=0;T<C.length;++T){var M=C[T],R=M.index,V=M.count;if(!this._context.clippingExtent||(i.computeBoundingBox(G,R,V,I),!i.boundingBoxClipped(I,this._context.clippingExtent))){i.chooseOrigin(O,R,V,A),i.subtractCoordinates(O,R,V,A);var z=new Float64Array(G.buffer,3*R*G.BYTES_PER_ELEMENT,3*V),L=i.flatArrayToArrayOfArrays(O,R,V),B=h.createTubeGeometry(L,.5*P,u,S,A);if(B.getVertexAttr().mapPos={size:3,data:z},this._material.getParams().vertexColors){var H=this._getVertexOpacityAndColor(n);B=h.addVertexColors(B,H,!0)}var U=new l(B,p+"path"+T);U.singleUse=!0,_.push(U),b.push([this._material]);var j=d.identity();d.translate(j,A,j),E.push(j)}}var F=this._context.layer.id,N=new s({geometries:_,materials:b,transformations:E,castShadow:!0,metadata:{layerId:F,graphicId:c},idHint:p}),W=null;return o.mode!==i.ELEV_MODES.ABSOLUTE_HEIGHT&&(W=x),new r(this,N,_,null,null,W,o)}return this._logWarning("no paths found for line symbol"),null}}),_=c.VertexAttrConstants,x=function(e,t,r){for(var a=e.stageObject,n=e.elevationInfo,o=a.getGeometryRecords(),s=o.length,l=0;s>l;l++){var h=o[l].geometry,p=[o[l].transformation[12],o[l].transformation[13],o[l].transformation[14]],c=h.getData().getVertexAttr(),g=c[_.POSITION].data,d=c.zOffset.data,v=c.mapPos.data,x=v.length/3;y(g.length/3===x*u+2,"unexpected tube geometry");var b=0,E=0;f.spatialReference=t.spatialReference;for(var A=0;x>A;A++){f.x=v[3*A],f.y=v[3*A+1],f.z=v[3*A+2];var D=i.computeElevation(t,f,n),S=u;(0===A||A===x-1)&&S++;for(var I=0;S>I;I++)m[0]=g[b]+p[0],m[1]=g[b+1]+p[1],m[2]=g[b+2]+p[2],r.setAltitude(D+d[E],m,0),g[b]=m[0]-p[0],g[b+1]=m[1]-p[1],g[b+2]=m[2]-p[2],b+=3,E+=1;h.invalidateBoundingInfo()}a.geometryVertexAttrsUpdated(l)}};return v});

@@ -1,0 +1,25 @@
+// COPYRIGHT © 2016 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+
+define(["dojo/_base/window","dojo/_base/lang","dojo/_base/url","dojo/io-query","../config","./sniff"],function(e,r,t,o,n,s){var i=e.global,l=new t(i.location),a=l.path,p={},u=n.request,c=l.scheme+":",h=l.scheme+"://"+l.host+(null!=l.port?":"+l.port:"")+a.substring(0,a.lastIndexOf(a.split("/")[a.split("/").length-1])),f="esri/config: esriConfig.request.proxyUrl is not set. If making a request to a CORS-enabled server, please push the domain into esriConfig.request.corsEnabledServers.";"file:"===c&&(c="http:");var g={},U=function(){p.corsServersUrlCache=g={}},x=function(e){var o=p.corsServersUrlCache;return o[e]||(o[e]=0!==r.trim(e).toLowerCase().indexOf("http")?[new t("http://"+e),new t("https://"+e)]:[new t(e)]),o[e]};return p.corsServersUrlCache=g,p.burstUrlCache=U,p.appUrl=l,p._appBaseUrl=h,p._toURL=function(e){return"string"==typeof e?new t(p.getAbsoluteUrl(e)):(e.scheme||(e.scheme=p.appUrl.scheme),e)},p.urlToObject=function(e){var r={},n=new t(e),s=e.indexOf("?");return null===n.query?r={path:e,query:null}:(r.path=e.substring(0,s),r.query=o.queryToObject(n.query)),n.fragment&&(r.hash=n.fragment,null===n.query&&(r.path=r.path.substring(0,r.path.length-(n.fragment.length+1)))),r},p.getProxyUrl=function(e,t){var o,n,s,i,l=r.isString(e)?0===r.trim(e).toLowerCase().indexOf("https:"):e,a=u.proxyUrl;if(r.isString(e)&&(i=p.getProxyRule(e),i&&(a=i.proxyUrl)),!a)throw console.log(f),new Error(f);return l&&t!==!1&&"https"===p.appUrl.scheme&&(n=a,0!==n.toLowerCase().indexOf("http")&&(n=p.getAbsoluteUrl(n)),n=n.replace(/^http:/i,"https:"),p.canUseXhr(n)&&(a=n,s=1)),o=p.urlToObject(a),o._xo=s,o},p.addProxy=function(e){var t,n,s,i=p.getProxyRule(e);return i?t=p.urlToObject(i.proxyUrl):u.forceProxy&&(t=p.getProxyUrl()),t&&(n=p.urlToObject(e),e=t.path+"?"+n.path,s=o.objectToQuery(r.mixin(t.query||{},n.query)),s&&(e+="?"+s)),e},p.addProxyRule=function(e){var r,t,o=p.urlToObject(e.urlPrefix).path.replace(/([^\/])$/,"$1/").replace(/^https?:\/\//gi,"").toLowerCase(),n=u.proxyRules,s=n.length,i=s;for(e.urlPrefix=o,r=0;s>r;r++){if(t=n[r].urlPrefix,0===o.indexOf(t)){if(o.length===t)return-1;i=r;break}0===t.indexOf(o)&&(i=r+1)}return n.splice(i,0,e),i},p.getProxyRule=function(e){var r,t,o=u.proxyRules,n=o.length,s=p.urlToObject(e).path.replace(/([^\/])$/,"$1/").replace(/^https?:\/\//gi,"").toLowerCase();for(r=0;n>r;r++)if(0===s.indexOf(o[r].urlPrefix)){t=o[r];break}return t},p.hasSameOrigin=function(e,r,t){return e=p._toURL(e),r=p._toURL(r),(t||e.scheme===r.scheme)&&e.host.toUpperCase()===r.host.toUpperCase()&&e.port===r.port},p.canUseXhr=function(e,o){var n,i,l,a,c,h=!!s("esri-phonegap"),f=p.hasSameOrigin,g=u.corsEnabledServers||[],U=-1;if(r.isString(e)&&(e=e.toLowerCase(),e=0===e.indexOf("http")?new t(e):p.appUrl),!h&&s("esri-cors"))for(i=0,l=g.length;l>i;i++)for(n=x(g[i]),a=0,c=n.length;c>a;a++)if(f(e,n[a])){U=i,h=!0;break}return o?U:h},p.getAbsoluteUrl=function(e){return r.isString(e)&&!/^https?:\/\//i.test(e)?0===e.indexOf("//")?c+e:0===e.indexOf("/")?c+"//"+p.appUrl.host+(p.appUrl.port?":"+p.appUrl.port:"")+e:p._appBaseUrl+e:e},p.isAbsoluteUrl=function(e){return/^[A-Za-z][A-Za-z0-9-+.]*:/.test(e)},p.fixUrl=function(e){return p._ensureProtocol(e).replace(/^(https?:\/\/)(arcgis\.com)/i,"$1www.$2")},p.normalize=function(e){return e=p._ensureProtocol(e),e=p._ensureProperProtocolForAGOResource(e)},p.join=function(e,r){if(null==r)return e;for(var t=Array.prototype.slice.call(arguments),o=[].concat.apply([],t.map(function(e){return e.split("/")})),n=[],s=0;s<o.length;s++){var i=o[s];".."===i?n.pop():"."!==i&&(""!==i||1>=s)&&n.push(i)}return n.join("/")},p._ensureProtocol=function(e){var r;return e?(/^\/\//i.test(e)&&(r=p.appUrl.scheme,r="file"===r?"https":r,e=r+":"+e),e):e},p._ensureProperProtocolForAGOResource=function(e){var r="https"===p.appUrl.scheme&&(/^http\:\/\/server\.arcgisonline\.com(?!:)/i.test(e)||/^http\:\/\/services\.arcgisonline\.com(?!:)/i.test(e)||/^http\:\/\/.+\.arcgis\.com(?!:)/i.test(e));return r?e.replace(/http:/i,"https:"):e},p});

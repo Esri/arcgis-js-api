@@ -1,0 +1,31 @@
+@import 'CommonVariables';
+@import 'CommonMixins';
+
+.esri-widget-button {
+  font-size: $text_size;
+  background-color: $background_color; 
+  color: $button_text_color;
+  width: $button_width;
+  height: $button_height;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  cursor: pointer;
+  @include flexDisplay();
+  @include flexFlow(row, nowrap);
+  @include justifyContent(center);
+  @include alignItems(center);
+  @include defaultBoxShadow();
+  @include transition(background-color, 125ms, ease-in-out);
+  &:hover {
+    background-color: $background_hover_color;
+    color: $button_text_hover_color;
+  }
+  &:active {
+    background-color: $background_active_color;
+    color: $active_text_color;
+  }
+  &.esri-disabled {
+    color: $disabled_color;
+  }
+}

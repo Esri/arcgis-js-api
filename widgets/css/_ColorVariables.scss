@@ -1,0 +1,28 @@
+/////////////////////////////////////////////
+//  Default Colors
+@import '../../themes/calcite/colors/scss/variables.scss'; // from https://github.com/Esri/Patterns-Color
+
+//  Main Colors Vars
+$text_color                 : $Calcite_Gray_700;
+$background_color           : $Calcite_Gray_050;
+$anchor_color               : $Calcite_Gray_550;
+$anchor_hover_color         : $Calcite_Gray_700;
+$button_text_color          : $Calcite_Gray_550;
+$button_text_hover_color    : $Calcite_Gray_700;
+
+//////////////////////////////
+//  Calculations
+
+$text_inverse_color         : $background_color;
+$background_inverse_color   : $text_color;
+$border_color               : rgba($background_inverse_color, 0.2);
+
+$background_hover_color     : darken($background_color, 5%);
+$background_active_color    : darken($background_color, 10%);
+$active_text_color          : darken($text_color, 10%);
+
+$disabled_color             : lighten($button_text_color, 40%);
+$placeholder_color          : lighten($text_color, 24%);
+
+$list_header_color          : darken($background_color, 5%);
+$page_menu_background_color : lighten($background_inverse_color, 15%);

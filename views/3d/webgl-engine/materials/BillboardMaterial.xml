@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<snippets>
+
+<snippet name="vertexShaderBillboard"><![CDATA[
+	uniform mat4 proj;
+	uniform mat4 view;
+	uniform mat4 model;
+	uniform mat4 modelNormal;
+	attribute vec3 $position;
+	attribute vec3 $normal;
+	attribute vec2 $uv0;
+	varying vec2 vtc;
+	varying vec3 vnormal;
+	const float size = 1.05;
+
+	void main(void) {
+		vec3 pos = (view * model * vec4($position, 1.0)).xyz;
+		vec2 uv01 = floor($uv0);
+		vec2 uv = $uv0 - uv01;
+		vec3 zDir = normalize(-pos);
+		vec3 xDir = normalize(cross(vec3(.0, 1.0, .0), zDir));
+		vec3 yDir = cross(zDir, xDir);
+		pos += xDir * (uv01.x - .5) * size;
+		pos += yDir * (uv01.y - .5) * size;
+		vec4 pos4 = proj * vec4(pos, 1.0);
+		gl_Position = pos4;
+		vtc = uv;
+		vnormal = normalize((modelNormal * vec4($normal, 1.0)).xyz);
+	}
+]]></snippet>
+
+<snippet name="fragmentShaderBillboard"><![CDATA[
+	precision mediump float;
+
+	uniform vec4 lightAmbient;
+	uniform vec4 lightDiffuse;
+	uniform vec3 lightDirection;
+	uniform sampler2D tex;
+	varying vec2 vtc;
+	varying vec3 vnormal;
+
+	void main() {
+		vec4 texColor = texture2D(tex, vtc);
+		if (texColor.a < .15) discard;
+		gl_FragColor = texColor;
+		gl_FragColor.rgb *= lightAmbient.rgb * lightAmbient.w + lightDiffuse.rgb * lightDiffuse.w * dot(lightDirection, vnormal);
+	}
+]]></snippet>
+
+<snippet name="vertexShaderBillboardDepth"><![CDATA[
+	uniform mat4 proj;
+	uniform mat4 view;
+	uniform mat4 model;
+	uniform vec2 nearFar;
+	attribute vec3 $position;
+	attribute vec2 $uv0;
+	varying vec2 vtc;
+	varying float depth;
+	const float size = 1.05;
+
+	void main(void) {
+		vec3 pos = (view * model * vec4($position, 1.0)).xyz;
+		vec2 uv01 = floor($uv0);
+		vec2 uv = $uv0 - uv01;
+		pos.x += (uv01.x - .5) * size;
+		pos.y += (uv01.y - .5) * size;
+		vec4 eye = vec4(pos, 1.0);
+		gl_Position = proj * eye;
+		depth = (-eye.z - nearFar[0]) / (nearFar[1] - nearFar[0]);
+		vtc = uv;
+	}
+]]></snippet>
+
+</snippets>

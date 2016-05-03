@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<snippets>
+
+<snippet name="vsTerrain"><![CDATA[
+  precision mediump float;
+
+  uniform mat4 proj;
+  uniform mat4 view;
+  uniform vec3 origin;
+  uniform vec2 texOffset;
+  uniform float texScale;
+  uniform mat4 viewNormal;
+
+  attribute vec3 $position;
+  attribute vec2 $uv0;
+  varying vec2 vtc;
+  varying vec3 vpos;
+  varying vec3 vnormal;
+
+#if defined(WIREFRAME) || defined(TILE_BORDERS)
+  varying vec2 vuv;
+#endif
+
+#ifdef ATMOSPHERE
+  uniform vec3 lightDirection;
+  varying vec3 wpos;
+  varying vec3 wview;
+  varying vec3 wnormal;
+  varying vec3 wlight;
+#endif    
+
+#ifdef OVERLAY
+  uniform vec2 overlayTexOffset;
+  uniform vec2 overlayTexScale;
+  varying vec2 vtcOverlay;
+#endif
+
+  void main(void) {
+    vpos = $position;
+
+#ifdef SPHERICAL
+    vnormal = normalize(vpos + origin);
+#else
+    vnormal = vec3(0, 0, 1); // WARNING: up-axis dependent code
+#endif
+    
+#ifdef ATMOSPHERE    
+    wpos = (view * vec4(vpos, 1.0)).xyz;
+    wnormal = (viewNormal * vec4(normalize(vpos+origin), 1.0)).xyz;
+    wlight = (view  * vec4(lightDirection, 1.0)).xyz;
+#endif
+
+#if defined(WIREFRAME) || defined(TILE_BORDERS)
+    vuv = $uv0;
+#endif
+
+    gl_Position = proj * view * vec4(vpos, 1.0);
+    vtc = $uv0*texScale + texOffset;
+
+#ifdef OVERLAY
+    vtcOverlay = $uv0*overlayTexScale + overlayTexOffset;
+#endif
+  }
+]]></snippet>
+
+<snippet name="fsTerrainCommon"><![CDATA[
+  uniform vec3 lightDirection;
+  uniform vec3 viewDirection;
+  uniform sampler2D depthTex;
+  uniform int shadowMapNum;
+  uniform vec4 shadowMapDistance;
+  uniform mat4 shadowMapMatrix[4];
+  uniform float depthHalfPixelSz;
+  uniform sampler2D ssaoTex;
+  uniform vec4 viewportPixelSz;
+  uniform sampler2D tex;
+  uniform float opacity;
+
+  varying vec3 vpos;
+  varying vec3 vnormal;
+  varying vec2 vtc;
+
+#if defined(WIREFRAME) || defined(TILE_BORDERS)
+  varying vec2 vuv;
+#endif
+
+#ifdef ATMOSPHERE
+  varying vec3 wpos;
+  varying vec3 wview;
+  varying vec3 wnormal;
+  varying vec3 wlight;
+#endif
+
+  const vec3 ambient = vec3(0.2,0.2,0.2);
+  const vec3 diffuse = vec3(0.8,0.8,0.8);
+  const float diffuseHardness = 2.5;
+
+#ifdef OVERLAY
+  uniform sampler2D overlayTex;
+  uniform float overlayOpacity;
+  varying vec2 vtcOverlay;
+#endif
+
+  $evalShadow
+
+  float lum(vec3 c) {
+    float max = max(max(c.r, c.g), c.b);
+    float min = min(min(c.r, c.g), c.b);
+    return (min + max) * 0.5;
+  }
+
+#ifdef ATMOSPHERE
+  vec3 atmosphere(vec3 lightPos, vec3 normal, vec3 view) {
+    vec3 surfaceColor   = vec3(0.0);
+    vec3 fuzzySpecColor = vec3(1.0);
+    vec3 subColor       = vec3(0.0);
+    float rollOff       = 1.0;
+
+    vec3 Ln = normalize(lightPos);
+    vec3 Nn = normalize(normal);
+    vec3 Hn = normalize(view + Ln);
+    
+    float ldn = dot(Ln, Nn);
+    float diffComp = max(0.0, ldn);
+    float vdn = 1.0 - dot(view, Nn);
+    float ndv = dot(view, Ln);
+    
+    vec3 diffContrib = surfaceColor * diffComp;
+    float subLamb = max(0.0, smoothstep(-rollOff, 1.0, ldn) - smoothstep(0.0, 1.0, ldn));     
+    
+    vec3 subContrib = subLamb * subColor;
+    vec3 vecColor = vec3(vdn);
+    
+    vec3 diffuseContrib = (subContrib + diffContrib);
+    vec3 specularContrib = (vecColor * fuzzySpecColor);    
+
+    return (diffContrib + specularContrib) * rollOff;
+  }
+#endif
+
+  void main() {
+    vec3 a = ambient;
+
+    float shadow = evalShadow(vpos, 1.0 / gl_FragCoord.w, depthTex, shadowMapNum, shadowMapDistance, shadowMapMatrix, depthHalfPixelSz);
+    float vndl = dot(normalize(vnormal), lightDirection);
+    float k = smoothstep(0.0, 1.0, clamp(vndl*diffuseHardness, 0.0, 1.0));
+    vec3 d = (1.0 - shadow/1.8) * diffuse * k;
+
+
+    float ssao = viewportPixelSz.w < .0 ? 1.0 : texture2D(ssaoTex, (gl_FragCoord.xy - viewportPixelSz.xy) * viewportPixelSz.zw).a;
+    vec4 texVal = texture2D(tex, vtc);
+    vec3 texCol = texVal.rgb;
+    float texAlpha = texVal.a;
+
+#ifdef OVERLAY
+    if ((vtcOverlay.x > 0.0) && (vtcOverlay.y > 0.0) && (vtcOverlay.x < 1.0) && (vtcOverlay.y < 1.0)) {
+      vec4 overlayTexCol = texture2D(overlayTex, vtcOverlay);
+      overlayTexCol *= overlayOpacity;
+      texCol = texCol*(1.0-overlayTexCol.a) + overlayTexCol.rgb; // overlayTexCol has pre-multiplied alpha
+      texAlpha = overlayTexCol.a + (1.0 - overlayTexCol.a) * texAlpha;
+    }
+#endif
+
+    vec3 atm = vec3(0.0);
+#ifdef ATMOSPHERE  
+    float ndotl = max(0.0, min(1.0, vndl));
+    atm = atmosphere(wlight, wnormal, -viewDirection);
+    atm *= max(0.0, min(1.0, (1.0-lum(texCol)*1.5))); //avoid atmosphere on bright base maps
+    atm *= max(0.0, min(1.0, ndotl*2.0)); // avoid atmosphere on dark side of the globe
+#endif
+    vec3 color = atm + texCol * (a + d) * ssao;
+    gl_FragColor = vec4(color, texAlpha * opacity);
+
+  // closing } is missing here, it's in the shaders using this snippet below
+
+]]></snippet>
+
+<snippet name="fsTerrainWireframe"><![CDATA[
+#ifdef GL_OES_standard_derivatives
+#extension GL_OES_standard_derivatives : enable
+#endif
+
+  precision mediump float;
+
+  struct WireframeSettings {
+    float width;
+    float falloff;
+    float subdivision;
+    vec4 color;
+    float wireOpacity;
+    float surfaceOpacity;
+    float near;
+    float far;
+  };
+
+  uniform WireframeSettings wireframe;
+
+    $fsTerrainCommon
+
+    vec2 dVuv;
+    vec2 vuvScaled = vuv * wireframe.subdivision;
+    vec2 vuvMod = fract(vuvScaled);
+
+#ifdef GL_OES_standard_derivatives
+    dVuv = fwidth(vuvScaled);
+#else
+    // Something that reasonably works
+    dVuv = vec2(0.05);
+#endif
+
+    vec2 edgeFactors = smoothstep((wireframe.width - wireframe.falloff) * dVuv,
+                                  wireframe.width * dVuv, min(vuvMod, 1.0 - vuvMod));
+
+    float edgeFactor = 1.0 - min(edgeFactors.x, edgeFactors.y);
+
+#ifdef WIREFRAME
+    gl_FragColor = vec4(mix(gl_FragColor.rgb, wireframe.color.rgb, edgeFactor * wireframe.color.a),
+                        mix(wireframe.surfaceOpacity, wireframe.wireOpacity, edgeFactor));
+#endif
+
+
+#ifdef TILE_BORDERS
+    dVuv = fwidth(vuv);
+    edgeFactors = smoothstep((wireframe.width - wireframe.falloff) * dVuv,
+                              wireframe.width * dVuv, min(vuv, 1.0 - vuv));
+    edgeFactor = 1.0 - min(edgeFactors.x, edgeFactors.y);
+
+    gl_FragColor = mix(gl_FragColor, vec4(1.0, 0.0, 0.0, 1.0), edgeFactor);
+#endif
+  }
+]]></snippet>
+
+<snippet name="fsTerrain"><![CDATA[
+  precision mediump float;
+
+    $fsTerrainCommon
+  }
+]]></snippet>
+
+<snippet name="vsTerrainNormal"><![CDATA[
+  uniform vec3 origin;
+  uniform mat4 proj;
+  uniform mat4 view;
+  uniform mat4 viewNormal;
+  attribute vec3 $position;
+  varying vec3 vnormal;
+
+  void main(void) {
+#ifdef SPHERICAL
+    vec4 normal = vec4(normalize($position + origin), 1.0);
+#else
+    vec4 normal = vec4(0.0, 1.0, 0.0, 1.0);
+#endif
+
+    gl_Position = proj * view * vec4($position, 1.0);
+    vnormal = normalize((viewNormal * normal).xyz);
+  }
+]]></snippet>
+
+<snippet name="vsTerrainDepthOnly"><![CDATA[
+  precision mediump float;
+
+  uniform mat4 proj;
+  uniform mat4 view;
+
+  attribute vec3 $position;
+
+  void main() {
+    gl_Position = proj * view * vec4($position, 1.0);
+  }
+]]></snippet>
+
+<snippet name="fsTerrainDepthOnly"><![CDATA[
+  precision mediump float;
+
+  void main() {
+  }
+]]></snippet>
+
+</snippets>

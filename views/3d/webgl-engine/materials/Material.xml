@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<snippets>
+
+<snippet name="vsPhongSrc"><![CDATA[
+	uniform mat4 proj;
+	uniform mat4 view;
+#ifdef INSTANCED
+    attribute mat4 model;
+    attribute mat4 modelNormal;
+#else
+	uniform mat4 model;
+	uniform mat4 modelNormal;
+#endif
+#ifdef INSTANCEDCOLOR
+    attribute vec4 instanceColor;
+#endif
+	attribute vec3 $position;
+	attribute vec3 $normal;
+	varying vec3 vpos;
+	varying vec3 vnormal;
+
+#ifdef VERTEXCOLORS
+    attribute vec4 $color;
+#endif
+
+#if defined(VERTEXCOLORS) || defined(INSTANCEDCOLOR)
+    varying vec4 vcolor;
+#endif
+
+
+	void main(void) {
+		vpos = (model * vec4($position, 1.0)).xyz;
+		vnormal = normalize((modelNormal * vec4($normal, 1.0)).xyz);
+		gl_Position = proj * view * vec4(vpos, 1.0);
+
+#if defined(VERTEXCOLORS) || defined(INSTANCEDCOLOR)
+        vcolor = vec4(1,1,1,1);
+#endif
+#ifdef VERTEXCOLORS
+        vcolor *= $color * 0.003921568627451; // = 1/255
+#endif
+#ifdef INSTANCEDCOLOR
+        vcolor *= instanceColor;
+#endif
+]]></snippet>
+
+<snippet name="fsPhongSrc"><![CDATA[
+	uniform vec3 camPos;
+	uniform vec4 lightAmbient;
+	uniform vec4 lightDiffuse;
+	uniform vec4 lightSpecular;
+	uniform vec3 lightDirection;
+	uniform vec3 ambient;
+	uniform vec3 diffuse;
+	uniform vec3 specular;
+	uniform float shininess;
+	uniform float opacity;
+	uniform sampler2D depthTex;
+	uniform int shadowMapNum;
+	uniform vec4 shadowMapDistance;
+	uniform mat4 shadowMapMatrix[4];
+	uniform float depthHalfPixelSz;
+	uniform sampler2D ssaoTex;
+	uniform vec4 viewportPixelSz;
+	varying vec3 vpos;
+	varying vec3 vnormal;
+#if defined(VERTEXCOLORS) || defined(INSTANCEDCOLOR)
+    varying vec4 vcolor;
+#endif
+
+	$evalShadow
+	void main() {
+		vec3 a = ambient * lightAmbient.rgb * lightAmbient.w;
+
+		vec3 viewDir = normalize(vpos - camPos);
+
+#ifndef DOUBLESIDED
+		vec3 normal = vnormal;
+#else
+		vec3 normal = dot(vnormal, viewDir)>0.0?-vnormal:vnormal;
+#endif
+
+    normal = normalize(normal);
+    
+		float shadow = evalShadow(vpos, 1.0 / gl_FragCoord.w, depthTex, shadowMapNum, shadowMapDistance, shadowMapMatrix, depthHalfPixelSz);
+		vec3 d = (1.0 - shadow) * diffuse * lightDiffuse.rgb * lightDiffuse.w * clamp(dot(normal, lightDirection), .0, 1.0);
+
+		float opacity_ = opacity;
+#if defined(VERTEXCOLORS) || defined(INSTANCEDCOLOR)
+        a *= vcolor.rgb;
+        d *= vcolor.rgb;
+        opacity_ *= vcolor.a;
+#endif
+
+		vec3 reflDir = normalize(reflect(viewDir, normal));
+		float specDot = max(dot(reflDir, lightDirection), .001);
+		vec3 s = (1.0 - shadow) * specular * lightSpecular.rgb * lightSpecular.w * pow(specDot, shininess);
+
+		float ssao = texture2D(ssaoTex, (gl_FragCoord.xy - viewportPixelSz.xy) * viewportPixelSz.zw).a;
+		ssao = viewportPixelSz.z < 0.0 ? 1.0 : ssao;
+
+]]></snippet>
+
+<snippet name="vsPhong"><![CDATA[
+	$vsPhongSrc
+	}
+]]></snippet>
+
+<snippet name="fsPhong"><![CDATA[
+	precision mediump float;
+
+	$fsPhongSrc
+		gl_FragColor = vec4(ssao * (a + d) + s, opacity_);
+	}
+]]></snippet>
+
+<snippet name="vsPhongTextured"><![CDATA[
+	attribute vec2 $uv0;
+	varying vec2 vtc;
+	$vsPhongSrc
+#ifndef FLIPV
+		vtc = $uv0;
+#else
+        vtc = vec2($uv0.x, 1.0-$uv0.y);
+#endif
+    
+	}
+]]></snippet>
+
+<snippet name="fsPhongTextured"><![CDATA[
+	precision mediump float;
+
+	uniform sampler2D tex;
+	varying vec2 vtc;
+	$fsPhongSrc
+		vec4 texColor = texture2D(tex, vtc);
+		if (texColor.a < .33) discard;
+		gl_FragColor = vec4(ssao * texColor.rgb * (a + d) + s, texColor.a * opacity_);
+	}
+]]></snippet>
+
+<snippet name="vsPhongAtlasTextured"><![CDATA[
+	attribute vec4 $uv0;
+	attribute vec4 $region;
+	varying vec2 vtc;
+	varying vec4 regionV;
+	$vsPhongSrc
+#ifndef FLIPV
+        vtc = $uv0.xy;
+#else
+        vtc = vec2($uv0.x, 1.0-$uv0.y);
+#endif
+	    regionV = $region/65535.0;
+	}
+]]></snippet>
+
+<snippet name="fsPhongAtlasTextured"><![CDATA[
+	precision mediump float;
+
+	uniform sampler2D tex;
+	varying vec2 vtc;
+	varying vec4 regionV;
+
+	$fsPhongSrc
+		vec2 uv = vtc;
+		uv = fract(uv);
+		//[umin, vmin, umax, vmax]
+
+		uv = uv.xy*(regionV.zw-regionV.xy)+regionV.xy;
+		vec4 texColor = texture2D(tex, uv);
+		if (texColor.a < .33) discard;
+		gl_FragColor = vec4(ssao * texColor.rgb * (a + d) + s, texColor.a * opacity_);
+		//gl_FragColor = regionV;
+	}
+]]></snippet>
+
+<snippet name="fsPhongTexturedRefl"><![CDATA[
+	precision mediump float;
+
+	uniform sampler2D tex;
+	uniform sampler2D reflTex;
+	uniform float reflectivity;
+	varying vec2 vtc;
+
+	$normal2envTC
+
+	$fsPhongSrc
+		vec4 texColor = texture2D(tex, vtc);
+		if (texColor.a < .33) discard;
+		vec4 reflColor = texture2D(reflTex, normal2envTC(reflDir));
+		gl_FragColor = vec4(ssao * mix(texColor.rgb * (a + d), reflColor.rgb * lightAmbient.rgb*lightSpecular.w, reflectivity) + s, texColor.a * opacity_);
+	}
+]]></snippet>
+
+<snippet name="vsDepthSrc"><![CDATA[
+	uniform mat4 proj;
+	uniform mat4 view;
+	uniform mat4 model;
+	uniform vec2 nearFar;
+	attribute vec3 $position;
+	varying float depth;
+
+	void main(void) {
+		vec4 eye = view * model * vec4($position, 1.0);
+		gl_Position = proj * eye;
+		depth = (-eye.z - nearFar[0]) / (nearFar[1] - nearFar[0]) ;
+]]></snippet>
+
+<snippet name="vsDepth"><![CDATA[
+	$vsDepthSrc
+	}
+]]></snippet>
+
+<snippet name="vsDepthTextured"><![CDATA[
+	attribute vec2 $uv0;
+	varying vec2 vtc;
+	$vsDepthSrc
+#ifndef FLIPV
+        vtc = $uv0;
+#else
+        vtc = vec2($uv0.x, 1.0-$uv0.y);
+#endif
+	}
+]]></snippet>
+
+<snippet name="vsNormalSrc"><![CDATA[
+	uniform mat4 proj;
+	uniform mat4 view;
+	uniform mat4 model;
+	uniform mat4 viewNormal;
+	uniform mat4 modelNormal;
+	attribute vec3 $position;
+	attribute vec3 $normal;
+	varying vec3 vnormal;
+
+	void main(void) {
+		gl_Position = proj * view * model * vec4($position, 1.0);
+		vnormal = normalize((viewNormal * modelNormal * vec4($normal, 1.0)).xyz);
+]]></snippet>
+
+<snippet name="vsNormal"><![CDATA[
+	$vsNormalSrc
+	}
+]]></snippet>
+
+<snippet name="vsNormalTextured"><![CDATA[
+	attribute vec2 $uv0;
+	varying vec2 vtc;
+	$vsNormalSrc
+#ifndef FLIPV
+		vtc = $uv0;
+#else
+        vtc = vec2($uv0.x, 1.0-$uv0.y);
+#endif
+	}
+]]></snippet>
+
+<snippet name="vsHighlightSrc"><![CDATA[
+	uniform mat4 proj;
+	uniform mat4 view;
+	uniform mat4 model;
+	attribute vec3 $position;
+
+	void main(void) {
+		gl_Position = proj * view * model * vec4($position, 1.0);
+]]></snippet>
+
+<snippet name="vsHighlight"><![CDATA[
+	$vsHighlightSrc
+	}
+]]></snippet>
+
+<snippet name="vsHighlightTextured"><![CDATA[
+	attribute vec2 $uv0;
+	varying vec2 vtc;
+	$vsHighlightSrc
+#ifndef FLIPV
+		vtc = $uv0;
+#else
+    vtc = vec2($uv0.x, 1.0-$uv0.y);
+#endif
+	}
+]]></snippet>
+
+<snippet name="fsDepthSrc"><![CDATA[
+	varying float depth;
+
+	void main() {
+]]></snippet>
+
+<snippet name="fsDepth"><![CDATA[
+	precision mediump float;
+	$calcFragDepth
+	$float2rgba
+	$fsDepthSrc
+#ifndef BIAS_SHADOWMAP
+		gl_FragColor = float2rgba(depth);
+#else
+		gl_FragColor = float2rgba(calcFragDepth(depth));
+#endif
+	}
+]]></snippet>
+
+<snippet name="fsDepthTextured"><![CDATA[
+	precision mediump float;
+
+	uniform sampler2D tex;
+	varying vec2 vtc;
+	$calcFragDepth
+	$float2rgba
+
+	$fsDepthSrc
+		if (texture2D(tex, vtc).a < .33) discard;
+#ifndef BIAS_SHADOWMAP
+		gl_FragColor = float2rgba(depth);
+#else
+		gl_FragColor = float2rgba(calcFragDepth(depth));
+#endif
+	}
+]]></snippet>
+
+<snippet name="fsNormal"><![CDATA[
+	precision mediump float;
+
+	varying vec3 vnormal;
+	void main() {
+		vec3 normal = normalize(vnormal);
+		if (gl_FrontFacing == false) normal = -normal;
+
+#ifndef ALPHA_ZERO
+		gl_FragColor = vec4(vec3(.5) + .5 * normal, 1.0);
+#else
+		gl_FragColor = vec4(vec3(.5) + .5 * normal, 0.0);
+#endif
+
+	}
+]]></snippet>
+
+<snippet name="fsNormalTextured"><![CDATA[
+	precision mediump float;
+
+	varying vec3 vnormal;
+	varying vec2 vtc;
+	uniform sampler2D tex;
+	void main() {
+		if (texture2D(tex, vtc).a < .33) discard;
+		vec3 normal = normalize(vnormal);
+		if (gl_FrontFacing == false) normal = -normal;
+#ifndef ALPHA_ZERO
+		gl_FragColor = vec4(vec3(.5) + .5 * normal, 1.0);
+#else
+		gl_FragColor = vec4(vec3(.5) + .5 * normal, 0.0);
+#endif
+	}
+]]></snippet>
+
+<snippet name="fsHighlight"><![CDATA[
+	precision mediump float;
+
+	void main() {
+		gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
+	}
+]]></snippet>
+
+<snippet name="fsHighlightTextured"><![CDATA[
+	precision mediump float;
+	varying vec2 vtc;
+	uniform sampler2D tex;
+	void main() {
+		if (texture2D(tex, vtc).a < .33) discard;
+    gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
+	}
+]]></snippet>
+
+</snippets>

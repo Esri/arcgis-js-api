@@ -1,0 +1,25 @@
+// COPYRIGHT © 2016 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+
+define(["require","exports"],function(){var e=function(){function e(t,i,a){this._context=null,this._glName=null,this._id=-1,this._desc=void 0,this._samplingModeDirty=!1,this._wrapModeDirty=!1,this._context=t,this._desc={pixelFormat:i.pixelFormat,dataType:i.dataType,target:i.target?i.target:3553,samplingMode:i.samplingMode?i.samplingMode:9729,wrapMode:i.wrapMode?i.wrapMode:33071,flipped:void 0!==i.flipped?i.flipped:!1,hasMipmaps:void 0!==i.hasMipmaps?i.hasMipmaps:!1,level:void 0!==i.level?i.level:0,unpackAlignment:i.unpackAlignment?i.unpackAlignment:4,width:i.width,height:i.height},this._id=++e._nextId,this.setData(a)}return Object.defineProperty(e.prototype,"id",{get:function(){return this._id},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"glName",{get:function(){return this._glName},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"descriptor",{get:function(){return this._desc},enumerable:!0,configurable:!0}),e.prototype.dispose=function(){if(this._context&&this._glName){var e=this._context.gl;e.isTexture(this._glName)&&(e.deleteTexture(this._glName),this._glName=null)}},e.prototype.setData=function(t){var i=this._context.gl;this._glName||(this._glName=i.createTexture()),this._context.bindTexture(this);var a=this._desc;e._validateTexture(a),i.pixelStorei(i.UNPACK_ALIGNMENT,a.unpackAlignment),i.pixelStorei(i.UNPACK_FLIP_Y_WEBGL,a.flipped?1:0),t instanceof ImageData||t instanceof HTMLImageElement||t instanceof HTMLCanvasElement||t instanceof HTMLVideoElement?(a.width&&a.height&&console.assert(t.width===a.width&&t.height===a.height),i.texImage2D(i.TEXTURE_2D,a.level,a.pixelFormat,a.pixelFormat,a.dataType,t),void 0===this._desc.width&&(this._desc.width=t.width),void 0===this._desc.height&&(this._desc.height=t.height)):(a.width&&a.height||console.error("Width and height must be specified!"),i.texImage2D(i.TEXTURE_2D,a.level,a.pixelFormat,a.width,a.height,0,a.pixelFormat,a.dataType,t)),e._applySamplingMode(i,this._desc),e._applyWrapMode(i,this._desc),a.hasMipmaps&&this.generateMipmaps()},e.prototype.updateData=function(e,t,i,a,o){o||console.error("An attempt to use uninitialized data!"),this._glName||console.error("An attempt to update uninitialized texture!");var s=this._context.gl,n=this._desc;this._context.bindTexture(this),(0>e||0>t||i>n.width||a>n.height||e+i>n.width||t+a>n.height)&&console.error("An attempt to update out of bounds of the texture!"),o instanceof ImageData||o instanceof HTMLImageElement||o instanceof HTMLCanvasElement||o instanceof HTMLVideoElement?(console.assert(o.width===i&&o.height===a),s.texSubImage2D(s.TEXTURE_2D,n.level,e,t,n.pixelFormat,n.dataType,o)):s.texSubImage2D(s.TEXTURE_2D,n.level,e,t,i,a,n.pixelFormat,n.dataType,o)},e.prototype.generateMipmaps=function(){var t=this._desc;t.hasMipmaps||(t.hasMipmaps=!0,e._validateTexture(t)),9729===t.samplingMode?t.samplingMode=9985:9728===t.samplingMode&&(t.samplingMode=9984);var i=this._context.gl;i.generateMipmap(i.TEXTURE_2D)},e.prototype.setSamplingMode=function(t){t!==this._desc.samplingMode&&(this._desc.samplingMode=t,e._validateTexture(this._desc),this._samplingModeDirty=!0)},e.prototype.setWrapMode=function(t){t!==this._desc.wrapMode&&(this._desc.wrapMode=t,e._validateTexture(this._desc),this._wrapModeDirty=!0)},e.prototype.applyChanges=function(){var t=this._context.gl,i=this._desc;this._samplingModeDirty&&(e._applySamplingMode(t,i),this._samplingModeDirty=!1),this._wrapModeDirty&&(e._applyWrapMode(t,i),this._wrapModeDirty=!1)},e._isPowerOfTwo=function(e){return 0===(e&e-1)},e._validateTexture=function(t){(t.width<=0||t.height<=0)&&console.error("The dimensions are not all positive!");var i=e._isPowerOfTwo(t.width)&&e._isPowerOfTwo(t.height);i||(33071!==t.wrapMode&&console.error("Non-power-of-two textures must have a wrap mode of CLAMP_TO_EDGE!"),t.hasMipmaps&&console.error("Mipmapping requires power-of-two textures!"))},e._applySamplingMode=function(e,t){var i=t.samplingMode;9985===i||9987===i?i=9729:(9984===i||9986===i)&&(i=9728),e.texParameteri(e.TEXTURE_2D,e.TEXTURE_MAG_FILTER,i),e.texParameteri(e.TEXTURE_2D,e.TEXTURE_MIN_FILTER,t.samplingMode)},e._applyWrapMode=function(e,t){e.texParameteri(e.TEXTURE_2D,e.TEXTURE_WRAP_S,t.wrapMode),e.texParameteri(e.TEXTURE_2D,e.TEXTURE_WRAP_T,t.wrapMode)},e._nextId=0,e}();return e});

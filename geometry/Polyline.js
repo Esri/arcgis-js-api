@@ -1,0 +1,25 @@
+// COPYRIGHT © 2016 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+
+define(["../core/declare","dojo/_base/array","dojo/_base/lang","../core/lang","./SpatialReference","./Geometry","./Point","./Extent","./support/zmUtils"],function(t,e,a,i,n,s,h,r,l){var o="number",p=t(s,{declaredClass:"esri.geometry.Polyline",classMetadata:{properties:{cache:{dependsOn:["hasM","hasZ","paths"]},extent:{dependsOn:["cache"]}}},getDefaults:function(){return{paths:[]}},normalizeCtorArgs:function(t,e){var a=null,i=void 0,s=void 0,h=null;return t&&!Array.isArray(t)?(a=t.paths?t.paths:null,e||(t.spatialReference?e=t.spatialReference:t.paths||(e=t)),i=t.hasZ,s=t.hasM):a=t,a=a||[],e=e||n.WGS84,a.length&&a[0]&&null!=a[0][0]&&typeof a[0][0]==o&&(a=[a]),h=a[0]&&a[0][0],h&&(void 0===i&&void 0===s?(i=h.length>2,s=!1):void 0===i?i=!s&&h.length>3:void 0===s&&(s=!i&&h.length>3)),{paths:a,spatialReference:e,hasZ:i,hasM:s}},_extent:null,_path:0,_extentGetter:function(){function t(t){return function(e,a){return void 0===e?a:void 0===a?e:t(e,a)}}var e=this.paths,a=e.length;if(!a||!e[0].length)return null;var i,n,s,h,l,o,p,u,c,f,d,v,m,y,_,g,R,P,x,A,M,w,S,Z=p=e[0][0][0],C=u=e[0][0][1],z=t(Math.min),I=t(Math.max),O=this.spatialReference,F=[],b=this.hasZ,E=this.hasM,G=b?3:2;for(d=0;a>d;d++){for(i=e[d],g=R=i[0]&&i[0][0],P=x=i[0]&&i[0][1],m=i.length,A=M=void 0,w=S=void 0,v=0;m>v;v++)n=i[v],s=n[0],h=n[1],Z=z(Z,s),C=z(C,h),p=I(p,s),u=I(u,h),g=z(g,s),P=z(P,h),R=I(R,s),x=I(x,h),b&&n.length>2&&(l=n[2],y=z(y,l),c=I(c,l),A=z(A,l),M=I(M,l)),E&&n.length>G&&(o=n[G],_=z(_,l),f=I(f,l),w=z(w,o),S=I(S,o));F.push(new r({xmin:g,ymin:P,zmin:A,mmin:w,xmax:R,ymax:x,zmax:M,mmax:S,spatialReference:O?O.clone():null}))}var J=new r({xmin:Z,ymin:C,xmax:p,ymax:u,spatialReference:O?O.toJSON():null});return b&&(J.zmin=y,J.zmax=c),E&&(J.mmin=_,J.mmax=f),J._partwise=F.length>1?F:null,J},paths:null,type:"polyline",addPath:function(t){return this.clearCache(),this._path=this.paths.length,this.paths[this._path]=[],e.forEach(t,this._addPoint,this),this},clone:function(){var t=new p;return t.spatialReference=this.spatialReference,t.paths=a.clone(this.paths),t.hasZ=this.hasZ,t.hasM=this.hasM,t},getPoint:function(t,e){if(this._validateInputs(t,e)){var a=this.paths[t][e],i=this.hasZ,n=this.hasM;return i&&n?new h(a[0],a[1],a[2],a[3],this.spatialReference):i?new h(a[0],a[1],a[2],void 0,this.spatialReference):n?new h(a[0],a[1],void 0,a[2],this.spatialReference):new h(a[0],a[1],this.spatialReference)}},insertPoint:function(t,e,a){return this._validateInputs(t)&&i.isDefined(e)&&e>=0&&e<=this.paths[t].length?(this.clearCache(),l.updateSupportFromPoint(this,a),Array.isArray(a)||(a=a.toArray()),this.paths[t].splice(e,0,a),this):void 0},removePath:function(t){if(this._validateInputs(t,null)){this.clearCache();var e,a=this.paths.splice(t,1)[0],i=a.length,n=this.spatialReference;for(e=0;i>e;e++)a[e]=new h(a[e],n);return a}},removePoint:function(t,e){return this._validateInputs(t,e)?(this.clearCache(),new h(this.paths[t].splice(e,1)[0],this.spatialReference)):void 0},setPoint:function(t,e,a){return this._validateInputs(t,e)?(this.clearCache(),l.updateSupportFromPoint(this,a),Array.isArray(a)||(a=a.toArray()),this.paths[t][e]=a,this):void 0},toJSON:function(){var t=this.spatialReference,e={paths:this.paths,spatialReference:t&&t.toJSON()};return this.hasZ&&(e.hasZ=!0),this.hasM&&(e.hasM=!0),e},_initPathPointsToArray:function(t){for(var a=0;a<t.paths.length;a++)t.paths[a]=e.map(t.paths[a],function(e){return l.updateSupportFromPoint(t,e,!0),Array.isArray(e)||(t.spatialReference||(t.spatialReference=e.spatialReference),e=e.toArray()),e});return t},_addPoint:function(t){this.paths[this._path].push(Array.isArray(t)?t:t.toArray()),l.updateSupportFromPoint(this,t)},_insertPoints:function(t,a){this.clearCache(),this._path=a,this.paths[this._path]||(this.paths[this._path]=[]),e.forEach(t,this._addPoint,this)},_validateInputs:function(t,e){return null!==t&&void 0!==t&&(0>t||t>=this.paths.length)?!1:null!==e&&void 0!==t&&(0>e||e>=this.paths[t].length)?!1:!0}});return p});
