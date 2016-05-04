@@ -22,4 +22,248 @@
 //
 // See http://js.arcgis.com/4.0/esri/copyright.txt for details.
 
-define(["../core/watchUtils","./Compass/CompassViewModel","./support/viewModelWiring","./Widget","dijit/_TemplatedMixin","dijit/a11yclick","dojo/dom-attr","dojo/dom-class","dojo/dom-style","dojo/i18n!./Compass/nls/Compass","dojo/text!./Compass/templates/Compass.html"],function(t,e,i,o,s,a,n,d,r,l,c){var h={base:"esri-compass esri-widget-button",text:"esri-icon-font-fallback-text",icon:"esri-compass__icon",rotationIcon:"esri-icon-dial",northIcon:"esri-icon-compass",interactive:"esri-interactive",disabled:"esri-disabled"};return o.createSubclass([s],{properties:{viewModel:{type:e},view:{dependsOn:["viewModel.view"]}},declaredClass:"esri.widgets.Compass",baseClass:h.base,templateString:c,constructor:function(){this._applyRotation=this._applyRotation.bind(this),this._handleClick=this._handleClick.bind(this),this._handleState=this._handleState.bind(this)},postCreate:function(){this.inherited(arguments),this.own(t.init(this.viewModel,"state",this._handleState),t.when(this.viewModel,"orientation",this._applyRotation),this.on(a,this._handleClick))},_css:h,_i18n:l,_getViewAttr:i.createGetterDelegate("view"),_setViewAttr:i.createSetterDelegate("view"),reset:i.createMethodDelegate("reset"),_applyRotation:function(t){var e="rotateZ("+t.z+"deg)";r.set(this._iconNode,{transform:e,mozTransform:e,webkitTransform:e,oTransform:e,msTransform:e})},_handleClick:function(){this.viewModel.reset()},_handleState:function(t){var e="disabled"===t,i="rotation"===t?"rotation":"compass";d.toggle(this.domNode,h.disabled,e),d.toggle(this.domNode,h.interactive,!e),n.set(this.domNode,"tabindex",e?"":0),d.toggle(this._iconNode,h.northIcon,i),d.toggle(this._iconNode,h.rotationIcon,!i)}})});
+/**
+ * The Compass widget indicates where north is in relation to the current view
+ * {@link module:esri/views/MapView#rotation rotation}
+ * or {@link module:esri/Camera#heading camera heading}. Clicking the compass
+ * rotates the view to face north (heading = 0). This widget is added to a {@link module:esri/views/SceneView}
+ * by default.
+ *
+ * ![compass](../assets/img/apiref/widgets/compass.png)
+ *
+ * You can use the view's {@link module:esri/views/ui/DefaultUI} to add the compass widget
+ * to a 2D application via the {@link module:esri/views/MapView#ui ui} property on the view.
+ * See the sample below.
+ *
+ * @example
+ * require([
+ *    "esri/views/MapView",
+ *    "esri/widgets/Compass",
+ * ], function(SceneView, Compass, ... ) {
+ *
+ *   var view = new MapView({
+ *      container: "viewDiv",
+ *      map: map
+ *   });
+ *
+ *   var compass = new Compass({
+ *     view: view
+ *   });
+ *
+ *   // adds the compass to the top left corner of the MapView
+ *   view.ui.add(compass, "top-left");
+ *   });
+ *
+ * @module esri/widgets/Compass
+ * @since 4.0
+ *
+ * @see [Compass.js (widget view)]({{ JSAPI_BOWER_URL }}/widgets/Compass.js)
+ * @see [Compass.css]({{ JSAPI_BOWER_URL }}/widgets/Compass/css/Compass.css)
+ * @see [Compass.scss]({{ JSAPI_BOWER_URL }}/widgets/Compass/css/Compass.scss)
+ * @see module:esri/widgets/Compass/CompassViewModel
+ * @see [Sample - Adding the Compass widget to a MapView](../sample-code/widgets-compass-2d/index.html)
+ * @see module:esri/views/ui/DefaultUI
+ * @see module:esri/views/MapView
+ * @see module:esri/views/SceneView
+ * @see module:esri/Camera
+ */
+define([
+  "../core/watchUtils",
+
+  "./Compass/CompassViewModel",
+
+  "./support/viewModelWiring",
+
+  "./Widget",
+
+  "dijit/_TemplatedMixin",
+  "dijit/a11yclick",
+
+  "dojo/dom-attr",
+  "dojo/dom-class",
+  "dojo/dom-style",
+
+  "dojo/i18n!./Compass/nls/Compass",
+
+  "dojo/text!./Compass/templates/Compass.html"
+],
+function (
+  watchUtils,
+  CompassViewModel,
+  viewModelWiring,
+  Widget,
+  TemplatedMixin, a11yclick,
+  domAttr, domClass, domStyle,
+  i18n,
+  templateString
+) {
+
+  var CSS = {
+    base: "esri-compass esri-widget-button",
+    text: "esri-icon-font-fallback-text",
+    icon: "esri-compass__icon",
+    rotationIcon: "esri-icon-dial",
+    northIcon: "esri-icon-compass",
+
+    // common
+    interactive: "esri-interactive",
+    disabled: "esri-disabled"
+  };
+
+  /**
+   * @extends module:esri/widgets/Widget
+   * @constructor module:esri/widgets/Compass
+   * @param {Object} [properties] - See the [properties](#properties) for a list of all the properties
+   *                              that may be passed into the constructor.
+   * @param {string | Node} [srcNodeRef] - Reference or ID of the HTML element in which this widget renders.
+   */
+  return Widget.createSubclass([TemplatedMixin], /** @lends module:esri/widgets/Compass.prototype */ {
+
+    properties: {
+      viewModel: {
+        type: CompassViewModel
+      },
+      view: {
+        dependsOn: ["viewModel.view"]
+      }
+    },
+
+    declaredClass: "esri.widgets.Compass",
+
+    baseClass: CSS.base,
+
+    templateString: templateString,
+
+    //--------------------------------------------------------------------------
+    //
+    //  Lifecycle
+    //
+    //--------------------------------------------------------------------------
+
+    constructor: function () {
+      this._applyRotation = this._applyRotation.bind(this);
+      this._handleClick = this._handleClick.bind(this);
+      this._handleState = this._handleState.bind(this);
+    },
+
+    postCreate: function () {
+      this.inherited(arguments);
+
+      this.own(
+        watchUtils.init(this.viewModel, "state", this._handleState),
+        watchUtils.when(this.viewModel, "orientation", this._applyRotation),
+
+        this.on(a11yclick, this._handleClick)
+      );
+    },
+
+    //--------------------------------------------------------------------------
+    //
+    //  Variables
+    //
+    //--------------------------------------------------------------------------
+
+    _css: CSS,
+
+    _i18n: i18n,
+
+    //--------------------------------------------------------------------------
+    //
+    //  Properties
+    //
+    //--------------------------------------------------------------------------
+
+    //----------------------------------
+    //  view
+    //----------------------------------
+
+    /**
+     * The view in which the Compass obtains and indicates camera
+     * {@link module:esri/Camera#heading heading}, using a (SceneView) or
+     * {@link module:esri/views/Mapview#rotation rotation} (MapView).
+     *
+     * @type {module:esri/views/SceneView | module:esri/views/MapView}
+     *
+     * @name view
+     * @instance
+     */
+    _getViewAttr: viewModelWiring.createGetterDelegate("view"),
+
+    _setViewAttr: viewModelWiring.createSetterDelegate("view"),
+
+    //----------------------------------
+    //  viewModel
+    //----------------------------------
+
+    /**
+     * The view model for this widget. This is a class that contains all the logic
+     * (properties and methods) that controls this widget's behavior. See the
+     * {@link module:esri/widgets/Compass/CompassViewModel} class to access
+     * all properties and methods on the widget.
+     *
+     * @name viewModel
+     * @instance
+     * @type {module:esri/widgets/Compass/CompassViewModel}
+     * @autocast
+     */
+
+    //--------------------------------------------------------------------------
+    //
+    //  Public Methods
+    //
+    //--------------------------------------------------------------------------
+
+    /**
+     * If working in a {@link module:esri/views/MapView}, sets the view's
+     * {@link module:esri/views/MapView#rotation rotation} to `0`. If working in a
+     * {@link module:esri/views/SceneView}, sets the camera's
+     * {@link module:esri/Camera#heading heading} to `0`. This method is executed each
+     * time the {@link module:esri/widgets/Compass} is clicked.
+     *
+     * @method
+     */
+    reset: viewModelWiring.createMethodDelegate("reset"),
+
+    //--------------------------------------------------------------------------
+    //
+    //  Private Methods
+    //
+    //--------------------------------------------------------------------------
+
+    _applyRotation: function (axes) {
+      var transform = "rotateZ(" + axes.z + "deg)";
+
+      domStyle.set(this._iconNode, {
+        transform: transform,
+        mozTransform: transform,
+        webkitTransform: transform,
+        oTransform: transform,
+        msTransform: transform
+      });
+    },
+
+    //--------------------------------------------------------------------------
+    //
+    //  Event handlers
+    //
+    //--------------------------------------------------------------------------
+
+    _handleClick: function () {
+      this.viewModel.reset();
+    },
+
+    _handleState: function (value) {
+      var disabled  = value === "disabled",
+          showNorth = value === "rotation" ? "rotation" : "compass"; // compass is also shown when disabled
+
+      domClass.toggle(this.domNode, CSS.disabled, disabled);
+      domClass.toggle(this.domNode, CSS.interactive, !disabled);
+      domAttr.set(this.domNode, "tabindex", disabled ? "" : 0);
+      domClass.toggle(this._iconNode, CSS.northIcon, showNorth);
+      domClass.toggle(this._iconNode, CSS.rotationIcon, !showNorth);
+
+    }
+
+  });
+
+});

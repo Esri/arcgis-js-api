@@ -22,4 +22,2094 @@
 //
 // See http://js.arcgis.com/4.0/esri/copyright.txt for details.
 
-define(["./support/viewModelWiring","./Widget","./Popup/PopupViewModel","../core/HandleRegistry","../core/watchUtils","../views/2d/viewpointUtils","dijit/a11yclick","dijit/_TemplatedMixin","dojo/keys","dojo/on","dojo/query","dojo/Deferred","dojo/i18n!./Popup/nls/Popup","dojo/text!./Popup/templates/Popup.html","../core/lang","dojo/_base/lang","dojo/dom-class","dojo/dom-attr","dojo/dom-construct","dojo/dom-geometry","dojo/dom-style","./Popup/PopupRenderer","./Popup/PopupRendererViewModel","./Spinner","./Message"],function(e,t,i,o,n,s,r,a,d,c,p,h,l,u,g,_,v,m,f,b,k,w,M,P,x){var y={base:"esri-popup",container:"esri-container",invisible:"esri-invisible",showDock:"esri-show-dock",docked:"esri-docked",dockedTopLeft:"esri-docked-top-left",dockedTopCenter:"esri-docked-top-center",dockedTopRight:"esri-docked-top-right",dockedBottomLeft:"esri-docked-bottom-left",dockedBottomCenter:"esri-docked-bottom-center",dockedBottomRight:"esri-docked-bottom-right",dockToLeft:"esri-dock-to-left",dockToRight:"esri-dock-to-right",dockToTop:"esri-dock-to-top",dockToBottom:"esri-dock-to-bottom",menuOpen:"esri-menu-open",shadow:"esri-popup-shadow",main:"esri-popup-main",header:"esri-popup-header",headerButtons:"esri-popup-header-buttons",hidden:"esri-hidden",content:"esri-popup-content",showContent:"esri-show-content",footer:"esri-footer",showFooter:"esri-show-footer",title:"esri-title",showTitle:"esri-show-title",btn:"esri-button",icon:"esri-popup-icon",iconText:"esri-icon-font-fallback-text",close:"esri-close",closeIcon:"esri-close-icon esri-icon-close",collapseIcon:"esri-down-icon esri-icon-down",dockBtn:"esri-dock",dockIcon:"esri-dock-icon",dockIconTop:"esri-icon-maximize",dockIconBottom:"esri-icon-dock-bottom",dockIconLeft:"esri-icon-dock-left",dockIconRight:"esri-icon-dock-right",dockIconText:"esri-dock-text",undockIcon:"esri-undock-icon esri-icon-minimize",undockIconText:"esri-undock-text",actions:"esri-actions",action:"esri-action",actionImage:"esri-action-image",actionText:"esri-action-text",pagination:"esri-pagination",paginationDocked:"esri-pagination-docked",paginationDockedButtons:"esri-pagination-docked-buttons",showPagination:"esri-show-pagination",pointer:"esri-pointer",pointerDirection:"esri-pointer-direction",previous:"esri-previous",previousIconLTR:"esri-previous-icon-ltr esri-icon-left-triangle-arrow",previousIconRTL:"esri-previous-icon-rtl esri-icon-right-triangle-arrow",next:"esri-next",nextIconLTR:"esri-next-icon-ltr esri-icon-right-triangle-arrow",nextIconRTL:"esri-next-icon-rtl esri-icon-left-triangle-arrow",pageMenu:"esri-page-menu",pageMenuList:"esri-page-menu-list",pageMenuItem:"esri-page-menu-item",pageMenuViewport:"esri-page-menu-viewport",pageMenuHeader:"esri-page-menu-header",pageMenuNote:"esri-page-menu-note",pageMenuSelected:"esri-selected",pageMenuBtn:"esri-page-menu-button",pageMenuIcon:"esri-page-menu-icon esri-icon-layer-list",pageMenuTitle:"esri-page-menu-title",pageMenuCheckMark:"esri-page-menu-check-mark esri-icon-check-mark",pageText:"esri-page-text",zoomIcon:"esri-icon-zoom-in-magnifying-glass",top:"esri-top",bottom:"esri-bottom",left:"esri-left",right:"esri-right",hasPopupRenderer:"esri-has-popup-renderer",hasPromiseFeatures:"esri-has-promise-features",pendingPromises:"esri-pending-promises",pendingPromisesResult:"esri-pending-promises-result",featureUpdated:"esri-feature-updated",loadingContainer:"esri-loading-container",loadingIcon:"esri-rotating esri-icon-loading-indicator"},N="zoom-to",R={top:"top",left:"left",bottom:"bottom",right:"right"},T={auto:"auto",topLeft:"top-left",topCenter:"top-center",topRight:"top-right",bottomLeft:"bottom-left",bottomCenter:"bottom-center",bottomRight:"bottom-right"},C={buttonEnabled:!0,position:T.auto,breakpoint:{width:544}},D={popupRenderer:"popup-renderer",acions:"actions",actionsChange:"actions-change",paginationTitles:"pagination-titles",view:"view"},E={actionIndex:"data-action-index",featureIndex:"data-feature-index",layerName:"data-layer-name",layerId:"data-layer-id"},F=t.createSubclass([a],{properties:{actions:{dependsOn:["viewModel.actions"]},alignment:{},autoPanEnabled:{},content:{dependsOn:["viewModel.content"]},closeOnViewChangeEnabled:{},currentDockPosition:{readOnly:!0},dockOptions:{},featureCount:{dependsOn:["viewModel.featureCount"]},features:{dependsOn:["viewModel.features"]},location:{dependsOn:["viewModel.location"]},messageEnabled:{},paginationEnabled:{},promises:{dependsOn:["viewModel.promises"]},selectedFeature:{dependsOn:["viewModel.selectedFeature"]},selectedFeatureIndex:{dependsOn:["viewModel.selectedFeatureIndex"]},spinnerEnabled:{},title:{dependsOn:["viewModel.title"]},view:{dependsOn:["viewModel.view"]},viewModel:{type:i},visible:{}},declaredClass:"esri.widgets.Popup",baseClass:y.base,templateString:u,constructor:function(){this._handleRegistry=new o,this._contentStorage=f.create("div")},postCreate:function(){var t=this;this.inherited(arguments);var i=this.viewModel;this.own(n.whenTrue(i,"view.ready",function(){var e=this.viewModel;this._wireUpView(e.view)}.bind(this)),n.init(i,"pendingPromisesCount,featureCount,promises,location",function(){var e=this.viewModel;this._displayPendingFeaturesStatus(e.pendingPromisesCount,e.featureCount,e.promises,e.location)}.bind(this)),n.init(i,"features",this._updateFeatures.bind(this)),n.init(i,"selectedFeatureIndex,selectedFeature",function(){var e=this.viewModel;this._updateSelectedFeature(e.selectedFeature),this._updatePageText(e.features,e.selectedFeatureIndex),this._createPaginationNodes(e.features,e.selectedFeatureIndex),this._bodyContentNode.scrollTop=0}.bind(this)),n.init(i,"title",function(e){this._updateTitle(e),this.reposition()}.bind(this)),n.init(i,"actions",function(e){var t=this.viewModel;this._updateActions(e,t.features),this._actionChangeListener(e)}.bind(this)),n.init(i,"content",function(e){this._updateContent(e),this.reposition()}.bind(this)),n.init(i,"location",function(){this._togglePopupLocationRepositioning(this.visible),this.reposition()}.bind(this)),c(this._dockNode,r,this._toggleDock.bind(this)),c(this._closeNode,r,this.close.bind(this)),c(this._previousNode,r,i.previous.bind(i)),c(this._previousDockedNode,r,i.previous.bind(i)),c(this._nextNode,r,i.next.bind(i)),c(this._nextDockedNode,r,i.next.bind(i)),c(this._pageMenuNode,r,this._togglePageMenu.bind(this)),c(this._pageMenuDockedNode,r,this._togglePageMenu.bind(this)),c(this._pageMenuInfoNode,r,this._togglePageMenu.bind(this)),c(this._paginationNode,c.selector("li",r),function(){t._selectFeature(this)}),c(this._paginationNode,c.selector("li","keyup"),function(e){t._keyupFeature(e,this)}),c(this._actionsNode,c.selector("["+E.actionIndex+"]",r),function(){t._actionEvent(this)}),c(i,"trigger-action",function(e){e.action&&e.action.id===N&&this.viewModel.zoomToLocation()}.bind(this))),e.setUpEventDelegates(this,"trigger-action")},destroy:function(){this._destroyPopupRendererVMs(),this._destroyMessage(),this._destroySpinner(),this._destroyPopupRenderer(),this._handleRegistry.destroy(),this._handleRegistry=null},_getActionsAttr:e.createGetterDelegate("actions"),_setActionsAttr:e.createSetterDelegate("actions"),alignment:"top",_setAlignmentAttr:function(e){this._set("alignment",e),this.reposition()},autoPanEnabled:!0,_getContentAttr:e.createGetterDelegate("content"),_setContentAttr:e.createSetterDelegate("content"),closeOnViewChangeEnabled:!1,dockOptions:C,_setDockOptionsAttr:function(e){var t=_.clone(C),i=this.viewModel.get("view.breakpoints"),o={};i&&(o.width=i.xsmall,o.height=i.xsmall);var n=_.mixin({},t,e),s=_.mixin({},t.breakpoint,o);n.breakpoint===!0?n.breakpoint=s:"object"==typeof n.breakpoint&&(n.breakpoint=_.mixin({},s,n.breakpoint)),this._set("dockOptions",n),this._toggleDockButton(n)},dockEnabled:!1,_setDockEnabledAttr:function(e){this._set("dockEnabled",e),this._togglePopupDocking(e),this._togglePopupLocationRepositioning(this.visible),this.reposition()},currentDockPosition:null,_getFeatureCountAttr:e.createGetterDelegate("featureCount"),_setFeatureCountAttr:e.createSetterDelegate("featureCount"),_getFeaturesAttr:e.createGetterDelegate("features"),_setFeaturesAttr:e.createSetterDelegate("features"),_getLocationAttr:e.createGetterDelegate("location"),_setLocationAttr:e.createSetterDelegate("location"),messageEnabled:!0,_setMessageEnabledAttr:function(e){this._set("messageEnabled",e),this._createMessage(e,this.viewModel.view)},paginationEnabled:!0,_setPaginationEnabledAttr:function(e){var t=this.viewModel;this._set("paginationEnabled",e),this._updatePagination(t.features,t.selectedFeatureIndex),this._updateFooterVisibility(t.features,t.actions),this.reposition()},_getPromisesAttr:e.createGetterDelegate("promises"),_setPromisesAttr:e.createSetterDelegate("promises"),_getSelectedFeatureAttr:e.createGetterDelegate("selectedFeature"),_setSelectedFeatureAttr:e.createSetterDelegate("selectedFeature"),_getSelectedFeatureIndexAttr:e.createGetterDelegate("selectedFeatureIndex"),_setSelectedFeatureIndexAttr:e.createSetterDelegate("selectedFeatureIndex"),spinnerEnabled:!0,_setSpinnerEnabledAttr:function(e){this._set("spinnerEnabled",e),this._createSpinner(e,this.viewModel.view)},_getTitleAttr:e.createGetterDelegate("title"),_setTitleAttr:e.createSetterDelegate("title"),_getViewAttr:e.createGetterDelegate("view"),_setViewAttr:e.createSetterDelegate("view"),visible:!1,_setVisibleAttr:function(e){this._set("visible",e),v.remove(this._containerNode,y.menuOpen),v.toggle(this.domNode,y.invisible,!e),this._togglePopupLocationRepositioning(e),this._toggleContentVisibility(e),this.reposition()},_css:y,_i18n:l,_hideActionsTextNum:3,_animationDelay:10,_popupRendererVMs:[],clear:e.createMethodDelegate("clear"),close:function(){this.set("visible",!1)},next:e.createMethodDelegate("next"),previous:e.createMethodDelegate("previous"),reposition:function(){return this._positionPopup(),this._moveIntoView()},open:function(e){var t={updateLocationEnabled:!1},i=_.mixin(t,e);this.viewModel.set(i),this.set("visible",!0)},triggerAction:e.createMethodDelegate("triggerAction"),_actionChangeListener:function(e){this._handleRegistry.remove(D.actionsChange),e&&this._handleRegistry.add([e.on("change",function(){var e=this.viewModel;this._updateActions(e.actions,e.features)}.bind(this))],D.actionsChange)},_actionEvent:function(e){var t=this.viewModel,i=m.get(e,E.actionIndex);if(i){var o=parseInt(i,10);t.triggerAction(o)}},_addContent:function(){var e=this.viewModel;this._updateSelectedFeature(e.selectedFeature),this._updateContent(e.content),this._updateTitle(e.title),this._updatePageText(e.features,e.selectedFeatureIndex)},_updateActions:function(e,t){this._updateActionButtons(e),this._updateFooterVisibility(t,e),this.reposition()},_updateActionButtons:function(e){if(this._handleRegistry.remove(D.actions),this._actionsNode){var t=document.createDocumentFragment(),i=e.length;i&&e.forEach(function(e,o){e.id===N&&(e.title=this._i18n.zoom,e.className=y.zoomIcon);var s=f.create("div",{tabindex:"0",title:e.title},t);m.set(s,E.actionIndex,o),v.add(s,[y.btn,y.action]);var r=f.create("span",{"aria-hidden":!0},s);v.add(r,y.icon),e.className&&v.add(r,e.className),e.image&&(v.add(r,y.actionImage),k.set(r,"background-image","url("+e.image+")"));var a={className:y.actionText,textContent:e.title};i>=this._hideActionsTextNum&&(a.className=y.iconText);var d=f.create("span",a,s);this._handleRegistry.add([n.init(e,"visible",function(e){v.toggle(s,y.hidden,!e)}),n.init(e,"className",function(e,t){v.remove(r,t),v.add(r,e)}),n.init(e,"image",function(e){v.toggle(r,y.actionImage,!!e),k.set(r,"background-image",e?"url("+e+")":"")}),n.init(e,"title",function(e){var t=e||"";m.set(s,"title",t),m.set(d,"textContent",t)})],D.actions)},this),f.place(t,this._actionsNode,"only")}},_getLocationScreenPoint:function(){var e,t=this.viewModel;if(t.location&&this.visible){var i=t.location;i&&t.get("view.ready")&&(e=t.view.toScreen(i))}return e},_calculatePosition:function(e,t){var i,o,n,s,r,a;if(e&&t){var d=t.pointer.h,c=t.pointer.w;i=t.popup.h;var p=R;switch((t.alignment===p.top||t.alignment===p.bottom)&&(i+=d),o=t.popup.w,(t.alignment===p.left||t.alignment===p.right)&&(o+=c),t.alignment){case p.bottom:n=e.y+d,s=e.x-o/2,r=e.y+i,a=s+o;break;case p.left:n=e.y-i/2,s=e.x-o,r=n+i,a=s+o;break;case p.right:n=e.y-i/2,s=e.x+c,r=n+i,a=e.x+o;break;default:n=e.y-i,s=e.x-o/2,r=n+i,a=s+o}return{height:i,width:o,top:n,left:s,bottom:r,right:a}}},_createPopupRendererVMs:function(e){this._destroyPopupRendererVMs(),e&&e.length>1&&e.forEach(function(e){var t=new M({contentEnabled:!1,graphic:e});this._popupRendererVMs.push(t)},this)},_destroyPopupRendererVMs:function(){this._handleRegistry.remove(D.paginationTitles),this._popupRendererVMs.forEach(function(e){e.destroy()}),this._popupRendererVMs.length=0},_createPaginationNodes:function(e,t){if(this._handleRegistry.remove(D.paginationTitles),e){var i=e.length;if(this._paginationNode&&m.set(this._paginationNode,"innerHTML",""),i>1){var o=g.substitute({total:i},this._i18n.selectedFeatures);m.set(this._pageMenuInfoNode,"textContent",o),e.forEach(function(e,i){var o=this._i18n.untitled,s=f.create("li",{role:"menu-item",className:y.pageMenuItem},this._paginationNode);i===t?(m.set(s,"aria-label",l.selectedFeature),v.add(s,y.pageMenuSelected)):m.set(s,E.featureIndex,i);var r=f.create("span",{className:y.pageMenuTitle,innerHTML:o},s),a=this._popupRendererVMs[i];if(a){var d=n.init(a,"title",function(e){m.set(r,"innerHTML",e)});this._handleRegistry.add(d,D.paginationTitles)}i===t&&f.create("span",{className:y.pageMenuCheckMark},r)},this)}}},_createMessage:function(e,t){this._destroyMessage(),e&&t&&(this._message=new x({visible:!1,text:this._i18n.noFeaturesFound,viewModel:{view:t}}),this._message.startup(),f.place(this._message.domNode,t.root))},_createSpinner:function(e,t){this._destroySpinner(),e&&t&&(this._spinner=new P({visible:!1,viewModel:{view:t}}),this._spinner.startup(),f.place(this._spinner.domNode,t.root))},_updateContent:function(e){e&&e.nodeName?(f.place(e,this._contentStorage),f.place(e,this._bodyContentNode,"only")):"string"==typeof e&&(this._destroyPopupRenderer(),m.set(this._bodyContentNode,"innerHTML",e)),this._bodyContentNode.scrollTop=0;var t=!(!this._popupRenderer||this._popupRenderer.viewModel.content!==e);v.toggle(this._containerNode,y.hasPopupRenderer,t),v.toggle(this._containerNode,y.showContent,!!e),v.remove(this._containerNode,y.menuOpen)},_destroyPopupRenderer:function(){this._popupRenderer&&!this._popupRenderer._destroyed&&(this._handleRegistry.remove(D.popupRenderer),this._popupRenderer.destroy(),this._popupRenderer=null)},_destroyMessage:function(){this._message&&(this._message.destroyRendering(),this._message.destroy(),this._message=null)},_destroySpinner:function(){this._spinner&&(this._spinner.destroyRendering(),this._spinner.destroy(),this._spinner=null)},_setDockEnabledForViewSize:function(e){e.breakpoint&&this.set("dockEnabled",this._shouldDockAtCurrentViewSize(e))},_togglePopupDocking:function(e){v.remove(this._containerNode,y.menuOpen),v.toggle(this._containerNode,y.docked,!!e),m.set(this._dockNode,"title",e?this._i18n.undock:this._i18n.dock),this._updateDockPosition(this.dockOptions)},_dockingThresholdCrossed:function(e,t,i){var o=e[0],n=e[1],s=t[0],r=t[1],a=i.width,d=i.height;return a>=o&&s>a||o>a&&a>=s||d>=n&&r>d||n>d&&d>=r},_determineDockPosition:function(e){var t=this.viewModel,i=t.view,o=i&&i.padding,n=i&&i.width-o.left-o.right,s=i&&t.get("view.breakpoints");if(s&&n<=s.xsmall)return e.bottomCenter;var r=!this.isLeftToRight();return r?e.topLeft:e.topRight},_updateDockPosition:function(e){v.remove(this._containerNode,[y.dockedTopLeft,y.dockedTopCenter,y.dockedTopRight,y.dockedBottomLeft,y.dockedBottomCenter,y.dockedBottomRight,y.dockToTop,y.dockToBottom,y.dockToLeft,y.dockToRight]);var t,i,o,n=T,s=e.position;switch(t=s===n.auto?this._determineDockPosition(n):s){case n.topLeft:i=y.dockedTopLeft,o=y.dockToLeft;break;case n.topCenter:i=y.dockedTopCenter,o=y.dockToTop;break;case n.bottomLeft:i=y.dockedBottomLeft,o=y.dockToLeft;break;case n.bottomCenter:i=y.dockedBottomCenter,o=y.dockToBottom;break;case n.bottomRight:i=y.dockedBottomRight,o=y.dockToRight;break;default:i=y.dockedTopRight,o=y.dockToRight}v.toggle(this._containerNode,o,!!e.buttonEnabled),this.dockEnabled?(v.add(this._containerNode,i),this._set("currentDockPosition",t)):this._set("currentDockPosition",null),this._popupRenderer&&this._popupRenderer.resize(),this.reposition()},_toggleDockButton:function(e){var t=this._containerNode;v.toggle(t,y.showDock,!!e.buttonEnabled),v.toggle(t,y.docked,!!this.dockEnabled),this._updateDockPosition(e)},_updateFooterVisibility:function(e,t){var i=this._isPaginationEnabled(e)||t&&t.length;v.toggle(this._containerNode,y.showFooter,!!i)},_isPaginationEnabled:function(e){return this.paginationEnabled&&e&&e.length>1},_updatePagination:function(e,t){this._updatePageText(e,t),this._createPaginationNodes(e,t),v.toggle(this._containerNode,y.showPagination,this._isPaginationEnabled(e))},_displayPendingFeaturesStatus:function(e,t,i,o){var n=e>0&&0===t;e&&i.length&&e===i.length&&this.set("visible",!1),v.toggle(this._containerNode,y.pendingPromises,!!e),v.toggle(this._containerNode,y.pendingPromisesResult,!!n),v.toggle(this._containerNode,y.hasPromiseFeatures,!!t),this._message&&this._message.set({visible:!1}),n?this._spinner&&(this._spinner.set({visible:!0}),this._spinner.viewModel.point=o):(this._spinner&&(this._spinner.viewModel.point=null),t&&!this.visible&&this.set("visible",!0),!t&&i&&i.length&&this._message&&(this._message.set({visible:!0}),this._message.viewModel.point=o))},_moveIntoView:function(){var e=new h;return setTimeout(e.resolve.bind(this),this._animationDelay),e.then(function(){if(!this._destroyed){var e=this.viewModel,t=this.get("viewModel.view");if(e&&t&&t.stationary){var i=this._getLocationScreenPoint();if(i){var o=this._sizePopup(),n=this._calculatePosition(i,o),r=t.width,a=t.height,d=t.padding,c=t.ui.padding;if(this.autoPanEnabled){if(i.y<d.top||i.y>a-d.bottom||i.x<d.left||i.x>r-d.right)return e.centerAtLocation();if(!this.dockEnabled&&n&&n.width<t.width&&n.height<t.height){var p=0,h=0;if(n.top<d.top?h=-n.top+c.top+d.top:n.bottom>a-d.bottom&&(h=-(n.bottom-a+d.bottom)-c.bottom),n.left<d.left?p=n.left-c.left-d.left:n.right>r-d.right&&(p=n.right-r+d.right+c.right),p||h){var l=s.translateBy(s.create(),t.viewpoint,[p,h]);return t.goTo(l,e.animationOptions)}}}}}}}.bind(this))},_positionPopup:function(){var e=this.viewModel,t=e.view;if(t){v.remove(this._containerNode,[y.top,y.bottom,y.left,y.right]);var i;switch(this.alignment){case R.bottom:i=y.bottom;break;case R.right:i=y.right;break;case R.left:i=y.left;break;default:i=y.top}v.add(this._containerNode,i);var o=this._getLocationScreenPoint(),n=this._sizePopup(),s=this._calculatePosition(o,n);if(s){var r,a=t.padding;r=this.dockEnabled?{left:a.left?a.left+"px":"",top:a.top?a.top+"px":"",right:a.right?a.right+"px":"",bottom:a.bottom?a.bottom+"px":""}:{left:s.left+"px",top:s.top+"px",right:"",bottom:""},k.set(this._containerNode,r)}}},_removeContent:function(){this._destroyPopupRenderer(),m.set(this._bodyContentNode,"innerHTML",""),m.set(this._titleNode,"innerHTML",""),m.set(this._pageTextNode,"innerHTML",""),m.set(this._pageTextDockedNode,"innerHTML",""),v.remove(this._containerNode,[y.showTitle,y.showContent])},_keyupFeature:function(e,t){var i=e.keyCode;if(i===d.UP_ARROW||i===d.DOWN_ARROW){e.stopPropagation(),e.preventDefault();var o,n=p("li",this._paginationNode),s=n.length,r=n.indexOf(t);i===d.UP_ARROW?o=r-1:i===d.DOWN_ARROW&&(o=r+1),0>o?o=s-1:o>=s&&(o=0),n[o].focus()}},_selectFeature:function(e){var t=this.viewModel,i=-1,o=m.get(e,E.featureIndex);o&&(i=parseInt(o,10)),-1!==i&&(t.selectedFeatureIndex=i),v.remove(this._containerNode,y.menuOpen),this._pageMenuNode.focus()},_updateSelectedFeature:function(e){var t,i=this.viewModel,o="",n="";if(e){if(t=e.layer,t&&(o=t.id||"",n=t.name||""),!this._popupRenderer||this._popupRenderer&&this._popupRenderer._destroyed){this._handleRegistry.remove(D.popupRenderer),this._popupRenderer=new w;var s=this._popupRenderer.viewModel.watch("title",function(e){i.title=e}),r=this._popupRenderer.viewModel.watch("content",function(e){i.content=e?this._popupRenderer.domNode:null}.bind(this)),a=c(this._popupRenderer,"resize",this.reposition.bind(this));this._handleRegistry.add([s,r,a],D.popupRenderer),this._popupRenderer.startup()}this._popupRenderer.viewModel.graphic=e}this._toggleFeatureUpdatedClass(),m.set(this._containerNode,E.layerName,n),m.set(this._containerNode,E.layerId,o),this.reposition()},_updateFeatures:function(e){var t=this.viewModel;this._createPopupRendererVMs(e),this._updatePagination(e,t.selectedFeatureIndex),this._updateFooterVisibility(e,t.actions),this.reposition()},_shouldDockAtCurrentViewSize:function(e){var t=this.viewModel,i=e.breakpoint;return t.view&&(i.hasOwnProperty("width")&&t.view.ui.width<=i.width||i.hasOwnProperty("height")&&t.view.ui.height<=i.height)},_sizePopup:function(){var e=b.getContentBox(this._containerNode),t=b.getContentBox(this._pointerNode),i={alignment:this.alignment,popup:e,pointer:t};return i},_updateTitle:function(e){e=e||"",m.set(this._titleNode,"innerHTML",e),v.toggle(this._containerNode,y.showTitle,!!e),v.remove(this._containerNode,y.menuOpen)},_toggleDock:function(){this.set("dockEnabled",!this.dockEnabled)},_togglePageMenu:function(){v.toggle(this._containerNode,y.menuOpen);var e=v.contains(this._containerNode,y.menuOpen);m.set(this._pageMenuSectionNode,"aria-hidden",!e);var t=p("li",this._paginationNode),i=t[0];t.forEach(function(t){m.set(t,"tabIndex",e?"0":"")}),e?i&&i.focus():this._pageMenuNode.focus()},_updatePageText:function(e,t){var i="";this._isPaginationEnabled(e)&&(i=g.substitute({index:t+1,total:e.length},this._i18n.pageText)),this._pageTextNode&&m.set(this._pageTextNode,{textContent:i}),this._pageTextDockedNode&&m.set(this._pageTextDockedNode,{textContent:i})},_toggleFeatureUpdatedClass:function(){v.remove(this._containerNode,y.featureUpdated),this._containerNode.offsetWidth=this._containerNode.offsetWidth,v.add(this._containerNode,y.featureUpdated)},_viewPointChanged:function(){this.closeOnViewChangeEnabled?this.close():this._positionPopup()},_wireUpView:function(e){if(this._handleRegistry.remove(D.view),this._viewPointEvent=null,e){var t="viewpoint";"3d"===e.type&&(t="camera"),this._viewPointEvent=n.pausable(e,t,this._viewPointChanged.bind(this)),this._handleRegistry.add([e.watch("padding",this.reposition.bind(this)),e.watch("size",this._updateDockEnabledForViewSize.bind(this)),c(e,"resize",this.reposition.bind(this)),this._viewPointEvent],D.view),this._togglePopupLocationRepositioning(this.visible),this._createMessage(this.messageEnabled,e),this._createSpinner(this.spinnerEnabled,e),this._setDockEnabledForViewSize(this.dockOptions),this._toggleDockButton(this.dockOptions),this.reposition()}},_updateDockEnabledForViewSize:function(e,t){var i=this.get("viewModel.view.padding"),o=i.left+i.right,n=i.top+i.bottom,s=[],r=[];s[0]=e[0]-o,s[1]=e[1]-n,r[0]=t[0]-o,r[1]=t[1]-n;var a=this.dockOptions,d=a.breakpoint;this._dockingThresholdCrossed(s,r,d)&&this._setDockEnabledForViewSize(a),this._updateDockPosition(a)},_togglePopupLocationRepositioning:function(e){var t=this.viewModel;this._viewPointEvent&&(e&&t.location&&!this.dockEnabled?this._viewPointEvent.resume():this._viewPointEvent.pause())},_toggleContentVisibility:function(e){e?this._addContent():this._removeContent()}});return F});
+/**
+ * The popup widget allows users to view content from feature attributes. Popups enhance web applications
+ * by providing users with a simple way to interact with and view attributes in a layer.
+ * They play an important role in relaying information to the user, which improves the storytelling capabilities of the application.
+ *
+ * All {@link module:esri/views/View Views} contain a default popup.
+ * This popup can display generic content, which is set in its [title](#title)
+ * and [content](#content) properties.
+ * When  content is set directly on the Popup instance it is not tied to a specific feature or layer.
+ *
+ * [![popup-basic-example](../assets/img/apiref/widgets/popup-basic.png)](../sample-code/sandbox/sandbox.html?sample=popup-advanced)
+ *
+ * In the image above, the text "Reverse Geocode: [-116.2, 43.601]" is the popup's `title`. The remaining text is
+ * its `content`. A dock button ![popup-dock-btn](../assets/img/apiref/widgets/popup-dock.png) may also be available in the
+ * top right corner of the popup. This allows the user to dock the popup to one of the sides or corners of the view.
+ * The options for docking may be set in the [dockOptions](#dockOptions) property.
+ *
+ * Popups can also contain [actions](#actions) that act like buttons,
+ * which execute a function defined by the developer when clicked.
+ * By default, every popup has a "Zoom in" action ![popupTemplate-zoom-action](../assets/img/apiref/widgets/popupTemplate-zoom-action.png)
+ * that allows users to zoom to the selected feature. See the [actions](#actions)
+ * property for information about adding custom actions to a popup.
+ *
+ * In most cases this module will not need to be loaded into your application because the view contains a default instance of popup.
+ *
+ * {@link module:esri/PopupTemplate} is closely related to Popup, but is more specific to {@link module:esri/layers/Layer layers}
+ * and {@link module:esri/Graphic graphics}. It allows you to define custom title and content templates based on the source of the
+ * [selected feature](#selectedFeature). When a layer or a graphic has a defined
+ * PopupTemplate, the popup will display the content
+ * defined in the PopupTemplate when the feature is clicked. The content may contain field values from the attributes of the [selected feature](#selectedFeature).
+ *
+ * Custom PopupTemplates may also be assigned directly to a popup by setting {@link module:esri/Graphic graphics} on the
+ * [features](#features) property. For more information about Popup
+ * and how it relates to {@link module:esri/PopupTemplate} see the samples listed below.
+ *
+ * @module esri/widgets/Popup
+ * @since 4.0
+ *
+ * @see [Popup.js (widget view)]({{ JSAPI_BOWER_URL }}/widgets/Popup.js)
+ * @see [Popup.css]({{ JSAPI_BOWER_URL }}/widgets/Popup/css/Popup.css)
+ * @see [Popup.scss]({{ JSAPI_BOWER_URL }}/widgets/Popup/css/Popup.scss)
+ * @see module:esri/PopupTemplate
+ * @see {@link module:esri/views/View#popup View.popup}
+ * @see [Get started with popups](../sample-code/get-started-popup/index.html)
+ * @see [Get started with PopupTemplate](../sample-code/get-started-popupTemplate/index.html)
+ * @see [Sample - Dock positions with popup](../sample-code/popup-docking-position/index.html)
+ * @see [Sample - Popup actions](../sample-code/popup-actions/index.html)
+ * @see [Guide - Esri Icon Font](../guide/esri-icon-font/index.html)
+ * @see module:esri/widgets/Popup/PopupViewModel
+ */
+
+/**
+ * Fires after the user clicks on an [action](#actions) inside a popup. This
+ * event may be used to define a custom function to execute when particular
+ * actions are clicked. See the example below for details of how this works.
+ *
+ * @event module:esri/widgets/Popup#trigger-action
+ * @property {Object} action - The action clicked by the user. For a description
+ *                    of this object and a specification of its properties,
+ *                    see the [actions](#actions) property of this class.
+ *
+ * @see [actions](#actions)
+ * @example
+ * // Defines an action to zoom out from the selected feature
+ * var zoomOutAction = {
+ *   // This text is displayed as a tooltip
+ *   title: "Zoom out",
+ *   // The ID used to reference this action in the event handler
+ *   id: "zoom-out",
+ *   // Sets the icon font used to style the action button
+ *   className: "esri-icon-zoom-out-magnifying-glass"
+ * };
+ * // Adds the custom action to the popup.
+ * view.popup.actions.push(zoomOutAction);
+ *
+ * // Fires each time an action is clicked
+ * view.popup.on("trigger-action", function(evt){
+ *   // If the zoom-out action is clicked, then execute the following code
+ *   if(evt.action.id === "zoom-out"){
+ *     // Zoom out two levels (LODs)
+ *     view.goTo({
+ *       center: view.center,
+ *       zoom: view.zoom - 2
+ *     });
+ *   }
+ * });
+ */
+define([
+  "./support/viewModelWiring",
+
+  "./Widget",
+
+  "./Popup/PopupViewModel",
+
+  "../core/HandleRegistry",
+  "../core/watchUtils",
+
+  "../views/2d/viewpointUtils",
+
+  "dijit/a11yclick",
+  "dijit/_TemplatedMixin",
+
+  "dojo/keys",
+
+  "dojo/on",
+
+  "dojo/query",
+
+  "dojo/Deferred",
+
+  "dojo/i18n!./Popup/nls/Popup",
+
+  "dojo/text!./Popup/templates/Popup.html",
+
+  "../core/lang",
+
+  "dojo/_base/lang",
+
+  "dojo/dom-class",
+  "dojo/dom-attr",
+  "dojo/dom-construct",
+  "dojo/dom-geometry",
+  "dojo/dom-style",
+
+  "./Popup/PopupRenderer",
+  "./Popup/PopupRendererViewModel",
+
+  "./Spinner",
+  "./Message"
+], function (
+  viewModelWiring,
+  Widget,
+  PopupViewModel,
+  HandleRegistry, watchUtils,
+  viewpointUtils,
+  a11yclick, _TemplatedMixin,
+  keys,
+  on,
+  query,
+  Deferred,
+  i18n,
+  templateString,
+  esriLang,
+  lang,
+  domClass, domAttr, domConstruct, domGeometry, domStyle,
+  PopupRenderer, PopupRendererViewModel,
+  Spinner, Message
+) {
+
+  //--------------------------------------------------------------------------
+  //
+  //  Static Variables
+  //
+  //--------------------------------------------------------------------------
+
+  var CSS = {
+    base: "esri-popup",
+    container: "esri-container",
+    invisible: "esri-invisible",
+    showDock: "esri-show-dock",
+    docked: "esri-docked",
+    dockedTopLeft: "esri-docked-top-left",
+    dockedTopCenter: "esri-docked-top-center",
+    dockedTopRight: "esri-docked-top-right",
+    dockedBottomLeft: "esri-docked-bottom-left",
+    dockedBottomCenter: "esri-docked-bottom-center",
+    dockedBottomRight: "esri-docked-bottom-right",
+    dockToLeft: "esri-dock-to-left",
+    dockToRight: "esri-dock-to-right",
+    dockToTop: "esri-dock-to-top",
+    dockToBottom: "esri-dock-to-bottom",
+    menuOpen: "esri-menu-open",
+    shadow: "esri-popup-shadow",
+    main: "esri-popup-main",
+    header: "esri-popup-header",
+    headerButtons: "esri-popup-header-buttons",
+    hidden: "esri-hidden",
+    content: "esri-popup-content",
+    showContent: "esri-show-content",
+    footer: "esri-footer",
+    showFooter: "esri-show-footer",
+    title: "esri-title",
+    showTitle: "esri-show-title",
+    btn: "esri-button",
+    icon: "esri-popup-icon",
+    iconText: "esri-icon-font-fallback-text",
+    close: "esri-close",
+    closeIcon: "esri-close-icon esri-icon-close",
+    collapseIcon: "esri-down-icon esri-icon-down",
+    dockBtn: "esri-dock",
+    dockIcon: "esri-dock-icon",
+    dockIconTop: "esri-icon-maximize",
+    dockIconBottom: "esri-icon-dock-bottom",
+    dockIconLeft: "esri-icon-dock-left",
+    dockIconRight: "esri-icon-dock-right",
+    dockIconText: "esri-dock-text",
+    undockIcon: "esri-undock-icon esri-icon-minimize",
+    undockIconText: "esri-undock-text",
+    actions: "esri-actions",
+    action: "esri-action",
+    actionImage: "esri-action-image",
+    actionText: "esri-action-text",
+    pagination: "esri-pagination",
+    paginationDocked: "esri-pagination-docked",
+    paginationDockedButtons: "esri-pagination-docked-buttons",
+    showPagination: "esri-show-pagination",
+    pointer: "esri-pointer",
+    pointerDirection: "esri-pointer-direction",
+    previous: "esri-previous",
+    previousIconLTR: "esri-previous-icon-ltr esri-icon-left-triangle-arrow",
+    previousIconRTL: "esri-previous-icon-rtl esri-icon-right-triangle-arrow",
+    next: "esri-next",
+    nextIconLTR: "esri-next-icon-ltr esri-icon-right-triangle-arrow",
+    nextIconRTL: "esri-next-icon-rtl esri-icon-left-triangle-arrow",
+    pageMenu: "esri-page-menu",
+    pageMenuList: "esri-page-menu-list",
+    pageMenuItem: "esri-page-menu-item",
+    pageMenuViewport: "esri-page-menu-viewport",
+    pageMenuHeader: "esri-page-menu-header",
+    pageMenuNote: "esri-page-menu-note",
+    pageMenuSelected: "esri-selected",
+    pageMenuBtn: "esri-page-menu-button",
+    pageMenuIcon: "esri-page-menu-icon esri-icon-layer-list",
+    pageMenuTitle: "esri-page-menu-title",
+    pageMenuCheckMark: "esri-page-menu-check-mark esri-icon-check-mark",
+    pageText: "esri-page-text",
+    zoomIcon: "esri-icon-zoom-in-magnifying-glass",
+    top: "esri-top",
+    bottom: "esri-bottom",
+    left: "esri-left",
+    right: "esri-right",
+    hasPopupRenderer: "esri-has-popup-renderer",
+    hasPromiseFeatures: "esri-has-promise-features",
+    pendingPromises: "esri-pending-promises",
+    pendingPromisesResult: "esri-pending-promises-result",
+    featureUpdated: "esri-feature-updated",
+    loadingContainer: "esri-loading-container",
+    loadingIcon: "esri-rotating esri-icon-loading-indicator"
+  };
+
+  var ZOOM_TO_ACTION_ID = "zoom-to";
+
+  var ALIGNMENT_POSITIONS = {
+    top: "top",
+    left: "left",
+    bottom: "bottom",
+    right: "right"
+  };
+
+  var DOCK_POSITIONS = {
+    auto: "auto",
+    topLeft: "top-left",
+    topCenter: "top-center",
+    topRight: "top-right",
+    bottomLeft: "bottom-left",
+    bottomCenter: "bottom-center",
+    bottomRight: "bottom-right"
+  };
+
+  var DOCK_OPTIONS = {
+    buttonEnabled: true,
+    position: DOCK_POSITIONS.auto,
+    breakpoint: {
+      width: 544
+    }
+  };
+
+  var REGISTRY_KEYS = {
+    popupRenderer: "popup-renderer",
+    acions: "actions",
+    actionsChange: "actions-change",
+    paginationTitles: "pagination-titles",
+    view: "view"
+  };
+
+  var DATA_ATTRIBUTES = {
+    actionIndex: "data-action-index",
+    featureIndex: "data-feature-index",
+    layerName: "data-layer-name",
+    layerId: "data-layer-id"
+  };
+
+  /**
+   * @extends module:esri/widgets/Widget
+   * @constructor module:esri/widgets/Popup
+   * @param {Object} [properties] - See the [properties](#properties) for a list of all the properties
+   *                              that may be passed into the constructor.
+   * @param {string | Node} [srcNodeRef] - Reference or ID of the HTML node in which this widget renders.
+   */
+  var Popup = Widget.createSubclass([_TemplatedMixin], /** @lends module:esri/widgets/Popup.prototype */ {
+
+    properties: {
+      actions: {
+        dependsOn: ["viewModel.actions"]
+      },
+      alignment: {},
+      autoPanEnabled: {},
+      content: {
+        dependsOn: ["viewModel.content"]
+      },
+      closeOnViewChangeEnabled: {},
+      currentDockPosition: {
+        readOnly: true
+      },
+      dockOptions: {},
+      featureCount: {
+        dependsOn: ["viewModel.featureCount"]
+      },
+      features: {
+        dependsOn: ["viewModel.features"]
+      },
+      location: {
+        dependsOn: ["viewModel.location"]
+      },
+      messageEnabled: {},
+      paginationEnabled: {},
+      promises: {
+        dependsOn: ["viewModel.promises"]
+      },
+      selectedFeature: {
+        dependsOn: ["viewModel.selectedFeature"]
+      },
+      selectedFeatureIndex: {
+        dependsOn: ["viewModel.selectedFeatureIndex"]
+      },
+      spinnerEnabled: {},
+      title: {
+        dependsOn: ["viewModel.title"]
+      },
+      view: {
+        dependsOn: ["viewModel.view"]
+      },
+      viewModel: {
+        type: PopupViewModel
+      },
+      visible: {}
+    },
+
+    declaredClass: "esri.widgets.Popup",
+
+    baseClass: CSS.base,
+
+    templateString: templateString,
+
+    /**
+     * This is a class that contains all the logic
+     * (properties and methods) that controls this widget's behavior. See the
+     * {@link module:esri/widgets/Popup/PopupViewModel} class to access
+     * all properties and methods on the widget.
+     *
+     * @name viewModel
+     * @instance
+     * @type {module:esri/widgets/Popup/PopupViewModel}
+     * @autocast
+     */
+
+    //--------------------------------------------------------------------------
+    //
+    //  Lifecycle
+    //
+    //--------------------------------------------------------------------------
+
+    constructor: function () {
+      this._handleRegistry = new HandleRegistry();
+      // temporary storage node for IE. Do not remove.
+      this._contentStorage = domConstruct.create("div");
+    },
+
+    // bind listener for button to action
+    postCreate: function () {
+      var _self = this;
+      this.inherited(arguments);
+      var viewModel = this.viewModel;
+      // Popup event listeners
+      this.own(
+
+        watchUtils.whenTrue(viewModel, "view.ready", function () {
+          var viewModel = this.viewModel;
+          this._wireUpView(viewModel.view);
+        }.bind(this)),
+
+        watchUtils.init(viewModel, "pendingPromisesCount,featureCount,promises,location", function () {
+          var viewModel = this.viewModel;
+          this._displayPendingFeaturesStatus(viewModel.pendingPromisesCount, viewModel.featureCount, viewModel.promises, viewModel.location);
+        }.bind(this)),
+
+        watchUtils.init(viewModel, "features", this._updateFeatures.bind(this)),
+
+        watchUtils.init(viewModel, "selectedFeatureIndex,selectedFeature", function () {
+          var viewModel = this.viewModel;
+          this._updateSelectedFeature(viewModel.selectedFeature);
+          this._updatePageText(viewModel.features, viewModel.selectedFeatureIndex);
+          this._createPaginationNodes(viewModel.features, viewModel.selectedFeatureIndex);
+          // scroll to the top of body content.
+          this._bodyContentNode.scrollTop = 0;
+        }.bind(this)),
+
+        watchUtils.init(viewModel, "title", function (title) {
+          this._updateTitle(title);
+          this.reposition();
+        }.bind(this)),
+
+        watchUtils.init(viewModel, "actions", function (actions) {
+          var viewModel = this.viewModel;
+          this._updateActions(actions, viewModel.features);
+          this._actionChangeListener(actions);
+        }.bind(this)),
+
+        watchUtils.init(viewModel, "content", function (content) {
+          this._updateContent(content);
+          this.reposition();
+        }.bind(this)),
+
+        watchUtils.init(viewModel, "location", function (location) {
+          this._togglePopupLocationRepositioning(this.visible);
+          this.reposition();
+        }.bind(this)),
+
+        // dock a11yclick
+        on(this._dockNode, a11yclick, this._toggleDock.bind(this)),
+
+        // close a11yclick
+        on(this._closeNode, a11yclick, this.close.bind(this)),
+
+        // previous a11yclick
+        on(this._previousNode, a11yclick, viewModel.previous.bind(viewModel)),
+        on(this._previousDockedNode, a11yclick, viewModel.previous.bind(viewModel)),
+
+        // next a11yclick
+        on(this._nextNode, a11yclick, viewModel.next.bind(viewModel)),
+        on(this._nextDockedNode, a11yclick, viewModel.next.bind(viewModel)),
+
+        // menu a11yclick
+        on(this._pageMenuNode, a11yclick, this._togglePageMenu.bind(this)),
+        on(this._pageMenuDockedNode, a11yclick, this._togglePageMenu.bind(this)),
+        on(this._pageMenuInfoNode, a11yclick, this._togglePageMenu.bind(this)),
+
+        // menu item a11yclick
+        on(this._paginationNode, on.selector("li", a11yclick), function () {
+          _self._selectFeature(this);
+        }),
+
+        // menu item keyup
+        on(this._paginationNode, on.selector("li", "keyup"), function (evt) {
+          _self._keyupFeature(evt, this);
+        }),
+
+        // action click
+        on(this._actionsNode, on.selector("[" + DATA_ATTRIBUTES.actionIndex + "]", a11yclick), function () {
+          _self._actionEvent(this);
+        }),
+
+        // action click listener for default actions
+        on(viewModel, "trigger-action", function (evt) {
+          // zoom-to action
+          if (evt.action && evt.action.id === ZOOM_TO_ACTION_ID) {
+            this.viewModel.zoomToLocation();
+          }
+        }.bind(this))
+
+      );
+
+      viewModelWiring.setUpEventDelegates(this, "trigger-action");
+    },
+
+    destroy: function () {
+      // destroy view widgets
+      this._destroyPopupRendererVMs();
+      this._destroyMessage();
+      this._destroySpinner();
+      this._destroyPopupRenderer();
+      this._handleRegistry.destroy();
+      this._handleRegistry = null;
+    },
+
+    //--------------------------------------------------------------------------
+    //
+    //  Properties
+    //
+    //--------------------------------------------------------------------------
+
+    //----------------------------------
+    //  actions
+    //----------------------------------
+
+    /**
+     * Defines actions that may be executed by clicking the icon
+     * or image symbolizing them in the popup. By default, every popup has a `zoom-to`
+     * action styled with a magnifying glass icon
+     * ![popupTemplate-zoom-action](../assets/img/apiref/widgets/popupTemplate-zoom-action.png).
+     * When this icon is clicked, the view zooms in four LODs and centers on the selected feature.
+     *
+     * You may override this action by removing it from the `actions` array or by setting the
+     * {@link module:esri/PopupTemplate#overwriteActions overwriteActions} property to `true` in a
+     * {@link module:esri/PopupTemplate}. The order of each action in the popup is the order in which
+     * they appear in the array.
+     *
+     * The [trigger-action](#event:trigger-action) event fires each time an action in the popup is clicked.
+     * This event should be used to execute custom code for each action clicked. For example, if you would
+     * like to add a `zoom-out` action to the popup that zooms the view out several LODs, you would
+     * define the zoom-out code in a separate function. Then you would call the custom `zoom-out` function
+     * in the [trigger-action](#event:trigger-action) event handler. See the sample code
+     * snippet below for more details on how this works.
+     *
+     * Actions are defined with the properties listed below.
+     *
+     * @name actions
+     * @instance
+     *
+     * @type {module:esri/core/Collection}
+     * @see [Sample - Popup actions](../sample-code/popup-actions/index.html)
+     *
+     * @property {string} className - Adds a CSS class to the action's node. Can be used in conjunction
+     *                          with the `image` property or by itself. Any icon font may be used in this property.
+     *                          The [Esri icon fonts](../guide/esri-icon-font/index.html)
+     *                          are automatically made available via the ArcGIS API for JavaScript for you to
+     *                          use in styling custom actions. To
+     *                          use one of these provided icon fonts, you must prefix the class name with `esri-`.
+     *                          For example, the default `zoom-to` action uses the font `esri-icon-zoom-in-magnifying-glass`.
+     * @property {string} image - The URL to an image that will be used to represent the action in the
+     *                          popup. This property will be used as a background image for the node.
+     *                          It may be used in conjunction with the `className` property or by itself.
+     * @property {string} id - The name of the ID assigned to this action. This is used for
+     *                        differentiating actions when listening to the
+     *                        [trigger-action](#event:trigger-action) event.
+     * @property {string} title - The title of the action. When there are fewer than three actions
+     *                        defined in a popup, this text is displayed to the right of the icon or image
+     *                        representing the action. If there are three or more actions in the popup, then
+     *                        this text is used as a tooltip on the action.
+     * @property {boolean} visible - Indicates if the action is visible in the popup. Default value of this property
+     *                        is `true`.
+     *
+     * @example
+     * // Defines an action to zoom out from the selected feature
+     * var zoomOutAction = {
+     *   // This text is displayed as a tooltip
+     *   title: "Zoom out",
+     *   // The ID by which to reference the action in the event handler
+     *   id: "zoom-out",
+     *   // Sets the icon font used to style the action button
+     *   className: "esri-icon-zoom-out-magnifying-glass"
+     * };
+     * // Adds the custom action to the popup.
+     * view.popup.actions.push(zoomOutAction);
+     *
+     * // The function to execute when the zoom-out action is clicked
+     * function zoomOut() {
+     *   // in this case the view zooms out two LODs on each click
+     *   view.goTo({
+     *     center: view.center,
+     *     zoom: view.zoom - 2
+     *   });
+     * }
+     *
+     * // This event fires for each click on any action
+     * view.popup.on("trigger-action", function(evt){
+     *   // If the zoom-out action is clicked, fire the zoomOut() function
+     *   if(evt.action.id === "zoom-out"){
+     *     zoomOut();
+     *   }
+     * });
+     */
+    _getActionsAttr: viewModelWiring.createGetterDelegate("actions"),
+
+    _setActionsAttr: viewModelWiring.createSetterDelegate("actions"),
+
+    //----------------------------------
+    //  alignment
+    //----------------------------------
+
+    /**
+     * Position of the popup in relation to the selected feature.
+     *
+     * **Known Values:** top | bottom | left | right
+     *
+     * @type {String}
+     * @see [alignmentPositions](#alignmentPositions)
+     * @default
+     * @ignore
+     *
+     * @example
+     * // The popup will display to the left of the feature
+     * view.popup.alignment = "left";
+     */
+    alignment: "top",
+
+    _setAlignmentAttr: function (newVal) {
+      this._set("alignment", newVal);
+      this.reposition();
+    },
+
+    //----------------------------------
+    //  autoPanEnabled
+    //----------------------------------
+
+    /**
+     * Indicates whether to automatically pan the map to view the full popup when it opens outside
+     * the bounds of the {@link module:esri/views/View}.
+     *
+     * @type {Boolean}
+     * @default
+     * @ignore
+     */
+    autoPanEnabled: true,
+
+    //----------------------------------
+    //  content
+    //----------------------------------
+
+    /**
+     * The content of the popup. When set directly on the Popup, this content is
+     * static and cannot use fields to set content templates. To set a template
+     * for the content based on field or attribute names, see
+     * {@link module:esri/PopupTemplate#content PopupTemplate.content}.
+     *
+     * @name content
+     * @instance
+     *
+     * @type {string | Node}
+     * @see [Sample - Popup Docking](../sample-code/popup-docking/index.html)
+     *
+     * @example
+     * // This sets generic instructions in the popup that will always be displayed
+     * // unless it is overridden by a PopupTemplate
+     * view.popup.content = "Click a feature on the map to view its attributes";
+     */
+    _getContentAttr: viewModelWiring.createGetterDelegate("content"),
+
+    _setContentAttr: viewModelWiring.createSetterDelegate("content"),
+
+    //----------------------------------
+    //  closeOnViewChangeEnabled
+    //----------------------------------
+
+    /**
+     * TODO
+     * @ignore
+     */
+    closeOnViewChangeEnabled: false,
+
+    //----------------------------------
+    //  dockOptions
+    //----------------------------------
+
+    /**
+     * Docking the popup allows for a better user experience, particularly when opening
+     * popups in apps on mobile devices. When a popup is "dockEnabled" it means the popup no
+     * longer points to the [selected feature](#selectedFeature) or the [location](#location)
+     * assigned to it. Rather it is placed in one of the corners of the view or to the top or bottom
+     * of it. This property allows the developer to set various options for docking the popup.
+     *
+     * See the object specification table below to override default docking properties on the popup.
+     *
+     * @type {Object}
+     * @see [Sample - Popup docking](../sample-code/popup-docking/index.html)
+     *
+     * @property {Object | boolean} breakpoint - Defines the dimensions of the {@link module:esri/views/View}
+     *                        at which to dock the popup. Set to `false` to disable docking at a breakpoint.
+     *                        <br><br>**Default:** true
+     * @property {number} breakpoint.width - The maximum width of the {@link module:esri/views/View}
+     *                        at which the popup will be set to dockEnabled automatically.
+     *                        <br><br>**Default:** 544
+     * @property {number} breakpoint.height - The maximum height of the {@link module:esri/views/View}
+     *                        at which the popup will be set to dockEnabled automatically.
+     *                        <br><br>**Default:** 544
+     * @property {boolean} buttonEnabled - If `true`, displays the dock button. If `false`, hides the dock
+     *                         button from the popup.
+     * @property {string} position - The position in the view at which to dock the popup.
+     *                        See the table below for known values and their position in the view
+     *                        based on the view's size.
+     *                        <br><br>
+     * Known Value | View size > breakpoint | View size < breakpoint
+     * --------------- | ------------------------------- | -------------
+     * auto | top-right | bottom 100%
+     * top-left | top-left | top 100%
+     * top-center | top-center | top 100%
+     * top-right | top-right | top 100%
+     * bottom-left | bottom-left | bottom 100%
+     * bottom-center | bottom-center | bottom 100%
+     * bottom-right | bottom-right | bottom 100%
+     *
+     * **Default:** auto
+     *
+     * @example
+     * view.popup.dockOptions = {
+     *   // Disable the dock button so users cannot undock the popup
+     *   buttonEnabled: false,
+     *   // Dock the popup when the size of the view is less than or equal to 600x1000 pixels
+     *   breakpoint: {
+     *     width: 600,
+     *     height: 1000
+     *   }
+     * };
+     */
+    dockOptions: DOCK_OPTIONS,
+
+    _setDockOptionsAttr: function (newVal) {
+      var dockOptionDefaults = lang.clone(DOCK_OPTIONS);
+      var breakpoints = this.viewModel.get("view.breakpoints");
+      var viewDockSize = {};
+      if (breakpoints) {
+        viewDockSize.width = breakpoints.xsmall;
+        viewDockSize.height = breakpoints.xsmall;
+      }
+      var mixed = lang.mixin({}, dockOptionDefaults, newVal);
+      var breakpointDefaults = lang.mixin({}, dockOptionDefaults.breakpoint, viewDockSize);
+      if (mixed.breakpoint === true) {
+        mixed.breakpoint = breakpointDefaults;
+      }
+      // mixin breakpoint defaults
+      else if (typeof mixed.breakpoint === "object") {
+        mixed.breakpoint = lang.mixin({}, breakpointDefaults, mixed.breakpoint);
+      }
+      this._set("dockOptions", mixed);
+      this._toggleDockButton(mixed);
+    },
+
+    //----------------------------------
+    //  dockEnabled
+    //----------------------------------
+
+    /**
+     * Indicates whether the placement of the popup is docked to the side of the view.
+     *
+     * Docking the popup allows for a better user experience, particularly when opening
+     * popups in apps on mobile devices. When a popup is "dockEnabled" it means the popup no
+     * longer points to the [selected feature](#selectedFeature) or the [location](#location)
+     * assigned to it. Rather it is attached to a side, the top, or the bottom of the view.
+     *
+     * See [dockOptions](#dockOptions) to override default options related to docking the popup.
+     *
+     * @type {Boolean}
+     * @default false
+     * @see [Sample - Popup docking](../sample-code/popup-docking/index.html)
+     *
+     * @example
+     * // The popup will automatically be dockEnabled when made visible
+     * view.popup.dockEnabled = true;
+     */
+    dockEnabled: false,
+
+    _setDockEnabledAttr: function (newVal) {
+      this._set("dockEnabled", newVal);
+      this._togglePopupDocking(newVal);
+      this._togglePopupLocationRepositioning(this.visible);
+      this.reposition();
+    },
+
+    //----------------------------------
+    //  currentDockPosition
+    //----------------------------------
+
+    /**
+     * The position in the {@link module:esri/views/View} at which to the popup is dockEnabled.
+     *
+     * **Known Values:** top-left | top-center | top-right | bottom-left | bottom-center | bottom-right
+     *
+     * @type {string}
+     * @readonly
+     */
+    currentDockPosition: null,
+
+    //----------------------------------
+    //  featureCount
+    //----------------------------------
+
+    /**
+     * The number of selected [features](#features) available to the popup.
+     *
+     * @name featureCount
+     * @instance
+     *
+     * @type {Number}
+     * @default 0
+     * @readonly
+     */
+    _getFeatureCountAttr: viewModelWiring.createGetterDelegate("featureCount"),
+
+    _setFeatureCountAttr: viewModelWiring.createSetterDelegate("featureCount"),
+
+    //----------------------------------
+    //  features
+    //----------------------------------
+
+    /**
+     * An array of features associated with the popup. Each graphic in this array must
+     * have a valid {@link module:esri/PopupTemplate} set. They may share the same
+     * {@link module:esri/PopupTemplate} or have unique
+     * {@link module:esri/PopupTemplate PopupTemplates} depending on their attributes.
+     * The [content](#content) and [title](#title)
+     * of the poup is set based on the `content` and `title` properties of each graphic's respective
+     * {@link module:esri/PopupTemplate}.
+     *
+     * When more than one graphic exists in this array, the current content of the
+     * Popup is set based on the value of the [selected feature](#selectedFeature).
+     *
+     * This value is `null` if no features are associated with the popup.
+     *
+     * @name features
+     * @instance
+     *
+     * @type {module:esri/Graphic[]}
+     * @see [Sample - IdentifyTask](../sample-code/tasks-identify/index.html)
+     *
+     * @example
+     * // When setting the features property, the graphics pushed to this property
+     * // must have a PopupTemplate set.
+     * var g1 = new Graphic();
+     * g1.popupTemplate = new PopupTemplate({
+     *   title: "Results title",
+     *   content: "Results: {ATTRIBUTE_NAME}"
+     * });
+     * // Set the graphics as an array to the popup instance. The content and title of
+     * // the popup will be set depending on the PopupTemplate of the graphics.
+     * // Each graphic may share the same PopupTemplate or have a unique PopupTemplate
+     * var graphics = [g1, g2, g3, g4, g5];
+     * view.popup.features = graphics;
+     */
+    _getFeaturesAttr: viewModelWiring.createGetterDelegate("features"),
+
+    _setFeaturesAttr: viewModelWiring.createSetterDelegate("features"),
+
+    //----------------------------------
+    //  location
+    //----------------------------------
+
+    /**
+     * Geometry used to position the popup. This is automatically set when viewing the
+     * popup by selecting a feature. If using the Popup to display content not related
+     * to features in the map, such as the results from a task, then you must set this
+     * property before making the popup [visible](#visible) to the user.
+     *
+     * @name location
+     * @instance
+     *
+     * @type {module:esri/geometry/Geometry}
+     * @see [Get started with popups](../sample-code/get-started-popup/index.html)
+     * @see [Sample - Identify Task](../sample-code/tasks-identify/index.html)
+     *
+     * @example
+     * // Sets the location of the popup to the center of the view
+     * view.popup.location = view.center;
+     * // Displays the popup
+     * view.popup.visible = true;
+     *
+     * @example
+     * // Sets the location of the popup to the location of a click on the view
+     * view.on("click", function(evt){
+     *   view.popup.location = evt.mapPoint;
+     *   // Displays the popup
+     *   view.popup.visible = true;
+     * });
+     */
+    _getLocationAttr: viewModelWiring.createGetterDelegate("location"),
+
+    _setLocationAttr: viewModelWiring.createSetterDelegate("location"),
+
+    //----------------------------------
+    //  messageEnabled
+    //----------------------------------
+
+    /**
+     * Indicates whether to display a message that no features
+     * were found when an asynchronous task returns zero results.
+     *
+     * @type {boolean}
+     * @default
+     * @ignore
+     */
+    messageEnabled: true,
+
+    _setMessageEnabledAttr: function (newVal) {
+      this._set("messageEnabled", newVal);
+      this._createMessage(newVal, this.viewModel.view);
+    },
+
+    //----------------------------------
+    //  paginationEnabled
+    //----------------------------------
+
+    /**
+     * Shows pagination for the popup if available. This allows the user to
+     * scroll through various [selected features](#features) using either
+     * arrows
+     *
+     * ![popup-pagination-arrows](../assets/img/apiref/widgets/popup-pagination-arrows.png)
+     *
+     * or a menu.
+     *
+     * ![popup-pagination-menu](../assets/img/apiref/widgets/popup-pagination-menu.png)
+     *
+     * @type {Boolean}
+     * @default
+     * @see [Sample - IdentifyTask](../sample-code/tasks-identify/index.html)
+     * @ignore
+     */
+    paginationEnabled: true,
+
+    _setPaginationEnabledAttr: function (newVal) {
+      var viewModel = this.viewModel;
+      this._set("paginationEnabled", newVal);
+      this._updatePagination(viewModel.features, viewModel.selectedFeatureIndex);
+      this._updateFooterVisibility(viewModel.features, viewModel.actions);
+      this.reposition();
+    },
+
+    //----------------------------------
+    //  promises
+    //----------------------------------
+
+    /**
+     * An array of pending Promises that have not yet been fulfilled. If there are
+     * no pending promises, the value is `null`. When the pending promises are
+     * resolved they are removed from this array and the features they return
+     * are pushed into the [features](#features) array.
+     *
+     * @name promises
+     * @instance
+     *
+     * @type {Promise[]}
+     */
+    _getPromisesAttr: viewModelWiring.createGetterDelegate("promises"),
+
+    _setPromisesAttr: viewModelWiring.createSetterDelegate("promises"),
+
+    //----------------------------------
+    //  selectedFeature
+    //----------------------------------
+
+    /**
+     * The selected feature accessed by the popup. The content of the Popup is
+     * determined based on the {@link module:esri/PopupTemplate} assigned to
+     * this feature.
+     *
+     * @name selectedFeature
+     * @instance
+     *
+     * @type {module:esri/Graphic}
+     * @readonly
+     */
+    _getSelectedFeatureAttr: viewModelWiring.createGetterDelegate("selectedFeature"),
+
+    _setSelectedFeatureAttr: viewModelWiring.createSetterDelegate("selectedFeature"),
+
+    //----------------------------------
+    //  selectedFeatureIndex
+    //----------------------------------
+
+    /**
+     * Index of the feature that is [selected](#selectedFeature). When [features](#features) are set,
+     * the first index is automatically selected.
+     *
+     * @name selectedFeatureIndex
+     * @instance
+     *
+     * @type {Number}
+     */
+    _getSelectedFeatureIndexAttr: viewModelWiring.createGetterDelegate("selectedFeatureIndex"),
+
+    _setSelectedFeatureIndexAttr: viewModelWiring.createSetterDelegate("selectedFeatureIndex"),
+
+    //----------------------------------
+    //  spinnerEnabled
+    //----------------------------------
+
+    /**
+     * Indicates whether to display a spinner at the popup location prior to its
+     * display when it has pending promises.
+     *
+     * @type {boolean}
+     * @default
+     * @ignore
+     */
+    spinnerEnabled: true,
+
+    _setSpinnerEnabledAttr: function (newVal) {
+      this._set("spinnerEnabled", newVal);
+      this._createSpinner(newVal, this.viewModel.view);
+    },
+
+    //----------------------------------
+    //  title
+    //----------------------------------
+
+    /**
+     * The title of the popup. This can be set generically on the popup no
+     * matter the features that are selected. If the [selected feature](#selectedFeature)
+     * has a {@link module:esri/PopupTemplate}, then the title set in the
+     * corresponding template is used here.
+     *
+     * @name title
+     * @instance
+     *
+     * @type {String}
+     *
+     * @example
+     * // This title will display in the popup unless a selected feature's
+     * // PopupTemplate overrides it
+     * view.popup.title = "Population by zip codes in Southern California";
+     */
+    _getTitleAttr: viewModelWiring.createGetterDelegate("title"),
+
+    _setTitleAttr: viewModelWiring.createSetterDelegate("title"),
+
+    //----------------------------------
+    //  view
+    //----------------------------------
+
+    /**
+     * A reference to the {@link module:esri/views/MapView MapView} or {@link module:esri/views/Scene SceneView}. Set this to link the widget to a specific view.
+     *
+     * @name view
+     * @instance
+     *
+     * @type {module:esri/views/MapView | module:esri/views/SceneView}
+     */
+    _getViewAttr: viewModelWiring.createGetterDelegate("view"),
+
+    _setViewAttr: viewModelWiring.createSetterDelegate("view"),
+
+    //----------------------------------
+    //  visible
+    //----------------------------------
+
+    /**
+     * Displays the popup in the view. The popup will only display if the view's size
+     * constraints in [dockOptions](#dockOptions) are met or the [location](#location)
+     * property is set to a geometry.
+     *
+     * @type {Boolean}
+     * @default false
+     * @see [Sample - Advanced Popup](../sample-code/popup-advanced/index.html)
+     * @see [Popup.open()](#open)
+     *
+     * @example
+     * // Sets the location of the popup to the center of the view
+     * view.popup.location = view.center;
+     * // Displays the popup
+     * view.popup.visible = true;
+     *
+     * @example
+     * // Sets the location of the popup to the location of a click on the view
+     * view.on("click", function(evt){
+     *   view.popup.location = evt.mapPoint;
+     *   // Displays the popup
+     *   view.popup.visible = true;
+     * });
+     *
+     * @example
+     * // Hides the popup from the view
+     * view.popup.visible = false;
+     */
+    visible: false,
+
+    _setVisibleAttr: function (newVal) {
+      this._set("visible", newVal);
+      domClass.remove(this._containerNode, CSS.menuOpen);
+      domClass.toggle(this.domNode, CSS.invisible, !newVal);
+      this._togglePopupLocationRepositioning(newVal);
+      this._toggleContentVisibility(newVal);
+      this.reposition();
+    },
+
+    //--------------------------------------------------------------------------
+    //
+    //  Variables
+    //
+    //--------------------------------------------------------------------------
+
+    _css: CSS,
+
+    _i18n: i18n,
+
+    _hideActionsTextNum: 3,
+
+    _animationDelay: 10,
+
+    _popupRendererVMs: [],
+
+    //--------------------------------------------------------------------------
+    //
+    //  Public Methods
+    //
+    //--------------------------------------------------------------------------
+
+    /**
+     * Removes [promises](#promises), [features](#features), [content](#content),
+     * [title](#title) and [location](#location) from the Popup.
+     *
+     * @method
+     */
+    clear: viewModelWiring.createMethodDelegate("clear"),
+
+    /**
+     * Closes the popup by setting its [visible](#visible) property to `false`.
+     */
+    close: function () {
+      this.set("visible", false);
+    },
+
+    /**
+     * Selects the feature at the next index in relation to the selected feature.
+     *
+     * @method
+     *
+     * @see [selectedFeatureIndex](#selectedFeatureIndex)
+     *
+     * @return {module:esri/widgets/Popup/PopupViewModel} Returns an instance of the popup's view model.
+     */
+    next: viewModelWiring.createMethodDelegate("next"),
+
+    /**
+     * Selects the feature at the previous index in relation to the selected feature.
+     *
+     * @method
+     *
+     * @see [selectedFeatureIndex](#selectedFeatureIndex)
+     *
+     * @return {module:esri/widgets/Popup/PopupViewModel} Returns an instance of the popup's view model.
+     */
+    previous: viewModelWiring.createMethodDelegate("previous"),
+
+    /**
+     * Positions the popup on the view.
+     * Moves the popup into the view's extent if the popup is partially or fully outside
+     * the view's extent.
+     *
+     * If the popup is partially out of view, the view will move to fully show the popup.
+     * If the popup is fully out of view, the view will move to the popup's location.
+     */
+    reposition: function () {
+      this._positionPopup();
+      return this._moveIntoView();
+    },
+
+    /**
+     * Opens the popup at the given location with content defined either explicitly with `content`
+     * or driven from the {@link module:esri/PopupTemplate} of input features. This method sets
+     * the popup's [visible](#visible) property to `true`.
+     *
+     * @param {Object} [options] - Defines the location and content of the popup when opened.
+     * @param {string} [options.title] - Sets the [title](#title) of the popup.
+     * @param {string} [options.content] - Sets the the [content](#content) of the popup.
+     * @param {module:esri/geometry/Geometry} [options.location] - Sets the popup's [location](#location), which is the geometry used to position the popup.
+     * @param {module:esri/Graphic[]} [options.features] - Sets the popup's [features](#features), which populate the title and content of the popup based on each graphic's {@link module:esri/PopupTemplate}.
+     * @param {Promise[]} [options.promises] - Sets pending [promises](#promises) on the popup. The popup will display once the promises resolve. Each promise must resolve to an array of {@link module:esri/Graphic Graphics}.
+     * @param {Boolean} [options.updateLocationEnabled] - When `true` indicates the popup should update its [location](#location) for each paginated feature based on the [selected feature's](#selectedFeature) geometry.
+     * <br><br>**Default Value:** false
+     *
+     * @example
+     * view.on("click", function(evt){
+     *   view.popup.open({
+     *    location: evt.mapPoint,  // location of the click on the view
+     *    title: "You clicked here",  // title displayed in the popup
+     *    content: "This is a point of interest"  // content displayed in the popup
+     *   });
+     * });
+     *
+     * @example
+     * view.popup.open({
+     *   features: graphics,  // array of graphics with popupTemplate set and geometries
+     *   updateLocationEnabled: true  // updates the location of popup based on
+     *   // selected feature's geometry
+     * });
+     */
+    open: function (options) {
+      var defaultOptions = {
+        updateLocationEnabled: false
+      };
+      var setOptions = lang.mixin(defaultOptions, options);
+      this.viewModel.set(setOptions);
+      this.set("visible", true);
+    },
+
+    /**
+     * Triggers the [trigger-action](#event:trigger-action) event and executes the [action](#actions)
+     * at the specified index in the [actions](#actions) array.
+     *
+     * @param {number} actionIndex - The index of the [action](#actions) to execute.
+     *
+     * @method
+     */
+    triggerAction: viewModelWiring.createMethodDelegate("triggerAction"),
+
+    //--------------------------------------------------------------------------
+    //
+    //  Private Methods
+    //
+    //--------------------------------------------------------------------------
+
+    _actionChangeListener: function (actions) {
+      this._handleRegistry.remove(REGISTRY_KEYS.actionsChange);
+      if (actions) {
+        this._handleRegistry.add([
+          actions.on("change", function () {
+            var viewModel = this.viewModel;
+            this._updateActions(viewModel.actions, viewModel.features);
+          }.bind(this))
+        ], REGISTRY_KEYS.actionsChange);
+      }
+    },
+
+    _actionEvent: function (node) {
+      var viewModel = this.viewModel;
+      var data = domAttr.get(node, DATA_ATTRIBUTES.actionIndex);
+      if (data) {
+        var actionIndex = parseInt(data, 10);
+        viewModel.triggerAction(actionIndex);
+      }
+    },
+
+    // puts the content back into the popup when visible. Content is removed so if a video is playing it will stop.
+    _addContent: function () {
+      var viewModel = this.viewModel;
+      this._updateSelectedFeature(viewModel.selectedFeature);
+      this._updateContent(viewModel.content);
+      this._updateTitle(viewModel.title);
+      this._updatePageText(viewModel.features, viewModel.selectedFeatureIndex);
+    },
+
+    _updateActions: function (actions, features) {
+      this._updateActionButtons(actions);
+      this._updateFooterVisibility(features, actions);
+      this.reposition();
+    },
+
+    _updateActionButtons: function (actions) {
+      this._handleRegistry.remove(REGISTRY_KEYS.actions);
+
+      if (this._actionsNode) {
+
+        var frag = document.createDocumentFragment();
+
+        var totalActions = actions.length;
+        if (totalActions) {
+
+          actions.forEach(function (action, i) {
+            // set the default classes zoom action
+            if (action.id === ZOOM_TO_ACTION_ID) {
+              action.title = this._i18n.zoom;
+              action.className = CSS.zoomIcon;
+            }
+            // create action button
+            var actionNode = domConstruct.create("div", {
+              tabindex: "0",
+              title: action.title
+            }, frag);
+            domAttr.set(actionNode, DATA_ATTRIBUTES.actionIndex, i);
+            domClass.add(actionNode, [CSS.btn, CSS.action]);
+            // icon
+            var iconNode = domConstruct.create("span", {
+              "aria-hidden": true
+            }, actionNode);
+            domClass.add(iconNode, CSS.icon);
+            if (action.className) {
+              domClass.add(iconNode, action.className);
+            }
+            if (action.image) {
+              domClass.add(iconNode, CSS.actionImage);
+              domStyle.set(iconNode, "background-image", "url(" + action.image + ")");
+            }
+            // text
+            var actionsText = {
+              className: CSS.actionText,
+              textContent: action.title
+            };
+            // hide action text if more than or equal to X actions are shown
+            if (totalActions >= this._hideActionsTextNum) {
+              actionsText.className = CSS.iconText;
+            }
+            var actionTextNode = domConstruct.create("span", actionsText, actionNode);
+            // action listeners
+            this._handleRegistry.add([
+              watchUtils.init(action, "visible", function (value) {
+                domClass.toggle(actionNode, CSS.hidden, !value);
+              }),
+
+              watchUtils.init(action, "className", function (value, oldValue) {
+                domClass.remove(iconNode, oldValue);
+                domClass.add(iconNode, value);
+              }),
+
+              watchUtils.init(action, "image", function (value) {
+                domClass.toggle(iconNode, CSS.actionImage, !!value);
+                domStyle.set(iconNode, "background-image", value ? "url(" + value + ")" : "");
+              }),
+
+              watchUtils.init(action, "title", function (value) {
+                var text = value || "";
+                domAttr.set(actionNode, "title", text);
+                domAttr.set(actionTextNode, "textContent", text);
+              })
+
+            ], REGISTRY_KEYS.actions);
+          }, this);
+
+        }
+
+        domConstruct.place(frag, this._actionsNode, "only");
+
+      }
+    },
+
+    _getLocationScreenPoint: function () {
+      var viewModel = this.viewModel;
+      var screenPoint;
+      if (viewModel.location && this.visible) {
+        // get feature location
+        var point = viewModel.location;
+        // if we have the info we need
+        if (point && viewModel.get("view.ready")) {
+          // get screen point
+          screenPoint = viewModel.view.toScreen(point);
+        }
+      }
+      return screenPoint;
+    },
+
+    // sets popup position
+    _calculatePosition: function (screenPoint, sizes) {
+      var totalHeight, totalWidth, top, left, bottom, right;
+      if (screenPoint && sizes) {
+        var pointerHeight = sizes.pointer.h;
+        var pointerWidth = sizes.pointer.w;
+        // height of popup and tail
+        totalHeight = sizes.popup.h;
+        var alignmentPositions = ALIGNMENT_POSITIONS;
+        if (sizes.alignment === alignmentPositions.top || sizes.alignment === alignmentPositions.bottom) {
+          totalHeight = totalHeight + pointerHeight;
+        }
+        totalWidth = sizes.popup.w;
+        if (sizes.alignment === alignmentPositions.left || sizes.alignment === alignmentPositions.right) {
+          totalWidth = totalWidth + pointerWidth;
+        }
+        switch (sizes.alignment) {
+        case alignmentPositions.bottom:
+          top = screenPoint.y + pointerHeight;
+          left = screenPoint.x - (totalWidth / 2);
+          bottom = screenPoint.y + totalHeight;
+          right = left + totalWidth;
+          break;
+        case alignmentPositions.left:
+          top = screenPoint.y - (totalHeight / 2);
+          left = screenPoint.x - totalWidth;
+          bottom = top + totalHeight;
+          right = left + totalWidth;
+          break;
+        case alignmentPositions.right:
+          top = screenPoint.y - (totalHeight / 2);
+          left = screenPoint.x + pointerWidth;
+          bottom = top + totalHeight;
+          right = screenPoint.x + totalWidth;
+          break;
+        default:
+          // screen screenPoint minus (popup height + pointer height)
+          top = screenPoint.y - totalHeight;
+          // screen screenPoint minus 1/2 popup width
+          left = screenPoint.x - (totalWidth / 2);
+          // top position plus height of popup
+          bottom = top + totalHeight;
+          // left position plus width of popup
+          right = left + totalWidth;
+        }
+        return {
+          height: totalHeight,
+          width: totalWidth,
+          top: top,
+          left: left,
+          bottom: bottom,
+          right: right
+        };
+      }
+    },
+
+    _createPopupRendererVMs: function (features) {
+      this._destroyPopupRendererVMs();
+      if (features && features.length > 1) {
+        features.forEach(function (feature, i) {
+          var prvm = new PopupRendererViewModel({
+            contentEnabled: false,
+            graphic: feature
+          });
+          this._popupRendererVMs.push(prvm);
+        }, this);
+      }
+    },
+
+    _destroyPopupRendererVMs: function () {
+      this._handleRegistry.remove(REGISTRY_KEYS.paginationTitles);
+      this._popupRendererVMs.forEach(function (prvm) {
+        prvm.destroy();
+      });
+      this._popupRendererVMs.length = 0;
+    },
+
+    _createPaginationNodes: function (features, selectedFeatureIndex) {
+      this._handleRegistry.remove(REGISTRY_KEYS.paginationTitles);
+      if (features) {
+        var totalFeatures = features.length;
+        if (this._paginationNode) {
+          domAttr.set(this._paginationNode, "innerHTML", "");
+        }
+        if (totalFeatures > 1) {
+          var infoText = esriLang.substitute({
+            total: totalFeatures
+          }, this._i18n.selectedFeatures);
+          domAttr.set(this._pageMenuInfoNode, "textContent", infoText);
+          features.forEach(function (feature, i) {
+            var title = this._i18n.untitled;
+            var item = domConstruct.create("li", {
+              role: "menu-item",
+              className: CSS.pageMenuItem
+            }, this._paginationNode);
+            if (i === selectedFeatureIndex) {
+              domAttr.set(item, "aria-label", i18n.selectedFeature);
+              domClass.add(item, CSS.pageMenuSelected);
+            }
+            else {
+              domAttr.set(item, DATA_ATTRIBUTES.featureIndex, i);
+            }
+            // title
+            var itemTitle = domConstruct.create("span", {
+              className: CSS.pageMenuTitle,
+              innerHTML: title
+            }, item);
+            var prvm = this._popupRendererVMs[i];
+            if (prvm) {
+              var watchTitle = watchUtils.init(prvm, "title", function (value) {
+                domAttr.set(itemTitle, "innerHTML", value);
+              });
+              this._handleRegistry.add(watchTitle, REGISTRY_KEYS.paginationTitles);
+            }
+            if (i === selectedFeatureIndex) {
+              domConstruct.create("span", {
+                className: CSS.pageMenuCheckMark
+              }, itemTitle);
+            }
+          }, this);
+        }
+      }
+    },
+
+    _createMessage: function (enabled, view) {
+      this._destroyMessage();
+      if (enabled && view) {
+        this._message = new Message({
+          visible: false,
+          text: this._i18n.noFeaturesFound,
+          viewModel: {
+            view: view
+          }
+        });
+        this._message.startup();
+        domConstruct.place(this._message.domNode, view.root);
+      }
+    },
+
+    _createSpinner: function (enabled, view) {
+      this._destroySpinner();
+      if (enabled && view) {
+        this._spinner = new Spinner({
+          visible: false,
+          viewModel: {
+            view: view
+          }
+        });
+        this._spinner.startup();
+        domConstruct.place(this._spinner.domNode, view.root);
+      }
+    },
+
+    _updateContent: function (content) {
+      // content is a node
+      if (content && content.nodeName) {
+        // move node into storage div.
+        // Note: IE does not like it when you empty a div that has a widget in it.
+        domConstruct.place(content, this._contentStorage);
+        // replace body content with new content
+        domConstruct.place(content, this._bodyContentNode, "only");
+      }
+      // content is a html string
+      else if (typeof content === "string") {
+        this._destroyPopupRenderer();
+        domAttr.set(this._bodyContentNode, "innerHTML", content);
+      }
+      // scroll to top of div
+      this._bodyContentNode.scrollTop = 0;
+      var isPopupRenderer = !!(this._popupRenderer && this._popupRenderer.viewModel.content === content);
+      domClass.toggle(this._containerNode, CSS.hasPopupRenderer, isPopupRenderer);
+      domClass.toggle(this._containerNode, CSS.showContent, !!content);
+      domClass.remove(this._containerNode, CSS.menuOpen);
+    },
+
+    _destroyPopupRenderer: function () {
+      // destroy popup renderer if it exists
+      if (this._popupRenderer && !this._popupRenderer._destroyed) {
+        // remove popup renderer listeners
+        this._handleRegistry.remove(REGISTRY_KEYS.popupRenderer);
+        this._popupRenderer.destroy();
+        this._popupRenderer = null;
+      }
+    },
+
+    _destroyMessage: function () {
+      if (this._message) {
+        this._message.destroyRendering();
+        this._message.destroy();
+        this._message = null;
+      }
+    },
+
+    _destroySpinner: function () {
+      if (this._spinner) {
+        this._spinner.destroyRendering();
+        this._spinner.destroy();
+        this._spinner = null;
+      }
+    },
+
+    _setDockEnabledForViewSize: function (dockOptions) {
+      // responsive dock is enabled and we need to switch dockEnabled state
+      if (dockOptions.breakpoint) {
+        this.set("dockEnabled", this._shouldDockAtCurrentViewSize(dockOptions));
+      }
+    },
+
+    _togglePopupDocking: function (dockEnabled) {
+      domClass.remove(this._containerNode, CSS.menuOpen);
+      domClass.toggle(this._containerNode, CSS.docked, !!dockEnabled);
+      domAttr.set(this._dockNode, "title", dockEnabled ? this._i18n.undock : this._i18n.dock);
+      this._updateDockPosition(this.dockOptions);
+    },
+
+    _dockingThresholdCrossed: function (newSize, oldSize, dockingThreshold) {
+      var currWidth = newSize[0],
+        currHeight = newSize[1],
+        prevWidth = oldSize[0],
+        prevHeight = oldSize[1],
+        dockingWidth = dockingThreshold.width,
+        dockingHeight = dockingThreshold.height;
+      return (currWidth <= dockingWidth && prevWidth > dockingWidth) ||
+        (currWidth > dockingWidth && prevWidth <= dockingWidth) ||
+        (currHeight <= dockingHeight && prevHeight > dockingHeight) ||
+        (currHeight > dockingHeight && prevHeight <= dockingHeight);
+    },
+
+    _determineDockPosition: function (dockPos) {
+      var viewModel = this.viewModel;
+      var view = viewModel.view;
+      var viewPadding = view && view.padding;
+      var viewWidth = view && view.width - viewPadding.left - viewPadding.right;
+      var breakpoints = view && viewModel.get("view.breakpoints");
+      if (breakpoints && viewWidth <= breakpoints.xsmall) {
+        return dockPos.bottomCenter;
+      }
+      else {
+        var RTL_DIRECTION = !this.isLeftToRight();
+        return RTL_DIRECTION ? dockPos.topLeft : dockPos.topRight;
+      }
+    },
+
+    _updateDockPosition: function (dockOptions) {
+      domClass.remove(this._containerNode, [CSS.dockedTopLeft, CSS.dockedTopCenter, CSS.dockedTopRight, CSS.dockedBottomLeft, CSS.dockedBottomCenter, CSS.dockedBottomRight, CSS.dockToTop, CSS.dockToBottom, CSS.dockToLeft, CSS.dockToRight]);
+      var position, positionClass, dockToClass;
+      var dockPos = DOCK_POSITIONS;
+      var currentPosition = dockOptions.position;
+      if (currentPosition === dockPos.auto) {
+        position = this._determineDockPosition(dockPos);
+      }
+      else {
+        position = currentPosition;
+      }
+      switch (position) {
+      case dockPos.topLeft:
+        positionClass = CSS.dockedTopLeft;
+        dockToClass = CSS.dockToLeft;
+        break;
+      case dockPos.topCenter:
+        positionClass = CSS.dockedTopCenter;
+        dockToClass = CSS.dockToTop;
+        break;
+      case dockPos.bottomLeft:
+        positionClass = CSS.dockedBottomLeft;
+        dockToClass = CSS.dockToLeft;
+        break;
+      case dockPos.bottomCenter:
+        positionClass = CSS.dockedBottomCenter;
+        dockToClass = CSS.dockToBottom;
+        break;
+      case dockPos.bottomRight:
+        positionClass = CSS.dockedBottomRight;
+        dockToClass = CSS.dockToRight;
+        break;
+      default:
+        positionClass = CSS.dockedTopRight;
+        dockToClass = CSS.dockToRight;
+      }
+      domClass.toggle(this._containerNode, dockToClass, !!dockOptions.buttonEnabled);
+      if (this.dockEnabled) {
+        domClass.add(this._containerNode, positionClass);
+        this._set("currentDockPosition", position);
+      }
+      else {
+        this._set("currentDockPosition", null);
+      }
+      // resize popup renderer for charts
+      if (this._popupRenderer) {
+        this._popupRenderer.resize();
+      }
+      this.reposition();
+    },
+
+    _toggleDockButton: function (dockOptions) {
+      var containerNode = this._containerNode;
+      domClass.toggle(containerNode, CSS.showDock, !!dockOptions.buttonEnabled);
+      domClass.toggle(containerNode, CSS.docked, !!this.dockEnabled);
+      this._updateDockPosition(dockOptions);
+    },
+
+    _updateFooterVisibility: function (features, actions) {
+      var showFooter = this._isPaginationEnabled(features) || (actions && actions.length);
+      domClass.toggle(this._containerNode, CSS.showFooter, !!showFooter);
+    },
+
+    _isPaginationEnabled: function (features) {
+      return this.paginationEnabled && features && features.length > 1;
+    },
+
+    _updatePagination: function (features, selectedFeatureIndex) {
+      this._updatePageText(features, selectedFeatureIndex);
+      this._createPaginationNodes(features, selectedFeatureIndex);
+      domClass.toggle(this._containerNode, CSS.showPagination, this._isPaginationEnabled(features));
+    },
+
+    _displayPendingFeaturesStatus: function (pendingPromisesCount, featureCount, promises, point) {
+      var waitingForResult = pendingPromisesCount > 0 && featureCount === 0;
+
+      // Hide popup if we have pending promises that are the same size of promises.
+      if (pendingPromisesCount && promises.length && pendingPromisesCount === promises.length) {
+        this.set("visible", false);
+      }
+      domClass.toggle(this._containerNode, CSS.pendingPromises, !!pendingPromisesCount);
+      domClass.toggle(this._containerNode, CSS.pendingPromisesResult, !!waitingForResult);
+      domClass.toggle(this._containerNode, CSS.hasPromiseFeatures, !!featureCount);
+      if (this._message) {
+        // hide message
+        this._message.set({
+          visible: false
+        });
+      }
+      // we have promises happening and we have a location
+      if (waitingForResult) {
+        if (this._spinner) {
+          // show loading spinner
+          this._spinner.set({
+            visible: true
+          });
+          this._spinner.viewModel.point = point;
+        }
+      }
+      // no promises happening
+      else {
+        if (this._spinner) {
+          // hide loading spinner
+          this._spinner.viewModel.point = null;
+        }
+        if (featureCount && !this.visible) {
+          // we have features now, but previously there were no features.
+          this.set("visible", true);
+        }
+        // if we have no features and promises
+        if (!featureCount && promises && promises.length) {
+          if (this._message) {
+            // show no features message
+            this._message.set({
+              visible: true
+            });
+            this._message.viewModel.point = point;
+          }
+        }
+      }
+    },
+
+    _moveIntoView: function () {
+      // new animation
+      var def = new Deferred();
+      // delay animation
+      setTimeout(def.resolve.bind(this), this._animationDelay);
+      // after delay, perform animateTo
+      return def.then(function () {
+        if (this._destroyed) {
+          return;
+        }
+        var viewModel = this.viewModel;
+        var view = this.get("viewModel.view");
+        // return if we have no view
+        if (!viewModel || !view || !view.stationary) {
+          return;
+        }
+        var screenPoint = this._getLocationScreenPoint();
+        if (!screenPoint) {
+          return;
+        }
+        else {
+          var sizes = this._sizePopup();
+          var pos = this._calculatePosition(screenPoint, sizes);
+          // view box
+          var viewWidth = view.width;
+          var viewHeight = view.height;
+          var viewPadding = view.padding;
+          // view UI Box
+          var uiPadding = view.ui.padding;
+          if (this.autoPanEnabled) {
+            // point of the location is not in UI view
+            if (
+              screenPoint.y < (viewPadding.top) ||
+              screenPoint.y > (viewHeight - viewPadding.bottom) ||
+              screenPoint.x < (viewPadding.left) ||
+              screenPoint.x > (viewWidth - viewPadding.right)
+            ) {
+              return viewModel.centerAtLocation();
+            }
+            // popup not dockEnabled, we have a position and popup fits inside of the view
+            else if (!this.dockEnabled && pos && pos.width < view.width && pos.height < view.height) {
+              // offsets
+              var dx = 0;
+              var dy = 0;
+              if (pos.top < viewPadding.top) {
+                // popup is above view
+                dy = -(pos.top) + uiPadding.top + viewPadding.top;
+              }
+              else if (pos.bottom > (viewHeight - viewPadding.bottom)) {
+                // popup is below view
+                dy = -(pos.bottom - viewHeight + viewPadding.bottom) - uiPadding.bottom;
+              }
+              if (pos.left < viewPadding.left) {
+                // popup is left of view
+                dx = pos.left - uiPadding.left - viewPadding.left;
+              }
+              else if (pos.right > (viewWidth - viewPadding.right)) {
+                // popup is right of view
+                dx = (pos.right - viewWidth + viewPadding.right) + uiPadding.right;
+              }
+              // we have offsets to do
+              if (dx || dy) {
+                // get offset point
+                var viewPoint = viewpointUtils.translateBy(
+                  viewpointUtils.create(),
+                  view.viewpoint, [dx, dy]
+                );
+                // animate to offset point
+                return view.goTo(viewPoint, viewModel.animationOptions);
+              }
+            }
+            else {
+              return;
+            }
+          }
+          else {
+            return;
+          }
+        }
+      }.bind(this));
+    },
+
+    _positionPopup: function () {
+      var viewModel = this.viewModel;
+      var view = viewModel.view;
+      if (view) {
+        // remove alignment classes
+        domClass.remove(this._containerNode, [CSS.top, CSS.bottom, CSS.left, CSS.right]);
+        // add alignment class
+        var alignmentClass;
+        switch (this.alignment) {
+        case ALIGNMENT_POSITIONS.bottom:
+          alignmentClass = CSS.bottom;
+          break;
+        case ALIGNMENT_POSITIONS.right:
+          alignmentClass = CSS.right;
+          break;
+        case ALIGNMENT_POSITIONS.left:
+          alignmentClass = CSS.left;
+          break;
+        default:
+          alignmentClass = CSS.top;
+        }
+        domClass.add(this._containerNode, alignmentClass);
+        var screenPoint = this._getLocationScreenPoint();
+        var sizes = this._sizePopup();
+        var position = this._calculatePosition(screenPoint, sizes);
+        if (position) {
+          var positionStyle;
+          var padding = view.padding;
+          // if popup is dockEnabled
+          if (this.dockEnabled) {
+            positionStyle = {
+              left: padding.left ? padding.left + "px" : "",
+              top: padding.top ? padding.top + "px" : "",
+              right: padding.right ? padding.right + "px" : "",
+              bottom: padding.bottom ? padding.bottom + "px" : ""
+            };
+          }
+          else {
+            positionStyle = {
+              left: position.left + "px",
+              top: position.top + "px",
+              right: "",
+              bottom: ""
+            };
+          }
+          // Place popup at the right positionStyle
+          domStyle.set(this._containerNode, positionStyle);
+        }
+      }
+    },
+
+    // removes content from the popup when the popup is hidden. This is so any video playing will stop.
+    _removeContent: function () {
+      this._destroyPopupRenderer();
+      domAttr.set(this._bodyContentNode, "innerHTML", "");
+      domAttr.set(this._titleNode, "innerHTML", "");
+      domAttr.set(this._pageTextNode, "innerHTML", "");
+      domAttr.set(this._pageTextDockedNode, "innerHTML", "");
+      domClass.remove(this._containerNode, [CSS.showTitle, CSS.showContent]);
+    },
+
+    _keyupFeature: function (evt, target) {
+      var keyCode = evt.keyCode;
+      if (keyCode === keys.UP_ARROW || keyCode === keys.DOWN_ARROW) {
+        evt.stopPropagation();
+        evt.preventDefault();
+        // get all list items
+        var lists = query("li", this._paginationNode);
+        var totalItems = lists.length;
+        var itemIndex = lists.indexOf(target);
+        var focusItemIndex;
+        // up arrow key pressed
+        if (keyCode === keys.UP_ARROW) {
+          // set focus to previous item
+          focusItemIndex = itemIndex - 1;
+        }
+        // down arrow key pressed
+        else if (keyCode === keys.DOWN_ARROW) {
+          // set focus to next item
+          focusItemIndex = itemIndex + 1;
+        }
+        if (focusItemIndex < 0) {
+          // set focus to last item
+          focusItemIndex = totalItems - 1;
+        }
+        else if (focusItemIndex >= totalItems) {
+          // set focus to first item
+          focusItemIndex = 0;
+        }
+        lists[focusItemIndex].focus();
+      }
+    },
+
+    _selectFeature: function (target) {
+      var viewModel = this.viewModel;
+      var index = -1;
+      var dataIndex = domAttr.get(target, DATA_ATTRIBUTES.featureIndex);
+      if (dataIndex) {
+        index = parseInt(dataIndex, 10);
+      }
+      if (index !== -1) {
+        viewModel.selectedFeatureIndex = index;
+      }
+      domClass.remove(this._containerNode, CSS.menuOpen);
+      this._pageMenuNode.focus();
+    },
+
+    _updateSelectedFeature: function (selectedFeature) {
+      var viewModel = this.viewModel;
+      var layer, layerId = "",
+        layerName = "";
+      if (selectedFeature) {
+        layer = selectedFeature.layer;
+        if (layer) {
+          layerId = layer.id || "";
+          layerName = layer.name || "";
+        }
+        // create popup renderer if it doesn't exist
+        if (!this._popupRenderer || (this._popupRenderer && this._popupRenderer._destroyed)) {
+          this._handleRegistry.remove(REGISTRY_KEYS.popupRenderer);
+          this._popupRenderer = new PopupRenderer();
+          // change popup title if popup renderer title changes
+          var titleWatcher = this._popupRenderer.viewModel.watch("title", function (value) {
+            viewModel.title = value;
+          });
+          var contentWatcher = this._popupRenderer.viewModel.watch("content", function (value) {
+            viewModel.content = value ? this._popupRenderer.domNode : null;
+          }.bind(this));
+          var resizeListener = on(this._popupRenderer, "resize", this.reposition.bind(this));
+          this._handleRegistry.add([titleWatcher, contentWatcher, resizeListener], REGISTRY_KEYS.popupRenderer);
+          // do it!
+          this._popupRenderer.startup();
+        }
+        this._popupRenderer.viewModel.graphic = selectedFeature;
+      }
+      // toggle class to enable a feature change CSS animation
+      this._toggleFeatureUpdatedClass();
+      domAttr.set(this._containerNode, DATA_ATTRIBUTES.layerName, layerName);
+      domAttr.set(this._containerNode, DATA_ATTRIBUTES.layerId, layerId);
+      this.reposition();
+    },
+
+    _updateFeatures: function (features) {
+      var viewModel = this.viewModel;
+      this._createPopupRendererVMs(features);
+      this._updatePagination(features, viewModel.selectedFeatureIndex);
+      this._updateFooterVisibility(features, viewModel.actions);
+      this.reposition();
+    },
+
+    _shouldDockAtCurrentViewSize: function (dockOptions) {
+      var viewModel = this.viewModel;
+      var breakpoint = dockOptions.breakpoint;
+      return viewModel.view && (
+        (breakpoint.hasOwnProperty("width") && viewModel.view.ui.width <= breakpoint.width) ||
+        (breakpoint.hasOwnProperty("height") && viewModel.view.ui.height <= breakpoint.height));
+    },
+
+    _sizePopup: function () {
+      // size of popup node
+      var popupNodeSize = domGeometry.getContentBox(this._containerNode);
+      // size of popup pointer tail node
+      var pointerNodeSize = domGeometry.getContentBox(this._pointerNode);
+      // prepare object for delivery
+      var sizes = {
+        alignment: this.alignment,
+        popup: popupNodeSize,
+        pointer: pointerNodeSize
+      };
+      return sizes;
+    },
+
+    _updateTitle: function (title) {
+      title = title || "";
+      domAttr.set(this._titleNode, "innerHTML", title);
+      domClass.toggle(this._containerNode, CSS.showTitle, !!title);
+      domClass.remove(this._containerNode, CSS.menuOpen);
+    },
+
+    _toggleDock: function () {
+      this.set("dockEnabled", !this.dockEnabled);
+    },
+
+    _togglePageMenu: function () {
+      domClass.toggle(this._containerNode, CSS.menuOpen);
+      var isOpen = domClass.contains(this._containerNode, CSS.menuOpen);
+      domAttr.set(this._pageMenuSectionNode, "aria-hidden", !isOpen);
+      var lists = query("li", this._paginationNode);
+      var firstItem = lists[0];
+      lists.forEach(function (list) {
+        domAttr.set(list, "tabIndex", isOpen ? "0" : "");
+      });
+      if (!isOpen) {
+        this._pageMenuNode.focus();
+      }
+      else if (firstItem) {
+        firstItem.focus();
+      }
+    },
+
+    _updatePageText: function (features, selectedFeatureIndex) {
+      var pageString = "";
+      if (this._isPaginationEnabled(features)) {
+        pageString = esriLang.substitute({
+          index: selectedFeatureIndex + 1,
+          total: features.length
+        }, this._i18n.pageText);
+      }
+      if (this._pageTextNode) {
+        domAttr.set(this._pageTextNode, {
+          textContent: pageString
+        });
+      }
+      if (this._pageTextDockedNode) {
+        domAttr.set(this._pageTextDockedNode, {
+          textContent: pageString
+        });
+      }
+    },
+
+    _toggleFeatureUpdatedClass: function () {
+      domClass.remove(this._containerNode, CSS.featureUpdated);
+
+      // -> triggering reflow /* The actual magic */
+      // without this it wouldn't work. Try uncommenting the line and the transition won't be retriggered.
+      // https://css-tricks.com/restart-css-animation/
+      this._containerNode.offsetWidth = this._containerNode.offsetWidth;
+
+      domClass.add(this._containerNode, CSS.featureUpdated);
+    },
+
+    _viewPointChanged: function () {
+      if (this.closeOnViewChangeEnabled) {
+        this.close();
+      }
+      else {
+        this._positionPopup();
+      }
+    },
+
+    _wireUpView: function (view) {
+      // clean up view handlers
+      this._handleRegistry.remove(REGISTRY_KEYS.view);
+      this._viewPointEvent = null;
+      // If we have a view
+      if (view) {
+        // note: viewPoint may change to use visible for 3D cc @yann
+        var viewWatchProp = "viewpoint";
+        if (view.type === "3d") {
+          viewWatchProp = "camera";
+        }
+        // create view listeners
+        this._viewPointEvent = watchUtils.pausable(view, viewWatchProp, this._viewPointChanged.bind(this));
+        this._handleRegistry.add([
+          view.watch("padding", this.reposition.bind(this)),
+          view.watch("size", this._updateDockEnabledForViewSize.bind(this)),
+          on(view, "resize", this.reposition.bind(this)),
+          this._viewPointEvent
+        ], REGISTRY_KEYS.view);
+        // update viewpoint watch status
+        this._togglePopupLocationRepositioning(this.visible);
+        // create widgets
+        this._createMessage(this.messageEnabled, view);
+        this._createSpinner(this.spinnerEnabled, view);
+        // set initial docking state based on the view's size
+        this._setDockEnabledForViewSize(this.dockOptions);
+        this._toggleDockButton(this.dockOptions);
+        // position any existing popup
+        this.reposition();
+      }
+    },
+
+    _updateDockEnabledForViewSize: function (newSize, oldSize) {
+      var viewPadding = this.get("viewModel.view.padding");
+      var widthPadding = viewPadding.left + viewPadding.right;
+      var heightPadding = viewPadding.top + viewPadding.bottom;
+      var newUISize = [],
+        oldUISize = [];
+      newUISize[0] = newSize[0] - widthPadding;
+      newUISize[1] = newSize[1] - heightPadding;
+      oldUISize[0] = oldSize[0] - widthPadding;
+      oldUISize[1] = oldSize[1] - heightPadding;
+      /*
+        When the size of the view changes, check to see if we need to switch the dockEnabled state
+      */
+      var dockOptions = this.dockOptions;
+      var breakpoint = dockOptions.breakpoint;
+      if (this._dockingThresholdCrossed(newUISize, oldUISize, breakpoint)) {
+        this._setDockEnabledForViewSize(dockOptions);
+      }
+      this._updateDockPosition(dockOptions);
+    },
+
+    _togglePopupLocationRepositioning: function (visible) {
+      /*
+        For best performance, don't watch the viewpoint if the popup is not visible, has no location or is dockEnabled.
+      */
+      var viewModel = this.viewModel;
+      if (!this._viewPointEvent) {
+        return;
+      }
+      if (visible && viewModel.location && !this.dockEnabled) {
+        this._viewPointEvent.resume();
+      }
+      else {
+        this._viewPointEvent.pause();
+      }
+    },
+
+    _toggleContentVisibility: function (visible) {
+      /*
+        Only have the domNode in the document when the popup is visible.
+        This will ensure that if a video is playing in the popup when closed, the video is removed and stopped, not just hidden.
+      */
+      if (!visible) {
+        this._removeContent();
+      }
+      else {
+        this._addContent();
+      }
+    }
+
+  });
+
+  return Popup;
+});

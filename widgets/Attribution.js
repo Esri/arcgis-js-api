@@ -46,5 +46,195 @@
  * @see {@link module:esri/views/View#ui View.ui}
  * @see module:esri/views/ui/DefaultUI
  */
+define([
+  "../core/watchUtils",
 
-define(["../core/watchUtils","./Attribution/AttributionViewModel","./support/viewModelWiring","./Widget","dijit/_TemplatedMixin","dijit/a11yclick","dojo/dom-attr","dojo/dom-class","dojo/on","dojo/text!./Attribution/templates/Attribution.html"],function(t,e,i,s,o,r,n,a,d,u){var c={base:"esri-attribution",poweredBy:"esri-attribution__powered-by",sources:"esri-attribution__sources",open:"esri-attribution--open",sourcesOpen:"esri-attribution__sources--open",link:"esri-attribution__link",clearFix:"esri-clearfix",interactive:"esri-interactive",hidden:"esri-hidden"},h=s.createSubclass([o],{properties:{viewModel:{type:e},view:{dependsOn:["viewModel.view"]}},declaredClass:"esri.widgets.Attribution",baseClass:c.base,templateString:u,constructor:function(){this._attributionTextWatcher=this._attributionTextWatcher.bind(this),this._updateStatus=this._updateStatus.bind(this)},postCreate:function(){this.inherited(arguments),this.own(d(this._sourcesNode,r,this._toggleOpenState.bind(this)),t.init(this.viewModel,"view.size",this._updateStatus),t.init(this.viewModel,"attributionText",this._attributionTextWatcher))},_css:c,_getViewAttr:i.createGetterDelegate("view"),_setViewAttr:i.createSetterDelegate("view"),_attributionTextWatcher:function(t){this._sourcesNode.innerHTML=t,this._updateStatus()},_updateStatus:function(){var t=this.domNode,e=this._sourcesNode,i=a.contains(t,c.open);a.remove(t,c.open),a.remove(e,c.sourcesOpen),a.remove(e,c.interactive),n.set(e,{tabIndex:"",role:""}),this._hasOverflowingText()&&(a.add(e,c.interactive),i&&(a.add(t,c.open),a.add(e,c.sourcesOpen)),n.set(e,{tabIndex:0,role:"button"}))},_hasOverflowingText:function(){var t=this._sourcesNode;return t.scrollWidth>t.clientWidth},_toggleOpenState:function(){a.contains(this._sourcesNode,c.interactive)&&a.toggle(this.domNode,c.open),this._updateStatus()}});return h});
+  "./Attribution/AttributionViewModel",
+
+  "./support/viewModelWiring",
+
+  "./Widget",
+
+  "dijit/_TemplatedMixin",
+  "dijit/a11yclick",
+
+  "dojo/dom-attr",
+  "dojo/dom-class",
+  "dojo/on",
+
+  "dojo/text!./Attribution/templates/Attribution.html"
+],
+function(
+  watchUtils,
+  AttributionViewModel,
+  viewModelWiring,
+  Widget,
+  _TemplatedMixin, a11yclick,
+  domAttr, domClass, on,
+  templateString
+) {
+
+  var CSS = {
+    base: "esri-attribution",
+    poweredBy: "esri-attribution__powered-by",
+    sources: "esri-attribution__sources",
+    open: "esri-attribution--open",
+    sourcesOpen: "esri-attribution__sources--open",
+    link: "esri-attribution__link",
+
+    // common.css
+    clearFix: "esri-clearfix",
+    interactive: "esri-interactive",
+    hidden: "esri-hidden"
+  };
+
+  /**
+   * @extends module:esri/widgets/Widget
+   * @constructor module:esri/widgets/Attribution
+   * @param {Object} [properties] - See the [properties](#properties) for a list of all the properties
+   *                                 that may be passed into the constructor.
+   * @param {string | Node} [srcNodeRef] - Reference or ID of the HTML element in which this widget renders.
+   */
+  var Attribution = Widget.createSubclass([_TemplatedMixin],
+    /** @lends module:esri/widgets/Attribution.prototype */
+    {
+
+      properties: {
+        viewModel: {
+          type: AttributionViewModel
+        },
+        view: {
+          dependsOn: ["viewModel.view"]
+        }
+      },
+
+      declaredClass: "esri.widgets.Attribution",
+
+      baseClass: CSS.base,
+
+      templateString: templateString,
+
+      //--------------------------------------------------------------------------
+      //
+      //  Lifecycle
+      //
+      //--------------------------------------------------------------------------
+
+      constructor: function () {
+        this._attributionTextWatcher = this._attributionTextWatcher.bind(this);
+        this._updateStatus = this._updateStatus.bind(this);
+      },
+
+      postCreate: function () {
+        this.inherited(arguments);
+
+        this.own(
+          on(this._sourcesNode, a11yclick, this._toggleOpenState.bind(this)),
+
+          watchUtils.init(this.viewModel, "view.size", this._updateStatus),
+          watchUtils.init(this.viewModel, "attributionText", this._attributionTextWatcher)
+        );
+      },
+
+      //--------------------------------------------------------------------------
+      //
+      //  Variables
+      //
+      //--------------------------------------------------------------------------
+
+      _css: CSS,
+
+      //--------------------------------------------------------------------------
+      //
+      //  Properties
+      //
+      //--------------------------------------------------------------------------
+
+      //----------------------------------
+      //  view
+      //----------------------------------
+
+      /**
+       * A reference to the {@link module:esri/views/MapView MapView} or {@link module:esri/views/Scene SceneView}. Set this to link the widget to a specific view.
+       *
+       * @type {(module:esri/views/SceneView|module:esri/views/MapView)}
+       * @name view
+       * @instance
+       */
+      _getViewAttr: viewModelWiring.createGetterDelegate("view"),
+
+      _setViewAttr: viewModelWiring.createSetterDelegate("view"),
+
+      //----------------------------------
+      //  viewModel
+      //----------------------------------
+
+      /**
+       * The view model for this widget. This is a class that contains all the logic
+       * (properties and methods) that controls this widget's behavior. See the
+       * {@link module:esri/widgets/Attribution/AttributionViewModel} class to access
+       * all properties and methods on the widget.
+       *
+       * @name viewModel
+       * @instance
+       * @autocast
+       * @type {module:esri/widgets/Attribution/AttributionViewModel}
+       */
+
+      //--------------------------------------------------------------------------
+      //
+      //  Private Methods
+      //
+      //--------------------------------------------------------------------------
+
+      _attributionTextWatcher: function (value) {
+        this._sourcesNode.innerHTML = value;
+        this._updateStatus();
+      },
+
+      _updateStatus: function () {
+        var domNode       = this.domNode,
+            sourcesNode   = this._sourcesNode,
+            currentlyOpen = domClass.contains(domNode, CSS.open);
+
+        domClass.remove(domNode, CSS.open);
+        domClass.remove(sourcesNode, CSS.sourcesOpen);
+        domClass.remove(sourcesNode, CSS.interactive);
+        domAttr.set(sourcesNode, {
+          tabIndex: "",
+          role: ""
+        });
+
+        if (this._hasOverflowingText()) {
+          domClass.add(sourcesNode, CSS.interactive);
+
+          if (currentlyOpen) {
+            domClass.add(domNode, CSS.open);
+            domClass.add(sourcesNode, CSS.sourcesOpen);
+          }
+
+          domAttr.set(sourcesNode, {
+            tabIndex: 0,
+            role: "button"
+          });
+        }
+      },
+
+      _hasOverflowingText: function() {
+        var sourcesNode = this._sourcesNode;
+
+        return sourcesNode.scrollWidth > sourcesNode.clientWidth;
+      },
+
+      _toggleOpenState: function() {
+        if (domClass.contains(this._sourcesNode, CSS.interactive)) {
+          domClass.toggle(this.domNode, CSS.open);
+        }
+        this._updateStatus();
+      }
+
+    });
+
+  return Attribution;
+
+});
