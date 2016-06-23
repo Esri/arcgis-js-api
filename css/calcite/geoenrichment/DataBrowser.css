@@ -7,6 +7,11 @@
 @import url(VariableInfo.css);
 @import url(Pagination.css);
 
+.calcite.esriAnalysisEnrichDataBrowser {
+    height: 480px;
+    width: 720px;
+}
+
 .calcite .DataBrowser {
     -moz-user-select: none;
     -ms-user-select: none;
@@ -34,9 +39,17 @@
     display: inline-block;
     vertical-align: middle;
     position: relative;
-    top: -0.14em;
 }
 
 .calcite .VarLabel {
     padding: 0.5em;
+}
+
+.calcite .Wizard_Link {
+  color: #2892CD;
+  cursor: pointer;
+}
+
+.calcite.esriAnalysisEnrichDataBrowser .dijitLayoutContainer.dijitContainer.Grid {
+	height: 480px;
 }

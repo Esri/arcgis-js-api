@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="32px"
+	 height="32px" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve">
+<g id="Icons">
+	<circle fill="#808284" cx="16.064" cy="5" r="5"/>
+	<path fill="#E6E7E8" d="M20.064,5c0,2.207-1.792,4-3.997,4c-2.211,0-4.003-1.793-4.003-4c0-2.209,1.792-4,4.003-4
+		C18.272,1,20.064,2.791,20.064,5z"/>
+	<path fill-rule="evenodd" clip-rule="evenodd" fill="#808284" d="M22,11H10c-1.656,0-3,1.343-3,3v12c0,1.104,0.895,2,2,2h1v3
+		c0,0.553,0.447,1,1,1h10c0.553,0,1-0.447,1-1v-3h1c1.104,0,2-0.896,2-2V14C25,12.343,23.656,11,22,11z"/>
+	<path fill-rule="evenodd" clip-rule="evenodd" fill="#E6E7E8" d="M22,12H10c-1.105,0-2,0.896-2,2v12c0,0.553,0.447,1,1,1h2v4h10v-4
+		h2c0.553,0,1-0.447,1-1V14C24,12.896,23.104,12,22,12z"/>
+	<rect x="10" y="15" fill-rule="evenodd" clip-rule="evenodd" fill="#939598" width="1" height="12"/>
+	<rect x="21" y="15" fill-rule="evenodd" clip-rule="evenodd" fill="#939598" width="1" height="12"/>
+</g>
+<g id="Icon_Name">
+</g>
+</svg>

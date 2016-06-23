@@ -1,10 +1,13 @@
-
 .ShoppingCart {
     z-index: 100;
     position: absolute;
     top: 10px;
     right: 20px;
     cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 .dj_rtl .ShoppingCart {
@@ -13,10 +16,16 @@
 }
 
 .ShoppingCart .Label {
+    border:0;
+    border-collapse:collapse;   
     height: 25px;
-    position: absolute;
+    position:absolute;
     right: 0;
     z-index: 101;
+}
+
+.ShoppingCart td {
+    padding:0px;
 }
 
 .dj_rtl .Label {
@@ -24,10 +33,11 @@
     right:auto;
 }
 
-
-.ShoppingCart_CounterTD {
+.ShoppingCart .ShoppingCart_CounterTD {
     white-space: nowrap;
     padding-bottom:0.3em;
+    padding-left:4px;
+    padding-right:4px;
 }
 
 .ShoppingCart_CounterTD > div {
@@ -47,7 +57,6 @@
 
     -webkit-transform: translateX(-2px) rotate(30deg); 
     -webkit-transform-origin: right bottom;
-    
 }
 
 .dj_rtl .ShoppingCart_CounterDivRightBorder {
@@ -60,7 +69,6 @@
     -webkit-transform: translateX(2px) rotate(-30deg); 
     -webkit-transform-origin: left bottom;
 }
-
 
 .ShoppingCart_CounterDivLeftBorder  {
     border-left: 2px solid #d4d4d4;
@@ -87,55 +95,56 @@
     -webkit-transform-origin: right bottom;
 }
 
-
 .ShoppingCart_CounterDiv {
     border-bottom: 2px solid #d4d4d4;
-    padding-left:4px;
-    padding-right:4px;
+    padding-left:0;
+    padding-right:0;
 }
 
-.ShoppingCart div.ShoppingCart_OuterDiv {
-    height:235px; 
+.ShoppingCart .ShoppingCart_OuterDiv {
+    height:207px; 
     width:302px; 
     position:absolute;
     right:-2px;
-    top:-3px;
+    top:25px;
 }
 
-.dj_rtl .ShoppingCart div.ShoppingCart_OuterDiv {
+.dj_rtl .ShoppingCart .ShoppingCart_OuterDiv {
     left:-2px;
     right:auto;
 }
 
-
-.ShoppingCart div.ShoppingCart_DivList {
+.ShoppingCart .ShoppingCart_DivList {
     background-color:white;
     height:200px; 
     width:300px; 
     right:0;
-    top:32px;
+    top:4px;
     -webkit-box-shadow: 2px 2px 6px #9e9e9e;
     box-shadow: 2px 2px 6px #9e9e9e;
 }
 
-.ShoppingCart div.ShoppingCart_DivEmpty {
-    height:100%;
-    width:100%;
+.ShoppingCart .ShoppingCart_DivEmpty {
+    height:200px;
+    width:300px;
     color:#666666;
     font-size:1.1em;
     text-align:center;
     position:absolute;
-    top:0;
+    top:4px;
     display:table;
-    padding-top:32px;
 }
 
-.ShoppingCart div.ShoppingCart_DivEmpty div {
+.ShoppingCart .ShoppingCart_DivEmpty div {
     display:table-cell;
     width:100%;
     height:100%;
     vertical-align:middle;
-    padding:30px;
+    padding: 10px 30px;
+}
+
+.ShoppingCart .dgrid-content {
+    height: 190px;
 }
 
 .ShoppingCart .dgrid-scroller {
@@ -144,15 +153,14 @@
 }
 
 .ShoppingCart .ShoppingCart_LabelTd {
-    padding-left: 9px;
     font-size:0.9em;
+    text-align: center;
+    padding: 0 2px 0 6px;
 }
 
 .dj_rtl .ShoppingCart .ShoppingCart_LabelTd {
-    padding-right: 9px;
-    padding-left:0;
+    padding: 0 6px 0 6px;
 }
-
 
 .ShoppingCart .ShoppingCart_LabelTd div {
    display:inline-block;
@@ -160,52 +168,49 @@
    line-height:12px; 
 }
 
-.ShoppingCart div.ShoppingCartRowOuter
-{
-    position:relative;
-    padding:5px;
-}
-
-.ShoppingCart div.ShoppingCartRow
-{
-    position:relative;
-    color:white;
-	border: 1px solid white;
-    background-color:#f99e19;
-    line-height: 30px;
-    padding-left: 5px;
-}
-
-.ShoppingCart div.ShoppingCartRowLabel {
-    padding-right:20px;
-}
-
-.dj_rtl .ShoppingCart div.ShoppingCartRowLabel {
-    padding-right:initial;
-    padding-left:20px;
-}
-
-
 .ShoppingCart .ShoppingCartOpener {
-    color: #b1b1b1;
     line-height: 22px;
     font-size:0.8em;
 }
 
-.ShoppingCart .ShoppingCartRowCloser
-{
+.ShoppingCart .ShoppingCartRow {
+    color:white;
+    background-color:#f99e19;
+    height: 34px;
+    padding: 0px 5px;
+    margin: 5px;
+}
+
+.ShoppingCart .ShoppingCartRowLabel {
+    line-height: 34px;
+    vertical-align:middle;
+}
+
+.ShoppingCart .ShoppingCartRowSpacer {
+    width: 3px;
+}
+
+.ShoppingCart .ShoppingCartRowCloser {
     background-image:  url('./images/CloseIconforSelectedVariables.png');
     background-position: center;
     background-repeat: no-repeat;
     width:15px;
     height:15px;
-    position:absolute;
-    top:8px;
-    right:5px;
+    position:relative;
+    top:10px;
     display:inline-block;
+    cursor: pointer;
 }
 
-.dj_rtl .ShoppingCart .ShoppingCartRowCloser {
-    right:auto;
-    left:5px;
+.ShoppingCart .VariableToggleButtonGroup {
+    position:relative;
+    top:8px;
+}
+
+.ShoppingCart .ShoppingCartRowFloatEnd {
+    float: right;
+}
+
+.dj_rtl .ShoppingCart .ShoppingCartRowFloatEnd {
+    float: left;
 }

@@ -1,10 +1,15 @@
 .Pagination {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 .Pagination_PageAndArrows {
     position: absolute;
     top: 0;
-    bottom: 45px;
+    bottom: 30px;
     left: 0;
     right: 0;
 }
@@ -20,49 +25,53 @@
     background-repeat: no-repeat;
 }
 
+.Pagination_TriangleDisabled {
+    cursor: default !important;
+}
+
 .Pagination_TriangleBack {
     background: url(./images/leftArrow_Normal.png) no-repeat right center;
     left:0;
-    float:left;
     margin-left:20px;
+    margin-right:0;
 }
 
 .dj_rtl .Pagination_TriangleBack {
     background-image: url(./images/rightArrow_Normal.png);
-    float:right;
+    left:auto;
     right:0;
-    margin-left:auto;
+    margin-left:0;
     margin-right:20px;
 }
 
-.Pagination_TriangleBack:hover {
+.Pagination_TriangleBack.Pagination_TriangleEnabled:hover {
     background-image: url(./images/leftArrow_hover.png);
 }
 
-.dj_rtl .Pagination_TriangleBack:hover {
+.dj_rtl .Pagination_TriangleBack.Pagination_TriangleEnabled:hover {
     background-image: url(./images/rightArrow_hover.png);
 }
 
 .Pagination_TriangleForward {
     background: url(./images/rightArrow_Normal.png) no-repeat left center;
-    float:right;
     right:0;
+    margin-left:0;
     margin-right:20px;
 }
 
 .dj_rtl .Pagination_TriangleForward {
     background-image: url(./images/leftArrow_Normal.png);
+    right:auto;
     left:0;
-    float:left;
     margin-left:20px;
-    margin-right:auto;
+    margin-right:0;
 }
 
-.Pagination_TriangleForward:hover {
+.Pagination_TriangleForward.Pagination_TriangleEnabled:hover {
     background-image: url(./images/rightArrow_hover.png);
 }
 
-.dj_rtl .Pagination_TriangleForward:hover {
+.dj_rtl .Pagination_TriangleForward.Pagination_TriangleEnabled:hover {
     background-image: url(./images/leftArrow_hover.png);
 }
 
@@ -71,33 +80,50 @@
     position: absolute;
     top: 0;
     bottom: 0;
-
-    left: 50px;
-    right: 50px;
+    left: 40px;
+    right: 40px;
 }
 
 .Pagination_Bullets {
     position: absolute;
-    bottom: 0px;
-    left: 80px;
-    right: 80px;
-
-    height: 45px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
     overflow: hidden;
     white-space: nowrap;
     text-align: center;
-    color:#d1d1d1;
 }
 
 .Pagination_Bullet {
-    font-size: 30px;
-    font-weight: bold;
-    margin: 0 3px;
+    display: inline-block;
+    vertical-align: top;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #d1d1d1;
+    margin: 10px 7px;
     cursor: pointer;
 }
 
+.touch .Pagination_Bullet {
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    margin: 7px 4px;
+}
+
+.Pagination_Bullet:hover {
+    background-color: #b9b9b9;
+}
+
 .Pagination_BulletCurrent {
-    color: #898989;
+    background-color: #898989 !important;
+    cursor: default !important;
+}
+
+.Pagination_BulletCurrent:hover {
+    background-color: #898989 !important;
 }
 
 .Pagination_SlideAnim {

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="32px"
+	 height="32px" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve">
+<g id="Icons">
+	<path fill="#808284" d="M8.485,2.2L0,10.686l13.435,13.435l8.485-8.485L8.485,2.2z M1.202,10.686l7.283-7.283l12.233,12.233
+		l-7.283,7.283L1.202,10.686z"/>
+	<path fill="#FFFFFF" d="M19.351,13.065c-0.326,0.054-0.642,0.138-0.936,0.266l2.304,2.304L16,20.354v1.202l5.92-5.92L19.351,13.065
+		z"/>
+	<circle fill="#808284" cx="8.5" cy="7.5" r="0.864"/>
+	<circle fill="#808284" cx="5.5" cy="10.5" r="0.864"/>
+	<circle fill="#808284" cx="16.5" cy="15.5" r="0.864"/>
+	<circle fill="#808284" cx="13.5" cy="18.5" r="0.768"/>
+	
+		<ellipse transform="matrix(0.7071 0.7071 -0.7071 0.7071 12.3878 -3.9218)" fill="#808284" cx="10.928" cy="12.992" rx="2.303" ry="2.879"/>
+	<g>
+		<circle fill="#808284" cx="24" cy="9" r="4"/>
+		<circle fill="#E6E7E8" cx="24" cy="9" r="3"/>
+		<path fill="#808284" d="M28,14h-8c-1.657,0-3,1.343-3,3v8c0,1.104,0.895,2,2,2h1v2c0,0.553,0.447,1,1,1h6c0.553,0,1-0.447,1-1v-2
+			h1c1.104,0,2-0.896,2-2v-8C31,15.343,29.657,14,28,14z"/>
+		<path fill="#E6E7E8" d="M28,15h-8c-1.105,0-2,0.896-2,2v6v2c0,0.553,0.447,1,1,1h2v3h6v-3h2c0.553,0,1-0.447,1-1v-2v-6
+			C30,15.896,29.104,15,28,15z"/>
+		<rect x="20" y="18" fill="#939598" width="1" height="8"/>
+		<rect x="27" y="18" fill="#939598" width="1" height="8"/>
+	</g>
+</g>
+<g id="Icon_Name">
+</g>
+</svg>

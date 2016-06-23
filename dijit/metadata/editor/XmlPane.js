@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.17/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/dom-style","dojo/has","../base/Templated","dojo/text!./templates/XmlPane.html","dojo/i18n!../nls/i18nBase","../../../kernel"],function(e,t,s,n,i,l,a,d){var o=e([i],{templateString:l,xmlString:null,xmlTitle:null,postCreate:function(){this.inherited(arguments)},setXml:function(e,n){"undefined"==typeof e?e=null:null!==e&&(e=t.trim(e),0===e.length&&(e=null)),null===e?(s.set(this.textAreaNode,"display","none"),this.setNodeText(this.messageNode,a.editor.noMetadata),s.set(this.messageNode,"display","")):(this.messageNode.innerHTML="",s.set(this.messageNode,"display","none"),s.set(this.textAreaNode,"display","")),this.xmlString=e,this.xmlTitle=n,this.textAreaNode.value=e}});return n("extend-esri")&&t.setObject("dijit.metadata.editor.XmlPane",o,d),o});

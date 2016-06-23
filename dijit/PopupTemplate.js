@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.17/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","dojo/dom-construct","../kernel","../InfoTemplate","../PopupInfo","./PopupRenderer"],function(e,t,i,n,o,a,r,s){var c=e([a,r],{declaredClass:"esri.dijit.PopupTemplate","-chains-":{constructor:"manual"},chartTheme:null,constructor:function(e,i){t.mixin(this,i),this.initialize(e,i)},getTitle:function(e){var t;return this.info&&(t=this.titleHasRelatedFields?"":this._getPopupValues(e,!0).title),t||""},getContent:function(e){return this.info?new s({template:this,graphic:e,chartTheme:this.chartTheme},n.create("div")).domNode:""}});return i("extend-esri")&&t.setObject("dijit.PopupTemplate",c,o),c});

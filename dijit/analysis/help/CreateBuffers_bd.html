@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Create Buffers</h2><p/>
+        <h2><img src="./images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" alt="Create Buffers"></h2>
+        <hr/>
+    <p>A buffer is an area that covers a given distance from a point, line, or area feature.
+
+    </p>
+    <p>Buffers are typically used to create areas that can be further analyzed using other tools such as Aggregate Points. For example, if the question is &quot;What buildings are within one mile of the school?&quot;, the answer can be found by creating a one-mile buffer around the school and overlaying the buffer with the layer containing building footprints. The end result is a layer of those buildings within one mile of the school.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Choose layer to apply buffer to</h2></div>
+        <hr/>
+        <div>
+            <p>The  point, polyline or polygon features
+to be buffered. You can optionally browse for a big data file share dataset or  feature layer.
+            </p>
+        </div>
+    </div>
+    <div id="BufferType">
+        <div><h2>Select the type of buffer to apply</h2></div>
+        <hr/>
+        <div>
+            <p>There are three different ways you can buffer your input features. You can buffer using a 
+                <ul>
+                    <li> <b>Distance</b>, where the same distance is applied to all features.
+                    </li>
+                    <li>You can specify an attribute on the input layer that contains the distance value by a  <b>Field</b>. You can use a string field or a numeric field. If linear unit is not defined, the units of the spatial reference will be used. If you are using a geographic coordinate system, the unitless field will be assumed to be meters.
+                    </li>
+                    <li>You can build an expressions with multiple fields and mathematical operators. When building an expression, you must use fields that are numeric, and the units will be assumed to be the same as the spatial reference. The equation must begin with an equal sign.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Select the buffer method</h2></div>
+        <hr/>
+        <div>
+            <p>You can choose to use a  <b>Planar</b> method or a <b>Geodesic</b> method. The <b>Planar</b> method may be faster, and is appropriate for local analysis on projected data. The <b>Geodesic</b> method is appropriate for 
+large areas, and any geographic coordinate system.
+            </p>
+        </div>
+    </div>
+    <div id="dissolveOption">
+        <div><h2>Select the type of dissolve method</h2></div>
+        <hr/>
+        <div>
+            <p>You may optionally dissolve your attributes. If you select to dissolve all attributes or dissolve on a field you will be given the option of creating multipart or single part outputs. Dissolving aggregates features using the specified statistics.
+            </p>
+        </div>
+    </div>
+    <div id="multipart">
+        <div><h2>Allow multipart features</h2></div>
+        <hr/>
+        <div>
+            <p>You can allow for multipart features. Single part features are the default.
+
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Result layer name</h2></div>
+        <hr/>
+        <div>
+            <p>This is the name of the layer that will be created in  <b>My
+Content</b> and added to the map. The default name is based on the
+tool name and the input layer name. If the layer already exists,
+you will be asked to provide another name.
+            </p>
+            <p>Using the  <b>Save result in</b> drop-down box, you can specify
+the name of a folder in <b>My Content</b> where the result will be
+saved.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

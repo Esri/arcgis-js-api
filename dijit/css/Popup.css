@@ -7,6 +7,9 @@
   border-radius: 5px;
   -webkit-border-radius: 5px;
 }
+.dj_rtl .esriPopup{
+  text-align: right;
+}
 .esriPopup .esriPopupWrapper {
   box-shadow: 0 0 0.75em #777777;
   -webkit-box-shadow: 0 0 0.75em #777777;
@@ -60,6 +63,11 @@
 .esriPopup.blueTheme .titlePane .spinner {
   background: url(../images/ajax-loader-blue.gif) no-repeat;
 }
+.esriPopupHidden,
+.esriPopupHidden * {
+  visibility: hidden !important; 
+}
+
 
 
 .dj_ie7 .esriPopup .titlePane .spinner.hidden,

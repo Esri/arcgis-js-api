@@ -1,15 +1,15 @@
-<div class="${baseClass}" >
-  <div id= "${gridBorderContainerId}" class="esri-feature-table-border-container" data-dojo-attach-point= "_gridBorderContainer" data-dojo-type="dijit.layout.BorderContainer" gutters="false">
-    <div id= "${gridHeaderId}" class="esri-feature-table-content-pane esri-feature-table-menu" data-dojo-attach-point= "_gridHeaderNode" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'top'">
+<div>
+  <div class="esri-feature-table-border-container" data-dojo-attach-point= "_gridBorderContainer" data-dojo-type="dijit.layout.BorderContainer" gutters="false">
+    <div class="esri-feature-table-content-pane esri-feature-table-menu" data-dojo-attach-point= "_gridHeaderNode" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'top'">
       <div class="esri-feature-table-menu-item esri-feature-table-loading-indicator" data-dojo-attach-point= "_gridLoadingIndicatorNode" style="display:none;"></div>
       <div class="esri-feature-table-menu-item esri-feature-table-title" data-dojo-attach-point= "_gridTitleNode"></div>
-      <div class="esri-feature-table-menu-item esri-feature-table-closer-container"><a class= "esri-feature-table-closer toggleOpened" data-dojo-attach-point="tableCloseButton" href="JavaScript:void(0);" title="Hide Table"></a></div>   
+      <div class="esri-feature-table-menu-item esri-feature-table-closer-container"></div>   
       <div data-dojo-attach-point= "_menuNode" class="esri-feature-table-menu-item esri-feature-table-menu-options">
-        <div id="${gridMenuNodeId}"></div>
+        <div data-dojo-attach-point= "_gridMenuNode"></div>
       </div>
     </div>
-    <div id= "${gridContentPaneId}" class="esri-feature-table-content-pane" data-dojo-attach-point= "_gridContentPane" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'center'">
-      <div id="${gridId}" class="esri-feature-table-grid" data-dojo-attach-point="_gridNode"></div>
+    <div class="esri-feature-table-content-pane" data-dojo-attach-point= "_gridContentPane" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'center'">
+      <div class="esri-feature-table-grid" data-dojo-attach-point="_gridNode"></div>
     </div>
   </div>
 </div>

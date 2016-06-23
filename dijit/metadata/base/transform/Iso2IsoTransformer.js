@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.17/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","./Transformer","../../../../kernel"],function(e,t,i,n,r,a){var o=e([n],{postCreate:function(){this.inherited(arguments)},checkTarget:function(e,t){var i=function(e,t){return-1!==e.indexOf(t,e.length-t.length)},n=e.gxePath;if("gmd:MD_Metadata"===t){if(this.toDocumentType.isGmi)return"gmi:MI_Metadata"}else if("gmi:MI_Metadata"===t){if(!this.toDocumentType.isGmi)return"gmd:MD_Metadata"}else if(this.toDocumentType.isService){if("gmd:MD_DataIdentification"===t)return"srv:SV_ServiceIdentification";if(i(n,"gmd:MD_DataIdentification/gmd:extent"))return"srv:extent"}else{if("srv:SV_ServiceIdentification"===t)return"gmd:MD_DataIdentification";if(i(n,"srv:SV_ServiceIdentification/srv:extent"))return"gmd:extent"}return t}});return i("extend-esri")&&t.setObject("dijit.metadata.base.transform.Iso2IsoTransformer",o,a),o});

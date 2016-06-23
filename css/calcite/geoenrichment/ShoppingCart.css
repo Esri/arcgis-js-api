@@ -58,7 +58,7 @@
 .calcite .ShoppingCart div.ShoppingCartRow {
     position:relative;
     color:#4D4D4D;
-	border: 1px solid #CBCBCB;
+	border: 1px solid #CBCBCB !important;
     background-color:#FFF;
     line-height: 30px;
     padding-left: 5px;
@@ -85,3 +85,12 @@
     cursor: pointer;
 }
 
+.calcite .ShoppingCart .ShoppingCartRowCloser {
+    right: 5px;
+    position: absolute;
+}
+
+.dj_rtl .calcite .ShoppingCart .ShoppingCartRowCloser {
+    left: 5px;
+    right: inherit;
+}

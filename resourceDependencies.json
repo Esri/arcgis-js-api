@@ -340,6 +340,7 @@
         "esri/dijit/geoenrichment/themes/common/*",
         "esri/dijit/geoenrichment/themes/common/AgePyramid",
         "esri/dijit/geoenrichment/themes/common/images/*",
+        "esri/dijit/geoenrichment/themes/common/images/analysis/*",
         "esri/dijit/geoenrichment/themes/common/images/dataCollections/*",
         "esri/dijit/geoenrichment/themes/common/images/tapestry/*"
         "esri/dijit/geoenrichment/themes/light/*",

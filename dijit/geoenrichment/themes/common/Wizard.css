@@ -46,25 +46,23 @@
 	right: 0;
 	bottom: 0;
 	left: 0;
+    display: none;
 }
 
-.Wizard_Loading
+.Wizard_Progress.Wizard_Loading
 {
+    display: block;
     background: url(./images/largeBusy.gif);
 	background-repeat: no-repeat;
 	background-position: center center;
 }
 
-.Wizard_Error
+.Wizard_Progress.Wizard_Error
 {
+    display: block;
 	color: red;
     padding: 7.5pt;
     background: white;
-}
-
-.Wizard_Done
-{
-	display: none;
 }
 
 .Wizard_Link
@@ -141,7 +139,7 @@
     border: none !important;
 }
 
-.EnrichOptionsPage_GridHideScroll .dgrid-scroller
+.EnrichOptionsPage_GridHideScroll .dgrid-scroller 
 {
     overflow-y: hidden !important;
 }

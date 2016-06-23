@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Aggregate Points</h2><p/>
+        <h2><img src="./images/GUID-6C1620D9-D176-41FA-8283-833D8B1CCCFC-web.png" alt="Aggregate Points"></h2>
+        <hr/>
+    <p>This tool works with a layer of
+point features  and an area. The area can optionally be an input polygon layer, or it can be a grid calculated when the tool is run. The tool first
+determines which points fall within each area. After determining
+this point-in-area spatial relationship, statistics about all
+points in the area are calculated and assigned to the area. The
+most basic statistic is the count of the number of points within
+the area, but you can get other statistics as well. 
+
+    </p>
+    <p>This tool can also work on data that is time enabled. If time is enabled on the input points, than the tools time slicing options are available. Time slicing allows you to calculate the point-in area relationship while looking at a specific slice in time. For example, you could look at hourly intervals, which would result in outputs for each hour. 
+    </p>
+    <p>For an example without time, suppose you have point features of coffee shop locations and area features of counties, and you want to summarize coffee sales by county.  Assuming the  coffee shops have a    <i>TOTAL_SALES</i> attribute, you can get the sum of all <i>TOTAL_SALES</i> within each county, the minimum or maximum <i>TOTAL_SALES</i>
+ within each county, or other statistics like the count, range, standard deviation, and variance.
+    </p>
+    <p>For an example with time, suppose you had point features of every transaction made at a coffee shop location and no polygon data set. The data has been recorded over a year, and each transaction has a location and a time stamp. Assuming each transaction has a <i>TOTAL_SALES</i> attribute, you can get the sum of all <i>TOTAL SALES</i> within the space and time of interest. If these transactions are for a single city, we could generate polygons that were one kilometer grids, and look at weekly time slices to summarize the transactions in both time and space.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="pointLayer">
+        <div><h2>Choose layer containing points to aggregate into areas</h2></div>
+        <hr/>
+        <div>
+            <p>The point layer that will be aggregated into the areas. You can optionally browse for a big data file share dataset of feature layer.
+
+            </p>
+        </div>
+    </div>
+    <div id="inputAggregation">
+        <div><h2>Choose aggregation areas</h2></div>
+        <hr/>
+        <div>
+            <p>The area that the   <b>pointLayer</b> will be aggregated into. You can choose between a <b>Polygon Layer</b> that you provide, or <b>Bins</b> that are generated when the tool runs. Both outputs will produce polygon layers.
+            </p>
+        </div>
+    </div>
+    <div id="polygonLayer">
+        <div><h2>Choose a polygon layer to aggregate into</h2></div>
+        <hr/>
+        <div>
+            <p>The polygon used to aggregate points into.
+            </p>
+            <p>Either the  <b>Distance Interval</b> or <b>Polygon Layer</b> must be set.
+            </p>
+        </div>
+    </div>
+    <div id="inputBins">
+        <div><h2>Choose a distance to generate bin and aggregate into</h2></div>
+        <hr/>
+        <div>
+            <p>The distance used to generate square bins to aggregate your input  <b>pointLayer</b> into.
+            </p>
+            <p>Either the  <b>Distance Interval</b> or <b>Polygon Layer</b> must be set.
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Aggregate using time slices (optional)</h2></div>
+        <hr/>
+        <div>
+            <p> <i>If time is not enabled on your input points, and of type instant, time slicing is not available.</i> If time is enabled on the <b>Point Layer</b> and is of type instant, then you can apply time slicing.  There are three parameters you can set when you time slice
+                <ul>
+                    <li>Time Interval
+                    </li>
+                    <li>Time Step
+                    </li>
+                    <li>Reference Time
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Imagine you had data that represented a year in time, and you wanted to aggregate it into weekly slices. To do that you would set you  <b>Time Interval</b> to <b>1 week</b>.
+            </p>
+            <p>Imagine you had data that represented a year in time, and you wanted to examine the first week of month. To do that you would set you  <b>Time Interval</b> to <b>1 week</b>, your <b>Time Step</b> to <b>1 month</b>, and your <b>Reference Time</b> to <b>January 1, at 12:00 am</b>.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>Time interval to be aggregate into</h2></div>
+        <hr/>
+        <div>
+            <p>Interval of time used for slicing the data. Time interval may be used alone, or used with the  <b>Time Step</b> or <b>Reference Time</b>.
+            </p>
+            <p>If you wanted to create time slices that took place every Monday from 9:00 am until 10:00 am. The  <b>Time Interval</b> would be one week. The <b>Time Step</b> would be one week, and the <b>Reference Time</b> would be 12:00:01 am on a Monday.
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>Time step to be aggregate into</h2></div>
+        <hr/>
+        <div>
+            <p>The step used for calculating a time step. Time step may be used alone, with a  <b>Time Interval</b>, with a <b>Reference Time</b>, or with both a <b>Time Interval</b> and <b>Reference Time</b>.
+            </p>
+            <p>If you wanted to create time slices that took place every Monday from 9:00 am until 10:00 am. The  <b>Time Interval</b> would be one week. The <b>Time Step</b> would be one week, and the <b>Reference Time</b> would be 12:00:01 am on a Monday.
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Reference time
+used to align the time slicing</h2></div>
+        <hr/>
+        <div>
+            <p>The time used to align time slicing.  <b>Time Steps</b> will start from, and continue backwards for the reference time.
+            </p>
+            <p>If you wanted to create time slices that took place every Monday from 9:00 am until 10:00 am. The  <b>Time Interval</b> would be one week. The <b>Time Step</b> would be one week, and the <b>Reference Time</b> would be 12:00:00 am on a Monday.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Add statistics (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>You can calculate statistics about attributes of numeric fields of the input layer such as: 
+                <ul>
+                    <li>count,
+                    </li>
+                    <li>mean,
+                    </li>
+                    <li>min,
+                    </li>
+                    <li>max,
+                    </li>
+                    <li>range,
+                    </li>
+                    <li>variance, and
+                    </li>
+                    <li>standard deviation.
+                    </li>
+                </ul>
+                  The resulting layer will contain a new attribute for each statistic calculated. Any number of statistics can be added by choosing an attribute and statistic.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Result layer name</h2></div>
+        <hr/>
+        <div>
+            <p>This is the name of the layer that will be created in  <b>My
+Content</b> and added to the map. The default name is based on the
+tool name and the input layer name. If the layer already exists the tool run will fail.
+            </p>
+            <p>Using the  <b>Save result in</b> drop-down box, you can specify
+the name of a folder in <b>My Content</b> where the result will be
+saved.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

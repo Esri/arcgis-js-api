@@ -44,21 +44,21 @@
         <h2>Choose Best Facilities</h2><p/>
         <h2><img src="./images/GUID-E57BEC1A-C404-436B-B389-65711FF83088-web.png" alt="Choose Best Facilities"></h2>
         <hr/>
-    <p>Choose Best Facilities allows you to choose the best locations for facilities. The tool   allocates locations with demand for the facilities, in a way that satisfies the specified goal.
+    <p>Choose Best Facilities allows you to choose the best locations for facilities. The tool   allocates locations with demand for the facilities in a way that satisfies the specified goal.
     </p>
     <p>Facilities represent locations that offer some kind of service such as fire stations, schools, libraries, stores, or distribution centers. Demand locations represent locations that have demand for the services offered by the facilities, such as census block points that summarize the population in a given area.
     </p>
-    <p>Choose Best Facilities tool can help you answer questions such as
+    <p>The Choose Best Facilities tool can help you answer questions such as
         <ul>
-            <li>How to assign neighborhoods to their closest library branch and find the number of potential patrons each branch is serving? 
+            <li>In the case of an emergency, how can  households be assigned to the correct disaster relief center, when bed capacity is limited and should not be exceeded?
             </li>
-            <li>How to find the best location for a grocery distribution center that minimizes overall travel time (and hence cost) for deliver to a chain of grocery stores?
+            <li>How can you assign neighborhoods to their closest library branch and find the number of potential patrons each branch is serving? 
             </li>
-            <li>Where a new park should be located to ensure the greatest number of the city&rsquo;s residents live within a five-minute walk of a park?
+            <li>How can you find the best location for a grocery distribution center that minimizes overall travel time (and hence cost) for delivery to a chain of grocery stores?
             </li>
-            <li>In the case of an emergency, how can  households be assigned to the correct disaster relief center, when bed capacity is limited and should not be exceededt?
+            <li>Where would a new park be located to ensure the greatest number of the city&rsquo;s residents live within a five-minute walk of a park?
             </li>
-            <li>What are the best locations for several pet stores in a county such that 40% of the county&rsquo;s pet owners are no more than a ten-minute drive from one of the stores?
+            <li>What are the best locations for several pet stores in a county such that 40 percent of the county&rsquo;s pet owners are no more than a ten-minute drive from one of the stores?
             </li>
         </ul>
         
@@ -71,7 +71,7 @@
         <div>
             <p>Specify the goal that must be satisfied when allocating demand locations to facilities.
             </p>
-            <p>Choose Best Facilities lets you specify the type of problem you&rsquo;re solving&mdash;the Goal. The tool is optimized to provide a solution for that particular goal. Regardless of the goal, essentially the same underlying method is used to reach a solution&mdash;the demand amount from a given demand location is allocated to the nearest facility. The goals vary how the interplay between distance (or time) and demand is handled. The tool considers both travel distance/time and amount of demand, and&mdash;in some cases&mdash;the capacity of the facilities. If a goal favors minimizing travel time, for example, the tool will still secondarily try to maximize demand that is allocated. Similarly, if the goal is to maximize demand allocated, the tool will do so by minimizing travel time (by assigning demand locations to the closest facility rather than just any facility).
+            <p>With Choose Best Facilities you can specify the type of problem you&rsquo;re solving&mdash;the Goal. The tool is optimized to provide a solution for that particular goal. Regardless of the goal, essentially the same underlying method is used to reach a solution&mdash;the demand amount from a given demand location is allocated to the nearest facility. The goals vary how the interplay between distance (or time) and demand is handled. The tool considers both travel distance/time and amount of demand, and&mdash;in some cases&mdash;the capacity of the facilities. If a goal favors minimizing travel time, for example, the tool will still secondarily try to maximize demand that is allocated. Similarly, if the goal is to maximize demand allocated, the tool will do so by minimizing travel time (by assigning demand locations to the closest facility rather than just any facility).
             </p>
             <p>Depending on your data and the settings you use, different goals may produce the same or similar results. However, you should specify the goal that&rsquo;s the most appropriate for your analysis.
             </p> 
@@ -105,7 +105,7 @@
             </p>
             <p>This goal chooses facilities such that the maximum amount of demand is allocated, with all the demand from each demand location allocated to the single facility closest to it.
             </p>
-            <p>A finite maximum travel range is required for this goal, otherwise, all of the demand might be assigned to a single facility. Demand locations that are beyond the distance or time of any of the facilities will not be allocated (this will show you where demand is not being met and where additional facilities may be needed).
+            <p>A finite maximum travel range is required for this goal; otherwise, all of the demand might be assigned to a single facility. Demand locations that are beyond the distance or time of any of the facilities will not be allocated (this will show you where demand is not being met and where additional facilities may be needed).
             </p> 
         </div>
     </div>
@@ -125,7 +125,7 @@
         <div>
             <p>Use this goal if you want to find out the minimum number of facilities you need to cover a given percentage of demand.
             </p>
-            <p>This goal chooses the minimum number of facilities needed to reach the specified percentage of demand. A demand location that is within the maximum travel range of two or more facilities will have its demand split proportionally between the facilities based on its distance from each. This goal is often used when people have a choice of which facility to visit and it is assumed that in general they will visit the closest facility (all other things being equal).
+            <p>This goal chooses the minimum number of facilities needed to reach the specified percentage of demand. A demand location that is within the maximum travel range of two or more facilities will have its demand split proportionally between the facilities based on its distance from each. This goal is often used when people have a choice of which facility to visit and it is assumed that, in general, they will visit the closest facility (all other things being equal).
             </p>
             <p>Unlike with the other goals that choose facilities, in which you specify how many facilities to choose, this goal chooses the number of facilities for you, based on the percentage of demand you want to meet. It assumes the facilities do not have a limited capacity.
             </p> 
@@ -138,7 +138,7 @@
             <p>As with other tools that involve travel in the analysis, you can specify whether travel is measured using distance or time, and can select from various travel modes such as walking time, driving time, rural driving distance, and so on. The available travel modes are determined by the administrator of your organization. When using Driving Time or Rural Driving Time, you can optionally include traffic for a specific day of week and time of day.
 
             </p>
-            <p>In order to accurately allocate demand locations to facilities, you specify whether travel is from the facilities to the demand locations (from fire stations to houses, for example) or from demand locations to facilities (as with patrons to libraries). Choose Best Facilities will account for direction of travel on one-way streets, whether you can turn from one street onto another, whether intersections are &quot;no left turn,&quot; and so on, depending on whether travel is outward from the facility to the demand locations, or inward from the demand locations to the facilities.
+            <p> In order to accurately allocate demand locations to facilities, you specify whether travel is from the facilities to the demand locations (from fire stations to houses, for example) or from demand locations to facilities (as with patrons to libraries). Choose Best Facilities will account for direction of travel on one-way streets, whether you can turn from one street onto another, whether intersections are no left turn, and so on, depending on whether travel is outward from the facility to the demand locations, or inward from the demand locations to the facilities.
             </p>
         </div>
     </div>
@@ -148,13 +148,13 @@
         <div>
             <p>The point features representing locations that have demand for the services offered by the facilities. The tool assigns these demand locations to the appropriate facilities based on the selected goal.
             </p>
-            <p>Demand locations have an associated amount of demand. Use a constant to specify the value if all the demand locations have the same demand. If the amount of demand varies by demand location use a field in the Demand Locations Layer to specify the value for each demand location.
+            <p>Demand locations have an associated amount of demand. Use a constant to specify the value if all the demand locations have the same demand. If the amount of demand varies by demand location, use a field in the Demand Locations Layer to specify the value for each demand location.
             </p>
-            <p>Demand will be allocated to facilities until all demand has been allocated, regardless of how far demand locations are from facilities. You can assign a maximum travel range to the Demand Locations Layer to create a cutoff distance or time-any demand locations beyond the cutoff value will not be allocated. Use a constant to specify the value if all the demand locations have the same maximum travel range. If the maximum travel range varies by demand location use a field in the Demand Locations Layer to specify the value for each demand location.
+            <p>Demand will be allocated to facilities until all demand has been allocated, regardless of how far demand locations are from facilities. You can assign a maximum travel range to the Demand Locations Layer to create a cutoff distance or time&mdash;any demand locations beyond the cutoff value will not be allocated. Use a constant to specify the value if all the demand locations have the same maximum travel range. If the maximum travel range varies by demand location, use a field in the Demand Locations Layer to specify the value for each demand location.
             </p>
             <p>If the goal type is  <b>Cover a percentage of demand</b>, you need to specify the minimum percentage of demand that you want the facilities to capture.
             </p>
-            <p class="OnlineOnly">In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
+            <p class="OnlineOnly">In addition to choosing a layer from your map, you can select  <b>Choose Living Atlas Analysis Layer</b> or <b>Choose  Analysis Layer</b> found at the bottom of the drop-down list. This opens a gallery containing a collection of layers useful for many analyses. 
             </p>
             <p>The tool supports up to 10,000 features in the Demand Locations Layer.
             </p>  
@@ -166,7 +166,7 @@
         <div>
             <p>The point features representing locations that act as facilities by providing some kind of service. Required facilities usually represent locations that already exist as compared to candidate facilities that usually represent the locations at which new facilities will be built or placed. When allocating demand locations, the tool uses the facilities in the  <b>Required Facilities Layer</b> before any facilities from the <b>Candidate Facilities Layer</b>.
             </p>
-            <p>Required facilities can have unlimited capacity (that is they can meet all the demand assigned to them) or can have limited capacity. If all the facilities have the same limited capacity (such as the number of households that a fire station can serve-say, 4000) specify a constant value. If the capacity varies between facilities (such as the number of available slots for freshmen at each high school) specify a field containing the capacity value for each facility.
+            <p>Required facilities can have unlimited capacity (that is, they can meet all the demand assigned to them) or can have limited capacity. If all the facilities have the same limited capacity (such as the number of households that a fire station can serve&mdash;say, 4,000), specify a constant value. If the capacity varies between facilities (such as the number of available slots for freshmen at each high school), specify a field containing the capacity value for each facility.
             </p>
             <p>The tool supports up to 100 features in the  <b>Required Facilities Layer</b>.
             </p>  
@@ -180,7 +180,7 @@
             </p>
             <p>Depending on your analysis goal, you need to specify the number of candidate facilities to choose from the set of candidates. If you specify both required and candidate facilities, the tool uses the facilities in the  <b>Required Facilities Layer</b> before any facilities from the <b>Candidate Facilities Layer</b>.
             </p>
-            <p>Candidate facilities can have unlimited capacity (that is they can meet all the demand assigned to them) or can have limited capacity. If all the facilities have the same limited capacity (such as the number of households that a fire station can serve-say, 4000) specify a constant value. If the capacity varies between facilities (such as the number of available slots for freshmen at each high school) specify a field containing the capacity value for each facility.
+            <p>Candidate facilities can have unlimited capacity (that is, they can meet all the demand assigned to them) or can have limited capacity. If all the facilities have the same limited capacity (such as the number of households that a fire station can serve&mdash;say, 4,000), specify a constant value. If the capacity varies between facilities (such as the number of available slots for freshmen at each high school), specify a field containing the capacity value for each facility.
             </p>
             <p>The tool supports up to 1,000 features in the  <b>Candidate Facilities Layer</b>.
             </p>  
@@ -192,7 +192,7 @@
         <div>
             <p>This is the name of the layer that will be created in  <b>My Content</b>  and added to the map.  The default  name is based on the tool name and the input layer name. If the layer already exists, you will be asked to provide another name.
             </p>
-            <p>The result layer will contain a layer for each of the following: facilities that have demands assigned to them, demand locations that are allocated to facilities, and allocation lines connecting the demand locations to their assigned facilities. The allocation lines are drawn as straight lines, however, the travel time or the travel distance between the facility and the demand location is always based on the travel mode you specify and not using straight-line distances.
+            <p>The result layer will contain a layer for each of the following: facilities that have demands assigned to them, demand locations that are allocated to facilities, and allocation lines connecting the demand locations to their assigned facilities. The allocation lines are drawn as straight lines; however, the travel time or the travel distance between the facility and the demand location is always based on the travel mode you specify and not using straight-line distances.
             </p>
             <p>Using the  <b>Save result in</b> drop-down box, you can  specify the name of a folder in <b>My Content</b> where the result will be saved.
             </p>

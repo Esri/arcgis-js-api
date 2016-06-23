@@ -11,13 +11,13 @@
             <div class="${_css.clearClass}"></div>
             <div class="${_css.stopsButtonContainerClass}">
                 <div class="${_css.stopsAddDestinationClass}">
-                    <div tabindex="0" role="button" data-dojo-attach-point="_activateButtonNode" title="${_i18n.widgets.directions.activate}" class="${_css.activateButtonClass} ${_css.stopsButtonClass} ${_css.stopsButtonTabClass} ${_css.stopsPressedButtonClass}"></div>
-                    <div role="button" tabindex="0" class="${_css.linkButtonClass} ${_css.stopsAddDestinationBtnClass}" data-dojo-attach-point="_addDestinationNode">${_i18n.widgets.directions.addDestination}</div>
+                    <div tabindex="0" role="button" data-dojo-attach-point="_activateButtonNode" title="${_i18n.widgets.directions.activate}" class="${_css.activateButtonClass} ${_css.stopsButtonClass} ${_css.stopsButtonTabClass} ${_css.stopsPressedButtonClass}" data-blur-on-click="true"></div>
+                    <div role="button" tabindex="0" class="${_css.linkButtonClass} ${_css.stopsAddDestinationBtnClass}" data-dojo-attach-point="_addDestinationNode" data-blur-on-click="true">${_i18n.widgets.directions.addDestination}</div>
                 </div>
                 <div class="${_css.travelModesContainerClass}" data-dojo-attach-point="_travelModeContainerNode">
                     <div data-dojo-attach-point="_travelModeSelectorContainer"></div>
                 </div>
-                <div tabindex="0" role="button" class="${_css.linkButtonClass} ${_css.stopsOptionsButtonClass}" data-dojo-attach-point="_optionsButtonNode">${_i18n.widgets.directions.showOptions}</div>
+                <div tabindex="0" role="button" class="${_css.linkButtonClass} ${_css.stopsOptionsButtonClass}" data-dojo-attach-point="_optionsButtonNode" data-blur-on-click="true">${_i18n.widgets.directions.showOptions}</div>
             	<div class="${_css.clearClass}"></div>
             </div>
             <div role="presentation" class="${_css.stopsOptionsMenuClass}" data-dojo-attach-point="_optionsMenuNode">
@@ -30,8 +30,8 @@
                 </div>
                 <div class="${_css.stopsOptionsToggleContainerClass}">
                     <div class="${_css.stopsOptionsUnitsContainerClass}"  data-dojo-attach-point="_agolDistanceUnitsNode">
-                        <div tabindex="0" role="button" class="${_css.stopsOptionsUnitsMiClass} ${_css.stopsButtonClass} ${_css.stopsButtonTabClass}" data-dojo-attach-point="_useMilesNode">${_i18n.widgets.directions.units.MILES.abbr}</div>
-                        <div tabindex="0" role="button" class="${_css.stopsOptionsUnitsKmClass} ${_css.stopsButtonClass} ${_css.stopsButtonTabClass} ${_css.stopsButtonTabLastClass} ${_css.stopsPressedButtonClass}" data-dojo-attach-point="_useKilometersNode">${_i18n.widgets.directions.units.KILOMETERS.abbr}</div>
+                        <div tabindex="0" role="button" class="${_css.stopsOptionsUnitsMiClass} ${_css.stopsButtonClass}" data-dojo-attach-point="_useMilesNode" data-blur-on-click="true">${_i18n.widgets.directions.units.MILES.abbr}</div>
+                        <div tabindex="0" role="button" class="${_css.stopsOptionsUnitsKmClass} ${_css.stopsButtonClass} ${_css.stopsButtonTabLastClass} ${_css.stopsPressedButtonClass}" data-dojo-attach-point="_useKilometersNode" data-blur-on-click="true">${_i18n.widgets.directions.units.KILOMETERS.abbr}</div>
                         <div class="${_css.clearClass}"></div>
                     </div>
                     <div class="${_css.clearClass}"></div>
@@ -39,13 +39,25 @@
                 <div class="${_css.clearClass}"></div>
             </div>
             <div class="${_css.stopsGetDirectionsContainerClass}">
-                <div tabindex="0" role="button" class="${_css.stopsButtonClass} ${_css.stopsGetDirectionsClass}" data-dojo-attach-point="_getDirectionsButtonNode">${_i18n.widgets.directions.getDirections}</div>
-                <div tabindex="0" role="button" class="${_css.linkButtonClass} ${_css.stopsClearDirectionsClass}" data-dojo-attach-point="_clearDirectionsButtonNode">${_i18n.widgets.directions.clearDirections}</div>
-                <div class="${_css.clearClass}"></div>
+                <div class="getDirectionsBtnContainer">
+                    <div tabindex="0" role="button" class="${_css.stopsButtonClass} ${_css.stopsGetDirectionsClass} esriDisabledDirectionsButton" data-dojo-attach-point="_getDirectionsButtonNode" data-blur-on-click="true">${_i18n.widgets.directions.getDirections}</div>
+                    <div tabindex="0" role="button" class="${_css.linkButtonClass} ${_css.stopsClearDirectionsClass}" data-dojo-attach-point="_clearDirectionsButtonNode" data-blur-on-click="true">${_i18n.widgets.directions.clearDirections}</div>
+                </div>
+                <div class="savePrintBtnContainer" data-dojo-attach-point="_savePrintBtnContainer">
+                    <div tabindex="0" role="button" class="${_css.resultsSaveClass} ${_css.stopsButtonClass} ${_css.stopsButtonTabClass}" data-blur-on-click="true" data-dojo-attach-point="_saveMenuButton" title="${_i18n.widgets.directions.saveTitle}" ></div>
+                    <div tabindex="0" role="button" class="${_css.resultsPrintClass} ${_css.stopsButtonClass} ${_css.stopsButtonTabClass}" data-blur-on-click="true" data-dojo-attach-point="_printButton" title="${_i18n.widgets.directions.print}" ></div>
+                </div>
+            </div>
+            <div role="presentation" class="${_css.stopsOptionsMenuClass}" data-dojo-attach-point="_saveMenuNode">
+                <div class="esriLayerNameLabel">${_i18n.widgets.directions.layerName}</div>
+                <input type="text" data-dojo-attach-point="_outputLayerContainer">
+                <div data-dojo-attach-point="_folderSelectorContainer"></div>
+                <div tabindex="0" role="button" class="${_css.stopsButtonClass} esriSaveButton esriDisabledDirectionsButton" data-dojo-attach-point="_saveButton" data-blur-on-click="true">${_i18n.widgets.directions.save}</div>
+                <div tabindex="0" role="button" class="esriLinkButton esriSaveAsButton" data-dojo-attach-point="_saveAsButton" data-blur-on-click="true">${_i18n.widgets.directions.saveAs}</div>
             </div>
     	</div>
     	<div class="${_css.clearClass}"></div>
-    	<div data-dojo-attach-point="_errorNode" role="presentation"></div>
+    	<div data-dojo-attach-point="_msgNode" role="presentation"></div>
     	<div class="${_css.resultsContainerClass}" role="presentation">
         	<div class="${_css.routesContainerClass}" data-dojo-attach-point="_resultsNode" role="presentation"></div>
     	</div>

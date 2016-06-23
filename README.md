@@ -1,9 +1,9 @@
 # arcgis-js-api
 
-A minified, unbuilt version of the [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/) to be used with [bower](http://bower.io).
+A minified, unbuilt version of the [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/3/) to be used with [bower](http://bower.io).
 
 ## Features
-A minified, unbuilt version of the [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/).
+A minified, unbuilt version of the [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/3/).
 You can install this repo via [bower](http://bower.io/) and create your own custom builds with [Dojo](http://dojotoolkit.org/) or [RequireJS](http://requirejs.org/).
 
 ## Instructions
@@ -24,21 +24,21 @@ This repo has dependencies on the following repos.
 
 | Library | Repo | Submodule path |
 | :------ |:---- |:-------------- |
-| dojo  | https://github.com/Esri/dojo/tree/1.10.4-esri   | /dojo |
-| dijit | https://github.com/Esri/dijit/tree/1.10.4-esri  | /dijit |
-| dojox | https://github.com/Esri/dojox/tree/1.10.4-esri  | /dojox |
-| util | https://github.com/Esri/dojo-util/tree/1.10.4-esri    | /util |
+| dojo  | https://github.com/Esri/dojo/tree/1.11.1-esri   | /dojo |
+| dijit | https://github.com/Esri/dijit/tree/1.11.1-esri  | /dijit |
+| dojox | https://github.com/Esri/dojox/tree/1.11.1-esri  | /dojox |
+| util | https://github.com/Esri/dojo-util/tree/1.11.1-esri    | /util |
 | dgrid | https://github.com/Esri/dgrid/tree/0.3.17-esri  | /dgrid |
-| dstore | https://github.com/SitePen/dstore | /dstore |
-| xstyle | https://github.com/Esri/xstyle/tree/0.1.3-esri | /xstyle |
-| put-selector | https://github.com/kriszyp/put-selector | /put-selector |
-| moment | https://github.com/moment/moment/tree/2.11.2 | /moment |
+| dstore | https://github.com/SitePen/dstore/tree/v1.1.1 | /dstore |
+| xstyle | https://github.com/kriszyp/xstyle/tree/v0.3.2 | /xstyle |
+| put-selector | https://github.com/kriszyp/put-selector/tree/v0.3.6 | /put-selector |
+| moment | https://github.com/moment/moment/tree/2.12.0 | /moment |
 
-Please see our [recommended guide](https://github.com/Esri/jsapi-resources/tree/master/3.x/bower).
+Please see our [recommended guide](https://github.com/Esri/jsapi-resources/tree/master/bower).
 
 ## Resources
 
-* [ArcGIS for JavaScript](https://developers.arcgis.com/javascript/)
+* [ArcGIS for JavaScript](https://developers.arcgis.com/javascript/3/)
 * [http://blogs.esri.com/esri/arcgis/tag/javascript/](http://blogs.esri.com/esri/arcgis/tag/javascript/)
 * [twitter@esri](http://twitter.com/esri)
 

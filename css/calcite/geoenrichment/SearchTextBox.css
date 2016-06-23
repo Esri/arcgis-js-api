@@ -27,3 +27,35 @@
     vertical-align: middle;
     cursor: pointer;
 }
+
+.calcite .searchTextBox .searchTextBoxInput {
+    display: block;
+    border: 1px solid #CBCBCB;
+}
+
+.calcite .searchTextBox .searchTextBoxInput.dijitTextBoxFocused {
+    border: 1px solid #007ac2 !important;
+}
+
+.calcite .searchTextBox .searchTextBoxInput .dijitInputField {
+    border: none;
+}
+
+.calcite .searchTextBox .dijitTextBoxFocused .dijitInputContainer,
+.calcite .searchTextBox .dijitTextBoxFocused .dijitInputField {
+    border: none !important;
+}
+
+.calcite .searchTextBox .dijitInputField {
+    line-height: 20px;
+    padding: 4px 0px;
+}
+
+.calcite .searchTextBox .dijitInputField .dijitInputInner {
+    padding: 0px 3px !important;
+    line-height: 20px;
+}
+
+.calcite .searchTextBox .searchTextBoxButton {
+    top: 3px;
+}

@@ -1,7 +1,6 @@
 .esriBrowseAnalysisLayers {
   margin: 0 auto;
   width: 100%;
-  border: 1px solid #CBCBCB;
 }
 
 
@@ -14,15 +13,60 @@
 }
 
 .esriBrowseAnalysisLayers .dgrid .gallery-view img {
-  border: 1px solid #838383;
-  box-shadow: 0px 0px 7px #000;
+  border: 1px solid #e0e0e0;
+  padding: 4px;
 }
 
-.esriBrowseAnalysisLayers .dgrid .dgrid-row .gallery-view {
-  float: left;
-  width: 30.0%;
-  padding: 1.5% 1.5%;
-  margin: 0;
+
+@media all and (max-width: 800px) {
+  .esriBrowseAnalysisLayers .dgrid .dgrid-content {
+    display: flex;
+    flex-flow: row wrap;    
+    
+    justify-content: space-around;
+  }
+  .esriBrowseAnalysisLayers .dgrid .dgrid-row {
+    flex: 0 1 50%;
+  }  
+}
+
+
+@media all and (max-width: 500px) {
+  .esriBrowseAnalysisLayers .dgrid .dgrid-content, .esriBrowseAnalysisLayers .top-bar {
+    display: flex;
+    flex-flow: row wrap;
+    
+    flex-direction: column;
+  }
+  .esriBrowseAnalysisLayers .dgrid-grid.dgrid .dgrid-navigation {
+    margin: 0;
+    flex-flow: row wrap;
+    display: inline-flex;
+    align-content: flex-end;
+  }
+  .esriBrowseAnalysisLayers .dgrid-pagination-links {
+    flex: 0 1 50%;  
+  }
+  .esriBrowseAnalysisLayers .dgrid .dgrid-pagination .dgrid-next, .esriBrowseAnalysisLayers .dgrid .dgrid-pagination .dgrid-previous {
+    flex: 0 5 50%;
+  }
+  .esriBrowseAnalysisLayers .dgrid-pagination {
+    padding-top: 0.65em;
+  }
+}
+
+.esriBrowseAnalysisLayers .top-bar .instructions, .esriAnalysisLayersItems .top-bar .instructions{
+   display:block;
+   width: 50%;
+}
+
+.esriBrowseAnalysisLayers .instructions span, .esriAnalysisLayersItems .instructions span {
+  font-size: 12px;
+  font-family: Verdana, Helvetica, sans-serif;
+}
+
+.esriBrowseAnalysisLayers.filters .instructions span.messageRight, .esriAnalysisLayersItems.filters .instructions span.messageRight {
+  max-width: 100%;
 }
 
 .esriBrowsePopup p {
@@ -158,6 +202,24 @@
     margin:0;
 }
 
+.esriBrowseOptions {
+  margin: 1em 0;
+}
+
+.esriBrowseOption {
+    display: inline-block;
+    margin: 0 10px 0 0;
+}
+
+.esriBrowseOption_label {
+  margin: 0 0.25em;
+}
+
+.esriRtl .esriBrowseOption {
+  margin-right: 0;
+  margin-left: 10px;
+}
+
 .esriBrowseAnalysisLayers .esriSearchBox {
     background: #fff url("../../images/search.png") 98% center no-repeat;
     border: 1px solid #CBCBCB;
@@ -204,3 +266,170 @@
   margin-top: 0.5em;
 }
 
+.esriBrowseAnalysisLayers.esriBrowseItemsCtr .gallery .gallery-left {
+  padding-right: 1%;
+}
+
+.esriBrowseAnalysisLayers.esriBrowseItemsCtr .esriSearchBox.dijitTextBox {
+  width: auto;
+  overflow: hidden;
+  float: right;
+}
+
+.esriAnalysisLayersGrid  {
+  height: 30em;
+  overflow-y: auto;
+}
+
+.esriAnalysisLayersGrid .dgrid-cell {
+  border: none;
+}
+
+.esriAnalysisLayersGrid .dgrid-row {
+  padding: 0.25em !important;
+}
+
+.esriAnalysisLayersItems {
+  width:48em;
+  height:48em;
+  clear:both;
+}
+
+.esriAnalysisLayersItems .dgrid-grid.dgrid {
+  max-height: 99%;
+ }
+
+.esriAnalysisLayersItems .dgrid-row {
+  padding: 1em; 
+}
+
+.esriAnalysisLayersItems .dgrid-row.dgrid-row-odd, .esriAnalysisLayersGrid .dgrid-row.dgrid-row-odd {
+  background-color:#ffffff;
+}
+
+.esriAnalysisLayersItems .dgrid-row.dgrid-row-odd.dgrid-selected, .esriAnalysisLayersGrid .dgrid-row.dgrid-row-odd.dgrid-selected {
+  background-color:#bfd6eb;
+}
+
+.esriAnalysisLayersItems .dgrid-selected, .esriAnalysisLayersGrid .dgrid-selected {
+  background-color:#bfd6eb;
+}
+
+.esriAnalysisLayersItems .template-info-showing p {
+  font-size: 1rem !important;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: auto;
+  line-height: 1.25em;
+  padding: 1em;
+}
+
+.esriAnalysisLayersItems .dgrid .dgrid-scroller, .esriAnalysisLayersGrid .dgrid .dgrid-scroller {
+  position: relative;
+  overflow-y: hidden;
+  
+}
+
+.esriAnalysisLayersGrid .word-break {
+  word-break: break-word; 
+}
+
+.esriAnalysisLayersItems .layer-container {
+  height: auto; 
+}
+
+.esriAnalysisLayersItems .template-info-showing h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  clear: left;
+  color: #616161;
+  font-weight: normal;
+  max-height: 3.0em;
+  overflow: visible;
+  height: auto;
+  word-wrap: break-word;
+  padding-bottom: 0.25em;
+}
+
+
+  
+  
+  
+
+
+
+
+
+.esriAnalysisLayersGrid .panel {
+  
+  border: 1px solid #efefef;
+  padding: 1.023rem; }
+  .esriAnalysisLayersGrid .panel:after {
+    content: '';
+    display: table;
+    clear: both; }
+  .esriAnalysisLayersGrid .panel > :last-child {
+    margin-bottom: 0; }
+  .esriAnalysisLayersGrid .panel > [class*="column-"] {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem; }
+    html[dir="rtl"] .esriAnalysisLayersGrid .panel > [class*="column-"] {
+      padding-right: 1.5rem; }
+    html[dir="rtl"] .esriAnalysisLayersGrid .panel > [class*="column-"] {
+      padding-left: 1.5rem; }
+  .esriAnalysisLayersGrid .panel code {
+    background-color: white; }
+
+.esriAnalysisLayersGrid .panel-black {
+  background-color: #323232;
+  border: 1px solid #4c4c4c; }
+  .esriAnalysisLayersGrid .panel-black a {
+    color: #bcdaed; }
+    .esriAnalysisLayersGrid .panel-black a:hover {
+      color: #bcdaed; }
+
+.esriAnalysisLayersGrid .panel-dark {
+  background-color: #595959;
+  border: 1px solid #4c4c4c; }
+  .esriAnalysisLayersGrid .panel-dark a {
+    color: #bcdaed; }
+    .esriAnalysisLayersGrid .panel-dark a:hover {
+      color: #bcdaed; }
+
+.esriAnalysisLayersGrid .panel-white {
+  background-color: white;
+  border: 1px solid #efefef; }
+  .esriAnalysisLayersGrid .panel-white code {
+    background-color: #f8f8f8; }
+
+.esriAnalysisLayersGrid .panel-dark-blue {
+  background-color: #004575;
+  border: 1px solid #052942; }
+  .esriAnalysisLayersGrid .panel-dark-blue a {
+    color: #69dcff; }
+    .esriAnalysisLayersGrid .panel-dark-blue a:hover {
+      color: #00dee7; }
+
+.esriAnalysisLayersGrid .panel-blue {
+  background-color: #0079c1;
+  border: 1px solid #005e95; }
+  .esriAnalysisLayersGrid .panel-blue a {
+    color: #69dcff; }
+    .esriAnalysisLayersGrid .panel-blue a:hover {
+      color: #00dee7; }
+
+.esriAnalysisLayersGrid .panel-light-blue {
+  color: #323232;
+  background-color: #56a5d8;
+  border: 1px solid #0079c1; }
+  .esriAnalysisLayersGrid .panel-light-blue a {
+    color: #f8f8f8; }
+    .esriAnalysisLayersGrid .panel-light-blue a:hover {
+      color: #efefef; }
+
+.esriAnalysisLayersGrid .panel-no-border {
+  border: none; }
+
+.esriAnalysisLayersGrid .panel-no-padding {
+  padding: 0; }

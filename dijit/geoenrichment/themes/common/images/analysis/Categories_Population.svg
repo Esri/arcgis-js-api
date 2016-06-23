@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="32px"
+	 height="32px" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve">
+<g id="Icons">
+	<g>
+		<path fill="#808284" d="M9,6H4C2.895,6,2,6.894,2,8v2v2l0,0c0,0.553,0.447,1,1,1h1v1c0,0.553,0.447,1,1,1h3c0.553,0,1-0.447,1-1
+			v-1h1c0.553,0,1-0.447,1-1l0,0v-2V8C11,6.894,10.104,6,9,6z"/>
+		<path fill="#E6E7E8" d="M9,7H4C3.449,7,3,7.448,3,8v4h2v2h3v-2h2V8C10,7.448,9.551,7,9,7z"/>
+		<rect x="4" y="9" fill="#939598" width="1" height="3"/>
+		<rect x="8" y="9" fill="#939598" width="1" height="3"/>
+		<circle fill="#808284" cx="6.5" cy="3.5" r="2.35"/>
+		<circle fill="#E6E7E8" cx="6.5" cy="3.5" r="1.75"/>
+	</g>
+	<path fill="#FFFFFF" d="M11,12v-2V8c0-0.711-0.373-1.33-0.931-1.686C10.03,6.538,10,6.766,10,7c0,0.749,0.22,1.442,0.579,2.043
+		C9.125,9.249,8,10.49,8,12v3c0.553,0,1-0.447,1-1v-1h1C10.553,13,11,12.553,11,12z"/>
+	<g>
+		<path fill="#808284" d="M17,10h-6c-1.105,0-2,0.894-2,2v2v2v2c0,0.553,0.447,1,1,1h1v1c0,0.553,0.447,1,1,1h4c0.553,0,1-0.447,1-1
+			v-1h1c0.553,0,1-0.447,1-1v-2v-2v-2C19,10.894,18.104,10,17,10z"/>
+		<path fill="#E6E7E8" d="M17,11h-6c-0.551,0-1,0.448-1,1v6h2v2h4v-2h2v-6C18,11.448,17.551,11,17,11z"/>
+		<circle fill="#808284" cx="14" cy="7" r="3"/>
+		<circle fill="#E6E7E8" cx="14" cy="7" r="2"/>
+		<rect x="11" y="13" fill="#939598" width="1" height="5"/>
+		<rect x="16" y="13" fill="#939598" width="1" height="5"/>
+	</g>
+	<path fill="#FFFFFF" d="M16,19v2c0.553,0,1-0.447,1-1v-1h1c0.553,0,1-0.447,1-1v-2v-0.858C17.279,15.589,16,17.142,16,19z"/>
+	<g>
+		<circle fill="#808284" cx="24" cy="11" r="4"/>
+		<circle fill="#E6E7E8" cx="24" cy="11" r="3"/>
+		<path fill="#808284" d="M28,16h-8c-1.657,0-3,1.343-3,3v8c0,1.104,0.895,2,2,2h1v2c0,0.553,0.447,1,1,1h6c0.553,0,1-0.447,1-1v-2
+			h1c1.104,0,2-0.896,2-2v-8C31,17.343,29.657,16,28,16z"/>
+		<path fill="#E6E7E8" d="M28,17h-8c-1.105,0-2,0.896-2,2v6v2c0,0.553,0.447,1,1,1h2v3h6v-3h2c0.553,0,1-0.447,1-1v-2v-6
+			C30,17.896,29.104,17,28,17z"/>
+		<rect x="20" y="20" fill="#939598" width="1" height="8"/>
+		<rect x="27" y="20" fill="#939598" width="1" height="8"/>
+	</g>
+</g>
+<g id="Icon_Name">
+</g>
+</svg>

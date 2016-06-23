@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.17/esri/copyright.txt for details.
 
-define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../base/Templated","dojo/text!./templates/ClickableTool.html","../../../../kernel"],function(e,t,i,n,o,l){var a=e([n],{_isGxeInputTool:!0,templateString:o,label:"",postCreate:function(){this.inherited(arguments)},findInputWidget:function(){for(var e=null,t=this.getParent();t;){if(t._isGxeInput)return t;if(t._isGxeElement){e=t;break}if(t._isGxeAttribute){e=t;break}t=t.getParent()}return e&&e.inputWidget?e.inputWidget:null},_onToolClick:function(e){var t=this.findInputWidget(e);this.whenToolClicked(e,t)},whenToolClicked:function(){}});return i("extend-esri")&&t.setObject("dijit.metadata.form.tools.ClickableTool",a,l),a});
+define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../base/Templated","dojo/text!./templates/ClickableTool.html","../../../../kernel"],function(e,t,i,n,o,l){var a=e([n],{_isGxeInputTool:!0,templateString:o,label:"",postCreate:function(){this.inherited(arguments),this.connectAriaClickable(this.domNode,t.hitch(this,this._onToolClick))},findInputWidget:function(){for(var e=null,t=this.getParent();t;){if(t._isGxeInput)return t;if(t._isGxeElement){e=t;break}if(t._isGxeAttribute){e=t;break}t=t.getParent()}return e&&e.inputWidget?e.inputWidget:null},_onToolClick:function(e){var t=this.findInputWidget(e);this.whenToolClicked(e,t)},whenToolClicked:function(){}});return i("extend-esri")&&t.setObject("dijit.metadata.form.tools.ClickableTool",a,l),a});

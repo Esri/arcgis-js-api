@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="32px"
+	 height="32px" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve">
+<g id="Icons">
+	<rect x="22" y="4" fill="#939598" width="3" height="10"/>
+	<rect x="4" y="16" fill="#808284" width="25" height="15"/>
+	<rect x="5" y="16" fill="#FFFFFF" width="23" height="15"/>
+	<rect x="6" y="17" fill="#E6E7E8" width="21" height="14"/>
+	<rect x="8" y="19" fill="#939598" width="7" height="8"/>
+	<rect x="18" y="19" fill="#939598" width="7" height="12"/>
+	<rect x="9" y="20" fill="#FFFFFF" width="5" height="6"/>
+	<rect x="19" y="20" fill="#FFFFFF" width="5" height="11"/>
+	<polygon fill="#808284" points="16.5,1.5 2,16 31,16 	"/>
+	<polygon fill="#FFFFFF" points="4.414,15 16.5,2.914 28.586,15 	"/>
+	<rect x="2" y="31" fill="#808284" width="29" height="1"/>
+	<polygon fill="#808284" points="16.5,5 5,16 2,16 16.5,1.5 31,16 28,16 	"/>
+	<rect x="22" y="25" fill="#939598" width="1" height="1"/>
+</g>
+<g id="Icon_Name">
+</g>
+</svg>

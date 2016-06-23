@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Ukloni granice</h2><p/>
+        <h2><img src="../images/GUID-7B5F69B0-3625-404F-8B52-2B562766C0BB-web.png" alt="Ukloni granice"></h2>
+        <hr/>
+    <p>Poligoni koji se preklapaju ili koji dijele zajedničku granicu međusobno se spajaju da bi oblikovali jedinstveni poligon.    
+    </p>
+    <p>Možete upravljati koje će se granice spojiti tako da odredite polje. Na primjer, ako imate sloj okruga i ako svaki okrug ima atribut  <i>State_Name</i>, možete ukloniti granice uporabom atributa <i>State_Name</i>.  Okruzi koji su jedan pored drugog međusobno će se spojiti ako imaju istu vrijednost za <i>State_Name</i>.  Konačni rezultat je sloj državnih granica.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Odaberite poligonalni sloj čije će se granice ukloniti</h2></div>
+        <hr/>
+        <div>
+            <p>Sloj koji sadrži poligonalne geoobjekte koji će se ukloniti. 
+            </p>
+            <p class="OnlineOnly">Osim odabira sloja iz karte, možete odabrati opciju  <b>Izaberi sloj za analizu Living Atlasa</b> ili <b>Izaberi sloj za analizu</b> s dna popisa padajućeg izbornika. Time se otvara galerija koja sadrži zbirku slojeva korisnu za mnogo analiza. 
+            </p>
+        </div>
+    </div>
+    <div id="DissolveFields">
+        <div><h2>Odaberite metodu uklanjanja</h2></div>
+        <hr/>
+        <div>
+            <p>Možete odabrati jednu ili dvije metode za spajanje poligonalnih geoobjekata:
+                <ul>
+                    <li> <b>Poligoni koji se preklapaju ili su jedno pored drugog</b> &ndash; dva ili vi&scaron;e poligona čije se granice preklapaju spojit će se u jedan poligon. Osim toga, poligoni koji su jedan pored drugoga (tj. dijele zajedničku granicu) spojit će se u jedan poligon.
+                    </li>
+                    <li> <b>Poligoni s istim vrijednostima polja</b> &ndash; poligoni koji se preklapaju ili dijele zajedničku granicu spojit će se u jedan poligon ako imaju istu vrijednost polja.
+                        <p>Na primjer, ako imate sloj okruga i ako svaki okrug ima polje  <i>State_Name</i>, možete ukloniti granice uporabom polja <i>State_Name</i>.  Okruzi koji su jedan pored drugog međusobno će se spojiti ako imaju istu vrijednost za <i>State_Name</i>.  Konačni rezultat je sloj državnih granica.
+                        </p>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Ako je označena opcija  <b>Upotrijebi trenutačni obuhvat karte</b>, uklonit će se samo geoobjekti u sloju unosa koji su vidljivi unutar trenutačnog obuhvata karte.  Ako opcija nije označena, uklonit će se svi geoobjekti u sloju unosa, čak i ako se nalaze izvan trenutačnog obuhvata karte.
+            </p>
+        </div>
+    </div>
+    <div id="SummaryFields">
+        <div><h2>Dodaj statistiku</h2></div>
+        <hr/>
+        <div>
+            <p>Kada se poligoni spoje, možete sažeti njihove atribute. Na primjer, ako razgrađujete granicu između okruga na temelju  <i>State_Name</i>, a svaki okrug ima polje <i>Population</i>, možete izračunati ukupni zbroj za <i>Population</i>.
+            </p>
+            <p>Dostupne vrste statistika su sljedeće:
+            </p>
+            <ul>
+                <li> <b>Zbroj</b> &ndash; zbraja ukupnu vrijednost za određeno polje
+                    
+
+                </li>
+                <li> <b>Prosjek</b> &ndash; izračunava prosjek za određeno polje
+                    
+
+                </li>
+                <li> <b>Minimum</b> &ndash; traži najmanju vrijednost za sve zapise za određeno polje
+                    
+
+                </li>
+                <li> <b>Maksimum</b> &ndash; traži najveću vrijednost za sve zapise za određeno polje
+                    
+
+                </li>
+                <li> <b>Standardno Odstupanje</b> &ndash; traži standardno odstupanje za vrijednosti u naznačenom polju
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="OutputName">
+        <div><h2>Naziv sloja rezultata</h2></div>
+        <hr/>
+        <div>
+            <p>Ovo je naziv sloja koji će se stvoriti u dijelu  <b>Moj sadržaj</b> i dodati karti.  Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, od vas će se zatražiti da unesete drugi naziv.
+            </p>
+            <p>Upotrebom padajućeg izbornika  <b>Spremi rezultat u</b> možete odrediti naziv mape u dijelu <b>Moj sadržaj</b> gdje će se spremiti rezultat.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

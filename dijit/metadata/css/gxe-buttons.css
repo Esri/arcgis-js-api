@@ -138,6 +138,10 @@
   text-decoration: underline;
 }
 
+.gxeClickableText:focus {
+  text-decoration: underline;
+}
+
 .gxeSwitchLabel {
   display: inline-block;
 }

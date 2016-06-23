@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Svedi granice</h2><p/>
+        <h2><img src="../images/GUID-7B5F69B0-3625-404F-8B52-2B562766C0BB-web.png" alt="Svedi granice"></h2>
+        <hr/>
+    <p>Oblasti koje se preklapaju ili dele zajedničku granicu spajaju se da bi formirale jednu oblast.    
+    </p>
+    <p>Možete da kontroli&scaron;ete koje se granice spajaju definisanjem polja po kom će se vr&scaron;iti spajanje. Na primer, ako imate sloj sa okruzima, a svaki okrug ima atribut  <i>Ime_države</i>, možete da svedete granice koristeći atribut <i>Ime_države</i>. Susedni okruzi biće spojeni ako imaju istu vrednost za atribut <i>Ime_države</i>. Krajnji rezultat je sloj sa državnim granicama.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Odaberite sloj oblasti čije će granice biti svedene</h2></div>
+        <hr/>
+        <div>
+            <p>Sloj koji sadrži geoobjekte oblasti koji će biti svedeni. 
+            </p>
+            <p class="OnlineOnly">Pored izbora sloja sa mape, možete da izaberete  <b>Odaberite Living Atlas sloj za analizu</b> ili <b>Odaberite sloj za analizu</b> u dnu padajuće liste. Ovim se otvara galerija koja sadrži kolekciju slojeva korisnih za veliki broj analiza. 
+            </p>
+        </div>
+    </div>
+    <div id="DissolveFields">
+        <div><h2>Odaberite metod svođenja</h2></div>
+        <hr/>
+        <div>
+            <p>Možete da odaberete jedan od dva metoda za spajanje geoobjekata oblasti:
+                <ul>
+                    <li> <b>Oblasti koje se preklapaju ili koje su susedne</b> &ndash; dve ili vi&scaron;e oblasti čije se granice međusobno preklapaju biće spojene u jednu oblast. Pored toga, oblasti koje su susedne (to jest, dele zajedničku granicu), biće spojene u jednu oblast.
+                    </li>
+                    <li> <b>Oblasti sa istom vredno&scaron;ću polja</b> &ndash; oblasti koje se preklapaju ili dele zajedničku granicu biće spojene u jednu oblast ako imaju istu vrednost polja.
+                        <p>Na primer, ako imate sloj sa okruzima, a svaki okrug ima polje  <i>Ime_države</i>, možete da svedete granice koristeći polje <i>Ime_države</i>. Susedni okruzi biće spojeni ako imaju istu vrednost za atribut <i>Ime_države</i>. Krajnji rezultat je sloj sa državnim granicama.
+                        </p>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Ako je opcija  <b>Koristi trenutni obuhvat mape</b> izabrana, biće svedeni samo oni geoobjekti na ulaznom sloju koji su vidljivi unutar trenutnog obuhvata mape. Ako nije izabrana, biće svedeni svi geoobjekti u ulaznom sloju, čak i ako su izvan trenutnog obuhvata mape.
+            </p>
+        </div>
+    </div>
+    <div id="SummaryFields">
+        <div><h2>Dodaj statistiku</h2></div>
+        <hr/>
+        <div>
+            <p>Kada se oblasti spoje, možete da sumirate njihove atribute. Na primer, ako svodite granicu između okruga na osnovu polja  <i>Ime_države</i>, a svaki okrug ima polje <i>Populacija</i>, možete da izračunate zbir za polje <i>Populacija</i> za državu.
+            </p>
+            <p>Dostupni tipovi statistike su:
+            </p>
+            <ul>
+                <li> <b>Zbir</b> &ndash; dodaje ukupnu vrednost za navedeno polje
+                    
+
+                </li>
+                <li> <b>Prosek</b> &ndash; izračunava prosek za navedeno polje
+                    
+
+                </li>
+                <li> <b>Minimum</b> &ndash; pronalazi najmanju vrednost za sve zapise navedenog polja
+                    
+
+                </li>
+                <li> <b>Maksimum</b> &ndash; pronalazi najveću vrednost za sve zapise navedenog polja
+                    
+
+                </li>
+                <li> <b>Std. Devijacija</b> &ndash; pronalazi standardnu devijaciju za vrednosti u navedenom polju
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="OutputName">
+        <div><h2>Naziv sloja sa rezultatima</h2></div>
+        <hr/>
+        <div>
+            <p>Ovo je naziv sloja koji će biti kreiran u  <b>Mom sadržaju</b> i dodat na mapu. Podrazumevani naziv je zasnovan na nazivu alatke i nazivu ulaznog sloja. Ako sloj već postoji, bićete upitani da unesete drugi naziv.
+            </p>
+            <p>Koristeći padajuće polje  <b>Sačuvaj rezultat u</b> možete da navedete ime fascikle u <b>Mom sadržaju</b> u kojoj će rezultat biti sačuvan.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

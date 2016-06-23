@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="32px"
+	 height="32px" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve">
+<g id="Icons">
+	<path fill="#808284" d="M3.086,29C2.486,29,2,28.578,2,28.059V9.999C2,9.481,2.486,9,3.086,9h24.732C28.416,9,29,9.481,29,9.999
+		v18.06C29,28.578,28.416,29,27.817,29H3.086z"/>
+	<path fill="#FFFFFF" d="M28,28.005c-0.005-0.006,0.012-0.008,0-0.008C27.985,27.997,3,28,3,28S2.988,10,3,10c0.016,0,25,0,25,0
+		c0.066,0-0.009-0.009,0,0V28.005z"/>
+	<polygon fill="#E6E7E8" points="4,11.061 26.929,11.059 26.904,26.997 4,27 	"/>
+	<path fill="#808284" d="M30,16h-6.85c-2.27,0-4.033,1.336-4.033,2.988c0,1.65,1.764,3.012,4.033,3.012H30V16z"/>
+	<circle fill="#FFFFFF" cx="21.999" cy="19" r="1.5"/>
+	<g enable-background="new    ">
+		<rect x="5" y="25" fill="#939598" width="1" height="1"/>
+		<rect x="7" y="25" fill="#939598" width="2" height="1"/>
+		<rect x="10" y="25" fill="#939598" width="2" height="1"/>
+		<rect x="13" y="25" fill="#939598" width="2" height="1"/>
+		<rect x="16" y="25" fill="#939598" width="2" height="1"/>
+		<rect x="19" y="25" fill="#939598" width="2" height="1"/>
+		<rect x="22" y="25" fill="#939598" width="2" height="1"/>
+		<rect x="25" y="25" fill="#939598" width="1" height="1"/>
+	</g>
+	<g enable-background="new    ">
+		<rect x="5" y="12" fill="#939598" width="1" height="1"/>
+		<rect x="7" y="12" fill="#939598" width="2" height="1"/>
+		<rect x="10" y="12" fill="#939598" width="2" height="1"/>
+		<rect x="13" y="12" fill="#939598" width="2" height="1"/>
+		<rect x="16" y="12" fill="#939598" width="2" height="1"/>
+		<rect x="19" y="12" fill="#939598" width="2" height="1"/>
+		<rect x="22" y="12" fill="#939598" width="2" height="1"/>
+		<rect x="25" y="12" fill="#939598" width="1" height="1"/>
+	</g>
+	<polygon fill="#CCCCCC" points="24.392,8 21,2 12.429,8 	"/>
+</g>
+<g id="Icon_Name">
+</g>
+</svg>

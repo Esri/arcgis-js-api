@@ -140,7 +140,7 @@
   text-decoration: underline;
 }
 
-.esriScaleMenuPopup .esriScaleMenu .esriHidden {
+.esriScaleMenuPopup .esriHidden {
   display: none;
 }
 

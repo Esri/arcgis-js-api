@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.17/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/_base/json","dojo/has","../kernel","../config","../request","./ServiceGeneratedFeatureCollection"],function(e,t,o,r,i,s,a,n){var c=e([n],{declaredClass:"esri.layers.GeoRSSLayer",serviceUrl:location.protocol+"//utility.arcgis.com/sharing/rss",constructor:function(){s.defaults.geoRSSService&&(this.serviceUrl=s.defaults.geoRSSService),this._createLayer()},parse:function(){return this._io=a({url:this.serviceUrl,content:{url:this.url,refresh:this.loaded?!0:void 0,outSR:this._outSR?o.toJson(this._outSR.toJson()):void 0},callbackParamName:"callback"}),this._io},_initLayer:function(){this.inherited(arguments),this.loaded||(this.loaded=!0,this.onLoad(this))}});return r("extend-esri")&&t.setObject("layers.GeoRSSLayer",c,i),c});

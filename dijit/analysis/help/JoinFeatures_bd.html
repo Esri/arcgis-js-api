@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Join Features</h2><p/>
+        <h2><img src="./images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" alt="Join Features"></h2>
+        <hr/>
+    <p>The Join  Features  task works with two
+layers  of features or
+tables.  Join  Features  joins attributes from one
+feature to another based on spatial, temporal and attribute
+relationships, or some combination of the  three. The tool determines all input features that meet the specified join conditions and joins the second input data set to the first. If you specify a one-to-one join all of the features in data set two that match a feature in data set one have their statistics calculated. In this situation the number of  of joined features in data set two are calculated. If a feature in data set one had five matches in data set two, you would see one output feature with a count of five.  You may optionally included other statistics on fields in data set two, such as minimum, maximum or mean, that are calculated from the features in data set two.  You may also specify a  one to many join, where every possible match is maintained in your output, so that if a feature in data set one has 5 matches in data set two, there will be five features in the output, and the raw data is joined to data set one, not summary statistics.
+    </p>
+    <p>Feature join can be applied to points, lines, polygons and tables without a geometry. You can optionally add a temporal join, as long as both input data sets are time enabled, either as time instants or time intervals.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="">
+        <div><h2></h2></div>
+        <hr/>
+        <div>
+            <p>
+            </p>
+        </div>
+    </div>
+</div>
+</html>

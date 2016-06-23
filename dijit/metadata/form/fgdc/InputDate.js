@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.17/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../InputDate","dojo/i18n!../../nls/i18nBase","../../../../kernel"],function(t,e,n,i,s,r){var u=t([i],{_isFgdcInputDate:!0,hint:s.hints.fgdcDate,postCreate:function(){this.inherited(arguments)},getXmlValue:function(){var t=this.inherited(arguments);return"string"==typeof t&&null!==t&&(t=t.replace(/-/g,"")),t},importValue:function(t,n){var i,s=null,r=[];"string"!=typeof n||null===n?this.inherited(arguments):-1!==n.indexOf("T")?this.inherited(arguments):-1!==n.indexOf("Z")?this.inherited(arguments):-1!==n.indexOf("-")?this.inherited(arguments):(s=e.trim(n),8===s.length?(r[0]=s.substring(0,4),r[1]=s.substring(4,6),r[2]=s.substring(6,8),i=r[0]+"-"+r[1]+"-"+r[2],this.setInputValue(i)):6===s.length?(r[0]=s.substring(0,4),r[1]=s.substring(4,6),i=r[0]+"-"+r[1],this.setInputValue(i)):this.inherited(arguments))}});return n("extend-esri")&&e.setObject("dijit.metadata.form.fgdc.InputDate",u,r),u});

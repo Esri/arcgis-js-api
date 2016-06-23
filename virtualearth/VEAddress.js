@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.17/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../kernel"],function(l,e,n,t){var r=l(null,{declaredClass:"esri.virtualearth.VEAddress",constructor:function(l){e.mixin(this,{addressLine:null,adminDistrict:null,countryRegion:null,district:null,formattedAddress:null,locality:null,postalCode:null,postalTown:null},l)}});return n("extend-esri")&&e.setObject("virtualearth.VEAddress",r,t),r});

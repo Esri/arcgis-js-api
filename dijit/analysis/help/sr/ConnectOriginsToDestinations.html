@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Poveži polazne tačke i krajnje tačke</h2><p/>
+        <h2><img src="../images/GUID-7266D30B-0250-4132-B1A5-9B59F0212FAD-web.png" alt="Poveži polazne tačke i krajnje tačke"></h2>
+        <hr/>
+    <p>  Alatka Poveži polazne tačke i krajnje tačke meri vreme ili razdaljinu putovanja između parova tačaka. Alatka može da prikaže pravolinijske razdaljine, razdaljine zasnovane na režimu putovanja, kao &scaron;to je pe&scaron;ačenje ili vožnja, ili trajanja putovanja zasnovano na režimu putovanja. Pomoću ove alatke možete da uradite sledeće:
+    </p>
+    <p>
+        <ul>
+            <li>Da izračunate ukupnu razdaljinu ili vreme koje putnici provedu na putu od kuće do posla.
+            </li>
+            <li>Da izmerite koliko daleko klijenti putuju da bi kupovali u va&scaron;im prodavnicama. Koristite ove informacije da biste definisali svoj domet na trži&scaron;tu, naročito kada ciljate kampanje za ogla&scaron;avanje ili kada birate nove lokacije za prodavnice.
+            </li>
+            <li>Da izračunate očekivanu kilometražu putovanja za flotu vozila. Nakon toga, pokrenite alatku Sumiraj vrednosti za objekte unutar definisanog opsega da biste dobili kilometražu po državi ili drugom regionu.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Vi dajete polaznu i krajnju tačku, a alatka daje sloj koji sadrži linije rute, uključujući mere, između uparenih polaznih i krajnjih tačaka.  
+    </p>
+    <p>Ako je opcija  <b>Koristi trenutni obuhvat mape</b> izabrana, samo oni geoobjekti koji su vidljivi unutar trenutnog obuhvata mape biće uzeti u obzir u analizi. Ako nije izabrana, svi geoobjekti u ulaznom sloju biće uzeti u obzir, čak i ako su izvan trenutnog obuhvata mape.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="originsLayer">
+        <div><h2>Odaberite tačkasti sloj koji predstavlja lokacije polaznih tačaka</h2></div>
+        <hr/>
+        <div>
+            <p>Odaberite tačkasti sloj koji predstavlja polaznu tačku ili polazne tačke. Alatka podržava do  5.000 polaznih tačaka i  5.000 krajnjih tačaka. </p>
+            <p>Ako odaberete sloj koji ima tačno jednu polaznu tačku, ona će se povezati sa svim krajnjim tačkama.
+            </p>
+            <p class="OnlineOnly">Pored izbora sloja sa mape, možete da izaberete  <b>Odaberite Living Atlas sloj za analizu</b> ili <b>Odaberite sloj za analizu</b> u dnu padajuće liste. Ovim se otvara galerija koja sadrži kolekciju slojeva korisnih za veliki broj analiza. 
+            </p>
+        </div>
+    </div>
+    <div id="destinationsLayer">
+        <div><h2>Odaberite sloj sa krajnjim tačkama</h2></div>
+        <hr/>
+        <div>
+            <p>Odaberite sloj koji predstavlja krajnju tačku ili krajnje tačke sa kojima treba povezati polazne tačke. Alatka podržava do  5.000 polaznih tačaka i  5.000 krajnjih tačaka. </p>
+            <p>Ako odaberete sloj koji ima tačno jednu krajnju tačku, sve polazne tačke povezaće se sa tom krajnjom tačkom. 
+            </p>
+            <p>Ako postoji jedna polazna tačka i vi&scaron;e krajnjih tačaka, alatka povezuje polaznu tačku sa svakom od krajnjih tačaka.
+            </p>
+            <p class="OnlineOnly">Pored izbora sloja sa mape, možete da izaberete  <b>Odaberite Living Atlas sloj za analizu</b> ili <b>Odaberite sloj za analizu</b> u dnu padajuće liste. Ovim se otvara galerija koja sadrži kolekciju slojeva korisnih za veliki broj analiza. 
+            </p>
+            <p> Ako ima mnogo polaznih tačaka i mnogo krajnjih tačaka, potrebno je da imate dva polja koja opisuju parove polaznih tačaka i krajnjih tačaka: <b>ID polje u polaznim tačkama</b> i <b>Podudarajuće polje ID-a u krajnjim tačkama</b>. Alatka povezuje parove polaznih tačaka i krajnjih tačaka tokom analize. Na primer, zamislite da imate dve polazne tačke sa vrednostima polja ID-a <code>Rouzi</code> i <code>Harold</code> i dve krajnje tačke sa istim vrednostima ID-a. Polazna tačka <code>Rouzi</code> povezaće se sa krajnjom tačkom <code>Rouzi</code>, a <code>Harold</code> će se povezati sa tačkom <code>Harold</code>. Neće doći do drugih veza niti mera.
+            </p>
+            <p>Vrednosti ID-a moraju da budu jedinstvene unutar svakog sloja, na primer, sloj sa krajnjim tačkama ne može da ima dve vrednosti  <code>Rouzi</code>. Vrednosti u slojevima sa polaznim tačkama i krajnjim tačkama moraju tačno da se podudaraju da bi formirali parove; <code>Harold</code> se neće povezati sa pogre&scaron;no otkucanom vredno&scaron;ću, <code>Harold</code>. 
+            </p>
+        </div>
+    </div>
+    <div id="measurementType">
+        <div><h2>Izmeri</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Odaberite da li želite da povežete polazne tačke sa krajnjim tačkama koristeći pravolinijsku razdaljinu ili režim putovanja. Izlazne rute pratiće puteve ili trotoare i po&scaron;tovaće primenljiva pravila, kao &scaron;to su jednosmerne ulice i nedozvoljena skretanja za vožnju automobilom ili kamionom. Dostupne režime putovanja određuje administrator organizacije.  
+            </p>
+            <p>Kada odaberete  <b>Vreme vožnje</b>, imate opcije za način merenja vremena vožnje.
+                <ul>
+                    <li>
+                        <p>Opozovite izbor opcije  <b>Koristi saobraćaj</b> da biste prona&scaron;li najbrže rute na osnovu fiksnih brzina.
+                        </p>
+                        <p>Ovu opciju treba izabrati ako želite op&scaron;te merenje vremena putovanja, a ne onu koja se izračunava koristeći promenljive uslove saobraćaja za određeno vreme polaska.
+                        </p>
+                    </li>
+                    <li>
+                        <p>Izaberite opciju  <b>Koristi saobraćaj</b> da biste prona&scaron;li najbrže rute na osnovu datog vremena početka i promenljivih uslova saobraćaja. Biranje i opcije <b>Saobraćaj uživo</b> vreme polaska sa polaznih tačaka je pode&scaron;eno na trenutno vreme, a trenutne i predviđene brzine saobraćaja se preuzimaju sa senzora i feed-ova da bi se kreirale rute. Predviđene brzine saobraćaja izračunavaju se referenciranjem brzina saobraćaja uživo, arhivskim brzinama i trenutnim događajima kao &scaron;to su vremenski uslovi. Brzine saobraćaja se predviđaju 12 sati unapred, tako da možete da pomerite klizač da biste podesili vreme polaska unapred za do  12 sati. </p>
+                        <p>Koristite ove postavke saobraćaja uživo da biste prona&scaron;li vremena vožnje ako krenete odmah, ako krenete za jedan sat i tako dalje.
+                        </p>
+                    </li>
+                    <li>
+                        <p>Biranjem opcije  <b>Koristi saobraćaj</b> i opcije <b>Saobraćaj zasnovan na tipičnim uslovima za</b> dan i vreme, alatka pronalazi najbrže rute na osnovu proseka arhivskih brzina za svaki petominutni interval tokom rutinske sedmice. Rezultati obuhvataju saobraćaj, ali uklanjaju uticaj trenutnih uslova saobraćaja i događaja, &scaron;to može značajno da se razlikuje od norme.
+                        </p>
+                        <p>Ove arhivske postavke saobraćaja možete da koristite da pitate, na primer, &bdquo;Koliko dugo obično treba da se stigne na ove krajnje tačke ako je vreme polaska 11:30 pre podne u sredu?&ldquo;
+                        </p>
+                        <p>Vreme koje podesite odnosi se na vremensku zonu u kojoj se nalaze polazne tačke. Stoga, ako podesite vreme na 8:00 pre podne, a imate dve polazne tačke, jednu u Njujorku, a drugu u Los Anđelesu, rute će biti generisane za vreme polaska u 8:00 pre podne. Istočno vreme i 8:00 pre podne. Pacifičko vreme, respektivno.
+                        </p>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Imajte u vidu da dok se vozilo udaljava od polazne tačke, vreme protiče, a uslovi saobraćaja se menjaju. Alatka Poveži polazne tačke sa krajnjim tačkama uzima u obzir ove varijacije kada izaberete opciju  <b>Koristi saobraćaj</b>; međutim, saobraćaj nije podržan u svim regionima. Kliknite na link <b>Pogledajte dostupnost</b> na alatki da biste saznali da li je ponuđen u va&scaron;oj oblasti ispitivanja.
+            </p>
+        </div>
+    </div>
+    <div id="outputLayer">
+        <div><h2>Naziv sloja sa rezultatima</h2></div>
+        <hr/>
+        <div>
+            <p>Ovo je naziv sloja koji će biti kreiran u  <b>Mom sadržaju</b> i dodat na mapu. Podrazumevani naziv je zasnovan na nazivu alatke i nazivu ulaznog sloja. Ako sloj već postoji, bićete upitani da unesete drugi naziv.
+            </p>
+            <p>Koristeći padajuće polje  <b>Sačuvaj rezultat u</b> možete da navedete ime fascikle u <b>Mom sadržaju</b> u kojoj će rezultat biti sačuvan.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

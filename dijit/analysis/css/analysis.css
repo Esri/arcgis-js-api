@@ -1,6 +1,7 @@
 @import url("spacing.css"); 
 @import url("helppopup.css"); 
 @import url("BrowseAnalysisLayers.css"); 
+@import url("BufferFieldExpression.css"); 
 
 .analysisTitle {
   font-weight: bold;
@@ -428,6 +429,33 @@
   margin: 8px;
 }
 
+.reconstructIcon {
+  background-image: url("../images/ReconstructTracks32.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 32px;
+  height: 32px;
+  margin: 8px;
+}
+
+.joinFeaturesIcon {
+  background-image: url("../images/JoinFeatures32.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 32px;
+  height: 32px;
+  margin: 8px;
+}
+
+.createSpaceTimeCubeIcon {
+  background-image: url("../images/CreateSpaceTimeCube32.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 32px;
+  height: 32px;
+  margin: 8px;
+}
+
 .esriAnalysisCloseIcon {
   background-image: url("../images/close.gif");
   background-repeat: no-repeat;
@@ -636,6 +664,14 @@ td.subsectionLineDivider {
 .esriSimpleForm table.esriFormTable {
   width: 100%;
 }
+
+
+@media all and (-ms-high-contrast:none)
+ {
+   
+ *::-ms-backdrop, .esriAnalysis .esriSimpleForm table.esriFormTable  {table-layout: fixed; } 
+   
+ }
 
 .esriSimpleForm table.esriFormTable .shortNumberInput {
   width: 4em;
@@ -1463,66 +1499,68 @@ td.subsectionLineDivider {
   height: 2em;
 }
 
+.esriAnalysis .dijitSelect .dijitButtonContents {
+  height: 2em;
+}
+
 .esriLoading  {
   background: url(../../images/ajax-loader-transparent.gif) center center no-repeat;
   width: 16px;
   height: 16px;
 }
 
-
-.allocateIcon {
-  background-image: url("../images/Allocate.png");
+.esriAnalysis .esriAnalysisExpIcon {
+  background-image: url("../images/CalculateTable16.png");
   background-repeat: no-repeat;
   background-size: 100%;
-  width: 80px;
-  height: 80px;
-  margin: 3px 5px;
-  position:relative;
-  top: 5px;
+  width: 16px;
+  height: 16px;
+  margin: 0.25px;  
 }
 
-.maximizeIcon {
-  background-image: url("../images/maximize.png");
+.allocateIcon {
+  background-image: url("../images/Allocate_to_Existing_Facilities.png");
   background-repeat: no-repeat;
   background-size: 100%;
-  width: 80px;
-  height: 80px;
+  width: 32px;
+  height: 32px;
   margin: 3px 5px;
-  position:relative;
-  top: 5px;
+ }
+
+.maximizeIcon {
+  background-image: url("../images/Maximize_Coverage.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 32px;
+  height: 32px;
+  margin: 3px 5px;
 }
 
 .minimizeIcon {
-  background-image: url("../images/minimize.png");
+  background-image: url("../images/Minimize_Travel.png");
   background-repeat: no-repeat;
   background-size: 100%;
-  width: 80px;
-  height: 80px;
+  width: 32px;
+  height: 32px;
   margin: 3px 5px;
-  position:relative;
-  top: 5px;
 }
 
 .maximizelimIcon {
-  background-image: url("../images/maximizelim.png");
+  background-image: url("../images/Maximize_Coverage_with_Capacity.png");
   background-repeat: no-repeat;
   background-size: 100%;
-  width: 80px;
-  height: 80px;
+  width: 32px;
+  height: 32px;
   margin: 3px 5px;
-  position:relative;
-  top: 5px;
 }
 
 .percentageIcon {
-  background-image: url("../images/percentage.png");
+  background-image: url("../images/Cover_Percentage_of_Demand.png");
   background-repeat: no-repeat;
   background-size: 100%;
-  width: 80px;
-  height: 80px;
+  width: 32px;
+  height: 32px;
   margin: 3px 5px;
-  position:relative;
-  top: 5px;
 }
 
 .goalIcon {
@@ -1531,7 +1569,26 @@ td.subsectionLineDivider {
   background-size: 100%;
   width: 32px;
   height: 32px;
-  margin: 10px;;
+  margin: 10px;
+}
+
+
+.featureAnalysisIcon {
+  background-image: url("../images/portal-analysis-feature-32.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 32px;
+  height: 32px;
+  margin: 10px;
+}
+
+.rasterAnalysisIcon {
+  background-image: url("../images/portal-analysis-raster-32.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 32px;
+  height: 32px;
+  margin: 10px;
 }
 
 
@@ -1545,4 +1602,76 @@ td.subsectionLineDivider {
 
 .esriRtl .esriChooseBestTool .esriAnalysisCloseIcon {
   background-position: -45px -10px;
+}
+
+.calculateSlopeIcon {
+  background-image: url("../images/CalculateSlope32.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 32px;
+  height: 32px;
+  margin: 10px;
+}
+
+.deriveAspectIcon {
+  background-image: url("../images/DeriveAspect32.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 32px;
+  height: 32px;
+  margin: 10px;
+}
+
+.monitorVegetationIcon {
+  background-image: url("../images/MonitorVegetation32.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 32px;
+  height: 32px;
+  margin: 10px;
+}
+
+.remapIcon {
+  background-image: url("../images/Remap32.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 32px;
+  height: 32px;
+  margin: 10px;
+}
+
+.extractRasterIcon {
+  background-image: url("../images/ExtractRaster32.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 32px;
+  height: 32px;
+  margin: 10px;
+}
+
+.esriAnalysis .esriAnalysisAddIcon {
+  background-image: url("../images/Add16.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 16px;
+  height: 16px;
+  margin: 0.25px;  
+}
+
+.esriAnalysis .esriAnalysisDeleteIcon {
+  background-image: url("../images/Delete16.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 16px;
+  height: 16px;
+  margin: 0.25px;  
+}
+
+
+.esriAnalysis .dijitNumberTextBox .dijitInputInner {
+  text-align: inherit; 
+}
+
+.esri .dijitDialog.dataBrowser {
+  padding: 0px 0px;
 }

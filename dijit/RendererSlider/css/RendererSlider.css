@@ -111,13 +111,19 @@ fill: #888;
   text-decoration: underline;
 }
 
-.esri-renderer-slider .esri-moveable .dijitNumberTextBox {
+.esri-renderer-slider .esri-moveable .dijitNumberTextBox,
+.esri-renderer-slider .esri-moveable .dijitValidationTextBox {
   text-align:start;
   position: relative;
   width:100px;
   top: -3px;
   left: 117px;
   z-index: 99;
+}
+
+.esri-renderer-slider .esri-moveable .dijitValidationTextBox {
+  width: 140px;
+  left: 157px;
 }
 
 .esri-renderer-slider .esri-handler-tick {
@@ -195,7 +201,6 @@ fill: #888;
 }
 
 .dj_rtl .esri-renderer-slider .esri-slider-node .esri-handle-label {
-  direction: ltr;
   unicode-bidi: embed;
   left: 0;
   position: absolute;
@@ -210,13 +215,17 @@ fill: #888;
   text-align: right;
 }
 
+.dj_rtl .esri-renderer-slider .esri-moveable .dijitValidationTextBox {
+  left: -152px;
+  text-align: right;
+}
+
 .dj_rtl .esri-renderer-slider .esri-handler-tick {
   left: -42px;
 }
 
 .dj_rtl .esri-renderer-slider .esri-top-label-node,
 .dj_rtl .esri-renderer-slider .esri-bottom-label-node{
-  direction: ltr;
   unicode-bidi: embed;
 }
 

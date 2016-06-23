@@ -16,8 +16,8 @@
 }
 .calcite .DataCategoriesPage_Pagination .Pagination_PageAndArrows {
     top: 15px;
-    left: 15px;
-    right: 15px;
+    left: 20px;
+    right: 20px;
     border:1px #bcbcbc solid;
     background-color:white;
 }
@@ -170,6 +170,10 @@
 }
 .calcite .DataCategoriesPage_Item_tapestry_2013.DataBrowser_Clickable:hover, .calcite .DataCategoriesPage_Item_tapestry_2014.DataBrowser_Clickable:hover {
     background-position: 0 -792px;
+}
+
+.calcite .DataCategoriesPage_Country .dijitTextBox input.dijitArrowButtonInner {
+    height: 14px !important;
 }
 
 .calcite .DataCategoriesPage_Bullets {

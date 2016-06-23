@@ -66,7 +66,7 @@
               </div>
             </td>
             <td colspan="2">
-              <table class="esriFormTable">
+              <table class="esriFormTable calcite">
                 <tr>
                   <td class="ShoppingCart_CounterTD" style="padding-right:0">
                     <div class="ShoppingCart_CounterDivLeftBorder"></div>
@@ -170,7 +170,7 @@
     <div data-dojo-type="dijit/Dialog" title="${i18n.creditTitle}" data-dojo-attach-point="_usageDialog" style="width:40em;">
       <div data-dojo-type="esri/dijit/analysis/CreditEstimator"  data-dojo-attach-point="_usageForm"></div>
     </div>    
-    <div data-dojo-type="dijit/Dialog" title="" data-dojo-attach-point="_dataDialog" data-dojo-props="closable:false">
-      <div data-dojo-type="esri/dijit/geoenrichment/DataBrowser"  class="calcite esriAnalysisEnrichDataBrowser" data-dojo-props="backButton:null" data-dojo-attach-point="_databrowser" style="width:60em;height:40em;"></div>
+    <div data-dojo-type="dijit/Dialog" title="" data-dojo-attach-point="_dataDialog" data-dojo-props="closable:false" class="dataBrowser">
+      <div data-dojo-type="esri/dijit/geoenrichment/DataBrowser"  class="calcite esriAnalysisEnrichDataBrowser" data-dojo-props="backButton:null" data-dojo-attach-point="_databrowser"></div>
     </div>    
 </div>

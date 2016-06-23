@@ -1,9 +1,9 @@
 <div class="Pagination">
     <div class="Pagination_PageAndArrows">
         <div data-dojo-attach-point="backNode"
-            class="Pagination_Triangle Pagination_TriangleBack"
-            style="display: none;"
-            data-dojo-attach-event="click: _back">
+             class="Pagination_Triangle Pagination_TriangleBack"
+             style="display: none;"
+             data-dojo-attach-event="ondijitclick: _backward">
         </div>
 
         <div class="Pagination_Items">
@@ -11,11 +11,10 @@
         </div>
 
         <div data-dojo-attach-point="forwardNode"
-            class="Pagination_Triangle Pagination_TriangleForward"
-            style="display: none;"
-            data-dojo-attach-event="click: _forward">
+             class="Pagination_Triangle Pagination_TriangleForward"
+             style="display: none;"
+             data-dojo-attach-event="ondijitclick: _forward">
         </div>
     </div>
     <div data-dojo-attach-point="bulletsNode" class="Pagination_Bullets"></div>
-
 </div>

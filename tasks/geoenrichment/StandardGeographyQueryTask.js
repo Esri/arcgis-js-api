@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.17/esri/copyright.txt for details.
 
 define(["../../declare","dojo/_base/array","dojo/_base/lang","./taskHelper","../FeatureSet","./GeographyQueryBase","./GeographyQuery","./BatchGeographyQuery","./SubGeographyQuery"],function(e,r,t,o,n,a,s,u,c){return e("esri.tasks.geoenrichment.StandardGeographyQueryTask",null,{constructor:function(e){this.url=e||location.protocol+"//geoenrich.arcgis.com/arcgis/rest/services/World/GeoenrichmentServer"},execute:function(e){e instanceof a||(e=e.returnSubGeographyLayer?new c(e):e.geographyQueries||t.isArray(e.where)?new u(e):new s(e));var r=e instanceof u;return o.invokeMethod(this,r?"/StandardGeographiesBatchQuery/execute":"/StandardGeographyQuery/execute",function(){return o.jsonToRest(e.toJson())},function(e){return(!e.results||e.results.length<1||!e.results[0].value)&&o.throwEmptyResponse(),{featureSet:new n(e.results[0].value),messages:e.messages}},"onExecuteComplete","onError")},onExecuteComplete:function(){},onError:function(){}})});

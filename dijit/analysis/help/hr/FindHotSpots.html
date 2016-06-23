@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Pronađi žarišne točke</h2><p/>
+        <h2><img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" alt="Pronađi žari&scaron;ne točke"></h2>
+        <hr/>
+    <p>Alat Pronađi žari&scaron;ne točke odredit će ima li statistički značajnih klastera u prostornom uzorku va&scaron;ih podataka. 
+        <ul>
+            <li>Jesu li va&scaron;e točke (zločini, stabla, prometne nesreće) stvarno u klasteru?  Kako možete biti sigurni?
+            </li>
+            <li>Jeste li uistinu otkrili statistički značajnu žari&scaron;nu točku (za tro&scaron;enje, smrtnost novorođenčadi, dosljedno visoke rezultate testova) ili bi va&scaron;a karta ispričala drugačiju priču da promijenite način na koji je simbolizirana?
+            </li>
+        </ul>
+        Alat Pronađi žari&scaron;ne točke pomoći će vam odgovoriti na ova pitanja sa sigurno&scaron;ću.
+    </p>
+    <p>Čak i nasumični prostorni uzorci pokazuju neku razinu klastera.  Osim toga, na&scaron;e oči i mozak automatski poku&scaron;avaju naći uzorke čak i kada ih nema.  Zbog toga može biti te&scaron;ko odrediti jesu li uzorci u va&scaron;im podacima posljedica stvarnih prostornih procesa ili posljedica nasumičnog odabira.  Zbog toga znanstvenici i analitičari upotrebljavaju statističke metode kao &scaron;to su traženje žari&scaron;nih točaka (Getis-Ord Gi*) za kvantificiranje prostornih uzoraka.  Kada uistinu pronađete statistički značajne klastere u svojim podacima, imate vrijedne informacije.  Znanje o tome gdje i kada dolazi do klastera može pružiti važne informacije o procesima koji uzrokuju obrasce koje vidite.  Ako je poznato da se provale u stanove, na primjer, stalno če&scaron;će odvijaju u određenim četvrtima, to je važna informacija ako želite izraditi strategije prevencije, dodijeliti oskudne policijske resurse, pokrenuti program susjedske straže, pokrenuti dubinske kriminalističke istrage ili identificirati potencijalne osumnjičene.   
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="analysisLayer">
+        <div><h2>Odaberite sloj za koji će se računati žarišne točke</h2></div>
+        <hr/>
+        <div>
+            <p>Točkasti ili poligonalni sloj za traženje žari&scaron;nih točaka i neaktivnih mjesta. 
+            </p>
+        </div>
+    </div>
+    <div id="analysisField">
+        <div><h2>Pronađi klastere za visoko i nisko</h2></div>
+        <hr/>
+        <div>
+            <p>Ovom će se analizom odgovoriti na pitanje: gdje se prostorno nalaze klasteri visokih i niskih vrijednosti?
+            </p>
+            <p>Ako su va&scaron;i podaci točke i vi odaberete  <b>Brojevi točaka</b>, taj će alat procijeniti prostorni raspored točkastih geoobjekata kako bi se odgovorilo na pitanje: gdje su točke neočekivano grupirane, a gdje su raspr&scaron;ene?
+            </p>
+            <p>Ako odaberete polje, ovaj će alat procijeniti prostorni raspored vrijednosti povezanih s pojedinim geoobjektima kako bi se odgovorilo na pitanje: gdje su klasteri visokih i niskih vrijednosti?
+            </p>
+        </div>
+    </div>
+    <div id="aggregationPolygonLayer">
+        <div><h2>Zbroji točke unutar</h2></div>
+        <hr/>
+        <div>
+            <p>Zadana je postavka zbrajanje točaka unutar mreže koju je stvorio alat na temelju va&scaron;ih podataka o točkama. Također, možete odabrati unos poligonalnog sloja (obično bi to odražavalo upravna područja izvje&scaron;tavanja poput popisnih područja, općinskih granica, odnosno granica okruga) da odgovorite na pitanje: s obzirom na broj točaka zbrojenih unutar svakog poligonalnog geoobjekta, postoje li lokacije sa statistički značajnim prostornim klasterima visokog i niskog zbroja točaka?   
+            </p>
+        </div>
+    </div>
+    <div id="boundingPolygonLayer">
+        <div><h2>Definiraj gdje su točke moguće</h2></div>
+        <hr/>
+        <div>
+            <p>Nacrtajte ili unesite sloj kojim se određuje gdje su mogući incidenti kako bi se odgovorilo na pitanje: ima li unutar područja lokacija s neočekivano visokim i niskim koncentracijama točaka?   
+            </p>
+            <p>Poligonalni geoobjekti koje nacrtate ili geoobjekti u poligonalnom sloju koji odredite trebali bi odrediti gdje bi se točke mogle pojaviti.  Za crtanje ovih poligona kliknite na gumb za crtanje, zatim kliknite na lokaciju na karti za stvaranje poligonalnog oblika. Za crtanje dodatnih poligona ponovno kliknite na gumb za crtanje, zatim kliknite na lokaciju na karti i nastavite.
+            </p>
+        </div>
+    </div>
+    <div id="dividedByField">
+        <div><h2>Podijeli prema</h2></div>
+        <hr/>
+        <div>
+            <p>Ponekad želite analizirati uzorke koji u obzir uzimaju temeljne raspodjele. Na primjer, ako va&scaron;e točke predstavljaju zločine, dijeljenjem s ukupnim brojem stanovni&scaron;tva dobit ćete analizu zločina po stanovniku, a ne sirove podatke o broju zločina. Odabir atributa kojim se dijeli često se naziva normalizacijom.
+            </p>
+            <p>Ako odaberete  <i>Stanovni&scaron;tvo Esrija</i> obogatit ćete kartu svakog poligonalnog geoobjekta vrijednostima stanovni&scaron;tva koje će se potom upotrebljavati kao atributi za dijeljenje.&nbsp; Ova opcija tro&scaron;i kredite.
+            </p>
+        </div>
+    </div>
+    <div id="hotSpotsResultLayer">
+        <div><h2>Naziv sloja rezultata</h2></div>
+        <hr/>
+        <div>
+            <p>Unesite naziv sloja koji će se stvoriti u dijelu  <b>Moj sadržaj</b> i dodati karti.  Ovaj sloj rezultata prikazat će statistički značajne klastere visokih i niskih vrijednosti ili brojeve točaka. Ako naziv sloja rezultata već postoji, od vas će se zatražiti da ga preimenujete.
+            </p>
+            <p>Upotrebom padajućeg izbornika  <b>Spremi rezultat u</b> možete odrediti naziv mape u dijelu <b>Moj sadržaj</b> gdje će se spremiti rezultat.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

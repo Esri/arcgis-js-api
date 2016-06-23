@@ -19,11 +19,11 @@
     <div data-dojo-attach-point="_stackDiv"></div>
     <div data-dojo-type="dijit/layout/ContentPane" data-dojo-attach-point="_firstPane" class="">
       <label class="analysisTitle">${i18n.selectGoal}</label>
-      <div data-dojo-attach-point="_goalNode1" data-dojo-type="esri/dijit/analysis/AnalysisToolItem" data-dojo-props="helpTopic:'allocateToExistingFacilities',name:'${i18n.allocate}'"></div>
-      <div data-dojo-attach-point="_goalNode2" data-dojo-type="esri/dijit/analysis/AnalysisToolItem" data-dojo-props="helpTopic:'minimizeTravel',name:'${i18n.minimizeImpedance}'"></div>
-      <div data-dojo-attach-point="_goalNode3" data-dojo-type="esri/dijit/analysis/AnalysisToolItem" data-dojo-props="helpTopic:'maximizeCoverage',name:'${i18n.maximizeCoverage}'"></div>
-      <div data-dojo-attach-point="_goalNode4" data-dojo-type="esri/dijit/analysis/AnalysisToolItem" data-dojo-props="helpTopic:'maximizeCoverageWithCapacity',name:'${i18n.maximizeCapacitatedCoverage}'"></div>
-      <div data-dojo-attach-point="_goalNode5" data-dojo-type="esri/dijit/analysis/AnalysisToolItem" data-dojo-props="helpTopic:'coverAPercentageOfDemand',name:'${i18n.percentCoverage}'"></div>
+      <div data-dojo-attach-point="_goalNode1" data-dojo-type="esri/dijit/analysis/AnalysisToolItem" data-dojo-props="helpTopic:'allocateToExistingFacilities',name:'${i18n.allocate}',toolIcon:'allocateIcon'"></div>
+      <div data-dojo-attach-point="_goalNode2" data-dojo-type="esri/dijit/analysis/AnalysisToolItem" data-dojo-props="helpTopic:'minimizeTravel',name:'${i18n.minimizeImpedance}',toolIcon:'minimizeIcon'"></div>
+      <div data-dojo-attach-point="_goalNode3" data-dojo-type="esri/dijit/analysis/AnalysisToolItem" data-dojo-props="helpTopic:'maximizeCoverage',name:'${i18n.maximizeCoverage}',toolIcon:'maximizeIcon'"></div>
+      <div data-dojo-attach-point="_goalNode4" data-dojo-type="esri/dijit/analysis/AnalysisToolItem" data-dojo-props="helpTopic:'maximizeCoverageWithCapacity',name:'${i18n.maximizeCapacitatedCoverage}',toolIcon:'maximizelimIcon'"></div>
+      <div data-dojo-attach-point="_goalNode5" data-dojo-type="esri/dijit/analysis/AnalysisToolItem" data-dojo-props="helpTopic:'coverAPercentageOfDemand',name:'${i18n.percentCoverage}',toolIcon:'percentageIcon'"></div>
       
       <button data-dojo-type="dijit/form/Button" data-dojo-attach-point="_nextBtn" class="esriAnalysisSubmitButton" style="display:none;margin:0 40%;" data-dojo-attach-event="onClick:_handleNextBtnClick">
             ${i18n.next}

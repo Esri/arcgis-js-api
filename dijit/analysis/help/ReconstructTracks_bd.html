@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Reconstruct Tracks</h2><p/>
+        <h2><img src="./images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Reconstruct Tracks"></h2>
+        <hr/>
+    <p>This tool works with a layer of
+point features or polygon features that are time enabled with time instants. It first
+determines which points belong to a track using an identifier. Using the time at each location, the tracks are ordered sequentially and transformed into a line or polygon representing the path of movement. Optionally, the input may be buffered by some field, which creates polygons at each location. These buffered points, or if the inputs are polygons, are then join sequentially to create a track as a polygon, where the width is representative of the attribute of interest. Resulting tracks have a start and end time, which represent temporally the first and last feature in a given track. When the tracks are created statistics about the input features are calculated and assigned to the output track. The
+most basic statistic is the count of the number of points within
+the area, but you can get other statistics as well.
+
+    </p>
+    <p>For example, suppose you have GPS measurements of hurricanes every 10 minutes. Each GPS measurement records the hurricane name, location, time of recording, and the wind speed. You could create tracks of the hurricanes using the name of the hurricane as the track identification, and all hurricanes tracks would be generated. You can calculate statistics like the mean, max and minimum wind speed of each hurricane, as well as the count of measurements in each track.
+    </p>
+    <p>Using the same example, you could buffer your tracks by the wind speed. This would buffer each measurement by the wind speed field at that location, and join the buffered areas together, creating a polygon representative of the track path, as well as the changes in wind speed as the hurricanes progressed.   
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Choose features to reconstruct tracks from</h2></div>
+        <hr/>
+        <div>
+            <p>The point or polygon layer that will be reconstructed into tracks. You may optionally browse for a big data file share item or feature layer.
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>Choose fields used to identify tracks</h2></div>
+        <hr/>
+        <div>
+            <p>The field(s) that represents the track identifier.
+
+            </p>
+            <p>As an example, if you were reconstructing tracks of hurricanes, you could use the  <i>hurricane name</i> as the track field.
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Choose method used to reconstruct tracks</h2></div>
+        <hr/>
+        <div>
+            <p>Method used to join tracks   and apply buffer (if applicable). The planar method may calculate the results more quickly, but will not wrap tracks around the  international dateline or account for the actual shape of the earth when buffering. The geodesic method will wrap tracks around the date line if required, and apply a geodesic buffer to account for the shape of the earth.
+
+            </p>
+        </div>
+    </div>
+    <div id="bufferField">
+        <div><h2>Create an expression to buffer input features by (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Equation used to calculate the buffer distance around input features. This equation can be generated using the buffer calculator, and basic operations like add, subtract, multiply and divide are supported. Values are calculated using the analysis coordinate system.
+            </p>
+        </div>
+    </div>
+    <div id="timeSplit">
+        <div><h2>Select a time to split tracks by (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Time used to split tracks. If input points or polygons have a longer duration between them than the time split, than they will be split into different tracks. .
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Add statistics (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>You can calculate statistics about attributes of numeric fields of the input layer such as: 
+                <ul>
+                    <li>count,
+                    </li>
+                    <li>mean,
+                    </li>
+                    <li>min,
+                    </li>
+                    <li>max,
+                    </li>
+                    <li>range,
+                    </li>
+                    <li>variance, and
+                    </li>
+                    <li>standard deviation.
+                    </li>
+                </ul>
+                  The resulting layer will contain a new attribute for each statistic calculated. Any number of statistics can be added by choosing an attribute and statistic.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Result layer name</h2></div>
+        <hr/>
+        <div>
+            <p>This is the name of the layer that will be created in  <b>My
+Content</b> and added to the map. If the layer already exists,
+you will be asked to provide another name.
+            </p>
+            <p>Using the  <b>Save result in</b> drop-down box, you can specify
+the name of a folder in <b>My Content</b> where the result will be
+saved.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

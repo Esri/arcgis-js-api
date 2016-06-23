@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="bdToolbox">
+        <p>Big Data Analytics distributes the analytics work across you Big Data Analytics Server. This allows you to analyze more data faster, by harnessing the power of multiple machines. Three tools are currently available through the Portal Web UX:
+            <ul>
+                <li>Aggregate Points,
+                </li>
+                <li>Reconstruct Tracks, and
+                </li>
+                <li>Create Buffers.
+                </li>
+            </ul>
+            
+        </p>
+        <p>Big Data Analytics focus on analyzing large data with a focus on both spatial and temporal patterns. 
+        </p>
+    </div>
+    <div id="SummarizeDataCategory" class="regularsize">
+        <h2>Summarize Data</h2>
+        <hr/>
+        <p>The Summarize Data toolset contains tools that calculate total counts, lengths, areas, and basic descriptive statistics of features and their attributes within areas or near other features.
+            <ul>
+                <li> <b>Aggregate Points</b> calculates statistics about points that fall within specified areas or bins.
+                </li>
+                <li> <b>Reconstruct Tracks</b> calculates statistics about points or polygons that belong to the same track, and reconstruct that inputs into tracks.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregatePointsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Aggregate Points</h2></td>
+                    <td>
+                    <img src="./images/GUID-6C1620D9-D176-41FA-8283-833D8B1CCCFC-web.png" class="titleImage" alt="Aggregate Points">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Using a layer of
+point features and either a layer of area features or a distance used to calculate bins, this tool
+determines which points fall within each area and calculates statistics about all
+the points within each area. You may optionally apply time slicing to this tool. For example:
+                <ul>
+                    <li>Given point locations of crime incidents, count the number of crimes per county or other administrative district.
+                    </li>
+                    <li>Find the highest and lowest monthly revenues for franchise locations using 100 km bins.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="ReconstructTracksTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Reconstruct Tracks</h2></td>
+                    <td>
+                    <img src="./images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" class="titleImage" alt="Reconstruct Tracks">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Using either a layer of
+point features or polygon features that are time enabled, this tool
+determines which input features belong in a track, ordering the inputs sequentially in time. It then calculates statistics about all
+the input features within each track. For example:
+                <ul>
+                    <li>Given point locations and time of hurricane measurements, calculate the mean wind speed, and max wind pressure of the hurricane.
+                    </li>
+                    <li>Find the highest and lowest monthly revenues for franchise locations using 100 km bins.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="<pid="GUID-74A55B7E-408B-40DC-80A8-3012FF033141"><xrefhref="GUID-09D21C0D-AF16-44E1-BEE4-D835B87838A5">SummarizeNearby</xref></p>Tool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2><p id="GUID-74A55B7E-408B-40DC-80A8-3012FF033141"><xref href="GUID-09D21C0D-AF16-44E1-BEE4-D835B87838A5">Summarize Nearby</xref></p></h2></td>
+                    <td>
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <br/>
+        </div>
+        <div id="<pid="GUID-3127F826-72FB-487B-BDE9-0F7016474068"><xrefhref="GUID-A4097957-FA44-4346-B59F-E9468242CF04">SummarizeWithin</xref></p>Tool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2><p id="GUID-3127F826-72FB-487B-BDE9-0F7016474068"><xref href="GUID-A4097957-FA44-4346-B59F-E9468242CF04">Summarize Within</xref></p></h2></td>
+                    <td>
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <br/>
+        </div>
+    <div id="FindLocationsCategory" class="smallsize">
+        <h2>Find Locations</h2>
+        <hr/>
+        <p> <b>THESE TOOLS ARE NOT YET AVAILABLE</b>
+        </p>
+        <p>These tools are used to identify areas that
+meet a number of different criteria you specify.  These criteria can be based upon attribute queries (for example, parcels that are vacant) and spatial queries (for example, within 1 kilometer of a river).  The
+areas that are found can be selected from existing features (such as existing
+land parcels) or new features can be created where all the
+requirements are met.
+        </p>
+    </div>
+        <div id="<pid="GUID-BF51A1F4-2CFE-4AF8-9A61-CB68DF30B4E6"><xrefhref="GUID-20D8E806-39D3-4057-A08F-DBCF152EC89F">FindExistingLocations</xref></p>Tool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2><p id="GUID-BF51A1F4-2CFE-4AF8-9A61-CB68DF30B4E6"><xref href="GUID-20D8E806-39D3-4057-A08F-DBCF152EC89F">Find Existing Locations</xref></p></h2></td>
+                    <td>
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <br/>
+        </div>
+        <div id="<pid="GUID-A2C673DE-ED6A-40C8-AEF0-7A326A2C37E3"><xrefhref="GUID-70600B0A-4246-43B4-B998-EE180E365058">DeriveNewLocations</xref></p>Tool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2><p id="GUID-A2C673DE-ED6A-40C8-AEF0-7A326A2C37E3"><xref href="GUID-70600B0A-4246-43B4-B998-EE180E365058">Derive New Locations</xref></p></h2></td>
+                    <td>
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <br/>
+        </div>
+        <div id="<pid="GUID-21CCB705-BBA3-49F5-A23A-83737554B6AD"><xrefhref="GUID-34AE31A2-39CE-4092-8F56-0C2AEAF9E925">FindSimilarLocations</xref></p>Tool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2><p id="GUID-21CCB705-BBA3-49F5-A23A-83737554B6AD"><xref href="GUID-34AE31A2-39CE-4092-8F56-0C2AEAF9E925">Find Similar Locations</xref></p></h2></td>
+                    <td>
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <br/>
+        </div>
+    <div id="AnalyzePatternsCategory" class="smallsize">
+        <h2>Analyze Patterns</h2>
+        <hr/>
+        <p> <b>These tools are not yet available through Portal.</b> These tools help you identify, quantify, and visualize spatial patterns in your data. 
+        </p>
+    </div>
+    <div id="UseProximityCategory" class="smallsize">
+        <h2>Use Proximity</h2>
+        <hr/>
+        <p>These tools help you answer one of the most common questions posed in spatial analysis: &quot;What is near what?&quot;
+            <ul>
+                <li> <b>Create Buffers</b> create areas of a specified distance from
+features.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CreateBuffersTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Create Buffers</h2></td>
+                    <td>
+                    <img src="./images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" class="titleImage" alt="Create Buffers">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>A buffer is an area that covers a given distance from a point, line, or area feature. 
+            </p>
+            <br/>
+        </div>
+</div>
+</html>

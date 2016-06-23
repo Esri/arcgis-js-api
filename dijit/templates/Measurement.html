@@ -13,24 +13,24 @@
   <div dojoType='dijit.layout.ContentPane' dojoAttachPoint='resultTable' align='leading' class="resultTable esriMeasurementTableContainer" style="display:none;">
     <table class="esriMeasurementResultTable">
       <tr>
-        <td class="esriMeasurementTableHeader" colspan="2">${_NLS_Lon}</td><td class="esriMeasurementTableHeader">${_NLS_Lat}</td>
+        <td class="esriMeasurementTableHeader" colspan="2">${_NLS_Lat}</td><td class="esriMeasurementTableHeader">${_NLS_Lon}</td>
       </tr>
       <tr class="esriMeasurementTableRow" dojoAttachPoint="_mouseRow">
         <td dojoAttachPoint="mouseCell"></td>
         <td class="esriMeasurementTableCell">
-          <span dojoAttachPoint="mouseLongitude" dir='ltr'></span>
+          <span dojoAttachPoint="mouseLatitude" dir='ltr'></span>
         </td>
         <td class="esriMeasurementTableCell">
-          <span dojoAttachPoint="mouseLatitude" dir='ltr'></span>
+          <span dojoAttachPoint="mouseLongitude" dir='ltr'></span>
         </td>
       </tr>
       <tr class="esriMeasurementTableRow">
         <td dojoAttachPoint="pinCell"></td>
         <td class="esriMeasurementTableCell">
-          <span dojoAttachPoint="markerLongitude" dir='ltr'></span>
+          <span dojoAttachPoint="markerLatitude" dir='ltr'></span>
         </td>
         <td class="esriMeasurementTableCell">
-          <span dojoAttachPoint="markerLatitude" dir='ltr'></span>
+          <span dojoAttachPoint="markerLongitude" dir='ltr'></span>
         </td>
       </tr>
     </table>
