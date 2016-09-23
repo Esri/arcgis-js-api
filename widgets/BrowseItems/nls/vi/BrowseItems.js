@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define({noFilterFields:"Lớp ${name} không có trường nào có thể dùng để lọc.",addToViewer:"Thêm lớp vào bản đồ",noItemsToDisplay:"Hiện không có mục nào khả dụng để hiển thị.",searchFor:"Tìm kiếm với",searching:"Đang tìm kiếm",items:{organizationLabel:"Tổ chức của tôi",onlineLabel:"ArcGIS Online",contentLabel:"Nội dung của tôi",favoritesLabel:"Mục yêu thích của tôi"},title:"Chọn Bản đồ Web",searchTitle:"Tìm kiếm",ok:"Ok",cancel:"Hủy",placeholder:"Nhập cụm từ tìm kiếm",instructionsLeft:"Bạn muốn làm gì?",instructionsRight:"Chọn ứng dụng có thể cấu hình.",go:"Đi",selectDetails:"CHỌN",configure:"Tạo",close:"Đóng",learnMoreConfigurableApps:"Tìm hiểu thêm về ứng dụng có thể cấu hình"});

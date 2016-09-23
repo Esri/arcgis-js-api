@@ -69,7 +69,10 @@
     varying vec4 vcolor;
 #endif
 
+#ifdef RECEIVE_SHADOWS
 	$evalShadow
+#endif
+
 	void main() {
 		vec3 a = ambient * lightAmbient.rgb * lightAmbient.w;
 
@@ -81,9 +84,11 @@
 		vec3 normal = dot(vnormal, viewDir)>0.0?-vnormal:vnormal;
 #endif
 
-    normal = normalize(normal);
-    
-		float shadow = evalShadow(vpos, 1.0 / gl_FragCoord.w, depthTex, shadowMapNum, shadowMapDistance, shadowMapMatrix, depthHalfPixelSz);
+    	normal = normalize(normal);
+		float shadow = 0.0;
+#ifdef RECEIVE_SHADOWS
+		shadow = evalShadow(vpos, 1.0 / gl_FragCoord.w, depthTex, shadowMapNum, shadowMapDistance, shadowMapMatrix, depthHalfPixelSz);
+#endif
 		vec3 d = (1.0 - shadow) * diffuse * lightDiffuse.rgb * lightDiffuse.w * clamp(dot(normal, lightDirection), .0, 1.0);
 
 		float opacity_ = opacity;
@@ -124,7 +129,7 @@
 #else
         vtc = vec2($uv0.x, 1.0-$uv0.y);
 #endif
-    
+
 	}
 ]]></snippet>
 
@@ -159,16 +164,57 @@
 	precision mediump float;
 
 	uniform sampler2D tex;
+	uniform vec2 texSize;
 	varying vec2 vtc;
 	varying vec4 regionV;
+
+	 float calcMipMapLevel(const vec2 ddx, const vec2 ddy) {
+		// from:
+		//   - OpenGLES Common Profile Specification Version 2.0.25, Section 3.7.7 - Texture Minification
+		//   - https://www.opengl.org/discussion_boards/showthread.php/171485-Texture-LOD-calculation-(useful-for-atlasing)
+		//   - http://www.linedef.com/virtual-texture-demo.html
+		float deltaMaxSqr = max(dot(ddx, ddx), dot(ddy, ddy));
+		return max(0.5 * log2(deltaMaxSqr), 0.0);
+	}
 
 	$fsPhongSrc
 		vec2 uv = vtc;
 		uv = fract(uv);
 		//[umin, vmin, umax, vmax]
 
-		uv = uv.xy*(regionV.zw-regionV.xy)+regionV.xy;
-		vec4 texColor = texture2D(tex, uv);
+		vec2 atlasScale = regionV.zw - regionV.xy;
+		uv = uv.xy * atlasScale + regionV.xy;
+
+		vec4 texColor;
+		#ifdef GL_OES_standard_derivatives
+			#extension GL_OES_standard_derivatives : enable
+
+			// calculate derivative of continuous texture coordinate
+			// to avoid mipmapping artifacts caused by manual wrapping in shader
+			vec2 dUVdx = dFdx(vtc) * atlasScale;
+			vec2 dUVdy = dFdy(vtc) * atlasScale;
+
+			#ifdef GL_EXT_shader_texture_lod
+				#extension GL_EXT_shader_texture_lod : enable
+
+				// workaround for artifacts in Windows 10 using Intel HD Graphics 4000 series
+				// see: https://devtopia.esri.com/Zurich-R-D-Center/arcgis-js-api-canvas3d-issues/issues/768
+				const float epsilon = 1.0E-32;
+				float zeroUVShift = uv.x == 0.0 && uv.y == 0.0 ? epsilon : 0.0;
+
+				texColor = texture2DGradEXT(tex, uv + zeroUVShift, dUVdx, dUVdy);
+			#else
+				// use bias to compensate for difference in automatic vs desired mipmap level
+				vec2 dUVdxAuto = dFdx(uv);
+				vec2 dUVdyAuto = dFdy(uv);
+				float mipMapLevel = calcMipMapLevel(dUVdx * texSize, dUVdy * texSize);
+				float autoMipMapLevel = calcMipMapLevel(dUVdxAuto * texSize, dUVdyAuto * texSize);
+				texColor = texture2D(tex, uv, mipMapLevel - autoMipMapLevel);
+			#endif
+		#else
+			texColor = texture2D(tex, uv);
+		#endif
+
 		if (texColor.a < .33) discard;
 		gl_FragColor = vec4(ssao * texColor.rgb * (a + d) + s, texColor.a * opacity_);
 		//gl_FragColor = regionV;

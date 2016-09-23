@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define(["require","exports","./gl-matrix"],function(i,t,e){var r=e.vec3d,s=e.vec4d,n=function(){function i(i,t,e,n){this.ambient=s.create(i),this.diffuse=s.create(t),this.specular=s.create(e),this.direction=r.create(n)}return i.prototype.setUniforms=function(i){i.uniform4fv("lightAmbient",this.ambient),i.uniform4fv("lightDiffuse",this.diffuse),i.uniform4fv("lightSpecular",this.specular),i.uniform3fv("lightDirection",this.direction)},i.prototype.set=function(i){i.ambient&&s.set(i.ambient,this.ambient),i.diffuse&&s.set(i.diffuse,this.diffuse),i.specular&&s.set(i.specular,this.specular),i.direction&&r.set(i.direction,this.direction)},i.prototype.get=function(){return{ambient:this.ambient,diffuse:this.diffuse,specular:this.specular,direction:this.direction}},i}();return n});
+define(["require","exports","./gl-matrix"],function(t,i,e){var s=e.vec3d,r=e.vec4d,n=function(){function t(t,i,e,n){this.ambient=r.create(t),this.diffuse=r.create(i),this.specular=r.create(e),this.direction=s.create(n)}return t.prototype.setUniforms=function(t){t.setUniform4fv("lightAmbient",this.ambient),t.setUniform4fv("lightDiffuse",this.diffuse),t.setUniform4fv("lightSpecular",this.specular),t.setUniform3fv("lightDirection",this.direction)},t.prototype.set=function(t){t.ambient&&r.set(t.ambient,this.ambient),t.diffuse&&r.set(t.diffuse,this.diffuse),t.specular&&r.set(t.specular,this.specular),t.direction&&s.set(t.direction,this.direction)},t.prototype.get=function(){return{ambient:this.ambient,diffuse:this.diffuse,specular:this.specular,direction:this.direction}},t}();return n});

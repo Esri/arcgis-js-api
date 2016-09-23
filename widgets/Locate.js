@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 /**
  * Provides a simple widget that animates the {@link module:esri/views/View}
@@ -134,30 +134,19 @@ define([
 
   /**
    * @extends module:esri/widgets/Widget
+   * @mixes module:esri/core/Evented
    * @constructor module:esri/widgets/Locate
    * @param {Object} [properties] - See the [properties](#properties) for a list of all the properties
    *                              that may be passed into the constructor.
    * @param {string | Node} [srcNodeRef] - Reference or ID of the HTML node in which this widget renders.
+   *
+   * @example
+   * // typical usage
+   * var locate = new Locate({
+   *   view: view
+   * });
    */
   var Locate = Widget.createSubclass([_TemplatedMixin], /** @lends module:esri/widgets/Locate.prototype */ {
-
-    properties: {
-      viewModel: {
-        type: LocateViewModel
-      },
-      geolocationOptions: {
-        dependsOn: ["viewModel.geolocationOptions"]
-      },
-      goToLocationEnabled: {
-        dependsOn: ["viewModel.goToLocationEnabled"]
-      },
-      graphic: {
-        dependsOn: ["viewModel.graphic"]
-      },
-      view: {
-        dependsOn: ["viewModel.view"]
-      }
-    },
 
     declaredClass: "esri.widgets.Locate",
 
@@ -207,99 +196,106 @@ define([
     //
     //--------------------------------------------------------------------------
 
-    //----------------------------------
-    //  geolocationOptions
-    //----------------------------------
+    properties: /** @lends module:esri/widgets/Locate.prototype */ {
 
-    /**
-     * The HTML5 Geolocation Position options for locating. Refer to
-     * [Geolocation API Specification](http://www.w3.org/TR/geolocation-API/#position-options)
-     * for details.
-     *
-     * @name geolocationOptions
-     * @instance
-     *
-     * @type {Object}
-     * @default { maximumAge: 0, timeout: 15000, enableHighAccuracy: true }
-     */
-    _getGeolocationOptionsAttr: viewModelWiring.createGetterDelegate("geolocationOptions"),
+      //----------------------------------
+      //  geolocationOptions
+      //----------------------------------
 
-    _setGeolocationOptionsAttr: viewModelWiring.createSetterDelegate("geolocationOptions"),
+      /**
+       * The HTML5 Geolocation Position options for locating. Refer to
+       * [Geolocation API Specification](http://www.w3.org/TR/geolocation-API/#position-options)
+       * for details.
+       *
+       * @name geolocationOptions
+       * @instance
+       *
+       * @type {Object}
+       * @default { maximumAge: 0, timeout: 15000, enableHighAccuracy: true }
+       */
+      geolocationOptions: {
+        aliasOf: "viewModel.geolocationOptions"
+      },
 
-    //----------------------------------
-    //  goToLocationEnabled
-    //----------------------------------
+      //----------------------------------
+      //  goToLocationEnabled
+      //----------------------------------
 
-    /**
-     * Indicates whether the widget should navigate the view to the position and scale of the geolocated result.
-     *
-     * @name goToLocationEnabled
-     * @instance
-     * @type {boolean}
-     * @default true
-     */
-    _getGoToLocationEnabledAttr: viewModelWiring.createGetterDelegate("goToLocationEnabled"),
+      /**
+       * Indicates whether the widget should navigate the view to the position and scale of the geolocated result.
+       *
+       * @name goToLocationEnabled
+       * @instance
+       * @type {boolean}
+       * @default true
+       */
+      goToLocationEnabled: {
+        aliasOf: "viewModel.goToLocationEnabled"
+      },
 
-    _setGoToLocationEnabledAttr: viewModelWiring.createSetterDelegate("goToLocationEnabled"),
+      //----------------------------------
+      //  graphic
+      //----------------------------------
 
-    //----------------------------------
-    //  graphic
-    //----------------------------------
+      /**
+       * The graphic used to show the user's location on the map.
+       *
+       * @name graphic
+       * @instance
+       * @autocast
+       *
+       * @type {module:esri/Graphic}
+       *
+       * @example
+       * var locateWidget = new Locate({
+       *   viewModel: new LocateVM({
+       *     view: view,  // Assigns the locate widget to a view
+       *     graphic: Graphic({
+       *       symbol: new SimpleMarkerSymbol()  // Overwrites the default symbol used for the
+       *       // graphic placed at the location of the user when found
+       *     })
+       * });
+       */
+      graphic: {
+        aliasOf: "viewModel.graphic"
+      },
 
-    /**
-     * The graphic used to show the user's location on the map.
-     *
-     * @name graphic
-     * @instance
-     * @autocast
-     *
-     * @type {module:esri/Graphic}
-     *
-     * @example
-     * var locateWidget = new Locate({
-     *   viewModel: new LocateVM({
-     *     view: view,  // Assigns the locate widget to a view
-     *     graphic: Graphic({
-     *       symbol: new SimpleMarkerSymbol()  // Overwrites the default symbol used for the
-     *       // graphic placed at the location of the user when found
-     *     })
-     * });
-     */
-    _getGraphicAttr: viewModelWiring.createGetterDelegate("graphic"),
+      //----------------------------------
+      //  view
+      //----------------------------------
 
-    _setGraphicAttr: viewModelWiring.createSetterDelegate("graphic"),
+      /**
+       * A reference to the {@link module:esri/views/MapView} or {@link module:esri/views/SceneView}. Set this to link the widget to a specific view.
+       *
+       * @name view
+       * @instance
+       *
+       * @type {module:esri/views/MapView | module:esri/views/SceneView}
+       */
+      view: {
+        aliasOf: "viewModel.view"
+      },
 
-    //----------------------------------
-    //  view
-    //----------------------------------
+      //----------------------------------
+      //  viewModel
+      //----------------------------------
 
-    /**
-     * A reference to the {@link module:esri/views/MapView MapView} or {@link module:esri/views/Scene SceneView}. Set this to link the widget to a specific view.
-     *
-     * @name view
-     * @instance
-     *
-     * @type {module:esri/views/MapView | module:esri/views/SceneView}
-     */
-    _getViewAttr: viewModelWiring.createGetterDelegate("view"),
+      /**
+       * The view model for this widget. This is a class that contains all the logic
+       * (properties and methods) that controls this widget's behavior. See the
+       * {@link module:esri/widgets/Locate/LocateViewModel} class to access
+       * all properties and methods on the widget.
+       *
+       * @name viewModel
+       * @instance
+       * @type {module:esri/widgets/Locate/LocateViewModel}
+       * @autocast
+       */
+      viewModel: {
+        type: LocateViewModel
+      }
 
-    _setViewAttr: viewModelWiring.createSetterDelegate("view"),
-
-    //----------------------------------
-    //  viewModel
-    //----------------------------------
-
-    /**
-     * The view model for this widget. This is a class that contains all the logic
-     * (properties and methods) that controls this widget's behavior. See the
-     * {@link module:esri/widgets/Locate/LocateViewModel} class to access
-     * all properties and methods on the widget.
-     *
-     * @name viewModel
-     * @instance
-     * @type {module:esri/widgets/Locate/LocateViewModel}
-     * @autocast
-     */
+    },
 
     //--------------------------------------------------------------------------
     //

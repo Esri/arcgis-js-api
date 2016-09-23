@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define({lblItem:"item",title:"Sign In",info:"Please sign in to access the item on {server} {resource}",oAuthInfo:"Please sign in to continue.",lblUser:"Username:",lblPwd:"Password:",lblOk:"OK",lblSigning:"Signing in...",lblCancel:"Cancel",errorMsg:"Invalid username/password. Please try again.",invalidUser:"The username or password you entered is incorrect.",forbidden:"The username and password are valid, but you don't have access to this resource.",noAuthService:"Unable to access the authentication service."});
+define({lblItem:"stavka",title:"Prijavi se",info:"Prijavite se da biste pristupili stavci na {server} {resource}",oAuthInfo:"Prijavite se da biste nastavili.",lblUser:"Korisničko ime:",lblPwd:"Lozinka:",lblOk:"U redu",lblSigning:"Prijavljivanje...",lblCancel:"Otkaži",errorMsg:"Nevažeće korisničko ime/lozinka. Pokušajte ponovo.",invalidUser:"Korisničko ime ili lozinka koju ste uneli je neispravna.",forbidden:"Korisničko ime i lozinka su važeći, ali nemate pristup ovom resursu.",noAuthService:"Pristupanje servisu za potvrdu identiteta nije moguće."});

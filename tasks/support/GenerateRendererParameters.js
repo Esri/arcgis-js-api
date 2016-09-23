@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define(["../../core/declare","../../core/Accessoire"],function(e,i){var n=e(i,{declaredClass:"esri.tasks.support.GenerateRendererParameters",classificationDefinition:null,where:null,precision:null,prefix:null,unitLabel:null,formatLabel:null,toJSON:function(){var e={classificationDef:JSON.stringify(this.classificationDefinition.toJSON()),where:this.where};return e}});return n});
+define(["../../core/Accessor","./ClassificationDefinition"],function(e,i){var t=e.createSubclass({declaredClass:"esri.tasks.support.GenerateRendererParameters",properties:{classificationDefinition:{value:null,type:i},where:{value:null,type:String}},toJSON:function(){return{classificationDef:JSON.stringify(this.classificationDefinition.toJSON()),where:this.where}}});return t});

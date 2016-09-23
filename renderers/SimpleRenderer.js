@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define(["../core/declare","../core/lang","dojo/_base/lang","../symbols/support/jsonUtils","./Renderer"],function(e,i,s,l,t){var n=e(t,{declaredClass:"esri.renderer.SimpleRenderer",type:"simple",getDefaults:function(){return s.mixin(this.inherited(arguments),{description:null,label:null,symbol:null})},_symbolReader:l.fromJSON,getSymbol:function(){return this.symbol},toJSON:function(){var e=s.mixin(this.inherited(arguments),{type:this.type,label:this.label,description:this.description,symbol:this.symbol&&this.symbol.toJSON()});return i.fixJson(e)},clone:function(){return new n({description:this.description,label:this.label,symbol:this.symbol&&this.symbol.clone(),visualVariables:i.clone(this.visualVariables)})}});return n});
+define(["../core/declare","../core/lang","../symbols/support/jsonUtils","./Renderer"],function(e,l,r,s){var i=e(s,{declaredClass:"esri.renderer.SimpleRenderer",properties:{description:{value:null,json:{writable:!0}},label:{value:null,json:{writable:!0}},symbol:{value:null,json:{read:r.read,write:function(e,l,s){l.symbol=r.write(e,{},s)},writeNull:!0}},type:"simple"},getSymbol:function(e){return this.symbol},clone:function(){return new i({description:this.description,label:this.label,symbol:this.symbol&&this.symbol.clone(),visualVariables:l.clone(this.visualVariables)})}});return i});

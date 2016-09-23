@@ -20,23 +20,36 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 /**
-    * Defines the layout elements. It's an object with the following properties: 
-    * 
-    * @property {string} titleText - The text used for the map title if the specified layout contains a title text element.
-    * @property {string} authorText - The text used for the author if the specified layout contains an author text element.
-    * @property {string} copyrightText - The text used for the copyright if the specified layout contains an copyright text element.
-    * @property {string} scalebarUnit - The units used for the scalebar. **Valid values:** 
-    * `'Miles' | 'Kilometers' | 'Meters' | 'Feet'.` **Default** is `'Miles'`.
-    * @property {module:esri/tasks/support/LegendLayer[]} legendLayers - An array of LegendLayer containing the id's of the layers that 
-    * will be included in the legend. If `legendLayers` is not specified, all operational layers will be present in the legend. To specify
-    * that no layers will be included in the legend set `legendLayer = []`.
-    * @property {Object[]} customTextElements - Updated the text for a TextElement, that is not DynamicText, on the page layout. 
-    * Values must be strings.
-    * 
-    * @type {Object}
-    */
+       * Defines the layout elements. It's an object with the following properties: 
+       * 
+       * @property {string} titleText - The text used for the map title if the specified layout contains a title text element.
+       * @property {string} authorText - The text used for the author if the specified layout contains an author text element.
+       * @property {string} copyrightText - The text used for the copyright if the specified layout contains an copyright text element.
+       * @property {string} scalebarUnit - The unit used for the scalebar. <br> **Knowns values:** 
+       * `'Miles' | 'Kilometers' | 'Meters' | 'Feet'.` <br> **Default Value** `'Miles'`.
+       * @property {module:esri/tasks/support/LegendLayer[]} legendLayers - An array of {@link module:esri/tasks/support/LegendLayer} containing the id's of the layers that 
+       * will be included in the legend. If `legendLayers` is not specified, all operational layers will be present in the legend. To specify
+       * that no layers will be included in the legend set `legendLayer = []`.
+       * @property {Object[]} customTextElements - An array of name-value pairs. Use this property to update the text for custom text elements 
+       * on the page layout. Values must be strings.
+       * 
+       * @example 
+       * layoutOptions: {
+       *   titleText: "My Print",
+       *   authorText: "Sam",
+       *   copyrightText: "My Company",
+       *   scalebarUnit: "Miles",
+       *   // the following text elements must 
+       *   // exist in your print service
+       *   customTextElements: [{
+       *      "description": "My description",
+       *      "location": "My Location"
+       *   }]
+       * }
+       * @type {Object}
+       */
 
-define(["../../core/declare","../../core/Accessoire"],function(e,l){var t=e(l,{declaredClass:"esri.tasks.support.PrintTemplate",label:null,exportOptions:{width:800,height:1100,dpi:96},layoutOptions:null,format:"PNG32",layout:"MAP_ONLY",outScale:0,preserveScale:!0,attributionVisible:null,showLabels:!0});return t});
+define(["../../core/declare","../../core/Accessor"],function(e,t){var l=e(t,{declaredClass:"esri.tasks.support.PrintTemplate",properties:{label:{value:null,type:String},exportOptions:{value:{width:800,height:1100,dpi:96},type:Object},layoutOptions:{value:null,type:Object},format:{value:"png32",type:String},layout:{value:"map-only",type:String},outScale:{value:0,type:Number},preserveScale:{value:!0,type:Boolean},attributionVisible:{type:Boolean},showLabels:{value:!0,type:Boolean}}});return l});

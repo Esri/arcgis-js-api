@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define({statsAvg:"Average : ${avg}",count:"Count : ${count}",percent:"${num}%",high:"High",low:"Low",color:{changeMinMaxToolTIp:"Type in a value.",handleToolTip:"Match data values to colors.",maxValueToolTip:"Type in the largest expected data value.",minValueToolTip:"Type in the smallest expected data value.",changeSymbol:"Change symbol"},size:{handleToolTip:"Match data values to symbol size.",sizeInputBoxLines:"Set line thickness from 0 to 18 pixels.",sizeInputBoxPoints:"Set symbol size from 1 to 120 pixels"}});
+define({statsAvg:"Prosek: ${avg}",count:"Broj: ${count}",percent:"${num}%",high:"Visoko",low:"Nisko",color:{changeMinMaxToolTIp:"Otkucajte vrednost.",handleToolTip:"Poklopite vrednosti podataka sa bojama.",maxValueToolTip:"Otkucajte najveću očekivanu vrednost podataka.",minValueToolTip:"Otkucajte najmanju očekivanu vrednost podataka.",changeSymbol:"Promeni simbol"},size:{handleToolTip:"Poklopite vrednosti podataka sa veličinom simbola.",sizeInputBoxLines:"Podesite debljinu linije od 0 do 18 piksela.",sizeInputBoxPoints:"Podesite veličinu simbola od 1 do 120 piksela"}});

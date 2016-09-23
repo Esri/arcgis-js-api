@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define({noFilterFields:"Karttatasolla ${name} ei ole suodatukseen soveltuvia kenttiä.",addToViewer:"Lisää karttataso karttaan",noItemsToDisplay:"Tällä hetkellä näytettävissä olevia kohteita ei ole.",searchFor:"Etsi",searching:"Etsitään…",items:{organizationLabel:"Oma organisaatio",onlineLabel:"ArcGIS Online",contentLabel:"Oma sisältö",favoritesLabel:"Omat suosikit"},title:"Valitse Web-kartta",searchTitle:"Etsi",ok:"OK",cancel:"Peruuta",placeholder:"Anna hakuehto",instructionsLeft:"Mitä haluat tehdä?",instructionsRight:"Valitse muunneltavissa oleva sovellus.",go:"Siirry",selectDetails:"VALITSE",configure:"Luo",close:"Sulje",learnMoreConfigurableApps:"Lisätietoja muunneltavissa olevista sovelluksista"});

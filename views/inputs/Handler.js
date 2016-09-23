@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define(["../../core/Accessoire","../../core/declare","../2d/viewpointUtils"],function(e,t,n){var r=t([e],{declaredClass:"esri.views.Handler",classMetadata:{properties:{surface:{dependsOn:["view.surface"]}}},constructor:function(){this.viewpoint=n.create()},destroy:function(){this.view=null},next:null,customGestures:null,viewpoint:null,_surfaceGetter:function(){return this.get("view.surface")},_phaseDict:{1:"start",2:"move",4:"end",8:"cancel",START:1,MOVE:2,END:4,CANCEL:8},_eventsGetter:function(){var t,n=this.constructor.prototype,r=Object.keys(n),s=Object.keys(e.prototype);return t=r.filter(function(e){return e&&"_"!==e[0]&&0!==e.indexOf("get")&&"events"!==e&&"function"==typeof this[e]&&s.indexOf(e)<0},this)}});return r});
+define(["../../core/Accessoire","../../core/declare","../2d/viewpointUtils"],function(e,t,n){var r=t([e],{declaredClass:"esri.views.Handler",classMetadata:{properties:{surface:{dependsOn:["view.surface"]}}},constructor:function(e){this.viewpoint=n.create()},destroy:function(){this.view=null},next:null,customGestures:null,viewpoint:null,_surfaceGetter:function(){return this.get("view.surface")},_phaseDict:{1:"start",2:"move",4:"end",8:"cancel",START:1,MOVE:2,END:4,CANCEL:8},_eventsGetter:function(){var t,n=this.constructor.prototype,r=Object.keys(n),s=Object.keys(e.prototype);return t=r.filter(function(e){return e&&"_"!==e[0]&&0!==e.indexOf("get")&&"events"!==e&&"function"==typeof this[e]&&s.indexOf(e)<0},this)}});return r});

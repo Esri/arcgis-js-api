@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define(["../../core/Accessoire","../../core/declare","../../core/jsonDictionary","dojo/_base/array","dojo/_base/lang"],function(e,t,n,o){var r=n({0:"default-curve-extension",1:"relocate-ends",2:"keep-end-attributes",4:"no-end-attributes",8:"no-extend-at-from",16:"no-extend-at-to"}),i=t(e,{declaredClass:"esri.tasks.support.TrimExtendParameters",extendHow:"default-curve-extension",polylines:null,trimExtendTo:null,toJSON:function(){var e=o.map(this.polylines,function(e){return e.toJSON()}),t={};return t.polylines=JSON.stringify(e),t.trimExtendTo=JSON.stringify(this.trimExtendTo.toJSON()),t.sr=JSON.stringify(this.polylines[0].spatialReference.toJSON()),t.extendHow=r.toJSON(this.extendHow),t}});return i});
+define(["../../core/Accessoire","../../core/declare","../../core/kebabDictionary","dojo/_base/array"],function(e,t,n,r){var o=n({0:"default-curve-extension",1:"relocate-ends",2:"keep-end-attributes",4:"no-end-attributes",8:"no-extend-at-from",16:"no-extend-at-to"}),i=t(e,{declaredClass:"esri.tasks.support.TrimExtendParameters",extendHow:"default-curve-extension",polylines:null,trimExtendTo:null,toJSON:function(){var e=r.map(this.polylines,function(e){return e.toJSON()}),t={};return t.polylines=JSON.stringify(e),t.trimExtendTo=JSON.stringify(this.trimExtendTo.toJSON()),t.sr=JSON.stringify(this.polylines[0].spatialReference.toJSON()),t.extendHow=o.toJSON(this.extendHow),t}});return i});

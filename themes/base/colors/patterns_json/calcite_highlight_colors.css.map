@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": ";;;;;;;;AAcA,2BAA4B;EAC1B,gBAAgB,EC8Fe,OAAO;;;;;;;;;;;ADhFxC,2BAA4B;EAC1B,gBAAgB,ECgFe,OAAO;;;;;;;;;;;ADjExC,2BAA4B;EAC1B,gBAAgB,ECiEe,OAAO;;;;;;;;;;;ADlDxC,2BAA4B;EAC1B,gBAAgB,ECkDe,OAAO;;;;;;;;;;;ADnCxC,2BAA4B;EAC1B,gBAAgB,ECmCe,OAAO;;;;;;;;;;;ADpBxC,2BAA4B;EAC1B,gBAAgB,ECoBe,OAAO;;;;;;;;;;;ADLxC,2BAA4B;EAC1B,gBAAgB,ECKe,OAAO;;;;;;;;;;;;ADaxC,4BAA6B;EAC3B,gBAAgB,ECbe,OAAO;;;;;;;;;;;AD2BxC,4BAA6B;EAC3B,gBAAgB,EC3Be,OAAO;;;;;;;;;;;AD0CxC,4BAA6B;EAC3B,gBAAgB,EC1Ce,OAAO;;;;;;;;;;;ADyDxC,4BAA6B;EAC3B,gBAAgB,ECzDe,OAAO;;;;;;;;;;;ADwExC,4BAA6B;EAC3B,gBAAgB,ECxEe,OAAO;;;;;;;;;;;ADuFxC,4BAA6B;EAC3B,gBAAgB,ECvFe,OAAO;;;;;;;;;;;ADsGxC,4BAA6B;EAC3B,gBAAgB,ECtGe,OAAO",
+"sources": ["scss/calcite_highlight_colors.scss","../scss/variables.scss"],
+"names": [],
+"file": "calcite_highlight_colors.css"
+}

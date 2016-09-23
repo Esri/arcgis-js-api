@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define({noFilterFields:"Слой ${name} не имеет полей, которые могут использоваться для фильтрации.",addToViewer:"Добавить слой к карте",noItemsToDisplay:"Нет элементов для отображения.",searchFor:"Поиск",searching:"Поиск",items:{organizationLabel:"Моя организация",onlineLabel:"ArcGIS Online",contentLabel:"Мои ресурсы",favoritesLabel:"Мое избранное"},title:"Выбрать веб-карту",searchTitle:"Поиск",ok:"OK",cancel:"Отмена",placeholder:"Введите слово для поиска",instructionsLeft:"Что вы хотите сделать?",instructionsRight:"Выберите настраиваемое приложение.",go:"Перейти",selectDetails:"ВЫБРАТЬ",configure:"Создать",close:"Закрыть",learnMoreConfigurableApps:"Более подробно о настройке приложений"});

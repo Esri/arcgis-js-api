@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 /**
  * The popup widget allows users to view content from feature attributes. Popups enhance web applications
@@ -32,7 +32,7 @@
  * and [content](#content) properties.
  * When  content is set directly on the Popup instance it is not tied to a specific feature or layer.
  *
- * [![popup-basic-example](../assets/img/apiref/widgets/popup-basic.png)](../sample-code/sandbox/sandbox.html?sample=popup-advanced)
+ * [![popup-basic-example](../assets/img/apiref/widgets/popup-basic.png)](../sample-code/sandbox/sandbox.html?sample=get-started-popup)
  *
  * In the image above, the text "Reverse Geocode: [-116.2, 43.601]" is the popup's `title`. The remaining text is
  * its `content`. A dock button ![popup-dock-btn](../assets/img/apiref/widgets/popup-dock.png) may also be available in the
@@ -69,6 +69,7 @@
  * @see [Get started with PopupTemplate](../sample-code/get-started-popupTemplate/index.html)
  * @see [Sample - Dock positions with popup](../sample-code/popup-docking-position/index.html)
  * @see [Sample - Popup actions](../sample-code/popup-actions/index.html)
+ * @see [Sample - Custom popup actions per feature](../sample-code/popup-custom-action/index.html)
  * @see [Guide - Esri Icon Font](../guide/esri-icon-font/index.html)
  * @see module:esri/widgets/Popup/PopupViewModel
  */
@@ -98,9 +99,9 @@
  * view.popup.actions.push(zoomOutAction);
  *
  * // Fires each time an action is clicked
- * view.popup.on("trigger-action", function(evt){
+ * view.popup.on("trigger-action", function(event){
  *   // If the zoom-out action is clicked, then execute the following code
- *   if(evt.action.id === "zoom-out"){
+ *   if(event.action.id === "zoom-out"){
  *     // Zoom out two levels (LODs)
  *     view.goTo({
  *       center: view.center,
@@ -150,7 +151,8 @@ define([
   "./Popup/PopupRendererViewModel",
 
   "./Spinner",
-  "./Message"
+  "./Message",
+  "require"
 ], function (
   viewModelWiring,
   Widget,
@@ -168,7 +170,8 @@ define([
   lang,
   domClass, domAttr, domConstruct, domGeometry, domStyle,
   PopupRenderer, PopupRendererViewModel,
-  Spinner, Message
+  Spinner, Message,
+  require
 ) {
 
   //--------------------------------------------------------------------------
@@ -177,89 +180,99 @@ define([
   //
   //--------------------------------------------------------------------------
 
+  var DEFAULT_ACTION_IMAGE = require.toUrl("./Popup/images/default-action.svg");
+
   var CSS = {
-    base: "esri-popup",
-    container: "esri-container",
-    invisible: "esri-invisible",
-    showDock: "esri-show-dock",
-    docked: "esri-docked",
-    dockedTopLeft: "esri-docked-top-left",
-    dockedTopCenter: "esri-docked-top-center",
-    dockedTopRight: "esri-docked-top-right",
-    dockedBottomLeft: "esri-docked-bottom-left",
-    dockedBottomCenter: "esri-docked-bottom-center",
-    dockedBottomRight: "esri-docked-bottom-right",
-    dockToLeft: "esri-dock-to-left",
-    dockToRight: "esri-dock-to-right",
-    dockToTop: "esri-dock-to-top",
-    dockToBottom: "esri-dock-to-bottom",
-    menuOpen: "esri-menu-open",
-    shadow: "esri-popup-shadow",
-    main: "esri-popup-main",
-    header: "esri-popup-header",
-    headerButtons: "esri-popup-header-buttons",
+    // common
     hidden: "esri-hidden",
-    content: "esri-popup-content",
-    showContent: "esri-show-content",
-    footer: "esri-footer",
-    showFooter: "esri-show-footer",
-    title: "esri-title",
-    showTitle: "esri-show-title",
-    btn: "esri-button",
-    icon: "esri-popup-icon",
+    invisible: "esri-invisible",
     iconText: "esri-icon-font-fallback-text",
-    close: "esri-close",
-    closeIcon: "esri-close-icon esri-icon-close",
-    collapseIcon: "esri-down-icon esri-icon-down",
-    dockBtn: "esri-dock",
-    dockIcon: "esri-dock-icon",
-    dockIconTop: "esri-icon-maximize",
-    dockIconBottom: "esri-icon-dock-bottom",
-    dockIconLeft: "esri-icon-dock-left",
-    dockIconRight: "esri-icon-dock-right",
-    dockIconText: "esri-dock-text",
-    undockIcon: "esri-undock-icon esri-icon-minimize",
-    undockIconText: "esri-undock-text",
-    actions: "esri-actions",
-    action: "esri-action",
-    actionImage: "esri-action-image",
-    actionText: "esri-action-text",
-    pagination: "esri-pagination",
-    paginationDocked: "esri-pagination-docked",
-    paginationDockedButtons: "esri-pagination-docked-buttons",
-    showPagination: "esri-show-pagination",
-    pointer: "esri-pointer",
-    pointerDirection: "esri-pointer-direction",
-    previous: "esri-previous",
-    previousIconLTR: "esri-previous-icon-ltr esri-icon-left-triangle-arrow",
-    previousIconRTL: "esri-previous-icon-rtl esri-icon-right-triangle-arrow",
-    next: "esri-next",
-    nextIconLTR: "esri-next-icon-ltr esri-icon-right-triangle-arrow",
-    nextIconRTL: "esri-next-icon-rtl esri-icon-left-triangle-arrow",
-    pageMenu: "esri-page-menu",
-    pageMenuList: "esri-page-menu-list",
-    pageMenuItem: "esri-page-menu-item",
-    pageMenuViewport: "esri-page-menu-viewport",
-    pageMenuHeader: "esri-page-menu-header",
-    pageMenuNote: "esri-page-menu-note",
-    pageMenuSelected: "esri-selected",
-    pageMenuBtn: "esri-page-menu-button",
-    pageMenuIcon: "esri-page-menu-icon esri-icon-layer-list",
-    pageMenuTitle: "esri-page-menu-title",
-    pageMenuCheckMark: "esri-page-menu-check-mark esri-icon-check-mark",
-    pageText: "esri-page-text",
-    zoomIcon: "esri-icon-zoom-in-magnifying-glass",
-    top: "esri-top",
-    bottom: "esri-bottom",
-    left: "esri-left",
-    right: "esri-right",
-    hasPopupRenderer: "esri-has-popup-renderer",
-    hasPromiseFeatures: "esri-has-promise-features",
-    pendingPromises: "esri-pending-promises",
-    pendingPromisesResult: "esri-pending-promises-result",
-    featureUpdated: "esri-feature-updated",
-    loadingContainer: "esri-loading-container",
-    loadingIcon: "esri-rotating esri-icon-loading-indicator"
+    iconLeftTriangleArrow: "esri-icon-left-triangle-arrow",
+    iconRightTriangleArrow: "esri-icon-right-triangle-arrow",
+    iconDockToTop: "esri-icon-maximize",
+    iconDockToBottom: "esri-icon-dock-bottom",
+    iconDockToLeft: "esri-icon-dock-left",
+    iconDockToRight: "esri-icon-dock-right",
+    iconClose: "esri-icon-close",
+    iconUndock: "esri-icon-minimize",
+    iconPaginationMenu: "esri-icon-layer-list",
+    iconCheckMark: "esri-icon-check-mark",
+    iconLoading: "esri-rotating esri-icon-loading-indicator",
+    iconZoom: "esri-icon-zoom-in-magnifying-glass",
+    // base
+    base: "esri-popup",
+    // containers
+    container: "esri-popup__size-container",
+    main: "esri-popup__main-container",
+    loadingContainer: "esri-popup__loading-container",
+    // global modifiers
+    shadow: "esri-popup--shadow",
+    showDock: "esri-popup--dock-button-visible",
+    showContent: "esri-popup--content-visible",
+    showFooter: "esri-popup--footer-visible",
+    showTitle: "esri-popup--title-visible",
+    showPagination: "esri-popup--pagination-visible",
+    hasPopupRenderer: "esri-popup--has-popup-renderer",
+    hasPromiseFeatures: "esri-popup--has-promise-features",
+    isDocked: "esri-popup--is-docked",
+    isDockedTopLeft: "esri-popup--is-docked-top-left",
+    isDockedTopCenter: "esri-popup--is-docked-top-center",
+    isDockedTopRight: "esri-popup--is-docked-top-right",
+    isDockedBottomLeft: "esri-popup--is-docked-bottom-left",
+    isDockedBottomCenter: "esri-popup--is-docked-bottom-center",
+    isDockedBottomRight: "esri-popup--is-docked-bottom-right",
+    canDockToLeft: "esri-popup--can-dock-to-left",
+    canDockToRight: "esri-popup--can-dock-to-right",
+    canDockToTop: "esri-popup--can-dock-to-top",
+    canDockToBottom: "esri-popup--can-dock-to-bottom",
+    hasPaginationMenuOpen: "esri-popup--feature-menu-open",
+    alignTop: "esri-popup--top-aligned",
+    alignBottom: "esri-popup--bottom-aligned",
+    alignLeft: "esri-popup--left-aligned",
+    alignRight: "esri-popup--right-aligned",
+    hasPendingPromises: "esri-popup--has-pending-promises",
+    isPendingPromisesResult: "esri-popup--is-pending-promises-result",
+    hasFeatureUpdated: "esri-popup--feature-updated",
+    // header and content
+    header: "esri-popup__header",
+    headerButtons: "esri-popup__header-buttons",
+    headerTitle: "esri-popup__header-title",
+    content: "esri-popup__content",
+    footer: "esri-popup__footer",
+    // buttons
+    button: "esri-popup__button",
+    buttonDock: "esri-popup__button--dock",
+    // icons
+    icon: "esri-popup__icon",
+    iconDock: "esri-popup__icon--dock-icon",
+    // actions
+    actions: "esri-popup__actions",
+    action: "esri-popup__action",
+    actionImage: "esri-popup__action-image",
+    actionText: "esri-popup__action-text",
+    // pointer
+    pointer: "esri-popup__pointer",
+    pointerDirection: "esri-popup__pointer-direction",
+    // pagination
+    pagination: "esri-popup__pagination",
+    paginationPrevious: "esri-popup__pagination-previous",
+    paginationNext: "esri-popup__pagination-next",
+    paginationPreviousIconLTR: "esri-popup__pagination-previous-icon",
+    paginationPreviousIconRTL: "esri-popup__pagination-previous-icon--rtl",
+    paginationNextIconLTR: "esri-popup__pagination-next-icon",
+    paginationNextIconRTL: "esri-popup__pagination-next-icon--rtl",
+    paginationText: "esri-popup__pagination-page-text",
+    paginationDocked: "esri-popup__pagination-docked",
+    paginationDockedButtons: "esri-popup__pagination-docked-buttons",
+    featureMenu: "esri-popup__feature-menu",
+    featureMenuList: "esri-popup__feature-menu-list",
+    featureMenuItem: "esri-popup__feature-menu-item",
+    featureMenuViewport: "esri-popup__feature-menu-viewport",
+    featureMenuHeader: "esri-popup__feature-menu-header",
+    featureMenuNote: "esri-popup__feature-menu-note",
+    featureMenuSelected: "esri-popup__feature-menu-item--selected",
+    featureMenuButton: "esri-popup__feature-menu-button",
+    featureMenuTitle: "esri-popup__feature-menu-title"
   };
 
   var ZOOM_TO_ACTION_ID = "zoom-to";
@@ -300,65 +313,19 @@ define([
   var DATA_ATTRIBUTES = {
     actionIndex: "data-action-index",
     featureIndex: "data-feature-index",
-    layerName: "data-layer-name",
+    layerTitle: "data-layer-title",
     layerId: "data-layer-id"
   };
 
   /**
    * @extends module:esri/widgets/Widget
+   * @mixes module:esri/core/Evented
    * @constructor module:esri/widgets/Popup
    * @param {Object} [properties] - See the [properties](#properties) for a list of all the properties
    *                              that may be passed into the constructor.
    * @param {string | Node} [srcNodeRef] - Reference or ID of the HTML node in which this widget renders.
    */
   var Popup = Widget.createSubclass([_TemplatedMixin], /** @lends module:esri/widgets/Popup.prototype */ {
-
-    properties: {
-      actions: {
-        dependsOn: ["viewModel.actions"]
-      },
-      alignment: {},
-      autoPanEnabled: {},
-      content: {
-        dependsOn: ["viewModel.content"]
-      },
-      closeOnViewChangeEnabled: {},
-      currentDockPosition: {
-        readOnly: true
-      },
-      dockOptions: {},
-      featureCount: {
-        dependsOn: ["viewModel.featureCount"]
-      },
-      features: {
-        dependsOn: ["viewModel.features"]
-      },
-      location: {
-        dependsOn: ["viewModel.location"]
-      },
-      messageEnabled: {},
-      paginationEnabled: {},
-      promises: {
-        dependsOn: ["viewModel.promises"]
-      },
-      selectedFeature: {
-        dependsOn: ["viewModel.selectedFeature"]
-      },
-      selectedFeatureIndex: {
-        dependsOn: ["viewModel.selectedFeatureIndex"]
-      },
-      spinnerEnabled: {},
-      title: {
-        dependsOn: ["viewModel.title"]
-      },
-      view: {
-        dependsOn: ["viewModel.view"]
-      },
-      viewModel: {
-        type: PopupViewModel
-      },
-      visible: {}
-    },
 
     declaredClass: "esri.widgets.Popup",
 
@@ -413,6 +380,7 @@ define([
         watchUtils.init(viewModel, "selectedFeatureIndex,selectedFeature", function () {
           var viewModel = this.viewModel;
           this._updateSelectedFeature(viewModel.selectedFeature);
+          this._updateActions(viewModel.actions, viewModel.features, viewModel.selectedFeature);
           this._updatePageText(viewModel.features, viewModel.selectedFeatureIndex);
           this._createPaginationNodes(viewModel.features, viewModel.selectedFeatureIndex);
           // scroll to the top of body content.
@@ -426,7 +394,7 @@ define([
 
         watchUtils.init(viewModel, "actions", function (actions) {
           var viewModel = this.viewModel;
-          this._updateActions(actions, viewModel.features);
+          this._updateActions(actions, viewModel.features, viewModel.selectedFeature);
           this._actionChangeListener(actions);
         }.bind(this)),
 
@@ -503,586 +471,615 @@ define([
     //
     //--------------------------------------------------------------------------
 
-    //----------------------------------
-    //  actions
-    //----------------------------------
+    properties: /** @lends module:esri/widgets/Popup.prototype */ {
 
-    /**
-     * Defines actions that may be executed by clicking the icon
-     * or image symbolizing them in the popup. By default, every popup has a `zoom-to`
-     * action styled with a magnifying glass icon
-     * ![popupTemplate-zoom-action](../assets/img/apiref/widgets/popupTemplate-zoom-action.png).
-     * When this icon is clicked, the view zooms in four LODs and centers on the selected feature.
-     *
-     * You may override this action by removing it from the `actions` array or by setting the
-     * {@link module:esri/PopupTemplate#overwriteActions overwriteActions} property to `true` in a
-     * {@link module:esri/PopupTemplate}. The order of each action in the popup is the order in which
-     * they appear in the array.
-     *
-     * The [trigger-action](#event:trigger-action) event fires each time an action in the popup is clicked.
-     * This event should be used to execute custom code for each action clicked. For example, if you would
-     * like to add a `zoom-out` action to the popup that zooms the view out several LODs, you would
-     * define the zoom-out code in a separate function. Then you would call the custom `zoom-out` function
-     * in the [trigger-action](#event:trigger-action) event handler. See the sample code
-     * snippet below for more details on how this works.
-     *
-     * Actions are defined with the properties listed below.
-     *
-     * @name actions
-     * @instance
-     *
-     * @type {module:esri/core/Collection}
-     * @see [Sample - Popup actions](../sample-code/popup-actions/index.html)
-     *
-     * @property {string} className - Adds a CSS class to the action's node. Can be used in conjunction
-     *                          with the `image` property or by itself. Any icon font may be used in this property.
-     *                          The [Esri icon fonts](../guide/esri-icon-font/index.html)
-     *                          are automatically made available via the ArcGIS API for JavaScript for you to
-     *                          use in styling custom actions. To
-     *                          use one of these provided icon fonts, you must prefix the class name with `esri-`.
-     *                          For example, the default `zoom-to` action uses the font `esri-icon-zoom-in-magnifying-glass`.
-     * @property {string} image - The URL to an image that will be used to represent the action in the
-     *                          popup. This property will be used as a background image for the node.
-     *                          It may be used in conjunction with the `className` property or by itself.
-     * @property {string} id - The name of the ID assigned to this action. This is used for
-     *                        differentiating actions when listening to the
-     *                        [trigger-action](#event:trigger-action) event.
-     * @property {string} title - The title of the action. When there are fewer than three actions
-     *                        defined in a popup, this text is displayed to the right of the icon or image
-     *                        representing the action. If there are three or more actions in the popup, then
-     *                        this text is used as a tooltip on the action.
-     * @property {boolean} visible - Indicates if the action is visible in the popup. Default value of this property
-     *                        is `true`.
-     *
-     * @example
-     * // Defines an action to zoom out from the selected feature
-     * var zoomOutAction = {
-     *   // This text is displayed as a tooltip
-     *   title: "Zoom out",
-     *   // The ID by which to reference the action in the event handler
-     *   id: "zoom-out",
-     *   // Sets the icon font used to style the action button
-     *   className: "esri-icon-zoom-out-magnifying-glass"
-     * };
-     * // Adds the custom action to the popup.
-     * view.popup.actions.push(zoomOutAction);
-     *
-     * // The function to execute when the zoom-out action is clicked
-     * function zoomOut() {
-     *   // in this case the view zooms out two LODs on each click
-     *   view.goTo({
-     *     center: view.center,
-     *     zoom: view.zoom - 2
-     *   });
-     * }
-     *
-     * // This event fires for each click on any action
-     * view.popup.on("trigger-action", function(evt){
-     *   // If the zoom-out action is clicked, fire the zoomOut() function
-     *   if(evt.action.id === "zoom-out"){
-     *     zoomOut();
-     *   }
-     * });
-     */
-    _getActionsAttr: viewModelWiring.createGetterDelegate("actions"),
+      //----------------------------------
+      //  actions
+      //----------------------------------
 
-    _setActionsAttr: viewModelWiring.createSetterDelegate("actions"),
+      /**
+       * Defines actions that may be executed by clicking the icon
+       * or image symbolizing them in the popup. By default, every popup has a `zoom-to`
+       * action styled with a magnifying glass icon
+       * ![popupTemplate-zoom-action](../assets/img/apiref/widgets/popupTemplate-zoom-action.png).
+       * When this icon is clicked, the view zooms in four LODs and centers on the selected feature.
+       *
+       * You may override this action by removing it from the `actions` array or by setting the
+       * {@link module:esri/PopupTemplate#overwriteActions overwriteActions} property to `true` in a
+       * {@link module:esri/PopupTemplate}. The order of each action in the popup is the order in which
+       * they appear in the array.
+       *
+       * The [trigger-action](#event:trigger-action) event fires each time an action in the popup is clicked.
+       * This event should be used to execute custom code for each action clicked. For example, if you would
+       * like to add a `zoom-out` action to the popup that zooms the view out several LODs, you would
+       * define the zoom-out code in a separate function. Then you would call the custom `zoom-out` function
+       * in the [trigger-action](#event:trigger-action) event handler. See the sample code
+       * snippet below for more details on how this works.
+       *
+       * Actions are defined with the properties listed below.
+       *
+       * @name actions
+       * @instance
+       *
+       * @type {module:esri/core/Collection}
+       * @see [Sample - Popup actions](../sample-code/popup-actions/index.html)
+       * @see [Sample - Custom popup actions per feature](../sample-code/popup-custom-action/index.html)
+       *
+       * @property {string} className - Adds a CSS class to the action's node. Can be used in conjunction
+       *                          with the `image` property or by itself. Any icon font may be used in this property.
+       *                          The [Esri icon fonts](../guide/esri-icon-font/index.html)
+       *                          are automatically made available via the ArcGIS API for JavaScript for you to
+       *                          use in styling custom actions. To
+       *                          use one of these provided icon fonts, you must prefix the class name with `esri-`.
+       *                          For example, the default `zoom-to` action uses the font `esri-icon-zoom-in-magnifying-glass`.
+       * @property {string} image - The URL to an image that will be used to represent the action in the
+       *                          popup. This property will be used as a background image for the node.
+       *                          It may be used in conjunction with the `className` property or by itself.
+       *                          If neither `image` nor `className` are specified, a default icon
+       *                          ![default icon](../assets/img/guide/whats-new/41/default-action.png) will display.
+       * @property {string} id - The name of the ID assigned to this action. This is used for
+       *                        differentiating actions when listening to the
+       *                        [trigger-action](#event:trigger-action) event.
+       * @property {string} title - The title of the action. When there are fewer than three actions
+       *                        defined in a popup, this text is displayed to the right of the icon or image
+       *                        representing the action. If there are three or more actions in the popup, then
+       *                        this text is used as a tooltip on the action.
+       * @property {boolean} visible - Indicates if the action is visible in the popup. Default value of this property
+       *                        is `true`.
+       *
+       * @example
+       * // Defines an action to zoom out from the selected feature
+       * var zoomOutAction = {
+       *   // This text is displayed as a tooltip
+       *   title: "Zoom out",
+       *   // The ID by which to reference the action in the event handler
+       *   id: "zoom-out",
+       *   // Sets the icon font used to style the action button
+       *   className: "esri-icon-zoom-out-magnifying-glass"
+       * };
+       * // Adds the custom action to the popup.
+       * view.popup.actions.push(zoomOutAction);
+       *
+       * // The function to execute when the zoom-out action is clicked
+       * function zoomOut() {
+       *   // in this case the view zooms out two LODs on each click
+       *   view.goTo({
+       *     center: view.center,
+       *     zoom: view.zoom - 2
+       *   });
+       * }
+       *
+       * // This event fires for each click on any action
+       * view.popup.on("trigger-action", function(event){
+       *   // If the zoom-out action is clicked, fire the zoomOut() function
+       *   if(event.action.id === "zoom-out"){
+       *     zoomOut();
+       *   }
+       * });
+       */
+      actions: {
+        aliasOf: "viewModel.actions"
+      },
 
-    //----------------------------------
-    //  alignment
-    //----------------------------------
+      //----------------------------------
+      //  alignment
+      //----------------------------------
 
-    /**
-     * Position of the popup in relation to the selected feature.
-     *
-     * **Known Values:** top | bottom | left | right
-     *
-     * @type {String}
-     * @see [alignmentPositions](#alignmentPositions)
-     * @default
-     * @ignore
-     *
-     * @example
-     * // The popup will display to the left of the feature
-     * view.popup.alignment = "left";
-     */
-    alignment: "top",
+      /**
+       * Position of the popup in relation to the selected feature.
+       *
+       * **Known Values:** top | bottom | left | right
+       *
+       * @type {String}
+       * @see [alignmentPositions](#alignmentPositions)
+       * @default
+       * @ignore
+       *
+       * @example
+       * // The popup will display to the left of the feature
+       * view.popup.alignment = "left";
+       */
+      alignment: {
+        value: "top",
 
-    _setAlignmentAttr: function (newVal) {
-      this._set("alignment", newVal);
-      this.reposition();
-    },
+        set: function(value) {
+          this._set("alignment", value);
+          this.reposition();
+        }
+      },
 
-    //----------------------------------
-    //  autoPanEnabled
-    //----------------------------------
+      //----------------------------------
+      //  autoPanEnabled
+      //----------------------------------
 
-    /**
-     * Indicates whether to automatically pan the map to view the full popup when it opens outside
-     * the bounds of the {@link module:esri/views/View}.
-     *
-     * @type {Boolean}
-     * @default
-     * @ignore
-     */
-    autoPanEnabled: true,
+      /**
+       * Indicates whether to automatically pan the map to view the full popup when it opens outside
+       * the bounds of the {@link module:esri/views/View}.
+       *
+       * @type {Boolean}
+       * @default
+       * @ignore
+       */
+      autoPanEnabled: true,
 
-    //----------------------------------
-    //  content
-    //----------------------------------
+      //----------------------------------
+      //  content
+      //----------------------------------
 
-    /**
-     * The content of the popup. When set directly on the Popup, this content is
-     * static and cannot use fields to set content templates. To set a template
-     * for the content based on field or attribute names, see
-     * {@link module:esri/PopupTemplate#content PopupTemplate.content}.
-     *
-     * @name content
-     * @instance
-     *
-     * @type {string | Node}
-     * @see [Sample - Popup Docking](../sample-code/popup-docking/index.html)
-     *
-     * @example
-     * // This sets generic instructions in the popup that will always be displayed
-     * // unless it is overridden by a PopupTemplate
-     * view.popup.content = "Click a feature on the map to view its attributes";
-     */
-    _getContentAttr: viewModelWiring.createGetterDelegate("content"),
+      /**
+       * The content of the popup. When set directly on the Popup, this content is
+       * static and cannot use fields to set content templates. To set a template
+       * for the content based on field or attribute names, see
+       * {@link module:esri/PopupTemplate#content PopupTemplate.content}.
+       *
+       * @name content
+       * @instance
+       *
+       * @type {string | Node}
+       * @see [Sample - Popup Docking](../sample-code/popup-docking-position/index.html)
+       *
+       * @example
+       * // This sets generic instructions in the popup that will always be displayed
+       * // unless it is overridden by a PopupTemplate
+       * view.popup.content = "Click a feature on the map to view its attributes";
+       */
+      content: {
+        aliasOf: "viewModel.content"
+      },
 
-    _setContentAttr: viewModelWiring.createSetterDelegate("content"),
+      //----------------------------------
+      //  closeOnViewChangeEnabled
+      //----------------------------------
 
-    //----------------------------------
-    //  closeOnViewChangeEnabled
-    //----------------------------------
+      /**
+       * TODO
+       * @ignore
+       */
+      closeOnViewChangeEnabled: false,
 
-    /**
-     * TODO
-     * @ignore
-     */
-    closeOnViewChangeEnabled: false,
+      //----------------------------------
+      //  currentDockPosition
+      //----------------------------------
 
-    //----------------------------------
-    //  dockOptions
-    //----------------------------------
+      /**
+       * The position in the {@link module:esri/views/View} at which to the popup is dockEnabled.
+       *
+       * **Known Values:** top-left | top-center | top-right | bottom-left | bottom-center | bottom-right
+       *
+       * @type {string}
+       * @readonly
+       */
+      currentDockPosition: {
+        readOnly: true,
+        value: null
+      },
 
-    /**
-     * Docking the popup allows for a better user experience, particularly when opening
-     * popups in apps on mobile devices. When a popup is "dockEnabled" it means the popup no
-     * longer points to the [selected feature](#selectedFeature) or the [location](#location)
-     * assigned to it. Rather it is placed in one of the corners of the view or to the top or bottom
-     * of it. This property allows the developer to set various options for docking the popup.
-     *
-     * See the object specification table below to override default docking properties on the popup.
-     *
-     * @type {Object}
-     * @see [Sample - Popup docking](../sample-code/popup-docking/index.html)
-     *
-     * @property {Object | boolean} breakpoint - Defines the dimensions of the {@link module:esri/views/View}
-     *                        at which to dock the popup. Set to `false` to disable docking at a breakpoint.
-     *                        <br><br>**Default:** true
-     * @property {number} breakpoint.width - The maximum width of the {@link module:esri/views/View}
-     *                        at which the popup will be set to dockEnabled automatically.
-     *                        <br><br>**Default:** 544
-     * @property {number} breakpoint.height - The maximum height of the {@link module:esri/views/View}
-     *                        at which the popup will be set to dockEnabled automatically.
-     *                        <br><br>**Default:** 544
-     * @property {boolean} buttonEnabled - If `true`, displays the dock button. If `false`, hides the dock
-     *                         button from the popup.
-     * @property {string} position - The position in the view at which to dock the popup.
-     *                        See the table below for known values and their position in the view
-     *                        based on the view's size.
-     *                        <br><br>
-     * Known Value | View size > breakpoint | View size < breakpoint
-     * --------------- | ------------------------------- | -------------
-     * auto | top-right | bottom 100%
-     * top-left | top-left | top 100%
-     * top-center | top-center | top 100%
-     * top-right | top-right | top 100%
-     * bottom-left | bottom-left | bottom 100%
-     * bottom-center | bottom-center | bottom 100%
-     * bottom-right | bottom-right | bottom 100%
-     *
-     * **Default:** auto
-     *
-     * @example
-     * view.popup.dockOptions = {
-     *   // Disable the dock button so users cannot undock the popup
-     *   buttonEnabled: false,
-     *   // Dock the popup when the size of the view is less than or equal to 600x1000 pixels
-     *   breakpoint: {
-     *     width: 600,
-     *     height: 1000
-     *   }
-     * };
-     */
-    dockOptions: DOCK_OPTIONS,
+      //----------------------------------
+      //  dockOptions
+      //----------------------------------
 
-    _setDockOptionsAttr: function (newVal) {
-      var dockOptionDefaults = lang.clone(DOCK_OPTIONS);
-      var breakpoints = this.viewModel.get("view.breakpoints");
-      var viewDockSize = {};
-      if (breakpoints) {
-        viewDockSize.width = breakpoints.xsmall;
-        viewDockSize.height = breakpoints.xsmall;
+      /**
+       * Docking the popup allows for a better user experience, particularly when opening
+       * popups in apps on mobile devices. When a popup is "dockEnabled" it means the popup no
+       * longer points to the [selected feature](#selectedFeature) or the [location](#location)
+       * assigned to it. Rather it is placed in one of the corners of the view or to the top or bottom
+       * of it. This property allows the developer to set various options for docking the popup.
+       *
+       * See the object specification table below to override default docking properties on the popup.
+       *
+       * @type {Object}
+       * @see [Sample - Popup docking](../sample-code/popup-docking-position/index.html)
+       *
+       * @property {Object | boolean} breakpoint - Defines the dimensions of the {@link module:esri/views/View}
+       *                        at which to dock the popup. Set to `false` to disable docking at a breakpoint.
+       *                        <br><br>**Default:** true
+       * @property {number} breakpoint.width - The maximum width of the {@link module:esri/views/View}
+       *                        at which the popup will be set to dockEnabled automatically.
+       *                        <br><br>**Default:** 544
+       * @property {number} breakpoint.height - The maximum height of the {@link module:esri/views/View}
+       *                        at which the popup will be set to dockEnabled automatically.
+       *                        <br><br>**Default:** 544
+       * @property {boolean} buttonEnabled - If `true`, displays the dock button. If `false`, hides the dock
+       *                         button from the popup.
+       * @property {string | function} position - The position in the view at which to dock the popup.
+       *                        Can be set as either a string or function. See the table below for known
+       *                        string values and their position in the view based on the view's size.
+       *                        <br><br>
+       * Known Value | View size > breakpoint | View size < breakpoint
+       * --------------- | ------------------------------- | -------------
+       * auto | top-right | bottom 100%
+       * top-left | top-left | top 100%
+       * top-center | top-center | top 100%
+       * top-right | top-right | top 100%
+       * bottom-left | bottom-left | bottom 100%
+       * bottom-center | bottom-center | bottom 100%
+       * bottom-right | bottom-right | bottom 100%
+       *
+       * **Default:** auto
+       *
+       * @example
+       * view.popup.dockOptions = {
+       *   // Disable the dock button so users cannot undock the popup
+       *   buttonEnabled: false,
+       *   // Dock the popup when the size of the view is less than or equal to 600x1000 pixels
+       *   breakpoint: {
+       *     width: 600,
+       *     height: 1000
+       *   }
+       * };
+       */
+      dockOptions: {
+        value: DOCK_OPTIONS,
+
+        set: function(value) {
+          var dockOptionDefaults = lang.clone(DOCK_OPTIONS);
+          var breakpoints = this.viewModel.get("view.breakpoints");
+          var viewDockSize = {};
+          if (breakpoints) {
+            viewDockSize.width = breakpoints.xsmall;
+            viewDockSize.height = breakpoints.xsmall;
+          }
+          var mixed = lang.mixin({}, dockOptionDefaults, value);
+          var breakpointDefaults = lang.mixin({}, dockOptionDefaults.breakpoint, viewDockSize);
+          if (mixed.breakpoint === true) {
+            mixed.breakpoint = breakpointDefaults;
+          }
+          // mixin breakpoint defaults
+          else if (typeof mixed.breakpoint === "object") {
+            mixed.breakpoint = lang.mixin({}, breakpointDefaults, mixed.breakpoint);
+          }
+          this._set("dockOptions", mixed);
+          this._toggleDockButton(mixed);
+        }
+      },
+
+      //----------------------------------
+      //  dockEnabled
+      //----------------------------------
+
+      /**
+       * Indicates whether the placement of the popup is docked to the side of the view.
+       *
+       * Docking the popup allows for a better user experience, particularly when opening
+       * popups in apps on mobile devices. When a popup is "dockEnabled" it means the popup no
+       * longer points to the [selected feature](#selectedFeature) or the [location](#location)
+       * assigned to it. Rather it is attached to a side, the top, or the bottom of the view.
+       *
+       * See [dockOptions](#dockOptions) to override default options related to docking the popup.
+       *
+       * @type {Boolean}
+       * @default false
+       * @see [Sample - Popup docking](../sample-code/popup-docking-position/index.html)
+       *
+       * @example
+       * // The popup will automatically be dockEnabled when made visible
+       * view.popup.dockEnabled = true;
+       */
+      dockEnabled: {
+        value: false,
+
+        set: function(value) {
+          this._set("dockEnabled", value);
+          this._togglePopupDocking(value);
+          this._togglePopupLocationRepositioning(this.visible);
+          this.reposition();
+        }
+      },
+
+      //----------------------------------
+      //  featureCount
+      //----------------------------------
+
+      /**
+       * The number of selected [features](#features) available to the popup.
+       *
+       * @name featureCount
+       * @instance
+       *
+       * @type {Number}
+       * @default 0
+       * @readonly
+       */
+      featureCount: {
+        aliasOf: "viewModel.featureCount"
+      },
+
+      //----------------------------------
+      //  features
+      //----------------------------------
+
+      /**
+       * An array of features associated with the popup. Each graphic in this array must
+       * have a valid {@link module:esri/PopupTemplate} set. They may share the same
+       * {@link module:esri/PopupTemplate} or have unique
+       * {@link module:esri/PopupTemplate PopupTemplates} depending on their attributes.
+       * The [content](#content) and [title](#title)
+       * of the poup is set based on the `content` and `title` properties of each graphic's respective
+       * {@link module:esri/PopupTemplate}.
+       *
+       * When more than one graphic exists in this array, the current content of the
+       * Popup is set based on the value of the [selected feature](#selectedFeature).
+       *
+       * This value is `null` if no features are associated with the popup.
+       *
+       * @name features
+       * @instance
+       *
+       * @type {module:esri/Graphic[]}
+       *
+       * @example
+       * // When setting the features property, the graphics pushed to this property
+       * // must have a PopupTemplate set.
+       * var g1 = new Graphic();
+       * g1.popupTemplate = new PopupTemplate({
+       *   title: "Results title",
+       *   content: "Results: {ATTRIBUTE_NAME}"
+       * });
+       * // Set the graphics as an array to the popup instance. The content and title of
+       * // the popup will be set depending on the PopupTemplate of the graphics.
+       * // Each graphic may share the same PopupTemplate or have a unique PopupTemplate
+       * var graphics = [g1, g2, g3, g4, g5];
+       * view.popup.features = graphics;
+       */
+      features: {
+        aliasOf: "viewModel.features"
+      },
+
+      //----------------------------------
+      //  location
+      //----------------------------------
+
+      /**
+       * Geometry used to position the popup. This is automatically set when viewing the
+       * popup by selecting a feature. If using the Popup to display content not related
+       * to features in the map, such as the results from a task, then you must set this
+       * property before making the popup [visible](#visible) to the user.
+       *
+       * @name location
+       * @instance
+       *
+       * @type {module:esri/geometry/Geometry}
+       * @see [Get started with popups](../sample-code/get-started-popup/index.html)
+       *
+       * @example
+       * // Sets the location of the popup to the center of the view
+       * view.popup.location = view.center;
+       * // Displays the popup
+       * view.popup.visible = true;
+       *
+       * @example
+       * // Sets the location of the popup to the location of a click on the view
+       * view.on("click", function(event){
+       *   view.popup.location = event.mapPoint;
+       *   // Displays the popup
+       *   view.popup.visible = true;
+       * });
+       */
+      location: {
+        aliasOf: "viewModel.location"
+      },
+
+      //----------------------------------
+      //  messageEnabled
+      //----------------------------------
+
+      /**
+       * Indicates whether to display a message that no features
+       * were found when an asynchronous task returns zero results.
+       *
+       * @type {boolean}
+       * @default
+       * @ignore
+       */
+      messageEnabled: {
+        value: true,
+
+        set: function(value) {
+          this._set("messageEnabled", value);
+          this._createMessage(value, this.viewModel.view);
+        }
+      },
+
+      //----------------------------------
+      //  paginationEnabled
+      //----------------------------------
+
+      /**
+       * Shows pagination for the popup if available. This allows the user to
+       * scroll through various [selected features](#features) using either
+       * arrows
+       *
+       * ![popup-pagination-arrows](../assets/img/apiref/widgets/popup-pagination-arrows.png)
+       *
+       * or a menu.
+       *
+       * ![popup-feature-menu](../assets/img/apiref/widgets/popup-pagination-menu.png)
+       *
+       * @type {Boolean}
+       * @default
+       * @ignore
+       */
+      paginationEnabled: {
+        value: true,
+
+        set: function(value) {
+          var viewModel = this.viewModel;
+          this._set("paginationEnabled", value);
+          this._updatePagination(viewModel.features, viewModel.selectedFeatureIndex);
+          this._updateFooterVisibility(viewModel.features, viewModel.actions);
+          this.reposition();
+        }
+      },
+
+      //----------------------------------
+      //  promises
+      //----------------------------------
+
+      /**
+       * An array of pending Promises that have not yet been fulfilled. If there are
+       * no pending promises, the value is `null`. When the pending promises are
+       * resolved they are removed from this array and the features they return
+       * are pushed into the [features](#features) array.
+       *
+       * @name promises
+       * @instance
+       *
+       * @type {Promise[]}
+       */
+      promises: {
+        aliasOf: "viewModel.promises"
+      },
+
+      //----------------------------------
+      //  selectedFeature
+      //----------------------------------
+
+      /**
+       * The selected feature accessed by the popup. The content of the Popup is
+       * determined based on the {@link module:esri/PopupTemplate} assigned to
+       * this feature.
+       *
+       * @name selectedFeature
+       * @instance
+       *
+       * @type {module:esri/Graphic}
+       * @readonly
+       */
+      selectedFeature: {
+        aliasOf: "viewModel.selectedFeature"
+      },
+
+      //----------------------------------
+      //  selectedFeatureIndex
+      //----------------------------------
+
+      /**
+       * Index of the feature that is [selected](#selectedFeature). When [features](#features) are set,
+       * the first index is automatically selected.
+       *
+       * @name selectedFeatureIndex
+       * @instance
+       *
+       * @type {Number}
+       */
+      selectedFeatureIndex: {
+        aliasOf: "viewModel.selectedFeatureIndex"
+      },
+
+      //----------------------------------
+      //  spinnerEnabled
+      //----------------------------------
+
+      /**
+       * Indicates whether to display a spinner at the popup location prior to its
+       * display when it has pending promises.
+       *
+       * @type {boolean}
+       * @default
+       * @ignore
+       */
+      spinnerEnabled: {
+        value: true,
+
+        set: function(value) {
+          this._set("spinnerEnabled", value);
+          this._createSpinner(value, this.viewModel.view);
+        }
+      },
+
+      //----------------------------------
+      //  title
+      //----------------------------------
+
+      /**
+       * The title of the popup. This can be set generically on the popup no
+       * matter the features that are selected. If the [selected feature](#selectedFeature)
+       * has a {@link module:esri/PopupTemplate}, then the title set in the
+       * corresponding template is used here.
+       *
+       * @name title
+       * @instance
+       *
+       * @type {String}
+       *
+       * @example
+       * // This title will display in the popup unless a selected feature's
+       * // PopupTemplate overrides it
+       * view.popup.title = "Population by zip codes in Southern California";
+       */
+      title: {
+        aliasOf: "viewModel.title"
+      },
+
+      //----------------------------------
+      //  view
+      //----------------------------------
+
+      /**
+       * A reference to the {@link module:esri/views/MapView} or {@link module:esri/views/SceneView}. Set this to link the widget to a specific view.
+       *
+       * @name view
+       * @instance
+       *
+       * @type {module:esri/views/MapView | module:esri/views/SceneView}
+       */
+      view: {
+        aliasOf: "viewModel.view"
+      },
+
+      //----------------------------------
+      //  viewModel
+      //----------------------------------
+
+      viewModel: {
+        type: PopupViewModel
+      },
+
+      //----------------------------------
+      //  visible
+      //----------------------------------
+
+      /**
+       * Displays the popup in the view. The popup will only display if the view's size
+       * constraints in [dockOptions](#dockOptions) are met or the [location](#location)
+       * property is set to a geometry.
+       *
+       * @type {Boolean}
+       * @default false
+       * @see [Get started with popups](../sample-code/get-started-popup/index.html)
+       * @see [Popup.open()](#open)
+       *
+       * @example
+       * // Sets the location of the popup to the center of the view
+       * view.popup.location = view.center;
+       * // Displays the popup
+       * view.popup.visible = true;
+       *
+       * @example
+       * // Sets the location of the popup to the location of a click on the view
+       * view.on("click", function(event){
+       *   view.popup.location = event.mapPoint;
+       *   // Displays the popup
+       *   view.popup.visible = true;
+       * });
+       *
+       * @example
+       * // Hides the popup from the view
+       * view.popup.visible = false;
+       */
+      visible: {
+        value: false,
+
+        set: function(value) {
+          this._set("visible", value);
+          domClass.remove(this._containerNode, CSS.hasPaginationMenuOpen);
+          domClass.toggle(this.domNode, CSS.invisible, !value);
+          this._togglePopupLocationRepositioning(value);
+          this._toggleContentVisibility(value);
+          this.reposition();
+        }
       }
-      var mixed = lang.mixin({}, dockOptionDefaults, newVal);
-      var breakpointDefaults = lang.mixin({}, dockOptionDefaults.breakpoint, viewDockSize);
-      if (mixed.breakpoint === true) {
-        mixed.breakpoint = breakpointDefaults;
-      }
-      // mixin breakpoint defaults
-      else if (typeof mixed.breakpoint === "object") {
-        mixed.breakpoint = lang.mixin({}, breakpointDefaults, mixed.breakpoint);
-      }
-      this._set("dockOptions", mixed);
-      this._toggleDockButton(mixed);
-    },
 
-    //----------------------------------
-    //  dockEnabled
-    //----------------------------------
-
-    /**
-     * Indicates whether the placement of the popup is docked to the side of the view.
-     *
-     * Docking the popup allows for a better user experience, particularly when opening
-     * popups in apps on mobile devices. When a popup is "dockEnabled" it means the popup no
-     * longer points to the [selected feature](#selectedFeature) or the [location](#location)
-     * assigned to it. Rather it is attached to a side, the top, or the bottom of the view.
-     *
-     * See [dockOptions](#dockOptions) to override default options related to docking the popup.
-     *
-     * @type {Boolean}
-     * @default false
-     * @see [Sample - Popup docking](../sample-code/popup-docking/index.html)
-     *
-     * @example
-     * // The popup will automatically be dockEnabled when made visible
-     * view.popup.dockEnabled = true;
-     */
-    dockEnabled: false,
-
-    _setDockEnabledAttr: function (newVal) {
-      this._set("dockEnabled", newVal);
-      this._togglePopupDocking(newVal);
-      this._togglePopupLocationRepositioning(this.visible);
-      this.reposition();
-    },
-
-    //----------------------------------
-    //  currentDockPosition
-    //----------------------------------
-
-    /**
-     * The position in the {@link module:esri/views/View} at which to the popup is dockEnabled.
-     *
-     * **Known Values:** top-left | top-center | top-right | bottom-left | bottom-center | bottom-right
-     *
-     * @type {string}
-     * @readonly
-     */
-    currentDockPosition: null,
-
-    //----------------------------------
-    //  featureCount
-    //----------------------------------
-
-    /**
-     * The number of selected [features](#features) available to the popup.
-     *
-     * @name featureCount
-     * @instance
-     *
-     * @type {Number}
-     * @default 0
-     * @readonly
-     */
-    _getFeatureCountAttr: viewModelWiring.createGetterDelegate("featureCount"),
-
-    _setFeatureCountAttr: viewModelWiring.createSetterDelegate("featureCount"),
-
-    //----------------------------------
-    //  features
-    //----------------------------------
-
-    /**
-     * An array of features associated with the popup. Each graphic in this array must
-     * have a valid {@link module:esri/PopupTemplate} set. They may share the same
-     * {@link module:esri/PopupTemplate} or have unique
-     * {@link module:esri/PopupTemplate PopupTemplates} depending on their attributes.
-     * The [content](#content) and [title](#title)
-     * of the poup is set based on the `content` and `title` properties of each graphic's respective
-     * {@link module:esri/PopupTemplate}.
-     *
-     * When more than one graphic exists in this array, the current content of the
-     * Popup is set based on the value of the [selected feature](#selectedFeature).
-     *
-     * This value is `null` if no features are associated with the popup.
-     *
-     * @name features
-     * @instance
-     *
-     * @type {module:esri/Graphic[]}
-     * @see [Sample - IdentifyTask](../sample-code/tasks-identify/index.html)
-     *
-     * @example
-     * // When setting the features property, the graphics pushed to this property
-     * // must have a PopupTemplate set.
-     * var g1 = new Graphic();
-     * g1.popupTemplate = new PopupTemplate({
-     *   title: "Results title",
-     *   content: "Results: {ATTRIBUTE_NAME}"
-     * });
-     * // Set the graphics as an array to the popup instance. The content and title of
-     * // the popup will be set depending on the PopupTemplate of the graphics.
-     * // Each graphic may share the same PopupTemplate or have a unique PopupTemplate
-     * var graphics = [g1, g2, g3, g4, g5];
-     * view.popup.features = graphics;
-     */
-    _getFeaturesAttr: viewModelWiring.createGetterDelegate("features"),
-
-    _setFeaturesAttr: viewModelWiring.createSetterDelegate("features"),
-
-    //----------------------------------
-    //  location
-    //----------------------------------
-
-    /**
-     * Geometry used to position the popup. This is automatically set when viewing the
-     * popup by selecting a feature. If using the Popup to display content not related
-     * to features in the map, such as the results from a task, then you must set this
-     * property before making the popup [visible](#visible) to the user.
-     *
-     * @name location
-     * @instance
-     *
-     * @type {module:esri/geometry/Geometry}
-     * @see [Get started with popups](../sample-code/get-started-popup/index.html)
-     * @see [Sample - Identify Task](../sample-code/tasks-identify/index.html)
-     *
-     * @example
-     * // Sets the location of the popup to the center of the view
-     * view.popup.location = view.center;
-     * // Displays the popup
-     * view.popup.visible = true;
-     *
-     * @example
-     * // Sets the location of the popup to the location of a click on the view
-     * view.on("click", function(evt){
-     *   view.popup.location = evt.mapPoint;
-     *   // Displays the popup
-     *   view.popup.visible = true;
-     * });
-     */
-    _getLocationAttr: viewModelWiring.createGetterDelegate("location"),
-
-    _setLocationAttr: viewModelWiring.createSetterDelegate("location"),
-
-    //----------------------------------
-    //  messageEnabled
-    //----------------------------------
-
-    /**
-     * Indicates whether to display a message that no features
-     * were found when an asynchronous task returns zero results.
-     *
-     * @type {boolean}
-     * @default
-     * @ignore
-     */
-    messageEnabled: true,
-
-    _setMessageEnabledAttr: function (newVal) {
-      this._set("messageEnabled", newVal);
-      this._createMessage(newVal, this.viewModel.view);
-    },
-
-    //----------------------------------
-    //  paginationEnabled
-    //----------------------------------
-
-    /**
-     * Shows pagination for the popup if available. This allows the user to
-     * scroll through various [selected features](#features) using either
-     * arrows
-     *
-     * ![popup-pagination-arrows](../assets/img/apiref/widgets/popup-pagination-arrows.png)
-     *
-     * or a menu.
-     *
-     * ![popup-pagination-menu](../assets/img/apiref/widgets/popup-pagination-menu.png)
-     *
-     * @type {Boolean}
-     * @default
-     * @see [Sample - IdentifyTask](../sample-code/tasks-identify/index.html)
-     * @ignore
-     */
-    paginationEnabled: true,
-
-    _setPaginationEnabledAttr: function (newVal) {
-      var viewModel = this.viewModel;
-      this._set("paginationEnabled", newVal);
-      this._updatePagination(viewModel.features, viewModel.selectedFeatureIndex);
-      this._updateFooterVisibility(viewModel.features, viewModel.actions);
-      this.reposition();
-    },
-
-    //----------------------------------
-    //  promises
-    //----------------------------------
-
-    /**
-     * An array of pending Promises that have not yet been fulfilled. If there are
-     * no pending promises, the value is `null`. When the pending promises are
-     * resolved they are removed from this array and the features they return
-     * are pushed into the [features](#features) array.
-     *
-     * @name promises
-     * @instance
-     *
-     * @type {Promise[]}
-     */
-    _getPromisesAttr: viewModelWiring.createGetterDelegate("promises"),
-
-    _setPromisesAttr: viewModelWiring.createSetterDelegate("promises"),
-
-    //----------------------------------
-    //  selectedFeature
-    //----------------------------------
-
-    /**
-     * The selected feature accessed by the popup. The content of the Popup is
-     * determined based on the {@link module:esri/PopupTemplate} assigned to
-     * this feature.
-     *
-     * @name selectedFeature
-     * @instance
-     *
-     * @type {module:esri/Graphic}
-     * @readonly
-     */
-    _getSelectedFeatureAttr: viewModelWiring.createGetterDelegate("selectedFeature"),
-
-    _setSelectedFeatureAttr: viewModelWiring.createSetterDelegate("selectedFeature"),
-
-    //----------------------------------
-    //  selectedFeatureIndex
-    //----------------------------------
-
-    /**
-     * Index of the feature that is [selected](#selectedFeature). When [features](#features) are set,
-     * the first index is automatically selected.
-     *
-     * @name selectedFeatureIndex
-     * @instance
-     *
-     * @type {Number}
-     */
-    _getSelectedFeatureIndexAttr: viewModelWiring.createGetterDelegate("selectedFeatureIndex"),
-
-    _setSelectedFeatureIndexAttr: viewModelWiring.createSetterDelegate("selectedFeatureIndex"),
-
-    //----------------------------------
-    //  spinnerEnabled
-    //----------------------------------
-
-    /**
-     * Indicates whether to display a spinner at the popup location prior to its
-     * display when it has pending promises.
-     *
-     * @type {boolean}
-     * @default
-     * @ignore
-     */
-    spinnerEnabled: true,
-
-    _setSpinnerEnabledAttr: function (newVal) {
-      this._set("spinnerEnabled", newVal);
-      this._createSpinner(newVal, this.viewModel.view);
-    },
-
-    //----------------------------------
-    //  title
-    //----------------------------------
-
-    /**
-     * The title of the popup. This can be set generically on the popup no
-     * matter the features that are selected. If the [selected feature](#selectedFeature)
-     * has a {@link module:esri/PopupTemplate}, then the title set in the
-     * corresponding template is used here.
-     *
-     * @name title
-     * @instance
-     *
-     * @type {String}
-     *
-     * @example
-     * // This title will display in the popup unless a selected feature's
-     * // PopupTemplate overrides it
-     * view.popup.title = "Population by zip codes in Southern California";
-     */
-    _getTitleAttr: viewModelWiring.createGetterDelegate("title"),
-
-    _setTitleAttr: viewModelWiring.createSetterDelegate("title"),
-
-    //----------------------------------
-    //  view
-    //----------------------------------
-
-    /**
-     * A reference to the {@link module:esri/views/MapView MapView} or {@link module:esri/views/Scene SceneView}. Set this to link the widget to a specific view.
-     *
-     * @name view
-     * @instance
-     *
-     * @type {module:esri/views/MapView | module:esri/views/SceneView}
-     */
-    _getViewAttr: viewModelWiring.createGetterDelegate("view"),
-
-    _setViewAttr: viewModelWiring.createSetterDelegate("view"),
-
-    //----------------------------------
-    //  visible
-    //----------------------------------
-
-    /**
-     * Displays the popup in the view. The popup will only display if the view's size
-     * constraints in [dockOptions](#dockOptions) are met or the [location](#location)
-     * property is set to a geometry.
-     *
-     * @type {Boolean}
-     * @default false
-     * @see [Sample - Advanced Popup](../sample-code/popup-advanced/index.html)
-     * @see [Popup.open()](#open)
-     *
-     * @example
-     * // Sets the location of the popup to the center of the view
-     * view.popup.location = view.center;
-     * // Displays the popup
-     * view.popup.visible = true;
-     *
-     * @example
-     * // Sets the location of the popup to the location of a click on the view
-     * view.on("click", function(evt){
-     *   view.popup.location = evt.mapPoint;
-     *   // Displays the popup
-     *   view.popup.visible = true;
-     * });
-     *
-     * @example
-     * // Hides the popup from the view
-     * view.popup.visible = false;
-     */
-    visible: false,
-
-    _setVisibleAttr: function (newVal) {
-      this._set("visible", newVal);
-      domClass.remove(this._containerNode, CSS.menuOpen);
-      domClass.toggle(this.domNode, CSS.invisible, !newVal);
-      this._togglePopupLocationRepositioning(newVal);
-      this._toggleContentVisibility(newVal);
-      this.reposition();
     },
 
     //--------------------------------------------------------------------------
@@ -1172,9 +1169,9 @@ define([
      * <br><br>**Default Value:** false
      *
      * @example
-     * view.on("click", function(evt){
+     * view.on("click", function(event){
      *   view.popup.open({
-     *    location: evt.mapPoint,  // location of the click on the view
+     *    location: event.mapPoint,  // location of the click on the view
      *    title: "You clicked here",  // title displayed in the popup
      *    content: "This is a point of interest"  // content displayed in the popup
      *   });
@@ -1218,7 +1215,7 @@ define([
         this._handleRegistry.add([
           actions.on("change", function () {
             var viewModel = this.viewModel;
-            this._updateActions(viewModel.actions, viewModel.features);
+            this._updateActions(viewModel.actions, viewModel.features, viewModel.selectedFeature);
           }.bind(this))
         ], REGISTRY_KEYS.actionsChange);
       }
@@ -1242,13 +1239,13 @@ define([
       this._updatePageText(viewModel.features, viewModel.selectedFeatureIndex);
     },
 
-    _updateActions: function (actions, features) {
-      this._updateActionButtons(actions);
+    _updateActions: function (actions, features, selectedFeature) {
+      this._updateActionButtons(actions, selectedFeature);
       this._updateFooterVisibility(features, actions);
       this.reposition();
     },
 
-    _updateActionButtons: function (actions) {
+    _updateActionButtons: function (actions, selectedFeature) {
       this._handleRegistry.remove(REGISTRY_KEYS.actions);
 
       if (this._actionsNode) {
@@ -1262,31 +1259,48 @@ define([
             // set the default classes zoom action
             if (action.id === ZOOM_TO_ACTION_ID) {
               action.title = this._i18n.zoom;
-              action.className = CSS.zoomIcon;
+              action.className = CSS.iconZoom;
             }
+
+            var actionTitle = action.title;
+            var actionClass = action.className;
+            var actionImage = action.image;
+
+            if(!actionImage && !actionClass){
+              actionImage = DEFAULT_ACTION_IMAGE;
+            }
+
+            var featureAttributes = selectedFeature && selectedFeature.attributes;
+
+            if (featureAttributes) {
+              actionTitle = actionTitle ? esriLang.substitute(featureAttributes, actionTitle) : "";
+              actionClass = actionClass ? esriLang.substitute(featureAttributes, actionClass) : null;
+              actionImage = actionImage ? esriLang.substitute(featureAttributes, actionImage) : null;
+            }
+
             // create action button
             var actionNode = domConstruct.create("div", {
               tabindex: "0",
-              title: action.title
+              title: actionTitle
             }, frag);
             domAttr.set(actionNode, DATA_ATTRIBUTES.actionIndex, i);
-            domClass.add(actionNode, [CSS.btn, CSS.action]);
+            domClass.add(actionNode, [CSS.button, CSS.action]);
             // icon
             var iconNode = domConstruct.create("span", {
               "aria-hidden": true
             }, actionNode);
             domClass.add(iconNode, CSS.icon);
-            if (action.className) {
-              domClass.add(iconNode, action.className);
+            if (actionClass) {
+              domClass.add(iconNode, actionClass);
             }
-            if (action.image) {
+            if (actionImage) {
               domClass.add(iconNode, CSS.actionImage);
-              domStyle.set(iconNode, "background-image", "url(" + action.image + ")");
+              domStyle.set(iconNode, "background-image", "url(" + actionImage + ")");
             }
             // text
             var actionsText = {
               className: CSS.actionText,
-              textContent: action.title
+              textContent: actionTitle
             };
             // hide action text if more than or equal to X actions are shown
             if (totalActions >= this._hideActionsTextNum) {
@@ -1300,16 +1314,26 @@ define([
               }),
 
               watchUtils.init(action, "className", function (value, oldValue) {
+                if (featureAttributes) {
+                  value = esriLang.substitute(featureAttributes, value);
+                  oldValue = esriLang.substitute(featureAttributes, oldValue);
+                }
                 domClass.remove(iconNode, oldValue);
                 domClass.add(iconNode, value);
               }),
 
               watchUtils.init(action, "image", function (value) {
+                if (featureAttributes) {
+                  value = esriLang.substitute(featureAttributes, value);
+                }
                 domClass.toggle(iconNode, CSS.actionImage, !!value);
                 domStyle.set(iconNode, "background-image", value ? "url(" + value + ")" : "");
               }),
 
               watchUtils.init(action, "title", function (value) {
+                if (featureAttributes) {
+                  value = esriLang.substitute(featureAttributes, value);
+                }
                 var text = value || "";
                 domAttr.set(actionNode, "title", text);
                 domAttr.set(actionTextNode, "textContent", text);
@@ -1341,57 +1365,81 @@ define([
     },
 
     // sets popup position
-    _calculatePosition: function (screenPoint, sizes) {
-      var totalHeight, totalWidth, top, left, bottom, right;
-      if (screenPoint && sizes) {
-        var pointerHeight = sizes.pointer.h;
-        var pointerWidth = sizes.pointer.w;
+    _calculatePosition: function (screenPoint, sizes, view) {
+      var alignment = this.alignment,
+        positionStyle, height, width, widthOffset, heightOffset;
+      var top = null,
+        left = null,
+        bottom = null,
+        right = null;
+      if (screenPoint && sizes && view) {
+        var pointerHeight = sizes.pointer.height;
+        var pointerWidth = sizes.pointer.width;
         // height of popup and tail
-        totalHeight = sizes.popup.h;
+        height = sizes.popup.height;
         var alignmentPositions = ALIGNMENT_POSITIONS;
-        if (sizes.alignment === alignmentPositions.top || sizes.alignment === alignmentPositions.bottom) {
-          totalHeight = totalHeight + pointerHeight;
+        if (alignment === alignmentPositions.top || alignment === alignmentPositions.bottom) {
+          height += pointerHeight;
         }
-        totalWidth = sizes.popup.w;
-        if (sizes.alignment === alignmentPositions.left || sizes.alignment === alignmentPositions.right) {
-          totalWidth = totalWidth + pointerWidth;
+        width = sizes.popup.width;
+        if (alignment === alignmentPositions.left || alignment === alignmentPositions.right) {
+          width += pointerWidth;
         }
-        switch (sizes.alignment) {
+        var halfWidth = width / 2;
+        var halfHeight = height / 2;
+        switch (alignment) {
         case alignmentPositions.bottom:
           top = screenPoint.y + pointerHeight;
-          left = screenPoint.x - (totalWidth / 2);
-          bottom = screenPoint.y + totalHeight;
-          right = left + totalWidth;
+          left = screenPoint.x - halfWidth;
+          widthOffset = halfWidth;
+          heightOffset = height;
           break;
         case alignmentPositions.left:
-          top = screenPoint.y - (totalHeight / 2);
-          left = screenPoint.x - totalWidth;
-          bottom = top + totalHeight;
-          right = left + totalWidth;
+          top = screenPoint.y - halfHeight;
+          right = view.width - screenPoint.x + pointerWidth;
+          widthOffset = width;
+          heightOffset = halfHeight;
           break;
         case alignmentPositions.right:
-          top = screenPoint.y - (totalHeight / 2);
+          top = screenPoint.y - halfHeight;
           left = screenPoint.x + pointerWidth;
-          bottom = top + totalHeight;
-          right = screenPoint.x + totalWidth;
+          widthOffset = width;
+          heightOffset = halfHeight;
           break;
         default:
-          // screen screenPoint minus (popup height + pointer height)
-          top = screenPoint.y - totalHeight;
-          // screen screenPoint minus 1/2 popup width
-          left = screenPoint.x - (totalWidth / 2);
-          // top position plus height of popup
-          bottom = top + totalHeight;
-          // left position plus width of popup
-          right = left + totalWidth;
+          bottom = view.height - screenPoint.y + pointerHeight;
+          left = screenPoint.x - halfWidth;
+          widthOffset = halfWidth;
+          heightOffset = height;
+        }
+        var padding = view.padding;
+        // if popup is dockEnabled
+        if (this.dockEnabled) {
+          positionStyle = {
+            left: padding.left ? padding.left + "px" : "",
+            top: padding.top ? padding.top + "px" : "",
+            right: padding.right ? padding.right + "px" : "",
+            bottom: padding.bottom ? padding.bottom + "px" : ""
+          };
+        }
+        else {
+          positionStyle = {
+            top: top !== null ? top + "px" : "auto",
+            left: left !== null ? left + "px" : "auto",
+            bottom: bottom !== null ? bottom + "px" : "auto",
+            right: right !== null ? right + "px" : "auto"
+          };
         }
         return {
-          height: totalHeight,
-          width: totalWidth,
-          top: top,
-          left: left,
-          bottom: bottom,
-          right: right
+          height: height,
+          width: width,
+          box: {
+            top: top !== null ? top : screenPoint.y - heightOffset,
+            left: left !== null ? left : screenPoint.x - widthOffset,
+            bottom: bottom !== null ? bottom : screenPoint.y + heightOffset,
+            right: right !== null ? right : screenPoint.x + widthOffset
+          },
+          style: positionStyle
         };
       }
     },
@@ -1433,18 +1481,18 @@ define([
             var title = this._i18n.untitled;
             var item = domConstruct.create("li", {
               role: "menu-item",
-              className: CSS.pageMenuItem
+              className: CSS.featureMenuItem
             }, this._paginationNode);
             if (i === selectedFeatureIndex) {
               domAttr.set(item, "aria-label", i18n.selectedFeature);
-              domClass.add(item, CSS.pageMenuSelected);
+              domClass.add(item, CSS.featureMenuSelected);
             }
             else {
               domAttr.set(item, DATA_ATTRIBUTES.featureIndex, i);
             }
             // title
             var itemTitle = domConstruct.create("span", {
-              className: CSS.pageMenuTitle,
+              className: CSS.featureMenuTitle,
               innerHTML: title
             }, item);
             var prvm = this._popupRendererVMs[i];
@@ -1456,7 +1504,7 @@ define([
             }
             if (i === selectedFeatureIndex) {
               domConstruct.create("span", {
-                className: CSS.pageMenuCheckMark
+                className: CSS.iconCheckMark
               }, itemTitle);
             }
           }, this);
@@ -1512,7 +1560,7 @@ define([
       var isPopupRenderer = !!(this._popupRenderer && this._popupRenderer.viewModel.content === content);
       domClass.toggle(this._containerNode, CSS.hasPopupRenderer, isPopupRenderer);
       domClass.toggle(this._containerNode, CSS.showContent, !!content);
-      domClass.remove(this._containerNode, CSS.menuOpen);
+      domClass.remove(this._containerNode, CSS.hasPaginationMenuOpen);
     },
 
     _destroyPopupRenderer: function () {
@@ -1549,8 +1597,8 @@ define([
     },
 
     _togglePopupDocking: function (dockEnabled) {
-      domClass.remove(this._containerNode, CSS.menuOpen);
-      domClass.toggle(this._containerNode, CSS.docked, !!dockEnabled);
+      domClass.remove(this._containerNode, CSS.hasPaginationMenuOpen);
+      domClass.toggle(this._containerNode, CSS.isDocked, !!dockEnabled);
       domAttr.set(this._dockNode, "title", dockEnabled ? this._i18n.undock : this._i18n.dock);
       this._updateDockPosition(this.dockOptions);
     },
@@ -1584,40 +1632,43 @@ define([
     },
 
     _updateDockPosition: function (dockOptions) {
-      domClass.remove(this._containerNode, [CSS.dockedTopLeft, CSS.dockedTopCenter, CSS.dockedTopRight, CSS.dockedBottomLeft, CSS.dockedBottomCenter, CSS.dockedBottomRight, CSS.dockToTop, CSS.dockToBottom, CSS.dockToLeft, CSS.dockToRight]);
+      domClass.remove(this._containerNode, [CSS.isDockedTopLeft, CSS.isDockedTopCenter, CSS.isDockedTopRight, CSS.isDockedBottomLeft, CSS.isDockedBottomCenter, CSS.isDockedBottomRight, CSS.canDockToTop, CSS.canDockToBottom, CSS.canDockToLeft, CSS.canDockToRight]);
       var position, positionClass, dockToClass;
       var dockPos = DOCK_POSITIONS;
       var currentPosition = dockOptions.position;
       if (currentPosition === dockPos.auto) {
         position = this._determineDockPosition(dockPos);
       }
+      else if (typeof currentPosition === "function") {
+         position = currentPosition.call(this);
+      }
       else {
         position = currentPosition;
       }
       switch (position) {
       case dockPos.topLeft:
-        positionClass = CSS.dockedTopLeft;
-        dockToClass = CSS.dockToLeft;
+        positionClass = CSS.isDockedTopLeft;
+        dockToClass = CSS.canDockToLeft;
         break;
       case dockPos.topCenter:
-        positionClass = CSS.dockedTopCenter;
-        dockToClass = CSS.dockToTop;
+        positionClass = CSS.isDockedTopCenter;
+        dockToClass = CSS.canDockToTop;
         break;
       case dockPos.bottomLeft:
-        positionClass = CSS.dockedBottomLeft;
-        dockToClass = CSS.dockToLeft;
+        positionClass = CSS.isDockedBottomLeft;
+        dockToClass = CSS.canDockToLeft;
         break;
       case dockPos.bottomCenter:
-        positionClass = CSS.dockedBottomCenter;
-        dockToClass = CSS.dockToBottom;
+        positionClass = CSS.isDockedBottomCenter;
+        dockToClass = CSS.canDockToBottom;
         break;
       case dockPos.bottomRight:
-        positionClass = CSS.dockedBottomRight;
-        dockToClass = CSS.dockToRight;
+        positionClass = CSS.isDockedBottomRight;
+        dockToClass = CSS.canDockToRight;
         break;
       default:
-        positionClass = CSS.dockedTopRight;
-        dockToClass = CSS.dockToRight;
+        positionClass = CSS.isDockedTopRight;
+        dockToClass = CSS.canDockToRight;
       }
       domClass.toggle(this._containerNode, dockToClass, !!dockOptions.buttonEnabled);
       if (this.dockEnabled) {
@@ -1637,7 +1688,7 @@ define([
     _toggleDockButton: function (dockOptions) {
       var containerNode = this._containerNode;
       domClass.toggle(containerNode, CSS.showDock, !!dockOptions.buttonEnabled);
-      domClass.toggle(containerNode, CSS.docked, !!this.dockEnabled);
+      domClass.toggle(containerNode, CSS.isDocked, !!this.dockEnabled);
       this._updateDockPosition(dockOptions);
     },
 
@@ -1663,8 +1714,8 @@ define([
       if (pendingPromisesCount && promises.length && pendingPromisesCount === promises.length) {
         this.set("visible", false);
       }
-      domClass.toggle(this._containerNode, CSS.pendingPromises, !!pendingPromisesCount);
-      domClass.toggle(this._containerNode, CSS.pendingPromisesResult, !!waitingForResult);
+      domClass.toggle(this._containerNode, CSS.hasPendingPromises, !!pendingPromisesCount);
+      domClass.toggle(this._containerNode, CSS.isPendingPromisesResult, !!waitingForResult);
       domClass.toggle(this._containerNode, CSS.hasPromiseFeatures, !!featureCount);
       if (this._message) {
         // hide message
@@ -1727,7 +1778,7 @@ define([
         }
         else {
           var sizes = this._sizePopup();
-          var pos = this._calculatePosition(screenPoint, sizes);
+          var position = this._calculatePosition(screenPoint, sizes, view);
           // view box
           var viewWidth = view.width;
           var viewHeight = view.height;
@@ -1745,25 +1796,25 @@ define([
               return viewModel.centerAtLocation();
             }
             // popup not dockEnabled, we have a position and popup fits inside of the view
-            else if (!this.dockEnabled && pos && pos.width < view.width && pos.height < view.height) {
+            else if (!this.dockEnabled && position && position.width < view.width && position.height < view.height) {
               // offsets
               var dx = 0;
               var dy = 0;
-              if (pos.top < viewPadding.top) {
+              if (position.box.top < viewPadding.top) {
                 // popup is above view
-                dy = -(pos.top) + uiPadding.top + viewPadding.top;
+                dy = -(position.box.top) + uiPadding.top + viewPadding.top;
               }
-              else if (pos.bottom > (viewHeight - viewPadding.bottom)) {
+              else if (position.box.bottom > (viewHeight - viewPadding.bottom)) {
                 // popup is below view
-                dy = -(pos.bottom - viewHeight + viewPadding.bottom) - uiPadding.bottom;
+                dy = -(position.box.bottom - viewHeight + viewPadding.bottom) - uiPadding.bottom;
               }
-              if (pos.left < viewPadding.left) {
+              if (position.box.left < viewPadding.left) {
                 // popup is left of view
-                dx = pos.left - uiPadding.left - viewPadding.left;
+                dx = position.box.left - uiPadding.left - viewPadding.left;
               }
-              else if (pos.right > (viewWidth - viewPadding.right)) {
+              else if (position.box.right > (viewWidth - viewPadding.right)) {
                 // popup is right of view
-                dx = (pos.right - viewWidth + viewPadding.right) + uiPadding.right;
+                dx = (position.box.right - viewWidth + viewPadding.right) + uiPadding.right;
               }
               // we have offsets to do
               if (dx || dy) {
@@ -1792,46 +1843,28 @@ define([
       var view = viewModel.view;
       if (view) {
         // remove alignment classes
-        domClass.remove(this._containerNode, [CSS.top, CSS.bottom, CSS.left, CSS.right]);
+        domClass.remove(this._containerNode, [CSS.alignTop, CSS.alignBottom, CSS.alignLeft, CSS.alignRight]);
         // add alignment class
         var alignmentClass;
         switch (this.alignment) {
         case ALIGNMENT_POSITIONS.bottom:
-          alignmentClass = CSS.bottom;
+          alignmentClass = CSS.alignBottom;
           break;
         case ALIGNMENT_POSITIONS.right:
-          alignmentClass = CSS.right;
+          alignmentClass = CSS.alignRight;
           break;
         case ALIGNMENT_POSITIONS.left:
-          alignmentClass = CSS.left;
+          alignmentClass = CSS.alignLeft;
           break;
         default:
-          alignmentClass = CSS.top;
+          alignmentClass = CSS.alignTop;
         }
         domClass.add(this._containerNode, alignmentClass);
         var screenPoint = this._getLocationScreenPoint();
         var sizes = this._sizePopup();
-        var position = this._calculatePosition(screenPoint, sizes);
-        if (position) {
-          var positionStyle;
-          var padding = view.padding;
-          // if popup is dockEnabled
-          if (this.dockEnabled) {
-            positionStyle = {
-              left: padding.left ? padding.left + "px" : "",
-              top: padding.top ? padding.top + "px" : "",
-              right: padding.right ? padding.right + "px" : "",
-              bottom: padding.bottom ? padding.bottom + "px" : ""
-            };
-          }
-          else {
-            positionStyle = {
-              left: position.left + "px",
-              top: position.top + "px",
-              right: "",
-              bottom: ""
-            };
-          }
+        var position = this._calculatePosition(screenPoint, sizes, view);
+        var positionStyle = position && position.style;
+        if (positionStyle) {
           // Place popup at the right positionStyle
           domStyle.set(this._containerNode, positionStyle);
         }
@@ -1890,19 +1923,19 @@ define([
       if (index !== -1) {
         viewModel.selectedFeatureIndex = index;
       }
-      domClass.remove(this._containerNode, CSS.menuOpen);
+      domClass.remove(this._containerNode, CSS.hasPaginationMenuOpen);
       this._pageMenuNode.focus();
     },
 
     _updateSelectedFeature: function (selectedFeature) {
       var viewModel = this.viewModel;
       var layer, layerId = "",
-        layerName = "";
+        layerTitle = "";
       if (selectedFeature) {
         layer = selectedFeature.layer;
         if (layer) {
           layerId = layer.id || "";
-          layerName = layer.name || "";
+          layerTitle = layer.title || "";
         }
         // create popup renderer if it doesn't exist
         if (!this._popupRenderer || (this._popupRenderer && this._popupRenderer._destroyed)) {
@@ -1924,7 +1957,7 @@ define([
       }
       // toggle class to enable a feature change CSS animation
       this._toggleFeatureUpdatedClass();
-      domAttr.set(this._containerNode, DATA_ATTRIBUTES.layerName, layerName);
+      domAttr.set(this._containerNode, DATA_ATTRIBUTES.layerTitle, layerTitle);
       domAttr.set(this._containerNode, DATA_ATTRIBUTES.layerId, layerId);
       this.reposition();
     },
@@ -1952,9 +1985,14 @@ define([
       var pointerNodeSize = domGeometry.getContentBox(this._pointerNode);
       // prepare object for delivery
       var sizes = {
-        alignment: this.alignment,
-        popup: popupNodeSize,
-        pointer: pointerNodeSize
+        popup: {
+          height: popupNodeSize.h,
+          width: popupNodeSize.w
+        },
+        pointer: {
+          height: pointerNodeSize.h,
+          width: pointerNodeSize.w
+        }
       };
       return sizes;
     },
@@ -1963,7 +2001,7 @@ define([
       title = title || "";
       domAttr.set(this._titleNode, "innerHTML", title);
       domClass.toggle(this._containerNode, CSS.showTitle, !!title);
-      domClass.remove(this._containerNode, CSS.menuOpen);
+      domClass.remove(this._containerNode, CSS.hasPaginationMenuOpen);
     },
 
     _toggleDock: function () {
@@ -1971,8 +2009,8 @@ define([
     },
 
     _togglePageMenu: function () {
-      domClass.toggle(this._containerNode, CSS.menuOpen);
-      var isOpen = domClass.contains(this._containerNode, CSS.menuOpen);
+      domClass.toggle(this._containerNode, CSS.hasPaginationMenuOpen);
+      var isOpen = domClass.contains(this._containerNode, CSS.hasPaginationMenuOpen);
       domAttr.set(this._pageMenuSectionNode, "aria-hidden", !isOpen);
       var lists = query("li", this._paginationNode);
       var firstItem = lists[0];
@@ -2008,14 +2046,14 @@ define([
     },
 
     _toggleFeatureUpdatedClass: function () {
-      domClass.remove(this._containerNode, CSS.featureUpdated);
+      domClass.remove(this._containerNode, CSS.hasFeatureUpdated);
 
       // -> triggering reflow /* The actual magic */
       // without this it wouldn't work. Try uncommenting the line and the transition won't be retriggered.
       // https://css-tricks.com/restart-css-animation/
       this._containerNode.offsetWidth = this._containerNode.offsetWidth;
 
-      domClass.add(this._containerNode, CSS.featureUpdated);
+      domClass.add(this._containerNode, CSS.hasFeatureUpdated);
     },
 
     _viewPointChanged: function () {

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define(["../../core/declare"],function(t){var e=t([],{constructor:function(){this._credentials=[]},addCredential:function(t){if(t&&t.url&&t.token&&!this.findCredential(t.url)){var e=this._getServiceRoot(t.url);e&&this._credentials.push({rootUrl:e,token:t.token})}},findCredential:function(t){if(!t||!this._credentials.length)return null;var e=-1,r=this._credentials,n=this._getServiceRoot(t);return r.some(function(t,r){return t.rootUrl===n?(e=r,!0):void 0}),e>-1?r[e]:null},_getServiceRoot:function(t){var e=/(.+\/rest\/services\/.*\/?vectortileserver)/i,r=/(.+\/sharing\/.*)/i;return e.test(t)?t.match(e)[1]:r.test(t)?t.match(r)[1]:null}});return e});

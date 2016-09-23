@@ -1,0 +1,533 @@
+.esriSignInDialog {
+  // override esri-widget because IdentityManagerDialog's (dijit) HTML structure
+  // goes against our styling expectations
+  &.esri-widget table tr {
+    :nth-child(even),
+    :nth-child(odd){
+      background-color: $background_color;
+    }
+  }
+}
+
+// the following is generated from https://devtopia.esri.com/WebGIS/arcgis-theme-calcite/tree/juan6600/create-identity-manager-scoped-styles-for-4x
+// see https://devtopia.esri.com/WebGIS/arcgis/issues/3344 for more info
+.esriIdentityDialog {
+  /****
+      GENERIC PIECES
+   ****/
+  /****
+      A11Y
+   ****/
+  /* button inner contents - labels, icons etc. */
+  /****
+    3-element borders:  ( dijitLeft + dijitStretch + dijitRight )
+    These were added for rounded corners on dijit.form.*Button but never actually used.
+   ****/
+  /* Buttons */
+  /******
+    TextBox related.
+    Everything that has an <input>
+  *******/
+  /* rules for webkit to deal with fuzzy blue focus border */
+  /* Layout widgets. This is essential CSS to make layout work (it isn't "styling" CSS)
+     make sure that the position:absolute in dijitAlign* overrides other classes */
+  /* ContentPane */
+  /* Dialog */
+  /* images off, high-contrast mode styles */
+  /**** Disabled cursor *****/ }
+.esriIdentityDialog .dijitReset {
+  /* Use this style to null out padding, margin, border in your template elements
+    so that page specific styles don't break them.
+    - Use in all TABLE, TR and TD tags.
+  */
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  line-height: normal;
+  color: inherit; }
+.esriIdentityDialog .dijitInline {
+  /*  To inline block elements.
+    Similar to InlineBox below, but this has fewer side-effects in Moz.
+    Also, apparently works on a DIV as well as a FIELDSET.
+  */
+  display: inline-block;
+  /* webkit and FF3 */
+  border: 0;
+  padding: 0;
+  vertical-align: middle; }
+.esriIdentityDialog table.dijitInline {
+  /* To inline tables with a given width set */
+  display: inline-table;
+  box-sizing: content-box;
+  -moz-box-sizing: content-box; }
+.esriIdentityDialog .dijitVisible {
+  /* To show selected pane in StackContainer etc. */
+  display: block !important;
+  /* override user's display:none setting via style setting or indirectly via class */
+  position: relative;
+  /* to support setting width/height, see #2033 */
+  visibility: visible; }
+.esriIdentityDialog .dijitInputContainer {
+  /* for positioning of placeHolder */
+  overflow: hidden;
+  float: none !important;
+  /* needed to squeeze the INPUT in */
+  position: relative; }
+.esriIdentityDialog .dijitValidationTextBox .dijitValidationContainer {
+  float: right;
+  text-align: center; }
+.esriIdentityDialog .dijitTextBox input.dijitInputField {
+  /* override unreasonable user styling of buttons and icons */
+  padding-left: 0 !important;
+  padding-right: 0 !important; }
+.esriIdentityDialog .dijitValidationTextBox .dijitValidationContainer {
+  display: none; }
+.esriIdentityDialog .dijitOffScreen {
+  /* these class attributes should supersede any inline positioning style */
+  position: absolute !important;
+  left: -10000px !important;
+  top: -10000px !important; }
+.esriIdentityDialog .dijitContainer {
+  /* for all layout containers */
+  overflow: hidden;
+  /* need on IE so something can be reduced in size, and so scrollbars aren't temporarily displayed when resizing */ }
+.esriIdentityDialog .dijitButtonNode * {
+  vertical-align: middle; }
+.esriIdentityDialog .dijitLeft {
+  /* Left part of a 3-element border */
+  background-position: left top;
+  background-repeat: no-repeat; }
+.esriIdentityDialog .dijitStretch {
+  /* Middle (stretchy) part of a 3-element border */
+  white-space: nowrap;
+  /* MOW: move somewhere else */
+  background-repeat: repeat-x; }
+.esriIdentityDialog .dijitRight {
+  /* Right part of a 3-element border */
+  background-position: right top;
+  background-repeat: no-repeat; }
+.esriIdentityDialog .dijitButton {
+  /* outside of button */
+  margin: 0.2em;
+  vertical-align: middle; }
+.esriIdentityDialog .dijitButtonContents {
+  display: block;
+  /* to make focus border rectangular */ }
+.esriIdentityDialog td.dijitButtonContents {
+  display: table-cell;
+  /* but don't affect Select, ComboButton */ }
+.esriIdentityDialog .dijitButtonNode img {
+  /* make text and images line up cleanly */
+  vertical-align: middle;
+  /*margin-bottom:.2em;*/ }
+.esriIdentityDialog .dijitButtonNode {
+  /* Node that is acting as a button -- may or may not be a BUTTON element */
+  border: 1px solid gray;
+  margin: 0;
+  line-height: normal;
+  vertical-align: middle;
+  text-align: center;
+  white-space: nowrap; }
+.esriIdentityDialog .dijitTextBox .dijitButtonNode {
+  border-width: 0; }
+.esriIdentityDialog .dijitButtonNode,
+.esriIdentityDialog .dijitButtonNode * {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent; }
+.esriIdentityDialog .dijitTextBox {
+  border: solid black 1px;
+  width: 15em;
+  /* need to set default size on outer node since inner nodes say <input style="width:100%"> and <td width=100%>.  user can override */
+  vertical-align: middle; }
+.esriIdentityDialog .dijitTextBoxReadOnly,
+.esriIdentityDialog .dijitTextBoxDisabled {
+  color: gray; }
+.esriIdentityDialog .dijitPlaceHolder {
+  /* hint text that appears in a textbox until user starts typing */
+  color: #aaa;
+  font-style: italic;
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  pointer-events: none;
+  /* so cut/paste context menu shows up when right clicking */ }
+.esriIdentityDialog .dijitTextBox input:focus {
+  outline: none;
+  /* blue fuzzy line looks wrong on combobox or something w/validation icon showing */ }
+.esriIdentityDialog .dijitTextBoxFocused {
+  outline: 5px -webkit-focus-ring-color; }
+.esriIdentityDialog .dijitTextBox input {
+  float: left;
+  /* needed by IE to remove secret margin */ }
+.esriIdentityDialog .dijitInputInner {
+  /* for when an <input> is embedded inside an inline-block <div> with a size and border */
+  border: 0 !important;
+  background-color: transparent !important;
+  width: 100% !important;
+  /* IE dislikes horizontal tweaking combined with width:100% so punish everyone for consistency */
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important; }
+.esriIdentityDialog .dijitValidationTextBoxError input.dijitValidationInner {
+  /* <input> used to display arrow icon/validation icon, or in arrow character in high contrast mode.
+   * The css below is a trick to hide the character in non-high-contrast mode
+   */
+  text-indent: -2em !important;
+  direction: ltr !important;
+  text-align: left !important;
+  height: auto !important; }
+.esriIdentityDialog .dijitValidationTextBoxError .dijitValidationContainer {
+  display: inline;
+  cursor: default; }
+.esriIdentityDialog .dijitLayoutContainer {
+  position: relative;
+  display: block;
+  overflow: hidden; }
+.esriIdentityDialog .dijitAlignTop,
+.esriIdentityDialog .dijitAlignBottom,
+.esriIdentityDialog .dijitAlignLeft,
+.esriIdentityDialog .dijitAlignRight {
+  position: absolute;
+  overflow: hidden; }
+.esriIdentityDialog body .dijitAlignClient {
+  position: absolute; }
+.esriIdentityDialog .dijitContentPane {
+  display: block;
+  overflow: auto;
+  /* if we don't have this (or overflow:hidden), then Widget.resizeTo() doesn't make sense for ContentPane */
+  -webkit-overflow-scrolling: touch; }
+.esriIdentityDialog .dijitContentPaneSingleChild {
+  /*
+   * if the ContentPane holds a single layout widget child which is being sized to match the content pane,
+   * then the ContentPane should never get a scrollbar (but it does due to browser bugs, see #9449
+   */
+  overflow: hidden; }
+.esriIdentityDialog .dijitContentPaneLoading .dijitIconLoading,
+.esriIdentityDialog .dijitContentPaneError .dijitIconError {
+  margin-right: 9px; }
+.dijitTooltip {
+  position: absolute;
+  z-index: 2000;
+  display: block;
+  /* make visible but off screen */
+  left: 0;
+  top: -10000px;
+  overflow: visible; }
+
+.dijitTooltipContainer {
+  border: solid black 2px;
+  background: #b8b5b5;
+  color: black;
+  font-size: small; }
+
+.dijitTooltipFocusNode {
+  padding: 2px 2px 2px 2px; }
+
+.dijitTooltipConnector {
+  position: absolute; }
+
+.dijitTooltipData {
+  display: none; }
+.esriIdentityDialog.dijitDialog {
+  position: absolute;
+  z-index: 999;
+  overflow: hidden;
+  /* override overflow: auto; from ContentPane to make dragging smoother */ }
+.esriIdentityDialog.dijitDialog .closeText {
+  display: none;
+  /* for the onhover border in high contrast on IE: */
+  position: absolute; }
+.esriIdentityDialog .dijitDialogTitleBar {
+  cursor: move; }
+.esriIdentityDialog .dijitDialogFixed .dijitDialogTitleBar {
+  cursor: default; }
+.esriIdentityDialog .dijitDialogCloseIcon {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent; }
+.esriIdentityDialog .dijitDialogPaneContent {
+  -webkit-overflow-scrolling: touch; }
+.dijitDialogUnderlayWrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 998;
+  display: none;
+  background: transparent !important; }
+.esriIdentityDialog .dijitNoIcon {
+  /* applied to <img>/<span> node when there is no icon specified */
+  display: none; }
+.esriIdentityDialog .dijitToggleButtonIconChar {
+  /* character (instead of icon) to show that ToggleButton is checked */
+  display: none !important; }
+.esriIdentityDialog .dijitReadOnly *,
+.esriIdentityDialog .dijitDisabled *,
+.esriIdentityDialog .dijitReadOnly,
+.esriIdentityDialog .dijitDisabled {
+  /* a region the user would be able to click on, but it's disabled */
+  cursor: default; }
+
+.esriIdentityDialog .dijitButtonNode {
+  touch-action: manipulation;
+  cursor: pointer;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  color: #4c4c4c;
+  background-color: #ffffff;
+  -moz-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+  border-color: #e0e0e0; }
+.esriIdentityDialog .dijitButtonNode:hover {
+  color: #4c4c4c;
+  background-color: #e2f1fb; }
+.esriIdentityDialog .dijitButtonNode:active, .esriIdentityDialog .dijitButtonNode:focus {
+  color: #0079c1;
+  background-color: #aadbfa; }
+.esriIdentityDialog .dijitButtonNode .dijitIcon {
+  margin-right: 6px; }
+.esriIdentityDialog .dijitButtonContents {
+  padding: 5px 10px; }
+.esriIdentityDialog .dijitButtonText {
+  padding: 0;
+  font-size: 12px;
+  line-height: 1.66667;
+  line-height: 20px;
+  text-align: center; }
+.esriIdentityDialog .dijitDisabled {
+  outline: none; }
+.esriIdentityDialog .dijitDisabled .dijitButtonNode {
+  cursor: false;
+  pointer-events: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none; }
+
+.esriIdentityDialog .dijitDisabled {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=65);
+  opacity: 0.65; }
+
+.esriIdentityDialog.dijitDialog {
+  position: relative;
+  background-color: #ffffff;
+  border: 1px solid #959595;
+  border: 1px solid #959595;
+  -moz-box-shadow: 0 1px 3px -1px rgba(0, 0, 0, 0.2), 0 5px 6px -3px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 1px 3px -1px rgba(0, 0, 0, 0.2), 0 5px 6px -3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px -1px rgba(0, 0, 0, 0.2), 0 5px 6px -3px rgba(0, 0, 0, 0.1);
+  background-clip: padding-box;
+  outline: 0; }
+.esriIdentityDialog .dijitDialogTitleBar {
+  padding: 15px;
+  border-bottom: 1px solid #e7e7e7;
+  min-height: 16.66667px; }
+.esriIdentityDialog .dijitDialogTitle {
+  font-size: 16px;
+  margin: 0;
+  line-height: 1.66667; }
+.esriIdentityDialog .dijitDialogCloseIcon {
+  float: right;
+  font-family: "CalciteWebCoreIcons";
+  speak: none;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  text-indent: 0;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  line-height: 1;
+  color: #323232;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=20);
+  opacity: 0.2; }
+.esriIdentityDialog .dijitDialogCloseIcon:before {
+  content: "\e600"; }
+.esriIdentityDialog .dijitDialogCloseIcon:hover, .esriIdentityDialog .dijitDialogCloseIcon:focus {
+  color: #323232;
+  text-decoration: none;
+  cursor: pointer;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  opacity: 0.5; }
+.esriIdentityDialog .dijitDialogPaneContent {
+  padding: 15px;
+  position: relative; }
+.esriIdentityDialog .dijitDialogPaneContent > .dijitDialogPaneActionBar {
+  margin: 15px -15px -15px; }
+.esriIdentityDialog .dijitDialogPaneContentArea {
+  position: relative;
+  padding: 0; }
+.esriIdentityDialog .dijitDialogPaneActionBar {
+  padding: 15px;
+  text-align: right;
+  border-top: 1px solid #e7e7e7;
+  *zoom: 1; }
+.esriIdentityDialog .dijitDialogPaneActionBar:after {
+  content: "";
+  display: table;
+  clear: both; }
+.esriIdentityDialog .dijitDialogPaneActionBar .dijitButton + .dijitButton {
+  margin-left: 5px; }
+.esriIdentityDialog_underlay.dijitDialogUnderlay {
+  background: #323232;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=75);
+  opacity: 0.75; }
+
+.esriIdentityDialog .dijitTextBox {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  -moz-transition: border-color 0.25s ease-in-out;
+  -o-transition: border-color 0.25s ease-in-out;
+  -webkit-transition: border-color 0.25s ease-in-out;
+  transition: border-color 0.25s ease-in-out; }
+.esriIdentityDialog .dijitTextBox .dijitInputField {
+  padding: 5px 10px;
+  color: #4c4c4c;
+  font-size: 12px;
+  line-height: 1.66667; }
+.esriIdentityDialog .dijitTextBox .dijitInputInner {
+  line-height: 1.66667;
+  height: 20px; }
+.esriIdentityDialog .dijitTextBox .dijitPlaceHolder {
+  font-style: normal;
+  color: #e0e0e0; }
+.esriIdentityDialog .dijitTextBoxFocused {
+  border-color: #196fa6;
+  outline: 0; }
+.esriIdentityDialog .dijitTextBoxFocused .dijitArrowButton {
+  border-color: #196fa6; }
+.esriIdentityDialog .dijitTextBoxError .dijitInputField {
+  color: #c7461a; }
+.esriIdentityDialog .dijitTextBoxError, .esriIdentityDialog .dijitTextBoxError.dijitTextBoxFocused,
+.esriIdentityDialog .dijitTextBoxError .dijitArrowButton {
+  border-color: #c7461a; }
+.esriIdentityDialog .dijitTextBoxError .dijitValidationContainer {
+  width: 26px;
+  padding: 5px;
+  color: #c7461a;
+  font-family: "CalciteWebCoreIcons";
+  speak: none;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  text-indent: 0;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  line-height: 1.25; }
+.esriIdentityDialog .dijitTextBoxError .dijitValidationContainer:before {
+  content: "\e650"; }
+.esriIdentityDialog .dijitTextBoxError .dijitValidationIcon {
+  display: none; }
+.esriIdentityDialog .dijitTextBoxDisabled {
+  background-color: #f8f8f8; }
+
+.dijitTooltip,
+.dijitTooltip * {
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box; }
+.dijitTooltip .dijitTooltipContainer {
+  border: 0;
+  font-size: 12px;
+  line-height: 1.4;
+  max-width: 200px;
+  color: #ffffff;
+  text-align: center;
+  text-decoration: none;
+  background-color: #323232;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=85);
+  opacity: 0.85; }
+.dijitTooltip .dijitTooltipContents {
+  padding: 5px 10px; }
+.dijitTooltip .dijitTooltipConnector {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=85);
+  opacity: 0.85; }
+.dijitTooltip.dijitTooltipBelow {
+  margin-top: 3px;
+  padding-top: 5px; }
+.dijitTooltip.dijitTooltipBelow .dijitTooltipConnector {
+  top: 0;
+  left: 15px;
+  border-width: 0 5px 5px;
+  border-bottom-color: #323232; }
+.dijitTooltip.dijitTooltipAbove {
+  margin-top: -3px;
+  padding-bottom: 5px; }
+.dijitTooltip.dijitTooltipAbove .dijitTooltipConnector {
+  bottom: 0;
+  left: 15px;
+  border-width: 5px 5px 0;
+  border-top-color: #323232; }
+.dijitTooltip.dijitTooltipLeft {
+  margin-left: -3px;
+  padding-right: 5px; }
+.dijitTooltip.dijitTooltipLeft .dijitTooltipConnector {
+  top: 50%;
+  right: 0;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #323232; }
+.dijitTooltip.dijitTooltipRight {
+  margin-left: 3px;
+  padding-left: 5px; }
+.dijitTooltip.dijitTooltipRight .dijitTooltipConnector {
+  top: 50%;
+  left: 0;
+  border-width: 5px 5px 5px 0;
+  border-right-color: #323232; }
+
+.dijitRtl .esriIdentityDialog .dijitOffScreen {
+  /* align on the right side rather than the left so no horizontal scroll bar shown */
+  left: auto !important;
+  right: -10000px !important; }
+.dijitRtl .esriIdentityDialog .dijitPlaceHolder {
+  left: auto;
+  right: 0; }
+
+.esriIdentityDialog {
+  /* TextBox */
+  /* ContentPane*/ }
+.esriIdentityDialog .dijitTextBoxRtl .dijitValidationContainer {
+  border-right-width: 1px !important;
+  border-left-width: 0 !important; }
+.esriIdentityDialog .dijitValidationTextBoxRtl .dijitValidationContainer {
+  float: left; }
+.esriIdentityDialog .dijitRtl .dijitContentPaneLoading .dijitIconLoading,
+.esriIdentityDialog .dijitRtl .dijitContentPaneError .dijitIconError {
+  margin-right: 0;
+  margin-left: 9px; }
+
+.dijitTooltip.dijitTooltipBelow.dijitTooltipABRight .dijitTooltipConnector, .dijitTooltip.dijitTooltipAbove.dijitTooltipABRight .dijitTooltipConnector {
+  left: auto;
+  right: 15px; }
+
+.esriIdentityDialog.dijitDialogRtl .dijitDialogCloseIcon {
+  float: left; }
+.esriIdentityDialog.dijitDialogRtl .dijitDialogPaneActionBar {
+  text-align: left; }
+.esriIdentityDialog.dijitDialogRtl .dijitDialogPaneActionBar .dijitButton + .dijitButton {
+  margin-left: 0;
+  margin-right: 5px; }
+
+.esriIdentityDialog .dijitContentPane {
+  padding: 15px;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box; }

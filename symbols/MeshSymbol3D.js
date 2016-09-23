@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define(["../core/declare","../core/lang","./Symbol3D"],function(e,l,o){var r=e(o,{declaredClass:"esri.symbol.MeshSymbol3D",type:"mesh-symbol-3d",_allowedLayerTypes:["Fill"],clone:function(){return new r({symbolLayers:l.clone(this.symbolLayers)})}});return r});
+define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/lang","./Symbol3D","../core/accessorSupport/decorators"],function(e,r,o,t,s,l,p){var c=function(e){function r(r){e.call(this),this.type="mesh-symbol-3d"}return o(r,e),r.prototype.clone=function(){return new r({symbolLayers:s.clone(this.symbolLayers)})},t([p.property()],r.prototype,"type",void 0),t([p.shared(["Fill"])],r.prototype,"_allowedLayerTypes",void 0),r=t([p.subclass("esri.symbols.MeshSymbol3D")],r)}(p.declared(l));return c});

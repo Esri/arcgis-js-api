@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define({noFilterFields:"${name} katmanının filtreleme için kullanılabilecek hiçbir alanı yok.",addToViewer:"Haritaya katman ekle",noItemsToDisplay:"Şu anda gösterilebilecek herhangi bir öğe bulunmuyor.",searchFor:"Ara",searching:"Araştırılıyor",items:{organizationLabel:"Kuruluşum",onlineLabel:"ArcGIS Online",contentLabel:"İçeriklerim",favoritesLabel:"Favorilerim"},title:"Web Haritası Seç",searchTitle:"Ara",ok:"Tamam",cancel:"İptal",placeholder:"Arama terimini gir",instructionsLeft:"Ne yapmak istiyorsunuz?",instructionsRight:"Yapılandırılabilir bir uygulama seçin.",go:"Git",selectDetails:"SEÇ",configure:"Oluştur",close:"Kapat",learnMoreConfigurableApps:"Yapılandırılabilir uygulamalar hakkında daha fazla bilgi edinin"});

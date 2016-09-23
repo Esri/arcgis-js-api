@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define(["../../../core/declare","../../../core/Accessoire","./SceneViewAltitudeConstraint","./SceneViewClipDistanceConstraint","./SceneViewTiltConstraint","./SceneViewCollisionConstraint"],function(t,e,i,n,s,c){var l=t([e],{declaredClass:"esri.views.3d.constraints.SceneViewConstraints",classMetadata:{properties:{tilt:{type:s},altitude:{type:i},clipDistance:{type:n},collision:{type:c}}},getDefaults:function(t){var e={};return t.tilt||(e.tilt={}),t.altitude||(e.altitude={}),t.clipDistance||(e.clipDistance={}),t.collision||(e.collision={}),e},scale:function(t){this.tilt.scale(t),this.altitude.scale(t),this.clipDistance.scale(t)}});return l});
+define(["../../../core/Accessor","./SceneViewAltitudeConstraint","./SceneViewClipDistanceConstraint","./SceneViewTiltConstraint","./SceneViewCollisionConstraint"],function(i,t,e,n,s){var c=i.createSubclass([],{declaredClass:"esri.views.3d.constraints.SceneViewConstraints",properties:{tilt:n,altitude:t,clipDistance:e,collision:s},getDefaults:function(i){var t={};return i.tilt||(t.tilt={}),i.altitude||(t.altitude={}),i.clipDistance||(t.clipDistance={}),i.collision||(t.collision={}),t},scale:function(i){this.tilt.scale(i),this.altitude.scale(i),this.clipDistance.scale(i)}});return c});

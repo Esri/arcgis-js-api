@@ -28,7 +28,7 @@
   varying vec3 wview;
   varying vec3 wnormal;
   varying vec3 wlight;
-#endif    
+#endif
 
 #ifdef OVERLAY
   uniform vec2 overlayTexOffset;
@@ -44,8 +44,8 @@
 #else
     vnormal = vec3(0, 0, 1); // WARNING: up-axis dependent code
 #endif
-    
-#ifdef ATMOSPHERE    
+
+#ifdef ATMOSPHERE
     wpos = (view * vec4(vpos, 1.0)).xyz;
     wnormal = (viewNormal * vec4(normalize(vpos+origin), 1.0)).xyz;
     wlight = (view  * vec4(lightDirection, 1.0)).xyz;
@@ -102,7 +102,9 @@
   varying vec2 vtcOverlay;
 #endif
 
-  $evalShadow
+#ifdef RECEIVE_SHADOWS
+	$evalShadow
+#endif
 
   float lum(vec3 c) {
     float max = max(max(c.r, c.g), c.b);
@@ -120,20 +122,20 @@
     vec3 Ln = normalize(lightPos);
     vec3 Nn = normalize(normal);
     vec3 Hn = normalize(view + Ln);
-    
+
     float ldn = dot(Ln, Nn);
     float diffComp = max(0.0, ldn);
     float vdn = 1.0 - dot(view, Nn);
     float ndv = dot(view, Ln);
-    
+
     vec3 diffContrib = surfaceColor * diffComp;
-    float subLamb = max(0.0, smoothstep(-rollOff, 1.0, ldn) - smoothstep(0.0, 1.0, ldn));     
-    
+    float subLamb = max(0.0, smoothstep(-rollOff, 1.0, ldn) - smoothstep(0.0, 1.0, ldn));
+
     vec3 subContrib = subLamb * subColor;
     vec3 vecColor = vec3(vdn);
-    
+
     vec3 diffuseContrib = (subContrib + diffContrib);
-    vec3 specularContrib = (vecColor * fuzzySpecColor);    
+    vec3 specularContrib = (vecColor * fuzzySpecColor);
 
     return (diffContrib + specularContrib) * rollOff;
   }
@@ -142,11 +144,13 @@
   void main() {
     vec3 a = ambient;
 
-    float shadow = evalShadow(vpos, 1.0 / gl_FragCoord.w, depthTex, shadowMapNum, shadowMapDistance, shadowMapMatrix, depthHalfPixelSz);
+    float shadow = 0.0;
+#ifdef RECEIVE_SHADOWS
+    shadow = evalShadow(vpos, 1.0 / gl_FragCoord.w, depthTex, shadowMapNum, shadowMapDistance, shadowMapMatrix, depthHalfPixelSz);
+#endif
     float vndl = dot(normalize(vnormal), lightDirection);
     float k = smoothstep(0.0, 1.0, clamp(vndl*diffuseHardness, 0.0, 1.0));
     vec3 d = (1.0 - shadow/1.8) * diffuse * k;
-
 
     float ssao = viewportPixelSz.w < .0 ? 1.0 : texture2D(ssaoTex, (gl_FragCoord.xy - viewportPixelSz.xy) * viewportPixelSz.zw).a;
     vec4 texVal = texture2D(tex, vtc);
@@ -163,7 +167,7 @@
 #endif
 
     vec3 atm = vec3(0.0);
-#ifdef ATMOSPHERE  
+#ifdef ATMOSPHERE
     float ndotl = max(0.0, min(1.0, vndl));
     atm = atmosphere(wlight, wnormal, -viewDirection);
     atm *= max(0.0, min(1.0, (1.0-lum(texCol)*1.5))); //avoid atmosphere on bright base maps

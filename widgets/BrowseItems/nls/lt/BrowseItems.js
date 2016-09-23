@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define({noFilterFields:"Sluoksnis ${name} neturi laukų, kurie gali būti naudojami filtravimui.",addToViewer:"Pridėti sluoksnį į žemėlapį",noItemsToDisplay:"Šiuo metu nėra kriterijus atitinkančių elementų.",searchFor:"Ieškoti ko",searching:"Ieškoma",items:{organizationLabel:"Organizacija",onlineLabel:"ArcGIS Online",contentLabel:"Mano turinys",favoritesLabel:"Mėgstamiausi"},title:"Pasirinkti internetinį žemėlapį",searchTitle:"Ieškoti",ok:"Gerai",cancel:"Atšaukti",placeholder:"Įveskite paieškos frazę",instructionsLeft:"Ką norite daryti?",instructionsRight:"Pasirinkti konfigūruojamą aplikaciją.",go:"Vykdyti",selectDetails:"PASIRINKTI",configure:"Kurti",close:"Uždaryti",learnMoreConfigurableApps:"Sužinokite daugiau apie konfigūruojamas aplikacijas"});

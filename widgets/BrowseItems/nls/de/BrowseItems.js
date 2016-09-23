@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define({noFilterFields:"Der Layer ${name} verfügt über keine Felder, die gefiltert werden können.",addToViewer:"Layer zur Karte hinzufügen",noItemsToDisplay:"Zurzeit stehen keine Elemente zur Anzeige zur Verfügung.",searchFor:"Suchen nach",searching:"Suchen",items:{organizationLabel:"Meine Organisation",onlineLabel:"ArcGIS Online",contentLabel:"Eigene Inhalte",favoritesLabel:"Eigene Favoriten"},title:"Webkarte auswählen",searchTitle:"Suchen",ok:"OK",cancel:"Abbrechen",placeholder:"Suchbegriff eingeben",instructionsLeft:"Was möchten Sie tun?",instructionsRight:"Wählen Sie eine konfigurierbare App aus.",go:"Los",selectDetails:"AUSWÄHLEN",configure:"Erstellen",close:"Schließen",learnMoreConfigurableApps:"Weitere Informationen zu konfigurierbaren Apps"});

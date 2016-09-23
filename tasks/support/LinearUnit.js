@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define(["../../core/declare","../../core/JSONSupporter","../../core/jsonDictionary"],function(e,t,i){var s=i({9001:"meters",9002:"feet",9036:"kilometers",9093:"miles",109012:"nautical-miles",109001:"yards"}),n=e(t,{declaredClass:"esri.tasks.support.LinearUnit",distance:0,units:null,_unitsReader:s.fromJSON,toJSON:function(){var e={};return this.distance&&(e.distance=this.distance),this.units&&(e.units=s.toJSON(this.units)),e}});return n});
+define(["../../core/declare","../../core/JSONSupporter","../../core/kebabDictionary"],function(e,i,s){var t=s({esriMeters:"meters",esriFeet:"feet",esriKilometers:"kilometers",esriMiles:"miles",esriNauticalMiles:"nautical-miles",esriYards:"yards"}),r=e(i,{declaredClass:"esri.tasks.support.LinearUnit",distance:0,units:null,_unitsReader:t.fromJSON,toJSON:function(){var e={};return this.distance&&(e.distance=this.distance),this.units&&(e.units=t.toJSON(this.units)),e}});return r});

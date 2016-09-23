@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define({zoom:"Powiększ do",next:"Następny obiekt",previous:"Poprzedni obiekt",close:"Zamknij",dock:"Dokuj",undock:"Wyłącz dokowanie",menu:"Menu",untitled:"Bez tytułu",pageText:"{index} z {total}",noFeaturesFound:"Nie znaleziono żadnych obiektów",selectedFeature:"Wybrany obiekt",selectedFeatures:"Liczba wyników: {total}",loading:"Wczytywanie"});

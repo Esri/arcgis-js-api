@@ -1,0 +1,230 @@
+@mixin colorPicker() {
+  .esri-color-picker {
+    font-family: "Avenir LT W01 65 Medium", Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #4d4d4d;
+    text-shadow: none;
+    width: 229px;
+  }
+
+  .esri-color-picker .esri-section {
+    margin: 10px 0 8px;
+  }
+
+  .esri-color-picker .esri-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .esri-color-picker.esri-container {
+    border: solid 2px #aaa;
+    display: inline-block;
+    padding: 4px 15px;
+    background-color: #fff;
+    border-radius: 4px;
+  }
+
+  .esri-color-picker .esri-hex-input {
+    display: inline-block;
+    color: #4d4d4d;
+    width: 5.6em;
+    border: 1px solid #aaa;
+    direction: ltr;
+  }
+
+  .esri-color-picker .esri-hex-input .dijitInputInner {
+    text-transform: uppercase;
+  }
+
+  .esri-color-picker .esri-hex-input .dijitInputContainer {
+    height: auto;
+  }
+
+  .esri-color-picker .esri-input-label {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .esri-color-picker .esri-swatch {
+    vertical-align: middle;
+    height: 15px;
+    width: 15px;
+    display: inline-block;
+    cursor: pointer;
+    margin: 0;
+    border-radius: 0;
+    border-color: transparent;
+    transition: background-color .25s, border-color 0.25s;
+  }
+
+  .esri-color-picker .esri-swatch-empty:before {
+    display: inline-block;
+    background-color: #f00;
+    position: absolute;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    width: 200%;
+    transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transform-origin: top left;
+    -ms-transform-origin: top left;
+    -webkit-transform-origin: top left;
+    content: "";
+    z-index: 1;
+  }
+
+  .esri-color-picker .esri-swatch-empty {
+    position: relative;
+    overflow: hidden;
+    border: solid 1px #aaa;
+    background-color: #fff;
+  }
+
+  .esri-color-picker .esri-palette-options {
+    padding: 6px 0 0;
+    position: relative;
+  }
+
+  .esri-color-picker .esri-palette-options .esri-swatch-empty {
+    margin: 0 10px 0;
+  }
+
+  .esri-color-picker .esri-palette-options .esri-palette-toggle {
+    position: absolute;
+    right: 0;
+    vertical-align: middle;
+    box-shadow: none;
+    border: none;
+    padding: 0;
+  }
+
+  .dijitRtl .esri-color-picker .esri-palette-options .esri-palette-toggle {
+    left: 0;
+    right: auto;
+  }
+
+  .esri-color-picker .esri-middle .esri-palette-options .dijit.esri-palette-toggle .dijitButtonNode {
+    background: none;
+    box-shadow: none;
+    border: none;
+    padding: 0;
+  }
+
+  .esri-color-picker .esri-palette-options .esri-palette-toggle.dijitChecked {
+    background-color: transparent;
+  }
+
+  .esri-color-picker .esri-label {
+    margin: 0 0 4px;
+  }
+
+  .esri-color-pickerLabel.esri-disabled {
+    opacity: 0.6;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+  }
+
+  .esri-color-picker .esri-swatch-preview {
+    margin: 0;
+    vertical-align: middle;
+    display: inline-block;
+    height: 25px;
+    width: 100%;
+  }
+
+  .esri-color-picker .esri-swatch-preview.esri-container {
+    position: relative;
+    left: 0;
+    right: 0;
+    display: block;
+    text-align: center;
+  }
+
+  .esri-color-picker .esri-swatch-preview .esri-swatch {
+    position: absolute;
+    cursor: auto;
+    margin: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    height: 25px;
+    width: 100%;
+  }
+
+  .esri-color-picker .esri-swatch-row {
+    font-size: 0;
+    white-space: nowrap;
+  }
+
+  .esri-color-picker .esri-swatch.esri-swatch-transparency-background {
+    background-image: url("../base/images/transparent-bg.png");
+  }
+
+  .esri-color-picker .esri-swatch.esri-selected,
+  .esri-color-picker .esri-swatch-preview .esri-swatch {
+    border: 1px solid;
+  }
+
+  .esri-color-picker .esri-transparency-slider {
+    padding-top: 5px;
+    box-sizing: content-box;
+    /* restores dijit slider's box-sizing */
+  }
+
+  .esri-color-picker .esri-swatch.esri-selected {
+    -webkit-animation: esri-color-picker-highlight-selection 0.2s ease;
+    animation: esri-color-picker-highlight-selection 0.2s ease;
+  }
+
+  .esri-color-picker .esri-header,
+  .esri-color-picker .esri-footer {
+    margin: 8px 0 10px;
+  }
+
+  .esri-color-picker .dijitRuleContainer {
+    padding: 5px;
+    color: #4d4d4d;
+  }
+
+  .esri-color-picker .esri-palette.esri-container.esri-alt .esri-palette {
+    left: -100%;
+  }
+
+  .esri-color-picker .esri-palette.esri-container {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .esri-color-picker .esri-palette {
+    left: 0;
+    width: 100%;
+    position: relative;
+    display: inline-block;
+    -webkit-transition: left 0.15s, visibility 0.1s;
+    -moz-transition: left 0.15s, visibility 0.1s;
+    -ms-transition: left 0.15s, visibility 0.1s;
+    -o-transition: left 0.15s, visibility 0.1s;
+    transition: left 0.15s, visibility 0.1s;
+  }
+
+  .dijitRtl .esri-color-picker .esri-palette {
+    left: auto;
+    right: 0;
+    -webkit-transition-property: right;
+    -moz-transition-property: right;
+    -ms-transition-property: right;
+    -o-transition-property: right;
+    transition-property: right;
+  }
+
+  .dijitRtl .esri-color-picker .esri-palette.esri-container.esri-alt .esri-palette {
+    right: -100%;
+    left: 0;
+  }
+}
+
+@if $include_ColorPicker == true {
+  @include colorPicker();
+}

@@ -1,0 +1,15 @@
+<div>
+  <div data-dojo-attach-point="_printButtonContainerNode" class="${_css.printButtonContainer}">
+    <div role="button" tabindex="0" class="${_css.button} ${_css.printButton}" data-dojo-attach-point="_printButtonNode">
+      ${_i18n.print}
+    </div>
+
+    <div role="button" tabindex="0" class="${_css.button} ${_css.arrowButton}" data-dojo-attach-point="_arrowButtonNode">
+      <div class="${_css.printArrowIcon}"></div>
+    </div>
+  </div>
+
+  <div role = "menu" class="${_css.menu} ${_css.hide}" data-dojo-attach-point="_dropdownMenuNode"></div>
+
+  <a id="printAnchor" tabindex="0" class="${_css.printAnchor} ${_css.hide}" data-dojo-attach-point="_printoutLinkNode">${_i18n.printout}</a>
+</div>

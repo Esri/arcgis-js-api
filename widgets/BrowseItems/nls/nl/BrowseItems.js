@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define({noFilterFields:"Kaartlaag ${name} heeft geen velden die kunnen worden gebruikt om te filteren.",addToViewer:"Kaartlaag toevoegen aan kaart",noItemsToDisplay:"Er zijn momenteel geen weer te geven items.",searchFor:"Zoeken naar",searching:"Zoeken",items:{organizationLabel:"Mijn Organisatie",onlineLabel:"ArcGIS Online",contentLabel:"Mijn Content",favoritesLabel:"Mijn Favorieten"},title:"Webmap selecteren",searchTitle:"Zoeken",ok:"OK",cancel:"Annuleren",placeholder:"Zoekterm invoeren",instructionsLeft:"Wat wilt u doen?",instructionsRight:"Een configureerbare app selecteren.",go:"Start",selectDetails:"SELECTEREN",configure:"Maken",close:"Sluiten",learnMoreConfigurableApps:"Meer over configureerbare apps"});

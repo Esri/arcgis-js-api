@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define(["require","exports","./gl-matrix"],function(i,t,r){var s=r.vec3d,n=function(){function i(i,t){this._origins=[],this._boxSize=i,this._maxNumOrigins=t}return i.prototype.getOrigin=function(t){for(var r,n=this._origins.length,o=!1,a=Number.MAX_VALUE,g=0;n>g;g++){var u=this._origins[g],_=u.vec3;s.subtract(t,_,h),h[0]=Math.abs(h[0]),h[1]=Math.abs(h[1]),h[2]=Math.abs(h[2]);var b=h[0]+h[1]+h[2];a>b&&(r=u,a=b,o=h[0]<this._boxSize&&h[1]<this._boxSize&&h[2]<this._boxSize)}if(!o&&(!r||null==this._maxNumOrigins||this._origins.length<this._maxNumOrigins)){var c=i.OFFSET;r={vec3:[t[0]+c,t[1]+c,t[2]+c],id:e+this._origins.length},this._origins.push(r)}return r},i.OFFSET=1.11,i}(),e="fb_",h=s.create();return n});
+define(["require","exports","./gl-matrix"],function(i,t,r){var s=r.vec3d,n=function(){function i(i,t){this._origins=[],this._boxSize=i,this._maxNumOrigins=t}return i.prototype.getOrigin=function(t){for(var r,n=this._origins.length,h=!1,o=Number.MAX_VALUE,a=0;n>a;a++){var _=this._origins[a],g=_.vec3;s.subtract(t,g,e),e[0]=Math.abs(e[0]),e[1]=Math.abs(e[1]),e[2]=Math.abs(e[2]);var u=e[0]+e[1]+e[2];o>u&&(r=_,o=u,h=e[0]<this._boxSize&&e[1]<this._boxSize&&e[2]<this._boxSize)}if(!h&&(!r||null==this._maxNumOrigins||this._origins.length<this._maxNumOrigins)){var b=i.OFFSET;r={vec3:[t[0]+b,t[1]+b,t[2]+b],id:i.ORIGIN_PREFIX+this._origins.length},this._origins.push(r)}return r},i.OFFSET=1.11,i.ORIGIN_PREFIX="fb_",i}(),e=s.create();return n});

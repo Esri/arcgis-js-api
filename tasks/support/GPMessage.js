@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define(["../../core/declare","../../core/jsonDictionary","../../core/JSONSupporter","dojo/_base/lang"],function(e,s,r){var o=s({esriJobMessageTypeInformative:"informative",esriJobMessageTypeProcessDefinition:"process-definition",esriJobMessageTypeProcessStart:"process-start",esriJobMessageTypeProcessStop:"process-stop",esriJobMessageTypeWarning:"warning",esriJobMessageTypeError:"error",esriJobMessageTypeEmpty:"empty",esriJobMessageTypeAbort:"abort"}),i=e(r,{declaredClass:"esri.tasks.support.GPMessage",description:null,type:null,_typeReader:o.fromJSON});return i});
+define(["../../core/declare","../../core/kebabDictionary","../../core/JSONSupporter","dojo/_base/lang"],function(e,s,r,o){var a=s({esriJobMessageTypeInformative:"informative",esriJobMessageTypeProcessDefinition:"process-definition",esriJobMessageTypeProcessStart:"process-start",esriJobMessageTypeProcessStop:"process-stop",esriJobMessageTypeWarning:"warning",esriJobMessageTypeError:"error",esriJobMessageTypeEmpty:"empty",esriJobMessageTypeAbort:"abort"}),i=e(r,{declaredClass:"esri.tasks.support.GPMessage",description:null,type:null,_typeReader:a.fromJSON});return i});

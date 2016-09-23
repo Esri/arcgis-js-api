@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define(["require","exports"],function(e,E){var T;!function(e){e[e.COMPUTED=0]="COMPUTED",e[e.SERVICE=1]="SERVICE",e[e.PORTAL_ITEM=2]="PORTAL_ITEM",e[e.PORTAL_DOCUMENT=3]="PORTAL_DOCUMENT",e[e.USER=4]="USER",e[e.NUM=5]="NUM"}(T||(T={})),Object.defineProperty(E,"__esModule",{value:!0}),E["default"]=T});
+define(["require","exports"],function(e,r){function n(e){switch(e){case"defaults":return c.DEFAULTS;case"service":return c.SERVICE;case"portal-item":return c.PORTAL_ITEM;case"web-scene":return c.WEB_SCENE;case"web-map":return c.WEB_MAP;case"user":return c.USER}}function E(e){switch(e){case c.DEFAULTS:return"defaults";case c.SERVICE:return"service";case c.PORTAL_ITEM:return"portal-item";case c.WEB_SCENE:return"web-scene";case c.WEB_MAP:return"web-map";case c.USER:return"user"}}function t(e){return n(e)}function a(e){return E(e)}function u(e){return n(e)}function i(e){return E(e)}!function(e){e[e.DEFAULTS=0]="DEFAULTS",e[e.COMPUTED=1]="COMPUTED",e[e.SERVICE=2]="SERVICE",e[e.PORTAL_ITEM=3]="PORTAL_ITEM",e[e.WEB_SCENE=4]="WEB_SCENE",e[e.WEB_MAP=5]="WEB_MAP",e[e.USER=6]="USER",e[e.NUM=7]="NUM"}(r.OriginId||(r.OriginId={}));var c=r.OriginId;r.nameToId=n,r.idToName=E,r.readableNameToId=t,r.idToReadableName=a,r.writableNameToId=u,r.idToWritableName=i});

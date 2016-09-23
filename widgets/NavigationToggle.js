@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 /**
  * Provides two simple buttons for toggling the
@@ -112,19 +112,16 @@ function (
    * @param {Object} [properties] - See the [properties](#properties) for a list of all the properties
    *                              that may be passed into the constructor.
    * @param {string | Node} [srcNodeRef] - Reference or ID of the HTML node in which this widget renders.
+   *
+   * @example
+   * // typical usage
+   * var navigationToggle = new NavigationToggle({
+   *   view: view
+   * });
    */
   return Widget.createSubclass([_TemplatedMixin],
   /** @lends module:esri/widgets/NavigationToggle.prototype */
   {
-
-    properties: {
-      view: {
-        dependsOn: ["viewModel.view"]
-      },
-      viewModel: {
-        type: NavigationToggleViewModel
-      }
-    },
 
     declaredClass: "esri.widgets.NavigationToggle",
 
@@ -164,72 +161,81 @@ function (
     //
     //--------------------------------------------------------------------------
 
-    //----------------------------------
-    //  layout
-    //----------------------------------
+    properties: /** @lends module:esri/widgets/NavigationToggle.prototype */ {
 
-    /**
-     * Sets the layout of the widget to either `horizontal` or `vertical`. See the
-     * table below for a list of possible values.
-     *
-     * Possible Value | Example
-     * ---------------|--------
-     * vertical | ![navigation-toggle](../assets/img/apiref/widgets/navigation-toggle.png)
-     * horizontal | ![navigation-toggle-horizontal](../assets/img/apiref/widgets/navigation-toggle-horizontal.png)
-     *
-     * @type {string}
-     * @default vertical
-     *
-     * @example
-     * // creates a new instance of the NavigationToggle widget
-     * var navigationToggle = new NavigationToggle({
+      //----------------------------------
+      //  layout
+      //----------------------------------
+
+      /**
+       * Sets the layout of the widget to either `horizontal` or `vertical`. See the
+       * table below for a list of possible values.
+       *
+       * Possible Value | Example
+       * ---------------|--------
+       * vertical | ![navigation-toggle](../assets/img/apiref/widgets/navigation-toggle.png)
+       * horizontal | ![navigation-toggle-horizontal](../assets/img/apiref/widgets/navigation-toggle-horizontal.png)
+       *
+       * @type {string}
+       * @default vertical
+       *
+       * @example
+       * // creates a new instance of the NavigationToggle widget
+       * var navigationToggle = new NavigationToggle({
      *   view: view,
      *   layout: "horizontal"  // makes the layout horizontal
      * });
-     */
-    layout: LAYOUT_MODES.vertical,
+       */
+      layout: {
+        value: LAYOUT_MODES.vertical,
 
-    _setLayoutAttr: function (value) {
-      if (value !== LAYOUT_MODES.horizontal) {
-        value = LAYOUT_MODES.vertical;
+        set: function(value) {
+          if (value !== LAYOUT_MODES.horizontal) {
+            value = LAYOUT_MODES.vertical;
+          }
+
+          domClass.toggle(this.domNode, CSS.isLayoutHorizontal, value === LAYOUT_MODES.horizontal);
+
+          this._set("layout", value);
+        }
+      },
+
+      //----------------------------------
+      //  view
+      //----------------------------------
+
+      /**
+       * A reference to the {@link module:esri/views/Scene SceneView}. Set this to link the widget to a specific view.
+       *
+       * @name view
+       * @instance
+       *
+       * @type {module:esri/views/SceneView}
+       */
+      view: {
+        aliasOf: "viewModel.view"
+      },
+
+      //----------------------------------
+      //  viewModel
+      //----------------------------------
+
+      /**
+       * The view model for this widget. This is a class that contains all the logic
+       * (properties and methods) that controls this widget's behavior. See the
+       * {@link module:esri/widgets/NavigationToggle/NavigationToggleViewModel} class to access
+       * all properties and methods on the widget.
+       *
+       * @name viewModel
+       * @instance
+       * @type {module:esri/widgets/NavigationToggle/NavigationToggleViewModel}
+       * @autocast
+       */
+      viewModel: {
+        type: NavigationToggleViewModel
       }
 
-      domClass.toggle(this.domNode, CSS.isLayoutHorizontal, value === LAYOUT_MODES.horizontal);
-
-      this._set("layout", value);
     },
-
-    //----------------------------------
-    //  view
-    //----------------------------------
-
-    /**
-     * A reference to the {@link module:esri/views/Scene SceneView}. Set this to link the widget to a specific view.
-     *
-     * @name view
-     * @instance
-     *
-     * @type {module:esri/views/SceneView}
-     */
-    _getViewAttr: viewModelWiring.createGetterDelegate("view"),
-
-    _setViewAttr: viewModelWiring.createSetterDelegate("view"),
-
-    //----------------------------------
-    //  viewModel
-    //----------------------------------
-
-    /**
-     * The view model for this widget. This is a class that contains all the logic
-     * (properties and methods) that controls this widget's behavior. See the
-     * {@link module:esri/widgets/NavigationToggle/NavigationToggleViewModel} class to access
-     * all properties and methods on the widget.
-     *
-     * @name viewModel
-     * @instance
-     * @type {module:esri/widgets/NavigationToggle/NavigationToggleViewModel}
-     * @autocast
-     */
 
     //--------------------------------------------------------------------------
     //

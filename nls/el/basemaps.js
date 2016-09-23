@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define({streets:"Δρόμοι",satellite:"Δορυφορικές εικόνες",hybrid:"Δορυφορικές με ετικέτες",terrain:"Έδαφος με ετικέτες",topo:"Τοπογραφικός",gray:"Ανοικτός γκρίζος καμβάς","dark-gray":"Σκούρος γκρι καμβάς",oceans:"Ωκεανοί","national-geographic":"National Geographic",osm:"OpenStreetMap","streets-night-vector":"World Street Map (Night)","streets-relief-vector":"World Street Map (with Relief)","streets-navigation-vector":"World Navigation Map"});

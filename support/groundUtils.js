@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define(["require","exports","../core/accessorSupport/ensureType","../Ground","../layers/ElevationLayer"],function(e,r,n,i,o){function a(e){var r;if("string"==typeof e)if(e in l){var a=l[e],t=new o({id:a.id,url:a.url});r=new i({layers:[t]})}else console.warn("Unable to find ground definition for: "+e+'. Try "world-elevation"');else r=n["default"](i,e);return r}var l={"world-elevation":{id:"worldElevation",url:"//elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer"}};r.ensureType=a});
+define(["require","exports","../core/accessorSupport/ensureType","../Ground","../layers/ElevationLayer"],function(e,r,n,o,i){function a(e){var a;if("string"==typeof e)if(e in r.groundElevationLayers){var l=r.groundElevationLayers[e],t=new i({id:l.id,url:l.url});a=new o({layers:[t]})}else console.warn("Unable to find ground definition for: "+e+'. Try "world-elevation"');else a=n["default"](o,e);return a}r.groundElevationLayers={"world-elevation":{id:"worldElevation",url:"//elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer"}},r.ensureType=a});

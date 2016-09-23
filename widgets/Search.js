@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 /**
  * The Search widget provides a way to perform search operations on {@link module:esri/tasks/Locator locator service(s)}
@@ -64,8 +64,8 @@
  * @see [Search.js (widget view)]({{ JSAPI_BOWER_URL }}/widgets/Search.js)
  * @see [Search.css]({{ JSAPI_BOWER_URL }}/widgets/Search/css/Search.css)
  * @see [Search.scss]({{ JSAPI_BOWER_URL }}/widgets/Search/css/Search.scss)
- * @see [Sample - Search widget (2D)](../sample-code/widgets-search-2d/index.html)
  * @see [Sample - Search widget (3D)](../sample-code/widgets-search-3d/index.html)
+ * @see [Sample - Search widget with multiple sources](../sample-code/widgets-search-multiplesource/index.html)
  * @see module:esri/tasks/Locator
  * @see module:esri/layers/FeatureLayer
  * @see module:esri/widgets/Search/SearchViewModel
@@ -138,7 +138,7 @@
  * @example
  * var searchWidget = new Search();
  *
- * searchWidget.on("blur", function(evt){
+ * searchWidget.on("blur", function(event){
  *   console.log("Focus removed from search input textbox.");
  * });
  */
@@ -152,7 +152,7 @@
  * @example
  * var searchWidget = new Search();
  *
- * searchWidget.on("focus", function(evt){
+ * searchWidget.on("focus", function(event){
  *   console.log("Search input textbox is focused.");
  * });
  */
@@ -165,36 +165,36 @@
  * @example
  * var searchWidget = new Search();
  *
- * searchWidget.on("search-clear", function(evt){
+ * searchWidget.on("search-clear", function(event){
  *   console.log("Search input textbox was cleared.");
  * });
  */
 
- /**
-  * Fires when the [search()](#search) method starts.
-  *
-  * @event module:esri/widgets/Search#search-start
-  *
-  * @example
-  * var searchWidget = new Search();
-  *
-  * searchWidget.viewModel.on("search-start", function(evt){
-  *   console.log("Search started.");
-  * });
-  */
+/**
+* Fires when the [search()](#search) method starts.
+*
+* @event module:esri/widgets/Search#search-start
+*
+* @example
+* var searchWidget = new Search();
+*
+* searchWidget.on("search-start", function(event){
+*   console.log("Search started.");
+* });
+*/
 
-  /**
-   * Fires when the [suggest()](#suggest) method starts.
-   *
-   * @event module:esri/widgets/Search#suggest-start
-   *
-   * @example
-   * var searchWidget = new Search();
-   *
-   * searchWidget.viewModel.on("suggest-start", function(evt){
-   *   console.log("suggest-error started.");
-   * });
-   */
+/**
+ * Fires when the [suggest()](#suggest) method starts.
+ *
+ * @event module:esri/widgets/Search#suggest-start
+ *
+ * @example
+ * var searchWidget = new Search();
+ *
+ * searchWidget.on("suggest-start", function(event){
+ *   console.log("suggest-start", event);
+ * });
+ */
 
 /**
  * Fires when the widget has fully loaded.
@@ -204,7 +204,7 @@
  * @example
  * var searchWidget = new Search();
  *
- * searchWidget.on("load", function(evt){
+ * searchWidget.on("load", function(event){
  *   console.log("Search widget has loaded!");
  * });
  */
@@ -213,7 +213,7 @@
  * Fires when the [search()](#search) method is called and returns its results.
  *
  * @event module:esri/widgets/Search#search-complete
- * @property {number} activeSourceIndex - The [activeSourceIndex](#activeSourceIndex) of the search result.
+ * @property {number} activeSourceIndex - The index of the source from which the search result was obtained.
  * @property {Error[]} errors - An array of error objects returned from the search results.
  * @property {number} numResults - The number of results from the search.
  * @property {string} searchTerm - The searched expression.
@@ -229,9 +229,9 @@
  * @example
  * var searchWidget = new Search();
  *
- * searchWidget.on("search-complete", function(evt){
- *   // The results are stored in the evt Object[]
- *   console.log("Results of the search: ", evt);
+ * searchWidget.on("search-complete", function(event){
+ *   // The results are stored in the event Object[]
+ *   console.log("Results of the search: ", event);
  * });
  */
 
@@ -250,8 +250,8 @@
  * @example
  * var searchWidget = new Search();
  *
- * searchWidget.on("select-result", function(evt){
- *   console.log("The selected search result: ", evt);
+ * searchWidget.on("select-result", function(event){
+ *   console.log("The selected search result: ", event);
  * });
  */
 
@@ -259,7 +259,7 @@
  * Fires when the [suggest](#suggest) method is called and returns its results.
  *
  * @event module:esri/widgets/Search#suggest-complete
- * @property {number} activeSourceIndex - The [activeSourceIndex](#activeSourceIndex) of the suggest result.
+ * @property {number} activeSourceIndex - The index of the source from which suggestions are obtained. This value is `-1` when all sources are selected.
  * @property {Error[]} errors - An array of error objects returned from the suggest results.
  * @property {number} numResults - The number of suggest results.
  * @property {string} searchTerm - The search expression used for the suggest.
@@ -278,9 +278,9 @@
  * @example
  * var searchWidget = new Search();
  *
- * searchWidget.on("suggest-complete", function(evt){
- *   // The results are stored in the evt Object[]
- *   console.log("Results of suggest: ", evt);
+ * searchWidget.on("suggest-complete", function(event){
+ *   // The results are stored in the event Object[]
+ *   console.log("Results of suggest: ", event);
  * });
  */
 define([
@@ -369,83 +369,22 @@ function(
 
   /**
    * @extends module:esri/widgets/Widget
+   * @mixes module:esri/core/Evented
    * @constructor module:esri/widgets/Search
    * @param {Object} [properties] - See the [properties](#properties) for a list of all the properties
    *                              that may be passed into the constructor.
    * @param {string | Node} [srcNodeRef] - Reference or ID of the HTML element in which this widget renders.
+   *
+   * @example
+   * // typical usage
+   * var search = new Search({
+   *   view: view,
+   *   sources: [ ... ]
+   * });
    */
   var Search = Widget.createSubclass([_TemplatedMixin, _FocusMixin],
     /** @lends module:esri/widgets/Search.prototype */
     {
-
-      properties: {
-        activeSource: {
-          dependsOn: ["viewModel.activeSource"]
-        },
-        activeSourceIndex: {
-          dependsOn: ["viewModel.activeSourceIndex"]
-        },
-        allPlaceholder: {
-          dependsOn: ["viewModel.allPlaceholder"]
-        },
-        autoNavigate: {
-          dependsOn: ["viewModel.autoNavigate"]
-        },
-        autoSelect: {
-          dependsOn: ["viewModel.autoSelect"]
-        },
-        defaultSource: {
-          dependsOn: ["viewModel.defaultSource"]
-        },
-        resultGraphicEnabled: {
-          dependsOn: ["viewModel.resultGraphicEnabled"]
-        },
-        resultGraphic: {
-          dependsOn: ["viewModel.resultGraphic"]
-        },
-        locationToAddressDistance: {
-          dependsOn: ["viewModel.locationToAddressDistance"]
-        },
-        minSuggestCharacters: {
-          dependsOn: ["viewModel.minSuggestCharacters"]
-        },
-        popupEnabled: {
-          dependsOn: ["viewModel.popupEnabled"]
-        },
-        popupTemplate: {
-          dependsOn: ["viewModel.popupTemplate"]
-        },
-        results: {
-          dependsOn: ["viewModel.results"]
-        },
-        searchAllEnabled: {
-          dependsOn: ["viewModel.searchAllEnabled"]
-        },
-        selectedResult: {
-          dependsOn: ["viewModel.selectedResult"]
-        },
-        popupOpenOnSelect: {
-          dependsOn: ["viewModel.popupOpenOnSelect"]
-        },
-        searchTerm: {
-          dependsOn: ["viewModel.searchTerm"]
-        },
-        sources: {
-          dependsOn: ["viewModel.sources"]
-        },
-        suggestions: {
-          dependsOn: ["viewModel.suggestions"]
-        },
-        suggestionsEnabled: {
-          dependsOn: ["viewModel.suggestionsEnabled"]
-        },
-        view: {
-          dependsOn: ["viewModel.view"]
-        },
-        viewModel: {
-          type: SearchViewModel
-        }
-      },
 
       declaredClass: "esri.widgets.Search",
 
@@ -606,6 +545,7 @@ function(
           "search-complete",
           "search-start",
           "select-result",
+          "suggest-start",
           "suggest-complete"
         ]);
       },
@@ -626,515 +566,581 @@ function(
       //
       //--------------------------------------------------------------------------
 
-      //----------------------------------
-      //  activeSource
-      //----------------------------------
+      properties: /** @lends module:esri/widgets/Search.prototype */ {
 
-      /**
-       * The [source](#sources) object currently selected. Can be either a
-       * {@link module:esri/layers/FeatureLayer feature layer} or a {@link module:esri/tasks/Locator locator task}.
-       *
-       * @name activeSource
-       * @instance
-       *
-       * @type {module:esri/layers/FeatureLayer | module:esri/tasks/Locator}
-       * @readonly
-       */
-      _getActiveSourceAttr: viewModelWiring.createGetterDelegate("activeSource"),
+        //----------------------------------
+        //  activeSource
+        //----------------------------------
 
-      _setActiveSourceAttr: viewModelWiring.createSetterDelegate("activeSource"),
+        /**
+         * The [source](#sources) object currently selected. Can be either a
+         * {@link module:esri/layers/FeatureLayer feature layer} or a {@link module:esri/tasks/Locator locator task}.
+         *
+         * @name activeSource
+         * @instance
+         *
+         * @type {module:esri/layers/FeatureLayer | module:esri/tasks/Locator}
+         * @readonly
+         */
+        activeSource: {
+          aliasOf: "viewModel.activeSource"
+        },
 
-      //----------------------------------
-      //  activeSourceIndex
-      //----------------------------------
+        //----------------------------------
+        //  activeSourceIndex
+        //----------------------------------
 
-      /**
-       * The currently selected source. When [sources](#sources) is set, activeSourceIndex will be set to `0`
-       * if the sources length is 1. Otherwise, it will be set to "all".
-       *
-       * @name activeSourceIndex
-       * @instance
-       *
-       * @type {number}
-       * @default 0
-       */
-      _getActiveSourceIndexAttr: viewModelWiring.createGetterDelegate("activeSourceIndex"),
+        /**
+         * The selected source's index. This value is `-1` when all sources are selected.
+         *
+         * @name activeSourceIndex
+         * @instance
+         *
+         * @type {number}
+         * @default 0
+         */
+        activeSourceIndex: {
+          aliasOf: "viewModel.activeSourceIndex"
+        },
 
-      _setActiveSourceIndexAttr: viewModelWiring.createSetterDelegate("activeSourceIndex"),
+        //----------------------------------
+        //  allPlaceholder
+        //----------------------------------
 
-      //----------------------------------
-      //  allPlaceholder
-      //----------------------------------
+        /**
+         * String value used as a hint for input text when searching on multiple sources. See
+         * the image below to view the location and style of this text in the context of the widget.
+         *
+         * ![search-allPlaceholder](../assets/img/apiref/widgets/search-allPlaceholder.png)
+         *
+         * @name allPlaceholder
+         * @instance
+         *
+         * @type {string}
+         * @default "Find address or place"
+         */
+        allPlaceholder: {
+          aliasOf: "viewModel.allPlaceholder"
+        },
 
-      /**
-       * String value used as a hint for input text when searching on multiple sources. See
-       * the image below to view the location and style of this text in the context of the widget.
-       *
-       * ![search-allPlaceholder](../assets/img/apiref/widgets/search-allPlaceholder.png)
-       *
-       * @name allPlaceholder
-       * @instance
-       *
-       * @type {string}
-       * @default "Find address or place"
-       */
-      _getAllPlaceholderAttr: viewModelWiring.createGetterDelegate("allPlaceholder"),
+        //----------------------------------
+        //  autoNavigate
+        //----------------------------------
 
-      _setAllPlaceholderAttr: viewModelWiring.createSetterDelegate("allPlaceholder"),
+        /**
+         * Indicates whether to automatically navigate to the selected result.
+         *
+         * @type {boolean}
+         * @default
+         * @ignore
+         */
+        autoNavigate: {
+          aliasOf: "viewModel.autoNavigate"
+        },
 
-      //----------------------------------
-      //  autoSelect
-      //----------------------------------
+        //----------------------------------
+        //  autoSelect
+        //----------------------------------
 
-      /**
-       * Indicates whether to automatically select and zoom to the first geocoded result. If `false`, the
-       * [findAddressCandidates](https://developers.arcgis.com/rest/geocode/api-reference/geocoding-find-address-candidates.htm)
-       * operation will still geocode the input string, but the top result will not be selected. To work with the
-       * geocoded results, you can set up a [search-complete](#event:search-complete) event handler and get the results
-       * through the event object.
-       *
-       * @name autoSelect
-       * @instance
-       *
-       * @type {boolean}
-       * @default true
-       */
-      _getAutoSelectAttr: viewModelWiring.createGetterDelegate("autoSelect"),
+        /**
+         * Indicates whether to automatically select and zoom to the first geocoded result. If `false`, the
+         * [findAddressCandidates](https://developers.arcgis.com/rest/geocode/api-reference/geocoding-find-address-candidates.htm)
+         * operation will still geocode the input string, but the top result will not be selected. To work with the
+         * geocoded results, you can set up a [search-complete](#event:search-complete) event handler and get the results
+         * through the event object.
+         *
+         * @name autoSelect
+         * @instance
+         *
+         * @type {boolean}
+         * @default true
+         */
+        autoSelect: {
+          aliasOf: "viewModel.autoSelect"
+        },
 
-      _setAutoSelectAttr: viewModelWiring.createSetterDelegate("autoSelect"),
+        //----------------------------------
+        //  defaultSource
+        //----------------------------------
 
-      //----------------------------------
-      //  defaultSource
-      //----------------------------------
+        /**
+         * The default source used for the Search widget. These can range from
+         * a [Locator Source](#~locatorSource) to a
+         * [Feature Layer](#~featureLayerSource).
+         *
+         * @name defaultSource
+         * @instance
+         *
+         * @type {Object}
+         * @readonly
+         */
+        defaultSource: {
+          aliasOf: "viewModel.defaultSource"
+        },
 
-      /**
-       * The default source used for the Search widget. These can range from
-       * a [Locator Source](#~locatorSource) to a
-       * [Feature Layer](#~featureLayerSource).
+        //----------------------------------
+        //  locationToAddressDistance
+        //----------------------------------
 
-       *
-       * @name defaultSource
-       * @instance
-       *
-       * @type {Object}
-       * @readonly
-       */
-      _getDefaultSourceAttr: viewModelWiring.createGetterDelegate("defaultSource"),
+        /**
+         * The default distance in meters used to reverse geocode (if not specified by source).
+         *
+         * @type {number}
+         * @default
+         * @ignore
+         */
+        locationToAddressDistance: {
+          aliasOf: "viewModel.locationToAddressDistance"
+        },
 
-      _setDefaultSourceAttr: viewModelWiring.createSetterDelegate("defaultSource"),
+        //----------------------------------
+        //  maxResults
+        //----------------------------------
 
-      //----------------------------------
-      //  resultGraphic
-      //----------------------------------
+        /**
+         * The maximum number of results returned by the widget if not specified by the source.
+         *
+         * @name maxResults
+         * @instance
+         *
+         * @type {number}
+         * @default 6
+         */
+        maxResults: {
+          aliasOf: "viewModel.maxResults"
+        },
 
-      /**
-       * Indicates the highlighted location graphic.
-       *
-       * @name resultGraphic
-       * @instance
-       *
-       * @type {module:esri/Graphic}
-       * @readonly
-       */
-      _getResultGraphicAttr: viewModelWiring.createGetterDelegate("resultGraphic"),
+        //----------------------------------
+        //  maxSuggestions
+        //----------------------------------
 
-      _setResultGraphicAttr: viewModelWiring.createSetterDelegate("resultGraphic"),
+        /**
+         * The maximum number of suggestions returned by the widget if not specified by the source.
+         *
+         * If working with the default
+         * [ArcGIS Online Geocoding service](https://developers.arcgis.com/rest/geocode/api-reference/overview-world-geocoding-service.htm),
+         * the default remains at `5`.
+         *
+         * @name maxSuggestions
+         * @instance
+         *
+         * @type {number}
+         * @default 6
+         */
+        maxSuggestions: {
+          aliasOf: "viewModel.maxSuggestions"
+        },
 
-      //----------------------------------
-      //  maxResults
-      //----------------------------------
+        //----------------------------------
+        //  minSuggestCharacters
+        //----------------------------------
 
-      /**
-       * The maximum number of results returned by the widget if not specified by the source.
-       *
-       * @name maxResults
-       * @instance
-       *
-       * @type {number}
-       * @default 6
-       */
-      _getMaxResultsAttr: viewModelWiring.createGetterDelegate("maxResults"),
+        /**
+         * The minimum number of characters needed for the search if not specified by the source.
+         *
+         * @name minSuggestCharacters
+         * @instance
+         *
+         * @type {number}
+         * @default 1
+         */
+        minSuggestCharacters: {
+          aliasOf: "viewModel.minSuggestCharacters"
+        },
 
-      _setMaxResultsAttr: viewModelWiring.createSetterDelegate("maxResults"),
+        //----------------------------------
+        //  popupEnabled
+        //----------------------------------
 
-      //----------------------------------
-      //  maxSuggestions
-      //----------------------------------
+        /**
+         * Indicates whether to display the {@link module:esri/widgets/Popup} on feature click. The graphic can
+         * be clicked to display a {@link module:esri/widgets/Popup}. This is not the same as using
+         * [popupOpenOnSelect](#popupOpenOnSelect) which opens the {@link module:esri/widgets/Popup} any time a
+         * search is performed.
+         *
+         * It is possible to have `popupOpenOnSelect=false` but `popupEnabled=true` so the
+         * {@link module:esri/widgets/Popup}
+         * can be opened by someone but it is not opened by default.
+         *
+         * @name popupEnabled
+         * @instance
+         *
+         * @type {boolean}
+         * @default true
+         */
+        popupEnabled: {
+          aliasOf: "viewModel.popupEnabled"
+        },
 
-      /**
-       * The maximum number of suggestions returned by the widget if not specified by the source.
-       *
-       * If working with the default
-       * [ArcGIS Online Geocoding service](https://developers.arcgis.com/rest/geocode/api-reference/overview-world-geocoding-service.htm),
-       * the default remains at `5`.
-       *
-       * @name maxSuggestions
-       * @instance
-       *
-       * @type {number}
-       * @default 6
-       */
-      _getMaxSuggestionsAttr: viewModelWiring.createGetterDelegate("maxSuggestions"),
+        //----------------------------------
+        //  popupOpenOnSelect
+        //----------------------------------
 
-      _setMaxSuggestionsAttr: viewModelWiring.createSetterDelegate("maxSuggestions"),
+        /**
+         * Indicates whether to show the {@link module:esri/widgets/Popup} when a result is selected.
+         * Using `popupOpenOnSelect` opens the {@link module:esri/widgets/Popup} any time a search is performed.
+         *
+         * It is possible to have `popupOpenOnSelect=false` but `popupEnabled=true` so the {@link module:esri/widgets/Popup}
+         * can be opened by someone but not opened by default.
+         *
+         * @name popupOpenOnSelect
+         * @instance
+         *
+         * @type {boolean}
+         * @default true
+         */
+        popupOpenOnSelect: {
+          aliasOf: "viewModel.popupOpenOnSelect"
+        },
 
-      //----------------------------------
-      //  minSuggestCharacters
-      //----------------------------------
+        //----------------------------------
+        //  popupTemplate
+        //----------------------------------
 
-      /**
-       * The minimum number of characters needed for the search if not specified by the source.
-       *
-       * @name minSuggestCharacters
-       * @instance
-       *
-       * @type {number}
-       * @default 1
-       */
-      _getMinSuggestCharactersAttr: viewModelWiring.createGetterDelegate("minSuggestCharacters"),
+        /**
+         * A customized PopupTemplate for the selected feature.
+         * Note that specifying a wildcard {*} for the popupTemplate will return all fields in addition to search-specific fields.
+         *
+         * @name popupTemplate
+         * @instance
+         *
+         * @type {module:esri/PopupTemplate}
+         */
+        popupTemplate: {
+          aliasOf: "viewModel.popupTemplate"
+        },
 
-      _setMinSuggestCharactersAttr: viewModelWiring.createSetterDelegate("minSuggestCharacters"),
+        //----------------------------------
+        //  resultGraphic
+        //----------------------------------
 
-      //----------------------------------
-      //  popupEnabled
-      //----------------------------------
+        /**
+         * Indicates the highlighted location graphic.
+         *
+         * @name resultGraphic
+         * @instance
+         *
+         * @type {module:esri/Graphic}
+         * @readonly
+         */
+        resultGraphic: {
+          aliasOf: "viewModel.resultGraphic"
+        },
 
-      /**
-       * Indicates whether to display the {@link module:esri/widgets/Popup} on feature click. The graphic can
-       * be clicked to display a {@link module:esri/widgets/Popup}. This is not the same as using
-       * [popupOpenOnSelect](#popupOpenOnSelect) which opens the {@link module:esri/widgets/Popup} any time a
-       * search is performed.
-       *
-       * It is possible to have `popupOpenOnSelect=false` but `popupEnabled=true` so the
-       * {@link module:esri/widgets/Popup}
-       * can be opened by someone but it is not opened by default.
-       *
-       * @name popupEnabled
-       * @instance
-       *
-       * @type {boolean}
-       * @default true
-       */
-      _getPopupEnabledAttr: viewModelWiring.createGetterDelegate("popupEnabled"),
+        //----------------------------------
+        //  resultGraphicEnabled
+        //----------------------------------
 
-      _setPopupEnabledAttr: viewModelWiring.createSetterDelegate("popupEnabled"),
+        /**
+         * Show the selected feature on the map using a default symbol determined by the source's geometry type.
+         *
+         * @type {boolean}
+         * @default
+         * @ignore
+         */
+        resultGraphicEnabled: {
+          aliasOf: "viewModel.resultGraphicEnabled"
+        },
 
-      //----------------------------------
-      //  popupTemplate
-      //----------------------------------
+        //----------------------------------
+        //  results
+        //----------------------------------
 
-      /**
-       * A customized PopupTemplate for the selected feature.
-       * Note that specifying a wildcard {*} for the popupTemplate will return all fields in addition to search-specific fields.
-       *
-       * @name popupTemplate
-       * @instance
-       *
-       * @type {module:esri/PopupTemplate}
-       */
-      _getPopupTemplateAttr: viewModelWiring.createGetterDelegate("popupTemplate"),
+        /**
+         * An array of current results from the search.
+         *
+         * @name results
+         * @instance
+         *
+         * @type {Object[]}
+         */
+        results: {
+          aliasOf: "viewModel.results"
+        },
 
-      _setPopupTemplateAttr: viewModelWiring.createSetterDelegate("popupTemplate"),
+        //----------------------------------
+        //  searchAllEnabled
+        //----------------------------------
 
-      //----------------------------------
-      //  searchAllEnabled
-      //----------------------------------
+        /**
+         * Indicates whether to display the option to search all sources. When `true`, the "All" option
+         * is displayed by default:
+         *
+         * ![search-searchAllEnabled-true](../assets/img/apiref/widgets/search-enableSearchingAll-true.png)
+         *
+         * When `false`, no option to search all sources at once is available:
+         *
+         * ![search-searchAllEnabled-false](../assets/img/apiref/widgets/search-enableSearchingAll-false.png)
+         *
+         * @name searchAllEnabled
+         * @instance
+         *
+         * @type {boolean}
+         * @default true
+         */
+        searchAllEnabled: {
+          aliasOf: "viewModel.searchAllEnabled"
+        },
 
-      /**
-       * Indicates whether to display the option to search all sources. When `true`, the "All" option
-       * is displayed by default:
-       *
-       * ![search-searchAllEnabled-true](../assets/img/apiref/widgets/search-enableSearchingAll-true.png)
-       *
-       * When `false`, no option to search all sources at once is available:
-       *
-       * ![search-searchAllEnabled-false](../assets/img/apiref/widgets/search-enableSearchingAll-false.png)
-       *
-       * @name searchAllEnabled
-       * @instance
-       *
-       * @type {boolean}
-       * @default true
-       */
-      _getSearchAllEnabledAttr: viewModelWiring.createGetterDelegate("searchAllEnabled"),
+        //----------------------------------
+        //  searchTerm
+        //----------------------------------
 
-      _setSearchAllEnabledAttr: viewModelWiring.createSetterDelegate("searchAllEnabled"),
+        /**
+         * The value of the search box input text string.
+         *
+         * @name searchTerm
+         * @instance
+         *
+         * @type {string}
+         */
+        searchTerm: {
+          aliasOf: "viewModel.searchTerm"
+        },
 
-      //----------------------------------
-      //  results
-      //----------------------------------
+        //----------------------------------
+        //  selectedResult
+        //----------------------------------
 
-      /**
-       * An array of current results from the search.
-       *
-       * @name results
-       * @instance
-       *
-       * @type {Object[]}
-       */
-      _getResultsAttr: viewModelWiring.createGetterDelegate("results"),
+        /**
+         * The result selected from a search.
+         *
+         * @name selectedResult
+         * @instance
+         *
+         * @type {Object}
+         *
+         * @see [Event: select-result](#event:select-result)
+         * @see [select()](#select)
+         */
+        selectedResult: {
+          aliasOf: "viewModel.selectedResult"
+        },
 
-      _setResultsAttr: viewModelWiring.createSetterDelegate("results"),
+        //----------------------------------
+        //  sources
+        //----------------------------------
 
-      //----------------------------------
-      //  selectedResult
-      //----------------------------------
+        /**
+         * This property defines which services will be used for the search. It is a collection of objects, each of which is called a `source`
+         * and may be configured using the object specifications below and the properties listed in the
+         * [Locator Source object specification table](#~locatorSource) or the
+         * [Feature Layer source object specification table](#~featureLayerSource).
+         *
+         * Two types of sources may be searched:
+         *
+         * * {@link module:esri/layers/FeatureLayer **FeatureLayers**} - see the
+         * [FeatureLayer Source object specification table](#~featureLayerSource)
+         * for more details on how to define FeatureLayer source objects.
+         * * {@link module:esri/tasks/Locator **Locators**} - see the
+         * [Locator Source object specification table](#~locatorSource)
+         * for more details on how to define Locator source objects.
+         *
+         * Any combination of one or more geocoding and feature layer sources may be used together in the same instance of the Search widget.
+         * The following properties may be set on either Locator or FeatureLayer source objects:
+         *
+         * @property {boolean} autoNavigate - Indicates whether to automatically navigate to the selected result once selected. The default is `true`.
+         * @property {boolean} resultGraphicEnabled - Indicates whether to show a graphic on the map for the selected source using the [resultSymbol](#resultSymbol).
+         *                                       The default value is `true`.
+         * @property {module:esri/symbols/Symbol} resultSymbol - The symbol used for the [resultGraphic](#resultGraphic).
+         * @property {boolean} popupEnabled - Indicates whether to display a {@link module:esri/widgets/Popup Popup} when a selected result is clicked.
+         *                                  The default is `true`.
+         * @property {boolean} suggestionsEnabled - Indicates whether to display suggestions as the user enters input text in the widget. The default value is `true`.
+         * @property {module:esri/widgets/Popup} popup - The Popup instance used for the selected result.
+         * @property {number} maxResults - Indicates the maximum number of search results to return. The default value is `6`.
+         * @property {number} maxSuggestions - Indicates the maximum number of suggestions to return for the widget's input. The default value is `6`.
+         * @property {number} minSuggestCharacters - Indicates the minimum number of characters required before querying for a suggestion. The default value is `1`.
+         * @property {string} name - The name of the source for display.
+         * @property {string[]} outFields - Specifies the fields returned with the search results.
+         * @property {string} placeholder - Used as a hint for the source input text.
+         * @property {string} prefix - Specify this to prefix the input for the search text.
+         * @property {module:esri/geometry/Extent[]} searchExtent - Set this to constrain the search results to an extent or array of Extents.
+         * @property {boolean} popupOpenOnSelect - Indicates whether to show the {@link module:esri/widgets/Popup Popup} when a result is selected.
+         *                                          The default value is `true`.
+         * @property {string} suffix - Specify this to suffix the input for the search value.
+         * @property {boolean} withinViewEnabled - Indicates whether to constrain the search results to the view's extent.
+         * @property {number} zoomScale - Applicable to the specified source. If the result does not have an associated extent, specify this number to use as the zoom scale for the result.
+         *
+         * @name sources
+         * @instance
+         *
+         * @type {module:esri/core/Collection}
+         *
+         * @example
+         * // Default sources[] when sources is not specified
+         * [
+         *   {
+         *     locator: new Locator("//geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"),
+         *     singleLineFieldName: "SingleLine",
+         *     outFields: ["Addr_type"],
+         *     name: i18n.esriLocatorName,
+         *     localSearchOptions: {
+         *       minScale: 300000,
+         *       distance: 50000
+         *     },
+         *     placeholder: i18n.placeholder,
+         *     resultSymbol: new PictureMarkerSymbol({
+         *        url: this.basePath + "/images/search-symbol-32.png",
+         *        size: 24,
+         *        width: 24,
+         *        height: 24,
+         *        xoffset: 0,
+         *        yoffset: 0
+         *    })
+         *   }
+         * ]
+         *
+         * @example
+         * // Example of multiple sources[]
+         * var sources = [
+         * {
+         *   locator: ,
+         *   singleLineFieldName: "SingleLine",
+         *   name: "Custom Geocoding Service",
+         *   localSearchOptions: {
+         *     minScale: 300000,
+         *     distance: 50000
+         *   },
+         *   placeholder: "Search Geocoder",
+         *   maxResults: 3,
+         *   maxSuggestions: 6,
+         *   suggestionsEnabled: false,
+         *   minSuggestCharacters: 0
+         * }, {
+         *   featureLayer: new FeatureLayer({
+         *     url: "https://services.arcgis.com/DO4gTjwJVIJ7O9Ca/arcgis/rest/services/GeoForm_Survey_v11_live/FeatureServer/0",
+         *     outFields: ["*"]
+         *   }),
+         *   searchFields: ["Email", "URL"],
+         *   displayField: "Email",
+         *   exactMatch: false,
+         *   outFields: ["*"],
+         *   name: "Point FS",
+         *   placeholder: "example: esri",
+         *   maxResults: 6,
+         *   maxSuggestions: 6,
+         *   suggestionsEnabled: true,
+         *   minSuggestCharacters: 0
+         * },
+         * {
+         *   featureLayer: new FeatureLayer({
+         *     outFields: ["*"]
+         *   });
+         *   placeholder: "esri",
+         *   name: "A FeatureLayer",
+         *   prefix: "",
+         *   suffix: "",
+         *   maxResults: 1,
+         *   maxSuggestions: 6,
+         *   searchExtent: null,
+         *   exactMatch: false,
+         *   searchFields: [], // defaults to FeatureLayer.displayField
+         *   displayField: "", // defaults to FeatureLayer.displayField
+         *   minSuggestCharacters: 0
+         * }
+         * ];
+         *
+         * @example
+         * // Set source(s) on creation
+         * var searchWidget = new Search({
+         *   sources: []
+         * });
+         * searchWidget.startup();
+         *
+         * @example
+         * // Set source(s)
+         * var searchWidget = new Search();
+         * var sources = [{ ... }, { ... }, { ... }]; //array of sources
+         * searchWidget.sources = sources;
+         * searchWidget.startup();
+         *
+         * @example
+         * // Add to source(s)
+         * var searchWidget = new Search();
+         * searchWidget.sources.push({ ... });  //new source
+         * searchWidget.startup();
+         */
+        sources: {
+          aliasOf: "viewModel.sources"
+        },
 
-      /**
-       * The result selected from a search.
-       *
-       * @name selectedResult
-       * @instance
-       *
-       * @type {Object}
-       *
-       * @see [Event: select-result](#event:select-result)
-       * @see [select()](#select)
-       */
-      _getSelectedResultAttr: viewModelWiring.createGetterDelegate("selectedResult"),
+        //----------------------------------
+        //  suggestions
+        //----------------------------------
 
-      _setSelectedResultAttr: viewModelWiring.createSetterDelegate("selectedResult"),
+        /**
+         * An array of results from the [suggest method](#suggest).
+         *
+         * This is available if working with a 10.3 geocoding service that has suggest capability loaded or a
+         * 10.3 feature layer that supports pagination, i.e. `supportsPagination = true`.
+         *
+         * @name suggestions
+         * @instance
+         *
+         * @type {Object[]}
+         * @readonly
+         */
+        suggestions: {
+          aliasOf: "viewModel.suggestions"
+        },
 
-      //----------------------------------
-      //  popupOpenOnSelect
-      //----------------------------------
+        //----------------------------------
+        //  suggestionsEnabled
+        //----------------------------------
 
-      /**
-       * Indicates whether to show the {@link module:esri/widgets/Popup} when a result is selected.
-       * Using `popupOpenOnSelect` opens the {@link module:esri/widgets/Popup} any time a search is performed.
-       *
-       * It is possible to have `popupOpenOnSelect=false` but `popupEnabled=true` so the {@link module:esri/widgets/Popup}
-       * can be opened by someone but not opened by default.
-       *
-       * @name popupOpenOnSelect
-       * @instance
-       *
-       * @type {boolean}
-       * @default true
-       */
-      _getPopupOpenOnSelectAttr: viewModelWiring.createGetterDelegate("popupOpenOnSelect"),
+        /**
+         * Enable suggestions for the widget.
+         *
+         * This is only available if working with a 10.3 geocoding service that has suggest capability
+         * loaded or a 10.3 feature layer that supports pagination, i.e. `supportsPagination = true`.
+         *
+         * @name suggestionsEnabled
+         * @instance
+         *
+         * @type {boolean}
+         * @default true
+         */
+        suggestionsEnabled: {
+          aliasOf: "viewModel.suggestionsEnabled"
+        },
 
-      _setPopupOpenOnSelectAttr: viewModelWiring.createSetterDelegate("popupOpenOnSelect"),
+        //----------------------------------
+        //  view
+        //----------------------------------
 
-      //----------------------------------
-      //  searchTerm
-      //----------------------------------
+        /**
+         * A reference to the {@link module:esri/views/MapView} or {@link module:esri/views/SceneView}. Set this to link the widget to a specific view.
+         *
+         *
+         * @name view
+         * @instance
+         *
+         * @type {module:esri/views/MapView | module:esri/views/SceneView}
+         */
+        view: {
+          aliasOf: "viewModel.view"
+        },
 
-      /**
-       * The value of the search box input text string.
-       *
-       * @name searchTerm
-       * @instance
-       *
-       * @type {string}
-       */
-      _getSearchTermAttr: viewModelWiring.createGetterDelegate("searchTerm"),
+        //----------------------------------
+        //  viewModel
+        //----------------------------------
 
-      _setSearchTermAttr: viewModelWiring.createSetterDelegate("searchTerm"),
+        /**
+         * The view model for this widget. This is a class that contains all the logic
+         * (properties and methods) that controls this widget's behavior. See the
+         * {@link module:esri/widgets/Search/SearchViewModel} class to access
+         * all properties and methods on the widget.
+         *
+         * @name viewModel
+         * @instance
+         * @type {module:esri/widgets/Search/SearchViewModel}
+         * @autocast
+         */
+        viewModel: {
+          type: SearchViewModel
+        }
 
-      //----------------------------------
-      //  sources
-      //----------------------------------
-
-      /**
-       * This property defines which services will be used for the search. It is a collection of objects, each of which is called a `source`
-       * and may be configured using the object specifications below and the properties listed in the
-       * [Locator Source object specification table](#~locatorSource) or the
-       * [Feature Layer source object specification table](#~featureLayerSource).
-       *
-       * Two types of sources may be searched:
-       *
-       * * {@link module:esri/layers/FeatureLayer **FeatureLayers**} - see the
-       * [FeatureLayer Source object specification table](#~featureLayerSource)
-       * for more details on how to define FeatureLayer source objects.
-       * * {@link module:esri/tasks/Locator **Locators**} - see the
-       * [Locator Source object specification table](#~locatorSource)
-       * for more details on how to define Locator source objects.
-       *
-       * Any combination of one or more geocoding and feature layer sources may be used together in the same instance of the Search widget.
-       * The following properties may be set on either Locator or FeatureLayer source objects:
-       *
-       * @property {boolean} autoNavigate - Indicates whether to automatically navigate to the selected result once selected. The default is `true`.
-       * @property {boolean} resultGraphicEnabled - Indicates whether to show a graphic on the map for the selected source using the [resultSymbol](#resultSymbol).
-       *                                       The default value is `true`.
-       * @property {module:esri/symbols/Symbol} resultSymbol - The symbol used for the [resultGraphic](#resultGraphic).
-       * @property {boolean} popupEnabled - Indicates whether to display a {@link module:esri/widgets/Popup Popup} when a selected result is clicked.
-       *                                  The default is `true`.
-       * @property {boolean} suggestionsEnabled - Indicates whether to display suggestions as the user enters input text in the widget. The default value is `true`.
-       * @property {module:esri/widgets/Popup} popup - The Popup instance used for the selected result.
-       * @property {number} maxResults - Indicates the maximum number of search results to return. The default value is `6`.
-       * @property {number} maxSuggestions - Indicates the maximum number of suggestions to return for the widget's input. The default value is `6`.
-       * @property {number} minSuggestCharacters - Indicates the minimum number of characters required before querying for a suggestion. The default value is `1`.
-       * @property {string} name - The name of the source for display.
-       * @property {string[]} outFields - Specifies the fields returned with the search results.
-       * @property {string} placeholder - Used as a hint for the source input text.
-       * @property {string} prefix - Specify this to prefix the input for the search text.
-       * @property {module:esri/geometry/Extent[]} searchExtent - Set this to constrain the search results to an extent or array of Extents.
-       * @property {boolean} popupOpenOnSelect - Indicates whether to show the {@link module:esri/widgets/Popup Popup} when a result is selected.
-       *                                          The default value is `true`.
-       * @property {string} suffix - Specify this to suffix the input for the search value.
-       * @property {boolean} withinViewEnabled - Indicates whether to constrain the search results to the view's extent.
-       * @property {number} zoomScale - Applicable to the specified source. If the result does not have an associated extent, specify this number to use as the zoom scale for the result.
-       *
-       * @name sources
-       * @instance
-       *
-       * @type {module:esri/core/Collection}
-       *
-       * @example
-       * // Default sources[] when sources is not specified
-       * [
-       *   {
-       *     locator: new Locator("//geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"),
-       *     singleLineFieldName: "SingleLine",
-       *     outFields: ["Addr_type"],
-       *     name: i18n.esriLocatorName,
-       *     localSearchOptions: {
-       *       minScale: 300000,
-       *       distance: 50000
-       *     },
-       *     placeholder: i18n.placeholder,
-       *     resultSymbol: new PictureMarkerSymbol({
-       *        url: this.basePath + "/images/search-symbol-32.png",
-       *        size: 24,
-       *        width: 24,
-       *        height: 24,
-       *        xoffset: 0,
-       *        yoffset: 0
-       *    })
-       *   }
-       * ]
-       *
-       * @example
-       * // Example of multiple sources[]
-       * var sources = [
-       * {
-       *   locator: ,
-       *   singleLineFieldName: "SingleLine",
-       *   name: "Custom Geocoding Service",
-       *   localSearchOptions: {
-       *     minScale: 300000,
-       *     distance: 50000
-       *   },
-       *   placeholder: "Search Geocoder",
-       *   maxResults: 3,
-       *   maxSuggestions: 6,
-       *   suggestionsEnabled: false,
-       *   minSuggestCharacters: 0
-       * }, {
-       *   featureLayer: new FeatureLayer({
-       *     url: "https://services.arcgis.com/DO4gTjwJVIJ7O9Ca/arcgis/rest/services/GeoForm_Survey_v11_live/FeatureServer/0",
-       *     outFields: ["*"]
-       *   }),
-       *   searchFields: ["Email", "URL"],
-       *   displayField: "Email",
-       *   exactMatch: false,
-       *   outFields: ["*"],
-       *   name: "Point FS",
-       *   placeholder: "example: esri",
-       *   maxResults: 6,
-       *   maxSuggestions: 6,
-       *   suggestionsEnabled: true,
-       *   minSuggestCharacters: 0
-       * },
-       * {
-       *   featureLayer: new FeatureLayer({
-       *     outFields: ["*"]
-       *   });
-       *   placeholder: "esri",
-       *   name: "A FeatureLayer",
-       *   prefix: "",
-       *   suffix: "",
-       *   maxResults: 1,
-       *   maxSuggestions: 6,
-       *   searchExtent: null,
-       *   exactMatch: false,
-       *   searchFields: [], // defaults to FeatureLayer.displayField
-       *   displayField: "", // defaults to FeatureLayer.displayField
-       *   minSuggestCharacters: 0
-       * }
-       * ];
-       *
-       * @example
-       * // Set source(s) on creation
-       * var searchWidget = new Search({
-       *   sources: []
-       * });
-       * searchWidget.startup();
-       *
-       * @example
-       * // Set source(s)
-       * var searchWidget = new Search();
-       * var sources = [{ ... }, { ... }, { ... }]; //array of sources
-       * searchWidget.sources = sources;
-       * searchWidget.startup();
-       *
-       * @example
-       * // Add to source(s)
-       * var searchWidget = new Search();
-       * searchWidget.sources.push({ ... });  //new source
-       * searchWidget.startup();
-       */
-      _getSourcesAttr: viewModelWiring.createGetterDelegate("sources"),
-
-      _setSourcesAttr: viewModelWiring.createSetterDelegate("sources"),
-
-      //----------------------------------
-      //  suggestions
-      //----------------------------------
-
-      /**
-       * An array of results from the [suggest method](#suggest).
-       *
-       * This is available if working with a 10.3 geocoding service that has suggest capability loaded or a
-       * 10.3 feature layer that supports pagination, i.e. `supportsPagination = true`.
-       *
-       * @name suggestions
-       * @instance
-       *
-       * @type {Object[]}
-       * @readonly
-       */
-      _getSuggestionsAttr: viewModelWiring.createGetterDelegate("suggestions"),
-
-      _setSuggestionsAttr: viewModelWiring.createSetterDelegate("suggestions"),
-
-      //----------------------------------
-      //  suggestionsEnabled
-      //----------------------------------
-
-      /**
-       * Enable suggestions for the widget.
-       *
-       * This is only available if working with a 10.3 geocoding service that has suggest capability
-       * loaded or a 10.3 feature layer that supports pagination, i.e. `supportsPagination = true`.
-       *
-       * @name suggestionsEnabled
-       * @instance
-       *
-       * @type {boolean}
-       * @default true
-       */
-      _getSuggestionsEnabledAttr: viewModelWiring.createGetterDelegate("suggestionsEnabled"),
-
-      _setSuggestionsEnabledAttr: viewModelWiring.createSetterDelegate("suggestionsEnabled"),
-
-      //----------------------------------
-      //  view
-      //----------------------------------
-
-      /**
-       * A reference to the {@link module:esri/views/MapView MapView} or {@link module:esri/views/Scene SceneView}. Set this to link the widget to a specific view.
-       *
-       *
-       * @name view
-       * @instance
-       *
-       * @type {module:esri/views/MapView | module:esri/views/SceneView}
-       */
-      _getViewAttr: viewModelWiring.createGetterDelegate("view"),
-
-      _setViewAttr: viewModelWiring.createSetterDelegate("view"),
+      },
 
       //--------------------------------------------------------------------------
       //
@@ -1184,6 +1190,7 @@ function(
        * @ignore
        */
       blur: function() {
+        this._inputNode.blur();
         if (this._focusManager.curNode) {
           this._focusManager.curNode.blur();
         }
@@ -1194,7 +1201,7 @@ function(
        * address matching using any specified {@link module:esri/tasks/Locator Locator(s)} and
        * returns any applicable results.
        *
-       * @param {string|module:esri/geometry/Geometry|Object|number[][]} [value] - This value can be
+       * @param {string|module:esri/geometry/Geometry|Object|number[][]} [searchTerm] - This searchTerm can be
        *        a string, geometry, suggest candidate object, or an array of [latitude,longitude].
        *        If a geometry is supplied, then it will reverse geocode (locator) or
        *        findAddressCandidates with geometry instead of text (featurelayer).
@@ -1326,10 +1333,7 @@ function(
         var keyCode = e.keyCode;
         var nextItemIndex;
         var focusTarget;
-
-        if (dataIdx !== SearchViewModel.ALL_INDEX) {
-          dataIdx = parseInt(dataIdx, 10);
-        }
+        dataIdx = parseInt(dataIdx, 10);
 
         if (keyCode === keys.ESCAPE) {
           this._hideSourcesMenu();
@@ -1382,9 +1386,7 @@ function(
         var keyCode = e.keyCode;
         var nextItemIndex;
 
-        if (dataSourceIdx !== SearchViewModel.ALL_INDEX) {
-          dataSourceIdx = parseInt(dataSourceIdx, 10);
-        }
+        dataSourceIdx = parseInt(dataSourceIdx, 10);
 
         vm.cancelSuggest();
 
@@ -1680,8 +1682,7 @@ function(
           if (suggestions[idx] && suggestions[idx].results && suggestions[idx].results.length) {
             var name = this._getSourceName(idx);
 
-            if (sources.length > 1 &&
-                vm.activeSourceIndex === SearchViewModel.ALL_INDEX) {
+            if (sources.length > 1 && vm.activeSourceIndex === SearchViewModel.ALL_INDEX) {
 
               // header div
               domConstruct.create("div", {
@@ -1746,8 +1747,7 @@ function(
         var list = domConstruct.create("ul");
 
         if (vm.searchAllEnabled) {
-          var allActive = activeSourceIndex === SearchViewModel.ALL_INDEX ?
-                          CSS.source + " " + CSS.activeSource : CSS.source;
+          var allActive = activeSourceIndex === SearchViewModel.ALL_INDEX ? CSS.source + " " + CSS.activeSource : CSS.source;
 
           domConstruct.create("li", {
             "data-index": SearchViewModel.ALL_INDEX,

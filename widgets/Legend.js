@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 /**
  * The Legend widget displays labels and symbols for layers in a map.
@@ -32,7 +32,8 @@
  * The legend automatically updates when
  *  - the visibility of a layer or sublayer changes
  *  - a layer is added or removed from the map
- *  - a layer's renderer is changed
+ *  - a layer's `renderer`, `opacity`, or `title` is changed
+ *  - the `legendEnabled` property is set to `false` on the layer
  *
  * [![widgets-legend-basic](../assets/img/apiref/widgets/widgets-legend-basic.png)](../sample-code/sandbox/sandbox.html?sample=widgets-legend)
  *
@@ -40,32 +41,34 @@
  * to the view's user interface via the {@link module:esri/views/View#ui ui} property on the view.
  *
  * ::: esri-md class="panel trailer-1"
- * **Known Limitations for 4.0**
+ * **Known Limitations**
  *
- * * Only {@link module:esri/layers/FeatureLayer} and {@link module:esri/layers/StreamLayer} are supported by Legend.
- * * {@link module:esri/symbols/Symbol3D  3D symbols} are not supported by Legend.
+ * * Legend supports the following layers: {@link module:esri/layers/FeatureLayer},
+ * {@link module:esri/layers/StreamLayer}, {@link module:esri/layers/SceneLayer},
+ * {@link module:esri/layers/MapImageLayer}
+ * * {@link module:esri/symbols/Symbol3D  3D symbols} with more than one
+ * {@link module:esri/symbols/Symbol3DLayer symbol layer} are not supported.
+ * * Size in volumetric {@link module:esri/symbols/Symbol3D  3D symbols}, such as
+ * polygon extrusion, is not depicted by Legend.
  * :::
  *
  * @example
- * require(["esri/widgets/Legend", ... ],
- *  function(Legend, ... ) {
- *
- *   var legend = new Legend({
- *     view: view,
- *     layerInfos: [{
- *       layer: featureLayer,
- *       title: "Legend"
- *     }]
- *   });
- *
- *  view.ui.add(legend, "bottom-right");
+ * var legend = new Legend({
+ *   view: view,
+ *   layerInfos: [{
+ *     layer: featureLayer,
+ *     title: "Legend"
+ *   }]
  * });
+ *
+ * view.ui.add(legend, "bottom-right");
  *
  * @module esri/widgets/Legend
  * @since 4.0
  *
  * @see [Sample - Legend widget](../sample-code/widgets-legend/index.html)
- * @see [Legend.css](css/source-code/esri/widgets/Legend/css/Legend.css)
+ * @see [Legend.css]({{ JSAPI_BOWER_URL }}/widgets/Legend/css/Legend.css)
+ * @see [Legend.scss]({{ JSAPI_BOWER_URL }}/widgets/Legend/css/Legend.scss)
  * @see {@link module:esri/views/View#ui View.ui}
  * @see module:esri/views/ui/DefaultUI
  */
@@ -76,13 +79,12 @@ define([
   "./Widget",
 
   "./Legend/LegendViewModel",
+  "./Legend/support/swatchUtils",
 
   "../core/watchUtils",
   "../core/HandleRegistry",
   "../core/lang",
   "../core/screenUtils",
-
-  "../symbols/support/gfxUtils",
 
   "dojox/gfx",
   "dojox/gfx/matrix",
@@ -97,9 +99,8 @@ define([
 ], function(
   viewModelWiring,
   Widget,
-  LegendViewModel,
+  LegendViewModel, swatchUtils,
   watchUtils, HandleRegistry, esriLang, screenUtils,
-  gfxUtils,
   gfx, gfxMatrix,
   lang,
   domConstruct, domStyle, domClass,
@@ -119,6 +120,7 @@ define([
         label: "esri-legend__service-label",
         layer: "esri-legend__layer",
         layerTable: "esri-legend__layer-table",
+        layerChildTable: "esri-legend__layer-child-table",
         layerCaption: "esri-legend__layer-caption",
         layerBody: "esri-legend__layer-body",
         layerRow: "esri-legend__layer-row",
@@ -127,6 +129,7 @@ define([
         symbolContainer: "esri-legend__layer-cell esri-legend__layer-cell--symbols",
         symbol: "esri-legend__symbol",
         rampContainer: "esri-legend__ramps",
+        sizeRamp: "esri-legend__size-ramp",
         colorRamp: "esri-legend__color-ramp",
         opacityRamp: "esri-legend__opacity-ramp",
         borderlessRamp: "esri-legend__borderless-ramp",
@@ -139,12 +142,6 @@ define([
 
         // common
         hidden: "esri-hidden"
-      },
-
-      SYM_STYLES = {
-        size: 22,
-        maxSize: 125,
-        padding: 6
       };
 
   /**
@@ -153,6 +150,12 @@ define([
    * @param {Object} properties - See the [properties](#properties) for a list of all the properties
    *                              that may be passed into the constructor.
    * @param {string | Node} [srcNodeRef] - Reference or ID of the HTML element in which this widget renders.
+   *
+   * @example
+   * // typical usage
+   * var legend = new Legend({
+   *   view: view
+   * });
    */
 
   var Legend = Widget.createSubclass(
@@ -160,21 +163,6 @@ define([
      * @lends: module:esri/widgets/Legend.prototype
      */
     {
-
-      properties: {
-        activeLayerInfos: {
-          dependsOn: ["viewModel.activeLayerInfos"]
-        },
-        layerInfos: {
-          dependsOn: ["viewModel.layerInfos"]
-        },
-        view: {
-          dependsOn: ["viewModel.view"]
-        },
-        viewModel: {
-          type: LegendViewModel
-        }
-      },
 
       declaredClass: "esri.widgets.Legend",
 
@@ -203,91 +191,123 @@ define([
 
       //--------------------------------------------------------------------------
       //
-      //  Private Properties
+      //  Properties
       //
       //--------------------------------------------------------------------------
 
-      //----------------------------------
-      //  activeLayerInfos
-      //----------------------------------
+      properties: /** @lends: module:esri/widgets/Legend.prototype */ {
 
-      /**
-       * Collection of {@link module:esri/widgets/Legend/support/ActiveLayerInfo} objects used by the legend view to
-       * display data in the legend. The legend widget watches this property to hide or display the layer legend when
-       * an {@link module:esri/widgets/Legend/support/ActiveLayerInfo} is removed from or added to this collection.
-       *
-       * @name activeLayerInfos
-       * @instance
-       *
-       * @type {module:esri/core/Collection}
-       * @autocast
-       * @ignore
-       */
-      _getActiveLayerInfosAttr: viewModelWiring.createGetterDelegate("activeLayerInfos"),
+        //----------------------------------
+        //  activeLayerInfos
+        //----------------------------------
 
-      _setActiveLayerInfosAttr: viewModelWiring.createSetterDelegate("activeLayerInfos"),
+        /**
+         * Collection of {@link module:esri/widgets/Legend/support/ActiveLayerInfo} objects used by the legend view to
+         * display data in the legend. The legend widget watches this property to hide or display the layer legend when
+         * an {@link module:esri/widgets/Legend/support/ActiveLayerInfo} is removed from or added to this collection.
+         *
+         * @name activeLayerInfos
+         * @instance
+         *
+         * @type {module:esri/core/Collection}
+         * @autocast
+         * @ignore
+         */
+        activeLayerInfos: {
+          aliasOf: "viewModel.activeLayerInfos"
+        },
 
-      //----------------------------------
-      //  layerInfos
-      //----------------------------------
+        //----------------------------------
+        //  layerInfos
+        //----------------------------------
 
-      /**
-       * Specifies a subset of the layers to display in the legend.
-       * If this property is not set, all layers in the map will display in the legend.
-       * The order of layers in the legend are dependent on this property.
-       * Objects in this array are defined with the properties listed below.
-       *
-       * @name layerInfos
-       * @instance
-       *
-       * @type {object[]}
-       *
-       * @property {string} title - Specifies a title for the layer to display above its symbols and descriptions.
-       * If no title is specified the service name is used.
-       * @property {module:esri/layers/Layer} layer - A layer to display in the legend.
-       * @todo @property {boolean} defaultSymbol - When `false`, the default symbol for the renderer will
-       * not display in the legend. The default value is `true`. Only applicable to
-       * {@link module:esri/layers/FeatureLayer}.
-       * @todo @property {number[]} hideLayers -  List of sublayer ids that will not be displayed in the legend
-       *                                    even if they are visible in the map.
-       */
-      _getLayerInfosAttr: viewModelWiring.createGetterDelegate("layerInfos"),
+        /**
+         * Specifies a subset of the layers to display in the legend.
+         * If this property is not set, all layers in the map will display in the legend.
+         * Objects in this array are defined with the properties listed below.
+         *
+         * @name layerInfos
+         * @instance
+         *
+         * @type {object[]}
+         *
+         * @property {string} title - Specifies a title for the layer to display above its symbols and descriptions.
+         * If no title is specified the service name is used.
+         * @property {module:esri/layers/Layer} layer - A layer to display in the legend.
+         * @todo @property {boolean} defaultSymbol - When `false`, the default symbol for the renderer will
+         * not display in the legend. The default value is `true`. Only applicable to
+         * {@link module:esri/layers/FeatureLayer}.
+         * @todo @property {number[]} hideLayers -  List of sublayer ids that will not be displayed in the legend
+         *                                    even if they are visible in the map.
+         */
+        layerInfos: {
+          aliasOf: "viewModel.layerInfos"
+        },
 
-      _setLayerInfosAttr: viewModelWiring.createSetterDelegate("layerInfos"),
+        //----------------------------------
+        //  basemapLegendVisible
+        //----------------------------------
 
-      //----------------------------------
-      //  view
-      //----------------------------------
+        /**
+         * boolean that tells to show the basemaps or not in the legend
+         *
+         * @type {boolean}
+         */
+        basemapLegendVisible: {
+          aliasOf: "viewModel.basemapLegendVisible"
+        },
 
-      /**
-       * A reference to the {@link module:esri/views/MapView MapView} or {@link module:esri/views/Scene SceneView}. Set this to link the widget to a specific view.
-       *
-       * @name view
-       * @instance
-       *
-       * @type {(module:esri/views/SceneView|module:esri/views/MapView)}
-       */
-      _getViewAttr: viewModelWiring.createGetterDelegate("view"),
+        //----------------------------------
+        //  groundLegendVisible
+        //----------------------------------
 
-      _setViewAttr: viewModelWiring.createSetterDelegate("view"),
+        /**
+         * boolean that tells to show the ground layers or not in the legend
+         *
+         * @type {boolean}
+         */
+        groundLegendVisible: {
+          aliasOf: "viewModel.groundLegendVisible"
+        },
 
-      //----------------------------------
-      //  viewModel
-      //----------------------------------
+        //----------------------------------
+        //  view
+        //----------------------------------
 
-      /**
-       * The view model for this widget. This is a class that contains all the logic
-       * (properties and methods) that controls this widget's behavior. See the
-       * {@link module:esri/widgets/Legend/LegendViewModel} class to access
-       * all properties and methods on the widget.
-       *
-       * @name viewModel
-       * @instance
-       * @ignore
-       *
-       * @type {module:esri/widgets/Legend/LegendViewModel}
-       * @autocast
-       */
+        /**
+         * A reference to the {@link module:esri/views/MapView} or {@link module:esri/views/SceneView}. Set this to link the widget to a specific view.
+         *
+         * @name view
+         * @instance
+         *
+         * @type {(module:esri/views/SceneView|module:esri/views/MapView)}
+         */
+        view: {
+          aliasOf: "viewModel.view"
+        },
+
+        //----------------------------------
+        //  viewModel
+        //----------------------------------
+
+        /**
+         * The view model for this widget. This is a class that contains all the logic
+         * (properties and methods) that controls this widget's behavior. See the
+         * {@link module:esri/widgets/Legend/LegendViewModel} class to access
+         * all properties and methods on the widget.
+         *
+         * @name viewModel
+         * @instance
+         * @ignore
+         *
+         * @type {module:esri/widgets/Legend/LegendViewModel}
+         * @autocast
+         */
+        viewModel: {
+          type: LegendViewModel
+        }
+
+      },
 
       //--------------------------------------------------------------------------
       //
@@ -297,16 +317,13 @@ define([
 
       _createLegend: function() {
         var legendDOM = this._buildLegendDOM(),
-          activeLayerInfos = this.viewModel.activeLayerInfos;
+          activeLayerInfos = this.activeLayerInfos;
 
         // Create legend for each layerInfo if there is atleast one, else display message
         if (activeLayerInfos.length) {
           activeLayerInfos.forEach(function (activeLayerInfo) {
             this._createLegendForLayer(activeLayerInfo, legendDOM);
           }, this);
-        }
-        else {
-          legendDOM.message.textContent = i18n.noLegend;
         }
 
         // when activeLayerInfos change:
@@ -334,19 +351,75 @@ define([
             }
           }, this);
 
-          if (activeLayerInfos.length === 0) {
-            this._toggleDisplay(legendDOM.message);
-            legendDOM.message.textContent = i18n.noLegend;
-          }
-          else {
-            if (!domClass.contains(legendDOM.message, CSS.hidden)) {
-              this._toggleDisplay(legendDOM.message);
-            }
-          }
+          this._sortDOMNodes(legendDOM);
 
         }.bind(this));
 
         this._handles.add(handle, "activeLayerInfos-change");
+      },
+
+      _hasVisibleDOMNodes: function () {
+        var DOMNodes = this._DOMByLayerId,
+          visible = false;
+
+        for (var layerId in DOMNodes) {
+          var domNode = DOMNodes[layerId];
+          if (!domClass.contains(domNode, CSS.hidden)) {
+            visible = true;
+            break;
+          }
+        }
+
+        return visible;
+      },
+
+      _isActiveLayerInfosReady: function (activeLayerInfos) {
+        if (
+          !activeLayerInfos.length ||
+          (activeLayerInfos.length === 1 && activeLayerInfos.getItemAt(0).updating && !this._hasVisibleDOMNodes())
+        ) {
+          return false;
+        }
+        return activeLayerInfos.some(function (activeLayerInfo) {
+          return activeLayerInfo.ready || activeLayerInfo.updating;
+        });
+      },
+
+      _sortDOMNodes: function (legendDOM) {
+        var activeLayerInfos = this.activeLayerInfos,
+          legendNode = this.domNode,
+          childNodes = legendNode.childNodes,
+          elems = [], sortedElems,
+          layersIndex = {},
+          domPrefix = this.id + "_",
+          isActiveLayerInfosReady = this._isActiveLayerInfosReady(activeLayerInfos),
+          isMsgHidden = domClass.contains(legendDOM.message, CSS.hidden);
+
+        if ((isActiveLayerInfosReady && !isMsgHidden) || (!isActiveLayerInfosReady && isMsgHidden)) {
+          this._toggleDisplay(legendDOM.message);
+        }
+
+        for (var i = 0; i < childNodes.length; ++i) {
+          var el = childNodes[i];
+          if ((el.id && el.id.indexOf(domPrefix) > -1) && !domClass.contains(el, CSS.hidden)) {
+            elems.push( el );
+          }
+        }
+
+        activeLayerInfos.forEach(function (activeLayerInfo, index) {
+          layersIndex[activeLayerInfo.layer.uid] = index;
+        });
+
+        sortedElems = elems.sort(function (elm1, elm2) {
+          var elm1Idx = layersIndex[elm1.id.split(domPrefix)[1]] || 0,
+            elm2Idx = layersIndex[elm2.id.split(domPrefix)[1]] || 0;
+
+          return elm1Idx - elm2Idx;
+        });
+
+        for (i = 0; i < sortedElems.length; ++i) {
+          legendNode.appendChild(sortedElems[i]);
+        }
       },
 
       _buildLegendDOM: function () {
@@ -355,7 +428,7 @@ define([
         var msgNode = domConstruct.create("div", {
           id: this.id + "_msg",
           className: CSS.message,
-          textContent: i18n.creatingLegend + "..."
+          textContent: i18n.noLegend
         }, widgetNode);
 
         return {
@@ -373,7 +446,12 @@ define([
         // When activeLayerInfo ready is false, remove dictionary data and destroy its DOM but handlers are not removed
         var infoReadyHandle = watchUtils.init(activeLayerInfo, "version", function () {
           var layerId = activeLayerInfo.layer.uid,
-            layerDOM;
+            layerDOM = this._DOMByLayerId[layerId];
+
+          if (layerDOM && !activeLayerInfo.updating) {
+            delete this._DOMByLayerId[layerId];
+            domConstruct.destroy(layerDOM);
+          }
 
           if (activeLayerInfo.ready) {
             layerDOM = this._buildLegendDOMForLayer(activeLayerInfo, legendDOM);
@@ -381,18 +459,12 @@ define([
 
             var legendElements = this._createLegendElements(activeLayerInfo, layerDOM.layer);
 
-            if (legendElements.length && this.viewModel.activeLayerInfos.indexOf(activeLayerInfo) !== -1) {
+            if (legendElements.length && this.activeLayerInfos.indexOf(activeLayerInfo) !== -1) {
               this._toggleDisplay(layerDOM.root);
             }
           }
-          else {
-            layerDOM = this._DOMByLayerId[layerId];
 
-            if (layerDOM) {
-              delete this._DOMByLayerId[layerId];
-              domConstruct.destroy(layerDOM);
-            }
-          }
+          this._sortDOMNodes(legendDOM);
         }.bind(this));
 
         // When activeLayerInfo destroy is true, remove dictionary data, handlers and destroy its DOM
@@ -451,15 +523,21 @@ define([
         return legendElements;
       },
 
-      _createLegendElement: function(legendElement, layerNode, layer) {
+      _createLegendElement: function(legendElement, layerNode, layer, isChild) {
         var isColorRamp = legendElement.type === "color-ramp",
           isOpacityRamp = legendElement.type === "opacity-ramp",
-          elemDOM = this._buildDOMForElement(layerNode, legendElement.title, isColorRamp || isOpacityRamp);
+          isSizeRamp = legendElement.type === "size-ramp",
+          elemDOM = this._buildDOMForElement(layerNode, legendElement.title, isColorRamp || isOpacityRamp, isChild);
 
         // build symbol table or size ramp
-        if (legendElement.type === "symbol-table" || legendElement.type === "size-ramp") {
+        if (legendElement.type === "symbol-table" || isSizeRamp) {
           legendElement.infos.forEach(function (info) {
-            this._buildDOMForElementInfo(info, elemDOM, layer);
+            if (info.type) {
+              this._createLegendElement(info, elemDOM.body, layer, true);
+            }
+            else {
+              this._buildDOMForElementInfo(info, elemDOM, layer, isSizeRamp);
+            }
           }, this);
         }
         // build ramp
@@ -468,12 +546,22 @@ define([
         }
       },
 
-      _buildDOMForElement: function (node, title, isRamp) {
-        title = (typeof title === "string") ? title : title && this._getTitle(title, isRamp);
+      _buildDOMForElement: function (node, titleObj, isRamp, isChild) {
+        var title = titleObj;
+
+        if (typeof title !== "string" && title) {
+          var genTitle = this._getTitle(title, isRamp);
+          if (title.title) {
+            title = title.title + " (" + genTitle + ")";
+          }
+          else {
+            title = genTitle;
+          }
+        }
 
         // table node
         var tableNode = domConstruct.create("div", {
-          className: CSS.layerTable
+          className: isChild ? CSS.layerChildTable : CSS.layerTable
         }, node);
 
         // caption node
@@ -496,51 +584,64 @@ define([
         };
       },
 
-      _buildDOMForElementInfo: function(info, elemDOM, layer) {
+      _buildDOMForElementInfo: function(info, elemDOM, layer, isSizeRamp) {
         // append row node to table body node
         var rowNode = domConstruct.create("div", {
           className: CSS.layerRow
         }, elemDOM.body);
 
-        var symWidth = SYM_STYLES.size,
-          symHeight = SYM_STYLES.size,
-          symMaxSize = SYM_STYLES.maxSize,
-          symPadding = SYM_STYLES.padding,
-          symbol = info.symbol,
-          symbolType = symbol.type,
-          symbolSize = screenUtils.pt2px(symbol.size);
-
-        if (symbol) {
-          // show point symbols in their actual size
-          if (symbolType === "simple-marker-symbol") {
-            // extra padding for the outline width
-            symWidth = Math.min(Math.max(symWidth, symbolSize + symPadding), symMaxSize);
-            symHeight = Math.min(Math.max(symHeight, symbolSize + symPadding), symMaxSize);
-          }
-          else if (symbolType == "picture-marker-symbol") {
-            symWidth = Math.min(Math.max(symWidth, screenUtils.pt2px(symbol.width)), symMaxSize);
-            symHeight = Math.min(screenUtils.pt2px(symbol.height) || symHeight, symMaxSize);
-          }
-          else if (symbolType == "text-symbol") {
-            // TODO: get text width and height
-          }
-        }
+        var symbol = info.symbol,
+          symbolSize = swatchUtils.getSymbolSize(symbol),
+          symWidth = symbolSize.width,
+          symHeight = symbolSize.height;
 
         // symbol node
         var symNode = domConstruct.create("div", {
-          className: CSS.symbolContainer
+          className: isSizeRamp ? CSS.symbolContainer + " " + CSS.sizeRamp : CSS.symbolContainer
         }, rowNode);
 
         // draw symbol
-        this._drawSymbol(symNode, info.symbol, symWidth, symHeight, layer);
+        var symDrawn = symbol ?
+          this._drawSymbol(symNode, symbol, symWidth, symHeight, layer) :
+          this._drawImage(symNode, info, layer);
 
-        domClass.add(symNode.firstChild, CSS.symbol);
+        if (symDrawn) {
+          domClass.add(symNode.firstChild, CSS.symbol);
 
-        // label node
-        var labelCellNode = domConstruct.create("div", {
-          className: CSS.layerInfo
-        }, rowNode);
-        labelCellNode.textContent = info.label || "";
+          // label node
+          var labelCellNode = domConstruct.create("div", {
+            className: CSS.layerInfo
+          }, rowNode);
+          labelCellNode.textContent = info.label || "";
+        }
+        else {
+          domConstruct.destroy(elemDOM.table);
+        }
+      },
+
+      _drawImage: function (symNode, info, layer) {
+        var src = info.src,
+          opacity = info.opacity,
+          width = info.width,
+          height = info.height;
+
+        if (!src) {
+          return false;
+        }
+        else {
+          var node =  domConstruct.create("img", {
+            src: src,
+            border: 0
+          }, symNode);
+
+          if (width != null && height != null) {
+            node.width = width;
+            node.height = height;
+          }
+          node.style.opacity = (opacity != null) ? opacity : layer.opacity;
+
+          return true;
+        }
       },
 
       _drawSymbol: function (node, symbol, sWidth, sHeight, layer) {
@@ -550,34 +651,62 @@ define([
         }
 
         var surface = gfx.createSurface(node, sWidth, sHeight),
-          shapeDesc = gfxUtils.getShapeDescriptors(symbol),
-          defaultShape = shapeDesc.defaultShape,
-          isText = (defaultShape && defaultShape.type === "text"),
+          swatch = swatchUtils.getSwatch(symbol),
           gfxShape;
 
         try {
-          // Use default text for text symbols if there is no
-          // pre-existing text.
-          if (isText && !defaultShape.text) {
-            defaultShape.text = DEFAULT_TEXT;
+
+          if (swatch == null) {
+            throw "no shape descriptors!";
           }
 
-          gfxShape = surface.createShape(defaultShape)
-            .setFill(shapeDesc.fill)
-            .setStroke(shapeDesc.stroke);
+          var shapeGroup = surface.createGroup();
 
-          // Apply font to the GFX shape for text symbol.
-          if (isText) {
-            gfxShape.setFont(shapeDesc.font);
-          }
+          swatch.forEach(function (symLayer) {
+
+            symLayer.forEach(function (shapeDesc) {
+
+              var shape = shapeDesc.shape,
+                fill = shapeDesc.fill,
+                stroke = shapeDesc.stroke;
+
+              if (shape) {
+
+                var isText = shape.type === "text";
+
+                // Use default text for text symbols if there is no
+                // pre-existing text.
+                if (isText && !shape.text) {
+                  shape.text = DEFAULT_TEXT;
+                }
+
+                // https://devtopia.esri.com/WebGIS/arcgis-websceneviewer-app/issues/1074
+                if (shape.type === "image" && shape.src && shape.src.substr(0, 5) !== "data:") {
+                  shape.src += (shape.src.indexOf("?") === -1 ? "?" : "&") + "legend=1";
+                }
+
+                gfxShape = shapeGroup.createShape(shape)
+                  .setFill(fill)
+                  .setStroke(stroke ? stroke : {width: 0});
+
+                // Apply font to the GFX shape for text symbol.
+                if (isText) {
+                  gfxShape.setFont(shapeDesc.font);
+                }
+              }
+
+            });
+
+          });
+
         }
         catch (e) {
           surface.clear();
           surface.destroy();
-          return;
+          return false;
         }
 
-        var bbox = gfxShape.getBoundingBox(),
+        var bbox = shapeGroup.getBoundingBox(),
           width = bbox.width,
           height = bbox.height,
 
@@ -598,7 +727,7 @@ define([
           // We need to scale-up or scale-down SMSPath based on its size.
           var scaleMat = layer._getScaleMatrix(bbox, screenUtils.pt2px(symbol.size));
 
-          gfxShape.applyTransform(
+          shapeGroup.applyTransform(
             gfxMatrix.scaleAt(
               scaleMat.xx, scaleMat.yy,
               { x: dim.width / 2, y: dim.height / 2 }
@@ -618,9 +747,9 @@ define([
           });
         }
 
-        gfxShape.applyTransform(transform);
+        shapeGroup.applyTransform(transform);
 
-        return surface;
+        return true;
       },
 
       _buildRampDOM: function (rampStops, tableBodyNode, overlayColor, isOpacityRamp) {
@@ -736,10 +865,10 @@ define([
             null;
         }
 
-        return esriLang.substitute({
+        return bundleKey ? esriLang.substitute({
           field: titleInfo.field,
           normField: titleInfo.normField
-        }, i18n[bundleKey]);
+        }, i18n[bundleKey]) : null;
       },
 
       _toggleDisplay: function (domElm) {

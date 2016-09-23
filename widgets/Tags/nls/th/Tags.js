@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define({addTags:"เพิ่ม tag(s)",noTagsFound:"ไม่มีแท็กส์ที่สอดคล้อง",required:"ต้องมีอย่างน้อยหนึ่งแท็กหรือมากกว่า"});
+define({addTags:"เพิ่ม tag(s)",noTagsFound:"ไม่มีแท็กส์ที่สอดคล้อง",required:"ต้องกรอกอย่างน้อยหนึ่งแท็ก หรือมากกว่า"});

@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 /**
  * The Compass widget indicates where north is in relation to the current view
@@ -36,23 +36,17 @@
  * See the sample below.
  *
  * @example
- * require([
- *    "esri/views/MapView",
- *    "esri/widgets/Compass",
- * ], function(SceneView, Compass, ... ) {
+ * var view = new MapView({
+ *   container: "viewDiv",
+ *   map: map
+ * });
  *
- *   var view = new MapView({
- *      container: "viewDiv",
- *      map: map
- *   });
+ * var compass = new Compass({
+ *   view: view
+ * });
  *
- *   var compass = new Compass({
- *     view: view
- *   });
- *
- *   // adds the compass to the top left corner of the MapView
- *   view.ui.add(compass, "top-left");
- *   });
+ * // adds the compass to the top left corner of the MapView
+ * view.ui.add(compass, "top-left");
  *
  * @module esri/widgets/Compass
  * @since 4.0
@@ -116,17 +110,14 @@ function (
    * @param {Object} [properties] - See the [properties](#properties) for a list of all the properties
    *                              that may be passed into the constructor.
    * @param {string | Node} [srcNodeRef] - Reference or ID of the HTML element in which this widget renders.
+   *
+   * @example
+   * // typical usage
+   * var compass = new Compass({
+   *   view: view
+   * });
    */
   return Widget.createSubclass([TemplatedMixin], /** @lends module:esri/widgets/Compass.prototype */ {
-
-    properties: {
-      viewModel: {
-        type: CompassViewModel
-      },
-      view: {
-        dependsOn: ["viewModel.view"]
-      }
-    },
 
     declaredClass: "esri.widgets.Compass",
 
@@ -173,39 +164,46 @@ function (
     //
     //--------------------------------------------------------------------------
 
-    //----------------------------------
-    //  view
-    //----------------------------------
+    properties: /** @lends module:esri/widgets/Compass.prototype */ {
 
-    /**
-     * The view in which the Compass obtains and indicates camera
-     * {@link module:esri/Camera#heading heading}, using a (SceneView) or
-     * {@link module:esri/views/Mapview#rotation rotation} (MapView).
-     *
-     * @type {module:esri/views/SceneView | module:esri/views/MapView}
-     *
-     * @name view
-     * @instance
-     */
-    _getViewAttr: viewModelWiring.createGetterDelegate("view"),
+      //----------------------------------
+      //  view
+      //----------------------------------
 
-    _setViewAttr: viewModelWiring.createSetterDelegate("view"),
+      /**
+       * The view in which the Compass obtains and indicates camera
+       * {@link module:esri/Camera#heading heading}, using a (SceneView) or
+       * {@link module:esri/views/Mapview#rotation rotation} (MapView).
+       *
+       * @type {module:esri/views/SceneView | module:esri/views/MapView}
+       *
+       * @name view
+       * @instance
+       */
+      view: {
+        aliasOf: "viewModel.view"
+      },
 
-    //----------------------------------
-    //  viewModel
-    //----------------------------------
+      //----------------------------------
+      //  viewModel
+      //----------------------------------
 
-    /**
-     * The view model for this widget. This is a class that contains all the logic
-     * (properties and methods) that controls this widget's behavior. See the
-     * {@link module:esri/widgets/Compass/CompassViewModel} class to access
-     * all properties and methods on the widget.
-     *
-     * @name viewModel
-     * @instance
-     * @type {module:esri/widgets/Compass/CompassViewModel}
-     * @autocast
-     */
+      /**
+       * The view model for this widget. This is a class that contains all the logic
+       * (properties and methods) that controls this widget's behavior. See the
+       * {@link module:esri/widgets/Compass/CompassViewModel} class to access
+       * all properties and methods on the widget.
+       *
+       * @name viewModel
+       * @instance
+       * @type {module:esri/widgets/Compass/CompassViewModel}
+       * @autocast
+       */
+      viewModel: {
+        type: CompassViewModel
+      }
+
+    },
 
     //--------------------------------------------------------------------------
     //
@@ -254,7 +252,8 @@ function (
 
     _handleState: function (value) {
       var disabled  = value === "disabled",
-          showNorth = value === "rotation" ? "rotation" : "compass"; // compass is also shown when disabled
+          icon      = value === "rotation" ? "rotation" : "compass", // compass is also shown when disabled
+          showNorth = icon === "compass";
 
       domClass.toggle(this.domNode, CSS.disabled, disabled);
       domClass.toggle(this.domNode, CSS.interactive, !disabled);

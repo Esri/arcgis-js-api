@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define(["../../core/declare","../../core/JSONSupporter"],function(t,e){var r=t(e,{declaredClass:"esri.tasks.support.RasterData",classMetadata:{reader:{add:["itemId"],exclude:["itemID"]}},format:null,itemId:null,_itemIdReader:function(t,e){return e.itemId},url:null,toJSON:function(){var t={};return this.url&&(t.url=this.url),this.format&&(t.format=this.format),this.itemId&&(t.itemID=this.itemId),t}});return r});

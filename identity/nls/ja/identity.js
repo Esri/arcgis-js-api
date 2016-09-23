@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define({lblItem:"アイテム",title:"サイン イン",info:"{server} {resource} のアイテムにアクセスするにはサイン インしてください",oAuthInfo:"続行するには、サイン インしてください。",lblUser:"ユーザー名:",lblPwd:"パスワード:",lblOk:"可",lblSigning:"サイン インしています...",lblCancel:"キャンセル",errorMsg:"ユーザー名またはパスワードが無効です。もう一度やり直してください。",invalidUser:"入力したユーザー名またはパスワードが正しくありません。",forbidden:"ユーザー名とパスワードは有効ですが、このリソースへのアクセス権がありません。",noAuthService:"認証サービスにアクセスできません。"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define({noFilterFields:"A camada ${name} não tem campos que possam ser utilizados para filtragem.",addToViewer:"Adicionar camada a mapa",noItemsToDisplay:"Não há itens atualmente disponíveis para exibir.",searchFor:"Pesquisar por",searching:"Pesquisando",items:{organizationLabel:"A Organização",onlineLabel:"ArcGIS Online",contentLabel:"O Meu Conteúdo",favoritesLabel:"Os Meus Favoritos"},title:"Seleccionar Mapa Web",searchTitle:"Pesquisar",ok:"Ok",cancel:"Cancelar",placeholder:"Introduzir termo de pesquisa",instructionsLeft:"O que quer fazer?",instructionsRight:"Seleccione uma aplicação configurável.",go:"Ir para",selectDetails:"SELECCIONAR",configure:"Criar",close:"Fechar",learnMoreConfigurableApps:"Saiba mais sobre aplicações configuráveis"});

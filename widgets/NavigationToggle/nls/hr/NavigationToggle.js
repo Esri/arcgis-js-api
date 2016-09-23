@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define({toggle:"Toggle to pan or rotate in 3D"});
+define({toggle:"Prebacuj se između kretanja po slici ili rotacije u 3D"});

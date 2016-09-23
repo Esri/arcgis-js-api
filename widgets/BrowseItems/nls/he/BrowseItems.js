@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define({noFilterFields:"לשכבה ${name} אין שדות שניתן להשתמש בהם עבור הסינון.",addToViewer:"הוסף שכבה למפה",noItemsToDisplay:"כרגע אין פריטים זמינים לצפיה.",searchFor:"חפש",searching:"מחפש",items:{organizationLabel:"הארגון שלי",onlineLabel:"ArcGIS Online",contentLabel:"התוכן שלי",favoritesLabel:"המועדפים שלי"},title:"בחר Web Map",searchTitle:"חפש",ok:"אישור",cancel:"ביטול",placeholder:"הכנס מונח לחיפוש",instructionsLeft:"מה ברצונך לעשות?",instructionsRight:"בחר אפליקציה ניתנת להגדרה.",go:"הפעל",selectDetails:"בחר",configure:"צור",close:"סגור",learnMoreConfigurableApps:"למד עוד אודות אפליקציות ניתנות להגדרה"});

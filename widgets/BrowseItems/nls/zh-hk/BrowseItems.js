@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define({noFilterFields:"圖層 ${name} 不包含可用於篩選的欄位。",addToViewer:"將圖層新增到地圖",noItemsToDisplay:"目前沒有可顯示的項目。",searchFor:"搜尋內容",searching:"正在搜尋",items:{organizationLabel:"我的組織",onlineLabel:"ArcGIS Online",contentLabel:"我的內容",favoritesLabel:"我的最愛"},title:"選擇 Web 地圖",searchTitle:"搜尋",ok:"確定",cancel:"取消",placeholder:"輸入搜尋詞彙",instructionsLeft:"您希望操作的是什麼?",instructionsRight:"選擇一個可配置的應用程式。",go:"轉到",selectDetails:"選擇",configure:"建立(C)",close:"關閉",learnMoreConfigurableApps:"瞭解有關可配置應用程式的詳細資訊"});

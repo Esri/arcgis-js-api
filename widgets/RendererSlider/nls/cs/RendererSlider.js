@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define({statsAvg:"Průměrná : ${avg}",count:"Počet: ${count}",percent:"${num}%",high:"Vysoká",low:"Nízká",color:{changeMinMaxToolTIp:"Zadejte hodnotu.",handleToolTip:"Přiřadit barvy podle hodnoty dat.",maxValueToolTip:"Zadat největší očekávanou datovou hodnotu.",minValueToolTip:"Zadat nejmenší očekávanou datovou hodnotu.",changeSymbol:"Změnit symbol"},size:{handleToolTip:"Přiřadit velikost symbolu podle hodnoty dat.",sizeInputBoxLines:"Nastavte tloušťku čáry mezi 0 a 18 pixely.",sizeInputBoxPoints:"Nastavte velikost symbolu mezi 1 a 120 pixely."}});

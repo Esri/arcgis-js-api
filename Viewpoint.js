@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define(["./core/JSONSupporter","./Camera","./core/lang","./geometry/support/jsonUtils"],function(e,t,r,a){var o=e.createSubclass({declaredClass:"esri.Viewpoint",classMetadata:{properties:{camera:{type:t}}},rotation:0,_rotationSetter:function(e){return e%=360,0>e&&(e+=360),e},scale:0,targetGeometry:null,_targetGeometryReader:function(e){return a.fromJSON(e)},camera:null,_cameraReader:function(e){return t.fromJSON(e)},toJSON:function(){var e={scale:this.scale,rotation:this.rotation,targetGeometry:this.targetGeometry?this.targetGeometry.toJSON():void 0,camera:this.camera?this.camera.toJSON():void 0};return e.camera&&delete e.camera.fov,r.fixJson(e)},clone:function(){return new o({rotation:this.rotation,scale:this.scale,targetGeometry:this.targetGeometry?this.targetGeometry.clone():null,camera:this.camera?this.camera.clone():null})}});return o});

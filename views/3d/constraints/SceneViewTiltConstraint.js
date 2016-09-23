@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define(["../../../core/declare","../../../core/Accessoire","../support/mathUtils"],function(t,e,a){var i=.5,n=179.5,s=t([e],{declaredClass:"esri.views.3d.constraints.SceneViewTiltConstraint",classMetadata:{properties:{mode:{},max:{}}},constructor:function(){this._max=i},max:i,mode:"auto",autoUpdate:function(t){"auto"===this.mode&&this._max!==t&&(this._max=t,this.notifyChange("max"))},_maxSetter:function(t){this.mode="manual",this._max=a.clamp(t,i,n)},_maxGetter:function(){return this._max},scale:function(){}});return s.MAX_DEFAULT=i,s.MIN_DEFAULT=n,s});
+define(["../../../core/Accessor","../support/mathUtils"],function(t,e){var s=.5,a=179.5,i=t.createSubclass([],{declaredClass:"esri.views.3d.constraints.SceneViewTiltConstraint",properties:{mode:{value:"auto"},max:{value:s,cast:function(t){return e.clamp(t,s,a)},set:function(t){this._set("max",t),this.mode="manual"}}},autoUpdate:function(t){"auto"===this.mode&&this._get("max")!==t&&this._set("max",t)},scale:function(t){}});return i.MAX_DEFAULT=s,i.MIN_DEFAULT=a,i});

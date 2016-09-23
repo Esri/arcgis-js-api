@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define({noFilterFields:"ชั้นข้อมูล ${name} ไม่มีฟิลด์ที่สามารถใช้กับการกรองข้อมูล",addToViewer:"เพิ่มชั้นข้อมูลไปยังแผนที่",noItemsToDisplay:"ปัจจุบันไม่มีรายการที่สามารถแสดงผลได้",searchFor:"ค้นหา",searching:"กำลังค้นหา",items:{organizationLabel:"องค์กรของฉัน",onlineLabel:"ArcGIS Online",contentLabel:"เนื้อหาของฉัน",favoritesLabel:"รายการโปรดของฉัน"},title:"เลือกเว็บแมพ",searchTitle:"ค้นหา",ok:"ตกลง",cancel:"ยกเลิก",placeholder:"ใส่เงื่อนไขการค้นหา",instructionsLeft:"คุณต้องการจะทำอะไร?",instructionsRight:"เลือกแอพพลิเคที่กำหนดเอง",go:"ไป",selectDetails:"เลือก",configure:"สร้าง",close:"ปิด",learnMoreConfigurableApps:"เรียนรู้เพิ่มเติมเกี่ยวแอปพลิเคชันที่กำหนดค่าได้"});

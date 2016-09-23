@@ -1,0 +1,199 @@
+@mixin legend() {
+  .esri-legend {
+    @include scrollbarY(rgba($background_inverse_color, 0.1), rgba($background_inverse_color, 0.5));
+  }
+
+  .esri-legend__message {
+    padding: 0.5em 1em;
+  }
+
+  .esri-legend__service {
+    word-wrap: break-word;
+  }
+
+  .esri-legend__service-label {
+    margin: 0 0 floor($cap_spacing/2) 0;
+    font-size: $h2_text_size;
+    font-weight: $text_weight_header;
+  }
+
+  .esri-legend__layer-table {
+    display: table;
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: $cap_spacing;
+  }
+
+  .esri-legend__layer-child-table {
+    display: table;
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: $cap_spacing;
+    margin-left: floor($side_spacing/2);
+  }
+
+  .esri-legend__layer-body {
+    display: table-row-group;
+  }
+
+  .esri-legend__layer-row {
+    display: table-row;
+  }
+
+  .esri-legend__layer-cell {
+    display: table-cell;
+    min-width: 100px;
+    vertical-align: middle;
+    word-break: break-word;
+    padding: floor($cap_spacing/3) 0;
+  }
+
+  .esri-legend__layer-cell--symbols {
+    min-width: 10px;
+    text-align: center;
+  }
+
+  .esri-legend__layer-cell--info {
+    padding-left: floor($side_spacing/2);
+    padding-right: floor($side_spacing/2);
+    max-width: 250px;
+    overflow: hidden;
+    white-space: nowrap;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+  }
+
+  .esri-legend__symbol {
+    display: block;
+    margin: auto;
+  }
+
+  .esri-legend__layer-caption {
+    display: table-caption;
+    padding: floor($cap_spacing/2) 0;
+  }
+
+  .esri-legend__ramp-labels {
+    @include flexDisplay();
+    @include flexFlow(column, nowrap);
+    @include justifyContent(space-between);
+  }
+
+  .esri-legend__ramps {
+    margin-left: floor($side_spacing/4);
+  }
+
+  .esri-legend__color-ramp {
+    width: 24px;
+  }
+
+  .esri-legend__opacity-ramp {
+    background-image: url("../base/images/transparent-bg.png");
+  }
+
+  .esri-legend__ramp-tick {
+    position: absolute;
+    width: 4px;
+    border-top: 1px solid $border_color;
+    line-height: 0;
+    right: 1px;
+    left: auto;
+  }
+
+  .esri-legend__ramp-label {
+    position: relative;
+    padding: 0 floor($side_spacing/2);
+    white-space: nowrap;
+    line-height: 1em;
+    font-size: $text_size_small;
+    font-weight: $text_weight_title;
+    &:before {
+      position: absolute;
+      top: .25em;
+      left: floor($side_spacing/2)*-1;
+      display: block;
+      content: "";
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 3px 4px 3px 0;
+      border-color: transparent rgba($background_inverse_color, 0.5) transparent transparent;
+    }
+    &:first-child {
+      margin-top: floor($text_size/3) * -1;
+    }
+    &:last-child {
+      bottom: floor($text_size/4) * -1;
+    }
+  }
+
+  .esri-legend-layer-caption {
+    display: table-caption;
+    padding: floor($cap_spacing/2) 0;
+  }
+
+  .esri-ui-corner {
+    .esri-legend {
+      padding: $cap_spacing 0;
+    }
+    .esri-legend__service {
+      padding: $cap_spacing $side_spacing 0 $side_spacing;
+    }
+  }
+
+  //////////////////////////////
+  // UI CORNER
+  .esri-ui-corner {
+    .esri-legend {
+      padding: $cap_spacing 0;
+      min-width: 180px;
+      max-width: 350px;
+    }
+    .esri-legend__service {
+      padding: $cap_spacing $side_spacing 0 $side_spacing;
+    }
+  }
+  // UI CORNER
+  //////////////////////////////
+
+  //////////////////////////////
+  // VIEW SIZES
+  .esri-view-height-greater-than-medium {
+    .esri-ui-corner .esri-legend {
+      max-height: 540px;
+    }
+  }
+
+  .esri-view-height-medium {
+    .esri-ui-corner .esri-legend {
+      max-height: 480px;
+    }
+  }
+
+  .esri-view-height-small {
+    .esri-ui-corner .esri-legend {
+      max-height: 380px;
+    }
+  }
+
+  .esri-view-height-xsmall {
+    .esri-ui-corner .esri-legend {
+      max-height: 240px;
+    }
+  }
+  // VIEW SIZES
+  //////////////////////////////
+
+  html[dir="rtl"] {
+    .esri-legend__ramp-label:before {
+      border-width: 3px 0 3px 4px;
+      border-color: transparent transparent transparent rgba($background_inverse_color, 0.5);
+      left: auto;
+      right: floor($side_spacing/2)*-1;
+    }
+  }
+}
+
+@if $include_Legend == true {
+  @include legend();
+}

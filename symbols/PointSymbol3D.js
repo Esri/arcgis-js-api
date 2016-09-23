@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define(["../core/declare","../core/lang","./Symbol3D"],function(e,o,l){var n=e(l,{declaredClass:"esri.symbol.PointSymbol3D",type:"point-symbol-3d",_allowedLayerTypes:["Icon","Object","Text"],clone:function(){return new n({symbolLayers:o.clone(this.symbolLayers)})}});return n});
+define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/lang","./Symbol3D","../core/accessorSupport/decorators"],function(e,o,r,t,s,p,c){var n=function(e){function o(o){e.call(this),this.type="point-symbol-3d"}return r(o,e),o.prototype.clone=function(){return new o({symbolLayers:s.clone(this.symbolLayers)})},t([c.property()],o.prototype,"type",void 0),t([c.shared(["Icon","Object","Text"])],o.prototype,"_allowedLayerTypes",void 0),o=t([c.subclass("esri.symbols.PointSymbol3D")],o)}(c.declared(p));return n});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define({noFilterFields:"Laget ${name} har ikke nogen felter, der kan bruges til filtrering.",addToViewer:"Føj lag til kort",noItemsToDisplay:"Der er ikke nogen elementer at vise på nuværende tidspunkt.",searchFor:"Søg efter",searching:"Søger",items:{organizationLabel:"Min organisation",onlineLabel:"ArcGIS Online",contentLabel:"Mit indhold",favoritesLabel:"My Favorites"},title:"Vælg webkort",searchTitle:"Søg",ok:"Ok",cancel:"Annullér",placeholder:"Enter search term",instructionsLeft:"Hvad vil du gerne gøre?",instructionsRight:"Vælg en konfigurérbar app.",go:"Start",selectDetails:"VÆLG",configure:"Opret",close:"Luk",learnMoreConfigurableApps:"Lær mere om konfigurérbare apps"});

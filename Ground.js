@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define(["require","exports","./core/tsSupport/extendsHelper","./core/tsSupport/decorateHelper","./core/Accessoire","./core/Collection","./core/collectionUtils","./layers/Layer","./core/accessoireSupport/typescript"],function(e,r,t,o,s,c,p,l,n){var i=function(e){function r(){e.call(this),this.layers=null}return t(r,e),r.prototype.getDefaults=function(){return{layers:[]}},o([n.shared("esri.Ground")],r.prototype,"declaredClass",void 0),o([n.property({type:c.ofType(l),setter:p.referenceSetter})],r.prototype,"layers",void 0),r=o([n.subclass()],r)}(s);return i});
+define(["require","exports","./core/tsSupport/declareExtendsHelper","./core/tsSupport/decorateHelper","./core/accessorSupport/decorators","./core/Accessor","./core/Collection","./core/collectionUtils","./core/Logger","./layers/Layer"],function(e,r,t,o,s,a,l,c,n,i){var y=l.ofType(i),p=n.getLogger("esri.Ground"),d=function(e){function r(r){e.call(this),this.layers=new y,this.layers.on("after-add",function(e){var r=e.item;"esri.layers.ElevationLayer"!==r.declaredClass&&p.error("Layer '"+r.title+", id:"+r.id+"' of type '"+r.declaredClass+"' cannot be added as a ground layer. Only layers of type esri.layers.ElevationLayer are supported.")})}return t(r,e),Object.defineProperty(r.prototype,"layers",{set:function(e){this._set("layers",c.referenceSetter(e,this._get("layers"),y))},enumerable:!0,configurable:!0}),r.prototype.clone=function(){return new r({layers:this.layers.slice()})},o([s.property({type:y}),s.cast(c.castForReferenceSetter)],r.prototype,"layers",null),r=o([s.subclass("esri.Ground")],r)}(s.declared(a));return d});

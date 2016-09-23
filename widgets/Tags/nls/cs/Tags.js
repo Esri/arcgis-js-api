@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define({addTags:"Přidat klíčová slova",noTagsFound:"Neodpovídají žádná klíčová slova.",required:"Je vyžadováno alespoň jedno klíčové slovo."});
+define({addTags:"Přidat klíčová slova",noTagsFound:"Neodpovídají žádná klíčová slova.",required:"Je vyžadováno jedno nebo více klíčových slov."});

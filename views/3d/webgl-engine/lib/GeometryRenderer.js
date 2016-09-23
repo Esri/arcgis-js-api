@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define(["require","exports","./GLVBO","../materials/internal/MaterialUtil"],function(t,i,e,r){var n=function(){function t(t,i,n,o){this._drawMode=4,this._layout=i;var s=t.faces;this._count=s.indices[s.positionKey].length;var a=new Float32Array(this._count*i.getStride());(n||r.fillInterleaved)(t,void 0,void 0,null,i,a,0),this._gl=o,this._vbo=new e(a,i,o)}return t.prototype.enablePointRendering=function(t){this._drawMode=t?0:4},t.prototype.render=function(t){this._vbo.bind(),this._vbo.setPointers(t),this._layout.enableVertexAttribArrays(this._gl,t),this._gl.drawArrays(this._drawMode,0,this._count),this._layout.disableVertexAttribArrays(this._gl,t),this._gl.bindBuffer(34962,null)},t}();return n});
+define(["require","exports","../materials/internal/MaterialUtil","./DefaultVertexAttributeLocations","../../../webgl/VertexArrayObject","../../../webgl/BufferObject","../../../webgl/Util","../../../webgl/enums"],function(t,e,r,i,n,o,a,l){var s=function(){function t(t,e,l,s){this._drawMode=4,this._layout=e;var u=t.faces;this._count=u.indices[u.positionKey].length;var d=new Float32Array(this._count*a.getStride(e)/4);l?l(t,void 0,void 0,null,e,d,0):r.fillInterleaved(t,void 0,void 0,null,e,d,0),this._rctx=s,this._vao=new n(s,i.Default3D,{geometry:e},{geometry:o.createVertex(s,35044,d)})}return t.prototype.enablePointRendering=function(t){this._drawMode=t?0:4},t.prototype.render=function(t){var e=this._rctx;e.bindVAO(this._vao),a.assertCompatibleVertexAttributeLocations(this._vao,t),e.drawArrays(this._drawMode,0,this._count)},t}();return s});

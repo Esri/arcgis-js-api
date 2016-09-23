@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define(["../../geometry/ScreenPoint"],function(e){return{toScreenPoint:function(n,r,t){var o;return t||(t=new e),Array.isArray(n)?(o=n,n=o[0],r=o[1]):"object"==typeof n&&(o=n,n=o.x,r=o.y),t.x=n,t.y=r,t}}});

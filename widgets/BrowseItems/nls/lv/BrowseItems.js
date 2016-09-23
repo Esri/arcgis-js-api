@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define({noFilterFields:"Slānim ${name} nav lauku, kurus var izmantot filtrēšanai.",addToViewer:"Pievienot slāni kartei",noItemsToDisplay:"Nav vienību, ko pašlaik iespējams parādīt.",searchFor:"Meklēt šādu vienību",searching:"Meklē",items:{organizationLabel:"Mana organizācija",onlineLabel:"ArcGIS Online",contentLabel:"Mans Saturs",favoritesLabel:"Mani favorīti"},title:"Izvēlieties tīmekļa karti",searchTitle:"Meklēt",ok:"Labi",cancel:"Atcelt",placeholder:"Ievadiet meklēšanas terminu",instructionsLeft:"Ko vēlaties darīt?",instructionsRight:"Izvēlieties konfigurējamu lietotni.",go:"Doties",selectDetails:"IZVĒLĒTIES",configure:"Izveidot",close:"Aizvērt",learnMoreConfigurableApps:"Papildinformācija par konfigurējamām lietotnēm"});

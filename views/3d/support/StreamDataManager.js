@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define(["../../../core/declare","./StreamDataLoader"],function(e,t){var n=e(null,{_clientType:void 0,_loader:void 0,constructor:function(e,t,n){this._clientType=e,this._loader=t,this._addUrlTokenFunction=n},request:function(e,t,n){return this._loader.request(e,t,this._clientType,n,this._addUrlTokenFunction)},isRequested:function(e){return this._loader.isRequested(e)},cancelRequest:function(e){this._loader.cancel(e)},getRequestedURLs:function(){return this._loader.getRequestedURLs(this._clientType)},cancelRequestsBulk:function(e){this._loader.cancelBulk(e,this._clientType)}});return e(null,{constructor:function(e){this._loader=new t(e)},destroy:function(){this._loader.destroy(),this._loader=null},hasPendingDownloads:function(){return this._loader.hasPendingDownloads()},makeSupplier:function(e,t){return new n(e,this._loader,t)}})});

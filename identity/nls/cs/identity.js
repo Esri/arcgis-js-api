@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define({lblItem:"položka",title:"Přihlásit",info:"Chcete-li získat přístup k položce na serveru {server} {resource}, přihlaste se.",oAuthInfo:"Aby bylo možné pokračovat, je nutné se přihlásit.",lblUser:"Uživatelské jméno:",lblPwd:"Heslo:",lblOk:"OK",lblSigning:"Přihlašování…",lblCancel:"Storno",errorMsg:"Neplatné uživatelské jméno či heslo. Opakujte akci.",invalidUser:"Zadané uživatelské jméno nebo heslo je nesprávné.",forbidden:"Uživatelské jméno a heslo jsou platné, ale nemáte přístup k tomuto zdroji.",noAuthService:"Nezdařil se přístup k ověřovací službě."});

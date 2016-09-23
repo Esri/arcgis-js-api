@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define({statsAvg:"Moyenne : ${avg}",count:"Nombre : ${count}",percent:"${num}%",high:"Elevé",low:"Faible",color:{changeMinMaxToolTIp:"Entrez une valeur.",handleToolTip:"Appariez les valeurs de données aux couleurs.",maxValueToolTip:"Saisissez la valeur de donnée attendue la plus importante.",minValueToolTip:"Saisissez la valeur de donnée attendue la moins importante.",changeSymbol:"Modifier le symbole"},size:{handleToolTip:"Appariez les valeurs de données à la taille du symbole.",sizeInputBoxLines:"Définissez l'épaisseur de la ligne de 0 à 18 pixels.",sizeInputBoxPoints:"Définir la taille du symbole de 1 à 120 pixels"}});

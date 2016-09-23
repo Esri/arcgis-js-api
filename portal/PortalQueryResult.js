@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define(["require","exports","../core/tsSupport/extendsHelper","../core/tsSupport/decorateHelper","../core/accessoireSupport/typescript","../core/Accessoire"],function(r,e,t,o,p,s){var l=function(r){function e(){r.call(this),this.nextQueryParams=null,this.queryParams=null,this.results=null,this.total=null}return t(e,r),o([p.shared("esri.portal.PortalQueryResult")],e.prototype,"declaredClass",void 0),o([p.property()],e.prototype,"nextQueryParams",void 0),o([p.property()],e.prototype,"queryParams",void 0),o([p.property()],e.prototype,"results",void 0),o([p.property()],e.prototype,"total",void 0),e=o([p.subclass()],e)}(s);return l});
+define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/accessorSupport/decorators","../core/Accessor"],function(r,e,t,o,s,p){var l=function(r){function e(e){r.call(this),this.nextQueryParams=null,this.queryParams=null,this.results=null,this.total=null}return t(e,r),o([s.property()],e.prototype,"nextQueryParams",void 0),o([s.property()],e.prototype,"queryParams",void 0),o([s.property()],e.prototype,"results",void 0),o([s.property()],e.prototype,"total",void 0),e=o([s.subclass("esri.portal.PortalQueryResult")],e)}(s.declared(p));return l});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define(["dojo/text!./BlendLayers.xml","../../lib/GLSLProgram","../../lib/GLSLShader"],function(e,r,a){var n={loadShaders:function(n,d,l,S){n._parse(e);var t=new a(S.VERTEX_SHADER,n.vertexShaderBlendLayers,S),L=new a(S.FRAGMENT_SHADER,n.fragmentShaderBlendLayers,S),o=new r([t,L],S);l.add("blendlayers",o)}};return n});
+define(["dojo/text!./BlendLayers.xml","../../../../webgl/Program","../../lib/DefaultVertexAttributeLocations"],function(e,r,a){var t={loadShaders:function(t,n,d,l){t._parse(e);var o=new r(l,t.vertexShaderBlendLayers,t.fragmentShaderBlendLayers,a.Default3D);d.add("blendlayers",o)}};return t});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define({noFilterFields:"Vrstva ${name} neobsahuje pole použitelná k filtrování.",addToViewer:"Přidat vrstvu do mapy",noItemsToDisplay:"Momentálně nejsou k dispozici žádné položky.",searchFor:"Hledat",searching:"Vyhledávání",items:{organizationLabel:"Moje organizace",onlineLabel:"ArcGIS Online",contentLabel:"Můj obsah",favoritesLabel:"Moje oblíbené"},title:"Vybrat webovou mapu",searchTitle:"Hledat",ok:"OK",cancel:"Storno",placeholder:"Zadat vyhledávací výraz",instructionsLeft:"Co chcete dělat?",instructionsRight:"Vyberte konfigurovatelnou aplikaci.",go:"Přejít",selectDetails:"VÝBĚR",configure:"Vytvořit",close:"Zavřít",learnMoreConfigurableApps:"Další informace o konfigurovatelných aplikacích"});

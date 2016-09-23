@@ -1,0 +1,14 @@
+/*
+  Theme: Light Green
+*/
+@import "../base/colors/scss/variables.scss";
+// ↳ https://github.com/Esri/calcite-colors.git
+
+$text_color              : $Calcite_Gray_650;
+$background_color        : $Calcite_Highlight_Green_150;
+$anchor_color            : $Calcite_Gray_700;
+$anchor_hover_color      : $Calcite_Gray_650;
+$button_text_color       : $Calcite_Gray_650;
+$button_text_hover_color : $Calcite_Gray_700;
+
+@import "../base/core";

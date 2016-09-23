@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define(["./Graphics3DIconSymbolLayer","./Graphics3DObjectSymbolLayer","./Graphics3DLineSymbolLayer","./Graphics3DPathSymbolLayer","./Graphics3DFillSymbolLayer","./Graphics3DExtrudeSymbolLayer","./Graphics3DTextSymbolLayer","../../webgl-engine/lib/Util"],function(e,r,a,y,i,n,t,l){var c=l.assert,o={Icon:e,Object:r,Line:a,Path:y,Fill:i,Extrude:n,Text:t},b={make:function(e,r,a){var y=o[e.type];c(y,"unknown symbol type "+e.type);var i=new y(e,r,a);return i}};return b});

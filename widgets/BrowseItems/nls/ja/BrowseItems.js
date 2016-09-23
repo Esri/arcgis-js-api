@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define({noFilterFields:"レイヤー ${name} に、フィルターで使用できるフィールドがありません。",addToViewer:"レイヤーをマップに追加",noItemsToDisplay:"表示できるアイテムは現在ありません。",searchFor:"検索",searching:"検索しています",items:{organizationLabel:"組織",onlineLabel:"ArcGIS Online",contentLabel:"マイ コンテンツ",favoritesLabel:"お気に入り"},title:"Web マップの選択",searchTitle:"検索",ok:"OK",cancel:"キャンセル",placeholder:"検索語句の入力",instructionsLeft:"目的:",instructionsRight:"テンプレートの選択",go:"移動",selectDetails:"選択",configure:"作成",close:"閉じる",learnMoreConfigurableApps:"テンプレートの詳細"});

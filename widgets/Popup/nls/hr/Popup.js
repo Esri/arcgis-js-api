@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define({zoom:"Zoom to",next:"Next feature",previous:"Previous feature",close:"Close",dock:"Dock",undock:"Undock",menu:"Menu",untitled:"Untitled",pageText:"{index} of {total}",noFeaturesFound:"No features found",selectedFeature:"Selected feature",selectedFeatures:"{total} results",loading:"Loading"});
+define({zoom:"Povećaj na",next:"Sljedeći geoobjekt",previous:"Prethodni geoobjekt",close:"Zatvori",dock:"Spoji",undock:"Odspoji",menu:"Izbornik",untitled:"Neimenovano",pageText:"{index} od {total}",noFeaturesFound:"Nema geoobjekata",selectedFeature:"Odabrani geoobjekt",selectedFeatures:"Rezultati: {total}",loading:"Učitavanje"});

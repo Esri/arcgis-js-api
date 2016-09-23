@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 /**
  * The Attribution displays attribution text for the layers in a map.
@@ -36,6 +36,9 @@
  *
  * ![attribution](../assets/img/apiref/widgets/attribution.png)
  *
+ * ::: esri-md class="panel trailer-1"
+ * For additional information on working with attribution please visit the official [attribution in your app](https://developers.arcgis.com/terms/attribution) documentation for detailed guidelines.
+ * :::
  * @module esri/widgets/Attribution
  * @since 4.0
  *
@@ -99,15 +102,6 @@ function(
     /** @lends module:esri/widgets/Attribution.prototype */
     {
 
-      properties: {
-        viewModel: {
-          type: AttributionViewModel
-        },
-        view: {
-          dependsOn: ["viewModel.view"]
-        }
-      },
-
       declaredClass: "esri.widgets.Attribution",
 
       baseClass: CSS.base,
@@ -150,36 +144,43 @@ function(
       //
       //--------------------------------------------------------------------------
 
-      //----------------------------------
-      //  view
-      //----------------------------------
+      properties: /** @lends module:esri/widgets/Attribution.prototype */ {
 
-      /**
-       * A reference to the {@link module:esri/views/MapView MapView} or {@link module:esri/views/Scene SceneView}. Set this to link the widget to a specific view.
-       *
-       * @type {(module:esri/views/SceneView|module:esri/views/MapView)}
-       * @name view
-       * @instance
-       */
-      _getViewAttr: viewModelWiring.createGetterDelegate("view"),
+        //----------------------------------
+        //  view
+        //----------------------------------
 
-      _setViewAttr: viewModelWiring.createSetterDelegate("view"),
+        /**
+         * A reference to the {@link module:esri/views/MapView} or {@link module:esri/views/SceneView}. Set this to link the widget to a specific view.
+         *
+         * @type {(module:esri/views/SceneView|module:esri/views/MapView)}
+         * @name view
+         * @instance
+         */
+        view: {
+          aliasOf: "viewModel.view"
+        },
 
-      //----------------------------------
-      //  viewModel
-      //----------------------------------
+        //----------------------------------
+        //  viewModel
+        //----------------------------------
 
-      /**
-       * The view model for this widget. This is a class that contains all the logic
-       * (properties and methods) that controls this widget's behavior. See the
-       * {@link module:esri/widgets/Attribution/AttributionViewModel} class to access
-       * all properties and methods on the widget.
-       *
-       * @name viewModel
-       * @instance
-       * @autocast
-       * @type {module:esri/widgets/Attribution/AttributionViewModel}
-       */
+        /**
+         * The view model for this widget. This is a class that contains all the logic
+         * (properties and methods) that controls this widget's behavior. See the
+         * {@link module:esri/widgets/Attribution/AttributionViewModel} class to access
+         * all properties and methods on the widget.
+         *
+         * @name viewModel
+         * @instance
+         * @autocast
+         * @type {module:esri/widgets/Attribution/AttributionViewModel}
+         */
+        viewModel: {
+          type: AttributionViewModel
+        }
+
+      },
 
       //--------------------------------------------------------------------------
       //

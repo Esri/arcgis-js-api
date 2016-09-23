@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define({lblItem:"elementas",title:"Prisijunkite",info:"Prisijunkite, kad gautumėte prieigą prie šio elemento serveryje {server} {resource}",oAuthInfo:"Prisijunkite, kad galėtumėte tęsti.",lblUser:"Vartotojo vardas:",lblPwd:"Slaptažodis:",lblOk:"Gerai",lblSigning:"Prisijungiama...",lblCancel:"Atšaukti",errorMsg:"Netinkamas paskyros vardas arba slaptažodis. Pabandykite iš naujo.",invalidUser:"Įvestas neteisingas paskyros vardas arba slaptažodis.",forbidden:"Paskyros vardas ir slaptažodis yra teisingi, tačiau jūs neturite teisių naudotis šiuo resursu.",noAuthService:"Autentikacijos paslauga nepasiekiama."});

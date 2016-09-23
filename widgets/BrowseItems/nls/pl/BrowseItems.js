@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define({noFilterFields:"Warstwa ${name} nie zawiera pól, których można by użyć do filtrowania.",addToViewer:"Dodaj warstwę do mapy",noItemsToDisplay:"Obecnie nie ma elementów do wyświetlenia.",searchFor:"Wyszukaj",searching:"Wyszukiwanie",items:{organizationLabel:"Moja instytucja",onlineLabel:"ArcGIS Online",contentLabel:"Moje zasoby",favoritesLabel:"Moje ulubione"},title:"Wybór mapy internetowej",searchTitle:"Wyszukaj",ok:"OK",cancel:"Anuluj",placeholder:"Wprowadź wyszukiwane wyrażenie",instructionsLeft:"Co chcesz zrobić?",instructionsRight:"Wybierz konfigurowalną aplikację.",go:"Przejdź",selectDetails:"WYBIERZ",configure:"Utwórz",close:"Zamknij",learnMoreConfigurableApps:"Dodatkowe informacje o konfigurowalnych aplikacjach"});

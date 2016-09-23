@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define(["./declare","./Accessor","./accessorSupport/read"],function(r,e,a){var n=e.createSubclass({declaredClass:"esri.core.JSONSupport",read:a.read}),c=function(r){if(!r)return null;if(r.declaredClass)throw new Error("JSON object is already hydrated");var e=this,a=new e;return a.read(r),a};return r.after(function(e){r.hasMixin(e,n)&&(e.fromJSON=c.bind(e))}),n});
+define(["require","exports","./tsSupport/declareExtendsHelper","./tsSupport/decorateHelper","./Accessor","./declare","./accessorSupport/read","./accessorSupport/write","./accessorSupport/decorators"],function(r,e,t,o,n,s,u,i,a){function c(r,e){if(!r)return null;if(r.declaredClass)throw new Error("JSON object is already hydrated");var t=this,o=new t;return o.read(r,e),o}var p=function(r){function e(){r.apply(this,arguments)}return t(e,r),e.prototype.read=function(r,e){return u["default"](this,r,e),this},e.prototype.write=function(r,e){return i["default"](this,r||{},e)},e.prototype.toJSON=function(r){return this.write(null,r)},e=o([a.subclass("esri.core.JSONSupport")],e)}(a.declared(n));return p.prototype.toJSON.isDefaultToJSON=!0,s.after(function(r){s.hasMixin(r,p)&&(r.fromJSON=c.bind(r))}),p});

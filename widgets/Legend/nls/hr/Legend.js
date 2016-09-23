@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define({points:"Points",lines:"Lines",polygons:"Polygons",creatingLegend:"Creating legend",noLegend:"No legend",dotValue:"1 Dot = {value} {unit}",currentObservations:"Current observations",previousObservations:"Previous observations",high:"High",low:"Low",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"knots",esriFeetPerSecond:"ft/sec",esriMilesPerHour:"mph",showField:"{field}",showNormField:"{field} divided by {normField}",showNormPct:"{field} as a percent of the total",showRatio:"Ratio of {field} to {normField}",showRatioPercent:"{field} as a percent of {normField}",showRatioPercentTotal:"{field} as a percent of {field} and {normField}"});
+define({points:"Točke",lines:"Linije",polygons:"Poligoni",creatingLegend:"Stvaranje legende",noLegend:"Bez legende",dotValue:"1 točka = {value} {unit}",currentObservations:"Trenutačne primjedbe",previousObservations:"Prethodne primjedbe",high:"Visoko",low:"Nisko",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"čvorovi",esriFeetPerSecond:"ft/s",esriMilesPerHour:"mph",showField:"{field}",showNormField:"{field} podijeljeno s {normField}",showNormPct:"{field} kao postotak ukupne vrijednosti",showRatio:"Omjer {field} prema {normField}",showRatioPercent:"{field} kao postotak od {normField}",showRatioPercentTotal:"{field} kao postotak od {field} i {normField}"});

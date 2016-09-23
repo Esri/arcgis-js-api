@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define(["../../core/lang","./Domain"],function(e,r){var n=r.createSubclass({declaredClass:"esri.layers.support.RangeDomain",properties:{maxValue:{json:{readFrom:["range"],read:function(e,r){return r.range&&r.range[1]}}},minValue:{json:{readFrom:["range"],read:function(e,r){return r.range&&r.range[0]}}},type:{value:"range"}},toJSON:function(){var r=this.inherited(arguments);return r.range=[this.minValue,this.maxValue],e.fixJson(r)}});return n});

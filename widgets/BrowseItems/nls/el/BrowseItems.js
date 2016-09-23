@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define({noFilterFields:"Το θεματικό επίπεδο ${name} δεν έχει πεδία που μπορούν να χρησιμοποιηθούν για φιλτράρισμα.",addToViewer:"Προσθήκη θεματικού επιπέδου στο χάρτη",noItemsToDisplay:"Δεν υπάρχουν αντικείμενα διαθέσιμα για εμφάνιση αυτήν τη στιγμή.",searchFor:"Αναζήτηση για",searching:"Αναζήτηση σε",items:{organizationLabel:"Οργανισμός",onlineLabel:"ArcGIS Online",contentLabel:"Περιεχόμενο",favoritesLabel:"Τα Αγαπημένα μου"},title:"Επιλογή web χάρτη",searchTitle:"Αναζήτηση",ok:"ΟΚ",cancel:"Ακύρωση",placeholder:"Εισαγάγετε όρο αναζήτησης",instructionsLeft:"Τι θέλετε να κάνετε:",instructionsRight:"Επιλέξτε μια παραμετροποιήσιμη εφαρμογή.",go:"Μετάβαση",selectDetails:"Επιλογή",configure:"Δημιουργία",close:"Κλείσιμο",learnMoreConfigurableApps:"Μάθετε περισσότερα για τις παραμετροποιήσιμες εφαρμογές"});

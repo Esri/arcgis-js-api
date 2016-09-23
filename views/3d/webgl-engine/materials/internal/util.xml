@@ -13,30 +13,30 @@
 ]]></snippet>
 
 <snippet name="float2rgba"><![CDATA[
-	vec4 float2rgba(const in float v) { 
-		vec4 enc = vec4(1.0, 255.0, 65025.0, 160581375.0) * v; 
-		enc = fract(enc); 
-		enc -= enc.yzww * vec4(1.0/255.0, 1.0/255.0, 1.0/255.0, 0.0); 
-		return enc; 
+	vec4 float2rgba(const in float v) {
+		vec4 enc = vec4(1.0, 255.0, 65025.0, 160581375.0) * v;
+		enc = fract(enc);
+		enc -= enc.yzww * vec4(1.0/255.0, 1.0/255.0, 1.0/255.0, 0.0);
+		return enc;
 	}
 ]]></snippet>
 
 <snippet name="rgba2float"><![CDATA[
-	float rgba2float(vec4 rgba) { 
-		return dot(rgba, vec4(1.0, 1.0/255.0, 1.0/65025.0, 1.0/160581375.0)); 
+	float rgba2float(vec4 rgba) {
+		return dot(rgba, vec4(1.0, 1.0/255.0, 1.0/65025.0, 1.0/160581375.0));
 	}
-]]></snippet>	
+]]></snippet>
 
 <snippet name="calcFragDepth"><![CDATA[
-	#extension GL_OES_standard_derivatives : enable 
+	#extension GL_OES_standard_derivatives : enable
 
 	float calcFragDepth(const in float depth) {
 		//calc polygon offset
-		const float SLOPE_SCALE = 2.0; 
-		const float BIAS = 2.0 * .000015259;		// 1 / (2^16 - 1) 
-		float m = max(abs(dFdx(depth)), abs(dFdy(depth))); 
-		float result = depth + SLOPE_SCALE * m + BIAS; 
-		return clamp(result, .0, .999999); 
+		const float SLOPE_SCALE = 2.0;
+		const float BIAS = 2.0 * .000015259;		// 1 / (2^16 - 1)
+		float m = max(abs(dFdx(depth)), abs(dFdy(depth)));
+		float result = depth + SLOPE_SCALE * m + BIAS;
+		return clamp(result, .0, .999999);
 	}
 ]]></snippet>
 
@@ -46,44 +46,42 @@
 	// "matrix" parameter used to have const qualifier as well, but IE11 couldn't deal with it at time of writing.
 	// once IE11 is fine with it, const should probably be re-introduced
 	float evalShadow(const in vec3 vpos, const in float depth, const in sampler2D depthTex, const int num, const in vec4 distance, in mat4 matrix[4], const in float halfPxSz) {
-		if (halfPxSz < .0) return .0;
-		
 		//choose correct cascade
-		int i = depth < distance[1] ? 0 : depth < distance[2] ? 1 : depth < distance[3] ? 2 : 3;		
+		int i = depth < distance[1] ? 0 : depth < distance[2] ? 1 : depth < distance[3] ? 2 : 3;
 
 		if (i >= num) return .0;
-		
+
 		mat4 mat = i == 0 ? matrix[0] : i == 1 ? matrix[1] : i == 2 ? matrix[2] : matrix[3];
-		
+
 		vec4 lv = mat * vec4(vpos, 1.0);
 		lv.xy /= lv.w;
-		
+
 		//vertex completely outside? -> no shadow
-		vec3 lvpos = .5 * lv.xyz + vec3(.5);		
-		if (lvpos.z >= 1.0) return .0;		
+		vec3 lvpos = .5 * lv.xyz + vec3(.5);
+		if (lvpos.z >= 1.0) return .0;
 		if (lvpos.x < .0 || lvpos.x > 1.0 || lvpos.y < .0 || lvpos.y > 1.0) return .0;
-		
+
 		//calc coord in cascade texture
 		vec2 uv = vec2(float(i - 2 * (i / 2)) *.5, float(i / 2) * .5) + .5 * lvpos.xy;
-		
-		float texSize = .5 / halfPxSz; 
+
+		float texSize = .5 / halfPxSz;
 
 		//filter, offset by half pixels
 		vec2 st = fract((vec2(halfPxSz) + uv) * texSize);
-		
-		float s00 = rgba2float(texture2D(depthTex, uv + vec2(-halfPxSz, -halfPxSz))) < lvpos.z ? 1.0 : .0; 
-		float s10 = rgba2float(texture2D(depthTex, uv + vec2(halfPxSz, -halfPxSz))) < lvpos.z ? 1.0 : .0; 
-		float s11 = rgba2float(texture2D(depthTex, uv + vec2(halfPxSz, halfPxSz))) < lvpos.z ? 1.0 : .0; 
-		float s01 = rgba2float(texture2D(depthTex, uv + vec2(-halfPxSz, halfPxSz))) < lvpos.z ? 1.0 : .0; 
 
-		return mix(mix(s00, s10, st.x), mix(s01, s11, st.x), st.y); 
+		float s00 = rgba2float(texture2D(depthTex, uv + vec2(-halfPxSz, -halfPxSz))) < lvpos.z ? 1.0 : .0;
+		float s10 = rgba2float(texture2D(depthTex, uv + vec2(halfPxSz, -halfPxSz))) < lvpos.z ? 1.0 : .0;
+		float s11 = rgba2float(texture2D(depthTex, uv + vec2(halfPxSz, halfPxSz))) < lvpos.z ? 1.0 : .0;
+		float s01 = rgba2float(texture2D(depthTex, uv + vec2(-halfPxSz, halfPxSz))) < lvpos.z ? 1.0 : .0;
+
+		return mix(mix(s00, s10, st.x), mix(s01, s11, st.x), st.y);
 	}
 ]]></snippet>
 
 <snippet name="normal2envTC"><![CDATA[
-	vec2 normal2envTC(vec3 normal) { 
-		float v = .5 + .5 * asin(normal.y) * 0.63661977; 
-		float u = .5 - .5 * atan(normal.z, normal.x) * 0.31830988; 
+	vec2 normal2envTC(vec3 normal) {
+		float v = .5 + .5 * asin(normal.y) * 0.63661977;
+		float u = .5 - .5 * atan(normal.z, normal.x) * 0.31830988;
 		return vec2(u, v);
 	}
 ]]></snippet>
@@ -114,14 +112,14 @@
 ]]></snippet>
 
 <snippet name="vsUVQuad"><![CDATA[
-	attribute vec2 $position; 
-	varying vec2 uv; 
+	attribute vec2 $position;
+	varying vec2 uv;
 
-	void main(void) { 
-		gl_Position = vec4($position.x, $position.y, .0, 1.0); 
-		uv = $position * .5 + vec2(.5); 
+	void main(void) {
+		gl_Position = vec4($position.x, $position.y, .0, 1.0);
+		uv = $position * .5 + vec2(.5);
 	}
-]]></snippet>	
+]]></snippet>
 
 <snippet name="toScreenCoords"><![CDATA[
 	vec4 toScreenCoords(vec3 vertex) {
@@ -132,4 +130,3 @@
 ]]></snippet>
 
 </snippets>
-	

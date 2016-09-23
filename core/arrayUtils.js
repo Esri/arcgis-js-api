@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define([],function(){function n(n,r){return-1===n.indexOf(r)}function r(n,r,e){return!n.some(r.bind(null,e))}var e={findIndex:function(n,r,e){for(var t,i=n.length,u=0;i>u;u++)if(t=n[u],r.call(e,t,u,n))return u;return-1},equals:function(n,r){if(!n&&!r)return!0;if(!n||!r)return!1;if(n.length!=r.length)return!1;for(var e=0;e<n.length;e++)if(n[e]!==r[e])return!1;return!0},difference:function(e,t,i){var u,f;return i?(u=t.filter(r.bind(null,e,i)),f=e.filter(r.bind(null,t,i))):(u=t.filter(n.bind(null,e)),f=e.filter(n.bind(null,t))),{added:u,removed:f}}};return e});
+define([],function(){function n(n,r){return-1===n.indexOf(r)}function r(n,r,e){return!n.some(r.bind(null,e))}var e={findIndex:function(n,r,e){for(var t,f=n.length,i=0;f>i;i++)if(t=n[i],r.call(e,t,i,n))return i;return-1},find:function(n,r,e){for(var t,f=n.length,i=0;f>i;i++)if(t=n[i],r.call(e,t,i,n))return t},equals:function(n,r){if(!n&&!r)return!0;if(!n||!r)return!1;if(n.length!=r.length)return!1;for(var e=0;e<n.length;e++)if(n[e]!==r[e])return!1;return!0},difference:function(e,t,f){var i,u;return f?(i=t.filter(r.bind(null,e,f)),u=e.filter(r.bind(null,t,f))):(i=t.filter(n.bind(null,e)),u=e.filter(n.bind(null,t))),{added:i,removed:u}},range:function(n,r){null==r&&(r=n,n=0);for(var e=new Array(r-n),t=n;r>t;t++)e[t-n]=t;return e}};return e});

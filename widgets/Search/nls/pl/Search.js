@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define({searchButtonTitle:"Wyszukaj",clearButtonTitle:"Wyczyść wyszukiwanie",placeholder:"Znajdź adres lub miejsce",searchIn:"Szukaj w",lonlat:"Długość geograficzna, szerokość geograficzna",reverseLonLatHeader:"Czy chodziło Ci o?",all:"Wszystkie",allPlaceholder:"Znajdź adres lub miejsce",emptyValue:"Wprowadź wyszukiwany termin",untitledResult:"Bez tytułu",untitledSource:"Źródło bez nazwy",noResults:"Brak wyników",noResultsFound:"Nie znaleziono wyników dla {value}.",showMoreResults:"Pokaż więcej wyników",hideMoreResults:"Ukryj",searchResult:"Wynik wyszukiwania",moreResultsHeader:"Więcej wyników",esriLocatorName:"Esri World Geocoder"});

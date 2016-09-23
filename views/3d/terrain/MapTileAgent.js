@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define(["./TileAgentBase","./TileUtils","./UpsampleInfo","../support/ObjectPool"],function(e,t,i,l){var a=4,s=function(){e.apply(this,arguments)};return s.prototype=new e,s.prototype.constructor=s,s.prototype.dataArrived=function(e){e!==this.tile?this._setUpsamplingTile(e):this.tile.updateTexture(),this._dataRequested=null,e!==this.tile&&this._requestNext()},s.prototype._findNextDownload=function(){var e,i=this.layerIdx,l=this.layerClass,s=this.tile.parentSurface.layerViewByIndex(i,l),r=s.minDataLevel,n=s.maxDataLevel;if(this._tileLayerInfo.data||r>this.tile.lij[0])e=null;else{for(var o=0,p=this.tile,u=this.tile.parentSurface,h=u.getTilemapTile(p),f=u.tilemapStats,m=!1;p&&a>=o&&t.fallsWithinLayer(p,s,!1)&&p.lij[0]>=r;){if(p.layerInfo[l][i].data){this._setUpsamplingTile(p);break}h&&!h.tileDataAvailable(p,i,l)?m=!0:p.lij[0]<=n&&(e=p),p=p.parent,h=h?h.parent:null,o++}!e&&m&&f.tilesNotPresent++}return e},s.prototype._setUpsamplingTile=function(e){this._tileLayerInfo.upsampleFromTile&&this._tileLayerInfo.upsampleFromTile.tile===e||(this._tileLayerInfo.upsampleFromTile&&i.Pool.release(this._tileLayerInfo.upsampleFromTile),this._tileLayerInfo.upsampleFromTile=t.computeUpsampleInfoForAncestor(this.tile,e),this.tile.updateTexture())},l.on(s,400),s});

@@ -142,9 +142,6 @@ vec3 hsv2rgb(vec3 c)
   //uniform float fCSur; //fCameraHeight2 - (fInnerRadius2 - 63756370000.0); // C = ||o-c||^2 - r^2
   uniform vec4 v4SphereComp; //The camera's current height, CameraHeight^2,fC,fCSur
   uniform vec2 nearFar;
-#ifdef HAZE
-  uniform vec4 v4Viewport;
-#endif
 
   //Camera HDR
 #ifdef HAZE
@@ -156,7 +153,6 @@ vec3 hsv2rgb(vec3 c)
 #ifdef HAZE
   //Depth texture
   uniform sampler2D tDepth;
-  uniform sampler2D tColor;
 #endif
 
   //Testing variables
@@ -207,12 +203,20 @@ vec3 hsv2rgb(vec3 c)
 
 
 <snippet name="atmosphereDiscardPixels"><![CDATA[
+      bool continueComputation = true;
 #ifdef HAZE
-      //load texture value early
-      float cameraSpaceZ = rgba2float(texture2D(tDepth, vtc));
-      test = vec3(cameraSpaceZ,0.0,0.0);
+      // only use red channel from depth texture.
+      // see 'Issues' at https://www.khronos.org/registry/webgl/extensions/WEBGL_depth_texture
+      float depthSample = texture2D(tDepth, vtc).r;
 
-      bool continueComputation = false;
+      float zNear = nearFar[0];
+      float zFar = nearFar[1];
+
+      // http://web.archive.org/web/20130416194336/http://olivers.posterous.com/linear-depth-in-glsl-for-real
+      float zNorm = 2.0 * depthSample - 1.0;
+      float linDepth = 2.0 * zNear * zFar /
+        (zFar + zNear - zNorm * (zFar - zNear));
+
       float nearSurfaceT;
       if (detSur>0.0){
         nearSurfaceT = 0.5 *(-B - sqrt(detSur));
@@ -220,15 +224,9 @@ vec3 hsv2rgb(vec3 c)
 
       float rayEndT;
 
-      //Find intersections with ground
-
-      //Sample Pixel below actual pixel to get rid of aliasing effects: IMPORT is based on view constrains in WSV3.8, changing the view constrains will
-      //cause aliasing. Proper implemenation would average between neighboring pixels!
-      vec2 vtc_below = vec2(vtc.x,vtc.y - 1.0/v4Viewport[3]);
-      float cameraSpaceZ_below = rgba2float(texture2D(tDepth, vtc_below));
-      if (cameraSpaceZ < 1.00 && cameraSpaceZ > 0.0){ // not behind the far clipping plane or in front of the near
-        float linDepth = cameraSpaceZ*(nearFar[1] - nearFar[0] ) + nearFar[0];
-
+      // find intersections with ground, but only between the near and far
+      // clipping planes.
+      if (depthSample < 1.0 && depthSample > 0.0) {
         vec3 cameraSpaceRay = normalize(v3EyeDir);
         cameraSpaceRay /= cameraSpaceRay.z;
         cameraSpaceRay *= linDepth;
@@ -243,15 +241,8 @@ vec3 hsv2rgb(vec3 c)
 #else
         rayEndT = length(cameraSpaceRay);
 #endif
-        continueComputation = true;
-      } else if (cameraSpaceZ == 0.0 && cameraSpaceZ_below < 1.00 && cameraSpaceZ_below > 0.0){
-        float linDepth = cameraSpaceZ_below*(nearFar[1] - nearFar[0] ) + nearFar[0];
-
-        vec3 cameraSpaceRay = normalize(v3EyeDir);
-        cameraSpaceRay /= cameraSpaceRay.z;
-        cameraSpaceRay *= linDepth;
-        rayEndT = length(cameraSpaceRay);
-        continueComputation = true;
+      } else {
+        continueComputation = false;
       }
 #ifdef PLANAR
       if (16500.0+ fInnerRadius < fCameraHeight){
@@ -259,7 +250,6 @@ vec3 hsv2rgb(vec3 c)
       }
 #endif
 #else
-      bool continueComputation = true;
       if (detSur>0.0){
         float nearSurfaceT = 0.5 *(-B - sqrt(detSur));
         if (nearSurfaceT > 0.0){
@@ -440,12 +430,13 @@ vec3 hsv2rgb(vec3 c)
         //mix reddish and blueish atmosphere
         vec3 LDR = mix(ldrBlue,ldrRed,0.2);
 #ifdef HAZE
-        vec3 groundColor = texture2D(tColor, vtc).xyz;
         LDR *= (1.0-fCameraAngle);
         vec3 hsv = rgb2hsv(LDR);
         hsv.y = clamp(hsv.y*1.5,0.0,1.0);//boost haze saturation by 50%
         LDR = hsv2rgb(hsv);
-        vec3 finalColor = groundColor*(1.0-LDR)+LDR;
+        vec3 finalColor = LDR;
+        // when rendering we specify the blend functions such that
+        // newDestColor = oldDestColor*(1.0-finalColor) + finalColor
 #else
         //reinhard tonemapper for looking upwards
         vec3 ldrReinhard = reinhardTM(v3Color,fExposure);

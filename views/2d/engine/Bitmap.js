@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define(["./DisplayObject"],function(e){var s=e.createSubclass({declaredClass:"esri.views.2d.engine.Bitmap",className:"esri-bitmap",source:null,_sourceSetter:function(e){var s=this._get("source");e!==s&&(e.className=this.className,this.surface=e,this.requestRender(),this._set("source",e))}});return s});

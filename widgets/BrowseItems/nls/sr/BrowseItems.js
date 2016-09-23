@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define({noFilterFields:"Layer ${name} has no fields that can be used for filtering.",addToViewer:"Add layer to map",noItemsToDisplay:"There are no items currently available to display.",searchFor:"Search for",searching:"Searching",items:{organizationLabel:"My Organization",onlineLabel:"ArcGIS Online",contentLabel:"My Content",favoritesLabel:"My Favorites"},title:"Select Web Map",searchTitle:"Search",ok:"Ok",cancel:"Cancel",placeholder:"Enter search term",instructionsLeft:"What do you want to do?",instructionsRight:"Select a configurable app.",go:"Go",selectDetails:"SELECT",configure:"Create",close:"Close",learnMoreConfigurableApps:"Learn more about configurable apps"});
+define({noFilterFields:"Sloj ${name} nema polja koja mogu da se koriste za filtriranje.",addToViewer:"Dodaj sloj na mapu",noItemsToDisplay:"Trenutno nema stavki dostupnih za prikaz.",searchFor:"Pretraži",searching:"Pretraživanje",items:{organizationLabel:"Moja organizacija",onlineLabel:"ArcGIS Online",contentLabel:"Moj sadržaj",favoritesLabel:"Moj omiljeni sadržaj"},title:"Izaberi veb mapu",searchTitle:"Pretraži",ok:"U redu",cancel:"Otkaži",placeholder:"Unesite pojam za pretragu",instructionsLeft:"Šta želite da uradite?",instructionsRight:"Izaberite aplikaciju koja može da se konfiguriše.",go:"Idi",selectDetails:"IZABERI",configure:"Kreiraj",close:"Zatvori",learnMoreConfigurableApps:"Saznajte više o aplikacijama koje se mogu konfigurisati"});

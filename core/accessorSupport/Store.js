@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define(["require","exports"],function(e,t){var n=function(){function e(){this._values={}}return e.prototype.get=function(e){return this._values[e]},e.prototype.keys=function(){return Object.keys(this._values)},e.prototype.set=function(e,t){this._values[e]=t},e.prototype.clear=function(e){delete this._values[e]},e.prototype.has=function(e){return e in this._values},e}();Object.defineProperty(t,"__esModule",{value:!0}),t["default"]=n});
+define(["require","exports","./PropertyOrigin"],function(t,e,n){var r=function(){function t(){this._values={}}return t.prototype.get=function(t){return this._values[t]},t.prototype.originOf=function(t){return n.OriginId.USER},t.prototype.keys=function(){return Object.keys(this._values)},t.prototype.set=function(t,e){this._values[t]=e},t.prototype.clear=function(t){delete this._values[t]},t.prototype.has=function(t){return t in this._values},t}();Object.defineProperty(e,"__esModule",{value:!0}),e["default"]=r});

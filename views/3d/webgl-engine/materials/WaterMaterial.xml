@@ -76,7 +76,10 @@
 
 		float fresnel = clamp(1.0 - 1.25 * dot(viewVec, normal), .0, 1.0);
 
-		float shadow = evalShadow(vpos, 1.0 / gl_FragCoord.w, depthTex, shadowMapNum, shadowMapDistance, shadowMapMatrix, depthHalfPixelSz);
+		float shadow = 0.0;
+		if (halfPxSz >= .0) {
+			shadow = evalShadow(vpos, 1.0 / gl_FragCoord.w, depthTex, shadowMapNum, shadowMapDistance, shadowMapMatrix, depthHalfPixelSz);
+		}
 
 		vec3 reflDir = reflect(-viewVec, normal);
 		if (reflDir.y < .02) reflDir.y = 0.04 - reflDir.y;

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define(["dojo/sniff"],function(e){var n,i=e("ff"),t=e("ie"),o=e("webkit"),a=e("opera"),w=(new Date).getTime(),m=window.requestAnimationFrame;return m||(n=o&&"webkit"||i&&"moz"||a&&"o"||t&&"ms",m=window[n+"RequestAnimationFrame"],m||(m=function(e){var n=(new Date).getTime(),i=Math.max(0,16-(n-w)),t=window.setTimeout(function(){e(now())},i);return w=n+i,t})),m});
+define(["dojo/sniff","../../../core/now"],function(e,n){var i,t=e("ff"),o=e("ie"),a=e("webkit"),r=e("opera"),w=(new Date).getTime(),m=window.requestAnimationFrame;return m||(i=a&&"webkit"||t&&"moz"||r&&"o"||o&&"ms",m=window[i+"RequestAnimationFrame"],m||(m=function(e){var i=(new Date).getTime(),t=Math.max(0,16-(i-w)),o=window.setTimeout(function(){e(n())},t);return w=i+t,o})),m});

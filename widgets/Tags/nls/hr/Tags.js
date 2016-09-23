@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define({addTags:"Add tag(s)",noTagsFound:"No existing tags match.",required:"One ore more tags are required."});
+define({addTags:"Dodaj oznaku(e)",noTagsFound:"Ne podudaraju se postojeće oznake.",required:"Potrebna je jedna ili više oznaka."});

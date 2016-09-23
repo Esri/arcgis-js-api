@@ -1,0 +1,12 @@
+/*
+  Theme: Dark
+*/
+// Hex values from
+// @import "../base/colors/scss/variables_dark.scss";
+// ↳ https://github.com/Esri/calcite-colors.git
+$text_color                 : #d1d1d1; // $Calcite_Gray_700 (dark)
+$background_color           : #242424; // $Calcite_Gray_050 (dark)
+$anchor_color               : #9e9e8e; // $Calcite_Gray_050 (dark)
+$button_text_color          : #adadad; // $Calcite_Gray_600 (dark)
+
+@import "../base/core";

@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 /**
  * Provides a simple widget that switches the {@link module:esri/views/View} to its
@@ -61,7 +61,7 @@
  * @see [go()](#go)
  *
  * @example
- * homeWidget.on("go", function(evt){
+ * homeWidget.on("go", function(event){
  *   console.log("updating viewpoint");
  * });
  */
@@ -104,26 +104,22 @@ function(
 
   /**
    * @extends module:esri/widgets/Widget
+   * @mixes module:esri/core/Evented
    * @constructor module:esri/widgets/Home
    * @param {Object} [properties] - See the [properties](#properties) for a list of all the properties
    *                              that may be passed into the constructor.
    * @param {string | Node} [srcNodeRef] - Reference or ID of the HTML node in which this widget renders.
+   *
+   * @example
+   * // typical usage
+   * var homeButton = new Home({
+   *   view: view,
+   *   viewpoint: new Viewpoint()
+   * });
    */
   var Home = Widget.createSubclass([_TemplatedMixin],
   /** @lends module:esri/widgets/Home.prototype */
   {
-
-    properties: {
-      view: {
-        dependsOn: ["viewModel.view"]
-      },
-      viewModel: {
-        type: HomeViewModel
-      },
-      viewpoint: {
-        dependsOn: ["viewModel.viewpoint"]
-      }
-    },
 
     declaredClass: "esri.widgets.Home",
 
@@ -167,67 +163,75 @@ function(
     //
     //--------------------------------------------------------------------------
 
-    //----------------------------------
-    //  view
-    //----------------------------------
+    properties: /** @lends module:esri/widgets/Home.prototype */ {
 
-    /**
-     * A reference to the {@link module:esri/views/MapView MapView} or {@link module:esri/views/Scene SceneView}. Set this to link the widget to a specific view.
-     *
-     * @type {module:esri/views/MapView | module:esri/views/SceneView}
-     *
-     * @name view
-     * @instance
-     */
-    _getViewAttr: viewModelWiring.createGetterDelegate("view"),
+      //----------------------------------
+      //  view
+      //----------------------------------
 
-    _setViewAttr: viewModelWiring.createSetterDelegate("view"),
+      /**
+       * A reference to the {@link module:esri/views/MapView} or {@link module:esri/views/SceneView}. Set this to link the widget to a specific view.
+       *
+       * @type {module:esri/views/MapView | module:esri/views/SceneView}
+       *
+       * @name view
+       * @instance
+       */
+      view: {
+        aliasOf: "viewModel.view"
+      },
 
-    //----------------------------------
-    //  viewModel
-    //----------------------------------
+      //----------------------------------
+      //  viewModel
+      //----------------------------------
 
-    /**
-     * The view model for this widget. This is a class that contains all the logic
-     * (properties and methods) that controls this widget's behavior. See the
-     * {@link module:esri/widgets/Home/HomeViewModel} class to access
-     * all properties and methods on the widget.
-     *
-     * @name viewModel
-     * @instance
-     * @autocast
-     * @type {module:esri/widgets/Home/HomeViewModel}
-     */
+      /**
+       * The view model for this widget. This is a class that contains all the logic
+       * (properties and methods) that controls this widget's behavior. See the
+       * {@link module:esri/widgets/Home/HomeViewModel} class to access
+       * all properties and methods on the widget.
+       *
+       * @name viewModel
+       * @instance
+       * @autocast
+       * @type {module:esri/widgets/Home/HomeViewModel}
+       */
 
-    //----------------------------------
-    //  viewpoint
-    //----------------------------------
+      //----------------------------------
+      //  viewpoint
+      //----------------------------------
 
-    /**
-    * The {@link module:esri/Viewpoint}, or point of view, to zoom to when
-    * going home. The initial value is determined a few different ways:
+      viewModel: {
+        type: HomeViewModel
+      },
 
-    * * If no {@link module:esri/views/View} is provided, the value is `null`.
-    * * If the {@link module:esri/views/View} is ready, but the {@link module:esri/Viewpoint} is not defined, the  initial
-    * value of the {@link module:esri/Viewpoint} is determined when the {@link module:esri/views/View} became ready.
-    * * If the {@link module:esri/views/View} is ready and the {@link module:esri/Viewpoint} is defined, the initial viewpoint value is the user-defined {@link module:esri/Viewpoint}.
-     *
-     * @type {module:esri/Viewpoint}
-     * @name viewpoint
-     * @instance
-     *
-     * @example
-     * // Creates a viewpoint centered on the extent of a polygon geometry
-     * var vp = new Viewpoint({
-     *   targetGeometry: geom.extent
-     * });
-     *
-     * // Sets the model's viewpoint to the Viewpoint based on a polygon geometry
-     * home.viewpoint = vp;
-     */
-    _getViewpointAttr: viewModelWiring.createGetterDelegate("viewpoint"),
+      /**
+       * The {@link module:esri/Viewpoint}, or point of view, to zoom to when
+       * going home. The initial value is determined a few different ways:
 
-    _setViewpointAttr: viewModelWiring.createSetterDelegate("viewpoint"),
+       * * If no {@link module:esri/views/View} is provided, the value is `null`.
+       * * If the {@link module:esri/views/View} is ready, but the {@link module:esri/Viewpoint} is not defined, the  initial
+       * value of the {@link module:esri/Viewpoint} is determined when the {@link module:esri/views/View} became ready.
+       * * If the {@link module:esri/views/View} is ready and the {@link module:esri/Viewpoint} is defined by the user, the initial viewpoint value is the user-defined {@link module:esri/Viewpoint}.
+       *
+       * @type {module:esri/Viewpoint}
+       * @name viewpoint
+       * @instance
+       *
+       * @example
+       * // Creates a viewpoint centered on the extent of a polygon geometry
+       * var vp = new Viewpoint({
+       *   targetGeometry: geom.extent
+       * });
+       *
+       * // Sets the model's viewpoint to the Viewpoint based on a polygon geometry
+       * home.viewpoint = vp;
+       */
+      viewpoint: {
+        aliasOf: "viewModel.viewpoint"
+      }
+
+    },
 
     //--------------------------------------------------------------------------
     //

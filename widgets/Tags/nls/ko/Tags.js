@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define({addTags:"태그 추가",noTagsFound:"기존 태그가 일치하지 않습니다.",required:"하나 이상의 태그가 필요합니다."});
+define({addTags:"태그 추가",noTagsFound:"기존 태그가 일치하지 않습니다.",required:"태그가 하나 이상 필요합니다."});

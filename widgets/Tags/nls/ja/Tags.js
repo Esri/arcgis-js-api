@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define({addTags:"タグの追加",noTagsFound:"一致する既存のタグがありません。",required:"1 つまたは複数のタグが必要です。"});
+define({addTags:"タグの追加",noTagsFound:"一致する既存のタグがありません。",required:"1 つ以上のタグが必要です。"});

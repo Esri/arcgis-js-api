@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define([],function(){var R={Pan:{Direction:{LEFT:1,RIGHT:2,FORWARD:4,BACKWARD:8,UP:16,DOWN:32},Mode:{HORIZONTAL:0,VERTICAL:1},Momentum:{DURATION_SHORT:1,DURATION_LONG:3,DURATION_LONG_VEL:8,INPUT_FILTER:.2,BUFFER_SIZE:5},Vertical:{ELEVATION_THRESHOLD:3e4,ANGLE_THRESHOLD:8/180*Math.PI}},Rotate:{PivotPoint:{POI:1,EYE:2}}};return R});

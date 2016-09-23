@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define({zoom:"Přiblížit na",next:"Další prvek",previous:"Předchozí prvek",close:"Zavřít",dock:"Ukotvit",undock:"Zrušit ukotvení",menu:"Nabídka",untitled:"Bez názvu",pageText:"{index} z {total}",noFeaturesFound:"Nebyly nalezeny žádné prvky.",selectedFeature:"Vybraný prvek",selectedFeatures:"{total} výsledků",loading:"Načítání"});

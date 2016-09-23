@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define(["../core/declare","./Renderer"],function(e,r){var t=e(r,{declaredClass:"esri.renderer.TemporalRenderer",constructor:function(e,r,t,n){this.observationRenderer=e,this.latestObservationRenderer=r,this.trackRenderer=t,this.observationAger=n},getSymbol:function(e){var r=e.getLayer(),t=this.getObservationRenderer(e),n=t&&t.getSymbol(e),o=this.observationAger;return r.timeInfo&&r._map.timeExtent&&t===this.observationRenderer&&o&&n&&(n=o.getAgedSymbol(n,e)),n},getObservationRenderer:function(e){return 0===e.getLayer()._getKind(e)?this.observationRenderer:this.latestObservationRenderer||this.observationRenderer},toJSON:function(){var e={type:"temporal"};return e.observationRenderer=this.observationRenderer.toJSON(),this.latestObservationRenderer&&(e.latestObservationRenderer=this.latestObservationRenderer.toJSON()),this.trackRenderer&&(e.trackRenderer=this.trackRenderer.toJSON()),this.observationAger&&(e.observationAger=this.observationAger.toJSON()),e}});return t});

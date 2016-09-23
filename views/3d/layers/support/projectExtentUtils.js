@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define(["require","exports","../../../../portal/support/geometryServiceUtils","../../../../core/promiseUtils"],function(e,r,t,n){function l(e){var r=e.view.spatialReference,l=e.layer.fullExtent&&e.layer.fullExtent.spatialReference;return!l||l.equals(r)||"local"!==e.view.viewingMode?n.resolve(null):t.create(e.layer.portalItem).then(function(t){return t.project([e.layer.fullExtent],r)}).then(function(r){return!e._destroyed&&r&&Array.isArray(r)&&1===r.length?r[0]:void 0}).otherwise(function(){return null})}r.toView=l});
+define(["require","exports","../../../../portal/support/geometryServiceUtils","../../../../core/promiseUtils"],function(e,r,t,n){function l(e){var r=e.view.spatialReference,l=e.layer.fullExtent&&e.layer.fullExtent.spatialReference;return!l||l.equals(r)||"local"!==e.view.viewingMode?n.resolve(null):t.create(e.layer.portalItem).then(function(t){return t.project([e.layer.fullExtent],r)}).then(function(r){return!e.destroyed&&r&&Array.isArray(r)&&1===r.length?r[0]:void 0}).otherwise(function(){return null})}r.toView=l});

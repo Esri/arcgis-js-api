@@ -1,0 +1,61 @@
+
+@mixin attribution(){
+  .esri-attribution {
+    font-size: 11px;
+    line-height: 16px;
+    color: $text_color;
+    background-color: rgba($background_color, 0.65);
+    @include flexDisplay();
+    @include flexFlow(row, nowrap);
+    @include justifyContent(space-between);
+    @include alignItems(center);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .esri-attribution__link {
+    :hover,
+    :active,
+    :visited,
+    :focus {
+      color: currentColor;
+    }
+    color: currentColor;
+    text-decoration: underline;
+  }
+
+  .esri-attribution__sources {
+    font-weight: 300;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 5px;
+    @include alignSelf(flex-start);
+    @include flex(1, 0);
+  }
+
+  .esri-attribution__powered-by {
+    font-weight: 400;
+    padding: 0 5px;
+    text-align: right;
+    white-space: nowrap;
+    @include alignSelf(flex-end);
+  }
+
+  .esri-attribution--open {
+    z-index: 2;
+  }
+
+  .esri-attribution__sources--open {
+    white-space: normal;
+  }
+
+  html[dir="rtl"] {
+    .esri-attribution__powered-by {
+      text-align: left;
+    }
+  }
+}
+
+@if $include_Attribution == true {
+  @include attribution();
+}

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define(["../../core/Accessoire","../../core/declare","../../core/jsonDictionary","../../geometry/support/jsonUtils"],function(e,t,s,i){var r=s({9001:"meters",9002:"feet",9036:"kilometers",9093:"miles",109012:"nautical-miles",109001:"yards"}),o=t(e,{declaredClass:"esri.tasks.support.DistanceParameters",geometry1:null,geometry2:null,distanceUnit:null,geodesic:null,toJSON:function(){var e={},t=this.geometry1;t&&(e.geometry1=JSON.stringify({geometryType:i.getJsonType(t),geometry:t}),e.sr=JSON.stringify(this.geometry1.spatialReference.toJSON()));var s=this.geometry2;return s&&(e.geometry2=JSON.stringify({geometryType:i.getJsonType(s),geometry:s})),this.distanceUnit&&(e.distanceUnit=r.toJSON(this.distanceUnit)),this.geodesic&&(e.geodesic=this.geodesic),e}});return o});
+define(["../../core/Accessoire","../../core/declare","../../core/kebabDictionary","../../geometry/support/jsonUtils"],function(e,t,s,i){var r=s({9001:"meters",9002:"feet",9036:"kilometers",9093:"miles",109012:"nautical-miles",109001:"yards"}),o=t(e,{declaredClass:"esri.tasks.support.DistanceParameters",geometry1:null,geometry2:null,distanceUnit:null,geodesic:null,toJSON:function(){var e={},t=this.geometry1;t&&(e.geometry1=JSON.stringify({geometryType:i.getJsonType(t),geometry:t}),e.sr=JSON.stringify(this.geometry1.spatialReference.toJSON()));var s=this.geometry2;return s&&(e.geometry2=JSON.stringify({geometryType:i.getJsonType(s),geometry:s})),this.distanceUnit&&(e.distanceUnit=r.toJSON(this.distanceUnit)),this.geodesic&&(e.geodesic=this.geodesic),e}});return o});

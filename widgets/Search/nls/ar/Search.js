@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define({searchButtonTitle:"بحث",clearButtonTitle:"مسح البحث",placeholder:"إيجاد العنوان أو المكان",searchIn:"البحث في",lonlat:"خط الطول، وخط العرض",reverseLonLatHeader:"هل تعني؟",all:"جميع",allPlaceholder:"إيجاد العنوان أو المكان",emptyValue:"الرجاء إدخال مصطلح بحث.",untitledResult:"بلا عنوان",untitledSource:"مصدر بدون عنوان",noResults:"بدون نتائج",noResultsFound:"لم يتم العثور على نتائج لـ {value}.",showMoreResults:"إظهار المزيد من النتائج",hideMoreResults:"إخفاء",searchResult:"البحث عن النتائج",moreResultsHeader:"المزيد من النتائج",esriLocatorName:"الترميز الجغرافي لـ Esri World"});

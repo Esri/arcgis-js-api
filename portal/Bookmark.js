@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define(["../Viewpoint","../core/lang","../core/JSONSupporter"],function(i,t,e){var o=e.createSubclass({declaredClass:"esri.arcgis.Bookmark",_viewpointReader:function(t,e){return e.viewpoint?i.fromJSON(e.viewpoint):void 0},toJSON:function(){var i={title:this.title,description:this.description,thumbnailSource:this.thumbnailSource,viewpoint:this.viewpoint?this.viewpoint.toJSON():void 0};return t.fixJson(i)}});return o});
+define(["../Viewpoint","../core/JSONSupport"],function(e,t){var r=t.createSubclass({declaredClass:"esri.portal.Bookmark",properties:{description:{type:String,json:{writable:!0}},thumbnailSource:{type:String,json:{writable:!0}},title:{type:String,json:{writable:!0}},viewpoint:{type:e,json:{writable:!0}}}});return r});

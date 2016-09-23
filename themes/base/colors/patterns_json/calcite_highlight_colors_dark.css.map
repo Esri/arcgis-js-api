@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAYA,2BAA4B;EAC1B,gBAAgB,ECiGe,OAAO;;;;;;;;;;;ADnFxC,2BAA4B;EAC1B,gBAAgB,ECmFe,OAAO;;;;;;;;;;;ADpExC,2BAA4B;EAC1B,gBAAgB,ECoEe,OAAO;;;;;;;;;;;ADrDxC,2BAA4B;EAC1B,gBAAgB,ECqDe,OAAO;;;;;;;;;;;ADtCxC,2BAA4B;EAC1B,gBAAgB,ECsCe,OAAO;;;;;;;;;;;ADvBxC,2BAA4B;EAC1B,gBAAgB,ECuBe,OAAO;;;;;;;;;;;ADRxC,2BAA4B;EAC1B,gBAAgB,ECQe,OAAO;;;;;;;;;;;ADUxC,4BAA6B;EAC3B,gBAAgB,ECVe,OAAO;;;;;;;;;;;ADwBxC,4BAA6B;EAC3B,gBAAgB,ECxBe,OAAO;;;;;;;;;;;ADuCxC,4BAA6B;EAC3B,gBAAgB,ECvCe,OAAO;;;;;;;;;;;ADsDxC,4BAA6B;EAC3B,gBAAgB,ECtDe,OAAO;;;;;;;;;;;ADqExC,4BAA6B;EAC3B,gBAAgB,ECrEe,OAAO;;;;;;;;;;;ADoFxC,4BAA6B;EAC3B,gBAAgB,ECpFe,OAAO;;;;;;;;;;;ADmGxC,4BAA6B;EAC3B,gBAAgB,ECnGe,OAAO",
+"sources": ["scss/calcite_highlight_colors_dark.scss","../scss/variables_dark.scss"],
+"names": [],
+"file": "calcite_highlight_colors_dark.css"
+}

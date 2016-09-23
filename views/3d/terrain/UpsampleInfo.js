@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define(["../support/ObjectPool","../lib/glMatrix"],function(t,i){function e(t,i,e,s){this.offset=o.create(),this.scale=0,this.tile=null,void 0!==t&&this.init(t,i,e,s)}var o=i.vec2d;return e.prototype.init=function(t,i,e,o){this.tile=t,this.offset[0]=i,this.offset[1]=e,this.scale=o},e.Pool=new t(400,e),e});

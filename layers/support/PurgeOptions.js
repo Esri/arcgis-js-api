@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define(["../../core/declare","dojo/Stateful"],function(t,r){var e=t([r],{declaredClass:"esri.layers.support.PurgeOptions",constructor:function(t,r){this.parent=t;var e;for(e in r)this[e]=r[e]},_displayCountSetter:function(t){this.displayCount=t,this.parent.refresh()}});return e});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define(["../Point","../Polyline","../Polygon","../Multipoint","../Extent"],function(n,i,o,e,d){function t(t){return!t||t.declaredClass?t||null:void 0!==t.x&&void 0!==t.y?new n(t):void 0!==t.paths?new i(t):void 0!==t.rings?new o(t):void 0!==t.points?new e(t):void 0!==t.xmin&&void 0!==t.ymin&&void 0!==t.xmax&&void 0!==t.ymax?new d(t):null}var l={cast:t};return l});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define({zoom:"Phóng tới",next:"Tính năng tiếp",previous:"Tính năng trước",close:"Đóng",dock:"Bến tàu",undock:"Bỏ gắn",menu:"Menu",untitled:"Chưa có tiêu đề",pageText:"{index} trên {total}",noFeaturesFound:"Không tìm thấy đối tượng",selectedFeature:"Đối tượng được chọn",selectedFeatures:"{total} kết quả",loading:"Đang tải"});

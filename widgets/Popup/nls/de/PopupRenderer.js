@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define({attach:"Anlagen",fields:"Felder",fieldsSummary:"Liste der Attribute und Werte",media:"Medien",next:"Weiter",numCharts:"Anzahl der Diagramme",numImages:"Anzahl der Bilder",noTitle:"Ohne Titel",previous:"Zurück",view:"Anzeigen"});

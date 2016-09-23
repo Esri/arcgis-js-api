@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define({noFilterFields:"Laget ${name} har ingen felter som kan brukes til filtrering.",addToViewer:"Legg til lag i kart",noItemsToDisplay:"Det er for tiden ingen tilgjengelige elementer å vise.",searchFor:"Søk etter",searching:"Søker",items:{organizationLabel:"Min organisasjon",onlineLabel:"ArcGIS Online",contentLabel:"Mitt innhold.",favoritesLabel:"Mine favoritter"},title:"Velg webkart",searchTitle:"Søk",ok:"Ok",cancel:"Avbryt",placeholder:"Angi søkeord",instructionsLeft:"Hva vil du gjøre?",instructionsRight:"Velg en konfigurerbar app.",go:"Kjør",selectDetails:"VELG",configure:"Opprette",close:"Lukk",learnMoreConfigurableApps:"Få mer informasjon om konfigurerbare apper"});

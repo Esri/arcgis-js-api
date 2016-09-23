@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define(["../../core/declare","../../core/jsonDictionary","../../core/JSONSupporter"],function(e,a,r){var t=a({GPString:"string",GPDouble:"double",GPLong:"long",GPBoolean:"boolean",GPDate:"date",GPLinearUnit:"linear-unit",GPDataFile:"data-file",GPRasterData:"raster-data",GPRecordSet:"record-set",GPRasterDataLayer:"raster-data-layer",GPFeatureRecordSetLayer:"feature-record-set-layer",GPMultiValue:"multi-value"}),l=e(r,{declaredClass:"esri.tasks.support.ParameterValue",dataType:null,_dataTypeReader:t.fromJSON,value:null});return l});
+define(["../../core/declare","../../core/kebabDictionary","../../core/JSONSupporter"],function(e,a,r){var t=a({GPString:"string",GPDouble:"double",GPLong:"long",GPBoolean:"boolean",GPDate:"date",GPLinearUnit:"linear-unit",GPDataFile:"data-file",GPRasterData:"raster-data",GPRecordSet:"record-set",GPRasterDataLayer:"raster-data-layer",GPFeatureRecordSetLayer:"feature-record-set-layer",GPMultiValue:"multi-value"}),l=e(r,{declaredClass:"esri.tasks.support.ParameterValue",dataType:null,_dataTypeReader:t.fromJSON,value:null});return l});

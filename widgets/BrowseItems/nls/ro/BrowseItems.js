@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define({noFilterFields:"Stratul tematic ${name} nu conţine niciun câmp care să poată fi utilizat pentru filtrare.",addToViewer:"Adăugare strat tematic în hartă",noItemsToDisplay:"În prezent, nu există elemente disponibile pentru afişare.",searchFor:"Căutare după",searching:"Se caută",items:{organizationLabel:"Organizaţia mea",onlineLabel:"ArcGIS Online",contentLabel:"Resursele mele",favoritesLabel:"Preferinţele mele"},title:"Selectare hartă web",searchTitle:"Căutare",ok:"OK",cancel:"Anulare",placeholder:"Introducere termen de căutare",instructionsLeft:"Ce doriţi să faceţi?",instructionsRight:"Selectaţi o aplicaţie configurabilă.",go:"Pornire",selectDetails:"SELECTARE",configure:"Creare",close:"Închidere",learnMoreConfigurableApps:"Aflaţi mai multe despre aplicaţiile configurabile"});

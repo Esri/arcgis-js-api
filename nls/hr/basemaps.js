@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define({streets:"Streets",satellite:"Imagery",hybrid:"Imagery with Labels",terrain:"Terrain with Labels",topo:"Topographic",gray:"Light Gray Canvas","dark-gray":"Dark Gray Canvas",oceans:"Oceans","national-geographic":"National Geographic",osm:"OpenStreetMap","streets-night-vector":"World Street Map (Night)","streets-relief-vector":"World Street Map (with Relief)","streets-navigation-vector":"World Navigation Map"});
+define({streets:"Ulice",satellite:"Snimke",hybrid:"Snimke s oznakama",terrain:"Teren s oznakama",topo:"Topografski",gray:"Svijetlo siva podloga","dark-gray":"Tamno siva podloga",oceans:"Oceani","national-geographic":"National Geographic",osm:"OpenStreetMap","streets-night-vector":"Svjetska karta ulica (noć)","streets-relief-vector":"Svjetska karta ulica (s reljefom)","streets-navigation-vector":"Navigacijska karta svijeta"});

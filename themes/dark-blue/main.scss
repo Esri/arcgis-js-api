@@ -1,0 +1,17 @@
+/*
+  Theme: Blue
+*/
+@import "../base/colors/scss/variables.scss";
+// ↳ https://github.com/Esri/calcite-colors.git
+
+$Calcite_Dark_Gray_050   : #242424;
+
+$text_color              : $Calcite_Gray_150;
+$background_color        : $Calcite_Dark_Gray_050;
+$anchor_color            : $Calcite_Vibrant_Blue_150;
+$anchor_hover_color      : rgba($Calcite_Vibrant_Blue_150, 0.75);
+$button_text_color       : $Calcite_Vibrant_Blue_150;
+$button_text_hover_color : $Calcite_Vibrant_Blue_150;
+$border_color            : rgba($Calcite_Vibrant_Blue_150, 0.2);
+
+@import "../base/core";

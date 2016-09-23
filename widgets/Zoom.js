@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 /**
  * The Zoom widget allows users to zoom in/out within a view.
@@ -31,22 +31,13 @@
  * in other parts of the view.
  *
  * @example
- * require([
- *   "esri/views/MapView",
- *   "esri/widgets/Zoom", ...
- * ], function(MapView, Zoom, ... ) {
+ * var view = new MapView({
+ *    container: "viewDiv",
+ *    map: map
+ * });
  *
- *   var view = new MapView({
- *      container: "viewDiv",
- *      map: map
- *   });
- *
- *   var zoom = new Zoom({
- *     view: view
- *   });
- *   zoom.startup();
- *
- *   view.ui.add(zoom, "bottom-left");
+ * var zoom = new Zoom({
+ *   view: view
  * });
  *
  * @module esri/widgets/Zoom
@@ -117,18 +108,16 @@ function (
    * @param {Object} [properties] - See the [properties](#properties) for a list of all the properties
    *                              that may be passed into the constructor.
    * @param {string | Node} [srcNodeRef] - Reference or ID of the HTML element in which this widget renders.
+   *
+   * @example
+   * // typical usage
+   * var zoom = new Zoom({
+   *   view: view
+   * });
    */
   var Zoom = Widget.createSubclass([TemplatedMixin],
     /** @lends module:esri/widgets/Zoom.prototype */
     {
-      properties: {
-        viewModel: {
-          type: ZoomViewModel
-        },
-        view: {
-          dependsOn: ["viewModel.view"]
-        }
-      },
 
       declaredClass: "esri.widgets.Zoom",
 
@@ -183,53 +172,62 @@ function (
       //
       //--------------------------------------------------------------------------
 
-      //----------------------------------
-      //  layout
-      //----------------------------------
+      properties: /** @lends module:esri/widgets/Zoom.prototype */ {
 
-      layout: LAYOUT_MODES.vertical,
+        //----------------------------------
+        //  layout
+        //----------------------------------
 
-      _setLayoutAttr: function (value) {
-        if (value !== LAYOUT_MODES.horizontal) {
-          value = LAYOUT_MODES.vertical;
+        layout: {
+          value: LAYOUT_MODES.vertical,
+
+          set: function(value) {
+            if (value !== LAYOUT_MODES.horizontal) {
+              value = LAYOUT_MODES.vertical;
+            }
+
+            domClass.toggle(this.domNode, CSS.isLayoutHorizontal, value === LAYOUT_MODES.horizontal);
+
+            this._set("layout", value);
+          }
+        },
+
+        //----------------------------------
+        //  view
+        //----------------------------------
+
+        /**
+         * A reference to the {@link module:esri/views/MapView} or {@link module:esri/views/SceneView}. Set this to link the widget to a specific view.
+         *
+         * @name view
+         * @instance
+         *
+         * @type {(module:esri/views/SceneView|module:esri/views/MapView)}
+         */
+        view: {
+          aliasOf: "viewModel.view"
+        },
+
+        //----------------------------------
+        //  viewModel
+        //----------------------------------
+
+        /**
+         * The view model for this widget. This is a class that contains all the logic
+         * (properties and methods) that controls this widget's behavior. See the
+         * {@link module:esri/widgets/Zoom/ZoomViewModel} class to access
+         * all properties and methods on the widget.
+         *
+         * @name viewModel
+         * @instance
+         * @type {module:esri/widgets/Zoom/ZoomViewModel}
+         * @autocast
+         */
+        viewModel: {
+          type: ZoomViewModel
         }
 
-        domClass.toggle(this.domNode, CSS.isLayoutHorizontal, value === LAYOUT_MODES.horizontal);
-
-        this._set("layout", value);
       },
-
-      //----------------------------------
-      //  view
-      //----------------------------------
-
-      /**
-       * A reference to the {@link module:esri/views/MapView MapView} or {@link module:esri/views/Scene SceneView}. Set this to link the widget to a specific view.
-       *
-       * @name view
-       * @instance
-       *
-       * @type {(module:esri/views/SceneView|module:esri/views/MapView)}
-       */
-      _getViewAttr: viewModelWiring.createGetterDelegate("view"),
-
-      _setViewAttr: viewModelWiring.createSetterDelegate("view"),
-
-      //----------------------------------
-      //  viewModel
-      //----------------------------------
-
-      /**
-       * The view model for this widget. This is a class that contains all the logic
-       * (properties and methods) that controls this widget's behavior. See the
-       * {@link module:esri/widgets/Zoom/ZoomViewModel} class to access
-       * all properties and methods on the widget.
-       *
-       * @name viewModel
-       * @instance
-       * @type {module:esri/widgets/Zoom/ZoomViewModel}
-       * @autocast
-       */
 
       //--------------------------------------------------------------------------
       //
@@ -238,14 +236,14 @@ function (
       //--------------------------------------------------------------------------
 
       /**
-       * The widget zooms in by changing the scale to scale / 2.
+       * Zooms the view in by an LOD factor of 0.5.
        *
        * @method
        */
       zoomIn: viewModelWiring.createMethodDelegate("zoomIn"),
 
       /**
-       * The widget zooms out by using changing the scale to scale * 2.
+       * Zooms the view out by an LOD factor of 2.
        *
        * @method
        */

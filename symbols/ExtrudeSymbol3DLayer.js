@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define(["../core/declare","dojo/_base/lang","../core/lang","./Symbol3DLayer"],function(e,i,n,t){var r=e(t,{type:"Extrude",size:0,material:null,toJSON:function(){var e={size:this.size};return i.mixin(e,this.inherited(arguments)),n.fixJson(e,!0)},clone:function(){return new r({enable:this.enable,material:this.material&&this.material.clone(),size:this.size})}});return r});
+define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","./Symbol3DLayer","../core/accessorSupport/decorators"],function(e,r,t,o,i,s){var p=function(e){function r(r){e.call(this),this.type="Extrude",this.size=void 0,this.material=null}return t(r,e),r.prototype.clone=function(){return new r({enabled:this.enabled,material:this.material&&this.material.clone(),size:this.size})},o([s.property()],r.prototype,"type",void 0),o([s.property({json:{writable:!0}})],r.prototype,"size",void 0),o([s.property()],r.prototype,"material",void 0),r=o([s.subclass("esri.symbols.ExtrudeSymbol3DLayer")],r)}(s.declared(i));return p});

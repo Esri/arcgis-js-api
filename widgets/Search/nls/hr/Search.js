@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define({searchButtonTitle:"Search",clearButtonTitle:"Clear search",placeholder:"Find address or place",searchIn:"Search in",lonlat:"Longitude, Latitude",reverseLonLatHeader:"Did you mean?",all:"All",allPlaceholder:"Find address or place",emptyValue:"Please enter a search term.",untitledResult:"Untitled",untitledSource:"Untitled source",noResults:"No results",noResultsFound:"There were no results found for {value}.",showMoreResults:"Show more results",hideMoreResults:"Hide",searchResult:"Search result",moreResultsHeader:"More results",esriLocatorName:"Esri World Geocoder"});
+define({searchButtonTitle:"Pretraži",clearButtonTitle:"Očisti pretragu",placeholder:"Pronađi adresu ili mjesto",searchIn:"Traži u",lonlat:"Geografska dužina, geografska širina",reverseLonLatHeader:"Jeste li mislili?",all:"Sve",allPlaceholder:"Pronađi adresu ili mjesto",emptyValue:"Unesite termin za pretraživanje.",untitledResult:"Neimenovano",untitledSource:"Neimenovani izvor",noResults:"Nema rezultata",noResultsFound:"Nema pronađenih rezultata za {value}.",showMoreResults:"Prikaži još rezultata",hideMoreResults:"Sakrij",searchResult:"Rezultat pretraživanja",moreResultsHeader:"Više rezultata",esriLocatorName:"Svjetski geokoder Esrija"});

@@ -13,6 +13,7 @@
 	uniform vec2 screenOffset;
 	uniform vec2 anchorPos;
 	uniform float polygonOffset;
+	uniform float cameraGroundRelative;
 
 	attribute vec3 $position;
 	attribute vec3 $normal;
@@ -22,7 +23,7 @@
   attribute vec4 $auxpos1;
 
 	varying vec4 vcolor;
-	
+
 #ifdef OCCL_PIXELSHADER
  	varying vec4 vtc;
 #else
@@ -30,7 +31,7 @@
 	varying vec2 vsize;
 	uniform sampler2D framebufferTex;
 	uniform vec3 markerColor;
-#endif	
+#endif
 
 ]]></snippet>
 
@@ -51,21 +52,33 @@
 
 		vec3 vnormal = (modelNormal * vec4($normal, 1.0)).xyz;
 
+		// groundRelative is 1 if both camera and symbol are on the same side of the ground, -1 otherwise
+		float groundRelative = cameraGroundRelative * sign(pointGroundDistance);
+		if (groundRelative == 0.0) groundRelative = 1.0;
+
 		// view angle dependent part of polygon offset emulation
-		float cosAlpha = dot(vnormal, normalize(camPos - posModel));
+		// we take the absolute value because the sign that is dropped is
+		// instead introduced using the ground-relative position of the symbol and the camera
+		float cosAlpha = abs(dot(vnormal, normalize(camPos - posModel)));
 		if (cosAlpha > .01 && polygonOffset > .0) {
 			float tanAlpha = sqrt(1.0 - cosAlpha * cosAlpha) / cosAlpha;
-			posView *= 1.0 - tanAlpha / viewport[2];
+			float factor = (1.0 - tanAlpha / viewport[2]);
+			// same side of the terrain
+			if (groundRelative > 0.0) {
+				posView *= factor;
+			}
+			// opposite sides of the terrain
+			else {
+				posView /= factor;
+			}
 		}
 
-	    if (centerOffset.w<0.0)
-            posView+=centerOffset.xyz;
+    	posView += centerOffset;
 
 		vec4 posProj = proj * vec4(posView, 1.0);
 
 		// constant part of polygon offset emulation
-		if (cosAlpha > .01)
-			posProj.z -= polygonOffset * posProj.w;
+		posProj.z -= groundRelative * polygonOffset * posProj.w;
 
 		posProjCenter = matchPixelCenter(posProj, viewport.zw);
 
@@ -79,7 +92,8 @@
 
 	void main(void) {
 
-	    vec4 centerOffset = $auxpos1;
+	    vec3 centerOffset = $auxpos1.xyz;
+		float pointGroundDistance = $auxpos1.w;
 
 		vec2 combinedSize = $size * pixelRatio;
 
@@ -115,12 +129,12 @@
 	uniform vec2 minMaxWorldSizeFactor;
 
 	$matchPixelCenter
-	$matchPixelOrigin
 
 	void main(void) {
-	    vec4 centerOffset = $auxpos1;
-	    vec2 combinedSize = $size * pixelRatio;
-	    
+	    vec3 centerOffset = $auxpos1.xyz;
+		float pointGroundDistance = $auxpos1.w;
+	    vec2 combinedSize = $size;
+
 	    vec4 posProjCenter;
 
 		$calcPosMatchPixelCenter
@@ -138,7 +152,6 @@
 			vec2 uv01 = floor($uv0);
 			vec2 uv = $uv0 - uv01;
 			posView.xy += (uv01 - anchorPos) * combinedSize * scale;
-			uv.y += (1.0 - texScale.y);
 			vtc.xy = uv;
 #ifdef OCCL_TEST
 		} else {
@@ -152,7 +165,7 @@
 		posProj = proj * vec4(posView,1.0);
 		posProj.xy += screenOffset / viewport.zw * posProj.w;
 		gl_Position = posProj;
-		vcolor = $color;
+		vcolor = $color / 255.0;
 	}
 ]]></snippet>
 
@@ -191,16 +204,19 @@
 ]]></snippet>
 
 <snippet name="vertexShaderHUDDirection"><![CDATA[
- 	uniform vec3 direction;
- 	
+  $HUDMaterialCommonVariables
+  uniform vec3 direction;
+
+  $matchPixelCenter
+
 	void main(void) {
-	    vec4 centerOffset = $auxpos1;
+	    vec3 centerOffset = $auxpos1.xyz;
+		float pointGroundDistance = $auxpos1.w;
 	    vec2 combinedSize = $size * pixelRatio;
 
         vec4 posProjCenter;
  		$calcPosMatchPixelCenter
 
- 		vec3 direction = normalize(direction);
  		vec3 up = vnormal;
  		vec3 camDir = normalize(vec3(view[0][2],view[1][2],view[2][2]));
 
@@ -219,15 +235,16 @@
  			posModel.xyz += labelDir * vId.x * combinedSize.x * scale ;
  			posModel.xyz += labelDirOrtho * vId.y * combinedSize.y * scale;
 
- 			vec4 posDirProj = proj*view*model * vec4($position+direction, 1.0);
- 			vec4 posProjUnmodified = proj*view*model * vec4($position, 1.0);
- 			if (posDirProj.x<posProjUnmodified.x)
- 			{
- 				if (isUp==1)
- 					uv.x = texScale.x-uv.x;
- 				else
- 					uv = texScale-uv;
- 			}
+      // capability to flip upside down was lost when label texture atlases were implemented. this was the old code:
+ 			//vec4 posDirProj = proj*view*model * vec4($position+direction, 1.0);
+ 			//vec4 posProjUnmodified = proj*view*model * vec4($position, 1.0);
+ 			//if (posDirProj.x < posProjUnmodified.x)
+ 			//{
+ 			//	if (isUp==1)
+ 			//		uv.x = texScale.x-uv.x;
+ 			//	else
+ 			//		uv = texScale-uv;
+ 			//}
  			vtc.xy = uv;
  #ifdef OCCL_TEST
  		} else {
@@ -240,13 +257,14 @@
 #endif
  		vec4 pos4 = proj * view * vec4(posModel,1.0);
  		gl_Position = pos4;
+ 		vcolor = $color / 255.0;
  	}
  ]]></snippet>
 
 
 <snippet name="vertexShaderHUDDirectionWorldScale"><![CDATA[
     $HUDMaterialCommonVariables
-    
+
 	uniform vec2 minMaxWorldSizeFactor;
 	uniform vec3 direction;
 
@@ -254,13 +272,13 @@
 	$matchPixelOrigin
 
 	void main(void) {
-	    vec4 centerOffset = $auxpos1;
-	    vec2 combinedSize = $size * pixelRatio;
+	    vec3 centerOffset = $auxpos1.xyz;
+		float pointGroundDistance = $auxpos1.w;
+	    vec2 combinedSize = $size;
 
         vec4 posProjCenter;
 		$calcPosMatchPixelCenter
 
-		vec3 direction = normalize(direction);
 		vec3 up = vnormal;
 		vec3 camDir = normalize(vec3(view[0][2],view[1][2],view[2][2]));
 
@@ -275,23 +293,24 @@
 			if (proj[2][3] != 0.0)  // perspective projection
 				minMaxWorldSize = distance(camPos, position)*minMaxWorldSizeFactor;
 			if (minMaxWorldSize.x > combinedSize.y)
-				scale = minMaxWorldSize.x / combinedSize.y;
+				scale = 0.5 * minMaxWorldSize.x / combinedSize.y;
 			else if (minMaxWorldSize.y > 0.0)
-				scale = min(1.0, minMaxWorldSize.y / combinedSize.y);
+				scale = 0.5 * min(1.0, minMaxWorldSize.y / combinedSize.y);
 
 			posModel.xyz += labelDir*vId.x*combinedSize.x*scale;
 			posModel.xyz += labelDirOrtho*vId.y*combinedSize.y*scale;
 
-			vec4 posDirProj = proj*view*model * vec4($position+direction, 1.0);
-			vec4 posProjUnmodified = proj*view*model * vec4($position, 1.0);
- 			if (posDirProj.x<posProjUnmodified.x)
- 			{
- 				if (isUp==1)
- 					uv.x = texScale.x-uv.x;
- 				else
- 					uv = texScale-uv;
- 			}
- 			uv.y += (1.0 - texScale.y);
+      // capability to flip upside down was lost when label texture atlases were implemented. this was the old code:
+			//vec4 posDirProj = proj*view*model * vec4($position+direction, 1.0);
+			//vec4 posProjUnmodified = proj*view*model * vec4($position, 1.0);
+ 			//if (posDirProj.x<posProjUnmodified.x)
+ 			//{
+ 			//	if (isUp==1)
+ 			//		uv.x = texScale.x-uv.x;
+ 			//	else
+ 			//		uv = texScale-uv;
+ 			//}
+ 			//uv.y += (1.0 - texScale.y);
 			vtc.xy = uv;
 #ifdef OCCL_TEST
 		} else {
@@ -304,6 +323,7 @@
 #endif
 		vec4 pos4 = proj * view * vec4(posModel,1.0);
 		gl_Position = pos4;
+		vcolor = $color / 255.0;
 	}
 ]]></snippet>
 
@@ -395,6 +415,7 @@ $fragmentShaderHUDBase
 	uniform vec4 viewport;
 	uniform vec3 camPos;
 	uniform float polygonOffset;
+	uniform float cameraGroundRelative;
 
 	attribute vec3 $position;
 	attribute vec3 $normal;
@@ -403,7 +424,8 @@ $fragmentShaderHUDBase
 	$matchPixelCenter
 
 	void main(void) {
-	    vec4 centerOffset = $auxpos1;
+	    vec3 centerOffset = $auxpos1.xyz;
+		float pointGroundDistance = $auxpos1.w;
 
 	    vec4 posProjCenter;
 	    if (dot($position, $position) > 0.0) {

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define(["dojo/has"],function(n){var o=n("dojo-debug-messages");return function(n,s){return!n||!s||n instanceof s||(n.constructor&&void 0!==n.constructor._meta?o&&console.warn("Assigning an instance of '"+(n.declaredClass||"unknown")+"' which is not a subclass of '"+(s.prototype&&s.prototype.declaredClass||"unknown")+"'"):n=new s(n)),n}});

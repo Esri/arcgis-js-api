@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define(["./ActionPlanar","../../mixins/RotateMixin"],function(a,n){var i=a.createSubclass([n],{declaredClass:"esri.views.3d.navigation.planar.actions.RotatePlanar"});return i});

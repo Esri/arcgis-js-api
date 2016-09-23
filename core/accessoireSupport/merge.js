@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define(["dojo/_base/lang"],function(r){var a=function(e,n){return n?Object.keys(n).reduce(function(e,c){var o,t;return"value"===c?e[c]=n[c]:void 0===e[c]?e[c]=r.clone(n[c]):(o=e[c],t=n[c],o!==t&&(Array.isArray(t)||Array.isArray(e)?(o=e[c]=o?Array.isArray(o)?o.concat():[o]:[],t&&(Array.isArray(t)||(t=[t]),e[c]=o.concat(t))):t&&"object"==typeof t?e[c]=a(o,t):(!o||t)&&(e[c]=t))),e},e||{}):e};return a});
+define(["dojo/_base/lang"],function(r){var a=function(e,n){return n?Object.keys(n).reduce(function(e,c){var o,t;return"value"===c?e[c]=n[c]:void 0===e[c]?e[c]=r.clone(n[c]):(o=e[c],t=n[c],o!==t&&(Array.isArray(t)||Array.isArray(e)?(o=o?Array.isArray(o)?e[c]=o.concat():e[c]=[o]:e[c]=[],t&&(Array.isArray(t)||(t=[t]),e[c]=o.concat(t))):t&&"object"==typeof t?e[c]=a(o,t):(!o||t)&&(e[c]=t))),e},e||{}):e};return a});

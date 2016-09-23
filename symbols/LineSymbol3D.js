@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define(["../core/declare","../core/lang","./Symbol3D"],function(e,l,n){var o=e(n,{declaredClass:"esri.symbol.LineSymbol3D",type:"line-symbol-3d",_allowedLayerTypes:["Line","Path","Text"],clone:function(){return new o({symbolLayers:l.clone(this.symbolLayers)})}});return o});
+define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/lang","./Symbol3D","../core/accessorSupport/decorators"],function(e,r,o,t,s,n,p){var l=function(e){function r(r){e.call(this),this.type="line-symbol-3d"}return o(r,e),r.prototype.clone=function(){return new r({symbolLayers:s.clone(this.symbolLayers)})},t([p.property()],r.prototype,"type",void 0),t([p.shared(["Line","Path","Text"])],r.prototype,"_allowedLayerTypes",void 0),r=t([p.subclass("esri.symbols.LineSymbol3D")],r)}(p.declared(n));return l});

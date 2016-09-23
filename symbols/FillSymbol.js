@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define(["../core/declare","./Symbol","./SimpleLineSymbol"],function(e,t,i){var l=e(t,{declaredClass:"esri.symbols.FillSymbol",classMetadata:{properties:{outline:{type:i}}},type:null,_outlineReader:i.fromJSON,toJSON:function(){var e=this.inherited(arguments);return this.outline&&(e.outline=this.outline.toJSON()),e}});return l});
+define(["../core/declare","./Symbol","./SimpleLineSymbol"],function(e,l,r){var i=e(l,{declaredClass:"esri.symbols.FillSymbol",properties:{outline:{type:r,json:{writable:!0}},type:null}});return i});

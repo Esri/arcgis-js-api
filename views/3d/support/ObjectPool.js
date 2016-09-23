@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define(["../../../core/declare","./PreallocArray"],function(t,e){var i=t([],{constructor:function(t,i){this.freelist=new e(t),this.cls=i,this.initialSize=t},_allocate:function(){return new this.cls},acquire:function(){if(0===this.freelist.length)for(var t=Math.max(1,this.initialSize/2),e=0;t>e;e++)this.freelist.push(new this.cls);return this.freelist.pop()},release:function(t){this.freelist.push(t)}});return i.on=function(t,e){t._pool=null,Object.defineProperty(t,"Pool",{get:function(){return this._pool||(this._pool=new i(e,t)),this._pool}})},i});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define(["../../core/declare","dojo/_base/array","../../Graphic","../../core/JSONSupporter","./DirectionsFeatureSet"],function(e,r,t,o,n){var a=e(o,{declaredClass:"esri.tasks.support.RouteResult",directions:null,_directionsReader:function(e){return n.fromJSON(e)},route:null,_routeReader:function(e,r){return e.geometry&&(e.geometry.spatialReference=r.spatialReference),t.fromJSON(e)},routeName:null,stops:null,_stopsReader:function(e,o){var n=[],a=o.spatialReference;return r.forEach(e,function(e){e.geometry&&(e.geometry.spatialReference=a),n[e.attributes.Sequence-1]=t.fromJSON(e)}),n}});return a});

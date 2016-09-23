@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define(["./declare","dojo/Evented"],function(e,t){return e(t,{declaredClass:"esri.Evented",hasEventListener:function(e){return e="on"+e,!(!this[e]||!this[e].after)},emit:function(e,t){return this.hasEventListener(e)?(t=t||{},t.target||(t.target=this),this.inherited(arguments,[e,t])):void 0}})});
+define(["./declare","dojo/Evented"],function(e,t){return e(t,{declaredClass:"esri.core.Evented",hasEventListener:function(e){return e="on"+e,!(!this[e]||!this[e].after)},emit:function(e,t){return this.hasEventListener(e)?(t=t||{},t.target||(t.target=this),this.inherited(arguments,[e,t])):void 0}})});

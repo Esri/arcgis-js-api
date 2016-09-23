@@ -1,0 +1,290 @@
+
+/* ==========================================================================
+   box-sizing
+   ========================================================================== */
+.esri-widget {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  color: $text_color;
+  font-size: $text_size;
+  font-family: $font_family;
+  line-height: $line_height;
+  background-color: $background_color;
+  *,
+  *:before
+  *:after {
+    -webkit-box-sizing: inherit;
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
+  }
+  a {
+    text-decoration: none;
+    color: $anchor_color;
+    :hover {
+      color: $anchor_hover_color;
+    }
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+  }
+  .esri-menu {
+    position: absolute;
+    top: $menu_placement;
+    left: 0;
+    z-index: 1000;
+    background-color: $background_color;
+    @include defaultBoxShadow();
+    padding: 0;
+    margin: $menu_gap 0 0 0;
+    font-size: 14px;
+    line-height: 16px;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    overflow: hidden;
+    width: 100%;
+    visibility: hidden;
+    max-height: 0;
+    .esri-header {
+      padding: 6px 12px;
+      background-color: $list_header_color;
+      color: $button_text_hover_color;
+    }
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    li {
+      padding: .8em 1em;
+      cursor: pointer;
+      border-top: solid 1px $border_color;
+    }
+    li:first-child {
+      border: none;
+    }
+    li:hover,
+    li:focus {
+      background-color: $background_hover_color;
+    }
+    li:active {
+      background-color: $background_active_color;
+      color: $active_text_color;
+    }
+    li.esri-active {
+      background-color: $background_active_color;
+      color: $active_text_color;
+      cursor: default;
+    }
+  }
+  table {
+    color: $text_color;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    tr:nth-child(odd) {
+      background-color: rgba($background_inverse_color, 0.1);
+    }
+    tr:nth-child(even) {
+      background-color: rgba($background_inverse_color, 0.02);
+    }
+    tr {
+      a {
+        color: $text_color;
+      }
+      td,
+      th {
+        padding: .5em .7em;
+        -ms-word-break: break-word;
+        word-break: break-word;
+        vertical-align: top;
+        font-size: $body_text_size;
+        font-weight: $text_weight_normal;
+      }
+      th {
+        width: 50%;
+        text-align: left;
+        border-right: 3px solid rgba(0, 0, 0, 0.05);
+      }
+      td {
+        width: 50%;
+      }
+    }
+  }
+}
+
+.keynav-mode {
+  .esri-widget {
+  //  Saving this for when we can toggle a key-nav class
+  &:focus {
+    @include outlineStyle();
+  }
+  * {
+    &:focus {
+        @include outlineStyle();
+      }
+    }
+  }
+}
+
+.esri-disabled {
+  .esri-icon {
+    color: $disabled_color;
+  }
+}
+
+/* ==========================================================================
+   Widget Button
+   ========================================================================== */
+.esri-widget-button {
+  font-size: $text_size;
+  background-color: $background_color; 
+  color: $button_text_color;
+  width: $button_width;
+  height: $button_height;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  cursor: pointer;
+  @include flexDisplay();
+  @include flexFlow(row, nowrap);
+  @include justifyContent(center);
+  @include alignItems(center);
+  @include transition(background-color, 125ms, ease-in-out);
+  &:hover {
+    background-color: $background_hover_color;
+    color: $button_text_hover_color;
+  }
+  &:active {
+    background-color: $background_active_color;
+    color: $active_text_color;
+  }
+  &.esri-disabled {
+    color: $disabled_color;
+  }
+}
+
+/* ==========================================================================
+   UI Corners
+   ========================================================================== */
+.esri-ui-corner {
+  .esri-widget {
+    @include defaultBoxShadow();
+  }
+}
+
+.esri-ui-bottom-right,
+.esri-ui-bottom-left {
+  .esri-widget {
+    .esri-menu {
+      top: auto;
+      bottom: $menu_placement;
+      margin-top: 0;
+      margin-bottom: $menu_gap;
+    }
+  }
+}
+
+/* ==========================================================================
+   RTL
+   ========================================================================== */
+html[dir="rtl"] .esri-widget {
+  table {
+    th {
+      text-align: right;
+      border-right: none;
+      border-left: 3px solid rgba(0, 0, 0, 0.05);
+    }
+  }
+}
+
+/* ==========================================================================
+   accessibility
+   ========================================================================== */
+
+.esri-icon-font-fallback-text {
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+  position: absolute;
+  height: 1px;
+  width: 1px;
+}
+
+/* ==========================================================================
+   animation
+   ========================================================================== */
+@include keyframes(esri-fade-in) {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.esri-rotating {
+  -webkit-animation: esri-anim-rotate 1.25s infinite linear;
+  animation: esri-anim-rotate 1.25s infinite linear;
+}
+
+@include keyframes(esri-anim-rotate) {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================================================
+   clearfixing
+   ========================================================================== */
+
+/**
+ * taken from http://nicolasgallagher.com/micro-clearfix-hack/
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    contenteditable attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that are clearfixed.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+.esri-clearfix {
+  &:before,
+  &:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+/* ==========================================================================
+   interaction
+   ========================================================================== */
+
+.esri-interactive {
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   visibility
+   ========================================================================== */
+
+.esri-hidden {
+  display: none !important;
+}
+
+.esri-invisible {
+  visibility: hidden !important;
+}

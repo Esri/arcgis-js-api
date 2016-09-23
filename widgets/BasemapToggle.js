@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 /**
  * The BasemapToggle provides a widget which allows an end-user to switch between
@@ -36,7 +36,6 @@
  * @see [BasemapToggle.css]({{ JSAPI_BOWER_URL }}/widgets/BasemapToggle/css/BasemapToggle.css)
  * @see [BasemapToggle.scss]({{ JSAPI_BOWER_URL }}/widgets/BasemapToggle/css/BasemapToggle.scss)
  * @see [Sample - Get started with widgets using BasemapToggle](../sample-code/get-started-widgets/index.html)
- * @see [Sample - BasemapToggle widget (3D)](../sample-code/widgets-basemaptoggle-3d/index.html)
  * @see module:esri/widgets/BasemapToggle/BasemapToggleViewModel
  *
  * @example
@@ -69,9 +68,9 @@
  * @see [toggle()](#toggle)
  *
  * @example
- * basemapToggle.on('toggle', function(evt){
- *   console.log("current basemap title: ", evt.current.title);
- *   console.log("previous basemap title: ", evt.previous.title);
+ * basemapToggle.on('toggle', function(event){
+ *   console.log("current basemap title: ", event.current.title);
+ *   console.log("previous basemap title: ", event.previous.title);
  * });
  */
 define([
@@ -121,27 +120,20 @@ function (
 
   /**
    * @extends module:esri/widgets/Widget
+   * @mixes module:esri/core/Evented
    * @constructor module:esri/widgets/BasemapToggle
    * @param {Object} [properties] - See the [properties](#properties) for a list of all the properties
    *                              that may be passed into the constructor.
    * @param {string | Node} [srcNodeRef] - Reference or ID of the HTML element in which this widget renders.
+   *
+   * @example
+   * // typical usage
+   * var basemapToggle = new BasemapToggle({
+   *   view: view,
+   *   nextBasemap: "satellite"
+   * });
    */
   var BasemapToggle = Widget.createSubclass([_TemplatedMixin], /** @lends module:esri/widgets/BasemapToggle.prototype */ {
-
-    properties: {
-      viewModel: {
-        type: BasemapToggleViewModel
-      },
-      activeBasemap: {
-        dependsOn: ["viewModel.activeBasemap"]
-      },
-      nextBasemap: {
-        dependsOn: ["viewModel.nextBasemap"]
-      },
-      view: {
-        dependsOn: ["viewModel.view"]
-      }
-    },
 
     baseClass: CSS.base,
 
@@ -189,93 +181,102 @@ function (
     //
     //--------------------------------------------------------------------------
 
-    //----------------------------------
-    //  activeBasemap
-    //----------------------------------
+    properties: /** @lends module:esri/widgets/BasemapToggle.prototype */ {
 
-    /**
-     * The map's {@link module:esri/Map#basemap basemap}.
-     *
-     * @readonly
-     * @type {module:esri/Basemap}
-     * @name activeBasemap
-     * @instance
-     */
-    _getActiveBasemapAttr: viewModelWiring.createGetterDelegate("activeBasemap"),
+      //----------------------------------
+      //  activeBasemap
+      //----------------------------------
 
-    _setActiveBasemapAttr: viewModelWiring.createSetterDelegate("activeBasemap"),
+      /**
+       * The map's {@link module:esri/Map#basemap basemap}.
+       *
+       * @readonly
+       * @type {module:esri/Basemap}
+       * @name activeBasemap
+       * @instance
+       */
+      activeBasemap: {
+        aliasOf: "viewModel.activeBasemap"
+      },
 
-    //----------------------------------
-    //  nextBasemap
-    //----------------------------------
+      //----------------------------------
+      //  nextBasemap
+      //----------------------------------
 
-    /**
-     * The next basemap for toggling. One of the following values may be set to this property:
-     *
-     * * The {@link module:esri/Map#basemap string ID} of any Esri basemap.
-     * * A custom {@link module:esri/Basemap} object. Since this property may be
-     * [autocast](../../guide/autocasting/index.html), the {@link module:esri/Basemap}
-     * module does not need to be included in the `require()` function in most applications.
-     *
-     * @instance
-     * @name nextBasemap
-     * @type {module:esri/Basemap | string}
-     * @autocast
-     */
-    _getNextBasemapAttr: viewModelWiring.createGetterDelegate("nextBasemap"),
+      /**
+       * The next basemap for toggling. One of the following values may be set to this property:
+       *
+       * * The {@link module:esri/Map#basemap string ID} of any Esri basemap.
+       * * A custom {@link module:esri/Basemap} object. Since this property may be
+       * [autocast](../guide/autocasting/index.html), the {@link module:esri/Basemap}
+       * module does not need to be included in the `require()` function in most applications.
+       *
+       * @instance
+       * @name nextBasemap
+       * @type {module:esri/Basemap | string}
+       * @autocast
+       */
+      nextBasemap: {
+        aliasOf: "viewModel.nextBasemap"
+      },
 
-    _setNextBasemapAttr: viewModelWiring.createSetterDelegate("nextBasemap"),
+      //----------------------------------
+      //  titleVisible
+      //----------------------------------
 
-    //----------------------------------
-    //  titleVisible
-    //----------------------------------
+      /**
+       * Indicates if the title of the basemap is visible in the widget.
+       *
+       * @type {boolean}
+       * @default false
+       */
+      titleVisible: {
+        value: false,
 
-    /**
-     * Indicates if the title of the basemap is visible in the widget.
-     *
-     * @type {boolean}
-     * @default false
-     */
-    titleVisible: false,
+        set: function(value) {
+          domClass.toggle(this._basemapTitleNode, CSS.titleVisible, !!value);
+          this._set("titleVisible", value);
+        }
+      },
 
-    _setTitleVisibleAttr: function (value) {
-      domClass.toggle(this._basemapTitleNode, CSS.titleVisible, !!value);
-      this._set("titleVisible", value);
+      //----------------------------------
+      //  view
+      //----------------------------------
+
+      /**
+       * A reference to the {@link module:esri/views/MapView} or {@link module:esri/views/SceneView}. This view
+       * provides the BasemapToggle widget with access to the initial
+       * {@link module:esri/Map#basemap basemap} to toggle from
+       * via the view's {@link module:esri/views/View#map map} property.
+       *
+       * @name view
+       * @instance
+       * @type {(module:esri/views/SceneView|module:esri/views/MapView)}
+       */
+      view: {
+        aliasOf: "viewModel.view"
+      },
+
+      //----------------------------------
+      //  viewModel
+      //----------------------------------
+
+      /**
+       * The view model for this widget. This is a class that contains all the logic
+       * (properties and methods) that controls this widget's behavior. See the
+       * {@link module:esri/widgets/BasemapToggle/BasemapToggleViewModel} class to access
+       * all properties and methods on the widget.
+       *
+       * @name viewModel
+       * @instance
+       * @type {module:esri/widgets/BasemapToggle/BasemapToggleViewModel}
+       * @autocast
+       */
+      viewModel: {
+        type: BasemapToggleViewModel
+      }
+
     },
-
-    //----------------------------------
-    //  view
-    //----------------------------------
-
-    /**
-     * A reference to the {@link module:esri/views/MapView MapView} or {@link module:esri/views/Scene SceneView}. This view
-     * provides the BasemapToggle widget with access to the initial
-     * {@link module:esri/Map#basemap basemap} to toggle from
-     * via the view's {@link module:esri/views/View#map map} property.
-     *
-     * @name view
-     * @instance
-     * @type {(module:esri/views/SceneView|module:esri/views/MapView)}
-     */
-    _getViewAttr: viewModelWiring.createGetterDelegate("view"),
-
-    _setViewAttr: viewModelWiring.createSetterDelegate("view"),
-
-    //----------------------------------
-    //  viewModel
-    //----------------------------------
-
-    /**
-     * The view model for this widget. This is a class that contains all the logic
-     * (properties and methods) that controls this widget's behavior. See the
-     * {@link module:esri/widgets/BasemapToggle/BasemapToggleViewModel} class to access
-     * all properties and methods on the widget.
-     *
-     * @name viewModel
-     * @instance
-     * @type {module:esri/widgets/BasemapToggle/BasemapToggleViewModel}
-     * @autocast
-     */
 
     //--------------------------------------------------------------------------
     //

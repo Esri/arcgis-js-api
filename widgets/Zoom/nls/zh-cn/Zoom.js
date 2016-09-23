@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define({zoomIn:"放大(Z)",zoomOut:"缩小(O)"});
+define({zoomIn:"放大",zoomOut:"缩小"});

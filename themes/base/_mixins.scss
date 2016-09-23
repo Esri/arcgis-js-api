@@ -1,0 +1,201 @@
+////////////////////////////////////////
+// Widget Common Mixins
+
+@mixin boxShadow($arguments) {
+  -webkit-box-shadow: #{$arguments};
+  box-shadow: #{$arguments};
+}
+
+@mixin defaultBoxShadow(){
+  @include boxShadow("0 1px 2px rgba(0, 0, 0, 0.3)");
+}
+
+@mixin flexDisplay() {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin flex($grow, $shrink:"", $basis:"") {
+  -webkit-flex: $grow #{$shrink} #{$basis};
+  -ms-flex: $grow #{$shrink} #{$basis};
+  flex: $grow #{$shrink} #{$basis};
+}
+
+@mixin flexFlow($direction, $wrap:nowrap) {
+  -webkit-flex-flow: $direction $wrap;
+  -ms-flex-flow: $direction $wrap;
+  flex-flow: $direction $wrap;
+}
+
+@mixin alignItems($side) {
+  -webkit-align-items: $side;
+  align-items: $side;
+}
+
+@mixin justifyContent($side) {
+  -webkit-justify-content: $side;
+  justify-content: $side;
+}
+
+@mixin alignContent($side) {
+  -webkit-align-content: $side;
+  align-content: $side;
+}
+
+@mixin transformOrigin($x-axis:50%, $y-axis:50%) {
+  -webkit-transform-origin: $x-axis $y-axis; 
+  -moz-transform-origin: $x-axis $y-axis; 
+  -ms-transform-origin: $x-axis $y-axis; 
+  -o-transform-origin: $x-axis $y-axis; 
+  transform-origin: $x-axis $y-axis; 
+}
+
+@mixin alignSelf($side) {
+  -webkit-align-self: $side;
+  align-self: $side;
+}
+
+
+
+@mixin pointerStyle($width, $height) {
+  content: "";
+  position: absolute;
+  width: $width + px;
+  height: $height + px;
+}
+
+@mixin scrollbarY($barColor, $thumbColor) {
+  overflow: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 8px;
+    background-color: #{$barColor};
+    margin: 0;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #{$thumbColor};
+  }
+}
+
+@mixin outlineStyle() {
+  outline: 2px solid $focus_outline_color;
+  outline-offset: 2px;
+  z-index: 1;
+}
+
+@function sqrt($r) {
+  $x0: 1;
+  $x1: $x0;
+  @for $i from 1 through 10 {
+    $x1: $x0 - ($x0 * $x0 - abs($r)) / (2 * $x0);
+    $x0: $x1;
+  }
+  @return $x1;
+}
+
+@mixin contentMaxHeightDockedSide($contentHeight) {
+  $pageMenuHeight : $contentHeight - 60;
+  .esri-popup--is-docked {
+      &-top-left,
+      &-top-right,
+      &-bottom-left,
+      &-bottom-right {
+        .esri-popup__content {
+          max-height: #{$contentHeight}px;
+        }
+        &.esri-popup--feature-menu-open {
+          .esri-popup__feature-menu-viewport {
+            max-height: #{$pageMenuHeight}px;
+          }
+        }
+      }
+  }
+}
+
+@mixin mediaImgMaxWidth($max_width) {
+  .esri-popup-renderer {
+    .esri-popup-renderer__media-item {
+      img {
+        max-width: #{$max_width}px;
+      }
+    }
+    .esri-popup-renderer--media-pagination-visible {
+      .esri-popup-renderer__media-item {
+        img {
+          max-width: #{($max_width - 60)}px;
+        }
+      }
+    }
+  }
+}
+
+@mixin popupWidth_BasedOnViewSize($width) {
+  .esri-popup__main-container {
+    width: #{$width}px;
+  }
+}
+
+@mixin popupHeight_BasedOnViewSize($height) {
+  $pageMenuHeight : $height - 60;
+    .esri-popup__content {
+      max-height: #{$height}px;
+    }
+    &.esri-popup--feature-menu-open {
+      .esri-popup__feature-menu-viewport {
+        max-height: #{$pageMenuHeight}px; 
+      }
+    }
+}
+
+@function pointerSize($type, $x, $y, $scaleX, $scaleY) {
+  $len_of_triangle: sqrt(($x * $x) + ($y * $y));
+  @if $type==width {
+    @return $len_of_triangle * $scaleX;
+  }
+  @else {
+    @return $len_of_triangle * ($scaleY / 2);
+  }
+}
+
+@mixin pointerTransform($x, $y) {
+  transform: scale($x, $y) rotate(45deg);
+  -moz-transform: scale($x, $y) rotate(45deg);
+  -ms-transform: scale($x, $y) rotate(45deg);
+  -o-transform: scale($x, $y) rotate(45deg);
+  -webkit-transform: scale($x, $y) rotate(45deg);
+}
+
+@mixin transition($prop, $time, $ease, $delay:0ms) {
+  -webkit-transition: $prop $time $ease $delay;
+  -moz-transition: $prop $time $ease $delay;
+  -ms-transition: $prop $time $ease $delay;
+  -o-transition: $prop $time $ease $delay;
+  transition: $prop $time $ease $delay;
+}
+
+@mixin translate($x, $y) {
+  -webkit-transform: translate($x, $y);
+  -moz-transform: translate($x, $y);
+  -ms-transform: translate($x, $y);
+  -o-transform: translate($x, $y);
+  transform: translate($x, $y);
+}
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}

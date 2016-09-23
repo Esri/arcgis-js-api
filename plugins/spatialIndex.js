@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define(["../processors/SpatialIndex","dojo/Deferred"],function(a,e){return{add:function(n,t){if(t=t||{},n.spatialIndex)return n.spatialIndex;if(!("spatialIndex"in t)){var d=new e;t.autostart=!1,n.spatialIndex=new a(t);var r=n.spatialIndex;return n.declaredClass.indexOf("Map")>-1?r.setMap(n):r.addLayer(n),r.on("start",function(){d.resolve(r)}),r.start(),d.promise}return t.spatialIndex!==!1?(n.spatialIndex=t.spatialIndex,n.spatialIndex):void 0},remove:function(a){var e=a.spatialIndex;e&&(a.declaredClass.indexOf("Map")>-1?e.unsetMap():e.removeLayer(a),a.spatialIndex=void 0)}}});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define(["../core/declare","dojo/_base/lang","../core/screenUtils","./Symbol"],function(e,t,s,n){var o=e(n,{declaredClass:"esri.symbols.MarkerSymbol",angle:0,_angleReader:function(e){return e&&-1*e},type:null,xoffset:0,_xoffsetSetter:s.toPt,yoffset:0,_yoffsetSetter:s.toPt,size:9,_sizeSetter:function(e){return"auto"===e?e:s.toPt(e)},toJSON:function(){return t.mixin(this.inherited(arguments),{size:this.size,angle:this.angle&&-1*this.angle,xoffset:this.xoffset,yoffset:this.yoffset})}});return o});
+define(["../core/declare","../core/screenUtils","./Symbol"],function(e,t,r){var o=e(r,{declaredClass:"esri.symbols.MarkerSymbol",properties:{angle:{value:0,json:{read:function(e){return e&&-1*e},write:function(e,t){t.angle=e&&-1*e}}},type:{},xoffset:{value:0,cast:t.toPt,json:{writable:!0}},yoffset:{value:0,cast:t.toPt,json:{writable:!0}},size:{value:9,cast:function(e){return"auto"===e?e:t.toPt(e)},json:{writable:!0}}}});return o});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define(["../../../../core/declare"],function(e){var t=e([],{classMetadata:{properties:{updatingPercentage:{dependsOn:["updating"]}}},constructor:function(){this._updatingPercentage=0},_updatingPercentageGetter:function(){return this.updating?this._updatingPercentage:0},_updatingPercentageSetter:function(e){this._updatingPercentage=e}});return t});
+define(["../../../../core/Accessor"],function(e){var n=e.createSubclass([],{properties:{updating:{readOnly:!0},updatingPercentageValue:{value:100,readOnly:!0},updatingPercentage:{dependsOn:["updating","updatingPercentageValue"],readOnly:!0,value:0,get:function(){return this.updating?this.updatingPercentageValue:0}}},constructor:function(){}});return n});

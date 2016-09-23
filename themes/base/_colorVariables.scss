@@ -1,0 +1,31 @@
+@import 'functions';
+@import "colors/scss/variables";
+// ↳ https: //github.com/Esri/calcite-colors.git
+
+//  Main Colors Vars
+$text_color                 : $Calcite_Gray_700                                !default ;
+$background_color           : $Calcite_Gray_050                                !default ;
+$anchor_color               : $Calcite_Gray_550                                !default ;
+$button_text_color          : $Calcite_Gray_550                                !default ;
+
+// Inverse
+$text_inverse_color         : $Calcite_Gray_100                                !default ;
+$background_inverse_color   : $Calcite_Gray_650                                !default ;
+
+// Hover
+$button_text_hover_color    : offset-foreground-color($button_text_color, 25%) !default ;
+$anchor_hover_color         : offset-foreground-color($anchor_color, 25%)      !default ;
+$background_hover_color     : offset-background-color($background_color, 5%)   !default ;
+
+// Active
+$background_active_color    : offset-background-color($background_color, 10%)  !default ;
+$active_text_color          : offset-background-color($text_color, 10%)        !default ;
+
+// Other
+$disabled_color             : rgba($button_text_color, 0.4)                    !default ;
+$placeholder_color          : rgba($text_color, 0.4)                           !default ;
+$border_color               : rgba($text_color, 0.2)                           !default ;
+$list_header_color          : offset-background-color($background_color, 5%)   !default ;
+$page_menu_background_color : $background_inverse_color                        !default ;
+
+$focus_outline_color        : $Calcite_Highlight_Blue_250                      !default ;

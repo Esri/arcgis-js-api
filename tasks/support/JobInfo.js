@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define(["../../core/declare","../../core/jsonDictionary","../../core/JSONSupporter","./GPMessage","dojo/_base/array","dojo/_base/lang"],function(e,o,i,r,s){var b=o({esriJobCancelled:"job-cancelled",esriJobCancelling:"job-cancelling",esriJobDeleted:"job-deleted",esriJobDeleting:"job-deleting",esriJobTimedOut:"job-timed-out",esriJobExecuting:"job-executing",esriJobFailed:"job-failed",esriJobNew:"job-new",esriJobSubmitted:"job-submitted",esriJobSucceeded:"job-succeeded",esriJobWaiting:"job-waiting"}),t=e(i,{declaredClass:"esri.tasks.support.JobInfo",jobId:"",jobStatus:"",_jobStatusReader:b.fromJSON,messages:[],_messagesReader:function(e){return s.map(e,function(e){return r.fromJSON(e)})}});return t});
+define(["../../core/declare","../../core/kebabDictionary","../../core/JSONSupporter","./GPMessage","dojo/_base/array","dojo/_base/lang"],function(e,o,i,r,b,s){var t=o({esriJobCancelled:"job-cancelled",esriJobCancelling:"job-cancelling",esriJobDeleted:"job-deleted",esriJobDeleting:"job-deleting",esriJobTimedOut:"job-timed-out",esriJobExecuting:"job-executing",esriJobFailed:"job-failed",esriJobNew:"job-new",esriJobSubmitted:"job-submitted",esriJobSucceeded:"job-succeeded",esriJobWaiting:"job-waiting"}),a=e(i,{declaredClass:"esri.tasks.support.JobInfo",jobId:"",jobStatus:"",_jobStatusReader:t.fromJSON,messages:[],_messagesReader:function(e){return b.map(e,function(e){return r.fromJSON(e)})}});return a});

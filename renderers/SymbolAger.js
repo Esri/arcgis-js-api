@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
-define(["../core/declare"],function(e){var l=e(null,{declaredClass:"esri.renderer.SymbolAger",getAgedSymbol:function(){},_setSymbolSize:function(e,l){switch(e.type){case"simple-marker-symbol":e.setSize(l);break;case"picture-marker-symbol":e.setWidth(l),e.setHeight(l);break;case"simple-line-symbol":case"cartographic-line-symbol":e.setWidth(l);break;case"simple-fill-symbol":case"picture-fill-symbol":e.outline&&e.outline.setWidth(l)}}});return l});
+define(["../core/declare"],function(e){var l=e(null,{declaredClass:"esri.renderer.SymbolAger",getAgedSymbol:function(e,l){},_setSymbolSize:function(e,l){switch(e.type){case"simple-marker-symbol":e.setSize(l);break;case"picture-marker-symbol":e.setWidth(l),e.setHeight(l);break;case"simple-line-symbol":case"cartographic-line-symbol":e.setWidth(l);break;case"simple-fill-symbol":case"picture-fill-symbol":e.outline&&e.outline.setWidth(l)}}});return l});

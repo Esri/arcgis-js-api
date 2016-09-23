@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define({noFilterFields:"لا تحتوي الطبقة ${name} على حقول يمكن استخدامها للتنقية.",addToViewer:"إضافة الطبقة إلى الخريطة",noItemsToDisplay:"لا توجد عناصر متاحة للعرض في الوقت الحالي.",searchFor:"البحث عن",searching:"يتم البحث الآن",items:{organizationLabel:"المنظمة",onlineLabel:"ArcGIS Online",contentLabel:"الخاص",favoritesLabel:"المفضلات"},title:"تحديد خريطة الويب",searchTitle:"بحث",ok:"موافق",cancel:"إلغاء الأمر",placeholder:"أدخل عنصر البحث",instructionsLeft:"ما الذي تود فعله؟",instructionsRight:"تحديد التطبيق القابل للتكوين.",go:"ذهاب",selectDetails:"تحديد",configure:"إنشاء",close:"إغلاق",learnMoreConfigurableApps:"تعرف على المزيد عن التطبيقات التي يمكن تكوينها"});

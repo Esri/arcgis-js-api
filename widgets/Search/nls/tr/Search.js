@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define({searchButtonTitle:"Ara",clearButtonTitle:"Aramayı temizle",placeholder:"Adres veya yer bul",searchIn:"Şurada Ara:",lonlat:"Boylam, Enlem",reverseLonLatHeader:"Şunu mu demek istediniz?",all:"Tümü",allPlaceholder:"Adres veya yer bul",emptyValue:"Arama terimi girin.",untitledResult:"Başlıksız",untitledSource:"Başlıksız kaynak",noResults:"Sonuç yok",noResultsFound:"{value} için herhangi bir sonuç bulunamadı.",showMoreResults:"Daha fazla sonuç göster",hideMoreResults:"Gizle",searchResult:"Sonuç ara",moreResultsHeader:"Diğer sonuçlar",esriLocatorName:"Esri Dünya Coğrafi Kodlayıcısı"});

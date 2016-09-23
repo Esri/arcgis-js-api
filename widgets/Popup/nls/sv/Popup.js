@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define({zoom:"Zooma till",next:"Nästa geoobjekt",previous:"Föregående geoobjekt",close:"Stäng",dock:"Docka",undock:"Frigör",menu:"Meny",untitled:"Namnlös",pageText:"{index} av {total}",noFeaturesFound:"Inga geoobjekt hittades",selectedFeature:"Valt geoobjekt",selectedFeatures:"{total} resultat",loading:"Laddar"});

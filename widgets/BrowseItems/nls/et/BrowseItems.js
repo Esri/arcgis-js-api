@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define({noFilterFields:"Kihil ${name} puuduvad väljad, mida saaks kasutada filtreerimiseks.",addToViewer:"Lisa kiht kaardile",noItemsToDisplay:"Hetkel ei ole kuvatavaid objekte.",searchFor:"Otsi",searching:"Otsin",items:{organizationLabel:"Minu organisatsioon",onlineLabel:"ArcGIS Online",contentLabel:"Minu sisu",favoritesLabel:"Minu lemmikud"},title:"Vali veebikaart",searchTitle:"Otsi",ok:"Ok",cancel:"Tühista",placeholder:"Sisesta otsingusõna",instructionsLeft:"Mida soovite teha?",instructionsRight:"Valige konfigureeritav rakendus.",go:"Liigu",selectDetails:"VALI",configure:"Loo",close:"Sulge",learnMoreConfigurableApps:"Lugege rohkem konfigureeritavate rakenduste kohta"});

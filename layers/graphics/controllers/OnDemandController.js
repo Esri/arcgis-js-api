@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define(["../../../core/declare","dojo/Deferred","../../../core/Accessoire","../../../core/AccessoirePromise"],function(e,r,o,i){var n=e([o,i],{initialize:function(){var e=new r;this.addResolvingPromise(e.promise),e.reject(new Error("OnDemandController: Not implemented yet."))}});return n});

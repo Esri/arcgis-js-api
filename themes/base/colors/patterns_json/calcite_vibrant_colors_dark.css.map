@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAIA,yBAA0B;EACxB,gBAAgB,EC0He,OAAO;;;;;;;;;;;AD5GxC,yBAA0B;EACxB,gBAAgB,EC4Ge,OAAO;;;;;;;;;;;AD7FxC,yBAA0B;EACxB,gBAAgB,EC6Fe,OAAO;;;;;;;;;;;AD9ExC,yBAA0B;EACxB,gBAAgB,EC8Ee,OAAO;;;;;;;;;;;AD/DxC,2BAA4B;EAC1B,gBAAgB,EC+De,OAAO;;;;;;;;;;;AD/CxC,2BAA4B;EAC1B,gBAAgB,EC+Ce,OAAO;;;;;;;;;;;ADhCxC,2BAA4B;EAC1B,gBAAgB,ECgCe,OAAO;;;;;;;;;;;ADlBxC,2BAA4B;EAC1B,gBAAgB,ECkBe,OAAO;;;;;;;;;;;ADPxC,2BAA4B;EAC1B,gBAAgB,ECOe,OAAO;;;;;;;;;;;ADIxC,2BAA4B;EAC1B,gBAAgB,ECJe,OAAO;;;;;;;;;;;ADexC,0BAA2B;EACzB,gBAAgB,ECfe,OAAO;;;;;;;;;;;AD6BxC,0BAA2B;EACzB,gBAAgB,EC7Be,OAAO;;;;;;;;;;;AD4CxC,0BAA2B;EACzB,gBAAgB,EC5Ce,OAAO;;;;;;;;;;;AD2DxC,wBAAyB;EACvB,gBAAgB,EC3De,OAAO;;;;;;;;;;;AD2ExC,wBAAyB;EACvB,gBAAgB,EC3Ee,OAAO;;;;;;;;;;;AD2FxC,wBAAyB;EACvB,gBAAgB,EC3Fe,OAAO;;;;;;;;;;;AD0GxC,2BAA4B;EAC1B,gBAAgB,EC1Ge,OAAO;;;;;;;;;;;ADyHxC,2BAA4B;EAC1B,gBAAgB,ECzHe,OAAO;;;;;;;;;;;ADwIxC,2BAA4B;EAC1B,gBAAgB,ECxIe,OAAO;;;;;;;;;;;ADuJxC,0BAA2B;EACzB,gBAAgB,ECvJe,OAAO;;;;;;;;;;;ADsKxC,0BAA2B;EACzB,gBAAgB,ECtKe,OAAO;;;;;;;;;;;ADqLxC,0BAA2B;EACzB,gBAAgB,ECrLe,OAAO",
+"sources": ["scss/calcite_vibrant_colors_dark.scss","../scss/variables_dark.scss"],
+"names": [],
+"file": "calcite_vibrant_colors_dark.css"
+}

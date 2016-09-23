@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define(["require","exports","./arcadeRuntime","./parser","./Feature"],function(e,r,t,n,c){function i(e){return c.fromFeature(e)}function u(e){return n.parseScript(e)}function a(e,r){return n.validateScript(e,r,"simple")}function p(e,r,t){return n.scriptCheck(e,r,t,"full")}function f(e,r,c){return t.executeScript(n.parseScript(e),r,c)}function o(e,r,n){return t.executeScript(e,r,n)}function s(e,r){return t.referencesMember(e,r)}function l(e,r){return t.referencesFunction(e,r)}function S(e,r){return void 0===r&&(r=!1),n.extractFieldLiterals(e,r)}r.constructFeature=i,r.parseScript=u,r.validateScript=a,r.scriptCheck=p,r.parseAndExecuteScript=f,r.executeScript=o,r.referencesMember=s,r.referencesFunction=l,r.extractFieldLiterals=S});

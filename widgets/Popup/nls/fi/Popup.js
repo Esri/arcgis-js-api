@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define({zoom:"Tarkenna kohteeseen",next:"Seuraava kohde",previous:"Edellinen kohde",close:"Sulje",dock:"Kiinnitä",undock:"Irrota",menu:"Valikko",untitled:"Nimetön",pageText:"{index}/{total}",noFeaturesFound:"Kohteita ei löytynyt",selectedFeature:"Valittu kohde",selectedFeatures:"{total} tulosta",loading:"Ladataan"});

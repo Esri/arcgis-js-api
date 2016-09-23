@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 var profile = (function(){
   var testResourceRe = /^esri\/(.*\/)?tests\//,
@@ -60,8 +60,7 @@ var profile = (function(){
       "esri/gallery": 1,
       "esri/mobile": 1,
       "esri/arcgismanager": 1,
-      "esri/themes/calcite/icons/ie7/ie7": 1,
-      "esri/themes/calcite/icons/demo-files/demo": 1
+      "esri/themes/base/icons/demo-files/demo": 1
     };
 
   return {

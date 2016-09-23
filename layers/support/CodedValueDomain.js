@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
 
 define(["../../core/lang","./Domain","dojo/_base/array","dojo/_base/lang"],function(e,a,o,n){var r=a.createSubclass({declaredClass:"esri.layers.support.CodedValueDomain",properties:{codedValues:{value:null},type:{value:"coded-value"}},getName:function(e){var a;return o.some(this.codedValues,function(o){return o.code==e&&(a=o.name),!!a}),a},toJSON:function(){var a=this.inherited(arguments);return a.codedValues=n.clone(this.codedValues),e.fixJson(a)}});return r});
