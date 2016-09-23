@@ -24,13 +24,13 @@ This repo has dependencies on the following repos.
 
 | Library | Repo | Submodule path |
 | :------ |:---- |:-------------- |
-| dojo  | https://github.com/Esri/dojo/tree/1.10.4-esri   | /dojo |
-| dijit | https://github.com/Esri/dijit/tree/1.10.4-esri  | /dijit |
-| dojox | https://github.com/Esri/dojox/tree/1.10.4-esri  | /dojox |
-| util | https://github.com/Esri/dojo-util/tree/1.10.4-esri    | /util |
-| dgrid | https://github.com/Esri/dgrid/tree/1.0.0-esri  | /dgrid |
-| dstore | https://github.com/SitePen/dstore/tree/1.1 | /dstore |
-| moment | https://github.com/moment/moment/tree/2.12.0 | /moment |
+| dojo  | https://github.com/Esri/dojo/tree/1.11.2-esri   | /dojo |
+| dijit | https://github.com/Esri/dijit/tree/1.11.2-esri  | /dijit |
+| dojox | https://github.com/Esri/dojox/tree/1.11.2-esri  | /dojox |
+| util | https://github.com/Esri/dojo-util/tree/1.11.2-esri    | /util |
+| dgrid | https://github.com/Esri/dgrid/tree/1.1.0-esri  | /dgrid |
+| dstore | https://github.com/SitePen/dstore/tree/v1.1.1 | /dstore |
+| moment | https://github.com/moment/moment/tree/2.14.1 | /moment |
 
 Please see our [recommended guide](https://github.com/Esri/jsapi-resources/tree/master/4.x/bower).
 
