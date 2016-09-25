@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.17/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.18/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../../base/Descriptor","../../../../form/iso/ObjectReference","./MI_Platform","dojo/text!./templates/Platform.html","../../../../../../kernel"],function(e,t,o,a,r,i,n,s){var m=e(a,{templateString:n});return o("extend-esri")&&t.setObject("dijit.metadata.types.iso.gmi.acquisitionInformation.Platform",m,s),m});

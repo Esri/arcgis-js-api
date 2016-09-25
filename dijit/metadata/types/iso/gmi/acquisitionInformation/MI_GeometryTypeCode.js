@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.17/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.18/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../../base/Descriptor","../../../../form/InputSelectOne","../../../../form/Options","../../../../form/Option","../../../../form/iso/CodeListAttribute","../../../../form/iso/CodeListValueAttribute","../../../../form/iso/CodeListElement","../../../../form/iso/CodeSpaceAttribute","dojo/text!./templates/MI_GeometryTypeCode.html","../../../../../../kernel"],function(e,t,o,i,r,s,a,m,n,d,f,p,l){var u=e(i,{templateString:p});return o("extend-esri")&&t.setObject("dijit.metadata.types.iso.gmi.acquisitionInformation.MI_GeometryTypeCode",u,l),u});

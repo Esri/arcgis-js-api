@@ -4,7 +4,13 @@
          <table class="esriFormTable" >
             <tr>
               <td class="esriToolIconTd"><div class="connectODIcon"></div></td>
-              <td class="esriAlignLeading esriAnalysisTitle" data-dojo-attach-point="_toolTitle">${i18n.connectOriginsToDestinations}</td>
+              <td class="esriAlignLeading esriAnalysisTitle" data-dojo-attach-point="_toolTitle">
+                <label data-dojo-attach-point="_titleLbl">${i18n.connectOriginsToDestinations}</label>
+                <nav class="breadcrumbs"  data-dojo-attach-point="_analysisModeLblNode" style="display:none;">
+                  <a href="#" class="crumb" style="font-size:12px;" data-dojo-attach-event="onclick:_handleModeCrumbClick" data-dojo-attach-point="_analysisModeCrumb"></a>
+                  <a href="#" class="crumb is-active" data-dojo-attach-point="_analysisTitleCrumb" style="font-size:16px;">${i18n.connectOriginsToDestinations}</a>
+                </nav>                
+              </td>
               <td>
                  <div class="esriFloatTrailing" style="padding:0;">
                   <div class="esriFloatLeading">
@@ -18,7 +24,7 @@
             </tr>
          </table>
       </div>
-      <div style="clear:both; border-bottom: #CCC thin solid; height:1px;width:100%;"></div>
+      <div class="toolHeaderLine"></div>
     </div>
     <div data-dojo-type="dijit/form/Form" data-dojo-attach-point="_form" readOnly="true">
      <table class="esriFormTable"  data-dojo-attach-point="_driveTimesTable">

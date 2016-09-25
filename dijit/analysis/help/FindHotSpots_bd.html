@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Find Hots Spots</h2><p/>
+        <h2><img src="./images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" alt="Find Hot Spots"></h2>
+        <hr/>
+    <p>The Find Hot Spots tool will determine if there is any statistically significant clustering in the spatial pattern of your data. 
+        <ul>
+            <li>Are your points (crime incidents, trees, traffic accidents) really clustered?  How can you be sure?
+            </li>
+            <li>Have you truly discovered a statistically significant hot spot (for spending, infant mortality, consistently high test scores) or would your map tell a different story if you changed the way it was symbolized?
+            </li>
+        </ul>
+        The Find Hot Spots tool will help you answer these questions with confidence.
+    </p>
+    <p>Even random spatial patterns exhibit some degree of clustering.  In addition, our eyes and brains naturally try to find patterns even when none exist.  Consequently, it can be difficult to know if the patterns in your data are the result of real spatial processes at work or just the result of random chance.  This is why researchers and analysts use statistical methods like Find Hot Spots (Getis-Ord Gi*) to quantify spatial patterns.  When you do find statistically significant clustering in your data, you have valuable information.  Knowing where and when clustering occurs can provide important clues about the processes promoting the patterns you're seeing.  Knowing that residential burglaries, for example, are consistently higher in particular neighborhoods is vital information if you need to design effective prevention strategies, allocate scarce police resources, initiate neighborhood watch programs, authorize in-depth criminal investigations, or identify potential suspects.   
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="analysisLayer">
+        <div><h2>Choose layer for which hot spots will be calculated</h2></div>
+        <hr/>
+        <div>
+            <p>The point from which hot and cold spots will be found.
+
+            </p>
+        </div>
+    </div>
+    <div id="analysisField">
+        <div><h2>Find clusters of high and low</h2></div>
+        <hr/>
+        <div>
+            <p>This analysis answers the question: Where do high and low values cluster spatially?
+            </p>
+            <p>If your data is points and you  choose  <b>Point Counts</b>, this tool will evaluate the spatial arrangement of the point features to answer the question: Where are points unexpectedly clustered or spread out?
+            </p> 
+        </div>
+    </div>
+    <div id="inputBins">
+        <div><h2>Select the bin size for hots pot calculations</h2></div>
+        <hr/>
+        <div>
+            <p>The distance used to generate bins to analyze your input points.
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Aggregate using time slices (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>If time is enabled on the input point layer and it is of type instant, then you can  analyze using time slicing.  There are three parameters you can set when you use time:
+                <ul>
+                    <li>Time Interval
+                    </li>
+                    <li>Time Step
+                    </li>
+                    <li>Reference Time
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Imagine you had data that represented a year in time, and you wanted to analyze using weekly slices. To do that you would set you  <b>Time Interval</b> to <b>1 week</b>.
+            </p>
+            <p>Imagine you had data that represented a year in time, and you wanted to analyze using the first week of month. To do that you would set you  <b>Time Interval</b> to <b>1 week</b>, your <b>Time Step</b> to <b>1 month</b>, and your <b>Reference Time</b> to <b>January 1, at 12:00 am</b>.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>Time interval to be aggregate into</h2></div>
+        <hr/>
+        <div>
+            <p>Interval of time used for slicing the data. Time interval may be used alone, or used with the  <b>Time Step</b> or <b>Reference Time</b>.
+            </p>
+            <p>If you wanted to create time slices that took place every Monday from 9:00 am until 10:00 am. The  <b>Time Interval</b> would be one week. The <b>Time Step</b> would be one week, and the <b>Reference Time</b> would be 9:00:00 AM on a Monday.
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>Time step to be aggregate into</h2></div>
+        <hr/>
+        <div>
+            <p>The step used for calculating a time slice. Time step may be used alone, with a  <b>Time Interval</b>, with a <b>Reference Time</b>, or with both a <b>Time Interval</b> and <b>Reference Time</b>.
+            </p>
+            <p>If you wanted to create time slices that took place every Monday from 9:00 am until 10:00 am. The  <b>Time Interval</b> would be one week. The <b>Time Step</b> would be one week, and the <b>Reference Time</b> would be 9:00:00 AM on a Monday.
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Reference time
+used to align the time slicing</h2></div>
+        <hr/>
+        <div>
+            <p>The date and time used to align time slicing.  <b>Time Steps</b> will start from, and continue backwards for the reference time.
+            </p>
+            <p>If you wanted to create time slices that took place every Monday from 9:00 am until 10:00 am. The  <b>Time Interval</b> would be one week. The <b>Time Step</b> would be one week, and the <b>Reference Time</b> would be 9:00:00 AM on a Monday.
+            </p>
+        </div>
+    </div>
+    <div id="neighborhood">
+        <div><h2>Select the neighborhood size</h2></div>
+        <hr/>
+        <div>
+            <p>The distance used to determine the neighborhood used for hot spot calculations. The neighborhood should be larger than the bin size to ensure that each bin has at least one neighbour. Each bin is analyzed and compared to the neighboring bins.
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>SpatialReference (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>This is a temporary parameter for Pre-Release  to set the processing spatial reference. Many big data tools require that a projected coordinate system is used as the spatial reference for processing. By default, the tool will use the input coordinate system, but will fail if it's a geographic coordinate system. To set a projected coordinate system, enter the WKID. For example, Web Mercator would be entered as  <b>3857</b>.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Choose datastore</h2></div>
+        <hr/>
+        <div>
+            <p>This is a temporary parameter for the Pre-Release to set the data store that results are saved to. Both data stores are part of ArcGIS Data Store. If you select the spatiotemporal data store, and do not have one installed the tool will fail.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Result layer name</h2></div>
+        <hr/>
+        <div>
+            <p>This is the name of the layer that will be created in  <b>My
+Content</b> and added to the map. The default name is based on the
+tool name and the input layer name. If the layer already exists the tool run will fail.
+            </p>
+            <p>This result layer will show you statistically significant clusters of high and low values or point counts. If the result layer name already exists you will be asked to rename it.
+            </p>
+            <p>Using the  <b>Save result in</b> drop-down box, you can specify
+the name of a folder in <b>My Content</b> where the result will be
+saved.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

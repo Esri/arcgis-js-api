@@ -1,12 +1,29 @@
 {
     "version": "1.0",
     "map": {
+        "AggregatePoints": {
+            "toolDescription": "aggregate-points.htm",
+            "pointLayer": "aggregate-points.htm",
+            "polygonLayer": "aggregate-points.htm"
+        },
+        "CalculateDensity": {
+            "toolDescription": "calculate-density.htm",
+            "inputLayer": "calculate-density.htm"
+        },
+        "CreateBuffers": {
+            "toolDescription": "create-buffers.htm",
+            "inputLayer": "create-buffers.htm"
+        },
+        "CreateDriveTimeAreas": {
+            "toolDescription": "create-drive-time-areas.htm",
+            "inputLayer": "create-drive-time-areas.htm"
+        },
         "DeriveNewLocations": {
             "toolDescription": "derive-new-locations.htm",
             "Expression": "derive-new-locations.htm"
         },
         "EnrichLayer": {
-            "toolDescription": "../../esri-demographics/data/data.htm",
+            "toolDescription": "enrich-layer.htm",
             "DataCollection": "../../esri-demographics/data/data.htm"
         },
         "ExtractData": {
@@ -24,12 +41,20 @@
             "BoundingPolygonLayer": "find-hot-spots.htm#ESRI_SECTION3_F9D255E9146E44CF99DCC140A3BB9CBB",
             "AggregationPolygonLayer": "find-hot-spots.htm#ESRI_SECTION3_4AFB54649EC44003A2DDE65953B54AE3"
         },
+        "FindNearest": {
+            "toolDescription": "find-nearest.htm",
+            "analysisLayer": "find-nearest.htm"
+        },
         "FindSimilarLocations": {
             "toolDescription": "find-similar-locations.htm",
             "inputLayer": "find-similar-locations.htm#ESRI_SECTION1_0D6D235A87A64F6F9752C5BA98EAE90E",
             "searchLayer": "find-similar-locations.htm#ESRI_SECTION1_8C13F0F96EA942B98A9314048BFA0350",
             "analysisFields": "find-similar-locations.htm#ESRI_SECTION1_C219239BE9C7430394B8A2BD23626406",
             "numberOfResults": "find-similar-locations.htm#ESRI_SECTION1_5F3346BC953B44F28940E0FD6D7FF629"
+        },
+        "OverlayLayers": {
+            "toolDescription": "overlay-layers.htm",
+            "inputLayer": "overlay-layers.htm"
         },
         "PlanRoutes": {
             "toolDescription": "plan-routes.htm",

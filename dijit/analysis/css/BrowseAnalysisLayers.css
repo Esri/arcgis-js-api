@@ -277,10 +277,10 @@
 }
 
 .esriAnalysisLayersGrid  {
-  height: 30em;
-  overflow-y: auto;
+  overflow-y: scroll;
+  height: 250px !important;
+  max-height: 250px !important;
 }
-
 .esriAnalysisLayersGrid .dgrid-cell {
   border: none;
 }
@@ -291,12 +291,27 @@
 
 .esriAnalysisLayersItems {
   width:48em;
-  height:48em;
+  height:30em;
   clear:both;
+}
+
+.esriAnalysisLayersItems .gallery {
+  min-height: 20em;
+  height: 100%;
+}
+
+.esriBrowseItemsCtr .gallery .gallery-right {
+  max-height: 40em;
 }
 
 .esriAnalysisLayersItems .dgrid-grid.dgrid {
   max-height: 99%;
+  width: 100%;
+ }
+
+ .esriAnalysisLayersItems .dgrid-grid.dgrid .dgrid-content {
+   overflow: hidden;
+   width: 90%;
  }
 
 .esriAnalysisLayersItems .dgrid-row {
@@ -325,7 +340,7 @@
   padding: 1em;
 }
 
-.esriAnalysisLayersItems .dgrid .dgrid-scroller, .esriAnalysisLayersGrid .dgrid .dgrid-scroller {
+.esriAnalysisLayersItems .dgrid .dgrid-scroller, .esriAnalysisLayersGrid.dgrid .dgrid-scroller {
   position: relative;
   overflow-y: hidden;
   
@@ -336,7 +351,7 @@
 }
 
 .esriAnalysisLayersItems .layer-container {
-  height: auto; 
+  
 }
 
 .esriAnalysisLayersItems .template-info-showing h4 {
@@ -433,3 +448,35 @@
 
 .esriAnalysisLayersGrid .panel-no-padding {
   padding: 0; }
+
+.esriAnalysisLayersItems .panel-actions {
+  position: absolute;
+  bottom: 15px;
+}
+
+.esriAnalysisLayersItems .layerItemsGrid {
+  height: 40em; 
+}
+
+.esriAnalysisLayersItems .templateInfoPanel {
+  overflow-y: hidden; 
+}
+
+
+.esriAnalysisLayersItems .quiet-scroll pre::-webkit-scrollbar, .esriBrowseItemsCtr .quiet-scroll::-webkit-scrollbar {
+  width: 8px !important;
+}
+
+.esriAnalysisLayersGrid .dgrid-grid.dgrid .dgrid-scroller {
+  max-height: 200px;
+  min-height: 100px;
+}
+
+.esriBrowseAnalysisLayers .dgrid-grid.dgrid .dgrid-scroller {
+   min-height: 300px;
+   max-height: 300px;
+}
+
+.esriBrowseAnalysisLayers .gallery {
+  min-height: inherit;
+}

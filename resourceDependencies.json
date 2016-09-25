@@ -56,7 +56,6 @@
         "esri/layers/RasterFunction",
         "esri/layers/StreamLayer",
         "esri/layers/TileInfo",
-        "esri/layers/vector-tile",
         "esri/layers/VectorTileLayer",
         "esri/virtualearth/VETiledLayer",
         "esri/layers/WebTiledLayer",
@@ -373,7 +372,8 @@
         "esri/layers/rasterFormats/Zlib"
     ],
     "esri/layers/VectorTileLayer": [
-        "esri/layers/vector-tile"
+        "esri/layers/vectorTiles/core/workers/worker",
+        "esri/layers/vectorTiles/core/libs/requirejs/require",
     ],
     "esri/layers/WMSLayer": [
         "esri/images/pixel.png"

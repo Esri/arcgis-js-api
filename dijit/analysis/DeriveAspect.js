@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.17/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.18/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","dijit/_WidgetBase","dijit/_TemplatedMixin","dijit/_WidgetsInTemplateMixin","dijit/_OnDijitClickMixin","dijit/_FocusMixin","../../kernel","./RasterAnalysisMixin","dojo/i18n!../../nls/jsapi","dojo/text!./templates/DeriveAspect.html"],function(e,i,t,s,n,a,l,r,d,o,c,j){var p=e([s,n,a,l,r,o],{declaredClass:"esri.dijit.analysis.DeriveAspect",templateString:j,widgetsInTemplate:!0,inputLayer:null,toolName:"DeriveAspect",helpFileName:"DeriveAspect",toolNlsName:c.deriveAspectTool,_getRasterFunction:function(){return"Aspect"},_getRasterArguments:function(){return{}}});return t("extend-esri")&&i.setObject("dijit.analysis.DeriveAspect",p,d),p});

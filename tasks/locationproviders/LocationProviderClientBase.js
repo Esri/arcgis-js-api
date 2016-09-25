@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.17/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.18/esri/copyright.txt for details.
 
-define(["../../declare","dojo/Deferred","dojo/promise/all","../../graphic","./LocationProviderBase","../../SpatialReference","../../geometry/jsonUtils"],function(e,t,n,o,r,i){var a=100,c=25;return e("esri.tasks.locationproviders.LocationProviderClientBase",r,{inSpatialReference:null,constructor:function(){this.inSpatialReference||(this.inSpatialReference=new i(4326))},_locate:function(e,o){function r(){setTimeout(function(){for(var t=+new Date+a,c=[];t>+new Date&&u<e.length;){var p=e[u],h=f.getGeometry(p);p.geometry=h,h&&c.push(p),++u}o.outSpatialReference?i.push(f._project(c,o.outSpatialReference).then(function(){s=s.concat(c),l.progress(c)})):(s=s.concat(c),l.progress(c)),u<e.length?r():n(i).then(function(){l.resolve(s)})},c)}var i=[],s=[],l=new t,f=this,u=0;return r(),l.promise}})});
+define(["../../declare","dojo/Deferred","dojo/promise/all","../../graphic","./LocationProviderBase","../../SpatialReference","../../geometry/jsonUtils"],function(e,t,n,o,r,i,a){var c=100,s=25;return e("esri.tasks.locationproviders.LocationProviderClientBase",r,{inSpatialReference:null,constructor:function(e){this.inSpatialReference||(this.inSpatialReference=new i(4326))},_locate:function(e,o){function r(){setTimeout(function(){for(var t=+new Date+c,s=[];t>+new Date&&u<e.length;){var p=e[u],h=f.getGeometry(p);p.geometry=h,h&&s.push(p),++u}o.outSpatialReference?i.push(f._project(s,o.outSpatialReference).then(function(){a=a.concat(s),l.progress(s)})):(a=a.concat(s),l.progress(s)),u<e.length?r():n(i).then(function(){l.resolve(a)})},s)}var i=[],a=[],l=new t,f=this,u=0;return r(),l.promise}})});

@@ -4,7 +4,13 @@
         <table class="esriFormTable" > 
           <tr>
             <td><div class="mergeLayersIcon"></div></td>
-            <td class="esriAnalysisTitle" data-dojo-attach-point="_toolTitle">${i18n.mergeLayers}</td>
+            <td class="esriAnalysisTitle" data-dojo-attach-point="_toolTitle">
+							<label data-dojo-attach-point="_titleLbl">${i18n.mergeLayers}</label>
+							<nav class="breadcrumbs"  data-dojo-attach-point="_analysisModeLblNode" style="display:none;">
+								<a href="#" class="crumb" style="font-size:12px;" data-dojo-attach-event="onclick:_handleModeCrumbClick" data-dojo-attach-point="_analysisModeCrumb"></a>
+								<a href="#" class="crumb is-active" data-dojo-attach-point="_analysisTitleCrumb" style="font-size:16px;">${i18n.mergeLayers}</a>
+							</nav>               
+            </td>
             <td>
               <div class="esriFloatTrailing" style="padding:0;">
                   <div class="esriFloatLeading">

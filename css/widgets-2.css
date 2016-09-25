@@ -20,7 +20,7 @@
 @import url("../dijit/SymbolStyler/css/MarkerSymbolPicker.css");
 @import url("../dijit/SymbolStyler/css/ColorRampPicker.css");
 @import url("../dijit/css/Tags.css");
-@import url("../dijit/FeatureTable/css/master.css");
+@import url("../dijit/FeatureTable/css/FeatureTable.css");
 @import url("../dijit/RendererSlider/css/RendererSlider.css");
 @import url("../dijit/Search/css/Search.css");
 @import url("../dijit/LayerList/css/LayerList.css");
@@ -29,6 +29,4 @@
 @import url("../dijit/ObliqueViewer/css/ObliqueRotationWidget.css");
 @import url("../dijit/ObliqueViewer/css/RasterList.css");
 @import url("../dijit/Histogram/css/Histogram.css");
-
-
 

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.17/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.18/esri/copyright.txt for details.
 
-define(["../../layers/FeatureLayer","../../toolbars/_toolbar","../../toolbars/draw","../../toolbars/edit","../../tasks/geometry","../AttributeInspector","./AttachmentEditor","./Editor","./TemplatePicker","./Util","./SelectionHelper"],function(){return{}});
+define(["../../layers/FeatureLayer","../../toolbars/_toolbar","../../toolbars/draw","../../toolbars/edit","../../tasks/geometry","../AttributeInspector","./AttachmentEditor","./Editor","./TemplatePicker","./Util","./SelectionHelper"],function(t,e,r,o,a,i,l,n,s,b,c){return{}});

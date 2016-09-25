@@ -4,7 +4,13 @@
         <table class="esriFormTable" > 
           <tr>
             <td class="esriToolIconTd"><div class="reconstructIcon"></div></td>
-            <td class="esriAlignLeading esriAnalysisTitle" data-dojo-attach-point="_toolTitle">${i18n.reconstructTracks}</td>
+            <td class="esriAlignLeading esriAnalysisTitle" data-dojo-attach-point="_toolTitle">
+              <label data-dojo-attach-point="_titleLbl">${i18n.reconstructTracks}</label>
+              <nav class="breadcrumbs"  data-dojo-attach-point="_analysisModeLblNode" style="display:none;">
+                <a href="#" class="crumb" style="font-size:12px;" data-dojo-attach-event="onclick:_handleModeCrumbClick" data-dojo-attach-point="_analysisModeCrumb"></a>
+                <a href="#" class="crumb is-active" data-dojo-attach-point="_analysisTitleCrumb" style="font-size:16px;">${i18n.reconstructTracks}</a>
+              </nav>              
+            </td>
             <td>
               <div class="esriFloatTrailing" style="padding:0;">
                   <div class="esriFloatLeading">
@@ -68,8 +74,8 @@
           <tr>
             <td  colspan="3" style="padding-top:0;">
               <select class="esriLeadingMargin1 longInput esriLongLabel"  style="margin-top:1.0em;" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_methodSelect">
-                <option value="GEODESIC">${i18n.geodesicLabel}</option>
-                <option value="PLANAR">${i18n.planarLabel}</option>
+                <option value="Geodesic">${i18n.geodesicLabel}</option>
+                <option value="Planar">${i18n.planarLabel}</option>
               </select>
             </td>
           </tr> 
@@ -110,7 +116,7 @@
           </tr>
           <tr>
             <td style="padding-right:0;padding-bottom:0;width:50%;">
-              <input type="text" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-attach-event="onChange:_handleDurSplitValue" data-dojo-props="intermediateChanges:true,missingMessage:'${i18n.distanceMsg}'" data-dojo-attach-point="_durSplitValue" class="esriLeadingMargin1"  style="width:75%;"/>
+              <input type="text" data-dojo-type="dijit/form/NumberTextBox" data-dojo-attach-event="onChange:_handleDurSplitValue" data-dojo-props="intermediateChanges:true,missingMessage:'${i18n.distanceMsg}'" data-dojo-attach-point="_durSplitValue" class="esriLeadingMargin1"  style="width:75%;"/>
             </td>
             <td colspan="2" style="padding-left:0.25em;padding-bottom:0;width:50%;">
               <select class="mediumInput esriAnalysisSelect" data-dojo-type="dijit/form/Select" data-dojo-attach-event="onChange:_handleDistUnitsChange" data-dojo-attach-point="_durSplitUnitsSelect" style="width:80%;table-layout:fixed;">
@@ -134,10 +140,13 @@
             <td colspan="3" class="clear"></td>
           </tr>
           <tr data-dojo-attach-point="_datastoreLabelRow">
-            <td colspan="3">
+            <td colspan="2">
               <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel" data-dojo-attach-point="_datastoreLabel">${i18n.sevenLabel}</label>
               <label class="esriAnalysisStepsLabel">${i18n.datastoreLabel}</label>
             </td>
+            <td class="shortTextInput">
+              <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="dataStore"></a> 
+            </td>             
           </tr>
           <tr data-dojo-attach-point="_selectDataStore">
             <td  colspan="3" style="padding-top:0;">

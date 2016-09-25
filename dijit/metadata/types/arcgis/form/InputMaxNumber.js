@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.17/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.18/esri/copyright.txt for details.
 
-define(["dojo/_base/declare","dojo/_base/lang","dojo/query","dijit/registry","dojo/has","../../../../../kernel","../../../base/etc/docUtil","../../../form/InputNumber"],function(e,t,r,n,a,i,o,d){var s=e([d],{postCreate:function(){this.inherited(arguments)},emitInteractionOccurred:function(){this.inherited(arguments);try{var e=this.parentXNode.target,t=null;if("maxVal"===e?t="minVal":"rdommax"===e?t="rdommin":"vertMaxVal"===e&&(t="vertMinVal"),null!==t){var r=this.parentXNode.parentElement.gxePath+"/",n=this.parentXNode.domNode.parentNode,a=o.findInputWidget(r+t,n);a&&a.emitInteractionOccurred()}}catch(i){console.error(i)}}});return a("extend-esri")&&t.setObject("dijit.metadata.types.arcgis.form.InputMaxNumber",s,i),s});
+define(["dojo/_base/declare","dojo/_base/lang","dojo/query","dijit/registry","dojo/has","../../../../../kernel","../../../base/etc/docUtil","../../../form/InputNumber"],function(e,t,r,n,a,i,o,d){var s=e([d],{postCreate:function(){this.inherited(arguments)},emitInteractionOccurred:function(e){this.inherited(arguments);try{var t=this.parentXNode.target,r=null;if("maxVal"===t?r="minVal":"rdommax"===t?r="rdommin":"vertMaxVal"===t&&(r="vertMinVal"),null!==r){var n=this.parentXNode.parentElement.gxePath+"/",a=this.parentXNode.domNode.parentNode,i=o.findInputWidget(n+r,a);i&&i.emitInteractionOccurred()}}catch(d){console.error(d)}}});return a("extend-esri")&&t.setObject("dijit.metadata.types.arcgis.form.InputMaxNumber",s,i),s});

@@ -41,15 +41,13 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Agréger les points</h2><p/>
+        <h2>Agréger des points</h2><p/>
         <h2><img src="../images/GUID-60C59C66-3038-4D0E-8F6A-EC6C53FEAA02-web.png" alt="Agr&eacute;ger les points"></h2>
         <hr/>
     <p>Cet outil fonctionne avec une couche d'entit&eacute;s ponctuelles et une couche d'entit&eacute;s surfaciques. Il commence par identifier les points qui se trouvent au sein de chaque surface. Apr&egrave;s avoir d&eacute;termin&eacute; cette relation spatiale des points au sein de la surface, des statistiques concernant tous les points de la surface sont calcul&eacute;es et affect&eacute;es &agrave; la surface. La statistique la plus &eacute;l&eacute;mentaire est le nombre total de points au sein de la surface, mais vous pouvez &eacute;galement en obtenir d'autres. 
     </p>
     <p>Supposons par exemple que des entit&eacute;s ponctuelles correspondent &agrave; l'emplacement des caf&eacute;s restaurants et que des entit&eacute;s surfaciques correspondent aux comt&eacute;s, et que vous souhaitez r&eacute;capituler la consommation de caf&eacute; par comt&eacute;. En admettant que les caf&eacute;s aient un attribut  <i>TOTAL_SALES</i>, vous pouvez calculer la somme de tous les attributs <i>TOTAL_SALES</i> au sein de chaque comt&eacute;, ou l'attribut <i>TOTAL_SALES</i> minimal ou maximal
  au sein de chaque comt&eacute; ou l'&eacute;cart type de toutes les ventes au sein de chaque comt&eacute;.
-    </p>
-    <p>Le r&eacute;sultat est une carte dans laquelle la couleur de chaque surface repose sur le nombre total de points, divis&eacute; par la taille de la surface. La division du total par la surface est connue sous le nom de normalisation. Il s'agit d'une technique que les cartographes utilisent toujours pour afficher les donn&eacute;es par surface. La normalisation permet de mieux comprendre les mod&egrave;les spatiaux, car la taille de la surface est prise en compte lorsque les surfaces sont compar&eacute;es visuellement les unes par rapport aux autres.
     </p>
     <p>Si l'option  <b>Utiliser l'&eacute;tendue courante de la carte</b> est s&eacute;lectionn&eacute;e, seules les entit&eacute;s de la couche de points en entr&eacute;e et de la couche surfacique qui sont visibles au sein de l'&eacute;tendue courante de la carte seront analys&eacute;es.  Si l'option n'est pas s&eacute;lectionn&eacute;e, toutes les entit&eacute;s qui se trouvent &agrave; la fois dans la couche de points en entr&eacute;e et dans la couche surfacique seront analys&eacute;es, m&ecirc;me si elles se trouvent en dehors de l'&eacute;tendue courante de la carte.
     </p>

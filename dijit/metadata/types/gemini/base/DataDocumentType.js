@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.17/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.18/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","./GeminiDocumentType","./DataRoot","dojo/i18n!../../../nls/i18nGemini","../../../../../kernel"],function(e,t,a,n,i,o,d){var r=e(n,{caption:o.documentTypes.data.caption,description:o.documentTypes.data.description,key:"gemini-iso-19115",isService:!1,metadataStandardName:"UK GEMINI",metadataStandardVersion:"2.2",newRootDescriptor:function(){return new i}});return a("extend-esri")&&t.setObject("dijit.metadata.types.gemini.base.DataDocumentType",r,d),r});

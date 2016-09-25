@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.17/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.18/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","dijit/_WidgetBase","dijit/_TemplatedMixin","dijit/_WidgetsInTemplateMixin","dijit/_OnDijitClickMixin","dijit/_FocusMixin","../../kernel","./RasterAnalysisMixin","dojo/i18n!../../nls/jsapi","dojo/text!./templates/CalculateSlope.html"],function(t,e,a,i,l,o,n,s,r,c,u,d){var p=t([i,l,o,n,s,c],{declaredClass:"esri.dijit.analysis.CalculateSlope",templateString:d,widgetsInTemplate:!0,inputLayer:null,zFactor:1,toolName:"CalculateSlope",helpFileName:"CalculateSlope",toolNlsName:u.calculateSlopeTool,_getRasterFunction:function(){return"Slope"},_getRasterArguments:function(){var t=this.get("zFactor");return{zFactor:t}},_setDefaultInputs:function(){this.zFactor&&this._zFactorInput.set("value",this.zFactor)},_setZFactorAttr:function(t){this.zFactor=t},_getZFactorAttr:function(){return this._zFactorInput&&this._zFactorInput.get("value")&&(this.zFactor=this._zFactorInput.get("value")),this.zFactor}});return a("extend-esri")&&e.setObject("dijit.analysis.CalculateSlope",p,r),p});

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Copy to Data Store</h2><p/>
+        <h2></h2>
+        <hr/>
+    <p>This tool works with an input layer to copy it to a data store. Data is copied to the ArcGIS Data Store and can be stored in a relational data store or spatiotemporal data store.
+    </p>
+    <p>For example, you could copy features stored in a big data file share to a relational data store and specify that you only want features in the current map extent copied. This would create a hosted feature service with only the feature that were in the map extent specified.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Choose layer to copy</h2></div>
+        <hr/>
+        <div>
+            <p>The layer that will be copied. This can be a dataset with a geometry (point, polyline, polygon) or a tabular dataset.
+            </p>
+            <p>In addition to choosing a layer from your map, you can select  <b>Browse Layers</b> found at the bottom of the drop-down list to browse your contents for a big data file share dataset or feature layer.  
+            </p>
+        </div>
+    </div>
+    <div id="outputDataStore">
+        <div><h2>Choose the Data Store to copy to</h2></div>
+        <hr/>
+        <div>
+            <p>The data store that the layer will be copied to. The options are: 
+                <ul>
+                    <li> <b>Spatiotemporal</b>&mdash;this is the default.
+                    </li>
+                    <li> <b>Relational</b>.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Result layer name</h2></div>
+        <hr/>
+        <div>
+            <p>This is the name of the layer that will be created in  <b>My
+Content</b> and added to the map. The default name is based on the
+tool name and the input layer name. If the layer already exists the tool run will fail.
+            </p>
+            <p>Using the  <b>Save result in</b> drop-down box, you can specify
+the name of a folder in <b>My Content</b> where the result will be
+saved.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

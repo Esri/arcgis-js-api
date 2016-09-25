@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.17/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.18/esri/copyright.txt for details.
 
 var profile = (function(){
   var testResourceRe = /^esri\/(.*\/)?tests\//,
@@ -31,18 +31,22 @@ var profile = (function(){
     discoveryFolderRe = /^esri\/discovery\//i,
 
     copyOnly = function(filename, mid){
+      if (mid.indexOf("/worker-init") > -1) {
+        return true;
+      }
+
       var list = {
         "esri/package.json":          1,
         "esri/esri.profile":          1,
         "esri/esri.js":               1,
         "esri/geometry/geometryenginewebworker": 1,
-        "esri/layers/vector-tile": 1,
         "esri/workers/requestWorker": 1,
         "esri/workers/mutableWorker": 1,
         "esri/workers/indexWorker":   1,
         "esri/workers/scripts/indexInterface": 1,
         "esri/arcgisonline/config":   1,
-        "esri/mobile/config":         1
+        "esri/mobile/config":         1,
+        "esri/layers/vectorTiles/core/workers/worker": 1
       };
       
       return (mid in list);

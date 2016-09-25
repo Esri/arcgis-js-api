@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.17/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.18/esri/copyright.txt for details.
 
 /* To avoid CSS expressions while still supporting IE 7 and IE 6, use this script */
 /* The script tag referencing this file must be placed before the ending body tag. */
@@ -176,6 +176,8 @@
 		'esri-icon-north-navigation': '&#xe900;',
 		'esri-icon-locate-circled': '&#xe901;',
 		'esri-icon-dial': '&#xe902;',
+		'esri-icon-polygon': '&#xe903;',
+		'esri-icon-polyline': '&#xe904;',
 		'0': 0
 		},
 		els = document.getElementsByTagName('*'),

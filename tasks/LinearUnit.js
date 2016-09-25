@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.17/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.18/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../kernel"],function(n,t,s,i){var e=n(null,{declaredClass:"esri.tasks.LinearUnit",constructor:function(n){n&&t.mixin(this,n)},distance:0,units:null,toJson:function(){var n={};return this.distance&&(n.distance=this.distance),this.units&&(n.units=this.units),n}});return s("extend-esri")&&t.setObject("tasks.LinearUnit",e,i),e});

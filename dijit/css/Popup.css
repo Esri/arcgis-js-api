@@ -348,6 +348,9 @@
   direction: ltr;
   unicode-bidi: embed;
 }
+.esriViewPopup .esriDateValue {
+  text-transform: capitalize;
+}
 .esriViewPopup .mainSection .attrTable {
   border-collapse: collapse;
 }

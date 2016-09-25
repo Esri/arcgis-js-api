@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.17/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.18/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../Attribute","../../../../kernel"],function(e,t,i,r,d){var o=e([r],{fixed:!0,hide:!0,minOccurs:1,showHeader:!1,target:"codeList",postCreate:function(){this.inherited(arguments)}});return i("extend-esri")&&t.setObject("dijit.metadata.form.iso.CodeListAttribute",o,d),o});

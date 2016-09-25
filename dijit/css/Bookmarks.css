@@ -83,7 +83,7 @@
 }
 
 .esriBookmarks .dojoDndItemBefore, .dojoDndItemBefore > td {
-  border-top: 2px dashed #0079C1; 
+  border-top: 2px dashed #0079C1;
   background: #FFF !important;
 }
 
@@ -97,28 +97,28 @@
   display: none;
 }
 
-.dojoDndAvatar { 
-  border: 2px solid #CCC !important; 
-  border-collapse: collapse; 
-  background-color: #fff; 
+.dojoDndAvatar {
+  border: 2px solid #CCC !important;
+  border-collapse: collapse;
+  background-color: #fff;
   color: #57585A;
   padding: 5px;
 }
 
 .dojoDndMove .dojoDndAvatarHeader {
-  background-color: #ffffff !important; 
-  color:#000; 
-  background-image: none; 
+  background-color: #ffffff !important;
+  color:#000;
+  background-image: none;
   padding: 2px;
-} 
+}
 
-.dojoDndAvatarHeader td span{ 
+.dojoDndAvatarHeader td span{
   padding: 4px;
 }
 
-.dojoDndAvatarHeader tr,  
-.dojoDndAvatarHeader td  { 
-  border: none; 
+.dojoDndAvatarHeader tr,
+.dojoDndAvatarHeader td  {
+  border: none;
 }
 
 

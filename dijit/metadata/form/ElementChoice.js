@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.17/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.18/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/dom-class","dojo/has","./Tabs","../../../kernel"],function(e,o,t,d,a,i){var s=e([a],{_isGxeElementChoice:!0,useRadios:!0,postCreate:function(){this.inherited(arguments),t.add(this.domNode,"gxeElementChoice")}});return d("extend-esri")&&o.setObject("dijit.metadata.form.ElementChoice",s,i),s});

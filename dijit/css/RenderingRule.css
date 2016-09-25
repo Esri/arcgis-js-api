@@ -5,7 +5,6 @@ div.esriRenderingRuleContainer {
 .esriRenderingRuleTable {
   table-layout:fixed;
   border-collapse: separate;
-  text-align: left;
   border-spacing: 0px 10px;
   width: 100%;
   max-width: 400px;
@@ -73,9 +72,6 @@ div.esriRenderingRuleContainer {
   width: 100%;
   padding-top:20px;
 }
-.esriRenderingRuleDraCheckbox {
-  float: left;
-}
 .esriRenderingRuleDraLabel {
   padding-left:5px;
 }
@@ -85,9 +81,10 @@ div.esriRenderingRuleContainer {
   font-family: inherit;
   font-size: inherit;
 }
-.esriRenderingRuleRasterFunctionList.dijitReset {
+.esriRenderingRuleRasterFunctionList.dijitReset, .esriRenderingRuleColorRampList.dijitReset{
   vertical-align: middle;
   line-height: inherit !important;
+  width: 100%;
 }
 .esriRenderingRuleStretchMethodList .dijitReset {
   line-height: inherit !important;
@@ -96,16 +93,20 @@ div.esriRenderingRuleContainer {
 .esriRenderingRuleBandIdsRedList .dijitInputInner,
 .esriRenderingRuleBandIdsGreenList .dijitInputInner,
 .esriRenderingRuleBandIdsBlueList .dijitInputInner,
-.esriRenderingRuleRasterFunctionList .dijitInputInner { 
+.esriRenderingRuleRasterFunctionList .dijitInputInner,
+.esriRenderingRuleColorRampList .dijitInputInner { 
   height: 100%;
   line-height: 22px;
+  direction: inherit!important;
+  text-align: inherit!important;
   
 }
 
 .esriRenderingRuleBandIdsRedList .dijitButtonNode.dijitArrowButton,
 .esriRenderingRuleBandIdsGreenList .dijitButtonNode.dijitArrowButton,
 .esriRenderingRuleBandIdsBlueList .dijitButtonNode.dijitDownArrowButton,
-.esriRenderingRuleRasterFunctionList .dijitButtonNode.dijitDownArrowButton {
+.esriRenderingRuleRasterFunctionList .dijitButtonNode.dijitDownArrowButton,
+.esriRenderingRuleColorRampList .dijitButtonNode.dijitDownArrowButton {
   padding-top: 3px!important;
   padding-bottom: 0px!important;
 }
@@ -113,17 +114,23 @@ div.esriRenderingRuleContainer {
 .esriRenderingRuleRasterFunctionList.dijitSelect input,
 .esriRenderingRuleBandIdsRedList.dijitSelect input,
 .esriRenderingRuleBandIdsGreenList.dijitSelect input,
-.esriRenderingRuleBandIdsBlueList.dijitSelect input
+.esriRenderingRuleBandIdsBlueList.dijitSelect input,
+.esriRenderingRuleColorRampList.dijitSelect input
 {
   letter-spacing: 0!important;
   text-indent: 0!important;
-  text-align: left!important;
 }
 
 .esriRenderingRuleBandIdsRedList.dijitSelect input.dijitArrowButtonInner,
 .esriRenderingRuleBandIdsGreenList.dijitSelect input.dijitArrowButtonInner,
 .esriRenderingRuleBandIdsBlueList.dijitSelect input.dijitArrowButtonInner,
-.esriRenderingRuleRasterFunctionList.dijitSelect input.dijitArrowButtonInner {
+.esriRenderingRuleRasterFunctionList.dijitSelect input.dijitArrowButtonInner,
+.esriRenderingRuleColorRampList.dijitSelect input.dijitArrowButtonInner {
   text-indent: -2em!important;
   letter-spacing: -5em!important;
+}
+
+.esriRenderingRuleColorRampHeading
+{
+  font-weight: 700;
 }

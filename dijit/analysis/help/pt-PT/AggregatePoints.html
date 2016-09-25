@@ -46,10 +46,8 @@
         <hr/>
     <p>Esta ferramenta funciona com camadas de elementos de pontos e camadas de elementos de &aacute;reas. Primeiro identifica quais os pontos que est&atilde;o dentro de cada &aacute;rea. Depois de determinar esses, calcula estat&iacute;sticas sobre todos os pontos da &aacute;rea e atribu&iacute;dos &agrave; &aacute;rea. A estat&iacute;stica mais b&aacute;sica &eacute; a contagem do n&uacute;mero de pontos dentro da &aacute;rea, mas tamb&eacute;m pode obter outras estat&iacute;sticas. 
     </p>
-    <p>Por exemplo, suponha que tem elementos de pontoscom q localiza&ccedil;&atilde;o de lojas de caf&eacute; e elementos de &aacute;rea com os Munic&iacute;pios, e pretende resumir as vendas dos caf&eacute; por munic&iacute;pio. Assumindo que os caf&eacute;s tem um atributo  <i>TOTAL_SALES</i> , pode obter a soma de todos <i>TOTAL_SALES</i> dentro de cada munic&iacute;pio, ou os m&iacute;nimos ou m&aacute;ximos <i>TOTAL_SALES</i>
+    <p>Por exemplo, suponha que tem elementos de pontoscom q localiza&ccedil;&atilde;o de lojas de caf&eacute; e elementos de &aacute;rea com os Munic&iacute;pios, e pretende resumir as vendas dos caf&eacute; por munic&iacute;pio. Assumindo que os caf&eacute;s tem um atributo  <i>TOTAL_SALES</i> , pode obter a soma de todos <i>TOTAL_SALES</i> dentro de cada pa&iacute;s, ou o m&iacute;nimo ou o m&aacute;ximo <i>TOTAL_SALES</i>
  m&iacute;nimo ou m&aacute;ximo dentro de cada concelho, ou o desvio padr&atilde;o de todas as vendas dentro de cada concelho.
-    </p>
-    <p>O resultado &eacute; um mapa em que a cor de cada &aacute;rea &eacute; baseada no n&uacute;mero total de pontos dividido pelo tamanho da &aacute;rea. A divis&atilde;o de contagens por &aacute;rea &eacute; conhecida como normaliza&ccedil;&atilde;o e &eacute; uma t&eacute;cnica que os cart&oacute;grafos utilizam sempre para exibir dados por &aacute;reas. A normaliza&ccedil;&atilde;o ajuda a perceber melhor os padr&otilde;es espaciais, uma vez que o tamanho da &aacute;rea &eacute; tido em conta quando &eacute; feita a compara&ccedil;&atilde;o visual de cada &aacute;rea.
     </p>
     <p>Se  <b>Usar extens&atilde;o de mapa actual</b> &eacute; validado, apenas os elementos na camada de ponto de entrada e camada de &aacute;rea visivel dentro da actual extens&atilde;o de &aacute;rea ser&atilde;o analizados.  Se n&atilde;o validado, todos os elementos dentro da camada de ponto de entrada e camada de &aacute;rea ir&atilde;o ser analizados, mesmo que estejam fora da extens&atilde;o de mapa actual.
     </p>
@@ -66,7 +64,7 @@
         </div>
     </div>
     <div id="polygonLayer">
-        <div><h2>Escolher camada contendo áreas agregadas</h2></div>
+        <div><h2>Escolher camada contendo áreas de agregação</h2></div>
         <hr/>
         <div>
             <p>A camada de &aacute;rea &agrave; qual os pontos ser&atilde;o agregados. Todos os pontos que se enquadram dentro dos limites de &aacute;reas nesta camada ser&atilde;o contados e, opcionalmente, resumidos usando as suas escolhas de estat&iacute;sticas.

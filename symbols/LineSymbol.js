@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.17/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.18/esri/copyright.txt for details.
 
-define(["dojo/_base/declare","dojo/_base/lang","dojo/has","dojox/gfx/_base","../kernel","./Symbol"],function(t,i,e,o,s,n){var d=t(n,{declaredClass:"esri.symbol.LineSymbol",constructor:function(t){this.width=i.isObject(t)?o.pt2px(this.width):12},setWidth:function(t){return this.width=t,this},toJson:function(){var t=o.px2pt(this.width);return t=isNaN(t)?void 0:t,i.mixin(this.inherited("toJson",arguments),{width:t})}});return e("extend-esri")&&i.setObject("symbol.LineSymbol",d,s),d});
+define(["dojo/_base/declare","dojo/_base/lang","dojo/has","dojox/gfx/_base","../kernel","./Symbol"],function(t,i,e,s,o,n){var d=t(n,{declaredClass:"esri.symbol.LineSymbol",constructor:function(t){i.isObject(t)?this.width=s.pt2px(this.width):this.width=12},setWidth:function(t){return this.width=t,this},toJson:function(){var t=s.px2pt(this.width);return t=isNaN(t)?void 0:t,i.mixin(this.inherited("toJson",arguments),{width:t})}});return e("extend-esri")&&i.setObject("symbol.LineSymbol",d,o),d});

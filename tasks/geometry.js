@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.17/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.18/esri/copyright.txt for details.
 
 define(["./GeometryService","./TrimExtendParameters","./BufferParameters","./AreasAndLengthsParameters","./LengthsParameters","./RelationParameters","./DensifyParameters","./GeneralizeParameters","./OffsetParameters","./DistanceParameters","./ProjectParameters"],function(){return{}});

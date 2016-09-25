@@ -29,6 +29,21 @@
   text-indent: 0.25em;
 }
 
+.esriAnalysis .padTop0, .esriAnalysis table.esriFormTable>tbody>tr>td.padTop0 {
+  padding-top: 0;
+}
+.esriAnalysis .padTop1, .esriAnalysis table.esriFormTable>tbody>tr>td.padTop1 {
+  padding-top: 1em;
+}
+
+.esriAnalysis .padBottom0, .esriAnalysis table.esriFormTable>tbody>tr>td.padBottom0 {
+  padding-bottom: 0;
+}
+
+.esriAnalysis .padBottom1, .esriAnalysis table.esriFormTable>tbody>tr>td.padBottom1 {
+  padding-bottom: 1em;
+}
+
 .toolContainer {
   display: block;
   width: 95%;
@@ -456,6 +471,16 @@
   margin: 8px;
 }
 
+.sumAttributesIcon {
+  background-image: url("../images/SummarizeAttributes32.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 32px;
+  height: 32px;
+  margin: 8px;
+}
+
+
 .esriAnalysisCloseIcon {
   background-image: url("../images/close.gif");
   background-repeat: no-repeat;
@@ -532,6 +557,14 @@
 .helpFooter {
   font-size: 1em;
   margin: 0.5em;
+}
+
+.esriAnalysis .hide{
+  display: none;
+}
+
+.esriAnalysis .show{
+  display: block;
 }
 
 
@@ -829,7 +862,11 @@ td.subsectionLineDivider {
   text-overflow: ellipsis;
   max-width: 100px;
 }
-
+.esriAnalysis .esriVeryShortlabel .dijitSelectLabel{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 80px;
+}
 .esriAnalysis .optionsTable {
   width: 100%;
 }
@@ -891,6 +928,9 @@ td.subsectionLineDivider {
 .bufferSelector{
   text-align:center;
 }
+.bufferSelector.iconSelector {
+  text-align: left;
+}
 .bufferSelector.selected{
   font-weight:bold;
 }
@@ -902,6 +942,11 @@ td.subsectionLineDivider {
 .bufferSelector .bufferIcon{
   border:2px solid #FFF;
   margin: 5px auto;
+}
+
+.bufferSelector.iconSelector .bufferIcon{
+  border:2px solid #FFF;
+  margin: 1px;
 }
 
 .bufferSelector .bufferIcon:hover {
@@ -926,6 +971,10 @@ td.subsectionLineDivider {
 
 .bufferDistanceIcon {
   background-image: url("../images/BufferDistance32.png");
+}
+
+.bufferSelector.selected .label {
+  background-color: lightblue;
 }
 
 .esriDrivingTimeIcon {
@@ -970,6 +1019,9 @@ td.subsectionLineDivider {
 
 .bufferAttributeIcon {
   background-image: url("../images/BufferAttribute32.png");
+}
+.bufferExprIcon {
+  background-image: url("../images/FieldExpression32.png");
 }
 .bufferOverlapIcon {
   background-image: url("../images/Overlap32.png");
@@ -1036,6 +1088,30 @@ td.subsectionLineDivider {
 
 .attributeIcon {
   background-image: url("../images/Field32.png");
+}
+
+.polygonBinIcon {
+  background-image: url("../images/Polygon32.png");
+}
+
+.squareBinIcon {
+  background-image: url("../images/Square32.png");
+}
+
+.hexagonBinIcon {
+  background-image: url("../images/Hexagon32.png");
+}
+
+.spatialJoinIcon {
+  background-image: url("../images/Spatial32.png");
+}
+
+.temporalJoinIcon {
+  background-image: url("../images/Temporal32.png");
+}
+
+.attributeJoinIcon {
+  background-image: url("../images/Attribute32.png");
 }
 
 .btn-container {
@@ -1332,6 +1408,7 @@ td.subsectionLineDivider {
   height: 16px;
   margin: 0.25px;    
 }
+
 
 .esriAnalysisExpressionGrid .field-action .dijitButton {
   margin: 0 0.1em;
@@ -1667,6 +1744,87 @@ td.subsectionLineDivider {
   margin: 0.25px;  
 }
 
+.sumRasterWithinIcon {
+  background-image: url("../images/SummarizeRasterWithin32.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 32px;
+  height: 32px;
+  margin: 10px;
+}
+
+.convertFeatureToRasterIcon {
+  background-image: url("../images/FeatureToRaster32.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 32px;
+  height: 32px;
+  margin: 10px;
+}
+
+.convertRasterToFeatureIcon {
+  background-image: url("../images/RasterToFeature32.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 32px;
+  height: 32px;
+  margin: 10px;
+}
+
+.createViewshedRasterIcon {
+  background-image: url("../images/CreateViewshed32.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 32px;
+  height: 32px;
+  margin: 10px;
+}
+
+.createInterpolatedRasterIcon {
+  background-image: url("../images/InterpolatePoints32.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 32px;
+  height: 32px;
+  margin: 10px;
+}
+
+
+.createDensityRasterIcon {
+  background-image: url("../images/CalculateDensity32.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 32px;
+  height: 32px;
+  margin: 10px;
+}
+
+.viewshedInnerIcon {
+  background-image: url("../images/ViewshedInnerDistance32.png");
+}
+
+.viewshedOuterIcon {
+  background-image: url("../images/ViewshedOuterDistance32.png");
+}
+
+.viewshedInnerFieldIcon {
+  background-image: url("../images/ViewshedInnerDistanceField32.png");
+}
+
+.viewshedOuterFieldIcon {
+  background-image: url("../images/ViewshedOuterDistanceField32.png");
+}
+
+.distanceAboveSurfaceIcon {
+  background-image: url("../images/DistanceAboveTheSurface32.png");
+}
+
+.distanceAboveSurfaceFieldIcon {
+  background-image: url("../images/DistanceAboveTheSurfaceField32.png");
+
+}
+
+
 
 .esriAnalysis .dijitNumberTextBox .dijitInputInner {
   text-align: inherit; 
@@ -1674,4 +1832,79 @@ td.subsectionLineDivider {
 
 .esri .dijitDialog.dataBrowser {
   padding: 0px 0px;
+}
+
+.esriAnalysis .toolHeaderLine {
+  clear:both; 
+  border-bottom: #CCC thin solid; 
+  height:1px;
+  width:100%;
+  margin-top:6px;
+}
+
+
+.esriAnalysis .breadcrumbs {
+  font-weight: 400;
+  font-style: normal;
+  font-size: 0.875rem;
+  line-height: 1.0rem;
+  color: #828282; 
+  display: flex;
+  flex-flow: column wrap;
+}
+.esriAnalysis .breadcrumbs b, .esriAnalysis .breadcrumbs strong {
+    font-weight: 500; 
+}
+@media screen and (max-width: 859px) {
+  .esriAnalysis .breadcrumbs {
+    font-size: 0.875rem; 
+  } 
+}
+@media screen and (max-width: 479px) {
+  .esriAnalysis .breadcrumbs {
+    font-size: 0.875rem; 
+  } 
+}
+
+.esriAnalysis .crumb {
+  color: #595959 !important;
+  padding: 0 0.25rem 0 0.25rem;
+  background: url("../images/forward-slash.png") right center no-repeat transparent;
+  float: left;
+}
+html[dir="rtl"] .esriAnalysis  .crumb {
+    padding: 0 0.25rem 0 0.25rem;
+    background: url("../images/forward-slash.png") left center no-repeat transparent;
+    white-space: nowrap; 
+}
+html[dir="rtl"] .esriAnalysis  .crumb {
+  float: right; 
+}
+.esriAnalysis .crumb.is-active {
+  font-weight: 400; 
+  color: #323232 !important;
+}
+.esriAnalysis .crumb:hover {
+  color: #323232;
+}
+.esriAnalysis .breadcrumbs-white .crumb {
+  color: white;
+  background-image: url("../images/forward-slash-white.svg"); 
+}
+.esriAnalysis .crumb:nth-child(2) {
+  background-image: none;
+  padding-left: 0; 
+}
+html[dir="rtl"] .esriAnalysis .crumb:nth-child(2) {
+  padding-right: 0;
+  background: none; 
+}
+.esriAnalysis .breadcrumbs {
+  align-items: flex-start;
+}
+.esriAnalysis .crumb:first-child {
+    padding: 0 10px 0 0;
+}
+html[dir="rtl"] .esriAnalysis .crumb:first-child {
+    padding: 0 0 0 10px;
 }

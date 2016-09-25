@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Interpolate Points</h2><p/>
+        <h2><img src="./images/GUID-06D80BB3-7154-4FAA-9C9B-D665450EF3BC-web.png" alt="Interpolate Points"></h2>
+        <hr/>
+    <p>The Interpolate Points tool allows you to predict values at new
+locations based on measurements from a collection of points. The
+tool takes point data with values at each point and returns a raster of predicted values. For example
+    </p>
+    <p>
+        <ul>
+            <li>An air quality management district has sensors that measure
+pollution levels. Interpolate Points can be used to predict
+pollution levels at locations that don't have sensors, such as
+locations with at-risk populations-schools or hospitals, for
+example.
+                
+
+            </li>
+            <li>Predict heavy metal concentrations in crops based on samples
+taken from individual plants.
+                
+
+            </li>
+            <li>Predict soil nutrient levels (nitrogen, phosphorus, potassium,
+and so on) and other indicators (such as electrical conductivity)
+in order to study their relationships to crop yield and prescribe
+precise amounts of fertilizer for each location in the field.
+                
+
+            </li>
+            <li>Meteorological applications include prediction of temperatures,
+rainfall, and associated variables (such as acid rain).
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="interpolatePointsInputLayer">
+        <div><h2>Choose point layer containing locations with known values</h2></div>
+        <hr/>
+        <div>
+            <p>The point layer that contains the points where the values have been measured.
+            </p>
+        </div>
+    </div>
+    <div id="interpolateField">
+        <div><h2>Choose field to interpolate</h2></div>
+        <hr/>
+        <div>
+            <p>Choose the field whose values you wish  to interpolate.
+            </p>
+        </div>
+    </div>
+    <div id="optimizeFor">
+        <div><h2>Optimize for</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Choose your preference for speed versus accuracy. More accurate
+predictions take longer to calculate.
+This parameter alters the default values of several other parameters of Interpolate Points in order to optimize speed of calculation, accuracy of results, or a balance of the two.
+            </p>
+        </div>
+    </div>
+    <div id="transformData">
+        <div><h2>Transform data to normal distribution</h2></div>
+        <hr/>
+        <div>
+            <p>Choose whether to transform your data to the normal distribution.  Interpolation is most accurate for data that follow a normal (bell-shaped) distribution.  If you data does not appear to be normally distributed, you should perform a transformation.
+            </p>
+        </div>
+    </div>
+    <div id="sizeOfLocalModels">
+        <div><h2>Size of local models</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Interpolate Points works by building local interpolation models that are mixed together to create the final prediction map.  This parameter controls how many points will be contained in each local model.  Smaller values will make results more local and can reveal small-scale effects, but it may introduce some instability in the calculations.  Larger values will be more stable, but some local effects may be missed.
+            </p>
+        </div>
+    </div>
+    <div id="numberOfNeighbors">
+        <div><h2>Number of Neighbors</h2></div>
+        <hr/>
+        <div>
+            <p>Predictions are calculated based on neighboring points.  This parameter controls how many points will be used in the calculation.  Using a larger number of neighbors will generally produce more accurate results, but the results take longer to calculate.
+            </p>
+        </div>
+    </div>
+    <div id="cellSize">
+        <div><h2>Output cell size</h2></div>
+        <hr/>
+        <div>
+            <p>Enter the cell size and unit for the output rasters.
+            </p>
+        </div>
+    </div>
+    <div id="outPredictionError">
+        <div><h2>Output prediction error</h2></div>
+        <hr/>
+        <div>
+            <p>Choose whether you want to create a raster of standard errors for the predicted values.
+            </p>
+            <p>Standard errors are useful because they provide information
+about the reliability of the predicted values. A simple rule of
+thumb is that the true value will fall within two standard errors
+of the predicted value 95 percent of the time. For example, suppose
+a new location gets a predicted value of 50 with a standard error
+of 5. This means that this tool's best guess is that the true value
+at that location is 50, but it reasonably could be as low as 40 or
+as high as 60. To calculate this range of reasonable values,
+multiply the standard error by 2, add this value to the predicted
+value to get the upper end of the range, and subtract it from the
+predicted value to get the lower end of the range.
+            </p>
+        </div>
+    </div>
+    <div id="outDiagnosticTable">
+        <div><h2>Output diagnostic table</h2></div>
+        <hr/>
+        <div>
+            <p>Choose whether you want to create a table containing cross-validation diagnostics.  These diagnostics are useful for determining the accuracy of the predicted values.  If created, the table will contain five diagnostics:
+            </p>
+            <p>
+                <ul>
+                    <li>Root-mean-square error &mdash; This number represents the square root of the average squared cross-validation error.  This value should be as small as possible.
+                    </li>
+                    <li>Mean error &mdash; This number represents the average of the cross-validation errors.  This number should be close to zero.  Values far from zero indicate that the predictions may be biased.  This number is in the units of the data values.
+                    </li>
+                    <li>Mean standardized error &mdash; This number represents the average of the standardized cross-validation errors. This number should be close to zero.  Values far from zero indicate that the predictions may be biased. This number is unitless and can be compared across different datasets that represent different phenomenon (for example, rainfall and elevation).
+                    </li>
+                    <li>Root-mean-square standardized error &mdash; This number represents the square root of the average standardized cross-validation error.  This number should be close to one.  If it is far above or below one, this indicates that predictions errors are not being calculated accurately.
+                    </li>
+                    <li>Average standard error &mdash; This number represents the average of cross-validation standard errors.  This number should be as small as possible, but it should also be approximately equal to the root-mean-square error.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Result layer name</h2></div>
+        <hr/>
+        <div>
+            <p>This is the name of the layer that will be created in  <b>My Content</b> and added to the map. The default name is based on the tool name and the input layer name. If the layer already exists, you will be asked to provide another name.
+            </p>
+            <p>Using the  <b>Save result</b> in drop-down box, you can specify the name of a folder in <b>My Content</b> where the result will be saved.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

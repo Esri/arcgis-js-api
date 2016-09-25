@@ -4,10 +4,16 @@
          <table class="esriFormTable" >
             <tr>
               <td class="esriToolIconTd"><div class="buffersIcon"></div></td>
-              <td class="esriAlignLeading esriAnalysisTitle" data-dojo-attach-point="_toolTitle">${i18n.createBuffers}</td>
+              <td class="esriAlignLeading esriAnalysisTitle" data-dojo-attach-point="_toolTitle">
+                <label data-dojo-attach-point="_titleLbl">${i18n.createBuffers}</label>
+                <nav class="breadcrumbs"  data-dojo-attach-point="_analysisModeLblNode" style="display:none;">
+                  <a href="#" class="crumb" style="font-size:12px;" data-dojo-attach-event="onclick:_handleModeCrumbClick" data-dojo-attach-point="_analysisModeCrumb"></a>
+                  <a href="#" class="crumb is-active" data-dojo-attach-point="_analysisTitleCrumb" style="font-size:16px;">${i18n.createBuffers}</a>
+                </nav>
+              </td>
               <td>
                 <div class="esriFloatTrailing" style="padding:0;">
-                    <div class="esriFloatLeading">
+                    <div class="esriFloatLeading" data-dojo-attach-point="_toolDescHelpDiv">
                       <a href="#" class='esriFloatLeading helpIcon' esriHelpTopic="toolDescription"></a>
                     </div>
                     <div class="esriFloatTrailing">
@@ -18,7 +24,7 @@
             </tr>
          </table>
       </div>
-      <div style="clear:both; border-bottom: #CCC thin solid; height:1px;width:100%;"></div>
+      <div class="toolHeaderLine"></div>
     </div>
     <div data-dojo-type="dijit/form/Form" data-dojo-attach-point="_form" readOnly="true">
      <table class="esriFormTable"  data-dojo-attach-point="_bufferTable">
@@ -69,7 +75,7 @@
                 </td>
                 <td>
                   <div class="bufferSelector" data-dojo-attach-point="_AttributeExp">
-                    <div class="bufferIcon bufferAttributeIcon"></div>
+                    <div class="bufferIcon bufferExprIcon"></div>
                     <div><label class="esriSelectLabel">${i18n.fieldExpLabel}</label></div>
                   </div>
                 </td>                
@@ -79,7 +85,7 @@
         </tr>
         <tr data-dojo-attach-point="_bufDistLabelRow">
           <td colspan="3" style="padding-top:5px;">
-            <label class="esriLeadingMargin1">${i18n.sizeLabel}</label>
+            <label class="esriLeadingMargin1" data-dojo-attach-point="_bufLabel">${i18n.sizeLabel}</label>
           </td>
         </tr>        
         <tr data-dojo-attach-point="_bufDistRow">
@@ -113,7 +119,7 @@
         </tr>
         <tr data-dojo-attach-point="_bufFielExpRow" style="display:none;">
           <td colspan="3">
-            <table style="width:90%">
+            <table style="width:90%" class="esriFormTable">
               <tr>
                 <td colspan="2">
                   <input type="text" data-dojo-type="dijit/form/ValidationTextBox" class="esriLeadingMargin1 longInput" data-dojo-props="trim:true" data-dojo-attach-point="_bufFieldOutput" value=""></input>
@@ -305,8 +311,8 @@
         <tr data-dojo-attach-point="_methodValueRow">
           <td  colspan="3">
             <select class="esriLeadingMargin1 longInput esriLongLabel"  data-dojo-type="dijit/form/Select" data-dojo-attach-point="_methodSelect">
-              <option value="GEODESIC">${i18n.geodesicLabel}</option>
-              <option value="PLANAR">${i18n.planarLabel}</option>
+              <option value="Geodesic">${i18n.geodesicLabel}</option>
+              <option value="Planar">${i18n.planarLabel}</option>
             </select>
           </td>
         </tr>
@@ -322,9 +328,9 @@
         <tr data-dojo-attach-point="_dissolveValueRow">
           <td  colspan="3">
             <select class="esriLeadingMargin1 longInput esriLongLabel"  data-dojo-type="dijit/form/Select" data-dojo-attach-point="_dissolveSelect" data-dojo-attach-event="onChange:_handleDissolveSelectChange">
-              <option value="ALL">${i18n.allLabel}</option>
-              <option value="LIST">${i18n.listLabel}</option>
-              <option value="NONE" selected="true">${i18n.noneLabel}</option>
+              <option value="All">${i18n.allLabel}</option>
+              <option value="List">${i18n.listLabel}</option>
+              <option value="None" selected="true">${i18n.noneLabel}</option>
             </select>
           </td>
         </tr>
@@ -359,18 +365,29 @@
             <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="summaryFields"></a> 
           </td>             
         </tr>
-        <tr data-dojo-attach-point="_afterStatsRow">
-          <td colspan="3" class="clear"></td>
+        <tr data-dojo-attach-point="_statsTableRow">
+          <td colspan="3">
+            <table style="width:100%" class="esriFormTable">
+              <tbody>
+                <tr data-dojo-attach-point="_afterStatsRow">
+                  <td colspan="3" class="clear"></td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
         </tr>
         <tr data-dojo-attach-point="_datastoreLabelRow">
-          <td colspan="3">
+          <td colspan="2">
             <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel" data-dojo-attach-point="_datastoreLabel">${i18n.fiveLabel}</label>
             <label class="esriAnalysisStepsLabel">${i18n.datastoreLabel}</label>
           </td>
+          <td class="shortTextInput">
+            <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="dataStore"></a> 
+          </td>           
         </tr>
         <tr data-dojo-attach-point="_selectDataStore">
-          <td  colspan="3" style="padding-top:0;">
-            <select class="esriLeadingMargin1 longInput esriLongLabel"  style="margin-top:1.0em;" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_datastoreSelect">
+          <td  colspan="3" class="padTop0">
+            <select class="esriLeadingMargin1 longInput esriLongLabel"  data-dojo-type="dijit/form/Select" data-dojo-attach-point="_datastoreSelect">
               <option value="relational">${i18n.relationalDS}</option>
               <option value="spatialtemporal" selected="true">${i18n.spatialDS}</option>
             </select>
@@ -382,11 +399,11 @@
             <label data-dojo-attach-point="_polylabel" class="esriAnalysisStepsLabel">${i18n.resultLabel}</label>
           </td>
           <td>
-            <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="BufferLayer"></a>
+            <a href="#" class='esriFloatTrailing helpIcon' data-dojo-attach-point="_outputHelpNode" esriHelpTopic="BufferLayer"></a>
           </td>
         </tr>
         <tr>
-          <td colspan="2">
+          <td colspan="3">
             <input type="text" data-dojo-type="dijit/form/ValidationTextBox" class="esriLeadingMargin1 longInput" data-dojo-props="required:true,trim:true" data-dojo-attach-point="outputLayerInput"  value="">
           </td>
         </tr>

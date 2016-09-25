@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Interpolate Points</h2><p/>
+        <h2><img src="./images/GUID-C0CF18D7-9652-4C8C-AC4F-88AD9447519A-web.png" alt="Calculate Slope"></h2>
+        <hr/>
+    <p>The Interpolate Points tool interpolates points into a raster surface.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Input point layer</h2></div>
+        <hr/>
+        <div>
+            <p>The feature layer that defines the points.
+            </p>
+        </div>
+    </div>
+    <div id="field">
+        <div><h2>Choose field to interpolate</h2></div>
+        <hr/>
+        <div>
+            <p>Choose the field whose value to interpolate.
+            </p>
+        </div>
+    </div>
+    <div id="outPredictionError">
+        <div><h2>Output prediction errors</h2></div>
+        <hr/>
+        <div>
+            <p>Choose the raster layer you wish to summarize.
+            </p>
+        </div>
+    </div>
+    <div id="interpolateOption">
+        <div><h2>Optimize for</h2></div>
+        <hr/>
+        <div>
+            <p>Choose to optimize or not.
+            </p>
+        </div>
+    </div>
+    <div id="boundingPolygonLayer">
+        <div><h2>Clip output to</h2></div>
+        <hr/>
+        <div>
+            <p>The layer to clip  the output to.
+            </p>
+        </div>
+    </div>
+    <div id="classificationType">
+        <div><h2>Classify by</h2></div>
+        <hr/>
+        <div>
+            <p>The classification type to use.
+            </p>
+        </div>
+    </div>
+    <div id="numClasses">
+        <div><h2>Number of classes</h2></div>
+        <hr/>
+        <div>
+            <p>The number of classes to use.
+            </p>
+        </div>
+    </div>
+    <div id="classBreaks">
+        <div><h2>Class break values</h2></div>
+        <hr/>
+        <div>
+            <p>The values to break the classes into.
+            </p>
+        </div>
+    </div>
+    <div id="predictAtPointLayer">
+        <div><h2>Predict at these locations</h2></div>
+        <hr/>
+        <div>
+            <p>The locations to give predictions for.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Result layer name</h2></div>
+        <hr/>
+        <div>
+            <p>This is the name of the layer that will be created in  <b>My Content</b> and added to the map. The default name is based on the tool name and the input layer name. If the layer already exists, you will be asked to provide another name.
+            </p>
+            <p>Using the  <b>Save result</b> in drop-down box, you can specify the name of a folder in <b>My Content</b> where the result will be saved.
+            </p>
+        </div>
+    </div>
+</div>
+</html>
