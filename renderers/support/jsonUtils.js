@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["../../core/Warning","../SimpleRenderer","../UniqueValueRenderer","../ClassBreaksRenderer"],function(e,r,n,t){function u(e){return e?o[e.type]||null:null}var o={simple:r,uniqueValue:n,classBreaks:t},s={fromJson:function(e){try{throw new Error("fromJson is deprecated, use fromJSON instead")}catch(r){console.warn(r.stack)}return s.fromJSON(e)},read:function(r,n,t){var o=u(r);if(o){var s=new o;return s.read(r,t),s}return t&&t.messages&&r&&t.messages.push(new e("renderer:unsupported","Renderers of type '"+(r.type||"unknown")+"' are not supported",{definition:r,context:t})),null},fromJSON:function(e){var r=u(e);return r?r.fromJSON(e):null}};return s});
+define(["../../core/Warning","../SimpleRenderer","../UniqueValueRenderer","../ClassBreaksRenderer"],function(e,n,r,u){function t(e){return e?s[e.type]||null:null}var s={simple:n,uniqueValue:r,classBreaks:u},o={fromJson:function(e){try{throw new Error("fromJson is deprecated, use fromJSON instead")}catch(n){console.warn(n.stack)}return o.fromJSON(e)},read:function(n,r,u){if(n&&(n.styleName||n.styleUrl)&&"uniqueValue"!==n.type)return u&&u.messages&&u.messages.push(new e("renderer:unsupported","Only UniqueValueRenderer can be referenced from a web style, but found '"+n.type+"'",{definition:n,context:u})),null;var s=t(n);if(s){var o=new s;return o.read(n,u),o}return u&&u.messages&&n&&u.messages.push(new e("renderer:unsupported","Renderers of type '"+(n.type||"unknown")+"' are not supported",{definition:n,context:u})),null},fromJSON:function(e){var n=t(e);return n?n.fromJSON(e):null}};return o});

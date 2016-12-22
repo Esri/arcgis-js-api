@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 /**
  * Provides a simple widget that animates the {@link module:esri/views/View}
@@ -29,9 +29,15 @@
  * ![locate-button](../assets/img/apiref/widgets/widgets-locate.png)
  *
  * ::: esri-md class="panel trailer-1"
- * The Locate widget is only supported in applications that support geolocation.
- * For additional information regarding this, visit the ArcGIS blog,
- * [Increased web API security in Google Chrome](https://blogs.esri.com/esri/arcgis/2016/04/14/increased-web-api-security-in-google-chrome/).
+ * The Locate widget is not supported on insecure origins.
+ * To use it, switch your application to a secure origin, such as HTTPS.
+ * Note that localhost is considered "potentially secure" and can be used for easy testing in browsers that supports
+ * [Window.isSecureContext](https://developer.mozilla.org/en-US/docs/Web/API/Window/isSecureContext#Browser_compatibility)
+ * (currently Chrome and Firefox).
+ *
+ * As of version 4.2, the Locate Button no longer displays in non-secure web apps. At version
+ * [4.1](https://blogs.esri.com/esri/arcgis/2016/04/14/increased-web-api-security-in-google-chrome/)
+ * this only applied to Google Chrome.
  * :::
  *
  * If the spatial reference of the {@link module:esri/views/View} is not Web Mercator or WGS84,
@@ -53,8 +59,7 @@
  * @since 4.0
  *
  * @see [Locate.js (widget view)]({{ JSAPI_BOWER_URL }}/widgets/Locate.js)
- * @see [button.css]({{ JSAPI_BOWER_URL }}/widgets/css/button.css)
- * @see [button.scss]({{ JSAPI_BOWER_URL }}/widgets/css/button.scss)
+ * @see [button.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_Widget.scss)
  * @see [Sample - locate widget](../sample-code/widgets-locate/index.html)
  * @see module:esri/widgets/Locate/LocateViewModel
  * @see {@link module:esri/views/View#ui View.ui}
@@ -69,8 +74,6 @@
  *   view: view,   // Attaches the Locate button to the view
  *   graphicsLayer: gl  // The layer the locate graphic is assigned to
  * });
- * // startup() must be called to start the widget
- * locateWidget.startup();
  *
  * view.ui.add(locateWidget, "top-right");
  */
@@ -97,7 +100,7 @@ define([
 
   "./support/viewModelWiring",
 
-  "./Widget",
+  "./Widgette",
 
   "../core/watchUtils",
 
@@ -133,12 +136,12 @@ define([
   };
 
   /**
-   * @extends module:esri/widgets/Widget
+   * @extends module:esri/core/Accessor
+   * @mixes module:esri/widgets/Widgette
    * @mixes module:esri/core/Evented
    * @constructor module:esri/widgets/Locate
-   * @param {Object} [properties] - See the [properties](#properties) for a list of all the properties
+   * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                              that may be passed into the constructor.
-   * @param {string | Node} [srcNodeRef] - Reference or ID of the HTML node in which this widget renders.
    *
    * @example
    * // typical usage
@@ -248,12 +251,13 @@ define([
        *
        * @example
        * var locateWidget = new Locate({
-       *   viewModel: new LocateVM({
-       *     view: view,  // Assigns the locate widget to a view
+       *   viewModel: { // autocasts as new LocateViewModel()
+       *     view: view,  // assigns the locate widget to a view
        *     graphic: Graphic({
-       *       symbol: new SimpleMarkerSymbol()  // Overwrites the default symbol used for the
+       *       symbol: new SimpleMarkerSymbol()  // overwrites the default symbol used for the
        *       // graphic placed at the location of the user when found
        *     })
+       *   }
        * });
        */
       graphic: {

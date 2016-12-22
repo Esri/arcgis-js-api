@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/lang","./Symbol3D","../core/accessorSupport/decorators"],function(e,r,o,t,s,l,p){var c=function(e){function r(r){e.call(this),this.type="label-symbol-3d"}return o(r,e),r.prototype.clone=function(){return new r({symbolLayers:s.clone(this.symbolLayers)})},t([p.property()],r.prototype,"type",void 0),t([p.shared(["Text"])],r.prototype,"_allowedLayerTypes",void 0),r=t([p.subclass("esri.symbols.LabelSymbol3D")],r)}(p.declared(l));return c});
+define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/lang","./Symbol3D","../core/accessorSupport/decorators"],function(e,r,o,t,l,s,n){var c=function(e){function r(r){e.call(this),this.type="label-symbol-3d"}return o(r,e),r.prototype.clone=function(){return new r({styleOrigin:l.clone(this.styleOrigin),symbolLayers:l.clone(this.symbolLayers),thumbnail:l.clone(this.thumbnail)})},t([n.property()],r.prototype,"type",void 0),t([n.shared(["Text"])],r.prototype,"_allowedLayerTypes",void 0),r=t([n.subclass("esri.symbols.LabelSymbol3D")],r)}(n.declared(s));return c});

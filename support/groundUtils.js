@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["require","exports","../core/accessorSupport/ensureType","../Ground","../layers/ElevationLayer"],function(e,r,n,o,i){function a(e){var a;if("string"==typeof e)if(e in r.groundElevationLayers){var l=r.groundElevationLayers[e],t=new i({id:l.id,url:l.url});a=new o({layers:[t]})}else console.warn("Unable to find ground definition for: "+e+'. Try "world-elevation"');else a=n["default"](o,e);return a}r.groundElevationLayers={"world-elevation":{id:"worldElevation",url:"//elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer"}},r.ensureType=a});
+define(["require","exports","../core/accessorSupport/ensureType","../core/Logger","../Ground","../layers/ElevationLayer"],function(e,r,o,n,i,a){function l(e){var n;if("string"==typeof e)if(e in r.groundElevationLayers){var l=r.groundElevationLayers[e],s=new a({id:l.id,url:l.url});n=new i({layers:[s]})}else t.warn("Unable to find ground definition for: "+e+'. Try "world-elevation"');else n=o["default"](i,e);return n}var t=n.getLogger("esri.support.groundUtils");r.groundElevationLayers={"world-elevation":{id:"worldElevation",url:"//elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer"}},r.ensureType=l});

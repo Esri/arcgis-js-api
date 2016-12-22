@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["../../../core/declare","../../../core/promiseUtils","../../../core/Error","./TiledLayerView3D"],function(e,r,i,a){var n=e(a,{declaredClass:"esri.views.3d.layers.ElevationLayerView3D",initialize:function(){var e=this.get("view.map.ground.layers");e&&-1!==e.indexOf(this.layer)||this.addResolvingPromise(r.reject(new i("layerview:elevation-layer-only","3D elevation layer '"+this.layer.id+"' can only be added in the map ground")))},isTransparent:function(){return!0}});return n});
+define(["../../../core/declare","../../../core/promiseUtils","../../../core/Error","./TiledLayerView3D"],function(e,r,i,a){var n=e(a,{declaredClass:"esri.views.3d.layers.ElevationLayerView3D",properties:{isTransparent:{readOnly:!0,get:function(){return!0}}},initialize:function(){var e=this.get("view.map.ground.layers");e&&-1!==e.indexOf(this.layer)||this.addResolvingPromise(r.reject(new i("layerview:elevation-layer-only","3D elevation layer '"+this.layer.id+"' can only be added in the map ground")))}});return n});

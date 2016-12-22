@@ -61,6 +61,11 @@
       font-weight: $text_weight_header;
     }
     ////////////////////////////////////////
+    // Fields
+    &__field-data--date {
+      text-transform: capitalize;
+    }
+    ////////////////////////////////////////
     // Attachmets
     &__attachments {
       @include flexFlow(row, wrap);

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 define(["../../../core/Accessor","../support/mathUtils"],function(t,e){var s=.5,a=179.5,i=t.createSubclass([],{declaredClass:"esri.views.3d.constraints.SceneViewTiltConstraint",properties:{mode:{value:"auto"},max:{value:s,cast:function(t){return e.clamp(t,s,a)},set:function(t){this._set("max",t),this.mode="manual"}}},autoUpdate:function(t){"auto"===this.mode&&this._get("max")!==t&&this._set("max",t)},scale:function(t){}});return i.MAX_DEFAULT=s,i.MIN_DEFAULT=a,i});

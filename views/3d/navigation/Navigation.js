@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 define(["../../../core/Accessor","../../../core/Evented","../../../core/watchUtils","./Picker","./mixins/CamerasMixin"],function(e,n,r,i,t){var s=e.createSubclass([t,n],{properties:{interacting:{get:function(){return this._interacting},readOnly:!0},renderCoordsHelper:{},renderUnitInMeters:{dependsOn:["renderCoordsHelper"],get:function(){return this.renderCoordsHelper?this.renderCoordsHelper.unitInMeters:1}},picker:{},constraints:{},pan:{},zoom:{},rotate:{}},initialize:function(){this._mapCoordsHelperHandle=r.init(this.view,"mapCoordsHelper",function(e){this.mapCoordsHelper=e}.bind(this)),this._renderCoordsHelperHandle=r.init(this.view,"renderCoordsHelper",this.updateRenderCoordsHelper.bind(this)),this.picker=new i(this,this.view),this._interacting=!1},destroy:function(){this._mapCoordsHelperHandle.remove(),this._renderCoordsHelperHandle.remove()},updateRenderCoordsHelper:function(e){this.renderCoordsHelper=e,this.inherited(arguments)},begin:function(e){this.pan&&this.pan.continuous&&this.pan.continuous.stop(),this._interacting=!0,this.notifyChange("interacting")},end:function(e){this._interacting=!1,this.notifyChange("interacting")}});return s});

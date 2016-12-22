@@ -24,17 +24,29 @@
     attribute vec4 $color;
 #endif
 
-#if defined(VERTEXCOLORS) || defined(INSTANCEDCOLOR)
+#if defined(VV_SIZE) || defined(VV_COLOR)
+	attribute vec4 instanceFeatureAttribute;
+#endif
+
+$vvUniforms
+
+#if defined(VERTEXCOLORS) || defined(INSTANCEDCOLOR) || defined(VV_COLOR)
     varying vec4 vcolor;
 #endif
 
+	$vvFunctions
 
 	void main(void) {
+#ifdef VV_CUSTOM_MODEL_MATRIX
+		vpos = (model * vvTransformPosition($position, instanceFeatureAttribute)).xyz;
+		vnormal = normalize((modelNormal * vvTransformNormal($normal, instanceFeatureAttribute)).xyz);
+#else
 		vpos = (model * vec4($position, 1.0)).xyz;
 		vnormal = normalize((modelNormal * vec4($normal, 1.0)).xyz);
+#endif
 		gl_Position = proj * view * vec4(vpos, 1.0);
 
-#if defined(VERTEXCOLORS) || defined(INSTANCEDCOLOR)
+#if defined(VERTEXCOLORS) || defined(INSTANCEDCOLOR) || defined(VV_COLOR)
         vcolor = vec4(1,1,1,1);
 #endif
 #ifdef VERTEXCOLORS
@@ -42,6 +54,9 @@
 #endif
 #ifdef INSTANCEDCOLOR
         vcolor *= instanceColor;
+#endif
+#ifdef VV_COLOR
+        vcolor *= vvGetColor(instanceFeatureAttribute, vvColorValues, vvColorColors);
 #endif
 ]]></snippet>
 
@@ -65,7 +80,7 @@
 	uniform vec4 viewportPixelSz;
 	varying vec3 vpos;
 	varying vec3 vnormal;
-#if defined(VERTEXCOLORS) || defined(INSTANCEDCOLOR)
+#if defined(VERTEXCOLORS) || defined(INSTANCEDCOLOR) || defined(VV_COLOR)
     varying vec4 vcolor;
 #endif
 
@@ -92,7 +107,7 @@
 		vec3 d = (1.0 - shadow) * diffuse * lightDiffuse.rgb * lightDiffuse.w * clamp(dot(normal, lightDirection), .0, 1.0);
 
 		float opacity_ = opacity;
-#if defined(VERTEXCOLORS) || defined(INSTANCEDCOLOR)
+#if defined(VERTEXCOLORS) || defined(INSTANCEDCOLOR) || defined(VV_COLOR)
         a *= vcolor.rgb;
         d *= vcolor.rgb;
         opacity_ *= vcolor.a;
@@ -102,9 +117,12 @@
 		float specDot = max(dot(reflDir, lightDirection), .001);
 		vec3 s = (1.0 - shadow) * specular * lightSpecular.rgb * lightSpecular.w * pow(specDot, shininess);
 
+#ifdef RECEIVE_SSAO
 		float ssao = texture2D(ssaoTex, (gl_FragCoord.xy - viewportPixelSz.xy) * viewportPixelSz.zw).a;
 		ssao = viewportPixelSz.z < 0.0 ? 1.0 : ssao;
-
+#else
+		float ssao = 1.0;
+#endif
 ]]></snippet>
 
 <snippet name="vsPhong"><![CDATA[
@@ -242,13 +260,27 @@
 <snippet name="vsDepthSrc"><![CDATA[
 	uniform mat4 proj;
 	uniform mat4 view;
+#ifdef INSTANCED
+	attribute mat4 model;
+#else
 	uniform mat4 model;
+#endif
 	uniform vec2 nearFar;
 	attribute vec3 $position;
 	varying float depth;
 
+	$vvUniforms
+#if defined(VV_CUSTOM_MODEL_MATRIX)
+	attribute vec4 instanceFeatureAttribute;
+#endif
+	$vvFunctions
+
 	void main(void) {
+#ifdef VV_CUSTOM_MODEL_MATRIX
+		vec4 eye = view * model * vvTransformPosition($position, instanceFeatureAttribute);
+#else
 		vec4 eye = view * model * vec4($position, 1.0);
+#endif
 		gl_Position = proj * eye;
 		depth = (-eye.z - nearFar[0]) / (nearFar[1] - nearFar[0]) ;
 ]]></snippet>
@@ -273,16 +305,32 @@
 <snippet name="vsNormalSrc"><![CDATA[
 	uniform mat4 proj;
 	uniform mat4 view;
+#ifdef INSTANCED
+	attribute mat4 model;
+	attribute mat4 modelNormal;
+#else
 	uniform mat4 model;
-	uniform mat4 viewNormal;
 	uniform mat4 modelNormal;
+#endif
+	uniform mat4 viewNormal;
 	attribute vec3 $position;
 	attribute vec3 $normal;
 	varying vec3 vnormal;
 
+	$vvUniforms
+#if defined(VV_CUSTOM_MODEL_MATRIX)
+	attribute vec4 instanceFeatureAttribute;
+#endif
+	$vvFunctions
+
 	void main(void) {
+#ifdef VV_CUSTOM_MODEL_MATRIX
+		gl_Position = proj * view * model * vvTransformPosition($position, instanceFeatureAttribute);
+		vnormal = normalize((viewNormal * modelNormal * vvTransformNormal($normal, instanceFeatureAttribute)).xyz);
+#else
 		gl_Position = proj * view * model * vec4($position, 1.0);
 		vnormal = normalize((viewNormal * modelNormal * vec4($normal, 1.0)).xyz);
+#endif
 ]]></snippet>
 
 <snippet name="vsNormal"><![CDATA[
@@ -297,7 +345,7 @@
 #ifndef FLIPV
 		vtc = $uv0;
 #else
-        vtc = vec2($uv0.x, 1.0-$uv0.y);
+		vtc = vec2($uv0.x, 1.0-$uv0.y);
 #endif
 	}
 ]]></snippet>
@@ -305,11 +353,25 @@
 <snippet name="vsHighlightSrc"><![CDATA[
 	uniform mat4 proj;
 	uniform mat4 view;
+#ifdef INSTANCED
+	attribute mat4 model;
+#else
 	uniform mat4 model;
+#endif
 	attribute vec3 $position;
 
+	$vvUniforms
+#if defined(VV_CUSTOM_MODEL_MATRIX)
+	attribute vec4 instanceFeatureAttribute;
+#endif
+	$vvFunctions
+
 	void main(void) {
+#ifdef VV_CUSTOM_MODEL_MATRIX
+		gl_Position = proj * view * model * vvTransformPosition($position, instanceFeatureAttribute);
+#else
 		gl_Position = proj * view * model * vec4($position, 1.0);
+#endif
 ]]></snippet>
 
 <snippet name="vsHighlight"><![CDATA[
@@ -324,7 +386,7 @@
 #ifndef FLIPV
 		vtc = $uv0;
 #else
-    vtc = vec2($uv0.x, 1.0-$uv0.y);
+		vtc = vec2($uv0.x, 1.0-$uv0.y);
 #endif
 	}
 ]]></snippet>

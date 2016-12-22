@@ -1,0 +1,114 @@
+.esri-marker-symbol-picker {
+  position: relative;
+  padding: 8px 0;
+}
+
+.esri-marker-symbol-picker.esri-default-symbols .esri-container {
+  height: auto;
+}
+
+.esri-marker-symbol-picker .esri-container {
+  overflow: auto;
+}
+
+.esri-marker-symbol-picker--dimensionality-volumetric {
+  width: 360px;
+}
+
+.esri-marker-symbol-picker--dimensionality-volumetric .esri-container {
+  height: 270px;
+}
+
+.esri-marker-symbol-picker--dimensionality-flat {
+  width: 280px;
+}
+
+.esri-marker-symbol-picker--dimensionality-flat .esri-container {
+  height: 220px;
+}
+
+.esri-marker-symbol-picker .esri-type-input {
+  margin-bottom: 10px;
+}
+
+.esri-marker-symbol-picker .esri-type-input .dijitButtonContents {
+  width: 100%;
+}
+
+.esri-marker-symbol-picker .esri-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: none;
+}
+
+.esri-marker-symbol-picker.esri-no-symbols .esri-overlay {
+  display: inline;
+}
+
+
+
+
+.esri-marker-symbol-picker .esri-overlay .esri-center-container.esri-table {
+  width: 100%;
+  height: 100%;
+
+  display: table;
+}
+
+.esri-marker-symbol-picker .esri-overlay .esri-table .esri-table-cell {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.esri-marker-symbol-picker .esri-overlay .esri-table .esri-center-block {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.esri-marker-symbol-picker .esri-symbol-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.esri-marker-symbol-picker .esri-symbol {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.esri-marker-symbol-picker--dimensionality-volumetric .esri-symbol {
+  flex-basis: 20%;
+  padding: 6px 0 6px 0;
+  height: 64px;
+}
+
+.esri-marker-symbol-picker--dimensionality-flat .esri-symbol {
+  flex-basis: 16%;
+  padding: 6px 0 6px 0;
+  height: 32px;
+}
+
+.esri-marker-symbol-picker--blocked .esri-type-input {
+  color: transparent;
+}
+
+.esri-marker-symbol-picker--blocked .esri-symbol-grid {
+  display: none;
+}
+
+.esri-marker-symbol-picker .esri-symbol--selected {
+  background-color: #cee7f8;
+}
+
+.esri-marker-symbol-picker__symbolViewport--loading::after {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  content: url(../../../themes/base/images/loading-throb.gif)
+}

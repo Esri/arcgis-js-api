@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 define(["../../core/kebabDictionary","../../core/JSONSupport","../../core/lang"],function(e,r,a){var n=e({codedValue:"coded-value"}),o=r.createSubclass({declaredClass:"esri.layers.support.Domain",properties:{name:{value:null},type:{json:{read:n.fromJSON},value:null}},toJSON:function(){return a.fixJson({name:this.name,type:n.toJSON(this.type)})}});return o});

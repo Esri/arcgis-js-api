@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 /**
  * The Attribution displays attribution text for the layers in a map.
@@ -37,14 +37,16 @@
  * ![attribution](../assets/img/apiref/widgets/attribution.png)
  *
  * ::: esri-md class="panel trailer-1"
- * For additional information on working with attribution please visit the official [attribution in your app](https://developers.arcgis.com/terms/attribution) documentation for detailed guidelines.
+ * Esri requires that when you use an ArcGIS Online basemap in your app, the map must include Esri attribution and you must be licensed to use the content.
+ * For detailed guidelines on working with attribution, please visit the official [attribution in your app](https://developers.arcgis.com/terms/attribution) documentation.
+ * For information on terms of use, see the [Terms of Use FAQ](https://developers.arcgis.com/terms/faq/).
  * :::
+ *
  * @module esri/widgets/Attribution
  * @since 4.0
  *
  * @see [Attribution.js (widget view)]({{ JSAPI_BOWER_URL }}/widgets/Attribution.js)
- * @see [Attribution.css]({{ JSAPI_BOWER_URL }}/widgets/Attribution/css/Attribution.css)
- * @see [Attribution.scss]({{ JSAPI_BOWER_URL }}/widgets/Attribution/css/Attribution.scss)
+ * @see [Attribution.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_Attribution.scss)
  * @see module:esri/widgets/Attribution/AttributionViewModel
  * @see {@link module:esri/views/View#ui View.ui}
  * @see module:esri/views/ui/DefaultUI
@@ -56,7 +58,7 @@ define([
 
   "./support/viewModelWiring",
 
-  "./Widget",
+  "./Widgette",
 
   "dijit/_TemplatedMixin",
   "dijit/a11yclick",
@@ -92,11 +94,11 @@ function(
   };
 
   /**
-   * @extends module:esri/widgets/Widget
+   * @extends module:esri/core/Accessor
+   * @mixes module:esri/widgets/Widgette
    * @constructor module:esri/widgets/Attribution
-   * @param {Object} [properties] - See the [properties](#properties) for a list of all the properties
+   * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                                 that may be passed into the constructor.
-   * @param {string | Node} [srcNodeRef] - Reference or ID of the HTML element in which this widget renders.
    */
   var Attribution = Widget.createSubclass([_TemplatedMixin],
     /** @lends module:esri/widgets/Attribution.prototype */
@@ -201,10 +203,9 @@ function(
         domClass.remove(domNode, CSS.open);
         domClass.remove(sourcesNode, CSS.sourcesOpen);
         domClass.remove(sourcesNode, CSS.interactive);
-        domAttr.set(sourcesNode, {
-          tabIndex: "",
-          role: ""
-        });
+
+        domAttr.remove(sourcesNode, "role");
+        domAttr.remove(sourcesNode, "tabIndex");
 
         if (this._hasOverflowingText()) {
           domClass.add(sourcesNode, CSS.interactive);

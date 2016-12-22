@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 define([],function(){var T={ADD:1,UPDATE:2,REMOVE:4},R={REINSERT:1,FACERANGE:2,VERTEXATTRS:4,COLORATTRS:8,TRANSFORMATION:16};return{GeomDirtyType:T,UpdateTypes:R}});

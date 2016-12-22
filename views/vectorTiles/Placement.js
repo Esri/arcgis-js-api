@@ -1,0 +1,25 @@
+// COPYRIGHT © 2016 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+
+define(["require","exports","./Geometry","./GeometryUtils","./Conflict"],function(t,n,e,i,o){var r=function(){function t(t,n,e,i,o){void 0===e&&(e=0),void 0===i&&(i=-1),void 0===o&&(o=c),this.x=t,this.y=n,this.angle=e,this.segment=i,this.minzoom=o}return t}();n.Anchor=r;var a=function(){function t(t,n,e){this.glyph=t,this.x=n,this.y=e}return t}();n.ShapedGlyph=a;var h=function(){function t(t,n,e,o,r,a){void 0===o&&(o=!1),void 0===r&&(r=c),void 0===a&&(a=i.C_INFINITY),this.anchor=t,this.labelAngle=n,this.glyphAngle=e,this.upsideDown=o,this.minzoom=r,this.maxzoom=a}return t}(),l=function(){function t(t,n,e,i,o,r,a,h,l){this.tl=t,this.tr=n,this.bl=e,this.br=i,this.mosaicRect=o,this.labelAngle=r,this.anchor=a,this.minzoom=h,this.maxzoom=l}return t}();n.PlacedSymbol=l;var s=function(){function t(t,n){this.footprint=t,this.shapes=n}return t}();n.Placement=s;var c=.5,p=2,m=function(){function t(t){this.mapAngle=t,this._conflictEngine=new o.ConflictEngine(t)}return t.prototype.getIconPlacement=function(t,n,r,a,h,p){var m=n.width/n.pixelRatio,g=n.height/n.pixelRatio,f=h.offset[0]-m/2,u=h.offset[1]-g/2,I=f+m,x=u+g,d=n.rect,w=new e.Point(f,u),y=new e.Point(f+d.width/n.pixelRatio,u+d.height/n.pixelRatio),v=new e.Point(f,y.y),_=new e.Point(y.x,u),N=h.rotate*i.C_DEG_TO_RAD,P=1===h.rotationAlignment;if(t.segment>=0&&!P&&(N+=t.angle),0!==N){var T=Math.cos(N),A=Math.sin(N);w.rotate(T,A),y.rotate(T,A),v.rotate(T,A),_.rotate(T,A)}var C=8,b=h.padding*C,E=new e.Point(t.x,t.y),z=new o.Footprint(this.mapAngle,b,P);z.addBox(E,new o.Box(f,u,I,x),r,N,c,i.C_INFINITY);var F=new l(w,_,v,y,d,0,E,c,i.C_INFINITY),M=new s(z,[F]),G=c;return h.allowOverlap||(G=this._conflictEngine.getMinZoom(M.footprint,G,p,P)),z.minzoom=G,M},t.prototype.getTextPlacement=function(t,n,r,a,m,g,f,u){for(var I,x=new e.Point(t.x,t.y),d=f.rotate*i.C_DEG_TO_RAD,w=0===f.rotationAlignment,y=f.keepUpright,v=c,_=!w,N=_?0:t.angle,P=t.segment>=0&&w,T=8,A=f.padding*T,C=new o.Footprint(this.mapAngle,A,_),b=[],E=3,z=!P,F=Number.POSITIVE_INFINITY,M=Number.NEGATIVE_INFINITY,G=F,Y=M,B=P?y:w&&y,R=[],O=0,D=r;O<D.length;O++){var q=D[O],S=a[q.glyph];if(S){var V=S.rect;if(!(!V||V.width<=0||V.height<=0)){var k=S.metrics;z&&(I&&I!==q.y&&(C.addBox(x,new o.Box(F,G,M,Y),m,d,c,i.C_INFINITY),F=Number.POSITIVE_INFINITY,M=Number.NEGATIVE_INFINITY,G=F,Y=M),I=q.y);var U=[];if(P){var Z=.5*S.metrics.width,j=(n.x+q.x+k.left-E+Z)*m;if(v=this._placeGlyph(t,v,j,g,t.segment,1,U),y&&(v=this._placeGlyph(t,v,j,g,t.segment,-1,U)),v>=p)break}else U.push(new h(x,N,N)),w&&y&&U.push(new h(x,N+i.C_PI,N+i.C_PI,!0));for(var H=q.x+n.x+k.left,J=q.y+n.y-k.top,K=H+k.width,L=J+k.height,Q=new e.Point(H-E,J-E),W=new e.Point(Q.x+V.width,Q.y+V.height),X=new e.Point(Q.x,W.y),$=new e.Point(W.x,Q.y),tt=0,nt=U;tt<nt.length;tt++){var et=nt[tt],it=Q.clone(),ot=X.clone(),rt=$.clone(),at=W.clone(),ht=J,lt=L,st=et.glyphAngle+d;if(0!==st){var ct=Math.cos(st),pt=Math.sin(st);it.rotate(ct,pt),at.rotate(ct,pt),ot.rotate(ct,pt),rt.rotate(ct,pt)}b.push(new l(it,rt,ot,at,V,et.labelAngle,et.anchor,et.minzoom,et.maxzoom)),(!B||this._legible(et.labelAngle))&&(z?(F>H&&(F=H),G>ht&&(G=ht),K>M&&(M=K),lt>Y&&(Y=lt)):et.minzoom<p&&C.addBox(et.anchor,new o.Box(H,ht,K,lt),m,st,et.minzoom,et.maxzoom)),R.push(et)}}}}if(v>=p)return null;z&&C.addBox(x,new o.Box(F,G,M,Y),m,d,c,i.C_INFINITY);var mt=new s(C,b);return f.allowOverlap||(v=this._conflictEngine.getMinZoom(mt.footprint,v,u,_)),C.minzoom=v,mt},t.prototype.add=function(t){this._conflictEngine.add(t.footprint)},t.prototype._legible=function(t){var n=i.radToByte(t);return 65>n||n>=193},t.prototype._placeGlyph=function(t,n,o,r,a,l,s){var c=l,p=0>c?i.positiveMod(t.angle+i.C_PI,i.C_2PI):t.angle,m=this._legible(p),g=0;0>o&&(c*=-1,o*=-1,g=i.C_PI),c>0&&++a;var f=new e.Point(t.x,t.y),u=r[a],I=i.C_INFINITY;if(r.length<=a)return I;for(;;){var x=u.x-f.x,d=u.y-f.y,w=Math.sqrt(x*x+d*d),y=Math.max(o/w,n),v=x/w,_=d/w,N=i.positiveMod(Math.atan2(_,v)+g,i.C_2PI);if(s.push(new h(f,p,N,m,y,I)),n>=y)return y;f=u.clone();do{if(a+=c,r.length<=a||0>a)return y;u=r[a]}while(f.isEqual(u));var P=u.x-f.x,T=u.y-f.y,A=Math.sqrt(P*P+T*T);P*=w/A,T*=w/A,f.x-=P,f.y-=T,I=y}},t}();n.PlacementEngine=m});

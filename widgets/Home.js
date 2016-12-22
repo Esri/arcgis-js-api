@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 /**
  * Provides a simple widget that switches the {@link module:esri/views/View} to its
@@ -37,8 +37,7 @@
  * @since 4.0
  *
  * @see [Home.js (widget view)]({{ JSAPI_BOWER_URL }}/widgets/Home.js)
- * @see [button.css]({{ JSAPI_BOWER_URL }}/widgets/css/button.css)
- * @see [button.scss]({{ JSAPI_BOWER_URL }}/widgets/css/button.scss)
+ * @see [button.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_Widget.scss)
  * @see [Sample - Home widget](../sample-code/widgets-home/index.html)
  * @see module:esri/widgets/Home/HomeViewModel
  * @see {@link module:esri/views/View#ui View.ui}
@@ -70,7 +69,7 @@ define([
 
   "./support/viewModelWiring",
 
-  "./Widget",
+  "./Widgette",
 
   "dijit/_TemplatedMixin",
   "dijit/a11yclick",
@@ -103,12 +102,12 @@ function(
   };
 
   /**
-   * @extends module:esri/widgets/Widget
+   * @extends module:esri/core/Accessor
+   * @mixes module:esri/widgets/Widgette
    * @mixes module:esri/core/Evented
    * @constructor module:esri/widgets/Home
-   * @param {Object} [properties] - See the [properties](#properties) for a list of all the properties
+   * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                              that may be passed into the constructor.
-   * @param {string | Node} [srcNodeRef] - Reference or ID of the HTML node in which this widget renders.
    *
    * @example
    * // typical usage

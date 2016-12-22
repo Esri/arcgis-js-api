@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define({root:{print:"Spausdinti",printing:"Spausdinimas",printout:"Spaudinys"},ar:1,cs:1,da:1,de:1,el:1,es:1,et:1,fi:1,fr:1,he:1,it:1,ja:1,ko:1,lv:1,lt:1,nl:1,nb:1,pl:1,"pt-br":1,"pt-pt":1,ro:1,ru:1,sv:1,th:1,tr:1,vi:1,"zh-cn":1});
+define({title:"Pavadinimas",fileName:"Failo vardas",titlePlaceHolder:"Failo pavadinimas",fileNamePlaceHolder:"Failo vardas",formatDefaultOption:"Pasirinkti formatą",fileFormatTitle:"Failo formatas",layoutTitle:"Puslapio nustatymas",layoutDefaultOption:"Pasirinkti puslapio nustatymą",scale:"Nustatyti mastelį",scaleLabel:"mastelis",reset:"iš naujo",author:"Autorius",copyright:"Autoriaus teisės",legend:"Įtraukti legendą",lock:"užraktas",swap:"sukeisti",panelToggle:"Skydo perjungimas",advancedOptions:"Išplėstinės parinktys",width:"Plotis",height:"Aukštis",attribution:"Įtraukti atributus",layoutTab:"Maketas",mapOnlyTab:"Tik žemėlapis",untitled:"be pavadinimo","export":"Eksportuoti",exportText:"Eksportuoti failai",exportHint:"Jūsų eksportuoti failai bus rodomi čia."});

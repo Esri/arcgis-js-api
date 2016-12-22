@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["dojo/_base/window"],function(n){var o=n.global;return function(){var n,r=o.performance||{},e=r.now||r.webkitNow||r.msNow||r.oNow||r.mozNow;return void 0!==e?function(){return e.call(r)}:(n=o.performance&&o.performance.timing&&o.performance.timing.navigationStart?o.performance.timing.navigationStart:Date.now(),function(){return Date.now()-n})}()});
+define(["require","exports","./global"],function(n,r,t){var o=function(){var n=t.performance||{};if(n){if(n.now)return function(){return n.now()};if(n.webkitNow)return function(){return n.webkitNow()};if(n.mozNow)return function(){return n.mozNow()};if(n.msNow)return function(){return n.msNow()};if(n.oNow)return function(){return n.oNow()}}var r;return r=n.timing&&n.timing.navigationStart?n.timing.navigationStart:Date.now(),function(){return Date.now()-r}}();return o});

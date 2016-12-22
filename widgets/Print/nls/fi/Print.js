@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define({root:{print:"Tulosta",printing:"Tulostetaan",printout:"Tuloste"},ar:1,cs:1,da:1,de:1,el:1,es:1,et:1,fi:1,fr:1,he:1,it:1,ja:1,ko:1,lv:1,lt:1,nl:1,nb:1,pl:1,"pt-br":1,"pt-pt":1,ro:1,ru:1,sv:1,th:1,tr:1,vi:1,"zh-cn":1});
+define({title:"Otsikko",fileName:"Tiedoston nimi",titlePlaceHolder:"Tiedoston otsikko",fileNamePlaceHolder:"Tiedostonimi",formatDefaultOption:"Valitse muoto",fileFormatTitle:"Tiedostomuoto",layoutTitle:"Sivun asettelu",layoutDefaultOption:"Valitse sivun asettelu",scale:"Määritä mittakaava",scaleLabel:"mittakaava",reset:"palauta",author:"Tekijä",copyright:"Copyright",legend:"Sisällytä selite",lock:"lukitse",swap:"vaihda",panelToggle:"Paneelin vaihto",advancedOptions:"Lisäasetukset",width:"Leveys",height:"Korkeus",attribution:"Lisää ominaisuustieto",layoutTab:"Asettelu",mapOnlyTab:"Vain kartta",untitled:"nimetön","export":"Vie",exportText:"Viedyt tiedostot",exportHint:"Viedyt tiedostot näkyvät tässä."});

@@ -1,0 +1,258 @@
+@import url(./MarkerSymbolPicker.css);
+@import url(./ColorRampPicker.css);
+
+.esri-symbol-styler {
+  font-family: "Avenir LT W01 65 Medium", Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  color: #4d4d4d;
+  position: relative;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.esri-symbol-styler .esri-link {
+  margin: 8px 0;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.esri-symbol-styler .esri-link-menu .dijitButtonText {
+  padding: 0;
+  text-decoration: underline;
+}
+
+.esri-symbol-styler .esri-symbol-preview {
+  margin: auto auto 10px;
+  transition: background-color .25s;
+}
+
+.esri-symbol-styler .esri-symbol-preview.esri-alt {
+  background-color: #ddd;
+  padding: 2px;
+}
+
+.esri-symbol-styler .esri-inline-input .dijitDisabled + .esri-text {
+  opacity: 0.5;
+}
+
+.esri-symbol-styler .esri-color-picker {
+  width: 236px;
+}
+
+.esri-symbol-styler .esri-color-picker.esri-container {
+  border: none;
+  padding: 0;
+}
+
+.esri-symbol-styler .esri-color-picker .esri-swatch {
+  width: 18px;
+  height: 18px;
+}
+
+.esri-symbol-styler .esri-color-picker .esri-header {
+  display: none;
+}
+
+.esri-symbol-styler .esri-color-picker .esri-footer {
+  margin-bottom: 0;
+}
+
+.esri-symbol-styler .esri-color-picker .esri-section:first-child {
+  margin-top: 0;
+}
+
+.esri-symbol-styler .esri-content {
+  height: 100%;
+}
+
+.esri-symbol-styler .esri-tab-bar {
+  display: block;
+  margin: 10px 0;
+  white-space: nowrap;
+}
+
+.esri-symbol-styler .esri-tab-bar .dijitToggleButton {
+  background: none;
+  color: #4d4d4d;
+  font-size: 11px;
+  padding: 4px 10px;
+  border: none;
+  box-shadow: none;
+  text-transform: uppercase;
+}
+
+.esri-symbol-styler .esri-tab-bar .dijitDisabled .dijitButtonNode,
+.esri-symbol-styler .esri-tab-bar .dijitDisabled .dijitButtonContents,
+.esri-symbol-styler .esri-tab-bar .dijitDisabled .dijitButtonText {
+  cursor: auto;
+  color: #c3c3c3;
+}
+
+.esri-symbol-styler .esri-tab-bar .dijitToggleButtonChecked {
+  background-color: #CEE7F8;
+  border-radius: 4px;
+}
+
+.esri-symbol-styler .esri-label {
+  margin: 10px 0 4px;
+}
+
+.esri-symbol-styler .esri-color-picker .esri-horizontal-slider .dijitRuleContainer {
+  padding: 10px 0 14px;
+}
+
+.esri-symbol-styler .esri-symbol-size-input .esri-horizontal-slider,
+.esri-symbol-styler .esri-line-width-input .esri-horizontal-slider {
+  width: 66%;
+}
+
+.esri-symbol-styler .esri-inline-input {
+  white-space: nowrap;
+}
+
+.esri-symbol-styler .esri-inline-input .esri-horizontal-slider,
+.esri-symbol-styler .esri-inline-input .dijitTextBox {
+  display: inline-block;
+}
+
+.esri-symbol-styler .esri-inline-input .dijitTextBox {
+  width: 4.4em;
+  margin: 0 2px;
+  box-sizing: border-box;
+}
+
+.esri-symbol-styler .esri-line-pattern-input .dijitButtonContents {
+  width: 100%;
+}
+
+.esri-symbol-styler .esri-line-pattern-input {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.esri-symbol-styler .esri-label.esri-disabled,
+.esri-symbol-styler .esri-line-pattern-input.dijitDisabled {
+  opacity: 0.6;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+}
+
+.esri-symbol-styler .esri-line-pattern-input .dijitButtonText {
+  padding: 0;
+}
+
+
+
+.esri-symbol-stylerMenu.esri-line-pattern-inputMenu .dijitMenuItemIconCell {
+  margin: 0 2px;
+}
+
+.esri-symbol-stylerMenu.esri-line-pattern-inputMenu .dijitMenuItemIcon {
+  width: 100%;
+  display: block;
+}
+
+.esri-symbol-stylerMenu.esri-line-pattern-inputMenu .dijitMenuArrowCell,
+.esri-symbol-stylerMenu.esri-line-pattern-inputMenu .dijitMenuItemLabel {
+  display: none;
+}
+
+.esri-symbol-stylerMenu.esri-line-pattern-inputMenu .dijitMenuItemLabel .dijitSelect {
+  padding: 0;
+  margin: 0 5px;
+}
+
+.esri-symbol-styler .esri-line-pattern,
+.esri-symbol-stylerMenu .esri-line-pattern {
+  background: url("../images/line-patterns.png") repeat-x;
+  height: 15px;
+  width: 100%;
+}
+
+.esri-symbol-styler .solid,
+.esri-symbol-stylerMenu .solid {
+  background-position: 0 0;
+}
+
+.esri-symbol-styler .dot,
+.esri-symbol-stylerMenu .dot {
+  background-position: 0 -15px;
+}
+
+.esri-symbol-styler .dash,
+.esri-symbol-stylerMenu .dash {
+  background-position: 0 -30px;
+}
+
+.esri-symbol-styler .dash-dot,
+.esri-symbol-stylerMenu .dash-dot {
+  background-position: 0 -45px;
+}
+
+.esri-symbol-styler .long-dash-dot-dot,
+.esri-symbol-stylerMenu .long-dash-dot-dot {
+  background-position: 0 -60px;
+}
+
+.esri-symbol-styler .esri-symbol-preview-container {
+  text-align: center;
+}
+
+.esri-symbol-styler .esri-tab-bar .dijitToggleButton {
+  vertical-align: middle;
+}
+
+.esri-symbol-styler .esri-add-icon {
+  background: url("../images/add.png") no-repeat;
+  background-size: 18px;
+  height: 18px;
+  width: 18px;
+}
+
+.esri-symbol-styler .dijitDisabled .addIcon {
+  cursor: auto;
+}
+
+.esri-symbol-styler .dijitLayoutContainer,
+.esri-symbol-styler .dijitContentPane {
+  padding: 0;
+  overflow: visible;
+}
+
+.esri-symbol-styler .esri-symbol-preview-container ~ .esri-tab-bar .dijitButton .dijitButtonNode,
+.esri-symbol-styler .esri-symbol-preview-container ~ .esri-content .dijitButton .dijitButtonNode,
+.esri-symbol-styler .esri-symbol-preview-container ~ .dijitContentPane .dijitButton .dijitButtonNode,
+.esri-symbol-styler .esri-symbol-preview-container ~ .esri-tab-bar .dijitToggleButton .dijitButtonNode,
+.esri-symbol-styler .esri-symbol-preview-container ~ .esri-content .dijitToggleButton .dijitButtonNode,
+.esri-symbol-styler .esri-symbol-preview-container ~ .dijitContentPane .dijitToggleButton .dijitButtonNode {
+  box-shadow: none;
+  border: none;
+  padding: 0;
+  background: none;
+}
+
+.esri-symbol-styler .esri-error-display {
+  padding: 8px 0 4px 0;
+}
+
+.esri-symbol-styler .esri-shape-image-url-container .esri-url-input {
+  width: 90%;
+}
+
+.esri-symbol-styler .esri-shape-image-url-container .esri-error-display {
+  color: #aaa;
+}
+
+.esri-symbol-styler .esri-hidden {
+  display: none;
+}
+
+.esri-symbol-styler .esri-color-ramp-picker .esri-viewport {
+  width: 200px;
+}
+
+.esri-symbol-styler .dijitCheckBox + .esri-label {
+  margin-left: 4px;
+  margin-right: 4px;
+  vertical-align: middle;
+}

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 define(["../Viewpoint","../core/JSONSupport"],function(e,t){var r=t.createSubclass({declaredClass:"esri.portal.Bookmark",properties:{description:{type:String,json:{writable:!0}},thumbnailSource:{type:String,json:{writable:!0}},title:{type:String,json:{writable:!0}},viewpoint:{type:e,json:{writable:!0}}}});return r});

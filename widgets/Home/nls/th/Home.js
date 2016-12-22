@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define({button:"หน้าแรก",title:"ขนาดเริ่มต้น"});
+define({button:"หน้าแรก",title:"มุมมองแผนที่เริ่มต้น"});

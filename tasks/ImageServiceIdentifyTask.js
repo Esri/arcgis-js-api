@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["dojo/_base/lang","../request","../geometry/support/normalizeUtils","./Task","./support/ImageServiceIdentifyResult"],function(e,r,t,a,s){var n=a.createSubclass({declaredClass:"esri.tasks.ImageServiceIdentifyTask",__msigns:[{n:"execute",c:1,a:[{i:0,p:["geometry"]}],e:2}],properties:{parsedUrl:{get:function(){var e=this._parseUrl(this.url);return e.path+="/identify",e}},url:{}},execute:function(t,a){var s=a.assembly,n=this._encode(e.mixin({},this.parsedUrl.query,{f:"json"},t.toJSON(s&&s[0])));return r(this.parsedUrl.path,{query:n,callbackParamName:"callback"}).then(this._handleExecuteResponse)},_handleExecuteResponse:function(e){return s.fromJSON(e.data)}});return t._createWrappers(n),n});
+define(["dojo/_base/lang","../request","../geometry/support/normalizeUtils","./Task","./support/ImageServiceIdentifyResult"],function(e,t,r,s,n){var a=s.createSubclass({declaredClass:"esri.tasks.ImageServiceIdentifyTask",properties:{parsedUrl:{get:function(){var e=this._parseUrl(this.url);return e.path+="/identify",e}},url:{}},execute:function(s,n){var a=s.geometry?[s.geometry]:[];return r.normalizeCentralMeridian(a).then(function(r){var a=this._encode(e.mixin({},this.parsedUrl.query,{f:"json"},s.toJSON({geometry:r&&r[0]}))),i={query:a,callbackParamName:"callback"};return(this.requestOptions||n)&&(i=e.mixin({},this.requestOptions,n,i)),t(this.parsedUrl.path,i)}.bind(this)).then(this._handleExecuteResponse)},_handleExecuteResponse:function(e){return n.fromJSON(e.data)}});return a});

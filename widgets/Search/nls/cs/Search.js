@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 define({searchButtonTitle:"Hledat",clearButtonTitle:"Vymazat vyhledávání",placeholder:"Najít adresu nebo místo",searchIn:"Hledat v",lonlat:"Zeměpisná délka, zeměpisná šířka",reverseLonLatHeader:"Měli jste na mysli?",all:"Všechny",allPlaceholder:"Najít adresu nebo místo",emptyValue:"Zadejte vyhledávací dotaz.",untitledResult:"Bez názvu",untitledSource:"Nepojmenovaný zdroj",noResults:"Žádné výsledky",noResultsFound:"Pro {value} nebyly nalezeny žádné výsledky.",showMoreResults:"Zobrazit další výsledky",hideMoreResults:"Skrýt",searchResult:"Výsledek vyhledávání",moreResultsHeader:"Další výsledky",esriLocatorName:"Esri World Geocoder"});

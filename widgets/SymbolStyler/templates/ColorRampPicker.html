@@ -1,0 +1,19 @@
+<div>
+  <div class="${css.container}">
+    <div class="${css.preview} ${css.item}"
+         data-dojo-attach-point="dap_previewRamp"></div>
+    <div data-dojo-attach-point="dap_colorFlipper" tabindex="0"
+         class="${css.flipper}">
+      <span aria-hidden="true" class="${css.flipIcon}" title="${labels.flipColorsTooltip}"></span>
+      <span class="${css.text}">${labels.flipColorsTooltip}</span>
+      <span></span>
+    </div>
+  </div>
+  <div class="${css.container}">
+    <div class="${css.viewport}">
+      <div data-dojo-attach-point="dap_colorRampPicker"
+           class="${css.list}"></div>
+    </div>
+  </div>
+</div>
+

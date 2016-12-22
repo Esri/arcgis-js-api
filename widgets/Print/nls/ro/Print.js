@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define({root:{print:"Imprimare",printing:"Imprimarea",printout:"Material imprimat"},ar:1,cs:1,da:1,de:1,el:1,es:1,et:1,fi:1,fr:1,he:1,it:1,ja:1,ko:1,lv:1,lt:1,nl:1,nb:1,pl:1,"pt-br":1,"pt-pt":1,ro:1,ru:1,sv:1,th:1,tr:1,vi:1,"zh-cn":1});
+define({title:"Titlu",fileName:"Nume fişier",titlePlaceHolder:"Titlul fişierului",fileNamePlaceHolder:"Nume fişier",formatDefaultOption:"Selectare format",fileFormatTitle:"Format fişier",layoutTitle:"Configurare pagină",layoutDefaultOption:"Selectare configurare pagină",scale:"Setare scară",scaleLabel:"scară",reset:"resetare",author:"Autor",copyright:"Drepturi de autor",legend:"Includere legendă",lock:"blocare",swap:"inversare",panelToggle:"Comutare panou",advancedOptions:"Opţiuni avansate",width:"Lăţime",height:"Înălţime",attribution:"Includere atribuire",layoutTab:"Configuraţie",mapOnlyTab:"Doar hartă",untitled:"fără titlu","export":"Export",exportText:"Fişiere exportate",exportHint:"Fişierele dvs. exportate vor apărea aici."});

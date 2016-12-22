@@ -82,9 +82,7 @@
     box-shadow: 2px 0 3px #000;
     height: 12px;
     width: 12px;
-    transform: scale(0.707) rotate(45deg);
-    -moz-transform: scale(0.707) rotate(45deg);
-    -webkit-transform: scale(0.707) rotate(45deg);
+    @include transform(scale(0.707) rotate(45deg));
     position: absolute;
     z-index: 3;
     top: 3px;

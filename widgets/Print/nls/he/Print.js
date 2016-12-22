@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define({root:{print:"הדפס",printing:"מדפיס",printout:"הדפסה"},ar:1,cs:1,da:1,de:1,el:1,es:1,et:1,fi:1,fr:1,he:1,it:1,ja:1,ko:1,lv:1,lt:1,nl:1,nb:1,pl:1,"pt-br":1,"pt-pt":1,ro:1,ru:1,sv:1,th:1,tr:1,vi:1,"zh-cn":1});
+define({title:"כותרת",fileName:"שם קובץ",titlePlaceHolder:"כותרת קובץ",fileNamePlaceHolder:"שם קובץ",formatDefaultOption:"בחר פורמט",fileFormatTitle:"פורמט קובץ",layoutTitle:"הגדרת דף",layoutDefaultOption:"בחר הגדרת דף",scale:'קבע קנ"מ',scaleLabel:"קנה מידה",reset:"אפס",author:"מחבר",copyright:"זכויות יוצרים",legend:"כולל מקרא",lock:"נעל",swap:"החלף",panelToggle:"שנה מצב חלונית",advancedOptions:"אפשרויות מתקדמות",width:"רוחב",height:"גובה",attribution:"כלול ייחוס",layoutTab:"פריסת עמוד",mapOnlyTab:"מפה בלבד",untitled:"ללא שם","export":"ייצא",exportText:"קבצים מיוצאים",exportHint:"הקבצים המיוצאים שלך יוצגו כאן."});

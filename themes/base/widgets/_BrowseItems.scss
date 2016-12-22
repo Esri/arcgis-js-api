@@ -1,5 +1,6 @@
-@import '../../css/_common';
 
+
+@mixin browseItems() {
 .esri-browseitems {
 	margin: 0 auto;
 	width: 100%;
@@ -216,7 +217,7 @@
 			}
 		}
 	}
-	.esri-loaderthrob.hide {
+	.hide {
 		display: none;
 	}
 	.top-bar {
@@ -879,4 +880,9 @@
 			}
 		}
 	}
+}
+}
+
+@if $include_BrowseItems == true {
+  @include browseItems();
 }

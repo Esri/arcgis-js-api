@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 define({points:"Pontos",lines:"Linhas",polygons:"Polígonos",creatingLegend:"Criando legendas",noLegend:"Sem legendas",dotValue:"1 Ponto = {value} {unit}",currentObservations:"Observações atuais",previousObservations:"Observações anteriores",high:"Alto",low:"Baixo",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"nós",esriFeetPerSecond:"pés/seg",esriMilesPerHour:"mph",showField:"{field}",showNormField:"{field} dividido por {normField}",showNormPct:"{field} como uma percentagem do total",showRatio:"Rácio de {field} por {normField}",showRatioPercent:"{field} como uma percentagem de {normField}",showRatioPercentTotal:"{field} como uma percentagem de {field} e {normField}"});

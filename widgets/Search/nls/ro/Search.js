@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 define({searchButtonTitle:"Căutare",clearButtonTitle:"Golire căutare",placeholder:"Găsire adresă sau loc",searchIn:"Căutare în",lonlat:"Longitudine, Latitudine",reverseLonLatHeader:"Aţi dorit să spuneţi?",all:"Toate",allPlaceholder:"Găsire adresă sau loc",emptyValue:"Introduceţi un termen de căutare.",untitledResult:"Fără titlu",untitledSource:"Sursă fără titlu",noResults:"Niciun rezultat",noResultsFound:"Nu s-au găsit rezultate pentru {value}.",showMoreResults:"Afişare mai multe rezultate",hideMoreResults:"Ascundere",searchResult:"Rezultat căutare",moreResultsHeader:"Mai multe rezultate",esriLocatorName:"Geocodificator mondial Esri"});

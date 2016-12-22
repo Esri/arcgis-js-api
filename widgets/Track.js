@@ -20,12 +20,12 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 /**
  * Provides a simple button that animates the {@link module:esri/views/View}
  * to the user's location when clicked. While tracking, the default button looks like the following:
- *
+ * 
  * ![track-button](../assets/img/apiref/widgets/widgets-track.png)
  *
  * You can use the view's {@link module:esri/views/ui/DefaultUI} to add widgets
@@ -43,7 +43,16 @@
  * {@link module:esri/config#geometryServiceUrl esriConfig.geometryServiceUrl} for an example.
  *
  * ::: esri-md class="panel trailer-1"
- * The Track widget is only supported in applications that support geolocation.
+ * The Track widget is not supported on insecure origins.
+ * To use it, switch your application to a secure origin, such as HTTPS.
+ * Note that localhost is considered "potentially secure" and can be used for easy testing in browsers that supports 
+ * [Window.isSecureContext](https://developer.mozilla.org/en-US/docs/Web/API/Window/isSecureContext#Browser_compatibility)
+ * (currently Chrome and Firefox).
+ *
+ * As of version 4.2, the Track Button no longer displays in non-secure web apps. At version
+ * [4.1](https://blogs.esri.com/esri/arcgis/2016/04/14/increased-web-api-security-in-google-chrome/)
+ * this only applied to Google Chrome.
+ * :::
  * For additional information regarding this, visit the ArcGIS blog,
  * [Increased web API security in Google Chrome](https://blogs.esri.com/esri/arcgis/2016/04/14/increased-web-api-security-in-google-chrome/).
  * :::
@@ -52,8 +61,7 @@
  * @since 4.0
  *
  * @see [Track.js (widget view)]({{ JSAPI_BOWER_URL }}/widgets/Track.js)
- * @see [button.css]({{ JSAPI_BOWER_URL }}/widgets/css/button.css)
- * @see [button.scss]({{ JSAPI_BOWER_URL }}/widgets/css/button.scss)
+ * @see [button.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_Widget.scss)
  * @see module:esri/widgets/Track/TrackViewModel
  * @see {@link module:esri/views/View#ui View.ui}
  * @see module:esri/views/ui/DefaultUI
@@ -85,7 +93,7 @@ define([
 
   "./support/viewModelWiring",
 
-  "./Widget",
+  "./Widgette",
 
   "../core/watchUtils",
 
@@ -123,11 +131,11 @@ define([
   };
 
   /**
-   * @extends module:esri/widgets/Widget
+   * @extends module:esri/core/Accessor
+   * @mixes module:esri/widgets/Widgette
    * @constructor module:esri/widgets/Track
-   * @param {Object} [properties] - See the [properties](#properties) for a list of all the properties
+   * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                              that may be passed into the constructor.
-   * @param {string | Node} [srcNodeRef] - Reference or ID of the HTML node in which this widget renders.
    *
    * @example
    * // typical usage

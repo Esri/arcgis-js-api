@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define({button:"Esileht",title:"Vaikimisi kuvaulatus"});
+define({button:"Esileht",title:"Kaardi vaikimisi määratud vaade"});

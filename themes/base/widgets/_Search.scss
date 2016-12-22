@@ -21,10 +21,12 @@ $search_width: 240px !default;
       position: relative;
       @include alignItems(stretch);
       @include flex(1, 0, 100%);
-      * {
+      .esri-search__input,
+      .esri-widget-button {
         z-index: 0;
       }
-      *:focus {
+      .esri-search__input:focus,
+      .esri-widget-button:focus {
         z-index: 1;
       }
     }

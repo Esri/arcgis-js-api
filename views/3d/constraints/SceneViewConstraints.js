@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 define(["../../../core/Accessor","./SceneViewAltitudeConstraint","./SceneViewClipDistanceConstraint","./SceneViewTiltConstraint","./SceneViewCollisionConstraint"],function(i,t,e,n,s){var c=i.createSubclass([],{declaredClass:"esri.views.3d.constraints.SceneViewConstraints",properties:{tilt:n,altitude:t,clipDistance:e,collision:s},getDefaults:function(i){var t={};return i.tilt||(t.tilt={}),i.altitude||(t.altitude={}),i.clipDistance||(t.clipDistance={}),i.collision||(t.collision={}),t},scale:function(i){this.tilt.scale(i),this.altitude.scale(i),this.clipDistance.scale(i)}});return c});

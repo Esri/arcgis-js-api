@@ -2,16 +2,16 @@
 
 <snippets>
 
-<snippet name="vertexShaderBlendLayers"><![CDATA[		
+<snippet name="vertexShaderBlendLayers"><![CDATA[
 	attribute vec3 $position;
 	attribute vec2 $uv0;
-	
+
 	uniform float scale;
 	uniform vec2 offset;
 
 	varying vec2 uv;
 
-	void main(void) {		
+	void main(void) {
 		gl_Position = vec4($position, 1.0);
 		uv = $uv0 * scale + offset;;
 	}
@@ -21,13 +21,16 @@
 	precision mediump float;
 
 	varying vec2 uv;
-	
-	uniform sampler2D tex;	
+
+	uniform sampler2D tex;
 	uniform float opacity;
 
 	void main() {
-		vec4 color = texture2D(tex, uv);		
-		gl_FragColor = vec4(color.xyz, color.a * opacity);
+		vec4 color = texture2D(tex, uv);
+
+    // Note: output in pre-multiplied alpha for correct alpha compositing
+		gl_FragColor = vec4(color.xyz, 1.0) * color.a * opacity;
 	}
 ]]></snippet>
+
 </snippets>

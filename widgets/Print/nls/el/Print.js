@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define({root:{print:"Εκτύπωση",printing:"Εκτύπωση",printout:"Εκτύπωση έτοιμη για προβολή"},ar:1,cs:1,da:1,de:1,el:1,es:1,et:1,fi:1,fr:1,he:1,it:1,ja:1,ko:1,lv:1,lt:1,nl:1,nb:1,pl:1,"pt-br":1,"pt-pt":1,ro:1,ru:1,sv:1,th:1,tr:1,vi:1,"zh-cn":1});
+define({title:"Τίτλος",fileName:"Όνομα αρχείου",titlePlaceHolder:"Τίτλος αρχείου",fileNamePlaceHolder:"Όνομα αρχείου",formatDefaultOption:"Επιλογή μορφής",fileFormatTitle:"Μορφή αρχείου",layoutTitle:"Διαμόρφωση σελίδας",layoutDefaultOption:"Επιλέξτε διαμόρφωση σελίδας",scale:"Ορίστε κλίμακα",scaleLabel:"κλίμακα",reset:"επαναφορά",author:"Συντάκτης",copyright:"Πνευματικά δικαιώματα",legend:"Συμπερίληψη υπομνήματος",lock:"κλείδωμα",swap:"αντιμετάθεση",panelToggle:"Εναλλαγή πλαισίου",advancedOptions:"Επιλογές για προχωρημένους",width:"Πλάτος",height:"Ύψος",attribution:"Συμπερίληψη απόδοσης",layoutTab:"Διάταξη",mapOnlyTab:"Μόνο χάρτης",untitled:"χωρίς τίτλο","export":"Εξαγωγή",exportText:"Αρχεία που έχουν εξαχθεί",exportHint:"Τα αρχεία που έχετε εξαγάγει εμφανίζονται εδώ."});

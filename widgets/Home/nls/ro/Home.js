@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define({button:"Prima pagină",title:"Extindere implicită"});
+define({button:"Prima pagină",title:"Vizualizare implicită a hărţii"});

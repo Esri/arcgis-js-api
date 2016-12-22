@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 define({zoom:"تقريب إلى",next:"المعلم التالي",previous:"المعلم السابق",close:"إغلاق",dock:"مرسى",undock:"إلغاء إرساء",menu:"القائمة",untitled:"بلا عنوان",pageText:"{index} من {total}",noFeaturesFound:"لم يتم العثور على أي معلم",selectedFeature:"المعالم المُحددة",selectedFeatures:"{total} نتيجة",loading:"تحميل"});

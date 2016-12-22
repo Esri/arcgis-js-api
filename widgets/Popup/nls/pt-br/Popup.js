@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 define({zoom:"Zoom para",next:"Próxima feição",previous:"Feição anterior",close:"Fechar",dock:"Móvel",undock:"Não Móvel",menu:"Menu",untitled:"Sem título",pageText:"{index} de {total}",noFeaturesFound:"Nenhuma feição localizada",selectedFeature:"Nome da Camada",selectedFeatures:"{total} resultados",loading:"Carregando"});

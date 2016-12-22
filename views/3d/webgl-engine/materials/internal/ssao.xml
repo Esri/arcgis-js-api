@@ -57,8 +57,7 @@
 ]]></snippet>
 
 <snippet name="createFsSSAOSrcObscurance"><![CDATA[
-
-	precision mediump float;
+	precision highp float;
 
 	uniform mat4 projMatrixInv;
 
@@ -227,8 +226,7 @@
 ]]></snippet>
 
 <snippet name="fsBlurEdgeAware"><![CDATA[
-
-	precision mediump float;
+	precision highp float;
 
 	uniform sampler2D normalMap;
 	uniform sampler2D depthMap;
@@ -288,7 +286,7 @@
 
 
 	<snippet name="fsBlurSrc0"><![CDATA[
-	precision mediump float;
+	precision highp float;
 
 	uniform sampler2D tex;
 	uniform float blurSize;

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define({root:{print:"인쇄",printing:"인쇄",printout:"인쇄물"},ar:1,cs:1,da:1,de:1,el:1,es:1,et:1,fi:1,fr:1,he:1,it:1,ja:1,ko:1,lv:1,lt:1,nl:1,nb:1,pl:1,"pt-br":1,"pt-pt":1,ro:1,ru:1,sv:1,th:1,tr:1,vi:1,"zh-cn":1});
+define({title:"제목",fileName:"파일 이름",titlePlaceHolder:"파일 제목",fileNamePlaceHolder:"파일 이름",formatDefaultOption:"형식 선택",fileFormatTitle:"파일 형식",layoutTitle:"페이지 설정",layoutDefaultOption:"페이지 설정 선택",scale:"축척 설정",scaleLabel:"크기 조정",reset:"재설정",author:"작성자",copyright:"저작권",legend:"범례 포함",lock:"잠금",swap:"스왑",panelToggle:"패널 전환",advancedOptions:"고급 옵션",width:"너비",height:"높이",attribution:"속성 포함",layoutTab:"레이아웃",mapOnlyTab:"맵만",untitled:"제목 없음","export":"내보내기",exportText:"내보낸 파일",exportHint:"내보낸 파일은 여기에 나타납니다."});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 define({streets:"Sokaklar",satellite:"Görüntüler",hybrid:"Etiketli Görüntüler",terrain:"Etiketli Araziler",topo:"Topografik",gray:"Açık Gri Kanvas","dark-gray":"Koyu Gri Kanvas",oceans:"Okyanuslar","national-geographic":"National Geographic",osm:"OpenStreetMap","streets-night-vector":"Dünya Sokak Haritası (Gece)","streets-relief-vector":"Dünya Sokak Haritası (Kabartmalı)","streets-navigation-vector":"Dünya Navigasyon Haritası"});

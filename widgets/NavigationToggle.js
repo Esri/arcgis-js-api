@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 /**
  * Provides two simple buttons for toggling the
@@ -70,7 +70,7 @@ define([
 
   "./support/viewModelWiring",
 
-  "./Widget",
+  "./Widgette",
   "./NavigationToggle/NavigationToggleViewModel",
 
   "dojo/i18n!./NavigationToggle/nls/NavigationToggle",
@@ -107,11 +107,11 @@ function (
   };
 
   /**
-   * @extends module:esri/widgets/Widget
+   * @extends module:esri/core/Accessor
+   * @mixes module:esri/widgets/Widgette
    * @constructor module:esri/widgets/NavigationToggle
-   * @param {Object} [properties] - See the [properties](#properties) for a list of all the properties
+   * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                              that may be passed into the constructor.
-   * @param {string | Node} [srcNodeRef] - Reference or ID of the HTML node in which this widget renders.
    *
    * @example
    * // typical usage

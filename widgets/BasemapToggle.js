@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 /**
  * The BasemapToggle provides a widget which allows an end-user to switch between
@@ -33,8 +33,7 @@
  * @since 4.0
  *
  * @see [BasemapToggle.js (widget view)]({{ JSAPI_BOWER_URL }}/widgets/BasemapToggle.js)
- * @see [BasemapToggle.css]({{ JSAPI_BOWER_URL }}/widgets/BasemapToggle/css/BasemapToggle.css)
- * @see [BasemapToggle.scss]({{ JSAPI_BOWER_URL }}/widgets/BasemapToggle/css/BasemapToggle.scss)
+ * @see [BasemapToggle.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_BasemapToggle.scss)
  * @see [Sample - Get started with widgets using BasemapToggle](../sample-code/get-started-widgets/index.html)
  * @see module:esri/widgets/BasemapToggle/BasemapToggleViewModel
  *
@@ -55,7 +54,6 @@
  *   view: view,  // The view that provides access to the map's "streets" basemap
  *   nextBasemap: "hybrid"  // Allows for toggling to the "hybrid" basemap
  * });
- * basemapToggle.startup();
  */
 
 /**
@@ -80,7 +78,7 @@ define([
 
   "./support/viewModelWiring",
 
-  "./Widget",
+  "./Widgette",
 
   "dijit/_TemplatedMixin",
   "dijit/a11yclick",
@@ -119,12 +117,12 @@ function (
   };
 
   /**
-   * @extends module:esri/widgets/Widget
+   * @extends module:esri/core/Accessor
+   * @mixes module:esri/widgets/Widgette
    * @mixes module:esri/core/Evented
    * @constructor module:esri/widgets/BasemapToggle
-   * @param {Object} [properties] - See the [properties](#properties) for a list of all the properties
+   * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                              that may be passed into the constructor.
-   * @param {string | Node} [srcNodeRef] - Reference or ID of the HTML element in which this widget renders.
    *
    * @example
    * // typical usage

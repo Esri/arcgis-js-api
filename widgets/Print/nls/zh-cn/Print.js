@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define({root:{print:"打印",printing:"打印",printout:"打印输出"},ar:1,cs:1,da:1,de:1,el:1,es:1,et:1,fi:1,fr:1,he:1,it:1,ja:1,ko:1,lv:1,lt:1,nl:1,nb:1,pl:1,"pt-br":1,"pt-pt":1,ro:1,ru:1,sv:1,th:1,tr:1,vi:1,"zh-cn":1});
+define({title:"标题",fileName:"文件名",titlePlaceHolder:"文件标题",fileNamePlaceHolder:"文件名",formatDefaultOption:"选择格式",fileFormatTitle:"文件格式",layoutTitle:"页面设置",layoutDefaultOption:"选择页面设置",scale:"设置比例",scaleLabel:"比例",reset:"重置",author:"作者",copyright:"版权所有",legend:"包括图例",lock:"锁定",swap:"交换",panelToggle:"面板切换",advancedOptions:"高级选项",width:"宽度",height:"高度",attribution:"包括属性",layoutTab:"布局",mapOnlyTab:"仅地图",untitled:"无标题","export":"导出",exportText:"已导出文件",exportHint:"导出的文件将在此处显示。"});

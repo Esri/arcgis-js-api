@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 define({searchButtonTitle:"Pretraži",clearButtonTitle:"Obriši pretragu",placeholder:"Pronađi adresu ili mesto",searchIn:"Pretraži u",lonlat:"Geografska dužina, geografska širina",reverseLonLatHeader:"Da li ste mislili?",all:"Sve",allPlaceholder:"Pronađi adresu ili mesto",emptyValue:"Unesite termin za pretragu.",untitledResult:"Bez naslova",untitledSource:"Neimenovani izvor",noResults:"Nema rezultata",noResultsFound:"Nijedan rezultat nije pronađen za vrednost {value}.",showMoreResults:"Prikaži više rezultata",hideMoreResults:"Sakrij",searchResult:"Rezultat pretrage",moreResultsHeader:"Još rezultata",esriLocatorName:"Esri geokoder sveta"});

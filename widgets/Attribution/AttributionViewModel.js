@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 /**
  * Provides the logic for the {@link module:esri/widgets/Attribution} widget.
@@ -30,7 +30,9 @@
  * The attribution is automatically updated based on layer visibility and map extent.
  *
  * ::: esri-md class="panel trailer-1"
- * For information regarding working with attribution please visit the official [attribution in your app](https://developers.arcgis.com/terms/attribution) documentation for detailed guidelines.
+ * Esri requires that when you use an ArcGIS Online basemap in your app, the map must include Esri attribution and you must be licensed to use the content. 
+ * For detailed guidelines on working with attribution, please visit the official [attribution in your app](https://developers.arcgis.com/terms/attribution) documentation.
+ * For information on terms of use, see the [Terms of Use FAQ](https://developers.arcgis.com/terms/faq/).
  * :::
  *
  * @module esri/widgets/Attribution/AttributionViewModel

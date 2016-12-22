@@ -29,14 +29,8 @@
     width: 5.6em;
     border: 1px solid #aaa;
     direction: ltr;
-  }
-
-  .esri-color-picker .esri-hex-input .dijitInputInner {
     text-transform: uppercase;
-  }
-
-  .esri-color-picker .esri-hex-input .dijitInputContainer {
-    height: auto;
+    vertical-align: middle;
   }
 
   .esri-color-picker .esri-input-label {
@@ -64,12 +58,8 @@
     bottom: 0;
     left: 0;
     width: 200%;
-    transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-    transform-origin: top left;
-    -ms-transform-origin: top left;
-    -webkit-transform-origin: top left;
+    @include transform(rotate(-45deg));
+    @include transformOrigin(top left);
     content: "";
     z-index: 1;
   }
@@ -97,22 +87,17 @@
     box-shadow: none;
     border: none;
     padding: 0;
+    font-size: inherit;
+    background: none;
+    box-shadow: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
   }
 
   .dijitRtl .esri-color-picker .esri-palette-options .esri-palette-toggle {
     left: 0;
     right: auto;
-  }
-
-  .esri-color-picker .esri-middle .esri-palette-options .dijit.esri-palette-toggle .dijitButtonNode {
-    background: none;
-    box-shadow: none;
-    border: none;
-    padding: 0;
-  }
-
-  .esri-color-picker .esri-palette-options .esri-palette-toggle.dijitChecked {
-    background-color: transparent;
   }
 
   .esri-color-picker .esri-label {
@@ -152,9 +137,14 @@
     width: 100%;
   }
 
+  .esri-color-picker .esri-swatch-preview .esri-swatch.esri-swatch-empty {
+    display: none;
+  }
+
   .esri-color-picker .esri-swatch-row {
     font-size: 0;
     white-space: nowrap;
+    line-height: 0;
   }
 
   .esri-color-picker .esri-swatch.esri-swatch-transparency-background {
@@ -167,9 +157,8 @@
   }
 
   .esri-color-picker .esri-transparency-slider {
-    padding-top: 5px;
-    box-sizing: content-box;
-    /* restores dijit slider's box-sizing */
+    margin: 0;
+    width: 100%;
   }
 
   .esri-color-picker .esri-swatch.esri-selected {
@@ -223,6 +212,12 @@
     right: -100%;
     left: 0;
   }
+
+  .esri-color-picker .esri-color-picker-ticks {
+    display: flex;
+    justify-content: space-between;
+  }
+
 }
 
 @if $include_ColorPicker == true {

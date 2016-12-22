@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define({root:{print:"In",printing:"Đang in",printout:"Bản in"},ar:1,cs:1,da:1,de:1,el:1,es:1,et:1,fi:1,fr:1,he:1,it:1,ja:1,ko:1,lv:1,lt:1,nl:1,nb:1,pl:1,"pt-br":1,"pt-pt":1,ro:1,ru:1,sv:1,th:1,tr:1,vi:1,"zh-cn":1});
+define({title:"Tiêu đề",fileName:"Tên Tệp",titlePlaceHolder:"Tiêu đề tệp",fileNamePlaceHolder:"Tên tệp",formatDefaultOption:"Chọn định dạng",fileFormatTitle:"Định dạng tệp",layoutTitle:"Thiết lập trang",layoutDefaultOption:"Chọn thiết lập trang",scale:"Thiết lập tỷ lệ",scaleLabel:"tỷ lệ",reset:"thiết lập lại",author:"Tác giả",copyright:"Bản quyền",legend:"Bao gồm chú giải",lock:"khóa",swap:"hoán đổi",panelToggle:"Thay đổi bảng điều khiển",advancedOptions:"Tùy chọn nâng cao",width:"Chiều rộng",height:"Chiều cao",attribution:"Bao gồm thuộc tính",layoutTab:"Bố cục",mapOnlyTab:"Chỉ Bản đồ",untitled:"chưa có tiêu đề","export":"Xuất",exportText:"Tệp Đã xuất",exportHint:"Tệp đã xuất của bạn sẽ xuất hiện tại đây."});

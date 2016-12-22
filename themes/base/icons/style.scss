@@ -3,9 +3,9 @@
 @font-face {
   font-family: 'CalciteWebCoreIcons';
   src:
-    url('#{$icomoon-font-path}/CalciteWebCoreIcons.ttf?jpfyfr') format('truetype'),
-    url('#{$icomoon-font-path}/CalciteWebCoreIcons.woff?jpfyfr') format('woff'),
-    url('#{$icomoon-font-path}/CalciteWebCoreIcons.svg?jpfyfr#CalciteWebCoreIcons') format('svg');
+    url('#{$icomoon-font-path}/CalciteWebCoreIcons.ttf?erniwi') format('truetype'),
+    url('#{$icomoon-font-path}/CalciteWebCoreIcons.woff?erniwi') format('woff'),
+    url('#{$icomoon-font-path}/CalciteWebCoreIcons.svg?erniwi#CalciteWebCoreIcons') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -718,6 +718,76 @@
 .esri-icon-dial {
   &:before {
     content: $esri-icon-dial;
+  }
+}
+.esri-icon-polygon {
+  &:before {
+    content: $esri-icon-polygon;
+  }
+}
+.esri-icon-polyline {
+  &:before {
+    content: $esri-icon-polyline;
+  }
+}
+.esri-icon-visible {
+  &:before {
+    content: $esri-icon-visible;
+  }
+}
+.esri-icon-non-visible {
+  &:before {
+    content: $esri-icon-non-visible;
+  }
+}
+.esri-icon-link-vertical {
+  &:before {
+    content: $esri-icon-link-vertical;
+  }
+}
+.esri-icon-unlocked-link-vertical {
+  &:before {
+    content: $esri-icon-unlocked-link-vertical;
+  }
+}
+.esri-icon-link-horizontal {
+  &:before {
+    content: $esri-icon-link-horizontal;
+  }
+}
+.esri-icon-unlocked-link-horizontal {
+  &:before {
+    content: $esri-icon-unlocked-link-horizontal;
+  }
+}
+.esri-icon-swap {
+  &:before {
+    content: $esri-icon-swap;
+  }
+}
+.esri-icon-cta-link-external {
+  &:before {
+    content: $esri-icon-cta-link-external;
+  }
+}
+.esri-icon-reply {
+  &:before {
+    content: $esri-icon-reply;
+  }
+}
+.esri-icon-public {
+  &:before {
+    content: $esri-icon-public;
+  }
+}
+.esri-icon-share2 {
+  &:before {
+    content: $esri-icon-share2;
+  }
+}
+.esri-icon-launch-link-external {
+  &:before {
+    content: $esri-icon-launch-link-external;
   }
 }
 

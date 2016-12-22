@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 /**
  * The Zoom widget allows users to zoom in/out within a view.
@@ -44,8 +44,7 @@
  * @since 4.0
  *
  * @see [Zoom.js (widget view)]({{ JSAPI_BOWER_URL }}/widgets/Zoom.js)
- * @see [Zoom.css]({{ JSAPI_BOWER_URL }}/widgets/Zoom/css/Zoom.css)
- * @see [Zoom.scss]({{ JSAPI_BOWER_URL }}/widgets/Zoom/css/Zoom.scss)
+ * @see [Zoom.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_Zoom.scss)
  * @see module:esri/views/MapView
  * @see module:esri/views/SceneView
  * @see module:esri/widgets/Zoom/ZoomViewModel
@@ -58,7 +57,7 @@ define([
 
   "./support/viewModelWiring",
 
-  "./Widget",
+  "./Widgette",
 
   "./Zoom/ZoomViewModel",
 
@@ -103,11 +102,11 @@ function (
   };
 
   /**
-   * @extends module:esri/widgets/Widget
+   * @extends module:esri/core/Accessor
+   * @mixes module:esri/widgets/Widgette
    * @constructor module:esri/widgets/Zoom
-   * @param {Object} [properties] - See the [properties](#properties) for a list of all the properties
+   * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                              that may be passed into the constructor.
-   * @param {string | Node} [srcNodeRef] - Reference or ID of the HTML element in which this widget renders.
    *
    * @example
    * // typical usage

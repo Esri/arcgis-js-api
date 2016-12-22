@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 /**
  * The Legend widget displays labels and symbols for layers in a map.
@@ -43,9 +43,9 @@
  * ::: esri-md class="panel trailer-1"
  * **Known Limitations**
  *
- * * Legend supports the following layers: {@link module:esri/layers/FeatureLayer},
+ * * Legend exclusively supports the following layers: {@link module:esri/layers/FeatureLayer},
  * {@link module:esri/layers/StreamLayer}, {@link module:esri/layers/SceneLayer},
- * {@link module:esri/layers/MapImageLayer}
+ * {@link module:esri/layers/MapImageLayer}, {@link module:esri/layers/TileLayer}
  * * {@link module:esri/symbols/Symbol3D  3D symbols} with more than one
  * {@link module:esri/symbols/Symbol3DLayer symbol layer} are not supported.
  * * Size in volumetric {@link module:esri/symbols/Symbol3D  3D symbols}, such as
@@ -67,8 +67,8 @@
  * @since 4.0
  *
  * @see [Sample - Legend widget](../sample-code/widgets-legend/index.html)
- * @see [Legend.css]({{ JSAPI_BOWER_URL }}/widgets/Legend/css/Legend.css)
- * @see [Legend.scss]({{ JSAPI_BOWER_URL }}/widgets/Legend/css/Legend.scss)
+ * @see [Legend.js (widget view)]({{ JSAPI_BOWER_URL }}/widgets/Legend.js)
+ * @see [Legend.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_Legend.scss)
  * @see {@link module:esri/views/View#ui View.ui}
  * @see module:esri/views/ui/DefaultUI
  */
@@ -76,7 +76,7 @@
 define([
   "./support/viewModelWiring",
 
-  "./Widget",
+  "./Widgette",
 
   "./Legend/LegendViewModel",
   "./Legend/support/swatchUtils",
@@ -145,11 +145,11 @@ define([
       };
 
   /**
-   * @extends module:esri/widgets/Widget
+   * @extends module:esri/core/Accessor
+   * @mixes module:esri/widgets/Widgette
    * @constructor module:esri/widgets/Legend
-   * @param {Object} properties - See the [properties](#properties) for a list of all the properties
-   *                              that may be passed into the constructor.
-   * @param {string | Node} [srcNodeRef] - Reference or ID of the HTML element in which this widget renders.
+   * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
+   *                                that may be passed into the constructor.
    *
    * @example
    * // typical usage
@@ -337,14 +337,14 @@ define([
           removed.forEach(function (obj) {
             layerDOM = this._DOMByLayerId[obj.layer.uid];
             if (layerDOM) {
-              this._toggleDisplay(layerDOM);
+              this._setVisible(layerDOM, false);
             }
           }, this);
 
           added.forEach(function (obj) {
             layerDOM = this._DOMByLayerId[obj.layer.uid];
             if (layerDOM) {
-              this._toggleDisplay(layerDOM);
+              this._setVisible(layerDOM, true);
             }
             else {
               this._createLegendForLayer(obj, legendDOM);
@@ -392,12 +392,9 @@ define([
           elems = [], sortedElems,
           layersIndex = {},
           domPrefix = this.id + "_",
-          isActiveLayerInfosReady = this._isActiveLayerInfosReady(activeLayerInfos),
-          isMsgHidden = domClass.contains(legendDOM.message, CSS.hidden);
+          isActiveLayerInfosReady = this._isActiveLayerInfosReady(activeLayerInfos);
 
-        if ((isActiveLayerInfosReady && !isMsgHidden) || (!isActiveLayerInfosReady && isMsgHidden)) {
-          this._toggleDisplay(legendDOM.message);
-        }
+        this._setVisible(legendDOM.message, !isActiveLayerInfosReady);
 
         for (var i = 0; i < childNodes.length; ++i) {
           var el = childNodes[i];
@@ -459,9 +456,8 @@ define([
 
             var legendElements = this._createLegendElements(activeLayerInfo, layerDOM.layer);
 
-            if (legendElements.length && this.activeLayerInfos.indexOf(activeLayerInfo) !== -1) {
-              this._toggleDisplay(layerDOM.root);
-            }
+            var visible = (legendElements.length && this.activeLayerInfos.indexOf(activeLayerInfo) !== -1);
+            this._setVisible(layerDOM.root, visible);
           }
 
           this._sortDOMNodes(legendDOM);
@@ -590,19 +586,14 @@ define([
           className: CSS.layerRow
         }, elemDOM.body);
 
-        var symbol = info.symbol,
-          symbolSize = swatchUtils.getSymbolSize(symbol),
-          symWidth = symbolSize.width,
-          symHeight = symbolSize.height;
-
         // symbol node
         var symNode = domConstruct.create("div", {
           className: isSizeRamp ? CSS.symbolContainer + " " + CSS.sizeRamp : CSS.symbolContainer
         }, rowNode);
 
         // draw symbol
-        var symDrawn = symbol ?
-          this._drawSymbol(symNode, symbol, symWidth, symHeight, layer) :
+        var symDrawn = info.symbol ?
+          this._drawSymbol(symNode, info, layer) :
           this._drawImage(symNode, info, layer);
 
         if (symDrawn) {
@@ -628,30 +619,39 @@ define([
         if (!src) {
           return false;
         }
-        else {
-          var node =  domConstruct.create("img", {
-            src: src,
-            border: 0
-          }, symNode);
 
-          if (width != null && height != null) {
-            node.width = width;
-            node.height = height;
-          }
-          node.style.opacity = (opacity != null) ? opacity : layer.opacity;
+        var node =  domConstruct.create("img", {
+          src: src,
+          border: 0
+        }, symNode);
 
-          return true;
+        if (width != null && height != null) {
+          node.width = width;
+          node.height = height;
         }
+        node.style.opacity = (opacity != null) ? opacity : layer.opacity;
+
+        return true;
       },
 
-      _drawSymbol: function (node, symbol, sWidth, sHeight, layer) {
+      _drawSymbol: function (node, info, layer) {
+        var symbol = info.symbol,
+          swatchInfo = info.swatchInfo,
+          isSMSPath = symbol.type === "simple-marker-symbol" && symbol.style === "path",
+          isVolumetricSymbol = swatchUtils.isVolumetricSymbol(symbol);
+
+        if (!symbol || !swatchInfo) {
+          return false;
+        }
 
         if (symbol.type === "picture-marker-symbol") {
           node.style.opacity = layer.opacity;
         }
 
-        var surface = gfx.createSurface(node, sWidth, sHeight),
-          swatch = swatchUtils.getSwatch(symbol),
+        var swatch = swatchInfo.swatch,
+          sWidth = swatchInfo.sizes[0],
+          sHeight = swatchInfo.sizes[1],
+          surface = gfx.createSurface(node, sWidth, sHeight),
           gfxShape;
 
         try {
@@ -660,9 +660,8 @@ define([
             throw "no shape descriptors!";
           }
 
-          var shapeGroup = surface.createGroup();
-
           swatch.forEach(function (symLayer) {
+            var shapeGroup = surface.createGroup();
 
             symLayer.forEach(function (shapeDesc) {
 
@@ -697,6 +696,72 @@ define([
 
             });
 
+            var bbox = shapeGroup.getBoundingBox(),
+              width = bbox.width,
+              height = bbox.height,
+
+              // Aligns the center of the path with surface's origin (0,0)
+              // This logic is specifically required for SMS symbols
+              // with STYLE_PATH style
+              vectorDx = -(bbox.x + (width / 2)),
+              vectorDy = -(bbox.y + (height / 2)),
+
+              // Aligns the center of the shape with the center of the surface
+              dim = surface.getDimensions(),
+              transform = {
+                dx: vectorDx + dim.width / 2,
+                dy: vectorDy + dim.height / 2
+              };
+
+            var isScaled = false;
+
+            if ((isSMSPath || isVolumetricSymbol) && (bbox.width !== 0 && bbox.height !== 0)) {
+              // getScaleMatrix
+              var aspect = bbox.width / bbox.height,
+                xx = 1, yy = 1, // scales
+                size = isSMSPath ?
+                  screenUtils.pt2px(symbol.size) :
+                  ((sWidth > sHeight) ? sWidth : sHeight) - 2; // 2px padding
+
+              // Preserve aspect ratio when applying "size"
+              if (!isNaN(size)) {
+                if (aspect > 1) {
+                  // width gets "size"
+                  xx = size / bbox.width;
+                  yy = (size / aspect) / bbox.height;
+                }
+                else {
+                  // height gets "size"
+                  yy = size / bbox.height;
+                  xx = (size * aspect) / bbox.width;
+                }
+              }
+
+              shapeGroup.applyTransform(
+                gfxMatrix.scaleAt(
+                  xx, yy,
+                  { x: dim.width / 2, y: dim.height / 2 }
+                )
+              );
+
+              isScaled = true;
+            }
+
+            if (!isScaled) {
+              if (width > sWidth || height > sHeight) {
+                var test = (width/sWidth > height/sHeight);
+                var actualSize = test ? width : height;
+                var refSize = test ? sWidth : sHeight;
+                var scaleBy = (refSize - 5) / actualSize;
+
+                lang.mixin(transform, {
+                  xx: scaleBy,
+                  yy: scaleBy
+                });
+              }
+            }
+
+            shapeGroup.applyTransform(transform);
           });
 
         }
@@ -706,54 +771,10 @@ define([
           return false;
         }
 
-        var bbox = shapeGroup.getBoundingBox(),
-          width = bbox.width,
-          height = bbox.height,
-
-        // Aligns the center of the path with surface's origin (0,0)
-        // This logic is specifically required for SMS symbols
-        // with STYLE_PATH style
-          vectorDx = -(bbox.x + (width / 2)),
-          vectorDy = -(bbox.y + (height / 2)),
-
-        // Aligns the center of the shape with the center of the surface
-          dim = surface.getDimensions(),
-          transform = {
-            dx: vectorDx + dim.width / 2,
-            dy: vectorDy + dim.height / 2
-          };
-
-        if (symbol.type === "simple-marker-symbol" && symbol.style === "path") {
-          // We need to scale-up or scale-down SMSPath based on its size.
-          var scaleMat = layer._getScaleMatrix(bbox, screenUtils.pt2px(symbol.size));
-
-          shapeGroup.applyTransform(
-            gfxMatrix.scaleAt(
-              scaleMat.xx, scaleMat.yy,
-              { x: dim.width / 2, y: dim.height / 2 }
-            )
-          );
-        }
-
-        if (width > sWidth || height > sHeight) {
-          var test = (width/sWidth > height/sHeight);
-          var actualSize = test ? width : height;
-          var refSize = test ? sWidth : sHeight;
-          var scaleBy = (refSize - 5) / actualSize;
-
-          lang.mixin(transform, {
-            xx: scaleBy,
-            yy: scaleBy
-          });
-        }
-
-        shapeGroup.applyTransform(transform);
-
         return true;
       },
 
       _buildRampDOM: function (rampStops, tableBodyNode, overlayColor, isOpacityRamp) {
-
         var numGradients = rampStops.length - 1,
           gradientWidth = GRADIENT_WIDTH, gradientHeight = GRADIENT_HEIGHT,
           rowNode, labelTD, imageTD, imageDiv, rampDiv, labelContainer,
@@ -795,6 +816,15 @@ define([
         surface = gfx.createSurface(rampDiv, rampWidth, rampHeight);
 
         try {
+          // TODO: When HeatmapRenderer is supported, stop offsets should not be adjusted.
+          // equalIntervalStops will be true for sizeInfo, false for heatmap.
+          // Heatmaps tend to have lots of colors, we don't want a giant color ramp.
+          // Hence equalIntervalStops = false.
+
+          // Adjust the stop offsets so that we have stops at fixed/equal interval.
+          rampStops.forEach(function(stop, index) {
+            stop.offset = index / numGradients;
+          });
 
           rect = surface.createRect({
             x:      0,
@@ -871,13 +901,13 @@ define([
         }, i18n[bundleKey]) : null;
       },
 
-      _toggleDisplay: function (domElm) {
+      _setVisible: function (domElm, visible) {
         var hasHide = domClass.contains(domElm, CSS.hidden);
 
-        if (hasHide) {
+        if (visible && hasHide) {
           domClass.remove(domElm, CSS.hidden);
         }
-        else {
+        else if (!visible && ! hasHide) {
           domClass.add(domElm, CSS.hidden);
         }
       }

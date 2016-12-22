@@ -12,7 +12,7 @@
   line-height: $line_height;
   background-color: $background_color;
   *,
-  *:before
+  *:before,
   *:after {
     -webkit-box-sizing: inherit;
     -moz-box-sizing: inherit;
@@ -33,7 +33,7 @@
     position: absolute;
     top: $menu_placement;
     left: 0;
-    z-index: 1000;
+    z-index: 1;
     background-color: $background_color;
     @include defaultBoxShadow();
     padding: 0;
@@ -112,6 +112,45 @@
       }
     }
   }
+  select {
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    height: $button_height;
+    color: $button_text_color;
+    border: 1px solid $border_color;
+    margin: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    padding: 0 0.5em;
+    background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%20width%3D%2732%27%20height%3D%2732%27%3E%3Cstyle%3E.path%7Bfill%3A%236e6e6e%7D%3C/style%3E%3Cpath%20class%3D%27path%27%20d%3D%27M12.3%2013.4h9l-5.7%206.1-5.7-6.1h2.4zm3.3%204.8l3.7-4h-7.4l3.7%204z%27/%3E%3C/svg%3E") no-repeat right center transparent;
+  }
+  select::-ms-expand {
+    display: none;
+  }
+  input {
+    font-family: inherit;
+    &::-ms-clear {
+      display: none;
+    }
+    &::-moz-placeholder {
+      color: $placeholder_color;
+      opacity: 1;
+    }
+    &:-ms-input-placeholder {
+      color: $placeholder_color;
+    }
+    &::-webkit-input-placeholder {
+      color: $placeholder_color;
+    }
+  }
+  button,
+  [role="button"] {
+    font-family: inherit;
+    font-size: $text_size;
+  }
 }
 
 .keynav-mode {
@@ -139,7 +178,7 @@
    ========================================================================== */
 .esri-widget-button {
   font-size: $text_size;
-  background-color: $background_color; 
+  background-color: $background_color;
   color: $button_text_color;
   width: $button_width;
   height: $button_height;
@@ -147,6 +186,7 @@
   margin: 0;
   overflow: hidden;
   cursor: pointer;
+  text-align: center;
   @include flexDisplay();
   @include flexFlow(row, nowrap);
   @include justifyContent(center);
@@ -197,6 +237,9 @@ html[dir="rtl"] .esri-widget {
       border-left: 3px solid rgba(0, 0, 0, 0.05);
     }
   }
+  select {
+    background-position: left 50%;
+  }
 }
 
 /* ==========================================================================
@@ -227,18 +270,16 @@ html[dir="rtl"] .esri-widget {
 }
 
 .esri-rotating {
-  -webkit-animation: esri-anim-rotate 1.25s infinite linear;
-  animation: esri-anim-rotate 1.25s infinite linear;
+  -webkit-animation: esri-anim-rotate 1250ms infinite linear;
+  animation: esri-anim-rotate 1250ms infinite linear;
 }
 
 @include keyframes(esri-anim-rotate) {
   0% {
-    -webkit-transform: rotate(0);
-    transform: rotate(0);
+    @include transform(rotate(0));
   }
   100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
+    @include transform(rotate(360deg));
   }
 }
 

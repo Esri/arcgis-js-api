@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 define({addTags:"Tag(s) hinzufügen",noTagsFound:"Keine Übereinstimmung mit vorhandenen Tags.",required:"Mindestens ein Tag ist erforderlich."});

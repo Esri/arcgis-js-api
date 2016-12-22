@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 define(["../core/declare","dojo/Deferred","../core/Accessor","../core/Promise","../core/Scheduler"],function(e,i,t,s,n){var r={RUNNING:"running",FINISHED:"finished",STOPPED:"stopped"},o=e([t,s],{declaredClass:"esri.views.ViewAnimation",properties:{state:{value:null},target:{value:null}},constructor:function(){this._dfd=new i,this.addResolvingPromise(this._dfd.promise)},initialize:function(){this.state=r.RUNNING},stop:function(){this.state=r.STOPPED,n.schedule(this._dfd.resolve)},finish:function(){this.state=r.FINISHED,n.schedule(this._dfd.resolve)}});return o.State=r,o});

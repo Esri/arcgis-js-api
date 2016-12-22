@@ -21,6 +21,7 @@
 	attribute vec4 $color;
   attribute vec2 $size;
   attribute vec4 $auxpos1;
+  attribute vec4 $auxpos2;
 
 	varying vec4 vcolor;
 
@@ -32,6 +33,8 @@
 	uniform sampler2D framebufferTex;
 	uniform vec3 markerColor;
 #endif
+
+$vvUniforms
 
 ]]></snippet>
 
@@ -89,15 +92,22 @@
 
 	$matchPixelCenter
 	$matchPixelOrigin
+	$vvFunctions
 
 	void main(void) {
 
-	    vec3 centerOffset = $auxpos1.xyz;
+		vec3 centerOffset = $auxpos1.xyz;
 		float pointGroundDistance = $auxpos1.w;
 
-		vec2 combinedSize = $size * pixelRatio;
+#ifdef VV_SIZE
+		vec2 inputSize = vvGetScale($auxpos2).xy * $size;
+#else
+		vec2 inputSize = $size;
+#endif
 
-        vec4 posProjCenter;
+		vec2 combinedSize = inputSize * pixelRatio;
+
+		vec4 posProjCenter;
 		$calcPosMatchPixelCenter
 
 #ifdef OCCL_TEST
@@ -108,7 +118,7 @@
 			float dist = distance(camPos, posModel);
 			posProj.xy += ((uv01 - anchorPos) * 2.0 * combinedSize + screenOffset)/ viewport.zw * posProj.w;
 			vtc.xy = uv;
-			vsize = $size;
+			vsize = inputSize;
 #ifdef OCCL_TEST
 		} else {
 			vtc = vec2(.0);
@@ -119,7 +129,12 @@
 	vtc.zw = .5 + .5 * posProjCenter.xy / posProjCenter.w;
 #endif
 		gl_Position = matchPixelOrigin(posProj, viewport.zw);
+
+#ifdef VV_COLOR
+		vcolor = vvGetColor($auxpos2, vvColorValues, vvColorColors);
+#else
 		vcolor = $color / 255.0;
+#endif
 	}
 ]]></snippet>
 
@@ -129,13 +144,18 @@
 	uniform vec2 minMaxWorldSizeFactor;
 
 	$matchPixelCenter
+	$vvFunctions
 
 	void main(void) {
-	    vec3 centerOffset = $auxpos1.xyz;
+		vec3 centerOffset = $auxpos1.xyz;
 		float pointGroundDistance = $auxpos1.w;
-	    vec2 combinedSize = $size;
+#ifdef VV_SIZE
+		vec2 combinedSize = vvGetScale($auxpos2).xy * $size;
+#else
+		vec2 combinedSize = $size;
+#endif
 
-	    vec4 posProjCenter;
+		vec4 posProjCenter;
 
 		$calcPosMatchPixelCenter
 
@@ -165,7 +185,12 @@
 		posProj = proj * vec4(posView,1.0);
 		posProj.xy += screenOffset / viewport.zw * posProj.w;
 		gl_Position = posProj;
+
+#ifdef VV_COLOR
+		vcolor = vvGetColor($auxpos2, vvColorValues, vvColorColors);
+#else
 		vcolor = $color / 255.0;
+#endif
 	}
 ]]></snippet>
 
@@ -208,11 +233,17 @@
   uniform vec3 direction;
 
   $matchPixelCenter
+	$vvFunctions
 
 	void main(void) {
-	    vec3 centerOffset = $auxpos1.xyz;
+		vec3 centerOffset = $auxpos1.xyz;
 		float pointGroundDistance = $auxpos1.w;
-	    vec2 combinedSize = $size * pixelRatio;
+#ifdef VV_SIZE
+		vec2 inputSize = vvGetScale($auxpos2).xy * $size;
+#else
+		vec2 inputSize = $size;
+#endif
+		vec2 combinedSize = inputSize * pixelRatio;
 
         vec4 posProjCenter;
  		$calcPosMatchPixelCenter
@@ -257,7 +288,12 @@
 #endif
  		vec4 pos4 = proj * view * vec4(posModel,1.0);
  		gl_Position = pos4;
- 		vcolor = $color / 255.0;
+
+#ifdef VV_COLOR
+		vcolor = vvGetColor($auxpos2, vvColorValues, vvColorColors);
+#else
+		vcolor = $color / 255.0;
+#endif
  	}
  ]]></snippet>
 
@@ -270,13 +306,18 @@
 
 	$matchPixelCenter
 	$matchPixelOrigin
+	$vvFunctions
 
 	void main(void) {
-	    vec3 centerOffset = $auxpos1.xyz;
+		vec3 centerOffset = $auxpos1.xyz;
 		float pointGroundDistance = $auxpos1.w;
-	    vec2 combinedSize = $size;
+#ifdef VV_SIZE
+		vec2 combinedSize = vvGetScale($auxpos2).xy * $size;
+#else
+		vec2 combinedSize = $size;
+#endif
 
-        vec4 posProjCenter;
+		vec4 posProjCenter;
 		$calcPosMatchPixelCenter
 
 		vec3 up = vnormal;
@@ -323,7 +364,12 @@
 #endif
 		vec4 pos4 = proj * view * vec4(posModel,1.0);
 		gl_Position = pos4;
+
+#ifdef VV_COLOR
+		vcolor = vvGetColor($auxpos2, vvColorValues, vvColorColors);
+#else
 		vcolor = $color / 255.0;
+#endif
 	}
 ]]></snippet>
 
@@ -359,8 +405,26 @@
 		vec4 color = vec4(0.0, 0.0, 0.0, 0.0);
 		vec4 fillPixelColor = overrideColor * vcolor;
 
+		// Attempt to sample texel centers to avoid thin cross outline
+		// disappearing with large symbol sizes.
+		// see: https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/7058#issuecomment-603041
+		const float txSize = 128.0;
+		vec2 scaleFactor = ((vsize - txSize) / txSize);
+		vec2 samplePos = vtc + vec2(1.0, -1.0) * (1.0 / txSize) * scaleFactor;
+
 		// Distance in [-0.5, 0.5]
-		float d = dot(texture2D(tex, vtc), vec4(1.0/16777216.0, 1.0/65535.0, 1.0/256.0, 1.0)) - 0.5;
+		float d = dot(texture2D(tex, samplePos), vec4(1.0/16777216.0, 1.0/65535.0, 1.0/256.0, 1.0)) - 0.5;
+
+		// Work around loss of precision for 'd = 0.0'.
+		// '0' gets normalised to 0.5 * 256 = 128 before float packing, but can only
+		// be stored in the texture as 128 / 255 = 0.502.
+		// see: https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/7058#issuecomment-603110
+		const float diff = (128.0/255.0 - 0.5);
+
+		// adjust all values, not just those close to 0, to avoid discontinuities in
+		// the outlines of other shapes e.g. circles
+		d = d - diff;
+
 		// Distance in output units
 		float dist = d * vsize.x;
 

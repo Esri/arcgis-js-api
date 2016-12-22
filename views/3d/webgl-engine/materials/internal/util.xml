@@ -14,7 +14,7 @@
 
 <snippet name="float2rgba"><![CDATA[
 	vec4 float2rgba(const in float v) {
-		vec4 enc = vec4(1.0, 255.0, 65025.0, 160581375.0) * v;
+		vec4 enc = vec4(1.0, 255.0, 65025.0, 16581375.0) * v;
 		enc = fract(enc);
 		enc -= enc.yzww * vec4(1.0/255.0, 1.0/255.0, 1.0/255.0, 0.0);
 		return enc;
@@ -23,7 +23,7 @@
 
 <snippet name="rgba2float"><![CDATA[
 	float rgba2float(vec4 rgba) {
-		return dot(rgba, vec4(1.0, 1.0/255.0, 1.0/65025.0, 1.0/160581375.0));
+		return dot(rgba, vec4(1.0, 1.0/255.0, 1.0/65025.0, 1.0/16581375.0));
 	}
 ]]></snippet>
 
@@ -127,6 +127,91 @@
 		vClipSpace.xy *= screenSize;
 		return vClipSpace/abs(vClipSpace.w);
 	}
+]]></snippet>
+
+<snippet name="vvUniforms"><![CDATA[
+#if defined(VV_SIZE) || defined(VV_ROTATION)
+	#define VV_CUSTOM_MODEL_MATRIX
+#endif
+
+#if defined(VV_SIZE)
+	uniform vec3 vvSizeMinSize;
+	uniform vec3 vvSizeMaxSize;
+	uniform vec3 vvSizeMinDataValue;
+	uniform vec3 vvSizeMaxDataValue;
+#elif defined(VV_CUSTOM_MODEL_MATRIX)
+	uniform vec3 vvSizeValue;
+#endif
+
+#if defined(VV_ROTATION)
+  #error Rotation not implemented
+#elif defined(VV_CUSTOM_MODEL_MATRIX)
+	uniform mat4 vvRotationValue;
+#endif
+
+#ifdef VV_CUSTOM_MODEL_MATRIX
+	uniform vec3 vvAnchorValue;
+#endif
+
+#ifdef VV_COLOR
+	#define VV_COLOR_N 8
+	uniform float vvColorValues[VV_COLOR_N];
+	uniform vec4 vvColorColors[VV_COLOR_N];
+#endif
+
+]]></snippet>
+
+<snippet name="vvFunctions"><![CDATA[
+// Evaluation of size
+#if defined(VV_SIZE)
+	vec3 vvGetScale(vec4 featureAttribute) {
+		vec3 f = (featureAttribute.xxx - vvSizeMinDataValue) / (vvSizeMaxDataValue - vvSizeMinDataValue);
+		return vvSizeMinSize + clamp(f, 0.0, 1.0) * (vvSizeMaxSize - vvSizeMinSize);
+	}
+#elif defined(VV_CUSTOM_MODEL_MATRIX)
+	vec3 vvGetScale(vec4 featureAttribute) {
+		return vvSizeValue;
+	}
+#endif
+
+// Evaluation of rotation
+#if defined(VV_ROTATION)
+	#error Rotation not implemented
+#elif defined(VV_CUSTOM_MODEL_MATRIX)
+	mat4 vvGetRotation(vec4 featureAttribute) {
+		return vvRotationValue;
+	}
+#endif
+
+// Applying the model matrix
+#ifdef VV_CUSTOM_MODEL_MATRIX
+	vec4 vvTransformPosition(vec3 position, vec4 featureAttribute) {
+		return vvGetRotation(featureAttribute) * vec4(vvGetScale(featureAttribute) * (position + vvAnchorValue), 1.0);
+	}
+
+	vec4 vvTransformNormal(vec3 normal, vec4 featureAttribute) {
+		// Normal transform is the inverse transpose of model transform
+		return vvGetRotation(featureAttribute) * vec4(normal / vvGetScale(featureAttribute), 1.0);
+	}
+#endif
+
+#ifdef VV_COLOR
+	vec4 vvGetColor(vec4 featureAttribute, float values[VV_COLOR_N], vec4 colors[VV_COLOR_N]) {
+		float value = featureAttribute.x;
+		if (value <= values[0]) {
+			return colors[0];
+		}
+
+		for (int i = 1; i < VV_COLOR_N; ++i) {
+			if (values[i] >= value) {
+				float f = (value - values[i-1]) / (values[i] - values[i-1]);
+				return mix(colors[i-1], colors[i], f);
+			}
+		}
+
+		return colors[VV_COLOR_N - 1];
+	}
+#endif
 ]]></snippet>
 
 </snippets>

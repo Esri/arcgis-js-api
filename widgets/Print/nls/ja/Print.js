@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define({root:{print:"印刷",printing:"印刷しています",printout:"印刷出力"},ar:1,cs:1,da:1,de:1,el:1,es:1,et:1,fi:1,fr:1,he:1,it:1,ja:1,ko:1,lv:1,lt:1,nl:1,nb:1,pl:1,"pt-br":1,"pt-pt":1,ro:1,ru:1,sv:1,th:1,tr:1,vi:1,"zh-cn":1});
+define({title:"タイトル",fileName:"ファイル名",titlePlaceHolder:"ファイルのタイトル",fileNamePlaceHolder:"ファイル名",formatDefaultOption:"形式の選択",fileFormatTitle:"ファイル形式",layoutTitle:"ページ設定",layoutDefaultOption:"ページ設定の選択",scale:"縮尺の設定",scaleLabel:"縮尺",reset:"リセット",author:"作成者",copyright:"著作権",legend:"凡例",lock:"ロック",swap:"スワップ",panelToggle:"パネルの切り替え",advancedOptions:"高度な設定",width:"幅",height:"高さ",attribution:"属性を含む",layoutTab:"レイアウト",mapOnlyTab:"マップのみ",untitled:"無題","export":"エクスポート",exportText:"エクスポート済みファイル",exportHint:"エクスポート済みファイルがここに表示されます。"});

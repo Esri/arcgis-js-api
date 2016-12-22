@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","./Symbol3DLayer","../core/accessorSupport/decorators"],function(e,t,r,o,i,p){var a=function(e){function t(t){e.call(this),this.material=null,this.type="Path",this.size=void 0}return r(t,e),t.prototype.readSize=function(e,t){return e||t.width||0},t.prototype.clone=function(){return new t({enabled:this.enabled,material:this.material&&this.material.clone(),size:this.size})},o([p.property()],t.prototype,"material",void 0),o([p.property()],t.prototype,"type",void 0),o([p.property({json:{writable:!0}})],t.prototype,"size",void 0),o([p.read("size",["size","width"])],t.prototype,"readSize",null),t=o([p.subclass("esri.symbols.PathSymbol3DLayer")],t)}(p.declared(i));return a});

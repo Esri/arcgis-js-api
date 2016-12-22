@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 define(["../../core/Accessoire","../../core/declare","../../core/kebabDictionary","../../geometry/support/jsonUtils"],function(e,t,i,s){var n=i({9001:"meters",9002:"feet",9036:"kilometers",9093:"miles",109012:"nautical-miles",109001:"yards"}),r=t(e,{declaredClass:"esri.tasks.support.DensifyParameters",geometries:null,geodesic:null,lengthUnit:null,maxSegmentLength:null,toJSON:function(){var e={};if(this.geometries&&this.geometries.length>0){var t=this.geometries.map(function(e){return e.toJSON()});e.geometries=JSON.stringify({geometryType:s.getJsonType(this.geometries[0]),geometries:t}),e.sr=JSON.stringify(this.geometries[0].spatialReference.toJSON())}return this.geodesic&&(e.geodesic=this.geodesic),this.lengthUnit&&(e.lengthUnit=n.toJSON(this.lengthUnit)),this.maxSegmentLength&&(e.maxSegmentLength=this.maxSegmentLength),e}});return r});

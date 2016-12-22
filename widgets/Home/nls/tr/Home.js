@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define({button:"Giriş",title:"Varsayılan yayılım"});
+define({button:"Giriş",title:"Varsayılan harita türü"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","dojo/_base/lang","../core/screenUtils","./Symbol3DLayer","../core/accessorSupport/decorators"],function(t,e,o,r,i,n,p,s){var l=function(t){function e(e){t.call(this),this.font=null,this.material=null,this.size=void 0,this.text=void 0,this.type="Text"}return o(e,t),e.prototype.writeFont=function(t,e){t&&(e.font=i.clone(t))},e.prototype.clone=function(){return new e({enabled:this.enabled,font:this.font&&i.clone(this.font),material:this.material&&this.material.clone(),size:this.size,text:this.text})},r([s.property()],e.prototype,"font",void 0),r([s.write("font")],e.prototype,"writeFont",null),r([s.property()],e.prototype,"material",void 0),r([s.property({json:{writable:!0}}),s.cast(n.toPt)],e.prototype,"size",void 0),r([s.property({json:{writable:!0}})],e.prototype,"text",void 0),r([s.property()],e.prototype,"type",void 0),e=r([s.subclass("esri.symbols.TextSymbol3DLayer")],e)}(s.declared(p));return l});

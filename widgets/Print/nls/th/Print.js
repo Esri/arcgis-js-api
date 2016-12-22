@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define({root:{print:"พิมพ์",printing:"พิมพ์",printout:"พิมพ์ออก"},ar:1,cs:1,da:1,de:1,el:1,es:1,et:1,fi:1,fr:1,he:1,it:1,ja:1,ko:1,lv:1,lt:1,nl:1,nb:1,pl:1,"pt-br":1,"pt-pt":1,ro:1,ru:1,sv:1,th:1,tr:1,vi:1,"zh-cn":1});
+define({title:"ชื่อ",fileName:"ชื่อ ไฟล์",titlePlaceHolder:"ชื่อของ ไฟล์",fileNamePlaceHolder:"ชื่อไฟล์",formatDefaultOption:"เลือกนามสกุลไฟล์",fileFormatTitle:"นามสกุลไฟล์",layoutTitle:"ตั้งค่าหน้ากระดาษ",layoutDefaultOption:"เลือกตั้งค่าหน้ากระดาษ",scale:"กำหนดมาตราส่วน",scaleLabel:"มาตราส่วน",reset:"กำหนดใหม่",author:"ผู้เขียน",copyright:"ลิขสิทธิ์",legend:"รวมถึงคำอธิบาย",lock:"ล็อค",swap:"เลื่อนเปลี่ยน",panelToggle:"แผงสลับ",advancedOptions:"ตัวเลือกขั้นสูง",width:"ความกว้าง",height:"ความสูง",attribution:"ระบุแหล่งที่มา",layoutTab:"หน้ากระดาษ",mapOnlyTab:"แผนที่เท่านั้น",untitled:"ไม่ได้ตั้งชื่อ","export":"ส่งออก",exportText:"ส่งออกไฟล์",exportHint:"ไฟล์ที่ส่งออกของคุณจะปรากฏที่นี่"});

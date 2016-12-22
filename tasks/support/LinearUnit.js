@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 define(["../../core/declare","../../core/JSONSupporter","../../core/kebabDictionary"],function(e,i,s){var t=s({esriMeters:"meters",esriFeet:"feet",esriKilometers:"kilometers",esriMiles:"miles",esriNauticalMiles:"nautical-miles",esriYards:"yards"}),r=e(i,{declaredClass:"esri.tasks.support.LinearUnit",distance:0,units:null,_unitsReader:t.fromJSON,toJSON:function(){var e={};return this.distance&&(e.distance=this.distance),this.units&&(e.units=t.toJSON(this.units)),e}});return r});

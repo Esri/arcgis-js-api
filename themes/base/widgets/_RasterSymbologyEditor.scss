@@ -1,0 +1,110 @@
+@mixin rasterSymbologyEditor() {
+
+  $thumbnail-height: 32px;
+  $thumbnail-width: 32px;
+
+  .esri-raster-symbology {
+    @include flexDisplay();
+    @include flexFlow(column, nowrap);
+    @import "../../../dgrid/css/dgrid.css";
+  }
+  .esri-raster-symbology-editor--hidden {
+    display: none;
+  }
+  .esri-raster-symbology-editor--block {
+    display: block;
+  }
+  .esri-raster-symbology-editor__percent-clip-row{
+    display: table-row;
+  }
+  .esri-raster-symbology-editor__std-deviation-row{
+    display: table-row;
+  }
+  .esri-raster-symbology-editor__stretch-dra-row{
+    display: table-row;
+  }
+  .esri-raster-symbology-editor__stretch-color-ramp-row{
+    display: table-row;
+  }
+  .esri-raster-symbology-editor__table{
+    width: 100%;
+  }
+  .esri-raster-symbology-editor__filtering-select{
+    width: 100%!important;
+  }
+  .field-esriRasterSymbologyEditorUniqueValueSymbol{
+    width: 20%;
+  }
+  .field-esriRasterSymbologyEditorUniqueValueValue{
+    width: 80%;
+  }
+  .esri-raster-symbology-editor__thumbnail-image{
+    width: $thumbnail-width;
+    height: $thumbnail-height;
+  }
+  .esri-raster-symbology-editor__stretch-type-min-max-img{
+    background-image: url(../base/images/raster-symbology-editor-stretch-type-min-max.png);
+  }
+  .esri-raster-symbology-editor__stretch-type-none-img{
+    background-image: url(../base/images/raster-symbology-editor-stretch-type-none.png);
+  }
+  .esri-raster-symbology-editor__stretch-type-standard-deviation-img{
+    background-image: url(../base/images/raster-symbology-editor-stretch-type-standard-deviation.png);
+  }
+  .esri-raster-symbology-editor__stretch-type-percent-clip-img{
+    background-image: url(../base/images/raster-symbology-editor-stretch-type-percent-clip.png);
+  }
+  .esri-raster-symbology-editor__band-combination-natural-color-img{
+    background-image: url(../base/images/raster-symbology-editor-band-combination-natural-color.png);
+  }
+  .esri-raster-symbology-editor__band-combination-land-water-img{
+    background-image: url(../base/images/raster-symbology-editor-band-combination-land-water.png);
+  }
+  .esri-raster-symbology-editor__band-combination-landuse-img{
+    background-image: url(../base/images/raster-symbology-editor-band-combination-landuse.png);
+  }
+  .esri-raster-symbology-editor__band-combination-bathymetric-img{
+    background-image: url(../base/images/raster-symbology-editor-band-combination-bathymetric.png);
+  }
+  .esri-raster-symbology-editor__band-combination-vegetation-img{
+    background-image: url(../base/images/raster-symbology-editor-band-combination-vegetation.png);
+  }
+  .esri-raster-symbology-editor__band-combination-color-infrared-img{
+    background-image: url(../base/images/raster-symbology-editor-band-combination-color-infrared.png);
+  }
+  .esri-raster-symbology-editor__symbology-type-rgb-img{
+    background-image: url(../base/images/raster-symbology-editor-symbology-type-rgb-img.png);
+    @extend .esri-raster-symbology-editor__thumbnail-image;
+  }
+  .esri-raster-symbology-editor__symbology-type-stretch-img{
+    background-image: url(../base/images/raster-symbology-editor-symbology-type-stretch-img.png);
+    @extend .esri-raster-symbology-editor__thumbnail-image;
+  }
+  .esri-raster-symbology-editor__symbology-type-unique-value-img{
+    background-image: url(../base/images/raster-symbology-editor-symbology-type-unique-value-img.png);
+    @extend .esri-raster-symbology-editor__thumbnail-image;
+  }
+  .esri-raster-symbology-editor__menu-item-td {
+    border: none!important; 
+    background: none!important;
+  }
+  .esri-raster-symbology-editor__dgrid-symbol-cell{
+    width: 15px; 
+    height: 15px; 
+    border: 1px solid #000; 
+    margin-left: auto; 
+    margin-right: auto; 
+  }
+  .esri-raster-symbology-editor__menu-item-text{
+    white-space: pre-wrap;
+    width: 40ex;
+  }
+  .esri-raster-symbology-editor__checkbox{
+    display: inline-block;
+  }
+}
+
+
+@if $include_RasterSymbologyEditor == true {
+  @include rasterSymbologyEditor();
+}

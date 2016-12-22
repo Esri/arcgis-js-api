@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 /**
  * The Search widget provides a way to perform search operations on {@link module:esri/tasks/Locator locator service(s)}
@@ -62,8 +62,7 @@
  * @since 4.0
  *
  * @see [Search.js (widget view)]({{ JSAPI_BOWER_URL }}/widgets/Search.js)
- * @see [Search.css]({{ JSAPI_BOWER_URL }}/widgets/Search/css/Search.css)
- * @see [Search.scss]({{ JSAPI_BOWER_URL }}/widgets/Search/css/Search.scss)
+ * @see [Search.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_Search.scss)
  * @see [Sample - Search widget (3D)](../sample-code/widgets-search-3d/index.html)
  * @see [Sample - Search widget with multiple sources](../sample-code/widgets-search-multiplesource/index.html)
  * @see module:esri/tasks/Locator
@@ -291,7 +290,7 @@ define([
 
   "./support/viewModelWiring",
 
-  "./Widget",
+  "./Widgette",
 
   "dijit/_FocusMixin",
   "dijit/_TemplatedMixin",
@@ -368,12 +367,12 @@ function(
   };
 
   /**
-   * @extends module:esri/widgets/Widget
+   * @extends module:esri/core/Accessor
+   * @mixes module:esri/widgets/Widgette
    * @mixes module:esri/core/Evented
    * @constructor module:esri/widgets/Search
-   * @param {Object} [properties] - See the [properties](#properties) for a list of all the properties
+   * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                              that may be passed into the constructor.
-   * @param {string | Node} [srcNodeRef] - Reference or ID of the HTML element in which this widget renders.
    *
    * @example
    * // typical usage
@@ -391,18 +390,6 @@ function(
       baseClass: CSS.base,
 
       templateString: templateString,
-
-      /**
-      * The view associated with the widget. This is a class that contains all the logic
-      * (properties and methods) that controls this widget's behavior. See the
-      * {@link module:esri/widgets/Search/SearchViewModel} class to access
-      * all properties and methods on the widget.
-      *
-      * @name viewModel
-      * @instance
-      * @type {module:esri/widgets/Search/SearchViewModel}
-      * @autocast
-      */
 
       //--------------------------------------------------------------------------
       //
@@ -456,8 +443,12 @@ function(
             domClass.toggle(this._containerNode, CSS.hasValue, value);
           }.bind(this)),
 
-          watchUtils.init(vm, "sources", function(value) {
-            this._updateSourcesMenu(value);
+          watchUtils.init(vm, "sources, activeSourceIndex", function() {
+            this._updateSourcesMenu(vm.sources);
+          }.bind(this)),
+
+          watchUtils.init(vm, "activeSourceIndex", function() {
+            this._updateSourcesMenu(vm.sources);
           }.bind(this)),
 
           watchUtils.init(vm, "view.popup", function(value) {
@@ -665,8 +656,8 @@ function(
 
         /**
          * The default source used for the Search widget. These can range from
-         * a [Locator Source](#~locatorSource) to a
-         * [Feature Layer](#~featureLayerSource).
+         * a [Locator Source](#locatorSource) to a
+         * [Feature Layer](#featureLayerSource).
          *
          * @name defaultSource
          * @instance
@@ -815,7 +806,7 @@ function(
         //----------------------------------
 
         /**
-         * Indicates the highlighted location graphic.
+         * The graphic used to highlight the resulting feature or location.
          *
          * @name resultGraphic
          * @instance
@@ -832,11 +823,11 @@ function(
         //----------------------------------
 
         /**
-         * Show the selected feature on the map using a default symbol determined by the source's geometry type.
+         * Indicates if the [resultGraphic](#resultGraphic) will display at the
+         * location of the selected feature.
          *
          * @type {boolean}
-         * @default
-         * @ignore
+         * @default true
          */
         resultGraphicEnabled: {
           aliasOf: "viewModel.resultGraphicEnabled"
@@ -924,16 +915,16 @@ function(
         /**
          * This property defines which services will be used for the search. It is a collection of objects, each of which is called a `source`
          * and may be configured using the object specifications below and the properties listed in the
-         * [Locator Source object specification table](#~locatorSource) or the
-         * [Feature Layer source object specification table](#~featureLayerSource).
+         * [Locator Source object specification table](#locatorSource) or the
+         * [Feature Layer source object specification table](#featureLayerSource).
          *
          * Two types of sources may be searched:
          *
          * * {@link module:esri/layers/FeatureLayer **FeatureLayers**} - see the
-         * [FeatureLayer Source object specification table](#~featureLayerSource)
+         * [FeatureLayer Source object specification table](#featureLayerSource)
          * for more details on how to define FeatureLayer source objects.
          * * {@link module:esri/tasks/Locator **Locators**} - see the
-         * [Locator Source object specification table](#~locatorSource)
+         * [Locator Source object specification table](#locatorSource)
          * for more details on how to define Locator source objects.
          *
          * Any combination of one or more geocoding and feature layer sources may be used together in the same instance of the Search widget.
@@ -1045,20 +1036,17 @@ function(
          * var searchWidget = new Search({
          *   sources: []
          * });
-         * searchWidget.startup();
          *
          * @example
          * // Set source(s)
          * var searchWidget = new Search();
          * var sources = [{ ... }, { ... }, { ... }]; //array of sources
          * searchWidget.sources = sources;
-         * searchWidget.startup();
          *
          * @example
          * // Add to source(s)
          * var searchWidget = new Search();
          * searchWidget.sources.push({ ... });  //new source
-         * searchWidget.startup();
          */
         sources: {
           aliasOf: "viewModel.sources"
@@ -1201,12 +1189,13 @@ function(
        * address matching using any specified {@link module:esri/tasks/Locator Locator(s)} and
        * returns any applicable results.
        *
-       * @param {string|module:esri/geometry/Geometry|Object|number[][]} [searchTerm] - This searchTerm can be
-       *        a string, geometry, suggest candidate object, or an array of [latitude,longitude].
+       * @param {string|module:esri/geometry/Geometry|module:esri/tasks/Locator~SuggestionResult|number[][]} [searchTerm] - This searchTerm can be
+       *        a string, geometry, suggest candidate object, or an array of [longitude,latitude] coordinate pairs.
        *        If a geometry is supplied, then it will reverse geocode (locator) or
-       *        findAddressCandidates with geometry instead of text (featurelayer).
+       *        findAddressCandidates with geometry instead of text.
        *
-       * @return {Promise} When resolved, returns an object containing an array of search results.
+       * @return {Promise} When resolved, returns an object containing an array of
+       *                   search results.
        *
        * @method
        */

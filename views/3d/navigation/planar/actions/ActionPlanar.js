@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 define(["../../Action","../../../lib/glMatrix"],function(n,a){var e=a.vec3d,t=a.vec4d,i=n.createSubclass({declaredClass:"esri.views.3d.navigation.planar.actions.ActionPlanar",constructor:function(){this._plane=t.create()},updatePlane:function(n,a){t.set4(a[0],a[1],a[2],-e.dot(a,n),this._plane)}});return i});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 define(["./AccessoirePromise","./Accessoire","./Error","dojo/aspect","dojo/_base/lang","dojo/Deferred"],function(o,t,a,e,s,r){var d="not-loaded",i="loading",l="failed",n="loaded",c=o.createSubclass([t],{declaredClass:"esri.core.LoadableAccessoire","-chains-":s.mixin(t._meta.chains,{load:"after"}),classMetadata:{properties:{loaded:{readOnly:!0,dependsOn:["loadStatus"]},loadStatus:{},loadError:{}}},constructor:function(){var o=new r;this.addResolvingPromise(o.promise),e.around(this,"load",function(t){return function(){return this.loadStatus===d&&(this.loadStatus=i,t.apply(this),o.resolve(),o=null),this}}),this.then(function(o){this.loadStatus=n}.bind(this),function(o){this.loadStatus=l,this.loadError=o}.bind(this))},loaded:null,_loadedGetter:function(){return this.loadStatus===n},loadError:null,loadStatus:d,load:function(){},cancelLoad:function(){return this.isFulfilled()?this:(this.loadError=new a("load:cancelled","Cancelled"),this._promiseProps.cancel(this.loadError),this)}});return c});

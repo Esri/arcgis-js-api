@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 define(["../core/JSONSupport","./SpatialReference"],function(e,n){var t=e.createSubclass({declaredClass:"esri.geometry.Geometry",type:null,properties:{cache:{value:null,readOnly:!0,dependsOn:["spatialReference"],get:function(){return{}}},extent:{value:null,readOnly:!0,dependsOn:["spatialReference"]},hasM:!1,hasZ:!1,spatialReference:n.WGS84},isSR:function(e){return e&&("esri.SpatialReference"===e.declaredClass||null!=e.wkid)},clone:function(){return console.warn(".clone() is not implemented for "+this.declaredClass),null},toJSON:function(){return console.warn(".toJSON() is not implemented for "+this.declaredClass),null},clearCache:function(){this.notifyChange("cache")},getCacheValue:function(e){return this.cache[e]},setCacheValue:function(e,n){this.cache[e]=n}});return t});

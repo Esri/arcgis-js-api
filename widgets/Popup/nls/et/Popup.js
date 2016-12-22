@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 define({zoom:"Suumi",next:"Järgmine objekt",previous:"Eelmine objekt",close:"Sulge",dock:"Doki",undock:"Doki lahti",menu:"Menüü",untitled:"Pealkirjata",pageText:"{index} / {total}",noFeaturesFound:"Objekte ei leitud",selectedFeature:"Valitud objekt",selectedFeatures:"{total} tulemust",loading:"Laadimine"});

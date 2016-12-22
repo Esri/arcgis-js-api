@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 define(["../../core/Accessoire","../../core/declare","../../core/kebabDictionary","../../geometry/Polygon","../../geometry/support/jsonUtils"],function(e,t,i,s,n){var r=i({9001:"meters",9002:"feet",9036:"kilometers",9093:"miles",109012:"nautical-miles",109001:"yards"}),o=t(e,{declaredClass:"esri.tasks.support.BufferParameters",bufferSpatialReference:null,distances:null,geodesic:!1,geometries:null,outSpatialReference:null,unionResults:!1,unit:null,toJSON:function(){var e={unit:r.toJSON(this.unit),unionResults:this.unionResults,geodesic:this.geodesic},t=this.distances,i=this.outSpatialReference,o=this.bufferSpatialReference,a=this.geometries;if(a&&a.length>0){var l=a.map(function(e){return e="extent"===e.type?s.fromExtent(e):e,e.toJSON()}),u="extent"===a[0].type?"esriGeometryPolygon":n.getJsonType(a[0]);e.geometries=JSON.stringify({geometryType:u,geometries:l}),e.inSR=a[0].spatialReference.wkid?a[0].spatialReference.wkid:JSON.stringify(a[0].spatialReference.toJSON())}return t&&(e.distances=t.join(",")),i&&(e.outSR=i.wkid?i.wkid:JSON.stringify(i.toJSON())),o&&(e.bufferSR=o.wkid?o.wkid:JSON.stringify(o.toJSON())),e}});return o});

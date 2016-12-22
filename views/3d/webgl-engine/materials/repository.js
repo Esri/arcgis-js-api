@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 define(["dojo/text!./internal/util.xml","./BillboardMaterial","./ColorMaterial","./HUDMaterial","./LeafCardMaterial","./Material","./RibbonLineMaterial","./WaterMaterial","./internal/SimpleGLMaterial","./internal/TexOnlyGLMaterial","./internal/BlendLayers"],function(a,e,l,r,d,i,t,n,o,s,S){return{initializeShaders:function(h,M,L,f){h._parse(a),o.loadShaders(h,M,L,f),s.loadShaders(h,M,L,f),i.loadShaders(h,M,L,f),e.loadShaders(h,M,L,f),r.loadShaders(h,M,L,f),d.loadShaders(h,M,L,f),t.loadShaders(h,M,L,f),n.loadShaders(h,M,L,f),S.loadShaders(h,M,L,f),l.loadShaders(h,M,L,f)}}});

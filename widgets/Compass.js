@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 /**
  * The Compass widget indicates where north is in relation to the current view
@@ -52,8 +52,7 @@
  * @since 4.0
  *
  * @see [Compass.js (widget view)]({{ JSAPI_BOWER_URL }}/widgets/Compass.js)
- * @see [Compass.css]({{ JSAPI_BOWER_URL }}/widgets/Compass/css/Compass.css)
- * @see [Compass.scss]({{ JSAPI_BOWER_URL }}/widgets/Compass/css/Compass.scss)
+ * @see [Compass.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_Compass.scss)
  * @see module:esri/widgets/Compass/CompassViewModel
  * @see [Sample - Adding the Compass widget to a MapView](../sample-code/widgets-compass-2d/index.html)
  * @see module:esri/views/ui/DefaultUI
@@ -68,7 +67,7 @@ define([
 
   "./support/viewModelWiring",
 
-  "./Widget",
+  "./Widgette",
 
   "dijit/_TemplatedMixin",
   "dijit/a11yclick",
@@ -105,11 +104,11 @@ function (
   };
 
   /**
-   * @extends module:esri/widgets/Widget
+   * @extends module:esri/core/Accessor
+   * @mixes module:esri/widgets/Widgette
    * @constructor module:esri/widgets/Compass
-   * @param {Object} [properties] - See the [properties](#properties) for a list of all the properties
+   * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                              that may be passed into the constructor.
-   * @param {string | Node} [srcNodeRef] - Reference or ID of the HTML element in which this widget renders.
    *
    * @example
    * // typical usage

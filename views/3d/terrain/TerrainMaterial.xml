@@ -153,16 +153,13 @@
     vec3 d = (1.0 - shadow/1.8) * diffuse * k;
 
     float ssao = viewportPixelSz.w < .0 ? 1.0 : texture2D(ssaoTex, (gl_FragCoord.xy - viewportPixelSz.xy) * viewportPixelSz.zw).a;
-    vec4 texVal = texture2D(tex, vtc);
-    vec3 texCol = texVal.rgb;
-    float texAlpha = texVal.a;
+    vec4 texCol = texture2D(tex, vtc);
 
 #ifdef OVERLAY
     if ((vtcOverlay.x > 0.0) && (vtcOverlay.y > 0.0) && (vtcOverlay.x < 1.0) && (vtcOverlay.y < 1.0)) {
       vec4 overlayTexCol = texture2D(overlayTex, vtcOverlay);
       overlayTexCol *= overlayOpacity;
-      texCol = texCol*(1.0-overlayTexCol.a) + overlayTexCol.rgb; // overlayTexCol has pre-multiplied alpha
-      texAlpha = overlayTexCol.a + (1.0 - overlayTexCol.a) * texAlpha;
+      texCol = texCol * (1.0 - overlayTexCol.a) + overlayTexCol; // texCol and overlayTexCol have pre-multiplied alpha
     }
 #endif
 
@@ -170,11 +167,12 @@
 #ifdef ATMOSPHERE
     float ndotl = max(0.0, min(1.0, vndl));
     atm = atmosphere(wlight, wnormal, -viewDirection);
-    atm *= max(0.0, min(1.0, (1.0-lum(texCol)*1.5))); //avoid atmosphere on bright base maps
+    atm *= max(0.0, min(1.0, (1.0-lum(texCol.rgb)*1.5))); //avoid atmosphere on bright base maps
     atm *= max(0.0, min(1.0, ndotl*2.0)); // avoid atmosphere on dark side of the globe
 #endif
-    vec3 color = atm + texCol * (a + d) * ssao;
-    gl_FragColor = vec4(color, texAlpha * opacity);
+
+    vec3 color = atm + texCol.rgb * (a + d) * ssao;
+    gl_FragColor = vec4(color, texCol.a) * opacity;
 
   // closing } is missing here, it's in the shaders using this snippet below
 

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define({root:{print:"طباعة",printing:"طباعة",printout:"نسخة مطبوعة"},ar:1,cs:1,da:1,de:1,el:1,es:1,et:1,fi:1,fr:1,he:1,it:1,ja:1,ko:1,lv:1,lt:1,nl:1,nb:1,pl:1,"pt-br":1,"pt-pt":1,ro:1,ru:1,sv:1,th:1,tr:1,vi:1,"zh-cn":1});
+define({title:"عنوان",fileName:"اسم الملف",titlePlaceHolder:"عنوان الملف",fileNamePlaceHolder:"اسم الملف",formatDefaultOption:"تحديد التنسيق",fileFormatTitle:"تنسيق الملف",layoutTitle:"إعداد الصفحة",layoutDefaultOption:"حدد إعداد الصفحة",scale:"عين المقياس",scaleLabel:"مقياس رسم",reset:"إعادة تعيين",author:"المؤلف",copyright:"حقوق النشر",legend:"تضمين وسيلة الإيضاح",lock:"تأمين",swap:"تبديل",panelToggle:"تبديل اللوحة",advancedOptions:"خيارات متقدمة",width:"العرض",height:"ارتفاع",attribution:"تضمين البيانات الجدولية",layoutTab:"تخطيط",mapOnlyTab:"الخريطة فقط",untitled:"بدون عنوان","export":"تصدير",exportText:"الملفات المُصدّرة",exportHint:"ستظهر الملفات المصدرة هنا."});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 define(["../core/Accessor","../core/Collection"],function(e,s){var i=e.createSubclass({declaredClass:"esri.views.GroundView",properties:{view:{},layerViews:{type:s},suspended:{get:function(){return this.view?this.view.suspended:!0}}},getDefaults:function(){return{layerViews:[]}},destroy:function(){this.view=null}});return i});

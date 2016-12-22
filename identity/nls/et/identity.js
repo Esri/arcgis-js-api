@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 define({lblItem:"sisu",title:"Logi sisse",info:"Logi sisse, et saada ligipääs {resource} sisule {server} serveris",oAuthInfo:"Jätkamiseks logige sisse.",lblUser:"Kasutajanimi:",lblPwd:"Parool:",lblOk:"OK",lblSigning:"Login sisse...",lblCancel:"Tühista",errorMsg:"Vale kasutajanimi/parool. Palun proovi uuesti.",invalidUser:"Teie sisestatud kasutajanimi või parool on vale.",forbidden:"Kasutajanimi ja parool on õiged, kuid Teil puudub ligipääs sellele ressursile.",noAuthService:"Autentimise teenusele ligipääs ebaõnnestus"});

@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 /**
  * The popup widget allows users to view content from feature attributes. Popups enhance web applications
@@ -34,7 +34,7 @@
  *
  * [![popup-basic-example](../assets/img/apiref/widgets/popup-basic.png)](../sample-code/sandbox/sandbox.html?sample=get-started-popup)
  *
- * In the image above, the text "Reverse Geocode: [-116.2, 43.601]" is the popup's `title`. The remaining text is
+ * In the image above, the text "Marriage in NY, Zip Code: 11385" is the popup's `title`. The remaining text is
  * its `content`. A dock button ![popup-dock-btn](../assets/img/apiref/widgets/popup-dock.png) may also be available in the
  * top right corner of the popup. This allows the user to dock the popup to one of the sides or corners of the view.
  * The options for docking may be set in the [dockOptions](#dockOptions) property.
@@ -61,8 +61,7 @@
  * @since 4.0
  *
  * @see [Popup.js (widget view)]({{ JSAPI_BOWER_URL }}/widgets/Popup.js)
- * @see [Popup.css]({{ JSAPI_BOWER_URL }}/widgets/Popup/css/Popup.css)
- * @see [Popup.scss]({{ JSAPI_BOWER_URL }}/widgets/Popup/css/Popup.scss)
+ * @see [Popup.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_Popup.scss)
  * @see module:esri/PopupTemplate
  * @see {@link module:esri/views/View#popup View.popup}
  * @see [Get started with popups](../sample-code/get-started-popup/index.html)
@@ -113,7 +112,7 @@
 define([
   "./support/viewModelWiring",
 
-  "./Widget",
+  "./Widgette",
 
   "./Popup/PopupViewModel",
 
@@ -202,7 +201,7 @@ define([
     // base
     base: "esri-popup",
     // containers
-    container: "esri-popup__size-container",
+    container: "esri-popup__position-container",
     main: "esri-popup__main-container",
     loadingContainer: "esri-popup__loading-container",
     // global modifiers
@@ -228,8 +227,10 @@ define([
     hasPaginationMenuOpen: "esri-popup--feature-menu-open",
     alignTop: "esri-popup--top-aligned",
     alignBottom: "esri-popup--bottom-aligned",
-    alignLeft: "esri-popup--left-aligned",
-    alignRight: "esri-popup--right-aligned",
+    alignLeftTop: "esri-popup--left-top-aligned",
+    alignLeftBottom: "esri-popup--left-bottom-aligned",
+    alignRightTop: "esri-popup--right-top-aligned",
+    alignRightBottom: "esri-popup--right-bottom-aligned",
     hasPendingPromises: "esri-popup--has-pending-promises",
     isPendingPromisesResult: "esri-popup--is-pending-promises-result",
     hasFeatureUpdated: "esri-popup--feature-updated",
@@ -279,9 +280,11 @@ define([
 
   var ALIGNMENT_POSITIONS = {
     top: "top",
-    left: "left",
+    leftTop: "left-top",
+    leftBottom: "left-bottom",
     bottom: "bottom",
-    right: "right"
+    rightTop: "right-top",
+    rightBottom: "right-bottom"
   };
 
   var DOCK_POSITIONS = {
@@ -318,12 +321,12 @@ define([
   };
 
   /**
-   * @extends module:esri/widgets/Widget
+   * @extends module:esri/core/Accessor
+   * @mixes module:esri/widgets/Widgette
    * @mixes module:esri/core/Evented
    * @constructor module:esri/widgets/Popup
-   * @param {Object} [properties] - See the [properties](#properties) for a list of all the properties
+   * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                              that may be passed into the constructor.
-   * @param {string | Node} [srcNodeRef] - Reference or ID of the HTML node in which this widget renders.
    */
   var Popup = Widget.createSubclass([_TemplatedMixin], /** @lends module:esri/widgets/Popup.prototype */ {
 
@@ -405,6 +408,7 @@ define([
 
         watchUtils.init(viewModel, "location", function (location) {
           this._togglePopupLocationRepositioning(this.visible);
+          this._autoAlign();
           this.reposition();
         }.bind(this)),
 
@@ -474,6 +478,15 @@ define([
     properties: /** @lends module:esri/widgets/Popup.prototype */ {
 
       //----------------------------------
+      //  _popupRenderer
+      //----------------------------------
+
+      _popupRenderer: {
+        readOnly: true,
+        value: null
+      },
+
+      //----------------------------------
       //  actions
       //----------------------------------
 
@@ -496,7 +509,7 @@ define([
        * in the [trigger-action](#event:trigger-action) event handler. See the sample code
        * snippet below for more details on how this works.
        *
-       * Actions are defined with the properties listed below.
+       * Actions are defined with the properties listed in the {@link module:esri/support/Action} class.
        *
        * @name actions
        * @instance
@@ -504,28 +517,6 @@ define([
        * @type {module:esri/core/Collection}
        * @see [Sample - Popup actions](../sample-code/popup-actions/index.html)
        * @see [Sample - Custom popup actions per feature](../sample-code/popup-custom-action/index.html)
-       *
-       * @property {string} className - Adds a CSS class to the action's node. Can be used in conjunction
-       *                          with the `image` property or by itself. Any icon font may be used in this property.
-       *                          The [Esri icon fonts](../guide/esri-icon-font/index.html)
-       *                          are automatically made available via the ArcGIS API for JavaScript for you to
-       *                          use in styling custom actions. To
-       *                          use one of these provided icon fonts, you must prefix the class name with `esri-`.
-       *                          For example, the default `zoom-to` action uses the font `esri-icon-zoom-in-magnifying-glass`.
-       * @property {string} image - The URL to an image that will be used to represent the action in the
-       *                          popup. This property will be used as a background image for the node.
-       *                          It may be used in conjunction with the `className` property or by itself.
-       *                          If neither `image` nor `className` are specified, a default icon
-       *                          ![default icon](../assets/img/guide/whats-new/41/default-action.png) will display.
-       * @property {string} id - The name of the ID assigned to this action. This is used for
-       *                        differentiating actions when listening to the
-       *                        [trigger-action](#event:trigger-action) event.
-       * @property {string} title - The title of the action. When there are fewer than three actions
-       *                        defined in a popup, this text is displayed to the right of the icon or image
-       *                        representing the action. If there are three or more actions in the popup, then
-       *                        this text is used as a tooltip on the action.
-       * @property {boolean} visible - Indicates if the action is visible in the popup. Default value of this property
-       *                        is `true`.
        *
        * @example
        * // Defines an action to zoom out from the selected feature
@@ -601,6 +592,18 @@ define([
        * @ignore
        */
       autoPanEnabled: true,
+
+      //----------------------------------
+      //  autoAlignmentEnabled
+      //----------------------------------
+
+      /**
+       *
+       * @type {Boolean}
+       * @default
+       * @ignore
+       */
+      autoAlignmentEnabled: false,
 
       //----------------------------------
       //  content
@@ -762,6 +765,7 @@ define([
           this._set("dockEnabled", value);
           this._togglePopupDocking(value);
           this._togglePopupLocationRepositioning(this.visible);
+          this._autoAlign();
           this.reposition();
         }
       },
@@ -830,7 +834,7 @@ define([
       //----------------------------------
 
       /**
-       * Geometry used to position the popup. This is automatically set when viewing the
+       * Point used to position the popup. This is automatically set when viewing the
        * popup by selecting a feature. If using the Popup to display content not related
        * to features in the map, such as the results from a task, then you must set this
        * property before making the popup [visible](#visible) to the user.
@@ -838,7 +842,9 @@ define([
        * @name location
        * @instance
        *
-       * @type {module:esri/geometry/Geometry}
+       * @type {module:esri/geometry/Point}
+       * @autocast
+       *
        * @see [Get started with popups](../sample-code/get-started-popup/index.html)
        *
        * @example
@@ -846,6 +852,11 @@ define([
        * view.popup.location = view.center;
        * // Displays the popup
        * view.popup.visible = true;
+       *
+       * @example
+       * // Sets the location of the popup to a specific place (using autocast)
+       * // Note: using latlong only works if view is in Web Mercator or WGS84 spatial reference.
+       * view.popup.location = {latitude: 34.0571, longitude: -117.1968};
        *
        * @example
        * // Sets the location of the popup to the location of a click on the view
@@ -928,6 +939,27 @@ define([
        */
       promises: {
         aliasOf: "viewModel.promises"
+      },
+
+      //----------------------------------
+      //  rendered
+      //----------------------------------
+
+      /**
+       * @todo doc rendered property
+       * @type {boolean}
+       * @readonly
+       */
+      rendered: {
+        dependsOn: [
+          "viewModel.content",
+          "_popupRenderer.rendered"
+        ],
+        get: function () {
+          var rendered = this._contentIsPopupRenderer() && this.get("_popupRenderer.rendered");
+          return this._popupRenderer ? rendered : true;
+        },
+        readOnly: true
       },
 
       //----------------------------------
@@ -1076,6 +1108,7 @@ define([
           domClass.toggle(this.domNode, CSS.invisible, !value);
           this._togglePopupLocationRepositioning(value);
           this._toggleContentVisibility(value);
+          this._autoAlign();
           this.reposition();
         }
       }
@@ -1095,6 +1128,8 @@ define([
     _hideActionsTextNum: 3,
 
     _animationDelay: 10,
+
+    _pointerOffset: 16,
 
     _popupRendererVMs: [],
 
@@ -1190,7 +1225,13 @@ define([
       };
       var setOptions = lang.mixin(defaultOptions, options);
       this.viewModel.set(setOptions);
-      this.set("visible", true);
+      // todo: remove in 4.3 when we can force a watchable property to be updated.
+      if (options.promises) {
+        this.set("visible", false);
+      }
+      else {
+        this.set("visible", true);
+      }
     },
 
     /**
@@ -1243,6 +1284,12 @@ define([
       this._updateActionButtons(actions, selectedFeature);
       this._updateFooterVisibility(features, actions);
       this.reposition();
+    },
+
+    _contentIsPopupRenderer: function() {
+      var content = this.get("viewModel.content");
+      var popupRendererNode = this.get("_popupRenderer.domNode");
+      return !!(content && popupRendererNode && content === popupRendererNode);
     },
 
     _updateActionButtons: function (actions, selectedFeature) {
@@ -1367,50 +1414,55 @@ define([
     // sets popup position
     _calculatePosition: function (screenPoint, sizes, view) {
       var alignment = this.alignment,
-        positionStyle, height, width, widthOffset, heightOffset;
+        positionStyle, height, width, pointerOffset = this._pointerOffset;
       var top = null,
         left = null,
         bottom = null,
         right = null;
       if (screenPoint && sizes && view) {
-        var pointerHeight = sizes.pointer.height;
-        var pointerWidth = sizes.pointer.width;
         // height of popup and tail
-        height = sizes.popup.height;
-        var alignmentPositions = ALIGNMENT_POSITIONS;
-        if (alignment === alignmentPositions.top || alignment === alignmentPositions.bottom) {
-          height += pointerHeight;
+        height = sizes.h;
+        if (alignment === ALIGNMENT_POSITIONS.top || alignment === ALIGNMENT_POSITIONS.bottom) {
+          height += pointerOffset;
         }
-        width = sizes.popup.width;
-        if (alignment === alignmentPositions.left || alignment === alignmentPositions.right) {
-          width += pointerWidth;
+        width = sizes.w;
+        if (alignment === ALIGNMENT_POSITIONS.leftTop || alignment === ALIGNMENT_POSITIONS.leftBottom || alignment === ALIGNMENT_POSITIONS.rightTop || alignment === ALIGNMENT_POSITIONS.rightBottom) {
+          width += pointerOffset;
+          height += pointerOffset;
         }
         var halfWidth = width / 2;
-        var halfHeight = height / 2;
+        var y = screenPoint.y;
+        var x = screenPoint.x;
+        var viewHeightOffset = view.height - y;
+        var viewWidthOffset = view.width - x;
+        var widthOffset = width;
+
         switch (alignment) {
-        case alignmentPositions.bottom:
-          top = screenPoint.y + pointerHeight;
-          left = screenPoint.x - halfWidth;
+        case ALIGNMENT_POSITIONS.bottom:
+          top = y + pointerOffset;
+          left = x - halfWidth;
           widthOffset = halfWidth;
-          heightOffset = height;
           break;
-        case alignmentPositions.left:
-          top = screenPoint.y - halfHeight;
-          right = view.width - screenPoint.x + pointerWidth;
-          widthOffset = width;
-          heightOffset = halfHeight;
+        case ALIGNMENT_POSITIONS.leftTop:
+          bottom = viewHeightOffset + pointerOffset;
+          right = viewWidthOffset + pointerOffset;
           break;
-        case alignmentPositions.right:
-          top = screenPoint.y - halfHeight;
-          left = screenPoint.x + pointerWidth;
-          widthOffset = width;
-          heightOffset = halfHeight;
+        case ALIGNMENT_POSITIONS.leftBottom:
+          top = y + pointerOffset;
+          right = viewWidthOffset + pointerOffset;
+          break;
+        case ALIGNMENT_POSITIONS.rightTop:
+          bottom = viewHeightOffset + pointerOffset;
+          left = x + pointerOffset;
+          break;
+        case ALIGNMENT_POSITIONS.rightBottom:
+          top = y + pointerOffset;
+          left = x + pointerOffset;
           break;
         default:
-          bottom = view.height - screenPoint.y + pointerHeight;
-          left = screenPoint.x - halfWidth;
+          bottom = viewHeightOffset + pointerOffset;
+          left = x - halfWidth;
           widthOffset = halfWidth;
-          heightOffset = height;
         }
         var padding = view.padding;
         // if popup is dockEnabled
@@ -1434,9 +1486,9 @@ define([
           height: height,
           width: width,
           box: {
-            top: top !== null ? top : screenPoint.y - heightOffset,
+            top: top !== null ? top : screenPoint.y - height,
             left: left !== null ? left : screenPoint.x - widthOffset,
-            bottom: bottom !== null ? bottom : screenPoint.y + heightOffset,
+            bottom: bottom !== null ? bottom : screenPoint.y + height,
             right: right !== null ? right : screenPoint.x + widthOffset
           },
           style: positionStyle
@@ -1480,7 +1532,7 @@ define([
           features.forEach(function (feature, i) {
             var title = this._i18n.untitled;
             var item = domConstruct.create("li", {
-              role: "menu-item",
+              role: "menuitem",
               className: CSS.featureMenuItem
             }, this._paginationNode);
             if (i === selectedFeatureIndex) {
@@ -1557,10 +1609,10 @@ define([
       }
       // scroll to top of div
       this._bodyContentNode.scrollTop = 0;
-      var isPopupRenderer = !!(this._popupRenderer && this._popupRenderer.viewModel.content === content);
-      domClass.toggle(this._containerNode, CSS.hasPopupRenderer, isPopupRenderer);
+      domClass.toggle(this._containerNode, CSS.hasPopupRenderer, this._contentIsPopupRenderer());
       domClass.toggle(this._containerNode, CSS.showContent, !!content);
       domClass.remove(this._containerNode, CSS.hasPaginationMenuOpen);
+      this._autoAlign();
     },
 
     _destroyPopupRenderer: function () {
@@ -1569,7 +1621,7 @@ define([
         // remove popup renderer listeners
         this._handleRegistry.remove(REGISTRY_KEYS.popupRenderer);
         this._popupRenderer.destroy();
-        this._popupRenderer = null;
+        this._set("_popupRenderer", null);
       }
     },
 
@@ -1709,9 +1761,10 @@ define([
 
     _displayPendingFeaturesStatus: function (pendingPromisesCount, featureCount, promises, point) {
       var waitingForResult = pendingPromisesCount > 0 && featureCount === 0;
+      var promisesLen = promises && promises.length;
 
       // Hide popup if we have pending promises that are the same size of promises.
-      if (pendingPromisesCount && promises.length && pendingPromisesCount === promises.length) {
+      if (pendingPromisesCount && promisesLen && pendingPromisesCount === promisesLen) {
         this.set("visible", false);
       }
       domClass.toggle(this._containerNode, CSS.hasPendingPromises, !!pendingPromisesCount);
@@ -1739,12 +1792,16 @@ define([
           // hide loading spinner
           this._spinner.viewModel.point = null;
         }
-        if (featureCount && !this.visible) {
+        if (promisesLen && featureCount && !this.visible) {
           // we have features now, but previously there were no features.
           this.set("visible", true);
         }
+        else if (promisesLen && !featureCount && this.visible) {
+          // no more promises remaining, no features set and the popup is visible.
+          this.set("visible", false);
+        }
         // if we have no features and promises
-        if (!featureCount && promises && promises.length) {
+        if (!featureCount && promisesLen) {
           if (this._message) {
             // show no features message
             this._message.set({
@@ -1785,7 +1842,7 @@ define([
           var viewPadding = view.padding;
           // view UI Box
           var uiPadding = view.ui.padding;
-          if (this.autoPanEnabled) {
+          if (this.autoPanEnabled && !this.autoAlignmentEnabled) {
             // point of the location is not in UI view
             if (
               screenPoint.y < (viewPadding.top) ||
@@ -1838,23 +1895,83 @@ define([
       }.bind(this));
     },
 
+    _isScreenPointWithinView: function (screenPoint, view) {
+      return view && screenPoint &&
+        (screenPoint.x > -1 &&
+          screenPoint.y > -1 &&
+          screenPoint.x <= view.width &&
+          screenPoint.y <= view.height);
+    },
+
+    _autoAlign: function () {
+      if (this.autoAlignmentEnabled && this.visible) {
+        var view = this.get("viewModel.view");
+        var screenPoint = this._getLocationScreenPoint();
+        if (this._isScreenPointWithinView(screenPoint, view)) {
+          var sizes = this._sizePopup();
+          var pointerOffset = this._pointerOffset;
+          var areaWidth = sizes.w + pointerOffset;
+          var areaHeight = sizes.h + pointerOffset;
+          var areaHalfWidth = areaWidth / 2;
+          var outsideRight, outsideLeft, outsideTop, outsideBottom;
+          var viewPadding = view.padding;
+
+          if (screenPoint.x - areaHalfWidth < (0 + viewPadding.left)) {
+            outsideLeft = true;
+          }
+          if ((screenPoint.x + areaHalfWidth) > (view.width - viewPadding.right)) {
+            outsideRight = true;
+          }
+          if ((screenPoint.y - areaHeight) < (0 + viewPadding.top)) {
+            outsideTop = true;
+          }
+          if ((screenPoint.y + areaHeight) > (view.height - viewPadding.bottom)) {
+            outsideBottom = true;
+          }
+
+          if (outsideLeft) {
+            this._set("alignment", outsideTop ? ALIGNMENT_POSITIONS.rightBottom : ALIGNMENT_POSITIONS.rightTop);
+          }
+          else if (outsideRight) {
+            this._set("alignment", outsideTop ? ALIGNMENT_POSITIONS.leftBottom : ALIGNMENT_POSITIONS.leftTop);
+          }
+          else if (outsideTop) {
+            this._set("alignment", outsideBottom ? ALIGNMENT_POSITIONS.top : ALIGNMENT_POSITIONS.bottom);
+          }
+          else {
+            this._set("alignment", ALIGNMENT_POSITIONS.top);
+          }
+
+        }
+      }
+    },
+
     _positionPopup: function () {
       var viewModel = this.viewModel;
       var view = viewModel.view;
       if (view) {
         // remove alignment classes
-        domClass.remove(this._containerNode, [CSS.alignTop, CSS.alignBottom, CSS.alignLeft, CSS.alignRight]);
+        domClass.remove(this._containerNode, [CSS.alignTop, CSS.alignBottom, CSS.alignLeftTop, CSS.alignLeftBottom, CSS.alignRightTop, CSS.alignRightBottom]);
+
+        this._triggerOffset();
+
         // add alignment class
         var alignmentClass;
         switch (this.alignment) {
         case ALIGNMENT_POSITIONS.bottom:
           alignmentClass = CSS.alignBottom;
           break;
-        case ALIGNMENT_POSITIONS.right:
-          alignmentClass = CSS.alignRight;
+        case ALIGNMENT_POSITIONS.rightTop:
+          alignmentClass = CSS.alignRightTop;
           break;
-        case ALIGNMENT_POSITIONS.left:
-          alignmentClass = CSS.alignLeft;
+        case ALIGNMENT_POSITIONS.rightBottom:
+          alignmentClass = CSS.alignRightBottom;
+          break;
+        case ALIGNMENT_POSITIONS.leftTop:
+          alignmentClass = CSS.alignLeftTop;
+          break;
+        case ALIGNMENT_POSITIONS.leftBottom:
+          alignmentClass = CSS.alignLeftBottom;
           break;
         default:
           alignmentClass = CSS.alignTop;
@@ -1940,12 +2057,12 @@ define([
         // create popup renderer if it doesn't exist
         if (!this._popupRenderer || (this._popupRenderer && this._popupRenderer._destroyed)) {
           this._handleRegistry.remove(REGISTRY_KEYS.popupRenderer);
-          this._popupRenderer = new PopupRenderer();
+          this._set("_popupRenderer", new PopupRenderer());
           // change popup title if popup renderer title changes
-          var titleWatcher = this._popupRenderer.viewModel.watch("title", function (value) {
+          var titleWatcher = watchUtils.init(this._popupRenderer.viewModel, "title", function (value) {
             viewModel.title = value;
           });
-          var contentWatcher = this._popupRenderer.viewModel.watch("content", function (value) {
+          var contentWatcher = watchUtils.init(this._popupRenderer.viewModel, "content", function (value) {
             viewModel.content = value ? this._popupRenderer.domNode : null;
           }.bind(this));
           var resizeListener = on(this._popupRenderer, "resize", this.reposition.bind(this));
@@ -1979,22 +2096,7 @@ define([
     },
 
     _sizePopup: function () {
-      // size of popup node
-      var popupNodeSize = domGeometry.getContentBox(this._containerNode);
-      // size of popup pointer tail node
-      var pointerNodeSize = domGeometry.getContentBox(this._pointerNode);
-      // prepare object for delivery
-      var sizes = {
-        popup: {
-          height: popupNodeSize.h,
-          width: popupNodeSize.w
-        },
-        pointer: {
-          height: pointerNodeSize.h,
-          width: pointerNodeSize.w
-        }
-      };
-      return sizes;
+      return domGeometry.getContentBox(this._containerNode);
     },
 
     _updateTitle: function (title) {
@@ -2045,13 +2147,17 @@ define([
       }
     },
 
-    _toggleFeatureUpdatedClass: function () {
-      domClass.remove(this._containerNode, CSS.hasFeatureUpdated);
-
+    _triggerOffset: function() {
       // -> triggering reflow /* The actual magic */
       // without this it wouldn't work. Try uncommenting the line and the transition won't be retriggered.
       // https://css-tricks.com/restart-css-animation/
       this._containerNode.offsetWidth = this._containerNode.offsetWidth;
+    },
+
+    _toggleFeatureUpdatedClass: function () {
+      domClass.remove(this._containerNode, CSS.hasFeatureUpdated);
+
+      this._triggerOffset();
 
       domClass.add(this._containerNode, CSS.hasFeatureUpdated);
     },

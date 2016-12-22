@@ -9,6 +9,11 @@
   }
 }
 
+.esriIdentityDialog--visible ~ .dijitTooltip {
+  font-size: $text_size;
+  font-family: $font_family;
+}
+
 // the following is generated from https://devtopia.esri.com/WebGIS/arcgis-theme-calcite/tree/juan6600/create-identity-manager-scoped-styles-for-4x
 // see https://devtopia.esri.com/WebGIS/arcgis/issues/3344 for more info
 .esriIdentityDialog {
@@ -208,7 +213,7 @@
 .esriIdentityDialog .dijitContentPaneLoading .dijitIconLoading,
 .esriIdentityDialog .dijitContentPaneError .dijitIconError {
   margin-right: 9px; }
-.dijitTooltip {
+.esriIdentityDialog--visible ~ .dijitTooltip {
   position: absolute;
   z-index: 2000;
   display: block;
@@ -217,19 +222,19 @@
   top: -10000px;
   overflow: visible; }
 
-.dijitTooltipContainer {
+.esriIdentityDialog--visible ~ .dijitTooltip .dijitTooltipContainer {
   border: solid black 2px;
   background: #b8b5b5;
   color: black;
   font-size: small; }
 
-.dijitTooltipFocusNode {
+.esriIdentityDialog--visible ~ .dijitTooltip .dijitTooltipFocusNode {
   padding: 2px 2px 2px 2px; }
 
-.dijitTooltipConnector {
+.esriIdentityDialog--visible ~ .dijitTooltip .dijitTooltipConnector {
   position: absolute; }
 
-.dijitTooltipData {
+.esriIdentityDialog--visible ~ .dijitTooltip .dijitTooltipData {
   display: none; }
 .esriIdentityDialog.dijitDialog {
   position: absolute;
@@ -434,12 +439,13 @@
 .esriIdentityDialog .dijitTextBoxDisabled {
   background-color: #f8f8f8; }
 
-.dijitTooltip,
-.dijitTooltip * {
+.esriIdentityDialog--visible ~ .dijitTooltip,
+.esriIdentityDialog--visible ~ .dijitTooltip,
+.esriIdentityDialog--visible ~ .dijitTooltip * {
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
   box-sizing: content-box; }
-.dijitTooltip .dijitTooltipContainer {
+.esriIdentityDialog--visible ~ .dijitTooltip .dijitTooltipContainer {
   border: 0;
   font-size: 12px;
   line-height: 1.4;
@@ -450,9 +456,9 @@
   background-color: #323232;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=85);
   opacity: 0.85; }
-.dijitTooltip .dijitTooltipContents {
+.esriIdentityDialog--visible ~ .dijitTooltip .dijitTooltipContents {
   padding: 5px 10px; }
-.dijitTooltip .dijitTooltipConnector {
+.esriIdentityDialog--visible ~ .dijitTooltip .dijitTooltipConnector {
   position: absolute;
   width: 0;
   height: 0;
@@ -460,34 +466,34 @@
   border-style: solid;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=85);
   opacity: 0.85; }
-.dijitTooltip.dijitTooltipBelow {
+.esriIdentityDialog--visible ~ .dijitTooltip.dijitTooltipBelow {
   margin-top: 3px;
   padding-top: 5px; }
-.dijitTooltip.dijitTooltipBelow .dijitTooltipConnector {
+.esriIdentityDialog--visible ~ .dijitTooltip.dijitTooltipBelow .dijitTooltipConnector {
   top: 0;
   left: 15px;
   border-width: 0 5px 5px;
   border-bottom-color: #323232; }
-.dijitTooltip.dijitTooltipAbove {
+.esriIdentityDialog--visible ~ .dijitTooltip.dijitTooltipAbove {
   margin-top: -3px;
   padding-bottom: 5px; }
-.dijitTooltip.dijitTooltipAbove .dijitTooltipConnector {
+.esriIdentityDialog--visible ~ .dijitTooltip.dijitTooltipAbove .dijitTooltipConnector {
   bottom: 0;
   left: 15px;
   border-width: 5px 5px 0;
   border-top-color: #323232; }
-.dijitTooltip.dijitTooltipLeft {
+.esriIdentityDialog--visible ~ .dijitTooltip.dijitTooltipLeft {
   margin-left: -3px;
   padding-right: 5px; }
-.dijitTooltip.dijitTooltipLeft .dijitTooltipConnector {
+.esriIdentityDialog--visible ~ .dijitTooltip.dijitTooltipLeft .dijitTooltipConnector {
   top: 50%;
   right: 0;
   border-width: 5px 0 5px 5px;
   border-left-color: #323232; }
-.dijitTooltip.dijitTooltipRight {
+.esriIdentityDialog--visible ~ .dijitTooltip.dijitTooltipRight {
   margin-left: 3px;
   padding-left: 5px; }
-.dijitTooltip.dijitTooltipRight .dijitTooltipConnector {
+.esriIdentityDialog--visible ~ .dijitTooltip.dijitTooltipRight .dijitTooltipConnector {
   top: 50%;
   left: 0;
   border-width: 5px 5px 5px 0;
@@ -514,7 +520,8 @@
   margin-right: 0;
   margin-left: 9px; }
 
-.dijitTooltip.dijitTooltipBelow.dijitTooltipABRight .dijitTooltipConnector, .dijitTooltip.dijitTooltipAbove.dijitTooltipABRight .dijitTooltipConnector {
+.esriIdentityDialog--visible ~ .dijitTooltip.dijitTooltipBelow.dijitTooltipABRight .dijitTooltipConnector,
+.esriIdentityDialog--visible ~ .dijitTooltip.dijitTooltipAbove.dijitTooltipABRight .dijitTooltipConnector {
   left: auto;
   right: 15px; }
 

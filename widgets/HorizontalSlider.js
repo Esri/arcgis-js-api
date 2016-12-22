@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 define(["dijit/form/HorizontalRuleLabels","dijit/form/HorizontalSlider"],function(e,i){var l=i.createSubclass({declaredClass:"esri.widgets.HorizontalSlider",baseClass:"esri-horizontal-slider",buildRendering:function(){if(this.inherited(arguments),this.labels){var i=new e({labels:this.labels});i.placeAt(this.bottomDecoration)}},labels:null,showButtons:!1});return l});

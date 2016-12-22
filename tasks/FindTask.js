@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["dojo/_base/lang","../request","./Task","./support/FindResult"],function(e,r,s,t){var n=s.createSubclass({declaredClass:"esri.tasks.FindTask",properties:{parsedUrl:{get:function(){var e=this._parseUrl(this.url);return e.path+="/find",e}},gdbVersion:{value:null,type:String},url:{}},execute:function(s){var t=this._encode(e.mixin({},this.parsedUrl.query,{f:"json"},s.toJSON()));return this.gdbVersion&&(t.gdbVersion=this.gdbVersion),r(this.parsedUrl.path,{query:t,callbackParamName:"callback"}).then(this._handleExecuteResponse)},_handleExecuteResponse:function(e){var r=e.data,s=r.results||[];return r.results=s.map(function(e){return t.fromJSON(e)}),r}});return n});
+define(["dojo/_base/lang","../request","./Task","./support/FindResult"],function(e,r,s,t){var n=s.createSubclass({declaredClass:"esri.tasks.FindTask",properties:{parsedUrl:{get:function(){var e=this._parseUrl(this.url);return e.path+="/find",e}},gdbVersion:{value:null,type:String},url:{}},execute:function(s,t){var n=this._encode(e.mixin({},this.parsedUrl.query,{f:"json"},s.toJSON()));this.gdbVersion&&(n.gdbVersion=this.gdbVersion);var a={query:n,callbackParamName:"callback"};return(this.requestOptions||t)&&(a=e.mixin({},this.requestOptions,t,a)),r(this.parsedUrl.path,a).then(this._handleExecuteResponse)},_handleExecuteResponse:function(e){var r=e.data,s=r.results||[];return r.results=s.map(function(e){return t.fromJSON(e)}),r}});return n});

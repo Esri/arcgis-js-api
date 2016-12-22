@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 define({addTags:"添加标签",noTagsFound:"没有匹配的现有标签。",required:"需要一个或多个标签。"});

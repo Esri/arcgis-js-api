@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 define(["require","exports","../Portal","../PortalItem","../../config","../../tasks/GeometryService","../../core/promiseUtils","../../core/Error"],function(e,r,t,n,o,i,c,l){function u(e){return c.resolve(new i({url:e}))}function s(e){if(void 0===e&&(e=null),o.geometryServiceUrl)return u(o.geometryServiceUrl);if(!e)return c.reject(new l("internal:geometry-service-url-not-configured"));var r;return e.isInstanceOf(n)?r=e.portal||t.getDefault():e.isInstanceOf(t)&&(r=e),r.load().then(function(e){if(e.helperServices&&e.helperServices.geometry&&e.helperServices.geometry.url)return u(e.helperServices.geometry.url);throw new l("internal:geometry-service-url-not-configured")})}r.create=s});

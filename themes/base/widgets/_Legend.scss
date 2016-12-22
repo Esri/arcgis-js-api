@@ -1,6 +1,7 @@
 @mixin legend() {
   .esri-legend {
-    @include scrollbarY(rgba($background_inverse_color, 0.1), rgba($background_inverse_color, 0.5));
+    overflow: auto;
+    overflow-x: hidden;
   }
 
   .esri-legend__message {

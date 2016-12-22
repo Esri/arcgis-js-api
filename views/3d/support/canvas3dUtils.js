@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 define([],function(){var t={dataURItoBlob:function(t){for(var n=atob(t.split(",")[1]),r=t.split(",")[0].split(":")[1].split(";")[0],e=new ArrayBuffer(n.length),a=new Uint8Array(e),i=0;i<n.length;i++)a[i]=n.charCodeAt(i);return new Blob([e],{type:r})}};return t});

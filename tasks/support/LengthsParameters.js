@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 define(["../../core/Accessoire","../../core/declare","../../core/kebabDictionary","dojo/_base/array"],function(e,i,t,n){var s=t({preserveShape:"preserve-shape"}),l=i(e,{declaredClass:"esri.tasks.support.LengthsParameters",calculationType:null,geodesic:null,lengthUnit:null,polylines:null,toJSON:function(){var e=n.map(this.polylines,function(e){return e.toJSON()}),i={};i.polylines=JSON.stringify(e);var t=this.polylines[0].spatialReference;return i.sr=t.wkid?t.wkid:JSON.stringify(t.toJSON()),this.lengthUnit&&(i.lengthUnit=this.lengthUnit),this.geodesic&&(i.geodesic=this.geodesic),this.calculationType&&(i.calculationType=s.toJSON(this.calculationType)),i}});return l});

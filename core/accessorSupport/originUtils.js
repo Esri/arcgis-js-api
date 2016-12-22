@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 define(["require","exports","../MultiOriginJSONSupport"],function(i,n,r){function e(i){i&&i.writtenProperties&&i.writtenProperties.forEach(function(i){var n=i.target;i.newOrigin&&i.oldOrigin!==i.newOrigin&&n.isInstanceOf(r)&&n.updateOrigin(i.propName,i.newOrigin)})}n.updateOrigins=e});

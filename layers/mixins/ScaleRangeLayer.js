@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators","../../core/Accessor"],function(e,r,t,o,a,c){function i(){return c}var n=function(e){function r(){e.apply(this,arguments),this.minScale=0,this.maxScale=0}return t(r,e),o([a.property({json:{writeWith:["maxScale"],writable:!0}})],r.prototype,"minScale",void 0),o([a.property({json:{writeWith:["minScale"],writable:!0}})],r.prototype,"maxScale",void 0),r=o([a.subclass("esri.layers.mixins.ScaleRangeLayer")],r)}(a.declared(i()));return n});

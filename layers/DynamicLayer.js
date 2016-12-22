@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/accessorSupport/decorators","./Layer"],function(e,r,t,a,o,s){var c=function(e){function r(){e.apply(this,arguments)}return t(r,e),r.prototype.getImageUrl=function(e,r){},a([o.shared({"2d":"../views/2d/layers/DynamicLayerView2D","3d":"../views/3d/layers/DynamicLayerView3D"})],r.prototype,"viewModulePaths",void 0),r=a([o.subclass("esri.layers.DynamicLayer")],r)}(o.declared(s));return c});
+define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/accessorSupport/decorators","./Layer"],function(e,r,a,t,o,s){var c=function(e){function r(){e.apply(this,arguments)}return a(r,e),r.prototype.getImageUrl=function(e,r){},t([o.shared({"2d":"../views/2d/layers/MapImageLayerView2D","3d":"../views/3d/layers/DynamicLayerView3D"})],r.prototype,"viewModulePaths",void 0),r=t([o.subclass("esri.layers.DynamicLayer")],r)}(o.declared(s));return c});

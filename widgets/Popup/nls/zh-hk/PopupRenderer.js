@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 define({attach:"附件",fields:"欄位",fieldsSummary:"屬性和值的清單",media:"媒體",next:"下一頁",numCharts:"圖表數目",numImages:"圖像數目",noTitle:"無標題",previous:"上一頁",view:"查看"});

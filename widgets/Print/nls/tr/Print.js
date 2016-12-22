@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define({root:{print:"Yazdır",printing:"Yazılıyor",printout:"Yazıcı Çıktısı"},ar:1,cs:1,da:1,de:1,el:1,es:1,et:1,fi:1,fr:1,he:1,it:1,ja:1,ko:1,lv:1,lt:1,nl:1,nb:1,pl:1,"pt-br":1,"pt-pt":1,ro:1,ru:1,sv:1,th:1,tr:1,vi:1,"zh-cn":1});
+define({title:"Başlık",fileName:"Dosya İsmi",titlePlaceHolder:"Dosya başlığı",fileNamePlaceHolder:"Dosya adı",formatDefaultOption:"Biçim seç",fileFormatTitle:"Dosya biçimi",layoutTitle:"Sayfa düzeni",layoutDefaultOption:"Sayfa düzenini seç",scale:"Ölçeği ayarla",scaleLabel:"ölçek",reset:"sıfırla",author:"Yazar",copyright:"Telif Hakkı",legend:"Gösterim ekle",lock:"kilitle",swap:"değiştir",panelToggle:"İkili panel ayarı",advancedOptions:"Gelişmiş Seçenekler",width:"Genişlik",height:"Yükseklik",attribution:"Özniteliği ekle",layoutTab:"Düzen",mapOnlyTab:"Yalnızca Harita",untitled:"adsız","export":"Dışa Aktar",exportText:"Dışa Aktarılan Dosyalar",exportHint:"Dışa aktarılan dosyalarınız burada görüntülenir."});

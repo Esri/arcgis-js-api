@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define({root:{print:"Prindi",printing:"Prindin",printout:"Väljatrükk"},ar:1,cs:1,da:1,de:1,el:1,es:1,et:1,fi:1,fr:1,he:1,it:1,ja:1,ko:1,lv:1,lt:1,nl:1,nb:1,pl:1,"pt-br":1,"pt-pt":1,ro:1,ru:1,sv:1,th:1,tr:1,vi:1,"zh-cn":1});
+define({title:"Pealkiri",fileName:"Faili nimi",titlePlaceHolder:"Faili pealkiri",fileNamePlaceHolder:"Faili nimi",formatDefaultOption:"Vali formaat",fileFormatTitle:"Faili formaat",layoutTitle:"Lehe seadistus",layoutDefaultOption:"Vali lehe seadistus",scale:"Määra mõõtkava",scaleLabel:"mõõtkava",reset:"lähtesta",author:"Autor",copyright:"Autoriõigus",legend:"Kaasa legend",lock:"lukk",swap:"vaheta",panelToggle:"Paneeli vahetus",advancedOptions:"Täiendavad võimalused",width:"Laius",height:"Kõrgus",attribution:"Kaasa atribuudid",layoutTab:"Paigutus",mapOnlyTab:"Ainult kaart",untitled:"pealkirjata","export":"Ekspordi",exportText:"Eksporditud failid",exportHint:"Eksporditud failid kuvatakse siin."});

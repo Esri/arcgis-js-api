@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define({root:{print:"Imprimir",printing:"Imprimindo",printout:"Impressão"},ar:1,cs:1,da:1,de:1,el:1,es:1,et:1,fi:1,fr:1,he:1,it:1,ja:1,ko:1,lv:1,lt:1,nl:1,nb:1,pl:1,"pt-br":1,"pt-pt":1,ro:1,ru:1,sv:1,th:1,tr:1,vi:1,"zh-cn":1});
+define({title:"Título",fileName:"Nome do Arquivo",titlePlaceHolder:"Título do arquivo",fileNamePlaceHolder:"Nome do arquivo",formatDefaultOption:"Selecionar formato",fileFormatTitle:"Formato do arquivo",layoutTitle:"Configuração da página",layoutDefaultOption:"Selecionar configuração da página",scale:"Configurar escala",scaleLabel:"escala",reset:"redefinir",author:"Autor",copyright:"Direitos autorais",legend:"Incluir legenda",lock:"bloquear",swap:"trocar",panelToggle:"Alternar painel",advancedOptions:"Opções Avançadas",width:"Largura",height:"Altura",attribution:"Incluir atribuição",layoutTab:"Layout",mapOnlyTab:"Mapa Somente",untitled:"sem título","export":"Exportar",exportText:"Arquivos Exportados",exportHint:"Seus arquivos exportados aparecerão aqui."});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.1/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
 define({statsAvg:"Medie: ${avg}",count:"Număr: ${count}",percent:"${num}%",high:"Ridicat",low:"Redus",color:{changeMinMaxToolTIp:"Introduceți o valoare.",handleToolTip:"Asociați valorile datelor cu culori.",maxValueToolTip:"Introduceți cea mai mare valoare estimată a datelor.",minValueToolTip:"Introduceți cea mai mică valoare estimată a datelor.",changeSymbol:"Modificare simbol"},size:{handleToolTip:"Asociați valorile datelor cu dimensiunea simbolurilor.",sizeInputBoxLines:"Setați grosimea liniilor între 0 și 18 pixeli.",sizeInputBoxPoints:"Setați dimensiunea simbolurilor între 1 și 120 pixeli"}});
