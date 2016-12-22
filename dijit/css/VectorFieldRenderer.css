@@ -5,7 +5,6 @@ div.esriVFRContainer {
 .esriVFRTable {
   table-layout:fixed;
   border-collapse: separate;
-  text-align: left;
   border-spacing: 0px 10px;
   width: 100%;
   max-width: 400px;
@@ -55,7 +54,6 @@ div.esriVFRContainer {
 {
   letter-spacing: 0!important;
   text-indent: 0!important;
-  text-align: left!important;
 }
 
 .esriVFRTypeList.dijitSelect input.dijitArrowButtonInner {
@@ -133,5 +131,5 @@ div.esriVFRContainer {
 .esriVFRColorPickerCell
 {
   max-width: 24px;
-  padding-left: 2px
+  padding: 2px
 }

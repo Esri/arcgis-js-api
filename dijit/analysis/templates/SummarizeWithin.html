@@ -104,7 +104,7 @@
               <label class="esriAnalysisStepsLabel">${i18n.chooseSummarizeLabel}</label>
             </td>
             <td class="shortTextInput" style="padding-bottom:0;">
-              <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="Summarize"></a>
+              <a href="#" class='esriFloatTrailing helpIcon' data-dojo-attach-point="_sumLabelHelp" esriHelpTopic="Summarize"></a>
             </td>
           </tr>
           <tr data-dojo-attach-point="_polyLayerSelectRow">
@@ -116,7 +116,7 @@
           <tr>
             <td colspan="3" class="clear"></td>
           </tr>
-          <tr data-dojo-attach-point="_timeStepsLabelRow">
+          <!--<tr data-dojo-attach-point="_timeStepsLabelRow">
             <td colspan="2">
               <label  data-dojo-attach-point="_timeStepLabelNo" class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.twoLabel}</label>
               <label class="esriAnalysisStepsLabel">${i18n.aggTimeStepsLabel}</label>
@@ -193,7 +193,7 @@
             <input   class="esriAnalysisSelect" type="text" data-dojo-type="dijit/form/TimeTextBox" data-dojo-props="required:false,intermediateChanges:true,constraints:{formatLength:'short',selector:'time'}"  data-dojo-attach-point="_timeRefTime" data-dojo-attach-event="onChange:_handleRefTimeChange" style="margin-top:0;width:90%;">
             </input>
           </td>
-          </tr>
+          </tr>-->
           <tr>
             <td colspan="3">
               <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel" data-dojo-attach-point="_statsLblNo">${i18n.threeLabel}</label>
@@ -271,7 +271,7 @@
           <tr>
             <td colspan="3" class="clear"></td>
           </tr>
-          <tr data-dojo-attach-point="_srLabelRow">
+         <!-- <tr data-dojo-attach-point="_srLabelRow">
             <td colspan="3">
               <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel" data-dojo-attach-point="_spatialRefLabel">${i18n.fourLabel}</label>
               <label class="esriAnalysisStepsLabel">${i18n.spatialReference}</label>
@@ -281,7 +281,7 @@
             <td colspan="3">
               <input type="text" data-dojo-type="dijit/form/ValidationTextBox" class="esriLeadingMargin1 longInput" data-dojo-props="trim:true" data-dojo-attach-point="_spatialRefInput" value=""></input>
             </td>                
-          </tr>
+          </tr>-->
           <tr data-dojo-attach-point="_datastoreLabelRow">
             <td colspan="3">
               <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel" data-dojo-attach-point="_datastoreLabel">${i18n.fiveLabel}</label>
@@ -302,7 +302,7 @@
               <label class="esriAnalysisStepsLabel">${i18n.outputLayerLabel}</label>
             </td>
             <td class="shortTextInput">
-              <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="ResultLayerName"></a> 
+              <a href="#" class='esriFloatTrailing helpIcon' data-dojo-attach-point="_outputHelp" esriHelpTopic="ResultLayerName"></a> 
             </td>             
           </tr>
           <tr>

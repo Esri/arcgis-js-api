@@ -140,11 +140,8 @@
   background: none repeat scroll 0 0 #FFF;
   position: relative;
 }
-
-.esriBrowseAnalysisLayers .dgrid .dgrid-navigation {
-  float: right;
-  margin: 0 auto;
-  width: 70%;
+.esriBrowseAnalysisLayers.esriBrowseItemsCtr .dgrid-grid.dgrid .dgrid-navigation {
+  display: inline-table;
 }
 
 .esriBrowseAnalysisLayers .dgrid .dgrid-status {
@@ -166,7 +163,9 @@
     line-height: 1.5em;
     margin: 5px;
     padding: 5px 10px;
-    float: left;
+    
+    display: inline-block;
+    white-space: nowrap;
 }
 
 .esriBrowseAnalysisLayers .dgrid .dgrid-pagination .dgrid-page-disabled,
@@ -195,7 +194,9 @@
     line-height: 1.5em;
     margin: 5px;
     padding: 5px 10px;
-    float: left;
+    
+    display: inline-block;
+    white-space: nowrap;
 }
 
 .esriBrowseAnalysisLayers p {
@@ -479,4 +480,20 @@
 
 .esriBrowseAnalysisLayers .gallery {
   min-height: inherit;
+}
+
+
+.esriBrowseAnalysisLayers.esriBrowseItemsCtr .galleryLabelContainer {
+  background: #FFFFFF;
+  display: block;
+  display: -webkit-box;
+  max-height: 2.4em;
+  
+  
+  line-height: 1.2em;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0;
 }

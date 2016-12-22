@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Aggreger punkter</h2><p/>
+        <h2><img src="../images/GUID-6C1620D9-D176-41FA-8283-833D8B1CCCFC-web.png" alt="Samle punkter"></h2>
+        <hr/>
+    <p>Dette verkt&oslash;yet fungerer med et lag med punktgeoobjekter og et lag med omr&aring;degeoobjekter.  Geoobjektene i inndataomr&aring;det kan v&aelig;re fra et polygonlag eller de kan v&aelig;re firkantede eller sekskantede beholdere som beregnes n&aring;r verkt&oslash;yet kj&oslash;res. Verkt&oslash;yet avgj&oslash;r f&oslash;rst hvilke punkter som h&oslash;rer til hvert enkelt omr&aring;de. N&aring;r verkt&oslash;yet har fastsatt den geografiske relasjonen mellom punkter og omr&aring;de, beregnes statistikken for alle punktene i omr&aring;det og tilordnes omr&aring;det. Den mest grunnleggende statistikken er antall punkter innenfor omr&aring;det, men du kan beregne annen statistikk ogs&aring;. 
+
+    </p>
+    <p>La oss for eksempel si at du har punktgeoobjekter for kafeer og omr&aring;degeoobjekter for fylker, og du vil oppsummere kaffesalget per fylke. Forutsatt at kafeene har et  <i>TOTALT_SALG</i>-attributt, kan du f&aring; summen for <i>TOTALT_SALG</i> i hvert fylke, eller minimum og maksimum <i>TOTAL_SALG</i>
+ i hvert fylke, eller annen statistikk, som antall, rekkevidde, standardavvik og variasjon.
+    </p>
+    <p>Dette verkt&oslash;yet kan ogs&aring; arbeide med data som er tidsaktivert. Hvis tid er aktivert p&aring; inngangspunktene, er alternativer for tidsinndeling tilgjengelig. Med tidsinndeling kan du beregne forholdet mellom punkt og omr&aring;de for &eacute;n bestemt tidsinndeling For eksempel kan du se p&aring; timers mellomrom, noe som vil resultere i utdata for hver time. 
+    </p>
+    <p>Et eksempel med tid: Anta at du hadde punktgeoobjekter for hver transaksjon som gj&oslash;res p&aring; ulike kafeer og ikke noe omr&aring;delag. Dataene er blitt registrert over et &aring;r, og hver transaksjon har en beliggenhet og en tidsangivelse. Forutsatt at hver transaksjon har et  <i>TOTAL_SALG</i>-attributt, kan du f&aring; ut summen av alle <i>TOTAL_SALG</i> innenfor omr&aring;det og tidspunktene du er interessert i. Hvis disse transaksjonene er for &eacute;n enkelt by, kan vi generere omr&aring;der som er 1 kilometer store nett og se p&aring; ukentlige tidsinndelinger for &aring; oppsummere transaksjonene i b&aring;de tid og rom.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="pointLayer">
+        <div><h2>Velg et lag som inneholder punkter som skal samles i områder</h2></div>
+        <hr/>
+        <div>
+            <p>Punktlaget som skal samles i omr&aring;dene.
+            </p>
+            <p>I tillegg til &aring; velge et lag fra kartet kan du velge  <b>Browse Layers</b> (Bla gjennom lag), som du finner nederst i rullegardinlisten, til &aring; bla deg frem til innholdet for et fildelingsdatasett for big data eller et geoobjektslag.  
+            </p>
+        </div>
+    </div>
+    <div id="inputAggregation">
+        <div><h2>Velg et områdelag det skal aggregeres til</h2></div>
+        <hr/>
+        <div>
+            <p>Omr&aring;dene som punktlaget skal samles i. Du kan velge mellom et omr&aring;delag som du oppgir eller beholdere som genereres n&aring;r verkt&oslash;yet kj&oslash;res.   N&aring;r du genererer beholdere for  <b>Kvadrat</b>, avgj&oslash;r antallet og enhetene som er spesifisert h&oslash;yden og lengden p&aring; kvadratet. For <b>Heksagon</b> avgj&oslash;r antallet og enhetene som er angitt, avstanden mellom de parallelle sidene.
+            </p>
+        </div>
+    </div>
+    <div id="polygonLayer">
+        <div><h2>Velg områdelaget som det skal samles i</h2></div>
+        <hr/>
+        <div>
+            <p>Omr&aring;delaget som punktene skal summeres i Alle punkter som er innenfor grensene til omr&aring;dene i dette laget, telles og blir eventuelt oppsummert ved hjelp av de statistikktypene du velger. 
+            </p>
+            <p>
+            </p>
+            <p>Enten  <b>Bin Size</b> (beholderst&oslash;rrelse) for trakter eller et <b>Omr&aring;delag</b> m&aring; angis.
+            </p>
+        </div>
+    </div>
+    <div id="inputBins">
+        <div><h2>Velg en avstand som skal brukes til å generere beholdere og aggregeres til</h2></div>
+        <hr/>
+        <div>
+            <p>Avstanden som brukes til &aring; generere beholdere &aring; samle inndatapunkter i. For en kvadratisk beholder representerer st&oslash;rrelsen h&oslash;yden p&aring; kvadratet. For et heksagon representerer st&oslash;rrelsen h&oslash;yden p&aring; heksagonet (fra parallelle sider).  
+            </p>
+            <p>Enten  <b>Bin Size</b> (beholderst&oslash;rrelse) for trakter eller et <b>Omr&aring;delag</b> m&aring; angis.
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Aggreger ved hjelp av tidsintervaller (valgfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Hvis tid er aktivert i dette inndatapunktlaget og det er av typen umiddelbart, kan du analysere med tidsinndelinger.  Det er tre parametere du kan angi n&aring;r du bruker tid:
+                <ul>
+                    <li>  <b>Tidsintervall</b>
+                    </li>
+                    <li> <b>Tidstrinn</b>
+                    </li>
+                    <li> <b>Referansetid</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Tenk deg at du hadde data som representerte et &aring;r i tid, og du &oslash;nsket &aring; analysere ved hjelp av inndeling i uker. For &aring; gj&oslash;re det kan du stille inn  <b>Tidsintervall</b> til <code>1 uke</code>.
+            </p>
+            <p> Tenk deg at du hadde data som representerte et &aring;r i tid, og du &oslash;nsket &aring; analysere ved hjelp av den f&oslash;rste uken i m&aring;neden. For &aring; gj&oslash;re det kan du stille inn <b>Tidsintervall</b> til <code>1 uke</code>, <b>Tidstrinn</b> til <code>1 m&aring;ned</code> og <b>Referansetid</b> til <code>1. januar, kl. 12.00</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>Tidsintervall som det skal samles inn i</h2></div>
+        <hr/>
+        <div>
+            <p>Tidsintervall som brukes til &aring; dele opp dataene. Tidsintervallet kan brukes alene eller sammen med parameteren  <b>Tidstrinn</b> eller <b>Referansetid</b>.
+            </p>
+            <p> Hvis du &oslash;nsket &aring; lage tidsinndelinger som fant sted hver mandag fra 09.00 til 10.00, ville <b>Tidsintervall</b> v&aelig;rt <code>1 time</code>, <b>Tidstrinn</b> ville v&aelig;rt <code>1 uke</code>, og <b>Referansetid</b> ville v&aelig;rt <code>9.00.00 p&aring; en mandag</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>Tidstrinn som det skal samles inn i</h2></div>
+        <hr/>
+        <div>
+            <p> Trinnet som brukes til &aring; beregne en tidsinndeling. <b>Tidstrinn</b> kan brukes alene ellers sammen med <b>Tidsintervall</b>, med <b>Referansetid</b> eller med b&aring;de <b>Tidsintervall</b> og <b>Referansetid</b>.
+            </p>
+            <p> Hvis du &oslash;nsket &aring; lage tidsinndelinger som fant sted hver mandag fra 09.00 til 10.00, ville <b>Tidsintervall</b> v&aelig;rt <code>1 time</code>, <b>Tidstrinn</b> ville v&aelig;rt <code>1 uke</code>, og <b>Referansetid</b> ville v&aelig;rt <code>9.00.00 p&aring; en mandag</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Referansetid som brukes til å innrette tidsinndelingen</h2></div>
+        <hr/>
+        <div>
+            <p>Datoen og tidspunktet som brukes til &aring; justere tidsinndelingene.  <b>Tidstrinn</b> starter fra og fortsetter bakover for den refererte tiden.
+            </p>
+            <p> Hvis du &oslash;nsket &aring; lage tidsinndelinger som fant sted hver mandag fra 09.00 til 10.00, ville <b>Tidsintervall</b> v&aelig;rt <code>1 time</code>, <b>Tidstrinn</b> ville v&aelig;rt <code>1 uke</code>, og <b>Referansetid</b> ville v&aelig;rt <code>9.00.00 p&aring; en mandag</code>.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Legg til statistikk (valgfritt)</h2></div>
+        <hr/>
+        <div>
+            <p> Du kan beregne statistikk p&aring; geoobjekter som er summert. P&aring; numeriske felt kan du beregne f&oslash;lgende:
+                <ul>
+                    <li>Antall
+                    </li>
+                    <li>Gjennomsnitt
+                    </li>
+                    <li>Min
+                    </li>
+                    <li>Maks
+                    </li>
+                    <li>Omr&aring;de
+                    </li>
+                    <li>Varians
+                    </li>
+                    <li>Standardavvik
+                    </li>
+                </ul>
+                
+            </p>
+            <p>P&aring; strengfelter kan du beregne f&oslash;lgende:
+                <ul>
+                    <li>Antall
+                    </li>
+                    <li>Noen &ndash; Denne statistikken er en tilfeldig pr&oslash;ve av en strengverdi i det spesifiserte feltet.
+                    </li>
+                </ul>
+                All statistikk beregnes p&aring; ikke-nullverdier. Resultatlaget inneholder et nytt felt for hver beregnet statistikk. Du kan legge til flere statistikker ved &aring; velge et attributt og statistikk. 
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>SpatialReference (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>Dette er en midlertidig parameter for forh&aring;ndslansering, for &aring; angi den romlige referansen for behandling. Mange big data-verkt&oslash;y krever at et projisert koordinatsystem blir anvendt som den romlige referansen for behandling. Som standard vil verkt&oslash;yet bruke inndatakoordinatsystemet, men vil mislykkes hvis det er et geografisk koordinatsystem. Hvis du vil angi et projisert koordinatsystem, skriver du inn WKID. For eksempel angis  <b>Web Mercator</b> som <code>3857</code>.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Velg datalager</h2></div>
+        <hr/>
+        <div>
+            <p>Dette er en midlertidig parameter for forh&aring;ndslansering, for &aring; angi datalageret der resultatene lagres. Begge datalagrene er en del av  ArcGIS Data Store. Hvis du velger det spatiotemporale datalageret, men ikke har et installert, vil verkt&oslash;yet mislykkes. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Navn på resultatlag</h2></div>
+        <hr/>
+        <div>
+            <p> Dette er navnet p&aring; laget som vil bli laget i <b>Mitt Innhold</b> og lagt til i kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget allerede eksisterer, vil verkt&oslash;yet mislykkes.
+            </p>
+            <p>Bruk rullegardinlisten  <b>Lagre resultat</b> i til &aring; angi navnet p&aring; en mappe i <b>Mitt innhold</b> som resultatene skal lagres i.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

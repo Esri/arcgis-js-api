@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.18/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.19/esri/copyright.txt for details.
 
 function messageHandler(e){var o=e.data;if(o){var s=e.data.connection;if("<configure>"===o.type){var n=o.configure;isInitialized||(self.dojoConfig=n.dojoConfig,self.importScripts(n.loaderUrl),require(["dojo/_base/lang","esri/config"],function(e,o){e.mixin(o,n.esriConfig),self.postMessage({type:"<worker-configured>"})}))}else if("<open-connection>"===o.type){var i=o.data.path,t=o.id;if(connections[s])return void self.postMessage({type:"<response>",id:t,connection:s});require(["esri/layers/vectorTiles/core/workers/WorkerConnection",i],function(e,o){connections[s]=new e(o,this,s),self.postMessage({type:"<response>",id:t,data:{connection:s},error:void 0})})}else if("<close-connection>"===o.type)connections[s]&&delete connections[s];else if("<static-message>"===o.type){var r=o.id;if(outgoingStaticMessages[r]){var a=outgoingStaticMessages[r];delete outgoingStaticMessages[r],o.error?a.reject(o.error):a.resolve(o.data)}}else{var c=e.data.type;if(c){var g=connections[s];g&&g.proxy.message(e)}}}}var connections={},outgoingStaticMessages={},isInitialized=!1;self.addEventListener("message",messageHandler),self.postMessage({type:"<worker-loaded>"});

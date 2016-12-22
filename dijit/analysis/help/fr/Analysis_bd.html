@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="bdToolbox">
+        <p>La bo&icirc;te &agrave; outils Analyses Big Data r&eacute;partit les t&acirc;ches d'analyse sur votre instance d'ArcGIS GeoAnalytics Server. Vous pouvez ainsi analyser plus rapidement davantage de donn&eacute;es en exploitant la puissance de plusieurs ordinateurs. Les outils suivants sont actuellement disponibles&nbsp;:
+            <ul>
+                <li> <b>Agr&eacute;ger les points</b>
+                </li>
+                <li> <b>Entit&eacute;s jointes</b>
+                </li>
+                <li> <b>Reconstruire les pistes</b>
+                </li>
+                <li> <b>Synth&eacute;tiser les attributs</b>
+                </li>
+                <li> <b>Synth&eacute;tiser - A l'int&eacute;rieur</b>
+                </li>
+                <li> <b>Rechercher des emplacements similaires</b>
+                </li>
+                <li> <b>Calculer la densit&eacute;</b>
+                </li>
+                <li> <b>Trouver des points chauds</b>
+                </li>
+                <li> <b>Cr&eacute;er des zones tampon</b>
+                </li>
+                <li> <b>Copier dans le stockage des donn&eacute;es</b>
+                </li>
+            </ul>
+            
+        </p>
+        <p>La bo&icirc;te &agrave; outils Analyses Big Data sert principalement &agrave; analyser des donn&eacute;es volumineuses en s'int&eacute;ressant particuli&egrave;rement aux mod&egrave;les spatiaux et temporels. 
+        </p>
+    </div>
+    <div id="SummarizeDataCategory" class="largesize">
+        <h2>Synthétiser les données</h2>
+        <hr/>
+        <p>Le jeu d'outils Synth&eacute;tiser les donn&eacute;es contient des outils qui permettent de calculer les nombres totaux, les longueurs, les surfaces et les statistiques descriptives &eacute;l&eacute;mentaires des entit&eacute;s et de leurs attributs au sein des surfaces ou &agrave; proximit&eacute; d'autres entit&eacute;s.
+            <ul>
+                <li> <b>Agr&eacute;ger les points</b> permet de calculer des statistiques concernant les points qui se trouvent au sein de surfaces ou de groupes sp&eacute;cifi&eacute;s.
+                </li>
+                <li> <b>Entit&eacute;s jointes</b> permet de calculer des statistiques concernant des entit&eacute;s qui partagent une relation spatiale, temporelle ou attributaire avec d'autres entit&eacute;s.
+                </li>
+                <li> <b>Reconstruire les pistes</b> permet de calculer des statistiques concernant des points ou des polygones qui appartiennent &agrave; la m&ecirc;me piste et reconstitue des entr&eacute;es en pistes.
+                </li>
+                <li> <b>Synth&eacute;tiser les attributs</b> permet de calculer des statistiques concernant des donn&eacute;es tabulaires ou d'entit&eacute; qui partagent des attributs.
+                </li>
+                <li> <b>Synth&eacute;tiser - A l'int&eacute;rieur</b> permet de calculer des statistiques des entit&eacute;s surfaciques et de leurs attributs qui se superposent.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregatePointsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Agréger des points</h2></td>
+                    <td>
+                    <img src="../images/GUID-6C1620D9-D176-41FA-8283-833D8B1CCCFC-web.png" class="titleImage" alt="Agr&eacute;ger les points">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>A l'aide d'une couche d'entit&eacute;s ponctuelles et d'une couche d'entit&eacute;s surfaciques ou de groupes d&eacute;finis par une distance sp&eacute;cifi&eacute;e, cet outil d&eacute;termine les points qui se trouvent dans chaque surface ou groupe et calcule les statistiques concernant tous les points au sein de chaque surface ou groupe. Vous pouvez &eacute;galement appliquer des tranches horaires avec cet outil. 
+            </p>
+            <p> Par exemple
+                <ul>
+                    <li>Etant donn&eacute; les emplacements des points des d&eacute;lits, comptabilise le nombre de d&eacute;lits par comt&eacute; ou autre secteur administratif.
+                    </li>
+                    <li>Recherche les revenus mensuels les plus &eacute;lev&eacute;s et les plus faibles des franchises &agrave; l'aide de groupes de 10&nbsp;km.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="JoinFeaturesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Entités jointes</h2></td>
+                    <td>
+                    <img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" class="titleImage" alt="Entit&eacute;s jointes">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>A l'aide des couches d'entit&eacute;s ou des donn&eacute;es tabulaires, vous pouvez joindre des entit&eacute;s et des enregistrements en fonction des relations sp&eacute;cifiques entre les couches ou tables en entr&eacute;e.  Les jointures sont d&eacute;termin&eacute;es par des relations spatiales, temporelles et attributaires et des r&eacute;sum&eacute;s statistiques peuvent &ecirc;tre calcul&eacute;s.  
+            </p>
+            <p> Par exemple
+                <ul>
+                    <li>Pour les emplacements des points des d&eacute;lits avec une heure, l'outil joint les donn&eacute;es de criminalit&eacute; &agrave; elles-m&ecirc;mes, en sp&eacute;cifiant une relation spatiale des crimes &agrave; moins d'un kilom&egrave;tre les uns des autres, afin de d&eacute;terminer si une s&eacute;quence de crimes proches les uns des autres a lieu dans l'espace et le temps.
+                    </li>
+                    <li> Pour une table de codes postaux avec des informations d&eacute;mographiques et des entit&eacute;s surfaciques repr&eacute;sentant des b&acirc;timents r&eacute;sidentiels, l'outil joint les informations d&eacute;mographiques aux r&eacute;sidences afin que chaque r&eacute;sidence dispose des informations.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="ReconstructTracksTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Reconstruire les pistes</h2></td>
+                    <td>
+                    <img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" class="titleImage" alt="Reconstruire les pistes">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>A l'aide d'une couche temporelle d'entit&eacute;s ponctuelles ou surfaciques qui repr&eacute;sentent un  <code>instant</code> donn&eacute; dans le temps, cet outil d&eacute;termine quelles entit&eacute;s en entr&eacute;e appartiennent &agrave; une piste et trie les entr&eacute;es s&eacute;quentiellement dans le temps. Des statistiques peuvent &ecirc;tre calcul&eacute;es pour les entit&eacute;s en entr&eacute;e au sein de chaque piste.
+            </p>
+            <p> Par exemple
+                <ul>
+                    <li>Pour les emplacements des points et les mesures horaires de l'ouragan, l'outil calcule la vitesse moyenne du vent et la pression &eacute;olienne maximale de l'ouragan.
+                    </li>
+                    <li>Recherche les revenus mensuels les plus &eacute;lev&eacute;s et les plus faibles des franchises &agrave; l'aide de groupes de 10&nbsp;km.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeAttributesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Synthétiser les attributs</h2></td>
+                    <td>
+                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="Synth&eacute;tiser les attributs">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> A l'aide de donn&eacute;es d'entit&eacute; ou de donn&eacute;es tabulaires, cet outil synth&eacute;tise les statistiques de champs sp&eacute;cifiques.
+            </p>
+            <p> Par exemple
+                <ul>
+                    <li> Pour l'emplacement des &eacute;piceries avec un champ <i>COMPANY_NAME</i>, synth&eacute;tise les points de vente en fonction du nom de la soci&eacute;t&eacute; pour d&eacute;terminer les statistiques de chaque soci&eacute;t&eacute;.
+                    </li>
+                    <li>Pour une table d'&eacute;piceries avec des champs  <i>COMPANY_NAME</i> et <i>COUNTY</i>, synth&eacute;tise les magasins en fonction du nom de la soci&eacute;t&eacute; et du comt&eacute; pour d&eacute;terminer les statistiques de chaque soci&eacute;t&eacute; au sein de chaque comt&eacute;.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeWithinTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Synthétiser - A l\'intérieur</h2></td>
+                    <td>
+                    <img src="../images/GUID-90E0CB1F-EB97-4752-B2EE-452B7B45475E-web.png" class="titleImage" alt="Synth&eacute;tiser - A l'int&eacute;rieur">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Recherche les surfaces (et les parties de surfaces) qui recouvrent deux couches et calcule les statistiques concernant le chevauchement. 
+            </p>
+            <p> Par exemple
+                <ul>
+                    <li>En prenant une couche de zones de bassin versant et une couche de zones d'utilisation du sol par type d'utilisation du sol, calculez la superficie totale du type d'utilisation du sol pour chaque bassin versant. 
+                    </li>
+                    <li>En prenant une couche de parcelles dans un comt&eacute; et une couche de limites de ville, r&eacute;sumez la valeur moyenne des parcelles vacantes au sein de chaque ville.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="FindLocationsCategory" class="smallsize">
+        <h2>Rechercher des emplacements</h2>
+        <hr/>
+        <p>Ces outils permettent d'identifier les surfaces qui r&eacute;pondent &agrave; un certain nombre de crit&egrave;res que vous d&eacute;finissez.  
+            <ul>
+                <li>L'outil  <b>Rechercher des emplacements similaires</b> recherche les emplacements les plus similaires &agrave; un ou plusieurs emplacements de r&eacute;f&eacute;rence, sur la base des crit&egrave;res que vous d&eacute;finissez.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="FindSimilarLocationsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Rechercher des emplacements similaires</h2></td>
+                    <td>
+                    <img src="../images/GUID-6262A84E-9087-4E48-930E-E9B89FECC836-web.png" class="titleImage" alt="Rechercher des emplacements similaires">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Selon les crit&egrave;res que vous sp&eacute;cifiez, l'outil Rechercher des emplacements similaires mesure la similarit&eacute; entre les emplacements figurant dans votre couche de recherche de candidats et un ou plusieurs emplacements de r&eacute;f&eacute;rence. 
+            </p>
+            <p> Par exemple
+                <ul>
+                    <li>Recherche les dix magasins les plus similaires en examinant le nombre d'employ&eacute;s et les ventes annuelles.
+                    </li>
+                    <li>Recherche les 100&nbsp;villes les plus similaires en examinant la relation entre la population, la croissance annuelle et les recettes fiscales.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzePatternsCategory" class="regularsize">
+        <h2>Analyser la répartition spatiale</h2>
+        <hr/>
+        <p>Ces outils vous permettent d'identifier, de quantifier et de visualiser les mod&egrave;les spatiaux dans vos donn&eacute;es.  
+            <ul>
+                <li>L'outil  <b>Calculer la densit&eacute;</b> s&eacute;lectionne des quantit&eacute;s connues de certains ph&eacute;nom&egrave;nes et les r&eacute;partit sur la carte.
+                </li>
+                <li> <b>Trouver des points chauds</b> identifie les agr&eacute;gations statistiquement significatives dans le mod&egrave;le spatial de vos donn&eacute;es.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateDensityTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Calculer la densité</h2></td>
+                    <td>
+                    <img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" class="titleImage" alt="Calculate Density">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>L'outil Calculer la densit&eacute; cr&eacute;e une carte de densit&eacute; &agrave; partir d'entit&eacute;s ponctuelles en r&eacute;partissant des quantit&eacute;s connues de certains ph&eacute;nom&egrave;nes (repr&eacute;sent&eacute;s sous forme d'attributs des points) sur la carte. Le r&eacute;sultat est une couche de surfaces repr&eacute;sentant la densit&eacute;.
+            </p>
+            <p> Par exemple
+                <ul>
+                    <li>Calcul des densit&eacute;s des h&ocirc;pitaux au sein d'un comt&eacute;. La couche de r&eacute;sultat affiche les zones dont l'accessibilit&eacute; aux h&ocirc;pitaux est &eacute;lev&eacute;e ou faible et ces informations peuvent servir &agrave; choisir o&ugrave; implanter de nouveaux h&ocirc;pitaux.
+                    </li>
+                    <li>Identification des zones pr&eacute;sentant de forts risques d'incendies forestiers en fonction des emplacements historiques des incendies forestiers.
+                    </li>
+                    <li>Localisation des communaut&eacute;s qui se trouvent &agrave; l'&eacute;cart des principaux axes routiers en vue de planifier la construction de nouvelles routes.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="FindHotSpotsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Rechercher les points chauds</h2></td>
+                    <td>
+                    <img src="../images/GUID-6D600155-AA9B-4F02-AD8B-2E84150AB743-web.png" class="titleImage" alt="Rechercher les points chauds">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>L'outil Rechercher les points chauds d&eacute;termine si le mod&egrave;le spatial de vos donn&eacute;es pr&eacute;sente des agr&eacute;gations statistiquement significatives. 
+                <ul>
+                    <li>Vos points (d&eacute;lits, arbres, accidents de la circulation) sont-ils r&eacute;ellement agr&eacute;g&eacute;s ? Comment en &ecirc;tre certain ?
+                    </li>
+                    <li>Avez-vous vraiment d&eacute;couvert un hot spot statistiquement significatif (d&eacute;penses, mortalit&eacute; infantile, r&eacute;sultats d'examens &eacute;lev&eacute;s homog&egrave;nes) ou votre carte donnerait-elle des r&eacute;sultats diff&eacute;rents en modifiant sa symbolisation ?
+                    </li>
+                </ul>
+                L'outil Rechercher les points chauds vous aide &agrave; trouver la r&eacute;ponse &agrave; ces questions en toute confiance.
+            </p>
+            <br/>
+        </div>
+    <div id="UseProximityCategory" class="smallsize">
+        <h2>Utiliser la proximité</h2>
+        <hr/>
+        <p>Ces outils permettent de r&eacute;pondre &agrave; l'une des questions les plus fr&eacute;quentes en mati&egrave;re d'analyse spatiale&nbsp;: Qu'est-ce qui se trouve &agrave; proximit&eacute; de quoi&nbsp;?
+            <ul>
+                <li> <b>Cr&eacute;er des zones tampon</b> permet de cr&eacute;er des surfaces &agrave; une distance donn&eacute;e des entit&eacute;s.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CreateBuffersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Créer des zones tampon</h2></td>
+                    <td>
+                    <img src="../images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" class="titleImage" alt="Cr&eacute;er des zones tampon">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Une zone tampon est une surface qui couvre une distance donn&eacute;e &agrave; partir d'une entit&eacute; ponctuelle, lin&eacute;aire ou surfacique.
+            </p>
+            <p> Par exemple
+                <ul>
+                    <li>A l'aide d'entit&eacute;s de rivi&egrave;re lin&eacute;aires, buff&eacute;rise chaque rivi&egrave;re de 50&nbsp;fois la largeur de la rivi&egrave;re pour proposer une limite riveraine.
+                    </li>
+                    <li>Etant donn&eacute; des surfaces repr&eacute;sentant des comt&eacute;s, buff&eacute;rise chaque comt&eacute; de 200&nbsp;miles nautiques pour d&eacute;terminer la limite maritime.  
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="ManageDataCategory" class="smallsize">
+        <h2>Gérer les données</h2>
+        <hr/>
+        <p>Ces outils permettent de g&eacute;rer au quotidien les donn&eacute;es g&eacute;ographiques et tabulaires.
+            <ul>
+                <li> <b>Copier dans le stockage des donn&eacute;es</b> copie des donn&eacute;es dans votre instance ArcGIS Data Store et cr&eacute;e une couche dans votre SIG Web.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CopyToDataStoreTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Copier dans le stockage des données</h2></td>
+                    <td>
+                    <img src="../images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" class="titleImage" alt="Copier dans le stockage des donn&eacute;es">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Copie une couche d'entit&eacute;s en entr&eacute;e ou une table dans un service  ArcGIS Data Store et cr&eacute;e une couche dans votre SIG Web. </p>
+            <p> Par exemple
+                <ul>
+                    <li> Copie une collection de fichiers <code>.csv</code> d'un partage de fichiers Big Data dans le stockage des donn&eacute;es spatio-temporelles &agrave; des fins de visualisation.
+                    </li>
+                    <li>Copie les entit&eacute;s de l'&eacute;tendue actuelle de la carte qui sont stock&eacute;es dans le stockage des donn&eacute;es spatio-temporelle vers le stockage des donn&eacute;es relationnelles.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+</div>
+</html>

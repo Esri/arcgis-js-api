@@ -139,7 +139,7 @@
           <tr data-dojo-attach-point="_afterStatsRow">
             <td colspan="3" class="clear"></td>
           </tr>
-          <tr data-dojo-attach-point="_datastoreLabelRow">
+          <!--<tr data-dojo-attach-point="_datastoreLabelRow">
             <td colspan="2">
               <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel" data-dojo-attach-point="_datastoreLabel">${i18n.sevenLabel}</label>
               <label class="esriAnalysisStepsLabel">${i18n.datastoreLabel}</label>
@@ -155,10 +155,10 @@
                 <option value="spatialtemporal" selected="true">${i18n.spatialDS}</option>
               </select>
             </td>
-          </tr> 
+          </tr>-->
           <tr>
             <td colspan="2">
-              <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.eightLabel}</label>
+              <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.sevenLabel}</label>
               <label class="esriAnalysisStepsLabel">${i18n.outputLayerLabel}</label>
             </td>
             <td class="shortTextInput">
@@ -197,7 +197,7 @@
       <div data-dojo-type="esri/dijit/analysis/CreditEstimator"  data-dojo-attach-point="_usageForm"></div>
     </div>
     <div data-dojo-type="dijit/Dialog" data-dojo-attach-point="_exprDialog">
-      <div style="width:30em;height:15em;">
+      <div class="esriBufExpressionFormCtr">
         <div data-dojo-attach-point="_expressionCtr"></div>
       </div>
     </div>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Laske tiheys</h2><p/>
+        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Calculate Density"></h2>
+        <hr/>
+    <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas classified from least dense to most dense.   
+
+    </p>
+    <p>For point input, each point should represent the location of some event or incident, and the result layer represents a count of the incident per unit area.  A higher density value in a new location means that there are more points near that location.  In many cases, the result layer can be interpreted as a risk surface for future events. For example, if the input points represent locations of lightning strikes, the result layer can be interpreted as a risk surface for future lightning strikes.
+    </p>
+    <p>Other use cases of this tool include the following:
+        <ul>
+            <li>Creating crime-density maps to help police departments properly allocate resources to high crime areas.
+            </li>
+            <li>Calculating densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to decide where new hospitals should be built.
+            </li>
+            <li>Identifying areas that are at high risk of forest fires based on historical locations of forest fires.
+            </li>
+            <li>Locating communities that are far from major highways in order to plan where new roads should be constructed.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Valitse pistekarttataso, joista tiheys lasketaan</h2></div>
+        <hr/>
+        <div>
+            <p>The point layer on which the density will be calculated.
+            </p>
+            <p>Sen lis&auml;ksi, ett&auml; voit valita karttatason kartasta, voit valita  <b>Selaa karttatasoja</b> -vaihtoehdon avattavan luettelon alareunasta ja selata Big Data -tiedostoresurssin aineistoryhm&auml;n tai karttatason sis&auml;lt&ouml;&ouml;n.  
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>Valitse vähintään yksi kenttä, jonka tiheys lasketaan</h2></div>
+        <hr/>
+        <div>
+            <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
+            </p>
+            <p>The density for the count of points will always be calculated.   If no fields are selected, each location will be assumed to represent a single count.
+            </p>
+        </div>
+    </div>
+    <div id="binType">
+        <div><h2>Valitse lohkon muoto</h2></div>
+        <hr/>
+        <div>
+            <p>The shape of bins that points are aggregated into and used for the density calculation.
+            </p>
+        </div>
+    </div>
+    <div id="binSizing">
+        <div><h2>Valitse lohkon koko tiheyslaskentaa varten</h2></div>
+        <hr/>
+        <div>
+            <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
+            </p>
+        </div>
+    </div>
+    <div id="weight">
+        <div><h2>Valitse käytettävä tiheyden painotus</h2></div>
+        <hr/>
+        <div>
+            <p>The type of weighting applied to the density calculation. There are two options:
+                <ul>
+                    <li> <b>Uniform</b>&mdash;This calculates a magnitude per area.
+                    </li>
+                    <li> <b>Kernel</b>&mdash;Applies a kernel function to fit a smooth tapered surface to each point.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="neighborhood">
+        <div><h2>Valitse naapuruston koko</h2></div>
+        <hr/>
+        <div>
+            <p>The size of the area used to calculate the density. The neighborhood size must be larger than the bin size.
+            </p>
+        </div>
+    </div>
+    <div id="areaUnits">
+        <div><h2>Valitse tiheyden tulosyksiköt</h2></div>
+        <hr/>
+        <div>
+            <p>The desired output units of the density values. By default, this is set to the units in your map (for example, square meters). If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Laske tiheys käyttäen aikaleikkeitä (valinnainen)</h2></div>
+        <hr/>
+        <div>
+            <p>Jos aika on otettu k&auml;ytt&ouml;&ouml;n l&auml;ht&ouml;aineiston karttatasossa ja jos ajan tyyppin&auml; on hetki, voit k&auml;ytt&auml;&auml; analysointiin aikaleikkeit&auml;. Voit m&auml;&auml;ritt&auml;&auml; kolme parametria, kun k&auml;yt&auml;t aikaa:
+                <ul>
+                    <li>  <b>Aikav&auml;li</b>
+                    </li>
+                    <li> <b>Aika-askel</b>
+                    </li>
+                    <li> <b>Viiteaika</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Oletetaan, ett&auml; sinulla on vuotta kuvaava aineisto ja ett&auml; haluat k&auml;ytt&auml;&auml; analysointiin aikaleikkeit&auml;. Voit tehd&auml; t&auml;m&auml;n m&auml;&auml;ritt&auml;m&auml;ll&auml;  <b>Aikav&auml;li</b>-parametrin arvoksi <code>1 viikko</code>.
+            </p>
+            <p> Oletetaan, ett&auml; sinulla on vuotta kuvaava aineisto ja ett&auml; haluat k&auml;ytt&auml;&auml; analysointiin kuukauden ensimm&auml;ist&auml; viikkoa. Voit tehd&auml; t&auml;m&auml;n m&auml;&auml;ritt&auml;m&auml;ll&auml; <b>Aikav&auml;li</b>-parametrin arvoksi <code>1 viikko</code>, <b>Aika-askel</b>-parametrin arvoksi <code>1 kuukausi</code> ja <b>Viiteaika</b>-parametrin arvoksi <code>1. tammikuuta klo 24.00</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>Aikaväli, jonka tiheys lasketaan</h2></div>
+        <hr/>
+        <div>
+            <p>Aikav&auml;li, jota k&auml;ytet&auml;&auml;n aineiston leikkaamiseen. Aikav&auml;li&auml; voi k&auml;ytt&auml;&auml; yksin tai  <b>Aikav&auml;li</b>- tai <b>Viiteaika</b>-parametrin kanssa.
+            </p>
+            <p> Jos haluat luoda aikaleikkeit&auml;, joiden aikav&auml;li on maanantaina klo 9.00&ndash;10.00, m&auml;&auml;rit&auml; <b>Aikav&auml;li</b>-parametrin arvoksi <code>1 tunti</code>, <b>Aika-askel</b>-parametrin arvoksi <code>1 viikko</code> ja <b>Viiteaika</b>-parametrin arvoksi <code>9.00 maanantaina</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>Aika-askel, jonka tiheys lasketaan</h2></div>
+        <hr/>
+        <div>
+            <p> Askel, jota k&auml;ytet&auml;&auml;n aikaleikkeen laskemiseen. <b>Aika-askel</b>-parametria voi k&auml;ytt&auml;&auml; yksin, <b>Aikav&auml;li</b>-parametrin kanssa, <b>Viiteaika</b>-parametrin kanssa tai sek&auml; <b>Aikav&auml;li</b>- ett&auml; <b>Viiteaika</b>-parametrin kanssa.
+            </p>
+            <p> Jos haluat luoda aikaleikkeit&auml;, joiden aikav&auml;li on maanantaina klo 9.00&ndash;10.00, m&auml;&auml;rit&auml; <b>Aikav&auml;li</b>-parametrin arvoksi <code>1 tunti</code>, <b>Aika-askel</b>-parametrin arvoksi <code>1 viikko</code> ja <b>Viiteaika</b>-parametrin arvoksi <code>9.00 maanantaina</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Viiteaika, jota käytetään aikaleikkeiden kohdistamiseen</h2></div>
+        <hr/>
+        <div>
+            <p>P&auml;iv&auml;m&auml;&auml;r&auml; ja kellonaika, joita k&auml;ytet&auml;&auml;n aikaleikkeiden kohdistamiseen.  <b>Aika-askel</b> alkaa viiteajasta ja jatkuu viitatusta ajasta taaksep&auml;in.
+            </p>
+            <p> Jos haluat luoda aikaleikkeit&auml;, joiden aikav&auml;li on maanantaina klo 9.00&ndash;10.00, m&auml;&auml;rit&auml; <b>Aikav&auml;li</b>-parametrin arvoksi <code>1 tunti</code>, <b>Aika-askel</b>-parametrin arvoksi <code>1 viikko</code> ja <b>Viiteaika</b>-parametrin arvoksi <code>9.00 maanantaina</code>.
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>Koordinaatistotieto (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>T&auml;m&auml; on esijulkaisun tilap&auml;inen parametri k&auml;sittelyn koordinaatistotiedon m&auml;&auml;ritt&auml;miseen. Monet Big Data -ty&ouml;kalut edellytt&auml;v&auml;t, ett&auml; projisoitua koordinaattij&auml;rjestelm&auml;&auml; k&auml;ytet&auml;&auml;n k&auml;sittelyn koordinaatistotietona. Oletusarvon mukaan ty&ouml;kalu k&auml;ytt&auml;&auml; l&auml;ht&ouml;aineiston koordinaattij&auml;rjestelm&auml;&auml;, mutta ty&ouml;kalua ei voi suorittaa, jos kyseess&auml; on maantieteellinen koordinaattij&auml;rjestelm&auml;. Jos haluat m&auml;&auml;ritt&auml;&auml; projisoidun koordinaattij&auml;rjestelm&auml;n, anna WKID. Jos haluat esimerkiksi m&auml;&auml;ritt&auml;&auml;  <b>Web Mercator</b> -koordinaattij&auml;rjestelm&auml;n, anna <code>3857</code>.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Valitse aineistosäilö</h2></div>
+        <hr/>
+        <div>
+            <p>T&auml;m&auml; on esijulkaisun tilap&auml;inen parametri sen aineistos&auml;il&ouml;n m&auml;&auml;ritt&auml;miseen, johon tulokset tallennetaan. Molemmat aineistos&auml;il&ouml;t ovat osa  ArcGIS Data Storea. Jos valitset tila-aika-aineistos&auml;il&ouml;n, mutta sellaista ei ole asennettuna, ty&ouml;kalua ei voi suorittaa. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tulostason nimi</h2></div>
+        <hr/>
+        <div>
+            <p> Sen tason nimi, joka luodaan kohtaan <b>Oma sis&auml;lt&ouml;</b> ja joka lis&auml;t&auml;&auml;n karttaan. Oletusnimi perustuu ty&ouml;kalun nimeen ja l&auml;ht&ouml;karttatason nimeen. Jos karttataso on jo olemassa, ty&ouml;kalua ei voi suorittaa.
+            </p>
+            <p>Avattavan  <b>Tallenna tulos kohteeseen</b> -valikon avulla voit m&auml;&auml;ritt&auml;&auml; sen <b>Oma sis&auml;lt&ouml;</b> -kansion nimen, johon tulos tallennetaan.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

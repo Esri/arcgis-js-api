@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Hot-Spots suchen</h2><p/>
+        <h2><img src="../images/GUID-6D600155-AA9B-4F02-AD8B-2E84150AB743-web.png" alt="Hot-Spots suchen"></h2>
+        <hr/>
+    <p>Das Werkzeug &quot;Hot-Spots suchen&quot; ermittelt, ob die r&auml;umlichen Muster in den Daten eine statistisch signifikante Cluster-Bildung aufweisen. 
+        <ul>
+            <li>Sind Ihre Punkte (Verbrechensf&auml;lle, B&auml;ume oder Verkehrsunf&auml;lle) wirklich geclustert?  Wie kann dies sichergestellt werden?
+            </li>
+            <li>Haben Sie wirklich einen statistisch signifikanten Hot-Spot gefunden? Oder lie&szlig;en sich andere Erkenntnisse aus der Karte ziehen, wenn die Art der Symbolisierung ge&auml;ndert w&uuml;rde?
+            </li>
+        </ul>
+        Mithilfe des Werkzeugs &quot;Hot-Spots suchen&quot; k&ouml;nnen Sie diese Fragen mit Sicherheit beantworten.
+    </p>
+    <p>Selbst zuf&auml;llige r&auml;umliche Muster weisen eine gewisse Cluster-Bildung auf. Zudem suchen unsere Augen und Gehirne naturgem&auml;&szlig; auch dann nach Mustern, wenn keine vorhanden sind. Demzufolge kann es schwierig sein, zu wissen, ob die Muster in den Daten das Ergebnis echter r&auml;umlicher Prozesse sind oder ob es sich lediglich um ein zuf&auml;lliges Ergebnis handelt. Aus diesem Grund verwenden Forscher und Analysten Methoden wie &quot;Hot-Spots suchen&quot; (Getis-Ord Gi*), um r&auml;umliche Muster zu quantifizieren. Wenn Sie eine statistisch signifikante Cluster-Bildung in Ihren Daten finden, verf&uuml;gen Sie &uuml;ber wertvolle Informationen. Zu wissen, wo und wann Cluster-Bildung auftritt, kann wichtige Aufschl&uuml;sse &uuml;ber die Prozesse geben, die die Muster f&ouml;rdern, die Sie sehen. Zu wissen, dass die Anzahl der Wohnungseinbr&uuml;che in bestimmten Nachbarschaften beispielsweise st&auml;ndig h&ouml;her ausf&auml;llt, kann eine wichtige Rolle spielen, wenn Sie effektive Pr&auml;ventionsstrategien entwerfen, knappe Polizeikr&auml;fte verteilen, Nachbarschafts&uuml;berwachungsprogramme initiieren, strafrechtliche Ermittlungen durchf&uuml;hren oder potenzielle Verd&auml;chtige identifizieren m&uuml;ssen.   
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="analysisLayer">
+        <div><h2>Layer auswählen, für die Hot-Spots berechnet werden</h2></div>
+        <hr/>
+        <div>
+            <p>Der Punkt-Layer, zu dem Hot- und Cold-Spots gefunden werden. 
+            </p>
+            <p>Sie k&ouml;nnen nicht nur einen Layer aus der Karte ausw&auml;hlen, sondern auch unten in der Dropdown-Liste  <b>Layer durchsuchen</b> ausw&auml;hlen, um zu Ihren f&uuml;r ein Big-Data-Dateifreigabe-Dataset bzw. -Feature-Layer zu navigieren.  
+            </p>
+        </div>
+    </div>
+    <div id="analysisField">
+        <div><h2>Cluster mit hohen und niedrigen Werten suchen</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Diese Analyse beantwortet die folgende Frage: Wo bilden hohe und niedrige Werte r&auml;umliche Cluster?
+            </p>
+            <p>Wenn es sich bei Ihren Daten um Punkte handelt und Sie  <b>Punktzanzahl</b> ausw&auml;hlen, wertet dieses Werkzeug die r&auml;umliche Anordnung der Punkt-Features aus, um die folgende Frage zu beantworten: Wo werden Punkte unerwartet geclustert oder verteilt?
+            </p>
+            <p>Wenn Sie ein Feld ausw&auml;hlen, wird die r&auml;umliche Anordnung der mit jedem Feature verkn&uuml;pften Werte von diesem Werkzeug ausgewertet, um die folgende Frage zu beantworten: Wo bilden hohe und niedrige Werte Cluster?
+            </p>
+        </div>
+    </div>
+    <div id="inputBins">
+        <div><h2>Abschnittsgröße für Hot-Spot-Berechnungen auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Die zum Erstellen des Quadratabschnitts verwendete Entfernung wird zum Analysieren der Eingabepunkte verwendet.
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Mit Zeitintervallen aggregieren (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Wenn Zeiteigenschaften f&uuml;r den Punkt-Layer aktiviert und vom Typ &quot;Sofort&quot; sind, kann die Analyse mittels Zeitintervallen durchgef&uuml;hrt werden.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>Zeitintervall, in das aggregiert werden soll</h2></div>
+        <hr/>
+        <div>
+            <p>Das Zeitintervall, das f&uuml;r die Analyse verwendet wird. Wenn Sie Zeitintervalle erstellen m&ouml;chten, die jede Woche stattfinden, legen Sie das Zeitintervall auf eine Woche fest. 
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>Zeitschritt, in den aggregiert werden soll</h2></div>
+        <hr/>
+        <div>
+            <p>Vorgehensweise beim Ausrichten der Zeit. Zeit kann auf die Start- oder Endzeit der Eingabedaten oder auf eine festgelegte Bezugszeit ausgerichtet werden.  
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Bezugszeit zum Ausrichten der Zeitintervalle</h2></div>
+        <hr/>
+        <div>
+            <p>Das Datum und die Uhrzeit zum Ausrichten der Zeitintervalle.
+            </p>
+        </div>
+    </div>
+    <div id="neighborhood">
+        <div><h2>Die Nachbarschaftsgröße auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Die Entfernung, mit deren Hilfe die Nachbarschaft f&uuml;r Hot-Spot-Berechnungen ermittelt wird. Die Nachbarschaft sollte gr&ouml;&szlig;er sein als die Abschnittsgr&ouml;&szlig;e, um sicherzustellen, dass jeder Abschnitt mindestens einen Nachbarn aufweist. Jeder Abschnitt wird analysiert und mit den benachbarten Abschnitten verglichen.
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>SpatialReference (WKID)</h2></div>
+        <hr/>
+        <div>
+            <p>Dies ist ein tempor&auml;rer Parameter f&uuml;r die Vorabversion zum Festlegen des Raumbezugs f&uuml;r die Verarbeitung. Viele Big-Data-Werkzeuge erfordern die Verwendung eines projizierten Koordinatensystems als Raumbezug f&uuml;r die Verarbeitung. Das Werkzeug verwendet standardm&auml;&szlig;ig das Eingabe-Koordinatensystem, kann jedoch nicht ausgef&uuml;hrt werden, wenn es sich um ein geographisches Koordinatensystem handelt. Geben Sie zum Festlegen eines projizierten Koordinatensystems die WKID ein. Die Eingabe f&uuml;r  <b>Web Mercator</b> ist beispielsweise <code>3857</code>.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Data Store auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Dies ist ein tempor&auml;rer Parameter f&uuml;r die Vorabversion zum Festlegen des Data Store, in dem die Ergebnisse gespeichert werden. Beide Data Stores sind Teil des  ArcGIS Data Store. Wenn Sie den Data Store &quot;spatiotemporal&quot; ausw&auml;hlen, aber nicht installiert haben, kann das Werkzeug nicht ausgef&uuml;hrt werden. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Name des Ergebnis-Layers</h2></div>
+        <hr/>
+        <div>
+            <p> Dies ist der Name des Layers, der in <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird.  Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, kann das Werkzeug nicht ausgef&uuml;hrt werden.
+            </p>
+            <p>Dieser Ergebnis-Layer zeigt statistisch signifikante Cluster mit hohen und niedrigen Werten bzw. Punktzahlen an. Wenn der Name des Ergebnis-Layers bereits vorhanden ist, werden Sie aufgefordert, ihn umzubenennen.
+            </p>
+            <p>&Uuml;ber das Dropdown-Feld  <b>Ergebnis speichern in</b> k&ouml;nnen Sie den Namen eines Ordners in <b>Eigene Inhalte</b> angeben, in dem das Ergebnis gespeichert werden soll.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

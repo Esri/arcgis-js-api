@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Reconstruir Trilhos</h2><p/>
+        <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Reconstruir Trilhos"></h2>
+        <hr/>
+    <p>Esta ferramenta funciona com uma camada com componente temporal ativa, quer de elementos de ponto ou de pol&iacute;gono, que representa um  <code>instante</code> no tempo.   Primeiro, determina que elementos pertencem a um trilho utilizando um identificador. Utilizando a hora em cada localiza&ccedil;&atilde;o, os trilhos s&atilde;o ordenados sequencialmente e transformados numa linha ou pol&iacute;gono que representa o caminho do movimento ao longo do tempo. Opcionalmente, a entrada pode ser amortecida por buffer por um campo, o que criar&aacute; um pol&iacute;gono em cada local. Estes pontos amortecidos por buffer, ou no caso de as entradas serem pol&iacute;gonos, s&atilde;o, ent&atilde;o, ligados sequencialmente para criar um trilho com um pol&iacute;gono em que a largura representa o atributo de interesse. Os trilhos resultantes t&ecirc;m uma hora de in&iacute;cio e de fim, que representam, em termos temporais, o primeiro e o &uacute;ltimo elemento num dado trilho. Quando os trilhos s&atilde;o criados, s&atilde;o calculadas estat&iacute;sticas sobre os elementos de entrada, e atribu&iacute;das ao trilho de sa&iacute;da. A estat&iacute;stica mais b&aacute;sica &eacute; a contagem do n&uacute;mero de pontos dentro da &aacute;rea, mas tamb&eacute;m pode calcular outras estat&iacute;sticas.
+    </p>
+    <p>Os elementos, em camadas com componente temporal ativa, podem ser representados de duas formas:
+        <ul>
+            <li>Instante&mdash;um momento &uacute;nico no tempo
+            </li>
+            <li>Intervalo&mdash;Uma hora de in&iacute;cio e de fim
+            </li>
+        </ul>
+        
+    </p>
+    <p>Por exemplo, suponha que tem medi&ccedil;&otilde;es de GPS de furac&otilde;es a cada 10 minutos. Cada medi&ccedil;&atilde;o de GPS regista o nome e localiza&ccedil;&atilde;o do furac&atilde;o, hora da grava&ccedil;&atilde;o e a velocidade do vento. Com estas informa&ccedil;&otilde;es, poderia criar trilhos para cada furac&atilde;o, utilizando o nome para identifica&ccedil;&atilde;o de trilho, e seriam gerados trilhos para cada furac&atilde;o. Adicionalmente, poderia calcular estat&iacute;sticas, tais como a velocidade do vento m&eacute;dia, m&aacute;xima e m&iacute;nima de cada furac&atilde;o, bem como a contagem de medi&ccedil;&otilde;es inclu&iacute;das em cada trilho.
+    </p>
+    <p>Utilizando os mesmos exemplos, poderia aplicar buffer aos seus trilhos com base na velocidade do vento. Isto iria aplicar buffer a cada medi&ccedil;&atilde;o, com base no campo velocidade do vento nessa localiza&ccedil;&atilde;o, e ligaria as &aacute;reas com buffers, criando um pol&iacute;gono representativo do percurso do trilho, bem como as altera&ccedil;&otilde;es &agrave; velocidade do vento, &agrave; medida que os furac&otilde;es progridem.   
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Selecionar elementos  a partir dos quais reconstruir trilhos</h2></div>
+        <hr/>
+        <div>
+            <p>A camada de pontos ou de pol&iacute;gonos que ser&aacute; reconstru&iacute;da em trilhos.
+            </p>
+            <p>Para al&eacute;m de selecionar uma camada do seu mapa, pode selecionar  <b>Explorar Camadas</b> na parte inferior da lista pendente para navegar at&eacute; aos seus conte&uacute;dos de um conjunto de dados de partilha de big data ou camada de elementos.  
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>Selecionar campos utilizados para identificar trilhos</h2></div>
+        <hr/>
+        <div>
+            <p> Os campos que representam o identificador de trilhos.
+            </p>
+            <p> Como exemplo, caso estivesse a reconstruir trilhos de furac&otilde;es, poderia utilizar os nomes dos furac&otilde;es como campo de trilho.
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Selecionar método utilizado para reconstruir trilhos</h2></div>
+        <hr/>
+        <div>
+            <p>M&eacute;todo utilizado para ligar trilhos e aplicar buffer (se aplic&aacute;vel). O m&eacute;todo  <b>Planar</b> pode calcular os resultados mais rapidamente, mas n&atilde;o ir&aacute; associar os trilhos &agrave; linha de data internacional, ou considerar o verdadeiro formato da Terra, ao aplicar buffers. O m&eacute;todo <b>Geod&eacute;sico</b> ir&aacute; associar os trilhos &agrave; linha de data internacional, se necess&aacute;rio, e aplicar um buffer geod&eacute;sico para considerar o formato da Terra.
+            </p>
+        </div>
+    </div>
+    <div id="bufferField">
+        <div><h2>Criar uma expressão para criar buffer de elementos de entrada (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Equa&ccedil;&atilde;o utilizada para calcular a dist&acirc;ncia de buffer em torno de elementos de entrada. Esta equa&ccedil;&atilde;o pode ser gerada utilizando a calculadora de buffer e opera&ccedil;&otilde;es b&aacute;sicas, como adicionar, subtrair, multiplicar e dividir s&atilde;o suportadas. Os valores s&atilde;o calculados utilizando o sistema de coordenadas da an&aacute;lise.
+            </p>
+        </div>
+    </div>
+    <div id="timeSplit">
+        <div><h2>Selecionar um tempo pelo qual dividir trilhos (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Hora utilizada para dividir trilhos. Caso os pontos ou pol&iacute;gonos de entrada tenham uma dura&ccedil;&atilde;o maior entre si do que a divis&atilde;o temporal, ser&atilde;o divididos em trilhos diferentes.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Adicionar estatísticas (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p> Pode calcular estat&iacute;sticas em elementos que se encontram resumidos. Em campos num&eacute;ricos, pode calcular as seguintes:
+                <ul>
+                    <li>Contagem
+                    </li>
+                    <li>M&eacute;dia
+                    </li>
+                    <li>M&iacute;n.
+                    </li>
+                    <li>M&aacute;x.
+                    </li>
+                    <li>Intervalo
+                    </li>
+                    <li>Varia&ccedil;&atilde;o
+                    </li>
+                    <li>Desvio padr&atilde;o
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Em campos de string, pode calcular as seguintes:
+                <ul>
+                    <li>Contagem
+                    </li>
+                    <li>Qualquer&mdash;Esta estat&iacute;stica &eacute; uma amostra aleat&oacute;ria de um valor de string no campo especificado.
+                    </li>
+                </ul>
+                Todas as estat&iacute;sticas s&atilde;o calculadas em campos que n&atilde;o s&atilde;o nulos. A camada resultante ir&aacute; conter um novo campo por cada estat&iacute;stica calculada. &Eacute; poss&iacute;vel adicionar qualquer n&uacute;mero de estat&iacute;sticas, selecionando um atributo e uma estat&iacute;stica. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Selecionar armazenamento de dados</h2></div>
+        <hr/>
+        <div>
+            <p>Este &eacute; um par&acirc;metro tempor&aacute;rio de pr&eacute;-lan&ccedil;amento para definir o armazenamento de dados no qual os resultados s&atilde;o guardados. Ambos os armazenamentos de dados fazem parte do  ArcGIS Data Store. Caso selecione o armazenamento de dados espaciotemporal, mas n&atilde;o tenha um instalado, a ferramenta ir&aacute; falhar. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nome da camada resultante</h2></div>
+        <hr/>
+        <div>
+            <p> Este &eacute; o nome da camada que ser&aacute; criada em <b>O Meu Conte&uacute;do</b> e adicionada ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Caso a camada j&aacute; existe, a ferramenta ir&aacute; falhar.
+            </p>
+            <p>Ao utilizar a caixa suspensa  <b>Guardar resultado em</b> pode definir o nome da pasta em <b>O Meu Conte&uacute;do</b> onde o resultado ser&aacute; guardado.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

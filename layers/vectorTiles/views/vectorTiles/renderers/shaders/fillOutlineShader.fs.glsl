@@ -7,5 +7,5 @@ void main()
   lowp float dist = abs(v_normal.y);
 
   lowp float alpha = smoothstep(1.0, 0.0, dist);
-  gl_FragColor = vec4(u_color.rgb, u_color.a * alpha);
+  gl_FragColor = alpha * u_color;
 }

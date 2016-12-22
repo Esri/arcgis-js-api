@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.18/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.19/esri/copyright.txt for details.
 
 define(["../layers/FeatureLayer","./AttributeInspector"],function(e,r){return{}});

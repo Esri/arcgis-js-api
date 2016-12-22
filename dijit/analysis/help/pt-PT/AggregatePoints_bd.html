@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Agregar Pontos</h2><p/>
+        <h2><img src="../images/GUID-6C1620D9-D176-41FA-8283-833D8B1CCCFC-web.png" alt="Agregar Pontos"></h2>
+        <hr/>
+    <p>Esta ferramenta funciona com uma camada de elementos de pontos e uma camada de elementos de &aacute;reas.  Os elementos de &aacute;rea e entrada podem provir de uma camada de pol&iacute;gonos, ou podem ser caixas quadradas ou hexagonais calculadas aquando da execu&ccedil;&atilde;o da ferramenta. A primeira ferramenta identifica os pontos que se encontram dentro de cada &aacute;rea especificada. Depois de determinar esses, calcula estat&iacute;sticas sobre todos os pontos da &aacute;rea e atribu&iacute;dos &agrave; &aacute;rea. A estat&iacute;stica mais b&aacute;sica &eacute; a contagem do n&uacute;mero de pontos dentro da &aacute;rea, mas tamb&eacute;m pode obter outras estat&iacute;sticas. 
+
+    </p>
+    <p>Por exemplo, suponha que tem elementos de pontos com localiza&ccedil;&atilde;o de lojas de caf&eacute; e elementos de &aacute;rea de condados, e pretende resumir as vendas efetuadas pelos caf&eacute;s por munic&iacute;pio. Assumindo que os caf&eacute;s t&ecirc;m o atributo  <i>TOTAL_SALES</i> (total de vendas), pode obter a soma de todos os <i>TOTAL_SALES</i> em cada condado, o m&iacute;nimo ou m&aacute;ximo de <i>TOTAL_SALES</i>
+ em cada condado, ou outras estat&iacute;sticas, tais como a contagem, intervalo, desvio padr&atilde;o e vari&acirc;ncia.
+    </p>
+    <p>Esta ferramenta pode tamb&eacute;m funcionar com dados com componente temporal ativa. Se a componente temporal se encontrar ativa nos pontos de entrada, as op&ccedil;&otilde;es de divis&atilde;o temporal estar&atilde;o dispon&iacute;veis. A divis&atilde;o temporal permite-lhe calcular a rela&ccedil;&atilde;o de pontos na &aacute;rea, enquanto observa uma parcela temporal espec&iacute;fica. Por exemplo, pode observar intervalos de uma hora, o que resultaria em sa&iacute;das por cada hora. 
+    </p>
+    <p>Vejamos exemplo com componente temporal ativa: suponha que tem elementos de pontos por cada transa&ccedil;&atilde;o efetuada em v&aacute;rias localiza&ccedil;&otilde;es de caf&eacute;s e n&atilde;o existe qualquer camada de &aacute;rea.  Os dados foram reordenados pela dura&ccedil;&atilde;o de um ano e cada transa&ccedil;&atilde;o tem uma localiza&ccedil;&atilde;o e um indica&ccedil;&atilde;o temporal.   Assumindo que cada transa&ccedil;&atilde;o tem um atributo <i>TOTAL_SALES</i> , pode obter a soma de todos os <i>TOTAL_SALES</i> no espa&ccedil;o e tempo que lhe sejam conveniente. Caso estas transa&ccedil;&otilde;es sejam de uma &uacute;nica cidade, poder&iacute;amos gerar &aacute;reas em forma de grelhas de 1 quil&oacute;metro e observar parcelas temporais semanais para resumir as transa&ccedil;&otilde;es tanto no espa&ccedil;o como no tempo.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="pointLayer">
+        <div><h2>Selecione uma camada que contenha pontos para agregar em áreas.</h2></div>
+        <hr/>
+        <div>
+            <p>A camada de pontos que ser&aacute; agregada nas &aacute;reas.
+            </p>
+            <p>Para al&eacute;m de selecionar uma camada do seu mapa, pode selecionar  <b>Explorar Camadas</b> na parte inferior da lista pendente para navegar at&eacute; aos seus conte&uacute;dos de um conjunto de dados de partilha de big data ou camada de elementos.  
+            </p>
+        </div>
+    </div>
+    <div id="inputAggregation">
+        <div><h2>Escolher uma camada de área na qual agregar</h2></div>
+        <hr/>
+        <div>
+            <p>As &aacute;reas nas quais a camada de pontos ser&aacute; agregada. Pode escolher entre uma camada de &aacute;rea introduzida por si ou por caixas que s&atilde;o geradas enquanto a ferramenta &eacute; executada.   Ao gerar caixas, por  <b>Quadrado</b>, o n&uacute;mero e unidades especificados determinam a altura e o comprimento do quadrado. Para <b>Hex&aacute;gono</b>, o n&uacute;mero e unidades especificados determinam a dist&acirc;ncia entre lados paralelos.
+            </p>
+        </div>
+    </div>
+    <div id="polygonLayer">
+        <div><h2>Selecionar a camada de àrea na qual agregar</h2></div>
+        <hr/>
+        <div>
+            <p>A camada de &aacute;rea &agrave; qual os pontos ser&atilde;o agregados. Quaisquer pontos que se encontrem dentro dos limites das &aacute;reas inclu&iacute;das nesta camada ser&atilde;o contados e, opcionalmente, resumidos, utilizando as op&ccedil;&otilde;es de estat&iacute;sticas escolhidas por si. 
+            </p>
+            <p>
+            </p>
+            <p>O  <b>Tamanho de Caixa</b> para caixas, ou uma <b>Camada de &Aacute;rea</b> tem de ser definido.
+            </p>
+        </div>
+    </div>
+    <div id="inputBins">
+        <div><h2>Selecionar uma distância para gerar caixas e agregar</h2></div>
+        <hr/>
+        <div>
+            <p>A dist&acirc;ncia utilizada para gerar caixas nas quais agregar os seus pontos de entrada. Para uma caixa quadrada, o tamanho representa a altura do quadrado. Para hex&aacute;gono, o tamanho representa a altura do hex&aacute;gono (a partir de lados paralelos).  
+            </p>
+            <p>O  <b>Tamanho de Caixa</b> para caixas, ou uma <b>Camada de &Aacute;rea</b> tem de ser definido.
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Agregar utilizando cortes de tempo (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Caso a componente temporal se encontre ativa na camada de pontos de entrada, pode analisar recorrendo a divis&atilde;o temporal.  Existem tr&ecirc;s par&acirc;metros que pode definir quando utiliza componente temporal:
+                <ul>
+                    <li>  <b>Intervalo de Tempo</b>
+                    </li>
+                    <li> <b>Etapa Temporal</b>
+                    </li>
+                    <li> <b>Hora de Refer&ecirc;ncia</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Imagine que tem dados que representam um ano em tempo e que pretende analis&aacute;-los recorrendo a parcelas semanais. Para isso, teria de definir  <b>Intervalo Temporal</b> para <code>1 semana</code>.
+            </p>
+            <p> Imagine que tem dados que representam um ano em tempo e que pretende analis&aacute;-los utilizando a primeira semana do m&ecirc;s. Para isso, teria de definir <b>Intervalo Temporal</b> para <code>1 semana</code>, <b>Etapa Temporal</b> para <code>1 m&ecirc;s</code>, e <b>Hora de Refer&ecirc;ncia</b> para <code>1 de Janeiro, &agrave;s 12:00</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>Intervalo temporal no qual agregar</h2></div>
+        <hr/>
+        <div>
+            <p>Intervalo temporal utilizado para dividir os dados O intervalo temporal pode ser utilizado isoladamente ou em conjunto com o par&acirc;metro  <b>Etapa Temporal</b> ou <b>Hora de Refer&ecirc;ncia</b> .
+            </p>
+            <p> Caso pretendesse criar parcelas temporais que tivessem lugar todas as segundas-feiras entre as 9:00 e as 10:00 da manh&atilde;, <b>Intervalo Temporal</b> seria <code>1 hora</code>, <b>Etapa Temporal</b> seria <code>1 semana</code>, e <b>Hora de Refer&ecirc;ncia</b> seria <code>9:00:00 a.m. &agrave; segunda-feira</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>Etapa temporal na qual agregar</h2></div>
+        <hr/>
+        <div>
+            <p> A etapa utilizada para calcular uma parcela temporal. <b>Etapa Temporal</b> pode ser utilizada isoladamente ou com <b>Intervalo Temporal</b>, com <b>Hora de Refer&ecirc;ncia</b>, ou com <b>Intervalo Temporal</b> e <b>Hora de Refer&ecirc;ncia</b>.
+            </p>
+            <p> Caso pretendesse criar parcelas temporais que tivessem lugar todas as segundas-feiras entre as 9:00 e as 10:00 da manh&atilde;, <b>Intervalo Temporal</b> seria <code>1 hora</code>, <b>Etapa Temporal</b> seria <code>1 semana</code>, e <b>Hora de Refer&ecirc;ncia</b> seria <code>9:00:00 a.m. &agrave; segunda-feira</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Tempo de referência utilizado para alinhar a divisão temporal</h2></div>
+        <hr/>
+        <div>
+            <p>A data e hora utilizadas para alinhar a divis&atilde;o temporal.  <b>Etapa Temporal</b> ter&aacute; in&iacute;cio a partir da hora referenciada, e continuar&aacute; de forma regressiva at&eacute; &agrave; mesma.
+            </p>
+            <p> Caso pretendesse criar parcelas temporais que tivessem lugar todas as segundas-feiras entre as 9:00 e as 10:00 da manh&atilde;, <b>Intervalo Temporal</b> seria <code>1 hora</code>, <b>Etapa Temporal</b> seria <code>1 semana</code>, e <b>Hora de Refer&ecirc;ncia</b> seria <code>9:00:00 a.m. &agrave; segunda-feira</code>.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Adicionar estatísticas (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p> Pode calcular estat&iacute;sticas em elementos que se encontram resumidos. Em campos num&eacute;ricos, pode calcular as seguintes:
+                <ul>
+                    <li>Contagem
+                    </li>
+                    <li>M&eacute;dia
+                    </li>
+                    <li>M&iacute;n.
+                    </li>
+                    <li>M&aacute;x.
+                    </li>
+                    <li>Intervalo
+                    </li>
+                    <li>Varia&ccedil;&atilde;o
+                    </li>
+                    <li>Desvio padr&atilde;o
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Em campos de string, pode calcular as seguintes:
+                <ul>
+                    <li>Contagem
+                    </li>
+                    <li>Qualquer&mdash;Esta estat&iacute;stica &eacute; uma amostra aleat&oacute;ria de um valor de string no campo especificado.
+                    </li>
+                </ul>
+                Todas as estat&iacute;sticas s&atilde;o calculadas em campos que n&atilde;o s&atilde;o nulos. A camada resultante ir&aacute; conter um novo campo por cada estat&iacute;stica calculada. &Eacute; poss&iacute;vel adicionar qualquer n&uacute;mero de estat&iacute;sticas, selecionando um atributo e uma estat&iacute;stica. 
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>SpatialReference (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>Este &eacute; um par&acirc;metro tempor&aacute;rio de pr&eacute;-lan&ccedil;amento para definir a refer&ecirc;ncia espacial. Muitas ferramentas de big data requerem que o sistema de coordenadas projetado seja utilizado como refer&ecirc;ncia espacial para processamento. Por predefini&ccedil;&atilde;o, a ferramenta utilizar&aacute; o sistema de coordenadas de entrada, mas ir&aacute; falhar no caso de o mesmo se tratar de um sistema de coordenadas geogr&aacute;ficas. Para definir um sistema de coordenadas projetado, introduza o WKID. Por exemplo,  <b>Web Mercator</b> seria introduzido como <code>3857</code>.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Selecionar datastore</h2></div>
+        <hr/>
+        <div>
+            <p>Este &eacute; um par&acirc;metro tempor&aacute;rio de pr&eacute;-lan&ccedil;amento para definir o armazenamento de dados no qual os resultados s&atilde;o guardados. Ambos os armazenamentos de dados fazem parte do  ArcGIS Data Store. Caso selecione o armazenamento de dados espaciotemporal, mas n&atilde;o tenha um instalado, a ferramenta ir&aacute; falhar. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nome da camada resultante</h2></div>
+        <hr/>
+        <div>
+            <p> Este &eacute; o nome da camada que ser&aacute; criada em <b>O Meu Conte&uacute;do</b> e adicionada ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Caso a camada j&aacute; existe, a ferramenta ir&aacute; falhar.
+            </p>
+            <p>Ao utilizar a caixa suspensa  <b>Guardar resultado em</b> pode definir o nome da pasta em <b>O Meu Conte&uacute;do</b> onde o resultado ser&aacute; guardado.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

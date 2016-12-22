@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Kopeeri andmelattu</h2><p/>
+        <h2><img src="../images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" alt="Kopeeri andmelattu"></h2>
+        <hr/>
+    <p>See t&ouml;&ouml;riist v&otilde;tab sisendkihi ja kopeerib selle andmelattu. Andmed kopeeritakse  ArcGIS-i andmeladu&rsquo;i ja salvestatakse teie relatsioonilisse v&otilde;i ajalisruumilisse andmelattu. </p>
+    <p>N&auml;iteks saate kopeerida  <code>suurandmete failikettale</code> salvestatud objektid <code>relatsioonilisse andmelattu</code> ja m&auml;&auml;rata, et kopeerida tuleb ainult praegu kaardil n&auml;htavad objektid. See looks majutatud objektiteenuse, milles on ainult need objektid, mis olid kaardil n&auml;htavad.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Valige kopeeritav kiht</h2></div>
+        <hr/>
+        <div>
+            <p>Kopeeritav kiht v&otilde;i tabel. 
+            </p>
+            <p>Lisaks kihi valimisele kaardil saate valida ripploendi alumises servas  <b>Sirvi kihte</b>, et otsida oma sisust suurandmete failiketta andmestikku v&otilde;i objektikihti.  
+            </p>
+        </div>
+    </div>
+    <div id="outputDataStore">
+        <div><h2>Valige kopeerimiseks ArcGIS Data Store</h2></div>
+        <hr/>
+        <div>
+            <p> Andmeladu, kuhu kiht kopeeritakse. Valikud on j&auml;rgmised:
+                <ul>
+                    <li> <b>Ajalisruumiline</b> &ndash; see on vaikimisi valik.
+                    </li>
+                    <li> <b>Relatsiooniline</b>.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tulemkihi nimi</h2></div>
+        <hr/>
+        <div>
+            <p> See on selle kihi nimi, mis luuakse jaotises <b>Minu sisu</b> ja lisatakse kaardile.  Vaikenimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui see kiht on juba olemas, siis t&ouml;&ouml;tlemine nurjub.
+            </p>
+            <p>Kasutades rippmen&uuml;&uuml;d  <b>Salvesta tulemused</b>, saate jaotises <b>Minu sisu</b> m&auml;&auml;rata kausta nime, kuhu tulemused salvestatakse.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

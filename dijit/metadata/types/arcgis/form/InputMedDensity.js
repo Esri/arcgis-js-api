@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.18/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.19/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../../../kernel","../../../base/etc/docUtil","../../../form/InputNumber"],function(e,t,n,i,r,o){var a=e([o],{postCreate:function(){this.inherited(arguments)},emitInteractionOccurred:function(e){this.inherited(arguments),this._informUnits()},_informUnits:function(){try{if(!this.parentXNode.gxeDocument.isViewOnly){var e=this.parentXNode.parentElement.gxePath+"/",t=this.parentXNode.parentElement.domNode,n=r.findInputWidget(e+"medDenUnits",t);n&&n.emitInteractionOccurred()}}catch(i){console.error(i)}}});return n("extend-esri")&&t.setObject("dijit.metadata.types.arcgis.form.InputMedDensity",a,i),a});

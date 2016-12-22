@@ -79,7 +79,7 @@
       <tr data-dojo-attach-point="numStdDevBlock">
         <td colspan="3">
           <label data-dojo-attach-point="numStdDevLabel">${_i18n.widgets.renderingRule.numStdDevLabelTitle}</label>
-          <input type="text" value="2.0" data-dojo-attach-point="numStdDevText" class="esriRenderingRuleFixedInput">
+          <input type="text" value="2.0" data-dojo-type="dijit/form/NumberTextBox" data-dojo-attach-point="numStdDevText" class="esriRenderingRuleFixedInput">
           </input>
           <label data-dojo-attach-point="numStdDevLabel">${_i18n.widgets.renderingRule.numStdDevEndLabelTitle}</label>
         </td>
@@ -96,7 +96,7 @@
           <label data-dojo-attach-point="maxPercentLabel">${_i18n.widgets.renderingRule.maxPercentLabelTitle}</label>
         </td>
         <td colspan="2">
-          <input type="text" value="2.0" data-dojo-attach-point="maxPercentText" class="esriRenderingRuleFixedInput">
+          <input data-dojo-type="dijit/form/NumberTextBox" type="text" value="2.0" data-dojo-attach-point="maxPercentText" class="esriRenderingRuleFixedInput">
           </input>
           <label data-dojo-attach-point="percentLabel">${_i18n.widgets.renderingRule.percentLabelTitle}</label>
         </td>
@@ -107,7 +107,7 @@
           <label data-dojo-attach-point="minPercentLabel">${_i18n.widgets.renderingRule.minPercentLabelTitle}</label>
         </td>
         <td colspan="2">
-          <input type="text" value="2.0" data-dojo-attach-point="minPercentText" class="esriRenderingRuleFixedInput">
+          <input data-dojo-type="dijit/form/NumberTextBox" type="text" value="2.0" data-dojo-attach-point="minPercentText" class="esriRenderingRuleFixedInput">
           </input>
           <label data-dojo-attach-point="percentLabel">${_i18n.widgets.renderingRule.percentLabelTitle}</label>
         </td>
@@ -137,7 +137,7 @@
         </tr>
         <tr data-dojo-attach-point="colorRampBlock">
         <td colspan="3" >
-          <select data-dojo-attach-point="colorRampSelect" data-dojo-type="esri/dijit/ColorRampSelector" class="esriRenderingRuleColorRampList dijitSelect" data-dojo-props="dropDownPosition: ['below']"></select>
+          <select data-dojo-attach-point="colorRampSelect" data-dojo-type="esri/dijit/ColorRampSelector" class="esriRenderingRuleColorRampList dijitSelect" data-dojo-props="dropDownPosition: ['below'], maxHeight: 200"></select>
         </td>
       </tr>   
       <tr>

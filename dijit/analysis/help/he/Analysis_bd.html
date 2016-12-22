@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="bdToolbox">
+        <p>Big Data Analytics distributes the analytics work across your ArcGIS GeoAnalytics Server. This allows you to analyze more data faster by harnessing the power of multiple machines. The following tools are currently available:
+            <ul>
+                <li> <b>Aggregate Points</b>
+                </li>
+                <li> <b>Join Features</b>
+                </li>
+                <li> <b>Reconstruct Tracks</b>
+                </li>
+                <li> <b>Summarize Attributes</b>
+                </li>
+                <li> <b>Summarize Within</b>
+                </li>
+                <li> <b>Find Similar Locations</b>
+                </li>
+                <li> <b>Calculate Density</b>
+                </li>
+                <li> <b>Find Hot Spots</b>
+                </li>
+                <li> <b>Create Buffers</b>
+                </li>
+                <li> <b>Copy to Data Store</b>
+                </li>
+            </ul>
+            
+        </p>
+        <p>Big Data Analytics focuses on analyzing large data with an emphasis on both spatial and temporal patterns. 
+        </p>
+    </div>
+    <div id="SummarizeDataCategory" class="largesize">
+        <h2>Summarize Data</h2>
+        <hr/>
+        <p>The Summarize Data toolset contains tools that calculate total counts, lengths, areas, and basic descriptive statistics of features and their attributes within areas or near other features.
+            <ul>
+                <li> <b>Aggregate Points</b> calculates statistics about points that fall within specified areas or bins.
+                </li>
+                <li> <b>Join Features</b> calculates statistics about features that share a spatial, temporal, or attribute relationship with other features.
+                </li>
+                <li> <b>Reconstruct Tracks</b> calculates statistics about points or polygons that belong to the same track and reconstructs inputs into tracks.
+                </li>
+                <li> <b>Summarize Attributes</b> calculates statistics about feature or tabular data that share attributes.
+                </li>
+                <li> <b>Summarize Within</b> calculates statistics for area features and attributes that overlap each other.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregatePointsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Aggregate Points</h2></td>
+                    <td>
+                    <img src="../images/GUID-6C1620D9-D176-41FA-8283-833D8B1CCCFC-web.png" class="titleImage" alt="Aggregate Points">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Using a layer of
+point features and either a layer of area features or bins defined by a specified distance, this tool
+determines which points fall within each area or bin and calculates statistics about all
+the points within each area or bin. You may optionally apply time slicing with this tool. 
+            </p>
+            <p> For example
+                <ul>
+                    <li>Given point locations of crime incidents, count the number of crimes per county or other administrative district.
+                    </li>
+                    <li>Find the highest and lowest monthly revenues for franchise locations using 100 km bins.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="JoinFeaturesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Join Features</h2></td>
+                    <td>
+                    <img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" class="titleImage" alt="Join Features">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Using either feature layers or tabular data, you can join features and records based on specific relationships between the input layers or tables.  Joins will be determined by spatial, temporal, and attribute relationships, and summary statistics can be optionally calculated.  
+            </p>
+            <p> For example
+                <ul>
+                    <li>Given point locations of crime incidents with a time, join the crime data to itself specifying a spatial relationship of crimes within 1 kilometer of each other and that occurred within 1 hour of each other to determine if there are a sequence of crimes close to each other in space and time.
+                    </li>
+                    <li> Given a table of ZIP Codes with demographic information and area features representing residential buildings, join the demographic information to the residences so each residence now has the information.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="ReconstructTracksTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Reconstruct Tracks</h2></td>
+                    <td>
+                    <img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" class="titleImage" alt="Reconstruct Tracks">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Using a time-enabled layer of
+point  or polygon features that represent an  <code>instant</code> in time, this tool
+determines which input features belong in a track and will order the inputs sequentially in time. Statistics are optionally calculated for the input features within each track.
+            </p>
+            <p> For example
+                <ul>
+                    <li>Given point locations and time of hurricane measurements, calculate the mean wind speed and max wind pressure of the hurricane.
+                    </li>
+                    <li>Find the highest and lowest monthly revenues for franchise locations using 100 km bins.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeAttributesTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Summarize Attributes</h2></td>
+                    <td>
+                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="Summarize Attributes">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> Using either feature or tabular data, this tool
+summarizes statistics for specified fields.
+            </p>
+            <p> For example
+                <ul>
+                    <li> Given locations of grocery stores with a field <i>COMPANY_NAME</i>, summarize the stores by the company name to determine statistics for each company.
+                    </li>
+                    <li>Given a table of grocery stores with  fields  <i>COMPANY_NAME</i> and <i>COUNTY</i>, summarize the stores by the company name and county to determine statistics for each company within each county.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeWithinTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Summarize Within</h2></td>
+                    <td>
+                    <img src="../images/GUID-90E0CB1F-EB97-4752-B2EE-452B7B45475E-web.png" class="titleImage" alt="Summarize Within">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Finds areas (and portions of areas) that overlap between two
+layers and calculates statistics about the overlap. 
+            </p>
+            <p> For example
+                <ul>
+                    <li>Given a layer of watershed areas and a layer of land-use areas by land-use type, calculate total acreage of land-use type for each watershed. 
+                    </li>
+                    <li>Given a layer of parcels in a county and a layer of city boundaries, summarize the average value of vacant parcels within each city.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="FindLocationsCategory" class="smallsize">
+        <h2>Find Locations</h2>
+        <hr/>
+        <p>These tools are used to identify areas that
+meet a number of different criteria you specify.   
+            <ul>
+                <li> <b>Find Similar Locations</b> finds locations most similar to one or more reference locations based on criteria you specify.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="FindSimilarLocationsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Find Similar Locations</h2></td>
+                    <td>
+                    <img src="../images/GUID-6262A84E-9087-4E48-930E-E9B89FECC836-web.png" class="titleImage" alt="Find Similar Locations">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Based on criteria you specify, find similar locations  by measuring the similarity of locations in your candidate search layer to one or more reference locations. 
+            </p>
+            <p> For example
+                <ul>
+                    <li>Find the ten most similar stores by examining the number of employees and the annual sales.
+                    </li>
+                    <li>Find the 100 most similar cities by examining the relationship between population, annual growth, and tax revenue.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzePatternsCategory" class="smallsize">
+        <h2>Analyze Patterns</h2>
+        <hr/>
+        <p>These tools help you identify, quantify, and visualize spatial patterns in your data.  
+            <ul>
+                <li> <b>Calculate Density</b> takes known quantities of some phenomenon and spreads these quantities across the map.
+                </li>
+                <li> <b>Find Hot Spots</b>  identifies statistically significant clustering in the spatial pattern of your data.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateDensityTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Calculate Density</h2></td>
+                    <td>
+                    <img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" class="titleImage" alt="Calculate Density">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas representing the density.
+            </p>
+            <p> For example
+                <ul>
+                    <li>Calculating densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to decide where new hospitals should be built.
+                    </li>
+                    <li>Identifying areas that are at high risk of forest fires based on historical locations of forest fires.
+                    </li>
+                    <li>Locating communities that are far from major highways in order to plan where new roads should be constructed.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="FindHotSpotsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Find Hots Spots</h2></td>
+                    <td>
+                    <img src="../images/GUID-6D600155-AA9B-4F02-AD8B-2E84150AB743-web.png" class="titleImage" alt="Find Hot Spots">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>The Find Hot Spots tool will determine if there is any statistically significant clustering in the spatial pattern of your data. 
+                <ul>
+                    <li>Are your points (crime incidents, trees, traffic accidents) really clustered?  How can you be sure?
+                    </li>
+                    <li>Have you truly discovered a statistically significant hot spot (for spending, infant mortality, consistently high test scores) or would your map tell a different story if you changed the way it was symbolized?
+                    </li>
+                </ul>
+                The Find Hot Spots tool will help you answer these questions with confidence.
+            </p>
+            <br/>
+        </div>
+    <div id="UseProximityCategory" class="smallsize">
+        <h2>Use Proximity</h2>
+        <hr/>
+        <p>These tools help answer one of the most common questions posed in spatial analysis: What is near what?
+            <ul>
+                <li> <b>Create Buffers</b> creates areas of a specified distance from
+features.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CreateBuffersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Create Buffers</h2></td>
+                    <td>
+                    <img src="../images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" class="titleImage" alt="Create Buffers">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>A buffer is an area that covers a given distance from a point, line, or polygon feature.
+            </p>
+            <p> For example
+                <ul>
+                    <li>Using linear river features, buffer each river by 50 times the width of the river to determine a proposed riparian boundary.
+                    </li>
+                    <li>Given areas representing countries, buffer each country by 200 nautical miles to determine the maritime boundary.  
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="ManageDataCategory" class="smallsize">
+        <h2>Manage Data</h2>
+        <hr/>
+        <p>These tools are used for the day-to-day management of geographic and tabular data.
+            <ul>
+                <li> <b>Copy to Data Store</b> copies data to your ArcGIS Data Store and creates a layer in your web GIS.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CopyToDataStoreTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Copy to Data Store</h2></td>
+                    <td>
+                    <img src="../images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" class="titleImage" alt="Copy to Data Store">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Copies an input feature layer or table to an  ArcGIS Data Store and creates a layer in your web GIS. </p>
+            <p> For example
+                <ul>
+                    <li> Copy a collection of <code>.csv</code> files in a big data file share to the spatiotemporal data store for visualization.
+                    </li>
+                    <li>Copy the features in the current map extent that are stored in the spatiotemporal data store to the relational data store.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+</div>
+</html>

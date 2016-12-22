@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Elementu savienošana</h2><p/>
+        <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Elementu savieno&scaron;ana"></h2>
+        <hr/>
+    <p>Rīks  Elementu savieno&scaron;ana darbojas divos slāņos, savienojot viena elementa atribūtus ar otru, pamatojoties uz telpiskajām un atribūtu attiecībām. Rīks nosaka visus ievades elementus, kas atbilst norādītajiem savienojuma nosacījumiem, un pievieno savieno&scaron;anas slāni mērķa slānim.
+    </p>
+    <p>Rīku  Elementu savieno&scaron;ana var lietot punktiem, līnijām, platībām un tabulām. Telpiskajai savieno&scaron;anai ir nepiecie&scaron;ams, lai datos būtu ģeometrija.
+    </p>
+    <p>Ja opcija  <b>Lietot pa&scaron;reizējo kartes pārklājumu</b> ir atzīmēta, tad tiks analizēti tikai elementi pa&scaron;reizējā kartes pārklājumā. Ja opcija nav atzīmēta, visi elementi gan mērķa slānī, gan savieno&scaron;anas slānī tiks analizēti pat tad, ja tie ir ārpus pa&scaron;reizējā kartes pārklājuma.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="targetLayer">
+        <div><h2>Izvēlēties mērķa slāni</h2></div>
+        <hr/>
+        <div>
+            <p>Mērķa slānis, kura tabulai būs pievienoti atribūti no savieno&scaron;anas slāņa.
+            </p>
+            <p class="OnlineOnly">Papildus slāņa izvēlei no kartes nolaižamā saraksta apak&scaron;ā varat atlasīt  <b>Izvēlēties Living Atlas analīzes slāni</b> vai <b>Izvēlēties analīzes slāni</b>. Tādējādi tiek atvērta galerija, kurā apskatāmi dažādi analīzes slāņi. 
+            </p> 
+        </div>
+    </div>
+    <div id="joinLayer">
+        <div><h2>Izvēlēties slāni, ko pievienot mērķa slānim.</h2></div>
+        <hr/>
+        <div>
+            <p>Savieno&scaron;anas slānis ar atribūtiem, kas tiks pievienoti mērķa slānim.
+            </p>
+            <p class="OnlineOnly">Papildus slāņa izvēlei no kartes nolaižamā saraksta apak&scaron;ā varat atlasīt  <b>Izvēlēties Living Atlas analīzes slāni</b> vai <b>Izvēlēties analīzes slāni</b>. Tādējādi tiek atvērta galerija, kurā apskatāmi dažādi analīzes slāņi. 
+            </p>
+        </div>
+    </div>
+    <div id="joinType">
+        <div><h2>Izvēlēties savienošanas veidu(s)</h2></div>
+        <hr/>
+        <div>
+            <p>Varat lietot telpisko savieno&scaron;anu, atribūtu savieno&scaron;anu vai abu veidu kombināciju. 
+                <ul>
+                    <li> <b>Telpiskais</b>&nbsp;&mdash; izmanto norādītu telpisku saistību, lai savienotu elementus. Lai izmantotu &scaron;o veidu, abos slāņos ir jābūt ģeometrijai.
+                    </li>
+                    <li> <b>Atribūta</b>&nbsp;&mdash; savieno elementus atkarībā no vienādiem laukiem.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>
+            </p>
+        </div>
+    </div>
+    <div id="spatialRelationship">
+        <div><h2>Izvēlēties telpisko saistību</h2></div>
+        <hr/>
+        <div>
+            <p> Telpiskā saistība, kas noteiks, vai elementi tiks savienoti. Pieejamās saistības ir atkarīgas no ģeometrijas veida (punkti, līnijas, laukumi), kas izmantoti kā ievades elementi. Ir pieejamas tālāk aprakstītās saistības.
+                <ul>
+                    <li> <b>Identiski</b>&nbsp;&mdash; mērķa slāņa elementi tiks saskaņoti, ja būs identiski vienādi ar savieno&scaron;anas slāņa elementiem.
+                    </li>
+                    <li> <b>&Scaron;ķērso</b>&nbsp;&mdash; mērķa slāņa elementi tiks saskaņoti, ja &scaron;ķērsos savieno&scaron;anas slāņa elementus.
+                    </li>
+                    <li> <b>Pilnībā satur</b>&nbsp;&mdash; elementi tiks saskaņoti, ja mērķa slāņa elementi pilnībā saturēs savieno&scaron;anas slāņa elementus.
+                    </li>
+                    <li> <b>Pilnībā ietver</b>&nbsp;&mdash; elementi tiks saskaņoti, ja savieno&scaron;anas slāņa elementi pilnībā ietvers mērķa slāņa elementus.
+                    </li>
+                    <li> <b>Attālumā</b>&nbsp;&mdash; mērķa slāņa elementi tiks saskaņoti, ja būs noteiktā attālumā no savieno&scaron;anas slāņa elementiem.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="attributeRelationship">
+        <div><h2>Atribūtu savienošana</h2></div>
+        <hr/>
+        <div>
+            <p>Atribūtu saistība, kas noteiks, vai elementi tiks savienoti viens ar otru. Elementi tiek pieskaņoti, ja savieno&scaron;anas slāņa lauka vērtība ir vienāda ar mērķa slāņa lauka vērtību. 
+            </p>
+            <p>Piemērs: pieņemsim, ka tiek izmantots valsts mēroga ģeogrāfisks slānis ar dzīvesvietu adresēm (ieskaitot lauku  <i>PASTA INDEKSS</i>) un datu kopas tabula ar veselības demogrāfiskajiem datiem pēc pasta indeksa (tostarp lauks ar nosaukumu <i>VESELĪBAS PASTA INDEKSS</i>). Jūs varat savienot veselības datu kopu ar dzīvesvietu datiem, saskaņojot lauku <i>PASTA INDEKSS</i> ar lauku <i>VESELĪBAS PASTA INDEKSS</i>, kā rezultātā tiks iegūts dzīvesvietu slānis ar atbilsto&scaron;ajiem veselības datiem.
+            </p>
+        </div>
+    </div>
+    <div id="joinOperation">
+        <div><h2>Izvēlēties savienošanas operāciju</h2></div>
+        <hr/>
+        <div>
+            <p>Nosaka, kā tiks veikta mērķa un savieno&scaron;anas slāņu savieno&scaron;ana, ja vairākiem savieno&scaron;anas slāņa elementiem tiks atrasta vienāda saistība ar mērķa slāni. Varat izvēlēties kādu no &scaron;īm divām savienojuma darbībām:
+                <ul>
+                    <li> <b>Savienot vienu ar vienu</b>&nbsp;&mdash; &scaron;ī opcija apkopo visus atbilsto&scaron;os savieno&scaron;anas elementus ar katru mērķa slāņa elementu.
+                    </li>
+                    <li> <b>Savienot vienu ar vairākiem</b>&nbsp;&mdash; &scaron;ī opcija savieno visus savieno&scaron;anas slāņa atbilsto&scaron;os elementus ar mērķa slāni. Rezultātu slānī būs ietverti vairāki mērķa elementa ieraksti.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Piemērs: pieņemsim, ka vēlaties atrast lielveikalus 5&nbsp;kilometru attālumā no tirgus. &Scaron;ajā gadījumā slānim, kuram tiek pievienoti elementi, ir viens elements, kas atbilst tirgum, un pievienojamie elementi atbilst vietējiem pārtikas preču veikaliem, kuriem ir noteikti atribūti, piemēram, gada pārdo&scaron;anas rādītāji. Izmantojot rīku  <b>Elementu savieno&scaron;ana</b>, tiek konstatēts, ka pieci pārtikas preču veikali atbilst &scaron;iem kritērijiem. Ja ir norādīta savienojuma darbība <b>Savienot vienu ar vairākiem</b>, rezultātā tiks iegūti pieci elementi, kuros katra rindiņa atbildīs tirgum un lielveikalam. Ja ir norādīta saistība <b>Savienot vienu ar vienu</b>, tiks iegūts viens elements, kas atbilst tirgum, un kopsavilkums ar informāciju par lielveikaliem, piemēram, skaits (5) un citi statistikas dati pēc izvēles, piemēram, ikgadējo pārdo&scaron;anas apjomu summa.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Pievienot statistiku (pēc izvēles)</h2></div>
+        <hr/>
+        <div>
+            <p>Ja atlasījāt opciju  <b>Savienot vienu ar vienu</b>, varat aprēķināt savienoto elementu statistikas datus. Pēc noklusējuma skaits tiks aprēķināts un pievienots rezultātu slānim. 
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Rezultātu slāņa nosaukums</h2></div>
+        <hr/>
+        <div>
+            <p>Tas ir slāņa nosaukuns, kas tiks izveidots  <b>Mans saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja slānis jau pastāv, jums tiks lūgts norādīt citu nosaukumu.
+            </p>
+            <p>Lietojot iespēju  <b>Saglabāt rezultātu</b> nolaižamajā sarakstlodziņā, jūs varat norādīt mapes nosaukumu sadaļā <b>Mans saturs</b>, kur tiks saglabāts rezultāts.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

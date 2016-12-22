@@ -41,19 +41,17 @@
 <body onload="init()">
 <div id="topics">
     <div id="aoToolbox">
-        <p>The Feature Analysis toolbox contains a number
-of tools that you can access and use.  These tasks are arranged below into
-categories; the categories are simply logical groupings
-and do not affect how you access or use the tasks in any
-way.
+        <p>La bo&icirc;te &agrave; outils Analyse des entit&eacute;s contient un certain nombre d'outils que vous pouvez utiliser.  Ces t&acirc;ches sont organis&eacute;es ci-dessous en cat&eacute;gories&nbsp;: les cat&eacute;gories sont simplement des groupes logiques et n'affectent en aucune fa&ccedil;on la mani&egrave;re dont vous acc&eacute;dez aux t&acirc;ches ou les utilisez.
         </p>
     </div>
-    <div id="SummarizeDataCategory" class="regularsize">
+    <div id="SummarizeDataCategory" class="largesize">
         <h2>Synthétiser les données</h2>
         <hr/>
         <p>Ces outils permettent de calculer les nombres totaux, les longueurs, les surfaces et les statistiques descriptives &eacute;l&eacute;mentaires des entit&eacute;s, ainsi que leurs attributs, au sein des surfaces ou &agrave; proximit&eacute; d'autres entit&eacute;s.
             <ul>
                 <li> <b>Agr&eacute;ger les points</b> permet de calculer des statistiques concernant les points qui se trouvent au sein de surfaces sp&eacute;cifi&eacute;es.
+                </li>
+                <li> <b>Entit&eacute;s jointes</b> transf&egrave;re les attributs d'une couche ou table vers une autre en fonction des relations spatiales et attributaires.
                 </li>
                 <li> <b>Synth&eacute;tiser - A proximit&eacute;</b> permet de calculer des statistiques des entit&eacute;s et de leurs attributs qui se trouvent au sein d'une distance sp&eacute;cifi&eacute;e.
                 </li>
@@ -81,6 +79,32 @@ way.
                     <li>Etant donn&eacute; les emplacements des points des d&eacute;lits, comptabilise le nombre de d&eacute;lits par comt&eacute; ou autre secteur administratif.
                     </li>
                     <li>Recherche les revenus les plus &eacute;lev&eacute;s et les plus faibles des franchises par &eacute;tat.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="JoinFeaturesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Entités jointes</h2></td>
+                    <td>
+                    <img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" class="titleImage" alt="Entit&eacute;s jointes">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Entit&eacute;s jointes transf&egrave;re les attributs d'une couche ou table vers une autre en fonction des relations spatiales et attributaires. Par exemple&nbsp;:
+                <ul>
+                    <li>Ajoutez des informations d&eacute;mographiques ou de limites communes &agrave; vos donn&eacute;es d'incident.
+                    </li>
+                    <li>Identifiez les ressources les plus proches d'un emplacement connu.
+                    </li>
+                    <li>D&eacute;terminez le nombre de r&eacute;sidences situ&eacute;es au sein des zones inondables.
+                    </li>
+                    <li>Identifiez les habitats communs &agrave; diff&eacute;rentes esp&egrave;ces sauvages.
                     </li>
                 </ul>
                 
@@ -297,6 +321,8 @@ way.
                 </li>
                 <li> <b>Trouver des points chauds</b> identifie les agr&eacute;gations statistiquement significatives dans le mod&egrave;le spatial de vos donn&eacute;es.
                 </li>
+                <li>L'outil  <b>Trouver des points aberrants</b> d&eacute;termine si le mod&egrave;le spatial de vos donn&eacute;es pr&eacute;sente des points aberrants statistiquement significatifs.
+                </li>
                 <li>L'outil  <b>Interpoler les points</b> permet de pr&eacute;voir des valeurs dans de nouveaux sites en fonction de mesures trouv&eacute;es dans une collection de points.
                 </li>
             </ul>
@@ -330,6 +356,21 @@ way.
             </table>
 <hr/>
             <p>Cet outil cr&eacute;e une carte indiquant les agr&eacute;gations statistiquement significatives pr&eacute;sentes dans vos donn&eacute;es. Utilisez cet outil pour d&eacute;couvrir les points chauds inattendus (rouges) et les points froids (bleus) des valeurs &eacute;lev&eacute;es et faibles des logements, des densit&eacute;s criminelles, des accidents mortels de la circulation, du ch&ocirc;mage ou de la biodiversit&eacute;, par exemple.
+            </p>
+            <br/>
+        </div>
+        <div id="FindOutliersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Trouver des points aberrants</h2></td>
+                    <td>
+                    <img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" class="titleImage" alt="Trouver des points aberrants">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Cet outil cr&eacute;e une carte indiquant les grappes et les points spatiaux aberrants statistiquement significatifs pr&eacute;sents dans vos donn&eacute;es. Utilisez cet outil pour identifier les entit&eacute;s dot&eacute;es de valeurs significativement diff&eacute;rentes de celles de leurs voisins.  Vous pouvez recourir &agrave; cet outil, par exemple, pour trouver des mod&egrave;les de d&eacute;pense anormaux, d&eacute;terminer o&ugrave; se trouvent les fronti&egrave;res les plus nettes entre la richesse et la pauvret&eacute; dans une zone d'&eacute;tude ou identifier si des comt&eacute;s aux Etats-Unis pr&eacute;sentent une esp&eacute;rance de vie exceptionnellement faible par rapport &agrave; leurs voisins.
             </p>
             <br/>
         </div>

@@ -41,11 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="aoToolbox">
-        <p>The Feature Analysis toolbox contains a number
-of tools that you can access and use.  These tasks are arranged below into
-categories; the categories are simply logical groupings
-and do not affect how you access or use the tasks in any
-way.
+        <p>La caja de herramientas An&aacute;lisis de entidades contiene una serie de herramientas a las que puede acceder y utilizar.  Estas tareas se clasifican en categor&iacute;as; las categor&iacute;as son simplemente agrupaciones l&oacute;gicas y no afectan en modo alguno a la forma en que accede o utiliza las tareas.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="regularsize">
@@ -53,7 +49,9 @@ way.
         <hr/>
         <p>Estas herramientas calculan recuentos totales, longitudes, &aacute;reas y estad&iacute;sticas descriptivas b&aacute;sicas de entidades y sus atributos que se encuentran dentro de &aacute;reas o cerca de otras entidades.
             <ul>
-                <li> <b>Agregar puntos</b> calcula estad&iacute;sticas acerca de los puntos que se encuentran dentro de las &aacute;reas especificadas.
+                <li> <b>Agregar puntos</b> calcula estad&iacute;sticas de los puntos que se encuentran dentro de las &aacute;reas especificadas.
+                </li>
+                <li> <b>Unir entidades</b> transfiere atributos de una capa o tabla a otra bas&aacute;ndose en las relaciones espaciales y de atributo.
                 </li>
                 <li> <b>Resumir cerca de</b> calcula estad&iacute;sticas de entidades y sus atributos que se encuentran dentro de una distancia especificada.
                 </li>
@@ -81,6 +79,32 @@ way.
                     <li>Dadas las ubicaciones de puntos de los incidentes criminales, cuenta el n&uacute;mero de cr&iacute;menes por condado o por otros distritos administrativos.
                     </li>
                     <li>Busca los ingresos m&aacute;s altos y m&aacute;s bajos por ubicaciones de franquicias en cada estado.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="JoinFeaturesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Entidades de unión</h2></td>
+                    <td>
+                    <img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" class="titleImage" alt="Entidades de uni&oacute;n">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Unir entidades transferir&aacute; los atributos de una capa o tabla a otra bas&aacute;ndose en las relaciones espaciales y de atributo. Por ejemplo:
+                <ul>
+                    <li>Adjunta un l&iacute;mite com&uacute;n o informaci&oacute;n demogr&aacute;fica a sus datos de incidentes.
+                    </li>
+                    <li>Identifica las instalaciones m&aacute;s cercanas a una ubicaci&oacute;n conocida.
+                    </li>
+                    <li>Determina el n&uacute;mero de residencias que se encuentran en zonas de inundaci&oacute;n.
+                    </li>
+                    <li>Identifica h&aacute;bitats comunes para distintas especies salvajes.
                     </li>
                 </ul>
                 
@@ -293,9 +317,11 @@ way.
         <hr/>
         <p>Estas herramientas te ayudan a identificar, cuantificar y visualizar los patrones espaciales de tus datos.  
             <ul>
-                <li> <b>Calcular densidad</b> toma cantidades conocidas de un fen&oacute;meno y las extiende por el mapa.
+                <li> <b>Calcular densidad</b> toma cantidades conocidas de un fen&oacute;meno y las expande a trav&eacute;s del mapa.
                 </li>
-                <li> <b>Buscar puntos calientes</b> identifica el clustering estad&iacute;sticamente significativo en el patr&oacute;n espacial de tus datos.
+                <li> <b>Buscar puntos calientes</b> identifica clustering estad&iacute;sticamente significativo en el patr&oacute;n espacial de sus datos.
+                </li>
+                <li> <b>Buscar valores at&iacute;picos</b> determina si hay alg&uacute;n valor at&iacute;pico estad&iacute;sticamente significativo en el patr&oacute;n espacial de sus datos.
                 </li>
                 <li> <b>Interpolar puntos</b> predice los valores de las nuevas ubicaciones en funci&oacute;n de las mediciones encontradas en un conjunto de puntos.
                 </li>
@@ -330,6 +356,21 @@ way.
             </table>
 <hr/>
             <p>Esta herramienta crea un mapa que muestra el clustering espacial estad&iacute;sticamente significativo que existe en tus datos. Usa esta herramienta para revelar los puntos calientes (rojos) y fr&iacute;os (azules) inesperados de valores altos y bajos de viviendas, densidades de actos delictivos, v&iacute;ctimas mortales de accidentes de tr&aacute;fico, desempleo o biodiversidad, por ejemplo.
+            </p>
+            <br/>
+        </div>
+        <div id="FindOutliersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Buscar valores atípicos</h2></td>
+                    <td>
+                    <img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" class="titleImage" alt="Buscar valores at&iacute;picos">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Esta herramienta crea un mapa que muestra agrupaciones y valores at&iacute;picos espaciales estad&iacute;sticamente significativos presentes en sus datos. Utilice esta herramienta para identificar entidades que tenga valores considerablemente distintos a sus vecinos.  Por ejemplo, puede utilizar esta herramienta para buscar patrones de gasto an&oacute;malos, determinar d&oacute;nde est&aacute;n los l&iacute;mites m&aacute;s marcados entre riqueza y pobreza en un &aacute;rea de estudio o determinar si hay condados en Estados Unidos con una esperanza de vida excepcionalmente baja en comparaci&oacute;n con sus vecinos.
             </p>
             <br/>
         </div>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Găsire puncte de interes</h2><p/>
+        <h2><img src="../images/GUID-6D600155-AA9B-4F02-AD8B-2E84150AB743-web.png" alt="Găsire hot spoturi"></h2>
+        <hr/>
+    <p>Instrumentul Găsire Hot Spots (zone fierbinți) va determina dacă există grupări semnificative din punct de vedere statistic &icirc;n modelul spaţial al datelor dvs. 
+        <ul>
+            <li>Punctele dvs. (incidente infracţionale, arbori sau accidente &icirc;n trafic) sunt cu adevărat grupate?  Cum puteţi fi siguri?
+            </li>
+            <li>Aţi găsit cu adevărat un punct de interes semnificativ din punct de vedere statistic? Sau harta dvs. ar spune o poveste diferită dacă aţi modifica modul &icirc;n care este simbolizată?
+            </li>
+        </ul>
+        Instrumentul Găsire puncte de interes vă va ajuta să răspundeţi cu &icirc;ncredere la aceste &icirc;ntrebări.
+    </p>
+    <p>Chiar şi modelele spaţiale aleatorii prezintă un anumit grad de grupare. &Icirc;n plus, ochii şi mintea &icirc;ncearcă &icirc;n mod natural să găsească modele chiar şi atunci c&acirc;nd acestea nu există. &Icirc;n consecinţă, poate fi dificil de ştiut dacă modelele din datele dvs. sunt rezultatul unor procese spaţiale reale existente sau doar rezultatul unor coincidenţe aleatorii. Din acest motiv cercetătorii şi analiştii folosesc metode statistice precum Găsire hot spot-uri (Getis-Ord Gi*) pentru a cuantifica modele spaţiale. C&acirc;nd &icirc;ntr-adevăr găsiţi &icirc;n date grupări semnificative din punct de vedere statistic, aveţi informaţii de valoare. Ştiind c&acirc;nd şi unde survin grupări, puteţi furniza indicii importante referitoare la procesele care contribuie la modelele pe care le constataţi. Cunoaşterea, de exemplu, a faptului că spargerile &icirc;n locuinţe sunt consecvent mai mare &icirc;n anumite cartiere reprezintă o informaţie vitală dacă trebuie să concepeţi strategii de prevenire eficiente, să alocaţi resurse limitate ale poliţiei, să iniţiaţi programe de supraveghere civilă, să autorizaţi investigaţii criminalistice amănunţite sau să identificaţi potenţiali suspecţi.   
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="analysisLayer">
+        <div><h2>Alegeţi stratul tematic pentru care vor fi calculate punctele de interes</h2></div>
+        <hr/>
+        <div>
+            <p>Stratul tematic de puncte &icirc;n care vor fi găsite puncte de interes şi puncte lipsite de interes. 
+            </p>
+            <p>&Icirc;n afară de a alege un strat tematic din harta dvs., puteţi selecta opţiunile  <b>Răsfoire straturi tematice</b> &icirc;n partea inferioară a listei verticale pentru a răsfoi conţinutul pentru stratul tematic sau setul de date pentru partajarea de fişiere big data.  
+            </p>
+        </div>
+    </div>
+    <div id="analysisField">
+        <div><h2>Găsiţi grupări de densităţi ridicate sau scăzute</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Această analiză răspunde la &icirc;ntrebarea: Unde sunt grupate spaţial valori mari şi mici?
+            </p>
+            <p>Dacă datele dvs. sunt compuse din puncte şi alegeţi  <b>Numărare de puncte</b>, acest instrument va evalua aranjamentul spaţial al obiectelor spaţiale punct pentru a răspunde la &icirc;ntrebarea: Unde sunt punctele grupate sau răsp&acirc;ndite neaşteptat?
+            </p>
+            <p>Dacă alegeţi un c&acirc;mp, acest instrument va evalua aranjamentul spaţial al valorilor asociate cu fiecare obiect spaţial pentru a răspunde la &icirc;ntrebarea: Unde se grupează valorile mari şi mici?
+            </p>
+        </div>
+    </div>
+    <div id="inputBins">
+        <div><h2>Selectaţi dimensiunea coşurilor pentru calculul punctelor de interes</h2></div>
+        <hr/>
+        <div>
+            <p>Distanţa utilizată pentru generarea coşurilor pătrate care vor fi utilizate pentru analiza punctelor de intrare.
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Agregare utilizând segmente temporale (opţional)</h2></div>
+        <hr/>
+        <div>
+            <p>Dacă timpul este activat &icirc;n stratul tematic de puncte şi este de tip instantaneu, puteţi analiza prin intermediul intervalurilor de timp.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>Interval temporal în care se realizează îmbinarea</h2></div>
+        <hr/>
+        <div>
+            <p>Interval temporal utilizat pentru segmentarea datelor. Dacă aţi dori să creaţi segmente temporale care au loc săptăm&acirc;nal, aţi seta intervalul de timp la o săptăm&acirc;nă. 
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>Treaptă temporală în care se va realiza îmbinarea</h2></div>
+        <hr/>
+        <div>
+            <p>Cum va fi aliniat timpul. Timpul poate fi aliniat la &icirc;nceputul sau sf&acirc;rşitul datelor de intrare sau la un timp de referinţă specificat.  
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Ora de referinţă utilizată pentru alinierea segmentelor temporale</h2></div>
+        <hr/>
+        <div>
+            <p>Data şi ora utilizate pentru alinierea intervalelor temporale.
+            </p>
+        </div>
+    </div>
+    <div id="neighborhood">
+        <div><h2>Selectaţi dimensiunea cartierului</h2></div>
+        <hr/>
+        <div>
+            <p>Distanţa utilizată pentru a determina vecinătatea utilizată pentru calculele punctelor de interes. Vecinătatea ar trebui să fie mai mare dec&acirc;t dimensiunea coşului pentru a asigura că fiecare coş are cel puţin un vecin. Fiecare coş este analizat şi comparat cu coşurile vecine.
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>SpatialReference (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>Acesta este un parametru temporar pentru pre-lansare, destinat procesării referinţei spaţiale. Numeroase instrumente big data necesită utilizarea unui sistem de coordonate estimat ca referinţă spaţială pentru procesare. &Icirc;n mod implicit, instrumentul va utiliza sistemul de coordonate de intrare dar va eşua dacă este un sistem de coordonate geografice. Pentru a seta un sistem de coordonate estimate, introduceţi WKID. De exemplu,  <b>Web Mercator</b> ar fi introdus ca <code>3857</code>.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Selectare depozit de date</h2></div>
+        <hr/>
+        <div>
+            <p>Acesta este un parametru temporar pentru pre-lansare, destinat setării depozitului de date &icirc;n care sunt salvate rezultatele. Ambele depozite de date fac parte din  ArcGIS Data Store. Dacă selectaţi depozitul de date spaţio-temporal dar nu aveţi unul instalat, instrumentul va eşua. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nume strat tematic rezultat</h2></div>
+        <hr/>
+        <div>
+            <p> Acesta este numele stratului tematic care va fi creat &icirc;n <b>Resursele mele</b> şi adăugat &icirc;n hartă.  Numele implicit se bazează pe numele instrumentului şi numele stratului tematic de intrare. Dacă stratul tematic există deja, instrumentul va eşua.
+            </p>
+            <p>Acest strat tematic rezultat vă va arăta grupări de valori mari şi mici, semnificative din punct de vedere statistic. Dacă stratul tematic rezultat există deja, vi se va solicita să &icirc;l redenumiţi.
+            </p>
+            <p>Utiliz&acirc;nd caseta derulantă  <b>Salvare rezultat &icirc;n</b>, puteţi specifica numele unui director din <b>Resursele mele</b> &icirc;n care va fi salvat rezultatul.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

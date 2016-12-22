@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="raToolbox">
+        <p>래스터 분석 도구에서는  ArcGIS Image Server를 사용하여 대형 래스터 데이터셋을 분석할 수 있습니다. 또한 서버의 성능을 활용하여 데이터를 좀 더 빠르게 분석할 수 있습니다.  Portal for ArcGIS 웹 UX에서 제공되고 있는 도구모음은  <b>데이터 요약</b>, <b>패턴 분석</b>, <b>이미지 분석</b>, <b>터레인 분석</b>, <b>데이터 관리</b>입니다.
+        </p>
+    </div>
+    <div id="SummarizeDataCategory" class="smallsize">
+        <h2>데이터 요약</h2>
+        <hr/>
+        <p>이 도구모음에는 정의하는 영역 경계 내의 래스터 레이어에 대한 일부 통계를 계산하는 도구가 포함되어 있습니다. 
+            <ul>
+                <li> <b>다음 범위 내 래스터 요약</b> - 정의된 영역 경계 내에 속하는 래스터 셀에 대한 통계를 계산합니다.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="SummarizeRasterWithinTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>다음 범위 내 래스터 요약</h2></td>
+                    <td>
+                    <img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" class="titleImage" alt="다음 범위 내 래스터 요약 도구">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>정의된 영역 내의 래스터 셀에 대한 일부 요약 통계를 계산합니다.
+            </p>
+            <p>다음과 같은 몇 가지 적용 예가 있습니다. 
+
+                <ul>
+                    <li>유역 영역 레이어와 고도 래스터 레이어가 주어진 경우 각 유역 내의 고도 범위를 계산하여 유량 에너지가 최고인 유역을 확인합니다.
+                        
+
+                    </li>
+                    <li>관리 단위 레이어와 토지 이용 범주의 래스터 레이어가 주어진 경우 각 관리 영역 내의 다양한 토지 이용 값을 계산하여 관리 계획을 세우는 데 가장 많은 작업을 해야 하는 관리 영역을 확인합니다.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzePatternsCategory" class="smallsize">
+        <h2>패턴 분석</h2>
+        <hr/>
+        <p>이러한 도구는 데이터에 있는 공간 패턴을 식별, 수량화 및 시각화합니다. 
+
+            <ul>
+                <li> <b>밀도 계산</b>은 일부 현상의 알려진 수량을 이용하여 이러한 수량을 맵에서 분산시켜 밀도 맵을 생성합니다.
+                    
+
+                </li>
+                <li> <b>포인트 내삽</b>은 포인트 컬렉션에서 발견된 측정을 기반으로 한 새 위치에서 값을 예측합니다.
+                    
+
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateDensityRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>밀도 계산</h2></td>
+                    <td>
+                    <img src="../images/GUID-4EE4838C-E210-43CE-99C7-1A648A18C10B-web.png" class="titleImage" alt="밀도 계산 도구">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>밀도 분석은 일부 현상의 알려진 수량을 이용하여 이러한 수량을 맵에서 분산시켜 밀도 맵을 생성합니다. 이 도구를 사용하여 낙뢰 또는 토네이도, 보건 시설로의 접근성 및 인구 밀도 등을 표시할 수 있습니다.
+            </p>
+            <br/>
+        </div>
+        <div id="InterpolatePointsEBKTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>포인트 내삽</h2></td>
+                    <td>
+                    <img src="../images/GUID-06D80BB3-7154-4FAA-9C9B-D665450EF3BC-web.png" class="titleImage" alt="포인트 내삽 도구">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>이 도구를 이용하면 여러 포인트에서 발견된 측정값을 기반으로 새 위치에서의 값을 예측할 수 있습니다. 이 도구는 각 포인트에서 값이 있는 포인트 데이터를 가져가 예측 값으로 분류된 영역을 반환합니다. 이 도구를 사용하여 개별 우량계에서 수행된 측정을 기반으로 하천에서 강우량 수준을 예측할 수 있습니다.
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzeImageCategory" class="smallsize">
+        <h2>이미지 분석</h2>
+        <hr/>
+        <p>다음 도구를 사용하면 이미지 분석을 통해 식생이 포함된 영역을 쉽게 확인할 수 있습니다. 
+            <ul>
+                <li> <b>식생 모니터링</b>은 밴드에 대한 산술 연산을 기반으로 이미지 내의 식생을 감지합니다.
+                    
+
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="MonitorVegetationTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>식생 모니터링</h2></td>
+                    <td>
+                    <img src="../images/GUID-7763FCC0-2EA1-463B-98D0-4EBDF6150907-web.png" class="titleImage" alt="포털용 식생 모니터링 도구">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>멀티밴드 래스터 레이어 밴드에 대해 산술 연산을 수행하여 처리 범위의 식생 커버리지 정보를 나타냅니다.
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzeTerrainCategory" class="smallsize">
+        <h2>터레인 분석</h2>
+        <hr/>
+        <p>이러한 도구는 래스터 표면을 분석하도록 도와줍니다. 
+            <ul>
+                <li> <b>경사 계산</b>은 터레인의 기울기를 계산합니다.
+                    
+
+                </li>
+                <li> <b>경사면 방향 취득</b>은 각 위치에서 가장 가파른 경사의 방향을 계산합니다.
+                    
+
+                </li>
+                <li> <b>가시권역 생성</b>은 경관의 모든 포인트에서 볼 수 있는 항목을 식별합니다.
+                    
+
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateSlopeTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>경사 계산</h2></td>
+                    <td>
+                    <img src="../images/GUID-D33862C6-01BB-445E-B0C3-BC8B8C1858DA-web.png" class="titleImage" alt="포털용 경사 계산 도구">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>입력 고도 데이터의 경사를 보여주는 표면을 식별합니다. 경사는 각 디지털 고도 모델(DEM) 셀에 대한 고도의 변경율을 나타냅니다.
+            </p>
+            <br/>
+        </div>
+        <div id="DeriveAspectTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>경사면 방향 취득</h2></td>
+                    <td>
+                    <img src="../images/GUID-D03FF025-0530-4D0D-87A3-B25D6716F8F0-web.png" class="titleImage" alt="포털용 경사면 방향 취득 도구">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>이웃 각 셀에서 값 변화의 최대 속도의 내리막 방향을 확인합니다. 경사면 방향은 경사 방향으로 생각할 수 있습니다.
+            </p>
+            <br/>
+        </div>
+        <div id="CreateViewshedRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>가시권역 생성</h2></td>
+                    <td>
+                    <img src="../images/GUID-BB8B8CAF-330E-4C41-9D94-AF4728D0D0F3-web.png" class="titleImage" alt="가시권역 생성 도구">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>관찰자 집합이 볼 수 있는 래스터 표면의 위치를 결정합니다.
+            </p>
+            <br/>
+        </div>
+    <div id="ManageDataCategory" class="smallsize">
+        <h2>데이터 관리</h2>
+        <hr/>
+        <p>지리 데이터의 일상적인 관리 및 분석 전 데이터 통합에 사용되는 도구입니다. 
+            <ul>
+                <li> <b>래스터 추출</b> - 향후 분석을 위해 래스터 데이터셋에서 일부를 클립합니다.
+                    
+
+                </li>
+                <li> <b>값 리맵</b> - 다른 값을 래스터 셀에 할당합니다.
+                    
+
+                </li>
+                <li> <b>피처를 래스터로 변환</b> - 벡터 데이터를 래스터화합니다.
+                    
+
+                </li>
+                <li> <b>래스터를 피처로 변환</b> - 래스터 데이터를 벡터화합니다.
+                    
+
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="ExtractRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>래스터 추출</h2></td>
+                    <td>
+                    <img src="../images/GUID-DC9CBCB9-A07C-42D3-A0CB-2FB1483CBF4C-web.png" class="titleImage" alt="포털의 래스터 추출 도구">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>다른 데이터셋의 값, 쉐이프 또는 범위를 기반으로 래스터에서 셀을 추출합니다.
+            </p>
+            <br/>
+        </div>
+        <div id="RemapValuesTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>값 리맵</h2></td>
+                    <td>
+                    <img src="../images/GUID-4006E442-A60B-469A-891D-5ED442F64CB8-web.png" class="titleImage" alt="포털용 값 리맵 도구">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>개별 셀 값 또는 일련의 셀 값을 새 값으로 변경합니다.
+            </p>
+            <br/>
+        </div>
+        <div id="ConvertFeatureToRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Convert Feature to  Raster</h2></td>
+                    <td>
+                    <img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" class="titleImage" alt="Convert Feature to Raster tool">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>기존 피처 데이터셋에서 새 래스터 데이터셋을 생성합니다.
+            </p>
+            <br/>
+        </div>
+        <div id="ConvertRasterToFeatureTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>래스터를 피처로 변환</h2></td>
+                    <td>
+                    <img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" class="titleImage" alt="래스터를 피처로 변환 도구">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>기존 래스터 데이터셋에서 새 피처 데이터셋을 생성합니다.
+            </p>
+            <br/>
+        </div>
+</div>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Postavke okruženja analize u portalu</h2><p/>
+        <h2></h2>
+        <hr/>
+    <p> Postavke okruženja analize u Portal for ArcGIS i  ArcGIS Online. 
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="overwriteResult">
+        <div><h2>Pregazi sloj rezultata</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Opcija zamjene postojećih slojeva. Kad se označi, ako već postoji sloj istog naziva u va&scaron;em sadržaju, pregazit će se.
+            </p>
+            <p>
+                <ul>
+                    <li>Označeno &ndash; ako već postoji sloj istog naziva u va&scaron;em sadržaju, pregazit će se.Rezultat će imati isti koordinatni sustav kao unos.
+                    </li>
+                    <li>Neoznačeno &ndash; ako uneseni naziv sloja rezultata već postoji, dogodit će se pogre&scaron;ka i sloj rezultata mora se preimenovati prije izvr&scaron;avanja alata. To je zadano.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="closeAnalysisWidget">
+        <div><h2>Zatvori widget za analizu nakon pokretanja analize</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Opcija da dijalo&scaron;ki okvir analize ostane otvoren i omogućen za vrijeme obrade alata. Ova će vam postavka omogućiti jednostavno mijenjanje va&scaron;ih parametara analize dok prethodni zadatak analize i dalje radi. Analiza je iterativni postupak i ako ostavite dijalo&scaron;ki okvir alata otvoren, omogućit će vam jednostavno mijenjanje parametara i ponovno pokretanje va&scaron;e analize.
+            </p>
+            <p>
+                <ul>
+                    <li>Označeno &ndash; zatvorit će se prozor alata za analizu i fokus će se vratiti na sadržaj. To je zadano
+                    </li>
+                    <li>Neoznačeno &ndash; prozor alata za analizu ostat će otvoren i omogućen.   
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="storeAnalysisResults">
+        <div><h2>Pohrani rezultate analize kao usluge geoobjekata</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Opcija za određivanje hoće li se rezultat va&scaron;e analize stvoriti kao sloj geoobjekata ili kao kolekcija geoobjekata.
+            </p>
+            <p>
+                <ul>
+                    <li>Označeno &ndash; rezultat va&scaron;e analize stvorit će sloj geoobjekata i stavka će se stvoriti u va&scaron;em sadržaju. To je zadano.
+                    </li>
+                    <li>Neoznačeno &ndash; rezultati va&scaron;e analize stvorit će kolekciju geoobjekata. Kolekcije geoobjekata pohranjuju se u va&scaron;oj web-karti.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputCoordinateSystem">
+        <div><h2>Izlazni koordinatni sustav</h2></div>
+        <hr/>
+        <div>
+            <p>Postavke okruženja za analizu rastera kori&scaron;tene za definiranje koordinatnog sustava sloja rezultata.    
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Jednako kao unos</b> &ndash; rezultat va&scaron;e analize bit će isti koordinatni sustav kao u unosu. To je zadano.
+                    </li>
+                    <li> <b>Kao &scaron;to je određeno</b> &ndash; odaberite koordinatni sustav za rezultate va&scaron;e analize. Kad se odabere ova opcija, kliknite na ikonu globusa za odabir s popisa poznatih koordinatnih sustava ili dodajte prostornu referencu WKID u zadani okvir.
+                    </li>
+                    <li> <b>Sloj
+&lt;naziv&gt;</b> &ndash; odaberite postojeći sloj na svojoj web-karti koji će se upotrebljavati za određivanje koordinatnog sustava rezultata va&scaron;e analize.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingCoordinateSystem">
+        <div><h2>Koordinatni sustav obrade</h2></div>
+        <hr/>
+        <div>
+            <p>Postavke okruženja za geoanalitiku koje se koriste za određivanje koordinatnog sustava kojim će se koristiti va&scaron;a analiza tijekom izvr&scaron;avanja analize.   
+            </p>
+            <p>Za geoanalitiku neke analize zahtijevaju da se obrađivanje izvr&scaron;i u projiciranom koordinatnom sustavu. Bilo koji alat koji primjenjuje podatake u ćelijama ili linearne jedinice zahtijeva projicirani koordinatni sustav. 
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Jednako kao unos</b> &ndash; va&scaron;a analiza obradit će se u istom koordinatnom sustavu kao u unosu. To je zadano.
+                    </li>
+                    <li> <b>Kao &scaron;to je određeno</b> &ndash; odaberite koordinatni sustav za obradu va&scaron;e analize. Kad se odabere ova opcija, kliknite na ikonu globusa za odabir s popisa poznatih projiciranih koordinatnih sustava ili dodajte prostornu referencu WKID u zadani okvir.
+                    </li>
+                    <li> <b>Sloj
+&lt;naziv&gt;</b> &ndash; odaberite postojeći sloj sa svoje web-karte. Koordinatni sustav odabranog sloja upotrebljavat će se za određivanje koordinatnog sustava koji će se upotrebljavati za obradu va&scaron;e analize.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingExtent">
+        <div><h2>Obuhvat</h2></div>
+        <hr/>
+        <div>
+            <p>Postavke okruženja za određivanje obuhvata ili granice koji će se koristiti tijekom izvr&scaron;avanja analize. Svi ulazni geoobjekti koji su potpuno unutar ili koji presijecaju naznačen obuhvat upotrijebit će se u analizi.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Zadano</b> &ndash; upotrebljava obuhvat od alata.
+                    </li>
+                    <li> <b>Kao &scaron;to je određeno</b> &ndash; ručno unesite koordinate za određivanje obuhvata.
+                    </li>
+                    <li> <b>Sloj
+&lt;naziv&gt;</b> &ndash; odaberite postojeći sloj sa svoje web-karte. Prostorni obuhvat odabranog sloja upotrebljavat će se za određivanje kori&scaron;tenog obuhvata za obradu va&scaron;e analize. 
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="snapRaster">
+        <div><h2>Poravnaj raster</h2></div>
+        <hr/>
+        <div>
+            <p>Prilikom izvr&scaron;avanja analize rastera, postavljanje okruženja  <b>Poravnaj raster</b> podesit će obuhvat izlaznog sloja rastera tako da se podudara s poravnanjem ćelija naznačenog sloja za <b>Poravnaj raster</b>.
+            </p>
+        </div>
+    </div>
+    <div id="cellSize">
+        <div><h2>Veličina ćelije</h2></div>
+        <hr/>
+        <div>
+            <p>Prilikom izvr&scaron;avanja analize rastera, ovo okruženje postavlja veličinu ćelije ili Razlučivost koja će se koristiti za stvaranje izlaznog sloja rastera. Zadana izlazna razlučivost određuje se prema najvećoj ćeliji ulaznog sloja rastera.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Minimum unosa</b> &ndash; upotrijebite najmanju veličinu ćelije od svih slojeva unosa.
+                    </li>
+                    <li> <b>Maksimum unosa</b> &ndash; upotrijebite najveću veličinu ćelije od svih slojeva unosa. To je zadano.
+                    </li>
+                    <li> <b>Kao &scaron;to je određeno</b> &ndash; odredite brojčanu vrijednost za postavljanje veličine ćelije. Ako se ovo odabere, zadana je vrijednost 1.
+                    </li>
+                    <li> <b>Sloj &lt;naziv&gt;</b> &ndash; postavlja veličinu ćelije na odabrani sloj rastera.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="mask">
+        <div><h2>Maska</h2></div>
+        <hr/>
+        <div>
+            <p> Prilikom izvr&scaron;avanja analize rastera, upotrijebite okruženje <b>Maska</b> za određivanje sloja koji će se koristiti za definiranje va&scaron;eg željenog područja. Samo one ćelije koje spadaju u masku analize razmotrit će se u radnji analize.
+            </p>
+            <ul>
+                <li>Maska može biti raster ili sloj geoobjekta.
+                </li>
+                <li>Ako je maska analize raster, sve ćelije koje imaju vrijednost razmotrit će se za definiranje maske. Ćelije u rasteru maske koje nemaju podataka razmotrit će se kao izvan maske i bit će bez podataka u sloju rezultata analize. 
+                </li>
+                <li>Ako je maska analize sloj geoobjekata, interno će se pretvoriti u raster prilikom izvr&scaron;avanja. Zbog toga, trebali biste osigurati ispravno postavljanje za stavke  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">Veličina ćelije</a> i <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">Poravnaj raster</a> za va&scaron;u analizu.
+                </li>
+            </ul>
+             
+        </div>
+    </div>
+</div>
+</html>

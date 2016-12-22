@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>摘要屬性</h2><p/>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="摘要屬性"></h2>
+        <hr/>
+    <p>此工具會摘要一或多個欄位中的所有符合值，並計算這些值的統計資料。最基本的統計資料是已統合摘要的圖徵計數，但您也可以計算更精細的統計資料。
+
+    </p>
+    <p>例如，假設您擁有商店位置的點圖徵，包含代表  <i>DISTRICT_MANAGER_NAME</i> 的欄位，並且希望按主管摘要咖啡銷售額。您可以將 <i>DISTRICT_MANAGER_NAME</i> 欄位指定為要融合的欄位，以及指定所有資料列來代表將摘要的個別主管。這意味會將主管 1 管理的所有商店位置摘要至一列，該列包含要計算的摘要統計資料。在此情況中，將計算如商店計數，及主管 1 管理的所有商店的 <i>TOTAL_SALES</i> 總和，以及 <i>DISTRICT_MANAGER_NAME</i> 欄位列出的任何其他主管等統計資料。
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>選擇要摘要的輸入</h2></div>
+        <hr/>
+        <div>
+            <p>將摘要包含欄位的圖層。
+            </p>
+            <p>除了從地圖選擇圖層外，您也可以選擇下拉式清單底部的 <b>瀏覽圖層</b>，以瀏覽到大數據檔案分享資料集或圖徵圖層的內容。  
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>選擇融合所在的欄位</h2></div>
+        <hr/>
+        <div>
+            <p>  來自輸入圖層的欄位清單。將摘要所選欄位並用來計算統計資料。例如，如果選擇包含商業和住宅值的 <i>PropertyType</i> 欄位，則將統合摘要所有住宅欄位、計算的摘要統計資料，並將統合摘要所有商業欄位。
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>選擇要計算的欄位和統計資料（選用）</h2></div>
+        <hr/>
+        <div>
+            <p> 您可以在要摘要的圖徵上計算統計資料。在數值欄位上，您可以計算：
+                <ul>
+                    <li>計數
+                    </li>
+                    <li>平均值
+                    </li>
+                    <li>最小值
+                    </li>
+                    <li>最大值
+                    </li>
+                    <li>範圍
+                    </li>
+                    <li>變異
+                    </li>
+                    <li>標準差
+                    </li>
+                </ul>
+                
+            </p>
+            <p>在字串欄位上，您可以計算：
+                <ul>
+                    <li>計數
+                    </li>
+                    <li>任何 - 此統計資料是指定欄位中字串值的隨機樣本。
+                    </li>
+                </ul>
+                會以非 null 值計算所有統計資料。結果圖層將為每個已計算的統計資料納入一個新欄位。透過選擇屬性和統計資料可新增任意數量的統計資料。 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>選擇資料存放區</h2></div>
+        <hr/>
+        <div>
+            <p>這是搶鮮版的暫時參數，用於設定儲存結果的資料儲存庫。兩個資料儲存庫皆屬於  ArcGIS Data Store。如果選擇時空資料儲存庫但尚未安裝，工具將失敗。 </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>結果圖層名稱</h2></div>
+        <hr/>
+        <div>
+            <p> 在 <b>我的內容</b>中建立並新增到地圖中的圖層的名稱。預設名稱參照工具名稱以及輸入圖層名稱。如果圖層已存在，工具將失敗。
+            </p>
+            <p>使用 <b>將結果儲存到</b>下拉式方塊，可以在 <b>我的內容</b>中指定储存结果的文件夾的名稱。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

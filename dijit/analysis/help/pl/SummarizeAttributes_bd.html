@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Sumuj atrybuty</h2><p/>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Sumuj atrybuty"></h2>
+        <hr/>
+    <p>To narzędzie sumuje wszystkie pasujące wartości w jednym lub kilku polach i wykonuje dla nich obliczenia statystyczne. Najbardziej podstawowym obliczeniem statystycznym jest zliczanie obiekt&oacute;w, kt&oacute;re zostały zsumowane, ale można także wykonać bardziej skomplikowane obliczenia. 
+
+    </p>
+    <p>Przyjmijmy na przykład, że mamy obiekty punktowe reprezentujące lokalizacje sklep&oacute;w z polem  <i>DISTRICT_MANAGER_NAME</i> (nazwisko kierownika rejonu) i chcemy uzyskać podsumowanie sprzedaży kawy dla poszczeg&oacute;lnych kierownik&oacute;w. Można wybrać pole <i>DISTRICT_MANAGER_NAME</i> jako pole, na podstawie kt&oacute;rego zostanie przeprowadzona agregacja. Wszystkie wiersze danych reprezentujące poszczeg&oacute;lnych kierownik&oacute;w zostaną zsumowane. Oznacza to, że wszystkie lokalizacje sklep&oacute;w zarządzane przez kierownika oznaczonego jako Manager1 zostaną zsumowane w jednym wierszu i zostaną dla tego wiersza wykonane zbiorcze obliczenia statystyczne. W tej instancji obliczenia statystyczne, takie jak zliczanie sklep&oacute;w i sumowanie wartości w polach <i>TOTAL_SALES</i> (sprzedaż łącznie), będą wykonywane dla wszystkich sklep&oacute;w zarządzanych przez kierownika Manager1, jak r&oacute;wnież dla sklep&oacute;w zarządzanych przez innych kierownik&oacute;w znajdujących się na liście w polu <i>DISTRICT_MANAGER_NAME</i>.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Wybierz dane wejściowe do sumowania</h2></div>
+        <hr/>
+        <div>
+            <p>Warstwa zawierająca pola, kt&oacute;re będą sumowane.  
+            </p>
+            <p>Opr&oacute;cz wybrania warstwy z mapy, można wybrać opcję  <b>Przeglądaj warstwy</b> znajdującą się w dolnej części listy rozwijanej, aby przejść do zasob&oacute;w zestawu danych udostępnionych plik&oacute;w dużych zbior&oacute;w danych lub warstwy obiektowej.  
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>Wybierz pola agregacji</h2></div>
+        <hr/>
+        <div>
+            <p>  Lista p&oacute;l w warstwy wejściowej.  Wybrane pola zostaną zsumowane, w wynik tej operacji zostanie użyty podczas wykonywania obliczeń statystycznych. Jeśli na przykład zostanie wybrane pole o nazwie <i>PropertyType</i> (typ nieruchomości), kt&oacute;re może przyjmować wartości commercial (komercyjna) i residential (mieszkalna), wszystkie pola o wartości residential zostaną zsumowane i zostaną wykonane zbiorcze obliczenia statystyczne. Zostaną także zsumowane wszystkie pola o wartości commercial.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Wybierz pola i statystyki, które chcesz obliczyć (opcjonalnie)</h2></div>
+        <hr/>
+        <div>
+            <p> Można obliczyć statystyki dla zsumowanych obiekt&oacute;w. W polach liczbowych można obliczyć następujące wartości:
+                <ul>
+                    <li>Liczba
+                    </li>
+                    <li>Średnia
+                    </li>
+                    <li>Min
+                    </li>
+                    <li>Maks
+                    </li>
+                    <li>Zakres
+                    </li>
+                    <li>Odchylenie
+                    </li>
+                    <li>Odchylenie standardowe
+                    </li>
+                </ul>
+                
+            </p>
+            <p>W polach ciąg&oacute;w znakowych można obliczyć następujące wartości:
+                <ul>
+                    <li>Liczba
+                    </li>
+                    <li>Dowolne &mdash; ta statystyka to losowy przykład wartości znakowej w podanym polu.
+                    </li>
+                </ul>
+                Wszystkie statystyki są obliczane na podstawie wartości niepustych. Warstwa wynikowa zawiera nowe pole dla każdego wykonanego obliczenia statystycznego. Dodać można dowolną liczbę statystyk poprzez wybranie atrybutu oraz&nbsp;właściwej operacji statystycznej. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Wybierz magazyn danych</h2></div>
+        <hr/>
+        <div>
+            <p>Jest to parametr tymczasowy używany w wersji wstępnej do ustawiania magazynu danych, w kt&oacute;rym zapisywane są wyniki. Oba magazyny danych są częścią aplikacji  ArcGIS Data Store. Jeśli zostanie wybrany magazyn danych czasowo-przestrzennych, ale żaden magazyn tego typu nie został zainstalowany, działanie narzędzia nie powiedzie się. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nazwa warstwy wynikowej</h2></div>
+        <hr/>
+        <div>
+            <p> Jest to nazwa warstwy, kt&oacute;ra zostanie utworzona w&nbsp;zakładce <b>Moje zasoby</b> i&nbsp;zostanie dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, działanie narzędzia nie powiedzie się.
+            </p>
+            <p>Używając listy rozwijanej  <b>Zapisz wynik w</b>, można określić nazwę folderu w zakładce <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

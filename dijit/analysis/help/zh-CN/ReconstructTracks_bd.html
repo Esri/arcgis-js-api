@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>重新构建追踪</h2><p/>
+        <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="重新构建轨迹"></h2>
+        <hr/>
+    <p>该工具适用于启用时间的点或面要素（表示 <code>时刻</code>）图层。它首先使用标识符确定属于轨迹的要素。使用每个位置的时间按顺序排列轨迹，并将其转换为表示随时间变化的移动路径的线或面。或者，可以依据字段对输入进行缓冲，从而在每个位置创建一个面。这些缓冲点（或者当输入为面时）随即按顺序连接，以将轨迹创建为面，其中宽度表示感兴趣属性。生成的轨迹具有开始和结束时间，临时表示已知轨迹中的第一个和最后一个要素。创建轨迹后，将计算输入要素的统计数据并将其分配给输出轨迹。最基本的统计数据是区域内点的计数，但是也可以计算其他统计数据。
+    </p>
+    <p>可以采用下面两种方式之一来表示启用时间的图层中的要素：
+        <ul>
+            <li>时刻 - 单个时间点
+            </li>
+            <li>间隔 - 开始和结束时间
+            </li>
+        </ul>
+        
+    </p>
+    <p>例如，假设您拥有每隔 10 分钟的飓风 GPS 测量。每个 GPS 测量记录了飓风的名称、位置、记录时间和风速。根据此信息，您可以使用轨迹识别的名称创建每个飓风的轨迹，然后生成每个飓风的轨迹。此外，还可以计算每个飓风的平均风速、最大风速和最小风速等统计数据，以及每条轨迹中的测量计数。
+    </p>
+    <p>使用相同示例，可以依据风速对轨迹进行缓冲。依据该位置的风速字段对每个测量进行缓冲，并将缓冲区域连接在一起，从而创建表示轨迹路径以及随着飓风前进风速的变化的面。
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>从以下内容选择要素以重新构建追踪</h2></div>
+        <hr/>
+        <div>
+            <p>要重新构建为轨迹的点或面图层。
+            </p>
+            <p>除了从地图中选择图层外，还可以在下拉列表的底部选择 <b>浏览图层</b>，以浏览至大数据文件共享数据集或要素图层中的内容。  
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>选择用于标识轨迹的字段</h2></div>
+        <hr/>
+        <div>
+            <p> 表示轨迹标识符的字段。
+            </p>
+            <p> 例如，如果要重新构建飓风的轨迹，则可以使用飓风名称作为轨迹字段。
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>选择用于重新构建追踪的方法</h2></div>
+        <hr/>
+        <div>
+            <p>用于连接轨迹和应用缓冲区（如果适用）的方法。 <b>平面</b>方法可以更快地计算结果，但是不会使轨迹经向环绕国际日期变更线或在缓冲时考虑地球的实际形状。 <b>测地线</b>方法将根据需要使轨迹经向环绕日期变更线，并应用测地线缓冲区将地球的形状考虑在内。
+            </p>
+        </div>
+    </div>
+    <div id="bufferField">
+        <div><h2>创建缓冲输入要素所依据的表达式(可选)</h2></div>
+        <hr/>
+        <div>
+            <p>用于计算以输入要素为中心的缓冲距离的公式。可以使用缓冲区计算器生成此公式，支持加、减、乘、除等基本运算。使用分析坐标系计算这些值。
+            </p>
+        </div>
+    </div>
+    <div id="timeSplit">
+        <div><h2>选择分割追踪所依据的时间(可选)</h2></div>
+        <hr/>
+        <div>
+            <p>用于分割轨迹的时间。如果输入点或面之间的持续时间比时段长，则会将其分割成不同的轨迹。
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>添加统计数据(可选)</h2></div>
+        <hr/>
+        <div>
+            <p> 可以计算汇总的要素的统计数据。可以根据数值字段计算以下内容：
+                <ul>
+                    <li>计数
+                    </li>
+                    <li>平均值
+                    </li>
+                    <li>最小值
+                    </li>
+                    <li>最大值
+                    </li>
+                    <li>范围
+                    </li>
+                    <li>方差
+                    </li>
+                    <li>标准差
+                    </li>
+                </ul>
+                
+            </p>
+            <p>可以根据字符串字段计算以下内容：
+                <ul>
+                    <li>计数
+                    </li>
+                    <li>任意 - 该统计数据是指定字段中字符串值的随机样本。
+                    </li>
+                </ul>
+                所有统计数据均根据非空值计算而得。生成的图层将包含一个针对每个计算而得的统计数据的新字段。通过选择一个属性和统计数据可添加任意数量的统计数据。 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>选择数据存储</h2></div>
+        <hr/>
+        <div>
+            <p>这是预发行版本中的临时参数，用于设置将存储结果的数据存储。这两个数据存储都是  ArcGIS Data Store 的一部分。如果选择时空数据存储但是尚未安装该存储，将无法使用该工具。 </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>结果图层名称</h2></div>
+        <hr/>
+        <div>
+            <p> 在 <b>我的内容</b>中创建并添加到地图中的图层的名称。默认名称基于工具名称以及输入图层名称。如果该图层已存在，将无法使用该工具。
+            </p>
+            <p>使用 <b>将结果保存到</b>下拉框，可以在 <b>我的内容</b>中指定文件夹的名称，结果将保存到该文件夹中。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

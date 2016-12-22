@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Kopiuj do magazynu danych</h2><p/>
+        <h2><img src="../images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" alt="Kopiuj do magazynu danych"></h2>
+        <hr/>
+    <p>Za pomocą tego narzędzia można skopiować warstwę wejściową do magazynu danych. Dane zostaną skopiowane do aplikacji  ArcGIS Data Store i zapisane w relacyjnym lub czasowo-przestrzennym magazynie danych. </p>
+    <p>Można na przykład skopiować obiekty przechowywane w  <code>udostępnionym pliku dużych zbior&oacute;w danych</code> do <code>relacyjnego magazynu danych </code> i zdecydować, że zostaną skopiowane tylko obiekty znajdujące się w bieżącym zasięgu mapy. Spowoduje to utworzenie hostowanej usługi obiektowej zawierającej tylko te obiekty, kt&oacute;re należały do określonego zasięgu mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Wybierz warstwę w celu skopiowania</h2></div>
+        <hr/>
+        <div>
+            <p>Warstwa lub tabela, kt&oacute;ra zostanie skopiowana. 
+            </p>
+            <p>Opr&oacute;cz wybrania warstwy z mapy, można wybrać opcję  <b>Przeglądaj warstwy</b> znajdującą się w dolnej części listy rozwijanej, aby przejść do zasob&oacute;w zestawu danych udostępnionych plik&oacute;w dużych zbior&oacute;w danych lub warstwy obiektowej.  
+            </p>
+        </div>
+    </div>
+    <div id="outputDataStore">
+        <div><h2>Wybierz docelową aplikację ArcGIS Data Store operacji kopiowania</h2></div>
+        <hr/>
+        <div>
+            <p> Magazyn danych, do kt&oacute;rego zostanie skopiowana warstwa. Dostępne są następujące opcje:
+                <ul>
+                    <li> <b>Czasowo-przestrzenny</b> &mdash; wartość domyślna.
+                    </li>
+                    <li> <b>Relacyjny</b>.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nazwa warstwy wynikowej</h2></div>
+        <hr/>
+        <div>
+            <p> Jest to nazwa warstwy, kt&oacute;ra zostanie utworzona w&nbsp;zakładce <b>Moje zasoby</b> i&nbsp;zostanie dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, działanie narzędzia nie powiedzie się.
+            </p>
+            <p>Używając listy rozwijanej  <b>Zapisz wynik w</b>, można określić nazwę folderu w zakładce <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

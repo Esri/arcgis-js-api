@@ -94,21 +94,19 @@
 }
 
 .esriBufFieldExp .esriFunctionLabelDiv {
-  padding-bottom: 2em;
-  display: none;
+  padding-bottom: 0.5em;
 }
 
 .esriBufFieldExp .esriCalcFieldsList {
   width: 70%;
-  height: 85%;
+  height: 90%;
   overflow-y: auto;
 }
 
 .esriBufFieldExp .esriCalcFunctionList {
   width: 90%;
-  height: 85%;
+  height: 80%;
   overflow-y: auto;
-  display: none;
 }
 
 .esriBufFieldExp .esriFieldsSelectionCtr {
@@ -160,4 +158,9 @@
   margin: 0.7em 0;
   border: 1px solid #257824;
   background-color: #D2E959;
+}
+
+.esriBufExpressionFormCtr {
+  width:40em;
+  height:30em;
 }

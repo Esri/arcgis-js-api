@@ -26,7 +26,6 @@ div.esriMultidimensionalFilterContainer {
 .esriMultidimensionalFilterItemTable {
   table-layout:fixed;
   border-collapse: separate;
-  text-align: left;
   border-spacing: 0px 10px;
   width: 100%;
   max-width: 400px;
@@ -78,7 +77,6 @@ div.esriMultidimensionalFilterContainer {
 .esriMultidimensionalFilterTable {
   table-layout:fixed;
   border-collapse: separate;
-  text-align: left;
   border-spacing: 0px 10px;
   width: 100%;
   max-width: 400px;
@@ -104,7 +102,6 @@ div.esriMultidimensionalFilterContainer {
 {
   letter-spacing: 0!important;
   text-indent: 0!important;
-  text-align: left!important;
 }
 
 .esriMultidimensionalFilterVariableList.dijitSelect input.dijitArrowButtonInner {

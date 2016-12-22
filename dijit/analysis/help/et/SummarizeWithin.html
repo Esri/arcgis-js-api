@@ -44,9 +44,9 @@
         <h2>Summeeri piirides</h2><p/>
         <h2><img src="../images/GUID-9B12DB3F-AA7B-41EB-87C6-D2DEC3D52DA9-web.png" alt="Summeeri piirides"></h2>
         <hr/>
-    <p>See t&ouml;&ouml;riist leiab alad ja nende osad, mis on esimese sisendkihi piirides.  N&auml;ited:
+    <p>See t&ouml;&ouml;riist leiab alad ja nende osad, mis on esimese sisendkihi piirides.  N&auml;ited.
         <ul>
-            <li>&Uuml;leujutusalade ulatuse ja maakasutuspiirkondade v&otilde;rdluse tulemusena on leitav iga &uuml;leujutuse piirkonna alla j&auml;&auml;va konkreetse maakasutuse kogupindala. 
+            <li>&Uuml;leujutusalade ulatuse ja maakasutuse piirkondade v&otilde;rdluse tulemusena on leitav iga &uuml;leujutuspiirkonna alla j&auml;&auml;va konkreetse kasutatava maa-ala kogupindala. 
             </li>
             <li>Omavalitsuse piirides paiknevate katastri&uuml;ksuste keskmine maamaksu suurus asustus&uuml;ksuste kaupa.
             </li>
@@ -81,9 +81,9 @@
         <div><h2>Lisa summeerimiseks kihi statistika</h2></div>
         <hr/>
         <div>
-            <p>Teil on v&otilde;imalik valikuliselt arvutada arvuliste atribuutide alusel statistika punktidest, mis langevad piiraja-objektide alla. 
+            <p>Teil on v&otilde;imalik soovi korral arvutada arvuliste atribuutide alusel statistika punktide kohta, mis j&auml;&auml;vad objekti piiridesse. 
             </p>
-            <p>Kui ruut  <b>Punktide arv</b> on m&auml;rgitud, arvutatakse ala piiridesse j&auml;&auml;vate punktide koguarv.  Lisaks sellele saate arvutada statistika piiraja-objektide alla j&auml;&auml;vate punktide arvuliste atribuutide p&otilde;hjal.
+            <p>Kui ruut  <b>Punktide arv</b> on m&auml;rgitud, arvutatakse ala piiridesse j&auml;&auml;vate punktide koguarv.  Lisaks sellele saate arvutada arvuliste atribuutide statistika nende punktide kohta, mis on iga ala piirides.
             </p>
             <ul>
                 <li> <b>Summa</b> &ndash; m&auml;&auml;ratud v&auml;lja koguv&auml;&auml;rtus.
@@ -106,7 +106,7 @@
         <div>
             <p>Teil on v&otilde;imalik valikuliselt arvutada numbriliste atribuutide alusel statistikuid summeeritavate joonte kaudu. 
             </p>
-            <p>Kui ruut  <b>Joonte kogupikkus</b> on m&auml;rgitud, arvutatakse ala piiridesse j&auml;&auml;vate joonte kogupikkus.  Lisaks sellele saate arvutada statistika piiraja-objektide alla j&auml;&auml;vate joonte arvuliste atribuutide p&otilde;hjal.
+            <p>Kui ruut  <b>Joonte kogupikkus</b> on m&auml;rgitud, arvutatakse ala piiridesse j&auml;&auml;vate joonte kogupikkus.  Lisaks sellele saate arvutada arvuliste atribuutide statistika nende joonte kohta, mis on iga ala piirides.
             </p>
             <ul>
                 <li> <b>Summa</b> &ndash; m&auml;&auml;ratud v&auml;lja koguv&auml;&auml;rtus.
@@ -129,7 +129,7 @@
         <div>
             <p>Teil on v&otilde;imalik valikuliselt arvutada numbriliste atribuutide alusel statistikuid summeeritavate objektide kaudu. 
             </p>
-            <p>Kui ruut  <b>Summeeri pindala, kasutades</b> on m&auml;rgitud, arvutatakse esimese sisendkihi ala piiridesse j&auml;&auml;vate objektide kogupindala.  Lisaks sellele saate arvutada statistika piiraja-objektide alla j&auml;&auml;vate pindade arvuliste atribuutide p&otilde;hjal.
+            <p>Kui ruut  <b>Summeeri pindala, kasutades</b> on m&auml;rgitud, arvutatakse esimese sisendkihi ala piiridesse j&auml;&auml;vate objektide kogupindala.  Lisaks sellele saate arvutada arvuliste atribuutide statistika nende objektide kohta, mis on iga ala piirides.
             </p>
             <ul>
                 <li> <b>Summa</b> &ndash; m&auml;&auml;ratud v&auml;lja koguv&auml;&auml;rtus.
@@ -165,12 +165,12 @@
                 </li>
             </ul>
             
-            <p>Olenevalt summeritavate objektide t&uuml;&uuml;bist saate arvutada l&auml;hedalasuvate punktide koguarvu, joonte kogupikkuse v&otilde;i kogupindala.
+            <p>Olenevalt summeritavate objektide t&uuml;&uuml;bist saate arvutada punktide koguarvu, joonte kogupikkuse v&otilde;i kogupindala.
             </p>
         </div>
     </div>
     <div id="GroupBy">
-        <div><h2>Vali väli, mida grupeeritakse</h2></div>
+        <div><h2>Vali väli, mille järgi rühmitada</h2></div>
         <hr/>
         <div>
             <p>See on funktsiooni  <b>Summeeri</b> atribuut, mida saate kasutada statistika leidmiseks iga unikaalse atribuutv&auml;&auml;rtuse kaupa. Oletame n&auml;iteks, et esimene sisendkiht sisaldab linna piire ja summeerimisobjektideks on maat&uuml;kid.  &Uuml;ks maat&uuml;kkide atribuutidest on <i>Status</i>, mis sisaldab kahte v&auml;&auml;rtust: VAKANTNE ja H&Otilde;IVATUD. Vakantsete ja h&otilde;ivatud maat&uuml;kkide kogupindala arvutamiseks linna piirides kasutage <i>Status</i> atribuudi alusel grupeerimist. Iga grupi statistika ja piiraja-objektide alla j&auml;&auml;vate pindade arv kuvatakse tulemkihi h&uuml;pikaknas.
@@ -208,7 +208,7 @@
         <div>
             <p>See on selle kihi nimi, mis luuakse jaotises  <b>Minu sisu</b> ja lisatakse kaardile.  Vaikenimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui kiht on juba olemas, palutakse teil sisestada m&otilde;ni muu nimi.
             </p>
-            <p>Kasutades rippmen&uuml;&uuml;d  <b>Salvesta tulemused</b>, saate jaotises <b>Minu sisu</b> m&auml;&auml;rata kausta nime, kuhu tulemused salvestatakse.
+            <p>Kasutades rippmen&uuml;&uuml;d  <b>Salvesta tulemused</b>, saate jaotises <b>Minu sisu</b> m&auml;&auml;rata selle kausta nime, kuhu tulemused salvestatakse.
             </p>
         </div>
     </div>

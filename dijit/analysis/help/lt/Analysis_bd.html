@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="bdToolbox">
+        <p>Big Data Analytics paskirsto analizės užduotis jūsų ArcGIS GeoAnalytics Server. Tokiu būdu galima greičiau analizuoti didelius duomenų kiekius pasitelkus kelis įrenginius. &Scaron;iuo metu pasiekiami įrankiai:
+            <ul>
+                <li> <b>Agreguoti ta&scaron;kus</b>
+                </li>
+                <li> <b>Sujungti elementus</b>
+                </li>
+                <li> <b>Rekonstruoti kelius</b>
+                </li>
+                <li> <b>Kurti atributų suvestinę</b>
+                </li>
+                <li> <b>Sumuoti viduje</b>
+                </li>
+                <li> <b>Rasti pana&scaron;ias vietas</b>
+                </li>
+                <li> <b>Apskaičiuoti tankį</b>
+                </li>
+                <li> <b>Rasti kar&scaron;tąsias teritorijas</b>
+                </li>
+                <li> <b>Kurti buferius</b>
+                </li>
+                <li> <b>Kopijuoti į duomenų saugyklą</b>
+                </li>
+            </ul>
+            
+        </p>
+        <p>Big Data Analytics didžiausias dėmesys skiriamas didelio kiekio duomenų analizei pabrėžiant erdvinius ir laikinus požymius. 
+        </p>
+    </div>
+    <div id="SummarizeDataCategory" class="largesize">
+        <h2>Sumuoti duomenis</h2>
+        <hr/>
+        <p>Duomenų sumavimo rinkinyje yra įrankių, galinčių apskaičiuoti bendrą elementų (ir jų atributų), esančių tam tikroje teritorijoje ar &scaron;alia kitų objektų, kiekį, ilgius, plotus ir pagrindinius apra&scaron;omosios statistikos rodiklius.
+            <ul>
+                <li> <b>Agreguoti ta&scaron;kus</b> apskaičiuoja ta&scaron;kų, patenkančių į nurodytus plotus ar zonas, statistiką.
+                </li>
+                <li> <b>Sujungti elementus</b> apskaičiuoja elementų, turinčių erdvinių, laiko ar atributų ry&scaron;ių su kitais elementais, statistiką.
+                </li>
+                <li> <b>Atkurti trajektorijas</b> apskaičiuoja ta&scaron;kų ir poligonų, kurie priklauso tai pačiai trajektorijai ir atkuria trajektorijų įvestis, statistiką.
+                </li>
+                <li> <b>Sumuoti atributus</b> apskaičiuoja elementų arba lentelės duomenų, turinčių tokius pačius atributus, statistiką.
+                </li>
+                <li>Įrankis  <b>Sumuoti viduje</b> apskaičiuoja persidengiančių elementų ir jų atributų statistiką.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregatePointsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Agreguoti taškus</h2></td>
+                    <td>
+                    <img src="../images/GUID-6C1620D9-D176-41FA-8283-833D8B1CCCFC-web.png" class="titleImage" alt="Agreguoti ta&scaron;kus">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Naudodamas ta&scaron;kinių ir plotinių elementų sluoksnius arba nurodyto atstumo apibrėžtus daugiakampius, įrankis randa, kurie ta&scaron;kai patenką į kurią teritoriją arba daugiakampį bei apskaičiuoja kiekvienos teritorijos ta&scaron;kų statistiką. Naudodami &scaron;į įrankį galite kurti laikotarpius. 
+            </p>
+            <p> Pavyzdžiui,
+                <ul>
+                    <li>Turint nusikaltimų ta&scaron;kus apskaičiuoti nusikaltimų skaičių savivaldybėse ar kitame administraciniame vienete.
+                    </li>
+                    <li>Rasti auk&scaron;čiausią ir žemiausią filialo apyvartą per mėnesį naudojant 100 km daugiakampius.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="JoinFeaturesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Elementų sujungimas</h2></td>
+                    <td>
+                    <img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" class="titleImage" alt="Elementų sujungimas">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Naudojant elementų sluoksnius arba lentelės duomenis galima sujungti elementus ir įra&scaron;us, atsižvelgiant į konkrečius įvesties sluoksnių arba lentelių ry&scaron;ius.  Sujungimus apibrėžia erdviniai, laiko ir atributiniai ry&scaron;iai, be to, galima pasirinktinai apskaičiuoti suvestinius statistinius duomenis.  
+            </p>
+            <p> Pavyzdžiui,
+                <ul>
+                    <li>Turėdami nusikaltimų vietų ta&scaron;kus su laiku, galite sujungti nusikaltimų duomenis su jai pačiais, nurodydami jungti 1 kilometro atstumu ir 1 valandos laikotarpiu įvykusius nusikaltimus, kad nustatytumėte, ar konkrečiu metu ir konkrečioje vietoje įvyko nusikaltimų seka.
+                    </li>
+                    <li> Turėdami pa&scaron;to kodų lentelę su demografine informacija ir plotinius elementus, simbolizuojančius gyvenamuosius pastatus, galite sujungti demografinius duomenis su gyvenamaisiais pastatais, kad kiekvienas pastatas turėtų informaciją.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="ReconstructTracksTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Atkurti trajektorijas</h2></td>
+                    <td>
+                    <img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" class="titleImage" alt="Atkurti trajektorijas">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Naudodami laiko  <code>tarpsnį</code> simbolizuojančių  ta&scaron;kinių arba plotinių elementų sluoksnį &scaron;iuo įrankiu galite nustatyti, kurie įvesties elementai priklauso stebėsenai, ir i&scaron;rikiuoti įvestis pagal laiką. Galima apskaičiuoti kiekvienos stebėsenos įvesties elementų statistinius duomenis.
+            </p>
+            <p> Pavyzdžiui,
+                <ul>
+                    <li>Turėdami i&scaron;matuotus uraganų vietos ir laiko ta&scaron;kus, galite apskaičiuoti vidutinį uragano vėjo greitį ir maksimalų vėjo slėgį.
+                    </li>
+                    <li>Rasti auk&scaron;čiausią ir žemiausią filialo apyvartą per mėnesį naudojant 100 km daugiakampius.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeAttributesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Sumuoti atributus</h2></td>
+                    <td>
+                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="Sumuoti atributus">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> Naudodami elementą arba lentelės duomenis &scaron;iuo įrankiu galite apskaičiuoti konkrečių laukų suvestinius statistinius duomenis.
+            </p>
+            <p> Pavyzdžiui,
+                <ul>
+                    <li> Lauke <i>COMPANY_NAME</i> turėdami maisto parduotuvių vietas, galite sudaryti parduotuvių santrauką pagal įmonės pavadinimą, kad apskaičiuotumėte kiekvienos įmonės statistinius duomenis.
+                    </li>
+                    <li>Turėdami maisto prekių lentelę su laukais  <i>COMPANY_NAME</i> ir <i>COUNTY</i>, galite sudaryti parduotuvių santrauką pagal įmonės pavadinimą ir savivaldybę, kad apskaičiuotumėte kiekvienos įmonės kiekvienoje savivaldybėje statistinius duomenis.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeWithinTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Sumuoti viduje</h2></td>
+                    <td>
+                    <img src="../images/GUID-90E0CB1F-EB97-4752-B2EE-452B7B45475E-web.png" class="titleImage" alt="Sumuoti viduje">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Randa tarpusavyje persidengiančius plotus (arba plotų dalis) ir apskaičiuoja persidengimo statistiką. 
+            </p>
+            <p> Pavyzdžiui,
+                <ul>
+                    <li>Turint baseinų plotų sluoksnį ir žemėnaudos plotų sluoksnį galima pagal žemėnaudos tipą apskaičiuoti bendrą kiekvieno baseino žemėnaudos plotą. 
+                    </li>
+                    <li>Turint sklypų ir savivaldybių sluoksnius apskaičiuoti neužstatytų sklypų kiekvienoje savivaldybėje skaičių.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="FindLocationsCategory" class="smallsize">
+        <h2>Vietų radimas</h2>
+        <hr/>
+        <p>&Scaron;ie įrankiai naudojami identifikuoti plotus, atitinkančius nurodytus kriterijus.   
+            <ul>
+                <li> <b>Rasti pana&scaron;ias vietas</b> suranda vietas, pana&scaron;iausias į vieną ar daugiau lyginamų vietų, atitinkančių nurodytus kriterijus.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="FindSimilarLocationsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Rasti panašias vietas</h2></td>
+                    <td>
+                    <img src="../images/GUID-6262A84E-9087-4E48-930E-E9B89FECC836-web.png" class="titleImage" alt="Rasti pana&scaron;ias vietas">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Pagal nurodytus kriterijus, įrankis Rasti pana&scaron;ias vietas nustato pana&scaron;ius objektus paie&scaron;kos sluoksnyje i&scaron;matuodamas pana&scaron;ias vietas. 
+            </p>
+            <p> Pavyzdžiui,
+                <ul>
+                    <li>Randa de&scaron;imt pana&scaron;iausių parduotuvių, i&scaron;tyrus darbuotojų skaičių ir metinį pardavimą.
+                    </li>
+                    <li>Randa 100 pana&scaron;iausių miestų, i&scaron;tyrus gyventojų skaičiaus, metinio augimo ir surenkamų mokesčių ry&scaron;ius.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzePatternsCategory" class="smallsize">
+        <h2>Dėsningumų analizavimas</h2>
+        <hr/>
+        <p>&Scaron;ie įrankiai leidžia nustatyti, įvertinti ir atvaizduoti erdvinius duomenų dėsningumus.  
+            <ul>
+                <li> <b>Apskaičiuoti tankį</b> naudoja žinomus rei&scaron;kinių kiekius ir paskirsto &scaron;iuos kiekius žemėlapyje.
+                </li>
+                <li> <b>Rasti kar&scaron;tuosius ta&scaron;kus</b> identifikuoja statisti&scaron;kai reik&scaron;mingas elementų sankaupas.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateDensityTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Apskaičiuoti tankį</h2></td>
+                    <td>
+                    <img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" class="titleImage" alt="Calculate Density">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Tankio skaičiavimo įrankis sukuria tankio žemėlapį i&scaron; ta&scaron;kinių elementų i&scaron;skleidžiant žemėlapyje tam tikrų rei&scaron;kinių (pateikiamų kaip ta&scaron;kų atributai) žinomus kiekius. Pateikiamas tankį simbolizuojančių plotų sluoksnis.
+            </p>
+            <p> Pavyzdžiui,
+                <ul>
+                    <li>Ligoninių tankio apygardoje skaičiavimas. Rezultatų sluoksnyje bus rodomi plotai su gero ir prasto pasiekiamumo ligoninėmis, o &scaron;ią informaciją galima naudoti nusprendžiant, kur statyti naujas ligonines.
+                    </li>
+                    <li>Didelio mi&scaron;kų gaisringumo plotų nustatymas, atsižvelgiant į istorinius duomenis apie vietas, kuriose degė mi&scaron;kai.
+                    </li>
+                    <li>Bendruomenių, esančių toli nuo didžiųjų greitkelių, vietų nustatymas, planuojant, kur turėtų būti tiesiami nauji keliai.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="FindHotSpotsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Rasti karštuosius taškus</h2></td>
+                    <td>
+                    <img src="../images/GUID-6D600155-AA9B-4F02-AD8B-2E84150AB743-web.png" class="titleImage" alt="Rasti kar&scaron;tuosius ta&scaron;kus">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Įrankis Rasti kar&scaron;tuosius ta&scaron;kus nustatys, ar jūsų duomenyse galimas statisti&scaron;kai reik&scaron;mingas grupavimas pagal erdvinį požymį. 
+                <ul>
+                    <li>Ar jūsų ta&scaron;kai (nusikaltimai, medžiai, avarijos) yra pasiskirstę sankaupomis? Kaip galite įsitikinti?
+                    </li>
+                    <li>Ar i&scaron; tikrųjų aptikote statisti&scaron;kai reik&scaron;mingą (didelės apyvartos, mirtingumo ar auk&scaron;tų įvertinimų) elementų sankaupą, ar pakeistas žemėlapio atvaizdavimas suteiktų papildomos informacijos?
+                    </li>
+                </ul>
+                Rasti kar&scaron;tuosius ta&scaron;kus patikimai atsako į &scaron;iuos klausimus.
+            </p>
+            <br/>
+        </div>
+    <div id="UseProximityCategory" class="smallsize">
+        <h2>Gretimybių naudojimas</h2>
+        <hr/>
+        <p>&Scaron;ie įrankiai leidžia atsakyti vieną dažniausių erdvinės analizės klausimų: kas yra greta ko?
+            <ul>
+                <li> <b>Kurti buferius</b> sukuria zonas aplink elementus tam tikru atstumu.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CreateBuffersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Kurti buferius</h2></td>
+                    <td>
+                    <img src="../images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" class="titleImage" alt="Kurti buferius">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Buferis &ndash; tai zona aplink ta&scaron;ką, liniją ar poligoną tam tikru atstumu.
+            </p>
+            <p> Pavyzdžiui,
+                <ul>
+                    <li>Turint linijinius upių elementus, upei galima sukurti buferį, 50 kartų platesnį už jos plotį, kad būtų nustatyta siūloma pakrantės riba.
+                    </li>
+                    <li>Turint &scaron;alis simbolizuojančius plotus, kiekvienai &scaron;aliai galima sukurti 200 jūrmylių buferį, kad būtų nustatyta jūrinė siena.  
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="ManageDataCategory" class="smallsize">
+        <h2>Duomenų valdymas</h2>
+        <hr/>
+        <p>&Scaron;ie įrankiai naudojami bendro pobūdžio geografinių duomenų ir lentelėse pateikiamų duomenų valdymui.
+            <ul>
+                <li> <b>Kopijuoti į duomenų saugyklą</b> nukopijuoja duomenis į jūsų ArcGIS Data Store ir sukuria sluoksnį jūsų internetiniame GIS.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CopyToDataStoreTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Kopijuoti į duomenų bazę</h2></td>
+                    <td>
+                    <img src="../images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" class="titleImage" alt="Kopijuoti į duomenų bazę">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Nukopijuoja įvesties elementų sluoksnį arba lentelę į  ArcGIS Data Store ir sukuria sluoksnį internetiniame GIS. </p>
+            <p> Pavyzdžiui,
+                <ul>
+                    <li> Nukopijuoja <code>.csv</code> didelių duomenų failų skirsnio failus į laiko ir erdvinių duomenų saugyklą vizualizacijai.
+                    </li>
+                    <li>Nukopijuoja esamos žemėlapio aprėpties elementus, saugomus erdvinių ir laiko duomenų saugykloje, į reliacinę duomenų saugyklą.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+</div>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Create Buffers</h2><p/>
+        <h2><img src="../images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" alt="Create Buffers"></h2>
+        <hr/>
+    <p>A buffer is an area that covers a given distance from a point, line, or area feature.
+
+    </p>
+    <p>Buffers are typically used to create areas that can be further analyzed using other tools. For example, if the question is What buildings are within 1 mile of the school?, the answer can be found by creating a 1-mile buffer around the school and overlaying the buffer with the layer containing building footprints. The end result is a layer of those buildings within 1 mile of the school.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Choose layer to apply buffer to</h2></div>
+        <hr/>
+        <div>
+            <p>The  point, line, or area features
+to be buffered.
+            </p>
+            <p>In addition to choosing a layer from your map, you can choose  <b>Browse Layers</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer.  
+            </p>
+        </div>
+    </div>
+    <div id="bufferType">
+        <div><h2>Select the type of buffer to apply</h2></div>
+        <hr/>
+        <div>
+            <p>There are three ways you can specify the size of the buffer for your input features: 
+                <ul>
+                    <li>Specify a distance that is applied to all features.
+                    </li>
+                    <li>Specify a field on the input layer that contains the distance value. You can use a string field or a numeric field. If a linear unit is not defined, the units of the spatial reference will be used. If you are using a geographic coordinate system, the unitless field will be assumed to be meters. 
+                    </li>
+                    <li>Build an expression with multiple fields and mathematical operators.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Select the buffer method</h2></div>
+        <hr/>
+        <div>
+            <p>You can choose to use a  <b>Planar</b> method or a <b>Geodesic</b> method. The <b>Planar</b> method may be faster and is appropriate for local analysis on projected data. The <b>Geodesic</b> method is appropriate for 
+large areas and any geographic coordinate system.
+            </p>
+        </div>
+    </div>
+    <div id="dissolveOption">
+        <div><h2>Select the type of dissolve method</h2></div>
+        <hr/>
+        <div>
+            <p>Options to specify the dissolve method.   If a dissolve method is chosen,  you will be given the option of creating multipart or single-part areas and you will be able to  calculate statistics based on the fields provided.
+                <ul>
+                    <li> <b>All</b>&mdash;All features will be dissolved. If multipart features are allowed, all features will be dissolved into a single feature. If multipart is not allowed, features that are adjacent or overlapping will be dissolved.
+                    </li>
+                    <li> <b>Fields</b>&mdash;Features that share the same specified field or specified field combination will be dissolved. If multipart features are allowed, all features with the same field will be dissolved into a single feature. If multipart is not allowed, features that are adjacent or overlapping with the same field value  will be dissolved.
+                    </li>
+                    <li> <b>None</b>&mdash;No features will be dissolved.  This is the default.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="multipart">
+        <div><h2>Allow multipart features</h2></div>
+        <hr/>
+        <div>
+            <p>Option to specify if your result will consist of single-part or multipart features. 
+
+            </p>
+            <p>
+                <ul>
+                    <li>Checked&mdash;The results of your analysis will be contain multipart features.   
+                    </li>
+                    <li>Unchecked&mdash;The results of your analysis will contain single-part features, This is the default.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Add statistics (optional)</h2></div>
+        <hr/>
+        <div>
+            <p> You can calculate statistics on features that are summarized. On numeric fields you can calculate the following:
+                <ul>
+                    <li>Count
+                    </li>
+                    <li>Mean
+                    </li>
+                    <li>Min
+                    </li>
+                    <li>Max
+                    </li>
+                    <li>Range
+                    </li>
+                    <li>Variance
+                    </li>
+                    <li>Standard deviation
+                    </li>
+                </ul>
+                
+            </p>
+            <p>On string fields you can calculate the following:
+                <ul>
+                    <li>Count
+                    </li>
+                    <li>Any&mdash;This statistic is a random sample of a string value in the specified field.
+                    </li>
+                </ul>
+                All statistics are calculated on nonnull values. The resulting layer will contain a new field for each statistic calculated. Any number of statistics can be added by choosing an attribute and statistic. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Choose datastore</h2></div>
+        <hr/>
+        <div>
+            <p>This is a temporary parameter for prerelease to set the data store where the results are saved. Both data stores are part of  ArcGIS Data Store. If you select the spatiotemporal data store but do not have one installed, the tool will fail. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Result layer name</h2></div>
+        <hr/>
+        <div>
+            <p> This is the name of the layer that will be created in <b>My
+Content</b> and added to the map. The default name is based on the
+tool name and the input layer name. If the layer already exists, the tool will fail.
+            </p>
+            <p>Using the  <b>Save result in</b> drop-down box, you can specify
+the name of a folder in <b>My Content</b> where the result will be
+saved.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.18/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.19/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/_base/array","dojo/_base/json","dojo/has","../kernel"],function(e,n,s,t,l,o){var i=e(null,{declaredClass:"esri.tasks.LengthsParameters",polylines:null,lengthUnit:null,geodesic:null,calculationType:null,toJson:function(){var e=s.map(this.polylines,function(e){return e.toJson()}),n={};n.polylines=t.toJson(e);var l=this.polylines[0].spatialReference;return n.sr=l.wkid?l.wkid:t.toJson(l.toJson()),this.lengthUnit&&(n.lengthUnit=this.lengthUnit),this.geodesic&&(n.geodesic=this.geodesic),this.calculationType&&(n.calculationType=this.calculationType),n}});return l("extend-esri")&&n.setObject("tasks.LengthsParameters",i,o),i});

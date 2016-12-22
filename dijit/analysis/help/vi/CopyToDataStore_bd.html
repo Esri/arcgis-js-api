@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Sao chép đến Kho Dữ liệu</h2><p/>
+        <h2><img src="../images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" alt="Sao ch&eacute;p đến Kho Dữ liệu"></h2>
+        <hr/>
+    <p>C&ocirc;ng cụ n&agrave;y sẽ chọn một lớp đầu v&agrave;o v&agrave; sao ch&eacute;p đến kho dữ liệu. Dữ liệu sẽ được sao ch&eacute;p đến  ArcGIS Data Store v&agrave; được lưu trữ trong kho dữ liệu li&ecirc;n quan hoặc kho dữ liệu kh&ocirc;ng gian thời gian. </p>
+    <p>V&iacute; dụ, bạn c&oacute; thể sao ch&eacute;p c&aacute;c đối tượng được lưu trữ trong  <code>tệp dữ liệu lớn chia sẻ</code> đến <code>kho dữ liệu li&ecirc;n quan</code> v&agrave; x&aacute;c định rằng chỉ c&oacute; c&aacute;c đối tượng trong phạm vi bản đồ hiện tại được sao ch&eacute;p. Điều n&agrave;y sẽ tạo ra một dịch vụ đối tượng được lưu trữ chỉ c&oacute; c&aacute;c đối tượng trong phạm vi bản đồ x&aacute;c định.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Chọn lớp để sao chép</h2></div>
+        <hr/>
+        <div>
+            <p>Lớp hoặc bảng sẽ được sao ch&eacute;p. 
+            </p>
+            <p>B&ecirc;n cạnh việc chọn một lớp từ bản đồ, bạn c&oacute; thể chọn  <b>Duyệt Lớp</b> ở b&ecirc;n dưới danh s&aacute;ch thả xuống để duyệt đến nội dung của m&igrave;nh đối với tập dữ liệu chia sẻ tệp dữ liệu lớn hoặc lớp đối tượng.  
+            </p>
+        </div>
+    </div>
+    <div id="outputDataStore">
+        <div><h2>Chọn ArcGIS Data Store để sao chép đến</h2></div>
+        <hr/>
+        <div>
+            <p> Kho dữ liệu m&agrave; lớp sẽ được sao ch&eacute;p đến. C&aacute;c t&ugrave;y chọn bao gồm:
+                <ul>
+                    <li> <b>Kh&ocirc;ng gian thời gian</b>&mdash;Đ&acirc;y l&agrave; t&ugrave;y chọn mặc định.
+                    </li>
+                    <li> <b>Li&ecirc;n quan</b>.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tên lớp kết quả</h2></div>
+        <hr/>
+        <div>
+            <p> Đ&acirc;y l&agrave; t&ecirc;n lớp sẽ được tạo trong mục <b>Nội dung của T&ocirc;i</b> v&agrave; th&ecirc;m v&agrave;o bản đồ. T&ecirc;n mặc định dựa v&agrave;o t&ecirc;n c&ocirc;ng cụ v&agrave; t&ecirc;n lớp đầu v&agrave;o. Nếu lớp đ&atilde; tồn tại, c&ocirc;ng cụ sẽ thất bại.
+            </p>
+            <p>Sử dụng chức năng  <b>Lưu kết quả</b> trong hộp xổ xuống, bạn c&oacute; thể chỉ định t&ecirc;n thư mục trong mục <b>Nội dung của T&ocirc;i</b> nơi sẽ lưu trữ kết quả của bạn.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

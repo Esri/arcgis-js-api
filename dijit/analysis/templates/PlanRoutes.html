@@ -265,6 +265,19 @@
             <input type="text" data-dojo-type="dijit/form/ValidationTextBox" class="esriLeadingMargin1 esriOutputText" data-dojo-props="trim:true,required:true" data-dojo-attach-event="_handleResultLyrInputChange" data-dojo-attach-point="_outputLayerInput"  value="">
           </td>
         </tr>
+        <tr data-dojo-attach-point="_outputTypeRow">
+          <td colspan="3">
+            <!--<label class="esriLeadingMargin1">${i18n.outputType}</label>
+            <select data-dojo-type="dijit/form/Select" data-dojo-attach-point="_outputTypeSelect" class="mediumInput esriMediumLabel">
+              <option selected="selected" value="FeatureLayer">${i18n.featureLayer}</option>
+              <option value="RouteLayers">${i18n.routeLayers}</option>
+            </select>-->
+            <label data-dojo-attach-point="" class="esriLeadingMargin1 esriSelectLabel">
+              <input type="radio" data-dojo-attach-point="_incldRouteLayersChk" data-dojo-type="dijit/form/CheckBox" data-dojo-props="checked:false" name="includeRouteLayers"/>
+              ${i18n.includeRouteLayers}
+            </label>
+          </td>
+        </tr>
         <tr>
           <td colspan="3">
              <div class="esriLeadingMargin1" data-dojo-attach-point="_chooseFolderRow">

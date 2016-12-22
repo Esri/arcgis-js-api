@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="bdToolbox">
+        <p>Analiza dużych zbior&oacute;w danych dystrybuuje pracę analityczną na serwery ArcGIS GeoAnalytics Server. Umożliwia to szybsze analizowanie większych ilości danych przy wykorzystaniu mocy obliczeniowej wielu komputer&oacute;w. Obecnie dostępne są poniższe narzędzia:
+            <ul>
+                <li> <b>Agreguj punkty</b>
+                </li>
+                <li> <b>Połącz obiekty</b>
+                </li>
+                <li> <b>Rekonstruuj ścieżki</b>
+                </li>
+                <li> <b>Sumuj atrybuty</b>
+                </li>
+                <li> <b>Sumuj w obrębie</b>
+                </li>
+                <li> <b>Znajdź podobne lokalizacje</b>
+                </li>
+                <li> <b>Oblicz zagęszczenie</b>
+                </li>
+                <li> <b>Znajdź lokalizacje hot spot</b>
+                </li>
+                <li> <b>Utw&oacute;rz bufory</b>
+                </li>
+                <li> <b>Kopiuj do magazynu danych</b>
+                </li>
+            </ul>
+            
+        </p>
+        <p>Analiza dużych zbior&oacute;w danych skupia się na analizie obszernych zbior&oacute;w danych ze szczeg&oacute;lnym uwzględnieniem obydwu wzorc&oacute;w, przestrzennego i czasowego. 
+        </p>
+    </div>
+    <div id="SummarizeDataCategory" class="largesize">
+        <h2>Sumowanie danych</h2>
+        <hr/>
+        <p>Zestaw narzędzi Sumowanie danych zawiera narzędzia umożliwiające obliczanie łącznych wartości, długości, powierzchni oraz podstawowych, opisowych danych statystycznych obiekt&oacute;w i ich atrybut&oacute;w znajdujących się w granicach obszar&oacute;w lub w pobliżu innych obiekt&oacute;w.
+            <ul>
+                <li>Za pomocą narzędzia  <b>Agreguj punkty</b> można obliczyć statystyki dotyczące punkt&oacute;w, kt&oacute;re mieszczą się w określonych obszarach lub koszach.
+                </li>
+                <li>Za pomocą narzędzia  <b>Połącz obiekty</b> można obliczyć statystyki dotyczące obiekt&oacute;w o takich samych relacjach przestrzennych, czasowych lub atrybutowych.
+                </li>
+                <li>Za pomocą narzędzia  <b>Rekonstruuj ścieżki</b> można obliczyć statystyki dotyczące punkt&oacute;w lub poligon&oacute;w należących do tej samej ścieżki i zrekonstruować ścieżki na podstawie danych wejściowych.
+                </li>
+                <li>Za pomocą narzędzia  <b>Sumuj atrybuty</b> można obliczyć statystyki dotyczące danych obiektowych lub tabelarycznych o wsp&oacute;lnych atrybutach.
+                </li>
+                <li>Za pomocą funkcji  <b>Sumuj W obrębie</b> można obliczyć dane statystyczne nakładających się na siebie obiekt&oacute;w i atrybut&oacute;w znajdujących się na danym obszarze.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregatePointsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Agreguj punkty</h2></td>
+                    <td>
+                    <img src="../images/GUID-6C1620D9-D176-41FA-8283-833D8B1CCCFC-web.png" class="titleImage" alt="Agreguj punkty">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Przy użyciu warstwy obiekt&oacute;w punktowych i warstw obiekt&oacute;w powierzchniowych lub koszy zdefiniowanych dla podanej odległości to narzędzie ustala, kt&oacute;re punkty znajdują się w danym obszarze lub koszu i oblicza statystyki dotyczące wszystkich punkt&oacute;w w każdym obszarze lub koszu. Opcjonalnie w tym narzędziu można zastosować okna czasowe. 
+            </p>
+            <p> Na przykład:
+                <ul>
+                    <li>Na podstawie miejsc wystąpienia przestępstw oblicz liczbę przestępstw w&nbsp;danym powiecie lub innej jednostce podziału administracyjnego.
+                    </li>
+                    <li>Wyszukaj najwyższe i najniższe miesięczne dochody plac&oacute;wek franczyzowych przy użyciu koszy obejmujących 100 km.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="JoinFeaturesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Połącz obiekty</h2></td>
+                    <td>
+                    <img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" class="titleImage" alt="Połącz obiekty">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Używając warstw obiektowych lub danych tabelarycznych, można połączyć obiekty i rekordy na podstawie określonych relacji między warstwami i tabelami wejściowymi.  Połączenia będą ustalane na podstawie relacji przestrzennych, czasowych lub atrybutowych. Opcjonalnie można obliczyć statystyki zbiorcze.  
+            </p>
+            <p> Na przykład:
+                <ul>
+                    <li>Na podstawie miejsc wystąpienia przestępstw z podanym czasem połącz ze sobą dane o przestępczości, określając przestrzenną relację przestępczości w obrębie 1 kilometra, kt&oacute;re wystąpiły w ciągu 1 godziny, aby określić, czy istnieje sekwencja przestępstw zbliżonych do siebie w czasie i przestrzeni.
+                    </li>
+                    <li> Na podstawie tabeli kod&oacute;w pocztowych z danymi demograficznymi oraz obiekt&oacute;w powierzchniowych reprezentujących budynki mieszkalne połącz dane demograficzne z budynkami, tak aby informacja demograficzna była przypisana do każdego budynku.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="ReconstructTracksTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Rekonstruuj ścieżki</h2></td>
+                    <td>
+                    <img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" class="titleImage" alt="Rekonstruuj ścieżki">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Korzystając z zawierającej dane czasowe warstwy obiekt&oacute;w punktowych lub poligonowych reprezentujących  <code>moment</code> czasu, to narzędzie określa, kt&oacute;re obiekty wejściowe należą do ścieżki, i sekwencyjnie porządkuje dane wejściowe w czasie. Opcjonalnie obliczane są statystyki dotyczące obiekt&oacute;w wejściowych w każdej ścieżce.
+            </p>
+            <p> Na przykład:
+                <ul>
+                    <li>Na podstawie lokalizacji punktowych i czasu pomiar&oacute;w huraganu oblicz średnią prędkość wiatru i maksymalny nap&oacute;r wiatru dla danego huraganu.
+                    </li>
+                    <li>Wyszukaj najwyższe i najniższe miesięczne dochody plac&oacute;wek franczyzowych przy użyciu koszy obejmujących 100 km.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeAttributesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Sumuj atrybuty</h2></td>
+                    <td>
+                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="Sumuj atrybuty">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> To narzędzie podsumowuje statystyki dla podanych p&oacute;l przy użyciu danych obiektowych lub tabelarycznych.
+            </p>
+            <p> Na przykład:
+                <ul>
+                    <li> Na podstawie lokalizacji sklep&oacute;w spożywczych z polem <i>COMPANY_NAME</i> (nazwa firmy) zsumuj dane sklep&oacute;w według nazwy firmy w celu określenia statystyk dla każdej firmy.
+                    </li>
+                    <li>Na podstawie lokalizacji sklep&oacute;w spożywczych z polami  <i>COMPANY_NAME</i> (nazwa firmy) i <i>COUNTY</i> (powiat) zsumuj dane sklep&oacute;w według nazwy firmy i powiatu, aby określić statystyki dla każdej firmy w każdym powiecie.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeWithinTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Sumuj w obrębie</h2></td>
+                    <td>
+                    <img src="../images/GUID-90E0CB1F-EB97-4752-B2EE-452B7B45475E-web.png" class="titleImage" alt="Sumuj w obrębie">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Umożliwia wyszukiwanie obszar&oacute;w (i&nbsp;części obszar&oacute;w) nakładających się na siebie dw&oacute;ch warstw i&nbsp;obliczenie statystyk dotyczących ich pokrycia. 
+            </p>
+            <p> Na przykład:
+                <ul>
+                    <li>Mając warstwę zlewni i warstwę obszar&oacute;w użytkowania terenu według typu użytkowania terenu, oblicz całkowity areał typ&oacute;w użytkowania terenu dla każdej zlewni. 
+                    </li>
+                    <li>Podsumuj średnią wartość działek na sprzedaż w&nbsp;obrębie każdego miasta na podstawie warstwy z&nbsp;działkami w&nbsp;danym powiecie oraz warstwy z&nbsp;granicami miejskimi.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="FindLocationsCategory" class="smallsize">
+        <h2>Wyszukiwanie lokalizacji</h2>
+        <hr/>
+        <p>Te narzędzia służą do identyfikacji obszar&oacute;w spełniających kryteria podane przez użytkownika. 
+            <ul>
+                <li> <b>Znajdź podobne lokalizacje</b> wyszukuje lokalizacje najbardziej podobne do co najmniej jednej lokalizacji referencyjnej na podstawie określonych przez użytkownika kryteri&oacute;w.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="FindSimilarLocationsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Znajdź podobne lokalizacje</h2></td>
+                    <td>
+                    <img src="../images/GUID-6262A84E-9087-4E48-930E-E9B89FECC836-web.png" class="titleImage" alt="Znajdź podobne lokalizacje">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Na podstawie podanych kryteri&oacute;w znajdź podobne lokalizacje, mierząc podobieństwo lokalizacji w warstwie propozycji wyszukiwania do co najmniej jednej lokalizacji referencyjnej. 
+            </p>
+            <p> Na przykład:
+                <ul>
+                    <li>Znajdź najbardziej podobne sklepy, sprawdzając liczbę pracownik&oacute;w i roczną sprzedaż.
+                    </li>
+                    <li>Znajdź 100 najbardziej podobnych miast, sprawdzając relację między populacją, rocznym wzrostem i wpływami podatkowymi.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzePatternsCategory" class="regularsize">
+        <h2>Analiza zależności przestrzennych</h2>
+        <hr/>
+        <p>Narzędzia te pomagają w&nbsp;identyfikacji, ocenie ilościowej oraz przestrzennej wizualizacji trend&oacute;w istniejących w&nbsp;danych.  
+            <ul>
+                <li> <b>Oblicz Zagęszczenie</b> to narzędzie wykorzystujące dane ilościowe dotyczących danego zjawiska i&nbsp;rozmieszczające te wartości liczbowe na mapie.
+                </li>
+                <li> <b>Narzędzie Znajdź lokalizacje hot spot</b> identyfikuje statystycznie istotne zgrupowania w zależnościach przestrzennych Twoich danych.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateDensityTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Oblicz zagęszczenie</h2></td>
+                    <td>
+                    <img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" class="titleImage" alt="Calculate Density">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Narzędzie Oblicz zagęszczenie tworzy mapę zagęszczenia z obiekt&oacute;w punktowych poprzez odpowiednie rozmieszczenie na powierzchni mapy znanych wartości wyrażających dane zjawisko (reprezentowane przez atrybuty punkt&oacute;w). W wyniku powstaje warstwa obszar&oacute;w reprezentujących zagęszczenie.
+            </p>
+            <p> Na przykład:
+                <ul>
+                    <li>Obliczanie liczby szpitali w określonym powiecie. Warstwa wynikowa będzie przedstawiać obszary o dużej i niskiej dostępności szpitali &mdash; informacja ta może zostać wykorzystana w procesie podejmowania decyzji o budowie nowych szpitali.
+                    </li>
+                    <li>Identyfikacja obszar&oacute;w wysokiego zagrożenia pożarami las&oacute;w na podstawie lokalizacji wcześniejszych pożar&oacute;w las&oacute;w
+                    </li>
+                    <li>Lokalizacja społeczności zamieszkujących tereny oddalone od gł&oacute;wnych dr&oacute;g w celu wyznaczenia przebiegu nowych dr&oacute;g
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="FindHotSpotsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Znajdź lokalizacje hot spot</h2></td>
+                    <td>
+                    <img src="../images/GUID-6D600155-AA9B-4F02-AD8B-2E84150AB743-web.png" class="titleImage" alt="Znajdź lokalizacje hot spot">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Narzędzie Znajdź lokalizacje hot spot ustala, czy w&nbsp;relacjach przestrzennych danych użytkownika istnieją statystycznie istotne klastry. 
+                <ul>
+                    <li>Czy Twoje punkty (reprezentujące przestępstwa, drzewa, wypadki drogowe) rzeczywiście są zgrupowane? Masz absolutną pewność?
+                    </li>
+                    <li>Czy naprawdę udało Ci się ustalić, jakie są statystycznie istotne lokalizacje hot spot (wydatki, umieralność noworodk&oacute;w, systematycznie wysokie wyniki test&oacute;w) czy może Twoja mapa przedstawiałaby zupełnie inne zależności, gdyby zmienione zostały użyte symbole?
+                    </li>
+                </ul>
+                Narzędzie Znajdź lokalizacje hot spot pomoże Ci w&nbsp;uzyskaniu rzetelnej odpowiedzi na te pytania.
+            </p>
+            <br/>
+        </div>
+    <div id="UseProximityCategory" class="smallsize">
+        <h2>Narzędzia bliskości</h2>
+        <hr/>
+        <p>Te narzędzia pomagają w&nbsp;udzieleniu odpowiedzi na jedno z&nbsp;najczęstszych pytań zadawanych podczas wykonywania analizy przestrzennej: Co znajduje się w&nbsp;pobliżu czego?
+            <ul>
+                <li>Narzędzie  <b>Utw&oacute;rz bufory</b> tworzy obszary w&nbsp;określonej odległości od obiekt&oacute;w.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CreateBuffersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Utwórz bufory</h2></td>
+                    <td>
+                    <img src="../images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" class="titleImage" alt="Utw&oacute;rz bufory">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Bufor jest obszarem obejmującym swym zasięgiem obszar w&nbsp;określonej odległości od obiektu punktowego, liniowego lub poligonowego.
+            </p>
+            <p> Na przykład:
+                <ul>
+                    <li>Korzystając z liniowych obiekt&oacute;w rzeki, utw&oacute;rz bufor dla każdej rzeki o szerokości wynoszącej 50-krotność jej szerokości, aby określić proponowane granice obszaru przybrzeżnego.
+                    </li>
+                    <li>Na podstawie obszar&oacute;w reprezentujących kraje utw&oacute;rz bufor dla każdego kraju na 200 mil morskich, aby określić granicę morską.  
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="ManageDataCategory" class="smallsize">
+        <h2>Zarządzanie danymi</h2>
+        <hr/>
+        <p>Narzędzia te są używane do codziennego zarządzania danymi geograficznymi i tabelarycznymi.
+            <ul>
+                <li>Narzędzie  <b>Kopiuj do magazynu danych</b> kopiuje dane do aplikacji ArcGIS Data Store i tworzy warstwę w systemie Web GIS.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CopyToDataStoreTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Kopiuj do magazynu danych</h2></td>
+                    <td>
+                    <img src="../images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" class="titleImage" alt="Kopiuj do magazynu danych">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Kopiuje wejściową warstwę obiekt&oacute;w lub tabelę do aplikacji  ArcGIS Data Store i tworzy warstwę w systemie Web GIS. </p>
+            <p> Na przykład:
+                <ul>
+                    <li> Skopiuj zbi&oacute;r plik&oacute;w <code>.csv</code> w udostępnionym pliku dużego zbioru danych do magazynu danych czasowo-przestrzennych w celu wizualizacji.
+                    </li>
+                    <li>Skopiuj obiekty znajdujące się w zasięgu bieżącej mapy przechowywane w magazynie danych czasowo-przestrzennych do relacyjnego magazynu danych.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+</div>
+</html>

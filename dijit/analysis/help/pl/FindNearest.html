@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Narzędzie Znajdź najbliższe</h2><p/>
+        <h2>Znajdź najbliższe</h2><p/>
         <h2><img src="../images/GUID-150C2484-7459-405A-8835-B4E72CD49738-web.png" alt="Znajdź najbliższe"></h2>
         <hr/>
     <p>To narzędzie wyszukuje najbliższe obiekty oraz raportuje i&nbsp;ocenia odległość do pobliskich obiekt&oacute;w. W&nbsp;celu znalezienia najbliższego obiektu narzędzie może określać odległość, mierząc ją w&nbsp;linii prostej lub używając trybu podr&oacute;ży. Dostępne są opcje, kt&oacute;re ograniczają liczbę wyszukiwanych najbliższych obiekt&oacute;w lub zakres wyszukiwania obiekt&oacute;w. Wyniki uzyskiwane dzięki temu narzędziu umożliwiają udzielenie odpowiedzi na pytania następującego typu:
@@ -135,13 +135,11 @@
         <div><h2>Nazwa warstwy wynikowej</h2></div>
         <hr/>
         <div>
-            <p>Warstwa wynikowa będzie zawierać dwie warstwy: jedną z&nbsp;najbliższymi lokalizacjami i&nbsp;drugą z&nbsp;liniami łączącymi lokalizacje początkowe z&nbsp;najbliższymi lokalizacjami.
+            <p>Jest to nazwa warstwy obiekt&oacute;w, kt&oacute;ra zostanie utworzona w zakładce  <b>Moje zasoby</b> i dodana do mapy. Jeśli warstwa obiekt&oacute;w już istnieje, wyświetlony zostanie komunikat z&nbsp;prośbą o&nbsp;podanie innej nazwy. Ta warstwa obiekt&oacute;w będzie zawierała dwie warstwy: jedną z&nbsp;najbliższymi lokalizacjami i&nbsp;drugą z&nbsp;liniami łączącymi lokalizacje początkowe z&nbsp;najbliższymi lokalizacjami.
             </p>
-            <p>Ponieważ linie te pokazują pomierzone ścieżki, gdy wykonywany jest pomiar odległości w&nbsp;linii prostej, prowadzą one wzdłuż prostych tras; gdy wykonywany jest pomiar długości trasy, pokazują najkr&oacute;tsze trasy wzdłuż dr&oacute;g; a&nbsp;gdy mierzone są czasy przejazdu, pokazują najszybsze trasy wzdłuż dr&oacute;g. Tabela, kt&oacute;ra jest częścią opcjonalnej warstwy liniowej, zawiera następujące informacje: pomiary odległości lub czasu dojazdu przedstawiane w&nbsp;postaci linii; dane identyfikacyjne na temat połączonych lokalizacji początkowych i&nbsp;końcowych oraz ocen bliskości rozdzielonych według lokalizacji początkowej, kt&oacute;re pozwalają ocenić, kt&oacute;ra lokalizacja jest najbliższa i&nbsp;kt&oacute;re są kolejne pod względem bliskości itd. Przy pomiarze czasu przejazdu z uwzględnieniem ruchu drogowego, tabela zawiera także czas wyjazdu i przyjazdu.
+            <p>Jeśli zostanie wybrana opcja  <b>Dołącz warstwy trasy</b>, każda trasa z wynik&oacute;w zostanie także zapisana jako warstwa trasy. Warstwa trasy zawiera wszystkie informacje dotyczące określonej trasy, takie jak przystanki przypisane do trasy i wskaz&oacute;wki dojazdu. Tworzenie warstw tras jest przydatne, jeśli chcesz udostępnić poszczeg&oacute;lne trasy innym członkom w instytucji lub jeśli chcesz dodatkowo zmodyfikować trasy przy użyciu przycisku <b>Wskaz&oacute;wki dojazdu</b> w przeglądarce map. Unikalna nazwa każdej warstwy trasy jest tworzona poprzez dodanie nazwy trasy wygenerowanej podczas wykonywania analizy do prefiksu będącego nazwą warstwy obiekt&oacute;w.
             </p>
-            <p>Dla tych warstw, kt&oacute;re zostaną zapisane w&nbsp;zakładce  <b>Moje zasoby</b> i&nbsp;dodane do mapy, można użyć nazw domyślnych lub podać nowe nazwy. Domyślne nazwy są tworzone na podstawie nazwy warstwy wejściowej. Jeśli warstwa już istnieje, wyświetlony zostanie komunikat z&nbsp;prośbą o&nbsp;podanie innej nazwy.
-            </p>
-            <p>Za pomocą listy rozwijanej  <b>Zapisz wynik&nbsp;w</b> można podać nazwę folderu w&nbsp;zakładce <b>Moje zasoby</b>, gdzie zostaną zapisane wyniki.
+            <p>Za pomocą listy rozwijanej  <b>Zapisz wynik w</b> można podać nazwę folderu na stronie <b>Moje zasoby</b>, w kt&oacute;rym będą zapisywane tworzone warstwa obiekt&oacute;w i warstwy tras.
             </p>
         </div>
     </div>

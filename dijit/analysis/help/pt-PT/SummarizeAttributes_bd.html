@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Resumir Atributos</h2><p/>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Resumir Atributos"></h2>
+        <hr/>
+    <p>Esta ferramenta resume todos os valores correspondentes num ou mais campos e calcula estat&iacute;sticas referentes aos mesmos. A estat&iacute;stica mais b&aacute;sica &eacute; a contagem de elementos que foram resumidos em conjunto, mas tamb&eacute;m pode calcular estat&iacute;sticas mais avan&ccedil;adas. 
+
+    </p>
+    <p>Por exemplo, suponha que teme lementos de ponto de localiza&ccedil;&otilde;es de lojas com um campo que representa o  <i>DISTRICT_MANAGER_NAME</i> (nome do gerente distrital) e que pretende resumir as vendas dos caf&eacute;s por gerente. Pode especificar o campo <i>DISTRICT_MANAGER_NAME</i> como o campo no qual dissolver, e todas as linhas de dados que representam gerentes individuais ser&atilde;o resumidas. Isto significa que todas as localiza&ccedil;&otilde;es de lojas que s&atilde;o geridas pelo Manager1 ser&atilde;o resumidas numa &uacute;nica linha com estat&iacute;sticas resumidas calculadas. Nesta inst&acirc;ncia, estat&iacute;sticas como a contagem do n&uacute;mero de lojas e a soma de <i>TOTAL_SALES</i> (totais de vendas) para todas as lojas que o Manager1 gere ser&atilde;o calculadas, bem como para qualquer outro gerente listado no campo <i>DISTRICT_MANAGER_NAME</i> .
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Escolher a entrada a resumir</h2></div>
+        <hr/>
+        <div>
+            <p>A camada que cont&eacute;m os campos que ser&atilde;o resumidos.  
+            </p>
+            <p>Para al&eacute;m de selecionar uma camada do seu mapa, pode selecionar  <b>Explorar Camadas</b> na parte inferior da lista pendente para navegar at&eacute; aos seus conte&uacute;dos de um conjunto de dados de partilha de big data ou camada de elementos.  
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>Escolha os campos em que pretende dissolver</h2></div>
+        <hr/>
+        <div>
+            <p>  Lista de campos da camada de entrada.  Os campos selecionados ser&atilde;o resumidos e utilizados ara calcular estat&iacute;sticas. Por exemplo, se selecionar um campo denominado <i>PropertyType</i> (tipo de propriedade) com os valores de comercial e residencial, todos os campos residenciais ser&atilde;o resumidos em conjunto, com estat&iacute;sticas resumidas calculadas, e todos os campos comerciais ser&atilde;o resumidos em conjunto.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Selecionar o campo e estatísticas que pretende calcular (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p> Pode calcular estat&iacute;sticas em elementos que se encontram resumidos. Em campos num&eacute;ricos, pode calcular as seguintes:
+                <ul>
+                    <li>Contagem
+                    </li>
+                    <li>M&eacute;dia
+                    </li>
+                    <li>M&iacute;n.
+                    </li>
+                    <li>M&aacute;x.
+                    </li>
+                    <li>Intervalo
+                    </li>
+                    <li>Varia&ccedil;&atilde;o
+                    </li>
+                    <li>Desvio padr&atilde;o
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Em campos de string, pode calcular as seguintes:
+                <ul>
+                    <li>Contagem
+                    </li>
+                    <li>Qualquer&mdash;Esta estat&iacute;stica &eacute; uma amostra aleat&oacute;ria de um valor de string no campo especificado.
+                    </li>
+                </ul>
+                Todas as estat&iacute;sticas s&atilde;o calculadas em campos que n&atilde;o s&atilde;o nulos. A camada resultante ir&aacute; conter um novo campo por cada estat&iacute;stica calculada. &Eacute; poss&iacute;vel adicionar qualquer n&uacute;mero de estat&iacute;sticas, selecionando um atributo e uma estat&iacute;stica. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Selecionar armazenamento de dados</h2></div>
+        <hr/>
+        <div>
+            <p>Este &eacute; um par&acirc;metro tempor&aacute;rio de pr&eacute;-lan&ccedil;amento para definir o armazenamento de dados no qual os resultados s&atilde;o guardados. Ambos os armazenamentos de dados fazem parte do  ArcGIS Data Store. Caso selecione o armazenamento de dados espaciotemporal, mas n&atilde;o tenha um instalado, a ferramenta ir&aacute; falhar. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nome da camada resultante</h2></div>
+        <hr/>
+        <div>
+            <p> Este &eacute; o nome da camada que ser&aacute; criada em <b>O Meu Conte&uacute;do</b> e adicionada ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Caso a camada j&aacute; existe, a ferramenta ir&aacute; falhar.
+            </p>
+            <p>Ao utilizar a caixa suspensa  <b>Guardar resultado em</b> pode definir o nome da pasta em <b>O Meu Conte&uacute;do</b> onde o resultado ser&aacute; guardado.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

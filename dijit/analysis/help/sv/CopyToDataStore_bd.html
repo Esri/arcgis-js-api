@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Kopiera till datalager</h2><p/>
+        <h2><img src="../images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" alt="Kopiera till datalager"></h2>
+        <hr/>
+    <p>Det h&auml;r verktyget tar ett indatalager och kopierar det till ett datalager. Data kopieras till  ArcGIS Data Store och lagras i det relationella eller rumstemporala datalagret. </p>
+    <p>Du kan t.ex. kopiera geoobjekt som finns lagrade i en  <code>big data-fildelning</code> till ett <code>relationellt datalager</code> och ange att endast funktioner inom den aktuella kartutbredningen ska kopieras. Det skapar en driftad geoobjektstj&auml;nst med bara de geoobjekt som fanns inom den angivna kartutbredningen.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Välj lager som ska kopieras</h2></div>
+        <hr/>
+        <div>
+            <p>Lagret eller tabellen som ska kopieras. 
+            </p>
+            <p>F&ouml;rutom att v&auml;lja ett lager fr&aring;n kartan kan du v&auml;lja  <b>Bl&auml;ddra bland lager</b> l&auml;ngst ned i listrutan f&ouml;r att bl&auml;ddra till ditt inneh&aring;ll efter ett big data-fildelningsdataset eller geoobjektslager.  
+            </p>
+        </div>
+    </div>
+    <div id="outputDataStore">
+        <div><h2>Välj ArcGIS-datalager att kopiera till</h2></div>
+        <hr/>
+        <div>
+            <p> Det datalager som lagret ska kopieras till. F&ouml;ljande alternativ finns:
+                <ul>
+                    <li> <b>Rumstemporalt</b> &ndash; Det h&auml;r &auml;r standard.
+                    </li>
+                    <li> <b>Relationellt</b>.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Resultatlagrets namn</h2></div>
+        <hr/>
+        <div>
+            <p> Det h&auml;r &auml;r namnet p&aring; lagret som skapas i <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns misslyckas verktyget.
+            </p>
+            <p>Om du anv&auml;nder listrutan  <b>Spara resultat i</b> kan du ange namnet p&aring; en mapp i <b>Mitt inneh&aring;ll</b> d&auml;r resultatet ska sparas.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

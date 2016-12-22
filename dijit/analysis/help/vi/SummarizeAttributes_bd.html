@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Tổng kết Thuộc tính</h2><p/>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Tổng kết Thuộc t&iacute;nh"></h2>
+        <hr/>
+    <p>C&ocirc;ng cụ n&agrave;y tổng kết tất cả c&aacute;c gi&aacute; trị ph&ugrave; hợp trong một hoặc nhiều trường v&agrave; t&iacute;nh to&aacute;n số liệu thống k&ecirc; tr&ecirc;n ch&uacute;ng. Số liệu thống k&ecirc; cơ bản nhất l&agrave; số đối tượng đ&atilde; được tổng kết c&ugrave;ng nhau, tuy nhi&ecirc;n bạn vẫn c&oacute; thể t&iacute;nh to&aacute;n những số liệu thống k&ecirc; n&acirc;ng cao hơn. 
+
+    </p>
+    <p>V&iacute; dụ: giả sử bạn c&oacute; c&aacute;c đối tượng dạng điểm của c&aacute;c vị tr&iacute; cửa h&agrave;ng với một trường đại diện  <i>T&Ecirc;N_NGƯỜI QUẢN L&Yacute;_QUẬN</i> v&agrave; bạn muốn tổng kết doanh số b&aacute;n c&agrave; ph&ecirc; theo người quản l&yacute;. Bạn c&oacute; thể x&aacute;c định trường <i>T&Ecirc;N_NGƯỜI QUẢN L&Yacute;_QUẬN</i> l&agrave; trường để ph&acirc;n r&atilde; v&agrave; tất cả c&aacute;c h&agrave;ng dữ liệu đại diện cho người quản l&yacute; sẽ được tổng kết. Điều n&agrave;y c&oacute; nghĩa l&agrave; tất cả vị tr&iacute; cửa h&agrave;ng được quản l&yacute; bởi Người quản l&yacute;1 sẽ được tổng kết v&agrave;o một h&agrave;ng c&oacute; tổng kết thống k&ecirc; được t&iacute;nh. Trong v&iacute; dụ n&agrave;y, số liệu thống k&ecirc; như số cửa h&agrave;ng v&agrave; tổng <i>TỔNG_DOANH SỐ</i> cho tất cả cửa h&agrave;ng m&agrave; Người quản l&yacute;1 quản l&yacute; sẽ được t&iacute;nh cũng như đối với bất kỳ người quản l&yacute; n&agrave;o được liệt k&ecirc; trong trường <i>T&Ecirc;N_NGƯỜI QUẢN L&Yacute;_QUẬN</i>.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Chọn đầu vào để tổng kết</h2></div>
+        <hr/>
+        <div>
+            <p>Lớp c&oacute; chứa c&aacute;c trường sẽ được tổng kết.  
+            </p>
+            <p>B&ecirc;n cạnh việc chọn một lớp từ bản đồ, bạn c&oacute; thể chọn  <b>Duyệt Lớp</b> ở b&ecirc;n dưới danh s&aacute;ch thả xuống để duyệt đến nội dung của m&igrave;nh đối với tập dữ liệu chia sẻ tệp dữ liệu lớn hoặc lớp đối tượng.  
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>Chọn trường bạn muốn dùng để phân rã</h2></div>
+        <hr/>
+        <div>
+            <p>  Danh s&aacute;ch c&aacute;c trường từ lớp đầu v&agrave;o. C&aacute;c trường đ&atilde; chọn sẽ được tổng kết v&agrave; sử dụng để t&iacute;nh số liệu thống k&ecirc;. V&iacute; dụ, nếu bạn chọn một trường c&oacute; t&ecirc;n <i>Loại Thuộc t&iacute;nh</i> c&oacute; c&aacute;c gi&aacute; trị thương mại v&agrave; d&acirc;n cư, tất cả c&aacute;c trường d&acirc;n cư sẽ được tổng kết c&ugrave;ng nhau với tổng kết thống k&ecirc; đ&atilde; t&iacute;nh v&agrave; tất cả c&aacute;c trường thương mại sẽ được tổng kết c&ugrave;ng nhau.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Chọn trường và số liệu thống kê bạn muốn tính toán (tùy chọn)</h2></div>
+        <hr/>
+        <div>
+            <p> Bạn c&oacute; thể t&iacute;nh to&aacute;n số liệu thống k&ecirc; về c&aacute;c đối tượng được tổng kết. Tr&ecirc;n c&aacute;c trường số, bạn c&oacute; thể t&iacute;nh to&aacute;n những nội dung sau:
+                <ul>
+                    <li>Số lượng
+                    </li>
+                    <li>Trung b&igrave;nh
+                    </li>
+                    <li>Tối thiểu
+                    </li>
+                    <li>Tối đa
+                    </li>
+                    <li>Khoảng
+                    </li>
+                    <li>Phương sai
+                    </li>
+                    <li>Độ lệch chuẩn
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Tr&ecirc;n c&aacute;c trường chuỗi, bạn c&oacute; thể t&iacute;nh to&aacute;n những nội dung sau:
+                <ul>
+                    <li>Số lượng
+                    </li>
+                    <li>Bất kỳ&mdash;Số liệu thống k&ecirc; n&agrave;y l&agrave; mẫu ngẫu nhi&ecirc;n của một gi&aacute; trị chuỗi trong trường x&aacute;c định.
+                    </li>
+                </ul>
+                Tất cả số liệu thống k&ecirc; được t&iacute;nh to&aacute;n tr&ecirc;n c&aacute;c gi&aacute; trị kh&ocirc;ng rỗng. Lớp kết quả sẽ chứa một trường mới cho mỗi số liệu thống k&ecirc; được t&iacute;nh to&aacute;n. C&oacute; thể th&ecirc;m bất kỳ số liệu thống k&ecirc; n&agrave;o bằng c&aacute;ch chọn một thuộc t&iacute;nh v&agrave; số liệu thống k&ecirc;. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Chọn kho dữ liệu</h2></div>
+        <hr/>
+        <div>
+            <p>Đ&acirc;y l&agrave; một tham số thời gian cho bản ph&aacute;t h&agrave;nh trước để thiết lập kho dữ liệu sẽ lưu kết quả. Cả hai kho dữ liệu l&agrave; một phần của  ArcGIS Data Store. Nếu bạn chọn kho dữ liệu kh&ocirc;ng gian thời gian, nhưng kh&ocirc;ng c&agrave;i đặt, c&ocirc;ng cụ sẽ thất bại. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tên lớp kết quả</h2></div>
+        <hr/>
+        <div>
+            <p> Đ&acirc;y l&agrave; t&ecirc;n lớp sẽ được tạo trong mục <b>Nội dung của T&ocirc;i</b> v&agrave; th&ecirc;m v&agrave;o bản đồ. T&ecirc;n mặc định dựa v&agrave;o t&ecirc;n c&ocirc;ng cụ v&agrave; t&ecirc;n lớp đầu v&agrave;o. Nếu lớp đ&atilde; tồn tại, c&ocirc;ng cụ sẽ thất bại.
+            </p>
+            <p>Sử dụng chức năng  <b>Lưu kết quả</b> trong hộp xổ xuống, bạn c&oacute; thể chỉ định t&ecirc;n thư mục trong mục <b>Nội dung của T&ocirc;i</b> nơi sẽ lưu trữ kết quả của bạn.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

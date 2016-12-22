@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Luo puskurit</h2><p/>
+        <h2><img src="../images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" alt="Luo puskurit"></h2>
+        <hr/>
+    <p>Puskuri on alue, joka k&auml;sitt&auml;&auml; tietyn et&auml;isyyden pisteest&auml;, viivasta tai aluekohteesta. 
+    </p>
+    <p>Puskureita k&auml;ytet&auml;&auml;n yleens&auml; sellaisten alueiden luontiin, joita voidaan analysoida tarkemmin muilla ty&ouml;kaluilla. Jos kysymys kuuluu esimerkiksi &rdquo;Mitk&auml; rakennukset ovat kilometrin s&auml;teell&auml; koulusta?&rdquo;, vastaus voidaan hakea luomalla kilometrin pituinen puskuri koulun ymp&auml;rille ja asettamalla puskuri rakennusten pohjapiirrokset sis&auml;lt&auml;v&auml;n karttatason p&auml;&auml;lle. N&auml;in saadaan karttataso, jossa n&auml;kyv&auml;t kaikki kilometrin s&auml;teell&auml; koulusta sijaitsevat rakennukset.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Valitse karttataso, johon puskuria käytetään</h2></div>
+        <hr/>
+        <div>
+            <p>Puskuroitavat piste-, viiva- tai aluekohteet.
+            </p>
+            <p>Sen lis&auml;ksi, ett&auml; voit valita karttatason kartasta, voit valita  <b>Selaa karttatasoja</b> -vaihtoehdon avattavan luettelon alareunasta ja selata Big Data -tiedostoresurssin aineistoryhm&auml;n tai karttatason sis&auml;lt&ouml;&ouml;n.  
+            </p>
+        </div>
+    </div>
+    <div id="bufferType">
+        <div><h2>Valitse käytettävän puskurin tyyppi</h2></div>
+        <hr/>
+        <div>
+            <p>L&auml;ht&ouml;aineiston kohteiden puskurin koon voi m&auml;&auml;ritt&auml;&auml; kolmella tavalla: 
+                <ul>
+                    <li>M&auml;&auml;rit&auml; et&auml;isyys, jota k&auml;ytet&auml;&auml;n kaikkiin kohteisiin.
+                    </li>
+                    <li>M&auml;&auml;rit&auml; l&auml;ht&ouml;aineiston karttatasossa kentt&auml;, joka sis&auml;lt&auml;&auml; et&auml;isyysarvon. Voit k&auml;ytt&auml;&auml; merkkijonokentt&auml;&auml; tai numerokentt&auml;&auml;. Jos lineaarista yksikk&ouml;&auml; ei ole m&auml;&auml;ritetty, k&auml;ytet&auml;&auml;n koordinaatistotiedon yksikk&ouml;j&auml;. Jos k&auml;yt&auml;t maantieteellist&auml; koordinaattij&auml;rjestelm&auml;&auml;, yksik&ouml;tt&ouml;m&auml;n kent&auml;n oletetaan olevan metrej&auml;. 
+                    </li>
+                    <li>Muodosta lauseke useilla kentill&auml; ja matemaattisilla operaattoreilla.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Valitse puskurimenetelmä</h2></div>
+        <hr/>
+        <div>
+            <p>Voit valita  <b>Planaarinen</b>- tai <b>Geodeettinen</b>-menetelm&auml;n. <b>Planaarinen</b>-menetelm&auml; saattaa olla nopeampi ja sopii projisoidun aineiston paikalliseen analysointiin. <b>Geodeettinen</b>-menetelm&auml; sopii suurille alueille ja kaikille maantieteellisille koordinaattij&auml;rjestelmille.
+            </p>
+        </div>
+    </div>
+    <div id="dissolveOption">
+        <div><h2>Valitse sulautusmenetelmän tyyppi</h2></div>
+        <hr/>
+        <div>
+            <p>Asetukset sulautusmenetelm&auml;n m&auml;&auml;ritt&auml;miseen.   Jos sulautusmenetelm&auml; on valittuna, voit luoda moniosaisia tai yksiosaisia alueita ja laskea tilastotiedot annettujen kenttien perusteella.
+                <ul>
+                    <li> <b>Kaikki</b>: Kaikki kohteet sulautetaan. Jos moniosaiset kohteet ovat sallittuja, kaikki kohteet sulautetaan yhdeksi kohteeksi. Jos moniosaiset kohteet eiv&auml;t ole sallittuja, vierekk&auml;iset tai p&auml;&auml;llekk&auml;iset kohteet sulautetaan.
+                    </li>
+                    <li> <b>Kent&auml;t</b>: Kohteet, jotka jakavat saman m&auml;&auml;ritetyn kent&auml;n tai m&auml;&auml;ritetyn kentt&auml;yhdistelm&auml;n, sulautetaan. Jos moniosaiset kohteet ovat sallittuja, kaikki kohteet, joilla on sama kentt&auml;, sulautetaan yhdeksi kohteeksi. Jos moniosaiset kohteet eiv&auml;t ole sallittuja, vierekk&auml;iset tai p&auml;&auml;llekk&auml;iset kohteet, joilla on sama kentt&auml;, sulautetaan.
+                    </li>
+                    <li> <b>Ei mit&auml;&auml;n</b>: Mit&auml;&auml;n kohteita ei sulauteta. T&auml;m&auml; on oletusarvo.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="multipart">
+        <div><h2>Salli moniosaiset kohteet</h2></div>
+        <hr/>
+        <div>
+            <p>T&auml;m&auml;n asetuksen avulla voit m&auml;&auml;ritt&auml;&auml;, koostuuko tulos yksiosaisista vai moniosaisista kohteista. 
+
+            </p>
+            <p>
+                <ul>
+                    <li>Valittu: Analyysin tulos sis&auml;lt&auml;&auml; moniosaisia kohteita.   
+                    </li>
+                    <li>Ei valittu: Analyysin tulos sis&auml;lt&auml;&auml; yksiosaisia kohteita. T&auml;m&auml; on oletusarvo.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Lisää tilastotiedot (valinnainen)</h2></div>
+        <hr/>
+        <div>
+            <p> Voit laskea tilastotiedot kohteista, joista on laadittu yhteenveto. Numerokentist&auml; voit laskea seuraavat tilastotiedot:
+                <ul>
+                    <li>Lukum&auml;&auml;r&auml;
+                    </li>
+                    <li>Keskiarvo
+                    </li>
+                    <li>V&auml;himm&auml;isarvo
+                    </li>
+                    <li>Enimm&auml;isarvo
+                    </li>
+                    <li>Vaihteluv&auml;li
+                    </li>
+                    <li>Varianssi
+                    </li>
+                    <li>Keskihajonta
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Merkkijonokentist&auml; voit laskea seuraavat tilastotiedot:
+                <ul>
+                    <li>Lukum&auml;&auml;r&auml;
+                    </li>
+                    <li>Mik&auml; tahansa: T&auml;m&auml; tilastotieto on satunnainen otos m&auml;&auml;ritetyn kent&auml;n merkkijonoarvosta.
+                    </li>
+                </ul>
+                Kaikki tilastotiedot lasketaan muina kuin nolla-arvoina. Tuloskarttataso sis&auml;lt&auml;&auml; uuden kent&auml;n jokaiselle lasketulle tilastotiedolle. Voit lis&auml;t&auml; niin paljon tilastotietoja kuin haluat valitsemalla ominaisuustiedon ja tilastotiedon. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Valitse aineistosäilö</h2></div>
+        <hr/>
+        <div>
+            <p>T&auml;m&auml; on esijulkaisun tilap&auml;inen parametri sen aineistos&auml;il&ouml;n m&auml;&auml;ritt&auml;miseen, johon tulokset tallennetaan. Molemmat aineistos&auml;il&ouml;t ovat osa  ArcGIS Data Storea. Jos valitset tila-aika-aineistos&auml;il&ouml;n, mutta sellaista ei ole asennettuna, ty&ouml;kalua ei voi suorittaa. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tulostason nimi</h2></div>
+        <hr/>
+        <div>
+            <p> Sen tason nimi, joka luodaan kohtaan <b>Oma sis&auml;lt&ouml;</b> ja joka lis&auml;t&auml;&auml;n karttaan. Oletusnimi perustuu ty&ouml;kalun nimeen ja l&auml;ht&ouml;karttatason nimeen. Jos karttataso on jo olemassa, ty&ouml;kalua ei voi suorittaa.
+            </p>
+            <p>Avattavan  <b>Tallenna tulos kohteeseen</b> -valikon avulla voit m&auml;&auml;ritt&auml;&auml; sen <b>Oma sis&auml;lt&ouml;</b> -kansion nimen, johon tulos tallennetaan.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.18/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.19/esri/copyright.txt for details.
 
 define(["../../declare","dojo/_base/lang","dijit/_WidgetBase","dojo/dom-construct","./AnimationHelper"],function(e,t,i,n,s){var r=e("esri.dijit.geoenrichment._Wizard",i,{currentPage:null,currentPageId:null,_anim:null,pages:null,stacking:"stretch",constructor:function(){this.pages={},this._anim=new s},buildRendering:function(){this.domNode=n.create("div",{"class":"_Wizard_Root"})},loadPage:function(e){var i=this.pages[e],s=this.currentPage;i!==s&&(this._anim.finish(),s&&this._animPage("Anim_FadeOut").then(t.hitch(this.domNode,"removeChild",s.domNode)),this.currentPage=i,this.currentPageId=e,n.place(this.currentPage.domNode,this.domNode,"first"),s&&this._animPage("Anim_FadeIn"),i._started||(i.set("stacking",this.stacking),i.startup()),i.resize())},_animPage:function(e){return this._anim.start([{node:this.currentPage.domNode,classes:[e,"Wizard_FadeAnim"]}])},resize:function(){this.currentPage&&this.currentPage.resize()},destroy:function(){for(var e in this.pages)this.hasOwnProperty(e)&&this.pages[e].destroyRecursive();this.pages={},this.inherited(arguments)}});return r});

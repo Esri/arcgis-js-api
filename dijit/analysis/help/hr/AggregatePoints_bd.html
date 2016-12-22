@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Agregiraj točke</h2><p/>
+        <h2><img src="../images/GUID-6C1620D9-D176-41FA-8283-833D8B1CCCFC-web.png" alt="Agregiraj točke"></h2>
+        <hr/>
+    <p>Ovaj alat radi uz sloj s točkastim geoobjektima i poligonalnim geoobjektima. Uneseni poligonalni slojevi mogu biti od poligonalnog sloja ili mogu biti četverokutne ili &scaron;esterokutne ćelije koje se računaju kad alat radi. Alat prvo određuje koje točke spadaju u koje pojedino područje. Nakon određivanja prostornog odnosa točaka u poligonu, izračunavaju se statistike svih točaka u poligonu i dodjeljuju se poligonu. Najosnovnija statistika jest zbroj broja točaka u poligonu, ali možete također dobiti druge statistike. 
+
+    </p>
+    <p>Primjerice, pretpostavimo da imate točkaste geoobjekte lokacija kafića i poligonalne geoobjekte okruga te da želite sažeti prodaju kave po okrugu. Pretpostavimo da kafići imaju atribut  <i>TOTAL_SALES</i>, možete dobiti zbroj svih <i>TOTAL_SALES</i> unutar svakog okruga, minimum ili maksimum <i>TOTAL_SALES</i>
+ unutar svakog okruga ili ostale statistike kao &scaron;to su zbroj, raspon, standardno odstupanje i varijance.
+    </p>
+    <p>Ovaj alat također može raditi s ovremenjenim podacima. Ako su točke unosa ovremenjene, tada su dostupne opcije vremenskih isječaka. Vremenski isječci omogućuju izračun relacije točke u poligonu dok gledate određeni isječak u vremenu. Na primjer, možete gledati satne intervale, koji će izvesti rezultate svaki sat. 
+    </p>
+    <p>Za primjer s vremenom pretpostavite da imate točkaste geoobjekte svake transakcije izvr&scaron;ene na raznim lokacijama kafića i da nemate poligonalni sloj. Podaci su zabilježavani vi&scaron;e od godine i svaka transakcija ima lokaciju i vremensku oznaku. Pretpostavimo da svaka transakcija ima atribut <i>TOTAL_SALES</i>, možete dobiti zbroj svih <i>TOTAL_SALES</i> u željenom prostoru i vremenu. Ako su te transakcije za jedan grad, možemo generirati područja u mrežama od 1 kilometra i promotriti tjedne vremenske isječke za sažimanje transakcija u vremenu i prostoru.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="pointLayer">
+        <div><h2>Odaberite sloj koji sadrži točke za agregiranje u poligone</h2></div>
+        <hr/>
+        <div>
+            <p>Točkasti sloj koji će se agregirati u poligone.
+            </p>
+            <p>Osim odabira sloja s va&scaron;e karte, možete odabrati  <b>Pretraži slojeve</b> na dnu padajućeg popisa za pretraživanje va&scaron;ih sadržaja za skup podataka za dijeljenje datoteka velikih podataka ili sloj geoobjekta.  
+            </p>
+        </div>
+    </div>
+    <div id="inputAggregation">
+        <div><h2>Odaberite sloj područja za agregaciju informacija</h2></div>
+        <hr/>
+        <div>
+            <p>Poligoni u koje će se točkasti sloj agregirati. Možete odabrati između poligonalnog sloja koji omogućite ili ćelija koje se generiraju kad alat radi. Prilikom generiranja ćelija za  <b>Četverokut</b>, broj i naznačene jedinice određuju visinu i dužinu kvadrata. Za <b>&Scaron;esterokut</b> broj i naznačene jedinice određuju udaljenost između usporednih strana.
+            </p>
+        </div>
+    </div>
+    <div id="polygonLayer">
+        <div><h2>Odaberite poligonalni sloj za agregaciju informacija</h2></div>
+        <hr/>
+        <div>
+            <p>Poligonalni sloj u koji će se agregirati točke. Sve točke koje spadaju unutar granica područja u ovim slojevima izbrojit će se i mogu se sažeti putem odabira statistike. 
+            </p>
+            <p>
+            </p>
+            <p>Treba postaviti stavke  <b>Veličina ćelije</b> za ćelije ili <b>Poligonalni sloj</b>.
+            </p>
+        </div>
+    </div>
+    <div id="inputBins">
+        <div><h2>Odaberite udaljenost za generiranje ćelija i agregaciju</h2></div>
+        <hr/>
+        <div>
+            <p>Udaljenost upotrijebljena za generiranje ćelija u koje će se agregirati unosi va&scaron;ih točaka. Za četverokutnu ćeliju veličina predstavlja visinu četverokuta. Za &scaron;esterokut veličina predstavlja visinu &scaron;estrokuta (od usporednih strana).  
+            </p>
+            <p>Treba postaviti stavke  <b>Veličina ćelije</b> za ćelije ili <b>Poligonalni sloj</b>.
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Agregacija upotrebom vremenskih isječaka (neobavezno)</h2></div>
+        <hr/>
+        <div>
+            <p>Ako je ulazni točkasti sloj ovremenjen i ako je instantne vrste, možete analizirati s pomoću vremenskih isječaka. Tri su parametra koje možete postaviti kada upotrebljavate vrijeme:
+                <ul>
+                    <li>  <b>Vremenski interval</b>
+                    </li>
+                    <li> <b>Vremenski korak</b>
+                    </li>
+                    <li> <b>Referentno vrijeme</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Zamislite da imate podatke koji predstavljaju godinu u vremenu i želite ih analizirati s pomoću tjednih isječaka. Za to biste trebali postaviti  <b>Vremenski interval</b> na <code>1 tjedan</code>.
+            </p>
+            <p> Zamislite da imate podatke koji predstavljaju godinu u vremenu i želite ih analizirati s pomoću prvog tjedna u mjesecu. Za to biste trebali postaviti <b>Vremenski interval</b> na <code>1 tjedan</code>, <b>Vremenski korak</b> na <code>1 mjesec</code> i <b>Referentno vrijeme</b> na <code>1. siječnja u 12:00</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>Vremenski interval za agregaciju</h2></div>
+        <hr/>
+        <div>
+            <p>Vremenski interval kori&scaron;ten za isječke podataka. Vremenski interval može se koristiti samostalno ili zajedno s parametrima  <b>Vremenski korak</b> ili <b>Referentno vrijeme</b>.
+            </p>
+            <p> Ako želite stvoriti vremenske isječke koji su se dogodili svakog ponedjeljka od 9:00 do 10:00, <b>Vremenski interval</b> bio bi <code>1 sat</code>, <b>Vremenski korak</b> bio bi <code>1 tjedan</code> i <b>Referentno vrijeme</b> bilo bi <code>9:00:00 u ponedjeljak</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>Vremenski korak za agregaciju</h2></div>
+        <hr/>
+        <div>
+            <p> Korak koji se koristi za izračun vremenskog isječka. <b>Vremenski korak</b> može se koristiti samostalno ili s parametrima <b>Vremenski interval</b>, <b>Referentno vrijeme</b> ili zajedno s oba parametra <b>Vremenski interval</b> i <b>Referentno vrijeme</b>.
+            </p>
+            <p> Ako želite stvoriti vremenske isječke koji su se dogodili svakog ponedjeljka od 9:00 do 10:00, <b>Vremenski interval</b> bio bi <code>1 sat</code>, <b>Vremenski korak</b> bio bi <code>1 tjedan</code> i <b>Referentno vrijeme</b> bilo bi <code>9:00:00 u ponedjeljak</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Referentno vrijeme za poravnanje vremenskih isječaka</h2></div>
+        <hr/>
+        <div>
+            <p>Datum i vrijeme kori&scaron;teni za poravnanje vremenskih isječaka.  <b>Vremenski korak</b> započet će od refrentnog vremena i nastavit će se unatrag.
+            </p>
+            <p> Ako želite stvoriti vremenske isječke koji su se dogodili svakog ponedjeljka od 9:00 do 10:00, <b>Vremenski interval</b> bio bi <code>1 sat</code>, <b>Vremenski korak</b> bio bi <code>1 tjedan</code> i <b>Referentno vrijeme</b> bilo bi <code>9:00:00 u ponedjeljak</code>.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Dodaj statistike (neobavezno)</h2></div>
+        <hr/>
+        <div>
+            <p> Možete izračunati statistiku za geoobjekte koji su sažeti. Na brojčanim poljima možete izračunati sljedeće:
+                <ul>
+                    <li>Broj
+                    </li>
+                    <li>Prosjek
+                    </li>
+                    <li>Min.
+                    </li>
+                    <li>Maks.
+                    </li>
+                    <li>Raspon
+                    </li>
+                    <li>Varijanca
+                    </li>
+                    <li>Standardno odstupanje
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Na poljima niza možete izračunati sljedeće:
+                <ul>
+                    <li>Broj
+                    </li>
+                    <li>Bilo koje &ndash; ova je statistika nasumični uzorak vrijednosti niza u određenom polju.
+                    </li>
+                </ul>
+                Sve se statistike računaju za vrijednosti koje nisu nula. Sloj rezultata sadržavat će novo polje za svaki izračun statistike. Može se dodati bilo koliko statistika odabirom atributa i statistike. 
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>Prostorna referenca (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>Ovo je privremeni parametar za predizdanje za postavljanje obrade prostorne reference. Mnogi alati velikih podataka zahtijevaju da se projicirani koordinatni sustav upotrebljava kao prostorna referenca za obradu. Prema zadanim postavkama, alat će koristiti ulazni koordinatni sustav, ali neće biti uspje&scaron;an ako je riječ o geografskom koordinatnom sustavu. Za postavljanje projiciranog koordinatnog sustava unesite WKID. Na primjer,  <b>Web Mercator</b> treba unijeti kao <code>3857</code>.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Izaberi spremište podataka</h2></div>
+        <hr/>
+        <div>
+            <p>To je privremeni parametar za predizdanje za postavljanje spremnika podataka gdje su spremljeni rezultati. Oba spremnika podataka dio su proizvoda  ArcGIS Data Store. Ako odaberete spremnik prostorno-vremenskih podataka, ali nemate instaliran spremnik, alat neće biti uspje&scaron;an. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Naziv sloja rezultata</h2></div>
+        <hr/>
+        <div>
+            <p> Ovo je naziv sloja koji će se stvoriti u dijelu <b>Moj sadržaj</b> i dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, alat neće biti uspje&scaron;an.
+            </p>
+            <p>Upotrebom padajućeg izbornika  <b>Spremi rezultat u</b> možete odrediti naziv mape u dijelu <b>Moj sadržaj</b> gdje će se spremiti rezultat.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

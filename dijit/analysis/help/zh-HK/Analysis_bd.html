@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="bdToolbox">
+        <p>大數據分析會跨 ArcGIS GeoAnalytics Server 分配分析工作。這能讓您運用多部電腦的功能以更快地分析更多資料。可用的工具如下所示：
+            <ul>
+                <li> <b>匯聚點</b>
+                </li>
+                <li> <b>加入圖徵</b>
+                </li>
+                <li> <b>重新建構軌跡</b>
+                </li>
+                <li> <b>摘要屬性</b>
+                </li>
+                <li> <b>範圍內摘要</b>
+                </li>
+                <li> <b>尋找相似位置</b>
+                </li>
+                <li> <b>計算密度</b>
+                </li>
+                <li> <b>尋找熱點</b>
+                </li>
+                <li> <b>建立緩衝區</b>
+                </li>
+                <li> <b>複製到 Data Store</b>
+                </li>
+            </ul>
+            
+        </p>
+        <p>大數據分析著重在分析空間和時態模式的大數據。
+        </p>
+    </div>
+    <div id="SummarizeDataCategory" class="smallsize">
+        <h2>摘要資料</h2>
+        <hr/>
+        <p>摘要資料工具集包含一些工具，可用於計算區域內或其他圖徵附近的圖徵及其屬性的總數、長度、面積以及基本描述性統計資料。
+            <ul>
+                <li> <b>匯聚點</b>用於計算指定區域或容器內點的統計資料。
+                </li>
+                <li> <b>加入圖徵</b>可計算與其他圖徵分享空間、時態或屬性關係之圖徵的相關統計資料。
+                </li>
+                <li> <b>重新建構軌跡</b>可計算屬於相同軌跡的點或多邊形的相關統計資料，並將輸入重新建構至軌跡中。
+                </li>
+                <li> <b>摘要屬性</b>可計算分享屬性的圖徵或表列資料的相關統計資料。
+                </li>
+                <li> <b>範圍內摘要</b>計算相互重疊的區域圖徵和屬性的統計資料。
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregatePointsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>匯聚點</h2></td>
+                    <td>
+                    <img src="../images/GUID-6C1620D9-D176-41FA-8283-833D8B1CCCFC-web.png" class="titleImage" alt="匯聚點">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>此工具使用點圖徵圖層和區域圖徵圖層或指定距離所定義的容器，以確定落在各區域或容器內的點，並計算各區域或容器內所有點的統計資料。您可以選擇套用時間片段與此工具。
+            </p>
+            <p> 例如
+                <ul>
+                    <li>給定犯罪事件的點位置，計算每個縣或其他行政區的犯罪數。
+                    </li>
+                    <li>使用 100 公里容器，按州尋找特許經營位置的最高和最低的每月營收。
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="JoinFeaturesTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>加入圖徵</h2></td>
+                    <td>
+                    <img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" class="titleImage" alt="加入圖徵">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>使用圖徵圖層或表列資料，您可以根據輸入圖層或表格之間的特定關係來加入圖徵和記錄。加入將由空間、時態和屬性關係判定，並可選擇性地計算摘要統計資料。
+            </p>
+            <p> 例如
+                <ul>
+                    <li>使用時間提供犯罪事件的點位置、在自身中加入犯罪資料、指定彼此距離 1 公里內之犯罪的空間關係，以及發生時間不到 1 小時的連續犯罪，以判定是否存在與空間和時間密切相關的連續犯罪。
+                    </li>
+                    <li> 提供一個含人口統計資訊的郵遞區號表，及一個表示住宅區建築物的區域圖徵，將人口統計資訊加入住宅，讓每一個住宅現在都有資訊。
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="ReconstructTracksTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>重新建報軌跡</h2></td>
+                    <td>
+                    <img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" class="titleImage" alt="重新建構軌跡">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>使用已啟用時間的點或多邊形圖徵的圖層（代表 <code>即時</code>時間），此工具可判定某個軌跡的輸入圖徵，並按時間循序排序輸入。會針對每個軌跡內的輸入圖徵，選擇性地計算統計資料。
+            </p>
+            <p> 例如
+                <ul>
+                    <li>提供颶風測量的點位置和時間，計算平均風速，及颶風的最大風壓。
+                    </li>
+                    <li>使用 100 公里容器，按州尋找特許經營位置的最高和最低的每月營收。
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeAttributesTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>摘要屬性</h2></td>
+                    <td>
+                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="摘要屬性">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> 使用此工具可針對指定的欄位，摘要統計資料所使用的圖徵或表列資料。
+            </p>
+            <p> 例如
+                <ul>
+                    <li> 使用欄位 <i>COMPANY_NAME</i> 提供雜貨連鎖店的位置，按公司名稱摘要雜貨店來判定每家公司的統計資料。
+                    </li>
+                    <li>使用欄位  <i>COMPANY_NAME</i> 和 <i>COUNTY</i> 提供雜貨連鎖店的表格，按公司名稱和縣來摘要雜貨店，以判定每個縣的每家公司的統計資料。
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeWithinTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>範圍內摘要</h2></td>
+                    <td>
+                    <img src="../images/GUID-90E0CB1F-EB97-4752-B2EE-452B7B45475E-web.png" class="titleImage" alt="範圍內摘要">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>尋找兩個圖層間疊加的區域（和區域的部分）並計算疊加區域的統計資料。
+            </p>
+            <p> 例如
+                <ul>
+                    <li>給定流域邊界圖層和依土地使用類型劃分的土地使用邊界圖層，計算每個流域之土地使用類型的總面積。
+                    </li>
+                    <li>給定縣內宗地的圖層和城市邊界圖層，摘要各城市內閒置宗地的平均值。
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="FindLocationsCategory" class="smallsize">
+        <h2>尋找位置</h2>
+        <hr/>
+        <p>這些工具用於識別滿足多個不同指定條件的區域。 
+            <ul>
+                <li> <b>尋找相似位置</b>可根據指定的條件，尋找與一個或多個參考位置最相似的位置。
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="FindSimilarLocationsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>尋找相似位置</h2></td>
+                    <td>
+                    <img src="../images/GUID-6262A84E-9087-4E48-930E-E9B89FECC836-web.png" class="titleImage" alt="尋找相似位置">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>根據您所指定的條件，測量候選搜尋圖層中的位置與一個或多個參考位置之間的相似性，藉此尋找相似的位置。
+            </p>
+            <p> 例如
+                <ul>
+                    <li>檢查員工數和年銷售額來找出十家最類似的雜貨店。
+                    </li>
+                    <li>檢查人口、年成長與稅收之間的關係來找出 100 座最類似的城市。
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzePatternsCategory" class="smallsize">
+        <h2>分析模式</h2>
+        <hr/>
+        <p>這些工具可幫助您辨識、量化並可視化數據的空間模式。
+            <ul>
+                <li> <b>計算密度</b>取某一現象的已知數量，並將這些量散佈到整個地圖上。
+                </li>
+                <li> <b>尋找熱點</b>工具可以辨識在數據空間模式中具有統計顯著性的叢集。
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateDensityTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>計算密度</h2></td>
+                    <td>
+                    <img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" class="titleImage" alt="Calculate Density">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>「計算密度」工具透過將已知數量的某種現象（表示為點的屬性）散佈到整個地圖上，來從點圖徵建立密度地圖。會導出表示密度的區域圖層結果。
+            </p>
+            <p> 例如
+                <ul>
+                    <li>計算某郡的醫院密度。結果圖層將顯示容易到達醫院和不容易到達醫院的區域，此資訊可用於確定新建醫院的位置。
+                    </li>
+                    <li>根據發生森林火災的歷史位置，確定森林火災的高風險區域。
+                    </li>
+                    <li>尋找距離主幹道較遠的社區，以計劃修建新道路的位置。
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="FindHotSpotsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>尋找熱點</h2></td>
+                    <td>
+                    <img src="../images/GUID-6D600155-AA9B-4F02-AD8B-2E84150AB743-web.png" class="titleImage" alt="尋找熱點">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>「尋找熱點」工具將判定資料中的空間模式是否具備任何具有統計顯著性的叢集。
+                <ul>
+                    <li>您的點（犯罪事件、樹木、交通事故）是否真正地叢集？ 您如何確定？
+                    </li>
+                    <li>您是否確實發現了具有統計顯著性的熱點（消費、嬰兒死亡率、持續偏高的測試分數），或如果變更地圖的符號化方式，地圖是否會呈現出另一種結果？
+                    </li>
+                </ul>
+                「尋找熱點」工具可協助您充滿信心地回答這些問題。
+            </p>
+            <br/>
+        </div>
+    <div id="UseProximityCategory" class="smallsize">
+        <h2>鄰近分析</h2>
+        <hr/>
+        <p>這些工具可以協助您回答在空間分析中，最常提出的一個問題：什麼在什麼附近？
+            <ul>
+                <li> <b>建立緩衝區</b>可建立離圖徵指定距離的區域。
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CreateBuffersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>建立緩衝區</h2></td>
+                    <td>
+                    <img src="../images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" class="titleImage" alt="建立緩衝區">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>緩衝區是以點、線或多邊形圖徵為起點並涵蓋已知距離的區域。
+            </p>
+            <p> 例如
+                <ul>
+                    <li>使用線性河流圖徵，將每一條河流緩衝河寬 50 倍，以判定提議的河岸邊。
+                    </li>
+                    <li>提供表示縣的區域，將每縣緩衝 200 海浬以判定海上疆界。
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="ManageDataCategory" class="smallsize">
+        <h2>管理數據</h2>
+        <hr/>
+        <p>這些工具是使用於地理和表列資料的日常管理。
+            <ul>
+                <li> <b>複製到 Data Store</b>會將資料複製到您的 ArcGIS Data Store，並在您的 Web GIS 中建立圖層。
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CopyToDataStoreTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>複製到資料存放庫</h2></td>
+                    <td>
+                    <img src="../images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" class="titleImage" alt="複製到資料儲存庫">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>將輸入圖徵圖層或表格複製到  ArcGIS Data Store，並在 Web GIS 中建立圖層。 </p>
+            <p> 例如
+                <ul>
+                    <li> 將大數據檔分享中的 <code>.csv</code> 檔案集合，複製到視覺化的時空資料儲存庫。
+                    </li>
+                    <li>將時空資料儲存庫中儲存的目前地圖範圍中的圖徵，複製到關聯式資料儲存庫。
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+</div>
+</html>

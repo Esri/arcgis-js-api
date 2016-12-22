@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Połącz obiekty</h2><p/>
+        <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Połącz obiekty"></h2>
+        <hr/>
+    <p>Operując na dw&oacute;ch warstwach, narzędzie  Połącz obiekty umożliwia połączenie atrybut&oacute;w jednego obiektu z innym obiektem na podstawie relacji przestrzennych i atrybutowych. Narzędzie ustala wszystkie obiekty wejściowe, kt&oacute;re spełniają określone warunki połączenia, a następnie dołącza warstwę połączenia do warstwy docelowej.
+    </p>
+    <p>Narzędzie  Połącz obiekty można stosować do punkt&oacute;w, linii, obszar&oacute;w i tabel. Połączenie przestrzenne wymaga, aby dane miały geometrię.
+    </p>
+    <p>Jeśli zaznaczono opcję  <b>Użyj bieżącego zasięgu mapy</b>, analizowane będą tylko obiekty widoczne w bieżącym zasięgu mapy. Jeśli powyższa opcja nie jest zaznaczona, analizowane będą wszystkie obiekty w&nbsp;warstwie docelowej i warstwie połączenia, nawet jeśli będą znajdować się poza bieżącym zasięgiem mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="targetLayer">
+        <div><h2>Wybierz warstwę docelową</h2></div>
+        <hr/>
+        <div>
+            <p>Warstwa docelowa, do tabeli kt&oacute;rej zostaną dołączone atrybuty z warstwy połączenia.
+            </p>
+            <p class="OnlineOnly">Poza wybraniem warstwy na mapie można wybrać opcję  <b>Wybierz warstwę analizy Living Atlas</b> lub <b>Wybierz warstwę analizy</b> dostępną w dolnej części menu rozwijanego. Zostanie wtedy otwarta galeria zawierająca kolekcje warstw przydatnych podczas wielu analiz. 
+            </p> 
+        </div>
+    </div>
+    <div id="joinLayer">
+        <div><h2>Wybierz warstwę do połączenia z warstwą docelową</h2></div>
+        <hr/>
+        <div>
+            <p>Warstwa połączenia zawierająca atrybuty, kt&oacute;re zostaną dołączone do warstwy docelowej.
+            </p>
+            <p class="OnlineOnly">Poza wybraniem warstwy na mapie można wybrać opcję  <b>Wybierz warstwę analizy Living Atlas</b> lub <b>Wybierz warstwę analizy</b> dostępną w dolnej części menu rozwijanego. Zostanie wtedy otwarta galeria zawierająca kolekcje warstw przydatnych podczas wielu analiz. 
+            </p>
+        </div>
+    </div>
+    <div id="joinType">
+        <div><h2>Wybierz typ połączenia</h2></div>
+        <hr/>
+        <div>
+            <p>Można zastosować połączenie przestrzenne, połączenie atrybutowe lub kombinację tych dw&oacute;ch typ&oacute;w. 
+                <ul>
+                    <li> <b>Przestrzenne</b> &mdash; obiekty są łączone przy użyciu określonych relacji przestrzennych. W tym przypadku obie warstwy muszą mieć geometrię.
+                    </li>
+                    <li> <b>Atrybutowe</b> &mdash; łączy obiekty na podstawie p&oacute;l o takich samych wartościach.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>
+            </p>
+        </div>
+    </div>
+    <div id="spatialRelationship">
+        <div><h2>Wybierz relację przestrzenną</h2></div>
+        <hr/>
+        <div>
+            <p> Relacja przestrzenna, kt&oacute;ra decyduje o tym, czy obiekty zostaną ze sobą połączone. Dostępne relacje zależą od typu geometrii (punkt, linia, obszary) używanej w obiektach wejściowych. Dostępne są następujące relacje:
+                <ul>
+                    <li> <b>Takie same jak</b> &mdash; obiekty w warstwie docelowej zostaną dopasowane, jeśli są takie same jak obiekty w warstwie połączenia.
+                    </li>
+                    <li> <b>Przecina się</b> &mdash; obiekty w warstwie docelowej zostaną dopasowane, jeśli przecinają się z obiektami w warstwie połączenia.
+                    </li>
+                    <li> <b>Całkowicie zawiera</b> &mdash; obiekty zostaną dopasowane, jeśli obiekty w warstwie docelowej całkowicie zawierają obiekty w warstwie połączenia.
+                    </li>
+                    <li> <b>Całkowicie wewnątrz</b> &mdash; obiekty zostaną dopasowane, jeśli obiekty w warstwie docelowej znajdują się całkowicie wewnątrz obiekt&oacute;w w warstwie połączenia.
+                    </li>
+                    <li> <b>W odległości do</b> &mdash; obiekty w warstwie docelowej zostaną dopasowane, jeśli znajdują się w określonym promieniu od obiekt&oacute;w w warstwie połączenia.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="attributeRelationship">
+        <div><h2>Połączenie atrybutowe</h2></div>
+        <hr/>
+        <div>
+            <p>Relacja atrybutowa, kt&oacute;ra decyduje o tym, czy obiekty zostaną ze sobą połączone. Obiekty są dopasowywane, jeśli wartości w polach warstwy połączenia są r&oacute;wne wartościom w polach warstwy docelowej. 
+            </p>
+            <p>Zał&oacute;żmy na przykład, że dla całego powiatu istnieje warstwa danych geograficznych z adresami zamieszkania, zwierająca pole  <i>ZIP</i> (kod pocztowy), i tabelaryczny zestaw danych demograficznych dotyczących zdrowia według kod&oacute;w pocztowych zawierający pole o nazwie <i>HEALTHZIP</i> (zdrowie - kod pocztowy). Zestaw danych zdrowotnych można połączyć z danymi na temat adres&oacute;w zamieszkania, dopasowując pole <i>ZIP</i> do pola <i>HEALTHZIP</i>, co spowoduje powstanie warstwy adres&oacute;w zamieszkania z odpowiadającymi im danymi zdrowotnymi.
+            </p>
+        </div>
+    </div>
+    <div id="joinOperation">
+        <div><h2>Wybierz operację połączenia</h2></div>
+        <hr/>
+        <div>
+            <p>Określa, w jaki spos&oacute;b będą obsługiwane połączenia między warstwą docelową i warstwą połączenia, jeśli w warstwie połączenia zostanie znalezionych wiele obiekt&oacute;w o takich samych relacjach z warstwą docelową.  Można wybrać jedną z dw&oacute;ch następujących operacji łączenia:
+                <ul>
+                    <li> <b>Złączenie jeden do jeden</b> &mdash; ta opcja pozwala zsumować wszystkie pasujące obiekty z warstwy połączenia dla każdego obiektu w warstwie docelowej.
+                    </li>
+                    <li> <b>Złączenie jeden do wielu</b> &mdash; ta opcja pozwala połączyć wszystkie pasujące obiekty w warstwie połączenia z warstwą docelową. Warstwa wynikowa będzie zawierać wiele rekord&oacute;w obiektu docelowego.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Zał&oacute;żmy, że chcesz znaleźć supermarkety w promieniu 5 kilometr&oacute;w od rynku produkt&oacute;w rolnych. W tym przypadku warstwa, do kt&oacute;rej będą dołączane obiekty, zawiera pojedynczy obiekt reprezentujący rynek produkt&oacute;w rolnych, a dołączane obiekty reprezentują lokalne sklepy spożywcze, kt&oacute;re mają atrybuty, takie jak suma rocznej sprzedaży. Używając narzędzia  <b>Połącz obiekty</b>, stwierdzasz, że pięć sklep&oacute;w spożywczych spełnia kryteria. Jeśli zostanie określona operacja połączenia <b>Złączenie jeden do wielu</b>, dane wynikowe będą zawierać pięć obiekt&oacute;w, a każdy wiersz będzie reprezentować rynek produkt&oacute;w rolnych i jeden z supermarket&oacute;w. W przypadku relacji <b>Złączenie jeden do jeden</b> dane wynikowe będą zawierać jeden obiekt reprezentujący rynek produkt&oacute;w rolnych i zbiorcze informacje o supermarketach, takie jak ich liczba (5) i inne dane statystyczne, na przykład suma rocznej sprzedaży.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Dodaj statystyki (opcjonalnie)</h2></div>
+        <hr/>
+        <div>
+            <p>Jeśli została wybrana opcja  <b>Złączenie jeden do jeden</b>, można obliczyć statystyki dotyczące połączonych obiekt&oacute;w. Domyślnie liczba zostanie obliczona i dodana do warstwy wynikowej. 
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nazwa warstwy wynikowej</h2></div>
+        <hr/>
+        <div>
+            <p>Jest to nazwa warstwy, kt&oacute;ra zostanie utworzona w zakładce  <b>Moje zasoby</b> i zostanie dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, wyświetlony zostanie komunikat z&nbsp;prośbą o&nbsp;podanie innej nazwy.
+            </p>
+            <p>Używając listy rozwijanej  <b>Zapisz wynik w</b>, można określić nazwę folderu w zakładce <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

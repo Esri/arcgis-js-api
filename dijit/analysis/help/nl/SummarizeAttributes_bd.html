@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Attributen samenvatten</h2><p/>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Attributen samenvatten"></h2>
+        <hr/>
+    <p>Deze tool vat alle overeenkomende waarden samen in een of meer velden en berekent de statistieken daarop. De meest eenvoudige statistiek is het aantal objecten die samen zijn gevat, maar u kunt ook geavanceerdere statistieken berekenen. 
+
+    </p>
+    <p>Stel bijvoorbeeld dat u puntobjecten van winkellocaties hebt met een veld dat de  <i>DISTRICT_MANAGER_NAME</i> vertegenwoordigt en u wilt de koffieverkoop per manager samenvatten. U kunt het veld <i>DISTRICT_MANAGER_NAME</i> opgeven als het veld om op op te lossen en alle rijen met gegevens die individuele managers weergeven zullen worden samengevat. Dit betekent dat alle winkellocaties die worden beheerd door Manager1 zullen worden samengevat in een rij met beknopte statistieken berekend. In dit geval worden de statistieken zoals de telling van het aantal winkels en de som van <i>TOTAL_SALES</i> voor alle winkels die Manager1 beheert ook worden berekend alsmede voor alle andere managers in het veld <i>DISTRICT_MANAGER_NAME</i>.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Kies de ingang om samen te vatten:</h2></div>
+        <hr/>
+        <div>
+            <p>De laag die de velden bevat die worden samengevat.  
+            </p>
+            <p>Naast het kiezen van een laag van uw kaart, kunt u kiezen voor  <b>Blader door lagen</b> aan de onderkant van de drop-downlijst om in uw inhoud te zoeken naar een groot gedeeld databestand of objectlaag.  
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>Kies de velden om op te ontbinden</h2></div>
+        <hr/>
+        <div>
+            <p>  Lijst met velden van de invoerlaag. Geselecteerde velden worden samengevat en gebruikt voor statistische berekening. Bijvoorbeeld, als u een veld kiest met de naam <i>Type eigendom</i> met de waarden van commercieel en residentieel, dan worden alle residenti&euml;le velden samengevat, met samenvattende statistieken berekend en alle commerci&euml;le worden samengevat.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Kies de velden en statistieken die u wilt berekenen (optioneel)</h2></div>
+        <hr/>
+        <div>
+            <p> U kunt statistieken berekenen over objecten die zijn samengevat. Op numerieke velden kunt u het volgende berekenen:
+                <ul>
+                    <li>Aantal
+                    </li>
+                    <li>Gemiddelde
+                    </li>
+                    <li>Min
+                    </li>
+                    <li>Max
+                    </li>
+                    <li>Bereik
+                    </li>
+                    <li>Variantie
+                    </li>
+                    <li>Standaardafwijking
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Op stringvelden kunt u het volgende berekenen:
+                <ul>
+                    <li>Aantal
+                    </li>
+                    <li>Elke&mdash;Deze statistiek is een willekeurig voorbeeld van een stringwaarde in het gespecificeerde veld.
+                    </li>
+                </ul>
+                Alle statistieken worden berekend op nonnull waarden. De resultaatlaag zal een nieuw veld bevatten voor elke statistiek die wordt berekend. Andere statistieken kunnen worden toegevoegd door een attribuut en statistiek te kiezen. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Datastore kiezen</h2></div>
+        <hr/>
+        <div>
+            <p>Dit is een tijdelijke parameter voor prerelease om de data-opslag in te stellen waar de resultaten worden opgeslagen. Beide data-opslagplaatsen maken deel uit van  ArcGIS Data Store . Als u de tijdruimtelijke gegevensopslag selecteert maar er geen hebt ge&iuml;nstalleerd, dan zal de tool falen. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Resultaat laagnaam</h2></div>
+        <hr/>
+        <div>
+            <p> Dit is de naam van de kaartlaag die in <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd.  De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, zal de tool falen.
+            </p>
+            <p>Als u in de vervolgkeuzelijst  <b>Resultaat opslaan</b> gebruikt, kunt u de naam opgeven van een map in <b>Mijn Content</b> waarin het resultaat wordt opgeslagen.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

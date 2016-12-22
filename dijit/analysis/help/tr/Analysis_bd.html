@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="bdToolbox">
+        <p>Big Data Analytics, analizle ilgili işleri ArcGIS GeoAnalytics Server uygulamanızda dağıtır. Bu, birden &ccedil;ok makine g&uuml;c&uuml; kullanarak daha fazla veriyi daha hızlı analiz etmenize olanak tanır. Aşağıdaki ara&ccedil;lar şu anda kullanılabilir durumdadır:
+            <ul>
+                <li> <b>Noktaları Birleştir</b>
+                </li>
+                <li> <b>Ekleme Detayları</b>
+                </li>
+                <li> <b>İzleri Yeniden Oluştur</b>
+                </li>
+                <li> <b>&Ouml;znitelikleri &Ouml;zetle</b>
+                </li>
+                <li> <b>Dahilinde &Ouml;zetle</b>
+                </li>
+                <li> <b>Benzer Konumları Bul</b>
+                </li>
+                <li> <b>Yoğunluğu Hesapla</b>
+                </li>
+                <li> <b>Etkin Nokta Bul</b>
+                </li>
+                <li> <b>Tampon B&ouml;lge Oluştur</b>
+                </li>
+                <li> <b>Veri Deposuna Kopyala</b>
+                </li>
+            </ul>
+            
+        </p>
+        <p>Big Data Analytics, hem mekansal hem de zamansal modelleri &ouml;ne &ccedil;ıkararak b&uuml;y&uuml;k miktarda veriyi analiz etmeye odaklıdır. 
+        </p>
+    </div>
+    <div id="SummarizeDataCategory" class="largesize">
+        <h2>Veriyi Özetle</h2>
+        <hr/>
+        <p>Veriyi &Ouml;zetle ara&ccedil; setinde bulunan ara&ccedil;lar; alanlardaki detayların ya da yakındaki diğer detayların toplam sayısını, uzunluğunu, alanını ve temel a&ccedil;ıklayıcı istatistiklerini ve bunların &ouml;zniteliklerini hesaplar.
+            <ul>
+                <li> <b>Noktaları Birleştir</b>, belirtilen alanlar veya kutular i&ccedil;inde kalan noktalar hakkındaki istatistikleri hesaplar.
+                </li>
+                <li> <b>Detayları Birleştir</b>, diğer detaylarla bir mekansal ilişki, ge&ccedil;ici ilişki veya &ouml;znitelik ilişkisi paylaşan detaylar hakkındaki istatistikleri hesaplar.
+                </li>
+                <li> <b>İzleri Yeniden Oluştur</b>, aynı ize ait olan nokta veya alanlar hakkındaki istatistikleri hesaplar ve girdileri izlerde yeniden oluşturur.
+                </li>
+                <li> <b>&Ouml;znitelikleri &Ouml;zetle</b>, &ouml;znitelikleri paylaşan detay verileri veya &ccedil;izelgelenen veriler hakkındaki istatistikleri hesaplar.
+                </li>
+                <li> <b>Dahilinde &Ouml;zetle</b>, alanın birbiriyle &ouml;rt&uuml;şen detayların ve &ouml;zniteliklerinin istatistiklerini hesaplar.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregatePointsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Noktaları Birleştir</h2></td>
+                    <td>
+                    <img src="../images/GUID-6C1620D9-D176-41FA-8283-833D8B1CCCFC-web.png" class="titleImage" alt="Noktaları Birleştir">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Bir nokta detayları katmanı ve bir alan detayları katmanı veya belirli bir mesafeyle tanımlanan kutular kullanan bu ara&ccedil;, her bir alana veya kutuya hangi noktaların d&uuml;şt&uuml;ğ&uuml;n&uuml; belirler ve her bir alan ya da kutu i&ccedil;indeki noktaların t&uuml;m&uuml; hakkındaki istatistikleri hesaplar. Bu ara&ccedil;la birlikte isteğe bağlı olarak zaman dilimleme uygulayabilirsiniz. 
+            </p>
+            <p> &Ouml;rneğin
+                <ul>
+                    <li>Su&ccedil; olaylarının nokta konumlarını ele alarak il&ccedil;e ve diğer idari b&ouml;lgeler başına su&ccedil; sayımını yapın.
+                    </li>
+                    <li>100 km'lik kutular kullanarak isim hakkı verilen konumların en y&uuml;ksek ve en d&uuml;ş&uuml;k aylık cirolarını bulun.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="JoinFeaturesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Ekleme Detayları</h2></td>
+                    <td>
+                    <img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" class="titleImage" alt="Ekleme Detayları">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Detay katmanlarını veya zamansal verileri kullanarak, girdi katmanları veya tabloları arasındaki belirli ilişkilere g&ouml;re detayları ve kayıtları birleştirebilirsiniz.  Birleştirmeler mekansal, zamansal ve &ouml;znitelik ilişkileri tarafından belirlenir; &ouml;zet istatistikler isteğe bağlı olarak hesaplanabilir.  
+            </p>
+            <p> &Ouml;rneğin
+                <ul>
+                    <li>Zaman bilgisiyle birlikte su&ccedil; olaylarının nokta konumları verildiğinde, su&ccedil;ların birbirleriyle arasında 1 kilometrelik bir mekansal ilişki ve 1 saatlik bir zaman diliminde ger&ccedil;ekleşmiş olması koşulu ekleyerek su&ccedil; verilerini kendisiyle birleştirebilir ve alan ve zaman olarak birbirine yakın su&ccedil; olaylarında benzerlik olup olmadığını belirleyebilirsiniz.
+                    </li>
+                    <li> N&uuml;fus bilgilerini i&ccedil;eren bir ZIP Kodları tablosu ve konut olarak kullanılan binaları g&ouml;steren alan detayları verildiğinde, her konuta ait bilgileri oluşturmak i&ccedil;in n&uuml;fus bilgilerini konutlarla birleştirebilirsiniz.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="ReconstructTracksTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>İzleri Yeniden Oluştur</h2></td>
+                    <td>
+                    <img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" class="titleImage" alt="İzleri Yeniden Oluştur">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Zaman i&ccedil;inde bir  <code>an</code> g&ouml;steren zaman etkin nokta veya alan detayları katmanı kullanan bu ara&ccedil;, bir ize sahip olan ve girdileri zamana g&ouml;re sıralı bi&ccedil;imde d&uuml;zenleyen girdi detaylarını belirler. Her iz i&ccedil;indeki girdi detayları i&ccedil;in istatistikler isteğe bağlı olarak hesaplanır.
+            </p>
+            <p> &Ouml;rneğin
+                <ul>
+                    <li>Nokta konumları ve fırtına &ouml;l&ccedil;&uuml;mleri saati verildiğinde, ortalama r&uuml;zgar hızını ve fırtınanın maksimum r&uuml;zgar basıncını hesaplayabilirsiniz.
+                    </li>
+                    <li>100 km'lik kutular kullanarak isim hakkı verilen konumların en y&uuml;ksek ve en d&uuml;ş&uuml;k aylık cirolarını bulun.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeAttributesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Öznitelikleri Özetle</h2></td>
+                    <td>
+                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="&Ouml;znitelikleri &Ouml;zetle">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> Detay verilerini veya zamansal verileri kullanan bu ara&ccedil;, belirtilen alanlar i&ccedil;in istatistikleri &ouml;zetler.
+            </p>
+            <p> &Ouml;rneğin
+                <ul>
+                    <li>  <i>COMPANY_NAME</i> alanı olan s&uuml;permarketlerin konumları verildiğinde, her şirket i&ccedil;in istatistikleri belirlemek &uuml;zere mağazaları şirket adına g&ouml;re &ouml;zetleyebilirsiniz.
+                    </li>
+                    <li> <i>COMPANY_NAME</i> ve <i>COUNTY</i> alanlarına sahip şark&uuml;teri tablosu verildiğinde, her b&ouml;lgedeki her şirket i&ccedil;in istatistikleri belirlemek &uuml;zere şirket adına ve bulunduğu yere g&ouml;re mağaza bilgilerini &ouml;zetleyebilirsiniz.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeWithinTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>İçinde Özetle</h2></td>
+                    <td>
+                    <img src="../images/GUID-90E0CB1F-EB97-4752-B2EE-452B7B45475E-web.png" class="titleImage" alt="İ&ccedil;inde &Ouml;zetle">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>İki katman arasında bindirme yapan alanları (ve alanların kısımlarını) bulur ve bindirme hakkındaki istatistikleri hesaplar. 
+            </p>
+            <p> &Ouml;rneğin
+                <ul>
+                    <li>Bir boşaltma havzası alanları katmanı ve arazi kullanım t&uuml;r&uuml;ne g&ouml;re bir arazi kullanım alanları katmanı verildiğinde, her boşaltma havzası i&ccedil;in arazi kullanım t&uuml;r&uuml;n&uuml;n toplam y&uuml;z &ouml;l&ccedil;&uuml;m&uuml;n&uuml; hesaplayın. 
+                    </li>
+                    <li>Bir il&ccedil;edeki parsellerin bir katmanı ve şehir sınırlarının bir katmanı verildiğinde, her bir şehir dahilindeki boş parsellerin ortalama değerini &ouml;zetleyin.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="FindLocationsCategory" class="smallsize">
+        <h2>Konum Bul</h2>
+        <hr/>
+        <p>Bu ara&ccedil;lar, belirlediğiniz bir dizi farklı kriteri karşılayan alanları tanımlamak i&ccedil;in kullanılır.   
+            <ul>
+                <li> <b>Benzer Konumları Bul</b>, belirlediğiniz kriterlere g&ouml;re bir ya da daha fazla referans konuma en benzeyen konumları bulur.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="FindSimilarLocationsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Benzer Konumlar Bul</h2></td>
+                    <td>
+                    <img src="../images/GUID-6262A84E-9087-4E48-930E-E9B89FECC836-web.png" class="titleImage" alt="Benzer Konumları Bul">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Belirttiğiniz kriterlere g&ouml;re aday arama katmanınızdaki konumların bir veya birka&ccedil; referans konuma benzerliğini &ouml;l&ccedil;erek benzer konumları bulabilirsiniz. 
+            </p>
+            <p> &Ouml;rneğin
+                <ul>
+                    <li>&Ccedil;alışan sayısını ve yıllık satışları inceleyerek en &ccedil;ok benzer olan on mağazayı bulabilirsiniz.
+                    </li>
+                    <li>N&uuml;fus, yıllık b&uuml;y&uuml;me ve vergi geliri arasındaki ilişkiyi inceleyerek birbirine en &ccedil;ok benzeyen 100 şehri bulabilirsiniz.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzePatternsCategory" class="smallsize">
+        <h2>Modelleri Analiz Et</h2>
+        <hr/>
+        <p>Bu ara&ccedil;lar, mekansal modelleri tanımlamanıza, sayısallaştırmanıza ve g&ouml;rselleştirmenize yardımcı olur.  
+            <ul>
+                <li> <b>Yoğunluğu Hesapla</b>, bazı olayların bilinen miktarlarını alır ve bu miktarları haritada dağıtır.
+                </li>
+                <li> <b>Etkin Nokta Bul</b> aracı, verilerinizin mekansal modelindeki istatistiksel a&ccedil;ıdan anlamlı olan k&uuml;melenmeyi tanımlar.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateDensityTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Yoğunluğu Hesapla</h2></td>
+                    <td>
+                    <img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" class="titleImage" alt="Calculate Density">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Yoğunluğu Hesaplama aracı, bazı olayların bilinen miktarlarını (nokta &ouml;znitelikleri olarak g&ouml;sterilen) haritada dağıtarak nokta detaylı bir yoğunluk haritası oluşturur. Sonu&ccedil;ta ortaya &ccedil;ıkan yoğunluğu g&ouml;steren alanlar katmanıdır.
+            </p>
+            <p> &Ouml;rneğin
+                <ul>
+                    <li>B&ouml;lgedeki hastane yoğunluğunu hesaplama. Sonu&ccedil; katmanı, y&uuml;ksek ve d&uuml;ş&uuml;k hastane erişimini g&ouml;sterir ve bu bilgiler yeni hastanelerin yapılması gereken yerleri belirlemek i&ccedil;in kullanılabilir.
+                    </li>
+                    <li>Orman yangınlarının ge&ccedil;mişte oluştuğu yerlere g&ouml;re, orman yangını riskinin y&uuml;ksek olduğu alanların tanımlanması.
+                    </li>
+                    <li>Yeni yolların nereye yapılması gerektiğini planlamak amacıyla ana yollardan uzakta yaşayan toplulukların belirlenmesi.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="FindHotSpotsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Duyarlı Noktalar Bul</h2></td>
+                    <td>
+                    <img src="../images/GUID-6D600155-AA9B-4F02-AD8B-2E84150AB743-web.png" class="titleImage" alt="Etkin Nokta Bul">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Etkin Nokta Bul aracı, verinizin mekansal modelinde istatistiksel a&ccedil;ıdan &ouml;nemli bir k&uuml;melenme olup olmadığını belirleyecektir. 
+                <ul>
+                    <li>Noktalarınız (su&ccedil; olayları, ağa&ccedil;lar, trafik kazaları) ger&ccedil;ekten k&uuml;melenmiş mi? Nasıl emin olabilirsiniz?
+                    </li>
+                    <li>Ger&ccedil;ekten istatistiksel a&ccedil;ıdan &ouml;nemli etkin nokta (harcama, bebek &ouml;l&uuml;m&uuml;, s&uuml;rekli y&uuml;ksek test puanları) buldunuz mu ya da haritanız, sembolize edilme şeklini değiştirdiyseniz farklı bir şey mi anlatıyor?
+                    </li>
+                </ul>
+                Etkin Nokta Bul Aracı bu sorulara g&uuml;venle cevap vermenize yardımcı olacaktır.
+            </p>
+            <br/>
+        </div>
+    <div id="UseProximityCategory" class="smallsize">
+        <h2>Yakınlık Kullan</h2>
+        <hr/>
+        <p>Bu ara&ccedil;lar mekansal analizde en sık sorulan sorulardan birine yanıt verir: Ne, neyin yakınında?
+            <ul>
+                <li> <b>Tampon Oluştur</b>, detaylardan belirtilen mesafede alanlar oluşturur.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CreateBuffersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Tampon Bölge Oluştur</h2></td>
+                    <td>
+                    <img src="../images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" class="titleImage" alt="Tampon Oluştur">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Tampon; noktaya, &ccedil;izgiye ya da alan detayına g&ouml;re verilen bir mesafeyi oluşturan alandır.
+            </p>
+            <p> &Ouml;rneğin
+                <ul>
+                    <li>Doğrusal nehir detaylarını kullanarak, nehrin genişliğini 50 ile &ccedil;arpabilir ve her nehir i&ccedil;in &ouml;nerilen nehir kıyısı sınırını belirleyebilirsiniz.
+                    </li>
+                    <li>&Uuml;lkeleri g&ouml;steren alanlar verildiğinde, deniz sınırlarını belirlemek i&ccedil;in her &uuml;lkede 200 deniz mili tampon oluşturabilirsiniz.  
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="ManageDataCategory" class="smallsize">
+        <h2>Verileri Yönet</h2>
+        <hr/>
+        <p>Bu ara&ccedil;lar hem g&uuml;nl&uuml;k coğrafi hem de &ccedil;izelgelenen verilerin y&ouml;netimi i&ccedil;in kullanılır.
+            <ul>
+                <li> <b>Veri Deposuna Kopyala</b>, verilerinizi ArcGIS Data Store uygulamanıza kopyalar ve web GIS &ouml;ğenizde bir katman oluşturur.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CopyToDataStoreTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Veri Deposuna Kopyala</h2></td>
+                    <td>
+                    <img src="../images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" class="titleImage" alt="Veri Deposuna Kopyala">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Bir girdi detayı katmanını veya tablosunu  ArcGIS Data Store i&ccedil;ine kopyalar ve web GIS &ouml;ğenizde bir katman oluşturur. </p>
+            <p> &Ouml;rneğin
+                <ul>
+                    <li> G&ouml;rselleştirme i&ccedil;in bir big data dosya paylaşımındaki <code>.csv</code> dosyalarını spatiotemporal data store i&ccedil;ine kopyalayabilirsiniz.
+                    </li>
+                    <li>Spatiotemporal data store i&ccedil;inde saklanan ge&ccedil;erli harita yayılımı detaylarını ilişkisel veri deposuna kopyalayın.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+</div>
+</html>

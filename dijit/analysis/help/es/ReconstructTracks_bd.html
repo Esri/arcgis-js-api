@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Reconstruir recorrido</h2><p/>
+        <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Reconstruir pistas"></h2>
+        <hr/>
+    <p>Esta herramienta con una capa con tiempo habilitado de entidades de puntos o poligonales que representan un  <code>instante</code> en el tiempo.   Primero determina qu&eacute; entidades pertenecen a una pista utilizando un identificador. Utilizando el tiempo en cada ubicaci&oacute;n, las pistas se ordenan secuencialmente y se transforman en una l&iacute;nea o pol&iacute;gono que representa la ruta del movimiento en el tiempo. Opcionalmente, se puede crear una zona de influencia de la entrada mediante un campo, que crear&aacute; un pol&iacute;gono en cada ubicaci&oacute;n. Estos puntos con zona de influencia, o si las entradas son pol&iacute;gonos, se unir&aacute;n despu&eacute;s secuencialmente para crear una pista como pol&iacute;gono all&iacute; donde el ancho represente el atributo de inter&eacute;s. Las pistas resultantes tendr&aacute;n un tiempo de inicio y finalizaci&oacute;n, que representar&aacute;n, temporalmente, la primera y la &uacute;ltima entidad en una determinada pista. Cuando se crean las pistas, se calculan estad&iacute;sticas sobre las entidades de entrada y se asignan a la pista de salida. La estad&iacute;stica m&aacute;s b&aacute;sica es el recuento de puntos dentro del &aacute;rea, pero se pueden calcular tambi&eacute;n otras estad&iacute;sticas.
+    </p>
+    <p>Las entidades en capas con la funci&oacute;n de tiempo habilitada se pueden representar de una de estas dos formas:
+        <ul>
+            <li>Instante: un &uacute;nico momento en el tiempo
+            </li>
+            <li>Intervalo: un tiempo de inicio y finalizaci&oacute;n
+            </li>
+        </ul>
+        
+    </p>
+    <p>Por ejemplo, supongamos que tiene mediciones de GPS de huracanes cada 10 minutos. Cada medici&oacute;n de GPS registra el nombre, la ubicaci&oacute;n, la hora de registro y la velocidad del viento del hurac&aacute;n. Con esta informaci&oacute;n, podr&iacute;a crear pistas para cada hurac&aacute;n utilizando el nombre para la identificaci&oacute;n de la pista, y se crear&iacute;an pistas para cada hurac&aacute;n. Adem&aacute;s, podr&iacute;a calcular estad&iacute;sticas como, por ejemplo, la velocidad del viento media, m&aacute;xima y m&iacute;nima de cada hurac&aacute;n, o el recuento de mediciones dentro de cada pista.
+    </p>
+    <p>Siguiendo con el mismo ejemplo, podr&iacute;a crear una zona de influencia de las pistas por la velocidad del viento. De este modo se crear&iacute;a una zona de influencia de cada medici&oacute;n por el campo de velocidad del viento en esa ubicaci&oacute;n y se unir&iacute;an las &aacute;reas con zona de influencia, as&iacute; se crear&iacute;a un pol&iacute;gono que representar&iacute;a la ruta de la pista, as&iacute; como los cambios en la velocidad del viento a medida que evolucionan los huracanes.   
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Elija las entidades de las que reconstruir recorrido</h2></div>
+        <hr/>
+        <div>
+            <p>La capa de puntos o pol&iacute;gonos que se reconstruir&aacute; en pistas.
+            </p>
+            <p>Adem&aacute;s de elegir una capa en el mapa, puede elegir  <b>Examinar capas</b> en la parte inferior de la lista desplegable para examinar el contenido del dataset o la capa de entidades de un archivo compartido de Big Data.  
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>Elija los campos utilizados para identificar las pistas</h2></div>
+        <hr/>
+        <div>
+            <p> Los campos que representan el identificador de la pista.
+            </p>
+            <p> A modo de ejemplo, si estuviera reconstruyendo pistas de huracanes, podr&iacute;a utilizar el nombre del hurac&aacute;n como el campo de la pista.
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Elija el método utilizado para reconstruir los recorridos</h2></div>
+        <hr/>
+        <div>
+            <p>M&eacute;todo utilizado para unir pistas y aplicar la zona de influencia (si procede). El m&eacute;todo  <b>Planar</b> permite calcular los resultados m&aacute;s r&aacute;pidamente, pero no ajustar&aacute; las pistas alrededor de la l&iacute;nea internacional de cambio de fecha o no representar&aacute; la forma real de la Tierra a la hora de crear la zona de influencia. El m&eacute;todo <b>Geod&eacute;sico</b> ajustar&aacute; las pistas alrededor de la l&iacute;nea de cambio de fecha en caso necesario y aplicar&aacute; una zona de influencia geod&eacute;sica para representar la forma de la Tierra.
+            </p>
+        </div>
+    </div>
+    <div id="bufferField">
+        <div><h2>Cree una expresión con la que crear zonas de influencia de entidades de entrada (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Ecuaci&oacute;n utilizada para calcular la distancia de zona de influencia alrededor de entidades de entrada. Esta ecuaci&oacute;n se puede generar utilizando la calculadora de zonas de influencia y tambi&eacute;n se admiten operaciones b&aacute;sicas como, por ejemplo, sumar, restar, multiplicar y dividir. Los valores se calculan utilizando el sistema de coordenadas de an&aacute;lisis.
+            </p>
+        </div>
+    </div>
+    <div id="timeSplit">
+        <div><h2>Seleccione un intervalo de tiempo para dividir los recorridos (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Tiempo utilizado para dividir pistas. Si los puntos o pol&iacute;gonos de entrada tienen una duraci&oacute;n superior entre ellos a la divisi&oacute;n del tiempo, se dividir&aacute;n en diferentes pistas.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Agregue estadísticas (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p> Puede calcular estad&iacute;sticas sobre las entidades resumidas. En los campos num&eacute;ricos puede calcular lo siguiente:
+                <ul>
+                    <li>Calcular
+                    </li>
+                    <li>Media
+                    </li>
+                    <li>M&iacute;n.
+                    </li>
+                    <li>M&aacute;x.
+                    </li>
+                    <li>Rango
+                    </li>
+                    <li>Varianza
+                    </li>
+                    <li>Desviaci&oacute;n est&aacute;ndar
+                    </li>
+                </ul>
+                
+            </p>
+            <p>En los campos de cadenas de caracteres puede calcular lo siguiente:
+                <ul>
+                    <li>Calcular
+                    </li>
+                    <li>Cualquiera: esta estad&iacute;stica es una muestra aleatoria del valor de una cadena de caracteres en el campo especificado.
+                    </li>
+                </ul>
+                Todas las estad&iacute;sticas se calculan sobre valores no nulos. La capa resultante contendr&aacute; un nuevo campo para cada estad&iacute;stica calculada. Se puede agregar cualquier n&uacute;mero de estad&iacute;sticas eligiendo un atributo y una estad&iacute;stica. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Elija el data store</h2></div>
+        <hr/>
+        <div>
+            <p>Se trata de un par&aacute;metro temporal para una versi&oacute;n preliminar que permite definir el data store donde se guardar&aacute;n los resultados. Ambos data stores forman parte de  ArcGIS Data Store. Si selecciona el data store espaciotemporal pero no tiene ninguno instalado, la herramienta fallar&aacute;. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nombre de capa de resultados</h2></div>
+        <hr/>
+        <div>
+            <p> Este es el nombre de la capa que se crear&aacute; en <b>Mi contenido</b> y se agregar&aacute; al mapa.  El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, la herramienta fallar&aacute;.
+            </p>
+            <p>En el cuadro desplegable  <b>Guardar el resultado en</b>, puedes especificar el nombre de una carpeta de <b>Mi contenido</b> en la que se guardar&aacute; el resultado.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

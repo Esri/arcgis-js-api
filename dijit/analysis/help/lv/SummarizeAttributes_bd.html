@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Apkopot atribūtus</h2><p/>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Apkopot atribūtus"></h2>
+        <hr/>
+    <p>&Scaron;is rīks apkopo visas atbilsto&scaron;ās vērtības vienā vai vairākos laukos un aprēķina to statistiku. Pamata statistika ir apkopoto elementu skaits, taču varat aprēķināt arī padziļinātu statistiku. 
+
+    </p>
+    <p>Piemēram, pieņemsim, ka jums ir kafijas veikalu izvietojuma punktu elementi ar lauku, kas apzīmē  <i>DISTRICT_MANAGER_NAME</i>, un jūs vēlaties apkopot kafijas pārdo&scaron;anas apjomus pēc vadītāja. Varat norādīt lauku <i>DISTRICT_MANAGER_NAME</i> kā lauku, kurā iz&scaron;ķīdināt, un tiks apkopotas visas datu rindas, kas apzīmē atsevi&scaron;ķus vadītājus. Tādējādi visi veikali, ko vada Manager1 (Vadītājs1), tiek apkopoti vienā rindā, un tiks aprēķināta kopsavilkuma statistika. &Scaron;ajā gadījumā visiem veikaliem, ko vada Vadītājs1 tiek aprēķināta statistika, piemēram, veikalu skaits un <i>TOTAL_SALES</i> summa. Statistika tiek aprēķināta arī jebkuram citam vadītājam, kas norādīts laukā <i>DISTRICT_MANAGER_NAME</i>.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Izvēlēties apkopojamo ievadi</h2></div>
+        <hr/>
+        <div>
+            <p>Slānis, kas ietver apkopojamos laukus.  
+            </p>
+            <p>Papildus slāņa izvēlei kartē, varat izvēlēties  <b>Pārlūkot slāņus</b> nolaižamā saraksta apak&scaron;ā, lai saturā atrastu lielo datu koplietojuma datu kopu vai elementu slāni.  
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>Izvēlēties laukus, kuros jāveic izšķīdināšana</h2></div>
+        <hr/>
+        <div>
+            <p>  Ievades slāņa lauku saraksts. Izvēlētie lauki tiks apkopoti un izmantoti statistikas aprēķinā. Piemēram, izvēloties lauku <i>PropertyType</i> ar vērtību komercapbūve un dzīvojamā apbūve, visi dzīvojamās apbūves lauki tiks apkopoti un to statistika tiks aprēķināta, un visi komercapbūves lauki tiks apkopoti.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Izvēlēties aprēķināmos laukus un statistiku (pēc izvēles)</h2></div>
+        <hr/>
+        <div>
+            <p> Varat aprēķināt apkopoto elementu statistiku. Ciparu laukos iespējams aprēķināt &scaron;ādas vērtības:
+                <ul>
+                    <li>Skaits
+                    </li>
+                    <li>Vidējais
+                    </li>
+                    <li>Min.
+                    </li>
+                    <li>Maks.
+                    </li>
+                    <li>Diapazons
+                    </li>
+                    <li>Novirze
+                    </li>
+                    <li>Standarta novirze
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Virkņu laukos iespējams aprēķināt &scaron;ādas vērtības:
+                <ul>
+                    <li>Skaits
+                    </li>
+                    <li>Jebkāda. &Scaron;ī statistika ir nejau&scaron;s virknes vērtības paraugs norādītajā laukā.
+                    </li>
+                </ul>
+                Jebkāda statistika tiek aprēķināta no vērtībām, kas nav nulle. Rezultātu slānī ir ietverts jauns lauks par katru aprēķināto statistiku. Jebkurus statistikas datus var pievienot, izvēloties atribūtu un statistikas datus. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Izvēlēties datu krātuvi</h2></div>
+        <hr/>
+        <div>
+            <p>Tas ir pagaidu pirmsizlaides parametrs, kas paredzēts rezultātu saglabā&scaron;anas datu krātuves iestatī&scaron;anai. Abas datu krātuves ir daļa no  ArcGIS datu krātuve. Ja izvēlaties telpas un laika datu krātuvi, bet tā nav instalēta, rīks pārstās darboties. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Rezultātu slāņa nosaukums</h2></div>
+        <hr/>
+        <div>
+            <p> &Scaron;is ir slāņa nosaukums, kas tiks izveidots sadaļā <b>Mans Saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja slānis jau pastāv, rīks pārstās darboties.
+            </p>
+            <p>Lietojot  <b>Saglabāt rezultātus</b> nolaižamajā sarakstlodziņā, jūs varat norādīt nosaukumu mapē <b>Mans saturs</b>, kur tiks saglabāti rezultāti.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

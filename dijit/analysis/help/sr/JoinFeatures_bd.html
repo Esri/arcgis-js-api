@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Pridruži geoobjekte</h2><p/>
+        <h2><img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" alt="Pridruži geoobjekte"></h2>
+        <hr/>
+    <p>Zadatak Pridruži geoobjekte radi sa dva sloja. Pridruži geoobjekte pridružuje atribute jednog geoobjekta drugom na osnovu prostornih, vremenskih i atributivnih odnosa ili nekom kombinacijom ta tri. Alatka određuje sve ulazne geoobjekte koji ispunjavaju navedene uslove pridruživanja i pridružuje drugi ulazni sloj prvom. Možete opciono da pridružite sve geoobjekte geoobjektima koji se poklapaju ili da sumirate geoobjekte koji se poklapaju.
+    </p>
+    <p>Pridruži geoobjekte može da se primeni na tačke, linije, oblasti i tabele. Vremensko pridruživanje zahteva da va&scaron;i ulazni podaci budu vremenski omogućeni, a prostorno pridruživanje zahteva da va&scaron;i podaci imaju geometriju. 
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="targetLayer">
+        <div><h2>Odaberite sloj kome će se pridruživati geoobjekti</h2></div>
+        <hr/>
+        <div>
+            <p>Sloj koji će imati sebi pridružene geoobjekte. 
+            </p>
+            <p>Kao dodatak odabiru sloja iz mape, možete da odaberete  <b>Pregledaj slojeve</b> na dnu padajuće liste da biste potražili deljeni skup podataka za datoteke sa velikim podacima ili sloj geoobjekta u svojim sadržajima.  
+            </p>
+        </div>
+    </div>
+    <div id="joinLayer">
+        <div><h2>Odaberite sloj za pridruživanje</h2></div>
+        <hr/>
+        <div>
+            <p>Sloj koji će biti pridružen prvom ulaznom sloju.
+            </p>
+            <p>Kao dodatak odabiru sloja iz mape, možete da odaberete  <b>Pregledaj slojeve</b> na dnu padajuće liste da biste potražili deljeni skup podataka za datoteke sa velikim podacima ili sloj geoobjekta u svojim sadržajima.  
+            </p>
+        </div>
+    </div>
+    <div id="joinOperation">
+        <div><h2>Odaberite operaciju pridruživanja</h2></div>
+        <hr/>
+        <div>
+            <p>To određuje kako će se rukovati pridruživanjima ulaznih slojeva u izlaznim rezultatima, ako dođe do toga da vi&scaron;estruki geoobjekti koji se pridružuju imaju isti odnos sa slojem koji se pridružuje. Postoje dve operacije pridruživanja koje je moguće izabrati:
+                <ul>
+                    <li> <b>Pridruži jedan jednom</b>&mdash;Ova opcija pridružuje sve geoobjekte koji se poklapaju sloju za pridruživanje.
+                    </li>
+                    <li> <b>Pridruži jedan mnogima</b>&mdash;Ova opcija sumira sve geoobjekte koji se poklapaju za svaki geoobjekat koji se pridružuje.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Na primer, pretpostavimo da smo hteli da nađemo supermarkete u krugu od 5 kilometara od pijace. U ovom slučaju sloj kojem se pridružuje ima jedan geoobjekat koji predstavlja pijacu, a geoobjekti koji se pridružuju predstavljanju lokalne bakalnice koje imaju atribute kao &scaron;to je ukupni godi&scaron;nji promet. Koristeći alatku  <b>Pridruži geoobjekte</b>, nalazimo da pet bakalnica ispunjava taj kriterijum. Ako smo naveli operaciju pridruživanja <b>Pridruži jedan jednom</b>, zavr&scaron;ili bismo sa pet geoobjekata u na&scaron;em rezultatu, gde svaki red predstavlja pijacu i supermarket. Ako smo naveli odnos <b>Pridruži jedan mnogima</b>, zavr&scaron;ili bismo sa jednim geoobjektom koji predstavlja pijacu i sumiranim informacijama iz supermarketa, kao &scaron;to je broj (5) i ostale statistike kao &scaron;to je zbir godi&scaron;njeg prometa.
+            </p>
+        </div>
+    </div>
+    <div id="joinOptions">
+        <div><h2>Izaberite vrste pridruživanja koje biste želeli da koristite.</h2></div>
+        <hr/>
+        <div>
+            <p>Možete da primenite jednu, dve ili tri vrste pridruživanja. Vrste pridruživanja uključuju sledeće: 
+                <ul>
+                    <li> <b>Prostorno</b>&mdash;Koristi navedeni prostorni odnos za pridruživanje geoobjekata. To zahteva da oba sloja imaju geometriju.
+                    </li>
+                    <li> <b>Vremensko</b>&mdash;Koristi vremenski odnos za pridruživanje geoobjekata. To zahteva da vreme bude omogućeno na oba sloja.
+                    </li>
+                    <li> <b>Atributsko</b>&mdash;Pridružuje geoobjekte na osnovu jednakih polja.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>
+            </p>
+        </div>
+    </div>
+    <div id="spatialRelationship">
+        <div><h2>Prostorno pridruživanje</h2></div>
+        <hr/>
+        <div>
+            <p> Prostorni odnos koji će odrediti da li su geoobjekti pridruženi jedan drugom. Dostupni odnosi će zavisiti od vrste geometrije (tačka, poligonalna linija, poligoni) koja se koristi kao ulazni geoobjekti. Dostupni odnosi uključuju sledeće:
+                <ul>
+                    <li> <b>Preseca</b>&mdash;geoobjekat će se upariti ako se međusobno seku.
+                    </li>
+                    <li> <b>Jednaki</b>&mdash;geoobjekti će se upariti ako imaju istu geometriju.
+                    </li>
+                    <li> <b>Blizu</b>&mdash;geoobjekti će se upariti ako su unutar navedenog rastojanja jedan od drugog.
+                    </li>
+                    <li> <b>Sadrži</b>&mdash;geoobjekti će se upariti ako sloj kojem se pridružuju se sadrži u geoobjektima koji se pridružuju.
+                    </li>
+                    <li> <b>Unutar</b>&mdash;geoobjekti će se upariti ako je sloj kojem se pridružuju unutar geoobjekata koji se pridružuju.
+                    </li>
+                    <li> <b>Dodiruje</b>&mdash;geoobjekti će se upariti ako imaju granicu koja dodiruje geoobjekat kojem se pridružuju.
+                    </li>
+                    <li> <b>Ukr&scaron;ta</b>&mdash;geoobjekti će se upariti ako imaju istu konturu koja se ukr&scaron;ta.
+                    </li>
+                    <li> <b>Preklapa</b>&mdash;geoobjekti će biti pridruženi ako se preklapaju.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="nearSpatial">
+        <div><h2></h2></div>
+        <hr/>
+        <div>
+            <p>Ovo rastojanje označava poluprečnik koji se primenjuje na prostorno blizak odnos.
+            </p>
+            <p>Pretpostavimo da imate skup podataka koji predstavlja nuklearnu elektranu i skup podataka koji predstavlja stambene objekte. Mogli biste da podesite 1 kilometar blizu rastojanje da biste prona&scaron;li kuće u krugu od 1 kilometra od nuklearne elektrane. 
+            </p> 
+        </div>
+    </div>
+    <div id="temporalRelationship">
+        <div><h2>Vremensko pridruživanje</h2></div>
+        <hr/>
+        <div>
+            <p>Vremenski odnos koji će odrediti da li su geoobjekti pridruženi jedan drugom. Ova opcija je dostupna jedino ukoliko je vreme omogućeno na oba sloja i dostupni odnosi će zavisiti od tipa vremena (trenutak ili interval) koje se koristi za ulazne geoobjekte. Dostupni odnosi uključuju sledeće:
+                <ul>
+                    <li> <b>Susreće</b>&mdash;geoobjekat će se upariti ako prvi geoobjekat susreće drugi.
+                    </li>
+                    <li> <b>Susretnut</b>&mdash;geoobjekat će se upariti ako su prvi geoobjekti susretnuti drugim.
+                    </li>
+                    <li> <b>Preklapa</b>&mdash;geoobjekat će se upariti ako prvi geoobjekat preklapa drugi.
+                    </li>
+                    <li> <b>Preklopljen</b>&mdash;geoobjekat će se upariti ako su prvi geoobjekti preklopljeni drugim.
+                    </li>
+                    <li> <b>Tokom</b>&mdash;geoobjekat će se upariti ako su prvi geoobjekti za vreme drugog.
+                    </li>
+                    <li> <b>Sadrži</b>&mdash;geoobjekat će se upariti ako prvi geoobjekat sadrži drugi.
+                    </li>
+                    <li> <b>Jednak</b>&mdash;geoobjekat će se upariti ako je prvi geoobjekat jednak drugom.
+                    </li>
+                    <li> <b>Zavr&scaron;ava</b>&mdash;geoobjekat će se upariti ako prvi geoobjekat zavr&scaron;ava drugi.
+                    </li>
+                    <li> <b>Zavr&scaron;en</b>&mdash;geoobjekat će se upariti ako su prvi geoobjekti zavr&scaron;eni drugim.
+                    </li>
+                    <li> <b>Pokreće</b>&mdash;geoobjekat će se upariti ako prvi geoobjekat pokreće drugi.
+                    </li>
+                    <li> <b>Pokrenut</b>&mdash;geoobjekat će se upariti ako su prvi geoobjekti pokrenuti drugim.
+                    </li>
+                    <li> <b>Preseca</b>&mdash;geoobjekti su mapirani ako se vremena presecaju za sve.
+                    </li>
+                    <li> <b>Blizu</b>&mdash;geoobjekti će se pridružiti ako su blizu jedan drugom, određeno navedenim vremenom.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="nearTemporal">
+        <div><h2></h2></div>
+        <hr/>
+        <div>
+            <p>Ovo vremensko rastojanje označava vremenski poluprečnik koji se primenjuje na vremensko blizak odnos.
+            </p>
+            <p>Pretpostavimo da imate sloj incidenata sa čamcima i sloj GPS staza za uragan. Mogli biste da potražite incidente sa čamcima unutar navedenog rastojanja staza uragana i u prostoru (1 kilometar) i u vremenu (5 sati). To bi dovelo do pridruživanja incidenata sa čamcima uraganima koji su se dogodili na istom prostoru i istovremeno. 
+            </p>
+        </div>
+    </div>
+    <div id="attributeRelationship">
+        <div><h2>Atributivno pridruživanje</h2></div>
+        <hr/>
+        <div>
+            <p>Ovaj odnos će upariti vrednosti u polju iz jednog sloja sa vrednostima u polju iz drugog sloja. 
+            </p>
+            <p> Na primer, pretpostavimo da imamo geografski sloj stambenih adresa &scaron;irom okruga (uključujući polje <i>ZIP</i>) i tabelarni skup zdravstvenih demografskih podataka po po&scaron;tanskom broju (polje nazvano <i>HEALTHZIP</i>). Možemo da pridružimo skup zdravstvenih podataka stambenim podacima uparivanjem polja <i>ZIP</i> sa <i>HEALTHZIP</i>, &scaron;to bi rezultiralo slojem stambenih objekata sa odgovarajućim zdravstvenim podacima.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Dodaj statistiku (opciono)</h2></div>
+        <hr/>
+        <div>
+            <p>Ako je izabrana opcija pridruži-jedan-mnogima, možete da izračunate statistiku na va&scaron;im pridruženim geoobjektima.
+            </p>
+        </div>
+    </div>
+    <div id="joinCondition">
+        <div><h2>Napravite izraz po kom će se ulazni geoobjekti pridružiti (opciono)</h2></div>
+        <hr/>
+        <div>
+            <p>Primenjuje uslov na određena polja. Samo geoobjekti sa poljima koja ispunjavaju ove uslove će biti pridružena.
+            </p>
+            <p>Na primer, pretpostavimo da želimo da primenimo pridruživanje skupu podataka samo za one geoobjekte gde je  <i>health_spending</i> veći od 20 procenata od <i>prihoda</i>.  Da biste to uradili, primenite uslov pridruživanja <code>target.health_spending &gt; (join.income * .20)</code> kori&scaron;ćenjem polja <i>health_spending</i> iz prvog skupa podataka (geoobjekti skupa podataka kojima se pridružuje) i polja <i>prihod</i> iz drugog skupa podataka (skup podataka koji se pridružuju).
+            </p>
+            <p>Uslovi pridruživanja mogu da se primene kori&scaron;ćenjem kalkulatora izraza.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Izaberi skladište podataka</h2></div>
+        <hr/>
+        <div>
+            <p>Ovo je privremeni parametar za preliminarnu verziju da bi se podesilo skladi&scaron;te podataka gde se čuvaju rezultati. Oba skladi&scaron;ta podataka su deo  ArcGIS Data Store. Ako izaberete skladi&scaron;te prostorno-vremenskih podataka, ali nemate ga instalirano, alatka će otkazati. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Naziv sloja sa rezultatima</h2></div>
+        <hr/>
+        <div>
+            <p> Ovo je naziv sloja koji će biti kreiran u <b>Mom sadržaju</b> i dodat na mapu. Podrazumevani naziv je zasnovan na nazivu alatke i nazivu ulaznog sloja. Ako sloj već postoji, alatka će otkazati.
+            </p>
+            <p>Koristeći  <b>Sačuvaj rezultat u</b> padajućem polju, možete da navedete ime fascikle u <b>Mom sadržaju</b> u kojoj će rezultat biti sačuvan.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

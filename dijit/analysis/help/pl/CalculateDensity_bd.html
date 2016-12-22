@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Oblicz zagęszczenie</h2><p/>
+        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Calculate Density"></h2>
+        <hr/>
+    <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas classified from least dense to most dense.   
+
+    </p>
+    <p>For point input, each point should represent the location of some event or incident, and the result layer represents a count of the incident per unit area.  A higher density value in a new location means that there are more points near that location.  In many cases, the result layer can be interpreted as a risk surface for future events. For example, if the input points represent locations of lightning strikes, the result layer can be interpreted as a risk surface for future lightning strikes.
+    </p>
+    <p>Other use cases of this tool include the following:
+        <ul>
+            <li>Creating crime-density maps to help police departments properly allocate resources to high crime areas.
+            </li>
+            <li>Calculating densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to decide where new hospitals should be built.
+            </li>
+            <li>Identifying areas that are at high risk of forest fires based on historical locations of forest fires.
+            </li>
+            <li>Locating communities that are far from major highways in order to plan where new roads should be constructed.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Wybierz warstwę punktową, na podstawie której ma zostać obliczone zagęszczenie.</h2></div>
+        <hr/>
+        <div>
+            <p>The point layer on which the density will be calculated.
+            </p>
+            <p>Opr&oacute;cz wybrania warstwy z mapy, można wybrać opcję  <b>Przeglądaj warstwy</b> znajdującą się w dolnej części listy rozwijanej, aby przejść do zasob&oacute;w zestawu danych udostępnionych plik&oacute;w dużych zbior&oacute;w danych lub warstwy obiektowej.  
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>Wybierz jedno lub więcej pól, na podstawie których zostanie obliczone zagęszczenie</h2></div>
+        <hr/>
+        <div>
+            <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
+            </p>
+            <p>The density for the count of points will always be calculated.   If no fields are selected, each location will be assumed to represent a single count.
+            </p>
+        </div>
+    </div>
+    <div id="binType">
+        <div><h2>Wybierz kształt kosza</h2></div>
+        <hr/>
+        <div>
+            <p>The shape of bins that points are aggregated into and used for the density calculation.
+            </p>
+        </div>
+    </div>
+    <div id="binSizing">
+        <div><h2>Wybierz wielkość kosza do obliczeń zagęszczenia</h2></div>
+        <hr/>
+        <div>
+            <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
+            </p>
+        </div>
+    </div>
+    <div id="weight">
+        <div><h2>Wybierz wagi zagęszczenia do zastosowania</h2></div>
+        <hr/>
+        <div>
+            <p>The type of weighting applied to the density calculation. There are two options:
+                <ul>
+                    <li> <b>Uniform</b>&mdash;This calculates a magnitude per area.
+                    </li>
+                    <li> <b>Kernel</b>&mdash;Applies a kernel function to fit a smooth tapered surface to each point.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="neighborhood">
+        <div><h2>Wybierz wielkość sąsiedztwa</h2></div>
+        <hr/>
+        <div>
+            <p>The size of the area used to calculate the density. The neighborhood size must be larger than the bin size.
+            </p>
+        </div>
+    </div>
+    <div id="areaUnits">
+        <div><h2>Wybierz jednostki wynikowe dla zagęszczenia</h2></div>
+        <hr/>
+        <div>
+            <p>The desired output units of the density values. By default, this is set to the units in your map (for example, square meters). If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Oblicz zagęszczenie za pomocą okien czasowych (opcjonalnie)</h2></div>
+        <hr/>
+        <div>
+            <p>Jeśli dla wejściowej warstwy punktowej włączono czas (typu Moment), można przeprowadzić analizę przy użyciu okien czasowych.  Jeśli używany jest czas, można ustawić trzy parametry:
+                <ul>
+                    <li>  <b>Interwał czasu</b>
+                    </li>
+                    <li> <b>Etap czasowy</b>
+                    </li>
+                    <li> <b>Czas referencyjny</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Wyobraź sobie, że masz dane reprezentujące rok, kt&oacute;re chcesz przeanalizować przy użyciu tygodniowych okien czasowych. W tym celu należy ustawić w polu  <b>Interwał czasu</b> wartość <code>1 tydzień</code>.
+            </p>
+            <p> Wyobraź sobie, że masz dane reprezentujące rok, kt&oacute;re chcesz przeanalizować przy użyciu pierwszego tygodnia miesiąca. W tym celu należy ustawić w polu <b>Interwał czasu</b> wartość <code>1 tydzień</code>, w polu <b>Etap czasowy</b> wartość <code>1 miesiąc</code>, a w polu <b>Czas referencyjny</b> wartość <code>1 stycznia, 24:00</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>Interwał obliczeń zagęszczenia</h2></div>
+        <hr/>
+        <div>
+            <p>Interwał czasu używany do tworzenia okien czasowych danych. Można używać samego interwału czasu lub interwału czasu z parametrem  <b>Etap czasowy</b> lub parametrem <b>Czas referencyjny</b>.
+            </p>
+            <p> Jeśli chcesz utworzyć okna czasowe występujące w każdy poniedziałek między 9:00 a 10:00, w polu <b>Interwał czasu</b> ustaw wartość <code>1 godzina</code>, w polu <b>Etap czasowy</b> wartość <code>1 tydzień</code>, a w polu <b>Czas referencyjny</b> wartość <code>9:00:00 w poniedziałek</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>Etap czasowy obliczeń zagęszczenia</h2></div>
+        <hr/>
+        <div>
+            <p> Etap używany do obliczania okna czasowego. Opcja <b>Etap czasowy</b> może być używana sama lub z parametrem <b>Interwał czasu</b>, z parametrem <b>Czas referencyjny</b> lub z oboma parametrami <b>Interwał czasu</b> i <b>Czas referencyjny</b>.
+            </p>
+            <p> Jeśli chcesz utworzyć okna czasowe występujące w każdy poniedziałek między 9:00 a 10:00, w polu <b>Interwał czasu</b> ustaw wartość <code>1 godzina</code>, w polu <b>Etap czasowy</b> wartość <code>1 tydzień</code>, a w polu <b>Czas referencyjny</b> wartość <code>9:00:00 w poniedziałek</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Czas referencyjny użyty do wyrównania okien czasowych</h2></div>
+        <hr/>
+        <div>
+            <p>Data i czas używane do wyr&oacute;wnywania okien czasowych.  <b>Etap czasowy</b> rozpocznie się od czasu referencyjnego i trwa przez określony czas.
+            </p>
+            <p> Jeśli chcesz utworzyć okna czasowe występujące w każdy poniedziałek między 9:00 a 10:00, w polu <b>Interwał czasu</b> ustaw wartość <code>1 godzina</code>, w polu <b>Etap czasowy</b> wartość <code>1 tydzień</code>, a w polu <b>Czas referencyjny</b> wartość <code>9:00:00 w poniedziałek</code>.
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>Odniesienie przestrzenne (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>Jest to parametr tymczasowy używany w wersji wstępnej do ustawiania odniesienia przestrzennego przetwarzania. Wiele narzędzi do obsługi dużych zbior&oacute;w danych wymaga użycia układu wsp&oacute;łrzędnych odwzorowanych jako odniesienia przestrzennego przetwarzania. Domyślnie narzędzie użyje wejściowego układu wsp&oacute;łrzędnych, ale operacja nie powiedzie się, jeśli będzie to układ wsp&oacute;łrzędnych geograficznych. Aby  ustawić układ wsp&oacute;łrzędnych odwzorowanych, wprowadź wartość WKID. Na przykład  <b>Web Mercator</b> zostanie wprowadzony jako <code>3857</code>.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Wybierz magazyn danych</h2></div>
+        <hr/>
+        <div>
+            <p>Jest to parametr tymczasowy używany w wersji wstępnej do ustawiania magazynu danych, w kt&oacute;rym zapisywane są wyniki. Oba magazyny danych są częścią aplikacji  ArcGIS Data Store. Jeśli zostanie wybrany magazyn danych czasowo-przestrzennych, ale żaden magazyn tego typu nie został zainstalowany, działanie narzędzia nie powiedzie się. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nazwa warstwy wynikowej</h2></div>
+        <hr/>
+        <div>
+            <p> Jest to nazwa warstwy, kt&oacute;ra zostanie utworzona w&nbsp;zakładce <b>Moje zasoby</b> i&nbsp;zostanie dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, działanie narzędzia nie powiedzie się.
+            </p>
+            <p>Używając listy rozwijanej  <b>Zapisz wynik w</b>, można określić nazwę folderu w zakładce <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

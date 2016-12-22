@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Portalo analizės aplinkos nustatymai</h2><p/>
+        <h2></h2>
+        <hr/>
+    <p> Analizės aplinkos nustatymai naudojant Portal for ArcGIS ir  ArcGIS Online. 
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="overwriteResult">
+        <div><h2>Perrašyti rezultatų sluoksnį</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Parinktis, skirta perra&scaron;yti esamus sluoksnius.    Jeigu, pažymėjus parinktį, turinyje jau yra sluoksnis tokiu pačiu pavadinimu, jis bus perra&scaron;ytas.
+            </p>
+            <p>
+                <ul>
+                    <li>Pažymėta &ndash; jeigu turinyje jau yra sluoksnis tokiu pačiu pavadinimu, jis bus perra&scaron;ytas. I&scaron;vestis turės tokią pačią koordinačių sistemą kaip įvestis.
+                    </li>
+                    <li>Nepažymėta &ndash; jeigu pateiktas rezultatų sluoksnio pavadinimas jau yra, įvyks klaida ir prie&scaron; vykdant įrankį reikės pervardyti rezultatų sluoksnį. Tai numatytasis metodas.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="closeAnalysisWidget">
+        <div><h2>Uždaryti analizės valdiklį baigus analizę</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Parinktis skirta laikyti atidarytą ir įgalintą analizės langą, kol įrankis vykdo apdorojimą.     Nustatymas leis lengvai atlikti analizės parametrų modifikavimus kol bus atliekamos ankstesnės analizės užduotys.  Analizė yra kartotinis procesas, o laikant atidarytą įrankio dialogo langą galima lengviau atlikti parametrų keitimus ir i&scaron; naujo paleisti analizę.
+            </p>
+            <p>
+                <ul>
+                    <li>Pažymėta &ndash; analizės įrankio langas uždaromas ir suaktyvinamas turinys. Tai numatytasis metodas.
+                    </li>
+                    <li>Nepažymėta &ndash; analizės įrankio langas liks atidarytas ir įgalintas.   
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="storeAnalysisResults">
+        <div><h2>Analizės rezultatų išsaugojimas kaip elementų paslaugų</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Parinktis skirta nurodyti, ar analizės rezultatas bus sukurtas kaip elementų sluoksnis, ar kaip elementų rinkinys.
+            </p>
+            <p>
+                <ul>
+                    <li>Pažymėta &ndash; analizės rezultatai bus sukuriami kaip elementų sluoksnis, o turinyje bus sukurtas elementas. Tai numatytasis metodas.
+                    </li>
+                    <li>Nepažymėta &ndash; analizės rezultatai bus sukuriami kaip elementų rinkinys.    Elementų rinkiniai saugomi internetiniame žemėlapyje.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputCoordinateSystem">
+        <div><h2>Išvesties koordinačių sistema</h2></div>
+        <hr/>
+        <div>
+            <p>Aplinkos nustatymas, skirtas rastro analizei, naudojamai apibrėžti rezultato sluoksnio koordinačių sistemą.    
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Toks pats, kaip įvestis</b> &ndash; analizės rezultatai bus tokioje pačioje koordinačių sistemoje kaip įvestis. Tai numatytasis metodas.
+                    </li>
+                    <li> <b>Kaip nurodyta</b> &ndash; pasirinkite analizės rezultatų koordinačių sistemą.   Pasirinkus &scaron;ią parinktį, spustelėkite gaublio piktogramą, kad žinomų koordinačių sistemų sąra&scaron;e pasirinktumėte sistemą ar pateiktame lauke įtrauktumėte erdvinės nuorodos WKID.
+                    </li>
+                    <li> <b>Sluoksnis
+&lt;name&gt;</b> &ndash; pasirinkite internetinio žemėlapio esamą sluoksnį, kuris bus naudojamas nustatant analizės rezultato koordinačių sistemą.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingCoordinateSystem">
+        <div><h2>Apdorojimo koordinačių sistema</h2></div>
+        <hr/>
+        <div>
+            <p>GeoAnalytics aplinkos nustatymas, naudojamas apibrėžti koordinačių sistemą, kurią naudos analizė.   
+            </p>
+            <p>Tam tikroms GeoAnalytics analizėms būtina, kad apdorojimas būtų vykdomas projekcinėje koordinačių sistemoje.   Bet kuriam įrankiui, kuris taiko duomenų grupavimą ar linijinių dydžių vienetus, būtina projekcinė koordinačių sistema. 
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Toks pats, kaip įvestis</b> &ndash; analizė bus apdorojama tokioje pačioje koordinačių sistemoje kaip įvestis. Tai numatytasis metodas.
+                    </li>
+                    <li> <b>Kaip nurodyta</b> &ndash; pasirinkite koordinačių sistemą, kurią naudojant bus vykdoma analizė. Pasirinkus &scaron;ią parinktį, spustelėkite gaublio piktogramą, kad žinomų projekcinių koordinačių sistemų sąra&scaron;e pasirinktumėte sistemą ar pateiktame lauke įtrauktumėte erdvinės nuorodos WKID.
+                    </li>
+                    <li> <b>Sluoksnis
+&lt;name&gt;</b> &ndash; pasirinkite esamą sluoksnį i&scaron; internetinio žemėlapio.  Pasirinkto sluoksnio koordinačių sistema bus naudojama nustatant koordinačių sistemą, kuri bus naudojama vykdant analizę
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingExtent">
+        <div><h2>Aprėptis</h2></div>
+        <hr/>
+        <div>
+            <p>GeoAnalytics aplinkos nustatymas, naudojamas apibrėžti aprėptį arba ribas, kurios bus naudojamos vykdant analizę. Analizei bus naudojamos visi įvesties elementai, esantys viduje, arba tie, kurie susikerta atsižvelgiant į nurodytą aprėptį.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Numatyta</b> &ndash; naudojama įrankio pateikta aprėptis.
+                    </li>
+                    <li> <b>Kaip nurodyta</b> &ndash; rankiniu būdu įveskite koordinates, kad apibrėžtumėte aprėptį.
+                    </li>
+                    <li> <b>Sluoksnis
+&lt;name&gt;</b> &ndash; pasirinkite esamą sluoksnį i&scaron; internetinio žemėlapio. Pasirinkto sluoksnio erdvinė aprėptis bus naudojama nustatant aprėptį, kuri bus naudojama vykdant analizę. 
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="snapRaster">
+        <div><h2>Pritraukti rastrą</h2></div>
+        <hr/>
+        <div>
+            <p>Atliekant rastro analizę ir nustačius  <b>Pritraukimo rastro</b> aplinką, bus koreguojama i&scaron;vesties rastro aprėptis, kad jis atitiktų nurodyto <b>Pritraukimo rastro</b> sluoksnio gardelių lygiavimą.
+            </p>
+        </div>
+    </div>
+    <div id="cellSize">
+        <div><h2>Gardelės dydis</h2></div>
+        <hr/>
+        <div>
+            <p>Atliekant rastro analizę, &scaron;i aplinka nustato gardelės dydį arba skiriamąją gebą, kuri bus naudojama kuriant i&scaron;vesties rastro sluoksnį. Numatytoji i&scaron;vesties skiriamoji geba nustatoma pagal įvesties rastro sluoksnio didžiausios gardelės dydį.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Minimali įvestis</b> &ndash; naudojamas visų įvesties sluoksnių gardelių mažiausias dydis.
+                    </li>
+                    <li> <b>Maksimali įvestis</b> &ndash; naudojamas visų įvesties sluoksnių gardelių didžiausias dydis. Tai numatytasis metodas.
+                    </li>
+                    <li> <b>Kaip nurodyta</b> &ndash; nurodykite gardelės dydžio skaitinę reik&scaron;mę. Jei pasirinkta, numatytoji reik&scaron;mė yra 1.
+                    </li>
+                    <li> <b>Sluoksnis &lt;name&gt;</b> &ndash; nustatomas pasirinkto rastro sluoksnio gardelės dydis.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="mask">
+        <div><h2>Kaukė</h2></div>
+        <hr/>
+        <div>
+            <p> Atlikdami rastro analizę naudokite aplinką <b>Kaukė</b>, kad nurodytumėte sluoksnį, kuris bus naudojamas apibrėžiant jus dominančią sritį.   Atliekant analizę bus atsižvelgiama tik į tas gardeles, kurios patenka po analizės kauke.
+            </p>
+            <ul>
+                <li>Kaukė gali būti rastrinis arba elementų sluoksnis.
+                </li>
+                <li>Jeigu analizės kaukė yra rastras, apibrėžiant kaukę bus atsižvelgiama į visas gardeles, kurios turi reik&scaron;mę. Kaukės rastre esančios gardelės, kurios yra NoData (be duomenų) tipo, bus laikomos kaip esančios už kaukės ribų ir jų duomenys nebus įtraukiami į analizės rezultatų sluoksnį. 
+                </li>
+                <li>Jeigu analizės kaukė yra elementų sluoksnis, atliekant analizę jis bus konvertuotas į rastrą. Dėl &scaron;ios priežasties būtina užtikrinti, kad  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">Gardelės dydis</a> ir <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">Pritraukimo rastras</a> yra tinkamai nustatyti analizei.
+                </li>
+            </ul>
+             
+        </div>
+    </div>
+</div>
+</html>

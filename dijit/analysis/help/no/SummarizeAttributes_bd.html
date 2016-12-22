@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Summer attributter</h2><p/>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Summer attributter"></h2>
+        <hr/>
+    <p>Dette verkt&oslash;yet oppsummerer alle de samsvarende verdiene i ett eller flere felter og beregner statistikk p&aring; dem. Den mest grunnleggende statistikken er antall geoobjekter som er blitt summert sammen, men du kan beregne mer avansert statistikk ogs&aring;. 
+
+    </p>
+    <p>La oss f.eks. si at du har punktgeoobjekter for butikklokasjoner med et felt som representerer  <i>DISTRICT_MANAGER_NAME</i> og du &oslash;nsker &aring; summere kaffesalget etter sjef. Du kan angi feltet <i>DISTRICT_MANAGER_NAME</i> som feltet &aring; l&oslash;se opp, og alle rader med data som representerer de enkelte sjefene, blir summert. Dette betyr at alle butikklokasjoner som administreres av Sjef1 vil bli summert i en rad med sammendragsstatistikk beregnet. I dette tilfellet blir statistikk som antallet butikker og summen av <i>TOTAL_SALES</i> for alle butikker som Sjef1 leder beregnet, i tillegg til andre sjefer som er oppf&oslash;rt i feltet <i>DISTRICT_MANAGER_NAME</i>.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Velg inndataene som skal summeres</h2></div>
+        <hr/>
+        <div>
+            <p>Laget som inneholder feltene som blir summert.  
+            </p>
+            <p>I tillegg til &aring; velge et lag fra kartet kan du velge  <b>Browse Layers</b> (Bla gjennom lag), som du finner nederst i rullegardinlisten, til &aring; bla deg frem til innholdet for et fildelingsdatasett for big data eller et geoobjektslag.  
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>Velg feltene du ønsker å utviske fra</h2></div>
+        <hr/>
+        <div>
+            <p>  Liste over felter fra inndatalaget.  De utvalgte feltene blir summert og brukt til &aring; beregne statistikk. Hvis du f.eks. velger et felt ved navn <i>PropertyType</i> med verdier for kommersielle og boliger, blir alle feltene for bolig summert sammen, med beregnet summeringsstatistikk, og alle feltene for kommersielt blir summert sammen.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Velg feltene og statistikkene du ønsker å beregne (valgfritt)</h2></div>
+        <hr/>
+        <div>
+            <p> Du kan beregne statistikk p&aring; geoobjekter som er summert. P&aring; numeriske felt kan du beregne f&oslash;lgende:
+                <ul>
+                    <li>Antall
+                    </li>
+                    <li>Gjennomsnitt
+                    </li>
+                    <li>Min
+                    </li>
+                    <li>Maks
+                    </li>
+                    <li>Omr&aring;de
+                    </li>
+                    <li>Varians
+                    </li>
+                    <li>Standardavvik
+                    </li>
+                </ul>
+                
+            </p>
+            <p>P&aring; strengfelter kan du beregne f&oslash;lgende:
+                <ul>
+                    <li>Antall
+                    </li>
+                    <li>Noen &ndash; Denne statistikken er en tilfeldig pr&oslash;ve av en strengverdi i det spesifiserte feltet.
+                    </li>
+                </ul>
+                All statistikk beregnes p&aring; ikke-nullverdier. Resultatlaget inneholder et nytt felt for hver beregnet statistikk. Du kan legge til flere statistikker ved &aring; velge et attributt og statistikk. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Velg datalager</h2></div>
+        <hr/>
+        <div>
+            <p>Dette er en midlertidig parameter for forh&aring;ndslansering, for &aring; angi datalageret der resultatene lagres. Begge datalagrene er en del av  ArcGIS Data Store. Hvis du velger det spatiotemporale datalageret, men ikke har et installert, vil verkt&oslash;yet mislykkes. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Navn på resultatlag</h2></div>
+        <hr/>
+        <div>
+            <p> Dette er navnet p&aring; laget som vil bli laget i <b>Mitt Innhold</b> og lagt til i kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget allerede eksisterer, vil verkt&oslash;yet mislykkes.
+            </p>
+            <p>Bruk rullegardinlisten  <b>Lagre resultat</b> i til &aring; angi navnet p&aring; en mappe i <b>Mitt innhold</b> som resultatene skal lagres i.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

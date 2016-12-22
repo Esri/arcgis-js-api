@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Portal Analizi Ortam Ayarları</h2><p/>
+        <h2></h2>
+        <hr/>
+    <p>  Portal for ArcGIS ve  ArcGIS Online uygulamalarındaki analizler i&ccedil;in ortam ayarları. 
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="overwriteResult">
+        <div><h2>Sonuç katmanının üzerine yaz</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Mevcut katmanların &uuml;zerine yazma se&ccedil;eneği.    Bu se&ccedil;enek işaretli durumdayken i&ccedil;eriğinizde aynı ada sahip bir dosya zaten varsa, bu dosyanın &uuml;zerine yazılır.
+            </p>
+            <p>
+                <ul>
+                    <li>İşaretli; i&ccedil;eriğinizde aynı ada sahip bir katman zaten varsa, bu katmanın &uuml;zerine yazılır. &Ccedil;ıktı, girdi ile aynı koordinat sistemine sahip olur.
+                    </li>
+                    <li>İşaretli Değil; girilen sonu&ccedil; katmanı adı zaten varsa, bir hata oluşur ve aracın &ccedil;alıştırılabilmesi i&ccedil;in sonu&ccedil; katmanı yeniden adlandırılmalıdır. Varsayılan değerdir.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="closeAnalysisWidget">
+        <div><h2>Analizi çalıştırdıktan sonra analiz aracını kapat</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Ara&ccedil; &ccedil;alışırken analiz iletişim kutusunu a&ccedil;ık ve etkin tutma se&ccedil;eneği.     Bu ayar, &ouml;nceki analiz işi &ccedil;alışmaya devam ederken analiz parametrelerinizde kolayca değişiklik yapmanıza olanak tanır.  Analiz yinelemeli bir işlemdir ve ara&ccedil; iletişim kutusu a&ccedil;ık tutularak parametre değişikliklerini kolayca yapmanız ve analizinizi yeniden &ccedil;alıştırmanız sağlanır.
+            </p>
+            <p>
+                <ul>
+                    <li>İşaretli; analiz aracı penceresi kapatılır ve ekran i&ccedil;indekiler b&ouml;l&uuml;m&uuml;ne geri d&ouml;nd&uuml;r&uuml;l&uuml;r. Varsayılan değerdir
+                    </li>
+                    <li>İşaretli Değil; analiz aracı penceresi a&ccedil;ık ve etkin kalır.   
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="storeAnalysisResults">
+        <div><h2>Analiz sonuçlarını bir detay servisi olarak sakla</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Analiz sonu&ccedil;larınızın bir detay katmanı olarak mı yoksa bir detay koleksiyonu olarak mı oluşturulacağını belirtme se&ccedil;eneği.
+            </p>
+            <p>
+                <ul>
+                    <li>İşaretli; analiz sonu&ccedil;larınız bir detay katmanı olarak oluşturulur ve i&ccedil;indekiler b&ouml;l&uuml;m&uuml;nde bir &ouml;ğe oluşturulur. Varsayılan değerdir.
+                    </li>
+                    <li>İşaretli Değil; analizinizin sonu&ccedil;ları bir detay koleksiyonu olarak oluşturulur.    Detay koleksiyonları web haritanızda saklanır.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputCoordinateSystem">
+        <div><h2>Çıktı koordinat sistemi</h2></div>
+        <hr/>
+        <div>
+            <p>Sonu&ccedil; katmanının koordinat sistemini tanımlamak i&ccedil;in kullanılan raster analizi ortam ayarıdır.    
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Girdiyle Aynı</b>; analizinizin &ccedil;ıktısı girdiyle aynı koordinat sisteminde olur. Varsayılan değerdir.
+                    </li>
+                    <li> <b>Belirtildiği Gibi</b>; analizinizin sonu&ccedil;ları i&ccedil;in koordinat sistemini se&ccedil;in.   Bu se&ccedil;enek belirlendiğinde, d&uuml;nya simgesine tıklayarak bilinen koordinat sistemleri listesinden se&ccedil;im yapın veya mekansal başvuru WKID'sini sağlanan kutuya ekleyin.
+                    </li>
+                    <li> <b>Katman
+&lt;adı&gt;</b>; web haritanızdan analiz sonucunuzun koordinat sistemini belirlemek i&ccedil;in kullanılacak mevcut bir katman se&ccedil;in.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingCoordinateSystem">
+        <div><h2>Koordinat sistemi işleniyor</h2></div>
+        <hr/>
+        <div>
+            <p>Analiz yapılırken analizinizin kullanacağı koordinat sistemini belirlemek i&ccedil;in kullanılan GeoAnalytics ortam ayarı.   
+            </p>
+            <p>Bazı analizler GeoAnalytics i&ccedil;in işlemlerin izd&uuml;ş&uuml;ml&uuml; koordinat sisteminde yapılmasını gerektirir.   Kutulanmış verilerin veya doğrusal birimlerin kullanıldığı her ara&ccedil; izd&uuml;ş&uuml;ml&uuml; bir koordinat sistemi gerektirir. 
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Girdiyle aynı</b>; analiziniz girdiyle aynı koordinat sisteminde işlenir. Varsayılan değerdir.
+                    </li>
+                    <li> <b>Belirtildiği gibi</b>; analizinizin işleneceği koordinat sistemini se&ccedil;in.   Bu se&ccedil;enek belirlendiğinde, d&uuml;nya simgesine tıklayarak bilinen izd&uuml;ş&uuml;ml&uuml; koordinat sistemleri listesinden se&ccedil;im yapın veya mekansal başvuru WKID'sini sağlanan kutuya ekleyin.
+                    </li>
+                    <li> <b>Katman
+&lt;adı&gt;</b>; web haritanızdan mevcut bir katman se&ccedil;in.  Se&ccedil;ilen katman koordinat sistemi, analizinizi işlemek i&ccedil;in kullanılacak koordinat sisteminin belirlenmesinde kullanılır.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingExtent">
+        <div><h2>Yayılım</h2></div>
+        <hr/>
+        <div>
+            <p>Analiz yapılırken kullanılacak yayılım veya sınırın belirlenmesi i&ccedil;in kullanılan ortam ayarı.  Belirtilen yayılımın tamamen i&ccedil;inde kalan veya bu yayılımla kesişen t&uuml;m girdi detayları analizde kullanılır.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Varsayılan</b>; ara&ccedil; tarafından sağlanan yayılımı kullanır.
+                    </li>
+                    <li> <b>Belirtildiği gibi</b>; yayılımı belirtmek i&ccedil;in koordinatları el ile girin.
+                    </li>
+                    <li> <b>Katman
+&lt;adı&gt;</b>; web haritanızdan mevcut bir katman se&ccedil;in. Se&ccedil;ilen katmanın mekansal yayılımı, analizinizi işlemek i&ccedil;in kullanılacak yayılımın belirlenmesinde kullanılır. 
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="snapRaster">
+        <div><h2>Raster Yakalama</h2></div>
+        <hr/>
+        <div>
+            <p>Raster analizi yapılırken,  <b>Raster Yakalama</b> ortamının ayarlanması &ccedil;ıktı rasterı katmanının yayılımını ayarlayarak, belirtilen <b>Raster Yakalama</b> katmanının h&uuml;cre hizalamasıyla eşleşmesini sağlar.
+            </p>
+        </div>
+    </div>
+    <div id="cellSize">
+        <div><h2>Hücre Boyutu</h2></div>
+        <hr/>
+        <div>
+            <p>Raster analizi yapılırken, bu ortam &ccedil;ıktı raster katmanını oluşturmak i&ccedil;in kullanılan h&uuml;cre boyutunu veya &ccedil;&ouml;z&uuml;n&uuml;rl&uuml;ğ&uuml;n&uuml; ayarlar. Varsayılan &ccedil;ıktı &ccedil;&ouml;z&uuml;n&uuml;rl&uuml;ğ&uuml; girdi raster katmanının en b&uuml;y&uuml;k h&uuml;cre boyutu tarafından belirlenir.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Girdilerin Minimumu</b>; t&uuml;m girdi katmanlarının en k&uuml;&ccedil;&uuml;k h&uuml;cre boyutunu kullanın.
+                    </li>
+                    <li> <b>Girdilerin Maksimumu</b>; t&uuml;m girdi katmanlarının en b&uuml;y&uuml;k h&uuml;cre boyutunu kullanın. Varsayılan değerdir.
+                    </li>
+                    <li> <b>Belirtildiği gibi</b>; h&uuml;cre boyutunu ayarlamak i&ccedil;in sayısal bir değer belirtin. Bu se&ccedil;iliyse, varsayılan değer 1'dir.
+                    </li>
+                    <li> <b>Katman &lt;adı&gt;</b>; h&uuml;cre boyutunu se&ccedil;ilen raster katmanına ayarlar.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="mask">
+        <div><h2>Maske</h2></div>
+        <hr/>
+        <div>
+            <p> Raster analizi yapılırken, <b>Maske</b> ortamını kullanarak, ilgi alanınızı tanımlamak i&ccedil;in kullanılacak bir katman belirtin.   Yalnızca analiz maskesi i&ccedil;inde kalan h&uuml;creler analiz işleminde dikkate alınır.
+            </p>
+            <ul>
+                <li>Maske bir raster veya bir detay katmanı olabilir.
+                </li>
+                <li>Analiz maskesi bir rastersa, maskeyi tanımlamak i&ccedil;in değer i&ccedil;eren t&uuml;m h&uuml;creler değerlendirilir. Bir maske rasterında i&ccedil;indeki NoData değerine sahip h&uuml;creler maskenin dışında olarak değerlendirilir ve analiz sonu&ccedil; katmanında NoData değerini alır. 
+                </li>
+                <li>Analiz maskesi bir detay katmanıysa, işlem sırasında dahili olarak bir rastera d&ouml;n&uuml;şt&uuml;r&uuml;l&uuml;r. Bu nedenle  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">H&uuml;cre Boyutu</a> ve <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">Raster Yakalama</a> &ouml;zelliklerinin analizinizde uygun bi&ccedil;imde ayarlandığından emin olun.
+                </li>
+            </ul>
+             
+        </div>
+    </div>
+</div>
+</html>

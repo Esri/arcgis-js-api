@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Convert Feature to  Raster</h2><p/>
+        <h2><img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" alt="Convert Feature to Raster tool"></h2>
+        <hr/>
+    <p>This task converts features to a raster dataset.
+    </p>
+    <p>Any feature class containing point, line, or polygon features can be converted to a raster dataset.
+    </p>
+    <p>The cell center is used to decide the value of the output raster pixel.
+    </p>
+    <p>The input field type determines the type of output raster. If the field is integer, the output raster will be integer; if it is floating point, the output will be floating point.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Choose feature layer to convert</h2></div>
+        <hr/>
+        <div>
+            <p>The input feature layer to convert to a raster dataset.
+            </p>
+        </div>
+    </div>
+    <div id="field">
+        <div><h2>Choose field</h2></div>
+        <hr/>
+        <div>
+            <p>Choose the field that will be used to assign values to the output raster.
+            </p> 
+        </div>
+    </div>
+    <div id="outputCellSize">
+        <div><h2>Output cell size</h2></div>
+        <hr/>
+        <div>
+            <p>결과 래스터의 셀 크기와 단위를 입력합니다.
+            </p>
+            <p>The available units are Feet, Miles, Meters, and Kilometers.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Result layer name</h2></div>
+        <hr/>
+        <div>
+            <p> <b>내 콘텐츠</b>에 생성되고 맵에 추가되는 레이어의 이름입니다. 기본 이름은 도구 이름과 입력 레이어 이름을 기반으로 합니다. 레이어가 이미 있는 경우 다른 이름을 제공하라는 메시지가 나타납니다.
+            </p>
+            <p> <b>결과 저장:</b> 드롭다운 상자를 사용하여 <b>내 콘텐츠</b>에서 결과를 저장할 폴더의 이름을 지정할 수 있습니다.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

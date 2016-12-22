@@ -76,7 +76,7 @@
         <div><h2>Rasti artimiausias vietas</h2></div>
         <hr/>
         <div>
-            <p>Įrankis Rasti artimiausią i&scaron;matuoja atstumą nuo kiekvieno pirmajame sluoksnyje esančio elemento iki &scaron;iame sluoksnyje esančių vietų. Kiekviename sluoksnyje gali būti iki 1 000 elementų.
+            <p>Įrankis Rasti artimiausią i&scaron;matuoja atstumą nuo kiekvieno pirmajame sluoksnyje esančio elemento iki &scaron;iame sluoksnyje esančių vietų. Kiekviename sluoksnyje gali būti iki 1 000 vietų.
             </p>
             <p class="OnlineOnly">Pasirinkę sluoksnį žemėlapyje, galite pasirinkti  <b>Pasirinkite Gyvojo pasaulio atlaso analizės sluoksnį</b> arba <b>Pasirinkite analizės sluoksnį</b>, kurį rasite i&scaron;krentančio sąra&scaron;o apačioje. &Scaron;i parinktis atidarys galeriją, kurioje yra kolekcija sluoksnių, naudingų daugeliui analizių. 
             </p>
@@ -99,13 +99,13 @@
                         </p>
                     </li>
                     <li>
-                        <p>Pažymėkite  <b>Naudoti eismo būseną</b>, jei ie&scaron;kote elementų pagal kelionės pradžios laiką ir kintančias transporto sąlygas. Pasirinkus <b>Esamos sąlygos</b>, kelionės pradžios laikas bus prilygintas analizės vykdymo laikui, bus įvertintos esamos transporto sąlygos ir prognozuojamas važiavimo greitis pagal sensorių pateikiamą informaciją. Prognozuojamas važiavimo greitis bus apskaičiuotas pagal esamas transporto sąlygas, istorinius greičio duomenis bei papildomus, pavyzdžiui, meteorologinius įvykius. Važiavimo greitis prognozuojamas 12 valandų laikotarpiui, todėl kelionės pradžią galite nurodyti iki 12 val. pirmyn nuo esamo laiko.
+                        <p>Pažymėkite  <b>Naudoti eismo būseną</b>, jei ie&scaron;kote elementų pagal kelionės pradžios laiką ir kintančias eismo sąlygas. Pasirinkus <b>Esamos sąlygos</b>, kelionės pradžios laikas bus prilygintas analizės vykdymo laikui, bus įvertintos esamos eismo sąlygos ir prognozuojamas važiavimo greitis pagal sensorių pateikiamą informaciją. Prognozuojamas važiavimo greitis bus apskaičiuotas pagal esamas eismo sąlygas, istorinius greičio duomenis bei papildomus, pavyzdžiui, meteorologinius įvykius. Važiavimo greitis prognozuojamas 12 valandų laikotarpiui, todėl kelionės pradžią galite nurodyti iki 12 val. pirmyn nuo esamo laiko.
                         </p>
-                        <p>Naudokite esamas transporto sąlygas, jei norite rasti trumpiausius atstumus i&scaron;vykdami &scaron;iuo ar artimu laiku, pavyzdžiui, po valandos.
+                        <p>Naudokite esamas eismo sąlygas, jei norite rasti trumpiausius atstumus i&scaron;vykdami &scaron;iuo ar artimu laiku, pavyzdžiui, po valandos.
                         </p>
                     </li>
                     <li>
-                        <p>Pažymėjus  <b>Naudoti eismo būseną</b> ir <b>Tipinės eismo sąlygos</b> bei nurodžius dieną ir laiką, įrankis aptinka artimiausius objektus remdamasis istoriniais vidutinio greičio kiekvieną 5 minučių intervalą savaitėje duomenimis. Apskaičiavimas vyks įvertinant transporto sąlygų įtaką, bet ne esamas konkrečias sąlygas; tai gali lemti besiskiriančius rezultatus.
+                        <p>Pažymėjus  <b>Naudoti eismo būseną</b> ir <b>Tipinės eismo sąlygos</b> bei nurodžius dieną ir laiką, įrankis aptinka artimiausius objektus remdamasis istoriniais vidutinio greičio kiekvieną 5 minučių intervalą savaitėje duomenimis. Apskaičiavimas vyks įvertinant eismo sąlygų įtaką, bet ne esamas konkrečias sąlygas; tai gali lemti besiskiriančius rezultatus.
                         </p>
                         <p>Galite naudoti istorinius duomenis, jei norite sužinoti, kokie artimiausi objektai būtų pasiekiami greičiausiu būdu, i&scaron;vykus, pavyzdžiui, trečiadienį 11:30. 
                         </p>
@@ -123,7 +123,7 @@
         <div>
             <p>Artimiausių objektų paie&scaron;ką galite apriboti dviem būdais. Viena galimybė yra apriboti ie&scaron;komų elementų skaičių kiekvienam pradiniam elementui. Galite rasti vieną artimiausią parką, du ar daugiau. Kitas  būdas - nurodyti maksimalų paie&scaron;kos atstumą ar važiavimo trukmę.
             </p>
-            <p>Neapribojus, didžiausias aptinkamų objektų skaičius yra 100, paie&scaron;kos atstumas neribojamas.
+            <p>Neapribojus, dižiausias aptinkamų objektų skaičius yra 100, paie&scaron;kos atstumas neribojamas.
             </p>
             <p>Analizės trukmė priklauso nuo pradinių elementų skaičiaus, artimiausių ie&scaron;komų objektų skaičiaus bei paie&scaron;kos atstumo. Paie&scaron;ka užtruks ilgiau, jei bus daugiau elementų ar bus didesni paie&scaron;kos atstumai.
             </p>
@@ -135,13 +135,11 @@
         <div><h2>Rezultatų sluoksnio pavadinimas</h2></div>
         <hr/>
         <div>
-            <p>Rezultatą sudarys du sluoksniai: vienas sluoksnis i&scaron; artimiausių elementų ir antras i&scaron; linijų, jungiančių įvesties elementus ir artimiausius elementus.
+            <p>Tai elemento sluoksnis, kuris bus sukurtas  <b>Turinyje</b> ir pridėtas į žemėlapį, pavadinimas. Jei toks elemento sluoksnis jau egzistuoja, jūsų papra&scaron;ys pateikti kitą pavadinimą. Elemento sluoksnį sudarys du sluoksniai: vienas sluoksnis, atvaizduojantis artimiausiais vietas, ir antras, atvaizduojantis linijas, jungiančias įvesties ir artimiausias vietas.
             </p>
-            <p>Linijos bus tiesios, jei atstumai skaičiuojami tiesiomis linijomis, arba atitiks trumpiausius ar greičiausius mar&scaron;rutus kelių tinklu. Papildoma linijų sluoksnio lentelė bus sudaryta i&scaron; tokios informacijos: atstumas arba kelionės laikas apskaičiuotu mar&scaron;rutu, identifikuojanti informacija apie sujungtus pradžios ir pabaigos elementus, artimumo eilė, leidžianti identifikuoti artimiausią elementą, antrą pagal artimumą ir t.t. Kai matuojamas kelionės laikas įvertinant eismą, lentelėje bus i&scaron;vykimo ir atvykimo laikas.
+            <p>Jei pasirinksite  <b>Įtraukti mar&scaron;ruto sluoksnius</b>, kiekvienas rezultato mar&scaron;rutas taip pat bus įra&scaron;ytas kaip mar&scaron;ruto sluoksnis. Mar&scaron;ruto sluoksnis apima visą konkretaus mar&scaron;ruto informaciją, pvz., stoteles, priskirtas mar&scaron;rutui, taip pat kelionės kryptis. Sukurti mar&scaron;ruto sluoksnius naudinga, jei norite bendrinti individualius mar&scaron;rutus su kitais organizacijos nariais arba jei norite toliau modifikuoti mar&scaron;rutus naudodami žemėlapių peržiūros priemonės mygtuką <b>Kryptys</b>. Mar&scaron;ruto sluoksniai naudoja pateiktą elementų sluoksnio pavadinimą kaip prefiksą, o mar&scaron;ruto pavadinimas, sugeneruojamas kaip analizės dalis, pridedamas kuriant unikalų kiekvieno mar&scaron;ruto sluoksnį.
             </p>
-            <p>&Scaron;io sluoksnio, kuris bus sukurtas ir patalpintas  <b>Turinyje</b> ir pridėtas į žemėlapį, pavadinimas gali būti nurodytas arba pasirinktas pagal nutylėjimą. Numatytieji pavadinimai sukuriami pagal įvesties sluoksnio pavadinimą. Jei toks sluoksnis jau egzistuoja, turėsite pateikti kitą pavadinimą.
-            </p>
-            <p>Pasirinkite  <b>Rezultatą įra&scaron;yti į</b>, nurodykite <b>Turinyje</b> esančio aplanko pavadinimą.
+            <p>I&scaron;plečiamame sąra&scaron;e pasirinkę  <b>Rezultatą įra&scaron;yti į</b>, galite nurodyti puslapyje <b>Turinys</b> esančio aplanko, kuriame bus i&scaron;saugotas elementų sluoksnis ir mar&scaron;ruto sluoksnis (jei jie bus sukurti), pavadinimą.
             </p>
         </div>
     </div>

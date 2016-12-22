@@ -29,13 +29,22 @@
   text-indent: 0.25em;
 }
 
+.esriAnalysis .margin0 {
+  margin: 0;
+}
+
 .esriAnalysis .padTop0, .esriAnalysis table.esriFormTable>tbody>tr>td.padTop0 {
   padding-top: 0;
 }
 .esriAnalysis .padTop1, .esriAnalysis table.esriFormTable>tbody>tr>td.padTop1 {
   padding-top: 1em;
 }
-
+.esriAnalysis .padTop05, .esriAnalysis table.esriFormTable>tbody>tr>td.padTop05 {
+  padding-top: 0.5em;
+}
+.esriAnalysis .padTop075, .esriAnalysis table.esriFormTable>tbody>tr>td.padTop075 {
+  padding-top: 0.75em;
+}
 .esriAnalysis .padBottom0, .esriAnalysis table.esriFormTable>tbody>tr>td.padBottom0 {
   padding-bottom: 0;
 }
@@ -271,6 +280,15 @@
   margin: 10px;
 }
 
+.findOutliersIcon {
+  background-image: url("../images/FindOutliers32.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 32px;
+  height: 32px;
+  margin: 10px;
+}
+
 .createDensitySurfaceIcon {
   background-image: url("../images/CreateDensitySurface32.png");
   background-repeat: no-repeat;
@@ -490,6 +508,15 @@
   padding-left: 1.1em;
 }
 
+.esriAnalysis .esriAnalysisSettingsIcon {
+  background-image: url("../images/Gear16.png");
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  margin: 0 3px;
+}
+
 .esriAnalysisInfoPaneCloseIcon {
   background-image: url("../images/close.gif");
   background-repeat: no-repeat;
@@ -637,6 +664,11 @@ td.subsectionLineDivider {
   table-layout:fixed;
 }
 
+.calcite .esriAnalysis .longInput {
+  width: 90%;
+  table-layout:inherit;
+}
+
 .esriAnalysis .esriAnalysisDriveMode .dijitButtonText {
     padding: 0.15em;
 }
@@ -667,6 +699,9 @@ td.subsectionLineDivider {
   padding: 0px;
 }
 
+.esriAnalysis .esriFormTable>tbody>tr>td {
+  padding: 0.25em;
+}
 
 .esriSimpleForm table.esriFormTable>tbody>tr>td {
   padding: 0.5em 0.5em 0.5em 0.5em;
@@ -1147,6 +1182,10 @@ td.subsectionLineDivider {
   cursor:pointer;
 }
 
+.esriAnalysis .esriSelectLabelSelected {
+  font-weight: bold;
+}
+
 .esriContainerSelector.esriGroupselected {
   border:2px solid #FFF;
 }
@@ -1371,6 +1410,15 @@ td.subsectionLineDivider {
   width: 16px;
   height: 16px;
   margin: 0.25px;    
+}
+
+.esriAnalysis .esriAnalysisSRIcon {
+  background-image: url("../images/CoordinateSystem16.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 16px;
+  height: 16px;
+  margin: 0.25px;  
 }
 
 .esriAnalysis .esriAnalysisTextIcon {
@@ -1907,4 +1955,17 @@ html[dir="rtl"] .esriAnalysis .crumb:nth-child(2) {
 }
 html[dir="rtl"] .esriAnalysis .crumb:first-child {
     padding: 0 0 0 10px;
+}
+
+.esriAnalysisSpatialRefTree .dgrid-cell {
+  border: none;
+}
+.esriAnalysisSpatialRefTree .dgrid-row.dgrid-row-odd {
+  background-color:#ffffff;
+}
+.esriAnalysisSpatialRefTree .dgrid-row.dgrid-row-odd.dgrid-selected {
+  background-color:#bfd6eb;
+}
+.esriAnalysisSpatialRefTree .dgrid-selected {
+  background-color:#bfd6eb;
 }

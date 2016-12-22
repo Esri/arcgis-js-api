@@ -145,12 +145,12 @@
         </div>
     </div>
     <div id="maxStopsPerRoute">
-        <div><h2>Nombre maximum d'arrêts par véhicule</h2></div>
+        <div><h2>Nombre maximum d\'arrêts par véhicule</h2></div>
         <hr/>
         <div>
             <p>Il s'agit d'un des deux param&egrave;tres qui &eacute;quilibrent la charge de travail globale parmi les itin&eacute;raires. Vous pouvez sp&eacute;cifier une valeur comprise entre 1 et  200. 
             </p>
-            <p>En r&eacute;duisant le nombre maximum d'arr&ecirc;ts pouvant &ecirc;tre attribu&eacute;s &agrave; chaque v&eacute;hicule, les v&eacute;hicules ont plus de chance de se voir attribuer un nombre &eacute;gal d'arr&ecirc;ts. Ceci permet d'&eacute;quilibrer la charge de travail parmi les chauffeurs. L'inconv&eacute;nient toutefois est que la solution engendr&eacute;e risque d'&ecirc;tre moins efficace.
+            <p>En r&eacute;duisant le nombre maximum d'arr&ecirc;ts pouvant &ecirc;tre attribu&eacute;s &agrave; chaque v&eacute;hicule, les v&eacute;hicules ont plus de chance de se voir attribuer un nombre &eacute;gal d'arr&ecirc;ts. Ceci permet d'&eacute;quilibrer la charge de travail parmi les conducteurs. L'inconv&eacute;nient toutefois est que la solution engendr&eacute;e risque d'&ecirc;tre moins efficace.
             </p>
             <p>En augmentant le nombre d'arr&ecirc;ts par v&eacute;hicule, l'outil a plus de libert&eacute; pour trouver des solutions plus efficaces. Cependant, la charge de travail risque d'&ecirc;tre r&eacute;partie de mani&egrave;re in&eacute;gale parmi les chauffeurs et les v&eacute;hicules. Notez que vous pouvez &eacute;quilibrer la charge de travail en fonction du temps aussi bien qu'en fonction du nombre d'arr&ecirc;ts, en attribuant une valeur au param&egrave;tre  <b>Limiter le temps de trajet total par v&eacute;hicule</b>.
             </p>
@@ -214,10 +214,11 @@
         <div><h2>Nom de la couche résultat</h2></div>
         <hr/>
         <div>
-            <p>Il s'agit du nom du groupe de couches qui sera cr&eacute;&eacute; dans la page  <b>Mon contenu</b>.
-et ajout&eacute; &agrave; la carte. Le groupe de couches contiendra une couche pour chacun des &eacute;l&eacute;ments suivants&nbsp;: itin&eacute;raires, arr&ecirc;ts et feuilles de route.
+            <p>Le nom de la couche d'entit&eacute;s qui sera cr&eacute;&eacute;e dans la page  <b>Mon contenu</b> et ajout&eacute;e &agrave; la carte. Si la couche d'entit&eacute;s existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom. La couche d'entit&eacute;s contiendra une couche pour chacun des &eacute;l&eacute;ments suivants&nbsp;: itin&eacute;raires, arr&ecirc;ts attribu&eacute;s et arr&ecirc;ts non attribu&eacute;s lorsque certains arr&ecirc;ts n'ont pas pu &ecirc;tre attribu&eacute;s &agrave; un itin&eacute;raire.
             </p>
-            <p>La liste d&eacute;roulante  <b>Enregistrer le r&eacute;sultat dans</b> vous permet de sp&eacute;cifier le nom d'un dossier dans <b>Mon contenu</b> o&ugrave; le r&eacute;sultat sera enregistr&eacute;.
+            <p>Si vous s&eacute;lectionnez  <b>Inclure les couches d'itin&eacute;raires</b>, chaque itin&eacute;raire du r&eacute;sultat est &eacute;galement enregistr&eacute; en tant que couche d'itin&eacute;raires. Une couche d'itin&eacute;raires comprend toutes les informations associ&eacute;es &agrave; un itin&eacute;raire en particulier, telles que les arr&ecirc;ts attribu&eacute;s &agrave; l'itin&eacute;raire et les feuilles de route. La cr&eacute;ation de couches d'itin&eacute;raires est utile si vous voulez partager les itin&eacute;raires individuels avec d'autres membres de votre organisation ou si vous souhaitez modifier davantage les itin&eacute;raires &agrave; l'aide du bouton <b>Feuille de route</b> dans la visionneuse de carte. Les couches d'itin&eacute;raires utilisent le nom fourni pour la couche d'entit&eacute;s comme pr&eacute;fixe, et le nom de l'itin&eacute;raire g&eacute;n&eacute;r&eacute; dans le cadre de l'analyse est ajout&eacute; pour conf&eacute;rer un nom unique &agrave; chaque couche d'itin&eacute;raires.
+            </p>
+            <p>La liste d&eacute;roulante  <b>Enregistrer le r&eacute;sultat dans</b> vous permet de sp&eacute;cifier le nom d'un dossier dans <b>Mon contenu</b> o&ugrave; la couche d'entit&eacute;s et les couches d'itin&eacute;raires, si elles sont cr&eacute;&eacute;es, seront enregistr&eacute;es.
             </p>
         </div>
     </div>

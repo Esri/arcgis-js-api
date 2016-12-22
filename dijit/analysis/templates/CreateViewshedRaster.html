@@ -89,7 +89,7 @@
         </tr>
         <tr data-dojo-attach-point="_optionsRow">
           <td colspan="2" class="optionsTd">
-            <div class="esriLeadingMargin1 optionsClose" data-dojo-attach-point="_optionsDiv">
+            <div class="optionsClose" data-dojo-attach-point="_optionsDiv">
               <div class="dijitTreeExpando" data-dojo-attach-event="onclick:_handleOptionsBtnClick"><label class="esriLeadingMargin2 noWrapLabel">${i18n.options}</label></div>
               <table class="esriFormTable optionsTable">
                 <tbody>
@@ -102,7 +102,7 @@
                             <label class="esriLeadingMargin1">${i18n.maxDistanceLabel}</label>
                           </td>
                           <td class="shortTextInput">
-                            <a href="#" class='esriFloatTrailing helpIcon' esrihelptopic="maxDistance"></a>
+                            <a href="#" class='esriFloatTrailing helpIcon' esrihelptopic="maximumDistance"></a>
                           </td>
                         </tr>
                         <tr>
@@ -139,7 +139,7 @@
                             <label class="esriLeadingMargin1">${i18n.minDistanceLabel}</label>
                           </td>
                           <td class="shortTextInput">
-                            <a href="#" class='esriFloatTrailing helpIcon' esrihelptopic="minDistance"></a>
+                            <a href="#" class='esriFloatTrailing helpIcon' esrihelptopic="minimumDistance"></a>
                           </td>
                         </tr>
                         <tr>
@@ -172,11 +172,14 @@
                           </td>
                         </tr>
                         <tr>
-                          <td colspan="3">
+                          <td colspan="2">
                             <label class="esriLeadingMargin1 esriSelectLabel" >
                               <div data-dojo-type="dijit/form/CheckBox" data-dojo-attach-point="_is3DCheck" data-dojo-props="checked:false"></div>
                               ${i18n.dist3D}
                             </label>
+                          </td>
+                          <td class="shortTextInput" style="padding-bottom:0;">
+                            <a href="#" class='esriFloatTrailing helpIcon' esrihelptopic="viewingDistance3D"></a>
                           </td>
                         </tr>  
                         <tr>
@@ -308,7 +311,7 @@
             <label class="esriAnalysisStepsLabel">${i18n.resultAgLayer}</label>
           </td>
           <td class="shortTextInput">
-            <a href="#" class='esriFloatTrailing helpIcon' esrihelptopic="resultAgLayer"></a>
+            <a href="#" class='esriFloatTrailing helpIcon' esrihelptopic="resultAglLayer"></a>
           </td>
         </tr>
         <tr>

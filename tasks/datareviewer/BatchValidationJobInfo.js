@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.18/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.19/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/has","dojo/_base/lang","../../kernel"],function(t,s,e,i){var a=t(null,{declaredClass:"esri.tasks.datareviewer.BatchValidationJobInfo",status:null,messages:null,gpJobId:null,gpUrl:null,startTimeUTC:void 0,finishTimeUTC:void 0,batchRunId:null,constructor:function(t){t&&!t.error&&(this.gpJobId=t.gpJobId,this.messages=t.messages,this.gpUrl=t.gpUrl,this.status=t.status,this.batchRunId=t.batchRunId,void 0!==t.startTimeUtc&&null!==t.startTimeUtc&&(this.startTimeUTC=new Date(t.startTimeUtc)),void 0!==t.finishTimeUtc&&null!==t.finishTimeUtc&&(this.finishTimeUTC=new Date(t.finishTimeUtc)))}});return s("extend-esri")&&e.setObject("tasks.datareviewer.BatchValidationJobInfo",a,i),a});

@@ -45,7 +45,7 @@
         <h2><img src="./images/GUID-6C1620D9-D176-41FA-8283-833D8B1CCCFC-web.png" alt="Aggregate Points"></h2>
         <hr/>
     <p>This tool works with a layer of
-point features  and a layer of areas. The layer of areas can be an input polygon layer or it can be square or hexagonal bins calculated when the tool is run. The tool first
+point features  and a layer of areas features.  Input area features can be from a polygon layer or they can be square or hexagonal bins calculated when the tool is run. The tool first
 determines which points fall within each specified area. After determining
 this point-in-area spatial relationship, statistics about all
 points in the area are calculated and assigned to the area. The
@@ -54,11 +54,11 @@ the area, but you can get other statistics as well.
 
     </p>
     <p>For example, suppose you have point features of coffee shop locations and area features of counties, and you want to summarize coffee sales by county.  Assuming the  coffee shops have a    <i>TOTAL_SALES</i> attribute, you can get the sum of all <i>TOTAL_SALES</i> within each county, the minimum or maximum <i>TOTAL_SALES</i>
- within each county, or other statistics like the count, range, standard deviation, and variance.
+ within each county, or other statistics such as the count, range, standard deviation, and variance.
     </p>
-    <p>This tool can also work on data that is time-enabled. If time is enabled on the input points, then the time slicing options are available. Time slicing allows you to calculate the point-in area relationship while looking at a specific slice in time. For example, you could look at hourly intervals, which would result in outputs for each hour. 
+    <p>This tool can also work with data that is time-enabled. If time is enabled on the input points, then the time slicing options are available. Time slicing allows you to calculate the point-in-area relationship while looking at a specific slice in time. For example, you could look at hourly intervals, which would result in outputs for each hour. 
     </p>
-    <p>For an example with time, suppose you had point features of every transaction made at a coffee shop location and no  area layer. The data has been recorded over a year, and each transaction has a location and a time stamp. Assuming each transaction has a <i>TOTAL_SALES</i> attribute, you can get the sum of all <i>TOTAL SALES</i> within the space and time of interest. If these transactions are for a single city, we could generate  areas that  are one kilometer grids, and look at weekly time slices to summarize the transactions in both time and space.
+    <p>For an example with time, suppose you had point features of every transaction made at various coffee shop locations and no  area layer. The data has been recorded over a year and each transaction has a location and a time stamp. Assuming each transaction has a <i>TOTAL_SALES</i> attribute, you can get the sum of all <i>TOTAL_SALES</i> within the space and time of interest. If these transactions are for a single city, we could generate  areas that  are 1-kilometer grids and look at weekly time slices to summarize the transactions in both time and space.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -66,9 +66,9 @@ the area, but you can get other statistics as well.
         <div><h2>Choose a layer containing points to aggregate into areas</h2></div>
         <hr/>
         <div>
-            <p>The point layer what will aggregate into the areas.
+            <p>The point layer that will aggregate into the areas.
             </p>
-            <p>In addition to choosing a layer from your map, you can select  <b>Browse Layers</b> found at the bottom of the drop-down list to browse your contents for a big data file share dataset or feature layer.  
+            <p>In addition to choosing a layer from your map, you can choose  <b>Browse Layers</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer.  
             </p>
         </div>
     </div>
@@ -76,7 +76,7 @@ the area, but you can get other statistics as well.
         <div><h2>Choose an area layer to aggregate into</h2></div>
         <hr/>
         <div>
-            <p>The areas that the   point layer will be aggregated into. You can choose between an area layer that you provide, or  bins that are generated when the tool runs. 
+            <p>The areas that the   point layer will be aggregated into. You can choose between an area layer that you provide or  bins that are generated when the tool runs.   When generating bins, for  <b>Square</b>, the number and units specified determine the height and length of the square. For <b>Hexagon</b>, the number and units specified  determine the distance between parallel sides.
             </p>
         </div>
     </div>
@@ -84,9 +84,11 @@ the area, but you can get other statistics as well.
         <div><h2>Choose the area layer to aggregate into</h2></div>
         <hr/>
         <div>
-            <p>The area layer to which the points will be aggregated.  Any points that fall within the boundaries of areas in this layer will be counted and optionally summarized using your choice of statistics.   
+            <p>The area layer to which the points will be aggregated.  Any points that fall within the boundaries of areas in this layer will be counted and optionally summarized using your choice of statistics. 
             </p>
-            <p>Either the  <b>Distance Interval</b> for bins or an <b>Area Layer</b> must be set.
+            <p>
+            </p>
+            <p>Either the  <b>Bin Size</b> for bins or an <b>Area Layer</b> must be set.
             </p>
         </div>
     </div>
@@ -94,9 +96,9 @@ the area, but you can get other statistics as well.
         <div><h2>Choose a distance to generate bins and aggregate into</h2></div>
         <hr/>
         <div>
-            <p>The distance used to generate bins to aggregate your input points into.
+            <p>The distance used to generate bins to aggregate your input points into. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).  
             </p>
-            <p>Either the  <b>Distance Interval</b> for bins or an <b>Area Layer</b> must be set.
+            <p>Either the  <b>Bin Size</b> for bins or an <b>Area Layer</b> must be set.
             </p>
         </div>
     </div>
@@ -104,20 +106,20 @@ the area, but you can get other statistics as well.
         <div><h2>Aggregate using time slices (optional)</h2></div>
         <hr/>
         <div>
-            <p>If time is enabled on the input point layer and it is of type instant, then you can  analyze using time slicing.  There are three parameters you can set when you use time:
+            <p>If time is enabled on the input point layer and it is of type instant, you can  analyze using time slicing.  There are three parameters you can set when you use time:
                 <ul>
-                    <li>Time Interval
+                    <li>  <b>Time Interval</b>
                     </li>
-                    <li>Time Step
+                    <li> <b>Time Step</b>
                     </li>
-                    <li>Reference Time
+                    <li> <b>Reference Time</b>
                     </li>
                 </ul>
                 
             </p>
-            <p>Imagine you had data that represented a year in time, and you wanted to analyze using weekly slices. To do that you would set you  <b>Time Interval</b> to <b>1 week</b>.
+            <p>Imagine you had data that represented a year in time and you wanted to analyze using weekly slices. To do that you would set  <b>Time Interval</b> to <code>1 week</code>.
             </p>
-            <p>Imagine you had data that represented a year in time, and you wanted to analyze using the first week of month. To do that you would set you  <b>Time Interval</b> to <b>1 week</b>, your <b>Time Step</b> to <b>1 month</b>, and your <b>Reference Time</b> to <b>January 1, at 12:00 am</b>.
+            <p> Imagine you had data that represented a year in time and you wanted to analyze using the first week of the month. To do that you would set <b>Time Interval</b> to <code>1 week</code>, <b>Time Step</b> to <code>1 month</code>, and <b>Reference Time</b> to <code>January 1, at 12:00 am</code>.
             </p>
         </div>
     </div>
@@ -125,9 +127,9 @@ the area, but you can get other statistics as well.
         <div><h2>Time interval to be aggregate into</h2></div>
         <hr/>
         <div>
-            <p>Interval of time used for slicing the data. Time interval may be used alone, or used with the  <b>Time Step</b> or <b>Reference Time</b>.
+            <p>Interval of time used for slicing the data. Time interval may be used alone or used with the  <b>Time Step</b> or <b>Reference Time</b> parameter.
             </p>
-            <p>If you wanted to create time slices that took place every Monday from 9:00 am until 10:00 am. The  <b>Time Interval</b> would be one week. The <b>Time Step</b> would be one week, and the <b>Reference Time</b> would be 9:00:00 AM on a Monday.
+            <p> If you wanted to create time slices that took place every Monday from 9:00 a.m. until 10:00 a.m., <b>Time Interval</b> would be <code>1 hour</code>, <b>Time Step</b> would be <code>1 week</code>, and <b>Reference Time</b> would be <code>9:00:00 a.m. on a Monday</code>.
             </p>
         </div>
     </div>
@@ -135,9 +137,9 @@ the area, but you can get other statistics as well.
         <div><h2>Time step to be aggregate into</h2></div>
         <hr/>
         <div>
-            <p>The step used for calculating a time slice. Time step may be used alone, with a  <b>Time Interval</b>, with a <b>Reference Time</b>, or with both a <b>Time Interval</b> and <b>Reference Time</b>.
+            <p> The step used for calculating a time slice. <b>Time Step</b> may be used alone or with <b>Time Interval</b>, with <b>Reference Time</b>, or with both <b>Time Interval</b> and <b>Reference Time</b>.
             </p>
-            <p>If you wanted to create time slices that took place every Monday from 9:00 am until 10:00 am. The  <b>Time Interval</b> would be one week. The <b>Time Step</b> would be one week, and the <b>Reference Time</b> would be 9:00:00 AM on a Monday.
+            <p> If you wanted to create time slices that took place every Monday from 9:00 a.m. until 10:00 a.m., <b>Time Interval</b> would be <code>1 hour</code>, <b>Time Step</b> would be <code>1 week</code>, and <b>Reference Time</b> would be <code>9:00:00 a.m. on a Monday</code>.
             </p>
         </div>
     </div>
@@ -146,9 +148,9 @@ the area, but you can get other statistics as well.
 used to align the time slicing</h2></div>
         <hr/>
         <div>
-            <p>The date and time used to align time slicing.  <b>Time Steps</b> will start from, and continue backwards for the reference time.
+            <p>The date and time used to align time slicing.  <b>Time Step</b> will start from and continue backward for the referenced time.
             </p>
-            <p>If you wanted to create time slices that took place every Monday from 9:00 am until 10:00 am. The  <b>Time Interval</b> would be one week. The <b>Time Step</b> would be one week, and the <b>Reference Time</b> would be 9:00:00 AM on a Monday.
+            <p> If you wanted to create time slices that took place every Monday from 9:00 a.m. until 10:00 a.m., <b>Time Interval</b> would be <code>1 hour</code>, <b>Time Step</b> would be <code>1 week</code>, and <b>Reference Time</b> would be <code>9:00:00 a.m. on a Monday</code>.
             </p>
         </div>
     </div>
@@ -156,7 +158,7 @@ used to align the time slicing</h2></div>
         <div><h2>Add statistics (optional)</h2></div>
         <hr/>
         <div>
-            <p>You can calculate statistics about attributes of numeric fields of the input layer such as: 
+            <p> You can calculate statistics on features that are summarized. On numeric fields you can calculate the following:
                 <ul>
                     <li>Count
                     </li>
@@ -175,14 +177,14 @@ used to align the time slicing</h2></div>
                 </ul>
                 
             </p>
-            <p>You can calculate statistics about attributes of string fields of the input layer, such as:
+            <p>On string fields you can calculate the following:
                 <ul>
                     <li>Count
                     </li>
-                    <li>Any &mdash;This statistic is a random sample of a string value in the specified field.
+                    <li>Any&mdash;This statistic is a random sample of a string value in the specified field.
                     </li>
                 </ul>
-                All statistics are calculated on non-null values. The resulting layer will contain a new attribute for each statistic calculated. Any number of statistics can be added by choosing an attribute and statistic.
+                All statistics are calculated on nonnull values. The resulting layer will contain a new field for each statistic calculated. Any number of statistics can be added by choosing an attribute and statistic. 
             </p>
         </div>
     </div>
@@ -190,7 +192,7 @@ used to align the time slicing</h2></div>
         <div><h2>SpatialReference (wkid)</h2></div>
         <hr/>
         <div>
-            <p>This is a temporary parameter for Pre-Release  to set the processing spatial reference. Many big data tools require that a projected coordinate system is used as the spatial reference for processing. By default, the tool will use the input coordinate system, but will fail if it's a geographic coordinate system. To set a projected coordinate system, enter the WKID. For example, Web Mercator would be entered as  <b>3857</b>.
+            <p>This is a temporary parameter for prerelease  to set the processing spatial reference. Many big data tools require that a projected coordinate system is used as the spatial reference for processing. By default, the tool will use the input coordinate system but will fail if it's a geographic coordinate system. To set a projected coordinate system, enter the WKID. For example,  <b>Web Mercator</b> would be entered as <code>3857</code>.
             </p>
         </div>
     </div>
@@ -198,17 +200,16 @@ used to align the time slicing</h2></div>
         <div><h2>Choose datastore</h2></div>
         <hr/>
         <div>
-            <p>This is a temporary parameter for the Pre-Release to set the data store that results are saved to. Both data stores are part of ArcGIS Data Store. If you select the spatiotemporal data store, and do not have one installed the tool will fail.
-            </p>
+            <p>This is a temporary parameter for prerelease to set the data store where the results are saved. Both data stores are part of  ArcGIS Data Store. If you select the spatiotemporal data store but do not have one installed, the tool will fail. </p>
         </div>
     </div>
     <div id="outputName">
         <div><h2>Result layer name</h2></div>
         <hr/>
         <div>
-            <p>This is the name of the layer that will be created in  <b>My
+            <p> This is the name of the layer that will be created in <b>My
 Content</b> and added to the map. The default name is based on the
-tool name and the input layer name. If the layer already exists the tool run will fail.
+tool name and the input layer name. If the layer already exists, the tool will fail.
             </p>
             <p>Using the  <b>Save result in</b> drop-down box, you can specify
 the name of a folder in <b>My Content</b> where the result will be

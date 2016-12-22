@@ -52,7 +52,7 @@
             <label class="esriAnalysisStepsLabel">${i18n.valueField}</label>
           </td>
           <td class="shortTextInput" style="padding-bottom:0;">
-            <a href="#" class='esriFloatTrailing helpIcon' esrihelptopic="valueField"></a>
+            <a href="#" class='esriFloatTrailing helpIcon' esrihelptopic="field"></a>
           </td>
         </tr>
         <tr data-dojo-attach-point="_fieldSelectRow">
@@ -93,11 +93,14 @@
           </td>
         </tr>
         <tr>
-          <td colspan="3">
+          <td colspan="2">
             <label class="esriLeadingMargin1 esriSelectLabel" for="cbx" data-dojo-attach-point="_simplifyCheckRow">
               <input data-dojo-type="dijit/form/CheckBox" name="cbx" data-dojo-attach-point="_simplifyCheck" data-dojo-props="checked:true">
               ${i18n.simplify}
             </label>
+          </td>
+          <td class="shortTextInput">
+            <a href="#" class='esriFloatTrailing helpIcon' esrihelptopic="simplifyLinesOrPolygons"></a>
           </td>
         </tr>
         <tr>
@@ -109,7 +112,7 @@
             <label class="esriAnalysisStepsLabel">${i18n.outputLayerLabel}</label>
           </td>
           <td class="shortTextInput">
-            <a href="#" class='esriFloatTrailing helpIcon' esrihelptopic="outputLayer"></a>
+            <a href="#" class='esriFloatTrailing helpIcon' esrihelptopic="outputName"></a>
           </td>
         </tr>
         <tr>

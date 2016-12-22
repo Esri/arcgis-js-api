@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Seskupit body (Aggregate Points)</h2><p/>
+        <h2><img src="../images/GUID-6C1620D9-D176-41FA-8283-833D8B1CCCFC-web.png" alt="Seskupit body"></h2>
+        <hr/>
+    <p>Tento n&aacute;stroj pracuje s&nbsp;vrstvou bodov&yacute;ch prvků a s&nbsp;vrstvou plo&scaron;n&yacute;ch prvků.  Vstupn&iacute; plo&scaron;n&eacute; prvky mohou b&yacute;t z&nbsp;polygonov&eacute; vrstvy nebo mohou b&yacute;t čtvercov&eacute; nebo &scaron;esti&uacute;heln&iacute;kov&eacute; přihr&aacute;dky vypoč&iacute;tan&eacute; při spu&scaron;těn&iacute; n&aacute;stroje. N&aacute;stroj nejprve urč&iacute;, kter&eacute; body spadaj&iacute; do jednotliv&yacute;ch zadan&yacute;ch oblast&iacute;. Po určen&iacute; těchto prostorov&yacute;ch vztahů pak vypoč&iacute;t&aacute; statistick&eacute; &uacute;daje v&scaron;ech bodů v&nbsp;oblasti a přiřad&iacute; je př&iacute;slu&scaron;n&eacute; oblasti. Nejz&aacute;kladněj&scaron;&iacute; statistikou je počet bodů v&nbsp;oblasti, ale vypoč&iacute;tat lze i jin&eacute; statistiky. 
+
+    </p>
+    <p>Předpokl&aacute;dejme např&iacute;klad, že m&aacute;te k&nbsp;dispozici bodov&eacute; prvky um&iacute;stěn&iacute; kav&aacute;ren a prvky oblasti krajů. Chcete shrnout prodej k&aacute;vy podle krajů. Za předpokladu, že maj&iacute; kav&aacute;rny atribut  <i>TOTAL_SALES</i>, můžete pro jednotliv&eacute; kraje vypoč&iacute;tat součet v&scaron;ech hodnot atributů <i>TOTAL_SALES</i>, minim&aacute;ln&iacute; či maxim&aacute;ln&iacute; hodnotu atributu <i>TOTAL_SALES</i>,
+ v&nbsp;každ&eacute;m kraji, nebo jin&eacute; statistiky, jako je počet, rozsah, směrodatn&aacute; odchylka a rozptyl.
+    </p>
+    <p>Tento n&aacute;stroj může tak&eacute; pracovat s&nbsp;daty obsahuj&iacute;c&iacute;mi informace o čase. Pokud jsou u vstupn&iacute;ch bodů informace o čase, jsou k&nbsp;dispozici možnosti dělen&iacute; času. Dělen&iacute; času v&aacute;m umožňuje vypoč&iacute;tat relaci bodu v&nbsp;oblasti při sledov&aacute;n&iacute; konkr&eacute;tn&iacute;ho časov&eacute;ho kroku. Můžete se např&iacute;klad zaměřit na hodinov&eacute; intervaly, což vy&uacute;st&iacute; ve v&yacute;stupy pro každou hodinu. 
+    </p>
+    <p>Řekněme např&iacute;klad, že m&aacute;te bodov&eacute; prvky každ&eacute; proveden&eacute; transakce v&nbsp;různ&yacute;ch um&iacute;stěn&iacute;ch kav&aacute;ren a ž&aacute;dnou vrstvu plochy. Data byla zaznamen&aacute;na v&nbsp;průběhu jednoho roku a u každ&eacute; transakce je uvedeno um&iacute;stěn&iacute; a časov&yacute; &uacute;daj. Pokud m&aacute; každ&aacute; transakce atribut  <i>TOTAL_SALES</i>, můžete z&iacute;skat součet v&scaron;ech atributů <i>TOTAL_SALES</i> v&nbsp;prostoru a čase, kter&eacute; v&aacute;s zaj&iacute;maj&iacute;. Pokud jsou tyto transakce v&nbsp;r&aacute;mci jednoho města, můžeme vygenerovat oblasti v&nbsp;podobě 1kilometrov&yacute;ch mř&iacute;žek a zaměřit se na t&yacute;denn&iacute; časov&eacute; kroky, abychom sumarizovali transakce v&nbsp;čase i prostoru.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="pointLayer">
+        <div><h2>Vyberte vrstvu obsahující body, které chcete seskupit do oblastí</h2></div>
+        <hr/>
+        <div>
+            <p>Vrstva bodů, kter&aacute; se seskup&iacute; do oblast&iacute;.
+            </p>
+            <p>Kromě v&yacute;běru vrstvy z&nbsp;mapy můžete tak&eacute; zvolit položku  <b>Proch&aacute;zet vrstvy</b> kter&aacute; se nach&aacute;z&iacute; v&nbsp;doln&iacute; č&aacute;sti rozbalovac&iacute; nab&iacute;dky, abyste ve sv&eacute;m obsahu mohli naj&iacute;t vrstvu prvků nebo datovou sadu sd&iacute;len&yacute;ch souborů velk&yacute;ch dat.  
+            </p>
+        </div>
+    </div>
+    <div id="inputAggregation">
+        <div><h2>Zvolit vrstvu plochy pro seskupení</h2></div>
+        <hr/>
+        <div>
+            <p>Oblasti, do kter&yacute;ch se seskup&iacute; vrstva bodů. Můžete si vybrat mezi vrstvou plochy, kterou zad&aacute;te, nebo přihr&aacute;dkami, kter&eacute; se vygeneruj&iacute; při spu&scaron;těn&iacute; n&aacute;stroje.   Při generov&aacute;n&iacute; přihr&aacute;dek počet a jednotky uveden&eacute; u položky  <b>Čtverec</b> určuj&iacute; v&yacute;&scaron;ku a d&eacute;lku čtverce. Pro <b>&Scaron;esti&uacute;heln&iacute;k</b> zadan&yacute; počet a jednotky určuj&iacute; vzd&aacute;lenost mezi rovnoběžn&yacute;mi stranami.
+            </p>
+        </div>
+    </div>
+    <div id="polygonLayer">
+        <div><h2>Zvolit vrstvu plochy pro seskupení</h2></div>
+        <hr/>
+        <div>
+            <p>Vrstva oblasti, do kter&eacute; se body seskup&iacute;. V&scaron;echny body spadaj&iacute;c&iacute; do hranic oblast&iacute; v&nbsp;t&eacute;to vrstvě budou spoč&iacute;t&aacute;ny a př&iacute;padně shrnuty s&nbsp;použit&iacute;m va&scaron;ich statistick&yacute;ch voleb. 
+            </p>
+            <p>
+            </p>
+            <p>Mus&iacute; b&yacute;t nastavena buď <b>Velikost přihr&aacute;dky</b> pro přihr&aacute;dky nebo <b>Vrstva plochy</b>.
+            </p>
+        </div>
+    </div>
+    <div id="inputBins">
+        <div><h2>Zvolte vzdálenost pro vytvoření přihrádek a seskupení</h2></div>
+        <hr/>
+        <div>
+            <p>Vzd&aacute;lenost použit&aacute; při tvorbě přihr&aacute;dek, do kter&yacute;ch budou seskupeny va&scaron;e vstupn&iacute; body. U čtvercov&eacute; přihr&aacute;dky velikost představuje v&yacute;&scaron;ku čtverce. U &scaron;esti&uacute;heln&iacute;kov&eacute; přihr&aacute;dky velikost představuje v&yacute;&scaron;ku &scaron;esti&uacute;heln&iacute;ku (mezi rovnoběžn&yacute;mi stranami).  
+            </p>
+            <p>Mus&iacute; b&yacute;t nastavena buď <b>Velikost přihr&aacute;dky</b> pro přihr&aacute;dky nebo <b>Vrstva plochy</b>.
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Seskupit pomocí časových dílů (volitelné)</h2></div>
+        <hr/>
+        <div>
+            <p>Pokud vstupn&iacute; bodov&aacute; vrstva obsahuje časov&aacute; data a jej&iacute; typ je instantn&iacute;, můžete prov&aacute;dět anal&yacute;zu pomoc&iacute; dělen&iacute; času.  Při použit&iacute; času můžete nastavit tři parametry:
+                <ul>
+                    <li>  <b>Časov&yacute; interval</b>
+                    </li>
+                    <li> <b>Časov&yacute; krok</b>
+                    </li>
+                    <li> <b>Referenčn&iacute; čas</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Představte si, že m&aacute;te data reprezentuj&iacute;c&iacute; rok v&nbsp;čase a chcete prov&eacute;st anal&yacute;zu pomoc&iacute; t&yacute;denn&iacute;ch &uacute;seků. Abyste tak učinili, nastav&iacute;te  <b>Časov&yacute; interval</b> na <code>1 t&yacute;den</code>.
+            </p>
+            <p> Představte si, že m&aacute;te data reprezentuj&iacute;c&iacute; rok v&nbsp;čase a chcete prov&eacute;st anal&yacute;zu pomoc&iacute; prvn&iacute;ho t&yacute;dne v&nbsp;měs&iacute;ci. Abyste tak učinili, nastav&iacute;te <b>Časov&yacute; interval</b> na <code>1 t&yacute;den</code>, <b>Časov&yacute; krok</b> na <code>1 měs&iacute;c</code> a <b>Referenčn&iacute; čas</b> na <code>1. leden ve 12:00</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>Časový interval pro seskupení</h2></div>
+        <hr/>
+        <div>
+            <p>Časov&yacute; interval použit&yacute; pro dělen&iacute; dat. Časov&yacute; interval lze použ&iacute;t samotn&yacute; nebo ve spojen&iacute; s&nbsp;parametrem  <b>Časov&yacute; krok</b> nebo <b>Referenčn&iacute; čas</b>.
+            </p>
+            <p> Pokud chcete vytvořit časov&eacute; d&iacute;ly, kter&eacute; se konaj&iacute; každ&eacute; ponděl&iacute; od 9 do 10 hodin, <b>Časov&yacute; interval</b> nastav&iacute;te na <code>1 hodinu</code>, <b>Časov&yacute; krok</b> na <code>1 t&yacute;den</code> a <b>Referenčn&iacute; čas</b> na <code>9:00:00 v&nbsp;ponděl&iacute;</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>Časový krok pro seskupení</h2></div>
+        <hr/>
+        <div>
+            <p> Krok použit&yacute; pro v&yacute;počet časov&eacute;ho &uacute;seku. <b>Časov&yacute; krok</b> lze použ&iacute;t samotn&yacute; nebo ve spojen&iacute; s&nbsp;parametrem <b>Časov&yacute; interval</b>, s&nbsp;parametrem <b>Referenčn&iacute; čas</b> nebo s&nbsp;oběma parametry <b>Časov&yacute; interval</b> a <b>Referenčn&iacute; čas</b> dohromady.
+            </p>
+            <p> Pokud chcete vytvořit časov&eacute; d&iacute;ly, kter&eacute; se konaj&iacute; každ&eacute; ponděl&iacute; od 9 do 10 hodin, <b>Časov&yacute; interval</b> nastav&iacute;te na <code>1 hodinu</code>, <b>Časov&yacute; krok</b> na <code>1 t&yacute;den</code> a <b>Referenčn&iacute; čas</b> na <code>9:00:00 v&nbsp;ponděl&iacute;</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Referenční čas použitý pro srovnání dělení času</h2></div>
+        <hr/>
+        <div>
+            <p>Datum a čas použit&eacute; pro srovn&aacute;n&iacute; dělen&iacute; času.  <b>Časov&yacute; krok</b> začne od referenčn&iacute;ho času a bude pokračovat směrem dozadu.
+            </p>
+            <p> Pokud chcete vytvořit časov&eacute; d&iacute;ly, kter&eacute; se konaj&iacute; každ&eacute; ponděl&iacute; od 9 do 10 hodin, <b>Časov&yacute; interval</b> nastav&iacute;te na <code>1 hodinu</code>, <b>Časov&yacute; krok</b> na <code>1 t&yacute;den</code> a <b>Referenčn&iacute; čas</b> na <code>9:00:00 v&nbsp;ponděl&iacute;</code>.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Přidat statistiku (volitelné)</h2></div>
+        <hr/>
+        <div>
+            <p> Můžete vypoč&iacute;tat statistiku sumarizovan&yacute;ch prvků. U č&iacute;seln&yacute;ch pol&iacute; můžete vypoč&iacute;tat n&aacute;sleduj&iacute;c&iacute;:
+                <ul>
+                    <li>Počet
+                    </li>
+                    <li>Průměr
+                    </li>
+                    <li>Min.
+                    </li>
+                    <li>Maxim&aacute;ln&iacute;
+                    </li>
+                    <li>Rozsah
+                    </li>
+                    <li>Rozptyl:
+                    </li>
+                    <li>Směrodatn&aacute; odchylka
+                    </li>
+                </ul>
+                
+            </p>
+            <p>U řetězcov&yacute;ch pol&iacute; můžete vypoč&iacute;tat n&aacute;sleduj&iacute;c&iacute;:
+                <ul>
+                    <li>Počet
+                    </li>
+                    <li>Libovoln&eacute; &ndash; Tato statistika je n&aacute;hodn&yacute;m vzorkem hodnoty řetězce v&nbsp;určen&eacute;m poli.
+                    </li>
+                </ul>
+                V&scaron;echny statistiky se poč&iacute;taj&iacute; pro nenulov&eacute; hodnoty. V&yacute;sledn&aacute; vrstva bude obsahovat nov&eacute; pole pro každou vypoč&iacute;tanou statistiku. Lze přidat libovoln&yacute; počet statistik zvolen&iacute;m atributu a statistiky. 
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>SpatialReference (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>Jedn&aacute; se o dočasn&yacute; parametr pro předčasn&eacute; vyd&aacute;n&iacute; pro nastaven&iacute; souřadnicov&eacute;ho syst&eacute;mu zpracov&aacute;n&iacute;. Mnoho n&aacute;strojů pro velk&aacute; data vyžaduje, aby byl jako souřadnicov&yacute; syst&eacute;m pro zpracov&aacute;n&iacute; použit rovinn&yacute; souřadnicov&yacute; syst&eacute;m. Ve v&yacute;choz&iacute;m nastaven&iacute; n&aacute;stroj použije vstupn&iacute; souřadnicov&yacute; syst&eacute;m, ale pokud se jedn&aacute; o zeměpisn&yacute; souřadnicov&yacute; syst&eacute;m, n&aacute;stroj selže. Pro nastaven&iacute; rovinn&eacute;ho souřadnicov&eacute;ho syst&eacute;mu zadejte WKID. Např&iacute;klad  <b>Web Mercator</b> zad&aacute;te jako <code>3857</code>.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Zvolte datové úložiště</h2></div>
+        <hr/>
+        <div>
+            <p>Jedn&aacute; se o dočasn&yacute; parametr pro předčasn&eacute; vyd&aacute;n&iacute; pro nastaven&iacute; datov&eacute;ho &uacute;loži&scaron;tě, do kter&eacute;ho se ulož&iacute; v&yacute;sledky. Obě datov&aacute; uloži&scaron;tě jsou souč&aacute;st&iacute;  ArcGIS Data Store. Pokud vyberete časoprostorov&eacute; datov&eacute; &uacute;loži&scaron;tě, ale nem&aacute;te ž&aacute;dn&eacute; nainstalov&aacute;no, n&aacute;stroj selže. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Název výsledné vrstvy</h2></div>
+        <hr/>
+        <div>
+            <p> Toto je n&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce <b>Můj obsah</b> a přid&aacute; do mapy.  V&yacute;choz&iacute; n&aacute;zev se ř&iacute;d&iacute; n&aacute;zvem n&aacute;stroje a n&aacute;zvem vstupn&iacute; vrstvy. Pokud vrstva již existuje, n&aacute;stroj selže.
+            </p>
+            <p>V rozbalovac&iacute;m seznamu  <b>Uložit v&yacute;sledek do</b> můžete zadat n&aacute;zev složky ve složce <b>Můj obsah</b>, do kter&eacute; se m&aacute; v&yacute;sledek uložit.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

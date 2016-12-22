@@ -67,7 +67,7 @@
         <div><h2>Wybierz warstwę punktową reprezentującą lokalizację punktów początkowych</h2></div>
         <hr/>
         <div>
-            <p>Wybierz warstwę punktową reprezentującą punkt lub punkty początkowe. Narzędzie obsługuje maksymalnie  5,000 punkt&oacute;w początkowych oraz  5,000 punkt&oacute;w docelowych. </p>
+            <p>Wybierz warstwę punktową reprezentującą punkt lub punkty początkowe. Narzędzie obsługuje maksymalnie  5 000 punkt&oacute;w początkowych oraz  5 000 punkt&oacute;w docelowych. </p>
             <p>Jeśli wybierzesz warstwę z&nbsp;dokładnie jednym punktem początkowym, wszystkie punkty docelowe będą z&nbsp;nim połączone.
             </p>
             <p class="OnlineOnly">Poza wybraniem warstwy na mapie można wybrać opcję  <b>Wybierz warstwę analizy Living Atlas</b> lub <b>Wybierz warstwę analizy</b> dostępną w dolnej części menu rozwijanego. Zostanie wtedy otwarta galeria zawierająca kolekcje warstw przydatnych podczas wielu analiz. 
@@ -78,7 +78,7 @@
         <div><h2>Wybierz warstwę punktów docelowych</h2></div>
         <hr/>
         <div>
-            <p>Wybierz warstwę reprezentującą punkt docelowy lub punkty docelowe, z&nbsp;kt&oacute;rymi powinny łączyć się punkty początkowe. Narzędzie obsługuje maksymalnie  5,000 punkt&oacute;w początkowych oraz  5,000 punkt&oacute;w docelowych. </p>
+            <p>Wybierz warstwę reprezentującą punkt docelowy lub punkty docelowe, z&nbsp;kt&oacute;rymi powinny łączyć się punkty początkowe. Narzędzie obsługuje maksymalnie  5 000 punkt&oacute;w początkowych oraz  5 000 punkt&oacute;w docelowych. </p>
             <p>Jeśli wybierzesz warstwę z&nbsp;dokładnie jednym punktem docelowym, wszystkie punkty początkowe będą z&nbsp;nim połączone. 
             </p>
             <p>Jeśli istnieje jeden punkt początkowy i&nbsp;wiele punkt&oacute;w docelowych, narzędzie połączy punkt początkowy z&nbsp;każdym punktem docelowym.
@@ -116,7 +116,7 @@
                         </p>
                         <p>Można skorzystać z&nbsp;historii ustawień ruchu drogowego, aby na przykład zadać pytanie: &bdquo;Ile og&oacute;łem potrzeba czasu na przejazd do tych punkt&oacute;w docelowych, jeśli wyjazd nastąpiłby o&nbsp;godz. 11:30 w&nbsp;środę?&rdquo;.
                         </p>
-                        <p>Skonfigurowany czas odnosi się do strefy czasowej, w&nbsp;kt&oacute;rej zlokalizowane są punkty początkowe. Jeśli zatem czas zostanie skonfigurowany na godz. 8:00 i&nbsp;występują dwa punkty początkowe (jeden w&nbsp;Nowym Jorku, a&nbsp;drugi w&nbsp;Los Angeles), trasy zostaną wygenerowane z&nbsp;uwzględnieniem wyjazdu odpowiednio o&nbsp;godz. 8:00czasu wschodniego i&nbsp;godz. 8:00czasu pacyficznego.
+                        <p>Skonfigurowany czas odnosi się do strefy czasowej, w&nbsp;kt&oacute;rej zlokalizowane są punkty początkowe. Jeśli zatem czas zostanie skonfigurowany na godz. 8:00 i&nbsp;występują dwa punkty początkowe (jeden w&nbsp;Nowym Jorku, a&nbsp;drugi w&nbsp;Los Angeles), trasy zostaną wygenerowane z&nbsp;uwzględnieniem wyjazdu odpowiednio o&nbsp;godz. 8:00 czasu wschodniego i&nbsp;godz. 8:00 czasu pacyficznego.
                         </p>
                     </li>
                 </ul>
@@ -130,9 +130,11 @@
         <div><h2>Nazwa warstwy wynikowej</h2></div>
         <hr/>
         <div>
-            <p>Jest to nazwa warstwy, kt&oacute;ra zostanie utworzona w zakładce  <b>Moje zasoby</b> i zostanie dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, wyświetlony zostanie komunikat z&nbsp;prośbą o&nbsp;podanie innej nazwy.
+            <p>Nazwa warstwy obiekt&oacute;w, kt&oacute;ra zostanie utworzona w obszarze  <b>Moje zasoby</b> i dodana do mapy. Jeśli warstwa obiekt&oacute;w już istnieje, wyświetlony zostanie komunikat z&nbsp;prośbą o&nbsp;podanie innej nazwy. Ta warstwa obiekt&oacute;w będzie zawierała warstwę dla każdego z następujących element&oacute;w: tras, nieprzypisanych punkt&oacute;w początkowych i nieprzypisanych punkt&oacute;w docelowych, jeśli niekt&oacute;rych punkt&oacute;w początkowych nie można połączyć z ich punktami docelowymi.
             </p>
-            <p>Używając listy rozwijanej  <b>Zapisz wynik w</b>, można określić nazwę folderu w zakładce <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
+            <p>Jeśli zostanie wybrana opcja  <b>Dołącz warstwy trasy</b>, każda trasa z wynik&oacute;w zostanie także zapisana jako warstwa trasy. Warstwa trasy zawiera wszystkie informacje dotyczące określonej trasy, takie jak przystanki przypisane do trasy i wskaz&oacute;wki dojazdu. Tworzenie warstw tras jest przydatne, jeśli chcesz udostępnić poszczeg&oacute;lne trasy innym członkom w instytucji lub jeśli chcesz dodatkowo zmodyfikować trasy przy użyciu przycisku <b>Wskaz&oacute;wki dojazdu</b> w przeglądarce map. Unikalna nazwa każdej warstwy trasy jest tworzona poprzez dodanie nazwy trasy wygenerowanej podczas wykonywania analizy do prefiksu będącego nazwą warstwy obiekt&oacute;w.
+            </p>
+            <p>Za pomocą listy rozwijanej  <b>Zapisz wynik w</b> można podać nazwę folderu na stronie <b>Moje zasoby</b>, w kt&oacute;rym będą zapisywane tworzone warstwa obiekt&oacute;w i warstwy tras.
             </p>
         </div>
     </div>

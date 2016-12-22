@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Opprett buffere</h2><p/>
+        <h2><img src="../images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" alt="Opprette buffere"></h2>
+        <hr/>
+    <p>En buffer er et omr&aring;de som dekker en gitt avstand fra et punkt-, linje- eller omr&aring;degeoobjekt. 
+    </p>
+    <p>Buffere brukes vanligvis til &aring; opprette omr&aring;der som kan analyseres ytterligere ved hjelp av verkt&oslash;y. Hvis for eksempel sp&oslash;rsm&aring;let er &laquo;Hvilke bygninger ligger innenfor 1,6 kilometer fra skolen?&raquo;, finner du svaret ved &aring; opprette en buffer p&aring; 1,6 kilometer rundt skolen og legge laget som inneholder bygningsflatene, over bufferen. Sluttresultatet er et lag som inneholder de bygningene som ligger innenfor 1,6 kilometer fra skolen.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Valg lag som bufferen skal brukes på</h2></div>
+        <hr/>
+        <div>
+            <p>Punkt-, linje- eller omr&aring;degeoobjektene som skal bufres.
+            </p>
+            <p>I tillegg til &aring; velge et lag fra kartet kan du velge  <b>Browse Layers</b> (Bla gjennom lag), som du finner nederst i rullegardinlisten, til &aring; bla deg frem til innholdet for et fildelingsdatasett for big data eller et geoobjektslag.  
+            </p>
+        </div>
+    </div>
+    <div id="bufferType">
+        <div><h2>Velg hvilke typer søk som skal inkluderes</h2></div>
+        <hr/>
+        <div>
+            <p>Det er tre m&aring;ter du kan spesifisere st&oslash;rrelsen p&aring; bufferen for inndatageoobjektene p&aring;: 
+                <ul>
+                    <li>Angi en avstand som brukes p&aring; alle geoobjekter.
+                    </li>
+                    <li>Angi et felt p&aring; inndatalaget som inneholder avstandsverdien. Du kan bruke et strengfelt eller et numerisk felt. Dersom en line&aelig;r enhet ikke er definert, brukes enhetene til den geografiske referansen. Hvis du bruker et geografisk koordinatsystem, antas det at det enhetsl&oslash;se feltet er meter. 
+                    </li>
+                    <li>Bygg et uttrykk med flere felt og matematiske operatorer.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Velg bufringsmetode</h2></div>
+        <hr/>
+        <div>
+            <p>Du kan velge en  <b>Planar</b> metode eller en <b>geodetisk</b> metode. <b>Planar</b>-metoden kan v&aelig;re raskere og egner seg til lokale analyser p&aring; projiserte data. <b>Geodetisk</b>-metoden egner seg til store omr&aring;der og geografiske koordinatsystemer.
+            </p>
+        </div>
+    </div>
+    <div id="dissolveOption">
+        <div><h2>Velg typen oppløsningsmetode</h2></div>
+        <hr/>
+        <div>
+            <p>Alternativer for &aring; angi oppl&oslash;sningsmetode.   Hvis en oppl&oslash;sningsmetode er valgt, f&aring;r du muligheten til &aring; opprette omr&aring;der i flere deler eller enkeltdeler, og du kan beregne statistikk basert p&aring; de aktuelle feltene.
+                <ul>
+                    <li> <b>Alle</b> &ndash; Alle geoobjekter oppl&oslash;ses. Hvis geoobjekter i flere deler er tillatt, oppl&oslash;ses alle geoobjekter til ett geoobjekt. Hvis flere deler ikke er tillatt, vil geoobjekter som er tilst&oslash;tende eller overlapper bli oppl&oslash;st.
+                    </li>
+                    <li> <b>Felter</b> &ndash; Geoobjekter som deler samme spesifiserte felt eller spesifiserte feltkombinasjon, blir oppl&oslash;st. Hvis geoobjekter i flere deler er tillatt, oppl&oslash;ses alle geoobjekter med samme felt til ett geoobjekt. Hvis flere deler ikke er tillatt, vil geoobjekter som er tilst&oslash;tende eller overlapper med samme felt, bli oppl&oslash;st.
+                    </li>
+                    <li> <b>Ingen</b> &ndash; Ingen geoobjekter oppl&oslash;ses.  Dette er standardalternativet.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="multipart">
+        <div><h2>Tillat geoobjekter i flere deler.</h2></div>
+        <hr/>
+        <div>
+            <p>Muligheten til &aring; angi om resultatet skal best&aring; av geoobjekter med &eacute;n eller flere deler. 
+
+            </p>
+            <p>
+                <ul>
+                    <li>Krysset av &ndash; Analyseresultatene vil inneholde geoobjekter med flere deler.   
+                    </li>
+                    <li>Ikke krysset av &ndash; Analyseresultatene vil inneholde geoobjekter i &eacute;n del. Dette er standardalternativet.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Legg til statistikk (valgfritt)</h2></div>
+        <hr/>
+        <div>
+            <p> Du kan beregne statistikk p&aring; geoobjekter som er summert. P&aring; numeriske felt kan du beregne f&oslash;lgende:
+                <ul>
+                    <li>Antall
+                    </li>
+                    <li>Gjennomsnitt
+                    </li>
+                    <li>Min
+                    </li>
+                    <li>Maks
+                    </li>
+                    <li>Omr&aring;de
+                    </li>
+                    <li>Varians
+                    </li>
+                    <li>Standardavvik
+                    </li>
+                </ul>
+                
+            </p>
+            <p>P&aring; strengfelter kan du beregne f&oslash;lgende:
+                <ul>
+                    <li>Antall
+                    </li>
+                    <li>Noen &ndash; Denne statistikken er en tilfeldig pr&oslash;ve av en strengverdi i det spesifiserte feltet.
+                    </li>
+                </ul>
+                All statistikk beregnes p&aring; ikke-nullverdier. Resultatlaget inneholder et nytt felt for hver beregnet statistikk. Du kan legge til flere statistikker ved &aring; velge et attributt og statistikk. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Velg datalager</h2></div>
+        <hr/>
+        <div>
+            <p>Dette er en midlertidig parameter for forh&aring;ndslansering, for &aring; angi datalageret der resultatene lagres. Begge datalagrene er en del av  ArcGIS Data Store. Hvis du velger det spatiotemporale datalageret, men ikke har et installert, vil verkt&oslash;yet mislykkes. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Navn på resultatlag</h2></div>
+        <hr/>
+        <div>
+            <p> Dette er navnet p&aring; laget som vil bli laget i <b>Mitt Innhold</b> og lagt til i kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget allerede eksisterer, vil verkt&oslash;yet mislykkes.
+            </p>
+            <p>Bruk rullegardinlisten  <b>Lagre resultat</b> i til &aring; angi navnet p&aring; en mappe i <b>Mitt innhold</b> som resultatene skal lagres i.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

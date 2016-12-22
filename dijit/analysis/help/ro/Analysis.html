@@ -41,11 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="aoToolbox">
-        <p>The Feature Analysis toolbox contains a number
-of tools that you can access and use.  These tasks are arranged below into
-categories; the categories are simply logical groupings
-and do not affect how you access or use the tasks in any
-way.
+        <p>Caseta de instrumente Analiză obiecte spaţiale conţine o serie de instrumente pe care le puteţi accesa şi utiliza.  Aceste activităţi sunt aranjate mai jos &icirc;n categorii; categoriile sunt pur şi simplu grupări logice şi nu afectează &icirc;n niciun fel modul &icirc;n care accesaţi sau utilizaţi operaţiunile.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="regularsize">
@@ -54,6 +50,8 @@ way.
         <p>Aceste instrumente calculează numărul total, lungimile, suprafeţele şi statistici descriptive de bază ale obiectelor spaţiale şi atributelor lor din suprafeţe sau din apropierea altor obiecte spaţiale.
             <ul>
                 <li> <b>&Icirc;nsumare puncte</b> calculează statistici despre punctele care se &icirc;ncadrează &icirc;n suprafeţe specificate.
+                </li>
+                <li> <b>Unire obiecte spaţiale</b> transferă atribute dintr-un obiect spaţial sau tabel &icirc;n altul pe baza relaţiilor spaţiale şi de atribute.
                 </li>
                 <li> <b>Rezumare &icirc;n apropiere</b> calculează statistici privind obiectele spaţiale şi atributele acestora care se situează &icirc;ntr-o anumită distanţă.
                 </li>
@@ -81,6 +79,32 @@ way.
                     <li>Se dau locaţiile punctuale ale infracţiunilor. Aflaţi numărul de infracţiuni pe judeţ sau pe altă unitate administrativă.
                     </li>
                     <li>Găsiţi cele mai mari şi cele mai mici venituri pentru locaţiile aflate &icirc;n franciză, &icirc;n funcţie de stat.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="JoinFeaturesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Unire obiecte spaţiale</h2></td>
+                    <td>
+                    <img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" class="titleImage" alt="Unire obiecte spaţiale">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Unire obiecte spaţiale transferă atribute dintr-un obiect spaţial sau tabel &icirc;n altul pe baza relaţiilor spaţiale şi de atribute. De exemplu:
+                <ul>
+                    <li>Anexaţi datelor dvs. despre incidente informaţii demografice sau privind graniţele comune.
+                    </li>
+                    <li>Identificaţi centrele aflate cel mai aproape de o locaţie cunoscută.
+                    </li>
+                    <li>Determinaţi numărul de locuinţe aflate &icirc;n zone expuse riscului de inundaţie.
+                    </li>
+                    <li>Identificaţi habitatele comune mai multor specii diferite de animale sălbatice.
                     </li>
                 </ul>
                 
@@ -289,13 +313,15 @@ way.
             <br/>
         </div>
     <div id="AnalyzePatternsCategory" class="regularsize">
-        <h2>Analiză modele</h2>
+        <h2>Analiză tendinţe</h2>
         <hr/>
         <p>Aceste instrumente vă ajută să identificaţi, cuantificaţi şi vizualizaţi modele spaţiale din datele dvs.  
             <ul>
                 <li> <b>Calcul densitate</b> ia cantităţi cunoscute ale unui fenomen şi le răsp&acirc;ndeşte pe hartă.
                 </li>
                 <li> <b>Găsire puncte de interes</b> identifică grupări semnificative statistic din modelul spaţial al datelor dvs.
+                </li>
+                <li>Instrumentul  <b>Găsire valori excepţionale</b> va determina dacă există valori excepţionale semnificative din punct de vedere statistic &icirc;n modelul spaţial al datelor dvs.
                 </li>
                 <li> <b>Interpolare puncte</b> prezice valori &icirc;n locaţii noi pe baza măsurătorilor găsite &icirc;ntr-o colecţie de puncte.
                 </li>
@@ -333,6 +359,21 @@ way.
             </p>
             <br/>
         </div>
+        <div id="FindOutliersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Găsire valori excepţionale</h2></td>
+                    <td>
+                    <img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" class="titleImage" alt="Găsire valori excepţionale">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Acest instrument creează o hartă care prezintă toate grupările şi valorile spaţiale excepţionale semnificative statistic, prezente &icirc;n datele dvs. Utilizaţi acest instrument pentru a identifica obiectele spaţiale ale căror valori sunt semnificativ diferite de cele ale obiectelor &icirc;nvecinate.  Puteţi utiliza acest instrument, de exemplu, pentru a găsi anomaliile din modelele de cheltuieli, a determina unde există cele mai clare graniţe &icirc;ntre bunăstare şi sărăcie &icirc;ntr-o zonă studiată sau a determina dacă există judeţe din Rom&acirc;nia &icirc;n care speranţa de viaţă este neobişnuit de scăzută &icirc;n comparaţie cu judeţele &icirc;nvecinate.
+            </p>
+            <br/>
+        </div>
         <div id="InterpolatePointsTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -344,7 +385,7 @@ way.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Acest instrument vă permite să anticipaţi valori &icirc;n locaţii noi, pe baza măsurătorilor găsite &icirc;ntr-o colecţie de puncte. Instrumentul ia date punctuale cu valori &icirc;n fiecare punct şi returnează suprafeţe clasificate &icirc;n funcţie de valorile prezise. Puteţi utiliza acest instrument, de exemplu, pentru a prezice nivelurile precipitaţiilor dintr-un bazin hidrografic pe baza măsurătorilor efectuate &icirc;n staţii individuale.
+            <p>Acest instrument vă permite să preziceţi valori &icirc;n locaţii noi pe baza măsurătorilor găsite &icirc;ntr-o colecţie de puncte. Instrumentul ia date punctuale cu valori &icirc;n fiecare punct şi returnează suprafeţe clasificate &icirc;n funcţie de valorile prezise. Puteţi utiliza acest instrument, de exemplu, pentru a prezice nivelurile precipitaţiilor dintr-un bazin hidrografic pe baza măsurătorilor efectuate &icirc;n staţii individuale.
             </p>
             <br/>
         </div>
@@ -457,7 +498,7 @@ way.
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Planificaţi rute</h2></td>
+                    <td><h2>Planificare rute</h2></td>
                     <td>
                     <img src="../images/GUID-09CC6D60-3C72-42D7-968E-B0663F0B1EBB-web.png" class="titleImage" alt="Planificaţi rute">
                     </td>

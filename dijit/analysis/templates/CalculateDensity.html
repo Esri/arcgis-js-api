@@ -71,7 +71,7 @@
        <tbody> 
         <tr data-dojo-attach-point="_optionsRow">
           <td colspan="2" class="optionsTd">
-            <div class="esriLeadingMargin1 optionsClose" data-dojo-attach-point="_optionsDiv">
+            <div class="optionsClose" data-dojo-attach-point="_optionsDiv">
               <div class="dijitTreeExpando" data-dojo-attach-event="onclick:_handleOptionsBtnClick"><label class="esriLeadingMargin2 noWrapLabel">${i18n.Options}</label></div>
               <table class="esriFormTable optionsTable">
                 <tbody>
@@ -281,7 +281,6 @@
         <tr data-dojo-attach-point="_areaSelectRow">
           <td colspan="3" style="padding-top:0;">
             <select class="esriLeadingMargin1 longInput" style="margin-bottom:1.0em;" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_areaUnitSelect" data-dojo-attach-event="onChange:_handleAreaUnitChange">
-              <option value="SquareMapUnits">${i18n.sqMapUnits}</option>
               <option value="SquareMeters">${i18n.sqMeters}</option>
               <option value="SquareKilometers">${i18n.sqKm}</option>
               <option value="Hectares">${i18n.hectares}</option>
@@ -372,7 +371,7 @@
             </input>
           </td>
         </tr>
-        <tr data-dojo-attach-point="_srLabelRow">
+       <!-- <tr data-dojo-attach-point="_srLabelRow">
             <td colspan="2">
               <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel" data-dojo-attach-point="_spatialRefLabel">${i18n.nineLabel}</label>
               <label class="esriAnalysisStepsLabel">${i18n.spatialReference}</label>
@@ -385,7 +384,7 @@
             <td colspan="3">
               <input type="text" data-dojo-type="dijit/form/ValidationTextBox" class="esriLeadingMargin1 longInput" data-dojo-props="trim:true" data-dojo-attach-point="_spatialRefInput" value=""></input>
             </td>                
-          </tr>
+          </tr>-->
         <tr data-dojo-attach-point="_datastoreLabelRow">
           <td colspan="2">
             <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel" placeholder="10" data-dojo-attach-point="_datastoreLabel">${i18n.tenLabel}</label>

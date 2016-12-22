@@ -41,23 +41,21 @@
 <body onload="init()">
 <div id="topics">
     <div id="aoToolbox">
-        <p>The Feature Analysis toolbox contains a number
-of tools that you can access and use.  These tasks are arranged below into
-categories; the categories are simply logical groupings
-and do not affect how you access or use the tasks in any
-way.
+        <p>Zestaw narzędzi Analiza obiektowa zawiera szereg narzędzi, do kt&oacute;rych można uzyskać dostęp i kt&oacute;rych można używać. Te zadania zostały podzielone na kategorie. Kategorie to grupy logiczne, kt&oacute;re nie mają wpływu na spos&oacute;b wykonywania zadań ani uzyskiwania do nich dostępu.
         </p>
     </div>
-    <div id="SummarizeDataCategory" class="regularsize">
+    <div id="SummarizeDataCategory" class="largesize">
         <h2>Sumowanie danych</h2>
         <hr/>
         <p>Narzędzia te umożliwiają obliczanie łącznych wartości, długości, powierzchni oraz podstawowych, opisowych danych statystycznych obiekt&oacute;w i ich atrybut&oacute;w znajdujących się w granicach obszar&oacute;w lub w pobliżu innych obiekt&oacute;w.
             <ul>
-                <li>Za pomocą funkcji  <b>Agreguj Punkty</b> można obliczyć statystyki dotyczące punkt&oacute;w, kt&oacute;re mieszczą się w określonych obszarach.
+                <li>Za pomocą narzędzia  <b>Agreguj punkty</b> można obliczyć statystyki dotyczące punkt&oacute;w, kt&oacute;re mieszczą się w określonych obszarach.
                 </li>
-                <li>Za pomocą funkcji  <b>Sumuj W pobliżu</b> można obliczyć dane statystyczne obiekt&oacute;w i ich atrybuty w określonych obszarach.
+                <li>Za pomocą narzędzia  <b>Połącz obiekty</b> można przenieść atrybuty z jednej warstwy lub tabeli do innej na podstawie relacji przestrzennych i atrybutowych.
                 </li>
-                <li>Za pomocą funkcji  <b>Sumuj W obrębie</b> można obliczyć dane statystyczne nakładających się na siebie obiekt&oacute;w i atrybut&oacute;w znajdujących się na danym obszarze.
+                <li>Za pomocą narzędzia  <b>Sumuj w pobliżu</b> można obliczyć dane statystyczne obiekt&oacute;w i ich atrybuty w określonych obszarach.
+                </li>
+                <li>Za pomocą narzędzia  <b>Sumuj w obrębie</b> można obliczyć dane statystyczne nakładających się na siebie obiekt&oacute;w i atrybut&oacute;w znajdujących się na danym obszarze.
                 </li>
             </ul>
             
@@ -76,11 +74,37 @@ way.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Narzędzie to służy do pracy z&nbsp;warstwą obiekt&oacute;w punktowych oraz warstwą obiekt&oacute;w obszarowych i&nbsp;pozwala ustalić, kt&oacute;re punkty znajdują się w&nbsp;obrębie poszczeg&oacute;lnych obszar&oacute;w, a&nbsp;także obliczyć statystyki wszystkich punkt&oacute;w w&nbsp;każdym obszarze. Na przykład:
+            <p>Narzędzie to służy do pracy z&nbsp;warstwą obiekt&oacute;w punktowych oraz warstwą obiekt&oacute;w obszarowych i&nbsp;pozwala ustalić, kt&oacute;re punkty znajdują się w&nbsp;obrębie poszczeg&oacute;lnych obszar&oacute;w, a&nbsp;także obliczyć statystyki wszystkich punkt&oacute;w w&nbsp;każdym obszarze. Na przykład,
                 <ul>
                     <li>Na podstawie miejsc wystąpienia przestępstw oblicz liczbę przestępstw w&nbsp;danym powiecie lub innej jednostce podziału administracyjnego.
                     </li>
                     <li>Wyszukaj najwyższe i&nbsp;najniższe dochody plac&oacute;wek franczyzowych według wojew&oacute;dztwa.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="JoinFeaturesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Połącz obiekty</h2></td>
+                    <td>
+                    <img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" class="titleImage" alt="Połącz obiekty">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Za pomocą narzędzia Połącz obiekty można przenieść atrybuty z jednej warstwy lub tabeli do innej na podstawie relacji przestrzennych i atrybutowych. Na przykład,
+                <ul>
+                    <li>Dołącz wsp&oacute;lną granicę lub informacje demograficzne do danych zdarzenia.
+                    </li>
+                    <li>Zidentyfikuj plac&oacute;wki znajdujące się najbliżej znanej lokalizacji.
+                    </li>
+                    <li>Ustal liczbę budynk&oacute;w mieszkalnych znajdujących się w strefach zalewowych.
+                    </li>
+                    <li>Zidentyfikuj wsp&oacute;lne siedliska r&oacute;żnych gatunk&oacute;w dzikich roślin lub zwierząt.
                     </li>
                 </ul>
                 
@@ -98,7 +122,7 @@ way.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Umożliwia wyszukiwanie obiekt&oacute;w znajdujących się w&nbsp;określonej odległości od obiekt&oacute;w w&nbsp;warstwie wejściowej. Odległość może być mierzona wzdłuż linii prostych lub optymalnych tras trybu podr&oacute;ży. W&oacute;wczas można obliczyć dane statystyczne dla pobliskich obiekt&oacute;w. Na przykład:
+            <p>Umożliwia wyszukiwanie obiekt&oacute;w znajdujących się w&nbsp;określonej odległości od obiekt&oacute;w w&nbsp;warstwie wejściowej. Odległość może być mierzona wzdłuż linii prostych lub optymalnych tras trybu podr&oacute;ży. W&oacute;wczas można obliczyć dane statystyczne dla pobliskich obiekt&oacute;w. Na przykład,
                 <ul>
                     <li>Oblicz całkowitą wielkość populacji w zasięgu pięciu minut od zaproponowanej nowej lokalizacji sklepu.
                     </li>
@@ -120,7 +144,7 @@ way.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Umożliwia wyszukiwanie obszar&oacute;w (i&nbsp;części obszar&oacute;w) nakładających się na siebie dw&oacute;ch warstw i&nbsp;obliczenie statystyk dotyczących ich pokrycia. Na przykład:
+            <p>Umożliwia wyszukiwanie obszar&oacute;w (i&nbsp;części obszar&oacute;w) nakładających się na siebie dw&oacute;ch warstw i&nbsp;obliczenie statystyk dotyczących ich pokrycia. Na przykład,
                 <ul>
                     <li>Mając warstwę zlewni i warstwę obszar&oacute;w użytkowania terenu według typu użytkowania terenu, oblicz całkowity areał typ&oacute;w użytkowania terenu dla każdej zlewni. 
                     </li>
@@ -289,7 +313,7 @@ way.
             <br/>
         </div>
     <div id="AnalyzePatternsCategory" class="regularsize">
-        <h2>Analiza Zależności przestrzennych</h2>
+        <h2>Analiza zależności przestrzennych</h2>
         <hr/>
         <p>Narzędzia te pomagają w&nbsp;identyfikacji, ocenie ilościowej oraz przestrzennej wizualizacji trend&oacute;w istniejących w&nbsp;danych.  
             <ul>
@@ -297,7 +321,9 @@ way.
                 </li>
                 <li> <b>Narzędzie Znajdź lokalizacje hot spot</b> identyfikuje statystycznie istotne zgrupowania w zależnościach przestrzennych Twoich danych.
                 </li>
-                <li>Narzędzie  <b>Interpoluj Punkty</b> służy do przewidywania wartości w&nbsp;nowych lokalizacjach na podstawie pomiar&oacute;w wykonanych na zbiorze punkt&oacute;w.
+                <li>Za pomocą narzędzia  <b>Znajdź elementy odstające</b> można sprawdzić, czy zależności przestrzenne występujące w danych zawierają statystycznie istotne elementy odstające.
+                </li>
+                <li>Narzędzie  <b>Interpoluj punkty</b> służy do przewidywania wartości w&nbsp;nowych lokalizacjach na podstawie pomiar&oacute;w wykonanych na zbiorze punkt&oacute;w.
                 </li>
             </ul>
             
@@ -322,14 +348,29 @@ way.
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Find Hot Spots</h2></td>
+                    <td><h2>Znajdź lokalizacje hot Spot</h2></td>
                     <td>
                     <img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" class="titleImage" alt="Znajdź lokalizacje hot spot">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Narzędzie to tworzy mapę prezentującą statystycznie istotne przestrzenne klastry istniejące w&nbsp;danych użytkownika.   Skorzystaj z&nbsp;tego narzędzia, aby odkryć lokalizacje hot spot (czerwone) i&nbsp;cold spot (niebieskie) reprezentujące na przykład wysoką lub niską wartość domu, nasilenie przestępczości, liczbę ofiar śmiertelnych w&nbsp;wypadkach drogowych, stopę bezrobocia czy r&oacute;żnorodność biologiczną.
+            <p>Narzędzie to tworzy mapę prezentującą statystycznie istotne przestrzenne klastry istniejące w&nbsp;danych użytkownika. Skorzystaj z&nbsp;tego narzędzia, aby odkryć lokalizacje hot spot (czerwone) i&nbsp;cold spot (niebieskie) reprezentujące na przykład wysoką lub niską wartość domu, nasilenie przestępczości, liczbę ofiar śmiertelnych w&nbsp;wypadkach drogowych, stopę bezrobocia czy r&oacute;żnorodność biologiczną.
+            </p>
+            <br/>
+        </div>
+        <div id="FindOutliersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Znajdź elementy odstające</h2></td>
+                    <td>
+                    <img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" class="titleImage" alt="Znajdź elementy odstające">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Za pomocą tego narzędzia tworzona jest mapa zawierająca statystycznie istotne klastry i przestrzenne elementy odstające występujące w danych. Za pomocą tego narzędzia można identyfikować obiekty o wartościach istotnie r&oacute;żniących się od wartości obiekt&oacute;w sąsiadujących.  Używając tego narzędzia, można znaleźć nietypowe wzorce wydatk&oacute;w, określić, gdzie w badanym obszarze występuje największe rozwarstwienie ekonomiczne lub sprawdzić, czy w Stanach Zjednoczonych istnieją hrabstwa o nietypowo niskiej wartości oczekiwanej średniej długości życia w por&oacute;wnaniu do sąsiednich hrabstw.
             </p>
             <br/>
         </div>
@@ -344,7 +385,7 @@ way.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Jest to narzędzie umożliwiające przewidywanie wartości w&nbsp;nowych lokalizacjach na podstawie pomiar&oacute;w dla zbioru punkt&oacute;w. Narzędzie korzysta z&nbsp;danych punktowych, z&nbsp;kt&oacute;rych każdy ma określoną wartość i&nbsp;wyświetla obszary sklasyfikowane według przewidywanych wartości. Możesz skorzystać z&nbsp;tego narzędzia na przykład w&nbsp;celu opracowania prognozy poziomu opad&oacute;w deszczu na obszarze wododziału przy użyciu wynik&oacute;w pomiar&oacute;w dokonanych w&nbsp;poszczeg&oacute;lnych lokalizacjach deszczomierzy.
+            <p>Jest to narzędzie umożliwiające przewidywanie wartości w&nbsp;nowych lokalizacjach na podstawie pomiar&oacute;w dla zbioru punkt&oacute;w. Narzędzie korzysta z danych punktowych, z kt&oacute;rych każdy ma określoną wartość, i wyświetla obszary sklasyfikowane według przewidywanych wartości. Możesz skorzystać z&nbsp;tego narzędzia na przykład w&nbsp;celu opracowania prognozy poziomu opad&oacute;w deszczu na obszarze zlewni przy użyciu wynik&oacute;w pomiar&oacute;w dokonanych w&nbsp;poszczeg&oacute;lnych lokalizacjach deszczomierzy.
             </p>
             <br/>
         </div>
@@ -442,7 +483,7 @@ way.
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Narzędzie Znajdź najbliższe</h2></td>
+                    <td><h2>Znajdź najbliższe</h2></td>
                     <td>
                     <img src="../images/GUID-150C2484-7459-405A-8835-B4E72CD49738-web.png" class="titleImage" alt="Znajdź najbliższe">
                     </td>

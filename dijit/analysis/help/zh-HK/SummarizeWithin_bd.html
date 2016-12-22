@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>範圍內摘要</h2><p/>
+        <h2><img src="../images/GUID-90E0CB1F-EB97-4752-B2EE-452B7B45475E-web.png" alt="範圍內摘要"></h2>
+        <hr/>
+    <p>此工具用於尋找第一個輸入圖層中處於區域邊界內的圖徵（和圖徵的部分）。 
+        <ul>
+            <li>已知流域邊界圖層和土地使用邊界圖層，計算每個流域之土地使用類型的總面積。
+            </li>
+            <li>已知一個郡內宗地的圖層和城市邊界圖層，摘述各城市邊界內閒置宗地的平均值。
+            </li>
+        </ul>
+        
+    </p>
+    <p>如果勾選 <b>使用目前地圖範圍</b>，則僅分析目前地圖範圍內可見的輸入圖層和待摘要圖層中的圖徵。如果未勾選，則會對輸入圖層和待摘要圖層內的所有圖徵進行分析，包括超出目前地圖範圍的圖徵。
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="sumWithinLayer">
+        <div><h2>選擇區域圖層以摘要其邊界內的其他圖徵</h2></div>
+        <hr/>
+        <div>
+            <p>將用於摘要其邊界內圖徵的區域圖層。您可以選擇在提供的多邊形圖層中摘要，或在執行工具時所產生的方形或六角形容器中摘要。產生 <b>方形</b>的容器時，指定的數字和單位可決定方形的高度和長度。對於 <b>六角形</b>，指定的數字和單位可決定平行邊之間的距離。
+            </p>
+            <p>除了從地圖選擇圖層外，您也可以選擇下拉式清單底部的 <b>瀏覽圖層</b>，以瀏覽到大數據檔案分享資料集或圖徵圖層的內容。  
+            </p>
+        </div>
+    </div>
+    <div id="summaryLayer">
+        <div><h2>選擇摘要圖層</h2></div>
+        <hr/>
+        <div>
+            <p>將摘要此圖層中位於輸入圖層的圖徵邊界內（或上述指定的容器內）的圖徵。
+            </p>
+            <p>除了從地圖選擇圖層外，您也可以選擇下拉式清單底部的 <b>瀏覽圖層</b>，以瀏覽到大數據檔案分享資料集或圖徵圖層的內容。  
+            </p>
+        </div>
+    </div>
+    <div id="inputBins">
+        <div><h2>選擇產生容器和匯入其中的距離</h2></div>
+        <hr/>
+        <div>
+            <p>用來產生容器的距離。  
+            </p>
+            <p>必須設定容器的 <b>容器大小</b>，或 <b>區域圖層</b>。
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>使用時間片段匯聚 (選用)</h2></div>
+        <hr/>
+        <div>
+            <p>若是在輸入點圖層上啟用時間，且其為即時類型，則可使用時間片段進行分析。使用時間時可設定三個參數：
+                <ul>
+                    <li>  <b>時間間隔</b>
+                    </li>
+                    <li> <b>時間步長</b>
+                    </li>
+                    <li> <b>參考時間</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>想像您有表示年時間的資料，且您想要使用每週片段進行分析。若要這麼做，您需要將 <b>時間間隔</b>設為 <code>1 週</code>。
+            </p>
+            <p> 想像您有表示年時間的資料，且您想要使用每月的第一週進行分析。若要這麼做，需要將 <b>時間間隔</b>設為 <code>1 週</code>、 <b>時間步長</b>設為 <code>1 個月</code>，以及將 <b>參考時間</b>設為 <code>1 月 1 日上午 12:00</code>。
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>要匯聚到的時間間隔</h2></div>
+        <hr/>
+        <div>
+            <p>使用於分段資料的時間間隔。時間間隔可單獨使用，或搭配使用 <b>時間步長</b>或 <b>參考時間</b>參數。
+            </p>
+            <p> 若要建立時間片段，以便在每週一上午 9:00 到上午 10:00 發生， <b>時間間隔</b>將是 <code>1 小時</code>、 <b>時間步長</b>將是 <code>1 週</code>，且 <b>參考時間</b>將是 <code>週一上午 9:00:00</code>。
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>要匯聚到的時間步長</h2></div>
+        <hr/>
+        <div>
+            <p> 用於計算時間片段的步長。 <b>時間步長</b>可單獨使用，或搭配使用 <b>時間間隔</b>、 <b>參考時間</b>，或 <b>時間間隔</b>和 <b>參考時間</b>二者。
+            </p>
+            <p> 若要建立時間片段，以便在每週一上午 9:00 到上午 10:00 發生， <b>時間間隔</b>將是 <code>1 小時</code>、 <b>時間步長</b>將是 <code>1 週</code>，且 <b>參考時間</b>將是 <code>週一上午 9:00:00</code>。
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>用來對齊時間分段的參考時間</h2></div>
+        <hr/>
+        <div>
+            <p>用來對齊時間分段的日期和時間。 <b>時間步長</b>將從參考的時間起算並繼續向後流動。
+            </p>
+            <p> 若要建立時間片段，以便在每週一上午 9:00 到上午 10:00 發生， <b>時間間隔</b>將是 <code>1 小時</code>、 <b>時間步長</b>將是 <code>1 週</code>，且 <b>參考時間</b>將是 <code>週一上午 9:00:00</code>。
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>從圖層新增要統計資料以進行摘要（選用）</h2></div>
+        <hr/>
+        <div>
+            <p> 您可以在要摘要的圖徵上計算統計資料。在數值欄位上，您可以計算：
+                <ul>
+                    <li>計數
+                    </li>
+                    <li>平均值
+                    </li>
+                    <li>最小值
+                    </li>
+                    <li>最大值
+                    </li>
+                    <li>範圍
+                    </li>
+                    <li>變異
+                    </li>
+                    <li>標準差
+                    </li>
+                </ul>
+                
+            </p>
+            <p>在字串欄位上，您可以計算：
+                <ul>
+                    <li>計數
+                    </li>
+                    <li>任何 - 此統計資料是指定欄位中字串值的隨機樣本。
+                    </li>
+                </ul>
+                會以非 null 值計算所有統計資料。結果圖層將為每個已計算的統計資料納入一個新欄位。透過選擇屬性和統計資料可新增任意數量的統計資料。 
+            </p>
+            <p>除了這些統計資料外，將在所有數值欄位上計算比例統計資料：
+                <ul>
+                    <li>計數 - 每個欄位的計數乘以多邊形內摘要圖層的比例。
+                    </li>
+                    <li>總和 - 每個欄位中值權數的總和。其中套用的權數是多邊形內摘要圖層的比例。
+                    </li>
+                    <li>平均值 - 每個欄位值的加權平均數。其中套用的權數是多邊形內摘要圖層的比例。
+                    </li>
+                    <li>最小值 - 每個欄位中加權值中的最小值。其中套用的權數是多邊形內摘要圖層的比例。
+                    </li>
+                    <li>最大值 - 每個欄位中加權值中的最大值。其中套用的權數是多邊形內摘要圖層的比例。
+                    </li>
+                    <li>範圍 - 最大和最小加權值之間的差。
+                    </li>
+                </ul>
+                
+            </p>
+            <p>視您所摘要的圖徵類型而定，將計算鄰近點的總數、線的總長，或是總面積。
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>空間參考 (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>這是搶鮮版的暫時參數，用於設定處理空間參考。許多大數據工具要求將投影的座標系統作為空間參考，以進行處理。預設情況下，工具將使用輸入座標系統，但若是地理座標系統則將失敗。若要設定投影的座標系統，請輸入 WKID。例如， <b>Web Mercator</b> 將輸入 <code>3857</code>。
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>選擇資料存放區</h2></div>
+        <hr/>
+        <div>
+            <p>這是搶鮮版的暫時參數，用於設定儲存結果的資料儲存庫。兩個資料儲存庫皆屬於  ArcGIS Data Store。如果選擇時空資料儲存庫但尚未安裝，工具將失敗。 </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>結果圖層名稱</h2></div>
+        <hr/>
+        <div>
+            <p> 在 <b>我的內容</b>中建立並新增到地圖中的圖層的名稱。預設名稱參照工具名稱以及輸入圖層名稱。如果圖層已存在，工具將失敗。
+            </p>
+            <p>使用 <b>將結果儲存到</b>下拉式方塊，可以在 <b>我的內容</b>中指定储存结果的文件夾的名稱。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

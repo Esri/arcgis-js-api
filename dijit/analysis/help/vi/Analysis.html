@@ -40,12 +40,18 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="SummarizeDataCategory" class="regularsize">
+    <div id="aoToolbox">
+        <p>Hộp c&ocirc;ng cụ Ph&acirc;n t&iacute;ch Đối tượng chứa một số c&ocirc;ng cụ m&agrave; bạn c&oacute; thể truy cập v&agrave; sử dụng. Những t&aacute;c vụ n&agrave;y dưới đ&acirc;y được sắp xếp v&agrave;o c&aacute;c danh mục; c&aacute;c danh mục l&agrave; những nh&oacute;m logic đơn giản v&agrave; kh&ocirc;ng ảnh hưởng đến c&aacute;ch bạn truy cập hoặc sử dụng t&aacute;c vụ.
+        </p>
+    </div>
+    <div id="SummarizeDataCategory" class="largesize">
         <h2>Tóm tắt Dữ liệu</h2>
         <hr/>
         <p>C&aacute;c c&ocirc;ng cụ n&agrave;y t&iacute;nh to&aacute;n tổng số lượng, độ d&agrave;i, khu vực, v&agrave; số liệu thống k&ecirc; m&ocirc; tả cơ bản c&aacute;c đối tượng v&agrave; thuộc t&iacute;nh của ch&uacute;ng trong khu vực hoặc gần c&aacute;c đối tượng kh&aacute;c.
             <ul>
                 <li> <b>C&aacute;c Điểm Tổng hợp</b> t&iacute;nh to&aacute;n số liệu thống k&ecirc; về điểm trong khu vực chỉ định.
+                </li>
+                <li> <b>Li&ecirc;n kết Đối tượng</b> chuyển c&aacute;c thuộc t&iacute;nh từ một lớp hoặc bảng sang một lớp hoặc bảng kh&aacute;c dựa tr&ecirc;n mối quan hệ kh&ocirc;ng gian v&agrave; thuộc t&iacute;nh.
                 </li>
                 <li> <b>Tổng hợp Vị tr&iacute; L&acirc;n cận</b> t&iacute;nh to&aacute;n số liệu thống k&ecirc; cho c&aacute;c đối tượng v&agrave; c&aacute;c thuộc t&iacute;nh của ch&uacute;ng.
                 </li>
@@ -68,11 +74,37 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Sử dụng một lớp c&aacute;c đối tượng điểm v&agrave; một lớp c&aacute;c đối tượng khu vực, c&ocirc;ng cụ n&agrave;y sẽ x&aacute;c định c&aacute;c điểm nằm trong từng khu vực v&agrave; t&iacute;nh to&aacute;n số liệu thống k&ecirc; về tất cả c&aacute;c điểm trong mỗi khu vực. V&iacute; dụ:
+            <p>Sử dụng một lớp c&aacute;c đối tượng dạng điểm v&agrave; một lớp c&aacute;c đối tượng dạng v&ugrave;ng, c&ocirc;ng cụ n&agrave;y sẽ gi&uacute;p x&aacute;c định c&aacute;c điểm nằm trong từng khu vực v&agrave; t&iacute;nh to&aacute;n số liệu thống k&ecirc; về tất cả c&aacute;c điểm trong mỗi khu vực đ&oacute;. V&iacute; dụ:
                 <ul>
                     <li>Giả sử c&aacute;c vị tr&iacute; điểm c&oacute; tỷ lệ tội phạm, đếm số lượng tội phạm trong mỗi quận hoặc địa giới h&agrave;nh ch&iacute;nh kh&aacute;c.
                     </li>
                     <li>T&igrave;m doanh thu cao nhất v&agrave; thấp nhất cho c&aacute;c vị tr&iacute; bầu cử theo tiểu bang.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="JoinFeaturesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Liên kết Đối tượng</h2></td>
+                    <td>
+                    <img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" class="titleImage" alt="Li&ecirc;n kết Đối tượng">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Li&ecirc;n kết Đối tượng sẽ gi&uacute;p chuyển c&aacute;c thuộc t&iacute;nh từ một lớp hoặc bảng sang một lớp hoặc bảng kh&aacute;c dựa tr&ecirc;n mối quan hệ kh&ocirc;ng gian v&agrave; thuộc t&iacute;nh. V&iacute; dụ:
+                <ul>
+                    <li>Gắn th&ecirc;m th&ocirc;ng tin ranh giới chung hoặc nh&acirc;n khẩu học v&agrave;o dữ liệu sự cố của bạn.
+                    </li>
+                    <li>X&aacute;c định c&aacute;c cơ sở gần nhất với một vị tr&iacute; đ&atilde; biết.
+                    </li>
+                    <li>X&aacute;c định số hộ d&acirc;n nằm trong v&ugrave;ng lũ lụt.
+                    </li>
+                    <li>X&aacute;c định m&ocirc;i trường sống phổ biến cho c&aacute;c lo&agrave;i động vật hoang d&atilde; kh&aacute;c nhau.
                     </li>
                 </ul>
                 
@@ -90,7 +122,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>T&igrave;m c&aacute;c đối tượng trong phạm vi khoảng c&aacute;ch chỉ định của đối tượng trong lớp đầu v&agrave;o. C&oacute; thể đo khoảng c&aacute;ch theo đường thẳng hoặc c&aacute;c đường dẫn khả thi cho một phương thức đi lại. Số liệu thống k&ecirc; sau đ&oacute; được t&iacute;nh to&aacute;n cho c&aacute;c đối tượng l&acirc;n cận. V&iacute; dụ:
+            <p>T&igrave;m c&aacute;c đối tượng nằm trong phạm vi khoảng c&aacute;ch chỉ định của những đối tượng trong lớp đầu v&agrave;o. C&oacute; thể đo khoảng c&aacute;ch theo đường thẳng hoặc c&aacute;c đường dẫn khả thi cho một phương thức đi lại. Số liệu thống k&ecirc; sau đ&oacute; được t&iacute;nh to&aacute;n cho c&aacute;c đối tượng l&acirc;n cận. V&iacute; dụ:
                 <ul>
                     <li>T&iacute;nh tổng số d&acirc;n trong phạm vi năm ph&uacute;t từ vị tr&iacute; cửa h&agrave;ng mới được đề xuất.
                     </li>
@@ -112,11 +144,11 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>T&igrave;m c&aacute;c khu vực (v&agrave; c&aacute;c phần của khu vực) phủ l&ecirc;n giữa hai lớp v&agrave; t&iacute;nh to&aacute;n số liệu thống k&ecirc; về lớp phủ n&agrave;y. V&iacute; dụ:
+            <p>T&igrave;m c&aacute;c khu vực (v&agrave; một phần của khu vực) chồng l&ecirc;n giữa hai lớp v&agrave; t&iacute;nh to&aacute;n số liệu thống k&ecirc; cho lớp phủ n&agrave;y. V&iacute; dụ:
                 <ul>
                     <li>Với một lớp c&aacute;c phạm vi lưu vực s&ocirc;ng v&agrave; một lớp c&aacute;c khu vực sử dụng đất theo loại h&igrave;nh sử dụng đất, h&atilde;y t&iacute;nh to&aacute;n tổng diện t&iacute;ch c&aacute;c loại đất sử dụng cho từng lưu vực. 
                     </li>
-                    <li>Cho một lớp l&ocirc; đất trong một quận v&agrave; một lớp ranh giới th&agrave;nh phố, h&atilde;y t&iacute;nh gi&aacute; trị trung b&igrave;nh c&aacute;c l&ocirc; đất trống trong mỗi th&agrave;nh phố.
+                    <li>Cho một lớp l&ocirc; đất trong một quận v&agrave; một lớp ranh giới th&agrave;nh phố, h&atilde;y tổng kết gi&aacute; trị trung b&igrave;nh c&aacute;c l&ocirc; đất trống trong mỗi th&agrave;nh phố.
                     </li>
                 </ul>
                 
@@ -280,16 +312,18 @@
             </p>
             <br/>
         </div>
-    <div id="AnalyzePatternsCategory" class="regularsize">
-        <h2>Phân tích Mô hình</h2>
+    <div id="AnalyzePatternsCategory" class="largesize">
+        <h2>Phân tích Xu hướng</h2>
         <hr/>
-        <p>C&aacute;c c&ocirc;ng cụ n&agrave;y gi&uacute;p bạn x&aacute;c định, định lượng, v&agrave; trực quan h&oacute;a m&ocirc; h&igrave;nh kh&ocirc;ng gian trong dữ liệu của bạn.  
+        <p>C&aacute;c c&ocirc;ng cụ n&agrave;y gi&uacute;p bạn x&aacute;c định, định lượng v&agrave; trực quan h&oacute;a m&ocirc; h&igrave;nh kh&ocirc;ng gian trong dữ liệu của bạn.  
             <ul>
                 <li> <b>T&iacute;nh to&aacute;n Mật độ</b> lấy số lượng đ&atilde; biết của một số hiện tượng v&agrave; trải rộng c&aacute;c số lượng n&agrave;y tr&ecirc;n bản đồ.
                 </li>
-                <li> <b>T&igrave;m Điểm n&oacute;ng</b> x&aacute;c định ph&acirc;n nh&oacute;m c&oacute; &yacute; nghĩa thống k&ecirc; trong m&ocirc; h&igrave;nh kh&ocirc;ng gian của dữ liệu của bạn.
+                <li> <b>T&igrave;m Điểm N&oacute;ng</b> x&aacute;c định những cụm điểm c&oacute; &yacute; nghĩa thống k&ecirc; trong m&ocirc; h&igrave;nh kh&ocirc;ng gian dữ liệu của bạn.
                 </li>
-                <li> <b>C&aacute;c Điểm Nội suy</b> dự đo&aacute;n c&aacute;c gi&aacute; trị tại vị tr&iacute; mới dựa tr&ecirc;n c&aacute;c ph&eacute;p đo từ một bộ sưu tập c&aacute;c điểm.
+                <li>C&ocirc;ng cụ  <b>T&igrave;m Ngoại lệ</b> sẽ x&aacute;c định xem c&oacute; những ngoại lệ n&agrave;o c&oacute; &yacute; nghĩa thống k&ecirc; trong m&ocirc; h&igrave;nh kh&ocirc;ng gian dữ liệu của bạn.
+                </li>
+                <li> <b>Nội suy Điểm</b> dự đo&aacute;n c&aacute;c gi&aacute; trị tại c&aacute;c vị tr&iacute; mới dựa tr&ecirc;n đo lường từ một bộ sưu tập điểm.
                 </li>
             </ul>
             
@@ -321,7 +355,22 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>C&ocirc;ng cụ n&agrave;y tạo một bản đồ hiển thị bất kỳ ph&acirc;n nh&oacute;m c&oacute; &yacute; nghĩa thống k&ecirc; trong dữ liệu của bạn.   V&iacute; dụ, sử dụng c&ocirc;ng cụ n&agrave;y để ph&aacute;t hiện ra những điểm n&oacute;ng (m&agrave;u đỏ) v&agrave; điểm lạnh (m&agrave;u xanh) bất ngờ của c&aacute;c gi&aacute; trị nh&agrave; cao v&agrave; thấp, mật độ tội phạm, tử vong do tai nạn giao th&ocirc;ng, thất nghiệp hoặc đa dạng sinh học.
+            <p>C&ocirc;ng cụ n&agrave;y tạo một bản đồ hiển thị bất kỳ nh&oacute;m n&agrave;o c&oacute; &yacute; nghĩa thống k&ecirc; trong dữ liệu của bạn. V&iacute; dụ, sử dụng c&ocirc;ng cụ n&agrave;y để ph&aacute;t hiện ra những điểm n&oacute;ng (m&agrave;u đỏ) v&agrave; điểm lạnh (m&agrave;u xanh) bất ngờ của c&aacute;c gi&aacute; trị nh&agrave; cao v&agrave; thấp, mật độ tội phạm, tử vong do tai nạn giao th&ocirc;ng, thất nghiệp hoặc đa dạng sinh học.
+            </p>
+            <br/>
+        </div>
+        <div id="FindOutliersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Tìm Ngoại lệ</h2></td>
+                    <td>
+                    <img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" class="titleImage" alt="T&igrave;m Ngoại lệ">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>C&ocirc;ng cụ n&agrave;y tạo một bản đồ hiển thị bất kỳ nh&oacute;m v&agrave; ngoại lệ kh&ocirc;ng gian n&agrave;o c&oacute; &yacute; nghĩa thống k&ecirc; trong dữ liệu của bạn. Sử dụng c&ocirc;ng cụ n&agrave;y để x&aacute;c định những đối tượng c&oacute; gi&aacute; trị kh&aacute;c biệt đ&aacute;ng kể so với c&aacute;c v&ugrave;ng l&acirc;n cận. Bạn c&oacute; thể sử dụng c&ocirc;ng cụ n&agrave;y để t&igrave;m ra c&aacute;c xu hướng ti&ecirc;u d&ugrave;ng bất thường, x&aacute;c định đ&acirc;u l&agrave; ranh giới r&otilde; r&agrave;ng giữa gi&agrave;u c&oacute; v&agrave; đ&oacute;i ngh&egrave;o trong khu vực nghi&ecirc;n cứu hoặc x&aacute;c định c&oacute; quận n&agrave;o tại Hoa Kỳ c&oacute; tuổi thọ dự t&iacute;nh thấp bất thường so với c&aacute;c v&ugrave;ng l&acirc;n cận kh&ocirc;ng.
             </p>
             <br/>
         </div>
@@ -449,9 +498,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Lập kế hoạch Định tuyến</h2></td>
+                    <td><h2>Lên kế hoạch Định tuyến</h2></td>
                     <td>
-                    <img src="../images/GUID-09CC6D60-3C72-42D7-968E-B0663F0B1EBB-web.png" class="titleImage" alt="Lập kế hoạch Định tuyến">
+                    <img src="../images/GUID-09CC6D60-3C72-42D7-968E-B0663F0B1EBB-web.png" class="titleImage" alt="L&ecirc;n kế hoạch Định tuyến">
                     </td>
                 </tr></tbody>
             </table>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Ligar Elementos</h2><p/>
+        <h2><img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" alt="Ligar Elementos"></h2>
+        <hr/>
+    <p>A tarefa Ligar Elementos funciona com duas camadas. Ligar Elementos efetua a liga&ccedil;&atilde;o de atributos entre elementos com base nas rela&ccedil;&otilde;es espacial, temporal e de atributos, ou de uma combina&ccedil;&atilde;o das tr&ecirc;s. A ferramenta determina todos os elementos de entrada que correspondem &agrave;s condi&ccedil;&otilde;es definidas para ligar, e liga a segunda camada de entrada &agrave; primeira. Opcionalmente, pode ligar todos os elementos aos elementos correspondentes ou resumir os elementos correspondentes.
+    </p>
+    <p>Ligar Elementos pode ser aplicado a pontos, linhas, &aacute;reas e tabelas. Uma liga&ccedil;&atilde;o temporal requer que os dados de entrada tenham a componente temporal ativada, e uma liga&ccedil;&atilde;o espacial requer que os seus dados possuam geometria. 
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="targetLayer">
+        <div><h2>Selecionar camada à qual ligar elementos</h2></div>
+        <hr/>
+        <div>
+            <p>A camada que ter&aacute; elementos ligados &agrave; mesma. 
+            </p>
+            <p>Para al&eacute;m de selecionar uma camada do seu mapa, pode selecionar  <b>Explorar Camadas</b> na parte inferior da lista pendente para navegar at&eacute; aos seus conte&uacute;dos de um conjunto de dados de partilha de big data ou camada de elementos.  
+            </p>
+        </div>
+    </div>
+    <div id="joinLayer">
+        <div><h2>Escolher camada para ligar</h2></div>
+        <hr/>
+        <div>
+            <p>A camada que ser&aacute; ligada &agrave; primeira camada de entrada.
+            </p>
+            <p>Para al&eacute;m de selecionar uma camada do seu mapa, pode selecionar  <b>Explorar Camadas</b> na parte inferior da lista pendente para navegar at&eacute; aos seus conte&uacute;dos de um conjunto de dados de partilha de big data ou camada de elementos.  
+            </p>
+        </div>
+    </div>
+    <div id="joinOperation">
+        <div><h2>Selecionar a operação de ligação</h2></div>
+        <hr/>
+        <div>
+            <p>Isto determina como as liga&ccedil;&otilde;es entre as camadas de entrada ser&atilde;o geridas &agrave; sa&iacute;da, no caso de m&uacute;ltiplos ficheiros em liga&ccedil;&atilde;o possu&iacute;rem a mesma rela&ccedil;&atilde;o com a camada &agrave; qual est&aacute; a ser efetuada a liga&ccedil;&atilde;o. Existem duas opera&ccedil;&otilde;es de liga&ccedil;&atilde;o de entre as quais escolher:
+                <ul>
+                    <li> <b>Ligar one to one</b>&mdash;Esta op&ccedil;&atilde;o liga todas as camadas correspondentes &agrave; camada de liga&ccedil;&atilde;o.
+                    </li>
+                    <li> <b>Ligar one to many</b>&mdash;Esta op&ccedil;&atilde;o resume todas as camadas correspondentes em rela&ccedil;&atilde;o a cada elemento em liga&ccedil;&atilde;o.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Por exemplo, suponha que pretendemos encontrar supermercados a at&eacute; 5 quil&oacute;metros de um mercado agr&iacute;cola.   Neste caso, a camada &agrave; qual se ir&aacute; efetuar a liga&ccedil;&atilde;o tem um &uacute;nico elemento que representa um mercado agr&iacute;cola, e os elementos em liga&ccedil;&atilde;o representam as mercearias locais, incluindo atributos como o total de vendas anuais. Utilizando a ferramenta  <b>Ligar Elementos</b> , descobrimos que cinco mercearias correspondem a esses crit&eacute;rios. Se tivermos especificado uma opera&ccedil;&atilde;o de liga&ccedil;&atilde;o <b>Ligar one to one</b>, no final ter&iacute;amos cinco elementos no nosso resultado, com cada linha a representar o mercado agr&iacute;cola e um supermercado. Caso tenhamos especificado uma rela&ccedil;&atilde;o <b>Ligar one to many</b> , no final ter&iacute;amos um elemento representando o mercado agr&iacute;cola e as informa&ccedil;&otilde;es resumidas dos supermercados, tais como a contagem (5), e outras estat&iacute;sticas, tais como a soma de vendas anuais..
+            </p>
+        </div>
+    </div>
+    <div id="joinOptions">
+        <div><h2>Selecione o número de ligações que pretende utilizar</h2></div>
+        <hr/>
+        <div>
+            <p>Pode aplicar um, dois ou tr&ecirc;s tipos de liga&ccedil;&otilde;es. Os tipos de liga&ccedil;&otilde;es incluem os seguintes: 
+                <ul>
+                    <li> <b>Espacial</b>&mdash;Recorre a uma rela&ccedil;&atilde;o espacial especificada para ligar elementos. Isto exige que ambas as camadas possuam geometria.
+                    </li>
+                    <li> <b>Temporal</b>&mdash;Recorre a uma rela&ccedil;&atilde;o temporal para ligar elementos. Isto exige a ativa&ccedil;&atilde;o do componente temporal em ambas as camadas.
+                    </li>
+                    <li> <b>Atributo</b>&mdash;Liga elementos com base em campos iguais.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>
+            </p>
+        </div>
+    </div>
+    <div id="spatialRelationship">
+        <div><h2>Ligação espacial</h2></div>
+        <hr/>
+        <div>
+            <p> A rela&ccedil;&atilde;o espacial que determinar&aacute; se os elementos se ligam uns aos outros. As rela&ccedil;&otilde;es dispon&iacute;veis depender&atilde;o do tipo de geometria (ponto, polilinha, pol&iacute;gonos) que est&aacute; a ser utilizada nos elementos de entrada. As rela&ccedil;&otilde;es dispon&iacute;veis incluem as seguintes:
+                <ul>
+                    <li> <b>Interseta</b>&mdash;Os elementos ser&atilde;o ligados se se intersetarem.
+                    </li>
+                    <li> <b>Igual</b>&mdash;Os elementos ser&atilde;o ligados se possu&iacute;rem a mesma geometria.
+                    </li>
+                    <li> <b>Pr&oacute;ximo</b>&mdash;Os elementos ser&atilde;o ligados caso se encontrem no limite de determinada dist&acirc;ncia uns dos outros.
+                    </li>
+                    <li> <b>Cont&eacute;m</b>&mdash;Os elementos ser&atilde;o ligados se a camada &agrave; qual ligar estiver contida nos elementos em liga&ccedil;&atilde;o.
+                    </li>
+                    <li> <b>No Interior</b>&mdash;Os elementos ser&atilde;o ligados se a camada &agrave; qual ligar estiver no interior dos elementos em liga&ccedil;&atilde;o.
+                    </li>
+                    <li> <b>Toca</b>&mdash;Os elementos ser&atilde;o ligados se tiverem limites que toquem o elemento ao qual ligar.
+                    </li>
+                    <li> <b>Cruza</b>&mdash;Os elementos ser&atilde;o ligados se possu&iacute;rem contornos que se cruzem.
+                    </li>
+                    <li> <b>Sobrep&otilde;e</b>&mdash;Os elementos ser&atilde;o ligados se se sobrepuserem.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="nearSpatial">
+        <div><h2></h2></div>
+        <hr/>
+        <div>
+            <p>Esta dist&acirc;ncia especifica o raio aplicado a uma rela&ccedil;&atilde;o espacial pr&oacute;xima.
+            </p>
+            <p>Suponha que tem um conjunto de dados que representa uma central nuclear e um conjunto de dados que representa resid&ecirc;ncias. Poderia definir uma dist&acirc;ncia de proximidade de 1 quil&oacute;metro para encontrar casas a at&eacute; um quil&oacute;metro da central nuclear. 
+            </p> 
+        </div>
+    </div>
+    <div id="temporalRelationship">
+        <div><h2>Ligação temporal</h2></div>
+        <hr/>
+        <div>
+            <p>A rela&ccedil;&atilde;o temporal que determinar&aacute; se os elementos se ligam uns aos outros. Esta op&ccedil;&atilde;o encontra-se apenas dispon&iacute;vel no caso de o componente temporal estar ativo em ambas as camadas, e as rela&ccedil;&otilde;es dispon&iacute;veis depender&atilde;o do tipo de tempo (instante ou intervalo) a ser utilizado nos elementos de entrada. As rela&ccedil;&otilde;es dispon&iacute;veis incluem as seguintes:
+                <ul>
+                    <li> <b>Encontra</b>&mdash;O elemento ser&aacute; correspondido se o primeiro elemento encontrar o segundo.
+                    </li>
+                    <li> <b>Encontrado Por</b>&mdash;O elemento ser&aacute; correspondido se os primeiro elementos forem encontrados pelo segundo.
+                    </li>
+                    <li> <b>Sobrep&otilde;e</b>&mdash;O elemento ser&aacute; correspondido se os primeiro elementos se sobrepuserem ao segundo.
+                    </li>
+                    <li> <b>Sobreposto Por</b>&mdash;O elemento ser&aacute; correspondido se os primeiros elementos forem sobrepostos pelo segundo.
+                    </li>
+                    <li> <b>Durante</b>&mdash;O elemento ser&aacute; correspondido se os primeiro elementos se se encontrarem no decurso do segundo.
+                    </li>
+                    <li> <b>Cont&eacute;m</b>&mdash;O elemento ser&aacute; correspondido se o primeiro elemento contiver o segundo.
+                    </li>
+                    <li> <b>Igual</b>&mdash;O elemento ser&aacute; correspondido se o primeiro elemento for igual ao segundo.
+                    </li>
+                    <li> <b>Termina</b>&mdash;O elemento ser&aacute; correspondido se o primeiro elemento terminar o segundo.
+                    </li>
+                    <li> <b>Termina Por</b>&mdash;O elemento ser&aacute; correspondido se os primeiros elementos forem terminados pelo segundo.
+                    </li>
+                    <li> <b>Inicia</b>&mdash;O elemento ser&aacute; correspondido se o primeiro elemento der in&iacute;cio ao segundo.
+                    </li>
+                    <li> <b>Iniciado Por</b>&mdash;O elemento ser&aacute; correspondido se os primeiros elementos forem iniciados pelo segundo.
+                    </li>
+                    <li> <b>Interseta</b>&mdash;Os elementos s&atilde;o cartografados se os componentes temporais se intersetarem de algum modo.
+                    </li>
+                    <li> <b>Pr&oacute;ximo</b>&mdash;Os elementos ser&atilde;o ligados caso estejam pr&oacute;ximos uns dos outros, o que &eacute; determinado por um tempo espec&iacute;fico.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="nearTemporal">
+        <div><h2></h2></div>
+        <hr/>
+        <div>
+            <p>Esta dist&acirc;ncia temporal especifica o raio temporal aplicado a uma rela&ccedil;&atilde;o temporal pr&oacute;xima.
+            </p>
+            <p>Suponha que tem uma camada de incidentes n&aacute;uticos e uma camada de GPS com as frentes de um furac&atilde;o. Poderia procurar incidentes n&aacute;uticos a uma dist&acirc;ncia espec&iacute;fica das frentes do furac&atilde;o, tanto no espa&ccedil;o (1 quil&oacute;metro) como no tempo (5 horas). Isto resultaria em incidentes n&aacute;uticos ligados a furac&otilde;es que tenham ocorrido em estreita proximidade, no espa&ccedil;o e no tempo. 
+            </p>
+        </div>
+    </div>
+    <div id="attributeRelationship">
+        <div><h2>Ligação de atributos</h2></div>
+        <hr/>
+        <div>
+            <p>Esta rela&ccedil;&atilde;o ir&aacute; fazer corresponder valores de um campo numa camada a valores de um campo noutra camada. 
+            </p>
+            <p> Por exemplo, suponha que temos uma camada geogr&aacute;fica de todo o condado com endere&ccedil;os residenciais (incluindo um campo <i>ZIP</i>) e um conjunto de dados tabulares dos dados demogr&aacute;ficos de sa&uacute;de por C&oacute;digo ZIP (um campo denominado <i>HEALTHZIP</i>). Podemos ligar o conjunto de dados de sa&uacute;de aos dados residenciais, fazendo corresponder o campo <i>ZIP</i> ao campo <i>HEALTHZIP</i>, o que resultar&aacute; numa camada de resid&ecirc;ncias com os correspondentes dados de sa&uacute;de.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Adicionar estatísticas (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Caso tenha sido selecionada uma op&ccedil;&atilde;o one-to-many, pode calcular as estat&iacute;sticas dos seus elementos ligados.
+            </p>
+        </div>
+    </div>
+    <div id="joinCondition">
+        <div><h2>Constrói uma expressão através da qual unir elementos (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Aplica uma condi&ccedil;&atilde;o a campos especificados. Apenas elementos com campos que correspondam a estas condi&ccedil;&otilde;es ser&atilde;o ligados.
+            </p>
+            <p>Por exemplo, suponha que pretende aplicar uma liga&ccedil;&atilde;o a um conjunto de dados apenas aos resultados em que  <i>health_spending</i> (gastos com sa&uacute;de) &eacute; superior a 20 por cento de <i>receitas</i>.  Para fazer isto, aplique uma condi&ccedil;&atilde;o de liga&ccedil;&atilde;o de <code>target.health_spending &gt; (join.income * .20)</code> utilizando o campo <i>health_spending</i> do primeiro conjunto de dados (o conjunto de dados ao qual os elementos se encontram ligados) e do campo <i>receitas</i> do segundo conjunto de dados (o conjunto de dados ao qual est&aacute; a ser aplicada a liga&ccedil;&atilde;o).
+            </p>
+            <p>As condi&ccedil;&otilde;es de liga&ccedil;&atilde;o podem ser aplicadas utilizando a calculadora de express&otilde;es.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Selecionar datastore</h2></div>
+        <hr/>
+        <div>
+            <p>Este &eacute; um par&acirc;metro tempor&aacute;rio de pr&eacute;-lan&ccedil;amento para definir o armazenamento de dados no qual os resultados s&atilde;o guardados. Ambos os armazenamentos de dados fazem parte do  ArcGIS Data Store. Caso selecione o armazenamento de dados espaciotemporal, mas n&atilde;o tenha um instalado, a ferramenta ir&aacute; falhar. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nome da camada resultante</h2></div>
+        <hr/>
+        <div>
+            <p> Este &eacute; o nome da camada que ser&aacute; criada em <b>O Meu Conte&uacute;do</b> e adicionada ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Caso a camada j&aacute; existe, a ferramenta ir&aacute; falhar.
+            </p>
+            <p>Ao utilizar a caixa suspensa  <b>Guardar resultado em</b> pode definir o nome da pasta em <b>O Meu Conte&uacute;do</b> onde o resultado ser&aacute; guardado.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

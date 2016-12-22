@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Sažmi atribute</h2><p/>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Sažmi atribute"></h2>
+        <hr/>
+    <p>Ovaj alat sažima sve vrijednosti koje se podudaraju u jednom ili vi&scaron;e polja i izračunava njihovu statistiku. Najosnovnija statistika je zbroj geoobjekata koji su sažeti zajedno, ali mogu se i izračunati i naprednije statistike. 
+
+    </p>
+    <p>Na primjer, pretpostavimo da imate točkaste geoobjekte lokacija trgovina s poljem koje predstavlja  <i>IME_UPRAVITELJA_OKRUGA</i> i vi želite sažeti prodaju kave po upravitelju. Možete navesti polje <i>IME_UPRAVITELJA_OKRUGA</i> kao polje za uklanjanje i sažeti će se svi redovi podataka koji predstavljaju pojedinačne upravitelje. To znači da će se sve lokacije trgovina kojima upravlja Upravitelj1 sažeti u jedan redak s izračunatim statistikama sažetka. U ovom primjeru izračunat će se statistike kao zbroj broja trgovina i zbroj <i>TOTAL_SALES</i> za sve trgovine kojima upravlja Upravitelj1, kao i za bilo kojeg drugog upravitelja navedenog u polju <i>IME _UPRAVITELJA_OKRUGA</i>.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Odaberite unos za sažimanje</h2></div>
+        <hr/>
+        <div>
+            <p>Sloj koji sadrži polja koja će se sažeti.  
+            </p>
+            <p>Osim odabira sloja s va&scaron;e karte, možete odabrati  <b>Pretraži slojeve</b> na dnu padajućeg popisa za pretraživanje va&scaron;ih sadržaja za skup podataka za dijeljenje datoteka velikih podataka ili sloj geoobjekta.  
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>Odaberite polja za uklanjanje</h2></div>
+        <hr/>
+        <div>
+            <p>  Popis polja iz ulaznog sloja. Sažet će se odabrana polja i upotrijebiti za izračun statistike. Na primjer, ako odaberete polje pod nazivom <i>VrstaImovine</i> s komercijalnim i stambenim vrijednostima, sva stambena polja sažet će se zajedno uz izračun statistike sažetka i sva komercijalna polja sažet će se zajedno.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Odaberite polja i statistiku za izračun (neobavezno)</h2></div>
+        <hr/>
+        <div>
+            <p> Možete izračunati statistiku za geoobjekte koji su sažeti. Na brojčanim poljima možete izračunati sljedeće:
+                <ul>
+                    <li>Broj
+                    </li>
+                    <li>Prosjek
+                    </li>
+                    <li>Min.
+                    </li>
+                    <li>Maks.
+                    </li>
+                    <li>Raspon
+                    </li>
+                    <li>Varijanca
+                    </li>
+                    <li>Standardno odstupanje
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Na poljima niza možete izračunati sljedeće:
+                <ul>
+                    <li>Broj
+                    </li>
+                    <li>Bilo koje &ndash; ova je statistika nasumični uzorak vrijednosti niza u određenom polju.
+                    </li>
+                </ul>
+                Sve se statistike računaju za vrijednosti koje nisu nula. Sloj rezultata sadržavat će novo polje za svaki izračun statistike. Može se dodati bilo koliko statistika odabirom atributa i statistike. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Izaberi spremište podataka</h2></div>
+        <hr/>
+        <div>
+            <p>To je privremeni parametar za predizdanje za postavljanje spremnika podataka gdje su spremljeni rezultati. Oba spremnika podataka dio su proizvoda  ArcGIS Data Store. Ako odaberete spremnik prostorno-vremenskih podataka, ali nemate instaliran spremnik, alat neće biti uspje&scaron;an. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Naziv sloja rezultata</h2></div>
+        <hr/>
+        <div>
+            <p> Ovo je naziv sloja koji će se stvoriti u dijelu <b>Moj sadržaj</b> i dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, alat neće biti uspje&scaron;an.
+            </p>
+            <p>Upotrebom padajućeg izbornika  <b>Spremi rezultat u</b> možete odrediti naziv mape u dijelu <b>Moj sadržaj</b> gdje će se spremiti rezultat.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

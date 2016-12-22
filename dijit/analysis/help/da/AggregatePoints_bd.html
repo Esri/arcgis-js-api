@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Aggregér punkter</h2><p/>
+        <h2><img src="../images/GUID-6C1620D9-D176-41FA-8283-833D8B1CCCFC-web.png" alt="Aggreg&eacute;r punkter"></h2>
+        <hr/>
+    <p>Dette v&aelig;rkt&oslash;j arbejder med et lag af punktobjekter og et lag med omr&aring;deobjekter. De indsatte omr&aring;deobjekter kan stamme fra et polygonlag, eller de kan v&aelig;re kvadratiske eller sekskantede beholdere, der beregnes, n&aring;r v&aelig;rkt&oslash;jet k&oslash;rer. V&aelig;rkt&oslash;jet bestemmer f&oslash;rst, hvilke punkter der ligger inden for hvert omr&aring;de. N&aring;r denne punkt-i-omr&aring;de spatiale relation er bestemt, beregnes statistik om alle punkter i omr&aring;det og denne statistik tildeles omr&aring;det. Den mest grundl&aelig;ggende statistik er opt&aelig;llingen af punkterne i omr&aring;det, men du kan ogs&aring; generere anden statistik. 
+
+    </p>
+    <p>Forestil dig for eksempel, at du har punktobjekter med placeringer af caf&eacute;er og omr&aring;deobjekter med regioner, og du &oslash;nsker at skabe en oversigt over det samlede salg i caf&eacute;er pr. region. Under foruds&aelig;tning af at caf&eacute;erne har en  <i>TOTAL_SALES</i>-attribut, kan du f&aring; summen af alt <i>TOTAL_SALES</i> inden for hver region eller minimum- eller maksimum- <i>TOTAL_SALES</i>
+ inden for hver region eller andre statistiske oplysninger, s&aring;som antal, omr&aring;de, standardafvigelse og varians.
+    </p>
+    <p>Dette v&aelig;rkt&oslash;j kan ogs&aring; arbejde med data, der er tidsafh&aelig;ngige. Hvis tid er aktiveret for inputpunkterne, er indstillingerne for tidsintervaller tilg&aelig;ngelige. Med tidsintervaller kan du beregne punkt-i-omr&aring;de-relationen, mens du ser p&aring; et specifikt tidsinterval. Du kan f.eks. se p&aring; timeintervaller, hvilket ville resultere i outputs for hver time. 
+    </p>
+    <p>Forestil dig f.eks., at du med tiden f&aring;r punktobjekter for hver transaktion, der gennemf&oslash;res p&aring; forskellige caf&eacute;-positioner, men du ikke har noget omr&aring;delag. Dataene er blevet registreret i mere end et &aring;r, og hver transaktion er forsynet med en position og et tidsstempel. Under foruds&aelig;tning af at hver transaktion har en  <i>TOTAL_SALES</i>-attribut, kan du f&aring; summen af alt <i>TOTAL_SALES</i> inden for det omr&aring;de og den tidsperiode, der interesserer dig. Hvis disse transaktioner alle er gennemf&oslash;rt i den samme by, kan vi generere omr&aring;der som 1-kilometer-gitre og se p&aring; de ugentlige tidsintervaller for at summere transaktionerne i b&aring;de tid og rum.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="pointLayer">
+        <div><h2>Vælg et lag, der indeholder punkter, som skal aggregeres til områder</h2></div>
+        <hr/>
+        <div>
+            <p>Det punktlag, der skal aggregeres til omr&aring;der.
+            </p>
+            <p>Udover at du kan v&aelig;lge et lag i dit kort, kan du v&aelig;lge  <b>Gennemse lag</b> nederst p&aring; rullelisten for at g&aring; til dit indhold til et big data-fildelingsdatas&aelig;t eller -vektorlag.  
+            </p>
+        </div>
+    </div>
+    <div id="inputAggregation">
+        <div><h2>Vælg et områdelag, der skal aggregeres til</h2></div>
+        <hr/>
+        <div>
+            <p>De omr&aring;der, som punktlaget skal aggregeres til. Du kan v&aelig;lge mellem et omr&aring;delag, som du opretter, eller beholdere, der genereres, n&aring;r v&aelig;rkt&oslash;jet k&oslash;rer.   N&aring;r der genereres beholdere, er det for  <b>Kvadratiske</b> beholdere antallet af angivne enheder, der bestemmer h&oslash;jden og l&aelig;ngden p&aring; kvadratet. For <b>Sekskantede</b> beholdere er det antallet af angivne enheder, der bestemmer afstanden mellem de parallelle sider.
+            </p>
+        </div>
+    </div>
+    <div id="polygonLayer">
+        <div><h2>Vælg det områdelag, der skal aggregeres til</h2></div>
+        <hr/>
+        <div>
+            <p>Det omr&aring;delag, som punkterne bliver aggregeret til. Alle de punkter, der falder inden for omr&aring;degr&aelig;nserne i dette lag, vil blive talt med og vil muligvis indg&aring; i oversigten ud fra dine statistikvalg. 
+            </p>
+            <p>
+            </p>
+            <p> <b>Beholderst&oslash;rrelse</b> eller <b>Omr&aring;delag</b> skal v&aelig;re indstillet.
+            </p>
+        </div>
+    </div>
+    <div id="inputBins">
+        <div><h2>Vælg en afstand til generering af intervaller og aggregering</h2></div>
+        <hr/>
+        <div>
+            <p>Den afstand, der benyttes til at generere beholdere, som du kan aggregere dine inputpunkter til. For en kvadratisk beholder repr&aelig;senterer st&oslash;rrelsen h&oslash;jden p&aring; kvadraten. For en sekskantet beholder repr&aelig;senterer st&oslash;rrelsen h&oslash;jden p&aring; sekskanten (fra de parallelle sider).  
+            </p>
+            <p> <b>Beholderst&oslash;rrelse</b> eller <b>Omr&aring;delag</b> skal v&aelig;re indstillet.
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Aggregér ved hjælp af tidsintervaller (valgfrit)</h2></div>
+        <hr/>
+        <div>
+            <p>Hvis der er aktiveret tid for inputpunktlaget, og det tilh&oslash;rer &oslash;jeblikstypen, kan du analysere ved hj&aelig;lp af tidsintervaller. Du kan indstille tre parametre, n&aring;r du bruger tiden:
+                <ul>
+                    <li>  <b>Tidsinterval</b>
+                    </li>
+                    <li> <b>Tidstrin</b>
+                    </li>
+                    <li> <b>Referencetid</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Forestil dig, at du har data, der repr&aelig;senterer et &aring;r i tiden, og at du &oslash;nsker at analysere ved hj&aelig;lp af ugentlige tidsintervaller. For at g&oslash;re dette skal du indstille  <b>Tidsinterval</b> til <code>1 uge</code>.
+            </p>
+            <p> Forestil dig, at du har data, der repr&aelig;senterer et &aring;r i tiden, og at du &oslash;nsker at analysere ved hj&aelig;lp af den f&oslash;rste uge i m&aring;neden. For at g&oslash;re dette skal du indstille <b>Tidsinterval</b> til <code>1 uge</code>, <b>Tidstrin</b> til <code>1 m&aring;ned</code> og <b>Referencetid</b> til <code>1. januar kl. 12:00 AM</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>Tidsinterval, der skal aggregeres til</h2></div>
+        <hr/>
+        <div>
+            <p>Det tidsinterval, der benyttes til opdele tiden. Tidsinterval kan benyttes alene elle sammen med  <b>Tidstrin</b>- eller <b>Referencetid</b>-parameteren.
+            </p>
+            <p> Hvis du &oslash;nskede at oprette tidsintervaller, som finder sted hver mandag fra kl. 9:00 til kl. 10:00., ville <b>Tidsinterval</b> v&aelig;re <code>1 time</code>, <b>Tidstrin</b> ville v&aelig;re <code>1 uge</code>, og <b>Referencetid</b> ville v&aelig;re <code>9:00:00 om mandagen</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>Tidstrin, der skal aggregeres til</h2></div>
+        <hr/>
+        <div>
+            <p> Det tidstrin, der benyttes til at beregne tidsopdelingen. <b>Tidstrin</b> kan benyttes alene elle sammen med <b>Tidsinterval</b>, sammen med <b>Referencetid</b> eller sammen med b&aring;de <b>Tidsinterval</b> og <b>Referencetid</b>.
+            </p>
+            <p> Hvis du &oslash;nskede at oprette tidsintervaller, som finder sted hver mandag fra kl. 9:00 til kl. 10:00., ville <b>Tidsinterval</b> v&aelig;re <code>1 time</code>, <b>Tidstrin</b> ville v&aelig;re <code>1 uge</code>, og <b>Referencetid</b> ville v&aelig;re <code>9:00:00 om mandagen</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Referencetid, der benyttes til at justere tidsintervaller</h2></div>
+        <hr/>
+        <div>
+            <p>Den dato og det klokkesl&aelig;t, der benyttes til at justere tidsintervallerne.  <b>Tidstrin</b> starter fra og forts&aelig;tter bagud med den tid, der er angivet af referencetiden.
+            </p>
+            <p> Hvis du &oslash;nskede at oprette tidsintervaller, som finder sted hver mandag fra kl. 9:00 til kl. 10:00., ville <b>Tidsinterval</b> v&aelig;re <code>1 time</code>, <b>Tidstrin</b> ville v&aelig;re <code>1 uge</code>, og <b>Referencetid</b> ville v&aelig;re <code>9:00:00 om mandagen</code>.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Tilføj statistik (valgfrit)</h2></div>
+        <hr/>
+        <div>
+            <p> Du kan beregne statistik for objekter, der er summeret. For numeriske felter kan du beregne f&oslash;lgende:
+                <ul>
+                    <li>T&aelig;lling
+                    </li>
+                    <li>Middel
+                    </li>
+                    <li>Min
+                    </li>
+                    <li>Maks
+                    </li>
+                    <li>Omr&aring;de
+                    </li>
+                    <li>Varians
+                    </li>
+                    <li>Standardafvigelse
+                    </li>
+                </ul>
+                
+            </p>
+            <p>For strengfelter kan du beregne f&oslash;lgende:
+                <ul>
+                    <li>T&aelig;lling
+                    </li>
+                    <li>Vilk&aring;rlig &ndash; Denne statistik er et vilk&aring;rligt eksempel p&aring; en strengv&aelig;rdi i det angivne felt.
+                    </li>
+                </ul>
+                Alle statistiske data beregnes ud fra ikke-nul-v&aelig;rdier. Resultatlaget vil indeholde et nyt felt for hver beregnet statistik. Du kan tilf&oslash;je et vilk&aring;rligt antal statistikker ved at v&aelig;lge attributter og statistikker. 
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>SpatialReference (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>Dette er en midlertidig parameter til prerelease med henblik p&aring; angivelse af den spatiale reference til behandling. Mange big data-v&aelig;rkt&oslash;jer kr&aelig;ver, at et projiceret koordinatsystem benyttes som spatial reference med henblik p&aring; behandling. V&aelig;rkt&oslash;jet vil som standard benytte inputkoordinatsystemet, men dette vil ikke fungere, hvis et geografisk koordinatsystem benyttes. Angiv WKID, hvis et projiceret koordinatsystem skal indstilles. For eksempel ville  <b>Web Mercator</b> blive angivet som <code>3857</code>.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Vælg Datastore</h2></div>
+        <hr/>
+        <div>
+            <p>Dette er en midlertidig parameter til prerelease med henblik p&aring; angivelse af det datalager, hvor resultaterne bliver gemt. Begge datalagre er en del af  ArcGIS Data Store. Hvis du v&aelig;lger det spatiotemporale datalager, men ikke har et s&aring;dant installeret, vil v&aelig;rkt&oslash;jet ikke fungere. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Navn på resultatlag</h2></div>
+        <hr/>
+        <div>
+            <p> Dette er navnet p&aring; det lag, som oprettes i <b>Mit indhold</b> og f&oslash;jes til kortet. Standardnavnet er baseret p&aring; navnet p&aring; v&aelig;rkt&oslash;jet og navnet p&aring; inputlaget. Hvis laget allerede findes, vil v&aelig;rkt&oslash;jet ikke fungere.
+            </p>
+            <p>Ved hj&aelig;lp af rullelisten  <b>Gem resultat i</b> kan du angive navnet p&aring; en mappe i <b>Mit indhold</b>, hvor resultatet skal gemmes.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

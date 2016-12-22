@@ -48,11 +48,10 @@
 
 .calcite .searchTextBox .dijitInputField {
     line-height: 20px;
-    padding: 4px 0px;
+    padding: 4px 3px;
 }
 
 .calcite .searchTextBox .dijitInputField .dijitInputInner {
-    padding: 0px 3px !important;
     line-height: 20px;
 }
 

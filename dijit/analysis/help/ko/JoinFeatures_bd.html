@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>조인 피처</h2><p/>
+        <h2><img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" alt="조인 피처"></h2>
+        <hr/>
+    <p>조인 피처 작업은 두 개의 레이어에서 연동됩니다. 조인 피처는 공간, 시간 및 속성 관계 또는 이 세 가지의 일부 조합을 기반으로 하나의 피처에서 다른 피처까지의 속성을 조인합니다. 이 도구는 지정된 조인 조건을 충족하는 모든 입력 피처를 결정하고 두 번째 입력 레이어를 첫 번째 레이어에 조인합니다. 선택적으로 모든 피처를 일치하는 피처에 조인하거나 일치하는 피처를 요약할 수 있습니다.
+    </p>
+    <p>조인 피처는 포인트, 라인, 면적 및 테이블에 적용할 수 있습니다. 시간 조인의 경우 입력 데이터에 시간이 활성화되어야 하며 공간 조인의 경우 데이터에 지오메트리가 있어야 합니다. 
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="targetLayer">
+        <div><h2>피처를 조인할 레이어 선택</h2></div>
+        <hr/>
+        <div>
+            <p>피처를 조인할 레이어입니다. 
+            </p>
+            <p>맵에서 레이어를 선택하는 것 이외에, 드롭다운 목록의 하단에 있는  <b>레이어 찾아보기</b>를 선택하여 빅 데이터 파일 공유 데이터셋 또는 피처 레이어의 콘텐츠를 찾아볼 수 있습니다.  
+            </p>
+        </div>
+    </div>
+    <div id="joinLayer">
+        <div><h2>조인할 레이어 선택</h2></div>
+        <hr/>
+        <div>
+            <p>첫 번째 입력 레이어에 조인할 레이어입니다.
+            </p>
+            <p>맵에서 레이어를 선택하는 것 이외에, 드롭다운 목록의 하단에 있는  <b>레이어 찾아보기</b>를 선택하여 빅 데이터 파일 공유 데이터셋 또는 피처 레이어의 콘텐츠를 찾아볼 수 있습니다.  
+            </p>
+        </div>
+    </div>
+    <div id="joinOperation">
+        <div><h2>조인 작업 선택</h2></div>
+        <hr/>
+        <div>
+            <p>여러 조인 피처가 조인된 레이어와 같은 관계가 있다고 판명되는 경우 입력 레이어 간 조인이 결과에서 처리될 방법을 결정합니다. 선택할 조인 작업에는 두 가지가 있습니다.
+                <ul>
+                    <li> <b>일대일 조인</b>&mdash;이 옵션은 조인 레이어와 일치하는 모든 피처를 조인합니다.
+                    </li>
+                    <li> <b>일대다 조인</b>&mdash;이 옵션은 조인된 각 피처와 일치하는 모든 피처를 요약합니다.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>예를 들어 농산물 직매장에서 5km 이내에서 슈퍼마켓을 찾는다고 가정해봅시다.   이 경우 조인된 레이어에 농산물 직매장을 나타내는 단일 피처가 있으며 조인 피처는 전체 연간 매출액 등의 속성이 있는 로컬 식료품점을 나타냅니다.  <b>조인 피처</b> 도구를 사용하면 해당 기준을 충족하는 5개의 식료품점을 찾을 수 있습니다. <b>일대일 조인</b>의 조인 작업을 지정한 경우 결과에 5개의 피처가 표시되는 것으로 마무리되며 각 행은 농산물 직매장과 슈퍼마켓을 나타냅니다. <b>일대다 조인</b> 관계를 지정한 경우 농산물 직매장과 개수 (5) 등 슈퍼마켓의 요약된 정보를 나타내는 하나의 피처와 연간 매출액의 총액 등 다른 통계가 표시되는 것으로 마무리됩니다.
+            </p>
+        </div>
+    </div>
+    <div id="joinOptions">
+        <div><h2>사용하려는 조인의 유형 선택</h2></div>
+        <hr/>
+        <div>
+            <p>한 개, 두 개 또는 세 개의 조인 유형을 적용할 수 있습니다. 조인의 유형에는 다음이 포함됩니다. 
+                <ul>
+                    <li> <b>공간</b>&mdash;피처를 조인하도록 지정된 공간 관계를 사용합니다. 여기에는 두 개 모두의 레이어에 지오메트리가 있어야 합니다.
+                    </li>
+                    <li> <b>시간</b>&mdash;피처를 조인하도록 시간 관계를 사용합니다. 여기에는 두 개 모두의 레이어에 시간이 활성화되어야 합니다.
+                    </li>
+                    <li> <b>속성</b>&mdash;동일한 필드를 기반으로 피처를 조인합니다.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>
+            </p>
+        </div>
+    </div>
+    <div id="spatialRelationship">
+        <div><h2>공간 조인</h2></div>
+        <hr/>
+        <div>
+            <p> 피처가 서로 조인되는 경우를 결정할 공간 관계입니다. 사용 가능한 관계는 입력 피처로 사용되는 지오메트리 유형(포인트, 폴리라인, 폴리곤)에 따라 다릅니다. 사용 가능한 관계에는 다음 항목이 포함되어 있습니다.
+                <ul>
+                    <li> <b>교차</b>&mdash;서로 교차하는 경우 피처가 일치합니다.
+                    </li>
+                    <li> <b>동일</b>&mdash;같은 지오메트리가 있는 경우 피처가 일치합니다.
+                    </li>
+                    <li> <b>주변</b>&mdash;서로 지정된 거리 내에 있는 경우 피처가 일치합니다.
+                    </li>
+                    <li> <b>포함</b>&mdash;조인되는 레이어가 조인 피처에 포함되는 경우 피처가 일치합니다.
+                    </li>
+                    <li> <b>범위 내</b>&mdash;조인되는 레이어가 조인 피처 범위 내에 있는 경우 피처가 일치합니다.
+                    </li>
+                    <li> <b>겹침</b>&mdash;조인되는 피처와 겹치는 경계가 있는 경우 피처가 일치합니다.
+                    </li>
+                    <li> <b>횡단</b>&mdash;횡단하는 같은 윤곽이 있는 경우 피처가 일치합니다.
+                    </li>
+                    <li> <b>중첩</b>&mdash;중첩되는 경우 피처가 조인됩니다.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="nearSpatial">
+        <div><h2></h2></div>
+        <hr/>
+        <div>
+            <p>이 거리는 공간 주변 관계에 적용된 반경을 지정합니다.
+            </p>
+            <p>원자력 발전소를 나타내는 데이터셋과 거주지를 나타내는 데이터셋이 있다고 가정해봅시다. 1Km 주변 거리를 설정하여 원자력 발전소의 1km 이내에 있는 주택을 확인할 수 있습니다. 
+            </p> 
+        </div>
+    </div>
+    <div id="temporalRelationship">
+        <div><h2>시간 조인</h2></div>
+        <hr/>
+        <div>
+            <p>피처가 서로 조인되는 경우를 결정할 시간 관계입니다. 이 옵션은 시간이 두 개의 레이어에 모두 활성화된 경우에만 사용할 수 있으며 사용 가능한 관계는 입력 피처에 사용되는 시간 유형(즉석 또는 간격)에 따라 다릅니다. 사용 가능한 관계에는 다음 항목이 포함되어 있습니다.
+                <ul>
+                    <li> <b>충족</b>&mdash;첫 번째 피처가 두 번째 피처를 충족하는 경우 피처가 일치합니다.
+                    </li>
+                    <li> <b>다음으로 충족됨</b>&mdash;첫 번째 피처가 두 번째 피처로 충족되는 경우 피처가 일치합니다.
+                    </li>
+                    <li> <b>중첩</b>&mdash;첫 번째 피처가 두 번째 피처를 중첩하는 경우 피처가 일치합니다.
+                    </li>
+                    <li> <b>다음으로 중첩됨</b>&mdash;첫 번째 피처가 두 번째 피처로 중첩되는 경우 피처가 일치합니다.
+                    </li>
+                    <li> <b>동안</b>&mdash;첫 번째 피처가 두 번째 피처 동안에 있는 경우 피처가 일치합니다.
+                    </li>
+                    <li> <b>포함</b>&mdash;첫 번째 피처가 두 번째 피처를 포함하는 경우 피처가 일치합니다.
+                    </li>
+                    <li> <b>동일</b>&mdash;첫 번째 피처가 두 번째 피처와 동일한 경우 피처가 일치합니다.
+                    </li>
+                    <li> <b>완료</b>&mdash;첫 번째 피처가 두 번째 피처를 완료하는 경우 피처가 일치합니다.
+                    </li>
+                    <li> <b>다음으로 완료됨</b>&mdash;첫 번째 피처가 두 번째 피처로 완료되는 경우 피처가 일치합니다.
+                    </li>
+                    <li> <b>시작</b>&mdash;첫 번째 피처가 두 번째 피처를 시작하는 경우 피처가 일치합니다.
+                    </li>
+                    <li> <b>다음으로 시작됨</b>&mdash;첫 번째 피처가 두 번째 피처로 시작되는 경우 피처가 일치합니다.
+                    </li>
+                    <li> <b>교차</b>&mdash;시간이 모두 교차되는 경우 피처가 매핑됩니다.
+                    </li>
+                    <li> <b>주변</b>&mdash;지정된 시간에 따라 서로 주변에 있는 경우 피처가 조인됩니다.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="nearTemporal">
+        <div><h2></h2></div>
+        <hr/>
+        <div>
+            <p>이 시간 거리는 시간 주변 관계에 적용된 시간 반경을 지정합니다.
+            </p>
+            <p>보트 사고에 대한 레이어와 허리케인의 GPS 추적에 대한 레이어가 있다고 가정해봅시다. 공간(1km)과 시간(5시간) 내에서 허리케인 추적에 지정한 거리 내에 있는 보트 사고를 찾아볼 수 있습니다. 이는 공간과 시간 내에서 함께 밀접하게 발생한 허리케인에 조인된 보트 사고가 결과로 나타납니다. 
+            </p>
+        </div>
+    </div>
+    <div id="attributeRelationship">
+        <div><h2>속성 조인</h2></div>
+        <hr/>
+        <div>
+            <p>이 관계는 다른 레이어에 있는 필드의 하나의 레이어에서 다른 레이어까지 필드의 값을 일치합니다. 
+            </p>
+            <p> 예를 들어 거주지 주소(필드 <i>우편 번호</i> 포함)의 전국 지리적 레이어와 우편 번호별 상태 인구 통계( <i>HEALTHZIP</i>이라는 이름의 필드)에 대한 테이블 형식의 데이터셋이 있다고 가정해봅시다. 필드 <i>우편 번호</i>를 <i>HEALTHZIP</i>와 일치시켜 해당하는 상태 데이터와 거주지의 레이어가 나타나도록 주거지 데이터에 상태 데이터셋을 조인할 수 있습니다.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>통계 추가(선택)</h2></div>
+        <hr/>
+        <div>
+            <p>조인 일대다 옵션을 선택한 경우 조인된 피처에서 통계를 계산할 수 있습니다.
+            </p>
+        </div>
+    </div>
+    <div id="joinCondition">
+        <div><h2>피처를 조인하는 기준으로 사용할 식 생성(선택)</h2></div>
+        <hr/>
+        <div>
+            <p>조건을 지정된 필드에 적용합니다. 이러한 조건을 충족하는 필드가 있는 피처만 조인됩니다.
+            </p>
+            <p>예를 들어  <i>health_spending</i>이 <i>수입</i>의 20%보다 큰 이러한 피처에 대한 데이터셋에만 조인을 적용한다고 가정해봅시다.  이 작업을 수행하려면 첫 번째 데이터셋(데이터셋 피처가 조인됨)에서 필드 <i>health_spending</i>을 사용하고 두 번째 데이터셋(데이터셋이 조인됨)에서 <i>수입</i> 필드를 사용하여 <code>target.health_spending &gt; (join.income * .20)</code>의 조인 조건을 적용합니다.
+            </p>
+            <p>조인 조건은 식 계산기를 사용해서 적용할 수 있습니다.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>데이터 저장소 선택</h2></div>
+        <hr/>
+        <div>
+            <p>이 매개변수는 결과가 저장되는 데이터 저장소를 설정하기 위한 시험판용 임시 매개변수입니다. 두 데이터 저장소 모두  ArcGIS Data Store의 일부입니다. 시공간적 데이터 저장소를 선택했지만 설치되어 있지 않은 경우에는 도구를 사용할 수 없습니다. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>결과 레이어 이름</h2></div>
+        <hr/>
+        <div>
+            <p>  <b>내 콘텐츠</b>에서 생성되어 맵에 추가되는 레이어의 이름입니다.  기본 이름은 도구 이름과 입력 레이어 이름을 기반으로 합니다. 레이어가 이미 있으면 도구를 사용할 수 없습니다.
+            </p>
+            <p> <b>결과 저장:</b> 드롭다운 상자를 사용하여 <b>내 콘텐츠</b>에서 결과를 저장할 폴더의 이름을 지정할 수 있습니다.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

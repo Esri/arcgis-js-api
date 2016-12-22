@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Join Features</h2><p/>
+        <h2><img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" alt="Join Features"></h2>
+        <hr/>
+    <p>The Join  Features  task works with two
+layers. Join  Features  joins attributes from one
+feature to another based on spatial, temporal, and attribute
+relationships or some combination of the  three. The tool determines all input features that meet the specified join conditions and joins the second input layer to the first. You can optionally join all features to the matching features or summarize the matching features.
+    </p>
+    <p>Join Features can be applied to points, lines, areas, and tables. A temporal join requires that your input data is time-enabled, and a spatial join requires that your data has a geometry. 
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="targetLayer">
+        <div><h2>Choose layer to join features to</h2></div>
+        <hr/>
+        <div>
+            <p>The layer that will have features joined to it.
+
+            </p>
+            <p>In addition to choosing a layer from your map, you can choose  <b>Browse Layers</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer.  
+            </p>
+        </div>
+    </div>
+    <div id="joinLayer">
+        <div><h2>Choose layer to join</h2></div>
+        <hr/>
+        <div>
+            <p>The layer that will be joined to the first input layer.
+            </p>
+            <p>In addition to choosing a layer from your map, you can choose  <b>Browse Layers</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer.  
+            </p>
+        </div>
+    </div>
+    <div id="joinOperation">
+        <div><h2>Choose the join operation</h2></div>
+        <hr/>
+        <div>
+            <p>This determines how joins between the input layers will be handled in the output if multiple joining features are found to have the same relationship to the layer being joined. There are two join operations from which to choose:
+                <ul>
+                    <li> <b>Join one to one</b>&mdash;This option joins all the matching features to the join layer.
+                    </li>
+                    <li> <b>Join one to many</b>&mdash;This option summarizes all the matching features to each feature being joined.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>For example, suppose we wanted to find supermarkets within 5 kilometers of a farmers market.   In this case the layer being joined to has a single feature representing a farmers market, and the joining features represents the local grocery stores which has attributes such as total annual sales. Using the  <b>Join Features</b> tool, we find that five grocery stores meet that criteria. If we specified a join operation of <b>Join one to one</b>, we would end up with five features in our result, each row representing the farmers market and a supermarket. If we specified a <b>Join one to many</b> relationship, we would end up with one feature representing the farmers market and the summarized information from the supermarkets, such as the count (5), and other statistics such as the sum of annual sales.
+            </p>
+        </div>
+    </div>
+    <div id="joinOptions">
+        <div><h2>Select the type of joins you would like to use</h2></div>
+        <hr/>
+        <div>
+            <p>You may apply one, two, or three join types. The types of joins include the following: 
+                <ul>
+                    <li> <b>Spatial</b>&mdash;Uses a specified spatial relationship to join features. This requires that both layers have a geometry.
+                    </li>
+                    <li> <b>Temporal</b>&mdash;Uses a temporal relationship to join features. This requires time to be enabled on both layers.
+                    </li>
+                    <li> <b>Attribute</b>&mdash;Joins features based on equal fields.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>
+            </p>
+        </div>
+    </div>
+    <div id="spatialRelationship">
+        <div><h2>Spatial join</h2></div>
+        <hr/>
+        <div>
+            <p> The spatial relationship that will determine if features are joined to each other. The available relationships will depend on the type of geometry (point, polyline, polygons) being used as the input features. The available relationships include the following:
+                <ul>
+                    <li> <b>Intersects</b>&mdash;The feature will be matched if they intersect each other.
+                    </li>
+                    <li> <b>Equals</b>&mdash;The features will be matched if they have the same geometry.
+                    </li>
+                    <li> <b>Near</b>&mdash;The features will be matched if they are within a specified distance of each other.
+                    </li>
+                    <li> <b>Contains</b>&mdash;The features will be matched if the layer being joined to is contained in the joining features.
+                    </li>
+                    <li> <b>Within</b>&mdash;The features will be matched if the layer being joined to is within the joining features.
+                    </li>
+                    <li> <b>Touches</b>&mdash;The features will be matched it they have a boundary that touches the feature being joined to.
+                    </li>
+                    <li> <b>Crosses</b>&mdash;The features will be matched if they have a crossing outline.
+                    </li>
+                    <li> <b>Overlaps</b>&mdash;The features will be joined if they overlap.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="nearSpatial">
+        <div><h2></h2></div>
+        <hr/>
+        <div>
+            <p>This distance specifies the radius applied to a spatial near relationship.
+            </p>
+            <p>Suppose you had a dataset representing a nuclear plant and a dataset representing residences. You could set a 1 kilometer near distance to find houses within 1 kilometer of the nuclear plant. 
+            </p> 
+        </div>
+    </div>
+    <div id="temporalRelationship">
+        <div><h2>Temporal join</h2></div>
+        <hr/>
+        <div>
+            <p>The temporal relationship that will determine if features are joined to each other. This option is only available if time is enabled on both layers and the  available relationships will depend on the type of time (instant or interval) being used for the input features. The available relationships include the following:
+                <ul>
+                    <li> <b>Meets</b>&mdash;The feature will be matched if the first feature meets the second.
+                    </li>
+                    <li> <b>Met By</b>&mdash;The feature will be matched if the first features are met by the second.
+                    </li>
+                    <li> <b>Overlaps</b>&mdash;The feature will be matched if the first features overlap the second.
+                    </li>
+                    <li> <b>Overlapped By</b>&mdash;The feature will be matched if the first features are overlapped by the second.
+                    </li>
+                    <li> <b>During</b>&mdash;The feature will be matched if the first features are during the second.
+                    </li>
+                    <li> <b>Contains</b>&mdash;The feature will be matched if the first feature contains the second.
+                    </li>
+                    <li> <b>Equals</b>&mdash;The feature will be matched if the first feature equals the second.
+                    </li>
+                    <li> <b>Finishes</b>&mdash;The feature will be matched if the first feature finishes the second.
+                    </li>
+                    <li> <b>Finished By</b>&mdash;The feature will be matched if the first features are finished by the second.
+                    </li>
+                    <li> <b>Starts</b>&mdash;The feature will be matched if the first feature starts  the second.
+                    </li>
+                    <li> <b>Started By</b>&mdash;The feature will be matched if the first features are started by the second.
+                    </li>
+                    <li> <b>Intersects</b>&mdash;The features are mapped if the times intersect at all.
+                    </li>
+                    <li> <b>Near</b>&mdash;The features will be joined if they are near each other, determined by a specified time.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="nearTemporal">
+        <div><h2></h2></div>
+        <hr/>
+        <div>
+            <p>This temporal distance specifics the temporal radius applied to a temporal near relationship.
+            </p>
+            <p>Suppose you have a layer of boating incidents and a layer of GPS tracks for a hurricane. You could look for boating incidents within a specified distance of hurricane tracks in both space (1 kilometer) and in time (5 hours). This would result in boating incidents joined to hurricanes that occurred close together in space and time. 
+            </p>
+        </div>
+    </div>
+    <div id="attributeRelationship">
+        <div><h2>Attribute join</h2></div>
+        <hr/>
+        <div>
+            <p>This relationship will match values in a field from one layer to  values in a field in another layer. 
+            </p>
+            <p> For example, suppose we had a countywide geographic layer of residential addresses (including a field <i>ZIP</i>) and a tabular dataset of health demographics by ZIP Code (a field named <i>HEALTHZIP</i>). We can join the health dataset to the residential data by matching the field <i>ZIP</i> to <i>HEALTHZIP</i>, which will result in a layer of residences with the corresponding health data.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Add statistics (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>If a join one-to-many option was selected, you can calculate statistics on your joined features.
+            </p>
+        </div>
+    </div>
+    <div id="joinCondition">
+        <div><h2>Build an expression to join features by (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Applies a condition to specified fields. Only features with fields that meet these conditions will be joined.
+            </p>
+            <p>For example, suppose we want to apply a join to a dataset for only those  features where  <i>health_spending</i>  is greater than 20 percent of <i>income</i>.  To do this,  apply a join condition of <code>target.health_spending &gt; (join.income * .20)</code> using the field <i>health_spending</i> from the first dataset (the dataset features are joined to) and the <i>income</i> field from the second dataset (the dataset being joined).
+            </p>
+            <p>Join conditions can be applied using the expression calculator.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Choose datastore</h2></div>
+        <hr/>
+        <div>
+            <p>This is a temporary parameter for prerelease to set the data store where the results are saved. Both data stores are part of  ArcGIS Data Store. If you select the spatiotemporal data store but do not have one installed, the tool will fail. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Result layer name</h2></div>
+        <hr/>
+        <div>
+            <p> This is the name of the layer that will be created in <b>My
+Content</b> and added to the map. The default name is based on the
+tool name and the input layer name. If the layer already exists, the tool will fail.
+            </p>
+            <p>Using the  <b>Save result in</b> drop-down box, you can specify
+the name of a folder in <b>My Content</b> where the result will be
+saved.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

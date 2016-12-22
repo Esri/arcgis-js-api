@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>门户分析环境设置</h2><p/>
+        <h2></h2>
+        <hr/>
+    <p>  Portal for ArcGIS 和  ArcGIS Online 中的分析环境设置。 </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="overwriteResult">
+        <div><h2>覆盖结果图层</h2></div>
+        <hr/>
+        <div>
+            
+            <p>用来覆盖现有图层的选项。该项选中时，如果内容中已经存在同名的图层，则该图层将被覆盖。
+            </p>
+            <p>
+                <ul>
+                    <li>选中 - 如果内容中已经存在同名的图层，则该图层将被覆盖。输出中将采用与输入相同的坐标系。
+                    </li>
+                    <li>未选中 - 如果所提供的结果图层名称已经存在，则会发生错误，且在执行工具之前必须对结果图层进行重命名。这是默认设置。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="closeAnalysisWidget">
+        <div><h2>在运行分析后关闭分析微件</h2></div>
+        <hr/>
+        <div>
+            
+            <p>可在工具处理过程中使分析对话保持在打开和可用状态的选项。此设置将使您可以轻松修改分析参数，同时保证先前的分析作业持续运行。分析是一个迭代过程，将工具对话框保持在打开状态，可使您能够轻松更改参数和重新运行分析。
+            </p>
+            <p>
+                <ul>
+                    <li>选中 - 分析工具窗口将关闭，且焦点将返回至内容表格。这是默认设置
+                    </li>
+                    <li>未选中 - 分析工具窗口将保持在打开和启用的状态。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="storeAnalysisResults">
+        <div><h2>将分析结果存储为要素服务。</h2></div>
+        <hr/>
+        <div>
+            
+            <p>用于指定将分析结果创建为要素图层或要素集合的选项。
+            </p>
+            <p>
+                <ul>
+                    <li>选中 - 分析结果将创建要素图层，同时您的内容中将创建一个项目。这是默认设置。
+                    </li>
+                    <li>未选中 - 分析结果将创建要素集合。要素集合存储在 web 地图中。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputCoordinateSystem">
+        <div><h2>输出坐标系</h2></div>
+        <hr/>
+        <div>
+            <p>针对栅格分析的环境设置，用于定义结果图层的坐标系。
+            </p>
+            <p>
+                <ul>
+                    <li> <b>与输入相同</b> - 分析结果的坐标系将与输入坐标系相同。这是默认设置。
+                    </li>
+                    <li> <b>如指定</b> - 选择分析结果的坐标系。选中此选项后，单击地球图标以从已知坐标系列表中进行选择，或在提供的框中添加空间参考 WKID。
+                    </li>
+                    <li> <b>图层
+&lt;名称&gt;</b> - 选择将用于确定分析结果中坐标系的 web 地图中的现有图层。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingCoordinateSystem">
+        <div><h2>处理坐标系</h2></div>
+        <hr/>
+        <div>
+            <p>GeoAnalytics 环境设置，用于确定执行分析期间将使用的分析坐标系。
+            </p>
+            <p>对于 GeoAnalytics，某些分析需要在投影坐标系中执行处理。任何已经实施了数据或线性单位分组的工具均需要投影坐标系。
+            </p>
+            <p>
+                <ul>
+                    <li> <b>与输入相同</b> - 分析将采用与输入坐标系相同的坐标系进行处理。这是默认设置。
+                    </li>
+                    <li> <b>如指定</b> - 选择用于处理分析的坐标系。选中此选项后，单击地球图标以从已知投影坐标系列表中进行选择，或在提供的框中添加空间参考 WKID。
+                    </li>
+                    <li> <b>图层
+&lt;名称&gt;</b> - 从 web 地图中选择现有的图层。将使用所选图层的坐标系来确定将用于处理分析的坐标系。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingExtent">
+        <div><h2>范围</h2></div>
+        <hr/>
+        <div>
+            <p>用于确定执行分析期间将使用的范围或边界的环境设置。分析中将使用完全位于指定范围内或与该范围相交的所有输入要素。
+            </p>
+            <p>
+                <ul>
+                    <li> <b>默认</b> - 使用工具提供的范围。
+                    </li>
+                    <li> <b>如指定</b> - 手动输入坐标以定义范围。
+                    </li>
+                    <li> <b>图层
+&lt;名称&gt;</b> - 从 web 地图中选择现有的图层。将使用所选图层的空间范围来确定用于处理分析的范围。 
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="snapRaster">
+        <div><h2>捕捉栅格</h2></div>
+        <hr/>
+        <div>
+            <p>执行栅格分析时，设置 <b>捕捉栅格</b>环境将调整输出栅格图层的范围，使其与指定的 <b>捕捉栅格</b>图层的像元对齐方式相匹配。
+            </p>
+        </div>
+    </div>
+    <div id="cellSize">
+        <div><h2>像元大小</h2></div>
+        <hr/>
+        <div>
+            <p>在执行栅格分析时，此环境将设置创建输出栅格图层时所用的像元大小或分辨率。默认输出分辨率由像元最大的输入栅格图层决定。
+            </p>
+            <p>
+                <ul>
+                    <li> <b>输入最小值</b> - 使用所有输入图层中最小的像元大小。
+                    </li>
+                    <li> <b>输入最大值</b> - 使用所有输入图层中最大的像元大小。这是默认设置。
+                    </li>
+                    <li> <b>如指定</b> - 指定设置像元大小所需的数值。如果选中，则默认值为 1。
+                    </li>
+                    <li> <b>图层 &lt;名称&gt;</b> - 设置所选择的栅格图层的像元大小。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="mask">
+        <div><h2>掩膜</h2></div>
+        <hr/>
+        <div>
+            <p> 执行栅格分析时，使用 <b>掩膜</b>环境指定要用于定义感兴趣区域的图层。分析操作仅会涉及分析掩膜中的像元。
+            </p>
+            <ul>
+                <li>掩膜可以是栅格，也可以是要素图层。
+                </li>
+                <li>如果分析掩膜是栅格，则定义掩膜时将考虑所有具有值的像元。掩膜栅格中的 NoData 像元将视为位于掩膜之外，并且在分析结果图层中将为 NoData。
+                </li>
+                <li>如果分析掩膜是一个要素图层，则在执行时它将内部转换为栅格。因此，您需要注意应恰当地设置 <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">像元大小</a>和 <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">捕捉栅格</a>以进行分析。
+                </li>
+            </ul>
+             
+        </div>
+    </div>
+</div>
+</html>

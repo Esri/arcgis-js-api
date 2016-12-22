@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.18/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.19/esri/copyright.txt for details.
 
-define(["require","exports"],function(n,r){var t=Function("return this")(),i=function(){var n=t.performance||{};if(n){if(n.now)return function(){return n.now()};if(n.webkitNow)return function(){return n.webkitNow()};if(n.mozNow)return function(){return n.mozNow()};if(n.msNow)return function(){return n.msNow()};if(n.oNow)return function(){return n.oNow()}}var r;return r=n.timing&&n.timing.navigationStart?n.timing.navigationStart:Date.now(),function(){return Date.now()-r}}();return i});
+define(["require","exports","./global"],function(n,r,t){var o=function(){var n=t.performance||{};if(n){if(n.now)return function(){return n.now()};if(n.webkitNow)return function(){return n.webkitNow()};if(n.mozNow)return function(){return n.mozNow()};if(n.msNow)return function(){return n.msNow()};if(n.oNow)return function(){return n.oNow()}}var r;return r=n.timing&&n.timing.navigationStart?n.timing.navigationStart:Date.now(),function(){return Date.now()-r}}();return o});

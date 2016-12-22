@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>計算密度</h2><p/>
+        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Calculate Density"></h2>
+        <hr/>
+    <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas classified from least dense to most dense.   
+
+    </p>
+    <p>For point input, each point should represent the location of some event or incident, and the result layer represents a count of the incident per unit area.  A higher density value in a new location means that there are more points near that location.  In many cases, the result layer can be interpreted as a risk surface for future events. For example, if the input points represent locations of lightning strikes, the result layer can be interpreted as a risk surface for future lightning strikes.
+    </p>
+    <p>Other use cases of this tool include the following:
+        <ul>
+            <li>Creating crime-density maps to help police departments properly allocate resources to high crime areas.
+            </li>
+            <li>Calculating densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to decide where new hospitals should be built.
+            </li>
+            <li>Identifying areas that are at high risk of forest fires based on historical locations of forest fires.
+            </li>
+            <li>Locating communities that are far from major highways in order to plan where new roads should be constructed.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>選擇計算密度所使用的點圖層</h2></div>
+        <hr/>
+        <div>
+            <p>The point layer on which the density will be calculated.
+            </p>
+            <p>除了從地圖選擇圖層外，您也可以選擇下拉式清單底部的 <b>瀏覽圖層</b>，以瀏覽到大數據檔案分享資料集或圖徵圖層的內容。  
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>選擇用來計算密度的一或多個欄位</h2></div>
+        <hr/>
+        <div>
+            <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
+            </p>
+            <p>The density for the count of points will always be calculated.   If no fields are selected, each location will be assumed to represent a single count.
+            </p>
+        </div>
+    </div>
+    <div id="binType">
+        <div><h2>選擇容器形狀</h2></div>
+        <hr/>
+        <div>
+            <p>The shape of bins that points are aggregated into and used for the density calculation.
+            </p>
+        </div>
+    </div>
+    <div id="binSizing">
+        <div><h2>選擇用於計算密度的容器大小</h2></div>
+        <hr/>
+        <div>
+            <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
+            </p>
+        </div>
+    </div>
+    <div id="weight">
+        <div><h2>選擇要套用的密度加權</h2></div>
+        <hr/>
+        <div>
+            <p>The type of weighting applied to the density calculation. There are two options:
+                <ul>
+                    <li> <b>Uniform</b>&mdash;This calculates a magnitude per area.
+                    </li>
+                    <li> <b>Kernel</b>&mdash;Applies a kernel function to fit a smooth tapered surface to each point.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="neighborhood">
+        <div><h2>選擇鄰域大小</h2></div>
+        <hr/>
+        <div>
+            <p>The size of the area used to calculate the density. The neighborhood size must be larger than the bin size.
+            </p>
+        </div>
+    </div>
+    <div id="areaUnits">
+        <div><h2>選擇密度的輸出單位</h2></div>
+        <hr/>
+        <div>
+            <p>The desired output units of the density values. By default, this is set to the units in your map (for example, square meters). If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>使用時間片段計算密度（選用）</h2></div>
+        <hr/>
+        <div>
+            <p>若是在輸入點圖層上啟用時間，且其為即時類型，則可使用時間片段進行分析。使用時間時可設定三個參數：
+                <ul>
+                    <li>  <b>時間間隔</b>
+                    </li>
+                    <li> <b>時間步長</b>
+                    </li>
+                    <li> <b>參考時間</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>想像您有表示年時間的資料，且您想要使用每週片段進行分析。若要這麼做，您需要將 <b>時間間隔</b>設為 <code>1 週</code>。
+            </p>
+            <p> 想像您有表示年時間的資料，且您想要使用每月的第一週進行分析。若要這麼做，需要將 <b>時間間隔</b>設為 <code>1 週</code>、 <b>時間步長</b>設為 <code>1 個月</code>，以及將 <b>參考時間</b>設為 <code>1 月 1 日上午 12:00</code>。
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>用來計算密度的時間間隔</h2></div>
+        <hr/>
+        <div>
+            <p>使用於分段資料的時間間隔。時間間隔可單獨使用，或搭配使用 <b>時間步長</b>或 <b>參考時間</b>參數。
+            </p>
+            <p> 若要建立時間片段，以便在每週一上午 9:00 到上午 10:00 發生， <b>時間間隔</b>將是 <code>1 小時</code>、 <b>時間步長</b>將是 <code>1 週</code>，且 <b>參考時間</b>將是 <code>週一上午 9:00:00</code>。
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>用來計算密度的時間步長</h2></div>
+        <hr/>
+        <div>
+            <p> 用於計算時間片段的步長。 <b>時間步長</b>可單獨使用，或搭配使用 <b>時間間隔</b>、 <b>參考時間</b>，或 <b>時間間隔</b>和 <b>參考時間</b>二者。
+            </p>
+            <p> 若要建立時間片段，以便在每週一上午 9:00 到上午 10:00 發生， <b>時間間隔</b>將是 <code>1 小時</code>、 <b>時間步長</b>將是 <code>1 週</code>，且 <b>參考時間</b>將是 <code>週一上午 9:00:00</code>。
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>用來對齊時間分段的參考時間</h2></div>
+        <hr/>
+        <div>
+            <p>用來對齊時間分段的日期和時間。 <b>時間步長</b>將從參考的時間起算並繼續向後流動。
+            </p>
+            <p> 若要建立時間片段，以便在每週一上午 9:00 到上午 10:00 發生， <b>時間間隔</b>將是 <code>1 小時</code>、 <b>時間步長</b>將是 <code>1 週</code>，且 <b>參考時間</b>將是 <code>週一上午 9:00:00</code>。
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>空間參考 (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>這是搶鮮版的暫時參數，用於設定處理空間參考。許多大數據工具要求將投影的座標系統作為空間參考，以進行處理。預設情況下，工具將使用輸入座標系統，但若是地理座標系統則將失敗。若要設定投影的座標系統，請輸入 WKID。例如， <b>Web Mercator</b> 將輸入 <code>3857</code>。
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>選擇資料儲存庫</h2></div>
+        <hr/>
+        <div>
+            <p>這是搶鮮版的暫時參數，用於設定儲存結果的資料儲存庫。兩個資料儲存庫皆屬於  ArcGIS Data Store。如果選擇時空資料儲存庫但尚未安裝，工具將失敗。 </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>結果圖層名稱</h2></div>
+        <hr/>
+        <div>
+            <p> 在 <b>我的內容</b>中建立並新增到地圖中的圖層的名稱。預設名稱參照工具名稱以及輸入圖層名稱。如果圖層已存在，工具將失敗。
+            </p>
+            <p>使用 <b>將結果儲存到</b>下拉式方塊，可以在 <b>我的內容</b>中指定储存结果的文件夾的名稱。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

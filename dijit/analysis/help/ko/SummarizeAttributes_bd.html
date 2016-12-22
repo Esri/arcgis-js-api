@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>속성 요약</h2><p/>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="속성 요약"></h2>
+        <hr/>
+    <p>이 도구는 하나 이상의 필드에 있는 모든 일치 값을 요약하여 이에 대한 통계를 계산합니다. 가장 기본적인 통계는 요약되어 있는 피처의 개수이지만 다른 고급 통계도 계산할 수 있습니다. 
+
+    </p>
+    <p>예를 들어  <i>DISTRICT_MANAGER_NAME</i> 필드가 포함된 커피숍 위치 포인트 피처가 있다고 가정하고 매니저별 커피 판매량을 요약해 보겠습니다. <i>DISTRICT_MANAGER_NAME</i> 필드를 디졸브할 필드로 지정하여 개별 매니저를 나타내는 모든 데이터 행을 요약할 수 있습니다. 즉, 매니저1이 관리하는 모든 커피숍은 단일 행으로 요약되며 이 행에는 계산된 요약 통계가 포함됩니다. 이 예에서는 매니저1뿐 아니라 <i>DISTRICT_MANAGER_NAME</i> 필드에 나열된 다른 매니저에 대해서도 관리하는 모든 커피숍의 매장 수와 <i>TOTAL_SALES</i> 합 등의 통계가 계산됩니다.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>요약할 입력 선택</h2></div>
+        <hr/>
+        <div>
+            <p>요약될 필드가 포함된 레이어입니다.  
+            </p>
+            <p>맵에서 레이어를 선택하는 것 이외에, 드롭다운 목록의 하단에 있는  <b>레이어 찾아보기</b>를 선택하여 빅 데이터 파일 공유 데이터셋 또는 피처 레이어의 콘텐츠를 찾아볼 수 있습니다.  
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>디졸브할 필드 선택</h2></div>
+        <hr/>
+        <div>
+            <p>  입력 레이어의 필드 목록 입니다.  선택한 필드는 요약되고 통계 계산에 사용됩니다. 예를 들어 상업용 및 거주용이라는 값이 있는 <i>PropertyType</i>이라는 필드를 선택한 경우, 계산된 요약 통계를 포함하여 모든 거주용 필드와 모든 상업용 필드가 각각 함께 요약됩니다.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>계산할 필드와 통계 선택(선택)</h2></div>
+        <hr/>
+        <div>
+            <p> 요약된 피처에 대한 통계를 계산할 수 있습니다. 숫자 필드에 대해 다음을 계산할 수 있습니다.
+                <ul>
+                    <li>개수
+                    </li>
+                    <li>평균
+                    </li>
+                    <li>최소값
+                    </li>
+                    <li>최대값
+                    </li>
+                    <li>범위
+                    </li>
+                    <li>변수
+                    </li>
+                    <li>표준편차
+                    </li>
+                </ul>
+                
+            </p>
+            <p>문자열 필드에 대해 다음을 계산할 수 있습니다.
+                <ul>
+                    <li>개수
+                    </li>
+                    <li>임의 - 이 통계는 지정된 필드에 있는 문자열 값에 대한 랜덤 샘플입니다.
+                    </li>
+                </ul>
+                모든 통계는 null이 아닌 값에 대해 계산됩니다. 결과 레이어에는 계산된 각 통계에 대한 새 필드가 포함됩니다. 속성과 통계를 선택하여 원하는 개수의 통계를 추가할 수 있습니다. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>데이터 저장소 선택</h2></div>
+        <hr/>
+        <div>
+            <p>이 매개변수는 결과가 저장되는 데이터 저장소를 설정하기 위한 시험판용 임시 매개변수입니다. 두 데이터 저장소 모두  ArcGIS Data Store의 일부입니다. 시공간적 데이터 저장소를 선택했지만 설치되어 있지 않은 경우에는 도구를 사용할 수 없습니다. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>결과 레이어 이름</h2></div>
+        <hr/>
+        <div>
+            <p>  <b>내 콘텐츠</b>에서 생성되어 맵에 추가되는 레이어의 이름입니다.  기본 이름은 도구 이름과 입력 레이어 이름을 기반으로 합니다. 레이어가 이미 있으면 도구를 사용할 수 없습니다.
+            </p>
+            <p> <b>결과 저장:</b> 드롭다운 상자를 사용하여 <b>내 콘텐츠</b>에서 결과를 저장할 폴더의 이름을 지정할 수 있습니다.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

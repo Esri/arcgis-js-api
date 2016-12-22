@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>조인 피처(Join Features)</h2><p/>
+        <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="조인 피처"></h2>
+        <hr/>
+    <p> 조인 피처는 2개의 레이어를 사용하여 공간 및 속성 관계에 따라 한 피처의 속성을 다른 피처에 조인합니다. 이 도구는 지정된 조인 조건을 충족하는 모든 입력 피처를 확인한 다음 조인 레이어를 대상 레이어에 추가합니다.
+    </p>
+    <p> 조인 피처는 포인트, 라인, 영역, 테이블에 적용할 수 있습니다. 공간 조인의 경우 데이터에 지오메트리가 있어야 합니다.
+    </p>
+    <p> <b>현재 맵 범위 사용</b>을 선택한 경우 현재 맵 범위 내에 표시된 피처만 분석됩니다.  이 옵션을 선택하지 않는 경우에는 현재 맵 범위를 벗어나는 피처까지 포함하여 대상 레이어와 조인 레이어에 있는 피처가 전부 분석됩니다.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="targetLayer">
+        <div><h2>대상 레이어 선택</h2></div>
+        <hr/>
+        <div>
+            <p>조인 레이어의 속성이 자신의 속성 테이블에 추가될 대상 레이어입니다.
+            </p>
+            <p class="OnlineOnly">맵에서 레이어를 선택하는 것 외에도 드롭다운 목록 하단에서  <b>생동감 있는 세계 지도 분석 레이어를 선택</b>하거나 <b>분석 레이어를 선택</b>할 수 있습니다. 선택 시 다수의 분석 용도에 유용하게 사용할 수 있는 여러 레이어가 포함된 갤러리가 열립니다. 
+            </p> 
+        </div>
+    </div>
+    <div id="joinLayer">
+        <div><h2>대상 레이어에 조인할 레이어 선택</h2></div>
+        <hr/>
+        <div>
+            <p>대상 레이어에 추가될 속성을 가진 조인 레이어입니다.
+            </p>
+            <p class="OnlineOnly">맵에서 레이어를 선택하는 것 외에도 드롭다운 목록 하단에서  <b>생동감 있는 세계 지도 분석 레이어를 선택</b>하거나 <b>분석 레이어를 선택</b>할 수 있습니다. 선택 시 다수의 분석 용도에 유용하게 사용할 수 있는 여러 레이어가 포함된 갤러리가 열립니다. 
+            </p>
+        </div>
+    </div>
+    <div id="joinType">
+        <div><h2>조인 유형 선택</h2></div>
+        <hr/>
+        <div>
+            <p>공간 조인, 속성 조인 또는 이 둘의 조합을 적용할 수 있습니다. 
+                <ul>
+                    <li> <b>공간</b> - 피처를 조인하도록 지정된 공간 관계를 사용합니다. 여기에는 두 개 모두의 레이어에 지오메트리가 있어야 합니다.
+                    </li>
+                    <li> <b>속성</b> - 동일한 필드를 기반으로 피처를 조인합니다.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>
+            </p>
+        </div>
+    </div>
+    <div id="spatialRelationship">
+        <div><h2>공간 관계 선택</h2></div>
+        <hr/>
+        <div>
+            <p> 피처가 서로 조인되는 경우를 결정할 공간 관계입니다. 사용 가능한 관계는 입력 피처로 사용되는 지오메트리 유형(포인트, 라인, 영역)에 따라 다릅니다. 사용 가능한 관계에는 다음 항목이 포함되어 있습니다.
+                <ul>
+                    <li> <b>동일</b> - 대상 레이어의 피처가 조인 레이어의 피처와 동일한 경우에 매칭됩니다.
+                    </li>
+                    <li> <b>교차</b> - 대상 레이어의 피처가 조인 레이어의 피처와 교차하는 경우에 매칭됩니다.
+                    </li>
+                    <li> <b>완전히 포함함</b> - 대상 레이어의 피처가 조인 레이어의 피처를 완전히 포함하는 경우에 매칭됩니다.
+                    </li>
+                    <li> <b>완전히 포함됨</b> - 대상 레이어의 피처가 조인 레이어의 피처에 완전히 포함된 경우에 매칭됩니다.
+                    </li>
+                    <li> <b>거리 내에 있음</b> - 대상 레이어의 피처가 조인 레이어의 지정된 피처 거리 내에 있는 경우에 매칭됩니다.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="attributeRelationship">
+        <div><h2>속성 조인</h2></div>
+        <hr/>
+        <div>
+            <p>피처가 서로 조인되는 경우를 결정할 속성 관계입니다. 조인 레이어의 필드 값이 대상 레이어의 필드 값과 같은 경우에 피처가 매칭됩니다. 
+            </p>
+            <p>예를 들어 거주지 주소( <i>우편 번호</i> 필드 포함)의 전국 지리적 레이어와 우편 번호별 상태 인구 통계( <i>HEALTHZIP</i>이라는 이름의 필드)에 대한 테이블 형식의 데이터셋이 있다고 가정해 보겠습니다. 필드 <i>우편 번호</i>를 <i>HEALTHZIP</i>와 매칭하여 해당하는 상태 데이터와 거주지의 레이어가 나타나도록 주거지 데이터에 상태 데이터셋을 조인할 수 있습니다.
+            </p>
+        </div>
+    </div>
+    <div id="joinOperation">
+        <div><h2>조인 작업 선택</h2></div>
+        <hr/>
+        <div>
+            <p>대상 레이어에 대한 관계가 동일한 피처가 조인 레이어에 여러 개 있는 경우 대상 레이어와 조인 레이어 간의 조인 방법을 결정합니다. 다음과 같은 2가지 조인 작업을 선택할 수 있습니다.
+                <ul>
+                    <li> <b>일대일 조인</b> - 이 옵션은 대상 레이어의 각 피처와 일치하는 모든 조인 피처를 요약합니다.
+                    </li>
+                    <li> <b>일대다 조인</b> - 이 옵션은 조인 레이어의 일치하는 모든 피처를 대상 레이어에 조인합니다.  결과 레이어에는 대상 피처에 대한 여러 레코드가 포함됩니다.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>예를 들어 농산물 직거래 시장에서 5km 내에 있는 슈퍼마켓을 찾는다고 가정해 보겠습니다.   이 경우 조인된 레이어에 농산물 직거래 시장을 나타내는 단일 피처가 있으며 조인 피처는 전체 연간 매출액 등의 속성이 있는 로컬 식료품점을 나타냅니다.  <b>조인 피처</b> 도구를 사용하면 해당 기준을 충족하는 5개의 식료품점을 찾을 수 있습니다. <b>일대다 조인</b>의 조인 작업을 지정한 경우 결과에 5개의 피처가 표시되는 것으로 마무리되며 각 행은 농산물 직거래 시장과 슈퍼마켓을 나타냅니다. <b>일대일 조인</b> 관계를 지정한 경우 농산물 직거래 시장과 개수(5) 등 슈퍼마켓의 요약된 정보를 나타내는 하나의 피처와 연간 매출액의 총액 등 다른 선택적 통계가 표시되는 것으로 마무리됩니다.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>통계 추가(선택)</h2></div>
+        <hr/>
+        <div>
+            <p> <b>일대일 조인</b> 옵션을 선택한 경우 조인된 피처에서 통계를 계산할 수 있습니다.  기본 설정에 따라 개수가 계산되어 결과 레이어에 추가됩니다. 
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>결과 레이어 이름</h2></div>
+        <hr/>
+        <div>
+            <p> <b>내 콘텐츠</b>에서 생성되어 맵에 추가되는 레이어의 이름입니다. 기본 이름은 도구 이름과 입력 레이어 이름을 기반으로 합니다. 레이어가 이미 있는 경우 다른 이름을 제공하라는 메시지가 나타납니다.
+            </p>
+            <p> <b>결과 저장:</b> 드롭다운 상자를 사용하여 <b>내 콘텐츠</b>에서 결과를 저장할 폴더의 이름을 지정할 수 있습니다.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

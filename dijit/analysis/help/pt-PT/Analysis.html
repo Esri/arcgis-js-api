@@ -41,11 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="aoToolbox">
-        <p>The Feature Analysis toolbox contains a number
-of tools that you can access and use.  These tasks are arranged below into
-categories; the categories are simply logical groupings
-and do not affect how you access or use the tasks in any
-way.
+        <p>A caixa de ferramentas An&aacute;lise de Elementos cont&eacute;m uma s&eacute;rie de ferramentas &agrave;s quais pode aceder e que pode utilizar.  Estas tarefas encontram-se agrupadas abaixo em categorias; as categorias s&atilde;o simplesmente agrupamentos l&oacute;gicos e n&atilde;o afetam de modo algum o modo como acede ou utiliza as tarefas.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="regularsize">
@@ -54,6 +50,8 @@ way.
         <p>Esta ferramenta calcula as contagens totais, comprimentos, &aacute;reas, e estat&iacute;sticas descritivas b&aacute;sicas de elementos e dos seus atributos dentro de &aacute;reas ou de elementos vizinhos.
             <ul>
                 <li> <b>Pontos Agregados</b> calcula estat&iacute;sticas sobre os pontos que caem dentro de &aacute;reas especificadas.
+                </li>
+                <li> <b>Ligar Elementos</b> transfere atributos de uma camada ou tabela para outra com base em rela&ccedil;&otilde;es espaciais e de atributos.
                 </li>
                 <li> <b>Resumir Pr&oacute;ximo</b> c&aacute;lcula estat&iacute;sticas para elementos e seus atributos que est&atilde;o dentro de uma distancia especifica.
                 </li>
@@ -87,6 +85,32 @@ way.
             </p>
             <br/>
         </div>
+        <div id="JoinFeaturesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Ligar Elementos</h2></td>
+                    <td>
+                    <img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" class="titleImage" alt="Fei&ccedil;&otilde;es de Liga&ccedil;&atilde;o">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ligar Elementos transfere atributos de uma camada ou tabela para outra com base em rela&ccedil;&otilde;es espaciais e de atributos. Por exemplo:
+                <ul>
+                    <li>Anexe limites comuns ou informa&ccedil;&otilde;es demogr&aacute;ficas aos seus dados de incidentes.
+                    </li>
+                    <li>Identifique as instala&ccedil;&otilde;es mais pr&oacute;ximas de um local conhecido.
+                    </li>
+                    <li>Determine o n&uacute;mero de resid&ecirc;ncias que encaixar&atilde;o em zonas de cheias.
+                    </li>
+                    <li>Identifique habitats comuns para diferentes esp&eacute;cies da vida selvagem.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
         <div id="SummarizeNearbyTool" class="largesize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -98,7 +122,7 @@ way.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Descobre elementos que est&atilde;o dentro de uma distancia especifica de elemento na camada de entrada.   Distancia pode ser medida ao longo de uma linha recta ou caminhos vi&aacute;veis de um modo de viagem. As estat&iacute;sticas s&atilde;o ent&atilde;o calculados para os elementos mais pr&oacute;ximosPor exemplo:
+            <p>Descobre elementos que est&atilde;o dentro de uma distancia especifica de elemento na camada de entrada.   Distancia pode ser medida ao longo de uma linha recta ou caminhos vi&aacute;veis de um modo de viagem. As estat&iacute;sticas s&atilde;o ent&atilde;o calculados para os elementos mais pr&oacute;ximos Por exemplo:
                 <ul>
                     <li>Calcular o total de popula&ccedil;&atilde;o que se encontra a cinco minutos da proposta de localiza&ccedil;&atilde;o de uma nova loja.
                     </li>
@@ -293,11 +317,13 @@ way.
         <hr/>
         <p>Estas ferramentas ajudam-no a identificar, quantificar, e visualizar modelos espaciais nos seus dados.  
             <ul>
-                <li> <b>Calcular Densidade</b> leva quantidades conhecidas de algum fen&oacute;meno e se espalha estas quantidades em todo o mapa.
+                <li> <b>Calcular Densidade</b> considera quantidades conhecidas de determinado fen&oacute;meno e dispersa-as pelo mapa.
                 </li>
                 <li> <b>Localizar Hot Spots</b> permite identificar clustering com relev&acirc;ncia estat&iacute;stica no padr&atilde;o espacial dos dados.
                 </li>
-                <li> <b>Interpolar Pontos</b> prev&ecirc; valores em novos locais baseados em medi&ccedil;&otilde;es encontrados numa colec&ccedil;&atilde;o de pontos.
+                <li> <b>Encontrar Valores At&iacute;picos</b> determina se existem valores at&iacute;picos com relev&acirc;ncia estat&iacute;stica no padr&atilde;o espacial dos seus dados.
+                </li>
+                <li> <b>Interpolar Pontos</b> prev&ecirc; valores em novos locais baseados em medi&ccedil;&otilde;es encontradas numa colec&ccedil;&atilde;o de pontos.
                 </li>
             </ul>
             
@@ -324,12 +350,27 @@ way.
                 <tbody><tr>
                     <td><h2>Localizar Hot Spots</h2></td>
                     <td>
-                    <img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" class="titleImage" alt="Localizar Hot Spots">
+                    <img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" class="titleImage" alt="Localizar Pontos de Incid&ecirc;ncia">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
             <p>Esta ferramenta cria um mapa que mostra qualquer tipo de clustering com relev&acirc;ncia estat&iacute;stica presente nos dados. Utilize esta ferramenta para detetar hot spots (vermelhos) e cold spots (azuis) inesperados de valores altos e baixos de casas, densidades de criminalidade, v&iacute;timas mortais de acidentes de via&ccedil;&atilde;o, desemprego ou biodiversidade, por exemplo.
+            </p>
+            <br/>
+        </div>
+        <div id="FindOutliersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Encontrar Valores Atípicos</h2></td>
+                    <td>
+                    <img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" class="titleImage" alt="Encontrar Valores At&iacute;picos">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Esta ferramenta cria um mapa que mostra quaisquer clusters e valores at&iacute;picos com relev&acirc;ncia estat&iacute;stica presentes nos dados. Utilize esta ferramenta para identificar elementos que t&ecirc;m valores que s&atilde;o significativamente diferentes dos valores vizinhos.  Pode utilizar esta ferramenta, por exemplo, para encontrar padr&otilde;es de despesa an&oacute;malos, determinar onde se encontram os limites mais acentuados entre riqueza e pobreza numa &aacute;rea de estudo ou determinar se existem condados nos Estados Unidos com n&iacute;veis de esperan&ccedil;a de vida excecionalmente reduzidos em compara&ccedil;&atilde;o com os respetivos estados vizinhos.
             </p>
             <br/>
         </div>

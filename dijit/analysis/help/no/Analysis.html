@@ -40,12 +40,18 @@
 </head>
 <body onload="init()">
 <div id="topics">
+    <div id="aoToolbox">
+        <p>Geoobjektanalyse-verkt&oslash;ykassen inneholder en rekke verkt&oslash;y du f&aring;r tilgang til og kan bruke.  Disse oppgavene er sortert i kategorier nedenfor. Kategoriene er logiske grupperinger og har ingen innvirkning p&aring; hvordan du f&aring;r tilgang til og bruker verkt&oslash;yene.
+        </p>
+    </div>
     <div id="SummarizeDataCategory" class="regularsize">
         <h2>Summer data</h2>
         <hr/>
         <p>Med disse verkt&oslash;yene kan du beregne totaler, lengder, omr&aring;der og grunnleggende beskrivende statistikk for geoobjekter og tilh&oslash;rende attributter innenfor omr&aring;der eller i n&aelig;rheten av andre geoobjekter.
             <ul>
-                <li> <b>Samle punkter</b> beregner statistikk om punkter som faller innenfor bestemte omr&aring;der.
+                <li> <b>Samle punkter</b> beregner statistikk for punkter som faller innenfor bestemte omr&aring;der.
+                </li>
+                <li> <b>Koble geoobjekter</b> overf&oslash;rer attributter fra et lag eller en tabell til et annet basert p&aring; romlige eller attributtmessige relasjoner.
                 </li>
                 <li> <b>Summer n&aelig;rliggende</b> beregner statistikk for geoobjekter og deres attributter som er innenfor en angitt avstand.
                 </li>
@@ -61,18 +67,44 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Samle punkter</h2></td>
+                    <td><h2>Aggreger punkter</h2></td>
                     <td>
-                    <img src="../images/GUID-60C59C66-3038-4D0E-8F6A-EC6C53FEAA02-web.png" class="titleImage" alt="Samle punkter">
+                    <img src="../images/GUID-60C59C66-3038-4D0E-8F6A-EC6C53FEAA02-web.png" class="titleImage" alt="Aggreger punkter">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Dette verkt&oslash;yet bruker et lag med punktgeoobjekter og et lag med omr&aring;degeoobjekter til &aring; finne ut hvilke punkter som faller innenfor hvert omr&aring;de, og beregner statistikk for alle punktene innenfor hvert omr&aring;de. Eksempel: 
+            <p>Dette verkt&oslash;yet bruker et lag med punktgeoobjekter og et lag med omr&aring;degeoobjekter til &aring; finne ut hvilke punkter som faller innenfor hvert omr&aring;de, og beregner statistikk for alle punktene innenfor hvert omr&aring;de. Eksempel:
                 <ul>
                     <li>Med angitte punktlokasjoner for lovbrudd kan du telle antall lovbrudd per fylke eller distrikt.
                     </li>
-                    <li>Du kan finne h&oslash;yeste og laveste inntekt for franchiselokasjoner per stat.
+                    <li>Du kan finne h&oslash;yeste og laveste inntekt for franchiselokasjoner per delstat.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="JoinFeaturesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Koble geoobjekter</h2></td>
+                    <td>
+                    <img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" class="titleImage" alt="Koble geoobjekter">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Koble geoobjekter overf&oslash;rer attributter fra et lag eller en tabell til et annet basert p&aring; romlige relasjoner og attributtmessige relasjoner. Eksempel:
+                <ul>
+                    <li>Legg til felles grense eller demografisk informasjon til vanlig grense eller demografisk informasjon til hendelsedataene.
+                    </li>
+                    <li>Identifiser de n&aelig;rmeste fasilitetene til en kjent lokasjon.
+                    </li>
+                    <li>Finn antall boliger som er innenfor flomsoner.
+                    </li>
+                    <li>Identifiser vanlige habitater for ulike arter.
                     </li>
                 </ul>
                 
@@ -90,11 +122,11 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Finner geoobjektene som er innenfor en angitt avstand fra geoobjekter i inndatalaget. Avstanden kan m&aring;les langs rette linjer eller gyldige veier og gangstier for en reisem&aring;te. Verkt&oslash;yet beregner deretter statistikk for de n&aelig;rliggende geoobjektene. Eksempel: 
+            <p>Finner geoobjektene som er innenfor en angitt avstand fra geoobjekter i inndatalaget. Avstanden kan m&aring;les langs rette linjer eller gyldige veier og gangstier for en reisem&aring;te. Verkt&oslash;yet beregner deretter statistikk for de n&aelig;rliggende geoobjektene. Eksempel:
                 <ul>
                     <li>Du kan beregne hvor mange som bor innenfor en radius p&aring; fem minutter fra en mulig ny butikketablering.
                     </li>
-                    <li>Du kan finne ut hvor mange motorveiavkj&oslash;rsler det er innenfor fem minutter fra en mulig ny butikketablering, slik at du kan vurdere tilgjengeligheten.
+                    <li>Du kan finne ut hvor mange motorveiavkj&oslash;rsler det er innenfor fem minutter fra en mulig ny butikketablering, slik at du kan vurdere tilgjengeligheten for butikken.
                     </li>
                 </ul>
                 
@@ -112,7 +144,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Finner omr&aring;der (og deler av omr&aring;der) som overlapper mellom to lag og beregner statistikk for overlappingen. Eksempel: 
+            <p>Finner omr&aring;der (og deler av omr&aring;der) som overlapper mellom to lag og beregner statistikk for overlappingen. Eksempel:
                 <ul>
                     <li>Hvis du har et lag med nedb&oslash;rsfelt og et lag med arealbruksomr&aring;der etter arealbrukstype, kan du beregne totalt areal for arealbrukstype for hvert nedb&oslash;rsfelt. 
                     </li>
@@ -289,6 +321,8 @@
                 </li>
                 <li> <b>Finn hotspots</b> identifiserer statistisk signifikante grupperinger i de geografiske m&oslash;nstrene i dataene dine.
                 </li>
+                <li> <b>Finn avvik</b> finner ut om det er noen statistisk signifikante avvik i det geografiske m&oslash;nsteret i dataene dine.
+                </li>
                 <li> <b>Interpoler punkter</b>-verkt&oslash;yet forutsier verdier p&aring; nye lokasjoner basert p&aring; m&aring;linger fra en samling punkter.
                 </li>
             </ul>
@@ -321,7 +355,22 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Dette verkt&oslash;yet oppretter et kart som viser eventuelle statistisk signifikante geografiske grupperinger i dataene dine.   Bruk dette verkt&oslash;yet til &aring; avdekke uforutsette hotspots (r&oslash;de) og coldspots (bl&aring;) for h&oslash;ye og lave boligverdier, lovbrudd, trafikkd&oslash;d, arbeidsl&oslash;shet eller artsmangfold, bare for &aring; nevne noen eksempler.
+            <p>Dette verkt&oslash;yet oppretter et kart som viser eventuelle statistisk signifikante geografiske grupperinger i dataene dine. Bruk dette verkt&oslash;yet til &aring; avdekke uforutsette hotspots (r&oslash;de) og coldspots (bl&aring;) for h&oslash;ye og lave boligverdier, lovbrudd, trafikkd&oslash;d, arbeidsl&oslash;shet eller artsmangfold, bare for &aring; nevne noen eksempler.
+            </p>
+            <br/>
+        </div>
+        <div id="FindOutliersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Finn avvik</h2></td>
+                    <td>
+                    <img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" class="titleImage" alt="Finn avvik">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dette verkt&oslash;yet oppretter et kart som viser eventuelle statistisk signifikante klynger og romlige avvik i dataene dine. Bruk dette verkt&oslash;yet til &aring; identifisere geoobjekter med verdier som er signifikant forskjellige fra naboene. Du kan bruke dette verkt&oslash;yet til &aring; finne for eksempel avvikende forbruksvaner, finne ut hvor det er tydeligst i et studieomr&aring;de eller finne ut om det er fylker i USA som har uvanlig lav forventet levealder sammenlignet med nabofylkene.
             </p>
             <br/>
         </div>
@@ -500,7 +549,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Ekstraher data</h2></td>
+                    <td><h2>Trekk ut data</h2></td>
                     <td>
                     <img src="../images/GUID-CE24332B-74C0-412F-BB94-31415A02195A-web.png" class="titleImage" alt="Ekstraher data">
                     </td>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Sumiraj atribute</h2><p/>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Sumiraj atribute"></h2>
+        <hr/>
+    <p>Ovaj alat sumira sve vrednosti koje se poklapaju u jednom ili vi&scaron;e polja i izračunava statistiku na njima. Najosnovnija statistika je broj geoobjekata koji su zajedno sumirani, ali takođe možete da izračunate i naprednije statistike. 
+
+    </p>
+    <p>Na primer, pretpostavimo da imate tačkaste geoobjekte lokacija prodavnica sa poljem koje predstavlja  <i>DISTRICT_MANAGER_NAME</i> i da vi želite da sumirate prodaju kafe od strane rukovodioca. Možete da navedete polje <i>DISTRICT_MANAGER_NAME</i> kao polje za svođenje i svi redovi podataka koji predstavljaju pojedinačne rukovodioce će biti sumirani. To znači da će sve lokacije prodavnica kojima upravlja Rukovodilac1 biti sumirane u jednom redu sa izračunatom statistikom sumiranja. U ovom slučaju, statistika kao &scaron;to je računanje broja prodavnica i zbir <i>TOTAL_SALES</i> za sve prodavnice kojima rukovodi Rukovodilac1 bi bila izračunata, kao i za bilo kojeg drugog rukovodioca navedenog u polju <i>DISTRICT_MANAGER_NAME</i>.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Izaberite ulaznu vrednost za sumiranje</h2></div>
+        <hr/>
+        <div>
+            <p>Sloj koji sadrži polja koja će biti sumirana.  
+            </p>
+            <p>Kao dodatak odabiru sloja iz mape, možete da odaberete  <b>Pregledaj slojeve</b> na dnu padajuće liste da biste potražili deljeni skup podataka za datoteke sa velikim podacima ili sloj geoobjekta u svojim sadržajima.  
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>Odaberite polja na kojima želite da vršite svođenje</h2></div>
+        <hr/>
+        <div>
+            <p>  Lista polja iz ulaznog sloja.  Izabrana polja će biti sumirana i iskori&scaron;ćena za izračunavanje statistike. Na primer, ako izaberete polje koje se zove <i>PropertyType</i> sa vrednostima poslovnih i stambenih, sva stambena polja će biti zajedno sumirana, sa izračunatim statistikom sumiranja, a sva poslovna polja će biti sumirana zajedno.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Odaberite polja i statistiku koju želite da izračunate</h2></div>
+        <hr/>
+        <div>
+            <p> Možete da izračunate statistiku na geoobjektima koji su sumirani. U numeričkim poljima možete da izračunate sledeće:
+                <ul>
+                    <li>Broj
+                    </li>
+                    <li>Sredina
+                    </li>
+                    <li>Minimum
+                    </li>
+                    <li>Maksimum
+                    </li>
+                    <li>Opseg
+                    </li>
+                    <li>Odstupanje
+                    </li>
+                    <li>Standardna devijacija
+                    </li>
+                </ul>
+                
+            </p>
+            <p>U poljima niske možete da izračunate sledeće:
+                <ul>
+                    <li>Broj
+                    </li>
+                    <li>Bilo koji&mdash;ova statistika je nasumični uzorak vrednosti niske u navedenom polju.
+                    </li>
+                </ul>
+                Sva statistika se izračunava na vrednostima koje nisu null (bez vrednosti). Rezultujući sloj će sadržati novo polje za svaku izračunatu statistiku. Svaki broj statistike može da se doda odabirom atributa i statistike. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Izaberi skladište podataka</h2></div>
+        <hr/>
+        <div>
+            <p>Ovo je privremeni parametar za preliminarnu verziju da bi se podesilo skladi&scaron;te podataka gde se čuvaju rezultati. Oba skladi&scaron;ta podataka su deo  ArcGIS Data Store. Ako izaberete skladi&scaron;te prostorno-vremenskih podataka, ali nemate ga instalirano, alatka će otkazati. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Naziv sloja sa rezultatima</h2></div>
+        <hr/>
+        <div>
+            <p> Ovo je naziv sloja koji će biti kreiran u <b>Mom sadržaju</b> i dodat na mapu. Podrazumevani naziv je zasnovan na nazivu alatke i nazivu ulaznog sloja. Ako sloj već postoji, alatka će otkazati.
+            </p>
+            <p>Koristeći  <b>Sačuvaj rezultat u</b> padajućem polju, možete da navedete ime fascikle u <b>Mom sadržaju</b> u kojoj će rezultat biti sačuvan.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

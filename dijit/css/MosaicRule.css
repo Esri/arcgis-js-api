@@ -12,7 +12,6 @@ div.mosaicRuleContainer {
 }
 .mosaicRuleTable {
   border-collapse: separate;
-  text-align: left;
   border-spacing: 0px 5px;
   table-layout: fixed;
   max-width:400px;

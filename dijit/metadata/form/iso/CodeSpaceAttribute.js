@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.18/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.19/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../Attribute","../../../../kernel"],function(e,t,a,i,r){var d=e([i],{fixed:!0,hide:!0,minOccurs:1,showHeader:!1,target:"codeSpace",value:"ISOTC211/19115",postCreate:function(){this.inherited(arguments)}});return a("extend-esri")&&t.setObject("dijit.metadata.form.iso.CodeSpaceAttribute",d,r),d});

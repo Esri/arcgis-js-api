@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Kurti buferius</h2><p/>
+        <h2><img src="../images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" alt="Kurti buferius"></h2>
+        <hr/>
+    <p>Buferis &ndash; tai plotas, dengiantis nurodytą atstumą aplink ta&scaron;kinį, linijinį ar plotinį elementą. 
+    </p>
+    <p>Buferiai dažnai kuriami tam, kad būtų galima atlikti papildomą analizę naudojant kitus įrankius. Tarkime, jei domina, kurie pastatai yra 1 mylios atstumu nuo mokyklos, atsakymą sužinosite sukūrę 1 mylios buferį aplink mokyklą ir perdengę jį pastatų sluoksniu. Rezultatas &ndash; sluoksnis i&scaron; pastatų, nutolusių nuo mokyklos 1&nbsp;mylios atstumu.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Pasirinkite sluoksnį, kuriam taikysite buferį</h2></div>
+        <hr/>
+        <div>
+            <p>Ta&scaron;kų, linijų ar plotų elementai, kurie bus įkelti į buferį.
+            </p>
+            <p>Galite pasirinkti ne tik sluoksnį i&scaron; žemėlapio, bet ir pasirinkti parinktį  <b>Nar&scaron;yti sluoksnius</b>, esančią i&scaron;krentančio sąra&scaron;o apačioje, kuri suteikia galimybę nurodyti kelią iki jūsų didelių duomenų failų saugyklos duomenų rinkinio arba elementų sluoksnio.  
+            </p>
+        </div>
+    </div>
+    <div id="bufferType">
+        <div><h2>Pasirinkite taikytino buferio tipą</h2></div>
+        <hr/>
+        <div>
+            <p>Įvesties elementų buferio dydį galite nurodyti trimis būdais: 
+                <ul>
+                    <li>Nurodyti atstumą, taikomą visiems elementams.
+                    </li>
+                    <li>Nurodyti lauką įvesties sluoksnyje, kuriame nurodyta atstumo reik&scaron;mė. Naudoti tekstinį arba skaitinį lauką. Jei matavimo vienetas nėra nurodytas, bus naudojami koordinačių sistemos vienetai. Jei naudojate geografinę koordinačių sistemą, lauko, kurio vienetai nėra nurodyti, vienetais bus laikomi metrai. 
+                    </li>
+                    <li>Sukurkite i&scaron;rai&scaron;ką su keliais laukais ir matematiniais veiksmais.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Pasirinkite buferio metodą</h2></div>
+        <hr/>
+        <div>
+            <p>Galite pasirinkti naudoti  <b>Plok&scaron;tuminį</b> arba <b>Geodezinį</b> metodą. <b>Plok&scaron;tuminis</b> metodas gali būti greitesnis ir labiau tinkamas duomenų, turinčių projekcinę koordinačių sistemą, vietinei analizei. <b>Geodezinis</b> metodas tinka dideliems plotams ir bet kokiai geografinei koordinačių sistemai.
+            </p>
+        </div>
+    </div>
+    <div id="dissolveOption">
+        <div><h2>Pasirinkite tirpdymo metodo tipą</h2></div>
+        <hr/>
+        <div>
+            <p>Tirpdymo metodo parinktys.   Pasirinkę tirpdymo metodą, galėsite kurti kelių dalių ar vienos dalies plotus ir apskaičiuoti statistiką pagal pateiktus laukus.
+                <ul>
+                    <li> <b>Visi</b> &ndash; i&scaron;tirpdomi visi elementai. Jei leidžiami kelių dalių elementai, visi elementai bus i&scaron;tirpdyti ir sujungti į vieną elementą. Jei kelių dalių elementai neleidžiami, bus i&scaron;tirpdyti ir sujungti tie elementai, kurie yra vienas greta kito arba persidengia.
+                    </li>
+                    <li> <b>Laukai</b> &ndash; i&scaron;tirpdomi ir sujungiami tie elementai, kurie turi bendrą nurodytą lauką arba laukų kombinaciją. Jei leidžiami kelių dalių elementai, visi elementai, kurie turi bendrą lauką, bus i&scaron;tirpdyti ir sujungti į vieną elementą. Jei kelių dalių elementai neleidžiami, bus i&scaron;tirpdyti ir sujungti tie elementai, kurie turi bendrą lauką ir yra vienas greta kito arba persidengia.
+                    </li>
+                    <li> <b>Nė vienas</b> &ndash; nei&scaron;tirpdomi jokie elementai. Tai yra numatytoji parinktis.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="multipart">
+        <div><h2>Leisti kelių dalių elementus</h2></div>
+        <hr/>
+        <div>
+            <p>Parinktis, kuria galite nurodyti, ar jūsų rezultatai apims vienos dalies, ar kelių dalių elementus. 
+
+            </p>
+            <p>
+                <ul>
+                    <li>Pažymėta &ndash; jūsų analizės rezultatai apims kelių dalių elementus.   
+                    </li>
+                    <li>Nepažymėta &ndash; jūsų analizės rezultatai apims vienos dalies elementus. Tai yra numatytoji parinktis.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Pridėti statistiką (neprivaloma)</h2></div>
+        <hr/>
+        <div>
+            <p> Galite apskaičiuoti susumuotų elementų statistiką. Naudodami skaitinius laukus, galite apskaičiuoti:
+                <ul>
+                    <li>Skaičių
+                    </li>
+                    <li>Vidurkį
+                    </li>
+                    <li>Mažiausią reik&scaron;mę
+                    </li>
+                    <li>Didžiausią reik&scaron;mę
+                    </li>
+                    <li>Intervalą
+                    </li>
+                    <li>Dispersiją
+                    </li>
+                    <li>Standartinį nuokrypį
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Naudodami tekstinius laukus, galite apskaičiuoti:
+                <ul>
+                    <li>Skaičių
+                    </li>
+                    <li>Bet kokį rodiklį &ndash; &scaron;is statistinis rodiklis yra atsitiktinės eilutės reik&scaron;mės i&scaron; nurodyto lauko pavyzdys.
+                    </li>
+                </ul>
+                Visi statistiniai rodikliai apskaičiuojami tik su nenulinėmis reik&scaron;mėmis. Gautame sluoksnyje bus kiekvieno apskaičiuoto statistinio rodiklio naujas laukas. Pasirenkant atributą ir statistinį rodiklį, gali būti pridėtas neribotas statistinių rodiklių kiekis. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Pasirinkti duomenų saugyklą</h2></div>
+        <hr/>
+        <div>
+            <p>Tai yra laikinas parametras, naudojamas iki i&scaron;leidimo, kad būtų galima nustatyti duomenų saugyklą, kur bus įra&scaron;yti rezultatai. Abejos duomenų saugyklos yra  ArcGIS Data Store dalis. Jei pasirinksite erdvėlaikio duomenų saugyklą, bet viena i&scaron; jų nebus įdiegta, įrankis neveiks. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Rezultatų sluoksnio pavadinimas</h2></div>
+        <hr/>
+        <div>
+            <p> Tai sluoksnio, kuris bus sukurtas ir patalpintas <b>Turinyje</b> ir pridėtas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas pagal įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau yra, įrankis neveiks.
+            </p>
+            <p>Pasirinkę  <b>Rezultatą įra&scaron;yti į</b>, galite nurodyti <b>Turinyje</b> esančio aplanko pavadinimą.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

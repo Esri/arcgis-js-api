@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Rekonstruer spor</h2><p/>
+        <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Rekonstruer spor"></h2>
+        <hr/>
+    <p>Dette verkt&oslash;yet fungerer med et tidsaktivert lag med enten punkt- eller polygongeoobjekter som representerer et  <code>&oslash;yeblikk</code> i tid.   Det fastsl&aring;r f&oslash;rst hvilke geoobjekter som tilh&oslash;rer et spor ved hjelp av en identifikator. Ved &aring; bruke tiden p&aring; hver lokasjon blir sporene organisert sekvensielt og omdannet til en linje eller en polygon som representerer banen for bevegelsen over tid. Eventuelt kan inndataene bufres av et felt, noe som vil skape et polygon p&aring; hver lokasjon. Disse bufrede punktene, eller hvis inndataene er polygoner, blir deretter sl&aring;tt sammen sekvensielt for &aring; lage et spor som et polygon der bredden er representerer det aktuelle attributtet.  De resulterende sporene har en start- og slutt-tid, noe som tidsmessig representerer de f&oslash;rste og siste geoobjektene i et gitt spor. N&aring;r sporene er opprettet, blir statistikk om inndatageoobjektene beregnet og tilordnet utdatasporene. Den mest grunnleggende statistikken er antall punkter innenfor omr&aring;det, men du kan beregne annen statistikk ogs&aring;.
+    </p>
+    <p>Geoobjekter i tidsaktiverte lag kan representeres p&aring; en av to m&aring;ter:
+        <ul>
+            <li>Umiddelbart &ndash; Ett enkelt &oslash;yeblikk i tid
+            </li>
+            <li>Intervall &ndash; En start- og slutt-tid
+            </li>
+        </ul>
+        
+    </p>
+    <p>La oss for eksempel si at du har GPS-m&aring;linger av orkaner hvert 10. minutt. Hver GPS-m&aring;ling registrerer orkanens navn, lokasjon, tidspunktet for registreringen og vindhastigheten. Med denne informasjonen kan du lage spor for hver orkan med navnet som sporidentifikasjon, og spor for hver orkan vil bli generert. I tillegg kan du beregne statistikk, for eksempel gjennomsnittlig, h&oslash;yeste og laveste vindhastighet for hver orkan, i tillegg til antallet av m&aring;linger innenfor hvert spor.
+    </p>
+    <p>Med det samme eksempel kan du bufre sporene etter vindhastighet. Dette bufrer hver m&aring;ling etter vindhastigheten p&aring; den lokasjonen, og sl&aring;r sammen de bufrede omr&aring;dene, noe som skaper et polygon som representerer sporbanen, i tillegg til endringer i vindhastigheten etter hvert som orkanen flytter seg.   
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Velg geoobjekter som sporene skal rekonstrueres fra</h2></div>
+        <hr/>
+        <div>
+            <p>Punkt- eller polygonlaget som vil bli rekonstruert til spor.
+            </p>
+            <p>I tillegg til &aring; velge et lag fra kartet kan du velge  <b>Browse Layers</b> (Bla gjennom lag), som du finner nederst i rullegardinlisten, til &aring; bla deg frem til innholdet for et fildelingsdatasett for big data eller et geoobjektslag.  
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>Velg felter som brukes til å identifisere spor</h2></div>
+        <hr/>
+        <div>
+            <p> Feltene som representerer sporidentifikatoren.
+            </p>
+            <p> Et eksempel: Hvis du skulle rekonstruere spor etter orkaner, kunne du brukt orkanens navn som sporfelt.
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Velg metoden brukt til å rekonstruere spor</h2></div>
+        <hr/>
+        <div>
+            <p>Metoden som brukes til &aring; sl&aring; sammen spor og bruke en buffer (hvis det er relevant).  <b>Planar</b>-metoden kan beregne resultatene raskere, men vil ikke bryte sporene rundt den internasjonale datolinjen eller ta h&oslash;yde for jordens faktiske form under bufring. <b>Geodetisk</b>-metoden bryter sporene rundt datolinjen hvis det er n&oslash;dvendig, og bruker en geodetisk buffer til &aring; ta h&oslash;yde for jordens form.
+            </p>
+        </div>
+    </div>
+    <div id="bufferField">
+        <div><h2>Opprett et uttrykk som inndatafunksjoner skal bufres med (valgfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Ligning som brukes til &aring; beregne bufferavstanden rundt inndatageoobjekter. Denne ligningen kan genereres ved hjelp av bufferkalkulatoren og grunnleggende operasjoner som f.eks. addisjon, subtraksjon, multiplikasjon og divisjon. Verdiene beregnes ved hjelp av analysekoordinatsystemet.
+            </p>
+        </div>
+    </div>
+    <div id="timeSplit">
+        <div><h2>Velg en tid som sporene skal deles på (valgfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Tiden som brukes til &aring; dele spor. Hvis inndatapunktene eller polygonene har lengre varighet mellom dem enn tidsinndelingen, vil de bli delt inn i forskjellige spor.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Legg til statistikk (valgfritt)</h2></div>
+        <hr/>
+        <div>
+            <p> Du kan beregne statistikk p&aring; geoobjekter som er summert. P&aring; numeriske felt kan du beregne f&oslash;lgende:
+                <ul>
+                    <li>Antall
+                    </li>
+                    <li>Gjennomsnitt
+                    </li>
+                    <li>Min
+                    </li>
+                    <li>Maks
+                    </li>
+                    <li>Omr&aring;de
+                    </li>
+                    <li>Varians
+                    </li>
+                    <li>Standardavvik
+                    </li>
+                </ul>
+                
+            </p>
+            <p>P&aring; strengfelter kan du beregne f&oslash;lgende:
+                <ul>
+                    <li>Antall
+                    </li>
+                    <li>Noen &ndash; Denne statistikken er en tilfeldig pr&oslash;ve av en strengverdi i det spesifiserte feltet.
+                    </li>
+                </ul>
+                All statistikk beregnes p&aring; ikke-nullverdier. Resultatlaget inneholder et nytt felt for hver beregnet statistikk. Du kan legge til flere statistikker ved &aring; velge et attributt og statistikk. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Velg datalager</h2></div>
+        <hr/>
+        <div>
+            <p>Dette er en midlertidig parameter for forh&aring;ndslansering, for &aring; angi datalageret der resultatene lagres. Begge datalagrene er en del av  ArcGIS Data Store. Hvis du velger det spatiotemporale datalageret, men ikke har et installert, vil verkt&oslash;yet mislykkes. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Navn på resultatlag</h2></div>
+        <hr/>
+        <div>
+            <p> Dette er navnet p&aring; laget som vil bli laget i <b>Mitt Innhold</b> og lagt til i kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget allerede eksisterer, vil verkt&oslash;yet mislykkes.
+            </p>
+            <p>Bruk rullegardinlisten  <b>Lagre resultat</b> i til &aring; angi navnet p&aring; en mappe i <b>Mitt innhold</b> som resultatene skal lagres i.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Punten aggregeren</h2><p/>
+        <h2><img src="../images/GUID-6C1620D9-D176-41FA-8283-833D8B1CCCFC-web.png" alt="Punten aggregeren"></h2>
+        <hr/>
+    <p>Deze tool werkt met een laag van puntobjecten en een laag van vlakobjecten. Invoergebiedobjecten kunnen van een polygoonlaag zijn of ze kunnen vierkante of zeshoekige bins zijn berekend als de tool wordt uitgevoerd. De tool bepaalt eerst welke punten binnen elk opgegeven oppervlak vallen. Nadat de ruimtelijke relatie van de punten in een oppervlak is bepaald, worden statistieken voor alle punten in het oppervlak berekend en aan het oppervlak toegewezen. De meest eenvoudige statistiek is het aantal punten binnen het oppervlak, maar u kunt ook andere statistieken opvragen. 
+
+    </p>
+    <p>Stel bijvoorbeeld dat u puntobjecten van locaties van caf&eacute;s hebt en oppervlakobjecten van provincies en u wilt de verkoop van koffie per provincie samenvatten. Stel dat de caf&eacute;s over een    <i>TOTAL_SALES</i>-attribuut beschikken, dan kunt u de som van de <i>TOTAL_SALES</i> in elke provincie opvragen of de minimale of maximale <i>TOTAL_SALES</i>
+ in elke provincie of andere statistieken zoals de telling, reeks, standaardafwijking en variantie.
+    </p>
+    <p>Deze tool kan ook werken met data die tijdingeschakeld is. Als de tijd is ingeschakeld op de invoerpunten dan zijn de tijdsplistingsopties beschikbaar. Met tijdsplitsing kunt u de punt-in-gebied relatie berekenen en kijken naar een specifieke splitsing in de tijd. U kunt bijvoorbeeld naar uurlijkse intervallen kijken, wat resulteert in outputs voor elk uur. 
+    </p>
+    <p>Stel voor een voorbeeld met tijd dat u puntobjecten had van elke transactie bij verschillende caf&eacute;s en geen gebiedslaag. De data is een jaar opgeslagen en elke transactie heeft een locatie en een tijdstempel. Ervan uitgaande dat elke transactie een  <i>TOTAL_SALES</i> attribuut heeft, kunt u de som van alle <i>TOTAL_SALES</i> krijgen binnen de ruimte en tijd van belang. Als deze transacties voor een enkele stad zijn, kunnen we gebieden genereren in rasters van 1 kilometer en kijken naar de wekelijkse tijdsplitsingen om de transacties samen te vatten in tijd en ruimte.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="pointLayer">
+        <div><h2>Kies een laag met punten om in gebieden te aggregeren</h2></div>
+        <hr/>
+        <div>
+            <p>De puntlaag die in gebieden wordt geaggregeerd.
+            </p>
+            <p>Naast het kiezen van een laag van uw kaart, kunt u kiezen voor  <b>Blader door lagen</b> aan de onderkant van de drop-downlijst om in uw inhoud te zoeken naar een groot gedeeld databestand of objectlaag.  
+            </p>
+        </div>
+    </div>
+    <div id="inputAggregation">
+        <div><h2>Kies een oppervlaktelaag om in te agregeren</h2></div>
+        <hr/>
+        <div>
+            <p>De gebieden waar de puntlaag in wordt geaggregeerd. U kunt kiezen tussen een gebiedslaag die u verstrekt of bins die worden gegenereerd als de tool wordt uitgevoerd. Bij het genereren van bins, voor  <b>Vierkant</b> bepalen het gespecificeerde aantal en de eenheden de hoogte en de lengte van het vierkant. Voor <b>Zeskant</b> bepalen het gespecificeerde aantal en de eenheden de afstand tussen de evenwijdige zijden.
+            </p>
+        </div>
+    </div>
+    <div id="polygonLayer">
+        <div><h2>Kies de gebiedslaag om in te aggregeren</h2></div>
+        <hr/>
+        <div>
+            <p>De gebiedslaag waarnaar de punten worden geaggregeerd. Punten die binnen de grenzen van gebieden in deze laag liggen, worden geteld en eventueel samengevat voor uw keuzes van statistieken. 
+            </p>
+            <p>
+            </p>
+            <p>Ofwel de  <b>Bingrootte</b> voor bins of een <b>Gebiedslaag</b> moet worden ingesteld.
+            </p>
+        </div>
+    </div>
+    <div id="inputBins">
+        <div><h2>Kies een afstand om bins te genereren en in te agregeren</h2></div>
+        <hr/>
+        <div>
+            <p>De afstand gebruikt om bins te genereren om uw invoerpunten in te aggregeren. Voor een vierkante bin vertegenwoordigt de grootte de hoogte van het vierkant. Voor een zeshoek vertegenwoordigt de grootte de hoogte van de zeskant (van evenwijdige zijden).  
+            </p>
+            <p>Ofwel de  <b>Bingrootte</b> voor bins of een <b>Gebiedslaag</b> moet worden ingesteld.
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Aggregeren d.m.v. tijdsdelen (optioneel)</h2></div>
+        <hr/>
+        <div>
+            <p>Als de tijd is ingeschakeld op de invoerpuntlaag en het is van het type direct, dan kunt u analyseren met behulp van tijdsplitsing. Er zijn drie parameters die u kunt instellen als u tijd gebruikt:
+                <ul>
+                    <li>  <b>Tijdsinterval</b>
+                    </li>
+                    <li> <b>Tijdstap</b>
+                    </li>
+                    <li> <b>Referentietijd</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Stel u voor dat uw gegevens een jaar vertegenwoordigen en u wilt ze analyseren met behulp van wekelijkse plakjes. Om dat te doen, moet u  <b>Tijdsinterval</b> instellen op <code>1 week.</code>
+            </p>
+            <p> Stel u voor dat uw gegevens een jaar vertegenwoordigen en u wilt ze analyseren aan de hand van de eerste week van de maand. Om dat te doen moet u <b>Tijdsinterval</b> instellen op <code>1 week</code>, <b>Tijdstap</b> op <code>1 maand</code>, en <b>Referentietijd</b> op <code>1 januari om 12:00 uur</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>Tijdsinterval om in te aggregeren</h2></div>
+        <hr/>
+        <div>
+            <p>Tijdsinterval voor het opdelen van de data. Tijdsinterval kan alleen worden gebruikt of in combinatie met de parameter  <b>Tijdstap</b> of <b>Referentietijd</b>.
+            </p>
+            <p> Als u tijdsplitsingen wilt cre&euml;ren die plaatsvonden op elke maandag van 09:00 uur tot 10:00 uur, dan is <b>Tijdsinterval</b> <code>1 uur</code>, <b>Tijdstap</b> <code>1 week</code> en <b>Referentietijd</b> is dan <code>9:00:00 uur op een maandag</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>Tijdstap om in te agregeren</h2></div>
+        <hr/>
+        <div>
+            <p> De stap gebruikt voor het berekenen van een tijdsplitsing. <b>Tijdstap</b> kan alleen worden gebruikt of met <b>Tijdsinterval</b> met <b>Referentietijd</b> of met beide <b>Tijdsinterval</b> en <b>Referentietijd</b>.
+            </p>
+            <p> Als u tijdsplitsingen wilt cre&euml;ren die plaatsvonden op elke maandag van 09:00 uur tot 10:00 uur, dan is <b>Tijdsinterval</b> <code>1 uur</code>, <b>Tijdstap</b> <code>1 week</code> en <b>Referentietijd</b> is dan <code>9:00:00 uur op een maandag</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Referentietijd gebruikt om tijdsplakken op af te stemmen</h2></div>
+        <hr/>
+        <div>
+            <p>De datum en tijd gebruikt om tijdsplakken op af te stemmen  <b>Tijdstap</b> start vanaf en gaat verder terugwaarts naar de gerefereerde tijd.
+            </p>
+            <p> Als u tijdsplitsingen wilt cre&euml;ren die plaatsvonden op elke maandag van 09:00 uur tot 10:00 uur, dan is <b>Tijdsinterval</b> <code>1 uur</code>, <b>Tijdstap</b> <code>1 week</code> en <b>Referentietijd</b> is dan <code>9:00:00 uur op een maandag</code>.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Statistieken toevoegen (optioneel)</h2></div>
+        <hr/>
+        <div>
+            <p> U kunt statistieken berekenen over objecten die zijn samengevat. Op numerieke velden kunt u het volgende berekenen:
+                <ul>
+                    <li>Aantal
+                    </li>
+                    <li>Gemiddelde
+                    </li>
+                    <li>Min
+                    </li>
+                    <li>Max
+                    </li>
+                    <li>Bereik
+                    </li>
+                    <li>Variantie
+                    </li>
+                    <li>Standaardafwijking
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Op stringvelden kunt u het volgende berekenen:
+                <ul>
+                    <li>Aantal
+                    </li>
+                    <li>Elke&mdash;Deze statistiek is een willekeurig voorbeeld van een stringwaarde in het gespecificeerde veld.
+                    </li>
+                </ul>
+                Alle statistieken worden berekend op nonnull waarden. De resultaatlaag zal een nieuw veld bevatten voor elke statistiek die wordt berekend. Andere statistieken kunnen worden toegevoegd door een attribuut en statistiek te kiezen. 
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>Ruimtelijke referentie (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>Dit is een tijdelijke parameter voor prerelease om de verwerkende ruimtelijke referentie in te stellen. Veel big data-tools vereisen dat er een geprojecteerd co&ouml;rdinatensysteem wordt gebruikt als ruimtelijke referentie voor verwerking. Standaard gebruikt de tool het invoerco&ouml;rdinaatsysteem maar zal falen als het een geografisch co&ouml;rdinaatsysteem is. Voer de WKID in om een ​​geprojecteerd co&ouml;rdinaatsysteem in te stellen. Bijvoorbeeld  <b>Web Mercator</b> worden ingevoerd als <code>3857</code>.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Datastore kiezen</h2></div>
+        <hr/>
+        <div>
+            <p>Dit is een tijdelijke parameter voor prerelease om de data-opslag in te stellen waar de resultaten worden opgeslagen. Beide data-opslagplaatsen maken deel uit van  ArcGIS Data Store . Als u de tijdruimtelijke gegevensopslag selecteert maar er geen hebt ge&iuml;nstalleerd, dan zal de tool falen. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Resultaat laagnaam</h2></div>
+        <hr/>
+        <div>
+            <p> Dit is de naam van de kaartlaag die in <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd.  De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, zal de tool falen.
+            </p>
+            <p>Als u in de vervolgkeuzelijst  <b>Resultaat opslaan</b> gebruikt, kunt u de naam opgeven van een map in <b>Mijn Content</b> waarin het resultaat wordt opgeslagen.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

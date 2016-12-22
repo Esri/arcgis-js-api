@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="raToolbox">
+        <p>Met Rasteranalyse kunt u de analyse uitvoeren van grote rasterdatasets met behulp van de  ArcGIS Image Server. Hiermee kunt u sneller data analyseren door gebruik te maken van de kracht van de server. De toolsets die momenteel beschikbaar zijn via de  Portal for ArcGIS web user experience zijn  <b>Data samenvatten</b>, <b>Patronen analyseren</b>, <b>Afbeelding analyseren</b>, <b>Terrein analyseren</b> en <b>Gegevens beheren</b>.
+        </p>
+    </div>
+    <div id="SummarizeDataCategory" class="smallsize">
+        <h2>Gegevens samenvatten</h2>
+        <hr/>
+        <p>Deze toolset bevat een tool om statistieken te berekenen voor een rasterlaag binnen gebiedsgrenzen die u definieert. 
+            <ul>
+                <li> <b>Raster binnenin samenvatten</b> berekent statistieken voor rastercellen die binnen gedefinieerde gebiedsgrenzen vallen.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="SummarizeRasterWithinTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Raster binnenin samenvatten</h2></td>
+                    <td>
+                    <img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" class="titleImage" alt="Raster binnenin tool samenvatten">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Berekent enkele overzichtsstatistieken voor rastercellen in bepaalde gebieden.
+            </p>
+            <p>Enkele voorbeelden van toepassingen zijn onder meer het volgende: 
+
+                <ul>
+                    <li>Bereken aan de hand van een gegeven laag van stroomgebieden en een hoogterasterlaag de reeks verhogingen binnen elk stroomgebied om te bepalen welke de hoogste energiestroming heeft.
+                        
+
+                    </li>
+                    <li>Bereken aan de hand van een gegeven laag van administratieve beheereenheden en een rasterlaag van landgebruikcategorie&euml;n de verscheidenheid van landgebruikwaarden binnen elk beheergebied om te bepalen welke het meeste werk vereisen om een ​​beheerplan te bepalen.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzePatternsCategory" class="regularsize">
+        <h2>Patronen analyseren</h2>
+        <hr/>
+        <p>Deze tools helpen u ruimtelijke patronen in uw gegevens te identificeren, kwantificeren en visualiseren. 
+
+            <ul>
+                <li> <b>Dichtheid berekenen</b> gebruikt bekende hoeveelheden van een bepaald fenomeen en maakt een dichtheidskaart door deze hoeveelheden over de kaart te verspreiden.
+                    
+
+                </li>
+                <li> <b>Punten interpoleren</b> voorspelt waarden op nieuwe locaties op basis van metingen die worden gevonden in een verzameling van punten.
+                    
+
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateDensityRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Dichtheid berekenen</h2></td>
+                    <td>
+                    <img src="../images/GUID-4EE4838C-E210-43CE-99C7-1A648A18C10B-web.png" class="titleImage" alt="Tool Dichtheid berekenen">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dichtheidsanalyse gebruikt bekende hoeveelheden van een bepaald fenomeen en maakt een dichtheidskaart door deze hoeveelheden over de kaart te verspreiden. U kunt deze tool bijvoorbeeld gebruik om concentraties van blikseminslagen of tornado's, de toegang tot gezondheidszorgfaciliteiten en bevolkingsdichtheden weer te geven.
+            </p>
+            <br/>
+        </div>
+        <div id="InterpolatePointsEBKTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Punten interpoleren</h2></td>
+                    <td>
+                    <img src="../images/GUID-06D80BB3-7154-4FAA-9C9B-D665450EF3BC-web.png" class="titleImage" alt="Tool punten interpoleren">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Deze tool voorspelt waarden op nieuwe locaties op basis van metingen die worden gevonden in een verzameling van punten. De tool neemt puntgegevens met waarden op elk punt en retourneert gebieden die worden geclassificeerd op voorspelde waarden. U kunt deze tool bijvoorbeeld gebruiken om neerslagniveaus in een rioleringsgebied te voorspellen op basis van metingen die worden uitgevoerd op afzonderlijke regenmeters.
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzeImageCategory" class="smallsize">
+        <h2>Beeld analyseren</h2>
+        <hr/>
+        <p>De volgende tool helpt u beelden te analyseren om gebieden met vegetatie te bepalen. 
+            <ul>
+                <li> <b>Vegetatie controleren</b> detecteert vegetatie binnen een afbeelding, gebaseerd op rekenkundige bewerkingen op de banden.
+                    
+
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="MonitorVegetationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Vegetatie controleren</h2></td>
+                    <td>
+                    <img src="../images/GUID-7763FCC0-2EA1-463B-98D0-4EBDF6150907-web.png" class="titleImage" alt="Tool Vegetatie controleren voor Portal">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Voert een rekenkundige bewerking uit op de banden van een multiband rasterlaag om informatie over de vegetatiedekking te onthullen van het onderzoeksgebied.
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzeTerrainCategory" class="regularsize">
+        <h2>Terrein analyseren</h2>
+        <hr/>
+        <p>Deze tools helpen u bij het analyseren van rasteroppervlakken. 
+            <ul>
+                <li> <b>Helling berekenen</b> berekent de steilheid van het terrein.
+                    
+
+                </li>
+                <li> <b>Aspect afleiden</b> berekent de richting van de steilste helling voor elke locatie.
+                    
+
+                </li>
+                <li> <b>Viewshed maken</b> identificeert wat kan worden gezien vanuit elk punt op het landschap.
+                    
+
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateSlopeTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Helling berekenen</h2></td>
+                    <td>
+                    <img src="../images/GUID-D33862C6-01BB-445E-B0C3-BC8B8C1858DA-web.png" class="titleImage" alt="Tool Helling berekenen voor Portal">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Identificeert een oppervlak dat de helling toont van de invoerhoogtedata. Helling geeft de mate van verandering in de hoogte weer voor elke cel van het digitaal elevatiemodel (DEM).
+            </p>
+            <br/>
+        </div>
+        <div id="DeriveAspectTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Aspect afleiden</h2></td>
+                    <td>
+                    <img src="../images/GUID-D03FF025-0530-4D0D-87A3-B25D6716F8F0-web.png" class="titleImage" alt="Tool Aspect afleiden voor Portal">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Identificeert de richting bergafwaarts van de maximale mate van verandering in waarde van elke cel tot de buurcellen. Aspect kan worden gezien als de hellingrichting.
+            </p>
+            <br/>
+        </div>
+        <div id="CreateViewshedRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Viewshed maken</h2></td>
+                    <td>
+                    <img src="../images/GUID-BB8B8CAF-330E-4C41-9D94-AF4728D0D0F3-web.png" class="titleImage" alt="Tool Viewshed maken">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Bepaalt de locaties op een rasteroppervlak die zichtbaar zijn voor een aantal waarnemers.
+            </p>
+            <br/>
+        </div>
+    <div id="ManageDataCategory" class="regularsize">
+        <h2>Data beheren</h2>
+        <hr/>
+        <p>Deze tools worden gebruikt zowel voor het dagelijkse beheer van geografische gegevens als voor het combineren van gegevens v&oacute;&oacute;r de analyse. 
+            <ul>
+                <li> <b>Raster extraheren</b> knipt delen uit van een rasterdataset voor verdere analyse.
+                    
+
+                </li>
+                <li> <b>Waarden opnieuw bepalen</b> kent verschillende waarden toe aan rastercellen.
+                    
+
+                </li>
+                <li> <b>Object converteren naar raster</b> rastert vectordata.
+                    
+
+                </li>
+                <li> <b>Raster converteren naar object</b> vectoriseert rasterdata.
+                    
+
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="ExtractRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Raster extraheren</h2></td>
+                    <td>
+                    <img src="../images/GUID-DC9CBCB9-A07C-42D3-A0CB-2FB1483CBF4C-web.png" class="titleImage" alt="Tool Raster extraheren voor Portal">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Haalt cellen uit een raster op basis van de waarde, de vorm of de omvang van een andere dataset.
+            </p>
+            <br/>
+        </div>
+        <div id="RemapValuesTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Waarden opnieuw bepalen</h2></td>
+                    <td>
+                    <img src="../images/GUID-4006E442-A60B-469A-891D-5ED442F64CB8-web.png" class="titleImage" alt="Tool Waarden opnieuw bepalen voor Portal">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Verandert de individuele of reeksen celwaarden in nieuwe waarden.
+            </p>
+            <br/>
+        </div>
+        <div id="ConvertFeatureToRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Convert Feature to  Raster</h2></td>
+                    <td>
+                    <img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" class="titleImage" alt="Convert Feature to Raster tool">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Maak een nieuw rasterdataset van een bestaande objectdataset.
+            </p>
+            <br/>
+        </div>
+        <div id="ConvertRasterToFeatureTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Raster naar object omzetten</h2></td>
+                    <td>
+                    <img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" class="titleImage" alt="Tool Raster naar object omzetten">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Maak een nieuwe objectdataset van een bestaande rasterdataset.
+            </p>
+            <br/>
+        </div>
+</div>
+</html>

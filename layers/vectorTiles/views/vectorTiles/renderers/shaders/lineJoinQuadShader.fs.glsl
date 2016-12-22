@@ -11,5 +11,5 @@ void main()
   // YF: if needed w can also use a smoothstep around the edge of the circle and use a single pixel or so as the edge width
 
   // finally output the fragment color
-  gl_FragColor = vec4(u_color.rgb, alpha * u_color.a);
+  gl_FragColor = alpha * u_color;
 }

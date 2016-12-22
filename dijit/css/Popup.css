@@ -63,9 +63,12 @@
 .esriPopup.blueTheme .titlePane .spinner {
   background: url(../images/ajax-loader-blue.gif) no-repeat;
 }
+
+
 .esriPopupHidden,
 .esriPopupHidden * {
   visibility: hidden !important; 
+  opacity: 0;
 }
 
 

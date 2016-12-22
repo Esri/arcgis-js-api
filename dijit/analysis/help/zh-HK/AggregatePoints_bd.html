@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>匯聚點</h2><p/>
+        <h2><img src="../images/GUID-6C1620D9-D176-41FA-8283-833D8B1CCCFC-web.png" alt="匯聚點"></h2>
+        <hr/>
+    <p>該工具適用於點圖徵圖層，以及區域圖徵圖層。輸入區域圖徵可來自多邊形圖層，或者是執行工具時所計算的方形或六角形容器。工具首先會確定每個指定區域內的點。確定點與區域的空間關係後，會計算出區域內所有點的統計資料，並將統計資料指定給該區域。最基本的統計資料是區域內點的計數，但是也可以取得其他統計資料。
+
+    </p>
+    <p>例如，假設您有咖啡店位置的點圖徵，以及郡的區域圖徵，並且希望按郡摘述咖啡銷售額。假定咖啡店具有  <i>TOTAL_SALES</i> 屬性，則您可以獲得每個郡內所有 <i>TOTAL_SALES</i> 的總和、每個郡內 <i>TOTAL_SALES</i>
+ 的最小值或最大值，或計算、範圍、標準差和變異等其他統計資料。
+    </p>
+    <p>此工具也可以搭配啟用時間的資料。若在輸入點上啟用時間，則可使用時間片段選項。時間片段可讓您在查看時間的特定片段時，計算區域中點關係。例如，您可以每小時為間隔查看片段，如此會在每小時產生輸出。
+    </p>
+    <p>對於時間範例，假設您擁有各個咖啡店位罝所進行的每筆交易的點圖徵，且沒有區域圖層。已記錄一年的資料，且每筆交易都有一個位置和一個時間籤記。假設每筆交易都有  <i>TOTAL_SALES</i> 屬性，您可以取得感興趣的空間和時間中的所有 <i>TOTAL_SALES</i> 總和。如果這些交易屬於單一城市，我們可以產生 1 公里格線的區域，並查看每週時間片段來摘要時間和空間中的交易。
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="pointLayer">
+        <div><h2>選擇包含點的圖層以匯聚爲區域</h2></div>
+        <hr/>
+        <div>
+            <p>將匯聚至區域的點圖層。
+            </p>
+            <p>除了從地圖選擇圖層外，您也可以選擇下拉式清單底部的 <b>瀏覽圖層</b>，以瀏覽到大數據檔案分享資料集或圖徵圖層的內容。  
+            </p>
+        </div>
+    </div>
+    <div id="inputAggregation">
+        <div><h2>選擇要匯聚至其中的區域圖層</h2></div>
+        <hr/>
+        <div>
+            <p>會將點圖層匯聚至其中的區域。您可以選擇您提供的區域圖層，或執行工具時所產生的容器。產生 <b>方形</b>的容器時，指定的數字和單位可決定方形的高度和長度。對於 <b>六角形</b>，指定的數字和單位可決定平行邊之間的距離。
+            </p>
+        </div>
+    </div>
+    <div id="polygonLayer">
+        <div><h2>選擇要匯聚至其中的區域圖層。</h2></div>
+        <hr/>
+        <div>
+            <p>將用於匯聚點的區域圖層。位於該圖層的區域邊界內的所有點都將計算在內，還可以使用您所選的統計方法進行匯總。 
+            </p>
+            <p>
+            </p>
+            <p>必須設定容器的 <b>容器大小</b>，或 <b>區域圖層</b>。
+            </p>
+        </div>
+    </div>
+    <div id="inputBins">
+        <div><h2>選擇產生容器和匯入其中的距離</h2></div>
+        <hr/>
+        <div>
+            <p>用來產生容器，以將您的輸入點匯聚至其中的距離。對於方形容器，大小表示方形的高度。對於六角形，大小表示六角形的高度（從平行面起算）。  
+            </p>
+            <p>必須設定容器的 <b>容器大小</b>，或 <b>區域圖層</b>。
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>使用時間片段匯聚 (選用)</h2></div>
+        <hr/>
+        <div>
+            <p>若是在輸入點圖層上啟用時間，且其為即時類型，則可使用時間片段進行分析。使用時間時可設定三個參數：
+                <ul>
+                    <li>  <b>時間間隔</b>
+                    </li>
+                    <li> <b>時間步長</b>
+                    </li>
+                    <li> <b>參考時間</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>想像您有表示年時間的資料，且您想要使用每週片段進行分析。若要這麼做，您需要將 <b>時間間隔</b>設為 <code>1 週</code>。
+            </p>
+            <p> 想像您有表示年時間的資料，且您想要使用每月的第一週進行分析。若要這麼做，需要將 <b>時間間隔</b>設為 <code>1 週</code>、 <b>時間步長</b>設為 <code>1 個月</code>，以及將 <b>參考時間</b>設為 <code>1 月 1 日上午 12:00</code>。
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>要匯聚到的時間間隔</h2></div>
+        <hr/>
+        <div>
+            <p>使用於分段資料的時間間隔。時間間隔可單獨使用，或搭配使用 <b>時間步長</b>或 <b>參考時間</b>參數。
+            </p>
+            <p> 若要建立時間片段，以便在每週一上午 9:00 到上午 10:00 發生， <b>時間間隔</b>將是 <code>1 小時</code>、 <b>時間步長</b>將是 <code>1 週</code>，且 <b>參考時間</b>將是 <code>週一上午 9:00:00</code>。
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>要匯聚到的時間步長</h2></div>
+        <hr/>
+        <div>
+            <p> 用於計算時間片段的步長。 <b>時間步長</b>可單獨使用，或搭配使用 <b>時間間隔</b>、 <b>參考時間</b>，或 <b>時間間隔</b>和 <b>參考時間</b>二者。
+            </p>
+            <p> 若要建立時間片段，以便在每週一上午 9:00 到上午 10:00 發生， <b>時間間隔</b>將是 <code>1 小時</code>、 <b>時間步長</b>將是 <code>1 週</code>，且 <b>參考時間</b>將是 <code>週一上午 9:00:00</code>。
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>用來對齊時間分段的參考時間</h2></div>
+        <hr/>
+        <div>
+            <p>用來對齊時間分段的日期和時間。 <b>時間步長</b>將從參考的時間起算並繼續向後流動。
+            </p>
+            <p> 若要建立時間片段，以便在每週一上午 9:00 到上午 10:00 發生， <b>時間間隔</b>將是 <code>1 小時</code>、 <b>時間步長</b>將是 <code>1 週</code>，且 <b>參考時間</b>將是 <code>週一上午 9:00:00</code>。
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>新增統計資料 (選用)</h2></div>
+        <hr/>
+        <div>
+            <p> 您可以在要摘要的圖徵上計算統計資料。在數值欄位上，您可以計算：
+                <ul>
+                    <li>計數
+                    </li>
+                    <li>平均值
+                    </li>
+                    <li>最小值
+                    </li>
+                    <li>最大值
+                    </li>
+                    <li>範圍
+                    </li>
+                    <li>變異
+                    </li>
+                    <li>標準差
+                    </li>
+                </ul>
+                
+            </p>
+            <p>在字串欄位上，您可以計算：
+                <ul>
+                    <li>計數
+                    </li>
+                    <li>任何 - 此統計資料是指定欄位中字串值的隨機樣本。
+                    </li>
+                </ul>
+                會以非 null 值計算所有統計資料。結果圖層將為每個已計算的統計資料納入一個新欄位。透過選擇屬性和統計資料可新增任意數量的統計資料。 
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>空間參考 (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>這是搶鮮版的暫時參數，用於設定處理空間參考。許多大數據工具要求將投影的座標系統作為空間參考，以進行處理。預設情況下，工具將使用輸入座標系統，但若是地理座標系統則將失敗。若要設定投影的座標系統，請輸入 WKID。例如， <b>Web Mercator</b> 將輸入 <code>3857</code>。
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>選擇資料存放區</h2></div>
+        <hr/>
+        <div>
+            <p>這是搶鮮版的暫時參數，用於設定儲存結果的資料儲存庫。兩個資料儲存庫皆屬於  ArcGIS Data Store。如果選擇時空資料儲存庫但尚未安裝，工具將失敗。 </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>結果圖層名稱</h2></div>
+        <hr/>
+        <div>
+            <p> 在 <b>我的內容</b>中建立並新增到地圖中的圖層的名稱。預設名稱參照工具名稱以及輸入圖層名稱。如果圖層已存在，工具將失敗。
+            </p>
+            <p>使用 <b>將結果儲存到</b>下拉式方塊，可以在 <b>我的內容</b>中指定储存结果的文件夾的名稱。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

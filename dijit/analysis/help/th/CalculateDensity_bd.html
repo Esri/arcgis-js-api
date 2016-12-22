@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>คำนวณความหนาแน่น</h2><p/>
+        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Calculate Density"></h2>
+        <hr/>
+    <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas classified from least dense to most dense.   
+
+    </p>
+    <p>For point input, each point should represent the location of some event or incident, and the result layer represents a count of the incident per unit area.  A higher density value in a new location means that there are more points near that location.  In many cases, the result layer can be interpreted as a risk surface for future events. For example, if the input points represent locations of lightning strikes, the result layer can be interpreted as a risk surface for future lightning strikes.
+    </p>
+    <p>Other use cases of this tool include the following:
+        <ul>
+            <li>Creating crime-density maps to help police departments properly allocate resources to high crime areas.
+            </li>
+            <li>Calculating densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to decide where new hospitals should be built.
+            </li>
+            <li>Identifying areas that are at high risk of forest fires based on historical locations of forest fires.
+            </li>
+            <li>Locating communities that are far from major highways in order to plan where new roads should be constructed.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>เลือกชั้นจุดที่จะคำนวณความหนาแน่น</h2></div>
+        <hr/>
+        <div>
+            <p>The point layer on which the density will be calculated.
+            </p>
+            <p>นอกจากนี้การเลือกชั้นจากแผนที่ของคุณ คุณสามารถเลือก <b>เรียกดูเลเยอร์</b> ที่ด้านล่างของรายการแบบเลื่อนลง เพื่อเรียกดูเนื้อหาของคุณ สำหรับชุดข้อมูลที่แบ่งปันไฟล์ข้อมูลขนาดใหญ่หรือชั้นข้อมูลฟิเจอร์  
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>เลือกหนึ่งหรือมากกว่าหนึ่งฟิลด์ในการคำนวณความหนาแน่น</h2></div>
+        <hr/>
+        <div>
+            <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
+            </p>
+            <p>The density for the count of points will always be calculated.   If no fields are selected, each location will be assumed to represent a single count.
+            </p>
+        </div>
+    </div>
+    <div id="binType">
+        <div><h2>เลือกรูปทรงถัง</h2></div>
+        <hr/>
+        <div>
+            <p>The shape of bins that points are aggregated into and used for the density calculation.
+            </p>
+        </div>
+    </div>
+    <div id="binSizing">
+        <div><h2>เลือกขนาดถังสำหรับการคำนวณความหนาแน่น</h2></div>
+        <hr/>
+        <div>
+            <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
+            </p>
+        </div>
+    </div>
+    <div id="weight">
+        <div><h2>เลือกขนาดถังสำหรับการคำนวณความหนาแน่น</h2></div>
+        <hr/>
+        <div>
+            <p>The type of weighting applied to the density calculation. There are two options:
+                <ul>
+                    <li> <b>Uniform</b>&mdash;This calculates a magnitude per area.
+                    </li>
+                    <li> <b>Kernel</b>&mdash;Applies a kernel function to fit a smooth tapered surface to each point.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="neighborhood">
+        <div><h2>เลือกขนาดพื้นที่ใกล้เคียง</h2></div>
+        <hr/>
+        <div>
+            <p>The size of the area used to calculate the density. The neighborhood size must be larger than the bin size.
+            </p>
+        </div>
+    </div>
+    <div id="areaUnits">
+        <div><h2>เลือกหน่วยแสดงผลสำหรับความหนาแน่น</h2></div>
+        <hr/>
+        <div>
+            <p>The desired output units of the density values. By default, this is set to the units in your map (for example, square meters). If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>คำนวณความหนาแน่นโดยใช้การแบ่งช่วงเวลา (ตัวเลือก)</h2></div>
+        <hr/>
+        <div>
+            <p>ถ้ามีเวลาเปิดใช้งานบนชั้นข้อมูลจุดอินพุท และเป็นประเภทที่ใช้งานได้ทันที คุณสามารถวิเคราะห์โดยใช้การแบ่งเวลา มีสามพารามิเตอร์ ที่คุณสามารถตั้งค่า เมื่อคุณใช้ข้อมูลเวลา:
+                <ul>
+                    <li>  <b>ช่วงเวลา</b>
+                    </li>
+                    <li> <b>ขั้นเวลา</b>
+                    </li>
+                    <li> <b>เวลาอ้างอิง</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>ลองนึกภาพคุณมีข้อมูลที่แสดงเป็นเวลาถึงหนึ่งปี และคุณต้องการวิเคราะห์โดยใช้ช่วงเป็นรายสัปดาห์ การทำเช่นนั้นคุณจะตั้ง  <b>ช่วงเวลา</b> เป็น <code>1 สัปดาห์</code>.
+            </p>
+            <p> ลองนึกภาพคุณมีข้อมูลที่แสดงเป็นเวลาถึงหนึ่งปี และคุณต้องการที่จะใช้วิเคราะห์ในสัปดาห์แรกของเดือน การทำเช่นนั้นคุณจะตั้ง <b>ช่วงเวลา</b> เป็น <code>1 สัปดาห์</code>, <b>ขั้นเวลา</b> เป็น <code>1 เดือน</code> และ <b>เวลาอ้างอิง</b> เป็น <code>1 มกราคม ที่เวลา 12:00 น.</code>
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>ช่วงเวลาในการคำนวณความหนาแน่น</h2></div>
+        <hr/>
+        <div>
+            <p>ช่วงเวลาที่ใช้สำหรับตัดข้อมูล ช่วงเวลาที่อาจจะใช้เพียงอย่างเดียวหรือใช้ร่วมกับ <b>ขั้นเวลา</b> หรือ <b>เวลาอ้างอิง</b> เป็นตัวแปร
+            </p>
+            <p> หากคุณต้องการที่จะสร้างเวลาที่เกิดขึ้นทุกวันจันทร์จาก 09:00 จนถึง 10:00, <b>ช่วงเวลา</b> ควรเป็น <code>1 ชั่วโมง</code>, <b>ขั้นเวลา</b> ควรเป็น <code>1 สัปดาห์</code> และ <b>เวลาอ้างอิง</b> ควรเป็น <code>9:00:00 น. ในวันจันทร์</code>
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>ขั้นตอนที่ใช้เวลาในการคำนวณความหนาแน่นบน</h2></div>
+        <hr/>
+        <div>
+            <p> ขั้นตอนที่ใช้สำหรับการคำนวณเวลา <b>ขั้นเวลา</b> อาจจะใช้ค่าเดียว กับ <b>ช่วงเวลา</b> และ <b>เวลาอ้างอิง</b> หรือทั้ง <b>ช่วงเวลา</b> และ <b>เวลาอ้างอิง</b>.
+            </p>
+            <p> หากคุณต้องการที่จะสร้างเวลาที่เกิดขึ้นทุกวันจันทร์จาก 09:00 จนถึง 10:00, <b>ช่วงเวลา</b> ควรเป็น <code>1 ชั่วโมง</code>, <b>ขั้นเวลา</b> ควรเป็น <code>1 สัปดาห์</code> และ <b>เวลาอ้างอิง</b> ควรเป็น <code>9:00:00 น. ในวันจันทร์</code>
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>เวลาที่ใช้อ้างอิงในการจัดเวลา</h2></div>
+        <hr/>
+        <div>
+            <p>วันที่และเวลาที่ใช้ในการจัดเวลา  <b>ขั้นเวลา</b> จะเริ่มต้นจาก และยังคงย้อนกลับไปในช่วงเวลาที่มีการอ้างอิง
+            </p>
+            <p> หากคุณต้องการที่จะสร้างเวลาที่เกิดขึ้นทุกวันจันทร์จาก 09:00 จนถึง 10:00, <b>ช่วงเวลา</b> ควรเป็น <code>1 ชั่วโมง</code>, <b>ขั้นเวลา</b> ควรเป็น <code>1 สัปดาห์</code> และ <b>เวลาอ้างอิง</b> ควรเป็น <code>9:00:00 น. ในวันจันทร์</code>
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>ระบบพิกัด (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>นี่เป็นพารามิเตอร์ชั่วคราวก่อนวางจำหน่ายในการตั้งค่าการประมวลผลเชิงพื้นที่อ้างอิง หลายเครื่องมือข้อมูลขนาดใหญ่จำเป็นต้องให้ระบบพิกัดที่คาดการณ์จะใช้เป็นข้อมูลอ้างอิงสำหรับการประมวลผลเชิงพื้นที่ โดยค่าเริ่มต้นเครื่องมือจะใช้การป้อนข้อมูลระบบพิกัด แต่จะล้มเหลวถ้ามันเป็นระบบพิกัดทางภูมิศาสตร์ ในการตั้งค่าระบบพิกัดคาดการณ์ป้อน WKID ตัวอย่างเช่น, <b>Web Mercator</b> จะถูกป้อนเป็น <code>3857</code>.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>เลือกที่จัดเก็บข้อมูล</h2></div>
+        <hr/>
+        <div>
+            <p>นี่เป็นพารามิเตอร์ชั่วคราวก่อนวางจำหน่าย ในการตั้งค่าการจัดเก็บข้อมูลที่ผลจะถูกบันทึกไว้ ทั้งเก็บข้อมูลเป็นส่วนหนึ่งของ  ArcGIS Data Store. หากคุณเลือกที่เก็บข้อมูลเชิงพื้นที่ชั่วคราว แต่ไม่ได้มีการติดตั้งเครื่องมือจะล้มเหลว </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>ชื่อของชั้นข้อมูลผลลัพธ์</h2></div>
+        <hr/>
+        <div>
+            <p> เป็นชื่อชั้นข้อมูลที่จะถูกสร้างใน <b>เนื้อหาของฉัน</b> และเพิ่มเข้าไปในแผนที่ ชื่อเริ่มต้นจะขึ้นอยู่กับชื่อเครื่องมือและชื่อชั้นข้อมูลอินพุท ถ้าชั้นข้อมูลมีอยู่แล้วเครื่องมือจะล้มเหลว
+            </p>
+            <p>ใช้  <b>บันทึกผลลัพธ์ใน</b> รายการตัวเลือก เพื่อระบุชื่อของโฟล์เดอร์ใน <b>เนื้อหาของฉัน</b> เมื่อบันทึกผล
+            </p>
+        </div>
+    </div>
+</div>
+</html>

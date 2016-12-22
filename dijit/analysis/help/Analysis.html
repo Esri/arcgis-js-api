@@ -41,7 +41,11 @@
 <body onload="init()">
 <div id="topics">
     <div id="aoToolbox">
-        <p>Some sort of toolbox summary needs to go here. Maybe something about how this is the core toolbox and the other toolboxes differ from this one. Hah! 
+        <p>The Feature Analysis toolbox contains a number
+of tools that you can access and use.  These tasks are arranged below into
+categories; the categories are simply logical groupings
+and do not affect how you access or use the tasks in any
+way.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="regularsize">
@@ -50,6 +54,10 @@
         <p>These tools calculate total counts, lengths, areas, and basic descriptive statistics of features and their attributes within areas or near other features.
             <ul>
                 <li> <b>Aggregate Points</b> calculates statistics about  points that fall within specified areas.
+                </li>
+                <li> <b>Join Features</b> transfers attributes from one
+layer or table to another based on spatial and attribute
+relationships.
                 </li>
                 <li> <b>Summarize Nearby</b> calculates statistics for features and their  attributes that are within a specified  distance.
                 </li>
@@ -80,6 +88,38 @@ the points within each area. For example:
                     <li>Given point locations of crime incidents, count the number of crimes per county or other administrative district.
                     </li>
                     <li>Find the highest and lowest revenues for franchise locations by state.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="JoinFeaturesTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Join Features</h2></td>
+                    <td>
+                    <img src="./images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" class="titleImage" alt="Join Features">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Join Features will transfer attributes from one
+layer or table to another based on spatial and attribute
+relationships. For example:
+                <ul>
+                    <li>Append common boundary or demographic information
+to your incident data.
+                    </li>
+                    <li>Identify the closest facilities to a known
+location.
+                    </li>
+                    <li>Determine the number of residences that fall
+within flood zones.
+                    </li>
+                    <li>Identify common habitats for different wildlife
+species.
                     </li>
                 </ul>
                 
@@ -310,6 +350,8 @@ locations you specify.
                 </li>
                 <li> <b>Find Hot Spots</b>  identifies statistically significant clustering in the spatial pattern of your data.
                 </li>
+                <li> <b>Find Outliers</b> determines if there are any statistically significant outliers in the spatial pattern of your data.
+                </li>
                 <li> <b>Interpolate Points</b> predicts values at new locations based on measurements found in a collection of points.
                 </li>
             </ul>
@@ -343,6 +385,21 @@ locations you specify.
             </table>
 <hr/>
             <p>This tool creates a map showing any statistically significant spatial clustering present in your data.   Use this tool to uncover unexpected hot spots (red) and cold spots (blue) of high and low home values, crime densities, traffic accident fatalities, unemployment or biodiversity, for example.
+            </p>
+            <br/>
+        </div>
+        <div id="FindOutliersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Find Outliers</h2></td>
+                    <td>
+                    <img src="./images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" class="titleImage" alt="Find Outliers">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>This tool creates a map showing any statistically significant clusters and spatial outliers present in your data. Use this tool to identify features that have values that are significantly different from their neighbors.  You can use this tool, for example, to find anomalous spending patterns, determine where are the sharpest boundaries between affluence and poverty in a study area or determine if  there are counties in the United States with unusually low life expectancy compared to their neighbors.
             </p>
             <br/>
         </div>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Resumir Dentro</h2><p/>
+        <h2><img src="../images/GUID-90E0CB1F-EB97-4752-B2EE-452B7B45475E-web.png" alt="Resumir no Interior"></h2>
+        <hr/>
+    <p>Esta ferramenta localiza elementos (e por&ccedil;&otilde;es de elementos) que se encontram dentro dos limites de &aacute;reas da primeira camada de entrada.   
+        <ul>
+            <li>Tendo em conta uma camada com limites de bacias hidrogr&aacute;ficas e uma camada de utiliza&ccedil;&atilde;o do solo, calcular &aacute;rea total do tipo de utiliza&ccedil;&atilde;o do solo para cada bacia hidrogr&aacute;fica. 
+            </li>
+            <li>Dada uma camada de parcelas num munic&iacute;pio e uma camada com o limite das freguesias pertencentes a esse munic&iacute;pio , resumir o valor m&eacute;dio das parcelas vagas dentro de cada freguesia.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Se  <b>Usar extens&atilde;o de mapa actual</b> &eacute; validado, apenas esses elementos na camada de entrada e da camada a ser resumida que s&atilde;o vis&iacute;veis dentro do mapa de extens&atilde;o actual ser&atilde;o analisados.  Se n&atilde;o validado, todos os elementos tanto na camada de entrada e na camada a serem resumidos v&atilde;o ser analisados, mesmo que se encontrem fora da extens&atilde;o do mapa actual.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="sumWithinLayer">
+        <div><h2>Escolher área de camada para resumir outros elementos dentro das suas fronteiras</h2></div>
+        <hr/>
+        <div>
+            <p>A camada de &aacute;rea que ir&aacute; ser usada para resumir elementos que caiam dentro das suas fronteiras. Pode optar por resumir no interior de uma camada de pol&iacute;gonos fornecida por si ou no interior de caixas quadradas ou hexagonais que s&atilde;o geradas quando a ferramenta &eacute; executada.  Ao gerar caixas, para  <b>Quadrado</b>, o n&uacute;mero e as unidades especificadas determinam a altura e comprimento do quadrado. Para <b>Hex&aacute;gono</b>, o n&uacute;mero e as unidades especificadas determinam a dist&acirc;ncia entre lados paralelos.
+            </p>
+            <p>Para al&eacute;m de selecionar uma camada do seu mapa, pode selecionar  <b>Explorar Camadas</b> na parte inferior da lista pendente para navegar at&eacute; aos seus conte&uacute;dos de um conjunto de dados de partilha de big data ou camada de elementos.  
+            </p>
+        </div>
+    </div>
+    <div id="summaryLayer">
+        <div><h2>Escolher camada para resumir</h2></div>
+        <hr/>
+        <div>
+            <p>Os elementos nesta camada que se enquadram nos limites dos elementos da camada de entrada, ou as caixas especificadas acima, ser&atilde;o resumidos. 
+            </p>
+            <p>Para al&eacute;m de selecionar uma camada do seu mapa, pode selecionar  <b>Explorar Camadas</b> na parte inferior da lista pendente para navegar at&eacute; aos seus conte&uacute;dos de um conjunto de dados de partilha de big data ou camada de elementos.  
+            </p>
+        </div>
+    </div>
+    <div id="inputBins">
+        <div><h2>Selecionar uma distância para gerar caixas e agregar</h2></div>
+        <hr/>
+        <div>
+            <p>A dist&acirc;ncia utilizada para gerar caixas.  
+            </p>
+            <p>O  <b>Tamanho de Caixa</b> para caixas, ou uma <b>Camada de &Aacute;rea</b> tem de ser definido.
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Agregar utilizando cortes de tempo (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Caso a componente temporal se encontre ativa na camada de pontos de entrada, pode analisar recorrendo a divis&atilde;o temporal.  Existem tr&ecirc;s par&acirc;metros que pode definir quando utiliza componente temporal:
+                <ul>
+                    <li>  <b>Intervalo de Tempo</b>
+                    </li>
+                    <li> <b>Etapa Temporal</b>
+                    </li>
+                    <li> <b>Hora de Refer&ecirc;ncia</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Imagine que tem dados que representam um ano em tempo e que pretende analis&aacute;-los recorrendo a parcelas semanais. Para isso, teria de definir  <b>Intervalo Temporal</b> para <code>1 semana</code>.
+            </p>
+            <p> Imagine que tem dados que representam um ano em tempo e que pretende analis&aacute;-los utilizando a primeira semana do m&ecirc;s. Para isso, teria de definir <b>Intervalo Temporal</b> para <code>1 semana</code>, <b>Etapa Temporal</b> para <code>1 m&ecirc;s</code>, e <b>Hora de Refer&ecirc;ncia</b> para <code>1 de Janeiro, &agrave;s 12:00</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>O intervalo temporal ao qual agregar</h2></div>
+        <hr/>
+        <div>
+            <p>Intervalo temporal utilizado para dividir os dados O intervalo temporal pode ser utilizado isoladamente ou em conjunto com o par&acirc;metro  <b>Etapa Temporal</b> ou <b>Hora de Refer&ecirc;ncia</b> .
+            </p>
+            <p> Caso pretendesse criar parcelas temporais que tivessem lugar todas as segundas-feiras entre as 9:00 e as 10:00 da manh&atilde;, <b>Intervalo Temporal</b> seria <code>1 hora</code>, <b>Etapa Temporal</b> seria <code>1 semana</code>, e <b>Hora de Refer&ecirc;ncia</b> seria <code>9:00:00 a.m. &agrave; segunda-feira</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>A etapa temporal à qual agregar</h2></div>
+        <hr/>
+        <div>
+            <p> A etapa utilizada para calcular uma parcela temporal. <b>Etapa Temporal</b> pode ser utilizada isoladamente ou com <b>Intervalo Temporal</b>, com <b>Hora de Refer&ecirc;ncia</b>, ou com <b>Intervalo Temporal</b> e <b>Hora de Refer&ecirc;ncia</b>.
+            </p>
+            <p> Caso pretendesse criar parcelas temporais que tivessem lugar todas as segundas-feiras entre as 9:00 e as 10:00 da manh&atilde;, <b>Intervalo Temporal</b> seria <code>1 hora</code>, <b>Etapa Temporal</b> seria <code>1 semana</code>, e <b>Hora de Refer&ecirc;ncia</b> seria <code>9:00:00 a.m. &agrave; segunda-feira</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Hora de referência utilizada para alinhar a divisão de tempo.</h2></div>
+        <hr/>
+        <div>
+            <p>A data e hora utilizadas para alinhar a divis&atilde;o temporal.  <b>Etapa Temporal</b> ter&aacute; in&iacute;cio a partir da hora referenciada, e continuar&aacute; de forma regressiva at&eacute; &agrave; mesma.
+            </p>
+            <p> Caso pretendesse criar parcelas temporais que tivessem lugar todas as segundas-feiras entre as 9:00 e as 10:00 da manh&atilde;, <b>Intervalo Temporal</b> seria <code>1 hora</code>, <b>Etapa Temporal</b> seria <code>1 semana</code>, e <b>Hora de Refer&ecirc;ncia</b> seria <code>9:00:00 a.m. &agrave; segunda-feira</code>.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Adicionar estatísticas a partir da camada para resumir (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p> Pode calcular estat&iacute;sticas em elementos que se encontram resumidos. Em campos num&eacute;ricos, pode calcular as seguintes:
+                <ul>
+                    <li>Contagem
+                    </li>
+                    <li>M&eacute;dia
+                    </li>
+                    <li>M&iacute;n.
+                    </li>
+                    <li>M&aacute;x.
+                    </li>
+                    <li>Intervalo
+                    </li>
+                    <li>Varia&ccedil;&atilde;o
+                    </li>
+                    <li>Desvio padr&atilde;o
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Em campos de string, pode calcular as seguintes:
+                <ul>
+                    <li>Contagem
+                    </li>
+                    <li>Qualquer&mdash;Esta estat&iacute;stica &eacute; uma amostra aleat&oacute;ria de um valor de string no campo especificado.
+                    </li>
+                </ul>
+                Todas as estat&iacute;sticas s&atilde;o calculadas em campos que n&atilde;o s&atilde;o nulos. A camada resultante ir&aacute; conter um novo campo por cada estat&iacute;stica calculada. &Eacute; poss&iacute;vel adicionar qualquer n&uacute;mero de estat&iacute;sticas, selecionando um atributo e uma estat&iacute;stica. 
+            </p>
+            <p>Para al&eacute;m destas estat&iacute;sticas, ser&atilde;o calculadas estat&iacute;sticas proporcionais em todos os campos num&eacute;ricos.
+                <ul>
+                    <li>Contagem&mdash;A contagem de cada campo multiplicada pela propor&ccedil;&atilde;o da camada de resumo no interior dos pol&iacute;gonos. 
+                    </li>
+                    <li>Soma&mdash;A soma de valores ponderados em cada campo. Quando a pondera&ccedil;&atilde;o aplicada &eacute; a propor&ccedil;&atilde;o da camada de resumo no interior dos pol&iacute;gonos.
+                    </li>
+                    <li>M&eacute;dia&mdash;A m&eacute;dia ponderada de valores em cada campo. Quando a pondera&ccedil;&atilde;o aplicada &eacute; a propor&ccedil;&atilde;o da camada de resumo no interior dos pol&iacute;gonos.
+                    </li>
+                    <li>M&iacute;n&mdash;O m&iacute;nimo de valores ponderados em cada campo. Quando a pondera&ccedil;&atilde;o aplicada &eacute; a propor&ccedil;&atilde;o da camada de resumo no interior dos pol&iacute;gonos.
+                    </li>
+                    <li>M&aacute;x&mdash;O m&aacute;ximo de valores ponderados em cada campo. Quando a pondera&ccedil;&atilde;o aplicada &eacute; a propor&ccedil;&atilde;o da camada de resumo no interior dos pol&iacute;gonos.
+                    </li>
+                    <li>Intervalo&mdash;A diferen&ccedil;a entre os valores ponderados m&aacute;ximo e m&iacute;nimo.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Dependendo dos tipos de elementos que est&aacute; a resumir, calcular-se-&aacute; a contagem total de pontos pr&oacute;ximos, o comprimento total das linhas ou a &aacute;rea total.
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>SpatialReference (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>Este &eacute; um par&acirc;metro tempor&aacute;rio de pr&eacute;-lan&ccedil;amento para definir a refer&ecirc;ncia espacial. Muitas ferramentas de big data requerem que o sistema de coordenadas projetado seja utilizado como refer&ecirc;ncia espacial para processamento. Por predefini&ccedil;&atilde;o, a ferramenta utilizar&aacute; o sistema de coordenadas de entrada, mas ir&aacute; falhar no caso de o mesmo se tratar de um sistema de coordenadas geogr&aacute;ficas. Para definir um sistema de coordenadas projetado, introduza o WKID. Por exemplo,  <b>Web Mercator</b> seria introduzido como <code>3857</code>.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Selecionar datastore</h2></div>
+        <hr/>
+        <div>
+            <p>Este &eacute; um par&acirc;metro tempor&aacute;rio de pr&eacute;-lan&ccedil;amento para definir o armazenamento de dados no qual os resultados s&atilde;o guardados. Ambos os armazenamentos de dados fazem parte do  ArcGIS Data Store. Caso selecione o armazenamento de dados espaciotemporal, mas n&atilde;o tenha um instalado, a ferramenta ir&aacute; falhar. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nome da camada resultante</h2></div>
+        <hr/>
+        <div>
+            <p> Este &eacute; o nome da camada que ser&aacute; criada em <b>O Meu Conte&uacute;do</b> e adicionada ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Caso a camada j&aacute; existe, a ferramenta ir&aacute; falhar.
+            </p>
+            <p>Ao utilizar a caixa suspensa  <b>Guardar resultado em</b> pode definir o nome da pasta em <b>O Meu Conte&uacute;do</b> onde o resultado ser&aacute; guardado.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

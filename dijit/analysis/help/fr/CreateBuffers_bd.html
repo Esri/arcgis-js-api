@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Créer des zones tampon</h2><p/>
+        <h2><img src="../images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" alt="Cr&eacute;er des zones tampon"></h2>
+        <hr/>
+    <p>Une zone tampon est une surface qui couvre une distance donn&eacute;e &agrave; partir d'une entit&eacute; ponctuelle, lin&eacute;aire ou surfacique. 
+    </p>
+    <p>Les zones tampon sont g&eacute;n&eacute;ralement utilis&eacute;es pour cr&eacute;er des surfaces qui peuvent faire l'objet d'analyses plus approfondies &agrave; l'aide d'autres outils. Par exemple, si vous vous posez la question suivante : Quels sont les b&acirc;timents qui se trouvent &agrave; moins d'un kilom&egrave;tre de l'&eacute;cole ?, vous pouvez obtenir la r&eacute;ponse en cr&eacute;ant une zone tampon d'un kilom&egrave;tre autour de l'&eacute;cole et en superposant la zone tampon avec la couche contenant les emprises de b&acirc;timents. Le r&eacute;sultat final est une couche des b&acirc;timents qui se trouvent &agrave; moins d'un kilom&egrave;tre de l'&eacute;cole.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Choisir la couche dans laquelle appliquer la zone tampon</h2></div>
+        <hr/>
+        <div>
+            <p>Entit&eacute;s ponctuelles, lin&eacute;aires ou surfaciques &agrave; buff&eacute;riser.
+            </p>
+            <p>En plus de choisir une couche de votre carte, vous pouvez s&eacute;lectionner  <b>Parcourir les couches</b> au bas de la liste d&eacute;roulante pour parcourir votre contenu et rechercher une couche d'entit&eacute;s ou un jeu de donn&eacute;es de partage de fichiers Big Data.  
+            </p>
+        </div>
+    </div>
+    <div id="bufferType">
+        <div><h2>Sélectionner le type de zone tampon à appliquer</h2></div>
+        <hr/>
+        <div>
+            <p>Vous pouvez sp&eacute;cifier la taille de la zone tampon pour vos entit&eacute;s en entr&eacute;e de trois fa&ccedil;ons&nbsp;: 
+                <ul>
+                    <li>Indiquez une distance qui est appliqu&eacute;e &agrave; toutes les entit&eacute;s.
+                    </li>
+                    <li>Indiquez un champ dans la couche en entr&eacute;e qui contient la valeur de distance. Vous pouvez utiliser un champ de cha&icirc;ne ou un champ num&eacute;rique. Si aucune unit&eacute; lin&eacute;aire n'est d&eacute;finie, les unit&eacute;s de la r&eacute;f&eacute;rence spatiale sont utilis&eacute;es. Si vous utilisez un syst&egrave;me de coordonn&eacute;es g&eacute;ographiques, on suppose que le champ sans unit&eacute; utilise les m&egrave;tres. 
+                    </li>
+                    <li>G&eacute;n&eacute;rez une expression avec plusieurs champs et op&eacute;rateurs math&eacute;matiques.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Sélectionner la méthode de zone tampon</h2></div>
+        <hr/>
+        <div>
+            <p>Vous pouvez utiliser une m&eacute;thode  <b>planaire</b> ou une m&eacute;thode <b>g&eacute;od&eacute;sique</b>. La m&eacute;thode <b>planaire</b> peut &ecirc;tre plus rapide et convient &agrave; l'analyse locale sur des donn&eacute;es projet&eacute;es. La m&eacute;thode <b>g&eacute;od&eacute;sique</b> convient aux surfaces importantes et &agrave; tous les syst&egrave;mes de coordonn&eacute;es g&eacute;ographiques.
+            </p>
+        </div>
+    </div>
+    <div id="dissolveOption">
+        <div><h2>Sélectionner le type de méthode de fusion</h2></div>
+        <hr/>
+        <div>
+            <p>Options permettant de sp&eacute;cifier la m&eacute;thode de fusion.   Si une m&eacute;thode de fusion est choisie, vous avez la possibilit&eacute; de cr&eacute;er des surfaces multi-parties ou &agrave; une seule partie et vous pourrez calculer des statistiques en fonction des champs fournis.
+                <ul>
+                    <li> <b>Tous</b>&nbsp;: toutes les entit&eacute;s sont fusionn&eacute;es. Si les entit&eacute;s multi-parties sont autoris&eacute;es, toutes les entit&eacute;s sont fusionn&eacute;es en une seule entit&eacute;. Si les entit&eacute;s multi-parties ne sont pas autoris&eacute;es, les entit&eacute;s adjacentes ou superpos&eacute;es sont fusionn&eacute;es.
+                    </li>
+                    <li> <b>Champs</b>&nbsp;: les entit&eacute;s qui partagent le m&ecirc;me champ sp&eacute;cifi&eacute; ou la m&ecirc;me combinaison de champs sp&eacute;cifi&eacute;e sont fusionn&eacute;es. Si les entit&eacute;s multi-parties sont autoris&eacute;es, toutes les entit&eacute;s dot&eacute;es du m&ecirc;me champ sont fusionn&eacute;es en une seule entit&eacute;. Si les entit&eacute;s multi-parties ne sont pas autoris&eacute;es, les entit&eacute;s adjacentes ou superpos&eacute;es dot&eacute;es de la m&ecirc;me valeur de champ sont fusionn&eacute;es.
+                    </li>
+                    <li> <b>Aucun</b>&nbsp;: aucune entit&eacute; n'est fusionn&eacute;e.  Il s'agit de l'option par d&eacute;faut.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="multipart">
+        <div><h2>Autoriser les entités multi-parties</h2></div>
+        <hr/>
+        <div>
+            <p>Option permettant de sp&eacute;cifier si votre r&eacute;sultat se compose d'entit&eacute;s en une seule partie ou multi-parties. 
+
+            </p>
+            <p>
+                <ul>
+                    <li>Activ&eacute;&nbsp;: les r&eacute;sultats de votre analyse contiendront des entit&eacute;s multi-parties.   
+                    </li>
+                    <li>D&eacute;sactiv&eacute;&nbsp;: les r&eacute;sultats de votre analyse contiendront des entit&eacute;s en une seule partie. Il s'agit du param&egrave;tre par d&eacute;faut.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Ajouter des statistiques (facultatif)</h2></div>
+        <hr/>
+        <div>
+            <p> Vous pouvez calculer des statistiques sur des entit&eacute;s synth&eacute;tis&eacute;es. Dans les champs num&eacute;riques, vous pouvez calculer ce qui suit&nbsp;:
+                <ul>
+                    <li>Effectif
+                    </li>
+                    <li>Moyenne
+                    </li>
+                    <li>Min
+                    </li>
+                    <li>Max.
+                    </li>
+                    <li>Plage
+                    </li>
+                    <li>Variance
+                    </li>
+                    <li>Ecart type
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Dans les champs de cha&icirc;ne, vous pouvez calculer ce qui suit&nbsp;:
+                <ul>
+                    <li>Effectif
+                    </li>
+                    <li>Tout&nbsp;: cette statistique est un &eacute;chantillon al&eacute;atoire d'une valeur de cha&icirc;ne dans le champ sp&eacute;cifi&eacute;.
+                    </li>
+                </ul>
+                Toutes les statistiques sont calcul&eacute;es sur des valeurs non nulles. La couche obtenue contient un nouveau champ pour chaque statistique calcul&eacute;e. Vous pouvez ajouter des statistiques en choisissant un attribut et une statistique. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Choisir un stockage des données</h2></div>
+        <hr/>
+        <div>
+            <p>Il s'agit d'un param&egrave;tre temporaire de la version pr&eacute;liminaire qui permet de d&eacute;finir le stockage des donn&eacute;es o&ugrave; les r&eacute;sultats sont enregistr&eacute;s. Les deux stockages des donn&eacute;es font partie d' ArcGIS Data Store. Si vous s&eacute;lectionnez le stockage des donn&eacute;es spatio-temporelles alors qu'aucun n'est install&eacute;, l'outil &eacute;choue. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nom de la couche résultat</h2></div>
+        <hr/>
+        <div>
+            <p> Il s'agit du nom de la couche qui sera cr&eacute;&eacute;e dans votre page <b>Mon contenu</b> et ajout&eacute;e &agrave; la carte.  Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, l'outil &eacute;choue.
+            </p>
+            <p>La zone de liste d&eacute;roulante  <b>Enregistrer le r&eacute;sultat dans</b> vous permet de sp&eacute;cifier le nom d'un dossier dans <b>Mon contenu</b> o&ugrave; le r&eacute;sultat sera enregistr&eacute;.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

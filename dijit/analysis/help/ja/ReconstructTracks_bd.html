@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>トラックの再構築</h2><p/>
+        <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="トラックの再構築"></h2>
+        <hr/>
+    <p>このツールは、時間対応レイヤーのポイント フィーチャまたはポリゴン フィーチャのある <code>瞬間</code>を操作します。まず、識別子を使用して、トラックに属しているフィーチャが特定されます。各場所の時間を使用して、トラックが順番に配置され、時間の経過に伴う移動経路を表すラインまたはポリゴンに変換されます。必要に応じて、入力内容をフィールド別にバッファー処理することができます。これにより、場所ごとにポリゴンが作成されます。このようにバッファー処理されたポイント (入力内容がポリゴンの場合) は順番に結合され、幅が対象属性を表しているポリゴンとしてトラックが作成されます。結果として生成されるトラックには、指定のトラック内で時間的に最初のフィーチャと最後のフィーチャをそれぞれ表す開始時刻と終了時刻が設定されます。トラックを作成すると、入力フィーチャの統計情報が計算され、出力トラックに割り当てられます。最も基本的な統計情報は、エリア内にあるポイントの個数ですが、他の統計情報も計算できます。
+    </p>
+    <p>時間対応レイヤー内のフィーチャは、次の 2 通りの方法で表現できます。
+        <ul>
+            <li>瞬間 - 時系列内の 1 つの瞬間
+            </li>
+            <li>間隔 - 開始時刻と終了時刻
+            </li>
+        </ul>
+        
+    </p>
+    <p>たとえば、10 分間隔でのハリケーンの GPS 計測値があるとします。GPS 計測値ごとに、ハリケーンの名前、場所、記録時刻、および風速が記録されています。この情報を使用すると、トラックを識別する名前でハリケーンごとのトラックを作成できます。また、ハリケーンごとの平均風速、最大風速、最小風速などの統計情報を計算したり、各トラック内にある計測値の数を算出したりすることもできます。
+    </p>
+    <p>同じ例を使用して、トラックを風速に基づいてバッファー処理することができます。これにより、該当する場所の風速フィールドに基づいて各計測値がバッファー処理され、バッファー処理されたエリアがまとめて結合されます。追跡経路だけでなく、ハリケーンの進行に伴う風速の変化も表すポリゴンが作成されます。
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>トラックの再構築元のフィーチャを選択</h2></div>
+        <hr/>
+        <div>
+            <p>トラックに再構築されるポイント レイヤーまたはポリゴン レイヤー。
+            </p>
+            <p>マップからレイヤーを選択できるだけでなく、ドロップダウン リストの下部にある  <b>[レイヤーの参照]</b> を選択し、ビッグ データ ファイル共有データセットまたはフィーチャ レイヤーのコンテンツを参照して選択することもできます。  
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>トラックの識別に使用するフィールドを選択</h2></div>
+        <hr/>
+        <div>
+            <p> トラック識別子を表すフィールド。
+            </p>
+            <p> たとえば、ハリケーンのトラックを再構築する場合は、ハリケーン名をトラック フィールドとして使用できます。
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>トラックの再構築に使用する方法を選択</h2></div>
+        <hr/>
+        <div>
+            <p>トラックの結合とバッファーの適用に使用する方法 (該当する場合)。 <b>[平面]</b> 方法を使用すると、すばやく結果を算出できますが、国際日付変更線をまたいでトラックが表示されず、バッファー処理時に地球の実際の形状が考慮されません。 <b>[測地線]</b> 方法を使用すると、必要な場合に日付変更線をまたいでトラックが表示され、地球の形状を考慮する測地線バッファーが適用されます。
+            </p>
+        </div>
+    </div>
+    <div id="bufferField">
+        <div><h2>入力フィーチャをバッファー処理する条件式を作成します (オプション)</h2></div>
+        <hr/>
+        <div>
+            <p>入力フィーチャの周囲のバッファー距離の計算に使用する式。この式は、バッファー演算を使用して生成できます。基本的な演算 (加算、減算、乗算、および除算) に対応しています。値の計算には、解析座標系が使用されます。
+            </p>
+        </div>
+    </div>
+    <div id="timeSplit">
+        <div><h2>トラックを分割する時間を選択します (オプション)</h2></div>
+        <hr/>
+        <div>
+            <p>トラックの分割に使用する時間。入力ポイントまたは入力ポリゴンの時間間隔が分割された時間よりも長い場合、これらのポイントまたはポリゴンは別々のトラックに分割されます。
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>統計情報の追加 (オプション)</h2></div>
+        <hr/>
+        <div>
+            <p> 集計されたフィーチャの統計情報を計算することができます。次の数値フィールドを計算に使用できます。
+                <ul>
+                    <li>個数
+                    </li>
+                    <li>平均
+                    </li>
+                    <li>最小
+                    </li>
+                    <li>最大
+                    </li>
+                    <li>範囲
+                    </li>
+                    <li>分散
+                    </li>
+                    <li>標準偏差
+                    </li>
+                </ul>
+                
+            </p>
+            <p>次の文字列フィールドを計算に使用できます。
+                <ul>
+                    <li>個数
+                    </li>
+                    <li>すべて - この統計情報は、指定のフィールドからランダムにサンプリングされた文字列値です。
+                    </li>
+                </ul>
+                すべての統計情報は、NULL 以外の値で計算されます。結果レイヤーには、計算された各統計情報の新しいフィールドが含まれます。属性と統計情報を選択することで、任意の数の統計情報を追加できます。 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>データストアの選択</h2></div>
+        <hr/>
+        <div>
+            <p>結果を保存するデータ ストアを設定するためのプレリリース用の一時的なパラメーターです。どちらのデータ ストアも  ArcGIS Data Store の一部です。ビッグ データ ストアを選択した場合に、このデータ ストアがまだインストールされていないと、このツールは正常に実行されません。 </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>結果レイヤーの名前</h2></div>
+        <hr/>
+        <div>
+            <p>  <b>[マイ コンテンツ]</b> で作成され、マップに追加されるレイヤーの名前です。デフォルトの名前は、ツール名と入力レイヤー名に基づいて設定されます。レイヤーがすでに存在する場合、このツールは正常に実行されません。
+            </p>
+            <p> <b>[出力の保存場所]</b> ドロップダウン ボックスを使用して、結果を保存する <b>[マイ コンテンツ]</b> 内のフォルダーの名前を指定できます。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

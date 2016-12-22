@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Reconstruir Caminhos</h2><p/>
+        <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Reconstruir Caminhos"></h2>
+        <hr/>
+    <p>Esta ferramenta funciona com uma camada habilitado ao tempo ou fei&ccedil;&otilde;es de pol&iacute;gono e ponto que representam um  <code>momento</code> no tempo.   Ela primeiro determina quais fei&ccedil;&otilde;es pertencem a um caminho utilizando um identificador. Com a utiliza&ccedil;&atilde;o do tempo em cada localiza&ccedil;&atilde;o, os caminhos s&atilde;o consecutivamente ordenados e transformados em uma linha ou pol&iacute;gono representando o caminho de movimento com o passar do tempo. Opcionalmente, a entrada pode ter o buffer gerado por um campo, que criar&aacute; um pol&iacute;gono em cada localiza&ccedil;&atilde;o. Estes pontos com buffer ou se as entradas forem de pol&iacute;gonos, s&atilde;o ent&atilde;o ligadas consecutivamente para criar um caminho como um pol&iacute;gono onde a largura &eacute; representante do atributo de interesse. Os caminhos resultantes t&ecirc;m um tempo inicial e final, que representa a primeira e &uacute;ltima fei&ccedil;&atilde;o temporariamente em um caminho fornecido. Quando os caminhos s&atilde;o criados, as estat&iacute;sticas sobre as fei&ccedil;&otilde;es de entrada s&atilde;o calculadas e atribu&iacute;das para o caminho de sa&iacute;da. A estat&iacute;stica mais b&aacute;sica &eacute; a contagem de pontos dentro da &aacute;rea, mas outras estat&iacute;sticas podem ser calculadas tamb&eacute;m.
+    </p>
+    <p>Fei&ccedil;&otilde;es nas camads habilitadas ao tempo podem ser representadas em uma de duas maneiras:
+        <ul>
+            <li>Momento&mdash;Um momento &uacute;nico no tempo
+            </li>
+            <li>Intervalo&mdash;Um tempo inicial e final
+            </li>
+        </ul>
+        
+    </p>
+    <p>Por exemplo, suponha que voc&ecirc; tenha medi&ccedil;&otilde;es de GPS dos furac&otilde;es a cada 10 minutos. Cada medi&ccedil;&atilde;o de GPS registra o nome do furac&atilde;o, local, tempo de registro e velocidade do vento. Com estas informa&ccedil;&otilde;es, voc&ecirc; pode criar caminhos para cada furac&atilde;o utilizando o nome da identifica&ccedil;&atilde;o do caminho e caminhos para cada furac&atilde;o que ser&aacute; gerado. Adicionalmente, voc&ecirc; pode calcular estat&iacute;stica como a velocidade do vento m&eacute;dia, m&aacute;xima e m&iacute;nimo de cada furac&atilde;o, como tamb&eacute;m a contagem das medi&ccedil;&otilde;es dentro de cada caminho.
+    </p>
+    <p>Com a utiliza&ccedil;&atilde;o do mesmo exemplo, voc&ecirc; pode criar o buffer dos seus caminhos pela velocidade do vento. Isto ir&aacute; criar um buffer de cada medi&ccedil;&atilde;o pelo campo da velocidade do vento neste local e ligar as &aacute;reas com buffer, criando um pol&iacute;gono representativo do caminho, como tamb&eacute;m as altera&ccedil;&otilde;es na velocidade do vento quando os furac&otilde;es progredirem.   
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Escolher feições para reconstruir caminhos</h2></div>
+        <hr/>
+        <div>
+            <p>A camada de ponto ou de pol&iacute;gono que ser&aacute; reconstru&iacute;da nos caminhos.
+            </p>
+            <p>Al&eacute;m de escolher uma camada de seu mapa, voc&ecirc; pode escolher  <b>Procurar Camadas</b> na parte inferior da lista suspensa para procurar por seu conte&uacute;do para um conjunto de dados de compartilhamento de arquivo big data ou camada de fei&ccedil;&atilde;o.  
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>Escolha os campos utilizados para identificar caminhos</h2></div>
+        <hr/>
+        <div>
+            <p> Os campos que representam o identificador do caminho.
+            </p>
+            <p> Como um exemplo, se voc&ecirc; for reconstruir caminhos de furac&otilde;es, voc&ecirc; pode utilizar o nome de furac&atilde;o como o campo do caminho.
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Escolher método para reconstruir caminhos</h2></div>
+        <hr/>
+        <div>
+            <p>O m&eacute;todo utilizado para ligar caminhos e aplicar buffer (se aplic&aacute;vel). O m&eacute;todo  <b>Planar</b> pode calcular os resultados mais rapidamente mas n&atilde;o ir&atilde;o envolver os caminhos na linha de data internacional ou levar em conta a forma real da Terra ao criar o buffer. O m&eacute;todo <b>Geod&eacute;sico</b> ir&aacute; envolver os caminhos na linha de data se for preciso e aplicar um buffer geod&eacute;sico para levar em cona o formato da Terra.
+            </p>
+        </div>
+    </div>
+    <div id="bufferField">
+        <div><h2>Criar uma expressão para gerar o buffer das feições de entrada (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>A equa&ccedil;&atilde;o utilzada para calcular a dist&acirc;ncia de buffer ao redor das fei&ccedil;&otilde;es de entrada. Esta equa&ccedil;&atilde;o pode ser gerada utilizando o calculador de buffer e opera&ccedil;&otilde;es b&aacute;sicas, tais como, adicionar, subtrair, multiplicar e dividir s&atilde;o suportadas. Os valores s&atilde;o calculados utilizando o sistema de an&aacute;lise de coordenadas.
+            </p>
+        </div>
+    </div>
+    <div id="timeSplit">
+        <div><h2>Selecionar um tempo para dividir caminhos (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Tempo utilzado para dividir caminhos. Se pontos ou pol&iacute;gonos de entrada tiverem uma dura&ccedil;&atilde;o mais longa entre eles que o tempo de divis&atilde;o, eles ser&atilde;o divididos em caminhos diferentes.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Adicionar estatísticas (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p> Voc&ecirc; pode calcular as estat&iacute;stica em fei&ccedil;&otilde;es que s&atilde;o resumidas. Nos campos num&eacute;ricos voc&ecirc; pode calcular o seguinte:
+                <ul>
+                    <li>Contagem
+                    </li>
+                    <li>M&eacute;dio
+                    </li>
+                    <li>M&iacute;n
+                    </li>
+                    <li>M&aacute;x
+                    </li>
+                    <li>Intervalo
+                    </li>
+                    <li>Vari&acirc;ncia
+                    </li>
+                    <li>Desvio Padr&atilde;o
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Nos campos de string voc&ecirc; pode calcular o seguinte:
+                <ul>
+                    <li>Contagem
+                    </li>
+                    <li>Qualquer&mdash;Esta estat&iacute;stica &eacute; uma amostra aleat&oacute;ria de um valor de string no campo especificado.
+                    </li>
+                </ul>
+                Todas as estat&iacute;sticas s&atilde;o calculadas em valores n&atilde;o nulos. A camada resultante conter&aacute; um novo atributo para cada estat&iacute;stica calculada. Qualquer n&uacute;mero de estat&iacute;stica pode ser adicionado ao escolher um atributo e estat&iacute;stica. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Escolher armazenamento de dados</h2></div>
+        <hr/>
+        <div>
+            <p>Este &eacute; um par&acirc;metro tempor&aacute;rio para pr&eacute; lan&ccedil;amento para configurar o armazenamento de dados onde os resultados s&atilde;o salvos. Ambos os armazenamentos de dados s&atilde;o parte do  ArcGIS Data Store. Se voc&ecirc; selecionar o armazenamento de dados spatiotemporal mas n&atilde;o ter um instalado, a ferramenta falhar&aacute;. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nome da camada resultante</h2></div>
+        <hr/>
+        <div>
+            <p> Este &eacute; o nome da camada que ser&aacute; criada em <b>Meu Conte&uacute;do</b> e adicionada ao mapa.  O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existe, a ferramenta falhar&aacute;.
+            </p>
+            <p>Ao utilizar a caixa suspensa  <b>Salvar resultado em</b>, &eacute; poss&iacute;vel especificar o nome de uma pasta em <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

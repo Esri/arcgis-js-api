@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Buat Area Waktu Berkendara</h2><p/>
+        <h2><img src="../images/GUID-6F629A09-768D-4C04-88A4-AB941811ADE9-web.png" alt="Buat Area Waktu Berkendara"></h2>
+        <hr/>
+    <p>Buat Area Kemudi-Waktu menciptakan area yang dapat dijangkau dalam waktu kemudi yang ditentukan, jarak mengemudi, jarak berjalan, dan sebagainya. Itu mengukur dari atau beberapa titik (hingga 1.000), sepanjang jalan atau setapak, untuk membuat layer yang dapat membantu Anda menjawab pertanyaan seperti:
+        <ul>
+            <li>Ke mana saya dapat pergi dari sini dalam waktu mengemudi 30 menit?
+            </li>
+            <li>Kemana saya dapat pergi dari sini dengan waktu mengemudi 30 menit pada waktu 5:30 sore saat jam sibuk?
+            </li>
+            <li>Apa yang bisa dikunjungi dengan dua kilometer berjalan dari hotel saya?
+            </li>
+            <li>Area kota apa saja yang dapat dijangkau oleh pemadam kebakaran dalam lima menit? 
+            </li>
+            <li>Bagaimana cakupan pemadam kebakaran bisa meningkat dengan membangun stasiun pemadam kebakaran di sini?
+            </li>
+            <li>Area pasar apa saja yang dicakup oleh bisnis saya?
+            </li>
+        </ul>
+        
+    </p>
+    <p>Anda dapat menjawab pertanyaan tersebut cukup dengan memvisualkan area output. Atau, Anda dapat melakukan analisis spasial lebih lanjut menggunakan area output. Untuk input titik, setiap titik harus mewakili lokasi dari peristiwa atau insiden yang sama, dan layer hasil mewakili jumlah insiden per unit area. 
+    </p>
+    <p>
+        <table>
+        <tr><td colspan="3"><hr size="1" noshade="noshade"></td></tr>
+        <tr><td valign="baseline"><img src="../images/tip.png"></td><td valign="baseline"><h2>Tip:&ensp;</h2></td>
+        <td valign="baseline">
+            <p>Untuk mengaktifkan ekspor data pada data yang Anda miliki:
+            </p>
+        </td></tr>
+        <tr><td colspan="3"><hr size="1" noshade="noshade"></td></tr>
+        </table>
+    </p>
+    <p>Jika  <b>Menggunakan jangkauan peta saat ini</b> dicentang, hanya fitur yang dapat dilihat pada cakupan peta saat ini yang akan digunakan untuk membuat area waktu-mengemudi atau berdasarkan-jarak-mengemudi. Jika tidak dicentang, semua fitur pada layer input akan dianalisis meskipun berada di luar jangkauan peta saat ini.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Pilih layer titik untuk menghitung waktu berkendara sekitar area</h2></div>
+        <hr/>
+        <div>
+            <p>Fitur titik mewakili lokasi yang memiliki permintaan untuk layanan yang ditawarkan oleh fasilitas. Anda dapat memilih bagaimana suatu area dikalkulasikan berdasarkan mode perjalanan (mengemudi, mengemudi truk, atau berjalan) dan mengukur (waktu atau jarak).
+            </p>
+            <p class="OnlineOnly">Selain memilih sebuah layer dari peta, Anda dapat memilih  <b>Pilih Layer Analisis Living Atlas</b> atau <b>Piilih Layer Analisis</b> yang terdapat di bagian paling bawah daftar drop-down. Sebagai tambahan, area yang berdekatan (yaitu, memiliki batasan yang sama) akan digabungkan menjadi satu area. Langkah ini akan membuka galeri yang memuat koleksi layer yang bermanfaat bagi banyak analisis. 
+            </p>
+            <p>Alat ini mendukung hingga 1.000 lokasi dalam setiap layer.
+
+            </p>
+        </div>
+    </div>
+    <div id="MeasurementMethod">
+        <div><h2>Ukur</h2></div>
+        <hr/>
+        <div>
+            <p>Pilih mode perjalanan Anda (mengemudi, mengemudi truk, atau berjalan) dan mengukur (waktu atau jarak).  Mode perjalanan yang tersedia ditentukan oleh administrator organisasi Anda.   Setelah memilih mode dan pengukuran Anda, masukkan durasi atau jarak hingga 5 jam (300 menit) atau 300 mil (482,80 kilometer).  
+            </p>
+            <p>Ketika Anda memilih  <b>Waktu berkendara</b>, Anda memiliki opsi tentang cara mengukur waktu berkendara.
+                <ul>
+                    <li>
+                        <p>Hapus tanda centang <b>Gunakan Lalu lintas</b> untuk membuat daerah kemudi-waktu berdasarkan pada kecepatan yang ditetapkan. Ini bermanfaat saat yang perlu Anda perlu ketahui adalah bahwa suatu area dapat dijangkau dalam waktu atau jarak tertentu, namun Anda tidak perlu tahu titik input tertentu yang dapat menjangkau lokasi tersebut.
+                        </p>
+                    </li>
+                    <li>
+                        <p>Berikan tanda centang  <b>Gunakan Lalu Lintas</b> untuk buat area kemudi-waktu berdasarkan waktu mulai yang telah ditentukan dan kondisi lalu lintas yang berubah. Juga dengan memilih opsi <b>lalu lintas langsung </b>,waktu keberangkatan dari titik input ditetapkan pada waktu saat ini, dan kecepatan lalu lintas saat ini dan yang diperkirakan direferensikan dari sensor dan suplai data untuk membuat area waktu-mengemudi. Kecepatan lalu lintas yang diprediksikan dihitung dengan mereferensikan kecepatan lalu lintas langsung, riwayat kecepatan, dan peristiwa saat ini seperti misalnya cuaca. Kecepatan lalu lintas diprediksi 12 jam ke depan, sehingga Anda dapat menggerakkan bilah geser untuk menentukan waktu keberangkatan terlebih dahulu hingga 12 jam.
+                        </p>
+                        <p>Gunakan tujuan ini jika Anda ingin menemukan fasilitas sedemikian rupa sehingga keseluruhan waktu perjalanan, atau jarak perjalanan, antara lokasi permintaan dan fasilitas diminimalkan.
+                        </p>
+                    </li>
+                    <li>
+                        <p>Dengan mengecek  <b>Gunakan Lalu Lintas</b> dan memilih <b>Lalu lintas berdasarkan kondisi khusus untuk</b> pada suatu hari dan waktu, alat tersebut menciptakan area waktu-mengemudi berdasarkan histori rata-rata kecepatan untuk setiap interval lima menit melintasi minggu rutin. Hasil menyertakan lalu lintas tapi menghapus pengaruh kondisi dan peristiwa lalu lintas saat ini, yang mungkin beragam secara signifikan dari norma.
+                        </p>
+                        <p>Anda dapat menggunakan histori pengaturan lalu lintas ini untuk bertanya, misalnya, &quot;Area mana yang umunya dapat saya jangkau saat berangkat jam 11:30 siang di hari Rabu?&quot; 
+                        </p>
+                        <p>Waktu yang Anda atur merujuk ke zona waktu tempat fitur mulai Anda berada. Jadi, jika Anda menentukan waktu jam 8:00 pagi, dan memiliki dua titik, satu di New York City dan lainnya di Los Angeles, area waktu mengemudi akan dibuat untuk jam 8:00 pagi Waktu Timur dan 8:00 pagi Waktu Pasifik, masing-masing.
+                        </p>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Perhatikan bahwa saat kendaraan melaju keluar dari suatu titik, waktu berlalu dan kondisi lalu lintas berubah. Alat Area Waktu Kemudi berlaku untuk variasi ini ketika Anda memilih  <b>Driving Time</b> (Waktu Kemudi) dan mencentang <b>Use traffic</b> (Gunakan lalu lintas); namun tidak semua wilayah mendukung lalu lintas. Klik tautan <b>See availability</b> (Lihat ketersediaan) pada alat untuk mengetahui apakah opsi ini ditawarkan di area studi Anda.
+            </p>
+            <p> <b>Waktu Berjalan</b> dan <b>Jarak Berjalan</b> menggunakan kecepatan tetap 5 kilometer per jam (3,1 mil per jam) dan menyusuri trotoar setapak juga jalan yang dirancang (sambil mengesampingkan aturan bagi kendaraan otomotif, seperti jalan satu arah).
+            </p>
+            <p> <b>Waktu Mengemudi Truk</b> dan <b>Jarak Mengemudi Truk</b> menggunakan kecepatan tetap dan mengikuti aturan yang berlaku untuk truk berat.
+            </p> 
+        </div>
+    </div>
+    <div id="DissolveType">
+        <div><h2>Area dari titik yang berbeda</h2></div>
+        <hr/>
+        <div>
+            <p>Pilih bagaimana area yang dibagikan dari titik input yang berbeda dikelola saat area tersebut saling bersentuhan. Area dapat:
+                <ul>
+                    <li> <b>Tindih</b>&mdash;Area dari titik input yang berbeda dapat mencakup jalan yang sama. Ini bermanfaat saat Anda perlu mengetahui seluruh titik input yang dapat menjangkau lokasi tertentu dalam suatu waktu atau jarak yang ditentukan.
+                    </li>
+                    <li> <b>Satukan</b>&mdash;Seluruh area disatukan menjadi satu, dan tidak lebih dari satu area dapat mencakup suatu lokasi tertentu. Ini bermanfaat pada saat yang perlu Anda ketahui adalah bahwa suatu area dapat dijangkau dalam waktu atau jarak tertentu, namun Anda tidak perlu tahu titik input tertentu yang dapat menjangkau lokasi tersebut.
+                    </li>
+                    <li> <b>Pisahkan</b>&mdash;Area dari berbagai lokasi input yang berbeda yang akan saling menindih dipisahkan di tengah, sehingga area tersebut saling bersebelahan. Metode ini memastikan bahwa setiap rentang kelas memiliki kira-kira angka nilai yang sama dalam setiap kelas dan perubahan antar interval bersifat konsisten.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="OutputLayer">
+        <div><h2>Nama Layer Hasil</h2></div>
+        <hr/>
+        <div>
+            <p>Ini adalah nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta.  Nama default ditetapkan berdasarkan nama layer input. Jika layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
+            </p>
+            <p>Menggunakan kotak tarik turun (drop-down box)  <b>Simpan hasil di</b>, Anda dapat menentukan nama folder di <b>Konten Saya</b> tempat hasilnya akan disimpan.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

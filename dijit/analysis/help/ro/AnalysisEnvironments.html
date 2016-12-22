@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Setări mediu analiză portal</h2><p/>
+        <h2></h2>
+        <hr/>
+    <p> Setări mediu pentru analiză &icirc;n Portal for ArcGIS şi  ArcGIS Online. 
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="overwriteResult">
+        <div><h2>Suprascriere strat tematic rezultate</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Opţiuni de suprascriere a straturilor tematice existente.    Atunci c&acirc;nd este bifată, dacă un strat tematic cu acelaşi nume există deja &icirc;n conţinutul dvs., va fi suprascrisă.
+            </p>
+            <p>
+                <ul>
+                    <li>Bifată - Dacă un strat tematic cu acelaşi nume există deja &icirc;n conţinutul dvs., va fi suprascrisă. Rezultatul va avea acelaşi sistem de coordonate precum intrarea.
+                    </li>
+                    <li>Debifată - Dacă numele de strat tematic rezultat furnizat există deja, va apărea o eroare şi stratul tematic rezultat trebuie redenumit &icirc;nainte ca instrumentul să poată fi executat. Aceasta este acţiunea implicită.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="closeAnalysisWidget">
+        <div><h2>Închidere widget analiză după executarea analizei</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Opţiune pentru a menţine caseta de dialog pentru analiză deschisă şi activată &icirc;n timpul ce instrumentul procesează.     Această setare vă va permite să efectuaţi cu uşurinţă modificări asupra parametrilor de analiză &icirc;n timp ce lucrarea de analiză anterioară continuă.  Analiza este un proces iterativ şi, prin menţinerea casetei de dialog a instrumentului deschisă, vă permite să efectuaţi cu uşurinţă modificări ale parametrilor şi să executaţi din nou analiza.
+            </p>
+            <p>
+                <ul>
+                    <li>Bifată - Fereastra instrumentului de analiză se va &icirc;nchide şi &icirc;n primplan va reveni cuprinsul. Aceasta este acţiunea implicită
+                    </li>
+                    <li>Debifată - Fereastra instrumentului de analiză va răm&acirc;ne deschis şi activat.   
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="storeAnalysisResults">
+        <div><h2>Stocarea rezultatelor analizei ca servicii de obiecte spaţiale</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Opţiunea de a specifica dacă rezultatul analizei dvs. va fi creat ca strat tematic de obiecte spaţiale sau sub formă de colecţie de obiecte spaţiale.
+            </p>
+            <p>
+                <ul>
+                    <li>Bifată - Rezultatele analizei dvs. vor fi create ca strat tematic de obiecte spaţiale şi un element va fi creat &icirc;n conţinutul dvs. Aceasta este acţiunea implicită.
+                    </li>
+                    <li>Debifată - Rezultatele analizei vor crea o colecţie de obiecte spaţiale.    Colecţiile de obiecte spaţiale sunt stocate &icirc;n harta dvs. web.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputCoordinateSystem">
+        <div><h2>Sistem de coordonate de ieşire</h2></div>
+        <hr/>
+        <div>
+            <p>Setarea de mediu pentru analiza raster utilizată pentru a defini sistemul de coordonate al stratului tematic rezultat.    
+            </p>
+            <p>
+                <ul>
+                    <li> <b>La fel ca intrarea</b> - Rezultatele analizei dvs. va fi &icirc;n acelaşi sistem de coordonate ca intrare. Aceasta este acţiunea implicită.
+                    </li>
+                    <li> <b>După cum se specifică</b> - Alegeţi sistemul de coordonate pentru rezultatele analizei dvs.   Atunci c&acirc;nd este selectată această opţiune, faceţi clic pe pictograma glob pentru a selecta dintr-o listă de sisteme de coordonate cunoscute sau pentru a adăuga WKID al referinţei spaţiale &icirc;n caseta furnizată.
+                    </li>
+                    <li> <b>Nume
+&lt;strat tematic&gt;</b> - Alegeţi un strat tematic existent &icirc;n harta web care va fi utilizat pentru a determina sistemul de coordonate al rezultatelor analizelor dvs.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingCoordinateSystem">
+        <div><h2>Se procesează sistemul de coordonate</h2></div>
+        <hr/>
+        <div>
+            <p>Setarea de mediu pentru GeoAnalytics utilizată pentru a determina sistemul de coordonate pe care &icirc;l va utiliza analiza dvs. &icirc;n timpul execuţiei analizei.   
+            </p>
+            <p>Pentru GeoAnalytics, unele analize necesită ca procesarea să fie executată &icirc;ntr-un sistem de coordonate proiectat.   Orice instrument care are implementat includerea datelor sau unităţilor liniare &icirc;n containere necesită un sistem de coordonate proiectat. 
+            </p>
+            <p>
+                <ul>
+                    <li> <b>La fel ca intrarea</b> - Analiza dvs. va fi procesată &icirc;n acelaşi sistem de coordonate ca intrarea. Aceasta este acţiunea implicită.
+                    </li>
+                    <li> <b>După cum se specifică</b> - Alegeţi sistemul de coordonate pentru procesarea analizei dvs.   Atunci c&acirc;nd este selectată această opţiune, faceţi clic pe pictograma glob pentru a selecta dintr-o listă de sisteme de coordonate proiectate cunoscute sau pentru a adăuga WKID al referinţei spaţiale &icirc;n caseta furnizată.
+                    </li>
+                    <li> <b>Nume
+&lt;strat tematic&gt;</b> - Alegeţi un strat tematic existent din harta dvs. web.  Sistemul de coordonate al stratului tematic ales va fi utilizat pentru a determina sistemul de coordonate care va fi utilizat pentru a procesa analiza dvs.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingExtent">
+        <div><h2>Extindere</h2></div>
+        <hr/>
+        <div>
+            <p>Setarea de mediu utilizată pentru a determina extinderea sau limita care va fi utilizată &icirc;n timpul execuţiei analizei.  Toate obiectele spaţiale de intrare care sunt complet &icirc;n interiorul sau care se intersectează cu extinderea specificată vor fi utilizate &icirc;n analiză.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Implicit</b> - Utilizează extinderea furnizată de instrument.
+                    </li>
+                    <li> <b>După cum se specifică</b> - Introduceţi manual coordonatele pentru a defini extinderea.
+                    </li>
+                    <li> <b>Nume
+&lt;strat tematic&gt;</b> - Alegeţi un strat tematic existent din harta dvs. web. Extinderea spaţială a stratului tematic ales va fi utilizat pentru a determina extinderea care va fi utilizată pentru a procesa analiza dvs. 
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="snapRaster">
+        <div><h2>Fixare raster</h2></div>
+        <hr/>
+        <div>
+            <p>Atunci c&acirc;nd efectuaţi analize raster, setarea mediului  <b>Fixare raster</b> va ajusta extinderea stratului tematic raster de ieşire pentru a se potrivi cu alinierea celulelor stratului tematic <b>Fixare raster</b> specificat.
+            </p>
+        </div>
+    </div>
+    <div id="cellSize">
+        <div><h2>Dimensiune celulă</h2></div>
+        <hr/>
+        <div>
+            <p>Atunci c&acirc;nd efectuaţi analize raster, acest mediu setează dimensiunea celulei sau rezoluţia care va fi utilizată pentru a crea stratul tematic raster de ieşire. Rezoluţia de ieşire implicită este determinată de cea mai mare dimensiune de celulă din stratul tematic raster de intrare.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Număr minim de intrări</b> - Utilizaţi cea mai mică dimensiune de celulă pentru toate straturile tematice de intrare.
+                    </li>
+                    <li> <b>Număr maxim de intrări</b> - Utilizaţi cea mai mare dimensiune de celulă pentru toate straturile tematice de intrare. Aceasta este acţiunea implicită.
+                    </li>
+                    <li> <b>După cum se specifică</b> - Specificaţi o valoare numerică pentru a seta dimensiunea celulei. Dacă este selectată această opţiune, valoarea implicită este 1.
+                    </li>
+                    <li> <b>Nume &lt;strat tematic&gt;</b>- Setează dimensiunea de celulă la stratul tematic raster ales.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="mask">
+        <div><h2>Mască</h2></div>
+        <hr/>
+        <div>
+            <p> Atunci c&acirc;nd efectuaţi analize raster, utilizaţi mediul <b>Mască</b> pentru a specifica un strat tematic care va fi utilizat pentru a defini suprafaţa de interes.   Doar celulele care se &icirc;ncadrează &icirc;n masca de analiză vor fi luate &icirc;n considerare &icirc;n operaţia de analiză.
+            </p>
+            <ul>
+                <li>Masca poate fi un raster sau un strat tematic de obiecte spaţiale.
+                </li>
+                <li>Dacă masca de analiză este un raster, toate celulele care au o valoare vor fi luate &icirc;n considerare pentru definirea măştii. Celulele dintr-un raster de mască care au valoarea NoData vor fi considerate ca fiind &icirc;n afara măştii şi vor avea valoarea NoData &icirc;n stratul tematic de analiză rezultat. 
+                </li>
+                <li>Dacă masca de analiză este un strat tematic de obiecte spaţiale, va fi convertit intern &icirc;n raster la execuţie. Din acest motiv, ar trebui aveţi grijă să vă asiguraţi că  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">Dimensiunea celulei</a> şi <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">Fixare raster</a> sunt setate &icirc;n mod adecvat pentru analiza dvs.
+                </li>
+            </ul>
+             
+        </div>
+    </div>
+</div>
+</html>

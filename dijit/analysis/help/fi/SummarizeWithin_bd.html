@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Yhteenveto alueella</h2><p/>
+        <h2><img src="../images/GUID-90E0CB1F-EB97-4752-B2EE-452B7B45475E-web.png" alt="Yhteenveto alueella"></h2>
+        <hr/>
+    <p>T&auml;m&auml;n ty&ouml;kalun avulla voit etsi&auml; kohteita (tai kohteiden osia), jotka sijaitsevat ensimm&auml;isen l&auml;ht&ouml;karttatason alueiden rajojen sis&auml;ll&auml;.   
+        <ul>
+            <li>Jos k&auml;yt&ouml;ss&auml; ovat vesijakoalueiden rajojen karttataso ja kaavoitusrajojen karttataso, ty&ouml;kalu laskee tietyn maank&auml;ytt&ouml;aluetyypin kokonaispinta-alan eekkerein&auml; kullekin vesijakoalueelle. 
+            </li>
+            <li>Jos k&auml;yt&ouml;ss&auml; ovat piirikunnan kiinteist&ouml;jen karttataso ja kaupunkien rajojen karttataso, ty&ouml;kalu tekee yhteenvedon siit&auml;, mik&auml; on kunkin kaupungin rajojen sis&auml;ll&auml; olevien vapaiden kiinteist&ouml;jen keskim&auml;&auml;r&auml;inen arvo.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Jos  <b>K&auml;yt&auml; nykyist&auml; karttalaajuutta</b> -toiminto on valittuna, vain l&auml;ht&ouml;karttatason ja yhteenvetokarttatason nykyisess&auml; karttalaajuudessa n&auml;kyv&auml;t kohteet analysoidaan. Jos toimintoa ei ole valittu, analyysiin sis&auml;llytet&auml;&auml;n kaikki l&auml;ht&ouml;- ja yhteenvetokarttatason kohteet, vaikka ne eiv&auml;t sijaitsisikaan nykyisen karttalaajuuden alueella.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="sumWithinLayer">
+        <div><h2>Valitse aluekarttataso, jonka rajojen sisällä olevat muut kohteet sisällytetään yhteenvetoon</h2></div>
+        <hr/>
+        <div>
+            <p>Aluekarttataso, jota k&auml;ytet&auml;&auml;n sen rajojen sis&auml;puolella olevien kohteiden yhteenvedon laatimiseen. Voit valita yhteenvedon j&auml;rjest&auml;m&auml;ss&auml;si aluekohdekarttatasossa tai ty&ouml;kalun suorittamisen aikana luoduissa neli&ouml;- tai kuusikulmiolohkoissa. Luotaessa  <b>neli&ouml;lohkoja</b> m&auml;&auml;ritetyt yksik&ouml;t ja m&auml;&auml;r&auml; m&auml;&auml;ritt&auml;v&auml;t neli&ouml;n korkeuden ja pituuden. Luotaessa <b>kuusiolohkoja</b> m&auml;&auml;ritetyt yksik&ouml;t ja m&auml;&auml;r&auml; m&auml;&auml;ritt&auml;v&auml;t rinnakkaisten sivujen v&auml;lisen et&auml;isyyden.
+            </p>
+            <p>Sen lis&auml;ksi, ett&auml; voit valita karttatason kartasta, voit valita  <b>Selaa karttatasoja</b> -vaihtoehdon avattavan luettelon alareunasta ja selata Big Data -tiedostoresurssin aineistoryhm&auml;n tai karttatason sis&auml;lt&ouml;&ouml;n.  
+            </p>
+        </div>
+    </div>
+    <div id="summaryLayer">
+        <div><h2>Valitse karttataso yhteenvetoa varten</h2></div>
+        <hr/>
+        <div>
+            <p>Yhteenvetoon sis&auml;llytet&auml;&auml;n t&auml;ss&auml; karttatasossa olevat kohteet, jotka sijaitsevat edell&auml; kuvatun l&auml;ht&ouml;karttatason kohteiden rajojen sis&auml;ll&auml;, tai yll&auml; m&auml;&auml;ritetyt lohkot. 
+            </p>
+            <p>Sen lis&auml;ksi, ett&auml; voit valita karttatason kartasta, voit valita  <b>Selaa karttatasoja</b> -vaihtoehdon avattavan luettelon alareunasta ja selata Big Data -tiedostoresurssin aineistoryhm&auml;n tai karttatason sis&auml;lt&ouml;&ouml;n.  
+            </p>
+        </div>
+    </div>
+    <div id="inputBins">
+        <div><h2>Valitse etäisyys, jolta lohkot luodaan ja tiedot koostetaan</h2></div>
+        <hr/>
+        <div>
+            <p>Et&auml;isyytt&auml; k&auml;ytet&auml;&auml;n lohkojen luomiseen.  
+            </p>
+            <p>Sinun on m&auml;&auml;ritett&auml;v&auml; joko  <b>Lohkon koko</b> lohkoille tai <b>Aluekarttataso</b>.
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Koosta käyttäen aikaleikkeitä (valinnainen)</h2></div>
+        <hr/>
+        <div>
+            <p>Jos aika on otettu k&auml;ytt&ouml;&ouml;n l&auml;ht&ouml;aineiston karttatasossa ja jos ajan tyyppin&auml; on hetki, voit k&auml;ytt&auml;&auml; analysointiin aikaleikkeit&auml;. Voit m&auml;&auml;ritt&auml;&auml; kolme parametria, kun k&auml;yt&auml;t aikaa:
+                <ul>
+                    <li>  <b>Aikav&auml;li</b>
+                    </li>
+                    <li> <b>Aika-askel</b>
+                    </li>
+                    <li> <b>Viiteaika</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Oletetaan, ett&auml; sinulla on vuotta kuvaava aineisto ja ett&auml; haluat k&auml;ytt&auml;&auml; analysointiin aikaleikkeit&auml;. Voit tehd&auml; t&auml;m&auml;n m&auml;&auml;ritt&auml;m&auml;ll&auml;  <b>Aikav&auml;li</b>-parametrin arvoksi <code>1 viikko</code>.
+            </p>
+            <p> Oletetaan, ett&auml; sinulla on vuotta kuvaava aineisto ja ett&auml; haluat k&auml;ytt&auml;&auml; analysointiin kuukauden ensimm&auml;ist&auml; viikkoa. Voit tehd&auml; t&auml;m&auml;n m&auml;&auml;ritt&auml;m&auml;ll&auml; <b>Aikav&auml;li</b>-parametrin arvoksi <code>1 viikko</code>, <b>Aika-askel</b>-parametrin arvoksi <code>1 kuukausi</code> ja <b>Viiteaika</b>-parametrin arvoksi <code>1. tammikuuta klo 24.00</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>Aikaväli, johon tiedot koostetaan</h2></div>
+        <hr/>
+        <div>
+            <p>Aikav&auml;li, jota k&auml;ytet&auml;&auml;n aineiston leikkaamiseen. Aikav&auml;li&auml; voi k&auml;ytt&auml;&auml; yksin tai  <b>Aikav&auml;li</b>- tai <b>Viiteaika</b>-parametrin kanssa.
+            </p>
+            <p> Jos haluat luoda aikaleikkeit&auml;, joiden aikav&auml;li on maanantaina klo 9.00&ndash;10.00, m&auml;&auml;rit&auml; <b>Aikav&auml;li</b>-parametrin arvoksi <code>1 tunti</code>, <b>Aika-askel</b>-parametrin arvoksi <code>1 viikko</code> ja <b>Viiteaika</b>-parametrin arvoksi <code>9.00 maanantaina</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>Aika-askel, johon koostetaan</h2></div>
+        <hr/>
+        <div>
+            <p> Askel, jota k&auml;ytet&auml;&auml;n aikaleikkeen laskemiseen. <b>Aika-askel</b>-parametria voi k&auml;ytt&auml;&auml; yksin, <b>Aikav&auml;li</b>-parametrin kanssa, <b>Viiteaika</b>-parametrin kanssa tai sek&auml; <b>Aikav&auml;li</b>- ett&auml; <b>Viiteaika</b>-parametrin kanssa.
+            </p>
+            <p> Jos haluat luoda aikaleikkeit&auml;, joiden aikav&auml;li on maanantaina klo 9.00&ndash;10.00, m&auml;&auml;rit&auml; <b>Aikav&auml;li</b>-parametrin arvoksi <code>1 tunti</code>, <b>Aika-askel</b>-parametrin arvoksi <code>1 viikko</code> ja <b>Viiteaika</b>-parametrin arvoksi <code>9.00 maanantaina</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Viiteaika, jota käytetään aikaleikkeiden kohdistamiseen</h2></div>
+        <hr/>
+        <div>
+            <p>P&auml;iv&auml;m&auml;&auml;r&auml; ja kellonaika, joita k&auml;ytet&auml;&auml;n aikaleikkeiden kohdistamiseen.  <b>Aika-askel</b> alkaa viiteajasta ja jatkuu viitatusta ajasta taaksep&auml;in.
+            </p>
+            <p> Jos haluat luoda aikaleikkeit&auml;, joiden aikav&auml;li on maanantaina klo 9.00&ndash;10.00, m&auml;&auml;rit&auml; <b>Aikav&auml;li</b>-parametrin arvoksi <code>1 tunti</code>, <b>Aika-askel</b>-parametrin arvoksi <code>1 viikko</code> ja <b>Viiteaika</b>-parametrin arvoksi <code>9.00 maanantaina</code>.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Lisää yhteenvetoon sisällytettävät tilastotiedot karttatasosta (valinnainen)</h2></div>
+        <hr/>
+        <div>
+            <p> Voit laskea tilastotiedot kohteista, joista on laadittu yhteenveto. Numerokentist&auml; voit laskea seuraavat tilastotiedot:
+                <ul>
+                    <li>Lukum&auml;&auml;r&auml;
+                    </li>
+                    <li>Keskiarvo
+                    </li>
+                    <li>V&auml;himm&auml;isarvo
+                    </li>
+                    <li>Enimm&auml;isarvo
+                    </li>
+                    <li>Vaihteluv&auml;li
+                    </li>
+                    <li>Varianssi
+                    </li>
+                    <li>Keskihajonta
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Merkkijonokentist&auml; voit laskea seuraavat tilastotiedot:
+                <ul>
+                    <li>Lukum&auml;&auml;r&auml;
+                    </li>
+                    <li>Mik&auml; tahansa: T&auml;m&auml; tilastotieto on satunnainen otos m&auml;&auml;ritetyn kent&auml;n merkkijonoarvosta.
+                    </li>
+                </ul>
+                Kaikki tilastotiedot lasketaan muina kuin nolla-arvoina. Tuloskarttataso sis&auml;lt&auml;&auml; uuden kent&auml;n jokaiselle lasketulle tilastotiedolle. Voit lis&auml;t&auml; niin paljon tilastotietoja kuin haluat valitsemalla ominaisuustiedon ja tilastotiedon. 
+            </p>
+            <p>N&auml;iden tilastojen lis&auml;ksi kaikille numerokentille lasketaan suhteelliset tilastot:
+                <ul>
+                    <li>M&auml;&auml;r&auml;: kunkin kent&auml;n m&auml;&auml;r&auml; kerrottuna yhteenvetokarttatason suhteellisella osuudella aluekohteista. 
+                    </li>
+                    <li>Summa: kunkin kent&auml;n painotettujen arvojen summa. T&auml;ss&auml; k&auml;ytetty painoarvo on yhteenvetokarttatason suhteellinen osuus aluekohteiden sis&auml;ll&auml;.
+                    </li>
+                    <li>Keskiarvo: kunkin kent&auml;n arvojen painotettu keskiarvo. T&auml;ss&auml; k&auml;ytetty painoarvo on yhteenvetokarttatason suhteellinen osuus aluekohteiden sis&auml;ll&auml;.
+                    </li>
+                    <li>Min: kunkin kent&auml;n painotettujen arvojen v&auml;himm&auml;isarvo. T&auml;ss&auml; k&auml;ytetty painoarvo on yhteenvetokarttatason suhteellinen osuus aluekohteiden sis&auml;ll&auml;.
+                    </li>
+                    <li>Maks: kunkin kent&auml;n painotettujen arvojen enimm&auml;isarvo. T&auml;ss&auml; k&auml;ytetty painoarvo on yhteenvetokarttatason suhteellinen osuus aluekohteiden sis&auml;ll&auml;.
+                    </li>
+                    <li>Alue: suurimpien ja pienimpien painotettujen arvojen v&auml;linen ero.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>L&auml;heisten pisteiden m&auml;&auml;r&auml;, viivojen kokonaispituus tai kokonaisalue lasketaan niiden kohteiden tyyppien mukaan, joista yhteenveto tehd&auml;&auml;n.
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>Koordinaatistotieto (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>T&auml;m&auml; on esijulkaisun tilap&auml;inen parametri k&auml;sittelyn koordinaatistotiedon m&auml;&auml;ritt&auml;miseen. Monet Big Data -ty&ouml;kalut edellytt&auml;v&auml;t, ett&auml; projisoitua koordinaattij&auml;rjestelm&auml;&auml; k&auml;ytet&auml;&auml;n k&auml;sittelyn koordinaatistotietona. Oletusarvon mukaan ty&ouml;kalu k&auml;ytt&auml;&auml; l&auml;ht&ouml;aineiston koordinaattij&auml;rjestelm&auml;&auml;, mutta ty&ouml;kalua ei voi suorittaa, jos kyseess&auml; on maantieteellinen koordinaattij&auml;rjestelm&auml;. Jos haluat m&auml;&auml;ritt&auml;&auml; projisoidun koordinaattij&auml;rjestelm&auml;n, anna WKID. Jos haluat esimerkiksi m&auml;&auml;ritt&auml;&auml;  <b>Web Mercator</b> -koordinaattij&auml;rjestelm&auml;n, anna <code>3857</code>.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Valitse tietosäilö</h2></div>
+        <hr/>
+        <div>
+            <p>T&auml;m&auml; on esijulkaisun tilap&auml;inen parametri sen aineistos&auml;il&ouml;n m&auml;&auml;ritt&auml;miseen, johon tulokset tallennetaan. Molemmat aineistos&auml;il&ouml;t ovat osa  ArcGIS Data Storea. Jos valitset tila-aika-aineistos&auml;il&ouml;n, mutta sellaista ei ole asennettuna, ty&ouml;kalua ei voi suorittaa. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tulostason nimi</h2></div>
+        <hr/>
+        <div>
+            <p> Sen tason nimi, joka luodaan kohtaan <b>Oma sis&auml;lt&ouml;</b> ja joka lis&auml;t&auml;&auml;n karttaan. Oletusnimi perustuu ty&ouml;kalun nimeen ja l&auml;ht&ouml;karttatason nimeen. Jos karttataso on jo olemassa, ty&ouml;kalua ei voi suorittaa.
+            </p>
+            <p>Avattavan  <b>Tallenna tulos kohteeseen</b> -valikon avulla voit m&auml;&auml;ritt&auml;&auml; sen <b>Oma sis&auml;lt&ouml;</b> -kansion nimen, johon tulos tallennetaan.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

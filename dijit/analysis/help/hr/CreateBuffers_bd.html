@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Izradi pojaseve</h2><p/>
+        <h2><img src="../images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" alt="Izradi pojaseve"></h2>
+        <hr/>
+    <p>Pojas je poligon koji pokriva danu udaljenost od točke, linije ili poligonalnog geoobjekta. 
+    </p>
+    <p>Pojasi se obično upotrebljavaju za stvaranje područja koja se mogu dodatno analizirati s pomoću ostalih alata. Na primjer, ako pitanje glasi: &bdquo;Koje se zgrade nalaze unutar 1 milje od &scaron;kole?&rdquo;, odgovor se može pronaći stvaranjem pojasa od 1 milje oko &scaron;kole i preklapanja pojasa sa slojem koji sadrži tlocrte zgrada. Zavr&scaron;ni rezultat je sloj zgrada koje se nalaze unutar 1 milje od &scaron;kole.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Odaberite sloj na koji se primijenjuje pojas</h2></div>
+        <hr/>
+        <div>
+            <p>Točka, linija ili poligonalni geoobjekt za stvaranje pojasa.
+            </p>
+            <p>Osim odabira sloja s va&scaron;e karte, možete odabrati  <b>Pretraži slojeve</b> na dnu padajućeg popisa za pretraživanje va&scaron;ih sadržaja za skup podataka za dijeljenje datoteka velikih podataka ili sloj geoobjekta.  
+            </p>
+        </div>
+    </div>
+    <div id="bufferType">
+        <div><h2>Odaberite vrstu pojasa za primjenu</h2></div>
+        <hr/>
+        <div>
+            <p>Tri su načina na koje možete odrediti veličinu pojasa za svoje ulazne geoobjekte: 
+                <ul>
+                    <li>Odredite udaljenost koja se odnosi na sve geoobjekte.
+                    </li>
+                    <li>Odredite polje na ulaznom sloju koje sadrži vrijednost udaljenosti. Možete upotrijebiti polje niza ili brojčano polje. Ako se ne odredi linearna jedinica, koristit će se jedinice prostorne reference. Ako koristite geografski koordinatni sustav, za polje bez jedinice pretpostavit će se da su metri. 
+                    </li>
+                    <li>Izradite izraz s vi&scaron;estrukim poljima i matematičkim radnjama.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Odaberite metodu izrade pojasa</h2></div>
+        <hr/>
+        <div>
+            <p>Možete odabrati  <b>Planarnu</b> ili <b>Geodetsku</b> metodu. <b>Planarna</b> metoda može biti brža i prikladna je za lokalnu analizu projiciranih podataka. <b>Geodetska</b> metoda prikladna je za velika područja i bilo koji geografski koordinatni sustav.
+            </p>
+        </div>
+    </div>
+    <div id="dissolveOption">
+        <div><h2>Odaberite vrstu metode uklanjanja</h2></div>
+        <hr/>
+        <div>
+            <p>Opcije za određivanje metode uklanjanja. Ako se odabere metoda uklanjanja, dobit ćete mogućnost stvaranja područja od vi&scaron;e ili jednog dijela i moći ćete računati statistiku na temelju pruženih polja.
+                <ul>
+                    <li> <b>Sve</b> &ndash; spojit će se svi geoobjekti. Ako se omoguće geoobjekti od vi&scaron;e dijelova, svi će se geoobjekti spojiti u jedan geoobjekt. Ako se ne omogući vi&scaron;e dijelova, spojit će se susjedni ili preklapajući geoobjekti.
+                    </li>
+                    <li> <b>Polja</b> &ndash; spojit će se geoobjekti koji dijele isto naznačeno polje ili kombinaciju naznačenih polja. Ako se omoguće geoobjekti od vi&scaron;e dijelova, svi geoobjekti s istim poljem spojit će se u jedan geoobjekt. Ako se ne omogući vi&scaron;e dijelova, spojit će se susjedni ili preklapajući geoobjekti s istom vrijednosti polja.
+                    </li>
+                    <li> <b>Ni&scaron;ta </b> &ndash; neće se spojiti geoobjekti. To je zadano.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="multipart">
+        <div><h2>Omogući geoobjekte od više dijelova</h2></div>
+        <hr/>
+        <div>
+            <p>Opcija za određivanje hoće li se va&scaron; rezultat sastojati od geoobjekata od jednog ili vi&scaron;e dijelova. 
+
+            </p>
+            <p>
+                <ul>
+                    <li>Označeno &ndash; rezultati va&scaron;e analize sadržavat će geoobjekte od vi&scaron;e dijelova.   
+                    </li>
+                    <li>Neoznačeno &ndash; rezultati va&scaron;e analize sadržavat će geoobjekte od jednog dijela. To je zadano.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Dodaj statistike (neobavezno)</h2></div>
+        <hr/>
+        <div>
+            <p> Možete izračunati statistiku za geoobjekte koji su sažeti. Na brojčanim poljima možete izračunati sljedeće:
+                <ul>
+                    <li>Broj
+                    </li>
+                    <li>Prosjek
+                    </li>
+                    <li>Min.
+                    </li>
+                    <li>Maks.
+                    </li>
+                    <li>Raspon
+                    </li>
+                    <li>Varijanca
+                    </li>
+                    <li>Standardno odstupanje
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Na poljima niza možete izračunati sljedeće:
+                <ul>
+                    <li>Broj
+                    </li>
+                    <li>Bilo koje &ndash; ova je statistika nasumični uzorak vrijednosti niza u određenom polju.
+                    </li>
+                </ul>
+                Sve se statistike računaju za vrijednosti koje nisu nula. Sloj rezultata sadržavat će novo polje za svaki izračun statistike. Može se dodati bilo koliko statistika odabirom atributa i statistike. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Izaberi spremište podataka</h2></div>
+        <hr/>
+        <div>
+            <p>To je privremeni parametar za predizdanje za postavljanje spremnika podataka gdje su spremljeni rezultati. Oba spremnika podataka dio su proizvoda  ArcGIS Data Store. Ako odaberete spremnik prostorno-vremenskih podataka, ali nemate instaliran spremnik, alat neće biti uspje&scaron;an. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Naziv sloja rezultata</h2></div>
+        <hr/>
+        <div>
+            <p> Ovo je naziv sloja koji će se stvoriti u dijelu <b>Moj sadržaj</b> i dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, alat neće biti uspje&scaron;an.
+            </p>
+            <p>Upotrebom padajućeg izbornika  <b>Spremi rezultat u</b> možete odrediti naziv mape u dijelu <b>Moj sadržaj</b> gdje će se spremiti rezultat.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

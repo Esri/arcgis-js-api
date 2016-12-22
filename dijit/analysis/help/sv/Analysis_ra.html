@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="raToolbox">
+        <p>Rasteranalys till&aring;ter att du utf&ouml;r analys av st&ouml;rre rasterdataset med  ArcGIS Image Server. P&aring; s&aring; s&auml;tt kan du analysera st&ouml;rre m&auml;ngder data snabbare genom att utnyttja kraften hos servern. De verktygsset som f&ouml;r n&auml;rvarande finns tillg&auml;ngliga via  Portal for ArcGIS-webbgr&auml;nssnittet &auml;r  <b>Summera data</b>, <b>Analysera m&ouml;nster</b>, <b>Analysera bild</b>, <b>Analysera terr&auml;ng</b> och <b>Hantera data</b>.
+        </p>
+    </div>
+    <div id="SummarizeDataCategory" class="smallsize">
+        <h2>Summera data</h2>
+        <hr/>
+        <p>Det h&auml;r verktygssetet inneh&aring;ller ett verktyg f&ouml;r att ber&auml;kna statistik f&ouml;r ett rasterlager inom omr&aring;desgr&auml;nser som du definierar. 
+            <ul>
+                <li> <b>Summera raster inom</b> ber&auml;knar statistik f&ouml;r rasterceller som ligger inom definierade omr&aring;desgr&auml;nser.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="SummarizeRasterWithinTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Summera raster inom</h2></td>
+                    <td>
+                    <img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" class="titleImage" alt="Verktyget Summera raster inom">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ber&auml;knar viss summeringsstatistik f&ouml;r rasterceller inom definierade omr&aring;den.
+            </p>
+            <p>H&auml;r &auml;r n&aring;gra exempel p&aring; anv&auml;ndningar: 
+
+                <ul>
+                    <li>Med ett lager f&ouml;r avrinningsomr&aring;den och ett h&ouml;jdrasterlager kan du ber&auml;kna h&ouml;jdomf&aring;nget inom varje avrinningsomr&aring;de f&ouml;r att avg&ouml;ra vilket som har str&ouml;mningen med h&ouml;gst energi.
+                        
+
+                    </li>
+                    <li>Med ett lager med administrativa enheter och ett rasterlager med landanv&auml;ndningskategorier kan du ber&auml;kna variationen inom landanv&auml;ndningv&auml;rden inom varje administrativt omr&aring;de f&ouml;r att identifiera vilka som kr&auml;ver mest arbete, s&aring; att en administrationsplan kan uppr&auml;ttas.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzePatternsCategory" class="regularsize">
+        <h2>Analysera mönster</h2>
+        <hr/>
+        <p>Dessa verktyg hj&auml;lper dig identifiera, m&auml;ta och visualisera geografiska m&ouml;nster i dina data. 
+
+            <ul>
+                <li> <b>Ber&auml;kna densitet</b> tar k&auml;nda antal av ett fenomen och skapar en densitetskarta genom att sprida ut dessa antal &ouml;ver kartan.
+                    
+
+                </li>
+                <li> <b>Interpoleringspunkter</b> f&ouml;ruts&auml;ger v&auml;rden p&aring; nya platser baserat p&aring; m&auml;tningar fr&aring;n en samling punkter.
+                    
+
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateDensityRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Beräkna densitet</h2></td>
+                    <td>
+                    <img src="../images/GUID-4EE4838C-E210-43CE-99C7-1A648A18C10B-web.png" class="titleImage" alt="Verktyget Ber&auml;kna densitet">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Densitetsanalyser tar k&auml;nda antal av ett fenomen och skapar en densitetskarta genom att sprida ut dessa antal &ouml;ver kartan. Du kan anv&auml;nda det h&auml;r verktyget f&ouml;r att till exempel visa koncentrationer av blixtnedslag eller tornador, tillg&aring;ng till v&aring;rdinr&auml;ttningar och befolkningst&auml;thet.
+            </p>
+            <br/>
+        </div>
+        <div id="InterpolatePointsEBKTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Interpoleringspunkter</h2></td>
+                    <td>
+                    <img src="../images/GUID-06D80BB3-7154-4FAA-9C9B-D665450EF3BC-web.png" class="titleImage" alt="Verktyget Interpoleringspunkter">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Med det h&auml;r verktyget kan du f&ouml;ruts&auml;ga v&auml;rden p&aring; nya platser baserat p&aring; m&auml;tningar fr&aring;n en samling punkter. Verktyget samlar punktdata med v&auml;rden vid varje punkt och returnerar omr&aring;den klassificerade enligt f&ouml;rutsagda v&auml;rden. Du kan till exempel anv&auml;nda det h&auml;r verktyget f&ouml;r att f&ouml;ruts&auml;ga regnniv&aring;er inom ett avrinningsomr&aring;de baserat p&aring; m&auml;tningar vid enskilda regnm&auml;tare.
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzeImageCategory" class="smallsize">
+        <h2>Analysera bild</h2>
+        <hr/>
+        <p>Det h&auml;r verktyget hj&auml;lper dig analysera bilder f&ouml;r att avg&ouml;ra omr&aring;den med vegetation. 
+            <ul>
+                <li> <b>&Ouml;vervaka vegetation</b> uppt&auml;cker vegetation i en bild baserat p&aring; aritmetiska &aring;tg&auml;rder p&aring; bilden.
+                    
+
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="MonitorVegetationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Övervaka vegetation</h2></td>
+                    <td>
+                    <img src="../images/GUID-7763FCC0-2EA1-463B-98D0-4EBDF6150907-web.png" class="titleImage" alt="Verktyget &Ouml;vervaka vegetation f&ouml;r Portal">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Utf&ouml;r en aritmetisk &aring;tg&auml;rd p&aring; banden i ett multibandsrasterlager f&ouml;r att visa information om vegetationst&auml;ckning i unders&ouml;kningsomr&aring;det.
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzeTerrainCategory" class="regularsize">
+        <h2>Analysera terräng</h2>
+        <hr/>
+        <p>Dessa verktyg hj&auml;lper dig att analysera rasterytor. 
+            <ul>
+                <li> <b>Ber&auml;kna lutning</b> ber&auml;knar terr&auml;ngens lutning.
+                    
+
+                </li>
+                <li> <b>H&auml;rled aspekt</b> ber&auml;knar riktningen f&ouml;r den brantaste lutningen f&ouml;r varje plats.
+                    
+
+                </li>
+                <li> <b>Skapa siktomr&aring;de</b> identifierar vad som g&aring;r att se fr&aring;n varje punkt i landskapet.
+                    
+
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateSlopeTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Beräkna lutning</h2></td>
+                    <td>
+                    <img src="../images/GUID-D33862C6-01BB-445E-B0C3-BC8B8C1858DA-web.png" class="titleImage" alt="Verktyget Ber&auml;kna lutning f&ouml;r Portal">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Identifierar en yta som visar lutningen f&ouml;r h&ouml;jddata som anv&auml;nds som indata. Lutningen representerar &auml;ndringsfrekvensen f&ouml;r h&ouml;jd f&ouml;r varje cell i den digitala h&ouml;jdmodellen (DEM).
+            </p>
+            <br/>
+        </div>
+        <div id="DeriveAspectTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Härled aspekt</h2></td>
+                    <td>
+                    <img src="../images/GUID-D03FF025-0530-4D0D-87A3-B25D6716F8F0-web.png" class="titleImage" alt="H&auml;rled aspekt-verktyg f&ouml;r Portal">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Identifierar lutningens riktning f&ouml;r den h&ouml;gsta graden av skillnad i v&auml;rden fr&aring;n en cell till anslutande celler. Du kan t&auml;nka dig aspekten som lutningsriktningen.
+            </p>
+            <br/>
+        </div>
+        <div id="CreateViewshedRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Skapa siktområde</h2></td>
+                    <td>
+                    <img src="../images/GUID-BB8B8CAF-330E-4C41-9D94-AF4728D0D0F3-web.png" class="titleImage" alt="Verktyget Skapa siktomr&aring;de">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Fastst&auml;ller de platser p&aring; en rasteryta som &auml;r synliga f&ouml;r en upps&auml;ttning observat&ouml;rer.
+            </p>
+            <br/>
+        </div>
+    <div id="ManageDataCategory" class="regularsize">
+        <h2>Hantera data</h2>
+        <hr/>
+        <p>Dessa verktyg anv&auml;nds f&ouml;r b&aring;de den dagliga hanteringen av geografiska data och f&ouml;r att kombinera data inf&ouml;r en analys. 
+            <ul>
+                <li> <b>Extrahera raster</b> klipper ut delar fr&aring;n ett rasterdataset f&ouml;r vidare analys.
+                    
+
+                </li>
+                <li> <b>Mappa om v&auml;rden</b> tilldelar olika v&auml;rden till rasterceller.
+                    
+
+                </li>
+                <li> <b>Konvertera geoobjekt till raster</b> rasteriserar vektordata.
+                    
+
+                </li>
+                <li> <b>Konvertera raster till geoobjekt</b> vektoriserar rasterdata.
+                    
+
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="ExtractRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Extrahera raster</h2></td>
+                    <td>
+                    <img src="../images/GUID-DC9CBCB9-A07C-42D3-A0CB-2FB1483CBF4C-web.png" class="titleImage" alt="Verktyget Extrahera raster f&ouml;r Portal">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Extraherar celler fr&aring;n ett raster baserat p&aring; v&auml;rde, form eller utbredningen av ett annat dataset.
+            </p>
+            <br/>
+        </div>
+        <div id="RemapValuesTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Mappa om värden</h2></td>
+                    <td>
+                    <img src="../images/GUID-4006E442-A60B-469A-891D-5ED442F64CB8-web.png" class="titleImage" alt="Verktyget Mappa om v&auml;rden f&ouml;r Portal">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>&Auml;ndra ett enstaka cellv&auml;rde eller ett omf&aring;ng av cellv&auml;rden till nya v&auml;rden.
+            </p>
+            <br/>
+        </div>
+        <div id="ConvertFeatureToRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Convert Feature to  Raster</h2></td>
+                    <td>
+                    <img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" class="titleImage" alt="Convert Feature to Raster tool">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Skapa ett nytt rasterdataset fr&aring;n ett befintligt geoobjektsdataset.
+            </p>
+            <br/>
+        </div>
+        <div id="ConvertRasterToFeatureTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Konvertera raster till geoobjekt</h2></td>
+                    <td>
+                    <img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" class="titleImage" alt="Verktyget Konvertera raster till geoobjekt">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Skapa ett nytt geoobjektsdataset fr&aring;n ett befintligt rasterdataset.
+            </p>
+            <br/>
+        </div>
+</div>
+</html>

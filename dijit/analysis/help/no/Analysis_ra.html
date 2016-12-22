@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="raToolbox">
+        <p>Rasteranalyse lar deg analysere store rasterdatasett ved hjelp av  ArcGIS Image Server. Dette gj&oslash;r det mulig &aring; analysere mer data raskere ved &aring; utnytte kraften i serveren. Verkt&oslash;yene som for tiden er tilgjengelige gjennom  Portal for ArcGIS p&aring; nettet, er  <b>Summer data</b>, <b>Analyser m&oslash;nstre</b>, <b>Analyser bilde</b>, <b>Analyser terreng</b> og <b>Administrer data</b>.
+        </p>
+    </div>
+    <div id="SummarizeDataCategory" class="smallsize">
+        <h2>Summer data</h2>
+        <hr/>
+        <p>Dette verkt&oslash;ysettet har et verkt&oslash;y for &aring; beregne statistikk for et rasterlag innenfor omr&aring;degrensene du definerer. 
+            <ul>
+                <li> <b>Summer raster innenfor</b> beregner statistikk for rasterceller som faller innenfor definerte omr&aring;degrenser.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="SummarizeRasterWithinTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Summer raster innenfor</h2></td>
+                    <td>
+                    <img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" class="titleImage" alt="Summer raster innenfor-verkt&oslash;yet">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Beregner summeringsstatistikk for rasterceller innenfor definerte omr&aring;der.
+            </p>
+            <p>Noen eksempler p&aring; bruksomr&aring;der er f&oslash;lgende: 
+
+                <ul>
+                    <li>Gitt et lag med vannskilleomr&aring;der og et h&oslash;yderasterlag, beregner du rekkevidden av h&oslash;yder innenfor hvert vannskille for &aring; finne ut hvilke som vil ha den h&oslash;yeste vannf&oslash;ringen.
+                        
+
+                    </li>
+                    <li>Gitt et lag av forvaltningsenheter og et rasterlag av arealbrukskategorier, beregner du ulik arealbruk innenfor hvert forvaltningsomr&aring;de for &aring; identifisere hvilke som krever mest arbeid for &aring; vedta en forvaltningsplan.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzePatternsCategory" class="regularsize">
+        <h2>Analyser mønstre</h2>
+        <hr/>
+        <p>Med disse verkt&oslash;yene kan du identifisere, kvantifisere og visualisere geografiske m&oslash;nstre i dataene dine. 
+
+            <ul>
+                <li> <b>Beregn tetthet</b> tar kjente mengder av et fenomen lager et tetthetskart ved &aring; spre disse mengdene utover et kart.
+                    
+
+                </li>
+                <li> <b>Interpoler punkter</b>-verkt&oslash;yet forutsier verdier p&aring; nye lokasjoner basert p&aring; m&aring;linger fra en samling punkter.
+                    
+
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateDensityRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Beregn tetthet</h2></td>
+                    <td>
+                    <img src="../images/GUID-4EE4838C-E210-43CE-99C7-1A648A18C10B-web.png" class="titleImage" alt="Beregn tetthet-Portal-verkt&oslash;y">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Tetthetsanalysen tar kjente mengder av et fenomen lager et tetthetskart ved &aring; spre disse mengdene utover et kart. Du kan for eksempel bruke dette verkt&oslash;yet til &aring; vise konsentrasjoner av lynnedslag eller tornadoer, tilgang til helsetjenester og befolkningstetthet.
+            </p>
+            <br/>
+        </div>
+        <div id="InterpolatePointsEBKTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Interpoler punkter</h2></td>
+                    <td>
+                    <img src="../images/GUID-06D80BB3-7154-4FAA-9C9B-D665450EF3BC-web.png" class="titleImage" alt="Interpoler punkter-verkt&oslash;yet">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dette verkt&oslash;yet forutsier verdier p&aring; nye lokasjoner basert p&aring; m&aring;linger fra en samling punkter. Verkt&oslash;yet bruker punktdata med verdier p&aring; hvert punkt og returnerer omr&aring;der klassifisert etter predikerte verdier. Du kan bruke dette verkt&oslash;yet til f.eks. &aring; forutsi regnniv&aring;et over et vannskille basert p&aring; m&aring;linger i enkelte regnm&aring;lere.
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzeImageCategory" class="smallsize">
+        <h2>Analyser bilde</h2>
+        <hr/>
+        <p>F&oslash;lgende verkt&oslash;y hjelper deg med &aring; analysere bilder for &aring; bestemme omr&aring;der med vegetasjon. 
+            <ul>
+                <li> <b>Overv&aring;k vegetasjon</b> oppdager vegetasjon i et bilde p&aring; bakgrunn av aritmetiske operasjoner p&aring; b&aring;ndene.
+                    
+
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="MonitorVegetationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Overvåk vegetasjon</h2></td>
+                    <td>
+                    <img src="../images/GUID-7763FCC0-2EA1-463B-98D0-4EBDF6150907-web.png" class="titleImage" alt="Portalverkt&oslash;y for &aring; overv&aring;ke vegetasjon">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Utf&oslash;rer en aritmetisk operasjon p&aring; b&aring;ndene i et flerb&aring;nds rasterlag for &aring; vise informasjon om vegetasjonsdekningen i studieomr&aring;det.
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzeTerrainCategory" class="regularsize">
+        <h2>Analyser terreng</h2>
+        <hr/>
+        <p>Med disse verkt&oslash;yene kan du analysere rasteroverflater. 
+            <ul>
+                <li> <b>Beregn helning</b> beregninger helningen i terrenget.
+                    
+
+                </li>
+                <li> <b>Utled aspekt</b> beregner retningen av den bratteste helningen for hver lokasjon.
+                    
+
+                </li>
+                <li> <b>Opprett synsfelt</b> identifiserer hva som kan ses fra et hvilket som helst punkt i landskapet.
+                    
+
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateSlopeTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Beregn helling</h2></td>
+                    <td>
+                    <img src="../images/GUID-D33862C6-01BB-445E-B0C3-BC8B8C1858DA-web.png" class="titleImage" alt="Beregn hellingsverkt&oslash;y for Portal">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Identifiserer en overflate som viser helningen p&aring; inngangsh&oslash;ydedataene. Hellingen representerer endringstakten for h&oslash;yden for hver celle i den digitale h&oslash;ydemodellen (DEM).
+            </p>
+            <br/>
+        </div>
+        <div id="DeriveAspectTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Utled aspekt</h2></td>
+                    <td>
+                    <img src="../images/GUID-D03FF025-0530-4D0D-87A3-B25D6716F8F0-web.png" class="titleImage" alt="Portalverkt&oslash;y for &aring; utlede aspekt">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Identifiserer skr&aring;ningens retning av maksimal endringsverdi fra hver celle i forhold til naboene. Aspekt kan regnes som skr&aring;ningens retning.
+            </p>
+            <br/>
+        </div>
+        <div id="CreateViewshedRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Opprette Viewshed</h2></td>
+                    <td>
+                    <img src="../images/GUID-BB8B8CAF-330E-4C41-9D94-AF4728D0D0F3-web.png" class="titleImage" alt="Opprett synsfelt-verkt&oslash;y">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Bestemmer lokasjonene p&aring; en rasterflate som er synlige for et sett av observat&oslash;rer.
+            </p>
+            <br/>
+        </div>
+    <div id="ManageDataCategory" class="regularsize">
+        <h2>Administrer data</h2>
+        <hr/>
+        <p>Disse verkt&oslash;yene brukes b&aring;de til daglig administrasjon av geografiske data og til &aring; kombinere data f&oslash;r det utf&oslash;res analyser. 
+            <ul>
+                <li> <b>Trekk ut raster</b> klipper ut deler fra et rasterdatasett for ytterligere analyse.
+                    
+
+                </li>
+                <li> <b>Tilordne verdier p&aring; nytt</b> tilordner andre verdier til rastercellene.
+                    
+
+                </li>
+                <li> <b>Konverter geoobjekt til raster</b> lager raster av vektordata.
+                    
+
+                </li>
+                <li> <b>Konverter raster til geoobjekt</b> lager vektorer av rasterdata.
+                    
+
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="ExtractRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Trekk ut raster</h2></td>
+                    <td>
+                    <img src="../images/GUID-DC9CBCB9-A07C-42D3-A0CB-2FB1483CBF4C-web.png" class="titleImage" alt="Portalverkt&oslash;y for &aring; trekke ut raster">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Trekk ut celler fra en raster som er basert p&aring; verdi, form eller omfanget av et annet datasett.
+            </p>
+            <br/>
+        </div>
+        <div id="RemapValuesTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Tilordne verdier på nytt</h2></td>
+                    <td>
+                    <img src="../images/GUID-4006E442-A60B-469A-891D-5ED442F64CB8-web.png" class="titleImage" alt="Portalverkt&oslash;y for &aring; tilordne verdier p&aring; nytt">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Endre den enkelte celleverdien eller en serie celleverdier til nye verdier.
+            </p>
+            <br/>
+        </div>
+        <div id="ConvertFeatureToRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Convert Feature to  Raster</h2></td>
+                    <td>
+                    <img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" class="titleImage" alt="Convert Feature to Raster tool">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Opprett et nytt rasterdatasett fra et eksisterende geoobjektdatasett.
+            </p>
+            <br/>
+        </div>
+        <div id="ConvertRasterToFeatureTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Konverter raster til geoobjekt</h2></td>
+                    <td>
+                    <img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" class="titleImage" alt="Verkt&oslash;y for &aring; konvertere raster til geoobjekt">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Opprett et nytt geoobjektdatasett fra et eksisterende rasterdatasett.
+            </p>
+            <br/>
+        </div>
+</div>
+</html>

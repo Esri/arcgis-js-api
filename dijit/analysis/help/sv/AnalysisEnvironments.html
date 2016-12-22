@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Miljöinställningar för portalanalys</h2><p/>
+        <h2></h2>
+        <hr/>
+    <p> Milj&ouml;inst&auml;llningar f&ouml;r analyser i Portal for ArcGIS och  ArcGIS Online. 
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="overwriteResult">
+        <div><h2>Skriv över resultatlager</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Alternativ f&ouml;r att skriva &ouml;ver befintliga lager.    Om det eventuellt finns ett befintligt lager med samma namn i inneh&aring;llet n&auml;r det h&auml;r alternativet &auml;r markerat skrivs det befintliga lagret &ouml;ver.
+            </p>
+            <p>
+                <ul>
+                    <li>Markerat &ndash; Om det redan finns ett lager med samma namn i ditt inneh&aring;ll kommer det att skrivas &ouml;ver. Utdata kommer att f&aring; samma koordinatsystem som indata.
+                    </li>
+                    <li>Avmarkerat &ndash; Om namnet som anges f&ouml;r resultatlagret redan finns, intr&auml;ffar ett fel och resultatlagret m&aring;ste f&aring; ett nytt namn innan verktyget kan k&ouml;ras. Det h&auml;r &auml;r standardinst&auml;llningen.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="closeAnalysisWidget">
+        <div><h2>Stäng analyswidgeten efter att analysen körts</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Alternativ f&ouml;r att beh&aring;lla analysdialogrutan &ouml;ppen och aktiverad medan verktyget k&ouml;rs.     Den h&auml;r inst&auml;llningen g&ouml;r att du enkelt kan &auml;ndra analysparametrarna samtidigt som det f&ouml;reg&aring;ende analysjobbet forts&auml;tter att k&ouml;ras.  Analysen &auml;r en process som best&aring;r av flera steg. Genom att h&aring;lla verktygsdialogrutan &ouml;ppen kan du enkelt &auml;ndra parametrarna och k&ouml;ra analysen igen.
+            </p>
+            <p>
+                <ul>
+                    <li>Markerat &ndash; Analysverktygsf&ouml;nstret st&auml;ngs och fokus &aring;terg&aring;r till inneh&aring;llsf&ouml;rteckningen. Det h&auml;r &auml;r standardinst&auml;llningen
+                    </li>
+                    <li>Avmarkerat &ndash; Analysverktygsf&ouml;nstret f&ouml;rblir &ouml;ppet och aktiverat.   
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="storeAnalysisResults">
+        <div><h2>Lagra resultaten av analysen som geoobjektstjänster</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Alternativ f&ouml;r att ange om resultatet av analysen ska skapas som ett geoobjektslager eller som en geoobjektssamling.
+            </p>
+            <p>
+                <ul>
+                    <li>Markerat &ndash; Resultaten av din analys anv&auml;nds f&ouml;r att skapa ett geoobjektslager och ett objekt skapas i ditt inneh&aring;ll. Det h&auml;r &auml;r standardinst&auml;llningen.
+                    </li>
+                    <li>Avmarkerat &ndash; Resultaten av din analys anv&auml;nds f&ouml;r att skapa en geoobjektssamling.    Geoobjektssamlingar lagras i din webbkarta.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputCoordinateSystem">
+        <div><h2>Utdatakoordinatsystem</h2></div>
+        <hr/>
+        <div>
+            <p>Milj&ouml;inst&auml;llning f&ouml;r rasteranalys som anv&auml;nds f&ouml;r att definiera koordinatsystemet f&ouml;r resultatlagret.    
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Samma som indata</b> &ndash; Analysresultatet anv&auml;nder samma koordinatsystem som indata. Det h&auml;r &auml;r standardinst&auml;llningen.
+                    </li>
+                    <li> <b>Enligt vad som anges</b> &ndash; V&auml;lj koordinatsystem f&ouml;r analysresultatet.   N&auml;r det h&auml;r alternativet har valts kan du klicka p&aring; jordglobsikonen f&ouml;r att v&auml;lja alternativ i en lista med k&auml;nda koordinatsystem, eller l&auml;gga till den geografiska referensen WKID i den angivna rutan.
+                    </li>
+                    <li> <b>Lager
+&lt;namn&gt;</b> &ndash; V&auml;lj ett befintligt lager i din webbkarta som ska anv&auml;ndas f&ouml;r att avg&ouml;ra koordinatsystemet f&ouml;r analysresultatet.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingCoordinateSystem">
+        <div><h2>Bearbetande koordinatsystem</h2></div>
+        <hr/>
+        <div>
+            <p>Milj&ouml;inst&auml;llning f&ouml;r GeoAnalytics som anv&auml;nds f&ouml;r att fastst&auml;lla det koordinatsystem som analysen ska anv&auml;nda under k&ouml;rningen.   
+            </p>
+            <p>F&ouml;r en del analyser i GeoAnalytics kr&auml;vs att bearbetningen k&ouml;rs i ett projicerat koordinatsystem.   Alla verktyg som har implementerat gruppering av data eller linj&auml;ra enheter kr&auml;ver ett projicerat koordinatsystem. 
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Samma som indata</b> &ndash; Analysen bearbetas i samma koordinatsystem som indata. Det h&auml;r &auml;r standardinst&auml;llningen.
+                    </li>
+                    <li> <b>Enligt vad som anges</b> &ndash; V&auml;lj koordinatsystem f&ouml;r bearbetningen av analysen. N&auml;r det h&auml;r alternativet har valts kan du klicka p&aring; jordglobsikonen f&ouml;r att v&auml;lja ett alternativ i en lista med k&auml;nda projicerade koordinatsystem, eller l&auml;gga till den geografiska referensen WKID i den angivna rutan.
+                    </li>
+                    <li> <b>Lager
+&lt;namn&gt;</b> &ndash; V&auml;lj ett befintligt lager fr&aring;n webbkartan.  Koordinatsystemet f&ouml;r det lager som valts kommer att anv&auml;ndas f&ouml;r att fastst&auml;lla vilket koordinatsystem som ska anv&auml;ndas f&ouml;r att bearbeta analysen.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingExtent">
+        <div><h2>Utbredning</h2></div>
+        <hr/>
+        <div>
+            <p>Milj&ouml;inst&auml;llning som anv&auml;nds f&ouml;r att fastst&auml;lla den utbredning eller de gr&auml;nser som ska anv&auml;ndas n&auml;r analysen k&ouml;rs. Alla indatageoobjekt som ligger helt inom eller korsar den angivna utbredningen kommer att anv&auml;ndas i analysen.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Standard</b> &ndash; Anv&auml;nder den utbredning som anges av verktyget.
+                    </li>
+                    <li> <b>Enligt vad som anges</b> &ndash; Ange koordinaterna f&ouml;r att definiera utbredningen manuellt.
+                    </li>
+                    <li> <b>Lager
+&lt;namn&gt;</b> &ndash; V&auml;lj ett befintligt lager fr&aring;n webbkartan. Den geografiska utbredningen f&ouml;r det lager som v&auml;ljs kommer att anv&auml;ndas f&ouml;r att fastst&auml;lla den utbredning som anv&auml;nds f&ouml;r att bearbeta analysen. 
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="snapRaster">
+        <div><h2>Snappa raster</h2></div>
+        <hr/>
+        <div>
+            <p>N&auml;r du utf&ouml;r en rasteranalys och st&auml;ller in milj&ouml;n  <b>Snappa raster</b> justeras utbredningen av utdatarasterlagret s&aring; att det matchar celljusteringen f&ouml;r det angivna <b>Snappa raster</b>-lagret.
+            </p>
+        </div>
+    </div>
+    <div id="cellSize">
+        <div><h2>Cellstorlek</h2></div>
+        <hr/>
+        <div>
+            <p>N&auml;r du utf&ouml;r en rasteranalys anger den h&auml;r milj&ouml;n cellstorlek eller uppl&ouml;sning som ska anv&auml;ndas f&ouml;r att skapa utdatarasterlagret. Standardutdatauppl&ouml;sningen avg&ouml;rs av den st&ouml;rsta cellstorleken f&ouml;r indatarasterlagret.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Minimum f&ouml;r indata</b> &ndash; Anv&auml;nd den minsta cellstorleken f&ouml;r alla indatalager.
+                    </li>
+                    <li> <b>Maximum f&ouml;r indata</b> &ndash; Anv&auml;nd den st&ouml;rsta cellstorleken f&ouml;r alla indatalager. Det h&auml;r &auml;r standardinst&auml;llningen.
+                    </li>
+                    <li> <b>Enligt vad som anges</b> &ndash; Ange ett numeriskt v&auml;rde f&ouml;r inst&auml;llning av cellstorleken. Om det h&auml;r alternativet &auml;r valt blir standardv&auml;rdet 1.
+                    </li>
+                    <li> <b>Lager &lt;namn&gt;</b> &ndash; Anger cellstorleken till det valda rasterlagret.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="mask">
+        <div><h2>Maska</h2></div>
+        <hr/>
+        <div>
+            <p> N&auml;r du k&ouml;r en rasteranalys anv&auml;nder du milj&ouml;n <b>Maska</b> f&ouml;r att ange ett lager som ska anv&auml;ndas f&ouml;r att definiera ditt intresseomr&aring;de.   Det &auml;r endast de celler som hamnar inom analysmasken som anv&auml;nds i analys&aring;tg&auml;rden.
+            </p>
+            <ul>
+                <li>Masken kan vara antingen ett raster eller ett geoobjektslager.
+                </li>
+                <li>Om analysmasken &auml;r ett raster kommer alla celler som har ett v&auml;rde att anv&auml;ndas f&ouml;r att definiera masken. Celler i ett maskraster som har v&auml;rdet NoData anses ligga utanf&ouml;r masken och f&aring;r v&auml;rdet NoData i analysresultatlagret. 
+                </li>
+                <li>Om analysmasken &auml;r ett geoobjektslager omvandlas den internt till ett raster vid k&ouml;rningen. D&auml;rf&ouml;r b&ouml;r du se till att  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">Cellstorlek</a> och <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">Snappa raster</a> st&auml;lls in p&aring; l&auml;mpligt s&auml;tt f&ouml;r analysen.
+                </li>
+            </ul>
+             
+        </div>
+    </div>
+</div>
+</html>

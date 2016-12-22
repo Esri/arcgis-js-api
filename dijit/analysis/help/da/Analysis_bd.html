@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="bdToolbox">
+        <p>Big Data Analytics distribuerer analytisk arbejde p&aring; tv&aelig;rs af din ArcGIS GeoAnalytics-server. Dette g&oslash;r dig i stand til at analysere flere data hurtigere ved at udnytte flere maskiners styrke. F&oslash;lgende v&aelig;rkt&oslash;jer er tilg&aelig;ngelige i &oslash;jeblikket:
+            <ul>
+                <li> <b>Aggreg&eacute;r punkter</b>
+                </li>
+                <li> <b>Forbind objekter</b>
+                </li>
+                <li> <b>Rekonstru&eacute;r spor</b>
+                </li>
+                <li> <b>Summ&eacute;r attributter</b>
+                </li>
+                <li> <b>Summ&eacute;r inden for</b>
+                </li>
+                <li> <b>Find lignende steder</b>
+                </li>
+                <li> <b>Beregn t&aelig;thed</b>
+                </li>
+                <li> <b>Find hotspots</b>
+                </li>
+                <li> <b>Opret buffere</b>
+                </li>
+                <li> <b>Kopi&eacute;r til datalager</b>
+                </li>
+            </ul>
+            
+        </p>
+        <p>Big Data Analytics fokuserer p&aring; at analysere store datam&aelig;ngder med v&aelig;gtl&aelig;gning p&aring; b&aring;de spatiale og temporale m&oslash;nstre. 
+        </p>
+    </div>
+    <div id="SummarizeDataCategory" class="largesize">
+        <h2>Summér data</h2>
+        <hr/>
+        <p>Summ&eacute;r data-v&aelig;rkt&oslash;jss&aelig;ttet indeholder v&aelig;rkt&oslash;jer, der beregner samlet antal, l&aelig;ngde, omr&aring;de og basal beskrivende statistik for objekter og deres attributter inden for omr&aring;der eller i n&aelig;rheden af andre objekter.
+            <ul>
+                <li> <b>Aggreg&eacute;r punkter</b> beregner statistik om punkter, der falder inden for angivne omr&aring;der eller beholdere.
+                </li>
+                <li> <b>Forbind objekter</b> beregner statistik om objekter, der deler en geografisk, tidsbestemt eller attributbaseret relation med andre objekter.
+                </li>
+                <li> <b>Rekonstru&eacute;r spor</b> beregner statistik om punkter eller polygoner, der tilh&oslash;rer det samme spor, og rekonstruerer input til spor.
+                </li>
+                <li> <b>Summ&eacute;r attributter</b> beregner statistik om objekt- eller tabeldata, der har f&aelig;lles attributter.
+                </li>
+                <li> <b>Opsumm&eacute;r inden for</b> beregner statistik for omr&aring;deobjekter og -attributter, der overlapper hinanden.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregatePointsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Aggregér punkter</h2></td>
+                    <td>
+                    <img src="../images/GUID-6C1620D9-D176-41FA-8283-833D8B1CCCFC-web.png" class="titleImage" alt="Aggreg&eacute;r punkter">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ved hj&aelig;lp af et lag af punktobjekter og et lag best&aring;ende af enten omr&aring;deobjekter eller beholdere, der er defineret af en bestemt afstand, afg&oslash;r dette v&aelig;rkt&oslash;j, hvilke punkter der falder inden for hvert omr&aring;de eller beholder og beregner statistik om alle punkterne inden for hvert omr&aring;de eller beholder. Du kan v&aelig;lge at benytte tidsintervaller sammen med dette v&aelig;rkt&oslash;j. 
+            </p>
+            <p> For eksempel
+                <ul>
+                    <li>Ved angivelse af punkt-lokationer for forbrydelser kan der f.eks. beregnes antal forbrydelser pr. amt eller andet administrativt distrikt.
+                    </li>
+                    <li>Find h&oslash;jeste og laveste m&aring;nedlige oms&aelig;tning for franchise-lokationer, der benytter 100 km-beholdere.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="JoinFeaturesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Forbind objekter</h2></td>
+                    <td>
+                    <img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" class="titleImage" alt="Forbind objekter">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ved at benytte enten vektorlag eller tabeldata kan du forbinde objekter og poster baseret p&aring; specifikke relationer mellem inputlagene eller tabellerne.  Forbindelserne bestemmes af de spatiale og tidsbestemte relationer samt attributrelationerne, og du kan v&aelig;lge at beregne oversigtsstatistikker.  
+            </p>
+            <p> For eksempel
+                <ul>
+                    <li>Ved angivelse af punktpositioner for kriminelle handlinger sammen med et klokkesl&aelig;t kan du forbinde kriminalitetsdataene med sig selv ved at angive en spatial relation mellem forbrydelser beg&aring;et inden for 1 kilometer fra hinanden og beg&aring;et inden for 1 time i forhold til hinanden med henblik p&aring; at bestemme, om der er en sekvens af kriminelle handlinger, der ligger t&aelig;t p&aring; hinanden i tid og rum.
+                    </li>
+                    <li> Ved angivelse af postnumre med demografiske oplysninger samt omr&aring;deobjekter, der repr&aelig;senterer boliger, kan du forbinde de demografiske oplysninger med boligerne, s&aring; hver bolig nu har disse oplysninger.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="ReconstructTracksTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Rekonstruér spor</h2></td>
+                    <td>
+                    <img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" class="titleImage" alt="Rekonstru&eacute;r spor">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ved at benytte et et tidsafh&aelig;ngigt lag best&aring;ende af enten punkt- eller polygonobjekter, der repr&aelig;senterer et  <code>&oslash;jeblik</code> i tiden, bestemmer dette v&aelig;rkt&oslash;j, hvilke objekter der tilh&oslash;rer et spor, og det arrangerer inputtene i r&aelig;kkef&oslash;lge i tiden. Du kan efter eget valg beregne statistik for inputobjekterne i hvert spor.
+            </p>
+            <p> For eksempel
+                <ul>
+                    <li>Ved angivelse af punktpositioner og tidspunkt for m&aring;linger af orkaner kan du beregne orkanens middel- og maksimumvindhastighed.
+                    </li>
+                    <li>Find h&oslash;jeste og laveste m&aring;nedlige oms&aelig;tning for franchise-lokationer, der benytter 100 km-beholdere.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeAttributesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Summér attributter</h2></td>
+                    <td>
+                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="Summ&eacute;r attributter">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> Ved at benytte enten vektordata eller tabeldata beregner dette v&aelig;rkt&oslash;j statistik for angivne felter.
+            </p>
+            <p> For eksempel
+                <ul>
+                    <li> Ved angivelse af positioner for dagligvarebutikker med feltet <i>COMPANY_NAME</i> summeres butikkerne efter butiksnavn med henblik p&aring; at beregne statistik for hver butik.
+                    </li>
+                    <li>Ved angivelse af en tabel for dagligvarebutikker med felterne  <i>COMPANY_NAME</i> og <i>COUNTY</i> summeres butikkerne efter butiksnavn og region med henblik p&aring; at beregne statistik for hver butik i hver region.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeWithinTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Summér inden for</h2></td>
+                    <td>
+                    <img src="../images/GUID-90E0CB1F-EB97-4752-B2EE-452B7B45475E-web.png" class="titleImage" alt="Summ&eacute;r inden for">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Finder omr&aring;der (og dele af omr&aring;der), hvor to omr&aring;der overlapper og beregner statistik om overlap-omr&aring;det. 
+            </p>
+            <p> For eksempel
+                <ul>
+                    <li>Ved angivelse af et lag med afvandingsomr&aring;der og et lag med arealanvendelsestyper beregnes f.eks. det samlede areal for anvendelsestype pr. afvandingsomr&aring;de. 
+                    </li>
+                    <li>Ved angivelse af et lag med parceller i et amt og et lag med bygr&aelig;nser opsummeres gennemsnitsv&aelig;rdien af ledige parceller i hver by.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="FindLocationsCategory" class="smallsize">
+        <h2>Find steder</h2>
+        <hr/>
+        <p>Disse v&aelig;rkt&oslash;jer bruges til at identificere omr&aring;der, der opfylder en r&aelig;kke kriterier, som du har angivet.   
+            <ul>
+                <li> <b>Find lignende steder</b> finder steder, der mest ligner &eacute;t eller flere referencesteder, baseret p&aring; kriterier, som du angiver.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="FindSimilarLocationsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Find lignende steder</h2></td>
+                    <td>
+                    <img src="../images/GUID-6262A84E-9087-4E48-930E-E9B89FECC836-web.png" class="titleImage" alt="Find lignende steder">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Baseret p&aring; kriterier, du angiver, m&aring;ler Find lignende steder ligheden mellem steder i dit kandidats&oslash;gningslag og et eller flere referencesteder. 
+            </p>
+            <p> For eksempel
+                <ul>
+                    <li>Find de ti butikker, der ligner hinanden mest, ved at unders&oslash;ge antallet af medarbejdere og det &aring;rlige salg.
+                    </li>
+                    <li>Find de 100 byer, der ligner hinanden mest, ved at unders&oslash;ge forholdet mellem befolkningstal, &aring;rlig v&aelig;kst og skattebetaling.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzePatternsCategory" class="smallsize">
+        <h2>Analysér mønstre</h2>
+        <hr/>
+        <p>Disse v&aelig;rkt&oslash;jer hj&aelig;lper dig med at identificere, kvantificere og visualisere geografiske m&oslash;nstre i dine data.  
+            <ul>
+                <li> <b>Beregn t&aelig;thed</b> tager kendte kvantiteter af visse f&aelig;nomener og spreder dem p&aring; kortet.
+                </li>
+                <li> <b>Find hotspots</b> identificer statistisk signifikante klynger i det geografiske m&oslash;nster i dine data.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateDensityTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Beregn tæthed</h2></td>
+                    <td>
+                    <img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" class="titleImage" alt="Calculate Density">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>V&aelig;rkt&oslash;jet Beregn t&aelig;thed opretter et t&aelig;thedskort ud fra punktobjekter ved at sprede kendte kvantiteter af et f&aelig;nomen (repr&aelig;senteret som punktattributter) p&aring; kortet. Resultatet er et lag med omr&aring;der, der repr&aelig;senterer t&aelig;theden.
+            </p>
+            <p> For eksempel
+                <ul>
+                    <li>Beregning af t&aelig;theder af hospitaler inden for en landsdel. Resultatlaget vil vise omr&aring;der med stor eller lille tilg&aelig;ngelighed til hospitaler, og disse oplysninger kan anvendes til at beslutte, hvor der skal bygges nye hospitaler.
+                    </li>
+                    <li>Identifikation af omr&aring;der med h&oslash;j risiko for skovbrande baseret p&aring; steder, hvor der historisk set har v&aelig;ret skovbrande.
+                    </li>
+                    <li>Lokalisering af samfund, der ligger langt fra hovedveje, for at planl&aelig;gge, hvor der skal anl&aelig;gges nye veje.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="FindHotSpotsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Find hotspots</h2></td>
+                    <td>
+                    <img src="../images/GUID-6D600155-AA9B-4F02-AD8B-2E84150AB743-web.png" class="titleImage" alt="Find hotspots">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>V&aelig;rkt&oslash;jet Find hotspots kan bestemme, hvorvidt der er statistisk signifikante klyngedannelser i det rumlige m&oslash;nster for dine data. 
+                <ul>
+                    <li>Indg&aring;r dine punkter (forbrydelser, tr&aelig;er, trafikulykker) virkelig i en klyngedannelse? Hvordan kan du v&aelig;re sikker p&aring; det?
+                    </li>
+                    <li>Har du rent faktisk opdaget et statistisk signifikant hotspot (for forbrug, barned&oslash;delighed, konsekvent h&oslash;je testresultater) eller ville dit kort fort&aelig;lle noget andet, hvis du &aelig;ndrede symboliseringen?
+                    </li>
+                </ul>
+                V&aelig;rkt&oslash;jet Find hotspots kan hj&aelig;lpe dig med en trov&aelig;rdig besvarelse af disse sp&oslash;rgsm&aring;l.
+            </p>
+            <br/>
+        </div>
+    <div id="UseProximityCategory" class="smallsize">
+        <h2>Anvend nærhed</h2>
+        <hr/>
+        <p>Disse v&aelig;rkt&oslash;jer hj&aelig;lper dig med at besvare et af de mest almindelige sp&oslash;rgsm&aring;l i geografisk analyse: Hvad ligger i n&aelig;rheden af hvad?
+            <ul>
+                <li> <b>Opret buffere</b> opretter omr&aring;der med en angivet afstand til objekter.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CreateBuffersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Opret buffere</h2></td>
+                    <td>
+                    <img src="../images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" class="titleImage" alt="Opret buffere">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>En buffer er et omr&aring;de, der d&aelig;kker en given afstand fra et punkt, en linje eller et polygonobjekt.
+            </p>
+            <p> For eksempel
+                <ul>
+                    <li>Ved at benytte line&aelig;re objekter for floder kan du placere enhver flod i en buffer baseret p&aring; en v&aelig;rdi p&aring; 50 gange flodens bredde med henblik p&aring; at bestemme en foresl&aring;et riparisk gr&aelig;nse (omr&aring;det langs flodens bredder).
+                    </li>
+                    <li>Ved angivelse af omr&aring;der, der repr&aelig;senterer lande, kan du placere hvert land i en buffer baseret p&aring; en v&aelig;rdi p&aring; 200 s&oslash;mil med henblik p&aring; at bestemme den maritime 200-s&oslash;miles gr&aelig;nse.  
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="ManageDataCategory" class="smallsize">
+        <h2>Håndtér data</h2>
+        <hr/>
+        <p>Disse v&aelig;rkt&oslash;jer bruges b&aring;de til den daglige h&aring;ndtering af geografiske data og til tabeldata.
+            <ul>
+                <li> <b>Kopi&eacute;r til datalager</b> kopierer data til dit ArcGIS Data Store og opretter et lag i din web-GIS.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CopyToDataStoreTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Kopiér til datalager</h2></td>
+                    <td>
+                    <img src="../images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" class="titleImage" alt="Kopi&eacute;r til datalager">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Kopierer et input-vektorlag eller en tabel til et  ArcGIS Data Store og opretter et lag i din web-GIS. </p>
+            <p> For eksempel
+                <ul>
+                    <li> Kopi&eacute;r en samling <code>.csv</code>-filer i en big data-fildeling til det spatiotemporale datalager for at kunne f&aring; dem vist.
+                    </li>
+                    <li>Kopi&eacute;r de objekter i den aktuelle kortudstr&aelig;kning, der er lagret i det spatiotemporale datalager, til det relationelle datalager.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+</div>
+</html>

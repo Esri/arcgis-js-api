@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Resumir dentro de</h2><p/>
+        <h2><img src="../images/GUID-90E0CB1F-EB97-4752-B2EE-452B7B45475E-web.png" alt="Resumir dentro de"></h2>
+        <hr/>
+    <p>Esta herramienta busca entidades (y partes de entidades) que est&aacute;n dentro de los l&iacute;mites de las &aacute;reas de la primera capa de entrada.   
+        <ul>
+            <li>Dada una capa de l&iacute;mites de cuencas hidrogr&aacute;ficas y una capa de l&iacute;mites de uso del suelo, calcula la superficie total del tipo de uso del suelo para cada cuenca hidrogr&aacute;fica. 
+            </li>
+            <li>Dada una capa de parcelas de un condado y una capa de l&iacute;mites de ciudades, resuma el valor medio de las parcelas vac&iacute;as en cada l&iacute;mite de ciudad.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Si se ha activado  <b>Usar la extensi&oacute;n del mapa actual</b>, solo se analizar&aacute;n las entidades de la capa de entrada y la capa que se va a resumir que est&eacute;n visibles en la extensi&oacute;n de mapa actual.  Si la opci&oacute;n est&aacute; desactivada, se analizar&aacute;n todas las entidades de la capa de entrada y de la capa que se va a resumir, aunque est&eacute;n fuera de la extensi&oacute;n de mapa actual.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="sumWithinLayer">
+        <div><h2>Elegir la capa de áreas para resumir otras entidades dentro de sus límites</h2></div>
+        <hr/>
+        <div>
+            <p>La capa de &aacute;reas que se usar&aacute; para resumir otras entidades que est&aacute;n dentro de sus l&iacute;mites. Puede elegir resumir dentro de una capa de pol&iacute;gono proporcionada por usted o dentro de bins cuadrados o hexagonales generados al ejecutar la herramienta.  Cuando se generan bins, en el caso de  <b>Cuadrado</b>, son la cantidad y las unidades especificadas las que determinan la altura y la longitud del cuadrado. En el caso de <b>Hex&aacute;gono</b>, son la cantidad y las unidades especificadas las que determinan la distancia entre los lados paralelos.
+            </p>
+            <p>Adem&aacute;s de elegir una capa en el mapa, puede elegir  <b>Examinar capas</b> en la parte inferior de la lista desplegable para examinar el contenido del dataset o la capa de entidades de un archivo compartido de Big Data.  
+            </p>
+        </div>
+    </div>
+    <div id="summaryLayer">
+        <div><h2>Elegir la capa para resumir</h2></div>
+        <hr/>
+        <div>
+            <p>Se resumir&aacute;n las entidades de esta capa que est&eacute;n dentro de los l&iacute;mites de entidades de la capa de entrada o de los bins especificados arriba. 
+            </p>
+            <p>Adem&aacute;s de elegir una capa en el mapa, puede elegir  <b>Examinar capas</b> en la parte inferior de la lista desplegable para examinar el contenido del dataset o la capa de entidades de un archivo compartido de Big Data.  
+            </p>
+        </div>
+    </div>
+    <div id="inputBins">
+        <div><h2>Elija una distancia para generar bins y agregarlos</h2></div>
+        <hr/>
+        <div>
+            <p>La distancia utilizada para generar bins.  
+            </p>
+            <p>Se debe definir el  <b>Tama&ntilde;o del bin</b> en el caso de los bins o la <b>Capa de &aacute;rea</b>.
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Agregar utilizando intervalos de tiempo (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Si el tiempo est&aacute; habilitado en la capa de puntos de entrada y es del tipo instante, puede analizar utilizando intervalos de tiempo.  Hay tres par&aacute;metros que puede definir a la hora de utilizar el tiempo:
+                <ul>
+                    <li>  <b>Intervalo de tiempo</b>
+                    </li>
+                    <li> <b>Intervalo de tiempo</b>
+                    </li>
+                    <li> <b>Tiempo de referencia</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Supongamos que tiene datos que representan un a&ntilde;o en el tiempo y que desea analizarlo utilizando intervalos semanales. Para ello, deber&iacute;a definir el  <b>Intervalo de tiempo</b> en <code>1 semana</code>.
+            </p>
+            <p> Supongamos que tiene datos que representan un a&ntilde;o en el tiempo y que desea analizarlo utilizando la primera semana del mes. Para ello, deber&iacute;a definir el <b>Intervalo de tiempo</b> en <code>1 semana</code>, el <b>Per&iacute;odo de tiempo</b> en <code>1 mes</code> y el <b>Tiempo de referencia</b> en <code>1 de enero a las 12:00 am</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>Intervalo de tiempo para agregar</h2></div>
+        <hr/>
+        <div>
+            <p>Intervalo de tiempo utilizado para segmentar los datos. El intervalo de tiempo se puede utilizar solo o junto con los par&aacute;metros  <b>Per&iacute;odo de tiempo</b> o <b>Tiempo de referencia</b>.
+            </p>
+            <p> Si quisiera crear intervalos de tiempo que se produjeran cada lunes de 9:00 a.m. a 10:00 a.m., el <b>Intervalo de tiempo</b> deber&iacute;a ser <code>1 hora</code>, el <b>Per&iacute;odo de tiempo</b> deber&iacute;a ser <code>1 semana</code> y el <b>Tiempo de referencia</b> deber&iacute;a ser <code>9:00:00 a.m. el lunes</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>Período de tiempo para agregar</h2></div>
+        <hr/>
+        <div>
+            <p> El per&iacute;odo utilizado para calcular un intervalo de tiempo. El <b>Per&iacute;odo de tiempo</b> se puede utilizar solo o junto con <b>Intervalo de tiempo</b>, con <b>Tiempo de referencia</b>, o con ambos: <b>Intervalo de tiempo</b> y <b>Tiempo de referencia</b>.
+            </p>
+            <p> Si quisiera crear intervalos de tiempo que se produjeran cada lunes de 9:00 a.m. a 10:00 a.m., el <b>Intervalo de tiempo</b> deber&iacute;a ser <code>1 hora</code>, el <b>Per&iacute;odo de tiempo</b> deber&iacute;a ser <code>1 semana</code> y el <b>Tiempo de referencia</b> deber&iacute;a ser <code>9:00:00 a.m. el lunes</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Tiempo de referencia utilizado para alinear el intervalo de tiempo</h2></div>
+        <hr/>
+        <div>
+            <p>La fecha y hora utilizadas para alinear el intervalo de tiempo. El  <b>Per&iacute;odo de tiempo</b> empezar&aacute; a partir del tiempo de referencia y continuar&aacute; hacia atr&aacute;s bas&aacute;ndose tambi&eacute;n en este tiempo de referencia.
+            </p>
+            <p> Si quisiera crear intervalos de tiempo que se produjeran cada lunes de 9:00 a.m. a 10:00 a.m., el <b>Intervalo de tiempo</b> deber&iacute;a ser <code>1 hora</code>, el <b>Per&iacute;odo de tiempo</b> deber&iacute;a ser <code>1 semana</code> y el <b>Tiempo de referencia</b> deber&iacute;a ser <code>9:00:00 a.m. el lunes</code>.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Agregar estadísticas desde la capa que se va a resumir (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p> Puede calcular estad&iacute;sticas sobre las entidades resumidas. En los campos num&eacute;ricos puede calcular lo siguiente:
+                <ul>
+                    <li>Calcular
+                    </li>
+                    <li>Media
+                    </li>
+                    <li>M&iacute;n.
+                    </li>
+                    <li>M&aacute;x.
+                    </li>
+                    <li>Rango
+                    </li>
+                    <li>Varianza
+                    </li>
+                    <li>Desviaci&oacute;n est&aacute;ndar
+                    </li>
+                </ul>
+                
+            </p>
+            <p>En los campos de cadenas de caracteres puede calcular lo siguiente:
+                <ul>
+                    <li>Calcular
+                    </li>
+                    <li>Cualquiera: esta estad&iacute;stica es una muestra aleatoria del valor de una cadena de caracteres en el campo especificado.
+                    </li>
+                </ul>
+                Todas las estad&iacute;sticas se calculan sobre valores no nulos. La capa resultante contendr&aacute; un nuevo campo para cada estad&iacute;stica calculada. Se puede agregar cualquier n&uacute;mero de estad&iacute;sticas eligiendo un atributo y una estad&iacute;stica. 
+            </p>
+            <p>Adem&aacute;s de estas estad&iacute;sticas, se calcular&aacute;n estad&iacute;sticas proporcionales sobre todos los campos num&eacute;ricos:
+                <ul>
+                    <li>Recuento: el recuento de cada campo multiplicado por la proporci&oacute;n de la capa de resumen dentro de los pol&iacute;gonos. 
+                    </li>
+                    <li>Suma: la suma de los valores ponderados de cada campo. Donde la ponderaci&oacute;n aplicada es la proporci&oacute;n de la capa de resumen dentro de los pol&iacute;gonos.
+                    </li>
+                    <li>Valor medio: el valor medio ponderado de los valores de cada campo. Donde la ponderaci&oacute;n aplicada es la proporci&oacute;n de la capa de resumen dentro de los pol&iacute;gonos.
+                    </li>
+                    <li>Valor m&iacute;nimo: el valor m&iacute;nimo de los valores ponderados de cada campo. Donde la ponderaci&oacute;n aplicada es la proporci&oacute;n de la capa de resumen dentro de los pol&iacute;gonos.
+                    </li>
+                    <li>Valor m&aacute;ximo: el valor m&aacute;ximo de los valores ponderados de cada campo. Donde la ponderaci&oacute;n aplicada es la proporci&oacute;n de la capa de resumen dentro de los pol&iacute;gonos.
+                    </li>
+                    <li>Rango: la diferencia entre los valores ponderados m&iacute;nimo y m&aacute;ximo.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Dependiendo de los tipos de entidades que est&eacute; resumiendo se calcular&aacute; el recuento total de puntos cercanos, la longitud total de las l&iacute;neas o el &aacute;rea total.
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>Referencia espacial (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>Se trata de un par&aacute;metro temporal para una versi&oacute;n preliminar que permite definir la referencia espacial de procesamiento. En muchas herramientas de Big Data es necesario utilizar un sistema de coordenadas proyectadas como referencia espacial para el procesamiento. De forma predeterminada, la herramienta utilizar&aacute; el sistema de coordenadas de entrada, pero fallar&aacute; si se trata de un sistema de coordenadas geogr&aacute;ficas. Para definir un sistema de coordenadas proyectadas, introduzca el WKID. Por ejemplo,  <b>Web Mercator</b> se introducir&iacute;a como <code>3857</code>.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Elija el data store</h2></div>
+        <hr/>
+        <div>
+            <p>Se trata de un par&aacute;metro temporal para una versi&oacute;n preliminar que permite definir el data store donde se guardar&aacute;n los resultados. Ambos data stores forman parte de  ArcGIS Data Store. Si selecciona el data store espaciotemporal pero no tiene ninguno instalado, la herramienta fallar&aacute;. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nombre de capa de resultados</h2></div>
+        <hr/>
+        <div>
+            <p> Este es el nombre de la capa que se crear&aacute; en <b>Mi contenido</b> y se agregar&aacute; al mapa.  El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, la herramienta fallar&aacute;.
+            </p>
+            <p>En el cuadro desplegable  <b>Guardar el resultado en</b>, puedes especificar el nombre de una carpeta de <b>Mi contenido</b> en la que se guardar&aacute; el resultado.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

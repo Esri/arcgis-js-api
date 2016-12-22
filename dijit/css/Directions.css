@@ -90,7 +90,7 @@
 }
 .dj_rtl .simpleDirections .LocateButton{
     left: 2px;
-    right: initial;
+    right: auto;
 }
 .simpleDirections .LocateButton .zoomLocateButton {
     background-color: rgba(255, 255, 255, 1);
@@ -348,25 +348,149 @@
     display: block;
     text-align: right;
     float: right;
-    margin: 0 10px 0 10px;
+    margin: 0 10px 0 2px;
+    padding: 3px;
+    border-radius: 3px 3px 0 0;
 }
 .dj_rtl .simpleDirections .esriStopsOptionsEnabled .esriStopsOptionsButton {
+    margin: 0 2px 0 10px;
     text-align: left;
     float: left;
 }
+.simpleDirections .esriStopsOptionsEnabled .esriStopsOptionsOpen{
+    background-color: #ebebeb;
+}
+.simpleDirections .startTimeMenuButton{
+    padding: 3px;
+    margin: 0 6px;
+    float: left;
+}
+.dj_rtl .simpleDirections .startTimeMenuButton{
+    float: right;
+}
+.simpleDirections .startTimeMenuButtonDisabled,
+.simpleDirections .startTimeMenuButtonDisabled:hover{
+    text-decoration: none;
+    color: #a0a0a0;
+}
+.simpleDirections .startTimeMenu{
+    display: none;
+    background-color: white;
+    position: absolute;
+    z-index: 1000;
+    border: 1px solid #a0a0a0;
+    line-height: 22px;
+    margin-left: 10px;
+    padding: 5px 0;
+    text-transform: none;
+}
+.simpleDirections .startTimeMenuItem{
+    padding: 3px 15px;
+}
+.simpleDirections .departAtButton{
+    margin: 0 10px;
+    border-radius: 3px 3px 0 0;
+    background-color: #ebebeb;
+}
+.simpleDirections .departAtContainer{
+    display: none;
+    white-space: nowrap;
+    margin: 0 10px;
+    background-color: #ebebeb;
+    border-radius: 0 0 3px 3px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    -ms-flex-align: center;
+    -ms-flex-pack: start;
+    -ms-flex-wrap: wrap;
+}
+.simpleDirections .departAtContainerVisible{
+    display: flex;
+    display: -ms-flexbox;
+    display: block\9;
+    white-space: normal\9;
+}
+.simpleDirections div[id$="_directionsDepartAtTime"],
+.simpleDirections div[id$="_directionsDepartAtDate"]{
+    margin: 5px;
+    min-width: 6em;
+}
+div[id$="_directionsDepartAtTime_dropdown"] .dijitTimePickerMarker{
+    font-size: 0.8em;
+}
+div[id$="_directionsDepartAtTime_dropdown"] .dijitTimePickerMarker,
+div[id$="_directionsDepartAtTime_dropdown"] .dijitTimePickerTick{
+    background: white;
+}
+div[id$="_directionsDepartAtTime_dropdown"] .dijitTimePickerMarker:hover,
+div[id$="_directionsDepartAtTime_dropdown"] .dijitTimePickerTick:hover {
+    background: #e2f1fc;
+    color: #444;
+}
+div[id$="_directionsDepartAtTime_dropdown"] .dijitTimePickerMarkerSelected,
+div[id$="_directionsDepartAtTime_dropdown"] .dijitTimePickerTickSelected {
+    background: #5cace1;
+    color: white;
+}
+div[id$="_directionsDepartAtTime_dropdown"],
+div[id$="_directionsDepartAtDate_dropdown"]{
+    webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+}
+div[id$="_directionsDepartAtDate_dropdown"] .dijitCalendar,
+div[id$="_directionsDepartAtDate_dropdown"] .dijitCalendar:hover,
+div[id$="_directionsDepartAtDate_dropdown"] .dijitCalendarDayLabelTemplate {
+    background: white;
+    border-radius: 0;
+    font-size: 0.7em;
+}
+div[id$="_directionsDepartAtDate_dropdown"] .dijitCalendarMonthContainer{
+    background: white;
+    font-size: 0.8em;
+}
+div[id$="_directionsDepartAtDate_dropdown"] .dijitCalendarYearContainer{
+    background: white;
+    font-size: 0.85em;
+}
+div[id$="_directionsDepartAtDate_popup_mddb_mdd"]{
+    font-size: 0.75em;
+}
+
+.simpleDirections .esriTrafficAvailabilityButton{
+    background: url(../images/infoimg.png) no-repeat center;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    top: 3px;
+    left: 5px;
+    position: relative;
+    cursor: pointer;
+}
+.dj_rtl .simpleDirections .esriTrafficAvailabilityButton{
+    left: 0
+}
+
 .simpleDirections .esriStopsOptionsMenu {
     display: none;
-    margin: 10px 10px;
+    margin: 0 10px;
+    border-radius: 0 0 3px 3px;
+    padding: 6px 8px 0 6px;
+    background-color: #ebebeb;
 }
 .simpleDirections .esriStopsOptionsMenu input {
     margin: 0 5px 0 0;
+}
+.simpleDirections .esriSaveContainer{
+    background-color: white;
 }
 .dj_rtl .simpleDirections .esriStopsOptionsMenu input {
     margin: 0 0 0 5px;
 }
 .simpleDirections .esriOptionsUnitsContainer {
     float: left;
-    margin: 0 10px 10px 0;
+    margin: 0 10px 5px 0;
     white-space: nowrap;
     min-width: 77px;
 }
@@ -397,6 +521,7 @@
     background-color: #5cace1;
     border: 0;
     float: left;
+    margin-bottom: 5px;
 }
 .simpleDirections .esriSaveButton:hover {
     color: #444;
@@ -554,6 +679,11 @@
     padding: 20px 5px 0px 0px;
     vertical-align: top;
     border-bottom: 1px solid #b5bcc7;
+}
+.simpleDirections .esriRouteTextColumnCumulative{
+    font-size: small;
+    font-weight: bold;
+    padding-top: 10px;
 }
 .simpleDirections .esriRoutesTooltip .esriRouteIconColumn {
     border: none;
@@ -718,35 +848,57 @@
     cursor: pointer;
     outline: 0;
 }
-.simpleDirections .esriDMTStopLast .esriRouteIconColumn,
-.simpleDirections .esriDMTStopLast .esriRouteTextColumn {
-    border-bottom: 0;
-}
 .simpleDirections .esriRouteZoom:hover{
     background: #e2f1fc;
 }
 .simpleDirections .esriRouteZoom:focus {
     background: #5cace1;
-}
-.simpleDirections .esriRouteInfo {
-    color: #666;
+    color: white;
 }
 .simpleDirections .esriRouteZoom:focus .esriRouteInfo,
 .simpleDirections .esriRouteZoom:focus .esriRouteInfo strong {
     color: #ffffff;
+}
+.simpleDirections .esriRouteZoom:focus .esriRouteLength{
+    background: #5cace1;
+    color: #ffffff;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.simpleDirections .esriRoutesTooltip .esriRouteZoom:focus .esriRouteInfo,
+.simpleDirections .esriRoutesTooltip .esriRouteZoom:focus .esriRouteInfo strong,
+.simpleDirections .esriRoutesTooltip .esriRouteZoom,
+.simpleDirections .esriRoutesTooltip .esriRouteZoom:hover,
+.simpleDirections .esriRoutesTooltip .esriRouteZoom:focus,
+.simpleDirections .esriRoutesTooltip .esriRouteZoom:focus .esriRouteLength,
+.simpleDirections .esriPrintDirections .esriRouteZoom:focus .esriRouteInfo,
+.simpleDirections .esriPrintDirections .esriRouteZoom:focus .esriRouteInfo strong,
+.simpleDirections .esriPrintDirections .esriRouteZoom,
+.simpleDirections .esriPrintDirections .esriRouteZoom:hover,
+.simpleDirections .esriPrintDirections .esriRouteZoom:focus,
+.simpleDirections .esriPrintDirections .esriRouteZoom:focus .esriRouteLength{
+    cursor: default;
+    background: transparent;
+    color: #444;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+}
+.simpleDirections .esriRouteInfo {
+    color: #444;
+}
+.simpleDirections .esriPrintDirections .esriRouteInfo {
+    display: flex;
+    justify-content: space-between;
+    line-height: 1.5em;
 }
 .simpleDirections .esriRouteInfo strong {
     color: #444;
 }
 .simpleDirections .esriDMTStopDestination .esriRouteInfo {
     border: 0;
-}
-.simpleDirections .esriRouteZoom:focus .esriRouteLength{
-    background: #5cace1;
-    color:#ffffff;
-    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 }
 .simpleDirections .esriRouteLength {
     font-size: 11px;
@@ -756,12 +908,22 @@
     display: inline;
     padding: 0 5px 0 5px;
     border-radius: 3px;
-    background-color: #f0f0f0;
+    background-color: #ffffff;
 }
 .simpleDirections .esriRoutesTooltip .esriRouteLength,
 .simpleDirections .esriPrintDirections .esriRouteLength{
     top: 0;
     background: transparent;
+    white-space: nowrap;
+    min-width: 0;
+}
+.simpleDirections .esriPrintDirections .esriRouteLength{
+    width: 25%;
+    text-align: right;
+}
+.simpleDirections .esriPrintDirections .esriRouteTextColumn {
+    padding: 10px 5px;
+    vertical-align: middle;
 }
 .simpleDirections .esriResultsContainer {
     background: #fff;
@@ -775,10 +937,6 @@
     *height: 110px;
     background: #fff url(../images/Directions/loading-32.gif) no-repeat center 70px;
 }
-.simpleDirections .esriResultsRouteName {
-    margin: 10px 0;
-    display: none;
-}
 .simpleDirections .esriRoutesContainer {
     margin: 0;
     zoom: 1;
@@ -787,24 +945,83 @@
     opacity: 0.3;
 }
 .simpleDirections .esriResultsSummary {
-    font-weight: 700;
-    text-align: center;
-    font-size: 14px;
     line-height: 18px;
-    padding: 10px;
-    display: block;
     color: #444;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-around;
+    background: #ebebeb;
+    cursor: pointer;
+    padding: 0 5px;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
-.simpleDirections .esriResultsButtonsContainer {
-    margin: 10px;
+.simpleDirections .esriResultsSummary:hover {
+    background: #f3f3f3;
 }
-.simpleDirections .esriResultsViewFullRoute {
-    float: left;
-    line-height: 26px;
+.simpleDirections .esriPrintHeader .esriResultsSummary{
+    background: white;
+    font-size: 1.5em;
+    line-height: 1.25em;
+    cursor: default;
 }
-.dj_rtl .simpleDirections .esriResultsViewFullRoute {
-    float: right;
+.simpleDirections .esriImpedanceCost{
+    font-size: 1.75em;
+    font-weight: bold;
+    line-height: 30px;
+    padding: 10px 0;
+    text-align: center;
 }
+.simpleDirections .esriImpedanceCostHrMin{
+    display: flex;
+    font-size: 0.5em;
+    line-height: 18px;
+    justify-content: space-around;
+    display: -ms-flexbox;
+    -ms-flex-align: center;
+    -ms-flex-pack: center;
+    direction: ltr;
+    white-space: nowrap;
+}
+.simpleDirections .esriImpedanceCostHr,
+.simpleDirections .esriImpedanceCostMin{
+    display: inline\9;
+    margin-left: 3px;
+    margin-right: 3px;
+    unicode-bidi: embed;
+}
+.dj_rtl .simpleDirections .esriImpedanceCostHr,
+.dj_rtl .simpleDirections .esriImpedanceCostMin{
+    direction: rtl;
+    display: inline\9;
+    margin-left: 3px\9;
+    margin-right: 3px\9;
+}
+.simpleDirections .esriImpedanceCostDist{
+    font-size: 0.5em;
+}
+.simpleDirections .esriOtherCosts{
+    font-size: 0.9em;
+    text-align: center\9;
+}
+.simpleDirections .esriTrafficLabel{
+    font-weight: bold;
+}
+.simpleDirections .esriTrafficLabelHidden{
+    display: none;
+}
+.simpleDirections .esriTrafficLabelNone{
+    color: #aaa;
+    font-weight: normal;
+}
+.simpleDirections .esriTrafficLabelHeavy{
+    color: #c80000;
+}
+.simpleDirections .esriTrafficLabelLight{
+    color: #00d700;
+}
+
 .simpleDirections .esriResultsPrint {
     float: left;
     background-image: url(../images/Directions/print.png);
@@ -1091,8 +1308,9 @@
 }
 .simpleDirections .esriPrintName {
     font-weight: 700;
-    font-size: 120%;
+    font-size: 2em;
     margin: 10px 0 5px;
+    text-align: center;
 }
 .simpleDirections .esriPrintStopLabel {
     color: #000;
@@ -1111,8 +1329,7 @@
 }
 .simpleDirections #print_area {
     margin: 0 0 10px;
-    max-width: 100%;
-    min-width: 20%;
+    width: 100%;
 }
 .simpleDirections #print_helper {
     display: none;
@@ -1128,5 +1345,7 @@
     width: 100%;
 }
 .simpleDirections .esriPrintFooter {
-    font-size: 80%;
+    font-size: 0.75em;
+    color: #a0a0a0;
+    padding: 10px 2px;
 }

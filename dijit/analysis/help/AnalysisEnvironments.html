@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Portal Analysis Environment Settings</h2><p/>
+        <h2></h2>
+        <hr/>
+    <p> Environment settings for analysis in Portal for ArcGIS and  ArcGIS Online. 
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="overwriteResult">
+        <div><h2>Overwrite result layer</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Option to overwrite existing layers.    When checked, if a layer with the same name already exists within your contents, it will be overwritten.
+            </p>
+            <p>
+                <ul>
+                    <li>Checked&mdash;If a layer with the same name already exists within your contents, it will be overwritten. The output will have the same coordinate system as the
+input.
+                    </li>
+                    <li>Unchecked&mdash;If the result layer name provided already exists, an error will occur and the result layer must be renamed before tool can be executed. This is the default.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="closeAnalysisWidget">
+        <div><h2>Close analysis widget after running analysis</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Option to keep the analysis dialog open and enabled while the tool is processing.     This setting will allow you easily make modifications to your analysis parameters while the previous analysis job continues to run.  Analysis is an iterative process and by keeping the tool dialog open, it allows you to easily make parameter changes and rerun your analysis.
+            </p>
+            <p>
+                <ul>
+                    <li>Checked&mdash;The analysis tool window will close and focus will be returned to the table of contents. This is the default
+                    </li>
+                    <li>Unchecked&mdash;The analysis tool window will remain open and enabled.   
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="storeAnalysisResults">
+        <div><h2>Store analysis results as feature services</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Option to specify whether the result of your analysis will be created as a feature layer or as a feature collection.
+            </p>
+            <p>
+                <ul>
+                    <li>Checked&mdash;The results of your analysis will be create a feature layer and an item will be created in your contents. This is the default.
+                    </li>
+                    <li>Unchecked&mdash;The results of your analysis will create a feature collection.    Feature collections are stored within your web map.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputCoordinateSystem">
+        <div><h2>Output coordinate system</h2></div>
+        <hr/>
+        <div>
+            <p>Environment setting for raster analysis used to define   the  coordinate system of the result layer.    
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Same as Input</b>&mdash;The  result of your analysis will be in the same coordinate system  as the
+input. This is the default.
+                    </li>
+                    <li> <b>As specified</b>&mdash;Choose the coordinate system for the results of your analysis.   When this option is selected, click the globe icon to select from a list of known coordinate systems or add the spatial reference WKID in the box provided.
+                    </li>
+                    <li> <b>Layer
+&lt;name&gt;</b>&mdash;Choose an existing layer in your web map  that will  be used to determine the coordinate system of the result of your analysis.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingCoordinateSystem">
+        <div><h2>Processing coordinate system</h2></div>
+        <hr/>
+        <div>
+            <p>Environment setting for GeoAnalytics  used to determine the coordinate system your analysis will use during  execution of the analysis.   
+            </p>
+            <p>For GeoAnalytics, some analysis requires
+that  processing be executed in a projected coordinate system.   Any tool that has implemented binning of data or linear units requires a projected coordinate system. 
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Same as input</b>&mdash;Your analysis will be processed in the same coordinate system  as the
+input. This is the default.
+                    </li>
+                    <li> <b>As specified</b>&mdash;Choose the coordinate system to process your analysis.   When this option is selected, click the globe icon to select from a list of known projected coordinate systems or add the spatial reference WKID in the box provided.
+                    </li>
+                    <li> <b>Layer
+&lt;name&gt;</b>&mdash;Choose an existing layer from your web map.  The coordinate system of the layer chosen will be used to determine the coordinate system that will be used to process your analysis.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingExtent">
+        <div><h2>Extent</h2></div>
+        <hr/>
+        <div>
+            <p>Environment setting used to determine the extent or boundary that will be used during execution of the analysis.  All input features that are completely within or that intersect the specified extent will be used in the analysis.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Default</b>&mdash;Uses the extent provided by the tool.
+                    </li>
+                    <li> <b>As specified</b>&mdash;Manually enter the coordinates to define the extent.
+                    </li>
+                    <li> <b>Layer
+&lt;name&gt;</b>&mdash;Choose an existing layer from  your web map. The spatial extent of the layer chosen will be used to determine the extent used to process your analysis. 
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="snapRaster">
+        <div><h2>Snap Raster</h2></div>
+        <hr/>
+        <div>
+            <p>When performing raster analysis,  setting the   <b>Snap Raster</b> environment
+will adjust the extent of the output raster layer  so it  matches the
+cell alignment of the specified <b>Snap Raster</b> layer.
+            </p>
+        </div>
+    </div>
+    <div id="cellSize">
+        <div><h2>Cell Size</h2></div>
+        <hr/>
+        <div>
+            <p>When performing raster analysis, this environment sets the cell size or resolution
+that will be used to create the output raster layer. The default output resolution is determined by the
+largest cell size of the input raster layer.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Minimum of Inputs</b>&mdash;Use the smallest cell size of all input
+layers.
+                    </li>
+                    <li> <b>Maximum of Inputs</b>&mdash;Use the largest cell size of all input
+layers. This is the default.
+                    </li>
+                    <li> <b>As specified</b>&mdash;Specify a numeric value to set the cell size. If this is selected, the default
+value is 1.
+                    </li>
+                    <li> <b>Layer &lt;name&gt;</b>&mdash;Sets
+the cell size to the raster layer chosen.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="mask">
+        <div><h2>Mask</h2></div>
+        <hr/>
+        <div>
+            <p> When performing raster analysis, use the <b>Mask</b> environment  to specify a layer that will be used to define your area of interest.   Only those cells that fall within the analysis mask will be considered  in the
+analysis operation.
+            </p>
+            <ul>
+                <li>The mask can be either a raster
+or a feature layer.
+                </li>
+                <li>If the analysis mask is a raster, all cells
+that have a value will be considered to define the mask. Cells in a
+mask raster that are  NoData will be considered to be outside the mask and
+will be NoData in the analysis result layer.
+
+                </li>
+                <li>If the analysis mask is
+a feature layer, it will internally be converted to a raster on
+execution. For this reason, you should take care to ensure that
+the  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">Cell Size</a> and <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">Snap Raster</a> are set appropriately for
+your analysis.
+                </li>
+            </ul>
+             
+        </div>
+    </div>
+</div>
+</html>

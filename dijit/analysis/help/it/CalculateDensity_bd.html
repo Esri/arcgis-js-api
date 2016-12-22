@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Calcolo densità</h2><p/>
+        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Calculate Density"></h2>
+        <hr/>
+    <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas classified from least dense to most dense.   
+
+    </p>
+    <p>For point input, each point should represent the location of some event or incident, and the result layer represents a count of the incident per unit area.  A higher density value in a new location means that there are more points near that location.  In many cases, the result layer can be interpreted as a risk surface for future events. For example, if the input points represent locations of lightning strikes, the result layer can be interpreted as a risk surface for future lightning strikes.
+    </p>
+    <p>Other use cases of this tool include the following:
+        <ul>
+            <li>Creating crime-density maps to help police departments properly allocate resources to high crime areas.
+            </li>
+            <li>Calculating densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to decide where new hospitals should be built.
+            </li>
+            <li>Identifying areas that are at high risk of forest fires based on historical locations of forest fires.
+            </li>
+            <li>Locating communities that are far from major highways in order to plan where new roads should be constructed.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Scegli un layer di punti in base al quale calcolare la densità</h2></div>
+        <hr/>
+        <div>
+            <p>The point layer on which the density will be calculated.
+            </p>
+            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Sfoglia layer</b> alla base dell'elenco a discesa per cercare una dataset di condivisione file Big Data o un feature layer.  
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>Scegliere uno o più campi su cui calcolare la densità</h2></div>
+        <hr/>
+        <div>
+            <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
+            </p>
+            <p>The density for the count of points will always be calculated.   If no fields are selected, each location will be assumed to represent a single count.
+            </p>
+        </div>
+    </div>
+    <div id="binType">
+        <div><h2>Scegli una forma contenitore</h2></div>
+        <hr/>
+        <div>
+            <p>The shape of bins that points are aggregated into and used for the density calculation.
+            </p>
+        </div>
+    </div>
+    <div id="binSizing">
+        <div><h2>Seleziona le dimensioni contenitore per i calcoli di densità</h2></div>
+        <hr/>
+        <div>
+            <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
+            </p>
+        </div>
+    </div>
+    <div id="weight">
+        <div><h2>Seleziona la ponderazione densità da applicare</h2></div>
+        <hr/>
+        <div>
+            <p>The type of weighting applied to the density calculation. There are two options:
+                <ul>
+                    <li> <b>Uniform</b>&mdash;This calculates a magnitude per area.
+                    </li>
+                    <li> <b>Kernel</b>&mdash;Applies a kernel function to fit a smooth tapered surface to each point.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="neighborhood">
+        <div><h2>Seleziona le dimensioni del confine</h2></div>
+        <hr/>
+        <div>
+            <p>The size of the area used to calculate the density. The neighborhood size must be larger than the bin size.
+            </p>
+        </div>
+    </div>
+    <div id="areaUnits">
+        <div><h2>Scegli le unità di output per la densità</h2></div>
+        <hr/>
+        <div>
+            <p>The desired output units of the density values. By default, this is set to the units in your map (for example, square meters). If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Calcolare la densità usando periodi di tempo (facoltativo)</h2></div>
+        <hr/>
+        <div>
+            <p>Se il layer di punti di input &egrave; abilitato per variazioni temporali ed &egrave; di tipo istante, &egrave; possibile eseguire l'analisi utilizzando i periodi di tempo.  Sono disponibili tre parametri da impostare quando si utilizza il tempo:
+                <ul>
+                    <li>  <b>Intervallo temporale</b>
+                    </li>
+                    <li> <b>Passaggio temporale</b>
+                    </li>
+                    <li> <b>Ora di riferimento</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Si supponga di avere dati che rappresentano un anno e che si desidera eseguire un'analisi utilizzando intervalli settimanali. A tal fine, impostare  <b>Intervallo temporale</b> su <code>1 settimana</code>.
+            </p>
+            <p> Si supponga di avere dati che rappresentano un anno e che si desidera eseguire un'analisi utilizzando la prima settimana del mese. A tale fine, impostare <b>Intervallo temporale</b> su <code>1 settimana</code>, <b>Passaggio temporale</b> su <code>1 mese</code> e <b>Tempo di riferimento</b> su <code>1 gennaio alle ore 12.00</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>Intervallo di tempo su cui calcolare la densità</h2></div>
+        <hr/>
+        <div>
+            <p>Intervallo di tempo utilizzato per suddividere i dati. L'intervallo di tempo pu&ograve; essere utilizzato da solo o insieme al parametro  <b>Passaggio temporale</b> o <b>Tempo di riferimento</b>.
+            </p>
+            <p> Per creare periodi di tempo che hanno luogo tutti i luned&igrave; dalle 9 alle 10, impostare <b>Intervallo temporale</b> su <code>1 ora</code>, <b>Passaggio temporale</b> su <code>1 settimana</code> e <b>Tempo di riferimento</b> su <code>luned&igrave; ore 9</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>Passaggio temporale su cui calcolare la densità</h2></div>
+        <hr/>
+        <div>
+            <p> Il passaggio utilizzato per calcolare un periodo di tempo. <b>Passaggio temporale</b> pu&ograve; essere utilizzato da solo o insieme al parametro <b>Intervallo temporale</b>, con <b>Tempo di riferimento</b> oppure sia con <b>Intervallo temporale</b> che con <b>Tempo di riferimento</b>.
+            </p>
+            <p> Per creare periodi di tempo che hanno luogo tutti i luned&igrave; dalle 9 alle 10, impostare <b>Intervallo temporale</b> su <code>1 ora</code>, <b>Passaggio temporale</b> su <code>1 settimana</code> e <b>Tempo di riferimento</b> su <code>luned&igrave; ore 9</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Tempo di riferimento utilizzato per allineare il periodo di tempo</h2></div>
+        <hr/>
+        <div>
+            <p>La data e l'ora utilizzate per allineare il periodo di tempo.  <b>Passaggio temporale</b> inizier&agrave; e continuer&agrave; all'indietro dal tempo di riferimento.
+            </p>
+            <p> Per creare periodi di tempo che hanno luogo tutti i luned&igrave; dalle 9 alle 10, impostare <b>Intervallo temporale</b> su <code>1 ora</code>, <b>Passaggio temporale</b> su <code>1 settimana</code> e <b>Tempo di riferimento</b> su <code>luned&igrave; ore 9</code>.
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>Riferimento spaziale (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>Questo &egrave; un parametro temporaneo per la versione provvisoria che consente di impostare il riferimento spaziale per l'elaborazione. Molti strumenti Big Data richiedono l'utilizzo di un sistema di coordinate proiettato come riferimento spaziale per l'elaborazione. Per impostazione predefinita, lo strumento utilizzer&agrave; il sistema di coordinate di input ma non verr&ograve; eseguito se si tratta di un sistema di coordinate geografiche. Per impostare un sistema di coordinate proiettato, immettere il WKID. Ad esempio,  <b>Mercatore Sferica</b> deve essere inserito come <code>3857</code>.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Scegliere il Data Store</h2></div>
+        <hr/>
+        <div>
+            <p>Questo &egrave; un parametro temporaneo per la versione provvisoria che consente di impostare il Data Store in cui verranno salvati i risultati. Entrambi i Data Store fanno parte di  ArcGIS Data Store. Se si seleziona lo Spatiotemporal Data Store ma questo non &egrave; installato, lo strumento non verr&agrave; eseguito. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nome layer risultati</h2></div>
+        <hr/>
+        <div>
+            <p> Questo &egrave; il nome del layer che verr&agrave; creato in <b>I miei contenuti</b> e aggiunto alla mappa.  Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, lo strumento non verr&agrave; eseguito.
+            </p>
+            <p>Utilizzare la casella a discesa  <b>Salva risultato in</b> per specificare il nome di una cartella di <b>I miei contenuti</b> in cui salvare il risultato.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

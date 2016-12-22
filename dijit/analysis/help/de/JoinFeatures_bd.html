@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Features verbinden</h2><p/>
+        <h2><img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" alt="Features verbinden"></h2>
+        <hr/>
+    <p>F&uuml;r den Task &quot;Features verbinden&quot; werden zwei Layer angegeben. Mit &quot;Features verbinden&quot; werden Attribute aus einem Feature mit denen eines anderen Features basierend auf r&auml;umlichen, zeitlichen und Attributbeziehungen oder einer Kombination aus diesen verbunden. Das Werkzeug ermittelt alle Eingabe-Features, die den angegebenen Verbindungsbedingungen entsprechen, und verbindet den zweiten Eingabe-Layer mit dem ersten. Sie k&ouml;nnen optional alle Features mit den &uuml;bereinstimmenden Features verbinden oder die &uuml;bereinstimmenden Features zusammenfassen.
+    </p>
+    <p>Der Task &quot;Features verbinden&quot; kann auf Punkte, Linien, Fl&auml;chen und Tabellen angewendet werden. Eine zeitliche Verbindung erfordert Eingabedaten mit zeitaktivierten Eigenschaften und eine r&auml;umliche Verbindung erfordert, dass Ihre Daten eine Geometrie aufweisen. 
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="targetLayer">
+        <div><h2>Layer zum Verbinden mit Features auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Der Layer, mit dem Features verbunden werden. 
+            </p>
+            <p>Sie k&ouml;nnen nicht nur einen Layer aus der Karte ausw&auml;hlen, sondern auch unten in der Dropdown-Liste  <b>Layer durchsuchen</b> ausw&auml;hlen, um zu Ihren f&uuml;r ein Big-Data-Dateifreigabe-Dataset bzw. -Feature-Layer zu navigieren.  
+            </p>
+        </div>
+    </div>
+    <div id="joinLayer">
+        <div><h2>Zu verbindenden Layer auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Der Layer, der mit dem ersten Eingabe-Layer verbunden wird.
+            </p>
+            <p>Sie k&ouml;nnen nicht nur einen Layer aus der Karte ausw&auml;hlen, sondern auch unten in der Dropdown-Liste  <b>Layer durchsuchen</b> ausw&auml;hlen, um zu Ihren f&uuml;r ein Big-Data-Dateifreigabe-Dataset bzw. -Feature-Layer zu navigieren.  
+            </p>
+        </div>
+    </div>
+    <div id="joinOperation">
+        <div><h2>Verbindungsvorgang auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Hiermit wird ermittelt, wie Verbindungen zwischen den Eingabe-Layern in der Ausgabe verarbeitet werden, wenn mehrere Verbindungs-Features dieselbe Beziehung mit dem Layer aufweisen, mit dem sie verbunden sind. Es stehen zwei Verbindungsvorg&auml;nge zur Auswahl:
+                <ul>
+                    <li> <b>Eins zu eins verbinden</b>: Mit dieser Option werden alle &uuml;bereinstimmenden Features mit dem Join-Layer verbunden.
+                    </li>
+                    <li> <b>Eins zu vielen verbinden</b>: Mit dieser Option werden alle &uuml;bereinstimmenden Features mit jedem zu verbindenden Feature zusammengefasst.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Angenommen, wir suchen Superm&auml;rkte im Umkreis von 5 Kilometern von einem Bauernmarkt.   In diesem Fall muss der zu verbindende Layer &uuml;ber ein einzelnes Feature verf&uuml;gen, das einen Bauernmarkt darstellt, und die Verbindungs-Features stellen die lokalen Lebensmittelgesch&auml;fte mit Attributen wie dem j&auml;hrlichen Gesamtumsatz dar. Mit dem Werkzeug  <b>Features verbinden</b> wird ermittelt, dass f&uuml;nf Lebensmittelgesch&auml;fte diesen Kriterien entsprechen. Wenn der Verbindungsvorgang <b>Eins zu eins verbinden</b> festgelegt wird, enth&auml;lt das Ergebnis f&uuml;nf Features, wobei jede Zeile den Baumarkt und einen Supermarkt darstellt. Wird die Beziehung <b>Eins zu vielen verbinden</b> festgelegt, f&uuml;hrt dies zu einem Feature, das den Baumarkt und die zusammengefassten Informationen zu den Superm&auml;rkten darstellt, darunter die Anzahl (5) und andere Statistiken wie der Gesamtjahresumsatz.
+            </p>
+        </div>
+    </div>
+    <div id="joinOptions">
+        <div><h2>Wählen Sie den zu verwendenden Verbindungstyp aus.</h2></div>
+        <hr/>
+        <div>
+            <p>Sie k&ouml;nnen nur ein, zwei oder drei Verbindungstypen ausw&auml;hlen. Folgende Verbindungstypen sind verf&uuml;gbar: 
+                <ul>
+                    <li> <b>R&auml;umlich</b>: Verwendet eine festgelegte r&auml;umliche Beziehung zum Verbinden von Features. Dies erfordert, dass beide Layer eine Geometrie aufweisen.
+                    </li>
+                    <li> <b>Zeitlich</b>: Verwendet eine zeitliche Beziehung zum Verbinden von Features. Dies erfordert, dass f&uuml;r beide Layer Zeiteigenschaften aktiviert werden.
+                    </li>
+                    <li> <b>Attribut</b>: Verbindet Features basierend auf gleichen Feldern.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>
+            </p>
+        </div>
+    </div>
+    <div id="spatialRelationship">
+        <div><h2>Räumliche Verbindung</h2></div>
+        <hr/>
+        <div>
+            <p> Die r&auml;umliche Beziehung, anhand derer festgelegt wird, ob Features miteinander verbunden werden. Die verf&uuml;gbaren Beziehungen h&auml;ngen vom Geometrietyp (Punkt, Polylinie, Polygone) ab, der als Eingabe-Feature verwendet wird. Die folgenden Beziehungen sind verf&uuml;gbar:
+                <ul>
+                    <li> <b>Schneidet</b>: Features werden abgeglichen, wenn sie sich &uuml;berschneiden.
+                    </li>
+                    <li> <b>Gleich</b>: Die Features werden abgeglichen, wenn sie dieselbe Geometrie aufweisen.
+                    </li>
+                    <li> <b>In der N&auml;he von</b>: Die Features werden abgeglichen, wenn sich sich innerhalb einer angegebenen Entfernung voneinander befinden.
+                    </li>
+                    <li> <b>Enth&auml;lt</b>: Die Features werden abgeglichen, wenn der Layer, mit denen sie verbunden werden, in den Verbindungs-Features enthalten ist.
+                    </li>
+                    <li> <b>Innerhalb</b>: Die Features werden abgeglichen, wenn der Layer, mit denen sie verbunden werden, innerhalb der Verbindungs-Features liegt.
+                    </li>
+                    <li> <b>Ber&uuml;hrt</b>: Die Features werden abgeglichen, wenn ihre Grenze das Feature ber&uuml;hrt, mit dem sie verbunden werden.
+                    </li>
+                    <li> <b>Kreuzt</b>: Die Features werden abgeglichen, wenn sie eine Umrisslinie mit Kreuzungen aufweisen.
+                    </li>
+                    <li> <b>&Uuml;berlappt</b>: Die Features werden verbunden, wenn sie sich &uuml;berlappen.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="nearSpatial">
+        <div><h2></h2></div>
+        <hr/>
+        <div>
+            <p>Diese Entfernung gibt den Radius an, der auf eine r&auml;umliche Near-Beziehung angewendet wird.
+            </p>
+            <p>Angenommen, Sie verf&uuml;gen &uuml;ber ein Dataset, das ein Atomkraftwerk darstellt und ein Dataset, das Wohnh&auml;user darstellt. Sie k&ouml;nnen eine Near-Entfernung von 1 Kilometer festlegen, um H&auml;user zu suchen, die sich im Umkreis von 1 Kilometer vom Atomkraftwerk befinden. 
+            </p> 
+        </div>
+    </div>
+    <div id="temporalRelationship">
+        <div><h2>Zeitliche Verbindung</h2></div>
+        <hr/>
+        <div>
+            <p>Die zeitliche Beziehung, anhand derer festgelegt wird, ob Features miteinander verbunden werden. Diese Option ist nur verf&uuml;gbar, wenn f&uuml;r beide Layer Zeiteigenschaften aktiviert wurden; die verf&uuml;gbaren Beziehungen h&auml;ngen vom Zeittyp ab, der f&uuml;r die Eingabe-Features verwendet wird. Die folgenden Beziehungen sind verf&uuml;gbar:
+                <ul>
+                    <li> <b>Entspricht</b>: Das Feature wird abgeglichen, wenn das erste Feature dem zweiten entspricht.
+                    </li>
+                    <li> <b>Erf&uuml;llt von</b>: Das Feature wird abgeglichen, wenn die Bedingungen der ersten Features vom zweiten erbracht werden.
+                    </li>
+                    <li> <b>&Uuml;berlappt</b>: Das Feature wird abgeglichen, wenn die ersten Features das zweite &uuml;berlappen.
+                    </li>
+                    <li> <b>&Uuml;berlappt von</b>: Das Feature wird abgeglichen, wenn die ersten Features vom zweiten &uuml;berlappt werden.
+                    </li>
+                    <li> <b>W&auml;hrend</b>: Das Feature wird abgeglichen, wenn die ersten Features w&auml;hrend des zweiten stattfinden.
+                    </li>
+                    <li> <b>Enth&auml;lt</b>: Das Feature wird abgeglichen, wenn das erste Feature das zweite enth&auml;lt.
+                    </li>
+                    <li> <b>Gleich</b>: Das Feature wird abgeglichen, wenn das erste Feature dem zweiten entspricht.
+                    </li>
+                    <li> <b>Beendet</b>: Das Feature wird abgeglichen, wenn das erste Feature das zweite beendet.
+                    </li>
+                    <li> <b>Beendet von</b>: Das Feature wird abgeglichen, wenn die ersten Features vom zweiten beendet werden.
+                    </li>
+                    <li> <b>Startet</b>: Das Feature wird abgeglichen, wenn das erste Feature das zweite startet.
+                    </li>
+                    <li> <b>Gestartet von</b>: Das Feature wird abgeglichen, wenn die ersten Features vom zweiten gestartet werden.
+                    </li>
+                    <li> <b>Schneidet</b>: Die Features werden abgeglichen, wenn sie von allen Zeiten geschnitten werden.
+                    </li>
+                    <li> <b>In der N&auml;he von</b>: Die Features werden verbunden, wenn sie einer angegebenen Zeit entsprechend nahe beieinander liegen.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="nearTemporal">
+        <div><h2></h2></div>
+        <hr/>
+        <div>
+            <p>Diese zeitliche Entfernung gibt den zeitlichen Radius an, der auf eine zeitliche Near-Beziehung angewendet wird.
+            </p>
+            <p>Angenommen, Sie verf&uuml;gen &uuml;ber einen Layer mit Schiffsereignissen und einen Layer mit GPS-Spuren f&uuml;r einen Hurrikan. Sie k&ouml;nnen nach Schiffsereignissen innerhalb einer angegebenen r&auml;umlichen Entfernung (1 Kilometer) und einer zeitlichen Entfernung (5 Stunden) von Hurrikan-Spuren suchen. Dies w&uuml;rde dazu f&uuml;hren, dass Schiffsereignisse mit Hurrikanen verbunden werden, die r&auml;umlich und zeitlich nah beieinander lagen. 
+            </p>
+        </div>
+    </div>
+    <div id="attributeRelationship">
+        <div><h2>Attributverbindung</h2></div>
+        <hr/>
+        <div>
+            <p>Diese Beziehung gleicht die Werte im Feld eines Layers mit den Werten im Feld eines anderen Layers ab. 
+            </p>
+            <p> Angenommen, wir verf&uuml;gen &uuml;ber einen landesweiten geographischen Layer mit Wohnadressen (mit einem <i>ZIP</i>-Feld) und &uuml;ber ein Tabellen-Dataset mit demografischen Gesundheitsdaten nach PLZ-Code (ein Feld namens <i>HEALTHZIP</i>). Das Gesundheits-Dataset l&auml;sst sich mit den Wohnadressendaten verbinden, indem das Feld <i>ZIP</i> mit dem Feld <i>HEALTHZIP</i> abgeglichen wird, was zu einem Layer mit Wohnsitzen f&uuml;hrt, die den Gesundheitsdaten entsprechen.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Statistiken hinzufügen (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Wenn eine Eins-zu-vielen-Verbindung ausgew&auml;hlt wurde, k&ouml;nnen Sie Statistiken f&uuml;r die verbundenen Features berechnen.
+            </p>
+        </div>
+    </div>
+    <div id="joinCondition">
+        <div><h2>Einen Ausdruck zum Verbinden von Features erstellen (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Wendet eine Bedingung auf angegebene Felder an. Nur Features mit Feldern besteht, die diese Bedingungen erf&uuml;llen, werden verbunden.
+            </p>
+            <p>Ein Beispiel: Angenommen, Sie m&ouml;chten eine Verbindung mit einem Dataset nur f&uuml;r die Features erstellen, f&uuml;r die  <i>health_spending</i> (Gesundheitskosten) mehr als 20 Prozent vom <i>income</i> (Einkommen) ausmacht.  Wenden Sie hierzu die Verbindungsbedingung <code>target.health_spending &gt; (join.income * .20)</code> auf das Feld <i>health_spending</i> aus dem ersten Dataset (die Dataset-Features, mit denen die Verbindung erfolgt) und das Feld <i>income</i> aus dem zweiten Dataset (das Dataset, das verbunden wird) an.
+            </p>
+            <p>Verbindungsbedingung k&ouml;nnen mithilfe des Ausdrucksrechners angewendet werden.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Data Store auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Dies ist ein tempor&auml;rer Parameter f&uuml;r die Vorabversion zum Festlegen des Data Store, in dem die Ergebnisse gespeichert werden. Beide Data Stores sind Teil des  ArcGIS Data Store. Wenn Sie den Data Store &quot;spatiotemporal&quot; ausw&auml;hlen, aber nicht installiert haben, kann das Werkzeug nicht ausgef&uuml;hrt werden. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Name des Ergebnis-Layers</h2></div>
+        <hr/>
+        <div>
+            <p> Dies ist der Name des Layers, der in <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird.  Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, kann das Werkzeug nicht ausgef&uuml;hrt werden.
+            </p>
+            <p>&Uuml;ber das Dropdown-Feld  <b>Ergebnis speichern in</b> k&ouml;nnen Sie den Namen eines Ordners in <b>Eigene Inhalte</b> angeben, in dem das Ergebnis gespeichert werden soll.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

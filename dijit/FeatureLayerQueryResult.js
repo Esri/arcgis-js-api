@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.18/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.19/esri/copyright.txt for details.
 
-define(["../main","dojo/_base/declare","dojo/Evented","dojo/_base/lang","dojo/_base/kernel","dojo/_base/Deferred","dojo/DeferredList","dojo/_base/array"],function(e,t,r,n,o,a,u,d){var i=function(t){function r(e){t[e]||(t[e]=function(){var r=arguments;return a.when(t,function(t){return Array.prototype.unshift.call(r,t.features||t),i(o[e].apply(o,r))})})}return t?(t.then&&(t=n.delegate(t)),t.total||(t.total=a.when(t,function(t){return e._isDefined(t.total)?t.total:t.length||0})),r("forEach"),r("filter"),r("map"),r("some"),r("every"),t):t};return n.setObject("dijit.FeatureLayerQueryResult",i),i});
+define(["../lang","dojo/_base/lang","dojo/_base/kernel","dojo/_base/Deferred"],function(e,t,n,r){var a=function(o){function u(e){o[e]||(o[e]=function(){var t=arguments;return r.when(o,function(r){return Array.prototype.unshift.call(t,r.features||r),new a(n[e].apply(n,t))})})}return o?(o.then&&(o=t.delegate(o)),o.total||(o.total=r.when(o,function(t){return e.isDefined(t.total)?t.total:t.length||0})),u("forEach"),u("filter"),u("map"),u("some"),u("every"),o):o};return t.setObject("dijit.FeatureLayerQueryResult",a),a});

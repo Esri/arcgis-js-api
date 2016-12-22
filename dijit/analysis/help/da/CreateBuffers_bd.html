@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Opret buffere</h2><p/>
+        <h2><img src="../images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" alt="Opret buffere"></h2>
+        <hr/>
+    <p>En buffer er et omr&aring;de, der d&aelig;kker en given afstand fra et punkt, en linje eller et omr&aring;deobjekt. 
+    </p>
+    <p>Buffere bruges normalt til at oprette omr&aring;der, der kan analyseres vha. andre v&aelig;rkt&oslash;jer. Hvis sp&oslash;rgsm&aring;let f.eks. lyder: &quot;Hvilke bygninger findes der inden for 1 kilometer fra skolen?&quot;, kan svaret findes ved at oprette en buffer p&aring; 1 kilometer rundt om skolen og integrere den med det lag, der indeholder aftryk af bygninger. Det endelige resultat er et lag med de bygninger, der ligger inden for 1 kilometer fra skolen.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Vælg et lag, som bufferen skal anvendes på</h2></div>
+        <hr/>
+        <div>
+            <p>Punkt-, linje eller omr&aring;deobjekter, der skal placeres i bufferen.
+            </p>
+            <p>Udover at du kan v&aelig;lge et lag i dit kort, kan du v&aelig;lge  <b>Gennemse lag</b> nederst p&aring; rullelisten for at g&aring; til dit indhold til et big data-fildelingsdatas&aelig;t eller -vektorlag.  
+            </p>
+        </div>
+    </div>
+    <div id="bufferType">
+        <div><h2>Vælg den type buffer, der skal anvendes</h2></div>
+        <hr/>
+        <div>
+            <p>Der er tre m&aring;der, hvorp&aring; du kan angive st&oslash;rrelsen p&aring; bufferen til dine input-objekter: 
+                <ul>
+                    <li>Angiv en afstand, der anvendes til alle objekter.
+                    </li>
+                    <li>Angiv et felt p&aring; inputlaget, som indeholder afstandsv&aelig;rdien. Du kan bruge et strengfelt eller et numerisk felt. Hvis der ikke er defineret en line&aelig;r enhed, vil enhederne fra din spatiale reference blive anvendt. Hvis du bruger et geografisk koordinatsystem, formodes feltet uden m&aring;leenheder at benytte meter som m&aring;leenhed. 
+                    </li>
+                    <li>Opret et udtryk med flere felter og matematiske operatorer.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Vælg buffermetode</h2></div>
+        <hr/>
+        <div>
+            <p>Du kan v&aelig;lge at bruge en  <b>Planar</b> metode eller en <b>Geod&aelig;tisk</b> metode. <b>Planar</b>-metoden kan v&aelig;re hurtigere og er relevant for lokal analyse af projicerede data. Den <b>Geod&aelig;tiske</b> metode er relevant for store omr&aring;der og ethvert geografisk koordinatsystem.
+            </p>
+        </div>
+    </div>
+    <div id="dissolveOption">
+        <div><h2>Vælg opløsningsmetodetype</h2></div>
+        <hr/>
+        <div>
+            <p>De indstillinger, du angiver for opl&oslash;sningsmetoden.   Hvis du v&aelig;lger en opl&oslash;sningsmetode, f&aring;r du mulighed for at oprette multipart- eller single-part-omr&aring;der, og du vil kunne beregne statistik p&aring; grundlag af de oprettede felter.
+                <ul>
+                    <li> <b>Alle</b> &ndash; Alle objekter vil blive opl&oslash;st. Hvis multipart-objekter er tilladt, vil alle objekter blive opl&oslash;st til et enkelt objekt. Hvis multipart-objekter ikke er tilladt, vil tilst&oslash;dende eller overlappende objekter blive opl&oslash;st.
+                    </li>
+                    <li> <b>Filter</b> &ndash; Objekter, der er f&aelig;lles om det samme angivne felt eller angivne feltkombination, vil blive opl&oslash;st. Hvis multipart-objekter er tilladt, vil alle objekter med det samme felt blive opl&oslash;st til et enkelt objekt. Hvis multipart-objekter ikke er tilladt, vil tilst&oslash;dende eller overlappende objekter med samme feltv&aelig;rdi blive opl&oslash;st.
+                    </li>
+                    <li> <b>Ingen</b> &ndash; Ingen objekter vil blive opl&oslash;st. Det er standardv&aelig;rdien.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="multipart">
+        <div><h2>Tillad multipart-objekter</h2></div>
+        <hr/>
+        <div>
+            <p>Indstilling, der angiver, om dit resultat kommer til at best&aring; af single-part- eller multipart-objekter. 
+
+            </p>
+            <p>
+                <ul>
+                    <li>Markeret &ndash; Resultaterne af din analyse vil indeholde multipart-objekter.   
+                    </li>
+                    <li>Umarkeret &ndash; Resultaterne af din analyse vil indeholde single-part-objekter. Dette er standardv&aelig;rdien.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Tilføj statistik (valgfrit)</h2></div>
+        <hr/>
+        <div>
+            <p> Du kan beregne statistik for objekter, der er summeret. For numeriske felter kan du beregne f&oslash;lgende:
+                <ul>
+                    <li>T&aelig;lling
+                    </li>
+                    <li>Middel
+                    </li>
+                    <li>Min
+                    </li>
+                    <li>Maks
+                    </li>
+                    <li>Omr&aring;de
+                    </li>
+                    <li>Varians
+                    </li>
+                    <li>Standardafvigelse
+                    </li>
+                </ul>
+                
+            </p>
+            <p>For strengfelter kan du beregne f&oslash;lgende:
+                <ul>
+                    <li>T&aelig;lling
+                    </li>
+                    <li>Vilk&aring;rlig &ndash; Denne statistik er et vilk&aring;rligt eksempel p&aring; en strengv&aelig;rdi i det angivne felt.
+                    </li>
+                </ul>
+                Alle statistiske data beregnes ud fra ikke-nul-v&aelig;rdier. Resultatlaget vil indeholde et nyt felt for hver beregnet statistik. Du kan tilf&oslash;je et vilk&aring;rligt antal statistikker ved at v&aelig;lge attributter og statistikker. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Vælg Datastore</h2></div>
+        <hr/>
+        <div>
+            <p>Dette er en midlertidig parameter til prerelease med henblik p&aring; angivelse af det datalager, hvor resultaterne bliver gemt. Begge datalagre er en del af  ArcGIS Data Store. Hvis du v&aelig;lger det spatiotemporale datalager, men ikke har et s&aring;dant installeret, vil v&aelig;rkt&oslash;jet ikke fungere. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Navn på resultatlag</h2></div>
+        <hr/>
+        <div>
+            <p> Dette er navnet p&aring; det lag, som oprettes i <b>Mit indhold</b> og f&oslash;jes til kortet. Standardnavnet er baseret p&aring; navnet p&aring; v&aelig;rkt&oslash;jet og navnet p&aring; inputlaget. Hvis laget allerede findes, vil v&aelig;rkt&oslash;jet ikke fungere.
+            </p>
+            <p>Ved hj&aelig;lp af rullelisten  <b>Gem resultat i</b> kan du angive navnet p&aring; en mappe i <b>Mit indhold</b>, hvor resultatet skal gemmes.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

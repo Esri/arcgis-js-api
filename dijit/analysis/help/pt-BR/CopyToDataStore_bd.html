@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Copiar para Armazenamento de Dados</h2><p/>
+        <h2><img src="../images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" alt="Copiar para Armazenamento de Dados"></h2>
+        <hr/>
+    <p>Esta ferramenta tomar&aacute; uma camada de entrada e a copiar&aacute; para um armazenamento de dados. Os dados ser&atilde;o copiados no  ArcGIS Data Store e guardados no seu armazenamento de dados de espa&ccedil;o-tempo relacional. </p>
+    <p>Por exemplo, voc&ecirc; pode copiar fei&ccedil;&otilde;es que est&atilde;o armazenadas em um  <code>compartilhamento do arquivo de grandes dados</code> para um <code>armazenamento de dados relacional</code> e especificar que somente as fei&ccedil;&otilde;es dentro da extens&atilde;o de mapa atual ser&atilde;o copiadas. Isto criar&aacute; um servi&ccedil;o da fei&ccedil;&atilde;o hospedado com somente estas fei&ccedil;&otilde;es que estavam dentro da extens&atilde;o de mapa especificada.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Escolher camada para copiar</h2></div>
+        <hr/>
+        <div>
+            <p>A camada ou tabela que ser&aacute; copiada. 
+            </p>
+            <p>Al&eacute;m de escolher uma camada de seu mapa, voc&ecirc; pode escolher  <b>Procurar Camadas</b> na parte inferior da lista suspensa para procurar por seu conte&uacute;do para um conjunto de dados de compartilhamento de arquivo big data ou camada de fei&ccedil;&atilde;o.  
+            </p>
+        </div>
+    </div>
+    <div id="outputDataStore">
+        <div><h2>Escolha o ArcGIS Data Store no qual copiar</h2></div>
+        <hr/>
+        <div>
+            <p> O armazenamento de dados no qual a camada ser&aacute; copiada. As op&ccedil;&otilde;es s&atilde;o as seguintes:
+                <ul>
+                    <li> <b>Espa&ccedil;o-Tempo</b>&mdash;Esta &eacute; a padr&atilde;o.
+                    </li>
+                    <li> <b>Relacional</b>.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nome da camada resultante</h2></div>
+        <hr/>
+        <div>
+            <p> Este &eacute; o nome da camada que ser&aacute; criada em <b>Meu Conte&uacute;do</b> e adicionada ao mapa.  O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existe, a ferramenta falhar&aacute;.
+            </p>
+            <p>Ao utilizar a caixa suspensa  <b>Salvar resultado em</b>, &eacute; poss&iacute;vel especificar o nome de uma pasta em <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

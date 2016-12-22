@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Paramètres de l'environnement d'analyse du portail</h2><p/>
+        <h2></h2>
+        <hr/>
+    <p> Param&egrave;tres de l'environnement d'analyse dans Portal for ArcGIS et  ArcGIS Online. 
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="overwriteResult">
+        <div><h2>Remplacer la couche de résultat</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Option de remplacement des couches existantes.    Lorsque cette option est s&eacute;lectionn&eacute;e, s'il existe une couche du m&ecirc;me nom dans votre contenu, elle sera remplac&eacute;e.
+            </p>
+            <p>
+                <ul>
+                    <li>Coch&eacute;e&nbsp;: s'il existe une couche du m&ecirc;me nom dans votre contenu, elle sera remplac&eacute;e. La sortie pr&eacute;sentera le m&ecirc;me syst&egrave;me de coordonn&eacute;es que les donn&eacute;es en entr&eacute;e.
+                    </li>
+                    <li>Non coch&eacute;e&nbsp;: si le nom de la couche de r&eacute;sultat existe d&eacute;j&agrave;, une erreur se produit et la couche de r&eacute;sultat doit &ecirc;tre renomm&eacute;e pour que l'outil puisse &ecirc;tre ex&eacute;cut&eacute;. Il s'agit de l'option par d&eacute;faut.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="closeAnalysisWidget">
+        <div><h2>Fermer le widget d'analyse après l'exécution de l'analyse</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Option permettant de garder la bo&icirc;te de dialogue d'analyse ouverte et active pendant l'ex&eacute;cution de l'outil.     Ce param&egrave;tre vous permet de modifier facilement vos param&egrave;tres d'analyse pendant que l'analyse pr&eacute;c&eacute;dente se poursuit.  L'analyse est un processus it&eacute;ratif et en gardant la bo&icirc;te de dialogue de l'outil ouverte, vous pouvez facilement modifier les param&egrave;tres et r&eacute;ex&eacute;cuter votre analyse.
+            </p>
+            <p>
+                <ul>
+                    <li>Coch&eacute;e&nbsp;: la fen&ecirc;tre de l'outil d'analyse se ferme et vous &ecirc;tes redirig&eacute; vers la table des mati&egrave;res. Il s'agit du param&egrave;tre par d&eacute;faut.
+                    </li>
+                    <li>Non coch&eacute;e&nbsp;: la fen&ecirc;tre de l'outil d'analyse reste ouverte et active.   
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="storeAnalysisResults">
+        <div><h2>Stocker les résultats de l'analyse en tant que services d'entités</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Option permettant d'indiquer si le r&eacute;sultat de votre analyse sera cr&eacute;&eacute; en tant que couche d'entit&eacute;s ou collecte d'entit&eacute;s.
+            </p>
+            <p>
+                <ul>
+                    <li>Coch&eacute;e&nbsp;: les r&eacute;sultats de votre analyse permettront de g&eacute;n&eacute;rer une couche d'entit&eacute;s et un &eacute;l&eacute;ment sera cr&eacute;&eacute; dans votre contenu. Il s'agit de l'option par d&eacute;faut.
+                    </li>
+                    <li>Non coch&eacute;e&nbsp;: les r&eacute;sultats de votre analyse vont g&eacute;n&eacute;rer une collecte d'entit&eacute;s.    Les collectes d'entit&eacute;s sont stock&eacute;es dans votre carte Web.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputCoordinateSystem">
+        <div><h2>Système de coordonnées en sortie</h2></div>
+        <hr/>
+        <div>
+            <p>Param&egrave;tre d'environnement pour l'analyse raster utilis&eacute; pour d&eacute;finir le syst&egrave;me de coordonn&eacute;es de la couche de r&eacute;sultat.    
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Identique &agrave; l'entr&eacute;e</b>&nbsp;: le r&eacute;sultat de votre analyse appara&icirc;tra dans le m&ecirc;me syst&egrave;me de coordonn&eacute;es que les donn&eacute;es en entr&eacute;e. Il s'agit de l'option par d&eacute;faut.
+                    </li>
+                    <li> <b>Comme sp&eacute;cifi&eacute;</b>&nbsp;: permet de choisir le syst&egrave;me de coordonn&eacute;es des r&eacute;sultats de votre analyse.   Lorsque cette option est s&eacute;lectionn&eacute;e, cliquez sur l'ic&ocirc;ne du globe &agrave; s&eacute;lectionner dans une liste des syst&egrave;mes de coordonn&eacute;es connus ou ajoutez le WKID de r&eacute;f&eacute;rence spatiale dans la zone appropri&eacute;e.
+                    </li>
+                    <li> <b>&lt;Nom de la couche&gt;</b>&nbsp;: choisissez une couche de votre carte Web pour d&eacute;terminer le syst&egrave;me de coordonn&eacute;es du r&eacute;sultat de votre analyse.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingCoordinateSystem">
+        <div><h2>Traitement du système de coordonnées</h2></div>
+        <hr/>
+        <div>
+            <p>Param&egrave;tre d'environnement de g&eacute;oanalyse permettant de d&eacute;terminer le syst&egrave;me de coordonn&eacute;es utilis&eacute; par l'analyse pendant son ex&eacute;cution.   
+            </p>
+            <p>Pour la g&eacute;oanalyse, certaines analyses exigent que le traitement soit ex&eacute;cut&eacute; dans un syst&egrave;me de coordonn&eacute;es projet&eacute;es.   Tous les outils ayant classifi&eacute; des donn&eacute;es ou des unit&eacute;s lin&eacute;aires n&eacute;cessite un syst&egrave;me de coordonn&eacute;es projet&eacute;es. 
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Identique &agrave; l'entr&eacute;e</b>&nbsp;: votre analyse sera trait&eacute;e dans le m&ecirc;me syst&egrave;me de coordonn&eacute;es que les donn&eacute;es en entr&eacute;e. Il s'agit de l'option par d&eacute;faut.
+                    </li>
+                    <li> <b>Comme sp&eacute;cifi&eacute;</b>&nbsp;: permet de choisir le syst&egrave;me de coordonn&eacute;es qui traitera votre analyse.   Lorsque cette option est s&eacute;lectionn&eacute;e, cliquez sur l'ic&ocirc;ne du globe &agrave; s&eacute;lectionner dans une liste des syst&egrave;mes de coordonn&eacute;es projet&eacute;es connus ou ajoutez le WKID de r&eacute;f&eacute;rence spatiale dans la zone appropri&eacute;e.
+                    </li>
+                    <li> <b>Couche
+&lt;nom&gt;</b>&nbsp;: choisissez une couche dans votre carte Web.  Le syst&egrave;me de coordonn&eacute;es de la couche choisie permettra de d&eacute;terminer le syst&egrave;me de coordonn&eacute;es qui sera utilis&eacute; pour traiter votre analyse.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingExtent">
+        <div><h2>Etendue</h2></div>
+        <hr/>
+        <div>
+            <p>Param&egrave;tre d'environnement permettant de d&eacute;terminer l'&eacute;tendue ou la limite utilis&eacute;e pendant l'ex&eacute;cution de l'analyse.  Toutes les entit&eacute;s en entr&eacute;e se trouvant int&eacute;gralement dans l'&eacute;tendue sp&eacute;cifi&eacute;e ou qui intersectent cette derni&egrave;re seront utilis&eacute;es dans l'analyse.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Par d&eacute;faut</b>&nbsp;: utilise l'&eacute;tendue fournie par l'outil.
+                    </li>
+                    <li> <b>Comme sp&eacute;cifi&eacute;</b>&nbsp;: indiquez manuellement les coordonn&eacute;es pour d&eacute;finir l'&eacute;tendue.
+                    </li>
+                    <li> <b>Couche
+&lt;nom&gt;</b>&nbsp;: choisissez une couche dans votre carte Web. L'&eacute;tendue spatiale de la couche choisie permettra de d&eacute;terminer l'&eacute;tendue utilis&eacute;e pour traiter votre analyse. 
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="snapRaster">
+        <div><h2>Raster de capture</h2></div>
+        <hr/>
+        <div>
+            <p>Lorsque vous proc&eacute;dez &agrave; une analyse raster, d&eacute;finissez l'environnement  <b>Raster de capture</b> pour ajuster l'&eacute;tendue de la couche raster en sortie afin qu'elle corresponde &agrave; l'alignement des cellules de la couche <b>Raster de capture</b> sp&eacute;cifi&eacute;e.
+            </p>
+        </div>
+    </div>
+    <div id="cellSize">
+        <div><h2>Taille de cellule</h2></div>
+        <hr/>
+        <div>
+            <p>Lorsque vous proc&eacute;dez &agrave; une analyse raster, cet environnement d&eacute;finit la taille de cellule ou la r&eacute;solution qui sera utilis&eacute;e pour cr&eacute;er la couche raster en sortie. La r&eacute;solution en sortie par d&eacute;faut est d&eacute;termin&eacute;e par la taille de cellule la plus importante dans la couche raster en entr&eacute;e.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Minimum d&rsquo;entr&eacute;es</b>&nbsp;: utilise la plus petite taille de cellule de toutes les couches en entr&eacute;e.
+                    </li>
+                    <li> <b>Maximum d&rsquo;entr&eacute;es</b>&nbsp;: utilise la plus grande taille de cellule de toutes les couches en entr&eacute;e. Il s'agit de l'option par d&eacute;faut.
+                    </li>
+                    <li> <b>Comme sp&eacute;cifi&eacute;</b>&nbsp;: indique une valeur num&eacute;rique pour d&eacute;finir la taille de cellule. Si cette option est s&eacute;lectionn&eacute;e, la valeur par d&eacute;faut est&nbsp;1.
+                    </li>
+                    <li> <b>&lt;Nom&gt;</b> de la couche&nbsp;: d&eacute;finit la taille de cellule sur la couche raster choisie.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="mask">
+        <div><h2>Masque</h2></div>
+        <hr/>
+        <div>
+            <p> Lorsque vous proc&eacute;dez &agrave; une analyse raster, utilisez l'environnement <b>Masque</b> pour sp&eacute;cifier une couche qui permettra de d&eacute;finir votre zone d'int&eacute;r&ecirc;t.   Seules les cellules comprises dans le masque d'analyse seront prises en compte lors de l'analyse.
+            </p>
+            <ul>
+                <li>Le masque peut &ecirc;tre un raster ou une couche d'entit&eacute;s.
+                </li>
+                <li>Si le masque d'analyse est un raster, toutes les cellules ayant une valeur sont prises en compte pour d&eacute;finir le masque. Les cellules d'un raster de masque de type NoData seront consid&eacute;r&eacute;es comme &eacute;tant en dehors du masque et auront donc une valeur NoData dans la couche de r&eacute;sultat d'analyse. 
+                </li>
+                <li>Si le masque d'analyse est une couche d'entit&eacute;s, il est converti en interne en raster lors de l'ex&eacute;cution. Vous devez donc v&eacute;rifier que la  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">Taille de cellule</a> et le <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">Raster de capture</a> sont correctement param&eacute;tr&eacute;s pour votre analyse.
+                </li>
+            </ul>
+             
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Agreguoti taškus</h2><p/>
+        <h2><img src="../images/GUID-6C1620D9-D176-41FA-8283-833D8B1CCCFC-web.png" alt="Agreguoti ta&scaron;kus"></h2>
+        <hr/>
+    <p>&Scaron;is įrankis apdoroja sluoksnius, sudarytus i&scaron; ta&scaron;kinių elementų, ir sluoksnius, sudarytus i&scaron; plotinių elementų. Įvesties plotiniai elementai gali būti i&scaron; plotinio sluoksnio arba i&scaron; kvadrato ar &scaron;e&scaron;iakampio formos daugiakampių, sugeneruojamų paleidus įrankį. Pirmiausia įrankis nustato, kurie ta&scaron;kai patenka į kiekvieną nurodytą plotą. Nustačius plotų ir į juos patenkančių ta&scaron;kų erdvinį ry&scaron;į, apskaičiuojama ir plotui priskiriama visų jo ta&scaron;kų statistika. Pats paprasčiausias apskaičiuojamas rodiklis &ndash; ta&scaron;kų skaičius, tačiau galite apskaičiuoti ir kitus statistinius rodiklius. 
+
+    </p>
+    <p>Pavyzdžiui, jūs turite kavinių ta&scaron;kinius elementus ir seniūnijų plotinius elementus ir norite sužinoti kiekvienos seniūnijos kavinių apyvartas. Jei kavinės turi  <i>TOTAL_SALES</i> atributą, galite gauti kiekvienos seniūnijos visų <i>TOTAL_SALES</i> sumą, kiekvienos seniūnijos <i>TOTAL_SALES</i> minimumą ar maksimumą arba kitokią statistiką, pvz., skaičių, intervalą, standartinį nuokrypį ir dispersiją.
+    </p>
+    <p>&Scaron;is įrankis taip pat gali apdoroti duomenis su laiko žymomis. Jei įvesties ta&scaron;kams priskiriamas laikas, galima naudoti laiko padalijimo į laikotarpius parinktis. Laiko padalijimas į laikotarpius suteikia galimybę apskaičiuoti į plotą patenkančių ta&scaron;kų ry&scaron;ius konkrečiame laikotarpyje. Pavyzdžiui, galite peržiūrėti valandinius intervalus, kuriuose pateikiami i&scaron;vesties rezultatai kas valandą. 
+    </p>
+    <p>Pavyzdys su laiku: tarkime, jūs turite įvairiose vietose įsikūrusių kavinių visų transakcijų ta&scaron;kinius elementus ir neturite plotinio sluoksnio. Duomenys buvo rinkti metus ir kiekvienai transakcijai priskirta vieta su laiko žyma. Jei kiekviena transakcija turi  <i>TOTAL_SALES</i> atributą, galėsite gauti visų į jus dominančią teritoriją ir laikotarpį patenkančių <i>TOTAL_SALES</i> sumą. Jei tai yra vieno miesto transakcijos, galėsite jį suskaidyti į kvadratinius kilometrus ir peržiūrėti duomenis, padalintus savaitėmis. Taigi, galėsite sumuoti transakcijas tiek pagal laiką, tiek pagal teritoriją.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="pointLayer">
+        <div><h2>Pasirinkite sluoksnį, turintį taškus, kuriuos norite agreguoti į plotus</h2></div>
+        <hr/>
+        <div>
+            <p>Ta&scaron;kinis sluoksnis, kuris bus agreguotas į plotus.
+            </p>
+            <p>Galite pasirinkti ne tik sluoksnį i&scaron; žemėlapio, bet ir pasirinkti parinktį  <b>Nar&scaron;yti sluoksnius</b>, esančią i&scaron;krentančio sąra&scaron;o apačioje, kuri suteikia galimybę nurodyti kelią iki jūsų didelių duomenų failų saugyklos duomenų rinkinio arba elementų sluoksnio.  
+            </p>
+        </div>
+    </div>
+    <div id="inputAggregation">
+        <div><h2>Pasirinkite plotinį sluoksnį, į kurį bus agreguojami elementai</h2></div>
+        <hr/>
+        <div>
+            <p>Plotai, į kuriuos bus agreguotas ta&scaron;kų sluoksnis. Galite pasirinkti agreguoti į nurodytą plotinį sluoksnį arba į daugiakampius, kurie bus sugeneruoti paleidus įrankį.   Generuojant į  <b>kvadratus</b>, nurodyti skaičiai ir vienetai apibrėžia kvadrato ilgį ir plotį. Generuojant į <b>&scaron;e&scaron;iakampius</b>, nurodyti skaičiai ir vienetai apibrėžia atstumą tarp lygiagrečių kra&scaron;tinių.
+            </p>
+        </div>
+    </div>
+    <div id="polygonLayer">
+        <div><h2>Pasirinkite plotinį sluoksnį, į kurį bus agreguojami elementai</h2></div>
+        <hr/>
+        <div>
+            <p>Plotinis sluoksnis, į kurį bus agreguojami ta&scaron;kai. Bus apskaičiuotas ta&scaron;kų, patenkančių į &scaron;io sluoksnio teritorijas, skaičius bei kiti pasirinkti statistiniai rodikliai. 
+            </p>
+            <p>
+            </p>
+            <p>Reikia nustatyti  <b>Daugiakampio dydį</b> (jei generuojami daugiakampiai) arba <b>Plotų sluoksnį</b>.
+            </p>
+        </div>
+    </div>
+    <div id="inputBins">
+        <div><h2>Pasirinkite atstumą, kurį naudojant bus sugeneruoti ir agreguoti daugiakampiai</h2></div>
+        <hr/>
+        <div>
+            <p>Atstumas, naudojamas generuojant daugiakampius, į kuriuos bus agreguojami jūsų įvesties ta&scaron;kai. Pasirinkus kvadrato formos daugiakampius, dydis nurodo kvadrato ilgį. Pasirinkus &scaron;e&scaron;iakampio formos daugiakampius, dydis nurodo &scaron;e&scaron;iakampio ilgį (lygiagrečių kra&scaron;tinių).  
+            </p>
+            <p>Reikia nustatyti  <b>Daugiakampio dydį</b> (jei generuojami daugiakampiai) arba <b>Plotų sluoksnį</b>.
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Agreguoti naudojant laikotarpius (neprivaloma)</h2></div>
+        <hr/>
+        <div>
+            <p>Jei įvesties ta&scaron;kų sluoksnyje įgalintos laiko žymos, kurių tipas yra &bdquo;Momentas&ldquo;, galite analizuoti naudodami laikotarpius. Naudodami laiko žymas, galite nustatyti tris parametrus:
+                <ul>
+                    <li>  <b>Laiko intervalą</b>
+                    </li>
+                    <li> <b>Laiko etapą</b>
+                    </li>
+                    <li> <b>Atskaitos laiką</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Tarkime, turite metus apimančius duomenis, kuriuos norite analizuoti savaitėmis. Norėdami tai padaryti,  <b>laiko intervalu</b> nustatysite <code>1 savaitę</code>.
+            </p>
+            <p> Tarkime, turite metus apimančius duomenis, kuriuos norite analizuoti naudodami pirmąsias mėnesio savaites. Norėdami tai padaryti, <b>laiko intervalu </b> nustatote <code>1 savaitę</code>, <b>laiko etapu</b> nustatote <code>1 mėnesį</code>, o <b>atskaitos ta&scaron;ku</b> nustatote <code>sausio 1&nbsp;d, 12.00&nbsp;val.</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>Laiko intervalas, kuris bus naudojamas agreguojant</h2></div>
+        <hr/>
+        <div>
+            <p>Duomenų padalijimui naudojamas laiko intervalas. Laiko intervalą galima naudoti vieną arba kartu su  <b>laiko etapo</b> ar <b>atskaitos laiko</b> parametrais.
+            </p>
+            <p> Jei norite sukurti laikotarpius, kurie įvyksta kiekvieną pirmadienį ir tęsiasi nuo 9.00 iki 10.00&nbsp;val., <b>laiko intervalu</b> nustatykite <code>1 valandą</code>, <b>laiko etapu</b> &ndash; <code>1 savaitę</code>, o <b>atskaitos ta&scaron;ku</b> &ndash; <code>9:pirmadienį, 00.00 val.</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>Laiko etapas, kuris bus naudojamas agreguojant</h2></div>
+        <hr/>
+        <div>
+            <p> Etapas, naudojamas apskaičiuojant laikotarpį. <b>Laiko etapas</b> gali būti naudojamas vienas arba kartu su <b>laiko intervalu</b> arba kartu su <b>atskaitos laiku</b>, arba su abiem &ndash; <b>laiko intervalu</b> ir <b>atskaitos laiku</b>.
+            </p>
+            <p> Jei norite sukurti laikotarpius, kurie įvyksta kiekvieną pirmadienį ir tęsiasi nuo 9.00 iki 10.00&nbsp;val., <b>laiko intervalu</b> nustatykite <code>1 valandą</code>, <b>laiko etapu</b> &ndash; <code>1 savaitę</code>, o <b>atskaitos ta&scaron;ku</b> &ndash; <code>9:pirmadienį, 00.00 val.</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Atskaitos laikas, naudojamas jungiant laikotarpius</h2></div>
+        <hr/>
+        <div>
+            <p>Data ir laikas, naudojami jungiant laikotarpius.  <b>Laiko etapas</b> prasidės ir tęsis atgal laike iki atskaitos laiko.
+            </p>
+            <p> Jei norite sukurti laikotarpius, kurie įvyksta kiekvieną pirmadienį ir tęsiasi nuo 9.00 iki 10.00&nbsp;val., <b>laiko intervalu</b> nustatykite <code>1 valandą</code>, <b>laiko etapu</b> &ndash; <code>1 savaitę</code>, o <b>atskaitos ta&scaron;ku</b> &ndash; <code>9:pirmadienį, 00.00 val.</code>.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Pridėti statistiką (neprivaloma)</h2></div>
+        <hr/>
+        <div>
+            <p> Galite apskaičiuoti susumuotų elementų statistiką. Naudodami skaitinius laukus, galite apskaičiuoti:
+                <ul>
+                    <li>Skaičių
+                    </li>
+                    <li>Vidurkį
+                    </li>
+                    <li>Mažiausią reik&scaron;mę
+                    </li>
+                    <li>Didžiausią reik&scaron;mę
+                    </li>
+                    <li>Intervalą
+                    </li>
+                    <li>Dispersiją
+                    </li>
+                    <li>Standartinį nuokrypį
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Naudodami tekstinius laukus, galite apskaičiuoti:
+                <ul>
+                    <li>Skaičių
+                    </li>
+                    <li>Bet kokį rodiklį &ndash; &scaron;is statistinis rodiklis yra atsitiktinės eilutės reik&scaron;mės i&scaron; nurodyto lauko pavyzdys.
+                    </li>
+                </ul>
+                Visi statistiniai rodikliai apskaičiuojami tik su nenulinėmis reik&scaron;mėmis. Gautame sluoksnyje bus kiekvieno apskaičiuoto statistinio rodiklio naujas laukas. Pasirenkant atributą ir statistinį rodiklį, gali būti pridėtas neribotas statistinių rodiklių kiekis. 
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>SpatialReference (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>Tai yra laikinas parametras, naudojamas iki i&scaron;leidimo, kad būtų galima nustatyti apdorojimo erdvinę informaciją. Daugeliui didelių duomenų įrankių reikia naudoti projekcinę koordinačių sistemą kaip apdorojimo erdvinę informaciją. Pagal numatytuosius nustatymus įrankis naudos įvesties koordinačių sistemą, tačiau neveiks, jei tai bus geodrafinė koordinačių sistema. Norėdami nustatyti projekcinę koordinačių sistemą, įveskite WKID. Pavyzdžiui,  <b>Web Mercator</b> reik&scaron;mė būtų nurodyta <code>3857</code>.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Pasirinkti duomenų saugyklą</h2></div>
+        <hr/>
+        <div>
+            <p>Tai yra laikinas parametras, naudojamas iki i&scaron;leidimo, kad būtų galima nustatyti duomenų saugyklą, kur bus įra&scaron;yti rezultatai. Abejos duomenų saugyklos yra  ArcGIS Data Store dalis. Jei pasirinksite erdvėlaikio duomenų saugyklą, bet viena i&scaron; jų nebus įdiegta, įrankis neveiks. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Rezultatų sluoksnio pavadinimas</h2></div>
+        <hr/>
+        <div>
+            <p> Tai sluoksnio, kuris bus sukurtas ir patalpintas <b>Turinyje</b> ir pridėtas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas pagal įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau yra, įrankis neveiks.
+            </p>
+            <p>Pasirinkę  <b>Rezultatą įra&scaron;yti į</b>, galite nurodyti <b>Turinyje</b> esančio aplanko pavadinimą.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

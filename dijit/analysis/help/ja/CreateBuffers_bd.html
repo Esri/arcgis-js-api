@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>バッファーの作成</h2><p/>
+        <h2><img src="../images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" alt="バッファーの作成"></h2>
+        <hr/>
+    <p>バッファーとは、ポイント、ライン、またはエリア フィーチャから特定の距離をカバーするエリアです。
+    </p>
+    <p>バッファーは通常、他のツールを使用して詳細に分析できるエリアを作成するために使用されます。たとえば、「学校から 1 マイル以内にある建物」という質問に答えるには、学校の周囲 1 マイルのバッファーを作成し、建物フットプリントを含むレイヤーにバッファーをオーバーレイします。最終結果は、学校から 1 マイル以内にある建物のレイヤーになります。
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>バッファーを適用するレイヤーの選択</h2></div>
+        <hr/>
+        <div>
+            <p>バッファー処理するポイント、ライン、またはエリア フィーチャ。
+            </p>
+            <p>マップからレイヤーを選択できるだけでなく、ドロップダウン リストの下部にある  <b>[レイヤーの参照]</b> を選択し、ビッグ データ ファイル共有データセットまたはフィーチャ レイヤーのコンテンツを参照して選択することもできます。  
+            </p>
+        </div>
+    </div>
+    <div id="bufferType">
+        <div><h2>適用するバッファーのタイプを選択します</h2></div>
+        <hr/>
+        <div>
+            <p>入力フィーチャに使用するバッファーのサイズを指定する方法には、次の 3 通りがあります。
+                <ul>
+                    <li>すべてのフィーチャに適用される距離を指定します。
+                    </li>
+                    <li>距離値が格納される入力レイヤー上のフィールドを指定します。文字列フィールドと数値フィールドをどちらも使用できます。距離単位を定義しないと、空間参照の単位が使用されます。地理座標系を使用している場合、単位が指定されていないフィールドはメートル単位と見なされます。
+                    </li>
+                    <li>複数のフィールドと算術演算子を含む条件式を作成します。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>バッファー処理の方法を選択します</h2></div>
+        <hr/>
+        <div>
+            <p> <b>[平面]</b> 方法または <b>[測地線]</b> 方法のどちらを使用するかを選択できます。 <b>[平面]</b> 方法は、処理速度が速く、投影データのローカル分析に適しています。 <b>[測地線]</b> 方法は、大規模なエリアと地理座標系に適しています。
+            </p>
+        </div>
+    </div>
+    <div id="dissolveOption">
+        <div><h2>ディゾルブ方法のタイプを選択します</h2></div>
+        <hr/>
+        <div>
+            <p>ディゾルブ方法を指定するオプション。ディゾルブ方法を選択すると、マルチパート エリアまたはシングルパート エリアを作成するオプションが提供され、指定されたフィールドに基づいて統計情報を計算できます。
+                <ul>
+                    <li> <b>すべて</b> - すべてのフィーチャがディゾルブされます。マルチパート フィーチャが許可されている場合は、すべてのフィーチャが単一のフィーチャにディゾルブされます。マルチパート フィーチャが許可されていない場合は、隣接しているフィーチャまたは重複しているフィーチャがディゾルブされます。
+                    </li>
+                    <li> <b>フィールド</b> - 指定された同じフィールドまたは指定されたフィールドの組み合わせを共有しているフィーチャがディゾルブされます。マルチパート フィーチャが許可されている場合は、同じフィールドを含むすべてのフィーチャが単一のフィーチャにディゾルブされます。マルチパート フィーチャが許可されていない場合は、隣接しているフィーチャまたは重複しているフィーチャのうち、同じフィールド値が指定されたフィーチャがディゾルブされます。
+                    </li>
+                    <li> <b>なし</b> - どのフィーチャもディゾルブされません。これがデフォルトです。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="multipart">
+        <div><h2>マルチパート フィーチャを許可</h2></div>
+        <hr/>
+        <div>
+            <p>結果にシングルパート フィーチャを含めるかマルチパート フィーチャを含めるかを指定するオプション。
+
+            </p>
+            <p>
+                <ul>
+                    <li>オン - 解析の結果にマルチパート フィーチャが含まれます。
+                    </li>
+                    <li>オフ - 解析の結果にシングルパート フィーチャが含まれます。これがデフォルトです。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>統計情報の追加 (オプション)</h2></div>
+        <hr/>
+        <div>
+            <p> 集計されたフィーチャの統計情報を計算することができます。次の数値フィールドを計算に使用できます。
+                <ul>
+                    <li>個数
+                    </li>
+                    <li>平均
+                    </li>
+                    <li>最小
+                    </li>
+                    <li>最大
+                    </li>
+                    <li>範囲
+                    </li>
+                    <li>分散
+                    </li>
+                    <li>標準偏差
+                    </li>
+                </ul>
+                
+            </p>
+            <p>次の文字列フィールドを計算に使用できます。
+                <ul>
+                    <li>個数
+                    </li>
+                    <li>すべて - この統計情報は、指定のフィールドからランダムにサンプリングされた文字列値です。
+                    </li>
+                </ul>
+                すべての統計情報は、NULL 以外の値で計算されます。結果レイヤーには、計算された各統計情報の新しいフィールドが含まれます。属性と統計情報を選択することで、任意の数の統計情報を追加できます。 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>データストアの選択</h2></div>
+        <hr/>
+        <div>
+            <p>結果を保存するデータ ストアを設定するためのプレリリース用の一時的なパラメーターです。どちらのデータ ストアも  ArcGIS Data Store の一部です。ビッグ データ ストアを選択した場合に、このデータ ストアがまだインストールされていないと、このツールは正常に実行されません。 </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>結果レイヤーの名前</h2></div>
+        <hr/>
+        <div>
+            <p>  <b>[マイ コンテンツ]</b> で作成され、マップに追加されるレイヤーの名前です。デフォルトの名前は、ツール名と入力レイヤー名に基づいて設定されます。レイヤーがすでに存在する場合、このツールは正常に実行されません。
+            </p>
+            <p> <b>[出力の保存場所]</b> ドロップダウン ボックスを使用して、結果を保存する <b>[マイ コンテンツ]</b> 内のフォルダーの名前を指定できます。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -38,7 +38,7 @@
             <label class="esriAnalysisStepsLabel">${i18n.analysisLayerLabel}</label>
           </td>
           <td class="shortTextInput" style="padding-bottom:0;">
-            <a href="#" class='esriFloatTrailing helpIcon' esrihelptopic="interpolatePointsInputLayer"></a>
+            <a href="#" class='esriFloatTrailing helpIcon' esrihelptopic="inputPointFeatures"></a>
           </td>
         </tr>
         <tr data-dojo-attach-point="_selectAnalysisRow" style="display:none;">
@@ -86,7 +86,7 @@
         </tr>
         <tr data-dojo-attach-point="_optionsRow">
           <td colspan="2" class="optionsTd">
-            <div class="esriLeadingMargin1 optionsClose" data-dojo-attach-point="_optionsDiv">
+            <div class="optionsClose" data-dojo-attach-point="_optionsDiv">
               <div class="dijitTreeExpando" data-dojo-attach-event="onclick:_handleOptionsBtnClick"><label class="esriLeadingMargin2 noWrapLabel">${i18n.options}</label></div>
               <table class="esriFormTable optionsTable">
                 <tbody>
@@ -137,7 +137,7 @@
             <label data-dojo-attach-point="_celllabel" class="esriAnalysisStepsLabel">${i18n.outputCellsize}</label>
           </td>
           <td class="shortTextInput" style="padding-bottom:0;">
-            <a href="#" class='esriFloatTrailing helpIcon' esrihelptopic="cellSize"></a>
+            <a href="#" class='esriFloatTrailing helpIcon' esrihelptopic="outputCellSize"></a>
           </td>
         </tr>
         <tr>
@@ -175,17 +175,6 @@
                             </td>
                             <td class="shortTextInput">
                               <a href="#" class='esriFloatTrailing helpIcon' esrihelptopic="outputPredictionError"></a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td colspan="2">
-                              <label class="esriSelectLabel">
-                                <div data-dojo-type="dijit/form/CheckBox" data-dojo-attach-point="_diagnosticTableCheck" data-dojo-props="intermediateChanges:true,checked:false"></div>
-                                ${i18n.outputDiagnosticTable}
-                              </label>
-                            </td>
-                            <td class="shortTextInput">
-                              <a href="#" class='esriFloatTrailing helpIcon' esrihelptopic="outputDiagnosticTable"></a>
                             </td>
                           </tr>
                         </tbody>

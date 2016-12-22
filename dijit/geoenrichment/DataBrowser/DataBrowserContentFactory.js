@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.18/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.19/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/dom-class","../_WizardPage","./Breadcrumb","./DataBrowserBase","./DataBrowserManager","./DataCategoriesPage","./DataCollectionsPage","./DataVariablesPage","./DataVariableGrid","dojo/i18n!../../../nls/jsapi"],function(e,a,t,n,r,i,o,s,c,u,d){return e(null,{createManager:function(e){return new i(e)},createBreadcrumb:function(e){return new n(e)},createPage:function(a,n){var i;switch(a){case r.CATEGORIES_PAGE:i=o;break;case r.COLLECTIONS_PAGE:i=s;break;case r.VARIABLES_PAGE:i=c}return new(i=e([t,i],{buildRendering:function(){function e(e){var n=e.toLowerCase(),r=t[n+"Button"];r===!0&&(r=d.geoenrichment.dijit.WizardButtons[n]),r&&a.push({id:n,label:r,onClick:function(){t.emit(e,{bubbles:!1})}})}this.inherited(arguments);var a=[],t=this;e("Cancel"),e("OK"),e("Back"),a.length?this.addButtons(a):this.buttonsNode&&(this.buttonsNode.style.display="none")}}))(n)},createVariableGrid:function(e,a){return new u(e,a)}})});

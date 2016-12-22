@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.18/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.19/esri/copyright.txt for details.
 
 define(["../../declare","dojo/dom-class","dojo/dom-geometry","dojo/dom-construct","dijit/layout/_LayoutWidget"],function(e,t,o,r,i){function s(e){e.style.position="absolute",t.add(e,"GridCell_Measure");var o=e.scrollHeight;return t.remove(e,"GridCell_Measure"),o}function a(e,t,o){var r,i=0;for(r=0;r<e.length;r++)switch(t[r]){case h.AUTO:o-=e[r];break;case h.STRETCH:case h.STACK:i++}if(i>1)throw new Error("Multiple rows with flexible heights are not supported");var s=[0];for(r=0;r<e.length;r++){var a;switch(t[r]){case h.AUTO:a=e[r];break;case h.STRETCH:a=o;break;case h.STACK:a=Math.min(o,e[r])}s.push(s[r]+a)}return s}function d(e,t,o){var r="px",i=e.style;i.top=t+r,i.height=o+r}var h=e("esri.dijit.geoenrichment.Grid",[i],{_placeholder:null,layout:function(){var e,i,h,l=this.getChildren(),n=[];for(e=0;e<this.rows.length;e++)n.push(0);t.add(this.domNode,"Grid_Measure");var c=[];for(e=0;e<l.length;e++){i=l[e],h=i.row;var u=s(i.domNode);c.push(u),u>n[h]&&(n[h]=u)}var g=o.getContentBox(this.domNode).h;t.remove(this.domNode,"Grid_Measure");var m=a(n,this.rows,g);for(e=0;e<l.length;e++)i=l[e],h=i.row,d(i.domNode,m[h],m[h+1]-m[h]);this._placeholder||(this._placeholder=r.create("div",null,this.domNode)),this._placeholder.style.height=m[m.length-1]+"px"}});return h.AUTO="auto",h.STRETCH="stretch",h.STACK="stack",h});

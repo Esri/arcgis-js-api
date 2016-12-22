@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Iekšēja apkopošana</h2><p/>
+        <h2><img src="../images/GUID-90E0CB1F-EB97-4752-B2EE-452B7B45475E-web.png" alt="Iek&scaron;ēja apkopo&scaron;ana"></h2>
+        <hr/>
+    <p>&Scaron;is rīks atrod elementus (un elementu daļas), kas atrodas apgabalu robežās pirmajā ievades slānī.   
+        <ul>
+            <li>Ņemot vērā ūdens&scaron;ķirtnes robežu slāni un zemes lieto&scaron;anas robežu slāni, aprēķina kopējo zemes lieto&scaron;anas veida platību akros katrai ūdens&scaron;ķirtnei. 
+            </li>
+            <li>Ņemot zemes gabalu slāni un novada un pilsētas robežu slāni, apkopot vidējo brīvo zemes gabalu vērtību katras pilsētas robežās.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Ja atzīmēts  <b>Lietot pa&scaron;reizējo kartes pārklājumu</b>, tiks analizēti tikai tie analīzes slāņa un apkopojamā slāņa elementi, kas ir redzami pa&scaron;reizējā kartes pārklājumā.  Ja nav atzīmēts, tiks analizēti visi elementi ievades slānī un apkopo&scaron;anas slānī, arī pa&scaron;reizējā kartes pārklājuma ārpusē.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="sumWithinLayer">
+        <div><h2>Izvēlieties apgabala slāni, lai tā robežās apkopotu citus elementus</h2></div>
+        <hr/>
+        <div>
+            <p>Apgabala slānis, kas tiks izmantots, lai apkopotu elementus, kas atrodas tā robežās. Jūs varat izvēlēties veidot kopsavilkumu pa&scaron;a sagādātā laukuma slānī vai kvadrātveida vai se&scaron;stūrveida nodalījumos, kas tiek ģenerēti rīka darbinā&scaron;anas laikā.  Ģenerējot nodalījumus,  <b>kvadrātam</b> norādītais skaitlis un mērvienības nosaka kvadrāta augstumu un garumu. <b>Se&scaron;stūrim</b> norādītais skaitlis un mērvienības nosaka attālumu starp paralēlajām skaldnēm.
+            </p>
+            <p>Papildus slāņa izvēlei kartē, varat izvēlēties  <b>Pārlūkot slāņus</b> nolaižamā saraksta apak&scaron;ā, lai saturā atrastu lielo datu koplietojuma datu kopu vai elementu slāni.  
+            </p>
+        </div>
+    </div>
+    <div id="summaryLayer">
+        <div><h2>Izvēlieties slāni, ko apkopot</h2></div>
+        <hr/>
+        <div>
+            <p>Tiks veidots to &scaron;ī slāņa elementu kopsavilkums, kas atrodas iepriek&scaron; minētā ievades slāņa elementu vai nodalījumu robežās. 
+            </p>
+            <p>Papildus slāņa izvēlei kartē, varat izvēlēties  <b>Pārlūkot slāņus</b> nolaižamā saraksta apak&scaron;ā, lai saturā atrastu lielo datu koplietojuma datu kopu vai elementu slāni.  
+            </p>
+        </div>
+    </div>
+    <div id="inputBins">
+        <div><h2>Izvēlieties attālumu, lai ģenerētu nodalījumus un tajos savāktu</h2></div>
+        <hr/>
+        <div>
+            <p>Attālums, kas izmantots, lai ģenerētu nodalījumus.  
+            </p>
+            <p>Ir jāiestata  <b>Nodalījuma lielums</b> nodalījumiem vai <b>Apgabalu slānis</b>.
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Savākt, izmantojot laika sektorus (pēc izvēles)</h2></div>
+        <hr/>
+        <div>
+            <p>Ja ievades punktu slānī ir iespējots laiks, kura veids ir tūlītējs, varat analizēt, lietojot laika sektorus. Lietojot laiku varat iestatīt trīs parametrus:
+                <ul>
+                    <li>  <b>Laika intervāls</b>
+                    </li>
+                    <li> <b>Laika posms</b>
+                    </li>
+                    <li> <b>Atsauces laiks</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Iedomājieties, ka dati apzīmē gadu un vēlaties analizēt, lietojot nedēļu sektorus. Lai to paveiktu, nepiecie&scaron;ams iestatīt  <b>Laiku intervālu</b> kā <code>1&nbsp;nedēļu</code>.
+            </p>
+            <p> Iedomājieties, ka dati apzīmē gadu un vēlaties analizēt, lietojot pirmo mēne&scaron;a nedēļu. Lai to paveiktu, nepiecie&scaron;ams iestatīt <b>Laika intervālu</b> kā <code>1&nbsp;nedēļu</code>, <b>Laika posmu</b> kā <code>1&nbsp;mēnesi</code> un <b>Atsauces laiku</b> kā <code>1.&nbsp;janvāris, 12.00</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>Laika intervāls, kurā jāsavāc</h2></div>
+        <hr/>
+        <div>
+            <p>Datu sektoru izveidei lietotais laika intervāls. Laika intervālu var lietot atsevi&scaron;ķi vai kopā ar  <b>Laika posma</b> vai <b>Atsauces laika</b> parametru.
+            </p>
+            <p> Ja vēlaties izveidot laika sektorus, kas notiek katru pirmdienu, laikā no 9.00 līdz 10.00, <b>Laika intervāla</b> vērtībai jābūt <code>1&nbsp;stundai</code>, <b>Laika posma</b> vērtībai jābūt <code>1&nbsp;nedēļai</code> un <b>Atsauces laika vērtībai</b> jābūt <code>9.00.00 pirmdienā</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>Laika periods, kurā jāsavāc</h2></div>
+        <hr/>
+        <div>
+            <p> Laika sektora aprēķinam lietotais solis. Parametru <b>Laika solis</b> var lietot atsevi&scaron;ķi vai kopā ar parametru <b>Laika intervāls</b>, ar parametru <b>Atsauces laiks</b>, vai arī parametru <b>Laika intervāls</b> un <b>Atsauces laiks</b>.
+            </p>
+            <p> Ja vēlaties izveidot laika sektorus, kas notiek katru pirmdienu, laikā no 9.00 līdz 10.00, <b>Laika intervāla</b> vērtībai jābūt <code>1&nbsp;stundai</code>, <b>Laika posma</b> vērtībai jābūt <code>1&nbsp;nedēļai</code> un <b>Atsauces laika vērtībai</b> jābūt <code>9.00.00 pirmdienā</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Atskaites laiks, kas izmantots laika sektoru līdzināšanai</h2></div>
+        <hr/>
+        <div>
+            <p>Laiks un datums, kas izmantots laika sektoru līdzinā&scaron;anai.  <b>Laika posms</b> sāksies no un tiks skaitīts atpakaļ atsauces laikam.
+            </p>
+            <p> Ja vēlaties izveidot laika sektorus, kas notiek katru pirmdienu, laikā no 9.00 līdz 10.00, <b>Laika intervāla</b> vērtībai jābūt <code>1&nbsp;stundai</code>, <b>Laika posma</b> vērtībai jābūt <code>1&nbsp;nedēļai</code> un <b>Atsauces laika vērtībai</b> jābūt <code>9.00.00 pirmdienā</code>.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Pievienojiet statistiku no slāņa, kam jāveido kopsavilkums (neobligāti)</h2></div>
+        <hr/>
+        <div>
+            <p> Varat aprēķināt apkopoto elementu statistiku. Ciparu laukos iespējams aprēķināt &scaron;ādas vērtības:
+                <ul>
+                    <li>Skaits
+                    </li>
+                    <li>Vidējais
+                    </li>
+                    <li>Min.
+                    </li>
+                    <li>Maks.
+                    </li>
+                    <li>Diapazons
+                    </li>
+                    <li>Novirze
+                    </li>
+                    <li>Standarta novirze
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Virkņu laukos iespējams aprēķināt &scaron;ādas vērtības:
+                <ul>
+                    <li>Skaits
+                    </li>
+                    <li>Jebkāda. &Scaron;ī statistika ir nejau&scaron;s virknes vērtības paraugs norādītajā laukā.
+                    </li>
+                </ul>
+                Jebkāda statistika tiek aprēķināta no vērtībām, kas nav nulle. Rezultātu slānī ir ietverts jauns lauks par katru aprēķināto statistiku. Jebkurus statistikas datus var pievienot, izvēloties atribūtu un statistikas datus. 
+            </p>
+            <p>Papildus &scaron;ai statistikai tiks aprēķināta proporciju statistika visiem ciparu laukiem:
+                <ul>
+                    <li>Skaits&nbsp;&mdash; katra lauka skaita reizinājums ar kopsavilkuma slāņa daļu laukumos. 
+                    </li>
+                    <li>Summa&nbsp;&mdash; katra lauka svērto vērtību summa. Lietotais svars ir kopsavilkuma slāņa daļa laukumos.
+                    </li>
+                    <li>Vidējais&nbsp;&mdash; katra lauka vērtību svērtā vidējā vērtība. Lietotais svars ir kopsavilkuma slāņa daļa laukumos.
+                    </li>
+                    <li>Minimālais skaits&nbsp;&mdash; svērto vērtību minimālais skaits katrā laukā. Lietotais svars ir kopsavilkuma slāņa daļa laukumos.
+                    </li>
+                    <li>Maksimālais skaits&nbsp;&mdash; svērto vērtību maksimālais skaits katrā laukā. Lietotais svars ir kopsavilkuma slāņa daļa laukumos.
+                    </li>
+                    <li>Diapazons&nbsp;&mdash; maksimālo un minimālo svērto vērtību starpība.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Atkarībā no to elementu veida, kam jāveido kopsavilkums, varat aprēķināt kopējo tuvumā eso&scaron;o punktu skaitu, kopējo līniju garumu vai kopējo platību.
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>SpatialReference (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>Tas ir pagaidu pirmsizlaides parametrs, lai iestatītu apstrādes telpisko atskaiti. Daudziem lielo datu rīkiem nepiecie&scaron;ams apstrādei kā telpisko atskaiti lietot projekcijas koordinātu sistēmu. Pēc noklusējuma rīks lietos ievades koordinātu sistēmu, bet tas pārstās darboties, ja tā ir ģeogrāfisko koordinātu sistēma. Lai iestatītu projekcijas koordinātu sistēmu, ievadiet WKID. Piemēram,  <b>Web Mercator</b> jāievada kā <code>3857</code>.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Izvēlēties datu krātuvi</h2></div>
+        <hr/>
+        <div>
+            <p>Tas ir pagaidu pirmsizlaides parametrs, kas paredzēts rezultātu saglabā&scaron;anas datu krātuves iestatī&scaron;anai. Abas datu krātuves ir daļa no  ArcGIS datu krātuve. Ja izvēlaties telpas un laika datu krātuvi, bet tā nav instalēta, rīks pārstās darboties. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Rezultātu slāņa nosaukums</h2></div>
+        <hr/>
+        <div>
+            <p> &Scaron;is ir slāņa nosaukums, kas tiks izveidots sadaļā <b>Mans Saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja slānis jau pastāv, rīks pārstās darboties.
+            </p>
+            <p>Lietojot  <b>Saglabāt rezultātus</b> nolaižamajā sarakstlodziņā, jūs varat norādīt nosaukumu mapē <b>Mans saturs</b>, kur tiks saglabāti rezultāti.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

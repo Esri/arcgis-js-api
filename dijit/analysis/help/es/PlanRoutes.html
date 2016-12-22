@@ -46,7 +46,7 @@
         <hr/>
     <p>Planificar rutas determina la manera de dividir las tareas con eficiencia entre los integrantes de una plantilla m&oacute;vil.
     </p>
-    <p>Debes proporcionar a la herramienta un conjunto de paradas y el n&uacute;mero de veh&iacute;culos disponibles para visitarlas. La herramienta asigna las paradas a los veh&iacute;culos y genera rutas en las que se muestra c&oacute;mo puede llegar cada veh&iacute;culo a las paradas asignadas en el menor tiempo posible.
+    <p>Debe proporcionar a la herramienta un conjunto de paradas y el n&uacute;mero de veh&iacute;culos disponibles para visitarlas. La herramienta asigna las paradas a los veh&iacute;culos y genera rutas en las que se muestra c&oacute;mo puede llegar cada veh&iacute;culo a las paradas asignadas en el menor tiempo posible.
     </p>
     <p>Con Planificar rutas, los trabajadores m&oacute;viles pueden llegar a m&aacute;s ubicaciones en menos tiempo, lo que aumenta la productividad y mejora el servicio al cliente.
         <ul>
@@ -151,7 +151,7 @@ Si no se ha activado, se tendr&aacute;n en cuenta todas las entidades de la capa
         <div>
             <p>Este es uno de los dos par&aacute;metros que equilibran la carga de trabajo total entre las rutas. Puedes especificar un valor comprendido entre 1 y  200. 
             </p>
-            <p>Si reduces el n&uacute;mero m&aacute;ximo de paradas que se pueden asignar a cada veh&iacute;culo, es m&aacute;s probable que el n&uacute;mero de paradas asignadas sea el mismo para cada uno de ellos. Esto ayuda a equilibrar la carga de trabajo entre los conductores. La desventaja, sin embargo, es que puede generar una soluci&oacute;n que sea menos eficiente.
+            <p>Si reduce el n&uacute;mero m&aacute;ximo de paradas que se pueden asignar a cada veh&iacute;culo, es m&aacute;s probable que el n&uacute;mero de paradas asignadas sea el mismo para cada uno de ellos. Esto ayuda a equilibrar la carga de trabajo entre los conductores. La desventaja, sin embargo, es que puede generar una soluci&oacute;n que sea menos eficiente.
             </p>
             <p>Si se incrementan las paradas por veh&iacute;culo, la herramienta tiene m&aacute;s libertad para encontrar soluciones m&aacute;s eficientes; sin embargo, la carga de trabajo podr&iacute;a distribuirse de un modo desigual entre los conductores y los veh&iacute;culos. Puedes equilibrar las cargas de trabajo por tiempo y por n&uacute;mero de paradas especificando un valor para el par&aacute;metro  <b>Limitar el tiempo de ruta total por veh&iacute;culo</b>.
             </p>
@@ -215,10 +215,11 @@ Si no se ha activado, se tendr&aacute;n en cuenta todas las entidades de la capa
         <div><h2>Nombre de capa de resultados</h2></div>
         <hr/>
         <div>
-            <p>Es el nombre de la capa de grupo que se crear&aacute; en  <b>Mi contenido</b>
-y se agregar&aacute; al mapa. La capa de grupo contendr&aacute; una capa para cada uno de los elementos siguientes: rutas, paradas e indicaciones.
+            <p>El nombre de la capa de entidades que se crear&aacute; en  <b>Mi contenido</b> y se agregar&aacute; al mapa. Si la capa de entidades ya existe, se le pedir&aacute; que indique otro nombre. La capa de entidades contendr&aacute; una capa para cada uno de los elementos siguientes: rutas, paradas asignadas y paradas sin asignar si alguna parada de entrada no se pudo asignar a ninguna ruta.
             </p>
-            <p>En la lista desplegable  <b>Guardar resultado en</b>, puedes especificar el nombre de una carpeta de <b>Mi contenido</b> en la que se guardar&aacute; el resultado.
+            <p>Si selecciona  <b>Incluir capas de rutas</b>, cada ruta del resultado se guarda tambi&eacute;n como una capa de rutas. Una capa de rutas incluye toda la informaci&oacute;n para una determinada ruta como, por ejemplo, las paradas asignadas a la ruta y las direcciones del viaje. Crear capas de rutas resulta &uacute;til si desea compartir rutas concretas con otros miembros de la organizaci&oacute;n o si desea modificar a&uacute;n m&aacute;s las rutas utilizando el bot&oacute;n <b>Direcciones</b> del visor de mapas. Las capas de rutas utilizan el nombre proporcionado para la capa de entidades como un prefijo y el nombre de ruta generado como parte del an&aacute;lisis se agrega para crear un nombre &uacute;nico para cada capa de rutas.
+            </p>
+            <p>En la lista desplegable  <b>Guardar resultado en</b>, puede especificar el nombre de una carpeta de <b>Mi contenido</b> en la que se guardar&aacute;n la capa de entidades y las capas de rutas, si se han creado.
             </p>
         </div>
     </div>

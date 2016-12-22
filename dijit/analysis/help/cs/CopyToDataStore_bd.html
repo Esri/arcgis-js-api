@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Kopírovat do datového úložiště</h2><p/>
+        <h2><img src="../images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" alt="Kop&iacute;rovat do datov&eacute;ho &uacute;loži&scaron;tě"></h2>
+        <hr/>
+    <p>Tento n&aacute;stroj vezme vstupn&iacute; vrstvu a zkop&iacute;ruje ji do datov&eacute;ho &uacute;loži&scaron;tě. Data budou zkop&iacute;rov&aacute;na do  ArcGIS Data Store a budou uložena ve va&scaron;em relačn&iacute;m nebo časoprostorov&eacute;m datov&eacute;m &uacute;loži&scaron;ti. </p>
+    <p>Např&iacute;klad můžete zkop&iacute;rovat prvky, kter&eacute; jsou uloženy ve  <code>sd&iacute;len&eacute;m souboru velk&yacute;ch dat,</code> do <code>&uacute;loži&scaron;tě relačn&iacute;ch dat</code> a určit, aby byly zkop&iacute;rov&aacute;ny pouze prvky uvnitř současn&eacute;ho rozsahu mapy. Vytvoř&iacute;te t&iacute;m hostovanou službu prvků obsahuj&iacute;c&iacute; pouze ty prvky, kter&eacute; se nach&aacute;zely v určen&eacute;m rozsahu mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Zvolit vrstvu pro kopírování</h2></div>
+        <hr/>
+        <div>
+            <p>Vrstva nebo tabulka, kter&aacute; bude zkop&iacute;rov&aacute;na. 
+            </p>
+            <p>Kromě v&yacute;běru vrstvy z&nbsp;mapy můžete tak&eacute; zvolit položku  <b>Proch&aacute;zet vrstvy</b> kter&aacute; se nach&aacute;z&iacute; v&nbsp;doln&iacute; č&aacute;sti rozbalovac&iacute; nab&iacute;dky, abyste ve sv&eacute;m obsahu mohli naj&iacute;t vrstvu prvků nebo datovou sadu sd&iacute;len&yacute;ch souborů velk&yacute;ch dat.  
+            </p>
+        </div>
+    </div>
+    <div id="outputDataStore">
+        <div><h2>Zvolit datové úložiště ArcGIS jako cíl kopírování</h2></div>
+        <hr/>
+        <div>
+            <p> Datov&eacute; &uacute;loži&scaron;tě, do kter&eacute;ho se vrstva zkop&iacute;ruje. Možnosti jsou n&aacute;sleduj&iacute;c&iacute;:
+                <ul>
+                    <li> <b>Časoprostorov&eacute;</b> &ndash; Toto je v&yacute;choz&iacute; hodnota.
+                    </li>
+                    <li> <b>Relačn&iacute;</b>.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Název výsledné vrstvy</h2></div>
+        <hr/>
+        <div>
+            <p> Toto je n&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce <b>Můj obsah</b> a přid&aacute; do mapy.  V&yacute;choz&iacute; n&aacute;zev se ř&iacute;d&iacute; n&aacute;zvem n&aacute;stroje a n&aacute;zvem vstupn&iacute; vrstvy. Pokud vrstva již existuje, n&aacute;stroj selže.
+            </p>
+            <p>V rozbalovac&iacute;m seznamu  <b>Uložit v&yacute;sledek do</b> můžete zadat n&aacute;zev složky ve složce <b>Můj obsah</b>, do kter&eacute; se m&aacute; v&yacute;sledek uložit.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

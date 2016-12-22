@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Ühenda objektid</h2><p/>
+        <h2><img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" alt="&Uuml;henda objektid"></h2>
+        <hr/>
+    <p>Objektide &uuml;hendamise toiming t&ouml;&ouml;tab kahe kihiga. T&ouml;&ouml;riist &bdquo;&Uuml;henda objektid&rdquo; &uuml;hendab &uuml;he objekti atribuudid teisega ruumiliste, ajaliste ja atribuutide seoste v&otilde;i nende kolme kombinatsiooni p&otilde;hjal. T&ouml;&ouml;riist teeb kindlaks k&otilde;ik sisendobjektid, mis vastavad m&auml;&auml;ratud &uuml;hendamistingimustele ja &uuml;hendab teise sisendkihi esimesega. Soovi korral saate &uuml;hendada k&otilde;ik objektid &uuml;hilduvate objektidega v&otilde;i summeerida &uuml;hilduvad objektid.
+    </p>
+    <p>T&ouml;&ouml;rista &bdquo;&Uuml;henda objektid&rdquo; saab kasutada punktide, joonte, alade ja tabelitega. Ajaline &uuml;hendamine n&otilde;uab, et sisendandmed oleksid ajateadlikud ja ruumiline &uuml;hendamine n&otilde;uab, et andmed sisaldaksid geomeetriat. 
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="targetLayer">
+        <div><h2>Valige kiht, millele objekte ühendada</h2></div>
+        <hr/>
+        <div>
+            <p>Kiht, millega objekte &uuml;hendatakse. 
+            </p>
+            <p>Lisaks kihi valimisele kaardil saate valida ripploendi alumises servas  <b>Sirvi kihte</b>, et otsida oma sisust suurandmete failiketta andmestikku v&otilde;i objektikihti.  
+            </p>
+        </div>
+    </div>
+    <div id="joinLayer">
+        <div><h2>Vali ühendamiseks kiht</h2></div>
+        <hr/>
+        <div>
+            <p>Kiht, mis &uuml;hendatakse esimese sisendkihiga.
+            </p>
+            <p>Lisaks kihi valimisele kaardil saate valida ripploendi alumises servas  <b>Sirvi kihte</b>, et otsida oma sisust suurandmete failiketta andmestikku v&otilde;i objektikihti.  
+            </p>
+        </div>
+    </div>
+    <div id="joinOperation">
+        <div><h2>Valige ühendamistoiming</h2></div>
+        <hr/>
+        <div>
+            <p>See m&auml;&auml;rab, kuidas sisendkihtide vahelisi &uuml;hendamisi v&auml;ljundis k&auml;sitletakse, kui mitmel &uuml;hendataval objektil on &uuml;hendatava kihiga samasugune seos. Saadaval on kaks &uuml;hendamisv&otilde;imalust.
+                <ul>
+                    <li> <b>&Uuml;henda &uuml;ks &uuml;hele</b> &ndash; see toiming &uuml;hendab k&otilde;ik &uuml;hilduvad objektid &uuml;hendamiskihiga.
+                    </li>
+                    <li> <b>&Uuml;henda &uuml;ks mitmele</b> &ndash; see toiming summeerib k&otilde;ik &uuml;hilduvad objektid iga &uuml;hendatava objektiga.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Oletame n&auml;iteks, et soovime leida k&otilde;ik kaubamajad, mis j&auml;&auml;vad turust 5 kilomeetri raadiusesse. Sellisel juhul on &uuml;hendataval kihil &uuml;ks objekt, mis t&auml;histab turgu ja &uuml;hendatavad objektid t&auml;histavad kohalikke toidupoode, millel on n&auml;iteks atribuut aastane kogul&auml;bim&uuml;&uuml;k.  <b>Objektide &uuml;hendamise t&ouml;&ouml;riista</b> abil leiame, et viis toidupoodi vastavad sellele kriteeriumile. Kui kasutaksime &uuml;hendamistoimingut <b>&Uuml;henda &uuml;ks &uuml;hele</b>, saaksime tulemuseks viis objekti, kus iga rida t&auml;histab turgu ja kaubamaja. Kui kasutaksime toimingut <b>&Uuml;henda &uuml;ks mitmele</b>, saaksime tulemuseks &uuml;he objekti, mis t&auml;histab turgu ja sisaldab kaubamajade teabe kokkuv&otilde;tet (nt arv (5)) ning muud statistikat (nt aastast kogul&auml;bim&uuml;&uuml;ki).
+            </p>
+        </div>
+    </div>
+    <div id="joinOptions">
+        <div><h2>Valige ühendustüüp</h2></div>
+        <hr/>
+        <div>
+            <p>Kasutada saab &uuml;hte, kahte v&otilde;i kolme &uuml;hendust&uuml;&uuml;pi. &Uuml;hendust&uuml;&uuml;bid on j&auml;rgmised. 
+                <ul>
+                    <li> <b>Ruumiline</b> &ndash; kasutab objektide &uuml;hendamiseks m&auml;&auml;ratletud ruumilist seost. See n&otilde;uab, et m&otilde;lemad kihid sisaldaksid geomeetriat.
+                    </li>
+                    <li> <b>Ajaline</b> &ndash; kasutab objektide &uuml;hendamiseks ajalist seost. See n&otilde;uab, et m&otilde;lemas kihis oleks aeg lubatud.
+                    </li>
+                    <li> <b>Atribuut</b> &ndash; kasutab objektide &uuml;hendamiseks &uuml;hesuguseid v&auml;lju.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>
+            </p>
+        </div>
+    </div>
+    <div id="spatialRelationship">
+        <div><h2>Ruumiline ühendamine</h2></div>
+        <hr/>
+        <div>
+            <p> Ruumiline seos, mis m&auml;&auml;rab, kas objektid &uuml;hendatakse. Saadaolevad seosed olenevad sellest, mis t&uuml;&uuml;pi geomeetriat (punkt, murdjoon, pol&uuml;goon) sisendobjektide jaoks kasutatakse. Saadaolevate seoste hulka kuuluvad j&auml;rgmised seosed.
+                <ul>
+                    <li> <b>L&otilde;ikub</b> &ndash; objektid vastendatakse, kui need l&otilde;ikuvad omavahel.
+                    </li>
+                    <li> <b>V&otilde;rdub</b> &ndash; objektid vastendatakse, kui neil on &uuml;hesugune geomeetria.
+                    </li>
+                    <li> <b>L&auml;hedal</b> &ndash; objektid vastendatakse, kui need on &uuml;ksteisest m&auml;&auml;ratud kaugusel.
+                    </li>
+                    <li> <b>Sisaldab</b> &ndash; objektid vastendatakse, kui kiht, millega &uuml;hendatakse, sisaldub &uuml;hendatavates objektides.
+                    </li>
+                    <li> <b>Sees</b> &ndash; objektid vastendatakse, kui kiht, millega &uuml;hendatakse, on &uuml;hendatavate objektide sees.
+                    </li>
+                    <li> <b>Puudutab</b> &ndash; objektid vastendatakse, kui nende piir puutub kokku objektiga, millega neid &uuml;hendatakse.
+                    </li>
+                    <li> <b>Ristub</b> &ndash; objektid vastendatakse, kui nende piirjooned ristuvad.
+                    </li>
+                    <li> <b>Kattub</b> &ndash; objektid vastendatakse, kui need kattuvad.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="nearSpatial">
+        <div><h2></h2></div>
+        <hr/>
+        <div>
+            <p>See vahemaa m&auml;&auml;rab raadiuse, mida rakendatakse ruumilise l&auml;hiseose korral.
+            </p>
+            <p>Oletame, et teil on andmestik, mis t&auml;histab tuumaelektrijaama ja andmestik, mis t&auml;histab elumajasid. Saaksite m&auml;&auml;rata l&auml;heduse jaoks &uuml;hekilomeetrise kauguse, et leida tuumaelektrijaamast 1 km raadiuses olevad majad. 
+            </p> 
+        </div>
+    </div>
+    <div id="temporalRelationship">
+        <div><h2>Ajaline ühendamine</h2></div>
+        <hr/>
+        <div>
+            <p>Ajaline seos, mis m&auml;&auml;rab, kas objektid &uuml;hendatakse. See suvand on saadaval ainult siis, kui m&otilde;lemas kihis on aeg lubatud ja saadaolevad seosed s&otilde;ltuvad sisendobjektide jaoks kasutusel olevast aja t&uuml;&uuml;bist (jooksev v&otilde;i intervall). Saadaolevate seoste hulka kuuluvad j&auml;rgmised seosed.
+                <ul>
+                    <li> <b>Vastab</b> &ndash; objektid vastendatakse, kui esimene objekt vastab teisele.
+                    </li>
+                    <li> <b>Vastab:</b> &ndash; objektid vastendatakse, kui teine objekt vastab esimestele.
+                    </li>
+                    <li> <b>Kattub</b> &ndash; objektid vastendatakse, kui esimene objekt kattub teisega.
+                    </li>
+                    <li> <b>Kaetud:</b> &ndash; objektid vastendatakse, kui teine objekt kattub esimestega.
+                    </li>
+                    <li> <b>Jooksul</b> &ndash; objektid vastendatakse, kui esimesed objektid toimuvad teise jooksul.
+                    </li>
+                    <li> <b>Sisaldab</b> &ndash; objektid vastendatakse, kui esimene objekt sisaldab teist.
+                    </li>
+                    <li> <b>V&otilde;rdub</b> &ndash; objektid vastendatakse, kui esimene ja teine objekt on v&otilde;rdsed.
+                    </li>
+                    <li> <b>L&otilde;peb</b> &ndash; objektid vastendatakse, kui esimene objekt l&otilde;petab teise.
+                    </li>
+                    <li> <b>L&otilde;petas:</b> &ndash; objektid vastendatakse, kui teine objekt l&otilde;petab esimesed.
+                    </li>
+                    <li> <b>K&auml;ivitub</b> &ndash; objektid vastendatakse, kui esimene objekt k&auml;ivitab teise.
+                    </li>
+                    <li> <b>K&auml;ivitaja:</b> &ndash; objektid vastendatakse, kui teine objekt k&auml;ivitab esimesed.
+                    </li>
+                    <li> <b>L&otilde;ikub</b> &ndash; objektid vastendatakse, kui nende ajad l&otilde;ikuvad.
+                    </li>
+                    <li> <b>L&auml;hedal</b> &ndash; objektid &uuml;hendatakse, kui need on m&auml;&auml;ratud ajal &uuml;ksteise l&auml;hedal.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="nearTemporal">
+        <div><h2></h2></div>
+        <hr/>
+        <div>
+            <p>See ajaline vahemaa m&auml;&auml;rab raadiuse, mida rakendatakse ajalise l&auml;hiseose korral.
+            </p>
+            <p>Oletame, et teil on paadi&otilde;nnetuste kiht ja orkaani GPS-radade kiht. V&otilde;ite otsida paadi&otilde;nnetusi, mis j&auml;&auml;vad orkaani radadest kindla ruumilise (1 kilomeeter) ja ajalise (5 tundi) vahemaa kaugusele. Selle tulemusena &uuml;hendatakse paadi&otilde;nnetused orkaanidega, mis leidsid aset ruumiliselt ja ajaliselt l&auml;hestikku. 
+            </p>
+        </div>
+    </div>
+    <div id="attributeRelationship">
+        <div><h2>Atribuutidega ühendamine</h2></div>
+        <hr/>
+        <div>
+            <p>See seos vastendab &uuml;he kihi v&auml;lja v&auml;&auml;rtused teise kihi v&auml;lja v&auml;&auml;rtustega. 
+            </p>
+            <p> N&auml;iteks teil on &uuml;leriigiline geograafiline elumajade aadresside kiht (sh v&auml;li <i>SIHTNUMBER</i>) ja tabeli kujul andmestik demograafiliste terviseandmetega vastavalt sihtnumbrile (v&auml;li nimega <i>TERVISSIHTNUMBER</i>). Saate &uuml;hendada tervise andmestiku elumajade andmetega, vastendades v&auml;lja <i>SIHTNUMBER</i> v&auml;ljaga <i>TERVISSIHTNUMBER</i>. Tulemuseks on vastavate terviseandmetega elumajade kiht.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Lisa statistika (valikuline)</h2></div>
+        <hr/>
+        <div>
+            <p>Kui valisite toimingu &bdquo;&Uuml;henda &uuml;ks mitmele&ldquo;, saate arvutada &uuml;hendatud objektide statistika.
+            </p>
+        </div>
+    </div>
+    <div id="joinCondition">
+        <div><h2>Sisestage tingimuslause, mille alusel objekte ühendada (valikuline)</h2></div>
+        <hr/>
+        <div>
+            <p>Rakendab m&auml;&auml;ratud v&auml;ljadele tingimuse. &Uuml;hendatakse ainult nende v&auml;ljadega objektid, mis vastavad tingimustele.
+            </p>
+            <p>Oletame n&auml;iteks, et soovime andmestikus &uuml;hendada ainult need objektid, mille puhul on v&auml;lja  <i>health_spending</i> v&auml;&auml;rtus suurem kui 20% v&auml;lja <i>income</i> v&auml;&auml;rtusest.  Selleks rakendame &uuml;hendamistingimuse <code>target.health_spending &gt; (join.income * .20)</code> esimese andmestiku (andmestik, millega objekte &uuml;hendatakse) v&auml;ljale <i>health_spending</i> ja teise andmestiku (andmestik, mida &uuml;hendatakse) v&auml;ljale <i>income</i>.
+            </p>
+            <p>&Uuml;hendamistingimusi saab rakendada tingimuste kalkulaatori abil.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Vali andmeladu</h2></div>
+        <hr/>
+        <div>
+            <p>See on ajutine parameeter eelversioonile, et m&auml;&auml;rata tulemuste salvestamiseks andmeladu. M&otilde;lemad andmelaod kuuluvad  ArcGIS-i andmeladu&rsquo;i juurde. Kui valite ajalisruumilise andmelao, kuid seda pole installitud, siis t&ouml;&ouml;tlemine nurjub. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tulemkihi nimi</h2></div>
+        <hr/>
+        <div>
+            <p> See on selle kihi nimi, mis luuakse jaotises <b>Minu sisu</b> ja lisatakse kaardile.  Vaikenimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui see kiht on juba olemas, siis t&ouml;&ouml;tlemine nurjub.
+            </p>
+            <p>Kasutades rippmen&uuml;&uuml;d  <b>Salvesta tulemused</b>, saate jaotises <b>Minu sisu</b> m&auml;&auml;rata kausta nime, kuhu tulemused salvestatakse.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

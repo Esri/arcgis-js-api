@@ -41,11 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="aoToolbox">
-        <p>The Feature Analysis toolbox contains a number
-of tools that you can access and use.  These tasks are arranged below into
-categories; the categories are simply logical groupings
-and do not affect how you access or use the tasks in any
-way.
+        <p>La casella degli strumenti Analizza feature contiene diversi strumenti disponibili per l'utilizzo.  Queste attivit&agrave; sono organizzate in categorie, ovvero semplici raggruppamenti logici che non influiscono sul modo in cui si accede a tali attivit&agrave; o le si utilizza.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="regularsize">
@@ -54,6 +50,8 @@ way.
         <p>Questi strumenti consentono di calcolare totali, lunghezze, aree e statistiche descrittive di base di feature e dei relativi attributi in aree o altre feature vicine.
             <ul>
                 <li> <b>Aggrega punti</b> consente di calcolare le statistiche su punti inclusi in aree specificate.
+                </li>
+                <li> <b>Join delle feature</b> consente di trasferire attributi da un layer o una tabella in un'altra in base a relazioni spaziali o di attributi.
                 </li>
                 <li> <b>Riepiloga nelle vicinanze</b> consente di calcolare le statistiche per feature e per i relativi attributi entro una distanza specificata.
                 </li>
@@ -81,6 +79,32 @@ way.
                     <li>Date le posizioni dei punti relativi a reati, &egrave; possibile calcolare il numero di reati per regione o per un altro tipo di distretto amministrativo.
                     </li>
                     <li>&Egrave; possibile calcolare i ricavi minimi e massimi di negozi in franchising in base alla provincia.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="JoinFeaturesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Join delle feature</h2></td>
+                    <td>
+                    <img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" class="titleImage" alt="Join delle feature">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Join delle feature consente di trasferire attributi da un layer o una tabella in un'altra in base a relazioni spaziali o di attributi. Ad esempio:
+                <ul>
+                    <li>Aggiungere confini comuni o informazioni demografiche ai dati relativi agli incidenti.
+                    </li>
+                    <li>Identificare i servizi pi&ugrave; vicini a una posizione nota.
+                    </li>
+                    <li>Determinare il numero di edifici residenziali che si trovano in zone alluvionali.
+                    </li>
+                    <li>Identificare habitat comuni per diverse specie selvagge.
                     </li>
                 </ul>
                 
@@ -297,6 +321,8 @@ way.
                 </li>
                 <li> <b>Trova hot spot</b> consente di identificare cluster di rilevanza statistica nel modello spaziale dei dati.
                 </li>
+                <li> <b>Trova outlier</b> consente di determinare la presenza di outlier statisticamente rilevanti nel modello spaziale dei dati.
+                </li>
                 <li> <b>Interpolazione punti</b> consente di prevedere i valori in corrispondenza di nuove posizioni sulla base delle misurazioni trovate in una raccolta di punti.
                 </li>
             </ul>
@@ -324,12 +350,27 @@ way.
                 <tbody><tr>
                     <td><h2>Trova hot spot</h2></td>
                     <td>
-                    <img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" class="titleImage" alt="Trova hot spot">
+                    <img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" class="titleImage" alt="Trova Hot Spot">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
             <p>Questo strumento consente di creare una mappa che illustra gli eventuali cluster spaziali di rilevanza statistica presenti nei dati. Utilizzare questo strumento per scoprire hot spot (rossi) e cold spot (blu) imprevisti relativi, ad esempio, al valore minimo e massimo delle case, alla frequenza dei reati, al numero di incidenti, alla disoccupazione o alla biodiversit&agrave;.
+            </p>
+            <br/>
+        </div>
+        <div id="FindOutliersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Trova outlier</h2></td>
+                    <td>
+                    <img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" class="titleImage" alt="Trova outlier">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Questo strumento consente di creare una mappa che illustra gli eventuali cluster e gli outlier spaziali di rilevanza statistica presenti nei dati. Utilizzare questo strumento per identificare feature i cui valori sono significativamente diversi dai loro vicini &igrave;.  &Egrave; possibile utilizzare questo strumento, ad esempio, per individuare modelli di spesa anomali, determinare dove si trovano i confini pi&ugrave; netti tra affluenza e povert&agrave; in un'area di studio o determinare se ci sono contee negli Stati Uniti con aspettativa di vita insolitamente bassa rispetto ai lori vicini.
             </p>
             <br/>
         </div>
@@ -344,7 +385,7 @@ way.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Questo strumento consente di prevedere i valori in corrispondenza di nuove posizioni sulla base delle misurazioni trovate in una raccolta di punti. Lo strumento considera i dati relativi ai punti con valori in corrispondenza di ciascun punto e restituisce aree classificate in base ai valori previsti. Pu&ograve; essere utilizzato, ad esempio, per prevedere i livelli di precipitazioni in uno spartiacque sulla base delle misurazioni effettuate in corrispondenza dei singoli misuratori di precipitazioni.
+            <p>Questo strumento consente di prevedere i valori in corrispondenza di nuove posizioni sulla base delle misurazioni trovate in una raccolta di punti.  Lo strumento considera i dati relativi ai punti con valori in corrispondenza di ciascun punto e restituisce aree classificate in base ai valori previsti.  Pu&ograve; essere utilizzato, ad esempio, per prevedere i livelli di precipitazioni in uno spartiacque sulla base delle misurazioni effettuate in corrispondenza dei singoli misuratori di precipitazioni.
             </p>
             <br/>
         </div>

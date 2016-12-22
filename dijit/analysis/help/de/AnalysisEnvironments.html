@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Umgebungseinstellungen für die Portal-Analyse</h2><p/>
+        <h2></h2>
+        <hr/>
+    <p> Umgebungseinstellungen f&uuml;r die Analyse in Portal for ArcGIS und  ArcGIS Online. 
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="overwriteResult">
+        <div><h2>Ergebnis-Layer überschreiben</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Option zum &Uuml;berschreiben vorhandener Layer.    Wenn sie aktiviert wird, wird ein Layer mit dem gleichen Namen, der bereits in Ihrem Inhalt vorhanden ist, &uuml;berschrieben.
+            </p>
+            <p>
+                <ul>
+                    <li>Aktiviert: Wenn bereits ein Layer mit dem gleichen Namen in Ihrem Inhalt vorhanden ist, wird dieser &uuml;berschrieben. Die Ausgabe erfolgt in demselben Koordinatensystem wie die Eingabe.
+                    </li>
+                    <li>Nicht aktiviert: Wenn der angegebene Name des Ergebnis-Layers bereits vorhanden ist, verursacht dies einen Fehler und das Werkzeug kann erst fortgesetzt werden, nachdem der Ergebnis-Layer umbenannt worden ist. Dies ist die Standardeinstellung.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="closeAnalysisWidget">
+        <div><h2>Analyse-Widget nach Ausführung der Analyse schließen</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Option, um das Analysedialogfenster w&auml;hrend der Werkzeugausf&uuml;hrung offen und aktiviert zu lassen.     Mit dieser Einstellung k&ouml;nnen Sie einfach &Auml;nderungen an den Analyseparametern vornehmen, w&auml;hrend der vorherige Analyseauftrag noch ausgef&uuml;hrt wird.  Die Analyse ist ein iterativer Prozess. Wenn das Werkzeug-Dialogfeld ge&ouml;ffnet bleibt, k&ouml;nnen Sie einfach Parameter &auml;ndern und die Analyse wiederholen.
+            </p>
+            <p>
+                <ul>
+                    <li>Aktiviert: Das Analysewerkzeug-Fenster wird geschlossen, der Fokus kehrt zum Inhaltsverzeichnis zur&uuml;ck. Hierbei handelt es sich um die Standardeinstellung.
+                    </li>
+                    <li>Nicht aktiviert: Das Analysewerkzeug-Fenster bleibt ge&ouml;ffnet und aktiviert.   
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="storeAnalysisResults">
+        <div><h2>Analyseergebnisse als Feature-Service speichern</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Option, um anzugeben, ob das Ergebnis der Analyse als Feature-Layer oder Feature-Sammlung erstellt wird.
+            </p>
+            <p>
+                <ul>
+                    <li>Aktiviert: Das Ergebnis der Analyse wird als Feature-Layer erstellt und im Inhalt wird ein Feld erzeugt. Dies ist die Standardeinstellung.
+                    </li>
+                    <li>Nicht aktiviert: Das Ergebnis der Analyse wird als Feature-Sammlung erstellt.    Feature-Sammlungen werden in der Webkarte gespeichert.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputCoordinateSystem">
+        <div><h2>Ausgabe-Koordinatensystem</h2></div>
+        <hr/>
+        <div>
+            <p>Umgebungseinstellung f&uuml;r die Raster-Analyse zum Definieren des Koordinatensystems f&uuml;r den Ergebnis-Layer.    
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Gleich wie Eingabe</b>: Das Ergebnis der Analyse wird im selben Koordinatensystem ausgegeben wie die Eingabe. Dies ist die Standardeinstellung.
+                    </li>
+                    <li> <b>Wie angegeben</b>: W&auml;hlen Sie das Koordinatensystem f&uuml;r das Ergebnis der Analyse aus.   Wenn diese Option aktiviert ist, k&ouml;nnen Sie &uuml;ber das Globussymbol eine Auswahl aus einer Liste bekannter Koordinatensysteme treffen oder die Raumbezugs-WKID in das entsprechende Feld eingeben.
+                    </li>
+                    <li> <b>Layer
+&lt;Name&gt;</b>: W&auml;hlen Sie einen vorhandenen Layer in Ihrer Webkarte zur Bestimmung des Koordinatensystems f&uuml;r das Analyseergebnis aus.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingCoordinateSystem">
+        <div><h2>Verarbeitungskoordinatensystem</h2></div>
+        <hr/>
+        <div>
+            <p>Umgebungseinstellung f&uuml;r GeoAnalytics zum Bestimmen des Koordinatensystems, das die Analyse w&auml;hrend der Ausf&uuml;hrung verwenden soll.   
+            </p>
+            <p>Bei GeoAnalytics muss f&uuml;r manche Analysen die Verarbeitung in einem projizierten Koordinatensystem erfolgen.   Jedes Werkzeug, das Daten-Binning oder lineare Einheiten unterst&uuml;tzt, erfordert ein projiziertes Koordinatensystem. 
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Gleich wie Eingabe</b>: Die Analyse wird im selben Koordinatensystem verarbeitet wie die Eingabe. Dies ist die Standardeinstellung.
+                    </li>
+                    <li> <b>Wie angegeben</b>: W&auml;hlen Sie das Koordinatensystem f&uuml;r die Verarbeitung der Analyse aus.   Wenn diese Option aktiviert ist, k&ouml;nnen Sie &uuml;ber das Globussymbol eine Auswahl aus einer Liste bekannter projizierter Koordinatensysteme treffen oder die Raumbezugs-WKID in das entsprechende Feld eingeben.
+                    </li>
+                    <li> <b>Layer
+&lt;Name&gt;</b>: W&auml;hlen Sie einen vorhandenen Layer aus Ihrer Webkarte aus.  Anhand des Koordinatensystems des gew&auml;hlten Layers wird das Koordinatensystem f&uuml;r die Verarbeitung der Analyse bestimmt.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingExtent">
+        <div><h2>Ausdehnung</h2></div>
+        <hr/>
+        <div>
+            <p>Umgebungseinstellung zum Bestimmen der Ausdehnung oder Grenze, die w&auml;hrend der Ausf&uuml;hrung der Analyse verwendet werden soll.  Alle Eingabe-Features, die sich vollst&auml;ndig in der angegebenen Ausdehnung befinden oder diese schneiden, werden bei der Analyse ber&uuml;cksichtigt.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Standard</b>: Die vom Werkzeug vorgegebene Ausdehnung wird verwendet.
+                    </li>
+                    <li> <b>Wie angegeben</b>: Geben Sie manuell die Koordinaten ein, um die Ausdehnung zu definieren.
+                    </li>
+                    <li> <b>Layer
+&lt;Name&gt;</b>: W&auml;hlen Sie einen vorhandenen Layer aus Ihrer Webkarte aus. Anhand der r&auml;umlichen Ausdehnung des gew&auml;hlten Layers wird die Ausdehnung f&uuml;r die Verarbeitung der Analyse bestimmt. 
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="snapRaster">
+        <div><h2>Fang-Raster</h2></div>
+        <hr/>
+        <div>
+            <p>Bei der Raster-Analyse wird durch Festlegen der Umgebungseinstellung  <b>Fang-Raster</b> die Ausdehnung des Ausgabe-Raster-Layers so angepasst, dass sie mit der Zellenausrichtung des angegebenen <b>Fang-Raster</b>-Layers &uuml;bereinstimmen.
+            </p>
+        </div>
+    </div>
+    <div id="cellSize">
+        <div><h2>Zellengröße</h2></div>
+        <hr/>
+        <div>
+            <p>Bei der Durchf&uuml;hrung der Raster-Analyse legt diese Umgebungseinstellung die Zellengr&ouml;&szlig;e oder Aufl&ouml;sung fest, die zum Erzeugen des Ausgabe-Raster-Layers verwendet wird. Die Standard-Ausgabeaufl&ouml;sung wird anhand der gr&ouml;&szlig;ten Zellengr&ouml;&szlig;e des Eingabe-Raster-Layers bestimmt.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Minimum der Eingabedaten</b>: Verwendet die kleinste Zellengr&ouml;&szlig;e aller Eingabe-Layer.
+                    </li>
+                    <li> <b>Maximum der Eingabedaten</b>: Verwendet die gr&ouml;&szlig;te Zellengr&ouml;&szlig;e aller Eingabe-Layer. Dies ist die Standardeinstellung.
+                    </li>
+                    <li> <b>Wie angegeben</b>: Geben Sie einen numerischen Wert ein, um die Zellengr&ouml;&szlig;e festzulegen. Der Standardwert bei dieser Option lautet 1.
+                    </li>
+                    <li> <b>Layer &lt;Name&gt;</b>: Legt die Zellengr&ouml;&szlig;e des gew&auml;hlten Raster-Layers fest.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="mask">
+        <div><h2>Maske</h2></div>
+        <hr/>
+        <div>
+            <p> Bei der Durchf&uuml;hrung der Raster-Analyse legen Sie mit der Umgebungseinstellung <b>Maske</b> einen Layer fest, der zum Definieren des Interessenbereichs verwendet wird.   Nur die Zellen, die innerhalb der Analysemaske liegen, werden bei der Analyse ber&uuml;cksichtigt.
+            </p>
+            <ul>
+                <li>Die Maske kann ein Raster oder ein Feature-Layer sein.
+                </li>
+                <li>Wenn die Analysemaske ein Raster ist, werden alle Zellen, die einen Wert haben, bei der Definition der Maske ber&uuml;cksichtigt. Zellen in einem Masken-Raster, die NoData sind, liegen au&szlig;erhalb der Maske und werden zu NoData-Werten im Analyseergebnis-Layer. 
+                </li>
+                <li>Wenn die Analysemaske ein Feature-Layer ist, wird sie bei der Ausf&uuml;hrung intern in ein Raster konvertiert. Deshalb sollten Sie sicherstellen, dass  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">Zellengr&ouml;&szlig;e</a> und <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">Fang-Raster</a> entsprechend f&uuml;r die Analyse eingestellt sind.
+                </li>
+            </ul>
+             
+        </div>
+    </div>
+</div>
+</html>

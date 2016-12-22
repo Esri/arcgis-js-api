@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Plānot maršrutus</h2><p/>
+        <h2>Plānot maršrutus.</h2><p/>
         <h2><img src="../images/GUID-09CC6D60-3C72-42D7-968E-B0663F0B1EBB-web.png" alt="Plānot mar&scaron;rutus"></h2>
         <hr/>
     <p>Mar&scaron;rutu plāno&scaron;ana nosaka, cik efektīvi sadalīt uzdevumus starp mobilo darbaspēku.
@@ -72,10 +72,10 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="stopsLayer">
-        <div><h2>Izvēlieties punkta slāni, kas parāda apmeklējamās pieturas</h2></div>
+        <div><h2>Izvēlieties punkta slāni, kas pārstāv apmeklējamās pieturas</h2></div>
         <hr/>
         <div>
-            <p>Izvēlieties to punktu slāni, kas jāapmeklē mar&scaron;rutiem (vai transportlīdzekļiem).  &Scaron;ie punkti izvadē kļūst par pie&scaron;ķirtām vai nepie&scaron;ķirtām pieturām. 
+            <p>Izvēlieties punktu slāni, kas mar&scaron;rutiem (vai transportlīdzekļiem) jāapmeklē.  &Scaron;ie punkti izvadē kļūst par pie&scaron;ķirtām vai nepie&scaron;ķirtām pieturām. 
             </p>
             <p class="OnlineOnly">Papildus slāņa izvēlei no kartes nolaižamā saraksta apak&scaron;ā varat atlasīt  <b>Izvēlēties Living Atlas analīzes slāni</b> vai <b>Izvēlēties analīzes slāni</b>. Tādējādi tiek atvērta galerija, kurā apskatāmi dažādi analīzes slāņi. 
             </p>
@@ -148,17 +148,17 @@
         <div><h2>Maksimālais pieturu skaits vienam transportlīdzeklim</h2></div>
         <hr/>
         <div>
-            <p>&Scaron;is ir viens no diviem parametriem, kas līdzsvaro kopējo slodzi pāri ceļiem. Varat norādīt vērtību starp 1 un  200. 
+            <p>&Scaron;is ir viens no diviem parametriem, kas līdzsvaro kopējo slodzi pāri ceļiem. Varat norādīt vērtību starp 1&nbsp;un  200. 
             </p>
             <p>Samazinot maksimālo skaitu pieturām, kas var tikt pie&scaron;ķirts katram transportlīdzeklim, transportlīdzekļiem, visticamāk, tiks pie&scaron;ķirts vienāds skaits ar pieturām, kas tiem pie&scaron;ķirtas. Tas palīdz līdzsvarot darba slodzi autovadītāju vidū. Trūkums, tomēr, ir tāds, ka tas var izraisīt risinājumu, kas ir mazāk efektīvs.
             </p>
-            <p>Palielinot pieturas uz vienu transportlīdzekli, rīkam ir vairāk brīvības, lai atrastu efektīvākus risinājumus, taču darba apjoms var tikt nevienlīdzīgi sadalīts starp autovadītājiem un transportlīdzekļiem. Ņemiet vērā, ka varat līdzsvarot slodzi ar laiku, kā arī ar pieturvietu skaitu, norādot vērtību parametram  <b>Ierobežots kopējā mar&scaron;ruta laiks katram transportlīdzeklim</b>.
+            <p>Palielinot apstā&scaron;anos skaitu uz vienu transportlīdzekli, rīkam ir vairāk iespēju atrast efektīvākus risinājumus, taču darba apjoms var tikt sadalīts nevienlīdzīgi starp autovadītājiem un transportlīdzekļiem. Ņemiet vērā, ka varat līdzsvarot slodzi ar laiku, kā arī ar pieturvietu skaitu, norādot vērtību parametram  <b>Ierobežots kopējā mar&scaron;ruta laiks katram transportlīdzeklim</b>.
             </p>
             <p>&Scaron;ie piemēri demonstrē sekas, ierobežojot maksimālās apstā&scaron;anās uz vienu transporta līdzekli, vai kopējo laiku uz vienu transportlīdzekli. Visos piemēros ir se&scaron;as pieturvietas un divi ceļi, kas sākas tajā pa&scaron;ā vietā.
             </p>
             <table border="1">
             <tr>
-                <td> <img src="../images/GUID-820BDC1E-97CB-457F-9235-7105D274AFEB-web.png" alt="Līdzsvaroti pieturu un ceļojumu laiki">
+                <td> <img src="../images/GUID-820BDC1E-97CB-457F-9235-7105D274AFEB-web.png" alt="Līdzsvarotas pieturas un ceļojuma laiks">
                 </td>
                 <td>
                     <p>Līdzsvarotas ceļojuma reizes un pieturas vienā mar&scaron;rutā:
@@ -178,7 +178,7 @@
                 </td>
             </tr>
             <tr>
-                <td> <img src="../images/GUID-082615A2-7F07-49AB-92AF-C82CEB813E6F-web.png" alt="Līdzsvaroti ceļojumu laiki">
+                <td> <img src="../images/GUID-082615A2-7F07-49AB-92AF-C82CEB813E6F-web.png" alt="Līdzsvarots ceļojuma laiks">
                 </td>
                 <td>
                     <p>Nesabalansētas mar&scaron;ruta pieturas, bet līdzsvarots ceļojuma laiks:
@@ -214,9 +214,11 @@
         <div><h2>Rezultātu slāņa nosaukums</h2></div>
         <hr/>
         <div>
-            <p>Tas ir grupas slāņa nosaukums, kas tiks izveidots sadaļā  <b>Mans saturs</b> un pievienots kartei. Grupas slānī tiks ietverts katras tālāk minētās vienības slānis: mar&scaron;ruti, pieturas un virzieni.
+            <p>Elementu slāņa nosaukums, kas tiks izveidots sadaļā  <b>Mans saturs</b> un pievienots kartei. Ja elementu slānis jau pastāv, jums tiks lūgts norādīt citu nosaukumu. Elementu slānī tiks ietverts slānis katram no &scaron;iem vienumiem: mar&scaron;ruti, pie&scaron;ķirtās pieturas un nepie&scaron;ķirtās pieturas, ja kādu no ievadītajām pieturām nevarēs pie&scaron;ķirt nevienam mar&scaron;rutam.
             </p>
-            <p>Izmantojot nolaižamo sarakstu  <b>Saglabāt rezultātus</b>, varat norādīt mapes nosaukumu sadaļā <b>Mans saturs</b>, kur rezultāts tiks saglabāts.
+            <p>Ja atlasīsit opciju  <b>Iekļaut mar&scaron;rutu slāņus</b>, katrs mar&scaron;ruts no rezultātiem tiek saglabāts arī kā mar&scaron;ruta slānis. Mar&scaron;ruta slānī ir iekļauta informācija par konkrēto mar&scaron;rutu, piemēram, mar&scaron;rutam pie&scaron;ķirtās pieturas, kā arī ceļa norādījumi. Mar&scaron;rutu slāņu veido&scaron;ana ir noderīga, ja vēlaties atsevi&scaron;ķus mar&scaron;rutus koplietot ar citiem jūsu organizācijas dalībniekiem vai vēlaties turpināt pārveidot mar&scaron;rutus, izmantojot kar&scaron;u skatītājā eso&scaron;o pogu <b>Virzieni</b>. Mar&scaron;rutu slāņiem kā prefikss tiek izmantots elementu slānim dotais nosaukums, kā arī tiek pievienots analīzes ietvaros ģenerētais mar&scaron;ruta nosaukums, lai izveidotu unikālu nosaukumu katram mar&scaron;ruta slānim.
+            </p>
+            <p>Izmantojot nolaižamo sarakstu  <b>Saglabāt rezultātus</b>, varat norādīt mapes nosaukumu sadaļā <b>Mans saturs</b>, kur tiks saglabāti elementu slāņi un mar&scaron;rutu slāņi, ja tādi tiks izveidoti.
             </p>
         </div>
     </div>

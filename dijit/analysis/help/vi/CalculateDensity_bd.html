@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Tính toán Mật độ</h2><p/>
+        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Calculate Density"></h2>
+        <hr/>
+    <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas classified from least dense to most dense.   
+
+    </p>
+    <p>For point input, each point should represent the location of some event or incident, and the result layer represents a count of the incident per unit area.  A higher density value in a new location means that there are more points near that location.  In many cases, the result layer can be interpreted as a risk surface for future events. For example, if the input points represent locations of lightning strikes, the result layer can be interpreted as a risk surface for future lightning strikes.
+    </p>
+    <p>Other use cases of this tool include the following:
+        <ul>
+            <li>Creating crime-density maps to help police departments properly allocate resources to high crime areas.
+            </li>
+            <li>Calculating densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to decide where new hospitals should be built.
+            </li>
+            <li>Identifying areas that are at high risk of forest fires based on historical locations of forest fires.
+            </li>
+            <li>Locating communities that are far from major highways in order to plan where new roads should be constructed.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Chọn lớp điểm để tính toán mật độ từ đó</h2></div>
+        <hr/>
+        <div>
+            <p>The point layer on which the density will be calculated.
+            </p>
+            <p>B&ecirc;n cạnh việc chọn một lớp từ bản đồ, bạn c&oacute; thể chọn  <b>Duyệt Lớp</b> ở b&ecirc;n dưới danh s&aacute;ch thả xuống để duyệt đến nội dung của m&igrave;nh đối với tập dữ liệu chia sẻ tệp dữ liệu lớn hoặc lớp đối tượng.  
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>Chọn một hoặc nhiều trường để tính toán mật độ trên</h2></div>
+        <hr/>
+        <div>
+            <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
+            </p>
+            <p>The density for the count of points will always be calculated.   If no fields are selected, each location will be assumed to represent a single count.
+            </p>
+        </div>
+    </div>
+    <div id="binType">
+        <div><h2>Chọn hình dạng Bin</h2></div>
+        <hr/>
+        <div>
+            <p>The shape of bins that points are aggregated into and used for the density calculation.
+            </p>
+        </div>
+    </div>
+    <div id="binSizing">
+        <div><h2>Chọn kích cỡ bin để tính toán mật độ</h2></div>
+        <hr/>
+        <div>
+            <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
+            </p>
+        </div>
+    </div>
+    <div id="weight">
+        <div><h2>Chọn cách tính mật độ để áp dụng</h2></div>
+        <hr/>
+        <div>
+            <p>The type of weighting applied to the density calculation. There are two options:
+                <ul>
+                    <li> <b>Uniform</b>&mdash;This calculates a magnitude per area.
+                    </li>
+                    <li> <b>Kernel</b>&mdash;Applies a kernel function to fit a smooth tapered surface to each point.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="neighborhood">
+        <div><h2>Chọn kích cỡ vùng lân cận</h2></div>
+        <hr/>
+        <div>
+            <p>The size of the area used to calculate the density. The neighborhood size must be larger than the bin size.
+            </p>
+        </div>
+    </div>
+    <div id="areaUnits">
+        <div><h2>Chọn đơn vị đầu ra cho mật độ</h2></div>
+        <hr/>
+        <div>
+            <p>The desired output units of the density values. By default, this is set to the units in your map (for example, square meters). If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Tính toán mật độ bằng cách sử dụng các mảnh thời gian (tùy chọn)</h2></div>
+        <hr/>
+        <div>
+            <p>Nếu thời gian được k&iacute;ch hoạt tr&ecirc;n lớp điểm đầu v&agrave;o v&agrave; l&agrave; thời gian tức th&igrave;, bạn c&oacute; thể ph&acirc;n t&iacute;ch bằng c&aacute;ch sử dụng ph&acirc;n lớp thời gian. C&oacute; ba tham số bạn c&oacute; thể thiết lập khi sử dụng thời gian:
+                <ul>
+                    <li>  <b>Khoảng Thời gian</b>
+                    </li>
+                    <li> <b>Bước Thời gian</b>
+                    </li>
+                    <li> <b>Thời gian Tham chiếu</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>H&atilde;y tưởng tượng bạn c&oacute; dữ liệu thể hiện thời gian trong một năm v&agrave; bạn muốn ph&acirc;n t&iacute;ch bằng c&aacute;ch sử dụng ph&acirc;n lớp h&agrave;ng tuần. Để thực hiện điều n&agrave;y, bạn c&oacute; thể thiết lập  <b>Khoảng Thời gian</b> đến <code>1 tuần</code>.
+            </p>
+            <p> H&atilde;y tưởng tượng bạn c&oacute; dữ liệu thể hiện thời gian trong một năm v&agrave; bạn muốn ph&acirc;n t&iacute;ch bằng c&aacute;ch sử dụng tuần đầu ti&ecirc;n của th&aacute;ng. Để thực hiện điều n&agrave;y, bạn c&oacute; thể thiết lập <b>Khoảng Thời gian</b> về <code>1 tuần</code>, <b>Bước Thời gian</b> về <code>1 th&aacute;ng</code>, v&agrave; <b>Thời gian Tham chiếu</b> về <code>01/01, 12:00 SA</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>Khoảng thời gian để tính toán mật độ</h2></div>
+        <hr/>
+        <div>
+            <p>Khoảng thời gian được sử dụng để ph&acirc;n lớp dữ liệu. Khoảng thời gian c&oacute; thể được sử dụng độc lập hoặc sử dụng với tham số  <b>Bước Thời gian</b> hoặc <b>Thời gian Tham chiếu</b>.
+            </p>
+            <p> Nếu bạn muốn tạo ph&acirc;n lớp thời gian diễn ra v&agrave;o mỗi thứ Hai, từ 9:00 SA đến 10:00 SA, <b>Khoảng Thời gian</b> phải l&agrave; <code>1 giờ</code>, <b>Bước Thời gian</b> l&agrave; <code>1 tuần</code>, v&agrave; <b>Thời gian Tham chiếu</b> l&agrave; <code>9:00:00 SA thứ Hai</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>Bước thời gian để tính toán mật độ</h2></div>
+        <hr/>
+        <div>
+            <p> Bước thời gian được sử dụng để t&iacute;nh to&aacute;n ph&acirc;n lớp thời gian. <b>Bước Thời gian</b> c&oacute; thể được sử dụng độc lập hoặc c&ugrave;ng với <b>Khoảng Thời gian</b>, <b>Thời gian Tham chiếu</b>, hoặc với cả <b>Khoảng Thời gian</b> v&agrave; <b>Thời gian Tham chiếu</b>.
+            </p>
+            <p> Nếu bạn muốn tạo ph&acirc;n lớp thời gian diễn ra v&agrave;o mỗi thứ Hai, từ 9:00 SA đến 10:00 SA, <b>Khoảng Thời gian</b> phải l&agrave; <code>1 giờ</code>, <b>Bước Thời gian</b> l&agrave; <code>1 tuần</code>, v&agrave; <b>Thời gian Tham chiếu</b> l&agrave; <code>9:00:00 SA thứ Hai</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Thời gian tham chiếu được sử dụng để canh chỉnh việc phân chia thời gian</h2></div>
+        <hr/>
+        <div>
+            <p>Ng&agrave;y v&agrave; giờ được sử dụng để canh chỉnh ph&acirc;n lớp thời gian.  <b>Bước Thời gian</b> sẽ bắt đầu từ v&agrave; tiếp tục l&ugrave;i lại đối với thời gian tham chiếu.
+            </p>
+            <p> Nếu bạn muốn tạo ph&acirc;n lớp thời gian diễn ra v&agrave;o mỗi thứ Hai, từ 9:00 SA đến 10:00 SA, <b>Khoảng Thời gian</b> phải l&agrave; <code>1 giờ</code>, <b>Bước Thời gian</b> l&agrave; <code>1 tuần</code>, v&agrave; <b>Thời gian Tham chiếu</b> l&agrave; <code>9:00:00 SA thứ Hai</code>.
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>SpatialReference (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>Đ&acirc;y l&agrave; một tham số thời gian d&agrave;nh cho bản ph&aacute;t h&agrave;nh trước để thiết lập tham chiếu kh&ocirc;ng gian xử l&yacute;. Nhiều c&ocirc;ng cụ dữ liệu lớn y&ecirc;u cầu sử dụng hệ tọa độ tham chiếu như một tham chiếu kh&ocirc;ng gian để xử l&yacute;. Theo mặc định, c&ocirc;ng cụ sẽ sử dụng hệ tọa độ đầu v&agrave;o, nhưng sẽ thất bại nếu đ&oacute; l&agrave; hệ tọa độ địa l&yacute;. Để thiết lập một hệ tọa độ tham chiếu, h&atilde;y nhập WKID. V&iacute; dụ,  <b>Web Mercator</b> cần được nhập l&agrave; <code>3857</code>.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Chọn kho dữ liệu</h2></div>
+        <hr/>
+        <div>
+            <p>Đ&acirc;y l&agrave; một tham số thời gian cho bản ph&aacute;t h&agrave;nh trước để thiết lập kho dữ liệu sẽ lưu kết quả. Cả hai kho dữ liệu l&agrave; một phần của  ArcGIS Data Store. Nếu bạn chọn kho dữ liệu kh&ocirc;ng gian thời gian, nhưng kh&ocirc;ng c&agrave;i đặt, c&ocirc;ng cụ sẽ thất bại. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tên lớp kết quả</h2></div>
+        <hr/>
+        <div>
+            <p> Đ&acirc;y l&agrave; t&ecirc;n lớp sẽ được tạo trong mục <b>Nội dung của T&ocirc;i</b> v&agrave; th&ecirc;m v&agrave;o bản đồ. T&ecirc;n mặc định dựa v&agrave;o t&ecirc;n c&ocirc;ng cụ v&agrave; t&ecirc;n lớp đầu v&agrave;o. Nếu lớp đ&atilde; tồn tại, c&ocirc;ng cụ sẽ thất bại.
+            </p>
+            <p>Sử dụng chức năng  <b>Lưu kết quả</b> trong hộp xổ xuống, bạn c&oacute; thể chỉ định t&ecirc;n thư mục trong mục <b>Nội dung của T&ocirc;i</b> nơi sẽ lưu trữ kết quả của bạn.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

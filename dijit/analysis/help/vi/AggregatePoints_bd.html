@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Các Điểm Tổng hợp</h2><p/>
+        <h2><img src="../images/GUID-6C1620D9-D176-41FA-8283-833D8B1CCCFC-web.png" alt="C&aacute;c Điểm Tổng hợp"></h2>
+        <hr/>
+    <p>C&ocirc;ng cụ n&agrave;y l&agrave;m việc với một lớp đối tượng dạng điểm v&agrave; một lớp đối tượng dạng v&ugrave;ng. C&aacute;c đối tượng dạng v&ugrave;ng đầu v&agrave;o c&oacute; thể l&agrave; một lớp v&ugrave;ng hoặc l&agrave; c&aacute;c bin h&igrave;nh vu&ocirc;ng hoặc h&igrave;nh lục gi&aacute;c được t&iacute;nh to&aacute;n khi c&ocirc;ng cụ chạy. Đầu ti&ecirc;n c&ocirc;ng cụ x&aacute;c định c&aacute;c điểm nằm trong phạm vi từng khu vực x&aacute;c định. Sau khi x&aacute;c định mối quan hệ kh&ocirc;ng gian giữa điểm v&agrave; v&ugrave;ng, số liệu thống k&ecirc; về tất cả c&aacute;c điểm trong từng v&ugrave;ng sẽ được t&iacute;nh to&aacute;n v&agrave; g&aacute;n v&agrave;o v&ugrave;ng tương ứng. Số liệu thống k&ecirc; cơ bản nhất l&agrave; số điểm t&iacute;nh to&aacute;n trong một v&ugrave;ng, nhưng bạn cũng c&oacute; thể lấy số liệu thống k&ecirc; kh&aacute;c. 
+
+    </p>
+    <p>V&iacute; dụ: giả sử bạn c&oacute; c&aacute;c đối tượng dạng điểm về c&aacute;c vị tr&iacute; qu&aacute;n c&agrave; ph&ecirc; v&agrave; c&aacute;c đối tượng dạng v&ugrave;ng của c&aacute;c quận v&agrave; bạn muốn tổng kết doanh số b&aacute;n c&agrave; ph&ecirc; theo quận. Giả sử c&aacute;c qu&aacute;n c&agrave; ph&ecirc; c&oacute; một trường thuộc t&iacute;nh  <i>TỔNG_DOANH SỐ</i>, bạn c&oacute; thể t&iacute;nh <i>TỔNG_DOANH SỐ</i> trong mỗi quận, x&aacute;c định <i>TỔNG_DOANH SỐ</i>
+nhỏ nhất hoặc lớn nhất cho một quận v&agrave; xem một số số liệu thống k&ecirc; kh&aacute;c như về số lượng, phạm vi, phương sai v&agrave; độ lệch chuẩn.
+    </p>
+    <p>C&ocirc;ng cụ n&agrave;y cũng c&oacute; thể l&agrave;m việc với dữ liệu thời gian. Nếu c&oacute; dữ liệu thời gian tr&ecirc;n c&aacute;c điểm đầu v&agrave;o, t&ugrave;y chọn ph&acirc;n chia thời gian sẽ được k&iacute;ch hoạt. Việc ph&acirc;n chia thời gian cho ph&eacute;p bạn t&iacute;nh to&aacute;n mối quan hệ giữa c&aacute;c điểm trong một khu vực khi đang xem x&eacute;t c&aacute;c mảnh thời gian cụ thể. V&iacute; dụ: bạn c&oacute; thể xem c&aacute;c khoảng thời gian v&agrave; kết quả sẽ trả về theo từng giờ. 
+    </p>
+    <p>Đối với v&iacute; dụ về thời gian, giả sử bạn c&oacute; c&aacute;c đối tượng dạng điểm của tất cả c&aacute;c giao dịch được thực hiện tại những cửa h&agrave;ng c&agrave; ph&ecirc; kh&aacute;c nhau v&agrave; kh&ocirc;ng c&oacute; lớp v&ugrave;ng. Dữ liệu được ghi lại trong một năm v&agrave; mỗi giao dịch sẽ c&oacute; th&ocirc;ng tin về vị tr&iacute; v&agrave; đ&aacute;nh dấu thời gian truy cập. Giả sử mỗi giao dịch đều c&oacute; thuộc t&iacute;nh  <i>TỔNG_DOANH SỐ</i>, bạn c&oacute; thể t&iacute;nh <i>TỔNG_DOANH SỐ</i> trong phạm vi kh&ocirc;ng gian v&agrave; thời gian m&agrave; bạn muốn. Nếu c&aacute;c giao dịch n&agrave;y d&agrave;nh cho một th&agrave;nh phố, ch&uacute;ng ta c&oacute; thể tạo ra c&aacute;c khu vực c&oacute; mắt lưới 1 km v&agrave; t&igrave;m hiểu ph&acirc;n lớp thời gian h&agrave;ng tuần để tổng kết c&aacute;c giao dịch cả về thời gian v&agrave; kh&ocirc;ng gian.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="pointLayer">
+        <div><h2>Chọn lớp có chứa các điểm để tập hợp vào các khu vực</h2></div>
+        <hr/>
+        <div>
+            <p>Lớp điểm sẽ tập hợp v&agrave;o khu vực.
+            </p>
+            <p>B&ecirc;n cạnh việc chọn một lớp từ bản đồ, bạn c&oacute; thể chọn  <b>Duyệt Lớp</b> ở b&ecirc;n dưới danh s&aacute;ch thả xuống để duyệt đến nội dung của m&igrave;nh đối với tập dữ liệu chia sẻ tệp dữ liệu lớn hoặc lớp đối tượng.  
+            </p>
+        </div>
+    </div>
+    <div id="inputAggregation">
+        <div><h2>Chọn lớp khu vực để tập hợp vào</h2></div>
+        <hr/>
+        <div>
+            <p>Khu vực m&agrave; lớp điểm sẽ được tập hợp v&agrave;o. Bạn c&oacute; thể lựa chọn giữa lớp v&ugrave;ng bạn đ&atilde; cung cấp hoặc giữa những bin đ&atilde; được tạo ra khi c&ocirc;ng cụ chạy. Khi tạo c&aacute;c bin, đối với bin  <b>Vu&ocirc;ng</b>, số lượng v&agrave; đơn vị chỉ định sẽ x&aacute;c định độ cao v&agrave; độ d&agrave;i của h&igrave;nh vu&ocirc;ng. Đối với bin <b>Lục gi&aacute;c</b>, số lượng v&agrave; đơn vị chỉ định sẽ x&aacute;c định khoảng c&aacute;ch giữa c&aacute;c mặt song song.
+            </p>
+        </div>
+    </div>
+    <div id="polygonLayer">
+        <div><h2>Chọn lớp vùng để tập hợp vào</h2></div>
+        <hr/>
+        <div>
+            <p>Lớp v&ugrave;ng m&agrave; c&aacute;c điểm sẽ được tổng hợp từ đ&oacute;. Bất kỳ điểm n&agrave;o thuộc phạm vi ranh giới của v&ugrave;ng trong lớp n&agrave;y sẽ được t&iacute;nh to&aacute;n v&agrave; tổng hợp t&ugrave;y &yacute; theo lựa chọn số liệu thống k&ecirc; của bạn. 
+            </p>
+            <p>
+            </p>
+            <p>Phải thiết lập  <b>K&iacute;ch thước Bin</b> cho c&aacute;c bin hoặc một <b>Lớp Khu vực</b>.
+            </p>
+        </div>
+    </div>
+    <div id="inputBins">
+        <div><h2>Chọn khoảng cách để tạo thùng và tập hợp vào</h2></div>
+        <hr/>
+        <div>
+            <p>Khoảng c&aacute;ch được sử dụng để tạo c&aacute;c bin nhằm tổng hợp c&aacute;c điểm đầu v&agrave;o. Đối với bin vu&ocirc;ng, k&iacute;ch thước thể hiện chiều cao của h&igrave;nh vu&ocirc;ng. Đối với bin lục gi&aacute;c, k&iacute;ch thước thể hiện chiều cao của h&igrave;nh lục gi&aacute;c (từ c&aacute;c mặt song song).  
+            </p>
+            <p>Phải thiết lập  <b>K&iacute;ch thước Bin</b> cho c&aacute;c bin hoặc một <b>Lớp Khu vực</b>.
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Tập hợp bằng cách sử dụng các lát thời gian (tùy chọn)</h2></div>
+        <hr/>
+        <div>
+            <p>Nếu thời gian được k&iacute;ch hoạt tr&ecirc;n lớp điểm đầu v&agrave;o v&agrave; l&agrave; thời gian tức th&igrave;, bạn c&oacute; thể ph&acirc;n t&iacute;ch bằng c&aacute;ch sử dụng ph&acirc;n lớp thời gian. C&oacute; ba tham số bạn c&oacute; thể thiết lập khi sử dụng thời gian:
+                <ul>
+                    <li>  <b>Khoảng Thời gian</b>
+                    </li>
+                    <li> <b>Bước Thời gian</b>
+                    </li>
+                    <li> <b>Thời gian Tham chiếu</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>H&atilde;y tưởng tượng bạn c&oacute; dữ liệu thể hiện thời gian trong một năm v&agrave; bạn muốn ph&acirc;n t&iacute;ch bằng c&aacute;ch sử dụng ph&acirc;n lớp h&agrave;ng tuần. Để thực hiện điều n&agrave;y, bạn c&oacute; thể thiết lập  <b>Khoảng Thời gian</b> đến <code>1 tuần</code>.
+            </p>
+            <p> H&atilde;y tưởng tượng bạn c&oacute; dữ liệu thể hiện thời gian trong một năm v&agrave; bạn muốn ph&acirc;n t&iacute;ch bằng c&aacute;ch sử dụng tuần đầu ti&ecirc;n của th&aacute;ng. Để thực hiện điều n&agrave;y, bạn c&oacute; thể thiết lập <b>Khoảng Thời gian</b> về <code>1 tuần</code>, <b>Bước Thời gian</b> về <code>1 th&aacute;ng</code>, v&agrave; <b>Thời gian Tham chiếu</b> về <code>01/01, 12:00 SA</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>Khoảng thời gian sẽ được tập hợp vào</h2></div>
+        <hr/>
+        <div>
+            <p>Khoảng thời gian được sử dụng để ph&acirc;n lớp dữ liệu. Khoảng thời gian c&oacute; thể được sử dụng độc lập hoặc sử dụng với tham số  <b>Bước Thời gian</b> hoặc <b>Thời gian Tham chiếu</b>.
+            </p>
+            <p> Nếu bạn muốn tạo ph&acirc;n lớp thời gian diễn ra v&agrave;o mỗi thứ Hai, từ 9:00 SA đến 10:00 SA, <b>Khoảng Thời gian</b> phải l&agrave; <code>1 giờ</code>, <b>Bước Thời gian</b> l&agrave; <code>1 tuần</code>, v&agrave; <b>Thời gian Tham chiếu</b> l&agrave; <code>9:00:00 SA thứ Hai</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>Bước thời gian sẽ được tập hợp vào</h2></div>
+        <hr/>
+        <div>
+            <p> Bước thời gian được sử dụng để t&iacute;nh to&aacute;n ph&acirc;n lớp thời gian. <b>Bước Thời gian</b> c&oacute; thể được sử dụng độc lập hoặc c&ugrave;ng với <b>Khoảng Thời gian</b>, <b>Thời gian Tham chiếu</b>, hoặc với cả <b>Khoảng Thời gian</b> v&agrave; <b>Thời gian Tham chiếu</b>.
+            </p>
+            <p> Nếu bạn muốn tạo ph&acirc;n lớp thời gian diễn ra v&agrave;o mỗi thứ Hai, từ 9:00 SA đến 10:00 SA, <b>Khoảng Thời gian</b> phải l&agrave; <code>1 giờ</code>, <b>Bước Thời gian</b> l&agrave; <code>1 tuần</code>, v&agrave; <b>Thời gian Tham chiếu</b> l&agrave; <code>9:00:00 SA thứ Hai</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Thời gian tham chiếu được sử dụng để canh chỉnh việc phân chia thời gian</h2></div>
+        <hr/>
+        <div>
+            <p>Ng&agrave;y v&agrave; giờ được sử dụng để canh chỉnh ph&acirc;n lớp thời gian.  <b>Bước Thời gian</b> sẽ bắt đầu từ v&agrave; tiếp tục l&ugrave;i lại đối với thời gian tham chiếu.
+            </p>
+            <p> Nếu bạn muốn tạo ph&acirc;n lớp thời gian diễn ra v&agrave;o mỗi thứ Hai, từ 9:00 SA đến 10:00 SA, <b>Khoảng Thời gian</b> phải l&agrave; <code>1 giờ</code>, <b>Bước Thời gian</b> l&agrave; <code>1 tuần</code>, v&agrave; <b>Thời gian Tham chiếu</b> l&agrave; <code>9:00:00 SA thứ Hai</code>.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Thêm số liệu thống kê (tùy chọn)</h2></div>
+        <hr/>
+        <div>
+            <p> Bạn c&oacute; thể t&iacute;nh to&aacute;n số liệu thống k&ecirc; về c&aacute;c đối tượng được tổng kết. Tr&ecirc;n c&aacute;c trường số, bạn c&oacute; thể t&iacute;nh to&aacute;n những nội dung sau:
+                <ul>
+                    <li>Số lượng
+                    </li>
+                    <li>Trung b&igrave;nh
+                    </li>
+                    <li>Tối thiểu
+                    </li>
+                    <li>Tối đa
+                    </li>
+                    <li>Khoảng
+                    </li>
+                    <li>Phương sai
+                    </li>
+                    <li>Độ lệch chuẩn
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Tr&ecirc;n c&aacute;c trường chuỗi, bạn c&oacute; thể t&iacute;nh to&aacute;n những nội dung sau:
+                <ul>
+                    <li>Số lượng
+                    </li>
+                    <li>Bất kỳ&mdash;Số liệu thống k&ecirc; n&agrave;y l&agrave; mẫu ngẫu nhi&ecirc;n của một gi&aacute; trị chuỗi trong trường x&aacute;c định.
+                    </li>
+                </ul>
+                Tất cả số liệu thống k&ecirc; được t&iacute;nh to&aacute;n tr&ecirc;n c&aacute;c gi&aacute; trị kh&ocirc;ng rỗng. Lớp kết quả sẽ chứa một trường mới cho mỗi số liệu thống k&ecirc; được t&iacute;nh to&aacute;n. C&oacute; thể th&ecirc;m bất kỳ số liệu thống k&ecirc; n&agrave;o bằng c&aacute;ch chọn một thuộc t&iacute;nh v&agrave; số liệu thống k&ecirc;. 
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>SpatialReference (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>Đ&acirc;y l&agrave; một tham số thời gian d&agrave;nh cho bản ph&aacute;t h&agrave;nh trước để thiết lập tham chiếu kh&ocirc;ng gian xử l&yacute;. Nhiều c&ocirc;ng cụ dữ liệu lớn y&ecirc;u cầu sử dụng hệ tọa độ tham chiếu như một tham chiếu kh&ocirc;ng gian để xử l&yacute;. Theo mặc định, c&ocirc;ng cụ sẽ sử dụng hệ tọa độ đầu v&agrave;o, nhưng sẽ thất bại nếu đ&oacute; l&agrave; hệ tọa độ địa l&yacute;. Để thiết lập một hệ tọa độ tham chiếu, h&atilde;y nhập WKID. V&iacute; dụ,  <b>Web Mercator</b> cần được nhập l&agrave; <code>3857</code>.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Chọn kho dữ liệu</h2></div>
+        <hr/>
+        <div>
+            <p>Đ&acirc;y l&agrave; một tham số thời gian cho bản ph&aacute;t h&agrave;nh trước để thiết lập kho dữ liệu sẽ lưu kết quả. Cả hai kho dữ liệu l&agrave; một phần của  ArcGIS Data Store. Nếu bạn chọn kho dữ liệu kh&ocirc;ng gian thời gian, nhưng kh&ocirc;ng c&agrave;i đặt, c&ocirc;ng cụ sẽ thất bại. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tên lớp kết quả</h2></div>
+        <hr/>
+        <div>
+            <p> Đ&acirc;y l&agrave; t&ecirc;n lớp sẽ được tạo trong mục <b>Nội dung của T&ocirc;i</b> v&agrave; th&ecirc;m v&agrave;o bản đồ. T&ecirc;n mặc định dựa v&agrave;o t&ecirc;n c&ocirc;ng cụ v&agrave; t&ecirc;n lớp đầu v&agrave;o. Nếu lớp đ&atilde; tồn tại, c&ocirc;ng cụ sẽ thất bại.
+            </p>
+            <p>Sử dụng chức năng  <b>Lưu kết quả</b> trong hộp xổ xuống, bạn c&oacute; thể chỉ định t&ecirc;n thư mục trong mục <b>Nội dung của T&ocirc;i</b> nơi sẽ lưu trữ kết quả của bạn.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

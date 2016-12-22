@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.18/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.19/esri/copyright.txt for details.
 
-define(["dojo/_base/lang","dojo/has","../kernel","../arcade/arcade"],function(e,r,t,n){var a={parseExpression:function(e,r){return r=r||{vars:{$feature:"any"}},e?n.parseScript(e,r):null},createExecContext:function(e){return{vars:{$feature:n.constructFeature(e)}}},executeExpression:function(e,r){return n.executeScript(e,r,-1)}};return r("extend-esri")&&e.setObject("renderer.arcadeUtils",a,t),a});
+define(["dojo/_base/lang","dojo/_base/array","dojo/has","../kernel","../arcade/arcade"],function(e,r,t,n,a){var c={vars:{$feature:"any",$view:"any"}},u=/^\$feature\./i,i={createSyntaxTree:function(r,t){t=t||e.clone(c);var n;try{n=r?a.parseScript(r,t):null}catch(u){n=null}return n},createFunction:function(r,t){t=t||e.clone(c);var n,u="string"==typeof r?i.createSyntaxTree(r,t):r;try{n=u?a.compileScript(u,t):null}catch(o){n=null}return n},createExecContext:function(e,r){return{vars:{$feature:a.constructFeature(e),$view:r}}},evalSyntaxTree:function(e,r){return a.executeScript(e,r,-1)},executeFunction:function(e,r){return e?e(r,-1):null},extractFieldNames:function(e,t){var n="string"==typeof e?i.createSyntaxTree(e,t):e,c=a.extractFieldLiterals(n),o=[];return r.forEach(c,function(e){u.test(e)&&(e=e.replace(u,""),o.push(e))}),o.sort(),r.filter(o,function(e,r){return 0===r||o[r-1]!==e})},dependsOnView:function(e){return a.referencesMember(e,"$view")}};return t("extend-esri")&&e.setObject("renderer.arcadeUtils",i,n),i});

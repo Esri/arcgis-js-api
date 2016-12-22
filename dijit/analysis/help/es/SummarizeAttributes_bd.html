@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Resumir atributos</h2><p/>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Resumir atributos"></h2>
+        <hr/>
+    <p>Esta herramienta resume todos los valores coincidentes en uno o varios campos y calcula estad&iacute;sticas sobre ellos. La estad&iacute;stica m&aacute;s b&aacute;sica es el recuento de las entidades que se han resumido conjuntamente, pero tambi&eacute;n puede calcular estad&iacute;sticas m&aacute;s avanzadas. 
+
+    </p>
+    <p>Por ejemplo, supongamos que tiene entidades de ubicaciones de tiendas con un campo que representa el  <i>DISTRICT_MANAGER_NAME</i> y que desea resumir las ventas de caf&eacute; por gestor. Puede especificar el campo <i>DISTRICT_MANAGER_NAME</i> como campo sobre el que disolver; de este modo se resumir&aacute;n todas las filas de datos que representan gestores individuales. Esto significa que todas las ubicaciones de tiendas gestionadas por el Manager1 se resumir&aacute;n en una fila con el resumen de estad&iacute;sticas calculado. En esta instancia, estad&iacute;sticas como, por ejemplo, el recuento de la cantidad de tiendas y la suma de <i>TOTAL_SALES</i> para todas las tiendas que gestiona Manager1 tambi&eacute;n se calcular&iacute;an para cualquier otro gestor incluido en la lista del campo <i>DISTRICT_MANAGER_NAME</i>.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Elija la entrada para resumir</h2></div>
+        <hr/>
+        <div>
+            <p>La capa que contiene los campos que se van a resumir.  
+            </p>
+            <p>Adem&aacute;s de elegir una capa en el mapa, puede elegir  <b>Examinar capas</b> en la parte inferior de la lista desplegable para examinar el contenido del dataset o la capa de entidades de un archivo compartido de Big Data.  
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>Elija los campos por los que desea disolver</h2></div>
+        <hr/>
+        <div>
+            <p>  Lista de campos de la capa de entrada.  Los campos seleccionados se resumir&aacute;n y se utilizar&aacute;n para calcular estad&iacute;sticas. Por ejemplo, si elige un campo llamado <i>PropertyType</i> con los valores comercial y residencial, todos los campos residenciales se resumir&aacute;n juntos, con el resumen de estad&iacute;sticas calculado, y todos los campos comerciales se resumir&aacute;n juntos.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Elija los campos y las estadísticas que desee calcular (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p> Puede calcular estad&iacute;sticas sobre las entidades resumidas. En los campos num&eacute;ricos puede calcular lo siguiente:
+                <ul>
+                    <li>Calcular
+                    </li>
+                    <li>Media
+                    </li>
+                    <li>M&iacute;n.
+                    </li>
+                    <li>M&aacute;x.
+                    </li>
+                    <li>Rango
+                    </li>
+                    <li>Varianza
+                    </li>
+                    <li>Desviaci&oacute;n est&aacute;ndar
+                    </li>
+                </ul>
+                
+            </p>
+            <p>En los campos de cadenas de caracteres puede calcular lo siguiente:
+                <ul>
+                    <li>Calcular
+                    </li>
+                    <li>Cualquiera: esta estad&iacute;stica es una muestra aleatoria del valor de una cadena de caracteres en el campo especificado.
+                    </li>
+                </ul>
+                Todas las estad&iacute;sticas se calculan sobre valores no nulos. La capa resultante contendr&aacute; un nuevo campo para cada estad&iacute;stica calculada. Se puede agregar cualquier n&uacute;mero de estad&iacute;sticas eligiendo un atributo y una estad&iacute;stica. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Elija el data store</h2></div>
+        <hr/>
+        <div>
+            <p>Se trata de un par&aacute;metro temporal para una versi&oacute;n preliminar que permite definir el data store donde se guardar&aacute;n los resultados. Ambos data stores forman parte de  ArcGIS Data Store. Si selecciona el data store espaciotemporal pero no tiene ninguno instalado, la herramienta fallar&aacute;. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nombre de capa de resultados</h2></div>
+        <hr/>
+        <div>
+            <p> Este es el nombre de la capa que se crear&aacute; en <b>Mi contenido</b> y se agregar&aacute; al mapa.  El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, la herramienta fallar&aacute;.
+            </p>
+            <p>En el cuadro desplegable  <b>Guardar el resultado en</b>, puedes especificar el nombre de una carpeta de <b>Mi contenido</b> en la que se guardar&aacute; el resultado.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

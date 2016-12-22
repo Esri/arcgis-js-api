@@ -41,23 +41,21 @@
 <body onload="init()">
 <div id="topics">
     <div id="aoToolbox">
-        <p>The Feature Analysis toolbox contains a number
-of tools that you can access and use.  These tasks are arranged below into
-categories; the categories are simply logical groupings
-and do not affect how you access or use the tasks in any
-way.
+        <p>&ldquo;要素分析&rdquo;工具箱包含多个可访问和使用的工具。这些任务可分为如下几类；这些类别仅为逻辑分组，不会对任务的访问或使用方式造成任何影响。
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
         <h2>汇总数据</h2>
         <hr/>
-        <p>这些工具计算区域内或其他要素附近的要素及其属性的总数、长度、面积以及基本描述性统计数据。
+        <p>这些工具用于计算区域内或其他要素附近的要素及其属性的总数、长度、面积以及基本描述性统计数据。
             <ul>
                 <li> <b>聚合点</b>用于计算指定区域内的点的统计数据。
                 </li>
-                <li> <b>邻近汇总</b>计算指定距离内要素以及属性的统计数据。
+                <li> <b>连接要素</b>可基于空间和属性关系将属性从一个图层或表中转移到另一图层和表中。
                 </li>
-                <li> <b>范围内汇总</b>计算相互重叠的区域要素和属性的统计数据。
+                <li> <b>邻近汇总</b>用于计算指定距离内要素以及属性的统计数据。
+                </li>
+                <li> <b>范围内汇总</b>用于计算相互重叠的区域要素和属性的统计数据。
                 </li>
             </ul>
             
@@ -87,6 +85,32 @@ way.
             </p>
             <br/>
         </div>
+        <div id="JoinFeaturesTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>连接要素</h2></td>
+                    <td>
+                    <img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" class="titleImage" alt="连接要素">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>连接要素可基于空间和属性关系将属性从一个图层或表中转移到另一图层和表中。例如：
+                <ul>
+                    <li>将公共边界或人口统计信息追加到事件数据。
+                    </li>
+                    <li>确定距离已知地点距离最近的设施点。
+                    </li>
+                    <li>确定位于泛洪区域范围内的住宅数量。
+                    </li>
+                    <li>确定各种野生动物种类的共同栖息地。
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
         <div id="SummarizeNearbyTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -98,7 +122,7 @@ way.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>在输入图层中查找处于指定要素距离内的要素。 可以沿出行模式的直线或可行路径测量距离。然后，计算邻近要素的统计数据。例如：
+            <p>在输入图层中查找处于指定要素距离内的要素。可以沿直线或出行模式的可行路径测量距离。然后，计算邻近要素的统计数据。例如：
                 <ul>
                     <li>计算在建议的新商店位置五分钟车程内的总人口数。
                     </li>
@@ -120,11 +144,11 @@ way.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>查找两个图层间叠加的区域（和部分区域）并计算叠加的统计数据。例如：
+            <p>查找两个图层的叠加区域（和部分区域）并计算叠加区域的统计数据。例如：
                 <ul>
-                    <li>按土地使用类型给定分水岭区域图层和土地使用区域图层，计算每个分水岭的土地使用类型的总面积。 
+                    <li>按土地使用类型给定分水岭区域图层和土地使用区域图层，计算每个分水岭的土地使用类型的总面积。
                     </li>
-                    <li>给定县内宗地的图层和城市边界图层，汇总各城市内闲置宗地的平均值。
+                    <li>已知县内宗地的图层和城市边界图层，汇总各城市内闲置宗地的平均值。
                     </li>
                 </ul>
                 
@@ -293,11 +317,13 @@ way.
         <hr/>
         <p>这些工具可帮助您确定、量化并显示数据的空间模式。
             <ul>
-                <li> <b>计算密度</b>工具可对某一现象的已知量进行处理，并将这些量散布到整个地图上。
+                <li> <b>计算密度</b>可对某一现象的已知量进行处理，并将这些量扩展到整个地图上。
                 </li>
-                <li> <b>查找热点</b>工具可用于确定数据空间模式中具有统计显著性的聚类。
+                <li> <b>查找热点</b>可确定数据空间模式中具有统计显著性的聚类。
                 </li>
-                <li> <b>插值点</b>工具可根据一组点的测量结果来预测新位置上的值。
+                <li> <b>查找异常值</b>可确定数据空间模式中是否具有统计显著性的异常值。
+                </li>
+                <li> <b>插值点</b>可根据一组点的测量结果来预测新位置上的值。
                 </li>
             </ul>
             
@@ -314,7 +340,7 @@ way.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>密度分析对某一现象的已知量进行处理，并将这些量散布到整个地图上。例如，您可以使用此工具来显示发生雷击或龙卷风的概率、医疗设施的利用率以及人口密度。
+            <p>密度分析可对某一现象的已知量进行处理，并将这些量扩展到整个地图上。例如，您可以使用此工具来显示发生雷击或龙卷风的概率、医疗设施的利用率以及人口密度。
             </p>
             <br/>
         </div>
@@ -329,7 +355,22 @@ way.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>该工具可创建一幅地图，显示数据中具有统计显著性的所有空间聚类。使用此工具可查找诸如家庭值较高和较低的异常热点（红）和冷点（蓝）、犯罪密度、交通事故死亡率、失业率以及生物多样性等聚类。
+            <p>该工具可创建一幅地图，显示数据中具有统计显著性的所有空间聚类。使用此工具可查找诸如家庭值较高和较低的异常热点（红）和冷点（蓝）、犯罪密度、交通事故死亡人数、失业人数以及生物多样性等聚类。
+            </p>
+            <br/>
+        </div>
+        <div id="FindOutliersTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>查找异常值</h2></td>
+                    <td>
+                    <img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" class="titleImage" alt="查找异常值">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>该工具可创建一幅地图，显示数据中具有统计显著性的聚类和空间异常值。此工具可用于确定与相邻要素具有显著不同值的要素。例如，您可以使用此工具查找异常消费模式、确定研究区域中富裕区和贫困区之间最清晰的边界，或确定美国是否存在某些县的预期寿命与邻近县相比异常低。
             </p>
             <br/>
         </div>
@@ -371,9 +412,9 @@ way.
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>连接起始点到目的地</h2></td>
+                    <td><h2>连接起点与终点</h2></td>
                     <td>
-                    <img src="../images/GUID-7266D30B-0250-4132-B1A5-9B59F0212FAD-web.png" class="titleImage" alt="连接起始点到目的地">
+                    <img src="../images/GUID-7266D30B-0250-4132-B1A5-9B59F0212FAD-web.png" class="titleImage" alt="连接起点与终点">
                     </td>
                 </tr></tbody>
             </table>

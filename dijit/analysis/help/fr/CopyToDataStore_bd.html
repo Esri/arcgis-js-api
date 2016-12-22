@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Copier dans le stockage des données</h2><p/>
+        <h2><img src="../images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" alt="Copier dans le stockage des donn&eacute;es"></h2>
+        <hr/>
+    <p>Cet outil copie une couche en entr&eacute;e dans un stockage des donn&eacute;es. Les donn&eacute;es sont copi&eacute;es dans  ArcGIS Data Store et seront stock&eacute;es dans votre stockage des donn&eacute;es relationnelles ou spatio-temporelles. </p>
+    <p>Vous pouvez par exemple copier des entit&eacute;s stock&eacute;es dans un  <code>partage de fichiers Big Data</code> dans un <code>stockage des donn&eacute;es relationnelles</code> et sp&eacute;cifier que seules les entit&eacute;s au sein de l'&eacute;tendue actuelle de la carte seront copi&eacute;es. Ceci cr&eacute;e un service d'entit&eacute;s h&eacute;berg&eacute; avec uniquement les entit&eacute;s qui se trouvaient au sein de l'&eacute;tendue de la carte sp&eacute;cifi&eacute;e.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Choisir la couche à copier</h2></div>
+        <hr/>
+        <div>
+            <p>La couche ou table qui va &ecirc;tre copi&eacute;e. 
+            </p>
+            <p>En plus de choisir une couche de votre carte, vous pouvez s&eacute;lectionner  <b>Parcourir les couches</b> au bas de la liste d&eacute;roulante pour parcourir votre contenu et rechercher une couche d'entit&eacute;s ou un jeu de donn&eacute;es de partage de fichiers Big Data.  
+            </p>
+        </div>
+    </div>
+    <div id="outputDataStore">
+        <div><h2>Choisir le site ArcGIS Data Store dans lequel effectuer la copie</h2></div>
+        <hr/>
+        <div>
+            <p> Le stockage des donn&eacute;es dans lequel la couche va &ecirc;tre copi&eacute;e. Les options sont les suivantes&nbsp;:
+                <ul>
+                    <li> <b>Spatio-temporels</b>&nbsp;: il s'agit de la valeur par d&eacute;faut.
+                    </li>
+                    <li> <b>Relationnels</b>.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nom de la couche résultat</h2></div>
+        <hr/>
+        <div>
+            <p> Il s'agit du nom de la couche qui sera cr&eacute;&eacute;e dans votre page <b>Mon contenu</b> et ajout&eacute;e &agrave; la carte.  Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, l'outil &eacute;choue.
+            </p>
+            <p>La zone de liste d&eacute;roulante  <b>Enregistrer le r&eacute;sultat dans</b> vous permet de sp&eacute;cifier le nom d'un dossier dans <b>Mon contenu</b> o&ugrave; le r&eacute;sultat sera enregistr&eacute;.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

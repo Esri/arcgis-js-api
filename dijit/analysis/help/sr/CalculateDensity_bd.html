@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Izračunaj gustinu</h2><p/>
+        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Calculate Density"></h2>
+        <hr/>
+    <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas classified from least dense to most dense.   
+
+    </p>
+    <p>For point input, each point should represent the location of some event or incident, and the result layer represents a count of the incident per unit area.  A higher density value in a new location means that there are more points near that location.  In many cases, the result layer can be interpreted as a risk surface for future events. For example, if the input points represent locations of lightning strikes, the result layer can be interpreted as a risk surface for future lightning strikes.
+    </p>
+    <p>Other use cases of this tool include the following:
+        <ul>
+            <li>Creating crime-density maps to help police departments properly allocate resources to high crime areas.
+            </li>
+            <li>Calculating densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to decide where new hospitals should be built.
+            </li>
+            <li>Identifying areas that are at high risk of forest fires based on historical locations of forest fires.
+            </li>
+            <li>Locating communities that are far from major highways in order to plan where new roads should be constructed.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Odaberite tačkasti sloj iz kojeg će se izračunati gustina</h2></div>
+        <hr/>
+        <div>
+            <p>The point layer on which the density will be calculated.
+            </p>
+            <p>Kao dodatak odabiru sloja iz mape, možete da odaberete  <b>Pregledaj slojeve</b> na dnu padajuće liste da biste potražili deljeni skup podataka za datoteke sa velikim podacima ili sloj geoobjekta u svojim sadržajima.  
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>Odaberite jedno ili više polja za izračunavanje gustine</h2></div>
+        <hr/>
+        <div>
+            <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
+            </p>
+            <p>The density for the count of points will always be calculated.   If no fields are selected, each location will be assumed to represent a single count.
+            </p>
+        </div>
+    </div>
+    <div id="binType">
+        <div><h2>Odaberite oblik bloka</h2></div>
+        <hr/>
+        <div>
+            <p>The shape of bins that points are aggregated into and used for the density calculation.
+            </p>
+        </div>
+    </div>
+    <div id="binSizing">
+        <div><h2>Odaberite veličinu blokova za izračunavanje gustine</h2></div>
+        <hr/>
+        <div>
+            <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
+            </p>
+        </div>
+    </div>
+    <div id="weight">
+        <div><h2>Izaberite ponderisanje gustine za primenu</h2></div>
+        <hr/>
+        <div>
+            <p>The type of weighting applied to the density calculation. There are two options:
+                <ul>
+                    <li> <b>Uniform</b>&mdash;This calculates a magnitude per area.
+                    </li>
+                    <li> <b>Kernel</b>&mdash;Applies a kernel function to fit a smooth tapered surface to each point.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="neighborhood">
+        <div><h2>Izaberite veličinu susedstva</h2></div>
+        <hr/>
+        <div>
+            <p>The size of the area used to calculate the density. The neighborhood size must be larger than the bin size.
+            </p>
+        </div>
+    </div>
+    <div id="areaUnits">
+        <div><h2>Odaberite jedinice izlaznih rezultata za gustinu</h2></div>
+        <hr/>
+        <div>
+            <p>The desired output units of the density values. By default, this is set to the units in your map (for example, square meters). If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Izračunajte gustinu pomoću vremenskih odsečaka (opciono)</h2></div>
+        <hr/>
+        <div>
+            <p>Ako je vreme omogućeno na ulaznom tačkastom sloju i u pitanju je trenutak, možete da analizirate koristeći sečenje vremena. Postoje tri parametra koje možete da podesite kada koristite vreme:
+                <ul>
+                    <li>  <b>Vremenski interval</b>
+                    </li>
+                    <li> <b>Vremenski korak</b>
+                    </li>
+                    <li> <b>Referentno vreme</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Zamislite da ste imali podatke koji su predstavljali godinu u vremenu i da ste želeli da analizirate koristeći nedeljne odsečke. Da biste to uradili, podesili biste  <b>Vremenski interval</b> na <code>1 nedelju</code>.
+            </p>
+            <p> Zamislite da ste imali podatke koji su predstavljali godinu u vremenu i da ste želeli da analizirate koristeći prvu nedelju u mesecu. Da biste to uradili, podesili biste <b>Vremenski interval</b> na <code>1 nedelju</code>, <b>Vremenski korak</b> na <code>1 mesec</code>, a <b>Referentno vreme</b> na <code>1. januar, u 12:00</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>Vremenski interval za izračunavanje gustine</h2></div>
+        <hr/>
+        <div>
+            <p>Interval vremena koji se koristi za sečenje vremena. Vremenski interval može da se koristi sam ili sa parametrom  <b>Vremenski korak</b> ili <b>Referentno vreme</b>.
+            </p>
+            <p> Ako ste želeli da kreirate vremenske odsečke koji se de&scaron;avaju svakog ponedeljka od 9:00 do 10:00, <b>Vremenski interval</b> bi iznosio <code>1 sat</code>, <b>Vremenski korak</b> bi bio <code>1 nedelja</code>, a <b>Referentno vreme</b> bi iznosilo <code>9:00:00 ujutro ponedeljkom</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>Vremenski korak za izračunavanje gustine</h2></div>
+        <hr/>
+        <div>
+            <p> Korak koji se koristi za izračunavanje vremenskog odsečka. <b>Vremenski korak</b> može da se koristi zasebno ili sa parametrom <b>Vremenski interval</b> ili <b>Referentno vreme</b> ili sa oba parametra <b>Vremenski interval</b> i <b>Referentno vreme</b>.
+            </p>
+            <p> Ako ste želeli da kreirate vremenske odsečke koji se de&scaron;avaju svakog ponedeljka od 9:00 do 10:00, <b>Vremenski interval</b> bi iznosio <code>1 sat</code>, <b>Vremenski korak</b> bi bio <code>1 nedelja</code>, a <b>Referentno vreme</b> bi iznosilo <code>9:00:00 ponedeljkom</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Referentno vreme koje se koristi za poravnavanje sečenja vremena</h2></div>
+        <hr/>
+        <div>
+            <p>Datum i vreme koji se koriste za poravnavanje sečenja vremena.  <b>Vremenski korak</b> će se pokrenuti od i nastaviti unazad za referentno vreme.
+            </p>
+            <p> Ako ste želeli da kreirate vremenske odsečke koji se de&scaron;avaju svakog ponedeljka od 9:00 do 10:00, <b>Vremenski interval</b> bi iznosio <code>1 sat</code>, <b>Vremenski korak</b> bi bio <code>1 nedelja</code>, a <b>Referentno vreme</b> bi iznosilo <code>9:00:00 ponedeljkom</code>.
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>Prostorna referenca (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>Ovo je privremen parametar za preliminarnu verziju da bi se podesila prostorna referenca obrade. Mnoge alatke za velike podatke zahtevaju kori&scaron;ćenje projektovanog koordinatnog sistema kao prostorne reference za obradu. Podrazumevano, alatka će koristiti ulazni koordinatni sistem, ali će otkazati ako je u pitanju geografski koordinatni sistem. Da biste podesili projektovani koordinate sistem, unesite WKID. Na primer,  <b>Web Mercator</b> bi bilo uneto kao <code>3857</code>.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Odaberite skladište podataka</h2></div>
+        <hr/>
+        <div>
+            <p>Ovo je privremeni parametar za preliminarnu verziju da bi se podesilo skladi&scaron;te podataka gde se čuvaju rezultati. Oba skladi&scaron;ta podataka su deo  ArcGIS Data Store. Ako izaberete skladi&scaron;te prostorno-vremenskih podataka, ali nemate ga instalirano, alatka će otkazati. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Naziv sloja sa rezultatima</h2></div>
+        <hr/>
+        <div>
+            <p> Ovo je naziv sloja koji će biti kreiran u <b>Mom sadržaju</b> i dodat na mapu. Podrazumevani naziv je zasnovan na nazivu alatke i nazivu ulaznog sloja. Ako sloj već postoji, alatka će otkazati.
+            </p>
+            <p>Koristeći  <b>Sačuvaj rezultat u</b> padajućem polju, možete da navedete ime fascikle u <b>Mom sadržaju</b> u kojoj će rezultat biti sačuvan.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

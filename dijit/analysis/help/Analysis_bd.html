@@ -41,32 +41,32 @@
 <body onload="init()">
 <div id="topics">
     <div id="bdToolbox">
-        <p>Big Data Analytics distributes the analytics work across your ArcGIS GeoAnalytics Server. This allows you to analyze more data faster, by harnessing the power of multiple machines. The following tools are currently available:
+        <p>Big Data Analytics distributes the analytics work across your ArcGIS GeoAnalytics Server. This allows you to analyze more data faster by harnessing the power of multiple machines. The following tools are currently available:
             <ul>
-                <li>Aggregate Points
+                <li> <b>Aggregate Points</b>
                 </li>
-                <li>Join Features
+                <li> <b>Join Features</b>
                 </li>
-                <li>Reconstruct Tracks
+                <li> <b>Reconstruct Tracks</b>
                 </li>
-                <li>Summarize Attributes
+                <li> <b>Summarize Attributes</b>
                 </li>
-                <li>Summarize Within
+                <li> <b>Summarize Within</b>
                 </li>
-                <li>Find Similar Locations
+                <li> <b>Find Similar Locations</b>
                 </li>
-                <li>Calculate Density
+                <li> <b>Calculate Density</b>
                 </li>
-                <li>Find Hot Spots
+                <li> <b>Find Hot Spots</b>
                 </li>
-                <li>Create Buffers
+                <li> <b>Create Buffers</b>
                 </li>
-                <li>Copy to Data Store
+                <li> <b>Copy to Data Store</b>
                 </li>
             </ul>
             
         </p>
-        <p>Big Data Analytics focus on analyzing large data with a focus on both spatial and temporal patterns. 
+        <p>Big Data Analytics focuses on analyzing large data with an emphasis on both spatial and temporal patterns. 
         </p>
     </div>
     <div id="SummarizeDataCategory" class="largesize">
@@ -76,9 +76,9 @@
             <ul>
                 <li> <b>Aggregate Points</b> calculates statistics about points that fall within specified areas or bins.
                 </li>
-                <li> <b>Join Features</b> calculates statistics about features that exhibit a spatial, temporal or attribute relationship with another feature.
+                <li> <b>Join Features</b> calculates statistics about features that share a spatial, temporal, or attribute relationship with other features.
                 </li>
-                <li> <b>Reconstruct Tracks</b> calculates statistics about points or polygons that belong to the same track, and reconstructs inputs into tracks.
+                <li> <b>Reconstruct Tracks</b> calculates statistics about points or polygons that belong to the same track and reconstructs inputs into tracks.
                 </li>
                 <li> <b>Summarize Attributes</b> calculates statistics about feature or tabular data that share attributes.
                 </li>
@@ -100,11 +100,11 @@
             </table>
 <hr/>
             <p>Using a layer of
-point features and either a layer of area features or a distance used to calculate bins, this tool
-determines which points fall within each area and calculates statistics about all
-the points within each area. You may optionally apply time slicing to this tool. 
+point features and either a layer of area features or bins defined by a specified distance, this tool
+determines which points fall within each area or bin and calculates statistics about all
+the points within each area or bin. You may optionally apply time slicing with this tool. 
             </p>
-            <p>For example:
+            <p> For example
                 <ul>
                     <li>Given point locations of crime incidents, count the number of crimes per county or other administrative district.
                     </li>
@@ -126,14 +126,13 @@ the points within each area. You may optionally apply time slicing to this tool.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Using a layer of
-point, line or area features or a table and another of layer of point, line,  area features or a table to join feature that exhibit a specified relationship. Spatial, temporal, and attribute relationships can be used to join features together, and optionally calculate summary statistics. 
+            <p>Using either feature layers or tabular data, you can join features and records based on specific relationships between the input layers or tables.  Joins will be determined by spatial, temporal, and attribute relationships, and summary statistics can be optionally calculated.  
             </p>
-            <p>For example:
+            <p> For example
                 <ul>
-                    <li>Given point locations of crime incidents with a time, join the crim data to itself, specifying a spatial relationship of crimes within 1 kilometers of each other, and that occurred within 1 hour of each other, to determine if there are a sequence of crimes close to each other in space and time.
+                    <li>Given point locations of crime incidents with a time, join the crime data to itself specifying a spatial relationship of crimes within 1 kilometer of each other and that occurred within 1 hour of each other to determine if there are a sequence of crimes close to each other in space and time.
                     </li>
-                    <li>Given a table of zip codes with demographic information and a area features representing residential building, join the demographic information to the residences, so that each residence now has the information.
+                    <li> Given a table of ZIP Codes with demographic information and area features representing residential buildings, join the demographic information to the residences so each residence now has the information.
                     </li>
                 </ul>
                 
@@ -151,14 +150,13 @@ point, line or area features or a table and another of layer of point, line,  ar
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Using either a layer of
-point features or polygon features that are time enabled, this tool
-determines which input features belong in a track, ordering the inputs sequentially in time. It then calculates statistics about all
-the input features within each track. 
+            <p>Using a time-enabled layer of
+point  or polygon features that represent an  <code>instant</code> in time, this tool
+determines which input features belong in a track and will order the inputs sequentially in time. Statistics are optionally calculated for the input features within each track.
             </p>
-            <p>For example:
+            <p> For example
                 <ul>
-                    <li>Given point locations and time of hurricane measurements, calculate the mean wind speed, and max wind pressure of the hurricane.
+                    <li>Given point locations and time of hurricane measurements, calculate the mean wind speed and max wind pressure of the hurricane.
                     </li>
                     <li>Find the highest and lowest monthly revenues for franchise locations using 100 km bins.
                     </li>
@@ -173,18 +171,19 @@ the input features within each track.
                 <tbody><tr>
                     <td><h2>Summarize Attributes</h2></td>
                     <td>
+                    <img src="./images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="Summarize Attributes">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Using either feature or tabular data this tool
-summarizes statistics for field(s). 
+            <p> Using either feature or tabular data, this tool
+summarizes statistics for specified fields.
             </p>
-            <p>For example:
+            <p> For example
                 <ul>
-                    <li>Given locations of grocery stores with a field  <b>COMPANY_NAME</b>, summarize the stores by the company name to determine statistics for each company.
+                    <li> Given locations of grocery stores with a field <i>COMPANY_NAME</i>, summarize the stores by the company name to determine statistics for each company.
                     </li>
-                    <li>Given a table of grocery stores with a field  <b>COMPANY_NAME</b> and <b>COUNTY</b>, summarize the stores by the company name and county to determine statistics for each company in each county.
+                    <li>Given a table of grocery stores with  fields  <i>COMPANY_NAME</i> and <i>COUNTY</i>, summarize the stores by the company name and county to determine statistics for each company within each county.
                     </li>
                 </ul>
                 
@@ -197,7 +196,7 @@ summarizes statistics for field(s).
                 <tbody><tr>
                     <td><h2>Summarize Within</h2></td>
                     <td>
-                    <img src="./images/GUID-9B12DB3F-AA7B-41EB-87C6-D2DEC3D52DA9-web.png" class="titleImage" alt="Summarize Within">
+                    <img src="./images/GUID-90E0CB1F-EB97-4752-B2EE-452B7B45475E-web.png" class="titleImage" alt="Summarize Within">
                     </td>
                 </tr></tbody>
             </table>
@@ -205,7 +204,7 @@ summarizes statistics for field(s).
             <p>Finds areas (and portions of areas) that overlap between two
 layers and calculates statistics about the overlap. 
             </p>
-            <p>For example:
+            <p> For example
                 <ul>
                     <li>Given a layer of watershed areas and a layer of land-use areas by land-use type, calculate total acreage of land-use type for each watershed. 
                     </li>
@@ -239,9 +238,9 @@ meet a number of different criteria you specify.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Based on criteria you specify, the Find Similar Locations tool measures the similarity of locations in your candidate search layer to one or more reference locations. 
+            <p>Based on criteria you specify, find similar locations  by measuring the similarity of locations in your candidate search layer to one or more reference locations. 
             </p>
-            <p>For example: 
+            <p> For example
                 <ul>
                     <li>Find the ten most similar stores by examining the number of employees and the annual sales.
                     </li>
@@ -252,14 +251,12 @@ meet a number of different criteria you specify.
             </p>
             <br/>
         </div>
-    <div id="AnalyzePatternsCategory" class="regularsize">
+    <div id="AnalyzePatternsCategory" class="smallsize">
         <h2>Analyze Patterns</h2>
         <hr/>
         <p>These tools help you identify, quantify, and visualize spatial patterns in your data.  
             <ul>
                 <li> <b>Calculate Density</b> takes known quantities of some phenomenon and spreads these quantities across the map.
-                </li>
-                <li> <b>Create Space Time Cube</b> summarizes a set of time enabled points into a netCDF structure by aggregating them into space time bins.
                 </li>
                 <li> <b>Find Hot Spots</b>  identifies statistically significant clustering in the spatial pattern of your data.
                 </li>
@@ -280,7 +277,7 @@ meet a number of different criteria you specify.
 <hr/>
             <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas representing the density.
             </p>
-            <p>For example:
+            <p> For example
                 <ul>
                     <li>Calculating densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to decide where new hospitals should be built.
                     </li>
@@ -293,39 +290,13 @@ meet a number of different criteria you specify.
             </p>
             <br/>
         </div>
-        <div id="CreateSpaceTimeCubeTool" class="regularsize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>Create Space Time Cube</h2></td>
-                    <td>
-                    <img src="./images/GUID-FB4EC150-9898-40B8-959B-3CC21C06BDE8-web.png" class="titleImage" alt="Create Space Time Cube">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>At ArcGIS 10.5 Pre-release this Create Space Time Cube analysis is not available through the Portal Web Map
-            </p>
-            <p>This tool summarizes a set of time enabled points into a netCDF structure by aggregating them into space time bins.
-            </p>
-            <p>For example: 
-                <ul>
-                    <li>Aggregate all crimes in a city into 1 km bins by month.
-                    </li>
-                    <li>Aggregate all 911 calls that occurred in a county over the last 50 years into 100 km bins, with annual temporal bins.
-                    </li>
-                </ul>
-                
-            </p>
-            <br/>
-        </div>
         <div id="FindHotSpotsTool" class="largesize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
                     <td><h2>Find Hots Spots</h2></td>
                     <td>
-                    <img src="./images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" class="titleImage" alt="Find Hot Spots">
+                    <img src="./images/GUID-6D600155-AA9B-4F02-AD8B-2E84150AB743-web.png" class="titleImage" alt="Find Hot Spots">
                     </td>
                 </tr></tbody>
             </table>
@@ -344,7 +315,7 @@ meet a number of different criteria you specify.
     <div id="UseProximityCategory" class="smallsize">
         <h2>Use Proximity</h2>
         <hr/>
-        <p>These tools help you answer one of the most common questions posed in spatial analysis: &quot;What is near what?&quot;
+        <p>These tools help answer one of the most common questions posed in spatial analysis: What is near what?
             <ul>
                 <li> <b>Create Buffers</b> creates areas of a specified distance from
 features.
@@ -366,7 +337,7 @@ features.
 <hr/>
             <p>A buffer is an area that covers a given distance from a point, line, or polygon feature.
             </p>
-            <p>For example:
+            <p> For example
                 <ul>
                     <li>Using linear river features, buffer each river by 50 times the width of the river to determine a proposed riparian boundary.
                     </li>
@@ -382,7 +353,7 @@ features.
         <hr/>
         <p>These tools are used for the day-to-day management of geographic and tabular data.
             <ul>
-                <li> <b>Copy to Data Store</b> copies data to a your ArcGIS Data Store and creates a layer in your WebGIS.
+                <li> <b>Copy to Data Store</b> copies data to your ArcGIS Data Store and creates a layer in your web GIS.
                 </li>
             </ul>
             
@@ -394,15 +365,15 @@ features.
                 <tbody><tr>
                     <td><h2>Copy to Data Store</h2></td>
                     <td>
+                    <img src="./images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" class="titleImage" alt="Copy to Data Store">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Copies and input feature layer or table to an ArcGIS Data Store and create a layer in your Web GIS.
-            </p>
-            <p>For example:
+            <p>Copies an input feature layer or table to an  ArcGIS Data Store and creates a layer in your web GIS. </p>
+            <p> For example
                 <ul>
-                    <li>Copy a collection of csvs in a big data file share to the spatiotemporal data store for visualization.
+                    <li> Copy a collection of <code>.csv</code> files in a big data file share to the spatiotemporal data store for visualization.
                     </li>
                     <li>Copy the features in the current map extent that are stored in the spatiotemporal data store to the relational data store.
                     </li>

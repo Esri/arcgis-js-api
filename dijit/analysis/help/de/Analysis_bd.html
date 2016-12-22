@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="bdToolbox">
+        <p>Bei der Big-Data-Analyse wird die Analysearbeit auf den ArcGIS GeoAnalytics Server verteilt. Dadurch k&ouml;nnen gr&ouml;&szlig;ere Datenmengen schneller analysiert werden, indem die Leistung mehrerer Maschinen genutzt wird. Die folgenden Werkzeuge sind aktuell verf&uuml;gbar:
+            <ul>
+                <li> <b>Punkte aggregieren</b>
+                </li>
+                <li> <b>Features verbinden</b>
+                </li>
+                <li> <b>Spuren rekonstruieren</b>
+                </li>
+                <li> <b>Attribute zusammenfassen</b>
+                </li>
+                <li> <b>Zusammenfassen (innerhalb)</b>
+                </li>
+                <li> <b>&Auml;hnliche Positionen suchen</b>
+                </li>
+                <li> <b>Dichte berechnen</b>
+                </li>
+                <li> <b>Hot-Spots suchen</b>
+                </li>
+                <li> <b>Puffer erstellen</b>
+                </li>
+                <li> <b>In Data Store kopieren</b>
+                </li>
+            </ul>
+            
+        </p>
+        <p>Bei der Big-Data-Analyse geht es in erster Linie um die Analyse gro&szlig;er Datenbest&auml;nde mit Schwerpunkt auf r&auml;umlichen und zeitlichen Mustern. 
+        </p>
+    </div>
+    <div id="SummarizeDataCategory" class="largesize">
+        <h2>Daten zusammenfassen</h2>
+        <hr/>
+        <p>Mit dem Toolset &quot;Daten zusammenfassen&quot; werden Gesamtzahlen, L&auml;ngen, Fl&auml;chen und grundlegende beschreibende Statistiken von Features und ihren Attributen innerhalb von Fl&auml;chen oder in der N&auml;he anderer Features berechnet.
+            <ul>
+                <li> <b>Punkte aggregieren</b> berechnet Statistiken zu Punkten, die sich innerhalb bestimmter Bereiche oder Abschnitte befinden.
+                </li>
+                <li> <b>Features verbinden</b> berechnet Statistiken zu Features, die eine gemeinsame r&auml;umliche, zeitliche oder Attributbeziehung mit anderen Features haben.
+                </li>
+                <li> <b>Spuren rekonstruieren</b> berechnet Statistiken zu Punkten oder Polygonen, die zur selben Spur geh&ouml;ren, und rekonstruiert Eingaben in Spuren.
+                </li>
+                <li> <b>Attribute zusammenfassen</b> berechnet Statistiken zu Feature- oder Tabellendaten mit gemeinsamen Attributen.
+                </li>
+                <li> <b>Zusammenfassen (innerhalb)</b> berechnet Statistiken f&uuml;r Fl&auml;chen-Features und Attribute, die sich &uuml;berlappen.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregatePointsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Punkte aggregieren</h2></td>
+                    <td>
+                    <img src="../images/GUID-6C1620D9-D176-41FA-8283-833D8B1CCCFC-web.png" class="titleImage" alt="Punkte aggregieren">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dieses Werkzeug ermittelt anhand eines Punkt-Feature-Layers und eines Fl&auml;chen-Feature-Layers oder anhand von Abschnitten, die durch eine festgelegte Entfernung definiert sind, welche Punkte sich innerhalb der einzelnen Bereiche oder Abschnitte befinden, und berechnet Statistiken zu allen Punkten in jedem Bereich. Sie k&ouml;nnen auch Zeitintervalle mit diesem Werkzeug anwenden. 
+            </p>
+            <p> Beispiel:
+                <ul>
+                    <li>Ermitteln Sie anhand der Punktpositionen von Kriminaldelikten die Anzahl der Delikte pro Landkreis oder Verwaltungsbezirk.
+                    </li>
+                    <li>Ermitteln Sie die h&ouml;chsten und niedrigsten monatlichen Umsatzzahlen f&uuml;r Franchise-Standorte anhand von 100-km-Abschnitten.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="JoinFeaturesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Features verbinden</h2></td>
+                    <td>
+                    <img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" class="titleImage" alt="Features verbinden">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Mithilfe von Feature-Layern oder Tabellendaten k&ouml;nnen Sie Features und Datens&auml;tze basierend auf bestimmten Beziehungen zwischen den Eingabe-Layern oder Tabellen verbinden.  Verbindungen werden durch r&auml;umliche, zeitliche und Attributbeziehungen bestimmt und Summenstatistiken k&ouml;nnen optional berechnet werden.  
+            </p>
+            <p> Beispiel:
+                <ul>
+                    <li>Verbinden Sie die Verbrechensdaten anhand der Punktpositionen von Kriminaldelikten mit einer Zeitangabe, indem Sie eine r&auml;umliche Beziehung von Kriminaldelikten angeben, die einen Kilometer voneinander entfernt und einen zeitlichen Abstand von einer Stunde aufweisen, um zu ermitteln, ob eine Abfolge von Kriminaldelikten vorhanden ist, die im Kontext von Raum und Zeit nah beeinander liegen.
+                    </li>
+                    <li> Verbinden Sie anhand einer Postleitzahlentabelle mit demografischen Informationen und Fl&auml;chen-Features, die Wohnh&auml;user darstellen, die demografischen Informationen zu den Wohnh&auml;usern, sodass jedes Wohnhaus nun &uuml;ber diese Informationen verf&uuml;gt.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="ReconstructTracksTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Spuren rekonstruieren</h2></td>
+                    <td>
+                    <img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" class="titleImage" alt="Spuren rekonstruieren">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dieses Werkzeug ermittelt anhand eines Layers mit Punkt- oder Polygon-Features mit aktivierten Zeiteigenschaften, die einen  <code>Zeitpunkt</code> darstellen, welche Eingabe-Features zu einer Spur geh&ouml;ren, und ordnet die Eingaben in einer zeitlichen Abfolge. Statistiken werden optional f&uuml;r die Eingabe-Features in jeder Spur berechnet.
+            </p>
+            <p> Beispiel:
+                <ul>
+                    <li>Berechnen Sie anhand von Punktpositionen und der Zeit von Wirbelsturmmessungen den Mittelwert der Windgeschwindigkeit und den maximalen Winddruck des Wirbelsturms.
+                    </li>
+                    <li>Ermitteln Sie die h&ouml;chsten und niedrigsten monatlichen Umsatzzahlen f&uuml;r Franchise-Standorte anhand von 100-km-Abschnitten.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeAttributesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Attribute zusammenfassen</h2></td>
+                    <td>
+                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="Attribute zusammenfassen">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> Dieses Werkzeug fasst Statistiken f&uuml;r angegebene Felder mittels Feature- oder Tabellendaten zusammen.
+            </p>
+            <p> Beispiel:
+                <ul>
+                    <li> Anhand der Standorte von Lebensmittelgesch&auml;ften werden mit dem Feld <i>COMPANY_NAME</i> die Gesch&auml;fte nach dem Namen des Unternehmens zusammengefasst, um Statistiken f&uuml;r jedes Unternehmen zu ermitteln.
+                    </li>
+                    <li>Anhand einer Tabelle mit Lebensmittelgesch&auml;ften werden mit den Feldern  <i>COMPANY_NAME</i> und <i>COUNTY</i> die Gesch&auml;fte nach dem Namen und dem Landkreis des Unternehmens zusammengefasst, um Statistiken f&uuml;r jedes Unternehmen in jedem Landkreis zu ermitteln.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeWithinTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Zusammenfassen (innerhalb)</h2></td>
+                    <td>
+                    <img src="../images/GUID-90E0CB1F-EB97-4752-B2EE-452B7B45475E-web.png" class="titleImage" alt="Zusammenfassen (innerhalb)">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Findet Fl&auml;chen (und Teile von Fl&auml;chen), die sich zwischen zwei Layern &uuml;berlappen, und berechnet Statistiken zu der &Uuml;berlappung. 
+            </p>
+            <p> Beispiel:
+                <ul>
+                    <li>Ermitteln Sie anhand eines Layers mit Abflussgebieten und eines Layers mit Landnutzungsfl&auml;chen nach Landnutzungstyp die Gesamtlandwirtschaftsfl&auml;che des Landnutzungstyps f&uuml;r jedes Abflussgebiet. 
+                    </li>
+                    <li>Fassen Sie den Durchschnittswert unbebauter Flurst&uuml;cke innerhalb jeder Stadt anhand eines Flurst&uuml;cks-Layers in einem Landkreis und eines Stadtgrenzen-Layers zusammen.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="FindLocationsCategory" class="smallsize">
+        <h2>Positionen suchen</h2>
+        <hr/>
+        <p>Mithilfe dieser Werkzeuge lassen sich Fl&auml;chen identifizieren, die verschiedenen von Ihnen definierten Kriterien entsprechen.   
+            <ul>
+                <li>Mit dem neuen Werkzeug  <b>&Auml;hnliche Positionen suchen</b> ermitteln Sie Positionen, die basierend auf den angegebenen Kriterien mindestens einer Referenzposition am &auml;hnlichsten sind.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="FindSimilarLocationsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Ähnliche Positionen suchen</h2></td>
+                    <td>
+                    <img src="../images/GUID-6262A84E-9087-4E48-930E-E9B89FECC836-web.png" class="titleImage" alt="&Auml;hnliche Positionen suchen">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Mit &quot;&Auml;hnliche Positionen suchen&quot; wird die &Auml;hnlichkeit von Positionen im Layer f&uuml;r Kandidatensuche mit mindestens einer Bezugsposition auf Grundlage der angegebenen Kriterien gemessen. 
+            </p>
+            <p> Beispiel:
+                <ul>
+                    <li>Suchen Sie die zehn Gesch&auml;fte mit der gr&ouml;&szlig;ten &Auml;hnlichkeit, indem Sie die Anzahl der Mitarbeiter und die Jahresums&auml;tze &uuml;berpr&uuml;fen.
+                    </li>
+                    <li>Suchen Sie die 100 St&auml;dte mit der gr&ouml;&szlig;ten &Auml;hnlichkeit, indem Sie die Beziehung zwischen Bev&ouml;lkerung, j&auml;hrlichem Wachstum und Steuereinnahmen &uuml;berpr&uuml;fen.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzePatternsCategory" class="smallsize">
+        <h2>Muster analysieren</h2>
+        <hr/>
+        <p>Mit diesen Werkzeugen k&ouml;nnen Sie r&auml;umliche Muster in Daten identifizieren, quantifizieren und visualisieren.  
+            <ul>
+                <li>Das Werkzeug  <b>Dichte berechnen</b> stellt die Anzahl der angegebenen Daten auf der Karte dar.
+                </li>
+                <li>Mit  <b>Hot-Spots suchen</b> werden statistisch signifikante Cluster im r&auml;umlichen Muster Ihrer Daten identifiziert.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateDensityTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Dichte berechnen</h2></td>
+                    <td>
+                    <img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" class="titleImage" alt="Calculate Density">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Das Werkzeug &quot;Dichte berechnen&quot; erstellt eine Dichtekarte aus Punkt-Features, indem bekannte Mengen einiger Ph&auml;nomene (als Attribute der Punkte dargestellt) auf der Karte verteilt werden. Das Ergebnis ist ein Fl&auml;chen-Layer, der die Dichte darstellt.
+            </p>
+            <p> Beispiel:
+                <ul>
+                    <li>Berechnen der Dichte von Krankenh&auml;usern in einem Bezirk. Der Ergebnis-Layer zeigt Fl&auml;chen mit hoher und niedriger Erreichbarkeit von Krankenh&auml;usern. Anhand dieser Informationen kann entschieden werden, ob neue Krankenh&auml;user gebaut werden m&uuml;ssen.
+                    </li>
+                    <li>Identifizieren von Fl&auml;chen, die aufgrund historischer Waldbrandstandorte ein hohes Waldbrandrisiko aufweisen
+                    </li>
+                    <li>Ermitteln von Gemeinden, die weit von wichtigen Fernstra&szlig;en entfernt sind, um zu planen, wo neue Stra&szlig;en gebaut werden m&uuml;ssen
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="FindHotSpotsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Hot-Spots suchen</h2></td>
+                    <td>
+                    <img src="../images/GUID-6D600155-AA9B-4F02-AD8B-2E84150AB743-web.png" class="titleImage" alt="Hot-Spots suchen">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Das Werkzeug &quot;Hot-Spots suchen&quot; ermittelt, ob die r&auml;umlichen Muster in den Daten eine statistisch signifikante Cluster-Bildung aufweisen. 
+                <ul>
+                    <li>Sind Ihre Punkte (Verbrechensf&auml;lle, B&auml;ume, Verkehrsunf&auml;lle) wirklich geclustert? Wie kann dies sichergestellt werden?
+                    </li>
+                    <li>Haben Sie wirklich einen statistisch signifikanten Hot-Spot (f&uuml;r Ausgaben, Kindersterblichkeit, durchweg hohe Pr&uuml;fungsergebnisse) gefunden oder lie&szlig;en sich andere Erkenntnisse aus der Karte ziehen, wenn die Art der Symbolisierung ge&auml;ndert w&uuml;rde?
+                    </li>
+                </ul>
+                Mithilfe des Werkzeugs &quot;Hot-Spots suchen&quot; k&ouml;nnen Sie diese Fragen mit Sicherheit beantworten.
+            </p>
+            <br/>
+        </div>
+    <div id="UseProximityCategory" class="smallsize">
+        <h2>Nachbarschaftsanalyse verwenden</h2>
+        <hr/>
+        <p>Mit diesen Werkzeugen k&ouml;nnen Sie eine der am h&auml;ufigsten gestellten Fragen im Zusammenhang mit r&auml;umlichen Analysen beantworten: &quot;Welche Elemente befinden sich in r&auml;umlicher N&auml;he zueinander?&quot;
+            <ul>
+                <li> <b>Puffer erstellen</b> erstellt Gebiete mit gleicher Entfernung von Features.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CreateBuffersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Puffer erstellen</h2></td>
+                    <td>
+                    <img src="../images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" class="titleImage" alt="Puffer erstellen">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ein Puffer ist ein Bereich, der eine angegebene Entfernung von einem Punkt oder Polygon-Feature abdeckt.
+            </p>
+            <p> Beispiel:
+                <ul>
+                    <li>Puffern Sie jeden Fluss mithilfe von Fluss-Features um das F&uuml;nfzigfache der Breite des Flusses, um eine geplante Ufergrenze zu bestimmen.
+                    </li>
+                    <li>Puffern Sie anhand von Fl&auml;chen, die Landkreise darstellen, jeden Landkreis um 200 Seemeilen, um die Meeresgrenze zu bestimmen.  
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="ManageDataCategory" class="smallsize">
+        <h2>Daten verwalten</h2>
+        <hr/>
+        <p>Diese Werkzeuge werden f&uuml;r die t&auml;gliche Verwaltung von geographischen und Tabellendaten eingesetzt.
+            <ul>
+                <li> <b>In Data Store kopieren</b> kopiert Daten in den ArcGIS Data Store und erstellt einen Layer in Ihrem Web-GIS.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CopyToDataStoreTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>In Data Store kopieren</h2></td>
+                    <td>
+                    <img src="../images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" class="titleImage" alt="In Data Store kopieren">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Kopiert einen Eingabe-Feature-Layer oder eine Tabelle in einen  ArcGIS Data Store und erstellt einen Layer in Ihrem Web-GIS. </p>
+            <p> Beispiele:
+                <ul>
+                    <li> Kopieren Sie eine Sammlung von <code>.csv</code>-Dateien einer Big-Data-Dateifreigabe zu Visualisierungszwecken in den Data Store &quot;spatiotemporal&quot;.
+                    </li>
+                    <li>Kopieren Sie die Features der aktuellen Kartenausdehnung, die im Data Store &quot;spatiotemporal&quot; gespeichert sind, in den relationalen Data Store.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+</div>
+</html>

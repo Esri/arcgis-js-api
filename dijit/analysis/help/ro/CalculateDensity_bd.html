@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Calcul densitate</h2><p/>
+        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Calculate Density"></h2>
+        <hr/>
+    <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas classified from least dense to most dense.   
+
+    </p>
+    <p>For point input, each point should represent the location of some event or incident, and the result layer represents a count of the incident per unit area.  A higher density value in a new location means that there are more points near that location.  In many cases, the result layer can be interpreted as a risk surface for future events. For example, if the input points represent locations of lightning strikes, the result layer can be interpreted as a risk surface for future lightning strikes.
+    </p>
+    <p>Other use cases of this tool include the following:
+        <ul>
+            <li>Creating crime-density maps to help police departments properly allocate resources to high crime areas.
+            </li>
+            <li>Calculating densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to decide where new hospitals should be built.
+            </li>
+            <li>Identifying areas that are at high risk of forest fires based on historical locations of forest fires.
+            </li>
+            <li>Locating communities that are far from major highways in order to plan where new roads should be constructed.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Alegeţi un strat tematic de puncte din care să calculaţi densitatea</h2></div>
+        <hr/>
+        <div>
+            <p>The point layer on which the density will be calculated.
+            </p>
+            <p>&Icirc;n afară de a alege un strat tematic din harta dvs., puteţi selecta opţiunile  <b>Răsfoire straturi tematice</b> &icirc;n partea inferioară a listei verticale pentru a răsfoi conţinutul pentru stratul tematic sau setul de date pentru partajarea de fişiere big data.  
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>Alegeţi unul sau mai multe câmpuri pe care să calculaţi densitatea</h2></div>
+        <hr/>
+        <div>
+            <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
+            </p>
+            <p>The density for the count of points will always be calculated.   If no fields are selected, each location will be assumed to represent a single count.
+            </p>
+        </div>
+    </div>
+    <div id="binType">
+        <div><h2>Alegeţi o formă de coş</h2></div>
+        <hr/>
+        <div>
+            <p>The shape of bins that points are aggregated into and used for the density calculation.
+            </p>
+        </div>
+    </div>
+    <div id="binSizing">
+        <div><h2>Selectaţi dimensiunea coşurilor pentru calculul densităţii</h2></div>
+        <hr/>
+        <div>
+            <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
+            </p>
+        </div>
+    </div>
+    <div id="weight">
+        <div><h2>Selectaţi ponderarea densităţii care va fi aplicată</h2></div>
+        <hr/>
+        <div>
+            <p>The type of weighting applied to the density calculation. There are two options:
+                <ul>
+                    <li> <b>Uniform</b>&mdash;This calculates a magnitude per area.
+                    </li>
+                    <li> <b>Kernel</b>&mdash;Applies a kernel function to fit a smooth tapered surface to each point.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="neighborhood">
+        <div><h2>Selectaţi dimensiunea cartierului</h2></div>
+        <hr/>
+        <div>
+            <p>The size of the area used to calculate the density. The neighborhood size must be larger than the bin size.
+            </p>
+        </div>
+    </div>
+    <div id="areaUnits">
+        <div><h2>Alegeţi unităţile pentru densitate</h2></div>
+        <hr/>
+        <div>
+            <p>The desired output units of the density values. By default, this is set to the units in your map (for example, square meters). If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Calculaţi densitatea utilizând segmente temporale (opţional)</h2></div>
+        <hr/>
+        <div>
+            <p>Dacă timpul este activat &icirc;n stratul tematic de puncte de intrare şi este de tip instantaneu, puteţi analiza prin intermediul intervalurilor de timp.  Există trei parametri pe care &icirc;i puteţi seta atunci c&acirc;nd utilizaţi timpul:
+                <ul>
+                    <li>  <b>Interval de timp</b>
+                    </li>
+                    <li> <b>Treaptă temporală</b>
+                    </li>
+                    <li> <b>Oră de referinţă</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Imaginaţi-vă că aveţi date care reprezintă un an &icirc;n timp şi că doriţi să analizaţi utiliz&acirc;nd segmente săptăm&acirc;nale. Pentru a face acest lucru aţi seta  <b>Interval de timp</b> la <code>1 săptăm&acirc;nă</code>.
+            </p>
+            <p> Imaginaţi-vă că aveţi date care reprezintă un an &icirc;n timp şi că doriţi să analizaţi utiliz&acirc;nd prima săptăm&acirc;nă a lunii. Pentru a face acest lucru aţi seta <b>Interval de timp</b> la <code>1 săptăm&acirc;nă</code>, <b>Treaptă temporală</b> la <code>1 lună</code> şi <b>Oră de referinţă</b> la <code>1 ianuarie, 12:00 am</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>Interval temporal în care să calculaţi densitatea</h2></div>
+        <hr/>
+        <div>
+            <p>Interval temporal pentru segmentarea datelor. Intervalul de timp poate fi utilizat singur sau cu parametrul  <b>Treaptă temporală</b> sau <b>Oră de referinţă</b>.
+            </p>
+            <p> Dacă aţi dori să creaţi segmente de timp care au loc &icirc;n fiecare luni de la 9:00 a.m. p&acirc;nă la 10:00 a.m., <b>Interval de timp</b> ar fi <code>1 oră</code>, <b>Treaptă temporală</b> ar fi <code>1 săptăm&acirc;nă</code> şi <b>Oră de referinţă</b> ar fi <code>9:00:00 a.m., luni</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>Treaptă temporală în care să calculaţi densitatea</h2></div>
+        <hr/>
+        <div>
+            <p> Treapta utilizată pentru calculul unui segment de timp. <b>Treaptă temporală</b> poate fi utilizat singur sau cu <b>Interval de timp</b>, cu <b>Oră de referinţă</b> ori cu ambele, <b>Interval de timp</b> şi <b>Oră de referinţă</b>.
+            </p>
+            <p> Dacă aţi dori să creaţi segmente de timp care au loc &icirc;n fiecare luni de la 9:00 a.m. p&acirc;nă la 10:00 a.m., <b>Interval de timp</b> ar fi <code>1 oră</code>, <b>Treaptă temporală</b> ar fi <code>1 săptăm&acirc;nă</code> şi <b>Oră de referinţă</b> ar fi <code>9:00:00 a.m., luni</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Ora de referinţă utilizată pentru alinierea segmentelor temporale</h2></div>
+        <hr/>
+        <div>
+            <p>Data şi ora utilizate pentru alinierea segmentelor temporale.  <b>Treaptă temporală</b> va &icirc;ncepe de la ora de referinţă şi va continua &icirc;n sens invers.
+            </p>
+            <p> Dacă aţi dori să creaţi segmente de timp care au loc &icirc;n fiecare luni de la 9:00 a.m. p&acirc;nă la 10:00 a.m., <b>Interval de timp</b> ar fi <code>1 oră</code>, <b>Treaptă temporală</b> ar fi <code>1 săptăm&acirc;nă</code> şi <b>Oră de referinţă</b> ar fi <code>9:00:00 a.m., luni</code>.
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>SpatialReference (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>Acesta este un parametru temporar pentru pre-lansare, destinat procesării referinţei spaţiale. Numeroase instrumente big data necesită utilizarea unui sistem de coordonate estimat ca referinţă spaţială pentru procesare. &Icirc;n mod implicit, instrumentul va utiliza sistemul de coordonate de intrare dar va eşua dacă este un sistem de coordonate geografice. Pentru a seta un sistem de coordonate estimate, introduceţi WKID. De exemplu,  <b>Web Mercator</b> ar fi introdus ca <code>3857</code>.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Alegeţi depozitul de date</h2></div>
+        <hr/>
+        <div>
+            <p>Acesta este un parametru temporar pentru pre-lansare, destinat setării depozitului de date &icirc;n care sunt salvate rezultatele. Ambele depozite de date fac parte din  ArcGIS Data Store. Dacă selectaţi depozitul de date spaţio-temporal dar nu aveţi unul instalat, instrumentul va eşua. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nume strat tematic rezultat</h2></div>
+        <hr/>
+        <div>
+            <p> Acesta este numele stratului tematic care va fi creat &icirc;n <b>Resursele mele</b> şi adăugat &icirc;n hartă.  Numele implicit se bazează pe numele instrumentului şi numele stratului tematic de intrare. Dacă stratul tematic există deja, instrumentul va eşua.
+            </p>
+            <p>Utiliz&acirc;nd caseta derulantă  <b>Salvare rezultat &icirc;n</b>, puteţi specifica numele unui director din <b>Resursele mele</b> &icirc;n care va fi salvat rezultatul.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

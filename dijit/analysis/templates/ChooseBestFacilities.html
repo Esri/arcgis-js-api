@@ -224,7 +224,7 @@
               </tr>     
               <tr data-dojo-attach-point="_candidatePercentRow">
                 <td colspan="3" style="padding-bottom:0.25em;padding-top:0.25em;">
-                  <input type="text" data-dojo-type="dijit/form/NumberTextBox" class="esriLeadingMargin2 mediumInput" data-dojo-attach-point="_percentDemandCoverageValue" data-dojo-props="value:100"> 
+                  <input type="text" data-dojo-type="dijit/form/NumberTextBox" class="esriLeadingMargin2 mediumInput" data-dojo-attach-point="_percentDemandCoverageValue" data-dojo-props="value:100,constraints:{min:1,max:100},rangeMessage:'${i18n.AO_100156}'"> 
                   <label class="esriLeadingMargin1">%</label>
                 </td>
               </tr>               
@@ -442,7 +442,7 @@
         <div class="esriFormWarning esriRoundedBox" data-dojo-attach-point="_errorMessagePane" style="display:none;">
           <a href="#" title='${i18n.close}' data-dojo-attach-event="onclick:_handleCloseMsg" class="esriFloatTrailing esriAnalysisInfoPaneCloseIcon"></a>
           </a>
-          <span data-dojo-attach-point="_bodyNode"></span>
+          <div data-dojo-attach-point="_bodyNode"></div>
         </div>
         <button data-dojo-type="dijit/form/Button" data-dojo-attach-point="_prevBtn" class="calcite transparent" data-dojo-attach-event="onClick:_handlePrevBtnClick" style="display:none;">
               ${i18n.back}

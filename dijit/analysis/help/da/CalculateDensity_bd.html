@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Beregn tæthed</h2><p/>
+        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Calculate Density"></h2>
+        <hr/>
+    <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas classified from least dense to most dense.   
+
+    </p>
+    <p>For point input, each point should represent the location of some event or incident, and the result layer represents a count of the incident per unit area.  A higher density value in a new location means that there are more points near that location.  In many cases, the result layer can be interpreted as a risk surface for future events. For example, if the input points represent locations of lightning strikes, the result layer can be interpreted as a risk surface for future lightning strikes.
+    </p>
+    <p>Other use cases of this tool include the following:
+        <ul>
+            <li>Creating crime-density maps to help police departments properly allocate resources to high crime areas.
+            </li>
+            <li>Calculating densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to decide where new hospitals should be built.
+            </li>
+            <li>Identifying areas that are at high risk of forest fires based on historical locations of forest fires.
+            </li>
+            <li>Locating communities that are far from major highways in order to plan where new roads should be constructed.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Vælg et punktag, som tætheden skal beregnes ud fra</h2></div>
+        <hr/>
+        <div>
+            <p>The point layer on which the density will be calculated.
+            </p>
+            <p>Udover at du kan v&aelig;lge et lag i dit kort, kan du v&aelig;lge  <b>Gennemse lag</b> nederst p&aring; rullelisten for at g&aring; til dit indhold til et big data-fildelingsdatas&aelig;t eller -vektorlag.  
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>Vælg ét eller flere felter, som du vil beregne tætheden for</h2></div>
+        <hr/>
+        <div>
+            <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
+            </p>
+            <p>The density for the count of points will always be calculated.   If no fields are selected, each location will be assumed to represent a single count.
+            </p>
+        </div>
+    </div>
+    <div id="binType">
+        <div><h2>Vælg en beholderform</h2></div>
+        <hr/>
+        <div>
+            <p>The shape of bins that points are aggregated into and used for the density calculation.
+            </p>
+        </div>
+    </div>
+    <div id="binSizing">
+        <div><h2>Vælg beholderstørrelse for tæthedsberegninger</h2></div>
+        <hr/>
+        <div>
+            <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
+            </p>
+        </div>
+    </div>
+    <div id="weight">
+        <div><h2>Vælg den tæthedsvægtning, der skal anvendes</h2></div>
+        <hr/>
+        <div>
+            <p>The type of weighting applied to the density calculation. There are two options:
+                <ul>
+                    <li> <b>Uniform</b>&mdash;This calculates a magnitude per area.
+                    </li>
+                    <li> <b>Kernel</b>&mdash;Applies a kernel function to fit a smooth tapered surface to each point.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="neighborhood">
+        <div><h2>Vælg størrelse på lokalområde</h2></div>
+        <hr/>
+        <div>
+            <p>The size of the area used to calculate the density. The neighborhood size must be larger than the bin size.
+            </p>
+        </div>
+    </div>
+    <div id="areaUnits">
+        <div><h2>Vælg outputenheder for tæthed</h2></div>
+        <hr/>
+        <div>
+            <p>The desired output units of the density values. By default, this is set to the units in your map (for example, square meters). If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Beregn tæthed ved hjælp af tidsintervaller (valgfrit)</h2></div>
+        <hr/>
+        <div>
+            <p>Hvis der er aktiveret tid for inputpunktlaget, og det tilh&oslash;rer &oslash;jeblikstypen, kan du analysere ved hj&aelig;lp af tidsintervaller. Du kan indstille tre parametre, n&aring;r du bruger tiden:
+                <ul>
+                    <li>  <b>Tidsinterval</b>
+                    </li>
+                    <li> <b>Tidstrin</b>
+                    </li>
+                    <li> <b>Referencetid</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Forestil dig, at du har data, der repr&aelig;senterer et &aring;r i tiden, og at du &oslash;nsker at analysere ved hj&aelig;lp af ugentlige tidsintervaller. For at g&oslash;re dette skal du indstille  <b>Tidsinterval</b> til <code>1 uge</code>.
+            </p>
+            <p> Forestil dig, at du har data, der repr&aelig;senterer et &aring;r i tiden, og at du &oslash;nsker at analysere ved hj&aelig;lp af den f&oslash;rste uge i m&aring;neden. For at g&oslash;re dette skal du indstille <b>Tidsinterval</b> til <code>1 uge</code>, <b>Tidstrin</b> til <code>1 m&aring;ned</code> og <b>Referencetid</b> til <code>1. januar kl. 12:00 AM</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>Tidsinterval, som tætheden skal beregnes for</h2></div>
+        <hr/>
+        <div>
+            <p>Det tidsinterval, der benyttes til opdele tiden. Tidsinterval kan benyttes alene elle sammen med  <b>Tidstrin</b>- eller <b>Referencetid</b>-parameteren.
+            </p>
+            <p> Hvis du &oslash;nskede at oprette tidsintervaller, som finder sted hver mandag fra kl. 9:00 til kl. 10:00., ville <b>Tidsinterval</b> v&aelig;re <code>1 time</code>, <b>Tidstrin</b> ville v&aelig;re <code>1 uge</code>, og <b>Referencetid</b> ville v&aelig;re <code>9:00:00 om mandagen</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>Tidstrin, som tætheden skal beregnes for</h2></div>
+        <hr/>
+        <div>
+            <p> Det tidstrin, der benyttes til at beregne tidsopdelingen. <b>Tidstrin</b> kan benyttes alene elle sammen med <b>Tidsinterval</b>, sammen med <b>Referencetid</b> eller sammen med b&aring;de <b>Tidsinterval</b> og <b>Referencetid</b>.
+            </p>
+            <p> Hvis du &oslash;nskede at oprette tidsintervaller, som finder sted hver mandag fra kl. 9:00 til kl. 10:00., ville <b>Tidsinterval</b> v&aelig;re <code>1 time</code>, <b>Tidstrin</b> ville v&aelig;re <code>1 uge</code>, og <b>Referencetid</b> ville v&aelig;re <code>9:00:00 om mandagen</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Referencetid, der benyttes til at justere tidsintervaller</h2></div>
+        <hr/>
+        <div>
+            <p>Den dato og det klokkesl&aelig;t, der benyttes til at justere tidsintervallerne.  <b>Tidstrin</b> starter fra og forts&aelig;tter bagud med den tid, der er angivet af referencetiden.
+            </p>
+            <p> Hvis du &oslash;nskede at oprette tidsintervaller, som finder sted hver mandag fra kl. 9:00 til kl. 10:00., ville <b>Tidsinterval</b> v&aelig;re <code>1 time</code>, <b>Tidstrin</b> ville v&aelig;re <code>1 uge</code>, og <b>Referencetid</b> ville v&aelig;re <code>9:00:00 om mandagen</code>.
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>SpatialReference (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>Dette er en midlertidig parameter til prerelease med henblik p&aring; angivelse af den spatiale reference til behandling. Mange big data-v&aelig;rkt&oslash;jer kr&aelig;ver, at et projiceret koordinatsystem benyttes som spatial reference med henblik p&aring; behandling. V&aelig;rkt&oslash;jet vil som standard benytte inputkoordinatsystemet, men dette vil ikke fungere, hvis et geografisk koordinatsystem benyttes. Angiv WKID, hvis et projiceret koordinatsystem skal indstilles. For eksempel ville  <b>Web Mercator</b> blive angivet som <code>3857</code>.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Vælg datalager</h2></div>
+        <hr/>
+        <div>
+            <p>Dette er en midlertidig parameter til prerelease med henblik p&aring; angivelse af det datalager, hvor resultaterne bliver gemt. Begge datalagre er en del af  ArcGIS Data Store. Hvis du v&aelig;lger det spatiotemporale datalager, men ikke har et s&aring;dant installeret, vil v&aelig;rkt&oslash;jet ikke fungere. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Navn på resultatlag</h2></div>
+        <hr/>
+        <div>
+            <p> Dette er navnet p&aring; det lag, som oprettes i <b>Mit indhold</b> og f&oslash;jes til kortet. Standardnavnet er baseret p&aring; navnet p&aring; v&aelig;rkt&oslash;jet og navnet p&aring; inputlaget. Hvis laget allerede findes, vil v&aelig;rkt&oslash;jet ikke fungere.
+            </p>
+            <p>Ved hj&aelig;lp af rullelisten  <b>Gem resultat i</b> kan du angive navnet p&aring; en mappe i <b>Mit indhold</b>, hvor resultatet skal gemmes.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

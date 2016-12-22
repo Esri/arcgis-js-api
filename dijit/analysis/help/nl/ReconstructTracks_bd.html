@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Traceringen reconstrueren</h2><p/>
+        <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Traceringen reconstrueren"></h2>
+        <hr/>
+    <p>Deze tool werkt met een tijdingeschakelde laag van punt- of polygoonobjecten die een  <code>moment</code> in de tijd te vertegenwoordigen. Het bepaalt eerst welke objecten tot een tracering behoren met behulp van een identificatie. Met behulp van de tijd op elke locatie, worden de traceringen op volgorde gezet en omgevormd tot een lijn of polygoon die het pad van de beweging in de tijd weergeeft. Eventueel kan de input worden gebufferd door een veld, dat een polygoon op elke locatie cre&euml;ert. Deze gebufferde punten, of als de inputs polygonen zijn, worden vervolgens samengevoegd als een polygoon waarbij de breedte representatief is voor het attribuut van belang. De resulterende traceringen een begin- en een eindtijd, die tijdelijk het eerste en het laatste object in een bepaalde tracering vertegenwoordigen. Wanneer de traceringen gemaakt zijn, worden de statistieken over de inputobjecten worden berekend en toegekend aan de outputtracering. De meest eenvoudige statistiek is het aantal punten binnen het gebied, maar andere statistieken kunnen ook worden berekend.
+    </p>
+    <p>Objecten in tijdingeschakelde lagen kunnen worden weergegeven op twee manieren:
+        <ul>
+            <li>Direct&mdash;E&eacute;n moment in de tijd
+            </li>
+            <li>Interval&mdash;Een start- en eindtijd
+            </li>
+        </ul>
+        
+    </p>
+    <p>Stel bijvoorbeeld voor dat u GPS-metingen van orkanen hebt elke 10 minuten. Elke GPS-meting registreert de naam van de orkaan, de locatie, het tijdstip van de opname en de windsnelheid. Met deze informatie kunt u traceringen cre&euml;ren voor elke orkaan met de naam voor traceringsidentificatie en traceringen voor elke orkaan worden gegenereerd. Daarnaast kunt u statistieken berekenen, zoals het gemiddelde, max. en minimale windsnelheid van elke orkaan, evenals het aantal metingen binnen elke tracering.
+    </p>
+    <p>Met behulp van hetzelfde voorbeeld kunt u uw traceringen bufferen door de windsnelheid. Dit buffert elke meting door het windsnelheidveld op die locatie en voegt de gebufferde gebieden samen, maakt een polygoonvertegenwoordiging van het traceringpad alsmede van de veranderingen in windsnelheid als de orkanen verder trekken.   
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Kies de features om traceringen uit te reconstrueren</h2></div>
+        <hr/>
+        <div>
+            <p>De punt- of polygoonlaag die gereconstrueerd wordt in traceringen.
+            </p>
+            <p>Naast het kiezen van een laag van uw kaart, kunt u kiezen voor  <b>Blader door lagen</b> aan de onderkant van de drop-downlijst om in uw inhoud te zoeken naar een groot gedeeld databestand of objectlaag.  
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>Kies te gebruiken veld om traceringen te identificeren</h2></div>
+        <hr/>
+        <div>
+            <p> De velden die de traceringsidentifier vertegenwoordigen.
+            </p>
+            <p> Bijvoorbeeld als u de sporen van orkanen reconstrueert, kunt u de naam van de orkaan gebruiken als het traceringsveld.
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Kies te gebruiken methode om traceringen te reconstrueren</h2></div>
+        <hr/>
+        <div>
+            <p>Methode die wordt gebruikt om traceringen samen te voegen en buffers toe te passen (indien van toepassing). De  <b>Planaire</b> methode kan de resultaten sneller berekenen, maar wikkelt de traceringen niet rond de internationale datumgrens en houdt geen rekening met de daadwerkelijke vorm van de aarde bij het bufferen. De <b>Geodetische</b> methode wikkelt traceringen rond de datumgrens indien nodig en past een geodetische buffer toe om rekening te houden met de vorm van de aarde.
+            </p>
+        </div>
+    </div>
+    <div id="bufferField">
+        <div><h2>Maak een expressie om invoerfeatures op te bufferen (optioneel)</h2></div>
+        <hr/>
+        <div>
+            <p>Vergelijking gebruikt om de bufferafstand rond de invoerobjecten te berekenen. Deze vergelijking kan worden gegenereerd met behulp van de buffercalculator en basisbewerkingen zoals optellen, aftrekken, vermenigvuldigen en delen worden ondersteund. Waarden worden berekend op basis van het analyseco&ouml;rdinaatsysteem.
+            </p>
+        </div>
+    </div>
+    <div id="timeSplit">
+        <div><h2>Selecteer een tijd om traceringen op te splitsen (optioneel)</h2></div>
+        <hr/>
+        <div>
+            <p>Tijd gebruikt om traceringen te splitsen. Als inputpunten of -polygonen een langere duur tussen hen hebben dan de gesplitste tijd dan worden ze opgesplitst in verschillende traceringen.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Statistieken toevoegen (optioneel)</h2></div>
+        <hr/>
+        <div>
+            <p> U kunt statistieken berekenen over objecten die zijn samengevat. Op numerieke velden kunt u het volgende berekenen:
+                <ul>
+                    <li>Aantal
+                    </li>
+                    <li>Gemiddelde
+                    </li>
+                    <li>Min
+                    </li>
+                    <li>Max
+                    </li>
+                    <li>Bereik
+                    </li>
+                    <li>Variantie
+                    </li>
+                    <li>Standaardafwijking
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Op stringvelden kunt u het volgende berekenen:
+                <ul>
+                    <li>Aantal
+                    </li>
+                    <li>Elke&mdash;Deze statistiek is een willekeurig voorbeeld van een stringwaarde in het gespecificeerde veld.
+                    </li>
+                </ul>
+                Alle statistieken worden berekend op nonnull waarden. De resultaatlaag zal een nieuw veld bevatten voor elke statistiek die wordt berekend. Andere statistieken kunnen worden toegevoegd door een attribuut en statistiek te kiezen. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Datastore kiezen</h2></div>
+        <hr/>
+        <div>
+            <p>Dit is een tijdelijke parameter voor prerelease om de data-opslag in te stellen waar de resultaten worden opgeslagen. Beide data-opslagplaatsen maken deel uit van  ArcGIS Data Store . Als u de tijdruimtelijke gegevensopslag selecteert maar er geen hebt ge&iuml;nstalleerd, dan zal de tool falen. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Resultaat laagnaam</h2></div>
+        <hr/>
+        <div>
+            <p> Dit is de naam van de kaartlaag die in <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd.  De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, zal de tool falen.
+            </p>
+            <p>Als u in de vervolgkeuzelijst  <b>Resultaat opslaan</b> gebruikt, kunt u de naam opgeven van een map in <b>Mijn Content</b> waarin het resultaat wordt opgeslagen.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

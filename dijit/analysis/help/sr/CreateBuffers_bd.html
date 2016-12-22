@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Kreiraj zone bliskosti</h2><p/>
+        <h2><img src="../images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" alt="Kreiraj zone bliskosti"></h2>
+        <hr/>
+    <p>Zona bliskosti je oblast koja pokriva datu razdaljinu od tačke, linije ili geoobjekta oblasti. 
+    </p>
+    <p>Zone bliskosti se obično koriste za kreiranje oblasti koje mogu detaljnije da se analiziraju koristeći druge alatke. Na primer, ako je pitanje &bdquo;Koje zgrade se nalaze u okviru 1 milje od &scaron;kole?&ldquo;, odgovor možete da dobijete kreiranjem zone bliskosti od 1 milje oko &scaron;kole i preklapanjem zone bliskosti sa slojem koji sadrži planove zgrade. Krajnji rezultat je sloj onih zgrada koje se nalaze unutar rastojanja od 1 milje od &scaron;kole.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Izaberi sloj na koji će se primeniti zona bliskosti</h2></div>
+        <hr/>
+        <div>
+            <p>Tačkasti i linijski geoobjekti ili geoobjekti oblasti za koje se kreira zona bliskosti.
+            </p>
+            <p>Kao dodatak odabiru sloja iz mape, možete da odaberete  <b>Pregledaj slojeve</b> na dnu padajuće liste da biste potražili deljeni skup podataka za datoteke sa velikim podacima ili sloj geoobjekta u svojim sadržajima.  
+            </p>
+        </div>
+    </div>
+    <div id="bufferType">
+        <div><h2>Izaberi tip zone bliskosti koja će se primeniti</h2></div>
+        <hr/>
+        <div>
+            <p>Postoje tri načina na koji možete da navedete veličinu zone bliskosti za va&scaron;e ulazne geoobjekte: 
+                <ul>
+                    <li>Navedite rastojanje koje je primenjeno na sve geoobjekte.
+                    </li>
+                    <li>Navedite polje na ulaznom sloju koje sadrži vrednost rastojanja. Možete da koristite polje niske ili numeričko polje. Ako linearna jedinica nije definisana, koristiće se jedinice prostorne reference. Ako koristite geografski koordinatni sistem, za polje bez jedinica će se pretpostavljati da je sa metrima. 
+                    </li>
+                    <li>Napravite izraz sa vi&scaron;estrukim poljima i matematičkim operatorima.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Izaberi metod zone bliskosti</h2></div>
+        <hr/>
+        <div>
+            <p>Možete da izaberete da koristite  <b>Planarni</b> metod ili <b>Geodetski</b> metod. <b>Planarni</b> metod može da bude brži i prikladan je za lokalnu analizu projektovanih podataka. <b>Geodetski</b> metod je prikladan za velike oblasti i za bilo koji geografski koordinatni sistem.
+            </p>
+        </div>
+    </div>
+    <div id="dissolveOption">
+        <div><h2>Izaberi vrstu metoda za svođenje</h2></div>
+        <hr/>
+        <div>
+            <p>Opcije za navođenje metoda svođenja.   Ako je izabran metod svođenja, biće vam data opcija da kreirate vi&scaron;edelne ili jednodelne oblasti i bićete u mogućnosti da izračunate statistiku na osnovu datih polja.
+                <ul>
+                    <li> <b>Svi</b>&mdash;Svi geoobjekti će biti svedeni. Ako su dozvoljeni vi&scaron;edelni geoobjekti, svi geoobjekti će biti svedeni u jedan geoobjekat. Ako vi&scaron;edelni geoobjekti nisu dozvoljeni, biće svedeni geoobjekti koji su susedni ili se preklapaju.
+                    </li>
+                    <li> <b>Polja</b>&mdash;Geoobjekti koji dele isto navedeno polje ili navedenu kombinaciju polja će biti svedeni. Ako su dozvoljeni vi&scaron;edelni geoobjekti, svi geoobjekti sa istim poljem će biti svedeni u jedan geoobjekat. Ako vi&scaron;edelni geoobjekti nisu dozvoljeni, biće svedeni geoobjekti koji su susedni ili se preklapaju sa istom vredno&scaron;ću polja.
+                    </li>
+                    <li> <b>Nijedan</b>&mdash;Nijedan geoobjekat neće biti sveden. Ovo je podrazumevano.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="multipart">
+        <div><h2>Dozvoli višedelne geoobjekte</h2></div>
+        <hr/>
+        <div>
+            <p>Opcija koju treba navesti ako će se va&scaron; rezultat sastojati od geoobjekata od jednog ili vi&scaron;e delova. 
+
+            </p>
+            <p>
+                <ul>
+                    <li>Opcija je izabrana&mdash;rezultati va&scaron;e analize će sadržati vi&scaron;edelne geoobjekte.   
+                    </li>
+                    <li>Opcija nije izabrana&mdash;rezultati va&scaron;e analize će sadržati jednodelne geoobjekte, to je podrazumevano.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Dodaj statistiku (opciono)</h2></div>
+        <hr/>
+        <div>
+            <p> Možete da izračunate statistiku na geoobjektima koji su sumirani. U numeričkim poljima možete da izračunate sledeće:
+                <ul>
+                    <li>Broj
+                    </li>
+                    <li>Sredina
+                    </li>
+                    <li>Minimum
+                    </li>
+                    <li>Maksimum
+                    </li>
+                    <li>Opseg
+                    </li>
+                    <li>Odstupanje
+                    </li>
+                    <li>Standardna devijacija
+                    </li>
+                </ul>
+                
+            </p>
+            <p>U poljima niske možete da izračunate sledeće:
+                <ul>
+                    <li>Broj
+                    </li>
+                    <li>Bilo koji&mdash;ova statistika je nasumični uzorak vrednosti niske u navedenom polju.
+                    </li>
+                </ul>
+                Sva statistika se izračunava na vrednostima koje nisu null (bez vrednosti). Rezultujući sloj će sadržati novo polje za svaku izračunatu statistiku. Svaki broj statistike može da se doda odabirom atributa i statistike. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Izaberi skladište podataka</h2></div>
+        <hr/>
+        <div>
+            <p>Ovo je privremeni parametar za preliminarnu verziju da bi se podesilo skladi&scaron;te podataka gde se čuvaju rezultati. Oba skladi&scaron;ta podataka su deo  ArcGIS Data Store. Ako izaberete skladi&scaron;te prostorno-vremenskih podataka, ali nemate ga instalirano, alatka će otkazati. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Naziv sloja sa rezultatima</h2></div>
+        <hr/>
+        <div>
+            <p> Ovo je naziv sloja koji će biti kreiran u <b>Mom sadržaju</b> i dodat na mapu. Podrazumevani naziv je zasnovan na nazivu alatke i nazivu ulaznog sloja. Ako sloj već postoji, alatka će otkazati.
+            </p>
+            <p>Koristeći  <b>Sačuvaj rezultat u</b> padajućem polju, možete da navedete ime fascikle u <b>Mom sadržaju</b> u kojoj će rezultat biti sačuvan.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

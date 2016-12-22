@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Forbind objekter</h2><p/>
+        <h2><img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" alt="Forbind objekter"></h2>
+        <hr/>
+    <p>Forbind objekter-v&aelig;rkt&oslash;jet arbejder med to lag. Forbind objekter-v&aelig;rkt&oslash;jet knytter attributter fra &eacute;t objekt til attributter fra et andet objekt ud fra spatiale og tidsbestemte relationer samt attributrelationer eller en kombination af alle tre dele. V&aelig;rkt&oslash;jet registrerer alle de inputobjekter, der opfylder de angivne tilknytningsbetingelser, og knytter det andet inputlag til det f&oslash;rste. Du kan v&aelig;lge at knytte alle objekter til de matchende objekter eller at summere de matchende objekter.
+    </p>
+    <p>Forbind objekter-v&aelig;rkt&oslash;jet kan anvendes til punkter, linjer, omr&aring;der og tabeller. En tidsbestemt forbindelse kr&aelig;ver, at dine inputdata er tidsbestemte, og en spatial forbindelse kr&aelig;ver, at dine data har en geometri. 
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="targetLayer">
+        <div><h2>Vælg lag, som objekter skal knyttes til</h2></div>
+        <hr/>
+        <div>
+            <p>Det lag, som objekter skal knyttes til. 
+            </p>
+            <p>Udover at du kan v&aelig;lge et lag i dit kort, kan du v&aelig;lge  <b>Gennemse lag</b> nederst p&aring; rullelisten for at g&aring; til dit indhold til et big data-fildelingsdatas&aelig;t eller -vektorlag.  
+            </p>
+        </div>
+    </div>
+    <div id="joinLayer">
+        <div><h2>Vælg lag, der skal tilknyttes</h2></div>
+        <hr/>
+        <div>
+            <p>Det lag, som vil blive knyttet til det f&oslash;rste inputlag.
+            </p>
+            <p>Udover at du kan v&aelig;lge et lag i dit kort, kan du v&aelig;lge  <b>Gennemse lag</b> nederst p&aring; rullelisten for at g&aring; til dit indhold til et big data-fildelingsdatas&aelig;t eller -vektorlag.  
+            </p>
+        </div>
+    </div>
+    <div id="joinOperation">
+        <div><h2>Vælg tilknytningshandling</h2></div>
+        <hr/>
+        <div>
+            <p>Dette bestemmer, hvordan tilknytninger mellem inputlagene vil blive h&aring;ndteret i outputtet, hvis det viser sig, at flere tilknyttede objekter har den samme relation til det lag, der bliver tilknyttet. Du kan v&aelig;lge mellem to tilknytningshandlinger:
+                <ul>
+                    <li> <b>Tilknyt &eacute;n-til-&eacute;n</b> &ndash; Denne indstilling knytter alle matchende objekter til tilknytningslaget.
+                    </li>
+                    <li> <b>Tilknyt &eacute;n-til-mange</b> &ndash; Denne indstilling summerer alle matchende objekter for hvert objekt, der bliver tilknyttet.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Forestil dig f.eks., at vi &oslash;nsker at finde frem til alle de dagligvarebutikker, der ligger inden for 5 kilometer fra et marked med landbrugsprodukter. I dette tilf&aelig;lde skal det lag, der tilknyttes til, have et enkelt objekt, der repr&aelig;senterer et marked med landbrugsprodukter, og de tilknyttede objekter repr&aelig;senterer de lokale dagligvarebutikker, der har attributter s&aring;som samlede &aring;rlige salgstal. Med  <b>Forbind objekter</b>-v&aelig;rkt&oslash;jet kan vi afsl&oslash;re, at fem dagligvarebutikker opfylder kriterierne. Hvis vi har angivet tilknytningshandlingen <b>Tilknyt &eacute;n-til-&eacute;n</b>, ville vi ende med at have fem objekter i vores resultatlag, hvor hver r&aelig;kke repr&aelig;senterer markedet med landbrugsprodukter og &eacute;n dagligvarebutik. Hvis vi havde angivet en <b>Tilknyt &eacute;n-til-mange</b>-relation, ville vi ende med at have &eacute;t objekt, der repr&aelig;senterer markedet med landbrugsprodukter og de summerede oplysninger om dagligvarebutikker, s&aring;som antallet (5) samt andre statistiske oplysninger som f.eks. de samlede &aring;rlige salgstal.
+            </p>
+        </div>
+    </div>
+    <div id="joinOptions">
+        <div><h2>Vælg den type tilknytninger, som du vil bruge.</h2></div>
+        <hr/>
+        <div>
+            <p>Du kan anvende &eacute;n, to eller tre tilknytningstyper. Tilknytningstyperne omfatter f&oslash;lgende: 
+                <ul>
+                    <li> <b>Spatial</b> &ndash; Benytter den angivne spatiale relation til at tilknytte objekter. Dette kr&aelig;ver, at begge lag har en geometri.
+                    </li>
+                    <li> <b>Tidsbestemt</b> &ndash; Benytter en tidsbestemt relation til at tilknytte objekter. Dette kr&aelig;ver, at der er aktiveret tid for begge lag.
+                    </li>
+                    <li> <b>Attribut</b> &ndash; Tilknytter objekter baseret p&aring; matchende felter.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>
+            </p>
+        </div>
+    </div>
+    <div id="spatialRelationship">
+        <div><h2>Spatial tilknytning</h2></div>
+        <hr/>
+        <div>
+            <p> Den spatiale relation bestemmer, om objekterne knyttes til hinanden. De tilg&aelig;ngelige relationer afh&aelig;nger af den geometritype (punkt, polylinje, polygon), der anvendes til inputobjekterne. Tilg&aelig;ngelige relationer omfatter f&oslash;lgende:
+                <ul>
+                    <li> <b>Gennemsk&aelig;r</b> &ndash; Objekterne matches, hvis de gennemsk&aelig;rer hinanden.
+                    </li>
+                    <li> <b>Lig med</b> &ndash; Objekterne matches, hvis de har den samme geometri.
+                    </li>
+                    <li> <b>I n&aelig;rheden</b> &ndash; Objekterne matches, hvis de ligger inden for en angivet afstand fra hinanden.
+                    </li>
+                    <li> <b>Indeholder</b> &ndash; Objekterne matches, hvis det lag, der tilknyttes til, er indeholdt i de objekter, der skal tilknyttes.
+                    </li>
+                    <li> <b>Inden for</b> &ndash; Objekterne matches, hvis det lag, der tilknyttes til, ligger inden for de objekter, der skal tilknyttes.
+                    </li>
+                    <li> <b>Ber&oslash;ringer</b> &ndash; Objekterne matches, hvis de har en gr&aelig;nse, der ber&oslash;rer det objekt, der tilknyttes til.
+                    </li>
+                    <li> <b>Krydser</b> &ndash; Objekterne matches, hvis de har en kontur, der krydser.
+                    </li>
+                    <li> <b>Overlapper</b> &ndash; Objekterne tilknyttes, hvis de overlapper.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="nearSpatial">
+        <div><h2></h2></div>
+        <hr/>
+        <div>
+            <p>Denne afstand angiver den radius, der anvendes til en geografisk n&aelig;rliggende relation.
+            </p>
+            <p>Forestil dig, at du har et datas&aelig;t, der repr&aelig;senterer et kernekraftv&aelig;rk, og et andet datas&aelig;t, der repr&aelig;senterer boliger. Du kunne indstille en n&aelig;rmeste afstand p&aring; 1 kilometer for at finde de boliger, der ligger inden for 1 kilometer fra kernekraftv&aelig;rket. 
+            </p> 
+        </div>
+    </div>
+    <div id="temporalRelationship">
+        <div><h2>Tidsbestemt tilknytning</h2></div>
+        <hr/>
+        <div>
+            <p>Den tidsbestemte relation, der bestemmer, om objekterne knyttes til hinanden. Denne indstilling er kun tilg&aelig;ngelig, hvis der er aktiveret tid for begge lag, og de tilg&aelig;ngelige relationer afh&aelig;nger af den tidstype (&oslash;jeblik eller interval), der anvendes til inputobjekterne. Tilg&aelig;ngelige relationer omfatter f&oslash;lgende:
+                <ul>
+                    <li> <b>M&oslash;der</b> &ndash; Objekterne matches, hvis det f&oslash;rste objekt m&oslash;der det andet.
+                    </li>
+                    <li> <b>M&oslash;des af</b> &ndash; Objekterne matches, hvis det f&oslash;rste objekt m&oslash;des af det andet.
+                    </li>
+                    <li> <b>Overlapper</b> &ndash; Objekterne matches, hvis det f&oslash;rste objekt overlapper det andet.
+                    </li>
+                    <li> <b>Overlappet af</b> &ndash; Objekterne matches, hvis det f&oslash;rste objekt overlappes af det andet.
+                    </li>
+                    <li> <b>I l&oslash;bet af</b> &ndash; Objekterne matches, hvis det f&oslash;rste objekt forekommer i l&oslash;bet af det andet.
+                    </li>
+                    <li> <b>Indeholder</b> &ndash; Objekterne matches, hvis det f&oslash;rste objekt indeholder det andet.
+                    </li>
+                    <li> <b>Lig med</b> &ndash; Objekterne matches, hvis det f&oslash;rste objekt er lig med det andet.
+                    </li>
+                    <li> <b>Afslutter</b> &ndash; Objekterne matches, hvis det f&oslash;rste objekt afslutter det andet.
+                    </li>
+                    <li> <b>Afsluttet af</b> &ndash; Objekterne matches, hvis det f&oslash;rste objekt afsluttes af det andet.
+                    </li>
+                    <li> <b>Starter</b> &ndash; Objekterne matches, hvis det f&oslash;rste objekt er start p&aring; det andet.
+                    </li>
+                    <li> <b>Startet af</b> &ndash; Objekterne matches, hvis det f&oslash;rste objekt er startet af det andet.
+                    </li>
+                    <li> <b>Gennemsk&aelig;r</b> &ndash; Objekterne matches, hvis de gennemsk&aelig;res af tiden.
+                    </li>
+                    <li> <b>I n&aelig;rheden</b> Objekterne matches, hvis de ligger i n&aelig;rheden af hinanden og er defineret af en angivet tidsindstilling.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="nearTemporal">
+        <div><h2></h2></div>
+        <hr/>
+        <div>
+            <p>Afstanden i tid angiver den tidsbestemte radius, der anvendes til en tidsbestemt n&aelig;rliggende relation.
+            </p>
+            <p>Forestil dig, at du har et lag med skibsfartsh&aelig;ndelser og et lag med GPS-sporinger af en orkan. Du kan s&oslash;ge efter skibsfartsh&aelig;ndelser inden for en angivet afstand fra orkansporingerne inden for b&aring;de afstand (1 kilometer) og tid (5 timer). Dette ville resultere i, at skibsfartsh&aelig;ndelserne ville blive knyttet til orkaner, der forekom t&aelig;t p&aring; hinanden i rum og tid. 
+            </p>
+        </div>
+    </div>
+    <div id="attributeRelationship">
+        <div><h2>Attribut-tilknytning</h2></div>
+        <hr/>
+        <div>
+            <p>Denne relation vil matche v&aelig;rdier i et felt fra &eacute;t lag med v&aelig;rdier i et felt fra et andet lag. 
+            </p>
+            <p> Forestil dig, at vi har et geografisk lag med beboelsesadresser, der g&aring;r p&aring; tv&aelig;rs af regioner (inkl. feltet <i>ZIP</i>), samt et tabeldatas&aelig;t med helbredsm&aelig;ssige og demografiske oplysninger fordelt efter postnummer (et felt med titlen <i>HEALTHZIP</i>). Vi kan knytte datas&aelig;ttet med helbredsoplysninger til datas&aelig;ttet med adresseoplysninger ved at matche feltet <i>ZIP</i> med feltet <i>HEALTHZIP</i>, hvilket vil resultere i et lag med beboelsesadresser med tilsvarende helbredsdata.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Tilføj statistik (valgfrit)</h2></div>
+        <hr/>
+        <div>
+            <p>Hvis indstillingen Tilknyt &eacute;n-til-mange v&aelig;lges, kan du beregne statistik p&aring; dine tilknyttede objekter.
+            </p>
+        </div>
+    </div>
+    <div id="joinCondition">
+        <div><h2>Opret et udtryk til at forbinde objekter (valgfrit)</h2></div>
+        <hr/>
+        <div>
+            <p>Anvender en betingelse til de angivne felter. Kun objekter med felter, der opfylder disse betingelser, vil blive tilknyttet.
+            </p>
+            <p>Forestil dig f.eks., at du &oslash;nsker anvende en tilknytning til et datas&aelig;t, der kun omfatter de objekter, hvor  <i>health_spending</i> er mere end 20 procent af <i>indkomsten</i>.  For at g&oslash;re dette skal du anvende en tilknytningsbetingelse for <code>target.health_spending &gt; (join.income * 0,20)</code> ved at bruge feltet <i>health_spending</i> fra det f&oslash;rste datas&aelig;t (det datas&aelig;t, som objekterne knyttes til) og feltet <i>indkomst</i> fra det andet datas&aelig;t (det datas&aelig;t, der tilknyttes).
+            </p>
+            <p>Tilknytningsbetingelserne kan anvendes ved at bruge udtryksberegneren.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Vælg Datastore</h2></div>
+        <hr/>
+        <div>
+            <p>Dette er en midlertidig parameter til prerelease med henblik p&aring; angivelse af det datalager, hvor resultaterne bliver gemt. Begge datalagre er en del af  ArcGIS Data Store. Hvis du v&aelig;lger det spatiotemporale datalager, men ikke har et s&aring;dant installeret, vil v&aelig;rkt&oslash;jet ikke fungere. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Navn på resultatlag</h2></div>
+        <hr/>
+        <div>
+            <p> Dette er navnet p&aring; det lag, som oprettes i <b>Mit indhold</b> og f&oslash;jes til kortet. Standardnavnet er baseret p&aring; navnet p&aring; v&aelig;rkt&oslash;jet og navnet p&aring; inputlaget. Hvis laget allerede findes, vil v&aelig;rkt&oslash;jet ikke fungere.
+            </p>
+            <p>Ved hj&aelig;lp af rullelisten  <b>Gem resultat i</b> kan du angive navnet p&aring; en mappe i <b>Mit indhold</b>, hvor resultatet skal gemmes.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

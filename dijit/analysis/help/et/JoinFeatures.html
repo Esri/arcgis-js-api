@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Liida objektid</h2><p/>
+        <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Liida objektid"></h2>
+        <hr/>
+    <p> Liida objektid t&ouml;&ouml;tab kahe kihiga ja liidab &uuml;he objekti atribuudid teisega ruumiliste ja atribuudiseoste p&otilde;hjal. T&ouml;&ouml;riist teeb kindlaks k&otilde;ik sisendobjektid, mis vastavad m&auml;&auml;ratud liitmistingimustele, ja lisab sihtkihile liidetava kihi.
+    </p>
+    <p>T&ouml;&ouml;riista  Liida objektid saab kasutada punktide, joonte, alade ja tabelitega. Ruumilise liitmise korral peab teie andmetel olema geomeetria.
+    </p>
+    <p>Kui ruut  <b>Kasuta praegust kaardiulatust</b> on m&auml;rgitud, anal&uuml;&uuml;sitakse ainult neid objekte, mis on praeguses kaardiulatuses n&auml;htavad. Kui see ruut pole m&auml;rgitud, anal&uuml;&uuml;sitakse k&otilde;iki siht- ja liidetava kihi objekte ka siis, kui neid pole praegu kuvataval kaardiosal n&auml;ha.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="targetLayer">
+        <div><h2>Vali sihtkiht</h2></div>
+        <hr/>
+        <div>
+            <p>Sihtkiht, mille tabelisse on lisatud liidetava kihi atribuudid.
+            </p>
+            <p class="OnlineOnly">Lisaks kaardil asuvale kihile saate valida variandi  <b>Vali elukeskkonna atlase anal&uuml;&uuml;sikiht</b> v&otilde;i <b>Vali anal&uuml;&uuml;sikiht</b>. Nii avaneb galerii, mis sisaldab mitmete anal&uuml;&uuml;side jaoks tarvilikku kihtide kollektsiooni. 
+            </p> 
+        </div>
+    </div>
+    <div id="joinLayer">
+        <div><h2>Vali sihtkihiga ühendatav kiht</h2></div>
+        <hr/>
+        <div>
+            <p>Sihtkihile lisatavate atribuutidega liidetav kiht.
+            </p>
+            <p class="OnlineOnly">Lisaks kaardil asuvale kihile saate valida variandi  <b>Vali elukeskkonna atlase anal&uuml;&uuml;sikiht</b> v&otilde;i <b>Vali anal&uuml;&uuml;sikiht</b>. Nii avaneb galerii, mis sisaldab mitmete anal&uuml;&uuml;side jaoks tarvilikku kihtide kollektsiooni. 
+            </p>
+        </div>
+    </div>
+    <div id="joinType">
+        <div><h2>Vali liitmistüübid</h2></div>
+        <hr/>
+        <div>
+            <p>Saate rakendada ruumilise liitmise, atribuudi liitmise v&otilde;i nende kahe kombinatsiooni. 
+                <ul>
+                    <li> <b>Ruumiline</b> &ndash; kasutab objektide &uuml;hendamiseks m&auml;&auml;ratletud ruumilist seost. See n&otilde;uab, et m&otilde;lemad kihid sisaldaksid geomeetriat.
+                    </li>
+                    <li> <b>Atribuut</b> &ndash; kasutab objektide &uuml;hendamiseks &uuml;hesuguseid v&auml;lju.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>
+            </p>
+        </div>
+    </div>
+    <div id="spatialRelationship">
+        <div><h2>Vali ruumiline seos</h2></div>
+        <hr/>
+        <div>
+            <p> Ruumiline seos, mis m&auml;&auml;rab, kas objektid liidetakse. Saadaolevad seosed olenevad sellest, mis t&uuml;&uuml;pi geomeetriat (punkt, joon, alad) sisendobjektide jaoks kasutatakse. Saadaolevate seoste hulka kuuluvad j&auml;rgmised seosed.
+                <ul>
+                    <li> <b>Identne</b> &ndash; sihtkihi objektid vastendatakse, kui need on identsed liidetava kihi objektidega.
+                    </li>
+                    <li> <b>L&otilde;ikub</b> &ndash; sihtkihi objektid vastendatakse, kui need l&otilde;ikuvad liidetava kihi objektidega.
+                    </li>
+                    <li> <b>Sisaldab t&auml;ielikult</b> &ndash; objektid vastendatakse, kui sihtkihi objektid sisaldavad t&auml;ielikult liidetava kihi objekte.
+                    </li>
+                    <li> <b>Asub t&auml;ielikult </b> &ndash; objektid vastendatakse, kui sihtkihi objektid asuvad t&auml;ielikult liidetava kihi objektides.
+                    </li>
+                    <li> <b>Raadiuses</b> &ndash; sihtkihi objektid vastendatakse, kui need asuvad liidetava kihi objektidest m&auml;&auml;ratud vahemaa raadiuses.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="attributeRelationship">
+        <div><h2>Atribuutidega liitmine</h2></div>
+        <hr/>
+        <div>
+            <p>Atribuutide seos, mis m&auml;&auml;rab, kas objektid liidetakse. Objektid vastendatakse, kui liidetava kihi v&auml;ljade v&auml;&auml;rtused on v&otilde;rdsed sihtkihi v&auml;ljade v&auml;&auml;rtustega. 
+            </p>
+            <p>N&auml;iteks v&otilde;ib teil olla &uuml;leriigiline geograafiline elumajade aadresside kiht (sh v&auml;li  <i>SIHTNUMBER</i>) ja tabeli kujul andmestik demograafiliste terviseandmetega vastavalt sihtnumbrile (v&auml;li nimega <i>TERVISSIHTNUMBER</i>). Saate &uuml;hendada terviseandmestiku elumajade andmetega, vastendades v&auml;lja <i>SIHTNUMBER</i> v&auml;ljaga <i>TERVISSIHTNUMBER</i>. Tulemuseks on vastavate terviseandmetega elumajade kiht.
+            </p>
+        </div>
+    </div>
+    <div id="joinOperation">
+        <div><h2>Vali liitmistoiming</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ratleb, kuidas k&auml;sitleda siht- ja liidetava kihi vahelisi &uuml;hendusi, kui leitakse, et liidetava kihi mitmel objektil on sihtkihiga sama seos. Valida saate kahe liitmistoimingu vahel.
+                <ul>
+                    <li> <b>Liida &uuml;ks &uuml;hega</b> &ndash; see toiming v&otilde;tab kokku k&otilde;ik &uuml;hilduvad liidetavad objektid sihtkihi iga objekti jaoks.
+                    </li>
+                    <li> <b>Liida &uuml;ks mitmega</b> &ndash; see toiming &uuml;hendab k&otilde;ik liidetava kihi &uuml;hilduvad objektid sihtkihiga. Tulemkiht sisaldab sihtkihi mitut kirjet.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Oletame n&auml;iteks, et soovite leida k&otilde;ik kaubamajad, mis j&auml;&auml;vad turust 5 kilomeetri raadiusesse. Sellisel juhul on sihtkihil &uuml;ks objekt, mis t&auml;histab turgu, ja liidetavad objektid t&auml;histavad kohalikke toidupoode, mille atribuut on n&auml;iteks aasta koguk&auml;ive.  <b>Objektide liitmise t&ouml;&ouml;riista</b> abil saate teada, et sellele kriteeriumile vastavad viis toidupoodi. Kui t&auml;psustate liitmistoimingut <b>Liida &uuml;ks mitmega</b>, saaksite tulemuseks viis objekti, kus iga rida t&auml;histab turgu ja kaubamaja. Kui m&auml;&auml;rate seose <b>Liida &uuml;ks &uuml;hega</b>, saate tulemuseks &uuml;he objekti, mis t&auml;histab turgu ja sisaldab kaubamajade teabe kokkuv&otilde;tet (nt arv (5)) ning muud statistikat (nt aastast koguk&auml;ivet).
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Lisa statistika (valikuline)</h2></div>
+        <hr/>
+        <div>
+            <p>Kui tegite valiku  <b>Liida &uuml;ks &uuml;hega</b>, saate arvutada liidetud objektide statistika. Koguarv arvutatakse ja lisatakse tulemkihile vaikimisi. 
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tulemkihi nimi</h2></div>
+        <hr/>
+        <div>
+            <p>See on selle kihi nimi, mis luuakse jaotises  <b>Minu sisu</b> ja lisatakse kaardile.  Vaikenimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui kiht on juba olemas, palutakse teil sisestada m&otilde;ni muu nimi.
+            </p>
+            <p>Kasutades rippmen&uuml;&uuml;d  <b>Salvesta tulemused</b>, saate jaotises <b>Minu sisu</b> m&auml;&auml;rata selle kausta nime, kuhu tulemused salvestatakse.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

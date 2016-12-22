@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="bdToolbox">
+        <p>Ph&acirc;n t&iacute;ch Big Data ph&acirc;n bổ c&ocirc;ng việc ph&acirc;n t&iacute;ch tr&ecirc;n M&aacute;y chủ ArcGIS GeoAnalytics của bạn. Điều n&agrave;y cho ph&eacute;p bạn ph&acirc;n t&iacute;ch nhanh hơn v&agrave; nhiều dữ liệu hơn bằng c&aacute;ch khai th&aacute;c sức mạnh của nhiều m&aacute;y. Hiện c&oacute; c&aacute;c c&ocirc;ng cụ sau đ&acirc;y:
+            <ul>
+                <li> <b>C&aacute;c Điểm Tổng hợp</b>
+                </li>
+                <li> <b>Li&ecirc;n kết Đối tượng</b>
+                </li>
+                <li> <b>T&aacute;i tạo Đường đi</b>
+                </li>
+                <li> <b>Tổng kết Thuộc t&iacute;nh</b>
+                </li>
+                <li> <b>Tổng kết trong Phạm vi</b>
+                </li>
+                <li> <b>T&igrave;m c&aacute;c Vị tr&iacute; Tương tự</b>
+                </li>
+                <li> <b>T&iacute;nh to&aacute;n Mật độ</b>
+                </li>
+                <li> <b>T&igrave;m Điểm N&oacute;ng</b>
+                </li>
+                <li> <b>Tạo V&ugrave;ng đệm</b>
+                </li>
+                <li> <b>Sao ch&eacute;p v&agrave;o Kho Dữ liệu</b>
+                </li>
+            </ul>
+            
+        </p>
+        <p>Ph&acirc;n t&iacute;ch Big Data tập trung ph&acirc;n t&iacute;ch một khối lượng lớn dữ liệu với trọng t&acirc;m ở cả m&ocirc; h&igrave;nh kh&ocirc;ng gian v&agrave; thời gian. 
+        </p>
+    </div>
+    <div id="SummarizeDataCategory" class="largesize">
+        <h2>Tóm tắt Dữ liệu</h2>
+        <hr/>
+        <p>Bộ c&ocirc;ng cụ T&oacute;m tắt Dữ liệu chứa c&aacute;c c&ocirc;ng cụ t&iacute;nh to&aacute;n tổng số lượng, độ d&agrave;i, khu vực, v&agrave; số liệu thống k&ecirc; m&ocirc; tả cơ bản c&aacute;c đối tượng v&agrave; thuộc t&iacute;nh của ch&uacute;ng trong khu vực hoặc gần c&aacute;c đối tượng kh&aacute;c.
+            <ul>
+                <li> <b>C&aacute;c Điểm Tổng hợp</b> t&iacute;nh to&aacute;n số liệu thống k&ecirc; về điểm trong khu vực hoặc bin chỉ định.
+                </li>
+                <li> <b>Li&ecirc;n kết Đối tượng</b> t&iacute;nh to&aacute;n số liệu thống k&ecirc; về c&aacute;c đối tượng chia sẻ mối quan hệ kh&ocirc;ng gian, thời gian hoặc thuộc t&iacute;nh với c&aacute;c đối tượng kh&aacute;c.
+                </li>
+                <li> <b>T&aacute;i tạo Đường đi</b> t&iacute;nh to&aacute;n số liệu thống k&ecirc; về c&aacute;c điểm v&agrave; đa gi&aacute;c thuộc c&ugrave;ng một đường đi v&agrave; t&aacute;i tạo c&aacute;c yếu tố đầu v&agrave;o trong đường đi.
+                </li>
+                <li> <b>Tổng kết Thuộc t&iacute;nh</b> t&iacute;nh to&aacute;n số liệu thống kề về đối tượng hoặc dữ liệu dạng bảng c&oacute; chung thuộc t&iacute;nh.
+                </li>
+                <li> <b>Tổng hợp trong Phạm vi</b> t&iacute;nh to&aacute;n số liệu thống k&ecirc; cho c&aacute;c đối tượng v&ugrave;ng v&agrave; c&aacute;c thuộc t&iacute;nh chồng lắp l&ecirc;n nhau.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregatePointsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Các Điểm Tổng hợp</h2></td>
+                    <td>
+                    <img src="../images/GUID-6C1620D9-D176-41FA-8283-833D8B1CCCFC-web.png" class="titleImage" alt="C&aacute;c Điểm Tổng hợp">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Bằng c&aacute;ch sử dụng một lớp c&aacute;c đối tượng điểm v&agrave; một lớp c&aacute;c đối tượng khu vực hoặc bin được x&aacute;c định theo khoảng c&aacute;ch x&aacute;c định, c&ocirc;ng cụ n&agrave;y sẽ x&aacute;c định c&aacute;c điểm nằm trong từng khu vực hoặc bin, v&agrave; t&iacute;nh to&aacute;n số liệu thống k&ecirc; về tất cả c&aacute;c điểm trong mỗi khu vực. Bạn c&oacute; thể t&ugrave;y &yacute; &aacute;p dụng ph&acirc;n lớp thời gian với c&ocirc;ng cụ n&agrave;y. 
+            </p>
+            <p> V&iacute; dụ
+                <ul>
+                    <li>Giả sử c&aacute;c vị tr&iacute; điểm c&oacute; tỷ lệ tội phạm, đếm số lượng tội phạm trong mỗi quận hoặc địa giới h&agrave;nh ch&iacute;nh kh&aacute;c.
+                    </li>
+                    <li>T&igrave;m doanh thu h&agrave;ng th&aacute;ng cao nhất v&agrave; thấp nhất cho c&aacute;c vị tr&iacute; nhượng quyền bằng c&aacute;ch sử dụng c&aacute;c bin 100 km.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="JoinFeaturesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Liên kết Đối tượng</h2></td>
+                    <td>
+                    <img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" class="titleImage" alt="Li&ecirc;n kết Đối tượng">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Bằng c&aacute;ch sử dụng lớp đối tượng hoặc dữ liệu dạng bảng, bạn c&oacute; thể li&ecirc;n kết c&aacute;c đối tượng v&agrave; hồ sơ dựa tr&ecirc;n mối quan hệ cụ thể giữa c&aacute;c lớp hoặc bảng đầu v&agrave;o. Li&ecirc;n kết sẽ được x&aacute;c định theo mối quan hệ kh&ocirc;ng gian, thời gian v&agrave; thuộc t&iacute;nh, v&agrave; c&oacute; thể t&iacute;nh to&aacute;n tổng kết thống k&ecirc;.  
+            </p>
+            <p> V&iacute; dụ
+                <ul>
+                    <li>Cho c&aacute;c vị tr&iacute; điểm c&oacute; tỷ lệ tội phạm c&ugrave;ng với một thời gian, h&atilde;y li&ecirc;n kết c&aacute;c dữ liệu tội phạm để x&aacute;c định mối quan hệ kh&ocirc;ng gian của tội phạm trong v&ograve;ng 1 km của mỗi điểm v&agrave; xảy ra trong v&ograve;ng 1 giờ để x&aacute;c định liệu c&oacute; một chuỗi tội &aacute;c gần nhau về kh&ocirc;ng gian v&agrave; thời gian kh&ocirc;ng.
+                    </li>
+                    <li> Cho một bảng M&atilde; ZIP với th&ocirc;ng tin nh&acirc;n khẩu học v&agrave; đối tượng khu vực đại diện cho nh&agrave; ở, h&atilde;y li&ecirc;n kết th&ocirc;ng tin nh&acirc;n khẩu học với nơi cư tr&uacute; để mỗi nơi cư tr&uacute; đều c&oacute; th&ocirc;ng tin.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="ReconstructTracksTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Tái tạo Đường đi</h2></td>
+                    <td>
+                    <img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" class="titleImage" alt="T&aacute;i tạo Đường đi">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Sử dụng một lớp k&iacute;ch hoạt thời gian của đối tượng điểm hoặc đa gi&aacute;c đại diện cho một  <code>thời điểm tức th&igrave;</code>, c&ocirc;ng cụ n&agrave;y sẽ x&aacute;c định đối tượng đầu v&agrave;o n&agrave;o thuộc đường đi v&agrave; sắp xếp c&aacute;c đầu v&agrave;o theo tr&igrave;nh tự thời gian. Số liệu thống k&ecirc; sẽ được t&iacute;nh to&aacute;n cho c&aacute;c đối tượng đầu v&agrave;o trong mỗi đường đi.
+            </p>
+            <p> V&iacute; dụ
+                <ul>
+                    <li>Cho c&aacute;c vị tr&iacute; điểm v&agrave; thời gian đo lường cơn b&atilde;o, h&atilde;y t&iacute;nh to&aacute;n tốc độ gi&oacute; trung b&igrave;nh v&agrave; &aacute;p lực gi&oacute; tối đa của b&atilde;o.
+                    </li>
+                    <li>T&igrave;m doanh thu h&agrave;ng th&aacute;ng cao nhất v&agrave; thấp nhất cho c&aacute;c vị tr&iacute; nhượng quyền bằng c&aacute;ch sử dụng c&aacute;c bin 100 km.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeAttributesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Tổng kết Thuộc tính</h2></td>
+                    <td>
+                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="Tổng kết Thuộc t&iacute;nh">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> Bằng c&aacute;ch sử dụng đối tượng hoặc dữ liệu dạng bảng, c&ocirc;ng cụ n&agrave;y tổng kết số liệu thống k&ecirc; cho c&aacute;c trường x&aacute;c định.
+            </p>
+            <p> V&iacute; dụ
+                <ul>
+                    <li> Cho c&aacute;c điểm cửa h&agrave;ng tạp h&oacute;a c&oacute; trường <i>T&Ecirc;N_C&Ocirc;NG TY</i>, h&atilde;y tổng kết c&aacute;c cửa h&agrave;ng theo t&ecirc;n c&ocirc;ng ty để x&aacute;c định số liệu thống k&ecirc; cho mỗi c&ocirc;ng ty.
+                    </li>
+                    <li>Cho bảng cửa h&agrave;ng tạp h&oacute;a c&oacute; trường  <i>T&Ecirc;N_C&Ocirc;NG TY</i> v&agrave; <i>QUẬN</i>, h&atilde;y tổng kết c&aacute;c cửa h&agrave;ng theo t&ecirc;n c&ocirc;ng ty v&agrave; quận để x&aacute;c định số liệu thống k&ecirc; cho mỗi c&ocirc;ng ty trong mỗi quận.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeWithinTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Tổng kết trong Phạm vi</h2></td>
+                    <td>
+                    <img src="../images/GUID-90E0CB1F-EB97-4752-B2EE-452B7B45475E-web.png" class="titleImage" alt="Tổng kết trong Phạm vi">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>T&igrave;m c&aacute;c khu vực (v&agrave; c&aacute;c phần của khu vực) phủ l&ecirc;n giữa hai lớp v&agrave; t&iacute;nh to&aacute;n số liệu thống k&ecirc; về lớp phủ n&agrave;y. 
+            </p>
+            <p> V&iacute; dụ
+                <ul>
+                    <li>Với một lớp c&aacute;c phạm vi lưu vực s&ocirc;ng v&agrave; một lớp c&aacute;c khu vực sử dụng đất theo loại h&igrave;nh sử dụng đất, h&atilde;y t&iacute;nh to&aacute;n tổng diện t&iacute;ch c&aacute;c loại đất sử dụng cho từng lưu vực. 
+                    </li>
+                    <li>Cho một lớp l&ocirc; đất trong một quận v&agrave; một lớp ranh giới th&agrave;nh phố, h&atilde;y tổng kết gi&aacute; trị trung b&igrave;nh c&aacute;c l&ocirc; đất trống trong mỗi th&agrave;nh phố.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="FindLocationsCategory" class="smallsize">
+        <h2>Tìm kiếm Vị trí</h2>
+        <hr/>
+        <p>C&aacute;c c&ocirc;ng cụ được d&ugrave;ng để x&aacute;c định c&aacute;c khu vực đ&aacute;p ứng một loạt c&aacute;c ti&ecirc;u ch&iacute; kh&aacute;c nhau m&agrave; bạn chỉ định.  
+            <ul>
+                <li> <b>T&igrave;m c&aacute;c Vị tr&iacute; Tương tự</b> t&igrave;m ra c&aacute;c vị tr&iacute; giống nhiều nhất với vị tr&iacute; một hoặc nhiều vị tr&iacute; tham chiếu dựa tr&ecirc;n ti&ecirc;u ch&iacute; bạn chỉ định.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="FindSimilarLocationsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Tìm các Vị trí Tương tự</h2></td>
+                    <td>
+                    <img src="../images/GUID-6262A84E-9087-4E48-930E-E9B89FECC836-web.png" class="titleImage" alt="T&igrave;m c&aacute;c Vị tr&iacute; Tương tự">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dựa tr&ecirc;n ti&ecirc;u ch&iacute; bạn chỉ định, h&atilde;y t&igrave;m vị tr&iacute; tương tự bằng c&aacute;ch đo lường c&aacute;c vị tr&iacute; tương đương trong lớp t&igrave;m kiếm ứng vi&ecirc;n với một hoặc nhiều vị tr&iacute; tham chiếu. 
+            </p>
+            <p> V&iacute; dụ
+                <ul>
+                    <li>T&igrave;m mười cửa h&agrave;ng tương tự nhau nhất bằng c&aacute;ch kiểm tra số lượng nh&acirc;n vi&ecirc;n v&agrave; doanh số h&agrave;ng năm.
+                    </li>
+                    <li>T&igrave;m 100 th&agrave;nh phố tương tự nhau nhất bằng c&aacute;ch kiểm tra mối quan hệ về d&acirc;n số, tăng trưởng h&agrave;ng năm v&agrave; doanh thu từ thuế.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzePatternsCategory" class="regularsize">
+        <h2>Phân tích Mô hình</h2>
+        <hr/>
+        <p>C&aacute;c c&ocirc;ng cụ n&agrave;y gi&uacute;p bạn x&aacute;c định, định lượng v&agrave; trực quan h&oacute;a m&ocirc; h&igrave;nh kh&ocirc;ng gian trong dữ liệu của bạn.  
+            <ul>
+                <li> <b>T&iacute;nh to&aacute;n Mật độ</b> lấy số lượng đ&atilde; biết của một số hiện tượng v&agrave; trải rộng c&aacute;c số lượng n&agrave;y tr&ecirc;n bản đồ.
+                </li>
+                <li> <b>T&igrave;m Điểm N&oacute;ng</b> x&aacute;c định những cụm điểm c&oacute; &yacute; nghĩa thống k&ecirc; trong m&ocirc; h&igrave;nh kh&ocirc;ng gian dữ liệu của bạn.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateDensityTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Tính toán Mật độ</h2></td>
+                    <td>
+                    <img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" class="titleImage" alt="Calculate Density">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>C&ocirc;ng cụ T&iacute;nh to&aacute;n Mật độ tạo bản đồ mật độ từ c&aacute;c đối tượng điểm bằng c&aacute;ch trải rộng số lượng đ&atilde; biết của một số hiện tượng (được biểu diễn dưới dạng thuộc t&iacute;nh của c&aacute;c điểm) tr&ecirc;n bản đồ. Kết quả l&agrave; tạo ra lớp khu vực thể hiện mật độ.
+            </p>
+            <p> V&iacute; dụ
+                <ul>
+                    <li>T&iacute;nh to&aacute;n mật độ bệnh viện trong một quận. Lớp kết quả sẽ hiển thị c&aacute;c khu vực c&oacute; khả năng tiếp cận cao v&agrave; thấp đến c&aacute;c bệnh viện, v&agrave; c&oacute; thể sử dụng th&ocirc;ng tin n&agrave;y để quyết định nơi cần x&acirc;y dựng th&ecirc;m bệnh viện mới.
+                    </li>
+                    <li>X&aacute;c định c&aacute;c khu vực c&oacute; nguy cơ ch&aacute;y rừng cao dựa v&agrave;o vị tr&iacute; từng xảy ra ch&aacute;y rừng trong lịch sử.
+                    </li>
+                    <li>X&aacute;c định c&aacute;c khu d&acirc;n cư xa đường cao tốc ch&iacute;nh để l&ecirc;n kế hoạch nơi cần x&acirc;y dựng c&aacute;c tuyến đường mới.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="FindHotSpotsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Tìm Điểm Nóng</h2></td>
+                    <td>
+                    <img src="../images/GUID-6D600155-AA9B-4F02-AD8B-2E84150AB743-web.png" class="titleImage" alt="T&igrave;m Điểm N&oacute;ng">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>C&ocirc;ng cụ T&igrave;m Điểm N&oacute;ng sẽ x&aacute;c định xem c&oacute; những cụm điểm n&agrave;o c&oacute; &yacute; nghĩa thống k&ecirc; trong m&ocirc; h&igrave;nh kh&ocirc;ng gian dữ liệu của bạn. 
+                <ul>
+                    <li>C&aacute;c điểm của bạn (tỷ lệ tội phạm, c&acirc;y xanh, tai nạn giao th&ocirc;ng) c&oacute; thực sự được gom th&agrave;nh nh&oacute;m kh&ocirc;ng? L&agrave;m thế n&agrave;o bạn c&oacute; thể chắc chắn?
+                    </li>
+                    <li>Bạn đ&atilde; thực sự ph&aacute;t hiện ra một điểm n&oacute;ng c&oacute; &yacute; nghĩa thống k&ecirc; (đối với việc chi ti&ecirc;u, tỷ lệ tử vong ở trẻ sơ sinh, điểm kiểm tra cao li&ecirc;n tục) hoặc bản đồ của bạn sẽ kể một c&acirc;u chuyện kh&aacute;c nếu bạn thay đổi c&aacute;ch m&agrave; n&oacute; được k&iacute; hiệu h&oacute;a?
+                    </li>
+                </ul>
+                C&ocirc;ng cụ T&igrave;m Điểm N&oacute;ng sẽ gi&uacute;p bạn tự tin trả lời c&aacute;c c&acirc;u hỏi n&agrave;y.
+            </p>
+            <br/>
+        </div>
+    <div id="UseProximityCategory" class="smallsize">
+        <h2>Sử dụng Vùng lân cận</h2>
+        <hr/>
+        <p>C&aacute;c c&ocirc;ng cụ n&agrave;y gi&uacute;p bạn trả lời một trong c&aacute;c c&acirc;u hỏi thường gặp nhất đặt ra trong ph&acirc;n t&iacute;ch kh&ocirc;ng gian: C&aacute;i g&igrave; gần c&aacute;i g&igrave;?
+            <ul>
+                <li> <b>Tạo V&ugrave;ng đệm</b> tạo ra c&aacute;c v&ugrave;ng c&oacute; khoảng c&aacute;ch x&aacute;c định so với c&aacute;c đối tượng.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CreateBuffersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Tạo Vùng đệm</h2></td>
+                    <td>
+                    <img src="../images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" class="titleImage" alt="Tạo V&ugrave;ng đệm">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>V&ugrave;ng đệm l&agrave; một khu vực bao phủ một khoảng c&aacute;ch nhất định từ một đối tượng điểm, đường hoặc đa gi&aacute;c.
+            </p>
+            <p> V&iacute; dụ
+                <ul>
+                    <li>Bằng c&aacute;ch sử dụng đối tượng s&ocirc;ng tuyến t&iacute;nh, h&atilde;y tạo v&ugrave;ng đệm cho mỗi s&ocirc;ng bằng 50 lần chiều rộng s&ocirc;ng để x&aacute;c định ranh giới bờ s&ocirc;ng đề xuất.
+                    </li>
+                    <li>Cho c&aacute;c khu vực đại diện cho c&aacute;c nước, h&atilde;y tạo v&ugrave;ng đệm cho mỗi quốc gia bằng 200 hải l&yacute; để x&aacute;c định ranh giới tr&ecirc;n biển.  
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="ManageDataCategory" class="smallsize">
+        <h2>Quản lý Dữ liệu</h2>
+        <hr/>
+        <p>C&aacute;c c&ocirc;ng cụ n&agrave;y được d&ugrave;ng để quản l&yacute; cả dữ liệu địa l&yacute; v&agrave; dữ liệu dạng bảng h&agrave;ng ng&agrave;y.
+            <ul>
+                <li> <b>Sao ch&eacute;p đến Kho Dữ liệu</b> sao ch&eacute;p dữ liệu đến ArcGIS Data Store v&agrave; tạo một lớp trong GIS web của bạn.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CopyToDataStoreTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Sao chép đến Kho Dữ liệu</h2></td>
+                    <td>
+                    <img src="../images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" class="titleImage" alt="Sao ch&eacute;p đến Kho Dữ liệu">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Sao ch&eacute;p lớp đối tượng đầu v&agrave;o hoặc bảng v&agrave;o một  ArcGIS Data Store v&agrave; tạo lớp trong GIS web của bạn. </p>
+            <p> V&iacute; dụ
+                <ul>
+                    <li> Sao ch&eacute;p c&aacute;c tệp <code>.csv</code> trong tệp dữ liệu lớn, chia sẻ với kho dữ liệu kh&ocirc;ng gian thời gian để trực quan h&oacute;a.
+                    </li>
+                    <li>Sao ch&eacute;p c&aacute;c đối tượng trong phạm vi bản đồ hiện tại được lưu trữ trong kho dữ liệu kh&ocirc;ng gian thời gian đến kho dữ liệu li&ecirc;n quan.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+</div>
+</html>

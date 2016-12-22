@@ -41,10 +41,10 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Lập kế hoạch Định tuyến</h2><p/>
-        <h2><img src="../images/GUID-09CC6D60-3C72-42D7-968E-B0663F0B1EBB-web.png" alt="Lập kế hoạch Định tuyến"></h2>
+        <h2>Lên kế hoạch Định tuyến</h2><p/>
+        <h2><img src="../images/GUID-09CC6D60-3C72-42D7-968E-B0663F0B1EBB-web.png" alt="L&ecirc;n kế hoạch Định tuyến"></h2>
         <hr/>
-    <p>Lập kế hoạch Định tuyến gi&uacute;p x&aacute;c định c&aacute;ch ph&acirc;n chia c&aacute;c nhiệm vụ hiệu quả trong một lực lượng lao động di động.
+    <p>L&ecirc;n kế hoạch Định tuyến gi&uacute;p x&aacute;c định c&aacute;ch ph&acirc;n phối c&aacute;c nhiệm vụ một c&aacute;ch hiệu quả cho một đội ngũ lưu động ngo&agrave;i hiện trường.
     </p>
     <p>Bạn cung cấp cho c&ocirc;ng cụ một tập hợp c&aacute;c điểm dừng v&agrave; số phương tiện khả dụng đến c&aacute;c điểm dừng.
  C&ocirc;ng cụ n&agrave;y sẽ g&aacute;n c&aacute;c điểm dừng với phương tiện v&agrave; trả về c&aacute;c tuyến đường sao cho từng phương tiện c&oacute; thể đi đến điểm dừng được g&aacute;n với số lượng thời gian &iacute;t nhất.
@@ -61,7 +61,7 @@
             </li>
             <li>Thực hiện c&aacute;c cuộc gọi b&aacute;n h&agrave;ng
             </li>
-            <li>Vận chuyển con người từ nh&agrave; đến một sự kiện
+            <li>Chuy&ecirc;n chở người từ nh&agrave; của họ đến một sự kiện
             </li>
         </ul>
         
@@ -163,7 +163,7 @@
                 <td> <img src="../images/GUID-820BDC1E-97CB-457F-9235-7105D274AFEB-web.png" alt="C&acirc;n bằng Thời gian đi lại v&agrave; điểm dừng">
                 </td>
                 <td>
-                    <p>Thời gian đi lại c&acirc;n bằng v&agrave; c&aacute;c điểm dừng tr&ecirc;n mỗi tuyến.
+                    <p>Thời gian đi lại c&acirc;n bằng v&agrave; c&aacute;c điểm dừng tr&ecirc;n mỗi tuyến:
                     </p>
                     <p>C&aacute;c điểm dừng &iacute;t nhiều trải đều nhau, do đ&oacute; thiết lập c&aacute;c điểm dừng tối đa cho mỗi phương tiện để ph&acirc;n bố đồng đều c&aacute;c kết quả khối lượng c&ocirc;ng việc tại c&aacute;c tuyến đường c&oacute; khoảng thời gian tương ứng.
                     </p>
@@ -180,7 +180,7 @@
                 </td>
             </tr>
             <tr>
-                <td> <img src="../images/GUID-082615A2-7F07-49AB-92AF-C82CEB813E6F-web.png" alt="C&acirc;n bằng Thời gian đi lại">
+                <td> <img src="../images/GUID-082615A2-7F07-49AB-92AF-C82CEB813E6F-web.png" alt="C&acirc;n bằng Thời gian đi lại ">
                 </td>
                 <td>
                     <p>C&aacute;c điểm dừng kh&ocirc;ng c&acirc;n bằng tr&ecirc;n mỗi tuyến đường, nhưng thời gian đi lại c&acirc;n bằng:
@@ -216,10 +216,11 @@
         <div><h2>Tên lớp kết quả</h2></div>
         <hr/>
         <div>
-            <p>Đ&acirc;y l&agrave; t&ecirc;n lớp nh&oacute;m sẽ được tạo trong mục  <b>Nội dung của T&ocirc;i</b>
-v&agrave; th&ecirc;m v&agrave;o bản đồ. Lớp nh&oacute;m sẽ chứa một lớp một trong c&aacute;c nội dung sau: tuyến đường, điểm dừng v&agrave; chỉ đường.
+            <p>T&ecirc;n lớp đối tượng sẽ được tạo trong mục  <b>Nội dung của T&ocirc;i</b> v&agrave; th&ecirc;m v&agrave;o bản đồ. Nếu lớp đối tượng đ&atilde; tồn tại, bạn sẽ được y&ecirc;u cầu cung cấp t&ecirc;n mới. Lớp đối tượng sẽ chứa một lớp cho mỗi mục sau: tuyến đường, điểm dừng được g&aacute;n v&agrave; điểm dừng chưa được g&aacute;n khi một số điểm dừng đầu v&agrave;o chưa được g&aacute;n cho bất kỳ tuyến đường n&agrave;o.
             </p>
-            <p>Sử dụng danh s&aacute;ch xổ xuống  <b>Lưu kết quả trong</b>, bạn c&oacute; thể chỉ định t&ecirc;n thư mục trong mục <b>Nội dung của T&ocirc;i</b> nơi sẽ lưu trữ kết quả của bạn.
+            <p>Nếu bạn chọn  <b>Bao gồm c&aacute;c lớp tuyến đường</b>, mỗi tuyến đường trong kết quả sẽ đồng thời được lưu th&agrave;nh một lớp tuyến đường. Lớp tuyến đường bao gồm mọi th&ocirc;ng tin d&agrave;nh cho một tuyến đường cụ thể như c&aacute;c điểm dừng được g&aacute;n cho tuyến đường, cũng như chiều di chuyển. Việc tạo c&aacute;c lớp tuyến đường sẽ hữu &iacute;ch nếu bạn muốn chia sẻ c&aacute;c tuyến đường ri&ecirc;ng với những th&agrave;nh vi&ecirc;n kh&aacute;c trong tổ chức hoặc nếu bạn muốn chỉnh sửa th&ecirc;m tuyến đường bằng c&aacute;ch d&ugrave;ng n&uacute;t <b>Chỉ đường</b> trong tr&igrave;nh xem bản đồ. Lớp tuyến đường sử dụng t&ecirc;n được cung cấp d&agrave;nh cho lớp đối tượng như một tiền tố v&agrave; t&ecirc;n tuyến đường đ&atilde; tạo như một phần của ph&acirc;n t&iacute;ch, được th&ecirc;m để tạo ra t&ecirc;n duy nhất cho mỗi lớp tuyến đường.
+            </p>
+            <p>Sử dụng danh s&aacute;ch xổ xuống  <b>Lưu kết quả trong</b>, bạn c&oacute; thể chỉ định t&ecirc;n thư mục trong mục <b>Nội dung của T&ocirc;i</b> nơi sẽ lưu trữ lớp đối tượng v&agrave; lớp tuyến đường, nếu được tạo.
             </p>
         </div>
     </div>

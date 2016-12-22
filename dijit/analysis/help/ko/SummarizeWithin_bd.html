@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>다음 범위 내 요약</h2><p/>
+        <h2><img src="../images/GUID-90E0CB1F-EB97-4752-B2EE-452B7B45475E-web.png" alt="다음 범위 내 요약"></h2>
+        <hr/>
+    <p>이 도구는 첫 번째 입력 레이어의 영역 경계 내에 있는 피처(및 피처의 일부)를 찾습니다.  
+        <ul>
+            <li>유역 경계 레이어와 토지 이용 경계 레이어가 주어진 경우 각 유역에 대한 토지 이용 유형의 총 면적을 계산합니다. 
+            </li>
+            <li>도시 내 필지 레이어와 도시 경계 레이어가 주어진 경우 각 도시 경계 내의 공지에 대한 평균 값을 요약합니다.
+            </li>
+        </ul>
+        
+    </p>
+    <p> <b>현재 맵 범위 사용</b>을 선택한 경우 현재 맵 범위 내에 표시된 입력 레이어 및 요약할 레이어의 피처만 분석되고,  이 옵션을 선택하지 않는 경우 현재 맵 범위를 벗어나는 피처까지 포함하여 입력 레이어와 요약할 레이어에 있는 피처가 전부 분석됩니다.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="sumWithinLayer">
+        <div><h2>경계 내에 다른 피처를 요악할 영역 레이어 선택</h2></div>
+        <hr/>
+        <div>
+            <p>피처 요약에 사용되는 영역 레이어로서 경계 내에 속합니다. 제공한 폴리곤 레이어 이내 또는 도구를 실행할 때 생성된 사각형 또는 육각형 bin 내에서 요약하는 것을 선택할 수 있습니다.  빈을 생성할 때  <b>사각형</b>의 경우 지정된 수 및 단위가 사각형의 높이 및 길이를 결정합니다. <b>육각형</b>의 경우 지정된 수 및 단위가 평행 측면 간 거리를 결정합니다.
+            </p>
+            <p>맵에서 레이어를 선택하는 것 이외에, 드롭다운 목록의 하단에 있는  <b>레이어 찾아보기</b>를 선택하여 빅 데이터 파일 공유 데이터셋 또는 피처 레이어의 콘텐츠를 찾아볼 수 있습니다.  
+            </p>
+        </div>
+    </div>
+    <div id="summaryLayer">
+        <div><h2>요약할 레이어 선택</h2></div>
+        <hr/>
+        <div>
+            <p>이 레이어의 피처 중 위의 입력 레이어 또는 지정된 bin에 있는 피처의 경계 내에 있는 피처가 요약됩니다. 
+            </p>
+            <p>맵에서 레이어를 선택하는 것 이외에, 드롭다운 목록의 하단에 있는  <b>레이어 찾아보기</b>를 선택하여 빅 데이터 파일 공유 데이터셋 또는 피처 레이어의 콘텐츠를 찾아볼 수 있습니다.  
+            </p>
+        </div>
+    </div>
+    <div id="inputBins">
+        <div><h2>bin을 생성하고 집약할 거리 선택</h2></div>
+        <hr/>
+        <div>
+            <p>Bin을 생성하는 데 사용되는 거리입니다.  
+            </p>
+            <p>그룹의  <b>그룹 크기</b> 또는 <b>영역 레이어</b>를 설정해야 합니다.
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>시간 슬라이스를 사용하여 집약(선택)</h2></div>
+        <hr/>
+        <div>
+            <p>입력 포인트 레이어에 시간이 활성화되었으며 시간 유형이 인스턴트인 경우 시간 슬라이싱을 사용하여 분석할 수 있습니다.  시간을 설정할 때 다음과 같은 세 가지 매개변수를 사용할 수 있습니다.
+                <ul>
+                    <li>  <b>시간 간격</b>
+                    </li>
+                    <li> <b>시간 단계</b>
+                    </li>
+                    <li> <b>참조 시간</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>시간에서 1년을 나타내는 데이터가 있는데 주 단위 슬라이스를 사용하여 분석한다고 가정해 보겠습니다. 이를 위해  <b>시간 간격</b>을 <code>1주</code>로 설정합니다.
+            </p>
+            <p> 시간에서 1년을 나타내는 데이터가 있는데 그 달의 첫 주를 사용하여 분석하고자 한다고 가정해 보겠습니다. 이를 위해서는 <b>시간 간격</b>을 <code>1주</code>로, <b>시간 단계</b>를 <code>1개월</code>로, <b>참조 시간</b>을 <code>1월 1일 오전 12시</code>로 설정합니다.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>집약할 시간 간격</h2></div>
+        <hr/>
+        <div>
+            <p>데이터 슬라이싱에 사용되는 시간 간격입니다. 시간 간격은 단독으로 사용하거나  <b>시간 단계</b> 또는 <b>참조 시간</b> 매개변수와 함께 사용할 수 있습니다.
+            </p>
+            <p> 매주 월요일 오전 9시부터 오전 10시까지 발생되는 시간 슬라이스를 생성하려고 했다면 <b>시간 간격</b>은 <code>1시간</code>, <b>시간 단계</b>는 <code>1주</code>, <b>참조 시간</b>은 <code>월요일 오전 9시</code>입니다.
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>집약할 시간 단계</h2></div>
+        <hr/>
+        <div>
+            <p> 시간 슬라이스를 계산하는 데 사용되는 단계입니다. <b>시간 단계</b>는 단독으로 사용하거나, <b>시간 간격</b>과 함께 사용하거나, <b>참조 시간</b>과 함께 사용하거나, <b>시간 간격</b>과 <b>참조 시간</b> 둘 다와 함께 사용할 수 있습니다.
+            </p>
+            <p> 매주 월요일 오전 9시부터 오전 10시까지 발생되는 시간 슬라이스를 생성하려고 했다면 <b>시간 간격</b>은 <code>1시간</code>, <b>시간 단계</b>는 <code>1주</code>, <b>참조 시간</b>은 <code>월요일 오전 9시</code>입니다.
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>시간 슬라이싱을 정렬하는 데 사용되는 참조 시간</h2></div>
+        <hr/>
+        <div>
+            <p>시간 슬라이싱을 정렬하는 데 사용되는 날짜와 시간입니다.  <b>시간 단계</b>는 참조 시간을 기준으로 그 이전으로 진행됩니다.
+            </p>
+            <p> 매주 월요일 오전 9시부터 오전 10시까지 발생되는 시간 슬라이스를 생성하려고 했다면 <b>시간 간격</b>은 <code>1시간</code>, <b>시간 단계</b>는 <code>1주</code>, <b>참조 시간</b>은 <code>월요일 오전 9시</code>입니다.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>레이어에서 요약할 통계 추가(선택)</h2></div>
+        <hr/>
+        <div>
+            <p> 요약된 피처에 대한 통계를 계산할 수 있습니다. 숫자 필드에 대해 다음을 계산할 수 있습니다.
+                <ul>
+                    <li>개수
+                    </li>
+                    <li>평균
+                    </li>
+                    <li>최소값
+                    </li>
+                    <li>최대값
+                    </li>
+                    <li>범위
+                    </li>
+                    <li>변수
+                    </li>
+                    <li>표준편차
+                    </li>
+                </ul>
+                
+            </p>
+            <p>문자열 필드에 대해 다음을 계산할 수 있습니다.
+                <ul>
+                    <li>개수
+                    </li>
+                    <li>임의 - 이 통계는 지정된 필드에 있는 문자열 값에 대한 랜덤 샘플입니다.
+                    </li>
+                </ul>
+                모든 통계는 null이 아닌 값에 대해 계산됩니다. 결과 레이어에는 계산된 각 통계에 대한 새 필드가 포함됩니다. 속성과 통계를 선택하여 원하는 개수의 통계를 추가할 수 있습니다. 
+            </p>
+            <p>이러한 통계 이외에도 배율 통계가 모든 숫자 필드에서 계산됩니다.
+                <ul>
+                    <li>개수&mdash;폴리곤 내에서 요약 레이어의 배율로 곱한 각 필드의 개수입니다. 
+                    </li>
+                    <li>합계&mdash;각 필드에서 값의 가중치 합계입니다. 적용된 가중치는 폴리곤 내에서 요약 레이어의 배율입니다.
+                    </li>
+                    <li>평균&mdash;각 필드에서 값의 가중치 평균입니다. 적용된 가중치는 폴리곤 내에서 요약 레이어의 배율입니다.
+                    </li>
+                    <li>최소&mdash;각 필드에서 가중치의 최소값입니다. 적용된 가중치는 폴리곤 내에서 요약 레이어의 배율입니다.
+                    </li>
+                    <li>최대&mdash;각 필드에서 가중치의 최대값입니다. 적용된 가중치는 폴리곤 내에서 요약 레이어의 배율입니다.
+                    </li>
+                    <li>범위&mdash;최대 및 최소 가중치 값의 차이입니다.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>요약하는 피처의 유형에 따라 주변 포인트의 총 수, 라인의 전체 길이 또는 전체 영역이 계산됩니다.
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>SpatialReference(wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>이 매개변수는 프로세싱 공간 참조를 설정하기 위한 시험판용 임시 매개변수입니다. 대부분의 빅 데이터 도구의 경우 투영 좌표체계를 프로세싱 공간 참조로 사용해야 합니다. 기본 설정에 따라 이 도구는 입력 좌표체계를 사용하지만 지리 좌표체계일 경우에는 사용할 수 없습니다. 투영 좌표체계를 설정하려면 WKID를 입력합니다. 예를 들어  <b>Web Mercator</b>를 설정하려면 <code>3857</code>을 입력합니다.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>데이터 저장소 선택</h2></div>
+        <hr/>
+        <div>
+            <p>이 매개변수는 결과가 저장되는 데이터 저장소를 설정하기 위한 시험판용 임시 매개변수입니다. 두 데이터 저장소 모두  ArcGIS Data Store의 일부입니다. 시공간적 데이터 저장소를 선택했지만 설치되어 있지 않은 경우에는 도구를 사용할 수 없습니다. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>결과 레이어 이름</h2></div>
+        <hr/>
+        <div>
+            <p>  <b>내 콘텐츠</b>에서 생성되어 맵에 추가되는 레이어의 이름입니다.  기본 이름은 도구 이름과 입력 레이어 이름을 기반으로 합니다. 레이어가 이미 있으면 도구를 사용할 수 없습니다.
+            </p>
+            <p> <b>결과 저장:</b> 드롭다운 상자를 사용하여 <b>내 콘텐츠</b>에서 결과를 저장할 폴더의 이름을 지정할 수 있습니다.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

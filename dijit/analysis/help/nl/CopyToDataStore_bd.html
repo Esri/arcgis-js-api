@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Kopiëren naar gegevensopslag</h2><p/>
+        <h2><img src="../images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" alt="Kopi&euml;ren naar gegevensopslag"></h2>
+        <hr/>
+    <p>Deze tool neemt een invoerlaag en kopieert het naar een gegevensopslag. De gegevens worden gekopieerd naar de  ArcGIS Data Store en worden opgeslagen in uw relationele of tijdruimtelijke gegevensopslag. </p>
+    <p>U kunt bijvoorbeeld objecten kopi&euml;ren die zijn opgeslagen in een  <code>groot gedeeld databestand</code> naar een <code>relationele gegevensopslag</code> en aangeven dat alleen objecten in de huidige kaart worden gekopieerd. Zo maakt u een gehoste featureservice met alleen de objecten van de opgegeven kaartomvang.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Kies een laag om te kopiëren</h2></div>
+        <hr/>
+        <div>
+            <p>De laag of tabel die wordt gekopieerd. 
+            </p>
+            <p>Naast het kiezen van een laag van uw kaart, kunt u kiezen voor  <b>Blader door lagen</b> aan de onderkant van de drop-downlijst om in uw inhoud te zoeken naar een groot gedeeld databestand of objectlaag.  
+            </p>
+        </div>
+    </div>
+    <div id="outputDataStore">
+        <div><h2>Kies de ArcGIS Data Store om naar te kopiëren</h2></div>
+        <hr/>
+        <div>
+            <p> De gegevensopslag waar de laag naar wordt gekopieerd. De opties omvatten het volgende:
+                <ul>
+                    <li> <b>Tijdruimtelijk</b>&mdash;Dit is de standaard.
+                    </li>
+                    <li> <b>Relationeel</b>.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Resultaat laagnaam</h2></div>
+        <hr/>
+        <div>
+            <p> Dit is de naam van de kaartlaag die in <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd.  De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, zal de tool falen.
+            </p>
+            <p>Als u in de vervolgkeuzelijst  <b>Resultaat opslaan</b> gebruikt, kunt u de naam opgeven van een map in <b>Mijn Content</b> waarin het resultaat wordt opgeslagen.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

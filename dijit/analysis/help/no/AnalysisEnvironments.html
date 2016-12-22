@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Miljøinnstillinger for portalanalyse</h2><p/>
+        <h2></h2>
+        <hr/>
+    <p> Milj&oslash;innstillinger for analyse i Portal for ArcGIS og  ArcGIS Online. 
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="overwriteResult">
+        <div><h2>Overskriv resultatlag</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Mulighet for &aring; overskrive eksisterende lag.    N&aring;r alternativet er merket av, blir laget overskrevet hvis et lag med samme navn ogs&aring; finnes i innholdet ditt.
+            </p>
+            <p>
+                <ul>
+                    <li>Merket av &ndash; Hvis det allerede finnes et lag med samme navn i innholdet ditt, blir det overskrevet. Utdataene vil ha samme koordinatsystem som inndataene.
+                    </li>
+                    <li>Ikke merket av &ndash; Hvis resultatlagnavnet som er oppgitt, allerede eksisterer, vil det oppst&aring; en feil, og resultatlaget m&aring; omd&oslash;pes f&oslash;r verkt&oslash;yet kan startes. Dette er standardalternativet.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="closeAnalysisWidget">
+        <div><h2>Lukk analysewidget etter kjøring av analyse</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Mulighet til &aring; holde analysedialogen &aring;pen og aktivert mens verkt&oslash;yet behandler.     Denne innstillingen gj&oslash;r at du enkelt kan gj&oslash;re endringer i analyseparameterne dine mens forrige analysejobb fortsetter &aring; kj&oslash;re.  Analysen er en iterativ prosess og ved &aring; holde dialogverkt&oslash;yet &aring;pent, kan du enkelt gj&oslash;re parameterendringer og kj&oslash;re analysen p&aring; nytt.
+            </p>
+            <p>
+                <ul>
+                    <li>Merket av &ndash; Analyseverkt&oslash;yvinduet lukkes og fokus g&aring;r tilbake til innholdsfortegnelsen. Dette er standardalternativet.
+                    </li>
+                    <li>Ikke merket av &ndash; Analyseverkt&oslash;yvinduet forblir &aring;pent og aktivert.   
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="storeAnalysisResults">
+        <div><h2>Lagre analyseresultatene som geoobjektstjenester</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Mulighet til &aring; spesifisere om resultatet av analysen skal opprettes som et geoobjektslag eller som en geoobjektssamling.
+            </p>
+            <p>
+                <ul>
+                    <li>Merket av &ndash; Analyseresultatene vil opprette et geoobjektslag og et element blir opprettet i innholdet ditt. Dette er standardalternativet.
+                    </li>
+                    <li>Ikke merket av &ndash; Analyseresultatene vil opprette en geoobjektssamling.    Geoobjektsamlinger lagres inne i webkartet ditt.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputCoordinateSystem">
+        <div><h2>Koordinatsystem for resultat</h2></div>
+        <hr/>
+        <div>
+            <p>Milj&oslash;innstilling for rasteranalyse benyttes til &aring; definere resultatlagets koordinatsystemet.    
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Samme som inndataene</b> &ndash; Resultatet av analysen vil v&aelig;re i det samme koordinatsystemet som inndataene. Dette er standardalternativet.
+                    </li>
+                    <li> <b>Som spesifisert</b> &ndash; Velg koordinatsystemet for resultatene av analysen.   N&aring;r dette alternativet er valgt, klikker du p&aring; klodeikonet for &aring; velge fra en liste over kjente koordinatsystemer eller legge til den geografiske referanse-WKID-en i boksen.
+                    </li>
+                    <li> <b>Lag
+&lt;navn&gt;</b> &ndash; Velg et eksisterende lag i webkartet som skal brukes til &aring; fastsl&aring; koordinatsystemet for analyseresultatet.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingCoordinateSystem">
+        <div><h2>Behandlende koordinatsystem</h2></div>
+        <hr/>
+        <div>
+            <p>Milj&oslash;innstilling for GeoAnalytics brukes til &aring; bestemme koordinatsystemet som analysen din vil bruke under utf&oslash;relse av analysen.   
+            </p>
+            <p>For GeoAnalytics krever enkelte analyser at behandlingen utf&oslash;res i et projisert koordinatsystem.   Alle verkt&oslash;y som har implementert &laquo;binning&raquo; av data eller line&aelig;re enheter krever et projisert koordinatsystem. 
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Samme som inndataene</b> &ndash; Analysen blir behandlet i det samme koordinatsystemet som inndataene. Dette er standardalternativet.
+                    </li>
+                    <li> <b>Som spesifisert</b> &ndash; Velg koordinatsystemet for &aring; behandle analysen.   N&aring;r dette alternativet er valgt, klikker du p&aring; klodeikonet for &aring; velge fra en liste over kjente projiserte koordinatsystemer eller legge til den geografiske referanse-WKID-en i boksen.
+                    </li>
+                    <li> <b>Lag
+&lt;navn&gt;</b> &ndash; Velg et eksisterende lag fra webkartet ditt.  Koordinatsystemet i laget som er valgt, blir brukt til &aring; fastsl&aring; koordinatsystemet som skal brukes til &aring; behandle analysen.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingExtent">
+        <div><h2>Omfang</h2></div>
+        <hr/>
+        <div>
+            <p>Milj&oslash;innstilling som brukes til &aring; bestemme utstrekningene eller grensene som skal brukes under utf&oslash;relse av analysen.  Alle inndatageoobjekter som er helt innenfor eller som krysser den spesifiserte utstrekningen, vil bli brukt i analysen.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Standard</b> &ndash; Bruker utstrekningen som gis av verkt&oslash;yet.
+                    </li>
+                    <li> <b>Som spesifisert</b> &ndash; Angi koordinatene manuelt for &aring; definere utstrekningen.
+                    </li>
+                    <li> <b>Lag
+&lt;navn&gt;</b> &ndash; Velg et eksisterende lag fra webkartet ditt. Den geografiske utstrekningen i laget som er valgt, blir brukt til &aring; fastsl&aring; utstrekningen som brukes til &aring; behandle analysen. 
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="snapRaster">
+        <div><h2>Tilpass raster</h2></div>
+        <hr/>
+        <div>
+            <p>N&aring;r du utf&oslash;rer rasteranalyse, vil det &aring; stille inn  <b>Fest raster</b>-milj&oslash;et justere utstrekningen av utdatarasterlaget slik at det stemmer overens med cellejusteringen til det angitte <b>Fest raster</b>-laget.
+            </p>
+        </div>
+    </div>
+    <div id="cellSize">
+        <div><h2>Cellestørrelse</h2></div>
+        <hr/>
+        <div>
+            <p>Ved utf&oslash;relse av rasteranalyse, angir dette milj&oslash;et cellest&oslash;rrelsen eller oppl&oslash;sningen som blir brukt til &aring; opprette utdatarasterlaget. Standardutgangsoppl&oslash;sningen bestemmes av den st&oslash;rste cellest&oslash;rrelsen i inngangsrasterlaget.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Minimum for innverdier</b> &ndash; Bruk den minste cellest&oslash;rrelsen for alle inndatalag.
+                    </li>
+                    <li> <b>Maksimum for innverdier</b> &ndash; Bruk den st&oslash;rste cellest&oslash;rrelsen for alle inndatalag. Dette er standardalternativet.
+                    </li>
+                    <li> <b>Som spesifisert</b> &ndash; Spesifiser en numerisk verdi til cellest&oslash;rrelsen. Hvis dette er valgt, er standardverdien 1.
+                    </li>
+                    <li> <b>Lag &lt;navn&gt;</b> &ndash; Stiller cellest&oslash;rrelsen til rasterlaget som er valgt.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="mask">
+        <div><h2>Maske</h2></div>
+        <hr/>
+        <div>
+            <p> N&aring;r du utf&oslash;rer rasteranalyse bruker du <b>Maske</b>-milj&oslash;et til &aring; spesifisere et lag som skal brukes til &aring; definere omr&aring;det som er av interesse.   Bare de cellene som faller innenfor analysemasken vil bli vurdert i analysen.
+            </p>
+            <ul>
+                <li>Masken kan v&aelig;re enten et raster eller et geoobjektslag.
+                </li>
+                <li>Dersom analysemasken er et raster, vil alle celler som har en verdi bli vurdert for &aring; definere masken. Celler i en maskeraster som er NoData, vil bli ansett for &aring; v&aelig;re p&aring; utsiden av masken, og vil v&aelig;re NoData i analyseresultatlaget. 
+                </li>
+                <li>Dersom analysemasken er et geoobjektslag, vil det internt bli konvertert til et raster ved utf&oslash;relse. Av denne grunnen b&oslash;r du s&oslash;rge for at  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">Cellest&oslash;rrelse</a> og <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">Fest raster</a> er stilt inn riktig for analysen din.
+                </li>
+            </ul>
+             
+        </div>
+    </div>
+</div>
+</html>

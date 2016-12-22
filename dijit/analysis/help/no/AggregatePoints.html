@@ -41,22 +41,20 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Samle punkter</h2><p/>
-        <h2><img src="../images/GUID-60C59C66-3038-4D0E-8F6A-EC6C53FEAA02-web.png" alt="Samle punkter"></h2>
+        <h2>Aggreger punkter</h2><p/>
+        <h2><img src="../images/GUID-60C59C66-3038-4D0E-8F6A-EC6C53FEAA02-web.png" alt="Aggreger punkter"></h2>
         <hr/>
     <p>Dette verkt&oslash;yet fungerer med et lag med punktgeoobjekter og et lag med omr&aring;degeoobjekter. Verkt&oslash;yet avgj&oslash;r f&oslash;rst hvilke punkter som h&oslash;rer til hvert enkelt omr&aring;de. N&aring;r verkt&oslash;yet har fastsatt den geografiske relasjonen mellom punkter og omr&aring;de, beregnes statistikken for alle punktene i omr&aring;det og tilordnes omr&aring;det. Den mest grunnleggende statistikken er antall punkter innenfor omr&aring;det, men du kan beregne annen statistikk ogs&aring;. 
     </p>
     <p>La oss for eksempel si at du har punktgeoobjekter for kafeer og omr&aring;degeoobjekter for fylker, og du vil oppsummere kaffesalget per fylke. Forutsatt at kafeene har et  <i>TOTAL_SALES</i>-attributt, kan du f&aring; summen for <i>TOTAL_SALES</i> i hvert fylke, eller monimum og maksimum <i>TOTAL_SALES</i>
  i hvert fylke eller standardavviket for alt salg i hvert fylke.
     </p>
-    <p>Det gir et kart der fargen p&aring; hvert omr&aring;de er basert p&aring; samlet antall punkter delt p&aring; st&oslash;rrelsen p&aring; omr&aring;det. N&aring;r antall deles p&aring; omr&aring;de, kalles det normalisering, og det er en teknikk kartografer alltid bruker til &aring; vise data etter omr&aring;der. Normalisering gj&oslash;r det enklere &aring; forst&aring; geografiske m&oslash;nstre siden det tas hensyn til st&oslash;rrelsen p&aring; omr&aring;det n&aring;r omr&aring;dene sammenlignes med hverandre visuelt.
-    </p>
     <p>Hvis det er merket av for  <b>Bruk gjeldende kartutstrekning</b>, er det kun geoobjektene i inndatapunktlaget og omr&aring;delaget som vises i gjeldende kartutstrekning, som analyseres.  Hvis det ikke er merket av for dette alternativet, blir alle geoobjekter i inndatapunktlaget og omr&aring;delaget analysert, selv om de befinner seg utenfor gjeldende kartutstrekning.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="pointLayer">
-        <div><h2>Velg lag som inneholder punkt som skal samles i områder</h2></div>
+        <div><h2>Velg laget som inneholder punkter som skal samles i områder</h2></div>
         <hr/>
         <div>
             <p>Punktlaget som samles i omr&aring;dene

@@ -93,7 +93,7 @@
                 <tbody>
                   <tr>
                     <td>
-                      <select multiple="true"  class="esriLeadingMargin1" style="width:100%;" data-dojo-props="required:true" data-dojo-type="dojox/form/CheckedMultiSelect" data-dojo-attach-point="_attrSelect"></select>        
+                      <select multiple="true"  class="esriLeadingMargin1" style="width:100%;" data-dojo-props="required:true" data-dojo-type="dojox/form/CheckedMultiSelect" data-dojo-attach-point="_attrSelect" data-dojo-attach-event="onChange:_handleAnalysisFieldsChange"></select>        
                     </td>
                   </tr>
                 </tbody>
@@ -154,7 +154,7 @@
                 </label>
                 <br/>
                 <label class="esriSelectLabel">
-                  <input type="radio" data-dojo-type="dijit/form/RadioButton" data-dojo-attach-point="_fieldProfileCheck" data-dojo-props="'class':'esriSelectLabel'" name="matchMethod"/> 
+                  <input type="radio" data-dojo-type="dijit/form/RadioButton" data-dojo-attach-point="_fieldProfileCheck" data-dojo-props="'class':'esriSelectLabel'" name="matchMethod" data-dojo-attach-event="onChange:_handleProfileCheckChange"/> 
                   ${i18n.fieldProfiles}
                 </label>
               </div>

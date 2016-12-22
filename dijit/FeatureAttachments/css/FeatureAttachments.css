@@ -41,6 +41,14 @@
   margin: 6px 5px 0;
 }
 
+.esri-feature-table-dialogRtl .esri-feature-attachments-button {
+  float: left;
+}
+
+.esri-feature-table-dialogRtl .esri-dialog-close-button {
+  float: left;
+}
+
 .esri-feature-attachments .dijitTabContainerTop-container {
   border: 1px solid #b5bcc7;
   border-top: none;
@@ -151,6 +159,10 @@
   width: 16px;
 }
 
+.esri-feature-table-dialogRtl .esri-attachment-node-delete {
+  float: left;
+}
+
 .esri-feature-attachments .esri-attachment-node-delete:hover {
   color: #0079c1;
   cursor: pointer;
@@ -161,8 +173,12 @@
   display: inline;
   float: left;
   height: 48px;
-  margin-left: 5px;
+  margin: 0 5px;
   width: 48px;
+}
+
+.esri-feature-table-dialogRtl .esri-attachment-node-icon {
+  float: right;
 }
 
 .esri-attachment-node-icon-archive {

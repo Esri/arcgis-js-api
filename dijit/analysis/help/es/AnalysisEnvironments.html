@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Configuración del entorno de análisis de Portal</h2><p/>
+        <h2></h2>
+        <hr/>
+    <p> Configuraci&oacute;n del entorno para el an&aacute;lisis en Portal for ArcGIS y  ArcGIS Online. 
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="overwriteResult">
+        <div><h2>Sobrescribir capa de resultados</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Opci&oacute;n para sobrescribir capas existentes.    Cuando est&aacute; activada, si ya existe una capa con el mismo nombre en el contenido, esta se sobrescribir&aacute;.
+            </p>
+            <p>
+                <ul>
+                    <li>Activada: si ya existe una capa con el mismo nombre en el contenido, esta se sobrescribir&aacute;. La salida tendr&aacute; el mismo sistema de coordenadas que la entrada.
+                    </li>
+                    <li>Desactivada: si el nombre de la capa de resultados indicado ya existe, se producir&aacute; un error y ser&aacute; necesario cambiar el nombre de la capa de resultados para poder ejecutar la herramienta. Esta es la opci&oacute;n predeterminada.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="closeAnalysisWidget">
+        <div><h2>Cerrar widget de análisis después de ejecutar análisis</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Opci&oacute;n para mantener el cuadro de di&aacute;logo de an&aacute;lisis abierto y habilitado mientras se procesa la herramienta.     Este par&aacute;metro le permitir&aacute; realizar modificaciones f&aacute;cilmente en los par&aacute;metros del an&aacute;lisis mientras el trabajo de an&aacute;lisis anterior se sigue ejecutando.  El an&aacute;lisis es un proceso iterativo y, al mantener el cuadro de di&aacute;logo de la herramienta abierto, puede cambiar f&aacute;cilmente par&aacute;metros y volver a ejecutar el an&aacute;lisis.
+            </p>
+            <p>
+                <ul>
+                    <li>Activada: la ventana de la herramienta de an&aacute;lisis se cerrar&aacute; y se volver&aacute; a la tabla de contenido. Esta es la configuraci&oacute;n predeterminada
+                    </li>
+                    <li>Desactivada: la ventana de la herramienta de an&aacute;lisis permanecer&aacute; abierta y habilitada.   
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="storeAnalysisResults">
+        <div><h2>Almacenar los resultados del análisis como servicios de entidades</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Opci&oacute;n que permite especificar si el resultado del an&aacute;lisis se crear&aacute; como una capa de entidades o como un conjunto de entidades.
+            </p>
+            <p>
+                <ul>
+                    <li>Activada: los resultados del an&aacute;lisis se crear&aacute;n como una capa de entidades y se crear&aacute; un elemento en el contenido. Esta es la opci&oacute;n predeterminada.
+                    </li>
+                    <li>Desactivada: los resultados del an&aacute;lisis crear&aacute;n un conjunto de entidades.    Los conjuntos de entidades se almacenan dentro del mapa web.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputCoordinateSystem">
+        <div><h2>Sistema de coordenadas de salida</h2></div>
+        <hr/>
+        <div>
+            <p>Configuraci&oacute;n del entorno para el an&aacute;lisis de r&aacute;ster utilizada para definir el sistema de coordenadas de la capa de resultados.    
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Como la entrada</b>: el resultado del an&aacute;lisis estar&aacute; en el mismo sistema de coordenadas que la entrada. Esta es la opci&oacute;n predeterminada.
+                    </li>
+                    <li> <b>Como se especifica</b>: elija el sistema de coordenadas para los resultados del an&aacute;lisis.   Si esta opci&oacute;n est&aacute; seleccionada, haga clic en el icono de globo para seleccionar un valor de una lista de sistemas de coordenadas conocidos o agregue el WKID de la referencia especial en el cuadro correspondiente.
+                    </li>
+                    <li> <b>Nombre
+&lt;de capa&gt;</b>: elija una capa existente del mapa web que se utilizar&aacute; para determinar el sistema de coordenadas del resultado del an&aacute;lisis.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingCoordinateSystem">
+        <div><h2>Procesando sistema de coordenadas</h2></div>
+        <hr/>
+        <div>
+            <p>Configuraci&oacute;n del entorno de geoan&aacute;lisis utilizada para determinar el sistema de coordenadas que se utilizar&aacute; en el an&aacute;lisis durante su ejecuci&oacute;n.   
+            </p>
+            <p>Para el geoan&aacute;lisis, en algunos an&aacute;lisis es necesario que el proceso se ejecute en un sistema de coordenadas proyectadas.   Cualquier herramienta que haya implementado la colocaci&oacute;n de bins de unidades de datos o lineales requiere un sistema de coordenadas proyectadas. 
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Como la entrada</b>: el an&aacute;lisis se procesar&aacute; en el mismo sistema de coordenadas que la entrada. Esta es la opci&oacute;n predeterminada.
+                    </li>
+                    <li> <b>Como se especifica</b>: elija el sistema de coordenadas para procesar el an&aacute;lisis.   Si esta opci&oacute;n est&aacute; seleccionada, haga clic en el icono de globo para seleccionar un valor de una lista de sistemas de coordenadas proyectadas conocidos o agregue el WKID de la referencia especial en el cuadro correspondiente.
+                    </li>
+                    <li> <b>Nombre
+&lt;de capa&gt;</b>: elija una capa existente del mapa web.  El sistema de coordenadas de la capa elegido se utilizar&aacute; para determinar el sistema de coordenadas que se utilizar&aacute; para procesar el an&aacute;lisis.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingExtent">
+        <div><h2>Extensión</h2></div>
+        <hr/>
+        <div>
+            <p>Configuraci&oacute;n del entorno utilizada para determinar la extensi&oacute;n o el l&iacute;mite que se utilizar&aacute; durante la ejecuci&oacute;n del an&aacute;lisis.  En el an&aacute;lisis se utilizar&aacute;n todas las entidades de entrada que est&eacute;n completamente dentro de la extensi&oacute;n especificada o que la intersequen.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Valor predeterminado</b>: se utiliza la extensi&oacute;n proporcionada por la herramienta.
+                    </li>
+                    <li> <b>Como se especifica</b>: introduzca manualmente las coordenadas para definir la extensi&oacute;n.
+                    </li>
+                    <li> <b>Nombre
+&lt;de capa&gt;</b>: elija una capa existente del mapa web. La extensi&oacute;n espacial de la capa elegida se utilizar&aacute; para determinar la extensi&oacute;n utilizada para procesar el an&aacute;lisis. 
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="snapRaster">
+        <div><h2>Alinear ráster</h2></div>
+        <hr/>
+        <div>
+            <p>Al realizar el an&aacute;lisis de r&aacute;ster, si se define el entorno de  <b>Alinear r&aacute;ster</b>, se ajustar&aacute; la extensi&oacute;n de la capa r&aacute;ster de salida para que coincida con la alineaci&oacute;n de celda de la capa de <b>Alinear r&aacute;ster</b> especificada.
+            </p>
+        </div>
+    </div>
+    <div id="cellSize">
+        <div><h2>Tamaño de Celda</h2></div>
+        <hr/>
+        <div>
+            <p>Al realizar el an&aacute;lisis de r&aacute;ster, este entorno define el tama&ntilde;o o la resoluci&oacute;n de celda que se utilizar&aacute; para crear la capa r&aacute;ster de salida. La resoluci&oacute;n de salida predeterminada se determina seg&uacute;n el tama&ntilde;o de celda m&aacute;s grande de la capa r&aacute;ster de entrada.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Cantidad m&iacute;nima de entradas</b>: utiliza el tama&ntilde;o de celda m&aacute;s peque&ntilde;o de todas las capas de entrada.
+                    </li>
+                    <li> <b>Cantidad m&aacute;xima de entradas</b>: utiliza el tama&ntilde;o de celda m&aacute;s grande de todas las capas de entrada. Esta es la opci&oacute;n predeterminada.
+                    </li>
+                    <li> <b>Como se especifica</b>: especifique un valor num&eacute;rico para definir el tama&ntilde;o de celda. Si se selecciona esta opci&oacute;n, el valor predeterminado es 1.
+                    </li>
+                    <li> <b>Nombre &lt;de capa&gt;</b>: define el tama&ntilde;o de celda seg&uacute;n la capa r&aacute;ster elegida.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="mask">
+        <div><h2>Máscara</h2></div>
+        <hr/>
+        <div>
+            <p> Al realizar el an&aacute;lisis de r&aacute;ster, utilice el entorno de la <b>M&aacute;scara</b> para especificar una capa que se utilizar&aacute; para definir el &aacute;rea de inter&eacute;s.   Solo se incluir&aacute;n en la operaci&oacute;n de an&aacute;lisis aquellas celdas que queden dentro de la m&aacute;scara de an&aacute;lisis.
+            </p>
+            <ul>
+                <li>La m&aacute;scara puede ser un r&aacute;ster o una capa de entidades.
+                </li>
+                <li>Si la m&aacute;scara de an&aacute;lisis es un r&aacute;ster, se considerar&aacute;n todas las celdas que tienen un valor para definir la m&aacute;scara. Las celdas en un r&aacute;ster de m&aacute;scara que son NoData se considerar&aacute;n fuera de la m&aacute;scara y ser&aacute;n NoData en la capa de resultados del an&aacute;lisis. 
+                </li>
+                <li>Si la m&aacute;scara de an&aacute;lisis es una capa de entidades, se convertir&aacute; internamente en un r&aacute;ster en la ejecuci&oacute;n. Por este motivo, aseg&uacute;rese de que  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">Tama&ntilde;o de celda</a> y <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">Alinear r&aacute;ster</a> se establezcan adecuadamente para el an&aacute;lisis.
+                </li>
+            </ul>
+             
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Attribute zusammenfassen</h2><p/>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Attribute zusammenfassen"></h2>
+        <hr/>
+    <p>Mit diesem Werkzeug werden alle &uuml;bereinstimmenden Werte in einem oder mehreren Feldern zusammengefasst und Statistiken f&uuml;r sie berechnet. Die einfachste Statistik ist die Anzahl der zusammengefassten Features, Sie k&ouml;nnen aber auch erweiterte Statistiken berechnen. 
+
+    </p>
+    <p>Angenommen, Sie verf&uuml;gen &uuml;ber Punkt-Features von Ladenstandorten mit einem Feld, das den  <i>DISTRICT_MANAGER_NAME</i> darstellt, und Sie m&ouml;chten die Umsatzzahlen f&uuml;r Kaffee nach Manager zusammenfassen. Sie k&ouml;nnen das Feld <i>DISTRICT_MANAGER_NAME</i> als Feld f&uuml;r die Zusammenf&uuml;hrung ausw&auml;hlen, sodass alle Datenzeilen, die einzelne Manager darstellen, zusammengefasst werden. Dies bedeutet, dass alle Ladenstandorte, die von Manager1 geleitet werden, in einer Zeile mit berechneter Summenstatistik zusammengefasst werden. In diesem Fall werden Statistiken wie die Anzahl der L&auml;den und die Summe der <i>TOTAL_SALES</i> f&uuml;r alle L&auml;den, die von Manager1 geleitet werden, und f&uuml;r alle anderen Manager berechnet, die im Feld <i>DISTRICT_MANAGER_NAME</i> aufgef&uuml;hrt sind.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Die zusammenfassende Eingabe auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Der Layer enth&auml;lt die Felder, die zusammengefasst werden.  
+            </p>
+            <p>Sie k&ouml;nnen nicht nur einen Layer aus der Karte ausw&auml;hlen, sondern auch unten in der Dropdown-Liste  <b>Layer durchsuchen</b> ausw&auml;hlen, um zu Ihren f&uuml;r ein Big-Data-Dateifreigabe-Dataset bzw. -Feature-Layer zu navigieren.  
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>Die Felder für die Zusammenführung auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>  Liste der Felder aus dem Eingabe-Layer.  Ausgew&auml;hlte Felder werden zusammengefasst und zum Berechnen von Statistiken verwendet. Wenn Sie beispielsweise ein Feld namens <i>PropertyType</i> mit den Werten von Gewerbe- oder Wohngeb&auml;uden ausgew&auml;hlt haben, werden alle Wohngeb&auml;udefelder mit berechneten Summenstatistiken und alle Gewerbefelder zusammengefasst.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Die Felder und Statistiken auswählen, die berechnet werden sollen (optional)</h2></div>
+        <hr/>
+        <div>
+            <p> Sie k&ouml;nnen Statistiken f&uuml;r Features berechnen, die zusammengefasst wurden. F&uuml;r numerische Felder kann Folgendes berechnet werden:
+                <ul>
+                    <li>Anzahl
+                    </li>
+                    <li>Mittelwert
+                    </li>
+                    <li>Min.
+                    </li>
+                    <li>Max.
+                    </li>
+                    <li>Bereich
+                    </li>
+                    <li>Varianz
+                    </li>
+                    <li>Standardabweichung
+                    </li>
+                </ul>
+                
+            </p>
+            <p>F&uuml;r Zeichenfolgenfelder kann Folgendes berechnet werden:
+                <ul>
+                    <li>Anzahl
+                    </li>
+                    <li>Beliebig: Diese Statistik ist eine auf dem Zufallsprinzip basierende Stichprobe eines Zeichenfolgenwertes im angegebenen Feld.
+                    </li>
+                </ul>
+                Alle Statistiken werden f&uuml;r Nicht-NULL-Werte berechnet. Der resultierende Layer enth&auml;lt ein neues Feld f&uuml;r jede berechnete Statistik. Jede Anzahl von Statistiken kann durch Auswahl eines Attributs und einer Statistik ausgew&auml;hlt werden. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Data Store auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Dies ist ein tempor&auml;rer Parameter f&uuml;r die Vorabversion zum Festlegen des Data Store, in dem die Ergebnisse gespeichert werden. Beide Data Stores sind Teil des  ArcGIS Data Store. Wenn Sie den Data Store &quot;spatiotemporal&quot; ausw&auml;hlen, aber nicht installiert haben, kann das Werkzeug nicht ausgef&uuml;hrt werden. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Name des Ergebnis-Layers</h2></div>
+        <hr/>
+        <div>
+            <p> Dies ist der Name des Layers, der in <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird.  Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, kann das Werkzeug nicht ausgef&uuml;hrt werden.
+            </p>
+            <p>&Uuml;ber das Dropdown-Feld  <b>Ergebnis speichern in</b> k&ouml;nnen Sie den Namen eines Ordners in <b>Eigene Inhalte</b> angeben, in dem das Ergebnis gespeichert werden soll.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -41,11 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="aoToolbox">
-        <p>The Feature Analysis toolbox contains a number
-of tools that you can access and use.  These tasks are arranged below into
-categories; the categories are simply logical groupings
-and do not affect how you access or use the tasks in any
-way.
+        <p>A caixa de ferramentas Analisar Fei&ccedil;&atilde;o cont&eacute;m diversas ferramentas que voc&ecirc; pode acessar e utilizar.  Estas tarefas s&atilde;o organizadas abaixo em categorias; as categorias s&atilde;o agrupamentos l&oacute;gicos e n&atilde;o afetam como acessar ou utilizar as tarefas de qualquer forma.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="regularsize">
@@ -54,6 +50,8 @@ way.
         <p>Estas ferramentas calculam a contagem total, comprimentos, &aacute;reas, e estat&iacute;stica descritiva b&aacute;sica de fei&ccedil;&otilde;es e seus atributos dentro de &aacute;reas ou pr&oacute;ximas de outras fei&ccedil;&otilde;es.
             <ul>
                 <li> <b>Agregar Pontos</b> calcula estat&iacute;sticas sobre pontos que caem dentro de &aacute;reas especificadas.
+                </li>
+                <li> <b>Ligar Fei&ccedil;&otilde;es</b> transere atributos de uma camada ou tabela para outra baseado relacionamentos espaciais e atributos.
                 </li>
                 <li> <b>Resumir Mais Pr&oacute;ximo</b> calcula estat&iacute;sticas para fei&ccedil;&otilde;es e seus atributos que est&atilde;o dentro de uma dist&acirc;ncia especificada.
                 </li>
@@ -81,6 +79,32 @@ way.
                     <li>Determinados locais de ponto dos incidentes de crime, contagem do n&uacute;mero de crimes por munic&iacute;pio ou outro distrito administrativo.
                     </li>
                     <li>Encontrar as rendas mais altas e mais baixas para locais de franquia por estado.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="JoinFeaturesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Ligar Feições</h2></td>
+                    <td>
+                    <img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" class="titleImage" alt="Ligar Fei&ccedil;&otilde;es">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ligar Fei&ccedil;&otilde;es ir&aacute; transerir atributos de uma camada ou tabela para outra baseado relacionamentos espaciais e atributos. Por exemplo:
+                <ul>
+                    <li>Anexar limite comum ou informa&ccedil;&otilde;es demogr&aacute;ficas para seus dados incidentes.
+                    </li>
+                    <li>Identificar as instala&ccedil;&otilde;es mais pr&oacute;ximas de uma localiza&ccedil;&atilde;o conhecida.
+                    </li>
+                    <li>Determinar o n&uacute;mero de resid&ecirc;ncias que caem dentro das zonas de inunda&ccedil;&atilde;o.
+                    </li>
+                    <li>Identificar h&aacute;bitats comuns de esp&eacute;cies de vida selvagem diferentes.
                     </li>
                 </ul>
                 
@@ -122,9 +146,9 @@ way.
 <hr/>
             <p>Localiza &aacute;reas (e por&ccedil;&otilde;es de &aacute;reas) que sobrep&otilde;em entre duas camadas e calcula a estat&iacute;stica da sobreposi&ccedil;&atilde;o. Por exemplo:
                 <ul>
-                    <li>Fornecidas uma camada de &aacute;reas de bacia e uma camada de &aacute;reas de uso da superf&iacute;cie por tipo de uso do solo, calcular a &aacute;rea total em acres do tipo de uso do solo para cada bacia. 
+                    <li>Dada uma camada de &aacute;reas de bacia e uma camada de &aacute;reas de uso da superf&iacute;cie por tipo de uso do solo, calcular a &aacute;rea total em acres do tipo de uso do solo para cada bacia. 
                     </li>
-                    <li>Fornecidas uma camada de lotes em um munic&iacute;pio e uma camada de limites da cidade, resumir o valor m&eacute;dio de lotes desocupados dentro de cada cidade.
+                    <li>Dada uma camada de lotes em um munic&iacute;pio e uma camada de limites da cidade, resuma o valor m&eacute;dio de lotes desocupados dentro de cada cidade.
                     </li>
                 </ul>
                 
@@ -297,6 +321,8 @@ way.
                 </li>
                 <li> <b>Localizar Alto Valor de Incid&ecirc;ncia</b> identifica agrupamentos estatisticamente significativos no modelo espacial dos seus dados.
                 </li>
+                <li> <b>Localizar Valores At&iacute;picos</b> determina se h&aacute; quaisquer valores at&iacute;picos significantes por meio de estat&iacute;sticas no padr&atilde;o espacial dos seus dados.
+                </li>
                 <li> <b>Interpolar Pontos</b> prev&ecirc; valores em novos locais baseado em medidas localizadas em uma cole&ccedil;&atilde;o de pontos.
                 </li>
             </ul>
@@ -330,6 +356,21 @@ way.
             </table>
 <hr/>
             <p>Esta ferramenta cria um mapa mostrando qualquer agrupamento espacial estatisticamente significativo presente em seus dados. Utilize esta ferramenta para descobrir pontos altos de incid&ecirc;ncia (vermelho) e pontos baixos de incid&ecirc;ncia (azuis) inesperados de valores locais altos e baixos, densidades de crime, fatalidades de acidente de tr&aacute;fego, desemprego ou biodiversidade, por exemplo.
+            </p>
+            <br/>
+        </div>
+        <div id="FindOutliersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Localizar Valores Atípicos</h2></td>
+                    <td>
+                    <img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" class="titleImage" alt="Localizar Valores At&iacute;picos">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Esta ferramenta cria um mapa mostrando qualquer agrupamento e valores at&iacute;picos significativos por meio de estat&iacute;sticas presentes em seus dados. Utilize esta ferramenta para identificar fei&ccedil;&otilde;es com valores que s&atilde;o significativamente diferentes de seus vizinhos.  Voc&ecirc; pode utilizar esta ferramenta, por exemplo, para localizar padr&otilde;es de gastos an&ocirc;malos, determinar onde est&atilde;o os limites entre riqueza e pobreza em uma &aacute;rea de estudo ou determinar se h&aacute; munic&iacute;pios nos Estados Unidos com probabilidade de vida baixa comparada a seus vizinhos.
             </p>
             <br/>
         </div>

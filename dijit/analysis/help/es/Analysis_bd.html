@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="bdToolbox">
+        <p>An&aacute;lisis de Big Data distribuye el trabajo de an&aacute;lisis en su Servidor de geoan&aacute;lisis de ArcGIS. Esto le permite analizar m&aacute;s datos con mayor rapidez aprovechando la potencia de varios equipos. Actualmente est&aacute;n disponibles las siguientes herramientas:
+            <ul>
+                <li> <b>Consolidar puntos</b>
+                </li>
+                <li> <b>Entidades de uni&oacute;n</b>
+                </li>
+                <li> <b>Reconstruir pistas</b>
+                </li>
+                <li> <b>Resumir atributos</b>
+                </li>
+                <li> <b>Resumir dentro de</b>
+                </li>
+                <li> <b>Buscar ubicaciones similares</b>
+                </li>
+                <li> <b>Calcular densidad</b>
+                </li>
+                <li> <b>Buscar puntos calientes</b>
+                </li>
+                <li> <b>Crear zonas de influencia</b>
+                </li>
+                <li> <b>Copiar en Data Store</b>
+                </li>
+            </ul>
+            
+        </p>
+        <p>An&aacute;lisis de Big Data se centra en analizar datos grandes incidiendo en los patrones espaciales y temporales. 
+        </p>
+    </div>
+    <div id="SummarizeDataCategory" class="largesize">
+        <h2>Resumir datos</h2>
+        <hr/>
+        <p>El conjunto de herramientas Resumir datos contiene herramientas que permiten calcular recuentos totales, longitudes, &aacute;reas y estad&iacute;sticas descriptivas b&aacute;sicas de entidades y sus atributos dentro de &aacute;reas o cerca de otras entidades.
+            <ul>
+                <li> <b>Consolidar puntos</b> calcula estad&iacute;sticas acerca de los puntos que se encuentran dentro de las &aacute;reas o bins especificados.
+                </li>
+                <li> <b>Unir entidades</b> calcula estad&iacute;sticas sobre las entidades que comparten una relaci&oacute;n espacial, temporal o de atributos con otras entidades.
+                </li>
+                <li> <b>Reconstruir pistas</b> calcula estad&iacute;sticas sobre los puntos o pol&iacute;gonos que pertenecen a la misma pista y reconstruye entradas en pistas.
+                </li>
+                <li> <b>Resumir atributos</b> calcula estad&iacute;sticas sobre los datos de entidades o tabulares que comparten atributos.
+                </li>
+                <li> <b>Resumir dentro de</b> calcula estad&iacute;sticas de entidades de &aacute;rea y atributos que se superponen entre s&iacute;.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregatePointsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Consolidar puntos</h2></td>
+                    <td>
+                    <img src="../images/GUID-6C1620D9-D176-41FA-8283-833D8B1CCCFC-web.png" class="titleImage" alt="Agregar puntos">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Utilizando una capa de entidades de puntos y una capa de entidades de &aacute;rea o bins definida mediante una distancia especificada, esta herramienta determina qu&eacute; puntos quedan dentro de cada &aacute;rea o bin y calcula las estad&iacute;sticas de todos los puntos dentro de cada &aacute;rea o bin. Si lo desea, puede aplicar la funci&oacute;n de intervalo de tiempo con esta herramienta. 
+            </p>
+            <p> Por ejemplo
+                <ul>
+                    <li>Dadas las ubicaciones de puntos de los incidentes criminales, cuenta el n&uacute;mero de cr&iacute;menes por condado o por otros distritos administrativos.
+                    </li>
+                    <li>Busca los ingresos mensuales m&aacute;s altos y m&aacute;s bajos para las ubicaciones de franquicia utilizando bins de 100 km.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="JoinFeaturesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Entidades de unión</h2></td>
+                    <td>
+                    <img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" class="titleImage" alt="Entidades de uni&oacute;n">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Utilizando capas de entidades o datos tabulares, puede unir entidades y registros bas&aacute;ndose en relaciones espec&iacute;ficas entre las capas o tablas de entrada.  Las uniones vendr&aacute;n determinadas por las relaciones espaciales, temporales y de atributos, y tambi&eacute;n es posible calcular resumen de estad&iacute;sticas.  
+            </p>
+            <p> Por ejemplo
+                <ul>
+                    <li>Dadas unas ubicaciones de puntos de incidentes delictivos en un intervalo tiempo, une a s&iacute; mismo los datos de los delitos especificando una relaci&oacute;n espacial de los delitos cometidos en un radio de 1 kil&oacute;metro de distancia y producidos con una diferencia de 1 hora entre s&iacute; para determinar si existe una secuencia de delitos cercanos entre s&iacute; en espacio y tiempo.
+                    </li>
+                    <li> Dada una tabla de c&oacute;digos postales con informaci&oacute;n demogr&aacute;fica y entidades de &aacute;rea que representan edificios residenciales, une la informaci&oacute;n demogr&aacute;fica a las viviendas para que cada vivienda ahora disponga de la informaci&oacute;n.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="ReconstructTracksTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Reconstruir recorrido</h2></td>
+                    <td>
+                    <img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" class="titleImage" alt="Reconstruir pistas">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Utilizando una capa de entidades de puntos o poligonales con la funci&oacute;n de tiempo habilitada que representa un  <code>instante</code> en el tiempo, esta herramienta determina qu&eacute; entidades de entrada pertenecen a una pista y ordena las entradas secuencialmente en el tiempo. Opcionalmente, se calculan estad&iacute;sticas para las entidades de entrada dentro de cada pista.
+            </p>
+            <p> Por ejemplo
+                <ul>
+                    <li>Dadas unas ubicaciones de puntos y mediciones sobre el momento en que se produjo el hurac&aacute;n, calcula la velocidad media del viento y la presi&oacute;n m&aacute;xima del viento del hurac&aacute;n.
+                    </li>
+                    <li>Busca los ingresos mensuales m&aacute;s altos y m&aacute;s bajos para las ubicaciones de franquicia utilizando bins de 100 km.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeAttributesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Resumir atributos</h2></td>
+                    <td>
+                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="Resumir atributos">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> Utilizando datos de entidades o tabulares, esta herramienta resume estad&iacute;sticas para campos espec&iacute;ficos.
+            </p>
+            <p> Por ejemplo
+                <ul>
+                    <li> Dadas unas ubicaciones de tiendas de alimentaci&oacute;n con el campo <i>COMPANY_NAME</i>, resume las tiendas por el nombre de la compa&ntilde;&iacute;a para determinar estad&iacute;sticas para cada compa&ntilde;&iacute;a.
+                    </li>
+                    <li>Dada una tabla de tiendas de alimentaci&oacute;n con los campos  <i>COMPANY_NAME</i> y <i>COUNTY</i>, resume las tiendas por el nombre de la compa&ntilde;&iacute;a y condado a fin de determinar estad&iacute;sticas para cada compa&ntilde;&iacute;a dentro de cada condado.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeWithinTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Resumir dentro de</h2></td>
+                    <td>
+                    <img src="../images/GUID-90E0CB1F-EB97-4752-B2EE-452B7B45475E-web.png" class="titleImage" alt="Resumir dentro de">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Busca &aacute;reas (y porciones de &aacute;reas) que se superponen entre dos capas y calcula estad&iacute;sticas sobre la superposici&oacute;n. 
+            </p>
+            <p> Por ejemplo
+                <ul>
+                    <li>Dada una capa de &aacute;reas de cuencas hidrogr&aacute;ficas y una capa de &aacute;reas de uso del suelo, calcula la superficie total del tipo de uso del suelo para cada cuenca hidrogr&aacute;fica. 
+                    </li>
+                    <li>Dada una capa de parcelas de un condado y una capa de l&iacute;mites de ciudades, resume el valor medio de las parcelas vac&iacute;as en cada ciudad.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="FindLocationsCategory" class="smallsize">
+        <h2>Buscar ubicaciones</h2>
+        <hr/>
+        <p>Estas herramientas se utilizan para identificar las &aacute;reas que cumplen diversos criterios especificados.   
+            <ul>
+                <li> <b>Buscar ubicaciones similares</b> busca las ubicaciones m&aacute;s similares a una o varias ubicaciones de referencia en funci&oacute;n de los criterios que especifiques.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="FindSimilarLocationsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Buscar ubicaciones similares</h2></td>
+                    <td>
+                    <img src="../images/GUID-6262A84E-9087-4E48-930E-E9B89FECC836-web.png" class="titleImage" alt="Buscar ubicaciones similares">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>En funci&oacute;n de los criterios que se especifiquen, puede buscar ubicaciones similares midiendo la similitud de las ubicaciones de la capa de b&uacute;squeda de candidatos con una o varias ubicaciones de referencia. 
+            </p>
+            <p> Por ejemplo
+                <ul>
+                    <li>Busca las diez tiendas m&aacute;s similares examinando la cantidad de empleados y las ventas anuales.
+                    </li>
+                    <li>Busca las 100 ciudades m&aacute;s similares examinando la relaci&oacute;n entre la poblaci&oacute;n, el crecimiento anual y los ingresos derivados de los impuestos.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzePatternsCategory" class="smallsize">
+        <h2>Analizar patrones</h2>
+        <hr/>
+        <p>Estas herramientas te ayudan a identificar, cuantificar y visualizar los patrones espaciales de tus datos.  
+            <ul>
+                <li> <b>Calcular densidad</b> toma cantidades conocidas de un fen&oacute;meno y las expande a trav&eacute;s del mapa.
+                </li>
+                <li> <b>Buscar puntos calientes</b> identifica clustering estad&iacute;sticamente significativo en el patr&oacute;n espacial de sus datos.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateDensityTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Calcular densidad</h2></td>
+                    <td>
+                    <img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" class="titleImage" alt="Calculate Density">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>La herramienta Calcular densidad crea un mapa de densidad a partir de entidades de punto mediante la extensi&oacute;n de cantidades conocidas de alg&uacute;n fen&oacute;meno (representado como atributos de los puntos) a todo el mapa. El resultado es una capa de &aacute;reas que representan la densidad.
+            </p>
+            <p> Por ejemplo
+                <ul>
+                    <li>Calcular las densidades de hospitales en un condado. La capa de resultados mostrar&aacute; las &aacute;reas con una accesibilidad alta y baja a los hospitales, y esta informaci&oacute;n se puede usar para decidir d&oacute;nde se deben construir nuevos hospitales.
+                    </li>
+                    <li>Identificar &aacute;reas con un alto riesgo de incendio forestal en funci&oacute;n del historial de ubicaciones de estos incendios.
+                    </li>
+                    <li>Buscar comunidades alejadas de las principales carreteras para planificar d&oacute;nde se deben construir nuevas carreteras.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="FindHotSpotsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Buscar puntos calientes</h2></td>
+                    <td>
+                    <img src="../images/GUID-6D600155-AA9B-4F02-AD8B-2E84150AB743-web.png" class="titleImage" alt="Buscar puntos calientes">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>La herramienta Buscar puntos calientes determinar&aacute; si hay alg&uacute;n clustering estad&iacute;sticamente significativo en el patr&oacute;n espacial de sus datos. 
+                <ul>
+                    <li>&iquest;Est&aacute;n realmente agrupados sus puntos (incidentes criminales, &aacute;rboles, accidentes de tr&aacute;fico)? &iquest;C&oacute;mo puede estar seguro?
+                    </li>
+                    <li>&iquest;Ha descubierto de verdad un punto caliente estad&iacute;sticamente significativo (para el gasto, la mortalidad infantil, notas de examen sistem&aacute;ticamente altas) o contar&iacute;a su mapa una historia diferente si cambiara sus s&iacute;mbolos?
+                    </li>
+                </ul>
+                La herramienta Buscar puntos calientes le ayudar&aacute; a responder a estas preguntas con confianza.
+            </p>
+            <br/>
+        </div>
+    <div id="UseProximityCategory" class="smallsize">
+        <h2>Utilizar proximidad</h2>
+        <hr/>
+        <p>Estas herramientas ayudan a responder a una de las preguntas m&aacute;s comunes del an&aacute;lisis espacial: &iquest;Qu&eacute; est&aacute; cerca de qu&eacute;?
+            <ul>
+                <li> <b>Crear zonas de influencia</b> crea &aacute;reas de una distancia especificada desde entidades.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CreateBuffersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Crear zonas de influencia</h2></td>
+                    <td>
+                    <img src="../images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" class="titleImage" alt="Crear zonas de influencia">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Una zona de influencia es un &aacute;rea que cubre una distancia dada desde una entidad de puntos, de l&iacute;nea o de entidad poligonal.
+            </p>
+            <p> Por ejemplo
+                <ul>
+                    <li>Utilizando entidades de r&iacute;o lineales, crea una zona de influencia de cada r&iacute;o multiplicando por 50 el ancho del r&iacute;o para determinar el l&iacute;mite ribere&ntilde;o propuesto.
+                    </li>
+                    <li>Dadas &aacute;reas que representan pa&iacute;ses, crea una zona de influencia de cada pa&iacute;s por 200 millas n&aacute;uticas para determinar el l&iacute;mite mar&iacute;timo.  
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="ManageDataCategory" class="smallsize">
+        <h2>Administrar datos</h2>
+        <hr/>
+        <p>Estas herramientas se usan para la administraci&oacute;n diaria de los datos geogr&aacute;ficos y tabulares.
+            <ul>
+                <li> <b>Copiar en Data Store</b> copia datos en su ArcGIS Data Store y crea una capa en su SIG web.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CopyToDataStoreTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Copiar en Data Store</h2></td>
+                    <td>
+                    <img src="../images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" class="titleImage" alt="Copiar en Data Store">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Copia una tabla o capa de entidades de entrada en un  ArcGIS Data Store y crea una capa en su SIG web. </p>
+            <p> Por ejemplo
+                <ul>
+                    <li> Copia un conjunto de archivos <code>.csv</code> de un archivo compartido de Big Data en el data store espacio-temporal para su visualizaci&oacute;n.
+                    </li>
+                    <li>Copia las entidades de la extensi&oacute;n de mapa actual que est&aacute;n almacenadas en el data store espacio-temporal al data store relacional.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+</div>
+</html>

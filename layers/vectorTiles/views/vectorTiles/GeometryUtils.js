@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.18/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.19/esri/copyright.txt for details.
 
-define(["require","exports"],function(_,n){function t(_,n){return _%=n,_>=0?_:_+n}function r(_){return t(_*n.C_RAD_TO_256,256)}function e(_){return t(_*n.C_DEG_TO_256,256)}function C(_){return Math.log(_)*i}function I(_){return _*_}function u(_,n,t){return Math.min(Math.max(_,n),t)}function o(_,n,t){return _*(1-t)+n*t}n.C_INFINITY=Number.POSITIVE_INFINITY,n.C_PI=Math.PI,n.C_2PI=2*n.C_PI,n.C_PI_BY_2=n.C_PI/2,n.C_RAD_TO_256=128/n.C_PI,n.C_256_TO_RAD=n.C_PI/128,n.C_DEG_TO_256=256/360,n.C_DEG_TO_RAD=n.C_PI/180,n.C_SQRT2=1.414213562,n.C_SQRT2_INV=1/n.C_SQRT2;var i=1/Math.LN2;n.positiveMod=t,n.radToByte=r,n.degToByte=e,n.log2=C,n.sqr=I,n.clamp=u,n.interpolate=o});
+define(["require","exports"],function(_,n){function t(_,n){return _%=n,_>=0?_:_+n}function r(_){return t(_*n.C_RAD_TO_256,256)}function e(_){return t(_*n.C_DEG_TO_256,256)}function u(_){return Math.log(_)*T}function C(_){return _*_}function I(_,n,t){return Math.min(Math.max(_,n),t)}function o(_,n,t){return _*(1-t)+n*t}function i(_,n,t){return _>=n&&t>=_||_>=t&&n>=_}n.C_INFINITY=Number.POSITIVE_INFINITY,n.C_PI=Math.PI,n.C_2PI=2*n.C_PI,n.C_PI_BY_2=n.C_PI/2,n.C_RAD_TO_256=128/n.C_PI,n.C_256_TO_RAD=n.C_PI/128,n.C_DEG_TO_256=256/360,n.C_DEG_TO_RAD=n.C_PI/180,n.C_SQRT2=1.414213562,n.C_SQRT2_INV=1/n.C_SQRT2;var T=1/Math.LN2;n.positiveMod=t,n.radToByte=r,n.degToByte=e,n.log2=u,n.sqr=C,n.clamp=I,n.interpolate=o,n.between=i});

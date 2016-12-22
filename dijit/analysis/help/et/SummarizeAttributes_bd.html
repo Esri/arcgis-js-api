@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Summeeri atribuudid</h2><p/>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Summeeri atribuudid"></h2>
+        <hr/>
+    <p>See t&ouml;&ouml;riist summeerib k&otilde;ik &uuml;hel v&otilde;i mitmel v&auml;ljal olevad vastavad v&auml;&auml;rtused ja arvutab nende p&otilde;hjal statistikud. K&otilde;ige lihtsam statistik on summeeritud objektide arv, aga arvutada saab ka keerulisemaid statistikuid. 
+
+    </p>
+    <p>Kirjeldatud meetod on kasutatav n&auml;iteks olukorras, kus teil on olemas m&uuml;&uuml;gikohtade punktobjektid v&auml;ljaga  <i>DISTRICT_MANAGER_NAME</i> ja soovite summeerida selle alusel kohvi m&uuml;&uuml;gitulu juhatajate kaupa. Saate m&auml;&auml;rata sulandamise v&auml;ljaks v&auml;lja <i>DISTRICT_MANAGER_NAME</i> ja summeeritakse eraldi k&otilde;ikide juhatajate andmeread. See t&auml;hendab, et k&otilde;ik m&uuml;&uuml;gikohad, mille juhataja on Juhataja1, summeeritakse &uuml;hele reale koos statistikute kokkuv&otilde;ttega. Antud juhul arvutatakse k&otilde;ikide Juhataja1 ja samuti k&otilde;ikide teiste v&auml;ljal <i>DISTRICT_MANAGER_NAME</i> loetletud juhatajate juhitavate m&uuml;&uuml;gikohtade statistikud, nagu m&uuml;&uuml;gikohtade arv ja <i>TOTAL_SALES</i>.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Valige summeerimiseks sisend</h2></div>
+        <hr/>
+        <div>
+            <p>Kiht, mis sisaldab summeeritavaid v&auml;ljasid.  
+            </p>
+            <p>Lisaks kihi valimisele kaardil saate valida ripploendi alumises servas  <b>Sirvi kihte</b>, et otsida oma sisust suurandmete failiketta andmestikku v&otilde;i objektikihti.  
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>Valige sulandamise väljad</h2></div>
+        <hr/>
+        <div>
+            <p>  Sisendkihi v&auml;ljade loend. Valitud v&auml;ljad summeeritakse ja neid kasutatakse statistikute arvutamiseks. N&auml;iteks kui valite v&auml;lja <i>Kinnisvara t&uuml;&uuml;p</i> v&auml;&auml;rtustega &auml;rimaa ja elamumaa, summeeritakse k&otilde;ik elamumaa v&auml;ljad, mille jaoks arvutatakse statistika kokkuv&otilde;te, samuti summeeritakse k&otilde;ik &auml;rimaa v&auml;ljad.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Valige arvutatavad väljad ja statistika (valikuline)</h2></div>
+        <hr/>
+        <div>
+            <p> Saate arvutada summeeritud objektide statistika. Numbriv&auml;ljadel saab arvutada j&auml;rgmised statistikud.
+                <ul>
+                    <li>Kogus
+                    </li>
+                    <li>Keskmine
+                    </li>
+                    <li>Min
+                    </li>
+                    <li>Max
+                    </li>
+                    <li>Ulatus
+                    </li>
+                    <li>Dispersioon
+                    </li>
+                    <li>Standardh&auml;lve
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Tekstiv&auml;ljadel saab arvutada j&auml;rgmised statistikud:
+                <ul>
+                    <li>Kogus
+                    </li>
+                    <li>M&otilde;ni &ndash; see statistik on juhuslik valim tekstistringi v&auml;&auml;rtusest vastaval v&auml;ljal.
+                    </li>
+                </ul>
+                K&otilde;ik statistikud arvutatakse v&auml;&auml;rtustega, mis ei ole nullv&auml;&auml;rtus. Tulemkiht sisaldab uut v&auml;lja iga arvutatud statistiku kohta. Soovitud statistika lisamiseks valige uus atribuut ja statistik. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Vali andmeladu</h2></div>
+        <hr/>
+        <div>
+            <p>See on ajutine parameeter eelversioonile, et m&auml;&auml;rata tulemuste salvestamiseks andmeladu. M&otilde;lemad andmelaod kuuluvad  ArcGIS-i andmeladu&rsquo;i juurde. Kui valite ajalisruumilise andmelao, kuid seda pole installitud, siis t&ouml;&ouml;tlemine nurjub. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tulemkihi nimi</h2></div>
+        <hr/>
+        <div>
+            <p> See on selle kihi nimi, mis luuakse jaotises <b>Minu sisu</b> ja lisatakse kaardile.  Vaikenimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui see kiht on juba olemas, siis t&ouml;&ouml;tlemine nurjub.
+            </p>
+            <p>Kasutades rippmen&uuml;&uuml;d  <b>Salvesta tulemused</b>, saate jaotises <b>Minu sisu</b> m&auml;&auml;rata kausta nime, kuhu tulemused salvestatakse.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -10,6 +10,21 @@
             "toolDescription": "calculate-density.htm",
             "inputLayer": "calculate-density.htm"
         },
+        "ChooseBestFacilities": {
+            "toolDescription": "choose-best-facilities.htm",
+            "allocateToExistingFacilities": "choose-best-facilities.htm#ESRI_SECTION3_6E6EB159DCDA4ED79DCE1CF23AC3D3D8",
+            "minimizeTravel": "choose-best-facilities.htm#ESRI_SECTION3_31FB2F550C7F4FB1898889D1335458E0",
+            "maximizeCoverage": "choose-best-facilities.htm#ESRI_SECTION3_98834C1F3F984696B49D06DB5C286ADF",
+            "maximizeCoverageWithCapacity": "choose-best-facilities.htm#ESRI_SECTION3_71F01CF021DC4336803F092D636F1973",
+            "coverAPercentageOfDemand": "choose-best-facilities.htm#ESRI_SECTION3_6866E70248774F1CBAC6E6138AC50AC7",
+            "demandLocationsLayer": "choose-best-facilities.htm#ESRI_SECTION2_0698EBA6340E4A6B93BB4BB31C4F71DF",
+            "requiredFacilitiesLayer": "choose-best-facilities.htm#ESRI_SECTION2_0698EBA6340E4A6B93BB4BB31C4F71DF",
+            "candidateFacilitiesLayer": "choose-best-facilities.htm#ESRI_SECTION2_0698EBA6340E4A6B93BB4BB31C4F71DF",
+            "goal": "choose-best-facilities.htm#ESRI_SECTION1_4A4428B0C3FB41069B16FB2BC11F37DC"
+        },
+        "ConnectOriginsToDestinations": {
+            "toolDescription": "connect-origins-to-destinations.htm"
+        },
         "CreateBuffers": {
             "toolDescription": "create-buffers.htm",
             "inputLayer": "create-buffers.htm"
@@ -21,6 +36,15 @@
         "DeriveNewLocations": {
             "toolDescription": "derive-new-locations.htm",
             "Expression": "derive-new-locations.htm"
+        },
+        "CreateViewshed": {
+            "toolDescription": "create-viewshed.htm"
+        },
+        "CreateWatersheds": {
+            "toolDescription": "create-watersheds.htm"
+        },
+        "DissolveBoundaries": {
+            "toolDescription": "dissolve-boundaries.htm"
         },
         "EnrichLayer": {
             "toolDescription": "enrich-layer.htm",
@@ -45,12 +69,23 @@
             "toolDescription": "find-nearest.htm",
             "analysisLayer": "find-nearest.htm"
         },
+        "FindOutliers": {
+            "toolDescription": "find-outliers.htm"
+        },
         "FindSimilarLocations": {
             "toolDescription": "find-similar-locations.htm",
-            "inputLayer": "find-similar-locations.htm#ESRI_SECTION1_0D6D235A87A64F6F9752C5BA98EAE90E",
-            "searchLayer": "find-similar-locations.htm#ESRI_SECTION1_8C13F0F96EA942B98A9314048BFA0350",
-            "analysisFields": "find-similar-locations.htm#ESRI_SECTION1_C219239BE9C7430394B8A2BD23626406",
-            "numberOfResults": "find-similar-locations.htm#ESRI_SECTION1_5F3346BC953B44F28940E0FD6D7FF629"
+            "inputLayer": "find-similar-locations.htm#ESRI_SECTION1_0B2B928A26BC4659B2143D06017F991E",
+            "searchLayer": "find-similar-locations.htm#ESRI_SECTION1_0B2B928A26BC4659B2143D06017F991E",
+            "analysisFields": "find-similar-locations.htm#ESRI_SECTION1_B78395564C414EA79B3386D3AA8C740C"
+        },
+        "InterpolatePoints": {
+            "toolDescription": "interpolate-points.htm"
+        },
+        "JoinFeatures": {
+            "toolDescription": "join-features.htm"
+        },
+        "MergeLayers": {
+            "toolDescription": "merge-layers.htm"
         },
         "OverlayLayers": {
             "toolDescription": "overlay-layers.htm",
@@ -58,20 +93,17 @@
         },
         "PlanRoutes": {
             "toolDescription": "plan-routes.htm",
-            "endLayer": "plan-routes.htm#ESRI_SECTION1_C980820DF2F447288C60E659E97E6523",
-            "startLayer": "plan-routes.htm#ESRI_SECTION1_C980820DF2F447288C60E659E97E6523"
+            "endLayer": "plan-routes.htm#ESRI_SECTION2_F8AA174031C949E2B75BD6A397D6678D",
+            "startLayer": "plan-routes.htm#ESRI_SECTION2_F8AA174031C949E2B75BD6A397D6678D"
         },
-        "ChooseBestFacilities": {
-            "toolDescription": "choose-best-facilities.htm",
-            "allocateToExistingFacilities": "choose-best-facilities.htm#ESRI_SECTION2_811106C1272D44F28F4A6F0B69DFC185",
-            "minimizeTravel": "choose-best-facilities.htm#ESRI_SECTION2_FC6691F587C84EA28105FFBE43F1512A",
-            "maximizeCoverage": "choose-best-facilities.htm#ESRI_SECTION2_DB9A96B209454B4B9C684C91D283E867",
-            "maximizeCoverageWithCapacity": "choose-best-facilities.htm#ESRI_SECTION2_57024B2A2DBC4B13816E152CC3DCC9F7",
-            "coverAPercentageOfDemand": "choose-best-facilities.htm#ESRI_SECTION2_1BAE3636B5A542A8ADABB4409991D752",
-            "demandLocationsLayer": "choose-best-facilities.htm#ESRI_SECTION1_402F93C2B16541ECBDCD06B9C0F18F5D",
-            "requiredFacilitiesLayer": "choose-best-facilities.htm#GUID-6332E48E-EA35-4D25-8C41-4A907203D875",
-            "candidateFacilitiesLayer": "choose-best-facilities.htm#GUID-6332E48E-EA35-4D25-8C41-4A907203D875",
-            "goal": "choose-best-facilities.htm#ESRI_SECTION1_4A4428B0C3FB41069B16FB2BC11F37DC"
+        "SummarizeNearby": {
+            "toolDescription": "summarize-nearby.htm"
+        },
+        "SummarizeWithin": {
+            "toolDescription": "summarize-within.htm"
+        },
+        "TraceDownstream": {
+            "toolDescription": "trace-downstream.htm"
         }
     }
 }

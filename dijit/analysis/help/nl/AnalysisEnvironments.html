@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Portaal Omgevingsinstellingen analyseren</h2><p/>
+        <h2></h2>
+        <hr/>
+    <p> Omgevingsinstellingen voor analyse in Portal for ArcGIS en  ArcGIS Online. 
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="overwriteResult">
+        <div><h2>Resultaatlaag overschrijven</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Optie om bestaande lagen te overschrijven. Als u deze optie aanvinkt, wordt als een laag met dezelfde naam al bestaat binnen uw content deze overschreven.
+            </p>
+            <p>
+                <ul>
+                    <li>Aangevinkt&mdash;Als een laag met dezelfde naam al bestaat in uw content, dan wordt deze overschreven. De uitvoer heeft hetzelfde co&ouml;rdinaatsysteem als de invoer.
+                    </li>
+                    <li>Uitgevinkt&mdash;Als de opgegeven resultaatlaagnaam al bestaat, zal een fout optreden en moet de resultaatlaag worden hernoemd voordat de tool kan worden uitgevoerd. Dit is de standaardinstelling.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="closeAnalysisWidget">
+        <div><h2>Analysewidget sluiten na uitvoeren analyse</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Optie om het dialoogvenster analyse open en ingeschakeld te houden terwijl de tool bezig is met verwerken. Met deze instelling kunt u eenvoudig wijzigingen maken in uw analyseparameters, terwijl de eerdere analysetaak blijft draaien. Analyse is een iteratief proces en door het dialoogvenster open te houden, kunt u gemakkelijk parameterwijzigingen maken en uw analyse opnieuw uitvoeren.
+            </p>
+            <p>
+                <ul>
+                    <li>Aangevinkt&mdash;Het venster analysetool zal sluiten en de focus gaat terug naar de inhoudsopgave. Dit is de standaard
+                    </li>
+                    <li>Uitgevinkt&mdash;Het venster analysetool blijft open en ingeschakeld.   
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="storeAnalysisResults">
+        <div><h2>Analyseresultaten opslaan als een featureservice</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Optie om aan te geven of het resultaat van uw analyse zal worden gemaakt als een objectlaag of als een objectverzameling.
+            </p>
+            <p>
+                <ul>
+                    <li>Aangevinkt&mdash;De resultaten van uw analyse worden gemaakt als een objectlaag en een item wordt gemaakt in uw content. Dit is de standaardinstelling.
+                    </li>
+                    <li>Aangevinkt&mdash;De resultaten van uw analyse maken een objectverzameling. Objectverzamelingen worden opgeslagen in uw webmap.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputCoordinateSystem">
+        <div><h2>Uitvoercoördinatensysteem</h2></div>
+        <hr/>
+        <div>
+            <p>Omgevingsinstelling voor rasteranalyse gebruikt om het co&ouml;rdinaatsysteem van de resultaatlaag te defini&euml;ren.    
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Hetzelfde als invoer</b>&mdash;Het resultaat van uw analyse is in hetzelfde co&ouml;rdinaatsysteem als de invoer. Dit is de standaardinstelling.
+                    </li>
+                    <li> <b>Zoals opgegeven</b>&mdash;Kies het co&ouml;rdinaatsysteem voor de resultaten van uw analyse. Als deze optie is geselecteerd, klikt u op het pictogram van de wereldbol om een lijst met bekende co&ouml;rdinaatsystemen te selecteren of de ruimtelijke referentie WKID in het daarvoor bestemde vak toe te voegen.
+                    </li>
+                    <li> <b>Laag
+&lt;name&gt;</b>&mdash;Kies een bestaande laag in uw webmap die gebruikt wordt om het co&ouml;rdinaatsysteem te bepalen van het resultaat van uw analyse.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingCoordinateSystem">
+        <div><h2>Coördinaatsysteem verwerken</h2></div>
+        <hr/>
+        <div>
+            <p>Omgevingsinstelling voor GeoAnalytics gebruikt om het co&ouml;rdinaatsysteem te bepalen dat uw analyse zal gebruiken tijdens het uitvoeren van de analyse.   
+            </p>
+            <p>Voor GeoAnalytics vereist sommige analyse dat de verwerking wordt uitgevoerd in een geprojecteerd co&ouml;rdinaatsysteem. Elke tool die binning van gegevens of lineaire eenheden heeft ge&iuml;mplementeerd vereist een geprojecteerd co&ouml;rdinaatsysteem. 
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Hetzelfde als invoer</b>&mdash;Uw analyse wordt verwerkt is in hetzelfde co&ouml;rdinaatsysteem als de invoer. Dit is de standaardinstelling.
+                    </li>
+                    <li> <b>Zoals opgegeven</b>&mdash;Kies het co&ouml;rdinaatsysteem om uw analyse te verwerken. Als deze optie is geselecteerd, klikt u op het pictogram van de wereldbol om een lijst met bekende geprojecteerde co&ouml;rdinaatsystemen te selecteren of de ruimtelijke referentie WKID in het daarvoor bestemde vak toe te voegen.
+                    </li>
+                    <li> <b>Laag
+&lt;name&gt;</b>&mdash;Kies een bestaande laag van uw webmap. Het co&ouml;rdinatensysteem van de gekozen laag wordt gebruikt om het co&ouml;rdinatensysteem te bepalen dat wordt gebruikt om uw analyse te verwerken.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingExtent">
+        <div><h2>Extent</h2></div>
+        <hr/>
+        <div>
+            <p>Omgevingsinstelling gebruikt om de extent of grens te bepalen die wordt gebruikt tijdens het uitvoeren van de analyse. Alle invoerobjecten die volledig binnen de opgegeven extent vallen of die de opgegeven extent kruisen worden gebruikt in de analyse.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Standaard</b>&mdash;Gebruikt de extent opgegeven door de tool.
+                    </li>
+                    <li> <b>Zoals gespecificeerd</b>&mdash;Voer handmatig de co&ouml;rdinaten in om de extent te defini&euml;ren.
+                    </li>
+                    <li> <b>Laag
+&lt;name&gt;</b>&mdash;Kies een bestaande laag van uw webmap. De ruimtelijke extent van de gekozen laag wordt gebruikt om de extent te bepalen die wordt gebruikt om uw analyse te verwerken. 
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="snapRaster">
+        <div><h2>Snapraster</h2></div>
+        <hr/>
+        <div>
+            <p>Bij het uitvoeren van rasteranalyse, zal het instellen van de omgeving  <b>Snapraster</b> de extent aanpassen van de uitvoerrasterlaag zodat het overeenkomt met de celuitlijning van de gespecificeerde <b>Snapraster</b> laag.
+            </p>
+        </div>
+    </div>
+    <div id="cellSize">
+        <div><h2>Celgrootte</h2></div>
+        <hr/>
+        <div>
+            <p>Bij het uitvoeren van rasteranalyse, stelt deze omgeving de celgrootte of resolutie in die wordt gebruikt om de uitvoerrasterlaag te maken. De standaard uitvoerresolutie wordt bepaald door de grootste celgrootte van de invoerrasterlaag.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Minimale invoer</b>&mdash;Gebruik de kleinste celgrootte van alle invoerlagen.
+                    </li>
+                    <li> <b>Maximale invoer</b>&mdash;Gebruik de grootste celgrootte van alle invoerlagen. Dit is de standaardinstelling.
+                    </li>
+                    <li> <b>Zoals gespecificeerd</b>&mdash;Specificeer een numerieke waarde om de celgrootte in te stellen. Als dit is geselecteerd, is de standaardwaarde 1.
+                    </li>
+                    <li> <b>Laag &lt;name&gt;</b>&mdash;Stelt de celgrootte in op de gekozen rasterlaag.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="mask">
+        <div><h2>Masker</h2></div>
+        <hr/>
+        <div>
+            <p> Gebruik bij het uitvoeren van rasteranalyse de omgeving <b>Masker</b> om een laag te specificeren die zal worden gebruikt om uw gebied van belang te defini&euml;ren. Alleen die cellen die binnen het analysemasker vallen, worden beschouwd in de analyse.
+            </p>
+            <ul>
+                <li>Het masker kan een raster of een objectlaag zijn.
+                </li>
+                <li>Als het analysemasker een raster is, worden alle cellen die een waarde hebben beschouwd om het masker te defini&euml;ren. Cellen in een maskerraster die NoData zijn worden als buiten het masker beschouwd en zijn NoData in de analyseresultaatlaag. 
+                </li>
+                <li>Als het analysemasker een objectlaag is, wordt het intern omgezet naar een raster op uitvoering. Om deze reden, moet u erop toezien dat de  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">Celgrootte</a> en <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">Snapraster</a> goed worden ingesteld voor uw analyse.
+                </li>
+            </ul>
+             
+        </div>
+    </div>
+</div>
+</html>

@@ -41,11 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="aoToolbox">
-        <p>The Feature Analysis toolbox contains a number
-of tools that you can access and use.  These tasks are arranged below into
-categories; the categories are simply logical groupings
-and do not affect how you access or use the tasks in any
-way.
+        <p>Die Toolbox &quot;Feature-Analyse&quot; enth&auml;lt eine Reihe von Werkzeugen, auf die Sie zugreifen und die Sie nutzen k&ouml;nnen.  Diese Tasks sind nachfolgend in Kategorien organisiert. Die Kategorien sind lediglich logische Gruppen und haben keinerlei Auswirkungen darauf, wie Sie auf die Tasks zugreifen oder sie verwenden.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="regularsize">
@@ -54,6 +50,8 @@ way.
         <p>Mit diesen Werkzeugen werden Gesamtzahlen, L&auml;ngen, Fl&auml;chen und grundlegende beschreibende Statistiken von Features und ihren Attributen innerhalb von Fl&auml;chen oder in der N&auml;he anderer Features berechnet.
             <ul>
                 <li> <b>Punkte aggregieren</b> berechnet Statistiken zu Punkten, die sich innerhalb bestimmter Bereiche befinden.
+                </li>
+                <li>Mit der Funktion  <b>Features verbinden</b> werden Attribute zwischen Layern oder Tabellen basierend auf r&auml;umlichen und Attributbeziehungen &uuml;bertragen.
                 </li>
                 <li> <b>Zusammenfassen (in der N&auml;he)</b> berechnet Statistiken f&uuml;r Features und ihre Attribute, die sich innerhalb einer angegebenen Entfernung befinden.
                 </li>
@@ -78,9 +76,35 @@ way.
 <hr/>
             <p>Dieses Werkzeug ermittelt anhand eines Punkt-Feature-Layers und eines Fl&auml;chen-Feature-Layers, welche Punkte sich innerhalb der einzelnen Bereiche befinden, und berechnet Statistiken zu allen Punkten in jedem Bereich. Beispiel:
                 <ul>
-                    <li>anhand der Punktpositionen von Kriminaldelikten die Anzahl der Delikte pro Landkreis oder Verwaltungsbezirk ermitteln
+                    <li>Ermitteln Sie anhand der Punktpositionen von Kriminaldelikten die Anzahl der Delikte pro Landkreis oder Verwaltungsbezirk.
                     </li>
-                    <li>die h&ouml;chsten und niedrigsten Umsatzzahlen f&uuml;r Franchise-Standorte pro Bundesstaat ermitteln
+                    <li>Ermitteln Sie die h&ouml;chsten und niedrigsten Umsatzzahlen f&uuml;r Franchise-Standorte pro Bundesstaat.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="JoinFeaturesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Features verbinden</h2></td>
+                    <td>
+                    <img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" class="titleImage" alt="Features verbinden">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Mit der Funktion &quot;Features verbinden&quot; werden Attribute zwischen Layern oder Tabellen basierend auf r&auml;umlichen und Attributbeziehungen &uuml;bertragen. Beispiel:
+                <ul>
+                    <li>H&auml;ngen Sie allgemeine Grenz- oder demografische Informationen an Ihre Ereignisdaten an.
+                    </li>
+                    <li>Identifizieren Sie die einer bekannten Position am n&auml;chsten gelegenen Einrichtungen.
+                    </li>
+                    <li>Ermitteln Sie die Anzahl der Wohnh&auml;user, die innerhalb von Hochwassergebieten liegen.
+                    </li>
+                    <li>Suchen Sie h&auml;ufige Lebensr&auml;ume f&uuml;r unterschiedliche Wildtiere.
                     </li>
                 </ul>
                 
@@ -100,9 +124,9 @@ way.
 <hr/>
             <p>Sucht Features, die sich innerhalb einer angegebenen Entfernung von Features im Eingabe-Layer befinden.   Die Entfernung kann entlang gerader Linien oder der tats&auml;chlichen Strecke eines Reisemodus gemessen werden. Anschlie&szlig;end werden Statistiken f&uuml;r die nahe gelegenen Features berechnet. Beispiel:
                 <ul>
-                    <li>die Gesamtbev&ouml;lkerungszahl innerhalb der zeitlichen Entfernung von f&uuml;nf Minuten von einem vorgeschlagenen neuen Ladenstandort ermitteln
+                    <li>Ermitteln Sie die Gesamtbev&ouml;lkerungszahl innerhalb der Fahrtzeit von f&uuml;nf Minuten von einem vorgeschlagenen neuen Ladenstandort.
                     </li>
-                    <li>die Anzahl der Autobahnzufahrten innerhalb der zeitlichen Entfernung von f&uuml;nf Minuten von einem vorgeschlagenen neuen Ladenstandort ermitteln, um diese als Ma&szlig; f&uuml;r die Erreichbarkeit von Gesch&auml;ften zu verwenden
+                    <li>Ermitteln Sie die Anzahl der Autobahnzufahrten innerhalb einer Fahrtstrecke von einem Kilometer von einem vorgeschlagenen neuen Ladenstandort, um diese als Ma&szlig; f&uuml;r die Erreichbarkeit des neuen Standorts zu verwenden.
                     </li>
                 </ul>
                 
@@ -122,9 +146,9 @@ way.
 <hr/>
             <p>Ermittelt Fl&auml;chen (und Teile von Fl&auml;chen), die sich zwischen zwei Layern &uuml;berlappen, und berechnet Statistiken zu der &Uuml;berlappung. Beispiel:
                 <ul>
-                    <li>anhand eines Layers mit Wassereinzugsgebieten und eines Layers mit Landnutzungsfl&auml;chen nach Landnutzungstyp die Gesamtlandwirtschaftsfl&auml;che des Landnutzungstyps f&uuml;r jedes Wassereinzugsgebiet ermitteln 
+                    <li>Ermitteln Sie anhand eines Layers mit Abflussgebieten und eines Layers mit Landnutzungsfl&auml;chen nach Landnutzungstyp die Gesamtlandwirtschaftsfl&auml;che des Landnutzungstyps f&uuml;r jedes Abflussgebiet. 
                     </li>
-                    <li>den Durchschnittswert unbebauter Flurst&uuml;cke innerhalb jeder Stadt anhand eines Flurst&uuml;cks-Layers in einem Landkreis und eines Stadtgrenzen-Layers zusammenfassen
+                    <li>Fassen Sie den Durchschnittswert unbebauter Flurst&uuml;cke innerhalb jeder Stadt anhand eines Flurst&uuml;cks-Layers in einem Landkreis und eines Stadtgrenzen-Layers zusammen.
                     </li>
                 </ul>
                 
@@ -297,6 +321,8 @@ Untersuchungsgebiets, die eine Reihe von Kriterien erf&uuml;llen.
                 </li>
                 <li>Mit  <b>Hot-Spots suchen</b> werden statistisch signifikante Cluster im r&auml;umlichen Muster Ihrer Daten identifiziert.
                 </li>
+                <li>Mit dem Werkzeug  <b>Ausrei&szlig;er suchen</b> wird ermittelt, ob die r&auml;umlichen Muster in den Daten statistisch signifikante Ausrei&szlig;er aufweisen.
+                </li>
                 <li>Mit dem Werkzeug  <b>Punkte interpolieren</b> k&ouml;nnen Sie Werte an neuen Positionen basierend auf Messwerten aus einer Sammlung von Punkten vorhersagen.
                 </li>
             </ul>
@@ -333,6 +359,21 @@ Untersuchungsgebiets, die eine Reihe von Kriterien erf&uuml;llen.
             </p>
             <br/>
         </div>
+        <div id="FindOutliersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Ausreißer suchen</h2></td>
+                    <td>
+                    <img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" class="titleImage" alt="Ausrei&szlig;er suchen">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dieses Werkzeug erstellt eine Karte mit statistisch signifikanten Clustern und r&auml;umlichen Ausrei&szlig;ern, die in den Daten vorhanden sind. Verwenden Sie dieses Werkzeug, um Features mit Werten zu ermitteln, die erheblich von ihren Nachbarn abweichen.  Mit diesem Werkzeug k&ouml;nnen Sie beispielsweise herausfinden, wo anomales Ausgabeverhalten zu beobachten ist, ermitteln, wo die sch&auml;rfsten Grenzen zwischen Reichtum und Armut in einem Untersuchungsgebiet liegen oder ob in den USA Landkreise mit ungew&ouml;hnlich niedriger Lebenserwartung im Vergleich zu ihren Nachbarschaften vorhanden sind.
+            </p>
+            <br/>
+        </div>
         <div id="InterpolatePointsTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -344,7 +385,7 @@ Untersuchungsgebiets, die eine Reihe von Kriterien erf&uuml;llen.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Mit dem Werkzeug k&ouml;nnen Sie Werte an neuen Positionen basierend auf Messwerten aus einer Sammlung von Punkten vorhersagen. Das Werkzeug verwendet Punktdaten mit Werten an jedem Punkt und gibt Fl&auml;chen zur&uuml;ck, die nach vorhergesagten Werten klassifiziert werden. Mit diesem Werkzeug k&ouml;nnen Sie beispielsweise Niederschlagsmengen in einem Wassereinzugsgebiet basierend auf den Messwerten einzelner Niederschlagsmesser vorhersagen.
+            <p>Mit dem Werkzeug k&ouml;nnen Sie Werte an neuen Positionen basierend auf Messwerten aus einer Sammlung von Punkten vorhersagen. Das Werkzeug verwendet Punktdaten mit Werten an jedem Punkt und gibt Fl&auml;chen zur&uuml;ck, die nach vorhergesagten Werten klassifiziert werden. Mit diesem Werkzeug k&ouml;nnen Sie beispielsweise Niederschlagsmengen in einem Abflussgebiet basierend auf den Messwerten einzelner Niederschlagsmesser vorhersagen.
             </p>
             <br/>
         </div>

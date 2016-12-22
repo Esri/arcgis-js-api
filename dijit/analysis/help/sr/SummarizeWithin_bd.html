@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Sumiraj u okviru</h2><p/>
+        <h2><img src="../images/GUID-90E0CB1F-EB97-4752-B2EE-452B7B45475E-web.png" alt="Sumiraj vrednosti za objekte unutar definisanog opsega"></h2>
+        <hr/>
+    <p>Ova alatka pronalazi geoobjekte (i delove geoobjekata) koji su unutar granica oblasti u prvom ulaznom sloju.   
+        <ul>
+            <li>S obzirom na dati sloj granica vododelnice i sloj granica upotrebe zemlji&scaron;ta, izračunajte ukupnu povr&scaron;inu tipa upotrebe zemlji&scaron;ta za svaku vododelnicu. 
+            </li>
+            <li>S obzirom na dati sloj sa parcelama u okrugu i sloj granica grada, sumirajte prosečnu vrednost praznih parcela unutar granica svakog grada.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Ako je opcija  <b>Koristi trenutni obuhvat mape</b> izabrana, biće sumirani samo oni geoobjekti iz ulaznog sloja i sloja za sumiranje koji su vidljivi unutar trenutnog obuhvata mape. Ako ova opcija nije potvrđena, biće sumirani svi geoobjekti u ulaznom sloju i sloju za sumiranje, čak i ako su izvan trenutnog obuhvata mape.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="sumWithinLayer">
+        <div><h2>Odaberite sloj oblasti da biste sumirali druge geoobjekte u okviru njegovih granica</h2></div>
+        <hr/>
+        <div>
+            <p>Sloj oblasti koji će se koristi za sumiranje geoobjekata koji padaju unutar njegovih granica. Možete da odaberete da sumirate unutar sloja poligona koji ćete vi obezbediti ili unutar kvadratnih ili &scaron;estougaonih blokova koji nastaju kada je pokrenuta alatka. Pri pravljenju blokova, za  <b>Kvadrat</b>, navedeni broj i jedinice određuju visinu i dužinu kvadrata. Za <b>&Scaron;estougao</b>, navedeni broj i jedinice određuju rastojanje između paralelnih stranica.
+            </p>
+            <p>Kao dodatak odabiru sloja iz mape, možete da odaberete  <b>Pregledaj slojeve</b> na dnu padajuće liste da biste potražili deljeni skup podataka za datoteke sa velikim podacima ili sloj geoobjekta u svojim sadržajima.  
+            </p>
+        </div>
+    </div>
+    <div id="summaryLayer">
+        <div><h2>Odaberite sloj za sumiranje</h2></div>
+        <hr/>
+        <div>
+            <p>Biće sumirani geoobjekti u ovom sloju koji padaju unutar gore navedenih granica geoobjekata u ulaznom sloju ili blokova. 
+            </p>
+            <p>Kao dodatak odabiru sloja iz mape, možete da odaberete  <b>Pregledaj slojeve</b> na dnu padajuće liste da biste potražili deljeni skup podataka za datoteke sa velikim podacima ili sloj geoobjekta u svojim sadržajima.  
+            </p>
+        </div>
+    </div>
+    <div id="inputBins">
+        <div><h2>Izaberite rastojanje da biste napravili blokove i grupisali u</h2></div>
+        <hr/>
+        <div>
+            <p>Rastojanje koje se koristi za pravljenje blokova.  
+            </p>
+            <p>Bilo  <b>Veličina bloka</b> za blokove ili <b>Sloj oblasti</b> treba da budu pode&scaron;eni.
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Grupiši pomoću vremenskih odsečaka (opciono)</h2></div>
+        <hr/>
+        <div>
+            <p>Ako je vreme omogućeno na ulaznom tačkastom sloju i u pitanju je trenutak, možete da analizirate koristeći sečenje vremena. Postoje tri parametra koje možete da podesite kada koristite vreme:
+                <ul>
+                    <li>  <b>Vremenski interval</b>
+                    </li>
+                    <li> <b>Vremenski korak</b>
+                    </li>
+                    <li> <b>Referentno vreme</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Zamislite da ste imali podatke koji su predstavljali godinu u vremenu i da ste želeli da analizirate koristeći nedeljne odsečke. Da biste to uradili, podesili biste  <b>Vremenski interval</b> na <code>1 nedelju</code>.
+            </p>
+            <p> Zamislite da ste imali podatke koji su predstavljali godinu u vremenu i da ste želeli da analizirate koristeći prvu nedelju u mesecu. Da biste to uradili, podesili biste <b>Vremenski interval</b> na <code>1 nedelju</code>, <b>Vremenski korak</b> na <code>1 mesec</code>, a <b>Referentno vreme</b> na <code>1. januar, u 12:00</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>Vremenski interval u koji će se grupisati</h2></div>
+        <hr/>
+        <div>
+            <p>Interval vremena koji se koristi za sečenje vremena. Vremenski interval može da se koristi sam ili sa parametrom  <b>Vremenski korak</b> ili <b>Referentno vreme</b>.
+            </p>
+            <p> Ako ste želeli da kreirate vremenske odsečke koji se de&scaron;avaju svakog ponedeljka od 9:00 do 10:00, <b>Vremenski interval</b> bi iznosio <code>1 sat</code>, <b>Vremenski korak</b> bi bio <code>1 nedelja</code>, a <b>Referentno vreme</b> bi iznosilo <code>9:00:00 ujutro ponedeljkom</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>Vremenski korak u koji se grupiše</h2></div>
+        <hr/>
+        <div>
+            <p> Korak koji se koristi za izračunavanje vremenskog odsečka. <b>Vremenski korak</b> može da se koristi zasebno ili sa parametrom <b>Vremenski interval</b> ili <b>Referentno vreme</b> ili sa oba parametra <b>Vremenski interval</b> i <b>Referentno vreme</b>.
+            </p>
+            <p> Ako ste želeli da kreirate vremenske odsečke koji se de&scaron;avaju svakog ponedeljka od 9:00 do 10:00, <b>Vremenski interval</b> bi iznosio <code>1 sat</code>, <b>Vremenski korak</b> bi bio <code>1 nedelja</code>, a <b>Referentno vreme</b> bi iznosilo <code>9:00:00 ponedeljkom</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Referentno vreme koje se koristi za poravnavanje sečenja vremena</h2></div>
+        <hr/>
+        <div>
+            <p>Datum i vreme koji se koriste za poravnavanje sečenja vremena.  <b>Vremenski korak</b> će se pokrenuti od i nastaviti unazad za referentno vreme.
+            </p>
+            <p> Ako ste želeli da kreirate vremenske odsečke koji se de&scaron;avaju svakog ponedeljka od 9:00 do 10:00, <b>Vremenski interval</b> bi iznosio <code>1 sat</code>, <b>Vremenski korak</b> bi bio <code>1 nedelja</code>, a <b>Referentno vreme</b> bi iznosilo <code>9:00:00 ponedeljkom</code>.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Dodaj statistiku iz sloja za sumiranje (opciono)</h2></div>
+        <hr/>
+        <div>
+            <p> Možete da izračunate statistiku na geoobjektima koji su sumirani. U numeričkim poljima možete da izračunate sledeće:
+                <ul>
+                    <li>Broj
+                    </li>
+                    <li>Sredina
+                    </li>
+                    <li>Minimum
+                    </li>
+                    <li>Maksimum
+                    </li>
+                    <li>Opseg
+                    </li>
+                    <li>Odstupanje
+                    </li>
+                    <li>Standardna devijacija
+                    </li>
+                </ul>
+                
+            </p>
+            <p>U poljima niske možete da izračunate sledeće:
+                <ul>
+                    <li>Broj
+                    </li>
+                    <li>Bilo koji&mdash;ova statistika je nasumični uzorak vrednosti niske u navedenom polju.
+                    </li>
+                </ul>
+                Sva statistika se izračunava na vrednostima koje nisu null (bez vrednosti). Rezultujući sloj će sadržati novo polje za svaku izračunatu statistiku. Svaki broj statistike može da se doda odabirom atributa i statistike. 
+            </p>
+            <p>Kao dodatak ovim statistikama, proporcionalna statistika će biti izračunata na svim numeričkim poljima:
+                <ul>
+                    <li>Brojač&mdash;brojač svakog polja pomnožen proporcijom sloja sumiranja unutar poligona. 
+                    </li>
+                    <li>Zbir&mdash;zbir ponderisanih vrednosti u svakom polju. Tamo gde je primenjeni ponder proporcija sloja sumiranja unutar poligona.
+                    </li>
+                    <li>Srednje&mdash;srednja ponderisana vrednost u svakom polju. Tamo gde je primenjeni ponder proporcija sloja sumiranja unutar poligona.
+                    </li>
+                    <li>Min.&mdash;minimalne ponderisane vrednosti u svakom polju. Tamo gde je primenjeni ponder proporcija sloja sumiranja unutar poligona.
+                    </li>
+                    <li>Maks.&mdash;maksimalne ponderisane vrednosti u svakom polju. Tamo gde je primenjeni ponder proporcija sloja sumiranja unutar poligona.
+                    </li>
+                    <li>Opseg&mdash;razlika između maksimalnih i minimalnih ponderisanih vrednosti.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>U zavisnosti od tipova geoobjekata koje sumirate, biće izračunat ukupan broj tačaka u blizini, ukupna dužina linija ili ukupna povr&scaron;ina.
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>Prostorna referenca (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>Ovo je privremen parametar za preliminarnu verziju da bi se podesila prostorna referenca obrade. Mnoge alatke za velike podatke zahtevaju kori&scaron;ćenje projektovanog koordinatnog sistema kao prostorne reference za obradu. Podrazumevano, alatka će koristiti ulazni koordinatni sistem, ali će otkazati ako je u pitanju geografski koordinatni sistem. Da biste podesili projektovani koordinate sistem, unesite WKID. Na primer,  <b>Web Mercator</b> bi bilo uneto kao <code>3857</code>.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Izaberi skladište podataka</h2></div>
+        <hr/>
+        <div>
+            <p>Ovo je privremeni parametar za preliminarnu verziju da bi se podesilo skladi&scaron;te podataka gde se čuvaju rezultati. Oba skladi&scaron;ta podataka su deo  ArcGIS Data Store. Ako izaberete skladi&scaron;te prostorno-vremenskih podataka, ali nemate ga instalirano, alatka će otkazati. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Naziv sloja sa rezultatima</h2></div>
+        <hr/>
+        <div>
+            <p> Ovo je naziv sloja koji će biti kreiran u <b>Mom sadržaju</b> i dodat na mapu. Podrazumevani naziv je zasnovan na nazivu alatke i nazivu ulaznog sloja. Ako sloj već postoji, alatka će otkazati.
+            </p>
+            <p>Koristeći  <b>Sačuvaj rezultat u</b> padajućem polju, možete da navedete ime fascikle u <b>Mom sadržaju</b> u kojoj će rezultat biti sačuvan.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

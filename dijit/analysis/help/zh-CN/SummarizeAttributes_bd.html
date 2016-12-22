@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>汇总属性</h2><p/>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="汇总属性"></h2>
+        <hr/>
+    <p>该工具可汇总一个或多个字段中的所有匹配值并计算相关的统计数据。最基本的统计数据是汇总到一起的要素的计数，但是也可以计算更高级的统计数据。
+
+    </p>
+    <p>例如，假设您拥有商店位置的点要素和表示  <i>DISTRICT_MANAGER_NAME</i> 的字段，并且希望按经理汇总咖啡销售额。可以将字段 <i>DISTRICT_MANAGER_NAME</i> 指定为要融合的字段，然后将汇总表示各个经理的所有数据行。这意味着由 Manager1 管理的所有商店位置以及计算的汇总统计数据将汇总到同一行。在此情况下，将计算 Manager1 管理的商店数量计数和所有商店的 <i>TOTAL_SALES</i> 总和等统计数据，这同样适用于在 <i>DISTRICT_MANAGER_NAME</i> 字段中列出的任何其他经理。
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>选择要汇总的输入</h2></div>
+        <hr/>
+        <div>
+            <p>包含将要汇总的字段的图层。
+            </p>
+            <p>除了从地图中选择图层外，还可以在下拉列表的底部选择 <b>浏览图层</b>，以浏览至大数据文件共享数据集或要素图层中的内容。  
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>选择要进行融合的字段</h2></div>
+        <hr/>
+        <div>
+            <p>  输入图层中的字段列表。汇总选定图层并将其用于计算统计数据。例如，如果选择具有商业和住宅值的名为 <i>PropertyType</i> 的字段，则会将所有住宅字段汇总到一起，计算汇总统计数据，并会将所有商业字段汇总到一起。
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>选择想要计算的字段和统计数据（可选）</h2></div>
+        <hr/>
+        <div>
+            <p> 可以计算汇总的要素的统计数据。可以根据数值字段计算以下内容：
+                <ul>
+                    <li>计数
+                    </li>
+                    <li>平均值
+                    </li>
+                    <li>最小值
+                    </li>
+                    <li>最大值
+                    </li>
+                    <li>范围
+                    </li>
+                    <li>方差
+                    </li>
+                    <li>标准差
+                    </li>
+                </ul>
+                
+            </p>
+            <p>可以根据字符串字段计算以下内容：
+                <ul>
+                    <li>计数
+                    </li>
+                    <li>任意 - 该统计数据是指定字段中字符串值的随机样本。
+                    </li>
+                </ul>
+                所有统计数据均根据非空值计算而得。生成的图层将包含一个针对每个计算而得的统计数据的新字段。通过选择一个属性和统计数据可添加任意数量的统计数据。 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>选择数据存储</h2></div>
+        <hr/>
+        <div>
+            <p>这是预发行版本中的临时参数，用于设置将存储结果的数据存储。这两个数据存储都是  ArcGIS Data Store 的一部分。如果选择时空数据存储但是尚未安装该存储，将无法使用该工具。 </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>结果图层名称</h2></div>
+        <hr/>
+        <div>
+            <p> 在 <b>我的内容</b>中创建并添加到地图中的图层的名称。默认名称基于工具名称以及输入图层名称。如果该图层已存在，将无法使用该工具。
+            </p>
+            <p>使用 <b>将结果保存到</b>下拉框，可以在 <b>我的内容</b>中指定文件夹的名称，结果将保存到该文件夹中。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

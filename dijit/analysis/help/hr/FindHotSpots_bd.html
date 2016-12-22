@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Pronađi žarišne točke</h2><p/>
+        <h2><img src="../images/GUID-6D600155-AA9B-4F02-AD8B-2E84150AB743-web.png" alt="Pronađi žari&scaron;ne točke"></h2>
+        <hr/>
+    <p>Alat Pronađi žari&scaron;ne točke odredit će ima li statistički značajnih klastera u prostornom uzorku va&scaron;ih podataka. 
+        <ul>
+            <li>Jesu li va&scaron;e točke (stope zločina, stabla ili prometne nesreće) zbilja grupirane? Kako možete biti sigurni?
+            </li>
+            <li>Jeste li uistinu otkrili statistički značajnu žari&scaron;nu točku? Ili bi va&scaron;a karta ispričala drugačiju priču da promijenite način simbolizacije?
+            </li>
+        </ul>
+        Alat Pronađi žari&scaron;ne točke pomoći će vam odgovoriti na ova pitanja sa sigurno&scaron;ću.
+    </p>
+    <p>Čak i nasumični prostorni uzorci pokazuju neku razinu klastera.  Osim toga, na&scaron;e oči i mozak automatski poku&scaron;avaju naći uzorke čak i kada ih nema.  Zbog toga može biti te&scaron;ko odrediti jesu li uzorci u va&scaron;im podacima posljedica stvarnih prostornih procesa ili posljedica nasumičnog odabira.  Zbog toga znanstvenici i analitičari upotrebljavaju statističke metode kao &scaron;to su traženje žari&scaron;nih točaka (Getis-Ord Gi*) za kvantificiranje prostornih uzoraka.  Kada uistinu pronađete statistički značajne klastere u svojim podacima, imate vrijedne informacije.  Znanje o tome gdje i kada dolazi do klastera može pružiti važne informacije o procesima koji uzrokuju obrasce koje vidite.  Ako je poznato da se provale u stanove, na primjer, stalno če&scaron;će odvijaju u određenim četvrtima, to je važna informacija ako želite izraditi strategije prevencije, dodijeliti oskudne policijske resurse, pokrenuti program susjedske straže, pokrenuti dubinske kriminalističke istrage ili identificirati potencijalne osumnjičene.   
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="analysisLayer">
+        <div><h2>Odaberite sloj za koji će se računati žarišne točke</h2></div>
+        <hr/>
+        <div>
+            <p>Točkasti sloj u kojem će se tražiti žari&scaron;ne i rijetke točke. 
+            </p>
+            <p>Osim odabira sloja s va&scaron;e karte, možete odabrati  <b>Pretraži slojeve</b> na dnu padajućeg popisa za pretraživanje va&scaron;ih sadržaja za skup podataka za dijeljenje datoteka velikih podataka ili sloj geoobjekta.  
+            </p>
+        </div>
+    </div>
+    <div id="analysisField">
+        <div><h2>Pronađi klastere za visoko i nisko</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Ovom će se analizom odgovoriti na pitanje: gdje se prostorno nalaze klasteri visokih i niskih vrijednosti?
+            </p>
+            <p>Ako su va&scaron;i podaci točke i vi odaberete  <b>Brojevi točaka</b>, taj će alat procijeniti prostorni raspored točkastih geoobjekata kako bi se odgovorilo na pitanje: gdje su točke neočekivano grupirane, a gdje su raspr&scaron;ene?
+            </p>
+            <p>Ako odaberete polje, ovaj će alat procijeniti prostorni raspored vrijednosti povezanih s pojedinim geoobjektima kako bi se odgovorilo na pitanje: gdje su klasteri visokih i niskih vrijednosti?
+            </p>
+        </div>
+    </div>
+    <div id="inputBins">
+        <div><h2>Odaberite veličinu ćelije za izračun žarišnih točaka</h2></div>
+        <hr/>
+        <div>
+            <p>Udaljenost upotrijebljena za generiranje četverokutnih ćelija koje će se koristiti za analizu va&scaron;ih ulaznih točaka.
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Agregacija upotrebom vremenskih isječaka (neobavezno)</h2></div>
+        <hr/>
+        <div>
+            <p>Ako je točkasti sloj ovremenjen i ako je instantne vrste, možete analizirati s pomoću vremenskih intervala.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>Vremenski interval za agregaciju</h2></div>
+        <hr/>
+        <div>
+            <p>Vremenski interval kori&scaron;ten za analizu. Ako želite stvoriti vremenske isječke koji se događaju svakog tjedna, postavit ćete vremenski interval na jedan tjedan. 
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>Vremenski korak za agregaciju</h2></div>
+        <hr/>
+        <div>
+            <p>Kako će se vrijeme poravnati. Vrijeme se može poravnati na početno ili zavr&scaron;no vrijeme ulaznih podataka ili na naznačeno referentno vrijeme.  
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Referentno vrijeme za poravnanje vremenskih isječaka</h2></div>
+        <hr/>
+        <div>
+            <p>Datum i vrijeme kori&scaron;teni za poravnanje vremenskih intervala.
+            </p>
+        </div>
+    </div>
+    <div id="neighborhood">
+        <div><h2>Odaberite veličinu susjedstva</h2></div>
+        <hr/>
+        <div>
+            <p>Udaljenost kori&scaron;tena za određivanje četvrti kori&scaron;tene za izračun žari&scaron;nih točaka. Četvrt treba biti veća od veličine ćelije kako bi se osiguralo da svaka ćelija ima barem jednu četvrt. Svaka se ćelija analizira i uspoređuje sa susjednima.
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>Prostorna referenca (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>Ovo je privremeni parametar za predizdanje za postavljanje obrade prostorne reference. Mnogi alati velikih podataka zahtijevaju da se projicirani koordinatni sustav upotrebljava kao prostorna referenca za obradu. Prema zadanim postavkama, alat će koristiti ulazni koordinatni sustav, ali neće biti uspje&scaron;an ako je riječ o geografskom koordinatnom sustavu. Za postavljanje projiciranog koordinatnog sustava unesite WKID. Na primjer,  <b>Web Mercator</b> treba unijeti kao <code>3857</code>.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Izaberi spremište podataka</h2></div>
+        <hr/>
+        <div>
+            <p>To je privremeni parametar za predizdanje za postavljanje spremnika podataka gdje su spremljeni rezultati. Oba spremnika podataka dio su proizvoda  ArcGIS Data Store. Ako odaberete spremnik prostorno-vremenskih podataka, ali nemate instaliran spremnik, alat neće biti uspje&scaron;an. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Naziv sloja rezultata</h2></div>
+        <hr/>
+        <div>
+            <p> Ovo je naziv sloja koji će se stvoriti u dijelu <b>Moj sadržaj</b> i dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, alat neće biti uspje&scaron;an.
+            </p>
+            <p>Ovaj sloj rezultata prikazat će statistički značajne klastere visokih i niskih vrijednosti ili brojeve točaka. Ako već postoji naziv sloja rezultata, zatražit će se da ga preimenujete.
+            </p>
+            <p>Upotrebom padajućeg izbornika  <b>Spremi rezultat u</b> možete odrediti naziv mape u dijelu <b>Moj sadržaj</b> gdje će se spremiti rezultat.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>入口網站分析環境設定</h2><p/>
+        <h2></h2>
+        <hr/>
+    <p>  Portal for ArcGIS 和  ArcGIS Online 中分析的環境設定。 </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="overwriteResult">
+        <div><h2>覆寫結果圖層</h2></div>
+        <hr/>
+        <div>
+            
+            <p>用來覆寫現有圖層的選項。勾選後，若內容中存在同名的圖層，則會覆寫該圖層。
+            </p>
+            <p>
+                <ul>
+                    <li>勾選 - 若內容中存在同名的圖層，則會覆寫該圖層。輸出將具有輸入的相同座標系統。
+                    </li>
+                    <li>取消勾選 - 如果提供的結果圖層名稱已存在，則會發生錯誤，且必須先重命名結果圖層才能執行工具。這是預設情況。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="closeAnalysisWidget">
+        <div><h2>執行分析後關閉分析 widget</h2></div>
+        <hr/>
+        <div>
+            
+            <p>在處理工具時，用來維持開啟和啟用分析對話方塊的選項。此設定能讓您輕易修改分析參數，同時讓先前的分析工作繼續執行。分析是一個反覆的程序，且藉由維持工具對話方塊開啟，能讓您輕鬆變更參數並重新執行分析。
+            </p>
+            <p>
+                <ul>
+                    <li>勾選 - 分析工具視窗將關閉，且焦點將回到目錄。這是預設值
+                    </li>
+                    <li>取消勾選 - 分析工具視窗將維持開啟和啟用。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="storeAnalysisResults">
+        <div><h2>將分析結果儲存為圖徵服務</h2></div>
+        <hr/>
+        <div>
+            
+            <p>用來指定將分析結果建立為圖徵圖層或圖徵集合的選項。
+            </p>
+            <p>
+                <ul>
+                    <li>勾選 - 分析結果將建立圖徵圖層，並在內容中建立項目。這是預設情況。
+                    </li>
+                    <li>取消勾選 - 分析結果將建立圖徵集合。圖徵集合隨即會儲存在 Web 地圖中。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputCoordinateSystem">
+        <div><h2>輸出座標系統</h2></div>
+        <hr/>
+        <div>
+            <p>點陣分析的環境設定，可用來定義結果圖層的座標系統。
+            </p>
+            <p>
+                <ul>
+                    <li> <b>與輸入相同</b> - 分析結果將位於輸入所在的相同座標系統中。這是預設情況。
+                    </li>
+                    <li> <b>依照指定</b> - 選擇分析結果的座標系統。選擇此選項後，從已知座標系統清單中按一下要選擇的地球圖示，或在提供的方塊中新增空間參考 WKID。
+                    </li>
+                    <li> <b>圖層
+&lt;name&gt;</b> - 在 Web 地圖中選擇現有的圖層，以便用來決定分析結果的座標系統。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingCoordinateSystem">
+        <div><h2>正在處理座標系統</h2></div>
+        <hr/>
+        <div>
+            <p>GeoAnalytics 的環境設定，用來決定分析在執行期間將使用的座標系統。
+            </p>
+            <p>對於 GeoAnalytics，部分分析需要在投影的座標系統中進行處理。已實作資料或線性單位分級的任何工具都需要投影的座標系統。
+            </p>
+            <p>
+                <ul>
+                    <li> <b>與輸入相同</b> - 將在輸入所在的相同座標系統中處理分析。這是預設情況。
+                    </li>
+                    <li> <b>依照指定</b> - 選擇要處理分析的座標系統。選擇此選項後，從已知的投影座標系統清單中按一下要選擇的地球圖示，或在提供的方塊中新增空間參考 WKID。
+                    </li>
+                    <li> <b>圖層
+&lt;name&gt;</b> - 從 Web 地圖選擇現有的圖層。所選圖層的座標系統將用來決定座標系統，後者將用來處理分析。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingExtent">
+        <div><h2>範圍</h2></div>
+        <hr/>
+        <div>
+            <p>環境設定，用來決定分析在執行期間將使用的範圍或邊界。將在分析中使用完全位於指定範圍內的所有輸入圖徵，或與指定範圍相交的所有輸入圖徵。
+            </p>
+            <p>
+                <ul>
+                    <li> <b>預設值</b> - 使用工具提供的範圍。
+                    </li>
+                    <li> <b>依照指定</b> - 手動輸入座標以定義範圍。
+                    </li>
+                    <li> <b>圖層
+&lt;name&gt;</b> - 從 Web 地圖選擇現有的圖層。所選圖層的空間範圍將用來決定範圍，後者將用來處理分析。 
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="snapRaster">
+        <div><h2>捕捉光柵</h2></div>
+        <hr/>
+        <div>
+            <p>執行點陣分析時，設定將調整輸出點陣圖層範圍的 <b>對齊點陣</b>環境，使其符合指定的 <b>對齊點陣</b>圖層的儲存格對齊。
+            </p>
+        </div>
+    </div>
+    <div id="cellSize">
+        <div><h2>儲存格大小</h2></div>
+        <hr/>
+        <div>
+            <p>執行點陣分析時，此環境會設定將用來建立輸出點陣圖層的儲存格大小或解析度。預設的輸出解析度由輸入點陣圖層的最大儲存格大小所決定。
+            </p>
+            <p>
+                <ul>
+                    <li> <b>輸入的最小值</b> - 使用所有輸入圖層的最小儲存格大小。
+                    </li>
+                    <li> <b>輸入的最大值</b> - 使用所有輸入圖層的最大儲存格大小。這是預設情況。
+                    </li>
+                    <li> <b>依照指定</b> - 指定用來設定儲存格大小的數值。如果選擇此設定，則預設值為 1。
+                    </li>
+                    <li> <b>圖層 &lt;name&gt;</b> - 將儲存格大小設定為選擇的點陣圖層。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="mask">
+        <div><h2>面罩</h2></div>
+        <hr/>
+        <div>
+            <p> 執行點陣分析時，使用 <b>遮罩</b>環境來指定將用來定義感興趣區域的圖層。分析操作只會考量分析遮罩中的儲存格。
+            </p>
+            <ul>
+                <li>遮罩可為點陣或圖徵圖層。
+                </li>
+                <li>如果分析遮罩是點陣，則會考量具有值的所有儲存格以定義遮罩。會將遮罩點陣中的 NoData 儲存格視為位於遮罩外部，並且在分析結果圖層中將是 NoData。
+                </li>
+                <li>如果分析遮罩是圖徵圖層，會在內部將其轉換成點陣加以執行。因此，請務必針對分析適當地設定 <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">儲存格大小</a>和 <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">對齊點陣</a>。
+                </li>
+            </ul>
+             
+        </div>
+    </div>
+</div>
+</html>

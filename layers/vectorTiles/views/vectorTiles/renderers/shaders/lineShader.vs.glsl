@@ -35,7 +35,7 @@ void main()
 
   // calculate the relative distance from the centerline to the edge of the line. Since offset is given in integers (for the
   // sake of using less attribute memory, we need to scale it back to the original range of ~ 0: 1)
-  lowp vec2 dist = u_lineHalfWidth * a_offset * scale;
+  mediump vec2 dist = u_lineHalfWidth * a_offset * scale;
 
   // transform the vertex
   gl_Position = vec4(u_normalized_origin, u_depth, 0.0) + u_transformMatrix * vec4(floor(a_pos * 0.5), 0.0, 1.0) + u_extrudeMatrix * vec4(dist, 0.0, 0.0);

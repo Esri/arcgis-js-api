@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Yoğunluğu Hesapla</h2><p/>
+        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Calculate Density"></h2>
+        <hr/>
+    <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas classified from least dense to most dense.   
+
+    </p>
+    <p>For point input, each point should represent the location of some event or incident, and the result layer represents a count of the incident per unit area.  A higher density value in a new location means that there are more points near that location.  In many cases, the result layer can be interpreted as a risk surface for future events. For example, if the input points represent locations of lightning strikes, the result layer can be interpreted as a risk surface for future lightning strikes.
+    </p>
+    <p>Other use cases of this tool include the following:
+        <ul>
+            <li>Creating crime-density maps to help police departments properly allocate resources to high crime areas.
+            </li>
+            <li>Calculating densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to decide where new hospitals should be built.
+            </li>
+            <li>Identifying areas that are at high risk of forest fires based on historical locations of forest fires.
+            </li>
+            <li>Locating communities that are far from major highways in order to plan where new roads should be constructed.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Yoğunluğun hesaplanacağı bir nokta katmanı seçin</h2></div>
+        <hr/>
+        <div>
+            <p>The point layer on which the density will be calculated.
+            </p>
+            <p>Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, a&ccedil;ılan listenin en altından  <b>Katmanlara G&ouml;zat</b> &ouml;ğesini belirleyerek big data dosya paylaşımı veri k&uuml;mesi veya detay katmanı i&ccedil;eriğinize g&ouml;z atabilirsiniz.  
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>Yoğunluğunun hesaplanacağı bir veya birkaç alan seçin</h2></div>
+        <hr/>
+        <div>
+            <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
+            </p>
+            <p>The density for the count of points will always be calculated.   If no fields are selected, each location will be assumed to represent a single count.
+            </p>
+        </div>
+    </div>
+    <div id="binType">
+        <div><h2>Bir kutu şekli seçin</h2></div>
+        <hr/>
+        <div>
+            <p>The shape of bins that points are aggregated into and used for the density calculation.
+            </p>
+        </div>
+    </div>
+    <div id="binSizing">
+        <div><h2>Yoğunluk hesaplamaları için kutu boyutu seçin</h2></div>
+        <hr/>
+        <div>
+            <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
+            </p>
+        </div>
+    </div>
+    <div id="weight">
+        <div><h2>Uygulanacak yoğunluk ağırlıklandırmasını seçin</h2></div>
+        <hr/>
+        <div>
+            <p>The type of weighting applied to the density calculation. There are two options:
+                <ul>
+                    <li> <b>Uniform</b>&mdash;This calculates a magnitude per area.
+                    </li>
+                    <li> <b>Kernel</b>&mdash;Applies a kernel function to fit a smooth tapered surface to each point.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="neighborhood">
+        <div><h2>Komşu boyutunu seçin</h2></div>
+        <hr/>
+        <div>
+            <p>The size of the area used to calculate the density. The neighborhood size must be larger than the bin size.
+            </p>
+        </div>
+    </div>
+    <div id="areaUnits">
+        <div><h2>Yoğunluk için çıktı birimini seçin</h2></div>
+        <hr/>
+        <div>
+            <p>The desired output units of the density values. By default, this is set to the units in your map (for example, square meters). If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Zaman dilimlerini kullanarak yoğunluğu hesapla (isteğe bağlı)</h2></div>
+        <hr/>
+        <div>
+            <p>Girdi nokta katmanında zaman etkinleştirilmiş ve t&uuml;r&uuml; de anlık ise, zaman dilimlemeyi kullanarak analiz yapabilirsiniz.  Zaman &ouml;ğesini kullanırken ayarlayabileceğiniz &uuml;&ccedil; parametre vardır:
+                <ul>
+                    <li>  <b>Zaman Aralığı</b>
+                    </li>
+                    <li> <b>Zaman Adımı</b>
+                    </li>
+                    <li> <b>Referans Zaman</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Bir yıllık bir zamanı temsil eden verilerinizin olduğunu ve haftalık dilimleri kullanarak analiz yapmak istediğinizi d&uuml;ş&uuml;n&uuml;n. Bunu yapmak i&ccedil;in  <b>Zaman Aralığı</b> değerini <code>1 hafta</code> olarak ayarlarsınız.
+            </p>
+            <p> Bir yıllık bir zamanı temsil eden verilerinizin olduğunu ve ayın ilk haftasını kullanarak analiz yapmak istediğinizi d&uuml;ş&uuml;n&uuml;n. Bunu yapmak i&ccedil;in <b>Zaman Aralığı</b> değerini <code>1 hafta</code>, <b>Zaman Adımı</b> değerini <code>1 ay</code> ve <b>Referans Saati</b> değerini de <code>1 Ocak, 00:00</code> olarak ayarlarsınız.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>Yoğunluğun hesaplanacağı zaman aralığı</h2></div>
+        <hr/>
+        <div>
+            <p>Verileri dilimlemek i&ccedil;in kullanılan zaman aralığı. Zaman aralığı tek başına kullanılabileceği gibi,  <b>Zaman Adımı</b> veya <b>Referans Saat</b> parametresiyle de kullanılabilir.
+            </p>
+            <p> Her Pazartesi saat 9:00 ile 22:00 arasında oluşan zaman dilimleri oluşturmak istediğinizde, <b>Zaman Aralığı</b> değeri <code>1 saat</code>, <b>Zaman Adımı</b> değeri <code>1 hafta</code> ve <b>Referans Saat</b> değeri de <code>Pazartesi g&uuml;n&uuml; 9:00:00</code> olur.
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>Yoğunluğun hesaplanacağı zaman adımı</h2></div>
+        <hr/>
+        <div>
+            <p> Bir zaman dilimi hesaplamak i&ccedil;in kullanılan adım. <b>Zaman Adımı</b> tek başına kullanılabileceği gibi <b>Zaman Aralığı</b> ile, <b>Referans Saat</b> ile veya hem <b>Zaman Aralığı</b> hem de <b>Referans Saat</b> ile birlikte kullanılabilir.
+            </p>
+            <p> Her Pazartesi saat 9:00 ile 22:00 arasında oluşan zaman dilimleri oluşturmak istediğinizde, <b>Zaman Aralığı</b> değeri <code>1 saat</code>, <b>Zaman Adımı</b> değeri <code>1 hafta</code> ve <b>Referans Saat</b> değeri de <code>Pazartesi g&uuml;n&uuml; 9:00:00</code> olur.
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Zaman dilimlemeyi eşleştirmek için kullanılacak referans süre</h2></div>
+        <hr/>
+        <div>
+            <p>Zaman dilimlemeyi eşleştirmek i&ccedil;in kullanılan tarih ve saat.  <b>Zaman Adımı</b> başlatılır ve referans saatten geriye doğru devam eder.
+            </p>
+            <p> Her Pazartesi saat 9:00 ile 22:00 arasında oluşan zaman dilimleri oluşturmak istediğinizde, <b>Zaman Aralığı</b> değeri <code>1 saat</code>, <b>Zaman Adımı</b> değeri <code>1 hafta</code> ve <b>Referans Saat</b> değeri de <code>Pazartesi g&uuml;n&uuml; 9:00:00</code> olur.
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>KonumsalReferans (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>Bu, mekansal başvuruyu ayarlamak amacıyla &ouml;n s&uuml;r&uuml;m i&ccedil;in ge&ccedil;ici bir parametredir. Big data ara&ccedil;larının pek &ccedil;oğu, işlem i&ccedil;in mekansal başvuru olarak izd&uuml;ş&uuml;mlendirilmiş bir koordinat sisteminin kullanılmasını gerektirir. Varsayılan olarak, ara&ccedil; girdi koordinat sistemini kullanır, ancak bu bir coğrafi koordinat sistemi olduğunda &ccedil;alışmaz. İzd&uuml;ş&uuml;mlendirilmiş bir koordinat sistemi ayarlamak i&ccedil;in WKID girin. &Ouml;rneğin,  <b>Web Mercator</b> değeri, <code>3857</code> olarak girilebilir.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Veri deposu seç</h2></div>
+        <hr/>
+        <div>
+            <p>Bu, sonu&ccedil;ların kaydedileceği veri deposunu ayarlamak amacıyla &ouml;n s&uuml;r&uuml;m i&ccedil;in ge&ccedil;ici bir parametredir. Her iki veri deposu da  ArcGIS Data Store uygulamasının bir par&ccedil;asıdır. Y&uuml;kl&uuml; değilken spatiotemporal data store &ouml;ğesini se&ccedil;erseniz ara&ccedil; &ccedil;alışmaz. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Sonuç katmanı adı</h2></div>
+        <hr/>
+        <div>
+            <p> Bu, <b>İ&ccedil;eriğim</b>de oluşturulacak ve haritaya eklenecek katmanın adıdır.  Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Detay katmanı zaten varsa ara&ccedil; &ccedil;alışmaz.
+            </p>
+            <p> <b>Sonu&ccedil;ları kaydet</b> a&ccedil;ılır kutusunu kullanarak <b>İ&ccedil;eriğim</b> alanında sonucun kaydedileceği klas&ouml;r adını belirleyebilirsiniz.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

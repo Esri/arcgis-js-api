@@ -51,7 +51,7 @@
     </p>
     <p>Other use cases of this tool include the following:
         <ul>
-            <li>Creating crime density maps to help police departments properly allocate resources to high crime areas.
+            <li>Creating crime-density maps to help police departments properly allocate resources to high crime areas.
             </li>
             <li>Calculating densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to decide where new hospitals should be built.
             </li>
@@ -65,20 +65,20 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Choose input points to calculate density on</h2></div>
+        <div><h2>Choose a point layer from which to calculate density</h2></div>
         <hr/>
         <div>
-            <p>The point layer that the density will be calculated on.
+            <p>The point layer on which the density will be calculated.
             </p>
-            <p>In addition to choosing a layer from your map, you can select  <b>Browse Layers</b> found at the bottom of the drop-down list to browse your contents for a big data file share dataset or feature layer.  
+            <p>In addition to choosing a layer from your map, you can choose  <b>Browse Layers</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer.  
             </p>
         </div>
     </div>
     <div id="fields">
-        <div><h2>Choose a field(s) to calculate density on</h2></div>
+        <div><h2>Choose one or more fields to calculate density on</h2></div>
         <hr/>
         <div>
-            <p>Provide a field(s) specifying the number of incidents at each location.  For example, if you have points that represent cities, you 
+            <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you 
 can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
             </p>
             <p>The density for the count of points will always be calculated.   If no fields are selected, each location will be assumed to represent a single count.
@@ -86,11 +86,10 @@ can use a field representing the population of the city as the count field, and 
         </div>
     </div>
     <div id="binType">
-        <div><h2>Choose a bin type</h2></div>
+        <div><h2>Choose a bin shape</h2></div>
         <hr/>
         <div>
-            <p>The type of bins that points are aggregated into and used for the density calculation.
-
+            <p>The shape of bins that points are aggregated into and used for the density calculation.
             </p>
         </div>
     </div>
@@ -98,7 +97,7 @@ can use a field representing the population of the city as the count field, and 
         <div><h2>Select the bin size for density calculations</h2></div>
         <hr/>
         <div>
-            <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (with parallel side). 
+            <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
             </p>
         </div>
     </div>
@@ -108,9 +107,9 @@ can use a field representing the population of the city as the count field, and 
         <div>
             <p>The type of weighting applied to the density calculation. There are two options:
                 <ul>
-                    <li> <b>Uniform</b>&mdash;this calculates a magnitude-per-area.
+                    <li> <b>Uniform</b>&mdash;This calculates a magnitude per area.
                     </li>
-                    <li> <b>Kernel</b>&mdash;applies a kernel function to fit a smooth tapered surface to each point.
+                    <li> <b>Kernel</b>&mdash;Applies a kernel function to fit a smooth tapered surface to each point.
                     </li>
                 </ul>
                 
@@ -121,7 +120,7 @@ can use a field representing the population of the city as the count field, and 
         <div><h2>Select the neighborhood size</h2></div>
         <hr/>
         <div>
-            <p>The size of the area that is used to calculate the density. The neighborhood size must be larger than the bin size.
+            <p>The size of the area used to calculate the density. The neighborhood size must be larger than the bin size.
             </p>
         </div>
     </div>
@@ -129,7 +128,7 @@ can use a field representing the population of the city as the count field, and 
         <div><h2>Choose the output units for density</h2></div>
         <hr/>
         <div>
-            <p>The desired output units of the density values. By default this is set to the units in your map (for example, square meters). If density values are very small, you can increase the size of the area units (i.e., square meters to square kilometers) to return larger values. This values only scales the result.  
+            <p>The desired output units of the density values. By default, this is set to the units in your map (for example, square meters). If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
 
             </p>
         </div>
@@ -138,20 +137,20 @@ can use a field representing the population of the city as the count field, and 
         <div><h2>Calculate density using time slices (optional)</h2></div>
         <hr/>
         <div>
-            <p>If time is enabled on the input point layer and it is of type instant, then you can  analyze using time slicing.  There are three parameters you can set when you use time:
+            <p>If time is enabled on the input point layer and it is of type instant, you can  analyze using time slicing.  There are three parameters you can set when you use time:
                 <ul>
-                    <li>Time Interval
+                    <li>  <b>Time Interval</b>
                     </li>
-                    <li>Time Step
+                    <li> <b>Time Step</b>
                     </li>
-                    <li>Reference Time
+                    <li> <b>Reference Time</b>
                     </li>
                 </ul>
                 
             </p>
-            <p>Imagine you had data that represented a year in time, and you wanted to analyze using weekly slices. To do that you would set you  <b>Time Interval</b> to <b>1 week</b>.
+            <p>Imagine you had data that represented a year in time and you wanted to analyze using weekly slices. To do that you would set  <b>Time Interval</b> to <code>1 week</code>.
             </p>
-            <p>Imagine you had data that represented a year in time, and you wanted to analyze using the first week of month. To do that you would set you  <b>Time Interval</b> to <b>1 week</b>, your <b>Time Step</b> to <b>1 month</b>, and your <b>Reference Time</b> to <b>January 1, at 12:00 am</b>.
+            <p> Imagine you had data that represented a year in time and you wanted to analyze using the first week of the month. To do that you would set <b>Time Interval</b> to <code>1 week</code>, <b>Time Step</b> to <code>1 month</code>, and <b>Reference Time</b> to <code>January 1, at 12:00 am</code>.
             </p>
         </div>
     </div>
@@ -159,9 +158,9 @@ can use a field representing the population of the city as the count field, and 
         <div><h2>Time interval to calculate density on</h2></div>
         <hr/>
         <div>
-            <p>Interval of time used for slicing the data. Time interval may be used alone, or used with the  <b>Time Step</b> or <b>Reference Time</b>.
+            <p>Interval of time used for slicing the data. Time interval may be used alone or used with the  <b>Time Step</b> or <b>Reference Time</b> parameter.
             </p>
-            <p>If you wanted to create time slices that took place every Monday from 9:00 am until 10:00 am. The  <b>Time Interval</b> would be one week. The <b>Time Step</b> would be one week, and the <b>Reference Time</b> would be 9:00:00 AM on a Monday.
+            <p> If you wanted to create time slices that took place every Monday from 9:00 a.m. until 10:00 a.m., <b>Time Interval</b> would be <code>1 hour</code>, <b>Time Step</b> would be <code>1 week</code>, and <b>Reference Time</b> would be <code>9:00:00 a.m. on a Monday</code>.
             </p>
         </div>
     </div>
@@ -169,9 +168,9 @@ can use a field representing the population of the city as the count field, and 
         <div><h2>Time step to calculate density on</h2></div>
         <hr/>
         <div>
-            <p>The step used for calculating a time slice. Time step may be used alone, with a  <b>Time Interval</b>, with a <b>Reference Time</b>, or with both a <b>Time Interval</b> and <b>Reference Time</b>.
+            <p> The step used for calculating a time slice. <b>Time Step</b> may be used alone or with <b>Time Interval</b>, with <b>Reference Time</b>, or with both <b>Time Interval</b> and <b>Reference Time</b>.
             </p>
-            <p>If you wanted to create time slices that took place every Monday from 9:00 am until 10:00 am. The  <b>Time Interval</b> would be one week. The <b>Time Step</b> would be one week, and the <b>Reference Time</b> would be 9:00:00 AM on a Monday.
+            <p> If you wanted to create time slices that took place every Monday from 9:00 a.m. until 10:00 a.m., <b>Time Interval</b> would be <code>1 hour</code>, <b>Time Step</b> would be <code>1 week</code>, and <b>Reference Time</b> would be <code>9:00:00 a.m. on a Monday</code>.
             </p>
         </div>
     </div>
@@ -180,9 +179,9 @@ can use a field representing the population of the city as the count field, and 
 used to align the time slicing</h2></div>
         <hr/>
         <div>
-            <p>The date and time used to align time slicing.  <b>Time Steps</b> will start from, and continue backwards for the reference time.
+            <p>The date and time used to align time slicing.  <b>Time Step</b> will start from and continue backward for the referenced time.
             </p>
-            <p>If you wanted to create time slices that took place every Monday from 9:00 am until 10:00 am. The  <b>Time Interval</b> would be one week. The <b>Time Step</b> would be one week, and the <b>Reference Time</b> would be 9:00:00 AM on a Monday.
+            <p> If you wanted to create time slices that took place every Monday from 9:00 a.m. until 10:00 a.m., <b>Time Interval</b> would be <code>1 hour</code>, <b>Time Step</b> would be <code>1 week</code>, and <b>Reference Time</b> would be <code>9:00:00 a.m. on a Monday</code>.
             </p>
         </div>
     </div>
@@ -190,25 +189,24 @@ used to align the time slicing</h2></div>
         <div><h2>SpatialReference (wkid)</h2></div>
         <hr/>
         <div>
-            <p>This is a temporary parameter for Pre-Release  to set the processing spatial reference. Many big data tools require that a projected coordinate system is used as the spatial reference for processing. By default, the tool will use the input coordinate system, but will fail if it's a geographic coordinate system. To set a projected coordinate system, enter the WKID. For example, Web Mercator would be entered as  <b>3857</b>.
+            <p>This is a temporary parameter for prerelease  to set the processing spatial reference. Many big data tools require that a projected coordinate system is used as the spatial reference for processing. By default, the tool will use the input coordinate system but will fail if it's a geographic coordinate system. To set a projected coordinate system, enter the WKID. For example,  <b>Web Mercator</b> would be entered as <code>3857</code>.
             </p>
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Choose datastore</h2></div>
+        <div><h2>Choose data store</h2></div>
         <hr/>
         <div>
-            <p>This is a temporary parameter for the Pre-Release to set the data store that results are saved to. Both data stores are part of ArcGIS Data Store. If you select the spatiotemporal data store, and do not have one installed the tool will fail.
-            </p>
+            <p>This is a temporary parameter for prerelease to set the data store where the results are saved. Both data stores are part of  ArcGIS Data Store. If you select the spatiotemporal data store but do not have one installed, the tool will fail. </p>
         </div>
     </div>
     <div id="outputName">
         <div><h2>Result layer name</h2></div>
         <hr/>
         <div>
-            <p>This is the name of the layer that will be created in  <b>My
+            <p> This is the name of the layer that will be created in <b>My
 Content</b> and added to the map. The default name is based on the
-tool name and the input layer name. If the layer already exists the tool run will fail.
+tool name and the input layer name. If the layer already exists, the tool will fail.
             </p>
             <p>Using the  <b>Save result in</b> drop-down box, you can specify
 the name of a folder in <b>My Content</b> where the result will be

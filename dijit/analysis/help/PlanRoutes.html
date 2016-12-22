@@ -246,10 +246,11 @@ This includes expected travel time and service times spent at stops along the ro
         <div><h2>Result layer name</h2></div>
         <hr/>
         <div>
-            <p>This is the name of the group layer that will be created in  <b>My Content</b>
-and added to the map. The group layer will contain a layer for each of the following: routes, stops, and directions.
+            <p>The name of the feature layer that will be created in  <b>My Content</b> and added to the map. If the feature layer already exists, you will be asked to provide another name. The feature layer will contain a layer for each of the following: routes, assigned stops, and unassigned stops when some input stops could not be assigned to any routes.
             </p>
-            <p>Using the  <b>Save result in</b> drop-down list, you can specify the name of a folder in <b>My Content</b> where the result will be saved.
+            <p>If you select  <b>Include route layers</b>, each route from the result is also saved as a route layer. A route layer includes all the information for a particular route such as the stops assigned to the route as well as the travel directions. Creating  route layers is useful if you want to share the individual routes with other members in your organization or if you wish to further modify the routes using the <b>Directions</b> button in the map viewer. The route layers use the name provided for the feature layer  as a prefix and the route name generated as part of the analysis, is added to create a unique name for each route layer.
+            </p>
+            <p>Using the  <b>Save result in</b> drop-down list, you can specify the name of a folder in <b>My Content</b> where the feature layer and the route layers, if created, will be saved.
             </p>
         </div>
     </div>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="bdToolbox">
+        <p>An&aacute;lises de Big Data distribui o trabalho de an&aacute;lises atrav&eacute;s do seu ArcGIS GeoAnalytics Server. Isto permite a voc&ecirc; analisar mais dados de forma r&aacute;pida utilizando a capacidade de m&uacute;ltiplas m&aacute;quinas. As seguintes ferramentas est&atilde;o atualmente dispon&iacute;veis:
+            <ul>
+                <li> <b>Agregar Pontos</b>
+                </li>
+                <li> <b>Ligar Fei&ccedil;&otilde;es</b>
+                </li>
+                <li> <b>Reconstruir Caminhos</b>
+                </li>
+                <li> <b>Resumir Atributos</b>
+                </li>
+                <li> <b>Resumir Dentro</b>
+                </li>
+                <li> <b>Encontrar Locais Semelhantes</b>
+                </li>
+                <li> <b>Calcular Densidade</b>
+                </li>
+                <li> <b>Localizar Valor Alto de Incid&ecirc;ncia</b>
+                </li>
+                <li> <b>Criar Buffers</b>
+                </li>
+                <li> <b>Copiar para Armazenamento de Dados</b>
+                </li>
+            </ul>
+            
+        </p>
+        <p>As An&aacute;lises do Big Data focam em analisar dados grandes com uma &ecirc;nfase em ambos padr&otilde;es espaciais e temporais. 
+        </p>
+    </div>
+    <div id="SummarizeDataCategory" class="largesize">
+        <h2>Resumir Dados</h2>
+        <hr/>
+        <p>O conjunto de ferramentas Resumir Dados cont&eacute;m ferramentas que calculam contagens totais, comprimentos, &aacute;reas e estat&iacute;stica descritiva b&aacute;sica de fei&ccedil;&otilde;es e seus atributos dentro de &aacute;reas ou pr&oacute;ximas de outras fei&ccedil;&otilde;es.
+            <ul>
+                <li> <b>Agregar Pontos</b> calcula estat&iacute;sticas sobre pontos que caem dentro de &aacute;reas ou bandejas especificadas.
+                </li>
+                <li> <b>Ligar Fei&ccedil;&otilde;es</b> calcula estat&iacute;sticas sobre fei&ccedil;&otilde;es que compartilham um relacionamento de atributo ou espacial, temporal ou com outras fei&ccedil;&otilde;es.
+                </li>
+                <li> <b>Reconstruir Caminhos</b> calcula as estat&iacute;sticas sobre pontos ou pol&iacute;gonos que pertencem ao mesmo caminho e reconstr&oacute;i as entradas em caminhos.
+                </li>
+                <li> <b>Resumir Atributos</b> calcula estat&iacute;sticas sobre fei&ccedil;&atilde;o ou dados tabelares que compartilham atributos.
+                </li>
+                <li> <b>Resumir Dentro</b> calcula estat&iacute;sticas para fei&ccedil;&otilde;es de &aacute;rea e atributos que sobrep&otilde;em uns aos outros.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregatePointsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Agregar Pontos</h2></td>
+                    <td>
+                    <img src="../images/GUID-6C1620D9-D176-41FA-8283-833D8B1CCCFC-web.png" class="titleImage" alt="Agregar Pontos">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Utilize uma camada de fei&ccedil;&otilde;es de ponto ou uma camada de fei&ccedil;&otilde;es de &aacute;rea ou bandejas definidas por uma dist&acirc;ncia especificada, esta ferramenta determina quais pontos caem dentro de cada &aacute;rea ou bandeja e calcula estat&iacute;sticas sobre todos os pontos dentro de cada &aacute;rea ou bandeja. Voc&ecirc; pode opcionalmente aplicar um corte de tempo com esta ferramenta. 
+            </p>
+            <p> Por exemplo
+                <ul>
+                    <li>Determinados locais de ponto dos incidentes de crime, contagem do n&uacute;mero de crimes por munic&iacute;pio ou outro distrito administrativo.
+                    </li>
+                    <li>Localizar as rendas mensais mais altas e mais baixas para locais de franquia utilizando caixas de 100 km.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="JoinFeaturesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Ligar Feições</h2></td>
+                    <td>
+                    <img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" class="titleImage" alt="Ligar Fei&ccedil;&otilde;es">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Com a utiliza&ccedil;&atilde;o das camadas de fei&ccedil;&atilde;o ou dados tabelares, voc&ecirc; pode ligar fei&ccedil;&otilde;es e registros baseados em relacionamentos espec&iacute;ficos entre as camadas de entrada ou tabelas.  As liga&ccedil;&otilde;es ser&atilde;o determinadas por relacionamentos de atributos, espacial, temporal e a estat&iacute;stica sum&aacute;ria pode ser calculada opcionalmente.  
+            </p>
+            <p> Por exemplo
+                <ul>
+                    <li>Dadas as localiza&ccedil;&otilde;es dos pontos de incidentes do crime com um tempo, junte os dados de crime para voc&ecirc; mesmo, especificando um relacionamento espacial de crimes dentro de 1 quil&ocirc;metro um do outro, e que ocorreu no prazo de uma hora um do outro, para determinar se h&aacute; uma sequ&ecirc;ncia de crimes perto um ao outro no espa&ccedil;o e tempo.
+                    </li>
+                    <li> Com uma tabela de Ceps fornecida com informa&ccedil;&otilde;es demogr&aacute;ficas e fei&ccedil;&otilde;es de &aacute;rea representando edif&iacute;cios residenciais, ligue as informa&ccedil;&otilde;es demogr&aacute;ficas com as resid&ecirc;ncias de forma que cada resid&ecirc;ncia agora tenha as informa&ccedil;&otilde;es.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="ReconstructTracksTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Reconstruir Caminhos</h2></td>
+                    <td>
+                    <img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" class="titleImage" alt="Reconstruir Caminhos">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Utilize uma camada habilitada ao tempo de fei&ccedil;&otilde;es de pol&iacute;gono e de ponto ou que representa um  <code>momento</code> no tempo, esta ferramenta determina quais fei&ccedil;&otilde;es de entrada pertencem em um caminho e ordenar&aacute; as entradas consecutivamente no tempo. As estat&iacute;sticas s&atilde;o opcionalmente calculadas para as fei&ccedil;&otilde;es de entrada dentro de cada caminho.
+            </p>
+            <p> Por exemplo
+                <ul>
+                    <li>Dada as localiza&ccedil;&otilde;es de ponto e tempo das medi&ccedil;&otilde;es do furac&atilde;o, calcule a velocidade m&eacute;dia do vento e press&atilde;o m&aacute;xima de vento do furac&atilde;o.
+                    </li>
+                    <li>Localizar as rendas mensais mais altas e mais baixas para locais de franquia utilizando caixas de 100 km.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeAttributesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Resumir Atributos</h2></td>
+                    <td>
+                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="Resumir Atributos">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> Com a utiliza&ccedil;&atilde;o de dados de fei&ccedil;&atilde;o ou tabelares, esta ferramenta resume as estat&iacute;sticas dos campos especificados.
+            </p>
+            <p> Por exemplo
+                <ul>
+                    <li> Dadas as localiza&ccedil;&otilde;es de supermercados com um campo <i>COMPANY_NAME</i>, resuma as lojas pelo nome da companhia para determinar estat&iacute;sticas para cada companhia.
+                    </li>
+                    <li>Dada uma tabela de supermercados com campos  <i>COMPANY_NAME</i> e <i>COUNTY</i>, resuma as lojas pelo nome da companhia e munic&iacute;pio para determinar estat&iacute;sticas para cada companhia em cada munic&iacute;pio.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeWithinTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Resumir Dentro</h2></td>
+                    <td>
+                    <img src="../images/GUID-90E0CB1F-EB97-4752-B2EE-452B7B45475E-web.png" class="titleImage" alt="Resumir Dentro">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Localiza &aacute;reas (e por&ccedil;&otilde;es de &aacute;reas) que sobrep&otilde;em entre duas camadas e calcula a estat&iacute;stica da sobreposi&ccedil;&atilde;o. 
+            </p>
+            <p> Por exemplo
+                <ul>
+                    <li>Dada uma camada de &aacute;reas de bacia e uma camada de &aacute;reas de uso da superf&iacute;cie por tipo de uso do solo, calcular a &aacute;rea total em acres do tipo de uso do solo para cada bacia. 
+                    </li>
+                    <li>Dada uma camada de lotes em um munic&iacute;pio e uma camada de limites da cidade, resuma o valor m&eacute;dio de lotes desocupados dentro de cada cidade.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="FindLocationsCategory" class="smallsize">
+        <h2>Encontrar Locais</h2>
+        <hr/>
+        <p>Estas ferramentas s&atilde;o utilizadas para identificar &aacute;reas que atendem v&aacute;rios crit&eacute;rios diferentes que voc&ecirc; especifica.   
+            <ul>
+                <li> <b>Encontrar Locais Semelhantes</b> encontra locais mais semelhantes a um ou mais locais de refer&ecirc;ncia baseada em crit&eacute;rios que voc&ecirc; especifica.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="FindSimilarLocationsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Encontrar Locais Semelhantes</h2></td>
+                    <td>
+                    <img src="../images/GUID-6262A84E-9087-4E48-930E-E9B89FECC836-web.png" class="titleImage" alt="Encontrar Locais Semelhantes">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Com base nos crit&eacute;rios especificados, encontre locais semelhantes ao medir a semelhan&ccedil;a dos locais na sua camada de pesquisa do candidato para um ou mais locais de refer&ecirc;ncia. 
+            </p>
+            <p> Por exemplo
+                <ul>
+                    <li>Encontrar as dez lojas mais semelhantes atrav&eacute;s da an&aacute;lise do n&uacute;mero de empregados e das vendas anuais.
+                    </li>
+                    <li>Encontrar as 100 cidades mais semelhantes ao examinar a rela&ccedil;&atilde;o entre a popula&ccedil;&atilde;o, crescimento anual e receitas fiscais.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzePatternsCategory" class="smallsize">
+        <h2>Analisar Modelos</h2>
+        <hr/>
+        <p>Estas ferramentas ajudam voc&ecirc; a identificar, quantificar e visualizar modelos espaciais em seus dados.  
+            <ul>
+                <li> <b>Calcular Densidade</b> obt&eacute;m quantidades conhecidas de algum fen&ocirc;meno e distribui estas quantidades pelo mapa.
+                </li>
+                <li> <b>Localizar Alto Valor de Incid&ecirc;ncia</b> identifica agrupamentos estatisticamente significativos no modelo espacial dos seus dados.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateDensityTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Calcular Densidade</h2></td>
+                    <td>
+                    <img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" class="titleImage" alt="Calculate Density">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>A ferramenta Calcular Densidade cria um mapa de densidade a partir das fei&ccedil;&otilde;es de ponto, espalhando quantidades conhecidas de algum fen&ocirc;meno (representado como atributos de pontos) atrav&eacute;s do mapa. O resultado &eacute; uma camada de &aacute;reas representando a densidade.
+            </p>
+            <p> Por exemplo
+                <ul>
+                    <li>Calcular densidades dos hospitais dentro de um munic&iacute;pio. A camada resultante mostrar&aacute; &aacute;reas com acessibilidade alta e baixa para hospitais, e estas informa&ccedil;&otilde;es podem ser utilizadas para decidir onde novos hospitais devem ser constru&iacute;dos.
+                    </li>
+                    <li>Identificar &aacute;reas que est&atilde;o em alto risco de inc&ecirc;ndio em florestas baseado em hist&oacute;rico dos locais de inc&ecirc;ndio em florestas.
+                    </li>
+                    <li>Localizar comunidades que est&atilde;o longe de estradas importantes para planejar onde novas estradas devem ser constru&iacute;das.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="FindHotSpotsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Localizar Valor Alto de Incidência</h2></td>
+                    <td>
+                    <img src="../images/GUID-6D600155-AA9B-4F02-AD8B-2E84150AB743-web.png" class="titleImage" alt="Localizar Valor Alto de Incid&ecirc;ncia">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>A ferramenta Localizar Valor Alto de Incid&ecirc;ncia determinar&aacute; se existe qualquer agrupamento estatisticamente significativo no modelo espacial dos seus dados. 
+                <ul>
+                    <li>Seus pontos est&atilde;o (incidentes de crimes, &aacute;rvores, acidentes de tr&aacute;fego) realmente agrupados? Como voc&ecirc; pode estar certo?
+                    </li>
+                    <li>Voc&ecirc; realmente descobriu um valor alto de incid&ecirc;ncia estatisticamente significativo (para gastos, mortalidade infantil, pontua&ccedil;&otilde;es de teste constantemente altas) ou seu mapa contar&aacute; uma hist&oacute;ria diferente se voc&ecirc; alterou o modo que foi simbolizado?
+                    </li>
+                </ul>
+                A ferramenta Localizar Valor Alto de Incid&ecirc;ncia o ajudar&aacute; a responder estas perguntas com confian&ccedil;a.
+            </p>
+            <br/>
+        </div>
+    <div id="UseProximityCategory" class="smallsize">
+        <h2>Utilizar Proximidade</h2>
+        <hr/>
+        <p>Estas ferramentas ajudam a responder uma das perguntas mais comuns apresentada na an&aacute;lise espacial: O que est&aacute; pr&oacute;ximo do que?
+            <ul>
+                <li> <b>Criar Buffers</b> cria &aacute;reas de uma dist&acirc;ncia especificada de fei&ccedil;&otilde;es.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CreateBuffersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Criar Buffers</h2></td>
+                    <td>
+                    <img src="../images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" class="titleImage" alt="Criar Buffers">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>O buffer &eacute; uma &aacute;rea que cobre uma determinada dist&acirc;ncia a partir de uma fei&ccedil;&atilde;o de pol&iacute;gono, linha ou ponto.
+            </p>
+            <p> Por exemplo
+                <ul>
+                    <li>Utilizar fei&ccedil;&otilde;es de rio lineares, criar buffer de cada rio em 50 vezes a largura do rio para determinar um limite ciliar proposto.
+                    </li>
+                    <li>Dadas as &aacute;reas representando pa&iacute;ses, crie um buffer para cada pa&iacute;s em 200 milhas n&aacute;uticas para determinar o limite mar&iacute;timo.  
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="ManageDataCategory" class="smallsize">
+        <h2>Gerenciar Dados</h2>
+        <hr/>
+        <p>Estas ferramentas s&atilde;o utilizadas para gerenciamento di&aacute;rio de dados geogr&aacute;ficos e tabelares.
+            <ul>
+                <li> <b>Copiar para Armazenamento de Dados</b> copia dados para seu ArcGIS Data Store e cria uma camada em seu web GIS.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CopyToDataStoreTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Copiar para Armazenamento de Dados</h2></td>
+                    <td>
+                    <img src="../images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" class="titleImage" alt="Copiar para Armazenamento de Dados">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Copia uma camada de fei&ccedil;&atilde;o de entrada ou tabela para um  ArcGIS Data Store e cria uma camada em seu GIS web. </p>
+            <p> Por exemplo
+                <ul>
+                    <li> Copiar uma cole&ccedil;&atilde;o de <code>.csv</code> arquivos CSV em um compartilhamento de um grande arquivo de dados para armazenamento de dados de espa&ccedil;o-tempo para visualiza&ccedil;&atilde;o.
+                    </li>
+                    <li>Copiar as fei&ccedil;&otilde;es na extens&atilde;o de mapa atual que s&atilde;o guardadas no armazenamento de dados de espa&ccedil;o-tempo no armazenamento de dados relacionais.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+</div>
+</html>

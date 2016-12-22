@@ -5,5 +5,5 @@ varying lowp float v_transparency;
 void main()
 {
   lowp vec4 color = texture2D(u_texture, v_tex);
-  gl_FragColor = vec4(color.rgb, v_transparency * color.a);
+  gl_FragColor = v_transparency * color;
 }

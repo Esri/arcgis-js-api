@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>尋找熱點</h2><p/>
+        <h2><img src="../images/GUID-6D600155-AA9B-4F02-AD8B-2E84150AB743-web.png" alt="尋找熱點"></h2>
+        <hr/>
+    <p>「尋找熱點」工具將判定資料中的空間模式是否具備任何具有統計顯著性的叢集。
+        <ul>
+            <li>您的點（犯罪事件、樹木或交通事故）是否真正地叢集？ 您如何確定？
+            </li>
+            <li>您是否確實發現了具有統計顯著性的熱點？ 或如果變更地圖的符號化方式，地圖是否會呈現出另一種結果？
+            </li>
+        </ul>
+        「尋找熱點」工具可協助您充滿信心地回答這些問題。
+    </p>
+    <p>即使是隨機的空間模式也會展現出一定程度的叢集。此外，即使不存在模式，我們的眼睛和大腦也會出於本能地尋找模式。因此，很難辨別資料中的模式是正在研究的真實空間過程產生的結果，或者僅是隨機產生的結果。這是為什麼研究人員與分析人員使用像「尋找熱點」 (Getis-Ord Gi*) 等統計學方法以量化空間模式的原因。當您在資料中找到具有統計顯著性的叢集時，您會獲得非常有價值的資訊。瞭解叢集發生的地點與時間，可對您觀察到的模式形成過程提供重要線索。例如，如果需要制定有效的預防手段、分配有限的警力、發起小區監督計劃、授權深入的刑事調查，或者識別潛在嫌疑人，則掌握特定社區持續偏高的住宅入侵盜竊資訊就十分重要。
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="analysisLayer">
+        <div><h2>選擇要計算熱點的圖層</h2></div>
+        <hr/>
+        <div>
+            <p>將用於在其中尋找熱點和冷點的點圖層。
+            </p>
+            <p>除了從地圖選擇圖層外，您也可以選擇下拉式清單底部的 <b>瀏覽圖層</b>，以瀏覽到大數據檔案分享資料集或圖徵圖層的內容。  
+            </p>
+        </div>
+    </div>
+    <div id="analysisField">
+        <div><h2>尋找高叢集和低叢集</h2></div>
+        <hr/>
+        <div>
+            
+            <p>此分析將回答以下問題：高值和低值在空間上叢集於何處？
+            </p>
+            <p>如果您的資料是點，且您選擇了 <b>點計數</b>，則該工具將評估點圖徵的空間排列以回答以下問題：點在哪裡出現異常叢集或擴散？
+            </p>
+            <p>如果您選擇了某個欄位，則該工具將評估與各圖徵相關的值的空間排列以回答如下問題：高值和低值會聚集在哪裏？
+            </p>
+        </div>
+    </div>
+    <div id="inputBins">
+        <div><h2>選擇用於熱點計算的容器大小</h2></div>
+        <hr/>
+        <div>
+            <p>用來產生方形容器的距離，可用來分析您的輸入點。
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>使用時間片段匯聚 (選用)</h2></div>
+        <hr/>
+        <div>
+            <p>若是在點圖層上啟用時間，且其為即時類型，則可使用時間間隔進行分析。
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>要匯聚到的時間間隔</h2></div>
+        <hr/>
+        <div>
+            <p>使用於分析的時間間隔。若要建立每週發生的時間片段，請將時間間隔設為一週。
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>要匯聚到的時間步長</h2></div>
+        <hr/>
+        <div>
+            <p>如何對齊時間。時間可對齊輸入資料的開始或結束時間，或指定的參考時間。
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>用來對齊時間分段的參考時間</h2></div>
+        <hr/>
+        <div>
+            <p>用來對齊時間間隔的日期和時間。
+            </p>
+        </div>
+    </div>
+    <div id="neighborhood">
+        <div><h2>選擇鄰域大小</h2></div>
+        <hr/>
+        <div>
+            <p>用來決定使用於熱點計算之鄰里的距離。鄰里必須大於容器大小，才能確保每個容器至少有一個鄰里。會針對鄰近容器分析和比較每一個容器。
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>空間參考 (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>這是搶鮮版的暫時參數，用於設定處理空間參考。許多大數據工具要求將投影的座標系統作為空間參考，以進行處理。預設情況下，工具將使用輸入座標系統，但若是地理座標系統則將失敗。若要設定投影的座標系統，請輸入 WKID。例如， <b>Web Mercator</b> 將輸入 <code>3857</code>。
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>選擇資料存放區</h2></div>
+        <hr/>
+        <div>
+            <p>這是搶鮮版的暫時參數，用於設定儲存結果的資料儲存庫。兩個資料儲存庫皆屬於  ArcGIS Data Store。如果選擇時空資料儲存庫但尚未安裝，工具將失敗。 </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>結果圖層名稱</h2></div>
+        <hr/>
+        <div>
+            <p> 在 <b>我的內容</b>中建立並新增到地圖中的圖層的名稱。預設名稱參照工具名稱以及輸入圖層名稱。如果圖層已存在，工具將失敗。
+            </p>
+            <p>此結果圖層將顯示具有統計顯著性的叢集（高值和低值或點計數）。如果結果圖層名稱已存在，則系統會要求您重新命名該圖層。
+            </p>
+            <p>使用 <b>將結果儲存到</b>下拉式方塊，可以在 <b>我的內容</b>中指定储存结果的文件夾的名稱。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

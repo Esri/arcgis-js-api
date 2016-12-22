@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>포털 분석 환경 설정</h2><p/>
+        <h2></h2>
+        <hr/>
+    <p>  Portal for ArcGIS 및  ArcGIS Online에서의 분석을 위한 환경 설정입니다. 
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="overwriteResult">
+        <div><h2>결과 레이어 덮어쓰기</h2></div>
+        <hr/>
+        <div>
+            
+            <p>기존 레이어를 덮어쓰는 옵션입니다.    이 옵션을 선택한 경우 같은 이름이 있는 레이어가 콘텐츠 내에 이미 있으면 덮어씁니다.
+            </p>
+            <p>
+                <ul>
+                    <li>선택함 - 같은 이름이 있는 레이어가 콘텐츠 내에 이미 있으면 덮어씁니다. 결과에 입력과 같은 좌표체계가 있게 됩니다.
+                    </li>
+                    <li>선택하지 않음 - 제공된 결과 레이어 이름이 이미 있는 경우 오류가 발생하며 도구를 실행하려면 결과 레이어의 이름을 다시 지정해야 합니다. 이 옵션이 기본 설정입니다.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="closeAnalysisWidget">
+        <div><h2>분석을 실행한 후 분석 위젯 종료하기</h2></div>
+        <hr/>
+        <div>
+            
+            <p>도구를 실행하는 동안 분석 대화 창을 계속 열어두고 활성화하는 옵션입니다.     이 설정을 통해 이전 분석 작업이 계속 실행되는 동안에도 분석 매개변수를 쉽게 수정할 수 있습니다.  분석은 반복적인 과정이며 도구 대화 창을 계속 열어두면 매개변수를 쉽게 변경하고 분석을 다시 실행할 수 있습니다.
+            </p>
+            <p>
+                <ul>
+                    <li>선택함 - 분석 도구 창이 종료되며 포커스가 목차로 돌아갑니다. 이 옵션이 기본 설정입니다.
+                    </li>
+                    <li>선택하지 않음 - 분석 도구 창이 열려 있고 활성화됩니다.   
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="storeAnalysisResults">
+        <div><h2>분석 결과를 피처 서비스로 저장하기</h2></div>
+        <hr/>
+        <div>
+            
+            <p>분석 결과를 피처 레이어 또는 피처 컬렉션으로 생성할지 여부를 지정하는 옵션입니다.
+            </p>
+            <p>
+                <ul>
+                    <li>선택함 - 분석 결과가 피처 레이어로 생성되며 항목이 콘텐츠 내에 생성됩니다. 이 옵션이 기본 설정입니다.
+                    </li>
+                    <li>선택하지 않음 - 분석 결과가 피처 컬렉션으로 생성됩니다.    피처 컬렉션이 웹 맵 내에 저장됩니다.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputCoordinateSystem">
+        <div><h2>결과 좌표체계</h2></div>
+        <hr/>
+        <div>
+            <p>결과 레이어의 좌표체계를 정의하는 데 사용하는 래스터 분석의 환경 설정입니다.    
+            </p>
+            <p>
+                <ul>
+                    <li> <b>입력과 동일</b>&mdash;분석 결과가 입력과 동일한 좌표체계로 표시됩니다. 이 옵션이 기본 설정입니다.
+                    </li>
+                    <li> <b>지정한 대로</b>&mdash;분석 결과에 대한 좌표체계를 선택합니다.   이 옵션을 선택하는 경우 지구 아이콘을 클릭하여 알고 있는 좌표체계의 목록에서 선택하거나 제공된 상자에 공간 참조 WKID를 추가합니다.
+                    </li>
+                    <li> <b>레이어
+&lt;이름&gt;</b>&mdash;분석 결과의 좌표체계를 결정하는 데 사용할 웹 맵에서 기존 레이어를 선택합니다.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingCoordinateSystem">
+        <div><h2>좌표체계 처리</h2></div>
+        <hr/>
+        <div>
+            <p>분석을 실행하는 동안 사용할 좌표체계를 결정하는 데 사용하는 GeoAnalytics의 환경 설정입니다.   
+            </p>
+            <p>GeoAnalytics의 경우 일부 분석에는 투영된 좌표체계에서 실행되는 처리가 필요합니다.   데이터 또는 선형 단위의 비닝을 구현한 모든 도구에는 투영된 좌표체계가 필요합니다. 
+            </p>
+            <p>
+                <ul>
+                    <li> <b>입력과 동일</b>&mdash;분석이 입력과 동일한 좌표체계에서 처리됩니다. 이 옵션이 기본 설정입니다.
+                    </li>
+                    <li> <b>지정한 대로</b>&mdash;분석을 처리할 좌표체계를 선택합니다.   이 옵션을 선택하는 경우 지구 아이콘을 클릭하여 알고 있는 투영된 좌표체계의 목록에서 선택하거나 제공된 상자에 공간 참조 WKID를 추가합니다.
+                    </li>
+                    <li> <b>레이어
+&lt;이름&gt;</b>&mdash;웹 맵에서 기존 레이어를 선택합니다.  선택한 레이어의 좌표체계는 분석을 처리하는 데 사용할 좌표체계를 결정하는 데 사용됩니다.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingExtent">
+        <div><h2>범위</h2></div>
+        <hr/>
+        <div>
+            <p>분석을 실행하는 동안 사용할 범위 또는 경계를 결정하는 데 사용하는 환경 설정입니다.  완전히 범위 내에 있거나 지정된 범위를 교차하는 모든 입력 피처가 분석에서 사용됩니다.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>기본</b>&mdash;도구에서 제공된 범위를 사용합니다.
+                    </li>
+                    <li> <b>지정한 대로</b>&mdash;범위를 지정할 좌표체계를 수동으로 입력합니다.
+                    </li>
+                    <li> <b>레이어
+&lt;이름&gt;</b>&mdash;웹 맵에서 기존 레이어를 선택합니다. 선택한 레이어의 공간 범위는 분석을 처리하는 데 사용되는 범위를 결정하는 데 사용됩니다. 
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="snapRaster">
+        <div><h2>래스터 스냅</h2></div>
+        <hr/>
+        <div>
+            <p>래스터 분석을 실행할 때  <b>래스터 스냅</b> 환경을 설정하면 지정한 <b>래스터 스냅</b> 레이어의 셀 정렬과 일치하도록 결과 래스터 레이어의 범위가 조정됩니다.
+            </p>
+        </div>
+    </div>
+    <div id="cellSize">
+        <div><h2>셀 크기</h2></div>
+        <hr/>
+        <div>
+            <p>래스터 분석을 실행할 때 이 환경은 결과 래스터 레이어를 생성하는 데 사용할 셀 크기 또는 해상도를 설정합니다. 기본 결과 해상도는 입력 래스터 레이어의 가장 큰 셀 크기로 결정됩니다.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>입력 최소</b>&mdash;모든 입력 레이어의 가장 작은 셀 크기를 사용합니다.
+                    </li>
+                    <li> <b>입력 최대</b>&mdash;모든 입력 레이어의 가장 큰 셀 크기를 사용합니다. 이 옵션이 기본 설정입니다.
+                    </li>
+                    <li> <b>지정한 대로</b>&mdash;셀 크기를 설정하도록 숫자 값을 지정합니다. 이 옵션을 선택하는 경우 기본값은 1입니다.
+                    </li>
+                    <li> <b>레이어 &lt;이름&gt;</b>&mdash;셀 크기를 선택한 래스터 레이어로 설정합니다.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="mask">
+        <div><h2>마스크</h2></div>
+        <hr/>
+        <div>
+            <p> 래스터 분석을 실행할 때 <b>마스크</b> 환경을 사용하여 관심 영역을 정의하는 데 사용할 레이어를 지정합니다.   분석 마스크 내에 해당하는 이러한 셀만 분석 작업에서 고려됩니다.
+            </p>
+            <ul>
+                <li>마스크는 래스터 또는 피처 레이어가 될 수 있습니다.
+                </li>
+                <li>분석 마스크가 래스터인 경우 값을 가진 모든 셀이 마스크를 정의하는 데 고려됩니다. NoData인 마스크 래스터의 셀은 마스크 외부에 있는 것으로 간주되며 분석 결과 레이어에서 NoData가 됩니다. 
+                </li>
+                <li>분석 마스크가 피처 레이어인 경우 실행 시 래스터로 내부 전환됩니다. 이러한 이유로  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">셀 크기</a> 및 <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">래스터 스냅</a>이 분석에 맞게 적절히 설정되도록 주의를 기울여야 합니다.
+                </li>
+            </ul>
+             
+        </div>
+    </div>
+</div>
+</html>

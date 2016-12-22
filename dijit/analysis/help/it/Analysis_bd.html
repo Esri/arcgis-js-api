@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="bdToolbox">
+        <p>L'analisi Big Data distribuisce il lavoro di analisi in tutto il server ArcGIS GeoAnalytics. Ci&ograve; consente di analizzare un maggior numero di dati pi&ugrave; velocemente sfruttando la potenza di pi&ugrave; computer. Al momento sono disponibili i seguenti strumenti:
+            <ul>
+                <li> <b>Aggrega Punti</b>
+                </li>
+                <li> <b>Join delle feature</b>
+                </li>
+                <li> <b>Ricostruisci tracce</b>
+                </li>
+                <li> <b>Riepiloga attributi</b>
+                </li>
+                <li> <b>Riepiloga entro</b>
+                </li>
+                <li> <b>Trova localit&agrave; simili</b>
+                </li>
+                <li> <b>Calcolo densit&agrave;</b>
+                </li>
+                <li> <b>Trova hot spot</b>
+                </li>
+                <li> <b>Crea buffer</b>
+                </li>
+                <li> <b>Copia in Data Store</b>
+                </li>
+            </ul>
+            
+        </p>
+        <p>L'analisi Big Data si concentra sull'analisi di dati di grandi dimensioni, con una particolare enfasi su i modelli sia spaziali che temporali. 
+        </p>
+    </div>
+    <div id="SummarizeDataCategory" class="largesize">
+        <h2>Riepiloga dati</h2>
+        <hr/>
+        <p>Il set di strumenti Riepiloga dati contiene strumenti che consentono di calcolare totali, lunghezze, aree e statistiche descrittive di base di feature e dei relativi attributi in aree o altre feature vicine.
+            <ul>
+                <li> <b>Aggrega punti</b> consente di calcolare le statistiche su punti inclusi in aree o contenitori specifici.
+                </li>
+                <li> <b>Join delle feature</b> consente di calcolare le statistiche su feature che condividono una relazione spaziale, temporale o di attributi con altre feature.
+                </li>
+                <li> <b>Ricostruisci tracce</b> consente di calcolare statistiche su punti o poligoni che appartengono alla stessa traccia e di ricostruire gli input in tracce.
+                </li>
+                <li> <b>Riepiloga attributi</b> consente di calcolare le statistiche su feature o dati tabulari che condividono attributi.
+                </li>
+                <li> <b>Riepiloga entro</b> consente di calcolare le statistiche per le feature di area e per gli attributi sovrapposti tra loro.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="AggregatePointsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Aggrega Punti</h2></td>
+                    <td>
+                    <img src="../images/GUID-6C1620D9-D176-41FA-8283-833D8B1CCCFC-web.png" class="titleImage" alt="Aggrega Punti">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Utilizzando un layer di feature puntuale e un layer di feature area o dei contenitori definiti da una distanza specifica, questo strumento determina i punti o i contenitori inclusi in ciascuna area e calcola le statistiche su tutti i punti all'interno di ogni area o contenitore. Questo strumento consente anche di applicare i periodi di tempo. 
+            </p>
+            <p> Ad esempio:
+                <ul>
+                    <li>Date le posizioni dei punti relativi a reati, &egrave; possibile calcolare il numero di reati per regione o per un altro tipo di distretto amministrativo.
+                    </li>
+                    <li>&Egrave; possibile calcolare i ricavi minimi e massimi di negozi in franchising utilizzando contenitori di 100 km.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="JoinFeaturesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Join delle feature</h2></td>
+                    <td>
+                    <img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" class="titleImage" alt="Join delle feature">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Utilizzando feature layer o dati tabulari, &egrave; possibile unire le feature e i record in base a relazioni specifiche tra layer di input o tabelle.  I join saranno determinati da relazioni spaziali, temporali e di attributi ed &egrave; possibile, facoltativamente, calcolare statistiche di riepilogo.  
+            </p>
+            <p> Ad esempio:
+                <ul>
+                    <li>Date le posizioni puntuali dei reati con un tempo, unire i dati dei reati tra di loro, specificando una relazione spaziale dei reati, entro 1 km l'uno dall'altro e nell'intervallo di 1 ora l'uno dall'altro, per determinare se esiste una sequenza di reati vicini tra loro nello spazio e nel tempo.
+                    </li>
+                    <li> Data una tabella di codici postali con informazioni demografiche e feature area che rappresentano edifici residenziali, unire le informazioni demografiche agli edifici residenziali, in modo che ciascuno di essi contenga le informazioni.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="ReconstructTracksTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Ricostruisci tracce</h2></td>
+                    <td>
+                    <img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" class="titleImage" alt="Ricostruisci tracce">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Utilizzando un layer di punti abilitati per variazioni temporali o feature poligono che rappresentano un  <code>istante</code> nel tempo, questo strumento determina quali feature di input appartengono a una traccia e ordiner&agrave; gli input in modo sequenziale nel tempo. Le statistiche vengono calcolate facoltativamente per le feature di input all'interno di ogni traccia.
+            </p>
+            <p> Ad esempio:
+                <ul>
+                    <li>Date le posizioni puntuali e l'ora delle misurazioni degli uragani, calcolare la velocit&agrave; media del vento e la pressione massima del vento dell'uragano.
+                    </li>
+                    <li>&Egrave; possibile calcolare i ricavi minimi e massimi di negozi in franchising utilizzando contenitori di 100 km.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeAttributesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Riepiloga attributi</h2></td>
+                    <td>
+                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="Riepiloga attributi">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> Utilizzando feature o dati tabulari, questo strumento riepiloga le statistiche per campi specifici.
+            </p>
+            <p> Ad esempio:
+                <ul>
+                    <li> Date le posizioni dei negozi di alimentari con un campo <i>COMPANY_NAME</i>, riepilogare i negozi in base al nome della societ&agrave; per determinare le statistiche per ciascuna societ&agrave;.
+                    </li>
+                    <li>Data una tabella di negozi di alimentari con i campi  <i>COMPANY_NAME</i> e <i>COUNTY</i>, riepilogare i negozi in base al nome della societ&agrave; e della regione per determinare le statistiche per ciascuna societ&agrave; in ogni regione.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeWithinTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Riepiloga entro</h2></td>
+                    <td>
+                    <img src="../images/GUID-90E0CB1F-EB97-4752-B2EE-452B7B45475E-web.png" class="titleImage" alt="Riepiloga entro">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Consente di trovare aree (e parti di aree) che si sovrappongono tra due layer e di calcolare le statistiche sulla sovrapposizione. 
+            </p>
+            <p> Ad esempio:
+                <ul>
+                    <li>Dati un layer di aree spartiacque e un layer di aree di utilizzo del suolo per tipo di utilizzo, &egrave; possibile calcolare la superficie totale in acri del tipo di utilizzo del suolo per ogni spartiacque. 
+                    </li>
+                    <li>Dati un layer di particelle in una regione e un layer di confini di citt&agrave;, &egrave; possibile riepilogare il valore medio delle particelle non occupate in ogni citt&agrave;.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="FindLocationsCategory" class="smallsize">
+        <h2>Trova posizioni</h2>
+        <hr/>
+        <p>Questi strumenti consentono di identificare le aree conformi a un certo numero di criteri specificati.  
+            <ul>
+                <li> <b>Trova localit&agrave; simili</b> consente di trovare le localit&agrave; pi&ugrave; simili a una o pi&ugrave; localit&agrave; di riferimento in base ai criteri specificati.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="FindSimilarLocationsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Trova località simili</h2></td>
+                    <td>
+                    <img src="../images/GUID-6262A84E-9087-4E48-930E-E9B89FECC836-web.png" class="titleImage" alt="Trova localit&agrave; simili">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>In base ai criteri specificati, trovare localit&agrave; simili calcolando la somiglianza di localit&agrave; presenti nel layer di ricerca candidati con una o pi&ugrave; localit&agrave; di riferimento. 
+            </p>
+            <p> Ad esempio:
+                <ul>
+                    <li>Trovare i dieci negozi pi&ugrave; simili esaminando il numero dei dipendenti e le vendite annuali.
+                    </li>
+                    <li>Trovare le cento citt&agrave; pi&ugrave; simili esaminando la relazione tra popolazione, crescita annuale ed entrate fiscali.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzePatternsCategory" class="smallsize">
+        <h2>Analizza modelli</h2>
+        <hr/>
+        <p>Questi strumenti consentono di identificare, quantificare e visualizzare i modelli spaziali nei dati.  
+            <ul>
+                <li> <b>Calcolo densit&agrave;</b> consente di valutare quantit&agrave; note di alcuni fenomeni e di diffondere tali quantit&agrave; nella mappa.
+                </li>
+                <li> <b>Trova hot spot</b> consente di identificare cluster di rilevanza statistica nel modello spaziale dei dati.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateDensityTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Calcolo densità</h2></td>
+                    <td>
+                    <img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" class="titleImage" alt="Calculate Density">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Lo strumento Calcolo densit&agrave; consente di creare una mappa di densit&agrave; a partire da feature puntuali diffondendo nella mappa quantit&agrave; note di alcuni fenomeni (rappresentati come attributi di punti). Il risultato &egrave; un layer di aree che rappresentano la densit&agrave;.
+            </p>
+            <p> Ad esempio:
+                <ul>
+                    <li>Per calcolare le densit&agrave; relative agli ospedali presenti in una determinata area. Nel layer dei risultati verranno indicate le aree con maggiore o minore accessibilit&agrave; agli ospedali e tali informazioni saranno utili per stabilire dove costruire nuove strutture.
+                    </li>
+                    <li>Per identificare aree ad alto rischio di incendio sulla base delle localit&agrave; in cui nel tempo si sono verificati incendi di aree boschive.
+                    </li>
+                    <li>Per individuare le comunit&agrave; pi&ugrave; lontane dalle principali autostrade e pianificare le aree in cui costruire nuove strade.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="FindHotSpotsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Trova hot spot</h2></td>
+                    <td>
+                    <img src="../images/GUID-6D600155-AA9B-4F02-AD8B-2E84150AB743-web.png" class="titleImage" alt="Trova Hot Spot">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Lo strumento Trova hot Spot consente di determinare la presenza di cluster statisticamente rilevanti nel modello spaziale dei dati. 
+                <ul>
+                    <li>I punti (reati, alberi, incidenti stradali) sono realmente organizzati in cluster? Come si pu&ograve; verificarlo?
+                    </li>
+                    <li>&Egrave; stato effettivamente individuato un hot spot di rilevanza statistica (ai fini della spesa, della mortalit&agrave; infantile, di punteggi di test elevati) oppure la mappa raffigurerebbe una situazione diversa se venisse cambiata la simbologia?
+                    </li>
+                </ul>
+                Lo strumento Trova hot spot consente di rispondere con sicurezza a queste domande.
+            </p>
+            <br/>
+        </div>
+    <div id="UseProximityCategory" class="smallsize">
+        <h2>Usa prossimità</h2>
+        <hr/>
+        <p>Questi strumenti consentono di rispondere a una delle domande pi&ugrave; comuni dell'analisi spaziale: &quot;Che cosa &egrave; vicino a cosa?&quot;
+            <ul>
+                <li> <b>Crea buffer</b> consente di creare aree a una distanza specificata dalle feature.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CreateBuffersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Crea buffer</h2></td>
+                    <td>
+                    <img src="../images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" class="titleImage" alt="Crea Buffer">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Un buffer &egrave; un'area che copre una data distanza da una feature punto, linea o poligono.
+            </p>
+            <p> Ad esempio:
+                <ul>
+                    <li>Utilizzando feature lineari per i fiumi, eseguire il buffer di ciascun fiume per 50 volte la larghezza del fiume al fine di determinare un confine rivierasco proposto.
+                    </li>
+                    <li>Date le aree che rappresentano i paesi, eseguire il buffer di ciascun paese per 200 miglia nautiche al fine di determinare il confine marittimo.  
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="ManageDataCategory" class="smallsize">
+        <h2>Gestisci dati</h2>
+        <hr/>
+        <p>Questi strumenti vengono utilizzati per la gestione quotidiana dei dati geografici e tabulari.
+            <ul>
+                <li> <b>Copia in Data Store</b> copia i dati in ArcGIS Data Store e crea un layer nel Web GIS.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CopyToDataStoreTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Copia in Data Store</h2></td>
+                    <td>
+                    <img src="../images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" class="titleImage" alt="Copia in Data Store">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Consente di copiare un feature layer di input o una tabella in un  ArcGIS Data Store e di creare un layer nel Web GIS. </p>
+            <p> Ad esempio:
+                <ul>
+                    <li> Copiare una raccolta di file <code>.csv</code> in una condivisione file Big Data nello Spatiotemporal Data Store per la visualizzazione.
+                    </li>
+                    <li>Copiare le feature nell'estensione della mappa corrente che sono memorizzate nello Spatiotemporal Data Store nel Data Store relazionale.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+</div>
+</html>

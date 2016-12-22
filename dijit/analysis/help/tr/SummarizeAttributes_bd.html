@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Öznitelikleri Özetle</h2><p/>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="&Ouml;znitelikleri &Ouml;zetle"></h2>
+        <hr/>
+    <p>Bu ara&ccedil; bir veya birka&ccedil; alan i&ccedil;indeki eşleşen değerlerin t&uuml;m&uuml;n&uuml; &ouml;zetler ve bunlarla ilgili istatistikleri hesaplar. En temel istatistik, birlikte &ouml;zetlenen detay sayısı olmakla birlikte, daha gelişmiş diğer istatistikleri de hesaplayabilirsiniz. 
+
+    </p>
+    <p>&Ouml;rneğin, elinizde mağaza konumlarının nokta detaylarıyla birlikte  <i>DISTRICT_MANAGER_NAME</i> bilgisini temsil eden bir alan olduğunu ve y&ouml;neticiye g&ouml;re kahve satışlarını &ouml;zetlemek istediğinizi varsayalım. <i>DISTRICT_MANAGER_NAME</i> alanını yayılımın yapılacağı alan olarak belirtebilirsiniz, bu durumda tek tek y&ouml;neticileri temsil eden veri satırlarının t&uuml;m&uuml; &ouml;zetlenir. Bu, Y&ouml;netici1 tarafından idare edilen t&uuml;m mağaza konumlarının &ouml;zet istatistikleri hesaplanmış olarak tek satırda g&ouml;r&uuml;nt&uuml;leneceği anlamına gelir. Bu durumda, Y&ouml;netici1 tarafından idare edilen t&uuml;m mağazalar i&ccedil;in mağaza sayısı sayımı ve <i>TOTAL_SALES</i> toplamının yanı sıra, <i>DISTRICT_MANAGER_NAME</i> alanında listelenen diğer y&ouml;neticiler i&ccedil;in de aynısı hesaplanır.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Özetlenecek girdiyi seçin</h2></div>
+        <hr/>
+        <div>
+            <p>&Ouml;zetlenecek alanları kapsayan katman.  
+            </p>
+            <p>Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, a&ccedil;ılan listenin en altından  <b>Katmanlara G&ouml;zat</b> &ouml;ğesini belirleyerek big data dosya paylaşımı veri k&uuml;mesi veya detay katmanı i&ccedil;eriğinize g&ouml;z atabilirsiniz.  
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>Üzerinde çalışmak istediğiniz alanları seçin</h2></div>
+        <hr/>
+        <div>
+            <p>  Girdi katmanından alınan alanların listesi.  Se&ccedil;ilen alanlar &ouml;zetlenir ve istatistiklerin hesaplanması i&ccedil;in kullanılır. &Ouml;rneğin, ticari ve meskenle ilgili değerlere sahip <i>PropertyType</i> adlı bir alan se&ccedil;erseniz, meskenle ilgili t&uuml;m alanlar birlikte &ouml;zetlenir ve &ouml;zet istatistikler hesaplanır; ticari alanların t&uuml;m&uuml; de birlikte &ouml;zetlenir.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Hesaplamak istediğiniz alanları ve istatistikleri seçin (isteğe bağlı)</h2></div>
+        <hr/>
+        <div>
+            <p> &Ouml;zetlenen detaylarla ilgili istatistikleri hesaplayabilirsiniz. Sayısal alanlarda aşağıdakileri hesaplayabilirsiniz:
+                <ul>
+                    <li>Sayım
+                    </li>
+                    <li>Ortalama
+                    </li>
+                    <li>Min.
+                    </li>
+                    <li>Maks
+                    </li>
+                    <li>Aralık
+                    </li>
+                    <li>Varyans
+                    </li>
+                    <li>Standart sapma
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Dize alanlarında aşağıdakileri hesaplayabilirsiniz:
+                <ul>
+                    <li>Sayım
+                    </li>
+                    <li>Herhangi; bu istatistik belirtilen alandaki bir dize değerinin rastgele &ouml;rneğidir.
+                    </li>
+                </ul>
+                T&uuml;m istatistikler null olmayan değerler &uuml;zerinde hesaplanır. Sonu&ccedil; katmanı hesaplanan her istatistik i&ccedil;in yeni bir alan i&ccedil;erir. Herhangi bir sayıda istatistik, &ouml;znitelik ve istatistik se&ccedil;ilerek eklenebilir. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Veri deposu seç</h2></div>
+        <hr/>
+        <div>
+            <p>Bu, sonu&ccedil;ların kaydedileceği veri deposunu ayarlamak amacıyla &ouml;n s&uuml;r&uuml;m i&ccedil;in ge&ccedil;ici bir parametredir. Her iki veri deposu da  ArcGIS Data Store uygulamasının bir par&ccedil;asıdır. Y&uuml;kl&uuml; değilken spatiotemporal data store &ouml;ğesini se&ccedil;erseniz ara&ccedil; &ccedil;alışmaz. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Sonuç katmanı adı</h2></div>
+        <hr/>
+        <div>
+            <p> Bu, <b>İ&ccedil;eriğim</b>de oluşturulacak ve haritaya eklenecek katmanın adıdır.  Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Detay katmanı zaten varsa ara&ccedil; &ccedil;alışmaz.
+            </p>
+            <p> <b>Sonu&ccedil;ları kaydet</b> a&ccedil;ılır kutusunu kullanarak <b>İ&ccedil;eriğim</b> alanında sonucun kaydedileceği klas&ouml;r adını belirleyebilirsiniz.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Tạo Vùng đệm</h2><p/>
+        <h2><img src="../images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" alt="Tạo V&ugrave;ng đệm"></h2>
+        <hr/>
+    <p>V&ugrave;ng đệm l&agrave; khu vực bao phủ một khoảng c&aacute;ch nhất định từ một đối tượng điểm, đường hoặc v&ugrave;ng. 
+    </p>
+    <p>C&aacute;c v&ugrave;ng đệm thường được sử dụng để tạo ra khu vực c&oacute; thể được tiếp tục ph&acirc;n t&iacute;ch bằng c&aacute;ch sử dụng c&aacute;c c&ocirc;ng cụ kh&aacute;c. V&iacute; dụ, nếu c&acirc;u hỏi l&agrave; C&aacute;c t&ograve;a nh&agrave; n&agrave;o nằm trong phạm vi trường học 1 dặm?, bạn c&oacute; thể t&igrave;m thấy c&acirc;u trả lời bằng c&aacute;ch tạo ra v&ugrave;ng đệm 1 dặm xung quanh trường học v&agrave; chồng lớp v&ugrave;ng đệm bằng lớp c&oacute; chứa th&ocirc;ng tin t&ograve;a nh&agrave;. Kết quả cuối c&ugrave;ng l&agrave; một lớp chứa c&aacute;c t&ograve;a nh&agrave; nằm trong phạm vi trường học 1 dặm.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Chọn lớp để áp dụng khoảng cách đệm</h2></div>
+        <hr/>
+        <div>
+            <p>Đối tượng điểm, đường, hoặc v&ugrave;ng được tạo v&ugrave;ng đệm.
+            </p>
+            <p>B&ecirc;n cạnh việc chọn một lớp từ bản đồ, bạn c&oacute; thể chọn  <b>Duyệt Lớp</b> ở b&ecirc;n dưới danh s&aacute;ch thả xuống để duyệt đến nội dung của m&igrave;nh đối với tập dữ liệu chia sẻ tệp dữ liệu lớn hoặc lớp đối tượng.  
+            </p>
+        </div>
+    </div>
+    <div id="bufferType">
+        <div><h2>Chọn loại khoảng cách đệm để áp dụng</h2></div>
+        <hr/>
+        <div>
+            <p>C&oacute; ba c&aacute;ch để bạn c&oacute; thể x&aacute;c định k&iacute;ch thước v&ugrave;ng đệm cho c&aacute;c đối tượng đầu v&agrave;o: 
+                <ul>
+                    <li>X&aacute;c định khoảng c&aacute;ch &aacute;p dụng cho tất cả c&aacute;c đối tượng.
+                    </li>
+                    <li>X&aacute;c định trường tr&ecirc;n lớp đầu v&agrave;o c&oacute; chứa gi&aacute; trị khoảng c&aacute;ch. Bạn c&oacute; thể sử dụng trường chuỗi hoặc trường số. Nếu đơn vị tuyến t&iacute;nh kh&ocirc;ng được x&aacute;c định, đơn vị tham chiếu kh&ocirc;ng gian sẽ được sử dụng. Nếu bạn đang sử dụng hệ tọa độ địa l&yacute;, c&aacute;c trường kh&ocirc;ng c&oacute; đơn vị sẽ được giả định l&agrave; đơn vị m&eacute;t. 
+                    </li>
+                    <li>X&acirc;y dựng biểu thức c&oacute; nhiều trường v&agrave; to&aacute;n tử to&aacute;n học.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Chọn phương pháp sử dụng khoảng cách đệm</h2></div>
+        <hr/>
+        <div>
+            <p>Bạn c&oacute; thể chọn phương ph&aacute;p  <b>Phẳng</b> hoặc phương ph&aacute;p <b>Đo đạc</b>. Phương ph&aacute;p <b>Phẳng</b> c&oacute; thể nhanh hơn v&agrave; th&iacute;ch hợp hơn để ph&acirc;n t&iacute;ch cục bộ tr&ecirc;n dữ liệu tham chiếu. Phương ph&aacute;p <b>Trắc địa</b> th&iacute;ch hợp cho c&aacute;c khu vực lớn v&agrave; bất kỳ hệ tọa độ địa l&yacute; n&agrave;o.
+            </p>
+        </div>
+    </div>
+    <div id="dissolveOption">
+        <div><h2>Chọn loại phương pháp phân rã</h2></div>
+        <hr/>
+        <div>
+            <p>C&aacute;c t&ugrave;y chọn để x&aacute;c định phương ph&aacute;p ph&acirc;n r&atilde;. Nếu chọn một phương ph&aacute;p ph&acirc;n r&atilde;, bạn sẽ được cung cấp t&ugrave;y chọn để tạo ra c&aacute;c khu vực đa phần hoặc đơn phần v&agrave; c&oacute; thể t&iacute;nh to&aacute;n số liệu thống k&ecirc; dựa tr&ecirc;n c&aacute;c trường được cung cấp.
+                <ul>
+                    <li> <b>Tất cả</b>&mdash;Tất cả c&aacute;c đối tượng sẽ được ph&acirc;n r&atilde;. Nếu đối tượng đa phần được cho ph&eacute;p, tất cả c&aacute;c đối tượng sẽ được ph&acirc;n r&atilde; th&agrave;nh đối tượng đơn. Nếu đa phần kh&ocirc;ng được cho ph&eacute;p, c&aacute;c đối tượng l&acirc;n cận hoặc chồng lắp sẽ được ph&acirc;n r&atilde;.
+                    </li>
+                    <li> <b>Trường</b>&mdash;C&aacute;c thuộc t&iacute;nh c&oacute; chung một trường x&aacute;c định hoặc tổ hợp trường x&aacute;c định sẽ được ph&acirc;n r&atilde;. Nếu đối tượng đa phần được cho ph&eacute;p, tất cả c&aacute;c đối tượng c&oacute; trường giống nhau sẽ được ph&acirc;n r&atilde; th&agrave;nh đối tượng đơn. Nếu đa phần kh&ocirc;ng được cho ph&eacute;p, c&aacute;c đối tượng l&acirc;n cận hoặc chồng lắp c&oacute; gi&aacute; trị trường giống nhau sẽ được ph&acirc;n r&atilde;.
+                    </li>
+                    <li> <b>Kh&ocirc;ng</b>&mdash;Kh&ocirc;ng c&oacute; đối tượng n&agrave;o được ph&acirc;n r&atilde;. Đ&acirc;y l&agrave; t&ugrave;y chọn mặc định.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="multipart">
+        <div><h2>Cho phép sử dụng đối tượng đa phần</h2></div>
+        <hr/>
+        <div>
+            <p>T&ugrave;y chọn để x&aacute;c định liệu kết quả của bạn c&oacute; chứa c&aacute;c đối tượng đơn phần hay đa phần. 
+
+            </p>
+            <p>
+                <ul>
+                    <li>Đ&atilde; chọn&mdash;Kết quả ph&acirc;n t&iacute;ch sẽ chứa c&aacute;c đối tượng đa phần.   
+                    </li>
+                    <li>Đ&atilde; bỏ chọn&mdash;Kết quả ph&acirc;n t&iacute;ch sẽ chứa c&aacute;c đối tượng đơn phần. Đ&acirc;y l&agrave; t&ugrave;y chọn mặc định.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Thêm số liệu thống kê (tùy chọn)</h2></div>
+        <hr/>
+        <div>
+            <p> Bạn c&oacute; thể t&iacute;nh to&aacute;n số liệu thống k&ecirc; về c&aacute;c đối tượng được tổng kết. Tr&ecirc;n c&aacute;c trường số, bạn c&oacute; thể t&iacute;nh to&aacute;n những nội dung sau:
+                <ul>
+                    <li>Số lượng
+                    </li>
+                    <li>Trung b&igrave;nh
+                    </li>
+                    <li>Tối thiểu
+                    </li>
+                    <li>Tối đa
+                    </li>
+                    <li>Khoảng
+                    </li>
+                    <li>Phương sai
+                    </li>
+                    <li>Độ lệch chuẩn
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Tr&ecirc;n c&aacute;c trường chuỗi, bạn c&oacute; thể t&iacute;nh to&aacute;n những nội dung sau:
+                <ul>
+                    <li>Số lượng
+                    </li>
+                    <li>Bất kỳ&mdash;Số liệu thống k&ecirc; n&agrave;y l&agrave; mẫu ngẫu nhi&ecirc;n của một gi&aacute; trị chuỗi trong trường x&aacute;c định.
+                    </li>
+                </ul>
+                Tất cả số liệu thống k&ecirc; được t&iacute;nh to&aacute;n tr&ecirc;n c&aacute;c gi&aacute; trị kh&ocirc;ng rỗng. Lớp kết quả sẽ chứa một trường mới cho mỗi số liệu thống k&ecirc; được t&iacute;nh to&aacute;n. C&oacute; thể th&ecirc;m bất kỳ số liệu thống k&ecirc; n&agrave;o bằng c&aacute;ch chọn một thuộc t&iacute;nh v&agrave; số liệu thống k&ecirc;. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Chọn kho dữ liệu</h2></div>
+        <hr/>
+        <div>
+            <p>Đ&acirc;y l&agrave; một tham số thời gian cho bản ph&aacute;t h&agrave;nh trước để thiết lập kho dữ liệu sẽ lưu kết quả. Cả hai kho dữ liệu l&agrave; một phần của  ArcGIS Data Store. Nếu bạn chọn kho dữ liệu kh&ocirc;ng gian thời gian, nhưng kh&ocirc;ng c&agrave;i đặt, c&ocirc;ng cụ sẽ thất bại. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tên lớp kết quả</h2></div>
+        <hr/>
+        <div>
+            <p> Đ&acirc;y l&agrave; t&ecirc;n lớp sẽ được tạo trong mục <b>Nội dung của T&ocirc;i</b> v&agrave; th&ecirc;m v&agrave;o bản đồ. T&ecirc;n mặc định dựa v&agrave;o t&ecirc;n c&ocirc;ng cụ v&agrave; t&ecirc;n lớp đầu v&agrave;o. Nếu lớp đ&atilde; tồn tại, c&ocirc;ng cụ sẽ thất bại.
+            </p>
+            <p>Sử dụng chức năng  <b>Lưu kết quả</b> trong hộp xổ xuống, bạn c&oacute; thể chỉ định t&ecirc;n thư mục trong mục <b>Nội dung của T&ocirc;i</b> nơi sẽ lưu trữ kết quả của bạn.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

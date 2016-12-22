@@ -41,6 +41,16 @@
     position: relative;
 }
 
+.DataCategoryItem {
+    border-collapse: separate;
+}
+
+.DataCategoryItem:hover {
+    background: none;
+    -webkit-box-shadow: 0 0 0 1px #ccc;
+            box-shadow: 0 0 0 1px #ccc;
+}
+
 .calcite .VarLabel {
     padding: 0.5em;
 }

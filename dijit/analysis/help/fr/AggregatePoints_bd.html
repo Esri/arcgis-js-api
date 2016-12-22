@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Agréger des points</h2><p/>
+        <h2><img src="../images/GUID-6C1620D9-D176-41FA-8283-833D8B1CCCFC-web.png" alt="Agr&eacute;ger les points"></h2>
+        <hr/>
+    <p>Cet outil fonctionne avec une couche d'entit&eacute;s ponctuelles et une couche d'entit&eacute;s surfaciques.  Les entit&eacute;s surfaciques en entr&eacute;e peuvent provenir d'une couche surfacique ou il peut s'agir de groupes carr&eacute;s ou hexagonaux calcul&eacute;s lors de l'ex&eacute;cution de l'outil. L'outil commence par identifier les points qui se trouvent au sein de chaque surface sp&eacute;cifi&eacute;e. Apr&egrave;s avoir d&eacute;termin&eacute; cette relation spatiale des points au sein de la surface, des statistiques concernant tous les points de la surface sont calcul&eacute;es et affect&eacute;es &agrave; la surface. La statistique la plus &eacute;l&eacute;mentaire est le nombre total de points au sein de la surface, mais vous pouvez &eacute;galement en obtenir d'autres. 
+
+    </p>
+    <p>Supposons par exemple que des entit&eacute;s ponctuelles correspondent &agrave; l'emplacement des caf&eacute;s restaurants et que des entit&eacute;s surfaciques correspondent aux comt&eacute;s, et que vous souhaitez r&eacute;capituler la consommation de caf&eacute; par comt&eacute;. En admettant que les caf&eacute;s aient un attribut  <i>TOTAL_SALES</i>, vous pouvez calculer la somme de tous les attributs <i>TOTAL_SALES</i> au sein de chaque comt&eacute;, l'attribut <i>TOTAL_SALES</i> minimal ou maximal
+ au sein de chaque comt&eacute; ou d'autres statistiques, telles que le total, la plage, l'&eacute;cart type et la variance.
+    </p>
+    <p>Cet outil fonctionne &eacute;galement avec les donn&eacute;es temporelles. Si le temps est activ&eacute; dans les points en entr&eacute;e, les options de tranche horaire sont disponibles. L'examen d'une tranche horaire sp&eacute;cifique vous permet de calculer la relation des points au sein de la surface. Vous pouvez par exemple examiner des intervalles horaires, qui entra&icirc;nent des sorties pour chaque heure. 
+    </p>
+    <p>Comme exemple temporel, supposons par exemple que vous ayez des entit&eacute;s ponctuelles de chaque transaction effectu&eacute;e dans diff&eacute;rents caf&eacute;s et aucune couche surfacique. Les donn&eacute;es ont &eacute;t&eacute; enregistr&eacute;es au cours d'une ann&eacute;e et chaque transaction poss&egrave;de un emplacement et un horodatage. En supposant que chaque transaction poss&egrave;de un attribut  <i>TOTAL_SALES</i>, vous pouvez calculer la somme de tous les attributs <i>TOTAL_SALES</i> au sein de l'espace et du temps qui vous int&eacute;ressent. Si ces transactions sont destin&eacute;es &agrave; une seule ville, nous pouvons g&eacute;n&eacute;rer des surfaces de grilles d'un kilom&egrave;tre et regarder les tranches horaires hebdomadaires pour synth&eacute;tiser les transactions &agrave; la fois dans l'espace et dans le temps.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="pointLayer">
+        <div><h2>Choisissez une couche contenant les points à agréger en surfaces</h2></div>
+        <hr/>
+        <div>
+            <p>La couche de points qui sera agr&eacute;g&eacute;e dans les surfaces.
+            </p>
+            <p>En plus de choisir une couche de votre carte, vous pouvez s&eacute;lectionner  <b>Parcourir les couches</b> au bas de la liste d&eacute;roulante pour parcourir votre contenu et rechercher une couche d'entit&eacute;s ou un jeu de donn&eacute;es de partage de fichiers Big Data.  
+            </p>
+        </div>
+    </div>
+    <div id="inputAggregation">
+        <div><h2>Choisir une couche surfacique dans laquelle effectuer l'agrégation</h2></div>
+        <hr/>
+        <div>
+            <p>Les surfaces dans lesquelles la couche de points sera agr&eacute;g&eacute;e. Vous avez le choix entre une couche surfacique que vous fournissez ou des groupes qui sont g&eacute;n&eacute;r&eacute;s lors de l'ex&eacute;cution de l'outil.   Lors de la g&eacute;n&eacute;ration des groupes, pour  <b>Carr&eacute;</b>, le nombre et les unit&eacute;s sp&eacute;cifi&eacute;s d&eacute;terminent la hauteur et la longueur du carr&eacute;. Pour <b>Hexagone</b>, le nombre et les unit&eacute;s sp&eacute;cifi&eacute;s d&eacute;terminent la distance entre les c&ocirc;t&eacute;s parall&egrave;les.
+            </p>
+        </div>
+    </div>
+    <div id="polygonLayer">
+        <div><h2>Choisir la couche surfacique dans laquelle effectuer l'agrégation</h2></div>
+        <hr/>
+        <div>
+            <p>La couche surfacique dans laquelle les points seront agr&eacute;g&eacute;s. Les points qui se trouvent au sein des limites des surfaces sur cette couche seront comptabilis&eacute;s et peuvent &ecirc;tre synth&eacute;tis&eacute;s avec les statistiques que vous avez choisies. 
+            </p>
+            <p>
+            </p>
+            <p>La  <b>taille du groupe</b> pour les groupes ou une <b>couche surfacique</b> doit &ecirc;tre d&eacute;finie.
+            </p>
+        </div>
+    </div>
+    <div id="inputBins">
+        <div><h2>Choisir une distance pour générer les groupes et dans laquelle effectuer l'agrégation</h2></div>
+        <hr/>
+        <div>
+            <p>La distance utilis&eacute;e pour g&eacute;n&eacute;rer les groupes o&ugrave; agr&eacute;ger vos points en entr&eacute;e. Pour un groupe carr&eacute;, la taille repr&eacute;sente la hauteur du carr&eacute;. Pour un hexagone, la taille repr&eacute;sente la hauteur de l'hexagone (&agrave; partir des c&ocirc;t&eacute;s parall&egrave;les).  
+            </p>
+            <p>La  <b>taille du groupe</b> pour les groupes ou une <b>couche surfacique</b> doit &ecirc;tre d&eacute;finie.
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Agréger à l'aide des tranches horaires (facultatif)</h2></div>
+        <hr/>
+        <div>
+            <p>Si le temps est activ&eacute; sur la couche ponctuelle en entr&eacute;e et qu'il est de type instantan&eacute;, vous pouvez effectuer l'analyse &agrave; l'aide des tranches horaires.  Vous pouvez d&eacute;finir trois param&egrave;tres lorsque vous utilisez le temps&nbsp;:
+                <ul>
+                    <li>  <b>Intervalle temporel</b>
+                    </li>
+                    <li> <b>Phase</b>
+                    </li>
+                    <li> <b>R&eacute;f&eacute;rence temporelle</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Imaginez que vous poss&eacute;dez des donn&eacute;es repr&eacute;sentant une ann&eacute;e et que vous voulez effectuer une analyse &agrave; l'aide des tranches hebdomadaires. Pour ce faire, vous d&eacute;finissez  <b>Intervalle temporel</b> sur <code>1&nbsp;semaine</code>.
+            </p>
+            <p> Imaginez que vous poss&eacute;dez des donn&eacute;es repr&eacute;sentant une ann&eacute;e et que vous voulez effectuer une analyse &agrave; l'aide de la premi&egrave;re semaine du mois. Pour ce faire, vous d&eacute;finissez <b>Intervalle temporel</b> sur <code>1&nbsp;semaine</code>, <b>Phase</b> sur <code>1&nbsp;mois</code> et <b>R&eacute;f&eacute;rence temporelle</b> sur <code>1er&nbsp;janvier &agrave; midi</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>Intervalle temporel dans lequel effectuer l'agrégation</h2></div>
+        <hr/>
+        <div>
+            <p>Intervalle de temps utilis&eacute; d&eacute;couper les donn&eacute;es. Un intervalle temporel peut &ecirc;tre utilis&eacute; seul ou avec le param&egrave;tre  <b>Phase</b> ou <b>R&eacute;f&eacute;rence temporelle</b>.
+            </p>
+            <p> Pour cr&eacute;er des tranches horaires qui ont lieu tous les lundis de 9&nbsp;h&nbsp;00 &agrave; 10&nbsp;h&nbsp;00, d&eacute;finissez <b>Intervalle temporel</b> sur <code>1&nbsp;heure</code>, <b>Phase</b> sur <code>1&nbsp;semaine</code> et <b>R&eacute;f&eacute;rence temporelle</b> sur <code>9&nbsp;h&nbsp;00 un lundi</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>Phase dans laquelle effectuer l'agrégation</h2></div>
+        <hr/>
+        <div>
+            <p> Phase utilis&eacute;e pour calculer une tranche horaire. Une <b>phase</b> peut &ecirc;tre utilis&eacute;e seule ou avec <b>Intervalle temporel</b>, avec <b>R&eacute;f&eacute;rence temporelle</b>, ou avec les deux param&egrave;tres <b>Intervalle temporel</b> et <b>R&eacute;f&eacute;rence temporelle</b>.
+            </p>
+            <p> Pour cr&eacute;er des tranches horaires qui ont lieu tous les lundis de 9&nbsp;h&nbsp;00 &agrave; 10&nbsp;h&nbsp;00, d&eacute;finissez <b>Intervalle temporel</b> sur <code>1&nbsp;heure</code>, <b>Phase</b> sur <code>1&nbsp;semaine</code> et <b>R&eacute;f&eacute;rence temporelle</b> sur <code>9&nbsp;h&nbsp;00 un lundi</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Heure de référence permettant d'aligner les tranches horaires</h2></div>
+        <hr/>
+        <div>
+            <p>La date et l'heure utilis&eacute;es pour aligner les tranches horaires.  <b>Phase</b> commence &agrave; partir de l'heure de r&eacute;f&eacute;rence et progresse vers l'arri&egrave;re.
+            </p>
+            <p> Pour cr&eacute;er des tranches horaires qui ont lieu tous les lundis de 9&nbsp;h&nbsp;00 &agrave; 10&nbsp;h&nbsp;00, d&eacute;finissez <b>Intervalle temporel</b> sur <code>1&nbsp;heure</code>, <b>Phase</b> sur <code>1&nbsp;semaine</code> et <b>R&eacute;f&eacute;rence temporelle</b> sur <code>9&nbsp;h&nbsp;00 un lundi</code>.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Ajouter des statistiques (facultatif)</h2></div>
+        <hr/>
+        <div>
+            <p> Vous pouvez calculer des statistiques sur des entit&eacute;s synth&eacute;tis&eacute;es. Dans les champs num&eacute;riques, vous pouvez calculer ce qui suit&nbsp;:
+                <ul>
+                    <li>Effectif
+                    </li>
+                    <li>Moyenne
+                    </li>
+                    <li>Min
+                    </li>
+                    <li>Max.
+                    </li>
+                    <li>Plage
+                    </li>
+                    <li>Variance
+                    </li>
+                    <li>Ecart type
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Dans les champs de cha&icirc;ne, vous pouvez calculer ce qui suit&nbsp;:
+                <ul>
+                    <li>Effectif
+                    </li>
+                    <li>Tout&nbsp;: cette statistique est un &eacute;chantillon al&eacute;atoire d'une valeur de cha&icirc;ne dans le champ sp&eacute;cifi&eacute;.
+                    </li>
+                </ul>
+                Toutes les statistiques sont calcul&eacute;es sur des valeurs non nulles. La couche obtenue contient un nouveau champ pour chaque statistique calcul&eacute;e. Vous pouvez ajouter des statistiques en choisissant un attribut et une statistique. 
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>Référence spatiale (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>Il s'agit d'un param&egrave;tre temporaire de la version pr&eacute;liminaire qui permet de d&eacute;finir la r&eacute;f&eacute;rence spatiale de traitement. De nombreux outils Big Data n&eacute;cessitent l'utilisation d'un syst&egrave;me de coordonn&eacute;es projet&eacute;es comme r&eacute;f&eacute;rence spatiale pour le traitement. Par d&eacute;faut, l'outil utilise le syst&egrave;me de coordonn&eacute;es en entr&eacute;e, mais &eacute;choue s'il s'agit d'un syst&egrave;me de coordonn&eacute;es g&eacute;ographiques. Pour d&eacute;finir un syst&egrave;me de coordonn&eacute;es projet&eacute;es, saisissez le WKID. Par exemple,  <b>Web Mercator</b> est saisi sous la forme <code>3857</code>.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Choisir un stockage des données</h2></div>
+        <hr/>
+        <div>
+            <p>Il s'agit d'un param&egrave;tre temporaire de la version pr&eacute;liminaire qui permet de d&eacute;finir le stockage des donn&eacute;es o&ugrave; les r&eacute;sultats sont enregistr&eacute;s. Les deux stockages des donn&eacute;es font partie d' ArcGIS Data Store. Si vous s&eacute;lectionnez le stockage des donn&eacute;es spatio-temporelles alors qu'aucun n'est install&eacute;, l'outil &eacute;choue. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nom de la couche résultat</h2></div>
+        <hr/>
+        <div>
+            <p> Il s'agit du nom de la couche qui sera cr&eacute;&eacute;e dans votre page <b>Mon contenu</b> et ajout&eacute;e &agrave; la carte.  Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, l'outil &eacute;choue.
+            </p>
+            <p>La zone de liste d&eacute;roulante  <b>Enregistrer le r&eacute;sultat dans</b> vous permet de sp&eacute;cifier le nom d'un dossier dans <b>Mon contenu</b> o&ugrave; le r&eacute;sultat sera enregistr&eacute;.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

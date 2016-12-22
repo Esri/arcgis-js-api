@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Portali analüüsikeskkonna sätted</h2><p/>
+        <h2></h2>
+        <hr/>
+    <p> Anal&uuml;&uuml;sikeskkonna s&auml;tted rakendustes Portal for ArcGIS ja  ArcGIS Online. 
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="overwriteResult">
+        <div><h2>Ülekirjutamise tulemuse kiht</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Olemasolevate kihtide &uuml;lekirjutamise suvand.  Kui see ruut on m&auml;rgitud ja sama nimega kiht on sisu hulgas juba olemas, kirjutatakse see &uuml;le.
+            </p>
+            <p>
+                <ul>
+                    <li>M&auml;rgitud &ndash; kui sama nimega kiht on sisu hulgas juba olemas, kirjutatakse see &uuml;le. V&auml;ljundil on sama koordinaats&uuml;steem, mis sisendil.
+                    </li>
+                    <li>M&auml;rkimata &ndash; kui sisestatud tulemkihi nimi on juba olemas, ilmneb t&otilde;rge ja tulemkiht tuleb enne t&ouml;&ouml;riista k&auml;ivitamist &uuml;mber nimetada. See on vaikimisi valitud.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="closeAnalysisWidget">
+        <div><h2>Sulge analüüsimoodul pärast analüüsi teostamist</h2></div>
+        <hr/>
+        <div>
+            
+            <p>V&otilde;imalus j&auml;tta anal&uuml;&uuml;sidialoog t&ouml;&ouml;riista t&ouml;&ouml;tlemise ajal avatuks ja lubatuks.   See s&auml;te v&otilde;imaldab teil anal&uuml;&uuml;siparameetreid h&otilde;lpsalt muuta samal ajal, kui eelmine anal&uuml;&uuml;simine on j&auml;tkuvalt k&auml;imas. Anal&uuml;&uuml;simine on iteratiivne protsess ja hoides t&ouml;&ouml;riista dialoogi avatuna, saate parameetrit h&otilde;lpsalt muuta ning anal&uuml;&uuml;si korrata.
+            </p>
+            <p>
+                <ul>
+                    <li>M&auml;rgitud &ndash; anal&uuml;&uuml;sit&ouml;&ouml;riista aken suletakse ja fookusesse v&otilde;etakse taas sisukord. See on vaikimisi valitud
+                    </li>
+                    <li>M&auml;rkimata &ndash; anal&uuml;&uuml;sit&ouml;&ouml;riista aken j&auml;&auml;b avatuks ja lubatuks.   
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="storeAnalysisResults">
+        <div><h2>Salvesta analüüsitulemused objektiteenustena</h2></div>
+        <hr/>
+        <div>
+            
+            <p>V&otilde;imalus m&auml;&auml;rata, kas anal&uuml;&uuml;situlemus luuakse objektikihi v&otilde;i objektide kogumina.
+            </p>
+            <p>
+                <ul>
+                    <li>M&auml;rgitud &ndash; anal&uuml;&uuml;situlemus luuakse objektikihina ja sisusse luuakse &uuml;ksus. See on vaikimisi valitud.
+                    </li>
+                    <li>M&auml;rkimata &ndash; anal&uuml;&uuml;situlemus luuakse objektide kogumina. Objektide kogumid salvestatakse veebikaardis.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputCoordinateSystem">
+        <div><h2>Väljundi koordinaatsüsteem</h2></div>
+        <hr/>
+        <div>
+            <p>Rasteranal&uuml;&uuml;si keskkonnas&auml;te, mida kasutatakse tulemkihi koordinaats&uuml;steemi m&auml;&auml;ramiseks.    
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Sama, mis sisend</b> &ndash; anal&uuml;&uuml;situlemus on samas koordinaats&uuml;steemis nagu sisend. See on vaikimisi valitud.
+                    </li>
+                    <li> <b>Nagu m&auml;&auml;ratud</b> &ndash; valige anal&uuml;&uuml;situlemuste koordinaats&uuml;steem. Kui see suvand on valitud, kl&otilde;psake gloobuseikooni, et teha valik tuntud koordinaats&uuml;steemide loendist v&otilde;i lisage koordinaats&uuml;steemi WKID vastavale v&auml;ljale.
+                    </li>
+                    <li> <b>Kiht
+&lt;name&gt;</b> &ndash; valige oma veebikaardi olemasolev kiht, mida kasutatakse anal&uuml;&uuml;situlemuse koordinaats&uuml;steemi m&auml;&auml;ramiseks.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingCoordinateSystem">
+        <div><h2>Koordinaatsüsteemi töötlemine</h2></div>
+        <hr/>
+        <div>
+            <p>GeoAnalytics parameeter, mida kasutatakse selleks, et m&auml;&auml;rata anal&uuml;&uuml;si teostamisel kasutatav koordinaats&uuml;steem.   
+            </p>
+            <p>GeoAnalytics keskkonnas on osade anal&uuml;&uuml;side puhul n&otilde;utav, et t&ouml;&ouml;tlemine teostatakse tasapinnalises ristkoordinaatide koordinaats&uuml;steemis. Mis tahes t&ouml;&ouml;riist, kus on rakendatud andmete v&otilde;i lineaarsete m&otilde;&otilde;t&uuml;hikute r&uuml;hmitamist, n&otilde;uab tasapinnalist ristkoordinaatide s&uuml;steemi. 
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Sama, mis sisend</b> &ndash; anal&uuml;&uuml;si t&ouml;&ouml;deldakse samas koordinaats&uuml;steemis nagu sisendit. See on vaikimisi valitud.
+                    </li>
+                    <li> <b>Nagu m&auml;&auml;ratud</b> &ndash; valige anal&uuml;&uuml;si t&ouml;&ouml;tlemise koordinaats&uuml;steem. Kui see suvand on valitud, kl&otilde;psake gloobuseikooni, et teha valik tuntud tasapinnaliste ristkoordinaatide s&uuml;steemide loendist v&otilde;i lisage koordinaats&uuml;steemi WKID vastavale v&auml;ljale.
+                    </li>
+                    <li> <b>Kiht
+&lt;name&gt;</b> &ndash; valige oma veebikaardi olemasolev kiht. Valitud kihi koordinaats&uuml;steemi kasutatakse anal&uuml;&uuml;si t&ouml;&ouml;tlemise koordinaats&uuml;steemi m&auml;&auml;ramiseks.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingExtent">
+        <div><h2>Kuvaulatus</h2></div>
+        <hr/>
+        <div>
+            <p>Parameeter, millega m&auml;&auml;ratakse anal&uuml;&uuml;si teostamisel kasutatav ulatus v&otilde;i piir. K&otilde;iki sisendobjekte, mis on t&auml;ielikult ulatuse piirides v&otilde;i mis l&otilde;ikuvad sellega, kasutatakse anal&uuml;&uuml;sis.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Vaikimisi</b> &ndash; kasutab t&ouml;&ouml;riista pakutud ulatust.
+                    </li>
+                    <li> <b>Nagu m&auml;&auml;ratud</b> &ndash; sisestage koordinaadid k&auml;sitsi, et m&auml;&auml;ratleda ulatus.
+                    </li>
+                    <li> <b>Kiht
+&lt;name&gt;</b> &ndash; valige oma veebikaardi olemasolev kiht. Valitud kihi ruumilist ulatust kasutatakse anal&uuml;&uuml;si t&ouml;&ouml;tlemise ulatuse m&auml;&auml;ramiseks. 
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="snapRaster">
+        <div><h2>Rastri snäp</h2></div>
+        <hr/>
+        <div>
+            <p>Kui m&auml;&auml;rate rasteranal&uuml;&uuml;si teostamise ajal keskkonna  <b>Rastri sn&auml;p</b>, reguleeritakse v&auml;ljundi rasterkihi ulatust, et see &uuml;htiks m&auml;&auml;ratud <b>Rastri sn&auml;pi</b> kihi lahtrite joondusega.
+            </p>
+        </div>
+    </div>
+    <div id="cellSize">
+        <div><h2>Piksli suurus</h2></div>
+        <hr/>
+        <div>
+            <p>Rasteranal&uuml;&uuml;si teostamise ajal m&auml;&auml;rab see keskkond piksli suuruse v&otilde;i resolutsiooni, mida kasutatakse v&auml;ljundi rasterkihi loomiseks. V&auml;ljundi resolutsiooni vaikimisi v&auml;&auml;rtuse m&auml;&auml;rab sisendi rasterkihi suurim piksli k&uuml;ljepikkuse suurus.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Sisendite miinimumarv</b> &ndash; kasutage k&otilde;ikide sisendkihtide v&auml;ikseimat piksli suurust.
+                    </li>
+                    <li> <b>Sisendite maksimumarv</b> &ndash; kasutage k&otilde;ikide sisendkihtide suurimat piksli suurust. See on vaikimisi valitud.
+                    </li>
+                    <li> <b>Nagu m&auml;&auml;ratud</b> &ndash; sisestage arvv&auml;&auml;rtus, et m&auml;&auml;rata piksli suurus. Kui see on valitud, on vaikev&auml;&auml;rtus 1.
+                    </li>
+                    <li> <b>Kiht &lt;name&gt;</b> &ndash; m&auml;&auml;rab valitud rasterkihi piksli suuruse.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="mask">
+        <div><h2>Mask</h2></div>
+        <hr/>
+        <div>
+            <p> Kasutage rasteranal&uuml;&uuml;si teostamise ajal keskkonda <b>Mask</b>, et m&auml;&auml;rata kiht, mida kasutatakse huvipakkuva piirkonna m&auml;&auml;ratlemiseks. Anal&uuml;&uuml;simisel v&otilde;etakse arvesse ainult neid piksleid, mis j&auml;&auml;vad anal&uuml;&uuml;simaski piiresse.
+            </p>
+            <ul>
+                <li>Mask v&otilde;ib olla kas raster- v&otilde;i objektikiht.
+                </li>
+                <li>Kui anal&uuml;&uuml;simask on raster, v&otilde;etakse maski m&auml;&auml;ratlemisel arvesse k&otilde;iki piksleid, millel on v&auml;&auml;rtus. Maski rastri pikslid, mille v&auml;&auml;rtus on NoData, loetakse olevat v&auml;ljaspool maski ja need on anal&uuml;&uuml;situlemuse kihis v&auml;&auml;rtusega NoData. 
+                </li>
+                <li>Kui anal&uuml;&uuml;simask on objektikiht, teisendatakse see k&auml;ivitamisel sisemiselt rastriks. Sel p&otilde;hjusel peaksite veenduma, et  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">Piksli suurus</a> ja <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">Rastri sn&auml;p</a> oleksid anal&uuml;&uuml;si jaoks &otilde;igesti m&auml;&auml;ratud.
+                </li>
+            </ul>
+             
+        </div>
+    </div>
+</div>
+</html>

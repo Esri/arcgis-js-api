@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.18/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.19/esri/copyright.txt for details.
 
 define(["../../declare","dojo/dom-construct","./DataBrowser/DataBrowserBase","./DataBrowser/VariableStore","./DataBrowser/_GeoenrichmentVariables","./DataBrowser/DataBrowserContentFactory","./ProgressHandler"],function(r,e,s,t,a,o,n){return r("esri.dijit.geoenrichment.DataBrowser",s,{_progressHandler:null,postCreate:function(){if(!this.variables){var s=r([t,a]);this.variables=new s}this._contentFactory||(this._contentFactory=new o),this._progressHandler||(this._progressHandler=new n(e.create("div",{},this.domNode))),this.own(this._progressHandler),this.inherited(arguments)},showProgress:function(r){return this._progressHandler.showProgress(r)}})});

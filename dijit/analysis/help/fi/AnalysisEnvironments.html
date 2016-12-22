@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Portaalin analyysiympäristön asetukset</h2><p/>
+        <h2></h2>
+        <hr/>
+    <p> Ymp&auml;rist&ouml;asetukset analyysille ohjelmissa Portal for ArcGIS ja  ArcGIS Online. 
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="overwriteResult">
+        <div><h2>Korvaa tuloskarttataso</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Vaihtoehto olemassa olevien karttatasojen korvaamiseksi. Kun t&auml;m&auml; on valittu, jos samanniminen karttataso on jo olemassa sis&auml;ll&ouml;ss&auml;si, se korvataan.
+            </p>
+            <p>
+                <ul>
+                    <li>Valittu: samanniminen karttataso on jo olemassa sis&auml;ll&ouml;ss&auml;si, ja se korvataan. Tulosaineistolla on sama koordinaattij&auml;rjestelm&auml; kuin l&auml;ht&ouml;aineistolla.
+                    </li>
+                    <li>Ei valittu: jos annettu tuloskarttatason nimi on jo olemassa, tapahtuu virhe ja tuloskarttataso pit&auml;&auml; nimet&auml; uudelleen ennen ty&ouml;kalun suorittamista. T&auml;m&auml; on oletusarvo.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="closeAnalysisWidget">
+        <div><h2>Sulje analyysipienoisohjelma analyysin suorittamisen jälkeen</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Valinta, joka pit&auml;&auml; analyysivalintaikkunan auki ja k&auml;yt&ouml;ss&auml; ty&ouml;kalun k&auml;sitelless&auml; tietoja. T&auml;ll&auml; asetuksella pystyt tekem&auml;&auml;n helposti muutoksia analyysiparametreihisi niin, ett&auml; edellinen analyysiteht&auml;v&auml; pysyy k&auml;ynniss&auml;. Analyysi on toistoprosessi, ja kun ty&ouml;kalun valintaikkuna pidet&auml;&auml;n auki, sen avulla voit tehd&auml; helposti muutoksia parametreihin ja suorittaa analyysin uudelleen.
+            </p>
+            <p>
+                <ul>
+                    <li>Valittu: analyysity&ouml;kalun ikkuna sulkeutuu, ja tarkennus palaa sis&auml;llysluetteloon. T&auml;m&auml; on oletusarvo
+                    </li>
+                    <li>Valitsematta: analyysity&ouml;kalun ikkuna pysyy auki ja k&auml;yt&ouml;ss&auml;.   
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="storeAnalysisResults">
+        <div><h2>Tallenna analyysin tulokset kohdepalveluina</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Valinta, joka m&auml;&auml;ritt&auml;&auml;, luodaanko analyysisi tulos kohdekarttatasona vai kohteiden kokoelmana.
+            </p>
+            <p>
+                <ul>
+                    <li>Valittu: Analyysisi tulokset luovat kohdekarttatason, ja sis&auml;lt&ouml;&ouml;si luodaan vastaava kohde. T&auml;m&auml; on oletusarvo.
+                    </li>
+                    <li>Valitsematta: Analyysin tulokset luovat kohteiden kokoelman. Kohteiden kokoelmat tallennetaan web-karttaasi.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputCoordinateSystem">
+        <div><h2>Tulosaineiston koordinaattijärjestelmä</h2></div>
+        <hr/>
+        <div>
+            <p>Rasterianalyysin ymp&auml;rist&ouml;asetus, joka m&auml;&auml;ritt&auml;&auml; tuloskarttatason koordinaattij&auml;rjestelm&auml;n.    
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Sama kuin l&auml;ht&ouml;aineisto</b>: analyysisi tulos k&auml;ytt&auml;&auml; samaa koordinaattij&auml;rjestelm&auml;&auml; kuin l&auml;ht&ouml;aineisto. T&auml;m&auml; on oletusarvo.
+                    </li>
+                    <li> <b>Kuten m&auml;&auml;ritetty</b>: Valitse koordinaattij&auml;rjestelm&auml; analyysisi tuloksille. Kun t&auml;m&auml; valinta on valittu, tee valintasi tunnettujen koordinaattij&auml;rjestelmien luettelosta napsauttamalla maapallokuvaketta tai lis&auml;&auml; koordinaatistotieto (WKID) sille tarkoitettuun ruutuun.
+                    </li>
+                    <li> <b>Karttataso
+&lt;name&gt;</b>: valitse web-kartastasi olemassa oleva karttataso, jota k&auml;tyet&auml;&auml;n m&auml;&auml;ritt&auml;m&auml;&auml;n analyysin tuloksen koodinaattij&auml;rjestelm&auml;.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingCoordinateSystem">
+        <div><h2>Käsittelyn koordinaattijärjestelmä</h2></div>
+        <hr/>
+        <div>
+            <p>GeoAnalytics-ymp&auml;rist&ouml;asetus, jota k&auml;ytet&auml;&auml;n m&auml;&auml;ritt&auml;m&auml;&auml;n koordinaattij&auml;rjestelm&auml;, jota analyysi k&auml;ytt&auml;&auml; analyysin suorittamisen aikana.   
+            </p>
+            <p>GeoAnalyticsin tapauksessa osa analyysist&auml; edellytt&auml;&auml;, ett&auml; k&auml;sittely suoritetaan projisoidussa koordinaattij&auml;rjestelm&auml;ss&auml;. Kaikkien ty&ouml;kalujen, joissa on k&auml;yt&ouml;ss&auml; datan lokerointi tai lineaariset yksik&ouml;t, pit&auml;&auml; k&auml;ytt&auml;&auml; projisoitua koordinaattij&auml;rjestelm&auml;&auml;. 
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Sama kuin l&auml;ht&ouml;aineisto</b>: Analyysisi k&auml;sitell&auml;&auml;n samassa koordinaattij&auml;rjestelm&auml;ss&auml; kuin l&auml;ht&ouml;aineisto. T&auml;m&auml; on oletusarvo.
+                    </li>
+                    <li> <b>Kuten m&auml;&auml;ritetty</b>: Valitse koordinaattij&auml;rjestelm&auml; analyysin k&auml;sittely&auml; varten. Kun t&auml;m&auml; valinta on valittu, tee valintasi tunnettujen projisoitujen koordinaattij&auml;rjestelmien luettelosta napsauttamalla maapallokuvaketta tai lis&auml;&auml; koordinaatistotieto (WKID) sille tarkoitettuun ruutuun.
+                    </li>
+                    <li> <b>Karttataso
+&lt;name&gt;</b>: Valitse web-kartastasi olemassa oleva karttataso.  Valittua karttatason koordinaattij&auml;rjestelm&auml;&auml; k&auml;ytet&auml;&auml;n analyysin k&auml;sittelyss&auml; k&auml;ytett&auml;v&auml;n koordinaattij&auml;rjestelm&auml;n m&auml;&auml;ritt&auml;miseen.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingExtent">
+        <div><h2>Laajuus</h2></div>
+        <hr/>
+        <div>
+            <p>Ymp&auml;rist&ouml;asetus, jota k&auml;ytet&auml;&auml;n m&auml;&auml;ritt&auml;m&auml;&auml;n laajuus tai raja, jota k&auml;ytet&auml;&auml;n analyysin suorittamisen aikana. Analyysiss&auml; k&auml;ytet&auml;&auml;n kaikkia l&auml;ht&ouml;aineiston kohteita, jotka ovat kokonaan m&auml;&auml;ritetyss&auml; laajuudessa tai leikkaavat sen kanssa.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Oletusarvo</b>: k&auml;ytt&auml;&auml; ty&ouml;kalun tuottamaa laajuutta.
+                    </li>
+                    <li> <b>Kuten m&auml;&auml;ritetty</b>: m&auml;&auml;rit&auml; laajuus kirjoittamalla koordinaatit manuaalisesti.
+                    </li>
+                    <li> <b>Karttataso
+&lt;name&gt;</b>: Valitse web-kartastasi olemassa oleva karttataso. Valittua karttatason laajuutta k&auml;ytet&auml;&auml;n analyysin k&auml;sittelyss&auml; k&auml;ytett&auml;v&auml;n laajuuden m&auml;&auml;ritt&auml;miseen. 
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="snapRaster">
+        <div><h2>Kohdistusrasteri</h2></div>
+        <hr/>
+        <div>
+            <p>Kun rasterianalyysi suoritetaan,  <b>Kohdistusrasteri</b>-valinnan asetus muuttaa tulosaineiston rasteritason laajuutta niin, ett&auml; se vastaa m&auml;&auml;ritetyn <b>Kohdistusrasteri</b>-tason solujen kohdistusta.
+            </p>
+        </div>
+    </div>
+    <div id="cellSize">
+        <div><h2>Solukoko</h2></div>
+        <hr/>
+        <div>
+            <p>Kun rasterianalyysi suoritetaan, t&auml;m&auml; ymp&auml;rist&ouml; asettaa solukoon tai tarkkuuden sellaiseksi, jota k&auml;ytet&auml;&auml;n tulosaineiston rasteritason luontiin. L&auml;ht&ouml;aineiston rasteritason suurin solukoko m&auml;&auml;ritt&auml;&auml; tulosaineiston oletustarkkuuden.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>L&auml;ht&ouml;aineistojen v&auml;himm&auml;ism&auml;&auml;r&auml;</b>: k&auml;yt&auml; l&auml;ht&ouml;aineiston karttatasojen pienint&auml; solukokoa.
+                    </li>
+                    <li> <b>L&auml;ht&ouml;aineistojen enimm&auml;ism&auml;&auml;r&auml;</b>: K&auml;yt&auml; kaikkien l&auml;ht&ouml;aineiston karttatasojen suurinta solukokoa. T&auml;m&auml; on oletusarvo.
+                    </li>
+                    <li> <b>Kuten m&auml;&auml;ritetty</b>: M&auml;&auml;rit&auml; numeroarvo, joka m&auml;&auml;ritt&auml;&auml; solukoon. Jos t&auml;m&auml; valitaan, oletusarvo on 1.
+                    </li>
+                    <li> <b>Karttataso &lt;name&gt;</b>: m&auml;&auml;ritt&auml;&auml; valitun rasteritason solukoon.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="mask">
+        <div><h2>Maski</h2></div>
+        <hr/>
+        <div>
+            <p> Kun rasterianalyysi&auml; suoritetaan, k&auml;yt&auml; <b>Maski</b>-ymp&auml;rist&ouml;&auml; kiinnostusalueen m&auml;&auml;ritt&auml;miseen k&auml;ytett&auml;v&auml;n karttatason m&auml;&auml;ritt&auml;miseen. Vain ne solut, jotka kuuluvat analyysin maskiin, huomioidaan analyysitoimenpiteess&auml;.
+            </p>
+            <ul>
+                <li>Maski voi olla joko rasteri tai kohdekarttataso.
+                </li>
+                <li>Jos analyysimaski on rasteri, kaikki arvon sis&auml;lt&auml;v&auml;t solut m&auml;&auml;ritt&auml;v&auml;t maskin. Maskirasterin solut, joiden arvona on NoData, ovat maskin ulkopuolella, ja niiden arvona on NoData analyysin tuloskarttatasossa. 
+                </li>
+                <li>Jos analyysin maski on kohdekarttataso, se muunnetaan sis&auml;isesti rasteriksi suorituksen aikana. T&auml;st&auml; syyst&auml; sinun on varmistettava, ett&auml;  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">Solukoko</a>- ja <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">Kohdistusrasteri</a>-asetus asetetaan oikein analyysi&auml; varten.
+                </li>
+            </ul>
+             
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Unire obiecte spaţiale</h2><p/>
+        <h2><img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" alt="Unire obiecte spaţiale"></h2>
+        <hr/>
+    <p>Activitatea Unire obiecte spaţiale funcţionează cu două straturi tematice. Unire obiecte spaţiale uneşte atribute dintr-un obiect spaţial &icirc;n altul &icirc;n baza relaţiilor spaţiale, temporale şi de atribute sau a unei combinaţii a acestora. Instrumentul determină toate obiectele spaţiale de intrare care respectă condiţiile de unire specificate şi uneşte al doilea strat tematic de intrare cu primul. Opţional, puteţi uni toate obiectele spaţiale cu obiectele spaţiale corespunzătoare sau puteţi rezuma obiectele spaţiale corespunzătoare.
+    </p>
+    <p>Unire obiecte spaţiale pot fi aplicată punctelor, liniilor, suprafeţelor şi tabelelor. O unire temporală necesită ca datele de intrare să fie legate de timp, iar o unire spaţială necesită ca datele să aibă o geometrie. 
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="targetLayer">
+        <div><h2>Alegeţi un strat tematic pentru a uni obiecte spaţiale cu</h2></div>
+        <hr/>
+        <div>
+            <p>Stratul tematic la care se vor uni obiecte spaţiale. 
+            </p>
+            <p>&Icirc;n afară de a alege un strat tematic din harta dvs., puteţi selecta opţiunile  <b>Răsfoire straturi tematice</b> &icirc;n partea inferioară a listei verticale pentru a răsfoi conţinutul pentru stratul tematic sau setul de date pentru partajarea de fişiere big data.  
+            </p>
+        </div>
+    </div>
+    <div id="joinLayer">
+        <div><h2>Alegeţi un strat tematic pentru unire</h2></div>
+        <hr/>
+        <div>
+            <p>Stratul tematic care va fi unit la primul strat tematic de intrare.
+            </p>
+            <p>&Icirc;n afară de a alege un strat tematic din harta dvs., puteţi selecta opţiunile  <b>Răsfoire straturi tematice</b> &icirc;n partea inferioară a listei verticale pentru a răsfoi conţinutul pentru stratul tematic sau setul de date pentru partajarea de fişiere big data.  
+            </p>
+        </div>
+    </div>
+    <div id="joinOperation">
+        <div><h2>Alegeţi operaţia de unire</h2></div>
+        <hr/>
+        <div>
+            <p>Aceasta determină cum vor fi gestionate unirile dintre straturile tematice de intrare dacă mai multe obiecte spaţiale unite au aceeaşi relaţie cu stratul tematic unit. Există două operaţii de unire dintre care să alegeţi:
+                <ul>
+                    <li> <b>Unire unu la unu</b> - Această opţiune uneşte toate obiectele spaţiale corespunzătoare cu stratul tematic de unire.
+                    </li>
+                    <li> <b>Unire unu la mai multe</b> - Această opţiune rezumă toate obiectele spaţiale corespunzătoare cu fiecare obiect spaţial unit.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>De exemplu, să presupunem că dorim să găsim supermarketurile aflate pe o rază de 5 kilometri faţă de o piaţă pentru fermieri.   &Icirc;n acest caz, stratul tematic care este unit are un singur obiect spaţial care reprezintă piaţa pentru fermieri, iar obiectele spaţiale care sunt unite reprezintă supermarketurile care au atribute precum v&acirc;nzările totale anuale. Prin intermediul instrumentului  <b>Unire obiecte spaţiale</b>, aflăm că cinci supermarketuri &icirc;ndeplinesc respectivele criterii. Dacă am specifica o operaţiune de unire de tip <b>Unire unu la unu</b>, am avea cinci obiecte spaţiale &icirc;n rezultatul nostru, fiecare r&acirc;nd reprezent&acirc;nd piaţa pentru fermieri şi un supermarket. Dacă am specifica o relaţie de tip <b>Unire unu la mai multe</b>, am avea un obiect spaţial reprezent&acirc;nd piaţa pentru fermieri şi informaţiile rezumate despre supermarketuri, precum numărul (5) şi alte statistici cum ar fi suma v&acirc;nzărilor anuale.
+            </p>
+        </div>
+    </div>
+    <div id="joinOptions">
+        <div><h2>Selectaţi tipul de uniri pe care aţi dori să le utilizaţi</h2></div>
+        <hr/>
+        <div>
+            <p>Puteţi aplica unul, două sau trei tipuri de uniri. Tipurile de uniri includ următoarele: 
+                <ul>
+                    <li> <b>Spaţială</b> - Utilizează o relaţie spaţială specificată pentru unirea obiectelor spaţiale. Aceasta necesită ca ambele straturi tematice să aibă o geometrie.
+                    </li>
+                    <li> <b>Temporală</b> - Utilizează o relaţie temporală specificată pentru unirea obiectelor spaţiale. Aceasta necesită ca &icirc;n ambele straturi tematice să fie activat timpul.
+                    </li>
+                    <li> <b>Atribut</b> - Uneşte obiecte spaţiale &icirc;n baza c&acirc;mpurilor egale.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>
+            </p>
+        </div>
+    </div>
+    <div id="spatialRelationship">
+        <div><h2>Unire spaţială</h2></div>
+        <hr/>
+        <div>
+            <p> Relaţia spaţială care va determina dacă obiectele spaţiale sunt unite unele cu altele. Relaţiile disponibile vor depinde de tipul de geometrie (punct, linie poligonală, poligoane) care este utilizat pentru obiectele spaţiale de intrare. Printre relaţiile disponibile se numără următoarele:
+                <ul>
+                    <li> <b>Intersectează</b> - Obiectele spaţiale vor fi potrivite dacă se intersectează.
+                    </li>
+                    <li> <b>Este egal cu</b> - Obiectele spaţiale vor fi potrivite dacă au aceeaşi geometrie.
+                    </li>
+                    <li> <b>Aproape</b> - Obiectele spaţiale vor fi potrivite dacă se află la o distanţă specificată unele de altele.
+                    </li>
+                    <li> <b>Conţine</b> - Obiectele spaţiale vor fi potrivite dacă stratul tematic la care sunt unite este conţinut de obiectele spaţiale care sunt unite.
+                    </li>
+                    <li> <b>&Icirc;n interior</b> - Obiectele spaţiale vor fi potrivite dacă stratul tematic la care sunt unite se află &icirc;n obiectele spaţiale care sunt unite.
+                    </li>
+                    <li> <b>Atinge</b> - Obiectele spaţiale vor fi potrivite dacă au o graniţă care atinge obiectul spaţial cu care sunt unite.
+                    </li>
+                    <li> <b>Cruci</b> - Obiectele spaţiale vor fi potrivite dacă au un contur &icirc;ncrucişat.
+                    </li>
+                    <li> <b>Se suprapune</b> - Obiectele spaţiale vor fi unite dacă se suprapun.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="nearSpatial">
+        <div><h2></h2></div>
+        <hr/>
+        <div>
+            <p>Această distanţă specifică raza aplicată unei relaţii spaţiale &icirc;n apropiere.
+            </p>
+            <p>Să presupunem că aţi avea un set de date care reprezintă o centrală nucleară şi un set de date care reprezintă reşedinţe. Aţi putea seta o distanţă &icirc;n apropiere de 1 kilometru pentru a găsi casele pe o rază de 1 kilometru faţă de centrala nucleară. 
+            </p> 
+        </div>
+    </div>
+    <div id="temporalRelationship">
+        <div><h2>Unire temporală</h2></div>
+        <hr/>
+        <div>
+            <p>Relaţia temporală care va determina dacă obiectele spaţiale sunt unite unele cu altele. Această opţiune este disponibilă doar dacă timpul este activat &icirc;n ambele straturi tematice şi relaţiile disponibile vor depinde de tipul de timp (instantaneu sau interval) utilizat pentru obiectele spaţiale de intrare. Printre relaţiile disponibile se numără următoarele:
+                <ul>
+                    <li> <b>Se &icirc;nt&acirc;lneşte</b> - Obiectele spaţiale vor fi potrivite dacă primul &icirc;l &icirc;nt&acirc;lneşte pe al doilea.
+                    </li>
+                    <li> <b>&Icirc;nt&acirc;lnit de</b> - Obiectele spaţiale vor fi potrivite dacă primele sunt &icirc;nt&acirc;lnite de următoarele.
+                    </li>
+                    <li> <b>Se suprapune</b> - Obiectele spaţiale vor fi potrivite dacă primele se suprapun cu următoarele.
+                    </li>
+                    <li> <b>Suprapus de</b> - Obiectele spaţiale vor fi potrivite dacă primele sunt suprapuse de următoarele.
+                    </li>
+                    <li> <b>&Icirc;n timpul</b> - Obiectele spaţiale vor fi potrivite dacă primele se petrec &icirc;n timpul următoarelor.
+                    </li>
+                    <li> <b>Conţine</b> - Obiectele spaţiale vor fi potrivite dacă primul &icirc;l conţine pe al doilea.
+                    </li>
+                    <li> <b>Este egal cu</b> - Obiectele spaţiale vor fi potrivite dacă primul este egal cu al doilea.
+                    </li>
+                    <li> <b>Finalizează</b> - Obiectele spaţiale vor fi potrivite dacă primul &icirc;l finalizează pe al doilea.
+                    </li>
+                    <li> <b>Finalizat de</b> - Obiectele spaţiale vor fi potrivite dacă primele sunt finalizate de următoarele.
+                    </li>
+                    <li> <b>&Icirc;ncepe</b> - Obiectele spaţiale vor fi potrivite dacă primul &icirc;l &icirc;ncepe pe al doilea.
+                    </li>
+                    <li> <b>&Icirc;nceput de</b> - Obiectele spaţiale vor fi potrivite dacă primele sunt &icirc;ncepute de următoarele.
+                    </li>
+                    <li> <b>Intersectează</b> - Obiectele spaţiale sunt cartografiate dacă timpii se intersectează.
+                    </li>
+                    <li> <b>Aproape</b> - Obiectele spaţiale vor fi unite dacă se află unele l&acirc;ngă altele, determinate de un timp specificat.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="nearTemporal">
+        <div><h2></h2></div>
+        <hr/>
+        <div>
+            <p>Distanţa temporală specifică raza temporală unei relaţii temporale &icirc;n apropiere.
+            </p>
+            <p>Să presupunem că aveţi un strat tematic de incidente de navigaţie şi un strat tematic de urme GPS pentru un uragan. Aţi putea căuta incidente de navigaţie la o distanţă specificată de urmele uraganului at&acirc;t &icirc;n spaţiu (1 kilometru) c&acirc;t şi &icirc;n timp (5 ore). Aceasta ar duce la unirea &icirc;n spaţiu şi timp a incidentelor de navigaţie cu uraganele care s-au produs &icirc;n apropiere. 
+            </p>
+        </div>
+    </div>
+    <div id="attributeRelationship">
+        <div><h2>Unire atribute</h2></div>
+        <hr/>
+        <div>
+            <p>Această relaţie va potrivi valorile dintr-un c&acirc;mp dintr-un strat tematic cu valorile dintr-un c&acirc;mp din alt strat tematic. 
+            </p>
+            <p> De exemplu, să presupunem că am avea un strat tematic geografic pentru adresele rezidenţiale din toată ţara (inclusiv un c&acirc;mp <i>ZIP</i>) şi un set de date demografice tabulare privind sănătatea după codul ZIP (un c&acirc;mp denumit <i>HEALTHZIP</i>). Putem uni setul de date privind sănătatea cu datele rezidenţiale prin potrivirea c&acirc;mpului <i>ZIP</i> cu <i>HEALTHZIP</i>, ceea ce va duce la un strat tematic de reşedinţe cu datele corespunzătoare privind sănătatea.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Adăugare statistici (opţional)</h2></div>
+        <hr/>
+        <div>
+            <p>Dacă a fost selectată o opţiune de unire unu la mai multe, puteţi calcula statisticile din obiectele spaţiale unite.
+            </p>
+        </div>
+    </div>
+    <div id="joinCondition">
+        <div><h2>Crearea unei expresii după care să asociaţi obiectele spaţiale (opţional)</h2></div>
+        <hr/>
+        <div>
+            <p>Aplică o condiţie la c&acirc;mpurile specificate. Doar obiectele spaţiale cu c&acirc;mpuri care &icirc;ndeplinesc aceste condiţii vor fi unite.
+            </p>
+            <p>De exemplu, să presupunem că dorim să aplicăm o unire asupra setului de date doar pentru acele obiecte spaţiale &icirc;n care  <i>health_spending</i> este mai mare de 20 de procente din <i>income</i>.  Pentru a realiza acest lucru, aplicaţi o condiţie de unire pentru <code>target.health_spending &gt; (join.income * .20)</code> utiliz&acirc;nd c&acirc;mpul <i>health_spending</i> din primul set de date (setul de date cu care sunt unite obiectele spaţiale) şi c&acirc;mpul <i>income</i> din al doilea set de date (setul de date unit).
+            </p>
+            <p>Condiţiile pentru unire pot fi aplicate calculatorului de expresii.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Selectare depozit de date</h2></div>
+        <hr/>
+        <div>
+            <p>Acesta este un parametru temporar pentru pre-lansare, destinat setării depozitului de date &icirc;n care sunt salvate rezultatele. Ambele depozite de date fac parte din  ArcGIS Data Store. Dacă selectaţi depozitul de date spaţio-temporal dar nu aveţi unul instalat, instrumentul va eşua. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nume strat tematic rezultat</h2></div>
+        <hr/>
+        <div>
+            <p> Acesta este numele stratului tematic care va fi creat &icirc;n <b>Resursele mele</b> şi adăugat &icirc;n hartă.  Numele implicit se bazează pe numele instrumentului şi numele stratului tematic de intrare. Dacă stratul tematic există deja, instrumentul va eşua.
+            </p>
+            <p>Utiliz&acirc;nd caseta derulantă  <b>Salvare rezultat &icirc;n</b>, puteţi specifica numele unui director din <b>Resursele mele</b> &icirc;n care va fi salvat rezultatul.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Impostazioni d'ambiente per l'analisi in Portal</h2><p/>
+        <h2></h2>
+        <hr/>
+    <p> Impostazioni d'ambiente per l'analisi in Portal for ArcGIS e  ArcGIS Online. 
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="overwriteResult">
+        <div><h2>Sovrascrivi layer risultati</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Opzione per sovrascrivere i layer esistenti.    Quando l'opzione &egrave; selezionata, se nei contenuti personali esiste gi&agrave; un layer con lo stesso nome, questo verr&agrave; sovrascritto.
+            </p>
+            <p>
+                <ul>
+                    <li>Selezionata: se nei contenuti personali esiste gi&agrave; un layer con lo stesso nome, questo verr&agrave; sovrascritto. L'output avr&agrave; lo stesso sistema di coordinate dell'input.
+                    </li>
+                    <li>Deselezionata: se esiste gi&agrave; il nome del layer dei risultati specificato, si verificher&agrave; un errore e il layer dei risultati dovr&agrave; essere rinominato prima che lo strumento venga eseguito. Si tratta dell'impostazione predefinita.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="closeAnalysisWidget">
+        <div><h2>Chiudi widget di analisi dopo l'esecuzione dell'analisi</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Opzione per mantenere la finestra di dialogo dell'analisi aperta e abilitata mentre lo strumento &egrave; in esecuzione.     Questa impostazione consentir&agrave; di apportare facilmente modifiche ai parametri di analisi mentre continua l'esecuzione del lavoro di analisi precedente.  L'analisi &egrave; un processo iterativo e, mantenendo aperta la finestra di dialogo, consente di modificare facilmente i parametri ed eseguire di nuovo l'analisi.
+            </p>
+            <p>
+                <ul>
+                    <li>Selezionata: la finestra dello strumento di analisi verr&agrave; chiusa e verr&agrave; di nuovo visualizzato il sommario. Si tratta dell'impostazione predefinita.
+                    </li>
+                    <li>Deselezionata: la finestra dello strumento di analisi rimarr&agrave; aperta e abilitata.   
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="storeAnalysisResults">
+        <div><h2>Memorizza risultati di analisi come feature service</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Opzione per specificare se i risultati dell'analisi verranno creati come feature layer o come raccolta di feature.
+            </p>
+            <p>
+                <ul>
+                    <li>Selezionata: i risultati dell'analisi verranno creati come feature layer e verr&agrave; creato un elemento nei contenuti personali. Si tratta dell'impostazione predefinita.
+                    </li>
+                    <li>Deselezionata: i risultati dell'analisi verranno creati come raccolta di feature.    Le raccolte di feature sono memorizzate all'interno della mappa Web.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputCoordinateSystem">
+        <div><h2>Sistema di coordinate di output</h2></div>
+        <hr/>
+        <div>
+            <p>Impostazione d'ambiente per analisi raster utilizzata per definire il sistema di coordinate del layer dei risultati.    
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Lo stesso come input</b>: il risultato dell'analisi avr&agrave; lo stesso sistema di coordinate dell'input. Si tratta dell'impostazione predefinita.
+                    </li>
+                    <li> <b>Come specificato</b>: scegliere il sistema di coordinate per i risultati dell'analisi.   Quando questa opzione &egrave; selezionata, fare clic sull'icona del globo per selezionare da un elenco di sistemi di coordinate noti o aggiungere il WKID del riferimento spaziale nella casella fornita.
+                    </li>
+                    <li> <b>Layer
+&lt;nome&gt;</b>: scegliere un layer esistente nella mappa Web che verr&agrave; utilizzata per determinare il sistema di coordinate del risultato dell'analisi.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingCoordinateSystem">
+        <div><h2>Elaborazione del sistema di coordinate</h2></div>
+        <hr/>
+        <div>
+            <p>Impostazione d'ambiente per GeoAnalytics utilizzata per determinare il sistema di coordinate che verr&agrave; utilizzato durante l'esecuzione dell'analisi.   
+            </p>
+            <p>Per GeoAnalytics, alcune analisi richiedono che l'elaborazione venga eseguita in un sistema di coordinate proiettato.   Tutti gli strumenti che hanno implementato il binning dei dati o delle unit&agrave; lineari richiedono un sistema di coordinate proiettato. 
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Lo stesso come input</b>: l'analisi verr&agrave; elaborata nello stesso sistema di coordinate dell'input. Si tratta dell'impostazione predefinita.
+                    </li>
+                    <li> <b>Come specificato</b>: scegliere il sistema di coordinate per elaborare l'analisi.   Quando questa opzione &egrave; selezionata, fare clic sull'icona del globo per selezionare da un elenco di sistemi di coordinate proiettati noti o aggiungere il WKID del riferimento spaziale nella casella fornita.
+                    </li>
+                    <li> <b>Layer
+&lt;nome&gt;</b>: scegliere un layer esistente dalla mappa Web.  Il sistema di coordinate del layer scelto servir&agrave; per determinare il sistema di coordinate che verr&agrave; utilizzato per elaborare l'analisi.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingExtent">
+        <div><h2>Estensione</h2></div>
+        <hr/>
+        <div>
+            <p>Impostazione d'ambiente utilizzata per determinare l'estensione o il confine che verr&agrave; utilizzato durante l'esecuzione dell'analisi.  Tutte le feature di input che sono completamente all'interno o che intersecano l'estensione specificata verranno utilizzate nell'analisi.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Predefinito</b>: utilizza l'estensione fornita dallo strumento.
+                    </li>
+                    <li> <b>Come specificato</b>: immettere manualmente le coordinate per definire l'estensione.
+                    </li>
+                    <li> <b>Layer
+&lt;nome&gt;</b>: scegliere un layer esistente dalla mappa Web. L'estensione spaziale del layer scelto servir&agrave; per determinare l'estensione che verr&agrave; utilizzata per elaborare l'analisi. 
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="snapRaster">
+        <div><h2>Snap raster</h2></div>
+        <hr/>
+        <div>
+            <p>Quando si esegue l'analisi raster, l'impostazione d'ambiente  <b>Snap raster</b> regoler&agrave; l'estensione del layer raster di output in modo che corrisponda all'allineamento cella del layer <b>Snap raster</b> specificato.
+            </p>
+        </div>
+    </div>
+    <div id="cellSize">
+        <div><h2>Dimensione cella</h2></div>
+        <hr/>
+        <div>
+            <p>Quando si esegue l'analisi raster, questa impostazione d'ambiente definisce la dimensione della cella o la risoluzione che verr&agrave; utilizzata per creare il layer raster di output. La risoluzione di output predefinita &egrave; determinata dalla dimensione di cella pi&ugrave; grande del layer raster di input.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Numero minimo di input</b>: utilizzare la dimensione cella pi&ugrave; piccola di tutti i layer di input.
+                    </li>
+                    <li> <b>Numero massimo di input</b>: utilizzare la dimensione cella pi&ugrave; grande di tutti i layer di input. Si tratta dell'impostazione predefinita.
+                    </li>
+                    <li> <b>Come specificato</b>: specificare un valore numerico per impostare la dimensione della cella. Se questa opzione &egrave; selezionata, il valore predefinito &egrave; 1.
+                    </li>
+                    <li> <b>Layer &lt;nome&gt;</b>: imposta la dimensione della cella sul layer raster scelto.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="mask">
+        <div><h2>Maschera</h2></div>
+        <hr/>
+        <div>
+            <p> Quando si esegue l'analisi raster, utilizzare l'impostazione d'ambiente <b>Maschera</b> per specificare un layer che verr&agrave; utilizzato per definire l'area di interesse.   Solo le celle che rientrano nella maschera di analisi verranno considerate nell'operazione di analisi.
+            </p>
+            <ul>
+                <li>La maschera pu&ograve; essere un raster o un feature layer.
+                </li>
+                <li>Se la maschera di analisi &egrave; un raster, tutte le celle contenenti un valore verranno considerate per definire la maschera. Le celle in un raster maschera che sono NoData verranno considerate esterne alla maschera e saranno NoData nel layer dei risultati dell'analisi. 
+                </li>
+                <li>Se la maschera dell'analisi &egrave; un feature layer, sar&agrave; convertito internamente in un raster al momento dell'esecuzione. Per questo motivo, assicurarsi che  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">Dimensioni cella</a> e <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">Snap raster</a> siano impostati appropriatamente per l'analisi.
+                </li>
+            </ul>
+             
+        </div>
+    </div>
+</div>
+</html>

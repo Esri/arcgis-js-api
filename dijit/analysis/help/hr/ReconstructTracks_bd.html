@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Rekonstruiraj tragove</h2><p/>
+        <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Rekonstruiraj tragove"></h2>
+        <hr/>
+    <p>Ovaj alat radi s ovremenjenim slojem točkastih ili poligonalnih geoobjekata koji predstavljaju  <code>instancu</code> u vremenu. Prvo određuje geoobjekte koji pripadaju tragu s pomoću identifikatora. Upotrebom vremena na pojedinim lokacijama, tragovi se slažu po redu i transformiraju u liniju ili poligon koji predstavlja putanju kretanja kroz vijeme. Dodatno, može se stvoriti pojas oko unosa polja, čime će se stvoriti poligon za svaku lokaciju. Te točke ili poligoni s pojasima, ako su unosi poligoni, po redu se pridružuju za stvaranje traga kao poligona, pri čemu &scaron;irina predstavlja željeni atribut. Dobiveni tragovi imaju početno i zavr&scaron;no vrijeme, &scaron;to vremenski predstavlja prvi i posljednji geoobjekt u danom tragu. Kada se izrade tragovi, statistike o ulaznim geoobjektima izračunavaju se i dodjeljuju izlaznom tragu. Najosnovnija statistika jest zbroj točaka u poligonu, ali možete također izračunati druge statistike.
+    </p>
+    <p>Geoobjekti u ovremenjenim slojevima mogu se predstaviti na jedan od dvaju načina:
+        <ul>
+            <li>Instanca &ndash; jedan trenutak u vremenu
+            </li>
+            <li>Interval &ndash; početno i zavr&scaron;no vrijeme
+            </li>
+        </ul>
+        
+    </p>
+    <p>Na primjer, pretpostavimo da imate mjerenja GPS-a uragana svakih 10 minuta. Svako mjerenje GPS-a bilježi naziv uragana, mjesto, vrijeme snimanja i brzinu vjetra. Uz ove informacije, možete stvoriti tragove za svaki uragan koristeći naziv za određivanje tragova i generirat će se tragovi za svaki uragan. Osim toga, možete izračunati statistike, kao &scaron;to su srednja vrijednost, maksimalna i minimalna brzina vjetra uragana te zbroj mjerenja unutar svakog traga.
+    </p>
+    <p>Koristeći isti primjer, možete stvoriti pojas za svoje tragove na temelju brzine vjetra. To bi stvorilo pojas za svako mjerenje na temelju polja brzine vjetra za tu lokaciju i međusobno bi pridružilo područja pojasa, čime bi se stvorio poligon koji predstavlja putanju tragova, kao i promjene u brzini vjetra dok uragan napreduje.   
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Odaberite geoobjekte od kojih ćete rekonstruirati tragove</h2></div>
+        <hr/>
+        <div>
+            <p>Točkasti ili poligonalni sloj koji će se rekonstruirati u tragove.
+            </p>
+            <p>Osim odabira sloja s va&scaron;e karte, možete odabrati  <b>Pretraži slojeve</b> na dnu padajućeg popisa za pretraživanje va&scaron;ih sadržaja za skup podataka za dijeljenje datoteka velikih podataka ili sloj geoobjekta.  
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>Odaberite polja korištena za određivanje tragova</h2></div>
+        <hr/>
+        <div>
+            <p> Polja koja predstavljaju identifikatora tragova.
+            </p>
+            <p> Kao primjer, ako rekonstruirate tragove uragana, mogli biste upotrijebiti naziv uragana kao polje tragova.
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Odaberite metodu za rekonstrukciju tragova</h2></div>
+        <hr/>
+        <div>
+            <p>Metoda kori&scaron;tena za pridruživanje tragova i primjena pojasa (ako je primjenjivo).  <b>Planarna</b> metoda može brže izračunati rezultate, ali neće omotati tragove oko međunarodne datumske granice ili uzeti u obzir stvarni oblik Zemlje prilikom izrade pojasa. <b>Geodetska</b> metoda će omotati tragove oko datumske granice ako je potrebno i primijenit će geodetski pojas koji će uzeti u obzir oblik Zemlje.
+            </p>
+        </div>
+    </div>
+    <div id="bufferField">
+        <div><h2>Stvorite izraz za izradu pojasa od ulaznih geoobjekata (neobavezno)</h2></div>
+        <hr/>
+        <div>
+            <p>Jednadžba za izračun udaljenosti pojasa oko ulaznih geoobjekata. Ova se jednadžba može generirati s pomoću kalkulatora pojasa i podržane su osnovne radnje kao &scaron;to su zbrajanje, oduzimanje, množenje i dijeljenje. Vrijednosti se računaju s pomoću analize koordinatnog sustava.
+            </p>
+        </div>
+    </div>
+    <div id="timeSplit">
+        <div><h2>Odaberite vrijeme za dijeljenje tragova (neobavezno)</h2></div>
+        <hr/>
+        <div>
+            <p>Vrijeme kori&scaron;teno za podjelu tragova. Ako ulazne točke ili poligoni međusobno imaju duže trajanje od vremenske podjele, podijelit će se u različite tragove.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Dodaj statistike (neobavezno)</h2></div>
+        <hr/>
+        <div>
+            <p> Možete izračunati statistiku za geoobjekte koji su sažeti. Na brojčanim poljima možete izračunati sljedeće:
+                <ul>
+                    <li>Broj
+                    </li>
+                    <li>Prosjek
+                    </li>
+                    <li>Min.
+                    </li>
+                    <li>Maks.
+                    </li>
+                    <li>Raspon
+                    </li>
+                    <li>Varijanca
+                    </li>
+                    <li>Standardno odstupanje
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Na poljima niza možete izračunati sljedeće:
+                <ul>
+                    <li>Broj
+                    </li>
+                    <li>Bilo koje &ndash; ova je statistika nasumični uzorak vrijednosti niza u određenom polju.
+                    </li>
+                </ul>
+                Sve se statistike računaju za vrijednosti koje nisu nula. Sloj rezultata sadržavat će novo polje za svaki izračun statistike. Može se dodati bilo koliko statistika odabirom atributa i statistike. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Izaberi spremište podataka</h2></div>
+        <hr/>
+        <div>
+            <p>To je privremeni parametar za predizdanje za postavljanje spremnika podataka gdje su spremljeni rezultati. Oba spremnika podataka dio su proizvoda  ArcGIS Data Store. Ako odaberete spremnik prostorno-vremenskih podataka, ali nemate instaliran spremnik, alat neće biti uspje&scaron;an. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Naziv sloja rezultata</h2></div>
+        <hr/>
+        <div>
+            <p> Ovo je naziv sloja koji će se stvoriti u dijelu <b>Moj sadržaj</b> i dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, alat neće biti uspje&scaron;an.
+            </p>
+            <p>Upotrebom padajućeg izbornika  <b>Spremi rezultat u</b> možete odrediti naziv mape u dijelu <b>Moj sadržaj</b> gdje će se spremiti rezultat.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>范围内汇总</h2><p/>
+        <h2><img src="../images/GUID-90E0CB1F-EB97-4752-B2EE-452B7B45475E-web.png" alt="范围内汇总"></h2>
+        <hr/>
+    <p>此工具用于查找第一个输入图层中处于区域边界内的要素（和部分要素）。 
+        <ul>
+            <li>给定分水岭边界图层和土地使用边界图层，计算每个分水岭的土地使用类型的总面积。
+            </li>
+            <li>给定一个县内宗地的图层和城市边界图层，汇总各城市边界内闲置宗地的平均值。
+            </li>
+        </ul>
+        
+    </p>
+    <p>如果选中 <b>使用当前地图范围</b>，则仅分析当前地图范围内可见的输入图层和待汇总图层中的要素。如果未选中，则会对输入图层和待汇总图层内的所有要素进行分析，包括超出当前地图范围的要素。
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="sumWithinLayer">
+        <div><h2>选择区域图层以汇总边界内的其他要素</h2></div>
+        <hr/>
+        <div>
+            <p>将用于汇总其边界内要素的区域图层。您可以选择在您提供的面图层内进行汇总也可以选择在工具运行时生成的正方形或六角条柱内汇总。生成 <b>方形</b>条柱时，由指定的数字和单位决定正方形的高度和长度。生成 <b>六角</b>条柱时，由指定的数字和单位决定平行边之间的距离。
+            </p>
+            <p>除了从地图中选择图层外，还可以在下拉列表的底部选择 <b>浏览图层</b>，以浏览至大数据文件共享数据集或要素图层中的内容。  
+            </p>
+        </div>
+    </div>
+    <div id="summaryLayer">
+        <div><h2>选择汇总图层</h2></div>
+        <hr/>
+        <div>
+            <p>汇总此图层中位于上述输入图层的要素边界内的要素或者上述指定的条柱内的要素。
+            </p>
+            <p>除了从地图中选择图层外，还可以在下拉列表的底部选择 <b>浏览图层</b>，以浏览至大数据文件共享数据集或要素图层中的内容。  
+            </p>
+        </div>
+    </div>
+    <div id="inputBins">
+        <div><h2>选择距离以生成条柱，并进行聚合</h2></div>
+        <hr/>
+        <div>
+            <p>用于生成条柱的距离。  
+            </p>
+            <p>必须设置条柱的 <b>条柱大小</b>或 <b>区域图层</b>。
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>使用时间片聚合(可选)</h2></div>
+        <hr/>
+        <div>
+            <p>如果输入点图层上启用了时间且类型为时刻，则可以使用时间划分进行分析。使用时间时可设置以下三个参数：
+                <ul>
+                    <li>  <b>时间间隔</b>
+                    </li>
+                    <li> <b>时间步长</b>
+                    </li>
+                    <li> <b>参考时间</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>假设您拥有表示时间为一年的数据且希望使用周长度的时间片进行分析。为此，您需要将 <b>时间间隔</b>设置为 <code>1 周</code>。
+            </p>
+            <p> 假设您拥有表示时间为一年的数据且希望使用每月的第一周进行分析。为此，您需要将 <b>时间间隔</b>设置为 <code>1 周</code>，将 <b>时间步长</b>设置为 <code>1 个月</code>并将 <b>参考时间</b>设置为 <code>1 月 1 日 12:00 am</code>。
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>将要被聚合的时间间隔</h2></div>
+        <hr/>
+        <div>
+            <p>用于划分数据的时间间隔。时间间隔可单独使用或与 <b>时间步长</b>或 <b>参考时间</b>参数一起使用。
+            </p>
+            <p> 如果您想要创建在每个星期一 9:00 a.m. 到 10:00 a.m.之间发生的时间片，则需要将 <b>时间间隔</b>设置为 <code>1 小时</code>，将 <b>时间步长</b>设置为 <code>1 周</code>并将 <b>参考时间</b>设置为 <code>星期一 9:00:00 a.m.</code>。
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>将要被聚合的时间步长</h2></div>
+        <hr/>
+        <div>
+            <p> 用于计算时间片的步长。 <b>时间步长</b>可以单独使用或与 <b>时间间隔</b>和/或 <b>参考时间</b>一起使用。 <b></b> <b></b>
+            </p>
+            <p> 如果您想要创建在每个星期一 9:00 a.m. 到 10:00 a.m.之间发生的时间片，则需要将 <b>时间间隔</b>设置为 <code>1 小时</code>，将 <b>时间步长</b>设置为 <code>1 周</code>并将 <b>参考时间</b>设置为 <code>星期一 9:00:00 a.m.</code>。
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>用于对齐时间切片的参考时间</h2></div>
+        <hr/>
+        <div>
+            <p>用于对齐时间划分的日期和时间。 <b>时间步长</b>将从参考时间开始并相对于参考时间倒计时。
+            </p>
+            <p> 如果您想要创建在每个星期一 9:00 a.m. 到 10:00 a.m.之间发生的时间片，则需要将 <b>时间间隔</b>设置为 <code>1 小时</code>，将 <b>时间步长</b>设置为 <code>1 周</code>并将 <b>参考时间</b>设置为 <code>星期一 9:00:00 a.m.</code>。
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>从图层添加统计数据以进行汇总（可选）</h2></div>
+        <hr/>
+        <div>
+            <p> 可以计算汇总的要素的统计数据。可以根据数值字段计算以下内容：
+                <ul>
+                    <li>计数
+                    </li>
+                    <li>平均值
+                    </li>
+                    <li>最小值
+                    </li>
+                    <li>最大值
+                    </li>
+                    <li>范围
+                    </li>
+                    <li>方差
+                    </li>
+                    <li>标准差
+                    </li>
+                </ul>
+                
+            </p>
+            <p>可以根据字符串字段计算以下内容：
+                <ul>
+                    <li>计数
+                    </li>
+                    <li>任意 - 该统计数据是指定字段中字符串值的随机样本。
+                    </li>
+                </ul>
+                所有统计数据均根据非空值计算而得。生成的图层将包含一个针对每个计算而得的统计数据的新字段。通过选择一个属性和统计数据可添加任意数量的统计数据。 
+            </p>
+            <p>除了这些统计数据外，比例统计数据将根据所有数值字段进行计算。
+                <ul>
+                    <li>计数 - 乘以面内汇总图层的比例后的每个字段的计数。
+                    </li>
+                    <li>总和 - 每个字段内加权值的总和。其中所应用的权重是面内汇总图层的比例。
+                    </li>
+                    <li>平均数 - 每个字段中的值的加权平均数。其中所应用的权重是面内汇总图层的比例。
+                    </li>
+                    <li>最小值 - 每个字段中最小的加权平均数。其中所应用的权重是面内汇总图层的比例。
+                    </li>
+                    <li>最大值 - 每个字段中最大的加权平均数。其中所应用的权重是面内汇总图层的比例。
+                    </li>
+                    <li>范围 - 最大和最小加权平均值之间的差值。
+                    </li>
+                </ul>
+                
+            </p>
+            <p>根据要汇总的要素类型，您将计算附近点的总数、线的总长度或总面积。
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>SpatialReference (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>这是预发行版本中的临时参数，用于设置处理空间参考。许多大数据工具都需要将投影坐标系用作处理的空间参考。默认情况下，该工具将使用输入坐标系，但是，如果输入坐标系为地理坐标系，则将无法使用。要设置投影坐标系，请输入 WKID。例如， <b>Web Mercator</b> 将被输入为 <code>3857</code>。
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>选择数据存储</h2></div>
+        <hr/>
+        <div>
+            <p>这是预发行版本中的临时参数，用于设置将存储结果的数据存储。这两个数据存储都是  ArcGIS Data Store 的一部分。如果选择时空数据存储但是尚未安装该存储，将无法使用该工具。 </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>结果图层名称</h2></div>
+        <hr/>
+        <div>
+            <p> 在 <b>我的内容</b>中创建并添加到地图中的图层的名称。默认名称基于工具名称以及输入图层名称。如果该图层已存在，将无法使用该工具。
+            </p>
+            <p>使用 <b>将结果保存到</b>下拉框，可以在 <b>我的内容</b>中指定文件夹的名称，结果将保存到该文件夹中。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

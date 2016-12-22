@@ -40,12 +40,18 @@
 </head>
 <body onload="init()">
 <div id="topics">
+    <div id="aoToolbox">
+        <p>Kohdeanalyysi-ty&ouml;kalulaatikossa on monia ty&ouml;kaluja, joita voit k&auml;ytt&auml;&auml;. N&auml;m&auml; teht&auml;v&auml;t on j&auml;rjestetty luokkiin. Luokat ovat yksinkertaisia loogisia ryhmi&auml;, ja ne eiv&auml;t vaikuta teht&auml;vien k&auml;ytt&ouml;&ouml;n mill&auml;&auml;n tavalla.
+        </p>
+    </div>
     <div id="SummarizeDataCategory" class="regularsize">
         <h2>Aineiston yhteenveto</h2>
         <hr/>
         <p>N&auml;m&auml; ty&ouml;kalut laskevat kokonaism&auml;&auml;r&auml;t, -pituudet, -pinta-alat ja perustilastotietoja alueilla oleville tai muiden kohteiden l&auml;hell&auml; oleville kohteille ja niiden attribuuteille.
             <ul>
                 <li> <b>Koosta pisteet</b> laskee tilastotiedot pisteist&auml;, jotka ovat m&auml;&auml;ritettyjen alueiden sis&auml;ll&auml;.
+                </li>
+                <li> <b>Liit&auml; kohteet</b> siirt&auml;&auml; attribuutit kerroksesta tai taulukosta toiseen sijainti- ja m&auml;&auml;ritesuhteiden perusteella.
                 </li>
                 <li> <b>Yhteenveto l&auml;hist&ouml;st&auml;</b> laskee m&auml;&auml;ritetyn et&auml;isyyden sis&auml;ll&auml; sijaitsevien kohteiden ja niiden attribuuttien tilastotiedot.
                 </li>
@@ -73,6 +79,32 @@
                     <li>Jos karttatasoon on merkitty rikosten tapahtumasijainnit, ty&ouml;kalu laskee, kuinka monta rikosta kussakin piirikunnassa tai muulla hallinnollisella alueella on tapahtunut.
                     </li>
                     <li>Voit etsi&auml; my&ouml;s osavaltiotasolla yrityksen korkeimman ja alhaisimman liikevaihdon toimipisteet.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="JoinFeaturesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Liitä kohteet</h2></td>
+                    <td>
+                    <img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" class="titleImage" alt="Liit&auml; kohteet">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Liit&auml; kohteet siirt&auml;&auml; attribuutit kerroksesta tai taulukosta toiseen sijainti- ja m&auml;&auml;ritesuhteiden perusteella. Esimerkki:
+                <ul>
+                    <li>Yhteisten raja- tai v&auml;est&ouml;tietojen liitt&auml;minen tapahtumatietoihin.
+                    </li>
+                    <li>Tunnettua sijaintia l&auml;himp&auml;n&auml; olevien palvelujen selvitt&auml;minen.
+                    </li>
+                    <li>Tulva-alueella asuvien asukkaiden m&auml;&auml;r&auml;n selvitt&auml;minen.
+                    </li>
+                    <li>Eri villiel&auml;inlajien yleisimpien esiintym&auml;alueiden tunnistaminen.
                     </li>
                 </ul>
                 
@@ -289,6 +321,8 @@
                 </li>
                 <li> <b>Etsi kuumat alueet</b> tunnistaa tilastollisesti merkitt&auml;v&auml;t ryp&auml;&auml;t tietojesi tila-avaruuden mallista.
                 </li>
+                <li> <b>Etsi &auml;&auml;rihavaintoja</b> selvitt&auml;&auml;, onko tietojen tilamallinnuksessa tilastollisesti merkitt&auml;v&auml;sti poikkeavia havaintoja.
+                </li>
                 <li> <b>Interpoloi pisteet</b> ennustaa uusien sijaintien arvoja ker&auml;tyist&auml; pisteist&auml; l&ouml;ytyvien mittausten perusteella.
                 </li>
             </ul>
@@ -314,14 +348,29 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Find Hot Spots</h2></td>
+                    <td><h2>Hae HotSpot-pisteitä</h2></td>
                     <td>
                     <img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" class="titleImage" alt="Etsi HotSpot-pisteit&auml;">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>T&auml;m&auml; ty&ouml;kalu luo kartan, jossa n&auml;kyv&auml;t kaikki tietojesi sis&auml;lt&auml;m&auml;t tilastollisesti merkitt&auml;v&auml;t tila-avaruuden ryp&auml;&auml;t.   Ty&ouml;kalun avulla voit etsi&auml; odottamattomat kuumat alueet (punaiset) ja kylm&auml;t alueet (siniset), joilla esimerkiksi talot ovat kalliita ja vastaavasti halpoja, rikoksia tapahtuu paljon tai vastaavasti v&auml;h&auml;n, joilla on paljon tai vastaavasti v&auml;h&auml;n kuolemaan johtaneita liikenneonnettomuuksia, joilla on paljon tai vastaavasti v&auml;h&auml;n ty&ouml;tt&ouml;mi&auml; tai joiden biodiversiteetti on suuri tai vastaavasti v&auml;h&auml;inen.
+            <p>T&auml;m&auml; ty&ouml;kalu luo kartan, jossa n&auml;kyv&auml;t kaikki tietojesi sis&auml;lt&auml;m&auml;t tilastollisesti merkitt&auml;v&auml;t tila-avaruuden ryp&auml;&auml;t. Ty&ouml;kalun avulla voit etsi&auml; odottamattomat kuumat alueet (punaiset) ja kylm&auml;t alueet (siniset), joilla esimerkiksi talot ovat kalliita ja vastaavasti halpoja, rikoksia tapahtuu paljon tai vastaavasti v&auml;h&auml;n, joilla on paljon tai vastaavasti v&auml;h&auml;n kuolemaan johtaneita liikenneonnettomuuksia, joilla on paljon tai vastaavasti v&auml;h&auml;n ty&ouml;tt&ouml;mi&auml; tai joiden biodiversiteetti on suuri tai vastaavasti v&auml;h&auml;inen.
+            </p>
+            <br/>
+        </div>
+        <div id="FindOutliersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Etsi äärihavaintoja</h2></td>
+                    <td>
+                    <img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" class="titleImage" alt="Etsi &auml;&auml;rihavaintoja">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>T&auml;m&auml; ty&ouml;kalu luo kartan, jossa n&auml;kyv&auml;t kaikki tietojesi sis&auml;lt&auml;m&auml;t tilastollisesti merkitt&auml;v&auml;t tila-avaruuden &auml;&auml;rihavainnot. T&auml;m&auml;n ty&ouml;kalun avulla voit selvitt&auml;&auml;, mitk&auml; kohteet poikkeavat merkitt&auml;v&auml;sti ymp&auml;rist&ouml;st&auml;&auml;n. Ty&ouml;kalun avulla voit esimerkiksi etsi&auml; ep&auml;normaaleja kulutuksia, &auml;killisimm&auml;t muutokset k&ouml;yhien ja vauraiden alueiden v&auml;lill&auml; tutkimusalueella tai alueet, joilla elinaikaodote on selv&auml;sti naapurialueita pienempi.
             </p>
             <br/>
         </div>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Nastavení prostředí analýzy portálu</h2><p/>
+        <h2></h2>
+        <hr/>
+    <p> Nastaven&iacute; prostřed&iacute; pro anal&yacute;zu v Portal for ArcGIS a  ArcGIS Online. 
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="overwriteResult">
+        <div><h2>Přepsat výslednou vrstvu</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Volba pro přeps&aacute;n&iacute; existuj&iacute;c&iacute;ch vrstev.    Když je tato volba za&scaron;krtnuta, bude př&iacute;padn&aacute; vrstva se stejn&yacute;m n&aacute;zvem, kter&aacute; již existuje ve va&scaron;em obsahu, přeps&aacute;na.
+            </p>
+            <p>
+                <ul>
+                    <li>Za&scaron;krtnuto &ndash; Pokud ve va&scaron;em obsahu již existuje vrstva se stejn&yacute;m n&aacute;zvem, bude přeps&aacute;na. V&yacute;stup bude m&iacute;t stejn&yacute; souřadnicov&yacute; syst&eacute;m jako vstup.
+                    </li>
+                    <li>Neza&scaron;krtnuto &ndash; Pokud zadan&yacute; n&aacute;zev v&yacute;sledn&eacute; vrstvy již existuje, dojde k&nbsp;chybě a v&yacute;slednou vrstvu bude nutn&eacute; před spu&scaron;těn&iacute;m n&aacute;stroje přejmenovat. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="closeAnalysisWidget">
+        <div><h2>Zavřít widget analýzy po spuštění analýzy</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Volba pro zachov&aacute;n&iacute; aktivovan&eacute;ho a otevřen&eacute;ho dialogov&eacute;ho okna anal&yacute;zy při pr&aacute;ci n&aacute;stroje.     Toto nastaven&iacute; v&aacute;m umožn&iacute; snadno upravovat va&scaron;e parametry anal&yacute;zy, zat&iacute;mco předchoz&iacute; &uacute;loha anal&yacute;zy st&aacute;le prob&iacute;h&aacute;.  Anal&yacute;za je opakovan&yacute; proces, a když dialogov&eacute; okno n&aacute;stroje ponech&aacute;te otevřen&eacute;, můžete snadno upravit parametry a anal&yacute;zu spustit znovu.
+            </p>
+            <p>
+                <ul>
+                    <li>Za&scaron;krtnuto &ndash; Okno n&aacute;stroje anal&yacute;zy se zavře a budete vr&aacute;ceni na tabulku obsahu. Toto je v&yacute;choz&iacute; hodnota
+                    </li>
+                    <li>Neza&scaron;krtnuto &ndash; Okno n&aacute;stroje anal&yacute;zy zůstane otevřen&eacute; a aktivn&iacute;.   
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="storeAnalysisResults">
+        <div><h2>Uložit výsledky analýzy jako služby prvků</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Volba určuj&iacute;c&iacute;, zda bude v&yacute;sledek va&scaron;&iacute; anal&yacute;zy vytvořen jako vrstva prvků, nebo kolekce prvků.
+            </p>
+            <p>
+                <ul>
+                    <li>Za&scaron;krtnuto &ndash; V&yacute;sledky va&scaron;&iacute; anal&yacute;zy vytvoř&iacute; vrstvu prvků a ve va&scaron;em obsahu bude vytvořena položka. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+                    </li>
+                    <li>Neza&scaron;krtnuto &ndash; V&yacute;sledky va&scaron;&iacute; anal&yacute;zy vytvoř&iacute; kolekci prvků.    Kolekce prvků jsou uloženy ve va&scaron;&iacute; webov&eacute; mapě.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputCoordinateSystem">
+        <div><h2>Výstupní souřadnicový systém</h2></div>
+        <hr/>
+        <div>
+            <p>Nastaven&iacute; prostřed&iacute; pro rastrovou anal&yacute;zu použit&eacute; k&nbsp;definov&aacute;n&iacute; souřadnicov&eacute;ho syst&eacute;mu v&yacute;sledn&eacute; vrstvy.    
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Stejn&eacute; jako vstup</b> &ndash; V&yacute;sledek va&scaron;&iacute; anal&yacute;zy bude ve stejn&eacute;m souřadnicov&eacute;m syst&eacute;mu jako vstup. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+                    </li>
+                    <li> <b>Jak je zad&aacute;no</b> &ndash; Zvolte souřadnicov&yacute; syst&eacute;m v&yacute;sledků va&scaron;&iacute; anal&yacute;zy.   Když je vybr&aacute;na tato možnost, klikněte na ikonu gl&oacute;bu pro v&yacute;běr ze seznamu zn&aacute;m&yacute;ch souřadnicov&yacute;ch syst&eacute;mů nebo zadejte WKID souřadnicov&eacute;ho syst&eacute;mu do př&iacute;slu&scaron;n&eacute;ho pole.
+                    </li>
+                    <li> <b>N&aacute;zev
+&lt;vrstvy&gt;</b> &ndash; Zvolte existuj&iacute;c&iacute; vrstvu ve va&scaron;&iacute; webov&eacute; mapě, kter&aacute; bude použita k&nbsp;určen&iacute; souřadnicov&eacute;ho syst&eacute;mu v&yacute;sledku va&scaron;&iacute; anal&yacute;zy.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingCoordinateSystem">
+        <div><h2>Probíhá zpracování souřadnicového systému</h2></div>
+        <hr/>
+        <div>
+            <p>Nastaven&iacute; prostřed&iacute; pro geoanal&yacute;zu použit&eacute; k&nbsp;určen&iacute; souřadnicov&eacute;ho syst&eacute;mu, kter&yacute; va&scaron;e anal&yacute;za použije během zpracov&aacute;n&iacute;.   
+            </p>
+            <p>Někter&eacute; geoanalytick&eacute; anal&yacute;zy vyžaduj&iacute;, aby bylo zpracov&aacute;n&iacute; provedeno v&nbsp;rovinn&eacute;m souřadnicov&eacute;m syst&eacute;mu.   Jak&yacute;koli n&aacute;stroj, kter&yacute; m&aacute; implementov&aacute;no vkl&aacute;d&aacute;n&iacute; dat nebo line&aacute;rn&iacute;ch jednotek do přihr&aacute;dek, vyžaduje rovinn&yacute; souřadnicov&yacute; syst&eacute;m. 
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Stejn&eacute; jako vstup</b> &ndash; Va&scaron;e anal&yacute;za bude zpracov&aacute;na ve stejn&eacute;m souřadnicov&eacute;m syst&eacute;mu jako vstup. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+                    </li>
+                    <li> <b>Jak je zad&aacute;no</b> &ndash; Zvolte souřadnicov&yacute; syst&eacute;m pro zpracov&aacute;n&iacute; va&scaron;&iacute; anal&yacute;zy.   Když je vybr&aacute;na tato možnost, klikněte na ikonu gl&oacute;bu pro v&yacute;běr ze seznamu zn&aacute;m&yacute;ch rovinn&yacute;ch souřadnicov&yacute;ch syst&eacute;mů nebo zadejte WKID souřadnicov&eacute;ho syst&eacute;mu do př&iacute;slu&scaron;n&eacute;ho pole.
+                    </li>
+                    <li> <b>N&aacute;zev
+&lt;vrstvy&gt;</b> &ndash; Zvolte existuj&iacute;c&iacute; vrstvu ve va&scaron;&iacute; webov&eacute; mapě.  Souřadnicov&yacute; syst&eacute;m zvolen&eacute; vrstvy bude použit k&nbsp;určen&iacute; souřadnicov&eacute;ho syst&eacute;mu pro zpracov&aacute;n&iacute; va&scaron;&iacute; anal&yacute;zy.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingExtent">
+        <div><h2>Rozsah</h2></div>
+        <hr/>
+        <div>
+            <p>Nastaven&iacute; prostřed&iacute; použit&eacute; k&nbsp;určen&iacute; rozsahu nebo hranice pro zpracov&aacute;n&iacute; anal&yacute;zy.  V&scaron;echny vstupn&iacute; prvky, kter&eacute; se nach&aacute;zej&iacute; zcela uvnitř zadan&eacute;ho rozsahu nebo ho prot&iacute;naj&iacute;, budou použity v&nbsp;anal&yacute;ze.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>V&yacute;choz&iacute;</b> &ndash; Použije rozsah poskytnut&yacute; n&aacute;strojem.
+                    </li>
+                    <li> <b>Jak je zad&aacute;no</b> &ndash; Zadejte ručně souřadnice definuj&iacute;c&iacute; rozsah.
+                    </li>
+                    <li> <b>N&aacute;zev
+&lt;vrstvy&gt;</b> &ndash; Zvolte existuj&iacute;c&iacute; vrstvu ve va&scaron;&iacute; webov&eacute; mapě. Prostorov&yacute; rozsah zvolen&eacute; vrstvy bude použit k&nbsp;určen&iacute; rozsahu pro zpracov&aacute;n&iacute; va&scaron;&iacute; anal&yacute;zy. 
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="snapRaster">
+        <div><h2>Rastr pro přichycení</h2></div>
+        <hr/>
+        <div>
+            <p>Při prov&aacute;děn&iacute; rastrov&eacute; anal&yacute;zy můžete nastaven&iacute;m prostřed&iacute;  <b>Rastr pro přichycen&iacute;</b> upravit rozsah v&yacute;stupn&iacute; rastrov&eacute; vrstvy, aby odpov&iacute;dala zarovn&aacute;n&iacute; buněk zadan&eacute; vrstvy <b>rastru pro přichycen&iacute;</b>.
+            </p>
+        </div>
+    </div>
+    <div id="cellSize">
+        <div><h2>Velikost pixelu</h2></div>
+        <hr/>
+        <div>
+            <p>Při prov&aacute;děn&iacute; rastrov&eacute; anal&yacute;zy toto prostřed&iacute; nastav&iacute; rozli&scaron;en&iacute; nebo velikost buněk použit&eacute; při vytvořen&iacute; v&yacute;stupn&iacute; rastrov&eacute; vrstvy. V&yacute;choz&iacute; v&yacute;stupn&iacute; rozli&scaron;en&iacute; je určeno největ&scaron;&iacute; velikost&iacute; buňky vstupn&iacute; rastrov&eacute; vrstvy.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Minim&aacute;ln&iacute; ze vstupů</b> &ndash; Použ&iacute;t nejmen&scaron;&iacute; velikost buňky ze v&scaron;ech vstupn&iacute;ch vrstev.
+                    </li>
+                    <li> <b>Maxim&aacute;ln&iacute; ze vstupů</b> &ndash; Použ&iacute;t největ&scaron;&iacute; velikost buňky ze v&scaron;ech vstupn&iacute;ch vrstev. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+                    </li>
+                    <li> <b>Jak je zad&aacute;no</b> &ndash; Zadejte č&iacute;selnou hodnotu pro nastaven&iacute; velikosti buňky. Pokud je zvolena tato možnost, v&yacute;choz&iacute; hodnota je 1.
+                    </li>
+                    <li> <b>N&aacute;zev &lt;vrstvy&gt;</b> &ndash; Nastav&iacute; velikost buňky na zvolenou rastrovou vrstvu.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="mask">
+        <div><h2>Maska</h2></div>
+        <hr/>
+        <div>
+            <p> Při prov&aacute;děn&iacute; rastrov&eacute; anal&yacute;zy použijte prostřed&iacute; <b>Maska</b> pro určen&iacute; vrstvy, kter&aacute; bude použita k&nbsp;definov&aacute;n&iacute; va&scaron;&iacute; z&aacute;jmov&eacute; oblasti.   Při anal&yacute;ze budou br&aacute;ny v&nbsp;potaz pouze buňky, kter&eacute; spadaj&iacute; do masky anal&yacute;zy.
+            </p>
+            <ul>
+                <li>Maska může b&yacute;t rastr nebo vrstva prvků.
+                </li>
+                <li>Pokud je maskou anal&yacute;zy rastr, při definici masky budou zv&aacute;ženy v&scaron;echny buňky s&nbsp;hodnotou. Buňky v&nbsp;rastru masky, kter&eacute; jsou typu NoData, budou považov&aacute;ny za um&iacute;stěn&eacute; mimo masku a ve v&yacute;sledn&eacute; vrstvě anal&yacute;zy budou tak&eacute; typu NoData. 
+                </li>
+                <li>Pokud je maska anal&yacute;zy vrstvou prvků, bude při spu&scaron;těn&iacute; vnitřně převedena na rastr. Ujistěte se proto, že položky  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">Velikost buňky</a> a <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">Rastr pro přichycen&iacute;</a> jsou nastaveny způsobem vhodn&yacute;m pro va&scaron;i anal&yacute;zu.
+                </li>
+            </ul>
+             
+        </div>
+    </div>
+</div>
+</html>

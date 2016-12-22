@@ -17,7 +17,7 @@ void main()
   // use a smooth-step in order to calculate the geometry of the shape given by the distance field
   mediump float alpha = smoothstep(u_edgeDistance - u_edgeWidth, u_edgeDistance + u_edgeWidth, dist) * v_transparency;
 
-  gl_FragColor = vec4(u_color.rgb, alpha* u_color.a);
+  gl_FragColor = alpha * u_color;
 
 // YF: this code allow having both a fill and an outline colors combined in a single pass
 //  lowp float geometryAlpha = smoothstep(0.75 - 0.21, 0.75 + 0.21, dist) * v_transparency;

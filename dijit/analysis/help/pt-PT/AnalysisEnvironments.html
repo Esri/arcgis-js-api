@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Definições do Ambiente de Análise do Portal</h2><p/>
+        <h2></h2>
+        <hr/>
+    <p> Defini&ccedil;&otilde;es do ambiente de an&aacute;lise no Portal for ArcGIS e no  ArcGIS Online. 
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="overwriteResult">
+        <div><h2>Substituir camada resultante</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Op&ccedil;&atilde;o para substituir camadas existentes.    Quando marcada, se j&aacute; existir uma camada com o mesmo nome nos seus conte&uacute;dos, esta ser&aacute; substitu&iacute;da.
+            </p>
+            <p>
+                <ul>
+                    <li>Marcada&mdash;Quando marcada, se uma camada com o mesmo nome j&aacute; existir nos seus conte&uacute;dos, esta ser&aacute; substitu&iacute;da. A sa&iacute;da ter&aacute; o mesmo sistema de coordenadas que a entrada.
+                    </li>
+                    <li>Desmarcada&mdash;Caso o nome da camada de resultados introduzido j&aacute; exista, ocorrer&aacute; um erro e o nome da camada de resultados tem de ser alterado antes de a ferramenta poder ser executada. Isto &eacute; por omiss&atilde;o.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="closeAnalysisWidget">
+        <div><h2>Fechar widget de análise após executar a análise</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Op&ccedil;&atilde;o para manter a caixa de di&aacute;logo de an&aacute;lise aberta e ativa enquanto a ferramenta est&aacute; em processamento.     Esta defini&ccedil;&atilde;o ir&aacute; permitir-lhe aplicar modifica&ccedil;&otilde;es, com facilidade, aos seus par&acirc;metros de an&aacute;lise enquanto a tarefa de an&aacute;lise anterior continua em execu&ccedil;&atilde;o.  A an&aacute;lise &eacute; um processo iterativo e, mantendo a caixa de di&aacute;logo aberta, permite-lhe efetuar altera&ccedil;&otilde;es de par&acirc;metros e voltar a executar a sua an&aacute;lise com facilidade.
+            </p>
+            <p>
+                <ul>
+                    <li>Marcada&mdash;A janela da ferramenta de an&aacute;lise ser&aacute; encerrada e o foco dirigir-se-&aacute; novamente para o &iacute;ndice. Esta &eacute; a predefini&ccedil;&atilde;o.
+                    </li>
+                    <li>Desmarcada&mdash;A ferramenta de an&aacute;lise manter-se-&aacute; aberta e ativa.   
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="storeAnalysisResults">
+        <div><h2>Armazenar resultados de análise como serviços de elementos</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Op&ccedil;&atilde;o para especificar se o resultado da sua an&aacute;lise ser&aacute; criado como uma camada de elementos ou como uma cole&ccedil;&atilde;o de elementos.
+            </p>
+            <p>
+                <ul>
+                    <li>Marcada&mdash;Os resultados da sua an&aacute;lise dar&atilde;o origem a uma camada de elementos e um item ser&aacute; criado nos seus conte&uacute;dos. Isto &eacute; por omiss&atilde;o.
+                    </li>
+                    <li>Desmarcada&mdash;Os resultados da sua an&aacute;lise dar&atilde;o origem a uma cole&ccedil;&atilde;o de elementos.    As cole&ccedil;&otilde;es de elementos s&atilde;o armazenadas no interior do seu m mapa web.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputCoordinateSystem">
+        <div><h2>Sistema de coordenadas de saída</h2></div>
+        <hr/>
+        <div>
+            <p>Defini&ccedil;&atilde;o de ambiente para an&aacute;lise raster utilizada para definir o sistema de coordenadas da camada de resultados.    
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Igual &agrave; Entrada</b>&mdash;O resultado da sua an&aacute;lise encontrar-se-&aacute; no mesmo sistema de coordenadas que o da entrada. Isto &eacute; por omiss&atilde;o.
+                    </li>
+                    <li> <b>Como especificado</b>&mdash;Selecione o sistema de coordenadas para os resultados da sua an&aacute;lise.   Quando esta op&ccedil;&atilde;o se encontra selecionada, clique no &iacute;cone de globo para aceder a uma lista de sistemas de coordenadas conhecidos de entre os quais pode escolher, ou adicione a refer&ecirc;ncia espacial WKID na caixa.
+                    </li>
+                    <li> <b>Nome da
+&lt;camada&gt;</b>&mdash;Selecione uma camada existente no seu mapa web, que ser&aacute; utilizada para determinar o sistema de coordenadas dos resultados da an&aacute;lise.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingCoordinateSystem">
+        <div><h2>A processar sistema de coordenadas</h2></div>
+        <hr/>
+        <div>
+            <p>As defini&ccedil;&otilde;es de ambiente para GeoAnalytics utilizadas para determinar o sistema de coordenadas que a sua an&aacute;lise utilizar&aacute; durante a execu&ccedil;&atilde;o da an&aacute;lise.   
+            </p>
+            <p>No GeoAnalytics, algumas an&aacute;lises requerem que o processamento seja executado num sistema de coordenadas projetado.   Qualquer ferramenta que tenha implementada a compartimenta&ccedil;&atilde;o (binning) de dados ou de unidades lineares necessita de um sistema de coordenadas projetado. 
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Igual &agrave; Entrada</b>&mdash;A sua an&aacute;lise ser&aacute; processada no mesmo sistema de coordenadas que o da entrada. Isto &eacute; por omiss&atilde;o.
+                    </li>
+                    <li> <b>Como especificado</b>&mdash;Selecione o sistema de coordenadas para para processar a sua an&aacute;lise.   Quando esta op&ccedil;&atilde;o se encontra selecionada, clique no &iacute;cone de globo para aceder a uma lista de sistemas de coordenadas  projetados conhecidos de entre os quais pode escolher, ou adicione a refer&ecirc;ncia espacial WKID na caixa.
+                    </li>
+                    <li> <b>Nome da
+&lt;camada&gt;</b>&mdash;Selecione uma camada existente do seu mapa web.  O sistema de coordenadas da camada escolhida ser&aacute; utilizado para determinar o sistema de coordenadas que ser&aacute; utilizado para processar a sua an&aacute;lise.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingExtent">
+        <div><h2>Extensão:</h2></div>
+        <hr/>
+        <div>
+            <p>As defini&ccedil;&otilde;es de ambiente utilizadas para determinar a extens&atilde;o ou o limite a utilizar durante a execu&ccedil;&atilde;o da an&aacute;lise.  Todos os elementos de entrada que se encontram completamente inclu&iacute;dos ou que intersetam a extens&atilde;o especificada ser&atilde;o utilizados na an&aacute;lise.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Padr&atilde;o</b>&mdash;Utiliza a extens&atilde;o fornecida pela ferramenta.
+                    </li>
+                    <li> <b>Como especificado</b>&mdash;introduza as coordenadas manualmente para definir a extens&atilde;o.
+                    </li>
+                    <li> <b>Nome da
+&lt;camada&gt;</b>&mdash;Selecione uma camada existente do seu mapa web. A extens&atilde;o espacial da camada escolhida ser&aacute; utilizada para determinar a extens&atilde;o utilizada para processar a sua an&aacute;lise. 
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="snapRaster">
+        <div><h2>Encaixe de Raster</h2></div>
+        <hr/>
+        <div>
+            <p>Ao efetuar an&aacute;lise raster, definir o ambiente   <b>Snap Raster</b> ir&aacute; ajustar a extens&atilde;o da camada raster de sa&iacute;da por forma a que corresponda ao alinhamento de c&eacute;lulas da camada <b>Snap Raster</b> especificada.
+            </p>
+        </div>
+    </div>
+    <div id="cellSize">
+        <div><h2>Tamanho de Células</h2></div>
+        <hr/>
+        <div>
+            <p>Ao efetuar an&aacute;lise raster, este ambiente define o tamanho ou resolu&ccedil;&atilde;o das c&eacute;lulas que ser&atilde;o utilizadas para criar a camada raster de sa&iacute;da. A resolu&ccedil;&atilde;o de sa&iacute;da predefinida &eacute; determinada a partir do maior tamanho de c&eacute;lula existente na camada raster de entrada.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>M&iacute;nimo de Entradas</b>&mdash;Utilize o tamanho de c&eacute;lula mais pequeno de todas as camadas de entrada.
+                    </li>
+                    <li> <b>M&aacute;ximo de Entradas</b>&mdash;Utilize o maior tamanho de c&eacute;lula de todas as camadas de entrada. Isto &eacute; por omiss&atilde;o.
+                    </li>
+                    <li> <b>Como especificado</b>&mdash;Especifique um valor num&eacute;rico para definir o tamanho das c&eacute;lulas. Caso esta op&ccedil;&atilde;o seja selecionada, o valor predefinido &eacute; 1.
+                    </li>
+                    <li> <b>Nome da &lt;camada&gt;</b>&mdash;Define o tamanho das c&eacute;lulas para a camada raster selecionada.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="mask">
+        <div><h2>Máscara</h2></div>
+        <hr/>
+        <div>
+            <p> Ao efetuar an&aacute;lise raster, utilize o ambiente <b>M&aacute;scara</b> para especificar uma camada que ser&aacute; utilizada para definir a sua &aacute;rea de interesse.   Apenas as c&eacute;lulas que se enquadram na m&aacute;scara de an&aacute;lise ser&atilde;o consideradas na opera&ccedil;&atilde;o de an&aacute;lise.
+            </p>
+            <ul>
+                <li>A m&aacute;scara pode ser uma camada raster ou de elementos.
+                </li>
+                <li>Caso a m&aacute;scara da an&aacute;lise seja uma uma camada raster, todas as c&eacute;lulas que possuam um valor ser&atilde;o consideradas na defini&ccedil;&atilde;o da m&aacute;scara. As c&eacute;lulas existentes numa m&aacute;scara raster que sejam NoData ser&atilde;o consideradas como estando fora da m&aacute;scara e n&atilde;o existir&aacute; qualquer elemento NoData na camada de resultados de an&aacute;lise. 
+                </li>
+                <li>Caso a m&aacute;scara de an&aacute;lise seja uma camada de elementos, ser&aacute; internamente convertida em raster na execu&ccedil;&atilde;o. Por esta raz&atilde;o, dever&aacute; ter o cuidado de assegurar que  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">Tamanho de C&eacute;lula</a> e <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">Snap Raster</a> s&atilde;o definidos de modo apropriado para a sua an&aacute;lise.
+                </li>
+            </ul>
+             
+        </div>
+    </div>
+</div>
+</html>

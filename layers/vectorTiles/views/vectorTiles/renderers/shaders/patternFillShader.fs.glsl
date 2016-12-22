@@ -15,8 +15,5 @@ void main()
   mediump vec2 samplePos = mix(u_pattern_tl, u_pattern_br, normalizedTextureCoord);
   // sample the sprite mosaic
   lowp vec4 color = texture2D(u_texture, samplePos);
-
-  // 'un-premultiply' the color
-  lowp float inv_alpha = (1.0 / clamp(color.a, 0.00390625, 1.0));
-  gl_FragColor = color * vec4(inv_alpha, inv_alpha, inv_alpha, u_opacity);
+  gl_FragColor = u_opacity * color;
 }

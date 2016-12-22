@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Sumarizovat atributy</h2><p/>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Sumarizovat atributy"></h2>
+        <hr/>
+    <p>Tento n&aacute;stroj sumarizuje v&scaron;echny shodn&eacute; hodnoty v jednom nebo v&iacute;ce pol&iacute;ch a vypoč&iacute;t&aacute;v&aacute; jejich statistiku. Nejz&aacute;kladněj&scaron;&iacute; statistikou je počet prvků, kter&eacute; spolu byly sumarizov&aacute;ny, ale můžete vypoč&iacute;t&aacute;vat i pokročilej&scaron;&iacute; statistiky. 
+
+    </p>
+    <p>Předpokl&aacute;dejme např&iacute;klad, že m&aacute;te bodov&eacute; prvky um&iacute;stěn&iacute; obchodů s&nbsp;polem představuj&iacute;c&iacute;m  <i>DISTRICT_MANAGER_NAME</i> a chcete sumarizovat prodej k&aacute;vy podle manažerů. Pole <i>DISTRICT_MANAGER_NAME</i> můžete určit jako pole pro sloučen&iacute; a v&scaron;echny ř&aacute;dky dat představuj&iacute;c&iacute; jednotliv&eacute; manažery budou sumarizov&aacute;ny. To znamen&aacute;, že v&scaron;echna um&iacute;stěn&iacute; obchodů, kter&aacute; spravuje Manažer1, budou sumarizov&aacute;na do jednoho ř&aacute;dku s&nbsp;vypoč&iacute;tanou souhrnnou statistikou. V tomto př&iacute;padě by byly statistiky, jako je počet obchodů a součet <i>TOTAL_SALES</i>, vypoč&iacute;t&aacute;ny pro v&scaron;echny obchody spravovan&eacute; Manažerem1 i pro jak&eacute;hokoli jin&eacute;ho manažera uveden&eacute;ho v poli <i>DISTRICT_MANAGER_NAME</i>.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Zvolit vstup k sumarizaci</h2></div>
+        <hr/>
+        <div>
+            <p>Vrstva, kter&aacute; obsahuje sumarizovan&aacute; pole.  
+            </p>
+            <p>Kromě v&yacute;běru vrstvy z&nbsp;mapy můžete tak&eacute; zvolit položku  <b>Proch&aacute;zet vrstvy</b> kter&aacute; se nach&aacute;z&iacute; v&nbsp;doln&iacute; č&aacute;sti rozbalovac&iacute; nab&iacute;dky, abyste ve sv&eacute;m obsahu mohli naj&iacute;t vrstvu prvků nebo datovou sadu sd&iacute;len&yacute;ch souborů velk&yacute;ch dat.  
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>Zvolit pole, na kterých chcete provést sloučení</h2></div>
+        <hr/>
+        <div>
+            <p>  Seznam pol&iacute; ze vstupn&iacute; vrstvy.  Vybran&aacute; pole budou sumarizov&aacute;na a použita pro v&yacute;počet statistiky. Pokud např&iacute;klad zvol&iacute;te pole s&nbsp;n&aacute;zvem <i>TypNemovitosti</i> s&nbsp;hodnotami komerčn&iacute; a rezidenčn&iacute;, v&scaron;echna rezidenčn&iacute; pole budou sumarizov&aacute;na spolu a bude pro ně vypoč&iacute;t&aacute;na souhrnn&aacute; statistika, a v&scaron;echna komerčn&iacute; pole budou sumarizov&aacute;na spolu.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Zvolit pole a statistiky, které chcete vypočítat (volitelné)</h2></div>
+        <hr/>
+        <div>
+            <p> Můžete vypoč&iacute;tat statistiku sumarizovan&yacute;ch prvků. U č&iacute;seln&yacute;ch pol&iacute; můžete vypoč&iacute;tat n&aacute;sleduj&iacute;c&iacute;:
+                <ul>
+                    <li>Počet
+                    </li>
+                    <li>Průměr
+                    </li>
+                    <li>Min.
+                    </li>
+                    <li>Maxim&aacute;ln&iacute;
+                    </li>
+                    <li>Rozsah
+                    </li>
+                    <li>Rozptyl:
+                    </li>
+                    <li>Směrodatn&aacute; odchylka
+                    </li>
+                </ul>
+                
+            </p>
+            <p>U řetězcov&yacute;ch pol&iacute; můžete vypoč&iacute;tat n&aacute;sleduj&iacute;c&iacute;:
+                <ul>
+                    <li>Počet
+                    </li>
+                    <li>Libovoln&eacute; &ndash; Tato statistika je n&aacute;hodn&yacute;m vzorkem hodnoty řetězce v&nbsp;určen&eacute;m poli.
+                    </li>
+                </ul>
+                V&scaron;echny statistiky se poč&iacute;taj&iacute; pro nenulov&eacute; hodnoty. V&yacute;sledn&aacute; vrstva bude obsahovat nov&eacute; pole pro každou vypoč&iacute;tanou statistiku. Lze přidat libovoln&yacute; počet statistik zvolen&iacute;m atributu a statistiky. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Zvolte datové úložiště</h2></div>
+        <hr/>
+        <div>
+            <p>Jedn&aacute; se o dočasn&yacute; parametr pro předčasn&eacute; vyd&aacute;n&iacute; pro nastaven&iacute; datov&eacute;ho &uacute;loži&scaron;tě, do kter&eacute;ho se ulož&iacute; v&yacute;sledky. Obě datov&aacute; uloži&scaron;tě jsou souč&aacute;st&iacute;  ArcGIS Data Store. Pokud vyberete časoprostorov&eacute; datov&eacute; &uacute;loži&scaron;tě, ale nem&aacute;te ž&aacute;dn&eacute; nainstalov&aacute;no, n&aacute;stroj selže. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Název výsledné vrstvy</h2></div>
+        <hr/>
+        <div>
+            <p> Toto je n&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce <b>Můj obsah</b> a přid&aacute; do mapy.  V&yacute;choz&iacute; n&aacute;zev se ř&iacute;d&iacute; n&aacute;zvem n&aacute;stroje a n&aacute;zvem vstupn&iacute; vrstvy. Pokud vrstva již existuje, n&aacute;stroj selže.
+            </p>
+            <p>V rozbalovac&iacute;m seznamu  <b>Uložit v&yacute;sledek do</b> můžete zadat n&aacute;zev složky ve složce <b>Můj obsah</b>, do kter&eacute; se m&aacute; v&yacute;sledek uložit.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

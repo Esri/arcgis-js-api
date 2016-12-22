@@ -41,15 +41,13 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Grupisanje tačaka</h2><p/>
-        <h2><img src="../images/GUID-60C59C66-3038-4D0E-8F6A-EC6C53FEAA02-web.png" alt="Grupisanje tačaka"></h2>
+        <h2>Grupiši tačke</h2><p/>
+        <h2><img src="../images/GUID-60C59C66-3038-4D0E-8F6A-EC6C53FEAA02-web.png" alt="Aggregate Points"></h2>
         <hr/>
-    <p>Ova alatka radi sa slojem tačkastih geoobjekata i slojem geoobjekata oblasti. On prvo određuje koje tačke spadaju u svaku oblast. Nakon određivanja prostornog odnosa tačaka i oblasti, izračunava se statistika o svim tačkama u oblasti i dodeljuje oblast. Najosnovnija statistika jeste broj tačaka unutar oblasti, ali možete da dobijete i druge statističke podatke. 
+    <p>Ova alatka radi sa slojem tačkastih geoobjekata i slojem geoobjekata oblasti. On prvo određuje koje tačke spadaju u svaku oblast. Nakon određivanja ove prostorne veze tačaka-u-oblasti, izračunava se statistika o svim tačkama u oblasti i vrednost se dodeljuje oblasti. Najosnovnija statistika jeste broj tačaka unutar oblasti, ali možete da dobijete i druge statističke podatke. 
     </p>
     <p>Na primer, pretpostavimo da imate tačkaste geoobjekte lokacija kafeterija i geoobjekte oblasti okruga, a želite da sumirate prodaju kafe po okrugu. Pretpostavljajući da kafeterije imaju atribut  <i>TOTAL_SALES</i>, možete da dobijete zbir svih <i>TOTAL_SALES</i> unutar svakog okruga ili minimalnu i maksimalnu vrednost za <i>TOTAL_SALES</i>
 unutar svakog okruga ili standardnu devijaciju celokupne prodaje unutar svakog okruga.
-    </p>
-    <p>Rezultat je mapa gde je boja svake oblasti zasnovana na ukupnom broju tačaka podeljenom sa veličinom oblasti. Deljenje brojeva po oblasti naziva se normalizacija, &scaron;to je tehnika koju kartografi uvek koriste da prikažu podatke po oblastima. Normalizacija pomaže boljem razumevanju prostornih obrazaca jer se veličina oblasti uzima u obzir kada se oblasti vizuelno porede jedna sa drugom.
     </p>
     <p>Ako je opcija  <b>Koristi trenutni obuhvat mape</b> uključena, biće analizirani samo geoobjekti u ulaznom tačkastom sloju i sloju oblasti vidljivi unutar trenutnog obuhvata mape. Ako ova opcija nije uključena, biće analizirani svi geoobjekti u ulaznom tačkastom geoobjektu i sloju oblasti, čak i ako su izvan trenutnog obuhvata mape.
     </p>
@@ -104,7 +102,7 @@ unutar svakog okruga ili standardnu devijaciju celokupne prodaje unutar svakog o
         <div><h2>Dodaj manjinu, većinu</h2></div>
         <hr/>
         <div>
-            <p>Ovo polje za potvrdu je omogućeno kada odaberete polje po kojem ćete da grupi&scaron;ete. Ako želite da saznate koje vrednosti atributa unutar svake grupe predstavljaju manjinu (najmanje zastupljenu vrednost) ili većinu (najzastupljeniju vrednost) unutar svake granice, selektujte  <b>Dodaj manjinu, većinu</b>. Kada izaberete <b>Dodaj manjinu, većinu</b>, dva nova polja se dodaju sloju sa rezultatima. Ako selektujete i <b>Dodaj procente</b>, dva dodatna polja dodaju se sloju sa rezultatima, koja sadrže procente vrednosti atributa manjine i većine unutar svake grupe.
+            <p>Ovo polje za potvrdu je omogućeno kada odaberete polje po kojem ćete da grupi&scaron;ete. Ako želite da saznate koje vrednosti atributa unutar svake grupe predstavljaju manjinu (najmanje zastupljenu vrednost) ili većinu (najzastupljeniju vrednost) unutar svake granice, selektujte  <b>Dodaj manjinu, većinu</b>. Kada selektujete <b>Dodaj manjinu, većinu</b>, dva nova polja se dodaju sloju sa rezultatima. Ako selektujete i <b>Dodaj procente</b>, dva dodatna polja dodaju se sloju sa rezultatima, koja sadrže procente vrednosti atributa manjine i većine unutar svake grupe.
             </p>
             <p>Na primer, ako ste urbanista i želite da saznate koje vrste drveća predstavljaju manjinu, a koje su u većini u svim gradskim parkovima, grupi&scaron;ite podatke o drveću sa oblastima parka, a zatim potvrdite ovu opciju.
             </p>

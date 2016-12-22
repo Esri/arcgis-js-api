@@ -41,11 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="aoToolbox">
-        <p>The Feature Analysis toolbox contains a number
-of tools that you can access and use.  These tasks are arranged below into
-categories; the categories are simply logical groupings
-and do not affect how you access or use the tasks in any
-way.
+        <p>De toolbox Objectanalyse omvat een aantal tools die u kunt openen en gebruiken. Deze taken zijn hieronder gerangschikt in categorie&euml;n; de categorie&euml;n zijn logische groeperingen en hebben geen enkele invloed op de manier waarop de taken worden geopend of gebruikt.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="regularsize">
@@ -55,9 +51,11 @@ way.
             <ul>
                 <li> <b>Punten aggregeren</b> berekent statistieken over punten die binnen specifieke oppervlakken vallen.
                 </li>
+                <li> <b>Objecten koppelen</b> brengt attributen over van &eacute;&eacute;n laag of tabel naar een andere op basis van ruimtelijke en attribuutrelaties.
+                </li>
                 <li> <b>Samenvatten in de buurt van</b> berekent statistieken voor objecten en hun attributen die zich binnen een specifieke afstand bevinden.
                 </li>
-                <li> <b>Samenvatten in</b> berekent statistieken voor gebiedsobjecten en attributen die elkaar overlappen.
+                <li> <b>Samenvatten in</b>  berekent statistieken voor gebiedsobjecten en attributen die elkaar overlappen.
                 </li>
             </ul>
             
@@ -81,6 +79,32 @@ way.
                     <li>Bereken aan de hand van bepaalde puntlocaties van criminele incidenten het aantal misdrijven per gemeente of ander administratieve regio.
                     </li>
                     <li>Zoek de hoogste en laagste inkomsten voor franchiselocaties per staat.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="JoinFeaturesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Objecten koppelen</h2></td>
+                    <td>
+                    <img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" class="titleImage" alt="Objecten koppelen">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Objecten koppelen brengt attributen over van &eacute;&eacute;n laag of tabel naar een andere op basis van ruimtelijke en attribuutrelaties. Bijvoorbeeld:
+                <ul>
+                    <li>Voeg gemeenschappelijke grens- of demografische informatie toe aan uw incidentdata.
+                    </li>
+                    <li>Identificeer de dichtstbijzijnde faciliteiten bij een bekende locatie.
+                    </li>
+                    <li>Bepaal het aantal woningen die in overstromingsgebied liggen.
+                    </li>
+                    <li>Identificeer gemeenschappelijke habitats voor verschillende soorten wilde dieren.
                     </li>
                 </ul>
                 
@@ -297,6 +321,8 @@ way.
                 </li>
                 <li>Met  <b>Hotspots zoeken</b> wordt statistisch significante clustering in het ruimtelijke patroon van uw gegevens ge&iuml;dentificeerd.
                 </li>
+                <li>De tool  <b>Afwijkingen</b> vinden bepaalt of er sprake is van statistisch significante afwijkingen in het ruimtelijke patroon van uw data.
+                </li>
                 <li> <b>Punten interpoleren</b> voorspelt waarden op nieuwe locaties op basis van metingen die worden gevonden in een verzameling van punten.
                 </li>
             </ul>
@@ -329,7 +355,22 @@ way.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Deze tool maakt een kaart die eventuele statistisch significante ruimtelijke clustering in uw gegevens weergeeft.   Gebruik deze tool om onverwachte hotspots (rood) en coldspots (blauw) te zoeken van bijvoorbeeld hoge en lage huizenwaarden, de misdaaddichtheid, slachtoffers van verkeersongevallen, werkloosheid of biodiversiteit.
+            <p>Deze tool maakt een kaart die eventuele statistisch significante ruimtelijke clustering in uw gegevens weergeeft. Gebruik deze tool om onverwachte hotspots (rood) en coldspots (blauw) te zoeken van bijvoorbeeld hoge en lage huizenwaarden, de misdaaddichtheid, slachtoffers van verkeersongevallen, werkloosheid of biodiversiteit.
+            </p>
+            <br/>
+        </div>
+        <div id="FindOutliersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Afwijkingen vinden</h2></td>
+                    <td>
+                    <img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" class="titleImage" alt="Afwijkingen vinden">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Deze tool maakt een kaart met alle statistisch significante clusters en ruimtelijke afwijkingen in uw data. Gebruik deze tool om objecten te identificeren die waarden hebben die aanzienlijk verschillen van de aangrenzende waarden.  U kunt deze tool bijvoorbeeld gebruiken om abnormale uitgavepatronen te zoeken, bepalen waar de scherpste grenzen tussen welvaart en armoede liggen in een studiegebied of bepalen of er provincies in de Verenigde Staten zijn met ongewoon lage levensverwachting t.o.v. de aangrenzende provincies.
             </p>
             <br/>
         </div>

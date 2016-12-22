@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>密度の計算</h2><p/>
+        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Calculate Density"></h2>
+        <hr/>
+    <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas classified from least dense to most dense.   
+
+    </p>
+    <p>For point input, each point should represent the location of some event or incident, and the result layer represents a count of the incident per unit area.  A higher density value in a new location means that there are more points near that location.  In many cases, the result layer can be interpreted as a risk surface for future events. For example, if the input points represent locations of lightning strikes, the result layer can be interpreted as a risk surface for future lightning strikes.
+    </p>
+    <p>Other use cases of this tool include the following:
+        <ul>
+            <li>Creating crime-density maps to help police departments properly allocate resources to high crime areas.
+            </li>
+            <li>Calculating densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to decide where new hospitals should be built.
+            </li>
+            <li>Identifying areas that are at high risk of forest fires based on historical locations of forest fires.
+            </li>
+            <li>Locating communities that are far from major highways in order to plan where new roads should be constructed.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>密度の計算に使用するポイント レイヤーを選択</h2></div>
+        <hr/>
+        <div>
+            <p>The point layer on which the density will be calculated.
+            </p>
+            <p>マップからレイヤーを選択できるだけでなく、ドロップダウン リストの下部にある  <b>[レイヤーの参照]</b> を選択し、ビッグ データ ファイル共有データセットまたはフィーチャ レイヤーのコンテンツを参照して選択することもできます。  
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>密度の計算に使用する 1 つまたは複数のフィールドの選択</h2></div>
+        <hr/>
+        <div>
+            <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
+            </p>
+            <p>The density for the count of points will always be calculated.   If no fields are selected, each location will be assumed to represent a single count.
+            </p>
+        </div>
+    </div>
+    <div id="binType">
+        <div><h2>ビンの形状の選択</h2></div>
+        <hr/>
+        <div>
+            <p>The shape of bins that points are aggregated into and used for the density calculation.
+            </p>
+        </div>
+    </div>
+    <div id="binSizing">
+        <div><h2>密度を計算するビンのサイズを選択</h2></div>
+        <hr/>
+        <div>
+            <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
+            </p>
+        </div>
+    </div>
+    <div id="weight">
+        <div><h2>適用する密度の重み付けを選択</h2></div>
+        <hr/>
+        <div>
+            <p>The type of weighting applied to the density calculation. There are two options:
+                <ul>
+                    <li> <b>Uniform</b>&mdash;This calculates a magnitude per area.
+                    </li>
+                    <li> <b>Kernel</b>&mdash;Applies a kernel function to fit a smooth tapered surface to each point.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="neighborhood">
+        <div><h2>近傍サイズの選択</h2></div>
+        <hr/>
+        <div>
+            <p>The size of the area used to calculate the density. The neighborhood size must be larger than the bin size.
+            </p>
+        </div>
+    </div>
+    <div id="areaUnits">
+        <div><h2>密度の出力単位の選択</h2></div>
+        <hr/>
+        <div>
+            <p>The desired output units of the density values. By default, this is set to the units in your map (for example, square meters). If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>タイム スライスを使用した密度の計算 (オプション)</h2></div>
+        <hr/>
+        <div>
+            <p>入力ポイント レイヤーで時間が有効になっており、時間のタイプが即時の場合は、タイム スライスを使用して解析することができます。時間を使用する際には、次の 3 つのパラメーターを設定できます。
+                <ul>
+                    <li>  <b>時間間隔</b>
+                    </li>
+                    <li> <b>時間ステップ</b>
+                    </li>
+                    <li> <b>基準時間</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>たとえば、時間を年で表すデータがあり、週単位のタイム スライスを使用して解析するとします。これには、 <b>[時間間隔]</b> を <code>[1 週間]</code> に設定します。
+            </p>
+            <p> たとえば、時間を年で表すデータがあり、月の第 1 週を使用して解析するとします。これには、 <b>[時間間隔]</b> を <code>[1 週間]</code>、 <b>[時間ステップ]</b> を <code>[1 か月]</code>、 <b>[基準時間]</b> を <code>[1 月 1 日 12:00 AM]</code> に設定します。
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>密度を計算する時間間隔</h2></div>
+        <hr/>
+        <div>
+            <p>データのスライスに使用する時間間隔。[時間間隔] は、単独で使用することも、 <b>[時間ステップ]</b> または <b>[基準時間]</b> パラメーターと組み合わせて使用することもできます。
+            </p>
+            <p> 毎週月曜日の午前 9:00 から午前 10:00 までのタイム スライスを作成する場合は、 <b>[時間間隔]</b> を <code>[1 時間]</code>、 <b>[時間ステップ]</b> を <code>[1 週間]</code>、 <b>[基準時間]</b> を <code>[月曜日 9:00:00 AM]</code> に設定します。
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>密度を計算する時間ステップ</h2></div>
+        <hr/>
+        <div>
+            <p> タイム スライスの計算に使用する時間ステップ。 <b>[時間ステップ]</b> は、単独で使用することも、 <b>[時間間隔]</b>、 <b>[基準時間]</b>、または <b>[時間間隔]</b> と <b>[基準時間]</b> の両方と組み合わせて使用することもできます。
+            </p>
+            <p> 毎週月曜日の午前 9:00 から午前 10:00 までのタイム スライスを作成する場合は、 <b>[時間間隔]</b> を <code>[1 時間]</code>、 <b>[時間ステップ]</b> を <code>[1 週間]</code>、 <b>[基準時間]</b> を <code>[月曜日 9:00:00 AM]</code> に設定します。
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>タイム スライスの調整に使用する基準時間</h2></div>
+        <hr/>
+        <div>
+            <p>タイム スライスの調整に使用する日付と時刻。 <b>[時間ステップ]</b> は、基準時間から始まり、基準時間まで逆戻りします。
+            </p>
+            <p> 毎週月曜日の午前 9:00 から午前 10:00 までのタイム スライスを作成する場合は、 <b>[時間間隔]</b> を <code>[1 時間]</code>、 <b>[時間ステップ]</b> を <code>[1 週間]</code>、 <b>[基準時間]</b> を <code>[月曜日 9:00:00 AM]</code> に設定します。
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>SpatialReference (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>処理対象の空間参照を設定するためのプレリリース用の一時的なパラメーターです。多くのビッグ データ ツールでは、投影座標系を処理対象の空間参照として使用する必要があります。デフォルトでは、このツールで入力座標系が使用されます。地理座標系を使用すると、このツールは正常に実行されません。投影座標系を設定するには、WKID を入力します。たとえば、 <b>[Web メルカトル図法]</b> は「 <code>3857</code>」と入力します。
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>データ ストアの選択</h2></div>
+        <hr/>
+        <div>
+            <p>結果を保存するデータ ストアを設定するためのプレリリース用の一時的なパラメーターです。どちらのデータ ストアも  ArcGIS Data Store の一部です。ビッグ データ ストアを選択した場合に、このデータ ストアがまだインストールされていないと、このツールは正常に実行されません。 </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>結果レイヤーの名前</h2></div>
+        <hr/>
+        <div>
+            <p>  <b>[マイ コンテンツ]</b> で作成され、マップに追加されるレイヤーの名前です。デフォルトの名前は、ツール名と入力レイヤー名に基づいて設定されます。レイヤーがすでに存在する場合、このツールは正常に実行されません。
+            </p>
+            <p> <b>[出力の保存場所]</b> ドロップダウン ボックスを使用して、結果を保存する <b>[マイ コンテンツ]</b> 内のフォルダーの名前を指定できます。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

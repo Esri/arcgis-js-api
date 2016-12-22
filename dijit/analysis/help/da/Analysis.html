@@ -40,6 +40,10 @@
 </head>
 <body onload="init()">
 <div id="topics">
+    <div id="aoToolbox">
+        <p>Objektanalyse-v&aelig;rkt&oslash;jskassen indeholder en r&aelig;kke v&aelig;rkt&oslash;jer, som du kan f&aring; adgang til og bruge. Disse opgaver er struktureret kategorierne nedenfor: Kategorierne er enkle, logiske grupperinger, som ikke p&aring; nogen m&aring;de p&aring;virker din adgang til eller brugen af opgaverne.
+        </p>
+    </div>
     <div id="SummarizeDataCategory" class="regularsize">
         <h2>Summér data</h2>
         <hr/>
@@ -47,9 +51,11 @@
             <ul>
                 <li> <b>Aggreg&eacute;r punkter</b> beregner statistik om punkter, der falder inden for angivne omr&aring;der.
                 </li>
-                <li> <b>Opsumm&eacute;r i n&aelig;rheden</b> beregner statistik for punkter og deres attributter, der er inden for en angiven afstand.
+                <li> <b>Forbind objekter</b> overf&oslash;rer attributter fra &eacute;t lag eller &eacute;n tabel til et andet lag eller en anden tabel p&aring; grundlag af rumlige relationer og attributrelationer.
                 </li>
-                <li> <b>Opsumm&eacute;r inden for</b> beregner statistik for omr&aring;deobjekter og -attributter, der overlapper hinanden.
+                <li> <b>Summ&eacute;r i n&aelig;rheden</b> beregner statistik for punkter og deres attributter, der er inden for en angiven afstand.
+                </li>
+                <li> <b>Summ&eacute;r inden for</b> beregner statistik for omr&aring;deobjekter og -attributter, der overlapper hinanden.
                 </li>
             </ul>
             
@@ -73,6 +79,32 @@
                     <li>Ved angivelse af punkt-lokationer for forbrydelser kan der f.eks. beregnes antal forbrydelser pr. amt eller andet administrativt distrikt.
                     </li>
                     <li>Find h&oslash;jeste og laveste indkomst for for franchise-lokationer pr. stat.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="JoinFeaturesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Forbind objekter</h2></td>
+                    <td>
+                    <img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" class="titleImage" alt="Forbind objekter">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Forbind objekter overf&oslash;rer attributter fra &eacute;t lag eller &eacute;n tabel til et andet lag eller en anden tabel p&aring; grundlag af rumlige relationer og attributrelationer. For eksempel:
+                <ul>
+                    <li>Knyt oplysninger om f&aelig;lles gr&aelig;nse eller demografi til dine h&aelig;ndelsesdata.
+                    </li>
+                    <li>Identific&eacute;r de n&aelig;rmeste faciliteter i forhold til et kendt sted.
+                    </li>
+                    <li>Bestem antallet af beboelsesejendomme, der ligger inden for oversv&oslash;mmelseszoner.
+                    </li>
+                    <li>Identific&eacute;r almindelige levesteder for forskellige vildtlevende dyrearter.
                     </li>
                 </ul>
                 
@@ -287,7 +319,9 @@
             <ul>
                 <li> <b>Beregn t&aelig;thed</b> tager kendte kvantiteter af visse f&aelig;nomener og spreder dem p&aring; kortet.
                 </li>
-                <li> <b>Find hotspots</b> identificer statistisk signifikante klynger i det geografiske m&oslash;nster i dine data.
+                <li> <b>Find hotspots</b> identificerer statistisk signifikante klynger i det geografiske m&oslash;nster i dine data.
+                </li>
+                <li> <b>Find afvigelser</b> bestemmer, om der er statistisk signifikante afvigelser i det rumlige m&oslash;nster for dine data.
                 </li>
                 <li> <b>Interpol&eacute;r punkter</b> forudsiger v&aelig;rdier p&aring; nye placeringer baseret p&aring; m&aring;linger fundet i en samling af punkter.
                 </li>
@@ -321,7 +355,22 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>V&aelig;rkt&oslash;jet opretter et kort, der viser statistisk signifikante geografiske klynger i dine data.   Du kan bruge dette v&aelig;rkt&oslash;j til at finde uventede hotspots (r&oslash;d) og coldspots (bl&aring;) med h&oslash;je og lave v&aelig;rdier for f.eks. kriminalitet, trafikulykker, arbejdsl&oslash;shed eller biodiversitety.
+            <p>V&aelig;rkt&oslash;jet opretter et kort, der viser statistisk signifikante geografiske klynger i dine data. Du kan bruge dette v&aelig;rkt&oslash;j til at finde uventede hotspots (r&oslash;d) og coldspots (bl&aring;) med h&oslash;je og lave v&aelig;rdier for f.eks. kriminalitet, trafikulykker, arbejdsl&oslash;shed eller biodiversitety.
+            </p>
+            <br/>
+        </div>
+        <div id="FindOutliersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Find afvigelser</h2></td>
+                    <td>
+                    <img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" class="titleImage" alt="Find afvigelser">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dette v&aelig;rkt&oslash;j opretter et kort, der viser eventuelle statistisk signifikante klynger og rumlige afvigelser i dine data. Brug dette v&aelig;rkt&oslash;j til at identificere objekter, der har v&aelig;rdier, der adskiller sig betydeligt fra deres tilst&oslash;dende objekter.  Du kan f.eks. bruge dette v&aelig;rkt&oslash;j til at finde afvigende forbrugsm&oslash;nstre, til at finde frem til de skarpeste gr&aelig;nser mellem velstand og fattigdom i unders&oslash;gelsesomr&aring;det eller til at bestemme, om der er regioner i USA, hvor den forventede levealder er us&aelig;dvanligt lav i forhold til de omgivende regioner.
             </p>
             <br/>
         </div>

@@ -41,5 +41,5 @@ void main()
   alpha *= dashAlpha;
 
   // output the fragment color
-  gl_FragColor = vec4(u_color.rgb, alpha * u_color.a);
+ gl_FragColor = alpha * u_color;
 }

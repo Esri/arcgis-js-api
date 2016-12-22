@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="raToolbox">
+        <p>Raster analizi  ArcGIS Image Server uygulamasını kullanarak b&uuml;y&uuml;k raster veri k&uuml;melerinin analizini yapmanıza olanak tanır. Bu, sunucu g&uuml;c&uuml;n&uuml; kullanarak daha fazla veriyi daha hızlı analiz etmenize olanak tanır.  Portal for ArcGIS web kullanıcı deneyimi &ccedil;er&ccedil;evesinde şu anda sunulmakta olan ara&ccedil; setleri şunlardır:  <b>Veriyi &Ouml;zetle</b>, <b>Modelleri Analiz Et</b>, <b>G&ouml;r&uuml;nt&uuml;y&uuml; Analiz Et</b>, <b>Araziyi Analiz Et</b> ve <b>Veriyi Y&ouml;net</b>.
+        </p>
+    </div>
+    <div id="SummarizeDataCategory" class="smallsize">
+        <h2>Veriyi Özetle</h2>
+        <hr/>
+        <p>Bu ara&ccedil; setinde, tanımladığınız alan sınırları i&ccedil;indeki bir raster katmanı i&ccedil;in bazı istatistikleri hesaplamada kullanılan bir ara&ccedil; bulunur. 
+            <ul>
+                <li> <b>Raster &Ouml;zetleme Aralığı</b>, tanımlı alan sınırları i&ccedil;ine d&uuml;şen raster h&uuml;creleri i&ccedil;in istatistikleri hesaplar.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="SummarizeRasterWithinTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Raster Özetleme Aralığı</h2></td>
+                    <td>
+                    <img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" class="titleImage" alt="Raster &Ouml;zetleme Aralığı aracı">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Tanımlı alanların i&ccedil;inde kalan raster h&uuml;creleri i&ccedil;in bazı &ouml;zet istatistikleri hesaplar.
+            </p>
+            <p>Bazı &ouml;rnek uygulamalar aşağıda verilmiştir: 
+
+                <ul>
+                    <li>Bir su havzası alanları katmanı ve y&uuml;kselti raster katmanı verildiğinde, her su havzası i&ccedil;indeki y&uuml;kselti aralığını hesaplayarak hangilerinde en y&uuml;ksek enerjiye sahip akış olacağını belirleyebilirsiniz.
+                        
+
+                    </li>
+                    <li>Bir resmi y&ouml;netim birimleri katmanı ve arazi kullanımı kategorileri raster katmanı verildiğinde, her y&ouml;netim alanı i&ccedil;indeki arazi kullanım &ccedil;eşitliliği değerlerini hesaplayarak en fazla &ccedil;alışmaya ihtiya&ccedil; duyanları tanımlayarak bir y&ouml;netim planı belirleyebilirsiniz.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzePatternsCategory" class="regularsize">
+        <h2>Modelleri Analiz Et</h2>
+        <hr/>
+        <p>Bu ara&ccedil;lar, mekansal modelleri tanımlamanıza, sayısallaştırmanıza ve g&ouml;rselleştirmenize yardımcı olur. 
+
+            <ul>
+                <li> <b>Yoğunluğu Hesapla</b>, bazı olayların bilinen miktarlarını alır ve bu miktarları haritada dağıtarak bir yoğunluk haritası oluşturur.
+                    
+
+                </li>
+                <li> <b>Nokta Ara Değerlerini Hesaplama</b> aracı, toplama noktalarında bulunan &ouml;l&ccedil;&uuml;mlere dayanarak yeni konumlardaki değerleri tahmin eder.
+                    
+
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateDensityRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Yoğunluğu Hesapla</h2></td>
+                    <td>
+                    <img src="../images/GUID-4EE4838C-E210-43CE-99C7-1A648A18C10B-web.png" class="titleImage" alt="Yoğunluğu Hesaplama aracı">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Yoğunluk analizi, bazı olayların bilinen miktarlarını alır ve bu miktarları haritada dağıtarak bir yoğunluk haritası oluşturur. Bu aracı, &ouml;rneğin, yıldırım d&uuml;şmesi veya kasırga yoğunluğunu, sağlık kurumlarına erişimi ve n&uuml;fus yoğunluğunu g&ouml;stermek amacıyla kullanabilirsiniz.
+            </p>
+            <br/>
+        </div>
+        <div id="InterpolatePointsEBKTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Nokta Ara Değerlerini Hesapla</h2></td>
+                    <td>
+                    <img src="../images/GUID-06D80BB3-7154-4FAA-9C9B-D665450EF3BC-web.png" class="titleImage" alt="Nokta Ara Değerlerini Hesaplama aracı">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Bu ara&ccedil;, toplama noktalarında bulunan &ouml;l&ccedil;&uuml;mlere dayanarak yeni konumlardaki değerleri tahmin etmenize olanak tanır. Ara&ccedil;, nokta verilerinin her noktadaki değerlerini alır ve tahmini değerlerle sınıflandırılan alanları d&ouml;nd&uuml;r&uuml;r. Bu aracı, &ouml;rneğin, tek tek alınan yağış &ouml;l&ccedil;&uuml;mlerine dayanarak bir havzadaki yağış d&uuml;zeylerini tahmin etmek i&ccedil;in kullanabilirsiniz.
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzeImageCategory" class="smallsize">
+        <h2>Görüntüyü Analiz Et</h2>
+        <hr/>
+        <p>Aşağıdaki ara&ccedil;, bitki &ouml;rt&uuml;s&uuml;ne sahip alanları belirlemek i&ccedil;in g&ouml;r&uuml;nt&uuml;leri analiz etmenize yardım eder. 
+            <ul>
+                <li> <b>Bitki &Ouml;rt&uuml;s&uuml; İzleme</b>, bantlarda yapılan aritmetik işlemlere dayanarak g&ouml;r&uuml;nt&uuml; i&ccedil;indeki bitki &ouml;rt&uuml;s&uuml;n&uuml; algılar.
+                    
+
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="MonitorVegetationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Bitki Örtüsünü İzle</h2></td>
+                    <td>
+                    <img src="../images/GUID-7763FCC0-2EA1-463B-98D0-4EBDF6150907-web.png" class="titleImage" alt="Portal i&ccedil;in Bitki &Ouml;rt&uuml;s&uuml;n&uuml; izleme aracı">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>&Ccedil;ok bantlı bir raster katmanının bantları &uuml;zerinde bir aritmetik işlem ger&ccedil;ekleştirerek &ccedil;alışma alanındaki bitki &ouml;rt&uuml;s&uuml; bilgilerini g&ouml;sterir.
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzeTerrainCategory" class="regularsize">
+        <h2>Araziyi Analiz Et</h2>
+        <hr/>
+        <p>Bu ara&ccedil;lar raster y&uuml;zeylerini analiz etmenize yardım eder. 
+            <ul>
+                <li> <b>Eğimi Hesapla</b>, arazinin dikliğini hesaplar.
+                    
+
+                </li>
+                <li> <b>Bakı Al</b>, her konum i&ccedil;in en dik eğimin y&ouml;n&uuml;n&uuml; hesaplar.
+                    
+
+                </li>
+                <li> <b>G&ouml;r&uuml;ş Alanı Oluştur</b>, arazideki herhangi bir nokta &uuml;zerinden g&ouml;r&uuml;lebilecek yerleri tanımlar.
+                    
+
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateSlopeTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Eğimi Hesapla</h2></td>
+                    <td>
+                    <img src="../images/GUID-D33862C6-01BB-445E-B0C3-BC8B8C1858DA-web.png" class="titleImage" alt="Portal i&ccedil;in Eğim Hesaplama aracı">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Girdi y&uuml;kselti verilerinin eğimini g&ouml;steren bir y&uuml;zey tanımlar. Eğim her dijital y&uuml;kselti modeli (DEM) h&uuml;cresi i&ccedil;in y&uuml;kselti değişim hızını g&ouml;sterir.
+            </p>
+            <br/>
+        </div>
+        <div id="DeriveAspectTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Bakı Al</h2></td>
+                    <td>
+                    <img src="../images/GUID-D03FF025-0530-4D0D-87A3-B25D6716F8F0-web.png" class="titleImage" alt="Portal i&ccedil;in Bakı Alma aracı">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Her h&uuml;creden komşularına doğru olan aşağı eğim y&ouml;n&uuml;ndeki maksimum değişim hızının değerini tanımlar. Bakı, eğim y&ouml;n&uuml; olarak d&uuml;ş&uuml;n&uuml;lebilir.
+            </p>
+            <br/>
+        </div>
+        <div id="CreateViewshedRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Görüş Alanı Oluştur</h2></td>
+                    <td>
+                    <img src="../images/GUID-BB8B8CAF-330E-4C41-9D94-AF4728D0D0F3-web.png" class="titleImage" alt="G&ouml;r&uuml;ş Alanı Oluştur aracı">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Bir g&ouml;zlemci grubu i&ccedil;in g&ouml;r&uuml;n&uuml;r olan bir raster y&uuml;zeyindeki konumları belirler.
+            </p>
+            <br/>
+        </div>
+    <div id="ManageDataCategory" class="regularsize">
+        <h2>Verileri Yönet</h2>
+        <hr/>
+        <p>Bu ara&ccedil;lar hem g&uuml;nl&uuml;k coğrafi veri y&ouml;netimi hem de analiz &ouml;ncesinde verinin y&ouml;netimi i&ccedil;in kullanılır. 
+            <ul>
+                <li> <b>Raster Ayıkla</b>, daha ayrıntılı analiz i&ccedil;in bir raster veri k&uuml;mesinden b&ouml;l&uuml;mleri kesip &ccedil;ıkarır.
+                    
+
+                </li>
+                <li> <b>Değerleri Yeniden Haritalandır</b>, raster h&uuml;crelerine farklı değerler atar.
+                    
+
+                </li>
+                <li> <b>Detayı Rastera D&ouml;n&uuml;şt&uuml;r</b>, vekt&ouml;r verilerini rastera d&ouml;n&uuml;şt&uuml;r&uuml;r.
+                    
+
+                </li>
+                <li> <b>Rasterı Detaya D&ouml;n&uuml;şt&uuml;r</b>, raster verilerini vekt&ouml;re d&ouml;n&uuml;şt&uuml;r&uuml;r.
+                    
+
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="ExtractRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Raster Ayıkla</h2></td>
+                    <td>
+                    <img src="../images/GUID-DC9CBCB9-A07C-42D3-A0CB-2FB1483CBF4C-web.png" class="titleImage" alt="Portal i&ccedil;in Raster Ayıklama aracı">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Değeri, şekli veya farklı bir veri k&uuml;mesinin yayılımını kullanan rasterdan h&uuml;creleri ayıklar.
+            </p>
+            <br/>
+        </div>
+        <div id="RemapValuesTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Değerleri Yeniden Haritalandır</h2></td>
+                    <td>
+                    <img src="../images/GUID-4006E442-A60B-469A-891D-5ED442F64CB8-web.png" class="titleImage" alt="Portal i&ccedil;in Değerleri Yeniden Haritalandır aracı">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>H&uuml;cre değerlerini tek tek veya aralık olarak yeni değerlerle değiştirin.
+            </p>
+            <br/>
+        </div>
+        <div id="ConvertFeatureToRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Convert Feature to  Raster</h2></td>
+                    <td>
+                    <img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" class="titleImage" alt="Convert Feature to Raster tool">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Mevcut bir detay veri k&uuml;mesinden yeni bir raster veri k&uuml;mesi oluşturun.
+            </p>
+            <br/>
+        </div>
+        <div id="ConvertRasterToFeatureTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Raster'ı Detaya Dönüştür</h2></td>
+                    <td>
+                    <img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" class="titleImage" alt="Rasterı Detaya D&ouml;n&uuml;şt&uuml;rme aracı">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Mevcut bir raster veri k&uuml;mesinden yeni bir detay veri k&uuml;mesi oluşturun.
+            </p>
+            <br/>
+        </div>
+</div>
+</html>

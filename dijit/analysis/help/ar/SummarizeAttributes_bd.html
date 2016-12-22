@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>تلخيص البيانات الجدولية</h2><p/>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="تلخيص البيانات الجدولية"></h2>
+        <hr/>
+    <p>تلخص هذه الأداة كل القيم المطابقة في حقل واحد أو أكثر وتحسب الإحصائيات الخاصة بها. تكون أغلبية الإحصائيات الأساسية هي عدد المعالم التي يتم تلخيصها معًا، ولكن يمكنك أيضًا حساب إحصائيات أكثر تقدُّمًا. 
+
+    </p>
+    <p>على سبيل المثال، افترض أن لديك معالم نقطية لمواقع المخزن بحقل يمثل  <i>DISTRICT_MANAGER_NAME</i> وتريد تلخيص مبيعات القهوة بواسطة المدير. يمكنك تحديد حقل <i>DISTRICT_MANAGER_NAME</i> ليكون الحقل المُراد تبديده، وسيتم تلخيص كل صفوف البيانات التي تمثل المديرين الفرديين. وهو ما يعني أنه سيتم تلخيص كل مواقع المخزن التي سيديرها Manager1 في صف واحد بإخصائيات ملخص محسوبة. في هذا المثيل، سيتم حساب الإحصائيات مثل عدد المخازن ومجموع <i>TOTAL_SALES</i> لكل المخازن التي يديرها Manager1، وكذلك لأي مدير آخر مُدرَج في حقل <i>DISTRICT_MANAGER_NAME</i>.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>اختر المدخلات المُراد تلخيصها</h2></div>
+        <hr/>
+        <div>
+            <p>تحتوي الطبقة على الحقول التي سيتم تلخصيها.  
+            </p>
+            <p>إضافةَ إلى اختيار الطبقة من الخريطة، يمكنك اختيار  <b>استعراض الطبقات</b> أسفل القائمة المنسدلة لاستعراض محتوياتك لمجموعة بيانات مشاركة ملف البيانات الضخمة أو طبقة معالم.  
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>اختر الحقول التي ترغب في حلها على</h2></div>
+        <hr/>
+        <div>
+            <p>  قائمة الحقول من الطبقة المُدخَلَة.  سيتم تلخيص الحقول المحددة واستخدامها لحساب الإحصائيات. على سبيل المثال، إذا اخترت حقلاً باسم <i>PropertyType</i> بالقيم التجارية والسكنية، سيتم تلخيص كل الحقول السكنية معًا مع إحصائيات ملخص محسوبة، كما سيتم تلخيص كل الحقول التجارية معًا.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>اختر الحقول والإحصائيات التي تريد حسابها (اختياري)</h2></div>
+        <hr/>
+        <div>
+            <p> يُمكنك حساب الإحصائيات في المعالم المُلخّصة. في الحقول الرقمية، يمكنك حساب ما يلي:
+                <ul>
+                    <li>عدد
+                    </li>
+                    <li>المتوسط
+                    </li>
+                    <li>الحد الأدنى
+                    </li>
+                    <li>الحد الأقصى
+                    </li>
+                    <li>نطاق
+                    </li>
+                    <li>تنوع
+                    </li>
+                    <li>الانحراف المعياري
+                    </li>
+                </ul>
+                
+            </p>
+            <p>في حقول السلسلة، يمكنك حساب ما يلي:
+                <ul>
+                    <li>عدد
+                    </li>
+                    <li>أيّ منها - هذه الإحصائية هي نموذج عشوائي على قيمة السلسلة في الحقل المحدد.
+                    </li>
+                </ul>
+                يتم حساب كل الإحصائيات في القيم غير الفارغة. ستتضمن الطبقة الناتجة حقلاً جديدًا لكل إحصائية محسوبة. يمكن إضافة أي عدد من الاحصائيات باختيار البيانات الجدولية والاحصائيات. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>اختر مخزن بيانات</h2></div>
+        <hr/>
+        <div>
+            <p>هذا معلم مؤقت للإصدار التجريبي لتعيين مخزن البيانات حيث تُحفَظ النتائج. يعد مخزني البيانات جزءًا من  متجر بيانات ArcGIS. إذا حددت مخزن البيانات الزمانية المكانية ولكن لا يوجد مخزن مثبت، ستفشل الأداة. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>اسم طبقة النتيجة</h2></div>
+        <hr/>
+        <div>
+            <p> هذا هو اسم الطبقة الذي سيتم إنشاؤه في <b>المحتويات</b> وستتم إضافته إلى الخريطة.  يستند الاسم الافتراضي إلى اسم الأداة واسم الطبقة المدخلة. إذا وُجِدَت الطبقة بالفعل، ستفشل الأداة.
+            </p>
+            <p>عند استخدام مربع السهم المنسدل  <b>حفظ النتائج في</b> يمكن تحديد اسم المجلد في <b>المحتويات</b> حيث يتم حفظ النتائج.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

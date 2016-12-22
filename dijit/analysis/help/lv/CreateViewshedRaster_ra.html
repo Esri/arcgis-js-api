@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Skata aizseguma izveide</h2><p/>
+        <h2><img src="../images/GUID-BB8B8CAF-330E-4C41-9D94-AF4728D0D0F3-web.png" alt="Rīks Skata aizseguma izveide"></h2>
+        <hr/>
+    <p>Rīks veido platības, kurās vērotājs var redzēt uz zemes eso&scaron;us objektus. Ievades novēro&scaron;anas punkti var apzīmēt vai nu novērotājus (piemēram, cilvēkus, kas stāv uz zemes vai ugunsgrēku novēro&scaron;anas tornī), vai novērotos objektus (piemēram, vējturbīnas, ūdenstorņus, transportlīdzekļus vai citus cilvēkus). Rezultātu platības ir tādas platības, kurās vērotāji var redzēt novērotos objektus, un pretēji&nbsp;&mdash; novērotie objekti var redzēt vērotājus.
+    </p>
+    <p>Gan vērotāji, gan novērotie objekti var atrasties virs zemes, un &scaron;is augstums virs zemes tiek izmantots, lai noteiktu redzamību. Piemēram, skata aizsegums, kas tiek aprēķināts 300&nbsp;pēdu augstām vējturbīnām un 6&nbsp;pēdas gariem cilvēkiem, kas stāv uz zemes, parasti būs lielāks nekā skata aizsegums, kas aprēķināts 200&nbsp;pēdu augstām vējturbīnām un 5&nbsp;pēdas gariem cilvēkiem.
+    </p>
+    <p>Rezultātu slānī tiek reģistrēts, cik reizes katrs &scaron;ūnas izvietojums ievades virsmas rastrā ir redzams no ievades novēro&scaron;anas punktiem. Neredzamajām &scaron;ūnām tiek pie&scaron;ķirtas vērtības &ldquo;NoData&rdquo;.
+    </p>
+    <p>Ja ir atzīmēta iespēja  <b>Izmantot pa&scaron;reizējo kartes pārklājumu</b>, tiks analizēta tikai tā rastra platība un novēro&scaron;anas punkti, kas ir redzami pa&scaron;reizējā kartes pārklājumā. Ja iespēja nav atzīmēta, tiks analizēti visi ievades slāņa novēro&scaron;anas punkti&nbsp;&mdash; arī tie, kas atrodas ārpus pa&scaron;reizējā kartes pārklājuma.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="elevationSurface">
+        <div><h2>Augstuma virsma</h2></div>
+        <hr/>
+        <div>
+            <p>Augstuma virsma, kas tiek izmantota skata aizseguma aprēķinā&scaron;anai.
+            </p>
+            <p>Ja ievades virsmas vertikālā mērvienība at&scaron;ķiras no horizontālās mērvienības, piemēram, augstuma vērtības ir parādītas pēdās, bet koordinātu sistēma ir parādīta metros, virsmā ir jābūt definētai vertikālai koordinātu sistēmai. Tas jādara, jo rīks izmanto vertikālās (Z) un horizontālās (XY) mērvienības, lai aprēķinātu skata aizseguma analīzes Z faktoru. Ja netiek izmantota vertikāla koordinātu sistēma un līdz ar to nav pieejama informācija par Z mērvienībām, rīks pieņems, ka Z mērvienība atbilst XY mērvienībai. Tā rezultātā analīzei tiks izmantots Z iek&scaron;ējais faktors&nbsp;1,0, kas var radīt neparedzētus rezultātus.
+            </p>
+            <p>Augstuma virsma var būt vesels skaitlis vai peldo&scaron;ais punkts.
+            </p>
+        </div>
+    </div>
+    <div id="observerFeatures">
+        <div><h2>Punkta elementi, kas pārstāv vērotāja izvietojumus</h2></div>
+        <hr/>
+        <div>
+            <p>Punkta elementi, kas pārstāv vērotāja izvietojumus, aprēķinot skata aizsegumus.
+            </p>
+        </div>
+    </div>
+    <div id="optimizeFor">
+        <div><h2>Optimizēt</h2></div>
+        <hr/>
+        <div>
+            <p>Optimizācijas metode, kas tiek izmantota skata aizseguma aprēķinā&scaron;anai.
+            </p>
+            <ul>
+                <li>Speed &mdash; 
+&Scaron;ī metode optimizē apstrādes ātrumu, daļēji atsakoties no akurātuma, lai nodro&scaron;inātu augstāku veiktspēju. Tā ir noklusējuma vērtība.
+
+                </li>
+                <li>Accuracy &mdash; 
+&Scaron;ī metode ir optimizēta rezultātu akurātumam, izmantojot ilgāku apstrādes laiku.
+
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="maximumDistance">
+        <div><h2>Maksimālais skatīšanas attālums</h2></div>
+        <hr/>
+        <div>
+            <p>Ievadiet attālumu, kurā tiek pārtraukta redzamo platību aprēķinā&scaron;ana. Aiz &scaron;ī attāluma netiks noteikts tas, vai vērotāja punkti un citi objekti varēs cits citu redzēt.
+            </p> 
+            <p>Varat norādīt ciparu vērtību, kas apzīmē lineāro attālumu, vai izvēlēties ciparu lauku no ievades vērotāja elementiem. Ja ir norādīts lauks, tajā ietvertajām vērtībām jāizmanto tādi pati mērvienība kā ievades augstuma virsmas XY mērvienība.
+            </p>
+            <p>Ņemiet vērā, ka lielas vērtības palielinās aprēķinā&scaron;anas laiku. Ja maksimālais attālums nav norādīts, tiks aprēķināts noklusējuma maksimālais attālums atkarībā no ievades augstuma virsmas iz&scaron;ķirtspējas un pārklājuma.
+            </p>
+            <p>&Scaron;is parametrs ir noderīgs, lai modelētu noteiktas parādības. Piemēram, samazinot redzamības pārklājumu, jūs varat modelēt laika apstākļus, piemēram, nelielu miglu. Tāpat, ja ierobežosiet redzamības pārklājumu, varēsiet daļēji kontrolēt dienas laiku, aprēķinot krēslas efektu.
+            </p>
+        </div>
+    </div>
+    <div id="maximumDistanceField">
+        <div><h2>Maksimālais skatīšanas attālums</h2></div>
+        <hr/>
+        <div>
+            
+        </div>
+    </div>
+    <div id="minimumDistance">
+        <div><h2>Minimālais skatīšanas attālums</h2></div>
+        <hr/>
+        <div>
+            <p>Ievadiet attālumu, kurā tiek sākta redzamo platību aprēķinā&scaron;ana. Virsmas &scaron;ūnas, kas ir tuvākas par &scaron;o attālumu, nav redzamas izvadē, tomēr var bloķēt to &scaron;ūnu redzamību, kas atrodas starp minimālo un maksimālo skatī&scaron;anas attālumu.
+            </p> 
+            <p>Varat norādīt ciparu vērtību, kas apzīmē lineāro attālumu, vai izvēlēties ciparu lauku no ievades vērotāja elementiem. Ja ir norādīts lauks, tajā ietvertajām vērtībām jāizmanto tādi pati mērvienība kā ievades augstuma virsmas XY mērvienība.
+            </p>
+            <p>&Scaron;is parametrs ir noderīgs, lai kontrolētu skata aizseguma analīzes platību konkrētā attālumā no vērotāja. Piemēram, ja vērtējat redzamību no ēkas aug&scaron;as līdz attālam parkam, jūs varat iestatīt tādu minimālo skatī&scaron;anas attālumu, lai izslēgtu tuvumā eso&scaron;as platības, kas jūs neinteresē, un tādējādi nodro&scaron;inātu labāku apstrādes ātrumu.
+            </p>
+        </div>
+    </div>
+    <div id="minimumDistanceField">
+        <div><h2>Minimālais skatīšanas attālums</h2></div>
+        <hr/>
+        <div>
+            
+        </div>
+    </div>
+    <div id="viewingDistance3D">
+        <div><h2>Attālums ir 3D</h2></div>
+        <hr/>
+        <div>
+            <p>Norādiet, vai minimālā un maksimālā skatī&scaron;anas attāluma parametri tiek noteikti trīs dimensijās vai vienkār&scaron;ākā veidā&nbsp;&mdash; divās dimensijās. Ja opcija ir atzīmēta, skatī&scaron;anas attālumi tiek uzskatīti par telpiskiem attālumiem. Ja opcija nav atzīmēta, skatī&scaron;anas attālumi tiek uzskatīti par plaknes attālumiem.
+            </p> 
+            <p>Plaknes attālums ir vienkār&scaron;ais lineārais attālums, kas tiek noteikts starp vērotāju un mērķi, izmantojot to projicētos izvietojumus jūras līmenī. Telpiskais attālums nodro&scaron;ina realitātei atbilsto&scaron;āku vērtību, jo ņem vērā vērotāja un mērķa relatīvo augstumu.
+            </p>  
+        </div>
+    </div>
+    <div id="observersElevation">
+        <div><h2>Vērotāja izvietojumu augstums</h2></div>
+        <hr/>
+        <div>
+            <p>Ievadiet savu vērotāju izvietojumu augstumu.
+            </p>
+            <p>Jūs varat norādīt ciparu vērtību, kas atbilst visu vērotāju augstumam, vai lauku, kas atbilst katra vērotāja augstumam. Ja ir norādīts lauks, tajā iekļautajai vērtībai ir jābūt norādītai ar tādu pa&scaron;u mērvienību, kāda tiek izmantota ievades augstuma virsmas Z mērvienībai.
+            </p>
+        </div>
+    </div>
+    <div id="observersElevationField">
+        <div><h2>Vērotāja izvietojumu augstums</h2></div>
+        <hr/>
+        <div>
+            
+        </div>
+    </div>
+    <div id="observersHeight">
+        <div><h2>Vērotāju augstums</h2></div>
+        <hr/>
+        <div>
+            <p>Ievadiet savu vērotāja izvietojumu augstumu virs zemes.
+            </p> 
+            <p>Augstumam varat norādīt ciparu vērtību vai lauku no ievades vērotāja elementiem. Ja ir norādīts lauks, tajā ietvertajai vērtībai jāizmanto tādi pati mērvienība kā ievades augstuma virsmas Z mērvienība.
+            </p>
+            <p>Noklusējuma vērtība ir 6&nbsp;pēdas. Ja skatāties no augstuma izvietojuma, piemēram, no skatu torņa vai augstas celtnes, izmantojiet &scaron;im izvietojumam atbilsto&scaron;o augstumu. Skata aizseguma aprēķinā&scaron;anas laikā &scaron;ī vērtība tiek pievienota vērotāja augstumam, ja tas ir norādīts. Pretējā gadījumā vērtība tiek pievienota interpolētās virsmas z-vērtībai.
+            </p>
+        </div>
+    </div>
+    <div id="observersHeightField">
+        <div><h2>Vērotāju augstums</h2></div>
+        <hr/>
+        <div>
+            
+        </div>
+    </div>
+    <div id="targetHeight">
+        <div><h2>Mērķa augstums</h2></div>
+        <hr/>
+        <div>
+            <p>Ievadiet uz zemes eso&scaron;u celtņu vai cilvēku augstumu, kas tiek izmantots, lai noteiktu redzamību.
+            </p> 
+            <p>Augstumam varat norādīt ciparu vērtību vai lauku no ievades vērotāja elementiem. Ja ir norādīts lauks, tajā ietvertajai vērtībai jāizmanto tādi pati mērvienība kā ievades augstuma virsmas Z mērvienība.
+            </p>
+            <p>Rezultātā iegūtais skata aizsegums identificē tās platības, kurās no vērotāja punkta var redzēt &scaron;os objektus uz zemes. Ir pareizs arī pretējais apgalvojums&nbsp;&mdash; objekti uz zemes var redzēt vērotāja punktu. 
+            </p>
+            <p>Tālāk ir norādīti daži mērķa augstuma iestatījumu piemēri.
+            </p>
+            <ul>
+                <li>Ja jūsu ievades punkti apzīmē vējturbīnas un jūs vēlaties noteikt, kurā vietā uz zemes cilvēki var redzēt &scaron;īs turbīnas, ievadiet vidējo cilvēka garumu (apmēram 6&nbsp;pēdas).
+                    
+
+                </li>
+                <li>Ja jūsu ievades punkti apzīmē ugunsgrēku novēro&scaron;anas torņus un jūs vēlaties noteikt, no kuriem novēro&scaron;anas torņiem var redzēt dūmu grīstes 20&nbsp;pēdu augstumā vai augstāk, ievadiet 20&nbsp;pēdu mērķa augstuma vērtību.
+                    
+
+                </li>
+                <li>Ja jūsu ievades punkti apzīmē ainavu skatu laukumus ceļa vai takas malā un jūs vēlaties noteikt, kur 400&nbsp;pēdu augstas vai augstākas vējturbīnas var saskatīt, ievadiet 400&nbsp;pēdu augstuma vērtību.
+                    
+
+                </li>
+                <li>Ja ievades punkti apzīmē ainavu skatu laukumus un jūs vēlaties noteikt, cik lielu platību uz zemes var redzēt cilvēki, kas stāv &scaron;ajā skatu laukumā, mērķa augstuma laukā ievadiet nulli. 
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="targetHeightField">
+        <div><h2>Vērotāju augstums</h2></div>
+        <hr/>
+        <div>
+            
+        </div>
+    </div>
+    <div id="resultAglLayer">
+        <div><h2>Redzamības izvades augstums</h2></div>
+        <hr/>
+        <div>
+            <p>Virszemes līmeņa (above ground level&nbsp;&mdash; AGL) izvades rezultāta nosaukums. AGL rezultāts ir rastrs, kurā katra &scaron;ūnas vērtība ir minimālais augstums, kas jāpievieno citādi neredzamai &scaron;ūnai, lai to redzētu vismaz viens vērotājs. &Scaron;ajā izvades rastrā &scaron;ūnām, kas jau ir redzamas, tiek pie&scaron;ķirta vērtība&nbsp;0.
+            </p>
+        </div>
+    </div>
+    <div id="resultLayer">
+        <div><h2>Rezultātu slāņa nosaukums</h2></div>
+        <hr/>
+        <div>
+            <p>Slāņa nosaukums, kas tiks izveidots sadaļā  <b>Mans saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja slānis jau pastāv, jums tiks lūgts norādīt citu nosaukumu.
+            </p>
+            <p>Lietojot  <b>Saglabāt rezultātus</b> nolaižamajā sarakstlodziņā, jūs varat norādīt nosaukumu mapē <b>Mans saturs</b>, kur tiks saglabāti rezultāti.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

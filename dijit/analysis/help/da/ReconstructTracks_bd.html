@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Rekonstruér spor</h2><p/>
+        <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Rekonstru&eacute;r spor"></h2>
+        <hr/>
+    <p>Dette v&aelig;rkt&oslash;j arbejder med et tidsafh&aelig;ngigt lag best&aring;ende af enten punkt- eller polygonobjekter, der repr&aelig;senterer et  <code>&oslash;jeblik</code> i tiden.   Det bestemmer f&oslash;rst, hvilke objekter der tilh&oslash;rer et spor ved hj&aelig;lp af en identifikator. Ved at benytte tid i forhold til hver position arrangeres sporene i r&aelig;kkef&oslash;lge og transformeres til en linje eller en polygon, der repr&aelig;senterer bev&aelig;gelsen over tid. Input kan evt. placeres i en buffer, der udg&oslash;res af et felt, som vil oprette en polygon ved hver position. Disse bufferpunkter, eller hvis inputtene er polygoner, forbindes derefter i r&aelig;kkef&oslash;lge for at oprette et spor som en polygon, hvor bredden repr&aelig;senterer attributten for interesse. De resulterende spor har en start- og en sluttid, som i tidssammenh&aelig;ng repr&aelig;senterer det f&oslash;rste og sidste spor i et givent spor. N&aring;r sporene oprettes, beregnes der statistik vedr&oslash;rende inputobjekterne, og de statistiske data knyttes til outputsporet. Den mest grundl&aelig;ggende statistik er opt&aelig;llingen af punkterne i omr&aring;det, men der kan ogs&aring; beregnes andre statistiske data.
+    </p>
+    <p>Objekter i tidsafh&aelig;ngige lag kan vises p&aring; en af f&oslash;lgende to m&aring;der:
+        <ul>
+            <li>&Oslash;jeblik &ndash; Et enkelt &oslash;jeblik i tiden
+            </li>
+            <li>Interval &ndash; En start- og en sluttid
+            </li>
+        </ul>
+        
+    </p>
+    <p>Forestil dig f.eks., at du f&aring;r GPS-m&aring;linger af orkaner hvert 10. minut. Hver GPS-m&aring;ling registrerer orkanens navn, position, registreringstidspunkt samt vindhastighed. Med disse oplysninger kunne du oprette spor for hver orkan ved at benytte dens navn som sporidentifikation, og sporene for hver orkan ville s&aring; blive genereret. Du kunne desuden beregne statistik, s&aring;som middel-, maksimal- og minimal vindhastighed for hver orkan, og du kunne t&aelig;lle m&aring;lingerne inden for hvert spor.
+    </p>
+    <p>Du kunne desuden placere sporene i buffere p&aring; grundlag af vindhastigheden. Dette ville placere hver m&aring;ling i en buffer baseret p&aring; vindhastigheden p&aring; den p&aring;g&aelig;ldende position, og bufferomr&aring;derne ville blive forbundet, hvilket ville oprette en polygon, der ville repr&aelig;sentere sporretningen samt &aelig;ndringer i vindhastigheden, mens orkanerne udvikler sig.   
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Vælg objekter for at rekonstruere spor ud fra</h2></div>
+        <hr/>
+        <div>
+            <p>Punkt- eller polygonlag, der rekonstrueres til spor.
+            </p>
+            <p>Udover at du kan v&aelig;lge et lag i dit kort, kan du v&aelig;lge  <b>Gennemse lag</b> nederst p&aring; rullelisten for at g&aring; til dit indhold til et big data-fildelingsdatas&aelig;t eller -vektorlag.  
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>Vælg de felter, der skal bruges til at identificere spor</h2></div>
+        <hr/>
+        <div>
+            <p> Felter, der repr&aelig;senterer sporidentifikatoren.
+            </p>
+            <p> Hvis du f.eks. skulle rekonstruere spor af orkaner, kunne de benytte orkanens navn som sporingsfelt.
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Vælg den metode, der skal bruges til at rekonstruere spor</h2></div>
+        <hr/>
+        <div>
+            <p>Metode, der benyttes til at forbinde spor samt anvende buffere (hvis det er relevant).  <b>Planar</b>-metoden kan muligvis beregne resultaterne hurtigere, men vil ikke knytte sporene til den internationale datolinje eller tage h&oslash;jde for jordens faktiske runding ved oprettelse af buffere. Den <b>geod&aelig;tiske</b> metode vil knytte sporene til den internationale datolinje, hvis det er p&aring;kr&aelig;vet, og den vil bruge en geod&aelig;tisk buffer til at tage h&oslash;jde for jordens runding.
+            </p>
+        </div>
+    </div>
+    <div id="bufferField">
+        <div><h2>Opret et udtryk til at placere inputobjekter i en buffer efter (valgfrit)</h2></div>
+        <hr/>
+        <div>
+            <p>Ligning, der benyttes til at beregne bufferafstanden omkring inputobjekterne. Denne ligning kan genereres ved hj&aelig;lp af en bufferberegner, og grundl&aelig;ggende handlinger, s&aring;som addition, subtraktion, multiplikation og division underst&oslash;ttes. V&aelig;rdierne beregnes ved at benytte analysekoordinatsystemet.
+            </p>
+        </div>
+    </div>
+    <div id="timeSplit">
+        <div><h2>Vælg en tidsangivelse, som spor skal opdeles efter (valgfrit)</h2></div>
+        <hr/>
+        <div>
+            <p>Den tid, der benyttes til at opdele spor. Hvis inputpunkter eller -polygoner har l&aelig;ngere tidsvarighed mellem sig end angivet af tidsopdelingen, vil de blive opdelt i forskellige spor.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Tilføj statistik (valgfrit)</h2></div>
+        <hr/>
+        <div>
+            <p> Du kan beregne statistik for objekter, der er summeret. For numeriske felter kan du beregne f&oslash;lgende:
+                <ul>
+                    <li>T&aelig;lling
+                    </li>
+                    <li>Middel
+                    </li>
+                    <li>Min
+                    </li>
+                    <li>Maks
+                    </li>
+                    <li>Omr&aring;de
+                    </li>
+                    <li>Varians
+                    </li>
+                    <li>Standardafvigelse
+                    </li>
+                </ul>
+                
+            </p>
+            <p>For strengfelter kan du beregne f&oslash;lgende:
+                <ul>
+                    <li>T&aelig;lling
+                    </li>
+                    <li>Vilk&aring;rlig &ndash; Denne statistik er et vilk&aring;rligt eksempel p&aring; en strengv&aelig;rdi i det angivne felt.
+                    </li>
+                </ul>
+                Alle statistiske data beregnes ud fra ikke-nul-v&aelig;rdier. Resultatlaget vil indeholde et nyt felt for hver beregnet statistik. Du kan tilf&oslash;je et vilk&aring;rligt antal statistikker ved at v&aelig;lge attributter og statistikker. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Vælg Datastore</h2></div>
+        <hr/>
+        <div>
+            <p>Dette er en midlertidig parameter til prerelease med henblik p&aring; angivelse af det datalager, hvor resultaterne bliver gemt. Begge datalagre er en del af  ArcGIS Data Store. Hvis du v&aelig;lger det spatiotemporale datalager, men ikke har et s&aring;dant installeret, vil v&aelig;rkt&oslash;jet ikke fungere. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Navn på resultatlag</h2></div>
+        <hr/>
+        <div>
+            <p> Dette er navnet p&aring; det lag, som oprettes i <b>Mit indhold</b> og f&oslash;jes til kortet. Standardnavnet er baseret p&aring; navnet p&aring; v&aelig;rkt&oslash;jet og navnet p&aring; inputlaget. Hvis laget allerede findes, vil v&aelig;rkt&oslash;jet ikke fungere.
+            </p>
+            <p>Ved hj&aelig;lp af rullelisten  <b>Gem resultat i</b> kan du angive navnet p&aring; en mappe i <b>Mit indhold</b>, hvor resultatet skal gemmes.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

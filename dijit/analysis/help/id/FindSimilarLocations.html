@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Cari Lokasi Serupa</h2><p/>
+        <h2><img src="../images/GUID-6262A84E-9087-4E48-930E-E9B89FECC836-web.png" alt="Cari Lokasi Serupa"></h2>
+        <hr/>
+    <p>Berdasarkan pada kriteria yang Anda tentukan, alat Temukan Lokasi Serupa akan mengukur kesamaan lokasi pada layer pencarian dengan satu atau lebih lokasi rujukan.  Alat ini dapat menjawab pertanyaan seperti
+        <ul>
+            <li>Toko Anda yang mana yang paling mirip dengan daftar terbaik Anda terkait dengan profil pelanggan?
+            </li>
+            <li>Berdasarkan pada karakteristik desa yang paling parah diserang penyakit, desa mana yang juga berisiko tinggi?
+            </li>
+        </ul>
+        Untuk menjawab pertanyaan-pertanyaan tersebut, Anda harus menyediakan lokasi rujukan, calon lokasi pencarian, dan kolom yang mewakili kriteria yang ingin Anda cocokkan.  Layer input pertama harus berisi lokasi rujukan atau lokasi pembanding Anda.  Contohnya, layer ini mungkin merupakan layer yang berisi toko terbaik Anda atau desa yang paling parah terserang penyakit.  Kemudian Anda menentukan layer yang berisi calon lokasi pencarian.  Layer ini mungkin merupakan semua toko Anda atau semua desa lainnya.  Terakhir, Anda mengidentifikasi satu kolom atau lebih yang akan digunakan untuk mengukur kesamaan.  Alat Temukan Lokasi Serupa (Find Similar Locations) akan memeringkatkan semua calon lokasi pencarian menurut kecocokan dengan lokasi rujukan dari semua kolom yang Anda pilih.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Pilih layer yang berisi lokasi rujukan</h2></div>
+        <hr/>
+        <div>
+            <p>Titik, garis, atau layer area yang berisi lokasi rujukan untuk dicocokkan. 
+            </p>
+            <p class="OnlineOnly">Selain memilih sebuah layer dari peta, Anda dapat memilih  <b>Pilih Layer Analisis Living Atlas</b> atau <b>Piilih Layer Analisis</b> yang terdapat di bagian paling bawah daftar drop-down. Sebagai tambahan, area yang berdekatan (yaitu, memiliki batasan yang sama) akan digabungkan menjadi satu area. Langkah ini akan membuka galeri yang memuat koleksi layer yang bermanfaat bagi banyak analisis. 
+            </p>
+        </div>
+    </div>
+    <div id="inputLayerSel">
+        <div><h2>Anda boleh menggunakan semua lokasi atau membuat pilihan</h2></div>
+        <hr/>
+        <div>
+            <p>Gunakan tombol pemilih untuk mengidentifikasi lokasi rujukan, jika perlu.  Contohnya, jika layer input berisi semua lokasi&mdash;lokasi rujukan serta calon lokasi pencarian&mdash;Anda harus menggunakan alat pemilih untuk mengidentifikasi lokasi rujukan.  Jika Anda membuat dua layer terpisah, satu dengan lokasi rujukan dan satu dengan semua calon lokasi pencarian, Anda tidak perlu menentukan pilihan. 
+            </p>
+            <p>Jika terdapat lebih dari satu lokasi rujukan, satu lokasi tunggal dibuat dengan merata-ratakan nilai setiap kolom yang digunakan untuk menganalisis kesamaan.
+            </p>
+        </div>
+    </div>
+    <div id="searchLayer">
+        <div><h2>Cari lokasi serupa di</h2></div>
+        <hr/>
+        <div>
+            <p>Calon lokasi pencarian di layer ini akan diperingkatkan dari yang paling serupa ke yang paling tidak serupa.  Kesamaan didasarkan pada seberapa dekat kecocokan setiap lokasi dengan lokasi rujukan di seluruh kolom yang Anda tentukan. 
+            </p>
+            <p class="OnlineOnly">Selain memilih sebuah layer dari peta, Anda dapat memilih  <b>Pilih Layer Analisis Living Atlas</b> atau <b>Piilih Layer Analisis</b> yang terdapat di bagian paling bawah daftar drop-down. Sebagai tambahan, area yang berdekatan (yaitu, memiliki batasan yang sama) akan digabungkan menjadi satu area. Langkah ini akan membuka galeri yang memuat koleksi layer yang bermanfaat bagi banyak analisis. 
+            </p>
+        </div>
+    </div>
+    <div id="analysisFields">
+        <div><h2>Kesamaan berdasarkan</h2></div>
+        <hr/>
+        <div>
+            <p>Kolom yang Anda pilih akan menjadi kriteria yang digunakan untuk mengevaluasi kesamaan.  Jika Anda memilih kolom populasi dan pendapatan, misalnya, calon lokasi pencarian dengan peringkat terendah (terbaik) akan berupa lokasi yang memiliki nilai populasi dan pendapatan serupa dengan lokasi rujukan Anda. 
+            </p>
+        </div>
+    </div>
+    <div id="numberOfResults">
+        <div><h2>Tunjukkan saya</h2></div>
+        <hr/>
+        <div>
+            <p>Anda mungkin melihat semua calon lokasi pencarian yang diperingkatkan dari yang paling serupa ke yang paling tidak serupa, atau Anda dapat menentukan jumlah hasil yang ingin Anda lihat. 
+                <ul>
+                    <li> <b>semua lokasi dari yang paling serupa hingga tang paling tidak serupa</b>&mdash;semua fitur di calon layer pencarian akan dicantumkan dalam urutan peringkat di layer hasil
+                    </li>
+                    <li> <b>teratas </b> <code>1</code>&mdash;Anda menentukan berapa banyak calon teratas yang serupa yang harus dicantumkan di layer hasil.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="OutputName">
+        <div><h2>Nama layer hasil</h2></div>
+        <hr/>
+        <div>
+            <p>Beri nama untuk layer yang akan dibuat di  <b>Konten Saya</b> dan tambahkan ke dalam peta.  Layer hasil ini akan berisi lokasi rujukan dan jumlah calon lokasi pencarian yang diperingkatkan yang sudah Anda tentukan.   Jika nama layer hasil sudah ada, Anda akan diminta untuk memberi nama baru.
+            </p>
+            <p>Menggunakan kotak tarik turun (drop-down box)  <b>Simpan hasil di</b>, Anda dapat menentukan nama folder di <b>Konten Saya</b> tempat hasilnya akan disimpan.
+            </p>  
+        </div>
+    </div>
+</div>
+</html>

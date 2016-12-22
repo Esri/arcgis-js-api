@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="raToolbox">
+        <p>Rasterianalyysin avulla voit analysoida suuria rasteriaineistoryhmi&auml;  ArcGIS Image Serverin avulla. Voit analysoida aiempaa enemm&auml;n tietoja entist&auml; nopeammin hy&ouml;dynt&auml;m&auml;ll&auml; palvelimen tehoa.  Portal for ArcGIS -verkkoportaalin kautta t&auml;ll&auml; hetkell&auml; k&auml;ytett&auml;viss&auml; olevat ty&ouml;kalusarjat ovat  <b>Aineiston yhteenveto</b>, <b>Analysoi kaavat</b>, <b>Analysoi kuva</b>, <b>Analysoi maasto</b> ja <b>Hallitse aineistoa</b>.
+        </p>
+    </div>
+    <div id="SummarizeDataCategory" class="smallsize">
+        <h2>Aineiston yhteenveto</h2>
+        <hr/>
+        <p>T&auml;m&auml; ty&ouml;kalusarja sis&auml;lt&auml;&auml; ty&ouml;kalun m&auml;&auml;ritettyjen aluerajojen sis&auml;ll&auml; olevan rasterikarttatason tilastotietojen laskemiseen. 
+            <ul>
+                <li> <b>Koosta rasteri sijainnissa</b> -ty&ouml;kalu laskee m&auml;&auml;ritettyjen aluerajojen sis&auml;ll&auml; olevien rasterisolujen tilastotiedot.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="SummarizeRasterWithinTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Koosta rasteri sijainnissa</h2></td>
+                    <td>
+                    <img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" class="titleImage" alt="Koosta rasteri sijainnissa -ty&ouml;kalu">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Laskee m&auml;&auml;ritettyjen alueiden rasterisolujen yhteenvetotilastotietoja.
+            </p>
+            <p>Seuraavassa on luettelo joistakin sovelluksista: 
+
+                <ul>
+                    <li>Kun valuma-alueiden karttataso ja korkeuden rasterikarttataso on annettu, voit laskea jokaisen valuma-alueen korkeuden vaihteluv&auml;lin ja m&auml;&auml;ritt&auml;&auml;, mink&auml; valuma-alueiden energianvirtaus on suurin.
+                        
+
+                    </li>
+                    <li>Jos hallinnollisten hallinta-alueiden karttataso ja maank&auml;ytt&ouml;luokkien rasterikarttataso on annettu, voit laskea maank&auml;ytt&ouml;arvot kullakin hallinta-alueella ja tunnistaa ne alueet, joiden hallintasuunnitelman laatimiseen tarvitaan eniten ty&ouml;t&auml;.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzePatternsCategory" class="regularsize">
+        <h2>Analysoi kaavat</h2>
+        <hr/>
+        <p>N&auml;iden ty&ouml;kalujen avulla voit tunnistaa, m&auml;&auml;ritt&auml;&auml; ja visualisoida tiedoistasi tila-avaruuden malleja. 
+
+            <ul>
+                <li> <b>Laske tiheys</b> analysoi tietyn ilmi&ouml;n tunnetut m&auml;&auml;r&auml;t ja luo tiheyskartan jakamalla n&auml;m&auml; m&auml;&auml;r&auml;t kartan alueelle.
+                    
+
+                </li>
+                <li> <b>Interpoloi pisteet</b> ennustaa uusien sijaintien arvoja ker&auml;tyist&auml; pisteist&auml; l&ouml;ytyvien mittausten perusteella.
+                    
+
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateDensityRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Laske tiheys</h2></td>
+                    <td>
+                    <img src="../images/GUID-4EE4838C-E210-43CE-99C7-1A648A18C10B-web.png" class="titleImage" alt="Laske tiheys -ty&ouml;kalu">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Tiheysanalyysi analysoi tietyn ilmi&ouml;n tunnetut m&auml;&auml;r&auml;t ja luo tiheyskartan jakamalla n&auml;m&auml; m&auml;&auml;r&auml;t kartan alueelle. Voit k&auml;ytt&auml;&auml; t&auml;t&auml; ty&ouml;kalua esimerkiksi salamaniskujen ja tornadojen keskittymien, terveydenhuollon palvelujen saatavuuden tai v&auml;est&ouml;tiheyden esitt&auml;miseen.
+            </p>
+            <br/>
+        </div>
+        <div id="InterpolatePointsEBKTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Interpoloi pisteet</h2></td>
+                    <td>
+                    <img src="../images/GUID-06D80BB3-7154-4FAA-9C9B-D665450EF3BC-web.png" class="titleImage" alt="Interpoloi pisteet -ty&ouml;kalu">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>T&auml;m&auml;n ty&ouml;kalun avulla voit ennustaa uusien sijaintien arvoja ker&auml;ttyjen pisteiden avulla tehtyjen mittausten perusteella. Ty&ouml;kalu analysoi kustakin pisteest&auml; ker&auml;ttyjen arvojen pisteaineiston ja palauttaa alueet luokiteltuna ennustetuilla arvoilla. Voit k&auml;ytt&auml;&auml; t&auml;t&auml; ty&ouml;kalua esimerkiksi sadem&auml;&auml;rien ennustamiseen tietyll&auml; valuma-alueella yksitt&auml;isill&auml; sademittareilla ker&auml;ttyjen mittausten perusteella.
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzeImageCategory" class="smallsize">
+        <h2>Analysoi kuva</h2>
+        <hr/>
+        <p>Seuraavien ty&ouml;kalujen avulla voit kuvia analysoimalla m&auml;&auml;ritt&auml;&auml; alueita, joilla on kasvillisuutta. 
+            <ul>
+                <li> <b>Tarkkaile kasvillisuutta</b> havaitsee kasvillisuuden kuvassa kaistoissa suoritettujen laskutoimitusten perusteella.
+                    
+
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="MonitorVegetationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Tarkkaile kasvillisuutta</h2></td>
+                    <td>
+                    <img src="../images/GUID-7763FCC0-2EA1-463B-98D0-4EBDF6150907-web.png" class="titleImage" alt="Portaalin Tarkkaile kasvillisuutta -ty&ouml;kalu">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>T&auml;m&auml;n ty&ouml;kalun avulla voidaan hankkia tietoja tutkimusalueen kasvillisuuspeitteest&auml; suorittamalla laskutoimituksia monikaistaisen rasterikarttatason kaistoissa.
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzeTerrainCategory" class="regularsize">
+        <h2>Analysoi maasto</h2>
+        <hr/>
+        <p>N&auml;iden ty&ouml;kalujen avulla voit analysoida rasteripintoja. 
+            <ul>
+                <li> <b>Laske kaltevuus</b> laskee maaston jyrkkyyden.
+                    
+
+                </li>
+                <li> <b>Johda aspekti</b> laskee jyrkimm&auml;n kaltevuuden suunnan kullekin sijainnille.
+                    
+
+                </li>
+                <li> <b>Luo n&auml;kym&auml;alue</b> yksil&ouml;i sen, mit&auml; voidaan n&auml;hd&auml; mist&auml; tahansa maiseman pisteest&auml;.
+                    
+
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateSlopeTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Laske kaltevuus</h2></td>
+                    <td>
+                    <img src="../images/GUID-D33862C6-01BB-445E-B0C3-BC8B8C1858DA-web.png" class="titleImage" alt="Portaalin Laske kaltevuus -ty&ouml;kalu">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Yksil&ouml;i pinnan, joka osoittaa l&auml;ht&ouml;korkeusaineiston kaltevuuden. Kaltevuus edustaa jokaisen DEM (Digital Elevation Model) -solun korkeuden arvonmuutosta.
+            </p>
+            <br/>
+        </div>
+        <div id="DeriveAspectTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Johda aspekti</h2></td>
+                    <td>
+                    <img src="../images/GUID-D03FF025-0530-4D0D-87A3-B25D6716F8F0-web.png" class="titleImage" alt="Portaalin Johda aspekti -ty&ouml;kalu">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Tunnistaa arvonmuutoksen enimm&auml;ism&auml;&auml;r&auml;n laskevan suunnan kustakin solusta naapurisoluihin. Aspekti voidaan ajatella kaltevuuden suunnaksi.
+            </p>
+            <br/>
+        </div>
+        <div id="CreateViewshedRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Luo näkymäalue</h2></td>
+                    <td>
+                    <img src="../images/GUID-BB8B8CAF-330E-4C41-9D94-AF4728D0D0F3-web.png" class="titleImage" alt="Luo n&auml;kym&auml;alue -ty&ouml;kalu">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>M&auml;&auml;ritt&auml;&auml; rasteripinnan sijainnit, jotka n&auml;kyv&auml;t joukolle tarkkailijoita.
+            </p>
+            <br/>
+        </div>
+    <div id="ManageDataCategory" class="regularsize">
+        <h2>Hallitse aineistoa</h2>
+        <hr/>
+        <p>N&auml;it&auml; ty&ouml;kaluja k&auml;ytet&auml;&auml;n sek&auml; maantieteellisten tietojen p&auml;ivitt&auml;isess&auml; hallinnassa ett&auml; tietojen yhdist&auml;misess&auml; ennen analyysi&auml;. 
+            <ul>
+                <li> <b>Pura rasteri</b> leikkaa osia rasteriaineistoryhm&auml;st&auml; lis&auml;analysointia varten.
+                    
+
+                </li>
+                <li> <b>T&auml;sm&auml;yt&auml; arvot uudelleen</b> m&auml;&auml;ritt&auml;&auml; eri arvot rasterisoluille.
+                    
+
+                </li>
+                <li> <b>Muunna kohde rasteriksi</b> rasteroi vektoriaineiston.
+                    
+
+                </li>
+                <li> <b>Muunna rasteri kohteeksi</b> vektoroi rasteriaineiston.
+                    
+
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="ExtractRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Pura rasteri</h2></td>
+                    <td>
+                    <img src="../images/GUID-DC9CBCB9-A07C-42D3-A0CB-2FB1483CBF4C-web.png" class="titleImage" alt="Portaalin Pura rasteri -ty&ouml;kalu">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Pura solut rasterista arvon, muodon tai eri aineistoryhm&auml;n laajuuden perusteella.
+            </p>
+            <br/>
+        </div>
+        <div id="RemapValuesTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Täsmäytä arvot uudelleen</h2></td>
+                    <td>
+                    <img src="../images/GUID-4006E442-A60B-469A-891D-5ED442F64CB8-web.png" class="titleImage" alt="Portaalin T&auml;sm&auml;yt&auml; arvot uudelleen -ty&ouml;kalu">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Muuta yksitt&auml;isen solun tai solujoukon arvoja uusiksi arvoiksi.
+            </p>
+            <br/>
+        </div>
+        <div id="ConvertFeatureToRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Convert Feature to  Raster</h2></td>
+                    <td>
+                    <img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" class="titleImage" alt="Convert Feature to Raster tool">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Luo uusi rasteriaineistoryhm&auml; aiemmin luodusta kohdeaineistoryhm&auml;st&auml;.
+            </p>
+            <br/>
+        </div>
+        <div id="ConvertRasterToFeatureTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Muunna rasteri kohteeksi</h2></td>
+                    <td>
+                    <img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" class="titleImage" alt="Muunna rasteri kohteeksi -ty&ouml;kalu">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Luo uusi kohdeaineistoryhm&auml; aiemmin luodusta rasteriaineistoryhm&auml;st&auml;.
+            </p>
+            <br/>
+        </div>
+</div>
+</html>

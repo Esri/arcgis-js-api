@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Consolidar puntos</h2><p/>
+        <h2><img src="../images/GUID-6C1620D9-D176-41FA-8283-833D8B1CCCFC-web.png" alt="Agregar puntos"></h2>
+        <hr/>
+    <p>Esta herramienta funciona con una capa de entidades de puntos y una capa de entidades de &aacute;rea.  Las entidades de &aacute;rea de entrada pueden proceder de una capa de pol&iacute;gonos o pueden ser bins cuadrados o hexagonales que se calculan cuando se ejecuta la herramienta. Primero, la herramienta determina los puntos que se encuentran dentro de cada &aacute;rea especificada. Despu&eacute;s de determinar esta relaci&oacute;n espacial de punto en &aacute;rea, se calculan las estad&iacute;sticas sobre los puntos del &aacute;rea y se asignan al &aacute;rea. La estad&iacute;stica m&aacute;s b&aacute;sica es el recuento del n&uacute;mero de puntos dentro del &aacute;rea, pero se pueden obtener tambi&eacute;n otras estad&iacute;sticas. 
+
+    </p>
+    <p>Por ejemplo, suponga que tiene entidades de puntos de ubicaciones de cafeter&iacute;as y entidades de &aacute;rea de condados, y que desea resumir las ventas de caf&eacute; por condado. Suponiendo que las cafeter&iacute;as tengan un atributo  <i>TOTAL_SALES</i>, puede obtener la suma de todas las <i>TOTAL_SALES</i> dentro de cada condado, los valores m&iacute;nimo o m&aacute;ximo de <i>TOTAL_SALES</i> dentro de cada condado, u otras estad&iacute;sticas como, por ejemplo, el recuento, el rango, la desviaci&oacute;n est&aacute;ndar y la variaci&oacute;n.
+    </p>
+    <p>Esta herramienta tambi&eacute;n puede funcionar con datos con el tiempo habilitado. Si el tiempo est&aacute; habilitado en los puntos de entrada, las opciones de intervalo de tiempo estar&aacute;n disponibles. La funci&oacute;n de intervalo de tiempo le permite calcular la relaci&oacute;n de punto en &aacute;rea mientras observa un determinado intervalo de tiempo. Por ejemplo, podr&iacute;a realizar la consulta por intervalos de horas, lo que dar&iacute;a como resultado salidas para cada hora. 
+    </p>
+    <p>Para ver un ejemplo sobre el tiempo, supongamos que tiene entidades de puntos de cada transacci&oacute;n realizada en diversas ubicaciones de cafeter&iacute;as y ninguna capa de &aacute;rea. Se han registrado datos durante un a&ntilde;o y cada transacci&oacute;n tiene una ubicaci&oacute;n y una marca de tiempo. Suponiendo que cada transacci&oacute;n tenga un atributo  <i>TOTAL_SALES</i>, puede obtener la suma de todas las <i>TOTAL_SALES</i> dentro del espacio y tiempo de inter&eacute;s. Si estas transacciones corresponden a una &uacute;nica ciudad, podr&iacute;amos generar &aacute;reas que sean cuadr&iacute;culas de 1 kil&oacute;metro y consultar los intervalos de tiempo semanales para resumir las transacciones tanto en el tiempo como en el espacio.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="pointLayer">
+        <div><h2>Elegir la capa que contiene los puntos que se deben agregar a las áreas</h2></div>
+        <hr/>
+        <div>
+            <p>La capa de puntos que se agregar&aacute; a las &aacute;reas.
+            </p>
+            <p>Adem&aacute;s de elegir una capa en el mapa, puede elegir  <b>Examinar capas</b> en la parte inferior de la lista desplegable para examinar el contenido del dataset o la capa de entidades de un archivo compartido de Big Data.  
+            </p>
+        </div>
+    </div>
+    <div id="inputAggregation">
+        <div><h2>Elija una capa de área para agregar</h2></div>
+        <hr/>
+        <div>
+            <p>Las &aacute;reas a las que se agregar&aacute; la capa de puntos. Puede elegir entre una capa de &aacute;rea proporcionada por usted o bins generados al ejecutar la herramienta.   Cuando se generan bins, en el caso de  <b>Cuadrado</b>, son la cantidad y las unidades especificadas las que determinan la altura y la longitud del cuadrado. En el caso de <b>Hex&aacute;gono</b>, son la cantidad y las unidades especificadas las que determinan la distancia entre los lados paralelos.
+            </p>
+        </div>
+    </div>
+    <div id="polygonLayer">
+        <div><h2>Elegir la capa de área a la que se va a agregar</h2></div>
+        <hr/>
+        <div>
+            <p>La capa de &aacute;reas en la que se agregar&aacute;n los puntos. Todos los puntos contenidos en los l&iacute;mites de las &aacute;reas de esta capa se contar&aacute;n y se podr&aacute;n resumir usando las opciones de estad&iacute;sticas que haya elegido. 
+            </p>
+            <p>
+            </p>
+            <p>Se debe definir el  <b>Tama&ntilde;o del bin</b> en el caso de los bins o la <b>Capa de &aacute;rea</b>.
+            </p>
+        </div>
+    </div>
+    <div id="inputBins">
+        <div><h2>Elija una distancia para generar bins y agregarlos</h2></div>
+        <hr/>
+        <div>
+            <p>La distancia utilizada para generar bins a los que agregar los puntos de entrada. En el caso de un bin cuadrado, el tama&ntilde;o representa la altura del cuadrado. En el caso de un hex&aacute;gono, el tama&ntilde;o representa la altura del hex&aacute;gono (desde los lados paralelos).  
+            </p>
+            <p>Se debe definir el  <b>Tama&ntilde;o del bin</b> en el caso de los bins o la <b>Capa de &aacute;rea</b>.
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Agregar utilizando intervalos de tiempo (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Si el tiempo est&aacute; habilitado en la capa de puntos de entrada y es del tipo instante, puede analizar utilizando intervalos de tiempo.  Hay tres par&aacute;metros que puede definir a la hora de utilizar el tiempo:
+                <ul>
+                    <li>  <b>Intervalo de tiempo</b>
+                    </li>
+                    <li> <b>Intervalo de tiempo</b>
+                    </li>
+                    <li> <b>Tiempo de referencia</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Supongamos que tiene datos que representan un a&ntilde;o en el tiempo y que desea analizarlo utilizando intervalos semanales. Para ello, deber&iacute;a definir el  <b>Intervalo de tiempo</b> en <code>1 semana</code>.
+            </p>
+            <p> Supongamos que tiene datos que representan un a&ntilde;o en el tiempo y que desea analizarlo utilizando la primera semana del mes. Para ello, deber&iacute;a definir el <b>Intervalo de tiempo</b> en <code>1 semana</code>, el <b>Per&iacute;odo de tiempo</b> en <code>1 mes</code> y el <b>Tiempo de referencia</b> en <code>1 de enero a las 12:00 am</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>Intervalo de tiempo para agregar</h2></div>
+        <hr/>
+        <div>
+            <p>Intervalo de tiempo utilizado para segmentar los datos. El intervalo de tiempo se puede utilizar solo o junto con los par&aacute;metros  <b>Per&iacute;odo de tiempo</b> o <b>Tiempo de referencia</b>.
+            </p>
+            <p> Si quisiera crear intervalos de tiempo que se produjeran cada lunes de 9:00 a.m. a 10:00 a.m., el <b>Intervalo de tiempo</b> deber&iacute;a ser <code>1 hora</code>, el <b>Per&iacute;odo de tiempo</b> deber&iacute;a ser <code>1 semana</code> y el <b>Tiempo de referencia</b> deber&iacute;a ser <code>9:00:00 a.m. el lunes</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>Período de tiempo para agregar</h2></div>
+        <hr/>
+        <div>
+            <p> El per&iacute;odo utilizado para calcular un intervalo de tiempo. El <b>Per&iacute;odo de tiempo</b> se puede utilizar solo o junto con <b>Intervalo de tiempo</b>, con <b>Tiempo de referencia</b>, o con ambos: <b>Intervalo de tiempo</b> y <b>Tiempo de referencia</b>.
+            </p>
+            <p> Si quisiera crear intervalos de tiempo que se produjeran cada lunes de 9:00 a.m. a 10:00 a.m., el <b>Intervalo de tiempo</b> deber&iacute;a ser <code>1 hora</code>, el <b>Per&iacute;odo de tiempo</b> deber&iacute;a ser <code>1 semana</code> y el <b>Tiempo de referencia</b> deber&iacute;a ser <code>9:00:00 a.m. el lunes</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Tiempo de referencia utilizado para alinear el intervalo de tiempo</h2></div>
+        <hr/>
+        <div>
+            <p>La fecha y hora utilizadas para alinear el intervalo de tiempo. El  <b>Per&iacute;odo de tiempo</b> empezar&aacute; a partir del tiempo de referencia y continuar&aacute; hacia atr&aacute;s bas&aacute;ndose tambi&eacute;n en este tiempo de referencia.
+            </p>
+            <p> Si quisiera crear intervalos de tiempo que se produjeran cada lunes de 9:00 a.m. a 10:00 a.m., el <b>Intervalo de tiempo</b> deber&iacute;a ser <code>1 hora</code>, el <b>Per&iacute;odo de tiempo</b> deber&iacute;a ser <code>1 semana</code> y el <b>Tiempo de referencia</b> deber&iacute;a ser <code>9:00:00 a.m. el lunes</code>.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Agregue estadísticas (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p> Puede calcular estad&iacute;sticas sobre las entidades resumidas. En los campos num&eacute;ricos puede calcular lo siguiente:
+                <ul>
+                    <li>Calcular
+                    </li>
+                    <li>Media
+                    </li>
+                    <li>M&iacute;n.
+                    </li>
+                    <li>M&aacute;x.
+                    </li>
+                    <li>Rango
+                    </li>
+                    <li>Varianza
+                    </li>
+                    <li>Desviaci&oacute;n est&aacute;ndar
+                    </li>
+                </ul>
+                
+            </p>
+            <p>En los campos de cadenas de caracteres puede calcular lo siguiente:
+                <ul>
+                    <li>Calcular
+                    </li>
+                    <li>Cualquiera: esta estad&iacute;stica es una muestra aleatoria del valor de una cadena de caracteres en el campo especificado.
+                    </li>
+                </ul>
+                Todas las estad&iacute;sticas se calculan sobre valores no nulos. La capa resultante contendr&aacute; un nuevo campo para cada estad&iacute;stica calculada. Se puede agregar cualquier n&uacute;mero de estad&iacute;sticas eligiendo un atributo y una estad&iacute;stica. 
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>Referencia espacial (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>Se trata de un par&aacute;metro temporal para una versi&oacute;n preliminar que permite definir la referencia espacial de procesamiento. En muchas herramientas de Big Data es necesario utilizar un sistema de coordenadas proyectadas como referencia espacial para el procesamiento. De forma predeterminada, la herramienta utilizar&aacute; el sistema de coordenadas de entrada, pero fallar&aacute; si se trata de un sistema de coordenadas geogr&aacute;ficas. Para definir un sistema de coordenadas proyectadas, introduzca el WKID. Por ejemplo,  <b>Web Mercator</b> se introducir&iacute;a como <code>3857</code>.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Elija el data store</h2></div>
+        <hr/>
+        <div>
+            <p>Se trata de un par&aacute;metro temporal para una versi&oacute;n preliminar que permite definir el data store donde se guardar&aacute;n los resultados. Ambos data stores forman parte de  ArcGIS Data Store. Si selecciona el data store espaciotemporal pero no tiene ninguno instalado, la herramienta fallar&aacute;. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nombre de capa de resultados</h2></div>
+        <hr/>
+        <div>
+            <p> Este es el nombre de la capa que se crear&aacute; en <b>Mi contenido</b> y se agregar&aacute; al mapa.  El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, la herramienta fallar&aacute;.
+            </p>
+            <p>En el cuadro desplegable  <b>Guardar el resultado en</b>, puedes especificar el nombre de una carpeta de <b>Mi contenido</b> en la que se guardar&aacute; el resultado.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

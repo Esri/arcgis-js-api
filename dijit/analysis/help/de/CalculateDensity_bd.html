@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Dichte berechnen</h2><p/>
+        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Calculate Density"></h2>
+        <hr/>
+    <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas classified from least dense to most dense.   
+
+    </p>
+    <p>For point input, each point should represent the location of some event or incident, and the result layer represents a count of the incident per unit area.  A higher density value in a new location means that there are more points near that location.  In many cases, the result layer can be interpreted as a risk surface for future events. For example, if the input points represent locations of lightning strikes, the result layer can be interpreted as a risk surface for future lightning strikes.
+    </p>
+    <p>Other use cases of this tool include the following:
+        <ul>
+            <li>Creating crime-density maps to help police departments properly allocate resources to high crime areas.
+            </li>
+            <li>Calculating densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to decide where new hospitals should be built.
+            </li>
+            <li>Identifying areas that are at high risk of forest fires based on historical locations of forest fires.
+            </li>
+            <li>Locating communities that are far from major highways in order to plan where new roads should be constructed.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Einen Punkt-Layer auswählen, über den die Dichte berechnet werden soll</h2></div>
+        <hr/>
+        <div>
+            <p>The point layer on which the density will be calculated.
+            </p>
+            <p>Sie k&ouml;nnen nicht nur einen Layer aus der Karte ausw&auml;hlen, sondern auch unten in der Dropdown-Liste  <b>Layer durchsuchen</b> ausw&auml;hlen, um zu Ihren f&uuml;r ein Big-Data-Dateifreigabe-Dataset bzw. -Feature-Layer zu navigieren.  
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>Mindestens ein Feld auswählen, für das die Dichte berechnet werden soll</h2></div>
+        <hr/>
+        <div>
+            <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
+            </p>
+            <p>The density for the count of points will always be calculated.   If no fields are selected, each location will be assumed to represent a single count.
+            </p>
+        </div>
+    </div>
+    <div id="binType">
+        <div><h2>Abschnitts-Shape auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>The shape of bins that points are aggregated into and used for the density calculation.
+            </p>
+        </div>
+    </div>
+    <div id="binSizing">
+        <div><h2>Die Abschnittsgröße für Dichteberechnungen auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
+            </p>
+        </div>
+    </div>
+    <div id="weight">
+        <div><h2>Die anzuwendende Dichtegewichtung auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>The type of weighting applied to the density calculation. There are two options:
+                <ul>
+                    <li> <b>Uniform</b>&mdash;This calculates a magnitude per area.
+                    </li>
+                    <li> <b>Kernel</b>&mdash;Applies a kernel function to fit a smooth tapered surface to each point.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="neighborhood">
+        <div><h2>Die Nachbarschaftsgröße auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>The size of the area used to calculate the density. The neighborhood size must be larger than the bin size.
+            </p>
+        </div>
+    </div>
+    <div id="areaUnits">
+        <div><h2>Die Ausgabeeinheiten für die Dichte auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>The desired output units of the density values. By default, this is set to the units in your map (for example, square meters). If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Dichte mit Zeitintervallen berechnen (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Wenn Zeiteigenschaften f&uuml;r den Eingabepunkt-Layer aktiviert sind und vom Typ &quot;Sofort&quot; sind, kann die Analyse mittels Zeitintervallen durchgef&uuml;hrt werden.  Bei Verwendung von Zeit k&ouml;nnen drei Parameter festgelegt werden:
+                <ul>
+                    <li>  <b>Zeitintervall</b>
+                    </li>
+                    <li> <b>Zeitschritt</b>
+                    </li>
+                    <li> <b>Bezugszeit</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Angenommen, Ihre Daten stellen ein Jahr dar und Sie m&ouml;chten eine Analyse mit w&ouml;chentlichen Abschnitten durchf&uuml;hren. Dazu muss das  <b>Zeitintervall</b> auf <code>1 Woche</code> festgelegt werden.
+            </p>
+            <p> Angenommen, Ihre Daten stellen ein Jahr dar und Sie m&ouml;chten eine Analyse mit der ersten Woche des Monats durchf&uuml;hren. Dazu legen Sie das <b>Zeitintervall</b> auf <code>1 Woche</code>, den <b>Zeitschritt</b> auf <code>1 Monat</code> und die <b>Bezugszeit</b> auf <code>1. Januar, 12:00 Uhr</code> ein.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>Zeitintervall, für das die Dichte berechnet werden soll</h2></div>
+        <hr/>
+        <div>
+            <p>Das Zeitintervall zum Aufteilen der Daten. Das Zeitintervall kann alleine oder mit den Parametern  <b>Zeitschritt</b> oder <b>Bezugszeit</b> verwendet werden.
+            </p>
+            <p> Wenn Sie Zeitabschnitte erstellen m&ouml;chten, die jeden Montag von 9:00 bis 10:00 Uhr stattfinden, betr&auml;gt das <b>Zeitintervall</b> <code>1 Stunde</code>, der <b>Zeitschritt</b> <code>1 Woche</code> und lautet die <b>Bezugszeit</b> <code>9:00:00 Uhr am Montag</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>Zeitschritt, für den die Dichte berechnet werden soll</h2></div>
+        <hr/>
+        <div>
+            <p> Der Schritt zum Berechnen eines Zeitabschnitts. Der <b>Zeitschritt</b> kann alleine oder mit dem <b>Zeitintervall</b>, mit dem <b>Zeitbezug</b> oder sowohl mit dem <b>Zeitintervall</b> als auch mit der <b>Bezugszeit</b> verwendet werden.
+            </p>
+            <p> Wenn Sie Zeitabschnitte erstellen m&ouml;chten, die jeden Montag von 9:00 bis 10:00 Uhr stattfinden, betr&auml;gt das <b>Zeitintervall</b> <code>1 Stunde</code>, der <b>Zeitschritt</b> <code>1 Woche</code> und lautet die <b>Bezugszeit</b> <code>9:00:00 Uhr am Montag</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Bezugszeit zum Ausrichten der Zeitintervalle</h2></div>
+        <hr/>
+        <div>
+            <p>Das Datum und die Uhrzeit zum Ausrichten der Zeitintervalle.  <b>Zeitschritt</b> startet ab der Bezugszeit und l&auml;uft r&uuml;ckw&auml;rts.
+            </p>
+            <p> Wenn Sie Zeitabschnitte erstellen m&ouml;chten, die jeden Montag von 9:00 bis 10:00 Uhr stattfinden, betr&auml;gt das <b>Zeitintervall</b> <code>1 Stunde</code>, der <b>Zeitschritt</b> <code>1 Woche</code> und lautet die <b>Bezugszeit</b> <code>9:00:00 Uhr am Montag</code>.
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>SpatialReference (WKID)</h2></div>
+        <hr/>
+        <div>
+            <p>Dies ist ein tempor&auml;rer Parameter f&uuml;r die Vorabversion zum Festlegen des Raumbezugs f&uuml;r die Verarbeitung. Viele Big-Data-Werkzeuge erfordern die Verwendung eines projizierten Koordinatensystems als Raumbezug f&uuml;r die Verarbeitung. Das Werkzeug verwendet standardm&auml;&szlig;ig das Eingabe-Koordinatensystem, kann jedoch nicht ausgef&uuml;hrt werden, wenn es sich um ein geographisches Koordinatensystem handelt. Geben Sie zum Festlegen eines projizierten Koordinatensystems die WKID ein. Die Eingabe f&uuml;r  <b>Web Mercator</b> ist beispielsweise <code>3857</code>.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Data Store auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Dies ist ein tempor&auml;rer Parameter f&uuml;r die Vorabversion zum Festlegen des Data Store, in dem die Ergebnisse gespeichert werden. Beide Data Stores sind Teil des  ArcGIS Data Store. Wenn Sie den Data Store &quot;spatiotemporal&quot; ausw&auml;hlen, aber nicht installiert haben, kann das Werkzeug nicht ausgef&uuml;hrt werden. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Name des Ergebnis-Layers</h2></div>
+        <hr/>
+        <div>
+            <p> Dies ist der Name des Layers, der in <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird.  Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, kann das Werkzeug nicht ausgef&uuml;hrt werden.
+            </p>
+            <p>&Uuml;ber das Dropdown-Feld  <b>Ergebnis speichern in</b> k&ouml;nnen Sie den Namen eines Ordners in <b>Eigene Inhalte</b> angeben, in dem das Ergebnis gespeichert werden soll.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

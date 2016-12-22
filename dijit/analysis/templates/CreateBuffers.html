@@ -49,7 +49,7 @@
           </td>
         </tr>          
         <tr>
-          <td class="longTextInput" style="padding-top:5px;">
+          <td colspan="2" class="longTextInput" style="padding-top:5px;">
             <label data-dojo-attach-point="_labelOne" class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.oneLabel}</label>
             <label data-dojo-attach-point="_bufTypeLabel" class="esriAnalysisStepsLabel">${i18n.sizeLabel}</label>
           </td>
@@ -133,10 +133,10 @@
         </tr>
 
         <tr data-dojo-attach-point="_optionsRow">
-          <td colspan="2" style="padding:5px 0px;">
-            <div class="esriLeadingMargin2 optionsClose" data-dojo-attach-point="_optionsDiv">
+          <td colspan="3">
+            <div class="optionsClose" data-dojo-attach-point="_optionsDiv">
               <div class="dijitTreeExpando" data-dojo-attach-event="onclick:_handleOptionsBtnClick"><label class="esriLeadingMargin2 noWrapLabel">${i18n.optionsLabel}</label></div>
-              <a style="position:relative; top:-16px; left:1px; "href="#" class='esriFloatTrailing helpIcon' data-dojo-attach-point="_bufferOptionsHelpLink" esriHelpTopic="OptionNolayer"></a>
+              <a style="position:relative; top:-16px;" href="#" class='esriFloatTrailing helpIcon' data-dojo-attach-point="_bufferOptionsHelpLink" esriHelpTopic="OptionNolayer"></a>
               <table class="esriFormTable optionsTable">
                 <tbody>
 
@@ -394,8 +394,8 @@
           </td>
         </tr> 
         <tr>
-          <td  class="longTextInput" style="padding:5px 0px;">
-            <label data-dojo-attach-point="_resultNumLabel" class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.twoLabel}</label>
+          <td  colspan="2" class="longTextInput">
+            <label  data-dojo-attach-point="_resultNumLabel" class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.twoLabel}</label>
             <label data-dojo-attach-point="_polylabel" class="esriAnalysisStepsLabel">${i18n.resultLabel}</label>
           </td>
           <td>
@@ -434,8 +434,8 @@
     <div data-dojo-type="dijit/Dialog" title="${i18n.creditTitle}" data-dojo-attach-point="_usageDialog" style="width:40em;">
       <div data-dojo-type="esri/dijit/analysis/CreditEstimator"  data-dojo-attach-point="_usageForm"></div>
     </div>
-    <div data-dojo-type="dijit/Dialog" data-dojo-attach-point="_exprDialog">
-      <div style="width:30em;height:15em;">
+    <div data-dojo-type="dijit/Dialog" data-dojo-attach-point="_exprDialog" data-dojo-props="title:'${i18n.addBufExp}'">
+      <div class="esriBufExpressionFormCtr">
         <div data-dojo-attach-point="_expressionCtr"></div>
       </div>
     </div>

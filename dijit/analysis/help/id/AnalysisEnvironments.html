@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Analisis Portal Pengaturan Lingkungan</h2><p/>
+        <h2></h2>
+        <hr/>
+    <p> Pengaturan lingkungan untuk analisis pada Portal untuk ArcGIS dan ArcGIS Online.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="overwriteResult">
+        <div><h2>Timpa layer hasil</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Opsi untuk menimpa layer yang ada.    Saat dicentang, jika suatu layer dengan nama sama telah ada pada konten Anda, layer itu akan ditimpa.
+            </p>
+            <p>
+                <ul>
+                    <li>Dicentang&mdash;jika suatu layer dengan nama sama telah ada pada konten Anda, layer itu akan ditimpa. Output akan memiliki sistem koordinat yang sama dengan inputnya.
+                    </li>
+                    <li>Tidak dicentang&mdash;Jika nama layer hasil yang diberikan telah ada, kesalahan akan terjadi dan layer hasil harus diberi nama kembali sebelum alat dapat dieksekusi. Ini adalah default.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="closeAnalysisWidget">
+        <div><h2>Tutup widget analisis setelah menjalankan analisis</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Opsi untuk menyimpan dialog analisis terbuka dan aktif saat alat memproses.     Pengaturan ini akan memungkinkan Anda secara mudah melakukan modifikasi pada parameter analisis Anda saat tugas analisis sebelumnya terus berjalan.  Analisis adalah proses yang berulang dan dengan menjaga dialog alat terbuka, itu memungkinkan Anda untuk dengan mudah melakukan pengubahan parameter dan menjalankan kembali analisis Anda.
+            </p>
+            <p>
+                <ul>
+                    <li>Dicentang&mdash;Jendela alat analisis akan menutup dan fokus akan kembali ke daftar isi. Ini adalah default
+                    </li>
+                    <li>Tidak dicentang&mdash;Jendela alat analisis akan tetap terbuka dan aktif.   
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="storeAnalysisResults">
+        <div><h2>Simpan hasil analisis sebagai feature service</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Opsi untuk menentukan apakah hasil analisis Anda akan dibuat sebagai feature layer atau sebagai kumpulan fitur.
+            </p>
+            <p>
+                <ul>
+                    <li>Dicentang&mdash;Hasil analisis Anda akan dibuat feature layer dan item akan dibuat pada konten Anda. Ini adalah default.
+                    </li>
+                    <li>Tidak Dicentang&mdash;Hasil analisis Anda akan membuat kumpulan fitur.    Kumpulan fitur disimpan pada web map Anda.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputCoordinateSystem">
+        <div><h2>Sistem koordinat output</h2></div>
+        <hr/>
+        <div>
+            <p>Pengaturan lingkungan untuk analisis raster digunakan untuk menentukan sistem koordinat layer hasil.    
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Sama seperti Input</b>&mdash;Hasil analisis Anda akan berada di sistem koordinat yang sama dengan input. Ini adalah default.
+                    </li>
+                    <li> <b>Seperti yang ditentukan</b>&mdash;Pilih sistem koordinat untuk hasil analisis Anda.   Ketika opsi ini dipilih, klik ikon bola dunia untuk memilih dari daftar sistem koordinat yang diketahui atau menambahkan referensi spasial WKID pada kotak yang disediakan.
+                    </li>
+                    <li> <b>Layer
+&lt;nama&gt;</b>&mdash;Pilih layer yang sudah ada pada web map Anda yang akan digunakan untuk menentukan sistem koordinat hasil analisis Anda.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingCoordinateSystem">
+        <div><h2>Memproses sistem koordinat</h2></div>
+        <hr/>
+        <div>
+            <p>Pengaturan lingkungan untuk GeoAnalytics digunakan untuk menentukan sistem koordinat yang akan analisis Anda gunakan saat eksekusi analisis.   
+            </p>
+            <p>Untuk GeoAnalytics, beberapa analisis mengharuskan bahwa proses dieksekusi pada sistem koordinat terproyeksi.   Setiap alat yang menerapkan penempatan data atau unit linear mengharuskan sistem koordinat terproyeksi. 
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Sama seperti input</b>&mdash;Analisis Anda akan diproses pada sistem koordinat yang sama seperti input. Ini adalah default.
+                    </li>
+                    <li> <b>Seperti yang ditentukan</b>&mdash;Pilih sistem koordinat untuk memproses analisis Anda.   Ketika opsi ini dipilih, klik ikon bola dunia untuk memilih dari daftar sistem koordinat terproyeksi yang diketahui atau menambahkan referensi spasial WKID pada kotak yang disediakan.
+                    </li>
+                    <li> <b>Layer
+&lt;nama&gt;</b>&mdash;Pilih layer yang ada dari web map Anda.  Sistem koordinat layer yang dipilih akan digunakan untuk menentukan sistem koordinat yang akan digunakan untuk memproses analisis Anda.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingExtent">
+        <div><h2>Jangkauan</h2></div>
+        <hr/>
+        <div>
+            <p>Pengaturan lingkungan digunakan untuk menentukan jangkauan atau batasan yang akan digunakan saat eksekusi analisis.  Seluruh fitur input yang sepenuhnya di dalam atau yang berpotongan dengan jangkauan tertentu akan digunakan pada analisis.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Default</b>&mdash;Menggunakan jangkauan yang disediakan oleh alat.
+                    </li>
+                    <li> <b>Seperti yang ditentukan</b>&mdash;Secara manual masukkan koordinat untuk menentukan jangkauan.
+                    </li>
+                    <li> <b>Layer
+&lt;nama&gt;</b>&mdash;Pilih layer yang ada dari web map Anda. Jangkauan spasial layer yang dipilih akan digunakan untuk menentukan jangkauan yang digunakan untuk memproses analisis Anda. 
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="snapRaster">
+        <div><h2>Snap Raster</h2></div>
+        <hr/>
+        <div>
+            <p>Saat melakukan analisis raster, mengatur lingkungan  <b>Snap Raster</b> akan menyesuaikan jangkauan dari output raster layer sehingga itu sesuai dengan perataan sel layer <b>Snap Raster</b> yang ditentukan.
+            </p>
+        </div>
+    </div>
+    <div id="cellSize">
+        <div><h2>Ukuran Sel</h2></div>
+        <hr/>
+        <div>
+            <p>Saat melakukan analisis raster, lingkungan ini mengatur ukuran sel atau resolusi yang akan digunakan untuk membuat output raster layer. Resolusi output default ditentukan oleh ukuran sel terbesar dari input raster layer.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Input Minimum</b>&mdash;Gunakan ukuran sel terkecil dari seluruh layer input.
+                    </li>
+                    <li> <b>Input Maksimum</b>&mdash;Gunakan ukuran sel terbesar dari seluruh layer input. Ini adalah default.
+                    </li>
+                    <li> <b>Seperti yang ditentukan</b>&mdash;Tentukan nilai angka untuk menetapkan ukuran sel. Jika ini dipilih, nilai default adalah 1.
+                    </li>
+                    <li> <b>Layer &lt;nama&gt;</b>&mdash;Menentukan ukuran sel ke raster layer yang dipilih.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="mask">
+        <div><h2>Mask</h2></div>
+        <hr/>
+        <div>
+            <p> Saat melakukan analisis raster, gunakan lingkungan <b>Mask</b> untuk menentukan layer yang akan digunakan untuk menentukan area penting Anda.   Hanya sel tersebut yang berada dalam mask analisis yang akan diperhitungkan dalam operasi analisis.
+            </p>
+            <ul>
+                <li>Mask dapat berupa raster atau feature layer.
+                </li>
+                <li>Jika mask analisis adalah raster, seluruh sel yang memiliki nilai akan diperhitungkan untuk menentukan mask. Sel pada raster mask yang merupakan NoData akan dianggap berada di luar mask dan akan menjadi NoData pada layer hasil analisis. 
+                </li>
+                <li>Jika mask analisis adalah feature layer, mask akan diubah secara internal menjadi raster saat eksekusi. Oleh karena itu, Anda harus hati-hati untuk memastikan bahwa  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">Ukuran Sel</a> dan <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">Snap Raster</a> diatur sesuai untuk analisis Anda.
+                </li>
+            </ul>
+             
+        </div>
+    </div>
+</div>
+</html>

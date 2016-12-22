@@ -40,12 +40,18 @@
 </head>
 <body onload="init()">
 <div id="topics">
+    <div id="aoToolbox">
+        <p>Verktygsl&aring;dan Analys av geoobjekt inneh&aring;ller en rad verktyg som du kan f&aring; &aring;tkomst till och anv&auml;nda. &Aring;tg&auml;rderna finns ordnade nedan i kategorier. Kategorierna &auml;r logiska grupperingar och p&aring;verkar inte hur du f&aring;r &aring;tkomst till eller anv&auml;nder &aring;tg&auml;rderna p&aring; n&aring;got s&auml;tt.
+        </p>
+    </div>
     <div id="SummarizeDataCategory" class="regularsize">
         <h2>Summera data</h2>
         <hr/>
         <p>Dessa verktyg ber&auml;knar totalt antal, l&auml;ngd, yta och enkel beskrivande statistik f&ouml;r geoobjekt och deras attribut inom omr&aring;den eller n&auml;ra andra geoobjekt.
             <ul>
                 <li> <b>Aggregera punkter</b> ber&auml;knar statistik om punkter som hamnar inom angivna omr&aring;den.
+                </li>
+                <li> <b>F&ouml;rena geoobjekt</b> &ouml;verf&ouml;r attribut fr&aring;n ett lager eller tabell till en annan baserat p&aring; rums- och attributrelationer.
                 </li>
                 <li> <b>Summera n&auml;ra</b> ber&auml;knar statistik f&ouml;r geoobjekt och deras attribut som finns inom ett angivet avst&aring;nd.
                 </li>
@@ -73,6 +79,32 @@
                     <li>Med hj&auml;lp av punkter d&auml;r brott har beg&aring;tts vill du r&auml;kna ut antalet brott per l&auml;n eller annat administrativt distrikt.
                     </li>
                     <li>Hitta de h&ouml;gsta och l&auml;gsta int&auml;kterna f&ouml;r franchisebutiker per stat.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="JoinFeaturesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Förena geoobjekt</h2></td>
+                    <td>
+                    <img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" class="titleImage" alt="F&ouml;rena geoobjekt">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>F&ouml;rena geoobjekt &ouml;verf&ouml;r attribut fr&aring;n ett lager eller tabell till en annan baserat p&aring; rums- och attributrelationer. Exempel:
+                <ul>
+                    <li>L&auml;gg till information om en gemensam gr&auml;ns eller demografisk information i incidentdata.
+                    </li>
+                    <li>Identifiera de n&auml;rmaste inr&auml;ttningarna till en k&auml;nd plats.
+                    </li>
+                    <li>Fastst&auml;ll hur m&aring;nga bost&auml;der som ligger inom en &ouml;versv&auml;mningszon.
+                    </li>
+                    <li>Identifiera vanliga boplatser f&ouml;r olika vilda arter.
                     </li>
                 </ul>
                 
@@ -289,6 +321,8 @@
                 </li>
                 <li>Med  <b>Hitta hotspots</b> kan du identifiera statistiskt signifikant klustring i de geografiska m&ouml;nstren f&ouml;r dina data.
                 </li>
+                <li> <b>Hitta avvikelser</b> fastst&auml;ller om det finns statistiskt signifikanta avvikelser i det geografiska m&ouml;nstret f&ouml;r dina data.
+                </li>
                 <li> <b>Interpoleringspunkter</b> f&ouml;ruts&auml;ger v&auml;rden p&aring; nya platser baserat p&aring; m&auml;tningar fr&aring;n en samling punkter.
                 </li>
             </ul>
@@ -321,7 +355,22 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Det h&auml;r verktyget skapar en karta som visar statistiskt signifikant geografisk klustring i dina data.   Anv&auml;nd verktyget f&ouml;r att hitta ov&auml;ntade hotspots (r&ouml;da) och coldspots (bl&aring;) f&ouml;r till exempel h&ouml;ga och l&aring;ga huspriser, brottsfall, trafikolyckor med d&ouml;dlig utg&aring;ng, arbetsl&ouml;shet och biodiversitet.
+            <p>Det h&auml;r verktyget skapar en karta som visar statistiskt signifikant geografisk klustring i dina data. Anv&auml;nd verktyget f&ouml;r att hitta ov&auml;ntade hotspots (r&ouml;da) och coldspots (bl&aring;) f&ouml;r till exempel h&ouml;ga och l&aring;ga huspriser, brottsfall, trafikolyckor med d&ouml;dlig utg&aring;ng, arbetsl&ouml;shet och biodiversitet.
+            </p>
+            <br/>
+        </div>
+        <div id="FindOutliersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Hitta avvikelser</h2></td>
+                    <td>
+                    <img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" class="titleImage" alt="Hitta avvikelser">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Det h&auml;r verktyget skapar en karta som visar statistiskt signifikant klustring och geografiska avvikelser i dina data. Anv&auml;nd verktyget f&ouml;r att identifiera geoobjekt som har v&auml;rden som skiljer sig signifikant fr&aring;n sina grannar. Du kan till exempel anv&auml;nda verktyget f&ouml;r att uppt&auml;cka onormala utgiftsm&ouml;nster, fastst&auml;lla var de skarpaste gr&auml;nserna g&aring;r mellan v&auml;lst&aring;nd och fattigdom i ett unders&ouml;kningsomr&aring;de, eller fastst&auml;lla om det finns l&auml;n i USA d&auml;r den f&ouml;rv&auml;ntade livsl&auml;ngden &auml;r ovanligt kort j&auml;mf&ouml;rt med de angr&auml;nsande.
             </p>
             <br/>
         </div>

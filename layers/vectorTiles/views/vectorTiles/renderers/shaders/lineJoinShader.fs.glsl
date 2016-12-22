@@ -14,5 +14,5 @@ void main()
   lowp float alpha = clamp(u_lineHalfWidth - fragDist, 0.0, 1.0);
 
   // finally output the fragment color
-  gl_FragColor = vec4(u_color.rgb, alpha * u_color.a);
+  gl_FragColor = alpha * u_color;
 }

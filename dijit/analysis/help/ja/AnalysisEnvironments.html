@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>ポータルでの解析の環境設定</h2><p/>
+        <h2></h2>
+        <hr/>
+    <p>  Portal for ArcGIS および  ArcGIS Online での解析の環境設定。 </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="overwriteResult">
+        <div><h2>結果レイヤーを上書き</h2></div>
+        <hr/>
+        <div>
+            
+            <p>既存のレイヤーを上書きするオプション。オンにすると、同じ名前のレイヤーがコンテンツ内にすでに存在する場合は、そのレイヤーが上書きされます。
+            </p>
+            <p>
+                <ul>
+                    <li>オン - 同じ名前のレイヤーがコンテンツ内にすでに存在する場合は、そのレイヤーが上書きされます。出力の座標系が入力と同じになります。
+                    </li>
+                    <li>オフ - 指定された結果レイヤーの名前がすでに存在する場合は、エラーが発生します。ツールを実行する前に結果レイヤーの名前を変更しておく必要があります。これがデフォルトです。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="closeAnalysisWidget">
+        <div><h2>分析の実行後に分析ウィジェットを閉じる</h2></div>
+        <hr/>
+        <div>
+            
+            <p>ツールの実行中に解析ダイアログを開いたまま有効な状態にしておくオプション。この設定を使用すると、前の解析ジョブの実行が継続中の場合でも、簡単に解析パラメーターを変更することができます。解析は反復的なプロセスであるため、ツール ダイアログを開いたままにしておくことで、簡単にパラメーターを変更し、解析を再実行できます。
+            </p>
+            <p>
+                <ul>
+                    <li>オン - 解析ツールのウィンドウが閉じて、[コンテンツ] ウィンドウにフォーカスが戻されます。これがデフォルトです。
+                    </li>
+                    <li>オフ - 解析ツールのウィンドウが開いたまま有効な状態になります。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="storeAnalysisResults">
+        <div><h2>解析結果をフィーチャ サービスとして保存</h2></div>
+        <hr/>
+        <div>
+            
+            <p>解析結果をフィーチャ レイヤーとして作成するかフィーチャ コレクションとして作成するかを指定するオプション。
+            </p>
+            <p>
+                <ul>
+                    <li>オン - 解析結果がフィーチャ レイヤーとして作成され、アイテムがコンテンツ内に作成されます。これがデフォルトです。
+                    </li>
+                    <li>オフ - 解析結果がフィーチャ コレクションとして作成されます。フィーチャ コレクションは Web マップ内に保存されます。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputCoordinateSystem">
+        <div><h2>出力座標系</h2></div>
+        <hr/>
+        <div>
+            <p>結果レイヤーの座標系を定義する際に使用されるラスター解析の環境設定。
+            </p>
+            <p>
+                <ul>
+                    <li> <b>入力データと同様</b> - 解析結果の座標系が入力と同じになります。これがデフォルトです。
+                    </li>
+                    <li> <b>値指定</b> - 解析結果の座標系を選択します。このオプションをオンにした場合は、地球アイコンをクリックして既知の座標系のリストから座標系を選択するか、指定のボックスに空間参照の WKID を追加します。
+                    </li>
+                    <li> <b>レイヤー &lt;名前&gt;</b> - Web マップ内の既存のレイヤーの中から、解析結果の座標系の決定に使用するレイヤーを選択します。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingCoordinateSystem">
+        <div><h2>処理に使用する座標系</h2></div>
+        <hr/>
+        <div>
+            <p>解析の実行中に使用される座標系を決定するための GeoAnalytics の環境設定。
+            </p>
+            <p>GeoAnalytics での一部の解析では、処理を投影座標系で実行する必要があります。データまたは距離単位のラスター化を実装しているツールでは投影座標系が必要です。
+            </p>
+            <p>
+                <ul>
+                    <li> <b>入力データと同様</b> - 解析が入力と同じ座標系で処理されます。これがデフォルトです。
+                    </li>
+                    <li> <b>値指定</b> - 解析を処理する座標系を選択します。このオプションをオンにした場合は、地球アイコンをクリックして既知の投影座標系のリストから投影座標系を選択するか、指定のボックスに空間参照の WKID を追加します。
+                    </li>
+                    <li> <b>レイヤー &lt;名前&gt;</b> - Web マップから既存のレイヤーを選択します。選択したレイヤーの座標系に基づいて、解析の処理に使用される座標系が決定されます。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingExtent">
+        <div><h2>範囲</h2></div>
+        <hr/>
+        <div>
+            <p>解析の実行中に使用される範囲または境界を決定するための環境設定。指定の範囲内に完全に含まれているか、指定の範囲と交差しているすべての入力フィーチャが解析に使用されます。
+            </p>
+            <p>
+                <ul>
+                    <li> <b>デフォルト</b> - このツールに用意されている範囲が使用されます。
+                    </li>
+                    <li> <b>値指定</b> - 座標系を手動で入力して範囲を定義します。
+                    </li>
+                    <li> <b>レイヤー &lt;名前&gt;</b> - Web マップから既存のレイヤーを選択します。選択したレイヤーの空間範囲に基づいて、解析の処理に使用される範囲が決定されます。 
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="snapRaster">
+        <div><h2>スナップ対象ラスター</h2></div>
+        <hr/>
+        <div>
+            <p>ラスター解析の実行時に、 <b>[スナップ対象ラスター]</b> 環境の設定に基づいて、指定した <b>[スナップ対象ラスター]</b> レイヤーのセルの配置と同じになるように出力ラスター レイヤーの範囲が調整されます。
+            </p>
+        </div>
+    </div>
+    <div id="cellSize">
+        <div><h2>セル サイズ</h2></div>
+        <hr/>
+        <div>
+            <p>ラスター解析の実行時に、この環境に基づいて、出力ラスター レイヤーの作成に使用されるセル サイズまたは解像度が設定されます。デフォルトの出力解像度は、入力ラスター レイヤーの最も大きいセル サイズによって決まります。
+            </p>
+            <p>
+                <ul>
+                    <li> <b>入力データの最小セルサイズ</b> - すべての入力レイヤーの中から最小のセル サイズを使用します。
+                    </li>
+                    <li> <b>入力データの最大セルサイズ</b> - すべての入力レイヤーの中から最大のセル サイズを使用します。これがデフォルトです。
+                    </li>
+                    <li> <b>値指定</b> - 数値を指定してセル サイズを設定します。このオプションを選択すると、デフォルト値が「1」に設定されます。
+                    </li>
+                    <li> <b>レイヤー &lt;名前&gt;</b> - セル サイズを選択されたラスター レイヤーに設定します。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="mask">
+        <div><h2>マスク</h2></div>
+        <hr/>
+        <div>
+            <p> ラスター解析の実行時に、 <b>[マスク]</b> 環境を使用して、対象エリアの定義に使用されるレイヤーを指定します。解析マスク内にあるセルだけが解析処理で考慮されます。
+            </p>
+            <ul>
+                <li>マスクは、ラスターでもフィーチャ レイヤーでもかまいません。
+                </li>
+                <li>解析マスクがラスターの場合、値を持つすべてのセルがそのマスクを指定すると見なされます。マスク ラスター内の NoData のセルはマスクの外にあると見なされ、解析結果レイヤーでも NoData になります。
+                </li>
+                <li>解析マスクがフィーチャ レイヤーの場合は、実行時に内部でラスターに変換されます。そのため、解析に適した <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">セル サイズ</a>と <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">スナップ対象ラスター</a>が設定されていることを確認する必要があります。
+                </li>
+            </ul>
+             
+        </div>
+    </div>
+</div>
+</html>

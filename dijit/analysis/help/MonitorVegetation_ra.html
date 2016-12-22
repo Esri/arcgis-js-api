@@ -42,9 +42,9 @@
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Monitor Vegetation</h2><p/>
-        <h2><img src="./images/GUID-7763FCC0-2EA1-463B-98D0-4EBDF6150907-web.png" alt="Monitor Vegetation"></h2>
+        <h2><img src="./images/GUID-7763FCC0-2EA1-463B-98D0-4EBDF6150907-web.png" alt="Monitor Vegetation tool for Portal"></h2>
         <hr/>
-    <p>The Monitor Vegetation  tool performs an arithmetic operation on the bands of a multiband raster dataset to reveal vegetation coverage information of the study area.
+    <p>This tool performs an arithmetic operation on the bands of a multiband raster layer to reveal vegetation coverage information of the study area.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -52,7 +52,7 @@
         <div><h2>Select the input data</h2></div>
         <hr/>
         <div>
-            <p>Choose the multiband raster layer. Make sure that the input raster has the appropriate bands available.
+            <p>Choose the multiband raster layer. Make sure the input raster has the appropriate bands available.
             </p> 
         </div>
     </div>
@@ -60,51 +60,51 @@
         <div><h2>Choose method to monitor vegetation</h2></div>
         <hr/>
         <div>
-            <p>Select the method used to create the vegetation index  layer. The different vegetation indexes can  help highlight certain features, or help reduce various noise.
-            </p> 
+            <p>Select the method used to create the vegetation index layer. The different vegetation indexes can help highlight certain features, or help reduce various noise.
+            </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
-The Global Environmental Monitoring Index (GEMI) is a non linear vegetation index for global environmental monitoring from satellite imagery. It is similar to NDVI, but it is less sensitive to  atmospheric affects. It is affected by bare soil; therefore, it is not recommended for use in areas of  sparse or moderately dense vegetation.
+GEMI is a nonlinear vegetation index for global environmental monitoring from satellite imagery. It is similar to NDVI, but it is less sensitive to atmospheric effects. It is affected by bare soil; therefore, it is not recommended for use in areas of sparse or moderately dense vegetation.
 
                 </li>
                 <li>Green Vegetation Index - Landsat TM &mdash; 
-The Green Vegetation Index (GVI) was originally designed from Landsat MSS imagery, but has been modified for use with Landsat TM imagery. It is also known as the Landsat TM Tasseled Cap green vegetation index. This monitoring index can also be used with imagery whose bands share the same spectral characteristics.
+GVI was originally designed from Landsat MSS imagery but has been modified for use with Landsat TM imagery. It is also known as the Landsat TM Tasseled Cap green vegetation index. This monitoring index can also be used with imagery whose bands share the same spectral characteristics.
 
                 </li>
                 <li>Modified Soil Adjusted Vegetation Index &mdash; 
-The Modified Soil Adjusted Vegetation Index (MSAVI2) is a vegetation index that tries to minimize bare soil influences of the SAVI method.
+MSAVI2 is a vegetation index that tries to minimize bare soil influences of the SAVI method.
 
                 </li>
                 <li>Normalized Difference Vegetation Index  &mdash; 
-The Normalized Difference Vegetation Index (NDVI) is a standardized index allowing you to generate an image displaying greenness, relative biomass. This index takes advantage of the contrast of the characteristics of two bands from a multispectral raster dataset&mdash;the chlorophyll pigment absorptions in the red band,  and the high reflectivity of plant materials in the near-infrared (NIR) band.
+NDVI is a standardized index allowing you to generate an image displaying greenness, relative biomass. This index takes advantage of the contrast of the characteristics of two bands from a multispectral raster dataset; the chlorophyll pigment absorptions in the red band and the high reflectivity of plant materials in the near-infrared (NIR) band.
 
                 </li>
                 <li>Perpendicular Vegetation Index &mdash; 
-The Perpendicular Vegetation Index (PVI) is similar to a difference vegetation index; however, it is sensitive to atmospheric variations. When using this method to compare different images, it should only be used on images that have been atmospherically corrected. This information can be provided by your data vendor.
+PVI is similar to a difference vegetation index; however, it is sensitive to atmospheric variations. When using this method to compare different images, it should only be used on images that have been atmospherically corrected. This information can be provided by your data vendor.
 
                 </li>
                 <li>Soil-Adjusted Vegetation Index &mdash; 
-The Soil-Adjusted Vegetation Index (SAVI) is a vegetation index that attempts to minimize soil brightness influences using a soil-brightness correction factor. This is often used in arid regions where vegetative cover is low.
+SAVI is a vegetation index that attempts to minimize soil brightness influences using a soil-brightness correction factor. This is often used in arid regions where vegetative cover is low.
 
                 </li>
                 <li>Sultan's Formula &mdash; 
-The Sultans Formula process takes a six-band 8-bit image and uses the Sultan's formula to produce a three-band 8-bit image. The resulting image highlights rock formations called ophiolites on coastlines. This formula was designed based on the TM and ETM bands of a Landsat 5 or 7 scene.
+The Sultan's Formula process takes a six-band 8-bit image and applied a specific algorithm to it to produce a three-band 8-bit image. The resulting image highlights rock formations called ophiolites on coastlines. This formula was designed based on the TM and ETM bands of a Landsat 5 or 7 scene.
 
                 </li>
                 <li>Transformed Soil-Adjusted Vegetation Index &mdash; 
-The Transformed Soil-Adjusted Vegetation Index (TSAVI) is a vegetation index that attempts to minimize soil brightness influences by assuming the soil line has an arbitrary slope and gradient.
+Transformed-SAVI is a vegetation index that attempts to minimize soil brightness influences by assuming the soil line has an arbitrary slope and intercept.
 
                 </li>
             </ul>
         </div>
     </div>
     <div id="bandIndexes">
-        <div><h2>Specify indexes of NIR band and RED band</h2></div>
+        <div><h2>Specify indexes of NIR band and Red band</h2></div>
         <hr/>
         <div>
             <p>Type the band indexes for the near-infrared (NIR) and Red bands.
             </p>
-            <p>Each satellite sensor and aerial  camera capture information that is broken up into band indexes. Each band index contains the information for a specific part of the electromagnetic spectrum. This vegetation monitoring method requires  the band index that captured the NIR and Red wavelengths.
+            <p>Each satellite sensor and aerial camera captures information that is broken up into band indexes. Each band index contains the information for a specific part of the electromagnetic spectrum. This vegetation monitoring method requires you to specify the band index that captured the NIR and Red wavelengths.
             </p>
         </div>
     </div>
@@ -114,17 +114,19 @@ The Transformed Soil-Adjusted Vegetation Index (TSAVI) is a vegetation index tha
         <div>
             <p>The slope of the soil line. The slope is the approximate linear relationship between the NIR and red bands on a scatterplot.
             </p>
-            <p>This parameter is only valid for the Transformed Soil-Adjusted Vegetation Index.
+            <p>This parameter is only valid for Transformed Soil-Adjusted Vegetation Index.
             </p>
         </div>
     </div>
-    <div id="gradientOfSoilLine">
-        <div><h2>Gradient of soil line</h2></div>
+    <div id="interceptOfSoilLine">
+        <div><h2>Intercept</h2></div>
         <hr/>
         <div>
-            <p>The gradient of the soil line.  
+            <p>This is the value of near infrared (NIR) when the reflection value of the red (Red) band is 0 for the particular soil lines.
             </p>
-            <p>This parameter is only valid for the Transformed Soil-Adjusted Vegetation Index.
+            <p> <code>(a = NIR - sRed)</code> , when Red is 0.
+            </p> 
+            <p>This parameter is only valid for Transformed Soil-Adjusted Vegetation Index.
             </p>
         </div>
     </div>
@@ -145,7 +147,7 @@ The Transformed Soil-Adjusted Vegetation Index (TSAVI) is a vegetation index tha
                         
  
                     </li>
-                    <li>0 = areas with high green vegetation cover.
+                    <li>0 = areas with high green vegetation cover
                         
 
                     </li>
@@ -158,9 +160,9 @@ The Transformed Soil-Adjusted Vegetation Index (TSAVI) is a vegetation index tha
         <div><h2>Adjustment factor</h2></div>
         <hr/>
         <div>
-            <p>The Transformed Soil-Adjusted Vegetation Index method requires the adjustment factor set,  in order to help  minimize soil noise.
+            <p>The Transformed Soil-Adjusted Vegetation Index method requires the adjustment factor set in order to help minimize soil effect. The default value is 0.08.
             </p>
-            <p>A value of 1 means that a regular SAVI index is performed. A larger value means that more soil noise is minimized.  
+            <p>A lower value means that you are ignoring the soil effect. A high value means that the soil is will affect your result.
             </p>
         </div>
     </div>
@@ -168,9 +170,9 @@ The Transformed Soil-Adjusted Vegetation Index (TSAVI) is a vegetation index tha
         <div><h2>Result layer name</h2></div>
         <hr/>
         <div>
-            <p>This is the name of the layer that will be created in  <b>My Content</b> and added to the map. The default name is based on the tool name and the input layer name. If the layer already exists, you will be asked to provide another name.
+            <p>The name of the layer that will be created in  <b>My Content</b> and added to the map. The default name is based on the tool name and the input layer name. If the layer already exists, you will be asked to provide another name.
             </p>
-            <p>Using the  <b>Save result</b> in drop-down box, you can specify the name of a folder in <b>My Content</b> where the result will be saved.
+            <p>Using the  <b>Save result in</b> drop-down box, you can specify the name of a folder in <b>My Content</b> where the result will be saved.
             </p>
         </div>
     </div>

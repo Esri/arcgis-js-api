@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Sumarizare atribute</h2><p/>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Sumarizare atribute"></h2>
+        <hr/>
+    <p>Acest instrument rezumă toate valorile corespunzătoare din unul sau mai multe c&acirc;mpuri şi calculează statistici pentru acestea. Cea mai simplă statistică este calculul obiectelor spaţiale care au fost rezumate &icirc;mpreună, &icirc;nsă puteţi calcula şi statistici mai avansate. 
+
+    </p>
+    <p>De exemplu, să presupunem că aveţi obiecte spaţiale punct reprezent&acirc;nd locaţii de magazine cu un c&acirc;mp  <i>DISTRICT_MANAGER_NAME</i> şi doriţi un rezumat al v&acirc;nzărilor de cafea după manager. Puteţi specifica c&acirc;mpul <i>DISTRICT_MANAGER_NAME</i> drept c&acirc;mp de dizolvare şi toate r&acirc;ndurile de date care reprezintă manageri individuali vor fi rezumate. Aceasta &icirc;nseamnă că toate locaţiile de magazine care sunt gestionate de Manager1 vor fi rezumate &icirc;ntr-un r&acirc;nd cu statistici de rezumat calculate. &Icirc;n această situaţie, ar fi calculate statisticile precum numărul de magazine şi suma <i>TOTAL_SALES</i> at&acirc;t pentru toate magazinele gestionate de Manager1, c&acirc;t şi pentru orice alt manager menţionat &icirc;n c&acirc;mpul <i>DISTRICT_MANAGER_NAME</i>.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Alegeţi intrarea pentru rezumat</h2></div>
+        <hr/>
+        <div>
+            <p>Stratul care conţine c&acirc;mpurile care vor fi rezumate.  
+            </p>
+            <p>&Icirc;n afară de a alege un strat tematic din harta dvs., puteţi selecta opţiunile  <b>Răsfoire straturi tematice</b> &icirc;n partea inferioară a listei verticale pentru a răsfoi conţinutul pentru stratul tematic sau setul de date pentru partajarea de fişiere big data.  
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>Alegeţi câmpurile pe care doriţi să realizaţi dizolvarea</h2></div>
+        <hr/>
+        <div>
+            <p>  Listă de c&acirc;mpuri din stratul tematic de intrare.  C&acirc;mpurile selectate vor fi rezumate şi utilizate pentru a calcula statistici. De exemplu, dacă alegeţi un c&acirc;mp denumit <i>PropertyType</i> cu valorile pentru comercial şi rezidenţial, toate c&acirc;mpurile rezidenţiale vor fi rezumate &icirc;mpreună, cu statisticile rezumatului calculate şi toate c&acirc;mpurile comerciale ar fi rezumate &icirc;mpreună.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Alegeţi câmpurile şi statisticile pe care doriţi să le calculaţi (opţional)</h2></div>
+        <hr/>
+        <div>
+            <p> Puteţi calcula statistici despre obiectele spaţiale rezumate. &Icirc;n c&acirc;mpurile numerice puteţi calcula următoarele:
+                <ul>
+                    <li>Cont
+                    </li>
+                    <li>Medie
+                    </li>
+                    <li>Min
+                    </li>
+                    <li>Max
+                    </li>
+                    <li>Distanţă
+                    </li>
+                    <li>Variaţie
+                    </li>
+                    <li>Deviaţie standard
+                    </li>
+                </ul>
+                
+            </p>
+            <p>&Icirc;n c&acirc;mpurile de tip şir puteţi calcula următoarele:
+                <ul>
+                    <li>Cont
+                    </li>
+                    <li>Oricare - Această statistică este un exemplu aleatoriu al unei valori de tip şir &icirc;n c&acirc;mpul specificat.
+                    </li>
+                </ul>
+                Toate statisticile sunt calculate pentru valori care nu sunt nule. Stratul tematic rezultat va conţine un c&acirc;mp nou pentru fiecare statistică calculată. Se pot adăuga oric&acirc;te statistici aleg&acirc;nd un atribut şi o statistică. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Selectare depozit de date</h2></div>
+        <hr/>
+        <div>
+            <p>Acesta este un parametru temporar pentru pre-lansare, destinat setării depozitului de date &icirc;n care sunt salvate rezultatele. Ambele depozite de date fac parte din  ArcGIS Data Store. Dacă selectaţi depozitul de date spaţio-temporal dar nu aveţi unul instalat, instrumentul va eşua. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nume strat tematic rezultat</h2></div>
+        <hr/>
+        <div>
+            <p> Acesta este numele stratului tematic care va fi creat &icirc;n <b>Resursele mele</b> şi adăugat &icirc;n hartă.  Numele implicit se bazează pe numele instrumentului şi numele stratului tematic de intrare. Dacă stratul tematic există deja, instrumentul va eşua.
+            </p>
+            <p>Utiliz&acirc;nd caseta derulantă  <b>Salvare rezultat &icirc;n</b>, puteţi specifica numele unui director din <b>Resursele mele</b> &icirc;n care va fi salvat rezultatul.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

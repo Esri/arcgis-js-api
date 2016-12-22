@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Muodosta reitit uudelleen</h2><p/>
+        <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Muodosta reitit uudelleen"></h2>
+        <hr/>
+    <p>T&auml;m&auml; ty&ouml;kalu toimii sellaisen ajan huomioivan karttatason kanssa, jossa on  <code>hetke&auml;</code> ajassa kuvaavia piste- tai aluekohteita.   Se m&auml;&auml;ritt&auml;&auml; ensin tunnuksen avulla, mitk&auml; kohteet kuuluvat reittiin. K&auml;ytt&auml;m&auml;ll&auml; jokaisen sijainnin aikaa reitit j&auml;rjestet&auml;&auml;n per&auml;kk&auml;in ja muunnetaan viivaksi tai aluekohteeksi, joka kuvaa liikett&auml; ajan my&ouml;t&auml;. Vaihtoehtoisesti l&auml;ht&ouml;aineisto voidaan puskuroida kent&auml;n mukaan, jolloin aluekohde luodaan jokaiseen sijaintiin. N&auml;m&auml; puskuroidut pisteet, tai jos l&auml;ht&ouml;aineistot ovat aluekohteita, liitet&auml;&auml;n per&auml;kk&auml;in ja reitti luodaan aluekohteena, jossa leveys edustaa kiinnostuksen kohteena olevaa ominaisuustietoa. Tuloksena olevilla reiteill&auml; on aloitus- ja lopetusaika, joka kuvaa ajallisesti ensimm&auml;ist&auml; ja viimeist&auml; kohdetta annetulla reitill&auml;. Reittien luonnin aikana l&auml;ht&ouml;aineiston kohteista lasketaan tilastotiedot, ja tilastotiedot m&auml;&auml;ritet&auml;&auml;n tulosaineiston reitille. Perustilastotietoja ovat alueella olevien pisteiden m&auml;&auml;r&auml;, mutta my&ouml;s muita tilastotietoja voidaan laskea.
+    </p>
+    <p>Kohteet ajan huomioivissa karttatasoissa voidaan kuvata jommallakummalla seuraavista tavoista:
+        <ul>
+            <li>hetki: yksitt&auml;inen hetki ajassa
+            </li>
+            <li>aikav&auml;li: aloitus- ja lopetusaika.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Oletetaan esimerkiksi, ett&auml; sinulla on GPS-mittauksia hurrikaaneista aina kymmenen minuutin v&auml;lein. Jokainen GPS-mittaus tallentaa hurrikaanin nimen, sijainnin, tallennusajan ja tuulen nopeuden. N&auml;iden tietojen avulla voit luoda jokaisen hurrikaanin reitin k&auml;ytt&auml;m&auml;ll&auml; reittitunnuksen nime&auml;, ja jokaiselle hurrikaanille luodaan reitti. Lis&auml;ksi voit laskea tilastotiedot, kuten jokaisen hurrikaanin tuulen keski-, enimm&auml;is- ja v&auml;himm&auml;isnopeuden, sek&auml; mittausten m&auml;&auml;r&auml;n kullakin reitill&auml;.
+    </p>
+    <p>Voit my&ouml;s puskuroida reitit tuulen nopeuden mukaan. T&auml;m&auml; puskuroi jokaisen mittauksen sijainnin tuulen nopeuden kent&auml;n mukaan ja liitt&auml;&auml; puskuroidut alueet toisiinsa luoden aluekohteen, joka kuvaa hurrikaanin reitti&auml; ja tuulen nopeuden muutoksia hurrikaanin edetess&auml;.   
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Valitse kohteet, joista reitit muodostetaan uudelleen</h2></div>
+        <hr/>
+        <div>
+            <p>Piste- tai aluekohdekarttataso, joka muodostetaan uudelleen reiteiksi.
+            </p>
+            <p>Sen lis&auml;ksi, ett&auml; voit valita karttatason kartasta, voit valita  <b>Selaa karttatasoja</b> -vaihtoehdon avattavan luettelon alareunasta ja selata Big Data -tiedostoresurssin aineistoryhm&auml;n tai karttatason sis&auml;lt&ouml;&ouml;n.  
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>Valitse kentät, joita käytetään reittien tunnistamiseen</h2></div>
+        <hr/>
+        <div>
+            <p> Kent&auml;t, jotka edustavat reittitunnusta.
+            </p>
+            <p> Jos olet esimerkiksi muodostamassa uudelleen hurrikaanin reitti&auml;, voit k&auml;ytt&auml;&auml; hurrikaanin nime&auml; reittikentt&auml;n&auml;.
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Valitse reittien uudelleen muodostamisen menetelmä</h2></div>
+        <hr/>
+        <div>
+            <p>Menetelm&auml;, jonka avulla reitit liitet&auml;&auml;n ja puskuri otetaan k&auml;ytt&ouml;&ouml;n (jos mahdollista).  <b>Planaarinen</b>-menetelm&auml; voi laskea tulokset nopeasti, mutta se ei rivit&auml; reittej&auml; kansainv&auml;lisen p&auml;iv&auml;m&auml;&auml;r&auml;rajan ymp&auml;rille tai ota huomioon maapallon todellista muotoa puskuroitaessa. <b>Geodeettinen</b>-menetelm&auml; rivitt&auml;&auml; reitit p&auml;iv&auml;m&auml;&auml;r&auml;rajan ymp&auml;rille tarvittaessa ja ottaa maapallon muodon huomioon geodeettisen puskurin avulla.
+            </p>
+        </div>
+    </div>
+    <div id="bufferField">
+        <div><h2>Luo lauseke, jonka perusteella lähtöaineiston kohteet puskuroidaan (valinnainen)</h2></div>
+        <hr/>
+        <div>
+            <p>Yht&auml;l&ouml;, jolla lasketaan puskuriet&auml;isyys l&auml;ht&ouml;aineiston kohteiden ymp&auml;rill&auml;. T&auml;m&auml;n yht&auml;l&ouml;n voi luoda k&auml;ytt&auml;m&auml;ll&auml; puskurilaskinta ja perusoperaattoreita, kuten summa-, v&auml;hennys-, kerto- ja jako-operaattoreita. Arvot lasketaan k&auml;ytt&auml;m&auml;ll&auml; analyysikoordinaattij&auml;rjestelm&auml;&auml;.
+            </p>
+        </div>
+    </div>
+    <div id="timeSplit">
+        <div><h2>Valitse aika, jonka jälkeen reitti jaetaan (valinnainen)</h2></div>
+        <hr/>
+        <div>
+            <p>Aika, jonka j&auml;lkeen reitti jaetaan useaksi reitiksi. Jos l&auml;ht&ouml;aineiston piste- tai aluekohteiden v&auml;linen kesto on pitempi kuin jakoaika, ne jaetaan eri reitteihin.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Lisää tilastotiedot (valinnainen)</h2></div>
+        <hr/>
+        <div>
+            <p> Voit laskea tilastotiedot kohteista, joista on laadittu yhteenveto. Numerokentist&auml; voit laskea seuraavat tilastotiedot:
+                <ul>
+                    <li>Lukum&auml;&auml;r&auml;
+                    </li>
+                    <li>Keskiarvo
+                    </li>
+                    <li>V&auml;himm&auml;isarvo
+                    </li>
+                    <li>Enimm&auml;isarvo
+                    </li>
+                    <li>Vaihteluv&auml;li
+                    </li>
+                    <li>Varianssi
+                    </li>
+                    <li>Keskihajonta
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Merkkijonokentist&auml; voit laskea seuraavat tilastotiedot:
+                <ul>
+                    <li>Lukum&auml;&auml;r&auml;
+                    </li>
+                    <li>Mik&auml; tahansa: T&auml;m&auml; tilastotieto on satunnainen otos m&auml;&auml;ritetyn kent&auml;n merkkijonoarvosta.
+                    </li>
+                </ul>
+                Kaikki tilastotiedot lasketaan muina kuin nolla-arvoina. Tuloskarttataso sis&auml;lt&auml;&auml; uuden kent&auml;n jokaiselle lasketulle tilastotiedolle. Voit lis&auml;t&auml; niin paljon tilastotietoja kuin haluat valitsemalla ominaisuustiedon ja tilastotiedon. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Valitse aineistosäilö</h2></div>
+        <hr/>
+        <div>
+            <p>T&auml;m&auml; on esijulkaisun tilap&auml;inen parametri sen aineistos&auml;il&ouml;n m&auml;&auml;ritt&auml;miseen, johon tulokset tallennetaan. Molemmat aineistos&auml;il&ouml;t ovat osa  ArcGIS Data Storea. Jos valitset tila-aika-aineistos&auml;il&ouml;n, mutta sellaista ei ole asennettuna, ty&ouml;kalua ei voi suorittaa. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tulostason nimi</h2></div>
+        <hr/>
+        <div>
+            <p> Sen tason nimi, joka luodaan kohtaan <b>Oma sis&auml;lt&ouml;</b> ja joka lis&auml;t&auml;&auml;n karttaan. Oletusnimi perustuu ty&ouml;kalun nimeen ja l&auml;ht&ouml;karttatason nimeen. Jos karttataso on jo olemassa, ty&ouml;kalua ei voi suorittaa.
+            </p>
+            <p>Avattavan  <b>Tallenna tulos kohteeseen</b> -valikon avulla voit m&auml;&auml;ritt&auml;&auml; sen <b>Oma sis&auml;lt&ouml;</b> -kansion nimen, johon tulos tallennetaan.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

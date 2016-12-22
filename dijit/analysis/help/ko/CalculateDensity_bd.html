@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>밀도 계산(Calculate Density)</h2><p/>
+        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Calculate Density"></h2>
+        <hr/>
+    <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas classified from least dense to most dense.   
+
+    </p>
+    <p>For point input, each point should represent the location of some event or incident, and the result layer represents a count of the incident per unit area.  A higher density value in a new location means that there are more points near that location.  In many cases, the result layer can be interpreted as a risk surface for future events. For example, if the input points represent locations of lightning strikes, the result layer can be interpreted as a risk surface for future lightning strikes.
+    </p>
+    <p>Other use cases of this tool include the following:
+        <ul>
+            <li>Creating crime-density maps to help police departments properly allocate resources to high crime areas.
+            </li>
+            <li>Calculating densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to decide where new hospitals should be built.
+            </li>
+            <li>Identifying areas that are at high risk of forest fires based on historical locations of forest fires.
+            </li>
+            <li>Locating communities that are far from major highways in order to plan where new roads should be constructed.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>밀도를 계산할 포인트 레이어 선택</h2></div>
+        <hr/>
+        <div>
+            <p>The point layer on which the density will be calculated.
+            </p>
+            <p>맵에서 레이어를 선택하는 것 이외에, 드롭다운 목록의 하단에 있는  <b>레이어 찾아보기</b>를 선택하여 빅 데이터 파일 공유 데이터셋 또는 피처 레이어의 콘텐츠를 찾아볼 수 있습니다.  
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>밀도를 계산할 필드를 하나 이상 선택</h2></div>
+        <hr/>
+        <div>
+            <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
+            </p>
+            <p>The density for the count of points will always be calculated.   If no fields are selected, each location will be assumed to represent a single count.
+            </p>
+        </div>
+    </div>
+    <div id="binType">
+        <div><h2>그룹 도형 선택</h2></div>
+        <hr/>
+        <div>
+            <p>The shape of bins that points are aggregated into and used for the density calculation.
+            </p>
+        </div>
+    </div>
+    <div id="binSizing">
+        <div><h2>밀도 계산을 위한 그룹 크기 선택</h2></div>
+        <hr/>
+        <div>
+            <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
+            </p>
+        </div>
+    </div>
+    <div id="weight">
+        <div><h2>적용할 밀도 가중치 선택</h2></div>
+        <hr/>
+        <div>
+            <p>The type of weighting applied to the density calculation. There are two options:
+                <ul>
+                    <li> <b>Uniform</b>&mdash;This calculates a magnitude per area.
+                    </li>
+                    <li> <b>Kernel</b>&mdash;Applies a kernel function to fit a smooth tapered surface to each point.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="neighborhood">
+        <div><h2>네이버후드 크기 선택</h2></div>
+        <hr/>
+        <div>
+            <p>The size of the area used to calculate the density. The neighborhood size must be larger than the bin size.
+            </p>
+        </div>
+    </div>
+    <div id="areaUnits">
+        <div><h2>밀도의 출력 단위 선택</h2></div>
+        <hr/>
+        <div>
+            <p>The desired output units of the density values. By default, this is set to the units in your map (for example, square meters). If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>시간 슬라이스를 사용하여 밀도 계산(선택)</h2></div>
+        <hr/>
+        <div>
+            <p>입력 포인트 레이어에 시간이 활성화되었으며 시간 유형이 인스턴트인 경우 시간 슬라이싱을 사용하여 분석할 수 있습니다.  시간을 설정할 때 다음과 같은 세 가지 매개변수를 사용할 수 있습니다.
+                <ul>
+                    <li>  <b>시간 간격</b>
+                    </li>
+                    <li> <b>시간 단계</b>
+                    </li>
+                    <li> <b>참조 시간</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>시간에서 1년을 나타내는 데이터가 있는데 주 단위 슬라이스를 사용하여 분석한다고 가정해 보겠습니다. 이를 위해  <b>시간 간격</b>을 <code>1주</code>로 설정합니다.
+            </p>
+            <p> 시간에서 1년을 나타내는 데이터가 있는데 그 달의 첫 주를 사용하여 분석하고자 한다고 가정해 보겠습니다. 이를 위해서는 <b>시간 간격</b>을 <code>1주</code>로, <b>시간 단계</b>를 <code>1개월</code>로, <b>참조 시간</b>을 <code>1월 1일 오전 12시</code>로 설정합니다.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>밀도를 계산할 시간 간격</h2></div>
+        <hr/>
+        <div>
+            <p>데이터 슬라이싱에 사용되는 시간 간격입니다. 시간 간격은 단독으로 사용하거나  <b>시간 단계</b> 또는 <b>참조 시간</b> 매개변수와 함께 사용할 수 있습니다.
+            </p>
+            <p> 매주 월요일 오전 9시부터 오전 10시까지 발생되는 시간 슬라이스를 생성하려고 했다면 <b>시간 간격</b>은 <code>1시간</code>, <b>시간 단계</b>는 <code>1주</code>, <b>참조 시간</b>은 <code>월요일 오전 9시</code>입니다.
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>밀도를 계산할 시간 단계</h2></div>
+        <hr/>
+        <div>
+            <p> 시간 슬라이스를 계산하는 데 사용되는 단계입니다. <b>시간 단계</b>는 단독으로 사용하거나, <b>시간 간격</b>과 함께 사용하거나, <b>참조 시간</b>과 함께 사용하거나, <b>시간 간격</b>과 <b>참조 시간</b> 둘 다와 함께 사용할 수 있습니다.
+            </p>
+            <p> 매주 월요일 오전 9시부터 오전 10시까지 발생되는 시간 슬라이스를 생성하려고 했다면 <b>시간 간격</b>은 <code>1시간</code>, <b>시간 단계</b>는 <code>1주</code>, <b>참조 시간</b>은 <code>월요일 오전 9시</code>입니다.
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>시간 슬라이싱을 정렬하는 데 사용되는 참조 시간</h2></div>
+        <hr/>
+        <div>
+            <p>시간 슬라이싱을 정렬하는 데 사용되는 날짜와 시간입니다.  <b>시간 단계</b>는 참조 시간을 기준으로 그 이전으로 진행됩니다.
+            </p>
+            <p> 매주 월요일 오전 9시부터 오전 10시까지 발생되는 시간 슬라이스를 생성하려고 했다면 <b>시간 간격</b>은 <code>1시간</code>, <b>시간 단계</b>는 <code>1주</code>, <b>참조 시간</b>은 <code>월요일 오전 9시</code>입니다.
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>SpatialReference(wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>이 매개변수는 프로세싱 공간 참조를 설정하기 위한 시험판용 임시 매개변수입니다. 대부분의 빅 데이터 도구의 경우 투영 좌표체계를 프로세싱 공간 참조로 사용해야 합니다. 기본 설정에 따라 이 도구는 입력 좌표체계를 사용하지만 지리 좌표체계일 경우에는 사용할 수 없습니다. 투영 좌표체계를 설정하려면 WKID를 입력합니다. 예를 들어  <b>Web Mercator</b>를 설정하려면 <code>3857</code>을 입력합니다.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>데이터 저장소 선택</h2></div>
+        <hr/>
+        <div>
+            <p>이 매개변수는 결과가 저장되는 데이터 저장소를 설정하기 위한 시험판용 임시 매개변수입니다. 두 데이터 저장소 모두  ArcGIS Data Store의 일부입니다. 시공간적 데이터 저장소를 선택했지만 설치되어 있지 않은 경우에는 도구를 사용할 수 없습니다. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>결과 레이어 이름</h2></div>
+        <hr/>
+        <div>
+            <p>  <b>내 콘텐츠</b>에서 생성되어 맵에 추가되는 레이어의 이름입니다.  기본 이름은 도구 이름과 입력 레이어 이름을 기반으로 합니다. 레이어가 이미 있으면 도구를 사용할 수 없습니다.
+            </p>
+            <p> <b>결과 저장:</b> 드롭다운 상자를 사용하여 <b>내 콘텐츠</b>에서 결과를 저장할 폴더의 이름을 지정할 수 있습니다.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

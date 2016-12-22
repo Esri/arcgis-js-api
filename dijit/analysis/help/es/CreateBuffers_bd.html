@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Crear zonas de influencia</h2><p/>
+        <h2><img src="../images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" alt="Crear zonas de influencia"></h2>
+        <hr/>
+    <p>Una zona de influencia es un &aacute;rea que cubre una distancia dada desde una entidad de puntos, de l&iacute;nea o de &aacute;rea. 
+    </p>
+    <p>Las zonas de influencia se suelen utilizar para crear &aacute;reas que se pueden analizar m&aacute;s a fondo usando otras herramientas. Por ejemplo, si la pregunta es &iquest;Qu&eacute; edificios est&aacute;n a 1 kil&oacute;metro del colegio?, la respuesta se puede encontrar creando una zona de influencia de 1 kil&oacute;metro en torno al colegio y superponiendo la zona de influencia con la capa que contiene las superficies de los edificios. El resultado final es una capa con los edificios que se encuentran a menos de 1 kil&oacute;metro del colegio.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Elija una capa a la que aplicar la zona de influencia</h2></div>
+        <hr/>
+        <div>
+            <p>Las entidades de puntos, l&iacute;neas o &aacute;reas que se deben incluir en lacon las que crear las zonas de influencia.
+            </p>
+            <p>Adem&aacute;s de elegir una capa en el mapa, puede elegir  <b>Examinar capas</b> en la parte inferior de la lista desplegable para examinar el contenido del dataset o la capa de entidades de un archivo compartido de Big Data.  
+            </p>
+        </div>
+    </div>
+    <div id="bufferType">
+        <div><h2>Seleccione el tipo de zona de influencia para aplicar</h2></div>
+        <hr/>
+        <div>
+            <p>Existen tres formas de especificar el tama&ntilde;o de la zona de influencia para las entidades de entrada: 
+                <ul>
+                    <li>Especificar una distancia aplicable a todas las entidades.
+                    </li>
+                    <li>Especificar un campo de la capa de entrada que contenga el valor de distancia. Puede utilizar un campo de cadena de caracteres o un campo num&eacute;rico. Si no se ha definido una unidad lineal, se utilizar&aacute;n las unidades de la referencia espacial. Si va a utilizar un sistema de coordenadas geogr&aacute;ficas, se asumir&aacute; que el campo sin unidades est&aacute; expresado en metros. 
+                    </li>
+                    <li>Cree una expresi&oacute;n con varios campos y operadores matem&aacute;ticos.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Seleccione el método de zona de influencia</h2></div>
+        <hr/>
+        <div>
+            <p>Puede optar por utilizar un m&eacute;todo  <b>Planar</b> o un m&eacute;todo <b>Geod&eacute;sico</b>. El m&eacute;todo <b>Planar</b> puede ser m&aacute;s r&aacute;pido y es apropiado para an&aacute;lisis locales sobre datos proyectados. El m&eacute;todo <b>Geod&eacute;sico</b> es apropiado para &aacute;reas grandes y para cualquier sistema de coordenadas geogr&aacute;ficas.
+            </p>
+        </div>
+    </div>
+    <div id="dissolveOption">
+        <div><h2>Seleccione el tipo de método de disolución</h2></div>
+        <hr/>
+        <div>
+            <p>Opciones para especificar el m&eacute;todo de disolver.   Si ha elegido un m&eacute;todo de disolver, tendr&aacute; la opci&oacute;n de crear &aacute;reas multiparte o de una sola parte y podr&aacute; calcular estad&iacute;sticas bas&aacute;ndose en los campos proporcionados.
+                <ul>
+                    <li> <b>Todo</b>: se disolver&aacute;n todas las entidades. Si se permiten entidades multiparte, todas las entidades se disolver&aacute;n en una &uacute;nica entidad. Si no se permiten entidades multiparte, se disolver&aacute;n las entidades adyacentes o superpuestas.
+                    </li>
+                    <li> <b>Campos</b>: se disolver&aacute;n las entidades que compartan el mismo campo o combinaci&oacute;n de campos que se haya especificado. Si se permiten entidades multiparte, todas las entidades con el mismo campo se disolver&aacute;n en una &uacute;nica entidad. Si no se permiten entidades multiparte, se disolver&aacute;n las entidades adyacentes o superpuestas con el mismo valor de campo.
+                    </li>
+                    <li> <b>Nada</b>: no se disolver&aacute; ninguna entidad.  Esta es la opci&oacute;n predeterminada.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="multipart">
+        <div><h2>Permitir entidades multiparte</h2></div>
+        <hr/>
+        <div>
+            <p>Opci&oacute;n que permite especificar si el resultado estar&aacute; compuesto por entidades multiparte o de una sola parte. 
+
+            </p>
+            <p>
+                <ul>
+                    <li>Activado: en los resultados del an&aacute;lisis se incluir&aacute;n entidades multiparte.   
+                    </li>
+                    <li>Desactivado: en los resultados del an&aacute;lisis se incluir&aacute;n entidades de una sola parte. Es la opci&oacute;n predeterminada.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Agregue estadísticas (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p> Puede calcular estad&iacute;sticas sobre las entidades resumidas. En los campos num&eacute;ricos puede calcular lo siguiente:
+                <ul>
+                    <li>Calcular
+                    </li>
+                    <li>Media
+                    </li>
+                    <li>M&iacute;n.
+                    </li>
+                    <li>M&aacute;x.
+                    </li>
+                    <li>Rango
+                    </li>
+                    <li>Varianza
+                    </li>
+                    <li>Desviaci&oacute;n est&aacute;ndar
+                    </li>
+                </ul>
+                
+            </p>
+            <p>En los campos de cadenas de caracteres puede calcular lo siguiente:
+                <ul>
+                    <li>Calcular
+                    </li>
+                    <li>Cualquiera: esta estad&iacute;stica es una muestra aleatoria del valor de una cadena de caracteres en el campo especificado.
+                    </li>
+                </ul>
+                Todas las estad&iacute;sticas se calculan sobre valores no nulos. La capa resultante contendr&aacute; un nuevo campo para cada estad&iacute;stica calculada. Se puede agregar cualquier n&uacute;mero de estad&iacute;sticas eligiendo un atributo y una estad&iacute;stica. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Elija el data store</h2></div>
+        <hr/>
+        <div>
+            <p>Se trata de un par&aacute;metro temporal para una versi&oacute;n preliminar que permite definir el data store donde se guardar&aacute;n los resultados. Ambos data stores forman parte de  ArcGIS Data Store. Si selecciona el data store espaciotemporal pero no tiene ninguno instalado, la herramienta fallar&aacute;. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nombre de capa de resultados</h2></div>
+        <hr/>
+        <div>
+            <p> Este es el nombre de la capa que se crear&aacute; en <b>Mi contenido</b> y se agregar&aacute; al mapa.  El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, la herramienta fallar&aacute;.
+            </p>
+            <p>En el cuadro desplegable  <b>Guardar el resultado en</b>, puedes especificar el nombre de una carpeta de <b>Mi contenido</b> en la que se guardar&aacute; el resultado.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

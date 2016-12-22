@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Laadi yhteenveto ominaisuustiedoista</h2><p/>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Laadi yhteenveto ominaisuustiedoista"></h2>
+        <hr/>
+    <p>T&auml;m&auml; ty&ouml;kalu laatii yhteenvedon kaikista vastaavista arvoista v&auml;hint&auml;&auml;n yhdess&auml; kent&auml;ss&auml; ja laskee niille tilastotiedot. Perustilastotietoja ovat niiden kohteiden m&auml;&auml;r&auml;, joista yhteenveto on laadittu. Voit my&ouml;s laskea lis&auml;tilastotietoja. 
+
+    </p>
+    <p>Oletetaan esimerkiksi, ett&auml; sinulla pistekohteita myym&auml;l&auml;sijainneista ja kentt&auml;  <i>DISTRICT_MANAGER_NAME</i> ja ett&auml; haluat laatia yhteenvedon kahvinmyynnist&auml; esimiehen mukaan. Voit m&auml;&auml;ritt&auml;&auml; kent&auml;n <i>DISTRICT_MANAGER_NAME</i> kentt&auml;n&auml;, johon sulautetaan, ja yhteenveto laaditaan kaikista yksitt&auml;isi&auml; esimiehi&auml; edustavista aineistoriveist&auml;. T&auml;m&auml; tarkoittaa, ett&auml; kaikista myym&auml;l&auml;sijainneista, joita johtaa Esimies1, laaditaan yhteenveto yhdelle riville. Lis&auml;ksi lasketaan yhteenvetotilastotiedot. T&auml;ss&auml; tapauksessa lasketaan tilastotiedot, kuten myym&auml;l&ouml;iden m&auml;&auml;r&auml; ja kaikkien niiden myym&auml;l&ouml;iden ominaisuustiedon <i>TOTAL_SALES</i> summa, joita johtaa Esimies1 sek&auml; kuka tahansa kent&auml;ss&auml; <i>DISTRICT_MANAGER_NAME</i> lueteltu esimies.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Valitse lähtöaineisto, josta yhteenveto laaditaan</h2></div>
+        <hr/>
+        <div>
+            <p>Karttataso, joka sis&auml;lt&auml;&auml; kent&auml;t, joista yhteenveto laaditaan.  
+            </p>
+            <p>Sen lis&auml;ksi, ett&auml; voit valita karttatason kartasta, voit valita  <b>Selaa karttatasoja</b> -vaihtoehdon avattavan luettelon alareunasta ja selata Big Data -tiedostoresurssin aineistoryhm&auml;n tai karttatason sis&auml;lt&ouml;&ouml;n.  
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>Valitse sulautettavat kentät</h2></div>
+        <hr/>
+        <div>
+            <p>  L&auml;ht&ouml;aineiston karttatason kenttien luettelo. Valituista kentist&auml; laaditaan yhteenveto ja lasketaan tilastotiedot. Jos esimerkiksi valitset kent&auml;n <i>PropertyType</i> arvoilla liike- ja asuinkiinteist&ouml;, kaikista asuinkiinteist&ouml;kentist&auml; laaditaan yhteenveto ja lasketaan tilastotiedot. Kaikista liikekiinteist&ouml;kentist&auml; laaditaan yhteenveto.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Valitse laskettavat kentät ja tilastot (valinnainen)</h2></div>
+        <hr/>
+        <div>
+            <p> Voit laskea tilastotiedot kohteista, joista on laadittu yhteenveto. Numerokentist&auml; voit laskea seuraavat tilastotiedot:
+                <ul>
+                    <li>Lukum&auml;&auml;r&auml;
+                    </li>
+                    <li>Keskiarvo
+                    </li>
+                    <li>V&auml;himm&auml;isarvo
+                    </li>
+                    <li>Enimm&auml;isarvo
+                    </li>
+                    <li>Vaihteluv&auml;li
+                    </li>
+                    <li>Varianssi
+                    </li>
+                    <li>Keskihajonta
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Merkkijonokentist&auml; voit laskea seuraavat tilastotiedot:
+                <ul>
+                    <li>Lukum&auml;&auml;r&auml;
+                    </li>
+                    <li>Mik&auml; tahansa: T&auml;m&auml; tilastotieto on satunnainen otos m&auml;&auml;ritetyn kent&auml;n merkkijonoarvosta.
+                    </li>
+                </ul>
+                Kaikki tilastotiedot lasketaan muina kuin nolla-arvoina. Tuloskarttataso sis&auml;lt&auml;&auml; uuden kent&auml;n jokaiselle lasketulle tilastotiedolle. Voit lis&auml;t&auml; niin paljon tilastotietoja kuin haluat valitsemalla ominaisuustiedon ja tilastotiedon. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Valitse aineistosäilö</h2></div>
+        <hr/>
+        <div>
+            <p>T&auml;m&auml; on esijulkaisun tilap&auml;inen parametri sen aineistos&auml;il&ouml;n m&auml;&auml;ritt&auml;miseen, johon tulokset tallennetaan. Molemmat aineistos&auml;il&ouml;t ovat osa  ArcGIS Data Storea. Jos valitset tila-aika-aineistos&auml;il&ouml;n, mutta sellaista ei ole asennettuna, ty&ouml;kalua ei voi suorittaa. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tulostason nimi</h2></div>
+        <hr/>
+        <div>
+            <p> Sen tason nimi, joka luodaan kohtaan <b>Oma sis&auml;lt&ouml;</b> ja joka lis&auml;t&auml;&auml;n karttaan. Oletusnimi perustuu ty&ouml;kalun nimeen ja l&auml;ht&ouml;karttatason nimeen. Jos karttataso on jo olemassa, ty&ouml;kalua ei voi suorittaa.
+            </p>
+            <p>Avattavan  <b>Tallenna tulos kohteeseen</b> -valikon avulla voit m&auml;&auml;ritt&auml;&auml; sen <b>Oma sis&auml;lt&ouml;</b> -kansion nimen, johon tulos tallennetaan.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

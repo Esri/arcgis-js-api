@@ -40,16 +40,22 @@
 </head>
 <body onload="init()">
 <div id="topics">
+    <div id="aoToolbox">
+        <p>Okvir sa alatkama za analizu geoobjekata sadrži brojne alatke kojima možete da pristupite i da ih koristite.  Ovi zadaci su ispod uređeni u kategorije; kategorije su jednostavno logička grupisanja i nikako ne utiču na način na koji pristupate ili koristite ove zadatke.
+        </p>
+    </div>
     <div id="SummarizeDataCategory" class="regularsize">
         <h2>Sumiraj podatke</h2>
         <hr/>
         <p>Ove alatke izračunavaju ukupan broj, dužinu, oblasti i osnovnu opisnu statistiku za geoobjekte i njihove atribute unutar oblasti ili blizu drugih geoobjekata.
             <ul>
-                <li> <b>Grupisanje tačaka</b> izračunava statistiku o tačkama koje padaju unutar navedenih oblasti.
+                <li> <b>Grupisanje tačaka</b> izračunava statistiku za tačke koje spadaju u navedene oblasti.
                 </li>
-                <li> <b>Sumiranje vrednosti za objekte koji se nalaze na definisanoj udaljenosti od ulaznih objekata</b> izračunava statistiku za geoobjekte i njihove atribute koji su unutar navedene razdaljine.
+                <li> <b>Pridruživanje geoobjekata</b> prebacuje atribute iz jednog sloja ili tabele u drugu na osnovu prostornih veza i veza među atributima.
                 </li>
-                <li> <b>Sumiraj vrednosti za objekte unutar definisanog opsega</b> izračunava statistiku za geoobjekte i atribute oblasti koji se međusobno preklapaju.
+                <li> <b>Sumiranje za objekte u blizini</b> izračunava statistiku za geoobjekte i njihove atribute koji su unutar navedene razdaljine.
+                </li>
+                <li> <b>Sumiraj u okviru opsega</b> izračunava statistiku za geoobjekte i atribute oblasti koji se međusobno preklapaju.
                 </li>
             </ul>
             
@@ -61,18 +67,44 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Grupisanje tačaka</h2></td>
+                    <td><h2>Grupiši tačke</h2></td>
                     <td>
-                    <img src="../images/GUID-60C59C66-3038-4D0E-8F6A-EC6C53FEAA02-web.png" class="titleImage" alt="Grupisanje tačaka">
+                    <img src="../images/GUID-60C59C66-3038-4D0E-8F6A-EC6C53FEAA02-web.png" class="titleImage" alt="Aggregate Points">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Koristeći sloj tačkastih geoobjekata i sloj geoobjekata oblasti, ova alatka određuje koje tačke padaju unutar svake oblasti i izračunava statistiku o svim tačkama unutar svake oblasti. Na primer:
+            <p>Koristeći sloj tačkastih geoobjekata i sloj geoobjekata oblasti, ovaj alat određuje koje tačke spadaju u okviru svake oblasti i izračunava statistiku za sve tačke u okviru svake oblasti. Na primer:
                 <ul>
                     <li>S obzirom na lokacije tačaka i kriminalne incidente, izbrojite kriminalna dela po okrugu ili drugoj administrativnoj oblasti.
                     </li>
-                    <li>Pronađite najvi&scaron;e i najniže prihode za lokacije fran&scaron;ize po državi.
+                    <li>Nađite najvi&scaron;e i najniže prihode za lokacije fran&scaron;ize po državi.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="JoinFeaturesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Pridruži geoobjekte</h2></td>
+                    <td>
+                    <img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" class="titleImage" alt="Pridruži geoobjekte">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Pridruživanje geoobjekata prebacuje atribute iz jednog sloja ili tabele u drugu na osnovu prostornih veza i veza među atributima. Na primer:
+                <ul>
+                    <li>Primena informacija o zajedničkim granicama ili demografskih informacija na podatke događaja.
+                    </li>
+                    <li>Identifikovanje najbližih objekata u odnosu na poznatu lokaciju.
+                    </li>
+                    <li>Određivanje broja stambenih objekata koji se nalaze u zonama plavljenja.
+                    </li>
+                    <li>Identifikovanje zajedničkih stani&scaron;ta za različite vrste divljih životinja.
                     </li>
                 </ul>
                 
@@ -92,7 +124,7 @@
 <hr/>
             <p>Pronalazi geoobjekte koji su unutar navedene razdaljine od geoobjekata u prvom ulaznom sloju. Razdaljina može da se meri duž pravih linija ili održivih putanja režima putovanja. Statistika se zatim izračunava za obližnje geoobjekte. Na primer:
                 <ul>
-                    <li>Izračunajte ukupnu populaciju koja je najvi&scaron;e na pet minuta od predložene lokacije nove prodavnice.
+                    <li>Izračunajte ukupnu populaciju koja je obuhvaćena obla&scaron;ću od najvi&scaron;e pet minuta od predložene lokacije nove prodavnice.
                     </li>
                     <li>Izračunajte broj izlaza na autoput unutar petominutne vožnje od predložene lokacije nove prodavnice, &scaron;to će se koristiti kao mera pristupačnosti prodavnice.
                     </li>
@@ -105,7 +137,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Sabiranje u okviru opsega</h2></td>
+                    <td><h2>Sumiraj u okviru</h2></td>
                     <td>
                     <img src="../images/GUID-9B12DB3F-AA7B-41EB-87C6-D2DEC3D52DA9-web.png" class="titleImage" alt="Sumiraj vrednosti za objekte unutar definisanog opsega">
                     </td>
@@ -288,6 +320,8 @@
                 </li>
                 <li> <b>Pronađite vruće tačke</b> određuje statistički značajne klastere u prostornom obrascu va&scaron;ih podataka.
                 </li>
+                <li>Alatka  <b>Pronađi odstupanja</b> će odrediti da li postoje statistički značajna odstupanja u prostornom obrascu va&scaron;ih podataka.
+                </li>
                 <li> <b>Interpolacija tačaka</b> predviđa vrednosti na novim lokacijama na osnovu merenja pronađenih u kolekciji tačaka.
                 </li>
             </ul>
@@ -313,7 +347,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Pronađite vruće tačke</h2></td>
+                    <td><h2>Pronađi vruće tačke</h2></td>
                     <td>
                     <img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" class="titleImage" alt="Pronađite vruće tačke">
                     </td>
@@ -321,6 +355,21 @@
             </table>
 <hr/>
             <p>Ova alatka kreira mapu prikazujući sve statističke značajne prostorne klastere predstavljene u va&scaron;im podacima. Koristite ovu alatku da biste otkrili neočekivane vruće tačke (crvena) i hladne tačke (plava) visokih i niskih vrednosti kuća, gustine kriminala, smrtnih ishoda saobraćajnih nesreća, nezaposlenosti ili biodiverziteta, na primer.
+            </p>
+            <br/>
+        </div>
+        <div id="FindOutliersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Pronađi odstupanja</h2></td>
+                    <td>
+                    <img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" class="titleImage" alt="Pronađi odstupanja">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ova alatka kreira mapu prikazujući sve statističke značajne klastere i prostorna odstupanja predstavljene u va&scaron;im podacima. Ovu alatku koristite za identifikovanje geoobjekata čije se vrednosti značajno razlikuju od suseda.  Na primer, ovu alatku možete da koristite za pronalaženje neuobičajenih obrazaca tro&scaron;enja, određivanje gde su najo&scaron;trije granice između bogatstva i siroma&scaron;tva u okviru proučavane oblasti ili za određivanje da li u Sjedinjenim Američkim Država postoje okruzi sa neuobičajeno kratkim prosečnim životnim vekom u odnosu na susede.
             </p>
             <br/>
         </div>
@@ -433,7 +482,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Pronađite najbliže</h2></td>
+                    <td><h2>Pronađi najbliži geoobjekat</h2></td>
                     <td>
                     <img src="../images/GUID-150C2484-7459-405A-8835-B4E72CD49738-web.png" class="titleImage" alt="Pronađi najbliže">
                     </td>
@@ -499,7 +548,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Ekstrakcija podataka</h2></td>
+                    <td><h2>Ekstrahuj podatke</h2></td>
                     <td>
                     <img src="../images/GUID-CE24332B-74C0-412F-BB94-31415A02195A-web.png" class="titleImage" alt="Ekstrakcija podataka">
                     </td>

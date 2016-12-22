@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Leia tulipunktid</h2><p/>
+        <h2><img src="../images/GUID-6D600155-AA9B-4F02-AD8B-2E84150AB743-web.png" alt="Leia tulipunktid"></h2>
+        <hr/>
+    <p>Tulipunktide leidmise t&ouml;&ouml;riistaga saab m&auml;&auml;rata, kas andmete ruumimustris on statistiliselt olulisi klastreid. 
+        <ul>
+            <li>Kas teie punktilised n&auml;htused (nt kuritegevuse s&uuml;ndmused, puud v&otilde;i liiklus&otilde;nnetused jms) on t&otilde;esti klasterdatud? Kuidas saate selles kindel olla?
+            </li>
+            <li>Kas olete leidnud statistiliselt olulise tulipunkti? V&otilde;i kas kaardi sisu muutuks, kui muudaksite s&uuml;mboloogiat?
+            </li>
+        </ul>
+        Neile k&uuml;simustele vastuse saamisel h&otilde;lbustab tulipunktide kasutus teid igati.
+    </p>
+    <p>Isegi korrap&auml;ratul ruumimustril esineb teatud laadi klasterdumine.  Lisaks p&uuml;&uuml;avad meie silmad ja meeled intuitiivselt leida mustreid ka seal, kus neid ei eksisteeri. Seega v&otilde;ib olla raske teada, kas mustrid teie andmetes on tingitud reaalsete ruumilise protsesside tulemusena v&otilde;i on need lihtsalt juhusliku kokkusattumuse tulemus. Seet&otilde;ttu kasutavad uurijad ja anal&uuml;&uuml;tikud spetsiaalselt numbriliste v&auml;&auml;rtuste lokaalse koondumise n&auml;itajaid nagu n&auml;iteks Getis-Ord Gi. Kui olete andmetes leidnud statistiliselt olulised klastrid, on see v&auml;&auml;rtuslik info. Teadmus, kus ja millal klasterdumine esineb, v&otilde;imaldab pakkuda olulisi vihjeid protsesside kohta. Teades, et n&auml;iteks eluhoonetesse murdvarguste arv on p&uuml;sivalt suurem eriti eeslinnades, on see oluliseks infoks, kui teil on vaja kaaluda t&otilde;husamaid ennetuse strateegiaid, jaotada piiratud kaitseressursse, algatada naabrivalve programme, lubada p&otilde;hjalikumat eeluurimist v&otilde;i tuvastada v&otilde;imalikke kahtlusaluseid.   
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="analysisLayer">
+        <div><h2>Vali kiht, mille jaoks arvutatakse tulipunktid</h2></div>
+        <hr/>
+        <div>
+            <p>Punktikiht, millest tuli- ja k&uuml;lmpunkte otsitakse. 
+            </p>
+            <p>Lisaks kihi valimisele kaardil saate valida ripploendi alumises servas  <b>Sirvi kihte</b>, et otsida oma sisust suurandmete failiketta andmestikku v&otilde;i objektikihti.  
+            </p>
+        </div>
+    </div>
+    <div id="analysisField">
+        <div><h2>Leia kõrge ja madala väärtusega klastrid</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Antud anal&uuml;&uuml;s vastab k&uuml;simusele: kus paiknevad k&otilde;rge ja madala v&auml;&auml;rtusega klastrid ruumiliselt?
+            </p>
+            <p>Kui teie andmeteks on punktid ja tegite valiku  <b>Punktide arv</b>, hindab t&ouml;&ouml;riist punktobjektide paiknemise ruumilist korrap&auml;ra, saamaks vastust k&uuml;simusele: Kus on punktid oodatust teisiti klasterdatud v&otilde;i hajutatud?
+            </p>
+            <p>Kui valisite v&auml;lja, hindab t&ouml;&ouml;riist iga objektiga seotud v&auml;&auml;rtuste paiknemise ruumilist korrap&auml;ra, saamaks vastust k&uuml;simusele: kus paiknevad k&otilde;rge ja madala v&auml;&auml;rtusega klastrid?
+            </p>
+        </div>
+    </div>
+    <div id="inputBins">
+        <div><h2>Valige salve suurus tulipunktide arvutuste jaoks</h2></div>
+        <hr/>
+        <div>
+            <p>Vahemaa, mida kasutatakse teie sisendpunktide anal&uuml;&uuml;simiseks kandiliste salvede loomiseks.
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Agregeeri ajalõikude abil (valikuline)</h2></div>
+        <hr/>
+        <div>
+            <p>Kui punktikihi jaoks on aeg lubatud ja selle t&uuml;&uuml;p on ajahetk, saate kasutada anal&uuml;&uuml;simiseks ajavahemikke.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>Ajavahemik, millega agregeerida</h2></div>
+        <hr/>
+        <div>
+            <p>Ajavahemik anal&uuml;&uuml;simiseks. Kui tahate luua ajal&otilde;igud, mis leidsid aset igal n&auml;dalal, tuleb m&auml;&auml;rata ajavahemikuks &uuml;ks n&auml;dal. 
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>Ajasamm, millega agregeerida</h2></div>
+        <hr/>
+        <div>
+            <p>Aja &uuml;hildamisviis. Aja saab &uuml;hildada sisendandmete algus- v&otilde;i l&otilde;ppajaga v&otilde;i m&auml;&auml;ratletud viiteajaga.  
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Viiteaeg, mida kasutatakse ajalõigu ühitamiseks</h2></div>
+        <hr/>
+        <div>
+            <p>Kuup&auml;ev ja kellaaeg, mida kasutatakse ajavahemike &uuml;hildamiseks.
+            </p>
+        </div>
+    </div>
+    <div id="neighborhood">
+        <div><h2>Valige naabruse suurus</h2></div>
+        <hr/>
+        <div>
+            <p>Kaugus, mis m&auml;&auml;rab piirkonna suuruse tulipunktide arvutamiseks. Piirkond peaks olema salvest suurem, et igal salvel oleks v&auml;hemalt &uuml;ks naaber. Igat salve anal&uuml;&uuml;sitakse ja v&otilde;rreldakse naabersalvedega.
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>Koordinaatsüsteem (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>See on ajutine parameeter eelversioonile, et m&auml;&auml;rata t&ouml;&ouml;tlemiseks koordinaats&uuml;steem. Paljud suurandmete&nbsp;t&ouml;&ouml;riistad n&otilde;uavad t&ouml;&ouml;tlemiseks tasapinnalise ristkoordinaatide s&uuml;steemi kasutamist. Vaikimisi kasutab t&ouml;&ouml;riist sisestatud koordinaats&uuml;steemi, aga t&ouml;&ouml;tlemine nurjub, kui kasutatakse geograafilist koordinaats&uuml;steemi. Tasapinnalise ristkoordinaatide s&uuml;steemi m&auml;&auml;ramiseks sisestage WKID. N&auml;iteks  <b>Web Mercator</b> tuleb sisestada v&auml;&auml;rtusena <code>3857</code>.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Vali andmeladu</h2></div>
+        <hr/>
+        <div>
+            <p>See on ajutine parameeter eelversioonile, et m&auml;&auml;rata tulemuste salvestamiseks andmeladu. M&otilde;lemad andmelaod kuuluvad  ArcGIS-i andmeladu&rsquo;i juurde. Kui valite ajalisruumilise andmelao, kuid seda pole installitud, siis t&ouml;&ouml;tlemine nurjub. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tulemkihi nimi</h2></div>
+        <hr/>
+        <div>
+            <p> See on selle kihi nimi, mis luuakse jaotises <b>Minu sisu</b> ja lisatakse kaardile.  Vaikenimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui see kiht on juba olemas, siis t&ouml;&ouml;tlemine nurjub.
+            </p>
+            <p>See kiht n&auml;itab statistiliselt olulisi k&otilde;rgete ja madalate v&auml;&auml;rtustega punktihulkade klastreid. Kui see kiht on juba olemas, saate selle soovi korral &uuml;mber nimetada.
+            </p>
+            <p>Kasutades rippmen&uuml;&uuml;d  <b>Salvesta tulemused</b>, saate jaotises <b>Minu sisu</b> m&auml;&auml;rata kausta nime, kuhu tulemused salvestatakse.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

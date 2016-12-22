@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Sumuj w obrębie</h2><p/>
+        <h2><img src="../images/GUID-90E0CB1F-EB97-4752-B2EE-452B7B45475E-web.png" alt="Sumuj w obrębie"></h2>
+        <hr/>
+    <p>Narzędzie wyszukuje obiekty (i&nbsp;części obiekt&oacute;w), kt&oacute;re znajdują się w&nbsp;granicach obszar&oacute;w w&nbsp;pierwszej warstwie wejściowej.   
+        <ul>
+            <li>Dysponując warstwą granic zlewni i warstwą granic użytkowania terenu, oblicz całkowity areał typ&oacute;w użytkowania terenu dla każdej zlewni. 
+            </li>
+            <li>Uwzględniając warstwę działek w powiecie i warstwę granic miast, podsumuj średnią wartość działek wystawionych na sprzedaż w granicach każdego miasta.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Jeśli jest zaznaczona opcja  <b>Użyj bieżącego zasięgu mapy</b>, przeanalizowane zostaną tylko obiekty w&nbsp;warstwie wejściowej i&nbsp;warstwie sumowania widoczne w&nbsp;bieżącym zasięgu mapy. Jeśli powyższa opcja nie jest zaznaczona, analizowane będą wszystkie obiekty w&nbsp;warstwie wejściowej i&nbsp;warstwie sumowania, nawet jeśli znajdują się poza bieżącym zasięgiem mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="sumWithinLayer">
+        <div><h2>Wybierz warstwę powierzchniową do zsumowania innych obiektów w ramach jej granic</h2></div>
+        <hr/>
+        <div>
+            <p>Warstwa obszaru, kt&oacute;ra zostanie użyta do zsumowania obiekt&oacute;w znajdujących się w jej granicach. Można wybrać sumowanie w obrębie podanej warstwy poligonowej lub koszy kwadratowych albo sześciokątnych wygenerowanych podczas działania narzędzia. Podczas generowania koszy  <b>kwadratowych</b> podana liczba i jednostki decydują o wysokości i długości kwadratu. W przypadku koszy <b>sześciokątnych</b> podana liczba i jednostki decydują o odległości między r&oacute;wnoległymi bokami sześciokąta.
+            </p>
+            <p>Opr&oacute;cz wybrania warstwy z mapy, można wybrać opcję  <b>Przeglądaj warstwy</b> znajdującą się w dolnej części listy rozwijanej, aby przejść do zasob&oacute;w zestawu danych udostępnionych plik&oacute;w dużych zbior&oacute;w danych lub warstwy obiektowej.  
+            </p>
+        </div>
+    </div>
+    <div id="summaryLayer">
+        <div><h2>Wybierz warstwę do sumowania</h2></div>
+        <hr/>
+        <div>
+            <p>Zsumowane zostaną obiekty w tej warstwie, kt&oacute;re mieszczą się w granicach obiekt&oacute;w powyższej warstwy wejściowej lub podanych powyżej koszy. 
+            </p>
+            <p>Opr&oacute;cz wybrania warstwy z mapy, można wybrać opcję  <b>Przeglądaj warstwy</b> znajdującą się w dolnej części listy rozwijanej, aby przejść do zasob&oacute;w zestawu danych udostępnionych plik&oacute;w dużych zbior&oacute;w danych lub warstwy obiektowej.  
+            </p>
+        </div>
+    </div>
+    <div id="inputBins">
+        <div><h2>Wybierz odległość, aby wygenerować kosze i agregować w</h2></div>
+        <hr/>
+        <div>
+            <p>Odległość służąca do generowania koszy.  
+            </p>
+            <p>Należy ustawić  <b>wielkość kosza</b> dla koszy lub <b>warstwę powierzchniową</b>.
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Agreguj za pomocą okien czasowych (opcjonalnie)</h2></div>
+        <hr/>
+        <div>
+            <p>Jeśli dla wejściowej warstwy punktowej włączono czas (typu Moment), można przeprowadzić analizę przy użyciu okien czasowych.  Jeśli używany jest czas, można ustawić trzy parametry:
+                <ul>
+                    <li>  <b>Interwał czasu</b>
+                    </li>
+                    <li> <b>Etap czasowy</b>
+                    </li>
+                    <li> <b>Czas referencyjny</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Wyobraź sobie, że masz dane reprezentujące rok, kt&oacute;re chcesz przeanalizować przy użyciu tygodniowych okien czasowych. W tym celu należy ustawić w polu  <b>Interwał czasu</b> wartość <code>1 tydzień</code>.
+            </p>
+            <p> Wyobraź sobie, że masz dane reprezentujące rok, kt&oacute;re chcesz przeanalizować przy użyciu pierwszego tygodnia miesiąca. W tym celu należy ustawić w polu <b>Interwał czasu</b> wartość <code>1 tydzień</code>, w polu <b>Etap czasowy</b> wartość <code>1 miesiąc</code>, a w polu <b>Czas referencyjny</b> wartość <code>1 stycznia, 24:00</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>Interwał czasu do agregowania w</h2></div>
+        <hr/>
+        <div>
+            <p>Interwał czasu używany do tworzenia okien czasowych danych. Można używać samego interwału czasu lub interwału czasu z parametrem  <b>Etap czasowy</b> lub parametrem <b>Czas referencyjny</b>.
+            </p>
+            <p> Jeśli chcesz utworzyć okna czasowe występujące w każdy poniedziałek między 9:00 a 10:00, w polu <b>Interwał czasu</b> ustaw wartość <code>1 godzina</code>, w polu <b>Etap czasowy</b> wartość <code>1 tydzień</code>, a w polu <b>Czas referencyjny</b> wartość <code>9:00:00 w poniedziałek</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>Etap czasowy do agregowania w</h2></div>
+        <hr/>
+        <div>
+            <p> Etap używany do obliczania okna czasowego. Opcja <b>Etap czasowy</b> może być używana sama lub z parametrem <b>Interwał czasu</b>, z parametrem <b>Czas referencyjny</b> lub z oboma parametrami <b>Interwał czasu</b> i <b>Czas referencyjny</b>.
+            </p>
+            <p> Jeśli chcesz utworzyć okna czasowe występujące w każdy poniedziałek między 9:00 a 10:00, w polu <b>Interwał czasu</b> ustaw wartość <code>1 godzina</code>, w polu <b>Etap czasowy</b> wartość <code>1 tydzień</code>, a w polu <b>Czas referencyjny</b> wartość <code>9:00:00 w poniedziałek</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Czas referencyjny użyty do wyrównania okien czasowych</h2></div>
+        <hr/>
+        <div>
+            <p>Data i czas używane do wyr&oacute;wnywania okien czasowych.  <b>Etap czasowy</b> rozpocznie się od czasu referencyjnego i trwa przez określony czas.
+            </p>
+            <p> Jeśli chcesz utworzyć okna czasowe występujące w każdy poniedziałek między 9:00 a 10:00, w polu <b>Interwał czasu</b> ustaw wartość <code>1 godzina</code>, w polu <b>Etap czasowy</b> wartość <code>1 tydzień</code>, a w polu <b>Czas referencyjny</b> wartość <code>9:00:00 w poniedziałek</code>.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Dodaj statystyki z warstwy do podsumowania (opcjonalnie)</h2></div>
+        <hr/>
+        <div>
+            <p> Można obliczyć statystyki dla zsumowanych obiekt&oacute;w. W polach liczbowych można obliczyć następujące wartości:
+                <ul>
+                    <li>Liczba
+                    </li>
+                    <li>Średnia
+                    </li>
+                    <li>Min
+                    </li>
+                    <li>Maks
+                    </li>
+                    <li>Zakres
+                    </li>
+                    <li>Odchylenie
+                    </li>
+                    <li>Odchylenie standardowe
+                    </li>
+                </ul>
+                
+            </p>
+            <p>W polach ciąg&oacute;w znakowych można obliczyć następujące wartości:
+                <ul>
+                    <li>Liczba
+                    </li>
+                    <li>Dowolne &mdash; ta statystyka to losowy przykład wartości znakowej w podanym polu.
+                    </li>
+                </ul>
+                Wszystkie statystyki są obliczane na podstawie wartości niepustych. Warstwa wynikowa zawiera nowe pole dla każdego wykonanego obliczenia statystycznego. Dodać można dowolną liczbę statystyk poprzez wybranie atrybutu oraz&nbsp;właściwej operacji statystycznej. 
+            </p>
+            <p>Opr&oacute;cz tych statystyk zostaną obliczone statystyki proporcjonalne przy użyciu wszystkich p&oacute;l liczbowych:
+                <ul>
+                    <li>Liczba &mdash; liczba poszczeg&oacute;lnych p&oacute;l pomnożona przez proporcję warstwy podsumowania w obrębie poligon&oacute;w. 
+                    </li>
+                    <li>Suma &mdash; suma wartości ważonych ze wszystkich p&oacute;l. Gdzie zastosowana waga jest proporcją warstwy podsumowania w poligonach.
+                    </li>
+                    <li>Średnia &mdash; średnia ważona wartości ze wszystkich p&oacute;l. Gdzie zastosowana waga jest proporcją warstwy podsumowania w poligonach.
+                    </li>
+                    <li>Min &mdash; wartość minimalna wartości ważonych ze wszystkich p&oacute;l. Gdzie zastosowana waga jest proporcją warstwy podsumowania w poligonach.
+                    </li>
+                    <li>Maks &mdash; wartość maksymalna wartości ważonych ze wszystkich p&oacute;l. Gdzie zastosowana waga jest proporcją warstwy podsumowania w poligonach.
+                    </li>
+                    <li>Zakres &mdash; r&oacute;żnica między maksymalnymi a minimalnymi wartościami ważonymi.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>W zależności od rodzaju sumowanych obiekt&oacute;w zostaną obliczone całkowita liczba pobliskich punkt&oacute;w, całkowita długość linii lub całkowita powierzchnia obszaru.
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>Odniesienie przestrzenne (wkid)</h2></div>
+        <hr/>
+        <div>
+            <p>Jest to parametr tymczasowy używany w wersji wstępnej do ustawiania odniesienia przestrzennego przetwarzania. Wiele narzędzi do obsługi dużych zbior&oacute;w danych wymaga użycia układu wsp&oacute;łrzędnych odwzorowanych jako odniesienia przestrzennego przetwarzania. Domyślnie narzędzie użyje wejściowego układu wsp&oacute;łrzędnych, ale operacja nie powiedzie się, jeśli będzie to układ wsp&oacute;łrzędnych geograficznych. Aby  ustawić układ wsp&oacute;łrzędnych odwzorowanych, wprowadź wartość WKID. Na przykład  <b>Web Mercator</b> zostanie wprowadzony jako <code>3857</code>.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Wybierz magazyn danych</h2></div>
+        <hr/>
+        <div>
+            <p>Jest to parametr tymczasowy używany w wersji wstępnej do ustawiania magazynu danych, w kt&oacute;rym zapisywane są wyniki. Oba magazyny danych są częścią aplikacji  ArcGIS Data Store. Jeśli zostanie wybrany magazyn danych czasowo-przestrzennych, ale żaden magazyn tego typu nie został zainstalowany, działanie narzędzia nie powiedzie się. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nazwa warstwy wynikowej</h2></div>
+        <hr/>
+        <div>
+            <p> Jest to nazwa warstwy, kt&oacute;ra zostanie utworzona w&nbsp;zakładce <b>Moje zasoby</b> i&nbsp;zostanie dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, działanie narzędzia nie powiedzie się.
+            </p>
+            <p>Używając listy rozwijanej  <b>Zapisz wynik w</b>, można określić nazwę folderu w zakładce <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

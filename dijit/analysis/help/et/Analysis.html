@@ -40,12 +40,18 @@
 </head>
 <body onload="init()">
 <div id="topics">
+    <div id="aoToolbox">
+        <p>Objektide anal&uuml;&uuml;s t&ouml;&ouml;riistakast sisaldab mitmesuguseid t&ouml;&ouml;riistu, mida saab valida ja kasutada. Toimingud on jaotatud j&auml;rgmistesse kategooriatesse; need on ainult loogilised grupid, mis ei m&otilde;juta seda, kuidas te t&ouml;&ouml;riistu valite v&otilde;i kasutate.
+        </p>
+    </div>
     <div id="SummarizeDataCategory" class="regularsize">
         <h2>Summeeri andmeid</h2>
         <hr/>
         <p>Need t&ouml;&ouml;riistad arvutavad teatud kindlas alas v&otilde;i teiste objektide l&auml;heduses asuvate objektide ja nende atribuutide koguarvud, pikkused, alad ning p&otilde;hilised kirjeldavad statistikud.
             <ul>
                 <li> <b>Agregeeri punktid</b> arvutab m&auml;&auml;ratud alades asuvate punktide statistikud.
+                </li>
+                <li> <b>Liida objektid</b> kannab ruumiliste v&otilde;i atribuutide seoste p&otilde;hjal &uuml;he kihi v&otilde;i tabeli atribuudid &uuml;le teise kihti v&otilde;i tabelisse.
                 </li>
                 <li> <b>Summeeri ligidusest</b> arvutab m&auml;&auml;ratud vahemaa raadiusse j&auml;&auml;vate objektide ja nende atribuutide statistikud.
                 </li>
@@ -79,6 +85,32 @@
             </p>
             <br/>
         </div>
+        <div id="JoinFeaturesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Liida objektid</h2></td>
+                    <td>
+                    <img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" class="titleImage" alt="Liida objektid">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Funktsioon Liida objektid kannab ruumiliste v&otilde;i atribuutide seaste p&otilde;hjal &uuml;he kihi v&otilde;i tabeli atribuudid &uuml;le teise kihti v&otilde;i tabelisse. N&auml;ited:
+                <ul>
+                    <li>Saate lisada &uuml;hise piiri- v&otilde;i demograafilise teabe juhtumite andmetesse.
+                    </li>
+                    <li>Saate m&auml;&auml;rata teadaolevale asukohale l&auml;himad rajatised.
+                    </li>
+                    <li>Saate m&auml;&auml;rata &uuml;leujutuspiirkonda j&auml;&auml;vate elumajade arvu.
+                    </li>
+                    <li>Saate tuvastada erinevate looduslike liikide elupaigad.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
         <div id="SummarizeNearbyTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -90,7 +122,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Leiab objektid, mis j&auml;&auml;vad sisendkihis m&auml;&auml;ratud objektide raadiusesse.   Vahemaad saab m&otilde;&otilde;ta nii lineaarselt kui ka liikumisviiside alusel. Seej&auml;rel arvutatakse l&auml;hedalasuvate objektide statistikud. N&auml;ited:
+            <p>Leiab objektid, mis j&auml;&auml;vad sisendkihis m&auml;&auml;ratud objektide raadiusesse. Vahemaad saab m&otilde;&otilde;ta nii lineaarselt kui ka liikumisviiside alusel. Seej&auml;rel arvutatakse l&auml;hedalasuvate objektide statistika. N&auml;ited:
                 <ul>
                     <li>Saate arvutada uue kaupluse jaoks plaanitud asukohast viie minuti raadiuses asuvate elanike arvu.
                     </li>
@@ -116,7 +148,7 @@
                 <ul>
                     <li>Kui Teil on valgalade kiht ja maakasutuse alade kiht maakasutuse t&uuml;&uuml;bi j&auml;rgi, saate arvutada maakasutust&uuml;&uuml;pide pindala iga valgala kohta. 
                     </li>
-                    <li>Kui Teil on maakonna maa&uuml;ksuste kiht ja linnapiiride kiht, saate arvutada vabade maa&uuml;ksuste keskmise v&auml;&auml;rtuse igas linnas.
+                    <li>Kui teil on maakonna maa&uuml;ksuste kiht ja linnapiiride kiht, saate arvutada vabade maa&uuml;ksuste keskmise v&auml;&auml;rtuse igas linnas.
                     </li>
                 </ul>
                 
@@ -282,11 +314,13 @@
     <div id="AnalyzePatternsCategory" class="regularsize">
         <h2>Analüüsi mustreid</h2>
         <hr/>
-        <p>Need t&ouml;&ouml;riistad aitavad Teil andmetes ruumilisi mustreid tuvastada, m&otilde;&otilde;ta ja visualiseerida.  
+        <p>Need t&ouml;&ouml;riistad aitavad teil andmetes ruumilisi mustreid tuvastada, m&otilde;&otilde;ta ja visualiseerida.  
             <ul>
                 <li>Funktsiooniga  <b>Arvuta tihedus</b> saate v&otilde;tta m&otilde;nede n&auml;htuste teadaolevad kogused ja jaotada need kaardil &uuml;htlaselt.
                 </li>
                 <li> <b>Leia tulipunktid</b> funktsioon m&auml;&auml;rab, kas andmete ruumimustris on statistiliselt olulisi klastreid.
+                </li>
+                <li> <b>Leia v&otilde;&otilde;rv&auml;&auml;rtused</b>  m&auml;&auml;rab, kas andmete ruumimustris on statistiliselt olulisi v&otilde;&otilde;rv&auml;&auml;rtusi.
                 </li>
                 <li> <b>Interpoleeri punktid</b> prognoosib uute asukohtade v&auml;&auml;rtusi olemasolevate punktide m&otilde;&otilde;tmistulemuste p&otilde;hjal.
                 </li>
@@ -321,6 +355,21 @@
             </table>
 <hr/>
             <p>Selle t&ouml;&ouml;riistaga saate luua kaardi, kus on n&auml;ha Teie andmetes leiduvad statistiliselt olulised ruumilised klastrid. Muuhulgas saate selle t&ouml;&ouml;riistaga leida n&auml;iteks kinnisvaraga seotud hindade varieeruvust, kuritegevuse koondumist, liiklus&otilde;nnetustes hukkunute arvu, t&ouml;&ouml;tuse m&auml;&auml;ra, bioloogilist mitmekesisust jne.
+            </p>
+            <br/>
+        </div>
+        <div id="FindOutliersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Otsi võõrväärtusi</h2></td>
+                    <td>
+                    <img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" class="titleImage" alt="Otsi v&otilde;&otilde;rv&auml;&auml;rtusi">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Selle t&ouml;&ouml;riistaga saate luua kaardi, kus on n&auml;ha teie andmetes leiduvad statistiliselt olulised klastrid ja ruumilised v&otilde;&otilde;rv&auml;&auml;rtused. Selle t&ouml;&ouml;riista abil saate tuvastada objektid, mille v&auml;&auml;rtused erinevad m&auml;rkimisv&auml;&auml;rselt naabrite omast. T&ouml;&ouml;riista saate kasutada n&auml;iteks anomaalsete kulutuste mustri leidmiseks, kontrastsemate piiride m&auml;&auml;ratlemiseks uuringuala j&otilde;ukuse ja vaesuse vahel v&otilde;i selleks, et m&auml;&auml;ratleda, kas Ameerika &Uuml;hendriikides on naabritega v&otilde;rreldes maakondi, kus on ebatavaliselt madal keskmine eluiga.
             </p>
             <br/>
         </div>
@@ -362,9 +411,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Ühenda algpunktid sihtpunktidega</h2></td>
+                    <td><h2>Ühenda lähtepunktid sihtpunktidega</h2></td>
                     <td>
-                    <img src="../images/GUID-7266D30B-0250-4132-B1A5-9B59F0212FAD-web.png" class="titleImage" alt="&Uuml;henda algpunktid sihtpunktidega">
+                    <img src="../images/GUID-7266D30B-0250-4132-B1A5-9B59F0212FAD-web.png" class="titleImage" alt="&Uuml;henda l&auml;htepunktid sihtpunktidega">
                     </td>
                 </tr></tbody>
             </table>

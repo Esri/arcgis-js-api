@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Ustawienia środowiskowe dotyczące analiz w portalu</h2><p/>
+        <h2></h2>
+        <hr/>
+    <p> Ustawienia środowiskowe dotyczące analiz w witrynie Portal for ArcGIS i usłudze  ArcGIS Online. 
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="overwriteResult">
+        <div><h2>Zastąp warstwę wyników</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Opcja zastąpienia istniejących warstw.    Jeśli ta opcja zostanie zaznaczona, to istniejąca wśr&oacute;d zasob&oacute;w warstwa o takiej samej nazwie zostanie zastąpiona.
+            </p>
+            <p>
+                <ul>
+                    <li>Zaznaczona &mdash; jeśli warstwa o takiej samej nazwie już istnieje wśr&oacute;d zasob&oacute;w, to zostanie zastąpiona. Dane wynikowe będą miały taki sam układ wsp&oacute;łrzędnych jak dane wejściowe.
+                    </li>
+                    <li>Niezaznaczona &mdash; jeśli warstwa wynikowa o podanej nazwie już istnieje, wystąpi błąd i przed uruchomieniem narzędzia konieczna będzie zmiana nazwy warstwy wynikowej. Jest to opcja domyślna.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="closeAnalysisWidget">
+        <div><h2>Zamknij widżet analizy po przeprowadzeniu analizy</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Opcja umożliwiająca zachowanie otwartego i włączonego okna dialogowego analizy w czasie działania tego narzędzia.     To ustawienie umożliwia łatwe modyfikowanie parametr&oacute;w analizy, gdy wcześniejsze zadanie analizy nadal działa.  Analiza jest procesem iteracyjnym i dzięki utrzymywaniu otwartego okna dialogowego tego narzędzia można łatwo wprowadzać zmiany parametr&oacute;w i ponownie uruchamiać analizę.
+            </p>
+            <p>
+                <ul>
+                    <li>Zaznaczona &mdash; okno narzędzia analizy zostanie zamknięte i aktywowana zostanie tabela zawartości. Jest to opcja domyślna
+                    </li>
+                    <li>Niezaznaczona &mdash; okno narzędzia analizy pozostanie otwarte i włączone.   
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="storeAnalysisResults">
+        <div><h2>Zapisz wyniki analizy jako usługi obiektowe</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Ta opcja pozwala określić, czy wynik analizy zostanie utworzony jako warstwa obiektowa, czy jako zbi&oacute;r obiekt&oacute;w.
+            </p>
+            <p>
+                <ul>
+                    <li>Zaznaczona &mdash; wyniki analizy utworzą warstwę obiektową i w zawartości zostanie utworzony element. Jest to opcja domyślna.
+                    </li>
+                    <li>Niezaznaczona &mdash; wyniki analizy utworzą zbi&oacute;r obiekt&oacute;w.    Zbiory obiekt&oacute;w są przechowywane w ramach mapy internetowej.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputCoordinateSystem">
+        <div><h2>Wynikowy układ współrzędnych</h2></div>
+        <hr/>
+        <div>
+            <p>Ustawienie środowiskowe analizy rastrowej służące do definiowania układu wsp&oacute;łrzędnych warstwy wynikowej.    
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Taki sam jak dane wejściowe</b> &mdash; wynik analizy będzie w takim samym układzie wsp&oacute;łrzędnych jak dane wejściowe. Jest to opcja domyślna.
+                    </li>
+                    <li> <b>Jak podano</b> &mdash; wybierz układ wsp&oacute;łrzędnych dla wynik&oacute;w analizy.   Jeśli ta opcja jest zaznaczona, kliknij ikonę przedstawiającą kulę ziemską, aby wybrać wartość z listy znanych układ&oacute;w wsp&oacute;łrzędnych lub dodać identyfikator WKID odniesienia przestrzennego w udostępnionym polu.
+                    </li>
+                    <li> <b>Warstwa 
+&lt;nazwa&gt;</b> &mdash; wybierz na mapie internetowej istniejącą warstwę, kt&oacute;ra zostanie użyta do określenia układu wsp&oacute;łrzędnych wynik&oacute;w analizy.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingCoordinateSystem">
+        <div><h2>Przetwarzanie układu współrzędnych</h2></div>
+        <hr/>
+        <div>
+            <p>Ustawienie środowiskowe analizy geoprzestrzennej służące do określania układu wsp&oacute;łrzędnych, kt&oacute;ry będzie używany podczas wykonywania analizy.   
+            </p>
+            <p>Niekt&oacute;re analizy geoprzestrzenne wymagają wykonywania przetwarzania w układzie wsp&oacute;łrzędnych odwzorowanych.   Każde narzędzie z zaimplementowanym binowaniem danych lub jednostkami liniowymi wymaga układu wsp&oacute;łrzędnych odwzorowanych. 
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Taki sam jak dane wejściowe</b> &mdash; analiza będzie przetwarzana w takim samym układzie wsp&oacute;łrzędnych jak dane wejściowe. Jest to opcja domyślna.
+                    </li>
+                    <li> <b>Jak podano</b> &mdash; wybierz układ wsp&oacute;łrzędnych do przetworzenia analizy. Jeśli ta opcja jest zaznaczona, kliknij ikonę przedstawiającą kulę ziemską, aby wybrać wartość z listy znanych układ&oacute;w wsp&oacute;łrzędnych odwzorowanych lub dodać identyfikator WKID odniesienia przestrzennego w udostępnionym polu.
+                    </li>
+                    <li> <b>Warstwa 
+&lt;nazwa&gt;</b> &mdash; wybierz istniejącą warstwę z mapy internetowej.  Układ wsp&oacute;łrzędnych wybranej warstwy zostanie użyty do określenia układu wsp&oacute;łrzędnych, kt&oacute;ry będzie używany podczas przetwarzania analizy.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingExtent">
+        <div><h2>Zasięg</h2></div>
+        <hr/>
+        <div>
+            <p>Ustawienie środowiskowe używane do określania zasięgu lub granicy używanej podczas wykonywania analizy. Wszystkie obiekty wejściowe znajdujące się w całości w podanym zasięgu lub przecinające ten zasięg zostaną użyte w analizie.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Domyślnie</b> &mdash; używany jest zasięg udostępniony przez narzędzie.
+                    </li>
+                    <li> <b>Jak podano</b> &mdash; ręcznie wprowadź wsp&oacute;łrzędne w celu zdefiniowania zasięgu.
+                    </li>
+                    <li> <b>Warstwa 
+&lt;nazwa&gt;</b> &mdash; wybierz istniejącą warstwę z mapy internetowej. Zasięg przestrzenny wybranej warstwy zostanie użyty do określenia zasięgu, kt&oacute;ry będzie używany podczas przetwarzania analizy. 
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="snapRaster">
+        <div><h2>Raster dociągania</h2></div>
+        <hr/>
+        <div>
+            <p>Przy wykonywaniu analizy rastrowej ustawienie środowiskowe  <b>Raster dociągania</b> dostosuje zasięg wynikowej warstwy rastrowej tak, aby był zgodny z wyr&oacute;wnaniem kom&oacute;rki podanej warstwy <b>Raster dociągania</b>.
+            </p>
+        </div>
+    </div>
+    <div id="cellSize">
+        <div><h2>Wielkość komórki</h2></div>
+        <hr/>
+        <div>
+            <p>Przy wykonywaniu analizy rastrowej to ustawienie środowiskowe pozwala ustalić wielkość kom&oacute;rki lub rozdzielczość, kt&oacute;ra będzie używana do tworzenia wynikowej warstwy rastrowej. Domyślna rozdzielczość wynikowa jest określana przez wielkość największej kom&oacute;rki w wejściowej warstwie rastrowej.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Minimum z wartości wejściowych</b> &mdash; użyj wielkości najmniejszej kom&oacute;rki ze wszystkich warstw wejściowych.
+                    </li>
+                    <li> <b>Maksimum z wartości wejściowych</b> &mdash; użyj wielkości największej kom&oacute;rki ze wszystkich warstw wejściowych. Jest to opcja domyślna.
+                    </li>
+                    <li> <b>Jak podano</b> &mdash; podaj wartość liczbową w celu ustawienia wielkości kom&oacute;rki. Jeśli zostanie wybrana ta opcja, wartością domyślną jest 1.
+                    </li>
+                    <li> <b>Warstwa &lt;nazwa&gt;</b> &mdash; ustawia wielkość kom&oacute;rki na wybraną warstwę rastrową.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="mask">
+        <div><h2>Maska</h2></div>
+        <hr/>
+        <div>
+            <p> Podczas wykonywania analizy rastrowej użyj ustawienia środowiskowego <b>Maska</b>, aby określić warstwę, kt&oacute;ra zostanie użyta do zdefiniowania Twojego obszaru zainteresowania.   W operacji analizy zostaną wzięte pod uwagę tylko te kom&oacute;rki, kt&oacute;re mieszczą się w obrębie maski analizy.
+            </p>
+            <ul>
+                <li>Maska może być warstwą rastrową lub obiektową.
+                </li>
+                <li>Jeśli maską analizy jest raster, przy definiowaniu maski pod uwagę zostaną wzięte wszystkie kom&oacute;rki zawierające wartość. Kom&oacute;rki w rastrze maski, kt&oacute;re mają wartość NoData, będą uznawane za znajdujące się poza maską i będą mieć wartość NoData w warstwie wynikowej analizy. 
+                </li>
+                <li>Jeśli maska analizy jest warstwą obiektową, zostanie przy wykonywaniu przekształcona wewnętrznie w raster. Dlatego należy zadbać o to, aby dla analizy ustalić odpowiednie wartości ustawień środowiskowych  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">Wielkość kom&oacute;rki</a> i <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">Raster dociągania</a>.
+                </li>
+            </ul>
+             
+        </div>
+    </div>
+</div>
+</html>

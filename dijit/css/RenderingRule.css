@@ -134,3 +134,8 @@ div.esriRenderingRuleContainer {
 {
   font-weight: 700;
 }
+
+.esriRenderingRuleFixedInput.dijitTextBox input
+{
+  text-align: center;
+}

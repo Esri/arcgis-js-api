@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="raToolbox">
+        <p>An&aacute;lisis de r&aacute;ster le permite realizar an&aacute;lisis de datasets r&aacute;ster grandes utilizando el  ArcGIS Image Server. Esto le permite analizar m&aacute;s datos con mayor rapidez aprovechando la potencia del servidor. Los conjuntos de herramientas que actualmente est&aacute;n disponibles mediante la experiencia de usuario web de  Portal for ArcGIS son:  <b>Resumir datos</b>, <b>Analizar patrones</b>, <b>Analizar imagen</b>, <b>Analizar terreno</b> y <b>Administrar datos</b>.
+        </p>
+    </div>
+    <div id="SummarizeDataCategory" class="smallsize">
+        <h2>Resumir datos</h2>
+        <hr/>
+        <p>Este conjunto de herramientas contiene una herramienta que permite calcular algunas estad&iacute;sticas para una capa r&aacute;ster dentro de los l&iacute;mites de &aacute;rea que haya definido. 
+            <ul>
+                <li> <b>Resumir r&aacute;ster dentro de</b> calcula estad&iacute;sticas para celdas r&aacute;ster que quedan dentro de los l&iacute;mites de &aacute;rea definidos.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="SummarizeRasterWithinTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Resumir ráster dentro de</h2></td>
+                    <td>
+                    <img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" class="titleImage" alt="Herramienta Resumir r&aacute;ster dentro de">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Calcula algunos res&uacute;menes de estad&iacute;sticas para celdas r&aacute;ster que quedan dentro de &aacute;reas definidas.
+            </p>
+            <p>A continuaci&oacute;n se indican algunas aplicaciones de ejemplo: 
+
+                <ul>
+                    <li>Dada una capa de &aacute;reas de cuencas hidrogr&aacute;ficas y una capa r&aacute;ster de elevaci&oacute;n, calcula el rango de elevaciones dentro de cada cuenca hidrogr&aacute;fica a fin de determinar las que tienen el caudal m&aacute;s alto.
+                        
+
+                    </li>
+                    <li>Dada una capa de unidades de gesti&oacute;n administrativa y una capa r&aacute;ster de categor&iacute;as de uso del suelo, calcula la variedad de los valores de uso del suelo dentro de cada &aacute;rea de administraci&oacute;n para identificar las que requieren m&aacute;s trabajo a fin de determinar un plan de administraci&oacute;n.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzePatternsCategory" class="regularsize">
+        <h2>Analizar patrones</h2>
+        <hr/>
+        <p>Estas herramientas te ayudan a identificar, cuantificar y visualizar los patrones espaciales de tus datos. 
+
+            <ul>
+                <li> <b>Calcular densidad</b> toma cantidades conocidas de un fen&oacute;meno y crea un mapa de densidad expandiendo estas cantidades por el mapa.
+                    
+
+                </li>
+                <li> <b>Interpolar puntos</b> predice los valores de las nuevas ubicaciones en funci&oacute;n de las mediciones encontradas en un conjunto de puntos.
+                    
+
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateDensityRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Calcular densidad</h2></td>
+                    <td>
+                    <img src="../images/GUID-4EE4838C-E210-43CE-99C7-1A648A18C10B-web.png" class="titleImage" alt="Herramienta Calcular densidad">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>An&aacute;lisis de densidad toma cantidades conocidas de un fen&oacute;meno y crea un mapa de densidad expandiendo estas cantidades por el mapa. Puedes usar esta herramienta, por ejemplo, para mostrar concentraciones de rayos o de tornados, acceso a las instalaciones m&eacute;dicas y densidades de poblaci&oacute;n.
+            </p>
+            <br/>
+        </div>
+        <div id="InterpolatePointsEBKTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Interpolar puntos</h2></td>
+                    <td>
+                    <img src="../images/GUID-06D80BB3-7154-4FAA-9C9B-D665450EF3BC-web.png" class="titleImage" alt="Herramienta Interpolar puntos">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Esta herramienta te permite predecir los valores de nuevas ubicaciones en funci&oacute;n de las mediciones encontradas en un conjunto de puntos. La herramienta toma los datos de puntos con valores en cada punto y devuelve &aacute;reas clasificadas por los valores predichos. Puedes usar esta herramienta, por ejemplo, para predecir los niveles de precipitaciones en una cuenca hidrogr&aacute;fica a partir de las mediciones realizadas en los distintos pluvi&oacute;metros.
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzeImageCategory" class="smallsize">
+        <h2>Analizar imagen</h2>
+        <hr/>
+        <p>La herramienta siguiente le ayuda a analizar im&aacute;genes para determinar &aacute;reas con vegetaci&oacute;n. 
+            <ul>
+                <li> <b>Supervisar vegetaci&oacute;n</b> detecta la vegetaci&oacute;n dentro de una imagen, bas&aacute;ndose en operaciones aritm&eacute;ticas sobre las bandas.
+                    
+
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="MonitorVegetationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Supervisar vegetación</h2></td>
+                    <td>
+                    <img src="../images/GUID-7763FCC0-2EA1-463B-98D0-4EBDF6150907-web.png" class="titleImage" alt="Herramienta Supervisar vegetaci&oacute;n para Portal">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Realiza una operaci&oacute;n aritm&eacute;tica en las bandas de un dataset r&aacute;ster multibanda para mostrar la informaci&oacute;n de la cobertura de vegetaci&oacute;n del &aacute;rea de estudio.
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzeTerrainCategory" class="regularsize">
+        <h2>Analizar terreno</h2>
+        <hr/>
+        <p>Estas herramientas le ayudan a analizar superficies de r&aacute;ster. 
+            <ul>
+                <li> <b>Calcular pendiente</b> calcula la inclinaci&oacute;n del terreno.
+                    
+
+                </li>
+                <li> <b>Derivar orientaci&oacute;n</b> calcula la direcci&oacute;n de la pendiente m&aacute;s inclinada para cada ubicaci&oacute;n.
+                    
+
+                </li>
+                <li> <b>Crear cuenca visual</b> identifica lo que se puede ver desde cualquier punto del paisaje.
+                    
+
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateSlopeTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Calcular pendiente</h2></td>
+                    <td>
+                    <img src="../images/GUID-D33862C6-01BB-445E-B0C3-BC8B8C1858DA-web.png" class="titleImage" alt="Herramienta Calcular pendiente para Portal">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Identifica una superficie que muestra la pendiente de los datos de elevaci&oacute;n de entrada. La pendiente representa la tasa de cambio de elevaci&oacute;n para cada celda de modelo digital de elevaci&oacute;n (DEM).
+            </p>
+            <br/>
+        </div>
+        <div id="DeriveAspectTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Derivar orientación</h2></td>
+                    <td>
+                    <img src="../images/GUID-D03FF025-0530-4D0D-87A3-B25D6716F8F0-web.png" class="titleImage" alt="Herramienta Derivar orientaci&oacute;n para Portal">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Identifica la direcci&oacute;n descendente de la velocidad m&aacute;xima de cambio en el valor desde cada celda a las celdas vecinas. La orientaci&oacute;n puede pensarse como la direcci&oacute;n de la pendiente.
+            </p>
+            <br/>
+        </div>
+        <div id="CreateViewshedRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Crear cuenca visual</h2></td>
+                    <td>
+                    <img src="../images/GUID-BB8B8CAF-330E-4C41-9D94-AF4728D0D0F3-web.png" class="titleImage" alt="Herramienta Crear cuenca visual">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Determina las ubicaciones en una superficie de r&aacute;ster que est&aacute;n visibles para un conjunto de observadores.
+            </p>
+            <br/>
+        </div>
+    <div id="ManageDataCategory" class="regularsize">
+        <h2>Administrar datos</h2>
+        <hr/>
+        <p>Estas herramientas se usan para la administraci&oacute;n diaria de los datos geogr&aacute;ficos y para combinar datos antes del an&aacute;lisis. 
+            <ul>
+                <li> <b>Extraer r&aacute;ster</b> recorta porciones de un dataset r&aacute;ster para an&aacute;lisis posteriores.
+                    
+
+                </li>
+                <li> <b>Reasignar valores</b> asigna distintos valores a celdas r&aacute;ster.
+                    
+
+                </li>
+                <li> <b>Convertir entidad a r&aacute;ster</b> rasteriza datos vectoriales.
+                    
+
+                </li>
+                <li> <b>Convertir r&aacute;ster a entidad</b> vectoriza datos r&aacute;ster.
+                    
+
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="ExtractRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Extraer ráster</h2></td>
+                    <td>
+                    <img src="../images/GUID-DC9CBCB9-A07C-42D3-A0CB-2FB1483CBF4C-web.png" class="titleImage" alt="Herramienta Extraer r&aacute;ster para Portal">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Extrae celdas de un r&aacute;ster seg&uacute;n el valor, la forma o la extensi&oacute;n de un dataset diferente.
+            </p>
+            <br/>
+        </div>
+        <div id="RemapValuesTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Nueva representación cartográfica de valores</h2></td>
+                    <td>
+                    <img src="../images/GUID-4006E442-A60B-469A-891D-5ED442F64CB8-web.png" class="titleImage" alt="Herramienta Reasignar valores para Portal">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Cambia valores individuales o rangos de valores de celda por valores nuevos.
+            </p>
+            <br/>
+        </div>
+        <div id="ConvertFeatureToRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Convert Feature to  Raster</h2></td>
+                    <td>
+                    <img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" class="titleImage" alt="Convert Feature to Raster tool">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Crea un nuevo dataset r&aacute;ster a partir de un dataset existente.
+            </p>
+            <br/>
+        </div>
+        <div id="ConvertRasterToFeatureTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Convertir ráster a entidad</h2></td>
+                    <td>
+                    <img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" class="titleImage" alt="Herramienta Convertir r&aacute;ster a entidad">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Crea un nuevo dataset de entidades a partir de un dataset r&aacute;ster existente.
+            </p>
+            <br/>
+        </div>
+</div>
+</html>

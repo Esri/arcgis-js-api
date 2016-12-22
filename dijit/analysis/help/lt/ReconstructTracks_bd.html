@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Atkurti trajektorijas</h2><p/>
+        <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Atkurti trajektorijas"></h2>
+        <hr/>
+    <p>&Scaron;is įrankis veikia kartu su ta&scaron;kiniu arba plotiniu elementų sluoksniu, kuriuose įgalintos laiko žymos, nurodančios konkretų laiko  <code>momentą</code>.   Pirmiausia įrankis pagal identifikatorių nustato, kurie elementai priklauso trajektorijai. Pagal kiekvienos vietos laiką trajektorijos dalys i&scaron;dėstomos nuosekliai, o pati trajektorija i&scaron;rei&scaron;kiama linija arba plotu, parodančiu judėjimo laike kelią. Pasirinktinai įvesties duomenis galima buferizuoti įtraukiant lauką, kuris sukurs plotą aplink kiekvieną vietą. Tada &scaron;ie buferizuoti ta&scaron;kai (arba plotai) nuosekliai sujungiami, kad sukurtų plotinę trajektoriją, kurios plotis nurodo dominantį atributą. Gautos trajektorijos turi pradžios ir pabaigos laiką, kuris laikinai nurodo pirmąjį ir paskutinįjį duotosios trajektorijos elementą. Sukūrus trajektorijas, apskaičiuojama įvesties elementų statistika, kuri priskiriama i&scaron;vesties trajektorijai. Pats paprasčiausias apskaičiuojamas statistinis rodiklis &ndash; ta&scaron;kų skaičius plote, tačiau galite apskaičiuoti ir kitokius rodiklius.
+    </p>
+    <p>Elementai sluoksniuose, kuriuose palaikomos laiko žymos, gali būti dviejų tipų:
+        <ul>
+            <li>Momentas &ndash; konkreti laiko akimirka
+            </li>
+            <li>Intervalas &ndash; pradžios ir pabaigos laikas
+            </li>
+        </ul>
+        
+    </p>
+    <p>Pavyzdžiui, tarkime, jūs turite kas 10&nbsp;min. fiksuotus uraganų GPS matavimus. Kiekvienas GPS matavimas užfiksuoja uragano pavadinimą, vietą, įra&scaron;ymo laiką ir vėjo greitį. Pasitelkdami &scaron;ią informaciją, galite kurti kiekvieno uragano trajektorijas, naudodami trajektorijos identifikacijos pavadinimą. Taip bus sugeneruota kiekvieno uragano trajektorija. Taip pat galite skaičiuoti statistiką, pvz., kiekvieno uragano vidutinį, maksimalų ir minimalų vėjo greitį, kiekvienos trajektorijos matavimų skaičių.
+    </p>
+    <p>Naudodami tą patį pavyzdį, galite buferizuoti savo trajektorijas pridėdami vėjo greitį. Taip kiekvienas matavimas bus buferizuotas naudojant lauką, nurodantį tos vietos vėjo greitį, o buferizuotos zonos sujungtos į vieną, sukuriant plotą, vaizduojantį ne tik uragano trajektoriją, bet ir vėjo greičio pokyčius uraganams įsismarkaujant.   
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Pasirinkite elementus, pagal kuriuos norite atkurti trajektoriją</h2></div>
+        <hr/>
+        <div>
+            <p>Ta&scaron;kinis ar plotinis sluoksnis, kuriame bus atkurta trajektorija.
+            </p>
+            <p>Galite pasirinkti ne tik sluoksnį i&scaron; žemėlapio, bet ir pasirinkti parinktį  <b>Nar&scaron;yti sluoksnius</b>, esančią i&scaron;krentančio sąra&scaron;o apačioje, kuri suteikia galimybę nurodyti kelią iki jūsų didelių duomenų failų saugyklos duomenų rinkinio arba elementų sluoksnio.  
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>Pasirinkite laukus, naudojamus trajektorijai identifikuoti</h2></div>
+        <hr/>
+        <div>
+            <p> Laukai, kuriuose yra trajektorijos identifikatorius.
+            </p>
+            <p> Pavyzdžiui, jei atkuriate uraganų trajektorijas, kaip trajektorijos lauką galite nurodyti uragano pavadinimą.
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Pasirinkite metodą trajektorijai atkurti</h2></div>
+        <hr/>
+        <div>
+            <p>Metodas trajektorijoms dalims sujungti ir buferiui pritaikyti (jei reikia). Naudojant  <b>Plok&scaron;tuminį</b> metodą, rezultatai bus apskaičiuojami greičiau, tačiau trajektorijos aplink demarkacinę paros laiko liniją nebus buferizuojamos, o buferizuojant nebus atsižvelgiama į tikrąją Žemės formą. Naudojant <b>Geodezinį</b> metodą, trajektorijos aplink demarkacinę paros laiko liniją bus buferizuojamos (jei reikia), o atsižvelgiant į tikrąją Žemės formą bus naudojamas geodezinis buferis.
+            </p>
+        </div>
+    </div>
+    <div id="bufferField">
+        <div><h2>Sukurkite išraišką, pagal kurią bus buferizuojami įvesties elementai (neprivaloma)</h2></div>
+        <hr/>
+        <div>
+            <p>Lygtis, naudojama buferio atstumui aplink įvesties elementus apskaičiuoti. &Scaron;ią lygtį galima sugeneruoti naudojant buferio skaičiuotuvą ir paprastus skaičiavimo veiksmus. Palaikoma sudėtis, atimtis, dalyba ir daugyba. Reik&scaron;mės apskaičiuojamos naudojant analizės koordinačių sistemą.
+            </p>
+        </div>
+    </div>
+    <div id="timeSplit">
+        <div><h2>Pasirinkite laiką, kurio intervalais bus suskaidytos trajektorijos (neprivaloma)</h2></div>
+        <hr/>
+        <div>
+            <p>Laikas, kurio intervalais bus suskaidytos trajektorijos. Jei trukmė tarp įvesties ta&scaron;kų ar plotų yra ilgesnė negu laiko intervalas, jie bus padalinti į mažesnes trajektorijas.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Pridėti statistiką (neprivaloma)</h2></div>
+        <hr/>
+        <div>
+            <p> Galite apskaičiuoti susumuotų elementų statistiką. Naudodami skaitinius laukus, galite apskaičiuoti:
+                <ul>
+                    <li>Skaičių
+                    </li>
+                    <li>Vidurkį
+                    </li>
+                    <li>Mažiausią reik&scaron;mę
+                    </li>
+                    <li>Didžiausią reik&scaron;mę
+                    </li>
+                    <li>Intervalą
+                    </li>
+                    <li>Dispersiją
+                    </li>
+                    <li>Standartinį nuokrypį
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Naudodami tekstinius laukus, galite apskaičiuoti:
+                <ul>
+                    <li>Skaičių
+                    </li>
+                    <li>Bet kokį rodiklį &ndash; &scaron;is statistinis rodiklis yra atsitiktinės eilutės reik&scaron;mės i&scaron; nurodyto lauko pavyzdys.
+                    </li>
+                </ul>
+                Visi statistiniai rodikliai apskaičiuojami tik su nenulinėmis reik&scaron;mėmis. Gautame sluoksnyje bus kiekvieno apskaičiuoto statistinio rodiklio naujas laukas. Pasirenkant atributą ir statistinį rodiklį, gali būti pridėtas neribotas statistinių rodiklių kiekis. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Pasirinkti duomenų saugyklą</h2></div>
+        <hr/>
+        <div>
+            <p>Tai yra laikinas parametras, naudojamas iki i&scaron;leidimo, kad būtų galima nustatyti duomenų saugyklą, kur bus įra&scaron;yti rezultatai. Abejos duomenų saugyklos yra  ArcGIS Data Store dalis. Jei pasirinksite erdvėlaikio duomenų saugyklą, bet viena i&scaron; jų nebus įdiegta, įrankis neveiks. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Rezultatų sluoksnio pavadinimas</h2></div>
+        <hr/>
+        <div>
+            <p> Tai sluoksnio, kuris bus sukurtas ir patalpintas <b>Turinyje</b> ir pridėtas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas pagal įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau yra, įrankis neveiks.
+            </p>
+            <p>Pasirinkę  <b>Rezultatą įra&scaron;yti į</b>, galite nurodyti <b>Turinyje</b> esančio aplanko pavadinimą.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -40,12 +40,18 @@
 </head>
 <body onload="init()">
 <div id="topics">
+    <div id="aoToolbox">
+        <p>Detay Analizi ara&ccedil; kutusunda erişiminize ve kullanımınıza a&ccedil;ık bir grup ara&ccedil; bulunur.  Bu g&ouml;revler aşağıda kategorilere ayrılmıştır; kategoriler basit mantıksal gruplandırmalardır ve g&ouml;revlere erişim veya kullanım bi&ccedil;iminizi herhangi bir şekilde etkilemez.
+        </p>
+    </div>
     <div id="SummarizeDataCategory" class="regularsize">
         <h2>Veriyi Özetle</h2>
         <hr/>
         <p>Bu ara&ccedil;lar, alanlardaki detayların ya da yakın diğer detayların toplam sayısını, uzunluğunu, alanını ve temel a&ccedil;ıklayıcı istatistiklerini ve bunların &ouml;zniteliklerini hesaplar.
             <ul>
                 <li> <b>Noktaları Birleştir</b>, belirtilen alanlar i&ccedil;inde kalan noktalar hakkındaki istatistikleri hesaplar.
+                </li>
+                <li> <b>Detayları Birleştir</b>; mekan ve &ouml;znitelik ilişkilerine bağlı olarak &ouml;znitelikleri bir katmandan veya tablodan bir diğerine aktarır.
                 </li>
                 <li> <b>Yakındakini &Ouml;zetle</b>, belirtilen bir mesafedeki &ouml;zelliklerin istatistiklerini ve bunların &ouml;zniteliklerini hesaplar.
                 </li>
@@ -73,6 +79,32 @@
                     <li>Su&ccedil; olaylarının nokta konumlarını ele alarak il&ccedil;e ve diğer idari b&ouml;lgeler başına su&ccedil; sayımını yapın.
                     </li>
                     <li>Eyalete g&ouml;re franchise konumlarının en y&uuml;ksek ve en d&uuml;ş&uuml;k gelirlerini bulun.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="JoinFeaturesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Ekleme Detayları</h2></td>
+                    <td>
+                    <img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" class="titleImage" alt="Ekleme Detayları">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Detayları Birleştir; mekan ve &ouml;znitelik ilişkilerine bağlı olarak &ouml;znitelikleri bir katmandan veya tablodan bir diğerine aktarır. &Ouml;rneğin:
+                <ul>
+                    <li>Duruma &ouml;zel verilerinize genel sınır ve n&uuml;fus bilgilerini ekleyin.
+                    </li>
+                    <li>Bilinen bir yere en yakın tesisleri tanımlayın.
+                    </li>
+                    <li>Sel b&ouml;lgeleri i&ccedil;inde kalan konut sayısını belirleyin.
+                    </li>
+                    <li>&Ccedil;eşitli yaban hayatı t&uuml;rleri i&ccedil;in ortak yaşam alanları tanımlayın.
                     </li>
                 </ul>
                 
@@ -287,7 +319,9 @@
             <ul>
                 <li> <b>Yoğunluğu Hesapla</b>, bazı olayların bilinen miktarlarını alır ve bu miktarları haritada dağıtır.
                 </li>
-                <li> <b>Etkin Nokta Bul</b> aracı, verinizin mekansal modelindeki istatistiksel a&ccedil;ıdan &ouml;nemli k&uuml;melenmeyi tanımlar.
+                <li> <b>Etkin Nokta Bul</b> aracı, verilerinizin mekansal modelindeki istatistiksel a&ccedil;ıdan anlamlı olan k&uuml;melenmeyi tanımlar.
+                </li>
+                <li> <b>Aykırı Değerleri Bul</b>, verilerinizin mekansal modelinde istatistiksel olarak anlamlı olan aykırı değerler bulunup bulunmadığını belirler.
                 </li>
                 <li> <b>Nokta Ara Değerlerini Hesaplama</b> aracı, toplama noktalarında bulunan &ouml;l&ccedil;&uuml;mlere dayanarak yeni konumlardaki değerleri tahmin eder.
                 </li>
@@ -322,6 +356,21 @@
             </table>
 <hr/>
             <p>Bu ara&ccedil;, yalnızca verinizde yer alan istatistiksel a&ccedil;ıdan &ouml;nemli k&uuml;meleri g&ouml;steren bir harita oluşturur. Bu aracı, y&uuml;ksek ve d&uuml;ş&uuml;k ev değerlerinin, su&ccedil; yoğunluklarının, trafik kazası &ouml;l&uuml;mlerinin, işsizlik ya da biyo &ccedil;eşitliliğin vb. beklenmeyen etkin noktalarını (kırmızı) ve etkin olmayan noktalarını (mavi) ortaya &ccedil;ıkarmak i&ccedil;in kullanın.
+            </p>
+            <br/>
+        </div>
+        <div id="FindOutliersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Aykırı Değerleri Bul</h2></td>
+                    <td>
+                    <img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" class="titleImage" alt="Aykırı Değerleri Bul">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Bu ara&ccedil;, verilerinizde bulunan istatistiksel a&ccedil;ıdan anlamlı k&uuml;meleri ve mekansal aykırı değerleri g&ouml;steren bir harita oluşturur. Bu aracı kullanarak komşularından &ouml;nemli miktarda farklı olan değerlere sahip detayları tanımlayabilirsiniz.  Bu aracı kullanarak &ouml;rneğin, anormal harcama modellerini bulabilir, belirli bir araştırma alanı i&ccedil;in zenginlik ve yoksulluk arasında en belirgin farkların nerede bulunduğunu belirleyebilir veya komşularıyla kıyaslandığında ABD i&ccedil;inde anormal derecede d&uuml;ş&uuml;k ortalama yaşam s&uuml;resine sahip b&ouml;lgeler olup olmadığını tespit edebilirsiniz.
             </p>
             <br/>
         </div>
@@ -500,7 +549,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Verileri Çıkar</h2></td>
+                    <td><h2>Verileri Ayıkla</h2></td>
                     <td>
                     <img src="../images/GUID-CE24332B-74C0-412F-BB94-31415A02195A-web.png" class="titleImage" alt="Veri Ayıkla">
                     </td>

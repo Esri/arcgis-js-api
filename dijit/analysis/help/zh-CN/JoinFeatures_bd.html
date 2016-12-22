@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>连接要素</h2><p/>
+        <h2><img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" alt="连接要素"></h2>
+        <hr/>
+    <p>&ldquo;连接要素&rdquo;任务适用于两个图层。&ldquo;连接要素&rdquo;可根据空间、时态和属性关系或者三者的某些组合将一个要素的属性连接到另一个要素。该工具可确定满足指定连接条件的所有输入要素并将第二个输入图层连接到第一个。可选择将所有要素连接到匹配的要素或汇总匹配的要素。
+    </p>
+    <p>&ldquo;连接要素&rdquo;可应用于点、线、面和表。时态连接需要启用时间的输入数据，而空间连接需要具有几何的数据。
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="targetLayer">
+        <div><h2>选择连接要素的图层</h2></div>
+        <hr/>
+        <div>
+            <p>要连接要素的图层。
+            </p>
+            <p>除了从地图中选择图层外，还可以在下拉列表的底部选择 <b>浏览图层</b>，以浏览至大数据文件共享数据集或要素图层中的内容。  
+            </p>
+        </div>
+    </div>
+    <div id="joinLayer">
+        <div><h2>选择要连接的图层</h2></div>
+        <hr/>
+        <div>
+            <p>要连接到第一个输入图层的图层。
+            </p>
+            <p>除了从地图中选择图层外，还可以在下拉列表的底部选择 <b>浏览图层</b>，以浏览至大数据文件共享数据集或要素图层中的内容。  
+            </p>
+        </div>
+    </div>
+    <div id="joinOperation">
+        <div><h2>选择连接操作</h2></div>
+        <hr/>
+        <div>
+            <p>当发现多个连接要素与要连接的图层具有相同关系时，该操作将确定如何在输出中处理输入图层之间的连接。有两种连接操作可供选择：
+                <ul>
+                    <li> <b>一对一连接</b> - 此选项可将所有匹配要素连接到连接图层。
+                    </li>
+                    <li> <b>一对多连接</b> - 此选项可汇总每个要连接的要素的所有匹配要素。
+                    </li>
+                </ul>
+                
+            </p>
+            <p>例如，假设我们要查找农贸市场 5 千米范围内的超市。在此情况下，要连接到的图层具有表示农贸市场的单个要素，而连接要素表示具有年销售总额等属性的本地杂货店。我们使用 <b>连接要素</b>工具找到五个满足该条件的杂货店。如果指定连接操作为 <b>一对一连接</b>，则会在结果中得到五个要素，每行表示农贸市场和超市。如果指定 <b>一对多连接</b>关系，则会得到一个表示农贸市场以及超市的汇总信息（例如，计数 (5) 以及年销售额总和等其他统计数据）的要素。
+            </p>
+        </div>
+    </div>
+    <div id="joinOptions">
+        <div><h2>选择要使用的连接类型</h2></div>
+        <hr/>
+        <div>
+            <p>可以应用一个、两个或三个连接类型。连接类型如下： 
+                <ul>
+                    <li> <b>空间</b> - 使用指定的空间关系连接要素。两个图层都具有几何时才能使用此类型。
+                    </li>
+                    <li> <b>时态</b> - 使用时态关系连接要素。两个图层上均已启用时间时才能使用此类型。
+                    </li>
+                    <li> <b>属性</b> - 基于相等字段连接要素。
+                    </li>
+                </ul>
+                
+            </p>
+            <p>
+            </p>
+        </div>
+    </div>
+    <div id="spatialRelationship">
+        <div><h2>空间连接</h2></div>
+        <hr/>
+        <div>
+            <p> 将确定要素是否彼此相连的空间关系。可用的关系将取决于要用作输入要素的几何（点、折线、面）类型。可用的关系如下：
+                <ul>
+                    <li> <b>相交</b> - 对彼此相交的要素进行匹配。
+                    </li>
+                    <li> <b>相等</b> - 对具有相同几何的要素进行匹配。
+                    </li>
+                    <li> <b>邻近</b> - 对在彼此指定距离内的要素进行匹配。
+                    </li>
+                    <li> <b>包含</b> - 如果要连接到的图层包含在连接要素内，则会对这些要素进行匹配。
+                    </li>
+                    <li> <b>范围内</b> - 如果要连接到的图层位于连接要素范围内，则会对这些要素进行匹配。
+                    </li>
+                    <li> <b>接触</b> - 如果要素的边界与要连接到的要素相接触，则会对这些要素进行匹配。
+                    </li>
+                    <li> <b>交叉</b> - 对具有交叉轮廓的要素进行匹配。
+                    </li>
+                    <li> <b>重叠</b> - 连接重叠的要素。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="nearSpatial">
+        <div><h2></h2></div>
+        <hr/>
+        <div>
+            <p>该距离指定适用于空间邻近关系的半径。
+            </p>
+            <p>假设您拥有一个表示核电站的数据集和一个表示住宅的数据集。您可以设置 1 千米的邻近距离来查找位于核电站 1 千米范围内的住宅。
+            </p> 
+        </div>
+    </div>
+    <div id="temporalRelationship">
+        <div><h2>时态连接</h2></div>
+        <hr/>
+        <div>
+            <p>将确定要素是否彼此相连的时态关系。仅当两个图层上均已启用时间时此选项才可用，可用的关系将取决于要用于输入要素的时间类型（时刻或间隔）。可用的关系如下：
+                <ul>
+                    <li> <b>满足</b> - 如果第一个要素满足第二个要素，则对要素进行匹配。
+                    </li>
+                    <li> <b>被满足</b> - 如果第二个要素满足第一个要素，则对要素进行匹配。
+                    </li>
+                    <li> <b>重叠</b> - 如果第一个要素叠置在第二个要素之上，则对要素进行匹配。
+                    </li>
+                    <li> <b>被重叠</b> - 如果第二个要素叠置在第一个要素之上，则对要素进行匹配。
+                    </li>
+                    <li> <b>期间</b> - 如果第一个要素在第二个要素的期间内，则对要素进行匹配。
+                    </li>
+                    <li> <b>包含</b> - 如果第一个要素包含第二个要素，则对要素进行匹配。
+                    </li>
+                    <li> <b>相等</b> - 如果第一个要素等于第二个要素，则对要素进行匹配。
+                    </li>
+                    <li> <b>结束</b> - 如果第一个要素是第二个要素的结尾，则对要素进行匹配。
+                    </li>
+                    <li> <b>之后结束</b> - 如果第二个要素是第一个要素的结尾，则对要素进行匹配。
+                    </li>
+                    <li> <b>开始</b> - 如果第一个要素是第二个要素的开始，则对要素进行匹配。
+                    </li>
+                    <li> <b>之后开始</b> - 如果第二个要素是第一个要素的开始，则对要素进行匹配。
+                    </li>
+                    <li> <b>相交</b> - 如果时间完全相交，则会对这些要素进行映射。
+                    </li>
+                    <li> <b>邻近</b> - 如果要素在指定时间上互相接近，则会对这些要素进行连接。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="nearTemporal">
+        <div><h2></h2></div>
+        <hr/>
+        <div>
+            <p>该时态距离指定适用于时态邻近关系的时态半径。
+            </p>
+            <p>假设您拥有划船事故图层和飓风 GPS 轨迹图层。您可以在空间（1 千米）和时间（5 小时）上查找飓风轨迹指定距离内的划船事故。将生成发生的空间和时间均十分接近的连接到飓风的划船事故。
+            </p>
+        </div>
+    </div>
+    <div id="attributeRelationship">
+        <div><h2>属性连接</h2></div>
+        <hr/>
+        <div>
+            <p>此关系会将一个图层中的字段值与另一图层中的字段值进行匹配。
+            </p>
+            <p> 例如，假设我们拥有涵盖住址的全县地理图层（包括字段 <i>ZIP</i>）和按邮政编码分类的健康人口统计表格数据集（名为 <i>HEALTHZIP</i> 的字段）。则可以通过匹配字段 <i>ZIP</i> 与 <i>HEALTHZIP</i>，将健康数据集连接到住宅数据，从而生成含有对应的健康数据的住宅图层。
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>添加统计数据(可选)</h2></div>
+        <hr/>
+        <div>
+            <p>如果选择&ldquo;一对多连接&rdquo;选项，则可以计算连接要素的统计数据。
+            </p>
+        </div>
+    </div>
+    <div id="joinCondition">
+        <div><h2>构建连接要素所依据的表达式(可选)</h2></div>
+        <hr/>
+        <div>
+            <p>将条件应用到指定字段。将仅连接带有符合这些条件的字段的要素。
+            </p>
+            <p>例如，假设我们希望仅针对  <i>health_spending</i> 大于 20% <i>收入</i>的要素将连接应用到数据集。为此，请应用连接条件 <code>target.health_spending &gt; (join.income * .20)</code>，使用第一个数据集（数据集要素要连接的数据集）中的 <i>health_spending</i> 字段和第二个数据集（已被连接的数据集）中的 <i>收入</i>字段。
+            </p>
+            <p>可通过使用表达式计算器来应用连接条件。
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>选择数据存储</h2></div>
+        <hr/>
+        <div>
+            <p>这是预发行版本中的临时参数，用于设置将存储结果的数据存储。这两个数据存储都是  ArcGIS Data Store 的一部分。如果选择时空数据存储但是尚未安装该存储，将无法使用该工具。 </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>结果图层名称</h2></div>
+        <hr/>
+        <div>
+            <p> 在 <b>我的内容</b>中创建并添加到地图中的图层的名称。默认名称基于工具名称以及输入图层名称。如果该图层已存在，将无法使用该工具。
+            </p>
+            <p>使用 <b>将结果保存到</b>下拉框，可以在 <b>我的内容</b>中指定文件夹的名称，结果将保存到该文件夹中。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

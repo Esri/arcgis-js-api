@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Cài đặt Môi trường Phân tích Cổng thông tin</h2><p/>
+        <h2></h2>
+        <hr/>
+    <p> C&agrave;i đặt m&ocirc;i trường để ph&acirc;n t&iacute;ch trong Portal for ArcGIS v&agrave;  ArcGIS Online. 
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="overwriteResult">
+        <div><h2>Ghi đè lớp kết quả</h2></div>
+        <hr/>
+        <div>
+            
+            <p>T&ugrave;y chọn ghi đ&egrave; c&aacute;c lớp hiện tại. Khi kiểm tra, nếu đ&atilde; c&oacute; lớp c&oacute; c&ugrave;ng t&ecirc;n trong nội dung của bạn, lớp sẽ được ghi đ&egrave;.
+            </p>
+            <p>
+                <ul>
+                    <li>Chọn&mdash;Nếu đ&atilde; c&oacute; lớp c&oacute; c&ugrave;ng t&ecirc;n trong nội dung của bạn, lớp sẽ được ghi đ&egrave;. Dữ liệu đầu ra sẽ c&oacute; c&ugrave;ng hệ thống tọa độ như dữ liệu đầu v&agrave;o.
+                    </li>
+                    <li>Kh&ocirc;ng chọn&mdash;Nếu t&ecirc;n cung cấp cho lớp kết quả đ&atilde; c&oacute;, sẽ xảy ra lỗi v&agrave; phải đặt lại t&ecirc;n cho lớp kết quả trước khi chạy c&ocirc;ng cụ. Điều n&agrave;y l&agrave; mặc định.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="closeAnalysisWidget">
+        <div><h2>Đóng tiện ích phân tích sau khi chạy phân tích</h2></div>
+        <hr/>
+        <div>
+            
+            <p>T&ugrave;y chọn giữ hộp thoại ph&acirc;n t&iacute;ch lu&ocirc;n mở v&agrave; khả dụng trong l&uacute;c c&ocirc;ng cụ đang xử l&yacute;. C&agrave;i đặt n&agrave;y sẽ cho ph&eacute;p bạn dễ d&agrave;ng chỉnh sửa c&aacute;c th&ocirc;ng số ph&acirc;n t&iacute;ch của m&igrave;nh trong khi c&ocirc;ng việc ph&acirc;n t&iacute;ch trước đ&oacute; vẫn tiếp tục chạy. Ph&acirc;n t&iacute;ch l&agrave; một quy tr&igrave;nh tương t&aacute;c v&agrave; bằng c&aacute;ch giữ cho hộp thoại c&ocirc;ng cụ mở, cho ph&eacute;p bạn dễ d&agrave;ng thay đổi c&aacute;c th&ocirc;ng số v&agrave; chạy lại ph&acirc;n t&iacute;ch của m&igrave;nh.
+            </p>
+            <p>
+                <ul>
+                    <li>Chọn&mdash;Cửa sổ c&ocirc;ng cụ ph&acirc;n t&iacute;ch sẽ đ&oacute;ng v&agrave; trọng t&acirc;m sẽ được trở về lại bảng mục lục. Điều n&agrave;y l&agrave; mặc định
+                    </li>
+                    <li>Kh&ocirc;ng chọn&mdash;Cửa sổ c&ocirc;ng cụ ph&acirc;n t&iacute;ch vẫn mở v&agrave; được k&iacute;ch hoạt.   
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="storeAnalysisResults">
+        <div><h2>Lưu các kết quả phân tích cửa hàng dưới dạng dịch vụ đối tượng</h2></div>
+        <hr/>
+        <div>
+            
+            <p>T&ugrave;y chọn n&agrave;y nhằm x&aacute;c định xem kết quả ph&acirc;n t&iacute;ch của bạn sẽ được tạo ra dưới dạng một lớp đối tượng hay bộ sưu tập đối tượng.
+            </p>
+            <p>
+                <ul>
+                    <li>Chọn&mdash;Kết quả ph&acirc;n t&iacute;ch của bạn sẽ được tạo dưới dạng một lớp đối tượng v&agrave; hạng mục sẽ được tạo trong nội dung của bạn. Điều n&agrave;y l&agrave; mặc định.
+                    </li>
+                    <li>Kh&ocirc;ng chọn&mdash;Kết quả ph&acirc;n t&iacute;ch của bạn sẽ tạo bộ sưu tập đối tượng.    Bộ sưu tập đối tượng được lưu trong bản đồ web của bạn.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputCoordinateSystem">
+        <div><h2>Hệ tọa độ đầu ra</h2></div>
+        <hr/>
+        <div>
+            <p>C&agrave;i đặt m&ocirc;i trường cho ph&acirc;n t&iacute;ch raster được sử dụng để x&aacute;c định hệ tọa độ của lớp kết quả.    
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Tương tự với đầu v&agrave;o</b>&mdash;Kết quả ph&acirc;n t&iacute;ch của bạn sẽ trong c&ugrave;ng hệ tọa độ với đầu v&agrave;o. Điều n&agrave;y l&agrave; mặc định.
+                    </li>
+                    <li> <b>Như được x&aacute;c định</b>&mdash;Chọn hệ tọa độ cho kết quả ph&acirc;n t&iacute;ch của bạn.   Nếu chọn lựa chọn n&agrave;y, nhấp v&agrave;o biểu tượng quả địa cầu để chọn từ danh s&aacute;ch c&aacute;c hệ tọa độ được biết hoặc th&ecirc;m WKID tham chiếu kh&ocirc;ng gian v&agrave;o &ocirc; được cho.
+                    </li>
+                    <li> <b>Lớp
+&lt;name&gt;</b>&mdash;Chọn lớp hiện tại trong bản đồ web của bạn sẽ được sử dụng để x&aacute;c định hệ tọa độ của kết quả ph&acirc;n t&iacute;ch.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingCoordinateSystem">
+        <div><h2>Hệ tọa độ xử lý</h2></div>
+        <hr/>
+        <div>
+            <p>C&agrave;i đặt m&ocirc;i trường cho GeoAnalytics được sử dụng để x&aacute;c định hệ tọa độ m&agrave; ph&acirc;n t&iacute;ch của bạn sẽ sử dụng trong khi ph&acirc;n t&iacute;ch.   
+            </p>
+            <p>Đối với GeoAnalytics, một số ph&acirc;n t&iacute;ch đ&ograve;i hỏi phải tiến h&agrave;nh xử l&yacute; trong hệ tọa độ dự kiến.   Bất kỳ c&ocirc;ng cụ n&agrave;o thực hiện cho dữ liệu v&agrave;o th&ugrave;ng hoặc đơn vị tuyến t&iacute;nh đ&ograve;i hỏi phải c&oacute; hệ tọa độ dự kiến. 
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Tương tự với đầu v&agrave;o</b>&mdash;Ph&acirc;n t&iacute;ch của bạn sẽ trong c&ugrave;ng hệ tọa độ với đầu v&agrave;o. Điều n&agrave;y l&agrave; mặc định.
+                    </li>
+                    <li> <b>Như được x&aacute;c định</b>&mdash;Chọn hệ tọa độ để xử l&yacute; ph&acirc;n t&iacute;ch của bạn. Nếu chọn lựa chọn n&agrave;y, nhấp v&agrave;o biểu tượng quả địa cầu để chọn từ danh s&aacute;ch c&aacute;c hệ tọa độ dự kiến được biết hoặc th&ecirc;m WKID tham chiếu kh&ocirc;ng gian v&agrave;o &ocirc; được cho.
+                    </li>
+                    <li> <b>Lớp
+&lt;name&gt;</b>&mdash;Chọn lớp hiện tại từ bản đồ web của bạn.  Hệ tọa độ của lớp được chọn sẽ được sử dụng để x&aacute;c định hệ tọa độ sẽ được sử dụng để xử l&yacute; ph&acirc;n t&iacute;ch của bạn.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingExtent">
+        <div><h2>Phạm vi</h2></div>
+        <hr/>
+        <div>
+            <p>C&agrave;i đặt m&ocirc;i trường được sử dụng để x&aacute;c định phạm vi hoặc ranh giới sẽ được sử dụng trong khi ph&acirc;n t&iacute;ch. Mọi đối tượng đầu v&agrave;o ho&agrave;n to&agrave;n nằm trong hoặc giao cắt với phạm vi cụ thể sẽ được sử dụng trong ph&acirc;n t&iacute;ch.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Mặc định</b>&mdash;Sử dụng phạm vi do c&ocirc;ng cụ cung cấp.
+                    </li>
+                    <li> <b>Như được x&aacute;c định</b>&mdash;Nhập bằng tay tọa độ để x&aacute;c định phạm vi.
+                    </li>
+                    <li> <b>Lớp
+&lt;name&gt;</b>&mdash;Chọn lớp hiện tại từ bản đồ web của bạn. Phạm vi kh&ocirc;ng gian của lớp được chọn sẽ được sử dụng để x&aacute;c định phạm vi được sử dụng để xử l&yacute; ph&acirc;n t&iacute;ch của bạn. 
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="snapRaster">
+        <div><h2>Bắt dính trong Raster</h2></div>
+        <hr/>
+        <div>
+            <p>Khi thực hiện ph&acirc;n t&iacute;ch raster, c&agrave;i đặt m&ocirc;i trường  <b>Snap Raster</b> sẽ điều chỉnh phạm vi của lớp raster đầu ra để khớp với c&acirc;n chỉnh &ocirc; của lớp <b>Snap Raster</b> cụ thể.
+            </p>
+        </div>
+    </div>
+    <div id="cellSize">
+        <div><h2>Kích cỡ ô</h2></div>
+        <hr/>
+        <div>
+            <p>Khi thực hiện ph&acirc;n t&iacute;ch raster, m&ocirc;i trường c&agrave;i đặt k&iacute;ch cỡ &ocirc; hoặc giải ph&aacute;p sẽ được sử dụng để tạo lớp raster đầu ra. Giải ph&aacute;p đầu ra mặc định được x&aacute;c định bởi k&iacute;ch cỡ &ocirc; lớn nhất của lớp raster đầu v&agrave;o.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Đầu v&agrave;o tối thiểu</b>&mdash;Sử dụng k&iacute;ch cỡ &ocirc; nhỏ nhất của tất cả c&aacute;c lớp đầu v&agrave;o.
+                    </li>
+                    <li> <b>Đầu v&agrave;o tối đa</b>&mdash;Sử dụng k&iacute;ch cỡ &ocirc; lớn nhất của tất cả c&aacute;c lớp đầu v&agrave;o. Điều n&agrave;y l&agrave; mặc định.
+                    </li>
+                    <li> <b>Như được x&aacute;c định</b>&mdash;N&ecirc;u r&otilde; gi&aacute; trị số để c&agrave;i đặt k&iacute;ch cỡ &ocirc;. Nếu chọn điều n&agrave;y, gi&aacute; trị mặc định l&agrave; 1.
+                    </li>
+                    <li> <b>Lớp &lt;name&gt;</b>&mdash;C&agrave;i đặt k&iacute;ch cỡ &ocirc; th&agrave;nh lớp raster được chọn.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="mask">
+        <div><h2>Mặt nạ</h2></div>
+        <hr/>
+        <div>
+            <p> Khi thực hiện ph&acirc;n t&iacute;ch raster, sử dụng m&ocirc;i trường <b>Mặt nạ</b> để x&aacute;c định lớp sẽ được sử dụng để x&aacute;c định phạm vi quan t&acirc;m.   Chỉ những &ocirc; nằm trong mặt nạ ph&acirc;n t&iacute;ch mới được xem x&eacute;t trong khi ph&acirc;n t&iacute;ch.
+            </p>
+            <ul>
+                <li>Mặt nạ c&oacute; thể l&agrave; lớp raster hoặc lớp đối tượng.
+                </li>
+                <li>Nếu mặt nạ ph&acirc;n t&iacute;ch l&agrave; raster, th&igrave; tất cả c&aacute;c &ocirc; c&oacute; gi&aacute; trị sẽ được xem x&eacute;t để x&aacute;c định mặt nạ. C&aacute;c &ocirc; trong raster mặt nạ Kh&ocirc;ng c&oacute; Dữ liệu sẽ được xem l&agrave; b&ecirc;n ngo&agrave;i mặt nạ v&agrave; sẽ l&agrave; Kh&ocirc;ng c&oacute; Dữ liệu trong lớp kết quả ph&acirc;n t&iacute;ch. 
+                </li>
+                <li>Nếu mặt nạ ph&acirc;n t&iacute;ch l&agrave; lớp đối tượng, n&oacute; sẽ được chuyển th&agrave;nh raster khi thực hiện. V&igrave; l&yacute; do n&agrave;y, bạn n&ecirc;n ch&uacute; &yacute; để đảm bảo rằng  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">K&iacute;ch cỡ &Ocirc;</a> v&agrave; <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">Snap Raster</a> được c&agrave;i đặt th&iacute;ch hợp cho ph&acirc;n t&iacute;ch của bạn.
+                </li>
+            </ul>
+             
+        </div>
+    </div>
+</div>
+</html>

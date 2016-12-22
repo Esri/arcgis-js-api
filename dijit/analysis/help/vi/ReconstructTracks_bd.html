@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Tái tạo Đường đi</h2><p/>
+        <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="T&aacute;i tạo Đường đi"></h2>
+        <hr/>
+    <p>C&ocirc;ng cụ n&agrave;y l&agrave;m việc với lớp k&iacute;ch hoạt thời gian của đối tượng điểm hoặc đa gi&aacute;c thể hiện một  <code>thời điểm tức th&igrave;</code>. Trước ti&ecirc;n, c&ocirc;ng cụ x&aacute;c định những đối tượng thuộc một đường đi bằng c&aacute;ch sử dụng m&atilde; định danh. Bằng c&aacute;ch sử dụng thời gian tại mỗi vị tr&iacute;, c&aacute;c đường đi được sắp xếp theo tr&igrave;nh tự v&agrave; chuyển v&agrave;o một đường hoặc đa gi&aacute;c thể hiện đường dẫn của chuyển động theo thời gian. Đầu v&agrave;o c&oacute; thể được tạo v&ugrave;ng đệm bởi một trường, điều n&agrave;y sẽ tạo ra một đa gi&aacute;c tại mỗi vị tr&iacute;. Hoặc nếu đầu v&agrave;o l&agrave; c&aacute;c đa gi&aacute;c, c&aacute;c điểm được đệm n&agrave;y sẽ được li&ecirc;n kết theo tr&igrave;nh tự để tạo ra đường đi l&agrave; một đa gi&aacute;c, trong đ&oacute; chiều rộng thể hiện thuộc t&iacute;nh li&ecirc;n quan. Đường đi kết quả c&oacute; thời gian bắt đầu v&agrave; kết th&uacute;c, thể hiện thuộc t&iacute;nh đầu v&agrave; cuối về thời gian trong đường đi cho trước. Khi tạo c&aacute;c đường đi, số liệu thống k&ecirc; về đối tượng đầu v&agrave;o được t&iacute;nh to&aacute;n v&agrave; g&aacute;n cho đường đi đầu ra. Số liệu thống k&ecirc; cơ bản nhất l&agrave; số điểm trong một v&ugrave;ng, nhưng bạn cũng c&oacute; thể t&iacute;nh to&aacute;n những số liệu thống k&ecirc; kh&aacute;c.
+    </p>
+    <p>C&aacute;c đối tượng trong lớp k&iacute;ch hoạt thời gian c&oacute; thể được thể hiện theo một trong hai c&aacute;ch sau:
+        <ul>
+            <li>Tức th&igrave;&mdash;Một thời điểm
+            </li>
+            <li>Khoảng&mdash;Thời gian bắt đầu v&agrave; kết th&uacute;c
+            </li>
+        </ul>
+        
+    </p>
+    <p>V&iacute; dụ, giả sử bạn c&oacute; c&aacute;c gi&aacute; trị đo GPS của cơn b&atilde;o sau mỗi 10 ph&uacute;t. Mỗi gi&aacute; trị đo GPS ghi lại t&ecirc;n, vị tr&iacute; v&agrave; thời gian ghi cơn b&atilde;o cũng như tốc độ gi&oacute;. Với th&ocirc;ng tin n&agrave;y, bạn c&oacute; thể tạo đường đi cho mỗi cơn b&atilde;o bằng c&aacute;ch sử dụng t&ecirc;n để nhận dạng đường đi v&agrave; c&aacute;c đường đi cho mỗi cơn b&atilde;o sẽ được tạo. B&ecirc;n cạnh đ&oacute;, bạn c&oacute; thể t&iacute;nh to&aacute;n c&aacute;c số liệu thống k&ecirc; như tốc độ gi&oacute; trung b&igrave;nh, lớn nhất v&agrave; nhỏ nhất của mỗi cơn b&atilde;o, cũng như c&aacute;c gi&aacute; trị đo trong mỗi đường đi.
+    </p>
+    <p>Bằng c&aacute;ch sử dụng c&ugrave;ng v&iacute; dụ n&agrave;y, bạn c&oacute; thể tạo v&ugrave;ng đệm cho đường đi của m&igrave;nh theo tốc độ gi&oacute;. Điều n&agrave;y c&oacute; thể tạo v&ugrave;ng đệm cho mỗi gi&aacute; trị đo bằng trường tốc độ gi&oacute; tại điểm đ&oacute; v&agrave; li&ecirc;n kết c&aacute;c v&ugrave;ng được đệm với nhau, tạo ra một đa gi&aacute;c đại diện cho đường dẫn đường đi, cũng như những thay đổi về tốc độ gi&oacute; khi cơn b&atilde;o tiếp tục.   
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Chọn đối tượng để tái tạo đường đi từ đó</h2></div>
+        <hr/>
+        <div>
+            <p>Lớp điểm hoặc đa gi&aacute;c sẽ được t&aacute;i tạo th&agrave;nh đường đi.
+            </p>
+            <p>B&ecirc;n cạnh việc chọn một lớp từ bản đồ, bạn c&oacute; thể chọn  <b>Duyệt Lớp</b> ở b&ecirc;n dưới danh s&aacute;ch thả xuống để duyệt đến nội dung của m&igrave;nh đối với tập dữ liệu chia sẻ tệp dữ liệu lớn hoặc lớp đối tượng.  
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>Chọn trường được sử dụng để xác định đường đi</h2></div>
+        <hr/>
+        <div>
+            <p> C&aacute;c trường thể hiện m&atilde; định danh của đường đi.
+            </p>
+            <p> V&iacute; dụ: nếu bạn đang t&aacute;i tạo đường đi của cơn b&atilde;o, bạn c&oacute; thể sử dụng t&ecirc;n cơn b&atilde;o l&agrave;m trường đường đi.
+            </p>
+        </div>
+    </div>
+    <div id="method">
+        <div><h2>Chọn phương pháp được sử dụng để tái tạo đường đi</h2></div>
+        <hr/>
+        <div>
+            <p>Phương ph&aacute;p sử dụng để li&ecirc;n kết c&aacute;c đường đi v&agrave; tạo v&ugrave;ng đệm (nếu c&oacute;). Phương ph&aacute;p  <b>Phẳng</b> c&oacute; thể t&iacute;nh to&aacute;n kết quả nhanh hơn, nhưng sẽ kh&ocirc;ng bẻ đường đi xung quanh đường chuẩn ng&agrave;y quốc tế hoặc t&iacute;nh đến h&igrave;nh dạng thực tế của tr&aacute;i đất khi tạo v&ugrave;ng đệm. Phương ph&aacute;p <b>Trắc địa</b> sẽ bẻ đường đi xung quanh đường chuẩn ng&agrave;y nếu cần thiết v&agrave; &aacute;p dụng v&ugrave;ng đệm trắc địa để t&iacute;nh đến h&igrave;nh dạng tr&aacute;i đất.
+            </p>
+        </div>
+    </div>
+    <div id="bufferField">
+        <div><h2>Tạo biểu thức để làm khoảng cách đệm cho đối tượng đầu vào bằng (tùy chọn)</h2></div>
+        <hr/>
+        <div>
+            <p>Phương tr&igrave;nh được sử dụng để t&iacute;nh to&aacute;n khoảng c&aacute;ch v&ugrave;ng đệm xung quanh c&aacute;c đối tượng đầu v&agrave;o. C&oacute; thể tạo phương tr&igrave;nh n&agrave;y bằng c&aacute;ch sử dụng m&aacute;y t&iacute;nh v&ugrave;ng đệm v&agrave; c&aacute;c ph&eacute;p to&aacute;n cơ bản như cộng, trừ, nh&acirc;n v&agrave; chia được hỗ trợ. C&aacute;c gi&aacute; trị được t&iacute;nh to&aacute;n bằng c&aacute;ch sử dụng hệ tọa độ ph&acirc;n t&iacute;ch.
+            </p>
+        </div>
+    </div>
+    <div id="timeSplit">
+        <div><h2>Chọn thời gian để phân chia đường đi bằng (tùy chọn)</h2></div>
+        <hr/>
+        <div>
+            <p>Thời gian sử dụng để chia đường đi. Nếu c&aacute;c điểm đầu v&agrave;o hoặc đa gi&aacute;c c&oacute; thời gian d&agrave;i hơn phần chia thời gian, ch&uacute;ng sẽ được chia th&agrave;nh c&aacute;c đường đi kh&aacute;c nhau.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Thêm số liệu thống kê (tùy chọn)</h2></div>
+        <hr/>
+        <div>
+            <p> Bạn c&oacute; thể t&iacute;nh to&aacute;n số liệu thống k&ecirc; về c&aacute;c đối tượng được tổng kết. Tr&ecirc;n c&aacute;c trường số, bạn c&oacute; thể t&iacute;nh to&aacute;n những nội dung sau:
+                <ul>
+                    <li>Số lượng
+                    </li>
+                    <li>Trung b&igrave;nh
+                    </li>
+                    <li>Tối thiểu
+                    </li>
+                    <li>Tối đa
+                    </li>
+                    <li>Khoảng
+                    </li>
+                    <li>Phương sai
+                    </li>
+                    <li>Độ lệch chuẩn
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Tr&ecirc;n c&aacute;c trường chuỗi, bạn c&oacute; thể t&iacute;nh to&aacute;n những nội dung sau:
+                <ul>
+                    <li>Số lượng
+                    </li>
+                    <li>Bất kỳ&mdash;Số liệu thống k&ecirc; n&agrave;y l&agrave; mẫu ngẫu nhi&ecirc;n của một gi&aacute; trị chuỗi trong trường x&aacute;c định.
+                    </li>
+                </ul>
+                Tất cả số liệu thống k&ecirc; được t&iacute;nh to&aacute;n tr&ecirc;n c&aacute;c gi&aacute; trị kh&ocirc;ng rỗng. Lớp kết quả sẽ chứa một trường mới cho mỗi số liệu thống k&ecirc; được t&iacute;nh to&aacute;n. C&oacute; thể th&ecirc;m bất kỳ số liệu thống k&ecirc; n&agrave;o bằng c&aacute;ch chọn một thuộc t&iacute;nh v&agrave; số liệu thống k&ecirc;. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Chọn kho dữ liệu</h2></div>
+        <hr/>
+        <div>
+            <p>Đ&acirc;y l&agrave; một tham số thời gian cho bản ph&aacute;t h&agrave;nh trước để thiết lập kho dữ liệu sẽ lưu kết quả. Cả hai kho dữ liệu l&agrave; một phần của  ArcGIS Data Store. Nếu bạn chọn kho dữ liệu kh&ocirc;ng gian thời gian, nhưng kh&ocirc;ng c&agrave;i đặt, c&ocirc;ng cụ sẽ thất bại. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tên lớp kết quả</h2></div>
+        <hr/>
+        <div>
+            <p> Đ&acirc;y l&agrave; t&ecirc;n lớp sẽ được tạo trong mục <b>Nội dung của T&ocirc;i</b> v&agrave; th&ecirc;m v&agrave;o bản đồ. T&ecirc;n mặc định dựa v&agrave;o t&ecirc;n c&ocirc;ng cụ v&agrave; t&ecirc;n lớp đầu v&agrave;o. Nếu lớp đ&atilde; tồn tại, c&ocirc;ng cụ sẽ thất bại.
+            </p>
+            <p>Sử dụng chức năng  <b>Lưu kết quả</b> trong hộp xổ xuống, bạn c&oacute; thể chỉ định t&ecirc;n thư mục trong mục <b>Nội dung của T&ocirc;i</b> nơi sẽ lưu trữ kết quả của bạn.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

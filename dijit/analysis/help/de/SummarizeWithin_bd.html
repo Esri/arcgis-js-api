@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Zusammenfassen (innerhalb)</h2><p/>
+        <h2><img src="../images/GUID-90E0CB1F-EB97-4752-B2EE-452B7B45475E-web.png" alt="Zusammenfassen (innerhalb)"></h2>
+        <hr/>
+    <p>Dieses Werkzeug findet Features (und Teile von Features), die sich innerhalb der Grenzen von Fl&auml;chen im ersten Eingabe-Layer befinden.  
+        <ul>
+            <li>Ermitteln Sie anhand eines Layers mit Grenzen von Abflussgebieten und eines Layers mit Grenzen von Landnutzungsfl&auml;chen die Gesamtlandwirtschaftsfl&auml;che des Landnutzungstyps f&uuml;r jedes Abflussgebiet. 
+            </li>
+            <li>Anhand eines Flurst&uuml;cks-Layers in einem Landkreis und eines Stadtgrenzen-Layers l&auml;sst sich der durchschnittliche Grundst&uuml;ckswert unbebauter Flurst&uuml;cke je Stadt zusammenfassen.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Wenn die Option  <b>Aktuelle Kartenausdehnung verwenden</b> aktiviert ist, werden nur die Features im Eingabe-Layer und dem zusammenfassenden Layer analysiert, die in der aktuellen Kartenausdehnung sichtbar sind.  Wenn diese Option deaktiviert ist, werden auch dann alle Features im Eingabe- und im zusammenfassenden Layer analysiert, wenn sie sich au&szlig;erhalb der aktuellen Ausdehnung befinden.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="sumWithinLayer">
+        <div><h2>Flächen-Layer auswählen, um andere Features innerhalb dessen Grenzen zusammenzufassen</h2></div>
+        <hr/>
+        <div>
+            <p>Der Fl&auml;chen-Layer, anhand dessen Features zusammengefasst werden, die innerhalb seiner Grenzen liegen. Sie k&ouml;nnen innerhalb eines Polygon-Layer zusammenfassen, den Sie bereitstellen, oder innerhalb von Rechteck- oder Hexagonabschnitten, die beim Ausf&uuml;hren des Werkzeugs erstellt werden.  Beim Erstellen von Abschnitten geben die f&uuml;r  <b>Quadrat</b> angegebene Zahl und die Einheiten die H&ouml;he und L&auml;nge des Quadrats an. Bei <b>Hexagon</b> wird anhand der angegebenen Zahl und der Einheiten die Entfernung zwischen parallelen Seiten festgelegt.
+            </p>
+            <p>Sie k&ouml;nnen nicht nur einen Layer aus der Karte ausw&auml;hlen, sondern auch unten in der Dropdown-Liste  <b>Layer durchsuchen</b> ausw&auml;hlen, um zu Ihren f&uuml;r ein Big-Data-Dateifreigabe-Dataset bzw. -Feature-Layer zu navigieren.  
+            </p>
+        </div>
+    </div>
+    <div id="summaryLayer">
+        <div><h2>Layer für die Zusammenfassung auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Features in diesem Layer, die innerhalb der Grenzen der Features im oben genannten Eingabe-Layer oder in den oben genannten Abschnitten liegen, werden zusammengefasst. 
+            </p>
+            <p>Sie k&ouml;nnen nicht nur einen Layer aus der Karte ausw&auml;hlen, sondern auch unten in der Dropdown-Liste  <b>Layer durchsuchen</b> ausw&auml;hlen, um zu Ihren f&uuml;r ein Big-Data-Dateifreigabe-Dataset bzw. -Feature-Layer zu navigieren.  
+            </p>
+        </div>
+    </div>
+    <div id="inputBins">
+        <div><h2>Eine Entfernung zum Erstellen von Abschnitten auswählen, in die aggregiert werden soll</h2></div>
+        <hr/>
+        <div>
+            <p>Die zum Generieren von Abschnitten verwendete Entfernung.  
+            </p>
+            <p>Es muss entweder eine  <b>Abschnittsgr&ouml;&szlig;e</b> f&uuml;r Abschnitte oder ein <b>Fl&auml;chen-Layer</b> festgelegt werden.
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Mit Zeitintervallen aggregieren (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Wenn Zeiteigenschaften f&uuml;r den Eingabepunkt-Layer aktiviert sind und vom Typ &quot;Sofort&quot; sind, kann die Analyse mittels Zeitintervallen durchgef&uuml;hrt werden.  Bei Verwendung von Zeit k&ouml;nnen drei Parameter festgelegt werden:
+                <ul>
+                    <li>  <b>Zeitintervall</b>
+                    </li>
+                    <li> <b>Zeitschritt</b>
+                    </li>
+                    <li> <b>Bezugszeit</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Angenommen, Ihre Daten stellen ein Jahr dar und Sie m&ouml;chten eine Analyse mit w&ouml;chentlichen Abschnitten durchf&uuml;hren. Dazu muss das  <b>Zeitintervall</b> auf <code>1 Woche</code> festgelegt werden.
+            </p>
+            <p> Angenommen, Ihre Daten stellen ein Jahr dar und Sie m&ouml;chten eine Analyse mit der ersten Woche des Monats durchf&uuml;hren. Dazu legen Sie das <b>Zeitintervall</b> auf <code>1 Woche</code>, den <b>Zeitschritt</b> auf <code>1 Monat</code> und die <b>Bezugszeit</b> auf <code>1. Januar, 12:00 Uhr</code> ein.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>Zeitintervall, in das aggregiert werden soll</h2></div>
+        <hr/>
+        <div>
+            <p>Das Zeitintervall zum Aufteilen der Daten. Das Zeitintervall kann alleine oder mit den Parametern  <b>Zeitschritt</b> oder <b>Bezugszeit</b> verwendet werden.
+            </p>
+            <p> Wenn Sie Zeitabschnitte erstellen m&ouml;chten, die jeden Montag von 9:00 bis 10:00 Uhr stattfinden, betr&auml;gt das <b>Zeitintervall</b> <code>1 Stunde</code>, der <b>Zeitschritt</b> <code>1 Woche</code> und lautet die <b>Bezugszeit</b> <code>9:00:00 Uhr am Montag</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>Zeitschritt, in den aggregiert werden soll</h2></div>
+        <hr/>
+        <div>
+            <p> Der Schritt zum Berechnen eines Zeitabschnitts. Der <b>Zeitschritt</b> kann alleine oder mit dem <b>Zeitintervall</b>, mit dem <b>Zeitbezug</b> oder sowohl mit dem <b>Zeitintervall</b> als auch mit der <b>Bezugszeit</b> verwendet werden.
+            </p>
+            <p> Wenn Sie Zeitabschnitte erstellen m&ouml;chten, die jeden Montag von 9:00 bis 10:00 Uhr stattfinden, betr&auml;gt das <b>Zeitintervall</b> <code>1 Stunde</code>, der <b>Zeitschritt</b> <code>1 Woche</code> und lautet die <b>Bezugszeit</b> <code>9:00:00 Uhr am Montag</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Bezugszeit zum Ausrichten der Zeitintervalle</h2></div>
+        <hr/>
+        <div>
+            <p>Das Datum und die Uhrzeit zum Ausrichten der Zeitintervalle.  <b>Zeitschritt</b> startet ab der Bezugszeit und l&auml;uft r&uuml;ckw&auml;rts.
+            </p>
+            <p> Wenn Sie Zeitabschnitte erstellen m&ouml;chten, die jeden Montag von 9:00 bis 10:00 Uhr stattfinden, betr&auml;gt das <b>Zeitintervall</b> <code>1 Stunde</code>, der <b>Zeitschritt</b> <code>1 Woche</code> und lautet die <b>Bezugszeit</b> <code>9:00:00 Uhr am Montag</code>.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Statistiken aus dem Layer hinzufügen, der zusammengefasst werden soll (optional)</h2></div>
+        <hr/>
+        <div>
+            <p> Sie k&ouml;nnen Statistiken f&uuml;r Features berechnen, die zusammengefasst wurden. F&uuml;r numerische Felder kann Folgendes berechnet werden:
+                <ul>
+                    <li>Anzahl
+                    </li>
+                    <li>Mittelwert
+                    </li>
+                    <li>Min.
+                    </li>
+                    <li>Max.
+                    </li>
+                    <li>Bereich
+                    </li>
+                    <li>Varianz
+                    </li>
+                    <li>Standardabweichung
+                    </li>
+                </ul>
+                
+            </p>
+            <p>F&uuml;r Zeichenfolgenfelder kann Folgendes berechnet werden:
+                <ul>
+                    <li>Anzahl
+                    </li>
+                    <li>Beliebig: Diese Statistik ist eine auf dem Zufallsprinzip basierende Stichprobe eines Zeichenfolgenwertes im angegebenen Feld.
+                    </li>
+                </ul>
+                Alle Statistiken werden f&uuml;r Nicht-NULL-Werte berechnet. Der resultierende Layer enth&auml;lt ein neues Feld f&uuml;r jede berechnete Statistik. Jede Anzahl von Statistiken kann durch Auswahl eines Attributs und einer Statistik ausgew&auml;hlt werden. 
+            </p>
+            <p>Neben diesen Statistiken werden proportionale Statistiken f&uuml;r alle numerischen Felder berechnet:
+                <ul>
+                    <li>Anzahl: Die Anzahl jedes Feldes wird mit dem Anteil des Zusammenfassungs-Layers innerhalb der Polygone multipliziert. 
+                    </li>
+                    <li>Summe: Die Summe der gewichteten Werte in jedem Feld. Die Gewichtung entspricht dem Anteil des Zusammenfassungs-Layers innerhalb der Polygone.
+                    </li>
+                    <li>Mittelwert: Der gewichtete Mittelwert der Werte in jedem Feld. Die Gewichtung entspricht dem Anteil des Zusammenfassungs-Layers innerhalb der Polygone.
+                    </li>
+                    <li>Min.: Der Minimalwert der gewichteten Werte in jedem Feld. Die Gewichtung entspricht dem Anteil des Zusammenfassungs-Layers innerhalb der Polygone.
+                    </li>
+                    <li>Max.: Der Maximalwert der gewichteten Werte in jedem Feld. Die Gewichtung entspricht dem Anteil des Zusammenfassungs-Layers innerhalb der Polygone.
+                    </li>
+                    <li>Bereich: Die Differenz zwischen den Maximal- und Minimalwerten.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Je nach Feature-Typen, die Sie zusammenfassen, wird die Gesamtzahl nahe gelegener Punkte, die Gesamtl&auml;nge der Linien oder die Gesamtfl&auml;che berechnet.
+            </p>
+        </div>
+    </div>
+    <div id="spatialReference">
+        <div><h2>SpatialReference (WKID)</h2></div>
+        <hr/>
+        <div>
+            <p>Dies ist ein tempor&auml;rer Parameter f&uuml;r die Vorabversion zum Festlegen des Raumbezugs f&uuml;r die Verarbeitung. Viele Big-Data-Werkzeuge erfordern die Verwendung eines projizierten Koordinatensystems als Raumbezug f&uuml;r die Verarbeitung. Das Werkzeug verwendet standardm&auml;&szlig;ig das Eingabe-Koordinatensystem, kann jedoch nicht ausgef&uuml;hrt werden, wenn es sich um ein geographisches Koordinatensystem handelt. Geben Sie zum Festlegen eines projizierten Koordinatensystems die WKID ein. Die Eingabe f&uuml;r  <b>Web Mercator</b> ist beispielsweise <code>3857</code>.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Data Store auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Dies ist ein tempor&auml;rer Parameter f&uuml;r die Vorabversion zum Festlegen des Data Store, in dem die Ergebnisse gespeichert werden. Beide Data Stores sind Teil des  ArcGIS Data Store. Wenn Sie den Data Store &quot;spatiotemporal&quot; ausw&auml;hlen, aber nicht installiert haben, kann das Werkzeug nicht ausgef&uuml;hrt werden. </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Name des Ergebnis-Layers</h2></div>
+        <hr/>
+        <div>
+            <p> Dies ist der Name des Layers, der in <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird.  Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, kann das Werkzeug nicht ausgef&uuml;hrt werden.
+            </p>
+            <p>&Uuml;ber das Dropdown-Feld  <b>Ergebnis speichern in</b> k&ouml;nnen Sie den Namen eines Ordners in <b>Eigene Inhalte</b> angeben, in dem das Ergebnis gespeichert werden soll.
+            </p>
+        </div>
+    </div>
+</div>
+</html>
