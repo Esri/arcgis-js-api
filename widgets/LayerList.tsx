@@ -4,7 +4,7 @@
  * @module esri/widgets/LayerList
  * @since 4.2
  *
- * @see [LayerList.js (widget view)]({{ JSAPI_BOWER_URL }}/widgets/LayerList.js)
+ * @see [LayerList.tsx (widget view)]({{ JSAPI_BOWER_URL }}/widgets/LayerList.tsx)
  * @see [LayerList.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_LayerList.scss)
  * @see [Sample - LayerList widget](../sample-code/widgets-layerlist/index.html)
  * @see [Sample - LayerList widget with actions](../sample-code/widgets-layerlist-actions/index.html)
@@ -111,14 +111,13 @@ const VISIBILITY_MODES = {
 const DEFAULT_ACTION_IMAGE = require.toUrl("./LayerList/images/default-action.svg");
 
 /**
- * Fires after the user clicks on an [action](#actions) inside the LayerList widget. This
- * event may be used to define a custom function to execute when particular
+ * Fires after the user clicks on an {@link module:esri/support/Action action} inside the LayerList widget.
+ * This event may be used to define a custom function to execute when particular
  * actions are clicked.
  *
  * @event module:esri/widgets/LayerList#trigger-action
- * @property {Object} action - The action clicked by the user. For a description
- *                    of this object and a specification of its properties,
- *                    see the [actions](#actions) property of this class.
+ * @property {module:esri/support/Action} action - The action clicked by the user.
+ * @property {module:esri/widgets/LayerList/ListItem} item - An item associated with the action.
  */
 
 @subclass("esri.widgets.LayerList")
@@ -178,9 +177,11 @@ class LayerList extends declared(Widget) {
   //----------------------------------
 
   /**
-   * Specify the function that will create actions for {@link module:esri/widgets/LayerList/ListItem ListItems}. 
-   * Actions are defined with the properties listed in the {@link module:esri/support/Action Action class}. 
+   * Specify the function that will create actions for {@link module:esri/widgets/LayerList/ListItem ListItems}.
+   * Actions are defined with the properties listed in the {@link module:esri/support/Action Action class}.
    *
+   * @name createActionsFunction
+   * @instance
    * @type {function}
    * @see [Sample - LayerList widget with actions](../sample-code/widgets-layerlist-actions/index.html)
    */
@@ -195,7 +196,7 @@ class LayerList extends declared(Widget) {
   /**
    * @todo document errorsVisible property
    * @type {boolean}
-   * @default
+   * @default false
    * @ignore
    */
   @property()
@@ -207,14 +208,15 @@ class LayerList extends declared(Widget) {
   //----------------------------------
 
   /**
-   * @todo document operationalItems property
+   * A collection of {@link module:esri/widgets/LayerList/ListItem}s representing operational layers.
+   * @name operationalItems
+   * @instance
    * @type {module:esri/core/Collection}
-   * @default
-   * @ignore
+   *
    */
   @aliasOf("viewModel.operationalItems")
   @renderable()
-  operationalItems: Collection<ListItem>;
+  operationalItems: Collection<ListItem> = null;
 
   //----------------------------------
   //  view
@@ -225,7 +227,7 @@ class LayerList extends declared(Widget) {
    *
    * @name view
    * @instance
-   * @type {(module:esri/views/SceneView|module:esri/views/MapView)}
+   * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
   @renderable()
@@ -241,6 +243,8 @@ class LayerList extends declared(Widget) {
    * {@link module:esri/widgets/LayerList/LayerListViewModel} class to access
    * all properties and methods on the widget.
    *
+   * @name viewModel
+   * @instance
    * @type {module:esri/widgets/LayerList/LayerListViewModel}
    * @default
    */
@@ -258,13 +262,14 @@ class LayerList extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   /**
-   * Triggers the [trigger-action](#event:trigger-action) event and executes the [action](#actions)
-   * at the specified index in the [actions](#actions) array.
+   * Triggers the [trigger-action](#event:trigger-action) event and executes
+   * the given {@link module:esri/support/Action action}.
    *
-   * @param {number} actionIndex - The index of the [action](#actions) to execute.
+   * @param {module:esri/support/Action} - The action to execute.
+   * @param {module:esri/widgets/LayerList/ListItem} - An item associated with the action.
    */
   @aliasOf("viewModel.triggerAction")
-  triggerAction: (action: Action) => void;
+  triggerAction(action: Action, item: ListItem): void {}
 
   render() {
     const items = this._getItems();
@@ -323,7 +328,7 @@ class LayerList extends declared(Widget) {
 
     const actionsCount = this._countActions(item.actionsSections);
 
-    const firstActionButton = actionsCount ? this._renderActionMenuItem(item.actionsSections) : null;
+    const firstActionButton = actionsCount ? this._renderActionMenuItem(item, item.actionsSections) : null;
 
     const actionsMenuIconClasses = {
       [CSS.iconEllipses]: !item.actionsOpen,
@@ -334,7 +339,7 @@ class LayerList extends declared(Widget) {
       <div key={`${item.uid}__actions-menu-toggle`} data-item={item} onclick={this._toggleActionsOpen} onkeydown={this._toggleActionsOpen}
         class={CSS.actionsMenuItem} tabindex="0" role="button" aria-controls={actionsUid}
         aria-expanded={item.actionsOpen ? "true" : "false"} title={item.actionsOpen ? i18nCommon.close : i18nCommon.open}>
-        <span aria-hidden="true" classes={actionsMenuIconClasses}></span>
+        <span aria-hidden="true" classes={actionsMenuIconClasses} />
       </div>
     ) : null;
 
@@ -360,9 +365,9 @@ class LayerList extends declared(Widget) {
         data-item={item} key={`${uid}__toggle-children`} class={CSS.childToggle} tabindex="0"
         role="button" aria-expanded={item.open ? "true" : "false"} aria-controls={uid}
         title={item.open ? i18nCommon.collapse : i18nCommon.expand}>
-        <span aria-hidden="true" class={join(CSS.childClosed, CSS.iconRightArrow)}></span>
-        <span aria-hidden="true" class={join(CSS.childOpened, CSS.iconDownArrow)}></span>
-        <span aria-hidden="true" class={join(CSS.childClosed_RTL, CSS.iconLeftArrow)}></span>
+        <span aria-hidden="true" class={join(CSS.childClosed, CSS.iconRightArrow)} />
+        <span aria-hidden="true" class={join(CSS.childOpened, CSS.iconDownArrow)} />
+        <span aria-hidden="true" class={join(CSS.childClosed_RTL, CSS.iconLeftArrow)} />
       </span>
     ) : null;
 
@@ -370,7 +375,7 @@ class LayerList extends declared(Widget) {
 
     const errorBlock = hasError ? (
       <div key={`${item.uid}__error`} class={CSS.errorMessage} role="alert">
-        <span aria-hidden="true" class={CSS.iconNoticeTriangle}></span>
+        <span aria-hidden="true" class={CSS.iconNoticeTriangle} />
         <span>{errorMessage}</span>
       </div>
     ) : null;
@@ -418,7 +423,7 @@ class LayerList extends declared(Widget) {
           title={!item.visibleAtCurrentScale ? i18n.layerInvisibleAtScale : item.visible ? i18nCommon.visibility.hide : i18nCommon.visibility.show}>
           <span class={CSS.toggleVisible}>
             <span class={CSS.toggleVisibleIcon}>
-              <span aria-hidden="true" classes={toggleIconClasses}></span>
+              <span aria-hidden="true" classes={toggleIconClasses} />
             </span>
           </span>
           {title}
@@ -426,7 +431,7 @@ class LayerList extends declared(Widget) {
       );
   }
 
-  private _renderActionMenuItem(actionsSections: Collection<Collection<Action>>): any {
+  private _renderActionMenuItem(item: ListItem, actionsSections: Collection<Collection<Action>>): any {
     const actionSection = actionsSections.getItemAt(0);
     const action = actionSection && actionSection.getItemAt(0);
 
@@ -440,10 +445,10 @@ class LayerList extends declared(Widget) {
       };
 
       return (
-        <div key={`${action.uid}__action-menu-item`} bind={this} data-action={action} onclick={this._triggerAction}
+        <div key={`${action.uid}__action-menu-item`} bind={this} data-item={item} data-action={action} onclick={this._triggerAction}
           onkeydown={this._triggerAction} class={CSS.actionsMenuItem} role="button"
           tabindex="0" title={action.title}>
-          <span classes={iconClasses} styles={actionStyles}></span>
+          <span classes={iconClasses} styles={actionStyles} />
         </div>
       );
     }
@@ -494,7 +499,7 @@ class LayerList extends declared(Widget) {
     const actionSection = actionSectionsArray.map(actionSection => {
       return (
         <ul key={`${item.uid}__actions-list`} class={CSS.actionsList}>
-          {this._renderActionSection(actionSection)}
+          {this._renderActionSection(item, actionSection)}
         </ul>
       );
     });
@@ -506,12 +511,12 @@ class LayerList extends declared(Widget) {
     );
   }
 
-  private _renderActionSection(actionSection: Collection<Action>): any {
+  private _renderActionSection(item: ListItem, actionSection: Collection<Action>): any {
     const actionSectionArray = actionSection && actionSection.toArray();
-    return actionSectionArray.map(action => this._renderAction(action));
+    return actionSectionArray.map(action => this._renderAction(item, action));
   }
 
-  private _renderAction(action: Action): any {
+  private _renderAction(item: ListItem, action: Action): any {
     const actionStyles = this._getActionImageStyles(action);
 
     const iconClasses = {
@@ -520,10 +525,10 @@ class LayerList extends declared(Widget) {
     };
 
     return (
-      <li key={`${action.uid}__action`} bind={this} data-action={action} onclick={this._triggerAction}
+      <li key={`${action.uid}__action`} bind={this} data-item={item} data-action={action} onclick={this._triggerAction}
         onkeydown={this._triggerAction} class={CSS.action} tabindex="0"
         role="button" title={action.title}>
-        <span aria-hidden="true" class={CSS.actionIcon} classes={iconClasses} styles={actionStyles}></span>
+        <span aria-hidden="true" class={CSS.actionIcon} classes={iconClasses} styles={actionStyles} />
         <span class={CSS.actionTitle}>{action.title}</span>
       </li>
     );
@@ -554,8 +559,9 @@ class LayerList extends declared(Widget) {
   @accessibleHandler()
   private _triggerAction(event: Event): void {
     const node = event.currentTarget as Element;
-    const action = node["data-action"];
-    this.triggerAction(action);
+    const action = node["data-action"] as Action;
+    const item = node["data-item"] as ListItem;
+    this.triggerAction(action, item);
   }
 
   @accessibleHandler()

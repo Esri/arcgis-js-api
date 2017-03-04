@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define({searchButtonTitle:"חפש",clearButtonTitle:"נקה חיפוש",placeholder:"מצא כתובת או מקום",searchIn:"חפש בתוך",lonlat:"קו אורך, קו רוחב",reverseLonLatHeader:"האם התכוונת?",all:"הכל",allPlaceholder:"מצא כתובת או מקום",emptyValue:"הזן מונח חיפוש.",untitledResult:"ללא כותרת",untitledSource:"מקור ללא שם",noResults:"אין תוצאות",noResultsFound:"לא נמצאו תוצאות עבור {value}.",showMoreResults:"הצג תוצאות נוספות",hideMoreResults:"הסתר",searchResult:"תוצאות חיפוש",moreResultsHeader:"תוצאות נוספות",esriLocatorName:"מעגן כתובות עולמי של Esri"});
+define({searchButtonTitle:"חפש",clearButtonTitle:"נקה חיפוש",placeholder:"מצא כתובת או מקום",searchIn:"חפש בתוך",all:"הכל",allPlaceholder:"מצא כתובת או מקום",emptyValue:"הזן מונח חיפוש.",untitledResult:"ללא כותרת",untitledSource:"מקור ללא שם",noResults:"אין תוצאות",noResultsFound:"לא נמצאו תוצאות עבור {value}.",showMoreResults:"הצג תוצאות נוספות",hideMoreResults:"הסתר",searchResult:"תוצאות חיפוש",moreResultsHeader:"תוצאות נוספות",esriLocatorName:"מעגן כתובות עולמי של Esri"});

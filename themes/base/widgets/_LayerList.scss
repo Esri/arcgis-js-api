@@ -1,5 +1,3 @@
-$loading_width: 20%;
-
 @mixin layerList() {
   .esri-layer-list {
     color: $text_color;
@@ -9,6 +7,7 @@ $loading_width: 20%;
     max-height: 420px;
     overflow: hidden;
     overflow-y: auto;
+    transition: max-height 250ms ease-in-out;
   }
   .esri-layer-list__list {
     list-style: none;
@@ -158,12 +157,9 @@ $loading_width: 20%;
   }
   .esri-layer-list__item:after {
     background-color: $button_text_color;
-    width: $loading_width;
+    width: $looping_progress_bar_width;
     z-index: 2;
-    -webkit-animation: layerlist__item--updating-ani 1500ms linear infinite;
-    -moz-animation: layerlist__item--updating-ani 1500ms linear infinite;
-    -o-animation: layerlist__item--updating-ani 1500ms linear infinite;
-    animation: layerlist__item--updating-ani 1500ms linear infinite;
+    animation: looping-progresss-bar-ani $looping_progress_bar_params;
   }
   .esri-layer-list__item--updating:before,
   .esri-layer-list__item--updating:after {
@@ -230,7 +226,7 @@ $loading_width: 20%;
     @include flexDisplay();
     @include flexFlow(row);
     @include justifyContent(flex-start);
-    @include alignItems(center);
+    @include alignItems(flex-start);
     cursor: pointer;
     font-size: $text_size_small;
     width: 100%;
@@ -244,6 +240,7 @@ $loading_width: 20%;
   .esri-layer-list__item-action-icon {
     @include flex(0, 0, $side_spacing);
     font-size: $text_size;
+    margin-top: 0.2em;
   }
   .esri-layer-list__item-action-image {
     @include flex(0, 0, $side_spacing);
@@ -258,30 +255,7 @@ $loading_width: 20%;
   .esri-layer-list__item-action-title {
     margin-left: 5px;
   }
-  //////////////////////////////
-  // VIEW SIZES
-  .esri-view-height-greater-than-medium {
-    .esri-ui-corner .esri-layer-list {
-      max-height: 680px;
-    }
-  }
-  .esri-view-height-medium {
-    .esri-ui-corner .esri-layer-list {
-      max-height: 540px;
-    }
-  }
-  .esri-view-height-small {
-    .esri-ui-corner .esri-layer-list {
-      max-height: 420px;
-    }
-  }
-  .esri-view-height-xsmall {
-    .esri-ui-corner .esri-layer-list {
-      max-height: 380px;
-    }
-  }
-  // VIEW SIZES
-  //////////////////////////////
+
   html[dir="rtl"] .esri-layer-list {
     .esri-layer-list__item--has-children > .esri-layer-list__item-container {
       padding-left: $side_spacing + 5;
@@ -304,10 +278,7 @@ $loading_width: 20%;
       margin-right: 5px;
     }
     .esri-layer-list__item:after {
-      -webkit-animation: layerlist__item--updating-ani-rtl 1500ms linear infinite;
-      -moz-animation: layerlist__item--updating-ani-rtl 1500ms linear infinite;
-      -o-animation: layerlist__item--updating-ani-rtl 1500ms linear infinite;
-      animation: layerlist__item--updating-ani-rtl 1500ms linear infinite;
+      animation: looping-progresss-bar-ani $looping_progress_bar_params reverse;
     }
     .esri-layer-list__item-error-message [class^="esri-icon-"],
     .esri-layer-list__item-error-message [class*="esri-icon-"] {
@@ -315,6 +286,9 @@ $loading_width: 20%;
       margin-left: 0.3rem;
     }
   }
+
+  @include componentHeight_BasedOnViewSize(esri-layer-list);
+
   //////////////////////////////
   // ANIMATION
   @include keyframes(esri-layer-list-reveal) {
@@ -326,22 +300,6 @@ $loading_width: 20%;
     }
     100% {
       opacity: 1;
-    }
-  }
-  @include keyframes(layerlist__item--updating-ani) {
-    0% {
-      left: -$loading_width;
-    }
-    100% {
-      left: 100+$loading_width;
-    }
-  }
-  @include keyframes(layerlist__item--updating-ani-rtl) {
-    0% {
-      left: 100+$loading_width;
-    }
-    100% {
-      left: -$loading_width;
     }
   }
 }

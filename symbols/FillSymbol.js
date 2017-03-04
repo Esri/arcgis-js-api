@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["../core/declare","./Symbol","./SimpleLineSymbol"],function(e,l,r){var i=e(l,{declaredClass:"esri.symbols.FillSymbol",properties:{outline:{type:r,json:{writable:!0}},type:null}});return i});
+define(["../core/declare","./Symbol","./SimpleLineSymbol"],function(e,l,r){var i=e(l,{declaredClass:"esri.symbols.FillSymbol",properties:{outline:{type:r,json:{write:!0}},type:null}});return i});

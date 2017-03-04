@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -45,7 +45,9 @@
  *
  * * Legend exclusively supports the following layers: {@link module:esri/layers/FeatureLayer},
  * {@link module:esri/layers/StreamLayer}, {@link module:esri/layers/SceneLayer},
- * {@link module:esri/layers/MapImageLayer}, {@link module:esri/layers/TileLayer}
+ * {@link module:esri/layers/MapImageLayer}, {@link module:esri/layers/TileLayer},
+ * {@link module:esri/layers/CSVLayer}, {@link module:esri/layers/ImageryLayer},
+ * {@link module:esri/layers/GeoRSSLayer}
  * * {@link module:esri/symbols/Symbol3D  3D symbols} with more than one
  * {@link module:esri/symbols/Symbol3DLayer symbol layer} are not supported.
  * * Size in volumetric {@link module:esri/symbols/Symbol3D  3D symbols}, such as
@@ -74,20 +76,15 @@
  */
 
 define([
-  "./support/viewModelWiring",
-
   "./Widgette",
 
   "./Legend/LegendViewModel",
-  "./Legend/support/swatchUtils",
 
   "../core/watchUtils",
   "../core/HandleRegistry",
   "../core/lang",
-  "../core/screenUtils",
 
   "dojox/gfx",
-  "dojox/gfx/matrix",
 
   "dojo/_base/lang",
 
@@ -97,22 +94,21 @@ define([
 
   "dojo/i18n!./Legend/nls/Legend"
 ], function(
-  viewModelWiring,
   Widget,
-  LegendViewModel, swatchUtils,
-  watchUtils, HandleRegistry, esriLang, screenUtils,
-  gfx, gfxMatrix,
+  LegendViewModel,
+  watchUtils, HandleRegistry, esriLang,
+  gfx,
   lang,
   domConstruct, domStyle, domClass,
   i18n
 ) {
 
-  var DEFAULT_TEXT = "Aa",
-
-      GRADIENT_WIDTH = 24,
+  var GRADIENT_WIDTH = 24,
       GRADIENT_HEIGHT = 25,
 
       RAMP_HEIGHT = 50,
+      IMAGERY_LAYER_DECLARED_CLASS = "esri.layers.ImageryLayer",
+      STRETCHED_LEGEND_TYPE = "Stretched",
 
       CSS = {
         base: "esri-legend",
@@ -126,6 +122,9 @@ define([
         layerRow: "esri-legend__layer-row",
         layerCell: "esri-legend__layer-cell",
         layerInfo: "esri-legend__layer-cell esri-legend__layer-cell--info",
+        imageryLayerStretchedImage: "esri-legend__imagery-layer-image--stretched",
+        imageryLayerCellStretched: "esri-legend__imagery-layer-cell--stretched",
+        imageryLayerInfoStretched: "esri-legend__imagery-layer-info--stretched",
         symbolContainer: "esri-legend__layer-cell esri-legend__layer-cell--symbols",
         symbol: "esri-legend__symbol",
         rampContainer: "esri-legend__ramps",
@@ -280,7 +279,7 @@ define([
          * @name view
          * @instance
          *
-         * @type {(module:esri/views/SceneView|module:esri/views/MapView)}
+         * @type {module:esri/views/MapView | module:esri/views/SceneView}
          */
         view: {
           aliasOf: "viewModel.view"
@@ -532,7 +531,7 @@ define([
               this._createLegendElement(info, elemDOM.body, layer, true);
             }
             else {
-              this._buildDOMForElementInfo(info, elemDOM, layer, isSizeRamp);
+              this._buildDOMForElementInfo(info, elemDOM, layer, isSizeRamp, legendElement.legendType);
             }
           }, this);
         }
@@ -580,7 +579,24 @@ define([
         };
       },
 
-      _buildDOMForElementInfo: function(info, elemDOM, layer, isSizeRamp) {
+      _isImageryStretchedLegend: function(layer, legendType) {
+        return (legendType && legendType === STRETCHED_LEGEND_TYPE &&
+          layer.version >= 10.3 &&
+          layer.declaredClass === IMAGERY_LAYER_DECLARED_CLASS);
+      },
+
+      _buildDOMForElementInfo: function(info, elemDOM, layer, isSizeRamp, legendType) {
+         var labelCellNodeClass, symNodeClass;
+
+         if (this._isImageryStretchedLegend(layer, legendType)) {
+           labelCellNodeClass = CSS.imageryLayerInfoStretched +  " " + CSS.layerInfo;
+           symNodeClass = CSS.imageryLayerCellStretched;
+         }
+         else {
+           labelCellNodeClass = CSS.layerInfo;
+           symNodeClass = isSizeRamp ? CSS.symbolContainer + " " + CSS.sizeRamp : CSS.symbolContainer;
+         }
+
         // append row node to table body node
         var rowNode = domConstruct.create("div", {
           className: CSS.layerRow
@@ -588,20 +604,26 @@ define([
 
         // symbol node
         var symNode = domConstruct.create("div", {
-          className: isSizeRamp ? CSS.symbolContainer + " " + CSS.sizeRamp : CSS.symbolContainer
+          className: symNodeClass
         }, rowNode);
 
         // draw symbol
-        var symDrawn = info.symbol ?
-          this._drawSymbol(symNode, info, layer) :
-          this._drawImage(symNode, info, layer);
+        var symDrawn = false;
+
+        if (info.symbol && info.preview) {
+          symNode.appendChild(info.preview);
+          symDrawn = true;
+        }
+        else if (info.src) {
+          symDrawn = this._drawImage(symNode, info, layer, legendType);
+        }
 
         if (symDrawn) {
-          domClass.add(symNode.firstChild, CSS.symbol);
+          domClass.toggle(symNode.firstChild, CSS.symbol, !this._isImageryStretchedLegend(layer, legendType));
 
           // label node
           var labelCellNode = domConstruct.create("div", {
-            className: CSS.layerInfo
+            className: labelCellNodeClass
           }, rowNode);
           labelCellNode.textContent = info.label || "";
         }
@@ -610,7 +632,7 @@ define([
         }
       },
 
-      _drawImage: function (symNode, info, layer) {
+      _drawImage: function (symNode, info, layer, legendType) {
         var src = info.src,
           opacity = info.opacity,
           width = info.width,
@@ -631,145 +653,7 @@ define([
         }
         node.style.opacity = (opacity != null) ? opacity : layer.opacity;
 
-        return true;
-      },
-
-      _drawSymbol: function (node, info, layer) {
-        var symbol = info.symbol,
-          swatchInfo = info.swatchInfo,
-          isSMSPath = symbol.type === "simple-marker-symbol" && symbol.style === "path",
-          isVolumetricSymbol = swatchUtils.isVolumetricSymbol(symbol);
-
-        if (!symbol || !swatchInfo) {
-          return false;
-        }
-
-        if (symbol.type === "picture-marker-symbol") {
-          node.style.opacity = layer.opacity;
-        }
-
-        var swatch = swatchInfo.swatch,
-          sWidth = swatchInfo.sizes[0],
-          sHeight = swatchInfo.sizes[1],
-          surface = gfx.createSurface(node, sWidth, sHeight),
-          gfxShape;
-
-        try {
-
-          if (swatch == null) {
-            throw "no shape descriptors!";
-          }
-
-          swatch.forEach(function (symLayer) {
-            var shapeGroup = surface.createGroup();
-
-            symLayer.forEach(function (shapeDesc) {
-
-              var shape = shapeDesc.shape,
-                fill = shapeDesc.fill,
-                stroke = shapeDesc.stroke;
-
-              if (shape) {
-
-                var isText = shape.type === "text";
-
-                // Use default text for text symbols if there is no
-                // pre-existing text.
-                if (isText && !shape.text) {
-                  shape.text = DEFAULT_TEXT;
-                }
-
-                // https://devtopia.esri.com/WebGIS/arcgis-websceneviewer-app/issues/1074
-                if (shape.type === "image" && shape.src && shape.src.substr(0, 5) !== "data:") {
-                  shape.src += (shape.src.indexOf("?") === -1 ? "?" : "&") + "legend=1";
-                }
-
-                gfxShape = shapeGroup.createShape(shape)
-                  .setFill(fill)
-                  .setStroke(stroke ? stroke : {width: 0});
-
-                // Apply font to the GFX shape for text symbol.
-                if (isText) {
-                  gfxShape.setFont(shapeDesc.font);
-                }
-              }
-
-            });
-
-            var bbox = shapeGroup.getBoundingBox(),
-              width = bbox.width,
-              height = bbox.height,
-
-              // Aligns the center of the path with surface's origin (0,0)
-              // This logic is specifically required for SMS symbols
-              // with STYLE_PATH style
-              vectorDx = -(bbox.x + (width / 2)),
-              vectorDy = -(bbox.y + (height / 2)),
-
-              // Aligns the center of the shape with the center of the surface
-              dim = surface.getDimensions(),
-              transform = {
-                dx: vectorDx + dim.width / 2,
-                dy: vectorDy + dim.height / 2
-              };
-
-            var isScaled = false;
-
-            if ((isSMSPath || isVolumetricSymbol) && (bbox.width !== 0 && bbox.height !== 0)) {
-              // getScaleMatrix
-              var aspect = bbox.width / bbox.height,
-                xx = 1, yy = 1, // scales
-                size = isSMSPath ?
-                  screenUtils.pt2px(symbol.size) :
-                  ((sWidth > sHeight) ? sWidth : sHeight) - 2; // 2px padding
-
-              // Preserve aspect ratio when applying "size"
-              if (!isNaN(size)) {
-                if (aspect > 1) {
-                  // width gets "size"
-                  xx = size / bbox.width;
-                  yy = (size / aspect) / bbox.height;
-                }
-                else {
-                  // height gets "size"
-                  yy = size / bbox.height;
-                  xx = (size * aspect) / bbox.width;
-                }
-              }
-
-              shapeGroup.applyTransform(
-                gfxMatrix.scaleAt(
-                  xx, yy,
-                  { x: dim.width / 2, y: dim.height / 2 }
-                )
-              );
-
-              isScaled = true;
-            }
-
-            if (!isScaled) {
-              if (width > sWidth || height > sHeight) {
-                var test = (width/sWidth > height/sHeight);
-                var actualSize = test ? width : height;
-                var refSize = test ? sWidth : sHeight;
-                var scaleBy = (refSize - 5) / actualSize;
-
-                lang.mixin(transform, {
-                  xx: scaleBy,
-                  yy: scaleBy
-                });
-              }
-            }
-
-            shapeGroup.applyTransform(transform);
-          });
-
-        }
-        catch (e) {
-          surface.clear();
-          surface.destroy();
-          return false;
-        }
+        domClass.toggle(node, CSS.imageryLayerStretchedImage, this._isImageryStretchedLegend(layer, legendType));
 
         return true;
       },

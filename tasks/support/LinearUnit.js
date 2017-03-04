@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["../../core/declare","../../core/JSONSupporter","../../core/kebabDictionary"],function(e,i,s){var t=s({esriMeters:"meters",esriFeet:"feet",esriKilometers:"kilometers",esriMiles:"miles",esriNauticalMiles:"nautical-miles",esriYards:"yards"}),r=e(i,{declaredClass:"esri.tasks.support.LinearUnit",distance:0,units:null,_unitsReader:t.fromJSON,toJSON:function(){var e={};return this.distance&&(e.distance=this.distance),this.units&&(e.units=t.toJSON(this.units)),e}});return r});
+define(["../../core/JSONSupport","../../core/kebabDictionary"],function(e,r){var s=r({esriMeters:"meters",esriFeet:"feet",esriKilometers:"kilometers",esriMiles:"miles",esriNauticalMiles:"nautical-miles",esriYards:"yards"}),i=e.createSubclass({declaredClass:"esri.tasks.support.LinearUnit",properties:{distance:{value:0,json:{write:!0}},units:{value:null,json:{read:s.fromJSON,write:function(e,r){r.units=s.toJSON(e)}}}}});return i});

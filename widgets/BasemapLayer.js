@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["../core/declare","dojo/_base/lang","dojo/has","../kernel"],function(e,s,t,i){var r=e(null,{declaredClass:"esri.widgets.BasemapLayer",constructor:function(e){e=e||{},e.url||e.type||console.error("esri.widgets.BasemapLayer: unable to find the 'url' or 'type' property in parameters"),this.url=e.url,this.type=e.type,this.isReference=e.isReference===!0?!0:!1,this.opacity=e.opacity,this.visibleLayers=e.visibleLayers,this.displayLevels=e.displayLevels,this.exclusionAreas=e.exclusionAreas,this.bandIds=e.bandIds,this.templateUrl=e.templateUrl,this.copyright=e.copyright,this.subDomains=e.subDomains,this.fullExtent=e.fullExtent,this.tileInfo=e.tileInfo,this.tileServers=e.tileServers}});return r});
+define(["../core/declare"],function(e){var s=e(null,{declaredClass:"esri.widgets.BasemapLayer",constructor:function(e){e=e||{},e.url||e.type||console.error("esri.widgets.BasemapLayer: unable to find the 'url' or 'type' property in parameters"),this.url=e.url,this.type=e.type,this.isReference=e.isReference===!0?!0:!1,this.opacity=e.opacity,this.visibleLayers=e.visibleLayers,this.displayLevels=e.displayLevels,this.exclusionAreas=e.exclusionAreas,this.bandIds=e.bandIds,this.templateUrl=e.templateUrl,this.copyright=e.copyright,this.subDomains=e.subDomains,this.fullExtent=e.fullExtent,this.tileInfo=e.tileInfo,this.tileServers=e.tileServers}});return s});

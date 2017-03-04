@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/declareExtendsHelper","../../../../core/tsSupport/decorateHelper","../../../../core/accessorSupport/decorators","../../../../core/Accessor","../../viewpointUtils"],function(t,e,o,i,n,r,p){var c=function(t){function e(e){t.call(this),this.viewpoint=p.create()}return o(e,t),e.prototype.begin=function(t,e){this.navigation.begin()},e.prototype.update=function(t,e){var o=e.currentEvent.x,i=e.currentEvent.y,n=e.previousEvent;o=n?n.x-o:-o,i=n?i-n.y:i,t.viewpoint=p.translateBy(this.viewpoint,t.viewpoint,[o||0,i||0])},e.prototype.end=function(t,e){this.navigation.end()},i([n.property()],e.prototype,"viewpoint",void 0),i([n.property()],e.prototype,"navigation",void 0),e=i([n.subclass("esri.views.2d.navigation.actions.Pan")],e)}(n.declared(r));return c});
+define(["require","exports","../../../../core/tsSupport/declareExtendsHelper","../../../../core/tsSupport/decorateHelper","../../../../core/accessorSupport/decorators","../../../../core/Accessor","../../viewpointUtils"],function(t,e,o,r,n,i,p){var a=function(t){function e(e){var o=t.call(this)||this;return o.viewpoint=p.create(),o}return o(e,t),e.prototype.begin=function(t,e){this.navigation.begin()},e.prototype.update=function(t,e){var o=e.currentEvent.x,r=e.currentEvent.y,n=e.previousEvent;o=n?n.x-o:-o,r=n?r-n.y:r,t.viewpoint=p.translateBy(this.viewpoint,t.viewpoint,[o||0,r||0])},e.prototype.end=function(t,e){this.navigation.end()},e}(n.declared(i));return r([n.property()],a.prototype,"viewpoint",void 0),r([n.property()],a.prototype,"navigation",void 0),a=r([n.subclass("esri.views.2d.navigation.actions.Pan")],a)});

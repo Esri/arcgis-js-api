@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["require","exports","./recognizers/Drag","./recognizers/PointerClickAndDrag","./recognizers/SingleAndDoubleClick"],function(e,r,i,n,g){r.defaults=[n.PointerClickAndDrag,g.SingleAndDoubleClick,i.Drag]});
+define(["require","exports","./recognizers/Drag","./recognizers/PointerClickHoldAndDrag","./recognizers/SingleAndDoubleClick","./recognizers/VerticalTwoFingerDrag"],function(e,r,i,n,g,o){r.defaults=[n.PointerClickHoldAndDrag,g.SingleAndDoubleClick,i.Drag,o.VerticalTwoFingerDrag]});

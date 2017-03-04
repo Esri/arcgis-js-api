@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["../core/Accessor","../core/Collection","../core/watchUtils"],function(e,i,s){var t=e.createSubclass({declaredClass:"esri.views.BasemapView",properties:{view:{},baseLayerViews:{type:i},referenceLayerViews:{type:i}},getDefaults:function(){return{baseLayerViews:[],referenceLayerViews:[]}},initialize:function(){this._loadingHdl=s.init(this,"view.map.basemap",this._loadBasemap)},destroy:function(){this.view=null,this._loadingHdl.remove(),this._loadingHdl=null},_suspendedGetter:function(){return this.view?this.view.suspended:!0},_loadBasemap:function(e){e&&e.load()}});return t});
+define(["../core/Accessor","../core/Collection","../core/watchUtils"],function(e,i,s){var t=e.createSubclass({declaredClass:"esri.views.BasemapView",properties:{view:{},baseLayerViews:{type:i},referenceLayerViews:{type:i}},constructor:function(){this._loadingHdl=s.init(this,"view.map.basemap",this._loadBasemap)},getDefaults:function(){return{baseLayerViews:[],referenceLayerViews:[]}},destroy:function(){this.view=null,this._loadingHdl.remove(),this._loadingHdl=null},_suspendedGetter:function(){return this.view?this.view.suspended:!0},_loadBasemap:function(e){e&&e.load()}});return t});

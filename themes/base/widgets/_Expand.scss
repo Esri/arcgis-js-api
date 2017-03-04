@@ -1,0 +1,101 @@
+@mixin expand() {
+  .esri-expand {
+    overflow: visible;
+  }
+
+  .esri-expand__container {
+    position: relative;
+  }
+
+  .esri-expand__content {
+    opacity: 0;
+    visibility: hidden;
+    clip: rect(0, 0, 0, 0);
+    position: absolute;
+    z-index: 1;
+    margin: 0 floor($side_spacing * 0.25);
+    @include defaultBoxShadow();
+    transition: opacity 250ms ease-in-out, margin 250ms ease-in-out;
+  }
+
+  .esri-ui-top-left .esri-expand__content,
+  .esri-ui-bottom-left .esri-expand__content {
+    left: 100%;
+  }
+
+  .esri-ui-top-right .esri-expand__content,
+  .esri-ui-bottom-right .esri-expand__content {
+    right: 100%;
+  }
+
+  .esri-ui-top-left .esri-expand__content,
+  .esri-ui-top-right .esri-expand__content {
+    top: 0;
+  }
+
+  .esri-ui-bottom-left .esri-expand__content,
+  .esri-ui-bottom-right .esri-expand__content {
+    bottom: 0;
+  }
+
+  .esri-ui-top-left .esri-expand__icon--expanded,
+  .esri-ui-bottom-left .esri-expand__icon--expanded {
+    transform: rotate(180deg);
+  }
+
+  .esri-expand__content--expanded {
+    opacity: 1;
+    visibility: visible;
+    clip: auto;
+    margin-left: floor($side_spacing * 0.7);
+    margin-right: floor($side_spacing * 0.7);
+  }
+
+  .esri-expand__content .esri-widget {
+    box-shadow: none;
+  }
+
+  .esri-expand__icon-number {
+    position: absolute;
+    top: floor($button_height/6) * -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $text_size_small;
+    line-height: 1em;
+    padding: 0.125em 0.333em;
+    height: floor($button_height/2);
+    border-radius: floor($button_height/2);
+    background-color: $button_text_color;
+    color: $background_color;
+    transform-origin: 50%;
+    animation: expand-number-intro-ani 1000ms ease-in-out;
+  }
+
+  .esri-ui-top-left .esri-expand__icon-number {
+    right: floor($button_width/5) * -1;
+  }
+
+  .esri-ui-top-right .esri-expand__icon-number {
+    left: floor($button_width/5) * -1;
+  }
+
+  @keyframes expand-number-intro-ani {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1);
+    }
+    75% {
+      transform: scale(1.25);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+}
+
+@if $include_Expand == true {
+  @include expand();
+}

@@ -1,0 +1,126 @@
+@mixin scaleBar() {
+
+  $dark_color: $button_text_color;
+  $light_color: $background_color;
+
+  $block_width: 25%;
+  $block_height: 50%;
+
+  $line_thickness: 3px;
+  $tic_height: 9px;
+
+  $border_style: floor($line_thickness/2) solid rgba($light_color, 0.25);
+
+  .esri-component.esri-scale-bar {
+    overflow: visible;
+  }
+
+  .esri-scale-bar {
+    width: 0;
+  }
+
+  .esri-scale-bar__bar-container {
+    position: relative;
+    transition: width 250ms ease-in-out;
+  }
+
+  .esri-scale-bar__ruler {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 6px;
+    background-color: $light_color;
+    @include defaultBoxShadow();
+  }
+
+  .esri-scale-bar__ruler-block {
+    height: $block_height;
+    width: $block_width;
+    background-color: $dark_color;
+  }
+
+  // top row
+  .esri-scale-bar__ruler-block:nth-child(-n+2) {
+    margin-right: 25%;
+  }
+
+  // bottom row
+  .esri-scale-bar__ruler-block:nth-child(n+3) {
+    margin-left: 25%;
+  }
+
+  .esri-scale-bar__line {
+    position: absolute;
+    width: 100%;
+    height: $line_thickness;
+    background-color: $dark_color;
+    bottom: 0;
+    z-index: 10;
+  }
+
+  .esri-scale-bar__line--bottom {
+    top: -$line_thickness;
+    border-bottom: $border_style;
+  }
+
+  // tics
+  .esri-scale-bar__line--top:before,
+  .esri-scale-bar__line--top:after,
+  .esri-scale-bar__line--bottom:before,
+  .esri-scale-bar__line--bottom:after {
+    content: "";
+    display: block;
+    width: $line_thickness;
+    height: $tic_height;
+    background-color: $dark_color;
+    position: absolute;
+    z-index: 5;
+    border-right: $border_style;
+  }
+
+  .esri-scale-bar__line--top:before {
+    bottom: 0;
+    left: 0;
+  }
+
+  .esri-scale-bar__line--top:after {
+    bottom: 0;
+    right: 0;
+  }
+
+  .esri-scale-bar__line--bottom:before {
+    top: 0;
+    left: 0;
+  }
+
+  .esri-scale-bar__line--bottom:after {
+    height: $tic_height - $line_thickness + 1;
+    top: $line_thickness - 1;
+    right: 0;
+  }
+
+  .esri-scale-bar__label-container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+  }
+
+  .esri-scale-bar__label-container--line {
+    justify-content: flex-end;
+  }
+
+  .esri-scale-bar__label {
+    font-size: $text_size_small;
+    text-shadow: 0 0 1px $light_color, 0 0 1px $light_color, 0 0 1px $light_color;
+    width: 10%;
+    color: $text_color;
+    font-weight: $text_weight_title;
+    white-space: nowrap;
+    padding: 0.5em 0 0.7em 0;
+  }
+}
+
+@if $include_ScaleBar == true {
+  @include scaleBar();
+}

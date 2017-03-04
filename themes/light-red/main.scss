@@ -11,4 +11,8 @@ $anchor_hover_color      : $Calcite_Gray_650;
 $button_text_color       : $Calcite_Gray_650;
 $button_text_hover_color : $Calcite_Gray_700;
 
+// Selected
+$selected_border_color      : $button_text_color;
+$selected_background_color  : $Calcite_Red_100;
+
 @import "../base/core";

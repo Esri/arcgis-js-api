@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["require","exports","./gl-matrix"],function(t,i,n){var e=n.vec3d,s=n.mat4d,a=function(){function t(t,i,n,s,a,o,r,h,d,u,c){this.data=t,this.boundingInfo=i,this.material=n,this.origin=null,this.center=e.create(),this.bsRadius=0,this.transformation=null,s&&this.updateTransformation(s,a),this.castShadow=o,this.singleUse=r,this.name=h,this.uniqueName=d,this.idx=u,this.canBeMerged=!0,this.componentIdx=c,this.displayedIndexRange=void 0,this.instanceParameters=void 0}return t.prototype.updateTransformation=function(t,i){i=i||s.maxScale(t),this.transformation=t,s.multiplyVec3(t,this.boundingInfo.getCenter(),this.center),this.bsRadius=this.boundingInfo.getBSRadius()*i},t}();return a});
+define(["require","exports","./gl-matrix"],function(t,i,n){var e=n.vec3d,s=n.mat4d,a=function(){function t(t,i,n,s,a,o,r,h,u,d){this.data=t.toRenderData(),this.componentOffsets=t.componentOffsets,this.boundingInfo=i,this.material=n,this.origin=null,this.center=e.create(),this.bsRadius=0,this.transformation=null,s&&this.updateTransformation(s,a),this.castShadow=o,this.singleUse=r,this.name=h,this.uniqueName=u,this.idx=d,this.canBeMerged=!0,this.instanceParameters={}}return t.prototype.updateTransformation=function(t,i){i=i||s.maxScale(t),this.transformation=t,s.multiplyVec3(t,this.boundingInfo.getCenter(),this.center),this.bsRadius=this.boundingInfo.getBSRadius()*i},t}();return a});

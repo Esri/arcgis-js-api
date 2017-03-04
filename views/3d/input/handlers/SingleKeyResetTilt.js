@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/extendsHelper","./SingleKey"],function(e,t,i,n){var r=function(e){function t(t,i,n){e.call(this,"esri.views.3d.input.handlers.SingleKeyResetTilt",i,n),this.view=t,this.key=i}return i(t,e),t.prototype.activate=function(){this.view.goTo({tilt:0})},t}(n.SingleKey);t.SingleKeyResetTilt=r});
+define(["require","exports","../../../../core/tsSupport/extendsHelper","./SingleKey"],function(e,t,i,n){var r=function(e){function t(t,i,n){var r=e.call(this,"esri.views.3d.input.handlers.SingleKeyResetTilt",i,n)||this;return r.view=t,r.key=i,r}return i(t,e),t.prototype.activate=function(){this.view.goTo({tilt:0})},t}(n.SingleKey);t.SingleKeyResetTilt=r});

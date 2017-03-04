@@ -14,4 +14,8 @@ $button_text_color       : $Calcite_Vibrant_Green_150;
 $button_text_hover_color : $Calcite_Vibrant_Green_150;
 $border_color            : rgba($Calcite_Vibrant_Green_150, 0.2);
 
+// Selected
+$selected_border_color      : $button_text_color;
+$selected_background_color  : #000000;
+
 @import "../base/core";

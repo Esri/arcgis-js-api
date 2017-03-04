@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -74,12 +74,12 @@
  */
 
 /**
- * Fires after the user clicks on an [action](#actions) inside a popup. This
+ * Fires after the user clicks on an {@link module:esri/support/Action action} inside a popup. This
  * event may be used to define a custom function to execute when particular
  * actions are clicked. See the example below for details of how this works.
  *
  * @event module:esri/widgets/Popup#trigger-action
- * @property {Object} action - The action clicked by the user. For a description
+ * @property {module:esri/support/Action} action - The action clicked by the user. For a description
  *                    of this object and a specification of its properties,
  *                    see the [actions](#actions) property of this class.
  *
@@ -883,7 +883,7 @@ define([
        * @ignore
        */
       messageEnabled: {
-        value: true,
+        value: false,
 
         set: function(value) {
           this._set("messageEnabled", value);
@@ -1071,34 +1071,6 @@ define([
       //  visible
       //----------------------------------
 
-      /**
-       * Displays the popup in the view. The popup will only display if the view's size
-       * constraints in [dockOptions](#dockOptions) are met or the [location](#location)
-       * property is set to a geometry.
-       *
-       * @type {Boolean}
-       * @default false
-       * @see [Get started with popups](../sample-code/get-started-popup/index.html)
-       * @see [Popup.open()](#open)
-       *
-       * @example
-       * // Sets the location of the popup to the center of the view
-       * view.popup.location = view.center;
-       * // Displays the popup
-       * view.popup.visible = true;
-       *
-       * @example
-       * // Sets the location of the popup to the location of a click on the view
-       * view.on("click", function(event){
-       *   view.popup.location = event.mapPoint;
-       *   // Displays the popup
-       *   view.popup.visible = true;
-       * });
-       *
-       * @example
-       * // Hides the popup from the view
-       * view.popup.visible = false;
-       */
       visible: {
         value: false,
 
@@ -1148,7 +1120,11 @@ define([
     clear: viewModelWiring.createMethodDelegate("clear"),
 
     /**
-     * Closes the popup by setting its [visible](#visible) property to `false`.
+     * Closes the popup by setting its [visible](#visible) property to `false`. Users can
+     * alternatively close the popup
+     * by directly setting the [visible](#visible) property to `false`.
+     *
+     * @see [Popup.visible](#visible)
      */
     close: function () {
       this.set("visible", false);
@@ -1192,7 +1168,13 @@ define([
     /**
      * Opens the popup at the given location with content defined either explicitly with `content`
      * or driven from the {@link module:esri/PopupTemplate} of input features. This method sets
-     * the popup's [visible](#visible) property to `true`.
+     * the popup's [visible](#visible) property to `true`. Users can alternatively open the popup
+     * by directly setting the [visible](#visible) property to `true`. The popup will only display if
+     * the view's size constraints in [dockOptions](#dockOptions) are met or the [location](#location)
+     * property is set to a geometry.
+     *
+     * @see [Get started with popups](../sample-code/get-started-popup/index.html)
+     * @see [Popup.visible](#visible)
      *
      * @param {Object} [options] - Defines the location and content of the popup when opened.
      * @param {string} [options.title] - Sets the [title](#title) of the popup.
@@ -1226,7 +1208,7 @@ define([
       var setOptions = lang.mixin(defaultOptions, options);
       this.viewModel.set(setOptions);
       // todo: remove in 4.3 when we can force a watchable property to be updated.
-      if (options.promises) {
+      if (options && options.promises) {
         this.set("visible", false);
       }
       else {

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["require","exports","../../../../Basemap","../../../../support/basemapUtils","../../../../geometry/ScreenPoint","../../../../core/screenUtils"],function(e,t,n,i,r,o){function a(e){var t=null;return"string"==typeof e?t=e:e instanceof n&&(t=i.wellKnownBasemapId(e)),t}function l(e){var t=a(e);return t&&t.replace("-vector","")}function c(e){var t=e.width,n=e.height,i=e.pixelSizeAt(new r(.5*t,.5*n));if(0>=i&&(i=e.pixelSizeAt(new r(.5*t,.95*n)),0>=i)){var o=e.camera.position.clone();o.z=0,i=2*e.pixelSizeAt(o)}return i}function p(e,t){return Math.ceil(c(t)*o.pt2px(o.toPt(e)))}t.normalizedBasemapId=l,t.getPixelSize=c,t.toWorldScale=p});
+define(["require","exports","../../../../Basemap","../../../../support/basemapUtils","../../../../geometry/ScreenPoint","../../../../core/screenUtils"],function(e,t,n,i,r,o){function a(e){var t=null;return"string"==typeof e?t=e:e instanceof n&&(t=i.wellKnownBasemapId(e)),t||"gray"}function l(e){var t=a(e);return t&&t.replace("-vector","")}function c(e){var t=e.width,n=e.height,i=e.pixelSizeAt(new r(.5*t,.5*n));if(0>=i&&(i=e.pixelSizeAt(new r(.5*t,.95*n)),0>=i)){var o=e.camera.position.clone();o.z=0,i=2*e.pixelSizeAt(o)}return i}function p(e,t){return Math.ceil(c(t)*o.pt2px(o.toPt(e)))}t.normalizedBasemapId=l,t.getPixelSize=c,t.toWorldScale=p});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/extendsHelper","../../../input/InputHandler"],function(e,n,t,i){var r=function(e){function n(n,t,i){var r=this;e.call(this,n,!0),this.key=t,this.registerIncoming("key-down",i,function(e){return r._handleKeyDown(e)})}return t(n,e),n.prototype._handleKeyDown=function(e){var n=e.data;n.key===this.key&&(this.activate(),e.stopPropagation())},n}(i.InputHandler);n.SingleKey=r});
+define(["require","exports","../../../../core/tsSupport/extendsHelper","../../../input/InputHandler"],function(e,n,t,r){var i=function(e){function n(n,t,r){var i=e.call(this,n,!0)||this;return i.key=t,i.registerIncoming("key-down",r,function(e){return i._handleKeyDown(e)}),i}return t(n,e),n.prototype._handleKeyDown=function(e){var n=e.data;n.key===this.key&&(this.activate(),e.stopPropagation())},n}(r.InputHandler);n.SingleKey=i});

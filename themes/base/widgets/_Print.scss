@@ -3,9 +3,9 @@
     position: relative;
     width: $panel_width;
     padding: $cap_spacing $side_spacing;
+    transition: max-height 250ms ease-in-out;
     a {
       text-decoration: none;
-      color: inherit;
     }
     section[aria-hidden='true'] {
       display: none;
@@ -19,11 +19,6 @@
   }
   .esri-print .esri-disabled  {
     color: $disabled_color;
-  }
-  .esri-print__container {
-    max-height: 450px;
-    overflow-x: hidden;
-    overflow-y: auto;
   }
   .esri-print__form-section-container {
     margin: 0 0 $cap_spacing 0;
@@ -69,6 +64,9 @@
     color: $text_color;
     border-color: $border_color;
     border-bottom-color: $background_color;
+  }
+  .esri-print__panel--error {
+    color: $error_text_color;
   }
   .esri-print__panel-container {
     @include flex(1, 0);
@@ -175,13 +173,28 @@
   }
   .esri-print__export-panel-container [class*="esri-icon"] {
     margin-right: 0.5em;
+    margin-top: 0.15em;
   }
-  .esri-print__exported-file {
+  .esri-print__exported-file-link-title {
+    word-break: break-all;
+  }
+  .esri-print__exported-file-link {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     line-height: 1.3em;
     margin-bottom: floor($cap_spacing/2);
   }
+  .esri-print__exported-file--error {
+    color: $error_text_color;
+    cursor:pointer;
+  }
+  .esri-print .esri-print__exported-file--error:hover {
+    color: $error_text_color;
+  }
+  .esri-print__exported-file .esri-disabled {
+    pointer-events: none;
+  }
+  @include componentHeight_BasedOnViewSize(esri-print);
   html[dir="rtl"] {
     .esri-print__export-panel-container [class*="esri-icon"] {
       margin-right: 0;

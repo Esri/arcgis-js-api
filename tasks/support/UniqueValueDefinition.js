@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["../../core/declare","dojo/_base/lang","./ClassificationDefinition"],function(i,e,t){var u=i(t,{declaredClass:"esri.tasks.support.UniqueValueDefinition",attributeField:null,attributeField2:null,attributeField3:null,fieldDelimiter:null,type:"uniqueValueDef",toJSON:function(){var i=this.inherited(arguments);return this.uniqueValueFields=[],this.attributeField&&this.uniqueValueFields.push(this.attributeField),this.attributeField2&&this.uniqueValueFields.push(this.attributeField2),this.attributeField3&&this.uniqueValueFields.push(this.attributeField3),e.mixin(i,{type:this.type,uniqueValueFields:this.uniqueValueFields}),this.fieldDelimiter&&e.mixin(i,{fieldDelimiter:this.fieldDelimiter}),i}});return u});
+define(["dojo/_base/lang","./ClassificationDefinition"],function(i,e){var t=e.createSubclass({declaredClass:"esri.tasks.support.UniqueValueDefinition",properties:{attributeField:null,attributeField2:null,attributeField3:null,fieldDelimiter:null,type:"uniqueValueDef"},toJSON:function(){var e=this.inherited(arguments);return this.uniqueValueFields=[],this.attributeField&&this.uniqueValueFields.push(this.attributeField),this.attributeField2&&this.uniqueValueFields.push(this.attributeField2),this.attributeField3&&this.uniqueValueFields.push(this.attributeField3),i.mixin(e,{type:this.type,uniqueValueFields:this.uniqueValueFields}),this.fieldDelimiter&&i.mixin(e,{fieldDelimiter:this.fieldDelimiter}),e}});return t});

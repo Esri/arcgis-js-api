@@ -18,7 +18,7 @@ uniform highp vec2 u_normalized_origin;
 uniform mediump float u_depth;
 // the inset and outset of the line
 uniform mediump float u_lineHalfWidth;
-// the interpolated normal to the line. the information is packed into the LSB of the vertex coordinate
+// the interpolated normal to the line. the information is packed into the two LSBs of the vertex coordinate
 varying mediump vec2 v_normal;
 // the accumulated distance along the line. We need this information in order to render the dashes.
 varying highp float v_accumulatedDistance;
@@ -27,10 +27,17 @@ const float scale = 1.0 / 31.0;
 
 void main()
 {
-  // extract the normal from the list significat bit. It has a value of 0 or 1, but we need it to be either -1 or 1 therefore
-  // we need to change 0 to -1.
-  lowp vec2 normal = mod(a_pos, 2.0);
-  normal.y = normal.y == 0.0 ? -1.0 : 1.0;
+  // The two lowest bit of a_pos include texture normal information as a number between 0 and 2; after
+  // taking the remainder modulo 4, we subtract 1 to get a number between -1 and 1
+  // Note: this works because GLSL's mod is different from Javascript % operator:
+  //
+  //   GLSL: mod(-213 * 4 + x, 4)  ==  x
+  //   JS  :    (-213 * 4 + x) % 4 == -x
+  //
+  // This means that it is reliably possible to pack two extra bit representing a POSITIVE number x by simply
+  // multiplying the 'host' value by 4 and adding x. This us what VertexMemoryBuffer.ts, line 47, does.
+  lowp vec2 normal = mod(a_pos, 4.0);
+  normal.y = normal.y - 1.0;
   v_normal = normal;
 
   // calculate the relative distance from the centerline to the edge of the line. Since offset is given in integers (for the
@@ -38,7 +45,7 @@ void main()
   mediump vec2 dist = u_lineHalfWidth * a_offset * scale;
 
   // transform the vertex
-  gl_Position = vec4(u_normalized_origin, u_depth, 0.0) + u_transformMatrix * vec4(floor(a_pos * 0.5), 0.0, 1.0) + u_extrudeMatrix * vec4(dist, 0.0, 0.0);
+  gl_Position = vec4(u_normalized_origin, u_depth, 0.0) + u_transformMatrix * vec4(floor(a_pos / 4.0), 0.0, 1.0) + u_extrudeMatrix * vec4(dist, 0.0, 0.0);
 
   // the accumulated distance will be used to calculate the dashes (or the no-data...)
   v_accumulatedDistance = a_accumulatedDistance;

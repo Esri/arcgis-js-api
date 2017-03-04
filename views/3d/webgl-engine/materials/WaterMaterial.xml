@@ -44,7 +44,6 @@
 
 	$normal2envTC
 
-	// TODO optimize?
 	vec2 rotate(vec2 pos, float angle) {
 		float c = cos(angle);
 		float s = sin(angle);

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["require","exports","../core/tsSupport/extendsHelper","../core/tsSupport/decorateHelper","../Viewpoint","../core/Accessoire","../geometry/SpatialReference","../core/accessoireSupport/typescript"],function(e,t,r,i,o,p,n,l){var s=function(e){function t(t){e.call(this,t),this.spatialReference=null,this.viewpoint=null}return r(t,e),t.prototype.clone=function(){return new t({spatialReference:this.spatialReference?this.spatialReference.clone():null,viewpoint:this.viewpoint?this.viewpoint.clone():null})},i([l.shared("esri.webmap.InitialViewProperties")],t.prototype,"declaredClass",void 0),i([l.property({value:null,type:n})],t.prototype,"spatialReference",void 0),i([l.property({value:null,type:o})],t.prototype,"viewpoint",void 0),t=i([l.subclass()],t)}(p);return s});
+define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../Viewpoint","../core/Accessor","../geometry/SpatialReference","../core/accessorSupport/decorators"],function(e,r,t,o,i,n,p,l){var a=c=function(e){function r(r){var t=e.call(this,r)||this;return t.spatialReference=null,t.viewpoint=null,t}return t(r,e),r.prototype.clone=function(){return new c({spatialReference:this.spatialReference?this.spatialReference.clone():null,viewpoint:this.viewpoint?this.viewpoint.clone():null})},r}(l.declared(n));o([l.shared("esri.webmap.InitialViewProperties")],a.prototype,"declaredClass",void 0),o([l.property({value:null,type:p})],a.prototype,"spatialReference",void 0),o([l.property({value:null,type:i})],a.prototype,"viewpoint",void 0),a=c=o([l.subclass()],a);var c;return a});

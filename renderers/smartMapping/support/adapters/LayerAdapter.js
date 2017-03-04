@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/declareExtendsHelper","../../../../core/tsSupport/decorateHelper","../../../../core/Accessor","../../../../core/Loadable","../../../../core/accessorSupport/decorators"],function(e,r,o,t,p,c,s){function d(){return p}var n=function(e){function r(r){e.call(this)}return o(r,e),t([s.property()],r.prototype,"geometryType",void 0),t([s.property()],r.prototype,"objectIdField",void 0),t([s.property()],r.prototype,"supportsSQLExpression",void 0),t([s.property()],r.prototype,"hasLocalSource",void 0),r=t([s.subclass()],r)}(s.declared(d(),c));return n});
+define(["require","exports","../../../../core/tsSupport/declareExtendsHelper","../../../../core/tsSupport/decorateHelper","../../../../core/Accessor","../../../../core/Loadable","../../../../core/accessorSupport/decorators"],function(e,r,o,t,p,c,s){var d=function(e){function r(r){return e.call(this)||this}return o(r,e),r}(s.declared(p,c));return t([s.property()],d.prototype,"geometryType",void 0),t([s.property()],d.prototype,"objectIdField",void 0),t([s.property()],d.prototype,"supportsSQLExpression",void 0),t([s.property()],d.prototype,"hasLocalSource",void 0),d=t([s.subclass()],d)});

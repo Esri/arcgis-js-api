@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/extendsHelper","../../../input/InputHandler","../../../input/handlers/support"],function(e,t,i,n,o){var r=function(e){function t(t,i){var n=this;e.call(this,"esri.views.3d.input.handlers.DoubleClickZoom",!0),this.view=t,this.registerIncoming("double-click",i,function(e){return n._handleDoubleClick(e)})}return i(t,e),t.prototype._handleDoubleClick=function(e){var t=e.data;o.eventMatchesPointerType(t["native"],"primary")&&(this.view.navigation.zoom.stepScreen(Math.log(.5)/Math.log(.6),[t.x,this.view.height-t.y]),e.stopPropagation())},t}(n.InputHandler);t.DoubleClickZoom=r});
+define(["require","exports","../../../../core/tsSupport/extendsHelper","../../../input/InputHandler","../../../input/handlers/support"],function(e,t,n,i,o){var r=function(e){function t(t,n){var i=e.call(this,"esri.views.3d.input.handlers.DoubleClickZoom",!0)||this;return i.view=t,i.registerIncoming("double-click",n,function(e){return i._handleDoubleClick(e)}),i}return n(t,e),t.prototype._handleDoubleClick=function(e){var t=e.data;o.eventMatchesPointerType(t["native"],"primary")&&(this.view.navigation.zoom.stepScreen(Math.log(.5)/Math.log(.6),[t.x,this.view.height-t.y]),e.stopPropagation())},t}(i.InputHandler);t.DoubleClickZoom=r});

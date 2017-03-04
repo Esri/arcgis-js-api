@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["../core/declare","dojo/_base/lang","../core/lang"],function(e,r,n){var i=e(null,{declaredClass:"esri.ServerInfo",constructor:function(e){r.mixin(this,e)},toJSON:function(){return n.fixJson({server:this.server,tokenServiceUrl:this.tokenServiceUrl,adminTokenServiceUrl:this.adminTokenServiceUrl,shortLivedTokenValidity:this.shortLivedTokenValidity,owningSystemUrl:this.owningSystemUrl,owningTenant:this.owningTenant,currentVersion:this.currentVersion,hasPortal:this.hasPortal,hasServer:this.hasServer,webTierAuth:this.webTierAuth})}});return i});
+define(["../core/declare","dojo/_base/lang","../core/lang"],function(e,r,i){var n=e(null,{declaredClass:"esri.identity.ServerInfo",constructor:function(e){r.mixin(this,e)},toJSON:function(){return i.fixJson({server:this.server,tokenServiceUrl:this.tokenServiceUrl,adminTokenServiceUrl:this.adminTokenServiceUrl,shortLivedTokenValidity:this.shortLivedTokenValidity,owningSystemUrl:this.owningSystemUrl,owningTenant:this.owningTenant,currentVersion:this.currentVersion,hasPortal:this.hasPortal,hasServer:this.hasServer,webTierAuth:this.webTierAuth})}});return n});

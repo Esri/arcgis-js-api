@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define({searchButtonTitle:"Søg",clearButtonTitle:"Ryd søgning",placeholder:"Find adresse eller sted",searchIn:"Søg i",lonlat:"Længdegrader, breddegrader",reverseLonLatHeader:"Mente du?",all:"Alle",allPlaceholder:"Find adresse eller sted",emptyValue:"Angiv en søgeterm",untitledResult:"Uden titel",untitledSource:"Kilde uden titel",noResults:"Ingen resultater",noResultsFound:"Der blev ikke fundet nogen resultater for {value}.",showMoreResults:"Vis flere resultater",hideMoreResults:"Hide",searchResult:"Søgeresultater",moreResultsHeader:"Flere resultater",esriLocatorName:"Esri Verdensgeokodning"});
+define({searchButtonTitle:"Søg",clearButtonTitle:"Ryd søgning",placeholder:"Find adresse eller sted",searchIn:"Søg i",all:"Alle",allPlaceholder:"Find adresse eller sted",emptyValue:"Angiv en søgeterm",untitledResult:"Uden titel",untitledSource:"Kilde uden titel",noResults:"Ingen resultater",noResultsFound:"Der blev ikke fundet nogen resultater for {value}.",showMoreResults:"Vis flere resultater",hideMoreResults:"Hide",searchResult:"Søgeresultater",moreResultsHeader:"Flere resultater",esriLocatorName:"Esri Verdensgeokodning"});

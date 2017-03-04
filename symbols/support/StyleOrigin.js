@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators","../../core/Accessor","../../portal/Portal"],function(t,e,r,o,p,s,l){var n=function(t){function e(){t.apply(this,arguments),this.portal=null}return r(e,t),e.prototype.clone=function(){return new e({name:this.name,styleUrl:this.styleUrl,styleName:this.styleName,portal:this.portal})},o([p.property({type:String})],e.prototype,"name",void 0),o([p.property({type:String})],e.prototype,"styleUrl",void 0),o([p.property({type:String})],e.prototype,"styleName",void 0),o([p.property({type:l})],e.prototype,"portal",void 0),e=o([p.subclass("esri.symbols.support.StyleOrigin")],e)}(p.declared(s));return n});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators","../../core/Accessor","../../portal/Portal"],function(r,t,e,o,p,s,l){var n=a=function(r){function t(){var t=null!==r&&r.apply(this,arguments)||this;return t.portal=null,t}return e(t,r),t.prototype.clone=function(){return new a({name:this.name,styleUrl:this.styleUrl,styleName:this.styleName,portal:this.portal})},t}(p.declared(s));o([p.property({type:String})],n.prototype,"name",void 0),o([p.property({type:String})],n.prototype,"styleUrl",void 0),o([p.property({type:String})],n.prototype,"styleName",void 0),o([p.property({type:l})],n.prototype,"portal",void 0),n=a=o([p.subclass("esri.symbols.support.StyleOrigin")],n);var a;return n});

@@ -2,6 +2,7 @@
   .esri-legend {
     overflow: auto;
     overflow-x: hidden;
+    transition: max-height 250ms ease-in-out;
   }
 
   .esri-legend__message {
@@ -10,6 +11,11 @@
 
   .esri-legend__service {
     word-wrap: break-word;
+    border-bottom: 1px solid $border_color;
+  }
+
+  .esri-legend__service:last-child {
+    border-bottom: none;
   }
 
   .esri-legend__service-label {
@@ -54,7 +60,13 @@
     text-align: center;
   }
 
+  .esri-legend__size-ramp ~ .esri-legend__layer-cell--info {
+    max-width: 80%;
+    width: 80%;
+  }
+
   .esri-legend__layer-cell--info {
+    font-size: $text_size_small;
     padding-left: floor($side_spacing/2);
     padding-right: floor($side_spacing/2);
     max-width: 250px;
@@ -62,6 +74,22 @@
     white-space: nowrap;
     -ms-text-overflow: ellipsis;
     text-overflow: ellipsis;
+  }
+
+  .esri-legend__imagery-layer-image--stretched {
+    margin-bottom: -2px; //imageData contains extra right and bottom 2px margin
+    display: block;
+  }
+ 
+  .esri-legend__imagery-layer-cell--stretched {
+    vertical-align: top;
+    line-height: 1;
+    padding: 0;
+  }
+ 
+  .esri-legend__imagery-layer-info--stretched {
+    vertical-align: top;
+    padding: 0 2px;
   }
 
   .esri-legend__symbol {
@@ -107,7 +135,6 @@
     white-space: nowrap;
     line-height: 1em;
     font-size: $text_size_small;
-    font-weight: $text_weight_title;
     &:before {
       position: absolute;
       top: .25em;
@@ -118,7 +145,7 @@
       height: 0;
       border-style: solid;
       border-width: 3px 4px 3px 0;
-      border-color: transparent rgba($background_inverse_color, 0.5) transparent transparent;
+      border-color: transparent rgba($text_color, 0.8) transparent transparent;
     }
     &:first-child {
       margin-top: floor($text_size/3) * -1;
@@ -157,33 +184,7 @@
   // UI CORNER
   //////////////////////////////
 
-  //////////////////////////////
-  // VIEW SIZES
-  .esri-view-height-greater-than-medium {
-    .esri-ui-corner .esri-legend {
-      max-height: 540px;
-    }
-  }
-
-  .esri-view-height-medium {
-    .esri-ui-corner .esri-legend {
-      max-height: 480px;
-    }
-  }
-
-  .esri-view-height-small {
-    .esri-ui-corner .esri-legend {
-      max-height: 380px;
-    }
-  }
-
-  .esri-view-height-xsmall {
-    .esri-ui-corner .esri-legend {
-      max-height: 240px;
-    }
-  }
-  // VIEW SIZES
-  //////////////////////////////
+@include componentHeight_BasedOnViewSize(esri-legend);
 
   html[dir="rtl"] {
     .esri-legend__ramp-label:before {

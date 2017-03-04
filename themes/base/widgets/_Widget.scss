@@ -269,6 +269,10 @@ html[dir="rtl"] .esri-widget {
   }
 }
 
+@keyframes looping-progresss-bar-ani {
+  @include _loopingProgressBar($looping_progress_bar_width);
+}
+
 .esri-rotating {
   -webkit-animation: esri-anim-rotate 1250ms infinite linear;
   animation: esri-anim-rotate 1250ms infinite linear;

@@ -24,13 +24,13 @@ This repo has dependencies on the following repos.
 
 | Library | Repo | Submodule path |
 | :------ |:---- |:-------------- |
-| dojo  | https://github.com/Esri/dojo/tree/1.11.2-esri   | /dojo |
-| dijit | https://github.com/Esri/dijit/tree/1.11.2-esri  | /dijit |
-| dojox | https://github.com/Esri/dojox/tree/1.11.2-esri  | /dojox |
-| util | https://github.com/Esri/dojo-util/tree/1.11.2-esri    | /util |
+| dojo  | https://github.com/Esri/dojo/tree/1.12.1-esri   | /dojo |
+| dijit | https://github.com/Esri/dijit/tree/1.12.1-esri  | /dijit |
+| dojox | https://github.com/Esri/dojox/tree/1.12.1-esri  | /dojox |
+| util | https://github.com/Esri/dojo-util/tree/1.12.1-esri    | /util |
 | dgrid | https://github.com/Esri/dgrid/tree/1.1.0-esri  | /dgrid |
 | dstore | https://github.com/SitePen/dstore/tree/v1.1.1 | /dstore |
-| moment | https://github.com/moment/moment/tree/2.15.2 | /moment |
+| moment | https://github.com/moment/moment/tree/2.17.1 | /moment |
 
 Please see our [recommended guide](https://github.com/Esri/jsapi-resources/tree/master/4.x/bower).
 
@@ -48,7 +48,7 @@ Find a bug or want to request a new feature?  Please refer to [support.esri.com]
 For assistance, please refer to [support.esri.com](http://support.esri.com/).
 
 ## Licensing
-COPYRIGHT © 2016 Esri
+COPYRIGHT © 2017 Esri
 
 All rights reserved under the copyright laws of the United States
 and applicable international laws, treaties, and conventions.

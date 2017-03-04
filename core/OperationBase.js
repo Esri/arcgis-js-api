@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["./declare"],function(e){var n=e(null,{declaredClass:"esri.OperationBase",type:"not implemented",label:"not implemented",constructor:function(e){e=e||{},e.label&&(this.label=e.label)},performUndo:function(){console.log("performUndo has not been implemented")},performRedo:function(){console.log("performRedo has not been implemented")}});return n});
+define(["./declare"],function(e){var n=e(null,{declaredClass:"esri.core.OperationBase",type:"not implemented",label:"not implemented",constructor:function(e){e=e||{},e.label&&(this.label=e.label)},performUndo:function(){console.log("performUndo has not been implemented")},performRedo:function(){console.log("performRedo has not been implemented")}});return n});

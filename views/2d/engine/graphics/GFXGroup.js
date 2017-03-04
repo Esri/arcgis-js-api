@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/extendsHelper","dojo/_base/lang","../Container"],function(t,e,r,n,o){var a=function(t){function e(){t.call(this)}return r(e,t),e.prototype.attach=function(e){return this.g=e.surface.createGroup(),t.prototype.attach.call(this,e)},e.prototype.detach=function(e){t.prototype.detach.call(this,e),this.g.destroy(),this.g=null},e.prototype.prepareChildrenRenderParameters=function(t){return n.mixin({},t,{surface:this.g})},e.prototype.detachChild=function(t,e){return t.detach(e)},e.prototype.attachChild=function(t,e){return t.attach(e)},e.prototype.renderChild=function(t,e){return t.render(e)},e}(o);return a});
+define(["require","exports","../../../../core/tsSupport/extendsHelper","dojo/_base/lang","../Container"],function(t,e,r,n,o){var i=function(t){function e(){return t.call(this)||this}return r(e,t),e.prototype.attach=function(e){return this.g=e.surface.createGroup(),t.prototype.attach.call(this,e)},e.prototype.detach=function(e){t.prototype.detach.call(this,e),this.g.destroy(),this.g=null},e.prototype.prepareChildrenRenderParameters=function(t){return n.mixin({},t,{surface:this.g})},e.prototype.detachChild=function(t,e){return t.detach(e)},e.prototype.attachChild=function(t,e){return t.attach(e)},e.prototype.renderChild=function(t,e){return t.render(e)},e}(o);return i});

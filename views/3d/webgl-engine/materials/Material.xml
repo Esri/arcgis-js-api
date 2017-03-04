@@ -13,7 +13,7 @@
 	uniform mat4 modelNormal;
 #endif
 #ifdef INSTANCEDCOLOR
-    attribute vec4 instanceColor;
+	attribute vec4 instanceColor;
 #endif
 	attribute vec3 $position;
 	attribute vec3 $normal;
@@ -21,17 +21,22 @@
 	varying vec3 vnormal;
 
 #ifdef VERTEXCOLORS
-    attribute vec4 $color;
+	attribute vec4 $color;
 #endif
 
-#if defined(VV_SIZE) || defined(VV_COLOR)
+#if defined(VV_SIZE) || defined(VV_COLOR) || defined(VV_ROTATION)
 	attribute vec4 instanceFeatureAttribute;
 #endif
 
 $vvUniforms
 
-#if defined(VERTEXCOLORS) || defined(INSTANCEDCOLOR) || defined(VV_COLOR)
-    varying vec4 vcolor;
+#if defined(VERTEXCOLORS)
+	varying vec4 vcolor;
+#endif
+
+#if defined(INSTANCEDCOLOR) || defined(VV_COLOR)
+	uniform vec4 externalColor;
+	varying vec4 vcolorExt;
 #endif
 
 	$vvFunctions
@@ -46,17 +51,18 @@ $vvUniforms
 #endif
 		gl_Position = proj * view * vec4(vpos, 1.0);
 
-#if defined(VERTEXCOLORS) || defined(INSTANCEDCOLOR) || defined(VV_COLOR)
-        vcolor = vec4(1,1,1,1);
-#endif
 #ifdef VERTEXCOLORS
-        vcolor *= $color * 0.003921568627451; // = 1/255
+		vcolor = $color * 0.003921568627451; // = 1/255
+#endif
+
+#if defined(INSTANCEDCOLOR) || defined(VV_COLOR)
+		vcolorExt = externalColor;
 #endif
 #ifdef INSTANCEDCOLOR
-        vcolor *= instanceColor;
+		vcolorExt *= instanceColor;
 #endif
 #ifdef VV_COLOR
-        vcolor *= vvGetColor(instanceFeatureAttribute, vvColorValues, vvColorColors);
+		vcolorExt *= vvGetColor(instanceFeatureAttribute, vvColorValues, vvColorColors);
 #endif
 ]]></snippet>
 
@@ -78,18 +84,26 @@ $vvUniforms
 	uniform float depthHalfPixelSz;
 	uniform sampler2D ssaoTex;
 	uniform vec4 viewportPixelSz;
+	uniform int externalColorMixMode;
 	varying vec3 vpos;
 	varying vec3 vnormal;
-#if defined(VERTEXCOLORS) || defined(INSTANCEDCOLOR) || defined(VV_COLOR)
-    varying vec4 vcolor;
+#if defined(VERTEXCOLORS)
+	varying vec4 vcolor;
+#endif
+#if defined(INSTANCEDCOLOR) || defined(VV_COLOR)
+	varying vec4 vcolorExt;
+#else
+	uniform vec4 externalColor;
 #endif
 
 #ifdef RECEIVE_SHADOWS
 	$evalShadow
 #endif
 
+	$externalColorMixMode
+
 	void main() {
-		vec3 a = ambient * lightAmbient.rgb * lightAmbient.w;
+		vec3 a = lightAmbient.rgb * lightAmbient.w;
 
 		vec3 viewDir = normalize(vpos - camPos);
 
@@ -99,19 +113,12 @@ $vvUniforms
 		vec3 normal = dot(vnormal, viewDir)>0.0?-vnormal:vnormal;
 #endif
 
-    	normal = normalize(normal);
+		normal = normalize(normal);
 		float shadow = 0.0;
 #ifdef RECEIVE_SHADOWS
 		shadow = evalShadow(vpos, 1.0 / gl_FragCoord.w, depthTex, shadowMapNum, shadowMapDistance, shadowMapMatrix, depthHalfPixelSz);
 #endif
-		vec3 d = (1.0 - shadow) * diffuse * lightDiffuse.rgb * lightDiffuse.w * clamp(dot(normal, lightDirection), .0, 1.0);
-
-		float opacity_ = opacity;
-#if defined(VERTEXCOLORS) || defined(INSTANCEDCOLOR) || defined(VV_COLOR)
-        a *= vcolor.rgb;
-        d *= vcolor.rgb;
-        opacity_ *= vcolor.a;
-#endif
+		vec3 d = (1.0 - shadow) * lightDiffuse.rgb * lightDiffuse.w * clamp(dot(normal, lightDirection), .0, 1.0);
 
 		vec3 reflDir = normalize(reflect(viewDir, normal));
 		float specDot = max(dot(reflDir, lightDirection), .001);
@@ -125,6 +132,35 @@ $vvUniforms
 #endif
 ]]></snippet>
 
+<snippet name="externalColorMixTexture"><![CDATA[
+#if defined(VERTEXCOLORS) && (defined(INSTANCEDCOLOR) || defined(VV_COLOR))
+		// Internal colors: varying vcolor + uniform ambient/diffuse, external colors: varying vcolorExt
+		a = a * mixExternalColor(vcolor.rgb * ambient, texColor.rgb, vcolorExt.rgb, externalColorMixMode);
+		d = d * mixExternalColor(vcolor.rgb * diffuse, texColor.rgb, vcolorExt.rgb, externalColorMixMode);
+		float opacity_ = mixExternalOpacity(vcolor.a * opacity, texColor.a, vcolorExt.a, externalColorMixMode);
+#elif defined(VERTEXCOLORS)
+		// Internal colors: varying vcolor + uniform ambient/diffuse, external colors: uniform externalColor
+		a = a * mixExternalColor(vcolor.rgb * ambient, texColor.rgb, externalColor.rgb, externalColorMixMode);
+		d = d * mixExternalColor(vcolor.rgb * diffuse, texColor.rgb, externalColor.rgb, externalColorMixMode);
+		float opacity_ = mixExternalOpacity(vcolor.a * opacity, texColor.a, externalColor.a, externalColorMixMode);
+#elif defined(INSTANCEDCOLOR) || defined(VV_COLOR)
+		// Internal colors: uniform ambient/diffuse, external colors: varying vcolorExt
+		a = a * mixExternalColor(ambient, texColor.rgb, vcolorExt.rgb, externalColorMixMode);
+		d = d * mixExternalColor(diffuse, texColor.rgb, vcolorExt.rgb, externalColorMixMode);
+		float opacity_ = mixExternalOpacity(opacity, texColor.a, vcolorExt.a, externalColorMixMode);
+#else
+		// Internal colors: uniform ambient/diffuse, external colors: uniform externalColor
+		a = a * mixExternalColor(ambient, texColor.rgb, externalColor.rgb, externalColorMixMode);
+		d = d * mixExternalColor(diffuse, texColor.rgb, externalColor.rgb, externalColorMixMode);
+		float opacity_ = mixExternalOpacity(opacity, texColor.a, externalColor.a, externalColorMixMode);
+#endif
+]]></snippet>
+
+<snippet name="externalColorMix"><![CDATA[
+	vec4 texColor = vec4(1,1,1,1);
+	$externalColorMixTexture
+]]></snippet>
+
 <snippet name="vsPhong"><![CDATA[
 	$vsPhongSrc
 	}
@@ -134,6 +170,7 @@ $vvUniforms
 	precision mediump float;
 
 	$fsPhongSrc
+	$externalColorMix
 		gl_FragColor = vec4(ssao * (a + d) + s, opacity_);
 	}
 ]]></snippet>
@@ -145,7 +182,7 @@ $vvUniforms
 #ifndef FLIPV
 		vtc = $uv0;
 #else
-        vtc = vec2($uv0.x, 1.0-$uv0.y);
+		vtc = vec2($uv0.x, 1.0-$uv0.y);
 #endif
 
 	}
@@ -159,7 +196,8 @@ $vvUniforms
 	$fsPhongSrc
 		vec4 texColor = texture2D(tex, vtc);
 		if (texColor.a < .33) discard;
-		gl_FragColor = vec4(ssao * texColor.rgb * (a + d) + s, texColor.a * opacity_);
+		$externalColorMixTexture
+		gl_FragColor = vec4(ssao * (a + d) + s, opacity_);
 	}
 ]]></snippet>
 
@@ -170,11 +208,11 @@ $vvUniforms
 	varying vec4 regionV;
 	$vsPhongSrc
 #ifndef FLIPV
-        vtc = $uv0.xy;
+		vtc = $uv0.xy;
 #else
-        vtc = vec2($uv0.x, 1.0-$uv0.y);
+		vtc = vec2($uv0.x, 1.0-$uv0.y);
 #endif
-	    regionV = $region/65535.0;
+		regionV = $region/65535.0;
 	}
 ]]></snippet>
 
@@ -234,7 +272,8 @@ $vvUniforms
 		#endif
 
 		if (texColor.a < .33) discard;
-		gl_FragColor = vec4(ssao * texColor.rgb * (a + d) + s, texColor.a * opacity_);
+		$externalColorMixTexture
+		gl_FragColor = vec4(ssao * (a + d) + s, opacity_);
 		//gl_FragColor = regionV;
 	}
 ]]></snippet>
@@ -253,7 +292,8 @@ $vvUniforms
 		vec4 texColor = texture2D(tex, vtc);
 		if (texColor.a < .33) discard;
 		vec4 reflColor = texture2D(reflTex, normal2envTC(reflDir));
-		gl_FragColor = vec4(ssao * mix(texColor.rgb * (a + d), reflColor.rgb * lightAmbient.rgb*lightSpecular.w, reflectivity) + s, texColor.a * opacity_);
+		$externalColorMixTexture
+		gl_FragColor = vec4(ssao * mix(a + d, reflColor.rgb * lightAmbient.rgb * lightSpecular.w, reflectivity) + s, opacity_);
 	}
 ]]></snippet>
 

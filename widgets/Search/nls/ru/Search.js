@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define({searchButtonTitle:"Поиск",clearButtonTitle:"Очистить поиск",placeholder:"Найти адрес или место",searchIn:"Поиск в",lonlat:"Долгота, широта",reverseLonLatHeader:"Вы имели в виду?",all:"все",allPlaceholder:"Найти адрес или место",emptyValue:"Введите термин поиска.",untitledResult:"Без имени",untitledSource:"Источник без названия",noResults:"Нет результатов",noResultsFound:"Для {value} результатов не найдено.",showMoreResults:"Показать больше результатов",hideMoreResults:"Спрятать",searchResult:"Результаты поиска",moreResultsHeader:"Больше результатов",esriLocatorName:"Геокодер Esri World"});
+define({searchButtonTitle:"Поиск",clearButtonTitle:"Очистить поиск",placeholder:"Найти адрес или место",searchIn:"Поиск в",all:"все",allPlaceholder:"Найти адрес или место",emptyValue:"Введите термин поиска.",untitledResult:"Без имени",untitledSource:"Источник без названия",noResults:"Нет результатов",noResultsFound:"Для {value} результатов не найдено.",showMoreResults:"Показать больше результатов",hideMoreResults:"Спрятать",searchResult:"Результаты поиска",moreResultsHeader:"Больше результатов",esriLocatorName:"Геокодер Esri World"});

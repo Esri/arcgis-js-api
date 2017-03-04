@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define({searchButtonTitle:"Rechercher",clearButtonTitle:"Effacer la recherche",placeholder:"Rechercher une adresse ou un lieu",searchIn:"Rechercher dans",lonlat:"Longitude, Latitude",reverseLonLatHeader:"Voulez-vous dire ?",all:"Tout",allPlaceholder:"Rechercher une adresse ou un lieu",emptyValue:"Entrez un terme de recherche.",untitledResult:"Sans titre",untitledSource:"Source sans titre",noResults:"Aucun résultat",noResultsFound:"Aucun résultat trouvé pour {value}.",showMoreResults:"Afficher plus de résultats",hideMoreResults:"Masquer",searchResult:"Résultat de la recherche",moreResultsHeader:"Plus de résultats",esriLocatorName:"Esri World Geocoder"});
+define({searchButtonTitle:"Rechercher",clearButtonTitle:"Effacer la recherche",placeholder:"Rechercher une adresse ou un lieu",searchIn:"Rechercher dans",all:"Tout",allPlaceholder:"Rechercher une adresse ou un lieu",emptyValue:"Entrez un terme de recherche.",untitledResult:"Sans titre",untitledSource:"Source sans titre",noResults:"Aucun résultat",noResultsFound:"Aucun résultat trouvé pour {value}.",showMoreResults:"Afficher plus de résultats",hideMoreResults:"Masquer",searchResult:"Résultat de la recherche",moreResultsHeader:"Plus de résultats",esriLocatorName:"Esri World Geocoder"});

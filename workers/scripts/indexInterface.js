@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,7 +22,6 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-/* jshint worker: true */
 /* global importScripts: false */
 
 /* REQUIRES esri/workers/scripts/helpers */
@@ -60,7 +59,7 @@
           w: Math.abs(item[0] - item[2]),
           h: Math.abs(item[1] - item[3])
         };
-        if(this.system == 'kdtree'){
+        if(this.system == "kdtree"){
           //use center point
           norm = {
             x: norm.x + (norm.w/2),
@@ -74,14 +73,14 @@
           y: item[1],
           attributes: item[3]
         };
-        if (this.system != 'kdtree') {
+        if (this.system != "kdtree") {
           norm.w = 0;
           norm.h = 0;
         }
       }
-    } else if ('x' in item && 'y' in item) {
+    } else if ("x" in item && "y" in item) {
       norm = item;
-      if (this.system != 'kdtree' && !('h' in item && 'w' in item)) {
+      if (this.system != "kdtree" && !("h" in item && "w" in item)) {
         //appears to be a point, convert to envelope
         norm.w = 0;
         norm.h = 0;
@@ -109,7 +108,7 @@
      * @type {string}
      * @default 'rtree'
      */
-    system: 'rtree',
+    system: "rtree",
     /**
      * The index instance used
      * @type {Object}
@@ -122,17 +121,17 @@
      * @return {[type]}         [description]
      */
     create: function(data, options){
-      this.index = this['_create_'+this.system](data, options || this.indexOptions);
+      this.index = this["_create_"+this.system](data, options || this.indexOptions);
       return this.index;
     },
     /**
      * search the index
-     * @param  {(Array.<number>|Envelope|{point: (Point|Array.<number>), count:number, distance:?number, filter:?function(Point):boolean})} criteria 
+     * @param  {(Array.<number>|Envelope|{point: (Point|Array.<number>), count:number, distance:?number, filter:?function(Point):boolean})} criteria
      *  the search area and optional search options
      * @return {Array} An array of nodes matching the criteria
      */
     search: function(criteria, returnNode) {
-      return this['_search_'+this.system](criteria, returnNode);
+      return this["_search_"+this.system](criteria, returnNode);
     },
     /**
      * insert item into index
@@ -146,7 +145,7 @@
         geom = geom.geom;
         delete geom.data;
       }
-      return this['_insert_'+this.system](geom, data, layerId);
+      return this["_insert_"+this.system](geom, data, layerId);
     },
     /**
      * remove item from index
@@ -160,7 +159,7 @@
         geom = geom.geom;
         delete geom.data;
       }
-      return this['_remove_'+this.system](geom, data);
+      return this["_remove_"+this.system](geom, data);
     },
     /**
      * serializes the index
@@ -180,21 +179,21 @@
      * @return {Object} created index
      */
     load: function(snapshot){
-      this.index = this['_load_'+this.system](snapshot);
+      this.index = this["_load_"+this.system](snapshot);
       return this.index;
     },
     _indexLibraries: {
       kdtree: {
-        ns: 'kdTree',
-        script: 'libs/kdTree.js'  
+        ns: "kdTree",
+        script: "libs/kdTree.js"
       },
       rtree: {
-        ns: 'RTree',
-        script: 'libs/rtree.js'
+        ns: "RTree",
+        script: "libs/rtree.js"
       },
       quadtree: {
-        ns: 'Quadtree',
-        script: 'libs/quadtree.js'
+        ns: "Quadtree",
+        script: "libs/quadtree.js"
       }
     },
     _create_rtree: function(data, options){
@@ -230,7 +229,7 @@
         return Math.sqrt(xd*xd + yd*yd);
       };
       /** @type {Array.<string>} **/
-      var dim = options.dimensions || ['x', 'y'];
+      var dim = options.dimensions || ["x", "y"];
       var len = data.length;
       var pt, id;
       /** @type {Array.<Point>} **/
@@ -251,15 +250,15 @@
           points.push(pt);
         }
       }
-      var tree = new kdTree(points, dist, dim);
+      var tree = new kdTree(points, dist, dim); // eslint-disable-line new-cap
       return tree;
     },
     _create_quadtree: function(data, options){
-      throw 'Not Implimented';
+      throw "Not Implimented";
     },
     /**
      * search the kdtree index
-     * @param  {{point: (Point|Array.<number>), count:?number, distance:?number, filter:?function(Point):boolean}} criteria 
+     * @param  {{point: (Point|Array.<number>), count:?number, distance:?number, filter:?function(Point):boolean}} criteria
      *  the search area and options
      * @return {Array} An array of nodes matching the criteria
      * @private
@@ -291,7 +290,7 @@
       return this.index.search(prepareItem(criteria), returnNode === true);
     },
     _search_quadtree:function(criteria){
-      throw 'Not Implimented';
+      throw "Not Implimented";
     },
     _insert_kdtree: function(geom, data, layerId){
       if(geom.geometry){
@@ -302,7 +301,7 @@
       geom = prepareItem(geom);
       geom.layerId = layerId;
       if(data){
-        if(typeof(data) == 'object'){
+        if(typeof(data) == "object"){
           merge(data, geom);
         } else if (!Array.isArray(data)){
           //either a string or number, use as id
@@ -321,7 +320,7 @@
         geom = geomToBbox(geom.geometry);
       }
 
-      if (typeof data == 'string' || typeof data == 'number') {
+      if (typeof data == "string" || typeof data == "number") {
         data = {
           id: data,
           layerId: layerId
@@ -334,12 +333,12 @@
       return result;
     },
     _insert_quadtree:function(geom, data){
-      throw 'Not Implimented';
+      throw "Not Implimented";
     },
     _remove_kdtree: function(geom, data){
       geom = prepareItem(geom);
       if(data){
-        if(typeof(data) == 'object'){
+        if(typeof(data) == "object"){
           merge(data, geom);
         } else if (!Array.isArray(data)){
           //either a string or number, use as id
@@ -353,7 +352,7 @@
       return this.index.remove(prepareItem(geom), data);
     },
     _remove_quadtree:function(geom, data){
-      throw 'Not Implimented';
+      throw "Not Implimented";
     },
     _load_rtree: function(snapshot){
       if(!(this._indexLibraries.rtree.ns in context)){

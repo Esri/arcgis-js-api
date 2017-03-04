@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/extendsHelper","../../core/tsSupport/decorateHelper","../../core/typescript","dojo/_base/lang","../../core/Evented","./messageHandler"],function(e,t,o,n,r,s,i,c){function p(){return i}var u=function(e){function t(){e.apply(this,arguments)}return o(t,e),t.prototype.dojoConstructor=function(e){var t=this;this._setConfig(e),c.on("message-received",function(e){t.__messageReceived(e)})},t.prototype._setConfig=function(e){e&&s.mixin(this,e)},t.prototype.__messageReceived=function(e){this._messageReceived(e)},t.prototype._messageReceived=function(e){},t=n([r.subclass()],t)}(p());return u});
+define(["require","exports","../../core/tsSupport/extendsHelper","../../core/tsSupport/decorateHelper","../../core/typescript","dojo/_base/lang","../../core/Evented","./messageHandler"],function(e,t,n,o,r,s,i,c){function u(){return i}var p=function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return n(t,e),t.prototype.dojoConstructor=function(e){var t=this;this._setConfig(e),c.on("message-received",function(e){t.__messageReceived(e)})},t.prototype._setConfig=function(e){e&&s.mixin(this,e)},t.prototype.__messageReceived=function(e){this._messageReceived(e)},t.prototype._messageReceived=function(e){},t}(u());return p=o([r.subclass()],p)});

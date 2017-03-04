@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define({title:"כותרת",fileName:"שם קובץ",titlePlaceHolder:"כותרת קובץ",fileNamePlaceHolder:"שם קובץ",formatDefaultOption:"בחר פורמט",fileFormatTitle:"פורמט קובץ",layoutTitle:"הגדרת דף",layoutDefaultOption:"בחר הגדרת דף",scale:'קבע קנ"מ',scaleLabel:"קנה מידה",reset:"אפס",author:"מחבר",copyright:"זכויות יוצרים",legend:"כולל מקרא",lock:"נעל",swap:"החלף",panelToggle:"שנה מצב חלונית",advancedOptions:"אפשרויות מתקדמות",width:"רוחב",height:"גובה",attribution:"כלול ייחוס",layoutTab:"פריסת עמוד",mapOnlyTab:"מפה בלבד",untitled:"ללא שם","export":"ייצא",exportText:"קבצים מיוצאים",exportHint:"הקבצים המיוצאים שלך יוצגו כאן."});
+define({title:"כותרת",fileName:"שם קובץ",titlePlaceHolder:"כותרת קובץ",fileNamePlaceHolder:"שם קובץ",formatDefaultOption:"בחר פורמט",fileFormatTitle:"פורמט קובץ",layoutTitle:"הגדרת דף",layoutDefaultOption:"בחר הגדרת דף",scale:'קבע קנ"מ',scaleLabel:"קנה מידה",reset:"אפס",author:"מחבר",copyright:"זכויות יוצרים",legend:"כולל מקרא",lock:"נעל",swap:"החלף",panelToggle:"שנה מצב חלונית",advancedOptions:"אפשרויות מתקדמות",width:"רוחב",height:"גובה",attribution:"כלול ייחוס",layoutTab:"פריסת עמוד",mapOnlyTab:"מפה בלבד",untitled:"ללא שם",pending:"מייצא",ready:"פתח",error:"בחר כדי להסיר.",sceneViewError:"אין תמיכה בהדפסה בתצוגת סצנה.",serviceError:"נראה שאירעה שגיאה.","export":"ייצא",exportDescription:"יצוא. הקבצים המיוצאים יופיעו להלן.",exportText:"קבצים מיוצאים",exportHint:"הקבצים המיוצאים שלך יוצגו כאן."});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define({title:"Título",fileName:"Nome do Arquivo",titlePlaceHolder:"Título do arquivo",fileNamePlaceHolder:"Nome do arquivo",formatDefaultOption:"Selecionar formato",fileFormatTitle:"Formato do arquivo",layoutTitle:"Configuração da página",layoutDefaultOption:"Selecionar configuração da página",scale:"Configurar escala",scaleLabel:"escala",reset:"redefinir",author:"Autor",copyright:"Direitos autorais",legend:"Incluir legenda",lock:"bloquear",swap:"trocar",panelToggle:"Alternar painel",advancedOptions:"Opções Avançadas",width:"Largura",height:"Altura",attribution:"Incluir atribuição",layoutTab:"Layout",mapOnlyTab:"Mapa Somente",untitled:"sem título","export":"Exportar",exportText:"Arquivos Exportados",exportHint:"Seus arquivos exportados aparecerão aqui."});
+define({title:"Título",fileName:"Nome do Arquivo",titlePlaceHolder:"Título do arquivo",fileNamePlaceHolder:"Nome do arquivo",formatDefaultOption:"Selecionar formato",fileFormatTitle:"Formato do arquivo",layoutTitle:"Configuração da página",layoutDefaultOption:"Selecionar configuração da página",scale:"Configurar escala",scaleLabel:"escala",reset:"redefinir",author:"Autor",copyright:"Direitos autorais",legend:"Incluir legenda",lock:"bloquear",swap:"trocar",panelToggle:"Alternar painel",advancedOptions:"Opções Avançadas",width:"Largura",height:"Altura",attribution:"Incluir atribuição",layoutTab:"Layout",mapOnlyTab:"Mapa Somente",untitled:"sem título",pending:"Exportando",ready:"Abrir este",error:"Selecione este para removê-lo.",sceneViewError:"A impressão não é suportada na Visualização de Cena.",serviceError:"Parece haver um erro.","export":"Exportar",exportDescription:"Exportar. Arquivos exportados aparecerão abaixo.",exportText:"Arquivos Exportados",exportHint:"Seus arquivos exportados aparecerão aqui."});

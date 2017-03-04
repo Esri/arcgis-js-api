@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define({title:"Titel",fileName:"Dateiname",titlePlaceHolder:"Titel der Datei",fileNamePlaceHolder:"Dateiname",formatDefaultOption:"Format auswählen",fileFormatTitle:"Dateiformat",layoutTitle:"Seiteneinrichtung",layoutDefaultOption:"Seiteneinrichtung auswählen",scale:"Maßstab festlegen",scaleLabel:"Maßstab",reset:"zurücksetzen",author:"Autor",copyright:"Urheberrecht",legend:"Legende einbeziehen",lock:"sperren",swap:"austauschen",panelToggle:"Bereich umschalten",advancedOptions:"Erweiterte Optionen",width:"Breite",height:"Höhe",attribution:"Quellennachweis einfügen",layoutTab:"Layout",mapOnlyTab:"Nur Karte",untitled:"Ohne Titel","export":"Exportieren",exportText:"Exportierte Dateien",exportHint:"Hier werden die exportierten Dateien angezeigt."});
+define({title:"Titel",fileName:"Dateiname",titlePlaceHolder:"Titel der Datei",fileNamePlaceHolder:"Dateiname",formatDefaultOption:"Format auswählen",fileFormatTitle:"Dateiformat",layoutTitle:"Seiteneinrichtung",layoutDefaultOption:"Seiteneinrichtung auswählen",scale:"Maßstab festlegen",scaleLabel:"Maßstab",reset:"zurücksetzen",author:"Autor",copyright:"Urheberrecht",legend:"Legende einbeziehen",lock:"sperren",swap:"austauschen",panelToggle:"Bereich umschalten",advancedOptions:"Erweiterte Optionen",width:"Breite",height:"Höhe",attribution:"Quellennachweis einfügen",layoutTab:"Layout",mapOnlyTab:"Nur Karte",untitled:"Ohne Titel",pending:"Exportieren",ready:"Dieses Element öffnen",error:"Dieses Element auswählen, um es zu entfernen.",sceneViewError:"Drucken wird in SceneView nicht unterstützt.",serviceError:"Offenbar ist ein Fehler aufgetreten.","export":"Exportieren",exportDescription:"Exportieren. Exportierte Dateien werden weiter nachstehend aufgeführt.",exportText:"Exportierte Dateien",exportHint:"Hier werden die exportierten Dateien angezeigt."});

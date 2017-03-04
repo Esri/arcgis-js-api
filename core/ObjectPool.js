@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["require","exports"],function(t,o){function s(t){return t&&t.dispose&&"function"==typeof t.dispose}var i=function(){},n=function(){function t(t,o,s){void 0===t&&(t=new i),void 0===s&&(s=!0),this.cls=t,this.dispose=o,this.constructOnAcquire=s,this._pool=[]}return t.prototype.acquire=function(){for(var t=[],o=0;o<arguments.length;o++)t[o-0]=arguments[o];var s;return this._pool.length?(s=this._pool.pop(),this.constructOnAcquire&&this.cls.call(s)):s=new this.cls,s},t.prototype.release=function(t){t&&(this.dispose?this.dispose.call(t):s(t)&&t.dispose(),this._pool.push(t))},t}();return n});
+define(["require","exports"],function(t,n){function e(t){return t&&t.release&&"function"==typeof t.release}function i(t){return t&&t.acquire&&"function"==typeof t.acquire}var r=function(){function t(){}return t}(),o=function(){function t(t,n,e,i,r){void 0===i&&(i=1),void 0===r&&(r=0),this.classConstructor=t,this.acquireFunctionOrWithConstructor=n,this.releaseFunction=e,this.growthSize=i,n===!0?this.acquireFunction=this._constructorAcquireFunction:"function"==typeof n&&(this.acquireFunction=n),this._pool=new Array(r),this._set=new Set;for(var o=0;r>o;o++)this._pool[o]=new this.classConstructor;this.growthSize=Math.max(i,1)}return t.prototype.acquire=function(){for(var t=[],n=0;n<arguments.length;n++)t[n]=arguments[n];var e,o=this.classConstructor||r;if(0===this._pool.length)for(var s=this.growthSize,u=0;s>u;u++)this._pool[u]=new o;return e=this._pool.shift(),this.acquireFunction?this.acquireFunction.apply(this,[e].concat(t)):i(e)&&e.acquire.apply(e,t),this._set["delete"](e),e},t.prototype.release=function(t){t&&!this._set.has(t)&&(this.releaseFunction?this.releaseFunction(t):e(t)&&t.release(),this._pool.push(t),this._set.add(t))},t.prototype._constructorAcquireFunction=function(t){for(var n=[],e=1;e<arguments.length;e++)n[e-1]=arguments[e];(i=this.classConstructor).call.apply(i,[t].concat(n));var i},t}();return o});

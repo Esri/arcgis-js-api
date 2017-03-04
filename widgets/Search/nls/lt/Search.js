@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define({searchButtonTitle:"Ieškoti",clearButtonTitle:"Valyti paiešką",placeholder:"Surasti adresą arba vietą",searchIn:"Ieškoti",lonlat:"Platuma, ilguma",reverseLonLatHeader:"Turėjote omenyje?",all:"Viskas",allPlaceholder:"Surasti adresą arba vietą",emptyValue:"Įveskite paieškos žodį.",untitledResult:"Bevardis",untitledSource:"Šaltinis be pavadinimo",noResults:"Rezultatų nėra",noResultsFound:"Reikšmei {value} rezultatų nerasta.",showMoreResults:"Rodyti daugiau rezultatų",hideMoreResults:"Slėpti",searchResult:"Paieškos rezultatas",moreResultsHeader:"Daugiau rezultatų",esriLocatorName:"Esri pasaulio geokoderis"});
+define({searchButtonTitle:"Ieškoti",clearButtonTitle:"Valyti paiešką",placeholder:"Surasti adresą arba vietą",searchIn:"Ieškoti",all:"Viskas",allPlaceholder:"Surasti adresą arba vietą",emptyValue:"Įveskite paieškos žodį.",untitledResult:"Bevardis",untitledSource:"Šaltinis be pavadinimo",noResults:"Rezultatų nėra",noResultsFound:"Reikšmei {value} rezultatų nerasta.",showMoreResults:"Rodyti daugiau rezultatų",hideMoreResults:"Slėpti",searchResult:"Paieškos rezultatas",moreResultsHeader:"Daugiau rezultatų",esriLocatorName:"Esri pasaulio geokoderis"});

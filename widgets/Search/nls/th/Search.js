@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define({searchButtonTitle:"ค้นหา",clearButtonTitle:"ลบคำค้นหา",placeholder:"ค้นหาที่อยู่หรือสถานที่",searchIn:"ค้นหาใน",lonlat:"ลองจิจูด, ละติจูด",reverseLonLatHeader:"คุณหมายถึง?",all:"ทั้งหมด",allPlaceholder:"ค้นหาที่อยู่หรือสถานที่",emptyValue:"กรุณากรอกคำค้นหา",untitledResult:"ไม่มีหัวเรื่อง",untitledSource:"แหล่งข้อมูลที่ไม่มีชื่อ",noResults:"ไม่มีผลลัพธ์",noResultsFound:"ไม่พบผลลัลัพธ์สำหรับ {value}.",showMoreResults:"แสดงผลลัพธ์เพิ่ม",hideMoreResults:"ซ่อน",searchResult:"ผลลัพธ์การค้นหา",moreResultsHeader:"ผลลัพธ์เพิ่มเติม",esriLocatorName:"Esri World Geocoder"});
+define({searchButtonTitle:"ค้นหา",clearButtonTitle:"ลบคำค้นหา",placeholder:"ค้นหาที่อยู่หรือสถานที่",searchIn:"ค้นหาใน",all:"ทั้งหมด",allPlaceholder:"ค้นหาที่อยู่หรือสถานที่",emptyValue:"กรุณากรอกคำค้นหา",untitledResult:"ไม่มีหัวเรื่อง",untitledSource:"แหล่งข้อมูลที่ไม่มีชื่อ",noResults:"ไม่มีผลลัพธ์",noResultsFound:"ไม่พบผลลัลัพธ์สำหรับ {value}.",showMoreResults:"แสดงผลลัพธ์เพิ่ม",hideMoreResults:"ซ่อน",searchResult:"ผลลัพธ์การค้นหา",moreResultsHeader:"ผลลัพธ์เพิ่มเติม",esriLocatorName:"Esri World Geocoder"});

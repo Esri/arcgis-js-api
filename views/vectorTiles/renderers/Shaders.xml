@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Add your GLSL snippets to this file. You should start from
+  importing your old GLSL files. For instance, if you have a
+  file such as myShader.vs.glsl you should create a new <snippet name="myShaderVS">
+  and then copy and paste the GLSL source as the content. You will then convert your
+  code to use the {@link module:esri/views/vectorTiles/renderers/vtShaderSnippets vtShaderSnippets}
+  instance to access the GLSL code, instead of importing it directly with require("dojo/text!...").
+-->
+<snippets>
+
+  <snippet name="foobarVS">
+  </snippet>
+
+  <snippet name="foobarFS">
+  </snippet>
+
+</snippets>
+

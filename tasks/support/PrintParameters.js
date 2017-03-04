@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["../../core/declare","../../core/Accessor"],function(e,r){var a=e(r,{declaredClass:"esri.tasks.support.PrintParameters",properties:{view:null,template:null,outSpatialReference:null,extraParameters:null}});return a});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators","../../core/Accessor"],function(e,r,t,o,p,a){var s=function(e){function r(r){var t=e.call(this,r)||this;return t.extraParameters=null,t.outSpatialReference=null,t.template=null,t.view=null,t}return t(r,e),r}(p.declared(a));return o([p.property()],s.prototype,"extraParameters",void 0),o([p.property()],s.prototype,"outSpatialReference",void 0),o([p.property()],s.prototype,"template",void 0),o([p.property()],s.prototype,"view",void 0),s=o([p.subclass("esri.tasks.support.PrintParameters")],s)});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["require","exports"],function(i,t){var e=Array.prototype.splice,o=function(){function i(i,t){void 0===i&&(i=50),void 0===t&&(t=50),this.allocationSize=t,this.pool=[],this.index=-1;for(var e=i;e>0;--e)this.pool.push([]);this.index=i-1}return i.prototype.acquire=function(){if(-1===this.index){for(var i=this.allocationSize;i>0;--i)this.pool.push([]);this.index+=this.allocationSize}return this.index=this.index-1,this.pool.pop()},i.prototype.copy=function(i){var t=this.acquire();return i.unshift(0,0),e.apply(t,i),i.splice(0,2),t},i.prototype.release=function(i){i&&(i.length=0,this.index=this.index+1,this.pool[this.index]=i)},i.acquire=function(){return n.acquire()},i.copy=function(i){return n.copy(i)},i.release=function(i){return n.release(i)},i}(),n=new o(100);return o});
+define(["require","exports","./ObjectPool"],function(e,r,t){var n=Array.prototype.splice,o=function(){function e(e,r){void 0===e&&(e=50),void 0===r&&(r=50),this._pool=new t(Array,!1,function(e){return e.length=0},r,e)}return e.prototype.acquire=function(){return this._pool.acquire()},e.prototype.copy=function(e){var r=this.acquire();return e.unshift(0,0),n.apply(r,e),e.splice(0,2),r},e.prototype.release=function(e){this._pool.release(e)},e.acquire=function(){return i.acquire()},e.copy=function(e){return i.copy(e)},e.release=function(e){return i.release(e)},e}(),i=new o(100);return o});

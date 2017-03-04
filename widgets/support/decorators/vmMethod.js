@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/accessorSupport/get"],function(e,t,n){function i(){return console.warn("@vmMethod is deprecated, use @aliasOf instead"),function(e,t,i){var r,a="viewModel."+t;i.value=function(){for(var e=[],t=0;t<arguments.length;t++)e[t-0]=arguments[t];var i=n["default"](this,a);return i?(r||(r=a.split(".").slice(0,-1).join(".")),i=i.bind(n["default"](this,r)),i.call.apply(i,[this].concat(e))):void 0}}}t.vmMethod=i});
+define(["require","exports","../../../core/accessorSupport/get"],function(e,t,n){function i(){return console.warn("@vmMethod is deprecated, use @aliasOf instead"),function(e,t,i){var r,a="viewModel."+t;i.value=function(){for(var e=[],t=0;t<arguments.length;t++)e[t]=arguments[t];var i=n["default"](this,a);return i?(r||(r=a.split(".").slice(0,-1).join(".")),i=i.bind(n["default"](this,r)),i.call.apply(i,[this].concat(e))):void 0}}}t.vmMethod=i});

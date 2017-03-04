@@ -13,7 +13,7 @@
  * @module esri/widgets/Print
  * @since 4.2
  *
- * @see [Print.js (widget view)]({{ JSAPI_BOWER_URL }}/widgets/Print.js)
+ * @see [Print.tsx (widget view)]({{ JSAPI_BOWER_URL }}/widgets/Print.tsx)
  * @see [Print.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_Print.scss)
  * @see [Sample - Print widget](../sample-code/widgets-print/index.html)
  * @see module:esri/widgets/Print/PrintViewModel
@@ -40,11 +40,11 @@ import View = require("../views/View");
 import PrintViewModel = require("./Print/PrintViewModel");
 import PrintTemplate = require("../tasks/support/PrintTemplate");
 import Collection = require("../core/Collection");
+import EsriError = require("../core/Error");
 import watchUtils = require("../core/watchUtils");
 import Widget = require("./Widget");
 import FileLink = require("./Print/FileLink");
-import Extent = require("../geometry/Extent");
-import Viewpoint = require("../Viewpoint");
+import urlUtils = require("../core/urlUtils");
 
 import { accessibleHandler, join, renderable, jsxFactory } from "./support/widget";
 
@@ -91,6 +91,8 @@ const CSS = {
   exportedFilesContainer: "esri-print__export-panel-container",
   exportedFilesTitle: "esri-print__export-title",
   exportedFile: "esri-print__exported-file",
+  exportedFileLink: "esri-print__exported-file-link",
+  exportedFileLinkTitle: "esri-print__exported-file-link-title",
   heightContainer: "esri-print__height-container",
   legendInfoContainer: "esri-print__legend-info-container",
   printWidgetContainer: "esri-print__container",
@@ -102,6 +104,8 @@ const CSS = {
   // common
   button: "esri-widget-button",
   disabled: "esri-disabled",
+  panelError: "esri-print__panel--error",
+  exportedFileError: "esri-print__exported-file--error",
   hide: "esri-hidden",
   rotate: "esri-rotating",
   // icons
@@ -147,19 +151,20 @@ class Print extends declared(Widget) {
   }
 
   postInitialize() {
-    this.viewModel.getPrintTemplatesFromService().then((templatesInfo: TemplatesInfo) => {
-      this._templatesInfo = templatesInfo;
+    watchUtils.init(this, "viewModel.templatesInfo", (templatesInfo: TemplatesInfo) => {
+      if (templatesInfo) {
+        this._templatesInfo = templatesInfo;
 
-      this._selectedTemplate.layout = this._templatesInfo.layout.defaultValue;
-      this._selectedTemplate.format = this._templatesInfo.format.defaultValue;
+        this._selectedTemplate.layout = this._templatesInfo.layout.defaultValue;
+        this._selectedTemplate.format = this._templatesInfo.format.defaultValue;
 
-      if (this._selectedTemplate.layout === "MAP_ONLY") {
-        this._layoutTabSelected = false;
+        if (this._selectedTemplate.layout === "MAP_ONLY") {
+          this._layoutTabSelected = false;
+        }
       }
-      this.scheduleRender();
     });
 
-    watchUtils.init(this.viewModel.view, "scale", (newValue: number) => {
+    watchUtils.init(this, "viewModel.view.scale", (newValue: number) => {
       if (!this._scaleEnabled) {
         this._scale = newValue;
         this.scheduleRender();
@@ -206,10 +211,6 @@ class Print extends declared(Widget) {
 
   private _width: number;
 
-  private _extent: Extent = null;
-
-  private _viewpoint: Viewpoint = null;
-
   //--------------------------------------------------------------------------
   //
   //  Properties
@@ -245,12 +246,15 @@ class Print extends declared(Widget) {
    * {@link module:esri/widgets/Print/PrintViewModel} class to access
    * all properties and methods on the widget.
    *
+   * @name viewModel
+   * @instance
    * @type {module:esri/widgets/Print/PrintViewModel}
    * @autocast
    */
   @property({
     type: PrintViewModel
   })
+  @renderable(["viewModel.templatesInfo", "viewModel.state"])
   viewModel: PrintViewModel = new PrintViewModel();
 
   //----------------------------------
@@ -259,6 +263,9 @@ class Print extends declared(Widget) {
 
   /**
    * The URL of the REST endpoint of the Export Web Map Task.
+   *
+   * @name printServiceUrl
+   * @instance
    * @type {string}
    */
 
@@ -281,6 +288,18 @@ class Print extends declared(Widget) {
   @renderable()
   exportedLinks: Collection<FileLink>;
 
+  //----------------------------------
+  //  error
+  //----------------------------------
+
+  /**
+   * The Error object returned if an error occurred while fetching information from service
+   * @type {EsriError}
+   * @ignore
+   */
+  @aliasOf("viewModel.error")
+  error: EsriError;
+
   //--------------------------------------------------------------------------
   //
   //  Public Methods
@@ -291,14 +310,14 @@ class Print extends declared(Widget) {
     const titleSection = (
       <div key="title-section" class={CSS.formSectionContainer}>
         <label for={`${this.id}__title`}>{this._layoutTabSelected ? i18n.title : i18n.fileName}</label>
-        <input id={`${this.id}__title`}
+        <input key={`${this.id}__title`}
                name="title"
                type="text"
                tabIndex={0}
                placeholder={this._layoutTabSelected ? i18n.titlePlaceHolder : i18n.fileNamePlaceHolder}
                class={CSS.inputText}
                oninput={this._updateInputValue}
-               bind={this}/>
+               bind={this} />
       </div>
     );
 
@@ -316,7 +335,7 @@ class Print extends declared(Widget) {
     const fileFormatSection = (
       <div key="file-format-section" class={CSS.formSectionContainer}>
         <label for={`${this.id}__formats`}>{i18n.fileFormatTitle}</label>
-        <select id={`${this.id}__formats`} onchange={this._updateFromOption} data-target-property="format" bind={this}>
+        <select key={`${this.id}__formats`} onchange={this._updateFromOption} data-target-property="format" bind={this}>
           {fileFormatOptions}
         </select>
       </div>
@@ -336,7 +355,7 @@ class Print extends declared(Widget) {
     const pageSetupSection = (
       <div key="page-setup-section" class={CSS.formSectionContainer}>
         <label for={`${this.id}__layouts`}>{i18n.layoutTitle}</label>
-        <select id={`${this.id}__layouts`} onchange={this._updateFromOption} data-target-property="layout" bind={this}>
+        <select key={`${this.id}__layouts`} onchange={this._updateFromOption} data-target-property="layout" bind={this}>
           {layoutOptions}
         </select>
       </div>
@@ -345,15 +364,15 @@ class Print extends declared(Widget) {
     const advancedSection = this._advancedOptionsVisible ? (
       <div aria-labelledby={`${this.id}__advancedOptions`} class={CSS.advancedOptionsContainer}>
         <div class={join(CSS.scaleInfoContainer, CSS.formSectionContainer)}>
-          <input id={`${this.id}__scaleEnabled`}
+          <input key={`${this.id}__scaleEnabled`}
                  name="scaleEnabled"
                  type="checkbox"
                  tabIndex={0}
                  onchange={this._toggleInputValue}
-                 bind={this}/>
+                 bind={this} />
           <label for={`${this.id}__scaleEnabled`}>{i18n.scale}</label>
           <div class={CSS.scaleInputContainer}>
-            <input id={`${this.id}__scale`}
+            <input key={`${this.id}__scale`}
                    aria-label={i18n.scaleLabel}
                    type="number"
                    name="scale"
@@ -362,7 +381,7 @@ class Print extends declared(Widget) {
                    oninput={this._updateInputValue}
                    disabled={!this._scaleEnabled}
                    value={`${this._scale}`}
-                   bind={this}/>
+                   bind={this} />
             <button role="button"
                     aria-label={i18n.reset}
                     class={join(CSS.button, CSS.refreshButton, CSS.iconRefresh)}
@@ -374,39 +393,39 @@ class Print extends declared(Widget) {
         </div>
         <div class={join(CSS.authorInfoContainer, CSS.formSectionContainer)}>
           <label for={`${this.id}__author`}>{i18n.author}</label>
-          <input id={`${this.id}__author`}
+          <input key={`${this.id}__author`}
                  type="text"
                  name="author"
                  class={CSS.inputText}
                  tabIndex={0}
                  oninput={this._updateInputValue}
-                 bind={this}/>
+                 bind={this} />
         </div>
         <div class={join(CSS.copyrightInfoContainer, CSS.formSectionContainer)}>
           <label for={`${this.id}__copyright`}>{i18n.copyright}</label>
-          <input id={`${this.id}__copyright`}
+          <input key={`${this.id}__copyright`}
                  type="text"
                  name="copyright"
                  class={CSS.inputText}
                  tabIndex={0}
                  oninput={this._updateInputValue}
-                 bind={this}/>
+                 bind={this} />
         </div>
         <div class={join(CSS.legendInfoContainer, CSS.formSectionContainer)}>
-          <input id={`${this.id}__legend`}
+          <input key={`${this.id}__legend`}
                  type="checkbox"
                  name="legend"
                  tabIndex={0}
                  checked
                  onchange={this._toggleInputValue}
-                 bind={this}/>
+                 bind={this} />
           <label for={`${this.id}__legend`}>{i18n.legend}</label>
         </div>
       </div>
     ) : null;
 
     const panel = this._layoutTabSelected ? (
-      <section id={`${this.id}__layoutContent`} key="layout-content" aria-labelledby={`${this.id}__layoutTab`} class={CSS.layoutSection}>
+      <section key={`${this.id}__layoutContent`} aria-labelledby={`${this.id}__layoutTab`} class={CSS.layoutSection}>
         <div key="layout" class={CSS.panelContainer}>
           {titleSection}
           {pageSetupSection}
@@ -414,7 +433,7 @@ class Print extends declared(Widget) {
         </div>
 
         <div key="advanced-section" class={join(CSS.panelContainer, CSS.advancedOptionsSection)}>
-          <button id={`${this.id}__advancedOptions`}
+          <button key={`${this.id}__advancedOptions`}
                   aria-label={i18n.advancedOptions}
                   aria-expanded={this._advancedOptionsVisible ? "true" : "false"}
                   role="button"
@@ -422,42 +441,42 @@ class Print extends declared(Widget) {
                   onclick={this._showAdvancedOptions}
                   bind={this}>
             <div class={CSS.advancedOptionsButtonContainer}>
-              <span aria-hidden="true" class={join(CSS.iconRightTriangleArrow, CSS.advancedOptionsButtonIconClosed)}></span>
-              <span aria-hidden="true" class={join(CSS.iconLeftTriangleArrow, CSS.advancedOptionsButtonIconClosed_RTL)}></span>
-              <span aria-hidden="true" class={join(CSS.iconDownArrow, CSS.advancedOptionsButtonIconOpened)}></span>
+              <span aria-hidden="true" class={join(CSS.iconRightTriangleArrow, CSS.advancedOptionsButtonIconClosed)} />
+              <span aria-hidden="true" class={join(CSS.iconLeftTriangleArrow, CSS.advancedOptionsButtonIconClosed_RTL)} />
+              <span aria-hidden="true" class={join(CSS.iconDownArrow, CSS.advancedOptionsButtonIconOpened)} />
               <span class={CSS.advancedOptionsButtonTitle}>{i18n.advancedOptions}</span>
             </div>
           </button>
           {advancedSection}
         </div>
       </section>
-    ): (
-      <section id={`${this.id}__mapOnlyContent`} aria-labelledby={`${this.id}__mapOnlyTab`} key="map-only-content" class={CSS.mapOnlySection}>
+    ) : (
+      <section key={`${this.id}__mapOnlyContent`} aria-labelledby={`${this.id}__mapOnlyTab`} class={CSS.mapOnlySection}>
         <div key="mapOnly" class={CSS.panelContainer}>
           {titleSection}
           {this._layoutTabSelected ? null : fileFormatSection}
           <div class={join(CSS.sizeContainer, CSS.formSectionContainer)}>
             <div class={CSS.widthContainer}>
               <label for="width">{i18n.width}</label>
-              <input id={`${this.id}__width`}
+              <input key={`${this.id}__width`}
                      type="text"
                      name="width"
                      class={CSS.inputText}
                      onchange={this._updateInputValue}
                      value={`${this._width}`}
                      tabIndex={0}
-                     bind={this}/>
+                     bind={this} />
             </div>
             <div class={CSS.heightContainer}>
               <label for="height">{i18n.height}</label>
-              <input id={`${this.id}__height`}
+              <input key={`${this.id}__height`}
                      type="text"
                      name="height"
                      class={CSS.inputText}
                      onchange={this._updateInputValue}
                      value={`${this._height}`}
                      tabIndex={0}
-                     bind={this}/>
+                     bind={this} />
             </div>
             <button role="button"
                     aria-label={i18n.swap}
@@ -468,13 +487,13 @@ class Print extends declared(Widget) {
             </button>
           </div>
           <div key="attribution-container" class={CSS.formSectionContainer}>
-            <input id={`${this.id}__attribution`}
+            <input key={`${this.id}__attribution`}
                    name="attribution"
                    type="checkbox"
                    onchange={this._toggleInputValue}
                    tabIndex={0}
                    checked
-                   bind={this}/>
+                   bind={this} />
             <label for="attribution">{i18n.attribution}</label>
           </div>
         </div>
@@ -482,83 +501,78 @@ class Print extends declared(Widget) {
     );
 
     const exportedLinksArray = this.exportedLinks.toArray();
+    const exportedLinksItems = this._renderExportedLink(exportedLinksArray);
     const exportButtonClasses = {
       [CSS.disabled]: !this._selectedTemplate.layout && !this._selectedTemplate.format
     };
 
+    const isSceneView = this.get("view.type") !== "2d";
+
+    const errorPanel = (
+      <div key={`${this.id}__errorPanel`} class={CSS.panelError}>
+        {isSceneView ? i18n.sceneViewError : i18n.serviceError}
+      </div>
+    );
+
+    const normalPanel = (
+      <div key={`${this.id}__printPanel`}>
+        <ul class={CSS.layoutTabList}
+            role="tablist"
+            onclick={this._toggleLayoutPanel}
+            onkeydown={this._toggleLayoutPanel}
+            bind={this}>
+          <li key={`${this.id}__layoutTab`}
+              data-tab-id="layoutTab"
+              class={CSS.layoutTab}
+              role="tab"
+              tabIndex={0}
+              aria-selected={`${this._layoutTabSelected}`}
+              bind={this}>
+            {i18n.layoutTab}
+          </li>
+          <li key={`${this.id}__mapOnlyTab`}
+              data-tab-id="mapOnlyTab"
+              class={CSS.layoutTab}
+              role="tab"
+              tabIndex={0}
+              aria-selected={`${!this._layoutTabSelected}`}
+              bind={this}>
+            {i18n.mapOnlyTab}
+          </li>
+        </ul>
+
+        {panel}
+
+        <button aria-label={i18n.exportDescription}
+                role="button"
+                class={CSS.printButton}
+                tabIndex={0}
+                classes={exportButtonClasses}
+                onclick={this._handlePrintMap}
+                bind={this}>
+          {i18n.export}
+        </button>
+        <div key={`${this.id}__exportedFilesContainer`} class={CSS.exportedFilesContainer} afterUpdate={this._scrollExportIntoView} onclick={this._removeLink} bind={this}>
+          <h2 class={CSS.exportedFilesTitle}>{i18n.exportText}</h2>
+          {
+            exportedLinksArray.length > 0 ? null : (
+              <div key="exported-section-hints">
+                <div>{i18n.exportHint}</div>
+              </div>
+            )
+          }
+
+          {exportedLinksItems}
+        </div>
+      </div>
+    );
+
     const printWidgetPanel = (
-      <div id={`${this.id}__printContainer`} key="print-widget-panel">
+      <div key={`${this.id}__printContainer`}>
         <div class={CSS.printWidgetContainer}>
           <header class={CSS.headerTitle}>{i18n.export}</header>
-
-          <ul class={CSS.layoutTabList} role="tablist" onclick={this._toggleLayoutPanel} onkeydown={this._toggleLayoutPanel} bind={this}>
-            <li id={`${this.id}__layoutTab`}
-                data-tab-id="layoutTab"
-                class={CSS.layoutTab}
-                role="tab"
-                tabIndex={0}
-                aria-selected={`${this._layoutTabSelected}`}
-                bind={this}>
-              {i18n.layoutTab}
-            </li>
-            <li id={`${this.id}__mapOnlyTab`}
-                data-tab-id="mapOnlyTab"
-                class={CSS.layoutTab}
-                role="tab"
-                tabIndex={0}
-                aria-selected={`${!this._layoutTabSelected}`}
-                bind={this}>
-              {i18n.mapOnlyTab}
-            </li>
-          </ul>
-
-          {panel}
-
-          <button aria-label={i18n.export}
-                  role="button"
-                  class={CSS.printButton}
-                  tabIndex={0}
-                  classes={exportButtonClasses}
-                  onclick={this._handlePrintMap}
-                  bind={this}>
-            {i18n.export}
-          </button>
-          <div id={`${this.id}__exportedFilesContainer`} class={CSS.exportedFilesContainer} afterUpdate={this._scrollExportIntoView} bind={this}>
-            <h2 class={CSS.exportedFilesTitle}>{i18n.exportText}</h2>
-            {
-              exportedLinksArray.length > 0 ? null : (
-                <div key="exported-section-hints">
-                  <div>{i18n.exportHint}</div>
-                </div>
-              )
-            }
-
-            {
-              exportedLinksArray.map(exportedLink => {
-                  const iconClasses = {
-                    [CSS.iconSpinner]: exportedLink.state === "pending",
-                    [CSS.rotate]: exportedLink.state === "pending",
-                    [CSS.iconDownload]: exportedLink.state === "ready",
-                    [CSS.iconError]: exportedLink.state === "error"
-                  };
-
-                  const linkClasses = {
-                    [CSS.disabled]: exportedLink.state !== "ready"
-                  };
-
-                  const url = exportedLink.url === "" ? null : exportedLink.url;
-
-                  return (
-                    <div key={exportedLink.name} class={CSS.exportedFile}>
-                      <a href={url} classes={iconClasses} tabIndex={0} download></a>
-                      <a href={url} classes={linkClasses} tabIndex={0} target="_blank">{exportedLink.name}</a>
-                    </div>
-                  );
-              })
-            }
-          </div>
+          {(this.error || !this.printServiceUrl || isSceneView) ? errorPanel : normalPanel}
         </div>
-
       </div>
     );
 
@@ -597,9 +611,24 @@ class Print extends declared(Widget) {
 
     this.scale = this._scale;
 
-    if (this._scaleEnabled) {
-      this._extent = this.viewModel.getExtent(this._viewpoint, this.scale, this.viewModel.view.size);
+    const titleText = this._title || i18n.untitled,
+          lowercaseFormat = this._selectedTemplate.format.toLowerCase(),
+          extension = lowercaseFormat.indexOf("png") > -1 ? "png" : lowercaseFormat,
+          fileName = titleText + extension,
+          hasSameFileName = this._exportedFileNameMap[fileName] !== undefined;
+
+    if (hasSameFileName) {
+      this._exportedFileNameMap[fileName]++;
     }
+    else {
+      this._exportedFileNameMap[fileName] = 0;
+    }
+
+    this.exportedLinks.add(new FileLink({
+      name: titleText,
+      extension: extension,
+      count: this._exportedFileNameMap[fileName]
+    }));
   }
 
   private _resetToCurrentScale(): void {
@@ -614,40 +643,8 @@ class Print extends declared(Widget) {
 
   private _handlePrintMap(): void {
     this._configurePrintTemplate();
-
-    const titleText = this._title || i18n.untitled;
-    const ext = this._selectedTemplate.format.toLowerCase().indexOf("png") > -1 ? "png" : this._selectedTemplate.format.toLowerCase();
-
-    let exportedFileName = titleText + "." + ext;
-    let formattedExportedFileName = exportedFileName;
-
-    const hasSameFileName = this._exportedFileNameMap[exportedFileName] !== undefined;
-
-    if (hasSameFileName) {
-      this._exportedFileNameMap[exportedFileName]++;
-      formattedExportedFileName = titleText + "(" + this._exportedFileNameMap[exportedFileName] + ")." + ext;
-    }
-    else {
-      this._exportedFileNameMap[exportedFileName] = 0;
-    }
-
-    this.viewModel.addExportedLinks(formattedExportedFileName);
-
-    const currentIndex = this.exportedLinks.length - 1;
-
     this._pendingExportScroll = true;
-
-    let promise = this._extent != null ? this.viewModel.print(this._selectedTemplate, this._extent) : this.viewModel.print(this._selectedTemplate);
-    promise.then((result: any) => {
-      const currentExportedLink = this.exportedLinks.getItemAt(currentIndex);
-      currentExportedLink.url = result.url;
-      currentExportedLink.state = "ready";
-
-      this.scheduleRender();
-    }, () => {
-      const currentExportedLink = this.exportedLinks.getItemAt(currentIndex);
-      currentExportedLink.state = "error";
-    });
+    this.viewModel.print(this._selectedTemplate);
   }
 
   private _updateFromOption(e: Event): void {
@@ -681,14 +678,64 @@ class Print extends declared(Widget) {
     this[propName] = target.checked;
 
     if (propName === "_scaleEnabled") {
+      this.viewModel.scaleEnabled = this[propName];
       if (!this[propName]) {
         this._resetToCurrentScale();
-        this._extent = null;
-      }
-      else {
-        this._viewpoint = this.viewModel.view.viewpoint.clone();
       }
     }
+  }
+
+  private _removeLink(e: Event): void {
+    const target = e.target as Element;
+    const item = target["data-item"] as FileLink;
+
+    if (item && item.state === "error") {
+      this.exportedLinks.remove(item);
+    }
+  }
+
+  private _renderExportedLink(exportedLinksArray: FileLink[]): any {
+    return exportedLinksArray.map(exportedLink => {
+      const iconClasses = {
+        [CSS.iconSpinner]: exportedLink.state === "pending",
+        [CSS.rotate]: exportedLink.state === "pending",
+        [CSS.iconDownload]: exportedLink.state === "ready",
+        [CSS.iconError]: exportedLink.state === "error",
+        [CSS.exportedFileError]: exportedLink.state === "error"
+      };
+
+      const linkTitleClasses = {
+        [CSS.disabled]: exportedLink.state === "pending",
+        [CSS.exportedFileError]: exportedLink.state === "error"
+      };
+
+      let url = exportedLink.url === "" ? null : exportedLink.url;
+
+      if (url) {
+        url = urlUtils.addProxy(url);
+      }
+
+      let itemDescriptiveStatus: string;
+
+      if (exportedLink.state === "pending") {
+        itemDescriptiveStatus = i18n.pending;
+      }
+      else if (exportedLink.state === "ready") {
+        itemDescriptiveStatus = i18n.ready;
+      }
+      else {
+        itemDescriptiveStatus = i18n.error;
+      }
+
+      return (
+        <div aria-label={itemDescriptiveStatus} key={exportedLink.formattedName} class={CSS.exportedFile}>
+          <a href={url} tabIndex={0} target="_blank" class={CSS.exportedFileLink}>
+            <span data-item={exportedLink} classes={iconClasses} />
+            <span data-item={exportedLink} class={CSS.exportedFileLinkTitle} classes={linkTitleClasses}>{exportedLink.formattedName}</span>
+          </a>
+        </div>
+      );
+    });
   }
 
   private _resetInputValue(): void {

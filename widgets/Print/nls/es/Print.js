@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define({title:"Título",fileName:"Nombre del archivo",titlePlaceHolder:"Título de archivo",fileNamePlaceHolder:"Nombre de archivo",formatDefaultOption:"Seleccionar formato",fileFormatTitle:"Formato de archivo",layoutTitle:"Configuración de página",layoutDefaultOption:"Seleccionar configuración de página",scale:"Establecer escala",scaleLabel:"escala",reset:"restablecer",author:"Autor",copyright:"Derechos de autor",legend:"Incluir leyenda",lock:"bloquear",swap:"cambiar",panelToggle:"Conmutación de panel",advancedOptions:"Opciones avanzadas",width:"Ancho",height:"Altura",attribution:"Atribución incluida",layoutTab:"Diseño",mapOnlyTab:"Sólo mapa",untitled:"sin título","export":"Exportar",exportText:"Archivos exportados",exportHint:"Los archivos exportados aparecerán aquí."});
+define({title:"Título",fileName:"Nombre del archivo",titlePlaceHolder:"Título de archivo",fileNamePlaceHolder:"Nombre de archivo",formatDefaultOption:"Seleccionar formato",fileFormatTitle:"Formato de archivo",layoutTitle:"Configuración de página",layoutDefaultOption:"Seleccionar configuración de página",scale:"Establecer escala",scaleLabel:"escala",reset:"restablecer",author:"Autor",copyright:"Derechos de autor",legend:"Incluir leyenda",lock:"bloquear",swap:"cambiar",panelToggle:"Conmutación de panel",advancedOptions:"Opciones avanzadas",width:"Ancho",height:"Altura",attribution:"Atribución incluida",layoutTab:"Diseño",mapOnlyTab:"Sólo mapa",untitled:"sin título",pending:"Exportando",ready:"Abrir esto",error:"Seleccionar esto para quitarlo.",sceneViewError:"La impresión no se admite en SceneView.",serviceError:"Parece que se ha producido un error.","export":"Exportar",exportDescription:"Exportar. Los archivos exportados aparecerán a continuación",exportText:"Archivos exportados",exportHint:"Los archivos exportados aparecerán aquí."});

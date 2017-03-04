@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["dijit/form/Select","dojo/dom-class"],function(t,e){var n=t.createSubclass({baseClass:"esri-icon-select dijitSelect dijitValidationTextBox",declaredClass:"esri.dijit.SymbolStyler.IconSelect",_extraIconClass:null,_setValueAttr:function(t){this.inherited(arguments);var n=this.containerNode;e.remove(n,this._getAllIconClasses()),e.add(n,this.get("selectedOptions").iconClass)},addIconOptions:function(t,e){e=e||"",t=t||[];var n=t.map(function(t){return{value:t,iconClass:e+" "+t}});this.addOption(n)},_getMenuItemForOption:function(t){var e=this.inherited(arguments);return e.set("iconClass",t.iconClass),e},_getAllIconClasses:function(){return this.options.map(function(t){return t.iconClass})}});return n});
+define(["dijit/form/Select","dojo/dom-class"],function(t,e){var s=t.createSubclass({baseClass:"esri-icon-select dijitSelect dijitValidationTextBox",declaredClass:"esri.widgets.SymbolStyler.IconSelect",_extraIconClass:null,_setValueAttr:function(t){this.inherited(arguments);var s=this.containerNode;e.remove(s,this._getAllIconClasses()),e.add(s,this.get("selectedOptions").iconClass)},addIconOptions:function(t,e){e=e||"",t=t||[];var s=t.map(function(t){return{value:t,iconClass:e+" "+t}});this.addOption(s)},_getMenuItemForOption:function(t){var e=this.inherited(arguments);return e.set("iconClass",t.iconClass),e},_getAllIconClasses:function(){return this.options.map(function(t){return t.iconClass})}});return s});

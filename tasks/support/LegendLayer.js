@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["../../core/declare","../../core/Accessor"],function(e,r){var l=e(r,{declaredClass:"esri.tasks.support.LegendLayer",layerId:null,subLayerIds:null,title:null});return l});
+define(["../../core/Accessor"],function(e){var r=e.createSubclass({declaredClass:"esri.tasks.support.LegendLayer",properties:{layerId:null,subLayerIds:null,title:null}});return r});

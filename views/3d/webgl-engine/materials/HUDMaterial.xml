@@ -56,14 +56,19 @@ $vvUniforms
 		vec3 vnormal = (modelNormal * vec4($normal, 1.0)).xyz;
 
 		// groundRelative is 1 if both camera and symbol are on the same side of the ground, -1 otherwise
-		float groundRelative = cameraGroundRelative * sign(pointGroundDistance);
-		if (groundRelative == 0.0) groundRelative = 1.0;
+		float pointGroundSign = sign(pointGroundDistance);
+		if (pointGroundSign == 0.0) {
+		  pointGroundSign = 1.0;
+		}
+
+		float groundRelative = cameraGroundRelative * pointGroundSign;
+		// cameraGroundRelative must not be 0 (guaranteed by HUDMaterial.js)
 
 		// view angle dependent part of polygon offset emulation
 		// we take the absolute value because the sign that is dropped is
 		// instead introduced using the ground-relative position of the symbol and the camera
-		float cosAlpha = abs(dot(vnormal, normalize(camPos - posModel)));
-		if (cosAlpha > .01 && polygonOffset > .0) {
+		float cosAlpha = clamp(dot(vnormal * pointGroundSign, normalize(camPos - posModel)), 0.01, 1.0);
+		if (polygonOffset > .0) {
 			float tanAlpha = sqrt(1.0 - cosAlpha * cosAlpha) / cosAlpha;
 			float factor = (1.0 - tanAlpha / viewport[2]);
 			// same side of the terrain
@@ -100,7 +105,10 @@ $vvUniforms
 		float pointGroundDistance = $auxpos1.w;
 
 #ifdef VV_SIZE
-		vec2 inputSize = vvGetScale($auxpos2).xy * $size;
+		// only use width (.xx) for proportional scaling
+		// (if no width was defined in vv, width
+		//  will be a copy of height vv)
+		vec2 inputSize = vvGetScale($auxpos2).xx * $size;
 #else
 		vec2 inputSize = $size;
 #endif

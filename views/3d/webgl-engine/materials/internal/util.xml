@@ -137,14 +137,14 @@
 #if defined(VV_SIZE)
 	uniform vec3 vvSizeMinSize;
 	uniform vec3 vvSizeMaxSize;
-	uniform vec3 vvSizeMinDataValue;
-	uniform vec3 vvSizeMaxDataValue;
+	uniform vec3 vvSizeOffset;
+	uniform vec3 vvSizeFactor;
 #elif defined(VV_CUSTOM_MODEL_MATRIX)
 	uniform vec3 vvSizeValue;
 #endif
 
 #if defined(VV_ROTATION)
-  #error Rotation not implemented
+	uniform float vvRotationValue;
 #elif defined(VV_CUSTOM_MODEL_MATRIX)
 	uniform mat4 vvRotationValue;
 #endif
@@ -165,8 +165,7 @@
 // Evaluation of size
 #if defined(VV_SIZE)
 	vec3 vvGetScale(vec4 featureAttribute) {
-		vec3 f = (featureAttribute.xxx - vvSizeMinDataValue) / (vvSizeMaxDataValue - vvSizeMinDataValue);
-		return vvSizeMinSize + clamp(f, 0.0, 1.0) * (vvSizeMaxSize - vvSizeMinSize);
+		return clamp(vvSizeOffset + featureAttribute.x * vvSizeFactor, vvSizeMinSize, vvSizeMaxSize);
 	}
 #elif defined(VV_CUSTOM_MODEL_MATRIX)
 	vec3 vvGetScale(vec4 featureAttribute) {
@@ -176,7 +175,17 @@
 
 // Evaluation of rotation
 #if defined(VV_ROTATION)
-	#error Rotation not implemented
+	mat4 vvGetRotation(vec4 featureAttribute) {
+		float angle = featureAttribute.z + vvRotationValue; // add symbol rotation to VV rotation
+
+		float sinA = sin(angle);
+		float cosA = cos(angle);
+
+		return mat4(cosA, -sinA, 0, 0,
+		            sinA,  cosA, 0, 0,
+		               0,     0, 1, 0,
+		               0,     0, 0, 1);
+	}
 #elif defined(VV_CUSTOM_MODEL_MATRIX)
 	mat4 vvGetRotation(vec4 featureAttribute) {
 		return vvRotationValue;
@@ -197,7 +206,7 @@
 
 #ifdef VV_COLOR
 	vec4 vvGetColor(vec4 featureAttribute, float values[VV_COLOR_N], vec4 colors[VV_COLOR_N]) {
-		float value = featureAttribute.x;
+		float value = featureAttribute.y;
 		if (value <= values[0]) {
 			return colors[0];
 		}
@@ -212,6 +221,66 @@
 		return colors[VV_COLOR_N - 1];
 	}
 #endif
+]]></snippet>
+
+<snippet name="rgb2hsv"><![CDATA[
+vec3 rgb2hsv(vec3 c)
+{
+	vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
+	vec4 p = mix(vec4(c.bg, K.wz), vec4(c.gb, K.xy), step(c.b, c.g));
+	vec4 q = mix(vec4(p.xyw, c.r), vec4(c.r, p.yzx), step(p.x, c.r));
+
+	float d = q.x - min(q.w, q.y);
+	float e = 1.0e-10;
+	return vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);
+}
+]]></snippet>
+
+<snippet name="hsv2rgb"><![CDATA[
+vec3 hsv2rgb(vec3 c)
+{
+	vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+	vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);
+	return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
+}
+]]></snippet>
+
+<snippet name="externalColorMixMode"><![CDATA[
+$rgb2hsv
+$hsv2rgb
+
+vec3 mixExternalColor(vec3 internalColor, vec3 textureColor, vec3 externalColor, int mode) {
+  if (mode == 1 /* multiply */) {
+    return internalColor * textureColor * externalColor;
+  }
+  else if (mode == 2 /* ignore */ ) {
+    return internalColor * textureColor;
+  }
+  else if (mode == 3 /* replace */ ) {
+    return externalColor;
+  }
+  else {
+    // tint (or something invalid)
+    vec3 hsvIn = rgb2hsv(internalColor * textureColor);
+    vec3 hsvTint = rgb2hsv(externalColor);
+    vec3 hsvOut = vec3(hsvTint.x, hsvTint.y, hsvIn.z * hsvTint.z);
+    return hsv2rgb(hsvOut);
+  }
+}
+
+float mixExternalOpacity(float internalOpacity, float textureOpacity, float externalOpacity, int mode) {
+  if (mode == 2 /* ignore */ ) {
+    return internalOpacity * textureOpacity;
+  }
+  else if (mode == 3 /* replace */ ) {
+    return externalOpacity;
+  }
+  else {
+    // multiply or tint (or something invalid)
+    return internalOpacity * textureOpacity * externalOpacity;
+  }
+}
+
 ]]></snippet>
 
 </snippets>

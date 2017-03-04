@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define({searchButtonTitle:"Ara",clearButtonTitle:"Aramayı temizle",placeholder:"Adres veya yer bul",searchIn:"Şurada Ara:",lonlat:"Boylam, Enlem",reverseLonLatHeader:"Şunu mu demek istediniz?",all:"Tümü",allPlaceholder:"Adres veya yer bul",emptyValue:"Arama terimi girin.",untitledResult:"Başlıksız",untitledSource:"Başlıksız kaynak",noResults:"Sonuç yok",noResultsFound:"{value} için herhangi bir sonuç bulunamadı.",showMoreResults:"Daha fazla sonuç göster",hideMoreResults:"Gizle",searchResult:"Sonuç ara",moreResultsHeader:"Diğer sonuçlar",esriLocatorName:"Esri Dünya Coğrafi Kodlayıcısı"});
+define({searchButtonTitle:"Ara",clearButtonTitle:"Aramayı temizle",placeholder:"Adres veya yer bul",searchIn:"Şurada Ara:",all:"Tümü",allPlaceholder:"Adres veya yer bul",emptyValue:"Arama terimi girin.",untitledResult:"Başlıksız",untitledSource:"Başlıksız kaynak",noResults:"Sonuç yok",noResultsFound:"{value} için herhangi bir sonuç bulunamadı.",showMoreResults:"Daha fazla sonuç göster",hideMoreResults:"Gizle",searchResult:"Sonuç ara",moreResultsHeader:"Diğer sonuçlar",esriLocatorName:"Esri Dünya Coğrafi Kodlayıcısı"});

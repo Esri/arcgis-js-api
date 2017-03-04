@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/extendsHelper","../../../input/InputHandler","../../navigation/NavigationConstants"],function(n,e,t,i,o){var a=o.Pan.Direction,r=function(n){function e(e,t,i){var o=this;n.call(this,"esri.views.3d.input.handlers.KeyPan",!0),this.view=e,this.keys=t,this._keyToDirection=(r={},r[t.left]=a.LEFT,r[t.right]=a.RIGHT,r[t.forward]=a.FORWARD,r[t.backward]=a.BACKWARD,r[t.up]=a.UP,r[t.down]=a.DOWN,r),this.registerIncoming("key-down",i,function(n){return o._handleKeyDown(n)}),this.registerIncoming("key-up",i,function(n){return o._handleKeyUp(n)});var r}return t(e,n),e.prototype._handleKeyDown=function(n){n.data.repeat||this._handleKey(n,!0)},e.prototype._handleKeyUp=function(n){this._handleKey(n,!1)},e.prototype._handleKey=function(n,e){var t=this._keyToDirection[n.data.key];null!=t&&(e?this.view.navigation.pan.beginContinuous(t):this.view.navigation.pan.endContinuous(t),n.stopPropagation())},e}(i.InputHandler);e.KeyPan=r});
+define(["require","exports","../../../../core/tsSupport/extendsHelper","../../../input/InputHandler","../../navigation/NavigationConstants"],function(n,e,t,i,o){var a=o.Pan.Direction,r=function(n){function e(e,t,i){var o=n.call(this,"esri.views.3d.input.handlers.KeyPan",!0)||this;return o.view=e,o.keys=t,o._keyToDirection=(r={},r[t.left]=a.LEFT,r[t.right]=a.RIGHT,r[t.forward]=a.FORWARD,r[t.backward]=a.BACKWARD,r[t.up]=a.UP,r[t.down]=a.DOWN,r),o.registerIncoming("key-down",i,function(n){return o._handleKeyDown(n)}),o.registerIncoming("key-up",i,function(n){return o._handleKeyUp(n)}),o;var r}return t(e,n),e.prototype._handleKeyDown=function(n){n.data.repeat||this._handleKey(n,!0)},e.prototype._handleKeyUp=function(n){this._handleKey(n,!1)},e.prototype._handleKey=function(n,e){var t=this._keyToDirection[n.data.key];null!=t&&(e?this.view.navigation.pan.beginContinuous(t):this.view.navigation.pan.endContinuous(t),n.stopPropagation())},e}(i.InputHandler);e.KeyPan=r});

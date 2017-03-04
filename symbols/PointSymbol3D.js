@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/lang","./Symbol3D","../core/accessorSupport/decorators"],function(e,o,t,r,s,n,l){var c=function(e){function o(o){e.call(this),this.type="point-symbol-3d"}return t(o,e),o.prototype.clone=function(){return new o({styleOrigin:s.clone(this.styleOrigin),symbolLayers:s.clone(this.symbolLayers),thumbnail:s.clone(this.thumbnail)})},r([l.property()],o.prototype,"type",void 0),r([l.shared(["Icon","Object","Text"])],o.prototype,"_allowedLayerTypes",void 0),o=r([l.subclass("esri.symbols.PointSymbol3D")],o)}(l.declared(n));return c});
+define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/lang","./Symbol3D","../core/accessorSupport/decorators"],function(e,r,o,t,n,s,l){var c=i=function(e){function r(r){var o=e.call(this)||this;return o.type="point-symbol-3d",o}return o(r,e),r.prototype.clone=function(){return new i({styleOrigin:n.clone(this.styleOrigin),symbolLayers:n.clone(this.symbolLayers),thumbnail:n.clone(this.thumbnail)})},r}(l.declared(s));t([l.property()],c.prototype,"type",void 0),t([l.shared(["Icon","Object","Text"])],c.prototype,"_allowedLayerTypes",void 0),c=i=t([l.subclass("esri.symbols.PointSymbol3D")],c);var i;return c});

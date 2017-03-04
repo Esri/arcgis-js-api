@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/lang","./Symbol3D","../core/accessorSupport/decorators"],function(e,r,o,t,l,s,n){var c=function(e){function r(r){e.call(this),this.type="label-symbol-3d"}return o(r,e),r.prototype.clone=function(){return new r({styleOrigin:l.clone(this.styleOrigin),symbolLayers:l.clone(this.symbolLayers),thumbnail:l.clone(this.thumbnail)})},t([n.property()],r.prototype,"type",void 0),t([n.shared(["Text"])],r.prototype,"_allowedLayerTypes",void 0),r=t([n.subclass("esri.symbols.LabelSymbol3D")],r)}(n.declared(s));return c});
+define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/lang","./Symbol3D","../core/accessorSupport/decorators"],function(e,r,o,t,l,s,n){var a=c=function(e){function r(r){var o=e.call(this)||this;return o.type="label-symbol-3d",o}return o(r,e),r.prototype.clone=function(){return new c({styleOrigin:l.clone(this.styleOrigin),symbolLayers:l.clone(this.symbolLayers),thumbnail:l.clone(this.thumbnail)})},r}(n.declared(s));t([n.property()],a.prototype,"type",void 0),t([n.shared(["Text"])],a.prototype,"_allowedLayerTypes",void 0),a=c=t([n.subclass("esri.symbols.LabelSymbol3D")],a);var c;return a});

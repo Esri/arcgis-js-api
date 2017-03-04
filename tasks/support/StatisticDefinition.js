@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["../../core/declare","../../core/Accessoire"],function(t,i){var e=t(i,{declaredClass:"esri.tasks.support.StatisticDefinition",onStatisticField:null,outStatisticFieldName:null,statisticType:null,toJSON:function(){return{statisticType:this.statisticType,onStatisticField:this.onStatisticField,outStatisticFieldName:this.outStatisticFieldName,maxPointCount:this.maxPointCount,maxRecordCount:this.maxRecordCount,maxVertexCount:this.maxVertexCount}}});return e});
+define(["../../core/Accessor"],function(t){var i=t.createSubclass({declaredClass:"esri.tasks.support.StatisticDefinition",properties:{maxPointCount:null,maxRecordCount:null,maxVertexCount:null,onStatisticField:null,outStatisticFieldName:null,statisticType:null},toJSON:function(){return{statisticType:this.statisticType,onStatisticField:this.onStatisticField,outStatisticFieldName:this.outStatisticFieldName,maxPointCount:this.maxPointCount,maxRecordCount:this.maxRecordCount,maxVertexCount:this.maxVertexCount}}});return i});

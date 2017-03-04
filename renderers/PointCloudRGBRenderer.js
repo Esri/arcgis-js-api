@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/accessorSupport/decorators","./PointCloudRenderer"],function(e,r,t,o,p,n){var d=function(e){function r(r){e.call(this),this.type="pointCloudRGBRenderer",this.field=null}return t(r,e),o([p.property()],r.prototype,"type",void 0),o([p.property({json:{writable:!0},type:String})],r.prototype,"field",void 0),r=o([p.subclass("esri.renderer.PointCloudRGBRenderer")],r)}(p.declared(n));return d});
+define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/accessorSupport/decorators","./PointCloudRenderer"],function(e,r,t,o,n,p){var d=function(e){function r(r){var t=e.call(this)||this;return t.type="pointCloudRGBRenderer",t.field=null,t}return t(r,e),r}(n.declared(p));return o([n.property()],d.prototype,"type",void 0),o([n.property({json:{write:!0},type:String})],d.prototype,"field",void 0),d=o([n.subclass("esri.renderers.PointCloudRGBRenderer")],d)});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["../Viewpoint","../core/JSONSupport"],function(e,t){var r=t.createSubclass({declaredClass:"esri.portal.Bookmark",properties:{description:{type:String,json:{writable:!0}},thumbnailSource:{type:String,json:{writable:!0}},title:{type:String,json:{writable:!0}},viewpoint:{type:e,json:{writable:!0}}}});return r});
+define(["../Viewpoint","../core/JSONSupport"],function(e,t){var r=t.createSubclass({declaredClass:"esri.portal.Bookmark",properties:{description:{type:String,json:{write:!0}},thumbnailSource:{type:String,json:{write:!0}},title:{type:String,json:{write:!0}},viewpoint:{type:e,json:{write:!0}}}});return r});

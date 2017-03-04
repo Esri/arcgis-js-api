@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -32,14 +32,14 @@
  * [![layers-imagery](../assets/img/apiref/layers/layers-imagery.png)](../sample-code/layers-imagery-pixelvalues/index.html)
  *
  * If the image service is requested from a different domain, a [CORS enabled server](http://enable-cors.org/server.html) or a proxy is
- * required. If CORS is enabled on the server add the image service domain to {@link module:esri/config/request#corsEnabledServers 
- * esriConfig.request.corsEnabledServers}. Alternatively, if CORS cannot be enabled on ArcGIS Server you can set up a proxy on your web 
- * server and then add it to the proxy rules list in {@link module:esri/config esriConfig} using 
+ * required. If CORS is enabled on the server add the image service domain to {@link module:esri/config/request#corsEnabledServers
+ * esriConfig.request.corsEnabledServers}. Alternatively, if CORS cannot be enabled on ArcGIS Server you can set up a proxy on your web
+ * server and then add it to the proxy rules list in {@link module:esri/config esriConfig} using
  * {@link module:esri/core/urlUtils#addProxyRule addProxyRule()}.
- * 
+ *
  * ::: esri-md class="panel trailer-1"
  * Esri requires that when you use an ArcGIS Online basemap in your app, the map must include Esri attribution and you must be licensed to use the content.
- * For detailed guidelines on working with attribution, please visit the official [attribution in your app](https://developers.arcgis.com/terms/attribution) documentation.
+ * For detailed guidelines on working with attribution, please visit the official [attribution in your app](https://developers.arcgis.com/terms/attribution/) documentation.
  * For information on terms of use, see the [Terms of Use FAQ](https://developers.arcgis.com/terms/faq/).
  * :::
  *
@@ -53,4 +53,4 @@
  * @see [Sample - Raster attribute table](../sample-code/layers-imagery-attribute-table/index.html)
  */
 
-define(["dojo/_base/lang","./Layer","./mixins/ArcGISImageService","./mixins/OperationalLayer","./mixins/PortalLayer","./mixins/ScaleRangeLayer"],function(e,a,r,i,n,l){var t={canvas2D:"2d",webGL:"webgl",expWebGL:"experimental-webgl",webGL2:"webgl2",expWebGL2:"experimental-webgl2"},s=a.createSubclass([r,i,n,l],{declaredClass:"esri.layers.ImageryLayer",viewModulePaths:{"2d":"../views/2d/layers/ImageryLayerView2D","3d":"../views/3d/layers/ImageLayerView3D"},normalizeCtorArgs:function(a,r){return"string"==typeof a?e.mixin({},{url:a},r):a},load:function(){this.addResolvingPromise(this.loadFromPortal({supportedTypes:["Image Service"]}).always(this._fetchService.bind(this)))},properties:{drawMode:!0,drawType:{value:t.canvas2D,cast:function(e){return e in t?e:t.canvas2D}},legendEnabled:{json:{readFrom:["showLegend"],read:function(e,a){return null!=a.showLegend?a.showLegend:!0}}},operationalLayerType:"ArcGISImageServiceLayer",popupEnabled:{json:{readFrom:["disablePopup"],read:function(e,a){return null!=a.disablePopup?!a.disablePopup:!0}}},pixelFilter:null,type:{value:"imagery",json:{readable:!1}}},redraw:function(){this.emit("redraw")},fetchImage:function(e){return this._fetchImage(e)},applyFilter:function(e){return this._applyFilter(e)}});return s});
+define(["dojo/_base/lang","./Layer","./mixins/ArcGISImageService","./mixins/OperationalLayer","./mixins/PortalLayer","./mixins/ScaleRangeLayer"],function(e,r,a,i,n,s){var l={canvas2D:"2d",webGL:"webgl",expWebGL:"experimental-webgl",webGL2:"webgl2",expWebGL2:"experimental-webgl2"},t=r.createSubclass([a,i,n,s],{declaredClass:"esri.layers.ImageryLayer",viewModulePaths:{"2d":"../views/2d/layers/ImageryLayerView2D","3d":"../views/3d/layers/ImageLayerView3D"},normalizeCtorArgs:function(r,a){return"string"==typeof r?e.mixin({},{url:r},a):r},load:function(){this.addResolvingPromise(this.loadFromPortal({supportedTypes:["Image Service"]}).always(this._fetchService.bind(this)))},properties:{drawMode:!0,drawType:{value:l.canvas2D,cast:function(e){return e in l?e:l.canvas2D}},legendEnabled:{json:{read:{source:["showLegend"],reader:function(e,r){return null!=r.showLegend?r.showLegend:!0}}}},operationalLayerType:"ArcGISImageServiceLayer",popupEnabled:{json:{read:{source:["disablePopup"],reader:function(e,r){return null!=r.disablePopup?!r.disablePopup:!0}}}},pixelFilter:null,type:{value:"imagery",json:{read:!1}}},redraw:function(){this.emit("redraw")},fetchImage:function(e){return this._fetchImage(e)},applyFilter:function(e){return this._applyFilter(e)}});return t});

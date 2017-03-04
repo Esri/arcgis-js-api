@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators","../../core/JSONSupport"],function(e,r,o,t,l,s){var p=function(e){function r(r){e.call(this,r),this.level=0,this.levelValue=null,this.resolution=0,this.scale=0}return o(r,e),r.prototype.clone=function(){return new r({level:this.level,levelValue:this.levelValue,resolution:this.resolution,scale:this.scale})},t([l.property({json:{writable:!0}})],r.prototype,"level",void 0),t([l.property({json:{writable:!0}})],r.prototype,"levelValue",void 0),t([l.property({json:{writable:!0}})],r.prototype,"resolution",void 0),t([l.property({json:{writable:!0}})],r.prototype,"scale",void 0),r=t([l.subclass("esri.layers.support.LOD")],r)}(l.declared(s));return p});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators","../../core/JSONSupport"],function(e,r,o,t,l,p){var s=i=function(e){function r(r){var o=e.call(this,r)||this;return o.level=0,o.levelValue=null,o.resolution=0,o.scale=0,o}return o(r,e),r.prototype.clone=function(){return new i({level:this.level,levelValue:this.levelValue,resolution:this.resolution,scale:this.scale})},r}(l.declared(p));t([l.property({json:{write:!0}})],s.prototype,"level",void 0),t([l.property({json:{write:!0}})],s.prototype,"levelValue",void 0),t([l.property({json:{write:!0}})],s.prototype,"resolution",void 0),t([l.property({json:{write:!0}})],s.prototype,"scale",void 0),s=i=t([l.subclass("esri.layers.support.LOD")],s);var i;return s});

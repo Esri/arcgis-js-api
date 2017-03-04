@@ -50,8 +50,6 @@
   align-self: $side;
 }
 
-
-
 @mixin pointerStyle($width, $height) {
   content: "";
   position: absolute;
@@ -137,6 +135,51 @@
         max-height: #{$pageMenuHeight}px;
       }
     }
+}
+
+@mixin componentHeight_BasedOnViewSize($node) {
+  .#{$node} {
+    overflow: auto;
+  }
+  .esri-view-height-greater-than-medium {
+    .esri-ui-corner .#{$node} {
+      max-height: $gt_medium_height;
+    }
+  }
+  .esri-view-height-medium {
+    .esri-ui-corner .#{$node} {
+      max-height: $medium_height;
+    }
+  }
+  .esri-view-height-small {
+    .esri-ui-corner .#{$node} {
+      max-height: $small_height;
+    }
+  }
+  .esri-view-height-xsmall {
+    .esri-ui-corner .#{$node} {
+      max-height: $xsmall_height;
+    }
+  }
+}
+
+@mixin _loopingProgressBar($width) {
+  0% {
+    left: 0%;
+    width: 0%;
+  }
+  #{$width} {
+    left: 0%;
+    width: $width;
+  }
+  #{100-$width} {
+    left: 100% - $width;
+    width: $width;
+  }
+  100% {
+    left: 100%;
+    width: 0%;
+  }
 }
 
 @mixin transform($transforms) {

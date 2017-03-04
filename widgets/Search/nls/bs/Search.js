@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define({searchButtonTitle:"Pretraži",clearButtonTitle:"Očisti pretragu",placeholder:"Pronađi adresu ili mjesto",searchIn:"Traži u",lonlat:"Geografska dužina, geografska širina",reverseLonLatHeader:"Jeste li mislili?",all:"Sve",allPlaceholder:"Pronađi adresu ili mjesto",emptyValue:"Unesite termin za pretraživanje.",untitledResult:"Neimenovano",untitledSource:"Neimenovani izvor",noResults:"Nema rezultata",noResultsFound:"Nema pronađenih rezultata za {value}.",showMoreResults:"Prikaži još rezultata",hideMoreResults:"Sakrij",searchResult:"Rezultat pretraživanja",moreResultsHeader:"Više rezultata",esriLocatorName:"Svjetski geokoder Esrija"});
+define({searchButtonTitle:"Pretraži",clearButtonTitle:"Očisti pretragu",placeholder:"Pronađi adresu ili mjesto",searchIn:"Traži u",all:"Sve",allPlaceholder:"Pronađi adresu ili mjesto",emptyValue:"Unesite termin za pretraživanje.",untitledResult:"Neimenovano",untitledSource:"Neimenovani izvor",noResults:"Nema rezultata",noResultsFound:"Nema pronađenih rezultata za {value}.",showMoreResults:"Prikaži još rezultata",hideMoreResults:"Sakrij",searchResult:"Rezultat pretraživanja",moreResultsHeader:"Više rezultata",esriLocatorName:"Svjetski geokoder Esrija"});

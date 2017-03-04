@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/accessorSupport/decorators","../core/Accessor"],function(r,e,t,o,c,p){var s=function(r){function e(e){r.call(this),this.created=null,this.rating=null}return t(e,r),o([c.property()],e.prototype,"created",void 0),o([c.property()],e.prototype,"rating",void 0),e=o([c.subclass("esri.portal.PortalRating")],e)}(c.declared(p));return s});
+define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/accessorSupport/decorators","../core/Accessor"],function(r,e,t,o,c,p){var a=function(r){function e(e){var t=r.call(this)||this;return t.created=null,t.rating=null,t}return t(e,r),e}(c.declared(p));return o([c.property()],a.prototype,"created",void 0),o([c.property()],a.prototype,"rating",void 0),a=o([c.subclass("esri.portal.PortalRating")],a)});

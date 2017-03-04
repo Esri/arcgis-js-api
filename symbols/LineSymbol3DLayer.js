@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/screenUtils","./Symbol3DLayer","../core/accessorSupport/decorators"],function(e,t,r,o,i,s,p){var a=function(e){function t(t){e.call(this),this.material=null,this.type="Line",this.size=1}return r(t,e),t.prototype.clone=function(){return new t({enabled:this.enabled,material:this.material&&this.material.clone(),size:this.size})},o([p.property()],t.prototype,"material",void 0),o([p.property()],t.prototype,"type",void 0),o([p.property({json:{writable:!0}}),p.cast(i.toPt)],t.prototype,"size",void 0),t=o([p.subclass("esri.symbols.LineSymbol3DLayer")],t)}(p.declared(s));return a});
+define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/screenUtils","./Symbol3DLayer","../core/accessorSupport/decorators"],function(e,r,t,o,i,s,a){var p=n=function(e){function r(r){var t=e.call(this)||this;return t.material=null,t.type="Line",t.size=1,t}return t(r,e),r.prototype.clone=function(){return new n({enabled:this.enabled,material:this.material&&this.material.clone(),size:this.size})},r}(a.declared(s));o([a.property()],p.prototype,"material",void 0),o([a.property()],p.prototype,"type",void 0),o([a.property({json:{write:!0}}),a.cast(i.toPt)],p.prototype,"size",void 0),p=n=o([a.subclass("esri.symbols.LineSymbol3DLayer")],p);var n;return p});

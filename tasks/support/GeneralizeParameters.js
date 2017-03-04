@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["../../core/Accessoire","../../core/declare","../../core/kebabDictionary","../../geometry/support/jsonUtils","dojo/_base/array"],function(e,i,t,s,r){var o=t({109006:"centimeters",9102:"decimal-degrees",109005:"decimeters",9002:"feet",109009:"inches",9036:"kilometers",9001:"meters",9035:"miles",109007:"millimeters",109012:"nautical-miles",9096:"yards"}),n=i(e,{declaredClass:"esri.tasks.support.GeneralizeParameters",geometries:null,deviationUnit:null,maxDeviation:null,toJSON:function(){var e=r.map(this.geometries,function(e){return e.toJSON()}),i={};return this.geometries&&this.geometries.length>0&&(i.geometries=JSON.stringify({geometryType:s.getJsonType(this.geometries[0]),geometries:e}),i.sr=JSON.stringify(this.geometries[0].spatialReference.toJSON())),this.deviationUnit&&(i.deviationUnit=o.toJSON(this.deviationUnit)),this.maxDeviation&&(i.maxDeviation=this.maxDeviation),i}});return n});
+define(["../../core/Accessor","../../core/kebabDictionary","../../geometry/support/jsonUtils","dojo/_base/array"],function(e,i,t,s){var r=i({109006:"centimeters",9102:"decimal-degrees",109005:"decimeters",9002:"feet",109009:"inches",9036:"kilometers",9001:"meters",9035:"miles",109007:"millimeters",109012:"nautical-miles",9096:"yards"}),o=e.createSubclass({declaredClass:"esri.tasks.support.GeneralizeParameters",properties:{geometries:null,deviationUnit:null,maxDeviation:null},toJSON:function(){var e=s.map(this.geometries,function(e){return e.toJSON()}),i={};return this.geometries&&this.geometries.length>0&&(i.geometries=JSON.stringify({geometryType:t.getJsonType(this.geometries[0]),geometries:e}),i.sr=JSON.stringify(this.geometries[0].spatialReference.toJSON())),this.deviationUnit&&(i.deviationUnit=r.toJSON(this.deviationUnit)),this.maxDeviation&&(i.maxDeviation=this.maxDeviation),i}});return o});

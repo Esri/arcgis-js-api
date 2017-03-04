@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/extendsHelper","../InputHandler"],function(e,t,n,r){var u=function(e){function t(){e.call(this,"PreventContextMenu",!0),this.registerIncoming("context-menu",function(e){e.data["native"].preventDefault()})}return n(t,e),t}(r.InputHandler);t.PreventContextMenu=u,Object.defineProperty(t,"__esModule",{value:!0}),t["default"]=u});
+define(["require","exports","../../../core/tsSupport/extendsHelper","../InputHandler"],function(e,t,n,r){var u=function(e){function t(){var t=e.call(this,"PreventContextMenu",!0)||this;return t.registerIncoming("context-menu",function(e){e.data["native"].preventDefault()}),t}return n(t,e),t}(r.InputHandler);t.PreventContextMenu=u,Object.defineProperty(t,"__esModule",{value:!0}),t["default"]=u});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["require","exports","./tsSupport/declareExtendsHelper","./tsSupport/decorateHelper","./Accessor","./declare","./accessorSupport/read","./accessorSupport/write","./accessorSupport/decorators"],function(r,e,t,o,n,s,u,i,a){function c(r,e){if(!r)return null;if(r.declaredClass)throw new Error("JSON object is already hydrated");var t=this,o=new t;return o.read(r,e),o}var p=function(r){function e(){r.apply(this,arguments)}return t(e,r),e.prototype.read=function(r,e){return u["default"](this,r,e),this},e.prototype.write=function(r,e){return i["default"](this,r||{},e)},e.prototype.toJSON=function(r){return this.write(null,r)},e=o([a.subclass("esri.core.JSONSupport")],e)}(a.declared(n));return p.prototype.toJSON.isDefaultToJSON=!0,s.after(function(r){s.hasMixin(r,p)&&(r.fromJSON=c.bind(r))}),p});
+define(["require","exports","./tsSupport/declareExtendsHelper","./tsSupport/decorateHelper","./Accessor","./declare","./accessorSupport/read","./accessorSupport/write","./accessorSupport/decorators"],function(r,t,e,o,n,u,s,i,a){function c(r,t){if(!r)return null;if(r.declaredClass)throw new Error("JSON object is already hydrated");var e=this,o=new e;return o.read(r,t),o}var p=function(r){function t(){return null!==r&&r.apply(this,arguments)||this}return e(t,r),t.prototype.read=function(r,t){return s["default"](this,r,t),this},t.prototype.write=function(r,t){return i["default"](this,r||{},t)},t.prototype.toJSON=function(r){return this.write(null,r)},t}(a.declared(n));return p=o([a.subclass("esri.core.JSONSupport")],p),p.prototype.toJSON.isDefaultToJSON=!0,u.after(function(r){u.hasMixin(r,p)&&(r.fromJSON=c.bind(r))}),p});

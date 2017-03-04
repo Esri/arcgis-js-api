@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["../../core/declare","dojo/_base/array","./ColorRamp"],function(r,o,t){var a=r(t,{declaredClass:"esri.tasks.support.MultipartColorRamp",colorRamps:[],type:"multipart",toJSON:function(){var r=o.map(this.colorRamps,function(r){return r.toJSON()}),t={type:"multipart",colorRamps:r};return t}});return a});
+define(["dojo/_base/array","./ColorRamp"],function(r,t){var a=t.createSubclass({declaredClass:"esri.tasks.support.MultipartColorRamp",properties:{colorRamps:[],type:"multipart"},toJSON:function(){var t=r.map(this.colorRamps,function(r){return r.toJSON()}),a={type:"multipart",colorRamps:t};return a}});return a});

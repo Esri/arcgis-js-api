@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define({title:"Judul",fileName:"Nama File",titlePlaceHolder:"Judul file",fileNamePlaceHolder:"Nama file",formatDefaultOption:"Pilih format",fileFormatTitle:"Format file",layoutTitle:"Pengaturan halaman",layoutDefaultOption:"Pilih pengaturan halaman",scale:"Atur skala",scaleLabel:"skala",reset:"atur ulang",author:"Pembuat",copyright:"Hak cipta",legend:"Sertakan legenda",lock:"kunci",swap:"tukar",panelToggle:"Tombol panel",advancedOptions:"Opsi Lanjutan",width:"Lebar",height:"Tinggi",attribution:"Sertakan atribusi",layoutTab:"Tata letak",mapOnlyTab:"Hanya Peta",untitled:"tidak berjudul","export":"Ekspor",exportText:"File yang Diekspor",exportHint:"File Anda yang diekspor akan muncul di sini."});
+define({title:"Judul",fileName:"Nama File",titlePlaceHolder:"Judul file",fileNamePlaceHolder:"Nama file",formatDefaultOption:"Pilih format",fileFormatTitle:"Format file",layoutTitle:"Pengaturan halaman",layoutDefaultOption:"Pilih pengaturan halaman",scale:"Atur skala",scaleLabel:"skala",reset:"atur ulang",author:"Pembuat",copyright:"Hak cipta",legend:"Sertakan legenda",lock:"kunci",swap:"tukar",panelToggle:"Tombol panel",advancedOptions:"Opsi Lanjutan",width:"Lebar",height:"Tinggi",attribution:"Sertakan atribusi",layoutTab:"Tata letak",mapOnlyTab:"Hanya Peta",untitled:"tidak berjudul",pending:"Mengekspor",ready:"Buka ini",error:"Pilih ini untuk menghapusnya.",sceneViewError:"Pencetakan tidak didukung dalam SceneView.",serviceError:"Sepertinya ada kesalahan.","export":"Ekspor",exportDescription:"Ekspor. File yang diekspor akan muncul di bawah.",exportText:"File yang Diekspor",exportHint:"File Anda yang diekspor akan muncul di sini."});

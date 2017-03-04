@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["../../core/declare","../../core/JSONSupporter"],function(t,e){var r=t(e,{declaredClass:"esri.tasks.support.RasterData",classMetadata:{reader:{add:["itemId"],exclude:["itemID"]}},format:null,itemId:null,_itemIdReader:function(t,e){return e.itemId},url:null,toJSON:function(){var t={};return this.url&&(t.url=this.url),this.format&&(t.format=this.format),this.itemId&&(t.itemID=this.itemId),t}});return r});
+define(["../../core/JSONSupport"],function(e){var r=e.createSubclass({declaredClass:"esri.tasks.support.RasterData",properties:{format:null,itemId:{value:null,json:{read:{source:"itemID"},write:{target:"itemID"}}},url:null}});return r});

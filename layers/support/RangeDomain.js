@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["../../core/lang","./Domain"],function(e,r){var n=r.createSubclass({declaredClass:"esri.layers.support.RangeDomain",properties:{maxValue:{json:{readFrom:["range"],read:function(e,r){return r.range&&r.range[1]}}},minValue:{json:{readFrom:["range"],read:function(e,r){return r.range&&r.range[0]}}},type:{value:"range"}},toJSON:function(){var r=this.inherited(arguments);return r.range=[this.minValue,this.maxValue],e.fixJson(r)}});return n});
+define(["../../core/lang","./Domain"],function(e,r){var n=r.createSubclass({declaredClass:"esri.layers.support.RangeDomain",properties:{maxValue:{json:{read:{source:["range"],reader:function(e,r){return r.range&&r.range[1]}}}},minValue:{json:{read:{source:["range"],reader:function(e,r){return r.range&&r.range[0]}}}},type:{value:"range"}},toJSON:function(){var r=this.inherited(arguments);return r.range=[this.minValue,this.maxValue],e.fixJson(r)}});return n});

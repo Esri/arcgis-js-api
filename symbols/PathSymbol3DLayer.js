@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.2/esri/copyright.txt for details.
 
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","./Symbol3DLayer","../core/accessorSupport/decorators"],function(e,t,r,o,i,p){var a=function(e){function t(t){e.call(this),this.material=null,this.type="Path",this.size=void 0}return r(t,e),t.prototype.readSize=function(e,t){return e||t.width||0},t.prototype.clone=function(){return new t({enabled:this.enabled,material:this.material&&this.material.clone(),size:this.size})},o([p.property()],t.prototype,"material",void 0),o([p.property()],t.prototype,"type",void 0),o([p.property({json:{writable:!0}})],t.prototype,"size",void 0),o([p.read("size",["size","width"])],t.prototype,"readSize",null),t=o([p.subclass("esri.symbols.PathSymbol3DLayer")],t)}(p.declared(i));return a});
+define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","./Symbol3DLayer","../core/accessorSupport/decorators"],function(e,r,t,o,i,a){var p=s=function(e){function r(r){var t=e.call(this)||this;return t.material=null,t.type="Path",t.size=void 0,t}return t(r,e),r.prototype.readSize=function(e,r){return e||r.width||0},r.prototype.clone=function(){return new s({enabled:this.enabled,material:this.material&&this.material.clone(),size:this.size})},r}(a.declared(i));o([a.property()],p.prototype,"material",void 0),o([a.property()],p.prototype,"type",void 0),o([a.property({json:{write:!0}})],p.prototype,"size",void 0),o([a.reader("size",["size","width"])],p.prototype,"readSize",null),p=s=o([a.subclass("esri.symbols.PathSymbol3DLayer")],p);var s;return p});
