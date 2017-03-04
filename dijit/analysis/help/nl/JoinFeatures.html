@@ -40,15 +40,15 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Objecten koppelen</h2><p/>
         <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Objecten koppelen"></h2>
         <hr/>
-    <p> Objecten koppelen  werkt met twee lagen en voegt attributen van &eacute;&eacute;n object toe aan een ander op basis van ruimtelijke en attribuutrelaties. De tool bepaalt alle invoerobjecten die voldoen aan de gespecificeerde koppelingsvoorwaarden en voegt de eerste laag toe aan de doellaag.
+    <p>Objecten koppelen werkt met twee lagen en voegt attributen van &eacute;&eacute;n object toe aan een ander op basis van ruimtelijke en attribuutrelaties. De tool bepaalt alle invoerobjecten die voldoen aan de gespecificeerde koppelingsvoorwaarden en voegt de eerste laag toe aan de doellaag. 
     </p>
-    <p> Objecten koppelen kan worden toegepast op punten, lijnen, gebieden en tabellen. Voor een ruimtelijke koppeling moet uw data een geometrie hebben.
+    <p>Objecten samenvoegen kan worden toegepast op punten, lijnen, vlakken en tabellen. Voor een ruimtelijke koppeling moet uw data een geometrie hebben. 
     </p>
-    <p>Als  <b>Huidige kaartextent gebruiken</b> is geselecteerd, worden alleen de objecten geanalyseerd die zichtbaar zijn op de huidige kaartextent. Als deze optie niet wordt geselecteerd, worden alle objecten in de doellaag en de koppelingslaag geanalyseerd, ook als ze zich buiten de huidige kaartextent bevinden.
+    <p>Als  <b>Huidige kaartextent gebruiken</b> is geselecteerd, worden alleen de objecten geanalyseerd die zichtbaar zijn in de huidige kaartextent.  Als deze optie niet is geselecteerd, worden alle objecten in de doellaag en de koppelingslaag geanalyseerd, ook als ze zich buiten de huidige kaartextent bevinden.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -93,7 +93,7 @@
         <div><h2>Een ruimtelijke relatie kiezen</h2></div>
         <hr/>
         <div>
-            <p> De ruimtelijke relatie die bepaalt of objecten aan elkaar worden samengevoegd. De beschikbare relaties zijn afhankelijk van het type geometrie (punt, lijn, gebieden) die worden gebruikt als de invoerobjecten. De beschikbare relaties omvatten het volgende:
+            <p>De ruimtelijke relatie die bepaalt of objecten worden gekoppeld. De beschikbare relaties zijn afhankelijk van het type geometrie (punt, lijn, gebieden) die worden gebruikt als de invoerobjecten. De beschikbare relaties omvatten het volgende:
                 <ul>
                     <li> <b>Identiek aan</b>&mdash;De objecten in de doellaag zullen gematched worden als ze identiek zijn aan de objecten in de koppelingslaag.
                     </li>
@@ -114,7 +114,7 @@
         <div><h2>Attribuut koppelen</h2></div>
         <hr/>
         <div>
-            <p>De attribuutrelatie die bepaalt of objecten aan elkaar worden samengevoegd. Objecten worden gematched als de veldwaarden in de koppelingslaag gelijk zijn aan veldwaarden in de doellaag. 
+            <p>De attribuutrelatie die bepaalt of objecten worden gekoppeld. Objecten stemmen overeen als de veldwaarden in de koppelingslaag gelijk zijn aan veldwaarden in de doellaag. 
             </p>
             <p>Stel bijvoorbeeld dat we een provinciebrede geografische laag hebben met woonadressen (met inbegrip van een veld  <i>POSTCODE</i>) en tabulaire dataset voor de gezondheidsdemografie op postcode (een veld met de naam <i>GEZONDHPOSTCODE).</i> We kunnen de gezondheidsdataset dan koppelen aan de residenti&euml;le gegevens door het veld <i>POSTCODE</i> te koppelen aan <i>GEZONDHPOSTCODE,</i> wat zal resulteren in een laag van woningen met de bijbehorende gezondheidsgegevens.
             </p>
@@ -126,14 +126,14 @@
         <div>
             <p>Bepaalt hoe koppelingen tussen de doel- en koppelingslaag behandeld zullen worden als meerdere objecten in de koppelingslaag dezelfde relatie t.o.v. de doellaag blijken te hebben. De volgende zijn de twee koppelbewerkingen om uit te kiezen:
                 <ul>
-                    <li> <b>E&eacute;n-aan-&eacute;&eacute;n koppelen</b>&mdash;Deze optie voegt alle overeenkomende koppelingsobjecten samen in de doellaag.
+                    <li> <b>E&eacute;n-aan-&eacute;&eacute;n koppelen</b>&mdash;Deze optie voegt het eerste overeenkomende object in de koppelingslaag toe aan het eerste overeenkomende object in de doellaag. Optioneel, als statistieken worden toegevoegd, worden overeenkomende gekoppelde objecten samengevat voor elk object in de doellaag. Het aantal verbonden objecten wordt standaard toegevoegd.
                     </li>
-                    <li> <b>E&eacute;n-aan-veel koppelen</b>&mdash;Deze optie voegt alle overeenkomende objecten in de koppelingslaag toe aan de doellaag. De resultaatlaag zal meerdere records van het doelobject bevatten.
+                    <li> <b>E&eacute;n-aan-veel koppelen</b>&mdash;Deze optie voegt alle overeenkomende objecten in de koppelingslaag toe aan de doellaag.  De resultaatlaag bevat dan meerdere records van het doelobject.
                     </li>
                 </ul>
                 
             </p>
-            <p>Stel bijvoorbeeld dat u supermarkten wilt zoeken binnen 5 kilometer van een boerenmarkt. In dit geval heeft de laag om aan te koppelen een enkel object, namelijk de boerenmarkt, en de koppelende objecten zijn plaatselijke supermarkten met attributen, zoals de totale jaarlijkse omzet. Met behulp van de tool  <b>Objecten koppelen</b> vindt u vijf supermarkten die aan de criteria voldoen. Als u een koppelingsbewerking kiest voor <b>E&eacute;n-aan-veel koppelen</b> krijgen we vijf objecten in ons resultaat, elke rij vertegenwoordigt de boerenmarkt en een supermarkt. Als u een relatie <b>E&eacute;n-aan-&eacute;&eacute;n</b> kiest, krijgt u &eacute;&eacute;n object dat de boerenmarkt vertegenwoordigt en de samengevatte informatie van de supermarkten, zoals het aantal (5), en andere statistieken, zoals de som van de jaarlijkse verkoop.
+            <p>Stel bijvoorbeeld dat u supermarkten wilt zoeken binnen 5 kilometer van een boerenmarkt. In dit geval heeft de laag om aan te koppelen een enkel object, namelijk de boerenmarkt, en de koppelende objecten zijn plaatselijke supermarkten met attributen, zoals de totale jaarlijkse omzet. Met behulp van de tool  <b>Objecten koppelen</b> vindt u vijf supermarkten die aan de criteria voldoen. Als u een koppelingsbewerking kiest voor <b>E&eacute;n-aan-veel koppelen</b> krijgen we vijf objecten in ons resultaat, elke rij vertegenwoordigt de boerenmarkt en een supermarkt. Als u een relatie <b>E&eacute;n-aan-&eacute;&eacute;n</b> kiest en een statistiek selecteert, krijgt u &eacute;&eacute;n object dat de boerenmarkt vertegenwoordigt en de samengevatte informatie van de supermarkten, zoals het aantal (5), en andere statistieken, zoals de som van de jaarlijkse verkoop.
             </p>
         </div>
     </div>
@@ -141,7 +141,22 @@
         <div><h2>Statistieken toevoegen (optioneel)</h2></div>
         <hr/>
         <div>
-            <p>Indien de optie  <b>E&eacute;n-aan-&eacute;&eacute;n koppelen</b> is geselecteerd, kunt u de statistieken van uw gekoppelde objecten berekenen. De telling zal standaard berekend worden en toegevoegd worden aan de resultaatlaag. 
+            <p>Indien de optie  <b>E&eacute;n-aan-&eacute;&eacute;n koppelen</b> is geselecteerd, kunt u statistieken van gekoppelde objecten samenvatten en berekenen. De telling van overeenkomende gekoppelde objecten zal standaard berekend worden en toegevoegd worden aan de resultaatlaag. Als u ervoor kiest om geen extra statistieken toe te voegen, dan wordt het eerste overeenkomende object in de koppelingslaag gekopppeld aan het eerste overeenkomende object in de doellaag. U kunt ook een of meer van het volgende berekenen:
+            </p>
+            <ul>
+                <li>Som
+                </li>
+                <li>Minimum
+                </li>
+                <li>Maximum
+                </li>
+                <li>Gemiddelde
+                </li>
+                <li>Standaarddeviatie
+                </li>
+            </ul>
+            
+            <p> 
             </p>
         </div>
     </div>

@@ -498,6 +498,15 @@
   margin: 8px;
 }
 
+.geocodeLocationsIcon {
+  background-image: url("../images/GeocodeLocations32.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 32px;
+  height: 32px;
+  margin: 8px;
+}
+
 
 .esriAnalysisCloseIcon {
   background-image: url("../images/close.gif");
@@ -1968,4 +1977,79 @@ html[dir="rtl"] .esriAnalysis .crumb:first-child {
 }
 .esriAnalysisSpatialRefTree .dgrid-selected {
   background-color:#bfd6eb;
+}
+.esriBufExpressDialog.dijitDialog .dijitDialogPaneContent {
+  padding-top: 0;
+}
+
+.esriSwitchField {
+  padding: 1em;
+  overflow: hidden;
+}
+
+.esriSwitchTitle {
+  margin-bottom: 0.5em;
+}
+
+.esriSwitchField input {
+  display: none;
+}
+
+.esriSwitchField label {
+  float: left;
+}
+
+.esriRtl .esriSwitchField label {
+  float: right;
+}
+
+.esriSwitchField label {
+  display: inline-block;
+  background-color: #efefef;
+  color: #333;
+  font-size: 1em;
+  font-weight: normal;
+  text-align: center;
+  text-shadow: none;
+  padding: 0.5em 1em;
+  border: 0.05em solid rgba(0, 0, 0, 0.15);
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition:    all 0.1s ease-in-out;
+  -ms-transition:     all 0.1s ease-in-out;
+  -o-transition:      all 0.1s ease-in-out;
+  transition:         all 0.1s ease-in-out;
+}
+
+.esriSwitchField label:hover {
+	cursor: pointer;
+}
+
+.esriSwitchField input:checked + label {
+  background-color: #007ac2;
+	color: white;
+}
+
+.esriSwitchField label:first-of-type {
+  border-radius: 0.25em 0 0 0.25em;
+}
+
+.esriSwitchField label:last-of-type {
+  border-radius: 0 0.25em 0.25em 0;
+}
+
+.esriAnalysis .esriLoading  {
+  background: url(../../images/ajax-loader-arrow-lightblue.gif) center center no-repeat;
+}
+
+.esriAnalysis .esriLoadingLarge  {
+  background: url(../../images/ajax-loader-segments-circle-64.gif);
+  background-repeat: no-repeat;
+  background-position: 43% 50%;
+  background-size: auto;
+}
+
+.esriAnalysis .esriLoadingBar  {
+  background: url(../images/loading-throb.gif) no-repeat center;
+  width: 100%;
+  height: 100%;
 }

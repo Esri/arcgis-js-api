@@ -82,7 +82,7 @@
         </div>
     </div>
     <div id="inputBins">
-        <div><h2>Select the bin size for hots pot calculations</h2></div>
+        <div><h2>Select the bin size for aggregation</h2></div>
         <hr/>
         <div>
             <p>The distance used to generate the square bins that will be used to analyze your input points.
@@ -113,6 +113,23 @@
             </p>
         </div>
     </div>
+    <div id="timeStepAlignment">
+        <div><h2>Choose how to align time steps</h2></div>
+        <hr/>
+        <div>
+            <p>How time steps are aligned. There are three ways to align time steps:
+                <ul>
+                    <li> <b>Start Time</b>&mdash;Time steps are align to the first feature in time.
+                    </li>
+                    <li> <b>End Time</b>&mdash;Time steps are aligned with the last feature in time.
+                    </li>
+                    <li> <b>Reference Time</b>&mdash;Time steps are aligned with a specified time.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
     <div id="timeReference">
         <div><h2>Reference time
 used to align the time slicing</h2></div>
@@ -123,7 +140,7 @@ used to align the time slicing</h2></div>
         </div>
     </div>
     <div id="neighborhood">
-        <div><h2>Select the neighborhood size</h2></div>
+        <div><h2>Select the neighborhood size for hot spot calculations</h2></div>
         <hr/>
         <div>
             <p>The distance used to determine the neighborhood used for hot spot calculations. The neighborhood should be larger than the bin size to ensure that each bin has at least one neighbour. Each bin is analyzed and compared to the neighboring bins.

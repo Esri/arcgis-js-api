@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.19/esri/copyright.txt for details.
 
-define(["require","exports","esri/config"],function(e,r,i){return i});
+define(["require","exports","esri/config"],function(e,r,t){return Object.defineProperty(t,"workers",{get:function(){return t.defaults.workers},set:function(e){return t.defaults.workers=e}}),t});

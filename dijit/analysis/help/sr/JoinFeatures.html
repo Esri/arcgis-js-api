@@ -40,13 +40,13 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Pridruži geoobjekte</h2><p/>
         <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Pridruži geoobjekte"></h2>
         <hr/>
-    <p> Pridruži geoobjekte radi sa dva sloja i pridružuje atribute iz jednog geoobjekta drugom, na osnovu prostornih i atributivnih odnosa. Alatka određuje sve ulazne geoobjekte koji ispunjavaju navedene uslove pridruživanja i dodaje sloj za pridruživanje ciljnom sloju.
+    <p>Pridruži geoobjekte radi sa dva sloja i pridružuje atribute iz jednog geoobjekta drugom, na osnovu prostornih i atributivnih odnosa. Alatka određuje sve ulazne geoobjekte koji ispunjavaju navedene uslove pridruživanja i dodaje sloj za pridruživanje ciljnom sloju. 
     </p>
-    <p> Pridruži geoobjekte može da se primeni na tačke, linije, oblasti i tabele. Prostorno pridruživanje zahteva da va&scaron;i podaci imaju geometriju.
+    <p>Pridruži geoobjekte može da se primeni na tačke, linije, oblasti i tabele. Prostorno pridruživanje zahteva da va&scaron;i podaci imaju geometriju. 
     </p>
     <p>Ako je opcija  <b>Koristi trenutni obuhvat mape</b> izabrana, biće analizirani samo oni geoobjekti koji su vidljivi unutar trenutnog obuhvata mape. Ako ova opcija nije potvrđena, biće analizirani svi geoobjekti u ciljnom sloju i sloju za pridruživanje, čak i ako su izvan trenutnog obuhvata mape.
     </p>
@@ -93,7 +93,7 @@
         <div><h2>Odaberite prostornu vezu</h2></div>
         <hr/>
         <div>
-            <p> Prostorni odnos koji će odrediti da li su geoobjekti pridruženi jedan drugom. Dostupni odnosi će zavisiti od vrste geometrije (tačka, linija, oblasti) koja se koristi kao ulazni geoobjekti. Dostupni odnosi uključuju sledeće:
+            <p>Prostorni odnos koji će odrediti da li su geoobjekti pridruženi jedan drugom. Dostupni odnosi će zavisiti od vrste geometrije (tačka, linija, oblasti) koja se koristi kao ulazni geoobjekti. Dostupni odnosi uključuju sledeće:
                 <ul>
                     <li> <b>Identično sa</b>&mdash;Geoobjekti u ciljnom sloju će se podudarati, ako su identični sa geoobjektima u sloju za pridruživanje.
                     </li>
@@ -126,14 +126,14 @@
         <div>
             <p>Određuje kako će biti obrađena spajanja između ciljnog i sloja za pridruživanje, ako se otkrije da vi&scaron;estruki geoobjekti u sloju za pridruživanje imaju isti odnos sa ciljnim slojem. Slede dve operacije pridruživanja između kojih je moguće izabrati:
                 <ul>
-                    <li> <b>Pridruži jedan jednom</b>&mdash;Ova opcija sumira sve geoobjekte za pridruživanje koji se podudaraju svakom geoobjektu u ciljnom sloju.
+                    <li> <b>Pridruži jedan jednom</b>&mdash;Ova opcija pridružuje prvi podudarajući geoobjekat u sloju za pridruživanje prvom podudarajućem objektu u ciljnom sloju- Opciono, ako se doda statistika, podudarajući pridruženi geoobjekti će biti sumirani svakom geoobjektu u ciljnom sloju. Brojač pridruženih geoobjekata će podrazumevano biti dodat.
                     </li>
                     <li> <b>Pridruži jedan mnogima</b>&mdash;Ova opcija pridružuje sve geoobjekte koji se podudaraju u sloju za pridruživanje ciljnom sloju. Sloj sa rezultatima će sadržati vi&scaron;estruke zapise ciljnog geoobjekta.
                     </li>
                 </ul>
                 
             </p>
-            <p>Na primer, pretpostavimo da želite da nađete supermarkete u krugu od 5 kilometara od pijace. U ovom slučaju sloj kojem se pridružuje ima jedan geoobjekat koji predstavlja pijacu, a geoobjekti koji se pridružuju predstavljanju lokalne bakalnice koje imaju atribute kao &scaron;to je ukupni godi&scaron;nji promet. Koristeći alatku  <b>Pridruži geoobjekte</b>, nalazite da pet bakalnica ispunjava taj kriterijum. Ako navedete operaciju pridruživanja <b>Pridruži jedan mnogima</b>, zavr&scaron;ićete sa pet geoobjekata u rezultatu, gde svaki red predstavlja pijacu i supermarket. Ako navedete odnos <b>Pridruži jedan jednom</b>, zavr&scaron;ićete sa jednim geoobjektom koji predstavlja pijacu i sumiranim informacijama iz supermarketa, kao &scaron;to je broj (5) i ostale statistike kao &scaron;to je zbir godi&scaron;njeg prometa.
+            <p>Na primer, pretpostavimo da želite da nađete supermarkete u krugu od 5 kilometara od pijace. U ovom slučaju sloj kojem se pridružuje ima jedan geoobjekat koji predstavlja pijacu, a geoobjekti koji se pridružuju predstavljanju lokalne bakalnice koje imaju atribute kao &scaron;to je ukupni godi&scaron;nji promet. Koristeći alatku  <b>Pridruži geoobjekte</b>, nalazite da pet bakalnica ispunjava taj kriterijum. Ako navedete operaciju pridruživanja <b>Pridruži jedan mnogima</b>, zavr&scaron;ićete sa pet geoobjekata u rezultatu, gde svaki red predstavlja pijacu i supermarket. Ako navedete odnos <b>Pridruži jedan jednom</b> i odaberete statistiku, zavr&scaron;ićete sa jednim geoobjektom koji predstavlja pijacu i sumiranim informacijama iz supermarketa, kao &scaron;to je broj (5) i ostale statistike kao &scaron;to je zbir godi&scaron;njeg prometa.
             </p>
         </div>
     </div>
@@ -141,7 +141,22 @@
         <div><h2>Dodaj statistiku (opciono)</h2></div>
         <hr/>
         <div>
-            <p>Ako je izabrana opcija  <b>Pridruži jedan jednom</b>, možete da izračunate statistiku na va&scaron;im pridruženim geoobjektima. Podrazumevano, broj će biti izračunat i dodat sloju sa rezultatima. 
+            <p>Ako je izabrana opcija  <b>Pridruži jedan jednom</b>, za numerička polja, možete da sumirate i izračunate statistiku na va&scaron;im pridruženim geoobjektima. Podrazumevano, broj podudarajućih pridruženih geoobjekata će biti izračunat i dodat sloju sa rezultatima. Ako odaberete da ne dodajete dodatnu statistiku, prvi podudarajući geoobjekat u sloju za pridruživanje će biti pridružen prvom podudarajućem geoobjektu u ciljnom sloju. Možete da izračunate jedan ili vi&scaron;e od sledećih:
+            </p>
+            <ul>
+                <li>Zbir
+                </li>
+                <li>Minimum
+                </li>
+                <li>Maksimum
+                </li>
+                <li>Prosečno
+                </li>
+                <li>Standardna devijacija
+                </li>
+            </ul>
+            
+            <p> 
             </p>
         </div>
     </div>

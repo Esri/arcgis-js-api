@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.19/esri/copyright.txt for details.
 
-define(["require","exports","./IconRenderer","./SDFRenderer"],function(e,n,r,t){var i=function(){function e(){this._iconRenderer=new r,this._sdfRenderer=new t}return e.prototype.render=function(e,n,r,t,i,d,o,s,u,c,f,R,a){n.hasData()&&(n.marketElementCount>0&&(n.isSDF||this._iconRenderer.render(e,n,r,t,i,d,o,s,c,f,a)),n.textElementCount>0&&this._sdfRenderer.render(e,n,r,t,i,d,o,u,c,f,R,a))},e}();return i});
+define(["require","exports","./IconRenderer","./SDFRenderer"],function(e,r,n,t){var i=function(){function e(){this._iconRenderer=new n,this._sdfRenderer=new t}return e.prototype.render=function(e,r,n,t,i,d,o,s,u,a,c,f,R){r.hasData()&&(r.markerPerPageElementsMap.size>0&&(r.isSDF||this._iconRenderer.render(e,r,n,t,i,d,o,s,a,c,R)),r.textElementCount>0&&this._sdfRenderer.render(e,r,n,t,i,d,o,u,a,c,f,R))},e}();return i});

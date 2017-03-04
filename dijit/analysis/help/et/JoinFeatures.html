@@ -40,13 +40,13 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Liida objektid</h2><p/>
         <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Liida objektid"></h2>
         <hr/>
-    <p> Liida objektid t&ouml;&ouml;tab kahe kihiga ja liidab &uuml;he objekti atribuudid teisega ruumiliste ja atribuudiseoste p&otilde;hjal. T&ouml;&ouml;riist teeb kindlaks k&otilde;ik sisendobjektid, mis vastavad m&auml;&auml;ratud liitmistingimustele, ja lisab sihtkihile liidetava kihi.
+    <p>Liida objektid t&ouml;&ouml;tab kahe kihiga ja liidab &uuml;he objekti atribuudid teisega ruumiliste ja atribuudiseoste p&otilde;hjal. T&ouml;&ouml;riist teeb kindlaks k&otilde;ik sisendobjektid, mis vastavad m&auml;&auml;ratud liitmistingimustele, ja lisab sihtkihile liidetava kihi. 
     </p>
-    <p>T&ouml;&ouml;riista  Liida objektid saab kasutada punktide, joonte, alade ja tabelitega. Ruumilise liitmise korral peab teie andmetel olema geomeetria.
+    <p>T&ouml;&ouml;rista &bdquo;Liida objektid&rdquo; saab kasutada punktide, joonte, alade ja tabelitega. Ruumilise liitmise korral peab teie andmetel olema geomeetria. 
     </p>
     <p>Kui ruut  <b>Kasuta praegust kaardiulatust</b> on m&auml;rgitud, anal&uuml;&uuml;sitakse ainult neid objekte, mis on praeguses kaardiulatuses n&auml;htavad. Kui see ruut pole m&auml;rgitud, anal&uuml;&uuml;sitakse k&otilde;iki siht- ja liidetava kihi objekte ka siis, kui neid pole praegu kuvataval kaardiosal n&auml;ha.
     </p>
@@ -73,7 +73,7 @@
         </div>
     </div>
     <div id="joinType">
-        <div><h2>Vali liitmistüübid</h2></div>
+        <div><h2>Vali liitmise tüübid</h2></div>
         <hr/>
         <div>
             <p>Saate rakendada ruumilise liitmise, atribuudi liitmise v&otilde;i nende kahe kombinatsiooni. 
@@ -93,7 +93,7 @@
         <div><h2>Vali ruumiline seos</h2></div>
         <hr/>
         <div>
-            <p> Ruumiline seos, mis m&auml;&auml;rab, kas objektid liidetakse. Saadaolevad seosed olenevad sellest, mis t&uuml;&uuml;pi geomeetriat (punkt, joon, alad) sisendobjektide jaoks kasutatakse. Saadaolevate seoste hulka kuuluvad j&auml;rgmised seosed.
+            <p>Ruumiline seos, mis m&auml;&auml;rab, kas objektid liidetakse. Saadaolevad seosed olenevad sellest, mis t&uuml;&uuml;pi geomeetriat (punkt, joon, alad) sisendobjektide jaoks kasutatakse. Saadaolevate seoste hulka kuuluvad j&auml;rgmised seosed.
                 <ul>
                     <li> <b>Identne</b> &ndash; sihtkihi objektid vastendatakse, kui need on identsed liidetava kihi objektidega.
                     </li>
@@ -121,19 +121,19 @@
         </div>
     </div>
     <div id="joinOperation">
-        <div><h2>Vali liitmistoiming</h2></div>
+        <div><h2>Vali liitmise toiming</h2></div>
         <hr/>
         <div>
             <p>M&auml;&auml;ratleb, kuidas k&auml;sitleda siht- ja liidetava kihi vahelisi &uuml;hendusi, kui leitakse, et liidetava kihi mitmel objektil on sihtkihiga sama seos. Valida saate kahe liitmistoimingu vahel.
                 <ul>
-                    <li> <b>Liida &uuml;ks &uuml;hega</b> &ndash; see toiming v&otilde;tab kokku k&otilde;ik &uuml;hilduvad liidetavad objektid sihtkihi iga objekti jaoks.
+                    <li> <b>Liida &uuml;ks &uuml;hega</b> &ndash; see toiming &uuml;hendab liidetava kihi esimese &uuml;hilduva objekti sihtkihi esimese &uuml;hilduva objektiga. Statistika lisamisel summeeritakse &uuml;hilduvad liidetud objektid soovi korral iga sihtkihi objektiga.  Liidetud objektide arv lisatakse vaikimisi.
                     </li>
                     <li> <b>Liida &uuml;ks mitmega</b> &ndash; see toiming &uuml;hendab k&otilde;ik liidetava kihi &uuml;hilduvad objektid sihtkihiga. Tulemkiht sisaldab sihtkihi mitut kirjet.
                     </li>
                 </ul>
                 
             </p>
-            <p>Oletame n&auml;iteks, et soovite leida k&otilde;ik kaubamajad, mis j&auml;&auml;vad turust 5 kilomeetri raadiusesse. Sellisel juhul on sihtkihil &uuml;ks objekt, mis t&auml;histab turgu, ja liidetavad objektid t&auml;histavad kohalikke toidupoode, mille atribuut on n&auml;iteks aasta koguk&auml;ive.  <b>Objektide liitmise t&ouml;&ouml;riista</b> abil saate teada, et sellele kriteeriumile vastavad viis toidupoodi. Kui t&auml;psustate liitmistoimingut <b>Liida &uuml;ks mitmega</b>, saaksite tulemuseks viis objekti, kus iga rida t&auml;histab turgu ja kaubamaja. Kui m&auml;&auml;rate seose <b>Liida &uuml;ks &uuml;hega</b>, saate tulemuseks &uuml;he objekti, mis t&auml;histab turgu ja sisaldab kaubamajade teabe kokkuv&otilde;tet (nt arv (5)) ning muud statistikat (nt aastast koguk&auml;ivet).
+            <p>Oletame n&auml;iteks, et soovite leida k&otilde;ik kaubamajad, mis j&auml;&auml;vad turust 5 kilomeetri raadiusesse. Sellisel juhul on sihtkihil &uuml;ks objekt, mis t&auml;histab turgu, ja liidetavad objektid t&auml;histavad kohalikke toidupoode, mille atribuut on n&auml;iteks aasta koguk&auml;ive.  <b>Objektide liitmise t&ouml;&ouml;riista</b> abil saate teada, et sellele kriteeriumile vastavad viis toidupoodi. Kui t&auml;psustate liitmistoimingut <b>Liida &uuml;ks mitmega</b>, saaksite tulemuseks viis objekti, kus iga rida t&auml;histab turgu ja kaubamaja. Kui m&auml;&auml;rate seose <b>Liida &uuml;ks &uuml;hega</b> ja valite statistika, saate tulemuseks &uuml;he objekti, mis t&auml;histab turgu ja sisaldab kaubamajade teabe kokkuv&otilde;tet (nt arv (5)) ning muud statistikat (nt aastast koguk&auml;ivet).
             </p>
         </div>
     </div>
@@ -141,7 +141,22 @@
         <div><h2>Lisa statistika (valikuline)</h2></div>
         <hr/>
         <div>
-            <p>Kui tegite valiku  <b>Liida &uuml;ks &uuml;hega</b>, saate arvutada liidetud objektide statistika. Koguarv arvutatakse ja lisatakse tulemkihile vaikimisi. 
+            <p>Kui tegite valiku  <b>Liida &uuml;ks &uuml;hega</b>, saate numbriv&auml;ljade puhul summeerida ja arvutada liidetud objektide statistika. &Uuml;hilduvate liidetud objektide koguarv arvutatakse ja lisatakse tulemkihile vaikimisi. Kui otsustate t&auml;iendavat statistikat mitte lisada, &uuml;hendatakse liidetava kihi esimene &uuml;hilduv objekt sihtkihi esimese &uuml;hilduva objektiga. Saate arvutada v&auml;hemalt &uuml;he j&auml;rgmise parameetri.
+            </p>
+            <ul>
+                <li>Summa
+                </li>
+                <li>Miinimum
+                </li>
+                <li>Maksimum
+                </li>
+                <li>Keskmine
+                </li>
+                <li>Standardh&auml;lve
+                </li>
+            </ul>
+            
+            <p> 
             </p>
         </div>
     </div>

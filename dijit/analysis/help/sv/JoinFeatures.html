@@ -40,13 +40,13 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Förena geoobjekt</h2><p/>
         <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="F&ouml;rena geoobjekt"></h2>
         <hr/>
-    <p> F&ouml;rena geoobjekt fungerar med tv&aring; lager och f&ouml;renar attribut fr&aring;n ett geoobjekt med ett annat baserat p&aring; rums- och attributrelationer. Verktyget avg&ouml;r vilka av alla indatageoobjekt som uppfyller de angivna f&ouml;reningsvillkoren och l&auml;gger till f&ouml;reningslagret i m&aring;llagret.
+    <p>F&ouml;rena geoobjekt fungerar med tv&aring; lager och f&ouml;renar attribut fr&aring;n ett geoobjekt med ett annat baserat p&aring; rums- och attributrelationer. Verktyget avg&ouml;r vilka av alla indatageoobjekt som uppfyller de angivna f&ouml;reningsvillkoren och l&auml;gger till f&ouml;reningslagret i m&aring;llagret. 
     </p>
-    <p> F&ouml;rena geoobjekt kan anv&auml;ndas p&aring; punkter, linjer, omr&aring;den och tabeller. En geografisk f&ouml;rening kr&auml;ver att dina data har en geometri.
+    <p>F&ouml;rena geoobjekt kan anv&auml;ndas p&aring; punkter, linjer, omr&aring;den och tabeller. En geografisk f&ouml;rening kr&auml;ver att dina data har en geometri. 
     </p>
     <p>Om  <b>Anv&auml;nd aktuell kartutbredning</b> &auml;r markerat analyseras endast de geoobjekt som &auml;r synliga i den aktuella kartutbredningen. Om alternativet inte &auml;r markerat analyseras alla geoobjekt i b&aring;de m&aring;llagret och f&ouml;reningslagret, &auml;ven om de ligger utanf&ouml;r den aktuella kartutbredningen.
     </p>
@@ -93,7 +93,7 @@
         <div><h2>Välj en geografisk relation</h2></div>
         <hr/>
         <div>
-            <p> Den geografiska relation som avg&ouml;r om geoobjekt f&ouml;renas med varandra. De tillg&auml;ngliga relationerna beror p&aring; vilken typ av geometri (punkt, linje, omr&aring;den) som anv&auml;nds som indatageoobjekt. De tillg&auml;ngliga relationerna &auml;r bland annat:
+            <p>Den geografiska relation som avg&ouml;r om geoobjekt f&ouml;renas med varandra. De tillg&auml;ngliga relationerna beror p&aring; vilken typ av geometri (punkt, linje, omr&aring;den) som anv&auml;nds som indatageoobjekt. De tillg&auml;ngliga relationerna &auml;r bland annat:
                 <ul>
                     <li> <b>Identisk med</b> &ndash; Geoobjekten i m&aring;llagret matchas om de &auml;r identiska med geoobjekten i f&ouml;reningslagret.
                     </li>
@@ -126,14 +126,14 @@
         <div>
             <p>Avg&ouml;r hur f&ouml;reningar mellan m&aring;l- och f&ouml;reningslagret hanteras om det hittas flera geoobjekt i f&ouml;reningslagret som har samma relation till m&aring;llagret. F&ouml;ljande &auml;r de tv&aring; f&ouml;renings&aring;tg&auml;rder man kan v&auml;lja mellan:
                 <ul>
-                    <li> <b>F&ouml;rena ett till ett</b> &ndash; Det h&auml;r alternativet summerar alla matchande f&ouml;reningsgeoobjekt med varje geoobjekt i m&aring;llagret.
+                    <li> <b>F&ouml;rena ett till ett</b> &ndash; Det h&auml;r alternativet f&ouml;renar det f&ouml;rsta matchande geoobjektet i f&ouml;reningslagret med det f&ouml;rsta matchande geoobjektet i m&aring;llagret.  Om statistik l&auml;ggs till kan du v&auml;lja att matchade f&ouml;renade geoobjekt summeras till varje geoobjekt i m&aring;llagret.  Antalet matchade f&ouml;renade geoobjekt l&auml;ggs till som standard.
                     </li>
                     <li> <b>F&ouml;rena ett till m&aring;nga</b> &ndash; Det h&auml;r alternativet f&ouml;renar alla matchande geoobjekt i f&ouml;reningslagret till m&aring;llagret. Resultatlagret kommer att inneh&aring;lla flera poster av m&aring;lgeoobjektet.
                     </li>
                 </ul>
                 
             </p>
-            <p>Anta till exempel att du vill hitta snabbk&ouml;p inom 5 kilometer fr&aring;n en jordbruksmarknad. I det h&auml;r fallet har lagret som f&ouml;reningen sker till ett enstaka geoobjekt som representerar en jordbruksmarknad, och de geoobjekt som f&ouml;renas representerar de lokala livsmedelsbutikerna som har attribut som total &aring;rlig f&ouml;rs&auml;ljning. Med verktyget  <b>F&ouml;rena geoobjekt</b> hittar du fem livsmedelsbutiker som uppfyller villkoren. Om du anger f&ouml;renings&aring;tg&auml;rden <b>F&ouml;rena ett till m&aring;nga</b>, f&aring;r du fem geoobjekt i resultatet, d&auml;r varje rad representerar jordbruksmarknaden och ett snabbk&ouml;p. Om du anger en <b>F&ouml;rena ett till ett</b>-relation, f&aring;r du ett geoobjekt som representerar jordbruksmarknaden och den summerade informationen fr&aring;n snabbk&ouml;pen, till exempel antalet (5), och annan frivillig statistik, som den totala &aring;rliga f&ouml;rs&auml;ljningen.
+            <p>Anta till exempel att du vill hitta snabbk&ouml;p inom 5 kilometer fr&aring;n en jordbruksmarknad. I det h&auml;r fallet har lagret som f&ouml;reningen sker till ett enstaka geoobjekt som representerar en jordbruksmarknad, och de geoobjekt som f&ouml;renas representerar de lokala livsmedelsbutikerna som har attribut som total &aring;rlig f&ouml;rs&auml;ljning. Med verktyget  <b>F&ouml;rena geoobjekt</b> hittar du fem livsmedelsbutiker som uppfyller villkoren. Om du anger f&ouml;renings&aring;tg&auml;rden <b>F&ouml;rena ett till m&aring;nga</b>, f&aring;r du fem geoobjekt i resultatet, d&auml;r varje rad representerar jordbruksmarknaden och ett snabbk&ouml;p. Om du anger en <b>F&ouml;rena ett till ett</b>-relation och v&auml;ljer en statistik, f&aring;r du ett geoobjekt som representerar jordbruksmarknaden och den summerade informationen fr&aring;n snabbk&ouml;pen, till exempel antalet (5), och annan valbar statistik, som den totala &aring;rliga f&ouml;rs&auml;ljningen.
             </p>
         </div>
     </div>
@@ -141,7 +141,22 @@
         <div><h2>Lägg till statistik (valfritt)</h2></div>
         <hr/>
         <div>
-            <p>Om alternativet  <b>F&ouml;rena ett till ett</b> har valts kan du ber&auml;kna statistik p&aring; de f&ouml;renade geoobjekten. Som standard ber&auml;knas antalet och l&auml;ggs till i resultatlagret. 
+            <p>Om alternativet  <b>F&ouml;rena ett till ett</b> har valts f&ouml;r numeriska f&auml;lt kan du summera och ber&auml;kna statistik p&aring; de f&ouml;renade geoobjekten.   Som standard ber&auml;knas antalet matchande f&ouml;reningsgeoobjekt och l&auml;ggs till i resultatlagret.  Om du v&auml;ljer att inte l&auml;gga till ytterligare statistik kommer det f&ouml;rsta matchande geoobjektet i f&ouml;reningslagret att f&ouml;renas med det f&ouml;rsta matchande geoobjektet i m&aring;llagret.   Du kan ber&auml;kna n&aring;got eller allt av f&ouml;ljande:
+            </p>
+            <ul>
+                <li>Summa
+                </li>
+                <li>Minimum
+                </li>
+                <li>Maximalt
+                </li>
+                <li>Genomsnitt
+                </li>
+                <li>Standardavvikelse
+                </li>
+            </ul>
+            
+            <p> 
             </p>
         </div>
     </div>

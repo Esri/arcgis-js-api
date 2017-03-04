@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.19/esri/copyright.txt for details.
 
-define(["dojo/_base/declare","dojo/_base/lang","dojo/has","dstore/Memory","dstore/Trackable","dstore/Tree","../../kernel"],function(e,t,r,o,n,a,i){var c=e([o,n]),d={createHierarchicalStore:function(e){var t=this.createSyncStore(e,a);return t.getRootCollection=function(){return this.root.filter({parent:void 0})},t.getRootCollection()},createSyncStore:function(r,o){r=r||{},r.data&&(r=t.mixin({},r,{data:t.clone(r.data)}));var n=o?e([c,o]):c;return new n(r)}};return r("extend-esri")&&t.setObject("dijit.analysis.storeUtils",d,i),d});
+define(["dojo/_base/declare","dojo/_base/lang","dojo/has","dstore/Memory","dstore/Trackable","dstore/Tree","../../kernel"],function(e,t,r,o,i,n,a){var c=e([o,i]),d={createHierarchicalStore:function(e){var t=this.createSyncStore(e,n);return t.getRootCollection=function(){return this.root.filter({parent:void 0})},t.getRootCollection()},createSyncStore:function(r,o){r=r||{},r.data&&(r=t.mixin({},r,{data:t.clone(r.data)}));var i=o?e([c,o]):c;return new i(r)},createStore:function(e){for(var r={identifier:"id",label:"id",items:[]},o=0,i=e.length;i>o;o++)r.items.push(t.mixin({id:o},e[o%i]));return this.createSyncStore({data:r})}};return r("extend-esri")&&t.setObject("dijit.analysis.storeUtils",d,a),d});

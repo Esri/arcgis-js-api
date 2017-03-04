@@ -40,13 +40,13 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Join delle feature</h2><p/>
         <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Join delle feature"></h2>
         <hr/>
-    <p> Join delle feature combina due layer e unisce gli attributi da una feature a un'altra in base a relazioni spaziali o di attributi. Questo strumento determina tutte le feature di input che soddisfano determinate condizioni di join e aggiunge il layer di join al layer di destinazione.
+    <p>Join delle feature combina due layer e unisce gli attributi da una feature a un'altra in base a relazioni spaziali o di attributi. Questo strumento determina tutte le feature di input che soddisfano determinate condizioni di join e aggiunge il layer di join al layer di destinazione. 
     </p>
-    <p>Lo strumento  Join delle feature pu&ograve; essere applicato a punti, linee e tabelle. Un join spaziale richiede che i dati abbiano una geometria.
+    <p>Lo strumento Join delle feature pu&ograve; essere applicato a punti, linee e tabelle. Un join spaziale richiede che i dati abbiano una geometria. 
     </p>
     <p>Se si seleziona  <b>Usa estensione mappa corrente</b>, vengono analizzate solo le feature visibili all'interno dell'estensione mappa corrente.  Se questa opzione &egrave; deselezionata, verranno analizzate tutte le feature sia nel layer di destinazione che in quello di join, anche se sono esterne all'estensione mappa corrente.
     </p>
@@ -93,7 +93,7 @@
         <div><h2>Scegli una relazione spaziale</h2></div>
         <hr/>
         <div>
-            <p> La relazione spaziale che determiner&agrave; se le feature sono unite tra di loro. Le relazioni disponibili dipenderanno dal tipo di geometria (punto, linea, aree) che verr&agrave; utilizzata come feature di input. Le relazioni disponibili includono le seguenti:
+            <p>La relazione spaziale che determiner&agrave; se le feature sono unite tra di loro. Le relazioni disponibili dipenderanno dal tipo di geometria (punto, linea, aree) che verr&agrave; utilizzata come feature di input. Le relazioni disponibili includono le seguenti:
                 <ul>
                     <li> <b>Identico</b>: le feature nel layer di destinazione saranno abbinate se sono uguali alle feature nel layer di join.
                     </li>
@@ -126,14 +126,14 @@
         <div>
             <p>Determina in che modo verranno gestiti i layer di join e di destinazione se pi&ugrave; feature nel layer di join presentano la stessa relazione con il layer di destinazione. Di seguito sono riportate le due operazioni di join tra cui scegliere:
                 <ul>
-                    <li> <b>Join uno a uno</b>: questa opzione riepiloga tutte le feature di join corrispondenti in ciascuna feature nel layer di destinazione.
+                    <li> <b>Join uno a molti</b>: questa opzione unisce la prima feature corrispondente nel layer di join alla prima feature corrispondente ne layer di destinazione.  Facoltativamente, se vengono aggiunte statistiche, feature unite corrispondenti verranno riepilogate in ciascuna feature nel layer di destinazione.  Il conteggio di feature unite verr&agrave; aggiunto per impostazione predefinita.
                     </li>
                     <li> <b>Join uno a molti</b>: questa opzione unisce tutte le feature corrispondenti nel layer di join al layer di destinazione.  Il layer risultati conterr&agrave; pi&ugrave; record della feature di destinazione.
                     </li>
                 </ul>
                 
             </p>
-            <p>Si supponga, ad esempio, di voler trovare i supermercati situati a meno di 5 km da un mercato contadino.   In questo caso, il layer nel quale verr&agrave; eseguito il join ha una sola feature che rappresenta un mercato contadino, mentre le feature di join rappresentano i negozi di alimentari che hanno degli attributi, come le vendite annuali totali. Utilizzando lo strumento  <b>Join delle feature</b>, sono stati trovati cinque negozi di alimentari che soddisfano i criteri. Se si specifica l'opzione <b>Join uno a molti</b>, come risultato si otterranno cinque feature nel risultato e ciascuna riga rappresenta il mercato contadino e un supermercato. Se si specifica una relazione <b>Join uno a uno</b>, come risultato si otterranno una feature che rappresenta il mercato contadino e informazioni riepilogative dei supermercati, come il conteggio (5) e altre statistiche facoltative, ad esempio la somma delle vendite annuali.
+            <p>Si supponga, ad esempio, di voler trovare i supermercati situati a meno di 5 km da un mercato contadino.   In questo caso, il layer nel quale verr&agrave; eseguito il join ha una sola feature che rappresenta un mercato contadino, mentre le feature di join rappresentano i negozi di alimentari che hanno degli attributi, come le vendite annuali totali. Utilizzando lo strumento  <b>Join delle feature</b>, sono stati trovati cinque negozi di alimentari che soddisfano i criteri. Se si specifica l'opzione <b>Join uno a molti</b>, come risultato si otterranno cinque feature nel risultato e ciascuna riga rappresenta il mercato contadino e un supermercato. Se si specifica una relazione <b>Join uno a uno</b> e si seleziona una statistica, come risultato si otterranno una feature che rappresenta il mercato contadino e informazioni riepilogative dei supermercati, come il conteggio (5) e altre statistiche facoltative, ad esempio la somma delle vendite annuali.
             </p>
         </div>
     </div>
@@ -141,7 +141,22 @@
         <div><h2>Aggiungi statistiche (facoltativo)</h2></div>
         <hr/>
         <div>
-            <p>Se &egrave; stata selezionata l'opzione  <b>Join uno a uno</b>, &egrave; possibile calcolare le statistiche sulle feature unite.  Per impostazione predefinita, il conteggio verr&agrave; calcolato e aggiunto al layer risultati. 
+            <p>Se &egrave; stata selezionata l'opzione  <b>Join uno a uno</b>, per campi numerici, &egrave; possibile riepilogare e calcolare le statistiche sulle feature unite.   Per impostazione predefinita, il conteggio di feature di join corrispondenti verr&agrave; calcolato e aggiunto al layer risultati.  Se si sceglie di non aggiungere statistiche aggiuntive, la prima feature corrispondente nel layer di join verr&agrave; unita alla prima feature corrispondente ne layer di destinazione.   &Egrave; possibile calcolare una o pi&ugrave; delle opzioni seguenti:
+            </p>
+            <ul>
+                <li>Somma
+                </li>
+                <li>Minima
+                </li>
+                <li>Massima
+                </li>
+                <li>Mediocre
+                </li>
+                <li>Deviazione standard
+                </li>
+            </ul>
+            
+            <p> 
             </p>
         </div>
     </div>

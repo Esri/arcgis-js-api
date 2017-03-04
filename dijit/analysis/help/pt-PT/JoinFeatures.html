@@ -40,13 +40,13 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Ligar Elementos</h2><p/>
         <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Fei&ccedil;&otilde;es de Liga&ccedil;&atilde;o"></h2>
         <hr/>
-    <p> Ligar Elementos funciona com duas camadas e liga atributos de um elemento aos de outro com base em rela&ccedil;&otilde;es espaciais e de atributos. A ferramenta determina todos os elementos de entrada que correspondem &agrave;s condi&ccedil;&otilde;es de liga&ccedil;&atilde;o definidas e anexa a camada de liga&ccedil;&atilde;o &agrave; camada alvo.
+    <p>Ligar Elementos funciona com duas camadas e liga atributos entre um elemento e outro com base em rela&ccedil;&otilde;es espaciais e de atributos. A ferramenta determina todos os elementos de entrada que correspondem &agrave;s condi&ccedil;&otilde;es de liga&ccedil;&atilde;o definidas e anexa a camada de liga&ccedil;&atilde;o &agrave; camada alvo. 
     </p>
-    <p> Ligar Elementos pode ser aplicado a pontos, linhas, &aacute;reas e tabelas. Uma liga&ccedil;&atilde;o espacial requer que os seus dados possuam uma geometria.
+    <p>Ligar Elementos pode ser aplicado a pontos, linhas, &aacute;reas e tabelas. Uma liga&ccedil;&atilde;o espacial requer que os seus dados possuam uma geometria. 
     </p>
     <p>Caso  <b>Utilizar a atual extens&atilde;o de mapa</b> se encontre selecionado, apenas ser&atilde;o analisados os elementos que se encontrem vis&iacute;veis na atual extens&atilde;o do mapa.  Se n&atilde;o estiver selecionado, todos os elementos da camada alvo e da camada de liga&ccedil;&atilde;o ser&atilde;o analisados, mesmo que se encontrem fora da atual extens&atilde;o de mapa.
     </p>
@@ -93,7 +93,7 @@
         <div><h2>Escolher uma relação espacial</h2></div>
         <hr/>
         <div>
-            <p> A rela&ccedil;&atilde;o espacial que determinar&aacute; se os elementos se ligam uns aos outros. As rela&ccedil;&otilde;es dispon&iacute;veis depender&atilde;o do tipo de geometria (ponto, linha, &aacute;reas) utilizada como elementos de entrada. As rela&ccedil;&otilde;es dispon&iacute;veis incluem as seguintes:
+            <p>A rela&ccedil;&atilde;o espacial que determinar&aacute; se os elementos se ligam uns aos outros. As rela&ccedil;&otilde;es dispon&iacute;veis depender&atilde;o do tipo de geometria (ponto, linha, &aacute;reas) utilizada como elementos de entrada. As rela&ccedil;&otilde;es dispon&iacute;veis incluem as seguintes:
                 <ul>
                     <li> <b>Id&ecirc;nticos a</b>&mdash;Os elementos da camada alvo ter&atilde;o correspond&ecirc;ncia caso sejam id&ecirc;nticos a elementos da camada de liga&ccedil;&atilde;o.
                     </li>
@@ -126,14 +126,14 @@
         <div>
             <p>Determina como as liga&ccedil;&otilde;es entre a camada alvo e a camada de liga&ccedil;&atilde;o ser&atilde;o geridas caso se determine que v&aacute;rios elementos na camada de liga&ccedil;&atilde;o t&ecirc;m a mesma rela&ccedil;&atilde;o com a camada alvo. As seguintes s&atilde;o duas opera&ccedil;&otilde;es de liga&ccedil;&atilde;o de entre as quais escolher:
                 <ul>
-                    <li> <b>Ligar one to one</b>&mdash;Esta op&ccedil;&atilde;o resume todas os elementos de liga&ccedil;&atilde;o correspondentes a cada elemento na camada alvo.
+                    <li> <b>Ligar one to one</b>&mdash;Esta op&ccedil;&atilde;o liga o primeiro elemento com correspond&ecirc;ncia da camada de liga&ccedil;&atilde;o ao primeiro elemento com correspond&ecirc;ncia da camada alvo.  Opcionalmente, caso sejam adicionadas estat&iacute;sticas, os elementos com correspond&ecirc;ncia ligados ser&atilde;o resumidos a cada elemento na camada alvo.  A contagem de elementos ligados ser&aacute; adicionada por predefini&ccedil;&atilde;o.
                     </li>
                     <li> <b>Ligar one to many</b>&mdash;Esta op&ccedil;&atilde;o liga todos os elementos da camada de liga&ccedil;&atilde;o correspondentes &agrave; camada de alvo.  A camada resultante conter&aacute; m&uacute;ltiplos registos do elemento alvo.
                     </li>
                 </ul>
                 
             </p>
-            <p>Por exemplo, suponha que pretende encontrar supermercados que se encontrem at&eacute; 5 quil&oacute;metros de um mercado agr&iacute;cola.   Neste caso, a camada a ligar tem um &uacute;nico elemento que representa um mercado agr&iacute;cola, e os elementos em liga&ccedil;&atilde;o representam as mercearias locais que possuem incluindo atributos, como o total de vendas anuais. Utilizando a ferramenta  <b>Ligar Elementos</b> , descobrir&aacute; que cinco mercearias correspondem a esses crit&eacute;rios. Caso especifique uma opera&ccedil;&atilde;o de liga&ccedil;&atilde;o <b>Ligar one to many</b>, no final ter&aacute; cinco elementos no resultado, com cada linha a representar o mercado agr&iacute;cola e um supermercado. Caso especifique uma rela&ccedil;&atilde;o <b>Ligar one to one</b> , no final ter&aacute; um elemento representando o mercado agr&iacute;cola e as informa&ccedil;&otilde;es resumidas referentes aos supermercados, tais como a contagem (5), e outras estat&iacute;sticas opcionais, tais como a soma de vendas anuais.
+            <p>Por exemplo, suponha que pretende encontrar supermercados que se encontrem at&eacute; 5 quil&oacute;metros de um mercado agr&iacute;cola.   Neste caso, a camada a ligar tem um &uacute;nico elemento que representa um mercado agr&iacute;cola, e os elementos em liga&ccedil;&atilde;o representam as mercearias locais que possuem incluindo atributos, como o total de vendas anuais. Utilizando a ferramenta  <b>Ligar Elementos</b> , descobrir&aacute; que cinco mercearias correspondem a esses crit&eacute;rios. Caso especifique uma opera&ccedil;&atilde;o de liga&ccedil;&atilde;o <b>Ligar one to many</b>, no final ter&aacute; cinco elementos no resultado, com cada linha a representar o mercado agr&iacute;cola e um supermercado. Caso especifique uma rela&ccedil;&atilde;o <b>Ligar one to one</b> e selecione uma estat&iacute;stica, no final ter&aacute; um elemento representando o mercado agr&iacute;cola e as informa&ccedil;&otilde;es resumidas referentes aos supermercados, tais como a contagem (5), e outras estat&iacute;sticas opcionais, como a soma de vendas anuais.
             </p>
         </div>
     </div>
@@ -141,7 +141,22 @@
         <div><h2>Adicionar estatísticas (opcional)</h2></div>
         <hr/>
         <div>
-            <p>Caso se encontre selecionada uma op&ccedil;&atilde;o  <b>Ligar one-to-one</b> , pode calcular estat&iacute;sticas de elementos ligados.  Por predefini&ccedil;&atilde;o, a contagem ser&aacute; calculada e adicionada &agrave; camada resultante. 
+            <p>Caso se encontre selecionada uma op&ccedil;&atilde;o  <b>Ligar one to one</b> para campos num&eacute;ricos, pode resumir e calcular estat&iacute;sticas em elementos ligados.   Por predefini&ccedil;&atilde;o, a contagem de elementos ligados com correspond&ecirc;ncia ser&aacute; calculada e adicionada &agrave; camada resultante.  Caso opte por n&atilde;o acrescentar estat&iacute;sticas adicionais, o primeiro elemento com correspond&ecirc;ncia da camada de liga&ccedil;&atilde;o ser&aacute; ligado ao primeiro elemento com correspond&ecirc;ncia da camada alvo.   Pode calcular uma ou mais das op&ccedil;&otilde;es que se seguem:
+            </p>
+            <ul>
+                <li>Soma
+                </li>
+                <li>M&iacute;nimo
+                </li>
+                <li>M&aacute;ximo
+                </li>
+                <li>M&eacute;dia
+                </li>
+                <li>Desvio Padr&atilde;o
+                </li>
+            </ul>
+            
+            <p> 
             </p>
         </div>
     </div>

@@ -40,13 +40,13 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Ligar Feições</h2><p/>
         <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Ligar Fei&ccedil;&otilde;es"></h2>
         <hr/>
-    <p>A ferramenta  Ligar Fei&ccedil;&otilde;es trabalha com duas camadas e associa os atributos de uma fei&ccedil;&atilde;o para outra com base em relacionamentos espaciais e de atributos. A ferramenta determina todas as fei&ccedil;&otilde;es de entrada que atendem &agrave;s condi&ccedil;&otilde;es de liga&ccedil;&atilde;o especificadas e acrescenta a camada de liga&ccedil;&atilde;o na camada de destino.
+    <p>A ferramenta Ligar Fei&ccedil;&otilde;es trabalha com duas camadas e associa os atributos de uma fei&ccedil;&atilde;o para outra com base em relacionamentos de atributos e espaciais. A ferramenta determina todas as fei&ccedil;&otilde;es de entrada que atendem &agrave;s condi&ccedil;&otilde;es de liga&ccedil;&atilde;o especificadas e acrescenta a camada de liga&ccedil;&atilde;o na camada de destino. 
     </p>
-    <p>A ferramenta  Ligar Fei&ccedil;&otilde;es pode ser aplicada para pontos, linhas, &aacute;reas e tabelas. Uma liga&ccedil;&atilde;o espacial exige que seus dados tenham uma geometria.
+    <p>A ferramenta Ligar Fei&ccedil;&otilde;es pode ser aplicada para pontos, linhas, &aacute;reas e tabelas. Uma liga&ccedil;&atilde;o espacial exige que seus dados tenham uma geometria. 
     </p>
     <p>Se  <b>Utilizar extens&atilde;o de mapa atual</b> estiver selecionada, somente as fei&ccedil;&otilde;es vis&iacute;veis dentro da extens&atilde;o de mapa atual ser&atilde;o analisadas.  Se n&atilde;o estiver selecionada, todas as fei&ccedil;&otilde;es em ambas a camada de destino e a camada de liga&ccedil;&atilde;o ser&atilde;o analisadas, mesmo que estiverem fora da extens&atilde;o de mapa atual.
     </p>
@@ -63,7 +63,7 @@
         </div>
     </div>
     <div id="joinLayer">
-        <div><h2>Escolher camada para ligar à camada de destino</h2></div>
+        <div><h2>Escolha a camada para ligar na camada de destino</h2></div>
         <hr/>
         <div>
             <p>A camada de liga&ccedil;&atilde;o com os atributos que ser&atilde;o anexados &agrave; camada de destino.
@@ -93,13 +93,13 @@
         <div><h2>Escolha uma relacionamento espacial</h2></div>
         <hr/>
         <div>
-            <p> O relacionamento espacial que determinar&aacute; se fei&ccedil;&otilde;es ser&atilde;o ligadas umas &agrave;s outras. Os relacionamentos dispon&iacute;veis depender&atilde;o do tipo de geometria (ponto, linha, pol&iacute;gonos) sendo utilizado como as fei&ccedil;&otilde;es de entrada. Os relacionamentos dispon&iacute;veis incluem o seguinte:
+            <p>O relacionamento espacial que determinar&aacute; se fei&ccedil;&otilde;es ser&atilde;o ligadas umas &agrave;s outras. Os relacionamentos dispon&iacute;veis depender&atilde;o do tipo de geometria (ponto, linha, pol&iacute;gonos) sendo utilizado como as fei&ccedil;&otilde;es de entrada. Os relacionamentos dispon&iacute;veis incluem o seguinte:
                 <ul>
                     <li> <b>Id&ecirc;ntico a</b>&mdash;As fei&ccedil;&otilde;es na camada de destino ser&atilde;o correspondidas se forem id&ecirc;nticas &agrave;s fei&ccedil;&otilde;es na camada de liga&ccedil;&atilde;o.
                     </li>
                     <li> <b>Interseccionam</b>&mdash;As fei&ccedil;&otilde;es na camada de destino ser&atilde;o correspondidas se intersceccionarem fei&ccedil;&otilde;es na camada de liga&ccedil;&atilde;o.
                     </li>
-                    <li> <b>Cont&eacute;m completamente</b>&mdash;As fei&ccedil;&otilde;es ser&atilde;o correspondidas na camada de destino que cont&ecirc;m completamente as fei&ccedil;&otilde;es na camada de liga&ccedil;&atilde;o.
+                    <li> <b>Cont&eacute;m completamente</b>&mdash;As fei&ccedil;&otilde;es ser&atilde;o correspondidas se as fei&ccedil;&otilde;es na camada de destino tiverem completamente as fei&ccedil;&otilde;es na camada de liga&ccedil;&atilde;o.
                     </li>
                     <li> <b>Completamente dentro</b>&mdash;As fei&ccedil;&otilde;es ser&atilde;o correspondidas se as fei&ccedil;&otilde;es na camada de destino estiverem completamente dentro das fei&ccedil;&otilde;es da camada de liga&ccedil;&atilde;o.
                     </li>
@@ -126,7 +126,7 @@
         <div>
             <p>Determina como as liga&ccedil;&otilde;es entre a camada de destino e a camada de liga&ccedil;&atilde;o ser&atilde;o tratadas se v&aacute;rias fei&ccedil;&otilde;es na camada de liga&ccedil;&atilde;o tiverem o mesmo relacionamento na camada de destino. A seguir est&atilde;o as duas opera&ccedil;&otilde;es de liga&ccedil;&atilde;o das quais escolher:
                 <ul>
-                    <li> <b>Liga&ccedil;&atilde;o um para um</b>&mdash; Esta op&ccedil;&atilde;o resume todos as fei&ccedil;&otilde;es de liga&ccedil;&atilde;o correspondentes a cada fei&ccedil;&atilde;o na camada de destino.
+                    <li> <b>Liga&ccedil;&atilde;o um para um</b>&mdash;Esta op&ccedil;&atilde;o liga a primeira fei&ccedil;&atilde;o correspondente na camada de liga&ccedil;&atilde;o &agrave; primeira fei&ccedil;&atilde;o correspondente na camada de destino.  Opcionalmente, se forem adicionadas estat&iacute;sticas, as fei&ccedil;&otilde;es correspondentes ligadas ser&atilde;o resumidas para cada fei&ccedil;&atilde;o na camada de destino.  A contagem de fei&ccedil;&otilde;es ligadas ser&aacute; adicionada por padr&atilde;o.
                     </li>
                     <li> <b>Liga&ccedil;&atilde;o um para muitos</b>&mdash;Esta op&ccedil;&atilde;o liga todas as fei&ccedil;&otilde;es correspondentes na camada de liga&ccedil;&atilde;o &agrave; camada de destino.  A camada resultante conter&aacute; m&uacute;ltiplos registros da fei&ccedil;&atilde;o de destino.
                     </li>
@@ -141,7 +141,22 @@
         <div><h2>Adicionar estatísticas (opcional)</h2></div>
         <hr/>
         <div>
-            <p>Se uma op&ccedil;&atilde;o de  <b>Liga&ccedil;&atilde;o um para um</b> estiver selecionada, voc&ecirc; poder&aacute; calcular estat&iacute;sticas em fei&ccedil;&otilde;es ligadas.  Por padr&atilde;o, a contagem ser&aacute; calculada e adicionada na camada resultante. 
+            <p>Se uma op&ccedil;&atilde;o de  <b>Liga&ccedil;&atilde;o um para um</b> estiver selecionada, para campos num&eacute;ricos, voc&ecirc; poder&aacute; resumir e calcular estat&iacute;sticas em fei&ccedil;&otilde;es ligadas.   Por padr&atilde;o, a contagem das fei&ccedil;&otilde;es de liga&ccedil;&atilde;o correspondentes ser&aacute; calculada e adicionada &agrave; camada resultante.  Se voc&ecirc; optar por n&atilde;o adicionar estat&iacute;sticas adicionais, a primeira fei&ccedil;&atilde;o correspondente na camada de liga&ccedil;&atilde;o ser&aacute; ligada &agrave; primeira fei&ccedil;&atilde;o correspondente na camada de destino.   Voc&ecirc; pode calcular um ou mais dos seguintes:
+            </p>
+            <ul>
+                <li>Soma
+                </li>
+                <li>M&iacute;nimo
+                </li>
+                <li>M&aacute;ximo
+                </li>
+                <li>M&eacute;dia
+                </li>
+                <li>Desvio Padr&atilde;o
+                </li>
+            </ul>
+            
+            <p> 
             </p>
         </div>
     </div>

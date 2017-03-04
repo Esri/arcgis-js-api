@@ -75,3 +75,6 @@
 .esriAttributeInspector .dijitNumberTextBox .dijitInputInner {
 	text-align: inherit;
 }
+.esriAttributeInspector .atiRequiredField {
+	color: #de2900;
+}

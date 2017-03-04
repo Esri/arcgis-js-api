@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>डेटा निकालें</h2><p/>
+        <h2><img src="../images/GUID-CE24332B-74C0-412F-BB94-31415A02195A-web.png" alt="डेटा निकालें"></h2>
+        <hr/>
+    <p>इस टूल के साथ, आप किसी भी विशिष्ट पसंदीदा क्षेत्र के लिए डेटा डाउनलोड और चयनित कर सकते हैं। लेयर्स जिनका आप चयन करेंगे उन्हें एक ZIP, CSV, या KMZ फ़ाइल में जोड़ दिया जाएगा।
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="InputLayers">
+        <div><h2>निकाली जाने वाली लेयरस</h2></div>
+        <hr/>
+        <div>
+            <p>ये आपकी कार्य सूचि में वे लेयर्स हैं जिनसे आप फीचर्स निकाल सकते हैं। जो लेयर्स चयनित हैं उन्हें निकाला जाता है और परिणामी ZIP या CSV फ़ाइल में शामिल किया जाता है।
+            </p>
+            <p>निकाली जाने वाली लेयर्स की सूचि में किसी लेयर को प्रदर्शित करने के लिए, आपको या तो डेटा का स्वामी होना चाहिए या डेटा का निर्यात करने में सक्षम होना चाहिए। आपके डेटा पर डेटा निर्यात सक्षम करने के लिए:
+ 
+                <ul>
+                    <li>डेटा का आइटम विवरण खोलें।
+                    </li>
+                    <li> <b>सेटिंग्स</b> टैब पर क्लिक करें।
+                    </li>
+                    <li> <b>निर्यात डेटा</b> अनुभाग तक नीचे स्क्रॉल करें।
+                    </li>
+                    <li> <b>विभिन्न फॉर्मेट में दूसरों को निर्यात करने की अनुमति दें</b> को चुनें। जब समाप्त हो जाए तो <b>सहेजें</b> पर क्लिक करें।
+                    </li>
+                </ul>
+                
+            </p>
+            <p>यदि आपकी विश्लेषण लेयर में संलग्नक शामिल हैं, तो ध्यान दें कि सलंग्नको को केवल तभी निकाला जाएगा यदि आउटपुट डेटा फॉर्मेट एक geodatabase फाइल हो और  <b>क्लिप फीचर्स</b> चयनित न हो।
+            </p>
+        </div>
+    </div>
+    <div id="AreaOfInterest">
+        <div><h2>अध्ययन क्षेत्र</h2></div>
+        <hr/>
+        <div>
+            <p>वह क्षेत्र निर्धारित करते हैं कि कौन से फीचर्स को आउटपुट ZIP या CSV फ़ाइल में शामिल किया जाएगा। आप निम्नलिखित में से चयन कर सकते हैं:
+                <ul>
+                    <li>आपके मानचित्र की वर्तमान दिखाई देने वाली सीमा ( <b>डिस्प्ले के समान ही</b>)।
+                    </li>
+                    <li>आपकी कार्य सूचि की लेयरस में से एक।
+                    </li>
+                    <li>अध्ययन क्षेत्र निर्धारित करने के लिए एक क्षेत्र बनाएँ।
+                    </li>
+                </ul>
+                 मानचित्र सीमा में पूरी तरह से भीतर सभी फीचर्स को निकाला जाएगा। जो फीचर मानचित्र हद सीमा से पार या इंटरसेक्ट करते हैं लेकिन पूरी तरह से हद के भीतर नहीं हैं, तो आप के पास दो विकल्प हैं:
+                <ul>
+                    <li> <b>फीचर्स का चयन करें</b>&mdash;सारे फीचर्स जो अध्ययन क्षेत्र की सीमा को पार करते हैं उन्हें निकाला जाएगा।
+                    </li>
+                    <li> <b>क्लिप फीचर्स</b>&mdash;फीचर्स के केवल वह भाग जो अध्ययन क्षेत्र के भीतर हैं उन्हें निकाला जाएगा।
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="OutputFormat">
+        <div><h2>आउटपुट डाटा फॉर्मेट</h2></div>
+        <hr/>
+        <div>
+            <p>डेटा का फॉर्मेट निकाला जाएगा। जब CSV फाइल में रेखा या क्षेत्र के फीचर निर्यात किए जाते हैं, तो केवल गैर-स्पेशियल विशेषताओं को निकाला जाता है। जब बिंदु फीचर्स को निर्यात किया जाता है, तो दोनों स्पेशियल और गैर-स्पेशियल विशेषताओं की निकाला जाता है।  
+            </p>
+        </div>
+    </div>
+    <div id="OutputName">
+        <div><h2>आउटपुट फ़ाइल का नाम</h2></div>
+        <hr/>
+        <div>
+            <p>यह  <b>मेरी सामग्री</b> में जोड़े जाने वाले आइटम का नाम है। आइटम का नाम चुने गए <b>आउटपुट डेटा फॉर्मेट</b> पर आधारित होता है। यदि आइटम पहले से ही मौजूद हो, तो आप को एक और नाम प्रदान करने के लिए कहा जाएगा।
+            </p>
+            <p> <b>इसमें सहेजें</b> ड्राप-डाउन बॉक्स का उपयोग करके, आप <b>मेरी सामग्री</b> में एक फोल्डर का नाम निर्दिष्ट कर सकते हैं, जहां परिणामों को सहेजा जाएगा।।
+            </p>
+        </div>
+    </div>
+</div>
+</html>

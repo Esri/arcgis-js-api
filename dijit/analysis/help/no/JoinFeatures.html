@@ -40,13 +40,13 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Koble geoobjekter</h2><p/>
         <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Koble geoobjekter"></h2>
         <hr/>
-    <p> Koble geoobjekter fungerer med to lag og f&oslash;yer sammen attributter fra ett geoobjekt til et annet p&aring; bakgrunn av romlige og attributtmessige forhold. Verkt&oslash;yet fastsetter alle inndatageoobjekter som oppfyller de angitte betingelsene og kobler laget til m&aring;llaget.
+    <p>Funksjonen Koble geoobjekter fungerer med to lag og f&oslash;yer sammen attributter fra ett geoobjekt til et annet p&aring; bakgrunn av romlige og attributtmessige forhold. Verkt&oslash;yet fastsetter alle inndatageoobjekter som oppfyller de angitte betingelsene og kobler laget til m&aring;llaget. 
     </p>
-    <p> Koble geoobjekter kan brukes p&aring; punkter, linjer, omr&aring;der og tabeller. En geografisk kobling krever at dataene har en geometri.
+    <p>Koble geoobjekter kan brukes p&aring; punkter, linjer, omr&aring;der og tabeller. En geografisk kobling krever at dataene har en geometri. 
     </p>
     <p>Hvis det er merket av for  <b>Bruk gjeldende kartutstrekning</b>, er det kun geoobjektene som vises i gjeldende kartutstrekning som blir analysert.  Hvis det ikke er merket av for dette alternativet, analyseres alle geoobjekter i b&aring;de m&aring;llaget og det koblede laget, selv om de befinner seg utenfor gjeldende kartutstrekning.
     </p>
@@ -63,7 +63,7 @@
         </div>
     </div>
     <div id="joinLayer">
-        <div><h2>Velg kartlaget som skal kobles til mållaget</h2></div>
+        <div><h2>Velg laget som skal knyttes til mållaget</h2></div>
         <hr/>
         <div>
             <p>Koblingslaget med attributtene som skal legges til i m&aring;llaget.
@@ -73,7 +73,7 @@
         </div>
     </div>
     <div id="joinType">
-        <div><h2>Velg typen(e) å koble</h2></div>
+        <div><h2>Velg typen(e) tilknytning</h2></div>
         <hr/>
         <div>
             <p>Du kan legge til en geografisk kobling, en attributtkobling eller en kombinasjon av de to. 
@@ -93,7 +93,7 @@
         <div><h2>Velg en romlig relasjon</h2></div>
         <hr/>
         <div>
-            <p> Det romlige forholdet som vil avgj&oslash;re om geoobjektene skal kobles med hverandre. De tilgjengelige forholdene vil avhenge av typen geometri (punkt, linje, omr&aring;der) som brukes som inndatageoobjekt. De tilgjengelige forholdene omfatter f&oslash;lgende:
+            <p>Det romlige forholdet som avgj&oslash;r om geoobjektene skal kobles med hverandre. De tilgjengelige forholdene vil avhenge av typen geometri (punkt, linje, omr&aring;der) som brukes som inndatageoobjekt. De tilgjengelige forholdene omfatter f&oslash;lgende:
                 <ul>
                     <li> <b>Identisk med</b> &ndash; Geoobjektene i m&aring;llaget matches hvis de er identiske med geoobjekter i koblingslaget.
                     </li>
@@ -126,14 +126,14 @@
         <div>
             <p>Fastsetter hvordan koblinger mellom m&aring;l- og koblingslagene blir h&aring;ndtert hvis flere geoobjekter i m&aring;llaget viser seg &aring; ha det samme forholdet til m&aring;llaget. Det er to koblingsoperasjoner &aring; velge mellom:
                 <ul>
-                    <li> <b>Koble en til en</b> &ndash; Dette alternativet oppsummerer alle samsvarende koblingsgeoobjekter til hvert geoobjekt i m&aring;llaget.
+                    <li> <b>Koble en til en</b> &ndash; Dette alternativet kobler det f&oslash;rste samsvarende geoobjektet i koblingslaget til det f&oslash;rste samsvarende geoobjektet i m&aring;llaget. Hvis det legges til statistikk, blir samsvarende koblede geoobjekter summert til hvert geoobjekt i m&aring;llaget. Antallet koblede geoobjekter legges til som standard.
                     </li>
-                    <li> <b>Koble en til mange</b> &ndash; Dette alternativet kobler alle samsvarende geoobjekter i koblingslaget til m&aring;llaget.  Det resulterende laget inneholder flere poster av m&aring;letgeoobjektet.
+                    <li> <b>Koble en til mange</b> &ndash; Dette alternativet kobler alle samsvarende geoobjekter i koblingslaget til m&aring;llaget.  Det resulterende laget inneholder flere poster av geoobjektet.
                     </li>
                 </ul>
                 
             </p>
-            <p>Anta for eksempel at du &oslash;nsker &aring; finne supermarkeder innen 5 kilometer fra Bondens marked.   I dette tilfellet har laget som det skal kobles til, ett enkelt geoobjekt som representerer Bondens marked, og geoobjektene som skal f&oslash;yes til representerer de lokale dagligvarebutikkene som har attributter som samlet &aring;rlig omsetning. Ved hjelp av verkt&oslash;yet  <b>Koble geoobjekter</b> finner du ut at fem dagligvarebutikker oppfyller dette kriteriet. Hvis du spesifiserer en koblingsoperasjon som <b>Koble en til mange</b>, vil du ende opp med fem geoobjekter i resultatet, der hver rad representerer Bondens marked og et supermarked. Hvis du spesifiserer et <b>Koble en til en</b>-forhold, ender du opp med ett geoobjekt som representerer Bondens marked og den oppsummerte informasjonen fra supermarkedene, f.eks. antallet (5), og annen statistikk som summen av &aring;rlig omsetning.
+            <p>Anta for eksempel at du &oslash;nsker &aring; finne supermarkeder innen 5 kilometer fra Bondens marked.   I dette tilfellet har laget som det skal kobles til, ett enkelt geoobjekt som representerer Bondens marked, og geoobjektene som skal f&oslash;yes til representerer de lokale dagligvarebutikkene som har attributter som samlet &aring;rlig omsetning. Ved hjelp av verkt&oslash;yet  <b>Koble geoobjekter</b> finner du ut at fem dagligvarebutikker oppfyller dette kriteriet. Hvis du spesifiserer en koblingsoperasjon som <b>Koble en til mange</b>, vil du ende opp med fem geoobjekter i resultatet, der hver rad representerer Bondens marked og et supermarked. Hvis du spesifiserer et <b>Koble en til en</b>-forhold og velger en statistikk, ender du opp med ett geoobjekt som representerer Bondens marked og den oppsummerte informasjonen fra supermarkedene, f.eks. antallet (5), og annen statistikk som summen av &aring;rlig omsetning.
             </p>
         </div>
     </div>
@@ -141,7 +141,22 @@
         <div><h2>Legg til statistikk (valgfritt)</h2></div>
         <hr/>
         <div>
-            <p>Hvis alternativet for &aring;  <b>koble en til en</b> er valgt, kan du beregne statistikk p&aring; dine koblede geoobjekter.  Som standard beregnes antallet og legges til i resultatlaget. 
+            <p>Hvis alternativet for &aring;  <b>koble en til en</b> er valgt, kan du for numeriske felt summere og beregne statistikk p&aring; dine koblede geoobjekter. Som standard blir antallet samsvarende koblede geoobjekter beregnet og lagt til i resultatlaget. Hvis du lar v&aelig;re &aring; legge til mer statistikk, blir det f&oslash;rste samsvarende geoobjekt i koblingslaget koblet til det f&oslash;rste samsvarende geoobjektet i m&aring;llaget. Du kan ogs&aring; beregne ett eller flere av f&oslash;lgende:
+            </p>
+            <ul>
+                <li>Summer
+                </li>
+                <li>Minimum
+                </li>
+                <li>Maksimum
+                </li>
+                <li>Gjennomsnitt
+                </li>
+                <li>Standardavvik
+                </li>
+            </ul>
+            
+            <p> 
             </p>
         </div>
     </div>

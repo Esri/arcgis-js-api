@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>तालिका से Geocode स्थान</h2><p/>
+        <h2></h2>
+        <hr/>
+    <p>Geocoding पतों को निर्देशांकों में बदलने का एक तरीका है। यह उपकरण किसी तालिका, CSV फाइल, या किसी एक्सल फाइल से पतों को अतिरिक्त कॉलमों के रूप में निर्देशांकों सहित एक फीचर लेयर में बदलता है।
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputTable">
+        <div><h2>कोई इनपुट तालिका चुनें</h2></div>
+        <hr/>
+        <div>
+            <p>पतों वाली इनपुट तालिका को geocoded किया जाएगा। इनपुट कोई तालिका, CSV फाइल, या Excel फाइल होना चाहिए।
+            </p>
+        </div>
+    </div>
+    <div id="geocodeServiceURL">
+        <div><h2>कोई लोकेटर चुनें</h2></div>
+        <hr/>
+        <div>
+            <p>geocode करने के लिए कोई लोकेटर चुनें। आपके द्वारा प्रयुक्त की जाने वाली लोकेटर सर्विस यदि ड्रॉप-डाउन मेनु में न हो, तो बैच के लिए विन्यासित लोकेटर सर्विस पाने के लिए अपने संचालक से संपर्क करें।  
+
+            </p>
+        </div>
+    </div>
+    <div id="sourceCountry">
+        <div><h2>देश</h2></div>
+        <hr/>
+        <div>
+            <p>यदि आपके सभी पते एक ही देश से हों, तो सर्वाधिक सटीक परिणाम सुनिश्चित करने के लिए वह देश चुनें। अन्यथा, यह आयाम खाली छोड़ दें।
+            </p>
+        </div>
+    </div>
+    <div id="geocodeParameters">
+        <div><h2>डेटा फील्ड चुनें</h2></div>
+        <hr/>
+        <div>
+            <p>लोकेटर सर्विस डेटा में कुछ फील्डों की अपेक्षा करती है, जैसे पता, शहर, राज्य, एवं डाक कोड। अपने डेटा फील्ड अपनी इनपुट फाइल या उन फील्डों की तालिका से मिलाएं जो कि लोकेटर ड्रॉप-डाउन बॉक्स इस्तेमाल करते समय अपेक्षित करता। आप जितने फील्ड मानचित्रित करेंगे, परिणाम उतने ही सटीक होंगे। यदि इनपुट तालिका का सभी डेटा एक कॉलम में हो, तो  <b>एकल फील्ड</b> चुनें और ड्रॉप-डाउन मेनु में से कोई डेटा फील्ड चुनें। अन्यथा, <b>बहु फील्ड</b> चुनें और अपनी तालिका में बहु फील्ड कॉलमों में उपयुक्त लोकेटर फील्ड मानचित्रित करें।
+            </p>
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>कोई इनपुट प्रारूप चुनें</h2></div>
+        <hr/>
+        <div>
+            <p>आउटपुट परिणामों का प्रारूप। यदि आप कोई फीचर सर्विस बनाना चुनते हैं, तो इनपुट तालिका से पते मानचित्र में बिंदु फीचर्स की एक लेयर के रूप में जुड़ जाएंगे। कार्य पूरा होने पर, CSV एवं XLS विकल्प geocoding कार्य के परिणामों सहित फाइलें  <b>मेरी सामग्री</b> में जोड़ देगा।
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>आउटपुट परिणाम का नाम</h2></div>
+        <hr/>
+        <div>
+            <p>यह उस लेयर का नाम है जो  <b>मेरी सामग्री</b> में बनाई जाएगी और मानचित्र में जोड़ी जाएगी। इसका मूल नाम उपकरण के नाम और इनपुट लेयर के नाम पर आधारित है। यदि लेयर पहले से मौजूद हो, तो आपसे दूसरा नाम देने को कहा जाएगा।
+            </p>
+            <p> <b>इसमें सहेजें</b> ड्राप-डाउन बॉक्स का उपयोग करके, आप <b>मेरी सामग्री</b> में एक फोल्डर का नाम निर्दिष्ट कर सकते हैं, जहां परिणामों को सहेजा जाएगा।।
+            </p>
+        </div>
+    </div>
+</div>
+</html>

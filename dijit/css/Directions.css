@@ -82,6 +82,12 @@
 .simpleDirections .esriLinkButton:hover {
     text-decoration: underline;
 }
+.simpleDirections .esriLinkButtonDisabled,
+.simpleDirections .esriLinkButtonDisabled:hover{
+    text-decoration: none;
+    color: #b6b6b6;
+    cursor: default;
+}
 .simpleDirections .LocateButton{
     position: absolute;
     bottom: 5px;
@@ -197,6 +203,9 @@
 }
 .simpleDirections .esriActivateButton{
     background-image: url("../images/Directions/GreyPin16.png");
+}
+.simpleDirections .esriLineBarrierButton{
+    background-image: url("../images/Directions/barrier.png");
 }
 .simpleDirections .esriStopsGetDirections {
     line-height: 32px;
@@ -367,11 +376,6 @@
 }
 .dj_rtl .simpleDirections .startTimeMenuButton{
     float: right;
-}
-.simpleDirections .startTimeMenuButtonDisabled,
-.simpleDirections .startTimeMenuButtonDisabled:hover{
-    text-decoration: none;
-    color: #a0a0a0;
 }
 .simpleDirections .startTimeMenu{
     display: none;
@@ -1348,4 +1352,15 @@ div[id$="_directionsDepartAtDate_popup_mddb_mdd"]{
     font-size: 0.75em;
     color: #a0a0a0;
     padding: 10px 2px;
+}
+
+.simpleDirections .esriDirectionsDDLArrow{
+    display: inline-block;
+    border: 4px solid transparent;
+    width: 0;
+    height: 0;
+    border-top-color: #1f78af;
+}
+.simpleDirections .esriDirectionsDDLArrowDisabled{
+    border-top-color: #b6b6b6;
 }

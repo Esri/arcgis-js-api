@@ -75,7 +75,7 @@
         </div>
     </div>
     <div id="fields">
-        <div><h2>Choose one or more fields to calculate density on</h2></div>
+        <div><h2>Choose one or more fields to calculate density on (optional)</h2></div>
         <hr/>
         <div>
             <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you 
@@ -94,7 +94,7 @@ can use a field representing the population of the city as the count field, and 
         </div>
     </div>
     <div id="binSizing">
-        <div><h2>Select the bin size for density calculations</h2></div>
+        <div><h2>Select the bin size for aggregation</h2></div>
         <hr/>
         <div>
             <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
@@ -128,7 +128,7 @@ can use a field representing the population of the city as the count field, and 
         <div><h2>Choose the output units for density</h2></div>
         <hr/>
         <div>
-            <p>The desired output units of the density values. By default, this is set to the units in your map (for example, square meters). If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+            <p>The desired output units of the density values. By default, this is set to square kilometers or square miles based on the default units specified in your profile. If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
 
             </p>
         </div>
@@ -155,7 +155,7 @@ can use a field representing the population of the city as the count field, and 
         </div>
     </div>
     <div id="timeInterval">
-        <div><h2>Time interval to calculate density on</h2></div>
+        <div><h2>Time step interval</h2></div>
         <hr/>
         <div>
             <p>Interval of time used for slicing the data. Time interval may be used alone or used with the  <b>Time Step</b> or <b>Reference Time</b> parameter.
@@ -165,7 +165,7 @@ can use a field representing the population of the city as the count field, and 
         </div>
     </div>
     <div id="timeStep">
-        <div><h2>Time step to calculate density on</h2></div>
+        <div><h2>How often to repeat the time step</h2></div>
         <hr/>
         <div>
             <p> The step used for calculating a time slice. <b>Time Step</b> may be used alone or with <b>Time Interval</b>, with <b>Reference Time</b>, or with both <b>Time Interval</b> and <b>Reference Time</b>.
@@ -175,8 +175,7 @@ can use a field representing the population of the city as the count field, and 
         </div>
     </div>
     <div id="timeReference">
-        <div><h2>Reference time
-used to align the time slicing</h2></div>
+        <div><h2>Time to align time steps to</h2></div>
         <hr/>
         <div>
             <p>The date and time used to align time slicing.  <b>Time Step</b> will start from and continue backward for the referenced time.

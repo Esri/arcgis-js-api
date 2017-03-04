@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.19/esri/copyright.txt for details.
 
-define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../kernel"],function(e,r,s,t){var o=e(null,{declaredClass:"esri.layers.FeatureEditResult",constructor:function(e){if(e&&r.isObject(e)&&(this.objectId=e.objectId,this.success=e.success,!e.success)){var s=e.error;this.error=new Error,this.error.code=s.code,this.error.message=s.description}}});return s("extend-esri")&&r.setObject("layers.FeatureEditResult",o,t),o});
+define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../kernel"],function(e,s,r,t){var o=e(null,{declaredClass:"esri.layers.FeatureEditResult",constructor:function(e){if(e&&s.isObject(e)&&(this.objectId=e.objectId,this.globalId=e.globalId,this.success=e.success,!e.success)){var r=e.error;this.error=new Error,this.error.code=r.code,this.error.message=r.description}}});return r("extend-esri")&&s.setObject("layers.FeatureEditResult",o,t),o});

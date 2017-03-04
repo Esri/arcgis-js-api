@@ -40,13 +40,13 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Připojované prvky</h2><p/>
         <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Připojovan&eacute; prvky"></h2>
         <hr/>
-    <p> Připojovan&eacute; prvky funguj&iacute; se dvěma vrstvami a připoj&iacute; atributy jednoho prvku k&nbsp;jin&eacute;mu prvku na z&aacute;kladě prostorov&eacute;ho a atributov&eacute;ho vztahu. N&aacute;stroj urč&iacute; v&scaron;echny vstupn&iacute; prvky, kter&eacute; odpov&iacute;daj&iacute; zadan&yacute;m podm&iacute;nk&aacute;m připojen&iacute;, a připoj&iacute; vrstvu připojen&iacute; k&nbsp;c&iacute;lov&eacute; vrstvě.
+    <p>Funkce Připojovan&eacute; prvky pracuje se dvěma vrstvami a spojuje atributy jednoho prvku s&nbsp;jin&yacute;m prvkem na z&aacute;kladě prostorov&eacute;ho a atributov&eacute;ho vztahu. N&aacute;stroj urč&iacute; v&scaron;echny vstupn&iacute; prvky, kter&eacute; odpov&iacute;daj&iacute; zadan&yacute;m podm&iacute;nk&aacute;m připojen&iacute;, a připoj&iacute; vrstvu připojen&iacute; k&nbsp;c&iacute;lov&eacute; vrstvě. 
     </p>
-    <p> Připojovan&eacute; prvky lze aplikovat na body, linie, oblasti a tabulky. Prostorov&eacute; připojen&iacute; vyžaduje, aby va&scaron;e data měla geometrii.
+    <p>Připojovan&eacute; prvky lze aplikovat na body, linie, oblasti a tabulky. Prostorov&eacute; připojen&iacute; vyžaduje, aby va&scaron;e data měla geometrii. 
     </p>
     <p>Pokud je za&scaron;krtnuto pole  <b>Použ&iacute;vat aktu&aacute;ln&iacute; rozsah mapy</b>, analyzuj&iacute; se pouze prvky viditeln&eacute; v&nbsp;aktu&aacute;ln&iacute;m rozsahu mapy.  Pokud toto pole za&scaron;krtnuto nen&iacute;, budou analyzov&aacute;ny v&scaron;echny prvky v&nbsp;c&iacute;lov&eacute; vrstvě i vrstvě připojen&iacute;, včetně těch, kter&eacute; se nach&aacute;z&iacute; mimo aktu&aacute;ln&iacute; rozsah mapy.
     </p>
@@ -93,7 +93,7 @@
         <div><h2>Zvolit prostorový vztah</h2></div>
         <hr/>
         <div>
-            <p> Prostorov&yacute; vztah urč&iacute;, zda budou prvky připojeny jeden k&nbsp;druh&eacute;mu. Dostupn&eacute; vztahy z&aacute;vis&iacute; na typu geometrie (body, linie, oblasti) použ&iacute;van&eacute;m pro vstupn&iacute; prvky. Mezi dostupn&eacute; vztahy patř&iacute;:
+            <p>Prostorov&yacute; vztah urč&iacute;, zda budou prvky připojeny jeden k&nbsp;druh&eacute;mu. Dostupn&eacute; vztahy z&aacute;vis&iacute; na typu geometrie (body, linie, oblasti) použ&iacute;van&eacute;m pro vstupn&iacute; prvky. Mezi dostupn&eacute; vztahy patř&iacute;:
                 <ul>
                     <li> <b>Shodn&eacute; s</b> &ndash; Prvky v&nbsp;c&iacute;lov&eacute; vrstvě budou sp&aacute;rov&aacute;ny, pokud jsou identick&eacute; s&nbsp;prvky ve vrstvě připojen&iacute;.
                     </li>
@@ -126,14 +126,14 @@
         <div>
             <p>Určuje, jak bude o&scaron;etřeno připojen&iacute; mezi c&iacute;lovou vrstvou a vrstvou připojen&iacute;, pokud bude m&iacute;t v&iacute;ce prvků ve vrstvě připojen&iacute; stejn&yacute; vztah k&nbsp;c&iacute;lov&eacute; vrstvě. Můžete si vybrat z&nbsp;n&aacute;sleduj&iacute;c&iacute;ch dvou operac&iacute; připojen&iacute;:
                 <ul>
-                    <li> <b>Připojit jeden k&nbsp;jednomu</b> &ndash; Tato možnost sumarizuje v&scaron;echny odpov&iacute;daj&iacute;c&iacute; prvky připojen&iacute; ke každ&eacute;mu prvku v&nbsp;c&iacute;lov&eacute; vrstvě.
+                    <li> <b>Připojit jeden k&nbsp;jednomu</b> &ndash; Tato možnost připoj&iacute; prvn&iacute; odpov&iacute;daj&iacute;c&iacute; prvek ve&nbsp;vrstvě připojen&iacute; k&nbsp;prvn&iacute;mu odpov&iacute;daj&iacute;c&iacute;mu prvku v&nbsp;c&iacute;lov&eacute; vrstvě.  Pokud jsou volitelně přid&aacute;ny statistiky, sumarizuj&iacute; se odpov&iacute;daj&iacute;c&iacute; připojen&eacute; prvky ke každ&eacute;mu prvku v&nbsp;c&iacute;lov&eacute; vrstvě.  Ve v&yacute;choz&iacute;m nastaven&iacute; bude přid&aacute;n počet připojen&yacute;ch prvků.
                     </li>
                     <li> <b>Připojit jeden k&nbsp;v&iacute;ce</b> &ndash; Tato možnost připoj&iacute; v&scaron;echny odpov&iacute;daj&iacute;c&iacute; prvky ve&nbsp;vrstvě připojen&iacute; k&nbsp;c&iacute;lov&eacute; vrstvě.  V&yacute;sledn&aacute; vrstva bude obsahovat v&iacute;ce z&aacute;znamů c&iacute;lov&eacute;ho prvku.
                     </li>
                 </ul>
                 
             </p>
-            <p>Předpokl&aacute;dejme např&iacute;klad, že chcete naj&iacute;t supermarkety ve vzd&aacute;lenosti 5 km od farm&aacute;řsk&eacute;ho trhu.   V&nbsp;tomto př&iacute;padě m&aacute; připojovan&aacute; vrstva jedin&yacute; prvek představuj&iacute;c&iacute; farm&aacute;řsk&yacute; trh a připojuj&iacute;c&iacute; prvky představuj&iacute; m&iacute;stn&iacute; obchody s&nbsp;potravinami, kter&eacute; maj&iacute; atributy, jako jsou např. celkov&eacute; ročn&iacute; tržby. Pomoc&iacute; n&aacute;stroje  <b>Připojovan&eacute; prvky</b> najdete pět obchodů s&nbsp;potravinami, kter&eacute; splňuj&iacute; dan&aacute; krit&eacute;ria. Pokud urč&iacute;te operaci připojen&iacute; <b>Připojit jeden k&nbsp;v&iacute;ce</b>, dostanete ve v&yacute;sledku pět prvků, kde každ&yacute; ř&aacute;dek představuje farm&aacute;řsk&yacute; trh a supermarket. Pokud urč&iacute;te vztah <b>Připojit jeden k&nbsp;jednomu</b>, dostanete jeden prvek představuj&iacute;c&iacute; farm&aacute;řsk&yacute; trh a sumarizovan&eacute; informace o supermarketech, jako je počet (5) a jin&eacute; voliteln&eacute; statistiky, např. souhrn ročn&iacute;ch tržeb.
+            <p>Předpokl&aacute;dejme např&iacute;klad, že chcete naj&iacute;t supermarkety ve vzd&aacute;lenosti 5 km od farm&aacute;řsk&eacute;ho trhu.   V&nbsp;tomto př&iacute;padě m&aacute; připojovan&aacute; vrstva jedin&yacute; prvek představuj&iacute;c&iacute; farm&aacute;řsk&yacute; trh a připojuj&iacute;c&iacute; prvky představuj&iacute; m&iacute;stn&iacute; obchody s&nbsp;potravinami, kter&eacute; maj&iacute; atributy, jako jsou např. celkov&eacute; ročn&iacute; tržby. Pomoc&iacute; n&aacute;stroje  <b>Připojovan&eacute; prvky</b> najdete pět obchodů s&nbsp;potravinami, kter&eacute; splňuj&iacute; dan&aacute; krit&eacute;ria. Pokud urč&iacute;te operaci připojen&iacute; <b>Připojit jeden k&nbsp;v&iacute;ce</b>, dostanete ve v&yacute;sledku pět prvků, kde každ&yacute; ř&aacute;dek představuje farm&aacute;řsk&yacute; trh a supermarket. Pokud urč&iacute;te vztah <b>Připojit jeden k&nbsp;jednomu</b> a vyberete statistiku, dostanete jeden prvek představuj&iacute;c&iacute; farm&aacute;řsk&yacute; trh a sumarizovan&eacute; informace o supermarketech, jako je počet (5) a jin&eacute; voliteln&eacute; statistiky, např. souhrn ročn&iacute;ch tržeb.
             </p>
         </div>
     </div>
@@ -141,7 +141,22 @@
         <div><h2>Přidat statistiku (volitelné)</h2></div>
         <hr/>
         <div>
-            <p>Pokud je vybr&aacute;na možnost  <b>Připojit jeden k&nbsp;jednomu</b>, můžete vypoč&iacute;tat statistiku připojen&yacute;ch prvků.  Ve v&yacute;choz&iacute;m nastaven&iacute; bude počet vypoč&iacute;t&aacute;n a přid&aacute;n do v&yacute;sledn&eacute; vrstvy. 
+            <p>Pokud je vybr&aacute;na možnost  <b>Připojit jeden k&nbsp;jednomu</b>, můžete u numerick&yacute;ch pol&iacute; sumarizovat a poč&iacute;tat statistiku připojen&yacute;ch prvků.   Ve v&yacute;choz&iacute;m nastaven&iacute; se vypoč&iacute;t&aacute; počet odpov&iacute;daj&iacute;c&iacute;ch připojen&yacute;ch prvků a přid&aacute; se k&nbsp;v&yacute;sledn&eacute; vrstvě.  Pokud zvol&iacute;te, že se statistika přidat nem&aacute;, připoj&iacute; se prvn&iacute; odpov&iacute;daj&iacute;c&iacute; prvek ve vrstvě připojen&iacute; k&nbsp;prvn&iacute;mu odpov&iacute;daj&iacute;c&iacute;mu prvku v&nbsp;c&iacute;lov&eacute; vrstvě.   Můžete vypoč&iacute;tat jeden nebo v&iacute;ce n&aacute;sleduj&iacute;c&iacute;ch parametrů:
+            </p>
+            <ul>
+                <li>Suma
+                </li>
+                <li>Minimum
+                </li>
+                <li>Maximum
+                </li>
+                <li>Průměr
+                </li>
+                <li>Směrodatn&aacute; odchylka
+                </li>
+            </ul>
+            
+            <p> 
             </p>
         </div>
     </div>

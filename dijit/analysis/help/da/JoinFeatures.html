@@ -40,13 +40,13 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Forbind objekter</h2><p/>
         <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Forbind objekter"></h2>
         <hr/>
-    <p> Forbind objekter-v&aelig;rkt&oslash;jet arbejder med to lag, og det knytter attributter fra det ene objekt til det andet baseret p&aring; spatiale relationer og attributrelationer. V&aelig;rkt&oslash;jet registrerer alle de inputobjekter, der opfylder de angivne tilknytningsbetingelser, og det knytter tilknytningslaget til destinationslaget.
+    <p>Forbind objekter-v&aelig;rkt&oslash;jet arbejder med to lag, og det knytter attributter fra det ene objekt til det andet baseret p&aring; spatiale relationer og attributrelationer. V&aelig;rkt&oslash;jet registrerer alle de inputobjekter, der opfylder de angivne tilknytningsbetingelser, og det knytter tilknytningslaget til destinationslaget. 
     </p>
-    <p> Forbind objekter-v&aelig;rkt&oslash;jet kan anvendes til punkter, linjer, omr&aring;der og tabeller. En spatial tilknytning kr&aelig;ver, at dine data har en geometri.
+    <p>Forbind objekter-v&aelig;rkt&oslash;jet kan anvendes til punkter, linjer, omr&aring;der og tabeller. En spatial tilknytning kr&aelig;ver, at dine data har en geometri. 
     </p>
     <p>Hvis feltet  <b>Brug aktuel kortudstr&aelig;kning</b> er markeret, analyseres kun de objekter, der er synlige inden for den aktuelle kortudstr&aelig;kning. Hvis feltet ikke er markeret, analyseres alle objekter i b&aring;de destinations- og tilknytningslaget, ogs&aring; selvom de befinder sig uden for den aktuelle kortudstr&aelig;kning.
     </p>
@@ -93,7 +93,7 @@
         <div><h2>Vælg en spatial relation</h2></div>
         <hr/>
         <div>
-            <p> Den spatiale relation bestemmer, om objekterne knyttes til hinanden. De tilg&aelig;ngelige relationer afh&aelig;nger af den geometritype (punkt, linje, omr&aring;de), der anvendes som inputobjekter. Tilg&aelig;ngelige relationer omfatter f&oslash;lgende:
+            <p>Den spatiale relation, der bestemmer, om objekterne skal knyttes til hinanden. De tilg&aelig;ngelige relationer afh&aelig;nger af den geometritype (punkt, linje, omr&aring;de), der anvendes som inputobjekter. Tilg&aelig;ngelige relationer omfatter f&oslash;lgende:
                 <ul>
                     <li> <b>Identisk med</b> &ndash; Objekterne i destinationslaget vil blive matchet, hvis de er identiske med objekterne i tilknytningslaget.
                     </li>
@@ -126,14 +126,14 @@
         <div>
             <p>Bestemmer, hvordan tilknytninger mellem destinations- og tilknytningslaget h&aring;ndteres, hvis det viser sig, at flere objekter i tilknytningslaget har den samme relation i forhold til destinationslaget. Du kan v&aelig;lge mellem disse to tilknytningshandlinger:
                 <ul>
-                    <li> <b>Tilknyt &eacute;n-til-&eacute;n</b> &ndash; Denne indstilling summerer alle matchende tilknytningsobjekter til hvert objekt i destinationslaget.
+                    <li> <b>Tilknyt &eacute;n-til-&eacute;n</b> &ndash; Denne indstilling knytter det f&oslash;rste matchende objekt i tilknytningslaget til det f&oslash;rste matchende objekt i destinationslaget. Hvis der tilf&oslash;jes statistik, er der mulighed for, at matchede tilknyttede objekter kan summeres i forhold til hvert objekt i destinationslaget.  Antallet af tilknyttede objekter tilf&oslash;jes som standard.
                     </li>
                     <li> <b>Tilknyt &eacute;n-til-mange</b> &ndash; Denne indstilling knytter alle matchende objekter i tilknytningslaget til destinationslaget. Resultatlaget vil indeholde flere poster fra destinationslaget.
                     </li>
                 </ul>
                 
             </p>
-            <p>Forestil dig f.eks., at vi &oslash;nsker at finde frem til alle de dagligvarebutikker, der ligger inden for 5 kilometer fra et marked med landbrugsprodukter. I dette tilf&aelig;lde skal det lag, der tilknyttes til, have et enkelt objekt, der repr&aelig;senterer et marked med landbrugsprodukter, og de tilknyttede objekter repr&aelig;senterer de lokale dagligvarebutikker, der har attributter s&aring;som samlede &aring;rlige salgstal. Med  <b>Forbind objekter</b>-v&aelig;rkt&oslash;jet finder du ud af, at fem dagligvarebutikker opfylder kriterierne. Hvis du har angivet tilknytningshandlingen <b>Tilknyt &eacute;n-til-mange</b>, ville du ende med at have fem objekter i dit resultatlag, hvor hver r&aelig;kke repr&aelig;senterer markedet med landbrugsprodukter og &eacute;n dagligvarebutik. Hvis du havde angivet en <b>Tilknyt &eacute;n-til-&eacute;n</b>-relation, ville du ende med at have &eacute;t objekt, der repr&aelig;senterer markedet med landbrugsprodukter og de summerede oplysninger om dagligvarebutikker, s&aring;som antallet (5) samt andre statistiske oplysninger som f.eks. de samlede &aring;rlige salgstal.
+            <p>Forestil dig f.eks., at vi &oslash;nsker at finde frem til alle de dagligvarebutikker, der ligger inden for 5 kilometer fra et marked med landbrugsprodukter. I dette tilf&aelig;lde skal det lag, der tilknyttes til, have et enkelt objekt, der repr&aelig;senterer et marked med landbrugsprodukter, og de tilknyttede objekter repr&aelig;senterer de lokale dagligvarebutikker, der har attributter s&aring;som samlede &aring;rlige salgstal. Med  <b>Forbind objekter</b>-v&aelig;rkt&oslash;jet finder du ud af, at fem dagligvarebutikker opfylder kriterierne. Hvis du har angivet tilknytningshandlingen <b>Tilknyt &eacute;n-til-mange</b>, ville du ende med at have fem objekter i dit resultatlag, hvor hver r&aelig;kke repr&aelig;senterer markedet med landbrugsprodukter og &eacute;n dagligvarebutik. Hvis du angiver en <b>Tilknyt &eacute;n-til-&eacute;n</b>-relation og v&aelig;lger en statistik, vil du ende med at have &eacute;t objekt, der repr&aelig;senterer markedet med landbrugsprodukter og de summerede oplysninger om dagligvarebutikker, s&aring;som antallet (5) samt andre valgfrie statistiske oplysninger som f.eks. de samlede &aring;rlige salgstal.
             </p>
         </div>
     </div>
@@ -141,7 +141,22 @@
         <div><h2>Tilføj statistik (valgfrit)</h2></div>
         <hr/>
         <div>
-            <p>Hvis indstillingen  <b>Tilknyt &eacute;n-til-&eacute;n</b> v&aelig;lges, kan du beregne statistik p&aring; dine tilknyttede objekter.  Opt&aelig;llingen vil som standard blive beregnet og f&oslash;jet til resultatlaget. 
+            <p>Hvis indstillingen  <b>Tilknyt &eacute;n-til-&eacute;n</b> v&aelig;lges for de numeriske felter, kan du summere og beregne statistik p&aring; dine tilknyttede objekter. Samment&aelig;llingen af de matchende tilknyttede objekter vil som standard blive beregnet og f&oslash;jet til resultatlaget. Hvis du v&aelig;lger ikke at tilf&oslash;je statistik, vil det f&oslash;rste matchende objekt i tilknytningslaget blive knyttet til det f&oslash;rste matchende objekt i destinationslaget. Du kan beregne en eller flere af f&oslash;lgende:
+            </p>
+            <ul>
+                <li>Sum
+                </li>
+                <li>Minimum
+                </li>
+                <li>Maksimum
+                </li>
+                <li>Gennemsnit
+                </li>
+                <li>Standardafvigelse
+                </li>
+            </ul>
+            
+            <p> 
             </p>
         </div>
     </div>

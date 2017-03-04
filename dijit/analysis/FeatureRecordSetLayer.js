@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.19/esri/copyright.txt for details.
 
-define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../tasks/DataFile","../../kernel"],function(e,t,i,r,s){var a=e(r,{declaredClass:"esri.dijit.analysis.FeatureRecordSetLayer",constructor:function(e){e&&t.mixin(this,e)},toJson:function(){var e={};return this.url&&(e.url=this.url),this.filter&&(e.filter=this.filter),this.serviceToken&&(e.serviceToken=this.serviceToken),e}});return i("extend-esri")&&t.setObject("dijit.analysis.FeatureRecordSetLayer",a,s),a});
+define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../tasks/DataFile","../../kernel"],function(e,t,i,r,s){var a=e(r,{declaredClass:"esri.dijit.analysis.FeatureRecordSetLayer",constructor:function(e){e&&t.mixin(this,e)},toJson:function(){var e={};return this.url&&(e.url=this.url),this.filter&&(e.filter=this.filter),this.serviceToken&&(e.serviceToken=this.serviceToken),this.featureSet&&(e.featureSet=this.featureSet),this.layerDefinition&&(e.layerDefinition=this.layerDefinition),e}});return i("extend-esri")&&t.setObject("dijit.analysis.FeatureRecordSetLayer",a,s),a});

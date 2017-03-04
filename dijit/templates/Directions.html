@@ -12,13 +12,17 @@
             <div class="${_css.stopsButtonContainerClass}">
                 <div class="${_css.stopsAddDestinationClass}">
                     <div tabindex="0" role="button" data-dojo-attach-point="_activateButtonNode" title="${_i18n.widgets.directions.activate}" class="${_css.activateButtonClass} ${_css.stopsButtonClass} ${_css.stopsButtonTabClass} ${_css.stopsPressedButtonClass}" data-blur-on-click="true"></div>
+                    <div tabindex="0" role="button" data-dojo-attach-point="_lineBarrierButtonNode" title="${_i18n.widgets.directions.lineBarrier}" class="${_css.lineBarrierButtonClass} ${_css.stopsButtonClass} ${_css.stopsButtonTabClass}" data-blur-on-click="true"></div>
                     <div role="button" tabindex="0" class="${_css.linkButtonClass} ${_css.stopsAddDestinationBtnClass}" data-dojo-attach-point="_addDestinationNode" data-blur-on-click="true">${_i18n.widgets.directions.addDestination}</div>
                 </div>
                 <div class="${_css.travelModesContainerClass}" data-dojo-attach-point="_travelModeContainerNode">
                     <div data-dojo-attach-point="_travelModeSelectorContainer"></div>
                 </div>
                 <div tabindex="0" role="button" class="${_css.linkButtonClass} startTimeMenuButton" data-blur-on-click="true" data-dojo-attach-point="_startTimeButtonNodeContainer">
-                    <div data-dojo-attach-point="_startTimeButtonNode">${_i18n.widgets.directions.leaveNow}</div>
+                    <div data-dojo-attach-point="_startTimeButtonNode">
+                        <span data-dojo-attach-point="_startTimeButtonLabel">${_i18n.widgets.directions.leaveNow}</span>
+                        <div data-dojo-attach-point="_startTimeDDLArrow" class="esriDirectionsDDLArrow"></div>
+                    </div>
                     <div class="startTimeMenu" data-dojo-attach-point="_startTimeMenu">
                         <ul role="menu">
                             <li data-dojo-attach-point="_startTimeMenuLeaveNow" tabindex="0" class="esriRouteZoom startTimeMenuItem" role="menuitemradio" aria-checked="true">${_i18n.widgets.directions.leaveNow}</li>

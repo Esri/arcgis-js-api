@@ -35,7 +35,7 @@ void main()
   //              | -> linwe-width / 2
   //      ---------------------------- (BR)--> right edge of line. Interpolatedf normal is -1.0
 
-  mediump float relativeTexY = 0.5 + (v_normal.y * u_lineHalfWidth / u_spriteSize.y);
+  mediump float relativeTexY = 0.5 + (v_normal.y * u_lineHalfWidth / (0.5 * u_spriteSize.y));
 
   // claculate the actual texture coordinates by interpolating between the TL/BR pattern coordinates
   mediump vec2 texCoord = mix(u_pattern_tl, u_pattern_br, vec2(relativeTexX, relativeTexY));

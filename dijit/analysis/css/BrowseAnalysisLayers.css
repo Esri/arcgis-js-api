@@ -279,8 +279,8 @@
 
 .esriAnalysisLayersGrid  {
   overflow-y: scroll;
-  height: 250px !important;
-  max-height: 250px !important;
+  height: 200px !important;
+  max-height: 200px !important;
 }
 .esriAnalysisLayersGrid .dgrid-cell {
   border: none;
@@ -452,7 +452,7 @@
 
 .esriAnalysisLayersItems .panel-actions {
   position: absolute;
-  bottom: 15px;
+  bottom: 10px;
 }
 
 .esriAnalysisLayersItems .layerItemsGrid {

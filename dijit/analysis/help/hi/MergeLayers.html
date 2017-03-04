@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>लेयर्स को मिलाएँ</h2><p/>
+        <h2><img src="../images/GUID-BDDD6517-4EE7-4EEC-AE15-15DD9B709131-web.png" alt="लेयर्स को मिलाएँ"></h2>
+        <hr/>
+    <p>यह टूल दो लेयरों से एक नई लेयर में फीचर कॉपी करता है। मर्ज की जाने वाली लेयर्स में एक समान फीचर प्रकार (बिंदु, रेखा, या क्षेत्र) होने चाहिए। आप इस कार्य को नियंत्रित कर सकते हैं कि इनपुट से किस तरह लेयर्स को जोड़ा और कॉपी किया जाएगा। उदहारण के लिए:
+        <ul>
+            <li>मेरे पास इंग्लैंड,वेल्स, और स्कॉटलैंड के लिए तीन लेयर्स हैं और मैं ग्रेट ब्रिटेन के लिए एकल लेयर चाहता हूँ। 
+            </li>
+            <li>मेरे पास 12 लेयर्स हैं और प्रत्येक में समीप की टाउनशिप के लिए पार्सल जानकारी शामिल है। मैं उन्हें एक ही लेयर में जोड़ना चाहता हूँ, केवल उन्हीं फ़ील्ड को रखना चाहूँगा जिनके 12 इनपुट लेयर्स में समान नाम और प्रकार हैं।
+            </li>
+        </ul>
+        
+    </p>
+    <p>यदि  <b>वर्तमान मानचित्र सीमा करें</b> चयनित है, तो केवल वर्तमान मानचित्र सीमा में दिए फीचरों को ही मिलाया जाएगा। यदि जाँच नहीं हुई है, तो दोनों लेयर्स में सभी फीचरों को मिलाया जाएगा, चाहे वे वर्तमान मानचित्र सीमा के बाहर हैं।
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>लेयर चुनें</h2></div>
+        <hr/>
+        <div>
+            <p>लेयर से मिलाए जाने वाले बिंदु, रेखा, या क्षेत्र फीचर नीचे निर्दिष्ट किए गए हैं। 
+            </p>
+        </div>
+    </div>
+    <div id="MergeLayer">
+        <div><h2>मिलाने के लिए लेयर का चयन करें</h2></div>
+        <hr/>
+        <div>
+            <p>पहली लेयर के साथ मिलाने के लिए लेयर का चयन करें।
+            </p>
+        </div>
+    </div>
+    <div id="MergingAttributes">
+        <div><h2>मर्जिंग फ़ील्ड को संशोधित करें</h2></div>
+        <hr/>
+        <div>
+            <p>डिफ़ॉल्ट रूप से, दोनों इनपुट से सभी फ़ील्ड आउटपुट तक ले जाई जाएंगी। आप निम्न की तरह आउटपुट तक फ़ील्ड को ले जाने के ढंग को बदल सकते हैं:
+                <ul>
+                    <li> <b>पुन:नाम देना</b>&mdash;आउटपुट पर फ़ील्ड को पुन: नाम दिया जाएगा।
+                    </li>
+                    <li> <b>हटाना</b>&mdash;आउटपुट से फ़ील्ड को हटा लिया जाएगा।
+                    </li>
+                    <li> <b>मिलाना</b>&mdash;फ़ील्ड के नाम एक जैसे रखे जाते हैं। लेयर से मिलाने तक के फ़ील्ड के मान को आउटपुट फ़ील्ड से मिलाने के लिए कॉपी किया जाएगा।
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="OutputName">
+        <div><h2>परिणामी लेयर का नाम</h2></div>
+        <hr/>
+        <div>
+            <p>यह उस लेयर का नाम है जो  <b>मेरी सामग्री</b> में बनाई जाएगी और मानचित्र में जोड़ी जाएगी। इसका मूल नाम उपकरण के नाम और इनपुट लेयर के नाम पर आधारित है। यदि लेयर पहले से मौजूद हो, तो आपसे दूसरा नाम देने को कहा जाएगा।
+            </p>
+            <p> <b>इसमें सहेजें</b> ड्राप-डाउन बॉक्स का उपयोग करके, आप <b>मेरी सामग्री</b> में एक फोल्डर का नाम निर्दिष्ट कर सकते हैं, जहां परिणामों को सहेजा जाएगा।।
+            </p>
+        </div>
+    </div>
+</div>
+</html>

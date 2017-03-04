@@ -6,6 +6,9 @@
             "pointLayer": "aggregate-points.htm",
             "polygonLayer": "aggregate-points.htm"
         },
+        "AggregatePoints_bd": {
+            "toolDescription": "geoanalyticstool-aggregatepoints.htm"
+        },
         "CalculateDensity": {
             "toolDescription": "calculate-density.htm",
             "inputLayer": "calculate-density.htm"
@@ -28,6 +31,9 @@
         "CreateBuffers": {
             "toolDescription": "create-buffers.htm",
             "inputLayer": "create-buffers.htm"
+        },
+        "CreateBuffers_bd": {
+            "toolDescription": "geoanalytics-create-buffers.htm"
         },
         "CreateDriveTimeAreas": {
             "toolDescription": "create-drive-time-areas.htm",
@@ -78,11 +84,17 @@
             "searchLayer": "find-similar-locations.htm#ESRI_SECTION1_0B2B928A26BC4659B2143D06017F991E",
             "analysisFields": "find-similar-locations.htm#ESRI_SECTION1_B78395564C414EA79B3386D3AA8C740C"
         },
+        "GeocodeLocationsfromTable": {
+            "geocodeServiceURL": "../administer/configure-services.htm"
+        },
         "InterpolatePoints": {
             "toolDescription": "interpolate-points.htm"
         },
         "JoinFeatures": {
             "toolDescription": "join-features.htm"
+        },
+        "JoinFeatures_bd": {
+            "toolDescription": "geoanalytics-join-features.htm"
         },
         "MergeLayers": {
             "toolDescription": "merge-layers.htm"
@@ -95,6 +107,9 @@
             "toolDescription": "plan-routes.htm",
             "endLayer": "plan-routes.htm#ESRI_SECTION2_F8AA174031C949E2B75BD6A397D6678D",
             "startLayer": "plan-routes.htm#ESRI_SECTION2_F8AA174031C949E2B75BD6A397D6678D"
+        },
+        "SummarizeAttributes_bd": {
+            "toolDescription": "geoanalytics-summarize-attributes.htm"
         },
         "SummarizeNearby": {
             "toolDescription": "summarize-nearby.htm"

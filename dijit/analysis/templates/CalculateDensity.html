@@ -198,10 +198,26 @@
         </tr>
         <tr data-dojo-attach-point="_binTypeSelectRow">
           <td colspan="3" style="padding-top:0;">
-            <select class="esriLeadingMargin1 longInput" style="margin-bottom:1.0em;" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_binTypeSelect" data-dojo-attach-event="onChange:_handleBinTypeChange" required="true">
+            <!--<select class="esriLeadingMargin1 longInput" style="margin-bottom:1.0em;" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_binTypeSelect" data-dojo-attach-event="onChange:_handleBinTypeChange" required="true">
               <option value="Square">${i18n.square}</option>
               <option value="Hexagon">${i18n.hexagon}</option>
-            </select>
+            </select>-->
+            <table style="width:100%">
+              <tr>
+                <td>
+                  <div class="bufferSelector" data-dojo-attach-point="_square">
+                    <div class="bufferIcon squareBinIcon"></div>
+                    <div><label class="esriSelectLabel">${i18n.square}</label></div>
+                  </div>
+                </td>
+                <td>
+                  <div class="bufferSelector" data-dojo-attach-point="_hexagon">
+                    <div class="bufferIcon  hexagonBinIcon"></div>
+                    <div><label class="esriSelectLabel">${i18n.hexagon}</label></div>
+                  </div>
+                </td>
+              </tr>
+            </table>
           </td>
         </tr> 
         <tr data-dojo-attach-point="_binSizeLabelRow">
@@ -304,7 +320,7 @@
         </tr>
         <tr data-dojo-attach-point="_intervalLabelRow">
           <td colspan="2">
-            <label class="esriAnalysisStepsLabel">${i18n.intervalLabel}</label>
+            <label class="esriLeadingMargin1">${i18n.intervalLabel}</label>
           </td>
          <td class="shortTextInput">
             <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="timeInterval"></a> 
@@ -330,7 +346,7 @@
           
         <tr data-dojo-attach-point="_repeatLabelRow">
           <td colspan="2">
-            <label class="esriAnalysisStepsLabel">${i18n.repeatLabel}</label>
+            <label class="esriLeadingMargin1">${i18n.repeatLabel}</label>
           </td>
           <td class="shortTextInput">
             <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="timeStep"></a> 
@@ -355,7 +371,7 @@
         </tr>            
         <tr data-dojo-attach-point="_timeLabelRow">
           <td colspan="2">
-            <label class="esriAnalysisStepsLabel">${i18n.timeRefLabel}</label>
+            <label class="esriLeadingMargin1">${i18n.timeRefLabel}</label>
           </td>
           <td class="shortTextInput">
             <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="timeReference"></a> 

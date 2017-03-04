@@ -75,24 +75,24 @@ relationships or some combination of the  three. The tool determines all input f
         </div>
     </div>
     <div id="joinOperation">
-        <div><h2>Choose the join operation</h2></div>
+        <div><h2>Choose join operation</h2></div>
         <hr/>
         <div>
             <p>This determines how joins between the input layers will be handled in the output if multiple joining features are found to have the same relationship to the layer being joined. There are two join operations from which to choose:
                 <ul>
-                    <li> <b>Join one to one</b>&mdash;This option joins all the matching features to the join layer.
+                    <li> <b>Join one to one</b>&mdash;This option summarizes all the matching features to each feature being joined.
                     </li>
-                    <li> <b>Join one to many</b>&mdash;This option summarizes all the matching features to each feature being joined.
+                    <li> <b>Join one to many</b>&mdash;This option joins all the matching features to the join layer.
                     </li>
                 </ul>
                 
             </p>
-            <p>For example, suppose we wanted to find supermarkets within 5 kilometers of a farmers market.   In this case the layer being joined to has a single feature representing a farmers market, and the joining features represents the local grocery stores which has attributes such as total annual sales. Using the  <b>Join Features</b> tool, we find that five grocery stores meet that criteria. If we specified a join operation of <b>Join one to one</b>, we would end up with five features in our result, each row representing the farmers market and a supermarket. If we specified a <b>Join one to many</b> relationship, we would end up with one feature representing the farmers market and the summarized information from the supermarkets, such as the count (5), and other statistics such as the sum of annual sales.
+            <p>For example, suppose we wanted to find supermarkets within 2 kilometers of a farmers market.   In this case the layer being joined to has a single feature representing a farmers market, and the joining features represents the local grocery stores which has attributes such as total annual sales. Using the  <b>Join Features</b> tool, we find that five grocery stores meet that criteria. If we specified a join operation of <b>Join one to many</b>, we would end up with five features in our result, each row representing the farmers market and a supermarket. If we specified a <b>Join one to one</b> relationship, we would end up with one feature representing the farmers market and the summarized information from the supermarkets, such as the count (2), and other statistics such as the sum of annual sales.
             </p>
         </div>
     </div>
     <div id="joinOptions">
-        <div><h2>Select the type of joins you would like to use</h2></div>
+        <div><h2>Select one or more joins</h2></div>
         <hr/>
         <div>
             <p>You may apply one, two, or three join types. The types of joins include the following: 
@@ -111,7 +111,7 @@ relationships or some combination of the  three. The tool determines all input f
         </div>
     </div>
     <div id="spatialRelationship">
-        <div><h2>Spatial join</h2></div>
+        <div><h2>Choose a spatial relationship</h2></div>
         <hr/>
         <div>
             <p> The spatial relationship that will determine if features are joined to each other. The available relationships will depend on the type of geometry (point, polyline, polygons) being used as the input features. The available relationships include the following:
@@ -148,7 +148,7 @@ relationships or some combination of the  three. The tool determines all input f
         </div>
     </div>
     <div id="temporalRelationship">
-        <div><h2>Temporal join</h2></div>
+        <div><h2>Choose a temporal relationship</h2></div>
         <hr/>
         <div>
             <p>The temporal relationship that will determine if features are joined to each other. This option is only available if time is enabled on both layers and the  available relationships will depend on the type of time (instant or interval) being used for the input features. The available relationships include the following:
@@ -195,12 +195,12 @@ relationships or some combination of the  three. The tool determines all input f
         </div>
     </div>
     <div id="attributeRelationship">
-        <div><h2>Attribute join</h2></div>
+        <div><h2>Choose the fields to match</h2></div>
         <hr/>
         <div>
             <p>This relationship will match values in a field from one layer to  values in a field in another layer. 
             </p>
-            <p> For example, suppose we had a countywide geographic layer of residential addresses (including a field <i>ZIP</i>) and a tabular dataset of health demographics by ZIP Code (a field named <i>HEALTHZIP</i>). We can join the health dataset to the residential data by matching the field <i>ZIP</i> to <i>HEALTHZIP</i>, which will result in a layer of residences with the corresponding health data.
+            <p>For example, suppose we had a countywide geographic layer of residential addresses (including a field  <i>ZIP</i>) and a tabular dataset of health demographics by ZIP Code (a field named <i>HEALTHZIP</i>). We can join the health dataset to the residential data by matching the field <i>ZIP</i> to <i>HEALTHZIP</i>, which will result in a layer of residences with the corresponding health data.
             </p>
         </div>
     </div>
@@ -208,7 +208,7 @@ relationships or some combination of the  three. The tool determines all input f
         <div><h2>Add statistics (optional)</h2></div>
         <hr/>
         <div>
-            <p>If a join one-to-many option was selected, you can calculate statistics on your joined features.
+            <p>If the join operation is   <b>Join one to one</b>, you can calculate statistics on your joined features.
             </p>
         </div>
     </div>

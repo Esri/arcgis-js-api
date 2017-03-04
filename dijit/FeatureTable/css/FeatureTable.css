@@ -435,3 +435,10 @@
 .esri-feature-table-block {
   display: block;
 }
+
+
+.esri-feature-table .dgrid-cell.esri-date-value,
+.esri-feature-table .dgrid-cell.esri-date-value input {
+  text-transform: capitalize;
+}
+

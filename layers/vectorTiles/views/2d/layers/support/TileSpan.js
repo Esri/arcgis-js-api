@@ -1,4 +1,4 @@
-// COPYRIGHT © 2016 Esri
+// COPYRIGHT © 2017 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.19/esri/copyright.txt for details.
 
-define(["require","exports"],function(r,n){var o=function(){function r(r,n,o){this.row=r,this.colFrom=n,this.colTo=o}return r}();return o});
+define(["require","exports","../../../../core/ObjectPool"],function(o,r,e){var n=function(){function o(o,r,e){this.row=o,this.colFrom=r,this.colTo=e}return o}();return n.pool=new e(n,!0),n});

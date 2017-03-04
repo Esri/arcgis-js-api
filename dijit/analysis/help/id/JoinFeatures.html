@@ -40,15 +40,15 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Gabungkan Fitur</h2><p/>
         <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Gabungkan Fitur"></h2>
         <hr/>
-    <p> Gabungkan Fitur  menggunakan dua layer dan   menggabungkan atribut dari satu fitur ke yang lainnya berdasarkan hubungan spasial dan atribut. Alat ini menentukan seluruh fitur input yang memenuhi kondisi penggabungan yang ditentukan dan menambahkan gabungan layer ke layer target.
+    <p>Gabungkan Fitur berfungsi dengan dua layer dan menggabungkan atribut dari satu fitur ke fitur lain berdasarkan hubungan spasial dan atribut. Alat ini menentukan seluruh fitur input yang memenuhi kondisi penggabungan yang ditentukan dan menambahkan gabungan layer ke layer target. 
     </p>
-    <p> Gabungkan Fitur dapat diterapkan untuk titik, garis, area, dan tabel.. Gabungan spasial mengharuskan data Anda untuk memiliki geometri.
+    <p>Gabungkan Fitur dapat diterapkan ke titik, garis, area, dan tabel. Gabungan spasial mengharuskan data Anda untuk memiliki geometri. 
     </p>
-    <p>Jika  <b>Gunakan jangkauan peta saat ini</b> dicentang, hanya fitur yang terlihat dalam jangkauan peta saat ini yang akan dianalisis.  Jika centang dihapus, semua fitur baik pada layer target maupun layer gabungan akan dianalisis, meskipun berada di luar jangkauan peta yang ada.
+    <p>Jika  <b>Gunakan jangkauan peta saat ini</b> dicentang, hanya fitur yang terlihat dalam jangkauan peta saat ini yang akan dianalisis.  Jika tidak dicentang, semua fitur baik pada layer target maupun layer gabungan akan dianalisis, meskipun berada di luar jangkauan peta yang ada.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -66,17 +66,17 @@
         <div><h2>Pilih layer untuk digabungkan ke layer target</h2></div>
         <hr/>
         <div>
-            <p>Layer gabungan yang memiliki atribut yang akan ditambahkan ke layer target.
+            <p>Layer gabungan dengan atribut yang akan ditambahkan ke layer target.
             </p>
             <p class="OnlineOnly">Selain memilih sebuah layer dari peta, Anda dapat memilih  <b>Pilih Layer Analisis Living Atlas</b> atau <b>Piilih Layer Analisis</b> yang terdapat di bagian paling bawah daftar drop-down. Sebagai tambahan, area yang berdekatan (yaitu, memiliki batasan yang sama) akan digabungkan menjadi satu area. Langkah ini akan membuka galeri yang memuat koleksi layer yang bermanfaat bagi banyak analisis. 
             </p>
         </div>
     </div>
     <div id="joinType">
-        <div><h2>Pilih tipe gabungan</h2></div>
+        <div><h2>Pilih jenis penggabungan</h2></div>
         <hr/>
         <div>
-            <p>Anda dapat meterapkan gabungan spasial, gabungan atribut, atau kombinasi dari keduanya. 
+            <p>Anda dapat menerapkan gabungan spasial, gabungan atribut, atau kombinasi dari keduanya. 
                 <ul>
                     <li> <b>Spasial</b>&mdash;Menggunakan hubungan spasial yang ditentukan untuk menggabungkan fitur. Ini mengharuskan kedua layer memiliki geometri.
                     </li>
@@ -93,15 +93,15 @@
         <div><h2>Pilih hubungan spasial</h2></div>
         <hr/>
         <div>
-            <p> Hubungan spasial yang akan menentukan apakah fitur digabungkan satu sama lainnya. Hubungan yang tersedia akan tergantung pada jenis geometri (titik, garis, area) yang digunakan sebagai fitur input. Hubungan yang tersedia termasuk yang berikut ini:
+            <p>Hubungan spasial yang akan menentukan apakah fitur digabungkan satu sama lain. Hubungan yang tersedia akan tergantung pada jenis geometri (titik, garis, area) yang digunakan sebagai fitur input. Hubungan yang tersedia termasuk yang berikut ini:
                 <ul>
                     <li> <b>Identik dengan</b>&mdash;Fitur pada layer target akan dicocokkan jika identik dengan fitur pada layer gabungan.
                     </li>
                     <li> <b>Berpotongan</b>&mdash;Fitur pada layer target akan dicocokkan jika  berpotongan dengan fitur pada layer gabungan.
                     </li>
-                    <li> <b>Sepenuhnya mengandung</b>&mdash;Fitur pada layer target akan dicocokkan jika fitur pada layer target sepenuhnya berisi fitur pada layer gabungan.
+                    <li> <b>Sepenuhnya berisi</b>-Fitur akan dicocokkan jika fitur pada layer target sepenuhnya berisi fitur pada layer gabungan.
                     </li>
-                    <li> <b>Sepenuhnya di dalam</b>&mdash;Fitur pada layer target akan dicocokkan jika fitur pada layer target sepenuhnya di dalam fitur pada layer gabungan.
+                    <li> <b>Sepenuhnya di dalam</b>&mdash;Fitur akan dicocokkan jika fitur pada layer target sepenuhnya berada di dalam fitur pada layer gabungan.
                     </li>
                     <li> <b>Dalam jarak</b>&mdash;Fitur pada layer target akan dicocokkan jika berada dalam jarak yang ditentukan dari fitur pada layer gabungan.
                     </li>
@@ -114,9 +114,9 @@
         <div><h2>Atribut gabungan</h2></div>
         <hr/>
         <div>
-            <p>Hubungan atribut yang akan menentukan apakah fitur digabungkan satu sama lainnya. Fitur dicocokkan jika nilai kolom pada layer gabungan sama dengan nilai kolom pada layer target. 
+            <p>Hubungan atribut yang akan menentukan apakah fitur digabungkan satu sama lainnya. Fitur cocok jika nilai kolom pada layer gabungan sama dengan nilai kolom pada layer target. 
             </p>
-            <p>Contoh, anggap saja Anda memiliki layer geografis seluas kabupaten dari alamat tempat tinggal (termasuk kolom <i>ZIP</i>) dan set data tabular demografi kesehatan berdasarkan Kode ZIP (termasuk kolom yang bernama <i>HEALTHZIP</i>). Anda dapat menggabungkan set data kesehatan dengan data tempat tinggal dengan mencocokkan kolom <i>ZIP</i> ke <i>HEALTHZIP</i>, yang akan menghasilkan layer tempat tinggal dengan data kesehatan yang sesuai.
+            <p>Contoh, misalnya Anda memiliki layer geografis seluruh kabupaten dari alamat tempat tinggal (termasuk kolom <i>ZIP</i>) dan set data tabular demografi kesehatan berdasarkan Kode Pos (termasuk kolom yang bernama <i>HEALTHZIP</i>). Anda dapat menggabungkan set data kesehatan dengan data tempat tinggal dengan mencocokkan kolom <i>ZIP</i> ke <i>HEALTHZIP</i>, yang akan menghasilkan layer tempat tinggal dengan data kesehatan yang sesuai.
             </p>
         </div>
     </div>
@@ -124,16 +124,16 @@
         <div><h2>Pilih operasi penggabungan</h2></div>
         <hr/>
         <div>
-            <p>Menentukan bagaimana gabungan antara layer target dan gabungan akan ditangani jika beberapa fitur pada layer gabungan ditemukan memiliki hubungan yang sama dengan layer target. Berikut ini adalah dua operasi penggabungan yang dapat dipilih:
+            <p>Menentukan bagaimana gabungan antara layer target dan layer gabungan akan ditangani jika terdapat beberapa fitur pada layer gabungan memiliki hubungan yang sama dengan layer target. Berikut ini adalah dua operasi penggabungan yang dapat dipilih:
                 <ul>
-                    <li> <b>Gabungkan satu ke satu</b>&mdash;Opsi ini meringkas seluruh fitur gabungan yang cocok ke masing-masing fitur di layer target.
+                    <li> <b>Gabungkan satu ke satu</b>&mdash;Opsi ini menggabungkan fitur pertama yang cocok di layer penggabungan dengan fitur pertama yang cocok di layer sasaran.  Atau, jika statistik ditambahkan, fitur gabungan yang cocok akan diringkas ke setiap fitur di layer sasaran.  Jumlah fitur gabungan akan ditambahkan secara default.
                     </li>
-                    <li> <b>Gabungkan satu ke banyak</b>&mdash;Opsi ini menggabungkan seluruh fitur yang cocok di layer gabungan ke layer target.  Layer hasil akan mengandung beberapa rekaman fitur target.
+                    <li> <b>Gabungkan satu ke banyak</b>&mdash;Opsi ini menggabungkan seluruh fitur yang cocok di layer gabungan ke layer target.  Layer hasil akan berisi beberapa rekaman fitur target.
                     </li>
                 </ul>
                 
             </p>
-            <p>Contoh, anggap saja Anda ingin menemukan supermarket dalam jarak 5 kilometer dari pasar petani.   Pada kasus ini, layer yang digabungkan memiliki fitur tunggal mewakili pasar petani, dan fitur gabungan mewakili toko kelontong setempat yang memiliki atribut seperti penjualan tahunan total. Menggunakan alat  <b>Gabungkan Fitur</b>, Anda akan menemukan bahwa lima toko kelontong memenuhi kriteria tersebut. Jika Anda menentukan operasi penggabungan <b>Gabungkan satu ke banyak</b>, Anda akan berakhir dengan lima fitur pada hasil, masing-masing baris mewakili pasar petani dan supermarket. Jika Anda menentukan hubungan <b>Gabungkan satu ke satu</b>, Anda akan berakhir dengan satu fitur mewakili pasar petani dan informasi yang diringkas dari supermarket, seperti perhitungan (5), dan statistik opsional lain seperti jumlah penjualan tahunan.
+            <p>Contoh, misalnya Anda ingin menemukan supermarket dalam jarak 5 kilometer dari pasar tradisional.   Pada kasus ini, layer akan digabungkan untuk memiliki fitur tunggal yang mewakili pasar tradisional, dan fitur gabungan mewakili toko kelontong setempat yang memiliki atribut seperti penjualan tahunan total. Menggunakan alat  <b>Gabungkan Fitur</b>, Anda akan menemukan bahwa lima toko kelontong memenuhi kriteria tersebut. Jika menggunakan operasi penggabungan <b>Gabungkan satu ke banyak</b>, Anda akan mendapatkan lima fitur pada hasil, yang mana masing-masing baris mewakili pasar tradisional dan supermarket. Jika menentukan hubungan <b>Gabungkan satu ke satu</b> dan memilih sebuah statistik, Anda akan mendapatkan satu fitur yang mewakili pasar petani dan informasi rangkuman dari supermarket, seperti angka (5), dan statistik opsional lainnya seperti jumlah penjualan tahunan.
             </p>
         </div>
     </div>
@@ -141,7 +141,22 @@
         <div><h2>Tambahkan statistik (opsional)</h2></div>
         <hr/>
         <div>
-            <p>Jika opsi  <b>Gabungkan satu ke satu</b> dipilih, Anda dapat hitung statistik pada fitur yang digabungkan.  Secara default, jumlah akan dihitung dan ditambahkan ke layer hasil. 
+            <p>Jika opsi  <b>Gabungkan satu ke satu</b> dipilih, untuk kolom numerik, Anda dapat meringkas dan menghitung statistik di fitur gabungan.   Secara default, jumlah fitur gabungan yang cocok akan dihitung dan ditambahkan ke layer hasil.  Jika memilih untuk tidak menambahkan statistik tambahan, fitur pertama yang cocok di layer gabungan akan digabungkan dengan fitur pertama yang cocok di layer sasaran.   Anda dapat menghitung satu atau beberapa hal berikut:
+            </p>
+            <ul>
+                <li>Jumlah
+                </li>
+                <li>Minimal
+                </li>
+                <li>Maksimal
+                </li>
+                <li>Rata-rata
+                </li>
+                <li>Simpangan Baku
+                </li>
+            </ul>
+            
+            <p> 
             </p>
         </div>
     </div>

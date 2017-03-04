@@ -40,13 +40,13 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Entités jointes</h2><p/>
         <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Entit&eacute;s jointes"></h2>
         <hr/>
-    <p> Entit&eacute;s jointes fonctionne avec deux couches et joint des attributs d'une entit&eacute; &agrave; une autre en fonction des relations spatiales et attributaires. L'outil d&eacute;termine toutes les entit&eacute;s en entr&eacute;e qui r&eacute;pondent &agrave; des conditions de jointure sp&eacute;cifi&eacute;es et ajoute la couche de jointure &agrave; la couche cible.
+    <p>Entit&eacute;s jointes fonctionne avec deux couches et joint des attributs d'une entit&eacute; &agrave; une autre en fonction des relations spatiales et attributaires. L'outil d&eacute;termine toutes les entit&eacute;s en entr&eacute;e qui r&eacute;pondent &agrave; des conditions de jointure sp&eacute;cifi&eacute;es et ajoute la couche de jointure &agrave; la couche cible. 
     </p>
-    <p>L'outil  Entit&eacute;s jointes peut s'appliquer aux points, lignes, surfaces et tables. Pour utiliser une jointure spatiale, vos donn&eacute;es doivent poss&eacute;der une g&eacute;om&eacute;trie.
+    <p>L'outil Entit&eacute;s jointes peut s'appliquer aux points, lignes, surfaces et tables. Pour utiliser une jointure spatiale, vos donn&eacute;es doivent poss&eacute;der une g&eacute;om&eacute;trie. 
     </p>
     <p>Si l'option  <b>Utiliser l'&eacute;tendue courante de la carte</b> est s&eacute;lectionn&eacute;e, seules les entit&eacute;s visibles au sein de l'&eacute;tendue courante de la carte seront analys&eacute;es.  Si l'option n'est pas s&eacute;lectionn&eacute;e, toutes les entit&eacute;s qui se trouvent &agrave; la fois dans la couche cible et dans la couche de jointure seront analys&eacute;es, m&ecirc;me si elles se trouvent en dehors de l'&eacute;tendue courante de la carte.
     </p>
@@ -93,7 +93,7 @@
         <div><h2>Choisir une relation spatiale</h2></div>
         <hr/>
         <div>
-            <p> La relation spatiale qui va d&eacute;terminer si les entit&eacute;s sont jointes les unes aux autres. Les relations disponibles d&eacute;pendent du type de g&eacute;om&eacute;trie (point, ligne, surface) utilis&eacute; comme entit&eacute;s en entr&eacute;e. Les relations disponibles sont notamment&nbsp;:
+            <p>La relation spatiale qui va d&eacute;terminer si les entit&eacute;s sont jointes les unes aux autres. Les relations disponibles d&eacute;pendent du type de g&eacute;om&eacute;trie (point, ligne, surface) utilis&eacute; comme entit&eacute;s en entr&eacute;e. Les relations disponibles sont notamment&nbsp;:
                 <ul>
                     <li> <b>Identique &agrave;</b>&nbsp;: les entit&eacute;s dans la couche cible sont appari&eacute;es si elles sont identiques aux entit&eacute;s de la couche de jointure.
                     </li>
@@ -126,14 +126,14 @@
         <div>
             <p>D&eacute;termine le mode de traitement des jointures entre la couche cible et la couche de jointure si plusieurs entit&eacute;s dans la couche de jointure pr&eacute;sentent la m&ecirc;me relation &agrave; la couche cible. Vous avez le choix entre les deux op&eacute;rations de jointure suivantes&nbsp;:
                 <ul>
-                    <li> <b>Joindre un vers un</b>&nbsp;: cette option synth&eacute;tise toutes les entit&eacute;s de jointure d'appariement sur chaque entit&eacute; de la couche cible.
+                    <li> <b>Joindre un vers un</b>&nbsp;: cette option joint la premi&egrave;re entit&eacute; d'appariement de la couche de jointure &agrave; la premi&egrave;re entit&eacute; d'appariement de la couche cible.  Si des statistiques sont ajout&eacute;es, les entit&eacute;s jointes appari&eacute;es peuvent &eacute;galement &ecirc;tre agr&eacute;g&eacute;es sur chaque entit&eacute; de la couche cible.  Le total des entit&eacute;s jointes est ajout&eacute; par d&eacute;faut.
                     </li>
                     <li> <b>Joindre un vers plusieurs</b>&nbsp;: cette option joint toutes les entit&eacute;s d'appariement de la couche de jointure &agrave; la couche cible.  La couche de r&eacute;sultat contiendra plusieurs enregistrements de la couche cible.
                     </li>
                 </ul>
                 
             </p>
-            <p>Supposons par exemple que vous voulez rechercher les supermarch&eacute;s situ&eacute;s &agrave; moins de 5&nbsp;kilom&egrave;tres d'un march&eacute; de producteurs.   Dans ce cas, la couche vers laquelle la jointure est r&eacute;alis&eacute;e poss&egrave;de une seule entit&eacute; repr&eacute;sentant un march&eacute; de producteurs et les entit&eacute;s de jointure repr&eacute;sentent les &eacute;piceries locales qui poss&egrave;dent des attributs, tels que les ventes annuelles totales. L'outil  <b>Entit&eacute;s jointes</b> permet de trouver cinq &eacute;piceries qui r&eacute;pondent &agrave; ce crit&egrave;re. En sp&eacute;cifiant une op&eacute;ration de jointure de type <b>Joindre un vers plusieurs</b>, vous obtenez cinq entit&eacute;s dans votre r&eacute;sultat, chaque ligne repr&eacute;sentant le march&eacute; de producteurs et un supermarch&eacute;. En sp&eacute;cifiant une relation de type <b>Joindre un vers un</b>, vous obtenez une entit&eacute; repr&eacute;sentant le march&eacute; de producteurs et les informations synth&eacute;tis&eacute;es des supermarch&eacute;s, par exemple le total (5), ainsi que d'autres statistiques facultatives, telles que la somme des ventes annuelles.
+            <p>Supposons par exemple que vous voulez rechercher les supermarch&eacute;s situ&eacute;s &agrave; moins de 5&nbsp;kilom&egrave;tres d'un march&eacute; de producteurs.   Dans ce cas, la couche vers laquelle la jointure est r&eacute;alis&eacute;e poss&egrave;de une seule entit&eacute; repr&eacute;sentant un march&eacute; de producteurs et les entit&eacute;s de jointure repr&eacute;sentent les &eacute;piceries locales qui poss&egrave;dent des attributs, tels que les ventes annuelles totales. L'outil  <b>Entit&eacute;s jointes</b> permet de trouver cinq &eacute;piceries qui r&eacute;pondent &agrave; ce crit&egrave;re. En sp&eacute;cifiant une op&eacute;ration de jointure de type <b>Joindre un vers plusieurs</b>, vous obtenez cinq entit&eacute;s dans votre r&eacute;sultat, chaque ligne repr&eacute;sentant le march&eacute; de producteurs et un supermarch&eacute;. En sp&eacute;cifiant une relation de type <b>Joindre un vers un</b> et en s&eacute;lectionnant une statistique, vous obtenez une entit&eacute; repr&eacute;sentant le march&eacute; de producteurs et les informations synth&eacute;tis&eacute;es des supermarch&eacute;s, par exemple le total (5), ainsi que d'autres statistiques facultatives, telles que la somme des ventes annuelles.
             </p>
         </div>
     </div>
@@ -141,7 +141,22 @@
         <div><h2>Ajouter des statistiques (facultatif)</h2></div>
         <hr/>
         <div>
-            <p>Si l'option  <b>Joindre un vers un</b> est s&eacute;lectionn&eacute;e, vous pouvez calculer les statistiques sur les entit&eacute;s jointes.  Par d&eacute;faut, le total est calcul&eacute; et ajout&eacute; &agrave; la couche de r&eacute;sultat. 
+            <p>Si l'option  <b>Joindre un vers un</b> est s&eacute;lectionn&eacute;e, pour les champs num&eacute;riques, vous pouvez agr&eacute;ger et calculer les statistiques sur les entit&eacute;s jointes.   Par d&eacute;faut, le total des entit&eacute;s jointes d'appariement est calcul&eacute; et ajout&eacute; &agrave; la couche de r&eacute;sultat.  Si vous choisissez de ne pas ajouter de statistiques suppl&eacute;mentaires, la premi&egrave;re entit&eacute; d'appariement de la couche de jointure est jointe &agrave; la premi&egrave;re entit&eacute; d'appariement de la couche cible.   Vous pouvez calculer un des &eacute;l&eacute;ments suivants&nbsp;:
+            </p>
+            <ul>
+                <li>Somme
+                </li>
+                <li>Minimal
+                </li>
+                <li>Maximal
+                </li>
+                <li>Moyenne
+                </li>
+                <li>Ecart type
+                </li>
+            </ul>
+            
+            <p> 
             </p>
         </div>
     </div>

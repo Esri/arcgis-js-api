@@ -40,13 +40,13 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Ekleme Detayları</h2><p/>
         <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Ekleme Detayları"></h2>
         <hr/>
-    <p> Detayları Birleştir; iki katman ile &ccedil;alışan ve mekansal ve &ouml;znitelik ilişkilerine bağlı olarak bir detaydan gelen &ouml;znitelikleri bir diğeriyle birleştirir. Ara&ccedil; belirtilen birleşme koşullarını karşılayan t&uuml;m girdi detaylarını belirler ve birleşim katmanını hedef katmanla birleştirir.
+    <p>Detayları Birleştir; iki katman ile &ccedil;alışan ve mekansal ve &ouml;znitelik ilişkilerine bağlı olarak bir detaydan gelen &ouml;znitelikleri bir diğeriyle birleştirir. Ara&ccedil; belirtilen birleşme koşullarını karşılayan t&uuml;m girdi detaylarını belirler ve birleşim katmanını hedef katmanla birleştirir. 
     </p>
-    <p> Detayları Birleştir noktalara, &ccedil;izgilere, alanlara ve tablolara uygulanabilir. Mekansal birleşim verilerinizin bir geometrisi olmasını gerektirir.
+    <p>Detayları Birleştir noktalara, &ccedil;izgilere, alanlara ve tablolara uygulanabilir. Mekansal birleşim verilerinizin bir geometrisi olmasını gerektirir. 
     </p>
     <p> <b>Ge&ccedil;erli harita kapsamını kullan</b> işaretli ise, yalnızca ge&ccedil;erli harita yayılımında g&ouml;r&uuml;n&uuml;r olan detaylar analiz edilir.  İşaretli değilse hem hedef katman hem de birleşim katmanındaki t&uuml;m detaylar, ge&ccedil;erli harita kapsamının dışında olsa bile analiz edilir.
     </p>
@@ -93,7 +93,7 @@
         <div><h2>Bir mekansal ilişki seçin</h2></div>
         <hr/>
         <div>
-            <p> Detayların birbirine birleştirilip birleştirilmeyeceğini belirleyen mekansal ilişki. Kullanılabilir ilişkiler, girdi detayları olarak kullanılan geometri t&uuml;r&uuml;ne (nokta, &ccedil;izgi, alan) bağlıdır. Kullanılabilir ilişkiler aşağıdakileri kapsar:
+            <p>Detayların birbirine birleştirilip birleştirilmeyeceğini belirleyen mekansal ilişki. Kullanılabilir ilişkiler, girdi detayları olarak kullanılan geometri t&uuml;r&uuml;ne (nokta, &ccedil;izgi, alan) bağlıdır. Kullanılabilir ilişkiler aşağıdakileri kapsar:
                 <ul>
                     <li> <b>Eşdeğeri</b>; birleşim katmanındaki detaylarla aynı olan hedef katmandaki detaylar eşleştirilir.
                     </li>
@@ -126,14 +126,14 @@
         <div>
             <p>Birleşim katmanında aynı hedef katman ilişkisine sahip birden &ccedil;ok detayın bulunması durumunda, hedef ve birleşim katmanı arasındaki birleştirmelerin nasıl yapılacağını belirler. Aşağıda arasından se&ccedil;im yapabileceğiniz iki birleştirme işlemi sunulmaktadır:
                 <ul>
-                    <li> <b>Bire bir birleştir</b>; bu se&ccedil;enek hedef katmandaki her detayla eşleşen t&uuml;m birleşim detaylarını &ouml;zetler.
+                    <li> <b>Bire bir birleştir</b>; bu se&ccedil;enek birleşim katmanındaki ilk eşleşen detayı, hedef katmandaki ilk eşleşen detayla birleştirir.  İsteğe bağlı olarak istatistikler eklenirse, eşleşen birleşim detayları hedef katmandaki her detayda &ouml;zetlenir.  Birleşim detayı sayısı varsayılan olarak eklenir.
                     </li>
                     <li> <b>Bire &ccedil;ok birleştir</b>; bu se&ccedil;enek birleşim katmanında hedef katmanla eşleşen t&uuml;m detayları birleştirir.  Sonu&ccedil; katmanı hedef detayın birden &ccedil;ok kaydını i&ccedil;erir.
                     </li>
                 </ul>
                 
             </p>
-            <p>&Ouml;rneğin, &uuml;retici pazarına 5 km uzaklıktaki s&uuml;permarketleri bulmak istediğinizi varsayalım.   Bu durumda, birleşim katmanında &uuml;retici pazarını temsil eden bir tek detay var; birleşim detaylar da toplam yıllık satışlar gibi &ouml;znitelikleri olan yerel marketleri g&ouml;stermektedir.  <b>Detayları Birleştir</b> aracını kullanarak &ouml;l&ccedil;&uuml;tleri karşılayan beş s&uuml;permarket bulursunuz. <b>Bire &ccedil;ok birleştir</b> birleşim t&uuml;r&uuml; belirlendiyse, sonu&ccedil;ta her satırın bir &uuml;retici pazarıyla bir s&uuml;permarketi g&ouml;sterdiği beş detay elde edilir. <b>Bire bir birleştir</b> ilişkisi belirtilmişse, &uuml;retici pazarını g&ouml;steren bir detay ile s&uuml;permarketlerden gelen sayı (5) gibi &ouml;zetlenmiş bilgiler ve toplam yıllık satış gibi diğer isteğe bağlı istatistikler elde edilir.
+            <p>&Ouml;rneğin, &uuml;retici pazarına 5 km uzaklıktaki s&uuml;permarketleri bulmak istediğinizi varsayalım.   Bu durumda, birleşim katmanında &uuml;retici pazarını temsil eden bir tek detay var; birleşim detaylar da toplam yıllık satışlar gibi &ouml;znitelikleri olan yerel marketleri g&ouml;stermektedir.  <b>Detayları Birleştir</b> aracını kullanarak &ouml;l&ccedil;&uuml;tleri karşılayan beş s&uuml;permarket bulursunuz. <b>Bire &ccedil;ok birleştir</b> birleşim t&uuml;r&uuml; belirlendiyse, sonu&ccedil;ta her satırın bir &uuml;retici pazarıyla bir s&uuml;permarketi g&ouml;sterdiği beş detay elde edilir. <b>Bire bir birleştir</b> ilişkisi belirtilir ve bir istatistik se&ccedil;ilirse, &uuml;retici pazarını g&ouml;steren bir detay ile s&uuml;permarketlerden gelen sayı (5) gibi &ouml;zetlenmiş bilgiler ve toplam yıllık satış gibi diğer isteğe bağlı istatistikler elde edilir.
             </p>
         </div>
     </div>
@@ -141,7 +141,22 @@
         <div><h2>İstatistik ekle (isteğe bağlı)</h2></div>
         <hr/>
         <div>
-            <p> <b>Bire bir birleştir</b> se&ccedil;eneği belirlendiğinde, birleşim detayları &uuml;zerinde istatistikleri hesaplayabilirsiniz.  Sayı varsayılan olarak hesaplanır ve sonu&ccedil; katmanına eklenir. 
+            <p> <b>Bire bir birleştir</b> se&ccedil;eneği belirlendiğinde, sayısal alanlar i&ccedil;in birleşim detayları &uuml;zerinde istatistikleri &ouml;zetleyebilir ve hesaplayabilirsiniz.   Eşleşen birleşim detaylarının sayısı varsayılan olarak hesaplanır ve sonu&ccedil; katmanına eklenir.  İlave istatistik eklememeyi tercih ederseniz, birleşim katmanındaki ilk eşleşen detay hedef katmandaki ilk eşleşen detayla birleştirilir.   Aşağıdakilerden birini veya birka&ccedil;ını hesaplayabilirsiniz:
+            </p>
+            <ul>
+                <li>Toplam
+                </li>
+                <li>Minimum
+                </li>
+                <li>Maksimum
+                </li>
+                <li>Ortalama
+                </li>
+                <li>Standart Sapma
+                </li>
+            </ul>
+            
+            <p> 
             </p>
         </div>
     </div>

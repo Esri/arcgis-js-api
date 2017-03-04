@@ -8,7 +8,7 @@
                 <label data-dojo-attach-point="_titleLbl">${i18n.findOutliers}</label>
                 <nav class="breadcrumbs"  data-dojo-attach-point="_analysisModeLblNode" style="display:none;">
                   <a href="#" class="crumb" style="font-size:12px;" data-dojo-attach-event="onclick:_handleModeCrumbClick" data-dojo-attach-point="_analysisModeCrumb"></a>
-                  <a href="#" class="crumb is-active" data-dojo-attach-point="_analysisTitleCrumb" style="font-size:16px;">${i18n.findHotSpots}</a>
+                  <a href="#" class="crumb is-active" data-dojo-attach-point="_analysisTitleCrumb" style="font-size:16px;">${i18n.findOutliers}</a>
                 </nav>                 
               </td>
               <td>
@@ -177,7 +177,7 @@
           </tr>
            <tr data-dojo-attach-point="_intervalLabelRow">
             <td colspan="2">
-              <label>${i18n.intervalLabel}</label>
+              <label class="esriLeadingMargin1">${i18n.intervalLabel}</label>
             </td>
            <td class="shortTextInput">
               <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="timeInterval"></a> 
@@ -203,7 +203,7 @@
           
         <tr data-dojo-attach-point="_repeatLabelRow">
             <td colspan="2">
-              <label>${i18n.repeatLabel}</label>
+              <label class="esriLeadingMargin1">${i18n.repeatLabel}</label>
             </td>
             <td class="shortTextInput">
               <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="timeStep"></a> 
@@ -228,7 +228,7 @@
         </tr>
         <tr data-dojo-attach-point="_timeAlignLabelRow">
           <td colspan="2">
-            <label class="">${i18n.timeAlignLabel}</label>
+            <label class="esriLeadingMargin1">${i18n.timeAlignLabel}</label>
           </td>
           <td class="shortTextInput">
             <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="timeStep"></a> 
@@ -245,7 +245,7 @@
         </tr>                     
         <tr data-dojo-attach-point="_timeRefLabelRow">
           <td colspan="2">
-            <label class="esriLeadingMargin2">${i18n.timeRefLabel}</label>
+            <label class="esriLeadingMargin1">${i18n.timeRefLabel}</label>
           </td>
           <td class="shortTextInput">
             <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="timeReference"></a> 

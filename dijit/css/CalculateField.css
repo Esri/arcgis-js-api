@@ -158,3 +158,15 @@
   border: 1px solid #257824;
   background-color: #D2E959;
 }
+
+.esriCalcHelp {
+  padding-bottom: 0.5em;
+}
+
+.esriCalcHelp a {
+  color: #336699;
+}
+
+.esriCalcHelp a, .esriCalcHelp a:hover, .esriCalcHelp a:active, .esriCalcHelp a:visited {
+    color: #21759B;
+}
