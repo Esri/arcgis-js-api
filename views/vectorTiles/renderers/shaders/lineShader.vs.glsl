@@ -3,7 +3,7 @@
 */
 
 attribute vec2 a_pos;
-attribute vec2 a_offset;
+attribute vec4 a_offsetAndNormal;
 attribute float a_accumulatedDistance;
 
 // the relative transformation of a vertex given in tile coordinates to a relative normalized coordinate
@@ -27,25 +27,14 @@ const float scale = 1.0 / 31.0;
 
 void main()
 {
-  // The two lowest bit of a_pos include texture normal information as a number between 0 and 2; after
-  // taking the remainder modulo 4, we subtract 1 to get a number between -1 and 1
-  // Note: this works because GLSL's mod is different from Javascript % operator:
-  //
-  //   GLSL: mod(-213 * 4 + x, 4)  ==  x
-  //   JS  :    (-213 * 4 + x) % 4 == -x
-  //
-  // This means that it is reliably possible to pack two extra bit representing a POSITIVE number x by simply
-  // multiplying the 'host' value by 4 and adding x. This us what VertexMemoryBuffer.ts, line 47, does.
-  lowp vec2 normal = mod(a_pos, 4.0);
-  normal.y = normal.y - 1.0;
-  v_normal = normal;
+  v_normal = a_offsetAndNormal.zw;
 
   // calculate the relative distance from the centerline to the edge of the line. Since offset is given in integers (for the
   // sake of using less attribute memory, we need to scale it back to the original range of ~ 0: 1)
-  mediump vec2 dist = u_lineHalfWidth * a_offset * scale;
+  mediump vec2 dist = u_lineHalfWidth * a_offsetAndNormal.xy * scale;
 
   // transform the vertex
-  gl_Position = vec4(u_normalized_origin, u_depth, 0.0) + u_transformMatrix * vec4(floor(a_pos / 4.0), 0.0, 1.0) + u_extrudeMatrix * vec4(dist, 0.0, 0.0);
+  gl_Position = vec4(u_normalized_origin, u_depth, 0.0) + u_transformMatrix * vec4(a_pos, 0.0, 1.0) + u_extrudeMatrix * vec4(dist, 0.0, 0.0);
 
   // the accumulated distance will be used to calculate the dashes (or the no-data...)
   v_accumulatedDistance = a_accumulatedDistance;
