@@ -35,7 +35,7 @@ This repo has dependencies on the following repos.
 | put-selector | https://github.com/kriszyp/put-selector/tree/v0.3.6 | /put-selector |
 | moment | https://github.com/moment/moment/tree/2.17.1 | /moment |
 
-Please see our [recommended guide](https://github.com/Esri/jsapi-resources/tree/master/bower).
+Please see our [recommended guide](https://developers.arcgis.com/javascript/latest/guide/using-bower/index.html).
 
 ## Resources
 
