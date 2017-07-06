@@ -40,11 +40,11 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Summarize Within</h2><p/>
         <h2><img src="../images/GUID-90E0CB1F-EB97-4752-B2EE-452B7B45475E-web.png" alt="Summarize Within"></h2>
         <hr/>
-    <p>This tool finds features (and portions of features) that are within the boundaries of areas in the first input layer.   
+    <p>This tool finds features (and portions of features) that are within the boundaries of areas in the first input layer.  
         <ul>
             <li>Given a layer of watershed boundaries and a layer of land-use boundaries, calculate total acreage of land-use type for each watershed. 
             </li>
@@ -64,7 +64,9 @@
             <p>The area layer that will be used to summarize features that fall within its boundaries.
  You can choose to summarize within a polygon  layer that you provide or within square or hexagon bins that are generated when the tool runs.  When generating bins, for  <b>Square</b>, the number and units specified determine the height and length of the square. For <b>Hexagon</b>, the number and units specified  determine the distance between parallel sides.
             </p>
-            <p>In addition to choosing a layer from your map, you can choose  <b>Browse Layers</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer.  
+            <p>Analysis using  <b>Square</b> or <b>Hexagon</b> bins requires a projected coordinate system. You can set the <b>Processing coordinate system</b> in <b>Analysis Environments</b>. If your processing coordinate system is not set to a projected coordinate system, you will be prompted to set it when you <b>Run Analysis</b>.
+            </p>
+            <p>In addition to choosing a layer from your map, you can choose  <b>Browse Layers</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer.
             </p>
         </div>
     </div>
@@ -74,7 +76,7 @@
         <div>
             <p>Features in this layer that fall within the boundaries of features in the input layer, or bins specified above, will be summarized. 
             </p>
-            <p>In addition to choosing a layer from your map, you can choose  <b>Browse Layers</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer.  
+            <p>In addition to choosing a layer from your map, you can choose  <b>Browse Layers</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer.
             </p>
         </div>
     </div>
@@ -92,20 +94,20 @@
         <div><h2>Aggregate using time slices (optional)</h2></div>
         <hr/>
         <div>
-            <p>If time is enabled on the input point layer and it is of type instant, you can  analyze using time slicing.  There are three parameters you can set when you use time:
+            <p>If time is enabled on the input point layer and it is of type instant, you can  analyze using time stepping.  There are three parameters you can set when you use time:
                 <ul>
-                    <li>  <b>Time Interval</b>
+                    <li> <b>Time step interval</b>
                     </li>
-                    <li> <b>Time Step</b>
+                    <li> <b>How often to repeat the time step</b>
                     </li>
-                    <li> <b>Reference Time</b>
+                    <li> <b>Time to align the time steps to</b>
                     </li>
                 </ul>
                 
             </p>
-            <p>Imagine you had data that represented a year in time and you wanted to analyze using weekly slices. To do that you would set  <b>Time Interval</b> to <code>1 week</code>.
+            <p>Imagine you had data that represented a year in time and you wanted to analyze using weekly steps. To do that you would set  <b>Time step interval</b> to <code>1 week</code>.
             </p>
-            <p> Imagine you had data that represented a year in time and you wanted to analyze using the first week of the month. To do that you would set <b>Time Interval</b> to <code>1 week</code>, <b>Time Step</b> to <code>1 month</code>, and <b>Reference Time</b> to <code>January 1, at 12:00 am</code>.
+            <p>Imagine you had data that represented a year in time and you wanted to analyze using the first week of the month. To do that you would set  <b>Time step interval</b> to <code>1 week</code>, <b>How often to repeat the time step</b> to <code>1 month</code>, and <b>Time to align the time steps to</b> to <code>January 1, at 12:00 am</code>.
             </p>
         </div>
     </div>
@@ -113,9 +115,9 @@
         <div><h2>Time interval to be aggregate into</h2></div>
         <hr/>
         <div>
-            <p>Interval of time used for slicing the data. Time interval may be used alone or used with the  <b>Time Step</b> or <b>Reference Time</b> parameter.
+            <p>Interval of time used for generating time steps. Time step interval may be used alone or used with the  <b>How often to repeat the time step</b> or <b>Time to align the time steps to</b> parameters.
             </p>
-            <p> If you wanted to create time slices that took place every Monday from 9:00 a.m. until 10:00 a.m., <b>Time Interval</b> would be <code>1 hour</code>, <b>Time Step</b> would be <code>1 week</code>, and <b>Reference Time</b> would be <code>9:00:00 a.m. on a Monday</code>.
+            <p>If you wanted to create time slices that took place every Monday from 9:00 a.m. until 10:00 a.m.,  <b>Time step interval</b> would be <code>1 hour</code>, <b>How often to repeat the time step</b> would be <code>1 week</code>, and <b>Time to align the time steps to</b> would be <code>9:00:00 a.m. on a Monday</code>.
             </p>
         </div>
     </div>
@@ -123,9 +125,9 @@
         <div><h2>Time step to be aggregate into</h2></div>
         <hr/>
         <div>
-            <p> The step used for calculating a time slice. <b>Time Step</b> may be used alone or with <b>Time Interval</b>, with <b>Reference Time</b>, or with both <b>Time Interval</b> and <b>Reference Time</b>.
+            <p> The step used for calculating a time slice. <b>How often to repeat the time step</b> may be used alone or with <b>Time step interval</b>, with <b>Reference Time</b>, or with both <b>Time step interval</b> and <b>Time to align the time steps to</b>.
             </p>
-            <p> If you wanted to create time slices that took place every Monday from 9:00 a.m. until 10:00 a.m., <b>Time Interval</b> would be <code>1 hour</code>, <b>Time Step</b> would be <code>1 week</code>, and <b>Reference Time</b> would be <code>9:00:00 a.m. on a Monday</code>.
+            <p> If you wanted to create time slices that took place every Monday from 9:00 a.m. until 10:00 a.m., <b>Time step interval</b> would be <code>1 hour</code>, <b>How often to repeat the time step</b> would be <code>1 week</code>, and <b>Time to align the time steps to</b> would be <code>9:00:00 a.m. on a Monday</code>.
             </p>
         </div>
     </div>
@@ -134,38 +136,40 @@
 used to align the time slicing</h2></div>
         <hr/>
         <div>
-            <p>The date and time used to align time slicing.  <b>Time Step</b> will start from and continue backward for the referenced time.
+            <p>The date and time used to align time slicing. Time stepping will start from and continue backward from this time. If no reference time is selected, time stepping will align to January 1st, 1970. 
             </p>
-            <p> If you wanted to create time slices that took place every Monday from 9:00 a.m. until 10:00 a.m., <b>Time Interval</b> would be <code>1 hour</code>, <b>Time Step</b> would be <code>1 week</code>, and <b>Reference Time</b> would be <code>9:00:00 a.m. on a Monday</code>.
+            <p> If you wanted to create time slices that took place every Monday from 9:00 a.m. until 10:00 a.m., <b>Time step interval</b> would be <code>1 hour</code>, <b>How often to repeat the time step</b> would be <code>1 week</code>, and <b>Time to align the time steps to</b> would be <code>9:00:00 a.m. on a Monday</code>.
             </p>
         </div>
     </div>
     <div id="summaryFields">
-        <div><h2>Add statistics from the layer to summarize (optional)</h2></div>
+        <div><h2>Add statistics (optional)</h2></div>
         <hr/>
         <div>
             <p> You can calculate statistics on features that are summarized. On numeric fields you can calculate the following:
                 <ul>
-                    <li>Count
+                    <li>Count&mdash;Calculates the number of nonnull values. Can be used on numeric fields or strings. The count of [null, 0, 2] is 2.
                     </li>
-                    <li>Mean
+                    <li>Sum&mdash;The sum of numeric values in a field. The sum of [null, null, 3] is 3.
                     </li>
-                    <li>Min
+                    <li>Mean&mdash;The mean of numeric values. The mean of [0, 2, null] is 1.
                     </li>
-                    <li>Max
+                    <li>Min&mdash;The minimum value of a numeric field. The minimum of [0, 2, null] is 0. 
                     </li>
-                    <li>Range
+                    <li>Max&mdash;The maximum value of a numeric field. The maximum value of [0, 2, null] is 2.
                     </li>
-                    <li>Variance
+                    <li>Range&mdash;The range of a numeric field. This is calculated as the minimum values subtracted from the maximum value. The range of [0, null, 1] is 1. The range of [null, 4] is 0.
                     </li>
-                    <li>Standard deviation
+                    <li>Variance&mdash;The variance of a numeric field in a track. The  variance of [1] is null. The variance of [null, 1,1,1] is 1.
+                    </li>
+                    <li>Standard deviation&mdash;The standard deviation of a numeric field. The standard deviation of [1] is null. The standard deviation of [null, 1,1,1] is 1. 
                     </li>
                 </ul>
                 
             </p>
             <p>On string fields you can calculate the following:
                 <ul>
-                    <li>Count
+                    <li>Count&mdash;The number of nonnull strings.
                     </li>
                     <li>Any&mdash;This statistic is a random sample of a string value in the specified field.
                     </li>
@@ -205,7 +209,17 @@ used to align the time slicing</h2></div>
         <div><h2>Choose datastore</h2></div>
         <hr/>
         <div>
-            <p>This is a temporary parameter for prerelease to set the data store where the results are saved. Both data stores are part of  ArcGIS Data Store. If you select the spatiotemporal data store but do not have one installed, the tool will fail. </p>
+            <p>GeoAnalytics results are stores to an ArcGIS Data Store and exposed as a feature layer in   Portal for ArcGIS. In most cases, results should be stored to the spatiotemporal data store and this is the default. In some cases saving results to the  relational data store is a good option. The following are reasons why you may want to store results in the relational data store: 
+                <ul>
+                    <li>Use results in portal to portal collaboration.
+                    </li>
+                    <li>Enable sync capabilities with your results.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>You should not use the relational data store if you expect your GeoAnalytics results to increase, and need to take advantage of the spatiotemporal big data store's capabilities to handle large amounts of data. 
+            </p>
         </div>
     </div>
     <div id="outputName">

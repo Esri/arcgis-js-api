@@ -48,7 +48,7 @@
         <ul>
             <li>Muodostavatko pisteet (rikokset, puut tai liikenneonnettomuudet) klusterin? Miten t&auml;st&auml; voi varmistua?
             </li>
-            <li>Oletko havainnut tilastollisesti merkitt&auml;v&auml;n HotSpot-pisteen? Kertoisiko kartta eri tarinan, jos muuttaisit tapaa, jolla se on esitetty symboleilla?
+            <li>Oletko l&ouml;yt&auml;nyt tilastollisesti merkitsev&auml;n hotspot-pisteen vai kertooko kartta muuta, jos muuttaisit sen symbolien esitystapaa?
             </li>
         </ul>
         Etsi kuumat pisteet -toiminto auttaa vastaamaan n&auml;ihin kysymyksiin luotettavasti.
@@ -61,9 +61,11 @@
         <div><h2>Valitse karttataso, jonka HotSpot-pisteet lasketaan</h2></div>
         <hr/>
         <div>
-            <p>Pistekarttataso, josta HotSpot- ja ColdSpot-pisteet l&ouml;ytyv&auml;t. 
+            <p>Pistekarttataso, josta HotSpot- ja ColdSpot-pisteet l&ouml;ytyv&auml;t.
             </p>
-            <p>Sen lis&auml;ksi, ett&auml; voit valita karttatason kartasta, voit valita  <b>Selaa karttatasoja</b> -vaihtoehdon avattavan luettelon alareunasta ja selata Big Data -tiedostoresurssin aineistoryhm&auml;n tai karttatason sis&auml;lt&ouml;&ouml;n.  
+            <p>Analyysi k&auml;ytt&auml;&auml; lohkoja ja edellytt&auml;&auml; projisoitua koordinaattij&auml;rjestelm&auml;&auml;. Voit m&auml;&auml;ritt&auml;&auml;  <b>k&auml;sittelev&auml;n koordinaattij&auml;rjestelm&auml;n</b> <b>Analyysiymp&auml;rist&ouml;t</b>-kohdassa. Jos k&auml;sittelev&auml;&auml; koordinaattij&auml;rjestelm&auml;&auml; ei ole m&auml;&auml;ritetty projisoiduksi koordinaattij&auml;rjestelm&auml;ksi, sinua pyydet&auml;&auml;n m&auml;&auml;ritt&auml;m&auml;&auml;n se sellaiseksi, kun valitset <b>Suorita analyysi</b>.
+            </p>
+            <p>Sen lis&auml;ksi, ett&auml; voit valita karttatason kartasta, voit valita  <b>Selaa karttatasoja</b> -vaihtoehdon avattavan luettelon alareunasta ja selata Big Data -tiedostoresurssin aineistoryhm&auml;n tai karttatason sis&auml;lt&ouml;&ouml;n.
             </p>
         </div>
     </div>
@@ -81,7 +83,7 @@
         </div>
     </div>
     <div id="inputBins">
-        <div><h2>Valitse lohkon koko HotSpot-laskentaa varten</h2></div>
+        <div><h2>Valitse lohkon koko koostamista varten</h2></div>
         <hr/>
         <div>
             <p>Niiden neli&ouml;lohkojen luomiseen k&auml;ytetty et&auml;isyys, joiden avulla l&auml;ht&ouml;aineiston pisteet analysoidaan.
@@ -89,7 +91,7 @@
         </div>
     </div>
     <div id="timeSlicing">
-        <div><h2>Koosta käyttäen aikaleikkeitä (valinnainen)</h2></div>
+        <div><h2>Etsi HotSpot -pisteitä käyttämällä aikavälejä (valinnainen)</h2></div>
         <hr/>
         <div>
             <p>Jos aika on otettu k&auml;ytt&ouml;&ouml;n karttatasossa ja jos ajan tyyppin&auml; on hetki, voit k&auml;ytt&auml;&auml; analysointiin aikav&auml;lej&auml;.
@@ -97,23 +99,40 @@
         </div>
     </div>
     <div id="timeInterval">
-        <div><h2>Aikaväli, johon tiedot koostetaan</h2></div>
+        <div><h2>Ajan vaiheväli</h2></div>
         <hr/>
         <div>
-            <p>Aikav&auml;li, jota k&auml;ytet&auml;&auml;n analysoimiseen. Jos haluat luoda viikoittaisia aikaleikkeit&auml;, m&auml;&auml;rit&auml; aikav&auml;liksi yksi viikko. 
+            <p>Aikav&auml;li, jota k&auml;ytet&auml;&auml;n aikav&auml;lien luomiseen.  Aika voidaan kohdistaa l&auml;ht&ouml;aineiston alkamisaikaan tai p&auml;&auml;ttymisaikaan tai m&auml;&auml;ritettyyn viiteaikaan.  
             </p>
         </div>
     </div>
     <div id="timeStep">
-        <div><h2>Aika-askel, johon koostetaan</h2></div>
+        <div><h2>Ajan vaiheväli</h2></div>
         <hr/>
         <div>
-            <p>Miten aika kohdistetaan. Aika voidaan kohdistaa l&auml;ht&ouml;aineiston alkamisaikaan tai p&auml;&auml;ttymisaikaan tai m&auml;&auml;ritettyyn viiteaikaan.  
+            <p>Aikav&auml;li, jota k&auml;ytet&auml;&auml;n aikav&auml;lien luomiseen. Aika voidaan kohdistaa l&auml;ht&ouml;aineiston alkamisaikaan tai p&auml;&auml;ttymisaikaan tai m&auml;&auml;ritettyyn viiteaikaan.  
+            </p>
+        </div>
+    </div>
+    <div id="timeStepAlignment">
+        <div><h2>Valitse aikavälien kohdistustapa</h2></div>
+        <hr/>
+        <div>
+            <p>Miten aikav&auml;lit kohdistetaan. Aikav&auml;lit voi kohdistaa kolmella tavalla:
+                <ul>
+                    <li> <b>Aloitusaika</b>: Aikav&auml;lit kohdistetaan ajallisesti ensimm&auml;isen kohteen kanssa.
+                    </li>
+                    <li> <b>Lopetusaika</b>: Aikav&auml;lit kohdistetaan ajallisesti viimeisen kohteen kanssa.
+                    </li>
+                    <li> <b>Viiteaika</b>: Aikav&auml;lit kohdistetaan m&auml;&auml;ritetyn ajan kanssa.
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>
     <div id="timeReference">
-        <div><h2>Viiteaika, jota käytetään aikaleikkeiden kohdistamiseen</h2></div>
+        <div><h2>Viiteaika, johon aikavälit kohdistetaan</h2></div>
         <hr/>
         <div>
             <p>P&auml;iv&auml;m&auml;&auml;r&auml; ja kellonaika, joita k&auml;ytet&auml;&auml;n aikav&auml;lien kohdistamiseen.
@@ -121,7 +140,7 @@
         </div>
     </div>
     <div id="neighborhood">
-        <div><h2>Valitse naapuruston koko</h2></div>
+        <div><h2>Valitse naapuruston koko HotSpot-laskentaa varten</h2></div>
         <hr/>
         <div>
             <p>Et&auml;isyys, jonka avulla m&auml;&auml;ritet&auml;&auml;n HotSpot-laskentaan k&auml;ytetty naapurusto. Naapuruston on oltava suurempi kuin lohkon koko, jotta voidaan varmistaa, ett&auml; kullakin lohkolla on v&auml;hint&auml;&auml;n yksi naapuri. Jokainen lohko analysoidaan, ja jokaista lohkoa verrataan naapurilohkoihin.
@@ -137,10 +156,20 @@
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Valitse aineistosäilö</h2></div>
+        <div><h2>Valitse ArcGIS Data Store -tietokanta, johon tulokset tallennetaan</h2></div>
         <hr/>
         <div>
-            <p>T&auml;m&auml; on esijulkaisun tilap&auml;inen parametri sen aineistos&auml;il&ouml;n m&auml;&auml;ritt&auml;miseen, johon tulokset tallennetaan. Molemmat aineistos&auml;il&ouml;t ovat osa  ArcGIS Data Storea. Jos valitset tila-aika-aineistos&auml;il&ouml;n, mutta sellaista ei ole asennettuna, ty&ouml;kalua ei voi suorittaa. </p>
+            <p>GeoAnalytics-tulokset tallennetaan ArcGIS Data Store -tietokantaan ja julkaistaan karttatasona  Portal for ArcGIS -portaalissa. Useimmissa tapauksissa tulokset pit&auml;&auml; tallentaa spatiotemporaaliseen tietokantaan (t&auml;m&auml; on oletusarvo). Joissakin tapauksissa tulosten tallentaminen relaatiotietokantaan on hyv&auml; vaihtoehto. Tiedot kannattaa tallentaa relaatiotietokantaan seuraavista syist&auml;: 
+                <ul>
+                    <li>Haluat k&auml;ytt&auml;&auml; portaalissa olevia tietoja portaaliyhteisty&ouml;h&ouml;n.
+                    </li>
+                    <li>Haluat ottaa k&auml;ytt&ouml;&ouml;n tulosten synkronointitoiminnot.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Relaatiotietokantaa ei tule k&auml;ytt&auml;&auml;, jos GeoAnalytics-tulosten m&auml;&auml;r&auml; kasvaa ja sinun t&auml;ytyy hy&ouml;dynt&auml;&auml; spatiotemporaalisen big data -tietokannan toimintoja suurten tietom&auml;&auml;rien k&auml;sittelyyn. 
+            </p>
         </div>
     </div>
     <div id="outputName">

@@ -77,3 +77,7 @@
   width: 50%;
   margin: 0 auto;
 }
+
+.dijitMenuPopup[dijitpopupparent^="esri_dijit_SymbolStyler_MarkerSymbolPicker_"] .dijitMenuItemLabel {
+  font-family: "Avenir LT W01 65 Medium", Arial, Helvetica, sans-serif;
+}

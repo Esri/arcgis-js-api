@@ -40,48 +40,48 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
-        <h2>Convert Feature to  Raster</h2><p/>
-        <h2><img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" alt="Convert Feature to Raster tool"></h2>
+    <div id="toolDescription" class="smallsize">
+        <h2>Feature in Raster konvertieren</h2><p/>
+        <h2><img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" alt="Werkzeug &quot;Feature in Raster konvertieren&quot;"></h2>
         <hr/>
-    <p>This task converts features to a raster dataset.
+    <p>Mit dieser Task werden Features in ein Raster-Dataset konvertiert.
     </p>
-    <p>Any feature class containing point, line, or polygon features can be converted to a raster dataset.
+    <p>Jede Feature-Class mit Punkt-, Linien- oder Polygon-Features kann in ein Raster-Dataset konvertiert werden.
     </p>
-    <p>The cell center is used to decide the value of the output raster pixel.
+    <p>Anhand des Zellenmittelpunktes wird der Wert des Ausgabe-Raster-Pixels ausgew&auml;hlt.
     </p>
-    <p>The input field type determines the type of output raster. If the field is integer, the output raster will be integer; if it is floating point, the output will be floating point.
+    <p>Der Typ des Ausgabe-Rasters wird anhand des Eingabefeldtyps bestimmt. Wenn das Eingabefeld ganzzahlig ist, ist das Ausgabe-Raster ebenfalls ganzzahlig; wenn es vom Typ &quot;Gleitkomma&quot; ist, weist die Ausgabe auch den Typ &quot;Gleitkomma&quot; auf.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Choose feature layer to convert</h2></div>
+        <div><h2>Zu konvertierenden Layer auswählen</h2></div>
         <hr/>
         <div>
-            <p>The input feature layer to convert to a raster dataset.
+            <p>Der Eingabe-Feature-Layer, der in ein Raster-Dataset konvertiert werden soll.
             </p>
         </div>
     </div>
     <div id="field">
-        <div><h2>Choose field</h2></div>
+        <div><h2>Feld auswählen</h2></div>
         <hr/>
         <div>
-            <p>Choose the field that will be used to assign values to the output raster.
+            <p>W&auml;hlen Sie das Feld aus, das verwendet wird, um dem Ausgabe-Raster Werte zuzuweisen.
             </p> 
         </div>
     </div>
     <div id="outputCellSize">
-        <div><h2>Output cell size</h2></div>
+        <div><h2>Ausgabe-Zellengröße</h2></div>
         <hr/>
         <div>
             <p>Geben Sie die Zellengr&ouml;&szlig;e und Einheit f&uuml;r die Ausgabe-Raster ein.
             </p>
-            <p>The available units are Feet, Miles, Meters, and Kilometers.
+            <p>Die verf&uuml;gbaren Einheiten lauten Fu&szlig;, Meilen, Meter und Kilometer.
             </p>
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>Name des Ergebnis-Layers</h2></div>
         <hr/>
         <div>
             <p>Der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird. Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, werden Sie aufgefordert, einen anderen Namen einzugeben.

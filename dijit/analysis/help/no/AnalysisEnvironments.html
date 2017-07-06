@@ -152,7 +152,7 @@
             </p>
             <p>
                 <ul>
-                    <li> <b>Standard</b> &ndash; Bruker utstrekningen som gis av verkt&oslash;yet.
+                    <li> <b>Standard</b> &ndash; bruker utstrekningen som gis av verkt&oslash;yet.
                     </li>
                     <li> <b>Som spesifisert</b> &ndash; Angi koordinatene manuelt for &aring; definere utstrekningen.
                     </li>
@@ -204,10 +204,28 @@
                 </li>
                 <li>Dersom analysemasken er et raster, vil alle celler som har en verdi bli vurdert for &aring; definere masken. Celler i en maskeraster som er NoData, vil bli ansett for &aring; v&aelig;re p&aring; utsiden av masken, og vil v&aelig;re NoData i analyseresultatlaget. 
                 </li>
-                <li>Dersom analysemasken er et geoobjektslag, vil det internt bli konvertert til et raster ved utf&oslash;relse. Av denne grunnen b&oslash;r du s&oslash;rge for at  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">Cellest&oslash;rrelse</a> og <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">Fest raster</a> er stilt inn riktig for analysen din.
+                <li>Dersom analysemasken er et geoobjektslag, vil  detinternt bli konvertert til et raster ved utf&oslash;relse. Du b&oslash;r derfor s&oslash;rge for at 
+ <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank"></a> og <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank"></a> er stilt inn riktig for analysen din.
                 </li>
             </ul>
              
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>ArcGIS Data Store</h2></div>
+        <hr/>
+        <div>
+            <p>GeoAnalytics-resultater lagres i et ArcGIS Data Store og vises som et geoobjektslag i  Portal for ArcGIS. Resultatene b&oslash;r i de fleste tilfeller lagres i et spatiotemporalt datalager. Dette er standardalternativet. Du b&oslash;r lagre resultatene i et relasjonsdatalager av f&oslash;lgende &aring;rsaker: 
+                <ul>
+                    <li>For &aring; kunne bruke resultatene i portal-til-portal-samarbeid
+                    </li>
+                    <li>For &aring; aktivere synkroniseringsfunksjoner for resultatene dine
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Du b&oslash;r ikke bruke et relasjonsdatalager hvis du forventer at GeoAnalytics-resultatene kommer til &aring; &oslash;ke og vil bruke det spatiotemporale Big Data Stores funksjoner til &aring; h&aring;ndtere store mengder data. 
+            </p>
         </div>
     </div>
 </div>

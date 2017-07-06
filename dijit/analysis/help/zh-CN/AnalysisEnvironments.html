@@ -185,7 +185,8 @@
                     </li>
                     <li> <b>如指定</b> - 指定设置像元大小所需的数值。如果选中，则默认值为 1。
                     </li>
-                    <li> <b>图层 &lt;名称&gt;</b> - 设置所选择的栅格图层的像元大小。
+                    <li> <b>图层 &lt;名称&gt;</b> - 设置
+所选择的栅格图层的像元大小。
                     </li>
                 </ul>
                 
@@ -203,10 +204,28 @@
                 </li>
                 <li>如果分析掩膜是栅格，则定义掩膜时将考虑所有具有值的像元。掩膜栅格中的 NoData 像元将视为位于掩膜之外，并且在分析结果图层中将为 NoData。
                 </li>
-                <li>如果分析掩膜是一个要素图层，则在执行时它将内部转换为栅格。因此，您需要注意应恰当地设置 <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">像元大小</a>和 <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">捕捉栅格</a>以进行分析。
+                <li>如果分析掩膜是一个要素图层，则在执行时它将内部转换为栅格。因此，您需要注意应恰当地设置
+ <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank"></a>和 <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank"></a>以进行分析。
                 </li>
             </ul>
              
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>ArcGIS Data Store</h2></div>
+        <hr/>
+        <div>
+            <p>GeoAnalytic 结果存储在 ArcGIS Data Store 中并显示为  Portal for ArcGIS 中的要素图层。大多数情况下，结果应存储在时空数据存储中。这是默认设置。下列内容说明了您可能需要将结果存储在关系数据存储中的原因： 
+                <ul>
+                    <li>可在门户到门户协作中应用您的结果
+                    </li>
+                    <li>可以为您的结果开启同步功能
+                    </li>
+                </ul>
+                
+            </p>
+            <p>若您希望您的 GeoAnalytics 结果增加并希望利用时空大数据存储功能处理大量数据，则您不应使用关系数据存储。
+            </p>
         </div>
     </div>
 </div>

@@ -2041,6 +2041,11 @@ html[dir="rtl"] .esriAnalysis .crumb:first-child {
   background: url(../../images/ajax-loader-arrow-lightblue.gif) center center no-repeat;
 }
 
+ .mapviewer .esriAnalysis .esriLoading  {
+  background: url(../images/ajax-loader.gif) center center no-repeat;
+}
+
+
 .esriAnalysis .esriLoadingLarge  {
   background: url(../../images/ajax-loader-segments-circle-64.gif);
   background-repeat: no-repeat;
@@ -2053,3 +2058,103 @@ html[dir="rtl"] .esriAnalysis .crumb:first-child {
   width: 100%;
   height: 100%;
 }
+
+
+.calciteWebTable {
+  width: 100%;
+  background-color: white;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 1px solid #cccccc;
+  text-align: left;
+  overflow: auto;
+  font-size: 0.675rem;
+  line-height: 1.55rem;
+  }
+  @media screen and (max-width: 859px) {
+    .calciteWebTable {
+      font-size: 0.875rem; } }
+  @media screen and (max-width: 479px) {
+    .calciteWebTable {
+      font-size: 0.875rem; } }
+  html[dir="rtl"] .calciteWebTable {
+    text-align: right; }
+  .calciteWebTable > thead {
+    background-color: #efefef;
+    border-bottom: 1px solid #cccccc;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 0.875rem;
+    line-height: 1.55rem; }
+    .calciteWebTable > thead b, .calciteWebTable > thead strong {
+      font-weight: 500; }
+    @media screen and (max-width: 859px) {
+      .calciteWebTable > thead {
+        font-size: 0.875rem; } }
+    @media screen and (max-width: 479px) {
+      .calciteWebTable > thead {
+        font-size: 0.875rem; } }
+  .calciteWebTable > tbody {
+    overflow: auto;
+    width: 100%; }
+  .calciteWebTable > tfoot {
+    background-color: #efefef;
+    border-top: 1px solid #cccccc; }
+  .calciteWebTable th, .calciteWebTable td {
+    font-weight: 300;
+    border-left: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+    padding: 0.5166666667rem;
+    }
+    html[dir="rtl"] .calciteWebTable th, html[dir="rtl"] .calciteWebTable td {
+      text-align: right; }
+  .calciteWebTable tr {
+    border-bottom: 1px solid #cccccc;
+    text-align: left; }
+    .calciteWebTable tr:last-child {
+      border-bottom: none; }
+  .calciteWebTable caption {
+    color: #959595;
+    caption-side: bottom;
+    line-height: 1.55rem;
+    padding: 0.3875rem 0.775rem; }
+
+.table-blue {
+  border: 1px solid #0079c1; }
+  .table-blue > thead {
+    background-color: #0079c1;
+    border: none;
+    border-bottom: 1px solid #0079c1;
+    color: white; }
+    .table-blue > thead tr:nth-child(even) {
+      background-color: #bcdaed;
+      color: #4c4c4c; }
+  .table-blue > tfoot {
+    border-top: 1px solid #0079c1; }
+  .table-blue th, .table-blue td {
+    border-left: 1px solid #0079c1;
+    border-right: 1px solid #0079c1; }
+  .table-blue tr {
+    border-bottom: 1px solid #0079c1; }
+
+.table-plain {
+  border: none; }
+  .table-plain > thead, .table-plain > tfoot, .table-plain th, .table-plain td {
+    background-color: transparent;
+    border: none; }
+  .table-plain tr {
+    border: none; }
+    .table-plain tr:nth-child(even) {
+      background-color: transparent; }
+      .table-plain tr:nth-child(even) td {
+        background-color: transparent; }
+
+.table-striped tr:nth-child(even) {
+  background-color: #f8f8f8; }
+  .table-striped tr:nth-child(even) td {
+    background-color: #f8f8f8; }
+
+.table-striped.table-blue tr:nth-child(even) {
+  background-color: #d2e9f9; }
+  .table-striped.table-blue tr:nth-child(even) td {
+    background-color: #d2e9f9; }

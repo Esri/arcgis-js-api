@@ -48,7 +48,7 @@
         <ul>
             <li>&Auml;r dina punkter (brottsfall, tr&auml;d eller trafikolyckor) verkligen klustrade?  Hur kan du vara s&auml;ker p&aring; det?
             </li>
-            <li>Har du verkligen hittat en statistiskt signifikant hotspot? Eller skulle kartan ber&auml;tta en annan historia om du &auml;ndrade hur den symboliserades?
+            <li>Har du verkligen uppt&auml;ckt en statistiskt signifikant hotspot eller skulle kartan ber&auml;tta n&aring;got annat om du &auml;ndrade hur den symboliseras?
             </li>
         </ul>
         Verktyget Hitta hotspots hj&auml;lper dig besvara de h&auml;r fr&aring;gorna med s&auml;kerhet.
@@ -61,9 +61,11 @@
         <div><h2>Välj det lager som hotspots ska beräknas för</h2></div>
         <hr/>
         <div>
-            <p>Det punktlager som hotspots och coldspots ska hittas i. 
+            <p>Det punktlager som hotspots och coldspots ska hittas i.
             </p>
-            <p>F&ouml;rutom att v&auml;lja ett lager fr&aring;n kartan kan du v&auml;lja  <b>Bl&auml;ddra bland lager</b> l&auml;ngst ned i listrutan f&ouml;r att bl&auml;ddra till ditt inneh&aring;ll efter ett big data-fildelningsdataset eller geoobjektslager.  
+            <p>Denna analys anv&auml;nder lagringsplatser och kr&auml;ver ett projicerat koordinatsystem. Du kan ange  <b>Bearbetande koordinatsystem</b> i <b>Analysmilj&ouml;</b>. Om ditt bearbetande koordinatsystem inte &auml;r inst&auml;llt som ett projicerat koordinatsystem, blir du uppmanad att st&auml;lla in det n&auml;r du anv&auml;nder <b>K&ouml;r analys</b>.
+            </p>
+            <p>F&ouml;rutom att v&auml;lja ett lager fr&aring;n kartan kan du v&auml;lja  <b>Bl&auml;ddra bland lager</b> l&auml;ngst ned i listrutan f&ouml;r att bl&auml;ddra till ditt inneh&aring;ll efter ett big data-fildelningsdataset eller geoobjektslager.
             </p>
         </div>
     </div>
@@ -81,7 +83,7 @@
         </div>
     </div>
     <div id="inputBins">
-        <div><h2>Välj lagerplatsstorlek för hotspotberäkningar</h2></div>
+        <div><h2>Välj lagerplatsstorlek för aggregering</h2></div>
         <hr/>
         <div>
             <p>Det avst&aring;nd som anv&auml;nds f&ouml;r att skapa lagringsplatserna som ska anv&auml;ndas f&ouml;r att analysera dina indatapunkter.
@@ -89,39 +91,56 @@
         </div>
     </div>
     <div id="timeSlicing">
-        <div><h2>Aggregera med tidsdelar (valfritt)</h2></div>
+        <div><h2>Hitta hotspots med tidssteg (valfritt)</h2></div>
         <hr/>
         <div>
-            <p>Om tid &auml;r aktiverat p&aring; punktlagret och det &auml;r av typen tidspunkt, kan du analysera med tidsintervall.
+            <p>Om tid &auml;r aktiverat p&aring; punktlagret och det &auml;r av typen tidspunkt, kan du analysera med tidssteg.
             </p>
         </div>
     </div>
     <div id="timeInterval">
-        <div><h2>Tidsintervall som ska aggregeras till</h2></div>
+        <div><h2>Tidsstegsintervall</h2></div>
         <hr/>
         <div>
-            <p>Tidsintervall som anv&auml;nds f&ouml;r analys. Om du vill skapa tidsdelar som intr&auml;ffar varje vecka st&auml;ller du in tidsintervallet till en vecka. 
+            <p>Tidsintervall som anv&auml;nds f&ouml;r att generera tidssteg.  Tiden kan justeras till start- eller sluttiden f&ouml;r indata eller till en angiven referenstid.  
             </p>
         </div>
     </div>
     <div id="timeStep">
-        <div><h2>Tidssteg som ska aggregeras till</h2></div>
+        <div><h2>Tidsstegsintervall</h2></div>
         <hr/>
         <div>
-            <p>Hur tiden ska justeras. Tiden kan justeras till start- eller sluttiden f&ouml;r indata eller till en angiven referenstid.  
+            <p>Tidsintervall som anv&auml;nds f&ouml;r att generera tidssteg. Tiden kan justeras till start- eller sluttiden f&ouml;r indata eller till en angiven referenstid.  
+            </p>
+        </div>
+    </div>
+    <div id="timeStepAlignment">
+        <div><h2>Välj hur tidsstegen ska justeras</h2></div>
+        <hr/>
+        <div>
+            <p>Hur tidsstegen justeras. Det finns tre s&auml;tt att justera tidssteg p&aring;:
+                <ul>
+                    <li> <b>Starttid</b> &ndash; Tidssteg justeras mot det geoobjekt som kommer f&ouml;rst tidsm&auml;ssigt.
+                    </li>
+                    <li> <b>Sluttid</b> &ndash; Tidssteg justeras mot det geoobjekt som kommer sist tidsm&auml;ssigt.
+                    </li>
+                    <li> <b>Referenstid</b> &ndash; Tidssteg justeras mot en angiven tid.
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>
     <div id="timeReference">
-        <div><h2>Referenstid som används till att justera tidsdelar</h2></div>
+        <div><h2>Referenstid som används till att justera tidssteg till</h2></div>
         <hr/>
         <div>
-            <p>Datum och tid som anv&auml;nds f&ouml;r att justera tidsintervallen.
+            <p>Datum och tid som anv&auml;nds f&ouml;r att justera tidsstegen.
             </p>
         </div>
     </div>
     <div id="neighborhood">
-        <div><h2>Välj närområdets storlek</h2></div>
+        <div><h2>Välj närområdesstorlek för hotspotberäkningar</h2></div>
         <hr/>
         <div>
             <p>Avst&aring;ndet som anv&auml;nds f&ouml;r att avg&ouml;ra det n&auml;romr&aring;de som anv&auml;nds f&ouml;r hotspotber&auml;kningar. N&auml;romr&aring;det b&ouml;r vara st&ouml;rre &auml;n lagringsplatsstorleken f&ouml;r att se till att varje lagringsplats har minst en granne. Varje lagringsplats analyseras och j&auml;mf&ouml;rs med angr&auml;nsande lagringsplatser.
@@ -137,10 +156,20 @@
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Välj datalager</h2></div>
+        <div><h2>Välj ett ArcGIS-datalager att spara resultat till</h2></div>
         <hr/>
         <div>
-            <p>Det h&auml;r &auml;r en tillf&auml;llig parameter f&ouml;r f&ouml;rhandsversionen f&ouml;r att ange det datalager d&auml;r resultaten sparas. B&aring;da datalagren ing&aring;r i  ArcGIS Data Store. Om du v&auml;ljer det rumstemporala datalagret men inte har ett installerat misslyckas verktyget. </p>
+            <p>GeoAnalytics-resultat sparas i ett ArcGIS-datalager och visas som ett geoobjektslager i  Portal for ArcGIS. I de flesta fall ska resultat sparas i det rumstemporala datalagret och det &auml;r standardinst&auml;llningen. I vissa fall &auml;r det ett bra alternativ att spara resultat i det relationella datalagret. F&ouml;ljande &auml;r anledningar till varf&ouml;r du kanske vill spara resultat i det relationella datalagret: 
+                <ul>
+                    <li>anv&auml;nda resultaten i samarbeten portal till portal
+                    </li>
+                    <li>aktivera synkroniseringsfunktioner med dina resultat.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Du b&ouml;r inte anv&auml;nda det relationella datalagret om du f&ouml;rv&auml;ntar dig att dina GeoAnalytics-resultat kommer att &ouml;ka och du beh&ouml;ver anv&auml;nda det rumstemporala big data-lagrets funktioner till att hantera stora m&auml;ngder data. 
+            </p>
         </div>
     </div>
     <div id="outputName">

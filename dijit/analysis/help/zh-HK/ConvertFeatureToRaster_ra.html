@@ -40,48 +40,48 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
-        <h2>Convert Feature to  Raster</h2><p/>
-        <h2><img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" alt="Convert Feature to Raster tool"></h2>
+    <div id="toolDescription" class="smallsize">
+        <h2>將圖徵轉換為光柵</h2><p/>
+        <h2><img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" alt="將圖徵轉換為點陣工具"></h2>
         <hr/>
-    <p>This task converts features to a raster dataset.
+    <p>此任務可將圖徵轉換成點陣資料集。
     </p>
-    <p>Any feature class containing point, line, or polygon features can be converted to a raster dataset.
+    <p>可將包含點、線或多邊形圖徵的任何圖徵類別轉換成點陣資料集。
     </p>
-    <p>The cell center is used to decide the value of the output raster pixel.
+    <p>儲存格中心可用來決定輸出點陣像素的值。
     </p>
-    <p>The input field type determines the type of output raster. If the field is integer, the output raster will be integer; if it is floating point, the output will be floating point.
+    <p>輸入欄位類型可決定輸出點陣的類型。如果欄位為整數，輸出點陣將是整數；如果為浮點，輸出將是浮點。
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Choose feature layer to convert</h2></div>
+        <div><h2>選擇要轉換的圖徵圖層</h2></div>
         <hr/>
         <div>
-            <p>The input feature layer to convert to a raster dataset.
+            <p>要轉換為點陣資料集的輸入圖徵圖層。
             </p>
         </div>
     </div>
     <div id="field">
-        <div><h2>Choose field</h2></div>
+        <div><h2>選擇欄位</h2></div>
         <hr/>
         <div>
-            <p>Choose the field that will be used to assign values to the output raster.
+            <p>選擇會將值指派給輸出點陣的欄位。
             </p> 
         </div>
     </div>
     <div id="outputCellSize">
-        <div><h2>Output cell size</h2></div>
+        <div><h2>輸出儲存格大小</h2></div>
         <hr/>
         <div>
             <p>針對輸出點陣輸入儲存格大小和單位。
             </p>
-            <p>The available units are Feet, Miles, Meters, and Kilometers.
+            <p>可用的單位為英呎、英哩、公尺和公里。
             </p>
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>結果圖層名稱</h2></div>
         <hr/>
         <div>
             <p>在 <b>我的內容</b>中建立並新增到地圖中的圖層的名稱。預設名稱參照工具名稱以及輸入圖層名稱。如果該名稱的圖層已存在，則系統將要求您提供其他名稱。

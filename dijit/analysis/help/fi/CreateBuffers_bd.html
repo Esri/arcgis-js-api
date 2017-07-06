@@ -40,7 +40,7 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Luo puskurit</h2><p/>
         <h2><img src="../images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" alt="Luo puskurit"></h2>
         <hr/>
@@ -54,9 +54,9 @@
         <div><h2>Valitse karttataso, johon puskuria käytetään</h2></div>
         <hr/>
         <div>
-            <p>Puskuroitavat piste-, viiva- tai aluekohteet.
+            <p>Puskuroitavat piste-, viiva- tai aluekohteet. L&auml;ht&ouml;aineiston karttatasojen on oltava projisoidussa koordinaattij&auml;rjestelm&auml;ss&auml;, tai k&auml;sittelev&auml; koordinaatisto on m&auml;&auml;ritett&auml;v&auml; projisoituun koordinaattij&auml;rjestelm&auml;&auml;n k&auml;ytt&auml;m&auml;ll&auml;  <b>analyysiymp&auml;rist&ouml;j&auml;</b>.
             </p>
-            <p>Sen lis&auml;ksi, ett&auml; voit valita karttatason kartasta, voit valita  <b>Selaa karttatasoja</b> -vaihtoehdon avattavan luettelon alareunasta ja selata Big Data -tiedostoresurssin aineistoryhm&auml;n tai karttatason sis&auml;lt&ouml;&ouml;n.  
+            <p>Sen lis&auml;ksi, ett&auml; voit valita karttatason kartasta, voit valita  <b>Selaa karttatasoja</b> -vaihtoehdon avattavan luettelon alareunasta ja selata Big Data -tiedostoresurssin aineistoryhm&auml;n tai karttatason sis&auml;lt&ouml;&ouml;n.
             </p>
         </div>
     </div>
@@ -126,26 +126,28 @@
         <div>
             <p> Voit laskea tilastotiedot kohteista, joista on laadittu yhteenveto. Numerokentist&auml; voit laskea seuraavat tilastotiedot:
                 <ul>
-                    <li>Lukum&auml;&auml;r&auml;
+                    <li>M&auml;&auml;r&auml;: laskee muiden kuin nolla-arvojen m&auml;&auml;r&auml;n. Voidaan k&auml;ytt&auml;&auml; numerokentiss&auml; tai merkkijonoissa. Arvojen [nolla, 0, 2] nolla-arvojen m&auml;&auml;r&auml; on 2.
                     </li>
-                    <li>Keskiarvo
+                    <li>Summa: kunkin kent&auml;n numeroarvojen summa. Numeroarvojen [nolla, nolla, 3] summa on 3.
                     </li>
-                    <li>V&auml;himm&auml;isarvo
+                    <li>Keskiarvo: numeroarvojen keskiarvo. Arvojen [0, 2, nolla] keskiarvo on 1.
                     </li>
-                    <li>Enimm&auml;isarvo
+                    <li>Minimi: numerokent&auml;n minimiarvo. Arvojen [0, 2, nolla] minimiarvo on 0. 
                     </li>
-                    <li>Vaihteluv&auml;li
+                    <li>Maksimiarvo: numerokent&auml;n maksimiarvo. Arvojen [0, 2, nolla] maksimiarvo on 2.
                     </li>
-                    <li>Varianssi
+                    <li>Alue: numerokent&auml;n alue. T&auml;m&auml; lasketaan minimiarvoina, jotka on v&auml;hennetty maksimiarvosta. Arvojen [0, nolla, 1] alue on 1. Arvojen [nolla, 4] alue on 0.
                     </li>
-                    <li>Keskihajonta
+                    <li>Varianssi: numerokent&auml;n varianssi reitill&auml;. Arvon [1] varianssi on nolla. Arvojen [nolla, 1,1, 1] varianssi on 1.
+                    </li>
+                    <li>Vakio keskihajonta: numerokent&auml;n keskihajonta. Arvon [1] varianssi on nolla. Arvojen [nolla, 1,1, 1] vakio keskihajonta on 1. 
                     </li>
                 </ul>
                 
             </p>
             <p>Merkkijonokentist&auml; voit laskea seuraavat tilastotiedot:
                 <ul>
-                    <li>Lukum&auml;&auml;r&auml;
+                    <li>M&auml;&auml;r&auml;: muiden kuin nolla-merkkijonojen m&auml;&auml;r&auml;.
                     </li>
                     <li>Mik&auml; tahansa: T&auml;m&auml; tilastotieto on satunnainen otos m&auml;&auml;ritetyn kent&auml;n merkkijonoarvosta.
                     </li>
@@ -155,10 +157,20 @@
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Valitse aineistosäilö</h2></div>
+        <div><h2>Valitse ArcGIS Data Store -tietokanta, johon tulokset tallennetaan</h2></div>
         <hr/>
         <div>
-            <p>T&auml;m&auml; on esijulkaisun tilap&auml;inen parametri sen aineistos&auml;il&ouml;n m&auml;&auml;ritt&auml;miseen, johon tulokset tallennetaan. Molemmat aineistos&auml;il&ouml;t ovat osa  ArcGIS Data Storea. Jos valitset tila-aika-aineistos&auml;il&ouml;n, mutta sellaista ei ole asennettuna, ty&ouml;kalua ei voi suorittaa. </p>
+            <p>GeoAnalytics-tulokset tallennetaan ArcGIS Data Store -tietokantaan ja julkaistaan karttatasona  Portal for ArcGIS -portaalissa. Useimmissa tapauksissa tulokset pit&auml;&auml; tallentaa spatiotemporaaliseen tietokantaan (t&auml;m&auml; on oletusarvo). Joissakin tapauksissa tulosten tallentaminen relaatiotietokantaan on hyv&auml; vaihtoehto. Tiedot kannattaa tallentaa relaatiotietokantaan seuraavista syist&auml;: 
+                <ul>
+                    <li>Haluat k&auml;ytt&auml;&auml; portaalissa olevia tietoja portaaliyhteisty&ouml;h&ouml;n.
+                    </li>
+                    <li>Haluat ottaa k&auml;ytt&ouml;&ouml;n tulosten synkronointitoiminnot.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Relaatiotietokantaa ei tule k&auml;ytt&auml;&auml;, jos GeoAnalytics-tulosten m&auml;&auml;r&auml; kasvaa ja sinun t&auml;ytyy hy&ouml;dynt&auml;&auml; spatiotemporaalisen big data -tietokannan toimintoja suurten tietom&auml;&auml;rien k&auml;sittelyyn. 
+            </p>
         </div>
     </div>
     <div id="outputName">

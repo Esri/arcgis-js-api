@@ -48,12 +48,12 @@
         <ul>
             <li>Os seus pontos (ocorr&ecirc;ncias de crime, &aacute;rvores ou acidentes de via&ccedil;&atilde;o) est&atilde;o efetivamente agrupados em cluster?  Como pode ter a certeza?
             </li>
-            <li>Descobriu realmente um hot spot estatisticamente relevante? Ou o seu mapa contaria uma hist&oacute;ria diferente caso alterasse a maneira como est&aacute; simbolizado?
+            <li>Ter&aacute; efetivamente descoberto um hot spot com relev&acirc;ncia estat&iacute;stica, ou ser&aacute; que o mapa contaria uma hist&oacute;ria diferente se alterasse a forma como est&aacute; simbolizado?
             </li>
         </ul>
         A ferramenta Localizar Hot Spots ajuda-o a responder a essas perguntas com confian&ccedil;a.
     </p>
-    <p>Mesmo padr&otilde;es espaciais aleat&oacute;rios demonstram algum n&iacute;vel de clustering. Al&eacute;m disso, os olhos e o c&eacute;rebro tentam naturalmente encontrar padr&otilde;es mesmo que estes n&atilde;o existam. Consequentemente, pode ser dif&iacute;cil saber se os padr&otilde;es encontrados nos seus dados s&atilde;o o resultado de processos espaciais verdadeiros ou se resultam apenas de algo aleat&oacute;rio. &Eacute; por esta raz&atilde;o que os investigadores e analistas utilizam m&eacute;todos estat&iacute;sticos como o Encontrar Ponto Quente (Getis-Ord Gi*) para quantificar os padr&otilde;es espaciais. Quando encontra efetivamente um clustering com relev&acirc;ncia estat&iacute;stica nos seus dados, tem acesso a informa&ccedil;&otilde;es importantes. Saber onde e quando ocorre um clustering pode fornecer pistas importantes sobre os processos que est&atilde;o na base dos padr&otilde;es detetados. Por exemplo, saber que o n&uacute;mero de assaltos a resid&ecirc;ncias &eacute; consistentemente elevado em determinados bairros &eacute; uma informa&ccedil;&atilde;o essencial para o caso de ser necess&aacute;rio elaborar estrat&eacute;gias de preven&ccedil;&atilde;o eficazes, distribuir recursos policiais escassos, iniciar programas de vigil&acirc;ncia nos bairros, autorizar investiga&ccedil;&otilde;es criminais profundadas ou identificar poss&iacute;veis suspeitos.   
+    <p>Mesmo padr&otilde;es espaciais aleat&oacute;rios demonstram algum n&iacute;vel de clustering. Al&eacute;m disso, os olhos e o c&eacute;rebro tentam naturalmente encontrar padr&otilde;es mesmo que estes n&atilde;o existam. Consequentemente, pode ser dif&iacute;cil saber se os padr&otilde;es encontrados nos seus dados s&atilde;o o resultado de processos espaciais verdadeiros ou se resultam apenas de algo aleat&oacute;rio. &Eacute; por esta raz&atilde;o que os investigadores e analistas utilizam m&eacute;todos estat&iacute;sticos como o Encontrar Hot Spots (Getis-Ord Gi*) para quantificar padr&otilde;es espaciais. Quando encontra efetivamente um clustering com relev&acirc;ncia estat&iacute;stica nos seus dados, tem acesso a informa&ccedil;&otilde;es importantes. Saber onde e quando ocorre um clustering pode fornecer pistas importantes sobre os processos que est&atilde;o na base dos padr&otilde;es detetados. Por exemplo, saber que o n&uacute;mero de assaltos a resid&ecirc;ncias &eacute; consistentemente elevado em determinados bairros &eacute; uma informa&ccedil;&atilde;o essencial para o caso de ser necess&aacute;rio elaborar estrat&eacute;gias de preven&ccedil;&atilde;o eficazes, distribuir recursos policiais escassos, iniciar programas de vigil&acirc;ncia nos bairros, autorizar investiga&ccedil;&otilde;es criminais profundadas ou identificar poss&iacute;veis suspeitos.   
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -61,9 +61,11 @@
         <div><h2>Escolher camada para a qual os Hot Spots serão calculados</h2></div>
         <hr/>
         <div>
-            <p>A camada de pontos a partir da qual v&atilde;o ser encontrados hot e cold spots. 
+            <p>A camada de pontos a partir da qual v&atilde;o ser encontrados hot e cold spots.
             </p>
-            <p>Para al&eacute;m de selecionar uma camada do seu mapa, pode selecionar  <b>Explorar Camadas</b> na parte inferior da lista pendente para navegar at&eacute; aos seus conte&uacute;dos de um conjunto de dados de partilha de big data ou camada de elementos.  
+            <p>Esta an&aacute;lise utiliza caixas e requer um sistema de coordenadas projetado. Pode definir o  <b>Sistema de coordenadas de processamento</b> nos <b>Ambientes de An&aacute;lise</b>. Se o seu sistema de coordenadas projetado n&atilde;o se encontra definido para um sistema de coordenadas projetado, ser&aacute; instado a defini-lo quando <b>Correr a An&aacute;lise</b>.
+            </p>
+            <p>Para al&eacute;m de selecionar uma camada do seu mapa, pode selecionar  <b>Explorar Camadas</b> na parte inferior da lista pendente para navegar at&eacute; aos seus conte&uacute;dos de um conjunto de dados de partilha de big data ou camada de elementos.
             </p>
         </div>
     </div>
@@ -81,7 +83,7 @@
         </div>
     </div>
     <div id="inputBins">
-        <div><h2>Selecionar o tamanho da caixa para cálculos de hot spots</h2></div>
+        <div><h2>Selecionar o tamanho da caixa para agregação</h2></div>
         <hr/>
         <div>
             <p>A dist&acirc;ncia utilizada para gerar as caixas quadradas que ser&atilde;o utilizadas para analisar os seus pontos de entrada.
@@ -89,39 +91,56 @@
         </div>
     </div>
     <div id="timeSlicing">
-        <div><h2>Agregar utilizando cortes de tempo (opcional)</h2></div>
+        <div><h2>Encontrar hot spots utilizando etapas temporais (opcional)</h2></div>
         <hr/>
         <div>
-            <p>Caso a componente temporal se encontre ativa, e seja de tipo instante, pode analisar recorrendo a intervalos temporais.
+            <p>Caso a componente temporal se encontre ativa na camada de pontos, e seja de tipo instante, pode efetuar an&aacute;lise com recurso a etapas temporais.
             </p>
         </div>
     </div>
     <div id="timeInterval">
-        <div><h2>Intervalo temporal no qual agregar</h2></div>
+        <div><h2>Intervaloo temporal entre etapas temporais</h2></div>
         <hr/>
         <div>
-            <p>Intervalo temporal utilizado para an&aacute;lise. Caso pretendesse criar parcelas temporais que ocorressem semanalmente, poderia definir o inetrvalo temporal para uma semana. 
+            <p>Intervalo temporal utilizado para gerar etapas temporais.  A componente temporal pode ser alinhada &agrave; hora inicial e na hora final dos dados de entrada, ou a uma refer&ecirc;ncia temporal definida.  
             </p>
         </div>
     </div>
     <div id="timeStep">
-        <div><h2>Etapa temporal na qual agregar</h2></div>
+        <div><h2>Intervalo entre etapas temporais</h2></div>
         <hr/>
         <div>
-            <p>Como ser&aacute; o tempo alinhado. O tempo pode ser alinhado ao in&iacute;cio ou ao final dos dados de entrada, ou a uma refer&ecirc;ncia temporal especificada.  
+            <p>Intervalo temporal utilizado para gerar etapas temporais. A componente temporal pode ser alinhada &agrave; hora inicial e na hora final dos dados de entrada, ou a uma refer&ecirc;ncia temporal definida.  
+            </p>
+        </div>
+    </div>
+    <div id="timeStepAlignment">
+        <div><h2>Selecionar como alinhar etapas temporais</h2></div>
+        <hr/>
+        <div>
+            <p>Como s&atilde;o alinhadas as etapas temporais. Existem tr&ecirc;s formas de alinhar etapas temporais:
+                <ul>
+                    <li> <b>Hora de In&iacute;cio</b>&mdash;As etapas temporais s&atilde;o alinhadas ao primeiro elemento em termos cronol&oacute;gicos.
+                    </li>
+                    <li> <b>Hora de Fim</b>&mdash;As etapas temporais s&atilde;o alinhadas ao &uacute;ltimo elemento em termos cronol&oacute;gicos.
+                    </li>
+                    <li> <b>Hora de Refer&ecirc;ncia</b>&mdash;As etapas temporais s&atilde;o alinhadas a uma hora definida.
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>
     <div id="timeReference">
-        <div><h2>Tempo de referência utilizado para alinhar a divisão temporal</h2></div>
+        <div><h2>Hora de referência à qual alinhar as etapa temporais</h2></div>
         <hr/>
         <div>
-            <p>A data e hora utilizadas para alinhar os intervalos temporais.
+            <p>A data e hora utilizadas para alinhar as etapas temporais.
             </p>
         </div>
     </div>
     <div id="neighborhood">
-        <div><h2>Selecionar o tamanho do bairro</h2></div>
+        <div><h2>Selecionar a dimensão da área para cálculos de hot spots</h2></div>
         <hr/>
         <div>
             <p>A dist&acirc;ncia utilizada para determinar a zona utilizada para c&aacute;lculos de hot spots. A zona tem de ser maior do que o tamanho da caixa, por forma a assegurar que cada caixa tem pelo menos um elemento vizinho. Cada caixa &eacute; analisada e comparada com as caixas vizinhas.
@@ -137,10 +156,20 @@
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Selecionar datastore</h2></div>
+        <div><h2>Selecionar um ArcGIS Data Store no qual guardar os resultados</h2></div>
         <hr/>
         <div>
-            <p>Este &eacute; um par&acirc;metro tempor&aacute;rio de pr&eacute;-lan&ccedil;amento para definir o armazenamento de dados no qual os resultados s&atilde;o guardados. Ambos os armazenamentos de dados fazem parte do  ArcGIS Data Store. Caso selecione o armazenamento de dados espaciotemporal, mas n&atilde;o tenha um instalado, a ferramenta ir&aacute; falhar. </p>
+            <p>Os resultados de GeoAnalytics s&atilde;o armazenados num ArcGIS Data Store e exibidos como uma camada de elementos no  Portal for ArcGIS. Na maioria dos casos, os resultados dever&atilde;o ser armazenados num armazenamento de dados espaciotemporal, sendo este o comportamento predefinido. Em alguns casos, ser&aacute; uma boa op&ccedil;&atilde;o guardar os resultados no armazenamento de dados relacional. As seguintes s&atilde;o raz&otilde;es que justificam o armazenamento de resultados no armazenamento de dados espaciotemporal. 
+                <ul>
+                    <li>Utilizar resultados em colabora&ccedil;&atilde;o portal to portal.
+                    </li>
+                    <li>Ativar funcionalidades de sincroniza&ccedil;&atilde;o com os resultados.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>N&atilde;o dever&aacute; utilizar o armazenamento de dados relacional caso antecipe um aumento dos seus resultados de GeoAnalytics, e caso necessite de tirar partido das funcionalidades de armazenamento de big data para gerir grandes quantidades de dados. 
+            </p>
         </div>
     </div>
     <div id="outputName">

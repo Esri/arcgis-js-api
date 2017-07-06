@@ -69,19 +69,20 @@ the area, but other statistics can be calculated  as well.
         <div><h2>Choose features to reconstruct tracks from</h2></div>
         <hr/>
         <div>
-            <p>The point or polygon layer that will be reconstructed into tracks. The input layer must be time-enabled with features that represent an instant in time.
+            <p>The point or polygon layer that will be reconstructed into tracks. The input layer must be time-enabled with features that represent an instant in time. The layer must be in a projected coordinate system or the processing spatial reference must be set to a projected coordinate system using the  <b>Analysis Environments</b> if a buffer is applied.
             </p>
-            <p>In addition to choosing a layer from your map, you can choose  <b>Browse Layers</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer.  
+            <p>In addition to choosing a layer from your map, you can choose  <b>Browse Layers</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer.
             </p>
         </div>
     </div>
     <div id="trackFields">
-        <div><h2>Choose on or more fields identify tracks</h2></div>
+        <div><h2>Choose one or more fields to identify tracks</h2></div>
         <hr/>
         <div>
-            <p> The fields that represents the track identifier.
+            <p>The fields that represent the track identifier.
+
             </p>
-            <p> As an example, if you were reconstructing tracks of hurricanes, you could use the hurricane name as the track field.
+            <p>As an example, if you were reconstructing tracks of hurricanes, you could use the hurricane name as the track field.
             </p>
         </div>
     </div>
@@ -97,7 +98,7 @@ the area, but other statistics can be calculated  as well.
         <div><h2>Create an expression to buffer input features by (optional)</h2></div>
         <hr/>
         <div>
-            <p>Equation used to calculate the buffer distance around input features. This equation can be generated using the buffer calculator and basic operations such as add, subtract, multiply, and divide are supported. Values are calculated using the analysis coordinate system.
+            <p>Equation used to calculate the buffer distance around input features. This equation can be generated using the buffer calculator and basic operations such as add, subtract, multiply, and divide are supported. Values are calculated using the analysis coordinate system. The layer must be in a projected coordinate system or the processing spatial reference must be set to a projected coordinate system using the  <b>Analysis Environments</b> if a buffer is applied.
             </p>
         </div>
     </div>
@@ -115,26 +116,28 @@ the area, but other statistics can be calculated  as well.
         <div>
             <p> You can calculate statistics on features that are summarized. On numeric fields you can calculate the following:
                 <ul>
-                    <li>Count
+                    <li>Count&mdash;Calculates the number of nonnull values. Can be used on numeric fields or strings. The count of [null, 0, 2] is 2.
                     </li>
-                    <li>Mean
+                    <li>Sum&mdash;The sum of numeric values in a field. The sum of [null, null, 3] is 3.
                     </li>
-                    <li>Min
+                    <li>Mean&mdash;The mean of numeric values. The mean of [0, 2, null] is 1.
                     </li>
-                    <li>Max
+                    <li>Min&mdash;The minimum value of a numeric field. The minimum of [0, 2, null] is 0. 
                     </li>
-                    <li>Range
+                    <li>Max&mdash;The maximum value of a numeric field. The maximum value of [0, 2, null] is 2.
                     </li>
-                    <li>Variance
+                    <li>Range&mdash;The range of a numeric field. This is calculated as the minimum values subtracted from the maximum value. The range of [0, null, 1] is 1. The range of [null, 4] is 0.
                     </li>
-                    <li>Standard deviation
+                    <li>Variance&mdash;The variance of a numeric field in a track. The  variance of [1] is null. The variance of [null, 1,1,1] is 1.
+                    </li>
+                    <li>Standard deviation&mdash;The standard deviation of a numeric field. The standard deviation of [1] is null. The standard deviation of [null, 1,1,1] is 1. 
                     </li>
                 </ul>
                 
             </p>
             <p>On string fields you can calculate the following:
                 <ul>
-                    <li>Count
+                    <li>Count&mdash;The number of nonnull strings.
                     </li>
                     <li>Any&mdash;This statistic is a random sample of a string value in the specified field.
                     </li>
@@ -144,10 +147,20 @@ the area, but other statistics can be calculated  as well.
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Choose datastore</h2></div>
+        <div><h2>Choose an ArcGIS Data Store to save results to</h2></div>
         <hr/>
         <div>
-            <p>This is a temporary parameter for prerelease to set the data store where the results are saved. Both data stores are part of  ArcGIS Data Store. If you select the spatiotemporal data store but do not have one installed, the tool will fail. </p>
+            <p>GeoAnalytics results are stores to an ArcGIS Data Store and exposed as a feature layer in   Portal for ArcGIS. In most cases, results should be stored to the spatiotemporal data store and this is the default. In some cases saving results to the  relational data store is a good option. The following are reasons why you may want to store results in the relational data store: 
+                <ul>
+                    <li>Use results in portal to portal collaboration.
+                    </li>
+                    <li>Enable sync capabilities with your results.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>You should not use the relational data store if you expect your GeoAnalytics results to increase, and need to take advantage of the spatiotemporal big data store's capabilities to handle large amounts of data. 
+            </p>
         </div>
     </div>
     <div id="outputName">

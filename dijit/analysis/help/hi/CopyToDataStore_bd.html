@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>डेटा स्टोर में कॉपी करें</h2><p/>
+        <h2><img src="../images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" alt="डेटा स्टोर में कॉपी करें"></h2>
+        <hr/>
+    <p>यह उपकरण एक इनपुट लेयर लेगा तथा इसकी कॉपी डेटा स्टोर के लिए करेगा। डेटा  ArcGIS Data Store के लिए प्रतिलिपित होगा तथा आपके संबंधित या स्थान और समय के डेटा स्टोर में संचित हो जाएगा। </p>
+    <p>उदाहरण के लिए, आप सुविधाओं की प्रतिलिपि कर सकते हैं जो  <code>बड़ी डेटा फाइल में संचित है तथा</code> <code>संबंधित डेटा स्टोर</code> के लिए साझा कर सकते हैं एवं मौजूदा मानचित्र की सीमा के अंदर केवल सुविधाओं को निर्दिष्ट कर सकते हैं जिनकी कॉपी हो जाएगी। यह केवल उन सुविधाओं के साथ आयोजित सुविधा सेवा का निर्माण करेगी जो निर्दिष्ट मानचित्र की सीमा में थीं।
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>कॉपी करने के लिए लेयर चुनें</h2></div>
+        <hr/>
+        <div>
+            <p>लेयर या तालिका जिसकी कॉपी की जाएगी। 
+            </p>
+            <p>अपने नक्शे से एक लेयर चुनने के अलावा, आप बड़ी डेटा फ़ाइल साझा डेटासेट या फीचर लेयर के लिए अपनी सामग्री ब्राउज़ करने के लिए ड्रॉप-डाउन सूची के निचले भाग में  <b>ब्राउज़ लेयर</b> चुन सकते हैं।
+            </p>
+        </div>
+    </div>
+    <div id="selection">
+        <div><h2>आप सभी सुविधाओं का उपयोग कर सकते हैं या विकल्प चुन सकते हैं (वैकल्पिक)</h2></div>
+        <hr/>
+        <div>
+            <p>वैकल्पिक रूप से, कॉपी किए जाने वाले स्थानों की पहचान करने के लिए चयन बटन का उपयोग करें।
+            </p>
+        </div>
+    </div>
+    <div id="outputDataStore">
+        <div><h2>में कॉपी करने के लिए ArcGIS Data Store को चुनें</h2></div>
+        <hr/>
+        <div>
+            <p>वह डेटा स्टोर जिस पर लेयर कॉपी की जाएगी। यह मानदण्ड  <b>विश्लेषण परिवेश</b> में चयन को ओवरराइड करेगा निम्नलिखित विकल्प हैं:
+                <ul>
+                    <li> <b>स्थान व समय से संबंधित</b>&mdash;यह डिफॉल्ट है।
+                    </li>
+                    <li> <b>संबंधित</b>.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>परिणामी लेयर का नाम</h2></div>
+        <hr/>
+        <div>
+            <p> यह लेयर का नाम है जो <b>मेरी सामग्री</b> में बनाई जाएगी और मानचित्र में शामिल की जाएगी। इसका मूल नाम उपकरण के नाम और इनपुट लेयर के नाम पर आधारित है। अगर लेयर पहले से मौजूद है, तो टूल असफल हो जायेगा।
+            </p>
+            <p> <b>इसमें सहेजें</b> ड्राप-डाउन बॉक्स का उपयोग करके, आप <b>मेरी सामग्री</b> में एक फोल्डर का नाम निर्दिष्ट कर सकते हैं, जहां परिणामों को सहेजा जाएगा।।
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -40,7 +40,7 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Sumiraj atribute</h2><p/>
         <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Sumiraj atribute"></h2>
         <hr/>
@@ -57,44 +57,46 @@
         <div>
             <p>Sloj koji sadrži polja koja će biti sumirana.  
             </p>
-            <p>Kao dodatak odabiru sloja iz mape, možete da odaberete  <b>Pregledaj slojeve</b> na dnu padajuće liste da biste potražili deljeni skup podataka za datoteke sa velikim podacima ili sloj geoobjekta u svojim sadržajima.  
+            <p>Kao dodatak odabiru sloja iz mape, možete da odaberete  <b>Pregledaj slojeve</b> na dnu padajuće liste da biste potražili deljeni skup podataka za datoteke sa velikim podacima ili sloj geoobjekta u svojim sadržajima.
             </p>
         </div>
     </div>
     <div id="fields">
-        <div><h2>Odaberite polja na kojima želite da vršite svođenje</h2></div>
+        <div><h2>Odaberite polja za sumiranje</h2></div>
         <hr/>
         <div>
-            <p>  Lista polja iz ulaznog sloja.  Izabrana polja će biti sumirana i iskori&scaron;ćena za izračunavanje statistike. Na primer, ako izaberete polje koje se zove <i>PropertyType</i> sa vrednostima poslovnih i stambenih, sva stambena polja će biti zajedno sumirana, sa izračunatim statistikom sumiranja, a sva poslovna polja će biti sumirana zajedno.
+            <p>Lista polja iz ulaznog sloja. Izabrana polja će biti sumirana i iskori&scaron;ćena za izračunavanje statistike. Na primer, ako izaberete polje koje se zove  <i>PropertyType</i> sa vrednostima poslovnih i stambenih, sva stambena polja će biti zajedno sumirana, sa izračunatim statistikom sumiranja, a sva poslovna polja će biti sumirana zajedno.
             </p>
         </div>
     </div>
     <div id="summaryFields">
-        <div><h2>Odaberite polja i statistiku koju želite da izračunate</h2></div>
+        <div><h2>Dodaj statistiku (opciono)</h2></div>
         <hr/>
         <div>
             <p> Možete da izračunate statistiku na geoobjektima koji su sumirani. U numeričkim poljima možete da izračunate sledeće:
                 <ul>
-                    <li>Broj
+                    <li>Brojač&mdash;izračunava broj vrednosti koje nisu null (bez vrednosti). Može da bude kori&scaron;ćen u numeričkim poljima ili niskama. Brojač od [null, 0, 2] je 2.
                     </li>
-                    <li>Sredina
+                    <li>Zbir&mdash;zbir numeričkih vrednosti u polju. Zbir od [null, null, 3] je 3.
                     </li>
-                    <li>Minimum
+                    <li>Značenje&mdash;značenje numeričkih vrednosti. Značenje od [0, 2, null] je 1.
                     </li>
-                    <li>Maksimum
+                    <li>Min&mdash;minimalna vrednost numeričkog polja. Minimum od [0, 2, null] je 0. 
                     </li>
-                    <li>Opseg
+                    <li>Maks&mdash;maksimalna vrednost numeričkog polja. Maksimalna vrednost od [0, 2, null] je 2.
                     </li>
-                    <li>Odstupanje
+                    <li>Opseg&mdash;opseg numeričkog polja. Ovo se izračunava kada se minimalna vrednost oduzme od maksimalne vrednosti. Opseg od [0, null, 1] je 1. Opseg od [null, 4] je 0.
                     </li>
-                    <li>Standardna devijacija
+                    <li>Varijansa&mdash;varijansa numeričkog polja u stazi. Varijansa od [1] je null. Varijansa od [null, 1,1,1] je 1.
+                    </li>
+                    <li>Standardna devijacija&mdash;standardna devijacija numeričkog polja. Standardna devijacija od [1] je null. Standardna devijacija od [null, 1,1,1] je 1. 
                     </li>
                 </ul>
                 
             </p>
             <p>U poljima niske možete da izračunate sledeće:
                 <ul>
-                    <li>Broj
+                    <li>Brojač&mdash;broj vrednosti koje nisu null.
                     </li>
                     <li>Bilo koji&mdash;ova statistika je nasumični uzorak vrednosti niske u navedenom polju.
                     </li>
@@ -107,7 +109,15 @@
         <div><h2>Izaberi skladište podataka</h2></div>
         <hr/>
         <div>
-            <p>Ovo je privremeni parametar za preliminarnu verziju da bi se podesilo skladi&scaron;te podataka gde se čuvaju rezultati. Oba skladi&scaron;ta podataka su deo  ArcGIS Data Store. Ako izaberete skladi&scaron;te prostorno-vremenskih podataka, ali nemate ga instalirano, alatka će otkazati. </p>
+            <p>Rezultati geoanalize se skladi&scaron;te u ArcGIS skladi&scaron;tu podataka i izloženi su kao sloj geoobjekata u  Portal for ArcGIS. U većini slučajeva, rezultati bi trebali da budu skladi&scaron;teni u u skladi&scaron;te prostorno-vremenskih podataka i ovo je podrazumevano. U nekim slučajevima čuvanje rezultata u skladi&scaron;te relacionih podataka je dobar izbor. Slede razlozi zbog kojih ćete želeti da skladi&scaron;tite rezultate u skladi&scaron;tu relacionih podataka: 
+                <ul>
+                    <li>Da biste koristili va&scaron;e rezultate u portal-ka-portalu kolaboraciji.
+                    </li>
+                    <li>Da biste omogućili mogućnosti sinhronizacije sa rezultatima.
+                    </li>
+                </ul>
+                
+            </p>
         </div>
     </div>
     <div id="outputName">

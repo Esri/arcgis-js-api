@@ -40,7 +40,7 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Summeeri atribuudid</h2><p/>
         <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Summeeri atribuudid"></h2>
         <hr/>
@@ -57,44 +57,46 @@
         <div>
             <p>Kiht, mis sisaldab summeeritavaid v&auml;ljasid.  
             </p>
-            <p>Lisaks kihi valimisele kaardil saate valida ripploendi alumises servas  <b>Sirvi kihte</b>, et otsida oma sisust suurandmete failiketta andmestikku v&otilde;i objektikihti.  
+            <p>Lisaks kihi valimisele kaardil saate valida ripploendi alumises servas  <b>Sirvi kihte</b>, et otsida oma sisust suurandmete failiketta andmestikku v&otilde;i objektikihti.
             </p>
         </div>
     </div>
     <div id="fields">
-        <div><h2>Valige sulandamise väljad</h2></div>
+        <div><h2>Valige summeerimiseks väljad</h2></div>
         <hr/>
         <div>
-            <p>  Sisendkihi v&auml;ljade loend. Valitud v&auml;ljad summeeritakse ja neid kasutatakse statistikute arvutamiseks. N&auml;iteks kui valite v&auml;lja <i>Kinnisvara t&uuml;&uuml;p</i> v&auml;&auml;rtustega &auml;rimaa ja elamumaa, summeeritakse k&otilde;ik elamumaa v&auml;ljad, mille jaoks arvutatakse statistika kokkuv&otilde;te, samuti summeeritakse k&otilde;ik &auml;rimaa v&auml;ljad.
+            <p>Sisendkihi v&auml;ljade loend. Valitud v&auml;ljad summeeritakse ja neid kasutatakse statistikute arvutamiseks. N&auml;iteks kui valite v&auml;lja  <i>Kinnisvara t&uuml;&uuml;p</i> v&auml;&auml;rtustega &auml;rimaa ja elamumaa, summeeritakse k&otilde;ik elamumaa v&auml;ljad, mille jaoks arvutatakse statistika kokkuv&otilde;te, samuti summeeritakse k&otilde;ik &auml;rimaa v&auml;ljad.
             </p>
         </div>
     </div>
     <div id="summaryFields">
-        <div><h2>Valige arvutatavad väljad ja statistika (valikuline)</h2></div>
+        <div><h2>Lisa statistika (valikuline)</h2></div>
         <hr/>
         <div>
             <p> Saate arvutada summeeritud objektide statistika. Numbriv&auml;ljadel saab arvutada j&auml;rgmised statistikud.
                 <ul>
-                    <li>Kogus
+                    <li>Koguarv &ndash; arvutatakse v&auml;&auml;rtuste, mis pole nullv&auml;&auml;rtused, hulk. See funktsioon on kasutatav numbriv&auml;ljade v&otilde;i stringide korral. V&auml;&auml;rtuste [null, 0 ja 2] koguarv on 2.
                     </li>
-                    <li>Keskmine
+                    <li>Summa &ndash; v&auml;ljal olevate arvv&auml;&auml;rtuste summa. V&auml;&auml;rtuste [null, null ja 3] summa on 3.
                     </li>
-                    <li>Min
+                    <li>Keskmine &ndash; arvv&auml;&auml;rtuste keskmine. V&auml;&auml;rtuste [0; 2 ja null] keskmine on 1.
                     </li>
-                    <li>Max
+                    <li>Miinimum &ndash; numbriv&auml;lja miinimumv&auml;&auml;rtus. V&auml;&auml;rtuste [0; 2 ja null] miinimum on 0. 
                     </li>
-                    <li>Ulatus
+                    <li>Maksimum &ndash; numbriv&auml;lja maksimumv&auml;&auml;rtus. V&auml;&auml;rtuste [0; 2 ja null] maksimum on 2.
                     </li>
-                    <li>Dispersioon
+                    <li>Vahemik &ndash; numbriv&auml;lja vahemik. Selle arvutamiseks lahutatakse maksimumv&auml;&auml;rtusest miinimumv&auml;&auml;rtus. V&auml;&auml;rtuste [0, null ja 1] vahemik on 1. V&auml;&auml;rtuste [null ja 4] vahemik on 0.
                     </li>
-                    <li>Standardh&auml;lve
+                    <li>Dispersioon &ndash; raja numbriv&auml;lja dispersioon. V&auml;&auml;rtuse [1] dispersiooni on null. V&auml;&auml;rtuste [null, 1;1 ja 1] dispersioon on 1.
+                    </li>
+                    <li>Standardh&auml;lve &ndash; numbriv&auml;lja standardh&auml;lve. V&auml;&auml;rtuse [1] standardh&auml;lve on null. V&auml;&auml;rtuste [null, 1;1 ja 1] standardh&auml;lve on 1. 
                     </li>
                 </ul>
                 
             </p>
             <p>Tekstiv&auml;ljadel saab arvutada j&auml;rgmised statistikud:
                 <ul>
-                    <li>Kogus
+                    <li>Koguarv &ndash; stringide, mis pole nullv&auml;&auml;rtused, hulk.
                     </li>
                     <li>M&otilde;ni &ndash; see statistik on juhuslik valim tekstistringi v&auml;&auml;rtusest vastaval v&auml;ljal.
                     </li>
@@ -107,16 +109,24 @@
         <div><h2>Vali andmeladu</h2></div>
         <hr/>
         <div>
-            <p>See on ajutine parameeter eelversioonile, et m&auml;&auml;rata tulemuste salvestamiseks andmeladu. M&otilde;lemad andmelaod kuuluvad  ArcGIS-i andmeladu&rsquo;i juurde. Kui valite ajalisruumilise andmelao, kuid seda pole installitud, siis t&ouml;&ouml;tlemine nurjub. </p>
+            <p>GeoAnalyticsi tulemeid k&auml;sitletakse ArcGIS-i andmelaos salvedena ning need kuvatakse portaalis  Portal for ArcGIS objektikihtidena. &Uuml;ldjuhul salvestatakse tulemid ajalisruumilisse andmelattu &ndash; see on vaikimisi valitud. M&otilde;nel juhul on tulemid m&otilde;istlik salvestada relatsioonilisse andmelattu. Allpool on toodud m&otilde;ned p&otilde;hjused, miks oleks soovitatav tulemid salvestada relatsioonilisse andmelattu. 
+                <ul>
+                    <li>Saate tulemeid kasutada portaalidevahelises koost&ouml;&ouml;s.
+                    </li>
+                    <li>Saate tulemustega s&uuml;nkroniseerida.
+                    </li>
+                </ul>
+                
+            </p>
         </div>
     </div>
     <div id="outputName">
         <div><h2>Tulemkihi nimi</h2></div>
         <hr/>
         <div>
-            <p> See on selle kihi nimi, mis luuakse jaotises <b>Minu sisu</b> ja lisatakse kaardile.  Vaikenimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui see kiht on juba olemas, siis t&ouml;&ouml;tlemine nurjub.
+            <p> See on selle kihi nimi, mis luuakse jaotises <b>Minu sisu</b> ja lisatakse kaardile.  Vaikimisi nimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui see kiht on juba olemas, siis t&ouml;&ouml;tlemine nurjub.
             </p>
-            <p>Kasutades rippmen&uuml;&uuml;d  <b>Salvesta tulemused</b>, saate jaotises <b>Minu sisu</b> m&auml;&auml;rata kausta nime, kuhu tulemused salvestatakse.
+            <p>Kasutades rippmen&uuml;&uuml;d  <b>Salvesta tulemused</b>, saate jaotises <b>Minu sisu</b> m&auml;&auml;rata selle kausta nime, kuhu tulemused salvestatakse.
             </p>
         </div>
     </div>

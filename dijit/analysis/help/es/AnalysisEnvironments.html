@@ -112,10 +112,10 @@
                 <ul>
                     <li> <b>Como la entrada</b>: el resultado del an&aacute;lisis estar&aacute; en el mismo sistema de coordenadas que la entrada. Esta es la opci&oacute;n predeterminada.
                     </li>
-                    <li> <b>Como se especifica</b>: elija el sistema de coordenadas para los resultados del an&aacute;lisis.   Si esta opci&oacute;n est&aacute; seleccionada, haga clic en el icono de globo para seleccionar un valor de una lista de sistemas de coordenadas conocidos o agregue el WKID de la referencia especial en el cuadro correspondiente.
+                    <li> <b>Como se especifica</b>: elija el sistema de coordenadas para los resultados del an&aacute;lisis. Si esta opci&oacute;n est&aacute; seleccionada, haga clic en el icono de globo para seleccionar un valor de una lista de sistemas de coordenadas conocidos, o agregue el WKID de la referencia especial en el cuadro correspondiente.
                     </li>
-                    <li> <b>Nombre
-&lt;de capa&gt;</b>: elija una capa existente del mapa web que se utilizar&aacute; para determinar el sistema de coordenadas del resultado del an&aacute;lisis.
+                    <li> <b>&lt;Nombre&gt;
+de capa</b>: elija una capa existente del mapa web que se utilizar&aacute; para determinar el sistema de coordenadas del resultado del an&aacute;lisis.
                     </li>
                 </ul>
                 
@@ -134,10 +134,10 @@
                 <ul>
                     <li> <b>Como la entrada</b>: el an&aacute;lisis se procesar&aacute; en el mismo sistema de coordenadas que la entrada. Esta es la opci&oacute;n predeterminada.
                     </li>
-                    <li> <b>Como se especifica</b>: elija el sistema de coordenadas para procesar el an&aacute;lisis.   Si esta opci&oacute;n est&aacute; seleccionada, haga clic en el icono de globo para seleccionar un valor de una lista de sistemas de coordenadas proyectadas conocidos o agregue el WKID de la referencia especial en el cuadro correspondiente.
+                    <li> <b>Como se especifica</b>: elija el sistema de coordenadas para procesar el an&aacute;lisis. Si esta opci&oacute;n est&aacute; seleccionada, haga clic en el icono de globo para seleccionar un valor de una lista de sistemas de coordenadas proyectadas conocidos, o agregue el WKID de la referencia especial en el cuadro correspondiente.
                     </li>
-                    <li> <b>Nombre
-&lt;de capa&gt;</b>: elija una capa existente del mapa web.  El sistema de coordenadas de la capa elegido se utilizar&aacute; para determinar el sistema de coordenadas que se utilizar&aacute; para procesar el an&aacute;lisis.
+                    <li> <b>&lt;Nombre&gt;
+de capa</b>: elija una capa existente del mapa web. El sistema de coordenadas de la capa elegido se utilizar&aacute; para determinar el sistema de coordenadas que se utilizar&aacute; para procesar el an&aacute;lisis.
                     </li>
                 </ul>
                 
@@ -173,7 +173,7 @@
         </div>
     </div>
     <div id="cellSize">
-        <div><h2>Tamaño de Celda</h2></div>
+        <div><h2>Tamaño de celda</h2></div>
         <hr/>
         <div>
             <p>Al realizar el an&aacute;lisis de r&aacute;ster, este entorno define el tama&ntilde;o o la resoluci&oacute;n de celda que se utilizar&aacute; para crear la capa r&aacute;ster de salida. La resoluci&oacute;n de salida predeterminada se determina seg&uacute;n el tama&ntilde;o de celda m&aacute;s grande de la capa r&aacute;ster de entrada.
@@ -186,7 +186,7 @@
                     </li>
                     <li> <b>Como se especifica</b>: especifique un valor num&eacute;rico para definir el tama&ntilde;o de celda. Si se selecciona esta opci&oacute;n, el valor predeterminado es 1.
                     </li>
-                    <li> <b>Nombre &lt;de capa&gt;</b>: define el tama&ntilde;o de celda seg&uacute;n la capa r&aacute;ster elegida.
+                    <li> <b>&lt;Nombre&gt; de capa</b>: define el tama&ntilde;o de celda seg&uacute;n la capa r&aacute;ster elegida.
                     </li>
                 </ul>
                 
@@ -204,10 +204,27 @@
                 </li>
                 <li>Si la m&aacute;scara de an&aacute;lisis es un r&aacute;ster, se considerar&aacute;n todas las celdas que tienen un valor para definir la m&aacute;scara. Las celdas en un r&aacute;ster de m&aacute;scara que son NoData se considerar&aacute;n fuera de la m&aacute;scara y ser&aacute;n NoData en la capa de resultados del an&aacute;lisis. 
                 </li>
-                <li>Si la m&aacute;scara de an&aacute;lisis es una capa de entidades, se convertir&aacute; internamente en un r&aacute;ster en la ejecuci&oacute;n. Por este motivo, aseg&uacute;rese de que  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">Tama&ntilde;o de celda</a> y <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">Alinear r&aacute;ster</a> se establezcan adecuadamente para el an&aacute;lisis.
+                <li>Si la m&aacute;scara de an&aacute;lisis es una capa de entidades, se convertir&aacute; internamente en un r&aacute;ster en la ejecuci&oacute;n. Por este motivo, aseg&uacute;rese de que  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank"></a> y <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank"></a> se establezcan adecuadamente para el an&aacute;lisis.
                 </li>
             </ul>
              
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>ArcGIS Data Store</h2></div>
+        <hr/>
+        <div>
+            <p>Los resultados de GeoAnalytics se almacenan en un ArcGIS Data Store y se exponen como capa de entidades en  Portal for ArcGIS. En la mayor&iacute;a de los casos, conviene almacenar los resultados en un almac&eacute;n de datos espaciotemporal. Esta es la opci&oacute;n predeterminada. A continuaci&oacute;n, se exponen motivos por los que resulta buena idea guardar resultados en un almac&eacute;n de datos relacional: 
+                <ul>
+                    <li>Para usar sus resultados en la colaboraci&oacute;n de portal-a portal
+                    </li>
+                    <li>Habilitar capacidades de sincronizaci&oacute;n con sus resultados
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Conviene no usar un almac&eacute;n de datos relacionales si espera que los resultados de GeoAnalytics aumenten y quiere aprovechar las capacidades del almac&eacute;n de big data espaciotemporal para manejar grandes cantidades de datos. 
+            </p>
         </div>
     </div>
 </div>

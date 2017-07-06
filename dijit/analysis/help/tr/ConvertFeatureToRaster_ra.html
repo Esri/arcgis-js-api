@@ -40,48 +40,48 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
-        <h2>Convert Feature to  Raster</h2><p/>
-        <h2><img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" alt="Convert Feature to Raster tool"></h2>
+    <div id="toolDescription" class="smallsize">
+        <h2>Detayı Rastera Dönüştür</h2><p/>
+        <h2><img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" alt="Detayı Rastera D&ouml;n&uuml;şt&uuml;rme aracı"></h2>
         <hr/>
-    <p>This task converts features to a raster dataset.
+    <p>Bu işlev detayları bir raster veri k&uuml;mesine d&ouml;n&uuml;şt&uuml;r&uuml;r.
     </p>
-    <p>Any feature class containing point, line, or polygon features can be converted to a raster dataset.
+    <p>Nokta, &ccedil;izgi veya alan detayları i&ccedil;eren her detay sınıfı bir raster veri k&uuml;mesine d&ouml;n&uuml;şt&uuml;r&uuml;lebilir.
     </p>
-    <p>The cell center is used to decide the value of the output raster pixel.
+    <p>H&uuml;cre merkezi, &ccedil;ıktı rasterı piksel değerini belirlemek i&ccedil;in kullanılır.
     </p>
-    <p>The input field type determines the type of output raster. If the field is integer, the output raster will be integer; if it is floating point, the output will be floating point.
+    <p>Girdi alan t&uuml;r&uuml; &ccedil;ıktı rasterı t&uuml;r&uuml;n&uuml; belirler. Alan tamsayı ise, &ccedil;ıktı rasterı tamsayı olur; alan kayan noktalı ise &ccedil;ıktı da kayan noktalı olur.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Choose feature layer to convert</h2></div>
+        <div><h2>Dönüştürülecek detay katmanını seçin</h2></div>
         <hr/>
         <div>
-            <p>The input feature layer to convert to a raster dataset.
+            <p>Bir raster veri k&uuml;mesine d&ouml;n&uuml;şt&uuml;r&uuml;lecek girdi detayı katmanı.
             </p>
         </div>
     </div>
     <div id="field">
-        <div><h2>Choose field</h2></div>
+        <div><h2>Alan seçin</h2></div>
         <hr/>
         <div>
-            <p>Choose the field that will be used to assign values to the output raster.
+            <p>&Ccedil;ıktı rasterına değer atamak i&ccedil;in kullanılacak alanı se&ccedil;in:
             </p> 
         </div>
     </div>
     <div id="outputCellSize">
-        <div><h2>Output cell size</h2></div>
+        <div><h2>Hücre boyutu çıktısı</h2></div>
         <hr/>
         <div>
             <p>&Ccedil;ıktı rasterları i&ccedil;in h&uuml;cre boyutunu ve birimini girin.
             </p>
-            <p>The available units are Feet, Miles, Meters, and Kilometers.
+            <p>Kullanılabilen birimler şunlardır: Fit, Mil, Metre ve Kilometre.
             </p>
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>Sonuç katmanı adı</h2></div>
         <hr/>
         <div>
             <p> <b>İ&ccedil;eriğim</b>'de oluşturulacak ve haritaya eklenecek katmanın adı. Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Katman zaten mevcutsa, başka bir ad sağlamanız istenir.

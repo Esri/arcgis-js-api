@@ -70,12 +70,12 @@
         <div>
             <p>The point layer on which the density will be calculated.
             </p>
-            <p>F&ouml;rutom att v&auml;lja ett lager fr&aring;n kartan kan du v&auml;lja  <b>Bl&auml;ddra bland lager</b> l&auml;ngst ned i listrutan f&ouml;r att bl&auml;ddra till ditt inneh&aring;ll efter ett big data-fildelningsdataset eller geoobjektslager.  
+            <p>F&ouml;rutom att v&auml;lja ett lager fr&aring;n kartan kan du v&auml;lja  <b>Bl&auml;ddra bland lager</b> l&auml;ngst ned i listrutan f&ouml;r att bl&auml;ddra till ditt inneh&aring;ll efter ett big data-fildelningsdataset eller geoobjektslager.
             </p>
         </div>
     </div>
     <div id="fields">
-        <div><h2>Välj ett eller flera fält att beräkna densitet från</h2></div>
+        <div><h2>Välj ett eller flera fält att beräkna densitet från (valfritt)</h2></div>
         <hr/>
         <div>
             <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
@@ -90,10 +90,12 @@
         <div>
             <p>The shape of bins that points are aggregated into and used for the density calculation.
             </p>
+            <p>Analyser som anv&auml;nder lagringsplatserna  <b>Kvadrat</b> eller <b>Hexagon</b> kr&auml;ver ett projicerat koordinatsystem. Du kan ange <b>Bearbetande koordinatsystem</b> i <b>Analysmilj&ouml;</b>. Om ditt bearbetande koordinatsystem inte &auml;r inst&auml;llt som ett projicerat koordinatsystem, blir du uppmanad att st&auml;lla in det n&auml;r du anv&auml;nder <b>K&ouml;r analys</b>.
+            </p>
         </div>
     </div>
     <div id="binSizing">
-        <div><h2>Välj lagerplatsstorlek för densitetsberäkningar</h2></div>
+        <div><h2>Välj lagerplatsstorlek för aggregering</h2></div>
         <hr/>
         <div>
             <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
@@ -127,59 +129,59 @@
         <div><h2>Välj utdataenheter för densitet</h2></div>
         <hr/>
         <div>
-            <p>The desired output units of the density values. By default, this is set to the units in your map (for example, square meters). If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+            <p>The desired output units of the density values. By default, this is set to square kilometers or square miles based on the default units specified in your profile. If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
 
             </p>
         </div>
     </div>
     <div id="timeSlicing">
-        <div><h2>Beräkna densitet med tidsdelar (valfritt)</h2></div>
+        <div><h2>Beräkna densitet med tidssteg (valfritt)</h2></div>
         <hr/>
         <div>
-            <p>Om tid &auml;r aktiverat p&aring; indatapunktlagret och det &auml;r av typen tidspunkt, kan du analysera med tidsdelning. Du kan st&auml;lla in tre parametrar n&auml;r du anv&auml;nder tid:
+            <p>Om tid &auml;r aktiverat p&aring; indatapunktlagret och det &auml;r av typen tidspunkt, kan du analysera med tidsstegning. Du kan st&auml;lla in tre parametrar n&auml;r du anv&auml;nder tid:
                 <ul>
-                    <li>  <b>Tidsintervall</b>
+                    <li> <b>Tidsstegsintervall</b>
                     </li>
-                    <li> <b>Tidssteg</b>
+                    <li> <b>Hur ofta tidssteget ska upprepas</b>
                     </li>
-                    <li> <b>Referenstid</b>
+                    <li> <b>Tid som anv&auml;nds till att justera tidssteg till</b>
                     </li>
                 </ul>
                 
             </p>
-            <p>T&auml;nk dig att du har data som representerar ett &aring;r i tiden och du vill analysera med tidsdelar p&aring; veckoniv&aring;. Det g&ouml;r du genom att ange  <b>Tidsintervall</b> som <code>1 vecka</code>.
+            <p>T&auml;nk dig att du har data som representerar ett &aring;r i tiden och du vill analysera med tidssteg p&aring; veckoniv&aring;. Det g&ouml;r du genom att ange  <b>Tidsstegsintervall</b> som <code>1 vecka</code>.
             </p>
-            <p> T&auml;nk dig att du har data som representerar ett &aring;r i tiden och du vill analysera utifr&aring;n f&ouml;rsta veckan i m&aring;naden. Det g&ouml;r du genom att ange <b>Tidsintervall</b> som <code>1 vecka</code>, <b>Tidssteg</b> som <code>1 m&aring;nad</code> och <b>Referenstid</b> som <code>1 januari kl 0:00</code>.
+            <p>T&auml;nk dig att du har data som representerar ett &aring;r i tiden och vill analysera utifr&aring;n f&ouml;rsta veckan i m&aring;naden. Det g&ouml;r du genom att ange  <b>Tidsstegsintervall</b> till <code>1 vecka</code>, <b>Hur ofta tidssteget ska upprepas</b> till <code>1 m&aring;nad</code> och <b>Tid som anv&auml;nds till att justera tidssteg till</b> till <code>1 januari kl. 00.00</code>.
             </p>
         </div>
     </div>
     <div id="timeInterval">
-        <div><h2>Tidsintervall att beräkna densitet på</h2></div>
+        <div><h2>Tidsstegsintervall</h2></div>
         <hr/>
         <div>
-            <p>Tidsintervall som anv&auml;nds f&ouml;r att dela data. Tidsintervall kan anv&auml;ndas frist&aring;ende eller anv&auml;ndas med parametern  <b>Tidssteg</b> eller <b>Referenstid</b>.
+            <p>Tidsintervall som anv&auml;nds f&ouml;r att generera tidssteg. Tidsstegsintervall kan anv&auml;ndas var f&ouml;r sig eller med parametrarna  <b>Hur ofta tidssteget ska upprepas</b> eller <b>Tid som anv&auml;nds till att justera tidssteg till</b>.
             </p>
-            <p> Om du vill skapa tidsdelar som &auml;ger rum varje m&aring;ndag fr&aring;n 9.00 till 10.00 skulle <b>Tidsintervall</b> vara <code>1 timme</code>, <b>Tidssteg</b> skulle vara <code>1 vecka</code>, och <b>Referenstid</b> skulle vara <code>9:00:00 p&aring; en m&aring;ndag</code>.
+            <p>Om du vill skapa tidsdelar som &auml;ger rum varje m&aring;ndag fr&aring;n 9.00 till 10.00 skulle  <b>Tidsstegsintervall</b> vara <code>1 timme</code>, <b>Hur ofta tidssteget ska upprepas</b> <code>1 vecka</code> och <b>Tid som anv&auml;nds till att justera tidssteg till</b> <code>kl. 9.00.00 p&aring; en m&aring;ndag</code>.
             </p>
         </div>
     </div>
     <div id="timeStep">
-        <div><h2>Tidssteg att beräkna densitet på</h2></div>
+        <div><h2>Hur ofta tidssteget ska upprepas</h2></div>
         <hr/>
         <div>
-            <p> Det steg som anv&auml;nds f&ouml;r att ber&auml;kna en tidsdel. <b>Tidssteg</b> kan anv&auml;ndas frist&aring;ende eller med <b>Tidsintervall</b>, med <b>Referenstid</b>, eller med b&aring;de <b>Tidsintervall</b> och <b>Referenstid</b>.
+            <p> Det steg som anv&auml;nds f&ouml;r att ber&auml;kna en tidsdel. <b>Hur ofta tidssteget ska upprepas</b> kan anv&auml;ndas var f&ouml;r sig eller med <b>Tidsstegsintervall</b>, med <b>Referenstid</b> eller med b&aring;de <b>Tidsstegsintervall</b> och <b>Tid som anv&auml;nds till att justera tidssteg till</b>.
             </p>
-            <p> Om du vill skapa tidsdelar som &auml;ger rum varje m&aring;ndag fr&aring;n 9.00 till 10.00 skulle <b>Tidsintervall</b> vara <code>1 timme</code>, <b>Tidssteg</b> skulle vara <code>1 vecka</code>, och <b>Referenstid</b> skulle vara <code>9:00:00 p&aring; en m&aring;ndag</code>.
+            <p> Om du vill skapa tidsdelar som &auml;ger rum varje m&aring;ndag fr&aring;n 9.00 till 10.00 skulle <b>Tidsstegsintervall</b> vara <code>1 timme</code>, <b>Hur ofta tidssteget ska upprepas</b> <code>1 vecka</code> och <b>Tid som anv&auml;nds till att justera tidssteg till</b> <code>kl. 9.00.00 p&aring; en m&aring;ndag</code>.
             </p>
         </div>
     </div>
     <div id="timeReference">
-        <div><h2>Referenstid som används till att justera tidsdelar</h2></div>
+        <div><h2>Tid som används till att justera tidssteg till</h2></div>
         <hr/>
         <div>
-            <p>Datum och tid som anv&auml;nds f&ouml;r att justera tidsdelar.  <b>Tidssteg</b> startar fr&aring;n och forts&auml;tter bak&aring;t f&ouml;r referenstiden.
+            <p>Datum och tid som anv&auml;nds f&ouml;r att justera tidsdelar. Tidssteg startar fr&aring;n och forts&auml;tter bak&aring;t fr&aring;n den h&auml;r tiden. Om ingen referenstid v&auml;ljs justeras tidssteg mot 1 januari 1970. 
             </p>
-            <p> Om du vill skapa tidsdelar som &auml;ger rum varje m&aring;ndag fr&aring;n 9.00 till 10.00 skulle <b>Tidsintervall</b> vara <code>1 timme</code>, <b>Tidssteg</b> skulle vara <code>1 vecka</code>, och <b>Referenstid</b> skulle vara <code>9:00:00 p&aring; en m&aring;ndag</code>.
+            <p> Om du vill skapa tidsdelar som &auml;ger rum varje m&aring;ndag fr&aring;n 9.00 till 10.00 skulle <b>Tidsstegsintervall</b> vara <code>1 timme</code>, <b>Hur ofta tidssteget ska upprepas</b> <code>1 vecka</code> och <b>Tid som anv&auml;nds till att justera tidssteg till</b> <code>kl. 9.00.00 p&aring; en m&aring;ndag</code>.
             </p>
         </div>
     </div>
@@ -195,7 +197,17 @@
         <div><h2>Välj datalager</h2></div>
         <hr/>
         <div>
-            <p>Det h&auml;r &auml;r en tillf&auml;llig parameter f&ouml;r f&ouml;rhandsversionen f&ouml;r att ange det datalager d&auml;r resultaten sparas. B&aring;da datalagren ing&aring;r i  ArcGIS Data Store. Om du v&auml;ljer det rumstemporala datalagret men inte har ett installerat misslyckas verktyget. </p>
+            <p>GeoAnalytics-resultat sparas i ett ArcGIS-datalager och visas som ett geoobjektslager i  Portal for ArcGIS. I de flesta fall ska resultat sparas i det rumstemporala datalagret och det &auml;r standardinst&auml;llningen. I vissa fall &auml;r det ett bra alternativ att spara resultat i det relationella datalagret. F&ouml;ljande &auml;r anledningar till varf&ouml;r du kanske vill spara resultat i det relationella datalagret: 
+                <ul>
+                    <li>anv&auml;nda resultaten i samarbeten portal till portal
+                    </li>
+                    <li>aktivera synkroniseringsfunktioner med dina resultat.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Du b&ouml;r inte anv&auml;nda det relationella datalagret om du f&ouml;rv&auml;ntar dig att dina GeoAnalytics-resultat kommer att &ouml;ka och du beh&ouml;ver anv&auml;nda det rumstemporala big data-lagrets funktioner till att hantera stora m&auml;ngder data. 
+            </p>
         </div>
     </div>
     <div id="outputName">

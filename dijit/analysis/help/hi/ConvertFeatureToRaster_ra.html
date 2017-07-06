@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>सुविधा को रैस्टर में रूपांतरित करें</h2><p/>
+        <h2><img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" alt="रैस्टर उपकरण में सुविधा को रूपांतरित करें"></h2>
+        <hr/>
+    <p>यह कार्य सुविधाओं को रैस्टर डेटासेट में रूपांतरित करता है।
+    </p>
+    <p>बिंदु, लाइन, या बहुभुजी सुविधाओं युक्त कोई सुविधा वर्ग रैस्टर डेटासेट में रूपांतरित हो सकता है।
+    </p>
+    <p>रैस्टर पिक्सेल के मान को सुनिश्चित करने के लिए सेल सेंटर का प्रयोग किया जाता है।
+    </p>
+    <p>इनपुट फील्ड का प्रकार रैस्टर के आउटपुट का प्रकार सुनिश्चित करता है। यदि फील्ड पूर्णांक है , रैस्टर का आउटपुट पूर्णांक होगा; यदि यह अस्थिर बिंदु है, तो आउटपुट अस्थिर बिंदु होगा।
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>रूपांतरित करने के लिए सुविधा चुनें</h2></div>
+        <hr/>
+        <div>
+            <p>रैस्टर डेटासेट में रूपांतरित करने के लिए लेयर की इनपुट सुविधा।
+            </p>
+        </div>
+    </div>
+    <div id="field">
+        <div><h2>क्षेत्र चुनें</h2></div>
+        <hr/>
+        <div>
+            <p>उस फील्ड को चुनें जिसका उपयोग रैस्टर के आउटपुट के लिए मान नियत करने के लिए किया जाएगा।
+            </p> 
+        </div>
+    </div>
+    <div id="outputCellSize">
+        <div><h2>आउटपुट सेल का आकार</h2></div>
+        <hr/>
+        <div>
+            <p>आउटपुट रैस्टर के लिए सेल का आकार तथा इकाई को प्रविष्ट करें।
+            </p>
+            <p>उपलब्ध इकाइयां फीट, मील, मीटर और किलोमीटर हैं।
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>परिणामी लेयर का नाम</h2></div>
+        <hr/>
+        <div>
+            <p>फीचर लेयर का नाम, जो  <b>मेरी सामग्री</b> में बनाया जाएगा और मानचित्र में जोड़ा जाएगा। इसका मूल नाम उपकरण के नाम और इनपुट लेयर के नाम पर आधारित है। यदि लेयर पहले से मौजूद हो, तो आपसे दूसरा नाम देने को कहा जाएगा।
+            </p>
+            <p> <b>इसमें सहेजें</b> ड्राप-डाउन बॉक्स का उपयोग करके, आप <b>मेरी सामग्री</b> में एक फोल्डर का नाम निर्दिष्ट कर सकते हैं, जहां परिणामों को सहेजा जाएगा।।
+            </p>
+        </div>
+    </div>
+</div>
+</html>

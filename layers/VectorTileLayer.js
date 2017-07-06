@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.19/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.21/esri/copyright.txt for details.
 
 !function(){var e=function(e,t,n,o,a,c){var i;return i=c?c:a.createSubclass({declaredClass:"esri.layers.VectorTileLayer",constructor:function(){var r=new n;r.reject(new Error("esri.layers.VectorTileLayer is not supported")),r.promise.otherwise(e.hitch(this,function(e){this._errorHandler(e)}))}}),i.ACCESS_TOKEN=null,i.supported=function(){return r},t("extend-esri")&&e.setObject("layers.VectorTileLayer",i,o),i},r=function(){var e=function(){try{return window.WebGLRenderingContext}catch(e){return!1}}(),r=function(){try{for(var e=document.createElement("canvas"),r=["webgl","experimental-webgl","webkit-3d","moz-webgl"],t=null,n=0;n<r.length;++n){try{t=e.getContext(r[n])}catch(o){}if(t)break}return t}catch(o){return!1}}();return e&&r?!0:!1}(),t=["dojo/_base/lang","dojo/has","dojo/Deferred","../sniff","./layer"];r&&t.push("./VectorTileLayerImpl"),define(t,e)}();

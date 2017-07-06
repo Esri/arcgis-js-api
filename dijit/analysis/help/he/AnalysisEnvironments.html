@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Portal Analysis Environment Settings</h2><p/>
+        <h2>Portal Analysis Environment settings</h2><p/>
         <h2></h2>
         <hr/>
     <p> Environment settings for analysis in Portal for ArcGIS and  ArcGIS Online. 
@@ -114,7 +114,7 @@ input.
                     <li> <b>Same as Input</b>&mdash;The  result of your analysis will be in the same coordinate system  as the
 input. This is the default.
                     </li>
-                    <li> <b>As specified</b>&mdash;Choose the coordinate system for the results of your analysis.   When this option is selected, click the globe icon to select from a list of known coordinate systems or add the spatial reference WKID in the box provided.
+                    <li> <b>As specified</b>&mdash;Choose the coordinate system for the results of your analysis.   When this option is selected, click the globe icon to select from a list of known coordinate systems, or add the spatial reference WKID in the box provided.
                     </li>
                     <li> <b>Layer
 &lt;name&gt;</b>&mdash;Choose an existing layer in your web map  that will  be used to determine the coordinate system of the result of your analysis.
@@ -138,7 +138,7 @@ that  processing be executed in a projected coordinate system.   Any tool that h
                     <li> <b>Same as input</b>&mdash;Your analysis will be processed in the same coordinate system  as the
 input. This is the default.
                     </li>
-                    <li> <b>As specified</b>&mdash;Choose the coordinate system to process your analysis.   When this option is selected, click the globe icon to select from a list of known projected coordinate systems or add the spatial reference WKID in the box provided.
+                    <li> <b>As specified</b>&mdash;Choose the coordinate system to process your analysis.   When this option is selected, click the globe icon to select from a list of known projected coordinate systems, or add the spatial reference WKID in the box provided.
                     </li>
                     <li> <b>Layer
 &lt;name&gt;</b>&mdash;Choose an existing layer from your web map.  The coordinate system of the layer chosen will be used to determine the coordinate system that will be used to process your analysis.
@@ -156,7 +156,7 @@ input. This is the default.
             </p>
             <p>
                 <ul>
-                    <li> <b>Default</b>&mdash;Uses the extent provided by the tool.
+                    <li> <b>Default</b>&mdash;Use the extent provided by the tool.
                     </li>
                     <li> <b>As specified</b>&mdash;Manually enter the coordinates to define the extent.
                     </li>
@@ -197,7 +197,7 @@ layers. This is the default.
                     <li> <b>As specified</b>&mdash;Specify a numeric value to set the cell size. If this is selected, the default
 value is 1.
                     </li>
-                    <li> <b>Layer &lt;name&gt;</b>&mdash;Sets
+                    <li> <b>Layer &lt;name&gt;</b>&mdash;Set
 the cell size to the raster layer chosen.
                     </li>
                 </ul>
@@ -223,13 +223,30 @@ will be NoData in the analysis result layer.
 
                 </li>
                 <li>If the analysis mask is
-a feature layer, it will internally be converted to a raster on
-execution. For this reason, you should take care to ensure that
-the  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">Cell Size</a> and <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">Snap Raster</a> are set appropriately for
+a feature layer, it will be internally converted to a raster on
+execution. For this reason, take care to ensure that
+ <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank"></a> and <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank"></a> are set appropriately for
 your analysis.
                 </li>
             </ul>
              
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>ArcGIS Data Store</h2></div>
+        <hr/>
+        <div>
+            <p>GeoAnalytic results are stored in an ArcGIS Data Store and exposed as a feature layer in   Portal for ArcGIS. In most cases, results should be stored in a spatiotemporal data store. This is the default. The following are reasons why you may want to store results in a relational data store: 
+                <ul>
+                    <li>To use your results in portal-to-portal collaboration
+                    </li>
+                    <li>To enable sync capabilities with your results
+                    </li>
+                </ul>
+                
+            </p>
+            <p>You should not use a relational data store if you expect your GeoAnalytics results to increase and want to take advantage of the spatiotemporal big data store's capabilities to handle large amounts of data. 
+            </p>
         </div>
     </div>
 </div>

@@ -40,48 +40,48 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
-        <h2>Convert Feature to  Raster</h2><p/>
-        <h2><img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" alt="Convert Feature to Raster tool"></h2>
+    <div id="toolDescription" class="smallsize">
+        <h2>Muunna kohde rasteriksi</h2><p/>
+        <h2><img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" alt="Muunna kohde rasteriksi -ty&ouml;kalu"></h2>
         <hr/>
-    <p>This task converts features to a raster dataset.
+    <p>T&auml;m&auml; teht&auml;v&auml; muuntaa kohteet rasteriaineistoryhm&auml;ksi.
     </p>
-    <p>Any feature class containing point, line, or polygon features can be converted to a raster dataset.
+    <p>Mik&auml; tahansa kohdeluokka, joka sis&auml;lt&auml;&auml; piste-, viiva- tai aluekohteita, voidaan muuntaa rasteriaineistoryhm&auml;ksi.
     </p>
-    <p>The cell center is used to decide the value of the output raster pixel.
+    <p>Tulosaineiston rasterin pikseliarvo m&auml;&auml;ritet&auml;&auml;n solun keskikohdan avulla.
     </p>
-    <p>The input field type determines the type of output raster. If the field is integer, the output raster will be integer; if it is floating point, the output will be floating point.
+    <p>L&auml;ht&ouml;aineiston kent&auml;n tyyppi m&auml;&auml;ritt&auml;&auml; tulosaineiston rasterin. Jos kentt&auml; on kokonaisluku, tulosaineiston rasteri on kokonaisluku. Jos kentt&auml; on liukuluku, tulosaineisto on liukuluku.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Choose feature layer to convert</h2></div>
+        <div><h2>Valitse muunnettava karttataso</h2></div>
         <hr/>
         <div>
-            <p>The input feature layer to convert to a raster dataset.
+            <p>L&auml;ht&ouml;aineiston kohdekarttataso, joka muunnetaan rasteriaineistoryhm&auml;ksi.
             </p>
         </div>
     </div>
     <div id="field">
-        <div><h2>Choose field</h2></div>
+        <div><h2>Valitse kenttä</h2></div>
         <hr/>
         <div>
-            <p>Choose the field that will be used to assign values to the output raster.
+            <p>Valitse kentt&auml;, jota k&auml;ytet&auml;&auml;n arvojen m&auml;&auml;ritt&auml;miseen tulosaineiston rasterille.
             </p> 
         </div>
     </div>
     <div id="outputCellSize">
-        <div><h2>Output cell size</h2></div>
+        <div><h2>Tulosaineiston solukoko</h2></div>
         <hr/>
         <div>
             <p>Anna tulosaineiston rasterien solun koko ja yksikk&ouml;.
             </p>
-            <p>The available units are Feet, Miles, Meters, and Kilometers.
+            <p>K&auml;ytett&auml;viss&auml; olevat yksik&ouml;t ovat jalka, maili, metri ja kilometri.
             </p>
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>Tulostason nimi</h2></div>
         <hr/>
         <div>
             <p>Sen karttatason nimi, joka luodaan  <b>Oma sis&auml;lt&ouml;</b> -kohtaan ja lis&auml;t&auml;&auml;n karttaan. Oletusnimi perustuu ty&ouml;kalun nimeen ja l&auml;ht&ouml;karttatason nimeen. Jos taso on jo luotu, sinua pyydet&auml;&auml;n antamaan toinen nimi.

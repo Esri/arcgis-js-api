@@ -40,11 +40,11 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Sumuj w obrębie</h2><p/>
         <h2><img src="../images/GUID-90E0CB1F-EB97-4752-B2EE-452B7B45475E-web.png" alt="Sumuj w obrębie"></h2>
         <hr/>
-    <p>Narzędzie wyszukuje obiekty (i&nbsp;części obiekt&oacute;w), kt&oacute;re znajdują się w&nbsp;granicach obszar&oacute;w w&nbsp;pierwszej warstwie wejściowej.   
+    <p>Narzędzie wyszukuje obiekty (i&nbsp;części obiekt&oacute;w), kt&oacute;re znajdują się w&nbsp;granicach obszar&oacute;w w&nbsp;pierwszej warstwie wejściowej.  
         <ul>
             <li>Dysponując warstwą granic zlewni i warstwą granic użytkowania terenu, oblicz całkowity areał typ&oacute;w użytkowania terenu dla każdej zlewni. 
             </li>
@@ -63,7 +63,9 @@
         <div>
             <p>Warstwa obszaru, kt&oacute;ra zostanie użyta do zsumowania obiekt&oacute;w znajdujących się w jej granicach. Można wybrać sumowanie w obrębie podanej warstwy poligonowej lub koszy kwadratowych albo sześciokątnych wygenerowanych podczas działania narzędzia. Podczas generowania koszy  <b>kwadratowych</b> podana liczba i jednostki decydują o wysokości i długości kwadratu. W przypadku koszy <b>sześciokątnych</b> podana liczba i jednostki decydują o odległości między r&oacute;wnoległymi bokami sześciokąta.
             </p>
-            <p>Opr&oacute;cz wybrania warstwy z mapy, można wybrać opcję  <b>Przeglądaj warstwy</b> znajdującą się w dolnej części listy rozwijanej, aby przejść do zasob&oacute;w zestawu danych udostępnionych plik&oacute;w dużych zbior&oacute;w danych lub warstwy obiektowej.  
+            <p>Analiza wykonywana przy użyciu koszy  <b>kwadratowych</b> lub <b>sześciokątnych</b> wymaga układu wsp&oacute;łrzędnych odwzorowanych. <b>Układ wsp&oacute;łrzędnych przetwarzania</b> można skonfigurować w oknie <b>Środowiska analizy</b>. Jeśli układ wsp&oacute;łrzędnych przetwarzania nie zostanie skonfigurowany jako układ wsp&oacute;łrzędnych odwzorowanych, podczas <b>uruchamiania analizy</b> zostanie wyświetlony monit informujący o konieczności wykonania tej czynności.
+            </p>
+            <p>Opr&oacute;cz wybrania warstwy z mapy, można wybrać opcję  <b>Przeglądaj warstwy</b> znajdującą się w dolnej części listy rozwijanej, aby przejść do zasob&oacute;w zestawu danych udostępnionych plik&oacute;w dużych zbior&oacute;w danych lub warstwy obiektowej.
             </p>
         </div>
     </div>
@@ -73,7 +75,7 @@
         <div>
             <p>Zsumowane zostaną obiekty w tej warstwie, kt&oacute;re mieszczą się w granicach obiekt&oacute;w powyższej warstwy wejściowej lub podanych powyżej koszy. 
             </p>
-            <p>Opr&oacute;cz wybrania warstwy z mapy, można wybrać opcję  <b>Przeglądaj warstwy</b> znajdującą się w dolnej części listy rozwijanej, aby przejść do zasob&oacute;w zestawu danych udostępnionych plik&oacute;w dużych zbior&oacute;w danych lub warstwy obiektowej.  
+            <p>Opr&oacute;cz wybrania warstwy z mapy, można wybrać opcję  <b>Przeglądaj warstwy</b> znajdującą się w dolnej części listy rozwijanej, aby przejść do zasob&oacute;w zestawu danych udostępnionych plik&oacute;w dużych zbior&oacute;w danych lub warstwy obiektowej.
             </p>
         </div>
     </div>
@@ -91,20 +93,20 @@
         <div><h2>Agreguj za pomocą okien czasowych (opcjonalnie)</h2></div>
         <hr/>
         <div>
-            <p>Jeśli dla wejściowej warstwy punktowej włączono czas (typu Moment), można przeprowadzić analizę przy użyciu okien czasowych.  Jeśli używany jest czas, można ustawić trzy parametry:
+            <p>Jeśli dla wejściowej warstwy punktowej włączono czas (typu Moment), można przeprowadzić analizę przy użyciu etap&oacute;w czasowych. Jeśli używany jest czas, można ustawić trzy parametry:
                 <ul>
-                    <li>  <b>Interwał czasu</b>
+                    <li> <b>Przedział etapu czasowego</b>
                     </li>
-                    <li> <b>Etap czasowy</b>
+                    <li> <b>Częstotliwość powtarzania etapu czasowego</b>
                     </li>
-                    <li> <b>Czas referencyjny</b>
+                    <li> <b>Czas do wyr&oacute;wnania etap&oacute;w czasowych</b>
                     </li>
                 </ul>
                 
             </p>
-            <p>Wyobraź sobie, że masz dane reprezentujące rok, kt&oacute;re chcesz przeanalizować przy użyciu tygodniowych okien czasowych. W tym celu należy ustawić w polu  <b>Interwał czasu</b> wartość <code>1 tydzień</code>.
+            <p>Wyobraź sobie, że masz dane reprezentujące rok, kt&oacute;re chcesz przeanalizować przy użyciu tygodniowych etap&oacute;w czasowych. W tym celu należy ustawić w polu  <b>Przedział etapu czasowego</b> wartość <code>1 tydzień</code>.
             </p>
-            <p> Wyobraź sobie, że masz dane reprezentujące rok, kt&oacute;re chcesz przeanalizować przy użyciu pierwszego tygodnia miesiąca. W tym celu należy ustawić w polu <b>Interwał czasu</b> wartość <code>1 tydzień</code>, w polu <b>Etap czasowy</b> wartość <code>1 miesiąc</code>, a w polu <b>Czas referencyjny</b> wartość <code>1 stycznia, 24:00</code>.
+            <p>Wyobraź sobie, że masz dane reprezentujące rok, kt&oacute;re chcesz przeanalizować przy użyciu pierwszego tygodnia miesiąca. W tym celu należy ustawić w polu  <b>Przedział etapu czasowego</b> wartość <code>1 tydzień</code>, w polu <b>Częstotliwość powtarzania etapu czasowego</b> wartość <code>1 miesiąc</code>, a w polu <b>Czas do wyr&oacute;wnania etap&oacute;w czasowych</b> wartość <code>1 stycznia, 24:00</code>.
             </p>
         </div>
     </div>
@@ -112,9 +114,9 @@
         <div><h2>Interwał czasu do agregowania w</h2></div>
         <hr/>
         <div>
-            <p>Interwał czasu używany do tworzenia okien czasowych danych. Można używać samego interwału czasu lub interwału czasu z parametrem  <b>Etap czasowy</b> lub parametrem <b>Czas referencyjny</b>.
+            <p>Interwał czasu używany do tworzenia etap&oacute;w czasowych. Można używać samej wartości pola Przedział etapu czasowego lub zastosować także parametr  <b>Częstotliwość powtarzania etapu czasowego</b> lub <b>Czas do wyr&oacute;wnania etap&oacute;w czasowych</b>.
             </p>
-            <p> Jeśli chcesz utworzyć okna czasowe występujące w każdy poniedziałek między 9:00 a 10:00, w polu <b>Interwał czasu</b> ustaw wartość <code>1 godzina</code>, w polu <b>Etap czasowy</b> wartość <code>1 tydzień</code>, a w polu <b>Czas referencyjny</b> wartość <code>9:00:00 w poniedziałek</code>.
+            <p>Jeśli chcesz utworzyć okna czasowe występujące w każdy poniedziałek między 9:00 a 10:00, w polu  <b>Przedział etapu czasowego</b> ustaw wartość <code>1 godzina</code>, w polu <b>Częstotliwość powtarzania etapu czasowego</b> wartość <code>1 tydzień</code>, a w polu <b>Czas do wyr&oacute;wnania etap&oacute;w czasowych</b> wartość <code>9:00:00 w poniedziałek</code>.
             </p>
         </div>
     </div>
@@ -122,9 +124,10 @@
         <div><h2>Etap czasowy do agregowania w</h2></div>
         <hr/>
         <div>
-            <p> Etap używany do obliczania okna czasowego. Opcja <b>Etap czasowy</b> może być używana sama lub z parametrem <b>Interwał czasu</b>, z parametrem <b>Czas referencyjny</b> lub z oboma parametrami <b>Interwał czasu</b> i <b>Czas referencyjny</b>.
+            <p> Etap używany do obliczania okna czasowego. Wartość w polu <b>Częstotliwość powtarzania etapu czasowego</b> może być używana sama, z parametrem <b>Przedział etapu czasowego</b>, z parametrem <b>Czas referencyjny
+</b> lub z parametrami <b>Przedział etapu czasowego</b> i <b>Czas do wyr&oacute;wnania etap&oacute;w czasowych</b>.
             </p>
-            <p> Jeśli chcesz utworzyć okna czasowe występujące w każdy poniedziałek między 9:00 a 10:00, w polu <b>Interwał czasu</b> ustaw wartość <code>1 godzina</code>, w polu <b>Etap czasowy</b> wartość <code>1 tydzień</code>, a w polu <b>Czas referencyjny</b> wartość <code>9:00:00 w poniedziałek</code>.
+            <p> Jeśli chcesz utworzyć okna czasowe występujące w każdy poniedziałek między 9:00 a 10:00, w polu <b>Przedział etapu czasowego</b> ustaw wartość <code>1 godzina</code>, w polu <b>Częstotliwość powtarzania etapu czasowego</b> wartość <code>1 tydzień</code>, a w polu <b>Czas do wyr&oacute;wnania etap&oacute;w czasowych</b> wartość <code>9:00:00 w poniedziałek</code>.
             </p>
         </div>
     </div>
@@ -132,38 +135,40 @@
         <div><h2>Czas referencyjny użyty do wyrównania okien czasowych</h2></div>
         <hr/>
         <div>
-            <p>Data i czas używane do wyr&oacute;wnywania okien czasowych.  <b>Etap czasowy</b> rozpocznie się od czasu referencyjnego i trwa przez określony czas.
+            <p>Data i czas używane do wyr&oacute;wnywania okien czasowych. Etap czasowy rozpocznie się od tego czasu i będzie trwał wstecz. Jeśli nie zostanie wybrany czas referencyjny, etap czasowy zostanie wyr&oacute;wnany względem 1 stycznia 1970 roku. 
             </p>
-            <p> Jeśli chcesz utworzyć okna czasowe występujące w każdy poniedziałek między 9:00 a 10:00, w polu <b>Interwał czasu</b> ustaw wartość <code>1 godzina</code>, w polu <b>Etap czasowy</b> wartość <code>1 tydzień</code>, a w polu <b>Czas referencyjny</b> wartość <code>9:00:00 w poniedziałek</code>.
+            <p> Jeśli chcesz utworzyć okna czasowe występujące w każdy poniedziałek między 9:00 a 10:00, w polu <b>Przedział etapu czasowego</b> ustaw wartość <code>1 godzina</code>, w polu <b>Częstotliwość powtarzania etapu czasowego</b> wartość <code>1 tydzień</code>, a w polu <b>Czas do wyr&oacute;wnania etap&oacute;w czasowych</b> wartość <code>9:00:00 w poniedziałek</code>.
             </p>
         </div>
     </div>
     <div id="summaryFields">
-        <div><h2>Dodaj statystyki z warstwy do podsumowania (opcjonalnie)</h2></div>
+        <div><h2>Dodaj statystyki (opcjonalnie)</h2></div>
         <hr/>
         <div>
             <p> Można obliczyć statystyki dla zsumowanych obiekt&oacute;w. W polach liczbowych można obliczyć następujące wartości:
                 <ul>
-                    <li>Liczba
+                    <li>Liczba &mdash; zlicza wartości inne niż null. Może być używane w polach liczbowych lub znakowych. Liczba dla wartości [null, 0, 2] wynosi 2.
                     </li>
-                    <li>Średnia
+                    <li>Suma &mdash; suma wartości liczbowych w polu. Suma dla wartości [null, null, 3] wynosi 3.
                     </li>
-                    <li>Min
+                    <li>Średnia &mdash; średnia wartości liczbowych. Średnia dla wartości [0, 2, null] wynosi 1.
                     </li>
-                    <li>Maks
+                    <li>Min &mdash; wartość minimalna w polu liczbowym. Wartość minimalna dla wartości [0, 2, null] wynosi 0. 
                     </li>
-                    <li>Zakres
+                    <li>Maks &mdash; wartość maksymalna w polu liczbowym. Wartość maksymalna dla wartości [0, 2, null] wynosi 2.
                     </li>
-                    <li>Odchylenie
+                    <li>Zakres &mdash; zakres pola liczbowego. Zakres jest obliczany przez odjęcie wartości minimalnych od wartości maksymalnej. Zakres dla wartości [0, null, 1] wynosi 1. Zakres dla wartości [null, 4] wynosi 0.
                     </li>
-                    <li>Odchylenie standardowe
+                    <li>Wariancja &mdash; wariancja pola liczbowego w ścieżce. Wariancja dla wartości [1] wynosi null. Wariancja dla wartości [null, 1, 1 ,1] wynosi 1.
+                    </li>
+                    <li>Odchylenie standardowe &mdash; odchylenie standardowe pola liczbowego. Odchylenie standardowe dla wartości [1] wynosi null. Odchylenie standardowe dla wartości [null, 1, 1 ,1] wynosi 1. 
                     </li>
                 </ul>
                 
             </p>
             <p>W polach ciąg&oacute;w znakowych można obliczyć następujące wartości:
                 <ul>
-                    <li>Liczba
+                    <li>Liczba &mdash; liczba ciąg&oacute;w znakowych innych niż null.
                     </li>
                     <li>Dowolne &mdash; ta statystyka to losowy przykład wartości znakowej w podanym polu.
                     </li>
@@ -195,7 +200,7 @@
         <div><h2>Odniesienie przestrzenne (wkid)</h2></div>
         <hr/>
         <div>
-            <p>Jest to parametr tymczasowy używany w wersji wstępnej do ustawiania odniesienia przestrzennego przetwarzania. Wiele narzędzi do obsługi dużych zbior&oacute;w danych wymaga użycia układu wsp&oacute;łrzędnych odwzorowanych jako odniesienia przestrzennego przetwarzania. Domyślnie narzędzie użyje wejściowego układu wsp&oacute;łrzędnych, ale operacja nie powiedzie się, jeśli będzie to układ wsp&oacute;łrzędnych geograficznych. Aby  ustawić układ wsp&oacute;łrzędnych odwzorowanych, wprowadź wartość WKID. Na przykład  <b>Web Mercator</b> zostanie wprowadzony jako <code>3857</code>.
+            <p>Jest to parametr tymczasowy używany w wersji wstępnej do ustawiania odniesienia przestrzennego przetwarzania. Wiele narzędzi do obsługi dużych zbior&oacute;w danych wymaga użycia układu wsp&oacute;łrzędnych odwzorowanych jako odniesienia przestrzennego przetwarzania. Domyślnie narzędzie użyje wejściowego układu wsp&oacute;łrzędnych, ale operacja nie powiedzie się, jeśli będzie to układ wsp&oacute;łrzędnych geograficznych. Aby ustawić układ wsp&oacute;łrzędnych odwzorowanych, wprowadź wartość WKID. Na przykład  <b>Web Mercator</b> zostanie wprowadzony jako <code>3857</code>.
             </p>
         </div>
     </div>
@@ -203,7 +208,17 @@
         <div><h2>Wybierz magazyn danych</h2></div>
         <hr/>
         <div>
-            <p>Jest to parametr tymczasowy używany w wersji wstępnej do ustawiania magazynu danych, w kt&oacute;rym zapisywane są wyniki. Oba magazyny danych są częścią aplikacji  ArcGIS Data Store. Jeśli zostanie wybrany magazyn danych czasowo-przestrzennych, ale żaden magazyn tego typu nie został zainstalowany, działanie narzędzia nie powiedzie się. </p>
+            <p>Wyniki analiz geoprzestrzennych są przechowywane w aplikacji ArcGIS Data Store i udostępniane jako warstwa obiekt&oacute;w w witrynie  Portal for ArcGIS. W większości przypadk&oacute;w wyniki powinny być przechowywane w magazynie danych czasowo-przestrzennych i jest to ustawienie domyślne. W niekt&oacute;rych przypadkach dobrym rozwiązanie jest zapisanie wynik&oacute;w w relacyjnym magazynie danych. Poniżej podano sytuacje, kt&oacute;re mogą uzasadniać przechowywanie wynik&oacute;w w relacyjnym magazynie danych: 
+                <ul>
+                    <li>Używanie wynik&oacute;w w ramach kooperacji między portalami.
+                    </li>
+                    <li>Włączanie możliwości synchronizacji dla wynik&oacute;w.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Nie należy używać relacyjnego magazynu danych, jeśli liczba wynik&oacute;w analiz geoprzestrzennych może się zwiększyć i może być konieczne zastosowanie magazynu dużych zbior&oacute;w danych czasowo-przestrzennych w celu obsłużenia dużych ilości danych. 
+            </p>
         </div>
     </div>
     <div id="outputName">

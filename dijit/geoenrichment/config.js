@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.19/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.21/esri/copyright.txt for details.
 
 define(["../../urlUtils"],function(e){var r=e.getProtocolForWebResource();return{portalUrl:r+"//arcgis.com",server:r+"//geoenrich.arcgis.com/arcgis/rest/services/World/GeoenrichmentServer",levels:["Admin3","Admin2"],highestLevel:"Admin1",locatorUrl:r+"//geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer",addressFormat:"${Address}, ${City}, ${Region} ${Postal}"}});

@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Portaal Omgevingsinstellingen analyseren</h2><p/>
+        <h2>Portaal omgevingsinstellingen analyseren</h2><p/>
         <h2></h2>
         <hr/>
     <p> Omgevingsinstellingen voor analyse in Portal for ArcGIS en  ArcGIS Online. 
@@ -112,7 +112,7 @@
                 <ul>
                     <li> <b>Hetzelfde als invoer</b>&mdash;Het resultaat van uw analyse is in hetzelfde co&ouml;rdinaatsysteem als de invoer. Dit is de standaardinstelling.
                     </li>
-                    <li> <b>Zoals opgegeven</b>&mdash;Kies het co&ouml;rdinaatsysteem voor de resultaten van uw analyse. Als deze optie is geselecteerd, klikt u op het pictogram van de wereldbol om een lijst met bekende co&ouml;rdinaatsystemen te selecteren of de ruimtelijke referentie WKID in het daarvoor bestemde vak toe te voegen.
+                    <li> <b>Zoals opgegeven</b>&mdash;Kies het co&ouml;rdinaatsysteem voor de resultaten van uw analyse. Als deze optie is geselecteerd, klikt u op het pictogram van de wereldbol om een lijst met bekende co&ouml;rdinaatsystemen, te selecteren of de ruimtelijke referentie WKID in het daarvoor bestemde vak toe te voegen.
                     </li>
                     <li> <b>Laag
 &lt;name&gt;</b>&mdash;Kies een bestaande laag in uw webmap die gebruikt wordt om het co&ouml;rdinaatsysteem te bepalen van het resultaat van uw analyse.
@@ -134,7 +134,7 @@
                 <ul>
                     <li> <b>Hetzelfde als invoer</b>&mdash;Uw analyse wordt verwerkt is in hetzelfde co&ouml;rdinaatsysteem als de invoer. Dit is de standaardinstelling.
                     </li>
-                    <li> <b>Zoals opgegeven</b>&mdash;Kies het co&ouml;rdinaatsysteem om uw analyse te verwerken. Als deze optie is geselecteerd, klikt u op het pictogram van de wereldbol om een lijst met bekende geprojecteerde co&ouml;rdinaatsystemen te selecteren of de ruimtelijke referentie WKID in het daarvoor bestemde vak toe te voegen.
+                    <li> <b>Zoals opgegeven</b>&mdash;Kies het co&ouml;rdinaatsysteem om uw analyse te verwerken. Als deze optie is geselecteerd, klikt u op het pictogram van de wereldbol om een lijst met bekende co&ouml;rdinaatsystemen, te selecteren of de ruimtelijke referentie WKID in het daarvoor bestemde vak toe te voegen.
                     </li>
                     <li> <b>Laag
 &lt;name&gt;</b>&mdash;Kies een bestaande laag van uw webmap. Het co&ouml;rdinatensysteem van de gekozen laag wordt gebruikt om het co&ouml;rdinatensysteem te bepalen dat wordt gebruikt om uw analyse te verwerken.
@@ -152,7 +152,7 @@
             </p>
             <p>
                 <ul>
-                    <li> <b>Standaard</b>&mdash;Gebruikt de extent opgegeven door de tool.
+                    <li> <b>Standaard</b>&mdash;Gebruik de extent opgegeven door de tool.
                     </li>
                     <li> <b>Zoals gespecificeerd</b>&mdash;Voer handmatig de co&ouml;rdinaten in om de extent te defini&euml;ren.
                     </li>
@@ -186,7 +186,8 @@
                     </li>
                     <li> <b>Zoals gespecificeerd</b>&mdash;Specificeer een numerieke waarde om de celgrootte in te stellen. Als dit is geselecteerd, is de standaardwaarde 1.
                     </li>
-                    <li> <b>Laag &lt;name&gt;</b>&mdash;Stelt de celgrootte in op de gekozen rasterlaag.
+                    <li> <b>Laag &lt;naam&gt;</b>&mdash;Stel
+de celgrootte in op de gekozen rasterlaag.
                     </li>
                 </ul>
                 
@@ -204,10 +205,28 @@
                 </li>
                 <li>Als het analysemasker een raster is, worden alle cellen die een waarde hebben beschouwd om het masker te defini&euml;ren. Cellen in een maskerraster die NoData zijn worden als buiten het masker beschouwd en zijn NoData in de analyseresultaatlaag. 
                 </li>
-                <li>Als het analysemasker een objectlaag is, wordt het intern omgezet naar een raster op uitvoering. Om deze reden, moet u erop toezien dat de  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">Celgrootte</a> en <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">Snapraster</a> goed worden ingesteld voor uw analyse.
+                <li>Als het analysemasker een objectlaag is, wordt het intern omgezet naar een raster op uitvoering. Om deze reden, moet u erop toezien dat
+ <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank"></a> en <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank"></a> goed worden ingesteld voor uw analyse.
                 </li>
             </ul>
              
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>ArcGIS Data Store</h2></div>
+        <hr/>
+        <div>
+            <p>GeoAnalytische resultaten worden opgeslagen in een ArcGIS Data Store en weergegeven als een objectlaag in  Portal for ArcGIS. In de meeste gevallen moeten de resultaten worden opgeslagen in een spatiotemporele data-opslag. Dit is de standaardinstelling. Hier volgen redenen waarom u resultaten zou willen opslaan in een relationele data-opslag: 
+                <ul>
+                    <li>Om uw resultaten te gebruiken voor portal-to-portal samenwerking
+                    </li>
+                    <li>Om synchronisatiemogelijkheden met uw resultaten mogelijk te maken
+                    </li>
+                </ul>
+                
+            </p>
+            <p>U moet geen gebruik maken van een relationele data-opslag als u verwacht dat uw GeoAnalytics-resultaten toenemen en u wilt profiteren van de mogelijkheden van de spatiotemporele big data-opslag om grote hoeveelheden gegevens te verwerken. 
+            </p>
         </div>
     </div>
 </div>

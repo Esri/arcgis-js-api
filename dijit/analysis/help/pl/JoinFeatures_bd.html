@@ -40,7 +40,7 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Połącz obiekty</h2><p/>
         <h2><img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" alt="Połącz obiekty"></h2>
         <hr/>
@@ -51,45 +51,47 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="targetLayer">
-        <div><h2>Wybierz warstwę w celu złączenia obiektów</h2></div>
+        <div><h2>Wybierz warstwę docelową</h2></div>
         <hr/>
         <div>
-            <p>Warstwa, z kt&oacute;rą zostaną połączone obiekty. 
+            <p>Warstwa, do tabeli kt&oacute;rej zostaną dołączone atrybuty z warstwy połączenia.
             </p>
-            <p>Opr&oacute;cz wybrania warstwy z mapy, można wybrać opcję  <b>Przeglądaj warstwy</b> znajdującą się w dolnej części listy rozwijanej, aby przejść do zasob&oacute;w zestawu danych udostępnionych plik&oacute;w dużych zbior&oacute;w danych lub warstwy obiektowej.  
+            <p>Analiza wykorzystująca relację przestrzenną  <b>W pobliżu</b> wymaga układu wsp&oacute;łrzędnych odwzorowanych. <b>Układ wsp&oacute;łrzędnych przetwarzania</b> można skonfigurować w oknie <b>Środowiska analizy</b>. Jeśli układ wsp&oacute;łrzędnych przetwarzania nie zostanie skonfigurowany jako układ wsp&oacute;łrzędnych odwzorowanych, podczas <b>uruchamiania analizy</b> zostanie wyświetlony monit informujący o konieczności wykonania tej czynności.
+            </p>
+            <p>Opr&oacute;cz wybrania warstwy z mapy, można wybrać opcję  <b>Przeglądaj warstwy</b> znajdującą się w dolnej części listy rozwijanej, aby przejść do zasob&oacute;w zestawu danych udostępnionych plik&oacute;w dużych zbior&oacute;w danych lub warstwy obiektowej.
             </p>
         </div>
     </div>
     <div id="joinLayer">
-        <div><h2>Wybierz warstwę w celu złączenia</h2></div>
+        <div><h2>Wybierz warstwę do przyłączenia do warstwy docelowej</h2></div>
         <hr/>
         <div>
-            <p>Warstwa, kt&oacute;ra zostanie połączona z pierwszą warstwą wejściową.
+            <p>Warstwa połączenia zawierająca atrybuty, kt&oacute;re zostaną dołączone do warstwy docelowej.
             </p>
-            <p>Opr&oacute;cz wybrania warstwy z mapy, można wybrać opcję  <b>Przeglądaj warstwy</b> znajdującą się w dolnej części listy rozwijanej, aby przejść do zasob&oacute;w zestawu danych udostępnionych plik&oacute;w dużych zbior&oacute;w danych lub warstwy obiektowej.  
+            <p>Opr&oacute;cz wybrania warstwy z mapy, można wybrać opcję  <b>Przeglądaj warstwy</b> znajdującą się w dolnej części listy rozwijanej, aby przejść do zasob&oacute;w zestawu danych udostępnionych plik&oacute;w dużych zbior&oacute;w danych lub warstwy obiektowej.
             </p>
         </div>
     </div>
     <div id="joinOperation">
-        <div><h2>Wybierz operację złączenia</h2></div>
+        <div><h2>Wybierz operację połączenia</h2></div>
         <hr/>
         <div>
-            <p>Ta opcja decyduje o tym, jak połączenia między warstwami wejściowymi będą traktowane w danych wynikowych, jeśli wiele dołączanych obiekt&oacute;w ma tę samą relację z warstwą, z kt&oacute;rą są łączone. Istnieje możliwość wybrania jednej z dw&oacute;ch operacji łączenia:
+            <p>Ta opcja decyduje o tym, jak połączenia między warstwami docelową i połączenia będą traktowane w danych wynikowych, jeśli wiele dołączanych obiekt&oacute;w ma tę samą relację z warstwą, z kt&oacute;rą są łączone. Istnieje możliwość wybrania jednej z dw&oacute;ch operacji łączenia:
                 <ul>
-                    <li> <b>Złączenie jeden do jeden</b> &mdash; ta opcja pozwala połączyć wszystkie pasujące obiekty z warstwą połączenia.
-                    </li>
-                    <li> <b>Złączenie jeden do wielu
+                    <li> <b>Złączenie jeden do jeden
 </b> &mdash; ta opcja sumuje wszystkie pasujące obiekty dla każdego z dołączanych obiekt&oacute;w.
+                    </li>
+                    <li> <b>Złączenie jeden do wielu</b> &mdash; ta opcja pozwala połączyć wszystkie pasujące obiekty z warstwą połączenia.
                     </li>
                 </ul>
                 
             </p>
-            <p>Zał&oacute;żmy, że chcemy znaleźć supermarkety w promieniu 5 kilometr&oacute;w od rynku produkt&oacute;w rolnych. W tym przypadku warstwa, do kt&oacute;rej będą dołączane obiekty, zawiera pojedynczy obiekt reprezentujący rynek produkt&oacute;w rolnych, a dołączane obiekty reprezentują lokalne sklepy spożywcze, kt&oacute;re mają atrybuty, takie jak suma rocznej sprzedaży. Używając narzędzia  <b>Połącz obiekty</b>, stwierdzamy, że pięć sklep&oacute;w spożywczych spełnia kryteria. Jeśli zostanie określona operacja <b>Złączenie jeden do jeden</b>, dane wynikowe będą zawierać pięć obiekt&oacute;w, a każdy wiersz będzie reprezentować rynek produkt&oacute;w rolnych i jeden z supermarket&oacute;w. W przypadku relacji <b>Złączenie jeden do wielu</b> dane wynikowe będą zawierać jeden obiekt reprezentujący rynek produkt&oacute;w spożywczych i zbiorcze informacje o supermarketach, takie jak ich liczba (5) i inne dane statystyczne, na przykład suma rocznej sprzedaży.
+            <p>Zał&oacute;żmy, że chcemy znaleźć supermarkety w promieniu 2 kilometr&oacute;w od rynku produkt&oacute;w rolnych. W tym przypadku warstwa, do kt&oacute;rej będą dołączane obiekty, zawiera pojedynczy obiekt reprezentujący rynek produkt&oacute;w rolnych, a dołączane obiekty reprezentują lokalne sklepy spożywcze, kt&oacute;re mają atrybuty, takie jak suma rocznej sprzedaży. Używając narzędzia  <b>Połącz obiekty</b>, stwierdzamy, że pięć sklep&oacute;w spożywczych spełnia kryteria. Jeśli zostanie określona operacja <b>Złączenie jeden do wielu</b>, dane wynikowe będą zawierać pięć obiekt&oacute;w, a każdy wiersz będzie reprezentować rynek produkt&oacute;w rolnych i jeden z supermarket&oacute;w. W przypadku relacji <b>Złączenie jeden do jeden</b> dane wynikowe będą zawierać jeden obiekt reprezentujący rynek produkt&oacute;w spożywczych i zbiorcze informacje o supermarketach, takie jak ich liczba (2) i inne dane statystyczne, na przykład suma rocznej sprzedaży.
             </p>
         </div>
     </div>
     <div id="joinOptions">
-        <div><h2>Wybierz typy połączeń, które mają zostać użyte</h2></div>
+        <div><h2>Wybierz jedno lub większą liczbę połączeń</h2></div>
         <hr/>
         <div>
             <p>Można zastosować jeden, dwa lub trzy typy połączeń. Istnieją następujące typy połączeń: 
@@ -98,7 +100,7 @@
                     </li>
                     <li> <b>Czasowe</b> &mdash; obiekty są łączone przy użyciu relacji czasowych. Dla obu warstw należy włączyć dane czasowe.
                     </li>
-                    <li> <b>Atrybut</b> &mdash; łączy obiekty na podstawie p&oacute;l o takich samych wartościach.
+                    <li> <b>Atrybutowe</b> &mdash; łączy obiekty na podstawie p&oacute;l o takich samych wartościach.
                     </li>
                 </ul>
                 
@@ -108,7 +110,7 @@
         </div>
     </div>
     <div id="spatialRelationship">
-        <div><h2>Złączenie przestrzenne</h2></div>
+        <div><h2>Wybierz relację przestrzenną</h2></div>
         <hr/>
         <div>
             <p> Relacja przestrzenna, kt&oacute;ra decyduje o tym, czy obiekty zostaną ze sobą połączone. Dostępne relacje zależą od typu geometrii (punkt, polilinia, poligony) używanej w obiektach wejściowych. Dostępne są następujące relacje:
@@ -117,7 +119,7 @@
                     </li>
                     <li> <b>R&oacute;wna się</b> &mdash; obiekty zostaną dopasowane, jeśli mają tę samą geometrię.
                     </li>
-                    <li> <b>W pobliżu</b> &mdash; obiekty zostaną dopasowane, jeśli znajdują się w określonej odległości od siebie.
+                    <li> <b>W pobliżu</b> &mdash; obiekty zostaną dopasowane, jeśli znajdują się w określonej odległości od siebie. Warstwa docelowa musi korzystać z układu wsp&oacute;łrzędnych odwzorowanych lub odniesienie przestrzenne przetwarzania musi zostać skonfigurowane w układzie wsp&oacute;łrzędnych odwzorowanych w oknie <b>Środowiska analizy</b>, jeśli używana jest relacja przestrzenna <b>W pobliżu</b>.
                     </li>
                     <li> <b>Zawiera</b> &mdash; obiekty zostaną dopasowane, jeśli warstwa, do kt&oacute;rej są dołączane obiekty, jest zawarta w dołączanych obiektach.
                     </li>
@@ -145,7 +147,7 @@
         </div>
     </div>
     <div id="temporalRelationship">
-        <div><h2>Złączenie czasowe</h2></div>
+        <div><h2>Wybierz relację tymczasową</h2></div>
         <hr/>
         <div>
             <p>Relacja czasowa, kt&oacute;ra decyduje o tym, czy obiekty zostaną ze sobą połączone. Ta opcja jest dostępna tylko wtedy, gdy obie warstwy zawierają dane czasowe, a dostępne relacje zależą od typu czasu (moment lub przedział czasu) używanego w obiektach wejściowych. Dostępne są następujące relacje:
@@ -174,7 +176,7 @@
                     </li>
                     <li> <b>Rozpoczęte przez</b> &mdash; obiekty zostaną dopasowane, jeśli pierwszy obiekt jest rozpoczynany przez drugi obiekt.
                     </li>
-                    <li> <b>Przecina się</b> &mdash; obiekty są mapowane, jeśli czasy przecinają się.
+                    <li> <b>Przecina się</b> &mdash; obiekty są umieszczane na mapie, jeśli czasy przecinają się.
                     </li>
                     <li> <b>W pobliżu</b> &mdash; obiekty zostaną połączone, jeśli znajdują się w pobliżu (w określonym czasie).
                     </li>
@@ -194,12 +196,12 @@
         </div>
     </div>
     <div id="attributeRelationship">
-        <div><h2>Złączenie atrybutów</h2></div>
+        <div><h2>Wybierz pola w celu dopasowania</h2></div>
         <hr/>
         <div>
             <p>Ta relacja umożliwia dopasowanie wartości w polu jednej warstwy z wartościami w polu innej warstwy. 
             </p>
-            <p> Zał&oacute;żmy na przykład, że dla całego powiatu istnieje warstwa danych geograficznych przechowująca adresy zamieszkania, zwierająca pole <i>ZIP</i> (kod pocztowy), i tabelaryczny zestaw danych demograficznych dotyczących zdrowia według kod&oacute;w pocztowych zawierający pole o nazwie <i>HEALTHZIP</i> (zdrowie - kod pocztowy). Zestaw danych zdrowotnych można połączyć z danymi na temat adres&oacute;w zamieszkania, dopasowując pole <i>ZIP</i> do pola <i>HEALTHZIP</i>, co spowoduje powstanie warstwy adres&oacute;w zamieszkania z odpowiadającymi im danymi zdrowotnymi.
+            <p>Zał&oacute;żmy na przykład, że dla całego powiatu istnieje warstwa danych geograficznych przechowująca adresy zamieszkania, zwierająca pole  <i>ZIP</i> (kod pocztowy) i tabelaryczny zestaw danych demograficznych dotyczących zdrowia według kod&oacute;w pocztowych zawierający pole o nazwie <i>HEALTHZIP</i> (zdrowie - kod pocztowy). Zestaw danych zdrowotnych można połączyć z danymi na temat adres&oacute;w zamieszkania, dopasowując pole <i>ZIP</i> do pola <i>HEALTHZIP</i>, co spowoduje powstanie warstwy adres&oacute;w zamieszkania z odpowiadającymi im danymi zdrowotnymi.
             </p>
         </div>
     </div>
@@ -207,7 +209,39 @@
         <div><h2>Dodaj statystyki (opcjonalnie)</h2></div>
         <hr/>
         <div>
-            <p>Jeśli została wybrana opcja połączenia jeden do wielu, można obliczyć statystyki dotyczące połączonych obiekt&oacute;w.
+            <p>Jeśli operacją łączenia jest   <b>Złączenie jeden do jeden</b>, można obliczyć statystyki dotyczące połączonych obiekt&oacute;w. Domyślnie zostaną obliczone wszystkie statystyki.
+            </p>
+            <p>Można obliczyć statystyki dla zsumowanych obiekt&oacute;w. W polach liczbowych można obliczyć następujące wartości:
+                <ul>
+                    <li>Liczba &mdash; zlicza wartości inne niż null. Może być używane w polach liczbowych lub znakowych. Liczba dla wartości [null, 0, 2] wynosi 2.
+                    </li>
+                    <li>Suma &mdash; suma wartości liczbowych w polu. Suma dla wartości [null, null, 3] wynosi 3.
+                    </li>
+                    <li>Średnia &mdash; średnia wartości liczbowych. Średnia dla wartości [0, 2, null] wynosi 1.
+                    </li>
+                    <li>Min &mdash; wartość minimalna w polu liczbowym. Wartość minimalna dla wartości [0, 2, null] wynosi 0. 
+                    </li>
+                    <li>Maks &mdash; wartość maksymalna w polu liczbowym. Wartość maksymalna dla wartości [0, 2, null] wynosi 2.
+                    </li>
+                    <li>Zakres &mdash; zakres pola liczbowego. Zakres jest obliczany przez odjęcie wartości minimalnych od wartości maksymalnej. Zakres dla wartości [0, null, 1] wynosi 1. Zakres dla wartości [null, 4] wynosi 0.
+                    </li>
+                    <li>Wariancja &mdash; wariancja pola liczbowego w ścieżce. Wariancja dla wartości [1] wynosi null. Wariancja dla wartości [null, 1, 1 ,1] wynosi 1.
+                    </li>
+                    <li>Odchylenie standardowe &mdash; odchylenie standardowe pola liczbowego. Odchylenie standardowe dla wartości [1] wynosi null. Odchylenie standardowe dla wartości [null, 1, 1 ,1] wynosi 1. 
+                    </li>
+                </ul>
+                
+            </p>
+            <p>W polach ciąg&oacute;w znakowych można obliczyć następujące wartości:
+                <ul>
+                    <li>Liczba &mdash; liczba ciąg&oacute;w znakowych innych niż null.
+                    </li>
+                    <li>Dowolne &mdash; ta statystyka to losowy przykład wartości znakowej w podanym polu.
+                    </li>
+                </ul>
+                Wszystkie statystyki są obliczane na podstawie wartości niepustych. Warstwa wynikowa zawiera nowe pole dla każdego wykonanego obliczenia statystycznego. Dodać można dowolną liczbę statystyk poprzez wybranie atrybutu oraz&nbsp;właściwej operacji statystycznej.
+            </p>
+            <p>Wszystkie statystyki są obliczane na podstawie wartości niepustych. Warstwa wynikowa zawiera nowe pola dla każdego wykonanego obliczenia statystycznego. Dodać można dowolną liczbę statystyk poprzez wybranie atrybutu oraz&nbsp;właściwej operacji statystycznej.
             </p>
         </div>
     </div>
@@ -227,7 +261,17 @@
         <div><h2>Wybierz magazyn danych</h2></div>
         <hr/>
         <div>
-            <p>Jest to parametr tymczasowy używany w wersji wstępnej do ustawiania magazynu danych, w kt&oacute;rym zapisywane są wyniki. Oba magazyny danych są częścią aplikacji  ArcGIS Data Store. Jeśli zostanie wybrany magazyn danych czasowo-przestrzennych, ale żaden magazyn tego typu nie został zainstalowany, działanie narzędzia nie powiedzie się. </p>
+            <p>Wyniki analiz geoprzestrzennych są przechowywane w aplikacji ArcGIS Data Store i udostępniane jako warstwa obiekt&oacute;w w witrynie  Portal for ArcGIS. W większości przypadk&oacute;w wyniki powinny być przechowywane w magazynie danych czasowo-przestrzennych i jest to ustawienie domyślne. W niekt&oacute;rych przypadkach dobrym rozwiązanie jest zapisanie wynik&oacute;w w relacyjnym magazynie danych. Poniżej podano sytuacje, kt&oacute;re mogą uzasadniać przechowywanie wynik&oacute;w w relacyjnym magazynie danych: 
+                <ul>
+                    <li>Używanie wynik&oacute;w w ramach kooperacji między portalami.
+                    </li>
+                    <li>Włączanie możliwości synchronizacji dla wynik&oacute;w.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Nie należy używać relacyjnego magazynu danych, jeśli liczba wynik&oacute;w analiz geoprzestrzennych może się zwiększyć i może być konieczne zastosowanie magazynu dużych zbior&oacute;w danych czasowo-przestrzennych w celu obsłużenia dużych ilości danych. 
+            </p>
         </div>
     </div>
     <div id="outputName">

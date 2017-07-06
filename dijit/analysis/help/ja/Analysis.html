@@ -187,71 +187,28 @@
         <hr/>
         <p>以下のツールは、指定したさまざまな条件を満たす場所を特定するために使用されます。これらの条件は、属性検索 (所有者のいない土地区画など) と空間検索 (河川から 1 キロメートル以内など) に基づきます。検索するエリアを既存のフィーチャ (土地区画など) から選択したり、すべての要件を満たす新しいフィーチャを作成したりできます。
             <ul>
-                <li> <b>[既存フィーチャの検索]</b> は、一連の条件を満たすレイヤー内の既存のエリアを検索します。
-                </li>
-                <li> <b>[新規フィーチャの作成]</b> は、一連の条件を満たす分析範囲内の場所から、新しいエリアを作成します。
-                </li>
-                <li> <b>[類似フィーチャの検索]</b> は、指定した条件に基づいて、1 つ以上の参照場所に最も類似している場所を検索します。
-                </li>
                 <li> <b>[最適な施設の選択]</b> は、施設に対する需要のある位置を、特定の目的を満たすように割り当てることによって、施設の最適な位置を選択します。
                 </li>
                 <li> <b>[可視領域の作成]</b> は、指定した位置に基づいて表示可能なエリアを作成します。
                 </li>
                 <li> <b>[集水域の作成]</b> は、指定した位置に基づいて集水域を作成します。
                 </li>
+                <li> <b>[新規フィーチャの作成]</b> は、一連の条件を満たす分析範囲内の場所から、新しいエリアを作成します。
+                </li>
+                <li> <b>[既存フィーチャの検索]</b> は、一連の条件を満たすレイヤー内の既存のエリアを検索します。
+                </li>
+                <li> <b>[類似フィーチャの検索]</b> は、指定した条件に基づいて、1 つ以上の参照場所に最も類似している場所を検索します。
+                </li>
+                <li class="PortalOnly"> <b>[テーブルから場所をジオコーディング]</b> は、テーブルの住所を座標に変換します。
+                </li>
                 <li> <b>[下流解析]</b> は、指定した位置から下流方向に向かうフロー パスを決定します。
                 </li>
             </ul>
-            
+             
         </p>
         <p> 
         </p>
     </div>
-        <div id="FindExistingLocationsTool" class="smallsize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>既存フィーチャの検索</h2></td>
-                    <td>
-                    <img src="../images/GUID-FEF355B4-CF3B-48F6-9EC1-A00A1D53C81F-web.png" class="titleImage" alt="既存フィーチャの検索">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>指定した一連の条件を満たす、分析範囲内の既存のフィーチャを選択します。これらの条件は、属性検索 (空き地など) と空間検索 (河川から 1 マイル以内など) に基づきます。
-            </p>
-            <br/>
-        </div>
-        <div id="DeriveNewLocationsTool" class="smallsize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>新規フィーチャの作成</h2></td>
-                    <td>
-                    <img src="../images/GUID-4A756008-8431-4AA5-BD42-7135296560DD-web.png" class="titleImage" alt="新規フィーチャの作成">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>指定した一連の条件を満たす分析範囲内で、新しいフィーチャを作成します。これらの条件は、属性検索 (空き地など) と空間検索 (河川から 1 マイル以内など) に基づきます。
-            </p>
-            <br/>
-        </div>
-        <div id="FindSimilarLocationsTool" class="smallsize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>類似場所の検索</h2></td>
-                    <td>
-                    <img src="../images/GUID-6262A84E-9087-4E48-930E-E9B89FECC836-web.png" class="titleImage" alt="類似場所の検索">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>指定した条件に基づいて、1 つ以上の参照場所に最も類似している場所を検索します。
-            </p>
-            <br/>
-        </div>
         <div id="ChooseBestFacilitiesTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -294,6 +251,66 @@
             </table>
 <hr/>
             <p>指定した位置に基づいて集水域を作成します。
+            </p>
+            <br/>
+        </div>
+        <div id="DeriveNewLocationsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>新規フィーチャの作成</h2></td>
+                    <td>
+                    <img src="../images/GUID-4A756008-8431-4AA5-BD42-7135296560DD-web.png" class="titleImage" alt="新規フィーチャの作成">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>指定した一連の条件を満たす分析範囲内で、新しいフィーチャを作成します。これらの条件は、属性検索 (空き地など) と空間検索 (河川から 1 マイル以内など) に基づきます。
+            </p>
+            <br/>
+        </div>
+        <div id="FindExistingLocationsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>既存フィーチャの検索</h2></td>
+                    <td>
+                    <img src="../images/GUID-FEF355B4-CF3B-48F6-9EC1-A00A1D53C81F-web.png" class="titleImage" alt="既存フィーチャの検索">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>指定した一連の条件を満たす、分析範囲内の既存のフィーチャを選択します。これらの条件は、属性検索 (空き地など) と空間検索 (河川から 1 マイル以内など) に基づきます。
+            </p>
+            <br/>
+        </div>
+        <div id="GeocodeLocationsfromTableTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>テーブルから場所をジオコーディング</h2></td>
+                    <td>
+                    <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" class="titleImage" alt="テーブルから場所をジオコーディング">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>住所を座標に変換します。このツールは Excel スプレッドシートまたは CSV ファイルの住所に使用します。
+            </p>
+            <br/>
+        </div>
+        <div id="FindSimilarLocationsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>類似場所の検索</h2></td>
+                    <td>
+                    <img src="../images/GUID-6262A84E-9087-4E48-930E-E9B89FECC836-web.png" class="titleImage" alt="類似場所の検索">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>指定した条件に基づいて、1 つ以上の参照場所に最も類似している場所を検索します。
             </p>
             <br/>
         </div>

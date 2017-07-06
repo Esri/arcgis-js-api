@@ -149,7 +149,7 @@
             </p>
             <p>
                 <ul>
-                    <li> <b>デフォルト</b> - このツールに用意されている範囲が使用されます。
+                    <li> <b>デフォルト</b> - このツールから提供される範囲が使用されます。
                     </li>
                     <li> <b>値指定</b> - 座標系を手動で入力して範囲を定義します。
                     </li>
@@ -200,10 +200,27 @@
                 </li>
                 <li>解析マスクがラスターの場合、値を持つすべてのセルがそのマスクを指定すると見なされます。マスク ラスター内の NoData のセルはマスクの外にあると見なされ、解析結果レイヤーでも NoData になります。
                 </li>
-                <li>解析マスクがフィーチャ レイヤーの場合は、実行時に内部でラスターに変換されます。そのため、解析に適した <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">セル サイズ</a>と <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">スナップ対象ラスター</a>が設定されていることを確認する必要があります。
+                <li>解析マスクがフィーチャ レイヤーの場合は、実行時に内部でラスターに変換されます。そのため、解析に適した <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank"></a>と <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank"></a>が設定されていることを確認する必要があります。
                 </li>
             </ul>
              
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>ArcGIS Data Store</h2></div>
+        <hr/>
+        <div>
+            <p>GeoAnalytic の結果は ArcGIS Data Store に保存され、フィーチャ レイヤーとして  Portal for ArcGIS に公開されます。多くの場合、結果はビッグ データ ストアに保存されます。これがデフォルトです。結果をリレーショナル データ ストアに保存する理由は以下のとおりです。 
+                <ul>
+                    <li>結果をポータル間での連携に使用するため
+                    </li>
+                    <li>結果との同期機能を有効にするため
+                    </li>
+                </ul>
+                
+            </p>
+            <p>GeoAnalytics の結果が増加すると予想されており、大量のデータを処理するビッグ データ ストアの機能を利用したい場合には、リレーショナル データ ストアを使用すべきではありません。
+            </p>
         </div>
     </div>
 </div>

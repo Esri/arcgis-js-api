@@ -48,7 +48,7 @@
         <ul>
             <li>Zijn uw punten (misdrijven, bomen of verkeersongevallen) echt geclusterd? Hoe zeker bent u daarvan?
             </li>
-            <li>Hebt u echt een statistisch belangrijke hotspot ontdekt? Of vertelt uw kaart een ander verhaal als u de manier waarop het is gesymboliseerd veranderd?
+            <li>Hebt u echt een statistisch significante hotspot gevonden of zou uw kaart een ander verhaal vertellen wanneer u de symbolen ervan zou wijzigen?
             </li>
         </ul>
         De tool Hotspots zoeken helpt u een duidelijk en betrouwbaar antwoord op deze vragen te vinden.
@@ -61,9 +61,11 @@
         <div><h2>Kies de laag waarvoor de hotspots worden berekend.</h2></div>
         <hr/>
         <div>
-            <p>De puntlaag waar hot en cold spots worden gevonden. 
+            <p>De puntlaag waar hot en cold spots worden gevonden.
             </p>
-            <p>Naast het kiezen van een laag van uw kaart, kunt u kiezen voor  <b>Blader door lagen</b> aan de onderkant van de drop-downlijst om in uw inhoud te zoeken naar een groot gedeeld databestand of objectlaag.  
+            <p>Deze analyse gebruikt bins en vereist een geprojecteerd co&ouml;rdinaatsysteem. U kunt het  <b>Processing co&ouml;rdinaatsysteem</b> instellen bij <b>Analysis Environments</b>. Als uw processing co&ouml;rdinaatsysteem niet op een geprojecteerd co&ouml;rdinaatsysteem is ingesteld, zal u gevraagd worden het in te stellen wanneer u <b>Analyse uitvoeren</b> kest.
+            </p>
+            <p>Naast het kiezen van een laag van uw kaart, kunt u kiezen voor  <b>Blader door lagen</b> aan de onderkant van de drop-downlijst om in uw content te zoeken naar een groot gedeeld databestand of objectlaag.
             </p>
         </div>
     </div>
@@ -81,7 +83,7 @@
         </div>
     </div>
     <div id="inputBins">
-        <div><h2>Selecteer de bingrootte voor hotspotberekeningen</h2></div>
+        <div><h2>Selecteer de bingrootte voor aggregatie</h2></div>
         <hr/>
         <div>
             <p>De afstand gebruikt om vierkante bins te genereren die worden gebruikt om uw invoerpunten te analyseren.
@@ -89,39 +91,56 @@
         </div>
     </div>
     <div id="timeSlicing">
-        <div><h2>Agregeren d.m.v. tijdsdelen (optioneel)</h2></div>
+        <div><h2>Hotspots zoeken met behulp van tijdstappen (optioneel)</h2></div>
         <hr/>
         <div>
-            <p>Als de tijd is ingeschakeld op de puntlaag en het is van het type direct, dan kunt u analyseren met behulp van tijdintervallen.
+            <p>Als de tijd is ingeschakeld op de puntlaag en het is van het type instant, dan kunt u analyseren met behulp van tijdstappen.
             </p>
         </div>
     </div>
     <div id="timeInterval">
-        <div><h2>Tijdsinterval om in te aggregeren</h2></div>
+        <div><h2>Tijdstapintervalo</h2></div>
         <hr/>
         <div>
-            <p>Tijdsinterval gebruikt voor analyse. Als u tijdsplitsingen wilt cre&euml;ren die elke week plaatsvinden, dan moet u de tijdinterval instellen op een week. 
+            <p>Tijdsinterval gebruikt voor het genereren van tijdstappen. Tijd kan worden afgestemd op de begin- of eindtijd van de invoergegevens, of een opgegeven referentietijd.  
             </p>
         </div>
     </div>
     <div id="timeStep">
-        <div><h2>Tijdstap om in te agregeren</h2></div>
+        <div><h2>Tijdstapinterval</h2></div>
         <hr/>
         <div>
-            <p>Hoe tijd wordt uitgelijnd. Tijd kan worden afgestemd op de begin- of eindtijd van de invoergegevens, of een opgegeven referentietijd.  
+            <p>Tijdinterval gebruikt voor het genereren van tijdstappen. Tijd kan worden afgestemd op de begin- of eindtijd van de invoergegevens, of een opgegeven referentietijd.  
+            </p>
+        </div>
+    </div>
+    <div id="timeStepAlignment">
+        <div><h2>Kies hoe tijdstappen uitgelijnd moeten worden</h2></div>
+        <hr/>
+        <div>
+            <p>Hoe tijdstappen worden uitgelijnd. Er zijn drie manieren om tijdstappen uit te lijnen:
+                <ul>
+                    <li> <b>Begintijd</b>&mdash;Tijdstappen worden uitgelijnd met het eerste object in tijd.
+                    </li>
+                    <li> <b>Eindtijd</b>&mdash;Tijdstappen worden uitgelijnd met het laatste object in tijd.
+                    </li>
+                    <li> <b>Referentietijd</b>&mdash;Tijdstappen worden uitgelijnd met een opgegeven tijd.
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>
     <div id="timeReference">
-        <div><h2>Referentietijd gebruikt om tijdsplakken op af te stemmen</h2></div>
+        <div><h2>Referentietijd om tijdstap op uit te lijnen</h2></div>
         <hr/>
         <div>
-            <p>De datum en tijd gebruikt om tijdintervallen op af te stemmen
+            <p>De datum en tijd gebruikt om tijdstappen op af te stemmen
             </p>
         </div>
     </div>
     <div id="neighborhood">
-        <div><h2>De buurtgrootte selecteren</h2></div>
+        <div><h2>Selecteer de buurtgrootte voor hotspotberekeningen</h2></div>
         <hr/>
         <div>
             <p>De afstand gebruikt om de wijk gebruikt voor hotspotberekeningen te bepalen. De buurt moet groter zijn dan de bingrootte zodat elke bin ten minste &eacute;&eacute;n buur heeft. Elke bin wordt geanalyseerd en vergeleken met de naburige bins.
@@ -137,10 +156,20 @@
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Datastore kiezen</h2></div>
+        <div><h2>Kies een ArcGIS Data Store om de resultaten in op te slaan</h2></div>
         <hr/>
         <div>
-            <p>Dit is een tijdelijke parameter voor prerelease om de data-opslag in te stellen waar de resultaten worden opgeslagen. Beide data-opslagplaatsen maken deel uit van  ArcGIS Data Store . Als u de tijdruimtelijke gegevensopslag selecteert maar er geen hebt ge&iuml;nstalleerd, dan zal de tool falen. </p>
+            <p>GeoAnalytische resultaten worden opgeslagen in een ArcGIS Data Store en weergegeven als een objectlaag in  Portal for ArcGIS. In de meeste gevallen moeten de resultaten worden opgeslagen in de spatiotemporele data-opslag en dit is de standaardinstelling. In sommige gevallen is het opslaan van de resultaten in de relationele data-opslag een goede optie. Hier volgen redenen waarom u resultaten zou willen opslaan in een relationele data-opslag: 
+                <ul>
+                    <li>Om uw resultaten te gebruiken voor portaalsamenwerking.
+                    </li>
+                    <li>Om synchronisatiemogelijkheden met uw resultaten mogelijk te maken.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>U moet geen gebruik maken van een relationele data-opslag als u verwacht dat uw GeoAnalytics-resultaten toenemen en u wilt profiteren van de mogelijkheden van de spatiotemporele big data-opslag om grote hoeveelheden gegevens te verwerken. 
+            </p>
         </div>
     </div>
     <div id="outputName">

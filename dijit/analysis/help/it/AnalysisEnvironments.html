@@ -186,7 +186,8 @@
                     </li>
                     <li> <b>Come specificato</b>: specificare un valore numerico per impostare la dimensione della cella. Se questa opzione &egrave; selezionata, il valore predefinito &egrave; 1.
                     </li>
-                    <li> <b>Layer &lt;nome&gt;</b>: imposta la dimensione della cella sul layer raster scelto.
+                    <li> <b>Layer &lt;nome&gt;</b>: imposta
+la dimensione della cella sul layer raster scelto.
                     </li>
                 </ul>
                 
@@ -204,10 +205,28 @@
                 </li>
                 <li>Se la maschera di analisi &egrave; un raster, tutte le celle contenenti un valore verranno considerate per definire la maschera. Le celle in un raster maschera che sono NoData verranno considerate esterne alla maschera e saranno NoData nel layer dei risultati dell'analisi. 
                 </li>
-                <li>Se la maschera dell'analisi &egrave; un feature layer, sar&agrave; convertito internamente in un raster al momento dell'esecuzione. Per questo motivo, assicurarsi che  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">Dimensioni cella</a> e <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">Snap raster</a> siano impostati appropriatamente per l'analisi.
+                <li>Se la maschera dell'analisi &egrave; un feature layer, sar&agrave; convertito internamente in un raster al momento dell'esecuzione. Per questo motivo, assicurarsi che
+ <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank"></a> e <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank"></a> siano impostati appropriatamente per l'analisi.
                 </li>
             </ul>
              
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>ArcGIS Data Store</h2></div>
+        <hr/>
+        <div>
+            <p>I risultati GeoAnalytic sono memorizzati in un ArcGIS Data Store ed esposti come un feature layer in  Portal for ArcGIS. Nella maggior parte dei casi, i risultati devono essere memorizzati in uno Spatiotemporal Data Store. Si tratta dell'impostazione predefinita. Di seguito sono riportate le ragioni per memorizzare i risultati in un Data Store relazionale: 
+                <ul>
+                    <li>Per utilizzare i risultati in collaborazione portale-a-portale
+                    </li>
+                    <li>Per abilitare funzionalit&agrave; di sincronizzazione con i risultati
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Non utilizzare un Data Store relazionale se si prevede un incremento dei risultati GeoAnalytics e si desidera sfruttare le funzionalit&agrave; dello Spatiotemporal Big Data Store per gestire grandi quantit&agrave; di dati. 
+            </p>
         </div>
     </div>
 </div>

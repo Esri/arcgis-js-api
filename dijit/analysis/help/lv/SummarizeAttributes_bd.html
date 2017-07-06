@@ -40,14 +40,14 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Apkopot atribūtus</h2><p/>
         <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Apkopot atribūtus"></h2>
         <hr/>
-    <p>&Scaron;is rīks apkopo visas atbilsto&scaron;ās vērtības vienā vai vairākos laukos un aprēķina to statistiku. Pamata statistika ir apkopoto elementu skaits, taču varat aprēķināt arī padziļinātu statistiku. 
+    <p>&Scaron;is rīks apkopo visas atbilsto&scaron;ās vērtības vienā vai vairākos laukos un aprēķina to statistiku. Pamata statistika ir apkopoto elementu skaits, taču iespējams aprēķināt arī padziļinātāku statistiku. 
 
     </p>
-    <p>Piemēram, pieņemsim, ka jums ir kafijas veikalu izvietojuma punktu elementi ar lauku, kas apzīmē  <i>DISTRICT_MANAGER_NAME</i>, un jūs vēlaties apkopot kafijas pārdo&scaron;anas apjomus pēc vadītāja. Varat norādīt lauku <i>DISTRICT_MANAGER_NAME</i> kā lauku, kurā iz&scaron;ķīdināt, un tiks apkopotas visas datu rindas, kas apzīmē atsevi&scaron;ķus vadītājus. Tādējādi visi veikali, ko vada Manager1 (Vadītājs1), tiek apkopoti vienā rindā, un tiks aprēķināta kopsavilkuma statistika. &Scaron;ajā gadījumā visiem veikaliem, ko vada Vadītājs1 tiek aprēķināta statistika, piemēram, veikalu skaits un <i>TOTAL_SALES</i> summa. Statistika tiek aprēķināta arī jebkuram citam vadītājam, kas norādīts laukā <i>DISTRICT_MANAGER_NAME</i>.
+    <p>Piemēram, pieņemsim, ka jums ir veikalu izvietojuma punkti ar lauku, kas apzīmē  <i>DISTRICT_MANAGER_NAME</i>, un jūs vēlaties apkopot kafijas pārdo&scaron;anas apjomus pēc pārdevēja. Varat norādīt lauku <i>DISTRICT_MANAGER_NAME</i> kā lauku, kurā iz&scaron;ķīdināt, un tiks apkopotas visas datu rindas, kas apzīmē atsevi&scaron;ķus pārdevējus. Tādējādi visi veikali, ko vada Manager1 (Vadītājs1), tiek apkopoti vienā rindā, un tiks aprēķināta kopsavilkuma statistika. &Scaron;ajā gadījumā visiem veikaliem, ko vada Vadītājs1 tiek aprēķināta statistika, piemēram, veikalu skaits un <i>TOTAL_SALES</i> summa. Statistika tiek aprēķināta arī jebkuram citam vadītājam, kas norādīts laukā <i>DISTRICT_MANAGER_NAME</i>.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -57,44 +57,46 @@
         <div>
             <p>Slānis, kas ietver apkopojamos laukus.  
             </p>
-            <p>Papildus slāņa izvēlei kartē, varat izvēlēties  <b>Pārlūkot slāņus</b> nolaižamā saraksta apak&scaron;ā, lai saturā atrastu lielo datu koplietojuma datu kopu vai elementu slāni.  
+            <p>Papildus slāņa izvēlei kartē varat izvēlēties  <b>Pārlūkot slāņus</b> nolaižamā saraksta apak&scaron;ā, lai saturā atrastu Big Data koplietojuma datu kopu vai elementu slāni.
             </p>
         </div>
     </div>
     <div id="fields">
-        <div><h2>Izvēlēties laukus, kuros jāveic izšķīdināšana</h2></div>
+        <div><h2>Izvēlēties apkopojamos laukus</h2></div>
         <hr/>
         <div>
-            <p>  Ievades slāņa lauku saraksts. Izvēlētie lauki tiks apkopoti un izmantoti statistikas aprēķinā. Piemēram, izvēloties lauku <i>PropertyType</i> ar vērtību komercapbūve un dzīvojamā apbūve, visi dzīvojamās apbūves lauki tiks apkopoti un to statistika tiks aprēķināta, un visi komercapbūves lauki tiks apkopoti.
+            <p>Ievades slāņa lauku saraksts. Izvēlētie lauki tiks apkopoti un izmantoti statistikas aprēķinā. Piemēram, izvēloties lauku  <i>PropertyType</i> ar vērtību komercapbūve un dzīvojamā apbūve, visi dzīvojamās apbūves lauki tiks apkopoti un to statistika tiks aprēķināta, un visi komercapbūves lauki tiks apkopoti.
             </p>
         </div>
     </div>
     <div id="summaryFields">
-        <div><h2>Izvēlēties aprēķināmos laukus un statistiku (pēc izvēles)</h2></div>
+        <div><h2>Pievienot statistiku (pēc izvēles)</h2></div>
         <hr/>
         <div>
             <p> Varat aprēķināt apkopoto elementu statistiku. Ciparu laukos iespējams aprēķināt &scaron;ādas vērtības:
                 <ul>
-                    <li>Skaits
+                    <li>Skaits&nbsp;&mdash; aprēķina vērtību, kas nav nulle, skaitu. To var lietot ciparu laukiem un virknēm. [nulle, 0, 2] skaits ir&nbsp;2.
                     </li>
-                    <li>Vidējais
+                    <li>Summa&nbsp;&mdash; katra lauka skaitlisko vērtību summa. [nulle, nulle, 3] summa ir&nbsp;3.
                     </li>
-                    <li>Min.
+                    <li>Vidējais&nbsp;&mdash; vidējā skaitliskā vērtība. [0, 2, nulle] vidējā vērtība ir&nbsp;1.
                     </li>
-                    <li>Maks.
+                    <li>Minimums&nbsp;&mdash; ciparu lauka minimālā vērtība. [0, 2, nulle] minimums ir&nbsp;0. 
                     </li>
-                    <li>Diapazons
+                    <li>Maksimums&nbsp;&mdash; ciparu lauka maksimālā vērtība. [0, 2, nulle] maksimums ir&nbsp;2.
                     </li>
-                    <li>Novirze
+                    <li>Diapazons&nbsp;&mdash; ciparu lauka diapazons. To aprēķina, minimālo vērtību atņemot no maksimālās vērtības. [0, nulle, 1] diapazons ir&nbsp;1. [nulle, 4] diapazons ir&nbsp;0.
                     </li>
-                    <li>Standarta novirze
+                    <li>Novirze&nbsp;&mdash; mar&scaron;ruta ciparu lauka novirze. [1] novirze ir nulle. [nulle, 1, 1, 1] novirze ir&nbsp;1.
+                    </li>
+                    <li>Standarta novirze&nbsp;&mdash; ciparu lauka standarta novirze. [1] standarta novirze ir nulle. [nulle, 1, 1, 1] standarta novirze ir&nbsp;1. 
                     </li>
                 </ul>
                 
             </p>
             <p>Virkņu laukos iespējams aprēķināt &scaron;ādas vērtības:
                 <ul>
-                    <li>Skaits
+                    <li>Skaits&nbsp;&mdash; virkņu, kas nav nulle, skaits.
                     </li>
                     <li>Jebkāda. &Scaron;ī statistika ir nejau&scaron;s virknes vērtības paraugs norādītajā laukā.
                     </li>
@@ -107,14 +109,22 @@
         <div><h2>Izvēlēties datu krātuvi</h2></div>
         <hr/>
         <div>
-            <p>Tas ir pagaidu pirmsizlaides parametrs, kas paredzēts rezultātu saglabā&scaron;anas datu krātuves iestatī&scaron;anai. Abas datu krātuves ir daļa no  ArcGIS datu krātuve. Ja izvēlaties telpas un laika datu krātuvi, bet tā nav instalēta, rīks pārstās darboties. </p>
+            <p>GeoAnalytics rezultāti ir krātuves ArcGIS datu krātuvei, kas tiek parādīts kā elementu slānis   Portal for ArcGIS. Vairumā gadījumu rezultāti jāglabā laika un telpas datu krātuvē, kas tiek darīts pēc noklusējuma. Dažos gadījumos noderīga opcija ir saglabāt rezultātus saistītajā datu krātuvē. Iemesli rezultātu glabā&scaron;anai saistītajā datu krātuvē: 
+                <ul>
+                    <li>Lai izmantotu rezultātus portālu sadarbībā ar portālu.
+                    </li>
+                    <li>Lai aktivizētu sinhronizācijas iespējas ar rezultātiem.
+                    </li>
+                </ul>
+                
+            </p>
         </div>
     </div>
     <div id="outputName">
         <div><h2>Rezultātu slāņa nosaukums</h2></div>
         <hr/>
         <div>
-            <p> &Scaron;is ir slāņa nosaukums, kas tiks izveidots sadaļā <b>Mans Saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja slānis jau pastāv, rīks pārstās darboties.
+            <p> &Scaron;is ir slāņa nosaukums, kas tiks izveidots sadaļā <b>Mans Saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja slānis jau pastāv, rīks nedarbosies.
             </p>
             <p>Lietojot  <b>Saglabāt rezultātus</b> nolaižamajā sarakstlodziņā, jūs varat norādīt nosaukumu mapē <b>Mans saturs</b>, kur tiks saglabāti rezultāti.
             </p>

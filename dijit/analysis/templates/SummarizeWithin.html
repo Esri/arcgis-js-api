@@ -322,6 +322,10 @@
        </table>
      </div>
     <div data-dojo-attach-point="_aggregateToolContentButtons" style="padding:5px;margin-top:5px;border-top:solid 1px #BBB;">
+      <div class="esriFormWarning esriRoundedBox" data-dojo-attach-point="_errorMessagePane" style="display:none;">
+        <a href="#" title="${i18n.close}" class="esriFloatTrailing esriAnalysisCloseIcon" data-dojo-attach-event="onclick:_handleCloseMsg"></a>
+        <span data-dojo-attach-point="_bodyNode"></span>
+      </div>
       <div class="esriExtentCreditsCtr">
         <a class="esriFloatTrailing esriSmallFont"  href="#" data-dojo-attach-point="_showCreditsLink" data-dojo-attach-event="onclick:_handleShowCreditsClick">${i18n.showCredits}</a>
        <label data-dojo-attach-point="_chooseExtentDiv" class="esriSelectLabel esriExtentLabel">
@@ -336,10 +340,4 @@
     <div data-dojo-type="dijit/Dialog" title="${i18n.creditTitle}" data-dojo-attach-point="_usageDialog" style="width:40em;">
       <div data-dojo-type="esri/dijit/analysis/CreditEstimator"  data-dojo-attach-point="_usageForm"></div>
     </div>
-    <div class="esriFormWarning esriRoundedBox" data-dojo-attach-point="_errorMessagePane" style="display:none;">
-      <a href="#" title="${i18n.close}" class="esriFloatTrailing closeIcon" title='${i18n.close}' data-dojo-attach-event="onclick:_handleCloseMsg">
-        <img src='images/close.gif' border='0'/> 
-      </a>
-      <span data-dojo-attach-point="_bodyNode"></span>
-    </div>        
-</div>
+   </div>

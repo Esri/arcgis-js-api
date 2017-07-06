@@ -317,6 +317,10 @@
        </table>
      </div>
     <div data-dojo-attach-point="_aggregateToolContentButtons" style="padding:5px;margin-top:5px;border-top:solid 1px #BBB;">
+      <div class="esriFormWarning esriRoundedBox" data-dojo-attach-point="_errorMessagePane" style="display:none;">
+        <a href="#" title="${i18n.close}" class="esriFloatTrailing esriAnalysisCloseIcon" data-dojo-attach-event="onclick:_handleCloseMsg"></a>
+        <span data-dojo-attach-point="_bodyNode"></span>
+      </div>
       <div class="esriExtentCreditsCtr">
         <a class="esriFloatTrailing esriSmallFont"  href="#" data-dojo-attach-point="_showCreditsLink" data-dojo-attach-event="onclick:_handleShowCreditsClick">${i18n.showCredits}</a>
        <label data-dojo-attach-point="_chooseExtentDiv" class="esriSelectLabel esriExtentLabel">

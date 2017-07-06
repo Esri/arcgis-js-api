@@ -186,7 +186,8 @@
                     </li>
                     <li> <b>지정한 대로</b>&mdash;셀 크기를 설정하도록 숫자 값을 지정합니다. 이 옵션을 선택하는 경우 기본값은 1입니다.
                     </li>
-                    <li> <b>레이어 &lt;이름&gt;</b>&mdash;셀 크기를 선택한 래스터 레이어로 설정합니다.
+                    <li> <b>레이어 &lt;이름&gt;</b>&mdash;
+셀 크기를 선택한 래스터 레이어로 설정합니다.
                     </li>
                 </ul>
                 
@@ -204,10 +205,28 @@
                 </li>
                 <li>분석 마스크가 래스터인 경우 값을 가진 모든 셀이 마스크를 정의하는 데 고려됩니다. NoData인 마스크 래스터의 셀은 마스크 외부에 있는 것으로 간주되며 분석 결과 레이어에서 NoData가 됩니다. 
                 </li>
-                <li>분석 마스크가 피처 레이어인 경우 실행 시 래스터로 내부 전환됩니다. 이러한 이유로  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">셀 크기</a> 및 <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">래스터 스냅</a>이 분석에 맞게 적절히 설정되도록 주의를 기울여야 합니다.
+                <li>분석 마스크가 피처 레이어인 경우 실행 시 래스터로 내부 전환됩니다. 이러한 이유로 
+ <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank"></a> 및 <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank"></a>이 분석에 맞게 적절히 설정되도록 주의를 기울여야 합니다.
                 </li>
             </ul>
              
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>ArcGIS Data Store</h2></div>
+        <hr/>
+        <div>
+            <p>GeoAnalytic 결과는 ArcGIS Data Store에 저장되며  Portal for ArcGIS에서 피처 레이어로 나타납니다. 대부분의 경우 결과는 시공간적 데이터 저장소에 저장되어야 합니다. 이 옵션이 기본 설정입니다. 하지만 다음과 같은 이유로 결과를 관계형 데이터 저장소에 저장할 수도 있습니다. 
+                <ul>
+                    <li>결과를 포털 간 컬래버레이션에 사용하기 위해
+                    </li>
+                    <li>기능을 결과와 동기화하기 위해
+                    </li>
+                </ul>
+                
+            </p>
+            <p>GeoAnalytics 결과가 늘어날 것으로 예상되며 시공간형 빅데이터 저장소의 기능을 활용하여 대용량 데이터를 처리하려는 경우에는 관계형 데이터 저장소를 사용하지 마세요. 
+            </p>
         </div>
     </div>
 </div>

@@ -40,9 +40,9 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Crea buffer</h2><p/>
-        <h2><img src="../images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" alt="Crea Buffer"></h2>
+        <h2><img src="../images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" alt="Crea buffer"></h2>
         <hr/>
     <p>Un buffer &egrave; un'area che copre una data distanza da una feature punto, linea o area. 
     </p>
@@ -54,9 +54,9 @@
         <div><h2>Scegliere il layer a cui applicare il buffer</h2></div>
         <hr/>
         <div>
-            <p>La feature punto, linea o area da includere nel buffer.
+            <p>La feature punto, linea o area da includere nel buffer. I layer di input devono essere in un sistema di coordinate proiettate o il riferimento spaziale di elaborazione deve essere impostato su un sistema di coordinate proiettate utilizzando gli  <b>Ambienti di analisi</b>.
             </p>
-            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Sfoglia layer</b> alla base dell'elenco a discesa per cercare una dataset di condivisione file Big Data o un feature layer.  
+            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Sfoglia layer</b> alla base dell'elenco a discesa per cercare una dataset di condivisione file Big Data o un feature layer.
             </p>
         </div>
     </div>
@@ -126,26 +126,28 @@
         <div>
             <p> &Egrave; possibile calcolare le statistiche su feature riepilogate. Su campi numerici &egrave; possibile calcolare quanto segue:
                 <ul>
-                    <li>Conteggio
+                    <li>Conteggio: calcola il numero di valori nonnull. Pu&ograve; essere utilizzato su campi o stringhe numeriche. Il conteggio di [null, 0, 2] &egrave; 2.
                     </li>
-                    <li>Media
+                    <li>Somma: la somma dei valori numerici in un campo. La somma di [null, null, 3] &egrave; 3.
                     </li>
-                    <li>Minimo
+                    <li>Media: la media di valori numerici. La media di [0, 2, null] &egrave; 1.
                     </li>
-                    <li>Massimo
+                    <li>Min: il valore minimo di un campo numerico. Il minimo di [0, 2, null] &egrave; 0. 
                     </li>
-                    <li>Intervallo
+                    <li>Max: il valore massimo di un campo numerico. Il valore massimo di [0, 2, null] &egrave; 2.
                     </li>
-                    <li>Varianza
+                    <li>Intervallo: l'intervallo di un campo numerico. Questo viene calcolato come i valori minimi sottratti dal valore massimo. L'intervallo di [0, null, 1] &egrave; 1. L'intervallo di [null, 4] &egrave; 0.
                     </li>
-                    <li>Deviazione standard
+                    <li>Varianza: la varianza di un campo numerico in una traccia. La varianza di [1] is null. La varianza di [null, 1,1,1] &egrave; 1.
+                    </li>
+                    <li>Deviazione standard: la deviazione standard di un campo numerico. La deviazione standard di [1] &egrave; null. La deviazione standard di [null, 1,1,1] &egrave; 1. 
                     </li>
                 </ul>
                 
             </p>
             <p>Su campi stringa &egrave; possibile calcolare quanto segue:
                 <ul>
-                    <li>Conteggio
+                    <li>Conteggio: il numero di stringhe nonnull.
                     </li>
                     <li>Qualsiasi: questa statistica &egrave; un esempio casuale di un valore stringa nel campo specificato.
                     </li>
@@ -155,10 +157,20 @@
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Scegliere un archivio dati</h2></div>
+        <div><h2>Scegliere un ArcGIS Data Store in cui salvare i risultati</h2></div>
         <hr/>
         <div>
-            <p>Questo &egrave; un parametro temporaneo per la versione provvisoria che consente di impostare il Data Store in cui verranno salvati i risultati. Entrambi i Data Store fanno parte di  ArcGIS Data Store. Se si seleziona lo Spatiotemporal Data Store ma questo non &egrave; installato, lo strumento non verr&agrave; eseguito. </p>
+            <p>I risultati GeoAnalytic sono memorizzati in un ArcGIS Data Store ed esposti come un feature layer in  Portal for ArcGIS. Nella maggior parte dei casi, i risultati devono essere memorizzati nello Spatiotemporal Data Store e questa &egrave; l'impostazione predefinita. In alcuni casi, il salvataggio dei risultati nel Data Store relazionale &egrave; un'ottima opzione. Di seguito sono memorizzate le ragioni per memorizzare i risultati nel Data Store relazionale: 
+                <ul>
+                    <li>Utilizzare i risultati nella collaborazione da portale a portale.
+                    </li>
+                    <li>Abilitare funzionalit&agrave; di sincronizzazione con i risultati.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Non utilizzare il Data Store relazionale se si prevede un incremento dei risultati GeoAnalytics ed &egrave; necessario sfruttare le funzionalit&agrave; dello Spatiotemporal Big Data Store per gestire grandi quantit&agrave; di dati. 
+            </p>
         </div>
     </div>
     <div id="outputName">
@@ -167,7 +179,7 @@
         <div>
             <p> Questo &egrave; il nome del layer che verr&agrave; creato in <b>I miei contenuti</b> e aggiunto alla mappa.  Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, lo strumento non verr&agrave; eseguito.
             </p>
-            <p>Utilizzare la casella a discesa  <b>Salva risultato in</b> per specificare il nome di una cartella di <b>I miei contenuti</b> in cui salvare il risultato.
+            <p>Utilizzare la casella a discesa  <b>Salva risultato in</b> per specificare il nome di una cartella in <b>I miei contenuti</b> in cui salvare il risultato.
             </p>
         </div>
     </div>

@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Yoğunluğu Hesapla</h2><p/>
+        <h2>Yoğunluğu Hesaplama</h2><p/>
         <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Calculate Density"></h2>
         <hr/>
     <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas classified from least dense to most dense.   
@@ -70,12 +70,12 @@
         <div>
             <p>The point layer on which the density will be calculated.
             </p>
-            <p>Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, a&ccedil;ılan listenin en altından  <b>Katmanlara G&ouml;zat</b> &ouml;ğesini belirleyerek big data dosya paylaşımı veri k&uuml;mesi veya detay katmanı i&ccedil;eriğinize g&ouml;z atabilirsiniz.  
+            <p>Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, a&ccedil;ılan listenin en altından  <b>Katmanlara G&ouml;zat</b> &ouml;ğesini belirleyerek big data dosya paylaşımı veri k&uuml;mesi veya detay katmanı i&ccedil;eriğinize g&ouml;z atabilirsiniz.
             </p>
         </div>
     </div>
     <div id="fields">
-        <div><h2>Yoğunluğunun hesaplanacağı bir veya birkaç alan seçin</h2></div>
+        <div><h2>Yoğunluğunun hesaplanacağı bir veya birkaç alan seçin (isteğe bağlı)</h2></div>
         <hr/>
         <div>
             <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
@@ -90,10 +90,12 @@
         <div>
             <p>The shape of bins that points are aggregated into and used for the density calculation.
             </p>
+            <p> <b>Kare</b> veya <b>Altıgen</b> kutu kullanan analiz izd&uuml;ş&uuml;ml&uuml; bir koordinat sistemi gerektirir. <b>İşleme koordinat sistemini</b> <b>Analiz Ortamları</b> i&ccedil;inden ayarlayabilirsiniz. İşleme koordinat sisteminiz izd&uuml;ş&uuml;ml&uuml; bir koordinat sistemine ayarlanmamış ise, <b>Analizi &Ccedil;alıştır</b>dığınızda bu ayarlamayı yapmanız istenir.
+            </p>
         </div>
     </div>
     <div id="binSizing">
-        <div><h2>Yoğunluk hesaplamaları için kutu boyutu seçin</h2></div>
+        <div><h2>Birleştirme için kutu boyutunu seçin</h2></div>
         <hr/>
         <div>
             <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
@@ -127,67 +129,67 @@
         <div><h2>Yoğunluk için çıktı birimini seçin</h2></div>
         <hr/>
         <div>
-            <p>The desired output units of the density values. By default, this is set to the units in your map (for example, square meters). If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+            <p>The desired output units of the density values. By default, this is set to square kilometers or square miles based on the default units specified in your profile. If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
 
             </p>
         </div>
     </div>
     <div id="timeSlicing">
-        <div><h2>Zaman dilimlerini kullanarak yoğunluğu hesapla (isteğe bağlı)</h2></div>
+        <div><h2>Yoğunluğu zaman adımlarını kullanarak hesapla (isteğe bağlı)</h2></div>
         <hr/>
         <div>
-            <p>Girdi nokta katmanında zaman etkinleştirilmiş ve t&uuml;r&uuml; de anlık ise, zaman dilimlemeyi kullanarak analiz yapabilirsiniz.  Zaman &ouml;ğesini kullanırken ayarlayabileceğiniz &uuml;&ccedil; parametre vardır:
+            <p>Girdi nokta katmanında zaman etkinleştirilmiş ve t&uuml;r&uuml; de anlık ise, zaman adımlamasını kullanarak analiz yapabilirsiniz. Zaman &ouml;ğesini kullanırken ayarlayabileceğiniz &uuml;&ccedil; parametre vardır:
                 <ul>
-                    <li>  <b>Zaman Aralığı</b>
+                    <li> <b>Zaman adımı aralığı</b>
                     </li>
-                    <li> <b>Zaman Adımı</b>
+                    <li> <b>Zaman adımını yineleme aralığı</b>
                     </li>
-                    <li> <b>Referans Zaman</b>
+                    <li> <b>Zaman adımlarını d&uuml;zenleme s&uuml;resi</b>
                     </li>
                 </ul>
                 
             </p>
-            <p>Bir yıllık bir zamanı temsil eden verilerinizin olduğunu ve haftalık dilimleri kullanarak analiz yapmak istediğinizi d&uuml;ş&uuml;n&uuml;n. Bunu yapmak i&ccedil;in  <b>Zaman Aralığı</b> değerini <code>1 hafta</code> olarak ayarlarsınız.
+            <p>Bir yıllık bir zamanı temsil eden verilerinizin olduğunu ve haftalık adımları kullanarak analiz yapmak istediğinizi d&uuml;ş&uuml;n&uuml;n. Bunu yapmak i&ccedil;in  <b>Zaman adımı aralığı</b> değerini <code>1 hafta</code> olarak ayarlarsınız.
             </p>
-            <p> Bir yıllık bir zamanı temsil eden verilerinizin olduğunu ve ayın ilk haftasını kullanarak analiz yapmak istediğinizi d&uuml;ş&uuml;n&uuml;n. Bunu yapmak i&ccedil;in <b>Zaman Aralığı</b> değerini <code>1 hafta</code>, <b>Zaman Adımı</b> değerini <code>1 ay</code> ve <b>Referans Saati</b> değerini de <code>1 Ocak, 00:00</code> olarak ayarlarsınız.
+            <p>Bir yıllık bir zamanı temsil eden verilerinizin olduğunu ve ayın ilk haftasını kullanarak analiz yapmak istediğinizi d&uuml;ş&uuml;n&uuml;n. Bunu yapmak i&ccedil;in  <b>Zaman adımı aralığı</b> değerini <code>1 hafta</code>, <b>Zaman adımı yineleme aralığı</b> değerini <code>1 ay</code> ve <b>Zaman adımlarının ayarlanacağı zaman</b> değerini <code>1 Ocak, saat 12:00</code> olarak ayarlarsınız.
             </p>
         </div>
     </div>
     <div id="timeInterval">
-        <div><h2>Yoğunluğun hesaplanacağı zaman aralığı</h2></div>
+        <div><h2>Zaman adımı aralığı</h2></div>
         <hr/>
         <div>
-            <p>Verileri dilimlemek i&ccedil;in kullanılan zaman aralığı. Zaman aralığı tek başına kullanılabileceği gibi,  <b>Zaman Adımı</b> veya <b>Referans Saat</b> parametresiyle de kullanılabilir.
+            <p>Zaman adımı oluşturmak i&ccedil;in kullanılan zaman aralığı. Zaman adımı aralığı tek başına veya  <b>Zaman adımını tekrarlama sıklığı</b> ya da <b>Zaman adımlarının ayarlanacağı zaman</b> parametreleriyle birlikte kullanabilirsiniz.
             </p>
-            <p> Her Pazartesi saat 9:00 ile 22:00 arasında oluşan zaman dilimleri oluşturmak istediğinizde, <b>Zaman Aralığı</b> değeri <code>1 saat</code>, <b>Zaman Adımı</b> değeri <code>1 hafta</code> ve <b>Referans Saat</b> değeri de <code>Pazartesi g&uuml;n&uuml; 9:00:00</code> olur.
+            <p>Her Pazartesi saat 9:00 ile 10:00 arasında oluşan zaman dilimleri oluşturmak istediğinizde,  <b>Zaman adımı aralığı</b> değeri <code>1 saat</code>, <b>Zaman adımını tekrarlama sıklığı</b> değeri <code>1 hafta</code> ve <b>Zaman adımlarının ayarlanacağı zaman</b> değeri de <code>Pazartesi g&uuml;n&uuml; 9:00:00</code> olur.
             </p>
         </div>
     </div>
     <div id="timeStep">
-        <div><h2>Yoğunluğun hesaplanacağı zaman adımı</h2></div>
+        <div><h2>Zaman adımını yineleme aralığı</h2></div>
         <hr/>
         <div>
-            <p> Bir zaman dilimi hesaplamak i&ccedil;in kullanılan adım. <b>Zaman Adımı</b> tek başına kullanılabileceği gibi <b>Zaman Aralığı</b> ile, <b>Referans Saat</b> ile veya hem <b>Zaman Aralığı</b> hem de <b>Referans Saat</b> ile birlikte kullanılabilir.
+            <p> Bir zaman dilimi hesaplamak i&ccedil;in kullanılan adım. <b>Zaman adımını yineleme aralığı</b> tek başına veya <b>Zaman adımı aralığı</b> ile, <b>Referans Zaman</b> ile veya <b>Zaman adımı aralığı</b> ve <b>Zaman adımlarının ayarlanacağı zaman</b> parametrelerinin her ikisi ile de kullanılabilir.
             </p>
-            <p> Her Pazartesi saat 9:00 ile 22:00 arasında oluşan zaman dilimleri oluşturmak istediğinizde, <b>Zaman Aralığı</b> değeri <code>1 saat</code>, <b>Zaman Adımı</b> değeri <code>1 hafta</code> ve <b>Referans Saat</b> değeri de <code>Pazartesi g&uuml;n&uuml; 9:00:00</code> olur.
+            <p> Her Pazartesi saat 9:00 ile 10:00 arasında oluşan zaman dilimleri oluşturmak istediğinizde, <b>Zaman adımı aralığı</b> değeri <code>1 saat</code>, <b>Zaman adımını yineleme aralığı</b> değeri <code>1 hafta</code> ve <b>Zaman adımlarının ayarlanacağı zaman</b> değeri de <code>Pazartesi g&uuml;n&uuml; 9:00:00</code> olur.
             </p>
         </div>
     </div>
     <div id="timeReference">
-        <div><h2>Zaman dilimlemeyi eşleştirmek için kullanılacak referans süre</h2></div>
+        <div><h2>Zaman adımlarının ayarlanacağı zaman</h2></div>
         <hr/>
         <div>
-            <p>Zaman dilimlemeyi eşleştirmek i&ccedil;in kullanılan tarih ve saat.  <b>Zaman Adımı</b> başlatılır ve referans saatten geriye doğru devam eder.
+            <p>Zaman dilimlemeyi eşleştirmek i&ccedil;in kullanılan tarih ve saat. Zaman adımlaması bu saatte başlatılır ve buradan geriye doğru devam eder. Referans saat se&ccedil;ilmezse, zaman adımlaması 1 Ocak 1970&rsquo;ten başlatılır. 
             </p>
-            <p> Her Pazartesi saat 9:00 ile 22:00 arasında oluşan zaman dilimleri oluşturmak istediğinizde, <b>Zaman Aralığı</b> değeri <code>1 saat</code>, <b>Zaman Adımı</b> değeri <code>1 hafta</code> ve <b>Referans Saat</b> değeri de <code>Pazartesi g&uuml;n&uuml; 9:00:00</code> olur.
+            <p> Her Pazartesi saat 9:00 ile 10:00 arasında oluşan zaman dilimleri oluşturmak istediğinizde, <b>Zaman adımı aralığı</b> değeri <code>1 saat</code>, <b>Zaman adımını yineleme aralığı</b> değeri <code>1 hafta</code> ve <b>Zaman adımlarının ayarlanacağı zaman</b> değeri de <code>Pazartesi g&uuml;n&uuml; 9:00:00</code> olur.
             </p>
         </div>
     </div>
     <div id="spatialReference">
-        <div><h2>KonumsalReferans (wkid)</h2></div>
+        <div><h2>SpatialReference (wkid)</h2></div>
         <hr/>
         <div>
-            <p>Bu, mekansal başvuruyu ayarlamak amacıyla &ouml;n s&uuml;r&uuml;m i&ccedil;in ge&ccedil;ici bir parametredir. Big data ara&ccedil;larının pek &ccedil;oğu, işlem i&ccedil;in mekansal başvuru olarak izd&uuml;ş&uuml;mlendirilmiş bir koordinat sisteminin kullanılmasını gerektirir. Varsayılan olarak, ara&ccedil; girdi koordinat sistemini kullanır, ancak bu bir coğrafi koordinat sistemi olduğunda &ccedil;alışmaz. İzd&uuml;ş&uuml;mlendirilmiş bir koordinat sistemi ayarlamak i&ccedil;in WKID girin. &Ouml;rneğin,  <b>Web Mercator</b> değeri, <code>3857</code> olarak girilebilir.
+            <p>Bu, mekansal başvuruyu ayarlamak amacıyla &ouml;n s&uuml;r&uuml;m i&ccedil;in ge&ccedil;ici bir parametredir. Big data ara&ccedil;larının pek &ccedil;oğu, işlem i&ccedil;in mekansal başvuru olarak izd&uuml;ş&uuml;mlendirilmiş bir koordinat sisteminin kullanılmasını gerektirir. Varsayılan olarak, ara&ccedil; girdi koordinat sistemini kullanır, ancak bu bir coğrafi koordinat sistemi olduğunda &ccedil;alışmaz. İzd&uuml;ş&uuml;mlendirilmiş bir koordinat sistemi ayarlamak i&ccedil;in WKID girin. &Ouml;rneğin,  <b>Web Mercator</b> değeri, <code>3857</code>olarak girilebilir.
             </p>
         </div>
     </div>
@@ -195,14 +197,24 @@
         <div><h2>Veri deposu seç</h2></div>
         <hr/>
         <div>
-            <p>Bu, sonu&ccedil;ların kaydedileceği veri deposunu ayarlamak amacıyla &ouml;n s&uuml;r&uuml;m i&ccedil;in ge&ccedil;ici bir parametredir. Her iki veri deposu da  ArcGIS Data Store uygulamasının bir par&ccedil;asıdır. Y&uuml;kl&uuml; değilken spatiotemporal data store &ouml;ğesini se&ccedil;erseniz ara&ccedil; &ccedil;alışmaz. </p>
+            <p>GeoAnalytics sonu&ccedil;ları ArcGIS Data Store i&ccedil;in depo g&ouml;revi g&ouml;r&uuml;r ve  Portal for ArcGIS i&ccedil;inde bir detay katmanı olarak yansıtılır. Pek &ccedil;ok durumda sonu&ccedil;ların spatiotemporal data store &ouml;ğesine depolanması gerekir ve bu varsayılan ayardır. Bazı durumlarda sonu&ccedil;ların ilişkisel veri deposuna kaydedilmesi iyi bir se&ccedil;enektir. Sonu&ccedil;ların ilişkisel veri deposuna saklanmasını isteyebileceğiniz nedenler aşağıda sunulmuştur: 
+                <ul>
+                    <li>Sonu&ccedil;ları portal ortak kullanımı portalda kullanma olanağı.
+                    </li>
+                    <li>Sonu&ccedil;larınızı eşzamanlama &ouml;zelliklerini etkinleştirebilme.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>GeoAnalytics sonu&ccedil;larınızın artmasını bekliyorsanız, ilişkisel veri deposunu kullanmamalı ve b&uuml;y&uuml;k miktarda veri s&ouml;z konusu olduğunda bunları işlemek i&ccedil;in spatiotemporal big data deposunun avantajından yararlanmalısınız. 
+            </p>
         </div>
     </div>
     <div id="outputName">
         <div><h2>Sonuç katmanı adı</h2></div>
         <hr/>
         <div>
-            <p> Bu, <b>İ&ccedil;eriğim</b>de oluşturulacak ve haritaya eklenecek katmanın adıdır.  Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Detay katmanı zaten varsa ara&ccedil; &ccedil;alışmaz.
+            <p> Bu, <b>İ&ccedil;eriğim</b>&rsquo;de oluşturulacak ve haritaya eklenecek katmanın adıdır.  Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Detay katmanı zaten varsa ara&ccedil; &ccedil;alışmaz.
             </p>
             <p> <b>Sonu&ccedil;ları kaydet</b> a&ccedil;ılır kutusunu kullanarak <b>İ&ccedil;eriğim</b> alanında sonucun kaydedileceği klas&ouml;r adını belirleyebilirsiniz.
             </p>

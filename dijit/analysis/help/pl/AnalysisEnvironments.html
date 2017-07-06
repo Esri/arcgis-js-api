@@ -112,7 +112,7 @@
                 <ul>
                     <li> <b>Taki sam jak dane wejściowe</b> &mdash; wynik analizy będzie w takim samym układzie wsp&oacute;łrzędnych jak dane wejściowe. Jest to opcja domyślna.
                     </li>
-                    <li> <b>Jak podano</b> &mdash; wybierz układ wsp&oacute;łrzędnych dla wynik&oacute;w analizy.   Jeśli ta opcja jest zaznaczona, kliknij ikonę przedstawiającą kulę ziemską, aby wybrać wartość z listy znanych układ&oacute;w wsp&oacute;łrzędnych lub dodać identyfikator WKID odniesienia przestrzennego w udostępnionym polu.
+                    <li> <b>Jak podano</b> &mdash; wybierz układ wsp&oacute;łrzędnych dla wynik&oacute;w analizy.   Jeśli ta opcja jest zaznaczona, kliknij ikonę przedstawiającą kulę ziemską, aby wybrać wartość z listy znanych układ&oacute;w wsp&oacute;łrzędnych, lub dodaj identyfikator WKID odniesienia przestrzennego w udostępnionym polu.
                     </li>
                     <li> <b>Warstwa 
 &lt;nazwa&gt;</b> &mdash; wybierz na mapie internetowej istniejącą warstwę, kt&oacute;ra zostanie użyta do określenia układu wsp&oacute;łrzędnych wynik&oacute;w analizy.
@@ -134,7 +134,7 @@
                 <ul>
                     <li> <b>Taki sam jak dane wejściowe</b> &mdash; analiza będzie przetwarzana w takim samym układzie wsp&oacute;łrzędnych jak dane wejściowe. Jest to opcja domyślna.
                     </li>
-                    <li> <b>Jak podano</b> &mdash; wybierz układ wsp&oacute;łrzędnych do przetworzenia analizy. Jeśli ta opcja jest zaznaczona, kliknij ikonę przedstawiającą kulę ziemską, aby wybrać wartość z listy znanych układ&oacute;w wsp&oacute;łrzędnych odwzorowanych lub dodać identyfikator WKID odniesienia przestrzennego w udostępnionym polu.
+                    <li> <b>Jak podano</b> &mdash; wybierz układ wsp&oacute;łrzędnych do przetworzenia analizy. Jeśli ta opcja jest zaznaczona, kliknij ikonę przedstawiającą kulę ziemską, aby wybrać wartość z listy znanych układ&oacute;w wsp&oacute;łrzędnych odwzorowanych, lub dodaj identyfikator WKID odniesienia przestrzennego w udostępnionym polu.
                     </li>
                     <li> <b>Warstwa 
 &lt;nazwa&gt;</b> &mdash; wybierz istniejącą warstwę z mapy internetowej.  Układ wsp&oacute;łrzędnych wybranej warstwy zostanie użyty do określenia układu wsp&oacute;łrzędnych, kt&oacute;ry będzie używany podczas przetwarzania analizy.
@@ -152,7 +152,7 @@
             </p>
             <p>
                 <ul>
-                    <li> <b>Domyślnie</b> &mdash; używany jest zasięg udostępniony przez narzędzie.
+                    <li> <b>Domyślnie</b> &mdash; użyj zasięgu udostępnionego przez to narzędzie.
                     </li>
                     <li> <b>Jak podano</b> &mdash; ręcznie wprowadź wsp&oacute;łrzędne w celu zdefiniowania zasięgu.
                     </li>
@@ -186,7 +186,7 @@
                     </li>
                     <li> <b>Jak podano</b> &mdash; podaj wartość liczbową w celu ustawienia wielkości kom&oacute;rki. Jeśli zostanie wybrana ta opcja, wartością domyślną jest 1.
                     </li>
-                    <li> <b>Warstwa &lt;nazwa&gt;</b> &mdash; ustawia wielkość kom&oacute;rki na wybraną warstwę rastrową.
+                    <li> <b>Warstwa &lt;nazwa&gt;</b> &mdash; ustaw wielkość kom&oacute;rki zgodnie z wybraną warstwą rastrową.
                     </li>
                 </ul>
                 
@@ -204,10 +204,27 @@
                 </li>
                 <li>Jeśli maską analizy jest raster, przy definiowaniu maski pod uwagę zostaną wzięte wszystkie kom&oacute;rki zawierające wartość. Kom&oacute;rki w rastrze maski, kt&oacute;re mają wartość NoData, będą uznawane za znajdujące się poza maską i będą mieć wartość NoData w warstwie wynikowej analizy. 
                 </li>
-                <li>Jeśli maska analizy jest warstwą obiektową, zostanie przy wykonywaniu przekształcona wewnętrznie w raster. Dlatego należy zadbać o to, aby dla analizy ustalić odpowiednie wartości ustawień środowiskowych  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">Wielkość kom&oacute;rki</a> i <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">Raster dociągania</a>.
+                <li>Jeśli maska analizy jest warstwą obiektową, zostanie przy wykonywaniu przekształcona wewnętrznie w raster. Dlatego należy zadbać o to, aby dla analizy ustalić odpowiednie wartości ustawień środowiskowych  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank"></a> i <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank"></a>.
                 </li>
             </ul>
              
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>ArcGIS Data Store</h2></div>
+        <hr/>
+        <div>
+            <p>Wyniki analiz geoprzestrzennych są przechowywane w aplikacji ArcGIS Data Store i udostępniane jako warstwa obiekt&oacute;w w witrynie  Portal for ArcGIS. W większości przypadk&oacute;w wyniki powinny być przechowywane magazynie danych czasowo-przestrzennych. Jest to opcja domyślna. Poniżej podano sytuacje, kt&oacute;re mogą uzasadniać przechowywanie wynik&oacute;w w relacyjnym magazynie danych: 
+                <ul>
+                    <li>Używanie wynik&oacute;w w kooperacji-między-portalami
+                    </li>
+                    <li>Włączanie możliwości synchronizacji dla wynik&oacute;w
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Nie należy używać relacyjnego magazynu danych, jeśli liczba wynik&oacute;w analiz geoprzestrzennych może się zwiększyć i może być konieczne zastosowanie magazynu dużych zbior&oacute;w danych czasowo-przestrzennych w celu obsłużenia dużych ilości danych. 
+            </p>
         </div>
     </div>
 </div>

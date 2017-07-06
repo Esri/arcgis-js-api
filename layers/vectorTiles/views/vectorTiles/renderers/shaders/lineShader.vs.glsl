@@ -27,7 +27,7 @@ const float scale = 1.0 / 31.0;
 
 void main()
 {
-  v_normal = a_offsetAndNormal.zw;
+  v_normal = a_offsetAndNormal.zw * scale;
 
   // calculate the relative distance from the centerline to the edge of the line. Since offset is given in integers (for the
   // sake of using less attribute memory, we need to scale it back to the original range of ~ 0: 1)

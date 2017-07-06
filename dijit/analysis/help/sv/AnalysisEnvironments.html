@@ -112,7 +112,7 @@
                 <ul>
                     <li> <b>Samma som indata</b> &ndash; Analysresultatet anv&auml;nder samma koordinatsystem som indata. Det h&auml;r &auml;r standardinst&auml;llningen.
                     </li>
-                    <li> <b>Enligt vad som anges</b> &ndash; V&auml;lj koordinatsystem f&ouml;r analysresultatet.   N&auml;r det h&auml;r alternativet har valts kan du klicka p&aring; jordglobsikonen f&ouml;r att v&auml;lja alternativ i en lista med k&auml;nda koordinatsystem, eller l&auml;gga till den geografiska referensen WKID i den angivna rutan.
+                    <li> <b>Enligt vad som anges</b> &ndash; V&auml;lj koordinatsystem f&ouml;r analysresultatet.   N&auml;r det h&auml;r alternativet har valts kan du klicka p&aring; jordglobsikonen f&ouml;r att v&auml;lja alternativ i en lista med k&auml;nda koordinatsystem eller l&auml;gga till den geografiska referensen WKID i den angivna rutan.
                     </li>
                     <li> <b>Lager
 &lt;namn&gt;</b> &ndash; V&auml;lj ett befintligt lager i din webbkarta som ska anv&auml;ndas f&ouml;r att avg&ouml;ra koordinatsystemet f&ouml;r analysresultatet.
@@ -134,7 +134,7 @@
                 <ul>
                     <li> <b>Samma som indata</b> &ndash; Analysen bearbetas i samma koordinatsystem som indata. Det h&auml;r &auml;r standardinst&auml;llningen.
                     </li>
-                    <li> <b>Enligt vad som anges</b> &ndash; V&auml;lj koordinatsystem f&ouml;r bearbetningen av analysen. N&auml;r det h&auml;r alternativet har valts kan du klicka p&aring; jordglobsikonen f&ouml;r att v&auml;lja ett alternativ i en lista med k&auml;nda projicerade koordinatsystem, eller l&auml;gga till den geografiska referensen WKID i den angivna rutan.
+                    <li> <b>Enligt vad som anges</b> &ndash; V&auml;lj koordinatsystem f&ouml;r bearbetningen av analysen. N&auml;r det h&auml;r alternativet har valts kan du klicka p&aring; jordglobsikonen f&ouml;r att v&auml;lja ett alternativ i en lista med k&auml;nda projicerade koordinatsystem eller l&auml;gga till den geografiska referensen WKID i den angivna rutan.
                     </li>
                     <li> <b>Lager
 &lt;namn&gt;</b> &ndash; V&auml;lj ett befintligt lager fr&aring;n webbkartan.  Koordinatsystemet f&ouml;r det lager som valts kommer att anv&auml;ndas f&ouml;r att fastst&auml;lla vilket koordinatsystem som ska anv&auml;ndas f&ouml;r att bearbeta analysen.
@@ -152,7 +152,7 @@
             </p>
             <p>
                 <ul>
-                    <li> <b>Standard</b> &ndash; Anv&auml;nder den utbredning som anges av verktyget.
+                    <li> <b>Standard</b> &ndash; Anv&auml;nd den utbredning som anges av verktyget.
                     </li>
                     <li> <b>Enligt vad som anges</b> &ndash; Ange koordinaterna f&ouml;r att definiera utbredningen manuellt.
                     </li>
@@ -186,7 +186,8 @@
                     </li>
                     <li> <b>Enligt vad som anges</b> &ndash; Ange ett numeriskt v&auml;rde f&ouml;r inst&auml;llning av cellstorleken. Om det h&auml;r alternativet &auml;r valt blir standardv&auml;rdet 1.
                     </li>
-                    <li> <b>Lager &lt;namn&gt;</b> &ndash; Anger cellstorleken till det valda rasterlagret.
+                    <li> <b>Lager &lt;namn&gt;</b> &ndash; Ange
+cellstorleken till det valda rasterlagret.
                     </li>
                 </ul>
                 
@@ -204,10 +205,28 @@
                 </li>
                 <li>Om analysmasken &auml;r ett raster kommer alla celler som har ett v&auml;rde att anv&auml;ndas f&ouml;r att definiera masken. Celler i ett maskraster som har v&auml;rdet NoData anses ligga utanf&ouml;r masken och f&aring;r v&auml;rdet NoData i analysresultatlagret. 
                 </li>
-                <li>Om analysmasken &auml;r ett geoobjektslager omvandlas den internt till ett raster vid k&ouml;rningen. D&auml;rf&ouml;r b&ouml;r du se till att  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">Cellstorlek</a> och <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">Snappa raster</a> st&auml;lls in p&aring; l&auml;mpligt s&auml;tt f&ouml;r analysen.
+                <li>Om analysmasken &auml;r ett geoobjektslager omvandlas den internt till ett raster vid k&ouml;rningen. D&auml;rf&ouml;r b&ouml;r du se till att
+ <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank"></a> och <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank"></a> st&auml;lls in p&aring; l&auml;mpligt s&auml;tt f&ouml;r analysen.
                 </li>
             </ul>
              
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>ArcGIS Data Store</h2></div>
+        <hr/>
+        <div>
+            <p>GeoAnalytic-resultat sparas i ett ArcGIS-datalager och visas som ett geoobjektslager i  Portal for ArcGIS. I de flesta fall b&ouml;r resultaten sparas i ett rumstemporalt datalager. Det h&auml;r &auml;r standardinst&auml;llningen. F&ouml;ljande &auml;r anledningar till varf&ouml;r du kanske vill spara resultat i ett relationellt datalager: 
+                <ul>
+                    <li>f&ouml;r att anv&auml;nda resultaten i samarbete portal till portal
+                    </li>
+                    <li>f&ouml;r att aktivera synkroniseringsfunktioner med dina resultat.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Du b&ouml;r inte anv&auml;nda ett relationellt datalager om du f&ouml;rv&auml;ntar dig att dina GeoAnalytics-resultat kommer att &ouml;ka och vill anv&auml;nda det rumstemporala big data-lagrets funktioner till att hantera stora m&auml;ngder data. 
+            </p>
         </div>
     </div>
 </div>

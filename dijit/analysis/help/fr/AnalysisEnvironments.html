@@ -151,7 +151,7 @@
             </p>
             <p>
                 <ul>
-                    <li> <b>Par d&eacute;faut</b>&nbsp;: utilise l'&eacute;tendue fournie par l'outil.
+                    <li> <b>Par d&eacute;faut</b>&nbsp;: utilisez l'&eacute;tendue fournie par l'outil.
                     </li>
                     <li> <b>Comme sp&eacute;cifi&eacute;</b>&nbsp;: indiquez manuellement les coordonn&eacute;es pour d&eacute;finir l'&eacute;tendue.
                     </li>
@@ -185,7 +185,7 @@
                     </li>
                     <li> <b>Comme sp&eacute;cifi&eacute;</b>&nbsp;: indique une valeur num&eacute;rique pour d&eacute;finir la taille de cellule. Si cette option est s&eacute;lectionn&eacute;e, la valeur par d&eacute;faut est&nbsp;1.
                     </li>
-                    <li> <b>&lt;Nom&gt;</b> de la couche&nbsp;: d&eacute;finit la taille de cellule sur la couche raster choisie.
+                    <li> <b>&lt;Nom&gt; de la couche</b>&nbsp;: d&eacute;finit la taille de cellule sur la couche raster choisie.
                     </li>
                 </ul>
                 
@@ -203,10 +203,28 @@
                 </li>
                 <li>Si le masque d'analyse est un raster, toutes les cellules ayant une valeur sont prises en compte pour d&eacute;finir le masque. Les cellules d'un raster de masque de type NoData seront consid&eacute;r&eacute;es comme &eacute;tant en dehors du masque et auront donc une valeur NoData dans la couche de r&eacute;sultat d'analyse. 
                 </li>
-                <li>Si le masque d'analyse est une couche d'entit&eacute;s, il est converti en interne en raster lors de l'ex&eacute;cution. Vous devez donc v&eacute;rifier que la  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">Taille de cellule</a> et le <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">Raster de capture</a> sont correctement param&eacute;tr&eacute;s pour votre analyse.
+                <li>Si le masque d'analyse est une couche d'entit&eacute;s, il est converti en interne  en raster lors de l'ex&eacute;cution. Vous devez donc veiller &agrave; ce que la 
+ <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank"></a> et le <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank"></a> soient correctement param&eacute;tr&eacute;s pour votre analyse.
                 </li>
             </ul>
              
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>ArcGIS Data Store</h2></div>
+        <hr/>
+        <div>
+            <p>Les r&eacute;sultats de l'outil GeoAnalytic sont stock&eacute;s dans une instance ArcGIS Data Store et s'affichent en tant que couche d'entit&eacute;s dans  Portal for ArcGIS. Dans la plupart des cas, les r&eacute;sultats doivent &ecirc;tre stock&eacute;s dans un stockage des donn&eacute;es spatio-temporelles. Il s'agit de l'option par d&eacute;faut. Voici les raisons pour lesquelles stocker les r&eacute;sultats dans un stockage des donn&eacute;es  relationnelles&nbsp;: 
+                <ul>
+                    <li>Utiliser vos r&eacute;sultats dans une collaboration de portail &agrave; portail
+                    </li>
+                    <li>Activer les fonctionnalit&eacute;s de synchronisation avec vos r&eacute;sultats
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Vous ne devez pas utiliser un stockage des donn&eacute;es relationnelles si vous pensez que vos r&eacute;sultats GeoAnalytics vont augmenter et que vous souhaitez tirer part des fonctionnalit&eacute;s du stockage de Big Data spatio-temporelles pour g&eacute;rer les grands volumes de donn&eacute;es. 
+            </p>
         </div>
     </div>
 </div>

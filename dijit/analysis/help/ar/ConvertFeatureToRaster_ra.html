@@ -40,48 +40,48 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
-        <h2>Convert Feature to  Raster</h2><p/>
-        <h2><img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" alt="Convert Feature to Raster tool"></h2>
+    <div id="toolDescription" class="smallsize">
+        <h2>تحويل معلم إلى بيانات نقطية</h2><p/>
+        <h2><img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" alt="أداة تحويل معلم إلى بيانات نقطية"></h2>
         <hr/>
-    <p>This task converts features to a raster dataset.
+    <p>يعمل هذا القناع على تحويل المعالم إلى مجموعة بيانات نقطية.
     </p>
-    <p>Any feature class containing point, line, or polygon features can be converted to a raster dataset.
+    <p>يمكن تحويل أي تصنيف معلم يحتوي على معالم نقطية أو خطية أو مضلعة إلى مجموعة بيانات نقطية.
     </p>
-    <p>The cell center is used to decide the value of the output raster pixel.
+    <p>يستخدم مركز الخلية لتحديد قيمة بيكسل البيانات النقطية الناتجة.
     </p>
-    <p>The input field type determines the type of output raster. If the field is integer, the output raster will be integer; if it is floating point, the output will be floating point.
+    <p>يُحدد نوع حقل المدخلات نوع البيانات النقطية الناتجة. إذا كان الحقل عبارة عن عدد صحيح، ستكون البيانات النقطية الناتجة عدد صحيح؛ وإذا كان عبارة عن نقطة عائمة، ستكون المخرجات عبارة عن نقطة عائمة.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Choose feature layer to convert</h2></div>
+        <div><h2>اختر طبقة معالم لتحويلها</h2></div>
         <hr/>
         <div>
-            <p>The input feature layer to convert to a raster dataset.
+            <p>طبقة المعلم المدخلة المراد تحويلها إلى مجموعة بيانات نقطية.
             </p>
         </div>
     </div>
     <div id="field">
-        <div><h2>Choose field</h2></div>
+        <div><h2>اختر حقلاً</h2></div>
         <hr/>
         <div>
-            <p>Choose the field that will be used to assign values to the output raster.
+            <p>اختر الحقل الذي يُستخدم لتعيين القيم إلى البيانات النقطية الناتجة.
             </p> 
         </div>
     </div>
     <div id="outputCellSize">
-        <div><h2>Output cell size</h2></div>
+        <div><h2>حجم خلية مُخرج</h2></div>
         <hr/>
         <div>
             <p>إدخال حجم الخلية ووحدة البيانات النقطية الناتجة.
             </p>
-            <p>The available units are Feet, Miles, Meters, and Kilometers.
+            <p>الوحدات المتوفرة هي قدم، أميال، أمتار، وكيلومتر.
             </p>
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>اسم طبقة النتيجة</h2></div>
         <hr/>
         <div>
             <p>سيتم إنشاء اسم الطبقة في  <b>المحتوى</b> وسيتم إضافته إلى الخريطة. يستند الاسم الافتراضي إلى اسم الأداة واسم الطبقة المدخلة. إذا وُجدت الطبقة بالفعل، سيطلب منك كتابة اسم آخر.

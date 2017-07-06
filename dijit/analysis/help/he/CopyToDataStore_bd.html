@@ -40,7 +40,7 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="smallsize">
         <h2>Copy to Data Store</h2><p/>
         <h2><img src="../images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" alt="Copy to Data Store"></h2>
         <hr/>
@@ -55,7 +55,15 @@
         <div>
             <p>The layer or  table that will be copied. 
             </p>
-            <p>In addition to choosing a layer from your map, you can choose  <b>Browse Layers</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer.  
+            <p>In addition to choosing a layer from your map, you can choose  <b>Browse Layers</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer.
+            </p>
+        </div>
+    </div>
+    <div id="selection">
+        <div><h2>You may use all features or make a selection (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Optionally, use the selection button to identify the locations to be copied.
             </p>
         </div>
     </div>
@@ -63,7 +71,7 @@
         <div><h2>Choose the ArcGIS Data Store to copy to</h2></div>
         <hr/>
         <div>
-            <p> The data store that the layer will be copied to. The options are the following:
+            <p>The data store that the layer will be copied to. This parameter will override the selection in the  <b>Analysis Environments</b> The options are the following:
                 <ul>
                     <li> <b>Spatiotemporal</b>&mdash;This is the default.
                     </li>

@@ -65,19 +65,19 @@
         <div><h2>Selecionar elementos  a partir dos quais reconstruir trilhos</h2></div>
         <hr/>
         <div>
-            <p>A camada de pontos ou de pol&iacute;gonos que ser&aacute; reconstru&iacute;da em trilhos.
+            <p>A camada de pontos ou de pol&iacute;gonos que ser&aacute; reconstru&iacute;da em trilhos. A camada de entrada tem de ter a componente temporal ativa com elementos que representam um momento no tempo. A camada tem de encontrar-se num sistema de coordenadas projetado ou a refer&ecirc;ncia espacial de processamento tem de ser definida para um sistema de coordenadas projetado que utilize os  <b>Ambientes de An&aacute;lise</b> no caso de ser aplicado um buffer.
             </p>
-            <p>Para al&eacute;m de selecionar uma camada do seu mapa, pode selecionar  <b>Explorar Camadas</b> na parte inferior da lista pendente para navegar at&eacute; aos seus conte&uacute;dos de um conjunto de dados de partilha de big data ou camada de elementos.  
+            <p>Para al&eacute;m de selecionar uma camada do seu mapa, pode selecionar  <b>Explorar Camadas</b> na parte inferior da lista pendente para navegar at&eacute; aos seus conte&uacute;dos de um conjunto de dados de partilha de big data ou camada de elementos.
             </p>
         </div>
     </div>
     <div id="trackFields">
-        <div><h2>Selecionar campos utilizados para identificar trilhos</h2></div>
+        <div><h2>Selecionar um ou mais campos nos quais identificar trilhos</h2></div>
         <hr/>
         <div>
-            <p> Os campos que representam o identificador de trilhos.
+            <p>Os campos que representam o identificador de trilhos. 
             </p>
-            <p> Como exemplo, caso estivesse a reconstruir trilhos de furac&otilde;es, poderia utilizar os nomes dos furac&otilde;es como campo de trilho.
+            <p>Como exemplo, caso estivesse a reconstruir trilhos de furac&otilde;es, poderia utilizar os nomes dos furac&otilde;es como campo de trilho.
             </p>
         </div>
     </div>
@@ -93,7 +93,7 @@
         <div><h2>Criar uma expressão para criar buffer de elementos de entrada (opcional)</h2></div>
         <hr/>
         <div>
-            <p>Equa&ccedil;&atilde;o utilizada para calcular a dist&acirc;ncia de buffer em torno de elementos de entrada. Esta equa&ccedil;&atilde;o pode ser gerada utilizando a calculadora de buffer e opera&ccedil;&otilde;es b&aacute;sicas, como adicionar, subtrair, multiplicar e dividir s&atilde;o suportadas. Os valores s&atilde;o calculados utilizando o sistema de coordenadas da an&aacute;lise.
+            <p>Equa&ccedil;&atilde;o utilizada para calcular a dist&acirc;ncia de buffer em torno de elementos de entrada. Esta equa&ccedil;&atilde;o pode ser gerada utilizando a calculadora de buffer e opera&ccedil;&otilde;es b&aacute;sicas, como adicionar, subtrair, multiplicar e dividir s&atilde;o suportadas. Os valores s&atilde;o calculados utilizando o sistema de coordenadas da an&aacute;lise. A camada tem de encontrar-se num sistema de coordenadas projetado ou a refer&ecirc;ncia espacial de processamento tem de ser definida para um sistema de coordenadas projetado que utilize os  <b>Ambientes de An&aacute;lise</b> no caso de ser aplicado um buffer.
             </p>
         </div>
     </div>
@@ -111,26 +111,28 @@
         <div>
             <p> Pode calcular estat&iacute;sticas em elementos que se encontram resumidos. Em campos num&eacute;ricos, pode calcular as seguintes:
                 <ul>
-                    <li>Contagem
+                    <li>Contagem&mdash;Calcula o n&uacute;mero de valores n&atilde;o-nulos. Pode ser utilizado em campos num&eacute;ricos ou em strings. A contagem de [null, 0, 2] &eacute; 2.
                     </li>
-                    <li>M&eacute;dia
+                    <li>Soma&mdash;A soma dos valores num&eacute;ricos num campo. A soma de [null, null, 3] &eacute; 3.
                     </li>
-                    <li>M&iacute;n.
+                    <li>M&eacute;dia&mdash;A m&eacute;dia de valores num&eacute;ricos. A m&eacute;dia de [0, 2, null] &eacute; 1.
                     </li>
-                    <li>M&aacute;x.
+                    <li>M&iacute;n&mdash;o valor m&iacute;nimo de um campo num&eacute;rico. O m&iacute;nimo de [0, 2, null] &eacute; 0. 
                     </li>
-                    <li>Intervalo
+                    <li>M&aacute;x&mdash;o valor m&aacute;ximo de um campo num&eacute;rico. O valor m&aacute;ximo de [0, 2, null] &eacute; 2.
                     </li>
-                    <li>Varia&ccedil;&atilde;o
+                    <li>Intervalo&mdash;o intervalo de um campo num&eacute;rico. Este &eacute; calculado subtraindo os valores m&iacute;nimos ao valor m&aacute;ximo. O intervalo de [0, null, 1] &eacute; 1. O intervalo de [null, 4] &eacute; 0.
                     </li>
-                    <li>Desvio padr&atilde;o
+                    <li>Vari&acirc;ncia&mdash;a vari&acirc;ncia de um campo num&eacute;rico num trilho. A vari&acirc;ncia de [1] &eacute; null. A vari&acirc;ncia de [null, 1,1,1] &eacute; 1.
+                    </li>
+                    <li>Desvio padr&atilde;o&mdash;O desvio padr&atilde;o de um campo num&eacute;rico. O desvio padr&atilde;o de [1] &eacute; null. O desvio padr&atilde;o de [null, 1,1,1] &eacute; 1. 
                     </li>
                 </ul>
                 
             </p>
             <p>Em campos de string, pode calcular as seguintes:
                 <ul>
-                    <li>Contagem
+                    <li>Contagem&mdash;O n&uacute;mero de strings n&atilde;o-nulas.
                     </li>
                     <li>Qualquer&mdash;Esta estat&iacute;stica &eacute; uma amostra aleat&oacute;ria de um valor de string no campo especificado.
                     </li>
@@ -140,10 +142,20 @@
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Selecionar armazenamento de dados</h2></div>
+        <div><h2>Selecionar um ArcGIS Data Store no qual guardar os resultados</h2></div>
         <hr/>
         <div>
-            <p>Este &eacute; um par&acirc;metro tempor&aacute;rio de pr&eacute;-lan&ccedil;amento para definir o armazenamento de dados no qual os resultados s&atilde;o guardados. Ambos os armazenamentos de dados fazem parte do  ArcGIS Data Store. Caso selecione o armazenamento de dados espaciotemporal, mas n&atilde;o tenha um instalado, a ferramenta ir&aacute; falhar. </p>
+            <p>Os resultados de GeoAnalytics s&atilde;o armazenados num ArcGIS Data Store e exibidos como uma camada de elementos no  Portal for ArcGIS. Na maioria dos casos, os resultados dever&atilde;o ser armazenados num armazenamento de dados espaciotemporal, sendo este o comportamento predefinido. Em alguns casos, ser&aacute; uma boa op&ccedil;&atilde;o guardar os resultados no armazenamento de dados relacional. As seguintes s&atilde;o raz&otilde;es que justificam o armazenamento de resultados no armazenamento de dados espaciotemporal. 
+                <ul>
+                    <li>Utilizar resultados em colabora&ccedil;&atilde;o portal to portal.
+                    </li>
+                    <li>Ativar funcionalidades de sincroniza&ccedil;&atilde;o com os resultados.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>N&atilde;o dever&aacute; utilizar o armazenamento de dados relacional caso antecipe um aumento dos seus resultados de GeoAnalytics, e caso necessite de tirar partido das funcionalidades de armazenamento de big data para gerir grandes quantidades de dados. 
+            </p>
         </div>
     </div>
     <div id="outputName">

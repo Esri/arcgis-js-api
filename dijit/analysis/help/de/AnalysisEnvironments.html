@@ -152,7 +152,7 @@
             </p>
             <p>
                 <ul>
-                    <li> <b>Standard</b>: Die vom Werkzeug vorgegebene Ausdehnung wird verwendet.
+                    <li> <b>Standard</b>: Die  vom Werkzeug vorgegebene Ausdehnung wird verwendet.
                     </li>
                     <li> <b>Wie angegeben</b>: Geben Sie manuell die Koordinaten ein, um die Ausdehnung zu definieren.
                     </li>
@@ -204,10 +204,28 @@
                 </li>
                 <li>Wenn die Analysemaske ein Raster ist, werden alle Zellen, die einen Wert haben, bei der Definition der Maske ber&uuml;cksichtigt. Zellen in einem Masken-Raster, die NoData sind, liegen au&szlig;erhalb der Maske und werden zu NoData-Werten im Analyseergebnis-Layer. 
                 </li>
-                <li>Wenn die Analysemaske ein Feature-Layer ist, wird sie bei der Ausf&uuml;hrung intern in ein Raster konvertiert. Deshalb sollten Sie sicherstellen, dass  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">Zellengr&ouml;&szlig;e</a> und <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">Fang-Raster</a> entsprechend f&uuml;r die Analyse eingestellt sind.
+                <li>Wenn die Analysemaske ein Feature-Layer ist, wird  sie bei der Ausf&uuml;hrung intern in ein Raster konvertiert. Deshalb sollten Sie sicherstellen, dass
+ <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank"></a> und <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank"></a> entsprechend f&uuml;r die Analyse eingestellt sind.
                 </li>
             </ul>
              
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>ArcGIS Data Store</h2></div>
+        <hr/>
+        <div>
+            <p>GeoAnalytics-Ergebnisse werden in einem ArcGIS Data Store gespeichert und als Feature-Layer in  Portal for ArcGIS dargestellt. In den meisten F&auml;llen sollten Ergebnisse im raumzeitlichen Data Store gespeichert werden. Dies ist die Standardeinstellung. Speichern Sie Ergebnisse in einem Data Store vom Typ &quot;relational&quot;, wenn die folgenden Gr&uuml;nde zutreffen: 
+                <ul>
+                    <li>Verwenden der Ergebnisse in-portal&uuml;bergreifender-Zusammenarbeit
+                    </li>
+                    <li>Aktivieren von Synchronisierungsfunktionen f&uuml;r Ihre Ergebnisse
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Der Einsatz eines Data Stores vom Typ &quot;relational&quot; ist nicht angezeigt, wenn abzusehen ist, dass Ihre GeoAnalytics-Ergebnisse weiter zunehmen. Nutzen Sie stattdessen die Funktionen des Big-Data-Store vom Typ &quot;spatiotemporal&quot;, um gro&szlig;e Datenmengen zu verwalten. 
+            </p>
         </div>
     </div>
 </div>

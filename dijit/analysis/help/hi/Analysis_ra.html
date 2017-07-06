@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="raToolbox">
+        <p>रैस्टर विश्लेषण आपको  ArcGIS Image Serverका प्रयोग करके, बड़े रैस्टर डेटासेट का विश्लेषण करना संभव करता है। सर्वर की शक्ति का उपयोग करके आपको अधिक डेटा को तीव्रता से विश्लेषण करना संभव करता है।  Portal for ArcGIS वेब प्रयोक्ता अनुभव के जरिए वर्तमान में उपलब्ध उपकरण समूहों में  <b>डेटा सारगर्भित करना</b>, <b>पैटर्न विश्लेषित करना</b>, <b>इमेज विश्लेषित करना</b>, <b>भूभाग विश्लेषित करना</b>, तथा <b>डेटा का प्रबंधन करना</b> शामिल हैं।
+        </p>
+    </div>
+    <div id="SummarizeDataCategory" class="smallsize">
+        <h2>डेटा सारांशित करें</h2>
+        <hr/>
+        <p>इस टूलसेट में एक टूल आपके द्वारा निर्धारित सीमाओं के क्षेत्र के अंदर एक रैस्टर के लिए आंकड़ों ती गणना करने के लिए है। 
+            <ul>
+                <li> <b>रास्टर के भीतर सारांशित करना</b> परिभाषित क्षेत्र सीमाओं में आनेवाली रास्टर कोशिकाओं हेतु आंकड़ों की गणना करता है।
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="SummarizeRasterWithinTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>रास्टर का भीतर सार-संग्रह करें</h2></td>
+                    <td>
+                    <img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" class="titleImage" alt="टूल के अन्दर ही रैस्टर को संक्षिप्त करें">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>परिभाषित क्षेत्रों में रास्टर कोशिकाओं हेतु कुछ सार आंकड़ों की गणना करता है।
+            </p>
+            <p>कुछ एप्लीकेशनों के उदाहरण नीचे दिए गए हैं: 
+
+                <ul>
+                    <li>दी गयी जलविभाजक क्षेत्रों की लेयर और एक उन्नयन रैस्टर की लेयर से, प्रत्येक जलविभाजक के लिए उन्नयन की रेन्ज की गणना करें जिससे कि यह तय हो सके कि किसमें सबसे ज्यादा ऊर्जा का धाराप्रवाह होगा।
+                        
+
+                    </li>
+                    <li>दी गयी प्रशासनिक प्रबन्धन इकाइयों की लेयर और भू उपयोग श्रेणियों की रैस्टर लेयर से प्रत्येक प्रबन्धन क्षेत्र के लिये भू-उपयोग प्रकार के मान की गणना करें जिससे कि प्रबन्धन प्लान निर्धारित करने के लिये सबसे ज्यादा काम की जरूरत की पहचान हो सके।
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzePatternsCategory" class="regularsize">
+        <h2>पैटर्न का विश्लेषण करें</h2>
+        <hr/>
+        <p>इन उपकरणों से आपके आंकड़ों में स्पेशियल बनावटों का पता लगाने, गणना करने, एवं अनुमान लगाने में सहायता मिलती है। 
+
+            <ul>
+                <li> <b>घनत्व की गणना करें</b> कुछ घटक की ज्ञात मात्राएं लेकर उन्हें मानचित्र पर फैला कर घनत्व मानचित्र बनाता है।
+                    
+
+                </li>
+                <li> <b>बिंदुएँ अंतर्वेशित करना</b> बिंदुओं के किसी संग्रह में पाए गए मापनों के आधार पर नये स्थानों पर मानों का पूर्वानुमान लगाता है।
+                    
+
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateDensityRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>घनत्व की गणना करें</h2></td>
+                    <td>
+                    <img src="../images/GUID-4EE4838C-E210-43CE-99C7-1A648A18C10B-web.png" class="titleImage" alt="घनत्व पोर्टल उपकरण की गणना करें">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>घनत्व विश्लेषण कुछ घटक की ज्ञात मात्राएं लेकर उन्हें मानचित्र पर फैला कर घनत्व मानचित्र बनाता है। आप इस उपकरण का उपयोग, उदाहरण के लिए, बिजली कड़कने या चक्रवातों का संकेंद्रण दर्शाने, स्वास्थ्य देखभाल सुविधाओं, एवं जनसंख्या घनत्वों के लिए कर सकते हैं।
+            </p>
+            <br/>
+        </div>
+        <div id="InterpolatePointsEBKTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>बिन्दुओं को इंटरपोलेट करें</h2></td>
+                    <td>
+                    <img src="../images/GUID-06D80BB3-7154-4FAA-9C9B-D665450EF3BC-web.png" class="titleImage" alt="बिंदुओं को अंतर्वेशित करने का टूल">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>इस उपकरण से आप बिंदुओं के किसी संग्रह में पाए गए मापनों के आधार पर नये स्थानों के मानों का पूर्वानुमान लगा सकते हैं। यह उपकरण हरेक बिंदु पर मानों सहित बिंदु आंकड़े लेकर अनुमानित मानों द्वारा वर्गीकृत क्षेत्र लौटाता है। आप इस उपकरण का उपयोग, उदाहरण के लिए, किन्हीं अलग वर्षा मापयंत्रों पर लिए गए मापनों के आधार पर किसी जलविभाजक पर वर्षा स्तरों का पूर्वानुमान लगाने हेतु कर सकते हैं।
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzeImageCategory" class="smallsize">
+        <h2>चित्र का विश्लेषण करें</h2>
+        <hr/>
+        <p>निम्नलिखित टूल्स वनस्पति युक्त क्षेत्रों को सुनिश्चित करने के लिए छवियों का विश्लेषण करने में आपकी मदद करते हैं। 
+            <ul>
+                <li> <b>वनस्पतियों की निगरानी करें</b> बैंड्स पर अंकगणितीय प्रचालनों के आधार पर चित्र के अंदर वनस्पतियों का पता लगाता है।
+                    
+
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="MonitorVegetationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>वनस्पतियों की निगरानी करें</h2></td>
+                    <td>
+                    <img src="../images/GUID-7763FCC0-2EA1-463B-98D0-4EBDF6150907-web.png" class="titleImage" alt="पोर्टल के लिए वनस्पति निगरानी टूल">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>अध्ययन क्षेत्र की वनस्पति कवरेज जानकारी को प्रकट करने के लिए मल्टीबैंड रास्टर लेयर के बैंडों पर अंकगणित के प्रचालन करता है।
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzeTerrainCategory" class="regularsize">
+        <h2>भू-भाग का विश्लेषण करें</h2>
+        <hr/>
+        <p>ये उपकरण रास्टर सतहों का विश्लेषण करने में आपकी सहायता करते हैं। 
+            <ul>
+                <li> <b>ढलान की गणना करें</b> भू-भाग के तिरछेपन की मात्रा की गणना करता है।
+                    
+
+                </li>
+                <li> <b>आस्पेक्ट प्राप्त करें</b> हर जगह के लिये सबसे तीव्र ढाल की गणना करता है।
+                    
+
+                </li>
+                <li> <b>व्यूशेड बनाएं</b> इस बात की पहचान करता है कि पूरे भूमि का कौन सा भाग हर जगह से देखा जा सकता है।
+                    
+
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateSlopeTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>स्लोप की गणना करें</h2></td>
+                    <td>
+                    <img src="../images/GUID-D33862C6-01BB-445E-B0C3-BC8B8C1858DA-web.png" class="titleImage" alt="ढलान की गणना करने का उपकरण">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>ऐसी सतह की पहचान करता है जो इनपुट उन्नयन डेटा के ढलान को दर्शाती है। ढलान प्रत्येक डिजिटल उन्नयन मॉडल (DEM) सेल के लिए उन्नयन की परिवर्तन दर को प्रदर्शित करता है।
+            </p>
+            <br/>
+        </div>
+        <div id="DeriveAspectTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>आस्पेक्ट निकालें</h2></td>
+                    <td>
+                    <img src="../images/GUID-D03FF025-0530-4D0D-87A3-B25D6716F8F0-web.png" class="titleImage" alt="पोर्टल के लिए आस्पेक्ट उपकरण प्राप्त करें">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>प्रत्येक सेल से इसके समीपवर्ती स्थानों तक मान में अधिकतम परिवर्तन दर की ढलान दिशा की पहचान करता है। आस्पेक्ट को ढलान की दिशा के रूप में माना जा सकता है।
+            </p>
+            <br/>
+        </div>
+        <div id="CreateViewshedRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>व्यूशेड बनाएँ</h2></td>
+                    <td>
+                    <img src="../images/GUID-BB8B8CAF-330E-4C41-9D94-AF4728D0D0F3-web.png" class="titleImage" alt="व्यूशेड उपकरण बनाएं">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>रैस्टर सतह पर स्थान सुनिश्चित करता है जो पर्यवेक्षकों के एक सेट के लिए दृष्टिगोचर हैं।
+            </p>
+            <br/>
+        </div>
+    <div id="ManageDataCategory" class="regularsize">
+        <h2>डेटा प्रबंधित करें</h2>
+        <hr/>
+        <p>ये उपकरण भौगोलिक डेटा के दैनिक प्रबंधन और विश्लेषण से पहले डेटा मिलाने, दोनों के लिए उपयोग किया जाता है। 
+            <ul>
+                <li> <b>रैस्टर निकालें</b> आगे के विश्लेषण के लिए रैस्टर डेटासेट से भागों को क्लिप करें।
+                    
+
+                </li>
+                <li> <b>मानों को रीमैप करें</b> रैस्टर सेल्स के लिए भिन्न मानों को नियत करता है।
+                    
+
+                </li>
+                <li> <b>रैस्टर के लिए फीचर्स को रूपांतरित करें</b> वेक्टर डेटा को रैस्टरयुक्त करता है।
+                    
+
+                </li>
+                <li> <b>रैस्टर को फीचर में रूपांतरित करें</b> रैस्टर डेटा को बैक्टरयुक्त करता है।
+                    
+
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="ExtractRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>रैस्टर निकालें</h2></td>
+                    <td>
+                    <img src="../images/GUID-DC9CBCB9-A07C-42D3-A0CB-2FB1483CBF4C-web.png" class="titleImage" alt="पोर्टल के लिए रैस्टर निकालने का उपकरण">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>रैस्टर में से सेल को उनके मान, आकार या विभिन्न डाटा वर्ग के आधार पर निकालें।
+            </p>
+            <br/>
+        </div>
+        <div id="RemapValuesTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>रीमैप मान</h2></td>
+                    <td>
+                    <img src="../images/GUID-4006E442-A60B-469A-891D-5ED442F64CB8-web.png" class="titleImage" alt="पोर्टल के लिए रीमैप मान टूल">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>वैयक्तिक सेल या सेल की रेंज को नए मानों में परिवर्तित करें।
+            </p>
+            <br/>
+        </div>
+        <div id="ConvertFeatureToRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>सुविधा को रैस्टर में रूपांतरित करें</h2></td>
+                    <td>
+                    <img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" class="titleImage" alt="रैस्टर उपकरण में सुविधा को रूपांतरित करें">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>मौजूदा फीचर डेटासेट से नया रैस्टर डेटासेट बनाएं।
+            </p>
+            <br/>
+        </div>
+        <div id="ConvertRasterToFeatureTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>रास्टर को फीचर में रूपांतरित करें</h2></td>
+                    <td>
+                    <img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" class="titleImage" alt="रैस्टर को फीचर में रूपांतरित करें उपकरण ">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>मौजूदा रैस्टर डेटासेट से नया फीचर डेटासेट बनाएं।
+            </p>
+            <br/>
+        </div>
+</div>
+</html>

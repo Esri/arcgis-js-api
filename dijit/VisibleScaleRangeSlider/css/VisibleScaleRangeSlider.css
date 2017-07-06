@@ -184,3 +184,7 @@
 .esriVisibleScaleRangeSlider .esriScaleMenuButton .dijitDownArrowButton .dijitArrowButtonInner {
   background: url("../../../css/calcite/images/ago_sprite.png") -66px -50px;
 }
+
+.esriVisibleScaleRangeSlider .esriHorizontalSlider.dijitDisabled {
+  pointer-events: none;
+}

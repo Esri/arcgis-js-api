@@ -70,12 +70,12 @@
         <div>
             <p>The point layer on which the density will be calculated.
             </p>
-            <p>In addition to choosing a layer from your map, you can choose  <b>Browse Layers</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer.  
+            <p>In addition to choosing a layer from your map, you can choose  <b>Browse Layers</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer.
             </p>
         </div>
     </div>
     <div id="fields">
-        <div><h2>Choose one or more fields to calculate density on</h2></div>
+        <div><h2>Choose one or more fields to calculate density on (optional)</h2></div>
         <hr/>
         <div>
             <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you 
@@ -91,10 +91,12 @@ can use a field representing the population of the city as the count field, and 
         <div>
             <p>The shape of bins that points are aggregated into and used for the density calculation.
             </p>
+            <p>Analysis using  <b>Square</b> or <b>Hexagon</b> bins requires a projected coordinate system. You can set the <b>Processing coordinate system</b> in <b>Analysis Environments</b>. If your processing coordinate system is not set to a projected coordinate system, you will be prompted to set it when you <b>Run Analysis</b>.
+            </p>
         </div>
     </div>
     <div id="binSizing">
-        <div><h2>Select the bin size for density calculations</h2></div>
+        <div><h2>Select the bin size for aggregation</h2></div>
         <hr/>
         <div>
             <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
@@ -128,60 +130,59 @@ can use a field representing the population of the city as the count field, and 
         <div><h2>Choose the output units for density</h2></div>
         <hr/>
         <div>
-            <p>The desired output units of the density values. By default, this is set to the units in your map (for example, square meters). If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+            <p>The desired output units of the density values. By default, this is set to square kilometers or square miles based on the default units specified in your profile. If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
 
             </p>
         </div>
     </div>
     <div id="timeSlicing">
-        <div><h2>Calculate density using time slices (optional)</h2></div>
+        <div><h2>Calculate density using time steps (optional)</h2></div>
         <hr/>
         <div>
-            <p>If time is enabled on the input point layer and it is of type instant, you can  analyze using time slicing.  There are three parameters you can set when you use time:
+            <p>If time is enabled on the input point layer and it is of type instant, you can  analyze using time stepping.  There are three parameters you can set when you use time:
                 <ul>
-                    <li>  <b>Time Interval</b>
+                    <li> <b>Time step interval</b>
                     </li>
-                    <li> <b>Time Step</b>
+                    <li> <b>How often to repeat the time step</b>
                     </li>
-                    <li> <b>Reference Time</b>
+                    <li> <b>Time to align the time steps to</b>
                     </li>
                 </ul>
                 
             </p>
-            <p>Imagine you had data that represented a year in time and you wanted to analyze using weekly slices. To do that you would set  <b>Time Interval</b> to <code>1 week</code>.
+            <p>Imagine you had data that represented a year in time and you wanted to analyze using weekly steps. To do that you would set  <b>Time step interval</b> to <code>1 week</code>.
             </p>
-            <p> Imagine you had data that represented a year in time and you wanted to analyze using the first week of the month. To do that you would set <b>Time Interval</b> to <code>1 week</code>, <b>Time Step</b> to <code>1 month</code>, and <b>Reference Time</b> to <code>January 1, at 12:00 am</code>.
+            <p>Imagine you had data that represented a year in time and you wanted to analyze using the first week of the month. To do that you would set  <b>Time step interval</b> to <code>1 week</code>, <b>How often to repeat the time step</b> to <code>1 month</code>, and <b>Time to align the time steps to</b> to <code>January 1, at 12:00 am</code>.
             </p>
         </div>
     </div>
     <div id="timeInterval">
-        <div><h2>Time interval to calculate density on</h2></div>
+        <div><h2>Time step interval</h2></div>
         <hr/>
         <div>
-            <p>Interval of time used for slicing the data. Time interval may be used alone or used with the  <b>Time Step</b> or <b>Reference Time</b> parameter.
+            <p>Interval of time used for generating time steps. Time step interval may be used alone or used with the  <b>How often to repeat the time step</b> or <b>Time to align the time steps to</b> parameters.
             </p>
-            <p> If you wanted to create time slices that took place every Monday from 9:00 a.m. until 10:00 a.m., <b>Time Interval</b> would be <code>1 hour</code>, <b>Time Step</b> would be <code>1 week</code>, and <b>Reference Time</b> would be <code>9:00:00 a.m. on a Monday</code>.
+            <p>If you wanted to create time slices that took place every Monday from 9:00 a.m. until 10:00 a.m.,  <b>Time step interval</b> would be <code>1 hour</code>, <b>How often to repeat the time step</b> would be <code>1 week</code>, and <b>Time to align the time steps to</b> would be <code>9:00:00 a.m. on a Monday</code>.
             </p>
         </div>
     </div>
     <div id="timeStep">
-        <div><h2>Time step to calculate density on</h2></div>
+        <div><h2>How often to repeat the time step</h2></div>
         <hr/>
         <div>
-            <p> The step used for calculating a time slice. <b>Time Step</b> may be used alone or with <b>Time Interval</b>, with <b>Reference Time</b>, or with both <b>Time Interval</b> and <b>Reference Time</b>.
+            <p> The step used for calculating a time slice. <b>How often to repeat the time step</b> may be used alone or with <b>Time step interval</b>, with <b>Reference Time</b>, or with both <b>Time step interval</b> and <b>Time to align the time steps to</b>.
             </p>
-            <p> If you wanted to create time slices that took place every Monday from 9:00 a.m. until 10:00 a.m., <b>Time Interval</b> would be <code>1 hour</code>, <b>Time Step</b> would be <code>1 week</code>, and <b>Reference Time</b> would be <code>9:00:00 a.m. on a Monday</code>.
+            <p> If you wanted to create time slices that took place every Monday from 9:00 a.m. until 10:00 a.m., <b>Time step interval</b> would be <code>1 hour</code>, <b>How often to repeat the time step</b> would be <code>1 week</code>, and <b>Time to align the time steps to</b> would be <code>9:00:00 a.m. on a Monday</code>.
             </p>
         </div>
     </div>
     <div id="timeReference">
-        <div><h2>Reference time
-used to align the time slicing</h2></div>
+        <div><h2>Time to align time steps to</h2></div>
         <hr/>
         <div>
-            <p>The date and time used to align time slicing.  <b>Time Step</b> will start from and continue backward for the referenced time.
+            <p>The date and time used to align time slicing. Time stepping will start from and continue backward from this time. If no reference time is selected, time stepping will align to January 1st, 1970. 
             </p>
-            <p> If you wanted to create time slices that took place every Monday from 9:00 a.m. until 10:00 a.m., <b>Time Interval</b> would be <code>1 hour</code>, <b>Time Step</b> would be <code>1 week</code>, and <b>Reference Time</b> would be <code>9:00:00 a.m. on a Monday</code>.
+            <p> If you wanted to create time slices that took place every Monday from 9:00 a.m. until 10:00 a.m., <b>Time step interval</b> would be <code>1 hour</code>, <b>How often to repeat the time step</b> would be <code>1 week</code>, and <b>Time to align the time steps to</b> would be <code>9:00:00 a.m. on a Monday</code>.
             </p>
         </div>
     </div>
@@ -197,7 +198,17 @@ used to align the time slicing</h2></div>
         <div><h2>Choose data store</h2></div>
         <hr/>
         <div>
-            <p>This is a temporary parameter for prerelease to set the data store where the results are saved. Both data stores are part of  ArcGIS Data Store. If you select the spatiotemporal data store but do not have one installed, the tool will fail. </p>
+            <p>GeoAnalytics results are stores to an ArcGIS Data Store and exposed as a feature layer in   Portal for ArcGIS. In most cases, results should be stored to the spatiotemporal data store and this is the default. In some cases saving results to the  relational data store is a good option. The following are reasons why you may want to store results in the relational data store: 
+                <ul>
+                    <li>Use results in portal to portal collaboration.
+                    </li>
+                    <li>Enable sync capabilities with your results.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>You should not use the relational data store if you expect your GeoAnalytics results to increase, and need to take advantage of the spatiotemporal big data store's capabilities to handle large amounts of data. 
+            </p>
         </div>
     </div>
     <div id="outputName">

@@ -40,55 +40,57 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Ühenda objektid</h2><p/>
         <h2><img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" alt="&Uuml;henda objektid"></h2>
         <hr/>
     <p>Objektide &uuml;hendamise toiming t&ouml;&ouml;tab kahe kihiga. T&ouml;&ouml;riist &bdquo;&Uuml;henda objektid&rdquo; &uuml;hendab &uuml;he objekti atribuudid teisega ruumiliste, ajaliste ja atribuutide seoste v&otilde;i nende kolme kombinatsiooni p&otilde;hjal. T&ouml;&ouml;riist teeb kindlaks k&otilde;ik sisendobjektid, mis vastavad m&auml;&auml;ratud &uuml;hendamistingimustele ja &uuml;hendab teise sisendkihi esimesega. Soovi korral saate &uuml;hendada k&otilde;ik objektid &uuml;hilduvate objektidega v&otilde;i summeerida &uuml;hilduvad objektid.
     </p>
-    <p>T&ouml;&ouml;rista &bdquo;&Uuml;henda objektid&rdquo; saab kasutada punktide, joonte, alade ja tabelitega. Ajaline &uuml;hendamine n&otilde;uab, et sisendandmed oleksid ajateadlikud ja ruumiline &uuml;hendamine n&otilde;uab, et andmed sisaldaksid geomeetriat. 
+    <p>T&ouml;&ouml;rista &bdquo;Liida objektid&rdquo; saab kasutada punktide, joonte, alade ja tabelitega. Ajaline &uuml;hendamine n&otilde;uab, et sisendandmed oleksid ajateadlikud ja ruumiline &uuml;hendamine n&otilde;uab, et andmed sisaldaksid geomeetriat. 
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="targetLayer">
-        <div><h2>Valige kiht, millele objekte ühendada</h2></div>
+        <div><h2>Vali sihtkiht</h2></div>
         <hr/>
         <div>
-            <p>Kiht, millega objekte &uuml;hendatakse. 
+            <p>Kiht, mille tabelisse on lisatud liidetava kihi  atribuudid.
             </p>
-            <p>Lisaks kihi valimisele kaardil saate valida ripploendi alumises servas  <b>Sirvi kihte</b>, et otsida oma sisust suurandmete failiketta andmestikku v&otilde;i objektikihti.  
+            <p>Ruumilist  <b>l&auml;hiseost</b> kasutav anal&uuml;&uuml;s n&otilde;uab tasapinnalist ristkoordinaatide s&uuml;steemi. <b>Koordinaats&uuml;steemi t&ouml;&ouml;tlemise</b> saab m&auml;&auml;rata funktsiooniga <b>Anal&uuml;&uuml;sikeskkonnad</b>. Kui koordinaats&uuml;steemi t&ouml;&ouml;tlemine ei ole m&auml;&auml;ratud tasapinnaliseks ristkoordinaatide s&uuml;steemiks, kuvatakse k&auml;su <b>K&auml;ivita anal&uuml;&uuml;s</b> andmisel selle m&auml;&auml;ramist taotlev h&uuml;pikaken.
+            </p>
+            <p>Lisaks kihi valimisele kaardil saate valida ripploendi alumises servas  <b>Sirvi kihte</b>, et otsida oma sisust suurandmete failiketta andmestikku v&otilde;i objektikihti.
             </p>
         </div>
     </div>
     <div id="joinLayer">
-        <div><h2>Vali ühendamiseks kiht</h2></div>
+        <div><h2>Vali sihtkihiga ühendatav kiht</h2></div>
         <hr/>
         <div>
-            <p>Kiht, mis &uuml;hendatakse esimese sisendkihiga.
+            <p>Sihtkihile lisatavate atribuutidega liidetav kiht.
             </p>
-            <p>Lisaks kihi valimisele kaardil saate valida ripploendi alumises servas  <b>Sirvi kihte</b>, et otsida oma sisust suurandmete failiketta andmestikku v&otilde;i objektikihti.  
+            <p>Lisaks kihi valimisele kaardil saate valida ripploendi alumises servas  <b>Sirvi kihte</b>, et otsida oma sisust suurandmete failiketta andmestikku v&otilde;i objektikihti.
             </p>
         </div>
     </div>
     <div id="joinOperation">
-        <div><h2>Valige ühendamistoiming</h2></div>
+        <div><h2>Vali liitmise toiming</h2></div>
         <hr/>
         <div>
-            <p>See m&auml;&auml;rab, kuidas sisendkihtide vahelisi &uuml;hendamisi v&auml;ljundis k&auml;sitletakse, kui mitmel &uuml;hendataval objektil on &uuml;hendatava kihiga samasugune seos. Saadaval on kaks &uuml;hendamisv&otilde;imalust.
+            <p>M&auml;&auml;rab, kuidas sihtkihte ja liidetavaid kihte v&auml;ljundis k&auml;sitletakse, kui mitmel &uuml;hendataval objektil on &uuml;hendatava kihiga samasugune seos. Saadaval on kaks &uuml;hendamisv&otilde;imalust.
                 <ul>
-                    <li> <b>&Uuml;henda &uuml;ks &uuml;hele</b> &ndash; see toiming &uuml;hendab k&otilde;ik &uuml;hilduvad objektid &uuml;hendamiskihiga.
+                    <li> <b>&Uuml;henda &uuml;ks &uuml;hele</b>&ndash; see toiming summeerib k&otilde;ik &uuml;hilduvad objektid iga &uuml;hendatava objektiga.
                     </li>
-                    <li> <b>&Uuml;henda &uuml;ks mitmele</b> &ndash; see toiming summeerib k&otilde;ik &uuml;hilduvad objektid iga &uuml;hendatava objektiga.
+                    <li> <b>&Uuml;henda &uuml;ks mitmele</b> &ndash; see toiming &uuml;hendab k&otilde;ik &uuml;hilduvad objektid &uuml;hendamiskihiga.
                     </li>
                 </ul>
                 
             </p>
-            <p>Oletame n&auml;iteks, et soovime leida k&otilde;ik kaubamajad, mis j&auml;&auml;vad turust 5 kilomeetri raadiusesse. Sellisel juhul on &uuml;hendataval kihil &uuml;ks objekt, mis t&auml;histab turgu ja &uuml;hendatavad objektid t&auml;histavad kohalikke toidupoode, millel on n&auml;iteks atribuut aastane kogul&auml;bim&uuml;&uuml;k.  <b>Objektide &uuml;hendamise t&ouml;&ouml;riista</b> abil leiame, et viis toidupoodi vastavad sellele kriteeriumile. Kui kasutaksime &uuml;hendamistoimingut <b>&Uuml;henda &uuml;ks &uuml;hele</b>, saaksime tulemuseks viis objekti, kus iga rida t&auml;histab turgu ja kaubamaja. Kui kasutaksime toimingut <b>&Uuml;henda &uuml;ks mitmele</b>, saaksime tulemuseks &uuml;he objekti, mis t&auml;histab turgu ja sisaldab kaubamajade teabe kokkuv&otilde;tet (nt arv (5)) ning muud statistikat (nt aastast kogul&auml;bim&uuml;&uuml;ki).
+            <p>Oletame n&auml;iteks, et soovime leida k&otilde;ik kaubamajad, mis j&auml;&auml;vad turust 2 kilomeetri raadiusesse. Sellisel juhul on &uuml;hendataval kihil &uuml;ks objekt, mis t&auml;histab turgu ja &uuml;hendatavad objektid t&auml;histavad kohalikke toidupoode, millel on n&auml;iteks atribuut aastane kogul&auml;bim&uuml;&uuml;k.  <b>Objektide &uuml;hendamise t&ouml;&ouml;riista</b> abil leiame, et viis toidupoodi vastavad sellele kriteeriumile. Kui kasutaksime &uuml;hendamistoimingut <b>&Uuml;henda &uuml;ks mitmele</b>, saaksime tulemuseks viis objekti, kus iga rida t&auml;histab turgu ja kaubamaja. Kui kasutaksime toimingut <b>&Uuml;henda &uuml;ks &uuml;hele</b>, saaksime tulemuseks &uuml;he objekti, mis t&auml;histab turgu ja sisaldab kaubamajade teabe kokkuv&otilde;tet (nt arv 2) ning muud statistikat (nt aastast kogul&auml;bim&uuml;&uuml;ki).
             </p>
         </div>
     </div>
     <div id="joinOptions">
-        <div><h2>Valige ühendustüüp</h2></div>
+        <div><h2>Vali üks või mitu ühendust</h2></div>
         <hr/>
         <div>
             <p>Kasutada saab &uuml;hte, kahte v&otilde;i kolme &uuml;hendust&uuml;&uuml;pi. &Uuml;hendust&uuml;&uuml;bid on j&auml;rgmised. 
@@ -107,16 +109,16 @@
         </div>
     </div>
     <div id="spatialRelationship">
-        <div><h2>Ruumiline ühendamine</h2></div>
+        <div><h2>Vali ruumiline seos</h2></div>
         <hr/>
         <div>
-            <p> Ruumiline seos, mis m&auml;&auml;rab, kas objektid &uuml;hendatakse. Saadaolevad seosed olenevad sellest, mis t&uuml;&uuml;pi geomeetriat (punkt, murdjoon, pol&uuml;goon) sisendobjektide jaoks kasutatakse. Saadaolevate seoste hulka kuuluvad j&auml;rgmised seosed.
+            <p> Ruumiline seos, mis m&auml;&auml;rab, kas objektid liidetakse. Saadaolevad seosed olenevad sellest, mis t&uuml;&uuml;pi geomeetriat (punkt, murdjoon, pol&uuml;goon) sisendobjektide jaoks kasutatakse. Saadaolevate seoste hulka kuuluvad j&auml;rgmised seosed.
                 <ul>
                     <li> <b>L&otilde;ikub</b> &ndash; objektid vastendatakse, kui need l&otilde;ikuvad omavahel.
                     </li>
                     <li> <b>V&otilde;rdub</b> &ndash; objektid vastendatakse, kui neil on &uuml;hesugune geomeetria.
                     </li>
-                    <li> <b>L&auml;hedal</b> &ndash; objektid vastendatakse, kui need on &uuml;ksteisest m&auml;&auml;ratud kaugusel.
+                    <li> <b>L&auml;hedal</b> &ndash; objektid vastendatakse, kui need on &uuml;ksteisest m&auml;&auml;ratud kaugusel. Sihtkiht peab olema tasapinnalises ristkoordinaatide s&uuml;steemis. Ruumilise <b>l&auml;hiseose</b> rakendamise korral peab tasapinnaliseks ristkoordinaatide s&uuml;steemiks olema funktsiooni <b>Anal&uuml;&uuml;sikeskkonnad</b> abil m&auml;&auml;ratud t&ouml;&ouml;tlev koordinaats&uuml;steem.
                     </li>
                     <li> <b>Sisaldab</b> &ndash; objektid vastendatakse, kui kiht, millega &uuml;hendatakse, sisaldub &uuml;hendatavates objektides.
                     </li>
@@ -144,7 +146,7 @@
         </div>
     </div>
     <div id="temporalRelationship">
-        <div><h2>Ajaline ühendamine</h2></div>
+        <div><h2>Vali ajaline seos</h2></div>
         <hr/>
         <div>
             <p>Ajaline seos, mis m&auml;&auml;rab, kas objektid &uuml;hendatakse. See suvand on saadaval ainult siis, kui m&otilde;lemas kihis on aeg lubatud ja saadaolevad seosed s&otilde;ltuvad sisendobjektide jaoks kasutusel olevast aja t&uuml;&uuml;bist (jooksev v&otilde;i intervall). Saadaolevate seoste hulka kuuluvad j&auml;rgmised seosed.
@@ -191,12 +193,12 @@
         </div>
     </div>
     <div id="attributeRelationship">
-        <div><h2>Atribuutidega ühendamine</h2></div>
+        <div><h2>Vali vastenduvad väljad</h2></div>
         <hr/>
         <div>
             <p>See seos vastendab &uuml;he kihi v&auml;lja v&auml;&auml;rtused teise kihi v&auml;lja v&auml;&auml;rtustega. 
             </p>
-            <p> N&auml;iteks teil on &uuml;leriigiline geograafiline elumajade aadresside kiht (sh v&auml;li <i>SIHTNUMBER</i>) ja tabeli kujul andmestik demograafiliste terviseandmetega vastavalt sihtnumbrile (v&auml;li nimega <i>TERVISSIHTNUMBER</i>). Saate &uuml;hendada tervise andmestiku elumajade andmetega, vastendades v&auml;lja <i>SIHTNUMBER</i> v&auml;ljaga <i>TERVISSIHTNUMBER</i>. Tulemuseks on vastavate terviseandmetega elumajade kiht.
+            <p>N&auml;iteks teil on &uuml;leriigiline geograafiline elumajade aadresside kiht (sh v&auml;li  <i>SIHTNUMBER</i>) ja tabeli kujul andmestik demograafiliste terviseandmetega vastavalt sihtnumbrile (v&auml;li nimega <i>TERVISSIHTNUMBER</i>). Saate &uuml;hendada tervise andmestiku elumajade andmetega, vastendades v&auml;lja <i>SIHTNUMBER</i> v&auml;ljaga <i>TERVISSIHTNUMBER</i>. Tulemuseks on vastavate terviseandmetega elumajade kiht.
             </p>
         </div>
     </div>
@@ -204,7 +206,39 @@
         <div><h2>Lisa statistika (valikuline)</h2></div>
         <hr/>
         <div>
-            <p>Kui valisite toimingu &bdquo;&Uuml;henda &uuml;ks mitmele&ldquo;, saate arvutada &uuml;hendatud objektide statistika.
+            <p> <b>&Uuml;ks &uuml;hele </b> &uuml;hendamine v&otilde;imaldab arvutada liidetud objektide statistika. Vaikimisi arvutatakse k&otilde;ik v&auml;ljad.
+            </p>
+            <p>Saate arvutada summeeritud objektide statistika. Numbriv&auml;ljadel saab arvutada j&auml;rgmised statistikud.
+                <ul>
+                    <li>Koguarv &ndash; arvutatakse v&auml;&auml;rtuste, mis pole nullv&auml;&auml;rtused, hulk. See funktsioon on kasutatav numbriv&auml;ljade v&otilde;i stringide korral. V&auml;&auml;rtuste [null, 0 ja 2] koguarv on 2.
+                    </li>
+                    <li>Summa &ndash; v&auml;ljal olevate arvv&auml;&auml;rtuste summa. V&auml;&auml;rtuste [null, null ja 3] summa on 3.
+                    </li>
+                    <li>Keskmine &ndash; arvv&auml;&auml;rtuste keskmine. V&auml;&auml;rtuste [0; 2 ja null] keskmine on 1.
+                    </li>
+                    <li>Miinimum &ndash; numbriv&auml;lja miinimumv&auml;&auml;rtus. V&auml;&auml;rtuste [0; 2 ja null] miinimum on 0. 
+                    </li>
+                    <li>Maksimum &ndash; numbriv&auml;lja maksimumv&auml;&auml;rtus. V&auml;&auml;rtuste [0; 2 ja null] maksimum on 2.
+                    </li>
+                    <li>Vahemik &ndash; numbriv&auml;lja vahemik. Selle arvutamiseks lahutatakse maksimumv&auml;&auml;rtusest miinimumv&auml;&auml;rtus. V&auml;&auml;rtuste [0, null ja 1] vahemik on 1. V&auml;&auml;rtuste [null ja 4] vahemik on 0.
+                    </li>
+                    <li>Dispersioon &ndash; raja numbriv&auml;lja dispersioon. V&auml;&auml;rtuse [1] dispersiooni on null. V&auml;&auml;rtuste [null, 1;1 ja 1] dispersioon on 1.
+                    </li>
+                    <li>Standardh&auml;lve &ndash; numbriv&auml;lja standardh&auml;lve. V&auml;&auml;rtuse [1] standardh&auml;lve on null. V&auml;&auml;rtuste [null, 1;1 ja 1] standardh&auml;lve on 1. 
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Tekstiv&auml;ljadel saab arvutada j&auml;rgmised statistikud:
+                <ul>
+                    <li>Koguarv &ndash; stringide, mis pole nullv&auml;&auml;rtused, hulk.
+                    </li>
+                    <li>M&otilde;ni &ndash; see statistik on juhuslik valim tekstistringi v&auml;&auml;rtusest vastaval v&auml;ljal.
+                    </li>
+                </ul>
+                K&otilde;ik statistikud arvutatakse v&auml;&auml;rtustega, mis ei ole nullv&auml;&auml;rtus. Tulemkiht sisaldab uut v&auml;lja iga arvutatud statistiku kohta. Soovitud statistika lisamiseks valige uus atribuut ja statistik.
+            </p>
+            <p>K&otilde;ik statistikud arvutatakse v&auml;&auml;rtustega, mis ei ole nullv&auml;&auml;rtus. Tulemkiht sisaldab uusi v&auml;lju iga arvutatud statistiku kohta. Soovitud statistika lisamiseks valige uus atribuut ja statistik.
             </p>
         </div>
     </div>
@@ -224,16 +258,26 @@
         <div><h2>Vali andmeladu</h2></div>
         <hr/>
         <div>
-            <p>See on ajutine parameeter eelversioonile, et m&auml;&auml;rata tulemuste salvestamiseks andmeladu. M&otilde;lemad andmelaod kuuluvad  ArcGIS-i andmeladu&rsquo;i juurde. Kui valite ajalisruumilise andmelao, kuid seda pole installitud, siis t&ouml;&ouml;tlemine nurjub. </p>
+            <p>GeoAnalyticsi tulemeid k&auml;sitletakse ArcGIS-i andmelaos salvedena ning need kuvatakse portaalis  Portal for ArcGIS objektikihtidena. &Uuml;ldjuhul salvestatakse tulemid ajalisruumilisse andmelattu &ndash; see on vaikimisi valitud. M&otilde;nel juhul on tulemid m&otilde;istlik salvestada relatsioonilisse andmelattu. Allpool on toodud m&otilde;ned p&otilde;hjused, miks oleks soovitatav tulemid salvestada relatsioonilisse andmelattu. 
+                <ul>
+                    <li>Saate tulemeid kasutada portaalidevahelises koost&ouml;&ouml;s.
+                    </li>
+                    <li>Saate tulemustega s&uuml;nkroniseerida.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Relatsioonilist andmeladu pole otstarbekas kasutada, kui GeoAnalyticsi tulemite arv suureneb. Sel juhul peaksite kasutama suurt ajalisruumilist andmeladu, mis v&otilde;imaldab hallata suurt andmemahtu. 
+            </p>
         </div>
     </div>
     <div id="outputName">
         <div><h2>Tulemkihi nimi</h2></div>
         <hr/>
         <div>
-            <p> See on selle kihi nimi, mis luuakse jaotises <b>Minu sisu</b> ja lisatakse kaardile.  Vaikenimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui see kiht on juba olemas, siis t&ouml;&ouml;tlemine nurjub.
+            <p> See on selle kihi nimi, mis luuakse jaotises <b>Minu sisu</b> ja lisatakse kaardile.  Vaikimisi nimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui see kiht on juba olemas, siis t&ouml;&ouml;tlemine nurjub.
             </p>
-            <p>Kasutades rippmen&uuml;&uuml;d  <b>Salvesta tulemused</b>, saate jaotises <b>Minu sisu</b> m&auml;&auml;rata kausta nime, kuhu tulemused salvestatakse.
+            <p>Kasutades rippmen&uuml;&uuml;d  <b>Salvesta tulemused</b>, saate jaotises <b>Minu sisu</b> m&auml;&auml;rata selle kausta nime, kuhu tulemused salvestatakse.
             </p>
         </div>
     </div>

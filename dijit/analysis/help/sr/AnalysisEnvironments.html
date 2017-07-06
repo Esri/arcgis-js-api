@@ -112,7 +112,7 @@
                 <ul>
                     <li> <b>Isto kao ulaz</b>&mdash;rezultat va&scaron;e analize će biti u istom koordinatnom sistemu kao ulaz. Ovo je podrazumevano.
                     </li>
-                    <li> <b>Kao &scaron;to je navedeno</b>&mdash;izaberite koordinatni sistem za rezultate svoje analize.   Kada je izabrana ova opcija, kliknite na ikonu globusa da biste selektovali iz liste poznatih koordinatnih sistema ili dodali prostornu referencu WKID u obezbeđenom polju.
+                    <li> <b>Kao &scaron;to je navedeno</b>&mdash;izaberite koordinatni sistem za rezultate svoje analize.   Kada je izabrana ova opcija, kliknite na ikonu globusa da biste selektovali iz liste poznatih koordinatnih sistema, ili dodali prostornu referencu WKID u obezbeđenom polju.
                     </li>
                     <li> <b>Sloj
 &lt;name&gt;</b>&mdash;izaberite postojeći sloj u svojoj veb mapi koji će se koristiti za određivanje koordinatnog sistema rezultata va&scaron;e analize.
@@ -134,7 +134,7 @@
                 <ul>
                     <li> <b>Isto kao ulaz</b>&mdash;va&scaron;a analiza će biti obrađena u istom koordinatnom sistemu kao ulaz. Ovo je podrazumevano.
                     </li>
-                    <li> <b>Kao &scaron;to je navedeno</b>&mdash;izaberite koordinatni sistem za obradu va&scaron;e analize. Kada je izabrana ova opcija, kliknite na ikonu globusa da biste selektovali iz liste poznatih projektovanih koordinatnih sistema ili dodali prostornu referencu WKID u obezbeđenom polju.
+                    <li> <b>Kao &scaron;to je navedeno</b>&mdash;izaberite koordinatni sistem za obradu va&scaron;e analize. Kada je izabrana ova opcija, kliknite na ikonu globusa da biste selektovali iz liste poznatih projektovanih koordinatnih sistema, ili dodali prostornu referencu WKID u obezbeđenom polju.
                     </li>
                     <li> <b>Sloj
 &lt;name&gt;</b>&mdash;izaberite postojeći sloj iz svoje veb mape.  Koordinatni sistem odabranog sloja će se koristiti za određivanje koordinatnog sistema koji će se koristiti za obradu va&scaron;e analize.
@@ -186,7 +186,8 @@
                     </li>
                     <li> <b>Kao &scaron;to je navedeno</b>&mdash;navedite numeričku vrednost da biste podesili veličinu ćelije. Ako je ovo selektovano, podrazumevana vrednost je 1.
                     </li>
-                    <li> <b>Sloj &lt;name&gt;</b>&mdash;pode&scaron;ava veličinu ćelije za odabrani sloj rastera.
+                    <li> <b>Sloj &lt;name&gt;</b>&mdash;pode&scaron;ava
+veličinu ćelije za odabrani sloj rastera.
                     </li>
                 </ul>
                 
@@ -204,10 +205,28 @@
                 </li>
                 <li>Ako je maska analize raster, za sve ćelije koje imaju vrednost će se smatrati da defini&scaron;u masku. Za ćelije u rasteru maske koje su tipa NoData (bez podataka) će se smatrati da su izvan maske i biće NoData (bez podataka) u sloju rezultata analize. 
                 </li>
-                <li>Ako je maska analize sloj geoobjekata, on će biti interno konvertovan u raster prilikom izvr&scaron;avanja. Zbog toga bi trebalo da se potrudite da obezbedite da su  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">Veličina ćelije</a> i <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">Brzi raster</a> pode&scaron;eni na odgovarajući način za ve&scaron;u analizu.
+                <li>Ako je maska analize sloj geoobjekata, on će biti interno konvertovan u raster prilikom izvr&scaron;avanja. Iz tog razloga, trebalo bi da se pobrinete da su
+ <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank"></a> i <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank"></a> pode&scaron;eni na odgovarajući način za va&scaron;u analizu.
                 </li>
             </ul>
              
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>ArcGIS Data Store</h2></div>
+        <hr/>
+        <div>
+            <p>Rezultati geoanalize se skladi&scaron;te u ArcGIS skladi&scaron;tu podataka i izloženi su kao sloj geoobjekata u  Portal for ArcGIS. U većini slučajeva, rezultati bi trebali da budu skladi&scaron;teni u skladi&scaron;te prostorno-vremenskih podataka. Ovo je podrazumevano. Slede razlozi zbog kojih ćete želeti da skladi&scaron;tite rezultate u skladi&scaron;tu relacionih podataka: 
+                <ul>
+                    <li>Da biste koristili va&scaron;e rezultate u portal-ka-portalu kolaboraciji
+                    </li>
+                    <li>Da biste omogućili mogućnosti sinhronizacije sa rezultatima
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Ne treba da koristite skladi&scaron;te relacionih podataka ako očekujete da se geoanalitički podaci povećaju i želite da iskoristite mogućnosti prostorno-vremenskog skladi&scaron;ta velikih podataka kako biste upravljali velikim količinama podataka. 
+            </p>
         </div>
     </div>
 </div>

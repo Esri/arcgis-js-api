@@ -40,7 +40,7 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Copia in Data Store</h2><p/>
         <h2><img src="../images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" alt="Copia in Data Store"></h2>
         <hr/>
@@ -55,7 +55,15 @@
         <div>
             <p>Il layer o la tabella che verr&agrave; copiata. 
             </p>
-            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Sfoglia layer</b> alla base dell'elenco a discesa per cercare una dataset di condivisione file Big Data o un feature layer.  
+            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Sfoglia layer</b> alla base dell'elenco a discesa per cercare una dataset di condivisione file Big Data o un feature layer.
+            </p>
+        </div>
+    </div>
+    <div id="selection">
+        <div><h2>È possibile utilizzare tutte le feature o effettuare una selezione (facoltativo)</h2></div>
+        <hr/>
+        <div>
+            <p>Facoltativamente, utilizzare il pulsante di selezione per identificare le posizioni da copiare.
             </p>
         </div>
     </div>
@@ -63,7 +71,7 @@
         <div><h2>Scegliere l'ArcGIS Data Store in cui copiare</h2></div>
         <hr/>
         <div>
-            <p> Il Data Store dati in cui verr&agrave; copiato il layer. Sono disponibili le seguenti opzioni:
+            <p>Il Data Store dati in cui verr&agrave; copiato il layer. Questo parametro ignora la selezione effettuata negli  <b>Ambienti di analisi</b> Le opzioni sono le seguenti:
                 <ul>
                     <li> <b>Spatiotemporal</b>: questa &egrave; l'impostazione predefinita.
                     </li>
@@ -75,12 +83,12 @@
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Nome layer risultati</h2></div>
+        <div><h2>Nome layer di risultati</h2></div>
         <hr/>
         <div>
             <p> Questo &egrave; il nome del layer che verr&agrave; creato in <b>I miei contenuti</b> e aggiunto alla mappa.  Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, lo strumento non verr&agrave; eseguito.
             </p>
-            <p>Utilizzare la casella a discesa  <b>Salva risultato in</b> per specificare il nome di una cartella di <b>I miei contenuti</b> in cui salvare il risultato.
+            <p>Utilizzare la casella a discesa  <b>Salva risultato in</b> per specificare il nome di una cartella in <b>I miei contenuti</b> in cui salvare il risultato.
             </p>
         </div>
     </div>

@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Öznitelikleri Özetle</h2><p/>
+        <h2>Öznitelikleri Özetleme</h2><p/>
         <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="&Ouml;znitelikleri &Ouml;zetle"></h2>
         <hr/>
     <p>Bu ara&ccedil; bir veya birka&ccedil; alan i&ccedil;indeki eşleşen değerlerin t&uuml;m&uuml;n&uuml; &ouml;zetler ve bunlarla ilgili istatistikleri hesaplar. En temel istatistik, birlikte &ouml;zetlenen detay sayısı olmakla birlikte, daha gelişmiş diğer istatistikleri de hesaplayabilirsiniz. 
@@ -57,44 +57,46 @@
         <div>
             <p>&Ouml;zetlenecek alanları kapsayan katman.  
             </p>
-            <p>Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, a&ccedil;ılan listenin en altından  <b>Katmanlara G&ouml;zat</b> &ouml;ğesini belirleyerek big data dosya paylaşımı veri k&uuml;mesi veya detay katmanı i&ccedil;eriğinize g&ouml;z atabilirsiniz.  
+            <p>Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, a&ccedil;ılan listenin en altından  <b>Katmanlara G&ouml;zat</b> &ouml;ğesini belirleyerek big data dosya paylaşımı veri k&uuml;mesi veya detay katmanı i&ccedil;eriğinize g&ouml;z atabilirsiniz.
             </p>
         </div>
     </div>
     <div id="fields">
-        <div><h2>Üzerinde çalışmak istediğiniz alanları seçin</h2></div>
+        <div><h2>Özetlenecek alanları seçin</h2></div>
         <hr/>
         <div>
-            <p>  Girdi katmanından alınan alanların listesi.  Se&ccedil;ilen alanlar &ouml;zetlenir ve istatistiklerin hesaplanması i&ccedil;in kullanılır. &Ouml;rneğin, ticari ve meskenle ilgili değerlere sahip <i>PropertyType</i> adlı bir alan se&ccedil;erseniz, meskenle ilgili t&uuml;m alanlar birlikte &ouml;zetlenir ve &ouml;zet istatistikler hesaplanır; ticari alanların t&uuml;m&uuml; de birlikte &ouml;zetlenir.
+            <p>Girdi katmanındaki alanların listesi. Se&ccedil;ilen alanlar &ouml;zetlenir ve istatistiklerin hesaplanması i&ccedil;in kullanılır. &Ouml;rneğin, ticari ve meskenle ilgili değerlere sahip  <i>PropertyType</i> adlı bir alan se&ccedil;erseniz, meskenle ilgili t&uuml;m alanlar birlikte &ouml;zetlenir ve &ouml;zet istatistikler hesaplanır; ticari alanların t&uuml;m&uuml; de birlikte &ouml;zetlenir.
             </p>
         </div>
     </div>
     <div id="summaryFields">
-        <div><h2>Hesaplamak istediğiniz alanları ve istatistikleri seçin (isteğe bağlı)</h2></div>
+        <div><h2>İstatistik ekle (isteğe bağlı)</h2></div>
         <hr/>
         <div>
             <p> &Ouml;zetlenen detaylarla ilgili istatistikleri hesaplayabilirsiniz. Sayısal alanlarda aşağıdakileri hesaplayabilirsiniz:
                 <ul>
-                    <li>Sayım
+                    <li>Sayım; null olmayan değerlerin sayısını hesaplar. Sayısal alan veya dizelerde kullanılabilir. [null, 0, 2] sonucu 2&rsquo;dir.
                     </li>
-                    <li>Ortalama
+                    <li>Toplam; bir alandaki sayısal değerlerin toplamıdır. [null, null, 3] toplamı 3&rsquo;t&uuml;r.
                     </li>
-                    <li>Min.
+                    <li>Ortalama; sayısal değerlerin ortalamasıdır. [0, 2, null] ortalaması 1&rsquo;dir.
                     </li>
-                    <li>Maks
+                    <li>Min; bir sayısal alanın minimum değeridir. [0, 2, null] minimumu 0&rsquo;dır. 
                     </li>
-                    <li>Aralık
+                    <li>Maks; bir sayısal alanın maksimum değeridir. [0, 2, null] maksimum değeri 2&rsquo;dir.
                     </li>
-                    <li>Varyans
+                    <li>Aralık; bir sayısal alanın aralığıdır. Bu değer, minimum değerlerin maksimum değerlerden &ccedil;ıkartılmasıyla hesaplanır. [0, null, 1] aralığı 1&rsquo;dir. [null, 4] aralığı 0&rsquo;dır.
                     </li>
-                    <li>Standart sapma
+                    <li>Varyans; bir izdeki sayısal değerin sapmasını g&ouml;sterir. [1] sapması null&rsquo;dır. [null, 1,1,1] sapması 1&rsquo;dir.
+                    </li>
+                    <li>Standart sapma; bir sayısal alanın standart sapmasıdır. [1] standart sapması null&rsquo;dır. [null, 1,1,1] standart sapması 1&rsquo;dir. 
                     </li>
                 </ul>
                 
             </p>
             <p>Dize alanlarında aşağıdakileri hesaplayabilirsiniz:
                 <ul>
-                    <li>Sayım
+                    <li>Sayım; null olmayan dizelerin sayısını hesaplar.
                     </li>
                     <li>Herhangi; bu istatistik belirtilen alandaki bir dize değerinin rastgele &ouml;rneğidir.
                     </li>
@@ -107,14 +109,22 @@
         <div><h2>Veri deposu seç</h2></div>
         <hr/>
         <div>
-            <p>Bu, sonu&ccedil;ların kaydedileceği veri deposunu ayarlamak amacıyla &ouml;n s&uuml;r&uuml;m i&ccedil;in ge&ccedil;ici bir parametredir. Her iki veri deposu da  ArcGIS Data Store uygulamasının bir par&ccedil;asıdır. Y&uuml;kl&uuml; değilken spatiotemporal data store &ouml;ğesini se&ccedil;erseniz ara&ccedil; &ccedil;alışmaz. </p>
+            <p>GeoAnalytics sonu&ccedil;ları ArcGIS Data Store i&ccedil;in depo g&ouml;revi g&ouml;r&uuml;r ve  Portal for ArcGIS i&ccedil;inde bir detay katmanı olarak yansıtılır. Pek &ccedil;ok durumda sonu&ccedil;ların spatiotemporal data store &ouml;ğesine depolanması gerekir ve bu varsayılan ayardır. Bazı durumlarda sonu&ccedil;ların ilişkisel veri deposuna kaydedilmesi iyi bir se&ccedil;enektir. Sonu&ccedil;ların ilişkisel veri deposuna saklanmasını isteyebileceğiniz nedenler aşağıda sunulmuştur: 
+                <ul>
+                    <li>Sonu&ccedil;ları portal ortak kullanımı portalda kullanma olanağı.
+                    </li>
+                    <li>Sonu&ccedil;larınızı eşzamanlama &ouml;zelliklerini etkinleştirebilme.
+                    </li>
+                </ul>
+                
+            </p>
         </div>
     </div>
     <div id="outputName">
         <div><h2>Sonuç katmanı adı</h2></div>
         <hr/>
         <div>
-            <p> Bu, <b>İ&ccedil;eriğim</b>de oluşturulacak ve haritaya eklenecek katmanın adıdır.  Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Detay katmanı zaten varsa ara&ccedil; &ccedil;alışmaz.
+            <p> Bu, <b>İ&ccedil;eriğim</b>&rsquo;de oluşturulacak ve haritaya eklenecek katmanın adıdır.  Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Detay katmanı zaten varsa ara&ccedil; &ccedil;alışmaz.
             </p>
             <p> <b>Sonu&ccedil;ları kaydet</b> a&ccedil;ılır kutusunu kullanarak <b>İ&ccedil;eriğim</b> alanında sonucun kaydedileceği klas&ouml;r adını belirleyebilirsiniz.
             </p>

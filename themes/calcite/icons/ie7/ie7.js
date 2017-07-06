@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.19/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.21/esri/copyright.txt for details.
 
 /* To avoid CSS expressions while still supporting IE 7 and IE 6, use this script */
 /* The script tag referencing this file must be placed before the ending body tag. */
@@ -173,18 +173,33 @@
 		'esri-icon-dock-left': '&#xe685;',
 		'esri-icon-dock-right': '&#xe686;',
 		'esri-icon-organization': '&#xe687;',
-		'esri-icon-north-navigation': '&#xe900;',
-		'esri-icon-locate-circled': '&#xe901;',
-		'esri-icon-dial': '&#xe902;',
-		'esri-icon-polygon': '&#xe903;',
-		'esri-icon-polyline': '&#xe904;',
-		'esri-icon-visible': '&#xe905;',
-		'esri-icon-non-visible': '&#xe906;',
-		'esri-icon-link-vertical': '&#xe907;',
-		'esri-icon-unlocked-link-vertical': '&#xe908;',
-		'esri-icon-link-horizontal': '&#xe909;',
-		'esri-icon-unlocked-link-horizontal': '&#xe90a;',
-		'esri-icon-swap': '&#xe90b;',
+		'esri-icon-north-navigation': '&#xe688;',
+		'esri-icon-locate-circled': '&#xe689;',
+		'esri-icon-dial': '&#xe68a;',
+		'esri-icon-polygon': '&#xe68b;',
+		'esri-icon-polyline': '&#xe68c;',
+		'esri-icon-visible': '&#xe68d;',
+		'esri-icon-non-visible': '&#xe68e;',
+		'esri-icon-link-vertical': '&#xe68f;',
+		'esri-icon-unlocked-link-vertical': '&#xe690;',
+		'esri-icon-link-horizontal': '&#xe691;',
+		'esri-icon-unlocked-link-horizontal': '&#xe692;',
+		'esri-icon-swap': '&#xe693;',
+		'esri-icon-cta-link-external': '&#xe694;',
+		'esri-icon-reply': '&#xe695;',
+		'esri-icon-public': '&#xe696;',
+		'esri-icon-share2': '&#xe697;',
+		'esri-icon-launch-link-external': '&#xe698;',
+		'esri-icon-rotate-back': '&#xe699;',
+		'esri-icon-pan2': '&#xe69a;',
+		'esri-icon-tracking': '&#xe69b;',
+		'esri-icon-expand2': '&#xe69c;',
+		'esri-icon-arrow-down': '&#xe69d;',
+		'esri-icon-arrow-up': '&#xe69e;',
+		'esri-icon-hollow-eye': '&#xe69f;',
+		'esri-icon-play-circled': '&#xe6a0;',
+		'esri-icon-volume-off': '&#xe6a1;',
+		'esri-icon-volume-on': '&#xe6a2;',
 		'0': 0
 		},
 		els = document.getElementsByTagName('*'),

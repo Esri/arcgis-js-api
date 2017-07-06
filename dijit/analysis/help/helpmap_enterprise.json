@@ -1,0 +1,127 @@
+{
+    "version": "1.0",
+    "map": {
+        "AggregatePoints": {
+            "toolDescription": "Aggregate_Points/01930000016p000000",
+            "pointLayer": "Aggregate_Points/01930000016p000000",
+            "polygonLayer": "Aggregate_Points/01930000016p000000"
+        },
+        "AggregatePoints_bd": {
+            "toolDescription": "Aggregate_Points/01930000017p000000"
+        },
+        "CalculateDensity": {
+            "toolDescription": "Calculate_Density/01930000016m000000",
+            "inputLayer": "Calculate_Density/01930000016m000000"
+        },
+        "ChooseBestFacilities": {
+            "toolDescription": "Choose_Best_Facilities/019300000105000000",
+            "allocateToExistingFacilities": "Choose_Best_Facilities/019300000105000000#ESRI_SECTION3_6E6EB159DCDA4ED79DCE1CF23AC3D3D8",
+            "minimizeTravel": "Choose_Best_Facilities/019300000105000000#ESRI_SECTION3_31FB2F550C7F4FB1898889D1335458E0",
+            "maximizeCoverage": "Choose_Best_Facilities/019300000105000000#ESRI_SECTION3_98834C1F3F984696B49D06DB5C286ADF",
+            "maximizeCoverageWithCapacity": "Choose_Best_Facilities/019300000105000000#ESRI_SECTION3_71F01CF021DC4336803F092D636F1973",
+            "coverAPercentageOfDemand": "Choose_Best_Facilities/019300000105000000#ESRI_SECTION3_6866E70248774F1CBAC6E6138AC50AC7",
+            "demandLocationsLayer": "Choose_Best_Facilities/019300000105000000#ESRI_SECTION2_0698EBA6340E4A6B93BB4BB31C4F71DF",
+            "requiredFacilitiesLayer": "Choose_Best_Facilities/019300000105000000#ESRI_SECTION2_0698EBA6340E4A6B93BB4BB31C4F71DF",
+            "candidateFacilitiesLayer": "Choose_Best_Facilities/019300000105000000#ESRI_SECTION2_0698EBA6340E4A6B93BB4BB31C4F71DF",
+            "goal": "Choose_Best_Facilities/019300000105000000#ESRI_SECTION1_4A4428B0C3FB41069B16FB2BC11F37DC"
+        },
+        "ConnectOriginsToDestinations": {
+            "toolDescription": "Connect_Origins_to_Destinations/019300000177000000"
+        },
+        "CreateBuffers": {
+            "toolDescription": "Create_Buffers/019300000167000000",
+            "inputLayer": "Create_Buffers/019300000167000000"
+        },
+        "CreateBuffers_bd": {
+            "toolDescription": "Create_Buffers/019300000184000000"
+        },
+        "CreateDriveTimeAreas": {
+            "toolDescription": "Create_Drive_Time_Areas/01930000016t000000",
+            "inputLayer": "Create_Drive_Time_Areas/01930000016t000000"
+        },
+        "DeriveNewLocations": {
+            "toolDescription": "Derive_New_Locations/0193000000w9000000",
+            "Expression": "Derive_New_Locations/0193000000w9000000"
+        },
+        "CreateViewshed": {
+            "toolDescription": "Create_Viewshed/01930000016r000000"
+        },
+        "CreateWatersheds": {
+            "toolDescription": "Create_Watersheds/01930000016s000000"
+        },
+        "DissolveBoundaries": {
+            "toolDescription": "Dissolve_Boundaries/019300000163000000"
+        },
+        "EnrichLayer": {
+            "toolDescription": "Enrich_Layer/019300000166000000",
+            "DataCollection": "Enrich_Layer/019300000166000000"
+        },
+        "ExtractData": {
+            "toolDescription": "Extract_Data/0193000000z0000000",
+            "InputLayers": "Extract_Data/0193000000z0000000"
+        },
+        "FindExistingLocations": {
+            "toolDescription": "Find_Existing_Locations/0193000000z1000000",
+            "Expression": "Find_Existing_Locations/0193000000z1000000"
+        },
+        "FindHotSpots": {
+            "toolDescription": "Find_Hot_Spots/0193000000wn000000",
+            "analysisFieldPoly": "Find_Hot_Spots/0193000000wn000000#ESRI_SECTION1_7743ED5A2AE3411B83140D82EEB8A41B",
+            "analysisFieldPoint": "Find_Hot_Spots/0193000000wn000000#ESRI_SECTION2_1B09039F95004047B30B0B957F2FA893",
+            "boundingPolygonLayer": "Find_Hot_Spots/0193000000wn000000#ESRI_SECTION3_F9D255E9146E44CF99DCC140A3BB9CBB",
+            "aggregationPolygonLayer": "Find_Hot_Spots/0193000000wn000000#ESRI_SECTION3_4AFB54649EC44003A2DDE65953B54AE3"
+        },
+        "FindNearest": {
+            "toolDescription": "Find_Nearest/01930000016n000000",
+            "analysisLayer": "Find_Nearest/01930000016n000000"
+        },
+        "FindOutliers": {
+            "toolDescription": "Find_Outliers/01930000018m000000"
+        },
+        "FindSimilarLocations": {
+            "toolDescription": "Find_Similar_Locations/0193000000wm000000",
+            "inputLayer": "Find_Similar_Locations/0193000000wm000000#ESRI_SECTION1_0B2B928A26BC4659B2143D06017F991E",
+            "searchLayer": "Find_Similar_Locations/0193000000wm000000#ESRI_SECTION1_0B2B928A26BC4659B2143D06017F991E",
+            "analysisFields": "Find_Similar_Locations/0193000000wm000000#ESRI_SECTION1_B78395564C414EA79B3386D3AA8C740C"
+        },
+        "GeocodeLocationsfromTable": {
+            "geocodeServiceURL": "Geocode_Locations_from_Table/01930000018n000000"
+        },
+        "InterpolatePoints": {
+            "toolDescription": "Interpolate_Points/019300000169000000"
+        },
+        "JoinFeatures": {
+            "toolDescription": "Join_Features/019300000189000000"
+        },
+        "JoinFeatures_bd": {
+            "toolDescription": "Join_Features/019300000181000000"
+        },
+        "MergeLayers": {
+            "toolDescription": "Merge_Layers/019300000179000000"
+        },
+        "OverlayLayers": {
+            "toolDescription": "Overlay_Layers/019300000168000000",
+            "inputLayer": "Overlay_Layers/019300000168000000"
+        },
+        "PlanRoutes": {
+            "toolDescription": "Plan_Routes/0193000000wt000000",
+            "endLayer": "Plan_Routes/0193000000wt000000#ESRI_SECTION2_F8AA174031C949E2B75BD6A397D6678D",
+            "startLayer": "Plan_Routes/0193000000wt000000#ESRI_SECTION2_F8AA174031C949E2B75BD6A397D6678D"
+        },
+        "ReconstructTracks_bd": {
+            "toolDescription": "Reconstruct_Tracks/01930000018t000000"
+        },
+        "SummarizeAttributes_bd": {
+            "toolDescription": "Summarize_Attributes/019300000182000000"
+        },
+        "SummarizeNearby": {
+            "toolDescription": "Summarize_Nearby/019300000165000000"
+        },
+        "SummarizeWithin": {
+            "toolDescription": "Summarize_Within/019300000178000000"
+        },
+        "TraceDownstream": {
+            "toolDescription": "Trace_Downstream/01930000016q000000"
+        }
+    }
+}

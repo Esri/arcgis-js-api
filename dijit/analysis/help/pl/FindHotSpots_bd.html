@@ -41,14 +41,14 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Znajdź lokalizacje hot spot</h2><p/>
+        <h2>Znajdź lokalizacje hot Spot</h2><p/>
         <h2><img src="../images/GUID-6D600155-AA9B-4F02-AD8B-2E84150AB743-web.png" alt="Znajdź lokalizacje hot spot"></h2>
         <hr/>
     <p>Narzędzie Znajdź lokalizacje hot spot ustala, czy w&nbsp;relacjach przestrzennych danych użytkownika istnieją statystycznie istotne klastry. 
         <ul>
             <li>Czy Twoje punkty (reprezentujące przestępstwa, drzewa lub wypadki drogowe) rzeczywiście są zgrupowane? Masz absolutną pewność?
             </li>
-            <li>Czy naprawdę odkryto statystycznie znaczącą lokalizację hot spot? Czy na mapie zostaną przedstawione inne informacje, jeśli zostanie zmieniony spos&oacute;b jej symbolizacji?
+            <li>Czy naprawdę udało Ci się ustalić, jakie są statystycznie istotne lokalizacje hot spot czy może Twoja mapa przedstawiałaby zupełnie inne zależności, gdyby zmienione zostały użyte symbole?
             </li>
         </ul>
         Narzędzie Znajdź lokalizacje hot spot pomoże Ci w&nbsp;uzyskaniu rzetelnej odpowiedzi na te pytania.
@@ -61,9 +61,11 @@
         <div><h2>Wybierz warstwę, dla której zostaną wyznaczone lokalizacje hot spot</h2></div>
         <hr/>
         <div>
-            <p>Warstwa punktowa, z kt&oacute;rej zostaną wyznaczone lokalizacje hot i cold spot. 
+            <p>Warstwa punktowa, z kt&oacute;rej zostaną wyznaczone lokalizacje hot i cold spot.
             </p>
-            <p>Opr&oacute;cz wybrania warstwy z mapy, można wybrać opcję  <b>Przeglądaj warstwy</b> znajdującą się w dolnej części listy rozwijanej, aby przejść do zasob&oacute;w zestawu danych udostępnionych plik&oacute;w dużych zbior&oacute;w danych lub warstwy obiektowej.  
+            <p>Podczas wykonywania tej analizy używane są kosze i wymagany jest układ wsp&oacute;łrzędnych odwzorowanych.  <b>Układ wsp&oacute;łrzędnych przetwarzania</b> można skonfigurować w oknie <b>Środowiska analizy</b>. Jeśli układ wsp&oacute;łrzędnych przetwarzania nie zostanie skonfigurowany jako układ wsp&oacute;łrzędnych odwzorowanych, podczas <b>uruchamiania analizy</b> zostanie wyświetlony monit informujący o konieczności wykonania tej czynności.
+            </p>
+            <p>Opr&oacute;cz wybrania warstwy z mapy, można wybrać opcję  <b>Przeglądaj warstwy</b> znajdującą się w dolnej części listy rozwijanej, aby przejść do zasob&oacute;w zestawu danych udostępnionych plik&oacute;w dużych zbior&oacute;w danych lub warstwy obiektowej.
             </p>
         </div>
     </div>
@@ -81,7 +83,7 @@
         </div>
     </div>
     <div id="inputBins">
-        <div><h2>Wybierz wielkość kosza do obliczeń lokalizacji hot spot</h2></div>
+        <div><h2>Wybierz wielkość kosza dla agregacji</h2></div>
         <hr/>
         <div>
             <p>Odległość używana do generowania koszy kwadratowych, kt&oacute;re będą używane do analizowania punkt&oacute;w wejściowych.
@@ -89,39 +91,56 @@
         </div>
     </div>
     <div id="timeSlicing">
-        <div><h2>Agreguj za pomocą okien czasowych (opcjonalnie)</h2></div>
+        <div><h2>Znajdź lokalizacje hot spot z użyciem etapów czasowych (opcjonalne)</h2></div>
         <hr/>
         <div>
-            <p>Jeśli dla warstwy punktowej włączono czas (typu Moment), można przeprowadzić analizę przy użyciu interwał&oacute;w czasu.
+            <p>Jeśli dla warstwy punktowej włączono czas (typu Moment), można przeprowadzić analizę przy użyciu etap&oacute;w czasowych.
             </p>
         </div>
     </div>
     <div id="timeInterval">
-        <div><h2>Interwał czasu do agregowania w</h2></div>
+        <div><h2>Przedział etapu czasowego</h2></div>
         <hr/>
         <div>
-            <p>Interwał czasu używany podczas analizowania. Aby utworzyć okna czasowe występujące co tydzień, należy ustawić interwał czasu wynoszący jeden tydzień. 
+            <p>Przedział czasu używany do tworzenia etap&oacute;w czasowych. Czas można wyr&oacute;wnać w taki spos&oacute;b, aby odpowiadał czasowi rozpoczęcia i zakończenia danych wejściowych lub podanemu czasowi referencyjnemu.  
             </p>
         </div>
     </div>
     <div id="timeStep">
-        <div><h2>Etap czasowy do agregowania w</h2></div>
+        <div><h2>Przedział etapu czasowego</h2></div>
         <hr/>
         <div>
-            <p>Jak czas będzie wyr&oacute;wnywany. Czas można wyr&oacute;wnać w taki spos&oacute;b, aby odpowiadał czasowi rozpoczęcia i zakończenia danych wejściowych lub podanemu czasowi referencyjnemu.  
+            <p>Przedział czasu używany do tworzenia etap&oacute;w czasowych.Czas można wyr&oacute;wnać w taki spos&oacute;b, aby odpowiadał czasowi rozpoczęcia i zakończenia danych wejściowych lub podanemu czasowi referencyjnemu.  
+            </p>
+        </div>
+    </div>
+    <div id="timeStepAlignment">
+        <div><h2>Wybierz sposób wyrównania etapów czasowych</h2></div>
+        <hr/>
+        <div>
+            <p>Jak wyr&oacute;wnywane są etapy czasowe. Istnieją trzy sposoby wyr&oacute;wnywania etap&oacute;w czasowych:
+                <ul>
+                    <li> <b>Czas rozpoczęcia</b> &mdash; etapy czasowe są wyr&oacute;wnywane względem pierwszego obiektu w czasie.
+                    </li>
+                    <li> <b>Czas zakończenia</b> &mdash; etapy czasowe są wyr&oacute;wnywane względem ostatniego obiektu w czasie.
+                    </li>
+                    <li> <b>Czas referencyjny</b> &mdash; etapy czasowe są wyr&oacute;wnywane względem podanego czasu.
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>
     <div id="timeReference">
-        <div><h2>Czas referencyjny użyty do wyrównania okien czasowych</h2></div>
+        <div><h2>Czas referencyjny użyty do wyrównania etapów czasowych</h2></div>
         <hr/>
         <div>
-            <p>Data i czas używane do wyr&oacute;wnania interwał&oacute;w czasu.
+            <p>Data i czas używane do wyr&oacute;wnania etap&oacute;w czasowych.
             </p>
         </div>
     </div>
     <div id="neighborhood">
-        <div><h2>Wybierz wielkość sąsiedztwa</h2></div>
+        <div><h2>Wybierz wielkość sąsiedztwa na potrzeby obliczeń lokalizacji hot spot</h2></div>
         <hr/>
         <div>
             <p>Odległość służąca do ustalania sąsiedztwa używanego podczas obliczeń dotyczących lokalizacji hot spot. Sąsiedztwo powinno być większe niż wielkość kosza, aby zapewnić, że każdy kosz ma co najmniej jeden kosz sąsiadujący. Każdy kosz jest analizowany i por&oacute;wnywany z sąsiednimi koszami.
@@ -132,15 +151,25 @@
         <div><h2>Odniesienie przestrzenne (wkid)</h2></div>
         <hr/>
         <div>
-            <p>Jest to parametr tymczasowy używany w wersji wstępnej do ustawiania odniesienia przestrzennego przetwarzania. Wiele narzędzi do obsługi dużych zbior&oacute;w danych wymaga użycia układu wsp&oacute;łrzędnych odwzorowanych jako odniesienia przestrzennego przetwarzania. Domyślnie narzędzie użyje wejściowego układu wsp&oacute;łrzędnych, ale operacja nie powiedzie się, jeśli będzie to układ wsp&oacute;łrzędnych geograficznych. Aby  ustawić układ wsp&oacute;łrzędnych odwzorowanych, wprowadź wartość WKID. Na przykład  <b>Web Mercator</b> zostanie wprowadzony jako <code>3857</code>.
+            <p>Jest to parametr tymczasowy używany w wersji wstępnej do ustawiania odniesienia przestrzennego przetwarzania. Wiele narzędzi do obsługi dużych zbior&oacute;w danych wymaga użycia układu wsp&oacute;łrzędnych odwzorowanych jako odniesienia przestrzennego przetwarzania. Domyślnie narzędzie użyje wejściowego układu wsp&oacute;łrzędnych, ale operacja nie powiedzie się, jeśli będzie to układ wsp&oacute;łrzędnych geograficznych. Aby ustawić układ wsp&oacute;łrzędnych odwzorowanych, wprowadź wartość WKID. Na przykład  <b>Web Mercator</b> zostanie wprowadzony jako <code>3857</code>.
             </p>
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Wybierz magazyn danych</h2></div>
+        <div><h2>Wybierz aplikację ArcGIS Data Store, w której zostaną zapisane wyniki</h2></div>
         <hr/>
         <div>
-            <p>Jest to parametr tymczasowy używany w wersji wstępnej do ustawiania magazynu danych, w kt&oacute;rym zapisywane są wyniki. Oba magazyny danych są częścią aplikacji  ArcGIS Data Store. Jeśli zostanie wybrany magazyn danych czasowo-przestrzennych, ale żaden magazyn tego typu nie został zainstalowany, działanie narzędzia nie powiedzie się. </p>
+            <p>Wyniki analiz geoprzestrzennych są przechowywane w aplikacji ArcGIS Data Store i udostępniane jako warstwa obiekt&oacute;w w witrynie  Portal for ArcGIS. W większości przypadk&oacute;w wyniki powinny być przechowywane w magazynie danych czasowo-przestrzennych i jest to ustawienie domyślne. W niekt&oacute;rych przypadkach dobrym rozwiązanie jest zapisanie wynik&oacute;w w relacyjnym magazynie danych. Poniżej podano sytuacje, kt&oacute;re mogą uzasadniać przechowywanie wynik&oacute;w w relacyjnym magazynie danych: 
+                <ul>
+                    <li>Używanie wynik&oacute;w w ramach kooperacji między portalami.
+                    </li>
+                    <li>Włączanie możliwości synchronizacji dla wynik&oacute;w.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Nie należy używać relacyjnego magazynu danych, jeśli liczba wynik&oacute;w analiz geoprzestrzennych może się zwiększyć i może być konieczne zastosowanie magazynu dużych zbior&oacute;w danych czasowo-przestrzennych w celu obsłużenia dużych ilości danych. 
+            </p>
         </div>
     </div>
     <div id="outputName">

@@ -48,7 +48,7 @@
         <ul>
             <li>&iquest;Est&aacute;n realmente agrupados sus puntos (incidentes de actos delictivos, &aacute;rboles o accidentes de tr&aacute;fico)?  &iquest;C&oacute;mo puede estar seguro?
             </li>
-            <li>&iquest;Realmente ha descubierto un punto caliente estad&iacute;sticamente significativo? &iquest;O su mapa contar&iacute;a una historia diferente si cambiara la forma de simbolizarlo?
+            <li>&iquest;Ha descubierto de verdad un punto caliente estad&iacute;sticamente significativo o contar&iacute;a su mapa una historia diferente si cambiara sus s&iacute;mbolos?
             </li>
         </ul>
         La herramienta Buscar puntos calientes le ayudar&aacute; a responder a estas preguntas con confianza.
@@ -61,9 +61,11 @@
         <div><h2>Elegir la capa cuyos puntos calientes se van a calcular</h2></div>
         <hr/>
         <div>
-            <p>La capa de puntos donde se buscar&aacute;n puntos calientes y fr&iacute;os. 
+            <p>La capa de puntos donde se buscar&aacute;n puntos calientes y fr&iacute;os.
             </p>
-            <p>Adem&aacute;s de elegir una capa en el mapa, puede elegir  <b>Examinar capas</b> en la parte inferior de la lista desplegable para examinar el contenido del dataset o la capa de entidades de un archivo compartido de Big Data.  
+            <p>Este an&aacute;lisis utiliza bins y requiere un sistema de coordenadas proyectadas. Puede definir el  <b>Sistema de coordenadas de procesamiento</b> en <b>Entornos de an&aacute;lisis</b>. Si el sistema de coordenadas de procesamiento no se ha definido en un sistema de coordenadas proyectadas, se le pedir&aacute; que lo defina cuando use <b>Ejecutar an&aacute;lisis</b>.
+            </p>
+            <p>Adem&aacute;s de elegir una capa en el mapa, puede elegir  <b>Examinar capas</b> en la parte inferior de la lista desplegable para examinar el contenido del dataset o la capa de entidades de un archivo compartido de Big Data.
             </p>
         </div>
     </div>
@@ -81,7 +83,7 @@
         </div>
     </div>
     <div id="inputBins">
-        <div><h2>Seleccionar el tamaño de bin para los cálculos de puntos calientes</h2></div>
+        <div><h2>Seleccione el tamaño del bin para la agregación</h2></div>
         <hr/>
         <div>
             <p>La distancia utilizada para generar los bins cuadrados que se utilizar&aacute;n para analizar los puntos de entrada.
@@ -89,7 +91,7 @@
         </div>
     </div>
     <div id="timeSlicing">
-        <div><h2>Agregar utilizando intervalos de tiempo (opcional)</h2></div>
+        <div><h2>Buscar puntos calientes utilizando intervalos de tiempo (opcional)</h2></div>
         <hr/>
         <div>
             <p>Si el tiempo est&aacute; habilitado en la capa de puntos y es del tipo instante, puede analizar utilizando intervalos de tiempo.
@@ -97,23 +99,40 @@
         </div>
     </div>
     <div id="timeInterval">
-        <div><h2>Intervalo de tiempo para agregar</h2></div>
+        <div><h2>Intervalo de período de tiempo</h2></div>
         <hr/>
         <div>
-            <p>Intervalo de tiempo utilizado para el an&aacute;lisis. Si quisiera crear intervalos de tiempo que ocurrieran cada semana, deber&iacute;a definir el intervalo de tiempo a una semana. 
+            <p>Intervalo de tiempo usado para generar per&iacute;odos de tiempo.  El tiempo se puede alinear con el tiempo de inicio o finalizaci&oacute;n de los datos de entrada, o con un tiempo de referencia especificado.  
             </p>
         </div>
     </div>
     <div id="timeStep">
-        <div><h2>Período de tiempo para agregar</h2></div>
+        <div><h2>Intervalo de período de tiempo</h2></div>
         <hr/>
         <div>
-            <p>C&oacute;mo se alinear&aacute; el tiempo. El tiempo se puede alinear con el tiempo de inicio o finalizaci&oacute;n de los datos de entrada, o con un tiempo de referencia especificado.  
+            <p>Intervalo de tiempo usado para generar per&iacute;odos de tiempo. El tiempo se puede alinear con el tiempo de inicio o finalizaci&oacute;n de los datos de entrada, o con un tiempo de referencia especificado.  
+            </p>
+        </div>
+    </div>
+    <div id="timeStepAlignment">
+        <div><h2>Elija cómo alinear los intervalos de tiempo</h2></div>
+        <hr/>
+        <div>
+            <p>C&oacute;mo se alinean los intervalos de tiempo. Hay tres formas de alinear intervalos de tiempo:
+                <ul>
+                    <li> <b>Hora de inicio</b>: los intervalos de tiempo se alinean con la primera entidad en el tiempo.
+                    </li>
+                    <li> <b>Hora de fin</b>: los intervalos de tiempo se alinean con la &uacute;ltima entidad en el tiempo.
+                    </li>
+                    <li> <b>Tiempo de referencia</b>: los intervalos de tiempo se alinean con una hora especificada.
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>
     <div id="timeReference">
-        <div><h2>Tiempo de referencia utilizado para alinear el intervalo de tiempo</h2></div>
+        <div><h2>Tiempo de referencia con el que alinear los intervalos de tiempo</h2></div>
         <hr/>
         <div>
             <p>La fecha y hora utilizados para alinear los intervalos de tiempo.
@@ -121,7 +140,7 @@
         </div>
     </div>
     <div id="neighborhood">
-        <div><h2>Seleccione el tamaño de la vecindad</h2></div>
+        <div><h2>Seleccione el tamaño de la vecindad para los cálculos de puntos calientes</h2></div>
         <hr/>
         <div>
             <p>La distancia utilizada para determinar la vecindad utilizada para los c&aacute;lculos de puntos calientes. Para asegurarse de que cada bin tiene al menos un vecino, la vecindad deber&iacute;a ser m&aacute;s grande que el tama&ntilde;o del bin. Cada bin se analiza y se compara con los bins vecinos.
@@ -132,27 +151,37 @@
         <div><h2>Referencia espacial (wkid)</h2></div>
         <hr/>
         <div>
-            <p>Se trata de un par&aacute;metro temporal para una versi&oacute;n preliminar que permite definir la referencia espacial de procesamiento. En muchas herramientas de Big Data es necesario utilizar un sistema de coordenadas proyectadas como referencia espacial para el procesamiento. De forma predeterminada, la herramienta utilizar&aacute; el sistema de coordenadas de entrada, pero fallar&aacute; si se trata de un sistema de coordenadas geogr&aacute;ficas. Para definir un sistema de coordenadas proyectadas, introduzca el WKID. Por ejemplo,  <b>Web Mercator</b> se introducir&iacute;a como <code>3857</code>.
+            <p>Se trata de un par&aacute;metro temporal para una versi&oacute;n preliminar que permite definir la referencia espacial de procesamiento. En muchas herramientas de Big Data es necesario utilizar un sistema de coordenadas proyectadas como referencia espacial para el procesamiento. De forma predeterminada, la herramienta utilizar&aacute; el sistema de coordenadas de entrada, pero fallar&aacute; si se trata de un sistema de coordenadas geogr&aacute;ficas. Para definir un sistema de coordenadas proyectadas, introduzca el WKID. Por ejemplo,  <b>Web Mercator</b>  se introducir&iacute;a como <code>3857</code>.
             </p>
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Elija el data store</h2></div>
+        <div><h2>Seleccione un ArcGIS Data Store en el que guardar los resultados</h2></div>
         <hr/>
         <div>
-            <p>Se trata de un par&aacute;metro temporal para una versi&oacute;n preliminar que permite definir el data store donde se guardar&aacute;n los resultados. Ambos data stores forman parte de  ArcGIS Data Store. Si selecciona el data store espaciotemporal pero no tiene ninguno instalado, la herramienta fallar&aacute;. </p>
+            <p>Los resultados de GeoAnalytics se almacenan en un ArcGIS Data Store y se exponen como capa de entidades en  Portal for ArcGIS. En la mayor&iacute;a de los casos, conviene almacenar los resultados en el almac&eacute;n de datos espaciotemporal y este es el predeterminado. En algunos casos, guardar los resultados en el almac&eacute;n de datos relacional es una buena opci&oacute;n. A continuaci&oacute;n, se exponen motivos por los que resulta buena idea guardar resultados en el almac&eacute;n de datos relacional: 
+                <ul>
+                    <li>Usar los resultados en colaboraci&oacute;n de portal a portal.
+                    </li>
+                    <li>Habilitar capacidades de sincronizaci&oacute;n con sus resultados.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Conviene no usar el almac&eacute;n de datos relacionales si espera que los resultados de GeoAnalytics aumenten y necesita aprovechar las capacidades del almac&eacute;n de big data espaciotemporal para manejar grandes cantidades de datos. 
+            </p>
         </div>
     </div>
     <div id="outputName">
         <div><h2>Nombre de capa de resultados</h2></div>
         <hr/>
         <div>
-            <p> Este es el nombre de la capa que se crear&aacute; en <b>Mi contenido</b> y se agregar&aacute; al mapa.  El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, la herramienta fallar&aacute;.
+            <p> Este es el nombre de la capa que se crear&aacute; en <b>Mi contenido</b> y se agregar&aacute; al mapa. El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, la herramienta fallar&aacute;.
             </p>
             <p>Esta capa de resultados te mostrar&aacute; los clusters estad&iacute;sticamente significativos de valores o recuentos de puntos altos y bajos.
  Si el nombre de la capa de resultados ya existe, se le pedir&aacute; que le cambie el nombre.
             </p>
-            <p>En el cuadro desplegable  <b>Guardar el resultado en</b>, puedes especificar el nombre de una carpeta de <b>Mi contenido</b> en la que se guardar&aacute; el resultado.
+            <p>En el cuadro desplegable  <b>Guardar el resultado en</b>, puede especificar el nombre de una carpeta de <b>Mi contenido</b> en la que se guardar&aacute; el resultado.
             </p>
         </div>
     </div>

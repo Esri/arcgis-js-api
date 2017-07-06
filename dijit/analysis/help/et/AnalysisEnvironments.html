@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Portali analüüsikeskkonna sätted</h2><p/>
+        <h2>Portali analüüsikeskkonna seaded</h2><p/>
         <h2></h2>
         <hr/>
     <p> Anal&uuml;&uuml;sikeskkonna s&auml;tted rakendustes Portal for ArcGIS ja  ArcGIS Online. 
@@ -112,7 +112,7 @@
                 <ul>
                     <li> <b>Sama, mis sisend</b> &ndash; anal&uuml;&uuml;situlemus on samas koordinaats&uuml;steemis nagu sisend. See on vaikimisi valitud.
                     </li>
-                    <li> <b>Nagu m&auml;&auml;ratud</b> &ndash; valige anal&uuml;&uuml;situlemuste koordinaats&uuml;steem. Kui see suvand on valitud, kl&otilde;psake gloobuseikooni, et teha valik tuntud koordinaats&uuml;steemide loendist v&otilde;i lisage koordinaats&uuml;steemi WKID vastavale v&auml;ljale.
+                    <li> <b>Nagu m&auml;&auml;ratud</b> &ndash; valige anal&uuml;&uuml;situlemuste koordinaats&uuml;steem. Kui see suvand on valitud, kl&otilde;psake gloobuse ikooni, et teha valik tuntud koordinaats&uuml;steemide loendist v&otilde;i lisage koordinaats&uuml;steemi WKID vastavale v&auml;ljale.
                     </li>
                     <li> <b>Kiht
 &lt;name&gt;</b> &ndash; valige oma veebikaardi olemasolev kiht, mida kasutatakse anal&uuml;&uuml;situlemuse koordinaats&uuml;steemi m&auml;&auml;ramiseks.
@@ -134,7 +134,7 @@
                 <ul>
                     <li> <b>Sama, mis sisend</b> &ndash; anal&uuml;&uuml;si t&ouml;&ouml;deldakse samas koordinaats&uuml;steemis nagu sisendit. See on vaikimisi valitud.
                     </li>
-                    <li> <b>Nagu m&auml;&auml;ratud</b> &ndash; valige anal&uuml;&uuml;si t&ouml;&ouml;tlemise koordinaats&uuml;steem. Kui see suvand on valitud, kl&otilde;psake gloobuseikooni, et teha valik tuntud tasapinnaliste ristkoordinaatide s&uuml;steemide loendist v&otilde;i lisage koordinaats&uuml;steemi WKID vastavale v&auml;ljale.
+                    <li> <b>Nagu m&auml;&auml;ratud</b> &ndash; valige anal&uuml;&uuml;si t&ouml;&ouml;tlemise koordinaats&uuml;steem. Kui see suvand on valitud, kl&otilde;psake gloobuse ikooni, et teha valik tuntud tasapinnaliste ristkoordinaatide s&uuml;steemide loendist v&otilde;i lisage koordinaats&uuml;steemi WKID vastavale v&auml;ljale.
                     </li>
                     <li> <b>Kiht
 &lt;name&gt;</b> &ndash; valige oma veebikaardi olemasolev kiht. Valitud kihi koordinaats&uuml;steemi kasutatakse anal&uuml;&uuml;si t&ouml;&ouml;tlemise koordinaats&uuml;steemi m&auml;&auml;ramiseks.
@@ -152,7 +152,7 @@
             </p>
             <p>
                 <ul>
-                    <li> <b>Vaikimisi</b> &ndash; kasutab t&ouml;&ouml;riista pakutud ulatust.
+                    <li> <b>Vaikimisi</b> &ndash; v&otilde;imaldab kasutada t&ouml;&ouml;riista pakutud ulatust.
                     </li>
                     <li> <b>Nagu m&auml;&auml;ratud</b> &ndash; sisestage koordinaadid k&auml;sitsi, et m&auml;&auml;ratleda ulatus.
                     </li>
@@ -173,7 +173,7 @@
         </div>
     </div>
     <div id="cellSize">
-        <div><h2>Piksli suurus</h2></div>
+        <div><h2>Lahtri suurus</h2></div>
         <hr/>
         <div>
             <p>Rasteranal&uuml;&uuml;si teostamise ajal m&auml;&auml;rab see keskkond piksli suuruse v&otilde;i resolutsiooni, mida kasutatakse v&auml;ljundi rasterkihi loomiseks. V&auml;ljundi resolutsiooni vaikimisi v&auml;&auml;rtuse m&auml;&auml;rab sisendi rasterkihi suurim piksli k&uuml;ljepikkuse suurus.
@@ -186,7 +186,7 @@
                     </li>
                     <li> <b>Nagu m&auml;&auml;ratud</b> &ndash; sisestage arvv&auml;&auml;rtus, et m&auml;&auml;rata piksli suurus. Kui see on valitud, on vaikev&auml;&auml;rtus 1.
                     </li>
-                    <li> <b>Kiht &lt;name&gt;</b> &ndash; m&auml;&auml;rab valitud rasterkihi piksli suuruse.
+                    <li> <b>Kiht &lt;name&gt;</b> &ndash; v&otilde;imaldab m&auml;&auml;rata valitud rasterkihi piksli suuruse.
                     </li>
                 </ul>
                 
@@ -204,10 +204,28 @@
                 </li>
                 <li>Kui anal&uuml;&uuml;simask on raster, v&otilde;etakse maski m&auml;&auml;ratlemisel arvesse k&otilde;iki piksleid, millel on v&auml;&auml;rtus. Maski rastri pikslid, mille v&auml;&auml;rtus on NoData, loetakse olevat v&auml;ljaspool maski ja need on anal&uuml;&uuml;situlemuse kihis v&auml;&auml;rtusega NoData. 
                 </li>
-                <li>Kui anal&uuml;&uuml;simask on objektikiht, teisendatakse see k&auml;ivitamisel sisemiselt rastriks. Sel p&otilde;hjusel peaksite veenduma, et  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">Piksli suurus</a> ja <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">Rastri sn&auml;p</a> oleksid anal&uuml;&uuml;si jaoks &otilde;igesti m&auml;&auml;ratud.
+                <li>Kui anal&uuml;&uuml;simask on objektikiht, teisendatakse see k&auml;ivitamisel sisemiselt rastriks. Sel p&otilde;hjusel, peaksite veenduma, et
+ <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank"></a> ja <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank"></a> oleksid anal&uuml;&uuml;si jaoks &otilde;igesti m&auml;&auml;ratud.
                 </li>
             </ul>
              
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>ArcGIS-i andmeladu</h2></div>
+        <hr/>
+        <div>
+            <p>GeoAnalyticsi tulemid salvestatakse ArcGIS-i andmelattu ja need kuvatakse portaalis  Portal for ArcGIS objektikihtidena. &Uuml;ldjuhul peaks tulemid salvestama ajalisruumilisse andmelattu. See on vaikimisi valitud. Allpool on toodud m&otilde;ned p&otilde;hjused, miks oleks soovitatav tulemid salvestada  relatsioonilisse andmelattu. 
+                <ul>
+                    <li>Saate tulemeid kasutada portaalidevahelises koost&ouml;&ouml;s
+                    </li>
+                    <li>Saate tulemitega s&uuml;nkroonida
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Relatsioonilist andmeladu pole otstarbekas kasutada, kui GeoAnalyticsi tulemite arv suureneb. Sel juhul peaksite kasutama suurt ajalisruumilist andmeladu, mis v&otilde;imaldab hallata suurt andmemahtu. 
+            </p>
         </div>
     </div>
 </div>

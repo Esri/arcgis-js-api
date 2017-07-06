@@ -112,7 +112,7 @@
                 <ul>
                     <li> <b>La fel ca intrarea</b> - Rezultatele analizei dvs. va fi &icirc;n acelaşi sistem de coordonate ca intrare. Aceasta este acţiunea implicită.
                     </li>
-                    <li> <b>După cum se specifică</b> - Alegeţi sistemul de coordonate pentru rezultatele analizei dvs.   Atunci c&acirc;nd este selectată această opţiune, faceţi clic pe pictograma glob pentru a selecta dintr-o listă de sisteme de coordonate cunoscute sau pentru a adăuga WKID al referinţei spaţiale &icirc;n caseta furnizată.
+                    <li> <b>După cum se specifică</b> - Alegeţi sistemul de coordonate pentru rezultatele analizei dvs.   Atunci c&acirc;nd este selectată această opţiune, faceţi clic pe pictograma glob pentru a selecta dintr-o listă de sisteme, de coordonate cunoscute sau pentru a adăuga WKID al referinţei spaţiale &icirc;n caseta furnizată.
                     </li>
                     <li> <b>Nume
 &lt;strat tematic&gt;</b> - Alegeţi un strat tematic existent &icirc;n harta web care va fi utilizat pentru a determina sistemul de coordonate al rezultatelor analizelor dvs.
@@ -134,7 +134,7 @@
                 <ul>
                     <li> <b>La fel ca intrarea</b> - Analiza dvs. va fi procesată &icirc;n acelaşi sistem de coordonate ca intrarea. Aceasta este acţiunea implicită.
                     </li>
-                    <li> <b>După cum se specifică</b> - Alegeţi sistemul de coordonate pentru procesarea analizei dvs.   Atunci c&acirc;nd este selectată această opţiune, faceţi clic pe pictograma glob pentru a selecta dintr-o listă de sisteme de coordonate proiectate cunoscute sau pentru a adăuga WKID al referinţei spaţiale &icirc;n caseta furnizată.
+                    <li> <b>După cum se specifică</b> - Alegeţi sistemul de coordonate pentru procesarea analizei dvs.   Atunci c&acirc;nd este selectată această opţiune, faceţi clic pe pictograma glob pentru a selecta dintr-o listă de sisteme, de coordonate proiectate cunoscute sau pentru a adăuga WKID al referinţei spaţiale &icirc;n caseta furnizată.
                     </li>
                     <li> <b>Nume
 &lt;strat tematic&gt;</b> - Alegeţi un strat tematic existent din harta dvs. web.  Sistemul de coordonate al stratului tematic ales va fi utilizat pentru a determina sistemul de coordonate care va fi utilizat pentru a procesa analiza dvs.
@@ -152,7 +152,7 @@
             </p>
             <p>
                 <ul>
-                    <li> <b>Implicit</b> - Utilizează extinderea furnizată de instrument.
+                    <li> <b>Implicit</b> - Utilizaţi extinderea furnizată de instrument.
                     </li>
                     <li> <b>După cum se specifică</b> - Introduceţi manual coordonatele pentru a defini extinderea.
                     </li>
@@ -186,7 +186,7 @@
                     </li>
                     <li> <b>După cum se specifică</b> - Specificaţi o valoare numerică pentru a seta dimensiunea celulei. Dacă este selectată această opţiune, valoarea implicită este 1.
                     </li>
-                    <li> <b>Nume &lt;strat tematic&gt;</b>- Setează dimensiunea de celulă la stratul tematic raster ales.
+                    <li> <b>Nume &lt;strat tematic&gt;</b>- Setaţi dimensiunea de celulă la stratul tematic raster ales.
                     </li>
                 </ul>
                 
@@ -204,10 +204,28 @@
                 </li>
                 <li>Dacă masca de analiză este un raster, toate celulele care au o valoare vor fi luate &icirc;n considerare pentru definirea măştii. Celulele dintr-un raster de mască care au valoarea NoData vor fi considerate ca fiind &icirc;n afara măştii şi vor avea valoarea NoData &icirc;n stratul tematic de analiză rezultat. 
                 </li>
-                <li>Dacă masca de analiză este un strat tematic de obiecte spaţiale, va fi convertit intern &icirc;n raster la execuţie. Din acest motiv, ar trebui aveţi grijă să vă asiguraţi că  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">Dimensiunea celulei</a> şi <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">Fixare raster</a> sunt setate &icirc;n mod adecvat pentru analiza dvs.
+                <li>Dacă masca de analiză este un strat tematic de obiecte spaţiale, va fi convertit intern &icirc;n raster la execuţie. Din acest motiv, aveţi grijă să vă asiguraţi că
+ <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank"></a> şi <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank"></a> sunt setate &icirc;n mod adecvat pentru analiza dvs.
                 </li>
             </ul>
              
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>ArcGIS Data Store</h2></div>
+        <hr/>
+        <div>
+            <p>Rezultatele GeoAnalytic sunt stocate &icirc;ntr-un depozit de date ArcGIS şi sunt expuse ca un strat tematic de obiecte spaţiale &icirc;n  Portal for ArcGIS. &Icirc;n cele mai multe situaţii, rezultatele trebuie stocate &icirc;ntr-un depozit de date spaţio-temporale. Aceasta este acţiunea implicită. Următoarele sunt motivele pentru care aţi dori să stocaţi rezultatele &icirc;ntr-un depozit de date relaţionale: 
+                <ul>
+                    <li>Pentru a utiliza rezultatele &icirc;n colaborări portal-la-portal
+                    </li>
+                    <li>Pentru a activa capacităţile de sincronizare cu rezultatele dvs.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Nu trebuie să utilizaţi un depozit de date relaţionale dacă vă aşteptaţi ca rezultatele GeoAnalytics să crească &icirc;n cantitate şi vreţi să profitaţi de capacităţile depozitului mare de stocare spaţio-temporal de a gestiona cantităţi mari de date. 
+            </p>
         </div>
     </div>
 </div>

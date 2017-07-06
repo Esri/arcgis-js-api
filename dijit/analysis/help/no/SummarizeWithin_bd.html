@@ -40,11 +40,11 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Summer innenfor</h2><p/>
         <h2><img src="../images/GUID-90E0CB1F-EB97-4752-B2EE-452B7B45475E-web.png" alt="Summer innenfor"></h2>
         <hr/>
-    <p>Dette verkt&oslash;yet finner geoobjekter (og deler av geoobjekter) som er innenfor grensene for omr&aring;dene i det f&oslash;rste inndatalaget. 
+    <p>Dette verkt&oslash;yet finner geoobjekter (og deler av geoobjekter) som er innenfor grensene for omr&aring;dene i det f&oslash;rste inndatalaget.  
         <ul>
             <li>Hvis du har et lag med nedb&oslash;rsfeltgrenser og et lag med arealbruksgrenser etter arealbrukstype, kan du beregne samlet areal for arealbrukstypen for hvert nedb&oslash;rsfelt. 
             </li>
@@ -63,7 +63,9 @@
         <div>
             <p>Omr&aring;delaget som skal brukes til &aring; summere geoobjekter som er innenfor grensene. Du kan velge &aring; summere innenfor et polygonlag som du oppgir eller innenfor kvadrat eller heksagonbeholdere som genereres n&aring;r verkt&oslash;yet kj&oslash;res.  N&aring;r du genererer beholdere for  <b>Kvadrat</b>, avgj&oslash;r antallet og enhetene som er spesifisert h&oslash;yden og lengden p&aring; kvadratet. For <b>Heksagon</b> avgj&oslash;r antallet og enhetene som er angitt, avstanden mellom de parallelle sidene.
             </p>
-            <p>I tillegg til &aring; velge et lag fra kartet kan du velge  <b>Browse Layers</b> (Bla gjennom lag), som du finner nederst i rullegardinlisten, til &aring; bla deg frem til innholdet for et fildelingsdatasett for big data eller et geoobjektslag.  
+            <p>Analyse ved hjelp av beholderne  <b>Kvadrat</b> eller <b>Heksagon</b> krever et projisert koordinatsystem. Du kan angi <b>Behandlende koordinatsystem</b> i <b>Analysemilj&oslash;er</b>. Hvis koordinatsystemet for behandling ikke er angitt som et projisert koordinatsystem, blir du bedt om &aring; angi det n&aring;r du bruker funksjonen <b>Kj&oslash;r analyse</b>.
+            </p>
+            <p>I tillegg til &aring; velge et lag fra kartet kan du velge  <b>Bla gjennom lag</b>, som du finner nederst i rullegardinlisten, til &aring; bla deg frem til innholdet for et fildelingsdatasett for big data eller et geoobjektslag.
             </p>
         </div>
     </div>
@@ -73,7 +75,7 @@
         <div>
             <p>Geoobjektene i dette laget som faller innenfor grensene for geoobjektene i inndatalaget eller beholderne ovenfor, summeres. 
             </p>
-            <p>I tillegg til &aring; velge et lag fra kartet kan du velge  <b>Browse Layers</b> (Bla gjennom lag), som du finner nederst i rullegardinlisten, til &aring; bla deg frem til innholdet for et fildelingsdatasett for big data eller et geoobjektslag.  
+            <p>I tillegg til &aring; velge et lag fra kartet kan du velge  <b>Bla gjennom lag</b>, som du finner nederst i rullegardinlisten, til &aring; bla deg frem til innholdet for et fildelingsdatasett for big data eller et geoobjektslag.
             </p>
         </div>
     </div>
@@ -91,20 +93,20 @@
         <div><h2>Aggreger ved hjelp av tidsintervaller (valgfritt)</h2></div>
         <hr/>
         <div>
-            <p>Hvis tid er aktivert i dette inndatapunktlaget og det er av typen umiddelbart, kan du analysere med tidsinndelinger.  Det er tre parametere du kan angi n&aring;r du bruker tid:
+            <p>Hvis tid er aktivert i dette inndatapunktlaget og det er av typen umiddelbart, kan du analysere med tidssteg. Det er tre parametere du kan angi n&aring;r du bruker tid:
                 <ul>
-                    <li>  <b>Tidsintervall</b>
+                    <li> <b>Tidsstegintervall</b>
                     </li>
-                    <li> <b>Tidstrinn</b>
+                    <li> <b>Hvor ofte skal tidssteget gjentas</b>
                     </li>
-                    <li> <b>Referansetid</b>
+                    <li> <b>Tid som tidssteg justeres mot</b>
                     </li>
                 </ul>
                 
             </p>
-            <p>Tenk deg at du hadde data som representerte et &aring;r i tid, og du &oslash;nsket &aring; analysere ved hjelp av inndeling i uker. For &aring; gj&oslash;re det kan du stille inn  <b>Tidsintervall</b> til <code>1 uke</code>.
+            <p>Tenk deg at du hadde data som representerte et &aring;r i tid, og du &oslash;nsket &aring; analysere ved hjelp av ukentlige trinn. Det kan du gj&oslash;re ved &aring; stille inn  <b>Tidsstegintervall</b> p&aring; <code>1 uke</code>.
             </p>
-            <p> Tenk deg at du hadde data som representerte et &aring;r i tid, og du &oslash;nsket &aring; analysere ved hjelp av den f&oslash;rste uken i m&aring;neden. For &aring; gj&oslash;re det kan du stille inn <b>Tidsintervall</b> til <code>1 uke</code>, <b>Tidstrinn</b> til <code>1 m&aring;ned</code> og <b>Referansetid</b> til <code>1. januar, kl. 12.00</code>.
+            <p>Tenk deg at du hadde data som representerte et &aring;r i tid, og du &oslash;nsket &aring; analysere ved hjelp av den f&oslash;rste uken i m&aring;neden. Det kan du gj&oslash;re ved &aring; stille inn  <b>Tidsstegintervall</b> p&aring; <code>1 uke</code>, <b>Hvor ofte skal tidssteget gjentas</b> til <code>1 m&aring;ned</code> og <b>Tid som tidssteg justeres mot</b> til <code>1. januar klokken 12.00</code>.
             </p>
         </div>
     </div>
@@ -112,9 +114,9 @@
         <div><h2>Tidsintervall som det skal samles inn i</h2></div>
         <hr/>
         <div>
-            <p>Tidsintervall som brukes til &aring; dele opp dataene. Tidsintervallet kan brukes alene eller sammen med parameteren  <b>Tidstrinn</b> eller <b>Referansetid</b>.
+            <p>Tidsintervall som brukes til &aring; generere tidssteg. Tidsintervallet kan brukes alene eller sammen med parameterne   <b>Hvor ofte skal tidssteget gjentas</b> eller <b>Tid som tidssteg justeres mot</b>.
             </p>
-            <p> Hvis du &oslash;nsket &aring; lage tidsinndelinger som fant sted hver mandag fra 09.00 til 10.00, ville <b>Tidsintervall</b> v&aelig;rt <code>1 time</code>, <b>Tidstrinn</b> ville v&aelig;rt <code>1 uke</code>, og <b>Referansetid</b> ville v&aelig;rt <code>9.00.00 p&aring; en mandag</code>.
+            <p>Hvis du &oslash;nsket &aring; lage tidsinndelinger som fant sted hver mandag fra 09.00 til 10.00, ville  <b>Tidsstegintervall</b> v&aelig;rt <code>1 time</code>, <b>Hvor ofte skal tidssteget gjentas</b> ville v&aelig;rt <code>1 uke</code>, og <b>Tid som tidssteg justeres mot</b> ville v&aelig;rt <code>9.00.00 p&aring; en mandag</code>.
             </p>
         </div>
     </div>
@@ -122,9 +124,9 @@
         <div><h2>Tidstrinn som det skal samles inn i</h2></div>
         <hr/>
         <div>
-            <p> Trinnet som brukes til &aring; beregne en tidsinndeling. <b>Tidstrinn</b> kan brukes alene ellers sammen med <b>Tidsintervall</b>, med <b>Referansetid</b> eller med b&aring;de <b>Tidsintervall</b> og <b>Referansetid</b>.
+            <p> Trinnet som brukes til &aring; beregne en tidsinndeling. <b>Hvor ofte skal tidssteget gjentas</b> kan brukes alene eller med <b>Tidsstegintervall</b>, <b>Referansetid</b> eller med b&aring;de <b>Tidsstegintervall</b> og <b>Tid som tidssteg justeres mot</b>.
             </p>
-            <p> Hvis du &oslash;nsket &aring; lage tidsinndelinger som fant sted hver mandag fra 09.00 til 10.00, ville <b>Tidsintervall</b> v&aelig;rt <code>1 time</code>, <b>Tidstrinn</b> ville v&aelig;rt <code>1 uke</code>, og <b>Referansetid</b> ville v&aelig;rt <code>9.00.00 p&aring; en mandag</code>.
+            <p> Hvis du &oslash;nsket &aring; lage tidsinndelinger som fant sted hver mandag fra 09.00 til 10.00, ville <b>Tidsstegintervall</b> v&aelig;rt <code>1 time</code>, <b>Hvor ofte skal tidssteget gjentas</b> ville v&aelig;rt <code>1 uke</code>, og <b>Tid som tidssteg justeres mot</b> ville v&aelig;rt <code>9.00.00 p&aring; en mandag</code>.
             </p>
         </div>
     </div>
@@ -132,38 +134,40 @@
         <div><h2>Referansetid som brukes til å innrette tidsinndelingen</h2></div>
         <hr/>
         <div>
-            <p>Datoen og tidspunktet som brukes til &aring; justere tidsinndelingene.  <b>Tidstrinn</b> starter fra og fortsetter bakover for den refererte tiden.
+            <p>Datoen og tidspunktet som brukes til &aring; justere tidsinndelingene. Tidssteg starter fra og fortsetter bakover fra denne tiden. Hvis ingen referansetid velges, justeres tidssteg mot 1. januar 1970. 
             </p>
-            <p> Hvis du &oslash;nsket &aring; lage tidsinndelinger som fant sted hver mandag fra 09.00 til 10.00, ville <b>Tidsintervall</b> v&aelig;rt <code>1 time</code>, <b>Tidstrinn</b> ville v&aelig;rt <code>1 uke</code>, og <b>Referansetid</b> ville v&aelig;rt <code>9.00.00 p&aring; en mandag</code>.
+            <p> Hvis du &oslash;nsket &aring; lage tidsinndelinger som fant sted hver mandag fra 09.00 til 10.00, ville <b>Tidsstegintervall</b> v&aelig;rt <code>1 time</code>, <b>Hvor ofte skal tidssteget gjentas</b> ville v&aelig;rt <code>1 uke</code>, og <b>Tid som tidssteg justeres mot</b> ville v&aelig;rt <code>9.00.00 p&aring; en mandag</code>.
             </p>
         </div>
     </div>
     <div id="summaryFields">
-        <div><h2>Legg til statistikk fra laget for å summere (valgfritt)</h2></div>
+        <div><h2>Legg til statistikk (valgfritt)</h2></div>
         <hr/>
         <div>
             <p> Du kan beregne statistikk p&aring; geoobjekter som er summert. P&aring; numeriske felt kan du beregne f&oslash;lgende:
                 <ul>
-                    <li>Antall
+                    <li>Antall &ndash; Beregner antall verdier som ikke er null. Kan brukes p&aring; numeriske felt eller strenger. Antallet for [null, 0, 2] er 2.
                     </li>
-                    <li>Gjennomsnitt
+                    <li>Sum &ndash; Summen av numeriske verdier i et felt. Summen av [null, null, 3] er 3.
                     </li>
-                    <li>Min
+                    <li>Gjennomsnitt &ndash; Gjennomsnittet for numeriske verdier. Gjennomsnittet av [0, 2, null] er 1.
                     </li>
-                    <li>Maks
+                    <li>Min &ndash; Minimumsverdien for et numerisk felt. Minimum av [0, 2, null] er 0. 
                     </li>
-                    <li>Omr&aring;de
+                    <li>Maks &ndash; Maksimumsverdien for et numerisk felt. Maksimumsverdien for [0, 2, null] er 2.
                     </li>
-                    <li>Varians
+                    <li>Omr&aring;de &ndash; Omr&aring;det for et numerisk felt. Beregnes som den maksimale verdien minus minimumsverdien. Omr&aring;det av [0, null, 1] er 1. Omr&aring;det av [null, 4] er 0.
                     </li>
-                    <li>Standardavvik
+                    <li>Varians &ndash; Variansen for et numerisk felt i et spor. Variansen for [1] er null. Variansen for [null, 1,1,1] er 1.
+                    </li>
+                    <li>Standardavvik &ndash; Standardavviket for et numerisk felt. Standardavviket for [1] er null. Standardavviket for [null, 1,1,1] er 1. 
                     </li>
                 </ul>
                 
             </p>
             <p>P&aring; strengfelter kan du beregne f&oslash;lgende:
                 <ul>
-                    <li>Antall
+                    <li>Antall &ndash; Antallet strenger som ikke er null.
                     </li>
                     <li>Noen &ndash; Denne statistikken er en tilfeldig pr&oslash;ve av en strengverdi i det spesifiserte feltet.
                     </li>
@@ -203,7 +207,17 @@
         <div><h2>Velg datalager</h2></div>
         <hr/>
         <div>
-            <p>Dette er en midlertidig parameter for forh&aring;ndslansering, for &aring; angi datalageret der resultatene lagres. Begge datalagrene er en del av  ArcGIS Data Store. Hvis du velger det spatiotemporale datalageret, men ikke har et installert, vil verkt&oslash;yet mislykkes. </p>
+            <p>GeoAnalytics-resultater lagres i et ArcGIS Data Store og vises som et geoobjektslag i  Portal for ArcGIS. Resultatene b&oslash;r i de fleste tilfeller lagres i et spatiotemporalt datalager, og dette er standarden. I enkelte tilfeller er det en god l&oslash;sning &aring; lagre resultatene i relasjonsdatalageret. Du b&oslash;r lagre resultatene i relasjonsdatalageret av f&oslash;lgende &aring;rsaker: 
+                <ul>
+                    <li>Du kan bruke resultatene i portal til portal-samarbeid.
+                    </li>
+                    <li>Du kan aktivere synkroniseringsfunksjoner for resultatene dine.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Du b&oslash;r ikke bruke relasjonsdatalageret hvis du forventer at GeoAnalytics-resultatene kommer til &aring; &oslash;ke og du &oslash;nsker &aring; dra fordeler av det spatiotemporale stordatalagerets funksjoner til &aring; h&aring;ndtere store mengder data. 
+            </p>
         </div>
     </div>
     <div id="outputName">

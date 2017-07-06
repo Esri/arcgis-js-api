@@ -70,12 +70,12 @@
         <div>
             <p>The point layer on which the density will be calculated.
             </p>
-            <p>Kao dodatak odabiru sloja iz mape, možete da odaberete  <b>Pregledaj slojeve</b> na dnu padajuće liste da biste potražili deljeni skup podataka za datoteke sa velikim podacima ili sloj geoobjekta u svojim sadržajima.  
+            <p>Kao dodatak odabiru sloja iz mape, možete da odaberete  <b>Pregledaj slojeve</b> na dnu padajuće liste da biste potražili deljeni skup podataka za datoteke sa velikim podacima ili sloj geoobjekta u svojim sadržajima.
             </p>
         </div>
     </div>
     <div id="fields">
-        <div><h2>Odaberite jedno ili više polja za izračunavanje gustine</h2></div>
+        <div><h2>Odaberite jedno ili više polja za izračunavanje gustine (opciono)</h2></div>
         <hr/>
         <div>
             <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
@@ -90,10 +90,12 @@
         <div>
             <p>The shape of bins that points are aggregated into and used for the density calculation.
             </p>
+            <p>Analiziranje pomoću  <b>kvadratnih</b> ili <b>&scaron;estougaonih</b> blokova zahteva projektovani koordinatni sistem. <b>Koordinatni sistem obrade</b> možete da podesite u <b>Okruženja analize</b>. Ako koordinatni sistem obrade nije pode&scaron;en na projektovani koordinatni sistem, od vas će se tražiti da ga podesite prilikom <b>pokretanja analize</b>.
+            </p>
         </div>
     </div>
     <div id="binSizing">
-        <div><h2>Odaberite veličinu blokova za izračunavanje gustine</h2></div>
+        <div><h2>Izaberite veličinu blokova za grupisanje</h2></div>
         <hr/>
         <div>
             <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
@@ -127,59 +129,59 @@
         <div><h2>Odaberite jedinice izlaznih rezultata za gustinu</h2></div>
         <hr/>
         <div>
-            <p>The desired output units of the density values. By default, this is set to the units in your map (for example, square meters). If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+            <p>The desired output units of the density values. By default, this is set to square kilometers or square miles based on the default units specified in your profile. If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
 
             </p>
         </div>
     </div>
     <div id="timeSlicing">
-        <div><h2>Izračunajte gustinu pomoću vremenskih odsečaka (opciono)</h2></div>
+        <div><h2>Izračunajte gustinu pomoću vremenskih koraka (opciono)</h2></div>
         <hr/>
         <div>
-            <p>Ako je vreme omogućeno na ulaznom tačkastom sloju i u pitanju je trenutak, možete da analizirate koristeći sečenje vremena. Postoje tri parametra koje možete da podesite kada koristite vreme:
+            <p>Ako je vreme omogućeno na ulaznom tačkastom sloju i u pitanju je trenutak, možete da analizirate koristeći praćenje vremena po koracima. Postoje tri parametra koje možete da podesite kada koristite vreme:
                 <ul>
-                    <li>  <b>Vremenski interval</b>
+                    <li> <b>Interval vremenskih koraka</b>
                     </li>
-                    <li> <b>Vremenski korak</b>
+                    <li> <b>Koliko često ponavljati vremenski korak</b>
                     </li>
-                    <li> <b>Referentno vreme</b>
+                    <li> <b>Vreme za poravnavanje vremenskih koraka</b>
                     </li>
                 </ul>
                 
             </p>
-            <p>Zamislite da ste imali podatke koji su predstavljali godinu u vremenu i da ste želeli da analizirate koristeći nedeljne odsečke. Da biste to uradili, podesili biste  <b>Vremenski interval</b> na <code>1 nedelju</code>.
+            <p>Zamislite da ste imali podatke koji su predstavljali godinu u vremenu i da ste želeli da analizirate koristeći nedeljne korake. Da biste to uradili, podesili biste  <b>Interval vremenskih koraka</b> na <code>1 nedelju</code>.
             </p>
-            <p> Zamislite da ste imali podatke koji su predstavljali godinu u vremenu i da ste želeli da analizirate koristeći prvu nedelju u mesecu. Da biste to uradili, podesili biste <b>Vremenski interval</b> na <code>1 nedelju</code>, <b>Vremenski korak</b> na <code>1 mesec</code>, a <b>Referentno vreme</b> na <code>1. januar, u 12:00</code>.
+            <p>Zamislite da ste imali podatke koji su predstavljali godinu u vremenu i da ste želeli da analizirate koristeći prvu nedelju u mesecu. Da biste to uradili, podesili biste  <b>Interval vremenskih koraka</b> na <code>1 nedelju</code>, <b>Koliko često da se vremenski korak ponovi</b> na <code>1 mesec</code>, a <b>Vreme za poravnanje vremenskih koraka</b> na <code>1. januar, u 12:00</code>.
             </p>
         </div>
     </div>
     <div id="timeInterval">
-        <div><h2>Vremenski interval za izračunavanje gustine</h2></div>
+        <div><h2>Interval vremenskih koraka</h2></div>
         <hr/>
         <div>
-            <p>Interval vremena koji se koristi za sečenje vremena. Vremenski interval može da se koristi sam ili sa parametrom  <b>Vremenski korak</b> ili <b>Referentno vreme</b>.
+            <p>Interval vremena koji se koristi za generisanje vremenskih koraka. Interval vremenskih koraka može da bude kori&scaron;ćen samostalno ili uz parametre  <b>Koliko često da se vremenski korak ponovi</b> ili <b>Vreme za poravnanje vremenskih koraka</b>.
             </p>
-            <p> Ako ste želeli da kreirate vremenske odsečke koji se de&scaron;avaju svakog ponedeljka od 9:00 do 10:00, <b>Vremenski interval</b> bi iznosio <code>1 sat</code>, <b>Vremenski korak</b> bi bio <code>1 nedelja</code>, a <b>Referentno vreme</b> bi iznosilo <code>9:00:00 ujutro ponedeljkom</code>.
+            <p>Ako ste želeli da kreirate vremenske odsečke koji se de&scaron;avaju svakog ponedeljka od 9:00 do 10:00,  <b>Interval vremenskih koraka</b> bi iznosio <code>1 sat</code>, <b>Koliko često da se vremenski korak ponovi</b> bi bio <code>1 nedelja</code>, a <b>Vreme za poravnanje vremenskih koraka</b> bi iznosilo <code>9:00:00 ponedeljkom</code>.
             </p>
         </div>
     </div>
     <div id="timeStep">
-        <div><h2>Vremenski korak za izračunavanje gustine</h2></div>
+        <div><h2>Koliko često ponavljati vremenski korak</h2></div>
         <hr/>
         <div>
-            <p> Korak koji se koristi za izračunavanje vremenskog odsečka. <b>Vremenski korak</b> može da se koristi zasebno ili sa parametrom <b>Vremenski interval</b> ili <b>Referentno vreme</b> ili sa oba parametra <b>Vremenski interval</b> i <b>Referentno vreme</b>.
+            <p> Korak koji se koristi za izračunavanje vremenskog odsečka. <b>Koliko često da se vremenski korak ponovi</b> može da se koristi samostalno ili <b>Interval vremenskih koraka</b>, iz <b>Referentno vreme</b>, ili uz oba parametra <b>Interval vremenskih koraka</b> i <b>Vreme za poravnanje vremenskih koraka</b>.
             </p>
-            <p> Ako ste želeli da kreirate vremenske odsečke koji se de&scaron;avaju svakog ponedeljka od 9:00 do 10:00, <b>Vremenski interval</b> bi iznosio <code>1 sat</code>, <b>Vremenski korak</b> bi bio <code>1 nedelja</code>, a <b>Referentno vreme</b> bi iznosilo <code>9:00:00 ponedeljkom</code>.
+            <p> Ako ste želeli da kreirate vremenske odsečke koji se de&scaron;avaju svakog ponedeljka od 9:00 do 10:00, <b>Interval vremenskih koraka</b> bi iznosio <code>1 sat</code>, <b>Koliko često da se vremenski korak ponovi</b> bi bio <code>1 nedelja</code>, a <b>Vreme za poravnanje vremenskih koraka</b> bi iznosilo <code>9:00:00 ponedeljkom</code>.
             </p>
         </div>
     </div>
     <div id="timeReference">
-        <div><h2>Referentno vreme koje se koristi za poravnavanje sečenja vremena</h2></div>
+        <div><h2>Vreme za poravnavanje vremenskih koraka</h2></div>
         <hr/>
         <div>
-            <p>Datum i vreme koji se koriste za poravnavanje sečenja vremena.  <b>Vremenski korak</b> će se pokrenuti od i nastaviti unazad za referentno vreme.
+            <p>Datum i vreme koji se koriste za poravnavanje sečenja vremena. Praćenje vremena po koracima će se pokrenuti od i nastaviti unazad u odnosu na ovo vreme. Ako referentno vreme nije odabrano, praćenje vremenskih koraka će poravnati praćenje vremenskih koraka prema 1. januaru 1970. godine. 
             </p>
-            <p> Ako ste želeli da kreirate vremenske odsečke koji se de&scaron;avaju svakog ponedeljka od 9:00 do 10:00, <b>Vremenski interval</b> bi iznosio <code>1 sat</code>, <b>Vremenski korak</b> bi bio <code>1 nedelja</code>, a <b>Referentno vreme</b> bi iznosilo <code>9:00:00 ponedeljkom</code>.
+            <p> Ako ste želeli da kreirate vremenske odsečke koji se de&scaron;avaju svakog ponedeljka od 9:00 do 10:00, <b>Interval vremenskih koraka</b> bi iznosio <code>1 sat</code>, <b>Koliko često da se vremenski korak ponovi</b> bi bio <code>1 nedelja</code>, a <b>Vreme za poravnanje vremenskih koraka</b> bi iznosilo <code>9:00:00 ponedeljkom</code>.
             </p>
         </div>
     </div>
@@ -195,7 +197,17 @@
         <div><h2>Odaberite skladište podataka</h2></div>
         <hr/>
         <div>
-            <p>Ovo je privremeni parametar za preliminarnu verziju da bi se podesilo skladi&scaron;te podataka gde se čuvaju rezultati. Oba skladi&scaron;ta podataka su deo  ArcGIS Data Store. Ako izaberete skladi&scaron;te prostorno-vremenskih podataka, ali nemate ga instalirano, alatka će otkazati. </p>
+            <p>Rezultati geoanalize se skladi&scaron;te u ArcGIS skladi&scaron;tu podataka i izloženi su kao sloj geoobjekata u  Portal for ArcGIS. U većini slučajeva, rezultati bi trebali da budu skladi&scaron;teni u u skladi&scaron;te prostorno-vremenskih podataka i ovo je podrazumevano. U nekim slučajevima čuvanje rezultata u skladi&scaron;te relacionih podataka je dobar izbor. Slede razlozi zbog kojih ćete želeti da skladi&scaron;tite rezultate u skladi&scaron;tu relacionih podataka: 
+                <ul>
+                    <li>Da biste koristili va&scaron;e rezultate u portal-ka-portalu kolaboraciji.
+                    </li>
+                    <li>Da biste omogućili mogućnosti sinhronizacije sa rezultatima.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Ne treba da koristite skladi&scaron;te relacionih podataka ako očekujete da se geoanalitički podaci povećaju i treba da iskoristite mogućnosti prostorno-vremenskog skladi&scaron;ta velikih podataka kako biste upravljali velikim količinama podataka. 
+            </p>
         </div>
     </div>
     <div id="outputName">

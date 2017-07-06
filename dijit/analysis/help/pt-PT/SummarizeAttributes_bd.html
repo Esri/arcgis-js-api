@@ -57,44 +57,46 @@
         <div>
             <p>A camada que cont&eacute;m os campos que ser&atilde;o resumidos.  
             </p>
-            <p>Para al&eacute;m de selecionar uma camada do seu mapa, pode selecionar  <b>Explorar Camadas</b> na parte inferior da lista pendente para navegar at&eacute; aos seus conte&uacute;dos de um conjunto de dados de partilha de big data ou camada de elementos.  
+            <p>Para al&eacute;m de selecionar uma camada do seu mapa, pode selecionar  <b>Explorar Camadas</b> na parte inferior da lista pendente para navegar at&eacute; aos seus conte&uacute;dos de um conjunto de dados de partilha de big data ou camada de elementos.
             </p>
         </div>
     </div>
     <div id="fields">
-        <div><h2>Escolha os campos em que pretende dissolver</h2></div>
+        <div><h2>Selecionar os campos a resumir</h2></div>
         <hr/>
         <div>
-            <p>  Lista de campos da camada de entrada.  Os campos selecionados ser&atilde;o resumidos e utilizados ara calcular estat&iacute;sticas. Por exemplo, se selecionar um campo denominado <i>PropertyType</i> (tipo de propriedade) com os valores de comercial e residencial, todos os campos residenciais ser&atilde;o resumidos em conjunto, com estat&iacute;sticas resumidas calculadas, e todos os campos comerciais ser&atilde;o resumidos em conjunto.
+            <p>Lista de campos da camada de entrada.  Os campos selecionados ser&atilde;o resumidos e utilizados ara calcular estat&iacute;sticas. Por exemplo, se selecionar um campo denominado  <i>PropertyType</i> (tipo de propriedade) com os valores de comercial e residencial, todos os campos residenciais ser&atilde;o resumidos em conjunto, com estat&iacute;sticas resumidas calculadas, e todos os campos comerciais ser&atilde;o resumidos em conjunto.
             </p>
         </div>
     </div>
     <div id="summaryFields">
-        <div><h2>Selecionar o campo e estatísticas que pretende calcular (opcional)</h2></div>
+        <div><h2>Adicionar estatísticas (opcional)</h2></div>
         <hr/>
         <div>
             <p> Pode calcular estat&iacute;sticas em elementos que se encontram resumidos. Em campos num&eacute;ricos, pode calcular as seguintes:
                 <ul>
-                    <li>Contagem
+                    <li>Contagem&mdash;Calcula o n&uacute;mero de valores n&atilde;o-nulos. Pode ser utilizado em campos num&eacute;ricos ou em strings. A contagem de [null, 0, 2] &eacute; 2.
                     </li>
-                    <li>M&eacute;dia
+                    <li>Soma&mdash;A soma dos valores num&eacute;ricos num campo. A soma de [null, null, 3] &eacute; 3.
                     </li>
-                    <li>M&iacute;n.
+                    <li>M&eacute;dia&mdash;A m&eacute;dia de valores num&eacute;ricos. A m&eacute;dia de [0, 2, null] &eacute; 1.
                     </li>
-                    <li>M&aacute;x.
+                    <li>M&iacute;n&mdash;o valor m&iacute;nimo de um campo num&eacute;rico. O m&iacute;nimo de [0, 2, null] &eacute; 0. 
                     </li>
-                    <li>Intervalo
+                    <li>M&aacute;x&mdash;o valor m&aacute;ximo de um campo num&eacute;rico. O valor m&aacute;ximo de [0, 2, null] &eacute; 2.
                     </li>
-                    <li>Varia&ccedil;&atilde;o
+                    <li>Intervalo&mdash;o intervalo de um campo num&eacute;rico. Este &eacute; calculado subtraindo os valores m&iacute;nimos ao valor m&aacute;ximo. O intervalo de [0, null, 1] &eacute; 1. O intervalo de [null, 4] &eacute; 0.
                     </li>
-                    <li>Desvio padr&atilde;o
+                    <li>Vari&acirc;ncia&mdash;a vari&acirc;ncia de um campo num&eacute;rico num trilho. A vari&acirc;ncia de [1] &eacute; null. A vari&acirc;ncia de [null, 1,1,1] &eacute; 1.
+                    </li>
+                    <li>Desvio padr&atilde;o&mdash;O desvio padr&atilde;o de um campo num&eacute;rico. O desvio padr&atilde;o de [1] &eacute; null. O desvio padr&atilde;o de [null, 1,1,1] &eacute; 1. 
                     </li>
                 </ul>
                 
             </p>
             <p>Em campos de string, pode calcular as seguintes:
                 <ul>
-                    <li>Contagem
+                    <li>Contagem&mdash;O n&uacute;mero de strings n&atilde;o-nulas.
                     </li>
                     <li>Qualquer&mdash;Esta estat&iacute;stica &eacute; uma amostra aleat&oacute;ria de um valor de string no campo especificado.
                     </li>
@@ -107,7 +109,15 @@
         <div><h2>Selecionar armazenamento de dados</h2></div>
         <hr/>
         <div>
-            <p>Este &eacute; um par&acirc;metro tempor&aacute;rio de pr&eacute;-lan&ccedil;amento para definir o armazenamento de dados no qual os resultados s&atilde;o guardados. Ambos os armazenamentos de dados fazem parte do  ArcGIS Data Store. Caso selecione o armazenamento de dados espaciotemporal, mas n&atilde;o tenha um instalado, a ferramenta ir&aacute; falhar. </p>
+            <p>Os resultados de GeoAnalytics s&atilde;o armazenados num ArcGIS Data Store e exibidos como uma camada de elementos no  Portal for ArcGIS. Na maioria dos casos, os resultados dever&atilde;o ser armazenados num armazenamento de dados espaciotemporal, sendo este o comportamento predefinido. Em alguns casos, ser&aacute; uma boa op&ccedil;&atilde;o guardar os resultados no armazenamento de dados relacional. As seguintes s&atilde;o raz&otilde;es que justificam o armazenamento de resultados no armazenamento de dados espaciotemporal. 
+                <ul>
+                    <li>Utilizar resultados em colabora&ccedil;&atilde;o portal to portal.
+                    </li>
+                    <li>Ativar funcionalidades de sincroniza&ccedil;&atilde;o com os resultados.
+                    </li>
+                </ul>
+                
+            </p>
         </div>
     </div>
     <div id="outputName">

@@ -40,48 +40,48 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
-        <h2>Convert Feature to  Raster</h2><p/>
-        <h2><img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" alt="Convert Feature to Raster tool"></h2>
+    <div id="toolDescription" class="regularsize">
+        <h2>Převést prvek na rastr</h2><p/>
+        <h2><img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" alt="N&aacute;stroj Přev&eacute;st prvek na rastr"></h2>
         <hr/>
-    <p>This task converts features to a raster dataset.
+    <p>Tato &uacute;loha přev&aacute;d&iacute; prvky na rastrovou datovou sadu.
     </p>
-    <p>Any feature class containing point, line, or polygon features can be converted to a raster dataset.
+    <p>Jakoukoli tř&iacute;du prvků obsahuj&iacute;c&iacute; bodov&eacute;, liniov&eacute; nebo polygonov&eacute; prvky lze přev&eacute;st na rastrovou datovou sadu.
     </p>
-    <p>The cell center is used to decide the value of the output raster pixel.
+    <p>Střed buňky se použ&iacute;v&aacute; k určen&iacute; hodnoty pixelu v&yacute;stupn&iacute;ho rastru.
     </p>
-    <p>The input field type determines the type of output raster. If the field is integer, the output raster will be integer; if it is floating point, the output will be floating point.
+    <p>Typ vstupn&iacute;ho pole určuje typ v&yacute;stupn&iacute;ho rastru. Pokud je pole typu cel&eacute; č&iacute;slo, v&yacute;stupn&iacute; rastr bude tak&eacute; celoč&iacute;seln&yacute;; pokud je pole typu desetinn&eacute; č&iacute;slo, v&yacute;stup bude tak&eacute; desetinn&yacute;.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Choose feature layer to convert</h2></div>
+        <div><h2>Zvolte vrstvu prvků, kterou chcete převést.</h2></div>
         <hr/>
         <div>
-            <p>The input feature layer to convert to a raster dataset.
+            <p>Vstupn&iacute; vrstva prvků k převodu na rastrovou datovou sadu.
             </p>
         </div>
     </div>
     <div id="field">
-        <div><h2>Choose field</h2></div>
+        <div><h2>Zvolit pole</h2></div>
         <hr/>
         <div>
-            <p>Choose the field that will be used to assign values to the output raster.
+            <p>Zvolte pole, kter&eacute; bude použito k&nbsp;přiřazen&iacute; hodnot k&nbsp;v&yacute;stupn&iacute;mu rastru.
             </p> 
         </div>
     </div>
     <div id="outputCellSize">
-        <div><h2>Output cell size</h2></div>
+        <div><h2>Výstupní velikost pixelu</h2></div>
         <hr/>
         <div>
             <p>Zadejte velikost buňky a jednotku pro v&yacute;stupn&iacute; rastry.
             </p>
-            <p>The available units are Feet, Miles, Meters, and Kilometers.
+            <p>Dostupn&eacute; jednotky jsou stopy, m&iacute;le, metry a kilometry.
             </p>
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>Název výsledné vrstvy</h2></div>
         <hr/>
         <div>
             <p>N&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce  <b>Můj obsah</b> a přid&aacute; se do mapy. V&yacute;choz&iacute; n&aacute;zev se ř&iacute;d&iacute; n&aacute;zvem n&aacute;stroje a n&aacute;zvem vstupn&iacute; vrstvy. Pokud v&yacute;sledn&aacute; vrstva již existuje, budete pož&aacute;d&aacute;ni o zad&aacute;n&iacute; jin&eacute;ho n&aacute;zvu.

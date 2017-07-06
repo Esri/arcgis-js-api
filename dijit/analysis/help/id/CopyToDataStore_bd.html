@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Salin ke Data Store</h2><p/>
+        <h2><img src="../images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" alt="Salin ke Data Store"></h2>
+        <hr/>
+    <p>Alat ini akan mengambil layer input dan menyalinnya ke data store. Data akan disalin ke  ArcGIS Data Store dan disimpan di tempat data store relasional atau spatiotemporal Anda. </p>
+    <p>Contoh, Anda dapat menyalin fitur yang disimpan di   <code>berbagi file big data</code> ke <code>data store relasional</code> dan menentukan bahwa hanya fitur di dalam jangkauan peta saat ini yang akan disalin. Hal ini akan membuat hosted feature service hanya dengan fitur yang berada di dalam jangkauan peta yang telah ditentukan.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Pilih layer untuk disalin</h2></div>
+        <hr/>
+        <div>
+            <p>Layer atau tabel yang akan disalin. 
+            </p>
+            <p>Selain memilih layer dari peta Anda, Anda dapat memilih  <b>Telusuri Layer</b> yang terdapat di bagian paling bawah daftar drop-down ke konten Anda untuk set data yang dibagikan atau feature layer dari big data.
+            </p>
+        </div>
+    </div>
+    <div id="selection">
+        <div><h2>Anda dapat menggunakan semua fitur atau membuat pilihan (opsional)</h2></div>
+        <hr/>
+        <div>
+            <p>Atau, gunakan tombol pemilih untuk mengidentifikasi lokasi yang akan disalin.
+            </p>
+        </div>
+    </div>
+    <div id="outputDataStore">
+        <div><h2>Pilih ArcGIS Data Store untuk disalin ke</h2></div>
+        <hr/>
+        <div>
+            <p>Data store tempat layer akan disalin. Parameter ini akan mengabaikan pilihan dalam  <b>Lingkungan Analisis</b> Opsinya adalah sebagai berikut:
+                <ul>
+                    <li> <b>Spatiotemporal</b>&mdash;Ini adalah defaultnya.
+                    </li>
+                    <li> <b>Relasional</b>.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nama layer hasil</h2></div>
+        <hr/>
+        <div>
+            <p> Ini adalah nama layer yang akan dibuat di <b>Konten Saya</b> dan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer sudah ada, alat tidak akan berfungsi.
+            </p>
+            <p>Menggunakan kotak drop-down  <b>Simpan hasil di</b>, Anda dapat menentukan nama folder di <b>Konten Saya</b> sebagai tempat penyimpanan hasil.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

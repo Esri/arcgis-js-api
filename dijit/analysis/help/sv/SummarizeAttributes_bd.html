@@ -40,7 +40,7 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Summera attribut</h2><p/>
         <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Summera attribut"></h2>
         <hr/>
@@ -57,44 +57,46 @@
         <div>
             <p>Det lager som inneh&aring;ller f&auml;lten som ska summeras.  
             </p>
-            <p>F&ouml;rutom att v&auml;lja ett lager fr&aring;n kartan kan du v&auml;lja  <b>Bl&auml;ddra bland lager</b> l&auml;ngst ned i listrutan f&ouml;r att bl&auml;ddra till ditt inneh&aring;ll efter ett big data-fildelningsdataset eller geoobjektslager.  
+            <p>F&ouml;rutom att v&auml;lja ett lager fr&aring;n kartan kan du v&auml;lja  <b>Bl&auml;ddra bland lager</b> l&auml;ngst ned i listrutan f&ouml;r att bl&auml;ddra till ditt inneh&aring;ll efter ett big data-fildelningsdataset eller geoobjektslager.
             </p>
         </div>
     </div>
     <div id="fields">
-        <div><h2>Välj vilka fält du vill lösa upp på</h2></div>
+        <div><h2>Välj vilka fält som ska summeras</h2></div>
         <hr/>
         <div>
-            <p>  Lista &ouml;ver f&auml;lt fr&aring;n indatalagret.  Valda f&auml;lt summeras och anv&auml;nds f&ouml;r att ber&auml;kna statistik. Om du till exempel har valt ett f&auml;lt med namnet <i>Fastighetstyp</i> med v&auml;rdena aff&auml;rsfastighet och bostadsfastighet, summeras alla bostadsf&auml;lt tillsammans, med summeringsstatistik ber&auml;knad, och alla aff&auml;rsfastighetsf&auml;lt summeras tillsammans.
+            <p>Lista &ouml;ver f&auml;lt fr&aring;n indatalagret. Valda f&auml;lt summeras och anv&auml;nds f&ouml;r att ber&auml;kna statistik. Om du till exempel har valt ett f&auml;lt med namnet  <i>Fastighetstyp</i> med v&auml;rdena aff&auml;rsfastighet och bostadsfastighet, summeras alla bostadsf&auml;lt tillsammans, med summeringsstatistik ber&auml;knad, och alla aff&auml;rsfastighetsf&auml;lt summeras tillsammans.
             </p>
         </div>
     </div>
     <div id="summaryFields">
-        <div><h2>Välj vilka fält och vilken statistik du vill beräkna (valfritt)</h2></div>
+        <div><h2>Lägg till statistik (valfritt)</h2></div>
         <hr/>
         <div>
             <p> Du kan ber&auml;kna statistik p&aring; summerade geoobjekt. P&aring; numeriska f&auml;lt kan du ber&auml;kna f&ouml;ljande:
                 <ul>
-                    <li>Antal
+                    <li>Antal &ndash; Ber&auml;knar antal v&auml;rden som inte &auml;r null. Kan anv&auml;ndas p&aring; numeriska f&auml;lt eller str&auml;ngar. Antalet f&ouml;r [null, 0, 2] &auml;r 2.
                     </li>
-                    <li>Medelv&auml;rde
+                    <li>Summa &ndash; Summan av de numeriska v&auml;rdena i ett f&auml;lt. Summan f&ouml;r [null, null, 3] &auml;r 3.
                     </li>
-                    <li>min
+                    <li>Medelv&auml;rde &ndash; Medelv&auml;rdet f&ouml;r numeriska v&auml;rden. Medelv&auml;rde f&ouml;r [0, 2, null] &auml;r 1.
                     </li>
-                    <li>max
+                    <li>Min &ndash; Minimiv&auml;rdet f&ouml;r ett numeriskt f&auml;lt. Minimiv&auml;rde f&ouml;r [0, 2, null] &auml;r 0. 
                     </li>
-                    <li>Intervall
+                    <li>Max &ndash; Det maximala v&auml;rdet f&ouml;r ett numeriskt f&auml;lt. Det maximala v&auml;rdet f&ouml;r [0, 2, null] &auml;r 2.
                     </li>
-                    <li>Varians
+                    <li>Intervall &ndash; Intervallet f&ouml;r ett numeriskt f&auml;lt. Det ber&auml;knas som det maximala v&auml;rdet minus minimiv&auml;rdena. Intervallet f&ouml;r [0, null, 1] &auml;r 1. Intervallet f&ouml;r [null, 4] &auml;r 0.
                     </li>
-                    <li>Standardavvikelse
+                    <li>Varians &ndash; Variansen hos ett numeriskt f&auml;lt i ett sp&aring;r. Variansen hos [1] &auml;r null. Variansen hos [null, 1,1,1] &auml;r 1.
+                    </li>
+                    <li>Standardavvikelse &ndash; Standardavvikelsen hos ett numeriskt f&auml;lt. Standardavvikelsen hos [1] &auml;r null. Standardavvikelsen hos [null, 1,1,1] &auml;r 1. 
                     </li>
                 </ul>
                 
             </p>
             <p>P&aring; f&auml;lt med str&auml;ngar kan du ber&auml;kna f&ouml;ljande:
                 <ul>
-                    <li>Antal
+                    <li>Antal &ndash; Antalet str&auml;ngar som inte &auml;r null.
                     </li>
                     <li>Alla &ndash; Det statistiska v&auml;rdet &auml;r ett slumpm&auml;ssigt exempel p&aring; ett str&auml;ngv&auml;rde i det angivna f&auml;ltet.
                     </li>
@@ -107,7 +109,15 @@
         <div><h2>Välj datalager</h2></div>
         <hr/>
         <div>
-            <p>Det h&auml;r &auml;r en tillf&auml;llig parameter f&ouml;r f&ouml;rhandsversionen f&ouml;r att ange det datalager d&auml;r resultaten sparas. B&aring;da datalagren ing&aring;r i  ArcGIS Data Store. Om du v&auml;ljer det rumstemporala datalagret men inte har ett installerat misslyckas verktyget. </p>
+            <p>GeoAnalytics-resultat sparas i ett ArcGIS-datalager och visas som ett geoobjektslager i  Portal for ArcGIS. I de flesta fall ska resultat sparas i det rumstemporala datalagret och det &auml;r standardinst&auml;llningen. I vissa fall &auml;r det ett bra alternativ att spara resultat i det relationella datalagret. F&ouml;ljande &auml;r anledningar till varf&ouml;r du kanske vill spara resultat i det relationella datalagret: 
+                <ul>
+                    <li>anv&auml;nda resultaten i samarbeten portal till portal
+                    </li>
+                    <li>aktivera synkroniseringsfunktioner med dina resultat.
+                    </li>
+                </ul>
+                
+            </p>
         </div>
     </div>
     <div id="outputName">

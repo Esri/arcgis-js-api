@@ -65,19 +65,19 @@
         <div><h2>Pasirinkite elementus, pagal kuriuos norite atkurti trajektoriją</h2></div>
         <hr/>
         <div>
-            <p>Ta&scaron;kinis ar plotinis sluoksnis, kuriame bus atkurta trajektorija.
+            <p>Ta&scaron;kinis ar plotinis sluoksnis, kuriame bus atkurta trajektorija. Įvesties sluoksnis turi būti susietas su laiku ir jame turi būti elementai, kurie nurodo konkretų laiką. Sluoksnis turi būti projekcinėje koordinačių sistemoje arba ji turi būti nustatyta naudojant  <b>Analizės aplinką</b> (jei taikomas buferis).
             </p>
-            <p>Galite pasirinkti ne tik sluoksnį i&scaron; žemėlapio, bet ir pasirinkti parinktį  <b>Nar&scaron;yti sluoksnius</b>, esančią i&scaron;krentančio sąra&scaron;o apačioje, kuri suteikia galimybę nurodyti kelią iki jūsų didelių duomenų failų saugyklos duomenų rinkinio arba elementų sluoksnio.  
+            <p>Galite ne tik nurodyti sluoksnį i&scaron; žemėlapio, bet ir apačioje pasirinkti  <b>Nar&scaron;yti sluoksnius</b>, kad galėtumėte turinyje nar&scaron;yti didelių duomenų rinkinio arba elemento sluoksnio.
             </p>
         </div>
     </div>
     <div id="trackFields">
-        <div><h2>Pasirinkite laukus, naudojamus trajektorijai identifikuoti</h2></div>
+        <div><h2>Pasirinkite vieną arba kelis laukus, kad galėtumėte nustatyti trajektorijas</h2></div>
         <hr/>
         <div>
-            <p> Laukai, kuriuose yra trajektorijos identifikatorius.
+            <p>Laukai, nurodantys sekimo identifikatorių. 
             </p>
-            <p> Pavyzdžiui, jei atkuriate uraganų trajektorijas, kaip trajektorijos lauką galite nurodyti uragano pavadinimą.
+            <p>Pavyzdžiui, jei atkuriate uraganų trajektorijas, sekimo lauke galite nurodyti uragano pavadinimą.
             </p>
         </div>
     </div>
@@ -93,7 +93,7 @@
         <div><h2>Sukurkite išraišką, pagal kurią bus buferizuojami įvesties elementai (neprivaloma)</h2></div>
         <hr/>
         <div>
-            <p>Lygtis, naudojama buferio atstumui aplink įvesties elementus apskaičiuoti. &Scaron;ią lygtį galima sugeneruoti naudojant buferio skaičiuotuvą ir paprastus skaičiavimo veiksmus. Palaikoma sudėtis, atimtis, dalyba ir daugyba. Reik&scaron;mės apskaičiuojamos naudojant analizės koordinačių sistemą.
+            <p>Lygtis, naudojama buferio atstumui aplink įvesties elementus apskaičiuoti. &Scaron;ią lygtį galima sugeneruoti naudojant buferio skaičiuotuvą ir paprastus skaičiavimo veiksmus. Palaikoma sudėtis, atimtis, dalyba ir daugyba. Reik&scaron;mės apskaičiuojamos naudojant analizės koordinačių sistemą. Sluoksnis turi būti projekcinėje koordinačių sistemoje arba ji turi būti nustatyta naudojant  <b>Analizės aplinką</b> (jei taikomas buferis).
             </p>
         </div>
     </div>
@@ -106,31 +106,33 @@
         </div>
     </div>
     <div id="summaryFields">
-        <div><h2>Pridėti statistiką (neprivaloma)</h2></div>
+        <div><h2>Pridėti statistiką (pasirinktinis nustatymas)</h2></div>
         <hr/>
         <div>
             <p> Galite apskaičiuoti susumuotų elementų statistiką. Naudodami skaitinius laukus, galite apskaičiuoti:
                 <ul>
-                    <li>Skaičių
+                    <li>Skaičius &ndash; apskaičiuojamas nenulinių reik&scaron;mių skaičius. Galima naudoti skaitiniams laukams arba eilutėms. [nulinis, 0, 2] skaičius yra 2.
                     </li>
-                    <li>Vidurkį
+                    <li>Suma &ndash; lauke nurodytų skaitinių reik&scaron;mių suma. [nulinis, 0, 3] suma yra 3.
                     </li>
-                    <li>Mažiausią reik&scaron;mę
+                    <li>Vidurkis &ndash; skaitinių reik&scaron;mių vidurkis. [0, 2, nulinis] vidurkis yra 1.
                     </li>
-                    <li>Didžiausią reik&scaron;mę
+                    <li>Minimumas &ndash; skaitinio lauko reik&scaron;mės minimumas. [0, 2, nulinis] minimumas yra 0. 
                     </li>
-                    <li>Intervalą
+                    <li>Maksimumas &ndash; skaitinio lauko reik&scaron;mės maksimumas. [0, 2, nulinis] maksimumas yra 2.
                     </li>
-                    <li>Dispersiją
+                    <li>Intervalas  &ndash; skaitinio lauko intervalas. Apskaičiuojamas i&scaron; maksimalios reik&scaron;mės atėmus minimalią reik&scaron;mę. [0, nulinis, 1] intervalas yra 1. [nulinis, 4] intervalas yra 0.
                     </li>
-                    <li>Standartinį nuokrypį
+                    <li>Nuokrypis &ndash; skaitinio laiko nuokrypis trajektorijoje. [1] nuokrypis yra nulinis. [nulinis, 1,1,1] nuokrypis yra 1.
+                    </li>
+                    <li>Standartinis nuokrypis &ndash; skaitinio laiko standartinė deviacija. [1] standartinis nuokrypis yra nulinis. [nulinis, 1,1,1] standartinis nuokrypis yra 1. 
                     </li>
                 </ul>
                 
             </p>
             <p>Naudodami tekstinius laukus, galite apskaičiuoti:
                 <ul>
-                    <li>Skaičių
+                    <li>Skaičius &ndash; nenulinių eilučių skaičius.
                     </li>
                     <li>Bet kokį rodiklį &ndash; &scaron;is statistinis rodiklis yra atsitiktinės eilutės reik&scaron;mės i&scaron; nurodyto lauko pavyzdys.
                     </li>
@@ -140,19 +142,29 @@
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Pasirinkti duomenų saugyklą</h2></div>
+        <div><h2>Pasirinkite ArcGIS duomenų saugyklą, į kurią norite įrašyti rezultatus</h2></div>
         <hr/>
         <div>
-            <p>Tai yra laikinas parametras, naudojamas iki i&scaron;leidimo, kad būtų galima nustatyti duomenų saugyklą, kur bus įra&scaron;yti rezultatai. Abejos duomenų saugyklos yra  ArcGIS Data Store dalis. Jei pasirinksite erdvėlaikio duomenų saugyklą, bet viena i&scaron; jų nebus įdiegta, įrankis neveiks. </p>
+            <p>GeoAnalytics rezultatai yra saugomi ArcGIS duomenų saugykloje ir rodomi kaip   Portal for ArcGIS elementų sluoksnis. Daugeliu atvejų rezultatai turi būti saugomi erdvinių-laiko duomenų saugykloje, ir tai yra numatytasis nustatymas. Kai kuriais atvejais galima rezultatus įra&scaron;yti į releacinę duomenų saugyklą. Toliau pateikiame priežastis, kodėl reikėtų rezultatus įray&scaron;i į releacinių duomenų saugyklą: 
+                <ul>
+                    <li>Rezultatus galima naudoti dviejuose susietuose portaluose.
+                    </li>
+                    <li>Rezultatus galima sinchronizuoti.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Nenaudokite releacinių duomenų saugyklos, jei jūsų GeoAnalytics rezultatų turėtų padaugėti, ir apdorojant didelius duomenų kiekius reikia pasinaudoti erdvinių-laiko didelių duomenų saugyklos galimybėmis. 
+            </p>
         </div>
     </div>
     <div id="outputName">
         <div><h2>Rezultatų sluoksnio pavadinimas</h2></div>
         <hr/>
         <div>
-            <p> Tai sluoksnio, kuris bus sukurtas ir patalpintas <b>Turinyje</b> ir pridėtas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas pagal įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau yra, įrankis neveiks.
+            <p> Tai sluoksnio, kuris bus sukurtas ir patalpintas dalyje <b>Mano turinys</b> ir įtrauktas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas pagal įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau yra, įrankis neveiks.
             </p>
-            <p>Pasirinkę  <b>Rezultatą įra&scaron;yti į</b>, galite nurodyti <b>Turinyje</b> esančio aplanko pavadinimą.
+            <p>I&scaron;&scaron;okančiame meniu  <b>Įra&scaron;yti rezultatą į</b> galite nurodyti <b>Mano turinys</b> esančio aplanko, kur bus įra&scaron;yti rezultatai, pavadinimą.
             </p>
         </div>
     </div>

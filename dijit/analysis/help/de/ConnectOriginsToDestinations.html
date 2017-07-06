@@ -103,7 +103,7 @@
                     <li>
                         <p>Deaktivieren Sie  <b>Verkehrsdaten verwenden</b>, um die schnellsten Routen basierend auf festgelegten Geschwindigkeiten zu suchen.
                         </p>
-                        <p>Sie m&uuml;ssen diese Option ausw&auml;hlen, wenn Sie eine allgemeine Fahrzeitmessung und nicht etwa ein Gebiet w&uuml;nschen, das anhand einer sich st&auml;ndig &auml;ndernden Verkehrslage f&uuml;r eine bestimmte Abfahrtzeit berechnet wird.
+                        <p>Deaktivieren Sie diese Option, wenn Sie eine allgemeine Fahrzeitmessung und nicht etwa ein Ergebnis w&uuml;nschen, das anhand einer sich st&auml;ndig &auml;ndernden Verkehrslage f&uuml;r eine bestimmte Abfahrtzeit berechnet wird.
                         </p>
                     </li>
                     <li>
@@ -112,7 +112,7 @@
                         </p>
                     </li>
                     <li>
-                        <p>Wenn Sie die Option  <b>Verkehrsdaten verwenden</b> aktivieren und <b>Verkehrsdaten auf Grundlage von normalen Bedingungen f&uuml;r</b> einen Tag und eine Uhrzeit ausw&auml;hlen, findet das Werkzeug die schnellsten Routen basierend auf historischen Durchschnittsgeschwindigkeiten f&uuml;r jedes 5-Minuten-Intervall &uuml;ber eine normale Woche hinweg. Die Ergebnisse umfassen Verkehrsdaten, lassen den Einfluss aktueller Verkehrssituationen und -ereignisse, die erheblich von der Norm abweichen k&ouml;nnen, allerdings au&szlig;er Acht.
+                        <p>Wenn Sie die Option  <b>Verkehrsdaten verwenden</b> aktivieren und <b>Verkehrsdaten auf Grundlage von normalen Bedingungen f&uuml;r</b> einen Tag und eine Uhrzeit ausw&auml;hlen, findet das Werkzeug die schnellsten Routen basierend auf historischen Durchschnittsgeschwindigkeiten f&uuml;r jedes 5-Minuten-Intervall &uuml;ber eine normale Woche hinweg. Die Ergebnisse umfassen Verkehrsdaten, lassen jedoch den Einfluss aktueller Verkehrssituationen und -ereignisse au&szlig;er Acht, die erheblich von der Norm abweichen k&ouml;nnen.
                         </p>
                         <p>Sie k&ouml;nnen diese Einstellungen f&uuml;r historische Verkehrsdaten verwenden, um beispielsweise folgende Frage zu stellen: Wie lange dauert es im Allgemeinen, diese Ziele zu erreichen, wenn an einem Mittwoch um 11:30 Uhr losgefahren wird?&quot;.
                         </p>
@@ -134,6 +134,8 @@ Klicken Sie in dem Werkzeug auf den Link <b>Verf&uuml;gbarkeit anzeigen</b>, um 
             <p>Der Name des Feature-Layers, der in  <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird. Wenn der Feature-Layer bereits vorhanden ist, werden Sie aufgefordert, einen anderen Namen einzugeben. Der Feature-Layer enth&auml;lt einen Layer f&uuml;r jedes der folgenden Elemente: Routen, nicht zugewiesene Startpunkte und nicht zugewiesene Zielpunkte, wenn einige Startpunkte nicht mit ihren Zielpunkten verbunden werden k&ouml;nnen.
             </p>
             <p>Wenn Sie  <b>Routen-Layer einbeziehen</b> ausw&auml;hlen, wird jede Route des Ergebnisses auch als Routen-Layer gespeichert. Ein Routen-Layer umfasst alle Informationen einer bestimmten Route wie zum Beispiel die Stopps, die der Route zugewiesen sind, oder die Wegbeschreibungen. Das Erstellen von Routen-Layern ist n&uuml;tzlich, wenn Sie die einzelnen Routen mit anderen Mitgliedern in Ihrer Organisation teilen oder wenn Sie die Routen mithilfe der Schaltfl&auml;che <b>Wegbeschreibung</b> im Map Viewer weiter bearbeiten m&ouml;chten. F&uuml;r den Namen der Routen-Layer wird der Name des angegebenen Feature-Layers verwendet. Der Routenname, der als Teil der Analyse generiert wurde, wird hinzugef&uuml;gt, um einen eindeutigen Namen f&uuml;r jeden Routen-Layer zu erstellen.
+            </p>
+            <p>Die maximale Anzahl von Routen-Layern, die erstellt werden k&ouml;nnen, betr&auml;gt  1.000. Wenn das Ergebnis mehr als  1.000 Routen enth&auml;lt und  <b>Routen-Layer einbeziehen</b> aktiviert ist, erstellt das Werkzeug lediglich den Ausgabe-Feature-Service.
             </p>
             <p>&Uuml;ber die Dropdown-Liste  <b>Ergebnis speichern in</b> k&ouml;nnen Sie den Namen eines Ordners in <b>Eigene Inhalte</b> zum Speichern des Feature-Layers und des Routen-Layers (bei Erstellung) angeben.
             </p>

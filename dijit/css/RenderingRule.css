@@ -9,6 +9,12 @@ div.esriRenderingRuleContainer {
   width: 100%;
   max-width: 400px;
 }
+.esriRenderingRuleHidden {
+  display: none;
+}
+.esriRenderingRuleVisible {
+  width: 100%;
+}
 .esriRenderingRuleCol1 {
   width: 33%;
 }
@@ -138,4 +144,59 @@ div.esriRenderingRuleContainer {
 .esriRenderingRuleFixedInput.dijitTextBox input
 {
   text-align: center;
+}
+
+.esriRnderingRuleSymbologyTypeSelect,
+.esriRenderingRuleClassifySelect,
+.esriRenderingRuleUniqueValuesSelect {
+  width: 100%;
+}
+
+.esriRenderingRuleSymbolCell {
+  width: 15px; 
+  height: 15px; 
+  border: 1px solid #000; 
+  margin-left: auto; 
+  margin-right: auto; 
+}
+
+.field-esriRenderingRuleUniqueValuesSymbol, .field-esriRenderingRuleClassifySymbol{
+  width: 15%;
+}
+
+.field-esriRenderingRuleUniqueValuesValue, .field-esriRenderingRuleClassifyValue{
+  width: 42.5%;
+  text-align: center;
+}
+
+.field-esriRenderingRuleUniqueValuesLabel, .field-esriRenderingRuleClassifyLabel{
+  width: 42.5%;
+  text-align: center;
+}
+
+.esriRenderingRuleTable .dgrid-scroller {
+  margin-top: 26px!important;
+}
+
+.esriRenderingRuleTable .dijitButtonNode.dijitDownArrowButton {
+  width: 20px;
+  border-left: solid grey 1px;
+}
+
+.esriRenderingRuleGridEditorText {
+  width: 100%;
+}
+
+.esriRenderingRuleTable .dgrid .dijitNumberTextBox,
+.esriRenderingRuleTable .dgrid .dijitTextBox {
+  width: 100%;
+}
+
+.esriRenderingRuleFilteringSelectLabel {
+  width: 40ex;
+  white-space:pre-wrap;
+}
+
+.esriRenderingRuleDisabledGrid .dgrid-content {
+  color: gray;
 }

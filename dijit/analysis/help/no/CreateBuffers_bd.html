@@ -40,7 +40,7 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Opprett buffere</h2><p/>
         <h2><img src="../images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" alt="Opprette buffere"></h2>
         <hr/>
@@ -54,9 +54,9 @@
         <div><h2>Valg lag som bufferen skal brukes på</h2></div>
         <hr/>
         <div>
-            <p>Punkt-, linje- eller omr&aring;degeoobjektene som skal bufres.
+            <p>Punkt-, linje- eller omr&aring;degeoobjektene som skal bufres. Inndatalagene m&aring; v&aelig;re i et projisert koordinatsystem eller den geografiske referansen for behandling m&aring; v&aelig;re satt til et projisert koordinatsystem som bruker  <b>analysemilj&oslash;ene</b>.
             </p>
-            <p>I tillegg til &aring; velge et lag fra kartet kan du velge  <b>Browse Layers</b> (Bla gjennom lag), som du finner nederst i rullegardinlisten, til &aring; bla deg frem til innholdet for et fildelingsdatasett for big data eller et geoobjektslag.  
+            <p>I tillegg til &aring; velge et lag fra kartet kan du velge  <b>Bla gjennom lag</b>, som du finner nederst i rullegardinlisten, til &aring; bla deg frem til innholdet for et fildelingsdatasett for big data eller et geoobjektslag.
             </p>
         </div>
     </div>
@@ -103,7 +103,7 @@
         </div>
     </div>
     <div id="multipart">
-        <div><h2>Tillat geoobjekter i flere deler.</h2></div>
+        <div><h2>Tillat geoobjekter i flere deler</h2></div>
         <hr/>
         <div>
             <p>Muligheten til &aring; angi om resultatet skal best&aring; av geoobjekter med &eacute;n eller flere deler. 
@@ -126,26 +126,28 @@
         <div>
             <p> Du kan beregne statistikk p&aring; geoobjekter som er summert. P&aring; numeriske felt kan du beregne f&oslash;lgende:
                 <ul>
-                    <li>Antall
+                    <li>Antall &ndash; Beregner antall verdier som ikke er null. Kan brukes p&aring; numeriske felt eller strenger. Antallet for [null, 0, 2] er 2.
                     </li>
-                    <li>Gjennomsnitt
+                    <li>Sum &ndash; Summen av numeriske verdier i et felt. Summen av [null, null, 3] er 3.
                     </li>
-                    <li>Min
+                    <li>Gjennomsnitt &ndash; Gjennomsnittet for numeriske verdier. Gjennomsnittet av [0, 2, null] er 1.
                     </li>
-                    <li>Maks
+                    <li>Min &ndash; Minimumsverdien for et numerisk felt. Minimum av [0, 2, null] er 0. 
                     </li>
-                    <li>Omr&aring;de
+                    <li>Maks &ndash; Maksimumsverdien for et numerisk felt. Maksimumsverdien for [0, 2, null] er 2.
                     </li>
-                    <li>Varians
+                    <li>Omr&aring;de &ndash; Omr&aring;det for et numerisk felt. Beregnes som den maksimale verdien minus minimumsverdien. Omr&aring;det av [0, null, 1] er 1. Omr&aring;det av [null, 4] er 0.
                     </li>
-                    <li>Standardavvik
+                    <li>Varians &ndash; Variansen for et numerisk felt i et spor. Variansen for [1] er null. Variansen for [null, 1,1,1] er 1.
+                    </li>
+                    <li>Standardavvik &ndash; Standardavviket for et numerisk felt. Standardavviket for [1] er null. Standardavviket for [null, 1,1,1] er 1. 
                     </li>
                 </ul>
                 
             </p>
             <p>P&aring; strengfelter kan du beregne f&oslash;lgende:
                 <ul>
-                    <li>Antall
+                    <li>Antall &ndash; Antallet strenger som ikke er null.
                     </li>
                     <li>Noen &ndash; Denne statistikken er en tilfeldig pr&oslash;ve av en strengverdi i det spesifiserte feltet.
                     </li>
@@ -155,10 +157,20 @@
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Velg datalager</h2></div>
+        <div><h2>Velg ArcGIS Data Store som resultatene skal lagres i</h2></div>
         <hr/>
         <div>
-            <p>Dette er en midlertidig parameter for forh&aring;ndslansering, for &aring; angi datalageret der resultatene lagres. Begge datalagrene er en del av  ArcGIS Data Store. Hvis du velger det spatiotemporale datalageret, men ikke har et installert, vil verkt&oslash;yet mislykkes. </p>
+            <p>GeoAnalytics-resultater lagres i et ArcGIS Data Store og vises som et geoobjektslag i  Portal for ArcGIS. Resultatene b&oslash;r i de fleste tilfeller lagres i et spatiotemporalt datalager, og dette er standarden. I enkelte tilfeller er det en god l&oslash;sning &aring; lagre resultatene i relasjonsdatalageret. Du b&oslash;r lagre resultatene i relasjonsdatalageret av f&oslash;lgende &aring;rsaker: 
+                <ul>
+                    <li>Du kan bruke resultatene i portal til portal-samarbeid.
+                    </li>
+                    <li>Du kan aktivere synkroniseringsfunksjoner for resultatene dine.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Du b&oslash;r ikke bruke relasjonsdatalageret hvis du forventer at GeoAnalytics-resultatene kommer til &aring; &oslash;ke og du &oslash;nsker &aring; dra fordeler av det spatiotemporale stordatalagerets funksjoner til &aring; h&aring;ndtere store mengder data. 
+            </p>
         </div>
     </div>
     <div id="outputName">

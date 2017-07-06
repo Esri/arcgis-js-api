@@ -70,12 +70,12 @@
         <div>
             <p>The point layer on which the density will be calculated.
             </p>
-            <p>除了從地圖選擇圖層外，您也可以選擇下拉式清單底部的 <b>瀏覽圖層</b>，以瀏覽到大數據檔案分享資料集或圖徵圖層的內容。  
+            <p>除了從地圖選擇圖層外，您也可以選擇下拉式清單底部的 <b>瀏覽圖層</b>，以瀏覽到大數據檔案分享資料集或圖徵圖層的內容。
             </p>
         </div>
     </div>
     <div id="fields">
-        <div><h2>選擇用來計算密度的一或多個欄位</h2></div>
+        <div><h2>選擇用來計算密度的一或多個欄位（選用）</h2></div>
         <hr/>
         <div>
             <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
@@ -90,10 +90,12 @@
         <div>
             <p>The shape of bins that points are aggregated into and used for the density calculation.
             </p>
+            <p>使用 <b>方形</b>或 <b>六角形</b>容器進行分析時，需要使用投影座標系統。您可以在 <b>分析環境</b>中設定 <b>處理座標系統</b>。若未將處理座標系統設為投影座標系統，系統會在您 <b>執行分析</b>時提醒您設定它。
+            </p>
         </div>
     </div>
     <div id="binSizing">
-        <div><h2>選擇用於計算密度的容器大小</h2></div>
+        <div><h2>選擇用於匯聚的容器大小</h2></div>
         <hr/>
         <div>
             <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
@@ -127,59 +129,59 @@
         <div><h2>選擇密度的輸出單位</h2></div>
         <hr/>
         <div>
-            <p>The desired output units of the density values. By default, this is set to the units in your map (for example, square meters). If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+            <p>The desired output units of the density values. By default, this is set to square kilometers or square miles based on the default units specified in your profile. If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
 
             </p>
         </div>
     </div>
     <div id="timeSlicing">
-        <div><h2>使用時間片段計算密度（選用）</h2></div>
+        <div><h2>使用時間步長計算密度（選用）</h2></div>
         <hr/>
         <div>
-            <p>若是在輸入點圖層上啟用時間，且其為即時類型，則可使用時間片段進行分析。使用時間時可設定三個參數：
+            <p>若是在輸入點圖層上啟用時間，且其為即時類型，則可使用時間步長進行分析。使用時間時可設定三個參數：
                 <ul>
-                    <li>  <b>時間間隔</b>
+                    <li> <b>時間步長間隔</b>
                     </li>
-                    <li> <b>時間步長</b>
+                    <li> <b>重複時間步長的頻率為何</b>
                     </li>
-                    <li> <b>參考時間</b>
+                    <li> <b>將時間步長對齊到的時間</b>
                     </li>
                 </ul>
                 
             </p>
-            <p>想像您有表示年時間的資料，且您想要使用每週片段進行分析。若要這麼做，您需要將 <b>時間間隔</b>設為 <code>1 週</code>。
+            <p>想像您有表示年時間的資料，且您想要使用每週步長進行分析。若要這麼做，您需要將 <b>時間步長間隔</b>設為 <code>1 週</code>。
             </p>
-            <p> 想像您有表示年時間的資料，且您想要使用每月的第一週進行分析。若要這麼做，需要將 <b>時間間隔</b>設為 <code>1 週</code>、 <b>時間步長</b>設為 <code>1 個月</code>，以及將 <b>參考時間</b>設為 <code>1 月 1 日上午 12:00</code>。
+            <p>想像您有表示年時間的資料，且您想要使用每月的第一週進行分析。若要這麼做，需要將 <b>時間步長間隔</b>設為 <code>1 週</code>、 <b>重複時間步長的頻率為何</b>設為 <code>1 個月</code>，以及將 <b>將時間步長對齊到的時間</b>設為 <code>1 月 1 日上午 12:00</code>。
             </p>
         </div>
     </div>
     <div id="timeInterval">
-        <div><h2>用來計算密度的時間間隔</h2></div>
+        <div><h2>時間步長間隔</h2></div>
         <hr/>
         <div>
-            <p>使用於分段資料的時間間隔。時間間隔可單獨使用，或搭配使用 <b>時間步長</b>或 <b>參考時間</b>參數。
+            <p>使用於產生時間步長的時間間隔。時間步長間隔可單獨使用，或與 <b>重複時間步長的頻率為何</b>或 <b>將時間步長對齊到的時間</b>參數搭配使用。
             </p>
-            <p> 若要建立時間片段，以便在每週一上午 9:00 到上午 10:00 發生， <b>時間間隔</b>將是 <code>1 小時</code>、 <b>時間步長</b>將是 <code>1 週</code>，且 <b>參考時間</b>將是 <code>週一上午 9:00:00</code>。
+            <p>若要建立時間片段，以便在每週一上午 9:00 到上午 10:00 發生， <b>時間步長間隔</b>將是 <code>1 小時</code>、 <b>重複時間步長的頻率為何</b>將是 <code>1 週</code>，且 <b>將時間步長對齊到的時間</b>將是 <code>週一上午 9:00:00</code>。
             </p>
         </div>
     </div>
     <div id="timeStep">
-        <div><h2>用來計算密度的時間步長</h2></div>
+        <div><h2>重複時間步長的頻率為何</h2></div>
         <hr/>
         <div>
-            <p> 用於計算時間片段的步長。 <b>時間步長</b>可單獨使用，或搭配使用 <b>時間間隔</b>、 <b>參考時間</b>，或 <b>時間間隔</b>和 <b>參考時間</b>二者。
+            <p> 用於計算時間片段的步長。 <b>重複時間步長的頻率為何</b>可單獨使用，或搭配使用 <b>時間步長間隔</b>、 <b>參考時間</b>，或 <b>時間步長間隔</b>和 <b>將時間步長對齊到的時間</b>二者。
             </p>
-            <p> 若要建立時間片段，以便在每週一上午 9:00 到上午 10:00 發生， <b>時間間隔</b>將是 <code>1 小時</code>、 <b>時間步長</b>將是 <code>1 週</code>，且 <b>參考時間</b>將是 <code>週一上午 9:00:00</code>。
+            <p> 若要建立時間片段，以便在每週一上午 9:00 到上午 10:00 發生， <b>時間步長間隔</b>將是 <code>1 小時</code>、 <b>重複時間步長的頻率為何</b>將是 <code>1 週</code>，且 <b>將時間步長對齊到的時間</b>將是 <code>週一上午 9:00:00</code>。
             </p>
         </div>
     </div>
     <div id="timeReference">
-        <div><h2>用來對齊時間分段的參考時間</h2></div>
+        <div><h2>將時間步長對齊到的時間</h2></div>
         <hr/>
         <div>
-            <p>用來對齊時間分段的日期和時間。 <b>時間步長</b>將從參考的時間起算並繼續向後流動。
+            <p>用來對齊時間分段的日期和時間。時間步長將從此時間起算並繼續向後流動。若未選取參考時間，時間步長將對齊到 1970 年 1 月 1 日。
             </p>
-            <p> 若要建立時間片段，以便在每週一上午 9:00 到上午 10:00 發生， <b>時間間隔</b>將是 <code>1 小時</code>、 <b>時間步長</b>將是 <code>1 週</code>，且 <b>參考時間</b>將是 <code>週一上午 9:00:00</code>。
+            <p> 若要建立時間片段，以便在每週一上午 9:00 到上午 10:00 發生， <b>時間步長間隔</b>將是 <code>1 小時</code>、 <b>重複時間步長的頻率為何</b>將是 <code>1 週</code>，且 <b>將時間步長對齊到的時間</b>將是 <code>週一上午 9:00:00</code>。
             </p>
         </div>
     </div>
@@ -195,7 +197,17 @@
         <div><h2>選擇資料儲存庫</h2></div>
         <hr/>
         <div>
-            <p>這是搶鮮版的暫時參數，用於設定儲存結果的資料儲存庫。兩個資料儲存庫皆屬於  ArcGIS Data Store。如果選擇時空資料儲存庫但尚未安裝，工具將失敗。 </p>
+            <p>GeoAnalytics 結果是儲存於 ArcGIS Data Store，並作為  Portal for ArcGIS 中的圖徵圖層公開。在大多數情況下，必須將結果儲存到大型的時空資料儲存庫，且這是預設值。在某些情況下，將結果儲存至關聯式資料儲存庫是個好選擇。在下列情況下，您可能想要在關聯式資料儲存庫中儲存結果： 
+                <ul>
+                    <li>在入口網站之間的協同作業中使用結果。
+                    </li>
+                    <li>啟用與您結果的同步功能。
+                    </li>
+                </ul>
+                
+            </p>
+            <p>如果您預期 GeoAnalytics 結果會增加，並需要利用大型的時空資料儲存庫的功能來處理大量資料，則不應使用關聯式資料儲存庫。
+            </p>
         </div>
     </div>
     <div id="outputName">

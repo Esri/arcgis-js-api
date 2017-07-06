@@ -40,48 +40,48 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
-        <h2>Convert Feature to  Raster</h2><p/>
-        <h2><img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" alt="Convert Feature to Raster tool"></h2>
+    <div id="toolDescription" class="smallsize">
+        <h2>フィーチャをラスターに変換</h2><p/>
+        <h2><img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" alt="[フィーチャをラスターに変換] ツール"></h2>
         <hr/>
-    <p>This task converts features to a raster dataset.
+    <p>このタスクは、フィーチャをラスター データセットに変換します。
     </p>
-    <p>Any feature class containing point, line, or polygon features can be converted to a raster dataset.
+    <p>ポイント、ライン、またはポリゴン フィーチャを含むフィーチャクラスをラスター データセットに変換できます。
     </p>
-    <p>The cell center is used to decide the value of the output raster pixel.
+    <p>出力ラスター ピクセル値の決定には、セルの中心が使用されます。
     </p>
-    <p>The input field type determines the type of output raster. If the field is integer, the output raster will be integer; if it is floating point, the output will be floating point.
+    <p>入力フィールドのタイプによって、出力ラスターのタイプが決まります。フィールドが整数の場合、出力ラスターは整数になり、フィールドが浮動小数点の場合、出力は浮動小数点になります。
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Choose feature layer to convert</h2></div>
+        <div><h2>変換するフィーチャ レイヤーを選択</h2></div>
         <hr/>
         <div>
-            <p>The input feature layer to convert to a raster dataset.
+            <p>ラスター データセットに変換する入力フィーチャ レイヤー。
             </p>
         </div>
     </div>
     <div id="field">
-        <div><h2>Choose field</h2></div>
+        <div><h2>フィールドの選択</h2></div>
         <hr/>
         <div>
-            <p>Choose the field that will be used to assign values to the output raster.
+            <p>出力ラスターへの値の割り当てに使用するフィールドを選択します。
             </p> 
         </div>
     </div>
     <div id="outputCellSize">
-        <div><h2>Output cell size</h2></div>
+        <div><h2>出力セル サイズ</h2></div>
         <hr/>
         <div>
             <p>出力ラスターのセル サイズと単位を入力します。
             </p>
-            <p>The available units are Feet, Miles, Meters, and Kilometers.
+            <p>指定可能な単位は [フィート]、[マイル]、[メートル]、および [キロメートル] です。
             </p>
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>結果レイヤーの名前</h2></div>
         <hr/>
         <div>
             <p> <b>[マイ コンテンツ]</b> で作成され、マップに追加されるレイヤーの名前。デフォルトの名前は、ツール名と入力レイヤー名に基づいて設定されます。レイヤーがすでに存在する場合は、別の名前を指定するよう求められます。

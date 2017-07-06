@@ -144,7 +144,7 @@
 .map .esriMapContainer .panLeft { background-position:-47px -16px; left:5px; }
 .map .esriMapContainer .panUpperLeft { background-position:-47px 0px; left:5px; top:5px; }
 
-.map .tooltip {
+.map .esriMapTooltip {
   width: 100px;
   word-wrap: break-word;
   position: absolute;

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.19/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.21/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../kernel"],function(t,e,r,s){var a=t(null,{declaredClass:"esri.tasks.RasterData",constructor:function(t){t&&e.mixin(this,t)},url:null,format:null,itemID:null,toJson:function(){var t={};return this.url&&(t.url=this.url),this.format&&(t.format=this.format),this.itemID&&(t.itemID=this.itemID),t}});return r("extend-esri")&&e.setObject("tasks.RasterData",a,s),a});

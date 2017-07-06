@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Miljøindstillinger for portalanalyse</h2><p/>
+        <h2>Portal-analysemiljøindstillinger</h2><p/>
         <h2></h2>
         <hr/>
     <p> Milj&oslash;indstillinger for analyse i Portal for ArcGIS og  ArcGIS Online. 
@@ -59,7 +59,7 @@
                 <ul>
                     <li>Markeret &ndash; Hvis der allerede findes et lag med samme navn i dit indhold, vil det blive overskrevet. Outputtet vil have samme koordinatsystem som inputtet.
                     </li>
-                    <li>Ikke-markeret &ndash; Hvis det angivne navn p&aring; resultatlaget allerede findes, returneres der en fejl, og resultatlaget skal omd&oslash;bes, f&oslash;r v&aelig;rkt&oslash;jet kan k&oslash;res. Det er standardv&aelig;rdien.
+                    <li>Ikke-markeret &ndash; Hvis det angivne navn p&aring; resultatlaget allerede findes, returneres der en fejl, og resultatlaget skal omd&oslash;bes, f&oslash;r v&aelig;rkt&oslash;jet kan k&oslash;res. Dette er standardv&aelig;rdien.
                     </li>
                 </ul>
                 
@@ -93,7 +93,7 @@
             </p>
             <p>
                 <ul>
-                    <li>Markeret &ndash; Resultaterne af dine analyser vil oprette et vektorlag, og der oprettes et element i dit indhold. Det er standardv&aelig;rdien.
+                    <li>Markeret &ndash; Resultaterne af dine analyser vil oprette et vektorlag, og der oprettes et element i dit indhold. Dette er standardv&aelig;rdien.
                     </li>
                     <li>Ikke-markeret &ndash; Resultaterne af dine analyser vil oprette en objektsamling.    Objektsamlinger gemmes inde i dit webkort.
                     </li>
@@ -110,9 +110,9 @@
             </p>
             <p>
                 <ul>
-                    <li> <b>Samme som input</b> &ndash; Resultatet af din analyse vil v&aelig;re i det samme koordinatsystem som inputtet. Det er standardv&aelig;rdien.
+                    <li> <b>Samme som input</b> &ndash; Resultatet af din analyse vil v&aelig;re i det samme koordinatsystem som inputtet. Dette er standardv&aelig;rdien.
                     </li>
-                    <li> <b>Som angivet</b> &ndash; V&aelig;lg koordinatsystem for resultaterne af dine analyser.   N&aring;r denne indstilling er valgt, skal du klikke p&aring; globus-ikonet for at v&aelig;lge p&aring; en liste med kendte koordinatsystemer eller tilf&oslash;je den spatiale reference WKID i den relevante boks.
+                    <li> <b>Som angivet</b> &ndash; V&aelig;lg koordinatsystem for resultaterne af dine analyser.   N&aring;r denne indstilling er valgt, skal du klikke p&aring; globus-ikonet for at v&aelig;lge p&aring; en liste med kendte koordinatsystemer , eller tilf&oslash;je den spatiale reference WKID i den relevante boks.
                     </li>
                     <li> <b>Lag
 &lt;navn&gt;</b> &ndash; V&aelig;lg et eksisterende lag i dit webkort, der skal bruges til at bestemme koordinatsystemet for resultatet af dine analyser.
@@ -132,9 +132,9 @@
             </p>
             <p>
                 <ul>
-                    <li> <b>Samme som input</b> &ndash; Din analyse vil blive behandlet i det samme koordinatsystem som inputtet. Det er standardv&aelig;rdien.
+                    <li> <b>Samme som input</b> &ndash; Din analyse vil blive behandlet i det samme koordinatsystem som inputtet. Dette er standardv&aelig;rdien.
                     </li>
-                    <li> <b>Som angivet</b> &ndash; V&aelig;lg koordinatsystem til behandling af dine analyser. N&aring;r denne indstilling er valgt, skal du klikke p&aring; globus-ikonet for at v&aelig;lge p&aring; en liste med kendte koordinatsystemer eller tilf&oslash;je den spatiale reference WKID i den relevante boks.
+                    <li> <b>Som angivet</b> &ndash; V&aelig;lg koordinatsystem til behandling af dine analyser. N&aring;r denne indstilling er valgt, skal du klikke p&aring; globus-ikonet for at v&aelig;lge p&aring; en liste med kendte projicerede koordinatsystemer , eller tilf&oslash;je den spatiale reference WKID i den relevante boks.
                     </li>
                     <li> <b>Lag 
 &lt;navn&gt;</b> &ndash; V&aelig;lg et eksisterende lag i dit webkort.  Koordinatsystemet for det valgte lag vil blive brugt til at bestemme det koordinatsystem, der skal bruges til at behandle din analyse.
@@ -182,11 +182,12 @@
                 <ul>
                     <li> <b>Minimalt antal input</b> &ndash; Brug den mindste cellest&oslash;rrelse til alle inputlagene.
                     </li>
-                    <li> <b>Maksimalt antal input</b> &ndash; Brug den st&oslash;rste cellest&oslash;rrelse til alle inputlagene. Det er standardv&aelig;rdien.
+                    <li> <b>Maksimalt antal input</b> &ndash; Brug den st&oslash;rste cellest&oslash;rrelse til alle inputlagene. Dette er standardv&aelig;rdien.
                     </li>
                     <li> <b>Som angivet</b> &ndash; Angiv en numerisk v&aelig;rdi for at indstille cellest&oslash;rrelsen. Hvis denne indstilling v&aelig;lges, er standardv&aelig;rdien 1.
                     </li>
-                    <li> <b>Lag &lt;navn&gt;</b> &ndash; Indstiller cellest&oslash;rrelse for det valgte rasterlag.
+                    <li> <b>Lag &lt;navn&gt;</b> &ndash; Indstiller
+cellest&oslash;rrelse for det valgte rasterlag.
                     </li>
                 </ul>
                 
@@ -204,10 +205,28 @@
                 </li>
                 <li>Hvis analysemasken er et rasterlag, vil alle celler, der indeholder en v&aelig;rdi, blive taget i betragtning i forbindelse med definition af masken. Celler i et maskerasterlag, der har en NoData-v&aelig;rdi, betragtes som v&aelig;rende uden for masken og vil blive vist som NoData i analyseresultatlaget. 
                 </li>
-                <li>Hvis analysemasken er et vektorlag, konverteres det internt til et rasterlag ved udf&oslash;relsen. Af denne &aring;rsag er det vigtigt, at  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">Cellest&oslash;rrelse</a> og <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">Snap-raster</a> er indstillet korrekt til din analyse.
+                <li>Hvis analysemasken er et vektorlag, konverteres det det internt til et rasterlag ved udf&oslash;relsen. Af denne &aring;rsag er det vigtigt, at
+ <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank"></a> og <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank"></a> er indstillet korrekt til din analyse.
                 </li>
             </ul>
              
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>ArcGIS Data Store</h2></div>
+        <hr/>
+        <div>
+            <p>GeoAnalytic-resultater lagres i et ArcGIS-datalager og vises som et vektorlag i  Portal for ArcGIS. I de fleste tilf&aelig;lde b&oslash;r resultaterne blive lagret i et spatiotemporalt datalager. Dette er standardv&aelig;rdien. Her er &aring;rsagerne til, at du m&aring;ske &oslash;nsker at lagre resultaterne i et relationsdatalager: 
+                <ul>
+                    <li>Hvis du vil bruge dine resultater i et portal-til-portal- samarbejde
+                    </li>
+                    <li>Hvis du vil aktivere synkroniseringsfunktioner i forbindelse med dine resultater
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Du b&oslash;r benytte et relationsdatalager, hvis du forventer, at m&aelig;ngden af dine GeoAnalytics-resultater vil blive st&oslash;rre, og du &oslash;nsker at drage fordel af det spatiotemporale big data-lagers muligheder for at h&aring;ndtere store datam&aelig;ngder. 
+            </p>
         </div>
     </div>
 </div>

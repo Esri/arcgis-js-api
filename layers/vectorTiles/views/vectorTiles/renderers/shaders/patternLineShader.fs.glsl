@@ -9,6 +9,12 @@ uniform sampler2D u_texture;
 varying mediump vec2 v_normal;
 varying highp float v_accumulatedDistance;
 
+// Horizontal scale is used to scale the horizontal texture coordinate v_normal.x before adding it as an offset to the
+// accumulated distance. Most vertices will have v_normal.x == 0, because the pattern must be sampled only depending on
+// the v_accumulatedDistance value. But tessellation at caps can have vertices with v_normal.x != 0, thus allowing to
+// "keep moving" for a few more pixel even when the line has ended or has not started yet.
+const mediump float tileCoordRatio = 8.0;
+
 void main()
 {
   // dist represent the distance of the fragment from the line. 1.0 or -1.0 will be the values on the edge of the line,
@@ -24,7 +30,7 @@ void main()
 
   // we need to calculate the relative portion of the line texture along the line given the accumulated distance aliong the line
   // The computed value should is anumber btween 0 and 1 which will later be used to interpolate btween the BR and TL values
-  mediump float relativeTexX = mod(v_accumulatedDistance / u_spriteSize.x, 1.0);
+  mediump float relativeTexX = mod((v_accumulatedDistance + v_normal.x * u_lineHalfWidth * tileCoordRatio) / u_spriteSize.x, 1.0);
 
   // in order to calculate the texture coordinates prependicular to the line (Y axis), we use the interpolated normal values
   // which range from -1.0 to 1.0. On the line's centerline, the value of the interpolated normal is 0.0, however the relative

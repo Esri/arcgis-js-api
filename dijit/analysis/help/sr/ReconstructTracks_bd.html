@@ -65,19 +65,19 @@
         <div><h2>Izaberite geoobjekte iz kojih treba rekonstruisati staze</h2></div>
         <hr/>
         <div>
-            <p>Tačkasti ili poligonalni sloj koji će biti rekonstruisan u staze.
+            <p>Tačkasti ili poligonalni sloj koji će biti rekonstruisan u staze. Ulazni sloj mora da bude vremenski omogućen sa geoobjektima koji predstavljaju trenutak u vremenu. Sloj mora da bude u projektovanom koordinatnom sistemu ili prostorna referenca obrade mora da bude postavljena na projektovani koordinatni sistem kori&scaron;ćenjem  <b>Okruženja analize</b> ako se primeni zona bliskosti.
             </p>
-            <p>Kao dodatak odabiru sloja iz mape, možete da odaberete  <b>Pregledaj slojeve</b> na dnu padajuće liste da biste potražili deljeni skup podataka za datoteke sa velikim podacima ili sloj geoobjekta u svojim sadržajima.  
+            <p>Kao dodatak odabiru sloja iz mape, možete da odaberete  <b>Pregledaj slojeve</b> na dnu padajuće liste da biste potražili deljeni skup podataka za datoteke sa velikim podacima ili sloj geoobjekta u svojim sadržajima.
             </p>
         </div>
     </div>
     <div id="trackFields">
-        <div><h2>Izaberite polja koja se koriste za identifikaciju staza</h2></div>
+        <div><h2>Odaberite jedno ili više polja za identifikovanje staza</h2></div>
         <hr/>
         <div>
-            <p> Polja koja predstavljaju identifikator staza.
+            <p>Polja koja predstavljaju identifikator staza. 
             </p>
-            <p> Kao primer, ako biste rekonstruisali staze uragana, mogli biste da koristite ime uragana kao polje staze.
+            <p>Kao primer, ako biste rekonstruisali staze uragana, mogli biste da koristite ime uragana kao polje staze.
             </p>
         </div>
     </div>
@@ -93,7 +93,7 @@
         <div><h2>Kreirajte izraz po kom će se ulazni geoobjekti staviti u zonu bliskosti (opciono)</h2></div>
         <hr/>
         <div>
-            <p>Jednačina koja se koristi za izračunavanje rastojanja zone bliskosti oko ulaznih geoobjekata. Ova jednačina može da se generi&scaron;e pomoću kalkulatora zone bliskosti i podržanih osnovnih operacija kao &scaron;to su sabiranje, oduzimanje, množenje i deljenje. Vrednosti se izračunavaju kori&scaron;ćenjem koordinatnog sistema za analizu.
+            <p>Jednačina koja se koristi za izračunavanje rastojanja zone bliskosti oko ulaznih geoobjekata. Ova jednačina može da se generi&scaron;e pomoću kalkulatora zone bliskosti i podržanih osnovnih operacija kao &scaron;to su sabiranje, oduzimanje, množenje i deljenje. Vrednosti se izračunavaju kori&scaron;ćenjem koordinatnog sistema za analizu. Sloj mora da bude u projektovanom koordinatnom sistemu ili prostorna referenca obrade mora da bude postavljena na projektovani koordinatni sistem kori&scaron;ćenjem  <b>Okruženja analize</b> ako se primeni zona bliskosti.
             </p>
         </div>
     </div>
@@ -111,26 +111,28 @@
         <div>
             <p> Možete da izračunate statistiku na geoobjektima koji su sumirani. U numeričkim poljima možete da izračunate sledeće:
                 <ul>
-                    <li>Broj
+                    <li>Brojač&mdash;izračunava broj vrednosti koje nisu null (bez vrednosti). Može da bude kori&scaron;ćen u numeričkim poljima ili niskama. Brojač od [null, 0, 2] je 2.
                     </li>
-                    <li>Sredina
+                    <li>Zbir&mdash;zbir numeričkih vrednosti u polju. Zbir od [null, null, 3] je 3.
                     </li>
-                    <li>Minimum
+                    <li>Značenje&mdash;značenje numeričkih vrednosti. Značenje od [0, 2, null] je 1.
                     </li>
-                    <li>Maksimum
+                    <li>Min&mdash;minimalna vrednost numeričkog polja. Minimum od [0, 2, null] je 0. 
                     </li>
-                    <li>Opseg
+                    <li>Maks&mdash;maksimalna vrednost numeričkog polja. Maksimalna vrednost od [0, 2, null] je 2.
                     </li>
-                    <li>Odstupanje
+                    <li>Opseg&mdash;opseg numeričkog polja. Ovo se izračunava kada se minimalna vrednost oduzme od maksimalne vrednosti. Opseg od [0, null, 1] je 1. Opseg od [null, 4] je 0.
                     </li>
-                    <li>Standardna devijacija
+                    <li>Varijansa&mdash;varijansa numeričkog polja u stazi. Varijansa od [1] je null. Varijansa od [null, 1,1,1] je 1.
+                    </li>
+                    <li>Standardna devijacija&mdash;standardna devijacija numeričkog polja. Standardna devijacija od [1] je null. Standardna devijacija od [null, 1,1,1] je 1. 
                     </li>
                 </ul>
                 
             </p>
             <p>U poljima niske možete da izračunate sledeće:
                 <ul>
-                    <li>Broj
+                    <li>Brojač&mdash;broj vrednosti koje nisu null.
                     </li>
                     <li>Bilo koji&mdash;ova statistika je nasumični uzorak vrednosti niske u navedenom polju.
                     </li>
@@ -140,10 +142,20 @@
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Izaberi skladište podataka</h2></div>
+        <div><h2>Odaberite ArcGIS skladište podataka u koje će se čuvati rezultati</h2></div>
         <hr/>
         <div>
-            <p>Ovo je privremeni parametar za preliminarnu verziju da bi se podesilo skladi&scaron;te podataka gde se čuvaju rezultati. Oba skladi&scaron;ta podataka su deo  ArcGIS Data Store. Ako izaberete skladi&scaron;te prostorno-vremenskih podataka, ali nemate ga instalirano, alatka će otkazati. </p>
+            <p>Rezultati geoanalize se skladi&scaron;te u ArcGIS skladi&scaron;tu podataka i izloženi su kao sloj geoobjekata u  Portal for ArcGIS. U većini slučajeva, rezultati bi trebali da budu skladi&scaron;teni u u skladi&scaron;te prostorno-vremenskih podataka i ovo je podrazumevano. U nekim slučajevima čuvanje rezultata u skladi&scaron;te relacionih podataka je dobar izbor. Slede razlozi zbog kojih ćete želeti da skladi&scaron;tite rezultate u skladi&scaron;tu relacionih podataka: 
+                <ul>
+                    <li>Da biste koristili va&scaron;e rezultate u portal-ka-portalu kolaboraciji.
+                    </li>
+                    <li>Da biste omogućili mogućnosti sinhronizacije sa rezultatima.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Ne treba da koristite skladi&scaron;te relacionih podataka ako očekujete da se geoanalitički podaci povećaju i treba da iskoristite mogućnosti prostorno-vremenskog skladi&scaron;ta velikih podataka kako biste upravljali velikim količinama podataka. 
+            </p>
         </div>
     </div>
     <div id="outputName">

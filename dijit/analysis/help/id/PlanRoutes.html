@@ -50,7 +50,7 @@
     </p>
     <p>Dengan Rencanakan Rute (Plan Routes), gugus tugas bergerak (mobile workforces) dapat mencapai lebih banyak lokasi kerja dengan waktu lebih sedikit, sehingga dapat meningkatkan produktivitas dan layanan pelanggan.
         <ul>
-            <li>Titik Interpolasi dapat digunakan untuk memprediksi tingkat polusi di lokasi yang tidak memiliki sensor, seperti lokasi dengan populasi berisiko&mdash;sekolah atau rumah sakit misalnya.
+            <li>Inspeksi bangunan, restoran, atau lokasi konstruksi
                 
 
             </li>
@@ -58,7 +58,7 @@
             </li>
             <li>Mengantar item atau paket kecil
             </li>
-            <li>Melakukan panggilan penjualan
+            <li>Melakukan aktivitas penjualan
             </li>
             <li>Mengangkut orang dari rumah ke suatu acara
             </li>
@@ -67,12 +67,12 @@
     </p>
     <p>Output dari Rencanakan Rute (Plan Routes) mencakup layer perhentian yang diberi kode menurut rute yang ditetapkan untuk perhentian tersebut, layer rute yang menunjukkan jalur terpendek untuk mengunjungi perhentian yang ditetapkan, dan, tergantung pada apakah suatu perhentian tidak dapat dicapai, layer perhentian yang tidak ditetapkan. 
     </p>
-    <p>Jika  <b>Use current map extent</b> (Gunakan jangkauan peta saat ini) dicentang, hanya fitur yang saat ini terlihat dalam jangkauan peta saja yang akan dipertimbangkan dalam analisis ini.  Jika tidak dicentang, semua fitur dalam layer input akan diperhitungkan, meskipun fitur tersebut berada di luar jangkauan peta saat ini.
+    <p>Jika  <b>Gunakan jangkauan peta saat ini</b> dicentang, hanya fitur yang saat ini terlihat dalam jangkauan peta saja yang akan dipertimbangkan dalam analisis ini. Jika tidak dicentang, semua fitur dalam layer input akan diperhitungkan, meskipun fitur tersebut berada di luar jangkauan peta saat ini.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="stopsLayer">
-        <div><h2>Pilih layer titik yang mewakili perhentian yang dikunjungi</h2></div>
+        <div><h2>Pilih layer titik yang mewakili perhentian yang akan dikunjungi</h2></div>
         <hr/>
         <div>
             <p>Pilih layer titik yang harus dikunjungi oleh rute (atau kendaraan).  Titik ini menjadi perhentian yang ditetapkan atau tidak ditetapkan di output. 
@@ -87,7 +87,7 @@
         <div><h2>Mode perjalanan untuk rute</h2></div>
         <hr/>
         <div>
-            <p>Pilih mode perjalanan Anda.  Rute output akan mengikuti jalan atau jalan pejalan kaki dan menaati aturan yang berlaku, seperti jalan satu arah dan larangan memutar untuk berkendara atau menggunakan truk.  Mode perjalanan yang tersedia ditentukan oleh administrator organisasi Anda.  
+            <p>Pilih mode perjalanan Anda.  Rute output akan mengikuti jalan raya atau jalan pejalan kaki dan menaati aturan yang berlaku, seperti jalan satu arah dan larangan memutar untuk berkendara. Mode perjalanan yang tersedia ditentukan oleh administrator organisasi Anda.  
             </p>
         </div>
     </div>
@@ -97,15 +97,15 @@
         <div>
             <p>Tentukan tempat dan waktu kendaraan memulai rutenya.
             </p>
-            <p>Dengan Merencanakan Rute, Anda dapat menentukan satu atau banyak lokasi awal untuk kendaraan Anda.
+            <p>Dengan Rencanakan Rute (Plan Routes), Anda dapat menentukan satu atau banyak lokasi awal untuk kendaraan Anda.
             </p>
-            <p>Jika satu lokasi titik ditentukan, semua kendaraan berangkat dari titik itu, tanpa memandang jumlah kendaraan yang tersedia. Anda dapat memilih layer titik dengan satu poin atau menambahkan titik ke peta dengan memilih  <b>Add point to map</b> (Tambahkan titik ke peta), mengklik tombol pengeditan titik di dekatnya, dan mengklik peta. 
+            <p>Jika satu lokasi titik sudah ditentukan, maka setiap kendaraan berangkat dari titik itu, tanpa memandang jumlah kendaraan yang tersedia. Anda dapat memilih layer titik dengan satu poin atau menambahkan titik ke peta dengan memilih  <b>Tambahkan titik ke peta</b>, mengklik tombol pengeditan titik di dekatnya, atau mengklik pada peta. 
             </p>
-            <p>Jika banyak lokasi ditentukan, setiap kendaraan harus dihubungkan dengan titiknya sendiri. Jumlah kendaraan harus sama dengan jumlah titik di layer. Pilih layer dengan banyak titik dan tentukan kolom yang secara khusus mengidentifikasi masing-masing rute, kendaraan, atau pengemudi di daftar drop-down  <b>Route ID field</b> (Kolom ID Rute).
+            <p>Jika multi lokasi ditentukan, setiap kendaraan harus dihubungkan dengan titiknya sendiri. Jumlah kendaraan harus sama dengan jumlah titik di layer. Pilih layer dengan banyak titik dan tentukan kolom yang secara khusus mengidentifikasi masing-masing rute, kendaraan, atau pengemudi di daftar tarik-turun  <b>Kolom ID Rute</b>.
             </p>
-            <p>Waktu mulai sama untuk semua rute. Zona waktu untuk waktu mulai sama dengan zona waktu tempat titik mulai atau titik berada, jadi pastikan waktu yang Anda masukkan adalah waktu setempat. Contohnya, anggaplah Anda berada di Waktu Standar Pasifik/PST (UTC-8:00) dan kendaraan yang Anda atur rutenya berada di Waktu Standar Pegunungan/MST (UTC-7:00). Jika saat ini pukul 9:30 pagi PST (10:30 pagi MST) dan kendaraan Anda harus memulai rutenya dalam 30 menit, Anda harus mengatur waktu mulai ke 11:00 pagi. 
+            <p>Waktu mulai sama untuk semua rute. Zona waktu untuk waktu mulai sama dengan zona waktu tempat dimana titik awal atau titik berada, jadi pastikan waktu yang Anda masukkan adalah waktu setempat. Contoh, misalnya Anda berada di Waktu Standar Pasifik/PST (UTC-8:00) dan kendaraan yang Anda atur rutenya berada di Waktu Standar Pegunungan/MST (UTC-7:00). Jika saat ini pukul 9:30 pagi PST (10:30 pagi MST) dan kendaraan Anda harus memulai rutenya dalam 30 menit, Anda harus mengatur waktu mulai ke 11:00 pagi. 
             </p>
-            <p>Jika kendaraan Anda mulai dari zona waktu berbeda, waktu mulai tidak dapat bersamaan; sebaliknya, waktu tersebut diseimbangkan. Contohnya, jika satu rute mulai dari titik di PST dan rute lainnya mulai dari MST, dan Anda memasukkan 11:00 pagi sebagai waktu mulai, rute di PST akan mulai pada pukul 11:00 pagi. PST dan rute di MST akan mulai pada pukul 11:00 pagi. MST&mdash;berbeda satu jam.
+            <p>Jika kendaraan Anda mulai dari zona waktu yang berbeda, maka waktu mulai tidak dapat bersamaan; sebaliknya, waktu tersebut harus diseimbangkan. Contohnya, jika satu rute mulai dari titik di PST dan rute lainnya mulai di MST, dan Anda memasukkan 11:00 pagi sebagai waktu mulai, maka rute di PST akan mulai pada pukul 11:00 pagi. PST dan rute di MST akan mulai pada pukul 11:00 pagi. MST&mdash;berbeda satu jam.
             </p>
         </div>
     </div>
@@ -117,7 +117,7 @@
             </p>
             <p>Anda dapat mengkonfigurasikan rute berakhir di salah satu dari tiga lokasi: 
                 <ul>
-                    <li>Lokasi yang sama tempat rute mulai, tanpa memandang rute tersebut berasal dari satu atau banyak lokasi
+                    <li>Lokasi yang sama dengan tempat titik awal rute, tanpa memandang rute tersebut berasal dari satu atau banyak lokasi
                     </li>
                     <li>Lokasi tunggal
                     </li>
@@ -126,11 +126,11 @@
                 </ul>
                 
             </p>
-            <p>Centang  <b>Return to start</b> (Kembali ke mulai) jika kendaraan memulai dan mengakhiri rutenya di lokasi yang sama.
+            <p>Centang  <b>Kembali ke titik awal</b> jika kendaraan memulai dan mengakhiri rutenya di lokasi yang sama.
             </p>
-            <p>Untuk menetapkan rute bagi semua kendaraan ke titik akhir bersama selain titik mulai, buang centang  <b>Return to start</b> (Kembali ke mulai) dan tambahkan titik ke peta atau pilih layer yang berisi persis satu titik.
+            <p>Untuk menetapkan rute bagi semua kendaraan ke titik akhir yang sama yang bukan merupakan titik awal, hapus centang  <b>Kembali ke titik awal</b> dan tambahkan titik ke peta atau pilih layer yang berisi persis satu titik.
             </p>
-            <p>Untuk membuat rute berakhir di lokasi unik, buang centang  <b>Return to start</b> (Kembali ke mulai) dan pilih layer yang berisi lebih dari satu titik. Jumlah kendaraan harus sama dengan jumlah titik di layer yang dipilih. Pada daftar drop-down <b>Route ID field</b> (Kolom ID Rute), pilih kolom yang secara unik mengidentifikasi masing-masing rute, kendaraan, atau pengemudi. Jika kendaraan mulai dari banyak lokasi dan berakhir di banyak lokasi, ID rute yang dipilih untuk layer mulai dan berakhir harus cocok.
+            <p>Untuk membuat rute berakhir di lokasi unik, hapus centang  <b>Kembali ke titik awal</b> dan pilih layer yang berisi lebih dari satu titik. Jumlah kendaraan harus sama dengan jumlah titik di layer yang dipilih. Pada daftar tarik-turun <b>Kolom ID Rute</b>, pilih kolom yang secara unik mengidentifikasi masing-masing rute, kendaraan, atau pengemudi. Jika rute kendaraan mulai dari banyak lokasi dan berakhir juga di banyak lokasi, ID rute yang dipilih untuk layer mulai dan akhir harus cocok.
             </p>
         </div>
     </div>
@@ -138,9 +138,9 @@
         <div><h2>Jumlah maksimum kendaraan yang dirutekan</h2></div>
         <hr/>
         <div>
-            <p>Tentukan jumlah kendaraan yang tersedia untuk mengunjungi perhentian. Alat ini mendukung hingga [100] kendaraan. 
+            <p>Tentukan jumlah kendaraan yang tersedia untuk mengunjungi perhentian. Alat ini mendukung hingga  100 kendaraan. 
             </p>
-            <p>Alat ini mungkin mampu menemukan solusi yang menggunakan lebih sedikit kendaraan daripada jumlah yang Anda tentukan di sini tergantung pada total jumlah perhentian, seberapa jauh jarak perhentian tersebut, waktu yang dihabiskan di setiap perhentian, dan semua batasan yang Anda atur pada total waktu rute per kendaraan.
+            <p>Alat ini mungkin mampu menemukan solusi yang menggunakan lebih sedikit kendaraan dari jumlah yang Anda tentukan di sini, tergantung pada total jumlah perhentian, jumlah perhentian per kendaraan yang diijinkan, seberapa jauh jarak perhentian tersebut, waktu yang dihabiskan di setiap perhentian, dan batasan lain yang Anda atur pada total waktu rute per kendaraan.
             </p>
         </div>
     </div>
@@ -148,32 +148,32 @@
         <div><h2>Jumlah maksimum perhentian per kendaraan</h2></div>
         <hr/>
         <div>
-            <p>Ini adalah salah satu dari dua parameter yang menyeimbangkan keseluruhan beban kerja di seluruh rute. Anda dapat menentukan nilai antara 1 dan [200]. 
+            <p>Ini adalah salah satu dari dua parameter yang menyeimbangkan keseluruhan beban kerja di seluruh rute. Anda dapat menentukan nilai antara 1 dan  200. 
             </p>
-            <p>Dengan mengurangi jumlah maksimum perhentian yang dapat ditugaskan untuk setiap kendaraan, kendaraan tersebut sangat mungkin memiliki jumlah perhentian yang sama yang ditetapkan untuk kendaraan tersebut. Ini membantu menyeimbangkan beban kerja antara pengemudi. Namun, kekurangannya hal ini dapat menjadi solusi yang kurang efisien.
+            <p>Dengan mengurangi jumlah maksimum perhentian yang dapat ditugaskan untuk setiap kendaraan, maka sangat mungkin untuk masing-masing kendaraan tersebut memiliki jumlah perhentian yang sama. Ini membantu menyeimbangkan beban kerja antara pengemudi. Namun, kekurangannya hal ini dapat menjadi solusi yang kurang efisien.
             </p>
-            <p>Dengan menambah perhentian per kendaraan, alat ini memiliki lebih banyak kebebasan untuk menemukan lebih banyak solusi efisien; namun, beban kerja mungkin tidak terdistribusikan merata antara pengemudi dan kendaraan. Ingat bahwa Anda dapat menyeimbangkan beban kerja menurut waktu dan jumlah perhentian dengan menentukan nilai untuk parameter  <b>Batasi waktu rute total per kendaraan</b> Jumlah kelas
+            <p>Dengan menambah jumlah perhentian per kendaraan, alat ini memiliki lebih banyak kebebasan untuk menemukan lebih banyak solusi yang efisien; namun, beban kerja mungkin tidak terdistribusikan secara merata terhadap pengemudi dan kendaraan. Ingat bahwa Anda dapat menyeimbangkan beban kerja menurut waktu dan jumlah perhentian dengan menentukan nilai untuk parameter  <b>Batasi waktu rute total per kendaraan</b>.
             </p>
             <p>Contoh berikut menunjukkan efek pembatasan perhentian maksimum per kendaraan atau waktu total per kendaraan. Pada semua contoh terdapat enam perhentian dan dua rute, yang mulai pada lokasi yang sama.
             </p>
             <table border="1">
             <tr>
-                <td> <img src="../images/GUID-820BDC1E-97CB-457F-9235-7105D274AFEB-web.png" alt="(Perhentian seimbang dan waktu perjalanan)">
+                <td> <img src="../images/GUID-820BDC1E-97CB-457F-9235-7105D274AFEB-web.png" alt="Perhentian dan waktu perjalanan seimbang">
                 </td>
                 <td>
-                    <p>Waktu perjalanan seimbang dan perhentian per rute:
+                    <p>Waktu perjalanan dan perhentian per rute seimbang:
                     </p>
-                    <p>Perhentian lebih kurang tersebar secara seragam, sehingga mengatur perhentian maksimum per kendaraan untuk mendistribusikan beban kerja secara merata menghasilkan rute yang kira-kira memiliki durasi yang sama.
+                    <p>Titik-titik perhentian lebih kurang tersebar secara seragam, sehingga pengaturan jumlah perhentian maksimum per kendaraan untuk mendistribusikan beban kerja secara merata akan menghasilkan rute yang kira-kira memiliki durasi yang sama.
                     </p>
                 </td>
             </tr>
             <tr>
-                <td> <img src="../images/GUID-813F72FE-500D-4A4D-A030-B3450F09154B-web.png" alt="Waktu rute tak seimbang">
+                <td> <img src="../images/GUID-813F72FE-500D-4A4D-A030-B3450F09154B-web.png" alt="Waktu rute tidak seimbang">
                 </td>
                 <td>
-                    <p>Perhentian seimbang per rute tetapi waktu perjalanan tak seimbang:
+                    <p>Jumlah perhentian per rute seimbang tetapi waktu perjalanan tidak seimbang:
                     </p>
-                    <p>Lima dari enam perhentian bergugus di dekat lokasi mulai, tetapi satu perhentian di atur terpisah dan memerlukan berkendara jauh lebih lama untuk dicapai. Membagi perhentian setara antara dua rute menyebabkan waktu perjalanan tak seimbang.
+                    <p>Lima dari enam perhentian berada di dekat lokasi awal, tetapi satu perhentian di atur terpisah dan memerlukan waktu berkendara jauh lebih lama untuk mencapainya. Membagi perhentian setara antara dua rute akan menyebabkan waktu perjalanan yang tidak seimbang.
                     </p>
                 </td>
             </tr>
@@ -181,9 +181,9 @@
                 <td> <img src="../images/GUID-082615A2-7F07-49AB-92AF-C82CEB813E6F-web.png" alt="Waktu perjalanan seimbang">
                 </td>
                 <td>
-                    <p>Perhentian tak seimbang per rute tetapi waktu perjalanan seimbang:
+                    <p>Jumlah perhentian per rute tidak seimbang tetapi waktu perjalanan seimbang:
                     </p>
-                    <p>Perhentian berada di lokasi yang sama dengan grafik sebelumnya; tetapi dengan menambah perhentian maksimum per rute dan membatasi waktu perjalanan total per kendaraan, waktu perjalanan seimbang.
+                    <p>Perhentian berada di lokasi yang sama dengan grafik sebelumnya; tetapi dengan menambah perhentian maksimum per rute dan membatasi waktu perjalanan total per kendaraan, maka waktu perjalanan akan seimbang.
                     </p>
                 </td>
             </tr>
@@ -194,7 +194,7 @@
         <div><h2>Waktu yang dihabiskan pada setiap perhentian</h2></div>
         <hr/>
         <div>
-            <p>Atur waktu layanan rata-rata yang diinginkan di setiap perhentian. Contohnya, jika Anda merencanakan suatu jadwal hari kerja untuk inspektur dan waktu inspeksi rata-rata adalah 45 menit, masukkan  <code>45</code>.
+            <p>Atur waktu layanan rata-rata yang diinginkan di setiap perhentian. Contohnya, jika Anda merencanakan suatu jadwal kerja untuk pengawas perjalanan dan waktu inspeksi rata-rata adalah 45 menit, masukkan  <code>45</code>.
             </p>
             <p>Waktu layanan di semua perhentian dianggap sama.
             </p>
@@ -204,7 +204,7 @@
         <div><h2>Batasi waktu rute total per kendaraan</h2></div>
         <hr/>
         <div>
-            <p>Tentukan jumlah maksimum waktu yang harus diselesaikan suatu rute dari mulai sampai berakhir. Ini mencakup waktu perjalanan yang diinginkan dan waktu layanan yang dihabiskan di perhentian sepanjang rute. Jika pengemudi tidak boleh bekerja lebih lama dari waktu yang ditentukan selama satu hari, seperti delapan jam, Anda dapat menentukan batas itu di sini.
+            <p>Tentukan jumlah maksimum waktu yang harus diselesaikan suatu rute dari mulai sampai berakhir. Ini mencakup waktu perjalanan yang diinginkan dan waktu layanan yang dihabiskan di perhentian sepanjang rute. Jika pengemudi tidak boleh bekerja lebih lama dari waktu yang ditentukan selama satu hari, misalnya delapan jam, Anda dapat menentukan batas tersebut di sini.
             </p>
             <p>Lihat bantuan untuk  <b>Jumlah maksimal perhentian per kendaraan</b> sebagai pertimbangan saat menyeimbangkan beban kerja.
             </p>
@@ -214,11 +214,11 @@
         <div><h2>Nama layer hasil</h2></div>
         <hr/>
         <div>
-            <p>Ini adalah nama feature layer yang akan dibuat di  <b>My Content</b> (Konten Saya) dan ditambahkan ke peta. Jika feature layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain. Feature layer akan mengandung layer untuk masing-masing dari: rute, perhentian yang ditentukan, dan perhentian yang belum ditentukan ketika beberapa input perhentian tidak dapat diberikan ke rute mana pun.
+            <p>Nama feature layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta. Jika feature layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain. Feature layer akan berisi layer untuk masing-masing dari: rute, perhentian yang ditentukan, dan perhentian yang belum ditentukan ketika beberapa input perhentian tidak dapat diberikan ke rute mana pun.
             </p>
-            <p>Jika Anda pilih  <b>Sertakan layer rute</b>, masing-masing rute dari hasil juga disimpan sebagai layer rute. Layer rute menyertakan seluruh informasi untuk rute tertentu seperti perhentian yang ditetapkan ke rute juga arah perjalanan. Membuat layer rute bermanfaat jika Anda ingin membagikan rute individu dengan anggota lain di organisasi Anda atau jika Anda ingin lebih lanjut memodifikasi rute menggunakan tombol <b>Arah</b> pada penampil peta. Layer rute menggunakan nama yang diberikan untuk feature layer sebagai awalan dan nama rute yang dihasilkan sebagai bagian dari analisis, ditambahkan untuk membuat nama unik untuk masing-masing layer rute.
+            <p>Jika Anda pilih  <b>Sertakan layer rute</b>, masing-masing rute dari hasil juga disimpan sebagai layer rute. Layer rute menyertakan seluruh informasi untuk rute tertentu seperti perhentian yang ditetapkan ke rute juga arah perjalanan. Membuat layer rute bermanfaat jika Anda ingin membagikan rute individu dengan anggota lain di organisasi Anda atau jika Anda ingin memodifikasi rute lebih lanjut dengan menggunakan tombol <b>Arah</b> pada penampil peta. Layer rute menggunakan nama yang diberikan untuk feature layer sebagai awalan dan nama rute yang dihasilkan sebagai bagian dari analisis, ditambahkan untuk membuat nama unik untuk masing-masing layer rute.
             </p>
-            <p>Dengan menggunakan daftar drop-down  <b>Simpan hasil di</b>, Anda dapat menentukan nama suatu folder di <b>Konten Saya</b> tempat feature layer dan layer rute, jika dibuat, akan disimpan.
+            <p> <b>Simpan hasil</b> dengan menggunakan kotak tarik-turun, Anda dapat menentukan nama folder di <b>Konten Saya</b> sebagai tempat penyimpanan hasil. Jika feature layer dan layer rute dibuat, juga akan disimpan disini.
             </p>
         </div>
     </div>

@@ -59,9 +59,9 @@
         <div><h2>Valitse karttataso, joka sisältää alueisiin koostettavat pisteet</h2></div>
         <hr/>
         <div>
-            <p>Pistekarttataso, joka koostetaan alueisiin.
+            <p>Pistekarttataso, joka koostetaan alueisiin. Pistekarttatasoilla, jotka on koottu  <b>neli&ouml;</b>- tai <b>kuusikulmiolohkoissa</b>, on oltava k&auml;sittelev&auml; koordinaatisto, joka on m&auml;&auml;ritetty projisoituun koordinaattij&auml;rjestelm&auml;&auml;n k&auml;ytt&auml;m&auml;ll&auml; <b>analyysiymp&auml;rist&ouml;j&auml;</b>.
             </p>
-            <p>Sen lis&auml;ksi, ett&auml; voit valita karttatason kartasta, voit valita  <b>Selaa karttatasoja</b> -vaihtoehdon avattavan luettelon alareunasta ja selata Big Data -tiedostoresurssin aineistoryhm&auml;n tai karttatason sis&auml;lt&ouml;&ouml;n.  
+            <p>Sen lis&auml;ksi, ett&auml; voit valita karttatason kartasta, voit valita  <b>Selaa karttatasoja</b> -vaihtoehdon avattavan luettelon alareunasta ja selata Big Data -tiedostoresurssin aineistoryhm&auml;n tai karttatason sis&auml;lt&ouml;&ouml;n.
             </p>
         </div>
     </div>
@@ -71,6 +71,8 @@
         <div>
             <p>Alueet, joihin pistekarttataso koostetaan. Voit valita antamasi aluekarttatason tai ty&ouml;kalun suorittamisen aikana luodut lohkot.   Luotaessa  <b>neli&ouml;lohkoja</b> m&auml;&auml;ritetyt yksik&ouml;t ja m&auml;&auml;r&auml; m&auml;&auml;ritt&auml;v&auml;t neli&ouml;n korkeuden ja pituuden. Luotaessa <b>kuusiolohkoja</b> m&auml;&auml;ritetyt yksik&ouml;t ja m&auml;&auml;r&auml; m&auml;&auml;ritt&auml;v&auml;t rinnakkaisten sivujen v&auml;lisen et&auml;isyyden.
             </p>
+            <p>Analysointi  <b>neli&ouml;</b>- tai <b>kuusikolmiolohkojen</b> avulla edellytt&auml;&auml; projisoitua koordinaattij&auml;rjestelm&auml;&auml;. Voit m&auml;&auml;ritt&auml;&auml; <b>k&auml;sittelev&auml;n koordinaattij&auml;rjestelm&auml;n</b> <b>Analyysiymp&auml;rist&ouml;t</b>-kohdassa. Jos k&auml;sittelev&auml;&auml; koordinaattij&auml;rjestelm&auml;&auml; ei ole m&auml;&auml;ritetty projisoiduksi koordinaattij&auml;rjestelm&auml;ksi, sinua pyydet&auml;&auml;n m&auml;&auml;ritt&auml;m&auml;&auml;n se sellaiseksi, kun valitset <b>Suorita analyysi</b>.
+            </p>
         </div>
     </div>
     <div id="polygonLayer">
@@ -78,8 +80,6 @@
         <hr/>
         <div>
             <p>Aluekarttataso, johon pisteet kootaan Karttatason alueiden rajojen sis&auml;puolelle kuuluvat pisteet lasketaan ja haluttaessa koostetaan yhteenvedoksi valittujen tilastotietojen perusteella. 
-            </p>
-            <p>
             </p>
             <p>Sinun on m&auml;&auml;ritett&auml;v&auml; joko  <b>Lohkon koko</b> lohkoille tai <b>Aluekarttataso</b>.
             </p>
@@ -96,53 +96,53 @@
         </div>
     </div>
     <div id="timeSlicing">
-        <div><h2>Koosta käyttäen aikaleikkeitä (valinnainen)</h2></div>
+        <div><h2>Koosta käyttäen aikavälejä (valinnainen)</h2></div>
         <hr/>
         <div>
-            <p>Jos aika on otettu k&auml;ytt&ouml;&ouml;n l&auml;ht&ouml;aineiston karttatasossa ja jos ajan tyyppin&auml; on hetki, voit k&auml;ytt&auml;&auml; analysointiin aikaleikkeit&auml;. Voit m&auml;&auml;ritt&auml;&auml; kolme parametria, kun k&auml;yt&auml;t aikaa:
+            <p>Jos aika on otettu k&auml;ytt&ouml;&ouml;n l&auml;ht&ouml;aineiston karttatasossa ja jos ajan tyyppin&auml; on hetki, voit k&auml;ytt&auml;&auml; analysointiin aikav&auml;lej&auml;. Voit m&auml;&auml;ritt&auml;&auml; kolme parametria, kun k&auml;yt&auml;t aikaa:
                 <ul>
-                    <li>  <b>Aikav&auml;li</b>
+                    <li> <b>Aikav&auml;lijakso</b>
                     </li>
-                    <li> <b>Aika-askel</b>
+                    <li> <b>Miten usein aikav&auml;li&auml; toistetaan</b>
                     </li>
-                    <li> <b>Viiteaika</b>
+                    <li> <b>Aika, johon aikav&auml;lit kohdistetaan</b>
                     </li>
                 </ul>
                 
             </p>
-            <p>Oletetaan, ett&auml; sinulla on vuotta kuvaava aineisto ja ett&auml; haluat k&auml;ytt&auml;&auml; analysointiin aikaleikkeit&auml;. Voit tehd&auml; t&auml;m&auml;n m&auml;&auml;ritt&auml;m&auml;ll&auml;  <b>Aikav&auml;li</b>-parametrin arvoksi <code>1 viikko</code>.
+            <p>Oletetaan, ett&auml; sinulla on vuotta kuvaava aineisto ja ett&auml; haluat k&auml;ytt&auml;&auml; analysointiin viikon mittaisia aikav&auml;lej&auml;. Voit tehd&auml; t&auml;m&auml;n m&auml;&auml;ritt&auml;m&auml;ll&auml;  <b>Aikav&auml;lijakso</b>-parametrin arvoksi <code>1 viikko</code>.
             </p>
-            <p> Oletetaan, ett&auml; sinulla on vuotta kuvaava aineisto ja ett&auml; haluat k&auml;ytt&auml;&auml; analysointiin kuukauden ensimm&auml;ist&auml; viikkoa. Voit tehd&auml; t&auml;m&auml;n m&auml;&auml;ritt&auml;m&auml;ll&auml; <b>Aikav&auml;li</b>-parametrin arvoksi <code>1 viikko</code>, <b>Aika-askel</b>-parametrin arvoksi <code>1 kuukausi</code> ja <b>Viiteaika</b>-parametrin arvoksi <code>1. tammikuuta klo 24.00</code>.
+            <p>Oletetaan, ett&auml; sinulla on vuotta kuvaava aineisto ja ett&auml; haluat k&auml;ytt&auml;&auml; analysointiin kuukauden ensimm&auml;ist&auml; viikkoa. Voit tehd&auml; t&auml;m&auml;n m&auml;&auml;ritt&auml;m&auml;ll&auml;  <b>Aikav&auml;lijakso</b>-parametrin arvoksi <code>1 viikko</code>, <b>Miten usein aikav&auml;li&auml; toistetaan</b> -parametrin arvoksi <code>1 kuukausi</code> ja <b>Aika, johon aikav&auml;lit kohdistetaan</b> -parametrin arvoksi <code>1. tammikuuta klo 24.00</code>.
             </p>
         </div>
     </div>
     <div id="timeInterval">
-        <div><h2>Aikaväli, johon tiedot koostetaan</h2></div>
+        <div><h2>Aikavälijakso</h2></div>
         <hr/>
         <div>
-            <p>Aikav&auml;li, jota k&auml;ytet&auml;&auml;n aineiston leikkaamiseen. Aikav&auml;li&auml; voi k&auml;ytt&auml;&auml; yksin tai  <b>Aikav&auml;li</b>- tai <b>Viiteaika</b>-parametrin kanssa.
+            <p>Aikav&auml;li, jota k&auml;ytet&auml;&auml;n aikav&auml;lien luomiseen. Aikav&auml;lijakso-parametria voidaan k&auml;ytt&auml;&auml; yksin tai  <b>Miten usein aikav&auml;li&auml; toistetaan</b>- tai <b>Aika, johon aikav&auml;lit kohdistetaan</b> -parametrin kanssa.
             </p>
-            <p> Jos haluat luoda aikaleikkeit&auml;, joiden aikav&auml;li on maanantaina klo 9.00&ndash;10.00, m&auml;&auml;rit&auml; <b>Aikav&auml;li</b>-parametrin arvoksi <code>1 tunti</code>, <b>Aika-askel</b>-parametrin arvoksi <code>1 viikko</code> ja <b>Viiteaika</b>-parametrin arvoksi <code>9.00 maanantaina</code>.
+            <p>Jos haluat luoda aikaleikkeit&auml;, joiden aikav&auml;li on maanantaina klo 9.00&ndash;10.00, m&auml;&auml;rit&auml;  <b>Aikav&auml;lijakso</b>-parametrin arvoksi <code>1 tunti</code>, <b>Miten usein aikav&auml;li&auml; toistetaan</b> -parametrin arvoksi <code>1 viikko</code> ja <b>Aika, johon aikav&auml;lit kohdistetaan</b> -parametrin arvoksi <code>9.00 maanantaina</code>.
             </p>
         </div>
     </div>
     <div id="timeStep">
-        <div><h2>Aika-askel, johon koostetaan</h2></div>
+        <div><h2>Miten usein aikaväliä toistetaan</h2></div>
         <hr/>
         <div>
-            <p> Askel, jota k&auml;ytet&auml;&auml;n aikaleikkeen laskemiseen. <b>Aika-askel</b>-parametria voi k&auml;ytt&auml;&auml; yksin, <b>Aikav&auml;li</b>-parametrin kanssa, <b>Viiteaika</b>-parametrin kanssa tai sek&auml; <b>Aikav&auml;li</b>- ett&auml; <b>Viiteaika</b>-parametrin kanssa.
+            <p> Askel, jota k&auml;ytet&auml;&auml;n aikaleikkeen laskemiseen. <b>Miten usein aikav&auml;li&auml; toistetaan</b> -parametria voidaan k&auml;ytt&auml;&auml; yksin tai <b>Aikav&auml;lijakso</b>- tai <b>Viiteaika</b>-parametrin kanssa taikka sek&auml; <b>Aikav&auml;lijakso</b>- ett&auml; <b>Aika, johon aikav&auml;lit kohdistetaan</b> -parametrien kanssa.
             </p>
-            <p> Jos haluat luoda aikaleikkeit&auml;, joiden aikav&auml;li on maanantaina klo 9.00&ndash;10.00, m&auml;&auml;rit&auml; <b>Aikav&auml;li</b>-parametrin arvoksi <code>1 tunti</code>, <b>Aika-askel</b>-parametrin arvoksi <code>1 viikko</code> ja <b>Viiteaika</b>-parametrin arvoksi <code>9.00 maanantaina</code>.
+            <p> Jos haluat luoda aikaleikkeit&auml;, joiden aikav&auml;li on maanantaina klo 9.00&ndash;10.00, m&auml;&auml;rit&auml; <b>Aikav&auml;lijakso</b>-parametrin arvoksi <code>1 tunti</code>, <b>Miten usein aikav&auml;li&auml; toistetaan</b> -parametrin arvoksi <code>1 viikko</code> ja <b>Aika, johon aikav&auml;lit kohdistetaan</b> -parametrin arvoksi <code>9.00 maanantaina</code>.
             </p>
         </div>
     </div>
     <div id="timeReference">
-        <div><h2>Viiteaika, jota käytetään aikaleikkeiden kohdistamiseen</h2></div>
+        <div><h2>Aika, johon aikavälit kohdistetaan</h2></div>
         <hr/>
         <div>
-            <p>P&auml;iv&auml;m&auml;&auml;r&auml; ja kellonaika, joita k&auml;ytet&auml;&auml;n aikaleikkeiden kohdistamiseen.  <b>Aika-askel</b> alkaa viiteajasta ja jatkuu viitatusta ajasta taaksep&auml;in.
+            <p>P&auml;iv&auml;m&auml;&auml;r&auml; ja kellonaika, joita k&auml;ytet&auml;&auml;n aikaleikkeiden kohdistamiseen. Aikav&auml;li alkaa t&auml;st&auml; ajasta ja jatkuu siit&auml; taaksep&auml;in. Jos viiteaikaa ei valita, aikav&auml;li kohdistetaan aikaan 1.1.1970. 
             </p>
-            <p> Jos haluat luoda aikaleikkeit&auml;, joiden aikav&auml;li on maanantaina klo 9.00&ndash;10.00, m&auml;&auml;rit&auml; <b>Aikav&auml;li</b>-parametrin arvoksi <code>1 tunti</code>, <b>Aika-askel</b>-parametrin arvoksi <code>1 viikko</code> ja <b>Viiteaika</b>-parametrin arvoksi <code>9.00 maanantaina</code>.
+            <p> Jos haluat luoda aikaleikkeit&auml;, joiden aikav&auml;li on maanantaina klo 9.00&ndash;10.00, m&auml;&auml;rit&auml; <b>Aikav&auml;lijakso</b>-parametrin arvoksi <code>1 tunti</code>, <b>Miten usein aikav&auml;li&auml; toistetaan</b> -parametrin arvoksi <code>1 viikko</code> ja <b>Aika, johon aikav&auml;lit kohdistetaan</b> -parametrin arvoksi <code>9.00 maanantaina</code>.
             </p>
         </div>
     </div>
@@ -152,26 +152,28 @@
         <div>
             <p> Voit laskea tilastotiedot kohteista, joista on laadittu yhteenveto. Numerokentist&auml; voit laskea seuraavat tilastotiedot:
                 <ul>
-                    <li>Lukum&auml;&auml;r&auml;
+                    <li>M&auml;&auml;r&auml;: laskee muiden kuin nolla-arvojen m&auml;&auml;r&auml;n. Voidaan k&auml;ytt&auml;&auml; numerokentiss&auml; tai merkkijonoissa. Arvojen [nolla, 0, 2] nolla-arvojen m&auml;&auml;r&auml; on 2.
                     </li>
-                    <li>Keskiarvo
+                    <li>Summa: kunkin kent&auml;n numeroarvojen summa. Numeroarvojen [nolla, nolla, 3] summa on 3.
                     </li>
-                    <li>V&auml;himm&auml;isarvo
+                    <li>Keskiarvo: numeroarvojen keskiarvo. Arvojen [0, 2, nolla] keskiarvo on 1.
                     </li>
-                    <li>Enimm&auml;isarvo
+                    <li>Minimi: numerokent&auml;n minimiarvo. Arvojen [0, 2, nolla] minimiarvo on 0. 
                     </li>
-                    <li>Vaihteluv&auml;li
+                    <li>Maksimiarvo: numerokent&auml;n maksimiarvo. Arvojen [0, 2, nolla] maksimiarvo on 2.
                     </li>
-                    <li>Varianssi
+                    <li>Alue: numerokent&auml;n alue. T&auml;m&auml; lasketaan minimiarvoina, jotka on v&auml;hennetty maksimiarvosta. Arvojen [0, nolla, 1] alue on 1. Arvojen [nolla, 4] alue on 0.
                     </li>
-                    <li>Keskihajonta
+                    <li>Varianssi: numerokent&auml;n varianssi reitill&auml;. Arvon [1] varianssi on nolla. Arvojen [nolla, 1,1, 1] varianssi on 1.
+                    </li>
+                    <li>Vakio keskihajonta: numerokent&auml;n keskihajonta. Arvon [1] varianssi on nolla. Arvojen [nolla, 1,1, 1] vakio keskihajonta on 1. 
                     </li>
                 </ul>
                 
             </p>
             <p>Merkkijonokentist&auml; voit laskea seuraavat tilastotiedot:
                 <ul>
-                    <li>Lukum&auml;&auml;r&auml;
+                    <li>M&auml;&auml;r&auml;: muiden kuin nolla-merkkijonojen m&auml;&auml;r&auml;.
                     </li>
                     <li>Mik&auml; tahansa: T&auml;m&auml; tilastotieto on satunnainen otos m&auml;&auml;ritetyn kent&auml;n merkkijonoarvosta.
                     </li>
@@ -189,10 +191,20 @@
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Valitse aineistosäilö</h2></div>
+        <div><h2>Valitse ArcGIS Data Store -tietokanta, johon tulokset tallennetaan</h2></div>
         <hr/>
         <div>
-            <p>T&auml;m&auml; on esijulkaisun tilap&auml;inen parametri sen aineistos&auml;il&ouml;n m&auml;&auml;ritt&auml;miseen, johon tulokset tallennetaan. Molemmat aineistos&auml;il&ouml;t ovat osa  ArcGIS Data Storea. Jos valitset tila-aika-aineistos&auml;il&ouml;n, mutta sellaista ei ole asennettuna, ty&ouml;kalua ei voi suorittaa. </p>
+            <p>GeoAnalytics-tulokset tallennetaan ArcGIS Data Store -tietokantaan ja julkaistaan karttatasona  Portal for ArcGIS -portaalissa. Useimmissa tapauksissa tulokset pit&auml;&auml; tallentaa spatiotemporaaliseen tietokantaan (t&auml;m&auml; on oletusarvo). Joissakin tapauksissa tulosten tallentaminen relaatiotietokantaan on hyv&auml; vaihtoehto. Tiedot kannattaa tallentaa relaatiotietokantaan seuraavista syist&auml;: 
+                <ul>
+                    <li>Haluat k&auml;ytt&auml;&auml; portaalissa olevia tietoja portaaliyhteisty&ouml;h&ouml;n.
+                    </li>
+                    <li>Haluat ottaa k&auml;ytt&ouml;&ouml;n tulosten synkronointitoiminnot.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Relaatiotietokantaa ei tule k&auml;ytt&auml;&auml;, jos GeoAnalytics-tulosten m&auml;&auml;r&auml; kasvaa ja sinun t&auml;ytyy hy&ouml;dynt&auml;&auml; spatiotemporaalisen big data -tietokannan toimintoja suurten tietom&auml;&auml;rien k&auml;sittelyyn. 
+            </p>
         </div>
     </div>
     <div id="outputName">

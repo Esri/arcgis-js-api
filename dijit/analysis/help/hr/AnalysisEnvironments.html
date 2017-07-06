@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Postavke okruženja analize u portalu</h2><p/>
+        <h2>Postavke okruženja za analizu u portalu</h2><p/>
         <h2></h2>
         <hr/>
     <p> Postavke okruženja analize u Portal for ArcGIS i  ArcGIS Online. 
@@ -57,7 +57,7 @@
             </p>
             <p>
                 <ul>
-                    <li>Označeno &ndash; ako već postoji sloj istog naziva u va&scaron;em sadržaju, pregazit će se.Rezultat će imati isti koordinatni sustav kao unos.
+                    <li>Označeno &ndash; ako već postoji sloj istog naziva u va&scaron;em sadržaju, pregazit će se. Rezultat će imati isti koordinatni sustav kao unos.
                     </li>
                     <li>Neoznačeno &ndash; ako uneseni naziv sloja rezultata već postoji, dogodit će se pogre&scaron;ka i sloj rezultata mora se preimenovati prije izvr&scaron;avanja alata. To je zadano.
                     </li>
@@ -128,13 +128,13 @@
         <div>
             <p>Postavke okruženja za geoanalitiku koje se koriste za određivanje koordinatnog sustava kojim će se koristiti va&scaron;a analiza tijekom izvr&scaron;avanja analize.   
             </p>
-            <p>Za geoanalitiku neke analize zahtijevaju da se obrađivanje izvr&scaron;i u projiciranom koordinatnom sustavu. Bilo koji alat koji primjenjuje podatake u ćelijama ili linearne jedinice zahtijeva projicirani koordinatni sustav. 
+            <p>Za geoanalitiku, neke analize zahtijevaju da se obrađivanje izvr&scaron;i u projiciranom koordinatnom sustavu. Bilo koji alat koji primjenjuje podatake u ćelijama ili linearne jedinice zahtijeva projicirani koordinatni sustav. 
             </p>
             <p>
                 <ul>
                     <li> <b>Jednako kao unos</b> &ndash; va&scaron;a analiza obradit će se u istom koordinatnom sustavu kao u unosu. To je zadano.
                     </li>
-                    <li> <b>Kao &scaron;to je određeno</b> &ndash; odaberite koordinatni sustav za obradu va&scaron;e analize. Kad se odabere ova opcija, kliknite na ikonu globusa za odabir s popisa poznatih projiciranih koordinatnih sustava ili dodajte prostornu referencu WKID u zadani okvir.
+                    <li> <b>Kao &scaron;to je određeno</b> &ndash; odaberite koordinatni sustav za obradu va&scaron;e analize. Kad se odabere ova opcija, kliknite na ikonu globusa za odabir s popisa poznatih predviđenih koordinatnih sustava ili dodajte prostornu referencu WKID u zadani okvir.
                     </li>
                     <li> <b>Sloj
 &lt;naziv&gt;</b> &ndash; odaberite postojeći sloj sa svoje web-karte. Koordinatni sustav odabranog sloja upotrebljavat će se za određivanje koordinatnog sustava koji će se upotrebljavati za obradu va&scaron;e analize.
@@ -152,7 +152,7 @@
             </p>
             <p>
                 <ul>
-                    <li> <b>Zadano</b> &ndash; upotrebljava obuhvat od alata.
+                    <li> <b>Zadano</b> &ndash; upotrijebite obuhvat od alata.
                     </li>
                     <li> <b>Kao &scaron;to je određeno</b> &ndash; ručno unesite koordinate za određivanje obuhvata.
                     </li>
@@ -186,7 +186,7 @@
                     </li>
                     <li> <b>Kao &scaron;to je određeno</b> &ndash; odredite brojčanu vrijednost za postavljanje veličine ćelije. Ako se ovo odabere, zadana je vrijednost 1.
                     </li>
-                    <li> <b>Sloj &lt;naziv&gt;</b> &ndash; postavlja veličinu ćelije na odabrani sloj rastera.
+                    <li> <b>Sloj &lt;naziv&gt;</b> &ndash; postavite veličinu ćelije na odabrani sloj rastera.
                     </li>
                 </ul>
                 
@@ -202,12 +202,29 @@
             <ul>
                 <li>Maska može biti raster ili sloj geoobjekta.
                 </li>
-                <li>Ako je maska analize raster, sve ćelije koje imaju vrijednost razmotrit će se za definiranje maske. Ćelije u rasteru maske koje nemaju podataka razmotrit će se kao izvan maske i bit će bez podataka u sloju rezultata analize. 
+                <li>Ako je maska analize raster, sve ćelije koje imaju vrijednost uzet će se u obzir kod definiranja maske. Ćelije u rasteru maske koje nemaju podataka smatrat će se kao izvan maske i bit će bez podataka u sloju rezultata analize. 
                 </li>
-                <li>Ako je maska analize sloj geoobjekata, interno će se pretvoriti u raster prilikom izvr&scaron;avanja. Zbog toga, trebali biste osigurati ispravno postavljanje za stavke  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">Veličina ćelije</a> i <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">Poravnaj raster</a> za va&scaron;u analizu.
+                <li>Ako je maska analize sloj geoobjekata, biti  će  interno  pretvorena u raster prilikom izvr&scaron;avanja. Zbog toga osigurajte ispravno postavljanje za stavke  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank"></a> i <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank"></a> za va&scaron;u analizu.
                 </li>
             </ul>
              
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>ArcGIS Data Store</h2></div>
+        <hr/>
+        <div>
+            <p>Rezultati geoanalitike pohranjeni su u ArcGIS Data Storeu i otkriveni kao sloj geoobjekata u  Portal for ArcGIS-u. U većini slučajeva rezultate bi trebalo pohraniti u spremniku prostorno-vremenskih podataka. To je zadano. Razlozi za&scaron;to biste htjeli pohraniti rezultate u a spremnik relacijskih podataka navedeni su u nastavku: 
+                <ul>
+                    <li>Da biste upotrijebili rezultate u suradnji od portala do portala 
+                    </li>
+                    <li>Da biste omogućili mogućnosti sinkronizacije rezultata
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Ne biste trebali upotrebljavati spremnik relacijskih podataka ako očekujete da će se va&scaron;i geoanalitički podaci povećati i želite iskoristiti mogućnosti spremnika prostorno-vremenskih podataka za rukovanje velikim količinama podataka. 
+            </p>
         </div>
     </div>
 </div>

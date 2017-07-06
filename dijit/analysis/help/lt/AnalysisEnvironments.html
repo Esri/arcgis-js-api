@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Portalo analizės aplinkos nustatymai</h2><p/>
+        <h2>Portalo analizės aplinkos parametrai</h2><p/>
         <h2></h2>
         <hr/>
     <p> Analizės aplinkos nustatymai naudojant Portal for ArcGIS ir  ArcGIS Online. 
@@ -59,7 +59,7 @@
                 <ul>
                     <li>Pažymėta &ndash; jeigu turinyje jau yra sluoksnis tokiu pačiu pavadinimu, jis bus perra&scaron;ytas. I&scaron;vestis turės tokią pačią koordinačių sistemą kaip įvestis.
                     </li>
-                    <li>Nepažymėta &ndash; jeigu pateiktas rezultatų sluoksnio pavadinimas jau yra, įvyks klaida ir prie&scaron; vykdant įrankį reikės pervardyti rezultatų sluoksnį. Tai numatytasis metodas.
+                    <li>Nepažymėta &ndash; jeigu pateiktas rezultatų sluoksnio pavadinimas jau yra, įvyks klaida ir prie&scaron; vykdant įrankį reikės pervardyti rezultatų sluoksnį. Tai numatytasis nustatymas.
                     </li>
                 </ul>
                 
@@ -93,7 +93,7 @@
             </p>
             <p>
                 <ul>
-                    <li>Pažymėta &ndash; analizės rezultatai bus sukuriami kaip elementų sluoksnis, o turinyje bus sukurtas elementas. Tai numatytasis metodas.
+                    <li>Pažymėta &ndash; analizės rezultatai bus sukuriami kaip elementų sluoksnis, o turinyje bus sukurtas elementas. Tai numatytasis nustatymas.
                     </li>
                     <li>Nepažymėta &ndash; analizės rezultatai bus sukuriami kaip elementų rinkinys.    Elementų rinkiniai saugomi internetiniame žemėlapyje.
                     </li>
@@ -110,9 +110,9 @@
             </p>
             <p>
                 <ul>
-                    <li> <b>Toks pats, kaip įvestis</b> &ndash; analizės rezultatai bus tokioje pačioje koordinačių sistemoje kaip įvestis. Tai numatytasis metodas.
+                    <li> <b>Toks pats, kaip įvestis</b> &ndash; analizės rezultatai bus tokioje pačioje koordinačių sistemoje kaip įvestis. Tai numatytasis nustatymas.
                     </li>
-                    <li> <b>Kaip nurodyta</b> &ndash; pasirinkite analizės rezultatų koordinačių sistemą.   Pasirinkus &scaron;ią parinktį, spustelėkite gaublio piktogramą, kad žinomų koordinačių sistemų sąra&scaron;e pasirinktumėte sistemą ar pateiktame lauke įtrauktumėte erdvinės nuorodos WKID.
+                    <li> <b>Kaip nurodyta</b> &ndash; pasirinkite analizės rezultatų koordinačių sistemą.   Kai &scaron;i parinktis pažymėta, spustelėję gaublio piktogramą pasirinkite i&scaron; žinomų koordinačių sistemų sąra&scaron;o, arba į pateiktą lauką įra&scaron;ykite erdvinę nuorodą WKID.
                     </li>
                     <li> <b>Sluoksnis
 &lt;name&gt;</b> &ndash; pasirinkite internetinio žemėlapio esamą sluoksnį, kuris bus naudojamas nustatant analizės rezultato koordinačių sistemą.
@@ -132,9 +132,9 @@
             </p>
             <p>
                 <ul>
-                    <li> <b>Toks pats, kaip įvestis</b> &ndash; analizė bus apdorojama tokioje pačioje koordinačių sistemoje kaip įvestis. Tai numatytasis metodas.
+                    <li> <b>Toks pats, kaip įvestis</b> &ndash; analizė bus apdorojama tokioje pačioje koordinačių sistemoje kaip įvestis. Tai numatytasis nustatymas.
                     </li>
-                    <li> <b>Kaip nurodyta</b> &ndash; pasirinkite koordinačių sistemą, kurią naudojant bus vykdoma analizė. Pasirinkus &scaron;ią parinktį, spustelėkite gaublio piktogramą, kad žinomų projekcinių koordinačių sistemų sąra&scaron;e pasirinktumėte sistemą ar pateiktame lauke įtrauktumėte erdvinės nuorodos WKID.
+                    <li> <b>Kaip nurodyta</b> &ndash; pasirinkite koordinačių sistemą, kurią naudojant bus vykdoma analizė. Kai &scaron;i parinktis pažymėta, spustelėję gaublio piktogramą pasirinkite i&scaron; žinomų projektuojamų koordinačių sistemų sąra&scaron;o, arba į pateiktą lauką įra&scaron;ykite erdvinę nuorodą WKID.
                     </li>
                     <li> <b>Sluoksnis
 &lt;name&gt;</b> &ndash; pasirinkite esamą sluoksnį i&scaron; internetinio žemėlapio.  Pasirinkto sluoksnio koordinačių sistema bus naudojama nustatant koordinačių sistemą, kuri bus naudojama vykdant analizę
@@ -152,7 +152,7 @@
             </p>
             <p>
                 <ul>
-                    <li> <b>Numatyta</b> &ndash; naudojama įrankio pateikta aprėptis.
+                    <li> <b>Numatytasis</b> &ndash; naudoti įrankio nurodytą aprėptį.
                     </li>
                     <li> <b>Kaip nurodyta</b> &ndash; rankiniu būdu įveskite koordinates, kad apibrėžtumėte aprėptį.
                     </li>
@@ -173,7 +173,7 @@
         </div>
     </div>
     <div id="cellSize">
-        <div><h2>Gardelės dydis</h2></div>
+        <div><h2>Gardelės dydis</h2></div>
         <hr/>
         <div>
             <p>Atliekant rastro analizę, &scaron;i aplinka nustato gardelės dydį arba skiriamąją gebą, kuri bus naudojama kuriant i&scaron;vesties rastro sluoksnį. Numatytoji i&scaron;vesties skiriamoji geba nustatoma pagal įvesties rastro sluoksnio didžiausios gardelės dydį.
@@ -182,11 +182,12 @@
                 <ul>
                     <li> <b>Minimali įvestis</b> &ndash; naudojamas visų įvesties sluoksnių gardelių mažiausias dydis.
                     </li>
-                    <li> <b>Maksimali įvestis</b> &ndash; naudojamas visų įvesties sluoksnių gardelių didžiausias dydis. Tai numatytasis metodas.
+                    <li> <b>Maksimali įvestis</b> &ndash; naudojamas visų įvesties sluoksnių gardelių didžiausias dydis. Tai numatytasis nustatymas.
                     </li>
                     <li> <b>Kaip nurodyta</b> &ndash; nurodykite gardelės dydžio skaitinę reik&scaron;mę. Jei pasirinkta, numatytoji reik&scaron;mė yra 1.
                     </li>
-                    <li> <b>Sluoksnis &lt;name&gt;</b> &ndash; nustatomas pasirinkto rastro sluoksnio gardelės dydis.
+                    <li> <b>Sluoksnis &lt;name&gt;</b> &ndash; nustatykite
+pasirinkto rastro sluoksnio langelio dydį.
                     </li>
                 </ul>
                 
@@ -204,10 +205,28 @@
                 </li>
                 <li>Jeigu analizės kaukė yra rastras, apibrėžiant kaukę bus atsižvelgiama į visas gardeles, kurios turi reik&scaron;mę. Kaukės rastre esančios gardelės, kurios yra NoData (be duomenų) tipo, bus laikomos kaip esančios už kaukės ribų ir jų duomenys nebus įtraukiami į analizės rezultatų sluoksnį. 
                 </li>
-                <li>Jeigu analizės kaukė yra elementų sluoksnis, atliekant analizę jis bus konvertuotas į rastrą. Dėl &scaron;ios priežasties būtina užtikrinti, kad  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">Gardelės dydis</a> ir <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">Pritraukimo rastras</a> yra tinkamai nustatyti analizei.
+                <li>Jei analizės kaukė yra elementų sluoksnis, vykdomo metu viduje jis bus konvertuotas į rastrą. Dėl &scaron;ios priežasties įsitikinkite, kad 
+analizei tinkamai nustatytas <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank"></a> ir <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank"></a>.
                 </li>
             </ul>
              
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>ArcGIS duomenų saugykla</h2></div>
+        <hr/>
+        <div>
+            <p>GeoAnalytic rezultatai yra saugomi n ArcGIS duomenų saugykloje ir rodomi kaip  Portal for ArcGIS elementų sluoksnis. Daugeliu atvejų rezultatai turi būti saugomi erdvinių-laiko duomenų saugykloje. Tai yra numatytasis nustatymas. Toliau pateikiame priežastis, kodėl reikėtų saugoti rezultatus releacinių duomenų saugykloje: 
+                <ul>
+                    <li>Norėdami naudoti savo rezultatus pasitelkdami dviejų-portalų-ry&scaron;į
+                    </li>
+                    <li>Norėdami įjungti savo rezultatų sinchronizavimą
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Nenaudokite releacinių duomenų saugyklos, jei jūsų GeoAnalytics rezultatų turėtų padaugėti, ir apdorodami didelius duomenų kiekius norite pasinaudoti erdvinių-laiko didelių duomenų saugyklos galimybėmis. 
+            </p>
         </div>
     </div>
 </div>

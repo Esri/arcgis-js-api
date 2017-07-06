@@ -70,12 +70,12 @@
         <div>
             <p>The point layer on which the density will be calculated.
             </p>
-            <p>除了从地图中选择图层外，还可以在下拉列表的底部选择 <b>浏览图层</b>，以浏览至大数据文件共享数据集或要素图层中的内容。  
+            <p>除了从地图中选择图层外，还可以在下拉列表的底部选择 <b>浏览图层</b>，以浏览至大数据文件共享数据集或要素图层中的内容。
             </p>
         </div>
     </div>
     <div id="fields">
-        <div><h2>选择计算密度使用的一个或多个字段</h2></div>
+        <div><h2>选择一个或多个字段以计算密度（可选）</h2></div>
         <hr/>
         <div>
             <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
@@ -90,10 +90,12 @@
         <div>
             <p>The shape of bins that points are aggregated into and used for the density calculation.
             </p>
+            <p>使用 <b>方形</b>或 <b>六边形</b>条柱需要投影坐标系。您可以在 <b>分析环境</b>中设置 <b>处理坐标系</b>。如果您的处理坐标系未设置为投影坐标系，则 <b>运行分析</b>时系统将提示您进行设置。
+            </p>
         </div>
     </div>
     <div id="binSizing">
-        <div><h2>选择用于计算密度的条柱大小</h2></div>
+        <div><h2>选择用于聚合的条柱大小</h2></div>
         <hr/>
         <div>
             <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
@@ -127,59 +129,59 @@
         <div><h2>选择密度的输出单位</h2></div>
         <hr/>
         <div>
-            <p>The desired output units of the density values. By default, this is set to the units in your map (for example, square meters). If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+            <p>The desired output units of the density values. By default, this is set to square kilometers or square miles based on the default units specified in your profile. If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
 
             </p>
         </div>
     </div>
     <div id="timeSlicing">
-        <div><h2>使用时间片计算密度（可选）</h2></div>
+        <div><h2>使用时间步长计算密度（可选）</h2></div>
         <hr/>
         <div>
-            <p>如果输入点图层上启用了时间且类型为时刻，则可以使用时间划分进行分析。使用时间时可设置以下三个参数：
+            <p>如果输入点图层上启用了时间且类型为时刻，则可以使用时间步长进行分析。使用时间时可设置以下三个参数：
                 <ul>
-                    <li>  <b>时间间隔</b>
+                    <li> <b>时间步长间隔</b>
                     </li>
-                    <li> <b>时间步长</b>
+                    <li> <b>重复时间步长的频率</b>
                     </li>
-                    <li> <b>参考时间</b>
+                    <li> <b>用于对齐时间步长的时间</b>
                     </li>
                 </ul>
                 
             </p>
-            <p>假设您拥有表示时间为一年的数据且希望使用周长度的时间片进行分析。为此，您需要将 <b>时间间隔</b>设置为 <code>1 周</code>。
+            <p>假设您拥有表示时间为一年的数据且希望使用周长度的时间步长进行分析。为此，您需要将 <b>时间步长间隔</b>设置为 <code>1 周</code>。
             </p>
-            <p> 假设您拥有表示时间为一年的数据且希望使用每月的第一周进行分析。为此，您需要将 <b>时间间隔</b>设置为 <code>1 周</code>，将 <b>时间步长</b>设置为 <code>1 个月</code>并将 <b>参考时间</b>设置为 <code>1 月 1 日 12:00 am</code>。
+            <p>假设您拥有表示时间为一年的数据且希望使用每月的第一周进行分析。为此，您需要将 <b>时间步长间隔</b>设置为 <code>1 周</code>，将 <b>重复时间步长的频率</b>设置为 <code>1 个月</code>并将 <b>用于对齐时间步长的时间</b>设置为 <code>1 月 1 日 12:00 am</code>。
             </p>
         </div>
     </div>
     <div id="timeInterval">
-        <div><h2>计算密度使用的时间间隔</h2></div>
+        <div><h2>时间步长间隔</h2></div>
         <hr/>
         <div>
-            <p>用于划分数据的时间间隔。时间间隔可单独使用或与 <b>时间步长</b>或 <b>参考时间</b>参数一起使用。
+            <p>用于生成时间步长的时间间隔。时间间隔可单独使用或与 <b>重复时间步长的频率</b>或 <b>用于对齐时间步长的时间</b>参数一起使用。
             </p>
-            <p> 如果您想要创建在每个星期一 9:00 a.m. 到 10:00 a.m.之间发生的时间片，则需要将 <b>时间间隔</b>设置为 <code>1 小时</code>，将 <b>时间步长</b>设置为 <code>1 周</code>并将 <b>参考时间</b>设置为 <code>星期一 9:00:00 a.m.</code>。
+            <p>如果您想要创建在每个星期一 9:00 a.m. 到 10:00 a.m.之间发生的时间片，则需要将 <b>时间步长间隔</b>设置为 <code>1 小时</code>，将 <b>重复时间步长的频率</b>设置为 <code>1 周</code>并将 <b>用于对齐时间步长的时间</b>设置为 <code>星期一 9:00:00 a.m.</code>。
             </p>
         </div>
     </div>
     <div id="timeStep">
-        <div><h2>计算密度使用的时间步长</h2></div>
+        <div><h2>重复时间步长的频率</h2></div>
         <hr/>
         <div>
-            <p> 用于计算时间片的步长。 <b>时间步长</b>可以单独使用或与 <b>时间间隔</b>和/或 <b>参考时间</b>一起使用。 <b></b> <b></b>
+            <p> 用于计算时间片的步长。 <b>重复时间步长的频率</b>可以单独使用，也可以与 <b>时间步长间隔</b>或 <b>参考时间</b>一起使用，或同时与 <b>时间步长间隔</b>和 <b>用于对齐时间步长的时间</b>一起使用。
             </p>
-            <p> 如果您想要创建在每个星期一 9:00 a.m. 到 10:00 a.m.之间发生的时间片，则需要将 <b>时间间隔</b>设置为 <code>1 小时</code>，将 <b>时间步长</b>设置为 <code>1 周</code>并将 <b>参考时间</b>设置为 <code>星期一 9:00:00 a.m.</code>。
+            <p> 如果您想要创建在每个星期一 9:00 a.m. 到 10:00 a.m.之间发生的时间片，则需要将 <b>时间步长间隔</b>设置为 <code>1 小时</code>，将 <b>重复时间步长的频率</b>设置为 <code>1 周</code>并将 <b>用于对齐时间步长的时间</b>设置为 <code>星期一 9:00:00 a.m.</code>。
             </p>
         </div>
     </div>
     <div id="timeReference">
-        <div><h2>用于对齐时间划分的参考时间</h2></div>
+        <div><h2>用于对齐时间步长的时间</h2></div>
         <hr/>
         <div>
-            <p>用于对齐时间划分的日期和时间。 <b>时间步长</b>将从参考时间开始并相对于参考时间倒计时。
+            <p>用于对齐时间划分的日期和时间。时间步长将从此时间开始并相对于此时间倒计时。如果未选中参考时间，则时间步长将与 1970 年 1 月 1 日对齐。
             </p>
-            <p> 如果您想要创建在每个星期一 9:00 a.m. 到 10:00 a.m.之间发生的时间片，则需要将 <b>时间间隔</b>设置为 <code>1 小时</code>，将 <b>时间步长</b>设置为 <code>1 周</code>并将 <b>参考时间</b>设置为 <code>星期一 9:00:00 a.m.</code>。
+            <p> 如果您想要创建在每个星期一 9:00 a.m. 到 10:00 a.m.之间发生的时间片，则需要将 <b>时间步长间隔</b>设置为 <code>1 小时</code>，将 <b>重复时间步长的频率</b>设置为 <code>1 周</code>并将 <b>用于对齐时间步长的时间</b>设置为 <code>星期一 9:00:00 a.m.</code>。
             </p>
         </div>
     </div>
@@ -187,7 +189,7 @@
         <div><h2>SpatialReference (wkid)</h2></div>
         <hr/>
         <div>
-            <p>这是预发行版本中的临时参数，用于设置处理空间参考。许多大数据工具都需要将投影坐标系用作处理的空间参考。默认情况下，该工具将使用输入坐标系，但是，如果输入坐标系为地理坐标系，则将无法使用。要设置投影坐标系，请输入 WKID。例如， <b>Web Mercator</b> 将被输入为 <code>3857</code>。
+            <p>这是预发行版本中的临时参数，用于设置处理空间参考。许多大数据工具都需要将投影坐标系用作处理的空间参考。默认情况下，该工具将使用输入坐标系，但是，如果输入坐标系为地理坐标系，则将无法使用。要设置投影坐标系，请输入 WKID。例如，要将  <b>Web Mercator</b> 输入为 <code>3857</code>。
             </p>
         </div>
     </div>
@@ -195,7 +197,17 @@
         <div><h2>选择数据存储</h2></div>
         <hr/>
         <div>
-            <p>这是预发行版本中的临时参数，用于设置将存储结果的数据存储。这两个数据存储都是  ArcGIS Data Store 的一部分。如果选择时空数据存储但是尚未安装该存储，将无法使用该工具。 </p>
+            <p>GeoAnalytics 结果存储在 ArcGIS Data Store 中并显示为  Portal for ArcGIS 中的要素图层。大多数情况下，结果应存储在时空数据存储中（此为默认设置）。某些情况下，将结果存储在关系数据存储也是一个很好的选择。下列内容说明了您可能需要将结果存储在关系数据存储中的原因： 
+                <ul>
+                    <li>可在门户到门户协作中应用您的结果。
+                    </li>
+                    <li>可以为您的结果开启同步功能。
+                    </li>
+                </ul>
+                
+            </p>
+            <p>若您希望您的 GeoAnalytics 结果增加并希望利用时空大数据存储功能处理大量数据，则您不应使用关系数据存储。
+            </p>
         </div>
     </div>
     <div id="outputName">
@@ -204,7 +216,7 @@
         <div>
             <p> 在 <b>我的内容</b>中创建并添加到地图中的图层的名称。默认名称基于工具名称以及输入图层名称。如果该图层已存在，将无法使用该工具。
             </p>
-            <p>使用 <b>将结果保存到</b>下拉框，可以在 <b>我的内容</b>中指定文件夹的名称，结果将保存到该文件夹中。
+            <p>使用 <b>将结果保存在</b>下拉框，可以指定 <b>我的内容</b>中的文件夹的名称，结果将保存到该文件夹中。
             </p>
         </div>
     </div>

@@ -40,7 +40,7 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Criar Buffers</h2><p/>
         <h2><img src="../images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" alt="Criar Buffers"></h2>
         <hr/>
@@ -54,9 +54,9 @@
         <div><h2>Escolher camada para aplicar o buffer</h2></div>
         <hr/>
         <div>
-            <p>As fei&ccedil;&otilde;es de ponto, linha ou &aacute;rea a serem geradas com o buffer.
+            <p>As fei&ccedil;&otilde;es de ponto, linha ou &aacute;rea a serem geradas com o buffer. As camadas de entrada devem estar em um sistema de coordenadas planas ou a refer&ecirc;ncia espacial de processamento deve ser definida para um sistema de coordenadas planas utilizando os  <b>Ambientes de An&aacute;lise</b>.
             </p>
-            <p>Al&eacute;m de escolher uma camada de seu mapa, voc&ecirc; pode escolher  <b>Procurar Camadas</b> na parte inferior da lista suspensa para procurar por seu conte&uacute;do para um conjunto de dados de compartilhamento de arquivo big data ou camada de fei&ccedil;&atilde;o.  
+            <p>Al&eacute;m de escolher uma camada de seu mapa, voc&ecirc; pode escolher  <b>Procurar Camadas</b> na parte inferior da lista suspensa para procurar por seu conte&uacute;do para um conjunto de dados de compartilhamento de arquivo big data ou camada de fei&ccedil;&atilde;o.
             </p>
         </div>
     </div>
@@ -126,26 +126,28 @@
         <div>
             <p> Voc&ecirc; pode calcular as estat&iacute;stica em fei&ccedil;&otilde;es que s&atilde;o resumidas. Nos campos num&eacute;ricos voc&ecirc; pode calcular o seguinte:
                 <ul>
-                    <li>Contagem
+                    <li>Contagem&mdash;Calcula o n&uacute;mero de valores diferentes de nulo. Pode ser utilizado em campos num&eacute;ricos ou strings. 'A contagem de [null, 0, 2] &eacute; 2.
                     </li>
-                    <li>M&eacute;dio
+                    <li>Soma&mdash;A soma de valores num&eacute;ricos em um campo. A soma de [null, null, 3] &eacute; 3.
                     </li>
-                    <li>M&iacute;n
+                    <li>M&eacute;dia&mdash;A m&eacute;dia de valores num&eacute;ricos. A m&eacute;dia de [0, 2, null] &eacute; 1.
                     </li>
-                    <li>M&aacute;x
+                    <li>M&iacute;n&mdash;O valor m&iacute;nimo de um campo num&eacute;rico. O m&iacute;nimo de [0, 2, null] &eacute; 0. 
                     </li>
-                    <li>Intervalo
+                    <li>M&aacute;x&mdash;O valor m&aacute;ximo de um campo num&eacute;rico. O valor m&aacute;ximo de [0, 2, null] &eacute; 2.
                     </li>
-                    <li>Vari&acirc;ncia
+                    <li>Alcance&mdash;O alcance de um campo num&eacute;rico. Isto &eacute; calculado como os valores m&iacute;nimos subtra&iacute;dos do valor m&aacute;ximo. O alcance de [0, null, 1] &eacute; 1. O alcance de [null, 4] &eacute; 0.
                     </li>
-                    <li>Desvio Padr&atilde;o
+                    <li>Vari&acirc;ncia&mdash;A vari&acirc;ncia de um campo num&eacute;rico em um caminho. A vari&acirc;ncia de [1] &eacute; nula. A vari&acirc;ncia de [null, 1,1,1] &eacute; 1.
+                    </li>
+                    <li>Desvio padr&atilde;o&mdash;O desvio padr&atilde;o de um campo num&eacute;rico. O desvio padr&atilde;o de [1] &eacute; nulo. O desvio padr&atilde;o de [nulo, 1,1,1] &eacute; 1. 
                     </li>
                 </ul>
                 
             </p>
             <p>Nos campos de string voc&ecirc; pode calcular o seguinte:
                 <ul>
-                    <li>Contagem
+                    <li>Contagem&mdash;O n&uacute;mero de strings diferente de nulo.
                     </li>
                     <li>Qualquer&mdash;Esta estat&iacute;stica &eacute; uma amostra aleat&oacute;ria de um valor de string no campo especificado.
                     </li>
@@ -155,17 +157,27 @@
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Escolher armazenamento de dados</h2></div>
+        <div><h2>Escolha um ArcGIS Data Store para salvar os resultados</h2></div>
         <hr/>
         <div>
-            <p>Este &eacute; um par&acirc;metro tempor&aacute;rio para pr&eacute; lan&ccedil;amento para configurar o armazenamento de dados onde os resultados s&atilde;o salvos. Ambos os armazenamentos de dados s&atilde;o parte do  ArcGIS Data Store. Se voc&ecirc; selecionar o armazenamento de dados spatiotemporal mas n&atilde;o ter um instalado, a ferramenta falhar&aacute;. </p>
+            <p>Os resultados do GeoAnalytic s&atilde;o armazenados no ArcGIS Data Store e expostos como uma camada de fei&ccedil;&atilde;o no  Portal for ArcGIS. Na maioria dos casos, os resultados devem ser armazenados no armazenamento de dados de espa&ccedil;o-tempo e este &eacute; o padr&atilde;o. Em alguns casos salvar resultados no armazenamento de dados relacional &eacute; uma boa op&ccedil;&atilde;o. Abaixo est&atilde;o as raz&otilde;es pelas quais voc&ecirc; talvez queira armazenar resultados em um armazenamento de dados relacional: 
+                <ul>
+                    <li>Utilizar os resultados no portal para colabora&ccedil;&atilde;o do portal.
+                    </li>
+                    <li>Habilitar recursos de sincroniza&ccedil;&atilde;o com seus resultados.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Voc&ecirc; n&atilde;o deve utilizar um armazenamento de dados relacional se voc&ecirc; espera que os resultados do GeoAnalytics aumentem e deseja aproveitar os recursos do armazenamento de grandes dados de espa&ccedil;o-tempo para lidar com grandes quantidades de dados. 
+            </p>
         </div>
     </div>
     <div id="outputName">
         <div><h2>Nome da camada resultante</h2></div>
         <hr/>
         <div>
-            <p> Este &eacute; o nome da camada que ser&aacute; criada em <b>Meu Conte&uacute;do</b> e adicionada ao mapa.  O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existe, a ferramenta falhar&aacute;.
+            <p> Este &eacute; o nome da camada que ser&aacute; criada em <b>Meu Conte&uacute;do</b> e adicionada no mapa.  O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existe, a ferramenta falhar&aacute;.
             </p>
             <p>Ao utilizar a caixa suspensa  <b>Salvar resultado em</b>, &eacute; poss&iacute;vel especificar o nome de uma pasta em <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo.
             </p>

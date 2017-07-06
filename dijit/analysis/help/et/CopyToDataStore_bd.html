@@ -40,11 +40,11 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="smallsize">
         <h2>Kopeeri andmelattu</h2><p/>
         <h2><img src="../images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" alt="Kopeeri andmelattu"></h2>
         <hr/>
-    <p>See t&ouml;&ouml;riist v&otilde;tab sisendkihi ja kopeerib selle andmelattu. Andmed kopeeritakse  ArcGIS-i andmeladu&rsquo;i ja salvestatakse teie relatsioonilisse v&otilde;i ajalisruumilisse andmelattu. </p>
+    <p>See t&ouml;&ouml;riist v&otilde;tab sisendkihi ja kopeerib selle andmelattu. Andmed kopeeritakse  ArcGIS Data Store&rsquo;i ja salvestatakse teie relatsioonilisse v&otilde;i ajalisruumilisse andmelattu. </p>
     <p>N&auml;iteks saate kopeerida  <code>suurandmete failikettale</code> salvestatud objektid <code>relatsioonilisse andmelattu</code> ja m&auml;&auml;rata, et kopeerida tuleb ainult praegu kaardil n&auml;htavad objektid. See looks majutatud objektiteenuse, milles on ainult need objektid, mis olid kaardil n&auml;htavad.
     </p>
     </div>
@@ -55,7 +55,15 @@
         <div>
             <p>Kopeeritav kiht v&otilde;i tabel. 
             </p>
-            <p>Lisaks kihi valimisele kaardil saate valida ripploendi alumises servas  <b>Sirvi kihte</b>, et otsida oma sisust suurandmete failiketta andmestikku v&otilde;i objektikihti.  
+            <p>Lisaks kihi valimisele kaardil saate valida ripploendi alumises servas  <b>Sirvi kihte</b>, et otsida oma sisust suurandmete failiketta andmestikku v&otilde;i objektikihti.
+            </p>
+        </div>
+    </div>
+    <div id="selection">
+        <div><h2>Võite kasutada kõiki objekte või teha valitutest selektsioon (valikuline)</h2></div>
+        <hr/>
+        <div>
+            <p>V&otilde;ite selekteerimise nupu abil m&auml;&auml;ratleda kopeeritavad asukohad.
             </p>
         </div>
     </div>
@@ -63,7 +71,7 @@
         <div><h2>Valige kopeerimiseks ArcGIS Data Store</h2></div>
         <hr/>
         <div>
-            <p> Andmeladu, kuhu kiht kopeeritakse. Valikud on j&auml;rgmised:
+            <p>Andmeladu, kuhu kiht kopeeritakse. See parameeter kirjutab  <b>anal&uuml;&uuml;siseadete all</b> tehtud valiku. Kasutada on j&auml;rgnevad valikud:
                 <ul>
                     <li> <b>Ajalisruumiline</b> &ndash; see on vaikimisi valik.
                     </li>
@@ -78,9 +86,9 @@
         <div><h2>Tulemkihi nimi</h2></div>
         <hr/>
         <div>
-            <p> See on selle kihi nimi, mis luuakse jaotises <b>Minu sisu</b> ja lisatakse kaardile.  Vaikenimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui see kiht on juba olemas, siis t&ouml;&ouml;tlemine nurjub.
+            <p> See on selle kihi nimi, mis luuakse jaotises <b>Minu sisu</b> ja lisatakse kaardile.  Vaikimisi nimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui see kiht on juba olemas, siis t&ouml;&ouml;tlemine nurjub.
             </p>
-            <p>Kasutades rippmen&uuml;&uuml;d  <b>Salvesta tulemused</b>, saate jaotises <b>Minu sisu</b> m&auml;&auml;rata kausta nime, kuhu tulemused salvestatakse.
+            <p>Kasutades rippmen&uuml;&uuml;d  <b>Salvesta tulemused</b>, saate jaotises <b>Minu sisu</b> m&auml;&auml;rata selle kausta nime, kuhu tulemused salvestatakse.
             </p>
         </div>
     </div>

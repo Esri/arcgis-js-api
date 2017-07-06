@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Definições do Ambiente de Análise do Portal</h2><p/>
+        <h2>Ambiente de Análise do Portal  definições</h2><p/>
         <h2></h2>
         <hr/>
     <p> Defini&ccedil;&otilde;es do ambiente de an&aacute;lise no Portal for ArcGIS e no  ArcGIS Online. 
@@ -112,7 +112,7 @@
                 <ul>
                     <li> <b>Igual &agrave; Entrada</b>&mdash;O resultado da sua an&aacute;lise encontrar-se-&aacute; no mesmo sistema de coordenadas que o da entrada. Isto &eacute; por omiss&atilde;o.
                     </li>
-                    <li> <b>Como especificado</b>&mdash;Selecione o sistema de coordenadas para os resultados da sua an&aacute;lise.   Quando esta op&ccedil;&atilde;o se encontra selecionada, clique no &iacute;cone de globo para aceder a uma lista de sistemas de coordenadas conhecidos de entre os quais pode escolher, ou adicione a refer&ecirc;ncia espacial WKID na caixa.
+                    <li> <b>Como especificado</b>&mdash;Selecione o sistema de coordenadas para os resultados da sua an&aacute;lise.   Quando esta op&ccedil;&atilde;o se encontra selecionada, clique no &iacute;cone de globo para selecionar de uma lista de sistemas de coordenadas, conhecidos, ou adicione a refer&ecirc;ncia espacial WKID na caixa.
                     </li>
                     <li> <b>Nome da
 &lt;camada&gt;</b>&mdash;Selecione uma camada existente no seu mapa web, que ser&aacute; utilizada para determinar o sistema de coordenadas dos resultados da an&aacute;lise.
@@ -134,7 +134,7 @@
                 <ul>
                     <li> <b>Igual &agrave; Entrada</b>&mdash;A sua an&aacute;lise ser&aacute; processada no mesmo sistema de coordenadas que o da entrada. Isto &eacute; por omiss&atilde;o.
                     </li>
-                    <li> <b>Como especificado</b>&mdash;Selecione o sistema de coordenadas para para processar a sua an&aacute;lise.   Quando esta op&ccedil;&atilde;o se encontra selecionada, clique no &iacute;cone de globo para aceder a uma lista de sistemas de coordenadas  projetados conhecidos de entre os quais pode escolher, ou adicione a refer&ecirc;ncia espacial WKID na caixa.
+                    <li> <b>Como especificado</b>&mdash;Selecione o sistema de coordenadas para para processar a sua an&aacute;lise.   Quando esta op&ccedil;&atilde;o se encontra selecionada, clique no &iacute;cone de globo para selecionar de uma lista de sistemas de coordenadas  projetados, ou adicione a refer&ecirc;ncia espacial WKID na caixa.
                     </li>
                     <li> <b>Nome da
 &lt;camada&gt;</b>&mdash;Selecione uma camada existente do seu mapa web.  O sistema de coordenadas da camada escolhida ser&aacute; utilizado para determinar o sistema de coordenadas que ser&aacute; utilizado para processar a sua an&aacute;lise.
@@ -152,7 +152,7 @@
             </p>
             <p>
                 <ul>
-                    <li> <b>Padr&atilde;o</b>&mdash;Utiliza a extens&atilde;o fornecida pela ferramenta.
+                    <li> <b>Padr&atilde;o</b>&mdash;Utilize a extens&atilde;o fornecida pela ferramenta.
                     </li>
                     <li> <b>Como especificado</b>&mdash;introduza as coordenadas manualmente para definir a extens&atilde;o.
                     </li>
@@ -186,7 +186,8 @@
                     </li>
                     <li> <b>Como especificado</b>&mdash;Especifique um valor num&eacute;rico para definir o tamanho das c&eacute;lulas. Caso esta op&ccedil;&atilde;o seja selecionada, o valor predefinido &eacute; 1.
                     </li>
-                    <li> <b>Nome da &lt;camada&gt;</b>&mdash;Define o tamanho das c&eacute;lulas para a camada raster selecionada.
+                    <li> <b>Nome da &lt;camada&gt;</b>&mdash;Defina
+o tamanho das c&eacute;lulas para a camada raster selecionada.
                     </li>
                 </ul>
                 
@@ -204,10 +205,28 @@
                 </li>
                 <li>Caso a m&aacute;scara da an&aacute;lise seja uma uma camada raster, todas as c&eacute;lulas que possuam um valor ser&atilde;o consideradas na defini&ccedil;&atilde;o da m&aacute;scara. As c&eacute;lulas existentes numa m&aacute;scara raster que sejam NoData ser&atilde;o consideradas como estando fora da m&aacute;scara e n&atilde;o existir&aacute; qualquer elemento NoData na camada de resultados de an&aacute;lise. 
                 </li>
-                <li>Caso a m&aacute;scara de an&aacute;lise seja uma camada de elementos, ser&aacute; internamente convertida em raster na execu&ccedil;&atilde;o. Por esta raz&atilde;o, dever&aacute; ter o cuidado de assegurar que  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">Tamanho de C&eacute;lula</a> e <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">Snap Raster</a> s&atilde;o definidos de modo apropriado para a sua an&aacute;lise.
+                <li>Caso a m&aacute;scara de an&aacute;lise seja uma camada de elementos, ser&aacute; internamente convertida para raster na execu&ccedil;&atilde;o. Por esta raz&atilde;o, garanta que
+ <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank"></a> e <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank"></a> s&atilde;o definidos de modo adequao &agrave; sua an&aacute;lise.
                 </li>
             </ul>
              
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>ArcGIS Data Store</h2></div>
+        <hr/>
+        <div>
+            <p>Os resultados de GeoAnalytics s&atilde;o armazenados num ArcGIS Data Store e exibidos como uma camada de elementos no   Portal for ArcGIS. Na maioria dos casos, os resultados dever&atilde;o ser armazenados num armazenamento de dados espaciotemporal. Isto &eacute; por omiss&atilde;o. As seguintes s&atilde;o raz&otilde;es que justificam o armazenamento de resultados num armazenamento de dados espaciotemporal: 
+                <ul>
+                    <li>Para utilizar os seus resultados na colabora&ccedil;&atilde;o portal-to-portal 
+                    </li>
+                    <li>Para ativar funcionalidades de sincroniza&ccedil;&atilde;o com os seus resultados
+                    </li>
+                </ul>
+                
+            </p>
+            <p>N&atilde;o dever&aacute; utilizar um armazenamento de dados relacional caso antecipe um aumento dos seus resultados de GeoAnalytics, e caso pretenda tirar partido das funcionalidades de armazenamento de big data para gerir grandes quantidades de dados. 
+            </p>
         </div>
     </div>
 </div>

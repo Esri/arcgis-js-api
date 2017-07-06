@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Aprēķināt blīvumu</h2><p/>
+        <h2>Blīvuma aprēķināšana</h2><p/>
         <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Calculate Density"></h2>
         <hr/>
     <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas classified from least dense to most dense.   
@@ -70,12 +70,12 @@
         <div>
             <p>The point layer on which the density will be calculated.
             </p>
-            <p>Papildus slāņa izvēlei kartē, varat izvēlēties  <b>Pārlūkot slāņus</b> nolaižamā saraksta apak&scaron;ā, lai saturā atrastu lielo datu koplietojuma datu kopu vai elementu slāni.  
+            <p>Papildus slāņa izvēlei kartē varat izvēlēties  <b>Pārlūkot slāņus</b> nolaižamā saraksta apak&scaron;ā, lai saturā atrastu Big Data koplietojuma datu kopu vai elementu slāni.
             </p>
         </div>
     </div>
     <div id="fields">
-        <div><h2>Izvēlēties vienu vai vairākus laukus, kuros aprēķināt blīvumu</h2></div>
+        <div><h2>Izvēlēties vienu vai vairākus laukus, kurā(os) aprēķināt blīvumu (pēc izvēles)</h2></div>
         <hr/>
         <div>
             <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
@@ -90,10 +90,12 @@
         <div>
             <p>The shape of bins that points are aggregated into and used for the density calculation.
             </p>
+            <p>Lai veiktu analīzi, izmantojot nodalījumu  <b>Kvadrāts</b> vai <b>Se&scaron;stūris</b>, ir nepiecie&scaron;ama plānota koordinātu sistēma. Varat iestatīt <b>Apstrādes koordinātu sistēmu</b> <b>Analīzes darba vidē</b>. Ja jūsu apstrādes koordinātu sistēma nav iestatīta kā plānota koordinātu sistēma, jūs saņemsiet pamudinājumu to iestatīt, veicot darbību <b>Analīzes veik&scaron;ana</b>.
+            </p>
         </div>
     </div>
     <div id="binSizing">
-        <div><h2>Izvēlēties nodalījuma lielumu blīvuma aprēķiniem</h2></div>
+        <div><h2>Izvēlēties nodalījuma izmēru apkopošanai</h2></div>
         <hr/>
         <div>
             <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
@@ -116,7 +118,7 @@
         </div>
     </div>
     <div id="neighborhood">
-        <div><h2>Izvēlēties apkārtnes lielumu</h2></div>
+        <div><h2>Izvēlēties apkārtnes izmēru</h2></div>
         <hr/>
         <div>
             <p>The size of the area used to calculate the density. The neighborhood size must be larger than the bin size.
@@ -127,59 +129,59 @@
         <div><h2>Izvēlēties blīvuma izvades vienību</h2></div>
         <hr/>
         <div>
-            <p>The desired output units of the density values. By default, this is set to the units in your map (for example, square meters). If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+            <p>The desired output units of the density values. By default, this is set to square kilometers or square miles based on the default units specified in your profile. If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
 
             </p>
         </div>
     </div>
     <div id="timeSlicing">
-        <div><h2>Aprēķināt blīvumu, izmantojot laika sektorus (nav obligāti)</h2></div>
+        <div><h2>Aprēķināt blīvumu, izmantojot laika soļus (pēc izvēles)</h2></div>
         <hr/>
         <div>
-            <p>Ja ievades punktu slānī ir iespējots laiks, kura veids ir tūlītējs, varat analizēt, lietojot laika sektorus. Lietojot laiku varat iestatīt trīs parametrus:
+            <p>Ja ievades punktu slānī ir aktivizēts laiks, kura veids ir tūlītējs, varat analizēt, lietojot laika soļus. Lietojot laiku, varat iestatīt trīs parametrus:
                 <ul>
-                    <li>  <b>Laika intervāls</b>
+                    <li> <b>Laika soļa intervāls</b>
                     </li>
-                    <li> <b>Laika posms</b>
+                    <li> <b>Laika soļa atkārto&scaron;anas biežums</b>
                     </li>
-                    <li> <b>Atsauces laiks</b>
+                    <li> <b>Laiks laika soļu līdzinā&scaron;anai</b>
                     </li>
                 </ul>
                 
             </p>
-            <p>Iedomājieties, ka dati apzīmē gadu un vēlaties analizēt, lietojot nedēļu sektorus. Lai to paveiktu, nepiecie&scaron;ams iestatīt  <b>Laiku intervālu</b> kā <code>1&nbsp;nedēļu</code>.
+            <p>Iedomājieties, ka dati parādīti gada griezumā, bet jūs vēlaties analizēt, kā laika soli lietojot nedēļu. Lai to paveiktu, nepiecie&scaron;ams iestatīt lauka  <b>Laika soļa intervāls</b> vērtību kā <code>1&nbsp;nedēļa</code>.
             </p>
-            <p> Iedomājieties, ka dati apzīmē gadu un vēlaties analizēt, lietojot pirmo mēne&scaron;a nedēļu. Lai to paveiktu, nepiecie&scaron;ams iestatīt <b>Laika intervālu</b> kā <code>1&nbsp;nedēļu</code>, <b>Laika posmu</b> kā <code>1&nbsp;mēnesi</code> un <b>Atsauces laiku</b> kā <code>1.&nbsp;janvāris, 12.00</code>.
+            <p>Iedomājieties, ka dati attēloti gada griezumā, bet jūs vēlaties tos analizēt, lietojot pirmo mēne&scaron;a nedēļu. Lai to paveiktu, nepiecie&scaron;ams iestatīt lauka  <b>Laika soļa intervāls</b> vērtību kā <code>1&nbsp;nedēļa</code>, lauka <b>Laika soļa atkārto&scaron;anas biežums</b> vērtību kā <code>1&nbsp;mēnesis</code>, bet lauka <b>Laiks laika soļu līdzinā&scaron;anai</b> vērtību kā <code>1.&nbsp;janvāris, 12:00</code>.
             </p>
         </div>
     </div>
     <div id="timeInterval">
-        <div><h2>Laika intervāls blīvuma aprēķināšanai</h2></div>
+        <div><h2>Laika soļa intervāls</h2></div>
         <hr/>
         <div>
-            <p>Datu sektoru izveidei lietotais laika intervāls. Laika intervālu var lietot atsevi&scaron;ķi vai kopā ar  <b>Laika posma</b> vai <b>Atsauces laika</b> parametru.
+            <p>Laika intervāls, ko izmanto laika soļu ģenerē&scaron;anai. Laika soļa intervālu var lietot vienu pa&scaron;u vai kopā ar parametriem  <b>Laika soļa atkārto&scaron;anas biežums</b> vai <b>Laiks laika soļu līdzinā&scaron;anai</b>.
             </p>
-            <p> Ja vēlaties izveidot laika sektorus, kas notiek katru pirmdienu, laikā no 9.00 līdz 10.00, <b>Laika intervāla</b> vērtībai jābūt <code>1&nbsp;stundai</code>, <b>Laika posma</b> vērtībai jābūt <code>1&nbsp;nedēļai</code> un <b>Atsauces laika vērtībai</b> jābūt <code>9.00.00 pirmdienā</code>.
+            <p>Ja vēlaties izveidot laika sektorus, kas notiek katru pirmdienu no plkst.&nbsp;9:00 līdz 10:00, lauka  <b>Laika soļa intervāls</b> vērtībai jābūt <code>1&nbsp;stunda</code>, lauka <b>Laika soļa atkārto&scaron;anas biežums</b> vērtībai jābūt <code>1&nbsp;nedēļa</code>, bet lauka <b>Laiks laika soļu līdzinā&scaron;anai</b> vērtībai jābūt <code>9:00:00 pirmdienā</code>.
             </p>
         </div>
     </div>
     <div id="timeStep">
-        <div><h2>Laika posms blīvuma aprēķināšanai</h2></div>
+        <div><h2>Cik bieži atkārtot laika soli</h2></div>
         <hr/>
         <div>
-            <p> Laika sektora aprēķinam lietotais solis. Parametru <b>Laika solis</b> var lietot atsevi&scaron;ķi vai kopā ar parametru <b>Laika intervāls</b>, ar parametru <b>Atsauces laiks</b>, vai arī parametru <b>Laika intervāls</b> un <b>Atsauces laiks</b>.
+            <p> Laika sektora aprēķinam lietotais solis. <b>Laika soļa atkārto&scaron;anas biežums</b> var tikt lietots viens pats vai kopā ar parametriem <b>Laika soļa intervāls</b>, <b>Atsauces laiks</b>, vai kopā gan ar parametru <b>Laika soļa intervāls</b>, gan <b>Laiks laika soļu līdzinā&scaron;anai</b>.
             </p>
-            <p> Ja vēlaties izveidot laika sektorus, kas notiek katru pirmdienu, laikā no 9.00 līdz 10.00, <b>Laika intervāla</b> vērtībai jābūt <code>1&nbsp;stundai</code>, <b>Laika posma</b> vērtībai jābūt <code>1&nbsp;nedēļai</code> un <b>Atsauces laika vērtībai</b> jābūt <code>9.00.00 pirmdienā</code>.
+            <p> Ja vēlaties izveidot laika sektorus, kas notiek katru pirmdienu no plkst.&nbsp;9:00 līdz 10:00, lauka <b>Laika soļa intervāls</b> vērtībai jābūt <code>1&nbsp;stunda</code>, lauka <b>Laika soļa atkārto&scaron;anas biežums</b> vērtībai jābūt <code>1&nbsp;nedēļa</code>, bet lauka <b>Laiks laika soļu līdzinā&scaron;anai</b> vērtībai jābūt <code>9:00:00 pirmdienā</code>.
             </p>
         </div>
     </div>
     <div id="timeReference">
-        <div><h2>Atsauces laiks, kas izmantots laika sektoru līdzināšanai</h2></div>
+        <div><h2>Laiks laika soļu līdzināšanai</h2></div>
         <hr/>
         <div>
-            <p>Laiks un datums, kas izmantots laika sektoru līdzinā&scaron;anai.  <b>Laika posms</b> sāksies no un tiks skaitīts atpakaļ atsauces laikam.
+            <p>Laiks un datums, kas izmantots laika sektoru līdzinā&scaron;anai. Laika soļu atskaite sāksies un turpināsies atpakaļ no &scaron;ī laika. Ja nav izvēlēts atsauces laiks, laika solis tiks līdzināts ar 1970.&nbsp;gada 1.&nbsp;janvāri. 
             </p>
-            <p> Ja vēlaties izveidot laika sektorus, kas notiek katru pirmdienu, laikā no 9.00 līdz 10.00, <b>Laika intervāla</b> vērtībai jābūt <code>1&nbsp;stundai</code>, <b>Laika posma</b> vērtībai jābūt <code>1&nbsp;nedēļai</code> un <b>Atsauces laika vērtībai</b> jābūt <code>9.00.00 pirmdienā</code>.
+            <p> Ja vēlaties izveidot laika sektorus, kas notiek katru pirmdienu no plkst.&nbsp;9:00 līdz 10:00, lauka <b>Laika soļa intervāls</b> vērtībai jābūt <code>1&nbsp;stunda</code>, lauka <b>Laika soļa atkārto&scaron;anas biežums</b> vērtībai jābūt <code>1&nbsp;nedēļa</code>, bet lauka <b>Laiks laika soļu līdzinā&scaron;anai</b> vērtībai jābūt <code>9:00:00 pirmdienā</code>.
             </p>
         </div>
     </div>
@@ -187,7 +189,7 @@
         <div><h2>SpatialReference (wkid)</h2></div>
         <hr/>
         <div>
-            <p>Tas ir pagaidu pirmsizlaides parametrs, lai iestatītu apstrādes telpisko atskaiti. Daudziem lielo datu rīkiem nepiecie&scaron;ams apstrādei kā telpisko atskaiti lietot projekcijas koordinātu sistēmu. Pēc noklusējuma rīks lietos ievades koordinātu sistēmu, bet tas pārstās darboties, ja tā ir ģeogrāfisko koordinātu sistēma. Lai iestatītu projekcijas koordinātu sistēmu, ievadiet WKID. Piemēram,  <b>Web Mercator</b> jāievada kā <code>3857</code>.
+            <p>Tas ir pagaidu pirmsizlaides parametrs, lai iestatītu apstrādes telpisko atskaiti. Daudziem big data rīkiem nepiecie&scaron;ams apstrādei kā telpisko atskaiti lietot projekcijas koordinātu sistēmu. Pēc noklusējuma rīks lietos ievades koordinātu sistēmu, bet tas pārstās darboties, ja tā ir ģeogrāfisko koordinātu sistēma. Lai iestatītu projekcijas koordinātu sistēmu, ievadiet WKID. Piemēram,  <b>Web Mercator</b> jāievada kā <code>3857</code>.
             </p>
         </div>
     </div>
@@ -195,14 +197,24 @@
         <div><h2>Izvēlēties datu krātuvi</h2></div>
         <hr/>
         <div>
-            <p>Tas ir pagaidu pirmsizlaides parametrs, kas paredzēts rezultātu saglabā&scaron;anas datu krātuves iestatī&scaron;anai. Abas datu krātuves ir daļa no  ArcGIS datu krātuve. Ja izvēlaties telpas un laika datu krātuvi, bet tā nav instalēta, rīks pārstās darboties. </p>
+            <p>GeoAnalytics rezultāti ir krātuves ArcGIS datu krātuvei, kas tiek parādīts kā elementu slānis   Portal for ArcGIS. Vairumā gadījumu rezultāti jāglabā laika un telpas datu krātuvē, kas tiek darīts pēc noklusējuma. Dažos gadījumos noderīga opcija ir saglabāt rezultātus saistītajā datu krātuvē. Iemesli rezultātu glabā&scaron;anai saistītajā datu krātuvē: 
+                <ul>
+                    <li>Lai izmantotu rezultātus portālu sadarbībā ar portālu.
+                    </li>
+                    <li>Lai aktivizētu sinhronizācijas iespējas ar rezultātiem.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Saistīto datu krātuvi nevajadzētu izmantot tad, ja ir sagaidāms, ka palielināsies GeoAnalytics rezultātu apjoms, kā arī ir vajadzīgs izmantot telpas un laika big data krātuves iespējas, lai rīkotos ar lielu datu apjomu. 
+            </p>
         </div>
     </div>
     <div id="outputName">
         <div><h2>Rezultātu slāņa nosaukums</h2></div>
         <hr/>
         <div>
-            <p> &Scaron;is ir slāņa nosaukums, kas tiks izveidots sadaļā <b>Mans Saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja slānis jau pastāv, rīks pārstās darboties.
+            <p> &Scaron;is ir slāņa nosaukums, kas tiks izveidots sadaļā <b>Mans Saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja slānis jau pastāv, rīks nedarbosies.
             </p>
             <p>Lietojot  <b>Saglabāt rezultātus</b> nolaižamajā sarakstlodziņā, jūs varat norādīt nosaukumu mapē <b>Mans saturs</b>, kur tiks saglabāti rezultāti.
             </p>

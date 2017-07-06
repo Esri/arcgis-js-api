@@ -279,8 +279,8 @@
 
 .esriAnalysisLayersGrid  {
   overflow-y: scroll;
-  height: 200px !important;
-  max-height: 200px !important;
+  height: 180px !important;
+  max-height: 180px !important;
 }
 .esriAnalysisLayersGrid .dgrid-cell {
   border: none;
@@ -333,12 +333,12 @@
 
 .esriAnalysisLayersItems .template-info-showing p {
   font-size: 1rem !important;
-  width: 100%;
+  width: auto;
   overflow-y: auto;
   overflow-x: hidden;
-  height: auto;
-  line-height: 1.25em;
-  padding: 1em;
+  height: 6em;
+  line-height: 1.2em;
+  padding: 0.75em 1em;
 }
 
 .esriAnalysisLayersItems .dgrid .dgrid-scroller, .esriAnalysisLayersGrid.dgrid .dgrid-scroller {
@@ -452,7 +452,7 @@
 
 .esriAnalysisLayersItems .panel-actions {
   position: absolute;
-  bottom: 10px;
+  bottom: 8px;
 }
 
 .esriAnalysisLayersItems .layerItemsGrid {

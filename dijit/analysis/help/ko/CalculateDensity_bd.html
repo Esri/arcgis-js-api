@@ -70,12 +70,12 @@
         <div>
             <p>The point layer on which the density will be calculated.
             </p>
-            <p>맵에서 레이어를 선택하는 것 이외에, 드롭다운 목록의 하단에 있는  <b>레이어 찾아보기</b>를 선택하여 빅 데이터 파일 공유 데이터셋 또는 피처 레이어의 콘텐츠를 찾아볼 수 있습니다.  
+            <p>맵에서 레이어를 선택하는 것 이외에, 드롭다운 목록의 하단에 있는  <b>레이어 찾아보기</b>를 선택하여 빅 데이터 파일 공유 데이터셋 또는 피처 레이어의 콘텐츠를 찾아볼 수 있습니다.
             </p>
         </div>
     </div>
     <div id="fields">
-        <div><h2>밀도를 계산할 필드를 하나 이상 선택</h2></div>
+        <div><h2>밀도를 계산할 필드를 하나 이상 선택(선택)</h2></div>
         <hr/>
         <div>
             <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
@@ -90,10 +90,12 @@
         <div>
             <p>The shape of bins that points are aggregated into and used for the density calculation.
             </p>
+            <p> <b>사각형</b> 또는 <b>육각형</b> 그룹을 사용하여 분석을 실행하려면 투영 좌표체계가 필요합니다. <b>분석 환경</b>의 <b>처리 좌표체계</b>를 설정할 수 있습니다. 처리 좌표체계가 투영 좌표체계로 설정되지 않은 경우에 <b>분석을 실행</b>하면 투영 좌표체계로 설정하라는 메시지가 나타납니다.
+            </p>
         </div>
     </div>
     <div id="binSizing">
-        <div><h2>밀도 계산을 위한 그룹 크기 선택</h2></div>
+        <div><h2>집약을 위한 그룹 크기 선택</h2></div>
         <hr/>
         <div>
             <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
@@ -127,59 +129,59 @@
         <div><h2>밀도의 출력 단위 선택</h2></div>
         <hr/>
         <div>
-            <p>The desired output units of the density values. By default, this is set to the units in your map (for example, square meters). If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+            <p>The desired output units of the density values. By default, this is set to square kilometers or square miles based on the default units specified in your profile. If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
 
             </p>
         </div>
     </div>
     <div id="timeSlicing">
-        <div><h2>시간 슬라이스를 사용하여 밀도 계산(선택)</h2></div>
+        <div><h2>시간 단계를 사용하여 밀도 계산(선택)</h2></div>
         <hr/>
         <div>
-            <p>입력 포인트 레이어에 시간이 활성화되었으며 시간 유형이 인스턴트인 경우 시간 슬라이싱을 사용하여 분석할 수 있습니다.  시간을 설정할 때 다음과 같은 세 가지 매개변수를 사용할 수 있습니다.
+            <p>입력 포인트 레이어에 시간이 활성화되었으며 시간 유형이 인스턴트인 경우 시간 단계를 사용하여 분석할 수 있습니다.  시간을 설정할 때 다음과 같은 세 가지 매개변수를 사용할 수 있습니다.
                 <ul>
-                    <li>  <b>시간 간격</b>
+                    <li> <b>시간 단계 간격</b>
                     </li>
-                    <li> <b>시간 단계</b>
+                    <li> <b>시간 단계 반복 빈도</b>
                     </li>
-                    <li> <b>참조 시간</b>
+                    <li> <b>시간 단계를 정렬하기 위한 시간</b>
                     </li>
                 </ul>
                 
             </p>
-            <p>시간에서 1년을 나타내는 데이터가 있는데 주 단위 슬라이스를 사용하여 분석한다고 가정해 보겠습니다. 이를 위해  <b>시간 간격</b>을 <code>1주</code>로 설정합니다.
+            <p>시간에서 1년을 나타내는 데이터가 있는데 주 단위 단계를 사용하여 분석한다고 가정해 보겠습니다. 이를 위해  <b>시간 단계 간격</b>을 <code>1주</code>로 설정합니다.
             </p>
-            <p> 시간에서 1년을 나타내는 데이터가 있는데 그 달의 첫 주를 사용하여 분석하고자 한다고 가정해 보겠습니다. 이를 위해서는 <b>시간 간격</b>을 <code>1주</code>로, <b>시간 단계</b>를 <code>1개월</code>로, <b>참조 시간</b>을 <code>1월 1일 오전 12시</code>로 설정합니다.
+            <p>시간에서 1년을 나타내는 데이터가 있는데 그달의 첫 주를 사용하여 분석하고자 한다고 가정해 보겠습니다. 이를 위해서는  <b>시간 단계 간격</b>을 <code>1주</code>로, <b>시간 단계 반복 빈도</b>를 <code>1개월</code>로, <b>시간 단계를 정렬하기 위한 시간</b>을 <code>1월 1일 오전 12시</code>로 설정합니다.
             </p>
         </div>
     </div>
     <div id="timeInterval">
-        <div><h2>밀도를 계산할 시간 간격</h2></div>
+        <div><h2>시간 단계 간격</h2></div>
         <hr/>
         <div>
-            <p>데이터 슬라이싱에 사용되는 시간 간격입니다. 시간 간격은 단독으로 사용하거나  <b>시간 단계</b> 또는 <b>참조 시간</b> 매개변수와 함께 사용할 수 있습니다.
+            <p>시간 단계 생성에 사용되는 시간 간격입니다. 시간 단계 간격은 단독으로 사용하거나  <b>시간 단계 반복 빈도</b> 또는 <b>시간 단계를 정렬하기 위한 시간</b> 매개변수와 함께 사용할 수 있습니다.
             </p>
-            <p> 매주 월요일 오전 9시부터 오전 10시까지 발생되는 시간 슬라이스를 생성하려고 했다면 <b>시간 간격</b>은 <code>1시간</code>, <b>시간 단계</b>는 <code>1주</code>, <b>참조 시간</b>은 <code>월요일 오전 9시</code>입니다.
+            <p>매주 월요일 오전 9시부터 오전 10시까지 발생되는 시간 슬라이스를 생성하려고 했다면  <b>시간 단계 간격</b>은 <code>1시간</code>, <b>시간 단계 반복 빈도</b>는 <code>1주</code>, <b>시간 단계를 정렬하기 위한 시간</b>은 <code>월요일 오전 9시</code>입니다.
             </p>
         </div>
     </div>
     <div id="timeStep">
-        <div><h2>밀도를 계산할 시간 단계</h2></div>
+        <div><h2>시간 단계 반복 빈도</h2></div>
         <hr/>
         <div>
-            <p> 시간 슬라이스를 계산하는 데 사용되는 단계입니다. <b>시간 단계</b>는 단독으로 사용하거나, <b>시간 간격</b>과 함께 사용하거나, <b>참조 시간</b>과 함께 사용하거나, <b>시간 간격</b>과 <b>참조 시간</b> 둘 다와 함께 사용할 수 있습니다.
+            <p> 시간 슬라이스를 계산하는 데 사용되는 단계입니다. <b>시간 단계 반복 빈도</b>는 단독으로 하용하거나 <b>시간 단계 간격</b> 및 <b>참조 시간</b>과 함께 사용하거나 또는 <b>시간 단계 간격</b>과 <b>시간 단계를 정렬하기 위한 시간</b> 둘 다와 함께 사용할 수 있습니다.
             </p>
-            <p> 매주 월요일 오전 9시부터 오전 10시까지 발생되는 시간 슬라이스를 생성하려고 했다면 <b>시간 간격</b>은 <code>1시간</code>, <b>시간 단계</b>는 <code>1주</code>, <b>참조 시간</b>은 <code>월요일 오전 9시</code>입니다.
+            <p> 매주 월요일 오전 9시부터 오전 10시까지 발생되는 시간 슬라이스를 생성하려고 했다면 <b>시간 단계 간격</b>은 <code>1시간</code>, <b>시간 단계 반복 빈도</b>는 <code>1주</code>, <b>시간 단계를 정렬하기 위한 시간</b>은 <code>월요일 오전 9시</code>입니다.
             </p>
         </div>
     </div>
     <div id="timeReference">
-        <div><h2>시간 슬라이싱을 정렬하는 데 사용되는 참조 시간</h2></div>
+        <div><h2>시간 단계를 정렬하기 위한 시간</h2></div>
         <hr/>
         <div>
-            <p>시간 슬라이싱을 정렬하는 데 사용되는 날짜와 시간입니다.  <b>시간 단계</b>는 참조 시간을 기준으로 그 이전으로 진행됩니다.
+            <p>시간 슬라이싱을 정렬하는 데 사용되는 날짜와 시간입니다. 시간 단계는 이 시간을 기준으로 그 이전으로 진행됩니다. 참조 시간이 선택되지 않은 경우 시간 단계는 1970년 1월 1일로 정렬됩니다. 
             </p>
-            <p> 매주 월요일 오전 9시부터 오전 10시까지 발생되는 시간 슬라이스를 생성하려고 했다면 <b>시간 간격</b>은 <code>1시간</code>, <b>시간 단계</b>는 <code>1주</code>, <b>참조 시간</b>은 <code>월요일 오전 9시</code>입니다.
+            <p> 매주 월요일 오전 9시부터 오전 10시까지 발생되는 시간 슬라이스를 생성하려고 했다면 <b>시간 단계 간격</b>은 <code>1시간</code>, <b>시간 단계 반복 빈도</b>는 <code>1주</code>, <b>시간 단계를 정렬하기 위한 시간</b>은 <code>월요일 오전 9시</code>입니다.
             </p>
         </div>
     </div>
@@ -195,7 +197,17 @@
         <div><h2>데이터 저장소 선택</h2></div>
         <hr/>
         <div>
-            <p>이 매개변수는 결과가 저장되는 데이터 저장소를 설정하기 위한 시험판용 임시 매개변수입니다. 두 데이터 저장소 모두  ArcGIS Data Store의 일부입니다. 시공간적 데이터 저장소를 선택했지만 설치되어 있지 않은 경우에는 도구를 사용할 수 없습니다. </p>
+            <p>GeoAnalytic 결과는 ArcGIS Data Store에 저장되며  Portal for ArcGIS에서 피처 레이어로 나타납니다. 대부분의 경우 결과는 기본 설정에 따라 시공간적 데이터 저장소에 저장되어야 합니다. 하지만 관계형 데이터 저장소에 결과를 저장하는 것이 좋은 경우도 있습니다. 결과를 관계형 데이터 저장소에 저장하려는 이유는 다음과 같습니다. 
+                <ul>
+                    <li>포털 간 컬래버레이션에 결과를 사용합니다.
+                    </li>
+                    <li>기능과 결과 동기화를 활성화합니다.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>GeoAnalytics 결과가 늘어날 것으로 예상되며 시공간형 빅데이터 저장소의 기능을 활용하여 대용량 데이터를 처리하려는 경우에는 관계형 데이터 저장소를 사용하지 마세요. 
+            </p>
         </div>
     </div>
     <div id="outputName">

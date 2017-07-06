@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.19/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.21/esri/copyright.txt for details.
 
 define(["../../declare","./IntersectingGeography"],function(e,r){var a=e("esri.tasks.geoenrichment.StandardIntersectingGeography",[r],{geographyLayerID:null,constructor:function(e){e&&(this.geographyLayerID=e.geographyLayer||e.geographyLayerID||null)},toJson:function(){var e=this.inherited(arguments);return e.geographyType="standard",e.geographyLayer=this.geographyLayerID,e}});return a});

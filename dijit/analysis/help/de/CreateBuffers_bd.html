@@ -40,7 +40,7 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Puffer erstellen</h2><p/>
         <h2><img src="../images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" alt="Puffer erstellen"></h2>
         <hr/>
@@ -54,9 +54,9 @@
         <div><h2>Layer auswählen, auf den der Puffer angewendet werden soll</h2></div>
         <hr/>
         <div>
-            <p>Die Punkt-, Linien- oder Fl&auml;chen-Features, die gepuffert werden sollen.
+            <p>Die Punkt-, Linien- oder Fl&auml;chen-Features, die gepuffert werden sollen. Die Eingabe-Layer m&uuml;ssen sich in einem projizierten Koordinatensystem befinden, oder der Raumbezug f&uuml;r die Verarbeitung muss unter  <b>Analyseumgebungen</b> auf ein projiziertes Koordinatensystem festgelegt werden.
             </p>
-            <p>Sie k&ouml;nnen nicht nur einen Layer aus der Karte ausw&auml;hlen, sondern auch unten in der Dropdown-Liste  <b>Layer durchsuchen</b> ausw&auml;hlen, um zu Ihren f&uuml;r ein Big-Data-Dateifreigabe-Dataset bzw. -Feature-Layer zu navigieren.  
+            <p>Sie k&ouml;nnen nicht nur einen Layer aus der Karte ausw&auml;hlen, sondern auch unten in der Dropdown-Liste  <b>Layer durchsuchen</b> ausw&auml;hlen, um zu Ihren f&uuml;r ein Big-Data-Dateifreigabe-Dataset bzw. -Feature-Layer zu navigieren.
             </p>
         </div>
     </div>
@@ -126,26 +126,28 @@
         <div>
             <p> Sie k&ouml;nnen Statistiken f&uuml;r Features berechnen, die zusammengefasst wurden. F&uuml;r numerische Felder kann Folgendes berechnet werden:
                 <ul>
-                    <li>Anzahl
+                    <li>Anzahl: Berechnet die Anzahl der Nicht-NULL-Werte. Kann f&uuml;r numerische Felder oder Zeichenfolgen verwendet werden. Die Anzahl von [NULL, 0, 2] betr&auml;gt 2.
                     </li>
-                    <li>Mittelwert
+                    <li>Summe: Die Summe der numerischen Werte in einem Feld. Die Summe von [NULL, NULL, 3] betr&auml;gt 3.
                     </li>
-                    <li>Min.
+                    <li>Mittelwert: Der Mittelwert der numerischen Werte. Der Mittelwert von [0, 2, NULL] betr&auml;gt 1.
                     </li>
-                    <li>Max.
+                    <li>Min: Der Minimalwert eines numerischen Feldes. Der Minimalwert von [0, 2, NULL] betr&auml;gt 0. 
                     </li>
-                    <li>Bereich
+                    <li>Max: Der Maximalwert eines numerischen Feldes. Der Maximalwert von [0, 2, NULL] betr&auml;gt 2.
                     </li>
-                    <li>Varianz
+                    <li>Bereich: Der Bereich eines numerischen Feldes. Dieser wird durch die Subtraktion der Minimalwerte vom Maximalwert berechnet. Der Bereich von [0, NULL, 1] lautet 1. Der Bereich von [NULL, 4] lautet 0.
                     </li>
-                    <li>Standardabweichung
+                    <li>Varianz: Die Varianz eines numerischen Feldes in einer Spur. Die Varianz von [1] betr&auml;gt Null. Die Varianz von [NULL, 1,1,1] betr&auml;gt Null.
+                    </li>
+                    <li>Standardabweichung: Die Standardabweichung eines numerischen Feldes. Die Standardabweichung von [1] ist Null. Die Standardabweichung von [NULL, 1,1,1] ist 1. 
                     </li>
                 </ul>
                 
             </p>
             <p>F&uuml;r Zeichenfolgenfelder kann Folgendes berechnet werden:
                 <ul>
-                    <li>Anzahl
+                    <li>Anzahl: Die Anzahl der Nicht-NULL-Werte.
                     </li>
                     <li>Beliebig: Diese Statistik ist eine auf dem Zufallsprinzip basierende Stichprobe eines Zeichenfolgenwertes im angegebenen Feld.
                     </li>
@@ -155,10 +157,20 @@
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Data Store auswählen</h2></div>
+        <div><h2>Einen ArcGIS Data Store zum Speichern der Ergebnisse auswählen</h2></div>
         <hr/>
         <div>
-            <p>Dies ist ein tempor&auml;rer Parameter f&uuml;r die Vorabversion zum Festlegen des Data Store, in dem die Ergebnisse gespeichert werden. Beide Data Stores sind Teil des  ArcGIS Data Store. Wenn Sie den Data Store &quot;spatiotemporal&quot; ausw&auml;hlen, aber nicht installiert haben, kann das Werkzeug nicht ausgef&uuml;hrt werden. </p>
+            <p>GeoAnalytics-Ergebnisse werden in einem ArcGIS Data Store gespeichert und als Feature-Layer in  Portal for ArcGIS dargestellt. In den meisten F&auml;llen sollten Ergebnisse im Data Store vom Typ &quot;spatiotemporal&quot; gespeichert werden, was gleichzeitig die Standardeinstellung ist. Manchmal empfiehlt es sich auch, Ergebnisse im Data Store vom Typ &quot;relational&quot; zu speichern. Im Folgenden sind Gr&uuml;nde aufgef&uuml;hrt, die f&uuml;r ein Speichern der Ergebnisse in einem Data Store vom Typ &quot;relational&quot; sprechen: 
+                <ul>
+                    <li>Verwenden der Ergebnisse in portal&uuml;bergreifender Zusammenarbeit
+                    </li>
+                    <li>Aktivieren von Synchronisierungsfunktionen f&uuml;r Ihre Ergebnisse
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Der Einsatz des Data Stores vom Typ &quot;relational&quot; ist nicht angezeigt, wenn abzusehen ist, dass Ihre GeoAnalytics-Ergebnisse weiter zunehmen. Verwenden Sie stattdessen die Funktionen des Big-Data-Store vom Typ &quot;spatiotemporal&quot;, um gro&szlig;e Datenmengen zu verwalten. 
+            </p>
         </div>
     </div>
     <div id="outputName">

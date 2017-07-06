@@ -40,48 +40,48 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
-        <h2>Convert Feature to  Raster</h2><p/>
-        <h2><img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" alt="Convert Feature to Raster tool"></h2>
+    <div id="toolDescription" class="smallsize">
+        <h2>Конвертировать объекты в растр</h2><p/>
+        <h2><img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" alt="Инструмент Конвертировать объект в растр"></h2>
         <hr/>
-    <p>This task converts features to a raster dataset.
+    <p>Эта задача конвертирует объекты в набор растровых данных.
     </p>
-    <p>Any feature class containing point, line, or polygon features can be converted to a raster dataset.
+    <p>Любой класс пространственных объектов, содержащий точки, линии или полигоны, может быть конвертирован в набор растровых данных.
     </p>
-    <p>The cell center is used to decide the value of the output raster pixel.
+    <p>Центр ячейки используется для определения значения выходного пиксела растра.
     </p>
-    <p>The input field type determines the type of output raster. If the field is integer, the output raster will be integer; if it is floating point, the output will be floating point.
+    <p>Входной тип поля определяет тип выходного растра. Если поле целочисленное, выходной растр будет целочисленным; если оно представлено значениями с плавающей точкой, выходные данные будут представлены значениями с плавающей точкой.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Choose feature layer to convert</h2></div>
+        <div><h2>Выберите векторный слой для конвертации</h2></div>
         <hr/>
         <div>
-            <p>The input feature layer to convert to a raster dataset.
+            <p>Входной векторный слой, который будет конвертирован в набор растровых данных.
             </p>
         </div>
     </div>
     <div id="field">
-        <div><h2>Choose field</h2></div>
+        <div><h2>Выбрать поле</h2></div>
         <hr/>
         <div>
-            <p>Choose the field that will be used to assign values to the output raster.
+            <p>Выберите поле, которое будет использоваться для присвоения значений выходному растру.
             </p> 
         </div>
     </div>
     <div id="outputCellSize">
-        <div><h2>Output cell size</h2></div>
+        <div><h2>Размер выходной ячейки</h2></div>
         <hr/>
         <div>
             <p>Введите размер ячеек и единицы измерения для выходного растра.
             </p>
-            <p>The available units are Feet, Miles, Meters, and Kilometers.
+            <p>Доступные единицы измерения это: футы, мили, метры и километры.
             </p>
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>Имя слоя результата</h2></div>
         <hr/>
         <div>
             <p>Имя слоя, который будет добавлен в  <b>Мои ресурсы</b> и на карту. Имя слоя по умолчанию зависит от имени инструмента и имени входного слоя. Если имя слоя уже используется, появится запрос ввести новое имя.

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Gabungkan Fitur</h2><p/>
+        <h2><img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" alt="Gabungkan Fitur"></h2>
+        <hr/>
+    <p>Tugas Gabungkan Fitur bekerja dengan dua layer. Gabungkan Fitur menggabungkan atribut dari satu fitur ke fitur yang lainnya berdasarkan hubungan spasial, temporal, dan atribut atau beberapa kombinasi dari ketiganya. Alat ini menentukan seluruh fitur input yang memenuhi kondisi penggabungan yang ditentukan dan menggabungkan layer input kedua ke layer input pertama. Anda juga dapat menggabungkan semua fitur pada fitur yang cocok atau meringkas fitur yang cocok.
+    </p>
+    <p>Gabungkan Fitur dapat diterapkan ke titik, garis, area, dan tabel. Gabungan temporal mengharuskan data input Anda diaktifkan waktu dan gabungan spasial mengharuskan data Anda untuk memiliki geometri. 
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="targetLayer">
+        <div><h2>Pilih layer target</h2></div>
+        <hr/>
+        <div>
+            <p>Layer yang akan memiliki atribut dari layer gabungan yang dilampirkan pada tabelnya.
+            </p>
+            <p>Analisis menggunakan hubungan spasial  <b>Dekat</b> memerlukan sistem koordinat terproyeksi. Anda dapat menetapkan <b>Sistem koordinat pemrosesan</b> dalam <b>Lingkungan Analisis</b>. Jika sistem koordinat pemrosesan Anda tidak ditetapkan ke sistem koordinat terproyeksi, Anda akan diminta untuk menetapkannya saat Anda <b>Jalankan Analisis</b>.
+            </p>
+            <p>Selain memilih layer dari peta Anda, Anda dapat memilih  <b>Telusuri Layer</b> yang terdapat di bagian paling bawah daftar drop-down ke konten Anda untuk set data yang dibagikan atau feature layer dari big data.
+            </p>
+        </div>
+    </div>
+    <div id="joinLayer">
+        <div><h2>Pilih layer untuk digabungkan ke layer target</h2></div>
+        <hr/>
+        <div>
+            <p>Layer gabungan dengan atribut yang akan ditambahkan ke layer target.
+            </p>
+            <p>Selain memilih layer dari peta Anda, Anda dapat memilih  <b>Telusuri Layer</b> yang terdapat di bagian paling bawah daftar drop-down ke konten Anda untuk set data yang dibagikan atau feature layer dari big data.
+            </p>
+        </div>
+    </div>
+    <div id="joinOperation">
+        <div><h2>Pilih operasi penggabungan</h2></div>
+        <hr/>
+        <div>
+            <p>Menentukan bagaimana gabungan antara layer target dan gabungan akan ditangani di output jika terdapat beberapa fitur gabungan ditemukan memiliki hubungan yang sama dengan layer yang digabungkan. Terdapat dua operasi penggabungan yang dapat dipilih:
+                <ul>
+                    <li> <b>Gabungkan satu ke satu</b>&mdash;Opsi ini meringkas seluruh fitur yang cocok ke masing-masing fitur yang digabungkan.
+                    </li>
+                    <li> <b>Gabungkan satu ke banyak</b>&mdash;Opsi ini menggabungkan seluruh fitur yang cocok ke layer gabungan.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Contoh, misalnya kita ingin menemukan supermarket dalam jarak 2 kilometer dari pasar tradisional.   Pada kasus ini, layer yang akan digabungkan memiliki sebuah fitur yang mewakili pasar tradisional, dan fitur gabungan mewakili toko kelontong setempat yang memiliki atribut seperti penjualan tahunan total. Menggunakan alat  <b>Gabungkan Fitur</b>, kita akan menemukan bahwa lima toko kelontong memenuhi kriteria tersebut. Jika kita menetapkan operasi penggabungan <b>Gabungkan satu ke banyak</b>, kita akan mendapatkan lima fitur pada hasil, di mana masing-masing baris mewakili pasar tradisional dan supermarket. Jika kita menggunakan hubungan <b>Gabungkan satu ke satu</b>, kita akan mendapatkan satu fitur yang mewakili pasar tradisional dan informasi yang diringkas dari supermarket, seperti perhitungan (2), dan statistik opsional lain seperti jumlah penjualan tahunan.
+            </p>
+        </div>
+    </div>
+    <div id="joinOptions">
+        <div><h2>Pilih satu atau beberapa penggabungan</h2></div>
+        <hr/>
+        <div>
+            <p>Anda dapat menerapkan satu, dua, atau tiga tipe penggabungan. Tipe penggabungan mencakup tipe berikut: 
+                <ul>
+                    <li> <b>Spasial</b>&mdash;Menggunakan hubungan spasial yang ditentukan untuk menggabungkan fitur. Ini mengharuskan kedua layer memiliki geometri.
+                    </li>
+                    <li> <b>Temporal</b>&mdash;Menggunakan hubungan temporal untuk menggabungkan fitur. Hal ini mengharuskan waktu diaktifkan pada kedua layer.
+                    </li>
+                    <li> <b>Atribut</b>&mdash;Menggabungkan fitur berdasarkan kolom yang sama.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>
+            </p>
+        </div>
+    </div>
+    <div id="spatialRelationship">
+        <div><h2>Pilih hubungan spasial</h2></div>
+        <hr/>
+        <div>
+            <p> Hubungan spasial yang akan menentukan apakah fitur digabungkan satu sama lainnya. Hubungan yang tersedia akan tergantung pada tipe geometri (titik, polyline, poligon) yang digunakan sebagai fitur input. Hubungan yang tersedia termasuk yang berikut ini:
+                <ul>
+                    <li> <b>Berpotongan</b>&mdash;Fitur akan dicocokkan jika berpotongan antara satu sama lainnya.
+                    </li>
+                    <li> <b>Sebanding</b>&mdash;Fitur akan dicocokkan jika memiliki geometri yang sama.
+                    </li>
+                    <li> <b>Dekat</b>&mdash;Fitur akan dicocokkan jika berada pada jarak berdekatan dengan yang lainnya. Layer target harus berada pada sistem koordinat yang diproyeksikan atau referensi spasial yang diproses harus ditetapkan ke sistem koordinat yang diproyeksikan menggunakan <b>Lingkungan Analisis</b> jika hubungan <b>Dekat</b> spasial digunakan.
+                    </li>
+                    <li> <b>Berisi</b>&mdash;Fitur akan dicocokkan jika layer yang digabungkan mewadahi fitur gabungan.
+                    </li>
+                    <li> <b>Di dalam</b>&mdash;Fitur akan dicocokkan jika layer yang digabungkan berada di dalam fitur gabungan.
+                    </li>
+                    <li> <b>Bersentuhan</b>&mdash;Fitur akan dicocokkan jika memiliki batasan yang menyentuh fitur yang akan digabungkan.
+                    </li>
+                    <li> <b>Bersilang</b>&mdash;Fitur akan dicocokkan jika memiliki outline yang bersilangan.
+                    </li>
+                    <li> <b>Tumpang Tindih</b>&mdash;Feature akan digabungkan jika bertindihan satu sama lain.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="nearSpatial">
+        <div><h2></h2></div>
+        <hr/>
+        <div>
+            <p>Jarak ini menentukan radius yang diterapkan pada hubungan dekat spasial.
+            </p>
+            <p>Misalnya Anda memiliki set data yang mewakili pembangkit listrik tenaga nuklir dan set data yang mewakili perumahan. Anda dapat menetapkan jarak dekat 1 kilometer untuk menemukan rumah di dalam jarak 1 kilometer dari pembangkit listrik tenaga nuklir. 
+            </p> 
+        </div>
+    </div>
+    <div id="temporalRelationship">
+        <div><h2>Pilih hubungan temporal</h2></div>
+        <hr/>
+        <div>
+            <p>Hubungan temporal yang akan menentukan apakah fitur akan digabungkan satu sama lainnya. Opsi ini hanya tersedia jika waktu diakftirkan pada kedua layer dan hubungan yang tersedia akan tergantung pada tipe waktu (instan atau interval) yang digunakan sebagai fitur input. Hubungan yang tersedia termasuk yang berikut ini:
+                <ul>
+                    <li> <b>Bertemu</b>&mdash;Fitur akan dicocokkan jika fitur pertama bertemu dengan fitur kedua.
+                    </li>
+                    <li> <b>Ditemui Oleh</b>&mdash;Fitur akan dicocokkan jika fitur pertama ditemui oleh fitur kedua.
+                    </li>
+                    <li> <b>Tumpang Tindih</b>&mdash;Fitur akan dicocokkan jika fitur pertama bertindihan dengan fitur kedua.
+                    </li>
+                    <li> <b>Tumpang Tindih dengan</b>&mdash;Fitur akan dicocokkan jika fitur pertama bertindihan dengan fitur kedua.
+                    </li>
+                    <li> <b>Selama</b>&mdash;Fitur akan dicocokkan jika fitur pertama selama fitur kedua.
+                    </li>
+                    <li> <b>Berisi</b>&mdash;Fitur akan dicocokkan jika fitur pertama mewadahi fitur kedua.
+                    </li>
+                    <li> <b>Setara</b>&mdash;Fitur akan dicocokkan jika fitur pertama setara dengan fitur kedua.
+                    </li>
+                    <li> <b>Selesai</b>&mdash;Fitur akan dicocokkan jika fitur pertama menyelesaikan fitur kedua.
+                    </li>
+                    <li> <b>Diselesaikan Oleh</b>&mdash;Fitur akan dicocokkan jika fitur pertama diselesaikan oleh fitur kedua
+                    </li>
+                    <li> <b>Mulai</b>&mdash;Fitur akan dicocokkan jika fitur pertama mengawali fitur kedua.
+                    </li>
+                    <li> <b>Dimulai Oleh</b>&mdash;Fitur akan dicocokkan jika fitur pertama dimulai oleh fitur kedua
+                    </li>
+                    <li> <b>Berpotongan</b>&mdash;Fitur akan dipetakan jika waktu berpotongan.
+                    </li>
+                    <li> <b>Dekat</b>&mdash;Fitur akan digabungkan jika jaraknya saling berdekatan, ditentukan oleh waktu tertentu.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="nearTemporal">
+        <div><h2></h2></div>
+        <hr/>
+        <div>
+            <p>Jarak temporal menentukan radius temporal yang diterapkan pada hubungan dekat temporal.
+            </p>
+            <p>Misalnya Anda memiliki layer kecelakaan perahu dan layer jejak GPS untuk badai. Anda dapat mencari kecelakaan perahu di dalam jarak tertentu dari jalur badai dalam ruang (1 kilometer) maupun waktu (5 jam). Hal ini akan menghasilkan kecelakaan perahu digabungkan dengan badai yang terjadi berdekatan dalam ruang dan waktu. 
+            </p>
+        </div>
+    </div>
+    <div id="attributeRelationship">
+        <div><h2>Pilih kolom untuk dicocokkan</h2></div>
+        <hr/>
+        <div>
+            <p>Hubungan ini akan mencocokkan nilai di dalam kolom dari satu layer ke nilai di kolom layer lainnya. 
+            </p>
+            <p>Contoh, misalnya Anda memiliki layer geografis seluruh kabupaten dari alamat tempat tinggal (termasuk kolom  <i>ZIP</i>) dan set data tabular demografi kesehatan berdasarkan Kode Pos (termasuk kolom yang bernama <i>HEALTHZIP</i>). Kita dapat menggabungkan set data kesehatan dengan data tempat tinggal dengan mencocokkan kolom <i>ZIP</i> ke <i>HEALTHZIP</i>, yang akan menghasilkan layer tempat tinggal dengan data kesehatan yang sesuai.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Tambahkan statistik (opsional)</h2></div>
+        <hr/>
+        <div>
+            <p>Jika opsi penggabungan adalah   <b>Gabungkan satu ke satu</b>, Anda dapat menghitung statistik pada fitur yang digabungkan. Secara default, semua statistik akan dihitung.
+            </p>
+            <p>Anda dapat menghitung statistik pada fitur yang diringkas. Pada kolom numerik, Anda dapat menghitung hal berikut:
+                <ul>
+                    <li>Jumlah&mdash;Menghitung jumlah nilai nonnull. Dapat digunakan di kolom numerik ataupun string. Jumlah [null, 0, 2] adalah 2.
+                    </li>
+                    <li>Jumlah&mdash;Jumlah nilai numerik di kolom. Jumlah [null, null, 3] adalah 3.
+                    </li>
+                    <li>Rata-rata&mdash;Rata-rata nilai numerik. Rata-rata [0, 2, null] adalah 1.
+                    </li>
+                    <li>Min.&mdash;Nilai minimum kolom numerik. Minimal [0, 2, null] adalah 0. 
+                    </li>
+                    <li>Maks.&mdash;Nilai maksimum kolom numerik. Nilai maksimum [0, 2, null] adalah 2.
+                    </li>
+                    <li>Rentang&mdash;Rentang kolom numerik. Ini dihitung sebagai nilai minimum yang disubtraksi dari nilai maksimum. Rentang [0, null, 1] adalah 1. Rentang [null, 4] adalah 0.
+                    </li>
+                    <li>Varian&mdash;Varian kolom numerik di jalur. Varian [1] adalah null. Varian [null, 1,1,1] adalah 1.
+                    </li>
+                    <li>Simpangan baku&mdash;Simpangan baku kolom numerik. Simpangan baku [1] adalah null. Simpangan baku [null, 1,1,1] adalah 1. 
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Pada kolom string, Anda dapat menghitung hal berikut:
+                <ul>
+                    <li>Jumlah&mdash;Jumlah string nonnull.
+                    </li>
+                    <li>Apa saja&mdash;Statistik ini adalah contoh acak nilai string di dalam kolom yang telah ditentukan.
+                    </li>
+                </ul>
+                Semua statistik dihitung pada nilai nonnull. Layer hasil akan berisi kolom baru untuk setiap statistik yang dihitung. Angka statistik berapa pun dapat ditambahkan dengan memilih sebuah atribut dan statistik.
+            </p>
+            <p>Semua statistik dihitung pada nilai nonnull. Layer hasil akan berisi kolom baru untuk setiap statistik yang dihitung. Angka statistik berapa pun dapat ditambahkan dengan memilih sebuah atribut dan statistik.
+            </p>
+        </div>
+    </div>
+    <div id="joinCondition">
+        <div><h2>Buat ekspresi yang akan digabungkan dengan fitur (opsional)</h2></div>
+        <hr/>
+        <div>
+            <p>Terapkan syarat ke kolom yang ditentukan. Hanya fitur dengan kolom yang memenuhi syarat ini yang akan digabungkan.
+            </p>
+            <p>Contoh, misalnya kita ingin menerapkan gabungan ke set data hanya untuk fitur di mana  <i>biaya_kesehatan</i> lebih besar dari 20 persen <i>pendapatan</i>. Untuk melakukan ini, terapkan syarat gabungan <code>target.biaya_kesehatan &gt; (join.pendapatan * 0,20)</code> dengan menggunakan kolom <i>biaya_kesehatan</i> dari set data pertama (feature set data tujuan gabungan) dan kolom <i>pendapatan</i> dari set data kedua (set data yang akan digabungkan).
+            </p>
+            <p>Syarat gabung dapat diterapkan dengan menggunakan kalkulator ekspresi.
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Pilih penyimpanan data</h2></div>
+        <hr/>
+        <div>
+            <p>Hasil GeoAnalytics disimpan di ArcGIS Data Store dan ditampilkan sebagai layer fitur di  Portal for ArcGIS. Di banyak kasus, hasil harus disimpan di data store spatiotemporal dan ini adalah pilihan default. Di banyak kasus, menyimpan hasil data store relasional adalah opsi yang bagus. Berikut adalah alasan mengapa Anda mungkin ingin menyimpan hasil di data store relasional: 
+                <ul>
+                    <li>Gunakan hasil di kolaborasi portal-ke-portal
+                    </li>
+                    <li>Aktifkan kemampuan sinkronisasi dengan hasil Anda.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Anda tidak boleh menggunakan data store relasional jika Anda berharap hasil GeoAnalytics untuk ditingkatkan, dan ingin memanfaatkan kemampuan big data store spatiotemporal untuk menangani jumlah data yang besar. 
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nama layer hasil</h2></div>
+        <hr/>
+        <div>
+            <p> Ini adalah nama layer yang akan dibuat di <b>Konten Saya</b> dan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer sudah ada, alat tidak akan berfungsi.
+            </p>
+            <p>Menggunakan kotak drop-down  <b>Simpan hasil di</b>, Anda dapat menentukan nama folder di <b>Konten Saya</b> sebagai tempat penyimpanan hasil.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -40,7 +40,7 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Join delle feature</h2><p/>
         <h2><img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" alt="Join delle feature"></h2>
         <hr/>
@@ -51,44 +51,46 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="targetLayer">
-        <div><h2>Scegli il layer a cui aggiungere feature</h2></div>
+        <div><h2>Scegliere il layer di destinazione</h2></div>
         <hr/>
         <div>
-            <p>Il layer al quale verranno unite le feature. 
+            <p>Layer alla cui tabella verranno aggiunti gli attributi derivanti dal layer di join.
             </p>
-            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Sfoglia layer</b> alla base dell'elenco a discesa per cercare una dataset di condivisione file Big Data o un feature layer.  
+            <p>L'analisi utilizzando la relazione spaziale  <b>Vicino</b> richiede un sistema di coordinate proiettate. &Egrave; possibile impostare il <b>Sistema di coordinate di elaborazione</b> negli <b>Ambienti di analisi</b>. Se il sistema di coordinate di elaborazione non &egrave; impostato su un sistema di coordinate proiettate, verr&agrave; chiesto di impostarlo quando si <b>Esegue l'analisi</b>.
+            </p>
+            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Sfoglia layer</b> alla base dell'elenco a discesa per cercare una dataset di condivisione file Big Data o un feature layer.
             </p>
         </div>
     </div>
     <div id="joinLayer">
-        <div><h2>Scegli il layer da aggiungere</h2></div>
+        <div><h2>Scegli il layer a cui unire il layer di destinazione</h2></div>
         <hr/>
         <div>
-            <p>Il layer al quale verr&agrave; unito il primo layer di input.
+            <p>Layer di join con gli attributi che verr&agrave; aggiunto al layer di destinazione.
             </p>
-            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Sfoglia layer</b> alla base dell'elenco a discesa per cercare una dataset di condivisione file Big Data o un feature layer.  
+            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Sfoglia layer</b> alla base dell'elenco a discesa per cercare una dataset di condivisione file Big Data o un feature layer.
             </p>
         </div>
     </div>
     <div id="joinOperation">
-        <div><h2>Scegliere l'operazione di join</h2></div>
+        <div><h2>Scegli operazione Join</h2></div>
         <hr/>
         <div>
-            <p>Determina in che modo verranno gestiti i join tra i layer di input nell'output se pi&ugrave; feature di join presentano la stessa relazione con il layer che deve essere unito. Esistono due operazioni di join tra cui scegliere:
+            <p>Determina in che modo verranno gestiti i join tra i layer di destinazione e join nell'output se pi&ugrave; feature di join presentano la stessa relazione con il layer che deve essere unito. Esistono due operazioni di join tra cui scegliere:
                 <ul>
-                    <li> <b>Join uno a uno</b>: questa opzione unisce tutte le feature corrispondenti al layer di join.
+                    <li> <b>Join uno a uno</b>: questa opzione riepiloga tutte le feature corrispondenti in ciascuna feature che deve essere unita.
                     </li>
-                    <li> <b>Join uno a molti</b>: questa opzione riepiloga tutte le feature corrispondenti in ciascuna feature che deve essere unita.
+                    <li> <b>Join uno a molti</b>: questa opzione unisce tutte le feature corrispondenti al layer di join.
                     </li>
                 </ul>
                 
             </p>
-            <p>Si supponga, ad esempio, di voler trovare i supermercati situati a meno di 5 km da un mercato contadino.   In questo caso, il layer nel quale verr&agrave; eseguito il join ha una sola feature che rappresenta un mercato contadino, mentre le feature di join rappresentano i negozi di alimentari che hanno degli attributi, come le vendite annuali totali. Utilizzando lo strumento  <b>Join delle feature</b>, sono stati trovati cinque negozi di alimentari che soddisfano i criteri. Se si specifica l'opzione <b>Join uno a uno</b>, come risultato si otterranno cinque feature nel risultato e ciascuna riga rappresenta il mercato contadino e un supermercato. Se si specifica una relazione <b>Join uno a molti</b>, come risultato si otterranno una feature che rappresenta il mercato contadino e informazioni riepilogative dei supermercati, come il conteggio (5) e altre statistiche, ad esempio la somma delle vendite annuali.
+            <p>Si supponga, ad esempio, di voler trovare i supermercati situati a meno di 2 km da un mercato contadino. In questo caso, il layer nel quale verr&agrave; eseguito il join ha una sola feature che rappresenta un mercato contadino, mentre le feature di join rappresentano i negozi di alimentari che hanno degli attributi, come le vendite annuali totali. Utilizzando lo strumento  <b>Join delle feature</b>, sono stati trovati cinque negozi di alimentari che soddisfano i criteri. Se si specifica l'opzione <b>Join uno a molti</b>, come risultato si otterranno cinque feature nel risultato e ciascuna riga rappresenta il mercato contadino e un supermercato. Se si specifica una relazione <b>Join uno a uno</b>, come risultato si otterranno una feature che rappresenta il mercato contadino e informazioni riepilogative dei supermercati, come il conteggio (2) e altre statistiche, ad esempio la somma delle vendite annuali.
             </p>
         </div>
     </div>
     <div id="joinOptions">
-        <div><h2>Selezionare il tipo di join che si desidera utilizzare</h2></div>
+        <div><h2>Selezionare uno o più join</h2></div>
         <hr/>
         <div>
             <p>&Egrave; possibile applicare uno, due o tre tipi di join. I tipi di join includono i seguenti: 
@@ -107,7 +109,7 @@
         </div>
     </div>
     <div id="spatialRelationship">
-        <div><h2>Join spaziale</h2></div>
+        <div><h2>Scegli una relazione spaziale</h2></div>
         <hr/>
         <div>
             <p> La relazione spaziale che determiner&agrave; se le feature sono unite tra di loro. Le relazioni disponibili dipenderanno dal tipo di geometria (punto, polilinea, poligono) che verr&agrave; utilizzata come feature di input. Le relazioni disponibili includono le seguenti:
@@ -116,7 +118,7 @@
                     </li>
                     <li> <b>Uguale a</b>: le feature saranno abbinate se hanno la stessa geometria.
                     </li>
-                    <li> <b>Vicino</b>: le feature saranno abbinate se si trovano entro una distanza specifica le une dalle altre.
+                    <li> <b>Vicino</b>: le feature saranno abbinate se si trovano entro una distanza specifica le une dalle altre. Il layer di destinazione deve essere in un sistema di coordinate proiettate o il riferimento spaziale di elaborazione deve essere impostato su un sistema di coordinate proiettate utilizzando gli <b>Ambienti di analisi</b> se si utilizza una relazione <b>Vicino</b> spaziale.
                     </li>
                     <li> <b>Contiene</b>: le feature saranno abbinate se il layer a cui verranno unite &egrave; contenuto nelle feature di join.
                     </li>
@@ -144,7 +146,7 @@
         </div>
     </div>
     <div id="temporalRelationship">
-        <div><h2>Join temporale</h2></div>
+        <div><h2>Scegli una relazione temporale</h2></div>
         <hr/>
         <div>
             <p>La relazione temporale che determiner&agrave; se le feature sono unite tra di loro. Questa opzione &egrave; disponibile solo se entrambi i layer sono abilitati per variazioni temporali e le relazioni disponibili dipenderanno dal tipo di tempo (istante o intervallo) che verr&agrave; utilizzato per le feature di input. Le relazioni disponibili includono le seguenti:
@@ -191,12 +193,12 @@
         </div>
     </div>
     <div id="attributeRelationship">
-        <div><h2>Join attributo</h2></div>
+        <div><h2>Scegli i campi da associare</h2></div>
         <hr/>
         <div>
             <p>Questa relazione abbiner&agrave; i valori in un campo di un layer a quelli in un campo di un altro layer. 
             </p>
-            <p> Si , ad esempio, supponga di avere un layer geografico regionale con indirizzi di abitazioni (incluso un campo denominato <i>ZIP</i>) e un dataset tabulare di dati demografici relativi alla salute in base al codice postale (un campo denominato <i>HEALTHZIP</i>). &Egrave; possibile unire il dataset relativo alla salute ai dati sugli edifici residenziali abbinando il campo <i>ZIP</i> al campo <i>HEALTHZIP</i>. Come risultato si otterr&agrave; un layer di edifici residenziali con i dati sulla salute corrispondenti.
+            <p>Ad esempio, si supponga di avere un layer geografico regionale con indirizzi di abitazioni (incluso un campo denominato  <i>ZIP</i>) e un dataset tabulare di dati demografici relativi alla salute in base al codice postale (un campo denominato <i>HEALTHZIP</i>). &Egrave; possibile unire il dataset relativo alla salute ai dati sugli edifici residenziali abbinando il campo <i>ZIP</i> al campo <i>HEALTHZIP</i>. Come risultato si otterr&agrave; un layer di edifici residenziali con i dati sulla salute corrispondenti.
             </p>
         </div>
     </div>
@@ -204,7 +206,39 @@
         <div><h2>Aggiungi statistiche (facoltativo)</h2></div>
         <hr/>
         <div>
-            <p>Se &egrave; stata selezionata l'opzione Join uno a molti, &egrave; possibile calcolare le statistiche sulle feature unite.
+            <p>Se l'operazione join &egrave;   <b>Join uno a uno</b>, &egrave; possibile calcolare le statistiche sulle feature unite. Per impostazione predefinita, tutte le statistiche verranno calcolate.
+            </p>
+            <p>&Egrave; possibile calcolare le statistiche su feature riepilogate. Su campi numerici &egrave; possibile calcolare quanto segue:
+                <ul>
+                    <li>Conteggio: calcola il numero di valori nonnull. Pu&ograve; essere utilizzato su campi o stringhe numeriche. Il conteggio di [null, 0, 2] &egrave; 2.
+                    </li>
+                    <li>Somma: la somma dei valori numerici in un campo. La somma di [null, null, 3] &egrave; 3.
+                    </li>
+                    <li>Media: la media di valori numerici. La media di [0, 2, null] &egrave; 1.
+                    </li>
+                    <li>Min: il valore minimo di un campo numerico. Il minimo di [0, 2, null] &egrave; 0. 
+                    </li>
+                    <li>Max: il valore massimo di un campo numerico. Il valore massimo di [0, 2, null] &egrave; 2.
+                    </li>
+                    <li>Intervallo: l'intervallo di un campo numerico. Questo viene calcolato come i valori minimi sottratti dal valore massimo. L'intervallo di [0, null, 1] &egrave; 1. L'intervallo di [null, 4] &egrave; 0.
+                    </li>
+                    <li>Varianza: la varianza di un campo numerico in una traccia. La varianza di [1] is null. La varianza di [null, 1,1,1] &egrave; 1.
+                    </li>
+                    <li>Deviazione standard: la deviazione standard di un campo numerico. La deviazione standard di [1] &egrave; null. La deviazione standard di [null, 1,1,1] &egrave; 1. 
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Su campi stringa &egrave; possibile calcolare quanto segue:
+                <ul>
+                    <li>Conteggio: il numero di stringhe nonnull.
+                    </li>
+                    <li>Qualsiasi: questa statistica &egrave; un esempio casuale di un valore stringa nel campo specificato.
+                    </li>
+                </ul>
+                Tutte le statistiche vengono calcolate su valori non null. Il layer risultante includer&agrave; un nuovo campo per ogni statistica calcolata. &Egrave; possibile aggiungere un numero qualsiasi di statistiche scegliendo un attributo e una statistica.
+            </p>
+            <p>Tutte le statistiche vengono calcolate su valori non null. Il layer risultante includer&agrave; un nuovo campo per ogni statistica calcolata. &Egrave; possibile aggiungere un numero qualsiasi di statistiche scegliendo un attributo e una statistica.
             </p>
         </div>
     </div>
@@ -221,19 +255,29 @@
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Scegliere un archivio dati</h2></div>
+        <div><h2>Scegliere il Data Store</h2></div>
         <hr/>
         <div>
-            <p>Questo &egrave; un parametro temporaneo per la versione provvisoria che consente di impostare il Data Store in cui verranno salvati i risultati. Entrambi i Data Store fanno parte di  ArcGIS Data Store. Se si seleziona lo Spatiotemporal Data Store ma questo non &egrave; installato, lo strumento non verr&agrave; eseguito. </p>
+            <p>I risultati GeoAnalytic sono memorizzati in un ArcGIS Data Store ed esposti come un feature layer in  Portal for ArcGIS. Nella maggior parte dei casi, i risultati devono essere memorizzati nello Spatiotemporal Data Store e questa &egrave; l'impostazione predefinita. In alcuni casi, il salvataggio dei risultati nel Data Store relazionale &egrave; un'ottima opzione. Di seguito sono memorizzate le ragioni per memorizzare i risultati nel Data Store relazionale: 
+                <ul>
+                    <li>Utilizzare i risultati nella collaborazione da portale a portale.
+                    </li>
+                    <li>Abilitare funzionalit&agrave; di sincronizzazione con i risultati.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Non utilizzare il Data Store relazionale se si prevede un incremento dei risultati GeoAnalytics ed &egrave; necessario sfruttare le funzionalit&agrave; dello Spatiotemporal Big Data Store per gestire grandi quantit&agrave; di dati. 
+            </p>
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Nome layer risultati</h2></div>
+        <div><h2>Nome layer di risultati</h2></div>
         <hr/>
         <div>
             <p> Questo &egrave; il nome del layer che verr&agrave; creato in <b>I miei contenuti</b> e aggiunto alla mappa.  Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, lo strumento non verr&agrave; eseguito.
             </p>
-            <p>Utilizzare la casella a discesa  <b>Salva risultato in</b> per specificare il nome di una cartella di <b>I miei contenuti</b> in cui salvare il risultato.
+            <p>Utilizzare la casella a discesa  <b>Salva risultato in</b> per specificare il nome di una cartella in <b>I miei contenuti</b> in cui salvare il risultato.
             </p>
         </div>
     </div>

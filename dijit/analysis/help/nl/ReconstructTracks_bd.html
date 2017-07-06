@@ -65,19 +65,19 @@
         <div><h2>Kies de features om traceringen uit te reconstrueren</h2></div>
         <hr/>
         <div>
-            <p>De punt- of polygoonlaag die gereconstrueerd wordt in traceringen.
+            <p>De punt- of polygoonlaag die gereconstrueerd wordt in traceringen. Voor de inputlaag moet de tijd zijn ingeschakeld met objecten die een moment in de tijd vertegenwoordigen. De kaartlaag moet in een geprojecteerd co&ouml;rdinaatsysteem of de processing ruimtelijke referentie moet worden ingesteld op een geprojecteerd co&ouml;rdinaatsysteem met behulp van de  <b>Analysis Environments</b> als een buffer wordt toegepast.
             </p>
-            <p>Naast het kiezen van een laag van uw kaart, kunt u kiezen voor  <b>Blader door lagen</b> aan de onderkant van de drop-downlijst om in uw inhoud te zoeken naar een groot gedeeld databestand of objectlaag.  
+            <p>Naast het kiezen van een laag van uw kaart, kunt u kiezen voor  <b>Blader door lagen</b> aan de onderkant van de drop-downlijst om in uw content te zoeken naar een groot gedeeld databestand of objectlaag.
             </p>
         </div>
     </div>
     <div id="trackFields">
-        <div><h2>Kies te gebruiken veld om traceringen te identificeren</h2></div>
+        <div><h2>Kies een of meer velden om traceringen te identificeren</h2></div>
         <hr/>
         <div>
-            <p> De velden die de traceringsidentifier vertegenwoordigen.
+            <p>De velden die de traceringsidentifier vertegenwoordigen. 
             </p>
-            <p> Bijvoorbeeld als u de sporen van orkanen reconstrueert, kunt u de naam van de orkaan gebruiken als het traceringsveld.
+            <p>Bijvoorbeeld als u de sporen van orkanen reconstrueert, kunt u de naam van de orkaan gebruiken als het traceringsveld.
             </p>
         </div>
     </div>
@@ -93,7 +93,7 @@
         <div><h2>Maak een expressie om invoerfeatures op te bufferen (optioneel)</h2></div>
         <hr/>
         <div>
-            <p>Vergelijking gebruikt om de bufferafstand rond de invoerobjecten te berekenen. Deze vergelijking kan worden gegenereerd met behulp van de buffercalculator en basisbewerkingen zoals optellen, aftrekken, vermenigvuldigen en delen worden ondersteund. Waarden worden berekend op basis van het analyseco&ouml;rdinaatsysteem.
+            <p>Vergelijking gebruikt om de bufferafstand rond de invoerobjecten te berekenen. Deze vergelijking kan worden gegenereerd met behulp van de buffercalculator en basisbewerkingen zoals optellen, aftrekken, vermenigvuldigen en delen worden ondersteund. Waarden worden berekend op basis van het analyseco&ouml;rdinaatsysteem. De kaartlaag moet in een geprojecteerd co&ouml;rdinaatsysteem of de processing ruimtelijke referentie moet worden ingesteld op een geprojecteerd co&ouml;rdinaatsysteem met behulp van de  <b>Analysis Environments</b> als een buffer wordt toegepast.
             </p>
         </div>
     </div>
@@ -111,26 +111,28 @@
         <div>
             <p> U kunt statistieken berekenen over objecten die zijn samengevat. Op numerieke velden kunt u het volgende berekenen:
                 <ul>
-                    <li>Aantal
+                    <li>Count&mdash;Berekent het aantal non-nulwaarden. Kan gebruikt worden op numerieke velden of strings. De telling van [nul, 0, 2] is 2.
                     </li>
-                    <li>Gemiddelde
+                    <li>Som&mdash;De som van numerieke waarden in een veld. De som van [nul, nul, 3] is 3.
                     </li>
-                    <li>Min
+                    <li>Gemiddelde&mdash;Het gemiddelde van numerieke waarden. Het gemiddelde van [0, 2, nul] is 1.
                     </li>
-                    <li>Max
+                    <li>Min&mdash;De minimumwaarde van een numeriek veld. Het minimum van [0, 2, nul] is 0. 
                     </li>
-                    <li>Bereik
+                    <li>Max&mdash;De maximumwaarde van een numeriek veld. De maximumwaarde van [0, 2, nul] is 2.
                     </li>
-                    <li>Variantie
+                    <li>Bereik&mdash;Het bereik van een numeriek veld. Dit wordt berekend als de minimumwaarden afgetrokken van de maximumwaarde. Het bereik van [0, nul, 1] is 1. Het bereik van [nul, 4] is 0.
                     </li>
-                    <li>Standaardafwijking
+                    <li>Variantie&mdash;De variantie van een numeriek veld in een track. De variantie van [1] is nul. De variantie van [null, 1,1,1] is 1.
+                    </li>
+                    <li>Standaarddeviatie&mdash;De standaarddeviatie van een numeriek veld. De standaarddeviatie van [1] is nul. De standaarddeviatie van [null, 1,1,1] is 1. 
                     </li>
                 </ul>
                 
             </p>
             <p>Op stringvelden kunt u het volgende berekenen:
                 <ul>
-                    <li>Aantal
+                    <li>Telling&mdash;Het aantal non-nul strings.
                     </li>
                     <li>Elke&mdash;Deze statistiek is een willekeurig voorbeeld van een stringwaarde in het gespecificeerde veld.
                     </li>
@@ -140,10 +142,20 @@
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Datastore kiezen</h2></div>
+        <div><h2>Kies een ArcGIS Data Store om de resultaten in op te slaan</h2></div>
         <hr/>
         <div>
-            <p>Dit is een tijdelijke parameter voor prerelease om de data-opslag in te stellen waar de resultaten worden opgeslagen. Beide data-opslagplaatsen maken deel uit van  ArcGIS Data Store . Als u de tijdruimtelijke gegevensopslag selecteert maar er geen hebt ge&iuml;nstalleerd, dan zal de tool falen. </p>
+            <p>GeoAnalytische resultaten worden opgeslagen in een ArcGIS Data Store en weergegeven als een objectlaag in  Portal for ArcGIS. In de meeste gevallen moeten de resultaten worden opgeslagen in de spatiotemporele data-opslag en dit is de standaardinstelling. In sommige gevallen is het opslaan van de resultaten in de relationele data-opslag een goede optie. Hier volgen redenen waarom u resultaten zou willen opslaan in een relationele data-opslag: 
+                <ul>
+                    <li>Om uw resultaten te gebruiken voor portaalsamenwerking.
+                    </li>
+                    <li>Om synchronisatiemogelijkheden met uw resultaten mogelijk te maken.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>U moet geen gebruik maken van een relationele data-opslag als u verwacht dat uw GeoAnalytics-resultaten toenemen en u wilt profiteren van de mogelijkheden van de spatiotemporele big data-opslag om grote hoeveelheden gegevens te verwerken. 
+            </p>
         </div>
     </div>
     <div id="outputName">

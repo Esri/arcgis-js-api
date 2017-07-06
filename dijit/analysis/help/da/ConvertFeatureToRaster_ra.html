@@ -40,48 +40,48 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
-        <h2>Convert Feature to  Raster</h2><p/>
-        <h2><img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" alt="Convert Feature to Raster tool"></h2>
+    <div id="toolDescription" class="smallsize">
+        <h2>Konvertér objekt til raster</h2><p/>
+        <h2><img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" alt="Konvert&eacute;r objekt til raster-v&aelig;rkt&oslash;j"></h2>
         <hr/>
-    <p>This task converts features to a raster dataset.
+    <p>Denne opgave konverterer objekter til et rasterdatas&aelig;t.
     </p>
-    <p>Any feature class containing point, line, or polygon features can be converted to a raster dataset.
+    <p>Enhver objektklasse, der indeholder punkt-, linje- eller polygonobjekter, kan konverteres til et rasterdatas&aelig;t.
     </p>
-    <p>The cell center is used to decide the value of the output raster pixel.
+    <p>Cellens centrum bruges til at bestemme pixelv&aelig;rdien for output-rasterdataene.
     </p>
-    <p>The input field type determines the type of output raster. If the field is integer, the output raster will be integer; if it is floating point, the output will be floating point.
+    <p>Input-felttypen bestemmer output-rastertypen. Hvis feltet er et heltal, vil output-rasterdataene v&aelig;re et heltal. Hvis det er et flydende punkt, vil output-rasterdataene v&aelig;re et flydende punkt.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Choose feature layer to convert</h2></div>
+        <div><h2>Vælg det vektorlag, der skal konverteres</h2></div>
         <hr/>
         <div>
-            <p>The input feature layer to convert to a raster dataset.
+            <p>Det input-vektorlag, der skal konverteres til et rasterdatas&aelig;t.
             </p>
         </div>
     </div>
     <div id="field">
-        <div><h2>Choose field</h2></div>
+        <div><h2>Vælg felt</h2></div>
         <hr/>
         <div>
-            <p>Choose the field that will be used to assign values to the output raster.
+            <p>V&aelig;lg det felt, der skal bruges til at tildele v&aelig;rdier til output-rasterdataene.
             </p> 
         </div>
     </div>
     <div id="outputCellSize">
-        <div><h2>Output cell size</h2></div>
+        <div><h2>Størrelse på outputcelle</h2></div>
         <hr/>
         <div>
             <p>Angiv cellest&oslash;rrelse og enheder for output-rasterdata.
             </p>
-            <p>The available units are Feet, Miles, Meters, and Kilometers.
+            <p>De tilg&aelig;ngelige enheder er fod, miles, meter og kilometer.
             </p>
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>Navn på resultatlag</h2></div>
         <hr/>
         <div>
             <p>Navnet p&aring; det lag, som oprettes under  <b>Mit indhold</b> og f&oslash;jes til kortet. Standardnavnet er baseret p&aring; navnet p&aring; v&aelig;rkt&oslash;jet og navnet p&aring; inputlaget. Hvis laget allerede findes, vil du blive bedt om at angive et andet navn.

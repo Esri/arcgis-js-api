@@ -40,48 +40,48 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
-        <h2>Convert Feature to  Raster</h2><p/>
-        <h2><img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" alt="Convert Feature to Raster tool"></h2>
+    <div id="toolDescription" class="smallsize">
+        <h2>Konvertera geoobjekt till raster</h2><p/>
+        <h2><img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" alt="Verktyget Konvertera geoobjekt till raster"></h2>
         <hr/>
-    <p>This task converts features to a raster dataset.
+    <p>Den h&auml;r uppgiften konverterar geoobjekt till ett rasterdataset.
     </p>
-    <p>Any feature class containing point, line, or polygon features can be converted to a raster dataset.
+    <p>Alla geoobjektsklasser som inneh&aring;ller punkt-, linje- eller polygongeoobjekt kan konverteras till ett rasterdataset.
     </p>
-    <p>The cell center is used to decide the value of the output raster pixel.
+    <p>Cellcentret anv&auml;nds f&ouml;r att avg&ouml;ra v&auml;rdet f&ouml;r utdatarasterpixeln.
     </p>
-    <p>The input field type determines the type of output raster. If the field is integer, the output raster will be integer; if it is floating point, the output will be floating point.
+    <p>Indataf&auml;lttypen avg&ouml;r typen av utdataraster. Om f&auml;ltet &auml;r heltal blir utdatarastret heltal; om det &auml;r flyttal blir utdata flyttal.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Choose feature layer to convert</h2></div>
+        <div><h2>Välj geoobjektslager att konvertera</h2></div>
         <hr/>
         <div>
-            <p>The input feature layer to convert to a raster dataset.
+            <p>Indatageoobjektslagret som ska konverteras till ett rasterdataset.
             </p>
         </div>
     </div>
     <div id="field">
-        <div><h2>Choose field</h2></div>
+        <div><h2>Välj fält</h2></div>
         <hr/>
         <div>
-            <p>Choose the field that will be used to assign values to the output raster.
+            <p>V&auml;lj det f&auml;lt som ska anv&auml;ndas f&ouml;r att tilldela v&auml;rden till utdatarastret.
             </p> 
         </div>
     </div>
     <div id="outputCellSize">
-        <div><h2>Output cell size</h2></div>
+        <div><h2>Utdatacellstorlek</h2></div>
         <hr/>
         <div>
             <p>Ange cellstorleken och enheten f&ouml;r utdatarastren.
             </p>
-            <p>The available units are Feet, Miles, Meters, and Kilometers.
+            <p>De tillg&auml;ngliga enheterna &auml;r fot, miles, meter och kilometer.
             </p>
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>Resultatlagrets namn</h2></div>
         <hr/>
         <div>
             <p>Namnet p&aring; lagret som skapas i  <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns uppmanas du att ange ett annat namn.

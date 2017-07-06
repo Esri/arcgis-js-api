@@ -60,9 +60,9 @@
         <div><h2>Vælg et lag, der indeholder punkter, som skal aggregeres til områder</h2></div>
         <hr/>
         <div>
-            <p>Det punktlag, der skal aggregeres til omr&aring;der.
+            <p>Det punktlag, der skal aggregeres til omr&aring;der. Punktlag, der aggregeres til  <b>kvadratiske </b> eller <b>sekskantede</b> beholdere, skal have den spatiale reference til behandling indstillet til et projiceret koordinatsystem ved hj&aelig;lp af <b>Analysemilj&oslash;erne</b>.
             </p>
-            <p>Udover at du kan v&aelig;lge et lag i dit kort, kan du v&aelig;lge  <b>Gennemse lag</b> nederst p&aring; rullelisten for at g&aring; til dit indhold til et big data-fildelingsdatas&aelig;t eller -vektorlag.  
+            <p>Udover at du kan v&aelig;lge et lag i dit kort, kan du v&aelig;lge  <b>Gennemse lag</b> nederst p&aring; rullelisten for at g&aring; til dit indhold til et big data-fildelingsdatas&aelig;t eller -vektorlag.
             </p>
         </div>
     </div>
@@ -72,6 +72,8 @@
         <div>
             <p>De omr&aring;der, som punktlaget skal aggregeres til. Du kan v&aelig;lge mellem et omr&aring;delag, som du opretter, eller beholdere, der genereres, n&aring;r v&aelig;rkt&oslash;jet k&oslash;rer.   N&aring;r der genereres beholdere, er det for  <b>Kvadratiske</b> beholdere antallet af angivne enheder, der bestemmer h&oslash;jden og l&aelig;ngden p&aring; kvadratet. For <b>Sekskantede</b> beholdere er det antallet af angivne enheder, der bestemmer afstanden mellem de parallelle sider.
             </p>
+            <p>Analyse ved hj&aelig;lp af  <b>kvadratiske</b> eller <b>sekskantede</b> beholdere kr&aelig;ver et projiceret koordinatsystem. Du kan indstille <b>koordinatsystem til behandling</b> i <b>Analysemilj&oslash;erne</b>. Hvis dit koordinatsystem til behandling ikke er indstillet til et projiceret koordinatsystem, vil du blive bedt om at indstille det, n&aring;r du benytter funktionen <b>K&oslash;r analyse</b>.
+            </p>
         </div>
     </div>
     <div id="polygonLayer">
@@ -79,8 +81,6 @@
         <hr/>
         <div>
             <p>Det omr&aring;delag, som punkterne bliver aggregeret til. Alle de punkter, der falder inden for omr&aring;degr&aelig;nserne i dette lag, vil blive talt med og vil muligvis indg&aring; i oversigten ud fra dine statistikvalg. 
-            </p>
-            <p>
             </p>
             <p> <b>Beholderst&oslash;rrelse</b> eller <b>Omr&aring;delag</b> skal v&aelig;re indstillet.
             </p>
@@ -97,53 +97,53 @@
         </div>
     </div>
     <div id="timeSlicing">
-        <div><h2>Aggregér ved hjælp af tidsintervaller (valgfrit)</h2></div>
+        <div><h2>Aggregér ved hjælp af tidstrin (valgfrit)</h2></div>
         <hr/>
         <div>
-            <p>Hvis der er aktiveret tid for inputpunktlaget, og det tilh&oslash;rer &oslash;jeblikstypen, kan du analysere ved hj&aelig;lp af tidsintervaller. Du kan indstille tre parametre, n&aring;r du bruger tiden:
+            <p>Hvis der er aktiveret tid for inputpunktlaget, og det tilh&oslash;rer &oslash;jeblikstypen, kan du analysere ved hj&aelig;lp af tidstrin. Du kan indstille tre parametre, n&aring;r du bruger tiden:
                 <ul>
-                    <li>  <b>Tidsinterval</b>
+                    <li> <b>Tidstrin-interval</b>
                     </li>
-                    <li> <b>Tidstrin</b>
+                    <li> <b>Hvor ofte skal tidstrinet gentages</b>
                     </li>
-                    <li> <b>Referencetid</b>
+                    <li> <b>Klokkesl&aelig;t, som tidstrinene skal justeres i forhold til</b>
                     </li>
                 </ul>
                 
             </p>
-            <p>Forestil dig, at du har data, der repr&aelig;senterer et &aring;r i tiden, og at du &oslash;nsker at analysere ved hj&aelig;lp af ugentlige tidsintervaller. For at g&oslash;re dette skal du indstille  <b>Tidsinterval</b> til <code>1 uge</code>.
+            <p>Forestil dig, at du har data, der repr&aelig;senterer et &aring;r i tiden, og du &oslash;nsker at analysere ved hj&aelig;lp af ugentlige tidstrin. For at g&oslash;re dette skal du indstille  <b>Tidstrin-interval</b> til <code>1 uge</code>.
             </p>
-            <p> Forestil dig, at du har data, der repr&aelig;senterer et &aring;r i tiden, og at du &oslash;nsker at analysere ved hj&aelig;lp af den f&oslash;rste uge i m&aring;neden. For at g&oslash;re dette skal du indstille <b>Tidsinterval</b> til <code>1 uge</code>, <b>Tidstrin</b> til <code>1 m&aring;ned</code> og <b>Referencetid</b> til <code>1. januar kl. 12:00 AM</code>.
+            <p>Forestil dig, at du har data, der repr&aelig;senterer et &aring;r i tiden, og at du &oslash;nsker at analysere ved hj&aelig;lp af den f&oslash;rste uge i m&aring;neden. For at g&oslash;re dette skal du indstille  <b>Tidstrin-interval</b> til <code>1 uge</code>, <b>Hvor ofte skal tidstrinet gentages</b> til <code>1 m&aring;ned</code> og <b>Klokkesl&aelig;t, som tidstrinene skal justeres i forhold til</b> til <code>1. januar kl. 12:00 AM</code>.
             </p>
         </div>
     </div>
     <div id="timeInterval">
-        <div><h2>Tidsinterval, der skal aggregeres til</h2></div>
+        <div><h2>Tidstrin-interval</h2></div>
         <hr/>
         <div>
-            <p>Det tidsinterval, der benyttes til opdele tiden. Tidsinterval kan benyttes alene elle sammen med  <b>Tidstrin</b>- eller <b>Referencetid</b>-parameteren.
+            <p>Det tidsinterval, der benyttes til generere tidstrin. Tidstrin kan benyttes alene eller sammen med parametrene  <b>Hvor ofte skal tidstrinet gentages</b> eller <b>Klokkesl&aelig;t, som tidstrinene skal justeres i forhold til</b>.
             </p>
-            <p> Hvis du &oslash;nskede at oprette tidsintervaller, som finder sted hver mandag fra kl. 9:00 til kl. 10:00., ville <b>Tidsinterval</b> v&aelig;re <code>1 time</code>, <b>Tidstrin</b> ville v&aelig;re <code>1 uge</code>, og <b>Referencetid</b> ville v&aelig;re <code>9:00:00 om mandagen</code>.
+            <p>Hvis du &oslash;nskede at oprette tidsintervaller, som finder sted hver mandag fra kl. 9:00 til kl. 10:00, ville  <b>Tidstrin-interval</b> v&aelig;re <code>1 time</code>, <b>Hvor ofte skal tidstrinet gentages</b> ville v&aelig;re <code>1 uge</code>, og <b>Klokkesl&aelig;t, som tidstrinene skal justeres i forhold til</b> ville v&aelig;re <code>9:00:00 p&aring; en mandag</code>.
             </p>
         </div>
     </div>
     <div id="timeStep">
-        <div><h2>Tidstrin, der skal aggregeres til</h2></div>
+        <div><h2>Hvor ofte skal tidstrinet gentages</h2></div>
         <hr/>
         <div>
-            <p> Det tidstrin, der benyttes til at beregne tidsopdelingen. <b>Tidstrin</b> kan benyttes alene elle sammen med <b>Tidsinterval</b>, sammen med <b>Referencetid</b> eller sammen med b&aring;de <b>Tidsinterval</b> og <b>Referencetid</b>.
+            <p> Det tidstrin, der benyttes til at beregne tidsopdelingen. <b>Hvor ofte skal tidstrinet gentages</b> kan benyttes alene eller sammen med <b>Tidstrin-interval</b>, med <b>Referencetid</b> eller med b&aring;de <b>Tidstrin-interval</b> og <b>Klokkesl&aelig;t, som tidstrinene skal justeres i forhold til</b>.
             </p>
-            <p> Hvis du &oslash;nskede at oprette tidsintervaller, som finder sted hver mandag fra kl. 9:00 til kl. 10:00., ville <b>Tidsinterval</b> v&aelig;re <code>1 time</code>, <b>Tidstrin</b> ville v&aelig;re <code>1 uge</code>, og <b>Referencetid</b> ville v&aelig;re <code>9:00:00 om mandagen</code>.
+            <p> Hvis du &oslash;nskede at oprette tidsintervaller, som finder sted hver mandag fra kl. 9:00 til kl. 10:00, ville <b>Tidstrin-interval</b> v&aelig;re <code>1 time</code>, <b>Hvor ofte skal tidstrinet gentages</b> ville v&aelig;re <code>1 uge</code>, og <b>Klokkesl&aelig;t, som tidstrinene skal justeres i forhold til</b> ville v&aelig;re <code>9:00:00 p&aring; en mandag</code>.
             </p>
         </div>
     </div>
     <div id="timeReference">
-        <div><h2>Referencetid, der benyttes til at justere tidsintervaller</h2></div>
+        <div><h2>Klokkeslæt, som tidstrin skal justeres i forhold til</h2></div>
         <hr/>
         <div>
-            <p>Den dato og det klokkesl&aelig;t, der benyttes til at justere tidsintervallerne.  <b>Tidstrin</b> starter fra og forts&aelig;tter bagud med den tid, der er angivet af referencetiden.
+            <p>Den dato og det klokkesl&aelig;t, der benyttes til at justere tidsintervallerne. Tidstrin starter fra og forts&aelig;tter bagud fra dette klokkesl&aelig;t. Hvis der ikke er valgt nogen referencetid, justeres tidstrin til 1. januar 1970. 
             </p>
-            <p> Hvis du &oslash;nskede at oprette tidsintervaller, som finder sted hver mandag fra kl. 9:00 til kl. 10:00., ville <b>Tidsinterval</b> v&aelig;re <code>1 time</code>, <b>Tidstrin</b> ville v&aelig;re <code>1 uge</code>, og <b>Referencetid</b> ville v&aelig;re <code>9:00:00 om mandagen</code>.
+            <p> Hvis du &oslash;nskede at oprette tidsintervaller, som finder sted hver mandag fra kl. 9:00 til kl. 10:00, ville <b>Tidstrin-interval</b> v&aelig;re <code>1 time</code>, <b>Hvor ofte skal tidstrinet gentages</b> ville v&aelig;re <code>1 uge</code>, og <b>Klokkesl&aelig;t, som tidstrinene skal justeres i forhold til</b> ville v&aelig;re <code>9:00:00 p&aring; en mandag</code>.
             </p>
         </div>
     </div>
@@ -153,26 +153,28 @@
         <div>
             <p> Du kan beregne statistik for objekter, der er summeret. For numeriske felter kan du beregne f&oslash;lgende:
                 <ul>
-                    <li>T&aelig;lling
+                    <li>Antal &ndash; Beregner antallet af ikke-nul-v&aelig;rdier. Kan anvendes til numeriske felter eller strenge. Opt&aelig;llingen af [null, 0, 2] er 2.
                     </li>
-                    <li>Middel
+                    <li>Sum &ndash; Summen af numeriske v&aelig;rdier i et felt. Summen af [null, null, 3] er 3.
                     </li>
-                    <li>Min
+                    <li>Middelv&aelig;rdi &ndash; Middelv&aelig;rdier af de numeriske v&aelig;rdier. Middelv&aelig;rdien af [0, 2, null] er 1.
                     </li>
-                    <li>Maks
+                    <li>Min. &ndash; Minimumv&aelig;rdien for et numerisk felt. Minimumsv&aelig;rdien af [0, 2, null] er 0. 
                     </li>
-                    <li>Omr&aring;de
+                    <li>Maks. &ndash; Maksimumv&aelig;rdien for et numerisk felt. Maksimumv&aelig;rdien af [0, 2, null] er 2.
                     </li>
-                    <li>Varians
+                    <li>Omr&aring;de &ndash; Omr&aring;det for et numerisk felt. Dette beregnes som minimumv&aelig;rdierne, der er trukket fra maksimumv&aelig;rdien. Omr&aring;det for [0, null, 1] er 1. Omr&aring;det for [null, 4] er 0.
                     </li>
-                    <li>Standardafvigelse
+                    <li>Varians &ndash; Variansen af et numerisk felt i et spor. Variansen af [1] er nul. Variansen af [null, 1,1, 1] er 1.
+                    </li>
+                    <li>Standardafvigelse &ndash; Standardafvigelsen for et numerisk felt. Standardafvigelsen for [1] er nul. Standardafvigelsen for [null, 1,1, 1] er 1. 
                     </li>
                 </ul>
                 
             </p>
             <p>For strengfelter kan du beregne f&oslash;lgende:
                 <ul>
-                    <li>T&aelig;lling
+                    <li>Antal &ndash; Antallet af ikke-nul-strenge.
                     </li>
                     <li>Vilk&aring;rlig &ndash; Denne statistik er et vilk&aring;rligt eksempel p&aring; en strengv&aelig;rdi i det angivne felt.
                     </li>
@@ -190,10 +192,20 @@
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Vælg Datastore</h2></div>
+        <div><h2>Vælg et ArcGIS-datalager, som resultaterne kan gemmes i</h2></div>
         <hr/>
         <div>
-            <p>Dette er en midlertidig parameter til prerelease med henblik p&aring; angivelse af det datalager, hvor resultaterne bliver gemt. Begge datalagre er en del af  ArcGIS Data Store. Hvis du v&aelig;lger det spatiotemporale datalager, men ikke har et s&aring;dant installeret, vil v&aelig;rkt&oslash;jet ikke fungere. </p>
+            <p>GeoAnalytic-resultater lagres i et ArcGIS-datalager og vises som et vektorlag i  Portal for ArcGIS. I de fleste tilf&aelig;lde b&oslash;r resultaterne blive lagret i et spatiotemporalt datalager, hvilket ogs&aring; er standarden. I nogle tilf&aelig;lde er det at lagre resultaterne i et relationsdatalager en god mulighed. Her er &aring;rsagerne til, at du m&aring;ske &oslash;nsker at lagre resultaterne i et relationsdatalager: 
+                <ul>
+                    <li>Hvis du vil bruge dine resultater i et portal-til-portal-samarbejde.
+                    </li>
+                    <li>Hvis du vil aktivere synkroniseringsfunktioner i forbindelse med dine resultater.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Du b&oslash;r benytte et relationsdatalager, hvis du forventer, at m&aelig;ngden af dine GeoAnalytics-resultater vil blive st&oslash;rre, og du &oslash;nsker at drage fordel af det spatiotemporale big data-lagers muligheder for at h&aring;ndtere store datam&aelig;ngder. 
+            </p>
         </div>
     </div>
     <div id="outputName">

@@ -40,48 +40,48 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
-        <h2>Convert Feature to  Raster</h2><p/>
-        <h2><img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" alt="Convert Feature to Raster tool"></h2>
+    <div id="toolDescription" class="smallsize">
+        <h2>Konvertuoti elementus į rastrą</h2><p/>
+        <h2><img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" alt="Įrankis, skirtas konvertuoti elementus į rastrą"></h2>
         <hr/>
-    <p>This task converts features to a raster dataset.
+    <p>&Scaron;is įrankis konvertuoja elementus į rastro duomenų rinkinį.
     </p>
-    <p>Any feature class containing point, line, or polygon features can be converted to a raster dataset.
+    <p>Bet kuri elementų klasė, kurioje yra ta&scaron;kinių, linijinių ar plotinių elementų, gali būti konvertuota į rastrinį duomenų rinkinį.
     </p>
-    <p>The cell center is used to decide the value of the output raster pixel.
+    <p>Gardelės centrą apibrėžia i&scaron;vesties rastro pikselio reik&scaron;mė.
     </p>
-    <p>The input field type determines the type of output raster. If the field is integer, the output raster will be integer; if it is floating point, the output will be floating point.
+    <p>I&scaron;vesties rastro tipą apibrėžia įvesties lauko tipas. Jei laukas yra sveikasis skaičius, i&scaron;vesties rastras taip pat bus sveikasis skaičius; jei lauke naudojamas slankusis kablelis, jis bus naudojamas ir i&scaron;vesties rastre.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Choose feature layer to convert</h2></div>
+        <div><h2>Pasirinkite elementų sluoksnį, kurį norite konvertuoti</h2></div>
         <hr/>
         <div>
-            <p>The input feature layer to convert to a raster dataset.
+            <p>Įvesties elementų sluoksnis, kurį norite konvertuoti į rastrinį duomenų rinkinį.
             </p>
         </div>
     </div>
     <div id="field">
-        <div><h2>Choose field</h2></div>
+        <div><h2>Pasirinkite lauką</h2></div>
         <hr/>
         <div>
-            <p>Choose the field that will be used to assign values to the output raster.
+            <p>Pasirinkite lauką, kuris bus naudojamas priskiriant reik&scaron;mes i&scaron;vesties rastrui.
             </p> 
         </div>
     </div>
     <div id="outputCellSize">
-        <div><h2>Output cell size</h2></div>
+        <div><h2>Išvesties gardelės dydis</h2></div>
         <hr/>
         <div>
             <p>Įveskite i&scaron;vesties rastrų gardelės dydį ir matavimo vienetus.
             </p>
-            <p>The available units are Feet, Miles, Meters, and Kilometers.
+            <p>Galima rinktis &scaron;iuos vienetus: pėdas, mylias, metrus ir kilometrus.
             </p>
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>Rezultatų sluoksnio pavadinimas</h2></div>
         <hr/>
         <div>
             <p>Sluoksnio, kuris bus sukurtas puslapyje  <b>Mano turinys</b> ir įtrauktas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas naudojant įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau egzistuoja, jūsų papra&scaron;ys pateikti kitą pavadinimą.

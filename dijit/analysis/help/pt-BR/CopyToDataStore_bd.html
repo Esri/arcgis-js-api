@@ -40,7 +40,7 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Copiar para Armazenamento de Dados</h2><p/>
         <h2><img src="../images/GUID-4030C721-25E4-41C0-A240-B18E869FC434-web.png" alt="Copiar para Armazenamento de Dados"></h2>
         <hr/>
@@ -55,7 +55,15 @@
         <div>
             <p>A camada ou tabela que ser&aacute; copiada. 
             </p>
-            <p>Al&eacute;m de escolher uma camada de seu mapa, voc&ecirc; pode escolher  <b>Procurar Camadas</b> na parte inferior da lista suspensa para procurar por seu conte&uacute;do para um conjunto de dados de compartilhamento de arquivo big data ou camada de fei&ccedil;&atilde;o.  
+            <p>Al&eacute;m de escolher uma camada de seu mapa, voc&ecirc; pode escolher  <b>Procurar Camadas</b> na parte inferior da lista suspensa para procurar por seu conte&uacute;do para um conjunto de dados de compartilhamento de arquivo big data ou camada de fei&ccedil;&atilde;o.
+            </p>
+        </div>
+    </div>
+    <div id="selection">
+        <div><h2>Você pode utilizar todas as feições ou criar uma seleção (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Opcionalmente, utilize o bot&atilde;o de sele&ccedil;&atilde;o para identificar as localiza&ccedil;&otilde;es a serem copiadas.
             </p>
         </div>
     </div>
@@ -63,7 +71,7 @@
         <div><h2>Escolha o ArcGIS Data Store no qual copiar</h2></div>
         <hr/>
         <div>
-            <p> O armazenamento de dados no qual a camada ser&aacute; copiada. As op&ccedil;&otilde;es s&atilde;o as seguintes:
+            <p>O armazenamento de dados no qual a camada ser&aacute; copiada. Este par&acirc;metro anular&aacute; a sele&ccedil;&atilde;o nos  <b>Ambientes de An&aacute;lise</b> As op&ccedil;&otilde;es s&atilde;o as seguintes:
                 <ul>
                     <li> <b>Espa&ccedil;o-Tempo</b>&mdash;Esta &eacute; a padr&atilde;o.
                     </li>
@@ -78,7 +86,7 @@
         <div><h2>Nome da camada resultante</h2></div>
         <hr/>
         <div>
-            <p> Este &eacute; o nome da camada que ser&aacute; criada em <b>Meu Conte&uacute;do</b> e adicionada ao mapa.  O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existe, a ferramenta falhar&aacute;.
+            <p> Este &eacute; o nome da camada que ser&aacute; criada em <b>Meu Conte&uacute;do</b> e adicionada no mapa.  O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existe, a ferramenta falhar&aacute;.
             </p>
             <p>Ao utilizar a caixa suspensa  <b>Salvar resultado em</b>, &eacute; poss&iacute;vel especificar o nome de uma pasta em <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo.
             </p>

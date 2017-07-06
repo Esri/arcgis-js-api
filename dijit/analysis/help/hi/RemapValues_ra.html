@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>रीमैप मान</h2><p/>
+        <h2><img src="../images/GUID-4006E442-A60B-469A-891D-5ED442F64CB8-web.png" alt="पोर्टल के लिए रीमैप मान टूल"></h2>
+        <hr/>
+    <p>यह टूल आपको रैस्टर डेटा के पिक्सेल मानों को बदल सकने या पुनःवर्गीकृत करने की अनुमति देता है। एक आउटपुट पिक्सेल मान के लिए मैप करने हेतु पिक्सेल मानों की एक रेंज निर्दिष्ट करने के द्वारा पिक्सल मानों को रीमैप किया जाता है। आउटपुट पिक्सेल मान एक मान्य मान या एक नोडेटा मान हो सकता है, जो ऐसे पिक्सल होते हैं जिनके साथ एक ज्ञात मान जुड़ा नहीं होता है।
+    </p>
+    <p>यदि  <b>वर्तमान मानचित्र सीमा प्रयोग करें</b> चयनित है, तो केवल वे सेल ही रीमैप होंगे जो वर्तमान मानचित्र सीमा में दिखाई दे रहे हैं। अगर अचयनित हैं, रैस्टर में स्थित सभी सेल संसाधित होंगे, भले ही वे वर्तमान मानचित्र हद से बाहर स्थित हैं।
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>इनपुट डेटा</h2></div>
+        <hr/>
+        <div>
+            <p>इनपुट डेटा जिसके मानों को रीमैप किया जाएगा।
+            </p>
+        </div>
+    </div>
+    <div id="RemapList">
+        <div><h2>पिक्सेल मानों को नए मानों में पुनःमैप करें</h2></div>
+        <hr/>
+        <div>
+            <p>आप एक न्यूनतम और अधिकतम मान निर्दिष्ट करने के द्वारा मानों की एक रेंज प्रविष्ट करते हैं, और फिर निर्दिष्ट रेंज के लिए एक आउटपुट मान या एक नोडेटा मान नियत करते हैं।
+            </p>
+            <p>मानों की एक नई रेंज रीमैप करने के लिए,  <b>जोड़ें</b>को क्लिक करें, जो एक पंक्ति को जोड़ता है। रेंज में तालिका संपादित करने और अपनी आवश्यकता के अनुसार मान को रीमैप करने के लिए प्रत्येक मान पर क्लिक करें। जब आप मान की रेंज निर्दिष्ट करते हैं, तब दो महत्वपूर्ण नियम लगाए जाते हैं:
+                <ul>
+                    <li>रेंज में न्यूनतम मान समावेशी होता है और अधिकतम मान विशिष्ट होता है।
+                    </li>
+                    <li>तालिका में पंक्तियों को ऊपर से नीचे की तरफ संसाधित किया जाता है।
+                    </li>
+                </ul>
+                
+            </p>
+            <p>नीचे दी गई तालिका से पता चलता है कि न्यूनतम मान आउटपुट में शामिल होता है, लेकिन अधिकतम मान आउटपुट में शामिल नहीं होता है।
+            </p>
+            <table border="1">
+            <tr>
+                <td>
+                    <p>1
+                    </p>
+                </td>
+                <td>
+                    <p>10
+                    </p>
+                </td>
+                <td>
+                    <p>1-9
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>10
+                    </p>
+                </td>
+                <td>
+                    <p>20
+                    </p>
+                </td>
+                <td>
+                    <p>10-19
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>50
+                    </p>
+                </td>
+                <td>
+                    <p>51
+                    </p>
+                </td>
+                <td>
+                    <p>50
+                    </p>
+                </td>
+            </tr>
+            </table>
+            <p>तालिका में निर्दिष्ट रेंज का क्रम भी महत्वपूर्ण है। तालिका की शीर्ष पंक्ति पहले संसाधित की जाती है, उसके बाद नीचे पंक्ति संसाधित की जाती है। नीचे दी गई दो तालिकाएं दिखाती हैं कि कैसे तालिका की पंक्तियों के क्रम की वजह से एक ही मान रेंज कैसे एक अलग परिणाम प्रस्तुत करेंगी। 
+            </p>
+            <table border="1">
+            <tr>
+                <td>
+                    <p>1
+                    </p>
+                </td>
+                <td>
+                    <p>15
+                    </p>
+                </td>
+                <td>
+                    <p>1-14
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>10
+                    </p>
+                </td>
+                <td>
+                    <p>30
+                    </p>
+                </td>
+                <td>
+                    <p>15-29
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>30
+                    </p>
+                </td>
+                <td>
+                    <p>40
+                    </p>
+                </td>
+                <td>
+                    <p>30-39
+                    </p>
+                </td>
+            </tr>
+            </table>
+            <table border="1">
+            <tr>
+                <td>
+                    <p>10
+                    </p>
+                </td>
+                <td>
+                    <p>30
+                    </p>
+                </td>
+                <td>
+                    <p>10-29
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>1
+                    </p>
+                </td>
+                <td>
+                    <p>15
+                    </p>
+                </td>
+                <td>
+                    <p>1-9
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>30
+                    </p>
+                </td>
+                <td>
+                    <p>40
+                    </p>
+                </td>
+                <td>
+                    <p>30-39
+                    </p>
+                </td>
+            </tr>
+            </table>
+            <p>मानों को पुन: व्यवस्थित करने के लिए दोनों नियमों को लागू किया जाता है। चूंकि प्रत्येक पंक्ति को ऊपर से नीचे तक संसाधित किया जाता है, आउटपुट का निर्धारण करते समय ये मान प्रधानता प्राप्त कर लेते हैं, भले ही समान रेंज प्रयोग की गयी हो।
+            </p>
+        </div>
+    </div>
+    <div id="OutputLayer">
+        <div><h2>परिणामी लेयर का नाम</h2></div>
+        <hr/>
+        <div>
+            <p>फीचर लेयर का नाम, जो  <b>मेरी सामग्री</b> में बनाया जाएगा और मानचित्र में जोड़ा जाएगा। इसका मूल नाम उपकरण के नाम और इनपुट लेयर के नाम पर आधारित है। यदि लेयर पहले से मौजूद हो, तो आपसे दूसरा नाम देने को कहा जाएगा।
+            </p>
+            <p> <b>इसमें सहेजें</b> ड्राप-डाउन बॉक्स का उपयोग करके, आप <b>मेरी सामग्री</b> में एक फोल्डर का नाम निर्दिष्ट कर सकते हैं, जहां परिणामों को सहेजा जाएगा।।
+            </p>
+        </div>
+    </div>
+</div>
+</html>

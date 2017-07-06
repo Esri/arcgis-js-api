@@ -40,7 +40,7 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Utwórz bufory</h2><p/>
         <h2><img src="../images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" alt="Utw&oacute;rz bufory"></h2>
         <hr/>
@@ -54,9 +54,9 @@
         <div><h2>Wybierz warstwę do zastosowania buforu</h2></div>
         <hr/>
         <div>
-            <p>Obiekty punktowe, liniowe lub powierzchniowe do buforowania.
+            <p>Obiekty punktowe, liniowe lub powierzchniowe do buforowania. Warstwy wejściowe muszą korzystać z układu wsp&oacute;łrzędnych odwzorowanych lub odniesienie przestrzenne przetwarzania musi zostać skonfigurowane w układzie wsp&oacute;łrzędnych odwzorowanych w oknie  <b>Środowiska analizy</b>.
             </p>
-            <p>Opr&oacute;cz wybrania warstwy z mapy, można wybrać opcję  <b>Przeglądaj warstwy</b> znajdującą się w dolnej części listy rozwijanej, aby przejść do zasob&oacute;w zestawu danych udostępnionych plik&oacute;w dużych zbior&oacute;w danych lub warstwy obiektowej.  
+            <p>Opr&oacute;cz wybrania warstwy z mapy, można wybrać opcję  <b>Przeglądaj warstwy</b> znajdującą się w dolnej części listy rozwijanej, aby przejść do zasob&oacute;w zestawu danych udostępnionych plik&oacute;w dużych zbior&oacute;w danych lub warstwy obiektowej.
             </p>
         </div>
     </div>
@@ -126,26 +126,28 @@
         <div>
             <p> Można obliczyć statystyki dla zsumowanych obiekt&oacute;w. W polach liczbowych można obliczyć następujące wartości:
                 <ul>
-                    <li>Liczba
+                    <li>Liczba &mdash; zlicza wartości inne niż null. Może być używane w polach liczbowych lub znakowych. Liczba dla wartości [null, 0, 2] wynosi 2.
                     </li>
-                    <li>Średnia
+                    <li>Suma &mdash; suma wartości liczbowych w polu. Suma dla wartości [null, null, 3] wynosi 3.
                     </li>
-                    <li>Min
+                    <li>Średnia &mdash; średnia wartości liczbowych. Średnia dla wartości [0, 2, null] wynosi 1.
                     </li>
-                    <li>Maks
+                    <li>Min &mdash; wartość minimalna w polu liczbowym. Wartość minimalna dla wartości [0, 2, null] wynosi 0. 
                     </li>
-                    <li>Zakres
+                    <li>Maks &mdash; wartość maksymalna w polu liczbowym. Wartość maksymalna dla wartości [0, 2, null] wynosi 2.
                     </li>
-                    <li>Odchylenie
+                    <li>Zakres &mdash; zakres pola liczbowego. Zakres jest obliczany przez odjęcie wartości minimalnych od wartości maksymalnej. Zakres dla wartości [0, null, 1] wynosi 1. Zakres dla wartości [null, 4] wynosi 0.
                     </li>
-                    <li>Odchylenie standardowe
+                    <li>Wariancja &mdash; wariancja pola liczbowego w ścieżce. Wariancja dla wartości [1] wynosi null. Wariancja dla wartości [null, 1, 1 ,1] wynosi 1.
+                    </li>
+                    <li>Odchylenie standardowe &mdash; odchylenie standardowe pola liczbowego. Odchylenie standardowe dla wartości [1] wynosi null. Odchylenie standardowe dla wartości [null, 1, 1 ,1] wynosi 1. 
                     </li>
                 </ul>
                 
             </p>
             <p>W polach ciąg&oacute;w znakowych można obliczyć następujące wartości:
                 <ul>
-                    <li>Liczba
+                    <li>Liczba &mdash; liczba ciąg&oacute;w znakowych innych niż null.
                     </li>
                     <li>Dowolne &mdash; ta statystyka to losowy przykład wartości znakowej w podanym polu.
                     </li>
@@ -155,10 +157,20 @@
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Wybierz magazyn danych</h2></div>
+        <div><h2>Wybierz aplikację ArcGIS Data Store, w której zostaną zapisane wyniki</h2></div>
         <hr/>
         <div>
-            <p>Jest to parametr tymczasowy używany w wersji wstępnej do ustawiania magazynu danych, w kt&oacute;rym zapisywane są wyniki. Oba magazyny danych są częścią aplikacji  ArcGIS Data Store. Jeśli zostanie wybrany magazyn danych czasowo-przestrzennych, ale żaden magazyn tego typu nie został zainstalowany, działanie narzędzia nie powiedzie się. </p>
+            <p>Wyniki analiz geoprzestrzennych są przechowywane w aplikacji ArcGIS Data Store i udostępniane jako warstwa obiekt&oacute;w w witrynie  Portal for ArcGIS. W większości przypadk&oacute;w wyniki powinny być przechowywane w magazynie danych czasowo-przestrzennych i jest to ustawienie domyślne. W niekt&oacute;rych przypadkach dobrym rozwiązanie jest zapisanie wynik&oacute;w w relacyjnym magazynie danych. Poniżej podano sytuacje, kt&oacute;re mogą uzasadniać przechowywanie wynik&oacute;w w relacyjnym magazynie danych: 
+                <ul>
+                    <li>Używanie wynik&oacute;w w ramach kooperacji między portalami.
+                    </li>
+                    <li>Włączanie możliwości synchronizacji dla wynik&oacute;w.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Nie należy używać relacyjnego magazynu danych, jeśli liczba wynik&oacute;w analiz geoprzestrzennych może się zwiększyć i może być konieczne zastosowanie magazynu dużych zbior&oacute;w danych czasowo-przestrzennych w celu obsłużenia dużych ilości danych. 
+            </p>
         </div>
     </div>
     <div id="outputName">

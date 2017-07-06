@@ -1,0 +1,11 @@
+.esriAppProxyLoading {
+  background: url(../../images/ajax-loader-arrow-lightblue.gif) no-repeat 10% center;
+}
+
+.dijitRtl .esriAppProxyLoading {
+  background-position: 90% center;
+}
+
+.esriAppProxyHidden {
+  display: none;
+}

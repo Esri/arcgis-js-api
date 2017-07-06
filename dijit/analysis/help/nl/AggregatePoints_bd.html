@@ -60,9 +60,9 @@
         <div><h2>Kies een laag met punten om in gebieden te aggregeren</h2></div>
         <hr/>
         <div>
-            <p>De puntlaag die in gebieden wordt geaggregeerd.
+            <p>De puntlaag die in gebieden wordt geaggregeerd. Puntlagen die zijn geaggregeerd naar  <b>Vier-</b> of <b>Zeshoekige</b> bins moeten de processing ruimtelijke referentie moet worden ingesteld op een geprojecteerd co&ouml;rdinaatsysteem met behulp van de <b>Analysis Environments</b>.
             </p>
-            <p>Naast het kiezen van een laag van uw kaart, kunt u kiezen voor  <b>Blader door lagen</b> aan de onderkant van de drop-downlijst om in uw inhoud te zoeken naar een groot gedeeld databestand of objectlaag.  
+            <p>Naast het kiezen van een laag van uw kaart, kunt u kiezen voor  <b>Blader door lagen</b> aan de onderkant van de drop-downlijst om in uw content te zoeken naar een groot gedeeld databestand of objectlaag.
             </p>
         </div>
     </div>
@@ -72,6 +72,8 @@
         <div>
             <p>De gebieden waar de puntlaag in wordt geaggregeerd. U kunt kiezen tussen een gebiedslaag die u verstrekt of bins die worden gegenereerd als de tool wordt uitgevoerd. Bij het genereren van bins, voor  <b>Vierkant</b> bepalen het gespecificeerde aantal en de eenheden de hoogte en de lengte van het vierkant. Voor <b>Zeskant</b> bepalen het gespecificeerde aantal en de eenheden de afstand tussen de evenwijdige zijden.
             </p>
+            <p>Analyse d.m.v.  <b>vier-</b> of <b>zeshoekige</b> bins vereist een geprojecteerd co&ouml;rdinaatsysteem. U kunt het <b>Processing co&ouml;rdinaatsysteem</b> instellen bij <b>Analysis Environments</b>. Als uw processing co&ouml;rdinaatsysteem niet op een geprojecteerd co&ouml;rdinaatsysteem is ingesteld, zal u gevraagd worden het in te stellen wanneer u <b>Analyse uitvoeren</b> kiest.
+            </p>
         </div>
     </div>
     <div id="polygonLayer">
@@ -79,8 +81,6 @@
         <hr/>
         <div>
             <p>De gebiedslaag waarnaar de punten worden geaggregeerd. Punten die binnen de grenzen van gebieden in deze laag liggen, worden geteld en eventueel samengevat voor uw keuzes van statistieken. 
-            </p>
-            <p>
             </p>
             <p>Ofwel de  <b>Bingrootte</b> voor bins of een <b>Gebiedslaag</b> moet worden ingesteld.
             </p>
@@ -97,53 +97,53 @@
         </div>
     </div>
     <div id="timeSlicing">
-        <div><h2>Aggregeren d.m.v. tijdsdelen (optioneel)</h2></div>
+        <div><h2>Aggregeren met tijdstappen (optioneel)</h2></div>
         <hr/>
         <div>
-            <p>Als de tijd is ingeschakeld op de invoerpuntlaag en het is van het type direct, dan kunt u analyseren met behulp van tijdsplitsing. Er zijn drie parameters die u kunt instellen als u tijd gebruikt:
+            <p>Als de tijd is ingeschakeld op de invoerpuntlaag en het is van het type instant, dan kunt u analyseren met behulp van tijdstappen. Er zijn drie parameters die u kunt instellen als u tijd gebruikt:
                 <ul>
-                    <li>  <b>Tijdsinterval</b>
+                    <li> <b>Tijdstapinterval</b>
                     </li>
-                    <li> <b>Tijdstap</b>
+                    <li> <b>Hoe vaak de tijdstap herhaald wordt</b>
                     </li>
-                    <li> <b>Referentietijd</b>
+                    <li> <b>Tijd om de tijdstappen op uit te lijnen</b>
                     </li>
                 </ul>
                 
             </p>
-            <p>Stel u voor dat uw gegevens een jaar vertegenwoordigen en u wilt ze analyseren met behulp van wekelijkse plakjes. Om dat te doen, moet u  <b>Tijdsinterval</b> instellen op <code>1 week.</code>
+            <p>Stel u voor dat uw gegevens een jaar vertegenwoordigen en u wilt ze analyseren met behulp van wekelijkse stapjes. Om dat te doen, moet u  <b>Tijdstapinterval</b> instellen op <code>1 week</code>.
             </p>
-            <p> Stel u voor dat uw gegevens een jaar vertegenwoordigen en u wilt ze analyseren aan de hand van de eerste week van de maand. Om dat te doen moet u <b>Tijdsinterval</b> instellen op <code>1 week</code>, <b>Tijdstap</b> op <code>1 maand</code>, en <b>Referentietijd</b> op <code>1 januari om 12:00 uur</code>.
+            <p>Stel u voor dat uw gegevens een jaar vertegenwoordigen en u wilt ze analyseren aan de hand van de eerste week van de maand. Om dat te doen moet u  <b>Tijdstapinterval instellen</b> op <code>1 week</code>, <b>Hoe vaak wordt de tijdstap herhaald</b> op <code>1 maand</code> en <b>Tijd om de tijdstappen op uit te lijnen</b> op <code>1 januari, om 12:00 uur</code>.
             </p>
         </div>
     </div>
     <div id="timeInterval">
-        <div><h2>Tijdsinterval om in te aggregeren</h2></div>
+        <div><h2>Tijdstapinterval</h2></div>
         <hr/>
         <div>
-            <p>Tijdsinterval voor het opdelen van de data. Tijdsinterval kan alleen worden gebruikt of in combinatie met de parameter  <b>Tijdstap</b> of <b>Referentietijd</b>.
+            <p>Tijdsinterval gebruikt voor het genereren van tijdstappen. Tijdstapinterval kan alleen worden gebruikt of gebruikt met de  <b>Hoe vaak wordt de tijdstap herhaald</b> of <b>Tijd om de tijdstappen op uit te lijnen</b> parameters.
             </p>
-            <p> Als u tijdsplitsingen wilt cre&euml;ren die plaatsvonden op elke maandag van 09:00 uur tot 10:00 uur, dan is <b>Tijdsinterval</b> <code>1 uur</code>, <b>Tijdstap</b> <code>1 week</code> en <b>Referentietijd</b> is dan <code>9:00:00 uur op een maandag</code>.
+            <p>Als u tijdsplitsingen wilt cre&euml;ren die plaatsvonden op elke maandag van 9:00 uur tot 10:00 uur, dan is  <b>Tijdstap</b> <code>1 uur</code>, <b>Hoe vaak wordt de tijdstap herhaald</b> is <code>1 week</code> en <b>Tijd om de tijdstappen op uit te lijnen</b> is <code>9:00 uur op maandag</code>.
             </p>
         </div>
     </div>
     <div id="timeStep">
-        <div><h2>Tijdstap om in te agregeren</h2></div>
+        <div><h2>Hoe vaak de tijdstap herhaald wordt</h2></div>
         <hr/>
         <div>
-            <p> De stap gebruikt voor het berekenen van een tijdsplitsing. <b>Tijdstap</b> kan alleen worden gebruikt of met <b>Tijdsinterval</b> met <b>Referentietijd</b> of met beide <b>Tijdsinterval</b> en <b>Referentietijd</b>.
+            <p> De stap gebruikt voor het berekenen van een tijdsplitsing. <b>Hoe vaak wordt de tijdstap herhaald</b> kan alleen worden gebruikt of met <b>Tijdstapinterval</b> met <b>Referentietijd</b> of met beide <b>Tijdstapinterval</b> en <b>Tijd om de tijdstappen op uit te lijnen</b>.
             </p>
-            <p> Als u tijdsplitsingen wilt cre&euml;ren die plaatsvonden op elke maandag van 09:00 uur tot 10:00 uur, dan is <b>Tijdsinterval</b> <code>1 uur</code>, <b>Tijdstap</b> <code>1 week</code> en <b>Referentietijd</b> is dan <code>9:00:00 uur op een maandag</code>.
+            <p> Als u tijdsplitsingen wilt cre&euml;ren die plaatsvonden op elke maandag van 9:00 uur tot 10:00 uur, dan is <b>Tijdstap</b> <code>1 uur</code>, <b>Hoe vaak wordt de tijdstap herhaald</b> is <code>1 week</code> en <b>Tijd om de tijdstappen op uit te lijnen</b> is <code>9:00 uur op maandag</code>.
             </p>
         </div>
     </div>
     <div id="timeReference">
-        <div><h2>Referentietijd gebruikt om tijdsplakken op af te stemmen</h2></div>
+        <div><h2>Tijd om tijdstappen op uit te lijnen</h2></div>
         <hr/>
         <div>
-            <p>De datum en tijd gebruikt om tijdsplakken op af te stemmen  <b>Tijdstap</b> start vanaf en gaat verder terugwaarts naar de gerefereerde tijd.
+            <p>De datum en tijd gebruikt om tijdsplakken op af te stemmen Tijdstap start vanaf en gaat verder terugwaarts naar deze tijd. Als er geen referentietijd wordt geselecteerd, zal de tijdstap uitlijnen op 1 januari 1970. 
             </p>
-            <p> Als u tijdsplitsingen wilt cre&euml;ren die plaatsvonden op elke maandag van 09:00 uur tot 10:00 uur, dan is <b>Tijdsinterval</b> <code>1 uur</code>, <b>Tijdstap</b> <code>1 week</code> en <b>Referentietijd</b> is dan <code>9:00:00 uur op een maandag</code>.
+            <p> Als u tijdsplitsingen wilt cre&euml;ren die plaatsvonden op elke maandag van 9:00 uur tot 10:00 uur, dan is <b>Tijdstap</b> <code>1 uur</code>, <b>Hoe vaak wordt de tijdstap herhaald</b> is <code>1 week</code> en <b>Tijd om de tijdstappen op uit te lijnen</b> is <code>9:00 uur op maandag</code>.
             </p>
         </div>
     </div>
@@ -153,26 +153,28 @@
         <div>
             <p> U kunt statistieken berekenen over objecten die zijn samengevat. Op numerieke velden kunt u het volgende berekenen:
                 <ul>
-                    <li>Aantal
+                    <li>Count&mdash;Berekent het aantal non-nulwaarden. Kan gebruikt worden op numerieke velden of strings. De telling van [nul, 0, 2] is 2.
                     </li>
-                    <li>Gemiddelde
+                    <li>Som&mdash;De som van numerieke waarden in een veld. De som van [nul, nul, 3] is 3.
                     </li>
-                    <li>Min
+                    <li>Gemiddelde&mdash;Het gemiddelde van numerieke waarden. Het gemiddelde van [0, 2, nul] is 1.
                     </li>
-                    <li>Max
+                    <li>Min&mdash;De minimumwaarde van een numeriek veld. Het minimum van [0, 2, nul] is 0. 
                     </li>
-                    <li>Bereik
+                    <li>Max&mdash;De maximumwaarde van een numeriek veld. De maximumwaarde van [0, 2, nul] is 2.
                     </li>
-                    <li>Variantie
+                    <li>Bereik&mdash;Het bereik van een numeriek veld. Dit wordt berekend als de minimumwaarden afgetrokken van de maximumwaarde. Het bereik van [0, nul, 1] is 1. Het bereik van [nul, 4] is 0.
                     </li>
-                    <li>Standaardafwijking
+                    <li>Variantie&mdash;De variantie van een numeriek veld in een track. De variantie van [1] is nul. De variantie van [null, 1,1,1] is 1.
+                    </li>
+                    <li>Standaarddeviatie&mdash;De standaarddeviatie van een numeriek veld. De standaarddeviatie van [1] is nul. De standaarddeviatie van [null, 1,1,1] is 1. 
                     </li>
                 </ul>
                 
             </p>
             <p>Op stringvelden kunt u het volgende berekenen:
                 <ul>
-                    <li>Aantal
+                    <li>Telling&mdash;Het aantal non-nul strings.
                     </li>
                     <li>Elke&mdash;Deze statistiek is een willekeurig voorbeeld van een stringwaarde in het gespecificeerde veld.
                     </li>
@@ -190,10 +192,20 @@
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Datastore kiezen</h2></div>
+        <div><h2>Kies een ArcGIS Data Store om de resultaten in op te slaan</h2></div>
         <hr/>
         <div>
-            <p>Dit is een tijdelijke parameter voor prerelease om de data-opslag in te stellen waar de resultaten worden opgeslagen. Beide data-opslagplaatsen maken deel uit van  ArcGIS Data Store . Als u de tijdruimtelijke gegevensopslag selecteert maar er geen hebt ge&iuml;nstalleerd, dan zal de tool falen. </p>
+            <p>GeoAnalytische resultaten worden opgeslagen in een ArcGIS Data Store en weergegeven als een objectlaag in  Portal for ArcGIS. In de meeste gevallen moeten de resultaten worden opgeslagen in de spatiotemporele data-opslag en dit is de standaardinstelling. In sommige gevallen is het opslaan van de resultaten in de relationele data-opslag een goede optie. Hier volgen redenen waarom u resultaten zou willen opslaan in een relationele data-opslag: 
+                <ul>
+                    <li>Om uw resultaten te gebruiken voor portaalsamenwerking.
+                    </li>
+                    <li>Om synchronisatiemogelijkheden met uw resultaten mogelijk te maken.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>U moet geen gebruik maken van een relationele data-opslag als u verwacht dat uw GeoAnalytics-resultaten toenemen en u wilt profiteren van de mogelijkheden van de spatiotemporele big data-opslag om grote hoeveelheden gegevens te verwerken. 
+            </p>
         </div>
     </div>
     <div id="outputName">

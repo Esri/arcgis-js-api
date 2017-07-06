@@ -1,6 +1,6 @@
 <div class="${_css.base}">
   <div class="esriFloatLeading esriCalcHelp" data-dojo-attach-point="_helpNode">
-    <a href="#" class="">${i18n.learnMore}</a>
+    <a href="#" data-dojo-attach-point="_helpurlNode" target='_help' class="">${i18n.learnMore}</a>
   </div>
   <div data-dojo-type="dijit/layout/ContentPane" style="width:99%;margin-top:0.5em; margin-bottom: 0.5em;">
     <div data-dojo-attach-point="_header" class="${_css.titleLabel}">
@@ -16,7 +16,7 @@
     <div style="width:100%;padding-bottom:0.5em;" class="esriFloatLeading">
       <label class="esriLeadingMargin1" data-dojo-attach-point="_calcFieldLabel"></label>
     </div>
-    <input class="esriFloatLeading esriLeadingMargin1 ${_css.expressionBox}" dir="ltr" data-dojo-type="dijit/form/SimpleTextarea" data-dojo-attach-point="_exprBox" data-dojo-props="rows:4 ,cols:2,required:true,intermediateChanges:true"></input>
+    <input class="esriFloatLeading esriLeadingMargin1 ${_css.expressionBox}" dir="ltr" data-dojo-type="dijit/form/SimpleTextarea" data-dojo-attach-point="_exprBox" data-dojo-props="rows:${expressionBoxRows} ,cols:${expressionBoxCols},required:true,intermediateChanges:true"></input>
     <div class="esriFloatLeading ${_css.actionBtnContainer}">
       <div class="esriFloatLeading esriLeadingMargin1" style="width:70%;padding-bottom:0.5em;" dir="ltr" data-dojo-attach-point="_operatorCtr"></div>
       <div data-dojo-type="dijit/form/Button" class="${_css.actionButton} esriFloatTrailing esriTrailingMargin1" data-dojo-props="label:'${i18n.remove}',iconClass:'${_css.clearIcon}',showLabel: false, disabled:true" data-dojo-attach-event="onClick:_handleRemoveBtnClick" data-dojo-attach-point="_removeBtn"></div>
@@ -55,7 +55,7 @@
       </a>
       <span data-dojo-attach-point="_bodyNode" style="width:100%;height:100%;"></span>
     </div>
-    <div style="clear:both; border-bottom: #CCC thin solid; height:1px;width:100%;"></div>
+    <div class="${_css.actionDividerLine}"></div>
     <div  class="esriFloatTrailing esriTrailingMargin2" data-dojo-attach-point="_buttonCtr" style="padding:1em 0">
       <div data-dojo-type="dijit/form/Button"  class="${_css.addButton}" data-dojo-attach-point="_addBtn" data-dojo-attach-event="onClick:_handleAddButtonClick">
         ${calculateLabel}

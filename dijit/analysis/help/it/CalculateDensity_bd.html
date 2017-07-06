@@ -70,12 +70,12 @@
         <div>
             <p>The point layer on which the density will be calculated.
             </p>
-            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Sfoglia layer</b> alla base dell'elenco a discesa per cercare una dataset di condivisione file Big Data o un feature layer.  
+            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Sfoglia layer</b> alla base dell'elenco a discesa per cercare una dataset di condivisione file Big Data o un feature layer.
             </p>
         </div>
     </div>
     <div id="fields">
-        <div><h2>Scegliere uno o più campi su cui calcolare la densità</h2></div>
+        <div><h2>Scegliere uno o più campi su cui calcolare la densità (facoltativo)</h2></div>
         <hr/>
         <div>
             <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
@@ -90,10 +90,12 @@
         <div>
             <p>The shape of bins that points are aggregated into and used for the density calculation.
             </p>
+            <p>L'analisi tramite l'utilizzo di contenitori  <b>Quadrato</b> o <b>Esagono</b> richiede un sistema di coordinate proiettato. &Egrave; possibile impostare il <b>Sistema di coordinate di elaborazione</b> negli <b>Ambienti di analisi</b>. Se il sistema di coordinate di elaborazione non &egrave; impostato su un sistema di coordinate proiettate, verr&agrave; chiesto di impostarlo quando si <b>Esegue l'analisi</b>.
+            </p>
         </div>
     </div>
     <div id="binSizing">
-        <div><h2>Seleziona le dimensioni contenitore per i calcoli di densità</h2></div>
+        <div><h2>Seleziona le dimensioni contenitore per l'aggregazione</h2></div>
         <hr/>
         <div>
             <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
@@ -127,59 +129,59 @@
         <div><h2>Scegli le unità di output per la densità</h2></div>
         <hr/>
         <div>
-            <p>The desired output units of the density values. By default, this is set to the units in your map (for example, square meters). If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+            <p>The desired output units of the density values. By default, this is set to square kilometers or square miles based on the default units specified in your profile. If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
 
             </p>
         </div>
     </div>
     <div id="timeSlicing">
-        <div><h2>Calcolare la densità usando periodi di tempo (facoltativo)</h2></div>
+        <div><h2>Calcola la densità usando i passaggi temporali (facoltativo)</h2></div>
         <hr/>
         <div>
-            <p>Se il layer di punti di input &egrave; abilitato per variazioni temporali ed &egrave; di tipo istante, &egrave; possibile eseguire l'analisi utilizzando i periodi di tempo.  Sono disponibili tre parametri da impostare quando si utilizza il tempo:
+            <p>Se il layer di punti di input &egrave; abilitato per variazioni temporali ed &egrave; di tipo istante, &egrave; possibile eseguire l'analisi utilizzando incrementi di tempo. Sono disponibili tre parametri da impostare quando si utilizza il tempo:
                 <ul>
-                    <li>  <b>Intervallo temporale</b>
+                    <li> <b>Intervallo del passaggio temporale</b>
                     </li>
-                    <li> <b>Passaggio temporale</b>
+                    <li> <b>Frequenza di ripetizione del passaggio temporale</b>
                     </li>
-                    <li> <b>Ora di riferimento</b>
+                    <li> <b>Tempo a cui allineare i passaggi temporali</b>
                     </li>
                 </ul>
                 
             </p>
-            <p>Si supponga di avere dati che rappresentano un anno e che si desidera eseguire un'analisi utilizzando intervalli settimanali. A tal fine, impostare  <b>Intervallo temporale</b> su <code>1 settimana</code>.
+            <p>Si supponga di avere dati che rappresentano un anno e che si desidera eseguire un'analisi utilizzando incrementi settimanali. A tal fine, impostare  <b>Intervallo del passaggio temporale</b> su <code>1 settimana</code>.
             </p>
-            <p> Si supponga di avere dati che rappresentano un anno e che si desidera eseguire un'analisi utilizzando la prima settimana del mese. A tale fine, impostare <b>Intervallo temporale</b> su <code>1 settimana</code>, <b>Passaggio temporale</b> su <code>1 mese</code> e <b>Tempo di riferimento</b> su <code>1 gennaio alle ore 12.00</code>.
+            <p>Si supponga di avere dati che rappresentano un anno e che si desidera eseguire un'analisi utilizzando la prima settimana del mese. A tale fine, impostare  <b>Intervallo del passaggio temporale</b> su <code>1 settimana</code>, <b>Frequenza di ripetizione del passaggio temporale</b> su <code>1 mese</code> e <b>Tempo a cui allineare i passaggi temporali</b> su <code>1 gennaio alle ore 12.00</code>.
             </p>
         </div>
     </div>
     <div id="timeInterval">
-        <div><h2>Intervallo di tempo su cui calcolare la densità</h2></div>
+        <div><h2>Intervallo del passaggio temporale</h2></div>
         <hr/>
         <div>
-            <p>Intervallo di tempo utilizzato per suddividere i dati. L'intervallo di tempo pu&ograve; essere utilizzato da solo o insieme al parametro  <b>Passaggio temporale</b> o <b>Tempo di riferimento</b>.
+            <p>Intervallo di tempo utilizzato per la generazione di passaggi temporali. Intervallo del passaggio temporale deve essere utilizzato da solo o con i parametri  <b>Frequenza di ripetizione del passaggio temporale</b> o <b>Tempo a cui allineare i passaggi temporali</b>.
             </p>
-            <p> Per creare periodi di tempo che hanno luogo tutti i luned&igrave; dalle 9 alle 10, impostare <b>Intervallo temporale</b> su <code>1 ora</code>, <b>Passaggio temporale</b> su <code>1 settimana</code> e <b>Tempo di riferimento</b> su <code>luned&igrave; ore 9</code>.
+            <p>Per creare periodi di tempo che hanno luogo tutti i luned&igrave; dalle 9 alle 10, impostare  <b>Intervallo del passaggio temporale</b> su <code>1 ora</code>, <b>Frequenza di ripetizione del passaggio temporale</b> su <code>1 settimana</code> e <b>Tempo a cui allineare i passaggi temporali</b> su <code>luned&igrave; ore 9</code>.
             </p>
         </div>
     </div>
     <div id="timeStep">
-        <div><h2>Passaggio temporale su cui calcolare la densità</h2></div>
+        <div><h2>Frequenza di ripetizione del passaggio temporale</h2></div>
         <hr/>
         <div>
-            <p> Il passaggio utilizzato per calcolare un periodo di tempo. <b>Passaggio temporale</b> pu&ograve; essere utilizzato da solo o insieme al parametro <b>Intervallo temporale</b>, con <b>Tempo di riferimento</b> oppure sia con <b>Intervallo temporale</b> che con <b>Tempo di riferimento</b>.
+            <p> Il passaggio utilizzato per calcolare un periodo di tempo. <b>Frequenza di ripetizione del passaggio temporale</b> pu&ograve; essere utilizzata da sola o con <b>Intervallo del passaggio temporale</b>, con <b>Ora di riferimento</b> o con <b>Intervallo del passaggio temporale</b> e <b>Tempo a cui allineare i passaggi temporali</b>.
             </p>
-            <p> Per creare periodi di tempo che hanno luogo tutti i luned&igrave; dalle 9 alle 10, impostare <b>Intervallo temporale</b> su <code>1 ora</code>, <b>Passaggio temporale</b> su <code>1 settimana</code> e <b>Tempo di riferimento</b> su <code>luned&igrave; ore 9</code>.
+            <p> Per creare periodi di tempo che hanno luogo tutti i luned&igrave; dalle 9 alle 10, impostare <b>Intervallo del passaggio temporale</b> su <code>1 ora</code>, <b>Frequenza di ripetizione del passaggio temporale</b> su <code>1 settimana</code> e <b>Tempo a cui allineare i passaggi temporali</b> su <code>luned&igrave; ore 9</code>.
             </p>
         </div>
     </div>
     <div id="timeReference">
-        <div><h2>Tempo di riferimento utilizzato per allineare il periodo di tempo</h2></div>
+        <div><h2>Tempo a cui allineare i passaggi temporali</h2></div>
         <hr/>
         <div>
-            <p>La data e l'ora utilizzate per allineare il periodo di tempo.  <b>Passaggio temporale</b> inizier&agrave; e continuer&agrave; all'indietro dal tempo di riferimento.
+            <p>La data e l'ora utilizzate per allineare il periodo di tempo. Gli incrementi di tempo inizieranno e continueranno a ritroso da questo momento. Se non &egrave; stata selezionata un'ora di riferimento, gli incrementi di tempo si allineeranno al 1 gennaio 1970. 
             </p>
-            <p> Per creare periodi di tempo che hanno luogo tutti i luned&igrave; dalle 9 alle 10, impostare <b>Intervallo temporale</b> su <code>1 ora</code>, <b>Passaggio temporale</b> su <code>1 settimana</code> e <b>Tempo di riferimento</b> su <code>luned&igrave; ore 9</code>.
+            <p> Per creare periodi di tempo che hanno luogo tutti i luned&igrave; dalle 9 alle 10, impostare <b>Intervallo del passaggio temporale</b> su <code>1 ora</code>, <b>Frequenza di ripetizione del passaggio temporale</b> su <code>1 settimana</code> e <b>Tempo a cui allineare i passaggi temporali</b> su <code>luned&igrave; ore 9</code>.
             </p>
         </div>
     </div>
@@ -195,16 +197,26 @@
         <div><h2>Scegliere il Data Store</h2></div>
         <hr/>
         <div>
-            <p>Questo &egrave; un parametro temporaneo per la versione provvisoria che consente di impostare il Data Store in cui verranno salvati i risultati. Entrambi i Data Store fanno parte di  ArcGIS Data Store. Se si seleziona lo Spatiotemporal Data Store ma questo non &egrave; installato, lo strumento non verr&agrave; eseguito. </p>
+            <p>I risultati GeoAnalytic sono memorizzati in un ArcGIS Data Store ed esposti come un feature layer in  Portal for ArcGIS. Nella maggior parte dei casi, i risultati devono essere memorizzati nello Spatiotemporal Data Store e questa &egrave; l'impostazione predefinita. In alcuni casi, il salvataggio dei risultati nel Data Store relazionale &egrave; un'ottima opzione. Di seguito sono memorizzate le ragioni per memorizzare i risultati nel Data Store relazionale: 
+                <ul>
+                    <li>Utilizzare i risultati nella collaborazione da portale a portale.
+                    </li>
+                    <li>Abilitare funzionalit&agrave; di sincronizzazione con i risultati.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Non utilizzare il Data Store relazionale se si prevede un incremento dei risultati GeoAnalytics ed &egrave; necessario sfruttare le funzionalit&agrave; dello Spatiotemporal Big Data Store per gestire grandi quantit&agrave; di dati. 
+            </p>
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Nome layer risultati</h2></div>
+        <div><h2>Nome layer di risultati</h2></div>
         <hr/>
         <div>
             <p> Questo &egrave; il nome del layer che verr&agrave; creato in <b>I miei contenuti</b> e aggiunto alla mappa.  Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, lo strumento non verr&agrave; eseguito.
             </p>
-            <p>Utilizzare la casella a discesa  <b>Salva risultato in</b> per specificare il nome di una cartella di <b>I miei contenuti</b> in cui salvare il risultato.
+            <p>Utilizzare la casella a discesa  <b>Salva risultato in</b> per specificare il nome di una cartella in <b>I miei contenuti</b> in cui salvare il risultato.
             </p>
         </div>
     </div>

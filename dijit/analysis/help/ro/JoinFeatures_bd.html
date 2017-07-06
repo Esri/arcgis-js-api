@@ -40,7 +40,7 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Unire obiecte spaţiale</h2><p/>
         <h2><img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" alt="Unire obiecte spaţiale"></h2>
         <hr/>
@@ -51,22 +51,24 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="targetLayer">
-        <div><h2>Alegeţi un strat tematic pentru a uni obiecte spaţiale cu</h2></div>
+        <div><h2>Selectaţi stratul tematic ţintă</h2></div>
         <hr/>
         <div>
-            <p>Stratul tematic la care se vor uni obiecte spaţiale. 
+            <p>Stratul tematic ţintă va avea atribute din stratul tematic de unire ataşate la tabelul său.
             </p>
-            <p>&Icirc;n afară de a alege un strat tematic din harta dvs., puteţi selecta opţiunile  <b>Răsfoire straturi tematice</b> &icirc;n partea inferioară a listei verticale pentru a răsfoi conţinutul pentru stratul tematic sau setul de date pentru partajarea de fişiere big data.  
+            <p>Analiza care utilizează relaţia spaţială  <b>Aproape</b> necesită un sistem de coordonate procesat. Puteţi seta <b>Sistemul de coordonate de procesare</b> din <b>Medii de analiză</b>. Dacă sistemul de coordonate de procesare nu este setat la un sistem de coordonate proiectat, vi se va indica să &icirc;l setaţi atunci c&acirc;nd <b>Executaţi analiza</b>.
+            </p>
+            <p>&Icirc;n afară de a alege un strat tematic din harta dvs., puteţi selecta opţiunile  <b>Răsfoire straturi tematice</b> &icirc;n partea inferioară a listei verticale pentru a răsfoi conţinutul pentru stratul tematic sau setul de date pentru partajarea de fişiere big data.
             </p>
         </div>
     </div>
     <div id="joinLayer">
-        <div><h2>Alegeţi un strat tematic pentru unire</h2></div>
+        <div><h2>Alegeţi stratul tematic care va fi unit cu stratul tematic ţintă</h2></div>
         <hr/>
         <div>
-            <p>Stratul tematic care va fi unit la primul strat tematic de intrare.
+            <p>Stratul tematic de unire cu atribute care va fi ataşat la stratul tematic ţintă.
             </p>
-            <p>&Icirc;n afară de a alege un strat tematic din harta dvs., puteţi selecta opţiunile  <b>Răsfoire straturi tematice</b> &icirc;n partea inferioară a listei verticale pentru a răsfoi conţinutul pentru stratul tematic sau setul de date pentru partajarea de fişiere big data.  
+            <p>&Icirc;n afară de a alege un strat tematic din harta dvs., puteţi selecta opţiunile  <b>Răsfoire straturi tematice</b> &icirc;n partea inferioară a listei verticale pentru a răsfoi conţinutul pentru stratul tematic sau setul de date pentru partajarea de fişiere big data.
             </p>
         </div>
     </div>
@@ -74,21 +76,21 @@
         <div><h2>Alegeţi operaţia de unire</h2></div>
         <hr/>
         <div>
-            <p>Aceasta determină cum vor fi gestionate unirile dintre straturile tematice de intrare dacă mai multe obiecte spaţiale unite au aceeaşi relaţie cu stratul tematic unit. Există două operaţii de unire dintre care să alegeţi:
+            <p>Determină cum vor fi gestionate unirile dintre straturile tematice de ţintă şi de unire dacă mai multe obiecte spaţiale unite au aceeaşi relaţie cu stratul tematic unit. Există două operaţii de unire dintre care să alegeţi:
                 <ul>
-                    <li> <b>Unire unu la unu</b> - Această opţiune uneşte toate obiectele spaţiale corespunzătoare cu stratul tematic de unire.
+                    <li> <b>Unire unu la unu</b> - Această opţiune rezumă toate obiectele spaţiale corespunzătoare cu fiecare obiect spaţial unit.
                     </li>
-                    <li> <b>Unire unu la mai multe</b> - Această opţiune rezumă toate obiectele spaţiale corespunzătoare cu fiecare obiect spaţial unit.
+                    <li> <b>Unire unu la mai multe</b> - Această opţiune uneşte toate obiectele spaţiale corespunzătoare cu stratul tematic de unire.
                     </li>
                 </ul>
                 
             </p>
-            <p>De exemplu, să presupunem că dorim să găsim supermarketurile aflate pe o rază de 5 kilometri faţă de o piaţă pentru fermieri.   &Icirc;n acest caz, stratul tematic care este unit are un singur obiect spaţial care reprezintă piaţa pentru fermieri, iar obiectele spaţiale care sunt unite reprezintă supermarketurile care au atribute precum v&acirc;nzările totale anuale. Prin intermediul instrumentului  <b>Unire obiecte spaţiale</b>, aflăm că cinci supermarketuri &icirc;ndeplinesc respectivele criterii. Dacă am specifica o operaţiune de unire de tip <b>Unire unu la unu</b>, am avea cinci obiecte spaţiale &icirc;n rezultatul nostru, fiecare r&acirc;nd reprezent&acirc;nd piaţa pentru fermieri şi un supermarket. Dacă am specifica o relaţie de tip <b>Unire unu la mai multe</b>, am avea un obiect spaţial reprezent&acirc;nd piaţa pentru fermieri şi informaţiile rezumate despre supermarketuri, precum numărul (5) şi alte statistici cum ar fi suma v&acirc;nzărilor anuale.
+            <p>De exemplu, să presupunem că dorim să găsim supermarketurile aflate pe o rază de 2 kilometri faţă de o piaţă pentru fermieri. &Icirc;n acest caz, stratul tematic care este unit are un singur obiect spaţial care reprezintă piaţa pentru fermieri, iar obiectele spaţiale care sunt unite reprezintă supermarketurile care au atribute precum v&acirc;nzările totale anuale. Prin intermediul instrumentului  <b>Unire obiecte spaţiale</b>, aflăm că cinci supermarketuri &icirc;ndeplinesc respectivele criterii. Dacă am specifica o operaţiune de unire de tip <b>Unire unu la mai multe</b>, am avea cinci obiecte spaţiale &icirc;n rezultatul nostru, fiecare r&acirc;nd reprezent&acirc;nd piaţa pentru fermieri şi un supermarket. Dacă am specifica o relaţie de tip <b>Unire unu la unu</b>, am avea un obiect spaţial reprezent&acirc;nd piaţa pentru fermieri şi informaţiile rezumate despre supermarketuri, precum numărul (2) şi alte statistici cum ar fi suma v&acirc;nzărilor anuale.
             </p>
         </div>
     </div>
     <div id="joinOptions">
-        <div><h2>Selectaţi tipul de uniri pe care aţi dori să le utilizaţi</h2></div>
+        <div><h2>Selectaţi una sau mai multe uniri</h2></div>
         <hr/>
         <div>
             <p>Puteţi aplica unul, două sau trei tipuri de uniri. Tipurile de uniri includ următoarele: 
@@ -107,7 +109,7 @@
         </div>
     </div>
     <div id="spatialRelationship">
-        <div><h2>Unire spaţială</h2></div>
+        <div><h2>Alegeţi o relaţie spaţială</h2></div>
         <hr/>
         <div>
             <p> Relaţia spaţială care va determina dacă obiectele spaţiale sunt unite unele cu altele. Relaţiile disponibile vor depinde de tipul de geometrie (punct, linie poligonală, poligoane) care este utilizat pentru obiectele spaţiale de intrare. Printre relaţiile disponibile se numără următoarele:
@@ -116,7 +118,7 @@
                     </li>
                     <li> <b>Este egal cu</b> - Obiectele spaţiale vor fi potrivite dacă au aceeaşi geometrie.
                     </li>
-                    <li> <b>Aproape</b> - Obiectele spaţiale vor fi potrivite dacă se află la o distanţă specificată unele de altele.
+                    <li> <b>Aproape</b> - Obiectele spaţiale vor fi potrivite dacă se află la o distanţă specificată unele de altele. Stratul tematic ţintă trebuie să fie &icirc;ntr-un sistem de coordonate proiectate sau referinţa spaţială de procesare trebuie setată pe un sistem de coordonate proiectate utiliz&acirc;nd <b>Mediul de analiză</b> &icirc;n cazul &icirc;n care este utilizată o relaţie spaţială <b>Aproape</b>.
                     </li>
                     <li> <b>Conţine</b> - Obiectele spaţiale vor fi potrivite dacă stratul tematic la care sunt unite este conţinut de obiectele spaţiale care sunt unite.
                     </li>
@@ -144,7 +146,7 @@
         </div>
     </div>
     <div id="temporalRelationship">
-        <div><h2>Unire temporală</h2></div>
+        <div><h2>Alegeţi o relaţie temporală</h2></div>
         <hr/>
         <div>
             <p>Relaţia temporală care va determina dacă obiectele spaţiale sunt unite unele cu altele. Această opţiune este disponibilă doar dacă timpul este activat &icirc;n ambele straturi tematice şi relaţiile disponibile vor depinde de tipul de timp (instantaneu sau interval) utilizat pentru obiectele spaţiale de intrare. Printre relaţiile disponibile se numără următoarele:
@@ -191,12 +193,12 @@
         </div>
     </div>
     <div id="attributeRelationship">
-        <div><h2>Unire atribute</h2></div>
+        <div><h2>Alegeţi câmpurile pe care doriţi să le potriviţi</h2></div>
         <hr/>
         <div>
             <p>Această relaţie va potrivi valorile dintr-un c&acirc;mp dintr-un strat tematic cu valorile dintr-un c&acirc;mp din alt strat tematic. 
             </p>
-            <p> De exemplu, să presupunem că am avea un strat tematic geografic pentru adresele rezidenţiale din toată ţara (inclusiv un c&acirc;mp <i>ZIP</i>) şi un set de date demografice tabulare privind sănătatea după codul ZIP (un c&acirc;mp denumit <i>HEALTHZIP</i>). Putem uni setul de date privind sănătatea cu datele rezidenţiale prin potrivirea c&acirc;mpului <i>ZIP</i> cu <i>HEALTHZIP</i>, ceea ce va duce la un strat tematic de reşedinţe cu datele corespunzătoare privind sănătatea.
+            <p>De exemplu, să presupunem că am avea un strat tematic geografic pentru adresele rezidenţiale din toată ţara (inclusiv un c&acirc;mp  <i>ZIP</i>) şi un set de date demografice tabulare privind sănătatea după codul ZIP (un c&acirc;mp denumit <i>HEALTHZIP</i>). Putem uni setul de date privind sănătatea cu datele rezidenţiale prin potrivirea c&acirc;mpului <i>ZIP</i> cu <i>HEALTHZIP</i>, ceea ce va duce la un strat tematic de reşedinţe cu datele corespunzătoare privind sănătatea.
             </p>
         </div>
     </div>
@@ -204,7 +206,39 @@
         <div><h2>Adăugare statistici (opţional)</h2></div>
         <hr/>
         <div>
-            <p>Dacă a fost selectată o opţiune de unire unu la mai multe, puteţi calcula statisticile din obiectele spaţiale unite.
+            <p>Dacă operaţiunea de unire este   <b>Unire unu la unu</b>, puteţi calcula statisticile obiectelor spaţiale unite. &Icirc;n mod implicit, toate statisticile vor fi caluclate.
+            </p>
+            <p>Puteţi calcula statistici despre obiectele spaţiale rezumate. &Icirc;n c&acirc;mpurile numerice puteţi calcula următoarele:
+                <ul>
+                    <li>Numărare&mdash;Calculează numărul de valori care nu sunt nule. Poate fi utilizat &icirc;n c&acirc;mpurile sau &icirc;n şirurile numerice. Calculul [nul, 0, 2] este egal cu 2.
+                    </li>
+                    <li>Sumă - Suma valorilor numerice dintr-un c&acirc;mp. Suma [nul, 0, 3] este egală cu 3.
+                    </li>
+                    <li>Media&mdash;Media valorilor numerice. Media dintre [0, 2, nul] este 1.
+                    </li>
+                    <li>Min&mdash;Valoarea minimă a unui c&acirc;mp numeric. Minimul dintre [0, 2, nul] este 0. 
+                    </li>
+                    <li>Max&mdash;Valoarea maximă a unui c&acirc;mp numeric. Valoarea maximă a [0, 2, nul] este 2.
+                    </li>
+                    <li>Interval&mdash;Intervalul unui c&acirc;mp numeric. Acesta este calculat ca valoare minimă scăzută din valoare maximă. Intervalul [nul, 0, 1] este 1. Intervalul [nul, 0, 4] este 0.
+                    </li>
+                    <li>Variaţia&mdash;Variaţia unui c&acirc;mp numeric pe o pistă. Variaţia [1] este nulă. Variaţia [nul, 1,1, 1] este 1.
+                    </li>
+                    <li>Deviaţia standard&mdash;Deviaţia standard a unui c&acirc;mp numeric. Deviaţia standard [1] este nulă. Deviaţia standard [nul, 1,1, 1] este 1. 
+                    </li>
+                </ul>
+                
+            </p>
+            <p>&Icirc;n c&acirc;mpurile de tip şir puteţi calcula următoarele:
+                <ul>
+                    <li>Calcul&mdash;Numărul şirurilor care nu sunt nule.
+                    </li>
+                    <li>Oricare - Această statistică este un exemplu aleatoriu al unei valori de tip şir &icirc;n c&acirc;mpul specificat.
+                    </li>
+                </ul>
+                Toate statisticile sunt calculate pentru valori care nu sunt nule. Stratul tematic rezultat va conţine un c&acirc;mp nou pentru fiecare statistică calculată. Se pot adăuga oric&acirc;te statistici aleg&acirc;nd un atribut şi o statistică.
+            </p>
+            <p>Toate statisticile sunt calculate pentru valori care nu sunt nule. Stratul tematic rezultat va conţine un c&acirc;mp nou pentru fiecare statistică calculată. Se pot adăuga oric&acirc;te statistici aleg&acirc;nd un atribut şi o statistică.
             </p>
         </div>
     </div>
@@ -224,7 +258,17 @@
         <div><h2>Selectare depozit de date</h2></div>
         <hr/>
         <div>
-            <p>Acesta este un parametru temporar pentru pre-lansare, destinat setării depozitului de date &icirc;n care sunt salvate rezultatele. Ambele depozite de date fac parte din  ArcGIS Data Store. Dacă selectaţi depozitul de date spaţio-temporal dar nu aveţi unul instalat, instrumentul va eşua. </p>
+            <p>Rezultatele GeoAnalytics sunt stocate &icirc;ntr-un depozit de date ArcGIS şi sunt expuse ca un strat tematic de obiecte spaţiale &icirc;n  Portal for ArcGIS. &Icirc;n cele mai multe situaţii, rezultatele trebuie stocate &icirc;n depozitul de date spaţio-temporar, &icirc;n mod implicit. &Icirc;n unele situaţii, salvarea rezultatelor &icirc;n depozitul de date relaţionale este o opţiune bună. Următoarele sunt motivele pentru care aţi dori să stocaţi rezultatele &icirc;ntr-un depozit de date relaţionale: 
+                <ul>
+                    <li>Utilizaţi rezultatele &icirc;ntr-o colaborare portal la portal.
+                    </li>
+                    <li>Activaţi capacităţile de sincronizare cu rezultatele dvs.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Nu trebuie să utilizaţi depozitul de date relaţionale dacă vă aşteptaţi ca rezultatele GeoAnalytics să crească &icirc;n cantitate şi aveţi nevoie de capacităţile depozitului mare de stocare spaţio-temporal de a gestiona cantităţi mari de date. 
+            </p>
         </div>
     </div>
     <div id="outputName">

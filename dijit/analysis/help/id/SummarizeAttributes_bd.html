@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Ringkas Atribut</h2><p/>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Ringkas Atribut"></h2>
+        <hr/>
+    <p>Alat ini meringkas semua nilai yang cocok di satu atau beberapa kolom dan menghitung statistiknya. Statistik yang paling dasar adalah jumlah fitur yang telah diringkaskan bersama-sama, tetapi Anda juga dapat menghitung statistik lain yang lebih canggih. 
+
+    </p>
+    <p>Contoh, misalnya Anda memiliki fitur titik dari lokasi penyimpanan dengan kolom yang mewakili  <i>DISTRICT_MANAGER_NAME</i> dan Anda ingin meringkas penjualan kopi berdasarkan manager. Anda dapat menentukan kolom <i>DISTRICT_MANAGER_NAME</i> sebagai kolom untuk disatukan, dan semua baris data yang mewakili manajer individual akan diringkaskan. Ini berarti semua lokasi penyimpanan yang dikelola oleh Manager1 akan diringkas ke dalam satu baris dengan menghitung ringkasan statistik. Dalam kesempatan ini, statistik seperti jumlah toko dan jumlah <i>TOTAL_SALES</i> untuk semua toko yang dikelola Manager1 akan dihitung sebagaimana halnya untuk manajer lainnya yang tercantum di kolom <i>DISTRICT_MANAGER_NAME</i>.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Pilih input untuk meringkas</h2></div>
+        <hr/>
+        <div>
+            <p>Layer yang berisi kolom yang akan diringkas.  
+            </p>
+            <p>Selain memilih layer dari peta Anda, Anda dapat memilih  <b>Telusuri Layer</b> yang terdapat di bagian paling bawah daftar drop-down ke konten Anda untuk set data yang dibagikan atau feature layer dari big data.
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>Pilih kolom untuk diringkas</h2></div>
+        <hr/>
+        <div>
+            <p>Daftar kolom dari layer input.  Kolom yang terpilih akan diringkas dan digunakan untuk menghitung statistik. Contoh, jika Anda memilih kolom bernama  <i>PropertyType</i> dengan nilai komersial dan residensial, semua kolom residensial akan diringkas bersama-sama, dengan menghitung statistik ringkasan dan semua kolom komersial akan diringkas bersama-sama.
+            </p>
+        </div>
+    </div>
+    <div id="summaryFields">
+        <div><h2>Tambahkan statistik (opsional)</h2></div>
+        <hr/>
+        <div>
+            <p> Anda dapat menghitung statistik pada fitur yang diringkas. Pada kolom numerik, Anda dapat menghitung hal berikut:
+                <ul>
+                    <li>Jumlah&mdash;Menghitung jumlah nilai nonnull. Dapat digunakan di kolom numerik ataupun string. Jumlah [null, 0, 2] adalah 2.
+                    </li>
+                    <li>Jumlah&mdash;Jumlah nilai numerik di kolom. Jumlah [null, null, 3] adalah 3.
+                    </li>
+                    <li>Rata-rata&mdash;Rata-rata nilai numerik. Rata-rata [0, 2, null] adalah 1.
+                    </li>
+                    <li>Min.&mdash;Nilai minimum kolom numerik. Minimal [0, 2, null] adalah 0. 
+                    </li>
+                    <li>Maks.&mdash;Nilai maksimum kolom numerik. Nilai maksimum [0, 2, null] adalah 2.
+                    </li>
+                    <li>Rentang&mdash;Rentang kolom numerik. Ini dihitung sebagai nilai minimum yang disubtraksi dari nilai maksimum. Rentang [0, null, 1] adalah 1. Rentang [null, 4] adalah 0.
+                    </li>
+                    <li>Varian&mdash;Varian kolom numerik di jalur. Varian [1] adalah null. Varian [null, 1,1,1] adalah 1.
+                    </li>
+                    <li>Simpangan baku&mdash;Simpangan baku kolom numerik. Simpangan baku [1] adalah null. Simpangan baku [null, 1,1,1] adalah 1. 
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Pada kolom string, Anda dapat menghitung hal berikut:
+                <ul>
+                    <li>Jumlah&mdash;Jumlah string nonnull.
+                    </li>
+                    <li>Apa saja&mdash;Statistik ini adalah contoh acak nilai string di dalam kolom yang telah ditentukan.
+                    </li>
+                </ul>
+                Semua statistik dihitung pada nilai nonnull. Layer hasil akan berisi kolom baru untuk setiap statistik yang dihitung. Angka statistik berapa pun dapat ditambahkan dengan memilih sebuah atribut dan statistik. 
+            </p>
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Pilih penyimpanan data</h2></div>
+        <hr/>
+        <div>
+            <p>Hasil GeoAnalytics disimpan di ArcGIS Data Store dan ditampilkan sebagai layer fitur di  Portal for ArcGIS. Di banyak kasus, hasil harus disimpan di data store spatiotemporal dan ini adalah pilihan default. Di banyak kasus, menyimpan hasil data store relasional adalah opsi yang bagus. Berikut adalah alasan mengapa Anda mungkin ingin menyimpan hasil di data store relasional: 
+                <ul>
+                    <li>Gunakan hasil di kolaborasi portal-ke-portal
+                    </li>
+                    <li>Aktifkan kemampuan sinkronisasi dengan hasil Anda.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nama layer hasil</h2></div>
+        <hr/>
+        <div>
+            <p> Ini adalah nama layer yang akan dibuat di <b>Konten Saya</b> dan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer sudah ada, alat tidak akan berfungsi.
+            </p>
+            <p>Menggunakan kotak drop-down  <b>Simpan hasil di</b>, Anda dapat menentukan nama folder di <b>Konten Saya</b> sebagai tempat penyimpanan hasil.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

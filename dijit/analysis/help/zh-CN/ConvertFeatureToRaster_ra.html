@@ -40,48 +40,48 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
-        <h2>Convert Feature to  Raster</h2><p/>
-        <h2><img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" alt="Convert Feature to Raster tool"></h2>
+    <div id="toolDescription" class="smallsize">
+        <h2>要素转栅格</h2><p/>
+        <h2><img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" alt="要素转栅格工具"></h2>
         <hr/>
-    <p>This task converts features to a raster dataset.
+    <p>此任务将要素转换为栅格数据集。
     </p>
-    <p>Any feature class containing point, line, or polygon features can be converted to a raster dataset.
+    <p>任何包含点、线或面要素的要素类都可以转换为栅格数据集。
     </p>
-    <p>The cell center is used to decide the value of the output raster pixel.
+    <p>像元中心用于确定输出栅格像素的值。
     </p>
-    <p>The input field type determines the type of output raster. If the field is integer, the output raster will be integer; if it is floating point, the output will be floating point.
+    <p>输入字段类型决定输出栅格的类型。如果字段是整型，则输出栅格也是整型；如果字段是浮点型，则输出栅格也是浮点型。
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Choose feature layer to convert</h2></div>
+        <div><h2>选择要转换的要素图层</h2></div>
         <hr/>
         <div>
-            <p>The input feature layer to convert to a raster dataset.
+            <p>要转换为栅格数据集的输入要素图层。
             </p>
         </div>
     </div>
     <div id="field">
-        <div><h2>Choose field</h2></div>
+        <div><h2>选择字段</h2></div>
         <hr/>
         <div>
-            <p>Choose the field that will be used to assign values to the output raster.
+            <p>选择将用于向输出栅格分配值的字段。
             </p> 
         </div>
     </div>
     <div id="outputCellSize">
-        <div><h2>Output cell size</h2></div>
+        <div><h2>输出像元大小</h2></div>
         <hr/>
         <div>
             <p>输入输出栅格的像元大小和单位。
             </p>
-            <p>The available units are Feet, Miles, Meters, and Kilometers.
+            <p>可用单位为：英尺、英里、米、千米。
             </p>
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>结果图层名称</h2></div>
         <hr/>
         <div>
             <p>将在 <b>我的内容</b>中创建并添加到地图中的图层的名称。默认名称基于工具名称以及输入图层名称。如果该名称的图层已存在，则系统将要求您提供其他名称。

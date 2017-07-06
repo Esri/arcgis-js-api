@@ -41,19 +41,19 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Find hotspots</h2><p/>
+        <h2>Find Hot Spots</h2><p/>
         <h2><img src="../images/GUID-6D600155-AA9B-4F02-AD8B-2E84150AB743-web.png" alt="Find hotspots"></h2>
         <hr/>
     <p>V&aelig;rkt&oslash;jet Find hotspots kan bestemme, hvorvidt der er statistisk signifikante klyngedannelser i det rumlige m&oslash;nster for dine data. 
         <ul>
             <li>Indg&aring;r dine punkter (forbrydelser, tr&aelig;er, trafikulykker) virkelig i en klyngedannelse? Hvordan kan du v&aelig;re sikker p&aring; det?
             </li>
-            <li>Har du virkelig opdaget et statistisk signifikant hotspot? Eller ville dit kort fort&aelig;lle en anden historie, hvis du &aelig;ndrede symboliseringen?
+            <li>Har du rent faktisk opdaget et statistisk signifikant hotspot, eller ville dit kort fort&aelig;lle en anden historie, hvis du &aelig;ndrede symboliseringen?
             </li>
         </ul>
         V&aelig;rkt&oslash;jet Find hotspots kan hj&aelig;lpe dig med en trov&aelig;rdig besvarelse af disse sp&oslash;rgsm&aring;l.
     </p>
-    <p>Selv tilf&aelig;ldige rumlige m&oslash;nstre udviser en vis grad af klyngedannelse. Desuden pr&oslash;ver dine &oslash;jne og din hjerne helt naturligt at finde m&oslash;nstre, selv om disse ikke findes. Derfor kan det v&aelig;re sv&aelig;rt at vide, om m&oslash;nstrene i dine data er resultatet af en reel igangv&aelig;rende rumlig proces eller bare resultatet af tilf&aelig;ldigheder. Det er &aring;rsagen til, at forskere og analytikere bruger statistiske metoder som Find hotspots (Getis-Ord Gi*) til at kvantificere rumlige m&oslash;nstre. N&aring;r du finder en statistisk signifikant klyngedannelse i dine data, har du v&aelig;rdifulde oplysninger. Det at vide, hvor og hvorn&aring;r klyngedannelser opst&aring;r, kan give vigtige oplysninger om de processer, der skaber de m&oslash;nstre, du ser. At vide at f.eks. antallet af indbrud i boliger konsekvent er h&oslash;jere i et s&aelig;rligt omr&aring;de er afg&oslash;rende oplysninger, hvis du skal udarbejde effektive forebyggelsesstrategier, fordele sparsomme politiressourcer, iv&aelig;rks&aelig;tte nabohj&aelig;lpsprogrammer, godkende grundig kriminel efterforskning eller identificere potentielle mist&aelig;nkte.   
+    <p>Selv tilf&aelig;ldige rumlige m&oslash;nstre udviser en vis grad af klyngedannelse. Desuden pr&oslash;ver dine &oslash;jne og din hjerne helt naturligt at finde m&oslash;nstre, selv om disse ikke findes. Derfor kan det v&aelig;re sv&aelig;rt at vide, om m&oslash;nstrene i dine data er resultatet af en reel igangv&aelig;rende rumlig proces eller bare resultatet af tilf&aelig;ldigheder. Det er &aring;rsagen til, at forskere og analytikere bruger statistiske metoder s&aring;som Find hotspots (Getis-Ord Gi*) til at kvantificere rumlige m&oslash;nstre. N&aring;r du finder en statistisk signifikant klyngedannelse i dine data, har du v&aelig;rdifulde oplysninger. Det at vide, hvor og hvorn&aring;r klyngedannelser opst&aring;r, kan give vigtige oplysninger om de processer, der skaber de m&oslash;nstre, du ser. At vide at f.eks. antallet af indbrud i boliger konsekvent er h&oslash;jere i et s&aelig;rligt omr&aring;de er afg&oslash;rende oplysninger, hvis du skal udarbejde effektive forebyggelsesstrategier, fordele sparsomme politiressourcer, iv&aelig;rks&aelig;tte nabohj&aelig;lpsprogrammer, godkende grundig kriminel efterforskning eller identificere potentielle mist&aelig;nkte.   
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -61,9 +61,11 @@
         <div><h2>Vælg det lag, som der skal beregnes hotspots for</h2></div>
         <hr/>
         <div>
-            <p>Det punktlag, hvorfra der skal findes hotspots og coldspots. 
+            <p>Det punktlag, hvorfra der skal findes hotspots og coldspots.
             </p>
-            <p>Udover at du kan v&aelig;lge et lag i dit kort, kan du v&aelig;lge  <b>Gennemse lag</b> nederst p&aring; rullelisten for at g&aring; til dit indhold til et big data-fildelingsdatas&aelig;t eller -vektorlag.  
+            <p>Denne analyse benytter beholdere og kr&aelig;ver et projiceret koordinatsystem. Du kan indstille  <b>koordinatsystem til behandling</b> i <b>Analysemilj&oslash;erne</b>. Hvis dit koordinatsystem til behandling ikke er indstillet til et projiceret koordinatsystem, vil du blive bedt om at indstille det, n&aring;r du benytter funktionen <b>K&oslash;r analyse</b>.
+            </p>
+            <p>Udover at du kan v&aelig;lge et lag i dit kort, kan du v&aelig;lge  <b>Gennemse lag</b> nederst p&aring; rullelisten for at g&aring; til dit indhold til et big data-fildelingsdatas&aelig;t eller -vektorlag.
             </p>
         </div>
     </div>
@@ -81,7 +83,7 @@
         </div>
     </div>
     <div id="inputBins">
-        <div><h2>Vælg beholderstørrelse for hotspot-beregninger</h2></div>
+        <div><h2>Vælg beholderstørrelse for aggregering</h2></div>
         <hr/>
         <div>
             <p>Den afstand, der bruges til at generere de kvadratiske beholdere, som skal bruges til at analysere dine inputpunkter.
@@ -89,39 +91,56 @@
         </div>
     </div>
     <div id="timeSlicing">
-        <div><h2>Aggregér ved hjælp af tidsintervaller (valgfrit)</h2></div>
+        <div><h2>Find hotspots ved hjælp af tidstrin (valgfrit)</h2></div>
         <hr/>
         <div>
-            <p>Hvis der er aktiveret tid for punktlaget, og det tilh&oslash;rer &oslash;jeblikstypen, kan du analysere ved hj&aelig;lp af tidsintervaller.
+            <p>Hvis der er aktiveret tid for punktlaget, og det tilh&oslash;rer &oslash;jeblikstypen, kan du analysere ved hj&aelig;lp af tidstrin.
             </p>
         </div>
     </div>
     <div id="timeInterval">
-        <div><h2>Tidsinterval, der skal aggregeres til</h2></div>
+        <div><h2>Tidstrin- intervalo</h2></div>
         <hr/>
         <div>
-            <p>Det tidsinterval, der benyttes til analyse. Hvis du &oslash;nskede at oprette tidsintervaller, der fandt sted hver uge, skulle du indstille tidsintervallet til &eacute;t om ugen. 
+            <p>Det tidsinterval, der benyttes til generere tidstrin.  Tid kan justeres til start- eller sluttidspunktet for inputdataene eller til et bestemt referencetidspunkt.  
             </p>
         </div>
     </div>
     <div id="timeStep">
-        <div><h2>Tidstrin, der skal aggregeres til</h2></div>
+        <div><h2>Tidstrin-interval</h2></div>
         <hr/>
         <div>
-            <p>Hvordan tiden skulle justeres. Tid kan justeres til start- eller sluttidspunktet for inputdataene eller til et bestemt referencetidspunkt.  
+            <p>Det tidsinterval, der benyttes til generere tidstrin. Tid kan justeres til start- eller sluttidspunktet for inputdataene eller til et bestemt referencetidspunkt.  
+            </p>
+        </div>
+    </div>
+    <div id="timeStepAlignment">
+        <div><h2>Vælg, hvordan tidstrin skal justeres</h2></div>
+        <hr/>
+        <div>
+            <p>Hvordan tidstrin justeres. Der er tre m&aring;der at justere tidstrin p&aring;:
+                <ul>
+                    <li> <b>Starttid</b>&ndash; Tidstrinene justeres i forhold til det f&oslash;rste objekt i tid.
+                    </li>
+                    <li> <b>Sluttid</b>&ndash; Tidstrinene justeres i forhold til det sidste objekt i tid.
+                    </li>
+                    <li> <b>Referencetid</b>&ndash; Tidstrinene justeres i forhold til et bestemt tidspunkt.
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>
     <div id="timeReference">
-        <div><h2>Referencetid, der benyttes til at justere tidsintervaller</h2></div>
+        <div><h2>Referencetid, som tidstrin skal justeres i forhold til</h2></div>
         <hr/>
         <div>
-            <p>Den dato og det klokkesl&aelig;t, der benyttes til at justere tidsintervallerne.
+            <p>Den dato og det klokkesl&aelig;t, der benyttes til at justere tidstrin.
             </p>
         </div>
     </div>
     <div id="neighborhood">
-        <div><h2>Vælg størrelse på lokalområde</h2></div>
+        <div><h2>Vælg størrelse på lokalområde med henblik på hotspot-beregninger</h2></div>
         <hr/>
         <div>
             <p>Den afstand, der benyttes til at fastl&aelig;gge de omgivelser, der anvendes til hotspot-beregninger. Omgivelserne skal v&aelig;re st&oslash;rre end beholderst&oslash;rrelsen for at sikre, at hver beholder har mindst &eacute;n nabo. Hver beholder analyseres og sammenlignes med nabobeholderne.
@@ -137,10 +156,20 @@
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Vælg Datastore</h2></div>
+        <div><h2>Vælg et ArcGIS-datalager, som resultaterne kan gemmes i</h2></div>
         <hr/>
         <div>
-            <p>Dette er en midlertidig parameter til prerelease med henblik p&aring; angivelse af det datalager, hvor resultaterne bliver gemt. Begge datalagre er en del af  ArcGIS Data Store. Hvis du v&aelig;lger det spatiotemporale datalager, men ikke har et s&aring;dant installeret, vil v&aelig;rkt&oslash;jet ikke fungere. </p>
+            <p>GeoAnalytic-resultater lagres i et ArcGIS-datalager og vises som et vektorlag i  Portal for ArcGIS. I de fleste tilf&aelig;lde b&oslash;r resultaterne blive lagret i et spatiotemporalt datalager, hvilket ogs&aring; er standarden. I nogle tilf&aelig;lde er det at lagre resultaterne i et relationsdatalager en god mulighed. Her er &aring;rsagerne til, at du m&aring;ske &oslash;nsker at lagre resultaterne i et relationsdatalager: 
+                <ul>
+                    <li>Hvis du vil bruge dine resultater i et portal-til-portal-samarbejde.
+                    </li>
+                    <li>Hvis du vil aktivere synkroniseringsfunktioner i forbindelse med dine resultater.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Du b&oslash;r benytte et relationsdatalager, hvis du forventer, at m&aelig;ngden af dine GeoAnalytics-resultater vil blive st&oslash;rre, og du &oslash;nsker at drage fordel af det spatiotemporale big data-lagers muligheder for at h&aring;ndtere store datam&aelig;ngder. 
+            </p>
         </div>
     </div>
     <div id="outputName">

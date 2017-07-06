@@ -70,12 +70,12 @@
         <div>
             <p>The point layer on which the density will be calculated.
             </p>
-            <p>Al&eacute;m de escolher uma camada de seu mapa, voc&ecirc; pode escolher  <b>Procurar Camadas</b> na parte inferior da lista suspensa para procurar por seu conte&uacute;do para um conjunto de dados de compartilhamento de arquivo big data ou camada de fei&ccedil;&atilde;o.  
+            <p>Al&eacute;m de escolher uma camada de seu mapa, voc&ecirc; pode escolher  <b>Procurar Camadas</b> na parte inferior da lista suspensa para procurar por seu conte&uacute;do para um conjunto de dados de compartilhamento de arquivo big data ou camada de fei&ccedil;&atilde;o.
             </p>
         </div>
     </div>
     <div id="fields">
-        <div><h2>Escolha um ou mais campos no qual calcular densidade</h2></div>
+        <div><h2>Escolha um ou mais campos no qual calcular a densidade (opcional)</h2></div>
         <hr/>
         <div>
             <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
@@ -90,10 +90,12 @@
         <div>
             <p>The shape of bins that points are aggregated into and used for the density calculation.
             </p>
+            <p>An&aacute;lise utilizadno caixas  <b>Quadrado </b> ou <b>Hex&aacute;gono</b> exige um sistema de coordenadas plana. Voc&ecirc; pode configurar o <b>Processamento de sistema de coordenadas</b> nos <b>Ambientes de An&aacute;lise</b>. Se seu processamento de sistema de coordenadas n&atilde;o estiver configurado para um sistema de coordenada plana, voc&ecirc; ser&aacute; solicitado para defin&iacute;-lo quando voc&ecirc; <b>Executar An&aacute;lise</b>.
+            </p>
         </div>
     </div>
     <div id="binSizing">
-        <div><h2>Selecione o tamanho de bin para cálculos de densidade</h2></div>
+        <div><h2>Selecione o tamanho da caixa para agregação</h2></div>
         <hr/>
         <div>
             <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
@@ -127,59 +129,59 @@
         <div><h2>Escolha as unidades de saída para densidade</h2></div>
         <hr/>
         <div>
-            <p>The desired output units of the density values. By default, this is set to the units in your map (for example, square meters). If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+            <p>The desired output units of the density values. By default, this is set to square kilometers or square miles based on the default units specified in your profile. If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
 
             </p>
         </div>
     </div>
     <div id="timeSlicing">
-        <div><h2>Calcular densidade utilizando partes de tempo (opcional)</h2></div>
+        <div><h2>Calcular densidade utilizando etapa tempo (opcional)</h2></div>
         <hr/>
         <div>
-            <p>Se o tempo estiver habilitado na camada de ponto de entrada e for do tipo momento, voc&ecirc; pode analisar utilizando partes do tempo.  H&aacute; tr&ecirc;s par&acirc;metros que voc&ecirc; pode configurar ao utilizar o tempo:
+            <p>Se o tempo estiver habilitado na camada de ponto de entrada e for do tipo momento, voc&ecirc; poder&aacute; analisar utilizando partes do tempo.  H&aacute; tr&ecirc;s par&acirc;metros que voc&ecirc; pode configurar ao utilizar o tempo:
                 <ul>
-                    <li>  <b>Intervalo de Tempo</b>
+                    <li> <b>Intervalo de tempo</b>
                     </li>
-                    <li> <b>Intervalo de Tempo</b>
+                    <li> <b>Com que frequ&ecirc;ncia repetir o intervalo de tempo</b>
                     </li>
-                    <li> <b>Tempo de Refer&ecirc;ncia</b>
+                    <li> <b>Tempo para alinhar intervalos de tempo para</b>
                     </li>
                 </ul>
                 
             </p>
             <p>Imagine que voc&ecirc; tinha dados que representaram um ano em tempo e voc&ecirc; desejou analisar partes semanais. Para fazer isto voc&ecirc; iria configurar  <b>Intervalo de Tempo</b> para <code>1 semana</code>.
             </p>
-            <p> Imagine que voc&ecirc; tinha dados que representaram um ano em tempo e voc&ecirc; desejou analisar utilizando a primeira semana do m&ecirc;s. Para fazer isto voc&ecirc; iria configurar <b>Intervalo de Tempo</b> para <code>1 semana</code>, <b>Etapa de Tempo</b> para <code>1 m&ecirc;s</code> e <b>Tempo de Refer&ecirc;ncia</b> para <code>1 de janeiro, as 12:00 am</code>.
+            <p>Imagine que voc&ecirc; tinha dados que representaram um ano em tempo e voc&ecirc; desejou analisar utilizando a primeira semana do m&ecirc;s. Para fazer isto voc&ecirc; iria configurar  <b>Intervalo de tempo</b> para <code>1 semana</code>, <b>Com que frequ&ecirc;ncia repetir o intervalo de tempo</b> para <code>1 m&ecirc;s</code> e <b>Tempo para alinhar os intervalos de tempo</b> para <code>01 de Janeiro &agrave;s 12:00 am</code>.
             </p>
         </div>
     </div>
     <div id="timeInterval">
-        <div><h2>Intervalo de tempo no qual calcular densidade</h2></div>
+        <div><h2>Intervalo de tempo</h2></div>
         <hr/>
         <div>
-            <p>O intervalo de tempo utilizado para fatiar os dados. O intervalo de tempo pode ser utilizado sozinho ou utilizado com o par&acirc;metro  <b>Etapa de Tempo</b> ou <b>Tempo de Refer&ecirc;ncia</b>.
+            <p>Intervalo de tempo utilizado para gerar intervalos de tempo. O intervalo de tempo pode ser utilizado sozinho ou utilizado com os par&acirc;metros  <b>Com que frequ&ecirc;ncia repetir o intervalo de tempo</b> ou <b>Tempo para alinhar os intervalos de tempo</b>.
             </p>
-            <p> Se voc&ecirc; desejou criar fatias de tempo que ocorreram toda segunda-feira as 9:00 a.m. at&eacute; 10:00 a.m., <b>Intervalo de Tempo</b> seria <code>1 hora</code>, <b>Etapa de Tempo</b> seria <code>1 semana</code> e <b>Tempo de Refer&ecirc;ncia</b> seria <code>9:00:00 a.m. em uma segunda-feira</code>.
+            <p>Se voc&ecirc; desejou criar partes do tempo que ocorreu a cada Segunda-Feira de 9:00 a.m at&eacute; 10:00 a.m, <b>Intervalo de tempo</b> seria <code>1 hora</code>, <b>Com que frequ&ecirc;ncia repetir o intervalo de tempo</b> seria <code>1 semana</code> e <b>Tempo para alinhar os intervalos de tempo</b> seria <code>9:00:00 a.m. em uma Segunda-Feira</code>.
             </p>
         </div>
     </div>
     <div id="timeStep">
-        <div><h2>Espaço de tempo no qual calcular densidade</h2></div>
+        <div><h2>Com que frequência repetir o intervalo de tempo</h2></div>
         <hr/>
         <div>
-            <p> A etapa utilizada para calcular uma fatia de tempo. <b>Etapa de Tempo</b> pode ser utilizado sozinha ou com <b>Intervalo de Tempo</b>, com <b>Tempo de Refer&ecirc;ncia</b> ou com ambos <b>Intervalo de Tempo</b> e <b>Tempo de Refer&ecirc;ncia</b>.
+            <p> O intervalo utilizado para calcular uma parte do tempo. <b>Com que frequ&ecirc;ncia repetir o intervalo de tempo</b> pode ser utilizado sozinho ou com <b>Intervalo de tempo</b>, com <b>Tempo de Refer&ecirc;ncia</b> ou com ambos <b>Intervalo de tempo</b> e <b>Tempo para alinhar os intervalos de tempo</b>.
             </p>
-            <p> Se voc&ecirc; desejou criar fatias de tempo que ocorreram toda segunda-feira as 9:00 a.m. at&eacute; 10:00 a.m., <b>Intervalo de Tempo</b> seria <code>1 hora</code>, <b>Etapa de Tempo</b> seria <code>1 semana</code> e <b>Tempo de Refer&ecirc;ncia</b> seria <code>9:00:00 a.m. em uma segunda-feira</code>.
+            <p> Se voc&ecirc; desejou criar partes do tempo que ocorreu a cada Segunda-Feira de 9:00 a.m at&eacute; 10:00 a.m, <b>Intervalo de tempo</b> seria <code>1 hora</code>, <b>Com que frequ&ecirc;ncia repetir o intervalo de tempo</b> seria <code>1 semana</code> e <b>Tempo para alinhar os intervalos de tempo</b> seria <code>9:00:00 a.m. em uma Segunda-Feira</code>.
             </p>
         </div>
     </div>
     <div id="timeReference">
-        <div><h2>Tempo de referência utilizado para alinhar partes de tempo</h2></div>
+        <div><h2>Tempo para alinhar intervalos de tempo para</h2></div>
         <hr/>
         <div>
-            <p>O data e o tempo utilizado para alinhar as fatias do tempo.  <b>Etapa de Tempo</b> ir&aacute; iniciar e continuar para tr&aacute;s do tempo referenciado.
+            <p>A data e hora utilizadas para alinhar as partes de tempo. O intervalo de tempo come&ccedil;ar&aacute; e continuar&aacute; em sentido contr&aacute;rio deste tempo. Se nenhum tempo de refer&ecirc;ncia for selecionado, o intervalo de time alinhar&aacute; &agrave; 1 de Janeiro de 1970. 
             </p>
-            <p> Se voc&ecirc; desejou criar fatias de tempo que ocorreram toda segunda-feira as 9:00 a.m. at&eacute; 10:00 a.m., <b>Intervalo de Tempo</b> seria <code>1 hora</code>, <b>Etapa de Tempo</b> seria <code>1 semana</code> e <b>Tempo de Refer&ecirc;ncia</b> seria <code>9:00:00 a.m. em uma segunda-feira</code>.
+            <p> Se voc&ecirc; desejou criar partes do tempo que ocorreu a cada Segunda-Feira de 9:00 a.m at&eacute; 10:00 a.m, <b>Intervalo de tempo</b> seria <code>1 hora</code>, <b>Com que frequ&ecirc;ncia repetir o intervalo de tempo</b> seria <code>1 semana</code> e <b>Tempo para alinhar os intervalos de tempo</b> seria <code>9:00:00 a.m. em uma Segunda-Feira</code>.
             </p>
         </div>
     </div>
@@ -195,14 +197,24 @@
         <div><h2>Escolher armazenamento de dados</h2></div>
         <hr/>
         <div>
-            <p>Este &eacute; um par&acirc;metro tempor&aacute;rio para pr&eacute; lan&ccedil;amento para configurar o armazenamento de dados onde os resultados s&atilde;o salvos. Ambos os armazenamentos de dados s&atilde;o parte do  ArcGIS Data Store. Se voc&ecirc; selecionar o armazenamento de dados spatiotemporal mas n&atilde;o ter um instalado, a ferramenta falhar&aacute;. </p>
+            <p>Os resultados do GeoAnalytic s&atilde;o armazenados no ArcGIS Data Store e expostos como uma camada de fei&ccedil;&atilde;o no  Portal for ArcGIS. Na maioria dos casos, os resultados devem ser armazenados no armazenamento de dados de espa&ccedil;o-tempo e este &eacute; o padr&atilde;o. Em alguns casos salvar resultados no armazenamento de dados relacional &eacute; uma boa op&ccedil;&atilde;o. Abaixo est&atilde;o as raz&otilde;es pelas quais voc&ecirc; talvez queira armazenar resultados em um armazenamento de dados relacional: 
+                <ul>
+                    <li>Utilizar os resultados no portal para colabora&ccedil;&atilde;o do portal.
+                    </li>
+                    <li>Habilitar recursos de sincroniza&ccedil;&atilde;o com seus resultados.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Voc&ecirc; n&atilde;o deve utilizar um armazenamento de dados relacional se voc&ecirc; espera que os resultados do GeoAnalytics aumentem e deseja aproveitar os recursos do armazenamento de grandes dados de espa&ccedil;o-tempo para lidar com grandes quantidades de dados. 
+            </p>
         </div>
     </div>
     <div id="outputName">
         <div><h2>Nome da camada resultante</h2></div>
         <hr/>
         <div>
-            <p> Este &eacute; o nome da camada que ser&aacute; criada em <b>Meu Conte&uacute;do</b> e adicionada ao mapa.  O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existe, a ferramenta falhar&aacute;.
+            <p> Este &eacute; o nome da camada que ser&aacute; criada em <b>Meu Conte&uacute;do</b> e adicionada no mapa.  O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existe, a ferramenta falhar&aacute;.
             </p>
             <p>Ao utilizar a caixa suspensa  <b>Salvar resultado em</b>, &eacute; poss&iacute;vel especificar o nome de uma pasta em <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo.
             </p>

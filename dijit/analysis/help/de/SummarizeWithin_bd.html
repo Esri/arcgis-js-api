@@ -40,7 +40,7 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Zusammenfassen (innerhalb)</h2><p/>
         <h2><img src="../images/GUID-90E0CB1F-EB97-4752-B2EE-452B7B45475E-web.png" alt="Zusammenfassen (innerhalb)"></h2>
         <hr/>
@@ -63,7 +63,9 @@
         <div>
             <p>Der Fl&auml;chen-Layer, anhand dessen Features zusammengefasst werden, die innerhalb seiner Grenzen liegen. Sie k&ouml;nnen innerhalb eines Polygon-Layer zusammenfassen, den Sie bereitstellen, oder innerhalb von Rechteck- oder Hexagonabschnitten, die beim Ausf&uuml;hren des Werkzeugs erstellt werden.  Beim Erstellen von Abschnitten geben die f&uuml;r  <b>Quadrat</b> angegebene Zahl und die Einheiten die H&ouml;he und L&auml;nge des Quadrats an. Bei <b>Hexagon</b> wird anhand der angegebenen Zahl und der Einheiten die Entfernung zwischen parallelen Seiten festgelegt.
             </p>
-            <p>Sie k&ouml;nnen nicht nur einen Layer aus der Karte ausw&auml;hlen, sondern auch unten in der Dropdown-Liste  <b>Layer durchsuchen</b> ausw&auml;hlen, um zu Ihren f&uuml;r ein Big-Data-Dateifreigabe-Dataset bzw. -Feature-Layer zu navigieren.  
+            <p>F&uuml;r Analysen, die  <b>Quadrat</b>- oder <b>hexagonale</b> Abschnitte verwenden, ist ein projiziertes Koordinatensystem erforderlich. Sie k&ouml;nnen das <b>Verarbeitungskoordinatensystem</b> in <b>Analyseumgebungen</b> festlegen. Wenn das Verarbeitungskoordinatensystem nicht auf ein projiziertes Koordinatensystem festgelegt ist, werden Sie aufgefordert, es festzulegen, wenn Sie die <b>Analyse ausf&uuml;hren</b>.
+            </p>
+            <p>Sie k&ouml;nnen nicht nur einen Layer aus der Karte ausw&auml;hlen, sondern auch unten in der Dropdown-Liste  <b>Layer durchsuchen</b> ausw&auml;hlen, um zu Ihren f&uuml;r ein Big-Data-Dateifreigabe-Dataset bzw. -Feature-Layer zu navigieren.
             </p>
         </div>
     </div>
@@ -73,7 +75,7 @@
         <div>
             <p>Features in diesem Layer, die innerhalb der Grenzen der Features im oben genannten Eingabe-Layer oder in den oben genannten Abschnitten liegen, werden zusammengefasst. 
             </p>
-            <p>Sie k&ouml;nnen nicht nur einen Layer aus der Karte ausw&auml;hlen, sondern auch unten in der Dropdown-Liste  <b>Layer durchsuchen</b> ausw&auml;hlen, um zu Ihren f&uuml;r ein Big-Data-Dateifreigabe-Dataset bzw. -Feature-Layer zu navigieren.  
+            <p>Sie k&ouml;nnen nicht nur einen Layer aus der Karte ausw&auml;hlen, sondern auch unten in der Dropdown-Liste  <b>Layer durchsuchen</b> ausw&auml;hlen, um zu Ihren f&uuml;r ein Big-Data-Dateifreigabe-Dataset bzw. -Feature-Layer zu navigieren.
             </p>
         </div>
     </div>
@@ -91,20 +93,20 @@
         <div><h2>Mit Zeitintervallen aggregieren (optional)</h2></div>
         <hr/>
         <div>
-            <p>Wenn Zeiteigenschaften f&uuml;r den Eingabepunkt-Layer aktiviert sind und vom Typ &quot;Sofort&quot; sind, kann die Analyse mittels Zeitintervallen durchgef&uuml;hrt werden.  Bei Verwendung von Zeit k&ouml;nnen drei Parameter festgelegt werden:
+            <p>Wenn Zeiteigenschaften f&uuml;r den Eingabepunkt-Layer aktiviert und vom Typ &quot;Sofort&quot; sind, kann die Analyse mittels Zeitintervallen durchgef&uuml;hrt werden. Bei Verwendung von Zeit k&ouml;nnen drei Parameter festgelegt werden:
                 <ul>
-                    <li>  <b>Zeitintervall</b>
+                    <li> <b>Zeitschrittintervall</b>
                     </li>
-                    <li> <b>Zeitschritt</b>
+                    <li> <b>Wie h&auml;ufig der Zeitschritt wiederholt werden soll</b>
                     </li>
-                    <li> <b>Bezugszeit</b>
+                    <li> <b>Zeit zum Ausrichten von Zeitschritten</b>
                     </li>
                 </ul>
                 
             </p>
-            <p>Angenommen, Ihre Daten stellen ein Jahr dar und Sie m&ouml;chten eine Analyse mit w&ouml;chentlichen Abschnitten durchf&uuml;hren. Dazu muss das  <b>Zeitintervall</b> auf <code>1 Woche</code> festgelegt werden.
+            <p>Angenommen, Ihre Daten stellen ein Jahr dar und Sie m&ouml;chten eine Analyse mit w&ouml;chentlichen Schritten durchf&uuml;hren. Dazu muss das  <b>Zeitschrittintervall</b> auf <code>1 Woche</code> festgelegt werden.
             </p>
-            <p> Angenommen, Ihre Daten stellen ein Jahr dar und Sie m&ouml;chten eine Analyse mit der ersten Woche des Monats durchf&uuml;hren. Dazu legen Sie das <b>Zeitintervall</b> auf <code>1 Woche</code>, den <b>Zeitschritt</b> auf <code>1 Monat</code> und die <b>Bezugszeit</b> auf <code>1. Januar, 12:00 Uhr</code> ein.
+            <p>Angenommen, Ihre Daten stellen ein Jahr dar und Sie m&ouml;chten eine Analyse mit der ersten Woche des Monats durchf&uuml;hren. Hierf&uuml;r legen Sie als  <b>Zeitschrittintervall</b> <code>1 Woche</code> fest, f&uuml;r <b>Wie h&auml;ufig der Zeitschritt wiederholt werden soll</b> stellen Sie <code>1 Monat</code> ein, und <b>Zeit zum Ausrichten von Zeitschritten</b> legen Sie auf den <code>1. Januar 12:00 Uhr</code> fest.
             </p>
         </div>
     </div>
@@ -112,9 +114,9 @@
         <div><h2>Zeitintervall, in das aggregiert werden soll</h2></div>
         <hr/>
         <div>
-            <p>Das Zeitintervall zum Aufteilen der Daten. Das Zeitintervall kann alleine oder mit den Parametern  <b>Zeitschritt</b> oder <b>Bezugszeit</b> verwendet werden.
+            <p>Zeitintervall f&uuml;r die Erzeugung von Zeitschritten. Das Zeitschrittintervall kann entweder allein oder zusammen mit den Parametern  <b>Wie h&auml;ufig der Zeitschritt wiederholt werden soll</b> oder <b>Zeit zum Ausrichten von Zeitschritten</b> verwendet werden.
             </p>
-            <p> Wenn Sie Zeitabschnitte erstellen m&ouml;chten, die jeden Montag von 9:00 bis 10:00 Uhr stattfinden, betr&auml;gt das <b>Zeitintervall</b> <code>1 Stunde</code>, der <b>Zeitschritt</b> <code>1 Woche</code> und lautet die <b>Bezugszeit</b> <code>9:00:00 Uhr am Montag</code>.
+            <p>Wenn Sie Zeitabschnitte erstellen m&ouml;chten, die jeden Montag von 9:00 bis 10:00 Uhr stattfinden, betr&auml;gt das  <b>Zeitschrittintervall</b> <code>1 Stunde</code>, <b>Wie h&auml;ufig der Zeitschritt wiederholt werden soll</b> betr&auml;gt <code>1 Woche</code>, und die <b>Zeit zum Ausrichten von Zeitschritten</b> wird auf <code>9:00:00 Uhr am Montag</code> eingestellt.
             </p>
         </div>
     </div>
@@ -122,9 +124,9 @@
         <div><h2>Zeitschritt, in den aggregiert werden soll</h2></div>
         <hr/>
         <div>
-            <p> Der Schritt zum Berechnen eines Zeitabschnitts. Der <b>Zeitschritt</b> kann alleine oder mit dem <b>Zeitintervall</b>, mit dem <b>Zeitbezug</b> oder sowohl mit dem <b>Zeitintervall</b> als auch mit der <b>Bezugszeit</b> verwendet werden.
+            <p> Der Schritt zum Berechnen eines Zeitabschnitts. <b>Wie h&auml;ufig der Zeitschritt wiederholt werden soll</b> kann allein oder zusammen mit <b>Zeitschrittintervall</b>, mit <b>Bezugszeit</b> oder sowohl mit <b>Zeitschrittintervall</b> und <b>Zeit zum Ausrichten von Zeitschritten</b> verwendet werden.
             </p>
-            <p> Wenn Sie Zeitabschnitte erstellen m&ouml;chten, die jeden Montag von 9:00 bis 10:00 Uhr stattfinden, betr&auml;gt das <b>Zeitintervall</b> <code>1 Stunde</code>, der <b>Zeitschritt</b> <code>1 Woche</code> und lautet die <b>Bezugszeit</b> <code>9:00:00 Uhr am Montag</code>.
+            <p> Wenn Sie Zeitabschnitte erstellen m&ouml;chten, die jeden Montag von 9:00 bis 10:00 Uhr stattfinden, betr&auml;gt das <b>Zeitschrittintervall</b> <code>1 Stunde</code>, <b>Wie h&auml;ufig der Zeitschritt wiederholt werden soll</b> betr&auml;gt <code>1 Woche</code>, und die <b>Zeit zum Ausrichten von Zeitschritten</b> wird auf <code>9:00:00 Uhr am Montag</code> eingestellt.
             </p>
         </div>
     </div>
@@ -132,38 +134,40 @@
         <div><h2>Bezugszeit zum Ausrichten der Zeitintervalle</h2></div>
         <hr/>
         <div>
-            <p>Das Datum und die Uhrzeit zum Ausrichten der Zeitintervalle.  <b>Zeitschritt</b> startet ab der Bezugszeit und l&auml;uft r&uuml;ckw&auml;rts.
+            <p>Das Datum und die Uhrzeit zum Ausrichten der Zeitintervalle. Die Zeitintervalle beginnen bzw. enden an diesem Zeitpunkt. Wenn keine Bezugszeit ausgew&auml;hlt wurde, werden die Intervalle am 1. Januar 1970 ausgerichtet. 
             </p>
-            <p> Wenn Sie Zeitabschnitte erstellen m&ouml;chten, die jeden Montag von 9:00 bis 10:00 Uhr stattfinden, betr&auml;gt das <b>Zeitintervall</b> <code>1 Stunde</code>, der <b>Zeitschritt</b> <code>1 Woche</code> und lautet die <b>Bezugszeit</b> <code>9:00:00 Uhr am Montag</code>.
+            <p> Wenn Sie Zeitabschnitte erstellen m&ouml;chten, die jeden Montag von 9:00 bis 10:00 Uhr stattfinden, betr&auml;gt das <b>Zeitschrittintervall</b> <code>1 Stunde</code>, <b>Wie h&auml;ufig der Zeitschritt wiederholt werden soll</b> betr&auml;gt <code>1 Woche</code>, und die <b>Zeit zum Ausrichten von Zeitschritten</b> wird auf <code>9:00:00 Uhr am Montag</code> eingestellt.
             </p>
         </div>
     </div>
     <div id="summaryFields">
-        <div><h2>Statistiken aus dem Layer hinzufügen, der zusammengefasst werden soll (optional)</h2></div>
+        <div><h2>Statistiken hinzufügen (optional)</h2></div>
         <hr/>
         <div>
             <p> Sie k&ouml;nnen Statistiken f&uuml;r Features berechnen, die zusammengefasst wurden. F&uuml;r numerische Felder kann Folgendes berechnet werden:
                 <ul>
-                    <li>Anzahl
+                    <li>Anzahl: Berechnet die Anzahl der Nicht-NULL-Werte. Kann f&uuml;r numerische Felder oder Zeichenfolgen verwendet werden. Die Anzahl von [NULL, 0, 2] betr&auml;gt 2.
                     </li>
-                    <li>Mittelwert
+                    <li>Summe: Die Summe der numerischen Werte in einem Feld. Die Summe von [NULL, NULL, 3] betr&auml;gt 3.
                     </li>
-                    <li>Min.
+                    <li>Mittelwert: Der Mittelwert der numerischen Werte. Der Mittelwert von [0, 2, NULL] betr&auml;gt 1.
                     </li>
-                    <li>Max.
+                    <li>Min: Der Minimalwert eines numerischen Feldes. Der Minimalwert von [0, 2, NULL] betr&auml;gt 0. 
                     </li>
-                    <li>Bereich
+                    <li>Max: Der Maximalwert eines numerischen Feldes. Der Maximalwert von [0, 2, NULL] betr&auml;gt 2.
                     </li>
-                    <li>Varianz
+                    <li>Bereich: Der Bereich eines numerischen Feldes. Dieser wird durch die Subtraktion der Minimalwerte vom Maximalwert berechnet. Der Bereich von [0, NULL, 1] lautet 1. Der Bereich von [NULL, 4] lautet 0.
                     </li>
-                    <li>Standardabweichung
+                    <li>Varianz: Die Varianz eines numerischen Feldes in einer Spur. Die Varianz von [1] betr&auml;gt Null. Die Varianz von [NULL, 1,1,1] betr&auml;gt Null.
+                    </li>
+                    <li>Standardabweichung: Die Standardabweichung eines numerischen Feldes. Die Standardabweichung von [1] ist Null. Die Standardabweichung von [NULL, 1,1,1] ist 1. 
                     </li>
                 </ul>
                 
             </p>
             <p>F&uuml;r Zeichenfolgenfelder kann Folgendes berechnet werden:
                 <ul>
-                    <li>Anzahl
+                    <li>Anzahl: Die Anzahl der Nicht-NULL-Werte.
                     </li>
                     <li>Beliebig: Diese Statistik ist eine auf dem Zufallsprinzip basierende Stichprobe eines Zeichenfolgenwertes im angegebenen Feld.
                     </li>
@@ -203,7 +207,17 @@
         <div><h2>Data Store auswählen</h2></div>
         <hr/>
         <div>
-            <p>Dies ist ein tempor&auml;rer Parameter f&uuml;r die Vorabversion zum Festlegen des Data Store, in dem die Ergebnisse gespeichert werden. Beide Data Stores sind Teil des  ArcGIS Data Store. Wenn Sie den Data Store &quot;spatiotemporal&quot; ausw&auml;hlen, aber nicht installiert haben, kann das Werkzeug nicht ausgef&uuml;hrt werden. </p>
+            <p>GeoAnalytics-Ergebnisse werden in einem ArcGIS Data Store gespeichert und als Feature-Layer in  Portal for ArcGIS dargestellt. In den meisten F&auml;llen sollten Ergebnisse im Data Store vom Typ &quot;spatiotemporal&quot; gespeichert werden, was gleichzeitig die Standardeinstellung ist. Manchmal empfiehlt es sich auch, Ergebnisse im Data Store vom Typ &quot;relational&quot; zu speichern. Im Folgenden sind Gr&uuml;nde aufgef&uuml;hrt, die f&uuml;r ein Speichern der Ergebnisse in einem Data Store vom Typ &quot;relational&quot; sprechen: 
+                <ul>
+                    <li>Verwenden der Ergebnisse in portal&uuml;bergreifender Zusammenarbeit
+                    </li>
+                    <li>Aktivieren von Synchronisierungsfunktionen f&uuml;r Ihre Ergebnisse
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Der Einsatz des Data Stores vom Typ &quot;relational&quot; ist nicht angezeigt, wenn abzusehen ist, dass Ihre GeoAnalytics-Ergebnisse weiter zunehmen. Verwenden Sie stattdessen die Funktionen des Big-Data-Store vom Typ &quot;spatiotemporal&quot;, um gro&szlig;e Datenmengen zu verwalten. 
+            </p>
         </div>
     </div>
     <div id="outputName">

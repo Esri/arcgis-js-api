@@ -40,7 +40,7 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Crear zonas de influencia</h2><p/>
         <h2><img src="../images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" alt="Crear zonas de influencia"></h2>
         <hr/>
@@ -54,9 +54,9 @@
         <div><h2>Elija una capa a la que aplicar la zona de influencia</h2></div>
         <hr/>
         <div>
-            <p>Las entidades de puntos, l&iacute;neas o &aacute;reas que se deben incluir en lacon las que crear las zonas de influencia.
+            <p>Las entidades de puntos, l&iacute;neas o &aacute;reas que se deben incluir en la zona de influencia. Las capas de entrada deben estar en un sistema de coordenadas proyectado o la referencia espacial de procesamiento debe estar definida en un sistema de coordenadas proyectado mediante  <b>Analysis Environments</b>.
             </p>
-            <p>Adem&aacute;s de elegir una capa en el mapa, puede elegir  <b>Examinar capas</b> en la parte inferior de la lista desplegable para examinar el contenido del dataset o la capa de entidades de un archivo compartido de Big Data.  
+            <p>Adem&aacute;s de elegir una capa en el mapa, puede elegir  <b>Examinar capas</b> en la parte inferior de la lista desplegable para examinar el contenido del dataset o la capa de entidades de un archivo compartido de Big Data.
             </p>
         </div>
     </div>
@@ -126,26 +126,28 @@
         <div>
             <p> Puede calcular estad&iacute;sticas sobre las entidades resumidas. En los campos num&eacute;ricos puede calcular lo siguiente:
                 <ul>
-                    <li>Calcular
+                    <li>Recuento: calcula el n&uacute;mero de valores no nulos. Se puede usar en campos num&eacute;ricos o cadenas de caracteres. El recuento de [nulo, 0, 2] es 2.
                     </li>
-                    <li>Media
+                    <li>Suma: la suma de valores num&eacute;ricos en un campo. La suma de [nulo, nulo, 3] es 3.
                     </li>
-                    <li>M&iacute;n.
+                    <li>Media: la media de valores num&eacute;ricos. La media de [0, 2, nulo] es 1.
                     </li>
-                    <li>M&aacute;x.
+                    <li>M&iacute;n: el valor m&iacute;nimo de un campo num&eacute;rico. El m&iacute;nimo de [0, 2, nulo] es 0. 
                     </li>
-                    <li>Rango
+                    <li>M&aacute;x: el valor m&aacute;ximo de un campo num&eacute;rico. El m&aacute;ximo de [0, 2, nulo] es 2.
                     </li>
-                    <li>Varianza
+                    <li>Rango: el rango de un campo num&eacute;rico. Se calcula como los valores m&iacute;nimos restados del valor m&aacute;ximo. El rango de [0, nulo, 1] es 1. El rango de [nulo, 4] es 0.
                     </li>
-                    <li>Desviaci&oacute;n est&aacute;ndar
+                    <li>Varianza: la varianza de un campo num&eacute;rico en una pista. La varianza de [1] es nulo. La varianza de [nulo, 1,1,1] es 1.
+                    </li>
+                    <li>Desviaci&oacute;n est&aacute;ndar: la desviaci&oacute;n est&aacute;ndar de un campo num&eacute;rico. La desviaci&oacute;n est&aacute;ndar de [1] es nulo. La desviaci&oacute;n est&aacute;ndar de [nulo, 1,1,1] es 1. 
                     </li>
                 </ul>
                 
             </p>
             <p>En los campos de cadenas de caracteres puede calcular lo siguiente:
                 <ul>
-                    <li>Calcular
+                    <li>Recuento: el n&uacute;mero de cadenas de caracteres no nulas.
                     </li>
                     <li>Cualquiera: esta estad&iacute;stica es una muestra aleatoria del valor de una cadena de caracteres en el campo especificado.
                     </li>
@@ -155,19 +157,29 @@
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Elija el data store</h2></div>
+        <div><h2>Seleccione un ArcGIS Data Store en el que guardar los resultados</h2></div>
         <hr/>
         <div>
-            <p>Se trata de un par&aacute;metro temporal para una versi&oacute;n preliminar que permite definir el data store donde se guardar&aacute;n los resultados. Ambos data stores forman parte de  ArcGIS Data Store. Si selecciona el data store espaciotemporal pero no tiene ninguno instalado, la herramienta fallar&aacute;. </p>
+            <p>Los resultados de GeoAnalytics se almacenan en un ArcGIS Data Store y se exponen como capa de entidades en  Portal for ArcGIS. En la mayor&iacute;a de los casos, conviene almacenar los resultados en el almac&eacute;n de datos espaciotemporal y este es el predeterminado. En algunos casos, guardar los resultados en el almac&eacute;n de datos relacional es una buena opci&oacute;n. A continuaci&oacute;n, se exponen motivos por los que resulta buena idea guardar resultados en el almac&eacute;n de datos relacional: 
+                <ul>
+                    <li>Usar los resultados en colaboraci&oacute;n de portal a portal.
+                    </li>
+                    <li>Habilitar capacidades de sincronizaci&oacute;n con sus resultados.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Conviene no usar el almac&eacute;n de datos relacionales si espera que los resultados de GeoAnalytics aumenten y necesita aprovechar las capacidades del almac&eacute;n de big data espaciotemporal para manejar grandes cantidades de datos. 
+            </p>
         </div>
     </div>
     <div id="outputName">
         <div><h2>Nombre de capa de resultados</h2></div>
         <hr/>
         <div>
-            <p> Este es el nombre de la capa que se crear&aacute; en <b>Mi contenido</b> y se agregar&aacute; al mapa.  El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, la herramienta fallar&aacute;.
+            <p> Este es el nombre de la capa que se crear&aacute; en <b>Mi contenido</b> y se agregar&aacute; al mapa. El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, la herramienta fallar&aacute;.
             </p>
-            <p>En el cuadro desplegable  <b>Guardar el resultado en</b>, puedes especificar el nombre de una carpeta de <b>Mi contenido</b> en la que se guardar&aacute; el resultado.
+            <p>En el cuadro desplegable  <b>Guardar el resultado en</b>, puede especificar el nombre de una carpeta de <b>Mi contenido</b> en la que se guardar&aacute; el resultado.
             </p>
         </div>
     </div>

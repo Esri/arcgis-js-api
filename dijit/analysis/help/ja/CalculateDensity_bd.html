@@ -70,12 +70,12 @@
         <div>
             <p>The point layer on which the density will be calculated.
             </p>
-            <p>マップからレイヤーを選択できるだけでなく、ドロップダウン リストの下部にある  <b>[レイヤーの参照]</b> を選択し、ビッグ データ ファイル共有データセットまたはフィーチャ レイヤーのコンテンツを参照して選択することもできます。  
+            <p>マップからレイヤーを選択できるだけでなく、ドロップダウン リストの下部にある  <b>[レイヤーの参照]</b> を選択し、ビッグ データ ファイル共有データセットまたはフィーチャ レイヤーのコンテンツを参照して選択することもできます。
             </p>
         </div>
     </div>
     <div id="fields">
-        <div><h2>密度の計算に使用する 1 つまたは複数のフィールドの選択</h2></div>
+        <div><h2>密度の計算に使用する 1 つまたは複数のフィールドの選択 (オプション)</h2></div>
         <hr/>
         <div>
             <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
@@ -90,10 +90,12 @@
         <div>
             <p>The shape of bins that points are aggregated into and used for the density calculation.
             </p>
+            <p> <b>四角形</b>または <b>六角形</b>のビンを使用した解析には、投影座標系が必要です。 <b>[分析環境]</b> で <b>[処理に使用する座標系]</b> を設定できます。処理に使用する座標系が投影座標系に設定されていない場合、 <b>[分析の実行]</b> を行うときに設定するようにプロンプトが表示されます。
+            </p>
         </div>
     </div>
     <div id="binSizing">
-        <div><h2>密度を計算するビンのサイズを選択</h2></div>
+        <div><h2>集約するビンのサイズを選択</h2></div>
         <hr/>
         <div>
             <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
@@ -127,59 +129,59 @@
         <div><h2>密度の出力単位の選択</h2></div>
         <hr/>
         <div>
-            <p>The desired output units of the density values. By default, this is set to the units in your map (for example, square meters). If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+            <p>The desired output units of the density values. By default, this is set to square kilometers or square miles based on the default units specified in your profile. If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
 
             </p>
         </div>
     </div>
     <div id="timeSlicing">
-        <div><h2>タイム スライスを使用した密度の計算 (オプション)</h2></div>
+        <div><h2>時間ステップを使用した密度の計算 (オプション)</h2></div>
         <hr/>
         <div>
-            <p>入力ポイント レイヤーで時間が有効になっており、時間のタイプが即時の場合は、タイム スライスを使用して解析することができます。時間を使用する際には、次の 3 つのパラメーターを設定できます。
+            <p>入力ポイント レイヤーで時間が有効になっており、時間のタイプが即時の場合は、時間ステップを使用して解析することができます。時間を使用する際には、次の 3 つのパラメーターを設定できます。
                 <ul>
-                    <li>  <b>時間間隔</b>
+                    <li> <b>時間ステップの間隔</b>
                     </li>
-                    <li> <b>時間ステップ</b>
+                    <li> <b>時間ステップの繰り返し頻度</b>
                     </li>
-                    <li> <b>基準時間</b>
+                    <li> <b>時間ステップを調整する時間</b>
                     </li>
                 </ul>
                 
             </p>
-            <p>たとえば、時間を年で表すデータがあり、週単位のタイム スライスを使用して解析するとします。これには、 <b>[時間間隔]</b> を <code>[1 週間]</code> に設定します。
+            <p>たとえば、時間を年で表すデータがあり、週単位の時間ステップを使用して解析するとします。これには、 <b>[時間ステップの間隔]</b> を <code>[1 週間]</code> に設定します。
             </p>
-            <p> たとえば、時間を年で表すデータがあり、月の第 1 週を使用して解析するとします。これには、 <b>[時間間隔]</b> を <code>[1 週間]</code>、 <b>[時間ステップ]</b> を <code>[1 か月]</code>、 <b>[基準時間]</b> を <code>[1 月 1 日 12:00 AM]</code> に設定します。
+            <p>たとえば、時間を年で表すデータがあり、月の第 1 週を使用して解析するとします。これには、 <b>[時間間隔]</b> を <code>[1 週間]</code>、 <b>[時間ステップの繰り返し頻度]</b> を <code>[1 か月]</code>、 <b>[時間ステップを調整する時間]</b> を <code>[1 月 1 日 12:00 AM]</code> に設定します。
             </p>
         </div>
     </div>
     <div id="timeInterval">
-        <div><h2>密度を計算する時間間隔</h2></div>
+        <div><h2>時間ステップの間隔</h2></div>
         <hr/>
         <div>
-            <p>データのスライスに使用する時間間隔。[時間間隔] は、単独で使用することも、 <b>[時間ステップ]</b> または <b>[基準時間]</b> パラメーターと組み合わせて使用することもできます。
+            <p>時間ステップの生成に使用する時間間隔。[時間ステップの間隔] は、単独で使用することも、 <b>[時間ステップの繰り返し頻度]</b> または <b>[時間ステップを調整する時間]</b> の各パラメーターと組み合わせて使用することも可能です。
             </p>
-            <p> 毎週月曜日の午前 9:00 から午前 10:00 までのタイム スライスを作成する場合は、 <b>[時間間隔]</b> を <code>[1 時間]</code>、 <b>[時間ステップ]</b> を <code>[1 週間]</code>、 <b>[基準時間]</b> を <code>[月曜日 9:00:00 AM]</code> に設定します。
+            <p>毎週月曜日の午前 9:00 から午前 10:00 までのタイム スライスを作成する場合は、 <b>[時間間隔]</b> を <code>[1 時間]</code>、 <b>[時間ステップの繰り返し頻度]</b> を <code>[1 週間]</code>、 <b>[時間ステップを調整する時間]</b> を <code>[月曜日 9:00:00 AM]</code> に設定します。
             </p>
         </div>
     </div>
     <div id="timeStep">
-        <div><h2>密度を計算する時間ステップ</h2></div>
+        <div><h2>時間ステップの繰り返し頻度</h2></div>
         <hr/>
         <div>
-            <p> タイム スライスの計算に使用する時間ステップ。 <b>[時間ステップ]</b> は、単独で使用することも、 <b>[時間間隔]</b>、 <b>[基準時間]</b>、または <b>[時間間隔]</b> と <b>[基準時間]</b> の両方と組み合わせて使用することもできます。
+            <p> タイム スライスの計算に使用する時間ステップ。 <b>[時間ステップの繰り返し頻度]</b> は、単独で使用することも、 <b>[時間ステップの間隔]</b>または <b>[基準時間]</b>、あるいは <b>[時間ステップの間隔]</b> と <b>[時間ステップを調整する時間]</b> の両方と組み合わせて使用することもできます。
             </p>
-            <p> 毎週月曜日の午前 9:00 から午前 10:00 までのタイム スライスを作成する場合は、 <b>[時間間隔]</b> を <code>[1 時間]</code>、 <b>[時間ステップ]</b> を <code>[1 週間]</code>、 <b>[基準時間]</b> を <code>[月曜日 9:00:00 AM]</code> に設定します。
+            <p> 毎週月曜日の午前 9:00 から午前 10:00 までのタイム スライスを作成する場合は、 <b>[時間間隔]</b> を <code>[1 時間]</code>、 <b>[時間ステップの繰り返し頻度]</b> を <code>[1 週間]</code>、 <b>[時間ステップを調整する時間]</b> を <code>[月曜日 9:00:00 AM]</code> に設定します。
             </p>
         </div>
     </div>
     <div id="timeReference">
-        <div><h2>タイム スライスの調整に使用する基準時間</h2></div>
+        <div><h2>時間ステップを調整する時間</h2></div>
         <hr/>
         <div>
-            <p>タイム スライスの調整に使用する日付と時刻。 <b>[時間ステップ]</b> は、基準時間から始まり、基準時間まで逆戻りします。
+            <p>タイム スライスの調整に使用する日付と時刻。時間ステップは、この時間から始まり、この時間まで逆戻りします。基準時間が選択されていない場合、時間ステップは 1970 年 1 月 1 日に揃えられます。
             </p>
-            <p> 毎週月曜日の午前 9:00 から午前 10:00 までのタイム スライスを作成する場合は、 <b>[時間間隔]</b> を <code>[1 時間]</code>、 <b>[時間ステップ]</b> を <code>[1 週間]</code>、 <b>[基準時間]</b> を <code>[月曜日 9:00:00 AM]</code> に設定します。
+            <p> 毎週月曜日の午前 9:00 から午前 10:00 までのタイム スライスを作成する場合は、 <b>[時間間隔]</b> を <code>[1 時間]</code>、 <b>[時間ステップの繰り返し頻度]</b> を <code>[1 週間]</code>、 <b>[時間ステップを調整する時間]</b> を <code>[月曜日 9:00:00 AM]</code> に設定します。
             </p>
         </div>
     </div>
@@ -195,7 +197,16 @@
         <div><h2>データ ストアの選択</h2></div>
         <hr/>
         <div>
-            <p>結果を保存するデータ ストアを設定するためのプレリリース用の一時的なパラメーターです。どちらのデータ ストアも  ArcGIS Data Store の一部です。ビッグ データ ストアを選択した場合に、このデータ ストアがまだインストールされていないと、このツールは正常に実行されません。 </p>
+            <p>GeoAnalytics の結果は ArcGIS Data Store に保存され、フィーチャ レイヤーとして  Portal for ArcGIS に公開されます。多くの場合、結果はビッグ データ ストアに保存され、これがデフォルトとなっています。結果をリレーショナル データ ストアに保存したほうがよい場合もあります。結果をリレーショナル データ ストアに保存する理由は以下のとおりです。 <ul>
+                    <li>結果をポータル間での連携に使用する。
+                    </li>
+                    <li>結果との同期機能を有効にする。
+                    </li>
+                </ul>
+                
+            </p>
+            <p>GeoAnalytics の結果が増加すると予想されており、大量のデータを処理するビッグ データ ストアの機能を利用したい場合には、リレーショナル データ ストアを使用すべきではありません。
+            </p>
         </div>
     </div>
     <div id="outputName">

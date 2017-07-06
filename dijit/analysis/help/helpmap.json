@@ -54,7 +54,7 @@
         },
         "EnrichLayer": {
             "toolDescription": "enrich-layer.htm",
-            "DataCollection": "../../esri-demographics/data/data.htm"
+            "DataCollection": "enrich-layer.htm"
         },
         "ExtractData": {
             "toolDescription": "extract-data.htm",
@@ -85,7 +85,7 @@
             "analysisFields": "find-similar-locations.htm#ESRI_SECTION1_B78395564C414EA79B3386D3AA8C740C"
         },
         "GeocodeLocationsfromTable": {
-            "geocodeServiceURL": "../administer/configure-services.htm"
+            "geocodeServiceURL": "geocode-locations-from-table.htm"
         },
         "InterpolatePoints": {
             "toolDescription": "interpolate-points.htm"

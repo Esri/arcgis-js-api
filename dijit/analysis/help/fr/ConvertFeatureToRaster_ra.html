@@ -40,48 +40,48 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
-        <h2>Convert Feature to  Raster</h2><p/>
-        <h2><img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" alt="Convert Feature to Raster tool"></h2>
+    <div id="toolDescription" class="regularsize">
+        <h2>Convertir l'entité en raster</h2><p/>
+        <h2><img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" alt="Outil Convertir l'entit&eacute; en raster"></h2>
         <hr/>
-    <p>This task converts features to a raster dataset.
+    <p>Cette t&acirc;che convertit des entit&eacute;s multipatchs en jeu de donn&eacute;es raster.
     </p>
-    <p>Any feature class containing point, line, or polygon features can be converted to a raster dataset.
+    <p>Toute classe d'entit&eacute;s contenant des entit&eacute;s ponctuelles, lin&eacute;aires ou surfaciques peut &ecirc;tre convertie en un jeu de donn&eacute;es raster.
     </p>
-    <p>The cell center is used to decide the value of the output raster pixel.
+    <p>Le centre des cellules permet de conna&icirc;tre la valeur du pixel du raster en sortie.
     </p>
-    <p>The input field type determines the type of output raster. If the field is integer, the output raster will be integer; if it is floating point, the output will be floating point.
+    <p>Le type du champ en entr&eacute;e d&eacute;termine le type du raster en sortie. S'il s'agit d'un champ de type entier, le raster en sortie est &eacute;galement de type entier. S'il s'agit d'un champ de type virgule flottante, la sortie est &eacute;galement de type virgule flottante.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Choose feature layer to convert</h2></div>
+        <div><h2>Choisir la couche d'entités à convertir</h2></div>
         <hr/>
         <div>
-            <p>The input feature layer to convert to a raster dataset.
+            <p>La couche d'entit&eacute;s en entr&eacute;e &agrave; convertir en jeu de donn&eacute;es raster.
             </p>
         </div>
     </div>
     <div id="field">
-        <div><h2>Choose field</h2></div>
+        <div><h2>Choisir un champ</h2></div>
         <hr/>
         <div>
-            <p>Choose the field that will be used to assign values to the output raster.
+            <p>Choisissez le champ qui permettra d'attribuer des valeurs au raster en sortie.
             </p> 
         </div>
     </div>
     <div id="outputCellSize">
-        <div><h2>Output cell size</h2></div>
+        <div><h2>Taille de cellule en sortie</h2></div>
         <hr/>
         <div>
             <p>Saisissez la taille de cellule et l'unit&eacute; des rasters en sortie.
             </p>
-            <p>The available units are Feet, Miles, Meters, and Kilometers.
+            <p>Les unit&eacute;s disponibles sont les pieds, les miles, les m&egrave;tres et les kilom&egrave;tres.
             </p>
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>Nom de la couche résultat</h2></div>
         <hr/>
         <div>
             <p>Le nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>Mon contenu</b> et ajout&eacute;e &agrave; la carte. Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom.

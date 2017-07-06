@@ -57,44 +57,46 @@
         <div>
             <p>Warstwa zawierająca pola, kt&oacute;re będą sumowane.  
             </p>
-            <p>Opr&oacute;cz wybrania warstwy z mapy, można wybrać opcję  <b>Przeglądaj warstwy</b> znajdującą się w dolnej części listy rozwijanej, aby przejść do zasob&oacute;w zestawu danych udostępnionych plik&oacute;w dużych zbior&oacute;w danych lub warstwy obiektowej.  
+            <p>Opr&oacute;cz wybrania warstwy z mapy, można wybrać opcję  <b>Przeglądaj warstwy</b> znajdującą się w dolnej części listy rozwijanej, aby przejść do zasob&oacute;w zestawu danych udostępnionych plik&oacute;w dużych zbior&oacute;w danych lub warstwy obiektowej.
             </p>
         </div>
     </div>
     <div id="fields">
-        <div><h2>Wybierz pola agregacji</h2></div>
+        <div><h2>Wybierz pola do sumowania</h2></div>
         <hr/>
         <div>
-            <p>  Lista p&oacute;l w warstwy wejściowej.  Wybrane pola zostaną zsumowane, w wynik tej operacji zostanie użyty podczas wykonywania obliczeń statystycznych. Jeśli na przykład zostanie wybrane pole o nazwie <i>PropertyType</i> (typ nieruchomości), kt&oacute;re może przyjmować wartości commercial (komercyjna) i residential (mieszkalna), wszystkie pola o wartości residential zostaną zsumowane i zostaną wykonane zbiorcze obliczenia statystyczne. Zostaną także zsumowane wszystkie pola o wartości commercial.
+            <p>Lista p&oacute;l z warstwy wejściowej. Wybrane pola zostaną zsumowane, w wynik tej operacji zostanie użyty podczas wykonywania obliczeń statystycznych. Jeśli na przykład zostanie wybrane pole o nazwie  <i>PropertyType</i> (typ nieruchomości), kt&oacute;re może przyjmować wartości commercial (komercyjna) i residential (mieszkalna), wszystkie pola o wartości residential zostaną zsumowane i zostaną wykonane zbiorcze obliczenia statystyczne. Zostaną także zsumowane wszystkie pola o wartości commercial.
             </p>
         </div>
     </div>
     <div id="summaryFields">
-        <div><h2>Wybierz pola i statystyki, które chcesz obliczyć (opcjonalnie)</h2></div>
+        <div><h2>Dodaj statystyki (opcjonalnie)</h2></div>
         <hr/>
         <div>
             <p> Można obliczyć statystyki dla zsumowanych obiekt&oacute;w. W polach liczbowych można obliczyć następujące wartości:
                 <ul>
-                    <li>Liczba
+                    <li>Liczba &mdash; zlicza wartości inne niż null. Może być używane w polach liczbowych lub znakowych. Liczba dla wartości [null, 0, 2] wynosi 2.
                     </li>
-                    <li>Średnia
+                    <li>Suma &mdash; suma wartości liczbowych w polu. Suma dla wartości [null, null, 3] wynosi 3.
                     </li>
-                    <li>Min
+                    <li>Średnia &mdash; średnia wartości liczbowych. Średnia dla wartości [0, 2, null] wynosi 1.
                     </li>
-                    <li>Maks
+                    <li>Min &mdash; wartość minimalna w polu liczbowym. Wartość minimalna dla wartości [0, 2, null] wynosi 0. 
                     </li>
-                    <li>Zakres
+                    <li>Maks &mdash; wartość maksymalna w polu liczbowym. Wartość maksymalna dla wartości [0, 2, null] wynosi 2.
                     </li>
-                    <li>Odchylenie
+                    <li>Zakres &mdash; zakres pola liczbowego. Zakres jest obliczany przez odjęcie wartości minimalnych od wartości maksymalnej. Zakres dla wartości [0, null, 1] wynosi 1. Zakres dla wartości [null, 4] wynosi 0.
                     </li>
-                    <li>Odchylenie standardowe
+                    <li>Wariancja &mdash; wariancja pola liczbowego w ścieżce. Wariancja dla wartości [1] wynosi null. Wariancja dla wartości [null, 1, 1 ,1] wynosi 1.
+                    </li>
+                    <li>Odchylenie standardowe &mdash; odchylenie standardowe pola liczbowego. Odchylenie standardowe dla wartości [1] wynosi null. Odchylenie standardowe dla wartości [null, 1, 1 ,1] wynosi 1. 
                     </li>
                 </ul>
                 
             </p>
             <p>W polach ciąg&oacute;w znakowych można obliczyć następujące wartości:
                 <ul>
-                    <li>Liczba
+                    <li>Liczba &mdash; liczba ciąg&oacute;w znakowych innych niż null.
                     </li>
                     <li>Dowolne &mdash; ta statystyka to losowy przykład wartości znakowej w podanym polu.
                     </li>
@@ -107,7 +109,15 @@
         <div><h2>Wybierz magazyn danych</h2></div>
         <hr/>
         <div>
-            <p>Jest to parametr tymczasowy używany w wersji wstępnej do ustawiania magazynu danych, w kt&oacute;rym zapisywane są wyniki. Oba magazyny danych są częścią aplikacji  ArcGIS Data Store. Jeśli zostanie wybrany magazyn danych czasowo-przestrzennych, ale żaden magazyn tego typu nie został zainstalowany, działanie narzędzia nie powiedzie się. </p>
+            <p>Wyniki analiz geoprzestrzennych są przechowywane w aplikacji ArcGIS Data Store i udostępniane jako warstwa obiekt&oacute;w w witrynie  Portal for ArcGIS. W większości przypadk&oacute;w wyniki powinny być przechowywane w magazynie danych czasowo-przestrzennych i jest to ustawienie domyślne. W niekt&oacute;rych przypadkach dobrym rozwiązanie jest zapisanie wynik&oacute;w w relacyjnym magazynie danych. Poniżej podano sytuacje, kt&oacute;re mogą uzasadniać przechowywanie wynik&oacute;w w relacyjnym magazynie danych: 
+                <ul>
+                    <li>Używanie wynik&oacute;w w ramach kooperacji między portalami.
+                    </li>
+                    <li>Włączanie możliwości synchronizacji dla wynik&oacute;w.
+                    </li>
+                </ul>
+                
+            </p>
         </div>
     </div>
     <div id="outputName">

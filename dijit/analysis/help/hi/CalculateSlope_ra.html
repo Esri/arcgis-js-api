@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>स्लोप की गणना करें</h2><p/>
+        <h2><img src="../images/GUID-D33862C6-01BB-445E-B0C3-BC8B8C1858DA-web.png" alt="ढलान की गणना करने का उपकरण"></h2>
+        <hr/>
+    <p>यह उपकरण एक सतह बनाता है जो इनपुट उन्नयन डेटा के ढलान को दर्शाता है। ढलान प्रत्येक डिजिटल उन्नयन मॉडल (DEM) सेल के लिए उन्नयन की परिवर्तन दर को प्रदर्शित करता है।
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>ढलान की गणना के लिए इनपुट डेटा चुनें</h2></div>
+        <hr/>
+        <div>
+            <p>जिस ढलान से उन्नयन लेयर की गणना की जाएगी।
+            </p>
+        </div>
+    </div>
+    <div id="zFactor">
+        <div><h2>उन्नयन के लिए स्केलिंग कारक को स्पष्ट करें</h2></div>
+        <hr/>
+        <div>
+            <p>z-कारक प्रविष्ट करें।
+            </p>
+            <p>z- कारक एक स्केलिंग कारक है जो दो उद्देश्यों के लिए उन्नयन मानों को परिवर्तित करने के लिए प्रयुक्त होता है।:
+ 
+                <ul>
+                    <li>लेयर की इकाइयों का क्षैतिजीय समन्वय के लिए उन्नयन इकाइयों (जैसे मीटर या फीट) को परिवर्तित करने के लिए, जोकि फीट, मीटर, या अंश हो सकती हैं
+                        
+  
+                    </li>
+                    <li>दृश्य प्रभाव के लिए ऊर्ध्वाधर विस्तार जोड़ने के लिए
+                        
+ 
+                    </li>
+                </ul>
+                
+            </p>
+            <table border="1">
+            <tr>
+                <td>
+                </td>
+                <td>
+                    <p>फीट से
+                    </p>
+                </td>
+                <td>
+                    <p>मीटर से
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>फीट से
+                    </p>
+                </td>
+                <td>
+                    <p>1
+                    </p>
+                </td>
+                <td>
+                    <p>0.3048
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>मीटर से
+                    </p>
+                </td>
+                <td>
+                    <p>3.28084
+                    </p>
+                </td>
+                <td>
+                    <p>1
+                    </p>
+                </td>
+            </tr>
+            </table>
+        </div>
+    </div>
+    <div id="outputLayer">
+        <div><h2>परिणामी लेयर का नाम</h2></div>
+        <hr/>
+        <div>
+            <p>फीचर लेयर का नाम, जो  <b>मेरी सामग्री</b> में बनाया जाएगा और मानचित्र में जोड़ा जाएगा। इसका मूल नाम उपकरण के नाम और इनपुट लेयर के नाम पर आधारित है। यदि लेयर पहले से मौजूद हो, तो आपसे दूसरा नाम देने को कहा जाएगा।
+            </p>
+            <p> <b>इसमें सहेजें</b> ड्राप-डाउन बॉक्स का उपयोग करके, आप <b>मेरी सामग्री</b> में एक फोल्डर का नाम निर्दिष्ट कर सकते हैं, जहां परिणामों को सहेजा जाएगा।।
+            </p>
+        </div>
+    </div>
+</div>
+</html>

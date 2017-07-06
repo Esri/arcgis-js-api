@@ -187,71 +187,28 @@
         <hr/>
         <p>這些工具用於識別滿足多個不同指定條件的區域。這些條件基於屬性查詢（如閒置宗地）和空間查詢（如距離河流 1 公里以內）。尋找的區域可從現有圖徵（例如現有地塊）中選擇，也可建立滿足所有要求的新圖徵。
             <ul>
-                <li> <b>尋找現有位置</b>用於在圖層中尋找滿足一系列條件的現有區域。
-                </li>
-                <li> <b>衍生新位置</b>可在研究區域中建立滿足一系列條件的新區域。
-                </li>
-                <li> <b>尋找相似位置</b>可根據指定的條件，尋找與一個或多個參考位置最相似的位置。
-                </li>
                 <li> <b>選擇最佳機構</b>會根據指定的目標，為機構配置有需求的位置來選擇這些機構的最佳位置。
                 </li>
                 <li> <b>建立視域</b>根據指定的位置建立可見的區域。
                 </li>
                 <li> <b>建立流域</b>根據指定的位置建立集水區。
                 </li>
+                <li> <b>衍生新位置</b>可在研究區域中建立滿足一系列條件的新區域。
+                </li>
+                <li> <b>尋找現有位置</b>用於在圖層中尋找滿足一系列條件的現有區域。
+                </li>
+                <li> <b>尋找相似位置</b>可根據指定的條件，尋找與一個或多個參考位置最相似的位置。
+                </li>
+                <li class="PortalOnly"> <b>來自表格的地理編碼位置</b>會將位址從表格轉換至座標。
+                </li>
                 <li> <b>追踪下游</b>以指定位置為起點，確定其下游方向的水流路徑。
                 </li>
             </ul>
-            
+             
         </p>
         <p> 
         </p>
     </div>
-        <div id="FindExistingLocationsTool" class="smallsize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>尋找現有位置</h2></td>
-                    <td>
-                    <img src="../images/GUID-FEF355B4-CF3B-48F6-9EC1-A00A1D53C81F-web.png" class="titleImage" alt="尋找現有位置">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>在研究區域中選擇滿足一系列指定條件的現有圖徵。這些條件基於屬性查詢（如閒置宗地）和空間查詢（如距離河流 1 英里以內）。
-            </p>
-            <br/>
-        </div>
-        <div id="DeriveNewLocationsTool" class="smallsize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>衍生新位置</h2></td>
-                    <td>
-                    <img src="../images/GUID-4A756008-8431-4AA5-BD42-7135296560DD-web.png" class="titleImage" alt="衍生新位置">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>在研究區域中建立滿足一系列指定條件的新圖徵。這些條件基於屬性查詢（如閒置宗地）和空間查詢（如距離河流 1 英里以內）。
-            </p>
-            <br/>
-        </div>
-        <div id="FindSimilarLocationsTool" class="smallsize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>尋找相似位置</h2></td>
-                    <td>
-                    <img src="../images/GUID-6262A84E-9087-4E48-930E-E9B89FECC836-web.png" class="titleImage" alt="尋找相似位置">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>根據指定條件尋找與一個或多個參考位置最相似的位置。
-            </p>
-            <br/>
-        </div>
         <div id="ChooseBestFacilitiesTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -294,6 +251,66 @@
             </table>
 <hr/>
             <p>根據指定的位置建立集水區。
+            </p>
+            <br/>
+        </div>
+        <div id="DeriveNewLocationsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>衍生新位置</h2></td>
+                    <td>
+                    <img src="../images/GUID-4A756008-8431-4AA5-BD42-7135296560DD-web.png" class="titleImage" alt="衍生新位置">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>在研究區域中建立滿足一系列指定條件的新圖徵。這些條件基於屬性查詢（如閒置宗地）和空間查詢（如距離河流 1 英里以內）。
+            </p>
+            <br/>
+        </div>
+        <div id="FindExistingLocationsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>尋找現有位置</h2></td>
+                    <td>
+                    <img src="../images/GUID-FEF355B4-CF3B-48F6-9EC1-A00A1D53C81F-web.png" class="titleImage" alt="尋找現有位置">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>在研究區域中選擇滿足一系列指定條件的現有圖徵。這些條件基於屬性查詢（如閒置宗地）和空間查詢（如距離河流 1 英里以內）。
+            </p>
+            <br/>
+        </div>
+        <div id="GeocodeLocationsfromTableTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>來自表格的地理編碼位置</h2></td>
+                    <td>
+                    <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" class="titleImage" alt="來自表格的地理編碼位置">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>將地址轉換成座標。在 Excel 試算表或 CSV 檔案的位址上使用此工具。
+            </p>
+            <br/>
+        </div>
+        <div id="FindSimilarLocationsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>尋找相似位置</h2></td>
+                    <td>
+                    <img src="../images/GUID-6262A84E-9087-4E48-930E-E9B89FECC836-web.png" class="titleImage" alt="尋找相似位置">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>根據指定條件尋找與一個或多個參考位置最相似的位置。
             </p>
             <br/>
         </div>

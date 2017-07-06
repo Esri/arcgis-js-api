@@ -44,7 +44,7 @@
         <h2>Resumir Dentro</h2><p/>
         <h2><img src="../images/GUID-90E0CB1F-EB97-4752-B2EE-452B7B45475E-web.png" alt="Resumir Dentro"></h2>
         <hr/>
-    <p>Esta ferramenta localiza fei&ccedil;&otilde;es (e por&ccedil;&otilde;es de fei&ccedil;&otilde;es) que est&atilde;o dentro dos limites das &aacute;reas na primeira camada de entrada.   
+    <p>Esta ferramenta localiza fei&ccedil;&otilde;es (e por&ccedil;&otilde;es de fei&ccedil;&otilde;es) que est&atilde;o dentro dos limites das &aacute;reas na primeira camada de entrada.  
         <ul>
             <li>Fornecidas uma camada de limites da vertente e uma camada de limites de uso do solo por tipo de uso do solo, calcule a &aacute;rea total em acres do tipo de uso do solo para cada vertente. 
             </li>
@@ -61,9 +61,11 @@
         <div><h2>Escolha a camada de área para resumir outras feições dentro dos seus limites</h2></div>
         <hr/>
         <div>
-            <p>A camada de &aacute;rea que ser&aacute; utilizada para resumir as fei&ccedil;&otilde;es que caem dentro dos seus limites. Voc&ecirc; pode optar por resumir dentro de uma camada de pol&iacute;gono que voc&ecirc; fornece ou dentro de bandejas quadradas ou de hex&aacute;gono que s&atilde;o gerados quando a ferramenta executar.  Ao gerar caixas, para  <b>Quadrado</b>, o n&uacute;mero e unidades especificadas determinam a altura e comprimento do quadrado. Para <b>Hex&aacute;gono</b>, o n&uacute;mero e unidades especificadas determinam a dist&acirc;ncia entre os lados paralelos.
+            <p>A camada de &aacute;rea que ser&aacute; utilizada para resumir as fei&ccedil;&otilde;es que caem dentro dos seus limites. Voc&ecirc; pode optar por resumir dentro de uma camada de pol&iacute;gono que voc&ecirc; fornece ou dentro de bandejas quadradas ou de hex&aacute;gono que s&atilde;o gerados quando a ferramenta executar.  Ao gerar caixas, para  <b>Quadrado</b>, o n&uacute;mero e unidades especificadas determinam a altura e comprimento do quadrado. Para <b>Hex&aacute;gono</b>, o n&uacute;mero e unidades especificadas determina a dist&acirc;ncia entre os lados paralelos.
             </p>
-            <p>Al&eacute;m de escolher uma camada de seu mapa, voc&ecirc; pode escolher  <b>Procurar Camadas</b> na parte inferior da lista suspensa para procurar por seu conte&uacute;do para um conjunto de dados de compartilhamento de arquivo big data ou camada de fei&ccedil;&atilde;o.  
+            <p>An&aacute;lise utilizadno caixas  <b>Quadrado </b> ou <b>Hex&aacute;gono</b> exige um sistema de coordenadas plana. Voc&ecirc; pode configurar o <b>Processamento de sistema de coordenadas</b> nos <b>Ambientes de An&aacute;lise</b>. Se seu processamento de sistema de coordenadas n&atilde;o estiver configurado para um sistema de coordenada plana, voc&ecirc; ser&aacute; solicitado para defin&iacute;-lo quando voc&ecirc; <b>Executar An&aacute;lise</b>.
+            </p>
+            <p>Al&eacute;m de escolher uma camada de seu mapa, voc&ecirc; pode escolher  <b>Procurar Camadas</b> na parte inferior da lista suspensa para procurar por seu conte&uacute;do para um conjunto de dados de compartilhamento de arquivo big data ou camada de fei&ccedil;&atilde;o.
             </p>
         </div>
     </div>
@@ -73,7 +75,7 @@
         <div>
             <p>As fei&ccedil;&otilde;es nesta camada que caem dentro dos limites das fei&ccedil;&otilde;es na camada de entrada ou bandejas especificadas acima ser&atilde;o resumidas. 
             </p>
-            <p>Al&eacute;m de escolher uma camada de seu mapa, voc&ecirc; pode escolher  <b>Procurar Camadas</b> na parte inferior da lista suspensa para procurar por seu conte&uacute;do para um conjunto de dados de compartilhamento de arquivo big data ou camada de fei&ccedil;&atilde;o.  
+            <p>Al&eacute;m de escolher uma camada de seu mapa, voc&ecirc; pode escolher  <b>Procurar Camadas</b> na parte inferior da lista suspensa para procurar por seu conte&uacute;do para um conjunto de dados de compartilhamento de arquivo big data ou camada de fei&ccedil;&atilde;o.
             </p>
         </div>
     </div>
@@ -91,20 +93,20 @@
         <div><h2>Agregar utilizando partes de tempo (opcional)</h2></div>
         <hr/>
         <div>
-            <p>Se o tempo estiver habilitado na camada de ponto de entrada e for do tipo momento, voc&ecirc; pode analisar utilizando partes do tempo.  H&aacute; tr&ecirc;s par&acirc;metros que voc&ecirc; pode configurar ao utilizar o tempo:
+            <p>Se o tempo estiver habilitado na camada de ponto de entrada e for do tipo momento, voc&ecirc; poder&aacute; analisar utilizando partes do tempo.  H&aacute; tr&ecirc;s par&acirc;metros que voc&ecirc; pode configurar ao utilizar o tempo:
                 <ul>
-                    <li>  <b>Intervalo de Tempo</b>
+                    <li> <b>Intervalo de tempo</b>
                     </li>
-                    <li> <b>Intervalo de Tempo</b>
+                    <li> <b>Com que frequ&ecirc;ncia repetir o intervalo de tempo</b>
                     </li>
-                    <li> <b>Tempo de Refer&ecirc;ncia</b>
+                    <li> <b>Tempo para alinhar intervalos de tempo para</b>
                     </li>
                 </ul>
                 
             </p>
             <p>Imagine que voc&ecirc; tinha dados que representaram um ano em tempo e voc&ecirc; desejou analisar partes semanais. Para fazer isto voc&ecirc; iria configurar  <b>Intervalo de Tempo</b> para <code>1 semana</code>.
             </p>
-            <p> Imagine que voc&ecirc; tinha dados que representaram um ano em tempo e voc&ecirc; desejou analisar utilizando a primeira semana do m&ecirc;s. Para fazer isto voc&ecirc; iria configurar <b>Intervalo de Tempo</b> para <code>1 semana</code>, <b>Etapa de Tempo</b> para <code>1 m&ecirc;s</code> e <b>Tempo de Refer&ecirc;ncia</b> para <code>1 de janeiro, as 12:00 am</code>.
+            <p>Imagine que voc&ecirc; tinha dados que representaram um ano em tempo e voc&ecirc; desejou analisar utilizando a primeira semana do m&ecirc;s. Para fazer isto voc&ecirc; iria configurar  <b>Intervalo de tempo</b> para <code>1 semana</code>, <b>Com que frequ&ecirc;ncia repetir o intervalo de tempo</b> para <code>1 m&ecirc;s</code> e <b>Tempo para alinhar os intervalos de tempo</b> para <code>01 de Janeiro &agrave;s 12:00 am</code>.
             </p>
         </div>
     </div>
@@ -112,9 +114,9 @@
         <div><h2>Intervalo de tempo a ser agregado</h2></div>
         <hr/>
         <div>
-            <p>O intervalo de tempo utilizado para fatiar os dados. O intervalo de tempo pode ser utilizado sozinho ou utilizado com o par&acirc;metro  <b>Etapa de Tempo</b> ou <b>Tempo de Refer&ecirc;ncia</b>.
+            <p>Intervalo de tempo utilizado para gerar intervalos de tempo. O intervalo de tempo pode ser utilizado sozinho ou utilizado com os par&acirc;metros  <b>Com que frequ&ecirc;ncia repetir o intervalo de tempo</b> ou <b>Tempo para alinhar os intervalos de tempo</b>.
             </p>
-            <p> Se voc&ecirc; desejou criar fatias de tempo que ocorreram toda segunda-feira as 9:00 a.m. at&eacute; 10:00 a.m., <b>Intervalo de Tempo</b> seria <code>1 hora</code>, <b>Etapa de Tempo</b> seria <code>1 semana</code> e <b>Tempo de Refer&ecirc;ncia</b> seria <code>9:00:00 a.m. em uma segunda-feira</code>.
+            <p>Se voc&ecirc; desejou criar partes do tempo que ocorreu a cada Segunda-Feira de 9:00 a.m at&eacute; 10:00 a.m, <b>Intervalo de tempo</b> seria <code>1 hora</code>, <b>Com que frequ&ecirc;ncia repetir o intervalo de tempo</b> seria <code>1 semana</code> e <b>Tempo para alinhar os intervalos de tempo</b> seria <code>9:00:00 a.m. em uma Segunda-Feira</code>.
             </p>
         </div>
     </div>
@@ -122,9 +124,9 @@
         <div><h2>Etapa de tempo a ser agregada</h2></div>
         <hr/>
         <div>
-            <p> A etapa utilizada para calcular uma fatia de tempo. <b>Etapa de Tempo</b> pode ser utilizado sozinha ou com <b>Intervalo de Tempo</b>, com <b>Tempo de Refer&ecirc;ncia</b> ou com ambos <b>Intervalo de Tempo</b> e <b>Tempo de Refer&ecirc;ncia</b>.
+            <p> O intervalo utilizado para calcular uma parte do tempo. <b>Com que frequ&ecirc;ncia repetir o intervalo de tempo</b> pode ser utilizado sozinho ou com <b>Intervalo de tempo</b>, com <b>Tempo de Refer&ecirc;ncia</b> ou com ambos <b>Intervalo de tempo</b> e <b>Tempo para alinhar os intervalos de tempo</b>.
             </p>
-            <p> Se voc&ecirc; desejou criar fatias de tempo que ocorreram toda segunda-feira as 9:00 a.m. at&eacute; 10:00 a.m., <b>Intervalo de Tempo</b> seria <code>1 hora</code>, <b>Etapa de Tempo</b> seria <code>1 semana</code> e <b>Tempo de Refer&ecirc;ncia</b> seria <code>9:00:00 a.m. em uma segunda-feira</code>.
+            <p> Se voc&ecirc; desejou criar partes do tempo que ocorreu a cada Segunda-Feira de 9:00 a.m at&eacute; 10:00 a.m, <b>Intervalo de tempo</b> seria <code>1 hora</code>, <b>Com que frequ&ecirc;ncia repetir o intervalo de tempo</b> seria <code>1 semana</code> e <b>Tempo para alinhar os intervalos de tempo</b> seria <code>9:00:00 a.m. em uma Segunda-Feira</code>.
             </p>
         </div>
     </div>
@@ -132,38 +134,40 @@
         <div><h2>Tempo de referência utilizado para alinhar partes de tempo</h2></div>
         <hr/>
         <div>
-            <p>O data e o tempo utilizado para alinhar as fatias do tempo.  <b>Etapa de Tempo</b> ir&aacute; iniciar e continuar para tr&aacute;s do tempo referenciado.
+            <p>A data e hora utilizadas para alinhar as partes de tempo. O intervalo de tempo come&ccedil;ar&aacute; e continuar&aacute; em sentido contr&aacute;rio deste tempo. Se nenhum tempo de refer&ecirc;ncia for selecionado, o intervalo de time alinhar&aacute; &agrave; 1 de Janeiro de 1970. 
             </p>
-            <p> Se voc&ecirc; desejou criar fatias de tempo que ocorreram toda segunda-feira as 9:00 a.m. at&eacute; 10:00 a.m., <b>Intervalo de Tempo</b> seria <code>1 hora</code>, <b>Etapa de Tempo</b> seria <code>1 semana</code> e <b>Tempo de Refer&ecirc;ncia</b> seria <code>9:00:00 a.m. em uma segunda-feira</code>.
+            <p> Se voc&ecirc; desejou criar partes do tempo que ocorreu a cada Segunda-Feira de 9:00 a.m at&eacute; 10:00 a.m, <b>Intervalo de tempo</b> seria <code>1 hora</code>, <b>Com que frequ&ecirc;ncia repetir o intervalo de tempo</b> seria <code>1 semana</code> e <b>Tempo para alinhar os intervalos de tempo</b> seria <code>9:00:00 a.m. em uma Segunda-Feira</code>.
             </p>
         </div>
     </div>
     <div id="summaryFields">
-        <div><h2>Adicionar estatística da camada para resumir (opcional)</h2></div>
+        <div><h2>Adicionar estatísticas (opcional)</h2></div>
         <hr/>
         <div>
             <p> Voc&ecirc; pode calcular as estat&iacute;stica em fei&ccedil;&otilde;es que s&atilde;o resumidas. Nos campos num&eacute;ricos voc&ecirc; pode calcular o seguinte:
                 <ul>
-                    <li>Contagem
+                    <li>Contagem&mdash;Calcula o n&uacute;mero de valores diferentes de nulo. Pode ser utilizado em campos num&eacute;ricos ou strings. 'A contagem de [null, 0, 2] &eacute; 2.
                     </li>
-                    <li>M&eacute;dio
+                    <li>Soma&mdash;A soma de valores num&eacute;ricos em um campo. A soma de [null, null, 3] &eacute; 3.
                     </li>
-                    <li>M&iacute;n
+                    <li>M&eacute;dia&mdash;A m&eacute;dia de valores num&eacute;ricos. A m&eacute;dia de [0, 2, null] &eacute; 1.
                     </li>
-                    <li>M&aacute;x
+                    <li>M&iacute;n&mdash;O valor m&iacute;nimo de um campo num&eacute;rico. O m&iacute;nimo de [0, 2, null] &eacute; 0. 
                     </li>
-                    <li>Intervalo
+                    <li>M&aacute;x&mdash;O valor m&aacute;ximo de um campo num&eacute;rico. O valor m&aacute;ximo de [0, 2, null] &eacute; 2.
                     </li>
-                    <li>Vari&acirc;ncia
+                    <li>Alcance&mdash;O alcance de um campo num&eacute;rico. Isto &eacute; calculado como os valores m&iacute;nimos subtra&iacute;dos do valor m&aacute;ximo. O alcance de [0, null, 1] &eacute; 1. O alcance de [null, 4] &eacute; 0.
                     </li>
-                    <li>Desvio Padr&atilde;o
+                    <li>Vari&acirc;ncia&mdash;A vari&acirc;ncia de um campo num&eacute;rico em um caminho. A vari&acirc;ncia de [1] &eacute; nula. A vari&acirc;ncia de [null, 1,1,1] &eacute; 1.
+                    </li>
+                    <li>Desvio padr&atilde;o&mdash;O desvio padr&atilde;o de um campo num&eacute;rico. O desvio padr&atilde;o de [1] &eacute; nulo. O desvio padr&atilde;o de [nulo, 1,1,1] &eacute; 1. 
                     </li>
                 </ul>
                 
             </p>
             <p>Nos campos de string voc&ecirc; pode calcular o seguinte:
                 <ul>
-                    <li>Contagem
+                    <li>Contagem&mdash;O n&uacute;mero de strings diferente de nulo.
                     </li>
                     <li>Qualquer&mdash;Esta estat&iacute;stica &eacute; uma amostra aleat&oacute;ria de um valor de string no campo especificado.
                     </li>
@@ -203,14 +207,24 @@
         <div><h2>Escolher armazenamento de dados</h2></div>
         <hr/>
         <div>
-            <p>Este &eacute; um par&acirc;metro tempor&aacute;rio para pr&eacute; lan&ccedil;amento para configurar o armazenamento de dados onde os resultados s&atilde;o salvos. Ambos os armazenamentos de dados s&atilde;o parte do  ArcGIS Data Store. Se voc&ecirc; selecionar o armazenamento de dados spatiotemporal mas n&atilde;o ter um instalado, a ferramenta falhar&aacute;. </p>
+            <p>Os resultados do GeoAnalytic s&atilde;o armazenados no ArcGIS Data Store e expostos como uma camada de fei&ccedil;&atilde;o no  Portal for ArcGIS. Na maioria dos casos, os resultados devem ser armazenados no armazenamento de dados de espa&ccedil;o-tempo e este &eacute; o padr&atilde;o. Em alguns casos salvar resultados no armazenamento de dados relacional &eacute; uma boa op&ccedil;&atilde;o. Abaixo est&atilde;o as raz&otilde;es pelas quais voc&ecirc; talvez queira armazenar resultados em um armazenamento de dados relacional: 
+                <ul>
+                    <li>Utilizar os resultados no portal para colabora&ccedil;&atilde;o do portal.
+                    </li>
+                    <li>Habilitar recursos de sincroniza&ccedil;&atilde;o com seus resultados.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Voc&ecirc; n&atilde;o deve utilizar um armazenamento de dados relacional se voc&ecirc; espera que os resultados do GeoAnalytics aumentem e deseja aproveitar os recursos do armazenamento de grandes dados de espa&ccedil;o-tempo para lidar com grandes quantidades de dados. 
+            </p>
         </div>
     </div>
     <div id="outputName">
         <div><h2>Nome da camada resultante</h2></div>
         <hr/>
         <div>
-            <p> Este &eacute; o nome da camada que ser&aacute; criada em <b>Meu Conte&uacute;do</b> e adicionada ao mapa.  O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existe, a ferramenta falhar&aacute;.
+            <p> Este &eacute; o nome da camada que ser&aacute; criada em <b>Meu Conte&uacute;do</b> e adicionada no mapa.  O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existe, a ferramenta falhar&aacute;.
             </p>
             <p>Ao utilizar a caixa suspensa  <b>Salvar resultado em</b>, &eacute; poss&iacute;vel especificar o nome de uma pasta em <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo.
             </p>

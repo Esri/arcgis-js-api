@@ -44,7 +44,7 @@
         <h2>入口網站分析環境設定</h2><p/>
         <h2></h2>
         <hr/>
-    <p>  Portal for ArcGIS 和  ArcGIS Online 的項目 中分析的環境設定。 </p>
+    <p>  Portal for ArcGIS 和  ArcGIS Online 中分析的環境設定。 </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="overwriteResult">
@@ -133,7 +133,7 @@
                 <ul>
                     <li> <b>與輸入相同</b> - 將在輸入所在的相同座標系統中處理分析。這是預設情況。
                     </li>
-                    <li> <b>依照指定</b> - 選擇要處理分析的座標系統。選擇此選項後，從已知的投影座標系統清單中按一下要選擇的地球圖示，或在提供的方塊中新增空間參考 WKID。
+                    <li> <b>依照指定</b> - 選擇要處理分析的座標系統。選擇此選項後，從已知投影座標系統清單中按一下要選擇的地球圖示，或在提供的方塊中新增空間參考 WKID。
                     </li>
                     <li> <b>圖層
 &lt;name&gt;</b> - 從 Web 地圖選擇現有的圖層。所選圖層的座標系統將用來決定座標系統，後者將用來處理分析。
@@ -185,7 +185,8 @@
                     </li>
                     <li> <b>依照指定</b> - 指定用來設定儲存格大小的數值。如果選擇此設定，則預設值為 1。
                     </li>
-                    <li> <b>圖層 &lt;name&gt;</b> - 將儲存格大小設定為選擇的點陣圖層。
+                    <li> <b>圖層 &lt;name&gt;</b> - 將儲存格大小設定為
+選擇的點陣圖層。
                     </li>
                 </ul>
                 
@@ -203,10 +204,28 @@
                 </li>
                 <li>如果分析遮罩是點陣，則會考量具有值的所有儲存格以定義遮罩。會將遮罩點陣中的 NoData 儲存格視為位於遮罩外部，並且在分析結果圖層中將是 NoData。
                 </li>
-                <li>如果分析遮罩是圖徵圖層，會在內部將其轉換成點陣加以執行。因此，請務必針對分析適當地設定 <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">儲存格大小</a>和 <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">對齊點陣</a>。
+                <li>如果分析遮罩是圖徵圖層，會在內部將其轉換成點陣加以執行。因此，請務必針對分析適當地設定
+ <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank"></a>和 <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank"></a>。
                 </li>
             </ul>
              
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>ArcGIS Data Store</h2></div>
+        <hr/>
+        <div>
+            <p>GeoAnalytic 結果是儲存於 ArcGIS Data Store，並作為  Portal for ArcGIS 中的圖徵圖層公開。在大多數情況下，必須在時空資料儲存庫中儲存結果。這是預設情況。在下列情況下，您可能想要在關聯式資料儲存庫中儲存結果： 
+                <ul>
+                    <li>在入口網站之間的協同作業中使用您的結果
+                    </li>
+                    <li>啟用與您結果的同步功能
+                    </li>
+                </ul>
+                
+            </p>
+            <p>如果您預期 GeoAnalytics 結果會增加，並想要利用大型的時空資料儲存庫的功能來處理大量資料，則不應使用關聯式資料儲存庫。
+            </p>
         </div>
     </div>
 </div>

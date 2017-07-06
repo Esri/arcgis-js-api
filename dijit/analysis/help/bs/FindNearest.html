@@ -59,7 +59,7 @@
     </p>
     <p>Pronađi najbliže vraća sloj koji sadrži najbliže geoobjekte i linijski sloj koji povezuje početne lokacije s najbližim lokacijama. Linijski sloj sadrži informacije o početnim i najbližim lokacijama te udaljenosti među njima.
     </p>
-    <p>Ako je označena opcija  <b>Upotrijebi trenutačni obuhvat karte</b>, samo će se geoobjekti koji su vidljivi unutar trenutačnog obuhvata karte uzet će se u obzir kao početni i potencijalni najbliži geoobjekti.  Ako opcija nije označena, svi geoobjekti u sloju unosa uzet će se u obzir, čak i ako se nalaze izvan trenutačnog obuhvata karte.  
+    <p>Ako je označena opcija  <b>Upotrijebi trenutačni obuhvat karte</b>, samo će se geoobjekti koji su vidljivi unutar trenutačnog obuhvata karte uzeti u obzir kao početni i potencijalni najbliži geoobjekti.  Ako opcija nije označena, svi geoobjekti u sloju unosa uzet će se u obzir, čak i ako se nalaze izvan trenutačnog obuhvata karte.  
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -99,13 +99,13 @@
                         </p>
                     </li>
                     <li>
-                        <p>Označite opciju  <b>Upotrijebi promet</b> kako biste prona&scaron;li najbliže geoobjekte na temelju zadanog početnog vremena i promjenjivih prometnih uvjeta. Ako odaberete i opciju <b>Promet uživo</b>, vrijeme polaska od početnih lokacija postavlja se na trenutačno vrijeme, a trenutačne i predviđene brzine prometa referencirane su od senzora i sadržaja kako bi se utvrdilo koji su geoobjekti najbliži. Predviđene brzine prometa izračunavaju se referenciranjem brzina prometa uživo, prija&scaron;njih brzina i trenutačnih događaja kao &scaron;to je vrijeme. Brzine prometa predviđaju se za 12 sati unaprijed pa možete pomaknuti klizač za postavljanje vremena polaska unaprijed do 12 sati.
+                        <p>Označite opciju  <b>Upotrijebi promet</b> kako biste prona&scaron;li najbliže geoobjekte na temelju zadanog početnog vremena i promjenjivih prometnih uvjeta. Ako odaberete i opciju <b>Promet uživo</b>, vrijeme polaska od početnih lokacija postavlja se na trenutačno vrijeme, a trenutačne i predviđene brzine prometa referencirane su od senzora i sadržaja kako bi se utvrdilo koji su geoobjekti najbliži. Predviđene brzine prometa računaju se referenciranjem brzina prometa uživo, prija&scaron;njih brzina i trenutačnih događaja kao &scaron;to je vrijeme. Brzine prometa predviđaju se za 12 sati unaprijed pa možete pomaknuti klizač za postavljanje vremena polaska unaprijed do 12 sati.
                         </p>
                         <p>Upotrijebite ove postavke za promet uživo da biste saznali do kojih se geoobjekata može doći u najkraćem mogućem vremenu ako odete sada, ako odete za jedan sat itd.
                         </p>
                     </li>
                     <li>
-                        <p>Ako označite opciju  <b>Upotrijebi promet</b> i izaberete opciju <b>Promet na temelju tipičnih uvjeta za</b> dan i vrijeme, alat pronalazi najbliže geoobjekte na temelju prosjeka prija&scaron;njih brzina za svaki interval od pet minuta u rutinskom tjednu. Rezultati uključuju promet, no isključuju utjecaj trenutačnih prometnih uvjeta i događaja koji se mogu znatno razlikovati od norme.
+                        <p>Ako označite opciju  <b>Upotrijebi promet</b> i izaberete opciju <b>Promet na temelju tipičnih uvjeta za</b> dan i vrijeme, alat pronalazi najbliže geoobjekte na temelju prosjeka prija&scaron;njih brzina u intervalima od pet minuta kroz uobičajeni tjedan. Rezultati uključuju promet, no isključuju utjecaj trenutačnih prometnih uvjeta i događaja koji se mogu znatno razlikovati od norme.
                         </p>
                         <p>Možete upotrijebiti postavke za povijest prometa da biste pitali, primjerice, &bdquo;Do kojih se geoobjekata može najbrže doći kada se odlazi od početnih geoobjekata u 11:30 ujutro u srijedu?&rdquo; 
                         </p>
@@ -113,7 +113,7 @@
                         </p>
                     </li>
                 </ul>
-                Imajte na umu da kako vozilo vozi dalje od točke, vrijeme prolazi i mijenjaju se prometni uvjeti. Ova alat uzima u obzir ove varijacije kada označite <b>Upotrijebi promet</b>. Međutim, ne podržavaju sve regije promet. Kliknite na poveznicu <b>Vidi dostupnost</b> na alatu da biste saznali nudi li se u va&scaron;em području proučavanja. 
+                Imajte na umu da kako vozilo vozi dalje od točke, vrijeme prolazi i mijenjaju se prometni uvjeti. Ovaj alat uzima u obzir ove varijacije kada označite <b>Upotrijebi promet</b>. Međutim, ne podržavaju sve regije promet. Kliknite na poveznicu <b>Vidi dostupnost</b> na alatu da biste saznali nudi li se u va&scaron;em području proučavanja. 
             </p>
         </div>
     </div>
@@ -138,6 +138,8 @@
             <p>Ovo je naziv sloja geoobjekta koji će se stvoriti u dijelu  <b>Moj sadržaj</b> i dodati karti. Ako sloj geoobjekata već postoji, od vas će se tražiti da unesete drugi naziv. Sloj geoobjekata sadržavat će dva sloja: jedan koji predstavlja najbliže lokacije i drugi koji predstavlja linije koje povezuju ulazne lokacije s najbližima.
             </p>
             <p>Ako odaberete  <b>Uključi slojeve rute</b>, svaka ruta iz rezultata također se sprema kao sloj rute. Sloj rute uključuje sve informacije za određenu rutu poput stajali&scaron;ta dodijeljenih ruti kao i upute za vožnju. Stvaranje slojeva rute korisno je ako želite podijeliti pojedinačne rute s drugim članovima va&scaron;e organizacije ili ako želite dodatno izmijeniti rute uz pomoć opcije <b>Upute za vožnju</b> u pregledniku karte. Slojevi rute upotrebljavaju naziv namijenjen sloju geoobjekta kao prefiks, a naziv generiran kao dio analize dodaje se da bi se stvorio jedinstveni naziv za svaki sloj rute.
+            </p>
+            <p>Maksimalni broj slojeva rute koji se može stvoriti je  1.000. Ako rezultat sadrži vi&scaron;e od  1.000 ruta i označeno je  <b>Uključi slojeve rute</b>, alat će stvoriti samo izlaznu uslugu geoobjekata.
             </p>
             <p>Upotrebom padajućeg izbornika  <b>Spremi rezultat u</b> možete odrediti naziv mape u dijelu <b>Moj sadržaj</b> gdje će se spremiti sloj geoobjekata i slojevi rute ako se stvore.
             </p>

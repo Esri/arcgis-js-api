@@ -40,48 +40,48 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
-        <h2>Convert Feature to  Raster</h2><p/>
-        <h2><img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" alt="Convert Feature to Raster tool"></h2>
+    <div id="toolDescription" class="regularsize">
+        <h2>Konwertuj obiekt na raster</h2><p/>
+        <h2><img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" alt="Narzędzie Konwertuj obiekt na raster"></h2>
         <hr/>
-    <p>This task converts features to a raster dataset.
+    <p>To zadanie przekształca obiekty w zestaw danych rastrowych.
     </p>
-    <p>Any feature class containing point, line, or polygon features can be converted to a raster dataset.
+    <p>Dowolna klasa obiekt&oacute;w zawierająca obiekty punktowe, liniowe lub poligonowe może zostać przekształcona w zestaw danych rastrowych.
     </p>
-    <p>The cell center is used to decide the value of the output raster pixel.
+    <p>Środek kom&oacute;rki jest używany do określania wartości piksela rastra wynikowego.
     </p>
-    <p>The input field type determines the type of output raster. If the field is integer, the output raster will be integer; if it is floating point, the output will be floating point.
+    <p>Typ pola wejściowego decyduje o typie rastra wynikowego. Jeśli pole jest polem typu całkowitego, raster wynikowy także będzie zawierał kom&oacute;rki o wartościach wyrażonych w liczbach całkowitych. W przypadku pola zmiennoprzecinkowego raster wynikowy będzie zmiennoprzecinkowy.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Choose feature layer to convert</h2></div>
+        <div><h2>Wybierz warstwę obiektów do konwersji</h2></div>
         <hr/>
         <div>
-            <p>The input feature layer to convert to a raster dataset.
+            <p>Wejściowa warstwa obiekt&oacute;w przekształcana w zestaw danych rastrowych.
             </p>
         </div>
     </div>
     <div id="field">
-        <div><h2>Choose field</h2></div>
+        <div><h2>Wybierz pole</h2></div>
         <hr/>
         <div>
-            <p>Choose the field that will be used to assign values to the output raster.
+            <p>Wybierz pole, kt&oacute;re będzie używane do przypisywania wartości do rastra wynikowego.
             </p> 
         </div>
     </div>
     <div id="outputCellSize">
-        <div><h2>Output cell size</h2></div>
+        <div><h2>Wielkość komórki danych wynikowych</h2></div>
         <hr/>
         <div>
             <p>Wprowadź wielkość kom&oacute;rki i jednostkę dla rastr&oacute;w wynikowych.
             </p>
-            <p>The available units are Feet, Miles, Meters, and Kilometers.
+            <p>Dostępne jednostki to: stopy, mile, metry i kilometry.
             </p>
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>Nazwa warstwy wynikowej</h2></div>
         <hr/>
         <div>
             <p>Nazwa warstwy, kt&oacute;ra zostanie utworzona w obszarze  <b>Moje zasoby</b> i dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, wyświetlony zostanie komunikat z&nbsp;prośbą o&nbsp;podanie innej nazwy.

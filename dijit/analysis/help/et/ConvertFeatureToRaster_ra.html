@@ -40,48 +40,48 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
-        <h2>Convert Feature to  Raster</h2><p/>
-        <h2><img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" alt="Convert Feature to Raster tool"></h2>
+    <div id="toolDescription" class="smallsize">
+        <h2>Teisenda vektorist rastriks</h2><p/>
+        <h2><img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" alt="Teisenda vektorist rastriks t&ouml;&ouml;riist"></h2>
         <hr/>
-    <p>This task converts features to a raster dataset.
+    <p>Selle toiminguga teisendatakse vektorobjektid rasterandmeteks.
     </p>
-    <p>Any feature class containing point, line, or polygon features can be converted to a raster dataset.
+    <p>Iga objektiklassi, mis sisaldab punkt-, joon- v&otilde;i pindobjekte, saab teisendada rasterandmestikuks.
     </p>
-    <p>The cell center is used to decide the value of the output raster pixel.
+    <p>V&auml;ljundi rasterpiksli v&auml;&auml;rtus m&auml;&auml;ratakse piksli keskpunkti j&auml;rgi.
     </p>
-    <p>The input field type determines the type of output raster. If the field is integer, the output raster will be integer; if it is floating point, the output will be floating point.
+    <p>V&auml;ljundrastri t&uuml;&uuml;bi m&auml;&auml;rab sisendv&auml;lja t&uuml;&uuml;p. Kui v&auml;li on t&auml;isarv, on v&auml;ljundraster t&auml;isarv; kui v&auml;li on ujukomaarv, on ka v&auml;ljund ujukomaarv.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Choose feature layer to convert</h2></div>
+        <div><h2>Valige teisendatav objektikiht</h2></div>
         <hr/>
         <div>
-            <p>The input feature layer to convert to a raster dataset.
+            <p>Rasterandmestikuks teisendatav sisendobjektide kiht.
             </p>
         </div>
     </div>
     <div id="field">
-        <div><h2>Choose field</h2></div>
+        <div><h2>Valige väli</h2></div>
         <hr/>
         <div>
-            <p>Choose the field that will be used to assign values to the output raster.
+            <p>Valige v&auml;li, mida kasutatakse v&auml;ljundrastrile v&auml;&auml;rtuste m&auml;&auml;ramiseks.
             </p> 
         </div>
     </div>
     <div id="outputCellSize">
-        <div><h2>Output cell size</h2></div>
+        <div><h2>Väljundpiksli suurus</h2></div>
         <hr/>
         <div>
             <p>Sisestage pikslisuurus ja v&auml;ljundrastrite &uuml;hik.
             </p>
-            <p>The available units are Feet, Miles, Meters, and Kilometers.
+            <p>Kasutatavad &uuml;hikud on j&auml;rgmised: jalg, miil, meeter ja kilomeeter.
             </p>
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>Tulemkihi nimi</h2></div>
         <hr/>
         <div>
             <p>Selle kihi nimi, mis luuakse jaotises  <b>Minu sisu</b> ja lisatakse kaardile. Vaikimisi nimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui kiht on juba olemas, palutakse teil sisestada m&otilde;ni muu nimi.

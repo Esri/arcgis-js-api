@@ -42,13 +42,13 @@
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Localizar Valor Alto de Incidência</h2><p/>
-        <h2><img src="../images/GUID-6D600155-AA9B-4F02-AD8B-2E84150AB743-web.png" alt="Localizar Valor Alto de Incid&ecirc;ncia"></h2>
+        <h2><img src="../images/GUID-6D600155-AA9B-4F02-AD8B-2E84150AB743-web.png" alt="Localizar Pontos de Incid&ecirc;ncia"></h2>
         <hr/>
     <p>A ferramenta Localizar Valor Alto de Incid&ecirc;ncia determinar&aacute; se existe qualquer agrupamento estatisticamente significativo no modelo espacial dos seus dados. 
         <ul>
             <li>Seus pontos est&atilde;o (incidentes de crimes, &aacute;rvores, acidentes de tr&aacute;fego) realmente agrupados?  Como voc&ecirc; pode estar certo?
             </li>
-            <li>Voc&ecirc; verdadeiramente descobriu um valor alto de incid&ecirc;ncia estatisticamente significativo? Ou seu mapa contar&aacute; uma hist&oacute;ria diferente se voc&ecirc; mudou a maneira que foi simbolizado?
+            <li>Voc&ecirc; realmente descobriu um valor alto de incid&ecirc;ncia estatisticamente significativo, ou seu mapa contar&aacute; uma hist&oacute;ria diferente se voc&ecirc; mudou a forma como ele foi simbolizado?
             </li>
         </ul>
         A ferramenta Localizar Valor Alto de Incid&ecirc;ncia o ajudar&aacute; a responder estas perguntas com confian&ccedil;a.
@@ -61,9 +61,11 @@
         <div><h2>Escolha a camada para a qual os valores altos de incidência serão calculados</h2></div>
         <hr/>
         <div>
-            <p>A camada de ponto da qual os valores altos e baixos de incid&ecirc;mcia ser&atilde;o localizados. 
+            <p>A camada de ponto da qual os valores altos e baixos de incid&ecirc;mcia ser&atilde;o localizados.
             </p>
-            <p>Al&eacute;m de escolher uma camada de seu mapa, voc&ecirc; pode escolher  <b>Procurar Camadas</b> na parte inferior da lista suspensa para procurar por seu conte&uacute;do para um conjunto de dados de compartilhamento de arquivo big data ou camada de fei&ccedil;&atilde;o.  
+            <p>Esta an&aacute;lise utiliza caixas e exige um sistema de coordenadas plana. Voc&ecirc; pode configurar o  <b>Processamento de sistema de coordenadas</b> nos <b>Ambientes de An&aacute;lise</b>. Se seu processamento de sistema de coordenadas n&atilde;o estiver configurado para um sistema de coordenada plana, voc&ecirc; ser&aacute; solicitado para defin&iacute;-lo quando voc&ecirc; <b>Executar An&aacute;lise</b>.
+            </p>
+            <p>Al&eacute;m de escolher uma camada de seu mapa, voc&ecirc; pode escolher  <b>Procurar Camadas</b> na parte inferior da lista suspensa para procurar por seu conte&uacute;do para um conjunto de dados de compartilhamento de arquivo big data ou camada de fei&ccedil;&atilde;o.
             </p>
         </div>
     </div>
@@ -81,7 +83,7 @@
         </div>
     </div>
     <div id="inputBins">
-        <div><h2>Selecionar o tamanho de bin para cálculos de valores altos e baixos</h2></div>
+        <div><h2>Selecione o tamanho da caixa para agregação</h2></div>
         <hr/>
         <div>
             <p>A dist&acirc;ncia utilizada para gerar bins quadrados que ser&atilde;o utilizados para analisar seus pontos de entrada.
@@ -89,31 +91,48 @@
         </div>
     </div>
     <div id="timeSlicing">
-        <div><h2>Agregar utilizando partes de tempo (opcional)</h2></div>
+        <div><h2>Localizar ponto ativo utilizando intervalos de tempo (opcional)</h2></div>
         <hr/>
         <div>
-            <p>If time is enabled on the point layer, and it's of type instant, you can analyze using time intervals.
+            <p>Se o tempo estiver habilitado na camada de ponto, e for do tipo instant&acirc;neo, voc&ecirc; poder&aacute; analisar utilizando intervalos de tempo.
             </p>
         </div>
     </div>
     <div id="timeInterval">
-        <div><h2>Intervalo de tempo a ser agregado</h2></div>
+        <div><h2>Intervalo de tempo intervalo</h2></div>
         <hr/>
         <div>
-            <p>Intervalo de tempo utilizado para an&aacute;lise. Se voc&ecirc; deseja criar partes de tempo que aconteceram toda semana, voc&ecirc; configurar&aacute; o intervalo de tempo para ser uma semana. 
+            <p>Intervalo de tempo utilizado para gerar etapas de tempo.  O tempo pode ser alinhado para o tempo inicial ou final dos dados de entrada, ou para um tempo de refer&ecirc;ncia especificado.  
             </p>
         </div>
     </div>
     <div id="timeStep">
-        <div><h2>Espaço de tempo a ser agregado</h2></div>
+        <div><h2>Intervalo de tempo intervalo</h2></div>
         <hr/>
         <div>
-            <p>Como o tempo ser&aacute; alinhado. O tempo pode ser alinhado para o tempo inicial ou final dos dados de entrada, ou para um tempo de refer&ecirc;ncia especificado.  
+            <p>Intervalo de tempo utilizado para gerar etapas de tempo. O tempo pode ser alinhado para o tempo inicial ou final dos dados de entrada, ou para um tempo de refer&ecirc;ncia especificado.  
+            </p>
+        </div>
+    </div>
+    <div id="timeStepAlignment">
+        <div><h2>Escolha como alinhar intervalos de tempo</h2></div>
+        <hr/>
+        <div>
+            <p>Como intervalos de tempo s&atilde;o alinhados. H&aacute; tr&ecirc;s maneiras de alinhar os intervalos de tempo:
+                <ul>
+                    <li> <b>Tempo Inicial</b>&mdash;Os intervalos de tempo s&atilde;o alinhados com a primeira fei&ccedil;&atilde;o no tempo.
+                    </li>
+                    <li> <b>Tempo Final</b>&mdash;Os intervalos de tempo s&atilde;o alinhados com a &uacute;ltima fei&ccedil;&atilde;o no tempo.
+                    </li>
+                    <li> <b>Tempo de Refer&ecirc;ncia</b>&mdash;Os intervalos de tempo s&atilde;o alinhados com um tempo especificado.
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>
     <div id="timeReference">
-        <div><h2>Tempo de referência utilizado para alinhar partes de tempo</h2></div>
+        <div><h2>Tempo de referência para alinhar intervalo de tempo</h2></div>
         <hr/>
         <div>
             <p>A data e hora utilizadas para alinhar os intervalos de tempo.
@@ -121,7 +140,7 @@
         </div>
     </div>
     <div id="neighborhood">
-        <div><h2>Selecione o tamanho da vizinhança</h2></div>
+        <div><h2>Selecione o tamanho da vizinhança para cálculos de ponto ativo</h2></div>
         <hr/>
         <div>
             <p>A dist&acirc;ncia utilizada para determinar a vizinhan&ccedil;a utilizada para c&aacute;lculos de ponto ativo. A vizinhan&ccedil;a deve ser maior que o tamanho de bin para garantir que cada bin tenha pelo menos um vizinho. Cada bin &eacute; analisado e comparado aos bins da vizinhan&ccedil;a.
@@ -137,17 +156,27 @@
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Escolher armazenamento de dados</h2></div>
+        <div><h2>Escolher um ArcGIS Data Store para salvar os resultados</h2></div>
         <hr/>
         <div>
-            <p>Este &eacute; um par&acirc;metro tempor&aacute;rio para pr&eacute; lan&ccedil;amento para configurar o armazenamento de dados onde os resultados s&atilde;o salvos. Ambos os armazenamentos de dados s&atilde;o parte do  ArcGIS Data Store. Se voc&ecirc; selecionar o armazenamento de dados spatiotemporal mas n&atilde;o ter um instalado, a ferramenta falhar&aacute;. </p>
+            <p>Os resultados do GeoAnalytic s&atilde;o armazenados no ArcGIS Data Store e expostos como uma camada de fei&ccedil;&atilde;o no  Portal for ArcGIS. Na maioria dos casos, os resultados devem ser armazenados no armazenamento de dados de espa&ccedil;o-tempo e este &eacute; o padr&atilde;o. Em alguns casos salvar resultados no armazenamento de dados relacional &eacute; uma boa op&ccedil;&atilde;o. Abaixo est&atilde;o as raz&otilde;es pelas quais voc&ecirc; talvez queira armazenar resultados em um armazenamento de dados relacional: 
+                <ul>
+                    <li>Utilizar os resultados no portal para colabora&ccedil;&atilde;o do portal.
+                    </li>
+                    <li>Habilitar recursos de sincroniza&ccedil;&atilde;o com seus resultados.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Voc&ecirc; n&atilde;o deve utilizar um armazenamento de dados relacional se voc&ecirc; espera que os resultados do GeoAnalytics aumentem e deseja aproveitar os recursos do armazenamento de grandes dados de espa&ccedil;o-tempo para lidar com grandes quantidades de dados. 
+            </p>
         </div>
     </div>
     <div id="outputName">
         <div><h2>Nome da camada resultante</h2></div>
         <hr/>
         <div>
-            <p> Este &eacute; o nome da camada que ser&aacute; criada em <b>Meu Conte&uacute;do</b> e adicionada ao mapa.  O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existe, a ferramenta falhar&aacute;.
+            <p> Este &eacute; o nome da camada que ser&aacute; criada em <b>Meu Conte&uacute;do</b> e adicionada no mapa.  O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existe, a ferramenta falhar&aacute;.
             </p>
             <p>Esta camada resultante mostrar&aacute; a voc&ecirc; agrupamentos estatisticamente significativos de valores altos e baixos ou contagens de ponto. Se o nome da camada resultante j&aacute; existir, voc&ecirc; ser&aacute; avisado para renome&aacute;-lo.
             </p>

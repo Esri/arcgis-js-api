@@ -40,7 +40,7 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Ligar Feições</h2><p/>
         <h2><img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" alt="Ligar Fei&ccedil;&otilde;es"></h2>
         <hr/>
@@ -51,44 +51,46 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="targetLayer">
-        <div><h2>Escolher camada para ligar feições</h2></div>
+        <div><h2>Ecolher camada de destino</h2></div>
         <hr/>
         <div>
-            <p>A camada que ter&aacute; fei&ccedil;&otilde;es ligadas a ela. 
+            <p>A camada que ter&aacute;  atributos da camada de liga&ccedil;&atilde;o anexada &agrave; sua tabela.
             </p>
-            <p>Al&eacute;m de escolher uma camada de seu mapa, voc&ecirc; pode escolher  <b>Procurar Camadas</b> na parte inferior da lista suspensa para procurar por seu conte&uacute;do para um conjunto de dados de compartilhamento de arquivo big data ou camada de fei&ccedil;&atilde;o.  
+            <p>Ana&aacute;ises com a utiliza&ccedil;&atilde;o do relacionamento espacial  <b>Proximidade</b> exija um sistema de coordenadas plana. Voc&ecirc; pode configurar o <b>Processamento de sistema de coordenadas</b> nos <b>Ambientes de An&aacute;lise</b>. Se seu processamento de sistema de coordenadas n&atilde;o estiver configurado para um sistema de coordenada plana, voc&ecirc; ser&aacute; solicitado para defin&iacute;-lo quando voc&ecirc; <b>Executar An&aacute;lise</b>.
+            </p>
+            <p>Al&eacute;m de escolher uma camada de seu mapa, voc&ecirc; pode escolher  <b>Procurar Camadas</b> na parte inferior da lista suspensa para procurar por seu conte&uacute;do para um conjunto de dados de compartilhamento de arquivo big data ou camada de fei&ccedil;&atilde;o.
             </p>
         </div>
     </div>
     <div id="joinLayer">
-        <div><h2>Escolher camada para ligar</h2></div>
+        <div><h2>Escolha a camada para ligar à camada de destino</h2></div>
         <hr/>
         <div>
-            <p>A camada que ser&aacute; ligada &agrave; primeira camada de entrada.
+            <p>A camada de liga&ccedil;&atilde;o com os atributos que ser&atilde;o anexados &agrave; camada de destino.
             </p>
-            <p>Al&eacute;m de escolher uma camada de seu mapa, voc&ecirc; pode escolher  <b>Procurar Camadas</b> na parte inferior da lista suspensa para procurar por seu conte&uacute;do para um conjunto de dados de compartilhamento de arquivo big data ou camada de fei&ccedil;&atilde;o.  
+            <p>Al&eacute;m de escolher uma camada de seu mapa, voc&ecirc; pode escolher  <b>Procurar Camadas</b> na parte inferior da lista suspensa para procurar por seu conte&uacute;do para um conjunto de dados de compartilhamento de arquivo big data ou camada de fei&ccedil;&atilde;o.
             </p>
         </div>
     </div>
     <div id="joinOperation">
-        <div><h2>Escolher a operação de ligação</h2></div>
+        <div><h2>Escolher operação de ligação</h2></div>
         <hr/>
         <div>
-            <p>Isto determina como as liga&ccedil;&otilde;es entre as camadas de entrada ser&atilde;o lidadas na sa&iacute;da se m&uacute;ltiplas fei&ccedil;&otilde;es de liga&ccedil;&atilde;o forem encontradas para ter o mesmo relacionamento na camada sendo ligada. H&aacute; duas opera&ccedil;&otilde;es de liga&ccedil;&atilde;o das quais escolher:
+            <p>Determina como liga&ccedil;&otilde;es entre as camadas de liga&ccedil;&atilde;o e destino ser&atilde;o manipuladas na sa&iacute;da se forem encontradas m&uacute;ltiplas fei&ccedil;&otilde;es de liga&ccedil;&atilde;o com o mesmo relacionamento na camada que est&aacute; sendo ligada. H&aacute; duas opera&ccedil;&otilde;es de liga&ccedil;&atilde;o das quais escolher:
                 <ul>
-                    <li> <b>Liga&ccedil;&atilde;o um para um</b>&mdash;Esta op&ccedil;&atilde;o liga todas as fei&ccedil;&otilde;es correspondentes &agrave; camada de liga&ccedil;&atilde;o.
+                    <li> <b>Liga&ccedil;&atilde;o um para um</b>&mdash;Esta op&ccedil;&atilde;o resume todas as fei&ccedil;&otilde;es correspondentes &agrave; cada fei&ccedil;&atilde;o sendo ligada.
                     </li>
-                    <li> <b>Liga&ccedil;&atilde;o um para muitos</b>&mdash;Esta op&ccedil;&atilde;o resume todas as fei&ccedil;&otilde;es correspondentes &agrave; cada fei&ccedil;&atilde;o sendo ligada.
+                    <li> <b>Liga&ccedil;&atilde;o um para muitos</b>&mdash;Esta op&ccedil;&atilde;o liga todas as fei&ccedil;&otilde;es correspondentes &agrave; camada de liga&ccedil;&atilde;o.
                     </li>
                 </ul>
                 
             </p>
-            <p>Por exemplo, suponha que desejamos localizar os supermercados dentro de 5 quil&ocirc;metros de um mercado de agricultores.   Neste caso a camada sendo ligada tem uma &uacute;nica fei&ccedil;&atilde;o representando um mercado de agricultores, e as fei&ccedil;&otilde;es de liga&ccedil;&atilde;o representam os supermercados locais que t&ecirc;m atributos como total de vendas anual. Utilizando a ferramenta  <b>Ligar Fei&ccedil;&otilde;es</b>, localizamos cinco supermercados que atendem os crit&eacute;rios. Se especificarmos uma opera&ccedil;&atilde;o de liga&ccedil;&atilde;o como <b>Liga&ccedil;&atilde;o um para um</b>, acabaremos com cinco fei&ccedil;&otilde;es em nosso resultado, cada linha representando o mercado de agricultores e um supermercado. Se especificarmos um relacionamento de <b>Liga&ccedil;&atilde;o um para muitos</b>, acabaremos com uma fei&ccedil;&atilde;o representando o mercado de agricultores e as informa&ccedil;&otilde;es resumidas dos supermercados, como a contagem (5), e outra estat&iacute;stica como a soma de vendas anuais.
+            <p>Por exemplo, suponha que desejamos localizar os supermercados dentro de 2 quil&ocirc;metros de um mercado de agricultores.    Neste caso a camada sendo ligada tem uma &uacute;nica fei&ccedil;&atilde;o representando um mercado de agricultores, e as fei&ccedil;&otilde;es de liga&ccedil;&atilde;o representam os supermercados locais que t&ecirc;m atributos como total de vendas anual. Utilizando a ferramenta  <b>Ligar Fei&ccedil;&otilde;es</b>, localizamos cinco supermercados que atendem os crit&eacute;rios. Se especificarmos uma opera&ccedil;&atilde;o de liga&ccedil;&atilde;o como <b>Liga&ccedil;&atilde;o um para muitos</b>, acabaremos com cinco fei&ccedil;&otilde;es em nosso resultado, cada linha representando o mercado de agricultores e um supermercado. Se especificarmos um relacionamento de <b>Liga&ccedil;&atilde;o um para um</b>, acabaremos com uma fei&ccedil;&atilde;o representando o mercado de agricultores e as informa&ccedil;&otilde;es resumidas dos supermercados, como a contagem (2), e outra estat&iacute;stica como a soma de vendas anuais.
             </p>
         </div>
     </div>
     <div id="joinOptions">
-        <div><h2>Selecionar o tipo de ligações que você gostaria de utilizar</h2></div>
+        <div><h2>Selecionar uma ou mais ligações</h2></div>
         <hr/>
         <div>
             <p>Voc&ecirc; pode aplicar um, dois ou tr&ecirc;s tipos de liga&ccedil;&atilde;o. Os tipos de liga&ccedil;&otilde;es incluem o seguinte: 
@@ -107,16 +109,16 @@
         </div>
     </div>
     <div id="spatialRelationship">
-        <div><h2>Ligação espacial</h2></div>
+        <div><h2>Escolha uma relacionamento espacial</h2></div>
         <hr/>
         <div>
             <p> O relacionamento espacial que determinar&aacute; se fei&ccedil;&otilde;es ser&atilde;o ligadas umas &agrave;s outras. Os relacionamentos dispon&iacute;veis depender&atilde;o do tipo de geometria (ponto, polilinha, pol&iacute;gonos) sendo utilizado como as fei&ccedil;&otilde;es de entrada. Os relacionamentos dispon&iacute;veis incluem o seguinte:
                 <ul>
                     <li> <b>Intersecciona</b>&mdash;A fei&ccedil;&atilde;o ser&aacute; correspondida se interseccionar com outra.
                     </li>
-                    <li> <b>Id&ecirc;nticas</b>&mdash;As fei&ccedil;&otilde;es ser&atilde;o correspondidas se tiverem a mesma geometria.
+                    <li> <b>Id&ecirc;ntica</b>&mdash;As fei&ccedil;&otilde;es ser&atilde;o correspondidas se tiverem a mesma geometria.
                     </li>
-                    <li> <b>Pr&oacute;xima</b>&mdash;As fei&ccedil;&otilde;es ser&atilde;o correspondidas se estiverem dentro de uma dist&acirc;ncia especificada uma da outra.
+                    <li> <b>Proximidade</b>&mdash;As fei&ccedil;&otilde;es ser&atilde;o correspondidas se estiverem dentro de uma dist&acirc;ncia especificada uma da outra. A camada de destino deve estar em um sistema de coordenadas planas ou a refer&ecirc;ncia espacial de processamento deve ser definida para um sistema de coordenadas planas utilizando <b>Ambientes de An&aacute;lise</b> se um relacionamento espacial <b>Proximidade</b> for utilizado.
                     </li>
                     <li> <b>Cont&eacute;m</b>&mdash;As fei&ccedil;&otilde;es ser&atilde;o correspondidas se a camada sendo ligada estiver contida nas fei&ccedil;&otilde;es de liga&ccedil;&atilde;o.
                     </li>
@@ -126,7 +128,7 @@
                     </li>
                     <li> <b>Cruzam</b>&mdash;As fei&ccedil;&otilde;es ser&atilde;o correspondidas se tiverem um contorno transversal.
                     </li>
-                    <li> <b>Sobrep&otilde;e</b>&mdash;As fei&ccedil;&otilde;es ser&atilde;o ligadas se tiver sobreposi&ccedil;&atilde;o.
+                    <li> <b>Sobrep&otilde;em</b>&mdash;As fei&ccedil;&otilde;es ser&atilde;o ligadas se tiver sobreposi&ccedil;&atilde;o.
                     </li>
                 </ul>
                 
@@ -144,7 +146,7 @@
         </div>
     </div>
     <div id="temporalRelationship">
-        <div><h2>Ligação temporal</h2></div>
+        <div><h2>Escolha um relacionamento temporal</h2></div>
         <hr/>
         <div>
             <p>O relacionamento temporal que determinar&aacute; se fei&ccedil;&otilde;es ser&atilde;o ligadas umas &agrave;s outras. Esta op&ccedil;&atilde;o estar&aacute; dispon&iacute;vel somente se o tempo estiver habilitado em ambas as camadas e os relacionamentos dispon&iacute;veis depender&atilde;o do tipo de tempo (momento ou intervalo) sendo utilizado para as fei&ccedil;&otilde;es de entrada. Os relacionamentos dispon&iacute;veis incluem o seguinte:
@@ -153,7 +155,7 @@
                     </li>
                     <li> <b>Correspondida Por</b>&mdash;A fei&ccedil;&atilde;o ser&aacute; correpondida se as primeiras fei&ccedil;&otilde;es forem correspondidas pela segunda.
                     </li>
-                    <li> <b>Sobrep&otilde;e</b>&mdash;A fei&ccedil;&atilde;o ser&aacute; correspondida se a primeira fei&ccedil;&atilde;o sobrepor a segunda.
+                    <li> <b>Sobrep&otilde;em</b>&mdash;A fei&ccedil;&atilde;o ser&aacute; correspondida se a primeira fei&ccedil;&atilde;o sobrepor a segunda.
                     </li>
                     <li> <b>Sobreposta Por</b>&mdash;A fei&ccedil;&atilde;o ser&aacute; correpondida se as primeiras fei&ccedil;&otilde;es estiverem sobrepostas pela segunda.
                     </li>
@@ -161,17 +163,17 @@
                     </li>
                     <li> <b>Cont&eacute;m</b>&mdash;A fei&ccedil;&atilde;o ser&aacute; correspondida se a primeira fei&ccedil;&atilde;o contiver a segunda.
                     </li>
-                    <li> <b>Id&ecirc;nticas</b>&mdash;A fei&ccedil;&atilde;o ser&aacute; correspondida se a primeira fei&ccedil;&atilde;o for id&ecirc;ntica &agrave; segunda.
+                    <li> <b>Id&ecirc;ntica</b>&mdash;A fei&ccedil;&atilde;o ser&aacute; correspondida se a primeira fei&ccedil;&atilde;o for id&ecirc;ntica &agrave; segunda.
                     </li>
-                    <li> <b>Finaliza</b>&mdash;A fei&ccedil;&atilde;o ser&aacute; correspondida se a primeira fei&ccedil;&atilde;o finalizar &agrave; segunda.
+                    <li> <b>Finalizar</b>&mdash;A fei&ccedil;&atilde;o ser&aacute; correspondida se a primeira fei&ccedil;&atilde;o finalizar &agrave; segunda.
                     </li>
                     <li> <b>Finalizada Por</b>&mdash;A fei&ccedil;&atilde;o ser&aacute; correpondida se as primeiras fei&ccedil;&otilde;es forem finalizadas pela segunda.
                     </li>
-                    <li> <b>Inicia</b>&mdash;A fei&ccedil;&atilde;o ser&aacute; correspondida se a primeira fei&ccedil;&atilde;o iniciar a segunda.
+                    <li> <b>Iniciar</b>&mdash;A fei&ccedil;&atilde;o ser&aacute; correspondida se a primeira fei&ccedil;&atilde;o iniciar a segunda.
                     </li>
                     <li> <b>Iniciada Por</b>&mdash;A fei&ccedil;&atilde;o ser&aacute; correpondida se as primeiras fei&ccedil;&otilde;es forem iniciadas pela segunda.
                     </li>
-                    <li> <b>Intersecciona</b>&mdash;As fei&ccedil;&otilde;es ser&atilde;o mapeadas se os tempos interseccionarem em todas.
+                    <li> <b>Interseccionam</b>&mdash;As fei&ccedil;&otilde;es ser&atilde;o mapeadas se os tempos interseccionarem em todas.
                     </li>
                     <li> <b>Pr&oacute;xima</b>&mdash;As fei&ccedil;&otilde;es ser&atilde;o ligadas se estiverem pr&oacute;ximas umas das outras, determinadas por um tempo especificado.
                     </li>
@@ -191,12 +193,12 @@
         </div>
     </div>
     <div id="attributeRelationship">
-        <div><h2>Ligação de atributo</h2></div>
+        <div><h2>Escolha os campos para corresponder</h2></div>
         <hr/>
         <div>
             <p>Este relacionamento combinar&aacute; valores em um campo de uma camada para valores em um campo em outra camada. 
             </p>
-            <p> Por exemplo, suponha que tivemos uma camada geogr&aacute;fica de todo o munic&iacute;pio para endere&ccedil;os residenciais (inclusive um campo <i>ZIP</i>) e um conjunto de dados tabelar para demografias de sa&uacute;de por C&oacute;digo Postal (um campo denominado <i>HEALTHZIP</i>). Podemos ligar o conjunto de dados de sa&uacute;de aos dados residenciais por combina&ccedil;&atilde;o do campo <i>ZIP</i> ao <i>HEALTHZIP</i>, que resultar&aacute; em uma camada de resid&ecirc;ncias com os dados de sa&uacute;de correspondentes.
+            <p>Por exemplo, suponha que tivemos uma camada geogr&aacute;fica de todo o munic&iacute;pio para endere&ccedil;os residenciais (inclusive um campo  <i>ZIP</i>) e um conjunto de dados tabelar para demografias de sa&uacute;de por C&oacute;digo Postal (um campo denominado <i>HEALTHZIP</i>). Podemos ligar o conjunto de dados de sa&uacute;de aos dados residenciais por combina&ccedil;&atilde;o do campo <i>ZIP</i> ao <i>HEALTHZIP</i>, que resultar&aacute; em uma camada de resid&ecirc;ncias com os dados de sa&uacute;de correspondentes.
             </p>
         </div>
     </div>
@@ -204,7 +206,39 @@
         <div><h2>Adicionar estatísticas (opcional)</h2></div>
         <hr/>
         <div>
-            <p>Se uma op&ccedil;&atilde;o de um para muitos foi selecionada, voc&ecirc; poder&aacute; calcular a estat&iacute;stica nas suas fei&ccedil;&otilde;es ligadas.
+            <p>Se a opera&ccedil;&atilde;o de liga&ccedil;&atilde;o for   <b>Liga&ccedil;&atilde;oum para um</b>, voc&ecirc; poder&aacute; calcular estat&iacute;sticas em suas fei&ccedil;&otilde;es ligadas. Por padr&atilde;o, todas as estat&iacute;sticas ser&atilde;o calculadas.
+            </p>
+            <p>Voc&ecirc; pode calcular as estat&iacute;stica em fei&ccedil;&otilde;es que s&atilde;o resumidas. Nos campos num&eacute;ricos voc&ecirc; pode calcular o seguinte:
+                <ul>
+                    <li>Contagem&mdash;Calcula o n&uacute;mero de valores diferentes de nulo. Pode ser utilizado em campos num&eacute;ricos ou strings. 'A contagem de [null, 0, 2] &eacute; 2.
+                    </li>
+                    <li>Soma&mdash;A soma de valores num&eacute;ricos em um campo. A soma de [null, null, 3] &eacute; 3.
+                    </li>
+                    <li>M&eacute;dia&mdash;A m&eacute;dia de valores num&eacute;ricos. A m&eacute;dia de [0, 2, null] &eacute; 1.
+                    </li>
+                    <li>M&iacute;n&mdash;O valor m&iacute;nimo de um campo num&eacute;rico. O m&iacute;nimo de [0, 2, null] &eacute; 0. 
+                    </li>
+                    <li>M&aacute;x&mdash;O valor m&aacute;ximo de um campo num&eacute;rico. O valor m&aacute;ximo de [0, 2, null] &eacute; 2.
+                    </li>
+                    <li>Alcance&mdash;O alcance de um campo num&eacute;rico. Isto &eacute; calculado como os valores m&iacute;nimos subtra&iacute;dos do valor m&aacute;ximo. O alcance de [0, null, 1] &eacute; 1. O alcance de [null, 4] &eacute; 0.
+                    </li>
+                    <li>Vari&acirc;ncia&mdash;A vari&acirc;ncia de um campo num&eacute;rico em um caminho. A vari&acirc;ncia de [1] &eacute; nula. A vari&acirc;ncia de [null, 1,1,1] &eacute; 1.
+                    </li>
+                    <li>Desvio padr&atilde;o&mdash;O desvio padr&atilde;o de um campo num&eacute;rico. O desvio padr&atilde;o de [1] &eacute; nulo. O desvio padr&atilde;o de [nulo, 1,1,1] &eacute; 1. 
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Nos campos de string voc&ecirc; pode calcular o seguinte:
+                <ul>
+                    <li>Contagem&mdash;O n&uacute;mero de strings diferente de nulo.
+                    </li>
+                    <li>Qualquer&mdash;Esta estat&iacute;stica &eacute; uma amostra aleat&oacute;ria de um valor de string no campo especificado.
+                    </li>
+                </ul>
+                Todas as estat&iacute;sticas s&atilde;o calculadas em valores n&atilde;o nulos. A camada resultante conter&aacute; um novo atributo para cada estat&iacute;stica calculada. Qualquer n&uacute;mero de estat&iacute;stica pode ser adicionado ao escolher um atributo e estat&iacute;stica.
+            </p>
+            <p>Todas as estat&iacute;sticas s&atilde;o calculadas em valores n&atilde;o nulos. A camada resultante conter&aacute; um novo campo para cada estat&iacute;stica calculada. Qualquer n&uacute;mero de estat&iacute;stica pode ser adicionado ao escolher um atributo e estat&iacute;stica.
             </p>
         </div>
     </div>
@@ -214,7 +248,7 @@
         <div>
             <p>Aplica uma condi&ccedil;&atilde;o para campos especificados. Somente fei&ccedil;&otilde;es com campos que atendem estas condi&ccedil;&otilde;es ser&atilde;o ligadas.
             </p>
-            <p>Por exemplo, suponha que desejamos aplicar uma liga&ccedil;&atilde;o para um conjunto de dados para somente estas fei&ccedil;&otilde;es onde  <i>health_spending</i> &eacute; maior que 20 por cento de <i>income</i>.  Para fazer isto,  aplique uma condi&ccedil;&atilde;o de liga&ccedil;&atilde;o de <code>target.health_spending &gt; (join.income * .20)</code> utilizando um campo <i>health_spending</i> do primeiro conjunto de dados (as fei&ccedil;&otilde;es do conjunto de dados s&atilde;o ligadas em) e o campo <i>income</i> do segundo conjunto de dados (o conjunto de dados sendo ligado).
+            <p>Por exemplo, suponha que desejamos aplicar uma liga&ccedil;&atilde;o para um conjunto de dados para somente estas fei&ccedil;&otilde;es onde  <i>health_spending</i> &eacute; maior que 20 por cento de <i>income</i>.  Para fazer isto, aplique uma condi&ccedil;&atilde;o de liga&ccedil;&atilde;o de <code>target.health_spending &gt; (join.income * .20)</code> utilizando um campo <i>health_spending</i> do primeiro conjunto de dados (as fei&ccedil;&otilde;es do conjunto de dados s&atilde;o ligadas em) e o campo <i>income</i> do segundo conjunto de dados (o conjunto de dados sendo ligado).
             </p>
             <p>As condi&ccedil;&otilde;es de liga&ccedil;&atilde;o podem ser aplicadas utilizando a calculadora de express&atilde;o.
             </p>
@@ -224,14 +258,24 @@
         <div><h2>Escolher armazenamento de dados</h2></div>
         <hr/>
         <div>
-            <p>Este &eacute; um par&acirc;metro tempor&aacute;rio para pr&eacute; lan&ccedil;amento para configurar o armazenamento de dados onde os resultados s&atilde;o salvos. Ambos os armazenamentos de dados s&atilde;o parte do  ArcGIS Data Store. Se voc&ecirc; selecionar o armazenamento de dados spatiotemporal mas n&atilde;o ter um instalado, a ferramenta falhar&aacute;. </p>
+            <p>Os resultados do GeoAnalytic s&atilde;o armazenados no ArcGIS Data Store e expostos como uma camada de fei&ccedil;&atilde;o no  Portal for ArcGIS. Na maioria dos casos, os resultados devem ser armazenados no armazenamento de dados de espa&ccedil;o-tempo e este &eacute; o padr&atilde;o. Em alguns casos salvar resultados no armazenamento de dados relacional &eacute; uma boa op&ccedil;&atilde;o. Abaixo est&atilde;o as raz&otilde;es pelas quais voc&ecirc; talvez queira armazenar resultados em um armazenamento de dados relacional: 
+                <ul>
+                    <li>Utilizar os resultados no portal para colabora&ccedil;&atilde;o do portal.
+                    </li>
+                    <li>Habilitar recursos de sincroniza&ccedil;&atilde;o com seus resultados.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Voc&ecirc; n&atilde;o deve utilizar um armazenamento de dados relacional se voc&ecirc; espera que os resultados do GeoAnalytics aumentem e deseja aproveitar os recursos do armazenamento de grandes dados de espa&ccedil;o-tempo para lidar com grandes quantidades de dados. 
+            </p>
         </div>
     </div>
     <div id="outputName">
         <div><h2>Nome da camada resultante</h2></div>
         <hr/>
         <div>
-            <p> Este &eacute; o nome da camada que ser&aacute; criada em <b>Meu Conte&uacute;do</b> e adicionada ao mapa.  O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existe, a ferramenta falhar&aacute;.
+            <p> Este &eacute; o nome da camada que ser&aacute; criada em <b>Meu Conte&uacute;do</b> e adicionada no mapa.  O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existe, a ferramenta falhar&aacute;.
             </p>
             <p>Ao utilizar a caixa suspensa  <b>Salvar resultado em</b>, &eacute; poss&iacute;vel especificar o nome de uma pasta em <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo.
             </p>

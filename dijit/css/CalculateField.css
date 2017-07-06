@@ -159,6 +159,13 @@
   background-color: #D2E959;
 }
 
+.esriCalcField .esriActionDividerLine {
+  clear:both; 
+  border-bottom: #CCC thin solid; 
+  height:1px;
+  width:100%;
+}
+
 .esriCalcHelp {
   padding-bottom: 0.5em;
 }

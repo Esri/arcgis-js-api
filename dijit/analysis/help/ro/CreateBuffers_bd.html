@@ -40,7 +40,7 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Creare buffere</h2><p/>
         <h2><img src="../images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" alt="Creare buffere"></h2>
         <hr/>
@@ -54,9 +54,9 @@
         <div><h2>Selectare strat tematic căruia să îi fie aplicat bufferul</h2></div>
         <hr/>
         <div>
-            <p>Obiectele spaţiale punctuale, liniare sau de suprafaţă care vor fi incluse &icirc;n buffer.
+            <p>Obiectele spaţiale punctuale, liniare sau de suprafaţă care vor fi incluse &icirc;n buffer. Stratul tematic de intrare trebuie să fie &icirc;ntr-un sistem de coordonate proiectate sau referinţa spaţială de procesare trebuie setată pe un sistem de coordonate proiectate utiliz&acirc;nd  <b>Mediul de analiză</b>.
             </p>
-            <p>&Icirc;n afară de a alege un strat tematic din harta dvs., puteţi selecta opţiunile  <b>Răsfoire straturi tematice</b> &icirc;n partea inferioară a listei verticale pentru a răsfoi conţinutul pentru stratul tematic sau setul de date pentru partajarea de fişiere big data.  
+            <p>&Icirc;n afară de a alege un strat tematic din harta dvs., puteţi selecta opţiunile  <b>Răsfoire straturi tematice</b> &icirc;n partea inferioară a listei verticale pentru a răsfoi conţinutul pentru stratul tematic sau setul de date pentru partajarea de fişiere big data.
             </p>
         </div>
     </div>
@@ -126,26 +126,28 @@
         <div>
             <p> Puteţi calcula statistici despre obiectele spaţiale rezumate. &Icirc;n c&acirc;mpurile numerice puteţi calcula următoarele:
                 <ul>
-                    <li>Cont
+                    <li>Numărare&mdash;Calculează numărul de valori care nu sunt nule. Poate fi utilizat &icirc;n c&acirc;mpurile sau &icirc;n şirurile numerice. Calculul [nul, 0, 2] este egal cu 2.
                     </li>
-                    <li>Medie
+                    <li>Sumă - Suma valorilor numerice dintr-un c&acirc;mp. Suma [nul, 0, 3] este egală cu 3.
                     </li>
-                    <li>Min
+                    <li>Media&mdash;Media valorilor numerice. Media dintre [0, 2, nul] este 1.
                     </li>
-                    <li>Max
+                    <li>Min&mdash;Valoarea minimă a unui c&acirc;mp numeric. Minimul dintre [0, 2, nul] este 0. 
                     </li>
-                    <li>Distanţă
+                    <li>Max&mdash;Valoarea maximă a unui c&acirc;mp numeric. Valoarea maximă a [0, 2, nul] este 2.
                     </li>
-                    <li>Variaţie
+                    <li>Interval&mdash;Intervalul unui c&acirc;mp numeric. Acesta este calculat ca valoare minimă scăzută din valoare maximă. Intervalul [nul, 0, 1] este 1. Intervalul [nul, 0, 4] este 0.
                     </li>
-                    <li>Deviaţie standard
+                    <li>Variaţia&mdash;Variaţia unui c&acirc;mp numeric pe o pistă. Variaţia [1] este nulă. Variaţia [nul, 1,1, 1] este 1.
+                    </li>
+                    <li>Deviaţia standard&mdash;Deviaţia standard a unui c&acirc;mp numeric. Deviaţia standard [1] este nulă. Deviaţia standard [nul, 1,1, 1] este 1. 
                     </li>
                 </ul>
                 
             </p>
             <p>&Icirc;n c&acirc;mpurile de tip şir puteţi calcula următoarele:
                 <ul>
-                    <li>Cont
+                    <li>Calcul&mdash;Numărul şirurilor care nu sunt nule.
                     </li>
                     <li>Oricare - Această statistică este un exemplu aleatoriu al unei valori de tip şir &icirc;n c&acirc;mpul specificat.
                     </li>
@@ -155,10 +157,20 @@
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Selectare depozit de date</h2></div>
+        <div><h2>Alegeţi un depozit de date ArcGIS pe care să salvaţi rezultatele</h2></div>
         <hr/>
         <div>
-            <p>Acesta este un parametru temporar pentru pre-lansare, destinat setării depozitului de date &icirc;n care sunt salvate rezultatele. Ambele depozite de date fac parte din  ArcGIS Data Store. Dacă selectaţi depozitul de date spaţio-temporal dar nu aveţi unul instalat, instrumentul va eşua. </p>
+            <p>Rezultatele GeoAnalytics sunt stocate &icirc;ntr-un depozit de date ArcGIS şi sunt expuse ca un strat tematic de obiecte spaţiale &icirc;n  Portal for ArcGIS. &Icirc;n cele mai multe situaţii, rezultatele trebuie stocate &icirc;n depozitul de date spaţio-temporar, &icirc;n mod implicit. &Icirc;n unele situaţii, salvarea rezultatelor &icirc;n depozitul de date relaţionale este o opţiune bună. Următoarele sunt motivele pentru care aţi dori să stocaţi rezultatele &icirc;ntr-un depozit de date relaţionale: 
+                <ul>
+                    <li>Utilizaţi rezultatele &icirc;ntr-o colaborare portal la portal.
+                    </li>
+                    <li>Activaţi capacităţile de sincronizare cu rezultatele dvs.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Nu trebuie să utilizaţi depozitul de date relaţionale dacă vă aşteptaţi ca rezultatele GeoAnalytics să crească &icirc;n cantitate şi aveţi nevoie de capacităţile depozitului mare de stocare spaţio-temporal de a gestiona cantităţi mari de date. 
+            </p>
         </div>
     </div>
     <div id="outputName">

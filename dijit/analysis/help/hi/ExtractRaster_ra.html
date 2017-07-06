@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>रैस्टर निकालें</h2><p/>
+        <h2><img src="../images/GUID-DC9CBCB9-A07C-42D3-A0CB-2FB1483CBF4C-web.png" alt="पोर्टल के लिए रैस्टर निकालने का उपकरण"></h2>
+        <hr/>
+    <p>यह उपकरण या तो आयताकार क्षेत्र के लिए या स्क्रीन पर परस्पर प्रभाव डालते हुए आपके द्वारा निर्धारित आकृति के लिए , सीमा हेतु रैस्टर को क्लिप कर सकता है। आप उस क्षेत्र की सीमा तक क्लिप कर सकते हैं जहां आपने इस समय अपने मानचित्र पर प्रदर्शित किया है अथवा बहुभुज द्वारा अध्ययन क्षेत्र निर्धारित किया है।
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>निकालने के लिए इनपुट डेटा चुनें</h2></div>
+        <hr/>
+        <div>
+            <p>क्लिप के लिए इनपुट लेयर।
+            </p>
+        </div>
+    </div>
+    <div id="clippingGeometry">
+        <div><h2>कर्तन ज्यामिति को स्पष्ट करें</h2></div>
+        <hr/>
+        <div>
+            <p>लेयर की ज्यामिति की क्लिपिंग करते समय प्रयोग करने के लिए सीमा का प्रकार चुनें:
+
+                <ul>
+                    <li>मौजूदा सीमा का प्रयोग करें&mdash;परिणामी लेयर की क्लिपिंग के लिए मौजूदा मानचित्र की सीमा प्रयोग की जाएगी। यह डिफ़ॉल्ट है।
+                        
+
+                    </li>
+                    <li>अध्ययन क्षेत्र चुनें&mdash;आपको यह चुनने की अनुमति देता है कि परिणाम ज्यामिति सीमा के अंदर क्षेत्र दिखाएं या ज्यामिति सीमा के बाहर का क्षेत्र दिखाएं। यदि आप  <b>ज्यामिति के अंदर डेटा</b> विकल्प चुनते हैं, तो सीमा के बाहर चित्र हट जाएगा। यदि आप <b>ज्यामिति के बाहर डेटा</b> विकल्प चुनते हैं, तो सीमा के अंदर चित्र हट जाएगा। आप ड्रा टूल का प्रयोग करके भी ज्यामिति की क्लिपिंग को निर्धारित कर सकते हैं।
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputLayer">
+        <div><h2>परिणामी लेयर का नाम</h2></div>
+        <hr/>
+        <div>
+            <p>फीचर लेयर का नाम, जो  <b>मेरी सामग्री</b> में बनाया जाएगा और मानचित्र में जोड़ा जाएगा। इसका मूल नाम उपकरण के नाम और इनपुट लेयर के नाम पर आधारित है। यदि लेयर पहले से मौजूद हो, तो आपसे दूसरा नाम देने को कहा जाएगा।
+            </p>
+            <p> <b>इसमें सहेजें</b> ड्राप-डाउन बॉक्स का उपयोग करके, आप <b>मेरी सामग्री</b> में एक फोल्डर का नाम निर्दिष्ट कर सकते हैं, जहां परिणामों को सहेजा जाएगा।।
+            </p>
+        </div>
+    </div>
+</div>
+</html>

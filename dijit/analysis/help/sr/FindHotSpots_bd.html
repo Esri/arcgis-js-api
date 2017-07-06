@@ -41,14 +41,14 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Pronađite vruće tačke</h2><p/>
+        <h2>Pronađi vruće tačke</h2><p/>
         <h2><img src="../images/GUID-6D600155-AA9B-4F02-AD8B-2E84150AB743-web.png" alt="Pronađite vruće tačke"></h2>
         <hr/>
     <p>Alatka Pronađite vruće tačke odrediće da li postoje statistički značajni klasteri u prostornom obrascu va&scaron;ih podataka. 
         <ul>
             <li>Da li su va&scaron;e tačke (kriminalni incidenti, drveće ili saobraćajne nesreće) stvarno u klasteru?  Kako možete da budete sigurni?
             </li>
-            <li>Da li ste stvarno otkrili statistički značajnu vruću tačku? Ili bi va&scaron;a mapa predstavila drugačiju situaciju ako biste promenili način na koji je simbolisana?
+            <li>Da li ste zaista otkrili statistički značajne vruće tačke ili bi va&scaron;a mapa predstavila drugačiju situaciju ako biste promenili način na koji je simbolizovana?
             </li>
         </ul>
         Alatka Pronađi vruće tačke pomoći će vam da odgovorite na ova pitanja sa sigurno&scaron;ću.
@@ -61,9 +61,11 @@
         <div><h2>Odaberite sloj za koji će biti izračunate vruće tačke</h2></div>
         <hr/>
         <div>
-            <p>Tačkasti sloj iz kog mogu da se pronađu vruće i hladne tačke. 
+            <p>Tačkasti sloj iz kog mogu da se pronađu vruće i hladne tačke.
             </p>
-            <p>Kao dodatak odabiru sloja iz mape, možete da odaberete  <b>Pregledaj slojeve</b> na dnu padajuće liste da biste potražili deljeni skup podataka za datoteke sa velikim podacima ili sloj geoobjekta u svojim sadržajima.  
+            <p>Ova analiza koristi blokove i zahteva projektovani koordinatni sistem.  <b>Koordinatni sistem obrade</b> možete da podesite u <b>Okruženja analize</b>. Ako koordinatni sistem obrade nije pode&scaron;en na projektovani koordinatni sistem, od vas će se tražiti da ga podesite prilikom <b>pokretanja analize</b>.
+            </p>
+            <p>Kao dodatak odabiru sloja iz mape, možete da odaberete  <b>Pregledaj slojeve</b> na dnu padajuće liste da biste potražili deljeni skup podataka za datoteke sa velikim podacima ili sloj geoobjekta u svojim sadržajima.
             </p>
         </div>
     </div>
@@ -81,7 +83,7 @@
         </div>
     </div>
     <div id="inputBins">
-        <div><h2>Izaberite veličinu bloka za izračunavanja vrućih tačaka</h2></div>
+        <div><h2>Izaberite veličinu blokova za grupisanje</h2></div>
         <hr/>
         <div>
             <p>Rastojanje koje se koristi za generisanje kvadratnih blokova koji će se koristiti za analiziranje va&scaron;ih ulaznih tačaka.
@@ -89,39 +91,56 @@
         </div>
     </div>
     <div id="timeSlicing">
-        <div><h2>Grupiši pomoću vremenskih odsečaka (opciono)</h2></div>
+        <div><h2>Pronađite žarišta korišćenjem vremenski koraka (opciono)</h2></div>
         <hr/>
         <div>
-            <p>Ako je vreme omogućeno na tačkastom sloju i u pitanju je trenutak, možete da analizirate koristeći vremenske intervale.
+            <p>Ako je vreme omogućeno na tačkastom sloju i u pitanju je trenutak, možete da analizirate koristeći vremenske korake.
             </p>
         </div>
     </div>
     <div id="timeInterval">
-        <div><h2>Vremenski interval u koji će se grupisati</h2></div>
+        <div><h2>Interval vremenskih korakao</h2></div>
         <hr/>
         <div>
-            <p>Interval vremena koji se koristi za analizu. Ako ste želeli da kreirate vremenske odsečke koji se de&scaron;avaju svake nedelje, podesićete da vremenski interval bude jedna nedelja. 
+            <p>Interval vremena koji se koristi za generisanje vremenskih koraka.  Vreme može da se poravna sa vremenom početka ili kraja unosa podataka ili sa navedenim referentnim vremenom.  
             </p>
         </div>
     </div>
     <div id="timeStep">
-        <div><h2>Vremenski korak u koji se grupiše</h2></div>
+        <div><h2>Interval vremenskih koraka</h2></div>
         <hr/>
         <div>
-            <p>Kako će vreme da se poravna. Vreme može da se poravna sa vremenom početka ili kraja unosa podataka ili sa navedenim referentnim vremenom.  
+            <p>Interval vremena koji se koristi za generisanje vremenskih koraka. Vreme može da se poravna sa vremenom početka ili kraja unosa podataka ili sa navedenim referentnim vremenom.  
+            </p>
+        </div>
+    </div>
+    <div id="timeStepAlignment">
+        <div><h2>Odaberite kako da poravnate vremenske korake</h2></div>
+        <hr/>
+        <div>
+            <p>Kako se poravnavaju vremenski koraci. Postoje tri načina da se poravnaju vremenski koraci:
+                <ul>
+                    <li> <b>Početno vreme</b>&ndash;vremenski koraci se poravnavaju prema prvom geoobjektu u vremenu.
+                    </li>
+                    <li> <b>Zavr&scaron;no vreme</b>&ndash;vremenski koraci se poravnavaju prema poslednjem geoobjektu u vremenu.
+                    </li>
+                    <li> <b>Vreme reference</b>&ndash;vremenski koraci se poravnavaju prema određenom vremenu.
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>
     <div id="timeReference">
-        <div><h2>Referentno vreme koje se koristi za poravnavanje sečenja vremena</h2></div>
+        <div><h2>Vreme reference za poravnavanje vremenskih koraka</h2></div>
         <hr/>
         <div>
-            <p>Datum i vreme se koriste za poravnavanje vremenskih intervala.
+            <p>Datum i vreme se koriste za poravnavanje vremenskih koraka.
             </p>
         </div>
     </div>
     <div id="neighborhood">
-        <div><h2>Izaberite veličinu susedstva</h2></div>
+        <div><h2>Izaberite veličinu susedstva za izračunavanja žarišta</h2></div>
         <hr/>
         <div>
             <p>Rastojanje se koristi za određivanje susedstva koje se koristi za izračunavanja vrućih tačaka. Susedstvo bi trebalo da bude veće od veličine bloka, kako bi se osiguralo da svaki blok ima barem jednog suseda. Svaki blok se analizira i upoređuje sa susednim blokovima.
@@ -137,10 +156,20 @@
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Izaberi skladište podataka</h2></div>
+        <div><h2>Odaberite ArcGIS skladište podataka u koje će se čuvati rezultati</h2></div>
         <hr/>
         <div>
-            <p>Ovo je privremeni parametar za preliminarnu verziju da bi se podesilo skladi&scaron;te podataka gde se čuvaju rezultati. Oba skladi&scaron;ta podataka su deo  ArcGIS Data Store. Ako izaberete skladi&scaron;te prostorno-vremenskih podataka, ali nemate ga instalirano, alatka će otkazati. </p>
+            <p>Rezultati geoanalize se skladi&scaron;te u ArcGIS skladi&scaron;tu podataka i izloženi su kao sloj geoobjekata u  Portal for ArcGIS. U većini slučajeva, rezultati bi trebali da budu skladi&scaron;teni u u skladi&scaron;te prostorno-vremenskih podataka i ovo je podrazumevano. U nekim slučajevima čuvanje rezultata u skladi&scaron;te relacionih podataka je dobar izbor. Slede razlozi zbog kojih ćete želeti da skladi&scaron;tite rezultate u skladi&scaron;tu relacionih podataka: 
+                <ul>
+                    <li>Da biste koristili va&scaron;e rezultate u portal-ka-portalu kolaboraciji.
+                    </li>
+                    <li>Da biste omogućili mogućnosti sinhronizacije sa rezultatima.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Ne treba da koristite skladi&scaron;te relacionih podataka ako očekujete da se geoanalitički podaci povećaju i treba da iskoristite mogućnosti prostorno-vremenskog skladi&scaron;ta velikih podataka kako biste upravljali velikim količinama podataka. 
+            </p>
         </div>
     </div>
     <div id="outputName">

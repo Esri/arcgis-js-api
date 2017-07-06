@@ -152,7 +152,7 @@
             </p>
             <p>
                 <ul>
-                    <li> <b>Oletusarvo</b>: k&auml;ytt&auml;&auml; ty&ouml;kalun tuottamaa laajuutta.
+                    <li> <b>Oletusarvo</b>: K&auml;yt&auml; ty&ouml;kalun tuottamaa laajuutta.
                     </li>
                     <li> <b>Kuten m&auml;&auml;ritetty</b>: m&auml;&auml;rit&auml; laajuus kirjoittamalla koordinaatit manuaalisesti.
                     </li>
@@ -186,7 +186,7 @@
                     </li>
                     <li> <b>Kuten m&auml;&auml;ritetty</b>: M&auml;&auml;rit&auml; numeroarvo, joka m&auml;&auml;ritt&auml;&auml; solukoon. Jos t&auml;m&auml; valitaan, oletusarvo on 1.
                     </li>
-                    <li> <b>Karttataso &lt;name&gt;</b>: m&auml;&auml;ritt&auml;&auml; valitun rasteritason solukoon.
+                    <li> <b>Karttataso &lt;name&gt;</b>: m&auml;&auml;rit&auml; valitun rasteritason solukoko.
                     </li>
                 </ul>
                 
@@ -204,10 +204,27 @@
                 </li>
                 <li>Jos analyysimaski on rasteri, kaikki arvon sis&auml;lt&auml;v&auml;t solut m&auml;&auml;ritt&auml;v&auml;t maskin. Maskirasterin solut, joiden arvona on NoData, ovat maskin ulkopuolella, ja niiden arvona on NoData analyysin tuloskarttatasossa. 
                 </li>
-                <li>Jos analyysin maski on kohdekarttataso, se muunnetaan sis&auml;isesti rasteriksi suorituksen aikana. T&auml;st&auml; syyst&auml; sinun on varmistettava, ett&auml;  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank">Solukoko</a>- ja <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank">Kohdistusrasteri</a>-asetus asetetaan oikein analyysi&auml; varten.
+                <li>Jos analyysin maski on kohdekarttataso, se muunnetaan sis&auml;isesti rasteriksi suorituksen aikana. T&auml;st&auml; syyst&auml; sinun on varmistettava, ett&auml;  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank"></a>- ja <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank"></a>-asetukset m&auml;&auml;ritet&auml;&auml;n oikein analyysi&auml; varten.
                 </li>
             </ul>
              
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>ArcGIS Data Store</h2></div>
+        <hr/>
+        <div>
+            <p>GeoAnalytic-tulokset tallennetaan ArcGIS Data Store -tietokantaan ja julkaistaan karttatasona  Portal for ArcGIS -portaalissa. Useimmissa tapauksissa tulokset pit&auml;&auml; tallentaa spatiotemporaaliseen tietokantaan. T&auml;m&auml; on oletusarvo. Tulokset kannattaa tallentaa  relaatiotietokantaan seuraavissa tilanteissa: 
+                <ul>
+                    <li>Haluat k&auml;ytt&auml;&auml; portaalissa olevia tuloksiaportaaliyhteisty&ouml;h&ouml;n.
+                    </li>
+                    <li>Haluat ottaa k&auml;ytt&ouml;&ouml;n tulosten synkronointitoiminnot.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Relaatiotietokantaa ei tule k&auml;ytt&auml;&auml;, jos GeoAnalytics-tulosten m&auml;&auml;r&auml; kasvaa ja haluat hy&ouml;dynt&auml;&auml; spatiotemporaalisen big data -tietokannan toimintoja suurten tietom&auml;&auml;rien k&auml;sittelyyn. 
+            </p>
         </div>
     </div>
 </div>
