@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/Logger","./accessibleHandler"],function(e,r,t,i){function a(){var e=t.getLogger("esri.widgets.support.decorators.triggerWithSpaceOrEnter");return e.warn("@triggerWithSpaceOrEnter is deprecated, use @accessibleHandler instead."),i.accessibleHandler.apply(this,arguments)}r.triggerWithSpaceOrEnter=a});
+define(["require","exports","../../../core/Logger","./accessibleHandler"],function(e,r,t,i){function a(){var e=t.getLogger("esri.widgets.support.decorators.triggerWithSpaceOrEnter");return e.warn("@triggerWithSpaceOrEnter is deprecated, use @accessibleHandler instead."),i.accessibleHandler.apply(this,arguments)}Object.defineProperty(r,"__esModule",{value:!0}),r.triggerWithSpaceOrEnter=a});

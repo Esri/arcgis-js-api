@@ -3,6 +3,8 @@
 <snippets>
 
 <snippet name="vertexShaderBlendLayers"><![CDATA[
+  $vsprecisionf
+
 	attribute vec3 $position;
 	attribute vec2 $uv0;
 
@@ -18,7 +20,7 @@
 ]]></snippet>
 
 <snippet name="fragmentShaderBlendLayers"><![CDATA[
-	precision mediump float;
+  $fsprecisionf
 
 	varying vec2 uv;
 

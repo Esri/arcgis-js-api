@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define({startTracking:"เริ่มการติดตามตำแหน่งของฉัน",stopTracking:"หยุดการติดตามตำแหน่งของฉัน"});

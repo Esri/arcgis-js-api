@@ -2,7 +2,7 @@
 @import url(./ColorRampPicker.css);
 
 .esri-symbol-styler {
-  font-family: "Avenir LT W01 65 Medium", Arial, Helvetica, sans-serif;
+  font-family: "Avenir Next W00", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 12px;
   color: #4d4d4d;
   position: relative;
@@ -104,21 +104,29 @@
 
 .esri-symbol-styler .esri-symbol-size-input .esri-horizontal-slider,
 .esri-symbol-styler .esri-line-width-input .esri-horizontal-slider {
-  width: 66%;
+  width: 65%;
 }
 
 .esri-symbol-styler .esri-inline-input {
-  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.esri-symbol-styler__inline-input-container {
+  position: absolute;
+  left: 0;
+  right: 0;
 }
 
 .esri-symbol-styler .esri-inline-input .esri-horizontal-slider,
 .esri-symbol-styler .esri-inline-input .dijitTextBox {
   display: inline-block;
+  margin-right: 4px;
 }
 
 .esri-symbol-styler .esri-inline-input .dijitTextBox {
-  width: 4.4em;
-  margin: 0 2px;
+  width: 25%;
   box-sizing: border-box;
 }
 
@@ -255,4 +263,13 @@
   margin-left: 4px;
   margin-right: 4px;
   vertical-align: middle;
+}
+
+html[dir="rtl"] .esri-symbol-styler .esri-inline-input .esri-horizontal-slider,
+html[dir="rtl"] .esri-symbol-styler .esri-inline-input .dijitTextBox {
+  margin-right: 0;
+}
+html[dir="rtl"] .esri-symbol-styler .esri-inline-input .esri-horizontal-slider,
+html[dir="rtl"] .esri-symbol-styler .esri-inline-input .dijitTextBox {
+  margin-left: 4px;
 }

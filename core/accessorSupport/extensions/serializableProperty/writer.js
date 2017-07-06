@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
-define(["require","exports","dojo/_base/lang","./type"],function(t,e,n,r){function i(t,e,n,i){i.write&&!i.write.writer&&i.write.enabled!==!1&&(e||r.isCollection(t)?i.write.writer=u:i.write.writer=o)}function o(t,e,r,i){n.setObject(r,f(t,i),e)}function f(t,e){return t&&"function"==typeof t.toJSON&&!t.toJSON.isDefaultToJSON?t.toJSON():t&&"function"==typeof t.write?t.write({},e):t}function u(t,e,r,i){var o;null===t?o=null:t&&"function"==typeof t.map?(o=t.map(function(t){return f(t,i)}),"function"==typeof o.toArray&&(o=o.toArray())):o=[f(t,i)],n.setObject(r,o,e)}e.create=i});
+define(["require","exports","dojo/_base/lang","./type"],function(t,e,n,r){function i(t,e,n,i){i.write&&!i.write.writer&&i.write.enabled!==!1&&(e||r.isCollection(t)?i.write.writer=f:i.write.writer=o)}function o(t,e,r,i){n.setObject(r,u(t,i),e)}function u(t,e){return t&&"function"==typeof t.write?t.write({},e):t&&"function"==typeof t.toJSON?t.toJSON():t}function f(t,e,r,i){var o;null===t?o=null:t&&"function"==typeof t.map?(o=t.map(function(t){return u(t,i)}),"function"==typeof o.toArray&&(o=o.toArray())):o=[u(t,i)],n.setObject(r,o,e)}Object.defineProperty(e,"__esModule",{value:!0}),e.create=i});

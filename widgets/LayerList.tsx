@@ -30,10 +30,14 @@ import Widget = require("./Widget");
 import {
   vmEvent,
   renderable,
-  jsxFactory,
+  tsx,
   accessibleHandler,
   join
 } from "./support/widget";
+
+import {
+  ListItemModifier
+} from "./LayerList/interfaces";
 
 import * as i18nCommon from "dojo/i18n!../nls/common";
 import * as i18n from "dojo/i18n!./LayerList/nls/LayerList";
@@ -75,12 +79,14 @@ const CSS = {
   toggleVisible: "esri-layer-list__item-toggle",
   toggleVisibleIcon: "esri-layer-list__item-toggle-icon",
   childToggle: "esri-layer-list__child-toggle",
+  childToggleOpen: "esri-layer-list__child-toggle--open",
   childOpened: "esri-layer-list__child-toggle-icon--opened",
   childClosed: "esri-layer-list__child-toggle-icon--closed",
   childClosed_RTL: "esri-layer-list__child-toggle-icon--closed-rtl",
 
   // common
   disabled: "esri-disabled",
+  hidden: "esri-hidden",
 
   // icon classes
   iconClose: "esri-icon-close",
@@ -177,8 +183,13 @@ class LayerList extends declared(Widget) {
   //----------------------------------
 
   /**
+   * **Use [listItemCreatedFunction](#listItemCreatedFunction) instead.**
+   *
    * Specify the function that will create actions for {@link module:esri/widgets/LayerList/ListItem ListItems}.
-   * Actions are defined with the properties listed in the {@link module:esri/support/Action Action class}.
+   * Actions are defined with the properties listed in the {@link module:esri/support/Action Action class}. This function must return a two-dimensional array of
+   * {@link module:esri/support/Action Actions}.
+   *
+   * @deprecated Since version 4.4.
    *
    * @name createActionsFunction
    * @instance
@@ -187,7 +198,21 @@ class LayerList extends declared(Widget) {
    */
   @aliasOf("viewModel.createActionsFunction")
   @renderable()
-  createActionsFunction: Function = null;
+  createActionsFunction: ListItemModifier = null;
+
+  //----------------------------------
+  //  statusIndicatorsVisible
+  //----------------------------------
+
+  /**
+   * @todo document statusIndicatorsVisible property
+   * @type {boolean}
+   * @default true
+   * @ignore
+   */
+  @property()
+  @renderable()
+  statusIndicatorsVisible = true;
 
   //----------------------------------
   //  errorsVisible
@@ -202,6 +227,53 @@ class LayerList extends declared(Widget) {
   @property()
   @renderable()
   errorsVisible: false;
+
+  //----------------------------------
+  //  listItemCreatedFunction
+  //----------------------------------
+
+  /**
+   * Specifies a function that accesses each {@link module:esri/widgets/LayerList/ListItem}.
+   * Each list item can be modified
+   * according to its modifiable propeties. Actions can be added to list items
+   * using the {@link module:esri/widgets/LayerList/ListItem#actionsSections actionsSections}
+   * property of the ListItem.
+   *
+   * @since 4.4
+   *
+   * @name listItemCreatedFunction
+   * @instance
+   * @type {function}
+   * @see [Sample - LayerList widget with actions](../sample-code/widgets-layerlist-actions/index.html)
+   *
+   * @example
+   * var layerList = new LayerList({
+   *   view: view,
+   *   // executes for each ListItem in the LayerList
+   *   listItemCreatedFunction: function (event) {
+   *
+   *    // The event object contains properties of the
+   *    // layer in the LayerList widget.
+   *
+   *    var item = event.item;
+   *
+   *    if (item.title === "US Demographics") {
+   *      // open the list item in the LayerList
+   *      item.open = true;
+   *      // change the title to something more descriptive
+   *      item.title = "Population by county";
+   *      // set an action for zooming to the full extent of the layer
+   *      item.actionsSections = [[{
+   *        title: "Go to full extent",
+   *        className: "esri-icon-zoom-out-fixed",
+   *        id: "full-extent"
+   *      }]];
+   *    }
+   * });
+   */
+  @aliasOf("viewModel.listItemCreatedFunction")
+  @renderable()
+  listItemCreatedFunction: Function = null;
 
   //----------------------------------
   //  operationalItems
@@ -269,21 +341,24 @@ class LayerList extends declared(Widget) {
    * @param {module:esri/widgets/LayerList/ListItem} - An item associated with the action.
    */
   @aliasOf("viewModel.triggerAction")
-  triggerAction(action: Action, item: ListItem): void {}
+  triggerAction(action: Action, item: ListItem): void { }
 
   render() {
     const items = this._getItems();
+    const state = this.get("viewModel.state");
 
     const content = items.length === 0 ?
       (<div class={CSS.noItems}>{i18n.noItemsToDisplay}</div>) :
-      (<ul class={join(CSS.list, CSS.listRoot, CSS.listIndependent)} role="tree">{items.map((item, key) => this._renderItem(item, null))}</ul>);
+      (<ul class={join(CSS.list, CSS.listRoot, CSS.listIndependent)}>{items.map((item, key) => this._renderItem(item, null))}</ul>);
 
     const baseClasses = {
-      [CSS.disabled]: this.viewModel.state === "disabled"
+      [CSS.hidden]: state === "loading",
+      [CSS.disabled]: state === "disabled"
     };
 
     return (
-      <div class={CSS.base} classes={baseClasses}>{content}</div>
+      <div class={CSS.base}
+        classes={baseClasses}>{content}</div>
     );
   }
 
@@ -301,8 +376,11 @@ class LayerList extends declared(Widget) {
     const widgetId = this.id;
     const uid = `${widgetId}_${item.uid}`;
     const actionsUid = `${uid}_actions`;
+    const listUid = `${uid}__list`;
+    const titleKey = `${uid}__title`;
 
-    const hasChildren = !!(item.children.length);
+    const childrenLen = item.children.length;
+    const hasChildren = !!childrenLen;
     const hasError = !!item.error;
 
     const errorMessage = hasError ? i18n.layerError : "";
@@ -311,7 +389,7 @@ class LayerList extends declared(Widget) {
 
     const childItems = item.children && item.children.toArray();
 
-    const {exclusive, inherited} = VISIBILITY_MODES;
+    const { exclusive, inherited } = VISIBILITY_MODES;
 
     const childClasses = {
       [CSS.listExclusive]: visibilityMode === exclusive,
@@ -322,7 +400,7 @@ class LayerList extends declared(Widget) {
     const itemClasses = {
       [CSS.itemChildren]: hasChildren,
       [CSS.itemError]: !!errorMessage,
-      [CSS.itemUpdating]: item.updating && !parent,
+      [CSS.itemUpdating]: item.updating && !parent && this.statusIndicatorsVisible,
       [CSS.itemInvisibleAtScale]: !item.visibleAtCurrentScale
     };
 
@@ -335,16 +413,26 @@ class LayerList extends declared(Widget) {
       [CSS.iconClose]: item.actionsOpen
     };
 
+    const actionsMenuTitle = item.actionsOpen ? i18nCommon.close : i18nCommon.open;
+
     const actionsMenuIcon = actionsCount > 1 ? (
-      <div key={`${item.uid}__actions-menu-toggle`} data-item={item} onclick={this._toggleActionsOpen} onkeydown={this._toggleActionsOpen}
-        class={CSS.actionsMenuItem} tabindex="0" role="button" aria-controls={actionsUid}
-        aria-expanded={item.actionsOpen ? "true" : "false"} title={item.actionsOpen ? i18nCommon.close : i18nCommon.open}>
+      <div key={`${uid}__actions-menu-toggle`}
+        data-item={item}
+        onclick={this._toggleActionsOpen}
+        onkeydown={this._toggleActionsOpen}
+        class={CSS.actionsMenuItem}
+        tabindex="0"
+        role="button"
+        aria-controls={actionsUid}
+        aria-label={actionsMenuTitle}
+        title={actionsMenuTitle}>
         <span aria-hidden="true" classes={actionsMenuIconClasses} />
       </div>
     ) : null;
 
     const actionsMenu = actionsCount ? (
-      <div key={`${item.uid}__actions-menu`} class={CSS.actionsMenu}>
+      <div key={`${uid}__actions-menu`}
+        class={CSS.actionsMenu}>
         {firstActionButton}
         {actionsMenuIcon}
       </div>
@@ -353,36 +441,63 @@ class LayerList extends declared(Widget) {
     const actions = actionsCount > 1 ? this._renderActionsSections(item, item.actionsSections, actionsUid) : null;
 
     const children: any = hasChildren ? (
-      <ul key={`${item.uid}__child-list`} class={CSS.list} classes={childClasses} id={uid} role={visibilityMode === exclusive ? "radiogroup" : "group"} hidden={item.open ? null : true}>
+      <ul key={listUid}
+        id={listUid}
+        class={CSS.list}
+        classes={childClasses}
+        aria-expanded={item.open ? "true" : "false"}
+        role={visibilityMode === exclusive ? "radiogroup" : "group"}
+        hidden={item.open ? null : true}>
         {
           childItems.map((childItem, childKey) => this._renderItem(childItem, item))
         }
       </ul>
     ) : null;
 
+    const childToggleClasses = {
+      [CSS.childToggleOpen]: item.open
+    };
+
+    const toggleChildrenTitle = item.open ? i18nCommon.collapse : i18nCommon.expand;
+
     const toggleChildren = hasChildren ? (
-      <span onclick={this._toggleChildrenClick} onkeydown={this._toggleChildrenClick}
-        data-item={item} key={`${uid}__toggle-children`} class={CSS.childToggle} tabindex="0"
-        role="button" aria-expanded={item.open ? "true" : "false"} aria-controls={uid}
-        title={item.open ? i18nCommon.collapse : i18nCommon.expand}>
+      <span
+        onclick={this._toggleChildrenClick}
+        onkeydown={this._toggleChildrenClick}
+        data-item={item}
+        key={`${uid}__toggle-children`}
+        class={CSS.childToggle}
+        classes={childToggleClasses}
+        tabindex="0"
+        role="button"
+        aria-controls={listUid}
+        aria-label={toggleChildrenTitle}
+        title={toggleChildrenTitle}>
         <span aria-hidden="true" class={join(CSS.childClosed, CSS.iconRightArrow)} />
         <span aria-hidden="true" class={join(CSS.childOpened, CSS.iconDownArrow)} />
         <span aria-hidden="true" class={join(CSS.childClosed_RTL, CSS.iconLeftArrow)} />
       </span>
     ) : null;
 
-    const itemLabel = this._createLabelNode(item, parent);
+    const itemLabel = this._createLabelNode(item, parent, uid, titleKey);
 
     const errorBlock = hasError ? (
-      <div key={`${item.uid}__error`} class={CSS.errorMessage} role="alert">
-        <span aria-hidden="true" class={CSS.iconNoticeTriangle} />
+      <div key={`${uid}__error`}
+        class={CSS.errorMessage}
+        role="alert">
+        <span aria-hidden="true"
+          class={CSS.iconNoticeTriangle} />
         <span>{errorMessage}</span>
       </div>
     ) : null;
 
     return (
-      <li key={`${item.uid}__list-item`} class={CSS.item} classes={itemClasses} role="treeitem">
-        <div key={`${item.uid}__list-item-container`} class={CSS.itemContainer}>
+      <li key={`${uid}__list-item`}
+        class={CSS.item}
+        classes={itemClasses}
+        aria-labelledby={titleKey}>
+        <div key={`${uid}__list-item-container`}
+          class={CSS.itemContainer}>
           {toggleChildren}
           {itemLabel}
           {actionsMenu}
@@ -394,8 +509,9 @@ class LayerList extends declared(Widget) {
     );
   }
 
-  private _createLabelNode(item: ListItem, parent: ListItem): any {
-    const {exclusive, inherited} = VISIBILITY_MODES;
+  private _createLabelNode(item: ListItem, parent: ListItem, uid: string, titleKey: string): any {
+    const labelKey = `${uid}__label`;
+    const { exclusive, inherited } = VISIBILITY_MODES;
     const parentVisibilityMode = parent && parent.visibilityMode;
 
     const toggleIconClasses = {
@@ -405,29 +521,41 @@ class LayerList extends declared(Widget) {
       [CSS.iconInvisible]: parentVisibilityMode !== exclusive && !item.visible
     };
 
-    const labelRole = parentVisibilityMode === exclusive ? "radio" : "checkbox";
-    const labelAriaChecked = item.visible ? "true" : "false";
-
-    const title = (<span class={CSS.title}>{item.title || i18n.untitledLayer}</span>);
+    const toggleRole = parentVisibilityMode === exclusive ? "radio" : "checkbox";
+    const inheritedTitle = !item.visibleAtCurrentScale ? i18n.layerInvisibleAtScale : "";
+    const title = item.title || i18n.untitledLayer;
+    const titleNode = (
+      <span id={titleKey}
+        class={CSS.title}><span
+          title={inheritedTitle}
+          aria-label={inheritedTitle}></span>{title}</span>
+    );
 
     return parentVisibilityMode === inherited ?
       (
-        <span key={`${item.uid}__label`} class={CSS.label} title={!item.visibleAtCurrentScale ? i18n.layerInvisibleAtScale : ""}>
-          {title}
-        </span>
+        <div key={labelKey}
+          class={CSS.label}>
+          {titleNode}
+        </div>
       ) :
       (
-        <span key={`${item.uid}__label`} onclick={this._labelClick} onkeydown={this._labelClick} data-item={item}
-          data-parent-visibility={parentVisibilityMode} class={CSS.label} tabindex="0"
-          aria-checked={labelAriaChecked} role={labelRole}
-          title={!item.visibleAtCurrentScale ? i18n.layerInvisibleAtScale : item.visible ? i18nCommon.visibility.hide : i18nCommon.visibility.show}>
+        <div key={labelKey}
+          onclick={this._labelClick}
+          onkeydown={this._labelClick}
+          data-item={item}
+          data-parent-visibility={parentVisibilityMode}
+          tabindex="0"
+          aria-checked={item.visible ? "true" : "false"}
+          role={toggleRole}
+          aria-labelledby={titleKey}
+          class={CSS.label}>
           <span class={CSS.toggleVisible}>
-            <span class={CSS.toggleVisibleIcon}>
-              <span aria-hidden="true" classes={toggleIconClasses} />
-            </span>
+            <span class={CSS.toggleVisibleIcon}
+              aria-hidden="true"
+              classes={toggleIconClasses} />
           </span>
-          {title}
-        </span>
+          {titleNode}
+        </div>
       );
   }
 
@@ -444,11 +572,22 @@ class LayerList extends declared(Widget) {
         [CSS.actionImage]: actionStyles["background-image"]
       };
 
+      const actionTitle = action.title;
+
       return (
-        <div key={`${action.uid}__action-menu-item`} bind={this} data-item={item} data-action={action} onclick={this._triggerAction}
-          onkeydown={this._triggerAction} class={CSS.actionsMenuItem} role="button"
-          tabindex="0" title={action.title}>
-          <span classes={iconClasses} styles={actionStyles} />
+        <div key={`${action.uid}__action-menu-item`}
+          bind={this}
+          data-item={item}
+          data-action={action}
+          onclick={this._triggerAction}
+          onkeydown={this._triggerAction}
+          class={CSS.actionsMenuItem}
+          role="button"
+          tabindex="0"
+          title={actionTitle}
+          aria-label={actionTitle}>
+          <span classes={iconClasses}
+            styles={actionStyles} />
         </div>
       );
     }
@@ -494,18 +633,26 @@ class LayerList extends declared(Widget) {
   }
 
   private _renderActionsSections(item: ListItem, actionsSections: Collection<Collection<Action>>, actionsUid: string): any {
+    const widgetId = this.id;
+    const uid = `${widgetId}_${item.uid}`;
     const actionSectionsArray = actionsSections.toArray();
 
     const actionSection = actionSectionsArray.map(actionSection => {
       return (
-        <ul key={`${item.uid}__actions-list`} class={CSS.actionsList}>
+        <ul key={`${uid}__actions-list`}
+          class={CSS.actionsList}>
           {this._renderActionSection(item, actionSection)}
         </ul>
       );
     });
 
     return (
-      <div key={`${item.uid}__actions-section`} id={actionsUid} class={CSS.actions} hidden={item.actionsOpen ? null : true}>
+      <div role="group"
+        aria-expanded={item.actionsOpen ? "true" : "false"}
+        key={`${uid}__actions-section`}
+        id={actionsUid}
+        class={CSS.actions}
+        hidden={item.actionsOpen ? null : true}>
         {actionSection}
       </div>
     );
@@ -525,9 +672,17 @@ class LayerList extends declared(Widget) {
     };
 
     return (
-      <li key={`${action.uid}__action`} bind={this} data-item={item} data-action={action} onclick={this._triggerAction}
-        onkeydown={this._triggerAction} class={CSS.action} tabindex="0"
-        role="button" title={action.title}>
+      <li key={`${action.uid}__action`}
+        bind={this}
+        data-item={item}
+        data-action={action}
+        onclick={this._triggerAction}
+        onkeydown={this._triggerAction}
+        class={CSS.action}
+        tabindex="0"
+        role="button"
+        title={action.title}
+        aria-label={action.title}>
         <span aria-hidden="true" class={CSS.actionIcon} classes={iconClasses} styles={actionStyles} />
         <span class={CSS.actionTitle}>{action.title}</span>
       </li>

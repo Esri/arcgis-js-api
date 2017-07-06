@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define({title:"Virsraksts",fileName:"Faila nosaukums",titlePlaceHolder:"Faila virsraksts",fileNamePlaceHolder:"Faila nosaukums",formatDefaultOption:"Atlasīt formātu",fileFormatTitle:"Faila formāts:",layoutTitle:"Lapas iestatījumi",layoutDefaultOption:"Atlasīt lapas iestatījumus",scale:"Iestatīt mērogu",scaleLabel:"mērogs",reset:"atiestatīt",author:"Autors",copyright:"Autortiesības",legend:"Iekļaut apzīmējumus",lock:"Slēdzene",swap:"pārnese",panelToggle:"Paneļa pārslēgšana",advancedOptions:"Papildu opcijas",width:"Platums",height:"Augstums",attribution:"Iekļaut attiecinājumu",layoutTab:"Izkārtojums",mapOnlyTab:"Tikai karte",untitled:"bez nosaukuma",pending:"Eksportēšana",ready:"Atvērt šo",error:"Izvēlieties šo vienību, lai to noņemtu.",sceneViewError:"Skatā SceneView drukāšana netiek atbalstīta.",serviceError:"Diemžēl ir radusies kļūda.","export":"Eksportēt",exportDescription:"Eksportēšana. Eksportētie faili tiks rādīti zemāk.",exportText:"Eksportētie faili",exportHint:"Eksportētie faili tiks rādīti šeit."});

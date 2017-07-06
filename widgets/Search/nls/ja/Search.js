@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define({searchButtonTitle:"検索",clearButtonTitle:"検索の消去",placeholder:"住所または場所の検索",searchIn:"検索",all:"すべて",allPlaceholder:"住所または場所の検索",emptyValue:"検索する語句を入力してください。",untitledResult:"無題",untitledSource:"無題のソース",noResults:"結果なし",noResultsFound:"{value} の結果が見つかりませんでした。",showMoreResults:"その他の結果を表示",hideMoreResults:"非表示",searchResult:"検索結果",moreResultsHeader:"その他の結果",esriLocatorName:"Esri World Geocoder"});

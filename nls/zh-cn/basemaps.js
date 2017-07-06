@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define({streets:"街道图",satellite:"影像图",hybrid:"带标注的影像",terrain:"带标注的 Terrain",topo:"地形图",gray:"浅灰色画布图","dark-gray":"深灰色画布图",oceans:"海洋图","national-geographic":"国家地理",osm:"OpenStreetMap","streets-night-vector":"世界街道图(夜间)","streets-relief-vector":"世界街道图(含地貌)","streets-navigation-vector":"世界导航图"});

@@ -3,6 +3,8 @@
 <snippets>
 
 <snippet name="vertexShaderWater"><![CDATA[
+  $vsprecisionf
+
 	uniform mat4 proj;
 	uniform mat4 view;
 	uniform mat4 model;
@@ -16,7 +18,7 @@
 ]]></snippet>
 
 <snippet name="fragmentShaderWater"><![CDATA[
-	precision mediump float;
+	$fsprecisionf
 
 	uniform vec3 color;
 	uniform float scale;

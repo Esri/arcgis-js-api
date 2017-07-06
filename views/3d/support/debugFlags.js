@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/extendsHelper","../../../core/tsSupport/decorateHelper","../../../core/accessorSupport/typescript","../../../core/Accessor"],function(e,r,t,o,p,s){var c=function(e){function r(){return null!==e&&e.apply(this,arguments)||this}return t(r,e),r}(s);o([p.property({value:!1})],c.prototype,"SCENEVIEW_HITTEST_RETURN_SELECTOR",void 0),c=o([p.subclass()],c);var n=new c;return n});
+define(["require","exports","../../../core/tsSupport/extendsHelper","../../../core/tsSupport/decorateHelper","../../../core/accessorSupport/decorators","../../../core/Accessor"],function(r,o,e,I,p,t){var O=function(r){function o(){var o=null!==r&&r.apply(this,arguments)||this;return o.SCENEVIEW_HITTEST_RETURN_SELECTOR=!1,o.HIGHLIGHTS_GRID_OPTIMIZATION_DISABLED=!1,o.HIGHLIGHTS_VISUALIZE_BLOCKS=!1,o.HIGHLIGHTS_PROFILE_TO_CONSOLE=!1,o.DECONFLICTOR_SHOW_OUTLINES=!1,o.DECONFLICTOR_SHOW_GRID=!1,o.LABELS_SHOW_BORDER=!1,o}return e(o,r),o}(p.declared(t));I([p.property()],O.prototype,"SCENEVIEW_HITTEST_RETURN_SELECTOR",void 0),I([p.property()],O.prototype,"HIGHLIGHTS_GRID_OPTIMIZATION_DISABLED",void 0),I([p.property()],O.prototype,"HIGHLIGHTS_VISUALIZE_BLOCKS",void 0),I([p.property()],O.prototype,"HIGHLIGHTS_PROFILE_TO_CONSOLE",void 0),I([p.property()],O.prototype,"DECONFLICTOR_SHOW_OUTLINES",void 0),I([p.property()],O.prototype,"DECONFLICTOR_SHOW_GRID",void 0),I([p.property()],O.prototype,"LABELS_SHOW_BORDER",void 0),O=I([p.subclass()],O);var _=new O;return _});

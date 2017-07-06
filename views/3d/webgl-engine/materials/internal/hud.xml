@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<snippets>
+
+<snippet name="commonAttributesAndUniformsHUD"><![CDATA[
+  attribute vec3 $position;
+  attribute vec3 $normal;
+  attribute vec4 $auxpos1;
+
+  uniform mat4 proj;
+
+  uniform mat4 view;
+  uniform mat4 viewNormal;
+
+  uniform mat4 model;
+  uniform mat4 modelNormal;
+
+  uniform vec4 viewport;
+
+  uniform vec3 camPos;
+
+  uniform float polygonOffset;
+  uniform float cameraGroundRelative;
+
+#ifdef VERTICAL_OFFSET
+
+  // [ screenLength, distanceFactor, minWorldLength, maxWorldLength ]
+  uniform vec4 verticalOffset;
+
+#endif
+
+#ifdef SCREEN_SIZE_PERSPECTIVE
+
+  // [ divisor, offset, minPixelSize, paddingPixels ]
+  uniform vec4 screenSizePerspectiveAlignment;
+
+#endif
+
+  uniform sampler2D hudVisibilityTexture;
+]]></snippet>
+
+<snippet name="projectPositionHUD"><![CDATA[
+  $screenSizePerspective
+
+  // Corresponds to cos(10 deg), used to compare against dot product of two vectors
+  const float SMALL_OFFSET_ANGLE = 0.984807753012208;
+
+  struct ProjectHUDAux {
+    vec3 posModel;
+    vec3 posView;
+    vec3 vnormal;
+
+    float distanceToCamera;
+    float absCosAngle;
+  };
+
+
+  /**
+   * Apply the simulated polygon offset for HUD objects that improves
+   * issues with Z-fighting.
+   *
+   * @param posView {vec3} (inout) the position in view space. Will be modified in place.
+   * @param pointGroundDistance {float} the distance from the point geometry to the ground surface.
+   * @param absCosAngle {float} the absolute cosine of the angle between the world-up at the point geometry
+   *   and the view direction.
+   *
+   * Dependencies:
+   *
+   *   Attributes:
+   *     - auxpos1: contains centerOffset and pointGroundDistance
+   *
+   *   Uniforms:
+   *     - cameraGroundRelative: indicates whether camera is above (1) or below (-1) ground.
+   *         This is used for emulated polygon offset for improved visibility of points sitting on the surface.
+   *     - polygonOffset: a constant polygon offset to bring the point closer to the viewer for
+   *         reduced flickering.
+   *     - viewport: the viewport [x, y, width, height]
+   */
+  float applyHUDViewDependentPolygonOffset(float pointGroundDistance, float absCosAngle, inout vec3 posView) {
+    float pointGroundSign = sign(pointGroundDistance);
+
+    if (pointGroundSign == 0.0) {
+      pointGroundSign = 1.0;
+    }
+
+    // cameraGroundRelative is -1 if camera is below ground, 1 if above ground
+    // groundRelative is 1 if both camera and symbol are on the same side of the ground, -1 otherwise
+    float groundRelative = cameraGroundRelative * pointGroundSign;
+
+    // view angle dependent part of polygon offset emulation
+    // we take the absolute value because the sign that is dropped is
+    // instead introduced using the ground-relative position of the symbol and the camera
+    if (polygonOffset > .0) {
+      float cosAlpha = clamp(absCosAngle, 0.01, 1.0);
+
+      float tanAlpha = sqrt(1.0 - cosAlpha * cosAlpha) / cosAlpha;
+      float factor = (1.0 - tanAlpha / viewport[2]);
+
+      // same side of the terrain
+      if (groundRelative > 0.0) {
+        posView *= factor;
+      }
+      // opposite sides of the terrain
+      else {
+        posView /= factor;
+      }
+    }
+
+    return groundRelative;
+  }
+
+  /**
+   * Project the 3d position of a HUD object from world space to clip space. In addition
+   * to standard model view projection, it also emulates a polygon offset to
+   * help with points above/below ground and icon flickering. The resulting location
+   * is the anchor of the HUD object, i.e. the position that is used also for testing
+   * visibility of the HUD object. Note that the returned projected position is not
+   * aligned to a pixel center or border, it is up to the caller to align if necessary.
+   *
+   * Dependencies:
+   *
+   *   Attributes:
+   *     - position: contains the point world position
+   *     - normal: contains the world normal pointing up at the point
+   *     - auxpos1: contains centerOffset and pointGroundDistance
+   *
+   *   Uniforms:
+   *     - model: the object -> world transformation matrix
+   *     - modelNormal: the object -> world normal transformation matrix (inv transp of model)
+   *     - view: the world -> view transformation matrix
+   *     - viewNormal: the world -> view normal transformation matrix (inv transp of view)
+   *     - proj: the view -> clip projection matrix
+   *     - verticalOffset: a vec4 containing:
+   *         - the screen height of the vertical offset
+   *         - the screen height of the vertical offset as a fraction of camera distance.
+   *         - the minimum world size vertical offset.
+   *         - the maximum world size vertical offset.
+   *       This will do a screen sized offset of the point along its normal (used for line callouts)
+   *     - screenSizePerspectiveAlignment: a vec3 containing
+   *         - the view distance dependent divisor
+   *         - the view distance dependent offset
+   *         - the minimum pixel size
+   *         - the amount of padding in pixels around the region to be scaled (not used for alignment)
+   *     - cameraGroundRelative: indicates whether camera is above (1) or below (-1) ground.
+   *         This is used for emulated polygon offset for improved visibility of points sitting on the surface.
+   *     - polygonOffset: a constant polygon offset to bring the point closer to the viewer for
+   *         reduced flickering.
+   *     - camPos: the position of the camera in world space
+   *     - viewport: the viewport [x, y, width, height]
+   */
+  vec4 projectPositionHUD(out ProjectHUDAux aux) {
+    // centerOffset is in view space and is used to implement world size offsetting
+    // of labels with respect to objects. It also pulls the label towards the viewer
+    // so that the label is visible in front of the object.
+    vec3 centerOffset = $auxpos1.xyz;
+
+    // The pointGroundDistance is the distance of the geometry to the ground and is
+    // negative if the point is below the ground, or positive if the point is above
+    // ground.
+    float pointGroundDistance = $auxpos1.w;
+
+    aux.posModel = (model * vec4($position, 1.0)).xyz;
+    aux.posView = (view * vec4(aux.posModel, 1.0)).xyz;
+    aux.vnormal = (modelNormal * vec4($normal, 1.0)).xyz;
+
+    // Screen sized offset in world space, used for example for line callouts
+    // Note: keep this implementation in sync with the CPU implementation, see
+    //   - MaterialUtil.verticalOffsetAtDistance
+    //   - HUDMaterial.applyVerticalOffsetTransformation
+
+    aux.distanceToCamera = length(aux.posView);
+
+    vec3 viewDirObjSpace = normalize(camPos - aux.posModel);
+    float cosAngle = dot(aux.vnormal, viewDirObjSpace);
+
+    aux.absCosAngle = abs(cosAngle);
+
+#ifdef SCREEN_SIZE_PERSPECTIVE
+
+#if defined(VERTICAL_OFFSET) || defined(CENTER_OFFSET_UNITS_SCREEN)
+    vec4 perspectiveFactor = screenSizePerspectiveScaleFactor(aux.absCosAngle, aux.distanceToCamera, screenSizePerspectiveAlignment);
+#endif
+
+#endif
+
+#ifdef VERTICAL_OFFSET
+
+#ifdef SCREEN_SIZE_PERSPECTIVE
+    float verticalOffsetScreenHeight = applyScreenSizePerspectiveScaleFactorFloat(verticalOffset.x, perspectiveFactor);
+#else
+    float verticalOffsetScreenHeight = verticalOffset.x;
+#endif
+
+    float worldOffset = clamp(verticalOffsetScreenHeight * verticalOffset.y * aux.distanceToCamera, verticalOffset.z, verticalOffset.w);
+    vec3 modelOffset = aux.vnormal * worldOffset;
+
+    aux.posModel += modelOffset;
+
+    vec3 viewOffset = (viewNormal * vec4(modelOffset, 1.0)).xyz;
+    aux.posView += viewOffset;
+
+    // Since we elevate the object, we need to take that into account
+    // in the distance to ground
+    pointGroundDistance += worldOffset;
+
+#endif
+
+    float groundRelative = applyHUDViewDependentPolygonOffset(pointGroundDistance, aux.absCosAngle, aux.posView);
+
+#ifndef CENTER_OFFSET_UNITS_SCREEN
+    // Apply x/y in view space, but z in screen space (i.e. along posView direction)
+    aux.posView += vec3(centerOffset.x, centerOffset.y, 0);
+
+    // Same material all have same z != 0.0 condition so should not lead to
+    // branch fragmentation and will save a normalization if it's not needed
+    if (centerOffset.z != 0.0) {
+      aux.posView -= normalize(aux.posView) * centerOffset.z;
+    }
+#endif
+
+    vec4 posProj = proj * vec4(aux.posView, 1.0);
+
+#ifdef CENTER_OFFSET_UNITS_SCREEN
+
+#ifdef SCREEN_SIZE_PERSPECTIVE
+    float centerOffsetY = applyScreenSizePerspectiveScaleFactorFloat(centerOffset.y, perspectiveFactor);
+#else
+    float centerOffsetY = centerOffset.y;
+#endif
+
+    posProj.xy += vec2(centerOffset.x, centerOffsetY) * 2.0 / viewport.zw * posProj.w;
+
+#endif
+
+    // constant part of polygon offset emulation
+    posProj.z -= groundRelative * polygonOffset * posProj.w;
+
+    return posProj;
+  }
+
+  /**
+   * Test for visibility of a HUD object.
+   *
+   * Dependencies:
+   *
+   *   Uniforms:
+   *     - hudVisibilityTexture: the texture that contains the visibility information
+   *     - markerColor: the special marker color that is used to write visibility information
+   *     - viewport: the viewport
+   */
+  bool testVisibilityHUD(vec4 posProj) {
+    // For occlusion testing, use the nearest pixel center to avoid
+    // subpixel filtering messing up the color we use to test for
+    vec4 posProjCenter = alignToPixelCenter(posProj, viewport.zw);
+
+    return texture2D(hudVisibilityTexture, .5 + .5 * posProjCenter.xy / posProjCenter.w).r > 0.0;
+  }
+]]></snippet>
+
+</snippets>

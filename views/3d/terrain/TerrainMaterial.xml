@@ -3,7 +3,7 @@
 <snippets>
 
 <snippet name="vsTerrain"><![CDATA[
-  precision mediump float;
+  $vsprecisionf
 
   uniform mat4 proj;
   uniform mat4 view;
@@ -36,6 +36,15 @@
   varying vec2 vtcOverlay;
 #endif
 
+#ifdef SCREEN_SIZE_PERSPECTIVE /* debug only */
+
+  uniform vec4 screenSizePerspective;
+
+  varying float screenSizeDistanceToCamera;
+  varying float screenSizeCosAngle;
+
+#endif
+
   void main(void) {
     vpos = $position;
 
@@ -55,7 +64,19 @@
     vuv = $uv0;
 #endif
 
+#ifdef SCREEN_SIZE_PERSPECTIVE /* debug only */
+
+    vec3 viewPos = (view * vec4(vpos, 1.0)).xyz;
+
+    screenSizeDistanceToCamera = length(viewPos);
+
+    vec3 viewSpaceNormal = (viewNormal * vec4(normalize(vpos + origin), 1.0)).xyz;
+    screenSizeCosAngle = abs(viewSpaceNormal.z);
+
+#endif
+
     gl_Position = proj * view * vec4(vpos, 1.0);
+
     vtc = $uv0*texScale + texOffset;
 
 #ifdef OVERLAY
@@ -90,6 +111,17 @@
   varying vec3 wview;
   varying vec3 wnormal;
   varying vec3 wlight;
+#endif
+
+  $sceneLightingDefinitions
+
+#ifdef SCREEN_SIZE_PERSPECTIVE /* debug only */
+  $screenSizePerspective
+
+  uniform vec4 screenSizePerspective;
+
+  varying float screenSizeDistanceToCamera;
+  varying float screenSizeCosAngle;
 #endif
 
   const vec3 ambient = vec3(0.2,0.2,0.2);
@@ -171,8 +203,34 @@
     atm *= max(0.0, min(1.0, ndotl*2.0)); // avoid atmosphere on dark side of the globe
 #endif
 
-    vec3 color = atm + texCol.rgb * (a + d) * ssao;
-    gl_FragColor = vec4(color, texCol.a) * opacity;
+    vec3 albedo = atm + texCol.rgb;
+    vec3 normal = normalize(vnormal);
+
+    // heuristic shading function used in the old terrain, now used to add ambient lighting
+    float additionalAmbientScale = smoothstep(0.0, 1.0, clamp(vndl*2.5, 0.0, 1.0));
+		vec3 additionalLight = ssao * lightingMainIntensity * additionalAmbientScale * ambientBoostFactor * lightingGlobalFactor;
+
+    gl_FragColor = vec4(evaluateSceneLighting(normal, albedo, shadow, 1.0 - ssao, additionalLight), texCol.a) * opacity;
+
+#ifdef SCREEN_SIZE_PERSPECTIVE /* debug only */
+    // This is only used for debug rendering the screenSize perspective
+
+    float perspectiveScale = screenSizePerspectiveScaleFloat(1.0, screenSizeCosAngle, screenSizeDistanceToCamera, screenSizePerspective);
+
+    if (perspectiveScale <= 0.25) {
+      gl_FragColor = mix(gl_FragColor, vec4(1, 0, 0, 1), perspectiveScale * 4.0);
+    }
+    else if (perspectiveScale <= 0.5) {
+      gl_FragColor = mix(gl_FragColor, vec4(0, 0, 1, 1), (perspectiveScale - 0.25) * 4.0);
+    }
+    else if (perspectiveScale >= 0.99) {
+      gl_FragColor = mix(gl_FragColor, vec4(0, 1, 0, 1), 0.2);
+    }
+    else {
+      gl_FragColor = mix(gl_FragColor, vec4(1, 0, 1, 1), (perspectiveScale - 0.5) * 2.0);
+    }
+
+#endif
 
   // closing } is missing here, it's in the shaders using this snippet below
 
@@ -183,7 +241,7 @@
 #extension GL_OES_standard_derivatives : enable
 #endif
 
-  precision mediump float;
+  $fsprecisionf
 
   struct WireframeSettings {
     float width;
@@ -192,8 +250,6 @@
     vec4 color;
     float wireOpacity;
     float surfaceOpacity;
-    float near;
-    float far;
   };
 
   uniform WireframeSettings wireframe;
@@ -234,13 +290,14 @@
 ]]></snippet>
 
 <snippet name="fsTerrain"><![CDATA[
-  precision mediump float;
-
+    $fsprecisionf
     $fsTerrainCommon
   }
 ]]></snippet>
 
 <snippet name="vsTerrainNormal"><![CDATA[
+  $vsprecisionf
+
   uniform vec3 origin;
   uniform mat4 proj;
   uniform mat4 view;
@@ -261,7 +318,7 @@
 ]]></snippet>
 
 <snippet name="vsTerrainDepthOnly"><![CDATA[
-  precision mediump float;
+  $vsprecisionf
 
   uniform mat4 proj;
   uniform mat4 view;
@@ -274,9 +331,57 @@
 ]]></snippet>
 
 <snippet name="fsTerrainDepthOnly"><![CDATA[
-  precision mediump float;
+  $fsprecisionf
 
   void main() {
+  }
+]]></snippet>
+
+<snippet name="vsTerrainHighlight"><![CDATA[
+  $vsprecisionf
+
+  uniform mat4 proj;
+  uniform mat4 view;
+  uniform vec2 overlayTexScale;
+  uniform vec2 overlayTexOffset;
+
+  attribute vec3 $position;
+  attribute vec2 $uv0;
+
+  varying vec2 vtcOverlay;
+
+  void main() {
+    vtcOverlay = $uv0*overlayTexScale + overlayTexOffset;
+
+    gl_Position = proj * view * vec4($position, 1.0);
+  }
+]]></snippet>
+
+<snippet name="fsTerrainHighlight"><![CDATA[
+  $fsprecisionf
+
+  uniform sampler2D overlayTex;
+
+  uniform sampler2D depthTex;
+  uniform vec4 highlightViewportPixelSz;
+
+  varying vec2 vtcOverlay;
+
+  void main() {
+    vec4 texCol = vec4(0,0,0,0);
+    if ((vtcOverlay.x > 0.0) && (vtcOverlay.y > 0.0) && (vtcOverlay.x < 1.0) && (vtcOverlay.y < 1.0)) {
+      texCol = texture2D(overlayTex, vtcOverlay);
+    }
+
+    if (texCol.a == 0.0) {
+      // Here we have to write black, instead of discarding the fragment in order to overwrite
+      // the highlights which might have been written by skirts of other tiles.
+      // As a consequence skirts are not visible, but terrain overwrites draped highlights.
+      gl_FragColor = vec4(0,0,0,0);
+      return;
+    }
+
+    $highlightWrite
   }
 ]]></snippet>
 

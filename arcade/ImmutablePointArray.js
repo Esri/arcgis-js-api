@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define(["require","exports","../core/tsSupport/extendsHelper","./ImmutableArray","../geometry/Point","../kernel"],function(t,e,i,r,n,s){var a=0===s.version.indexOf("4."),h=function(t){function e(e,i,r,n,s,a){var h=t.call(this,e)||this;return h._lazyPt=[],h._hasZ=!1,h._hasM=!1,h._spRef=i,h._hasZ=r,h._hasM=n,h._cacheId=s,h._partId=a,h}return i(e,t),e.prototype.get=function(t){if(void 0===this._lazyPt[t]){var e=this._elements[t];if(void 0===e)return;var i=this._hasZ,r=this._hasM,s=null;s=i&&!r?new n(e[0],e[1],e[2],void 0,this._spRef):r&&i?new n(e[0],e[1],void 0,e[2],this._spRef):i&&r?new n(e[0],e[1],e[2],e[3],this._spRef):new n(e[0],e[1],this._spRef),a?s.cache._arcadeCacheId=this._cacheId.toString()+"-"+this._partId.toString()+"-"+t.toString():s.setCacheValue("_arcadeCacheId",this._cacheId.toString()+"-"+this._partId.toString()+"-"+t.toString()),this._lazyPt[t]=s}return this._lazyPt[t]},e.prototype.equalityTest=function(t){return t===this?!0:null===t?!1:t instanceof e==!1?!1:t.getUniqueHash()===this.getUniqueHash()},e.prototype.getUniqueHash=function(){return this._cacheId.toString()+"-"+this._partId.toString()},e}(r);return h});

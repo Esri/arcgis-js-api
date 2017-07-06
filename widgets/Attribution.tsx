@@ -28,7 +28,6 @@
  * @see module:esri/views/ui/DefaultUI
  */
 
-/// <amd-dependency path="../core/tsSupport/assignHelper" name="__assign" />
 /// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
 /// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
 
@@ -40,7 +39,7 @@ import {
 } from "../core/accessorSupport/decorators";
 
 import {
-  jsxFactory,
+  tsx,
   renderable,
   accessibleHandler
 } from "./support/widget";
@@ -174,30 +173,21 @@ class Attribution extends declared(Widget) {
     const interactive = this._isInteractive();
     const sourceTabIndex = interactive ? 0 : -1;
     const attributionText = this.get<string>("viewModel.attributionText");
+    const role = interactive ? "button" : undefined;
 
     const sourceClasses = {
       [CSS.sourcesOpen]: isOpen,
       [CSS.interactive]: interactive
     };
 
-    const attributes: any = {
-      afterCreate: this._afterSourcesNodeCreate,
-      afterUpdate: this._afterSourcesNodeUpdate,
-      bind: this,
-      class: CSS.sources,
-      classes: sourceClasses,
-      key: interactive ? "interactive" : "non-interactive",
-      tabIndex: sourceTabIndex
-
-      // `role` missing to prevent it from being rendered to the DOM
-      // using falsy values yield `role=""`, which is not a valid role
-    };
-
-    if (interactive) {
-      attributes.role = "button";
-    }
-
-    return <div {...attributes}>{attributionText}</div>;
+    return <div afterCreate={this._afterSourcesNodeCreate}
+                afterUpdate={this._afterSourcesNodeUpdate}
+                bind={this}
+                class={CSS.sources}
+                classes={sourceClasses}
+                innerHTML={attributionText}
+                role={role}
+                tabIndex={sourceTabIndex} />;
   }
 
   private _afterSourcesNodeCreate(element: Element): void {
@@ -209,7 +199,7 @@ class Attribution extends declared(Widget) {
 
     const { clientHeight, clientWidth, scrollWidth } = element;
 
-    const attributionTextOverflowed = scrollWidth > clientWidth;
+    const attributionTextOverflowed = scrollWidth >= clientWidth;
     const attributionTextOverflowChanged = this._attributionTextOverflowed !== attributionTextOverflowed;
     this._attributionTextOverflowed = attributionTextOverflowed;
 
@@ -228,7 +218,7 @@ class Attribution extends declared(Widget) {
     }
 
     if (shouldRender) {
-      this.renderNow();
+      this.scheduleRender();
     }
   }
 

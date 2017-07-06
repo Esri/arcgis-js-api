@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define({noItemsToDisplay:"În prezent, nu există elemente disponibile pentru afişare.",layerInvisibleAtScale:"Stratul tematic nu este vizibil la scara curentă",layerError:"A survenit o eroare la încărcarea acestui strat tematic",untitledLayer:"Strat tematic fără titlu"});

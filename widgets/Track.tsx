@@ -44,7 +44,7 @@
 /// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
 
 import {aliasOf, subclass, property, declared} from "../core/accessorSupport/decorators";
-import {accessibleHandler, join, jsxFactory, renderable, vmEvent} from "./support/widget";
+import {accessibleHandler, join, tsx, renderable, vmEvent} from "./support/widget";
 
 import Widget = require("./Widget");
 import TrackViewModel = require("./Track/TrackViewModel");
@@ -59,11 +59,12 @@ const CSS = {
   icon: "esri-icon",
   loading: "esri-icon-loading-indicator",
   rotating: "esri-rotating",
-  startTrackingIcon: "esri-icon-locate",
+  startTrackingIcon: "esri-icon-tracking",
   stopTrackingIcon: "esri-icon-pause",
 
   // common
-  disabled: "esri-disabled"
+  disabled: "esri-disabled",
+  hidden: "esri-hidden"
 };
 
 @subclass("esri.widgets.Track")
@@ -258,12 +259,13 @@ class Track extends declared(Widget) {
     const state = this.get("viewModel.state");
 
     const rootClasses = {
-      [CSS.disabled]: state === "disabled"
+      [CSS.disabled]: state === "disabled",
+      [CSS.hidden]: state === "feature-unsupported"
     };
 
     const isTracking = state === "tracking";
     const iconClasses = {
-      [CSS.startTrackingIcon]: !isTracking,
+      [CSS.startTrackingIcon]: !isTracking && state !== "waiting",
       [CSS.stopTrackingIcon]: isTracking,
       [CSS.rotating]: state === "waiting",
       [CSS.loading]: state === "waiting"

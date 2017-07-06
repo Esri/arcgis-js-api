@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define({searchButtonTitle:"Tìm kiếm",clearButtonTitle:"Xóa tìm kiếm",placeholder:"Tìm địa chỉ hoặc địa điểm",searchIn:"Tìm kiếm trong",all:"Tất cả",allPlaceholder:"Tìm địa chỉ hoặc địa điểm",emptyValue:"Vui lòng nhập cụm từ tìm kiếm.",untitledResult:"Chưa có tiêu đề",untitledSource:"Nguồn chưa có tên",noResults:"Không có kết quả",noResultsFound:"Không tìm thấy kết quả nào cho {value}.",showMoreResults:"Hiển thị thêm kết quả",hideMoreResults:"Ẩn",searchResult:"Kết quả tìm kiếm",moreResultsHeader:"Các kết quả khác",esriLocatorName:"Bộ mã hóa Địa lý Thế giới của Esri"});

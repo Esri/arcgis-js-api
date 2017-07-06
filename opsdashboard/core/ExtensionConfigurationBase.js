@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/extendsHelper","../../core/tsSupport/decorateHelper","../../core/typescript","./errorMessages","./ExtensionBase","./messageHandler"],function(e,t,o,r,s,n,i,a){var c=function(e){function t(t){var o=e.call(this)||this;return o.config=null,o}return o(t,e),t.prototype._setConfig=function(e){this.config=e||{}},t.prototype.__messageReceived=function(e){return"updateconfig"===e.functionName.toLowerCase()?(e.args={configuration:this.config},a._sendMessage(e)):void this.inherited(arguments)},t.prototype.readyToPersistConfig=function(e){if(!this._isHostInitialized())throw new Error(n.hostNotReady);a._sendMessage({functionName:"readyToPersistConfig",args:{canAccept:e}})},t}(i);return r([s.shared("esri.opsdashboard.ExtensionConfigurationBase")],c.prototype,"declaredClass",void 0),c=r([s.subclass()],c)});

@@ -3,25 +3,24 @@ $search_width: 240px !default;
 @mixin search() {
   .esri-search {
     width: $search_width;
-    @include flexDisplay();
-    @include flexFlow(row, nowrap);
-    @include justifyContent(center);
-    @include alignItems(center);
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
     overflow: visible;
     .esri-widget-button {
-      -webkit-box-shadow: none;
       box-shadow: none;
     }
     .esri-search__container,
     .esri-search__input-container,
     .esri-search__form {
-      @include flexDisplay();
-      @include flexFlow(row, nowrap);
+      display: flex;
+      flex-flow: row nowrap;
     }
     .esri-search__container {
       position: relative;
-      @include alignItems(stretch);
-      @include flex(1, 0, 100%);
+      align-items: stretch;
+      flex: 1 0 100%;
       .esri-search__input,
       .esri-widget-button {
         z-index: 0;
@@ -52,14 +51,14 @@ $search_width: 240px !default;
       animation: looping-progresss-bar-ani $looping_progress_bar_params;
     }
     .esri-search__input-container {
-      @include alignItems(stretch);
-      @include flex(2, 0);
+      align-items: stretch;
+      flex: 2 0;
     }
     .esri-search__form {
       padding: 0;
       margin: 0;
-      @include alignItems(stretch);
-      @include flex(1, 0);
+      align-items: stretch;
+      flex: 1 0;
     }
     .esri-search__input {
       font-family: inherit;
@@ -88,7 +87,7 @@ $search_width: 240px !default;
     .esri-search__submit-button,
     .esri-search__sources-button {
       cursor: pointer;
-      @include alignSelf(flex-end);
+      align-self: flex-end;
     }
     .esri-search__submit-button {
       border-left: solid 1px $border_color;
@@ -100,8 +99,8 @@ $search_width: 240px !default;
       display: none;
     }
     .esri-search__clear-button {
-      @include alignSelf(flex-end);
-      @include flexDisplay();
+      align-self: flex-end;
+      display: flex;
     }
     .esri-search__source-name {
       clip: rect(0 0 0 0);
@@ -119,9 +118,6 @@ $search_width: 240px !default;
       overflow: auto;
       visibility: visible;
       max-height: 300px;
-      -webkit-animation: esri-fade-in 250ms ease-out;
-      -moz-animation: esri-fade-in 250ms ease-out;
-      -o-animation: esri-fade-in 250ms ease-out;
       animation: esri-fade-in 250ms ease-out;
     }
     .esri-search__source--active {
@@ -129,13 +125,13 @@ $search_width: 240px !default;
       color: $active_text_color;
     }
     .esri-search--warning .esri-search__warning-menu {
-      @include transition(opacity, 125ms, ease-in-out);
+      transition: opacity 125ms ease-in-out;
       visibility: visible;
       opacity: 1;
       max-height: inherit;
     }
     .esri-search__sources-button {
-      @include flexDisplay();
+      display: flex;
     }
     .esri-search--multiple-sources .esri-search__input {
       border-left: 0;
@@ -163,7 +159,7 @@ $search_width: 240px !default;
   .esri-ui-bottom-left,
   .esri-ui-bottom-right {
     .esri-search__sources-button--up {
-      @include flexDisplay();
+      display: flex;
     }
     .esri-search__sources-button--down {
       display: none;

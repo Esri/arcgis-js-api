@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define({searchButtonTitle:"Pretraži",clearButtonTitle:"Očisti pretragu",placeholder:"Pronađi adresu ili mjesto",searchIn:"Traži u",all:"Sve",allPlaceholder:"Pronađi adresu ili mjesto",emptyValue:"Unesite termin za pretraživanje.",untitledResult:"Neimenovano",untitledSource:"Neimenovani izvor",noResults:"Nema rezultata",noResultsFound:"Nema pronađenih rezultata za {value}.",showMoreResults:"Prikaži još rezultata",hideMoreResults:"Sakrij",searchResult:"Rezultat pretraživanja",moreResultsHeader:"Više rezultata",esriLocatorName:"Svjetski geokoder Esrija"});

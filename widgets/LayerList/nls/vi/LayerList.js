@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define({noItemsToDisplay:"Hiện không có mục nào để hiển thị.",layerInvisibleAtScale:"Lớp không hiển thị ở tỷ lệ hiện tại",layerError:"Đã xảy ra lỗi khi tải lớp này",untitledLayer:"Lớp chưa có tiêu đề"});

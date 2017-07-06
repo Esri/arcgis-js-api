@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 /**
  * The popup widget allows users to view content from feature attributes. Popups enhance web applications
@@ -41,7 +41,7 @@
  *
  * Popups can also contain [actions](#actions) that act like buttons,
  * which execute a function defined by the developer when clicked.
- * By default, every popup has a "Zoom in" action ![popupTemplate-zoom-action](../assets/img/apiref/widgets/popupTemplate-zoom-action.png)
+ * By default, every popup has a "Zoom in" action ![popupTemplate-zoom-action](../assets/img/apiref/widgets/popuptemplate-zoom-action.png)
  * that allows users to zoom to the selected feature. See the [actions](#actions)
  * property for information about adding custom actions to a popup.
  *
@@ -65,7 +65,7 @@
  * @see module:esri/PopupTemplate
  * @see {@link module:esri/views/View#popup View.popup}
  * @see [Get started with popups](../sample-code/get-started-popup/index.html)
- * @see [Get started with PopupTemplate](../sample-code/get-started-popupTemplate/index.html)
+ * @see [Get started with PopupTemplate](../sample-code/get-started-popuptemplate/index.html)
  * @see [Sample - Dock positions with popup](../sample-code/popup-docking-position/index.html)
  * @see [Sample - Popup actions](../sample-code/popup-actions/index.html)
  * @see [Sample - Custom popup actions per feature](../sample-code/popup-custom-action/index.html)
@@ -150,9 +150,8 @@ define([
   "./Popup/PopupRendererViewModel",
 
   "./Spinner",
-  "./Message",
   "require"
-], function (
+], function(
   viewModelWiring,
   Widget,
   PopupViewModel,
@@ -169,7 +168,7 @@ define([
   lang,
   domClass, domAttr, domConstruct, domGeometry, domStyle,
   PopupRenderer, PopupRendererViewModel,
-  Spinner, Message,
+  Spinner,
   require
 ) {
 
@@ -354,33 +353,57 @@ define([
     //
     //--------------------------------------------------------------------------
 
-    constructor: function () {
+    constructor: function() {
       this._handleRegistry = new HandleRegistry();
       // temporary storage node for IE. Do not remove.
       this._contentStorage = domConstruct.create("div");
+
+      this._repositionTimeoutHandle = 0;
     },
 
     // bind listener for button to action
-    postCreate: function () {
+    postCreate: function() {
       var _self = this;
       this.inherited(arguments);
       var viewModel = this.viewModel;
       // Popup event listeners
       this.own(
-
-        watchUtils.whenTrue(viewModel, "view.ready", function () {
-          var viewModel = this.viewModel;
-          this._wireUpView(viewModel.view);
+        watchUtils.init(viewModel, "visible", function(value) {
+          domClass.remove(this._containerNode, CSS.hasPaginationMenuOpen);
+          domClass.toggle(this.domNode, CSS.invisible, !value);
+          this._togglePopupLocationRepositioning(value);
+          this._toggleContentVisibility(value);
+          this._autoAlign();
+          this.reposition();
         }.bind(this)),
 
-        watchUtils.init(viewModel, "pendingPromisesCount,featureCount,promises,location", function () {
+        watchUtils.watch(this, "viewModel.view", function(newView, oldView) {
+          if (newView && oldView) {
+            this.close();
+            this.clear();
+          }
+        }.bind(this)),
+
+        watchUtils.watch(this, "viewModel.view.ready", function(isReady, wasReady) {
+          if (isReady) {
+            this._wireUpView(this.viewModel.view);
+            return;
+          }
+
+          if (wasReady) {
+            this.close();
+            this.clear();
+          }
+        }.bind(this)),
+
+        watchUtils.init(viewModel, "pendingPromisesCount,featureCount,promises,location", function() {
           var viewModel = this.viewModel;
           this._displayPendingFeaturesStatus(viewModel.pendingPromisesCount, viewModel.featureCount, viewModel.promises, viewModel.location);
         }.bind(this)),
 
         watchUtils.init(viewModel, "features", this._updateFeatures.bind(this)),
 
-        watchUtils.init(viewModel, "selectedFeatureIndex,selectedFeature", function () {
+        watchUtils.init(viewModel, "selectedFeatureIndex,selectedFeature", function() {
           var viewModel = this.viewModel;
           this._updateSelectedFeature(viewModel.selectedFeature);
           this._updateActions(viewModel.actions, viewModel.features, viewModel.selectedFeature);
@@ -390,23 +413,36 @@ define([
           this._bodyContentNode.scrollTop = 0;
         }.bind(this)),
 
-        watchUtils.init(viewModel, "title", function (title) {
+        watchUtils.init(viewModel, "title", function(title) {
           this._updateTitle(title);
           this.reposition();
         }.bind(this)),
 
-        watchUtils.init(viewModel, "actions", function (actions) {
+        watchUtils.watch(this, "viewModel.waitingForResult, _popupRenderer.viewModel.waitingForContent", function() {
+          // todo: For popup conversion reference: Once #8924 is there and we can have a good way of notifying when a node is rendered and this can be modified.
+          // See issue #7708
+          if (!this._repositionTimeoutHandle) {
+            this._repositionTimeoutHandle = setTimeout(function() {
+              this._repositionTimeoutHandle = 0;
+
+              this._autoAlign();
+              this.reposition();
+            }.bind(this), 50);
+          }
+        }.bind(this)),
+
+        watchUtils.init(viewModel, "actions", function(actions) {
           var viewModel = this.viewModel;
           this._updateActions(actions, viewModel.features, viewModel.selectedFeature);
           this._actionChangeListener(actions);
         }.bind(this)),
 
-        watchUtils.init(viewModel, "content", function (content) {
+        watchUtils.init(viewModel, "content", function(content) {
           this._updateContent(content);
           this.reposition();
         }.bind(this)),
 
-        watchUtils.init(viewModel, "location", function (location) {
+        watchUtils.init(viewModel, "location", function(location) {
           this._togglePopupLocationRepositioning(this.visible);
           this._autoAlign();
           this.reposition();
@@ -432,22 +468,22 @@ define([
         on(this._pageMenuInfoNode, a11yclick, this._togglePageMenu.bind(this)),
 
         // menu item a11yclick
-        on(this._paginationNode, on.selector("li", a11yclick), function () {
+        on(this._paginationNode, on.selector("li", a11yclick), function() {
           _self._selectFeature(this);
         }),
 
         // menu item keyup
-        on(this._paginationNode, on.selector("li", "keyup"), function (evt) {
+        on(this._paginationNode, on.selector("li", "keyup"), function(evt) {
           _self._keyupFeature(evt, this);
         }),
 
         // action click
-        on(this._actionsNode, on.selector("[" + DATA_ATTRIBUTES.actionIndex + "]", a11yclick), function () {
+        on(this._actionsNode, on.selector("[" + DATA_ATTRIBUTES.actionIndex + "]", a11yclick), function() {
           _self._actionEvent(this);
         }),
 
         // action click listener for default actions
-        on(viewModel, "trigger-action", function (evt) {
+        on(viewModel, "trigger-action", function(evt) {
           // zoom-to action
           if (evt.action && evt.action.id === ZOOM_TO_ACTION_ID) {
             this.viewModel.zoomToLocation();
@@ -459,14 +495,20 @@ define([
       viewModelWiring.setUpEventDelegates(this, "trigger-action");
     },
 
-    destroy: function () {
+    destroy: function() {
       // destroy view widgets
       this._destroyPopupRendererVMs();
-      this._destroyMessage();
       this._destroySpinner();
       this._destroyPopupRenderer();
       this._handleRegistry.destroy();
       this._handleRegistry = null;
+
+      if (this._repositionTimeoutHandle) {
+        clearTimeout(this._repositionTimeoutHandle);
+        this._repositionTimeoutHandle = 0;
+      }
+
+      this._repositionTimeoutHandle = 0;
     },
 
     //--------------------------------------------------------------------------
@@ -494,7 +536,7 @@ define([
        * Defines actions that may be executed by clicking the icon
        * or image symbolizing them in the popup. By default, every popup has a `zoom-to`
        * action styled with a magnifying glass icon
-       * ![popupTemplate-zoom-action](../assets/img/apiref/widgets/popupTemplate-zoom-action.png).
+       * ![popupTemplate-zoom-action](../assets/img/apiref/widgets/popuptemplate-zoom-action.png).
        * When this icon is clicked, the view zooms in four LODs and centers on the selected feature.
        *
        * You may override this action by removing it from the `actions` array or by setting the
@@ -673,18 +715,18 @@ define([
        * @type {Object}
        * @see [Sample - Popup docking](../sample-code/popup-docking-position/index.html)
        *
-       * @property {Object | boolean} breakpoint - Defines the dimensions of the {@link module:esri/views/View}
+       * @property {Object | boolean} [breakpoint] - Defines the dimensions of the {@link module:esri/views/View}
        *                        at which to dock the popup. Set to `false` to disable docking at a breakpoint.
        *                        <br><br>**Default:** true
-       * @property {number} breakpoint.width - The maximum width of the {@link module:esri/views/View}
+       * @property {number} [breakpoint.width] - The maximum width of the {@link module:esri/views/View}
        *                        at which the popup will be set to dockEnabled automatically.
        *                        <br><br>**Default:** 544
-       * @property {number} breakpoint.height - The maximum height of the {@link module:esri/views/View}
+       * @property {number} [breakpoint.height] - The maximum height of the {@link module:esri/views/View}
        *                        at which the popup will be set to dockEnabled automatically.
        *                        <br><br>**Default:** 544
-       * @property {boolean} buttonEnabled - If `true`, displays the dock button. If `false`, hides the dock
+       * @property {boolean} [buttonEnabled] - If `true`, displays the dock button. If `false`, hides the dock
        *                         button from the popup.
-       * @property {string | function} position - The position in the view at which to dock the popup.
+       * @property {string | function} [position] - The position in the view at which to dock the popup.
        *                        Can be set as either a string or function. See the table below for known
        *                        string values and their position in the view based on the view's size.
        *                        <br><br>
@@ -830,6 +872,23 @@ define([
       },
 
       //----------------------------------
+      //  highlightEnabled
+      //----------------------------------
+
+      /**
+       * Highlight the selected popup feature using the {@link module:esri/views/SceneView#highlightOptions highlightOptions}
+       * set on the {@link module:esri/views/SceneView}. Currently highlight only works in 3D.
+       *
+       * @since 4.4
+       * @type {Boolean}
+       * @default true
+       *
+       */
+      highlightEnabled: {
+        aliasOf: "viewModel.highlightEnabled"
+      },
+
+      //----------------------------------
       //  location
       //----------------------------------
 
@@ -868,27 +927,6 @@ define([
        */
       location: {
         aliasOf: "viewModel.location"
-      },
-
-      //----------------------------------
-      //  messageEnabled
-      //----------------------------------
-
-      /**
-       * Indicates whether to display a message that no features
-       * were found when an asynchronous task returns zero results.
-       *
-       * @type {boolean}
-       * @default
-       * @ignore
-       */
-      messageEnabled: {
-        value: false,
-
-        set: function(value) {
-          this._set("messageEnabled", value);
-          this._createMessage(value, this.viewModel.view);
-        }
       },
 
       //----------------------------------
@@ -939,27 +977,6 @@ define([
        */
       promises: {
         aliasOf: "viewModel.promises"
-      },
-
-      //----------------------------------
-      //  rendered
-      //----------------------------------
-
-      /**
-       * @todo doc rendered property
-       * @type {boolean}
-       * @readonly
-       */
-      rendered: {
-        dependsOn: [
-          "viewModel.content",
-          "_popupRenderer.rendered"
-        ],
-        get: function () {
-          var rendered = this._contentIsPopupRenderer() && this.get("_popupRenderer.rendered");
-          return this._popupRenderer ? rendered : true;
-        },
-        readOnly: true
       },
 
       //----------------------------------
@@ -1072,17 +1089,7 @@ define([
       //----------------------------------
 
       visible: {
-        value: false,
-
-        set: function(value) {
-          this._set("visible", value);
-          domClass.remove(this._containerNode, CSS.hasPaginationMenuOpen);
-          domClass.toggle(this.domNode, CSS.invisible, !value);
-          this._togglePopupLocationRepositioning(value);
-          this._toggleContentVisibility(value);
-          this._autoAlign();
-          this.reposition();
-        }
+        aliasOf: "viewModel.visible"
       }
 
     },
@@ -1126,7 +1133,7 @@ define([
      *
      * @see [Popup.visible](#visible)
      */
-    close: function () {
+    close: function() {
       this.set("visible", false);
     },
 
@@ -1160,7 +1167,7 @@ define([
      * If the popup is partially out of view, the view will move to fully show the popup.
      * If the popup is fully out of view, the view will move to the popup's location.
      */
-    reposition: function () {
+    reposition: function() {
       this._positionPopup();
       return this._moveIntoView();
     },
@@ -1172,6 +1179,15 @@ define([
      * by directly setting the [visible](#visible) property to `true`. The popup will only display if
      * the view's size constraints in [dockOptions](#dockOptions) are met or the [location](#location)
      * property is set to a geometry.
+     *
+     * ::: esri-md class="panel trailer-1"
+     * By default the {@link module:esri/views/View#event:click view.click} event will close the popup if
+     * the clicked location doesn't intersect a feature containing a {@link module:esri/PopupTemplate}.
+     * If calling `popup.open()` to display custom content in the popup, you should
+     * call `stopPropagation()` on the {@link module:esri/views/View#event:click view.click} event object
+     * to disable this default behavior. This ensures the popup will remain open or open with new custom
+     * content when the user clicks other locations in the view.
+     * :::
      *
      * @see [Get started with popups](../sample-code/get-started-popup/index.html)
      * @see [Popup.visible](#visible)
@@ -1187,6 +1203,9 @@ define([
      *
      * @example
      * view.on("click", function(event){
+     *  // you must overwrite default click-for-popup
+     *  // behavior to display your own popup
+     *  event.();
      *   view.popup.open({
      *    location: event.mapPoint,  // location of the click on the view
      *    title: "You clicked here",  // title displayed in the popup
@@ -1201,7 +1220,7 @@ define([
      *   // selected feature's geometry
      * });
      */
-    open: function (options) {
+    open: function(options) {
       var defaultOptions = {
         updateLocationEnabled: false
       };
@@ -1232,11 +1251,11 @@ define([
     //
     //--------------------------------------------------------------------------
 
-    _actionChangeListener: function (actions) {
+    _actionChangeListener: function(actions) {
       this._handleRegistry.remove(REGISTRY_KEYS.actionsChange);
       if (actions) {
         this._handleRegistry.add([
-          actions.on("change", function () {
+          actions.on("change", function() {
             var viewModel = this.viewModel;
             this._updateActions(viewModel.actions, viewModel.features, viewModel.selectedFeature);
           }.bind(this))
@@ -1244,7 +1263,7 @@ define([
       }
     },
 
-    _actionEvent: function (node) {
+    _actionEvent: function(node) {
       var viewModel = this.viewModel;
       var data = domAttr.get(node, DATA_ATTRIBUTES.actionIndex);
       if (data) {
@@ -1254,7 +1273,7 @@ define([
     },
 
     // puts the content back into the popup when visible. Content is removed so if a video is playing it will stop.
-    _addContent: function () {
+    _addContent: function() {
       var viewModel = this.viewModel;
       this._updateSelectedFeature(viewModel.selectedFeature);
       this._updateContent(viewModel.content);
@@ -1262,7 +1281,7 @@ define([
       this._updatePageText(viewModel.features, viewModel.selectedFeatureIndex);
     },
 
-    _updateActions: function (actions, features, selectedFeature) {
+    _updateActions: function(actions, features, selectedFeature) {
       this._updateActionButtons(actions, selectedFeature);
       this._updateFooterVisibility(features, actions);
       this.reposition();
@@ -1274,7 +1293,7 @@ define([
       return !!(content && popupRendererNode && content === popupRendererNode);
     },
 
-    _updateActionButtons: function (actions, selectedFeature) {
+    _updateActionButtons: function(actions, selectedFeature) {
       this._handleRegistry.remove(REGISTRY_KEYS.actions);
 
       if (this._actionsNode) {
@@ -1284,7 +1303,7 @@ define([
         var totalActions = actions.length;
         if (totalActions) {
 
-          actions.forEach(function (action, i) {
+          actions.forEach(function(action, i) {
             // set the default classes zoom action
             if (action.id === ZOOM_TO_ACTION_ID) {
               action.title = this._i18n.zoom;
@@ -1295,7 +1314,7 @@ define([
             var actionClass = action.className;
             var actionImage = action.image;
 
-            if(!actionImage && !actionClass){
+            if (!actionImage && !actionClass) {
               actionImage = DEFAULT_ACTION_IMAGE;
             }
 
@@ -1338,11 +1357,11 @@ define([
             var actionTextNode = domConstruct.create("span", actionsText, actionNode);
             // action listeners
             this._handleRegistry.add([
-              watchUtils.init(action, "visible", function (value) {
+              watchUtils.init(action, "visible", function(value) {
                 domClass.toggle(actionNode, CSS.hidden, !value);
               }),
 
-              watchUtils.init(action, "className", function (value, oldValue) {
+              watchUtils.init(action, "className", function(value, oldValue) {
                 if (featureAttributes) {
                   value = esriLang.substitute(featureAttributes, value);
                   oldValue = esriLang.substitute(featureAttributes, oldValue);
@@ -1351,7 +1370,7 @@ define([
                 domClass.add(iconNode, value);
               }),
 
-              watchUtils.init(action, "image", function (value) {
+              watchUtils.init(action, "image", function(value) {
                 if (featureAttributes) {
                   value = esriLang.substitute(featureAttributes, value);
                 }
@@ -1359,7 +1378,7 @@ define([
                 domStyle.set(iconNode, "background-image", value ? "url(" + value + ")" : "");
               }),
 
-              watchUtils.init(action, "title", function (value) {
+              watchUtils.init(action, "title", function(value) {
                 if (featureAttributes) {
                   value = esriLang.substitute(featureAttributes, value);
                 }
@@ -1378,7 +1397,7 @@ define([
       }
     },
 
-    _getLocationScreenPoint: function () {
+    _getLocationScreenPoint: function() {
       var viewModel = this.viewModel;
       var screenPoint;
       if (viewModel.location && this.visible) {
@@ -1394,7 +1413,7 @@ define([
     },
 
     // sets popup position
-    _calculatePosition: function (screenPoint, sizes, view) {
+    _calculatePosition: function(screenPoint, sizes, view) {
       var alignment = this.alignment,
         positionStyle, height, width, pointerOffset = this._pointerOffset;
       var top = null,
@@ -1478,10 +1497,10 @@ define([
       }
     },
 
-    _createPopupRendererVMs: function (features) {
+    _createPopupRendererVMs: function(features) {
       this._destroyPopupRendererVMs();
       if (features && features.length > 1) {
-        features.forEach(function (feature, i) {
+        features.forEach(function(feature, i) {
           var prvm = new PopupRendererViewModel({
             contentEnabled: false,
             graphic: feature
@@ -1491,15 +1510,15 @@ define([
       }
     },
 
-    _destroyPopupRendererVMs: function () {
+    _destroyPopupRendererVMs: function() {
       this._handleRegistry.remove(REGISTRY_KEYS.paginationTitles);
-      this._popupRendererVMs.forEach(function (prvm) {
+      this._popupRendererVMs.forEach(function(prvm) {
         prvm.destroy();
       });
       this._popupRendererVMs.length = 0;
     },
 
-    _createPaginationNodes: function (features, selectedFeatureIndex) {
+    _createPaginationNodes: function(features, selectedFeatureIndex) {
       this._handleRegistry.remove(REGISTRY_KEYS.paginationTitles);
       if (features) {
         var totalFeatures = features.length;
@@ -1511,7 +1530,7 @@ define([
             total: totalFeatures
           }, this._i18n.selectedFeatures);
           domAttr.set(this._pageMenuInfoNode, "textContent", infoText);
-          features.forEach(function (feature, i) {
+          features.forEach(function(feature, i) {
             var title = this._i18n.untitled;
             var item = domConstruct.create("li", {
               role: "menuitem",
@@ -1531,7 +1550,7 @@ define([
             }, item);
             var prvm = this._popupRendererVMs[i];
             if (prvm) {
-              var watchTitle = watchUtils.init(prvm, "title", function (value) {
+              var watchTitle = watchUtils.init(prvm, "title", function(value) {
                 domAttr.set(itemTitle, "innerHTML", value);
               });
               this._handleRegistry.add(watchTitle, REGISTRY_KEYS.paginationTitles);
@@ -1546,36 +1565,18 @@ define([
       }
     },
 
-    _createMessage: function (enabled, view) {
-      this._destroyMessage();
-      if (enabled && view) {
-        this._message = new Message({
-          visible: false,
-          text: this._i18n.noFeaturesFound,
-          viewModel: {
-            view: view
-          }
-        });
-        this._message.startup();
-        domConstruct.place(this._message.domNode, view.root);
-      }
-    },
-
-    _createSpinner: function (enabled, view) {
+    _createSpinner: function(enabled, view) {
       this._destroySpinner();
       if (enabled && view) {
         this._spinner = new Spinner({
-          visible: false,
-          viewModel: {
-            view: view
-          }
+          container: document.createElement("div"),
+          view: view
         });
-        this._spinner.startup();
-        domConstruct.place(this._spinner.domNode, view.root);
+        domConstruct.place(this._spinner.container, view.root);
       }
     },
 
-    _updateContent: function (content) {
+    _updateContent: function(content) {
       // content is a node
       if (content && content.nodeName) {
         // move node into storage div.
@@ -1597,7 +1598,7 @@ define([
       this._autoAlign();
     },
 
-    _destroyPopupRenderer: function () {
+    _destroyPopupRenderer: function() {
       // destroy popup renderer if it exists
       if (this._popupRenderer && !this._popupRenderer._destroyed) {
         // remove popup renderer listeners
@@ -1607,37 +1608,28 @@ define([
       }
     },
 
-    _destroyMessage: function () {
-      if (this._message) {
-        this._message.destroyRendering();
-        this._message.destroy();
-        this._message = null;
-      }
-    },
-
-    _destroySpinner: function () {
+    _destroySpinner: function() {
       if (this._spinner) {
-        this._spinner.destroyRendering();
         this._spinner.destroy();
         this._spinner = null;
       }
     },
 
-    _setDockEnabledForViewSize: function (dockOptions) {
+    _setDockEnabledForViewSize: function(dockOptions) {
       // responsive dock is enabled and we need to switch dockEnabled state
       if (dockOptions.breakpoint) {
         this.set("dockEnabled", this._shouldDockAtCurrentViewSize(dockOptions));
       }
     },
 
-    _togglePopupDocking: function (dockEnabled) {
+    _togglePopupDocking: function(dockEnabled) {
       domClass.remove(this._containerNode, CSS.hasPaginationMenuOpen);
       domClass.toggle(this._containerNode, CSS.isDocked, !!dockEnabled);
       domAttr.set(this._dockNode, "title", dockEnabled ? this._i18n.undock : this._i18n.dock);
       this._updateDockPosition(this.dockOptions);
     },
 
-    _dockingThresholdCrossed: function (newSize, oldSize, dockingThreshold) {
+    _dockingThresholdCrossed: function(newSize, oldSize, dockingThreshold) {
       var currWidth = newSize[0],
         currHeight = newSize[1],
         prevWidth = oldSize[0],
@@ -1650,7 +1642,7 @@ define([
         (currHeight > dockingHeight && prevHeight <= dockingHeight);
     },
 
-    _determineDockPosition: function (dockPos) {
+    _determineDockPosition: function(dockPos) {
       var viewModel = this.viewModel;
       var view = viewModel.view;
       var viewPadding = view && view.padding;
@@ -1665,7 +1657,7 @@ define([
       }
     },
 
-    _updateDockPosition: function (dockOptions) {
+    _updateDockPosition: function(dockOptions) {
       domClass.remove(this._containerNode, [CSS.isDockedTopLeft, CSS.isDockedTopCenter, CSS.isDockedTopRight, CSS.isDockedBottomLeft, CSS.isDockedBottomCenter, CSS.isDockedBottomRight, CSS.canDockToTop, CSS.canDockToBottom, CSS.canDockToLeft, CSS.canDockToRight]);
       var position, positionClass, dockToClass;
       var dockPos = DOCK_POSITIONS;
@@ -1719,29 +1711,29 @@ define([
       this.reposition();
     },
 
-    _toggleDockButton: function (dockOptions) {
+    _toggleDockButton: function(dockOptions) {
       var containerNode = this._containerNode;
       domClass.toggle(containerNode, CSS.showDock, !!dockOptions.buttonEnabled);
       domClass.toggle(containerNode, CSS.isDocked, !!this.dockEnabled);
       this._updateDockPosition(dockOptions);
     },
 
-    _updateFooterVisibility: function (features, actions) {
+    _updateFooterVisibility: function(features, actions) {
       var showFooter = this._isPaginationEnabled(features) || (actions && actions.length);
       domClass.toggle(this._containerNode, CSS.showFooter, !!showFooter);
     },
 
-    _isPaginationEnabled: function (features) {
+    _isPaginationEnabled: function(features) {
       return this.paginationEnabled && features && features.length > 1;
     },
 
-    _updatePagination: function (features, selectedFeatureIndex) {
+    _updatePagination: function(features, selectedFeatureIndex) {
       this._updatePageText(features, selectedFeatureIndex);
       this._createPaginationNodes(features, selectedFeatureIndex);
       domClass.toggle(this._containerNode, CSS.showPagination, this._isPaginationEnabled(features));
     },
 
-    _displayPendingFeaturesStatus: function (pendingPromisesCount, featureCount, promises, point) {
+    _displayPendingFeaturesStatus: function(pendingPromisesCount, featureCount, promises, point) {
       var waitingForResult = pendingPromisesCount > 0 && featureCount === 0;
       var promisesLen = promises && promises.length;
 
@@ -1752,27 +1744,20 @@ define([
       domClass.toggle(this._containerNode, CSS.hasPendingPromises, !!pendingPromisesCount);
       domClass.toggle(this._containerNode, CSS.isPendingPromisesResult, !!waitingForResult);
       domClass.toggle(this._containerNode, CSS.hasPromiseFeatures, !!featureCount);
-      if (this._message) {
-        // hide message
-        this._message.set({
-          visible: false
-        });
-      }
       // we have promises happening and we have a location
       if (waitingForResult) {
         if (this._spinner) {
           // show loading spinner
-          this._spinner.set({
-            visible: true
+          this._spinner.show({
+            location: point
           });
-          this._spinner.viewModel.point = point;
         }
       }
       // no promises happening
       else {
         if (this._spinner) {
           // hide loading spinner
-          this._spinner.viewModel.point = null;
+          this._spinner.hide();
         }
         if (promisesLen && featureCount && !this.visible) {
           // we have features now, but previously there were no features.
@@ -1782,26 +1767,16 @@ define([
           // no more promises remaining, no features set and the popup is visible.
           this.set("visible", false);
         }
-        // if we have no features and promises
-        if (!featureCount && promisesLen) {
-          if (this._message) {
-            // show no features message
-            this._message.set({
-              visible: true
-            });
-            this._message.viewModel.point = point;
-          }
-        }
       }
     },
 
-    _moveIntoView: function () {
+    _moveIntoView: function() {
       // new animation
       var def = new Deferred();
       // delay animation
       setTimeout(def.resolve.bind(this), this._animationDelay);
       // after delay, perform animateTo
-      return def.then(function () {
+      return def.then(function() {
         if (this._destroyed) {
           return;
         }
@@ -1877,7 +1852,7 @@ define([
       }.bind(this));
     },
 
-    _isScreenPointWithinView: function (screenPoint, view) {
+    _isScreenPointWithinView: function(screenPoint, view) {
       return view && screenPoint &&
         (screenPoint.x > -1 &&
           screenPoint.y > -1 &&
@@ -1885,7 +1860,7 @@ define([
           screenPoint.y <= view.height);
     },
 
-    _autoAlign: function () {
+    _autoAlign: function() {
       if (this.autoAlignmentEnabled && this.visible) {
         var view = this.get("viewModel.view");
         var screenPoint = this._getLocationScreenPoint();
@@ -1928,7 +1903,7 @@ define([
       }
     },
 
-    _positionPopup: function () {
+    _positionPopup: function() {
       var viewModel = this.viewModel;
       var view = viewModel.view;
       if (view) {
@@ -1971,7 +1946,7 @@ define([
     },
 
     // removes content from the popup when the popup is hidden. This is so any video playing will stop.
-    _removeContent: function () {
+    _removeContent: function() {
       this._destroyPopupRenderer();
       domAttr.set(this._bodyContentNode, "innerHTML", "");
       domAttr.set(this._titleNode, "innerHTML", "");
@@ -1980,7 +1955,7 @@ define([
       domClass.remove(this._containerNode, [CSS.showTitle, CSS.showContent]);
     },
 
-    _keyupFeature: function (evt, target) {
+    _keyupFeature: function(evt, target) {
       var keyCode = evt.keyCode;
       if (keyCode === keys.UP_ARROW || keyCode === keys.DOWN_ARROW) {
         evt.stopPropagation();
@@ -2012,7 +1987,7 @@ define([
       }
     },
 
-    _selectFeature: function (target) {
+    _selectFeature: function(target) {
       var viewModel = this.viewModel;
       var index = -1;
       var dataIndex = domAttr.get(target, DATA_ATTRIBUTES.featureIndex);
@@ -2026,7 +2001,7 @@ define([
       this._pageMenuNode.focus();
     },
 
-    _updateSelectedFeature: function (selectedFeature) {
+    _updateSelectedFeature: function(selectedFeature) {
       var viewModel = this.viewModel;
       var layer, layerId = "",
         layerTitle = "";
@@ -2039,20 +2014,20 @@ define([
         // create popup renderer if it doesn't exist
         if (!this._popupRenderer || (this._popupRenderer && this._popupRenderer._destroyed)) {
           this._handleRegistry.remove(REGISTRY_KEYS.popupRenderer);
-          this._set("_popupRenderer", new PopupRenderer());
+          this._set("_popupRenderer", new PopupRenderer({
+            container: domConstruct.create("div")
+          }));
           // change popup title if popup renderer title changes
-          var titleWatcher = watchUtils.init(this._popupRenderer.viewModel, "title", function (value) {
+          var titleWatcher = watchUtils.init(this._popupRenderer.viewModel, "title", function(value) {
             viewModel.title = value;
           });
-          var contentWatcher = watchUtils.init(this._popupRenderer.viewModel, "content", function (value) {
-            viewModel.content = value ? this._popupRenderer.domNode : null;
+          var contentWatcher = watchUtils.init(this._popupRenderer.viewModel, "content", function(value) {
+            viewModel.content = this._popupRenderer.domNode;
           }.bind(this));
           var resizeListener = on(this._popupRenderer, "resize", this.reposition.bind(this));
           this._handleRegistry.add([titleWatcher, contentWatcher, resizeListener], REGISTRY_KEYS.popupRenderer);
-          // do it!
-          this._popupRenderer.startup();
         }
-        this._popupRenderer.viewModel.graphic = selectedFeature;
+        this._popupRenderer.graphic = selectedFeature;
       }
       // toggle class to enable a feature change CSS animation
       this._toggleFeatureUpdatedClass();
@@ -2061,7 +2036,7 @@ define([
       this.reposition();
     },
 
-    _updateFeatures: function (features) {
+    _updateFeatures: function(features) {
       var viewModel = this.viewModel;
       this._createPopupRendererVMs(features);
       this._updatePagination(features, viewModel.selectedFeatureIndex);
@@ -2069,7 +2044,7 @@ define([
       this.reposition();
     },
 
-    _shouldDockAtCurrentViewSize: function (dockOptions) {
+    _shouldDockAtCurrentViewSize: function(dockOptions) {
       var viewModel = this.viewModel;
       var breakpoint = dockOptions.breakpoint;
       return viewModel.view && (
@@ -2077,28 +2052,28 @@ define([
         (breakpoint.hasOwnProperty("height") && viewModel.view.ui.height <= breakpoint.height));
     },
 
-    _sizePopup: function () {
+    _sizePopup: function() {
       return domGeometry.getContentBox(this._containerNode);
     },
 
-    _updateTitle: function (title) {
+    _updateTitle: function(title) {
       title = title || "";
       domAttr.set(this._titleNode, "innerHTML", title);
       domClass.toggle(this._containerNode, CSS.showTitle, !!title);
       domClass.remove(this._containerNode, CSS.hasPaginationMenuOpen);
     },
 
-    _toggleDock: function () {
+    _toggleDock: function() {
       this.set("dockEnabled", !this.dockEnabled);
     },
 
-    _togglePageMenu: function () {
+    _togglePageMenu: function() {
       domClass.toggle(this._containerNode, CSS.hasPaginationMenuOpen);
       var isOpen = domClass.contains(this._containerNode, CSS.hasPaginationMenuOpen);
       domAttr.set(this._pageMenuSectionNode, "aria-hidden", !isOpen);
       var lists = query("li", this._paginationNode);
       var firstItem = lists[0];
-      lists.forEach(function (list) {
+      lists.forEach(function(list) {
         domAttr.set(list, "tabIndex", isOpen ? "0" : "");
       });
       if (!isOpen) {
@@ -2109,7 +2084,7 @@ define([
       }
     },
 
-    _updatePageText: function (features, selectedFeatureIndex) {
+    _updatePageText: function(features, selectedFeatureIndex) {
       var pageString = "";
       if (this._isPaginationEnabled(features)) {
         pageString = esriLang.substitute({
@@ -2136,7 +2111,7 @@ define([
       this._containerNode.offsetWidth = this._containerNode.offsetWidth;
     },
 
-    _toggleFeatureUpdatedClass: function () {
+    _toggleFeatureUpdatedClass: function() {
       domClass.remove(this._containerNode, CSS.hasFeatureUpdated);
 
       this._triggerOffset();
@@ -2144,7 +2119,7 @@ define([
       domClass.add(this._containerNode, CSS.hasFeatureUpdated);
     },
 
-    _viewPointChanged: function () {
+    _viewPointChanged: function() {
       if (this.closeOnViewChangeEnabled) {
         this.close();
       }
@@ -2153,7 +2128,7 @@ define([
       }
     },
 
-    _wireUpView: function (view) {
+    _wireUpView: function(view) {
       // clean up view handlers
       this._handleRegistry.remove(REGISTRY_KEYS.view);
       this._viewPointEvent = null;
@@ -2175,7 +2150,6 @@ define([
         // update viewpoint watch status
         this._togglePopupLocationRepositioning(this.visible);
         // create widgets
-        this._createMessage(this.messageEnabled, view);
         this._createSpinner(this.spinnerEnabled, view);
         // set initial docking state based on the view's size
         this._setDockEnabledForViewSize(this.dockOptions);
@@ -2185,7 +2159,7 @@ define([
       }
     },
 
-    _updateDockEnabledForViewSize: function (newSize, oldSize) {
+    _updateDockEnabledForViewSize: function(newSize, oldSize) {
       var viewPadding = this.get("viewModel.view.padding");
       var widthPadding = viewPadding.left + viewPadding.right;
       var heightPadding = viewPadding.top + viewPadding.bottom;
@@ -2206,7 +2180,7 @@ define([
       this._updateDockPosition(dockOptions);
     },
 
-    _togglePopupLocationRepositioning: function (visible) {
+    _togglePopupLocationRepositioning: function(visible) {
       /*
         For best performance, don't watch the viewpoint if the popup is not visible, has no location or is dockEnabled.
       */
@@ -2222,7 +2196,7 @@ define([
       }
     },
 
-    _toggleContentVisibility: function (visible) {
+    _toggleContentVisibility: function(visible) {
       /*
         Only have the domNode in the document when the popup is visible.
         This will ensure that if a video is playing in the popup when closed, the video is removed and stopped, not just hidden.

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
-define(["require","exports","./RenderSlot","./RenderPass"],function(l,n,t,e){var i=function(){function l(){this.rctx=null,this.options=null,this.camera=null,this.depth=null,this.filterContent=null,this.filterFaceRange=null,this.highlight=null,this.lightingData=null,this.normals=null,this.pass=e.MATERIAL,this.shadowMap=null,this.slot=t.BACKGROUND,this.ssaoHelper=null,this.offscreenRenderingHelper=null,this.stencilRenderingHelper=null,this.visibleContent=null,this.framebufferTex=null}return l}();return i});
+define(["require","exports","./RenderSlot","./RenderPass"],function(e,n,t,l){var i=function(){function e(){this.camera=null,this.depth=null,this.highlight=null,this.lightingData=null,this.normals=null,this.pass=l.MATERIAL,this.shadowMap=null,this.slot=t.BACKGROUND,this.ssaoHelper=null,this.offscreenRenderingHelper=null,this.stencilRenderingHelper=null,this.framebufferTex=null,this.rctx=null,this.options=null}return Object.defineProperty(e.prototype,"isHighlightPass",{get:function(){return this.pass===l.MATERIAL_HIGHLIGHT},enumerable:!0,configurable:!0}),e}();return i});

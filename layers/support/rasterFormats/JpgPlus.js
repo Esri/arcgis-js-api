@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
-define(["dojo/_base/declare","./Zlib","./Jpg"],function(r,e,t){"use strict";var n=r(null,{constructor:function(){},decode:function(r){var n=new Uint8Array(r),i=new t;i.parse(n);var a,h=i.getData(i.width,i.height),o=i.width*i.height,f=i.eof,s=0,u=0,d=0;if(f<n.length-1){var g=new e(n.subarray(f)),w=g.getBytes();a=new Uint8Array(o);var c=0;for(s=0;s<w.length;s++)for(d=7;d>=0;d--)a[c++]=w[s]>>d&1}var l,v=[];for(s=0;3>s;s++)l=new Uint8Array(o),v.push(l);for(d=0,u=0;o>u;u++)for(s=0;3>s;s++)v[s][u]=h[d++];return{width:i.width,height:i.height,pixels:v,mask:a}}});return n});
+define(["dojo/_base/declare","./Zlib","./Jpg"],function(e,r,t){"use strict";var n=e(null,{constructor:function(){},decode:function(e){var n=new Uint8Array(e),i=new t;i.parse(n);var a,o=i.numComponents,h=i.getData(i.width,i.height,!0),f=i.width*i.height,s=i.eof,u=0,d=0,g=0;if(s<n.length-1){var w=new r(n.subarray(s)),c=w.getBytes();a=new Uint8Array(f);var l=0;for(u=0;u<c.length;u++)for(g=7;g>=0;g--)a[l++]=c[u]>>g&1}var v,p=[];if(1===o)p=[h,h,h];else{for(u=0;3>u;u++)v=new Uint8Array(f),p.push(v);for(g=0,d=0;f>d;d++)for(u=0;3>u;u++)p[u][d]=h[g++]}return{width:i.width,height:i.height,pixels:p,mask:a}}});return n});

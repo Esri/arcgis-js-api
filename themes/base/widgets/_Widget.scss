@@ -3,8 +3,6 @@
    box-sizing
    ========================================================================== */
 .esri-widget {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
   color: $text_color;
   font-size: $text_size;
@@ -14,8 +12,6 @@
   *,
   *:before,
   *:after {
-    -webkit-box-sizing: inherit;
-    -moz-box-sizing: inherit;
     box-sizing: inherit;
   }
   a {
@@ -40,7 +36,7 @@
     margin: $menu_gap 0 0 0;
     font-size: 14px;
     line-height: 16px;
-    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding;
     background-clip: padding-box;
     overflow: hidden;
     width: 100%;
@@ -96,7 +92,6 @@
       td,
       th {
         padding: .5em .7em;
-        -ms-word-break: break-word;
         word-break: break-word;
         vertical-align: top;
         font-size: $body_text_size;
@@ -122,7 +117,6 @@
     margin: 0;
     -webkit-appearance: none;
     -moz-appearance: none;
-    -webkit-border-radius: 0;
     border-radius: 0;
     padding: 0 0.5em;
     background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%20width%3D%2732%27%20height%3D%2732%27%3E%3Cstyle%3E.path%7Bfill%3A%236e6e6e%7D%3C/style%3E%3Cpath%20class%3D%27path%27%20d%3D%27M12.3%2013.4h9l-5.7%206.1-5.7-6.1h2.4zm3.3%204.8l3.7-4h-7.4l3.7%204z%27/%3E%3C/svg%3E") no-repeat right center transparent;
@@ -153,6 +147,17 @@
   }
 }
 
+// Disabled
+button.esri-disabled {
+  opacity: $disabled_opacity;
+}
+.esri-disabled a,
+.esri-disabled [class*="esri-icon"],
+.esri-disabled [role="menu"],
+.esri-disabled [role="checkbox"] {
+  color: $disabled_color;
+}
+
 .keynav-mode {
   .esri-widget {
   //  Saving this for when we can toggle a key-nav class
@@ -164,12 +169,6 @@
         @include outlineStyle();
       }
     }
-  }
-}
-
-.esri-disabled {
-  .esri-icon {
-    color: $disabled_color;
   }
 }
 
@@ -187,11 +186,11 @@
   overflow: hidden;
   cursor: pointer;
   text-align: center;
-  @include flexDisplay();
-  @include flexFlow(row, nowrap);
-  @include justifyContent(center);
-  @include alignItems(center);
-  @include transition(background-color, 125ms, ease-in-out);
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 125ms ease-in-out;
   &:hover {
     background-color: $background_hover_color;
     color: $button_text_hover_color;
@@ -199,9 +198,6 @@
   &:active {
     background-color: $background_active_color;
     color: $active_text_color;
-  }
-  &.esri-disabled {
-    color: $disabled_color;
   }
 }
 
@@ -257,7 +253,7 @@ html[dir="rtl"] .esri-widget {
 /* ==========================================================================
    animation
    ========================================================================== */
-@include keyframes(esri-fade-in) {
+@keyframes esri-fade-in {
   0% {
     opacity: 0;
   }
@@ -274,16 +270,15 @@ html[dir="rtl"] .esri-widget {
 }
 
 .esri-rotating {
-  -webkit-animation: esri-anim-rotate 1250ms infinite linear;
   animation: esri-anim-rotate 1250ms infinite linear;
 }
 
-@include keyframes(esri-anim-rotate) {
+@keyframes esri-anim-rotate {
   0% {
-    @include transform(rotate(0));
+    transform: rotate(0);
   }
   100% {
-    @include transform(rotate(360deg));
+    transform: rotate(360deg);
   }
 }
 

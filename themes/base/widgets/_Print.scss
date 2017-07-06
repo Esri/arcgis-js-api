@@ -4,6 +4,7 @@
     width: $panel_width;
     padding: $cap_spacing $side_spacing;
     transition: max-height 250ms ease-in-out;
+    overflow-y: auto;
     a {
       text-decoration: none;
     }
@@ -16,9 +17,6 @@
       cursor: pointer;
       border: none;
     }
-  }
-  .esri-print .esri-disabled  {
-    color: $disabled_color;
   }
   .esri-print__form-section-container {
     margin: 0 0 $cap_spacing 0;
@@ -69,7 +67,7 @@
     color: $error_text_color;
   }
   .esri-print__panel-container {
-    @include flex(1, 0);
+    flex: 1 0;
   }
   .esri-print__input-text {
     border: 1px solid $border_color;
@@ -87,9 +85,9 @@
     background-color: $Calcite_Gray_150;
   }
   .esri-print__advanced-options-button-container {
-    @include flexDisplay();
-    @include justifyContent(flex-start);
-    @include alignItems(center);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     background-color: transparent;
     width: 100%;
     overflow: visible;
@@ -164,7 +162,6 @@
   }
   .esri-print__export-button.esri-disabled {
     pointer-events: none;
-    opacity: $disabled_opacity;
   }
   .esri-print__export-panel-container {
     font-size: $text_size_small;
@@ -177,6 +174,9 @@
   }
   .esri-print__exported-file-link-title {
     word-break: break-all;
+  }
+  .esri-print__exported-file-link-title.esri-disabled {
+    color: $disabled_color;
   }
   .esri-print__exported-file-link {
     display: flex;

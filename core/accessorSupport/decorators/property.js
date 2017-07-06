@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
-define(["require","exports","../../lang","../metadata"],function(r,t,e,o){function n(r){return void 0===r&&(r={}),function(t,n){var i=t.constructor.prototype,a=Object.getOwnPropertyDescriptor(t,n);a&&(a.get||a.set)&&(r=e.clone(r),a.set&&(r.set=a.set),a.get&&(r.get=a.get));var s=o.getPropertyMetadata(i,n);for(var c in r){var g=r[c];Array.isArray(g)?s[c]=(s[c]||[]).concat(g):s[c]=g}}}function i(r,t,e){var n=o.getPropertyMetadata(r.constructor.prototype,e);n.json||(n.json={});var i=n.json;return void 0!==t&&(i.origins||(i.origins={}),i.origins[t]||(i.origins[t]={}),i=i.origins[t]),i}t.property=n,t.propertyJSONMeta=i});
+define(["require","exports","dojo/has","../../lang","../metadata"],function(r,e,t,o,n){function s(r){return void 0===r&&(r={}),function(e,t){var s=e.constructor.prototype;if(s===Function.prototype)return void(i&&console.error("[accessor] inappropriate use of @property() on a static field: "+e.name+"."+t+". Accessor does not support static properties."));var a=Object.getOwnPropertyDescriptor(e,t);a&&(a.get||a.set)&&(r=o.clone(r),a.set&&(r.set=a.set),a.get&&(r.get=a.get));var p=n.getPropertyMetadata(s,t);for(var c in r){var u=r[c];Array.isArray(u)?p[c]=(p[c]||[]).concat(u):p[c]=u}}}function a(r,e,t){var o=n.getPropertyMetadata(r.constructor.prototype,t);o.json||(o.json={});var s=o.json;return void 0!==e&&(s.origins||(s.origins={}),s.origins[e]||(s.origins[e]={}),s=s.origins[e]),s}Object.defineProperty(e,"__esModule",{value:!0});var i=t("dojo-debug-messages");e.property=s,e.propertyJSONMeta=a});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
-define(["require","exports","./get"],function(e,t,r){function f(e,t,i){if(e&&t)if("object"==typeof t)for(var n=0,o=Object.getOwnPropertyNames(t);n<o.length;n++){var l=o[n];f(e,l,t[l])}else{if("_"===t[0])return;if(-1!==t.indexOf(".")){var u=t.split("."),l=u.splice(u.length-1,1)[0];return void f(r["default"](e,u),l,i)}e[t]=i}}t.set=f,Object.defineProperty(t,"__esModule",{value:!0}),t["default"]=f});
+define(["require","exports","./get"],function(e,t,r){function f(e,t,i){if(e&&t)if("object"==typeof t)for(var n=0,o=Object.getOwnPropertyNames(t);n<o.length;n++){var l=o[n];f(e,l,t[l])}else{if("_"===t[0])return;if(-1!==t.indexOf(".")){var u=t.split("."),l=u.splice(u.length-1,1)[0];return void f(r["default"](e,u),l,i)}e[t]=i}}Object.defineProperty(t,"__esModule",{value:!0}),t.set=f,t["default"]=f});

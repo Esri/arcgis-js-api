@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
-define(["require","exports","dojo/_base/lang","./property"],function(r,e,o,a){function t(r,e,t){var c,n;return void 0===e||Array.isArray(e)?(n=r,t=e,c=[void 0]):(n=e,c=Array.isArray(r)?r:[r]),function(r,e,d){var i=r.constructor.prototype;c.forEach(function(c){var d=a.propertyJSONMeta(r,c,n);d.read&&"object"!=typeof d.read&&(d.read={}),o.setObject("read.reader",i[e],d),t&&(d.read.source=(d.read.source||[]).concat(t))})}}e.reader=t});
+define(["require","exports","dojo/_base/lang","./property"],function(r,e,o,a){function t(r,e,t){var c,d;return void 0===e||Array.isArray(e)?(d=r,t=e,c=[void 0]):(d=e,c=Array.isArray(r)?r:[r]),function(r,e,n){var i=r.constructor.prototype;c.forEach(function(c){var n=a.propertyJSONMeta(r,c,d);n.read&&"object"!=typeof n.read&&(n.read={}),o.setObject("read.reader",i[e],n),t&&(n.read.source=(n.read.source||[]).concat(t))})}}Object.defineProperty(e,"__esModule",{value:!0}),e.reader=t});

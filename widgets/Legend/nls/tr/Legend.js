@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define({points:"Noktalar",lines:"Çizgiler",polygons:"Alanlar",creatingLegend:"Gösterim oluşturuluyor",noLegend:"Gösterim yok",dotValue:"1 Nokta = {value} {unit}",currentObservations:"Geçerli gözlemler",previousObservations:"Önceki gözlemler",high:"Yüksek",low:"Düşük",esriMetersPerSecond:"m/sn",esriKilometersPerHour:"km/sa",esriKnots:"deniz mili",esriFeetPerSecond:"ft/sn",esriMilesPerHour:"mil/sa",showField:"{field}",showNormField:"{field} bölü {normField}",showNormPct:"toplamın yüzdesi olarak {field}",showRatio:"{field} / {normField}",showRatioPercent:"{normField} yüzdesi olarak {field}",showRatioPercentTotal:"{field} ve {normField} yüzdesi olarak {field}"});

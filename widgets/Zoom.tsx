@@ -32,7 +32,7 @@
 /// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
 
 import {aliasOf, subclass, declared, property} from "../core/accessorSupport/decorators";
-import {jsxFactory, renderable} from "./support/widget";
+import {tsx, renderable} from "./support/widget";
 
 import Widget = require("./Widget");
 import IconButton = require("./Zoom/IconButton");

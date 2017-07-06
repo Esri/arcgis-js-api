@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/lang","./Symbol3D","../core/accessorSupport/decorators"],function(e,r,o,t,s,l,n){var i=c=function(e){function r(r){var o=e.call(this)||this;return o.type="mesh-symbol-3d",o}return o(r,e),r.prototype.clone=function(){return new c({styleOrigin:s.clone(this.styleOrigin),symbolLayers:s.clone(this.symbolLayers),thumbnail:s.clone(this.thumbnail)})},r}(n.declared(l));t([n.property()],i.prototype,"type",void 0),t([n.shared(["Fill"])],i.prototype,"_allowedLayerTypes",void 0),i=c=t([n.subclass("esri.symbols.MeshSymbol3D")],i);var c;return i});
+define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/lang","./Symbol3D","../core/accessorSupport/decorators"],function(e,r,o,t,s,l,n){var i=c=function(e){function r(r){var o=e.call(this)||this;return o.type="mesh-symbol-3d",o}return o(r,e),r.prototype.clone=function(){return new c({styleOrigin:s.clone(this.styleOrigin),symbolLayers:s.clone(this.symbolLayers),thumbnail:s.clone(this.thumbnail)})},r}(n.declared(l));t([n.property()],i.prototype,"type",void 0),t([n.shared(["fill"])],i.prototype,"_allowedLayerTypes",void 0),i=c=t([n.subclass("esri.symbols.MeshSymbol3D")],i);var c;return i});

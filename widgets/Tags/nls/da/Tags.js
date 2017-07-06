@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define({addTags:"Tilføj nøgleord",noTagsFound:"Ingen eksisterende nøgleord matcher.",required:"Der kræves et eller flere nøgleord."});

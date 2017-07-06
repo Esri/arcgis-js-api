@@ -14,7 +14,7 @@
 // Adapted for WebGIS by Jascha Grübel (jgruebel@esri.com), Zürich 2015
 //
 
-  precision mediump  float;
+  $vsprecisionf
 
   //Camera
   uniform vec2 halfSizeNearPlane;
@@ -479,7 +479,7 @@ vec3 hsv2rgb(vec3 c)
 <!--Fragment Shader for Atmosphere-->
 <snippet name="fsRealisticAtmosphere"><![CDATA[
 
-  precision mediump  float;
+  $fsprecisionf
 
 $atmosphereUniformsConstantsVaryings
 

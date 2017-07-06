@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
-define(["../../core/declare","./Domain"],function(e,r){var a=e([r],{declaredClass:"esri.layers.support.InheritedDomain"});return a});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators","./Domain"],function(e,r,t,o,p,n){var s=function(e){function r(r){var t=e.call(this,r)||this;return t.type="inherited",t}return t(r,e),r}(p.declared(n));return o([p.property()],s.prototype,"type",void 0),s=o([p.subclass("esri.layers.support.InheritedDomain")],s)});

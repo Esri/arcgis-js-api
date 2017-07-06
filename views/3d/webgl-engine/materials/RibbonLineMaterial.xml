@@ -3,6 +3,8 @@
 <snippets>
 
 <snippet name="vsRibbonLine"><![CDATA[
+  $vsprecisionf
+
 	uniform mat4 proj;
 	uniform mat4 view;
 	uniform mat4 model;
@@ -10,7 +12,7 @@
 	uniform float extLineWidth;
 	uniform float nearPlane;
 
-	attribute vec3 $position;	
+	attribute vec3 $position;
 	attribute vec2 $uv0;
 	varying vec2 vtc;
 
@@ -52,17 +54,17 @@
   void clipAndTransform(inout vec4 pos, inout vec4 prev, inout vec4 next) {
 		float vnp = nearPlane*0.99;
 
-		//We have four vertices per point on the line. Start and end vertices 
+		//We have four vertices per point on the line. Start and end vertices
 		//are treated differently --> d > 0, d < 0
 		float d = abs($uv0.y) - 1.1;
 
 		//current pos behind ncp --> we need to clip
-		if(pos.z > -nearPlane) {			
+		if(pos.z > -nearPlane) {
 			if (d < 0.0) {
 				//previous in front of ncp
 				if(prev.z < -nearPlane) {
 					pos = mix(prev, pos, interp(vnp, prev, pos));
-					next = pos;			
+					next = pos;
 				} else {
 				  pos = vec4(0, 0, 0, 1);
 			  }
@@ -71,17 +73,17 @@
 			if(d > 0.0) {
 				if(next.z < -nearPlane) {
 					pos = mix(pos, next, interp(vnp, pos, next));
-					prev = pos;			
+					prev = pos;
 				} else {
 					pos = vec4(0, 0, 0, 1);
 				}
-			}			
-		}	else { 
-			//current position visible 
+			}
+		}	else {
+			//current position visible
 			//previous behind ncp
-			if (prev.z > -nearPlane) {				
-				prev = mix(pos, prev, interp(vnp, pos, prev));				
-			}					
+			if (prev.z > -nearPlane) {
+				prev = mix(pos, prev, interp(vnp, pos, prev));
+			}
 			//next behind ncp
 			if (next.z > -nearPlane) {
 				next = mix(next, pos, interp(vnp, next, pos));
@@ -98,14 +100,14 @@
 
 		prev = proj * prev;
 		prev.xy *= screenSize;
-		prev /= prev.w;		
+		prev /= prev.w;
   }
 
 #endif // SCREENSCALE
 
 	void main(void) {
 
-	float lineWidth = extLineWidth + $size; 
+	float lineWidth = extLineWidth + $size;
 
 #ifdef SCREENSCALE
 
@@ -114,9 +116,9 @@
 		vec2 left = (pos - toScreenCoords($auxpos1)).xy;
 		vec2 right = (toScreenCoords($auxpos2) - pos).xy;
 #else
-		vec4 pos  = view * vec4((model * vec4($position.xyz, 1.0)).xyz, 1.0); 
-		vec4 prev = view * vec4((model * vec4($auxpos1.xyz, 1.0)).xyz, 1.0); 
-		vec4 next = view * vec4((model * vec4($auxpos2.xyz, 1.0)).xyz, 1.0); 
+		vec4 pos  = view * vec4((model * vec4($position.xyz, 1.0)).xyz, 1.0);
+		vec4 prev = view * vec4((model * vec4($auxpos1.xyz, 1.0)).xyz, 1.0);
+		vec4 next = view * vec4((model * vec4($auxpos2.xyz, 1.0)).xyz, 1.0);
 
 		clipAndTransform(pos, prev, next);
 
@@ -190,7 +192,7 @@
 ]]></snippet>
 
 <snippet name="fsRibbonLine"><![CDATA[
-	precision mediump float;
+  $fsprecisionf
 
 	uniform vec4 eColor;
 	varying vec4 vColor;
@@ -199,6 +201,14 @@
 	void main() {
 		gl_FragColor = eColor * vColor;
 		//gl_FragColor.a = 1;
+	}
+]]></snippet>
+
+<snippet name="fsRibbonLineHighlight"><![CDATA[
+	$fsprecisionf
+
+	void main() {
+		gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
 	}
 ]]></snippet>
 

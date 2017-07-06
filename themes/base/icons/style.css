@@ -1,9 +1,9 @@
 @font-face {
   font-family: 'CalciteWebCoreIcons';
   src:
-    url('fonts/CalciteWebCoreIcons.ttf?erniwi') format('truetype'),
-    url('fonts/CalciteWebCoreIcons.woff?erniwi') format('woff'),
-    url('fonts/CalciteWebCoreIcons.svg?erniwi#CalciteWebCoreIcons') format('svg');
+    url('fonts/CalciteWebCoreIcons.ttf?cu4poq') format('truetype'),
+    url('fonts/CalciteWebCoreIcons.woff?cu4poq') format('woff'),
+    url('fonts/CalciteWebCoreIcons.svg?cu4poq#CalciteWebCoreIcons') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -432,40 +432,40 @@
   content: "\e687";
 }
 .esri-icon-north-navigation:before {
-  content: "\e900";
+  content: "\e688";
 }
 .esri-icon-locate-circled:before {
-  content: "\e901";
+  content: "\e689";
 }
 .esri-icon-dial:before {
-  content: "\e902";
+  content: "\e68a";
 }
 .esri-icon-polygon:before {
-  content: "\e903";
+  content: "\e68b";
 }
 .esri-icon-polyline:before {
-  content: "\e904";
+  content: "\e68c";
 }
 .esri-icon-visible:before {
-  content: "\e905";
+  content: "\e68d";
 }
 .esri-icon-non-visible:before {
-  content: "\e906";
+  content: "\e68e";
 }
 .esri-icon-link-vertical:before {
-  content: "\e907";
+  content: "\e68f";
 }
 .esri-icon-unlocked-link-vertical:before {
-  content: "\e908";
+  content: "\e690";
 }
 .esri-icon-link-horizontal:before {
-  content: "\e909";
+  content: "\e691";
 }
 .esri-icon-unlocked-link-horizontal:before {
-  content: "\e90a";
+  content: "\e692";
 }
 .esri-icon-swap:before {
-  content: "\e90b";
+  content: "\e693";
 }
 .esri-icon-cta-link-external:before {
   content: "\e694";
@@ -481,5 +481,35 @@
 }
 .esri-icon-launch-link-external:before {
   content: "\e698";
+}
+.esri-icon-rotate-back:before {
+  content: "\e699";
+}
+.esri-icon-pan2:before {
+  content: "\e69a";
+}
+.esri-icon-tracking:before {
+  content: "\e69b";
+}
+.esri-icon-expand2:before {
+  content: "\e69c";
+}
+.esri-icon-arrow-down:before {
+  content: "\e69d";
+}
+.esri-icon-arrow-up:before {
+  content: "\e69e";
+}
+.esri-icon-hollow-eye:before {
+  content: "\e69f";
+}
+.esri-icon-play-circled:before {
+  content: "\e6a0";
+}
+.esri-icon-volume-off:before {
+  content: "\e6a1";
+}
+.esri-icon-volume-on:before {
+  content: "\e6a2";
 }
 

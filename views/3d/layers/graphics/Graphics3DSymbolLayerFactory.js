@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
-define(["./Graphics3DIconSymbolLayer","./Graphics3DObjectSymbolLayer","./Graphics3DLineSymbolLayer","./Graphics3DPathSymbolLayer","./Graphics3DFillSymbolLayer","./Graphics3DExtrudeSymbolLayer","./Graphics3DTextSymbolLayer","../../webgl-engine/lib/Util"],function(e,r,a,y,i,n,t,l){var c=l.assert,o={Icon:e,Object:r,Line:a,Path:y,Fill:i,Extrude:n,Text:t},b={make:function(e,r,a){var y=o[e.type];c(y,"unknown symbol type "+e.type);var i=new y(e,r,a);return i}};return b});
+define(["require","exports","../../../../core/Logger","./Graphics3DIconSymbolLayer","./Graphics3DObjectSymbolLayer","./Graphics3DLineSymbolLayer","./Graphics3DPathSymbolLayer","./Graphics3DFillSymbolLayer","./Graphics3DExtrudeSymbolLayer","./Graphics3DTextSymbolLayer"],function(e,r,a,o,i,y,t,c,l,n){function p(e,r,a,o){var i=b[r.type];return i?new i(e,r,a,o):(s.error("GraphicsLayerFactory#make","unknown symbol type "+r.type),null)}Object.defineProperty(r,"__esModule",{value:!0});var s=a.getLogger("esri.views.3d.graphics");r.make=p;var b={icon:o,object:i,line:y,path:t,fill:c,extrude:l,text:n}});

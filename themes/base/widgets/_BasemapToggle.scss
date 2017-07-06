@@ -10,10 +10,10 @@ $basemap_toggle_size: $button_width * 2  !default;
     height: $basemap_toggle_size + $basemap_toggle_offset;
     background-color: transparent;
     @include boxShadow("none");
-    @include flexDisplay();
-    @include flexFlow(row, nowrap);
-    @include justifyContent(center);
-    @include alignItems(center);
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
     &:hover {
       background-color: transparent;
     }
@@ -47,9 +47,6 @@ $basemap_toggle_size: $button_width * 2  !default;
     margin-left: $basemap_toggle_offset;
     z-index: 1;
     @include defaultBoxShadow();
-    -webkit-animation: esri-basemap-slide 2000ms ease-in-out;
-    -moz-animation: esri-basemap-slide 2000ms ease-in-out;
-    -o-animation: esri-basemap-slide 2000ms ease-in-out;
     animation: esri-basemap-slide 2000ms ease-in-out;
   }
 
@@ -58,12 +55,10 @@ $basemap_toggle_size: $button_width * 2  !default;
     z-index: 3;
     width: 100%;
     height: 100%;
-    @include transition(background-color, 125ms, ease-in-out);
+    transition: background-color 125ms ease-in-out;
     background-color: rgba(255, 255, 255, 0);
     display: flex;
-    -webkit-align-items: flex-end;
     align-items: flex-end;
-    -webkit-justify-content: center;
     justify-content: center;
     .esri-basemap-toggle:hover {
       background-color: rgba($button_text_hover_color, 0.4);
@@ -72,8 +67,6 @@ $basemap_toggle_size: $button_width * 2  !default;
 
   .esri-basemap-toggle__title {
     display: none;
-    -webkit-flex: 1 0 100%;
-    -ms-flex: 1 0 100%;
     flex: 1 0 100%;
     height: auto;
     font-size: 9px;
@@ -125,7 +118,7 @@ $basemap_toggle_size: $button_width * 2  !default;
 
 ////////////////////////////////////////
 //  ANIMATIONS
-@include keyframes(esri-basemap-slide) {
+@keyframes esri-basemap-slide {
   0% {
     margin-top: 0;
     margin-left: 0;

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define({noItemsToDisplay:"Just nu finns det inga objekt att visa.",layerInvisibleAtScale:"Lagret är inte synligt med den aktuella skalan",layerError:"Ett fel uppstod när det här lagret skulle läsas in",untitledLayer:"Namnlöst lager"});

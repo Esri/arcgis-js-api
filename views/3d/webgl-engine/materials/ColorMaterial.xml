@@ -3,6 +3,8 @@
 <snippets>
 
 <snippet name="vertexShaderColorMaterial"><![CDATA[
+  $vsprecisionf
+
 	uniform mat4 proj;
 	uniform mat4 view;
 	uniform mat4 model;
@@ -10,7 +12,7 @@
 	attribute vec3 $position;
 	attribute vec4 $color;
 
-	varying vec4 vColor; 
+	varying vec4 vColor;
 
 	void main(void) {
 		vColor = $color * 0.003921568627451; // = 1/255;
@@ -19,7 +21,7 @@
 ]]></snippet>
 
 <snippet name="fragmentShaderColorMaterial"><![CDATA[
-	precision mediump float;
+	$fsprecisionf
 
 	uniform vec4 eColor;
 	varying vec4 vColor;

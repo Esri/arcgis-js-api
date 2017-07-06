@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define(["dojo/_base/array","./ColorRamp"],function(r,t){var a=t.createSubclass({declaredClass:"esri.tasks.support.MultipartColorRamp",properties:{colorRamps:[],type:"multipart"},toJSON:function(){var t=r.map(this.colorRamps,function(r){return r.toJSON()}),a={type:"multipart",colorRamps:t};return a}});return a});

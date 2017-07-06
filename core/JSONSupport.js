@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define(["require","exports","./tsSupport/declareExtendsHelper","./tsSupport/decorateHelper","./Accessor","./declare","./accessorSupport/read","./accessorSupport/write","./accessorSupport/decorators"],function(r,t,e,o,n,u,s,i,a){function c(r,t){if(!r)return null;if(r.declaredClass)throw new Error("JSON object is already hydrated");var e=this,o=new e;return o.read(r,t),o}var p=function(r){function t(){return null!==r&&r.apply(this,arguments)||this}return e(t,r),t.prototype.read=function(r,t){return s["default"](this,r,t),this},t.prototype.write=function(r,t){return i["default"](this,r||{},t)},t.prototype.toJSON=function(r){return this.write(null,r)},t}(a.declared(n));return p=o([a.subclass("esri.core.JSONSupport")],p),p.prototype.toJSON.isDefaultToJSON=!0,u.after(function(r){u.hasMixin(r,p)&&(r.fromJSON=c.bind(r))}),p});

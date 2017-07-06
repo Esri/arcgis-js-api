@@ -3,8 +3,8 @@ $earmark_size: 6px !default;
 @mixin navigationToggle() {
 
   .esri-navigation-toggle {
-    @include flexDisplay();
-    @include flexFlow(column, nowrap);
+    display: flex;
+    flex-flow: column nowrap;
     &:hover,
     &:focus {
       background-color: $background_hover_color;
@@ -15,7 +15,7 @@ $earmark_size: 6px !default;
   }
 
   .esri-navigation-toggle--horizontal {
-    @include flexFlow(row, nowrap);
+    flex-flow: row nowrap;
     .esri-navigation-toggle__button--rotate {
       border-top: none;
       border-left: solid 1px $border_color;
@@ -23,7 +23,6 @@ $earmark_size: 6px !default;
   }
 
   .esri-navigation-toggle__button {
-    -webkit-box-shadow: none;
     box-shadow: none;
     position: relative;
     background-color: transparent;
@@ -93,7 +92,7 @@ $earmark_size: 6px !default;
   width: 0;
   height: 0;
   border-style: solid;
-  @include transition(opacity, 125ms, ease-in-out);
+  transition: opacity 125ms ease-in-out;
 }
 
 @if $include_NavigationToggle == true {

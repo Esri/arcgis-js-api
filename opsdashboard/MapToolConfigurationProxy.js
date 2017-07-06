@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define(["require","exports","../core/tsSupport/extendsHelper","../core/tsSupport/decorateHelper","../core/typescript","./core/ExtensionConfigurationBase"],function(e,t,r,n,o,i){var s=function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return r(t,e),t.prototype._initializeResponseReceived=function(e){var t=this;this.inherited(arguments).then(function(){return t.getMapWidgetProxy(t.config.mapWidgetId).then(function(e){this.mapWidgetProxy=e})})},t}(i);return n([o.shared("esri.opsdashboard.MapToolConfigurationProxy")],s.prototype,"declaredClass",void 0),s=n([o.subclass()],s)});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define({points:"Punkter",lines:"Linjer",polygons:"Polygoner",creatingLegend:"Opretter forklaring",noLegend:"Ingen forklaring",dotValue:"1 prik = {value} {unit}",currentObservations:"Aktuelle observationer",previousObservations:"Tidligere observationer",high:"Høj",low:"Lav",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/t",esriKnots:"knob",esriFeetPerSecond:"fod/sek",esriMilesPerHour:"mil/t",showField:"{field}",showNormField:"{field} divideret med {normField}",showNormPct:"{field} som en procent af den samlede værdi",showRatio:"Forholdet af {field} til {normField}",showRatioPercent:"{field} som en procent af {normField}",showRatioPercentTotal:"{field} som en procent af {field} og {normField}"});

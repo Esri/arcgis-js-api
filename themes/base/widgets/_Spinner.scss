@@ -1,9 +1,7 @@
 $spinner_size: 24px;
-
 @mixin spinner() {
   .esri-spinner {
     background-color: transparent;
-    -webkit-box-shadow: none;
     box-shadow: none;
     padding: 0;
     overflow: visible;
@@ -16,10 +14,8 @@ $spinner_size: 24px;
     pointer-events: none;
     display: none;
     opacity: 0;
-    display: none;
-    @include transformOrigin(0 0);
+    transform-origin: 0 0;
   }
-
   .esri-spinner::before {
     position: absolute;
     margin: -50% 0 0 -50%;
@@ -28,71 +24,52 @@ $spinner_size: 24px;
     background: url("../base/images/Loading_Indicator_double_32.svg") no-repeat center;
     display: block;
     content: '';
-    -webkit-animation: esri-spinner--rotate-animation 750ms linear infinite;
-    -moz-animation: esri-spinner--rotate-animation 750ms linear infinite;
-    -ms-animation: esri-spinner--rotate-animation 750ms linear infinite;
-    -o-animation: esri-spinner--rotate-animation 750ms linear infinite;
     animation: esri-spinner--rotate-animation 750ms linear infinite;
   }
-
-  .esri-spinner--visible {
-    display: block;
-  }
-
   .esri-spinner--start {
-    -webkit-animation: esri-spinner--start-animation 250ms cubic-bezier(.17, .67, .36, .99) forwards;
-    -moz-animation: esri-spinner--start-animation 250ms cubic-bezier(.17, .67, .36, .99) forwards;
-    -ms-animation: esri-spinner--start-animation 250ms cubic-bezier(.17, .67, .36, .99) forwards;
-    -o-animation: esri-spinner--start-animation 250ms cubic-bezier(.17, .67, .36, .99) forwards;
+    display: block;
     animation: esri-spinner--start-animation 250ms cubic-bezier(.17, .67, .36, .99) forwards;
   }
-
   .esri-spinner--finish {
+    display: block;
     opacity: 1;
-    -webkit-animation: esri-spinner--finish-animation 125ms ease-in forwards;
-    -moz-animation: esri-spinner--finish-animation 125ms ease-in forwards;
-    -ms-animation: esri-spinner--finish-animation 125ms ease-in forwards;
-    -o-animation: esri-spinner--finish-animation 125ms ease-in forwards;
     animation: esri-spinner--finish-animation 125ms ease-in forwards;
-    -webkit-animation-delay: 75ms;
-    -moz-animation-delay: 75ms;
-    -ms-animation-delay: 75ms;
-    -o-animation-delay: 75ms;
     animation-delay: 75ms;
   }
 }
 
-@include keyframes(esri-spinner--start-animation) {
+@keyframes esri-spinner--start-animation {
   0% {
     opacity: 0;
-    @include transform(scale(0));
+    transform: scale(0);
   }
   100% {
     opacity: 1;
-    @include transform(scale(1));
+    transform: scale(1);
   }
 }
 
-@include keyframes(esri-spinner--finish-animation) {
+@keyframes esri-spinner--finish-animation {
   0% {
     opacity: 1;
-    @include transform(scale(1));
+    transform: scale(1);
   }
   100% {
     opacity: 0;
-    @include transform(scale(0));
+    transform: scale(0);
   }
 }
 
-@include keyframes(esri-spinner--rotate-animation) {
+@keyframes esri-spinner--rotate-animation {
   0% {
-    @include transform(rotate(0deg));
+    transform: rotate(0deg);
   }
   100% {
-    @include transform(rotate(360deg));
+    transform: rotate(360deg);
   }
 }
 
 @if $include_Spinner == true {
   @include spinner();
 }
+

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
-define(["require","exports","../../../../Basemap","../../../../support/basemapUtils","../../../../geometry/ScreenPoint","../../../../core/screenUtils"],function(e,t,n,i,r,o){function a(e){var t=null;return"string"==typeof e?t=e:e instanceof n&&(t=i.wellKnownBasemapId(e)),t||"gray"}function l(e){var t=a(e);return t&&t.replace("-vector","")}function c(e){var t=e.width,n=e.height,i=e.pixelSizeAt(new r(.5*t,.5*n));if(0>=i&&(i=e.pixelSizeAt(new r(.5*t,.95*n)),0>=i)){var o=e.camera.position.clone();o.z=0,i=2*e.pixelSizeAt(o)}return i}function p(e,t){return Math.ceil(c(t)*o.pt2px(o.toPt(e)))}t.normalizedBasemapId=l,t.getPixelSize=c,t.toWorldScale=p});
+define(["require","exports","../../../../geometry/ScreenPoint","../../../../core/screenUtils","../../../../Basemap","../../../../support/basemapUtils"],function(e,t,n,i,o,r){function a(e){var t=e.width,i=e.height,o=e.pixelSizeAt(new n(.5*t,.5*i));if(0>=o&&(o=e.pixelSizeAt(new n(.5*t,.95*i)),0>=o)){var r=e.camera.position.clone();r.z=0,o=2*e.pixelSizeAt(r)}return o}function p(e,t){return Math.ceil(a(t)*i.pt2px(i.toPt(e)))}function l(e){return"multipoint"===e?"point":"mesh"===e?"polygon":e}function u(e,t){var n=null;return"string"==typeof e&&t.indexOf(e)>-1?n=e:e instanceof o&&(n=r.getWellKnownBasemapId(e)),n||"gray"}Object.defineProperty(t,"__esModule",{value:!0}),t.getPixelSize=a,t.toWorldScale=p,t.getStorageType=l,t.getBasemapId=u});

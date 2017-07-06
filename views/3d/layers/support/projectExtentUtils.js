@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
-define(["require","exports","../../../../portal/support/geometryServiceUtils","../../../../core/promiseUtils","../../../../tasks/support/ProjectParameters"],function(e,r,t,n,l){function o(e){var r=e.view.spatialReference,o=e.layer.fullExtent&&e.layer.fullExtent.spatialReference;return!o||o.equals(r)||"local"!==e.view.viewingMode?n.resolve(null):t.create(e.layer.portalItem).then(function(t){var n=new l;return n.geometries=[e.layer.fullExtent],n.outSR=r,t.project(n)}).then(function(r){return!e.destroyed&&r&&Array.isArray(r)&&1===r.length?r[0]:void 0}).otherwise(function(){return null})}r.toView=o});
+define(["require","exports","../../../../portal/support/geometryServiceUtils","../../../../core/promiseUtils","../../../../tasks/support/ProjectParameters","../../../../geometry/support/webMercatorUtils"],function(e,r,t,l,o,n){function a(e){var r=e.view.spatialReference,a=e.layer.fullExtent&&e.layer.fullExtent.spatialReference;return!a||a.equals(r)||"local"!==e.view.viewingMode?l.resolve(null):n.canProject(a,r)?l.resolve(n.project(e.layer.fullExtent,r)):t.create(e.layer.portalItem).then(function(t){var l=new o;return l.geometries=[e.layer.fullExtent],l.outSR=r,t.project(l)}).then(function(r){return!e.destroyed&&r&&Array.isArray(r)&&1===r.length?r[0]:void 0}).otherwise(function(){return null})}Object.defineProperty(r,"__esModule",{value:!0}),r.toView=a});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
-define(["../../core/kebabDictionary","../../core/JSONSupport","../../core/lang"],function(e,r,a){var n=e({codedValue:"coded-value"}),o=r.createSubclass({declaredClass:"esri.layers.support.Domain",properties:{name:{value:null},type:{json:{read:n.fromJSON},value:null}},toJSON:function(){return a.fixJson({name:this.name,type:n.toJSON(this.type)})}});return o});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators","../../core/JSONSupport","../../core/kebabDictionary"],function(e,r,t,o,p,n,c){var i=c({codedValue:"coded-value"}),u=function(e){function r(r){var t=e.call(this,r)||this;return t.name=null,t.type=null,t}return t(r,e),r.prototype.writeType=function(e,r){r.type=i.toJSON(e)},r}(p.declared(n));return o([p.property({json:{write:!0}})],u.prototype,"name",void 0),o([p.property({json:{read:i.fromJSON,write:!0}})],u.prototype,"type",void 0),o([p.writer("type")],u.prototype,"writeType",null),u=o([p.subclass("esri.layers.support.Domain")],u)});

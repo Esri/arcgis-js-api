@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define(["../../Color","./ColorRamp"],function(o,r){var l=r.createSubclass({declaredClass:"esri.tasks.support.AlgorithmicColorRamp",properties:{algorithm:null,fromColor:{value:null,type:o},toColor:{value:null,type:o},type:"algorithmic"},toJSON:function(){var r;switch(this.algorithm.toLowerCase()){case"cie-lab":r="esriCIELabAlgorithm";break;case"hsv":r="esriHSVAlgorithm";break;case"lab-lch":r="esriLabLChAlgorithm"}var l={type:"algorithmic",algorithm:r};return l.fromColor=o.toJSON(this.fromColor),l.toColor=o.toJSON(this.toColor),l}});return l});

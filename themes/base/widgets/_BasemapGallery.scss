@@ -6,7 +6,6 @@
     width: $panel_width;
     max-height: $panel_max_height;
     min-height: $panel_min_height;
-    overflow: hidden;
     overflow-y: auto;
     position: relative;
     transition: max-height 250ms ease-in-out, width 250ms ease-in-out;
@@ -22,7 +21,6 @@
     padding: 0;
   }
 
-  .esri-disabled .esri-basemap-gallery__item-container,
   .esri-basemap-gallery--source-refreshing .esri-basemap-gallery__item-container {
     opacity: $disabled_opacity;
   }

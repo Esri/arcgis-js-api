@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 /**
  * The TileLayer allows you work with a cached [map service](http://server.arcgis.com/en/server/latest/publish-services/windows/what-is-a-map-service.htm) exposed by the ArcGIS Server REST API and add it to
@@ -33,7 +33,7 @@
  * ```js
  * require(["esri/layers/TileLayer"], function(TileLayer) {
  *   var layer = new TileLayer({
- *     url: "http://services.arcgisonline.com/arcgis/rest/services/World_Terrain_Base/MapServer"
+ *     url: "https://services.arcgisonline.com/arcgis/rest/services/World_Terrain_Base/MapServer"
  *   });
  *   // Add layer to map
  * });

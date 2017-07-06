@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define(["../../core/declare","dojo/_base/lang","../../core/lang"],function(i,e,s){var r=i(null,{declaredClass:"esri.layers.support.KMLFolder",constructor:function(i){e.mixin(this,i),s.isDefined(this.visibility)&&(this.visible=!!this.visibility)}});return r});

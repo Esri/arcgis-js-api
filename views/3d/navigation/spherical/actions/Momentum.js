@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
-define(["require","exports","../../../../navigation/Momentum"],function(e,n,m){n.ScreenspaceMomentumEstimator=m.ScreenspaceMomentumEstimator,n.ScreenspaceMomentum=m.ScreenspaceMomentum});
+define(["require","exports","../../../../navigation/Momentum"],function(e,n,t){Object.defineProperty(n,"__esModule",{value:!0}),n.ScreenspaceMomentumEstimator=t.ScreenspaceMomentumEstimator,n.ScreenspaceMomentum=t.ScreenspaceMomentum});

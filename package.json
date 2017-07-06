@@ -1,19 +1,27 @@
 {
-  "name": "arcgis-js-api",
-  "version": "4.3.1",
-  "private": true,
-  "description": "Minified, unbuilt version of the ArcGIS API for JavaScript that can be used for bower.",
+  "name": "@esri/arcgis-js-api",
+  "version": "4.4.0",
+  "description": "Minified, unbuilt version of the ArcGIS API for JavaScript",
   "license": "SEE LICENSE IN copyright.txt",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Esri/arcgis-js-api.git"
+    "url": "git+https://github.com/Esri/arcgis-js-api.git"
   },
   "keywords": [
     "esrijs",
-    "bower",
     "esri",
     "arcgis",
     "gis"
   ],
+  "dependencies": {
+    "dgrid": "Esri/dgrid#v1.1.0/esri-3.20.0",
+    "dijit": "Esri/dijit#v1.12.2/esri-3.21.0",
+    "dojo": "Esri/dojo#v1.12.2/esri-3.21.0",
+    "dojo-dstore": "^1.1.1",
+    "dojo-util": "^1.12.2",
+    "dojox": "Esri/dojox#v1.12.2/esri-3.21.0",
+    "moment": "2.18.1"
+  },
+  "homepage": "https://developers.arcgis.com/javascript",
   "dojoBuild": "esri.profile.js"
 }

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
-define(["require","exports","dojo/_base/kernel","moment/moment"],function(e,n,r,a){function t(e,n,t){var i=r.locale,o=i in l;if(!o){var c=i.split("-");c.length>1&&c[0]in l&&(i=c[0],o=!0)}o?n(["moment/locale/"+i],function(){t(a)}):t(a)}var l={ar:1,"ar-dz":1,"ar-ly":1,"ar-ma":1,"ar-sa":1,"ar-tn":1,bs:1,cs:1,da:1,de:1,"de-at":1,el:1,"en-au":1,"en-ca":1,"en-gb":1,"en-ie":1,"en-nz":1,es:1,"es-do":1,et:1,fi:1,fr:1,"fr-ca":1,"fr-ch":1,he:1,hi:1,hr:1,id:1,it:1,ja:1,ko:1,lt:1,lv:1,nb:1,nl:1,"nl-be":1,pl:1,pt:1,"pt-br":1,ro:1,ru:1,sr:1,"sr-cyrl":1,sv:1,th:1,tr:1,vi:1,"zh-cn":1,"zh-hk":1,"zh-tw":1};n.load=t});
+define(["require","exports","dojo/_base/kernel","moment/moment"],function(e,r,n,a){function t(e,r,t){var o=n.locale,i=o in l;if(!i){var c=o.split("-");c.length>1&&c[0]in l&&(o=c[0],i=!0)}i?r(["moment/locale/"+o],function(){t(a)}):t(a)}Object.defineProperty(r,"__esModule",{value:!0});var l={ar:1,"ar-dz":1,"ar-kw":1,"ar-ly":1,"ar-ma":1,"ar-sa":1,"ar-tn":1,bs:1,cs:1,da:1,de:1,"de-at":1,"de-ch":1,el:1,"en-au":1,"en-ca":1,"en-gb":1,"en-ie":1,"en-nz":1,es:1,"es-do":1,et:1,fi:1,fr:1,"fr-ca":1,"fr-ch":1,he:1,hi:1,hr:1,id:1,it:1,ja:1,ko:1,lt:1,lv:1,nb:1,nl:1,"nl-be":1,pl:1,pt:1,"pt-br":1,ro:1,ru:1,sr:1,"sr-cyrl":1,sv:1,th:1,tr:1,vi:1,"zh-cn":1,"zh-hk":1,"zh-tw":1};r.load=t});

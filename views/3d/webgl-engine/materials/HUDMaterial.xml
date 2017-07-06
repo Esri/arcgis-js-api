@@ -2,513 +2,278 @@
 
 <snippets>
 
-<snippet name="HUDMaterialCommonVariables"><![CDATA[
-	uniform mat4 proj;
-	uniform mat4 view;
-	uniform mat4 model;
-	uniform mat4 modelNormal;
-	uniform vec4 viewport;
-	uniform vec3 camPos;
-	uniform float pixelRatio;
-	uniform vec2 screenOffset;
-	uniform vec2 anchorPos;
-	uniform float polygonOffset;
-	uniform float cameraGroundRelative;
+<snippet name="vertexShaderHUD"><![CDATA[
+  $vsprecisionf
 
-	attribute vec3 $position;
-	attribute vec3 $normal;
-	attribute vec2 $uv0;
-	attribute vec4 $color;
+  $commonAttributesAndUniformsHUD
+
+  uniform float pixelRatio;
+  uniform vec2 screenOffset;
+  uniform vec2 anchorPos;
+
+#ifdef SCREEN_SIZE_PERSPECTIVE
+
+  uniform vec4 screenSizePerspective;
+
+#endif
+
+#ifdef DEBUG_DRAW_BORDER
+  varying vec3 debugBorderCoords;
+#endif
+
+  attribute vec2 $uv0;
+  attribute vec4 $color;
   attribute vec2 $size;
-  attribute vec4 $auxpos1;
   attribute vec4 $auxpos2;
 
-	varying vec4 vcolor;
+  varying vec4 vcolor;
 
-#ifdef OCCL_PIXELSHADER
- 	varying vec4 vtc;
+  varying vec2 vtc;
+  varying vec2 vsize;
+
+  $vvUniforms
+
+  $alignToPixelCenter
+  $alignToPixelOrigin
+  $projectPositionHUD
+  $vvFunctions
+
+  void main(void) {
+    ProjectHUDAux projectAux;
+    vec4 posProj = projectPositionHUD(projectAux);
+
+    vec2 inputSize;
+
+#ifdef SCREEN_SIZE_PERSPECTIVE
+
+    inputSize = screenSizePerspectiveScaleVec2($size, projectAux.absCosAngle, projectAux.distanceToCamera, screenSizePerspective);
+
+    vec2 screenOffsetScaled = screenSizePerspectiveScaleFloat(screenOffset, projectAux.absCosAngle, projectAux.distanceToCamera, screenSizePerspectiveAlignment);
+
 #else
-	varying vec2 vtc;
-	varying vec2 vsize;
-	uniform sampler2D framebufferTex;
-	uniform vec3 markerColor;
+
+    inputSize = $size;
+
+    vec2 screenOffsetScaled = screenOffset;
 #endif
-
-$vvUniforms
-
-]]></snippet>
-
-<snippet name="matchPixelOrigin"><![CDATA[
-	vec4 matchPixelOrigin(vec4 clipCoord, vec2 widthHeight) {
-		vec2 xy = vec2(.5) + .5 * clipCoord.xy / clipCoord.w;
-		vec2 pixelSz = vec2(1.0) / widthHeight;
-		vec2 ij = floor((xy + .5 * pixelSz) * widthHeight);
-		vec2 result = ((ij * pixelSz) * 2.0 - vec2(1.0)) * clipCoord.w;
-		return vec4(result.x, result.y, clipCoord.z, clipCoord.w);
-	}
-]]></snippet>
-
-<snippet name="calcPosMatchPixelCenter"><![CDATA[
-
-		vec3 posModel = (model * vec4($position, 1.0)).xyz;
-		vec3 posView = (view * vec4(posModel, 1.0)).xyz;
-
-		vec3 vnormal = (modelNormal * vec4($normal, 1.0)).xyz;
-
-		// groundRelative is 1 if both camera and symbol are on the same side of the ground, -1 otherwise
-		float pointGroundSign = sign(pointGroundDistance);
-		if (pointGroundSign == 0.0) {
-		  pointGroundSign = 1.0;
-		}
-
-		float groundRelative = cameraGroundRelative * pointGroundSign;
-		// cameraGroundRelative must not be 0 (guaranteed by HUDMaterial.js)
-
-		// view angle dependent part of polygon offset emulation
-		// we take the absolute value because the sign that is dropped is
-		// instead introduced using the ground-relative position of the symbol and the camera
-		float cosAlpha = clamp(dot(vnormal * pointGroundSign, normalize(camPos - posModel)), 0.01, 1.0);
-		if (polygonOffset > .0) {
-			float tanAlpha = sqrt(1.0 - cosAlpha * cosAlpha) / cosAlpha;
-			float factor = (1.0 - tanAlpha / viewport[2]);
-			// same side of the terrain
-			if (groundRelative > 0.0) {
-				posView *= factor;
-			}
-			// opposite sides of the terrain
-			else {
-				posView /= factor;
-			}
-		}
-
-    	posView += centerOffset;
-
-		vec4 posProj = proj * vec4(posView, 1.0);
-
-		// constant part of polygon offset emulation
-		posProj.z -= groundRelative * polygonOffset * posProj.w;
-
-		posProjCenter = matchPixelCenter(posProj, viewport.zw);
-
-]]></snippet>
-
-<snippet name="vertexShaderHUD"><![CDATA[
-    $HUDMaterialCommonVariables
-
-	$matchPixelCenter
-	$matchPixelOrigin
-	$vvFunctions
-
-	void main(void) {
-
-		vec3 centerOffset = $auxpos1.xyz;
-		float pointGroundDistance = $auxpos1.w;
 
 #ifdef VV_SIZE
-		// only use width (.xx) for proportional scaling
-		// (if no width was defined in vv, width
-		//  will be a copy of height vv)
-		vec2 inputSize = vvGetScale($auxpos2).xx * $size;
-#else
-		vec2 inputSize = $size;
+    // only use width (.xx) for proportional scaling
+    // (if no width was defined in vv, width
+    //  will be a copy of height vv)
+    inputSize *= vvGetScale($auxpos2).xx;
 #endif
 
-		vec2 combinedSize = inputSize * pixelRatio;
-
-		vec4 posProjCenter;
-		$calcPosMatchPixelCenter
+    vec2 combinedSize = inputSize * pixelRatio;
+    vec4 quadOffset = vec4(0);
 
 #ifdef OCCL_TEST
-		if (texture2D(framebufferTex, .5 + .5 * posProjCenter.xy / posProjCenter.w).rgb == markerColor) {
+    if (testVisibilityHUD(posProj)) {
 #endif
-			vec2 uv01 = floor($uv0);
-			vec2 uv = $uv0 - uv01;
-			float dist = distance(camPos, posModel);
-			posProj.xy += ((uv01 - anchorPos) * 2.0 * combinedSize + screenOffset)/ viewport.zw * posProj.w;
-			vtc.xy = uv;
-			vsize = inputSize;
-#ifdef OCCL_TEST
-		} else {
-			vtc = vec2(.0);
-		}
-#endif
+      // UV goes from 0 to 1.99999, where the integer part is used
+      // for the normalized vertex coordinates, and the fractional
+      // part is used for texture sampling
+      vec2 uv01 = floor($uv0);
+      vec2 uv = $uv0 - uv01;
 
-#ifdef OCCL_PIXELSHADER
-	vtc.zw = .5 + .5 * posProjCenter.xy / posProjCenter.w;
-#endif
-		gl_Position = matchPixelOrigin(posProj, viewport.zw);
-
-#ifdef VV_COLOR
-		vcolor = vvGetColor($auxpos2, vvColorValues, vvColorColors);
-#else
-		vcolor = $color / 255.0;
-#endif
-	}
-]]></snippet>
-
-<snippet name="vertexShaderHUDWorldScale"><![CDATA[
-    $HUDMaterialCommonVariables
-
-	uniform vec2 minMaxWorldSizeFactor;
-
-	$matchPixelCenter
-	$vvFunctions
-
-	void main(void) {
-		vec3 centerOffset = $auxpos1.xyz;
-		float pointGroundDistance = $auxpos1.w;
-#ifdef VV_SIZE
-		vec2 combinedSize = vvGetScale($auxpos2).xy * $size;
-#else
-		vec2 combinedSize = $size;
-#endif
-
-		vec4 posProjCenter;
-
-		$calcPosMatchPixelCenter
-
-#ifdef OCCL_TEST
-		if (texture2D(framebufferTex, .5 + .5 * posProjCenter.xy / posProjCenter.w).rgb == markerColor) {
-#endif
-			float scale = 1.0;
-			vec2 minMaxWorldSize = distance(camPos, position)*minMaxWorldSizeFactor;
-			if (minMaxWorldSize.x > combinedSize.y)
-				scale = minMaxWorldSize.x / combinedSize.y;
-			else if (minMaxWorldSize.y > 0.0)
-				scale = min(1.0, minMaxWorldSize.y / combinedSize.y);
-
-			vec2 uv01 = floor($uv0);
-			vec2 uv = $uv0 - uv01;
-			posView.xy += (uv01 - anchorPos) * combinedSize * scale;
-			vtc.xy = uv;
-#ifdef OCCL_TEST
-		} else {
-			vtc = vec2(.0);
-		}
-#endif
-
-#ifdef OCCL_PIXELSHADER
-	vtc.zw = .5 + .5 * posProjCenter.xy / posProjCenter.w;
-#endif
-		posProj = proj * vec4(posView,1.0);
-		posProj.xy += screenOffset / viewport.zw * posProj.w;
-		gl_Position = posProj;
-
-#ifdef VV_COLOR
-		vcolor = vvGetColor($auxpos2, vvColorValues, vvColorColors);
-#else
-		vcolor = $color / 255.0;
-#endif
-	}
-]]></snippet>
-
-
-
-<snippet name="calcLabelDirections"><![CDATA[
-	vec2 uv01 = floor($uv0);
-	vec2 uv = $uv0 - uv01;
-
-	vec3 labelDir, labelDirOrtho;
-
-	int isUp = 0;
-	vec2 vId = (uv01 - vec2(.5, .5))*2.0;
-
-	vec3 viewDirInNormalPlane = normalize(camDir.xyz - dot(camDir.xyz, direction)*direction);
-	float angleToNormal = abs(dot(viewDirInNormalPlane,up));
-	float angleToDirection = abs(dot(camDir.xyz, direction));
-	if (angleToDirection < 0.985 && angleToNormal < 0.500)
-	{
-	    if (angleToNormal < 0.422) {
-		    isUp = 1;
-		    labelDir = direction;
-		    labelDirOrtho = up;
-		    vId.y += 0.5;
-		} else {
-		    labelDir = direction;
-            labelDirOrtho = cross(viewDirInNormalPlane, direction);
-            vId.y += dot(labelDirOrtho, up)*0.5;
-		}
-	}
-	else
-	{
-		labelDir = direction;
-		labelDirOrtho = normalize(cross(up,direction));
-	}
-]]></snippet>
-
-<snippet name="vertexShaderHUDDirection"><![CDATA[
-  $HUDMaterialCommonVariables
-  uniform vec3 direction;
-
-  $matchPixelCenter
-	$vvFunctions
-
-	void main(void) {
-		vec3 centerOffset = $auxpos1.xyz;
-		float pointGroundDistance = $auxpos1.w;
-#ifdef VV_SIZE
-		vec2 inputSize = vvGetScale($auxpos2).xy * $size;
-#else
-		vec2 inputSize = $size;
-#endif
-		vec2 combinedSize = inputSize * pixelRatio;
-
-        vec4 posProjCenter;
- 		$calcPosMatchPixelCenter
-
- 		vec3 up = vnormal;
- 		vec3 camDir = normalize(vec3(view[0][2],view[1][2],view[2][2]));
-
- #ifdef OCCL_TEST
- 		if (texture2D(framebufferTex, .5 + .5 * posProjCenter.xy / posProjCenter.w).rgb == markerColor) {
- #endif
-
- 			$calcLabelDirections
-
-		    float scale;
-		    if (proj[2][3] != 0.0)  // perspective projection
- 			    scale = posProj.w*0.5/viewport[2];
- 			else                    // othographic projection
- 			    scale = 2.0/proj[0][0]/viewport[2];
-
- 			posModel.xyz += labelDir * vId.x * combinedSize.x * scale ;
- 			posModel.xyz += labelDirOrtho * vId.y * combinedSize.y * scale;
-
-      // capability to flip upside down was lost when label texture atlases were implemented. this was the old code:
- 			//vec4 posDirProj = proj*view*model * vec4($position+direction, 1.0);
- 			//vec4 posProjUnmodified = proj*view*model * vec4($position, 1.0);
- 			//if (posDirProj.x < posProjUnmodified.x)
- 			//{
- 			//	if (isUp==1)
- 			//		uv.x = texScale.x-uv.x;
- 			//	else
- 			//		uv = texScale-uv;
- 			//}
- 			vtc.xy = uv;
- #ifdef OCCL_TEST
- 		} else {
- 			vtc = vec2(.0);
- 		}
- #endif
-
- #ifdef OCCL_PIXELSHADER
-	vtc.zw = .5 + .5 * posProjCenter.xy / posProjCenter.w;
-#endif
- 		vec4 pos4 = proj * view * vec4(posModel,1.0);
- 		gl_Position = pos4;
-
-#ifdef VV_COLOR
-		vcolor = vvGetColor($auxpos2, vvColorValues, vvColorColors);
-#else
-		vcolor = $color / 255.0;
-#endif
- 	}
- ]]></snippet>
-
-
-<snippet name="vertexShaderHUDDirectionWorldScale"><![CDATA[
-    $HUDMaterialCommonVariables
-
-	uniform vec2 minMaxWorldSizeFactor;
-	uniform vec3 direction;
-
-	$matchPixelCenter
-	$matchPixelOrigin
-	$vvFunctions
-
-	void main(void) {
-		vec3 centerOffset = $auxpos1.xyz;
-		float pointGroundDistance = $auxpos1.w;
-#ifdef VV_SIZE
-		vec2 combinedSize = vvGetScale($auxpos2).xy * $size;
-#else
-		vec2 combinedSize = $size;
-#endif
-
-		vec4 posProjCenter;
-		$calcPosMatchPixelCenter
-
-		vec3 up = vnormal;
-		vec3 camDir = normalize(vec3(view[0][2],view[1][2],view[2][2]));
-
-#ifdef OCCL_TEST
-		if (texture2D(framebufferTex, .5 + .5 * posProjCenter.xy / posProjCenter.w).rgb == markerColor) {
-#endif
-
-			$calcLabelDirections
-
-			float scale = 1.0;
-			vec2 minMaxWorldSize = minMaxWorldSizeFactor;
-			if (proj[2][3] != 0.0)  // perspective projection
-				minMaxWorldSize = distance(camPos, position)*minMaxWorldSizeFactor;
-			if (minMaxWorldSize.x > combinedSize.y)
-				scale = 0.5 * minMaxWorldSize.x / combinedSize.y;
-			else if (minMaxWorldSize.y > 0.0)
-				scale = 0.5 * min(1.0, minMaxWorldSize.y / combinedSize.y);
-
-			posModel.xyz += labelDir*vId.x*combinedSize.x*scale;
-			posModel.xyz += labelDirOrtho*vId.y*combinedSize.y*scale;
-
-      // capability to flip upside down was lost when label texture atlases were implemented. this was the old code:
-			//vec4 posDirProj = proj*view*model * vec4($position+direction, 1.0);
-			//vec4 posProjUnmodified = proj*view*model * vec4($position, 1.0);
- 			//if (posDirProj.x<posProjUnmodified.x)
- 			//{
- 			//	if (isUp==1)
- 			//		uv.x = texScale.x-uv.x;
- 			//	else
- 			//		uv = texScale-uv;
- 			//}
- 			//uv.y += (1.0 - texScale.y);
-			vtc.xy = uv;
-#ifdef OCCL_TEST
-		} else {
-			vtc = vec2(.0);
-		}
-#endif
-
-#ifdef OCCL_PIXELSHADER
-	vtc.zw = .5 + .5 * posProjCenter.xy / posProjCenter.w;
-#endif
-		vec4 pos4 = proj * view * vec4(posModel,1.0);
-		gl_Position = pos4;
-
-#ifdef VV_COLOR
-		vcolor = vvGetColor($auxpos2, vvColorValues, vvColorColors);
-#else
-		vcolor = $color / 255.0;
-#endif
-	}
-]]></snippet>
-
-<snippet name="fragmentShaderHUDBase"><![CDATA[
-	precision mediump float;
-
-	#extension GL_OES_standard_derivatives : require
-
-	uniform sampler2D tex;
-	uniform vec4 overrideColor;
-	uniform vec4 outlineColor;
-	uniform float outlineSize;
-
-	varying vec4 vcolor;
-
-#ifdef OCCL_PIXELSHADER
-	varying vec4 vtc;
-	uniform vec3 markerColor;
-	uniform sampler2D framebufferTex;
-#else
-	varying vec2 vtc;
-	varying vec2 vsize;
-#endif
-
-	void main() {
-
-#ifdef OCCL_PIXELSHADER
-   		if (texture2D(framebufferTex, vtc.zw).rgb != markerColor)
-   			discard;
-#endif
+      // Displace icon based on anchor position (normalized for size) and
+      // absolute screen offset. anchorPos is [-0.5, 0.5]
+      quadOffset.xy = ((uv01 - anchorPos) * 2.0 * combinedSize + screenOffsetScaled) / viewport.zw * posProj.w;
 
 #ifdef SIGNED_DISTANCE_FIELD
-		vec4 color = vec4(0.0, 0.0, 0.0, 0.0);
-		vec4 fillPixelColor = overrideColor * vcolor;
 
-		// Attempt to sample texel centers to avoid thin cross outline
-		// disappearing with large symbol sizes.
-		// see: https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/7058#issuecomment-603041
-		const float txSize = 128.0;
-		vec2 scaleFactor = ((vsize - txSize) / txSize);
-		vec2 samplePos = vtc + vec2(1.0, -1.0) * (1.0 / txSize) * scaleFactor;
-
-		// Distance in [-0.5, 0.5]
-		float d = dot(texture2D(tex, samplePos), vec4(1.0/16777216.0, 1.0/65535.0, 1.0/256.0, 1.0)) - 0.5;
-
-		// Work around loss of precision for 'd = 0.0'.
-		// '0' gets normalised to 0.5 * 256 = 128 before float packing, but can only
-		// be stored in the texture as 128 / 255 = 0.502.
-		// see: https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/7058#issuecomment-603110
-		const float diff = (128.0/255.0 - 0.5);
-
-		// adjust all values, not just those close to 0, to avoid discontinuities in
-		// the outlines of other shapes e.g. circles
-		d = d - diff;
-
-		// Distance in output units
-		float dist = d * vsize.x;
-
-		fillPixelColor.a *= clamp(0.5 - dist, 0.0, 1.0);
-
-		if (outlineSize > 0.25) {
-			vec4 outlinePixelColor = outlineColor;
-			float clampedOutlineSize = min(outlineSize, 0.5*vsize.x);
-			outlinePixelColor.a *= clamp(0.5 - (abs(dist) - 0.5*clampedOutlineSize), 0.0, 1.0);
-
-			// perform un-premultiplied over operator (see https://en.wikipedia.org/wiki/Alpha_compositing#Description)
-			float compositeAlpha = outlinePixelColor.a + fillPixelColor.a * (1.0 - outlinePixelColor.a);
-			vec3 compositeColor = vec3(outlinePixelColor) * outlinePixelColor.a +
-				vec3(fillPixelColor) * fillPixelColor.a * (1.0 - outlinePixelColor.a);
-			compositeColor /= compositeAlpha;
-
-			gl_FragColor = vec4(compositeColor, compositeAlpha);
-		}
-		else {
-			gl_FragColor = fillPixelColor;
-		}
-
-		// visualize SDF:
-		// gl_FragColor = vec4(clamp(-dist/vsize.x*2.0, 0.0, 1.0), clamp(dist/vsize.x*2.0, 0.0, 1.0), 0.0, 1.0);
+      // SDF primitives might be scaled so that the SDF texture resolution does
+      // not match the resolution of the canvas, but we still want to render
+      // outline-only ('cross' and 'x') primitives cleanly. Aligning to a screen
+      // pixel border at the geometry center achieves this, since SDF textures
+      // always have power of 2 dimensions.
+      posProj = alignToPixelOrigin(posProj, viewport.zw) + quadOffset;
 #else
-		gl_FragColor = texture2D(tex, vtc, -0.5) * overrideColor * vcolor;
+      posProj += quadOffset;
+
+      // Aligning vertex positions to the nearest (using 'floor') screen pixel
+      // border renders textures with pixel-perfect results. If the texture
+      // resolution does not match the canvas resolution then aligning is
+      // redundant.
+      if (inputSize.x == $size.x) {
+        posProj = alignToPixelOrigin(posProj, viewport.zw);
+      }
 #endif
 
-		if (gl_FragColor.a < 0.1) {
-			discard;
-		}
+      gl_Position = posProj;
+
+      vtc = uv;
+
+#ifdef DEBUG_DRAW_BORDER
+      debugBorderCoords = vec3(uv01, 1.0 / combinedSize);
+#endif
+
+      vsize = inputSize;
+#ifdef OCCL_TEST
+    } else {
+      vtc = vec2(.0);
+
+#ifdef DEBUG_DRAW_BORDER
+      debugBorderCoords = vec3(0);
+#endif
+
+    }
+#endif
+
+    gl_Position = posProj;
+
+#ifdef VV_COLOR
+    vcolor = vvGetColor($auxpos2, vvColorValues, vvColorColors);
+#else
+    vcolor = $color / 255.0;
+#endif
+  }
+]]></snippet>
+
+<snippet name="fragmentShaderHUDBaseVariables"><![CDATA[
+  $fsprecisionf
+
+  #extension GL_OES_standard_derivatives : require
+
+  uniform sampler2D tex;
+  uniform vec4 overrideColor;
+  uniform vec4 outlineColor;
+  uniform float outlineSize;
+
+  varying vec4 vcolor;
+
+  varying vec2 vtc;
+  varying vec2 vsize;
+
+#ifdef DEBUG_DRAW_BORDER
+  varying vec3 debugBorderCoords;
+#endif
+]]></snippet>
+
+<snippet name="fragmentShaderHUDBaseMain"><![CDATA[
+  vec4 premultiply(vec4 v) {
+    return vec4(v.rgb * v.a, v.a);
+  }
+
+  void main() {
+
+#ifdef SIGNED_DISTANCE_FIELD
+    vec4 color = vec4(0.0, 0.0, 0.0, 0.0);
+    vec4 fillPixelColor = overrideColor * vcolor;
+
+    // Attempt to sample texel centers to avoid thin cross outline
+    // disappearing with large symbol sizes.
+    // see: https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/7058#issuecomment-603041
+    const float txSize = 128.0;
+    vec2 scaleFactor = ((vsize - txSize) / txSize);
+    vec2 samplePos = vtc + vec2(1.0, -1.0) * (1.0 / txSize) * scaleFactor;
+
+    // Distance in [-0.5, 0.5]
+    float d = dot(texture2D(tex, samplePos), vec4(1.0/16777216.0, 1.0/65535.0, 1.0/256.0, 1.0)) - 0.5;
+
+    // Work around loss of precision for 'd = 0.0'.
+    // '0' gets normalised to 0.5 * 256 = 128 before float packing, but can only
+    // be stored in the texture as 128 / 255 = 0.502.
+    // see: https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/7058#issuecomment-603110
+    const float diff = (128.0/255.0 - 0.5);
+
+    // adjust all values, not just those close to 0, to avoid discontinuities in
+    // the outlines of other shapes e.g. circles
+    d = d - diff;
+
+    // Distance in output units
+    float dist = d * vsize.x;
+
+    fillPixelColor.a *= clamp(0.5 - dist, 0.0, 1.0);
+
+    if (outlineSize > 0.25) {
+      vec4 outlinePixelColor = outlineColor;
+      float clampedOutlineSize = min(outlineSize, 0.5*vsize.x);
+      outlinePixelColor.a *= clamp(0.5 - (abs(dist) - 0.5*clampedOutlineSize), 0.0, 1.0);
+
+      // perform un-premultiplied over operator (see https://en.wikipedia.org/wiki/Alpha_compositing#Description)
+      float compositeAlpha = outlinePixelColor.a + fillPixelColor.a * (1.0 - outlinePixelColor.a);
+      vec3 compositeColor = vec3(outlinePixelColor) * outlinePixelColor.a +
+        vec3(fillPixelColor) * fillPixelColor.a * (1.0 - outlinePixelColor.a);
+
+      gl_FragColor = vec4(compositeColor, compositeAlpha);
+    }
+    else {
+      gl_FragColor = premultiply(fillPixelColor);
+    }
+
+    // visualize SDF:
+    // gl_FragColor = vec4(clamp(-dist/vsize.x*2.0, 0.0, 1.0), clamp(dist/vsize.x*2.0, 0.0, 1.0), 0.0, 1.0);
+#else
+
+    // HUDMaterial is rendered with a blending mode that assumes a pre-multiplied
+    // fragment color. Input textures should already be pre-multiplied and so
+    // don't require adjustment, but the override and vertex colors must be
+    // modulated by their alpha values.
+
+    gl_FragColor = texture2D(tex, vtc, -0.5) * premultiply(overrideColor * vcolor);
+
+#endif
+
+#ifdef DEBUG_DRAW_BORDER
+     float isBorder = float(any(lessThan(debugBorderCoords.xy, vec2(debugBorderCoords.z))) || any(greaterThan(debugBorderCoords.xy, vec2(1.0 - debugBorderCoords.z))));
+     gl_FragColor = mix(gl_FragColor, vec4(1, 0, 1, 1), isBorder);
+#endif
+
+    if (gl_FragColor.a < 0.1) {
+      discard;
+    }
 
 ]]></snippet>
 
 <snippet name="fragmentShaderHUD"><![CDATA[
-$fragmentShaderHUDBase
-	}
+$fragmentShaderHUDBaseVariables
+$fragmentShaderHUDBaseMain
+  }
 ]]></snippet>
 
 <snippet name="fragmentShaderHUDHighlight"><![CDATA[
-$fragmentShaderHUDBase
-  gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
-}
+$fragmentShaderHUDBaseVariables
+
+  uniform sampler2D depthTex;
+  uniform vec4 highlightViewportPixelSz;
+
+$fragmentShaderHUDBaseMain
+    $highlightWrite
+  }
 ]]></snippet>
 
 
 <snippet name="vertexShaderOcclusionTestPixel"><![CDATA[
-	uniform mat4 proj;
-	uniform mat4 view;
-	uniform mat4 model;
-	uniform mat4 modelNormal;
-	uniform vec4 viewport;
-	uniform vec3 camPos;
-	uniform float polygonOffset;
-	uniform float cameraGroundRelative;
+  $vsprecisionf
 
-	attribute vec3 $position;
-	attribute vec3 $normal;
-	attribute vec4 $auxpos1;
+  $commonAttributesAndUniformsHUD
 
-	$matchPixelCenter
+  $alignToPixelCenter
+  $projectPositionHUD
 
-	void main(void) {
-	    vec3 centerOffset = $auxpos1.xyz;
-		float pointGroundDistance = $auxpos1.w;
+  void main(void) {
+    vec4 posProjCenter;
 
-	    vec4 posProjCenter;
-	    if (dot($position, $position) > 0.0) {
-		    $calcPosMatchPixelCenter
-		} else {
-		    posProjCenter = vec4(1e038, 1e038, 1e038, 1.0);
-		}
+    // Check for special value of position (0, 0, 0) which is used by the Renderer when graphics
+    // are removed before the VBO is recompacted. If this is the case, then we just project outside
+    // of clip space.
+    if (dot($position, $position) > 0.0) {
+      // Render single point to center of the pixel to avoid subpixel filtering to affect
+      // the marker color
+      ProjectHUDAux projectAux;
+      vec4 posProj = projectPositionHUD(projectAux);
 
-		gl_Position = posProjCenter;
-		gl_PointSize = 1.0;
-	}
+      posProjCenter = alignToPixelCenter(posProj, viewport.zw);
+    }
+    else {
+      // Project out of clip space
+      posProjCenter = vec4(1e038, 1e038, 1e038, 1.0);
+    }
+
+    gl_Position = posProjCenter;
+    gl_PointSize = 1.0;
+  }
 ]]></snippet>
 
 </snippets>

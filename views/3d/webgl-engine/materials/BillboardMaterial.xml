@@ -3,6 +3,8 @@
 <snippets>
 
 <snippet name="vertexShaderBillboard"><![CDATA[
+  $vsprecisionf
+
 	uniform mat4 proj;
 	uniform mat4 view;
 	uniform mat4 model;
@@ -31,7 +33,7 @@
 ]]></snippet>
 
 <snippet name="fragmentShaderBillboard"><![CDATA[
-	precision mediump float;
+	$fsprecisionf
 
 	uniform vec4 lightAmbient;
 	uniform vec4 lightDiffuse;
@@ -49,6 +51,8 @@
 ]]></snippet>
 
 <snippet name="vertexShaderBillboardDepth"><![CDATA[
+  $vsprecisionf
+
 	uniform mat4 proj;
 	uniform mat4 view;
 	uniform mat4 model;

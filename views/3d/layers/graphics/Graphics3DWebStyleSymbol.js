@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define(["require","exports","../../../../core/tsSupport/extendsHelper","../../support/PromiseLightweight"],function(t,e,r,i){var o=function(t){function e(e,r){var i=t.call(this)||this;return i.symbol=null,i.graphics3DSymbol=null,i.symbol=e,e.fetchSymbol().then(function(t){if(i.isRejected())throw new Error;i.graphics3DSymbol=r(t)}).then(function(){if(i.isRejected())throw new Error;i.graphics3DSymbol.then(function(){i.isRejected()||i.resolve()},function(t){i.isRejected()||i.reject(t)})}).otherwise(function(t){i.isRejected()||i.reject(t)}),i}return r(e,t),e.prototype.createGraphics3DGraphic=function(t,e){return this.graphics3DSymbol.createGraphics3DGraphic(t,e,this)},e.prototype.layerPropertyChanged=function(t,e){return this.graphics3DSymbol.layerPropertyChanged(t,e)},e.prototype.applyRendererDiff=function(t,e,r){return this.graphics3DSymbol.applyRendererDiff(t,e,r)},e.prototype.getFastUpdateStatus=function(){return this.graphics3DSymbol?this.graphics3DSymbol.getFastUpdateStatus():{loading:1,fast:0,slow:0}},e.prototype.setDrawOrder=function(t,e){return this.graphics3DSymbol.setDrawOrder(t,e)},e.prototype.destroy=function(){this.isFulfilled()||this.reject(),this.graphics3DSymbol&&this.graphics3DSymbol.destroy()},e}(i.Promise);return o});

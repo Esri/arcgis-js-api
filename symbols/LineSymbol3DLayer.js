@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/screenUtils","./Symbol3DLayer","../core/accessorSupport/decorators"],function(e,r,t,o,i,s,a){var p=n=function(e){function r(r){var t=e.call(this)||this;return t.material=null,t.type="Line",t.size=1,t}return t(r,e),r.prototype.clone=function(){return new n({enabled:this.enabled,material:this.material&&this.material.clone(),size:this.size})},r}(a.declared(s));o([a.property()],p.prototype,"material",void 0),o([a.property()],p.prototype,"type",void 0),o([a.property({json:{write:!0}}),a.cast(i.toPt)],p.prototype,"size",void 0),p=n=o([a.subclass("esri.symbols.LineSymbol3DLayer")],p);var n;return p});
+define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","./Symbol3DLayer","./support/materialUtils","../core/accessorSupport/decorators"],function(e,r,t,o,i,n,a){var l=p=function(e){function r(r){var t=e.call(this)||this;return t.material=null,t.type="line",t.size=1,t}return t(r,e),r.prototype.clone=function(){return new p({enabled:this.enabled,elevationInfo:this.elevationInfo&&this.elevationInfo.clone(),material:this.material&&this.material.clone(),size:this.size})},r}(a.declared(i));o([a.property()],l.prototype,"material",void 0),o([a.property()],l.prototype,"type",void 0),o([a.property(n.screenSizeProperty)],l.prototype,"size",void 0),l=p=o([a.subclass("esri.symbols.LineSymbol3DLayer")],l);var p;return l});

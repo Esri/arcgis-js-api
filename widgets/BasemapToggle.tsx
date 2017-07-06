@@ -38,7 +38,7 @@
 import {
   vmEvent,
   renderable,
-  jsxFactory,
+  tsx,
   accessibleHandler,
   join
 } from "./support/widget";
@@ -70,10 +70,12 @@ const CSS: any = {
   disabled: "esri-disabled"
 };
 
-function getThumbnailStyles(basemap: Basemap) {
-  return basemap && basemap.thumbnailUrl ?
-          { backgroundImage: "url(" + basemap.thumbnailUrl + ")" } :
-          { backgroundImage: "" };
+function getThumbnailStyles(basemap: Basemap): HashMap<string> {
+  const thumbnailUrl = BasemapToggleViewModel.getThumbnailUrl(basemap);
+
+  return thumbnailUrl ?
+    { backgroundImage: "url(" + thumbnailUrl + ")" } :
+    { backgroundImage: "" };
 }
 
 @subclass("esri.widgets.BasemapToggle")

@@ -2,9 +2,55 @@
 
 <snippets>
 
+<snippet name="calculateVerticalOffset"><![CDATA[
+  $viewingMode
+
+#ifdef VERTICAL_OFFSET
+  // [ verticalOffsetPerDistance, minWorldLength, maxWorldLength ]
+  uniform vec4 verticalOffset;
+
+#ifdef SCREEN_SIZE_PERSPECTIVE
+
+  uniform vec4 screenSizePerspectiveAlignment;
+
+  $screenSizePerspective
+
+#endif
+
+  vec3 calculateVerticalOffset(vec3 worldPos, vec3 localOrigin) {
+    float viewDistance = length((view * vec4(worldPos, 1)).xyz);
+    float verticalOffsetOffsetDistance = verticalOffset.x * viewDistance;
+
+#ifdef VIEWING_MODE_GLOBAL
+    vec3 worldNormal = normalize(worldPos + localOrigin);
+#else
+    vec3 worldNormal = vec3(0, 0, 1);
+#endif
+
+#ifdef SCREEN_SIZE_PERSPECTIVE
+    float cosAngle = dot(worldNormal, normalize(worldPos - camPos));
+
+    float verticalOffsetScreenHeight = screenSizePerspectiveScaleFloat(verticalOffset.x, abs(cosAngle), viewDistance, screenSizePerspectiveAlignment);
+#else
+    float verticalOffsetScreenHeight = verticalOffset.x;
+#endif
+
+    // Screen sized offset in world space, used for example for line callouts
+    float worldOffset = clamp(verticalOffsetScreenHeight * verticalOffset.y * viewDistance, verticalOffset.z, verticalOffset.w);
+
+    return worldNormal * worldOffset;
+  }
+#endif
+]]>
+</snippet>
+
 <snippet name="vsPhongSrc"><![CDATA[
 	uniform mat4 proj;
 	uniform mat4 view;
+  uniform vec3 camPos;
+
+	uniform vec3 localOrigin;
+
 #ifdef INSTANCED
     attribute mat4 model;
     attribute mat4 modelNormal;
@@ -24,7 +70,11 @@
 	attribute vec4 $color;
 #endif
 
-#if defined(VV_SIZE) || defined(VV_COLOR) || defined(VV_ROTATION)
+#ifdef SYMBOLVERTEXCOLORS
+  attribute vec4 $symbolColor;
+#endif
+
+#if defined(VV_SIZE) || defined(VV_COLOR)
 	attribute vec4 instanceFeatureAttribute;
 #endif
 
@@ -34,28 +84,54 @@ $vvUniforms
 	varying vec4 vcolor;
 #endif
 
-#if defined(INSTANCEDCOLOR) || defined(VV_COLOR)
+#if defined(INSTANCEDCOLOR) || defined(VV_COLOR) || defined(SYMBOLVERTEXCOLORS)
 	uniform vec4 externalColor;
 	varying vec4 vcolorExt;
 #endif
 
+#if defined(SYMBOLVERTEXCOLORS)
+	varying mediump float colorMixMode; // varying int is not supported in WebGL
+#endif
+
 	$vvFunctions
 
+	$colorMixMode
+
+  $calculateVerticalOffset
+
 	void main(void) {
+
 #ifdef VV_CUSTOM_MODEL_MATRIX
+
 		vpos = (model * vvTransformPosition($position, instanceFeatureAttribute)).xyz;
 		vnormal = normalize((modelNormal * vvTransformNormal($normal, instanceFeatureAttribute)).xyz);
-#else
+
+#ifdef VERTICAL_OFFSET
+		vec3 centerPos = (model * vvTransformPosition(vec3(0, 0, 0), instanceFeatureAttribute)).xyz;
+#endif
+
+#else /* VV_CUSTOM_MODEL_MATRIX */
+
 		vpos = (model * vec4($position, 1.0)).xyz;
 		vnormal = normalize((modelNormal * vec4($normal, 1.0)).xyz);
+
+#ifdef VERTICAL_OFFSET
+		vec3 centerPos = (model * vec4(vec3(0, 0, 0), 1.0)).xyz;
 #endif
+
+#endif /* VV_CUSTOM_MODEL_MATRIX */
+
+#ifdef VERTICAL_OFFSET
+    vpos += calculateVerticalOffset(centerPos, localOrigin);
+#endif
+
 		gl_Position = proj * view * vec4(vpos, 1.0);
 
 #ifdef VERTEXCOLORS
 		vcolor = $color * 0.003921568627451; // = 1/255
 #endif
 
-#if defined(INSTANCEDCOLOR) || defined(VV_COLOR)
+#if defined(INSTANCEDCOLOR) || defined(VV_COLOR) || defined(SYMBOLVERTEXCOLORS)
 		vcolorExt = externalColor;
 #endif
 #ifdef INSTANCEDCOLOR
@@ -64,33 +140,56 @@ $vvUniforms
 #ifdef VV_COLOR
 		vcolorExt *= vvGetColor(instanceFeatureAttribute, vvColorValues, vvColorColors);
 #endif
+#ifdef SYMBOLVERTEXCOLORS
+    int symbolColorMixMode;
+    vcolorExt *= decodeSymbolColor(symbolColor, symbolColorMixMode) * 0.003921568627451; // = 1/255;
+    colorMixMode = float(symbolColorMixMode) + 0.5; // add 0.5 to avoid interpolation artifacts
+#endif
 ]]></snippet>
 
 <snippet name="fsPhongSrc"><![CDATA[
+  $fsprecisionf
+
 	uniform vec3 camPos;
-	uniform vec4 lightAmbient;
-	uniform vec4 lightDiffuse;
-	uniform vec4 lightSpecular;
-	uniform vec3 lightDirection;
+	uniform vec3 localOrigin;
+
+	$sceneLightingDefinitions
+
+	// material parameters
+	//////////////////////////////////////////
 	uniform vec3 ambient;
 	uniform vec3 diffuse;
 	uniform vec3 specular;
 	uniform float shininess;
 	uniform float opacity;
+	uniform float layerOpacity;
+
+#ifdef SYMBOLVERTEXCOLORS
+	varying mediump float colorMixMode; // varying int is not supported in WebGL
+#else
+  uniform int colorMixMode;
+#endif
+
+#ifdef RECEIVE_SHADOWS
 	uniform sampler2D depthTex;
 	uniform int shadowMapNum;
 	uniform vec4 shadowMapDistance;
 	uniform mat4 shadowMapMatrix[4];
 	uniform float depthHalfPixelSz;
+#endif
+
+#ifdef RECEIVE_SSAO
 	uniform sampler2D ssaoTex;
 	uniform vec4 viewportPixelSz;
-	uniform int externalColorMixMode;
+#endif
+
+
 	varying vec3 vpos;
 	varying vec3 vnormal;
 #if defined(VERTEXCOLORS)
 	varying vec4 vcolor;
 #endif
-#if defined(INSTANCEDCOLOR) || defined(VV_COLOR)
+#if defined(INSTANCEDCOLOR) || defined(VV_COLOR) || defined(SYMBOLVERTEXCOLORS)
 	varying vec4 vcolorExt;
 #else
 	uniform vec4 externalColor;
@@ -100,82 +199,93 @@ $vvUniforms
 	$evalShadow
 #endif
 
-	$externalColorMixMode
+	$colorMixMode
 
 	void main() {
-		vec3 a = lightAmbient.rgb * lightAmbient.w;
-
 		vec3 viewDir = normalize(vpos - camPos);
 
-#ifndef DOUBLESIDED
-		vec3 normal = vnormal;
-#else
-		vec3 normal = dot(vnormal, viewDir)>0.0?-vnormal:vnormal;
-#endif
-
+		// compute normal
+		#ifndef DOUBLESIDED
+				vec3 normal = vnormal;
+		#else
+				vec3 normal = dot(vnormal, viewDir)>0.0 ? -vnormal : vnormal;
+		#endif
 		normal = normalize(normal);
-		float shadow = 0.0;
-#ifdef RECEIVE_SHADOWS
-		shadow = evalShadow(vpos, 1.0 / gl_FragCoord.w, depthTex, shadowMapNum, shadowMapDistance, shadowMapMatrix, depthHalfPixelSz);
-#endif
-		vec3 d = (1.0 - shadow) * lightDiffuse.rgb * lightDiffuse.w * clamp(dot(normal, lightDirection), .0, 1.0);
 
 		vec3 reflDir = normalize(reflect(viewDir, normal));
-		float specDot = max(dot(reflDir, lightDirection), .001);
-		vec3 s = (1.0 - shadow) * specular * lightSpecular.rgb * lightSpecular.w * pow(specDot, shininess);
 
-#ifdef RECEIVE_SSAO
-		float ssao = texture2D(ssaoTex, (gl_FragCoord.xy - viewportPixelSz.xy) * viewportPixelSz.zw).a;
-		ssao = viewportPixelSz.z < 0.0 ? 1.0 : ssao;
-#else
-		float ssao = 1.0;
-#endif
-]]></snippet>
+		// compute ssao
+		#ifdef RECEIVE_SSAO
+				float ssao = texture2D(ssaoTex, (gl_FragCoord.xy - viewportPixelSz.xy) * viewportPixelSz.zw).a;
+				ssao = viewportPixelSz.z < 0.0 ? 1.0 : ssao;
+		#else
+				float ssao = 1.0;
+		#endif
 
-<snippet name="externalColorMixTexture"><![CDATA[
-#if defined(VERTEXCOLORS) && (defined(INSTANCEDCOLOR) || defined(VV_COLOR))
-		// Internal colors: varying vcolor + uniform ambient/diffuse, external colors: varying vcolorExt
-		a = a * mixExternalColor(vcolor.rgb * ambient, texColor.rgb, vcolorExt.rgb, externalColorMixMode);
-		d = d * mixExternalColor(vcolor.rgb * diffuse, texColor.rgb, vcolorExt.rgb, externalColorMixMode);
-		float opacity_ = mixExternalOpacity(vcolor.a * opacity, texColor.a, vcolorExt.a, externalColorMixMode);
-#elif defined(VERTEXCOLORS)
-		// Internal colors: varying vcolor + uniform ambient/diffuse, external colors: uniform externalColor
-		a = a * mixExternalColor(vcolor.rgb * ambient, texColor.rgb, externalColor.rgb, externalColorMixMode);
-		d = d * mixExternalColor(vcolor.rgb * diffuse, texColor.rgb, externalColor.rgb, externalColorMixMode);
-		float opacity_ = mixExternalOpacity(vcolor.a * opacity, texColor.a, externalColor.a, externalColorMixMode);
-#elif defined(INSTANCEDCOLOR) || defined(VV_COLOR)
-		// Internal colors: uniform ambient/diffuse, external colors: varying vcolorExt
-		a = a * mixExternalColor(ambient, texColor.rgb, vcolorExt.rgb, externalColorMixMode);
-		d = d * mixExternalColor(diffuse, texColor.rgb, vcolorExt.rgb, externalColorMixMode);
-		float opacity_ = mixExternalOpacity(opacity, texColor.a, vcolorExt.a, externalColorMixMode);
-#else
-		// Internal colors: uniform ambient/diffuse, external colors: uniform externalColor
-		a = a * mixExternalColor(ambient, texColor.rgb, externalColor.rgb, externalColorMixMode);
-		d = d * mixExternalColor(diffuse, texColor.rgb, externalColor.rgb, externalColorMixMode);
-		float opacity_ = mixExternalOpacity(opacity, texColor.a, externalColor.a, externalColorMixMode);
-#endif
+		// At global scale we create some additional ambient light based on the main light to simulate global illumination
+		// This also defines "additionalAmbientScale" which might be used as a shadow fallback further down
+		$sceneLightingAdditionalLightGlobal
+
+		// compute shadowing
+		float shadow = 0.0;
+		#ifdef RECEIVE_SHADOWS
+			shadow = evalShadow(vpos, 1.0 / gl_FragCoord.w, depthTex, shadowMapNum, shadowMapDistance, shadowMapMatrix, depthHalfPixelSz);
+		#elif defined(VIEWING_MODE_GLOBAL)
+			// at global scale (and in global scenes) we fall back to this approximation
+			// to shadow objects on the dark side of the earth
+			shadow = lightingGlobalFactor * (1.0 - additionalAmbientScale);
+		#endif
+
+
 ]]></snippet>
 
 <snippet name="externalColorMix"><![CDATA[
-	vec4 texColor = vec4(1,1,1,1);
-	$externalColorMixTexture
+	vec3 matColor = max(ambient, diffuse); // combine the old material parameters into a single one
+	#if defined(VERTEXCOLORS) && (defined(INSTANCEDCOLOR) || defined(VV_COLOR) || defined(SYMBOLVERTEXCOLORS))
+			// Internal colors: varying vcolor + uniform ambient/diffuse, external colors: varying vcolorExt
+			vec3 albedo_ = mixExternalColor(vcolor.rgb * matColor, texColor.rgb, vcolorExt.rgb, int(colorMixMode));
+			float opacity_ = layerOpacity * mixExternalOpacity(vcolor.a * opacity, texColor.a, vcolorExt.a, int(colorMixMode));
+	#elif defined(VERTEXCOLORS)
+			// Internal colors: varying vcolor + uniform ambient/diffuse, external colors: uniform externalColor
+			vec3 albedo_ = mixExternalColor(vcolor.rgb * matColor, texColor.rgb, externalColor.rgb, int(colorMixMode));
+			float opacity_ = layerOpacity * mixExternalOpacity(vcolor.a * opacity, texColor.a, externalColor.a, int(colorMixMode));
+	#elif defined(INSTANCEDCOLOR) || defined(VV_COLOR) || defined(SYMBOLVERTEXCOLORS)
+			// Internal colors: uniform ambient/diffuse, external colors: varying vcolorExt
+			vec3 albedo_ = mixExternalColor(matColor, texColor.rgb, vcolorExt.rgb, int(colorMixMode));
+			float opacity_ = layerOpacity * mixExternalOpacity(opacity, texColor.a, vcolorExt.a, int(colorMixMode));
+	#else
+			// Internal colors: uniform ambient/diffuse, external colors: uniform externalColor
+			vec3 albedo_ = mixExternalColor(matColor, texColor.rgb, externalColor.rgb, int(colorMixMode));
+			float opacity_ = layerOpacity * mixExternalOpacity(opacity, texColor.a, externalColor.a, int(colorMixMode));
+	#endif
+	albedo_+= 0.25 * specular; // don't completely ignore specular for now
 ]]></snippet>
 
 <snippet name="vsPhong"><![CDATA[
+  $vsprecisionf
+
 	$vsPhongSrc
 	}
 ]]></snippet>
 
 <snippet name="fsPhong"><![CDATA[
-	precision mediump float;
+		$fsprecisionf
 
-	$fsPhongSrc
-	$externalColorMix
-		gl_FragColor = vec4(ssao * (a + d) + s, opacity_);
+		$fsPhongSrc
+
+		vec4 texColor = vec4(1,1,1,1);
+		$externalColorMix
+
+		$selectShadingNormal
+
+		vec3 shadedColor = evaluateSceneLighting(shadingNormal, albedo_, shadow, 1.0 - ssao, additionalLight);
+		gl_FragColor = vec4(shadedColor, opacity_);
 	}
 ]]></snippet>
 
 <snippet name="vsPhongTextured"><![CDATA[
+  $vsprecisionf
+
 	attribute vec2 $uv0;
 	varying vec2 vtc;
 	$vsPhongSrc
@@ -189,19 +299,30 @@ $vvUniforms
 ]]></snippet>
 
 <snippet name="fsPhongTextured"><![CDATA[
-	precision mediump float;
+	$fsprecisionf
 
 	uniform sampler2D tex;
 	varying vec2 vtc;
+
 	$fsPhongSrc
+
+		// read texture color
 		vec4 texColor = texture2D(tex, vtc);
 		if (texColor.a < .33) discard;
-		$externalColorMixTexture
-		gl_FragColor = vec4(ssao * (a + d) + s, opacity_);
+
+		$externalColorMix
+
+		$selectShadingNormal
+
+		vec3 shadedColor = evaluateSceneLighting(shadingNormal, albedo_, shadow, 1.0 - ssao, additionalLight);
+
+		gl_FragColor = vec4(shadedColor, opacity_);
 	}
 ]]></snippet>
 
 <snippet name="vsPhongAtlasTextured"><![CDATA[
+  $vsprecisionf
+
 	attribute vec4 $uv0;
 	attribute vec4 $region;
 	varying vec2 vtc;
@@ -217,14 +338,14 @@ $vvUniforms
 ]]></snippet>
 
 <snippet name="fsPhongAtlasTextured"><![CDATA[
-	precision mediump float;
+	$fsprecisionf
 
 	uniform sampler2D tex;
 	uniform vec2 texSize;
 	varying vec2 vtc;
 	varying vec4 regionV;
 
-	 float calcMipMapLevel(const vec2 ddx, const vec2 ddy) {
+	float calcMipMapLevel(const vec2 ddx, const vec2 ddy) {
 		// from:
 		//   - OpenGLES Common Profile Specification Version 2.0.25, Section 3.7.7 - Texture Minification
 		//   - https://www.opengl.org/discussion_boards/showthread.php/171485-Texture-LOD-calculation-(useful-for-atlasing)
@@ -234,6 +355,7 @@ $vvUniforms
 	}
 
 	$fsPhongSrc
+
 		vec2 uv = vtc;
 		uv = fract(uv);
 		//[umin, vmin, umax, vmax]
@@ -272,38 +394,54 @@ $vvUniforms
 		#endif
 
 		if (texColor.a < .33) discard;
-		$externalColorMixTexture
-		gl_FragColor = vec4(ssao * (a + d) + s, opacity_);
-		//gl_FragColor = regionV;
+
+		$externalColorMix
+
+		$selectShadingNormal
+
+		vec3 shadedColor = evaluateSceneLighting(shadingNormal, albedo_, shadow, 1.0 - ssao, additionalLight);
+		gl_FragColor = vec4(shadedColor, opacity_);
 	}
-]]></snippet>
+	]]></snippet>
 
-<snippet name="fsPhongTexturedRefl"><![CDATA[
-	precision mediump float;
+	<snippet name="fsPhongTexturedRefl"><![CDATA[
+		$fsprecisionf
 
-	uniform sampler2D tex;
-	uniform sampler2D reflTex;
-	uniform float reflectivity;
-	varying vec2 vtc;
+		uniform sampler2D tex;
+		uniform sampler2D reflTex;
+		uniform float reflectivity;
+		varying vec2 vtc;
 
-	$normal2envTC
+		$normal2envTC
 
-	$fsPhongSrc
+		$fsPhongSrc
 		vec4 texColor = texture2D(tex, vtc);
 		if (texColor.a < .33) discard;
 		vec4 reflColor = texture2D(reflTex, normal2envTC(reflDir));
-		$externalColorMixTexture
-		gl_FragColor = vec4(ssao * mix(a + d, reflColor.rgb * lightAmbient.rgb * lightSpecular.w, reflectivity) + s, opacity_);
+
+		$externalColorMix
+
+		$selectShadingNormal
+
+		vec3 shadedColor = evaluateSceneLighting(shadingNormal, albedo_, shadow, 1.0 - ssao, additionalLight);
+		shadedColor.rgb = mix(shadedColor.rgb, reflColor.rgb, reflectivity);
+
+		gl_FragColor = vec4(shadedColor, opacity_);
 	}
 ]]></snippet>
 
 <snippet name="vsDepthSrc"><![CDATA[
 	uniform mat4 proj;
 	uniform mat4 view;
+  uniform vec3 camPos;
+  uniform vec3 localOrigin;
+
 #ifdef INSTANCED
 	attribute mat4 model;
+  attribute mat4 modelNormal;
 #else
 	uniform mat4 model;
+  uniform mat4 modelNormal;
 #endif
 	uniform vec2 nearFar;
 	attribute vec3 $position;
@@ -315,22 +453,48 @@ $vvUniforms
 #endif
 	$vvFunctions
 
+  $calculateVerticalOffset
+
 	void main(void) {
+
 #ifdef VV_CUSTOM_MODEL_MATRIX
-		vec4 eye = view * model * vvTransformPosition($position, instanceFeatureAttribute);
-#else
-		vec4 eye = view * model * vec4($position, 1.0);
+
+    vec3 vpos = (model * vvTransformPosition($position, instanceFeatureAttribute)).xyz;
+
+#ifdef VERTICAL_OFFSET
+    vec3 centerPos = (model * vvTransformPosition(vec3(0, 0, 0), instanceFeatureAttribute)).xyz;
 #endif
+
+#else /* VV_CUSTOM_MODEL_MATRIX */
+
+		vec3 vpos = (model * vec4($position, 1.0)).xyz;
+
+#ifdef VERTICAL_OFFSET
+		vec3 centerPos = (model * vec4(vec3(0, 0, 0), 1.0)).xyz;
+#endif
+
+#endif /* VV_CUSTOM_MODEL_MATRIX */
+
+#ifdef VERTICAL_OFFSET
+    vpos += calculateVerticalOffset(centerPos, localOrigin);
+#endif
+
+    vec4 eye = view * vec4(vpos, 1);
+
 		gl_Position = proj * eye;
 		depth = (-eye.z - nearFar[0]) / (nearFar[1] - nearFar[0]) ;
 ]]></snippet>
 
 <snippet name="vsDepth"><![CDATA[
+  $vsprecisionf
+
 	$vsDepthSrc
 	}
 ]]></snippet>
 
 <snippet name="vsDepthTextured"><![CDATA[
+  $vsprecisionf
+
 	attribute vec2 $uv0;
 	varying vec2 vtc;
 	$vsDepthSrc
@@ -345,6 +509,9 @@ $vvUniforms
 <snippet name="vsNormalSrc"><![CDATA[
 	uniform mat4 proj;
 	uniform mat4 view;
+  uniform vec3 camPos;
+  uniform vec3 localOrigin;
+
 #ifdef INSTANCED
 	attribute mat4 model;
 	attribute mat4 modelNormal;
@@ -363,22 +530,46 @@ $vvUniforms
 #endif
 	$vvFunctions
 
+  $calculateVerticalOffset
+
 	void main(void) {
+
 #ifdef VV_CUSTOM_MODEL_MATRIX
-		gl_Position = proj * view * model * vvTransformPosition($position, instanceFeatureAttribute);
+
+    vec3 vpos = (model * vvTransformPosition($position, instanceFeatureAttribute)).xyz;
 		vnormal = normalize((viewNormal * modelNormal * vvTransformNormal($normal, instanceFeatureAttribute)).xyz);
-#else
-		gl_Position = proj * view * model * vec4($position, 1.0);
-		vnormal = normalize((viewNormal * modelNormal * vec4($normal, 1.0)).xyz);
+
+#ifdef VERTICAL_OFFSET
+    vec3 centerPos = (model * vvTransformPosition(vec3(0, 0, 0), instanceFeatureAttribute)).xyz;
 #endif
+
+#else /* VV_CUSTOM_MODEL_MATRIX */
+		vec3 vpos = (model * vec4($position, 1.0)).xyz;
+		vnormal = normalize((viewNormal * modelNormal * vec4($normal, 1.0)).xyz);
+
+#ifdef VERTICAL_OFFSET
+    vec3 centerPos = (model * vec4(vec3(0, 0, 0), 1.0)).xyz;
+#endif
+
+#endif /* VV_CUSTOM_MODEL_MATRIX */
+
+#ifdef VERTICAL_OFFSET
+    vpos += calculateVerticalOffset(centerPos, localOrigin);
+#endif
+
+    gl_Position = proj * view * vec4(vpos, 1);
 ]]></snippet>
 
 <snippet name="vsNormal"><![CDATA[
+  $vsprecisionf
+
 	$vsNormalSrc
 	}
 ]]></snippet>
 
 <snippet name="vsNormalTextured"><![CDATA[
+  $vsprecisionf
+
 	attribute vec2 $uv0;
 	varying vec2 vtc;
 	$vsNormalSrc
@@ -391,12 +582,19 @@ $vvUniforms
 ]]></snippet>
 
 <snippet name="vsHighlightSrc"><![CDATA[
+  $vsprecisionf
+
 	uniform mat4 proj;
 	uniform mat4 view;
+  uniform vec3 camPos;
+  uniform vec3 localOrigin;
+
 #ifdef INSTANCED
 	attribute mat4 model;
+  attribute mat4 modelNormal;
 #else
 	uniform mat4 model;
+  uniform mat4 modelNormal;
 #endif
 	attribute vec3 $position;
 
@@ -406,12 +604,33 @@ $vvUniforms
 #endif
 	$vvFunctions
 
+  $calculateVerticalOffset
+
 	void main(void) {
+
 #ifdef VV_CUSTOM_MODEL_MATRIX
-		gl_Position = proj * view * model * vvTransformPosition($position, instanceFeatureAttribute);
-#else
-		gl_Position = proj * view * model * vec4($position, 1.0);
+
+    vec3 vpos = (model * vvTransformPosition($position, instanceFeatureAttribute)).xyz;
+
+#ifdef VERTICAL_OFFSET
+    vec3 centerPos = (model * vvTransformPosition(vec3(0, 0, 0), instanceFeatureAttribute)).xyz;
 #endif
+
+#else /* VV_CUSTOM_MODEL_MATRIX */
+
+    vec3 vpos = (model * vec4($position, 1.0)).xyz;
+
+#ifdef VERTICAL_OFFSET
+    vec3 centerPos = (model * vec4(vec3(0, 0, 0), 1.0)).xyz;
+#endif
+
+#endif /* VV_CUSTOM_MODEL_MATRIX */
+
+#ifdef VERTICAL_OFFSET
+    vpos += calculateVerticalOffset(centerPos, localOrigin);
+#endif
+
+		gl_Position = proj * view * vec4(vpos, 1);
 ]]></snippet>
 
 <snippet name="vsHighlight"><![CDATA[
@@ -420,6 +639,8 @@ $vvUniforms
 ]]></snippet>
 
 <snippet name="vsHighlightTextured"><![CDATA[
+  $vsprecisionf
+
 	attribute vec2 $uv0;
 	varying vec2 vtc;
 	$vsHighlightSrc
@@ -432,13 +653,15 @@ $vvUniforms
 ]]></snippet>
 
 <snippet name="fsDepthSrc"><![CDATA[
+  $fsprecisionf
 	varying float depth;
 
 	void main() {
 ]]></snippet>
 
 <snippet name="fsDepth"><![CDATA[
-	precision mediump float;
+	$fsprecisionf
+
 	$calcFragDepth
 	$float2rgba
 	$fsDepthSrc
@@ -451,7 +674,7 @@ $vvUniforms
 ]]></snippet>
 
 <snippet name="fsDepthTextured"><![CDATA[
-	precision mediump float;
+	$fsprecisionf
 
 	uniform sampler2D tex;
 	varying vec2 vtc;
@@ -469,7 +692,7 @@ $vvUniforms
 ]]></snippet>
 
 <snippet name="fsNormal"><![CDATA[
-	precision mediump float;
+	$fsprecisionf
 
 	varying vec3 vnormal;
 	void main() {
@@ -486,7 +709,7 @@ $vvUniforms
 ]]></snippet>
 
 <snippet name="fsNormalTextured"><![CDATA[
-	precision mediump float;
+	$fsprecisionf
 
 	varying vec3 vnormal;
 	varying vec2 vtc;
@@ -504,20 +727,27 @@ $vvUniforms
 ]]></snippet>
 
 <snippet name="fsHighlight"><![CDATA[
-	precision mediump float;
+	$fsprecisionf
+  uniform sampler2D depthTex;
+  uniform vec4 highlightViewportPixelSz;
 
 	void main() {
-		gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
+		$highlightWrite
 	}
 ]]></snippet>
 
 <snippet name="fsHighlightTextured"><![CDATA[
-	precision mediump float;
+	$fsprecisionf
+
 	varying vec2 vtc;
 	uniform sampler2D tex;
+  uniform sampler2D depthTex;
+  uniform vec4 highlightViewportPixelSz;
+
 	void main() {
 		if (texture2D(tex, vtc).a < .33) discard;
-    gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
+
+		$highlightWrite
 	}
 ]]></snippet>
 

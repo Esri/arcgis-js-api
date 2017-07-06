@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define(["../../core/JSONSupport","./ClassificationDefinition"],function(e,i){var r=e.createSubclass({declaredClass:"esri.tasks.support.GenerateRendererParameters",properties:{classificationDefinition:{value:null,type:i,json:{read:{source:"classificationDef"},write:{target:"classificationDef"}}},where:{value:null,type:String,json:{write:!0}}}});return r});

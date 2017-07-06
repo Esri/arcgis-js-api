@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define({streets:"רחובות",satellite:"הדמיה",hybrid:"הדמיה עם תוויות",terrain:"פני שטח עם תוויות",topo:"טופוגרפי",gray:"קנבס אפור בהיר","dark-gray":"קנבס אפור כהה",oceans:"אוקינוסים","national-geographic":"נשיונל גיאוגרפיק",osm:"OpenStreetMap","streets-night-vector":"מפת רחובות עולמית (לילה)","streets-relief-vector":"מפת רחובות עולמית (עם תבליט)","streets-navigation-vector":"מפת ניווט עולמית"});

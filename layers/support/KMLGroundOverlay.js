@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define(["../../core/declare","../../core/lang","./MapImage"],function(i,e,r){var s=i([r],{declaredClass:"esri.layers.support.KMLGroundOverlay",constructor:function(i){e.isDefined(this.visibility)&&(this.visible=!!this.visibility)}});return s});

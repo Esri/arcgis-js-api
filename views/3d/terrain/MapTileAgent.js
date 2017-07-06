@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define(["./TileAgentBase","./tileUtils","./UpsampleInfo","../../../core/ObjectPool"],function(e,t,i,o){var l=function(){e.apply(this,arguments)};return l.prototype=new e,l.prototype.constructor=l,l.prototype.dataArrived=function(e){e!==this.tile?this._setUpsamplingTile(e):this.tile.updateTexture(),this._dataRequested=null,e!==this.tile&&this._requestNext()},l.prototype._desiredMinLevelDelta=function(){return 0},l.prototype.START_LOADING_LEVEL_DELTA=4,l.prototype.SCALE_RANGE_ENABLED=!0,l.prototype._setUpsamplingTile=function(e){this._tileLayerInfo.upsampleFromTile&&this._tileLayerInfo.upsampleFromTile.tile===e||(this._tileLayerInfo.upsampleFromTile&&i.Pool.release(this._tileLayerInfo.upsampleFromTile),this._tileLayerInfo.upsampleFromTile=t.computeUpsampleInfoForAncestor(this.tile,e),this.tile.updateTexture())},l.Pool=new o(l),l});

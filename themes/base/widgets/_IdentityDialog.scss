@@ -279,15 +279,9 @@
   cursor: pointer;
   border: 1px solid transparent;
   white-space: nowrap;
-  -moz-user-select: -moz-none;
-  -ms-user-select: none;
-  -webkit-user-select: none;
   user-select: none;
   color: #4c4c4c;
   background-color: #ffffff;
-  -moz-transition: all 0.25s ease;
-  -o-transition: all 0.25s ease;
-  -webkit-transition: all 0.25s ease;
   transition: all 0.25s ease;
   border-color: #e0e0e0; }
 .esriIdentityDialog .dijitButtonNode:hover {
@@ -311,8 +305,6 @@
 .esriIdentityDialog .dijitDisabled .dijitButtonNode {
   cursor: false;
   pointer-events: none;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
   box-shadow: none; }
 
 .esriIdentityDialog .dijitDisabled {
@@ -324,8 +316,6 @@
   background-color: #ffffff;
   border: 1px solid #959595;
   border: 1px solid #959595;
-  -moz-box-shadow: 0 1px 3px -1px rgba(0, 0, 0, 0.2), 0 5px 6px -3px rgba(0, 0, 0, 0.1);
-  -webkit-box-shadow: 0 1px 3px -1px rgba(0, 0, 0, 0.2), 0 5px 6px -3px rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 3px -1px rgba(0, 0, 0, 0.2), 0 5px 6px -3px rgba(0, 0, 0, 0.1);
   background-clip: padding-box;
   outline: 0; }
@@ -390,9 +380,6 @@
 .esriIdentityDialog .dijitTextBox {
   background-color: #ffffff;
   border: 1px solid #e0e0e0;
-  -moz-transition: border-color 0.25s ease-in-out;
-  -o-transition: border-color 0.25s ease-in-out;
-  -webkit-transition: border-color 0.25s ease-in-out;
   transition: border-color 0.25s ease-in-out; }
 .esriIdentityDialog .dijitTextBox .dijitInputField {
   padding: 5px 10px;
@@ -442,8 +429,6 @@
 .esriIdentityDialog--visible ~ .dijitTooltip,
 .esriIdentityDialog--visible ~ .dijitTooltip,
 .esriIdentityDialog--visible ~ .dijitTooltip * {
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
   box-sizing: content-box; }
 .esriIdentityDialog--visible ~ .dijitTooltip .dijitTooltipContainer {
   border: 0;
@@ -535,6 +520,4 @@
 
 .esriIdentityDialog .dijitContentPane {
   padding: 15px;
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
   box-sizing: content-box; }

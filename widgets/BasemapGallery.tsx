@@ -34,7 +34,7 @@
 /// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
 
 import { BasemapsSource } from "./BasemapGallery/interfaces";
-import { accessibleHandler, jsxFactory, renderable } from "./support/widget";
+import { accessibleHandler, tsx, renderable } from "./support/widget";
 import { aliasOf, subclass, declared, property } from "../core/accessorSupport/decorators";
 import { on } from "../core/watchUtils";
 

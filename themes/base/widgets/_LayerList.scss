@@ -5,7 +5,6 @@
     padding: floor($cap_spacing/2) floor($side_spacing/2);
     width: $panel_width;
     max-height: 420px;
-    overflow: hidden;
     overflow-y: auto;
     transition: max-height 250ms ease-in-out;
   }
@@ -15,9 +14,6 @@
     padding: 0;
   }
   .esri-layer-list__item--has-children .esri-layer-list__list:not([hidden]) {
-    -webkit-animation: esri-layer-list-reveal 375ms ease-in-out;
-    -moz-animation: esri-layer-list-reveal 375ms ease-in-out;
-    -o-animation: esri-layer-list-reveal 375ms ease-in-out;
     animation: esri-layer-list-reveal 375ms ease-in-out;
   }
   .esri-layer-list__list[hidden] {
@@ -35,19 +31,21 @@
     padding: 0;
   }
   .esri-layer-list__item-container {
-    @include flexDisplay();
-    @include justifyContent(flex-start);
-    @include alignItems(flex-start);
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
     padding: floor($cap_spacing*0.75) $side_spacing floor($cap_spacing*0.75) ($side_spacing + 5);
     background-color: $background_color;
     border-bottom: 1px solid $border_color;
-    @include transition(padding, 250ms, ease-in-out);
+    transition: padding 250ms ease-in-out;
   }
   .esri-layer-list__item--invisible-at-scale > .esri-layer-list__item-container {
     padding-top: floor($cap_spacing * 0.5);
     padding-bottom: floor($cap_spacing * 0.5);
-    color: $disabled_color;
     border-bottom: 1px solid rgba($text_color, 0.1);
+  }
+  .esri-layer-list__item--invisible-at-scale .esri-layer-list__item-title {
+    color: $disabled_color;
   }
   .esri-layer-list__item--has-children > .esri-layer-list__item-container {
     padding-left: 5px;
@@ -56,36 +54,34 @@
     font-size: $text_size_small;
   }
   .esri-layer-list__child-toggle {
-    @include flexDisplay();
-    @include justifyContent(center);
-    @include alignItems(center);
-    @include alignSelf(stretch);
     color: $button_text_color;
     width: $side_spacing; // Matches side padding on items that don't have this toggle.
-    font-size: $text_size_small;
     cursor: pointer;
+  }
+  .esri-layer-list__child-toggle [class*="esri-icon"] {
+    line-height: 1.2em;
   }
   .esri-layer-list__child-toggle .esri-layer-list__child-toggle-icon--opened,
   .esri-layer-list__child-toggle .esri-layer-list__child-toggle-icon--closed-rtl,
-  .esri-layer-list__child-toggle[aria-expanded="true"] .esri-layer-list__child-toggle-icon--closed {
+  .esri-layer-list__child-toggle--open .esri-layer-list__child-toggle-icon--closed {
     display: none;
   }
-  .esri-layer-list__child-toggle[aria-expanded="true"] .esri-layer-list__child-toggle-icon--opened {
+  .esri-layer-list__child-toggle--open .esri-layer-list__child-toggle-icon--opened {
     display: block;
   }
   .esri-layer-list__item-label {
-    @include flexDisplay();
-    @include flexFlow(row);
-    @include justifyContent(flex-start);
-    @include alignItems(flex-start);
-    @include flex(1);
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex: 1;
   }
   .esri-layer-list__item-label[role="checkbox"]:hover,
   .esri-layer-list__item-label[role="radio"]:hover {
     cursor: pointer;
   }
   .esri-layer-list__item-title {
-    @include flex(1);
+    flex: 1;
     padding-left: floor($side_spacing/3);
     padding-right: floor($side_spacing/3);
     line-height: $line_height;
@@ -102,9 +98,9 @@
     background-color: $background_color;
     color: $Calcite_Red_a200;
     font-size: $text_size_small;
-    @include transition(transform, 250ms, ease-in-out);
-    @include transform(scale(1, 0));
-    @include transformOrigin(center top);
+    transition: transform 250ms ease-in-out;
+    transform: scale(1, 0);
+    transform-origin: center top;
   }
   .esri-layer-list__item-error-message [class^="esri-icon-"],
   .esri-layer-list__item-error-message [class*="esri-icon-"] {
@@ -115,7 +111,7 @@
     height: auto;
     padding-bottom: $cap_spacing;
     border-bottom: 1px solid $border_color;
-    @include transform(scale(1, 1));
+    transform: scale(1, 1);
   }
   .esri-layer-list__item-toggle {
     width: $side_spacing;
@@ -144,10 +140,6 @@
     position: absolute;
     height: 2px;
     top: 0;
-    -webkit-transition: opacity 500ms ease-in-out;
-    -moz-transition: opacity 500ms ease-in-out;
-    -ms-transition: opacity 500ms ease-in-out;
-    -o-transition: opacity 500ms ease-in-out;
     transition: opacity 500ms ease-in-out;
   }
   .esri-layer-list__item:before {
@@ -166,13 +158,13 @@
     opacity: 1;
   }
   .esri-layer-list__item-actions-menu {
-    @include flexDisplay();
+    display: flex;
   }
   .esri-layer-list__item-actions-menu-item {
-    @include flexDisplay();
-    @include flex(1, 0, 22px);
-    @include justifyContent(center);
-    @include alignContent(center);
+    display: flex;
+    flex: 1 0 22px;
+    justify-content: center;
+    align-content: center;
     color: $button_text_color;
     height: $side_spacing;
     font-size: $text_size;
@@ -192,9 +184,6 @@
     border-bottom: 1px solid rgba($text_color, 0.1);
   }
   .esri-layer-list__item-actions-section {
-    -webkit-animation: esri-layer-list-reveal 375ms ease-in-out;
-    -moz-animation: esri-layer-list-reveal 375ms ease-in-out;
-    -o-animation: esri-layer-list-reveal 375ms ease-in-out;
     animation: esri-layer-list-reveal 375ms ease-in-out;
   }
   .esri-layer-list__item-actions[hidden] {
@@ -210,10 +199,10 @@
     z-index: 1;
   }
   .esri-layer-list__item-actions-list {
-    @include flexDisplay();
-    @include flexFlow(column);
-    @include justifyContent(flex-start);
-    @include alignItems(flex-start);
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: flex-start;
     padding: $cap_spacing $side_spacing;
     list-style: none;
     border-top: 1px solid $border_color;
@@ -223,27 +212,27 @@
     padding-top: floor($cap_spacing/2);
   }
   .esri-layer-list__item-action {
-    @include flexDisplay();
-    @include flexFlow(row);
-    @include justifyContent(flex-start);
-    @include alignItems(flex-start);
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    align-items: flex-start;
     cursor: pointer;
     font-size: $text_size_small;
     width: 100%;
     padding: floor($cap_spacing/4) 0;
     opacity: 1;
-    @include transition(opacity, 250ms, ease-in-out, 125ms);
+    transition: opacity 250ms ease-in-out 125ms;
   }
   .esri-layer-list__item-actions[hidden] .esri-layer-list__item-action {
     opacity: 0;
   }
   .esri-layer-list__item-action-icon {
-    @include flex(0, 0, $side_spacing);
+    flex: 0 0 $side_spacing;
     font-size: $text_size;
     margin-top: 0.2em;
   }
   .esri-layer-list__item-action-image {
-    @include flex(0, 0, $side_spacing);
+    flex: 0 0 $side_spacing;
     width: $side_spacing;
     height: $side_spacing;
     font-size: $text_size;
@@ -267,10 +256,10 @@
     .esri-layer-list__list--root {
       margin: 0;
     }
-    .esri-layer-list__child-toggle[aria-expanded="false"] .esri-layer-list__child-toggle-icon--closed {
+    .esri-layer-list__child-toggle .esri-layer-list__child-toggle-icon--closed {
       display: none;
     }
-    .esri-layer-list__child-toggle[aria-expanded="false"] .esri-layer-list__child-toggle-icon--closed-rtl {
+    .esri-layer-list__child-toggle .esri-layer-list__child-toggle-icon--closed-rtl {
       display: block;
     }
     .esri-layer-list__item-action-title {
@@ -291,7 +280,7 @@
 
   //////////////////////////////
   // ANIMATION
-  @include keyframes(esri-layer-list-reveal) {
+  @keyframes esri-layer-list-reveal {
     0% {
       opacity: 0;
     }

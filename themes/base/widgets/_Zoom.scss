@@ -1,9 +1,9 @@
 @mixin zoom() {
   .esri-zoom {
-    @include flexDisplay();
-    @include flexFlow(column, nowrap);
+    display: flex;
+    flex-flow: column nowrap;
     &.esri-zoom--horizontal{
-      @include flexFlow(row-reverse, nowrap);
+      flex-flow: row-reverse nowrap;
       .esri-button {
         &:last-child {
           border-top: none;
@@ -14,7 +14,6 @@
       }
     }
     .esri-widget-button {
-      -webkit-box-shadow: none;
       box-shadow: none;
       &:first-child {
         margin-bottom: 0;

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define(["../../core/JSONSupport","../../geometry/Extent"],function(e,t){var l=e.createSubclass({declaredClass:"esri.layers.support.MapImage",properties:{extent:{type:t},height:null,href:null,scale:null,width:null,visible:!0,opacity:1}});return l});

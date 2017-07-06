@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define({attach:"संलग्नक",fields:"क्षेत्र",fieldsSummary:"विशेषताओं और मानों की सूची",media:"मीडिया",next:"अगला",numCharts:"चार्ट्स की संख्या",numImages:"छवियों की संख्या",noTitle:"अनटाइटल्ड",previous:"पिछला",view:"दृश्य"});

@@ -16,10 +16,12 @@
       </div>
       <div data-dojo-attach-point="dap_shapeSizeControls">
         <div data-dojo-attach-point="dap_shapeSizeLabel" class="${css.label}">${labels.symbolSize}</div>
-        <div class="${css.symbolSizeInput} ${css.inlineInput}" data-dojo-attach-point="dap_symbolSizeOptions">
-          <div class="${css.hidden}" data-dojo-type="esri/widgets/HorizontalSlider" data-dojo-attach-point="dap_shapeSizeSlider"></div>
-          <div data-dojo-type="dijit/form/NumberSpinner"  data-dojo-attach-point="dap_shapeSizeTextBox"></div>
-          <span class="${css.text}" data-dojo-attach-point="dap_sizeUnitLabel"></span>
+        <div class="${css.inlineInputContainer}">
+          <div class="${css.symbolSizeInput} ${css.inlineInput}" data-dojo-attach-point="dap_symbolSizeOptions">
+            <div data-dojo-type="esri/widgets/HorizontalSlider" data-dojo-attach-point="dap_shapeSizeSlider"></div>
+            <div data-dojo-type="dijit/form/NumberSpinner"  data-dojo-attach-point="dap_shapeSizeTextBox"></div>
+            <span class="${css.text}" data-dojo-attach-point="dap_sizeUnitLabel"></span>
+          </div>
         </div>
       </div>
     </div>
@@ -31,10 +33,12 @@
       <div data-dojo-type="esri/widgets/ColorPicker" data-dojo-attach-point="dap_outlineColorPicker" data-dojo-props="showSuggestedColors: true"></div>
       <div data-dojo-type="esri/widgets/SymbolStyler/ColorRampPicker" data-dojo-attach-point="dap_outlineColorRampPicker" class="${css.hidden}"></div>
       <div data-dojo-attach-point="dap_lineWidthLabel" class="${css.label}">${labels.lineWidth}</div>
-      <div class="${css.lineWidthInput} ${css.inlineInput}" data-dojo-attach-point="dap_lineWidthOptions">
-        <div class="${css.hidden}" data-dojo-type="esri/widgets/HorizontalSlider" data-dojo-attach-point="dap_lineWidthSlider"></div>
-        <select data-dojo-attach-point="dap_lineWidthTextBox"><!--values added dynamically--></select>
-        <span class="${css.text}" data-dojo-attach-point="dap_lineWidthUnitLabel"></span>
+      <div class="${css.inlineInputContainer}">
+        <div class="${css.lineWidthInput} ${css.inlineInput}" data-dojo-attach-point="dap_lineWidthOptions">
+          <div data-dojo-type="esri/widgets/HorizontalSlider" data-dojo-attach-point="dap_lineWidthSlider"></div>
+          <select data-dojo-attach-point="dap_lineWidthTextBox"><!--values added dynamically--></select>
+          <span class="${css.text}" data-dojo-attach-point="dap_lineWidthUnitLabel"></span>
+        </div>
       </div>
       <div class="${css.label}" data-dojo-attach-point="dap_linePatternSelectLabel">${labels.pattern}</div>
       <div data-dojo-attach-point="dap_linePatternSelect"></div>

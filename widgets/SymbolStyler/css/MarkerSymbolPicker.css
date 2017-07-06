@@ -3,11 +3,11 @@
   padding: 8px 0;
 }
 
-.esri-marker-symbol-picker.esri-default-symbols .esri-container {
+.esri-marker-symbol-picker.esri-default-symbols .esri-marker-symbol-picker__symbolViewport {
   height: auto;
 }
 
-.esri-marker-symbol-picker .esri-container {
+.esri-marker-symbol-picker__symbolViewport {
   overflow: auto;
 }
 
@@ -15,7 +15,7 @@
   width: 360px;
 }
 
-.esri-marker-symbol-picker--dimensionality-volumetric .esri-container {
+.esri-marker-symbol-picker--dimensionality-volumetric .esri-marker-symbol-picker__symbolViewport {
   height: 270px;
 }
 
@@ -23,7 +23,7 @@
   width: 280px;
 }
 
-.esri-marker-symbol-picker--dimensionality-flat .esri-container {
+.esri-marker-symbol-picker--dimensionality-flat .esri-marker-symbol-picker__symbolViewport {
   height: 220px;
 }
 
@@ -33,40 +33,6 @@
 
 .esri-marker-symbol-picker .esri-type-input .dijitButtonContents {
   width: 100%;
-}
-
-.esri-marker-symbol-picker .esri-overlay {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  display: none;
-}
-
-.esri-marker-symbol-picker.esri-no-symbols .esri-overlay {
-  display: inline;
-}
-
-
-
-
-.esri-marker-symbol-picker .esri-overlay .esri-center-container.esri-table {
-  width: 100%;
-  height: 100%;
-
-  display: table;
-}
-
-.esri-marker-symbol-picker .esri-overlay .esri-table .esri-table-cell {
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
-}
-
-.esri-marker-symbol-picker .esri-overlay .esri-table .esri-center-block {
-  width: 50%;
-  margin: 0 auto;
 }
 
 .esri-marker-symbol-picker .esri-symbol-grid {
@@ -93,6 +59,11 @@
   height: 32px;
 }
 
+.esri-marker-symbol-picker--dimensionality-flat img {
+  height: 32px;
+  width: auto;
+}
+
 .esri-marker-symbol-picker--blocked .esri-type-input {
   color: transparent;
 }
@@ -109,18 +80,50 @@
   border: solid 1px #8ba0bd;
 }
 
-.esri-marker-symbol-picker__symbolViewport--loading::after {
+.esri-marker-symbol-picker::after {
+  background-color: #fff;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 44px;
+  bottom: 0;
   display: flex;
-  height: 100%;
   justify-content: center;
   align-items: center;
-  content: url(../../../themes/base/images/loading-throb.gif)
+  content: url(../../../themes/base/images/loading-throb.gif);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s 0.1s;
+}
+
+.esri-marker-symbol-picker--blocked::after {
+  top: 0;
+}
+
+.esri-marker-symbol-picker--loading::after {
+  opacity: 1;
 }
 
 .esri-marker-symbol-picker__category-select .dijitButtonContents {
   height: 30px;
+  padding: 0 0.5em;
 }
 
 .esri-marker-symbol-picker__category-select.dijitSelect .dijitArrowButton {
   padding: 0 0.4em;
+}
+
+.dijitMenuPopup[dijitpopupparent^="esri_widgets_SymbolStyler_MarkerSymbolPicker_"] .dijitMenuItemLabel {
+  font-family: "Avenir Next W00", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.esri-marker-symbol-picker__header {
+  font-size: 14px;
+  margin: 0 0 0.5rem 0;
+}
+
+.esri-marker-symbol-picker--showing-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

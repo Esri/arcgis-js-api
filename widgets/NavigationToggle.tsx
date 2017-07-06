@@ -41,7 +41,7 @@
 /// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
 
 import {aliasOf, declared, property, subclass} from "../core/accessorSupport/decorators";
-import {accessibleHandler, join, jsxFactory, renderable} from "./support/widget";
+import {accessibleHandler, join, tsx, renderable} from "./support/widget";
 
 import Widget = require("./Widget");
 import NavigationToggleViewModel = require("./NavigationToggle/NavigationToggleViewModel");

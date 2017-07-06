@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
-define(["require","exports","./tsSupport/generatorHelper","./tsSupport/awaiterHelper","./promiseUtils"],function(t,e,n,r,i){function u(t,e,u){return r(this,void 0,void 0,function(){return n(this,function(n){switch(n.label){case 0:return[4,i.eachAlways(t.map(function(t,n){return e.apply(u,[t,n])}))];case 1:return n.sent(),[2]}})})}function a(t,e,u){return r(this,void 0,void 0,function(){var r;return n(this,function(n){switch(n.label){case 0:return[4,i.eachAlways(t.map(function(t,n){return e.apply(u,[t,n])}))];case 1:return r=n.sent(),[2,r.map(function(t){return t.value})]}})})}e.forEach=u,e.map=a});
+define(["require","exports","./tsSupport/generatorHelper","./tsSupport/awaiterHelper","./promiseUtils"],function(e,t,r,n,u){function i(e,t,i){return n(this,void 0,void 0,function(){return r(this,function(r){switch(r.label){case 0:return[4,u.eachAlways(e.map(function(e,r){return t.apply(i,[e,r])}))];case 1:return r.sent(),[2]}})})}function a(e,t,i){return n(this,void 0,void 0,function(){var n;return r(this,function(r){switch(r.label){case 0:return[4,u.eachAlways(e.map(function(e,r){return t.apply(i,[e,r])}))];case 1:return n=r.sent(),[2,n.map(function(e){return e.value})]}})})}Object.defineProperty(t,"__esModule",{value:!0}),t.forEach=i,t.map=a});

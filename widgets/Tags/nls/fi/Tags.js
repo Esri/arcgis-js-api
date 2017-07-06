@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define({addTags:"Lisää tunniste(ita)",noTagsFound:"Yksikään nykyinen tunniste ei vastaa ehtoa.",required:"Vähintään yksi tunniste on pakollinen."});

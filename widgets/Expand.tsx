@@ -36,7 +36,8 @@ import Widget = require("./Widget");
 import {
   accessibleHandler,
   renderable,
-  jsxFactory
+  join,
+  tsx
 } from "./support/widget";
 
 import * as i18nCommon from "dojo/i18n!../nls/common";
@@ -52,14 +53,20 @@ type ContentSource = string | HTMLElement | Widget | _WidgetBase;
 const CSS = {
   base: "esri-expand esri-widget",
   container: "esri-expand__container",
+  containerExpanded: "esri-expand__container--expanded",
+  panel: "esri-expand__panel",
   button: "esri-widget-button",
   text: "esri-icon-font-fallback-text",
   icon: "esri-collapse__icon",
   iconExpanded: "esri-expand__icon--expanded",
   iconNumber: "esri-expand__icon-number",
+  iconNumberExpanded: "esri-expand__icon-number--expanded",
+  expandIcon: "esri-icon-expand",
   collapseIcon: "esri-icon-collapse",
   content: "esri-expand__content",
-  contentExpanded: "esri-expand__content--expanded"
+  contentExpanded: "esri-expand__content--expanded",
+  expandMask: "esri-expand__mask",
+  expandMaskExpanded: "esri-expand__mask--expanded"
 };
 
 function isWidget(value: any): value is Widget {
@@ -102,15 +109,39 @@ class Expand extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  /**
-   * @todo document
-   */
   //----------------------------------
   //  autoCollapse
   //----------------------------------
 
+  /**
+   * Automatically collapses the expand widget instance when the view's
+   * {@link module:esri/views/View#viewpoint viewpoint} updates.
+   *
+   * @name autoCollapse
+   * @instance
+   * @type {boolean}
+   * @default false
+   */
   @aliasOf("viewModel.autoCollapse")
   autoCollapse = false;
+
+  //----------------------------------
+  //  collapseIconClass
+  //----------------------------------
+
+  /**
+   * Icon font used to style the Expand button.
+   *
+   * @see [Guide - Esri Icon Font](../guide/esri-icon-font/index.html)
+   *
+   * @since 4.4
+   * @name collapseIconClass
+   * @instance
+   * @type {string}
+   */
+  @property()
+  @renderable()
+  collapseIconClass: string = "";
 
   //----------------------------------
   //  content
@@ -166,7 +197,7 @@ class Expand extends declared(Widget) {
    *
    * @name content
    * @instance
-   * @type {Dijit | Node | string | module:esri/widgets/Widget}
+   * @type {Node | string | module:esri/widgets/Widget}
    */
   @property()
   @renderable()
@@ -330,38 +361,61 @@ class Expand extends declared(Widget) {
     const expandTooltip = this.expandTooltip || i18nCommon.expand;
     const collapseTooltip = this.collapseTooltip || i18nCommon.collapse;
     const title = expanded ? collapseTooltip : expandTooltip;
+    const collapseIconClass = this.collapseIconClass || CSS.collapseIcon;
+    const expandIconClass = this.expandIconClass || CSS.expandIcon;
 
     const expandIconClasses = {
-      [CSS.collapseIcon]: expanded,
-      [CSS.iconExpanded]: expanded
+      [CSS.iconExpanded]: expanded,
+      [collapseIconClass]: expanded,
+      [expandIconClass]: !expanded
     };
 
-    const expandIconClass = this.expandIconClass;
-
-    if (expandIconClass) {
-      expandIconClasses[expandIconClass] = !expanded;
-    }
+    const containerExpanded = {
+      [CSS.containerExpanded]: expanded
+    };
 
     const contentClasses = {
       [CSS.contentExpanded]: expanded
     };
 
+    const maskClasses = {
+      [CSS.expandMaskExpanded]: expanded
+    };
+
     const iconNumber = this.iconNumber;
-    const badgeNumber = iconNumber ? (<span class={CSS.iconNumber}>{iconNumber}</span>) : null;
+
+    const badgeNumberNode = iconNumber && !expanded ? (
+      <span key={"expand__icon-number"}
+        class={CSS.iconNumber}>{iconNumber}</span>
+    ) : null;
+
+    const expandedBadgeNumberNode = iconNumber && expanded ? (
+      <span key={"expand__expand-icon-number"}
+        class={join(CSS.iconNumber, CSS.iconNumberExpanded)}>{iconNumber}</span>
+    ) : null;
 
     return (
       <div class={CSS.base}>
-        <div class={CSS.container}>
-          <div bind={this}
-            onclick={this._toggle}
-            onkeydown={this._toggle}
-            title={title}
-            class={CSS.button}
-            role="button"
-            tabindex="0">
-            {badgeNumber}
-            <span aria-hidden="true" class={CSS.icon} classes={expandIconClasses} />
-            <span class={CSS.text}>{title}</span>
+        <div
+          bind={this}
+          onclick={this._toggle}
+          class={CSS.expandMask}
+          classes={maskClasses}></div>
+        <div class={CSS.container} classes={containerExpanded}>
+          <div class={CSS.panel}>
+            <div bind={this}
+              onclick={this._toggle}
+              onkeydown={this._toggle}
+              aria-label={title}
+              title={title}
+              role="button"
+              tabindex="0"
+              class={CSS.button}>
+              {badgeNumberNode}
+              <span aria-hidden="true" class={CSS.icon} classes={expandIconClasses} />
+              <span class={CSS.text}>{title}</span>
+            </div>
+            {expandedBadgeNumberNode}
           </div>
           <div class={CSS.content} classes={contentClasses} bind={this}>
             {this._renderContent()}

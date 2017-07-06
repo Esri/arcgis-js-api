@@ -5,10 +5,10 @@
     line-height: 16px;
     color: $text_color;
     background-color: rgba($background_color, 0.65);
-    @include flexDisplay();
-    @include flexFlow(row, nowrap);
-    @include justifyContent(space-between);
-    @include alignItems(center);
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
 
@@ -29,8 +29,8 @@
     overflow: hidden;
     text-overflow: ellipsis;
     padding: 0 5px;
-    @include alignSelf(flex-start);
-    @include flex(1, 0);
+    align-self: flex-start;
+    flex: 1 0;
   }
 
   .esri-attribution__sources[role="button"] {
@@ -42,7 +42,7 @@
     padding: 0 5px;
     text-align: right;
     white-space: nowrap;
-    @include alignSelf(flex-end);
+    align-self: flex-end;
   }
 
   .esri-attribution--open {

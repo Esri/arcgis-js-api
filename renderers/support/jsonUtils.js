@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define(["../../core/Warning","../SimpleRenderer","../UniqueValueRenderer","../ClassBreaksRenderer"],function(e,n,r,u){function t(e){return e?s[e.type]||null:null}var s={simple:n,uniqueValue:r,classBreaks:u},o={fromJson:function(e){try{throw new Error("fromJson is deprecated, use fromJSON instead")}catch(n){console.warn(n.stack)}return o.fromJSON(e)},read:function(n,r,u){if(n&&(n.styleName||n.styleUrl)&&"uniqueValue"!==n.type)return u&&u.messages&&u.messages.push(new e("renderer:unsupported","Only UniqueValueRenderer can be referenced from a web style, but found '"+n.type+"'",{definition:n,context:u})),null;var s=t(n);if(s){var o=new s;return o.read(n,u),o}return u&&u.messages&&n&&u.messages.push(new e("renderer:unsupported","Renderers of type '"+(n.type||"unknown")+"' are not supported",{definition:n,context:u})),null},fromJSON:function(e){var n=t(e);return n?n.fromJSON(e):null}};return o});

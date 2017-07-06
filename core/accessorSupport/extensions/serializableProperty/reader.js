@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
-define(["require","exports","dojo/_base/lang","./type"],function(r,e,n,t){function u(r,e,t,u){(!u.read||!u.read.reader&&u.read.enabled!==!1)&&c(r)&&n.setObject("read.reader",o(r,e,t,u),u)}function o(r,e,n,t){if(e)return a(r);if(f(r)){var u=r.prototype.itemType,o=a(u);return function(e,n){var t=o(e,n);return t?new r(t):t}}return i(r)}function i(r){return r.prototype.read?function(e,n,t){if(null==e)return e;var u=new r;return u.read(e,t)}:r.fromJSON}function a(r){var e=i(r);return function(r,n,t){return null==r?r:Array.isArray(r)?r.map(function(r){return e(r,null,t)}):[e(r,null,t)]}}function f(r){return t.isCollection(r)&&c(r.prototype.itemType)}function c(r){return!!r&&(!!r.prototype.read||!!r.fromJSON||f(r))}e.create=u});
+define(["require","exports","dojo/_base/lang","./type"],function(r,e,n,t){function u(r,e,t,u){(!u.read||!u.read.reader&&u.read.enabled!==!1)&&c(r)&&n.setObject("read.reader",o(r,e,t,u),u)}function o(r,e,n,t){if(e)return a(r);if(f(r)){var u=r.prototype.itemType,o=a(u);return function(e,n,t){var u=o(e,n,t);return u?new r(u):u}}return i(r)}function i(r){return r.prototype.read?function(e,n,t){if(null==e)return e;var u=new r;return u.read(e,t)}:r.fromJSON}function a(r){var e=i(r);return function(r,n,t){return null==r?r:Array.isArray(r)?r.map(function(r){return e(r,null,t)}):[e(r,null,t)]}}function f(r){return t.isCollection(r)&&c(r.prototype.itemType)}function c(r){return!!r&&(!!r.prototype.read||!!r.fromJSON||f(r))}Object.defineProperty(e,"__esModule",{value:!0}),e.create=u});

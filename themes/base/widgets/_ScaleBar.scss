@@ -9,14 +9,13 @@
   $line_thickness: 3px;
   $tic_height: 9px;
 
+  $offset_for_unit_label: 2ch;
+
   $border_style: floor($line_thickness/2) solid rgba($light_color, 0.25);
 
-  .esri-component.esri-scale-bar {
-    overflow: visible;
-  }
-
-  .esri-scale-bar {
-    width: 0;
+  .esri-scale-bar.esri-widget {
+    background: transparent;
+    box-shadow: none;
   }
 
   .esri-scale-bar__bar-container {
@@ -27,9 +26,9 @@
   .esri-scale-bar__ruler {
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
     height: 6px;
     background-color: $light_color;
+    margin: 0 $offset_for_unit_label 0 ($offset_for_unit_label / 4) ;
     @include defaultBoxShadow();
   }
 
@@ -51,11 +50,11 @@
 
   .esri-scale-bar__line {
     position: absolute;
-    width: 100%;
     height: $line_thickness;
     background-color: $dark_color;
     bottom: 0;
-    z-index: 10;
+    left: 0;
+    right: $offset_for_unit_label;
   }
 
   .esri-scale-bar__line--bottom {
@@ -74,7 +73,6 @@
     height: $tic_height;
     background-color: $dark_color;
     position: absolute;
-    z-index: 5;
     border-right: $border_style;
   }
 
@@ -103,7 +101,6 @@
     display: flex;
     justify-content: space-between;
     position: relative;
-    width: 100%;
   }
 
   .esri-scale-bar__label-container--line {
@@ -113,7 +110,6 @@
   .esri-scale-bar__label {
     font-size: $text_size_small;
     text-shadow: 0 0 1px $light_color, 0 0 1px $light_color, 0 0 1px $light_color;
-    width: 10%;
     color: $text_color;
     font-weight: $text_weight_title;
     white-space: nowrap;

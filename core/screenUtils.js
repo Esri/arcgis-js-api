@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
-define(["require","exports"],function(t,n){function r(t){return t/72*n.DPI}function e(t){return 72*t/n.DPI}function o(t){if("string"==typeof t){if(i.test(t)){var n=t.match(i),r=Number(n[1]),o=n[3]&&n[3].toLowerCase();return"px"===o?e(r):r}return console.warn(u),null}return t}var i=/^(\d+(\.\d+)?)\s*((px)|(pt))?$/i,u="screenUtils.toPt: input not recognized!";n.DPI=96,n.pt2px=r,n.px2pt=e,n.toPt=o});
+define(["require","exports"],function(t,e){function n(t){return t?t/72*e.DPI:0}function r(t){return t?72*t/e.DPI:0}function o(t){if("string"==typeof t){if(u.test(t)){var e=t.match(u),n=Number(e[1]),o=e[3]&&e[3].toLowerCase();return"px"===o?r(n):n}return console.warn(i),null}return t}Object.defineProperty(e,"__esModule",{value:!0});var u=/^(\d+(\.\d+)?)\s*((px)|(pt))?$/i,i="screenUtils.toPt: input not recognized!";e.DPI=96,e.pt2px=n,e.px2pt=r,e.toPt=o});

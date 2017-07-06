@@ -4,8 +4,8 @@
   $thumbnail-width: 32px;
 
   .esri-raster-symbology {
-    @include flexDisplay();
-    @include flexFlow(column, nowrap);
+    display: flex;
+    flex-flow: column nowrap;
     @import "../../../dgrid/css/dgrid.css";
   }
   .esri-raster-symbology-editor--hidden {
@@ -42,46 +42,50 @@
     width: $thumbnail-width;
     height: $thumbnail-height;
   }
-  .esri-raster-symbology-editor__stretch-type-min-max-img{
+  .esri-raster-symbology-editor__stretch-type-icon--min-max{
     background-image: url(../base/images/raster-symbology-editor-stretch-type-min-max.png);
   }
-  .esri-raster-symbology-editor__stretch-type-none-img{
+  .esri-raster-symbology-editor__stretch-type-icon--none{
     background-image: url(../base/images/raster-symbology-editor-stretch-type-none.png);
   }
-  .esri-raster-symbology-editor__stretch-type-standard-deviation-img{
+  .esri-raster-symbology-editor__stretch-type-icon--standard-deviation{
     background-image: url(../base/images/raster-symbology-editor-stretch-type-standard-deviation.png);
   }
-  .esri-raster-symbology-editor__stretch-type-percent-clip-img{
+  .esri-raster-symbology-editor__stretch-type-icon--percent-clip{
     background-image: url(../base/images/raster-symbology-editor-stretch-type-percent-clip.png);
   }
-  .esri-raster-symbology-editor__band-combination-natural-color-img{
+  .esri-raster-symbology-editor__band-combination-icon--natural-color{
     background-image: url(../base/images/raster-symbology-editor-band-combination-natural-color.png);
   }
-  .esri-raster-symbology-editor__band-combination-land-water-img{
+  .esri-raster-symbology-editor__band-combination-icon--land-water{
     background-image: url(../base/images/raster-symbology-editor-band-combination-land-water.png);
   }
-  .esri-raster-symbology-editor__band-combination-landuse-img{
+  .esri-raster-symbology-editor__band-combination-icon--landuse{
     background-image: url(../base/images/raster-symbology-editor-band-combination-landuse.png);
   }
-  .esri-raster-symbology-editor__band-combination-bathymetric-img{
+  .esri-raster-symbology-editor__band-combination-icon--bathymetric{
     background-image: url(../base/images/raster-symbology-editor-band-combination-bathymetric.png);
   }
-  .esri-raster-symbology-editor__band-combination-vegetation-img{
+  .esri-raster-symbology-editor__band-combination-icon--vegetation{
     background-image: url(../base/images/raster-symbology-editor-band-combination-vegetation.png);
   }
-  .esri-raster-symbology-editor__band-combination-color-infrared-img{
+  .esri-raster-symbology-editor__band-combination-icon--color-infrared{
     background-image: url(../base/images/raster-symbology-editor-band-combination-color-infrared.png);
   }
-  .esri-raster-symbology-editor__symbology-type-rgb-img{
-    background-image: url(../base/images/raster-symbology-editor-symbology-type-rgb-img.png);
+  .esri-raster-symbology-editor__symbology-type-icon--rgb{
+    background-image: url(../base/images/raster-symbology-editor-symbology-type-rgb.png);
     @extend .esri-raster-symbology-editor__thumbnail-image;
   }
-  .esri-raster-symbology-editor__symbology-type-stretch-img{
-    background-image: url(../base/images/raster-symbology-editor-symbology-type-stretch-img.png);
+  .esri-raster-symbology-editor__symbology-type-icon--stretch{
+    background-image: url(../base/images/raster-symbology-editor-symbology-type-stretch.png);
     @extend .esri-raster-symbology-editor__thumbnail-image;
   }
-  .esri-raster-symbology-editor__symbology-type-unique-value-img{
-    background-image: url(../base/images/raster-symbology-editor-symbology-type-unique-value-img.png);
+  .esri-raster-symbology-editor__symbology-type-icon--unique-value{
+    background-image: url(../base/images/raster-symbology-editor-symbology-type-unique-value.png);
+    @extend .esri-raster-symbology-editor__thumbnail-image;
+  }
+  .esri-raster-symbology-editor__symbology-type-icon--discrete{
+    background-image: url(../base/images/raster-symbology-editor-symbology-type-discrete.png);
     @extend .esri-raster-symbology-editor__thumbnail-image;
   }
   .esri-raster-symbology-editor__menu-item-td {

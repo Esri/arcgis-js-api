@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define({statsAvg:"Gjennomsnitt: ${avg}",count:"Antall: ${count}",percent:"${num}%",high:"Høy",low:"Lav",color:{changeMinMaxToolTIp:"Skriv inn en verdi.",handleToolTip:"Match dataverdier med farger.",maxValueToolTip:"Skriv inn den høyeste forventede dataverdien.",minValueToolTip:"Skriv inn den laveste forventede dataverdien.",changeSymbol:"Endre symbol"},size:{handleToolTip:"Match dataverdier med symbolstørrelse.",sizeInputBoxLines:"Angi linjetykkelse fra 0 til 18 piksler.",sizeInputBoxPoints:"Angi symbolstørrelse fra 1 til 120 piksler"}});

@@ -45,7 +45,7 @@
 /// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
 
 import {aliasOf, subclass, property, declared} from "../core/accessorSupport/decorators";
-import {accessibleHandler, jsxFactory, renderable, vmEvent} from "./support/widget";
+import {accessibleHandler, tsx, renderable, vmEvent} from "./support/widget";
 
 import Widget = require("./Widget");
 import HomeViewModel = require("./Home/HomeViewModel");

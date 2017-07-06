@@ -46,7 +46,7 @@ import Widget = require("./Widget");
 import FileLink = require("./Print/FileLink");
 import urlUtils = require("../core/urlUtils");
 
-import { accessibleHandler, join, renderable, jsxFactory } from "./support/widget";
+import { accessibleHandler, join, renderable, tsx } from "./support/widget";
 
 import * as i18n from "dojo/i18n!./Print/nls/Print";
 
@@ -610,6 +610,7 @@ class Print extends declared(Widget) {
     }
 
     this.scale = this._scale;
+    this._selectedTemplate.outScale = this.scale;
 
     const titleText = this._title || i18n.untitled,
           lowercaseFormat = this._selectedTemplate.format.toLowerCase(),
@@ -649,11 +650,11 @@ class Print extends declared(Widget) {
 
   private _updateFromOption(e: Event): void {
     const target = e.target as HTMLSelectElement;
-    const selectOption = target.selectedOptions[0].value;
+    const selectedOption = target.selectedOptions.item(0).value;
     const selectedTemplate = this._selectedTemplate;
     const targetProperty = target.getAttribute("data-target-property");
 
-    selectedTemplate[targetProperty] = selectOption;
+    selectedTemplate[targetProperty] = selectedOption;
   }
 
   private _switchInput(): void {

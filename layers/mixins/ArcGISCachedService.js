@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define(["dojo/_base/lang","dojo/io-query","./ArcGISService","./ScaleRangeLayer","../support/TileInfo","../support/TilemapCache"],function(e,i,r,a,n,s){var l=r.createSubclass([a],{declaredClass:"esri.layers.mixins.ArcGISCachedService",properties:{minScale:{json:{origins:{service:{read:!1}}}},maxScale:{json:{origins:{service:{read:!1}}}},resampling:!0,supportsBlankTile:{value:!1,readOnly:!0,dependsOn:["version"],get:function(){return this.version>=10.2}},tileInfo:{value:null,type:n,json:{read:function(e,i){var r=i.minScale?i.minScale:+(1/0),a=i.maxScale?i.maxScale:-(1/0);return e?(e.lods=e.lods.filter(function(e){return e.scale<=r&&e.scale>=a}),n.fromJSON(e)):null}}},tilemapCache:{value:null,json:{read:{source:["capabilities"],reader:function(e,i){var r=i.capabilities&&i.capabilities.indexOf("Tilemap")>-1;return r?new s({layer:this}):null}}}},refreshTimestamp:null,version:{}},refresh:function(){this.refreshTimestamp=Date.now(),this.inherited(arguments)},getTileUrl:function(r,a,n){var s=!this.tilemapCache&&this.resampling&&this.supportsBlankTile,l=e.mixin({},this.parsedUrl.query,{token:this.token,blankTile:s?!1:null,_ts:this.refreshTimestamp}),t=this.parsedUrl.path+"/tile/"+r+"/"+a+"/"+n;return l=i.objectToQuery(l),t+=l?"?"+l:""}});return l});

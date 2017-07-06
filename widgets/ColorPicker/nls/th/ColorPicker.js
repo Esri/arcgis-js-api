@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define({transparency:"โปร่งแสง",suggested:"ที่แนะนำ",recent:"ปัจจุบัน",more:"กว่า",moreColorsTooltip:"ดูสีเพิ่มเติม",paletteTooltip:"เลือกสี",noColorTooltip:"ไม่มีสี",hexInputTooltip:"สีที่เลือกเองในลักษณะเลขฐานสิบหก (#FFFF00)."});

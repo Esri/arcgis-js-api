@@ -2,14 +2,40 @@
 
 <snippets>
 
-<snippet name="matchPixelCenter"><![CDATA[
-	vec4 matchPixelCenter(vec4 clipCoord, vec2 widthHeight) {
-		vec2 xy = vec2(.500123) + .5 * clipCoord.xy / clipCoord.w;
-		vec2 ij = floor(xy * widthHeight);
-		vec2 pixelSz = vec2(1.0) / widthHeight;
-		vec2 result = (((vec2(.5) + ij) * pixelSz) * 2.0 - vec2(1.0)) * clipCoord.w;
-		return vec4(result.x, result.y, clipCoord.z, clipCoord.w);
-	}
+<snippet name="alignToPixelCenter"><![CDATA[
+  vec4 alignToPixelCenter(vec4 clipCoord, vec2 widthHeight) {
+    // From clip space to (0 : 1), bias towards right pixel edge
+    vec2 xy = vec2(.500123) + .5 * clipCoord.xy / clipCoord.w;
+
+    // Size of a pixel in range (0 : 1)
+    vec2 pixelSz = vec2(1.0) / widthHeight;
+
+    // Round to nearest pixel center
+    vec2 ij = (floor(xy * widthHeight) + vec2(0.5)) * pixelSz;
+
+    // Convert back to clip space
+    vec2 result = (ij * 2.0 - vec2(1.0)) * clipCoord.w;
+
+    return vec4(result, clipCoord.zw);
+  }
+]]></snippet>
+
+<snippet name="alignToPixelOrigin"><![CDATA[
+  vec4 alignToPixelOrigin(vec4 clipCoord, vec2 widthHeight) {
+    // From clip space to (0 : 1),
+    vec2 xy = vec2(.5) + .5 * clipCoord.xy / clipCoord.w;
+
+    // Size of a pixel in range (0 : 1)
+    vec2 pixelSz = vec2(1.0) / widthHeight;
+
+    // Round to nearest pixel border, (0 : 1)
+    vec2 ij = floor((xy + .5 * pixelSz) * widthHeight) * pixelSz;
+
+    // Convert back to clip space
+    vec2 result = (ij * 2.0 - vec2(1.0)) * clipCoord.w;
+
+    return vec4(result, clipCoord.zw);
+  }
 ]]></snippet>
 
 <snippet name="float2rgba"><![CDATA[
@@ -78,6 +104,139 @@
 	}
 ]]></snippet>
 
+
+<!--
+	Scene Lighting Definitions:
+	================================================
+
+	defines:
+		- SH_ORDER: 1|2|3
+	input:
+		- normal: vec3
+		- albedo: vec3
+	  - shadow: float
+		- ssao: float
+	return:
+	  - color: vec3
+-->
+<snippet name="sceneLightingDefinitions"><![CDATA[
+	$viewingMode
+
+	// main light
+	/////////////////////////////////////////
+	uniform vec3 lightingMainDirection;
+	uniform vec3 lightingMainIntensity;
+
+	// ambient lighting
+	/////////////////////////////////////////
+	#ifndef SH_ORDER
+		#define SH_ORDER 2
+	#endif
+
+	#if SH_ORDER == 0
+		uniform vec3 lightingAmbientSH0;
+	#elif SH_ORDER == 1
+		uniform vec4 lightingAmbientSH_R;
+		uniform vec4 lightingAmbientSH_G;
+		uniform vec4 lightingAmbientSH_B;
+	#elif SH_ORDER == 2
+		uniform vec3 lightingAmbientSH0;
+		uniform vec4 lightingAmbientSH_R1;
+		uniform vec4 lightingAmbientSH_G1;
+		uniform vec4 lightingAmbientSH_B1;
+		uniform vec4 lightingAmbientSH_R2;
+		uniform vec4 lightingAmbientSH_G2;
+		uniform vec4 lightingAmbientSH_B2;
+	#endif
+
+	// special tweaking
+	//////////////////////////////////////////
+		uniform float lightingFixedFactor;
+		uniform float lightingGlobalFactor;
+
+		uniform float ambientBoostFactor;
+
+	// evaluation
+	//////////////////////////////////////////
+
+	vec3 evaluateSceneLighting(vec3 normal, vec3 albedo, float shadow, float ssao, vec3 additionalLight) {
+		// evaluate the main light
+		float dotVal = mix(clamp(-dot(normal, lightingMainDirection), 0.0, 1.0), 1.0, lightingFixedFactor);
+		vec3 mainLight = (1.0 - shadow) * lightingMainIntensity * dotVal;
+
+		// evaluate the sh ambient light
+		#if SH_ORDER == 0
+			vec3 ambientLight = 0.282095 * lightingAmbientSH0;
+		#elif SH_ORDER == 1
+			vec4 sh0 = vec4(
+				0.282095,
+				0.488603 * normal.x,
+				0.488603 * normal.z,
+				0.488603 * normal.y
+			);
+			vec3 ambientLight = vec3(
+				dot(lightingAmbientSH_R, sh0),
+				dot(lightingAmbientSH_G, sh0),
+				dot(lightingAmbientSH_B, sh0)
+			);
+		#elif SH_ORDER == 2
+			vec3 ambientLight = 0.282095 * lightingAmbientSH0;
+
+			vec4 sh1 = vec4(
+				0.488603 * normal.x,
+				0.488603 * normal.z,
+				0.488603 * normal.y,
+				1.092548 * normal.x * normal.y
+			);
+			vec4 sh2 = vec4(
+				1.092548 * normal.y * normal.z,
+				0.315392 * (3.0 * normal.z * normal.z - 1.0),
+				1.092548 * normal.x * normal.z,
+				0.546274 * (normal.x * normal.x - normal.y * normal.y)
+			);
+			ambientLight += vec3(
+				dot(lightingAmbientSH_R1, sh1),
+				dot(lightingAmbientSH_G1, sh1),
+				dot(lightingAmbientSH_B1, sh1)
+			);
+			ambientLight += vec3(
+				dot(lightingAmbientSH_R2, sh2),
+				dot(lightingAmbientSH_G2, sh2),
+				dot(lightingAmbientSH_B2, sh2)
+			);
+		#endif
+		ambientLight *= (1.0 - ssao);
+
+		// inverse gamma correction on the albedo color
+		float gamma = 2.1;
+		vec3 albedoGammaC = pow(albedo, vec3(gamma));
+
+		// physically correct BRDF normalizes by PI
+		const float PI = 3.14159;
+		vec3 totalLight = mainLight + ambientLight + additionalLight;
+		totalLight = min(totalLight, vec3(PI, PI, PI));
+		vec3 outColor = vec3((albedoGammaC / PI) * (totalLight));
+
+		// apply gamma correction to the computed color
+		outColor = pow(outColor, vec3(1.0/gamma));
+
+		return outColor;
+	}
+
+]]></snippet>
+
+<snippet name="sceneLightingAdditionalLightGlobal"><![CDATA[
+	// heuristic lighting model originally used in the terrain shading
+	// now used to generated additional ambient light
+	#ifdef VIEWING_MODE_GLOBAL
+		float vndl = -dot(normalize(vpos + localOrigin), lightingMainDirection);
+	#else
+		float vndl = -dot(vec3(0,0,1), lightingMainDirection);
+	#endif
+	float additionalAmbientScale = smoothstep(0.0, 1.0, clamp(vndl*2.5, 0.0, 1.0));
+	vec3 additionalLight = ssao * lightingMainIntensity * additionalAmbientScale * ambientBoostFactor * lightingGlobalFactor;
+]]></snippet>
+
 <snippet name="normal2envTC"><![CDATA[
 	vec2 normal2envTC(vec3 normal) {
 		float v = .5 + .5 * asin(normal.y) * 0.63661977;
@@ -87,6 +246,8 @@
 ]]></snippet>
 
 <snippet name="vertexShaderShowDepth"><![CDATA[
+  $vsprecisionf
+
 	uniform mat4 proj;
 	attribute vec2 $position;
 	attribute vec2 $uv0;
@@ -99,7 +260,7 @@
 ]]></snippet>
 
 	<snippet name="fragmentShaderShowDepth"><![CDATA[
-	precision mediump float;
+	$fsprecisionf
 
 	uniform sampler2D depthTex;
 	varying vec2 vtc;
@@ -112,6 +273,8 @@
 ]]></snippet>
 
 <snippet name="vsUVQuad"><![CDATA[
+  $vsprecisionf
+
 	attribute vec2 $position;
 	varying vec2 uv;
 
@@ -130,7 +293,7 @@
 ]]></snippet>
 
 <snippet name="vvUniforms"><![CDATA[
-#if defined(VV_SIZE) || defined(VV_ROTATION)
+#if defined(VV_SIZE)
 	#define VV_CUSTOM_MODEL_MATRIX
 #endif
 
@@ -143,14 +306,12 @@
 	uniform vec3 vvSizeValue;
 #endif
 
-#if defined(VV_ROTATION)
-	uniform float vvRotationValue;
-#elif defined(VV_CUSTOM_MODEL_MATRIX)
-	uniform mat4 vvRotationValue;
+#ifdef VV_CUSTOM_MODEL_MATRIX
+	uniform mat3 vvSymbolRotation;
 #endif
 
 #ifdef VV_CUSTOM_MODEL_MATRIX
-	uniform vec3 vvAnchorValue;
+	uniform vec3 vvSymbolAnchor;
 #endif
 
 #ifdef VV_COLOR
@@ -173,34 +334,15 @@
 	}
 #endif
 
-// Evaluation of rotation
-#if defined(VV_ROTATION)
-	mat4 vvGetRotation(vec4 featureAttribute) {
-		float angle = featureAttribute.z + vvRotationValue; // add symbol rotation to VV rotation
-
-		float sinA = sin(angle);
-		float cosA = cos(angle);
-
-		return mat4(cosA, -sinA, 0, 0,
-		            sinA,  cosA, 0, 0,
-		               0,     0, 1, 0,
-		               0,     0, 0, 1);
-	}
-#elif defined(VV_CUSTOM_MODEL_MATRIX)
-	mat4 vvGetRotation(vec4 featureAttribute) {
-		return vvRotationValue;
-	}
-#endif
-
 // Applying the model matrix
 #ifdef VV_CUSTOM_MODEL_MATRIX
 	vec4 vvTransformPosition(vec3 position, vec4 featureAttribute) {
-		return vvGetRotation(featureAttribute) * vec4(vvGetScale(featureAttribute) * (position + vvAnchorValue), 1.0);
+		return vec4(vvSymbolRotation * (vvGetScale(featureAttribute) * (position + vvSymbolAnchor)), 1.0);
 	}
 
 	vec4 vvTransformNormal(vec3 normal, vec4 featureAttribute) {
 		// Normal transform is the inverse transpose of model transform
-		return vvGetRotation(featureAttribute) * vec4(normal / vvGetScale(featureAttribute), 1.0);
+		return vec4(vvSymbolRotation * normal / vvGetScale(featureAttribute), 1.0);
 	}
 #endif
 
@@ -245,9 +387,51 @@ vec3 hsv2rgb(vec3 c)
 }
 ]]></snippet>
 
-<snippet name="externalColorMixMode"><![CDATA[
+<snippet name="colorMixMode"><![CDATA[
 $rgb2hsv
 $hsv2rgb
+
+
+/*
+ * The color mix modes are encoded in the symbol color as follows:
+ *  - Fully transparent symbols are represented with alpha 0 for
+ *    all color mix modes (except ignore).
+ *  - color mix mode ignore is encoded as multiply with white
+ *  - the other 3 color mix modes (tint, replace, multiply) are
+ *    equally distributed on the remaining 255 alpha values, which
+ *    gives us 85 possible alpha values
+ *
+ * alpha             0 : fully transparent
+ * alpha in [  1 -  85]: tint
+ * alpha in [ 86 - 170]: replace
+ * alpha in [171 - 255]: multiply
+ */
+vec4 decodeSymbolColor(vec4 symbolColor, out int colorMixMode) {
+  float symbolAlpha = 0.0;
+
+  const float maxTint = 85.0;
+  const float maxReplace = 170.0;
+  const float scaleAlpha = 3.0;
+
+  if (symbolColor.a == 0.0) {
+    colorMixMode = 1; // fully transparent -> multiply
+    symbolAlpha = 0.0;
+  }
+  else if (symbolColor.a <= maxTint) {
+    colorMixMode = 0; // tint
+    symbolAlpha = scaleAlpha * symbolColor.a;
+  }
+  else if (symbolColor.a <= maxReplace) {
+    colorMixMode = 3; // replace
+    symbolAlpha = scaleAlpha * (symbolColor.a - maxTint);
+  }
+  else {
+    colorMixMode = 1;  // multiply
+    symbolAlpha = scaleAlpha * (symbolColor.a - maxReplace);
+  }
+
+  return vec4(symbolColor.rgb, symbolAlpha);
+}
 
 vec3 mixExternalColor(vec3 internalColor, vec3 textureColor, vec3 externalColor, int mode) {
   if (mode == 1 /* multiply */) {
@@ -281,6 +465,57 @@ float mixExternalOpacity(float internalOpacity, float textureOpacity, float exte
   }
 }
 
+]]></snippet>
+
+<snippet name="highlightWrite"><![CDATA[
+  // the following uniforms are common to all highlight shaders:
+  // uniform sampler2D depthTex
+  // uniform vec4 highlightViewportPixelSz
+  float sceneDepth = texture2D(depthTex, (gl_FragCoord.xy - highlightViewportPixelSz.xy) * highlightViewportPixelSz.zw).r;
+  if (gl_FragCoord.z > sceneDepth + 5e-6) {
+    gl_FragColor = vec4(1.0, 1.0, 0.0, 1.0);
+  }
+  else {
+    gl_FragColor = vec4(1.0, 0.0, 1.0, 1.0);
+  }
+]]></snippet>
+
+<snippet name="screenSizePerspective"><![CDATA[
+#ifdef SCREEN_SIZE_PERSPECTIVE
+
+// These could be functions, but I wanted to make sure that they are inlined. Additionally,
+// as macros, applying the scale works also for different types (float, vec2, etc).
+// Note that the implementation here should be kept in sync with the corresponding
+// CPU implementation (used for hitTest etc) in screenSizePerspectiveUtils.ts
+
+// Transform the input minimum size (factor.z) so that, when comparing to it, we are
+// excluding the 'padding' size (factor.w).
+#define screenSizePerspectiveMinSize(/* float */ size, /* vec4 */ factor) (factor.z * (1.0 + 2.0 * factor.w  / size))
+
+#define screenSizePerspectiveFactor(/* float */ absCosAngle) (absCosAngle * absCosAngle * absCosAngle)
+
+#define screenSizePerspectiveScaleFactor(/* float */ absCosAngle, /* float */ distanceToCamera, /* vec4 */ params) vec4(min(params.x / (distanceToCamera - params.y), 1.0), screenSizePerspectiveFactor(absCosAngle), params.z, params.w)
+
+// Factor is computed from screenSizePerspectiveScaleFactor
+#define applyScreenSizePerspectiveScaleFactorFloat(/* float */ size, /* vec4 */ factor) max(mix(size * factor.x, size, factor.y), screenSizePerspectiveMinSize(size, factor))
+#define screenSizePerspectiveScaleFloat(/* float */ size, /* float */ absCosAngle, /* float */ distanceToCamera, /* vec4 */ params) applyScreenSizePerspectiveScaleFactorFloat(size, screenSizePerspectiveScaleFactor(absCosAngle, distanceToCamera, params))
+
+#define applyScreenSizePerspectiveScaleFactorVec2(/* vec2 */ size, /* vec4 */ factor) mix(size * clamp(factor.x, screenSizePerspectiveMinSize(size.y, factor) / size.y, 1.0), size, factor.y)
+#define screenSizePerspectiveScaleVec2(/* vec2 */ size, /* float */ absCosAngle, /* float */ distanceToCamera, /* vec4 */ params) applyScreenSizePerspectiveScaleFactorVec2(size, screenSizePerspectiveScaleFactor(absCosAngle, distanceToCamera, params))
+
+#endif
+]]></snippet>
+
+<snippet name="selectShadingNormal"><![CDATA[
+	#ifdef GROUND_NORMAL_SHADING
+		#ifdef VIEWING_MODE_GLOBAL
+			vec3 shadingNormal = normalize(vpos + localOrigin);
+		#else
+			vec3 shadingNormal = vec3(0,0,1);
+		#endif
+	#else
+		vec3 shadingNormal = normal;
+	#endif
 ]]></snippet>
 
 </snippets>

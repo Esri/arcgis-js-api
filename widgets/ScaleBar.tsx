@@ -37,7 +37,7 @@
 /// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
 /// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
 
-import { join, jsxFactory, renderable } from "./support/widget";
+import { join, tsx, renderable } from "./support/widget";
 import { aliasOf, cast, declared, property, subclass } from "../core/accessorSupport/decorators";
 import { whenTrue } from "../core/watchUtils";
 
@@ -267,19 +267,20 @@ class ScaleBar extends declared(Widget) {
   private _renderRuler(scaleBarProps: ScaleBarProperties): any {
     const length = double(Math.round(scaleBarProps.length));
     const unit = i18n[scaleBarProps.unit] || i18n.unknownUnit;
+    const unitLabel = `${double(scaleBarProps.value)} ${unit}`;
 
     return (
       <div class={CSS.barContainer} styles={{"width": `${length}px`}} key="esri-scale-bar__ruler">
         <div class={CSS.ruler}>
-          <div class={join(CSS.rulerBlock)} />
-          <div class={join(CSS.rulerBlock)} />
-          <div class={join(CSS.rulerBlock)} />
-          <div class={join(CSS.rulerBlock)} />
+          <div class={CSS.rulerBlock} />
+          <div class={CSS.rulerBlock} />
+          <div class={CSS.rulerBlock} />
+          <div class={CSS.rulerBlock} />
         </div>
         <div class={CSS.labelContainer}>
           <div class={CSS.label}>0</div>
           <div class={CSS.label}>{scaleBarProps.value}</div>
-          <div class={CSS.label}>{double(scaleBarProps.value)} {unit}</div>
+          <div class={CSS.label}>{unitLabel}</div>
         </div>
       </div>
     );
@@ -287,10 +288,11 @@ class ScaleBar extends declared(Widget) {
 
   private _renderLine(scaleBarProps: ScaleBarProperties, labelPosition: "top" | "bottom"): any {
     const unit = i18n[scaleBarProps.unit] || i18n.unknownUnit;
+    const unitLabel = `${double(scaleBarProps.value)} ${unit}`;
 
     const label = (
       <div class={join(CSS.labelContainer, CSS.lineLabelContainer)} key="esri-scale-bar__label">
-        <div class={CSS.label}>{double(scaleBarProps.value)} {unit}</div>
+        <div class={CSS.label}>{unitLabel}</div>
       </div>
     );
 

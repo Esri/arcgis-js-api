@@ -41,26 +41,26 @@
 // Top Corners
 .esri-ui-top-left,
 .esri-ui-top-right {
-  @include flexFlow(column);
+  flex-flow: column;
 }
 
 .esri-ui-top-left {
-  @include alignItems(flex-start);
+  align-items: flex-start;
 }
 
 .esri-ui-top-right {
-  @include alignItems(flex-end);
+  align-items: flex-end;
 }
 
 //  Bottom Corners
 .esri-ui-bottom-left,
 .esri-ui-bottom-right {
-  @include flexFlow(row);
-  @include alignItems(flex-end);
+  flex-flow: row;
+  align-items: flex-end;
 }
 
 .esri-ui-bottom-right {
-  @include flexFlow(row-reverse);
+  flex-flow: row-reverse;
 }
 
 .esri-ui-top-left {
@@ -98,15 +98,13 @@
 
 html[dir="rtl"] {
   .esri-ui-top-left {
-    @include alignItems(flex-end);
+    align-items: flex-end;
   }
   .esri-ui-top-right {
-    @include alignItems(flex-start);
+    align-items: flex-start;
   }
   .esri-ui-bottom-left,
   .esri-ui-bottom-right {
-    -webkit-flex-direction: row-reverse;
-    -ms-flex-direction: row-reverse;
     flex-direction: row-reverse;
   }
 }

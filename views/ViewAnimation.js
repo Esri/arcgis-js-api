@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
-define(["../core/declare","dojo/Deferred","../core/Accessor","../core/Promise","../core/Scheduler"],function(e,i,t,s,n){var r={RUNNING:"running",FINISHED:"finished",STOPPED:"stopped"},o=e([t,s],{declaredClass:"esri.views.ViewAnimation",properties:{state:{value:null},target:{value:null}},constructor:function(){this._dfd=new i,this.addResolvingPromise(this._dfd.promise)},initialize:function(){this.state=r.RUNNING},stop:function(){this.state=r.STOPPED,n.schedule(this._dfd.resolve)},finish:function(){this.state=r.FINISHED,n.schedule(this._dfd.resolve)}});return o.State=r,o});
+define(["../core/declare","dojo/Deferred","../core/Accessor","../core/Promise","../core/Scheduler","../core/Error"],function(e,t,i,s,n,r){var o={RUNNING:"running",FINISHED:"finished",STOPPED:"stopped"},d=e([i,s],{declaredClass:"esri.views.ViewAnimation",properties:{state:{value:null},target:{value:null}},constructor:function(){this._dfd=new t,this.addResolvingPromise(this._dfd.promise)},initialize:function(){this.state=o.RUNNING},stop:function(){this.state!==o.STOPPED&&this.state!==o.FINISHED&&(this.state=o.STOPPED,n.schedule(this._dfd.reject.bind(this._dfd,new r("ViewAnimation stopped"))))},finish:function(){this.state!==o.STOPPED&&this.state!==o.FINISHED&&(this.state=o.FINISHED,n.schedule(this._dfd.resolve))}});return d.State=o,d});

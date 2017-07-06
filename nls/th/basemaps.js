@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define({streets:"ถนน",satellite:"ภาพถ่าย",hybrid:"ภาพพร้อมคำบรรยาย",terrain:"สัญลักษณ์ของภูมิประเทศ",topo:"ภูมิประเทศ",gray:"ภาพพื้นสีเทาอ่อน","dark-gray":"ภาพพื้นสีเทาเข้ม",oceans:"มหาสมุทร","national-geographic":"เนชั่นแนล จีโอกราฟิก",osm:"OpenStreetMap","streets-night-vector":"แผนที่ถนนทั่วโลก (กลางคืน)","streets-relief-vector":"แผนที่ถนนทั่วโลก (with Relief)","streets-navigation-vector":"แผนที่นำทาง"});

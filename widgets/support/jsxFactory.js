@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
-define(["require","exports","../libs/maquette/maquette"],function(e,t,r){t.jsxFactory={createElement:r.h}});
+define(["require","exports","../libs/maquette/maquette"],function(e,t,u){Object.defineProperty(t,"__esModule",{value:!0}),t.tsx=u.h});

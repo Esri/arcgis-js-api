@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
-define(["../../core/lang","./Domain","dojo/_base/array","dojo/_base/lang"],function(e,a,o,n){var r=a.createSubclass({declaredClass:"esri.layers.support.CodedValueDomain",properties:{codedValues:{value:null},type:{value:"coded-value"}},getName:function(e){var a;return o.some(this.codedValues,function(o){return o.code==e&&(a=o.name),!!a}),a},toJSON:function(){var a=this.inherited(arguments);return a.codedValues=n.clone(this.codedValues),e.fixJson(a)}});return r});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators","./Domain","../../core/lang"],function(e,r,o,t,n,u,d){var a=function(e){function r(r){var o=e.call(this,r)||this;return o.codedValues=null,o.type="coded-value",o}return o(r,e),r.prototype.writeCodedValues=function(e,r){var o=null;e&&(o=e.map(function(e){return d.fixJson(d.clone(e))})),r.codedValues=o},r.prototype.getName=function(e){var r=null;if(this.codedValues){var o=String(e);this.codedValues.some(function(e){return String(e.code)===o&&(r=e.name),!!r})}return r},r}(n.declared(u));return t([n.property({json:{write:!0}})],a.prototype,"codedValues",void 0),t([n.writer("codedValues")],a.prototype,"writeCodedValues",null),t([n.property()],a.prototype,"type",void 0),a=t([n.subclass("esri.layers.support.CodedValueDomain")],a)});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define(["./ActionSpherical","../../mixins/RotateMixin"],function(i,e){var a=i.createSubclass([e],{declaredClass:"esri.views.3d.navigation.spherical.actions.RotateSpherical"});return a});

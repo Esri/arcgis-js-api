@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define({title:"Pavadinimas",fileName:"Failo vardas",titlePlaceHolder:"Failo pavadinimas",fileNamePlaceHolder:"Failo vardas",formatDefaultOption:"Pasirinkti formatą",fileFormatTitle:"Failo formatas",layoutTitle:"Puslapio nustatymas",layoutDefaultOption:"Pasirinkti puslapio nustatymą",scale:"Nustatyti mastelį",scaleLabel:"mastelis",reset:"iš naujo",author:"Autorius",copyright:"Autoriaus teisės",legend:"Įtraukti legendą",lock:"užraktas",swap:"sukeisti",panelToggle:"Skydo perjungimas",advancedOptions:"Išplėstinės parinktys",width:"Plotis",height:"Aukštis",attribution:"Įtraukti atributus",layoutTab:"Maketas",mapOnlyTab:"Tik žemėlapis",untitled:"be pavadinimo",pending:"Eksportuojama",ready:"Atverkite šį",error:"Pasirinkite, jei norite pašalinti.",sceneViewError:"Naudojant SceneView spausdinti negalima.",serviceError:"Berods įvyko klaida.","export":"Eksportuoti",exportDescription:"Eksportuojama. Eksportuoti failai bus rodomi žemiau.",exportText:"Eksportuoti failai",exportHint:"Jūsų eksportuoti failai bus rodomi čia."});

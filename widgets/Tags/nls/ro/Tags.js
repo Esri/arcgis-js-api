@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define({addTags:"Adăugare etichete",noTagsFound:"Nicio etichetă existentă nu corespunde.",required:"Sunt necesare una sau mai multe etichete."});

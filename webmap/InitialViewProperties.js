@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../Viewpoint","../core/Accessor","../geometry/SpatialReference","../core/accessorSupport/decorators"],function(e,r,t,o,i,n,p,l){var a=c=function(e){function r(r){var t=e.call(this,r)||this;return t.spatialReference=null,t.viewpoint=null,t}return t(r,e),r.prototype.clone=function(){return new c({spatialReference:this.spatialReference?this.spatialReference.clone():null,viewpoint:this.viewpoint?this.viewpoint.clone():null})},r}(l.declared(n));o([l.shared("esri.webmap.InitialViewProperties")],a.prototype,"declaredClass",void 0),o([l.property({value:null,type:p})],a.prototype,"spatialReference",void 0),o([l.property({value:null,type:i})],a.prototype,"viewpoint",void 0),a=c=o([l.subclass()],a);var c;return a});

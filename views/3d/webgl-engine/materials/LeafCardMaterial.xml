@@ -4,10 +4,15 @@
 
 <snippet name="vertexShaderLeafCard">
 	<![CDATA[
+  $vsprecisionf
+
 	uniform mat4 proj;
 	uniform mat4 view;
 	uniform mat4 model;
 	uniform mat4 modelNormal;
+
+	uniform vec3 localOrigin;
+
 	attribute vec3 $position;
 	attribute vec4 $normal;
 	attribute vec4 $uv0;
@@ -49,19 +54,13 @@
 
 <snippet name="fragmentShaderLeafCard">
 <![CDATA[
-	precision mediump float;
+	$fsprecisionf
 
 	uniform vec3 camPos;
 
-	uniform vec4 lightAmbient;
-	uniform vec4 lightDiffuse;
-	uniform vec4 lightSpecular;
-	uniform vec3 lightDirection;
-
-	uniform vec3 ambient;
 	uniform vec3 diffuse;
-	uniform vec3 specular;
-	uniform float shininess;
+
+	uniform vec3 localOrigin;
 
 	uniform sampler2D tex;
 	varying vec2 vtc;
@@ -70,26 +69,30 @@
 
 	varying vec3 vpos;
 
+	$sceneLightingDefinitions
+
 	void main() {
 		vec4 texColor = texture2D(tex, vtc);
 		if (texColor.a < .33) discard;
 
-		vec3 a = ambient * lightAmbient.rgb * lightAmbient.w;
-		vec3 d = diffuse * lightDiffuse.rgb * lightDiffuse.w * clamp(dot(vnormal, lightDirection), .0, 1.0);
+		vec3 normal = normalize(vnormal);
+		vec3 albedo = diffuse * ambientLeaf * texColor.rgb;
 
-		vec3 reflDir = normalize(reflect(vpos - camPos, vnormal));
-		float specDot = max(dot(reflDir, lightDirection), .001);
-		vec3 s = specular * lightSpecular.rgb * lightSpecular.w * pow(specDot, shininess);
+		float ssao = 1.0;
 
-		gl_FragColor = vec4(ambientLeaf * texColor.rgb * (a + d) + s, texColor.a);
+		$sceneLightingAdditionalLightGlobal
 
-		//gl_FragColor = vec4(ambient,1.0);
+		vec3 color = evaluateSceneLighting(normal, albedo, 1.0, 1.0 - ssao, additionalLight);
+
+		gl_FragColor = vec4(color, texColor.a);
 
 	}
 ]]></snippet>
 
 
 <snippet name="vertexShaderLeafCardDepth"><![CDATA[
+    $vsprecisionf
+
    	uniform mat4 proj;
    	uniform mat4 view;
    	uniform mat4 model;

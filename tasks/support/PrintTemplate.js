@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 /**
        * Defines the layout elements. It's an object with the following properties:
@@ -28,7 +28,7 @@
        * @property {string} titleText - The text used for the map title if the specified layout contains a title text element.
        * @property {string} authorText - The text used for the author if the specified layout contains an author text element.
        * @property {string} copyrightText - The text used for the copyright if the specified layout contains an copyright text element.
-       * @property {string} scalebarUnit - The unit used for the scalebar. <br> **Knowns values:**
+       * @property {string} scalebarUnit - The unit used for the scalebar. <br> **Known Values:**
        * `'Miles' | 'Kilometers' | 'Meters' | 'Feet'.` <br> **Default Value** `'Miles'`.
        * @property {module:esri/tasks/support/LegendLayer[]} legendLayers - An array of {@link module:esri/tasks/support/LegendLayer} containing the id's of the layers that
        * will be included in the legend. If `legendLayers` is not specified, all operational layers will be present in the legend. To specify

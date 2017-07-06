@@ -59,14 +59,14 @@
 /// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
 
 import {aliasOf, subclass, property, declared} from "../core/accessorSupport/decorators";
-import {accessibleHandler, join, jsxFactory, renderable, vmEvent} from "./support/widget";
+import {accessibleHandler, join, tsx, renderable, vmEvent} from "./support/widget";
 
 import Widget = require("./Widget");
 import LocateViewModel = require("./Locate/LocateViewModel");
 import Graphic = require("../Graphic");
 import View = require("../views/View");
 
-import * as i18n from "dojo/i18n!./Home/nls/Home";
+import * as i18n from "dojo/i18n!./Locate/nls/Locate";
 
 const CSS = {
   base: "esri-locate esri-widget-button esri-widget",
@@ -77,7 +77,8 @@ const CSS = {
   rotating: "esri-rotating",
 
   // common
-  disabled: "esri-disabled"
+  disabled: "esri-disabled",
+  hidden: "esri-hidden"
 };
 
 @subclass("esri.widgets.Locate")
@@ -258,7 +259,8 @@ class Locate extends declared(Widget) {
     const isLocating = state === "locating";
 
     const rootClasses = {
-      [CSS.disabled]: state === "disabled"
+      [CSS.disabled]: state === "disabled",
+      [CSS.hidden]: state === "feature-unsupported"
     };
 
     const iconClasses = {
@@ -269,8 +271,9 @@ class Locate extends declared(Widget) {
 
     return (
       <div bind={this} class={CSS.base} classes={rootClasses}
-           hidden={state === "feature-unsupported"} onclick={this._locate}
-           onkeydown={this._locate} role="button" tabIndex={0}>
+           hidden={state === "feature-unsupported"}
+           onclick={this._locate} onkeydown={this._locate}
+           role="button" tabIndex={0}>
         <span classes={iconClasses} aria-hidden="true"
               class={join(CSS.icon, CSS.locate)} title={i18n.title} />
         <span class={CSS.text}>{i18n.title}</span>

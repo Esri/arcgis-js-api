@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define({streets:"道路 (複数)",satellite:"衛星画像",hybrid:"ラベル付き衛星画像",terrain:"ラベル付き起伏図",topo:"地形図",gray:"キャンバス (ライト グレー)","dark-gray":"キャンバス (ダーク グレー)",oceans:"海洋","national-geographic":"ナショナル ジオグラフィック",osm:"OpenStreetMap","streets-night-vector":"道路地図 (World Street Map) (夜)","streets-relief-vector":"道路地図 (World Street Map) (起伏付き)","streets-navigation-vector":"ナビゲーション マップ (World Navigation Map)"});

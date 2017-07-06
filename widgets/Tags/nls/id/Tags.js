@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define({addTags:"Tambahkan tag",noTagsFound:"Tidak ada tag yang cocok.",required:"Satu tag atau lebih harus diisi."});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define(["../core/declare"],function(e){var s=e(null,{declaredClass:"esri.widgets.BasemapLayer",constructor:function(e){e=e||{},e.url||e.type||console.error("esri.widgets.BasemapLayer: unable to find the 'url' or 'type' property in parameters"),this.url=e.url,this.type=e.type,this.isReference=e.isReference===!0?!0:!1,this.opacity=e.opacity,this.visibleLayers=e.visibleLayers,this.displayLevels=e.displayLevels,this.exclusionAreas=e.exclusionAreas,this.bandIds=e.bandIds,this.templateUrl=e.templateUrl,this.copyright=e.copyright,this.subDomains=e.subDomains,this.fullExtent=e.fullExtent,this.tileInfo=e.tileInfo,this.tileServers=e.tileServers}});return s});

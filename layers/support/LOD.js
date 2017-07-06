@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators","../../core/JSONSupport"],function(e,r,o,t,l,p){var s=i=function(e){function r(r){var o=e.call(this,r)||this;return o.level=0,o.levelValue=null,o.resolution=0,o.scale=0,o}return o(r,e),r.prototype.clone=function(){return new i({level:this.level,levelValue:this.levelValue,resolution:this.resolution,scale:this.scale})},r}(l.declared(p));t([l.property({json:{write:!0}})],s.prototype,"level",void 0),t([l.property({json:{write:!0}})],s.prototype,"levelValue",void 0),t([l.property({json:{write:!0}})],s.prototype,"resolution",void 0),t([l.property({json:{write:!0}})],s.prototype,"scale",void 0),s=i=t([l.subclass("esri.layers.support.LOD")],s);var i;return s});

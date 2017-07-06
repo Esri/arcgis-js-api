@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define({transparency:"투명도",suggested:"추천",recent:"최근",more:"더 보기",moreColorsTooltip:"더 많은 색상을 확인하세요.",paletteTooltip:"색상을 선택합니다.",noColorTooltip:"색상 없음",hexInputTooltip:"16진수 표기법으로 표시한 사용자 정의 색상입니다(#FFFF00)."});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
-define(["./Layer","./support/TileInfo"],function(e,i){var r=e.createSubclass({properties:{attributionDataUrl:null,tileInfo:i},viewModulePaths:{"2d":"../views/2d/layers/TiledLayerView2D","3d":"../views/3d/layers/TiledLayerView3D"},getTileUrl:function(e,i,r){}});return r});
+define(["../request","./Layer","./support/TileInfo"],function(e,t,r){var n=t.createSubclass({properties:{attributionDataUrl:null,tileInfo:r},viewModulePaths:{"2d":"../views/2d/layers/TiledLayerView2D","3d":"../views/3d/layers/TiledLayerView3D"},getTileUrl:function(e,t,r){},fetchTile:function(t,r,n,a){var i=this.getTileUrl(t,r,n),l={responseType:"image",allowImageDataAccess:a&&a.allowImageDataAccess||!1};return"string"==typeof i?e(i,l).then(function(e){return e.data}):i.then(function(t){return e(t,{responseType:"image"})}).then(function(e){return e.data})}});return n});

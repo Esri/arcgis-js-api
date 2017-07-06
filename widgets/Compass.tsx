@@ -43,7 +43,7 @@
 import { aliasOf, subclass, property, declared } from "../core/accessorSupport/decorators";
 
 import {
-  jsxFactory,
+  tsx,
   renderable,
   accessibleHandler
 } from "./support/widget";

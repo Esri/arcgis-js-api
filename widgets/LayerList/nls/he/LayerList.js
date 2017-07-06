@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define({noItemsToDisplay:"אין כעת פריטים לצפייה.",layerInvisibleAtScale:'השכבה אינה נראית בקנ"מ הנוכחי',layerError:"חלה שגיאה בעת הטעינה של שכבה זו.",untitledLayer:"שכבה ללא כותרת"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.2/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
 
 define(["require","exports","./TerrainConst","../../webgl/Texture","../../vectorTiles/VectorTileDisplayObject"],function(t,i,e,n,l){var s=function(){function t(t){this.waitingAgents=[],this.data=null,this.tilemap=null,this.tilemapRequest=null,this.upsampleFromTile=null,this.loadingAgent=null,this.requestPromise=null,this.rawData=null,this.pendingUpdates=0,this.elevationBounds=void 0,this.init(t)}return t.prototype.init=function(t){this.waitingAgents.length=0,this.data=null,this.tilemap=null,this.tilemapRequest=null,this.upsampleFromTile=null,this.loadingAgent=null,this.requestPromise=null,this.rawData=null,this.pendingUpdates=0,t===e.LayerClass.ELEVATION&&(this.elevationBounds=null)},t.prototype.releaseResources=function(){this.waitingAgents.length=0,this.tilemap=null,this.tilemapRequest=null,this.upsampleFromTile=null,this.loadingAgent=null,this.requestPromise=null,this.rawData=null,this.pendingUpdates=0;var t=this.data;t&&(t instanceof n?t.dispose():t instanceof l&&t.dispose())},t.makeEmptyLayerInfo=function(i,e){return e?(e.init(i),e):new t(i)},t}();return s});
