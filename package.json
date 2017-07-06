@@ -1,5 +1,5 @@
 {
-  "name": "@esri/arcgis-js-api",
+  "name": "arcgis-js-api",
   "version": "4.4.0",
   "description": "Minified, unbuilt version of the ArcGIS API for JavaScript",
   "license": "SEE LICENSE IN copyright.txt",
