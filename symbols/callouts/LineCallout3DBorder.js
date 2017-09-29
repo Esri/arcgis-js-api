@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../Color","../../core/JSONSupport","../../core/lang","../../core/accessorSupport/decorators","../support/materialUtils"],function(r,e,o,t,l,n,p,c,s){Object.defineProperty(e,"__esModule",{value:!0});var u=a=function(r){function e(){var e=null!==r&&r.apply(this,arguments)||this;return e.color=new l("white"),e}return o(e,r),e.prototype.clone=function(){return new a({color:p.clone(this.color)})},e}(c.declared(n));t([c.property(s.colorAndTransparencyProperty)],u.prototype,"color",void 0),u=a=t([c.subclass("esri.symbols.support.LineCallout3DBorder")],u),e.LineCallout3DBorder=u,e["default"]=u;var a});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../Color","../../core/JSONSupport","../../core/lang","../../core/accessorSupport/decorators","../support/materialUtils"],function(r,e,o,t,l,n,p,c,s){Object.defineProperty(e,"__esModule",{value:!0});var u=function(r){function e(){var e=null!==r&&r.apply(this,arguments)||this;return e.color=new l("white"),e}return o(e,r),n=e,e.prototype.clone=function(){return new n({color:p.clone(this.color)})},t([c.property(s.colorAndTransparencyProperty)],e.prototype,"color",void 0),e=n=t([c.subclass("esri.symbols.support.LineCallout3DBorder")],e);var n}(c.declared(n));e.LineCallout3DBorder=u,e["default"]=u});

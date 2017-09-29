@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 define(["require","exports","./TilingScheme","../../../core/Error"],function(e,i,t,n){function l(e,i){}function r(e,i,l){var r=e.lods.length-1;if(e.spatialReference.isWebMercator){if(!t.makeWebMercatorAuxiliarySphere(r).compatibleWith(e))return new n("tilingscheme:incompatible-global-web-mercator","The tiling scheme is not compatible with the ArcGIS Online Web Mercator tiling scheme")}else{if(!e.spatialReference.isWGS84)return new n("tilingscheme:global-unsupported-spatial-reference","The tiling scheme spatial reference is not supported in global scenes");if(!t.makeWGS84WithTileSize(e.size[1],r).compatibleWith(e))return new n("tilingscheme:incompatible-global-wgs84","The tiling scheme is not compatible with the ArcGIS Online WGS84 tiling scheme")}return l&&!e.spatialReference.equals(l)?new n("tilingscheme:spatial-reference-mismatch","The tiling scheme does not match the spatial reference of the global scene"):void 0}Object.defineProperty(i,"__esModule",{value:!0}),i.autoUpdateSkirtsVisibility=l,i.checkIfTileInfoSupportedForViewSR=r});

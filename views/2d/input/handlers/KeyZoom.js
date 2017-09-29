@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 define(["require","exports","../../../../core/tsSupport/extendsHelper","../../../input/InputHandler"],function(o,n,e,t){Object.defineProperty(n,"__esModule",{value:!0});var i;!function(o){o[o.IN=0]="IN",o[o.OUT=1]="OUT"}(i||(i={}));var r=function(o){function n(n,e,t){var r=o.call(this,"esri.views.2d.input.handlers.KeyZoom",!0)||this;return r.view=n,r.keys=e,r._keysToZoomAction={},r.registerIncoming("key-down",t,function(o){return r._handleKeyDown(o)}),e.zoomIn.forEach(function(o){return r._keysToZoomAction[o]=i.IN}),e.zoomOut.forEach(function(o){return r._keysToZoomAction[o]=i.OUT}),r}return e(n,o),n.prototype._handleKeyDown=function(o){this._handleKey(o)},n.prototype._handleKey=function(o){var n=o.modifiers;if(!(n.size>0)||n.has("Shift")){var e=this._keysToZoomAction[o.data.key];e===i.IN?(this.view.navigation.zoomIn(),o.stopPropagation()):e===i.OUT&&(this.view.navigation.zoomOut(),o.stopPropagation())}},n}(t.InputHandler);n.KeyZoom=r});

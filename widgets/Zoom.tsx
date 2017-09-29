@@ -31,8 +31,8 @@
 /// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
 /// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
 
-import {aliasOf, subclass, declared, property} from "../core/accessorSupport/decorators";
-import {tsx, renderable} from "./support/widget";
+import { aliasOf, subclass, declared, property } from "../core/accessorSupport/decorators";
+import { tsx, renderable } from "./support/widget";
 
 import Widget = require("./Widget");
 import IconButton = require("./Zoom/IconButton");
@@ -105,11 +105,29 @@ class Zoom extends declared(Widget) {
   //----------------------------------
 
   /**
-   * @todo
+   * Determines the layout/orientation of the Zoom widget.
+   *
+   * **Known Values:** vertical | horizontal
+   *
+   * **Default Value:** vertical
+   *
+   * @name layout
+   * @since 4.5
+   * @instance
+   *
+   * @type {string}
    */
-  @property()
+  @property({
+    value: "vertical"
+  })
   @renderable()
-  layout: Layout = "vertical";
+  set layout(value: Layout) {
+    if (value !== "horizontal") {
+      value = "vertical";
+    }
+
+    this._set("layout", value);
+  }
 
   //----------------------------------
   //  view

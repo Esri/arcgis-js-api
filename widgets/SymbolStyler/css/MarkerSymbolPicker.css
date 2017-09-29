@@ -42,9 +42,32 @@
 
 .esri-marker-symbol-picker .esri-symbol {
   display: flex;
-  justify-content: center;
   align-items: center;
   cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+
+.esri-marker-symbol-picker .esri-symbol:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(to top, #fff, #fff, rgba(255, 255, 255, 0.5));
+}
+
+.esri-marker-symbol-picker .esri-symbol img {
+  max-width: 100%;
+  height: auto;
+}
+
+.esri-marker-symbol-picker .esri-symbol div {
+  overflow: hidden;
+  text-align: center;
+  padding: 0 6px;
+  margin: auto;
 }
 
 .esri-marker-symbol-picker--dimensionality-volumetric .esri-symbol {
@@ -55,8 +78,8 @@
 
 .esri-marker-symbol-picker--dimensionality-flat .esri-symbol {
   flex-basis: 16%;
-  padding: 6px 0 6px 0;
-  height: 32px;
+  padding: 6px 0;
+  height: 35px;
 }
 
 .esri-marker-symbol-picker--dimensionality-flat img {

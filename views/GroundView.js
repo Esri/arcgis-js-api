@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
-define(["../core/Accessor","../core/Collection"],function(e,s){var i=e.createSubclass({declaredClass:"esri.views.GroundView",properties:{view:{},layerViews:{type:s},suspended:{get:function(){return this.view?this.view.suspended:!0}}},getDefaults:function(){return{layerViews:[]}},destroy:function(){this.view=null}});return i});
+define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/accessorSupport/decorators","../core/Accessor","../core/Collection","../core/watchUtils","../core/HandleRegistry"],function(e,r,t,o,n,s,i,p,d){var l=function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.handles=new d,r.layerViews=new i,r}return t(r,e),r.prototype.initialize=function(){this.handles.add(p.when(this,"view.map.ground",function(e){return e.load()}))},r.prototype.destroy=function(){this.view=null,this.handles&&(this.handles.destroy(),this.handles=null)},Object.defineProperty(r.prototype,"suspended",{get:function(){return!this.view||this.view.suspended},enumerable:!0,configurable:!0}),o([n.property()],r.prototype,"view",void 0),o([n.property({type:i})],r.prototype,"layerViews",void 0),o([n.property()],r.prototype,"suspended",null),r=o([n.subclass("esri.views.GroundView")],r)}(n.declared(s));return l});

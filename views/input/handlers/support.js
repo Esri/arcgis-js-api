@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 define(["require","exports"],function(e,t){function r(e,t){switch(t){case"primary":return"touch"===e.pointerType||0===e.button;case"secondary":return"touch"!==e.pointerType&&2===e.button;case"tertiary":return"touch"!==e.pointerType&&1===e.button}}Object.defineProperty(t,"__esModule",{value:!0}),t.eventMatchesPointerType=r});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 define(["require","exports","../../../../core/tsSupport/extendsHelper","../../../input/InputHandler","./support","../../navigation/NavigationConstants"],function(t,e,n,i,a,r){Object.defineProperty(e,"__esModule",{value:!0});var o=function(t){function e(e,n,i,a){var o=t.call(this,"esri.views.3d.input.handlers.DragRotate",!0)||this;switch(o.view=e,o.pointerType=n,o.pivotPoint=i,o.registerIncoming("drag",a,function(t){return o._handleDrag(t)}),i){case"center":o._navigationPivot=r.Rotate.PivotPoint.POI;break;case"eye":o._navigationPivot=r.Rotate.PivotPoint.EYE}return o}return n(e,t),e.prototype._handleDrag=function(t){var e=t.data;if(!(e.pointers.length>1)){var n=e.pointers[0];if(a.eventMatchesPointerType(n.startEvent["native"],this.pointerType)){var i=[n.currentEvent.x,this.view.height-n.currentEvent.y],r=this.view.navigation.rotate;switch(e.action){case"start":r.begin(i,this._navigationPivot);break;case"update":r.update(i,this._navigationPivot);break;case"end":r.end(i)}t.stopPropagation()}}},e}(i.InputHandler);e.DragRotate=o});

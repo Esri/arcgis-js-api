@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
-define(["require","exports","../core/tsSupport/extendsHelper","../core/tsSupport/decorateHelper","../core/typescript","./core/ExtensionBase","../tasks/support/FeatureSet"],function(e,t,r,o,n,c,s){var u=function(e){function t(){return e.call(this)||this}return r(t,e),t.prototype._messageReceived=function(e){var t=this;"execute"===e.functionName.toLowerCase()&&this.getDataSourceProxy(e.args.dataSourceId).then(function(r){t._execute(r,new s(e.args.featureSet),e.args.configuration||e.args.config)})},t.prototype._execute=function(e,t,r){this.emit("execute",{dataSourceProxy:e,features:t,config:r})},t}(c);u=o([n.subclass()],u);var a=new u;return a});
+define(["require","exports","../core/tsSupport/extendsHelper","../core/tsSupport/decorateHelper","../core/typescript","./core/ExtensionBase","../tasks/support/FeatureSet"],function(e,t,r,o,n,c,s){var u=function(e){function t(){return e.call(this)||this}return r(t,e),t.prototype._messageReceived=function(e){var t=this;"execute"===e.functionName.toLowerCase()&&this.getDataSourceProxy(e.args.dataSourceId).then(function(r){t._execute(r,new s(e.args.featureSet),e.args.configuration||e.args.config)})},t.prototype._execute=function(e,t,r){this.emit("execute",{dataSourceProxy:e,features:t,config:r})},t=o([n.subclass()],t)}(c),a=new u;return a});

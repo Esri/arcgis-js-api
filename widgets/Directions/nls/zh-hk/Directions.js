@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
-define({travelMode:"行進模式",viewActive:"按一下地圖新增一個停靠點",showStop:"顯示此停靠點",addStopTitle:"新增停靠點",addStop:"+",dndHandle:"拖曳以變更造訪順序",serviceTime:"服務時間",serviceDistance:"服務距離",leaveNow:"立即離開",departBy:"離開方式",gmt:"GMT",time:{min:"分鐘",hr:"小時"},units:{esriKilometers:{name:"公里",abbr:"km"},esriMeters:{name:"公尺",abbr:"m"},esriMiles:{name:"英哩",abbr:"mi"},esriFeet:{name:"英呎",abbr:"ft"},esriYards:{name:"碼",abbr:"yd"},esriNauticalMiles:{name:"海浬",abbr:"nm"}},traffic:{average:"一般",none:"無流量資訊",heavy:"交通繁忙",light:"交通不繁忙"}});
+define({advancedOptions:"進階選項",travelMode:"行進模式",viewActive:"按一下地圖新增一個停靠點",showStop:"顯示此停靠點",addStopTitle:"新增停靠點",addStop:"新增停靠點",dndHandle:"拖曳以變更造訪順序",serviceTime:"服務時間",serviceDistance:"服務距離",leaveNow:"立即離開",departBy:"離開方式",print:"列印",printDescription:"列印方向",gmt:"GMT",searchFieldPlaceholder:"搜尋或按一下地圖",viewlessSearchFieldPlaceholder:"搜尋",directionsPlaceholder:"您的路線會出現在這裡",serviceError:"似乎發生錯誤",time:{min:"分鐘",hr:"小時"},units:{kilometers:{name:"公里",abbr:"km"},meters:{name:"公尺",abbr:"m"},miles:{name:"英哩",abbr:"mi"},feet:{name:"英呎",abbr:"ft"},yards:{name:"碼",abbr:"yd"},nauticalMiles:{name:"海浬",abbr:"nm"}},traffic:{average:"一般",none:"無流量資訊",heavy:"交通繁忙",light:"交通不繁忙"},messages:{errors:{notEnoughStops:"至少需要兩個停靠點才能求解一條路線。"}}});

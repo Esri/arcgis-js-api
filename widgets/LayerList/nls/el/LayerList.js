@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
-define({noItemsToDisplay:"Δεν υπάρχουν αντικείμενα για εμφάνιση αυτήν τη στιγμή.",layerInvisibleAtScale:"Το θεματικό επίπεδο δεν είναι ορατό στην τρέχουσα κλίμακα",layerError:"Παρουσιάστηκε σφάλμα κατά τη φόρτωση αυτού του θεματικού επιπέδου",untitledLayer:"Θεματικό επίπεδο χωρίς τίτλο"});
+define({noItemsToDisplay:"Δεν υπάρχουν αντικείμενα για εμφάνιση αυτήν τη στιγμή.",layerInvisibleAtScale:"Μη ορατό στην τρέχουσα κλίμακα",layerError:"Παρουσιάστηκε σφάλμα κατά τη φόρτωση αυτού του θεματικού επιπέδου",untitledLayer:"Θεματικό επίπεδο χωρίς τίτλο"});

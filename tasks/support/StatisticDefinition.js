@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 define(["../../core/Accessor"],function(t){var i=t.createSubclass({declaredClass:"esri.tasks.support.StatisticDefinition",properties:{maxPointCount:null,maxRecordCount:null,maxVertexCount:null,onStatisticField:null,outStatisticFieldName:null,statisticType:null},toJSON:function(){return{statisticType:this.statisticType,onStatisticField:this.onStatisticField,outStatisticFieldName:this.outStatisticFieldName,maxPointCount:this.maxPointCount,maxRecordCount:this.maxRecordCount,maxVertexCount:this.maxVertexCount}}});return i});

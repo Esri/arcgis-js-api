@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
-define({noItemsToDisplay:"لا توجد عناصر لعرضها حاليًا.",layerInvisibleAtScale:"الطبقة غير مرئية في المقياس الحالي",layerError:"حدث خطأ أثناء تحميل هذه الطبقة",untitledLayer:"طبقة بدون عنوان"});
+define({noItemsToDisplay:"لا توجد عناصر لعرضها حاليًا.",layerInvisibleAtScale:"غير مرئي في المقياس الحالي",layerError:"حدث خطأ أثناء تحميل هذه الطبقة",untitledLayer:"طبقة بدون عنوان"});

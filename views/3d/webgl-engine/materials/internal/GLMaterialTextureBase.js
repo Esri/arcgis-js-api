@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 define(["require","exports","../../../../../core/tsSupport/extendsHelper","./GLMaterialBase","./MaterialUtil"],function(e,t,r,i,u){Object.defineProperty(t,"__esModule",{value:!0});var n=function(e){function t(t,r,i,n,a){void 0===a&&(a=!1);var s=e.call(this,t,i,n)||this;return s.params=r,s.textureRep=n,s.initTransparent=a,s.glTextureRef=u.aquireIfNotUndefined(r.textureId,r.initTexture,n,a),s}return r(t,e),t.prototype.updateTexture=function(e){var t=this.params;t.textureId!==e&&(u.releaseIfNotUndefined(t.textureId,this.textureRep),t.textureId=e,this.glTextureRef=u.aquireIfNotUndefined(t.textureId,t.initTexture,this.textureRep,this.initTransparent))},t.prototype.renderTexture=function(e){var t=this.textureRep.getTexture(this.params.textureId);t&&t.dirty&&t.redraw&&t.redraw()},t.prototype.bindTexture=function(e,t){null!=this.glTextureRef&&(t.setUniform1i("tex",0),e.bindTexture(this.glTextureRef.getGLTexture()))},t.prototype.bindTextureSize=function(e,t){if(null!=this.glTextureRef){var r=this.glTextureRef.getGLTexture();t.setUniform2f("texSize",r.descriptor.width,r.descriptor.height)}},t.prototype.dispose=function(){u.releaseIfNotUndefined(this.params.textureId,this.textureRep)},t}(i["default"]);t.GLMaterialTextureBase=n,t["default"]=n});

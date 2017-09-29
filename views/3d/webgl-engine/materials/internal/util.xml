@@ -434,18 +434,24 @@ vec4 decodeSymbolColor(vec4 symbolColor, out int colorMixMode) {
 }
 
 vec3 mixExternalColor(vec3 internalColor, vec3 textureColor, vec3 externalColor, int mode) {
+
+  // workaround for artifacts in OSX using Intel Iris Pro
+  // see: https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/10475
+  vec3 internalMixed = internalColor * textureColor;
+  vec3 allMixed = internalMixed * externalColor;
+
   if (mode == 1 /* multiply */) {
-    return internalColor * textureColor * externalColor;
+    return allMixed;
   }
   else if (mode == 2 /* ignore */ ) {
-    return internalColor * textureColor;
+    return internalMixed;
   }
   else if (mode == 3 /* replace */ ) {
     return externalColor;
   }
   else {
     // tint (or something invalid)
-    vec3 hsvIn = rgb2hsv(internalColor * textureColor);
+    vec3 hsvIn = rgb2hsv(internalMixed);
     vec3 hsvTint = rgb2hsv(externalColor);
     vec3 hsvOut = vec3(hsvTint.x, hsvTint.y, hsvIn.z * hsvTint.z);
     return hsv2rgb(hsvOut);
@@ -453,15 +459,21 @@ vec3 mixExternalColor(vec3 internalColor, vec3 textureColor, vec3 externalColor,
 }
 
 float mixExternalOpacity(float internalOpacity, float textureOpacity, float externalOpacity, int mode) {
+
+  // workaround for artifacts in OSX using Intel Iris Pro
+  // see: https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/10475
+  float internalMixed = internalOpacity * textureOpacity;
+  float allMixed = internalMixed * externalOpacity;
+
   if (mode == 2 /* ignore */ ) {
-    return internalOpacity * textureOpacity;
+    return internalMixed;
   }
   else if (mode == 3 /* replace */ ) {
     return externalOpacity;
   }
   else {
     // multiply or tint (or something invalid)
-    return internalOpacity * textureOpacity * externalOpacity;
+    return allMixed;
   }
 }
 
@@ -506,15 +518,21 @@ float mixExternalOpacity(float internalOpacity, float textureOpacity, float exte
 #endif
 ]]></snippet>
 
-<snippet name="selectShadingNormal"><![CDATA[
+<snippet name="computeNormal"><![CDATA[
 	#ifdef GROUND_NORMAL_SHADING
 		#ifdef VIEWING_MODE_GLOBAL
-			vec3 shadingNormal = normalize(vpos + localOrigin);
+			vec3 normal = normalize(vpos + localOrigin);
 		#else
-			vec3 shadingNormal = vec3(0,0,1);
+			vec3 normal = vec3(0,0,1);
 		#endif
 	#else
-		vec3 shadingNormal = normal;
+			// compute normal
+		#ifndef DOUBLESIDED
+				vec3 normal = vnormal;
+		#else
+				vec3 normal = dot(vnormal, viewDir)>0.0 ? -vnormal : vnormal;
+		#endif
+		normal = normalize(normal);
 	#endif
 ]]></snippet>
 

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 define(["require","exports","../metadata","../ensureType"],function(t,e,a,r){function n(t){var e="_meta"in t?r.ensureType(t):t;return function(){for(var t=[],a=0;a<arguments.length;a++)t[a]=arguments[a];return t.push(e),"number"==typeof t[2]?u.apply(this,t):o.apply(this,t)}}function o(t,e,r,n){a.getPropertyMetadata(t,e).cast=n}function u(t,e,r,n){a.getParameterMetadata(t,e,r).cast=n}function i(t){return function(e,r,n){var o=a.getPropertyMetadata(e,t);o.cast=e[r]}}function s(t,e,r){if(a.hasParametersMetadata(t,e)){var n=a.getParametersMetadata(t,e).filter(function(t){return null!=t.cast});if(!n.length)return void console.warn("Method "+t.declaredClass+"::"+e+" is decorated with @cast but no parameters are decorated");var o=r.value;return r.value=function(){for(var t=[],e=0;e<arguments.length;e++)t[e]=arguments[e];for(var a=0,r=n;a<r.length;a++){var u=r[a];t[u.index]=u.cast(t[u.index])}return o.apply(this,t)},r}}function c(){for(var t=[],e=0;e<arguments.length;e++)t[e]=arguments[e];return 3!==t.length||"string"!=typeof t[1]?1===t.length&&"[object Function]"===f.call(t[0])?n(t[0]):1===t.length&&"string"==typeof t[0]?i(t[0]):void 0:void 0}Object.defineProperty(e,"__esModule",{value:!0});var f=Object.prototype.toString;e.autocastMethod=s,e.cast=c});

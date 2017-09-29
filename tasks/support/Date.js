@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 define(["dojo/date/locale","../../core/JSONSupport"],function(t,e){var a=e.createSubclass({declaredClass:"esri.tasks.support.Date",properties:{date:{type:Date,json:{read:function(e,a){return t.parse(e,{selector:"date",datePattern:a.format||this.format})}}},format:"EEE MMM dd HH:mm:ss zzz yyyy"},toJSON:function(){return{date:t.format(this.date,{selector:"date",datePattern:this.format}),format:this.format}}});return a});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
-define({noItemsToDisplay:"No existen elementos disponibles actualmente para mostrar.",layerInvisibleAtScale:"La capa no es visible en la escala actual",layerError:"Se ha producido un error al cargar esta capa",untitledLayer:"Capa sin título"});
+define({noItemsToDisplay:"No existen elementos disponibles actualmente para mostrar.",layerInvisibleAtScale:"Invisible en la escala actual",layerError:"Se ha producido un error al cargar esta capa",untitledLayer:"Capa sin título"});

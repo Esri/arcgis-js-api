@@ -42,7 +42,7 @@
 
 import { aliasOf, subclass, declared, property } from "../core/accessorSupport/decorators";
 
-import { SearchResult, SearchResults, SuggestEvent, SuggestResult, SuggestResults } from "./interfaces";
+import { SearchResponse, SearchResult, SearchResults, SuggestResult } from "./interfaces";
 
 import {
   accessibleHandler,
@@ -61,7 +61,6 @@ import Widget = require("./Widget");
 
 import Collection = require("../core/Collection");
 import esriLang = require("../core/lang");
-import Promise = require("../core/Promise");
 import watchUtils = require("../core/watchUtils");
 
 import Graphic = require("../Graphic");
@@ -82,6 +81,7 @@ import {
   ESCAPE,
   LEFT_ARROW,
   RIGHT_ARROW,
+  SHIFT,
   TAB,
   UP_ARROW
 } from "dojo/keys";
@@ -194,8 +194,7 @@ class Search extends declared(Widget) {
    * @property {string} suffix - Specify this to suffix the input for the search value.
    * @property {boolean} withinViewEnabled - Indicates whether to constrain the search
    *   results to the view's extent.
-   * @property {number} zoomScale - Applicable to the specified source. If the result does
-   *   not have an associated extent, specify this number to use as the zoom scale for the result.
+   * @property {number} zoomScale - The set zoom scale for the resulting search result. This scale is automatically honored.
    */
 
   /**
@@ -254,9 +253,9 @@ class Search extends declared(Widget) {
    *   like: `Name: {OWNER}, Parcel: {PARCEL_ID}`.
    * @property {boolean} withinViewEnabled - Indicates whether to constrain the search
    *   results to the view's extent.
-   * @property {number} zoomScale - Applicable to the specified source. If the result does
-   *   not have an associated extent, specify this number to use as the zoom scale for the result.
+   * @property {number} zoomScale - The set zoom scale for the resulting search result. This scale is automatically honored.
    */
+
   /**
    * The result object returned from a [search()](#search).
    *
@@ -265,6 +264,48 @@ class Search extends declared(Widget) {
    * @property {module:esri/geometry/Extent} extent - The extent, or bounding box, of the returned feature.
    * @property {module:esri/Graphic} feature - The resulting feature or location obtained from the search.
    * @property {string} name - The name of the result.
+   */
+
+  /**
+   * The result object returned from a [suggest()](#suggest).
+   *
+   * @typedef SuggestResult
+   *
+   * @property {string} key - The key related to the suggest result.
+   * @property {string} text - The string name of the suggested location to geocode.
+   * @property {number} sourceIndex - The index of the currently selected result.
+   */
+
+  /**
+   * When resolved, returns this response after calling [search](#search).
+   *
+   * @typedef SearchResponse
+   *
+   * @property {number} activeSourceIndex - The index of the source from which the search result was obtained.
+   * @property {Error[]} errors - An array of error objects returned from the search results.
+   * @property {number} numResults - The number of search results.
+   * @property {string} searchTerm - The searched expression
+   * @property {Object[]} results - An array of objects representing the results of search. See object specification
+   * table below for more information about the result object.
+   * @property {module:esri/widgets/Search~SearchResult[]} results.results - An array of search results.
+   * @property {number} results.sourceIndex - The index of the currently selected source.
+   * @property {Object} results.source - The [source](#sources) of the selected result.
+   */
+
+  /**
+   * When resolved, returns this response after calling [suggest](#suggest).
+   *
+   * @typedef SuggestResponse
+   *
+   * @property {number} activeSourceIndex - The index of the source from which suggestions are obtained. This value is `-1` when all sources are selected.
+   * @property {Error[]} errors - An array of error objects returned from the suggest results.
+   * @property {number} numResults - The number of suggest results.
+   * @property {string} searchTerm - The search expression used for the suggest.
+   * @property {Object[]} results - An array of objects representing the results of suggest. See object specification
+   * table below for more information about the result object.
+   * @property {module:esri/widgets/Search~SuggestResult[]} results.results - An array of suggest results.
+   * @property {number} results.sourceIndex - The index of the currently selected source.
+   * @property {Object} results.source - The [source](#sources) of the selected result.
    */
 
   /**
@@ -342,10 +383,7 @@ class Search extends declared(Widget) {
    * @property {string} searchTerm - The searched expression.
    * @property {Object[]} results - An array of objects representing the results of the search. See object specification
    * table below for more information about the result object.
-   * @property {Object[]} results.results - An array of objects containing the search results. See object specification table below for more information on this object.
-   * @property {module:esri/geometry/Extent} results.results.extent - The extent of the result to zoom to.
-   * @property {module:esri/Graphic} results.results.feature - The graphic feature to place at the location of the search result.
-   * @property {string} results.results.name - The string name of the searched location.
+   * @property {module:esri/widgets/Search~SearchResult[]} results.results - An array of objects containing the search results.
    * @property {number} results.sourceIndex - The index of the currently selected source.
    * @property {Object} results.source - The [source](#sources) of the selected result.
    *
@@ -386,15 +424,8 @@ class Search extends declared(Widget) {
    * @property {Error[]} errors - An array of error objects returned from the suggest results.
    * @property {number} numResults - The number of suggest results.
    * @property {string} searchTerm - The search expression used for the suggest.
-   * @property {Object[]} results - An array of objects representing the results of suggest. See object specification
-   * table below for more information about the result object.
-   * @property {Object[]} results.results - An array of objects containing the suggest results. See object specification table below for more information on this object.
-   * @property {module:esri/geometry/Extent} results.results.extent - The extent of the suggested result.
-   * @property {module:esri/Graphic} results.results.feature - The graphic feature to place at the location of the search result.
-   * @property {string} results.results.name - The string name of the searched location.
-   * @property {boolean} results.results.isCollection - Indicates if the result is a Collection.
-   * @property {string} results.results.magicKey - The magic key related to the suggest result.
-   * @property {string} results.results.text - The string name of the suggested location to geocode.
+   * @property {Object[]} results - An array of objects representing the results of suggest. See object specification table below for more information on this object.
+   * @property {module:esri/widgets/Search~SuggestResult[]} results.results - An array of objects containing the suggest results.
    * @property {number} results.sourceIndex - The index of the currently selected source.
    * @property {Object} results.source - The [source](#sources) of the selected result.
    *
@@ -435,18 +466,15 @@ class Search extends declared(Widget) {
     this.viewModel.popupTemplate = this._popupTemplate;
 
     this.own(
-      watchUtils.on<SuggestEvent>(this, "viewModel", "suggest-complete", event => {
-        if (event.numResults !== 0) {
-          this.activeMenu = "suggestion";
-        }
-      }),
-      watchUtils.on<void>(this, "viewModel", "search-clear", () => {
+      watchUtils.whenNot(this, "searchTerm", () => {
         this.activeMenu = "none";
       })
     );
   }
 
   destroy() {
+    this._cancelSuggest();
+
     if (this._searchResultRenderer) {
       this._searchResultRenderer.viewModel = null;
       this._searchResultRenderer.destroy();
@@ -472,10 +500,14 @@ class Search extends declared(Widget) {
     container: document.createElement("div")
   });
 
+  private _suggestPromise: IPromise<SearchResults<SuggestResult>[]> = null;
+
   private _popupTemplate: PopupTemplate = new PopupTemplate({
     title: i18n.searchResult,
     content: this._renderSearchResultsContent.bind(this)
   });
+
+  private _relatedTarget: HTMLElement = null;
 
   //--------------------------------------------------------------------------
   //
@@ -759,7 +791,7 @@ class Search extends declared(Widget) {
    */
   @aliasOf("viewModel.results")
   @renderable()
-  results: SearchResults[] = null;
+  results: SearchResults<SearchResult>[] = null;
 
   //----------------------------------
   //  searchAllEnabled
@@ -854,7 +886,7 @@ class Search extends declared(Widget) {
    *
    * @name sources
    * @instance
-   * @type {module:esri/core/Collection}
+   * @type {module:esri/core/Collection<module:esri/widgets/Search~FeatureLayerSource | module:esri/widgets/Search~LocatorSource>}
    *
    * @example
    * // Default sources[] when sources is not specified
@@ -869,14 +901,15 @@ class Search extends declared(Widget) {
    *       distance: 50000
    *     },
    *     placeholder: i18n.placeholder,
-   *     resultSymbol: new PictureMarkerSymbol({
+   *     resultSymbol: {
+   *        type: "picture-marker",  // autocasts as new PictureMarkerSymbol()
    *        url: this.basePath + "/images/search/search-symbol-32.png",
    *        size: 24,
    *        width: 24,
    *        height: 24,
    *        xoffset: 0,
    *        yoffset: 0
-   *    })
+   *    }
    *   }
    * ]
    *
@@ -957,17 +990,18 @@ class Search extends declared(Widget) {
   /**
    * An array of results from the [suggest method](#suggest).
    *
-   * This is available if working with a 10.3 geocoding service that has suggest capability loaded or a
+   * This is available if working with a 10.3 geocoding service that has [suggest capability
+   * loaded](https://developers.arcgis.com/rest/geocode/api-reference/geocoding-suggest.htm) or a
    * 10.3 feature layer that supports pagination, i.e. `supportsPagination = true`.
    *
    * @name suggestions
    * @instance
-   * @type {module:esri/tasks/Locator~SuggestionResult[]}
+   * @type {module:esri/widgets/Search~SuggestResult[]}
    * @readonly
    */
   @aliasOf("viewModel.suggestions")
   @renderable()
-  suggestions: SuggestResults[] = null;
+  suggestions: SearchResults<SuggestResult>[] = null;
 
   //----------------------------------
   //  suggestionsEnabled
@@ -976,8 +1010,8 @@ class Search extends declared(Widget) {
   /**
    * Enable suggestions for the widget.
    *
-   * This is only available if working with a 10.3 geocoding service that has suggest capability
-   * loaded or a 10.3 feature layer that supports pagination, i.e. `supportsPagination = true`.
+   * This is only available if working with a 10.3 geocoding service that has [suggest capability
+   * loaded](https://developers.arcgis.com/rest/geocode/api-reference/geocoding-suggest.htm) or a 10.3 feature layer that supports pagination, i.e. `supportsPagination = true`.
    *
    * @name suggestionsEnabled
    * @instance
@@ -1018,8 +1052,8 @@ class Search extends declared(Widget) {
    * @autocast
    */
   @vmEvent([
-    "search-clear",
     "search-complete",
+    "search-clear",
     "search-start",
     "select-result",
     "suggest-start",
@@ -1050,7 +1084,12 @@ class Search extends declared(Widget) {
    * @method
    */
   focus() {
-    this._inputNode && this._inputNode.focus();
+    if (!this._inputNode) {
+      return;
+    }
+
+    this._inputNode.focus();
+    this.emit("search-focus");
   }
 
   /**
@@ -1058,9 +1097,14 @@ class Search extends declared(Widget) {
    *
    * @method
    */
-  blur() {
-    this._inputNode && this._inputNode.blur();
-    this.activeMenu = "none";
+  blur(event?: FocusEvent) {
+    if (!this._inputNode) {
+      return;
+    }
+
+    this._inputNode.blur();
+    this._inputBlur(event);
+    this.emit("search-blur");
   }
 
   /**
@@ -1068,33 +1112,64 @@ class Search extends declared(Widget) {
    * address matching using any specified {@link module:esri/tasks/Locator Locator(s)} and
    * returns any applicable results.
    *
-   * @param {string|module:esri/geometry/Geometry|module:esri/tasks/Locator~SuggestionResult|number[][]} [searchTerm] - This searchTerm can be
+   * @param {string|module:esri/geometry/Geometry|module:esri/widgets/Search~SuggestResult|number[][]} [searchTerm] - This searchTerm can be
    *        a string, geometry, suggest candidate object, or an array of [longitude,latitude] coordinate pairs.
    *        If a geometry is supplied, then it will reverse geocode (locator) or
    *        findAddressCandidates with geometry instead of text.
    *
-   * @return {Promise} When resolved, returns an array of objects, each containing a
+   * @return {Promise<module:esri/widgets/Search~SearchResponse>} When resolved, returns a [SearchResponse](#SearchResponse) containing a
    *                   [SearchResult](#SearchResult).
    */
-  @aliasOf("viewModel.search")
-  search(query: any): Promise<SearchResults[]> { return null; }
+  search(suggestResult?: SuggestResult): IPromise<SearchResponse<SearchResults<SearchResult>>> {
+    this.activeMenu = "none";
+    this._set("searching", true);
+
+    this._cancelSuggest();
+
+    return this.viewModel.search(suggestResult).then(searchResponse => {
+      this.activeMenu = !searchResponse.numResults ? "warning" : "none";
+      this._set("searching", false);
+      return searchResponse;
+    }).otherwise(() => {
+      this._set("searching", false);
+      this.activeMenu = "none";
+      return null;
+    });
+  }
 
   /**
    * Performs a suggest() request on the active Locator. It also uses the current value of
    * the widget or one that is passed in.
    *
    * Suggestions are available if working with a 10.3 geocoding service that has
-   * "suggest" capability loaded or a 10.3 feature layer that supports pagination, i.e.
-   * supportsPagination = true.
+   * [suggest capability
+   * loaded](https://developers.arcgis.com/rest/geocode/api-reference/geocoding-suggest.htm) or a 10.3 feature layer that supports pagination, i.e.
+   * `supportsPagination = true`.
    *
    * @param {string} [value] - The string value used to suggest() on an active Locator or feature layer. If
    *                         nothing is passed in, takes the current value of the widget.
    *
-   * @return {Promise} When resolved, returns an object containing an array of
-   * {@link module:esri/tasks/Locator#SuggestionResult suggestions}.
+   *
+   * @return {Promise<module:esri/widgets/Search~SuggestResponse>} When resolved, returns [SuggestResponse](#SuggestResponse) containing an array of result objects. Each of these results contains a [SuggestResult](#SuggestResult).
    */
-  @aliasOf("viewModel.suggest")
-  suggest(query: any): Promise<SuggestResults[]> { return null; }
+  suggest(query?: string): IPromise<SearchResponse<SearchResults<SuggestResult>>> {
+    this._cancelSuggest();
+
+    const suggestPromise = this.viewModel.suggest(query).then(suggestResponse => {
+      if (suggestResponse.numResults) {
+        this.activeMenu = "suggestion";
+      }
+
+      return suggestResponse;
+    }).otherwise(() => {
+      this.activeMenu = "none";
+      return null;
+    });
+
+    this._suggestPromise = suggestPromise;
+
+    return suggestPromise;
+  }
 
   render() {
     const vm = this.viewModel;
@@ -1120,13 +1195,15 @@ class Search extends declared(Widget) {
         aria-haspopup="true"
         id={`${id}_input`}
         role="textbox"
-        onclick={this._handleInputClick}
+        onkeydown={this._handleInputKeydown}
         onkeyup={this._handleInputKeyup}
         oninput={this._handleInputPaste}
         onpaste={this._handleInputPaste}
+        afterCreate={this._storeInputNode}
         afterUpdate={this._storeInputNode}
-        onfocus={this._handleInputFocus}
-        onblur={this._handleInputBlur} />
+        onfocusout={this._storeRelatedTarget}
+        onfocus={this.focus}
+        onblur={this.blur} />
     );
 
     const formNode = (
@@ -1145,6 +1222,7 @@ class Search extends declared(Widget) {
         class={join(CSS.clearButton, CSS.button)}
         tabindex="0"
         title={i18n.clearButtonTitle}
+        onfocus={this._clearButtonFocus}
         onclick={this._handleClearButtonClick}
         onkeydown={this._handleClearButtonClick}><span aria-hidden="true" class={CSS.clearIcon} />
       </div>
@@ -1177,6 +1255,7 @@ class Search extends declared(Widget) {
         class={join(CSS.menu, CSS.suggestionsMenu)}
         role="menu"
         bind={this}
+        afterCreate={this._storeSuggestionsListNode}
         afterUpdate={this._storeSuggestionsListNode}>
         {suggestionsGroupNode}
       </div>
@@ -1185,8 +1264,8 @@ class Search extends declared(Widget) {
     const inputContainerNode = (
       <div key="esri-search__input-container" class={CSS.inputContainer}>
         {formNode}
-        {clearButtonNode}
         {suggestionsMenuNode}
+        {clearButtonNode}
       </div>
     );
 
@@ -1245,6 +1324,8 @@ class Search extends declared(Widget) {
         tabindex="0" onkeydown={this._handleSourcesMenuToggleClick}
         onclick={this._handleSourcesMenuToggleClick}
         onkeyup={this._handleSourceMenuButtonKeyup}
+        onblur={this._sourcesButtonBlur}
+        afterCreate={this._storeSourceMenuButtonNode}
         afterUpdate={this._storeSourceMenuButtonNode}>
         <span
           aria-hidden="true"
@@ -1257,7 +1338,9 @@ class Search extends declared(Widget) {
     ) : null;
 
     const sourcesListNode = hasMultipleSources ? (
-      <ul bind={this} afterUpdate={this._storeSourcesListNode}>
+      <ul bind={this}
+        afterCreate={this._storeSourcesListNode}
+        afterUpdate={this._storeSourcesListNode}>
         {allItemNode}
         {sourceList.map((source, sourceIndex) => this._getSourceNode(sourceIndex))}
       </ul>
@@ -1317,7 +1400,7 @@ class Search extends declared(Widget) {
 
   @accessibleHandler()
   private _handleSearchButtonClick(): void {
-    this._performSearch();
+    this.search();
   }
 
   @accessibleHandler()
@@ -1325,7 +1408,7 @@ class Search extends declared(Widget) {
     const node = event.currentTarget as HTMLElement;
     const suggestResult = node["data-suggestion"] as SuggestResult;
     if (suggestResult) {
-      this._performSearch(suggestResult);
+      this.search(suggestResult);
       this.focus();
     }
   }
@@ -1340,32 +1423,39 @@ class Search extends declared(Widget) {
     this.focus();
   }
 
-  private _performSearch(suggestResult?: SuggestResult): void {
+  private _sourcesButtonBlur(event: FocusEvent): void {
+    const relatedTarget = event && event.relatedTarget as HTMLElement;
+    this._removeActiveMenu(relatedTarget, this._sourceListNode);
+  }
+
+  private _inputBlur(event: FocusEvent): void {
+    const relatedTarget = event && event.relatedTarget as HTMLElement;
+    this._removeActiveMenu(relatedTarget ? relatedTarget : this._relatedTarget, this._suggestionListNode);
+  }
+
+  private _storeRelatedTarget(event: FocusEvent) {
+    this._relatedTarget = event.relatedTarget as HTMLElement;
+  }
+
+  private _clearButtonFocus(): void {
     this.activeMenu = "none";
-    this._set("searching", true);
-
-    this.viewModel.search(suggestResult).always((searchResults: SearchResults[]) => {
-      let total = 0;
-
-      if (searchResults) {
-        searchResults.forEach(sourceResults => {
-          total += sourceResults.results.length;
-        });
-      }
-
-      this.activeMenu = total === 0 ?
-        "warning" :
-        "none";
-      this._set("searching", false);
-    });
   }
 
-  private _handleInputFocus(): void {
-    this.emit("search-focus");
+  private _removeActiveMenu(targetNode: HTMLElement, parentNode: HTMLElement): void {
+    if (targetNode && parentNode && parentNode.contains(targetNode)) {
+      return;
+    }
+
+    this.activeMenu = "none";
   }
 
-  private _handleInputBlur(): void {
-    this.emit("search-blur");
+  private _cancelSuggest(): void {
+    const suggestPromise = this._suggestPromise;
+
+    if (suggestPromise) {
+      suggestPromise.cancel();
+      this._suggestPromise = null;
+    }
   }
 
   private _storeSuggestionsListNode(div: HTMLDivElement): void {
@@ -1384,16 +1474,18 @@ class Search extends declared(Widget) {
     this._sourceMenuButtonNode = divElement;
   }
 
-  private _handleInputClick(): void {
-    this.activeMenu = "none";
+  private _handleInputKeydown(event: KeyboardEvent): void {
+    const { keyCode } = event;
+    if (keyCode === TAB || keyCode === ESCAPE || (event.shiftKey && keyCode === TAB)) {
+      this._cancelSuggest();
+    }
   }
 
   private _handleInputKeyup(event: KeyboardEvent): void {
     const { keyCode } = event;
-    const isIgnorableKey = event.ctrlKey || event.metaKey || keyCode === copyKey || keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW || keyCode === ENTER;
+    const isIgnorableKey = event.ctrlKey || event.metaKey || keyCode === copyKey || keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW || keyCode === ENTER || keyCode === SHIFT;
 
     const list = this._suggestionListNode ? query<HTMLElement>("li", this._suggestionListNode) : null;
-    const vm = this.viewModel;
     const isUp = keyCode === UP_ARROW;
     const isDown = keyCode === DOWN_ARROW;
 
@@ -1401,9 +1493,13 @@ class Search extends declared(Widget) {
       return;
     }
 
-    if (keyCode === TAB || keyCode === ESCAPE) {
-      vm.cancelSuggest();
-      this.activeMenu = "none";
+    if (keyCode === TAB || keyCode === ESCAPE || (event.shiftKey && keyCode === TAB)) {
+      this._cancelSuggest();
+
+      if (keyCode === ESCAPE) {
+        this.activeMenu = "none";
+      }
+
       return;
     }
 
@@ -1411,14 +1507,18 @@ class Search extends declared(Widget) {
       this.activeMenu = "suggestion";
       event.stopPropagation();
       event.preventDefault();
-      vm.cancelSuggest();
+      this._cancelSuggest();
       const focusIndex = isUp ? list.length - 1 : 0;
       const focusNode = list[focusIndex];
       focusNode && focusNode.focus();
       return;
     }
 
-    vm.suggest();
+    if (!this.viewModel.searchTerm) {
+      return;
+    }
+
+    this.suggest();
   }
 
   private _handleInputPaste(event: Event): void {
@@ -1427,7 +1527,12 @@ class Search extends declared(Widget) {
     if (vm.searchTerm !== input.value) {
       vm.searchTerm = input.value;
     }
-    vm.suggest();
+
+    if (!vm.searchTerm) {
+      return;
+    }
+
+    this.suggest();
   }
 
   private _handleSourceMenuButtonKeyup(event: KeyboardEvent): void {
@@ -1495,10 +1600,9 @@ class Search extends declared(Widget) {
     const node = event.target as HTMLElement;
     const list = this._suggestionListNode ? query<HTMLElement>("li", this._suggestionListNode) : null;
     const itemIndex = list.indexOf(node);
-    const vm = this.viewModel;
     const { keyCode } = event;
 
-    vm.cancelSuggest();
+    this._cancelSuggest();
 
     if (keyCode === BACKSPACE || keyCode === DELETE) {
       this.focus();
@@ -1547,7 +1651,7 @@ class Search extends declared(Widget) {
 
   private _formSubmit(event: Event): void {
     event.preventDefault();
-    this._performSearch();
+    this.search();
   }
 
   private _getSourceName(sourceIndex: number): string {
@@ -1598,7 +1702,14 @@ class Search extends declared(Widget) {
       });
 
       return (
-        <li bind={this} onclick={this._handleSuggestionClick} onkeydown={this._handleSuggestionClick} onkeyup={this._handleSuggestionKeyup} key={`esri-search__suggestion$-{sourceIndex}_${suggestionIndex}`} data-suggestion={suggestion} role="menuitem" tabindex="0">{matches}</li>
+        <li bind={this}
+          onclick={this._handleSuggestionClick}
+          onkeydown={this._handleSuggestionClick}
+          onkeyup={this._handleSuggestionKeyup}
+          key={`esri-search__suggestion$-{sourceIndex}_${suggestionIndex}`}
+          data-suggestion={suggestion}
+          role="menuitem"
+          tabindex="0">{matches}</li>
       );
     }
   }

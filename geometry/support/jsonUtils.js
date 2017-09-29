@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 define(["../Point","../Polyline","../Polygon","../Multipoint","../Extent"],function(o,e,n,r,i){function t(o){try{throw new Error("fromJson is deprecated, use fromJSON instead")}catch(e){console.warn(e.stack)}return s(o)}function s(t){return t&&t?void 0!==t.x&&void 0!==t.y?o.fromJSON(t):void 0!==t.paths?e.fromJSON(t):void 0!==t.rings?n.fromJSON(t):void 0!==t.points?r.fromJSON(t):void 0!==t.xmin&&void 0!==t.ymin&&void 0!==t.xmax&&void 0!==t.ymax?i.fromJSON(t):null:null}function m(t){return t instanceof o?"esriGeometryPoint":t instanceof e?"esriGeometryPolyline":t instanceof n?"esriGeometryPolygon":t instanceof i?"esriGeometryEnvelope":t instanceof r?"esriGeometryMultipoint":null}function l(o){return o&&y[o]||null}var y={esriGeometryPoint:o,esriGeometryPolyline:e,esriGeometryPolygon:n,esriGeometryEnvelope:i,esriGeometryMultipoint:r},f={fromJSON:s,fromJson:t,getJsonType:m,getGeometryType:l};return f});

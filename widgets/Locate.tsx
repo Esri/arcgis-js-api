@@ -42,13 +42,12 @@
  * @see module:esri/views/ui/DefaultUI
  *
  * @example
- * // This graphics layer will store the graphic used to display the user's location
- * var gl = new GraphicsLayer();
- * map.add(gl);
- *
  * var locateWidget = new Locate({
  *   view: view,   // Attaches the Locate button to the view
- *   graphicsLayer: gl  // The layer the locate graphic is assigned to
+ *   graphic: new Graphic({
+ *     symbol: { type: "simple-marker" }  // overwrites the default symbol used for the
+ *     // graphic placed at the location of the user when found
+ *   })
  * });
  *
  * view.ui.add(locateWidget, "top-right");
@@ -58,8 +57,8 @@
 /// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
 /// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
 
-import {aliasOf, subclass, property, declared} from "../core/accessorSupport/decorators";
-import {accessibleHandler, join, tsx, renderable, vmEvent} from "./support/widget";
+import { aliasOf, subclass, property, declared } from "../core/accessorSupport/decorators";
+import { accessibleHandler, join, tsx, renderable, vmEvent } from "./support/widget";
 
 import Widget = require("./Widget");
 import LocateViewModel = require("./Locate/LocateViewModel");
@@ -181,8 +180,8 @@ class Locate extends declared(Widget) {
    * var locateWidget = new Locate({
    *   viewModel: { // autocasts as new LocateViewModel()
    *     view: view,  // assigns the locate widget to a view
-   *     graphic: Graphic({
-   *       symbol: new SimpleMarkerSymbol()  // overwrites the default symbol used for the
+   *     graphic: new Graphic({
+   *       symbol: { type: "simple-marker" }  // overwrites the default symbol used for the
    *       // graphic placed at the location of the user when found
    *     })
    *   }
@@ -237,22 +236,23 @@ class Locate extends declared(Widget) {
   /**
    * Animates the view to the user's location.
    *
-   * @return {Promise} Resolves to an object with the same specification as the event
+   * @return {Promise<Object>} Resolves to an object with the same specification as the event
    *                   object defined in the [locate event](#event:locate).
    *
    * @method
    *
    * @example
    * var locateWidget = new Locate({
-   *   view: view
-   * }, "locateDiv");
+   *   view: view,
+   *   container: "locateDiv"
+   * });
    *
    * locateWidget.locate().then(function(){
    *   // Fires after the user's location has been found
    * });
    */
   @aliasOf("viewModel.locate")
-  locate(): void {}
+  locate(): void { }
 
   render() {
     const state = this.get("viewModel.state");
@@ -270,12 +270,19 @@ class Locate extends declared(Widget) {
     };
 
     return (
-      <div bind={this} class={CSS.base} classes={rootClasses}
-           hidden={state === "feature-unsupported"}
-           onclick={this._locate} onkeydown={this._locate}
-           role="button" tabIndex={0}>
-        <span classes={iconClasses} aria-hidden="true"
-              class={join(CSS.icon, CSS.locate)} title={i18n.title} />
+      <div bind={this}
+        class={CSS.base}
+        classes={rootClasses}
+        hidden={state === "feature-unsupported"}
+        onclick={this._locate}
+        onkeydown={this._locate}
+        role="button"
+        tabIndex={0}
+        aria-label={i18n.title}
+        title={i18n.title}>
+        <span classes={iconClasses}
+          aria-hidden="true"
+          class={join(CSS.icon, CSS.locate)} />
         <span class={CSS.text}>{i18n.title}</span>
       </div>
     );

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 define(["../../core/JSONSupport","../../core/kebabDictionary","./GPMessage"],function(e,o,i){var b=o({esriJobCancelled:"job-cancelled",esriJobCancelling:"job-cancelling",esriJobDeleted:"job-deleted",esriJobDeleting:"job-deleting",esriJobTimedOut:"job-timed-out",esriJobExecuting:"job-executing",esriJobFailed:"job-failed",esriJobNew:"job-new",esriJobSubmitted:"job-submitted",esriJobSucceeded:"job-succeeded",esriJobWaiting:"job-waiting"}),s=e.createSubclass({declaredClass:"esri.tasks.support.JobInfo",properties:{jobId:"",jobStatus:{value:"",json:{read:b.fromJSON}},messages:{value:[],type:[i]}}});return s});

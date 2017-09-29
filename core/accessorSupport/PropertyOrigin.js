@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 define(["require","exports"],function(e,r){function n(e){switch(e){case"defaults":return i.DEFAULTS;case"service":return i.SERVICE;case"portal-item":return i.PORTAL_ITEM;case"web-scene":return i.WEB_SCENE;case"web-map":return i.WEB_MAP;case"user":return i.USER}}function E(e){switch(e){case i.DEFAULTS:return"defaults";case i.SERVICE:return"service";case i.PORTAL_ITEM:return"portal-item";case i.WEB_SCENE:return"web-scene";case i.WEB_MAP:return"web-map";case i.USER:return"user"}}function t(e){return n(e)}function a(e){return E(e)}function u(e){return n(e)}function c(e){return E(e)}Object.defineProperty(r,"__esModule",{value:!0});var i;!function(e){e[e.DEFAULTS=0]="DEFAULTS",e[e.COMPUTED=1]="COMPUTED",e[e.SERVICE=2]="SERVICE",e[e.PORTAL_ITEM=3]="PORTAL_ITEM",e[e.WEB_SCENE=4]="WEB_SCENE",e[e.WEB_MAP=5]="WEB_MAP",e[e.USER=6]="USER",e[e.NUM=7]="NUM"}(i=r.OriginId||(r.OriginId={})),r.nameToId=n,r.idToName=E,r.readableNameToId=t,r.idToReadableName=a,r.writableNameToId=u,r.idToWritableName=c});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 define(["../../../../core/declare"],function(i){var n=i([],{declaredClass:"esri.views.3d.navigation.mixins.PanMixin",type:"pan",begin:function(i){this.navigation.begin(this),this.active=!0,this.emit("begin")},update:function(i){this.emit("update")},end:function(i){this.active=!1,this.emit("end"),this.navigation.end(this)},beginContinuous:function(i){},updateContinuous:function(i){},endContinuous:function(i){}});return n});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 define(["../../core/Accessor","../../core/kebabDictionary","../../core/lang","../../geometry/support/jsonUtils"],function(e,t,s,i){var r=t({esriSpatialRelIntersects:"intersects",esriSpatialRelContains:"contains",esriSpatialRelCrosses:"crosses",esriSpatialRelEnvelopeIntersects:"envelope-intersects",esriSpatialRelIndexIntersects:"index-intersects",esriSpatialRelOverlaps:"overlaps",esriSpatialRelTouches:"touches",esriSpatialRelWithin:"within",esriSpatialRelRelation:"relation"}),a=e.createSubclass({declaredClass:"esri.tasks.support.DataLayer",properties:{geometry:null,name:null,spatialRelationship:null,where:null},toJSON:function(){var e={type:"layer",layerName:this.name,where:this.where,spatialRel:r.toJSON(this.spatialRelationship)},t=this.geometry;return t&&(e.geometryType=i.getJsonType(t),e.geometry=t.toJSON()),s.filter(e,function(e){return null!==e?!0:void 0})}});return a});

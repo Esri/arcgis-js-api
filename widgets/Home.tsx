@@ -44,8 +44,8 @@
 /// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
 /// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
 
-import {aliasOf, subclass, property, declared} from "../core/accessorSupport/decorators";
-import {accessibleHandler, tsx, renderable, vmEvent} from "./support/widget";
+import { aliasOf, subclass, property, declared } from "../core/accessorSupport/decorators";
+import { accessibleHandler, tsx, renderable, vmEvent } from "./support/widget";
 
 import Widget = require("./Widget");
 import HomeViewModel = require("./Home/HomeViewModel");
@@ -193,8 +193,18 @@ class Home extends declared(Widget) {
     };
 
     return (
-      <div bind={this} class={CSS.base} classes={rootClasses} role="button" tabIndex={0} onclick={this._go} onkeydown={this._go}>
-        <span classes={iconClasses} aria-hidden="true" class={CSS.homeIcon} title={i18n.title} />
+      <div bind={this}
+        class={CSS.base}
+        classes={rootClasses}
+        role="button"
+        tabIndex={0}
+        onclick={this._go}
+        onkeydown={this._go}
+        aria-label={i18n.title}
+        title={i18n.title}>
+        <span classes={iconClasses}
+          aria-hidden="true"
+          class={CSS.homeIcon} />
         <span class={CSS.text}>{i18n.button}</span>
       </div>
     );

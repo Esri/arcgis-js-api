@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
-define({noItemsToDisplay:"В текущий момент нет элементов для отображения.",layerInvisibleAtScale:"Слой не отображается в текущем масштабе",layerError:"При загрузке этого слоя произошла ошибка",untitledLayer:"Слой без названия"});
+define({noItemsToDisplay:"В текущий момент нет элементов для отображения.",layerInvisibleAtScale:"Не видимый в текущем масштабе",layerError:"При загрузке этого слоя произошла ошибка",untitledLayer:"Слой без названия"});

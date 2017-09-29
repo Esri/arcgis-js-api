@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 define({transparency:"Permatomumas",suggested:"Siūloma",recent:"Naujausi",more:"Daugiau",moreColorsTooltip:"Žiūrėti daugiau spalvų.",paletteTooltip:"Pasirinkti spalvą.",noColorTooltip:"Nėra spalvų",hexInputTooltip:"Adaptuota spalva dešimtainiu formatu (#FFFF00)."});

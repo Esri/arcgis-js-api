@@ -62,7 +62,7 @@ interface TemplatesInfo {
 
 const CSS = {
   // base
-  base: "esri-print esri-widget",
+  base: "esri-print esri-widget esri-widget--panel",
   // print-widget
   headerTitle: "esri-print__header-title",
   inputText: "esri-print__input-text",
@@ -103,6 +103,7 @@ const CSS = {
   widthContainer: "esri-print__width-container",
   // common
   button: "esri-widget-button",
+  select: "esri-select",
   disabled: "esri-disabled",
   panelError: "esri-print__panel--error",
   exportedFileError: "esri-print__exported-file--error",
@@ -309,7 +310,7 @@ class Print extends declared(Widget) {
   render() {
     const titleSection = (
       <div key="title-section" class={CSS.formSectionContainer}>
-        <label for={`${this.id}__title`}>{this._layoutTabSelected ? i18n.title : i18n.fileName}</label>
+        <label>{this._layoutTabSelected ? i18n.title : i18n.fileName}
         <input key={`${this.id}__title`}
                name="title"
                type="text"
@@ -318,6 +319,7 @@ class Print extends declared(Widget) {
                class={CSS.inputText}
                oninput={this._updateInputValue}
                bind={this} />
+        </label>
       </div>
     );
 
@@ -334,10 +336,12 @@ class Print extends declared(Widget) {
 
     const fileFormatSection = (
       <div key="file-format-section" class={CSS.formSectionContainer}>
-        <label for={`${this.id}__formats`}>{i18n.fileFormatTitle}</label>
-        <select key={`${this.id}__formats`} onchange={this._updateFromOption} data-target-property="format" bind={this}>
-          {fileFormatOptions}
-        </select>
+        <label>
+          {i18n.fileFormatTitle}
+          <select key={`${this.id}__formats`} class={CSS.select} onchange={this._updateFromOption} data-target-property="format" bind={this}>
+            {fileFormatOptions}
+          </select>
+        </label>
       </div>
     );
 
@@ -354,26 +358,33 @@ class Print extends declared(Widget) {
 
     const pageSetupSection = (
       <div key="page-setup-section" class={CSS.formSectionContainer}>
-        <label for={`${this.id}__layouts`}>{i18n.layoutTitle}</label>
-        <select key={`${this.id}__layouts`} onchange={this._updateFromOption} data-target-property="layout" bind={this}>
-          {layoutOptions}
-        </select>
+        <label>
+          {i18n.layoutTitle}
+          <select key={`${this.id}__layouts`} class={CSS.select} onchange={this._updateFromOption} data-target-property="layout" bind={this}>
+            {layoutOptions}
+          </select>
+        </label>
+
       </div>
     );
 
     const advancedSection = this._advancedOptionsVisible ? (
       <div aria-labelledby={`${this.id}__advancedOptions`} class={CSS.advancedOptionsContainer}>
         <div class={join(CSS.scaleInfoContainer, CSS.formSectionContainer)}>
-          <input key={`${this.id}__scaleEnabled`}
-                 name="scaleEnabled"
-                 type="checkbox"
-                 tabIndex={0}
-                 onchange={this._toggleInputValue}
-                 bind={this} />
-          <label for={`${this.id}__scaleEnabled`}>{i18n.scale}</label>
+          <label>
+            <input key={`${this.id}__scaleEnabled`}
+                   name="scaleEnabled"
+                   type="checkbox"
+                   tabIndex={0}
+                   onchange={this._toggleInputValue}
+                   bind={this} />
+            {i18n.scale}
+          </label>
           <div class={CSS.scaleInputContainer}>
             <input key={`${this.id}__scale`}
                    aria-label={i18n.scaleLabel}
+                   aria-valuenow={`${this._scale}`}
+                   role="spinbutton"
                    type="number"
                    name="scale"
                    class={join(CSS.inputText, CSS.scaleInput)}
@@ -392,26 +403,31 @@ class Print extends declared(Widget) {
           </div>
         </div>
         <div class={join(CSS.authorInfoContainer, CSS.formSectionContainer)}>
-          <label for={`${this.id}__author`}>{i18n.author}</label>
-          <input key={`${this.id}__author`}
-                 type="text"
-                 name="author"
-                 class={CSS.inputText}
-                 tabIndex={0}
-                 oninput={this._updateInputValue}
-                 bind={this} />
+          <label>
+            {i18n.author}
+            <input key={`${this.id}__author`}
+                   type="text"
+                   name="author"
+                   class={CSS.inputText}
+                   tabIndex={0}
+                   oninput={this._updateInputValue}
+                   bind={this} />
+          </label>
         </div>
         <div class={join(CSS.copyrightInfoContainer, CSS.formSectionContainer)}>
-          <label for={`${this.id}__copyright`}>{i18n.copyright}</label>
-          <input key={`${this.id}__copyright`}
-                 type="text"
-                 name="copyright"
-                 class={CSS.inputText}
-                 tabIndex={0}
-                 oninput={this._updateInputValue}
-                 bind={this} />
+          <label>
+            {i18n.copyright}
+            <input key={`${this.id}__copyright`}
+                   type="text"
+                   name="copyright"
+                   class={CSS.inputText}
+                   tabIndex={0}
+                   oninput={this._updateInputValue}
+                   bind={this} />
+          </label>
         </div>
         <div class={join(CSS.legendInfoContainer, CSS.formSectionContainer)}>
+          <label>
           <input key={`${this.id}__legend`}
                  type="checkbox"
                  name="legend"
@@ -419,13 +435,20 @@ class Print extends declared(Widget) {
                  checked
                  onchange={this._toggleInputValue}
                  bind={this} />
-          <label for={`${this.id}__legend`}>{i18n.legend}</label>
+            {i18n.legend}
+          </label>
         </div>
       </div>
     ) : null;
 
     const panel = this._layoutTabSelected ? (
-      <section key={`${this.id}__layoutContent`} aria-labelledby={`${this.id}__layoutTab`} class={CSS.layoutSection}>
+      <section key={`${this.id}__layoutContent`}
+               id={`${this.id}__layoutContent`}
+               aria-labelledby={`${this.id}__layoutTab`}
+               class={CSS.layoutSection}
+               role="tabpanel"
+               aria-selected={this._layoutTabSelected}
+               >
         <div key="layout" class={CSS.panelContainer}>
           {titleSection}
           {pageSetupSection}
@@ -451,32 +474,41 @@ class Print extends declared(Widget) {
         </div>
       </section>
     ) : (
-      <section key={`${this.id}__mapOnlyContent`} aria-labelledby={`${this.id}__mapOnlyTab`} class={CSS.mapOnlySection}>
+      <section key={`${this.id}__mapOnlyContent`}
+               id={`${this.id}__mapOnlyContent`}
+               aria-selected={!this._layoutTabSelected}
+               aria-labelledby={`${this.id}__mapOnlyTab`}
+               class={CSS.mapOnlySection}
+               role="tabpanel">
         <div key="mapOnly" class={CSS.panelContainer}>
           {titleSection}
           {this._layoutTabSelected ? null : fileFormatSection}
           <div class={join(CSS.sizeContainer, CSS.formSectionContainer)}>
             <div class={CSS.widthContainer}>
-              <label for="width">{i18n.width}</label>
-              <input key={`${this.id}__width`}
-                     type="text"
-                     name="width"
-                     class={CSS.inputText}
-                     onchange={this._updateInputValue}
-                     value={`${this._width}`}
-                     tabIndex={0}
-                     bind={this} />
+              <label>
+                {i18n.width}
+                <input key={`${this.id}__width`}
+                       type="text"
+                       name="width"
+                       class={CSS.inputText}
+                       onchange={this._updateInputValue}
+                       value={`${this._width}`}
+                       tabIndex={0}
+                       bind={this} />
+              </label>
             </div>
             <div class={CSS.heightContainer}>
-              <label for="height">{i18n.height}</label>
-              <input key={`${this.id}__height`}
-                     type="text"
-                     name="height"
-                     class={CSS.inputText}
-                     onchange={this._updateInputValue}
-                     value={`${this._height}`}
-                     tabIndex={0}
-                     bind={this} />
+              <label>
+                {i18n.height}
+                <input key={`${this.id}__height`}
+                       type="text"
+                       name="height"
+                       class={CSS.inputText}
+                       onchange={this._updateInputValue}
+                       value={`${this._height}`}
+                       tabIndex={0}
+                       bind={this} />
+              </label>
             </div>
             <button role="button"
                     aria-label={i18n.swap}
@@ -487,14 +519,16 @@ class Print extends declared(Widget) {
             </button>
           </div>
           <div key="attribution-container" class={CSS.formSectionContainer}>
-            <input key={`${this.id}__attribution`}
-                   name="attribution"
-                   type="checkbox"
-                   onchange={this._toggleInputValue}
-                   tabIndex={0}
-                   checked
-                   bind={this} />
-            <label for="attribution">{i18n.attribution}</label>
+            <label>
+              <input key={`${this.id}__attribution`}
+                     name="attribution"
+                     type="checkbox"
+                     onchange={this._toggleInputValue}
+                     tabIndex={0}
+                     checked
+                     bind={this} />
+              {i18n.attribution}
+            </label>
           </div>
         </div>
       </section>
@@ -521,7 +555,8 @@ class Print extends declared(Widget) {
             onclick={this._toggleLayoutPanel}
             onkeydown={this._toggleLayoutPanel}
             bind={this}>
-          <li key={`${this.id}__layoutTab`}
+          <li id={`${this.id}__layoutTab`}
+              key={`${this.id}__layoutTab`}
               data-tab-id="layoutTab"
               class={CSS.layoutTab}
               role="tab"
@@ -530,7 +565,8 @@ class Print extends declared(Widget) {
               bind={this}>
             {i18n.layoutTab}
           </li>
-          <li key={`${this.id}__mapOnlyTab`}
+          <li id={`${this.id}__mapOnlyTab`}
+              key={`${this.id}__mapOnlyTab`}
               data-tab-id="mapOnlyTab"
               class={CSS.layoutTab}
               role="tab"
@@ -730,7 +766,7 @@ class Print extends declared(Widget) {
 
       return (
         <div aria-label={itemDescriptiveStatus} key={exportedLink.formattedName} class={CSS.exportedFile}>
-          <a href={url} tabIndex={0} target="_blank" class={CSS.exportedFileLink}>
+          <a aria-label={`${exportedLink.formattedName}. ${i18n.linkReady}`} href={url} tabIndex={0} target="_blank" class={CSS.exportedFileLink}>
             <span data-item={exportedLink} classes={iconClasses} />
             <span data-item={exportedLink} class={CSS.exportedFileLinkTitle} classes={linkTitleClasses}>{exportedLink.formattedName}</span>
           </a>

@@ -3,10 +3,7 @@
     color: $text_color;
     background-color: $background_hover_color;
     padding: floor($cap_spacing/2) floor($side_spacing/2);
-    width: $panel_width;
-    max-height: 420px;
     overflow-y: auto;
-    transition: max-height 250ms ease-in-out;
   }
   .esri-layer-list__list {
     list-style: none;
@@ -275,8 +272,6 @@
       margin-left: 0.3rem;
     }
   }
-
-  @include componentHeight_BasedOnViewSize(esri-layer-list);
 
   //////////////////////////////
   // ANIMATION

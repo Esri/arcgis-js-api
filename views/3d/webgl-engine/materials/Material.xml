@@ -204,13 +204,7 @@ $vvUniforms
 	void main() {
 		vec3 viewDir = normalize(vpos - camPos);
 
-		// compute normal
-		#ifndef DOUBLESIDED
-				vec3 normal = vnormal;
-		#else
-				vec3 normal = dot(vnormal, viewDir)>0.0 ? -vnormal : vnormal;
-		#endif
-		normal = normalize(normal);
+		$computeNormal
 
 		vec3 reflDir = normalize(reflect(viewDir, normal));
 
@@ -276,9 +270,7 @@ $vvUniforms
 		vec4 texColor = vec4(1,1,1,1);
 		$externalColorMix
 
-		$selectShadingNormal
-
-		vec3 shadedColor = evaluateSceneLighting(shadingNormal, albedo_, shadow, 1.0 - ssao, additionalLight);
+		vec3 shadedColor = evaluateSceneLighting(normal, albedo_, shadow, 1.0 - ssao, additionalLight);
 		gl_FragColor = vec4(shadedColor, opacity_);
 	}
 ]]></snippet>
@@ -312,9 +304,7 @@ $vvUniforms
 
 		$externalColorMix
 
-		$selectShadingNormal
-
-		vec3 shadedColor = evaluateSceneLighting(shadingNormal, albedo_, shadow, 1.0 - ssao, additionalLight);
+		vec3 shadedColor = evaluateSceneLighting(normal, albedo_, shadow, 1.0 - ssao, additionalLight);
 
 		gl_FragColor = vec4(shadedColor, opacity_);
 	}
@@ -397,9 +387,7 @@ $vvUniforms
 
 		$externalColorMix
 
-		$selectShadingNormal
-
-		vec3 shadedColor = evaluateSceneLighting(shadingNormal, albedo_, shadow, 1.0 - ssao, additionalLight);
+		vec3 shadedColor = evaluateSceneLighting(normal, albedo_, shadow, 1.0 - ssao, additionalLight);
 		gl_FragColor = vec4(shadedColor, opacity_);
 	}
 	]]></snippet>
@@ -421,9 +409,7 @@ $vvUniforms
 
 		$externalColorMix
 
-		$selectShadingNormal
-
-		vec3 shadedColor = evaluateSceneLighting(shadingNormal, albedo_, shadow, 1.0 - ssao, additionalLight);
+		vec3 shadedColor = evaluateSceneLighting(normal, albedo_, shadow, 1.0 - ssao, additionalLight);
 		shadedColor.rgb = mix(shadedColor.rgb, reflColor.rgb, reflectivity);
 
 		gl_FragColor = vec4(shadedColor, opacity_);

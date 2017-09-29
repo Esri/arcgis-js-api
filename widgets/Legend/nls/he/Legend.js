@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 define({points:"נקודות",lines:"קווים",polygons:"פוליגונים",creatingLegend:"יצירת מקרא",noLegend:"אין מקרא",dotValue:"1 נקודה = {value} {unit}",currentObservations:"תצפיות נוכחיות",previousObservations:"תצפיות קודמות",high:"גבוה",low:"נמוך",esriMetersPerSecond:"מטר לשנייה",esriKilometersPerHour:"קילומטר לשעה",esriKnots:"קשר",esriFeetPerSecond:"רגל לשנייה",esriMilesPerHour:"מייל לשעה",showField:"{field}",showNormField:"{field} חלקי {normField}",showNormPct:"{field} כאחוז מהסך הכול",showRatio:"יחס של {field} ל-{normField}",showRatioPercent:"{field} כאחוז מ-{normField}",showRatioPercentTotal:"{field} כאחוז מ-{field} ו-{normField}"});

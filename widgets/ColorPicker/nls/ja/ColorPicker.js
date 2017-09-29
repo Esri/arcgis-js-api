@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 define({transparency:"透過表示",suggested:"推奨",recent:"最近",more:"詳細",moreColorsTooltip:"その他の色をご参照ください。",paletteTooltip:"色を選択します。",noColorTooltip:"色なし",hexInputTooltip:"16 進数表記 (#FFFF00) のカスタム色です。"});

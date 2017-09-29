@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
-define({zoom:"Transfocare la",next:"Obiectul spaţial următor",previous:"Obiectul spaţial anterior",close:"Închidere",dock:"Doc",undock:"Anulare andocare",menu:"Meniu",untitled:"Fără titlu",pageText:"{index} din {total}",noFeaturesFound:"Nu a fost găsit niciun obiect spaţial",selectedFeature:"Obiect spaţial selectat",selectedFeatures:"{total} rezultate",loading:"Se încarcă"});
+define({zoom:"Transfocare la",next:"Obiectul spaţial următor",previous:"Obiectul spaţial anterior",close:"Închidere",dock:"Doc",undock:"Anulare andocare",menu:"Meniu",untitled:"Fără titlu",pageText:"{index} din {total}",selectedFeature:"Obiect spaţial selectat",selectedFeatures:"{total} rezultate",loading:"Se încarcă",collapse:"Restrângere",expand:"Extindere"});

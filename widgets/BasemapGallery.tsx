@@ -58,7 +58,7 @@ interface CollectionChangeEventPayload<T> {
 const DEFAULT_BASEMAP_IMAGE = require.toUrl("../themes/base/images/basemap-toggle-64.svg");
 
 const CSS = {
-  base: "esri-basemap-gallery esri-widget",
+  base: "esri-basemap-gallery esri-widget esri-widget--panel",
   sourceLoading: "esri-basemap-gallery--source-loading",
   loadingIndicator: "esri-basemap-gallery_loading-indicator",
   item: "esri-basemap-gallery__item",

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 define(["require","exports","../../../../core/tsSupport/extendsHelper","./ElevationInfo"],function(n,e,t,r){var i=function(n){function e(e){var t=n.call(this,e)||this;return t.centerPointInElevationSR=null,t}return t(e,n),e}(r);return i});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
-define(["require","exports"],function(e,t){function n(e,t,n,r){var u=null,o=1e3;"number"==typeof t?(o=t,r=n):(u=t,o=n);var a,f=0,i=function(){f=0,e.apply(r,a)},l=function(){for(var e=[],t=0;t<arguments.length;t++)e[t]=arguments[t];u&&u.apply(r,e),a=e,f||(f=setTimeout(i,o))};return l.remove=function(){f&&(clearTimeout(f),f=0)},l.forceUpdate=function(){f&&(clearTimeout(f),i())},l}Object.defineProperty(t,"__esModule",{value:!0}),t.throttle=n,t["default"]=n});
+define(["require","exports"],function(e,t){function n(e,t,n,r){var u=null,o=1e3;"number"==typeof t?(o=t,r=n):(u=t,o=n);var a,i=0,f=function(){i=0,e.apply(r,a)},c=function(){for(var e=[],t=0;t<arguments.length;t++)e[t]=arguments[t];u&&u.apply(r,e),a=e,o?i||(i=setTimeout(f,o)):f()};return c.remove=function(){i&&(clearTimeout(i),i=0)},c.forceUpdate=function(){i&&(clearTimeout(i),f())},c.hasPendingUpdates=function(){return!!i},c}Object.defineProperty(t,"__esModule",{value:!0}),t.throttle=n,t["default"]=n});

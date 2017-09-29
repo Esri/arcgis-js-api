@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
-define({title:"タイトル",fileName:"ファイル名",titlePlaceHolder:"ファイルのタイトル",fileNamePlaceHolder:"ファイル名",formatDefaultOption:"形式の選択",fileFormatTitle:"ファイル形式",layoutTitle:"ページ設定",layoutDefaultOption:"ページ設定の選択",scale:"縮尺の設定",scaleLabel:"縮尺",reset:"リセット",author:"作成者",copyright:"著作権",legend:"凡例",lock:"ロック",swap:"スワップ",panelToggle:"パネルの切り替え",advancedOptions:"高度な設定",width:"幅",height:"高さ",attribution:"属性を含む",layoutTab:"レイアウト",mapOnlyTab:"マップのみ",untitled:"無題",pending:"エクスポート",ready:"これを開く",error:"これを選択して削除します。",sceneViewError:"シーン ビューで印刷はサポートされていません。",serviceError:"エラーが発生しているようです。","export":"エクスポート",exportDescription:"エクスポート。エクスポート済みファイルが以下に表示されます。",exportText:"エクスポート済みファイル",exportHint:"エクスポート済みファイルがここに表示されます。"});
+define({title:"タイトル",fileName:"ファイル名",titlePlaceHolder:"ファイルのタイトル",fileNamePlaceHolder:"ファイル名",formatDefaultOption:"形式の選択",fileFormatTitle:"ファイル形式",layoutTitle:"ページ設定",layoutDefaultOption:"ページ設定の選択",scale:"縮尺の設定",scaleLabel:"縮尺",reset:"リセット",author:"作成者",copyright:"著作権",legend:"凡例",lock:"ロック",swap:"スワップ",panelToggle:"パネルの切り替え",advancedOptions:"高度な設定",width:"幅",height:"高さ",attribution:"属性を含む",layoutTab:"レイアウト",mapOnlyTab:"マップのみ",untitled:"無題",pending:"エクスポート",ready:"これを開く",linkReady:"新しいウィンドウで開きます。",error:"これを選択して削除します。",sceneViewError:"シーン ビューで印刷はサポートされていません。",serviceError:"エラーが発生しているようです。","export":"エクスポート",exportDescription:"エクスポート。エクスポート済みファイルが以下に表示されます。",exportText:"エクスポート済みファイル",exportHint:"エクスポート済みファイルがここに表示されます。"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
-define({noItemsToDisplay:"Momentálně nejsou k zobrazení žádné položky.",layerInvisibleAtScale:"Vrstva není při současném měřítku viditelná.",layerError:"Při načítání této vrstvy došlo k chybě.",untitledLayer:"Vrstva bez názvu"});
+define({noItemsToDisplay:"Momentálně nejsou k zobrazení žádné položky.",layerInvisibleAtScale:"V aktuálním měřítku neviditelné",layerError:"Při načítání této vrstvy došlo k chybě.",untitledLayer:"Vrstva bez názvu"});

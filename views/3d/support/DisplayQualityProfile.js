@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 define(["require","exports","../../../core/sniff"],function(e,i,t){var a={low:{sceneService:{"3dObject":{lodFactor:.2},point:{lodFactor:1},integratedMesh:{lodFactor:.6},pointCloud:{lodFactor:.5}},tiledSurface:{lodBias:-1,angledSplitBias:.5},antialiasingEnabled:!1,gpuMemoryLimit:200},high:{sceneService:{"3dObject":{lodFactor:1},point:{lodFactor:1},integratedMesh:{lodFactor:1},pointCloud:{lodFactor:1}},tiledSurface:{lodBias:0,angledSplitBias:1},antialiasingEnabled:!0,gpuMemoryLimit:500}},n=function(){function e(){}return e.isValidProfile=function(e){return e in a},e.getDefaultProfile=function(){var e=t("trident")||t("safari")||t("esri-mobile");return e?"low":"high"},e.apply=function(e,i){var t=a[e];i.qualitySettings.sceneService["3dObject"].lodFactor=t.sceneService["3dObject"].lodFactor,i.qualitySettings.sceneService.point.lodFactor=t.sceneService.point.lodFactor,i.qualitySettings.sceneService.integratedMesh.lodFactor=t.sceneService.integratedMesh.lodFactor,i.qualitySettings.sceneService.pointCloud.lodFactor=t.sceneService.pointCloud.lodFactor,i.qualitySettings.tiledSurface.lodBias=t.tiledSurface.lodBias,i.qualitySettings.tiledSurface.angledSplitBias=t.tiledSurface.angledSplitBias,i.qualitySettings.antialiasingEnabled=t.antialiasingEnabled,i.qualitySettings.gpuMemoryLimit=t.gpuMemoryLimit},e}();return n});

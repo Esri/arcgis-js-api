@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../Color","../../core/JSONSupport","../../core/lang","./materialUtils","../../core/accessorSupport/decorators"],function(e,r,o,t,p,l,s,c,n){Object.defineProperty(r,"__esModule",{value:!0});var i=a=function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.color=new p([0,0,0,1]),r.size=0,r}return o(r,e),r.prototype.clone=function(){return new a({color:s.clone(this.color),size:this.size})},r}(n.declared(l));t([n.property(c.colorAndTransparencyProperty)],i.prototype,"color",void 0),t([n.property(c.screenSizeProperty)],i.prototype,"size",void 0),i=a=t([n.subclass("esri.symbols.support.Symbol3DHalo")],i),r.Symbol3DHalo=i,r["default"]=i;var a});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../Color","../../core/JSONSupport","../../core/lang","./materialUtils","../../core/accessorSupport/decorators"],function(e,r,o,t,p,l,s,c,n){Object.defineProperty(r,"__esModule",{value:!0});var i=function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.color=new p([0,0,0,1]),r.size=0,r}return o(r,e),l=r,r.prototype.clone=function(){return new l({color:s.clone(this.color),size:this.size})},t([n.property(c.colorAndTransparencyProperty)],r.prototype,"color",void 0),t([n.property(c.screenSizeProperty)],r.prototype,"size",void 0),r=l=t([n.subclass("esri.symbols.support.Symbol3DHalo")],r);var l}(n.declared(l));r.Symbol3DHalo=i,r["default"]=i});

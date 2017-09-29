@@ -66,18 +66,14 @@ $basemap_toggle_size: $button_width * 2  !default;
   }
 
   .esri-basemap-toggle__title {
-    display: none;
     flex: 1 0 100%;
     height: auto;
     font-size: 9px;
     font-weight: 500;
+    line-height: $line_height;
     padding: .5em;
     background-color: rgba(255, 255, 255, 0.7);
     text-align: center;
-  }
-
-  .esri-basemap-toggle__title--visible {
-    display: block;
   }
 
   .esri-basemap-toggle.esri-disabled {

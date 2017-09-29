@@ -48,7 +48,7 @@ import {
   accessibleHandler
 } from "./support/widget";
 
-import {Axes} from "./interfaces";
+import { Axes } from "./interfaces";
 
 import Widget = require("./Widget");
 import CompassViewModel = require("./Compass/CompassViewModel");
@@ -67,10 +67,6 @@ const CSS = {
   interactive: "esri-interactive",
   disabled: "esri-disabled"
 };
-
-interface TransformStyle {
-  transform: string;
-}
 
 @subclass("esri.widgets.Compass")
 class Compass extends declared(Widget) {
@@ -154,15 +150,15 @@ class Compass extends declared(Widget) {
    * @method
    */
   @aliasOf("viewModel.reset")
-  reset(): void {}
+  reset(): void { }
 
   render() {
     const orientation = this.viewModel.orientation;
     const state = this.viewModel.state;
 
     const disabled = state === "disabled",
-          showNorth = state === "rotation" ? "rotation" : "compass", // compass is also shown when disabled
-          showingCompass = showNorth === "compass";
+      showNorth = state === "rotation" ? "rotation" : "compass", // compass is also shown when disabled
+      showingCompass = showNorth === "compass";
 
     const tabIndex = disabled ? -1 : 0;
 
@@ -178,17 +174,18 @@ class Compass extends declared(Widget) {
 
     return (
       <div bind={this}
-           class={CSS.base}
-           classes={dynamicRootClasses}
-           onclick={this._reset}
-           onkeydown={this._reset}
-           role="button"
-           tabIndex={tabIndex}>
+        class={CSS.base}
+        classes={dynamicRootClasses}
+        onclick={this._reset}
+        onkeydown={this._reset}
+        role="button"
+        tabIndex={tabIndex}
+        aria-label={i18n.reset}
+        title={i18n.reset}>
         <span aria-hidden="true"
-              class={CSS.icon}
-              classes={dynamicIconClasses}
-              styles={this._toRotationTransform(orientation)}
-              title={i18n.reset} />
+          class={CSS.icon}
+          classes={dynamicIconClasses}
+          styles={this._toRotationTransform(orientation)} />
         <span class={CSS.text}>{i18n.reset}</span>
       </div>
     );
@@ -205,7 +202,7 @@ class Compass extends declared(Widget) {
     this.reset();
   }
 
-  private _toRotationTransform(orientation: Axes): TransformStyle {
+  private _toRotationTransform(orientation: Axes): HashMap<string> {
     return {
       transform: `rotateZ(${orientation.z}deg)`
     };

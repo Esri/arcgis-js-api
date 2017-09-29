@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 define({statsAvg:"متوسط : ${avg}",count:"العدد: ${count}",percent:"${num}%",high:"ارتفاع",low:"منخفض",color:{changeMinMaxToolTIp:"اكتب القيمة.",handleToolTip:"تطابق قيم البيانات مع الألوان",maxValueToolTip:"اكتب أكبر قيمة بيانات مُتوقعة.",minValueToolTip:"اكتب أصغر قيمة بيانات مُتوقعة.",changeSymbol:"تغيير الرمز"},size:{handleToolTip:"تطابق قيم البيانات مع حجم الرمز.",sizeInputBoxLines:"قم بتعيين سمك الخط من 0 إلى 18 بيكسل.",sizeInputBoxPoints:"قم بتعيين حجم الرمز من 1 إلى 120 بيكسل"}});

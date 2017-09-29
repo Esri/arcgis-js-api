@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
-define({noItemsToDisplay:"Aucun élément à afficher actuellement.",layerInvisibleAtScale:"Couche non visible à l'échelle actuelle",layerError:"Une erreur s'est produite lors du chargement de cette couche",untitledLayer:"Couche sans titre"});
+define({noItemsToDisplay:"Aucun élément à afficher actuellement.",layerInvisibleAtScale:"Invisible à l’échelle actuelle",layerError:"Une erreur s'est produite lors du chargement de cette couche",untitledLayer:"Couche sans titre"});

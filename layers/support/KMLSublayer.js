@@ -1,0 +1,25 @@
+// COPYRIGHT © 2017 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/tsSupport/paramHelper","../../core/accessorSupport/decorators","../../core/Collection","../../core/JSONSupport","../../core/accessorSupport/ensureType","../../core/watchUtils","../../tasks/support/FeatureSet","../../Graphic","../../PopupTemplate","../../renderers/support/jsonUtils","./kmlUtils"],function(e,r,t,o,n,l,p,i,a,s,u,y,c,f,d){function b(e){var r=u.fromJSON(e.featureSet),t=r.features,o=e.layerDefinition,n=f.fromJSON(o.drawingInfo.renderer),l=c.fromJSON(e.popupInfo);return t.map(function(e){var r=n.getSymbol(e);return e.symbol=r,e.popupTemplate=l,e})}var v=function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r._sublayersHandles=null,r._networkLinkHandle=null,r.description=null,r.id=null,r.mapImages=null,r.networkLink=null,r.points=null,r.polylines=null,r.polygons=null,r.title=null,r}return t(r,e),n=r,r.prototype.initialize=function(){var e=this;this._networkLinkHandle=s.init(this,"networkLink",function(r){r&&s.whenTrueOnce(e,"visible",function(){e._fetchService(e._get("networkLink").href).then(function(r){var t=a["default"](p.ofType(n),d.sublayersFromJSON(r));e.sublayers?e.sublayers.addMany(t):e.sublayers=t,e.layer&&e.layer.notifyChange("visibleSublayers")}),e._networkLinkHandle.remove(),e._networkLinkHandle=null})})},Object.defineProperty(r.prototype,"layer",{set:function(e){this._set("layer",e),this.sublayers&&this.sublayers.forEach(function(r){return r.layer=e})},enumerable:!0,configurable:!0}),r.prototype.readMapImages=function(e,r){return new p(e)},r.prototype.readPointCollection=function(e,r){return b(e)},r.prototype.readPolylineCollection=function(e,r){return b(e)},r.prototype.readPolygonCollection=function(e,r){return b(e)},Object.defineProperty(r.prototype,"sublayers",{set:function(e){var r=this,t=this._get("sublayers");t&&(t.forEach(function(e){e.parent=null,e.layer=null}),this._sublayersHandles.forEach(function(e){return e.remove()}),this._sublayersHandles=null),e&&(e.forEach(function(e){e.parent=r,e.layer=r.layer}),this._sublayersHandles=[e.on("after-add",function(e){var t=e.item;t.parent=r,t.layer=r.layer}),e.on("after-remove",function(e){var r=e.item;r.parent=null,r.layer=null})]),this._set("sublayers",e)},enumerable:!0,configurable:!0}),r.prototype.castSublayers=function(e){return a["default"](p.ofType(n),e)},Object.defineProperty(r.prototype,"visible",{get:function(){return this._get("visible")},set:function(e){var r=this._get("visible");r!==e&&(this._set("visible",e),this.layer&&this.layer.notifyChange("visibleSublayers"))},enumerable:!0,configurable:!0}),r.prototype.readVisible=function(e,r){return!!r.visibility},r.prototype._fetchService=function(e){return d.fetchService(e,this.layer.outSpatialReference,this.layer.refreshInterval).then(function(e){return d.parseKML(e.data)})},o([l.property()],r.prototype,"description",void 0),o([l.property()],r.prototype,"id",void 0),o([l.property({value:null})],r.prototype,"layer",null),o([l.property()],r.prototype,"mapImages",void 0),o([l.reader("mapImages",["mapImages"])],r.prototype,"readMapImages",null),o([l.property({readOnly:!0,value:null})],r.prototype,"networkLink",void 0),o([l.property({json:{write:{allowNull:!0}}})],r.prototype,"parent",void 0),o([l.property({type:p.ofType(y)})],r.prototype,"points",void 0),o([l.reader("points",["points"])],r.prototype,"readPointCollection",null),o([l.property({type:p.ofType(y)})],r.prototype,"polylines",void 0),o([l.reader("polylines",["polylines"])],r.prototype,"readPolylineCollection",null),o([l.property({type:p.ofType(y)})],r.prototype,"polygons",void 0),o([l.reader("polygons",["polygons"])],r.prototype,"readPolygonCollection",null),o([l.property({value:null,json:{write:{allowNull:!0}}})],r.prototype,"sublayers",null),o([l.cast("sublayers")],r.prototype,"castSublayers",null),o([l.property({value:null,json:{read:{source:"name"}}})],r.prototype,"title",void 0),o([l.property({value:!0})],r.prototype,"visible",null),o([l.reader("visible",["visibility"])],r.prototype,"readVisible",null),r=n=o([l.subclass("esri.layers.support.KMLSublayer")],r);var n}(l.declared(i));return v});

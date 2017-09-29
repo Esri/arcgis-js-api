@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators","../../core/Accessor","../../core/accessorSupport/write"],function(r,e,o,i,t,c,n){var a=function(r){function e(){var e=null!==r&&r.apply(this,arguments)||this;return e.minScale=0,e.maxScale=0,e}return o(e,r),e}(t.declared(c));return i([t.property({json:{write:{overridePolicy:function(r,e,o){return n.willPropertyWrite(this,"maxScale",{},o)?{ignoreOrigin:!0}:void 0}}}})],a.prototype,"minScale",void 0),i([t.property({json:{write:{overridePolicy:function(r,e,o){return n.willPropertyWrite(this,"minScale",{},o)?{ignoreOrigin:!0}:void 0}}}})],a.prototype,"maxScale",void 0),a=i([t.subclass("esri.layers.mixins.ScaleRangeLayer")],a)});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators","../../core/Accessor","../../core/accessorSupport/write"],function(r,e,o,i,t,c,n){var a=function(r){function e(){var e=null!==r&&r.apply(this,arguments)||this;return e.minScale=0,e.maxScale=0,e}return o(e,r),i([t.property({json:{write:{overridePolicy:function(r,e,o){return n.willPropertyWrite(this,"maxScale",{},o)?{ignoreOrigin:!0}:void 0}}}})],e.prototype,"minScale",void 0),i([t.property({json:{write:{overridePolicy:function(r,e,o){return n.willPropertyWrite(this,"minScale",{},o)?{ignoreOrigin:!0}:void 0}}}})],e.prototype,"maxScale",void 0),e=i([t.subclass("esri.layers.mixins.ScaleRangeLayer")],e)}(t.declared(c));return a});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 var merge=function(n,t,r){return n&&"object"==typeof n&&(t=t||{},Object.keys(n).forEach(function(r){void 0!==n[r]&&(t[r]=n[r])},r||this)),t},mixin=function(n,t){return merge(t,n.prototype)},geomToBbox=function(n){function t(n,t){return n.length||(n=[1/0,1/0,-(1/0),-(1/0)]),t[0]<n[0]&&(n[0]=t[0]),t[1]<n[1]&&(n[1]=t[1]),t.length>2?(t[2]>n[2]&&(n[2]=t[2]),t[3]>n[3]&&(n[3]=t[3])):(t[0]>n[2]&&(n[2]=t[0]),t[1]>n[3]&&(n[3]=t[1])),n}var r,e=[];if(null!=n.x&&null!=n.y)return[n.x,n.y,n.x,n.y];if(n.points){var o=n.points,i=o.length;for(r=-1;++r<i;)e=t(e,o[r]);return e}if(n.paths||n.rings){var f,u,g,h=n.paths||n.rings,l=h.length;for(r=-1;++r<l;)for(u=h[r],f=u.length,g=-1;++g<f;)e=t(e,u[g]);return e}};

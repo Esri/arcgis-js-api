@@ -3,12 +3,8 @@
   .esri-basemap-gallery {
     color: $text_color;
     background-color: $background_color;
-    width: $panel_width;
-    max-height: $panel_max_height;
-    min-height: $panel_min_height;
     overflow-y: auto;
     position: relative;
-    transition: max-height 250ms ease-in-out, width 250ms ease-in-out;
   }
 
   .esri-basemap-gallery__item-container {
@@ -160,8 +156,6 @@
       border-color: $selected_border_color;
     }
   }
-
-  @include componentHeight_BasedOnViewSize(esri-basemap-gallery);
 
   html[dir="rtl"] {
     .esri-basemap-gallery__item--selected,

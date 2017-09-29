@@ -4,7 +4,7 @@
     flex-flow: column nowrap;
     &.esri-zoom--horizontal{
       flex-flow: row-reverse nowrap;
-      .esri-button {
+      .esri-widget-button {
         &:last-child {
           border-top: none;
         }
@@ -27,7 +27,7 @@
   html[dir="rtl"] {
     .esri-zoom {
       &.esri-zoom--horizontal{
-        .esri-button {
+        .esri-widget-button {
           &:first-child {
             border-top: none;
           }

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
-define(["../../../core/Accessor","../support/earthUtils"],function(t,e){var s=-(1/0),i=4*e.earthRadius,a=t.createSubclass([],{declaredClass:"esri.views.3d.constraints.SceneViewAltitudeConstraint",properties:{mode:{value:"auto"},min:{value:s,set:function(t){this._set("min",t),this._get("max")<t&&this._set("max",t),this.mode="manual"}},max:{value:i,set:function(t){this._set("max",t),this._get("min")>t&&this._set("min",t),this.mode="manual"}}},autoUpdate:function(t,e){"auto"===this.mode&&(this._get("min")!==t&&this._set("min",t),this._get("max")!==e&&this._set("max",e))},scale:function(t){this._set("max",this._get("max")*t),this._set("min",this._get("min")*t)}});return a.MIN_DEFAULT=s,a.MAX_DEFAULT=i,a});
+define(["../../../core/Accessor","../support/earthUtils"],function(t,e){var s=-e.earthRadius,i=4*e.earthRadius,a=t.createSubclass([],{declaredClass:"esri.views.3d.constraints.SceneViewAltitudeConstraint",properties:{mode:{value:"auto"},min:{value:s,set:function(t){this._set("min",t),this._get("max")<t&&this._set("max",t),this.mode="manual"}},max:{value:i,set:function(t){this._set("max",t),this._get("min")>t&&this._set("min",t),this.mode="manual"}}},autoUpdate:function(t,e){"auto"===this.mode&&(this._get("min")!==t&&this._set("min",t),this._get("max")!==e&&this._set("max",e))},scale:function(t){this._set("max",this._get("max")*t),this._set("min",this._get("min")*t)}});return a.MIN_DEFAULT=s,a.MAX_DEFAULT=i,a});

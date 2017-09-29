@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 define(["dojox/charting/themes/PlotKit/base","../kernel"],function(e){var r=e.base.clone();return r.chart.fill=r.plotarea.fill="#e7eef6",r.colors=["#284B70","#702828","#5F7143","#F6BC0C","#382C6C","#50224F","#1D7554","#4C4C4C","#0271AE","#706E41","#446A73","#0C3E69","#757575","#B7B7B7","#A3A3A3"],r.series.stroke.width=1,r.marker.stroke.width=1,r});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
-define({noItemsToDisplay:"Näytettäviä kohteita ei ole.",layerInvisibleAtScale:"Karttataso ei ole näkyvissä kyseisessä mittakaavassa",layerError:"Virhe karttatason lataamisessa",untitledLayer:"Nimeämätön karttataso"});
+define({noItemsToDisplay:"Näytettäviä kohteita ei ole.",layerInvisibleAtScale:"Ei ole näkyvissä nykyisessä mittakaavassa",layerError:"Virhe karttatason lataamisessa",untitledLayer:"Nimeämätön karttataso"});

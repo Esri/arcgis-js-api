@@ -31,6 +31,10 @@
   varying vec2 vtc;
   varying vec2 vsize;
 
+#ifdef BINARY_HIGHLIGHT_OCCLUSION
+  varying float voccluded;
+#endif
+
   $vvUniforms
 
   $alignToPixelCenter
@@ -67,8 +71,16 @@
     vec2 combinedSize = inputSize * pixelRatio;
     vec4 quadOffset = vec4(0);
 
+#if defined(OCCL_TEST) || defined(BINARY_HIGHLIGHT_OCCLUSION)
+    bool visible = testVisibilityHUD(posProj);
+#endif
+
+#ifdef BINARY_HIGHLIGHT_OCCLUSION
+  voccluded = visible ? 0.0 : 1.0;
+#endif
+
 #ifdef OCCL_TEST
-    if (testVisibilityHUD(posProj)) {
+    if (visible) {
 #endif
       // UV goes from 0 to 1.99999, where the integer part is used
       // for the normalized vertex coordinates, and the fractional
@@ -144,6 +156,10 @@
 
   varying vec2 vtc;
   varying vec2 vsize;
+
+#ifdef BINARY_HIGHLIGHT_OCCLUSION
+  varying float voccluded;
+#endif
 
 #ifdef DEBUG_DRAW_BORDER
   varying vec3 debugBorderCoords;
@@ -239,7 +255,19 @@ $fragmentShaderHUDBaseVariables
   uniform vec4 highlightViewportPixelSz;
 
 $fragmentShaderHUDBaseMain
+#ifdef BINARY_HIGHLIGHT_OCCLUSION
+    // Instead of deciding on a per-pixel basis if the highlight is occluded,
+    // do it for all highlight pixel based on the centroid occlusion. This
+    // is a temporary solution for:
+    // https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/9645
+    if (voccluded == 1.0) {
+      gl_FragColor = vec4(1.0, 1.0, 0.0, 1.0);
+    } else {
+      gl_FragColor = vec4(1.0, 0.0, 1.0, 1.0);
+    }
+#else
     $highlightWrite
+#endif
   }
 ]]></snippet>
 

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 define({lblItem:"item",title:"Iniciar Sessão",info:"Inicie sessão para aceder ao item em {server} {resource}",oAuthInfo:"Por favor inicie sessão para continuar.",lblUser:"Nome de Utilizador:",lblPwd:"Palavra-passe:",lblOk:"OK",lblSigning:"A iniciar sessão…",lblCancel:"Cancelar",errorMsg:"Nome de utilizador/palavra-passe não válidos. Tente novamente.",invalidUser:"O nome de utilizador ou a palavra-passe que digitou está incorreto.",forbidden:"O nome de utilizador e palavra-passe são válidos, mas não tem acesso a este recurso.",noAuthService:"Não foi possível aceder ao serviço de autenticação."});

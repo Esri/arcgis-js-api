@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 define(["require","exports","../../../../core/tsSupport/extendsHelper","../../../input/InputHandler","../../navigation/NavigationConstants"],function(t,e,n,i,a){Object.defineProperty(e,"__esModule",{value:!0});var r=function(t){function e(e,n){void 0===n&&(n=!1);var i=t.call(this,"esri.views.3d.input.handlers.TwoFingerTilt",!0)||this;return i.view=e,i._invert=n,i.registerIncoming("vertical-two-finger-drag",function(t){return i._handleTwoFinger(t)}),i}return n(e,t),e.prototype._handleTwoFinger=function(t){var e=this.view,n=this._invert?-1:1,i=[0,-t.data.delta*n];switch(t.data.action){case"begin":e.navigation.rotate.begin(i,a.Rotate.PivotPoint.POI);break;case"update":e.navigation.rotate.update(i,a.Rotate.PivotPoint.POI);break;case"end":e.navigation.rotate.end(i)}},e}(i.InputHandler);e.TwoFingerTilt=r});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/ObjectPool"],function(o,r,e){var n=function(){function o(o,r,e){this.row=o,this.colFrom=r,this.colTo=e}return o}();return n.pool=new e(n,!0),n});
+define(["require","exports","../../../core/ObjectPool"],function(o,r,e){var n=function(){function o(o,r,e){this.row=o,this.colFrom=r,this.colTo=e}return o.pool=new e(o,!0),o}();return n});

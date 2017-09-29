@@ -52,7 +52,7 @@ import watchUtils = require("../core/watchUtils");
 
 const CSS = {
   // layerlist classes
-  base: "esri-layer-list esri-widget",
+  base: "esri-layer-list esri-widget esri-widget--panel",
   noItems: "esri-layer-list__no-items",
   list: "esri-layer-list__list",
   listRoot: "esri-layer-list__list--root",
@@ -205,10 +205,19 @@ class LayerList extends declared(Widget) {
   //----------------------------------
 
   /**
-   * @todo document statusIndicatorsVisible property
+   * Option for enabling status indicators, which indicate whether or not each layer
+   * is loading resources.
+   *
+   * @name statusIndicatorsVisible
+   * @instance
+   *
    * @type {boolean}
    * @default true
-   * @ignore
+   * @since 4.5
+   *
+   * @example
+   * // disable status indicators for all layers listed in LayerList
+   * layerList.statusIndicatorsVisible = false;
    */
   @property()
   @renderable()
@@ -283,7 +292,7 @@ class LayerList extends declared(Widget) {
    * A collection of {@link module:esri/widgets/LayerList/ListItem}s representing operational layers.
    * @name operationalItems
    * @instance
-   * @type {module:esri/core/Collection}
+   * @type {module:esri/core/Collection<module:esri/widgets/LayerList/ListItem>}
    *
    */
   @aliasOf("viewModel.operationalItems")
@@ -522,13 +531,13 @@ class LayerList extends declared(Widget) {
     };
 
     const toggleRole = parentVisibilityMode === exclusive ? "radio" : "checkbox";
-    const inheritedTitle = !item.visibleAtCurrentScale ? i18n.layerInvisibleAtScale : "";
     const title = item.title || i18n.untitledLayer;
+    const label = !item.visibleAtCurrentScale ? `${title} (${i18n.layerInvisibleAtScale})` : title;
     const titleNode = (
       <span id={titleKey}
-        class={CSS.title}><span
-          title={inheritedTitle}
-          aria-label={inheritedTitle}></span>{title}</span>
+        title={label}
+        aria-label={label}
+        class={CSS.title}>{title}</span>
     );
 
     return parentVisibilityMode === inherited ?
@@ -568,8 +577,8 @@ class LayerList extends declared(Widget) {
       const actionStyles = this._getActionImageStyles(action);
 
       const iconClasses = {
-        [action.className]: action.className,
-        [CSS.actionImage]: actionStyles["background-image"]
+        [action.className]: !!action.className,
+        [CSS.actionImage]: !!actionStyles["background-image"]
       };
 
       const actionTitle = action.title;
@@ -667,8 +676,8 @@ class LayerList extends declared(Widget) {
     const actionStyles = this._getActionImageStyles(action);
 
     const iconClasses = {
-      [action.className]: action.className,
-      [CSS.actionImage]: actionStyles["background-image"]
+      [action.className]: !!action.className,
+      [CSS.actionImage]: !!actionStyles["background-image"]
     };
 
     return (
@@ -693,7 +702,7 @@ class LayerList extends declared(Widget) {
     return actionSections.reduce((count, section) => count + section.length, 0);
   }
 
-  private _getActionImageStyles(action: Action): HashMap<string | null> {
+  private _getActionImageStyles(action: Action): HashMap<string> {
     let image = action.image || null;
     if (!action.className && !image) {
       image = DEFAULT_ACTION_IMAGE;

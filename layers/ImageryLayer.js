@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 /**
  * Represents an image service resource as a layer. An ImageryLayer retrieves and displays
@@ -43,6 +43,14 @@
  * For information on terms of use, see the [Terms of Use FAQ](https://developers.arcgis.com/terms/faq/).
  * :::
  *
+ * ::: esri-md class="panel trailer-1"
+ * **Known Limitations**
+ *
+ * ImageryLayers with Stretched, Unique value or Classify renderers defined on the layer item fall back to the rendering style defined on the service.
+ * These renderers will be supported in future versions of the API.
+ *
+ * :::
+ *
  * @module esri/layers/ImageryLayer
  * @since 4.0
  * @see {@link module:esri/Map#layers Map.layers}
@@ -53,4 +61,4 @@
  * @see [Sample - Raster attribute table](../sample-code/layers-imagery-attribute-table/index.html)
  */
 
-define(["dojo/_base/lang","./Layer","./mixins/ArcGISImageService","./mixins/OperationalLayer","./mixins/PortalLayer","./mixins/ScaleRangeLayer"],function(e,r,a,i,n,s){var l={canvas2D:"2d",webGL:"webgl",expWebGL:"experimental-webgl",webGL2:"webgl2",expWebGL2:"experimental-webgl2"},o=r.createSubclass([a,i,n,s],{declaredClass:"esri.layers.ImageryLayer",viewModulePaths:{"2d":"../views/2d/layers/ImageryLayerView2D","3d":"../views/3d/layers/ImageLayerView3D"},normalizeCtorArgs:function(r,a){return"string"==typeof r?e.mixin({},{url:r},a):r},load:function(){this.addResolvingPromise(this.loadFromPortal({supportedTypes:["Image Service"]}).always(this._fetchService.bind(this)))},properties:{drawMode:!0,drawType:{value:l.canvas2D,cast:function(e){return e in l?e:l.canvas2D}},legendEnabled:{json:{read:{source:["showLegend"],reader:function(e,r){return null!=r.showLegend?r.showLegend:!0}},write:function(e,r){r.showLegend=!!e}}},operationalLayerType:"ArcGISImageServiceLayer",popupEnabled:{json:{read:{source:["disablePopup"],reader:function(e,r){return null!=r.disablePopup?!r.disablePopup:!0}},write:function(e,r){e||(r.disablePopup=!0)}}},pixelFilter:null,type:{value:"imagery",json:{read:!1}}},redraw:function(){this.emit("redraw")}});return o});
+define(["dojo/_base/lang","./Layer","./mixins/ArcGISImageService","./mixins/OperationalLayer","./mixins/PortalLayer","./mixins/ScaleRangeLayer","./mixins/RefreshableLayer"],function(e,r,a,i,n,s,l){var o={canvas2D:"2d",webGL:"webgl",expWebGL:"experimental-webgl",webGL2:"webgl2",expWebGL2:"experimental-webgl2"},t=r.createSubclass([a,i,n,s,l],{declaredClass:"esri.layers.ImageryLayer",viewModulePaths:{"2d":"../views/2d/layers/ImageryLayerView2D","3d":"../views/3d/layers/ImageryLayerView3D"},normalizeCtorArgs:function(r,a){return"string"==typeof r?e.mixin({},{url:r},a):r},load:function(){this.addResolvingPromise(this.loadFromPortal({supportedTypes:["Image Service"]}).always(this._fetchService.bind(this)))},properties:{drawMode:!0,drawType:{value:o.canvas2D,cast:function(e){return e in o?e:o.canvas2D}},legendEnabled:{json:{read:{source:["showLegend"],reader:function(e,r){return null!=r.showLegend?r.showLegend:!0}},write:function(e,r){r.showLegend=!!e}}},operationalLayerType:"ArcGISImageServiceLayer",popupEnabled:{json:{read:{source:["disablePopup"],reader:function(e,r){return null!=r.disablePopup?!r.disablePopup:!0}},write:function(e,r){e||(r.disablePopup=!0)}}},pixelFilter:null,type:{value:"imagery",json:{read:!1}}},redraw:function(){this.emit("redraw")}});return t});

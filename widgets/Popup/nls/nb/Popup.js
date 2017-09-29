@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
-define({zoom:"Zoom til",next:"Neste geoobjekt",previous:"Forrige geoobjekt",close:"Lukk",dock:"Fest",undock:"Løsne",menu:"Meny",untitled:"Uten tittel",pageText:"{index} av {total}",noFeaturesFound:"Finner ingen geoobjekter",selectedFeature:"Valgt geoobjekt",selectedFeatures:"{total} resultater",loading:"Laster inn"});
+define({zoom:"Zoom til",next:"Neste geoobjekt",previous:"Forrige geoobjekt",close:"Lukk",dock:"Fest",undock:"Løsne",menu:"Meny",untitled:"Uten tittel",pageText:"{index} av {total}",selectedFeature:"Valgt geoobjekt",selectedFeatures:"{total} resultater",loading:"Laster inn",collapse:"Skjul",expand:"Utvid"});

@@ -1,9 +1,7 @@
 @mixin print() {
   .esri-print {
     position: relative;
-    width: $panel_width;
     padding: $cap_spacing $side_spacing;
-    transition: max-height 250ms ease-in-out;
     overflow-y: auto;
     a {
       text-decoration: none;
@@ -194,7 +192,6 @@
   .esri-print__exported-file .esri-disabled {
     pointer-events: none;
   }
-  @include componentHeight_BasedOnViewSize(esri-print);
   html[dir="rtl"] {
     .esri-print__export-panel-container [class*="esri-icon"] {
       margin-right: 0;

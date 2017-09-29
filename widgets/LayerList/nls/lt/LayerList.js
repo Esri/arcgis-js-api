@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
-define({noItemsToDisplay:"Šiuo metu nėra rodytinų elementų.",layerInvisibleAtScale:"Dabartiniame mastelyje sluoksnis nematomas",layerError:"Įkeliant šį sluoksnį įvyko klaida",untitledLayer:"Sluoksnis be pavadinimo"});
+define({noItemsToDisplay:"Šiuo metu nėra rodytinų elementų.",layerInvisibleAtScale:"Nematoma naudojant dabartinį mastelį",layerError:"Įkeliant šį sluoksnį įvyko klaida",untitledLayer:"Sluoksnis be pavadinimo"});

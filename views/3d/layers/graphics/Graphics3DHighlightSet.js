@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 define(["require","exports","../../webgl-engine/lib/HighlightSet"],function(i,t,e){var h=function(){function i(i,t){this.highlightSet=new e,this.ids=new Set,this.options=i,this.objectIdField=t}return i.prototype.hasGraphic=function(i){if(this.objectIdField){var t=i.graphic.attributes[this.objectIdField];return this.ids.has(t)}return this.ids.has(i.graphic.uid)},i}();return h});

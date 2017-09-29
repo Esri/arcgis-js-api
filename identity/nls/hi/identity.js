@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 define({lblItem:"आइटम",title:"साइन इन करें",info:"कृपया {server} {resource} पर आइटम का उपयोग करने के लिए साइन इन करें",oAuthInfo:"कृपया जारी रखने के लिए साइन इन करें.",lblUser:"उपयोगकर्तानाम:",lblPwd:"पासवर्ड:",lblOk:"ठीक",lblSigning:"साइन इन हो रहा है...",lblCancel:"रद्द करें",errorMsg:"अमान्य उपयोगकर्ता नाम/पासवर्ड. कृपया पुनः प्रयास करें.",invalidUser:"आपके द्वारा डाला गया उपयोगकर्ता नाम या पासवर्ड ग़लत है.",forbidden:"उपयोगकर्ता नाम और पासवर्ड मान्य हैं, लेकिन आपके पास इस संसाधन के लिए एक्सेस नहीं है.",noAuthService:"प्रमाणीकरण सर्विस एक्सेस करने में असमर्थ."});

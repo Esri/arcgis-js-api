@@ -82,6 +82,9 @@
 }
 
 @mixin componentHeight_BasedOnViewSize($node) {
+  .esri-ui-corner .#{$node} {
+    transition: max-height 250ms ease-in-out;
+  }
   .esri-view-height-greater-than-medium {
     .esri-ui-corner .#{$node} {
       max-height: $gt_medium_height;

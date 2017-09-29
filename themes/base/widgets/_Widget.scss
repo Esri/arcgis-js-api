@@ -107,23 +107,6 @@
       }
     }
   }
-  select {
-    cursor: pointer;
-    display: block;
-    width: 100%;
-    height: $button_height;
-    color: $button_text_color;
-    border: 1px solid $border_color;
-    margin: 0;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    border-radius: 0;
-    padding: 0 0.5em;
-    background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%20width%3D%2732%27%20height%3D%2732%27%3E%3Cstyle%3E.path%7Bfill%3A%236e6e6e%7D%3C/style%3E%3Cpath%20class%3D%27path%27%20d%3D%27M12.3%2013.4h9l-5.7%206.1-5.7-6.1h2.4zm3.3%204.8l3.7-4h-7.4l3.7%204z%27/%3E%3C/svg%3E") no-repeat right center transparent;
-  }
-  select::-ms-expand {
-    display: none;
-  }
   input {
     font-family: inherit;
     &::-ms-clear {
@@ -145,6 +128,25 @@
     font-family: inherit;
     font-size: $text_size;
   }
+}
+
+// Select
+.esri-select {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  height: $button_height;
+  color: $button_text_color;
+  border: 1px solid $border_color;
+  margin: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 0;
+  padding: 0 0.5em;
+  background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%20width%3D%2732%27%20height%3D%2732%27%3E%3Cstyle%3E.path%7Bfill%3A%236e6e6e%7D%3C/style%3E%3Cpath%20class%3D%27path%27%20d%3D%27M12.3%2013.4h9l-5.7%206.1-5.7-6.1h2.4zm3.3%204.8l3.7-4h-7.4l3.7%204z%27/%3E%3C/svg%3E") no-repeat right center transparent;
+}
+.esri-select::-ms-expand {
+  display: none;
 }
 
 // Disabled
@@ -208,7 +210,13 @@ button.esri-disabled {
   .esri-widget {
     @include defaultBoxShadow();
   }
+  .esri-widget--panel {
+    width: $panel_width;
+    min-height: $panel_min_height;
+  }
 }
+
+@include componentHeight_BasedOnViewSize(esri-widget--panel);
 
 .esri-ui-bottom-right,
 .esri-ui-bottom-left {
@@ -253,6 +261,13 @@ html[dir="rtl"] .esri-widget {
 /* ==========================================================================
    animation
    ========================================================================== */
+
+[class^="esri-icon"] {
+  // fixes IE11 bug where animation will continue after animation class is removed
+  // https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/4784
+  animation: none;
+}
+
 @keyframes esri-fade-in {
   0% {
     opacity: 0;

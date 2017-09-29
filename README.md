@@ -10,11 +10,15 @@ You can install this repo via [bower](http://bower.io/) and create your own cust
 
 Building an ArcGIS API for JavaScript application requires signing up for an [ArcGIS account](https://developers.arcgis.com).
 
+`npm install arcgis-js-api`
+
+Or
+
 `bower install arcgis-js-api`
 
 ## Requirements
 
-To install and use as a `bower` installation:
+To install and use as a `bower` or `npm` installation:
 
 * [node](http://nodejs.org/)
 * [git](http://git-scm.org/)
@@ -28,7 +32,7 @@ This repo has dependencies on the following repos.
 | dijit | https://github.com/Esri/dijit/tree/1.12.2-esri  | /dijit |
 | dojox | https://github.com/Esri/dojox/tree/1.12.2-esri  | /dojox |
 | util | https://github.com/Esri/dojo-util/tree/1.12.2-esri    | /util |
-| dgrid | https://github.com/Esri/dgrid/tree/1.1.0-esri  | /dgrid |
+| dgrid | https://github.com/Esri/dgrid/tree/1.2.1-esri  | /dgrid |
 | dstore | https://github.com/SitePen/dstore/tree/v1.1.1 | /dstore |
 | moment | https://github.com/moment/moment/tree/2.18.1 | /moment |
 

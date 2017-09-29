@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
-define({transparency:"Слайд",suggested:"Рекомендуем",recent:"Последние",more:"Еще",moreColorsTooltip:"Показать больше цветов.",paletteTooltip:"Выбрать цвет.",noColorTooltip:"Нет цвета",hexInputTooltip:"Пользовательский цвет в шестнадцатиричной записи (#FFFF00)."});
+define({transparency:"Прозрачность",suggested:"Рекомендуемый",recent:"Последние",more:"Еще",moreColorsTooltip:"Показать больше цветов.",paletteTooltip:"Выберите цвет.",noColorTooltip:"Нет цвета",hexInputTooltip:"Пользовательский цвет в шестнадцатиричной записи (#FFFF00)."});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 define(["require","exports","../../core/now"],function(e,t,i){Object.defineProperty(t,"__esModule",{value:!0});var r=function(){function e(e){this._maximumAge=e,this._values=[]}return Object.defineProperty(e.prototype,"values",{get:function(){return this._values},enumerable:!0,configurable:!0}),e.prototype.reset=function(){this._values=[]},e.prototype.add=function(e,t){var r=void 0!==t?t:i();this._values.push({value:e,timeStamp:r}),this._cleanup(r)},Object.defineProperty(e.prototype,"newest",{get:function(){var e=this._values.length;return e>0?this._values[e-1]:void 0},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"oldest",{get:function(){var e=this._values.length;return e>0?this._values[0]:void 0},enumerable:!0,configurable:!0}),e.prototype._cleanup=function(e){for(;this._values.length>0;){var t=this._values[0];if(!(t.timeStamp+this._maximumAge<e))break;this._values.shift()}},e}();t.ValueHistory=r});

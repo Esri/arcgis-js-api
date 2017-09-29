@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 define(["require","exports","./tsSupport/generatorHelper","./tsSupport/awaiterHelper","./promiseUtils"],function(e,t,r,n,u){function i(e,t,i){return n(this,void 0,void 0,function(){return r(this,function(r){switch(r.label){case 0:return[4,u.eachAlways(e.map(function(e,r){return t.apply(i,[e,r])}))];case 1:return r.sent(),[2]}})})}function a(e,t,i){return n(this,void 0,void 0,function(){var n;return r(this,function(r){switch(r.label){case 0:return[4,u.eachAlways(e.map(function(e,r){return t.apply(i,[e,r])}))];case 1:return n=r.sent(),[2,n.map(function(e){return e.value})]}})})}Object.defineProperty(t,"__esModule",{value:!0}),t.forEach=i,t.map=a});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 define(["./webgl-debug"],function(r){var e={checkError:function(r,e){var n=e.getError();n!=e.NO_ERROR&&alert(r+": gl error "+n)},checkFramebufferStatus:function(r,e){var n=e.checkFramebufferStatus(r);n!=e.FRAMEBUFFER_COMPLETE&&console.log("Framebuffer error 0x"+n)},handleError:function(e,n,o){alert(r.glEnumToString(e)+" was caused by call to: "+n+"("+r.glFunctionArgsToString(n,o)+")")},validateNoneOfTheArgsAreUndefined:function(e,n){for(var o=0;o<n.length;++o)void 0===n[o]&&console.error("undefined passed to gl."+e+"("+r.glFunctionArgsToString(e,n)+")")}};return e});

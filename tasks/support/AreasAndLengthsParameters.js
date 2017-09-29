@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 define(["../../core/Accessor","../../core/kebabDictionary"],function(e,r){var s=r({preserveShape:"preserve-shape"}),t=r({esriAcres:"acres",esriHectares:"hectares",esriSquareMiles:"square-miles",esriSquareKilometers:"square-kilometers",esriSquareMeters:"square-meters",esriSquareFeet:"square-feet",esriSquareYards:"square-yards",esriAres:"ares"}),i=r({9001:"meters",9002:"feet",9036:"kilometers",9093:"miles",109012:"nautical-miles",109001:"yards"}),a=e.createSubclass({declaredClass:"esri.tasks.support.AreasAndLengthsParameters",properties:{areaUnit:null,calculationType:null,lengthUnit:null,polygons:null},toJSON:function(){var e={};if(this.polygons&&this.polygons.length>0){var r=this.polygons.map(function(e){return e.toJSON()});e.polygons=JSON.stringify(r);var a=this.polygons[0].spatialReference;e.sr=a.wkid?a.wkid:JSON.stringify(a.toJSON())}if(this.lengthUnit&&(e.lengthUnit=i.toJSON(this.lengthUnit)),this.areaUnit){var n=t.toJSON(this.areaUnit);e.areaUnit="string"==typeof n?JSON.stringify({areaUnit:n}):n}return this.calculationType&&(e.calculationType=s.toJSON(this.calculationType)),e}});return a});

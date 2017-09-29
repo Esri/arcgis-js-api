@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 define({about:"Tietoja",add:"Lisää",all:"Kaikki",apply:"Käytä",auth:{logOut:"Kirjaudu ulos",signIn:"Kirjaudu sisään"},back:"Takaisin",cancel:"Peruuta",change:"Muuta",clear:"Tyhjennä",close:"Sulje",collapse:"Kutista",configure:"Määritä",control:{pause:"Tauko",play:"Toista",resume:"Jatka",stop:"Lopeta"},copy:"Kopioi",create:"Luo",cut:"Leikkaa","delete":"Poista",details:"Yksityiskohdat",edit:"Muokkaa",error:"Virhe",esri:"Esri",exit:"Poistu",expand:"Laajenna",fieldsSummary:"Ominaisuustietojen ja arvojen luettelo",find:"Etsi",form:{no:"Ei",ok:"OK",password:"Salasana",submit:"Lähetä",username:"Käyttäjätunnus",yes:"Kyllä"},help:"Ohje",home:"Koti",info:"Tiedot",information:"Tiedot",layer:"Karttataso",loading:"Ladataan",maximize:"Maksimoi",menu:"Valikko",more:"Lisää",none:"Ei mitään",open:"Avoin",pagination:{first:"Ensimmäinen",last:"Viimeinen",next:"Seuraava",page:"Sivu",pageText:"{index}/{total}",previous:"Edellinen"},paste:"Liitä",preview:"Esikatselu",print:"Tulosta",publish:"Julkaise",redo:"Tee uudelleen",refresh:"Päivitä",remove:"Poista",rename:"Nimeä uudelleen",reset:"Palauta",restore:"Palauta",save:"Tallenna",search:"Etsi",searching:"Etsitään…",select:"Valitse",settings:"Asetukset",sort:"Lajittele",share:"Jaa",title:"Otsikko",untitled:"Nimetön",upload:"Lähetä",undo:"Kumoa",view:"Näytä",visibility:{hide:"Hide",show:"Näytä",toggle:"Vaihda"},warning:"Varoitus"});

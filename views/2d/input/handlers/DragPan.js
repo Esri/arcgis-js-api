@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 define(["require","exports","../../../../core/tsSupport/extendsHelper","../../../input/InputHandler","../../../input/handlers/support"],function(t,e,n,i,r){Object.defineProperty(e,"__esModule",{value:!0});var a=function(t){function e(e,n,i){var r=t.call(this,"esri.views.2d.input.handlers.DragPan - "+n,!0)||this;return r.view=e,r.pointerType=n,r.registerIncoming("drag",i,function(t){return r._handleDrag(t)}),r.registerIncoming("pointer-down",function(t){return r.stopMomentumNavigation()}),r}return n(e,t),e.prototype._handleDrag=function(t){var e=t.data,n=this.view.navigation;if(e.pointers.length>1||n.pinch.zoomMomentum||n.pinch.rotateMomentum)return void this.stopMomentumNavigation();var i=e.pointers[0];if(r.eventMatchesPointerType(i.startEvent["native"],this.pointerType)){var a=n.pan;switch(e.action){case"start":a.begin(this.view,e);break;case"update":a.update(this.view,e);break;case"end":a.end(this.view,e)}t.stopPropagation()}},e.prototype.stopMomentumNavigation=function(){var t=this.view.navigation.pan;t.stopMomentumNavigation()},e}(i.InputHandler);e.DragPan=a});

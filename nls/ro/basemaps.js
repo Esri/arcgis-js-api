@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 define({streets:"Străzi",satellite:"Imagini satelitare",hybrid:"Imagini cu etichete",terrain:"Teren cu etichete",topo:"Topografic",gray:"Fond gri deschis","dark-gray":"Fond gri închis",oceans:"Oceane","national-geographic":"National Geographic",osm:"OpenStreetMap","streets-night-vector":"Hartă stradală globală (Noapte)","streets-relief-vector":"Hartă stradală globală (cu relief)","streets-navigation-vector":"Hartă de navigare globală"});

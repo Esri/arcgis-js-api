@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 define(["require","exports","../lib/glMatrix"],function(t,e,i){var r=i.vec2d,n=function(){function t(){this.overlayTexOffset=r.create(),this.texOffset=r.create(),this.geometryInfo={geometry:null,numSurfaceIndices:0,numSkirtIndices:0,numWithoutSkirtIndices:0,numVertsPerRow:0},this.init()}return t.prototype.init=function(){this.geometryInfo.geometry=null,this.geometryInfo.numSurfaceIndices=0,this.geometryInfo.numSkirtIndices=0,this.geometryInfo.numWithoutSkirtIndices=0,this.geometryInfo.numVertsPerRow=0,this.geometryState=null,this.vao=null,this.texture=null,this.textureReference=null,r.set2(0,0,this.texOffset),this.texScale=1,this.overlayTexId=null,this.highlightOverlayTexId=null,this.overlayTexScale=[1,1],this.overlayOpacity=1,this.localOrigin=null},t.prototype.updateGeometryState=function(t){return this.geometryState=t.geometryState(this.geometryState),this.geometryState},t}();return n});

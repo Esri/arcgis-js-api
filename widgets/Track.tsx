@@ -43,8 +43,8 @@
 /// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
 /// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
 
-import {aliasOf, subclass, property, declared} from "../core/accessorSupport/decorators";
-import {accessibleHandler, join, tsx, renderable, vmEvent} from "./support/widget";
+import { aliasOf, subclass, property, declared } from "../core/accessorSupport/decorators";
+import { accessibleHandler, join, tsx, renderable, vmEvent } from "./support/widget";
 
 import Widget = require("./Widget");
 import TrackViewModel = require("./Track/TrackViewModel");
@@ -166,7 +166,7 @@ class Track extends declared(Widget) {
    * var trackWidget = new Track({
    *   view: view,  // Assigns the track widget to a view
    *     graphic: new Graphic({
-   *       symbol: new SimpleMarkerSymbol()  // Overwrites the default symbol used for the
+   *       symbol: { type: "simple-marker" }  // Overwrites the default symbol used for the
    *       // graphic placed at the location of the user when found
    *     })
    * });
@@ -244,7 +244,7 @@ class Track extends declared(Widget) {
    * @instance
    */
   @aliasOf("viewModel.start")
-  start(): void {}
+  start(): void { }
 
   /**
    * Stops tracking the user's location when executed.
@@ -253,7 +253,7 @@ class Track extends declared(Widget) {
    * @instance
    */
   @aliasOf("viewModel.stop")
-  stop(): void {}
+  stop(): void { }
 
   render() {
     const state = this.get("viewModel.state");
@@ -274,13 +274,19 @@ class Track extends declared(Widget) {
     const text = isTracking ? i18n.stopTracking : i18n.startTracking;
 
     return (
-      <div bind={this} class={CSS.base} classes={rootClasses}
-           hidden={state === "feature-unsupported"}
-           onclick={this._toggleTracking} onkeydown={this._toggleTracking}
-           role="button" tabIndex={0}>
-        <span classes={iconClasses} aria-hidden="true"
-              class={join(CSS.icon, CSS.startTrackingIcon)}
-              title={text} />
+      <div bind={this}
+        class={CSS.base}
+        classes={rootClasses}
+        hidden={state === "feature-unsupported"}
+        onclick={this._toggleTracking}
+        onkeydown={this._toggleTracking}
+        role="button"
+        tabIndex={0}
+        aria-label={text}
+        title={text}>
+        <span classes={iconClasses}
+          aria-hidden="true"
+          class={join(CSS.icon, CSS.startTrackingIcon)} />
         <span class={CSS.text}>{text}</span>
       </div>
     );

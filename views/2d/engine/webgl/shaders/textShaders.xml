@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Add your GLSL snippets to this file. You should start from
+  importing your old GLSL files. For instance, if you have a
+  file such as myShader.vs.glsl you should create a new <snippet name="myShaderVS">
+  and then copy and paste the GLSL source as the content. You will then convert your
+  code to use the {@link esri/views/2d/engine/webgl/glShaderSnippets glShaderSnippets}
+  instance to access the GLSL code, instead of importing it directly with require("dojo/text!...").
+-->
+<snippets>
+
+  <snippet name="textVS">
+    <![CDATA[
+      precision mediump float;
+
+      attribute vec2 a_pos;           // 2 * 2 (2 x signed 16)
+      attribute vec4 a_id;            // 4 (4 x unsigned byte)
+      attribute vec4 a_color;         // 4 (4 x unsigned byte)
+      attribute vec4 a_vertexOffset; // 2 * 2 // (2 x signed 16) offset from the anchor point of the string
+      attribute vec4 a_texFontSize; // 4 (4 x unsigned byte) texture coordinatesm and font size
+
+      attribute lowp float  a_visible; // --> a one byte controlling the visibility of the vertex (a separate visibility buffer), values are 0 or 1 (visible)
+
+      // the relative transformation of a vertex given in tile coordinates to a relative normalized coordinate
+      // relative to the tile's upper left corner
+      // the extrusion vector.
+      uniform highp mat4 u_transformMatrix;
+      // the extrude matrix which is responsible for the 'anti-zoom' as well as the rotation
+      uniform highp mat4 u_extrudeMatrix;
+      // u_normalized_origin is the tile's upper left corner given in normalized coordinates
+      uniform highp vec2 u_normalized_origin;
+      // the size of the mosaic given in pixels
+      uniform vec2 u_mosaicSize;
+      uniform float u_pixelRatio;
+
+      // the opacity of the layer
+      uniform mediump float u_opacity;
+
+      varying mediump vec4 v_color;
+      varying mediump float v_antialiasingWidth;
+
+      // the interpolated texture coordinate value to be used by the fragment shader in order to sample the sprite texture
+      varying mediump vec2 v_tex;
+      // the calculated transparency to be applied by the fragment shader. It is incorporating both the fade as well as the
+      // opacity of the layer given by the painter
+      varying lowp float v_transparency;
+
+      // the vertex offsets are given in integers, therefore in order to maintain a reasonable precission we multiply the values
+      // by 16 and then at the shader devide by the same number
+      const float offsetPrecision = 1.0 / 32.0;
+      const float sdfFontSize = 24.0;
+
+      void main()
+      {
+        float fontScale = a_texFontSize.z / sdfFontSize;
+        // we need to scale the extrude matrix by the font-scale in order to get the right text size
+        mat4 extrudeMatrix = fontScale * u_extrudeMatrix;
+
+        // If the label rotates with the map, and if the rotated label is upside down, hide it
+        gl_Position = vec4(u_normalized_origin, 0.0, 0.0) + u_transformMatrix * vec4(a_pos, 0.0, 1.0) + extrudeMatrix * vec4(offsetPrecision * a_vertexOffset, 0.0, 0.0);
+
+        v_transparency *= u_opacity;
+        v_tex = a_texFontSize.xy / u_mosaicSize;
+        v_color = a_color;
+        v_antialiasingWidth = 0.1 * sdfFontSize / a_texFontSize.z / u_pixelRatio;
+      }
+    ]]>
+  </snippet>
+
+  <snippet name="textFS">
+    <![CDATA[
+      precision lowp float;
+
+      uniform lowp sampler2D u_texture;
+
+      varying mediump vec4 v_color;
+      varying mediump float v_antialiasingWidth;
+      varying mediump vec2 v_tex;
+      varying lowp float v_transparency;
+
+      // 0.75 is the value of the edge of the geometry in the SDF glyphs
+      const float glyphEdgeDistance = 0.75;
+
+      void main()
+      {
+        // read the distance from the SDF texture
+        lowp float dist = texture2D(u_texture, v_tex).a;
+        // use a smooth-step in order to calculate the geometry of the shape given by the distance field
+        lowp float alpha = smoothstep(glyphEdgeDistance - v_antialiasingWidth, glyphEdgeDistance + v_antialiasingWidth, dist) * v_transparency;
+
+        gl_FragColor = alpha * v_color;
+      }
+    ]]>
+  </snippet>
+
+</snippets>

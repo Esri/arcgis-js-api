@@ -10,7 +10,7 @@
  *
  * @see [BasemapToggle.tsx (widget view)]({{ JSAPI_BOWER_URL }}/widgets/BasemapToggle.tsx)
  * @see [BasemapToggle.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_BasemapToggle.scss)
- * @see [Sample - Get started with widgets using BasemapToggle](../sample-code/get-started-widgets/index.html)
+ * @see [Sample - Intro to widgets using BasemapToggle](../sample-code/intro-widgets/index.html)
  * @see module:esri/widgets/BasemapToggle/BasemapToggleViewModel
  *
  * @example
@@ -238,7 +238,7 @@ class BasemapToggle extends declared(Widget) {
     const vm = this.viewModel;
     const activeBasemap = vm.state === "disabled" ? null : vm.activeBasemap;
     const nextBasemap = vm.state === "disabled" ? null : vm.nextBasemap;
-    const title = activeBasemap ? activeBasemap.title : "";
+    const title = nextBasemap ? nextBasemap.title : "";
 
     let titleNode: any;
 
@@ -261,11 +261,11 @@ class BasemapToggle extends declared(Widget) {
            tabIndex={0}
            title={i18n.toggle}>
         <div class={CSS.container}>
-          <div class={CSS.image} styles={getThumbnailStyles(activeBasemap)} />
+          <div class={CSS.image} styles={getThumbnailStyles(nextBasemap)} />
           {titleNode}
         </div>
         <div class={join(CSS.container, CSS.secondaryBasemapImage)}>
-          <div class={CSS.image} styles={getThumbnailStyles(nextBasemap)} />
+          <div class={CSS.image} styles={getThumbnailStyles(activeBasemap)} />
         </div>
       </div>
     );

@@ -20,18 +20,11 @@ export interface SearchResult {
   sourceIndex: number;
 }
 
-export interface SearchResultsBase {
+export interface SearchResults<T> {
   source: LocatorSearchSource | FeatureLayerSearchSource;
   sourceIndex: number;
   error?: EsriError;
-}
-
-export interface SearchResults extends SearchResultsBase {
-  results?: SearchResult[];
-}
-
-export interface SuggestResults extends SearchResultsBase {
-  results?: SuggestResult[];
+  results?: T[];
 }
 
 export interface SuggestResult {
@@ -40,21 +33,13 @@ export interface SuggestResult {
   sourceIndex: number;
 }
 
-export interface SearchEventBase {
+export interface SearchResponse<T> {
   activeSourceIndex: number;
   searchTerm: string;
   numResults: number;
   numErrors: number;
-}
-
-export interface SearchEvent extends SearchEventBase {
-  errors: SearchResults[];
-  results: SearchResults[];
-}
-
-export interface SuggestEvent extends SearchEventBase {
-  errors: SuggestResults[];
-  results: SuggestResults[];
+  errors: T[];
+  results: T[];
 }
 
 export interface SuggestionCandidate {
@@ -156,4 +141,9 @@ interface ColorOpacityRampStop {
   color: Color;
   offset: number;
   label: string;
+}
+
+interface ZoomConditions {
+  readonly canZoomIn: boolean;
+  readonly canZoomOut: boolean;
 }

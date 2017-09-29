@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 define(["require","exports"],function(e,t){function r(e){var t=e.extensions.disjointTimerQuery;if(!t)return null;var r=new i;return r.start(e),r}Object.defineProperty(t,"__esModule",{value:!0}),t.startMeasurement=r;var i=function(){function e(){}return e.prototype.start=function(e){this._rctx=e;var t=e.extensions.disjointTimerQuery;this._query=t.createQueryEXT(),t.beginQueryEXT(t.TIME_ELAPSED_EXT,this._query)},e.prototype.stop=function(e,t){void 0===t&&(t=50),this._cb=e,this._checkInterval=t;var r=this._rctx.extensions.disjointTimerQuery;r.endQueryEXT(r.TIME_ELAPSED_EXT),this._checkQueryResult()},e.prototype._checkQueryResult=function(){var e=this._rctx.extensions.disjointTimerQuery,t=e.getQueryObjectEXT(this._query,e.QUERY_RESULT_AVAILABLE_EXT),r=this._rctx.gl.getParameter(e.GPU_DISJOINT_EXT);if(t&&!r){var i=e.getQueryObjectEXT(this._query,e.QUERY_RESULT_EXT);return void this._cb(i/1e6)}return r?void this._cb(null):void setTimeout(this._checkQueryResult.bind(this),this._checkInterval)},e}()});

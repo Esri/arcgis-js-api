@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 define(["require","exports","./webgl-debug"],function(e,n,t){function u(){n.enabled&&(a=[])}function r(e){n.enabled&&null!=a&&a.push(e)}function l(){if(n.enabled){var e=a;return a=null,e&&(c.forEach(function(n){return n(e)}),c.length=0),e}}function i(e){return n.enabled?t.makeDebugContext(e,void 0,function(e,u){n.enabled&&a&&a.push("gl."+e+"("+t.glFunctionArgsToString(e,u)+")")}):e}function o(e){c.push(e)}Object.defineProperty(n,"__esModule",{value:!0});var a=null,c=[];n.enabled=!1,n.begin=u,n.trace=r,n.end=l,n.instrumentContext=i,n.request=o});

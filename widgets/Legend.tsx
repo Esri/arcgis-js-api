@@ -9,7 +9,7 @@
  *  - the visibility of a layer or sublayer changes
  *  - a layer is added or removed from the map
  *  - a layer's `renderer`, `opacity`, or `title` is changed
- *  - the `legendEnabled` property is set to `false` on the layer
+ *  - the `legendEnabled` property is changed (set to `true` or `false` on the layer)
  *
  * [![widgets-legend-basic](../assets/img/apiref/widgets/widgets-legend-basic.png)](../sample-code/sandbox/sandbox.html?sample=widgets-legend)
  *
@@ -19,18 +19,15 @@
  * ::: esri-md class="panel trailer-1"
  * **Known Limitations**
  *
- * * There are no legends available for the following layer types:
+ * * Legend does not support the following layer types:
  * {@link module:esri/layers/ElevationLayer},
  * {@link module:esri/layers/IntegratedMeshLayer},
+ * {@link module:esri/layers/KMLLayer},
  * {@link module:esri/layers/OpenStreetMapLayer},
- * {@link module:esri/layers/PointCloudLayer},
  * {@link module:esri/layers/VectorTileLayer}, and
- * {@link module:esri/layers/WebTileLayer}, so these will not display in the Legend widget.
- * * At 4.4, {@link module:esri/layers/MapNotesLayer} is not supported by Legend widget.
+ * {@link module:esri/layers/WebTileLayer}
  * * {@link module:esri/symbols/Symbol3D  3D symbols} with more than one
  * {@link module:esri/symbols/Symbol3DLayer symbol layer} are not supported.
- * * Size in volumetric {@link module:esri/symbols/Symbol3D  3D symbols}, such as
- * polygon extrusion, is not depicted by Legend.
  * :::
  *
  * @example
@@ -74,9 +71,9 @@ import ImageryLayer = require("../layers/ImageryLayer");
 import Color = require("../Color");
 
 import * as i18n from "dojo/i18n!./Legend/nls/Legend";
-import {substitute} from "../core/lang";
-import {join} from "./support/widgetUtils";
-import {createSurface} from "dojox/gfx";
+import { substitute } from "../core/lang";
+import { join } from "./support/widgetUtils";
+import { createSurface } from "dojox/gfx";
 import {
   ColorOpacityRampElement, LayerInfo, LegendElement, RampTitle, RendererTitle,
   SymbolTableElement
@@ -198,7 +195,7 @@ class Legend extends declared(Widget) {
    * @name activeLayerInfos
    * @instance
    *
-   * @type {module:esri/core/Collection}
+   * @type {module:esri/core/Collection<Object>}
    * @autocast
    * @ignore
    */

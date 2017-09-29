@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
-define({noItemsToDisplay:"Aktualnie brak elementów do wyświetlenia.",layerInvisibleAtScale:"Warstwa nie jest widoczna w bieżącej skali",layerError:"Wystąpił błąd podczas ładowania tej warstwy",untitledLayer:"Warstwa bez nazwy"});
+define({noItemsToDisplay:"Aktualnie brak elementów do wyświetlenia.",layerInvisibleAtScale:"Niewidoczne w bieżącej skali",layerError:"Wystąpił błąd podczas ładowania tej warstwy",untitledLayer:"Warstwa bez nazwy"});

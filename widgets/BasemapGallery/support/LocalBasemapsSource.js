@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/accessorSupport/decorators","../../../Basemap","../../../core/Accessor","../../../core/Collection"],function(e,r,t,o,p,s,a,c){var n=c.ofType(s),u=function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.basemaps=new n,r.state="ready",r}return t(r,e),r.prototype.refresh=function(){},r}(p.declared(a));return o([p.property({type:n})],u.prototype,"basemaps",void 0),o([p.property({readOnly:!0})],u.prototype,"state",void 0),u=o([p.subclass("esri.widgets.BasemapGallery.support.LocalBasemapsSource")],u)});
+define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/accessorSupport/decorators","../../../Basemap","../../../core/Accessor","../../../core/Collection"],function(e,r,t,o,p,s,a,c){var n=c.ofType(s),u=function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.basemaps=new n,r.state="ready",r}return t(r,e),r.prototype.refresh=function(){},o([p.property({type:n})],r.prototype,"basemaps",void 0),o([p.property({readOnly:!0})],r.prototype,"state",void 0),r=o([p.subclass("esri.widgets.BasemapGallery.support.LocalBasemapsSource")],r)}(p.declared(a));return u});

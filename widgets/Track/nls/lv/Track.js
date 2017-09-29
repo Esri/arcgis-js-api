@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
-define({startTracking:"Sākt mana izvietojuma izsekošanu",stopTracking:"Pārtraukt mana izvietojuma izsekošanu"});
+define({startTracking:"Sākt mana novietojuma izsekošanu",stopTracking:"Pārtraukt mana novietojuma izsekošanu"});

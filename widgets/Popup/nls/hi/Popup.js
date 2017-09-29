@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
-define({zoom:"जूम करें",next:"अगली विशेषता",previous:"पिछली विशेषता",close:"बंद करें",dock:"डॉक करें",undock:"डॉक हटाये",menu:"मेनू",untitled:"अनटाइटल्ड",pageText:"{total} का {index}",noFeaturesFound:"कोई फीचर नहीं मिला",selectedFeature:"चयनित सुविधा",selectedFeatures:"{total} परिणाम",loading:"लोड हो रहा है"});
+define({zoom:"जूम करें",next:"अगली विशेषता",previous:"पिछली विशेषता",close:"बंद करें",dock:"डॉक करें",undock:"डॉक हटाये",menu:"मेनू",untitled:"अनटाइटल्ड",pageText:"{total} का {index}",selectedFeature:"चयनित सुविधा",selectedFeatures:"{total} परिणाम",loading:"लोड हो रहा है",collapse:"संक्षिप्त करें",expand:"बढ़ाएँ"});

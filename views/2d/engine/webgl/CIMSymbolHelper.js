@@ -1,0 +1,25 @@
+// COPYRIGHT © 2017 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+
+define(["require","exports","../../../vectorTiles/GeometryUtils","./CIMSymbolDrawHelper","./SDFHelper"],function(e,r,t,a,o){Object.defineProperty(r,"__esModule",{value:!0});var i=function(){function e(){}return e.getEnvelope=function(e){if("CIMPointSymbol"!==e.type)return null;var r=new a.EnvDrawHelper,t={type:"point",x:0,y:0};return r.drawSymbol(e,t),r.envelope()},e.rasterize=function(e,r){var t=this.getEnvelope(r);if(!t||t.width<=0||t.height<=0)return[null,0,0,0,0];var o=96/72,i=(t.x+.5*t.width)*o,n=-(t.y+.5*t.height)*o;e.width=t.width*o+2,e.height=t.height*o+2;var s=e.getContext("2d"),l=a.Transformation.createScale(o,-o);l.translate(.5*e.width-i,.5*e.height-n);var h=new a.CanvasDrawHelper(s,l),d={type:"point",x:0,y:0};h.drawSymbol(r,d);for(var m,c=s.getImageData(0,0,e.width,e.height),y=new Uint8Array(c.data),v=0;v<y.length;v+=4)m=y[v+3]/255,y[v]=y[v]*m,y[v+1]=y[v+1]*m,y[v+2]=y[v+2]*m;return[y,e.width,e.height,i/e.width,n/e.height]},e.fromSimpleMarker=function(e){var r,a,o=100,i=50,n=e.style;if("circle"===n){var s=.25,l=Math.acos(1-s/i),h=Math.ceil(t.C_PI/l/4);0===h&&(h=1),l=t.C_PI_BY_2/h,h*=4;var d=[];d.push([i,0]);for(var m=1;h>m;m++)d.push([i*Math.cos(m*l),-i*Math.sin(m*l)]);d.push([i,0]),r={rings:[d]},a={xmin:-i,ymin:-i,xmax:i,ymax:i}}else if("cross"===n){var c=10;r={rings:[[[c,i],[c,c],[i,c],[i,-c],[c,-c],[c,-i],[-c,-i],[-c,-c],[-i,-c],[-i,c],[-c,c],[-c,i],[c,i]]]},a={xmin:-i,ymin:-i,xmax:i,ymax:i}}else if("diamond"===n)r={rings:[[[-i,0],[0,i],[i,0],[0,-i],[-i,0]]]},a={xmin:-i,ymin:-i,xmax:i,ymax:i};else if("square"===n)r={rings:[[[-i,-i],[-i,i],[i,i],[i,-i],[-i,-i]]]},a={xmin:-i,ymin:-i,xmax:i,ymax:i};else if("x"===n){var y=.7071067811865476,c=20*y;r={rings:[[[0,c],[i-c,i],[i,i-c],[c,0],[i,c-i],[i-c,-i],[0,-c],[c-i,-i],[-i,c-i],[-c,0],[-i,i-c],[c-i,i],[0,c]]]},a={xmin:-i,ymin:-i,xmax:i,ymax:i}}else if("triangle"===n){var v=.5773502691896257,f=o*v,g=-f,p=2/3*o,u=p-o;r={rings:[[[g,u],[0,p],[f,u],[g,u]]]},a={xmin:g,ymin:u,xmax:f,ymax:p}}var x;if(r&&a){var w=[{type:"CIMSolidFill",enable:!0,color:e.color}];e.outline&&w.push({type:"CIMSolidStroke",enable:!0,width:e.outline.width,color:e.outline.color});var b={type:"CIMPolygonSymbol",symbolLayers:w};x={type:"CIMPointSymbol",symbolLayers:[{type:"CIMVectorMarker",enable:!0,rotation:e.angle,size:e.size,offsetX:e.xoffset,offsetY:e.yoffset,frame:a,markerGraphics:[{type:"CIMMarkerGraphic",geometry:r,symbol:b}]}]}}return x},e}();r.CIMSymbolHelper=i;var n=function(){function e(){}return e.rasterizeSimpleFill=function(e,r){("solid"===r||"none"===r)&&console.error("Unexpected: style does not require rasterization"),e.width=8,e.height=8;var t=e.getContext("2d");t.strokeStyle="#FFFFFF",t.beginPath(),("vertical"===r||"cross"===r)&&(t.moveTo(0,0),t.lineTo(0,8)),("horizontal"===r||"cross"===r)&&(t.moveTo(0,0),t.lineTo(8,0)),("forward-diagonal"===r||"diagonal-cross"===r)&&(t.moveTo(0,0),t.lineTo(8,8)),("backward-diagonal"===r||"diagonal-cross"===r)&&(t.moveTo(8,0),t.lineTo(0,8)),t.stroke();for(var a,o=t.getImageData(0,0,e.width,e.height),i=new Uint8Array(o.data),n=0;n<i.length;n+=4)a=i[n+3]/255,i[n]=i[n]*a,i[n+1]=i[n+1]*a,i[n+2]=i[n+2]*a;return[i,e.width,e.height]},e.rasterizeSimpleLine=function(e,r){var t;switch(r){case"dash":t=[3,2];break;case"dash-dot":t=[2,2,0,2];break;case"dot":t=[0,3];break;case"long-dash":t=[6,3];break;case"long-dash-dot":t=[6,3,0,3];break;case"long-dash-dot-dot":t=[2,2,0,2,0,2];break;case"short-dash":t=[2,2];break;case"short-dash-dot":t=[2,2,0,2];break;case"short-dash-dot-dot":t=[2,2,0,2,0,2];break;case"short-dot":t=[0,2];break;case"solid":throw new Error("Unexpected: style does not require rasterization");case"none":throw new Error("Unexpected: style does not require rasterization")}for(var a=16,i=2*a-1,n=0,s=0,l=t;s<l.length;s++){var h=l[s];n+=h}for(var d=n*a,m=d*i,c=new Float32Array(m),y=a*a+1,v=0;m>v;++v)c[v]=y;for(var f=2*a-1,g=a-.5,p=.5,u=.5,x=!0,w=0,b=t;w<b.length;w++){var h=b[w];p=u,u+=h*a;for(var k=p;u>k;){for(var M=.5;f>M;){var v=(i-M+.5+1)*d+k-.5,S=(M-g)*(M-g);x?c[v]=S:c[v]=Math.min((k-p)*(k-p)+S,(k-u)*(k-u)+S),M++}k++}x=!x}for(var C=c.length,I=new Uint8Array(4*C),v=0;C>v;++v){var F=Math.sqrt(c[v])/(a-1);o.packFloat(F,I,4*v)}return[I,d,i]},e}();r.SymbolHelper=n});

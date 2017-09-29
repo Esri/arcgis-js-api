@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 define(["../config","./WebTileLayer"],function(e,r){e.request.corsEnabledServers.push("a.tile.openstreetmap.org","b.tile.openstreetmap.org","c.tile.openstreetmap.org");var t=r.createSubclass({declaredClass:"esri.layers.OpenStreetMapLayer",properties:{copyright:"Map data &copy; OpenStreetMap contributors, CC-BY-SA",subDomains:{value:["a","b","c"]},urlTemplate:"https://{subDomain}.tile.openstreetmap.org/{level}/{col}/{row}.png",operationalLayerType:"OpenStreetMap",type:{value:"open-street-map",json:{read:!1}}}});return t});

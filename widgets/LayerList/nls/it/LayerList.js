@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
-define({noItemsToDisplay:"Non è attualmente disponibile alcun elemento da visualizzare.",layerInvisibleAtScale:"Layer non visibile alla scala corrente",layerError:"Errore durante il caricamento di questo layer",untitledLayer:"Layer senza titolo"});
+define({noItemsToDisplay:"Non è attualmente disponibile alcun elemento da visualizzare.",layerInvisibleAtScale:"Invisibile con la scala attuale",layerError:"Errore durante il caricamento di questo layer",untitledLayer:"Layer senza titolo"});

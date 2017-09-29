@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 define(["require","exports","../../../../core/tsSupport/extendsHelper","../../../input/InputHandler","./support"],function(e,t,n,r,a){Object.defineProperty(t,"__esModule",{value:!0});var i=function(e){function t(t,n,r){var a=e.call(this,"esri.views.3d.input.handlers.DragPan",!0)||this;return a.view=t,a.pointerType=n,a.registerIncoming("drag",r,function(e){return a._handleDrag(e)}),a}return n(t,e),t.prototype._handleDrag=function(e){var t=e.data;if(!(t.pointers.length>1)){var n=t.pointers[0];if(a.eventMatchesPointerType(n.startEvent["native"],this.pointerType)){var r=[n.currentEvent.x,this.view.height-n.currentEvent.y],i=this.view.navigation.pan;switch(t.action){case"start":i.begin(r,e.timestamp);break;case"update":i.update(r,e.timestamp);break;case"end":i.end(r,e.timestamp)}e.stopPropagation()}}},t}(r.InputHandler);t.DragPan=i});

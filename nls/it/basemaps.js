@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
 
 define({streets:"Vie",satellite:"Immagini",hybrid:"Immagini con etichette",terrain:"Suolo con etichette",topo:"Topografico",gray:"Tela grigio chiaro","dark-gray":"Tela grigio scuro",oceans:"Oceani","national-geographic":"National Geographic",osm:"OpenStreetMap","streets-night-vector":"Mappa stradale mondiale (notte)","streets-relief-vector":"Mappa stradale mondiale (con rilievo)","streets-navigation-vector":"Mappa mondiale navigazione"});

@@ -40,8 +40,8 @@
 /// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
 /// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
 
-import {aliasOf, declared, property, subclass} from "../core/accessorSupport/decorators";
-import {accessibleHandler, join, tsx, renderable} from "./support/widget";
+import { aliasOf, declared, property, subclass } from "../core/accessorSupport/decorators";
+import { accessibleHandler, join, tsx, renderable } from "./support/widget";
 
 import Widget = require("./Widget");
 import NavigationToggleViewModel = require("./NavigationToggle/NavigationToggleViewModel");
@@ -188,14 +188,15 @@ class NavigationToggle extends declared(Widget) {
    * @instance
    */
   @aliasOf("viewModel.toggle")
-  toggle(): void {}
+  toggle(): void { }
 
   render() {
     const disabled = this.get<string>("viewModel.state") === "disabled";
     const panSelected = this.get<string>("viewModel.navigationMode") === "pan";
 
     const rootClasses = {
-      [CSS.disabled]: disabled
+      [CSS.disabled]: disabled,
+      [CSS.isLayoutHorizontal]: this.layout === "horizontal"
     };
 
     const panButtonClasses = {
@@ -209,13 +210,20 @@ class NavigationToggle extends declared(Widget) {
     const tabIndex = disabled ? -1 : 0;
 
     return (
-      <div bind={this} class={CSS.base} classes={rootClasses}
-           onclick={this._toggle} onkeydown={this._toggle}
-           tabIndex={tabIndex} title={i18n.toggle}>
-        <div class={join(CSS.button, CSS.panButton)} classes={panButtonClasses}>
+      <div bind={this}
+        class={CSS.base}
+        classes={rootClasses}
+        onclick={this._toggle}
+        onkeydown={this._toggle}
+        tabIndex={tabIndex}
+        aria-label={i18n.toggle}
+        title={i18n.toggle}>
+        <div class={join(CSS.button, CSS.panButton)}
+          classes={panButtonClasses}>
           <span class={CSS.panIcon} />
         </div>
-        <div class={join(CSS.button, CSS.rotateButton)} classes={rotateButtonClasses}>
+        <div class={join(CSS.button, CSS.rotateButton)}
+          classes={rotateButtonClasses}>
           <span class={CSS.rotationIcon} />
         </div>
       </div>
