@@ -1,0 +1,36 @@
+<svg id="illustration" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 110" width="200px" height="110px">
+  <defs>
+    <style>.cls-1,.cls-7{fill:#e7e7e7;}.cls-1,.cls-2,.cls-3,.cls-4,.cls-5,.cls-7,.cls-8,.cls-9{stroke:#949494;}.cls-1,.cls-2,.cls-3{stroke-linejoin:round;}.cls-2,.cls-9{fill:#d6d6d6;}.cls-3,.cls-4{fill:#fff;}.cls-4,.cls-5,.cls-7,.cls-8,.cls-9{stroke-miterlimit:10;}.cls-5{fill:#f4f4f4;}.cls-6{fill:#f9f9fa;}.cls-8{fill:none;}</style>
+  </defs>
+  <circle class="cls-1" cx="38.42" cy="54.56" r="29.31" transform="translate(-9.48 8.1) rotate(-10.72)"/>
+  <path class="cls-2" d="M60,74A29.36,29.36,0,0,0,32.41,25.86l5.45,28.8Z"/>
+  <path class="cls-3" d="M53.66,30a27.2,27.2,0,0,0-21.25-4.14l5.45,28.8Z"/>
+  <rect class="cls-2" x="132.89" y="29.96" width="58.52" height="54.02" transform="matrix(0.99, -0.14, 0.14, 0.99, -6.36, 23.16)"/>
+  <rect class="cls-4" x="133.36" y="36.68" width="58.52" height="47.26" transform="matrix(0.99, -0.14, 0.14, 0.99, -6.82, 23.26)"/>
+  <line class="cls-5" x1="131.85" y1="47.6" x2="189.8" y2="39.44"/>
+  <line class="cls-5" x1="132.79" y1="54.28" x2="190.74" y2="46.12"/>
+  <line class="cls-5" x1="133.73" y1="60.97" x2="191.68" y2="52.81"/>
+  <line class="cls-5" x1="134.67" y1="67.65" x2="192.62" y2="59.5"/>
+  <line class="cls-5" x1="135.62" y1="74.34" x2="193.56" y2="66.18"/>
+  <line class="cls-5" x1="136.56" y1="81.03" x2="194.5" y2="72.87"/>
+  <line class="cls-5" x1="149.37" y1="38.88" x2="155.81" y2="84.57"/>
+  <line class="cls-5" x1="169.43" y1="36.05" x2="175.86" y2="81.74"/>
+  <polygon class="cls-6" points="128.84 33.88 136.52 88.35 136.72 88.33 141.81 32.05 128.84 33.88"/>
+  <path class="cls-6" d="M59.66,75.47A30.14,30.14,0,0,0,63,71.35a29.79,29.79,0,0,0,0-33.55Z"/>
+  <rect class="cls-4" x="65.83" y="17.65" width="69.91" height="70.92" transform="translate(5.19 -8.85) rotate(5.16)"/>
+  <rect class="cls-4" x="76.01" y="16.15" width="50.66" height="61.8" transform="translate(157.32 -49.64) rotate(95.16)"/>
+  <polygon class="cls-7" points="69.34 58.08 130.86 64.06 129.86 74.82 68.28 69.5 69.34 58.08"/>
+  <path class="cls-7" d="M87.18,24.46c-1.92-.19-3,.53-3.14,1.88L80.61,61.68,119.9,65.5l3.44-35.33a2.24,2.24,0,0,0-1.82-2.37Z"/>
+  <polyline class="cls-4" points="123.22 31.37 123.15 32.11 127.08 41.82 78.22 37.06 84 27.77 84.04 27.28"/>
+  <polyline class="cls-8" points="94.4 38.52 96.91 29.11 97.05 27.71"/>
+  <polyline class="cls-8" points="111.77 40.21 111.12 30.49 111.26 29.09"/>
+  <path class="cls-8" d="M82.45,27.6a1.6,1.6,0,0,1,1.75-1.42L107,28.39"/>
+  <line class="cls-8" x1="108.73" y1="28.56" x2="113.27" y2="29"/>
+  <rect class="cls-5" x="85.35" y="46.97" width="20.84" height="11.42" transform="matrix(0.1, -1, 1, 0.1, 34.07, 142.9)"/>
+  <rect class="cls-5" x="96.71" y="48.08" width="20.84" height="11.42" transform="matrix(0.1, -1, 1, 0.1, 43.23, 155.21)"/>
+  <rect class="cls-4" x="95.08" y="44.68" width="4.57" height="6.85" transform="matrix(1, 0.1, -0.1, 1, 5.11, -9.2)"/>
+  <rect class="cls-4" x="104.17" y="45.56" width="4.57" height="6.85" transform="translate(5.24 -10.07) rotate(5.55)"/>
+  <path class="cls-8" d="M124.66,31.7A1.6,1.6,0,0,0,123.22,30l-8.24-.8"/>
+  <polygon class="cls-5" points="68.81 63.49 130.33 69.48 129.83 75.14 68.28 69.5 68.81 63.49"/>
+  <polygon class="cls-9" points="68.58 65.88 130.1 71.86 129.81 75.27 68.28 69.5 68.58 65.88"/>
+</svg>

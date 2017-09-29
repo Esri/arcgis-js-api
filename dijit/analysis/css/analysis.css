@@ -2,6 +2,7 @@
 @import url("helppopup.css"); 
 @import url("BrowseAnalysisLayers.css"); 
 @import url("BufferFieldExpression.css"); 
+@import url("../customgp/css/style.css");
 
 .analysisTitle {
   font-weight: bold;
@@ -507,6 +508,23 @@
   margin: 8px;
 }
 
+.detectTrackIncidentsIcon {
+  background-image: url("../images/DetectTrackIncidents32.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 32px;
+  height: 32px;
+  margin: 8px;
+}
+
+.GPWidgetIcon {
+  background-image: url("../images/GPWidget32.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 31px;
+  height: 32px;
+  margin: 8px;
+}
 
 .esriAnalysisCloseIcon {
   background-image: url("../images/close.gif");
@@ -900,6 +918,8 @@ td.subsectionLineDivider {
   text-overflow: ellipsis;
   max-width: 150px;
 }
+
+
 
 .esriAnalysis .esriShortlabel .dijitSelectLabel{
   overflow: hidden;
@@ -1627,6 +1647,7 @@ td.subsectionLineDivider {
 
 .esriAnalysis .analysisCategoryCtr .dijitTitlePaneContentInner {
   padding: 2px 10px;
+  
 }
 
 .esriAnalysis .dijitSelect {
@@ -1989,6 +2010,10 @@ html[dir="rtl"] .esriAnalysis .crumb:first-child {
 
 .esriSwitchTitle {
   margin-bottom: 0.5em;
+}
+
+.esriAnalysisPadding1 {
+  padding-bottom: 1.5em;
 }
 
 .esriSwitchField input {

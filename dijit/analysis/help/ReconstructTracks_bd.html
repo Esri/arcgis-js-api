@@ -100,6 +100,8 @@ the area, but other statistics can be calculated  as well.
         <div>
             <p>Equation used to calculate the buffer distance around input features. This equation can be generated using the buffer calculator and basic operations such as add, subtract, multiply, and divide are supported. Values are calculated using the analysis coordinate system. The layer must be in a projected coordinate system or the processing spatial reference must be set to a projected coordinate system using the  <b>Analysis Environments</b> if a buffer is applied.
             </p>
+            <p>An equation like  <code>$feature.windspeed * 1000</code> would apply a buffer of 1,000 multiplied by the field <i>windspeed</i>. You may use more than one field in the buffer calculator.
+            </p>
         </div>
     </div>
     <div id="timeSplit">
@@ -107,6 +109,20 @@ the area, but other statistics can be calculated  as well.
         <hr/>
         <div>
             <p>Time used to split tracks. If input points or polygons have a longer duration between them than the time split, they will be split into different tracks.
+            </p>
+            <p>If you specify a time split and a distance split, tracks will be split when one or both conditions are met. 
+            </p>
+            <p>Imagine that you had  point features representing aircraft flights, where the track field was the aircraft ID. This aircraft could make multiple trips and would be represented as one track.  If you knew that there is a 1-hour  break between the flights, you could use  <code>1 hour</code> as your track split, and each flight would be split into its own track.
+            </p>
+        </div>
+    </div>
+    <div id="distanceSplit">
+        <div><h2>Select a distance to split tracks by (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Distance used to split tracks. If input points or polygons have a wider distance between them than the distance split, they will be split into different tracks.
+            </p>
+            <p>If you specify a time split and a distance split, tracks will be split when one or both conditions are met. 
             </p>
         </div>
     </div>

@@ -1,0 +1,116 @@
+
+
+.esriGEDisabledContent {
+    background-color: #F2F3F3; 
+    opacity: 0.6;
+    cursor: default;
+}
+
+.esriGEHidden {
+    display: none !important;
+}
+
+.esriGENonSelectable {
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    -khtml-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+    cursor: default;
+}
+
+.esriGEAbsoluteStretched {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+}
+
+.esriGEClickable {
+    cursor: pointer;
+}
+
+
+
+.esriGELink {
+    cursor: pointer !important;
+    color: #0079C1;
+}
+
+    .esriGELink:hover {
+        text-decoration: underline;
+    }
+
+
+
+.esriGERowHigh {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.esriGERow15 {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.esriGERow20 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+
+.esriGESpaceBeforeBig {
+    margin-left: 10px;
+}
+
+.dj_rtl .esriGESpaceBeforeBig {
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.esriGESpaceBefore20 {
+    margin-left: 20px;
+}
+
+.dj_rtl .esriGESpaceBefore20 {
+    margin-right: 20px;
+    margin-left: auto;
+}
+
+
+
+.esriGESpaceAfterBig {
+    margin-right: 10px;
+}
+
+.dj_rtl .esriGESpaceAfterBig {
+    margin-left: 10px;
+    margin-right: auto;
+}
+
+.esriGESpaceAfter20 {
+    margin-right: 20px;
+}
+
+.dj_rtl .esriGESpaceAfter20 {
+    margin-left: 20px;
+    margin-right: auto;
+}
+
+
+
+.TrimWithEllipses {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+
+.esriGENoOverflowPopup {
+    height: auto !important;
+    overflow: visible !important;
+}

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.21/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../../base/Descriptor","../../../../form/Attribute","../../../../form/Element","../../../../form/InputTextArea","../../../../form/Section","../../../../form/Tabs","../../../../form/iso/AbstractObject","../../../../form/iso/CodeListReference","../../../../form/iso/GcoElement","../../../../form/iso/ObjectReference","../../gmd/citation/SimpleCI_Citation","../../gmd/identification/SimpleMD_Identifier","../../gmd/identification/MD_ProgressCode","./MI_OperationTypeCode","dojo/text!./templates/MI_Operation.html","../../../../../../kernel"],function(e,t,o,i,r,n,a,m,s,d,f,c,p,l,b,j,_,g,I){var O=e(i,{templateString:g});return o("extend-esri")&&t.setObject("dijit.metadata.types.iso.gmi.acquisitionInformation.MI_Operation",O,I),O});

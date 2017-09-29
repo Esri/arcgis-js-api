@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.21/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
 
 define(["dojo/on","dojo/query","dijit/Tooltip"],function(o,t,i){var n=null;return function(t){o(t,".TrimWithEllipses:mouseover",function(){this!==n&&this.offsetWidth<this.scrollWidth&&(n=this,i.show(n.textContent,n,["above","below"]),o.once(n,"mouseout, mousedown, touchstart",function(){i.hide(n),n=null}))})}});

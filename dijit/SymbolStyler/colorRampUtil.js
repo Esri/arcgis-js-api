@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.21/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
 
 define(["dojo/_base/array","dojox/gfx"],function(o,r){var e={createColorRamp:function(o){var t=o.node,s=o.width,n=o.height,a=e._stopsFromColors(o),l=r.createSurface(t,s,n);return l=l.createRect(l.getDimensions()).setFill({type:"linear",x1:0,y1:0,x2:0,y2:n,colors:a})},updateColorRamp:function(o){var r=o.ramp,t=r.getFill();return t.colors=e._stopsFromColors(o),r.setFill(t),r},_stopsFromColors:function(o){var r,e,t,s=o.colors,n=o.hasStops,a=s.length,l=n?1/a:1/(a-1),c=[],f=s[0];if("object"==typeof f&&f.hasOwnProperty("offset")&&f.hasOwnProperty("color"))return s;for(var i=0;a>i;i++)r=i*l,e=s[a-1-i],c.push({offset:r,color:e}),n&&(t=(i+1)*l,c.push({offset:t,color:e}));return c}};return e});

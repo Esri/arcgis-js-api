@@ -1,0 +1,411 @@
+
+@import url("jimu.css");
+
+.jimu-main-background{
+  background-color: #485566;
+  background-color: rgba(72, 85, 102, 0.9);
+}
+
+.jimu-main-font{
+  
+  
+}
+
+
+.jimu-title{
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.jimu-subtitle{
+  font-size: 12px;
+  font-weight: normal;
+  color: #ffffff;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+
+.jimu-footer{
+  font-size: 10px;
+  color: #ffffff;
+  font-weight: normal;
+}
+
+
+.jimu-link{
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.jimu-link:link, .jimu-link:visited{
+  text-decoration: none;
+  color: #95a2a9;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.jimu-link:hover{
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.jimu-link:active{
+  text-decoration: none;
+  color: #ececec;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+
+.jimu-widget{
+  font-size: 12px;
+  font-weight: normal;
+  color: #000;
+}
+
+.jimu-widget-title{
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.jimu-widget-note{
+  font-size: 12px;
+  font-weight: normal;
+  color: #a4a4a4;
+}
+
+.jimu-widget-placeholder{
+  background-color: #000000;
+  filter:alpha(opacity=20);
+  opacity: 0.2;
+  border-radius: 4px;
+  border: 1px dashed #a0acbf;
+}
+
+.jimu-widget-placeholder:hover{
+  filter:alpha(opacity=40);
+  opacity: 0.4;
+}
+
+.jimu-widget-placeholder .inner {
+  background-color: #000;
+  filter:alpha(opacity=80);
+  opacity: 0.8;
+}
+
+.jimu-widget-tooltip{
+  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 12px;
+  font-weight: normal;
+  color: #838383;
+}
+
+.jimu-widget-offpanel-background{
+  background-color: #ffffff;
+  border: 0;
+}
+
+.jimu-widget-onscreen-icon{
+  background-color: #ccc;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid #000000;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+.jimu-widget-onscreen-icon:hover{
+  background-color: #999;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.jimu-widget-onscreen-icon.jimu-state-selected{
+  background-color: #666;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+
+.jimu-panel{
+  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ffffff;
+}
+
+.jimu-panel-title{
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #485566;
+}
+
+
+.jimu-state-error{
+  background: #e84b4b;
+  color: #fff;
+}
+
+
+
+
+.jimu-overlay{
+  background-color: #000000;
+  filter:alpha(opacity=30);
+  opacity: 0.3;
+}
+
+
+.jimu-btn{
+  background-color: #485566;
+  color: #ffffff;
+}
+
+.jimu-btn-vacation{
+  border: 1px solid #485566;
+  background-color: #fff;
+  color: #485566;
+}
+
+.jimu-btn:hover{
+  background-color: #596d87;
+  color: #ffffff;
+}
+
+.jimu-btn-vacation:hover{
+  background-color: #f4f4f4;
+  color: #485566;
+}
+
+.jimu-btn:active{
+  background-color: #485566;
+  color: #ffffff;
+}
+
+.jimu-btn.jimu-state-disabled{
+  background-color: #adadad;
+  color: #d8d8d8;
+}
+
+.jimu-btn.jimu-priority-secondary{
+  background-color: #f5f5f5;
+  color: #636363;
+  border: 1px solid #cbcbcb;
+}
+
+.jimu-btn.jimu-priority-secondary:hover{
+  background-color: #ffffff;
+  color: #636363;
+  border: 1px solid #cbcbcb;
+}
+
+.jimu-btn.jimu-priority-secondary:active{
+  background-color: #ebebeb;
+  color: #636363;
+  border: 1px solid #cbcbcb;
+}
+
+.jimu-btn.jimu-priority-secondary.jimu-state-disabled{
+  background-color: #ffffff;
+  color: #d0d0d0;
+  border: 0;
+}
+
+
+.add-with-icon{
+  color: #24B5CC;
+}
+
+
+.jimu-table-header{
+  background-color: #efefef;
+  font-size: 12px;
+  font-weight: bold;
+  color: #838383;
+}
+
+.jimu-table-row{
+  font-size: 12px;
+  color: #838383;
+}
+
+.jimu-table-row:hover{
+  border: 1px solid #cbcbcb;
+  font-weight: normal;
+  color: #838383;
+}
+
+.jimu-table-row.jimu-state-active{
+  border: 1px solid #cbcbcb;
+  font-weight: bold;
+  color: #838383;
+}
+
+.jimu-table-row-separator{
+  border-bottom: 1px solid #cbcbcb;
+}
+
+
+.jimu-simple-table .head-section{
+  
+  background-color: #888888;
+}
+
+.jimu-simple-table .simple-table-title{
+  color: #ffffff;
+	font-size: 14px;
+}
+
+.jimu-simple-table .simple-table-row:hover{
+  
+  background-color: #eee;
+  color: #7989a0;
+}
+
+.jimu-simple-table .simple-table-row.jimu-state-active{
+  
+  background-color: #ddd;
+  color: #596679;
+}
+
+
+.jimu-filter .odd-filter{
+  background: #eef2f5;
+  border-left: 1px solid #eef2f5;
+  border-right: 1px solid #eef2f5;
+}
+
+.jimu-filter .even-filter{
+  background: #ffffff;
+  border: 1px solid #eef2f5;
+}
+
+
+.jimu-item-selector .signin-tip{
+  color: #d6d6d6;
+  font-size: 13px;
+}
+
+
+.jimu-item-table .item-border{
+	border: 3px solid #24B5CC;
+  
+}
+
+.jimu-item-table .item-thumbnail{
+	background-repeat:no-repeat;
+  background-position:center center;
+  border:1px solid #d2dae2;
+  
+  color: #666;
+	background-size:cover;
+  cursor: default;
+}
+
+.jimu-item-table .item-details{
+  text-decoration: none;
+  color: #15a4fa;
+}
+
+.jimu-item-table .jimu-state-error-text{
+  font-size: 13px;
+  color: #ff0000;
+}
+
+
+.jimu-tab3 .tab-item-td{
+  color: #898989;
+	border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  border-bottom: 1px solid #ccc;
+  font-family: "Avenir Light";
+}
+
+
+
+.jimu-tab3 .tab-item-td.jimu-state-active{
+  color: #48494B;
+  border-bottom: 2px solid #24B5CC;
+  font-family: "Avenir Medium";
+  color: #24B5CC;
+}
+
+
+.jimu-basic-layer-chooser-from-map .jimu-state-error-text{
+  color: #ff0000;
+}
+
+
+.jimu-draw-box .draw-item.jimu-state-active{
+  background-color: #DDDDDD;
+  border: 2px solid #000000;
+}
+
+
+.jimu-draw-box .draw-item {
+  font-family: 'draw box' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: rgba(0,0,0,0.5);
+  cursor: pointer;
+  font-size: 16px;
+  color: black;
+}
+
+.jimu-draw-box .point-icon:before{
+  content: '\e90c';
+}
+
+.jimu-draw-box .line-icon:before{
+  content: '\e90b';
+}
+
+.jimu-draw-box .polyline-icon:before{
+  content: '\e90e';
+}
+
+.jimu-draw-box .freehand-polyline-icon:before{
+  content: '\e908';
+}
+
+.jimu-draw-box .triangle-icon:before{
+  content: '\e910';
+}
+
+.jimu-draw-box .extent-icon:before{
+  content: '\e905';
+}
+
+.jimu-draw-box .circle-icon:before{
+  content: '\e907';
+}
+
+.jimu-draw-box .ellipse-icon:before{
+  content: '\e904';
+}
+
+.jimu-draw-box .polygon-icon:before{
+  content: '\e90d';
+}
+
+.jimu-draw-box .freehand-polygon-icon:before{
+  content: '\e90a';
+}
+
+.jimu-draw-box .text-icon:before{
+  content: '\e900';
+}
+
+.jimu-draw-box .drawings-clear{
+  font-family: 'draw box' !important;
+  background-color: #D0021B !important;
+  color: white !important;
+}
+.jimu-draw-box .drawings-clear:before{
+  content: '\e901';
+}
+
+.jimu-draw-box.enabled .drawings-clear:hover{
+  background-color: #B60016;
+}

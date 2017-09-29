@@ -80,8 +80,6 @@
   -ms-transform-origin: top left;
   -webkit-transform-origin: top left;
   content: "";
-
-  z-index: 1;
 }
 
 .esriColorPicker .esriSwatchEmpty {
@@ -222,6 +220,57 @@
   -ms-transition: left 0.15s, visibility 0.1s;
   -o-transition: left 0.15s, visibility 0.1s;
   transition: left 0.15s, visibility 0.1s;
+}
+
+.esriColorPicker .esriCollapseIcon {
+  display: none;
+}
+
+.esriColorPicker.esriCollapsible {
+  padding: 4px;
+  position: relative;
+  width: auto;
+  border-radius: 0;
+}
+
+.esriColorPicker.esriCollapsible .esriColorControls {
+  top: 40px;
+  left: -2px;
+  right: -2px;
+  position: absolute;
+  border: solid 2px #aaa;
+  padding: 4px 15px;
+  background-color: #fff;
+
+  width: 195px;
+  z-index: 1;
+}
+
+.esriColorPicker.esriCollapsible .esriHeader {
+  margin: 0;
+  display: inline-block;
+}
+
+.esriColorPicker.esriCollapsible .esriCollapseIcon {
+  display: inline-block;
+}
+
+.esriColorPicker.esriCollapsible .esriSwatchPreview.esriContainer {
+  display: inline-block;
+  width: 25px;
+}
+
+.esriColorPicker.esriCollapsible .esriHeader,
+.esriColorPicker.esriCollapsible .esriSwatchPreview .esriSwatch {
+  cursor: pointer;
+}
+
+.esriColorPicker.esriCollapsed .esriHeader {
+  margin: 0;
+}
+
+.esriColorPicker.esriCollapsed .esriColorControls {
+  display: none;
 }
 
 .dijitRtl .esriColorPicker .esriPalette {

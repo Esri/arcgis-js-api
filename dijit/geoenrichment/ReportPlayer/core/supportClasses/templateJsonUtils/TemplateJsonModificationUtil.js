@@ -1,0 +1,25 @@
+// COPYRIGHT © 2017 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
+
+define(["dojox/uuid/generateRandomUuid","esri/dijit/geoenrichment/ReportPlayer/core/supportClasses/DocumentOptions","esri/dijit/geoenrichment/utils/PageUnitsConverter","esri/dijit/geoenrichment/ReportPlayer/core/grid/coreUtils/GridLayoutCalculator"],function(t,e,a,n){var o={},i={getJsonStat:function(t){var e=0,a=0,n=[];return t.sectionsTables.forEach(function(t){var o=0;t.data.columns.forEach(function(e){o+=s.getFieldWidth(t,t.data.data[0],e)}),e=Math.max(e,o);var i=0;t.data.data.forEach(function(e){i+=s.getDataHeight(t,e,t.data.columns[0])}),a=Math.max(a,i),n.push({totalW:o,totalH:i})}),{tableInfos:n,totalWMax:e,totalHMax:a}}},s={getFieldWidth:function(t,e,a){var o={looseResize:!0};return n.getFieldWidth(o,e,a)||a.style.width},getDataHeight:function(t,e,a){var o={looseResize:!0};return n.getDataHeight(o,e,a.field)},getAverageFieldWidth:function(t,e){var a=0;return t.data.data.forEach(function(n){a+=s.getFieldWidth(t,n,e)}),a/t.data.data.length},getAverageDataHeight:function(t,e){var a=0;return t.data.columns.forEach(function(n){a+=s.getDataHeight(t,e,n)}),a/t.data.columns.length}},l={scaleTableJsonWidth:function(t,e){t.data.columns.forEach(function(a){a.style.width*=e,t.data.data.forEach(function(t){var n=t.style.fields;if(n){var o=n[a.field];o&&o.width&&(o.width*=e)}})})},scaleTableJsonHeight:function(t,e){t.data.data.forEach(function(a){a.style.height*=e;var n=a.style.fields;n&&t.data.columns.forEach(function(t){var a=n[t.field];a&&a.height&&(a.height*=e)})})}};return o.addRow=function(t,e){e=e||0;var a=t.sectionsTables.length>1,n=i.getJsonStat(t),d=t.sectionsTables[e],r=d.data.data,c=r[r.length-1],h={style:{height:s.getAverageDataHeight(d,c),fields:{}}};if(r.push(h),d.data.columns.forEach(function(t){var e=c.style.fields;if(e){var a=e[t.field];a&&a.width&&(h.style.fields[t.field]={width:a.width})}}),a){var f=n.tableInfos[e],u=f.totalH/(f.totalH+h.style.height);l.scaleTableJsonHeight(d,u)}else o.adjustDocumentOptions(t);return{json:t,needRecalcContent:a}},o.removeRow=function(t,e){e=e||0;var a=t.sectionsTables.length>1,n=i.getJsonStat(t),d=t.sectionsTables[e],r=d.data.data[d.data.data.length-1],c=s.getAverageDataHeight(d,r);if(d.data.data.pop(),a){var h=n.tableInfos[e],f=h.totalH/(h.totalH-c);l.scaleTableJsonHeight(d,f)}else o.adjustDocumentOptions(t);return{json:t,needRecalcContent:a}},o.addColumn=function(e,a){a=a||0;var n=e.sectionsTables.length>1,d=i.getJsonStat(e),r=e.sectionsTables[a],c=r.data.columns,h=c[c.length-1],f={field:t(),style:{width:s.getAverageFieldWidth(r,h)}};if(c.push(f),r.data.data.forEach(function(t){var e=t.style.fields;if(e){var a=e[h.field];if(a&&a.height){var n=e[f.field]=e[f.field]||{};n.height=a.height}}}),n){var u=d.tableInfos[a],g=u.totalW/(u.totalW+f.style.width);l.scaleTableJsonWidth(r,g)}else r.style.width+=f.style.width,o.adjustDocumentOptions(e);return{json:e,needRecalcContent:n}},o.removeColumn=function(t,e){e=e||0;var a=t.sectionsTables.length>1,n=i.getJsonStat(t),d=t.sectionsTables[e],r=d.data.columns,c=r[r.length-1],h=s.getAverageFieldWidth(d,c);if(r.pop(),a){var f=n.tableInfos[e],u=f.totalW/(f.totalW-h);l.scaleTableJsonWidth(d,u)}else d.style.width-=h,o.adjustDocumentOptions(t);return{json:t,needRecalcContent:a}},o.recalcTemplateJsonDimensions=function(t,e,a){var n=i.getJsonStat(t);n.tableInfos.forEach(function(n,o){if(void 0!==e){var i=e/n.totalW;l.scaleTableJsonWidth(t.sectionsTables[o],i)}void 0!==a&&(i=a/n.totalH,l.scaleTableJsonHeight(t.sectionsTables[o],i))})},o.adjustDocumentOptions=function(t){if(t.documentOptions){var n=i.getJsonStat(t);if(!isNaN(n.totalWMax)&&!isNaN(n.totalHMax)){var o=t.documentOptions,s=o.left+o.right+n.totalWMax,l=o.top+o.bottom+n.totalHMax;o.pagesize=e.combineCustomSizeString(a.pxToIn(s),a.pxToIn(l));var d=e.getClosestStandrdSizes(o),r=d[0];r&&r.score<.001&&r.orientation===o.orientation&&(o.pagesize=r.pagesize)}}},o.findUnfitPages=function(t){if(!t.documentOptions)return[];var a=.1,n=e.getPageBox(t.documentOptions),o=i.getJsonStat(t),s=[];return o.tableInfos.forEach(function(t,e){(Math.abs(t.totalW-n.contentW)>a||Math.abs(t.totalH-n.contentH)>a)&&s.push(e)}),s},o});

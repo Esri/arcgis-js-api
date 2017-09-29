@@ -1,0 +1,45 @@
+
+
+.inSectionAdjustableGrid.esriGEAdjustableGrid > .adjustableGridMainNode > .esriGEAdjustableGridValueField.hasVariableFieldInfo > .valueField_contentBlock > .valueField_valueBlock > .valueField_valueLabel {
+    word-break: break-all;
+}
+
+.inSectionAdjustableGrid.esriGEAdjustableGrid > .adjustableGridMainNode > .esriGEAdjustableGridValueField > .valueField_contentBlock > .valueField_valueBlock > .valueField_valueLabel {
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+}
+
+
+
+.inSectionAdjustableGrid.esriGEAdjustableGrid.adjustableGridPreviewMode > .adjustableGridMainNode > .esriGEAdjustableGridValueField,
+.inSectionAdjustableGrid.esriGEAdjustableGrid.adjustableGridPreviewMode > .adjustableGridMainNode > .esriGEAdjustableGridValueField > .valueField_contentBlock,
+.inSectionAdjustableGrid.esriGEAdjustableGrid.adjustableGridPreviewMode > .adjustableGridMainNode > .esriGEAdjustableGridValueField.valueFieldFocused > .valueField_contentBlock {
+    border: 1px solid transparent;
+}
+
+
+
+.inSectionAdjustableGrid.esriGEAdjustableGrid.adjustableGridEditMode > .adjustableGridMainNode > .esriGEAdjustableGridValueField {
+    border-left: 1px solid #b2b2b2;
+    border-top: 1px solid #b2b2b2;
+}
+
+    .inSectionAdjustableGrid.esriGEAdjustableGrid.adjustableGridEditMode > .adjustableGridMainNode > .esriGEAdjustableGridValueField.lastInRow {
+        border-right: 1px solid #b2b2b2;
+    }
+
+    .inSectionAdjustableGrid.esriGEAdjustableGrid.adjustableGridEditMode > .adjustableGridMainNode > .esriGEAdjustableGridValueField.lastRow {
+        border-bottom: 1px solid #b2b2b2;
+    }
+
+    .inSectionAdjustableGrid.esriGEAdjustableGrid.adjustableGridEditMode > .adjustableGridMainNode > .esriGEAdjustableGridValueField > .valueField_contentBlock {
+        border: 1px solid transparent;
+    }
+
+    .inSectionAdjustableGrid.esriGEAdjustableGrid.adjustableGridEditMode > .adjustableGridMainNode > .esriGEAdjustableGridValueField.hasConditionalFormatting > .valueField_contentBlock {
+        border: 1px solid orange;
+    }
+
+    .inSectionAdjustableGrid.esriGEAdjustableGrid.adjustableGridEditMode > .adjustableGridMainNode > .esriGEAdjustableGridValueField.valueFieldFocused > .valueField_contentBlock {
+        border: 1px solid blue;
+    }

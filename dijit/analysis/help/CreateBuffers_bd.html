@@ -72,7 +72,7 @@ to be buffered. The input  layers must be in a projected coordinate system or th
                     </li>
                     <li>Specify a field on the input layer that contains the distance value. You can use a string field or a numeric field. If a linear unit is not defined, the units of the spatial reference will be used. If you are using a geographic coordinate system, the unitless field will be assumed to be meters. 
                     </li>
-                    <li>Build an expression with multiple fields and mathematical operators.
+                    <li>Build an expression with multiple fields and mathematical operators. For example, to buffer by 10 times the value of a field named  <i>wind_speed</i> add the expression <i>$feature[&quot;wind_speed&quot;] x 10</i>.
                     </li>
                 </ul>
                 

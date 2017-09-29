@@ -1,0 +1,34 @@
+.esriHeadlineLayout {
+    width: 100%;
+    height: 100%;
+}
+
+    .esriHeadlineLayout > .dijitContentPane {
+        padding: 0;
+    }
+
+.esriHeadlineLayoutFlex {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+    .esriHeadlineLayoutFlex .esriHeadlineLayoutTop,
+    .esriHeadlineLayoutFlex .esriHeadlineLayoutBottom {
+        -ms-flex: 0 0 auto;
+        flex: 0 0 auto;
+        position: relative;
+    }
+
+    .esriHeadlineLayoutFlex .esriHeadlineLayoutCenter {
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        position: relative;
+        overflow-y: auto;
+    }
+
+.esriHeadlineLayoutTop,
+.esriHeadlineLayoutBottom {
+    overflow: hidden;
+}

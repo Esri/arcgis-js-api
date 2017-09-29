@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.21/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/aspect","dojo/on","../Evented","dijit/_WidgetBase"],function(t,e,n,o,r,i){var s=t([i,r],{_onMap:function(t){var e,n,o=this.constructor._onMap;return o&&o.FINAL||(delete this.constructor._onMap,o=this.registerConnectEvents(),o.FINAL=!0),t=t.toLowerCase(),o[t]?e=this[o[t].method]:(n=this._onCamelCase(t),this[n]&&(e=n)),e},on:function(t,e){var n=this._onMap(t),r=t.replace(/\-/g,""),i="on"+r in this.domNode;return n||!i?this.inherited(arguments):this.own(o(this.domNode,r,e))[0]},emit:function(t,n,o){var r,i,s,a=t.toLowerCase(),h=this.constructor._onMap||this.registerConnectEvents();return i=this[this._onMap(a)],n=n||{},n.target||(n.target=this),i&&h&&h[a]&&(this._onObj2Arr(function(){r=Array.prototype.slice.call(arguments)},h[a].argKeys)(n),s=e.mixin({},arguments),s[2]=r,s[0]=h[a].name.replace(/^on/,"")),this.inherited(s||arguments)}});return s});

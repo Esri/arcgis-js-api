@@ -1,0 +1,6 @@
+﻿<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="900px" height="2000px">
+  <g>
+    <text y="700" x="-310" transform="rotate(-45)" anchor="middle" style="font-size:120px; fill:white; fill-opacity: 0.1; font-family: Verdana">Sample Data</text>
+    <text y="700" x="-310" transform="rotate(-45)" anchor="middle" style="font-size:120px; fill:grey; fill-opacity: 0.15; font-family: Verdana">Sample Data</text>
+  </g>
+</svg>

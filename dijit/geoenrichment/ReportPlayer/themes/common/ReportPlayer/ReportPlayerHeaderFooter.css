@@ -1,0 +1,81 @@
+
+
+.esriGEReportPlayerPrintNode .printNode_reportHeader {
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.esriGEReportPlayerPrintNode .printNode_reportHeaderRow {
+    height: 17px;
+    font-size: 12px !important;
+}
+
+.esriGEReportPlayerPrintNode .printNode_titleLabel {
+    font-size: 21px;
+    height: 25px;
+    padding-bottom: 5px;
+}
+
+.esriGEReportPlayerPrintNode .printNode_subtitleLabel {
+    float: right;
+}
+
+.esriGEReportPlayerPrintNode .printNode_siteNameLabel {
+    float: left;
+}
+
+.esriGEReportPlayerPrintNode .printNode_siteAddrLabel {
+    float: left;
+}
+
+.esriGEReportPlayerPrintNode .printNode_siteDescLabel {
+    float: left;
+}
+
+.esriGEReportPlayerPrintNode .printNode_siteLatLabel {
+    float: right;
+    color: #AAAAAA;
+}
+
+.esriGEReportPlayerPrintNode .printNode_siteLongLabel {
+    float: right;
+    color: #AAAAAA;
+}
+
+
+
+.esriGEReportPlayerPrintNode .printNode_reportDataSource {
+    padding-top: 10px;
+    padding-bottom: 5px;
+    font-size: 12px !important;
+}
+
+.esriGEReportPlayerPrintNode .printNode_reportDataSourceRow {
+}
+
+.esriGEReportPlayerPrintNode .printNode_dataSourceLabel {
+}
+
+
+
+.esriGEReportPlayerPrintNode .printNode_reportFooter {
+    padding-top: 5px;
+    padding-bottom: 20px;
+    font-size: 12px !important;
+}
+
+.esriGEReportPlayerPrintNode .printNode_reportFooterRow {
+    height: 12px;
+    text-align: center;
+}
+
+.esriGEReportPlayerPrintNode .printNode_dateLabel {
+    float: right;
+}
+
+.esriGEReportPlayerPrintNode .printNode_copyrightLabel {
+    float: left;
+}
+
+.esriGEReportPlayerPrintNode .printNode_pageLabel {
+}

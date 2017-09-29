@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.21/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../kernel","../TimeExtent","./TimeReference","./LayerTimeOptions"],function(e,i,t,n,s,r,T){var U=e(null,{declaredClass:"esri.layers.TimeInfo",constructor:function(e){null!==e&&(i.mixin(this,e),e.exportOptions&&(this.exportOptions=new T(e.exportOptions)),this.timeExtent=null,e.timeExtent&&2===e.timeExtent.length&&(this.timeExtent=new s(e.timeExtent)),this.timeReference=new r(e.timeReference))}});return i.mixin(U,{UNIT_CENTURIES:"esriTimeUnitsCenturies",UNIT_DAYS:"esriTimeUnitsDays",UNIT_DECADES:"esriTimeUnitsDecades",UNIT_HOURS:"esriTimeUnitsHours",UNIT_MILLISECONDS:"esriTimeUnitsMilliseconds",UNIT_MINUTES:"esriTimeUnitsMinutes",UNIT_MONTHS:"esriTimeUnitsMonths",UNIT_SECONDS:"esriTimeUnitsSeconds",UNIT_UNKNOWN:"esriTimeUnitsUnknown",UNIT_WEEKS:"esriTimeUnitsWeeks",UNIT_YEARS:"esriTimeUnitsYears"}),t("extend-esri")&&i.setObject("layers.TimeInfo",U,n),U});

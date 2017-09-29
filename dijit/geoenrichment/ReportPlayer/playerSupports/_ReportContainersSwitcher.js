@@ -1,0 +1,25 @@
+// COPYRIGHT © 2017 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
+
+define(["dojo/_base/declare","dojo/when","dojo/dom-class","esri/dijit/geoenrichment/utils/DomUtil"],function(e,t,n,i){var r="classic",o="graphic",a="pagination",s={createContainer:function(e,t,n){function i(){return s.layoutBuilder.createElement(e==r?"reportContainer":"reportContainerGrid",{viewModel:s,isSourceContainer:!0,isDynamicReportMode:!0,onPendingDataApplied:function(){n._emitResizedEvent()},renderOptions:{center:!0,minTop:10}},n.reportContainerDiv)}function o(){return s.layoutBuilder.createElement("reportContainerPagination",{viewModel:s,onResized:function(e){n._emitResizedEvent(e)},onPendingDataApplied:function(){n._emitResizedEvent()}},n.reportContainerDiv)}var s=n._viewModel,u=n.__containerDict.getContainer(e,t);return u||(u=e==a?o():i(),n.own(u)),n.__containerDict.setContainer(u,e,t),u}},u=e(null,{_containersHash:null,constructor:function(){this._containersHash={}},_getInfo:function(e,t,n,i){var r=this._containersHash[e]=this._containersHash[e]||[],o=r[t];return!o&&i&&(o=r[t]={container:i,loaded:!1}),n?o&&o[n]:o},getContainer:function(e,t){return this._getInfo(e,t,"container")},setContainer:function(e,t,n){this._getInfo(t,n,null,e)},isLoaded:function(e,t){return this._getInfo(e,t,"loaded")},setLoaded:function(e,t){var n=this._getInfo(e,t);n&&(n.loaded=!0)},resetAllLoaded:function(){for(var e in this._containersHash)this._containersHash[e].forEach(function(e){e.loaded=!1})}});return e(null,{__containerDict:null,postCreate:function(){this.__containerDict=new u,this.inherited(arguments)},getCurrentReportContainer:function(){return this._currentReportContainer},__getCurrentViewType:function(){return this.isSlidesView?a:this._reportData.isClassic?r:o},_setReportContainer:function(e){var n=this;return e?this._resetLoadedFlags():this.__rememberCurrentContainerVisuals(),this.__switchToCurrentReportContainer(),!e&&this.__isCurrentContainerLoaded()?t(this._resize({isPaginating:!0}),function(){return n.__applyCurrentContainerVisuals(),!1}):!0},__switchToCurrentReportContainer:function(){this._currentReportContainer&&this._hideContainer(this._currentReportContainer);var e=this.__getCurrentViewType();this._currentReportContainer=s.createContainer(e,this.getCurrentAnalysisAreaIndex(),this),n[e==a?"add":"remove"](this.domNode,"esriGEReportPlayerPaginationView"),n[e==a?"remove":"add"](this.domNode,"esriGEReportPlayerFullView"),this._showContainer(this._currentReportContainer),this._currentReportContainer.setViewMode&&this._currentReportContainer.setViewMode("previewValues"),this.notifyShown()},_hideContainer:function(e){e.__undoHideContainerHandle=i.hideNodeInBackground(e.domNode)},_showContainer:function(e){e.__undoHideContainerHandle&&(e.__undoHideContainerHandle.undo(),delete e.__undoHideContainerHandle)},_resetLoadedFlags:function(){this.__lastVisuals=null,this.__containerDict.resetAllLoaded()},__isCurrentContainerLoaded:function(){return this.__containerDict.isLoaded(this.__getCurrentViewType(),this.getCurrentAnalysisAreaIndex())},_setCurrentContainerLoaded:function(){this.__applyCurrentContainerVisuals(),this.__containerDict.setLoaded(this.__getCurrentViewType(),this.getCurrentAnalysisAreaIndex())},__lastVisuals:null,__rememberCurrentContainerVisuals:function(){if(!this._currentReportContainer)return void(this.__lastVisuals=null);var e=this._currentReportContainer;this.__lastVisuals={type:this.__getCurrentViewType(),scrollTop:e.getScrollableContainer&&e.getScrollableContainer().scrollTop||0,pageIndex:e.getCurrentPageIndex&&e.getCurrentPageIndex()||0,slideIndex:e.getCurrentSlideIndex&&e.getCurrentSlideIndex()||0,zoomInfo:e.getZoomInfo&&e.getZoomInfo()}},__applyCurrentContainerVisuals:function(){function e(){var e=t._currentReportContainer;e.getScrollableContainer&&(e.getScrollableContainer().scrollTop=t.__lastVisuals.scrollTop||0),e.showSlideAt&&e.showSlideAt(t.__lastVisuals.slideIndex||0),e.showPageAt&&e.showPageAt(t.__lastVisuals.pageIndex||0),e.setZoomInfo&&e.setZoomInfo(t.__lastVisuals.zoomInfo)}if(this.__lastVisuals){if(this.__lastVisuals.type!==this.__getCurrentViewType())return void(this.__lastVisuals=null);var t=this;e()}}})});

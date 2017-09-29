@@ -1,0 +1,119 @@
+
+
+.esriGEAdjustableGrid {
+    position: absolute;
+}
+
+    .esriGEAdjustableGrid > .adjustableGridMainNode > .adjustableGrid_emptyRow {
+        display: block;
+        background-color: transparent;
+        height: 1px;
+        margin-bottom: -1px;
+    }
+
+    
+
+    .esriGEAdjustableGrid > .adjustableGridMainNode > .esriGEAdjustableGridValueField {
+        position: relative;
+        vertical-align: top;
+        border: 1px solid transparent;
+        border-right: none;
+        border-bottom: none;
+        overflow: hidden;
+    }
+
+        .esriGEAdjustableGrid > .adjustableGridMainNode > .esriGEAdjustableGridValueField.esriGEAdjustableGridValueFieldClickable {
+            cursor: pointer;
+        }
+
+        .esriGEAdjustableGrid > .adjustableGridMainNode > .esriGEAdjustableGridValueField > .valueField_contentBlock > .valueField_valueBlock {
+            display: table-cell;
+        }
+
+    
+
+    .esriGEAdjustableGrid.adjustableGridPreviewMode > .adjustableGridMainNode > .esriGEAdjustableGridValueField {
+        border: 1px solid transparent;
+    }
+
+        .esriGEAdjustableGrid.adjustableGridPreviewMode > .adjustableGridMainNode > .esriGEAdjustableGridValueField > .valueField_contentBlock {
+            border: 1px solid transparent;
+        }
+
+        .esriGEAdjustableGrid.adjustableGridPreviewMode > .adjustableGridMainNode > .esriGEAdjustableGridValueField.valueFieldFocused > .valueField_contentBlock {
+            border: 1px solid transparent;
+        }
+
+    
+
+    .esriGEAdjustableGrid.adjustableGridEditMode > .adjustableGridMainNode > .esriGEAdjustableGridValueField {
+        border-left: 1px solid #b2b2b2;
+        border-top: 1px solid #b2b2b2;
+    }
+
+        .esriGEAdjustableGrid.adjustableGridEditMode > .adjustableGridMainNode > .esriGEAdjustableGridValueField.lastInRow {
+            border-right: 1px solid #b2b2b2;
+        }
+
+        .esriGEAdjustableGrid.adjustableGridEditMode > .adjustableGridMainNode > .esriGEAdjustableGridValueField.lastRow {
+            border-bottom: 1px solid #b2b2b2;
+        }
+
+        .esriGEAdjustableGrid.adjustableGridEditMode > .adjustableGridMainNode > .esriGEAdjustableGridValueField > .valueField_contentBlock {
+            border: 1px solid transparent;
+        }
+
+        .esriGEAdjustableGrid.adjustableGridEditMode > .adjustableGridMainNode > .esriGEAdjustableGridValueField:hover > .valueField_contentBlock {
+            background-color: rgba(0, 145, 251, 0.1);
+        }
+
+        .esriGEAdjustableGrid.adjustableGridEditMode > .adjustableGridMainNode > .esriGEAdjustableGridValueField.hasConditionalFormatting > .valueField_contentBlock {
+            border: 1px solid orange;
+        }
+
+        .esriGEAdjustableGrid.adjustableGridEditMode > .adjustableGridMainNode > .esriGEAdjustableGridValueField.valueFieldFocused > .valueField_contentBlock {
+            border: 1px solid blue;
+        }
+
+    
+
+    .esriGEAdjustableGrid .sortArrow {
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 9px;
+        height: 9px;
+        display: inline-block;
+        cursor: pointer;
+        position: absolute;
+    }
+
+    .esriGEAdjustableGrid .sortArrowUp {
+        background-image: url("./images/sortArrows/upTriangle.svg");
+    }
+
+    .esriGEAdjustableGrid .sortArrowDown {
+        background-image: url("./images/sortArrows/downTriangle.svg");
+    }
+
+
+
+.esriGEAdjustableGridValueFieldHyperLink:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.esriGEAdjustableGrid .esriGEAdjustableGridValueField a {
+    color: blue;
+}
+
+
+
+.esriGEAdjustableGridValueField_conditionalStylingTooltip {
+    text-align: left;
+    padding: 10px;
+}
+
+    .esriGEAdjustableGridValueField_conditionalStylingTooltip .esriGEConditionalStylingLegend {
+        padding: 0px;
+        padding-top: 10px;
+    }

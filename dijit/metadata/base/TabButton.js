@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.21/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/dom-attr","dojo/has","./Templated","dojo/text!./templates/TabButton.html","../../../kernel"],function(t,e,n,o,a,i,l){var d=t([a],{label:null,templateString:i,postCreate:function(){this.inherited(arguments)},_onClick:function(){this.onClick(this)},onClick:function(t){},setLabel:function(t){"undefined"==typeof t&&(t=null),this.label=t,this.setI18nNodeText(this.labelNode,t)}});return o("extend-esri")&&e.setObject("dijit.metadata.base.TabButton",d,l),d});

@@ -1,0 +1,253 @@
+
+
+
+.esriGEImageNavigator .imageNavigator_imageContainerOuter {
+    position: relative;
+}
+
+.esriGEImageNavigator .imageNavigator_imageContainer {
+    height: 200px;
+    position: relative;
+}
+
+
+
+.esriGEImageNavigator .Pagination {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+.esriGEImageNavigator .Pagination_PageAndArrows {
+    bottom: 0px;
+}
+
+.esriGEImageNavigator .Pagination_Bullets,
+.esriGEImageNavigator .Pagination_TriangleForward,
+.esriGEImageNavigator .Pagination_TriangleBack {
+    display: none;
+}
+
+.esriGEImageNavigator .Pagination_Items {
+    left: 0px;
+    right: 0px;
+}
+
+.esriGEImageNavigator .imageNavigator_imagePaginationRoot {
+    min-width: 200px;
+    height: 200px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden; 
+}
+
+    .esriGEImageNavigator .imageNavigator_imagePaginationRoot .imageNode {
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+    }
+
+
+
+.esriGEImageNavigatorPaginationLeftButton {
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 18px;
+    height: 18px;
+    background-image: url("./images/paginationArrows/LeftArrow.svg");
+    display: inline-block;
+    cursor: pointer;
+}
+
+    .esriGEImageNavigatorPaginationLeftButton:hover {
+        background-image: url("./images/paginationArrows/LeftArrow_hover.svg");
+    }
+
+    .esriGEImageNavigatorPaginationLeftButton.esriGEImageNavigatorPaginationLeftButtonDisabled {
+        background-image: url("./images/paginationArrows/LeftArrow_disable.svg");
+        cursor: default;
+    }
+
+.esriGEImageNavigatorPaginationRightButton {
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 18px;
+    height: 18px;
+    background-image: url("./images/paginationArrows/RightArrow.svg");
+    display: inline-block;
+    cursor: pointer;
+}
+
+    .esriGEImageNavigatorPaginationRightButton:hover {
+        background-image: url("./images/paginationArrows/RightArrow_hover.svg");
+    }
+
+    .esriGEImageNavigatorPaginationRightButton.esriGEImageNavigatorPaginationRightButtonDisabled {
+        background-image: url("./images/paginationArrows/RightArrow_disable.svg");
+        cursor: default;
+    }
+
+
+
+.esriGEImageNavigator .esriGEProgressAbsolute {
+    background-size: 50px;
+}
+
+
+
+.esriGEImageNavigator .imageNavigator_prevImageButton {
+    position: absolute;
+    left: 10px;
+    top: 80px;
+    width: 30px;
+    height: 40px;
+}
+
+.esriGEImageNavigator .imageNavigator_nextImageButton {
+    position: absolute;
+    right: 10px;
+    top: 80px;
+    width: 30px;
+    height: 40px;
+}
+
+.esriGEImageNavigator .imageNavigator_prevImageButton,
+.esriGEImageNavigator .imageNavigator_nextImageButton {
+    opacity: 0;
+}
+
+.esriGEImageNavigator:hover .imageNavigator_prevImageButton,
+.esriGEImageNavigator:hover .imageNavigator_nextImageButton {
+    opacity: 1;
+}
+
+
+
+.esriGEImageNavigator .imageNavigator_navigatorLabel {
+    text-align: center;
+}
+
+
+
+.esriGEImageNavigator .imageNavigator_imageNoteContainerDiv {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    height: 40px;
+    background-color: rgba(0,0,0,0.3);
+    color: white;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-right: 20px;
+    opacity: 0;
+}
+
+.esriGEImageNavigator .imageNavigator_imageContainerOuter:hover .imageNavigator_imageNoteContainerDiv,
+.esriGEImageNavigator.fixedCaptions .imageNavigator_imageContainerOuter .imageNavigator_imageNoteContainerDiv {
+    opacity: 1;
+}
+
+
+
+.esriGEImageNavigator .imageThumbnailList {
+    background-color: white;
+}
+
+.esriGEImageNavigator .imageThumbnailListItemRoot {
+    width: 50px;
+    height: 50px;
+    border: 2px solid transparent;
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+}
+
+    .esriGEImageNavigator .imageThumbnailListItemRoot .imageNode {
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+    }
+
+.esriGEImageNavigator .imageThumbnailListItemRootSelected {
+    border: 2px solid rgba(0, 145, 251, 1);
+}
+
+
+
+.esriGEImageNavigator .imageNavigator_allImagesView .imageThumbnailListItemRoot {
+    width: 150px;
+    height: 150px;
+}
+
+.esriGEImageNavigator .imageNavigator_allImagesView .imageThumbnailList {
+    overflow-y: auto;
+}
+
+
+
+.esriGEImageNavigator .noImage {
+    background-image: url("./images/imageNavigatorNoImages.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    background-size: 250px 139px;
+    width: 250px;
+    height: 139px;
+    opacity: 0.5;
+}
+
+.esriGEImageNavigator .imageThumbnailList .noImage {
+    width: 50px;
+    height: 50px;
+}
+
+.esriGEImageNavigator .PaginationItemsNode .thumbnailIsUnavailable {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    margin-top: -0.625em;
+}
+
+
+
+.esriGEImageNavigator .imageNavigator_noImagePlaceHolder {
+    text-align: center;
+}
+
+.esriGEImageNavigator .imageNavigator_noImagePlaceHolderImage.noImage {
+}
+
+.esriGEImageNavigator .imageNavigator_noImagePlaceHolderLabel {
+    text-align: center;
+    font-style: italic;
+    margin-top: 5px;
+    color: #AAAAAA;
+}
+
+
+
+.esriGEImageNavigator .imageNavigator_showAllImagesButton {
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+    background-image: url("./images/squares.svg");
+    display: inline-block;
+    cursor: pointer;
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    opacity: 0;
+}
+
+.esriGEImageNavigator:hover .imageNavigator_showAllImagesButton {
+    opacity: 1;
+}
+
+.esriGEImageNavigator.hasNoImages .imageNavigator_showAllImagesButton {
+    display: none;
+}

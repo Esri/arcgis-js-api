@@ -120,6 +120,9 @@
         "SummarizeWithin": {
             "toolDescription": "Summarize_Within/019300000178000000"
         },
+        "SummarizeWithin_bd": {
+            "toolDescription": "Summarize_Within/01930000018z000000"
+        },
         "TraceDownstream": {
             "toolDescription": "Trace_Downstream/01930000016q000000"
         }

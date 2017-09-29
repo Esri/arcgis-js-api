@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.21/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/dom-construct","dojo/on","dojo/keys","dijit/Tooltip","dijit/form/TextBox","dijit/_WidgetBase","dijit/_TemplatedMixin"],function(t,e,o,i,s,n,h,a,x){return t([a,x],{templateString:"<div class='searchTextBox' data-dojo-attach-point='mainContainer'></div>",prompt:"",textBox:null,searchButton:null,postCreate:function(){this.inherited(arguments),this.searchButton=o.create("div",{"class":"searchTextBoxButton"},this.mainContainer),this.textBox=new h({"class":"searchTextBoxInput",placeHolder:this.prompt}),this.textBox.placeAt(this.mainContainer),this.own(i(this.searchButton,"click",e.hitch(this,this._onSearch))),this.own(i(this.textBox.textbox,"keyup",e.hitch(this,function(t){t.keyCode==s.ENTER&&this._onSearch()})))},_setPromptAttr:function(t){this.prompt=t,this.textBox&&this.textBox.set("placeHolder",t)},_getValueAttr:function(){return this.textBox&&this.textBox.get("value")},_setValueAttr:function(t){this.textBox&&this.textBox.set("value",t)},showTooltip:function(t){n.show(t,this.textBox.textbox,["above","below"])},_onSearch:function(){this.get("value")?this.emit("Search"):this.textBox&&this.textBox.focus()},onSearch:function(){}})});

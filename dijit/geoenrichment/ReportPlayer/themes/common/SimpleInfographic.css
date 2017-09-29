@@ -1,0 +1,114 @@
+
+
+
+
+.esriGESimpleInfographic {
+    font-size: 13px;
+    position: relative;
+}
+
+    
+
+    
+
+    .esriGESimpleInfographic .simpleInfographic_drillDataButton {
+        cursor: pointer;
+        text-align: center;
+        color: white;
+        background-color: rgba(170, 170, 170, 0.8);
+        opacity: 0;
+        white-space: nowrap;
+        position: absolute;
+        font-weight: normal;
+        font-style: normal;
+        text-decoration: none;
+        min-width: 150px;
+    }
+
+        .esriGESimpleInfographic .simpleInfographic_drillDataButton:hover {
+            opacity: 1;
+        }
+
+    .esriGESimpleInfographic.isShowingAnimation .simpleInfographic_drillDataButton,
+    .esriGESimpleInfographic.isDrillingData .simpleInfographic_drillDataButton {
+        display: none;
+    }
+
+    .esriGESimpleInfographic .simpleInfographic_drillDataButtonIcon {
+        background-image: url("./images/chartWhite.svg");
+        background-repeat: no-repeat;
+        background-size: 24px;
+        width: 24px;
+        height: 24px;
+    }
+
+    
+
+    .esriGESimpleInfographic .simpleInfographic_backToMainViewButton {
+        background-repeat: no-repeat;
+        background-size: 20px;
+        background-position: center;
+        width: 25px;
+        height: 25px;
+        background-image: url("./images/3rd/backButton.svg");
+        display: inline-block;
+        cursor: pointer;
+        position: absolute;
+        right: 2px;
+        top: 0px;
+        background-color: gray;
+        border-radius: 20px;
+    }
+
+    .esriGESimpleInfographic.hasMultipleDrillingOptions .simpleInfographic_backToMainViewButton,
+    .esriGESimpleInfographic.hasChartSettingsButton .simpleInfographic_backToMainViewButton {
+        right: 30px;
+    }
+
+    .esriGESimpleInfographic.hasMultipleDrillingOptions.hasChartSettingsButton .simpleInfographic_backToMainViewButton {
+        right: 60px;
+    }
+
+    
+
+    .esriGESimpleInfographic .simpleInfographic_drillingOptionsButton {
+        position: absolute;
+        background-color: gray;
+        background-size: 16px;
+        background-position: center;
+        width: 24px;
+        height: 24px;
+        top: 0px;
+        right: 0px;
+        background-repeat: no-repeat;
+        background-image: url("./images/dotsIconWhite.svg");
+        display: inline-block;
+        cursor: pointer;
+        border-radius: 20px;
+        display: none;
+    }
+
+    .esriGESimpleInfographic.hasMultipleDrillingOptions .simpleInfographic_drillingOptionsButton {
+        display: block;
+    }
+
+    .esriGESimpleInfographic.hasChartSettingsButton .simpleInfographic_drillingOptionsButton {
+        right: 30px;
+    }
+
+    .esriGESimpleInfographic.hasChartSettingsButton .sectionDynamicSettings_settingsButton {
+        visibility: visible !important;
+    }
+
+    
+
+    .esriGESimpleInfographic .esriGEReportPlayer_section .sectionDynamicSettings_settingsButton {
+        right: 2px;
+        top: 0px;
+    }
+
+
+
+.simpleInfographic_drillingOptionsList {
+    background-color: white;
+}

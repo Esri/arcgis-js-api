@@ -1,0 +1,25 @@
+// COPYRIGHT © 2017 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
+
+define(["dojo/_base/lang","dojo/_base/array","dojo/_base/declare","dojo/has","dojox/charting/plot2d/CartesianBase","dojox/charting/plot2d/_PlotEvents","dojox/charting/plot2d/common","dojox/lang/functional","dojox/lang/functional/reversed","dojox/lang/utils","dojox/gfx/fx","dojox/gfx","./labelsRendering/_BarsLabelRenderingFix","./pictureUtil/Converter"],function(e,t,r,i,a,s,o,n,h,l,c,d,u,p){var m=h.lambda("item.purgeGroup()");return r("dojox.charting.plot2d.Columns",[a,s,u],{defaultParams:{gap:0,animate:null,enableCache:!1},optionalParams:{minBarSize:1,maxBarSize:1,stroke:{},outline:{},shadow:{},fill:{},filter:{},styleFunc:null,font:"",fontColor:""},constructor:function(t,r){this.opt=e.clone(e.mixin(this.opt,this.defaultParams)),l.updateWithObject(this.opt,r),l.updateWithPattern(this.opt,r,this.optionalParams),this.animate=this.opt.animate,this.renderingOptions={"shape-rendering":"crispEdges"}},getSeriesStats:function(){var e=o.collectSimpleStats(this.series);return e.hmin-=.5,e.hmax+=.5,e},createRect:function(e,t,r){var i;return this.opt.enableCache&&e._rectFreePool.length>0?(i=e._rectFreePool.pop(),i.setShape(r),t.add(i)):i=t.createRect(r),this.opt.enableCache&&e._rectUsePool.push(i),i},render:function(e,r){if(this.zoom&&!this.isDataDirty())return this.performZoom(e,r);this.resetEvents(),this.dirty=this.isDirty();var a;this.dirty&&(t.forEach(this.series,m),this._eventSeries={},this.cleanGroup(),a=this.getGroup(),n.forEachRev(this.series,function(e){e.cleanGroup(a)}));var s=this.chart.theme,o=this._hScaler.scaler.getTransformerFromModel(this._hScaler),h=this._vScaler.scaler.getTransformerFromModel(this._vScaler),l=Math.max(0,this._vScaler.bounds.lower),c=h(l),d=this.events(),u=this.getBarProperties(),f=this.series.length;t.forEach(this.series,function(e){e.hidden&&f--});for(var g=this.series.length-1;g>=0;--g){var y=this.series[g];if(this.dirty||y.dirty){y.cleanGroup(),this.opt.enableCache&&(y._rectFreePool=(y._rectFreePool?y._rectFreePool:[]).concat(y._rectUsePool?y._rectUsePool:[]),y._rectUsePool=[]);var x=s.next("column",[this.opt,y]),v=new Array(y.data.length);if(y.hidden)y.dyn.fill=x.series.fill;else{f--,a=y.group;for(var _=t.some(y.data,function(e){return"number"==typeof e||e&&!e.hasOwnProperty("x")}),b=_?Math.max(0,Math.floor(this._hScaler.bounds.from-1)):0,P=_?Math.min(y.data.length,Math.ceil(this._hScaler.bounds.to)):y.data.length,S=b;P>S;++S){var j=y.data[S];if(null!=j){var w,F=this.getValue(j,S,g,_),C=h(F.y),E=Math.abs(C-c);if(this.opt.styleFunc||"number"!=typeof j){var M="number"!=typeof j?[j]:[];this.opt.styleFunc&&M.push(this.opt.styleFunc(j)),w=s.addMixin(x,"column",M,!0)}else w=s.post(x,"column");if(u.width>=1&&E>=0){var z={x:r.l+o(F.x+.5)+u.gap+u.thickness*f,y:e.height-r.b-(F.y>l?C:c),width:u.width,height:E},G=w.series.chartIcons[S]||p.DEFAULT_SHAPE,B=this._drawColumnPictures(a,G,z);if(d){var T={element:"column",index:S,run:y,shape:B,cx:F.x+.5,cy:F.y,x:_?S:y.data[S].x,y:_?y.data[S]:y.data[S].y};this._connectEvents(T),v[S]=T}!isNaN(F.py)&&F.py>l&&(z.height=C-h(F.py)),this.createLabel(a,j,z,w)}}}this._eventSeries[y.name]=v,y.dirty=!1}}else s.skip(),this._reconnectEvents(y.name)}return this.dirty=!1,i("dojo-bidi")&&this._checkOrientation(this.group,e,r),this},_drawColumnPictures:function(e,t,r){for(var i=e.createGroup(),a=t.shapeJson,s=r.width/a.style.width,o=a.style.height*s,n=Math.ceil(r.height/o),h=0;n>h;h++){var l=i.createGroup(),c=p.shapeJsonToGFXJson(a);if(d.utils.deserialize(l,c),h===n-1){var u=(o-(n*o-r.height))/s;l.setClip({x:0,y:a.style.height-u,width:a.style.width,height:u})}l.applyTransform(d.matrix.translate(r.x,r.y+r.height-(h+1)*o)),l.applyTransform(d.matrix.scale(s))}return i},getValue:function(e,t,r,i){var a,s;return i?(a="number"==typeof e?e:e.y,s=t):(a=e.y,s=e.x-1),{x:s,y:a}},getBarProperties:function(){var e=this.series.length;t.forEach(this.series,function(t){t.hidden&&e--});var r=o.calculateBarSize(this._hScaler.bounds.scale,this.opt,e);return{gap:r.gap,width:r.size,thickness:r.size,clusterSize:e}},_animateColumn:function(t,r,i){0==i&&(i=1),c.animateTransform(e.delegate({shape:t,duration:1200,transform:[{name:"translate",start:[0,r-r/i],end:[0,0]},{name:"scale",start:[1,1/i],end:[1,1]},{name:"original"}]},this.animate)).play()}})});

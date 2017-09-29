@@ -1,0 +1,36 @@
+﻿<div data-dojo-attach-point="mainNode" class="esriGEReportPlayer esriGENonSelectable esriGEReportPlayerFullScreen">
+
+    <div data-dojo-attach-point="normalViewDiv">
+
+        <div data-dojo-attach-point="playerHeader" class="reportPlayer_header">
+            <div data-dojo-attach-point="infographicsSelectDiv" class="reportPlayer_infographicsSelectDiv"></div>
+            <div data-dojo-attach-point="areaTitleDiv" class="reportPlayer_areaTitleDiv">
+                <div data-dojo-attach-point="areaTitleInnerDiv" class="dijitInline reportPlayer_areaTitleInnerDiv"></div>
+            </div>
+            <div data-dojo-attach-point="areasSelectDiv" class="reportPlayer_areasSelectDiv"></div>
+            <div class="reportPlayer_zoomSelectPageSelectBlock">
+                <div data-dojo-attach-point="zoomSelectDiv" class="dijitInline reportPlayer_zoomSelectDiv"></div>
+                <div data-dojo-attach-point="pageSelectDiv" class="dijitInline reportPlayer_pageSelectDiv"></div>
+            </div>
+            <div data-dojo-attach-point="commandButtonsContainer" class="reportPlayer_commandButtonsContainer"></div>
+        </div>
+
+        <div data-dojo-attach-point="printableDivContainer" class="reportPalyer_printableDivContainer">
+            <div data-dojo-attach-point="printableDiv" class="reportPalyer_printableDiv">
+                <div data-dojo-attach-point="reportContainerDiv"></div>
+            </div>
+        </div>
+
+        <div class="reportPlayer_headerPageNavigator" data-dojo-attach-point="headerPageNavigator">
+            <div class="reportPlayer_paginationArrowUp" data-dojo-attach-point="prevPageButton" title="${nls.previousPage}"></div>
+            <div class="reportPlayer_paginationArrowDown" data-dojo-attach-point="nextPageButton" title="${nls.nextPage}"></div>
+        </div>
+
+    </div>
+
+    <div data-dojo-attach-point="errorViewDiv" class="reportPlayer_errorMessage">
+        ${nls.cantPlayReportError}
+    </div>
+
+    <div data-dojo-attach-point="waitingDiv" class="esriGEAbsoluteStretched esriGEHidden reportPlayer_waitingDiv"></div>
+</div>

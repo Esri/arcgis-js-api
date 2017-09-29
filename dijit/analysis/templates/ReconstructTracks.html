@@ -130,6 +130,34 @@
           <tr>
             <td colspan="2">
               <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.sixLabel}</label>
+              <label class="esriAnalysisStepsLabel">${i18n.distSplit}</label>
+            </td>
+            <td class="shortTextInput">
+              <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="distanceSplit"></a>
+            </td>             
+          </tr>
+          <tr>
+            <td style="padding-right:0;padding-bottom:0;width:50%;">
+              <input type="text" data-dojo-type="dijit/form/NumberTextBox" data-dojo-props="intermediateChanges:true,missingMessage:'${i18n.distanceMsg}'" data-dojo-attach-point="_distSplitValue" class="esriLeadingMargin1"  style="width:75%;"/>
+            </td>
+            <td colspan="2" style="padding-left:0.25em;padding-bottom:0;width:50%;">
+              <select class="mediumInput esriAnalysisSelect" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_distSplitUnitsSelect" style="width:80%;table-layout:fixed;">
+                <option value="NauticalMiles">${i18n.nautMiles}</option>
+                <option value="Miles">${i18n.miles}</option>
+                <option value="Yards">${i18n.yards}</option>
+                <option value="Feet">${i18n.feet}</option>
+                <option type="separator"></option>
+                <option value="Kilometers">${i18n.kilometers}</option>
+                <option value="Meters">${i18n.meters}</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3" class="clear"></td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.sevenLabel}</label>
               <label class="esriAnalysisStepsLabel">${i18n.addStatsLabel}</label>
             </td>
             <td class="shortTextInput">

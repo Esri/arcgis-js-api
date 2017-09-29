@@ -1,0 +1,33 @@
+
+
+
+.esriGEReportPlayer_infographicContainer {
+}
+
+    .esriGEReportPlayer_infographicContainer .infographicContainer_previewOverlay {
+        display: none;
+    }
+
+    .esriGEReportPlayer_infographicContainer.nonDynamicMode .infographicContainer_previewOverlay {
+        background-color: white;
+        opacity: 0;
+        display: block;
+    }
+
+    
+
+    .esriGEReportPlayer_infographicContainer .dynamicInfographic_viewDiv {
+        overflow: hidden;
+    }
+
+    .esriGEReportPlayer_infographicContainer .dynamicInfographic_errorDiv {
+        text-align: center;
+        padding-top: 50px;
+        color: red;
+    }
+
+    
+
+    .esriGEReportPlayer_infographicContainer .AgePyramid_MinMax {
+        top: 0px;
+    }

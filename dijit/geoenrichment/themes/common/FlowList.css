@@ -1,0 +1,31 @@
+.esriGEFlowList {
+    text-decoration: inherit;
+}
+
+    .esriGEFlowList .listItem {
+        padding: 3px 5px 5px 10px;
+        cursor: pointer;
+        display: block;
+        white-space: nowrap;
+        background-color: transparent;
+    }
+
+        .esriGEFlowList .listItem:hover {
+            background-color: #D1D1D1;
+        }
+
+    .esriGEFlowList .listItemSelected {
+        background-color: #EEEEEE;
+    }
+
+    
+
+    .esriGEFlowList .flowList_listSeparator {
+        border-top: 1px solid #AAAAAA;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-left: 5px;
+        margin-right: 5px;
+        cursor: default;
+        display: block;
+    }

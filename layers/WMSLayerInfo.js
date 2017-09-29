@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.21/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/_base/array","dojo/has","../kernel"],function(e,t,s,n,a){var l=e(null,{declaredClass:"esri.layers.WMSLayerInfo",name:null,title:null,description:null,extent:null,legendURL:null,subLayers:[],allExtents:[],spatialReferences:[],queryable:!1,showPopup:!1,constructor:function(e){e&&(this.name=e.name,this.title=e.title,this.description=e.description,this.extent=e.extent,this.legendURL=e.legendURL,this.subLayers=e.subLayers?e.subLayers:[],this.allExtents=e.allExtents?e.allExtents:[],this.spatialReferences=e.spatialReferences?e.spatialReferences:[],this.queryable=!!e.queryable,this.showPopup=!!e.showPopup)},clone:function(){var e,t={name:this.name,title:this.title,description:this.description,legendURL:this.legendURL};this.extent&&(t.extent=this.extent.getExtent()),t.subLayers=[],s.forEach(this.subLayers,function(e){t.subLayers.push(e.clone())}),t.allExtents=[];for(e in this.allExtents)e=parseInt(e,10),isNaN(e)||(t.allExtents[e]=this.allExtents[e].getExtent());return t.spatialReferences=[],s.forEach(this.spatialReferences,function(e){t.spatialReferences.push(e)}),t.queryable=this.queryable,t.showPopup=this.showPopup,t}});return n("extend-esri")&&t.setObject("layers.WMSLayerInfo",l,a),l});

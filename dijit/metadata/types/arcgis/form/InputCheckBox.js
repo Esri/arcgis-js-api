@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.21/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/dom-attr","dojo/has","../../../../../kernel","../../../base/InputBase","dojo/text!./templates/InputCheckBox.html","dojo/i18n!../../../nls/i18nArcGIS"],function(e,t,n,i,a,s,l,u){var o=e([s],{templateString:l,allInline:!0,checkedAttr:"",serializeIfFalse:!1,falseValue:"False",trueValue:"True",label:"",postCreate:function(){this.inherited(arguments)},connectXNode:function(e,t){this.inherited(arguments)},getInputValue:function(){return this.checkBoxNode&&this.checkBoxNode.checked?this.trueValue:this.falseValue},getXmlValue:function(){var e=this.inherited(arguments);return null===e||this.serializeIfFalse||e!==this.falseValue?e:null},importValue:function(e,t){if("undefined"!=typeof t&&null!==t&&t.toLowerCase){var n=t.toLowerCase();"true"===n||"1"===n?t=this.trueValue:("false"===n||"0"===n)&&(t=this.falseValue)}this.setInputValue(t)},_onClick:function(e){this.emitInteractionOccurred()},setInputValue:function(e){"undefined"==typeof e&&(e=null),null!==e&&e===this.trueValue?n.set(this.checkBoxNode,"checked",!0):n.set(this.checkBoxNode,"checked",!1),this.focusNode.value=e,this.emitInteractionOccurred(),this.applyViewOnly()}});return i("extend-esri")&&t.setObject("dijit.metadata.types.arcgis.form.InputCheckBox",o,a),o});

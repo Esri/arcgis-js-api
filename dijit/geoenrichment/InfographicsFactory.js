@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.21/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
 
 define(["../../declare","./InfographicsOptions","./Geoenrichment","../../tasks/geoenrichment/GeoenrichmentTask","./config"],function(t,n,e,i,o){return t("esri.dijit.geoenrichment.InfographicsFactory",null,{_task:null,_options:null,getTask:function(){return this._task||(this._task=new i(o.server),this._task.token=o.token),this._task},createGeoenrichment:function(){return new e},getCountry:function(t){return this.getTask().getCountries(t.geometry).then(function(t){return t[0]})},getOptions:function(){return this._options||(this._options=new n),this._options}})});

@@ -251,7 +251,7 @@ relationships or some combination of the  three. The tool determines all input f
         <div>
             <p>Applies a condition to specified fields. Only features with fields that meet these conditions will be joined.
             </p>
-            <p>For example, suppose we want to apply a join to a dataset for only those  features where  <i>health_spending</i>  is greater than 20 percent of <i>income</i>.  To do this,  apply a join condition of <code>target.health_spending &gt; (join.income * .20)</code> using the field <i>health_spending</i> from the first dataset (the dataset features are joined to) and the <i>income</i> field from the second dataset (the dataset being joined).
+            <p>For example, suppose we want to apply a join to a dataset for only those  features where  <i>health_spending</i>  is greater than 20 percent of <i>income</i>.  To do this,  apply a join condition of <code>$target[&quot;health_spending&quot;] &gt; ($join[&quot;income&quot;] * .20)</code> using the field <i>health_spending</i> from the first dataset (the dataset features are joined to) and the <i>income</i> field from the second dataset (the dataset being joined).
             </p>
             <p>Join conditions can be applied using the expression calculator.
             </p>

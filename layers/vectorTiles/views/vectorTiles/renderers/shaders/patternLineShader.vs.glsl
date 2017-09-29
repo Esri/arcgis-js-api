@@ -1,6 +1,6 @@
 attribute vec2 a_pos;
 attribute vec4 a_offsetAndNormal;
-attribute float a_accumulatedDistance;
+attribute vec2 a_accumulatedDistance;
 
 // the relative transformation of a vertex given in tile coordinates to a relative normalized coordinate
 // relative to the tile's upper left corner
@@ -34,5 +34,5 @@ void main()
   gl_Position = vec4(u_normalized_origin, u_depth, 0.0) + u_transformMatrix * vec4(a_pos, 0.0, 1.0) + u_extrudeMatrix * vec4(dist, 0.0, 0.0);
 
   // the accumulated distance will be used to calculate the dashes (or the no-data...)
-  v_accumulatedDistance = a_accumulatedDistance;
+  v_accumulatedDistance = a_accumulatedDistance.x;
 }

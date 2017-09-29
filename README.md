@@ -29,7 +29,7 @@ This repo has dependencies on the following repos.
 | dojox | https://github.com/Esri/dojox/tree/1.12.2-esri  | /dojox |
 | util | https://github.com/Esri/dojo-util/tree/1.12.2-esri    | /util |
 | dgrid | https://github.com/Esri/dgrid/tree/0.3.17-esri  | /dgrid |
-| dgrid1 | https://github.com/Esri/dgrid/tree/1.1.0-esri  | /dgrid |
+| dgrid1 | https://github.com/Esri/dgrid/tree/1.2.1-esri  | /dgrid |
 | dstore | https://github.com/SitePen/dstore/tree/v1.1.1 | /dstore |
 | xstyle | https://github.com/kriszyp/xstyle/tree/v0.3.2 | /xstyle |
 | put-selector | https://github.com/kriszyp/put-selector/tree/v0.3.6 | /put-selector |

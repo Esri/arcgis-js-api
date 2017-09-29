@@ -235,12 +235,13 @@
           </td>
           <td colspan="2" style="padding-left:0.25em;padding-bottom:0;width:50%;">
             <select class="esriAnalysisSelect" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_binSizeUnitSelect" style="width:80%;table-layout:fixed;" data-dojo-attach-event="onChange:_handleBinSizeUnitChange" required="true">
-               <option value="Feet">${i18n.feet}</option>
-               <option value="Yards">${i18n.yards}</option>
-               <option value="Miles">${i18n.miles}</option>
-               <option value="Meters">${i18n.meters}</option>
-               <option value="Kilometers">${i18n.kilometers}</option>
-               <option value="NauticalMiles">${i18n.nautMiles}</option>
+              <option value="NauticalMiles">${i18n.nautMiles}</option>
+              <option value="Miles">${i18n.miles}</option>
+              <option value="Yards">${i18n.yards}</option>
+              <option value="Feet">${i18n.feet}</option>
+              <option type="separator"></option>
+              <option value="Kilometers">${i18n.kilometers}</option>
+              <option value="Meters">${i18n.meters}</option>
             </select>
           </td>
         </tr>
@@ -276,12 +277,13 @@
           </td>
           <td colspan="2" style="padding-left:0.25em;padding-bottom:0;width:60%;">
             <select class="esriAnalysisSelect" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_neighborhoodRadiusUnitSelect" style="width:80%;table-layout:fixed;" data-dojo-attach-event="onChange:_handleNeighborhoodRadiusUnitChange" required="true">
-               <option value="Feet">${i18n.feet}</option>
-               <option value="Yards">${i18n.yards}</option>
-               <option value="Miles">${i18n.miles}</option>
-               <option value="Meters">${i18n.meters}</option>
-               <option value="Kilometers">${i18n.kilometers}</option>
-               <option value="NauticalMiles">${i18n.nautMiles}</option>
+              <option value="NauticalMiles">${i18n.nautMiles}</option>
+              <option value="Miles">${i18n.miles}</option>
+              <option value="Yards">${i18n.yards}</option>
+              <option value="Feet">${i18n.feet}</option>
+              <option type="separator"></option>
+              <option value="Kilometers">${i18n.kilometers}</option>
+              <option value="Meters">${i18n.meters}</option>
             </select>
           </td>
         </tr>
@@ -297,13 +299,14 @@
         <tr data-dojo-attach-point="_areaSelectRow">
           <td colspan="3" style="padding-top:0;">
             <select class="esriLeadingMargin1 longInput" style="margin-bottom:1.0em;" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_areaUnitSelect" data-dojo-attach-event="onChange:_handleAreaUnitChange">
-              <option value="SquareMeters">${i18n.sqMeters}</option>
-              <option value="SquareKilometers">${i18n.sqKm}</option>
-              <option value="Hectares">${i18n.hectares}</option>
-              <option value="SquareFeet">${i18n.sqFeet}</option>
-              <option value="SquareYards">${i18n.sqYards}</option>
               <option value="SquareMiles">${i18n.sqMiles}</option>
+              <option value="Hectares">${i18n.hectares}</option>
               <option value="Acres">${i18n.acres}</option>
+              <option value="SquareYards">${i18n.sqYards}</option>
+              <option value="SquareFeet">${i18n.sqFeet}</option>
+              <option type="separator"></option>
+              <option value="SquareKilometers">${i18n.sqKm}</option>
+              <option value="SquareMeters">${i18n.sqMeters}</option>
             </select>
           </td>
         </tr>
