@@ -1,6 +1,6 @@
 # arcgis-js-api
 
-A minified, unbuilt version of the [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/) to be used with bower and npm.
+A minified, unbuilt version of the [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/) to be used with [bower](http://bower.io/) and npm.
 
 ## Features
 You can install the ArcGIS API for JavaScript via [bower](http://bower.io/) and create your own custom builds with [Dojo](http://dojotoolkit.org/) or [RequireJS](http://requirejs.org/) or via [npm](https://www.npmjs.com/package/arcgis-js-api).
