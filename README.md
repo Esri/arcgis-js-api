@@ -28,17 +28,8 @@ To install and use via `bower` or `npm`:
 Building an ArcGIS API for JavaScript application requires an [ArcGIS account](https://developers.arcgis.com).
 
 ## Dependencies
-This repository has dependencies on the following projects.
 
-| Library | Repo | Submodule path |
-| :------ |:---- |:-------------- |
-| dojo  | https://github.com/Esri/dojo/tree/1.12.2-esri   | /dojo |
-| dijit | https://github.com/Esri/dijit/tree/1.12.2-esri  | /dijit |
-| dojox | https://github.com/Esri/dojox/tree/1.12.2-esri  | /dojox |
-| util | https://github.com/Esri/dojo-util/tree/1.12.2-esri    | /util |
-| dgrid | https://github.com/Esri/dgrid/tree/1.2.1-esri  | /dgrid |
-| dstore | https://github.com/SitePen/dstore/tree/v1.1.1 | /dstore |
-| moment | https://github.com/moment/moment/tree/2.18.1 | /moment |
+This repository has dependencies on other projects, see `dependencies` in [package.json](package.json).
 
 ## Resources
 
