@@ -1,30 +1,34 @@
 # arcgis-js-api
 
-A minified, unbuilt version of the [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/) to be used with [bower](http://bower.io).
+A minified, unbuilt version of the [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/) to be used with [bower](http://bower.io/) and npm.
 
 ## Features
-A minified, unbuilt version of the [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/).
-You can install this repo via [bower](http://bower.io/) and create your own custom builds with [Dojo](http://dojotoolkit.org/) or [RequireJS](http://requirejs.org/).
+You can install the ArcGIS API for JavaScript via [bower](http://bower.io/) and create your own custom builds with [Dojo](http://dojotoolkit.org/) or [RequireJS](http://requirejs.org/) or via [npm](https://www.npmjs.com/package/arcgis-js-api).
 
 ## Instructions
 
-Building an ArcGIS API for JavaScript application requires signing up for an [ArcGIS account](https://developers.arcgis.com).
+```
+npm install arcgis-js-api
+```
 
-`npm install arcgis-js-api`
+or
 
-Or
-
-`bower install arcgis-js-api`
+```
+bower install arcgis-js-api
+```
 
 ## Requirements
 
-To install and use as a `bower` or `npm` installation:
+To install and use via `bower` or `npm`:
 
 * [node](http://nodejs.org/)
 * [git](http://git-scm.org/)
 * [bower](http://bower.io/)
 
-This repo has dependencies on the following repos.
+Building an ArcGIS API for JavaScript application requires an [ArcGIS account](https://developers.arcgis.com).
+
+## Dependencies
+This repository has dependencies on the following projects.
 
 | Library | Repo | Submodule path |
 | :------ |:---- |:-------------- |
@@ -36,11 +40,11 @@ This repo has dependencies on the following repos.
 | dstore | https://github.com/SitePen/dstore/tree/v1.1.1 | /dstore |
 | moment | https://github.com/moment/moment/tree/2.18.1 | /moment |
 
-Please see our [recommended guide](https://developers.arcgis.com/javascript/latest/guide/using-bower/index.html).
-
 ## Resources
 
-* [ArcGIS for JavaScript](https://developers.arcgis.com/javascript/)
+* [Using Bower for Custom Builds](https://developers.arcgis.com/javascript/latest/guide/using-bower/index.html)
+* [npm and the ArcGIS API for JavaScript](https://community.esri.com/community/developers/web-developers/arcgis-api-for-javascript/blog/2017/04/13/npm-and-arcgis-api-for-javascript-43)
+* [API Reference, Guide and Sample Code](https://developers.arcgis.com/javascript/)
 * [http://blogs.esri.com/esri/arcgis/tag/javascript/](http://blogs.esri.com/esri/arcgis/tag/javascript/)
 * [twitter@esri](http://twitter.com/esri)
 
