@@ -42,22 +42,22 @@
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Oblicz zagęszczenie</h2><p/>
-        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Calculate Density"></h2>
+        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Oblicz zagęszczenie"></h2>
         <hr/>
-    <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas classified from least dense to most dense.   
+    <p>Narzędzie Oblicz zagęszczenie tworzy mapę zagęszczenia z obiekt&oacute;w punktowych poprzez odpowiednie rozmieszczenie na powierzchni mapy znanych wartości wyrażających dane zjawisko (reprezentowane przez atrybuty punkt&oacute;w). Wynikiem uruchomienia narzędzia jest warstwa z obszarami sklasyfikowanymi według gęstości &mdash; od najmniejszego do największego zagęszczenia.   
 
     </p>
-    <p>For point input, each point should represent the location of some event or incident, and the result layer represents a count of the incident per unit area.  A higher density value in a new location means that there are more points near that location.  In many cases, the result layer can be interpreted as a risk surface for future events. For example, if the input points represent locations of lightning strikes, the result layer can be interpreted as a risk surface for future lightning strikes.
+    <p>Jeśli dane wejściowe to obiekty punktowe, każdy punkt powinien prezentować lokalizację określonego wydarzenia lub zdarzenia, natomiast warstwa wynikowa przedstawia liczbę zdarzeń na jednostkę powierzchni. Wyższa wartość zagęszczenia w&nbsp;nowej lokalizacji oznacza, że w&nbsp;pobliżu tego miejsca znajduje się więcej punkt&oacute;w. W&nbsp;wielu przypadkach warstwa wynikowa może być traktowana jako powierzchnia zagrożenia dotycząca przyszłych wydarzeń. Na przykład, jeżeli dane punktowe reprezentują miejsca uderzenia pioruna, warstwę wynikową można interpretować jako powierzchnię zagrożenia przyszłymi uderzeniami piorun&oacute;w.
     </p>
-    <p>Other use cases of this tool include the following:
+    <p>Narzędzie to ma r&oacute;wnież następujące zastosowania:
         <ul>
-            <li>Creating crime-density maps to help police departments properly allocate resources to high crime areas.
+            <li>Tworzenie map nasilenia przestępczości pomagających w&nbsp;opracowywaniu odpowiedniego przydziału sił policji do obszar&oacute;w o wysokiej przestępczości.
             </li>
-            <li>Calculating densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to decide where new hospitals should be built.
+            <li>Obliczanie liczby szpitali w określonym powiecie. Warstwa wynikowa będzie przedstawiać obszary o dużej i niskiej dostępności szpitali &mdash; informacja ta może zostać wykorzystana w procesie podejmowania decyzji o budowie nowych szpitali.
             </li>
-            <li>Identifying areas that are at high risk of forest fires based on historical locations of forest fires.
+            <li>Identyfikacja obszar&oacute;w wysokiego zagrożenia pożarami las&oacute;w na podstawie lokalizacji wcześniejszych pożar&oacute;w las&oacute;w
             </li>
-            <li>Locating communities that are far from major highways in order to plan where new roads should be constructed.
+            <li>Lokalizacja społeczności zamieszkujących tereny oddalone od gł&oacute;wnych dr&oacute;g w celu wyznaczenia przebiegu nowych dr&oacute;g
             </li>
         </ul>
         
@@ -68,19 +68,19 @@
         <div><h2>Wybierz warstwę punktową, na podstawie której ma zostać obliczone zagęszczenie.</h2></div>
         <hr/>
         <div>
-            <p>The point layer on which the density will be calculated.
+            <p>Warstwa punktowa, na podstawie kt&oacute;rej ma zostać obliczone zagęszczenie.
             </p>
             <p>Opr&oacute;cz wybrania warstwy z mapy, można wybrać opcję  <b>Przeglądaj warstwy</b> znajdującą się w dolnej części listy rozwijanej, aby przejść do zasob&oacute;w zestawu danych udostępnionych plik&oacute;w dużych zbior&oacute;w danych lub warstwy obiektowej.
             </p>
         </div>
     </div>
     <div id="fields">
-        <div><h2>Wybierz jedno lub większą liczbę pól, na podstawie których zostanie obliczone zagęszczenie (opcjonalnie)</h2></div>
+        <div><h2>Wybierz jedno lub więcej pól, na podstawie których zostanie obliczone zagęszczenie (opcjonalne)</h2></div>
         <hr/>
         <div>
-            <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
+            <p>Podaj jedno lub większą liczbę p&oacute;l określających liczbę zdarzeń w poszczeg&oacute;lnych lokalizacjach. Jeżeli na przykład dane punktowe reprezentują miasta, możesz użyć pola określającego liczbę mieszkańc&oacute;w miasta jako pola zliczania. Wtedy w&nbsp;wynikowej warstwie zagęszczenia ludności przedstawione zostaną duże wartości gęstości zaludnienia znajdujące się w&nbsp;pobliżu miast o&nbsp;dużej liczbie mieszkańc&oacute;w.
             </p>
-            <p>The density for the count of points will always be calculated.   If no fields are selected, each location will be assumed to represent a single count.
+            <p>Zagęszczenie jest obliczane zawsze dla liczby punkt&oacute;w. Jeśli nie zostanie wybrane żadne pole, przyjęte zostanie założenie, że każda lokalizacja reprezentuje określoną liczbę.
             </p>
         </div>
     </div>
@@ -88,7 +88,7 @@
         <div><h2>Wybierz kształt kosza</h2></div>
         <hr/>
         <div>
-            <p>The shape of bins that points are aggregated into and used for the density calculation.
+            <p>Kształt koszy, w kt&oacute;rych agregowane są punkty i kt&oacute;re są używane w obliczeniach zagęszczenia.
             </p>
             <p>Analiza wykonywana przy użyciu koszy  <b>kwadratowych</b> lub <b>sześciokątnych</b> wymaga układu wsp&oacute;łrzędnych odwzorowanych. <b>Układ wsp&oacute;łrzędnych przetwarzania</b> można skonfigurować w oknie <b>Środowiska analizy</b>. Jeśli układ wsp&oacute;łrzędnych przetwarzania nie zostanie skonfigurowany jako układ wsp&oacute;łrzędnych odwzorowanych, podczas <b>uruchamiania analizy</b> zostanie wyświetlony monit informujący o konieczności wykonania tej czynności.
             </p>
@@ -98,7 +98,7 @@
         <div><h2>Wybierz wielkość kosza dla agregacji</h2></div>
         <hr/>
         <div>
-            <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
+            <p>Wielkość wygenerowanych koszy. W przypadku koszy kwadratowych wielkość reprezentuje wysokość kwadratu. W przypadku koszy sześciokątnych wielkość reprezentuje wysokość sześciokąta (na podstawie bok&oacute;w r&oacute;wnoległych).
             </p>
         </div>
     </div>
@@ -106,11 +106,11 @@
         <div><h2>Wybierz wagi zagęszczenia do zastosowania</h2></div>
         <hr/>
         <div>
-            <p>The type of weighting applied to the density calculation. There are two options:
+            <p>Typ ważenia stosowany przy obliczaniu zagęszczenia. Dostępne są dwie możliwości:
                 <ul>
-                    <li> <b>Uniform</b>&mdash;This calculates a magnitude per area.
+                    <li> <b>Jednorodne</b> &mdash; obliczanie wielkości dla każdego obszaru.
                     </li>
-                    <li> <b>Kernel</b>&mdash;Applies a kernel function to fit a smooth tapered surface to each point.
+                    <li> <b>Skupienie</b> &mdash; zastosowanie funkcji skupienia w celu dopasowania gładkiej zwężającej się powierzchni do poszczeg&oacute;lnych punkt&oacute;w.
                     </li>
                 </ul>
                 
@@ -121,7 +121,7 @@
         <div><h2>Wybierz wielkość sąsiedztwa</h2></div>
         <hr/>
         <div>
-            <p>The size of the area used to calculate the density. The neighborhood size must be larger than the bin size.
+            <p>Wielkość obszaru używanego do obliczania zagęszczenia. Wielkość sąsiedztwa musi być większa niż wielkość kosza.
             </p>
         </div>
     </div>
@@ -129,7 +129,7 @@
         <div><h2>Wybierz jednostki wynikowe dla zagęszczenia</h2></div>
         <hr/>
         <div>
-            <p>The desired output units of the density values. By default, this is set to square kilometers or square miles based on the default units specified in your profile. If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+            <p>Pożądane jednostki wynikowe wartości zagęszczenia. Domyślnie są to kilometry kwadratowe lub mile kwadratowe w zależności od domyślnych jednostek podanych w profilu. Jeśli wartości zagęszczenia są bardzo małe, można zwiększyć jednostki powierzchni (na przykład zmienić metry kwadratowe na kilometry kwadratowe), aby zwracane były większe wartości. Wartości skalują jedynie wynik.  
 
             </p>
         </div>
@@ -198,7 +198,7 @@
         <div><h2>Wybierz magazyn danych</h2></div>
         <hr/>
         <div>
-            <p>Wyniki analiz geoprzestrzennych są przechowywane w aplikacji ArcGIS Data Store i udostępniane jako warstwa obiekt&oacute;w w witrynie  Portal for ArcGIS. W większości przypadk&oacute;w wyniki powinny być przechowywane w magazynie danych czasowo-przestrzennych i jest to ustawienie domyślne. W niekt&oacute;rych przypadkach dobrym rozwiązanie jest zapisanie wynik&oacute;w w relacyjnym magazynie danych. Poniżej podano sytuacje, kt&oacute;re mogą uzasadniać przechowywanie wynik&oacute;w w relacyjnym magazynie danych: 
+            <p>Wyniki analiz geoprzestrzennych są przechowywane w aplikacji ArcGIS Data Store i udostępniane jako warstwa obiektowa w witrynie  Portal for ArcGIS. W większości przypadk&oacute;w wyniki powinny być przechowywane w magazynie danych czasowo-przestrzennych i jest to ustawienie domyślne. W niekt&oacute;rych przypadkach dobrym rozwiązanie jest zapisanie wynik&oacute;w w relacyjnym magazynie danych. Poniżej podano sytuacje, kt&oacute;re mogą uzasadniać przechowywanie wynik&oacute;w w relacyjnym magazynie danych: 
                 <ul>
                     <li>Używanie wynik&oacute;w w ramach kooperacji między portalami.
                     </li>

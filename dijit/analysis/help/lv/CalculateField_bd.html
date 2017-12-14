@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Aprēķināt lauku</h2><p/>
+        <h2><img src="../images/GUID-059C9BE7-7B00-49C8-9917-B0EAEA3DA19D-web.png" alt="Aprēķināt lauku"></h2>
+        <hr/>
+    <p>&Scaron;is rīks darbojas ar ievades slāni, aprēķinot vērtības jaunam vai eso&scaron;am laukam. Izveidojiet Arcade izteiksmi, lai aprēķinātu vērtības funkciju apkopo&scaron;anai. Ja jūsu datiem ir iespējota laika funkcija un laika tips, varat papildus izveidot izteiksmes, kuras fiksē mar&scaron;rutu.
+    </p>
+    <p>Piemēram, pieņemsim, ka vēlaties mainīt eso&scaron;u lauku, ko dēvē par  <i>TotalSales</i>. Jūs vēlaties, lai lauku raksturo kopējais pārdo&scaron;anas apjoms 2016.&nbsp;un 2017.&nbsp;gadā. Izmantojot &scaron;os laukus izteiksmē, varat aprēķināt lauka vērtību kā <pre>$feature[&quot;Sales2016&quot;] + $feature[&quot;Sales2017&quot;]</pre>.
+    </p>
+    <p>Izmantosim citu piemēru. Pieņemsim, ka jums ir GPS mērījumi, kas reģistrē atra&scaron;anās vietu, laiku, autobusa ID un autobusu ātrumu pilsētā. Mēs vēlamies izveidot jaunu lauku, ko dēvē par  <i>SpeedFrom3</i>, kas katram elementam aprēķina vidējo ātrumu no pēdējiem trīs GPS mērījumiem. Lai veiktu &scaron;o aprēķinu, mēs lietosim mar&scaron;rutu atpazīsto&scaron;u aprēķinu, kur mar&scaron;ruts ir autobuss, ko apzīmē autobusa ID Aprēķins, kas nosaka vidējo iepriek&scaron;ējo trīs laika posmu ātrumu un pa&scaron;reizējo laika posmu, ir <pre>average($track.field[&quot;speed&quot;].history(-4))</pre>.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Izvēlieties slāni, lai aprēķinātu lauka vērtības</h2></div>
+        <hr/>
+        <div>
+            <p>Punkti, līnijas, teritorijas vai tabula, kurā būs aprēķinātās lauka vērtības.  
+            </p>
+            <p>Papildus slāņa izvēlei kartē varat izvēlēties  <b>Pārlūkot slāņus</b> nolaižamā saraksta apak&scaron;ā, lai saturā atrastu Big Data koplietojuma datu kopu vai elementu slāni.
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>Aprēķināt lauka vērtības laukam</h2></div>
+        <hr/>
+        <div>
+            <p>Jaunais vai eso&scaron;ais lauks, kuram ir &scaron;ī lauka aprēķinātās vērtības un datu veids. Ja aprēķināt jau eso&scaron;a lauka vērtības, datu veids nav jāpielāgo. 
+            </p>
+        </div>
+    </div>
+    <div id="expression">
+        <div><h2>Izveidojiet izteiksmes stāvokli, lai raksturotu negadījuma sākšanos</h2></div>
+        <hr/>
+        <div>
+            <p>Pievienojiet izteiksmi, izmantojot izteiksmes veidotāju lauka vērtību aprēķinā&scaron;anai. 
+            </p>
+            <p>Piemēram: pieņemsim, ka vēlaties pievienot lauka  <i>Ienākumi</i> un <i>Prēmija</i> lauka vērtības. Lai to izdarītu, pievienojiet izteiksmi <code>$feature[&quot;income&quot;]&nbsp;+&nbsp;$feature[&quot;bonus&quot;] </code>.
+            </p>
+        </div>
+    </div>
+    <div id="trackInfo">
+        <div><h2>Šī izteiksme ir saistīta ar maršrutu</h2></div>
+        <hr/>
+        <div>
+            <p>Norādiet, vai izteiksme ir saistīta ar mar&scaron;rutu. Izteiksme, kas saistīta ar mar&scaron;rutu, ietvers &scaron;ādu formatējumu:  <pre>$track.field[&quot;fieldname&quot;].history(...)</pre>. Ar mar&scaron;rutu saistītās izteiksmēs nepiecie&scaron;ami lauki, lai apzīmētu atsevi&scaron;ķus mar&scaron;rutus. Mar&scaron;rutus var izveidot no punktiem, līnijām, teritorijām vai tabulām, un tiem nepiecie&scaron;ams, lai ievadē ir mar&scaron;ruta noteicējs, un datiem ir iespējota laika funkcija, pamatojoties uz laika mirkli.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Rezultātu slāņa nosaukums</h2></div>
+        <hr/>
+        <div>
+            <p> &Scaron;is ir slāņa nosaukums, kas tiks izveidots sadaļā <b>Mans Saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja slānis jau pastāv, rīks nedarbosies.
+            </p>
+            <p>Lietojot  <b>Saglabāt rezultātus</b> nolaižamajā sarakstlodziņā, jūs varat norādīt nosaukumu mapē <b>Mans saturs</b>, kur tiks saglabāti rezultāti.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Beregn felt</h2><p/>
+        <h2><img src="../images/GUID-059C9BE7-7B00-49C8-9917-B0EAEA3DA19D-web.png" alt="Beregn felt"></h2>
+        <hr/>
+    <p>Dette verkt&oslash;yet fungerer med et inndatalag til &aring; beregne verdier for et nytt eller eksisterende felt. Bygg et Arcade-uttrykk for &aring; beregne verdiene som skal brukes i geoobjektene. Hvis dataene er tidsaktiverte og av tidstypen umiddelbart, kan du velge &aring; bygge uttrykk som er sporingsf&oslash;lsomme.
+    </p>
+    <p>La oss for eksempel si at du vil endre et eksisterende felt som heter  <i>TotaltSalg</i>. Du vil at feltet skal representeres av summen av det totale salget i 2016 og 2017. Ved &aring; bruke disse feltene i uttrykket, beregner du feltverdien som <pre>$feature[&quot;Sales2016&quot;] + $feature[&quot;Sales2017&quot;]</pre>.
+    </p>
+    <p>For &aring; bruke et annet eksempel, anta at du har GPS-m&aring;linger som registrerer posisjonen, tidene, buss-ID-ene og hastighetene til bussene i en by. Vi vil opprette et nytt felt som heter  <i>HastighetFra3</i>, som finner gjennomsnittet av hastigheten til de 3 sist registrerte GPS-m&aring;lingene for hvert geoobjekt. For denne beregningen vil vi bruke en sporingsf&oslash;lsom beregning, der sporet er en buss angitt av buss-ID-en. Beregningen for &aring; fastsette den gjennomsnittlige hastigheten for de forrige 3 tidsstegene og gjeldende tidssteg er <pre>average($track.field[&quot;speed&quot;].history(-4))</pre>.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Velg et lag du vil beregne feltverdier for</h2></div>
+        <hr/>
+        <div>
+            <p>Punktene, linjene, omr&aring;dene eller tabellen det skal beregnes feltverdier for.  
+            </p>
+            <p>I tillegg til &aring; velge et lag fra kartet kan du velge  <b>Bla gjennom lag</b>, som du finner nederst i rullegardinlisten, til &aring; bla deg frem til innholdet for et fildelingsdatasett for big data eller et geoobjektslag.
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>Beregn feltverdier for feltet</h2></div>
+        <hr/>
+        <div>
+            <p>Det nye eller eksisterende feltet det skal beregnes verdier for og datatypen i dette feltet. Hvis du beregner verdier i et felt som allerede finnes, trenger du ikke matche datatypen. 
+            </p>
+        </div>
+    </div>
+    <div id="expression">
+        <div><h2>Bygg et betingelsesuttrykk for å angi starten på en hendelse</h2></div>
+        <hr/>
+        <div>
+            <p>Legg til et uttrykk ved &aring; bruke Expression Builder til &aring; beregne feltverdier. 
+            </p>
+            <p>La oss for eksempel si at vi skal legge til verdiene for et felt som kalles  <i>inntekt</i> og <i>bonus</i>. Det gj&oslash;r du ved &aring; legge til uttrykket <code>$feature[&quot;income&quot;] + $feature[&quot;bonus&quot;] </code>.
+            </p>
+        </div>
+    </div>
+    <div id="trackInfo">
+        <div><h2>Dette uttrykket er sporingsfølsomt</h2></div>
+        <hr/>
+        <div>
+            <p>Angi om uttrykket er sporingsf&oslash;lsomt. Et sporingsf&oslash;lsomt uttrykk vil inkludere formatering som       <pre>$track.field[&quot;fieldname&quot;].history(...)</pre>. Sporingsf&oslash;lsomme uttrykk krever felt til &aring; identifisere individuelle spor. Spor kan best&aring; av punkter, linjer, omr&aring;der eller tabeller og krever bare at inndataene har en spor-ID og at dataene er tidsaktivert av tidstypen umiddelbart.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Navn på resultatlag</h2></div>
+        <hr/>
+        <div>
+            <p> Dette er navnet p&aring; laget som vil bli laget i <b>Mitt Innhold</b> og lagt til i kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget allerede eksisterer, vil verkt&oslash;yet mislykkes.
+            </p>
+            <p>Bruk rullegardinlisten  <b>Lagre resultat</b> i til &aring; angi navnet p&aring; en mappe i <b>Mitt innhold</b> som resultatene skal lagres i.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

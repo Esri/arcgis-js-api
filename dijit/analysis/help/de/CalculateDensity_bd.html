@@ -42,22 +42,22 @@
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Dichte berechnen</h2><p/>
-        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Calculate Density"></h2>
+        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Dichte berechnen"></h2>
         <hr/>
-    <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas classified from least dense to most dense.   
+    <p>Das Werkzeug &quot;Dichte berechnen&quot; erstellt eine Dichtekarte aus Punkt-Features, indem bekannte Mengen einiger Ph&auml;nomene (als Attribute der Punkte dargestellt) auf der Karte verteilt werden. Das Resultat ist ein Layer mit Fl&auml;chen, die von geringster bis h&ouml;chster Dichte klassifiziert sind.   
 
     </p>
-    <p>For point input, each point should represent the location of some event or incident, and the result layer represents a count of the incident per unit area.  A higher density value in a new location means that there are more points near that location.  In many cases, the result layer can be interpreted as a risk surface for future events. For example, if the input points represent locations of lightning strikes, the result layer can be interpreted as a risk surface for future lightning strikes.
+    <p>Bei der Punkteingabe stellt jeder Punkt die Position eines Ereignisses und der Ergebnis-Layer die Anzahl der Ereignisse pro Fl&auml;cheneinheit dar. Ein h&ouml;herer Dichtewert an einer neuen Position bedeutet, dass sich mehr Punkte in der N&auml;he dieser Position befinden. In vielen F&auml;llen kann der Ergebnis-Layer als Risikoprognose f&uuml;r zuk&uuml;nftige Ereignisse interpretiert werden. Wenn die Eingabepunkte beispielsweise Positionen mit Blitzeinschl&auml;gen darstellen, kann der Ergebnis-Layer als Risikoprognose f&uuml;r zuk&uuml;nftige Blitzeinschl&auml;ge interpretiert werden.
     </p>
-    <p>Other use cases of this tool include the following:
+    <p>Nachfolgend finden Sie weitere Anwendungsf&auml;lle dieses Werkzeugs:
         <ul>
-            <li>Creating crime-density maps to help police departments properly allocate resources to high crime areas.
+            <li>Erstellung von Kriminalit&auml;tsdichtekarten, um Polizeidienststellen bei der entsprechenden Zuteilung von Ressourcen zu unterst&uuml;tzen.
             </li>
-            <li>Calculating densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to decide where new hospitals should be built.
+            <li>Berechnen Sie die Dichte von Krankenh&auml;usern in einem Bezirk. Der Ergebnis-Layer zeigt Fl&auml;chen mit hoher und niedriger Erreichbarkeit von Krankenh&auml;usern. Anhand dieser Informationen kann entschieden werden, ob neue Krankenh&auml;user gebaut werden m&uuml;ssen.
             </li>
-            <li>Identifying areas that are at high risk of forest fires based on historical locations of forest fires.
+            <li>Identifikation von Fl&auml;chen, die aufgrund historischer Waldbrandstandorte ein hohes Waldbrandrisiko aufweisen.
             </li>
-            <li>Locating communities that are far from major highways in order to plan where new roads should be constructed.
+            <li>Ermittlung von Gemeinden, die weit von wichtigen Fernstra&szlig;en entfernt sind, um zu planen, wo neue Stra&szlig;en gebaut werden m&uuml;ssen.
             </li>
         </ul>
         
@@ -68,19 +68,19 @@
         <div><h2>Einen Punkt-Layer auswählen, über den die Dichte berechnet werden soll</h2></div>
         <hr/>
         <div>
-            <p>The point layer on which the density will be calculated.
+            <p>Der Punkt-Layer, f&uuml;r den die Dichte berechnet werden soll.
             </p>
             <p>Sie k&ouml;nnen nicht nur einen Layer aus der Karte ausw&auml;hlen, sondern auch unten in der Dropdown-Liste  <b>Layer durchsuchen</b> ausw&auml;hlen, um zu Ihren f&uuml;r ein Big-Data-Dateifreigabe-Dataset bzw. -Feature-Layer zu navigieren.
             </p>
         </div>
     </div>
     <div id="fields">
-        <div><h2>Mindestens ein Feld auswählen, für das die Dichte berechnet werden soll  (optional)</h2></div>
+        <div><h2>Mindestens ein Feld auswählen, für das die Dichte berechnet werden soll (optional)</h2></div>
         <hr/>
         <div>
-            <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
+            <p>Stellen Sie mindestens ein Feld bereit, das die Anzahl der Ereignisse an jeder Position angibt. Wenn Sie beispielsweise &uuml;ber Punkte verf&uuml;gen, die St&auml;dte darstellen, k&ouml;nnen Sie ein Feld als Z&auml;hlfeld f&uuml;r die Einwohnerzahl verwenden. Im resultierenden Bev&ouml;lkerungsdichte-Layer werden in der N&auml;he von St&auml;dten mit gr&ouml;&szlig;eren Einwohnerzahlen gr&ouml;&szlig;ere Bev&ouml;lkerungsdichten dargestellt.
             </p>
-            <p>The density for the count of points will always be calculated.   If no fields are selected, each location will be assumed to represent a single count.
+            <p>Die Dichte f&uuml;r die Anzahl der Eingabepunkte wird immer berechnet. Wenn kein Feld ausgew&auml;hlt wurde, wird angenommen, dass jede Position eine einzelne Anzahl darstellt.
             </p>
         </div>
     </div>
@@ -88,7 +88,7 @@
         <div><h2>Abschnitts-Shape auswählen</h2></div>
         <hr/>
         <div>
-            <p>The shape of bins that points are aggregated into and used for the density calculation.
+            <p>Die Form der Abschnitte, in die die Punkte aggregiert werden und die f&uuml;r die Dichteberechnung verwendet wird.
             </p>
             <p>F&uuml;r Analysen, die  <b>Quadrat</b>- oder <b>hexagonale</b> Abschnitte verwenden, ist ein projiziertes Koordinatensystem erforderlich. Sie k&ouml;nnen das <b>Verarbeitungskoordinatensystem</b> in <b>Analyseumgebungen</b> festlegen. Wenn das Verarbeitungskoordinatensystem nicht auf ein projiziertes Koordinatensystem festgelegt ist, werden Sie aufgefordert, es festzulegen, wenn Sie die <b>Analyse ausf&uuml;hren</b>.
             </p>
@@ -98,7 +98,7 @@
         <div><h2>Die Abschnittsgröße zur Aggregation auswählen</h2></div>
         <hr/>
         <div>
-            <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
+            <p>Die Gr&ouml;&szlig;e der generierten Abschnitte Bei einem Quadratabschnitt stellt die Gr&ouml;&szlig;e die H&ouml;he des Quadrats dar. Bei einem Sechseck stellt die Gr&ouml;&szlig;e die H&ouml;he des Sechsecks (von parallelen Seiten) dar.
             </p>
         </div>
     </div>
@@ -106,11 +106,11 @@
         <div><h2>Die anzuwendende Dichtegewichtung auswählen</h2></div>
         <hr/>
         <div>
-            <p>The type of weighting applied to the density calculation. There are two options:
+            <p>Der Typ der Gewichtung, die f&uuml;r die Dichteberechnung angewendet wird. Es gibt zwei Optionen:
                 <ul>
-                    <li> <b>Uniform</b>&mdash;This calculates a magnitude per area.
+                    <li> <b>Einheitlich</b>: Berechnet eine Magnitude pro Fl&auml;che.
                     </li>
-                    <li> <b>Kernel</b>&mdash;Applies a kernel function to fit a smooth tapered surface to each point.
+                    <li> <b>Kernel</b>: Verwendet eine Kernel-Funktion, um f&uuml;r jeden Punkt eine sanft abgeschr&auml;gte Oberfl&auml;che anzupassen.
                     </li>
                 </ul>
                 
@@ -121,7 +121,7 @@
         <div><h2>Die Nachbarschaftsgröße auswählen</h2></div>
         <hr/>
         <div>
-            <p>The size of the area used to calculate the density. The neighborhood size must be larger than the bin size.
+            <p>Die Gr&ouml;&szlig;e der Fl&auml;che, die zum Berechnen der Dichte verwendet wird. Die Nachbarschaftsgr&ouml;&szlig;e muss gr&ouml;&szlig;er sein als die Abschnittsgr&ouml;&szlig;e.
             </p>
         </div>
     </div>
@@ -129,7 +129,7 @@
         <div><h2>Die Ausgabeeinheiten für die Dichte auswählen</h2></div>
         <hr/>
         <div>
-            <p>The desired output units of the density values. By default, this is set to square kilometers or square miles based on the default units specified in your profile. If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+            <p>Die gew&uuml;nschten Ausgabeeinheiten f&uuml;r die Dichtewerte. Basierend auf der Angabe der Standardeinheiten in Ihrem Profil wird standardm&auml;&szlig;ig Quadratkilometer oder Quadratmeilen eingestellt. Bei sehr kleinen Dichtewerten k&ouml;nnen Sie die Gr&ouml;&szlig;e der Fl&auml;cheneinheiten erh&ouml;hen (zum Beispiel Quadratkilometer statt Quadratmeter), damit gr&ouml;&szlig;ere Werte zur&uuml;ckgegeben werden. Mit den Werten wird nur das Ergebnis skaliert.  
 
             </p>
         </div>
@@ -214,7 +214,7 @@
         <div><h2>Name des Ergebnis-Layers</h2></div>
         <hr/>
         <div>
-            <p> Dies ist der Name des Layers, der in <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird.  Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, kann das Werkzeug nicht ausgef&uuml;hrt werden.
+            <p> Dies ist der Name des Layers, der in <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird. Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, kann das Werkzeug nicht ausgef&uuml;hrt werden.
             </p>
             <p>&Uuml;ber das Dropdown-Feld  <b>Ergebnis speichern in</b> k&ouml;nnen Sie den Namen eines Ordners in <b>Eigene Inhalte</b> angeben, in dem das Ergebnis gespeichert werden soll.
             </p>

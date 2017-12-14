@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
 define(["dojo/dom-construct","../ChartContainer","./ThemeCalculator"],function(e,t,n){var a={};return a.createChartPage=function(a,r){var o,c=a.json,u=a.creationParams,h=u.viewModel.getChartDefaultStyles(u.theme||u.themeContext);u.chartTheme=n.getThemeForSettings(c,h),r=r||t;var i=a.node?e.create("div",null,a.node):void 0;return o=new r(u,i),"function"==typeof a.placeFunc&&a.placeFunc(o),o.updateChart(c),o},a});

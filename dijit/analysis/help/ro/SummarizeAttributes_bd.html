@@ -42,12 +42,11 @@
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Sumarizare atribute</h2><p/>
-        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Sumarizare atribute"></h2>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Diagramă pentru Sumarizare atribute"></h2>
         <hr/>
-    <p>Acest instrument rezumă toate valorile corespunzătoare din unul sau mai multe c&acirc;mpuri şi calculează statistici pentru acestea. Cea mai simplă statistică este calculul obiectelor spaţiale care au fost rezumate &icirc;mpreună, &icirc;nsă puteţi calcula şi statistici mai avansate. 
-
+    <p> Acest instrument rezumă toate valorile corespunzătoare din unul sau mai multe c&acirc;mpuri şi calculează statistici pentru acestea. Cea mai simplă statistică este calculul obiectelor spaţiale care au fost rezumate &icirc;mpreună, &icirc;nsă puteţi calcula şi statistici mai avansate.
     </p>
-    <p>De exemplu, să presupunem că aveţi obiecte spaţiale punct reprezent&acirc;nd locaţii de magazine cu un c&acirc;mp  <i>DISTRICT_MANAGER_NAME</i> şi doriţi un rezumat al v&acirc;nzărilor de cafea după manager. Puteţi specifica c&acirc;mpul <i>DISTRICT_MANAGER_NAME</i> drept c&acirc;mp de dizolvare şi toate r&acirc;ndurile de date care reprezintă manageri individuali vor fi rezumate. Aceasta &icirc;nseamnă că toate locaţiile de magazine care sunt gestionate de Manager1 vor fi rezumate &icirc;ntr-un r&acirc;nd cu statistici de rezumat calculate. &Icirc;n această situaţie, ar fi calculate statisticile precum numărul de magazine şi suma <i>TOTAL_SALES</i> at&acirc;t pentru toate magazinele gestionate de Manager1, c&acirc;t şi pentru orice alt manager menţionat &icirc;n c&acirc;mpul <i>DISTRICT_MANAGER_NAME</i>.
+    <p>De exemplu, să presupunem că aveţi obiecte spaţiale punct reprezent&acirc;nd locaţii de magazine cu un c&acirc;mp  <i>DISTRICT_MANAGER_NAME</i>, şi doriţi un rezumat al v&acirc;nzărilor de cafea după manager. Puteţi specifica c&acirc;mpul <i>DISTRICT_MANAGER_NAME</i> drept c&acirc;mp de dizolvare şi toate r&acirc;ndurile de date care reprezintă manageri individuali vor fi rezumate. Aceasta &icirc;nseamnă că toate locaţiile de magazine care sunt gestionate de <pre>Manager1</pre> vor fi rezumate &icirc;ntr-un r&acirc;nd, cu statistici de rezumat calculate. &Icirc;n această situaţie, ar fi calculate statisticile precum numărul de magazine şi suma <i>TOTAL_SALES</i> at&acirc;t pentru toate magazinele gestionate de <pre>Manager1</pre> , c&acirc;t şi pentru orice alt manager menţionat &icirc;n c&acirc;mpul <i>DISTRICT_MANAGER_NAME</i>.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -62,10 +61,19 @@
         </div>
     </div>
     <div id="fields">
-        <div><h2>Alegeţi câmpurile pentru rezumat</h2></div>
+        <div><h2>Alegeţi cum veţi rezuma datele</h2></div>
         <hr/>
         <div>
-            <p>Listă de c&acirc;mpuri din stratul tematic de intrare. C&acirc;mpurile selectate vor fi rezumate şi utilizate pentru a calcula statistici. De exemplu, dacă alegeţi un c&acirc;mp denumit  <i>PropertyType</i> cu valorile pentru comercial şi rezidenţial, toate c&acirc;mpurile rezidenţiale vor fi rezumate &icirc;mpreună, cu statisticile rezumatului calculate şi toate c&acirc;mpurile comerciale ar fi rezumate &icirc;mpreună.
+            <p>Sunt disponibile două moduri pentru rezumarea datelor:
+                <ul>
+                    <li> <b>Toate obiectele spaţiale &icirc;ntr-un singur obiect spaţial</b>&mdash;Calculează statistici pentru toate obiectele spaţiale.
+                    </li>
+                    <li> <b>Pe c&acirc;mpuri</b>&mdash;Grupează obiectele spaţiale pe valori similare &icirc;n c&acirc;mpurile specificate.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>De exemplu, să presupunem că aveţi un set de date de copaci care include c&acirc;mpurile   <i>tipul copacului (treetype)</i> cu valorile <code>Arţar (Maple)</code>, <code>Brad (Fir)</code> şi <code>Pin (Pine(</code> şi un c&acirc;mp <i>&icirc;nălţime copac (treeheight)</i> şi doriţi să aflaţi media pentru <i>&icirc;nălţime copac (treeheight)</i>. Dacă rezumaţi toate obiectele spaţiale &icirc;ntr-un singur obiect spaţial, veţi afla &icirc;nălţimea medie pentru toţi copacii care rezultă &icirc;ntr-o singură valoare medie. Dacă rezumaţi după c&acirc;mpul <i>&icirc;nălţime copac (treeheight)</i>, veţi avea o medie pentru arţari, o medie pentru brazi  şi o medie pentru pini.
             </p>
         </div>
     </div>
@@ -126,7 +134,7 @@
         <div>
             <p> Acesta este numele stratului tematic care va fi creat &icirc;n <b>Resursele mele</b> şi adăugat &icirc;n hartă.  Numele implicit se bazează pe numele instrumentului şi numele stratului tematic de intrare. Dacă stratul tematic există deja, instrumentul va eşua.
             </p>
-            <p>Utiliz&acirc;nd caseta derulantă  <b>Salvare rezultat &icirc;n</b>, puteţi specifica numele unui director din <b>Resursele mele</b> &icirc;n care va fi salvat rezultatul.
+            <p>Utiliz&acirc;nd caseta derulantă  <b>Salvare rezultat &icirc;n</b> puteţi specifica numele unui director din <b>Resursele mele</b> &icirc;n care va fi salvat rezultatul.
             </p>
         </div>
     </div>

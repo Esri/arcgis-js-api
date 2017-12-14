@@ -52,14 +52,14 @@
             </li>
             <li>Hva er veiavstanden mellom disse storbyene?
             </li>
-            <li>Hvem av pasientene bor mindre enn 3,2 kilometer fra disse kjemiske anleggene?
+            <li>Hvilke av disse pasientene bor mindre enn 3,2 kilometer fra disse kjemiske anleggene?
             </li>
         </ul>
         
     </p>
     <p>Finn n&aelig;rmeste-verkt&oslash;yet returnerer et lag som inneholder de n&aelig;rmeste geoobjektene, og et linjelag som knytter startlokasjonene til n&aelig;rmeste lokasjoner. Linjelaget inneholder informasjon om startlokasjon og n&aelig;rmeste lokasjoner og avstandene mellom disse.
     </p>
-    <p>Hvis det er merket av for  <b>Use current map extent</b>, er det kun geoobjektene som vises i gjeldende kartutstrekning som kan brukes som startgeoobjekter eller mulig n&aelig;rliggende geoobjekter. Hvis det ikke er merket av for dette alternativet, vurderes alle geoobjektene i inndatalaget, selv om de befinner seg utenfor gjeldende kartutstrekning.  
+    <p>Hvis det er merket av for  <b>Use current map extent</b>, er det kun geoobjektene som vises i gjeldende kartutstrekning som kan brukes som startgeoobjekter eller mulig n&aelig;rliggende geoobjekter. Hvis det ikke er merket av for dette alternativet, vurderes alle geoobjektene i inndatalaget, selv om de befinner seg utenfor gjeldende kartutstrekning.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -76,7 +76,7 @@
         <div><h2>Finn de nærmeste lokasjonene i</h2></div>
         <hr/>
         <div>
-            <p>Verkt&oslash;yet Finn n&aelig;rmeste m&aring;ler fra hvert av geoobjektene i det f&oslash;rste laget til lokasjonene i dette laget. Verkt&oslash;yet st&oslash;tter opptil 1&nbsp;000 lokasjoner i hver lag.
+            <p>Verkt&oslash;yet Finn n&aelig;rmeste m&aring;ler fra hvert av geoobjektene i det f&oslash;rste laget til lokasjonene i dette laget. Verkt&oslash;yet st&oslash;tter opptil 1&nbsp;000 lokasjoner i hvert lag.
             </p>
             <p class="OnlineOnly">I tillegg til &aring; velge et lag fra kartet kan du velge  <b>Velg analyselag i levende atlas</b> eller <b>Velg analyselag</b> som du finner nederst i rullegardinlisten. Dette &aring;pner et galleri som inneholder en samling lag som vil v&aelig;re nyttige i mange analyser. 
             </p>
@@ -90,7 +90,7 @@
             </p>
             <p>N&aring;r du m&aring;ler mellom linjer eller omr&aring;der, beregnes avstanden fra eller til n&aelig;rmeste punkt langs linjen eller grensen for omr&aring;det. 
             </p> 
-            <p>N&aring;r du velger  <b>Kj&oslash;retid</b>, vises ulike alternativer for m&aring;ling av kj&oslash;retid.
+            <p>N&aring;r du velger  <b>Kj&oslash;retid</b>, <b>Kj&oslash;retid i rurale omr&aring;der</b> eller <b>Lastebiltid</b>, har du ulike alternativer for m&aring;ling av kj&oslash;retid.
                 <ul>
                     <li>
                         <p>Fjern avmerkingen av  <b>Bruk trafikk</b> for &aring; finne de n&aelig;rmeste geoobjektene ut fra statiske reisehastigheter, for eksempel fartsgrenser, fremfor varierende hastigheter som skyldes skiftende trafikkforhold.
@@ -105,15 +105,17 @@
                         </p>
                     </li>
                     <li>
-                        <p>Hvis du merker av for   <b>Bruk trafikk</b> og velger <b>Trafikk basert p&aring; typiske forhold for</b> for en dag eller et klokkeslett, finner verkt&oslash;yet de n&aelig;rmeste geoobjektene basert p&aring; historiske gjennomsnittshastigheter for intervaller p&aring; fem minutter i en vanlig uke. Resultatet omfatter trafikk, men tar ikke hensyn til gjeldende trafikale forhold og hendelser, som kan avvike mye fra normen.
+                        <p>Hvis du merker av for   <b>Bruk trafikk</b> og velger <b>Trafikk basert p&aring; typiske forhold for</b> en dag eller et klokkeslett, finner verkt&oslash;yet de raskeste rutene basert p&aring; historiske gjennomsnittshastigheter for intervaller p&aring; fem minutter i en vanlig uke. Resultatet omfatter trafikk, men tar ikke hensyn til gjeldende trafikale forhold og hendelser, som kan avvike mye fra normen.
                         </p>
-                        <p>Du kan bruke disse historiske trafikkinnstillingen til &aring; stille sp&oslash;rsm&aring;l som &quot;Hvilke geoobjekter n&aring;r jeg raskeste hvis jeg reier fra startgeoobjektet klokken 11.30 p&aring; en onsdag?&quot;. 
+                        <p>Du kan bruke disse historiske trafikkinnstillingene til &aring; stille sp&oslash;rsm&aring;l som &quot;Hvilke geoobjekter n&aring;r jeg raskeste hvis jeg reiser fra startgeoobjektet klokken 11.30 p&aring; en onsdag?&quot;. 
                         </p>
                         <p>Klokkeslettet du angir, refererer til tidssonen som startgeoobjektene befinner seg i. S&aring; hvis du for eksempel velger klokkeslettet 8.00 og du har to startgeoobjekter, ett i New York og ett i Los Angeles, blir de n&aelig;rmeste lokasjonene funnet ved &aring; anta at avreisetidspunktet er henholdsvis klokken 8.00 EST og kl. 8.00 PST.
                         </p>
                     </li>
                 </ul>
                 Legg merke til at idet et kj&oslash;ret&oslash;y kj&oslash;rer fra et punkt, s&aring; g&aring;r tiden og trafikkforholdene endres. Verkt&oslash;yet tar hensyn til disse variasjonene n&aring;r du merker av for <b>Bruk trafikk</b>. Det er imidlertid ikke st&oslash;tte for denne funksjonen i alle omr&aring;der. Klikk p&aring; koblingen <b>Vis tilgjengelighet</b> i verkt&oslash;yet for &aring; finne ut om funksjonen st&oslash;ttes i ditt studieomr&aring;de. 
+            </p>
+            <p> <b>Lastebiltid</b> kan bruke dynamiske kj&oslash;rehastigheter basert p&aring; trafikken, men kun opptil den lovlige fartsgrensen for lastebil. Hvis for eksempel den dynamiske hastigheten for en vei basert p&aring; trafikk i sanntid er 100 km/t, men hastighetsgrensen for lastebiler p&aring; denne veien er 90 km/t, bruker beregningen 90 km/t for denne veien.
             </p>
         </div>
     </div>

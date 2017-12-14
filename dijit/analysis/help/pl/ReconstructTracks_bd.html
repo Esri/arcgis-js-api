@@ -95,6 +95,8 @@
         <div>
             <p>R&oacute;wnanie używane do obliczania odległości wok&oacute;ł obiekt&oacute;w wejściowych na potrzeby buforowania. To r&oacute;wnanie można wygenerować przy użyciu kalkulatora bufora i podstawowych operacji, takich jak dodawanie, odejmowanie, mnożenie i dzielenie. Wartości są obliczane przy użyciu układu wsp&oacute;łrzędnych analizy. Ta warstwa musi korzystać z układu wsp&oacute;łrzędnych odwzorowanych lub odniesienie przestrzenne przetwarzania musi zostać skonfigurowane w układzie wsp&oacute;łrzędnych odwzorowanych w oknie  <b>Środowiska analizy</b>, jeśli stosowany jest bufor.
             </p>
+            <p>R&oacute;wnanie w postaci  <code>$feature.predkosc_wiatru * 1000</code> spowoduje zastosowanie bufora o wielkości wynoszącej 1000 pomnożonego przez wartość w polu <i>predkosc_wiatru</i>. W kalkulatorze bufora można użyć więcej niż jednego pola.
+            </p>
         </div>
     </div>
     <div id="timeSplit">
@@ -102,6 +104,20 @@
         <hr/>
         <div>
             <p>Czas używany do dzielenia ścieżek. Jeśli okres między wejściowymi punktami lub poligonami jest dłuższy niż okno czasowe, zostaną one podzielone na r&oacute;żne ścieżki.
+            </p>
+            <p>Jeśli zostanie określone okno czasowe i podział odległości, ścieżki będą dzielone przy spełnieniu jednego lub obu warunk&oacute;w. 
+            </p>
+            <p>Wyobraź sobie, że istnieją obiekty punktowe reprezentujące loty, w przypadku kt&oacute;rych polem ścieżki jest identyfikator samolotu. Samolot może wykonać wiele lot&oacute;w, kt&oacute;re będą reprezentowane przez jedną ścieżkę.  Jeśli wiesz, że między lotami występują 1-godzinne przerwy, możesz użyć okna czasowego o wartości  <code>1 godzina</code>, dzięki czemu każdy lot będzie miał przypisaną własną ścieżkę.
+            </p>
+        </div>
+    </div>
+    <div id="distanceSplit">
+        <div><h2>Wybierz odległość do dzielenia ścieżek (opcjonalnie)</h2></div>
+        <hr/>
+        <div>
+            <p> Odległość używana do dzielenia ścieżek. Jeśli odległość między wejściowymi punktami lub poligonami jest większa niż podział odległości, zostaną one podzielone na r&oacute;żne ścieżki.
+            </p>
+            <p>Jeśli zostanie określone okno czasowe i podział odległości, ścieżki będą dzielone przy spełnieniu jednego lub obu warunk&oacute;w. 
             </p>
         </div>
     </div>
@@ -145,7 +161,7 @@
         <div><h2>Wybierz aplikację ArcGIS Data Store, w której zostaną zapisane wyniki</h2></div>
         <hr/>
         <div>
-            <p>Wyniki analiz geoprzestrzennych są przechowywane w aplikacji ArcGIS Data Store i udostępniane jako warstwa obiekt&oacute;w w witrynie  Portal for ArcGIS. W większości przypadk&oacute;w wyniki powinny być przechowywane w magazynie danych czasowo-przestrzennych i jest to ustawienie domyślne. W niekt&oacute;rych przypadkach dobrym rozwiązanie jest zapisanie wynik&oacute;w w relacyjnym magazynie danych. Poniżej podano sytuacje, kt&oacute;re mogą uzasadniać przechowywanie wynik&oacute;w w relacyjnym magazynie danych: 
+            <p>Wyniki analiz geoprzestrzennych są przechowywane w aplikacji ArcGIS Data Store i udostępniane jako warstwa obiektowa w witrynie  Portal for ArcGIS. W większości przypadk&oacute;w wyniki powinny być przechowywane w magazynie danych czasowo-przestrzennych i jest to ustawienie domyślne. W niekt&oacute;rych przypadkach dobrym rozwiązanie jest zapisanie wynik&oacute;w w relacyjnym magazynie danych. Poniżej podano sytuacje, kt&oacute;re mogą uzasadniać przechowywanie wynik&oacute;w w relacyjnym magazynie danych: 
                 <ul>
                     <li>Używanie wynik&oacute;w w ramach kooperacji między portalami.
                     </li>

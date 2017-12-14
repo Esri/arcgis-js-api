@@ -59,7 +59,7 @@
     </p>
     <p>Die Option &quot;N&auml;chstgelegene suchen&quot; gibt einen Layer mit den n&auml;chsten Features sowie einen Linien-Layer zur&uuml;ck, der die Startpositionen mit den jeweils n&auml;chstgelegenen Positionen verkn&uuml;pft. Der Linien-Layer enth&auml;lt Informationen zu den Start- und n&auml;chstgelegenen Positionen sowie deren Entfernungen zueinander.
     </p>
-    <p>Wenn die Option  <b>Aktuelle Kartenausdehnung verwenden</b> aktiviert ist, werden nur die Features als Start- und potenziell n&auml;chste Features betrachtet, die in der aktuellen Kartenausdehnung angezeigt werden.  Wenn diese Option deaktiviert ist, werden alle Features im Eingabe-Layer ber&uuml;cksichtigt, auch diejenigen, die sich au&szlig;erhalb der aktuellen Kartenausdehnung befinden.  
+    <p>Wenn die Option  <b>Aktuelle Kartenausdehnung verwenden</b> aktiviert ist, werden nur die Features als Start- und potenziell n&auml;chste Features betrachtet, die in der aktuellen Kartenausdehnung angezeigt werden.  Wenn diese Option deaktiviert ist, werden alle Features im Eingabe-Layer ber&uuml;cksichtigt, auch diejenigen, die sich au&szlig;erhalb der aktuellen Kartenausdehnung befinden.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -90,7 +90,7 @@
             </p>
             <p>Beim Messen zwischen Linien und Fl&auml;chen wird die Entfernung vom oder zum n&auml;chsten Punkt entlang der Linie oder Grenze der Fl&auml;che ermittelt. 
             </p> 
-            <p>Bei Auswahl von  <b>Fahrzeit</b> werden Optionen zum Messen der Fahrzeit bereitgestellt.
+            <p>Bei Auswahl von  <b>Fahrzeit</b>, <b>Fahrzeit auf Landstra&szlig;en</b> oder <b>Lkw-Fahrzeit</b> werden Optionen zum Messen der Fahrzeit bereitgestellt.
                 <ul>
                     <li>
                         <p>Deaktivieren Sie die Option  <b>Verkehrsdaten verwenden</b> um die n&auml;chsten Features basierend auf statischen Verkehrsgeschwindigkeiten, wie Geschwindigkeitsbegrenzungen, anstatt auf fluktuierenden Geschwindigkeiten zu suchen, die sich je nach Verkehrslage &auml;ndern.
@@ -105,7 +105,7 @@
                         </p>
                     </li>
                     <li>
-                        <p>Wenn Sie die Option  <b>Verkehrsdaten verwenden</b> aktivieren und <b>Verkehrsdaten auf Grundlage von normalen Bedingungen f&uuml;r</b> einen Tag und eine Uhrzeit ausw&auml;hlen, findet das Werkzeug die n&auml;chsten Features basierend auf historischen Durchschnittsgeschwindigkeiten f&uuml;r jedes 5-Minuten-Intervall &uuml;ber eine normale Woche hinweg. Die Ergebnisse umfassen Verkehrsdaten, lassen den Einfluss aktueller Verkehrssituationen und -ereignisse, die erheblich von der Norm abweichen k&ouml;nnen, allerdings au&szlig;er Acht.
+                        <p>Wenn Sie die Option  <b>Verkehrsdaten verwenden</b> aktivieren und <b>Verkehrsdaten auf Grundlage von normalen Bedingungen f&uuml;r</b> einen Tag und eine Uhrzeit ausw&auml;hlen, findet das Werkzeug die n&auml;chsten Features basierend auf historischen Durchschnittsgeschwindigkeiten f&uuml;r jedes 5-Minuten-Intervall &uuml;ber eine normale Woche hinweg. Die Ergebnisse umfassen Verkehrsdaten, lassen jedoch den Einfluss aktueller Verkehrssituationen und -ereignisse au&szlig;er Acht, die erheblich von der Norm abweichen k&ouml;nnen.
                         </p>
                         <p>Sie k&ouml;nnen diese Einstellungen f&uuml;r historische Verkehrsdaten verwenden, um beispielsweise folgende Frage zu stellen: &quot;Welche Features k&ouml;nnen am schnellsten erreicht werden, wenn ich von den Start-Features an einem Mittwoch um 11:30 Uhr losfahre?&quot;. 
                         </p>
@@ -114,6 +114,8 @@
                     </li>
                 </ul>
                 Beachten Sie, dass Zeit vergeht und Verkehrslagen sich &auml;ndern, w&auml;hrend sich ein Fahrzeug von einem Punkt wegbewegt. Dieses Werkzeug ber&uuml;cksichtigt diese Unterschiede bei Verwendung der Option <b>Verkehrsdaten verwenden</b>, allerdings unterst&uuml;tzen nicht alle Regionen Verkehrsdaten. Klicken Sie in dem Werkzeug auf den Link <b>Verf&uuml;gbarkeit anzeigen</b>, um zu ermitteln, ob dies f&uuml;r Ihr Einzugsgebiet zutrifft. 
+            </p>
+            <p>F&uuml;r die  <b>Lkw-Fahrzeit</b> k&ouml;nnen dynamische, auf den Verkehrsbedingungen basierende Reisegeschwindigkeiten bis maximal zur gesetzlichen H&ouml;chstgeschwindigkeit f&uuml;r Lkw zugrunde gelegt werden. Wenn beispielsweise die dynamische Geschwindigkeit f&uuml;r eine Stra&szlig;e auf Grundlage der Live-Verkehrsdaten bei 100&nbsp;km/h liegt, die zul&auml;ssige H&ouml;chstgeschwindigkeit f&uuml;r Lkw auf dieser Stra&szlig;e jedoch 80&nbsp;km/h betr&auml;gt, werden in der Berechnung f&uuml;r diese Stra&szlig;e 80&nbsp;km/h zugrunde gelegt.
             </p>
         </div>
     </div>

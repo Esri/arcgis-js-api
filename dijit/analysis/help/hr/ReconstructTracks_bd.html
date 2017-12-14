@@ -95,6 +95,8 @@
         <div>
             <p>Jednadžba za izračun udaljenosti pojasa oko ulaznih geoobjekata. Ova se jednadžba može generirati s pomoću kalkulatora pojasa i podržane su osnovne radnje kao &scaron;to su zbrajanje, oduzimanje, množenje i dijeljenje. Vrijednosti se računaju s pomoću analize koordinatnog sustava. Sloj mora biti u predviđenom koordinatnom sustavu ili prostorna referenca koja se obrađuje mora biti postavljena u predviđenom koordinatnom sustavu pomoću  <b>Okruženja za analizu</b> ako se primijeni pojas.
             </p>
+            <p>Jednadžba kao &scaron;to je  <code>$feature.windspeed * 1000</code> primijenila bi pojas od 1.000 pomnoženim s poljem <i>brzine vjetra</i>. Možete koristiti vi&scaron;e od jednog polja u kalkulatoru pojasa.
+            </p>
         </div>
     </div>
     <div id="timeSplit">
@@ -102,6 +104,20 @@
         <hr/>
         <div>
             <p>Vrijeme kori&scaron;teno za podjelu tragova. Ako ulazne točke ili poligoni međusobno imaju duže trajanje od vremenske podjele, podijelit će se u različite tragove.
+            </p>
+            <p>Ako odredite vremensku podjelu i podjelu udaljenosti, tragovi će se podijeliti kada je ispunjen jedan ili vi&scaron;e uvjeta. 
+            </p>
+            <p>Zamislite da imate točkaste geoobjekte koji predstavljaju letove letjelica, pri čemu je polje tragova ID letjelice. Ta bi letjelica mogla izvr&scaron;iti nekoliko putovanja i bila bi predstavljena kao jedan trag. Ako znate da postoji stanka od 1 sata između letova, možete upotrijebiti  <code>1 sat</code> za podjelu tragova i svaki bi se let podijelio u vlastiti trag.
+            </p>
+        </div>
+    </div>
+    <div id="distanceSplit">
+        <div><h2>Odaberite udaljenost za dijeljenje tragova (neobavezno)</h2></div>
+        <hr/>
+        <div>
+            <p> Udaljenost upotrijebljena za podjelu tragova. Ako ulazne točke ili poligoni između sebe imaju &scaron;iru udaljenost od podjele udaljenosti, podijelit će se u različite tragove.
+            </p>
+            <p>Ako odredite vremensku podjelu i podjelu udaljenosti, tragovi će se podijeliti kada je ispunjen jedan ili vi&scaron;e uvjeta. 
             </p>
         </div>
     </div>

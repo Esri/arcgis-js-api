@@ -1,0 +1,19 @@
+
+
+
+.esriGEReportPlayer_infographicContainer {
+}
+
+    
+
+    .esriGEReportPlayer_infographicContainer .dynamicInfographic_viewDiv {
+        overflow: hidden;
+    }
+
+    
+
+    
+
+    .esriGEReportPlayer_infographicContainer .AgePyramid_MinMax {
+        top: 0px;
+    }

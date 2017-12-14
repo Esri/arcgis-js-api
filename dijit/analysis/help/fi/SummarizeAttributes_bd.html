@@ -42,12 +42,11 @@
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Laadi yhteenveto ominaisuustiedoista</h2><p/>
-        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Laadi yhteenveto ominaisuustiedoista"></h2>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Laadi yhteenveto ominaisuustiedoista -kaavio"></h2>
         <hr/>
-    <p>T&auml;m&auml; ty&ouml;kalu laatii yhteenvedon kaikista vastaavista arvoista v&auml;hint&auml;&auml;n yhdess&auml; kent&auml;ss&auml; ja laskee niille tilastotiedot. Perustilastotietoja ovat niiden kohteiden m&auml;&auml;r&auml;, joista yhteenveto on laadittu. Voit my&ouml;s laskea lis&auml;tilastotietoja. 
-
+    <p> T&auml;m&auml; ty&ouml;kalu laatii yhteenvedon kaikista vastaavista arvoista v&auml;hint&auml;&auml;n yhdess&auml; kent&auml;ss&auml; ja laskee niille tilastotiedot. Perustilastotietoja ovat niiden kohteiden m&auml;&auml;r&auml;, joista yhteenveto on laadittu. Voit my&ouml;s laskea lis&auml;tilastotietoja.
     </p>
-    <p>Oletetaan esimerkiksi, ett&auml; sinulla pistekohteita myym&auml;l&auml;sijainneista ja kentt&auml;  <i>DISTRICT_MANAGER_NAME</i> ja ett&auml; haluat laatia yhteenvedon kahvinmyynnist&auml; esimiehen mukaan. Voit m&auml;&auml;ritt&auml;&auml; kent&auml;n <i>DISTRICT_MANAGER_NAME</i> kentt&auml;n&auml;, johon sulautetaan, ja yhteenveto laaditaan kaikista yksitt&auml;isi&auml; esimiehi&auml; edustavista aineistoriveist&auml;. T&auml;m&auml; tarkoittaa, ett&auml; kaikista myym&auml;l&auml;sijainneista, joita johtaa Esimies1, laaditaan yhteenveto yhdelle riville. Lis&auml;ksi lasketaan yhteenvetotilastotiedot. T&auml;ss&auml; tapauksessa lasketaan tilastotiedot, kuten myym&auml;l&ouml;iden m&auml;&auml;r&auml; ja kaikkien niiden myym&auml;l&ouml;iden ominaisuustiedon <i>TOTAL_SALES</i> summa, joita johtaa Esimies1 sek&auml; kuka tahansa kent&auml;ss&auml; <i>DISTRICT_MANAGER_NAME</i> lueteltu esimies.
+    <p>Oletetaan esimerkiksi, ett&auml; sinulla pistekohteita myym&auml;l&auml;sijainneista ja kentt&auml;  <i>DISTRICT_MANAGER_NAME</i>, ja ett&auml; haluat laatia yhteenvedon kahvinmyynnist&auml; esimiehen mukaan. Voit m&auml;&auml;ritt&auml;&auml; kent&auml;n <i>DISTRICT_MANAGER_NAME</i> kentt&auml;n&auml;, johon sulautetaan, ja yhteenveto laaditaan kaikista yksitt&auml;isi&auml; esimiehi&auml; edustavista aineistoriveist&auml;. T&auml;m&auml; tarkoittaa, ett&auml; kaikista myym&auml;l&auml;sijainneista, joita johtaa <pre>Manager1</pre>, laaditaan yhteenveto yhdelle riville. Lis&auml;ksi lasketaan yhteenvetotilastotiedot. T&auml;ss&auml; tapauksessa lasketaan tilastotiedot, kuten myym&auml;l&ouml;iden m&auml;&auml;r&auml; ja kaikkien niiden myym&auml;l&ouml;iden ominaisuustiedon <i>TOTAL_SALES</i> summa, joita johtaa <pre>Manager1</pre> sek&auml; kuka tahansa kent&auml;ss&auml; <i>DISTRICT_MANAGER_NAME</i> lueteltu esimies.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -62,10 +61,19 @@
         </div>
     </div>
     <div id="fields">
-        <div><h2>Valitse yhteenvedon kentät</h2></div>
+        <div><h2>Valitse aineiston yhteenvetotapa</h2></div>
         <hr/>
         <div>
-            <p>L&auml;ht&ouml;aineiston karttatason kenttien luettelo. Valituista kentist&auml; laaditaan yhteenveto ja lasketaan tilastotiedot. Jos esimerkiksi valitset kent&auml;n  <i>PropertyType</i> arvoilla liike- ja asuinkiinteist&ouml;, kaikista asuinkiinteist&ouml;kentist&auml; laaditaan yhteenveto ja lasketaan tilastotiedot. Kaikista liikekiinteist&ouml;kentist&auml; laaditaan yhteenveto.
+            <p>Aineiston yhteenvedon voi laatia kahdella tavalla:
+                <ul>
+                    <li> <b>Kaikki kohteet yhteen kohteeseen</b> &ndash; Laskee tilastotiedot kaikista kohteista.
+                    </li>
+                    <li> <b>Kenttien mukaan</b> &ndash; Ryhmittelee kohteet m&auml;&auml;ritettyjen kenttien arvojen perusteella.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Oletetaan esimerkiksi, ett&auml; sinulla on sellaisten puiden aineistoryhm&auml;, jotka sis&auml;lt&auml;v&auml;t kentti&auml;, kuten  <i>treetype</i>, joiden arvot ovat <code>Vaahtera</code>, <code>Pihtakuusi</code> ja <code>M&auml;nty</code>, ja kent&auml;n <i>treeheight</i>, ja haluat tiet&auml;&auml; puiden keskipituuden <i>treeheight</i>. Jos laadit yhteenvedon kaikista kohteista ja teet niist&auml; yhden kohteen, l&ouml;yd&auml;t kaikkien puiden keskikorkeuden, ja lopputuloksena on yksi keskiarvo. Jos laadit yhteenvedon kent&auml;n <i>treeheight</i> perusteella, saat tulokseksi vaahterapuiden keskipituuden, pihtakuusien keskipituuden ja m&auml;ntyjen keskipituuden.
             </p>
         </div>
     </div>

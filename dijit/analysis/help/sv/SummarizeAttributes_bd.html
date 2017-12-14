@@ -42,12 +42,11 @@
 <div id="topics">
     <div id="toolDescription" class="regularsize">
         <h2>Summera attribut</h2><p/>
-        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Summera attribut"></h2>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Summera attribut diagram"></h2>
         <hr/>
-    <p>Det h&auml;r verktyget summerar alla matchande v&auml;rden i ett eller flera f&auml;lt och ber&auml;knar statistik p&aring; dem. Den mest grundl&auml;ggande statistiken &auml;r antalet geoobjekt som har summerats tillsammans, men du kan ocks&aring; ber&auml;kna mer avancerad statistik. 
-
+    <p> Det h&auml;r verktyget summerar alla matchande v&auml;rden i ett eller flera f&auml;lt och ber&auml;knar statistik p&aring; dem. Den mest grundl&auml;ggande statistiken &auml;r antalet geoobjekt som har summerats tillsammans, men du kan ocks&aring; ber&auml;kna mer avancerad statistik.
     </p>
-    <p>Anta till exempel att du har punktgeoobjekt i form av platser f&ouml;r butiker med ett f&auml;lt som representerar  <i>DISTRIKTSCHEFENS_NAMN</i> och nu vill summera kaffef&ouml;rs&auml;ljningen per chef. Du kan ange f&auml;ltet <i>DISTRIKTSCHEFENS_NAMN</i> som f&auml;ltet att l&ouml;sa upp p&aring;, och alla rader med data som representerar enskilda chefer summeras. Det inneb&auml;r att alla butiksplatser d&auml;r Chef1 &auml;r chef summeras till en rad med summerad statistik ber&auml;knad. I det h&auml;r fallet ber&auml;knas statistik som antalet butiker och summan av <i>TOTALF&Ouml;RS&Auml;LJNING</i> f&ouml;r alla butiker som Chef1 &auml;r chef f&ouml;r, samt f&ouml;r alla andra chefer som listas i f&auml;ltet <i>DISTRIKTSCHEFENS_NAMN</i>.
+    <p>Anta till exempel att du har punktgeoobjekt i form av platser f&ouml;r butiker med ett f&auml;lt som representerar  <i>DISTRICT_MANAGER_NAME</i>, och nu vill summera kaffef&ouml;rs&auml;ljningen per chef. Du kan ange f&auml;ltet <i>DISTRIKTSCHEFENS_NAMN</i> som f&auml;ltet att l&ouml;sa upp p&aring;, och alla rader med data som representerar enskilda chefer summeras. Det inneb&auml;r att alla butiksplatser d&auml;r <pre>Manager1</pre> &auml;r chef summeras till en rad, d&auml;r summerad statistik &auml;r ber&auml;knad. I det h&auml;r fallet ber&auml;knas statistik som antalet butiker och summan av <i>TOTAL_SALES</i> f&ouml;r alla butiker som <pre>Manager1</pre> &auml;r chef f&ouml;r,, liksom f&ouml;r alla andra chefer som listas i f&auml;ltet <i>DISTRICT_MANAGER_NAME</i>.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -62,10 +61,19 @@
         </div>
     </div>
     <div id="fields">
-        <div><h2>Välj vilka fält som ska summeras</h2></div>
+        <div><h2>Välj hur du vill summera data</h2></div>
         <hr/>
         <div>
-            <p>Lista &ouml;ver f&auml;lt fr&aring;n indatalagret. Valda f&auml;lt summeras och anv&auml;nds f&ouml;r att ber&auml;kna statistik. Om du till exempel har valt ett f&auml;lt med namnet  <i>Fastighetstyp</i> med v&auml;rdena aff&auml;rsfastighet och bostadsfastighet, summeras alla bostadsf&auml;lt tillsammans, med summeringsstatistik ber&auml;knad, och alla aff&auml;rsfastighetsf&auml;lt summeras tillsammans.
+            <p>Det finns tv&aring; s&auml;tt att summera data:
+                <ul>
+                    <li> <b>Alla geoobjekt till ett enda geoobjekt</b> &ndash; Ber&auml;knar statistik p&aring; alla geoobjekt.
+                    </li>
+                    <li> <b>Efter f&auml;lt</b> &ndash; Grupperar geoobjekt efter samma v&auml;rden i angivna f&auml;lt.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Anta att du till exempel har ett dataset med tr&auml;d som inneh&aring;ller f&auml;lt med  <i>treetype</i> och v&auml;rdena <code>L&ouml;nn</code>, <code>Fur</code> och <code>Gran</code>, samt f&auml;ltet <i>treeheight</i>, och du vill hitta medelv&auml;rdet f&ouml;r <i>treeheight</i>. Om du summerar alla geoobjekt till ett geoobjekt hittar du medelv&auml;rdet f&ouml;r tr&auml;dh&ouml;jden f&ouml;r alla tr&auml;d, och resultatet presenteras som ett medelv&auml;rde. Om du summerar efter f&auml;ltet <i>treeheight</i>, f&aring;r du ett medelv&auml;rde f&ouml;r l&ouml;nntr&auml;d, ett medelv&auml;rde f&ouml;r furor och ett medelv&auml;rde f&ouml;r granar.
             </p>
         </div>
     </div>

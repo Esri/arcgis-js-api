@@ -51,14 +51,14 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="targetLayer">
-        <div><h2>Hedef katman seçin</h2></div>
+        <div><h2>Hedef katman seç</h2></div>
         <hr/>
         <div>
             <p>Birleşim katmanından alacağı &ouml;znitelikleri kendi tablosuna ekleyecek olan katman.
             </p>
             <p> <b>Yakın</b> mekansal ilişkisini kullanan analiz izd&uuml;ş&uuml;ml&uuml; bir koordinat sistemi gerektirir. <b>İşleme koordinat sistemini</b> <b>Analiz Ortamları</b> i&ccedil;inden ayarlayabilirsiniz. İşleme koordinat sisteminiz izd&uuml;ş&uuml;ml&uuml; bir koordinat sistemine ayarlanmamış ise, <b>Analizi &Ccedil;alıştır</b>dığınızda bu ayarlamayı yapmanız istenir.
             </p>
-            <p>Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, a&ccedil;ılan listenin en altından  <b>Katmanlara G&ouml;zat</b> &ouml;ğesini belirleyerek big data dosya paylaşımı veri k&uuml;mesi veya detay katmanı i&ccedil;eriğinize g&ouml;z atabilirsiniz.
+            <p>Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, a&ccedil;ılan listenin en altından  <b>Katmanlara G&ouml;zat</b> &ouml;gesini belirleyerek b&uuml;y&uuml;k veri dosya paylaşımı veri k&uuml;mesi veya detay katmanı i&ccedil;eriğinize g&ouml;z atabilirsiniz.
             </p>
         </div>
     </div>
@@ -68,7 +68,7 @@
         <div>
             <p>&Ouml;znitelikleri i&ccedil;eren ve hedef katmana eklenecek olan birleşim katmanı.
             </p>
-            <p>Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, a&ccedil;ılan listenin en altından  <b>Katmanlara G&ouml;zat</b> &ouml;ğesini belirleyerek big data dosya paylaşımı veri k&uuml;mesi veya detay katmanı i&ccedil;eriğinize g&ouml;z atabilirsiniz.
+            <p>Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, a&ccedil;ılan listenin en altından  <b>Katmanlara G&ouml;zat</b> &ouml;gesini belirleyerek b&uuml;y&uuml;k veri dosya paylaşımı veri k&uuml;mesi veya detay katmanı i&ccedil;eriğinize g&ouml;z atabilirsiniz.
             </p>
         </div>
     </div>
@@ -146,7 +146,7 @@
         </div>
     </div>
     <div id="temporalRelationship">
-        <div><h2>Zamansal ilişki seçin</h2></div>
+        <div><h2>Zaman ilişkisi seçin</h2></div>
         <hr/>
         <div>
             <p>Detayların birbirine birleştirilip birleştirilmeyeceğini belirleyen zamansal ilişki. Bu se&ccedil;enek yalnızca her iki katmanda da zaman etkinleştirilmişse kullanılabilir ve kullanılabilir ilişkiler girdi detayları i&ccedil;in kullanılan zaman t&uuml;r&uuml;ne (anlık veya aralıklı) bağlı olur. Kullanılabilir ilişkiler aşağıdakileri kapsar:
@@ -206,7 +206,7 @@
         <div><h2>İstatistik ekle (isteğe bağlı)</h2></div>
         <hr/>
         <div>
-            <p>Birleştirme işlemi   <b>Bire   bir</b> ise, birleştirilen detaylarınızda istatistikleri hesaplayabilirsiniz. Varsayılan olarak t&uuml;m istatistikler hesaplanır.
+            <p>Birleştirme işlemi  <b>Bire bir birleştir</b> ise, birleştirilen detaylarınızda istatistikleri hesaplayabilirsiniz. Varsayılan olarak t&uuml;m istatistikler hesaplanır.
             </p>
             <p>&Ouml;zetlenen detaylarla ilgili istatistikleri hesaplayabilirsiniz. Sayısal alanlarda aşağıdakileri hesaplayabilirsiniz:
                 <ul>
@@ -248,7 +248,7 @@
         <div>
             <p>Belirtilen alanlar i&ccedil;in bir koşul uygular. Yalnızca bu koşulları karşılayan alanlara sahip detaylar birleştirilir.
             </p>
-            <p>&Ouml;rneğin, yalnızca  <i>health_spending</i> değerinin <i>gelir</i> &ouml;ğesinin y&uuml;zde 20'sinden daha b&uuml;y&uuml;k olduğu detaylara sahip bir veri k&uuml;mesi i&ccedil;in birleştirme uygulamak istediğimizi varsayalım.  Bunu yapmak i&ccedil;in <code>target.health_spending &gt; (join.income * .20)</code> birleştirme koşulunu, ilk veri k&uuml;mesindeki <i>health_spending</i> (veri k&uuml;mesi detaylarının i&ccedil;inde birleştirileceği) alanını ve ikinci veri k&uuml;mesinden <i>gelir</i> alanına (birleştirilecek veri k&uuml;mesine) uygulayın.
+            <p>&Ouml;rneğin, yalnızca  <i>health_spending</i> değerinin <i>gelir</i> &ouml;gesinin y&uuml;zde 20'sinden daha b&uuml;y&uuml;k olduğu detaylara sahip bir veri k&uuml;mesi i&ccedil;in birleştirme uygulamak istediğimizi varsayalım.  Bunu yapmak i&ccedil;in, <code>$target[&quot;health_spending&quot;] &gt; ($join[&quot;income&quot;] * .20)</code> birleştirme koşulunu, ilk veri k&uuml;mesindeki <i>health_spending</i> (veri k&uuml;mesi detaylarının i&ccedil;inde birleştirileceği) alanını ve ikinci veri k&uuml;mesindeki <i>gelir</i> alanını (birleştirilecek veri k&uuml;mesi) kullanarak uygulayın.
             </p>
             <p>Birleştirme koşulları, ifade hesaplayıcı kullanılarak uygulanabilir.
             </p>

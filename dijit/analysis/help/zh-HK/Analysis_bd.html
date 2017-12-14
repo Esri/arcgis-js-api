@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="bdToolbox">
-        <p>大數據分析會跨 ArcGIS GeoAnalytics Server 分配分析工作。這能讓您運用多部電腦的功能以更快地分析更多資料。可用的工具如下所示：
+        <p>GeoAnalytics 會跨 ArcGIS GeoAnalytics Server 分配分析工作。這能讓您運用多部電腦的功能以更快地分析更多資料。可用的工具如下所示：
             <ul>
                 <li> <b>匯聚點</b>
                 </li>
@@ -53,6 +53,8 @@
                 </li>
                 <li> <b>範圍內摘要</b>
                 </li>
+                <li> <b>偵測事件</b>
+                </li>
                 <li> <b>尋找相似位置</b>
                 </li>
                 <li> <b>計算密度</b>
@@ -63,10 +65,14 @@
                 </li>
                 <li> <b>複製到 Data Store</b>
                 </li>
+                <li> <b>計算欄位</b>
+                </li>
+                <li> <b>來自表格的地理編碼位置</b>
+                </li>
             </ul>
             
         </p>
-        <p>大數據分析著重在分析空間和時態模式的大數據。
+        <p>GeoAnalytics 著重在分析空間和時態模式的大數據。
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -125,11 +131,11 @@
 <hr/>
             <p>使用圖徵圖層或表列資料，您可以根據輸入圖層或表格之間的特定關係來加入圖徵和記錄。加入將由空間、時態和屬性關係判定，並可選擇性地計算摘要統計資料。
             </p>
-            <p> 例如
+            <p>例如
                 <ul>
                     <li>使用時間提供犯罪事件的點位置、在自身中加入犯罪資料、指定彼此距離 1 公里內之犯罪的空間關係，以及發生時間不到 1 小時的連續犯罪，以判定是否存在與空間和時間密切相關的連續犯罪。
                     </li>
-                    <li> 提供一個含人口統計資訊的郵遞區號表，及一個表示住宅區建築物的區域圖徵，將人口統計資訊加入住宅，讓每一個住宅現在都有資訊。
+                    <li>提供一個含人口統計資訊的郵遞區號表，及一個表示住宅區建築物的區域圖徵，將人口統計資訊加入住宅，讓每一個住宅現在都有資訊。
                     </li>
                 </ul>
                 
@@ -140,7 +146,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>重新建報軌跡</h2></td>
+                    <td><h2>重新建構軌跡</h2></td>
                     <td>
                     <img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" class="titleImage" alt="重新建構軌跡">
                     </td>
@@ -153,7 +159,7 @@
                 <ul>
                     <li>提供颶風測量的點位置和時間，計算平均風速，及颶風的最大風壓。
                     </li>
-                    <li>使用 100 公里容器，按州尋找特許經營位置的最高和最低的每月營收。
+                    <li>使用船隻的 GPS 測量， 將船隻路徑重新建構為線。
                     </li>
                 </ul>
                 
@@ -166,7 +172,7 @@
                 <tbody><tr>
                     <td><h2>摘要屬性</h2></td>
                     <td>
-                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="摘要屬性">
+                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="摘要屬性 圖">
                     </td>
                 </tr></tbody>
             </table>
@@ -213,12 +219,59 @@
         <hr/>
         <p>這些工具用於識別滿足多個不同指定條件的區域。 
             <ul>
+                <li> <b>偵測事件</b>使用具備時間功能的圖層來判定哪些圖徵符合指定的條件。
+                </li>
+                <li> <b>來自表格的地理編碼位置</b>會將位址轉換至座標。
+                </li>
                 <li> <b>尋找相似位置</b>可根據指定的條件，尋找與一個或多個參考位置最相似的位置。
                 </li>
             </ul>
             
         </p>
     </div>
+        <div id="DetectIncidentsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>偵測事件</h2></td>
+                    <td>
+                    <img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" class="titleImage" alt="偵測事件">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> <img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="偵測事件">
+            </p>
+            <p>此工具使用點、線、區域或表格之具備時間功能的圖層來表示即時時間。藉助循序排序的圖徵（稱為軌跡），此工具可判定哪些圖徵是感興趣的事件。事件是由您指定的條件決定。
+            </p>
+            <p>例如
+                <ul>
+                    <li>根據風速屬性，偵測類別 4  颶風的颶風測量。
+                    </li>
+                    <li>使用代表船速的欄位來使用船隻移動的 GPS 測量，尋找大於前五次測量平均值 1.5 倍的測量。
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="GeocodeLocationsfromTableTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>來自表格的地理編碼位置</h2></td>
+                    <td>
+                    <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" class="titleImage" alt="來自表格的地理編碼位置">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" alt="來自表格的地理編碼位置">
+            </p>
+            <p>將地址轉換成座標。在大數據檔分享表格上使用此工具。
+            </p>
+            <br/>
+        </div>
         <div id="FindSimilarLocationsTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -232,7 +285,7 @@
 <hr/>
             <p>根據您所指定的條件，測量候選搜尋圖層中的位置與一個或多個參考位置之間的相似性，藉此尋找相似的位置。
             </p>
-            <p> 例如
+            <p>例如 
                 <ul>
                     <li>檢查員工數和年銷售額來找出十家最類似的雜貨店。
                     </li>
@@ -262,14 +315,14 @@
                 <tbody><tr>
                     <td><h2>計算密度</h2></td>
                     <td>
-                    <img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" class="titleImage" alt="Calculate Density">
+                    <img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" class="titleImage" alt="計算密度">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
             <p>「計算密度」工具透過將已知數量的某種現象（表示為點的屬性）散佈到整個地圖上，來從點圖徵建立密度地圖。會導出表示密度的區域圖層結果。
             </p>
-            <p> 例如
+            <p>例如
                 <ul>
                     <li>計算某郡的醫院密度。結果圖層將顯示容易到達醫院和不容易到達醫院的區域，此資訊可用於確定新建醫院的位置。
                     </li>
@@ -328,7 +381,7 @@
 <hr/>
             <p>緩衝區是以點、線或多邊形圖徵為起點並涵蓋已知距離的區域。
             </p>
-            <p> 例如
+            <p>例如
                 <ul>
                     <li>使用線性河流圖徵，將每一條河流緩衝河寬 50 倍，以判定提議的河岸邊。
                     </li>
@@ -340,11 +393,13 @@
             <br/>
         </div>
     <div id="ManageDataCategory" class="smallsize">
-        <h2>管理數據</h2>
+        <h2>管理資料</h2>
         <hr/>
         <p>這些工具是使用於地理和表列資料的日常管理。
             <ul>
-                <li> <b>複製到 Data Store</b>會將資料複製到您的 ArcGIS Data Store，並在您的 Web GIS 中建立圖層。
+                <li> <b>計算欄位</b>可建立新欄位或修改現有的欄位，並在您的內容中建立新圖層。
+                </li>
+                <li> <b>複製到 Data Store</b> 會將資料複製到您的 ArcGIS Data Store，並在您的內容中建立圖層。
                 </li>
             </ul>
             
@@ -361,12 +416,35 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>將輸入圖徵圖層或表格複製到  ArcGIS Data Store，並在 Web GIS 中建立圖層。 </p>
-            <p> 例如
+            <p>將輸入圖徵圖層或表格複製到  ArcGIS Data Store，並在  ArcGIS Enterprise 中於您的內容中建立圖層。 </p>
+            <p>例如
                 <ul>
-                    <li> 將大數據檔分享中的 <code>.csv</code> 檔案集合，複製到視覺化的時空資料儲存庫。
+                    <li>將大數據檔分享中的  <code>.csv</code> 檔案集合，複製到視覺化的時空資料儲存庫。
                     </li>
                     <li>將時空資料儲存庫中儲存的目前地圖範圍中的圖徵，複製到關聯式資料儲存庫。
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="CalculateFieldTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>計算欄位</h2></td>
+                    <td>
+                    <img src="../images/GUID-059C9BE7-7B00-49C8-9917-B0EAEA3DA19D-web.png" class="titleImage" alt="計算欄位">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>計算全新或現有欄位的值，並在  ArcGIS Enterprise 中於您的內容中建立圖層。 </p>
+            <p>例如
+                <ul>
+                    <li>將名為  <i>total</i> 的現有欄位修改為來自欄位 <i>total_2016</i>、 <i>total_2017</i> 和 <i>total_2018</i> 的收入總和。
+                    </li>
+                    <li>建立新欄位，根據 <i>風速</i>和 <i>污染物</i>等欄位值來分類危險級別。
                     </li>
                 </ul>
                 

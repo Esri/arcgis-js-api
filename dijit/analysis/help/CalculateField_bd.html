@@ -48,7 +48,7 @@
     </p>
     <p>For example, suppose you want to modify an existing field named  <i>TotalSales</i>. You want the field to be represented by the sum of the total sales in 2016 and 2017. Using those fields in the expression, you calculate the field value as <pre>$feature[&quot;Sales2016&quot;] + $feature[&quot;Sales2017&quot;]</pre>.
     </p>
-    <p>Using another example, suppose you have GPS measurements that record the location, time,  bus ID, and speed of the busses in a city. We want to create a new field called  <i>SpeedFrom3</i> that averages the speed of the last 3 recorded GPS measurements for each feature. For this calculation we would use a track aware calulation, where the track is a bus denoted by the bus ID.    The calculation to determine the average speed of the previous 3 time steps is <pre>average($track.field[&quot;speed&quot;].history(-2), $track.field[&quot;speed&quot;].history(-3), $track.field[&quot;speed&quot;].history(-4)]</pre>. 
+    <p>Using another example, suppose you have GPS measurements that record the location, time,  bus ID, and speed of the busses in a city. We want to create a new field called  <i>SpeedFrom3</i> that averages the speed of the last 3 recorded GPS measurements for each feature. For this calculation we would use a track aware calculation, where the track is a bus denoted by the bus ID.    The calculation to determine the average speed of the previous 3 time steps and the current time step is <pre>average($track.field[&quot;speed&quot;].history(-4))</pre>.
     </p>
     </div>
     <!--Parameter divs for each param-->

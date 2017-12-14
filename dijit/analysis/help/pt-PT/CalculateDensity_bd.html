@@ -42,22 +42,22 @@
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Calcular Densidade</h2><p/>
-        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Calculate Density"></h2>
+        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Calcular Densidade"></h2>
         <hr/>
-    <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas classified from least dense to most dense.   
+    <p>A ferramenta Calcular Densidade cria um mapa de densidade a partir de elementos de ponto espalhando quantidades conhecidas de determinado fen&oacute;meno (representados como atributos dos pontos) pelo mapa. O resultado &eacute; uma camada de &aacute;reas classificadas da menos densa para a mais densa.   
 
     </p>
-    <p>For point input, each point should represent the location of some event or incident, and the result layer represents a count of the incident per unit area.  A higher density value in a new location means that there are more points near that location.  In many cases, the result layer can be interpreted as a risk surface for future events. For example, if the input points represent locations of lightning strikes, the result layer can be interpreted as a risk surface for future lightning strikes.
+    <p>Para a entrada de ponto, cada ponto deve representar a localiza&ccedil;&atilde;o de algum evento ou incidente, e a camada resultado representa uma contagem do incidente por unidade de &aacute;rea. Um valor de densidade mais elevado numa nova localiza&ccedil;&atilde;o significa que existem mais pontos perto desse local. Em muitos casos, a camada de resultado pode ser interpretada como uma superf&iacute;cie de risco para futuros eventos. Por exemplo, se os pontos de entrada representam locais de queda de rel&acirc;mpagos, a camada resultado pode ser interpretada como uma superf&iacute;cie de risco para quedas de raios futuras.
     </p>
-    <p>Other use cases of this tool include the following:
+    <p>Outros casos de uso desta ferramenta incluem o seguinte:
         <ul>
-            <li>Creating crime-density maps to help police departments properly allocate resources to high crime areas.
+            <li>Cria&ccedil;&atilde;o de mapas de densidade de crime para ajudar os departamentos de pol&iacute;cia a alocar adequadamente os recursos a &aacute;reas de alta criminalidade.
             </li>
-            <li>Calculating densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to decide where new hospitals should be built.
+            <li>Calculando densidades de hospitais dentro de um munic&iacute;pio. A camada resultado mostrar&aacute; as &aacute;reas com acessibilidades alta e baixa para os hospitais, e esta informa&ccedil;&atilde;o pode ser usada para decidir onde o novo deve ser constru&iacute;do.
             </li>
-            <li>Identifying areas that are at high risk of forest fires based on historical locations of forest fires.
+            <li>Identificar &aacute;reas que est&atilde;o em risco elevado de inc&ecirc;ndios florestais com base em locais hist&oacute;ricos de inc&ecirc;ndios florestais.
             </li>
-            <li>Locating communities that are far from major highways in order to plan where new roads should be constructed.
+            <li>Localizar as comunidades que est&atilde;o longe de auto-estradas, a fim de planejar onde as novas estradas devem ser constru&iacute;das.
             </li>
         </ul>
         
@@ -68,7 +68,7 @@
         <div><h2>Selecionar uma camada de pontos a partir da qual calcular densidade</h2></div>
         <hr/>
         <div>
-            <p>The point layer on which the density will be calculated.
+            <p>A camada de pontos a partir da qual a densidade ser&aacute; calculada.
             </p>
             <p>Para al&eacute;m de selecionar uma camada do seu mapa, pode selecionar  <b>Explorar Camadas</b> na parte inferior da lista pendente para navegar at&eacute; aos seus conte&uacute;dos de um conjunto de dados de partilha de big data ou camada de elementos.
             </p>
@@ -78,9 +78,9 @@
         <div><h2>Selecionar um ou mais campos nos quais calcular densidade (opcional)</h2></div>
         <hr/>
         <div>
-            <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
+            <p>Forne&ccedil;a um ou mais campos especificando o n&uacute;mero de incidentes em cada local. Por exemplo, se tem pontos que representam as cidades, pode usar um campo que representa a popula&ccedil;&atilde;o da cidade, como o campo de contagem, e a camada de densidade populacional resultante ir&aacute; calcular as densidades populacionais maiores perto de cidades com popula&ccedil;&otilde;es maiores.
             </p>
-            <p>The density for the count of points will always be calculated.   If no fields are selected, each location will be assumed to represent a single count.
+            <p>A densidade para a contagem de pontos ser&aacute; sempre calculada.   Caso n&atilde;o sejam selecionados quaisquer campos, assumir-se-&aacute; que cada local representa uma &uacute;nica contagem.
             </p>
         </div>
     </div>
@@ -88,7 +88,7 @@
         <div><h2>Selecionar uma forma de caixa</h2></div>
         <hr/>
         <div>
-            <p>The shape of bins that points are aggregated into and used for the density calculation.
+            <p>O formato de caixas &agrave;s quais os pontos est&atilde;o agregados e utilizado para o c&aacute;lculo da densidade.
             </p>
             <p>An&aacute;lise utilizando caixas  <b>Quadrado</b> ou <b>Hex&aacute;gono</b> requerem um ambiente de coordenadas projetadas. Pode definir o <b>Sistema de coordenadas de processamento</b> nos <b>Ambientes de An&aacute;lise</b>. Se o seu sistema de coordenadas projetado n&atilde;o se encontra definido para um sistema de coordenadas projetado, ser&aacute; instado a defini-lo quando <b>Correr a An&aacute;lise</b>.
             </p>
@@ -98,7 +98,7 @@
         <div><h2>Selecionar o tamanho da caixa para agregação</h2></div>
         <hr/>
         <div>
-            <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
+            <p>O tamanho das caixas geradas. Para uma caixa quadrada, o tamanho representa a altura do quadrado. Para hex&aacute;gono, o tamanho representa a altura do hex&aacute;gono (a partir de lados paralelos).
             </p>
         </div>
     </div>
@@ -106,11 +106,11 @@
         <div><h2>Selecionar a ponderaçao de densidade a aplicar</h2></div>
         <hr/>
         <div>
-            <p>The type of weighting applied to the density calculation. There are two options:
+            <p>O tipo de pondera&ccedil;&atilde;o aplicado ao c&aacute;lculo da densidade. Existem duas op&ccedil;&otilde;es:
                 <ul>
-                    <li> <b>Uniform</b>&mdash;This calculates a magnitude per area.
+                    <li> <b>Uniforme</b>&mdash;Calcula uma magnitude por &aacute;rea.
                     </li>
-                    <li> <b>Kernel</b>&mdash;Applies a kernel function to fit a smooth tapered surface to each point.
+                    <li> <b>Kernel</b>&mdash;Aplica uma fun&ccedil;&atilde;o kernel para fazer corresponder uma superf&iacute;cie homog&eacute;nea c&oacute;nica  a cada ponto.
                     </li>
                 </ul>
                 
@@ -121,7 +121,7 @@
         <div><h2>Selecionar o tamanho do bairro</h2></div>
         <hr/>
         <div>
-            <p>The size of the area used to calculate the density. The neighborhood size must be larger than the bin size.
+            <p>O tamanho da &aacute;rea utilizada para calcular densidade. O tamanho da tem de ser superior ao tamanho da caixa.
             </p>
         </div>
     </div>
@@ -129,7 +129,7 @@
         <div><h2>Escolher as unidades de saída para densidade</h2></div>
         <hr/>
         <div>
-            <p>The desired output units of the density values. By default, this is set to square kilometers or square miles based on the default units specified in your profile. If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+            <p>As unidades de sa&iacute;da pretendidas para os valores de densidade. Por defeito, &eacute; definido para quil&oacute;metros quadrados ou milhas quadradas, com base nas unidades predefinidas especificadas no seu perfil. Caso os valores de densidade sejam muito reduzidos, pode aumentar o tamanho das unidades de &aacute;rea (por exemplo, de metros quadrados para quil&oacute;metros quadrados) para devolver valores mais elevados. Os valores apenas representam o resultado em escala.  
 
             </p>
         </div>

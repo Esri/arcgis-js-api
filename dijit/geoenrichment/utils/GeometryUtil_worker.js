@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
 !function(e){e.importScripts&&e.importScripts("./GeometryUtil_base.js"),e.addEventListener&&e.addEventListener("message",function(t){var s=t.data.rings;s.forEach(function(e){new GeometryUtil_base.RingInfo(e).generalize(t.data.maxAllowableOffset,.8)}),e.postMessage&&e.postMessage({rings:s})},!1)}(this);

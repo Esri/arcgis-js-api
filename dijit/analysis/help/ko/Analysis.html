@@ -67,7 +67,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>포인트 집약(Aggregate Points)</h2></td>
+                    <td><h2>포인트 집약 (Aggregate Points)</h2></td>
                     <td>
                     <img src="../images/GUID-60C59C66-3038-4D0E-8F6A-EC6C53FEAA02-web.png" class="titleImage" alt="포인트 집약">
                     </td>
@@ -115,9 +115,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>주변 요약</h2></td>
+                    <td><h2>다음 주변 요약 (Summarize Nearby)</h2></td>
                     <td>
-                    <img src="../images/GUID-A5033D27-81B6-42E7-BA38-50D25C1CCCCA-web.png" class="titleImage" alt="주변 요약">
+                    <img src="../images/GUID-A5033D27-81B6-42E7-BA38-50D25C1CCCCA-web.png" class="titleImage" alt="다음 주변 요약">
                     </td>
                 </tr></tbody>
             </table>
@@ -137,7 +137,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>다음 범위 내 요약(Summarize Within)</h2></td>
+                    <td><h2>다음 범위 내 요약 (Summarize Within)</h2></td>
                     <td>
                     <img src="../images/GUID-9B12DB3F-AA7B-41EB-87C6-D2DEC3D52DA9-web.png" class="titleImage" alt="다음 범위 내 요약">
                     </td>
@@ -182,10 +182,10 @@
             </p>
             <br/>
         </div>
-    <div id="FindLocationsCategory" class="regularsize">
-        <h2>위치 찾기</h2>
+    <div id="FindLocationsCategory" class="largesize">
+        <h2>위치 찾기 (Find Locations)</h2>
         <hr/>
-        <p>이러한 도구는 지정한 여러 조건을 충족하는 영역을 식별하는 데 사용됩니다.  이러한 조건은 속성 쿼리(예: 비어 있는 필지) 및 공간 쿼리(예: 강에서 1Km 이내)를 기반으로 할 수 있습니다.  기존 피처(예: 기존 필지)에서 영역을 선택하거나 모든 요구 사항을 충족하는 새 피처를 생성할 수 있습니다.
+        <p>이 도구를 사용하여 지정한 기준을 충족하는 피처를 식별 또는 생성합니다.  기준 유형은 사용하는 도구에 따라 다릅니다. 예를 들어, 기준은 공간 또는 속성 쿼리, 지정된 높이에서의 가시 영역, 특정 배수로 포인트의 하류 영역 또는 특정 교통 상황에서의 운전 시간을 기반으로 설정할 수 있습니다.
             <ul>
                 <li> <b>최상의 시설 선택</b> - 주어진 목표를 만족시키는 방식으로 시설에 필요한 위치를 할당하여 가장 적합한 위치를 선택합니다.
                 </li>
@@ -195,16 +195,18 @@
                 </li>
                 <li> <b>새 위치 파생</b> - 처리 범위의 위치에서 일련의 조건을 충족하는 새 영역을 생성합니다.
                 </li>
+                <li class="OnlineOnly"> <b>중심 찾기</b> - 입력 피처의 대표 중심(Centroid)을 찾습니다. 
+                </li>
                 <li> <b>기존 위치 찾기</b> - 레이어에서 일련의 조건을 충족하는 기존 영역을 검색합니다.
                 </li>
                 <li> <b>유사한 위치 찾기</b> - 지정한 조건에 따라 하나 이상의 참조 위치와 가장 유사한 위치를 찾습니다.
                 </li>
-                <li class="PortalOnly"> <b>테이블의 지오코드 위치</b> - 테이블의 주소를 좌표로 변환합니다.
+                <li class="PortalOnly"> <b>테이블의 지오코드 위치</b> - 테이블의 주소를 좌표로 변환합니다. 
                 </li>
                 <li> <b>하류 추적</b> - 지정한 위치에서 하류 방향의 흐름 경로를 결정합니다.
                 </li>
             </ul>
-             
+            
         </p>
         <p> 
         </p>
@@ -266,6 +268,21 @@
             </table>
 <hr/>
             <p>처리 범위에서 지정한 일련의 조건을 충족하는 새 피처를 생성합니다. 이러한 조건은 속성 쿼리(예: 비어 있는 필지) 및 공간 쿼리(예: 강에서 1.6Km 이내)를 기반으로 할 수 있습니다. 
+            </p>
+            <br/>
+        </div>
+        <div id="FindCentroidsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>중심 찾기</h2></td>
+                    <td>
+                    <img src="../images/GUID-75D9AF75-68C3-48BF-8062-D5499BD06978-web.png" class="titleImage" alt="중심 찾기">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>입력 멀티포인트, 라인 또는 영역 피처의 대표 중심(centroid)을 찾습니다.
             </p>
             <br/>
         </div>
@@ -463,7 +480,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>버퍼 생성</h2></td>
+                    <td><h2>버퍼 생성 (Create Buffers)</h2></td>
                     <td>
                     <img src="../images/GUID-7F4A8E4D-42E3-41C1-9238-16619CE65079-web.png" class="titleImage" alt="버퍼 생성">
                     </td>
@@ -480,7 +497,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>운전 시간 영역 생성</h2></td>
+                    <td><h2>운전 시간 영역 생성(Create Drive-Time Areas)</h2></td>
                     <td>
                     <img src="../images/GUID-6F629A09-768D-4C04-88A4-AB941811ADE9-web.png" class="titleImage" alt="운전 시간 영역 생성">
                     </td>

@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Portaal omgevingsinstellingen analyseren</h2><p/>
+        <h2>Environment Settings van Portalanalyse</h2><p/>
         <h2></h2>
         <hr/>
     <p> Omgevingsinstellingen voor analyse in Portal for ArcGIS en  ArcGIS Online. 
@@ -85,17 +85,17 @@
         </div>
     </div>
     <div id="storeAnalysisResults">
-        <div><h2>Analyseresultaten opslaan als een featureservice</h2></div>
+        <div><h2>Analyseresultaten opslaan als gehoste objectlagen</h2></div>
         <hr/>
         <div>
             
-            <p>Optie om aan te geven of het resultaat van uw analyse zal worden gemaakt als een objectlaag of als een objectverzameling.
+            <p>Optie om aan te geven of de resultaatlaag van uw analyse zal worden gemaakt als een objectverzameling of als een gehoste objectlaag. 
             </p>
             <p>
                 <ul>
-                    <li>Aangevinkt&mdash;De resultaten van uw analyse worden gemaakt als een objectlaag en een item wordt gemaakt in uw content. Dit is de standaardinstelling.
+                    <li>Aangevinkt&mdash;De resultaten van uw analyse maken een gehoste objectlaag en een item wordt gemaakt in uw content. Dit is de standaardinstelling.
                     </li>
-                    <li>Aangevinkt&mdash;De resultaten van uw analyse maken een objectverzameling. Objectverzamelingen worden opgeslagen in uw webmap.
+                    <li>Aangevinkt&mdash;De resultaten van uw analyse maken een objectverzameling.     
                     </li>
                 </ul>
                 
@@ -112,7 +112,7 @@
                 <ul>
                     <li> <b>Hetzelfde als invoer</b>&mdash;Het resultaat van uw analyse is in hetzelfde co&ouml;rdinaatsysteem als de invoer. Dit is de standaardinstelling.
                     </li>
-                    <li> <b>Zoals opgegeven</b>&mdash;Kies het co&ouml;rdinaatsysteem voor de resultaten van uw analyse. Als deze optie is geselecteerd, klikt u op het pictogram van de wereldbol om een lijst met bekende co&ouml;rdinaatsystemen, te selecteren of de ruimtelijke referentie WKID in het daarvoor bestemde vak toe te voegen.
+                    <li> <b>Zoals opgegeven</b>&mdash;Kies het co&ouml;rdinaatsysteem voor de resultaten van uw analyse. Als deze optie is geselecteerd, klikt u op het pictogram van de wereldbol om uit een lijst met bekende co&ouml;rdinaatsystemen te selecteren of de ruimtelijke referentie WKID in het daarvoor bestemde vak toe te voegen.
                     </li>
                     <li> <b>Laag
 &lt;name&gt;</b>&mdash;Kies een bestaande laag in uw webmap die gebruikt wordt om het co&ouml;rdinaatsysteem te bepalen van het resultaat van uw analyse.
@@ -134,7 +134,7 @@
                 <ul>
                     <li> <b>Hetzelfde als invoer</b>&mdash;Uw analyse wordt verwerkt is in hetzelfde co&ouml;rdinaatsysteem als de invoer. Dit is de standaardinstelling.
                     </li>
-                    <li> <b>Zoals opgegeven</b>&mdash;Kies het co&ouml;rdinaatsysteem om uw analyse te verwerken. Als deze optie is geselecteerd, klikt u op het pictogram van de wereldbol om een lijst met bekende co&ouml;rdinaatsystemen, te selecteren of de ruimtelijke referentie WKID in het daarvoor bestemde vak toe te voegen.
+                    <li> <b>Zoals opgegeven</b>&mdash;Kies het co&ouml;rdinaatsysteem om uw analyse te verwerken. Als deze optie is geselecteerd, klikt u op het pictogram van de wereldbol om uit een lijst met bekende co&ouml;rdinaatsystemen te selecteren of de ruimtelijke referentie WKID in het daarvoor bestemde vak toe te voegen.
                     </li>
                     <li> <b>Laag
 &lt;name&gt;</b>&mdash;Kies een bestaande laag van uw webmap. Het co&ouml;rdinatensysteem van de gekozen laag wordt gebruikt om het co&ouml;rdinatensysteem te bepalen dat wordt gebruikt om uw analyse te verwerken.
@@ -186,8 +186,7 @@
                     </li>
                     <li> <b>Zoals gespecificeerd</b>&mdash;Specificeer een numerieke waarde om de celgrootte in te stellen. Als dit is geselecteerd, is de standaardwaarde 1.
                     </li>
-                    <li> <b>Laag &lt;naam&gt;</b>&mdash;Stel
-de celgrootte in op de gekozen rasterlaag.
+                    <li> <b>Laag &lt;name&gt;</b>&mdash;Stelt de celgrootte in op de gekozen rasterlaag.
                     </li>
                 </ul>
                 
@@ -205,7 +204,7 @@ de celgrootte in op de gekozen rasterlaag.
                 </li>
                 <li>Als het analysemasker een raster is, worden alle cellen die een waarde hebben beschouwd om het masker te defini&euml;ren. Cellen in een maskerraster die NoData zijn worden als buiten het masker beschouwd en zijn NoData in de analyseresultaatlaag. 
                 </li>
-                <li>Als het analysemasker een objectlaag is, wordt het intern omgezet naar een raster op uitvoering. Om deze reden, moet u erop toezien dat
+                <li>Als het analysemasker een objectlaag is, wordt het intern omgezet naar een raster tijdens de uitvoering. Om deze reden, moet u erop toezien dat
  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank"></a> en <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank"></a> goed worden ingesteld voor uw analyse.
                 </li>
             </ul>
@@ -216,7 +215,7 @@ de celgrootte in op de gekozen rasterlaag.
         <div><h2>ArcGIS Data Store</h2></div>
         <hr/>
         <div>
-            <p>GeoAnalytische resultaten worden opgeslagen in een ArcGIS Data Store en weergegeven als een objectlaag in  Portal for ArcGIS. In de meeste gevallen moeten de resultaten worden opgeslagen in een spatiotemporele data-opslag. Dit is de standaardinstelling. Hier volgen redenen waarom u resultaten zou willen opslaan in een relationele data-opslag: 
+            <p>GeoAnalytische resultaten worden opgeslagen in een ArcGIS Data Store en weergegeven als een objectlaag in  Portal for ArcGIS. In de meeste gevallen moeten de resultaten worden opgeslagen in een spatiotemporele data-opslag. Dit is de standaardinstelling. Hier volgen redenen waarom u resultaten zou willen opslaan in een relationele datastore: 
                 <ul>
                     <li>Om uw resultaten te gebruiken voor portal-to-portal samenwerking
                     </li>

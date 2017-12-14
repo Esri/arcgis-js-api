@@ -42,12 +42,11 @@
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Resumir Atributos</h2><p/>
-        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Resumir Atributos"></h2>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Resumir Atributos diagrama"></h2>
         <hr/>
-    <p>Esta ferramenta resume todos os valores de compara&ccedil;&atilde;o em um ou mais campos e calcula as estat&iacute;sticas deles. A estat&iacute;stica mais b&aacute;sica &eacute; a contagem de fei&ccedil;&otilde;es que foi resumida, mas voc&ecirc; pode calcular estat&iacute;sticas mais avan&ccedil;adas tamb&eacute;m. 
-
+    <p> Esta ferramenta resume todos os valores correspondentes em um ou mais campos e calcula as estat&iacute;sticas deles. A estat&iacute;stica mais b&aacute;sica &eacute; a contagem de fei&ccedil;&otilde;es que foi resumida, mas voc&ecirc; pode calcular estat&iacute;sticas mais avan&ccedil;adas tamb&eacute;m.
     </p>
-    <p>Por exemplo, suponha que voc&ecirc; tenha fei&ccedil;&otilde;es de ponto de locais de armazenamento com um campo representando o  <i>DISTRICT_MANAGER_NAME</i> e voc&ecirc; deseja resumir as vendas de caf&eacute; por gerente. Voc&ecirc; pode especificar o campo <i>DISTRICT_MANAGER_NAME</i> como o campo para dissolver e todas as linhas de dados representando os gerentes individuais que ser&atilde;o resumidos. Isto significa que todos locais de armazenamento que s&atilde;o gerenciados por Manager1 ser&atilde;o resumidos em uma linha com estat&iacute;sticas sum&aacute;rias calculadas. Nesta inst&acirc;ncia, a estat&iacute;stica como contagem do n&uacute;mero de lojas e a soma de <i>TOTAL_SALES</i> para todas as lojas que o Manager1 gerencia seriam calculadas como tamb&eacute;m para qualquer outro gerente listado no campo <i>DISTRICT_MANAGER_NAME</i>.
+    <p>Por exemplo, suponha que voc&ecirc; tenha fei&ccedil;&otilde;es de ponto de locais de armazenamento com um campo representando o   <i>DISTRICT_MANAGER_NAME</i>, e voc&ecirc; deseja resumir as vendas de caf&eacute; por gerente. Voc&ecirc; pode especificar o campo <i>DISTRICT_MANAGER_NAME</i> como o campo para dissolver e todas as linhas de dados representando os gerentes individuais que ser&atilde;o resumidos. Isto significa que todos locais de armazenamento que s&atilde;o gerenciados por <pre>Manager1</pre> ser&atilde;o resumidos em uma linha, com estat&iacute;sticas sum&aacute;rias calculadas. Nesta inst&acirc;ncia, estat&iacute;sticas como a contagem do n&uacute;mero de lojas e a soma do <i>TOTAL_SALES</i> para todas as lojas que <pre>Manager1</pre> gerencia seria calculada, como tamb&eacute;m para qualquer outro gerente listado no campo <i>DISTRICT_MANAGER_NAME</i> .
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -62,10 +61,19 @@
         </div>
     </div>
     <div id="fields">
-        <div><h2>Escolha os campos para resumir</h2></div>
+        <div><h2>Escolha como resumir seus dados</h2></div>
         <hr/>
         <div>
-            <p>Lista de campos a partir da camada de entrada.  Os campos selecionados ser&atilde;o resumidos e utilizados para calcular estat&iacute;sticas. Por exemplo, se voc&ecirc; escolheu um campo denominado  <i>PropertyType</i> com os valores de comerciais e residenciais, todos os campos residenciais seriam resumidos, com estat&iacute;stica sum&aacute;ria calculada e todos os campos comerciais seriam resumidos.
+            <p>H&aacute; dois caminhos para resumir seus dados:
+                <ul>
+                    <li> <b>Todas as fei&ccedil;&otilde;es em uma fei&ccedil;&atilde;o &uacute;nica</b>&mdash;Calcula estat&iacute;sticas em todas as fei&ccedil;&otilde;es.
+                    </li>
+                    <li> <b>Por campos</b>&mdash;Agrupa fei&ccedil;&otilde;es como valores em campos especificados.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Por exemplo, suponha que voc&ecirc; tinha um conjunto de dados de &aacute;rvores que inclu&iacute;a campos  <i>treetype</i> com valores <code>Maple</code>, <code>Fir</code> e <code>Pine</code>,  e um campo <i>treeheight</i>, e voc&ecirc; est&aacute; interessado em localizar a m&eacute;dia de <i>treeheight</i>. Se voc&ecirc; resumir todas as fei&ccedil;&otilde;es em uma fei&ccedil;&atilde;o &uacute;nica, voc&ecirc; localizar&aacute; a altura de &aacute;rvore m&eacute;dia de todas as &aacute;rvores, que resultar&aacute; em um valor m&eacute;dio. Se voc&ecirc; resumisse pelo campo <i>treeheight</i>, voc&ecirc; acabaria com uma m&eacute;dia para &aacute;rvores maple, uma m&eacute;dia para &aacute;rvores fir s, e uma m&eacute;dia para &aacute;rvores pine.
             </p>
         </div>
     </div>

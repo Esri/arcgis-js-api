@@ -85,7 +85,7 @@
                 </ul>
                 
             </p>
-            <p>Oletetaan esimerkiksi, ett&auml; haluamme l&ouml;yt&auml;&auml; automarketit kahden kilometrin et&auml;isyydell&auml; torista. T&auml;ss&auml; tapauksessa karttatasolla, johon liitet&auml;&auml;n, on yksi toria edustava kohde ja liitett&auml;v&auml;t kohteet edustavat paikallisia ruokakauppoja, joihin liittyy ominaisuustietoja, kuten kokonaisvuosimyynti.  <b>Liit&auml; kohteet</b> -ty&ouml;kalun avulla saamme selville, ett&auml; viisi ruokakauppaa t&auml;ytt&auml;v&auml;t kyseiset ehdot. Jos m&auml;&auml;ritimme <b>Liit&auml; yksi moneen</b> -liitostoiminnon, saamme tulokseksi viisi kohdetta ja jokainen rivi edustaa toria ja automarkettia. Jos m&auml;&auml;ritimme <b>Liit&auml; yksi moneen</b> -suhteen, saamme tulokseksi yhden toria edustavan kohteen ja koostetut tiedot automarketeista, kuten m&auml;&auml;r&auml;n (2), ja muita tilastotietoja, kuten vuosimyynnin.
+            <p>Oletetaan esimerkiksi, ett&auml; haluamme l&ouml;yt&auml;&auml; automarketit kahden kilometrin et&auml;isyydell&auml; torista. T&auml;ss&auml; tapauksessa karttatasolla, johon liitet&auml;&auml;n, on yksi toria edustava kohde ja liitett&auml;v&auml;t kohteet edustavat paikallisia ruokakauppoja, joihin liittyy ominaisuustietoja, kuten kokonaisvuosimyynti.  <b>Liit&auml; kohteet</b> -ty&ouml;kalun avulla saamme selville, ett&auml; viisi ruokakauppaa t&auml;ytt&auml;v&auml;t kyseiset ehdot. Jos m&auml;&auml;ritimme <b>Liit&auml; yksi moneen</b> -liitostoiminnon, saamme tulokseksi viisi kohdetta ja jokainen rivi edustaa toria ja automarkettia. Jos m&auml;&auml;ritimme <b>Liit&auml; yksi yhteen</b> -suhteen, saamme tulokseksi yhden toria edustavan kohteen ja koostetut tiedot automarketeista, kuten m&auml;&auml;r&auml;n (2), ja muita tilastotietoja, kuten vuosimyynnin.
             </p>
         </div>
     </div>
@@ -206,7 +206,7 @@
         <div><h2>Lisää tilastotiedot (valinnainen)</h2></div>
         <hr/>
         <div>
-            <p>Jos liitostoiminto on   <b>Liit&auml; yksi  yhteen</b>, voit laskea liitettyjen kohteiden tilastotiedot. Oletusarvoisesti kaikki kent&auml;t lis&auml;t&auml;&auml;n.
+            <p>Jos liitostoiminto on  <b>Liit&auml; yksi yhteen</b>, voit laskea liitettyjen kohteiden tilastotiedot. Oletusarvoisesti kaikki tilastotiedot lasketaan.
             </p>
             <p>Voit laskea tilastotiedot kohteista, joista on laadittu yhteenveto. Numerokentist&auml; voit laskea seuraavat tilastotiedot:
                 <ul>
@@ -248,7 +248,7 @@
         <div>
             <p>Ottaa ehdon k&auml;ytt&ouml;&ouml;n m&auml;&auml;ritettyihin kenttiin. Vain ne kentiss&auml; olevat kohteet, jotka t&auml;ytt&auml;v&auml;t n&auml;m&auml; ehdot, liitet&auml;&auml;n.
             </p>
-            <p>Esimerkki: Oletetaan, ett&auml; aineistoryhm&auml; halutaan liitt&auml;&auml; vain niille kohteille, joissa  <i>health_spending</i> on yli 20&nbsp;prosenttia <i>tuloista</i>.  Jotta t&auml;m&auml;n voi tehd&auml;, k&auml;yt&auml; liitosehtoa <code>target.health_spending &gt; (join.income * .20)</code> k&auml;ytt&auml;en <i>health_spending</i>-kentt&auml;&auml; ensimm&auml;isest&auml; aineistoryhm&auml;st&auml; (johon aineistoryhm&auml;n kohteet liitet&auml;&auml;n) ja <i>tulokentt&auml;&auml;</i> toisesta aineistoryhm&auml;st&auml; (aineistoryhm&auml;, joka liitet&auml;&auml;n).
+            <p>Esimerkki: Oletetaan, ett&auml; aineistoryhm&auml; halutaan liitt&auml;&auml; vain niille kohteille, joissa  <i>health_spending</i> on yli 20&nbsp;prosenttia <i>tuloista</i>.  Jotta t&auml;m&auml;n voi tehd&auml;, k&auml;yt&auml; liitosehtoa <code>$target[&quot;health_spending&quot;] &gt; ($join[&quot;income&quot;] * .20)</code> k&auml;ytt&auml;en <i>health_spending</i>-kentt&auml;&auml; ensimm&auml;isest&auml; aineistoryhm&auml;st&auml; (johon aineistoryhm&auml;n kohteet liitet&auml;&auml;n) ja <i>income</i>-kentt&auml;&auml; toisesta aineistoryhm&auml;st&auml; (aineistoryhm&auml;, joka liitet&auml;&auml;n).
             </p>
             <p>Liitosehdot voi ottaa k&auml;ytt&ouml;&ouml;n k&auml;ytt&auml;en laskinlauseketta.
             </p>

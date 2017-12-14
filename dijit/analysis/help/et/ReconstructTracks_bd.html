@@ -95,6 +95,8 @@
         <div>
             <p>Valem sisendobjekte &uuml;mbritseva puhvri kauguse arvutamiseks. Selle valemi saab luua puhverkalkulaatoriga, mis toetab lihtsaid operatsioone nagu liitmine, lahutamine, korrutamine ja jagamine. V&auml;&auml;rtuste arvutamiseks kasutatakse anal&uuml;&uuml;si koordinaats&uuml;steemi. Kiht peab olema tasapinnalises ristkoordinaatide s&uuml;steemis. Puhvri rakendamise korral peab tasapinnaliseks ristkoordinaatide s&uuml;steemiks olema funktsiooni  <b>Anal&uuml;&uuml;sikeskkonnad</b> abil m&auml;&auml;ratud t&ouml;&ouml;tlev koordinaats&uuml;steem.
             </p>
+            <p>Valem  <code>$feature.tuulekiirus * 1000</code> t&auml;hendab, et v&auml;lja <i>tuulekiirus</i> korrutatakse puhverv&auml;&auml;rtusega 1000. Puhverkalkulaatoris saab kasutada ka mitut v&auml;lja.
+            </p>
         </div>
     </div>
     <div id="timeSplit">
@@ -102,6 +104,20 @@
         <hr/>
         <div>
             <p>Radade t&uuml;keldamise aeg. Kui sisendpunktide v&otilde;i pol&uuml;goonide vahele j&auml;&auml;b pikem aeg kui ajal&otilde;ik, t&uuml;keldatakse need eri radadeks.
+            </p>
+            <p>Kui m&auml;&auml;rate ajal&otilde;igu ja vahemaal&otilde;igu, t&uuml;keldatakse rajad juhul, kui t&auml;idetud on &uuml;ks v&otilde;i m&otilde;lemad tingimused. 
+            </p>
+            <p>N&auml;iteks teil on punktobjektid, mis t&auml;histavad lendusid, kus raja v&auml;ljaks on lennuki ID. Lennuk v&otilde;ib teha mitu lendu ja seda t&auml;histatakse &uuml;he rajana. Kui te teate, et lendude vahel on &uuml;hetunnine paus, saaksite kasutada raja t&uuml;keldamiseks  <code>1 tundi</code> ja iga lend t&uuml;keldatakse sel juhul eraldi rajaks.
+            </p>
+        </div>
+    </div>
+    <div id="distanceSplit">
+        <div><h2>Valige vahemaa, mille järgi radasid tükeldada (valikuline)</h2></div>
+        <hr/>
+        <div>
+            <p> Radade t&uuml;keldamise vahemaa. Kui sisendpunktide v&otilde;i pol&uuml;goonide vahele j&auml;&auml;b suurem vahemaa kui vahemaal&otilde;ik, t&uuml;keldatakse need eri radadeks.
+            </p>
+            <p>Kui m&auml;&auml;rate ajal&otilde;igu ja vahemaal&otilde;igu, t&uuml;keldatakse rajad juhul, kui t&auml;idetud on &uuml;ks v&otilde;i m&otilde;lemad tingimused. 
             </p>
         </div>
     </div>
@@ -145,7 +161,7 @@
         <div><h2>Valige tulemite salvestamiseks mõni ArcGIS-i andmeladu</h2></div>
         <hr/>
         <div>
-            <p>GeoAnalyticsi tulemeid k&auml;sitletakse ArcGIS-i andmelaos salvedena ning need kuvatakse portaalis  Portal for ArcGIS objektikihtidena. &Uuml;ldjuhul salvestatakse tulemid ajalisruumilisse andmelattu &ndash; see on vaikimisi valitud. M&otilde;nel juhul on tulemid m&otilde;istlik salvestada relatsioonilisse andmelattu. Allpool on toodud m&otilde;ned p&otilde;hjused, miks oleks soovitatav tulemid salvestada relatsioonilisse andmelattu. 
+            <p>GeoAnalyticsi tulemeid k&auml;sitletakse ArcGIS-i andmelaos salvedena ning need kuvatakse asjakohaste  Portal for ArcGIS objektikihtidena. &Uuml;ldjuhul salvestatakse tulemid ajalisruumilisse andmelattu &ndash; see on vaikimisi valitud. M&otilde;nel juhul on tulemid m&otilde;istlik salvestada relatsioonilisse andmelattu. Allpool on toodud m&otilde;ned p&otilde;hjused, miks oleks soovitatav tulemid salvestada relatsioonilisse andmelattu. 
                 <ul>
                     <li>Saate tulemeid kasutada portaalidevahelises koost&ouml;&ouml;s.
                     </li>

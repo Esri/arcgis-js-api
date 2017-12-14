@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Configurações do Ambiente de Análise do Portal</h2><p/>
+        <h2>Configurações de Ambiente de Análise do Portal</h2><p/>
         <h2></h2>
         <hr/>
     <p> Configura&ccedil;&otilde;es de ambiente para an&aacute;lise no Portal for ArcGIS e  ArcGIS Online. 
@@ -85,17 +85,17 @@
         </div>
     </div>
     <div id="storeAnalysisResults">
-        <div><h2>Armazenar resultados de análise como serviços da feição</h2></div>
+        <div><h2>Armazenar resultados de análise como camadas de feição hospedadas</h2></div>
         <hr/>
         <div>
             
-            <p>Op&ccedil;&atilde;o para especificar se o resultado da sua an&aacute;lise ser&aacute; criado como uma camada de fei&ccedil;&atilde;o ou como uma cole&ccedil;&atilde;o de fei&ccedil;&atilde;o.
+            <p>Op&ccedil;&atilde;o para especificar se a camada de resultado criada a partir de sua an&aacute;lise ser&aacute; uma cole&ccedil;&atilde;o de fei&ccedil;&atilde;o ou uma camada de fei&ccedil;&atilde;o hospedada. 
             </p>
             <p>
                 <ul>
-                    <li>Marcado&mdash;Os resultados da sua an&aacute;lise criar&atilde;o uma camada de fei&ccedil;&atilde;o e um item ser&aacute; criado em seu conte&uacute;do. Este &eacute; o padr&atilde;o.
+                    <li>Marcado&mdash;Os resultados da sua an&aacute;lise criar&atilde;o uma camada de fei&ccedil;&atilde;o hospedada e um item ser&aacute; criado em seu conte&uacute;do. Este &eacute; o padr&atilde;o.
                     </li>
-                    <li>Desmarcado&mdash;Os resultados da sua an&aacute;lise criar&atilde;o uma cole&ccedil;&atilde;o de fei&ccedil;&atilde;o.    As cole&ccedil;&otilde;es de fei&ccedil;&atilde;o s&atilde;o armazenadas dentro do seu mapa da web.
+                    <li>Desmarcado&mdash;Os resultados da sua an&aacute;lise criar&atilde;o uma cole&ccedil;&atilde;o de fei&ccedil;&atilde;o.     
                     </li>
                 </ul>
                 
@@ -112,7 +112,7 @@
                 <ul>
                     <li> <b>Mesmo da Entrada</b>&mdash;O resultado da sua an&aacute;lise ser&aacute; do mesmo sistema de coordenadas que a entrada. Este &eacute; o padr&atilde;o.
                     </li>
-                    <li> <b>Como especificado</b>&mdash;Escolha o sistema de coordenadas dos resultados da sua an&aacute;lise.   Quando esta op&ccedil;&atilde;o for selecionada, clique no &iacute;cone de globo para selecionar a partir de uma lista dos sistemas de coordenadas conhecidos , ou adicionar a refer&ecirc;ncia espacial WKID na caixa fornecida.
+                    <li> <b>Como especificado</b>&mdash;Escolha o sistema de coordenadas dos resultados da sua an&aacute;lise.   Quando esta op&ccedil;&atilde;o for selecionada, clique no &iacute;cone de globo para selecionar a partir de uma lista dos sistemas de coordenadas conhecidos ou adicionar a refer&ecirc;ncia espacial WKID na caixa fornecida.
                     </li>
                     <li> <b>Camada
 &lt;name&gt;</b>&mdash;Escolha uma camada existente em seu mapa da web que ser&aacute; utilizada para determinar o sistema de coordenadas do resultado da sua an&aacute;lise.
@@ -134,10 +134,10 @@
                 <ul>
                     <li> <b>Mesmo da Entrada</b>&mdash;Sua an&aacute;lise ser&aacute; processada no mesmo sistema de coordenadas que a entrada. Este &eacute; o padr&atilde;o.
                     </li>
-                    <li> <b>Como especificado</b>&mdash;Escolha o sistema de coordenadas para processar sua an&aacute;lise.   Quando esta op&ccedil;&atilde;o for selecionada, clique no &iacute;cone de globo para selecionar a partir de uma lista dos sistemas de coordenadas conhecidos, ou adicionar a refer&ecirc;ncia espacial WKID na caixa fornecida.
+                    <li> <b>Como especificado</b>&mdash;Escolha o sistema de coordenadas para processar sua an&aacute;lise.   Quando esta op&ccedil;&atilde;o for selecionada, clique no &iacute;cone de globo para selecionar a partir de uma lista dos sistemas de coordenadas plana conhecidos ou adicionar a refer&ecirc;ncia espacial WKID na caixa fornecida.
                     </li>
                     <li> <b>Camada
-&lt;nome&gt;</b>&mdash;Escolha uma camada existente a partir do seu mapa da web.  O sistema de coordenadas da camada escolhida ser&aacute; utilizado para determinar o sistema de coordenadas para processar sua an&aacute;lise.
+&lt;name&gt;</b>&mdash;Escolha uma camada existente a partir do seu mapa da web.  O sistema de coordenadas da camada escolhida ser&aacute; utilizado para determinar o sistema de coordenadas para processar sua an&aacute;lise.
                     </li>
                 </ul>
                 
@@ -157,7 +157,7 @@
                     <li> <b>Como especificado</b>&mdash;Insira manualmente as coordenadas para definir a extens&atilde;o.
                     </li>
                     <li> <b>Camada
-&lt;nome&gt;</b>&mdash;Escolha uma camada existente a partir do seu mapa da web. A extens&atilde;o espacial da camada escolhida ser&aacute; utilizada para determinar a extens&atilde;o utilizada para processar sua an&aacute;lise. 
+&lt;name&gt;</b>&mdash;Escolha uma camada existente a partir do seu mapa da web. A extens&atilde;o espacial da camada escolhida ser&aacute; utilizada para determinar a extens&atilde;o utilizada para processar sua an&aacute;lise. 
                     </li>
                 </ul>
                 
@@ -186,8 +186,7 @@
                     </li>
                     <li> <b>Como especificado</b>&mdash;Especifica um valor num&eacute;rico para configurar o tamanho de c&eacute;lula. Se isto for selecionado, o valor padr&atilde;o &eacute; 1.
                     </li>
-                    <li> <b>Camada &lt;nome&gt;</b>&mdash;Configure
-o tamanho de c&eacute;lula na camada de raster escolhida.
+                    <li> <b>Camada &lt;name&gt;</b>&mdash;Configura o tamanho da c&eacute;lula para a camada raster escolhida.
                     </li>
                 </ul>
                 
@@ -205,7 +204,7 @@ o tamanho de c&eacute;lula na camada de raster escolhida.
                 </li>
                 <li>Se a m&aacute;scara de an&aacute;lise for um raster, todas as c&eacute;lulas que t&ecirc;m um valor ser&atilde;o consideradas para definir a m&aacute;scara. As c&eacute;lulas em um raster de m&aacute;scara que s&atilde;o NoData ser&atilde;o consideradas como fora da m&aacute;scara e ser&atilde;o NoData na camada resultante da an&aacute;lise. 
                 </li>
-                <li>Se a m&aacute;scara de an&aacute;lise for uma camada de fei&ccedil;&atilde;o, ela ser&aacute; internamente convertida para um raster na execu&ccedil;&atilde;o. Por esta raz&atilde;o, tome cuidado para garantir que
+                <li>Se a m&aacute;scara de an&aacute;lise for uma camada de fei&ccedil;&atilde;o, ela ser&aacute; interiormente convertida para um raster na execu&ccedil;&atilde;o. Por esta raz&atilde;o, tome cuidado para garantir que
  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank"></a> e <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank"></a> estejam apropriadamente configuradas para sua an&aacute;lise.
                 </li>
             </ul>
@@ -216,11 +215,11 @@ o tamanho de c&eacute;lula na camada de raster escolhida.
         <div><h2>ArcGIS Data Store</h2></div>
         <hr/>
         <div>
-            <p>Os resultados do GeoAnalytic s&atilde;o armazenados no ArcGIS Data Store e expostos como uma camada de fei&ccedil;&atilde;o no  Portal for ArcGIS. Na maioria dos casos, os resultados devem ser armazenados em um armazenamento de dados de espa&ccedil;o-tempo. Este &eacute; o padr&atilde;o. Abaixo est&atilde;o as raz&otilde;es pelas quais voc&ecirc; talvez queira armazenar resultados em um armazenamento de dados relacional: 
+            <p>Os resultados do GeoAnalytic s&atilde;o armazenados no ArcGIS Data Store e expostos como uma camada de fei&ccedil;&atilde;o no  Portal for ArcGIS. Na maioria dos casos, os resultados devem ser armazenados em um armazenamento de dados de espa&ccedil;o-tempo. Este &eacute; o padr&atilde;o. Os seguintes s&atilde;o raz&otilde;es pelo qual voc&ecirc; pode desejar armazenar os resultados em um armazenamento de dados relacional: 
                 <ul>
-                    <li>Para utilizar seus resultados no portal-na-colabora&ccedil;&atilde;o do portal
+                    <li>Para utilizar seus resultados no portal-para-colabora&ccedil;&atilde;o do portal
                     </li>
-                    <li>Para habilitar os recursos de sincroniza&ccedil;&atilde;o com seus resultados
+                    <li>Para habilitar os recursos de sincroniza&ccedil;&atilde;o com seus resultados.
                     </li>
                 </ul>
                 

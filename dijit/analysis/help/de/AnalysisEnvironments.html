@@ -85,17 +85,17 @@
         </div>
     </div>
     <div id="storeAnalysisResults">
-        <div><h2>Analyseergebnisse als Feature-Service speichern</h2></div>
+        <div><h2>Analyseergebnisse als gehostete Feature-Layer speichern</h2></div>
         <hr/>
         <div>
             
-            <p>Option, um anzugeben, ob das Ergebnis der Analyse als Feature-Layer oder Feature-Sammlung erstellt wird.
+            <p>Option, um anzugeben, ob das aus der Analyse resultierende Layer als Feature-Sammlung oder gehostetes Feature-Layer erstellt wird. 
             </p>
             <p>
                 <ul>
-                    <li>Aktiviert: Das Ergebnis der Analyse wird als Feature-Layer erstellt und im Inhalt wird ein Feld erzeugt. Dies ist die Standardeinstellung.
+                    <li>Aktiviert: Das Ergebnis der Analyse erstellt ein Feature-Layer und im Inhalt wird ein Feld erzeugt. Dies ist die Standardeinstellung.
                     </li>
-                    <li>Nicht aktiviert: Das Ergebnis der Analyse wird als Feature-Sammlung erstellt.    Feature-Sammlungen werden in der Webkarte gespeichert.
+                    <li>Nicht aktiviert: Das Ergebnis der Analyse wird als Feature-Sammlung erstellt.     
                     </li>
                 </ul>
                 
@@ -152,7 +152,7 @@
             </p>
             <p>
                 <ul>
-                    <li> <b>Standard</b>: Die  vom Werkzeug vorgegebene Ausdehnung wird verwendet.
+                    <li> <b>Standard</b>: Die vom Werkzeug vorgegebene Ausdehnung wird verwendet.
                     </li>
                     <li> <b>Wie angegeben</b>: Geben Sie manuell die Koordinaten ein, um die Ausdehnung zu definieren.
                     </li>
@@ -186,7 +186,7 @@
                     </li>
                     <li> <b>Wie angegeben</b>: Geben Sie einen numerischen Wert ein, um die Zellengr&ouml;&szlig;e festzulegen. Der Standardwert bei dieser Option lautet 1.
                     </li>
-                    <li> <b>Layer &lt;Name&gt;</b>: Legt die Zellengr&ouml;&szlig;e des gew&auml;hlten Raster-Layers fest.
+                    <li> <b>Layer &lt;Name&gt;</b>: Die Zellengr&ouml;&szlig;e des gew&auml;hlten Raster-Layers wird festgelegt.
                     </li>
                 </ul>
                 
@@ -204,7 +204,7 @@
                 </li>
                 <li>Wenn die Analysemaske ein Raster ist, werden alle Zellen, die einen Wert haben, bei der Definition der Maske ber&uuml;cksichtigt. Zellen in einem Masken-Raster, die NoData sind, liegen au&szlig;erhalb der Maske und werden zu NoData-Werten im Analyseergebnis-Layer. 
                 </li>
-                <li>Wenn die Analysemaske ein Feature-Layer ist, wird  sie bei der Ausf&uuml;hrung intern in ein Raster konvertiert. Deshalb sollten Sie sicherstellen, dass
+                <li>Wenn die Analysemaske ein Feature-Layer ist, wird sie bei der Ausf&uuml;hrung intern in ein Raster konvertiert. Deshalb sollten Sie sicherstellen, dass
  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank"></a> und <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank"></a> entsprechend f&uuml;r die Analyse eingestellt sind.
                 </li>
             </ul>
@@ -215,9 +215,9 @@
         <div><h2>ArcGIS Data Store</h2></div>
         <hr/>
         <div>
-            <p>GeoAnalytics-Ergebnisse werden in einem ArcGIS Data Store gespeichert und als Feature-Layer in  Portal for ArcGIS dargestellt. In den meisten F&auml;llen sollten Ergebnisse im raumzeitlichen Data Store gespeichert werden. Dies ist die Standardeinstellung. Speichern Sie Ergebnisse in einem Data Store vom Typ &quot;relational&quot;, wenn die folgenden Gr&uuml;nde zutreffen: 
+            <p>GeoAnalytics-Ergebnisse werden in einem ArcGIS Data Store gespeichert und als Feature-Layer in  Portal for ArcGIS dargestellt. In den meisten F&auml;llen sollten Ergebnisse in einem Data Store vom Typ &quot;spatiotemporal&quot; gespeichert werden. Dies ist die Standardeinstellung. Speichern Sie Ergebnisse in einem Data Store vom Typ &quot;relational&quot;, wenn die folgenden Gr&uuml;nde zutreffen: 
                 <ul>
-                    <li>Verwenden der Ergebnisse in-portal&uuml;bergreifender-Zusammenarbeit
+                    <li>Verwenden der Ergebnisse in portal&uuml;bergreifender Zusammenarbeit
                     </li>
                     <li>Aktivieren von Synchronisierungsfunktionen f&uuml;r Ihre Ergebnisse
                     </li>

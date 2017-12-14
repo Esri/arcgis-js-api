@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojox/charting/plot2d/StackedColumns","./labelsRendering/_ColumnsLabelRenderingFix"],function(e,n,d){return e([n,d],{_renderInside:function(e,n,d,o,r){var i=o.x+o.width/2,t=o.y+e.box.h-e.box.h*(e.numRows-1)/2;this.renderLabel(n,i,t,e.text,r,!0)}})});

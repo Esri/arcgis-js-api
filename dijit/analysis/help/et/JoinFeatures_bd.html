@@ -85,7 +85,7 @@
                 </ul>
                 
             </p>
-            <p>Oletame n&auml;iteks, et soovime leida k&otilde;ik kaubamajad, mis j&auml;&auml;vad turust 2 kilomeetri raadiusesse. Sellisel juhul on &uuml;hendataval kihil &uuml;ks objekt, mis t&auml;histab turgu ja &uuml;hendatavad objektid t&auml;histavad kohalikke toidupoode, millel on n&auml;iteks atribuut aastane kogul&auml;bim&uuml;&uuml;k.  <b>Objektide &uuml;hendamise t&ouml;&ouml;riista</b> abil leiame, et viis toidupoodi vastavad sellele kriteeriumile. Kui kasutaksime &uuml;hendamistoimingut <b>&Uuml;henda &uuml;ks mitmele</b>, saaksime tulemuseks viis objekti, kus iga rida t&auml;histab turgu ja kaubamaja. Kui kasutaksime toimingut <b>&Uuml;henda &uuml;ks &uuml;hele</b>, saaksime tulemuseks &uuml;he objekti, mis t&auml;histab turgu ja sisaldab kaubamajade teabe kokkuv&otilde;tet (nt arv 2) ning muud statistikat (nt aastast kogul&auml;bim&uuml;&uuml;ki).
+            <p>Oletame n&auml;iteks, et soovime leida k&otilde;ik kaubamajad, mis j&auml;&auml;vad turust kahe kilomeetri raadiusesse. Sellisel juhul on &uuml;hendataval kihil &uuml;ks objekt, mis t&auml;histab turgu ja &uuml;hendatavad objektid t&auml;histavad kohalikke toidupoode, millel on n&auml;iteks atribuut aastane kogul&auml;bim&uuml;&uuml;k.  <b>Objektide &uuml;hendamise t&ouml;&ouml;riista</b> abil leiame, et viis toidupoodi vastavad sellele kriteeriumile. Kui kasutaksime &uuml;hendamistoimingut <b>&Uuml;henda &uuml;ks mitmele</b>, saaksime tulemuseks viis objekti, kus iga rida t&auml;histab turgu ja kaubamaja. Kui kasutaksime toimingut <b>&Uuml;henda &uuml;ks &uuml;hele</b>, saaksime tulemuseks &uuml;he objekti, mis t&auml;histab turgu ja sisaldab kaubamajade teabe kokkuv&otilde;tet (nt arv 2) ning muud statistikat (nt aastast kogul&auml;bim&uuml;&uuml;ki).
             </p>
         </div>
     </div>
@@ -206,7 +206,7 @@
         <div><h2>Lisa statistika (valikuline)</h2></div>
         <hr/>
         <div>
-            <p> <b>&Uuml;ks &uuml;hele </b> &uuml;hendamine v&otilde;imaldab arvutada liidetud objektide statistika. Vaikimisi arvutatakse k&otilde;ik v&auml;ljad.
+            <p>Toiming  <b>&Uuml;henda &uuml;ks &uuml;hele </b> v&otilde;imaldab arvutada liidetud objektide statistika. Vaikimisi arvutatakse kogu statistika.
             </p>
             <p>Saate arvutada summeeritud objektide statistika. Numbriv&auml;ljadel saab arvutada j&auml;rgmised statistikud.
                 <ul>
@@ -248,7 +248,7 @@
         <div>
             <p>Rakendab m&auml;&auml;ratud v&auml;ljadele tingimuse. &Uuml;hendatakse ainult nende v&auml;ljadega objektid, mis vastavad tingimustele.
             </p>
-            <p>Oletame n&auml;iteks, et soovime andmestikus &uuml;hendada ainult need objektid, mille puhul on v&auml;lja  <i>health_spending</i> v&auml;&auml;rtus suurem kui 20% v&auml;lja <i>income</i> v&auml;&auml;rtusest.  Selleks rakendame &uuml;hendamistingimuse <code>target.health_spending &gt; (join.income * .20)</code> esimese andmestiku (andmestik, millega objekte &uuml;hendatakse) v&auml;ljale <i>health_spending</i> ja teise andmestiku (andmestik, mida &uuml;hendatakse) v&auml;ljale <i>income</i>.
+            <p>Oletame n&auml;iteks, et soovime andmestikus &uuml;hendada ainult need objektid, mille puhul on v&auml;lja  <i>health_spending</i> v&auml;&auml;rtus suurem kui 20% v&auml;lja <i>income</i> v&auml;&auml;rtusest.  Selleks rakendame &uuml;hendamistingimuse <code>$target[&quot;health_spending&quot;] &gt; ($join[&quot;income&quot;] * .20)</code> esimese andmestiku (andmestik, millega objekte &uuml;hendatakse) v&auml;ljale <i>health_spending</i> ja teise andmestiku (andmestik, mida &uuml;hendatakse) v&auml;ljale <i>income</i>.
             </p>
             <p>&Uuml;hendamistingimusi saab rakendada tingimuste kalkulaatori abil.
             </p>
@@ -258,7 +258,7 @@
         <div><h2>Vali andmeladu</h2></div>
         <hr/>
         <div>
-            <p>GeoAnalyticsi tulemeid k&auml;sitletakse ArcGIS-i andmelaos salvedena ning need kuvatakse portaalis  Portal for ArcGIS objektikihtidena. &Uuml;ldjuhul salvestatakse tulemid ajalisruumilisse andmelattu &ndash; see on vaikimisi valitud. M&otilde;nel juhul on tulemid m&otilde;istlik salvestada relatsioonilisse andmelattu. Allpool on toodud m&otilde;ned p&otilde;hjused, miks oleks soovitatav tulemid salvestada relatsioonilisse andmelattu. 
+            <p>GeoAnalyticsi tulemeid k&auml;sitletakse ArcGIS-i andmelaos salvedena ning need kuvatakse asjakohaste  Portal for ArcGIS objektikihtidena. &Uuml;ldjuhul salvestatakse tulemid ajalisruumilisse andmelattu &ndash; see on vaikimisi valitud. M&otilde;nel juhul on tulemid m&otilde;istlik salvestada relatsioonilisse andmelattu. Allpool on toodud m&otilde;ned p&otilde;hjused, miks oleks soovitatav tulemid salvestada relatsioonilisse andmelattu. 
                 <ul>
                     <li>Saate tulemeid kasutada portaalidevahelises koost&ouml;&ouml;s.
                     </li>

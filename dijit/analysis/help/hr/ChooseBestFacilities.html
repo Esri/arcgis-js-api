@@ -78,7 +78,7 @@
         </div>
     </div>
     <div id="allocateToExistingFacilities">
-        <div><h2>Dodijeli postojećim ustanovama</h2></div>
+        <div><h2>Dodijeli postojećim mjestima usluge</h2></div>
         <hr/>
         <div>
             <p>Upotrijebite ovaj cilj ako ne želite tražiti nove ustanove, nego rasporediti na postojeće ustanove koje mogu imati ograničen ili neograničen kapacitet.    
@@ -113,14 +113,14 @@
         <div><h2>Povećaj pokrivenost kapacitetom</h2></div>
         <hr/>
         <div>
-            <p>Upotrijebite ovaj cilj ako želite pronaći minimalni broj ustanova potrebnih da bi se pokrio dani postotak potražnje.    
+            <p>Upotrijebite ovaj cilj ako želite povećati količinu potražnje ustanova, ali ustanove imaju ograničene kapacitete.    
             </p>
             <p>Ovaj cilj odabire ustanove tako da se rasporedi maksimalna količina potražnje bez prema&scaron;ivanja kapaciteta ustanova. Sva potražnja svih lokacija potražnje dodjeljuje se najbližoj ustanovi s dostupnim kapacitetom (tj. ako bi dodjeljivanje lokacije potražnje prema&scaron;ilo dostupni kapacitet ustanove, lokacija potražnje neće se dodijeliti, umjesto dodjeljivanja dijela potražnje).
             </p> 
         </div>
     </div>
     <div id="coverAPercentageOfDemand">
-        <div><h2>Pokrij postotak potražnje</h2></div>
+        <div><h2>Postotak pokrivenosti potražnje</h2></div>
         <hr/>
         <div>
             <p>Upotrijebite ovaj cilj ako želite pronaći minimalni broj ustanova potrebnih da bi se pokrio dani postotak potražnje.
@@ -132,17 +132,17 @@
         </div>
     </div>
     <div id="measure">
-        <div><h2>Mjera</h2></div>
+        <div><h2>Izmjeri</h2></div>
         <hr/>
         <div>
-            <p>Kao &scaron;to je slučaj s drugim alatima koji u analizu uključuju putovanje, možete odrediti mjeri li se putovanje putem udaljenosti ili vremena i odabrati među raznim načinima putovanja kao &scaron;to su vrijeme hodanja, vrijeme vožnje, udaljenost vožnje ruralnim područjem i tako dalje. Dostupne načine putovanja određuje administrator va&scaron;e organizacije. Kada upotrebljavate vrijeme vožnje ili vrijeme vožnje ruralnim područjem, možete uključiti promet za određeni dan u tjednu ili doba dana. 
+            <p>Kao &scaron;to je slučaj s drugim alatima koji u analizu uključuju putovanje, možete odrediti mjeri li se putovanje putem udaljenosti ili vremena i odabrati među raznim načinima putovanja kao &scaron;to su vrijeme hodanja, vrijeme vožnje, udaljenost vožnje ruralnim područjem i tako dalje. Dostupne načine putovanja određuje administrator va&scaron;e organizacije. Kada upotrebljavate  <b>vrijeme vožnje</b>, <b>vrijeme vožnje ruralnim područjem</b> ili <b>vrijeme vožnje kamionom</b> možete uključiti promet za određeni dan u tjednu ili doba dana.
             </p>
             <p> Da bi se lokacije potražnje precizno dodijelile ustanovama, trebate odrediti putuje li se od ustanova do lokacija potražnje (npr. od vatrogasnih postaja do kuća) ili od lokacija potražnje do ustanova (od korisnika do knjižnica). Alat Izaberite najbolje ustanove uzet će u obzir smjer putovanja za jednosmjerne ulice, da li možete skrenuti iz jedne u drugu ulicu, da li je raskrižje gdje je zabranjeno skretanje ulijevo i tako dalje, ovisno o tome putuje li se od ustanove prema lokacijama potražnje ili od lokacija potražnje prema ustanovama.
             </p>
         </div>
     </div>
     <div id="demandLocationsLayer">
-        <div><h2>Sloj lokacija potražnje</h2></div>
+        <div><h2>Sloj mjesta potražnje</h2></div>
         <hr/>
         <div>
             <p>Točkasti slojevi predstavljaju lokacije gdje postoji potražnja za uslugama koje nude ustanove. Alat dodjeljuje te lokacije potražnje odgovarajućim ustanovama na temelju odabranog cilja.
@@ -163,7 +163,7 @@
         <div><h2>Sloj zahtijevanih mjesta usluge</h2></div>
         <hr/>
         <div>
-            <p>Točkasti geoobjekti predstavljaju lokacije koje djeluju kao ustanove pružanjem neke vrste usluge. Zahtijevana mjesta usluge obično predstavljaju lokacije koje već postoje, za razliku od kandidata za mjesto ustanove koje obično predstavljaju lokacije gdje će se nove ustanove izgraditi ili smjestiti. Prilikom dodjeljivanja lokacija potražnje, alat se koristi ustanovama u  <b>Sloju zahtijevanih mjesta usluge</b>, a tek onda u <b>Sloju kandidata za mjesto ustanove</b>.
+            <p>Točkasti geoobjekti predstavljaju lokacije koje djeluju kao ustanove pružanjem neke vrste usluge. Zahtijevana mjesta usluge obično predstavljaju lokacije koje već postoje, za razliku od kandidata za mjesto ustanove koje obično predstavljaju lokacije gdje će se nove ustanove izgraditi ili smjestiti. Prilikom dodjeljivanja lokacija potražnje, alat se koristi ustanovama u  <b>Sloju zahtijevanih mjesta usluge</b>, a tek onda u <b>Sloju kandidata za mjesto usluge</b>.
             </p>
             <p>Zahtijevana mjesta usluge mogu imati neograničen kapacitet (tj. mogu zadovoljavati svu potražnju usmjerenu na njih) ili mogu imati ograničen kapacitet. Ako sve ustanove imaju isti ograničen kapacitet (kao &scaron;to je broj domaćinstava koje može uslužiti jedna vatrogasna postaja, recimo 4.000), navedite konstantnu vrijednost. Ako se kapacitet razlikuje među ustanovama (kao &scaron;to je broj dostupnih mjesta za nove učenike u svim srednjim &scaron;kolama), navedite polje koje sadrži vrijednost kapaciteta za svaku ustanovu.
             </p>
@@ -172,16 +172,16 @@
         </div>
     </div>
     <div id="candidateFacilitiesLayer">
-        <div><h2>Sloj kandidata za mjesto ustanove</h2></div>
+        <div><h2>Sloj kandidata za mjesto usluge</h2></div>
         <hr/>
         <div>
             <p>Točkasti geoobjekti predstavljaju lokacije koje djeluju kao ustanove pružanjem neke vrste usluge. Kandidati za mjesto ustanove obično predstavljaju lokacije gdje će se nove ustanove izgraditi ili smjestiti, za razliku od zahtijevanih mjesta usluge koje obično predstavljaju lokacije koje već postoje.
             </p>
-            <p>Ovisno o cilju va&scaron;e analize, trebate odrediti broj kandidata za mjesto ustanove za odabir od skupa kandidata. Ako navedete tražene ustanove i ustanove kandidate, alat se koristi ustanovama u  <b>Sloju zahtijevanih mjesta usluge</b>, a tek onda u <b>Sloju kandidata za mjesto ustanove</b>.
+            <p>Ovisno o cilju va&scaron;e analize, trebate odrediti broj kandidata za mjesto ustanove za odabir od skupa kandidata. Ako navedete tražene ustanove i ustanove kandidate, alat se koristi ustanovama u  <b>Sloju zahtijevanih mjesta usluge</b>, a tek onda u <b>Sloju kandidata za mjesto usluge</b>.
             </p>
             <p>Kandidati za mjesto ustanove mogu imati neograničen kapacitet (tj. mogu zadovoljavati svu potražnju usmjerenu na njih) ili mogu imati ograničen kapacitet. Ako sve ustanove imaju isti ograničen kapacitet (kao &scaron;to je broj domaćinstava koje može uslužiti jedna vatrogasna postaja, recimo 4.000), navedite konstantnu vrijednost. Ako se kapacitet razlikuje među ustanovama (kao &scaron;to je broj dostupnih mjesta za nove učenike u svim srednjim &scaron;kolama), navedite polje koje sadrži vrijednost kapaciteta za svaku ustanovu.
             </p>
-            <p>Alat podržava do 1.000 geoobjekata u  <b>Sloju kandidata za mjesto ustanove</b>.
+            <p>Alat podržava do 1.000 geoobjekata u  <b>Sloju kandidata za mjesto usluge</b>.
             </p>  
         </div>
     </div>

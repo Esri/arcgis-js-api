@@ -44,7 +44,7 @@
         <h2>Agréger des points</h2><p/>
         <h2><img src="../images/GUID-60C59C66-3038-4D0E-8F6A-EC6C53FEAA02-web.png" alt="Agr&eacute;ger les points"></h2>
         <hr/>
-    <p>Cet outil fonctionne avec une couche d'entit&eacute;s ponctuelles et une couche d'entit&eacute;s surfaciques. Il commence par identifier les points qui se trouvent au sein de chaque surface. Apr&egrave;s avoir d&eacute;termin&eacute; cette relation spatiale des points au sein de la surface, des statistiques concernant tous les points de la surface sont calcul&eacute;es et affect&eacute;es &agrave; la surface. La statistique la plus &eacute;l&eacute;mentaire est le nombre total de points au sein de la surface, mais vous pouvez &eacute;galement en obtenir d'autres. 
+    <p>Cet outil fonctionne avec une couche d&rsquo;entit&eacute;s ponctuelles et une couche d&rsquo;entit&eacute;s surfaciques. Il commence par identifier les points qui se trouvent au sein de chaque surface. Apr&egrave;s avoir d&eacute;termin&eacute; cette relation spatiale des points au sein de la surface, des statistiques concernant tous les points de la surface sont calcul&eacute;es et affect&eacute;es &agrave; la surface. La statistique la plus &eacute;l&eacute;mentaire est le nombre total de points au sein de la surface, mais vous pouvez &eacute;galement en obtenir d'autres. 
     </p>
     <p>Supposons par exemple que des entit&eacute;s ponctuelles correspondent &agrave; l'emplacement des caf&eacute;s restaurants et que des entit&eacute;s surfaciques correspondent aux comt&eacute;s, et que vous souhaitez r&eacute;capituler la consommation de caf&eacute; par comt&eacute;. En admettant que les caf&eacute;s aient un attribut  <i>TOTAL_SALES</i>, vous pouvez calculer la somme de tous les attributs <i>TOTAL_SALES</i> au sein de chaque comt&eacute;, ou l'attribut <i>TOTAL_SALES</i> minimal ou maximal
  au sein de chaque comt&eacute; ou l'&eacute;cart type de toutes les ventes au sein de chaque comt&eacute;.
@@ -67,7 +67,9 @@
         <div><h2>Choisissez la couche contenant les points d'agrégation</h2></div>
         <hr/>
         <div>
-            <p>La couche surfacique dans laquelle les points seront agr&eacute;g&eacute;s. Les points qui se trouvent au sein des limites des surfaces sur cette couche seront comptabilis&eacute;s et peuvent &ecirc;tre r&eacute;sum&eacute;s avec les statistiques que vous avez choisies.
+            <p>La couche surfacique dans laquelle les points seront agr&eacute;g&eacute;s. Les points qui se trouvent au sein des limites des surfaces sur cette couche seront comptabilis&eacute;s et peuvent &ecirc;tre r&eacute;sum&eacute;s avec les statistiques que vous avez choisies.  
+            </p>
+            <p>Vous avez le choix entre une couche surfacique que vous fournissez ou des groupes qui sont g&eacute;n&eacute;r&eacute;s lors de l&rsquo;ex&eacute;cution de l&rsquo;outil. Lors de la g&eacute;n&eacute;ration des groupes, pour  <b>Carr&eacute;</b>, le nombre et les unit&eacute;s sp&eacute;cifi&eacute;s d&eacute;terminent la hauteur et la longueur du carr&eacute;. Pour <b>Hexagon (Hexagone)</b>, le nombre et les unit&eacute;s sp&eacute;cifi&eacute;s d&eacute;terminent la distance entre les c&ocirc;t&eacute;s parall&egrave;les.
             </p>
             <p class="OnlineOnly">En plus de choisir une couche de votre carte, vous pouvez s&eacute;lectionner  <b>Choisir une couche d'analyse d'atlas dynamique</b> ou <b>Choisir une couche d'analyse</b> au bas de la liste d&eacute;roulante. Cette op&eacute;ration ouvre une biblioth&egrave;que de couches utiles pour de nombreuses analyses. 
             </p>
@@ -117,7 +119,7 @@
         </div>
     </div>
     <div id="OutputLayer">
-        <div><h2>Nom de la couche résultat</h2></div>
+        <div><h2>Nom de la couche de résultat</h2></div>
         <hr/>
         <div>
             <p>Il s'agit du nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>Mon contenu</b> et ajout&eacute;e &agrave; la carte.  Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom.

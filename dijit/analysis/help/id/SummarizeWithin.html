@@ -44,16 +44,16 @@
         <h2>Ringkas di Dalam</h2><p/>
         <h2><img src="../images/GUID-9B12DB3F-AA7B-41EB-87C6-D2DEC3D52DA9-web.png" alt="Ringkas di Dalam"></h2>
         <hr/>
-    <p>Tools ini menemukan fitur (dan bagian-bagian dari fitur) yang berada di dalam batas-batas wilayah pada layer input yang pertama.  Contoh:
+    <p>Alat ini mencari fitur (dan bagian-bagian dari fitur) yang berada di dalam batas wilayah pada layer input pertama. Contoh:
         <ul>
-            <li>Dengan mengetahui layer batas daerah aliran sungai (watershed) dan layer batas penggunaan lahan menurut jenis penggunaan lahan, hitunglah luas total dari jenis penggunaan lahan untuk setiap daerah aliran sungai. 
+            <li>Dengan mengetahui batas air dan layer batas penggunaan lahan menurut jenis penggunaan lahan, hitung luas total dari jenis penggunaan lahan untuk setiap batas air. 
             </li>
-            <li>Dengan mengetahui layer bagian persil di suatu kawasan dan layer batas kota, ringkaslah nilai rata-rata dari bagian wilayah yang kosong di dalam setiap batas kota.
+            <li>Dengan mengetahui layer bagian persil di suatu daerah dan layer batas kota, ringkaslah nilai rata-rata dari bagian persil yang kosong di dalam setiap batas kota.
             </li>
         </ul>
         
     </p>
-    <p>Jika  <b>Gunakan jangkauan peta saat ini</b> dicentang, hanya fitur-fitur pada layer input dan layer yang akan diringkas yang terlihat di jangkauan peta saat ini akan dianalisis.  Jika tidak dicentang, semua fitur baik yang ada di layer input dan di layer yang diringkas akan dianalisis, bahkan jika fitur tersebut berada diluar dari jangkauan peta saat ini.
+    <p>Jika  <b>Gunakan jangkauan peta saat ini</b> dicentang, hanya fitur-fitur pada layer input dan layer yang akan diringkas yang terlihat di jangkauan peta saat ini yang akan dianalisis.  Jika tidak dicentang, semua fitur pada layer input dan layer yang akan diringkas akan dianalisis meskipun berada di luar jangkauan peta saat ini.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -62,6 +62,8 @@
         <hr/>
         <div>
             <p>Layer area yang akan dipakai untuk meringkas fitur-fitur yang masuk di dalam batas-batasnya. 
+            </p>
+            <p>Anda dapat memilih antara layer area yang Anda sediakan atau bin yang dihasilkan ketika alat dijalankan. Ketika membuat bin, untuk  <b>Persegi</b>, angka dan unit yang disebutkan akan menentukan tinggi dan panjang persegi. Untuk <b>Heksagon</b>, angka dan unit yang ditentukan akan menentukan jarak antara sisi paralel.
             </p>
             <p class="OnlineOnly">Selain memilih sebuah layer dari peta, Anda dapat memilih  <b>Pilih Layer Analisis Living Atlas</b> atau <b>Piilih Layer Analisis</b> yang terdapat di bagian paling bawah daftar drop-down. Sebagai tambahan, area yang berdekatan (yaitu, memiliki batasan yang sama) akan digabungkan menjadi satu area. Langkah ini akan membuka galeri yang memuat koleksi layer yang bermanfaat bagi banyak analisis. 
             </p>
@@ -78,12 +80,12 @@
         </div>
     </div>
     <div id="StatisticsPoint">
-        <div><h2>Tambahkan statistik dari layer untuk meringkas</h2></div>
+        <div><h2>Tambahkan statistik dari layer yang akan diringkas</h2></div>
         <hr/>
         <div>
-            <p>Secara opsional Anda dapat menghitung statistik untuk atribut numerik dari titik-titik yang masuk di dalam batas-batas fitur tersebut. 
+            <p>Anda dapat memilih untuk menghitung statistik untuk atribut numerik dari titik-titik yang masuk di dalam batas-batas fitur tersebut. 
             </p>
-            <p>Kotak centang  <b>Munculkan area sekeliling</b>, jika dicentang, akan memunculkan layer area hasil yang ditetapkan melalui pengukuran jarak yang sudah ditentukan.  Selain itu, Anda dapat menghitung statistik untuk atribut numerik dari titik-titik yang berada di dalam setiap batas area.
+            <p>Jika kotak centang  <b>Jumlah titik</b> dicentang, maka akan menghitung jumlah titik yang berada di dalam setiap batas area. Selain itu, Anda dapat menghitung statistik untuk atribut numerik dari titik-titik yang berada di dalam setiap batas area.
             </p>
             <ul>
                 <li> <b>Jumlah</b>&mdash;Total nilai untuk kolom yang dimaksud.
@@ -92,9 +94,9 @@
                 </li>
                 <li> <b>Minimum</b>&mdash;Nilai terkecil pada kolom yang dimaksud.
                 </li>
-                <li> <b>Maximum</b>&mdash;Nilai terbesar pada kolom yang dimaksud.
+                <li> <b>Maksimum</b>&mdash;Nilai terbesar pada kolom yang dimaksud.
                 </li>
-                <li> <b>Std. Deviasi</b>&mdash;Standar deviasi dari nilai-nilai pada kolom yang dimaksud.
+                <li> <b>Simpangan Baku</b>&mdash;Simpangan baku dari nilai-nilai pada kolom yang dimaksud.
                 </li>
             </ul>
             
@@ -104,9 +106,9 @@
         <div><h2>Tambahkan statistik dari</h2></div>
         <hr/>
         <div>
-            <p>Secara opsional Anda dapat menghitung statistik untuk atribut numerik dari garis-garis yang akan diringkas. 
+            <p>Anda dapat memilih untuk menghitung statistik untuk atribut numerik dari garis-garis yang akan diringkas. 
             </p>
-            <p>Kotak centang  <b>Total panjang garis di</b>, jika dicentang, akan menghitung total panjang garis di dalam setiap batas area.  Selain itu, Anda dapat menghitung statistik untuk atribut numerik dari garis-garis yang berada di dalam setiap batas area.
+            <p>Jika kotak centang  <b>Total panjang garis</b> dicentang, maka akan menghitung total panjang garis yang berada di dalam setiap batas area. Selain itu, Anda dapat menghitung statistik untuk atribut numerik dari garis-garis yang berada di dalam setiap batas area.
             </p>
             <ul>
                 <li> <b>Jumlah</b>&mdash;Total nilai untuk kolom yang dimaksud.
@@ -115,9 +117,9 @@
                 </li>
                 <li> <b>Minimum</b>&mdash;Nilai terkecil pada kolom yang dimaksud.
                 </li>
-                <li> <b>Maximum</b>&mdash;Nilai terbesar pada kolom yang dimaksud.
+                <li> <b>Maksimum</b>&mdash;Nilai terbesar pada kolom yang dimaksud.
                 </li>
-                <li> <b>Std. Deviasi</b>&mdash;Standar deviasi dari nilai-nilai pada kolom yang dimaksud.
+                <li> <b>Simpangan Baku</b>&mdash;Simpangan baku dari nilai-nilai pada kolom yang dimaksud.
                 </li>
             </ul>
             
@@ -127,9 +129,9 @@
         <div><h2>Tambahkan statistik dari</h2></div>
         <hr/>
         <div>
-            <p>Secara opsional Anda dapat menghitung statistik untuk atribut numerik dari area yang akan diringkas. 
+            <p>Anda dapat memilih untuk menghitung statistik untuk atribut numerik dari area yang akan diringkas. 
             </p>
-            <p>Kotak centang  <b>Jumlahkan area menggunakan</b> , jika dicentang, akan menghitung total area dari fitur-fitur yang berada di dalam setiap batas area dari layer input yang pertama.  Selain itu, Anda dapat menghitung statistik untuk atribut numerik dari fitur-fitur yang berada di dalam setiap batas area.
+            <p>Jika kotak centang  <b>Jumlahkan area menggunakan</b> dicentang, maka akan menghitung total area dari fitur-fitur yang berada di dalam setiap batas area dari layer input yang pertama. Selain itu, Anda dapat menghitung statistik untuk atribut numerik dari fitur-fitur yang berada di dalam setiap batas area.
             </p>
             <ul>
                 <li> <b>Jumlah</b>&mdash;Total nilai untuk kolom yang dimaksud.
@@ -138,9 +140,9 @@
                 </li>
                 <li> <b>Minimum</b>&mdash;Nilai terkecil pada kolom yang dimaksud.
                 </li>
-                <li> <b>Maximum</b>&mdash;Nilai terbesar pada kolom yang dimaksud.
+                <li> <b>Maksimum</b>&mdash;Nilai terbesar pada kolom yang dimaksud.
                 </li>
-                <li> <b>Std. Deviasi</b>&mdash;Standar deviasi dari nilai-nilai pada kolom yang dimaksud.
+                <li> <b>Simpangan Baku</b>&mdash;Simpangan baku dari nilai-nilai pada kolom yang dimaksud.
                 </li>
             </ul>
             
@@ -150,7 +152,7 @@
         <div><h2>Tambahkan statistik dari</h2></div>
         <hr/>
         <div>
-            <p>Begitu Anda memilih layer untuk diringkas, Anda dapat memilih untuk menghitung statistik dari setiap atribut numerik dari titik, garis, atau area di dalam layer area input. 
+            <p>Saat Anda memilih layer untuk diringkas, Anda dapat memilih untuk menghitung statistik dari setiap atribut numerik dari titik, garis, atau area di dalam layer area input. 
             </p>
             <ul>
                 <li> <b>Jumlah</b>&mdash;Total nilai untuk kolom yang dimaksud
@@ -159,9 +161,9 @@
                 </li>
                 <li> <b>Minimum</b>&mdash;Nilai terkecil pada kolom yang dimaksud
                 </li>
-                <li> <b>Maximum</b>&mdash;Nilai terbesar pada kolom yang dimaksud
+                <li> <b>Maksimum</b>&mdash;Nilai terbesar pada kolom yang dimaksud
                 </li>
-                <li> <b>Std. Deviasi</b>&mdash;Simpangan baku dari nilai-nilai pada kolom yang ditentukan
+                <li> <b>Simpangan Baku</b>&mdash;Simpangan baku dari nilai-nilai pada kolom yang ditentukan
                 </li>
             </ul>
             
@@ -173,7 +175,7 @@
         <div><h2>Pilih kolom untuk dikelompokkan</h2></div>
         <hr/>
         <div>
-            <p>Ini adalah atribut  <b>Ringkas</b> dari fitur yang mana Anda dapat gunakan untuk menghitung statistik secara terpisah untuk setiap nilai unik atribut. Sebagai contoh, misalkan layer inpur pertama memuat batas-batas kota dan ringkasan fiturnya adalah persil.  Salah satu atribut persil tersebut adalah <i>Status</i> yang memuat dua nilai: KOSONG dan DIHUNI. Untuk menghitung total area persil yang kosong dan terisi di dalam batas kota, gunakan <i>Status</i> sebagai atribut pengelompokan. Statistik untuk setiap kelompok, seperti halnya jumlah titik, akan ditampilkan di pop-up layer hasil.
+            <p>Ini adalah atribut dari fitur  <b>Ringkas</b> yang dapat Anda gunakan untuk menghitung statistik secara terpisah untuk setiap nilai unik atribut. Sebagai contoh, misalkan layer input pertama memuat batas-batas kota dan fitur ringkasan adalah persil. Salah satu atribut persil tersebut adalah <i>Status</i> yang memuat dua nilai: KOSONG dan DIHUNI. Untuk menghitung total area persil yang kosong dan terisi di dalam batas kota, gunakan <i>Status</i> sebagai atribut pengelompokan. Statistik untuk setiap kelompok, seperti halnya jumlah fitur di dalam setiap batas area akan ditampilkan di pop-up layer hasil.
             </p>
         </div>
     </div>
@@ -181,14 +183,14 @@
         <div><h2>Tambahkan minoritas, mayoritas</h2></div>
         <hr/>
         <div>
-            <p>Kotak centang ini diaktifkan ketika Anda memilih kolom untuk dikelompokkan.    Jika Anda ingin mengetahui nilai atribut mana di dalam setiap kelompok yang merupakan minoritas (paling tidak dominan) atau mayoritas (paling dominan) di dalam setiap batas dari layer input pertama, pilih  <b>Tambahkan minoritas, mayoritas</b>.   Ketika Anda memilih <b>Tambahkan minoritas, mayoritas</b>, dua kolom baru telah ditambahkan ke layer hasil Anda.   Jika Anda juga memilih <b>Tambahkan persentase</b>, dua kolom tambahan ditambahkan ke layer hasil berisi persentase nilai atribut minoritas dan mayoritas dalam setiap kelompok.
+            <p>Kotak centang ini diaktifkan ketika Anda memilih kolom untuk dikelompokkan.    Jika Anda ingin mengetahui nilai atribut mana di dalam setiap kelompok yang merupakan minoritas (paling tidak dominan) atau mayoritas (paling dominan) di dalam setiap batas dari layer input pertama, pilih  <b>Tambahkan minoritas, mayoritas</b>.   Ketika Anda memilih <b>Tambahkan minoritas, mayoritas</b>, dua kolom baru telah ditambahkan ke layer hasil Anda. Jika Anda juga memilih <b>Tambahkan persentase</b>, dua kolom tambahan ditambahkan ke layer hasil berisi persentase nilai atribut minoritas dan mayoritas dalam setiap kelompok.
             </p>
             <ul>
-                <li>Jika Anda meringkas titik, nilai-nilai minoritas dan mayoritas dihitung berdasarkan jumlah titik di dalam setiap area sekeliling di layer area input.  
+                <li>Jika Anda meringkas titik, nilai minoritas dan mayoritas dihitung berdasarkan jumlah titik di dalam setiap sekeliling area di layer area input.  
                 </li>
-                <li>Jika Anda meringkas garis, nilai-nilai minoritas dan mayoritas dihitung berdasarkan panjang garis di dalam setiap area sekeliling di layer area input.  
+                <li>Jika Anda meringkas garis, nilai minoritas dan mayoritas dihitung berdasarkan panjang garis di dalam setiap sekeliling area di layer area input.  
                 </li>
-                <li>Jika Anda meringkas area, nilai-nilai minoritas dan mayoritas dihitung berdasarkan area di dalam setiap area sekeliling di layer area input.  
+                <li>Jika Anda meringkas area, nilai minoritas dan mayoritas dihitung berdasarkan area di dalam setiap sekeliling area di layer area input.  
                 </li>
             </ul>
             

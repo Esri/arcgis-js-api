@@ -41,10 +41,10 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Rekonstruovat stopy</h2><p/>
-        <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Rekonstruovat stopy"></h2>
+        <h2>Sestavit stopy (Reconstruct Tracks)</h2><p/>
+        <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Sestavit stopy"></h2>
         <hr/>
-    <p>Tento n&aacute;stroj pracuje s&nbsp;vrstvou s&nbsp;informacemi o čase bodov&yacute;ch nebo polygonov&yacute;ch prvků, kter&eacute; představuj&iacute;  <code>okamžik</code> v&nbsp;čase.   Nejprve pomoc&iacute; identifik&aacute;toru urč&iacute;, kter&eacute; prvky patř&iacute; do stopy. Pomoc&iacute; času v&nbsp;každ&eacute;m um&iacute;stěn&iacute; se stopy seřad&iacute; za sebe a transformuj&iacute; do linie nebo polygonu představuj&iacute;c&iacute;ho cestu pohybu v&nbsp;čase. Volitelně může b&yacute;t pro vstup vytvořena obalov&aacute; z&oacute;na pomoc&iacute; pole, což vytvoř&iacute; v&nbsp;každ&eacute;m um&iacute;stěn&iacute; polygon. Tyto body obalov&eacute; z&oacute;ny nebo vstupn&iacute; polygony jsou pot&eacute; postupně spojeny, aby vytvořily stopu ve formě polygonu, jehož &scaron;&iacute;řka představuje z&aacute;jmov&yacute; atribut. V&yacute;sledn&eacute; stopy maj&iacute; čas zač&aacute;tku a čas konce, kter&eacute; představuj&iacute; časově prvn&iacute; a posledn&iacute; prvek na dan&eacute; stopě. Při vytv&aacute;řen&iacute; stop se vypoč&iacute;taj&iacute; statistiky vstupn&iacute;ch prvků a přiřad&iacute; se k&nbsp;v&yacute;stupn&iacute; stopě. Nejz&aacute;kladněj&scaron;&iacute; statistikou je počet bodů v&nbsp;oblasti, ale vypoč&iacute;tat lze i jin&eacute; statistiky.
+    <p>Tento n&aacute;stroj pracuje s&nbsp;časovou vrstvou bodov&yacute;ch nebo polygonov&yacute;ch prvků, kter&eacute; představuj&iacute;  <code>okamžik</code> v&nbsp;čase.   Nejprve pomoc&iacute; identifik&aacute;toru urč&iacute;, kter&eacute; prvky patř&iacute; do stopy. Na z&aacute;kladě času v&nbsp;každ&eacute;m um&iacute;stěn&iacute; jsou stopy seřazeny za sebe a převedeny na linii nebo polygon představuj&iacute;c&iacute; dr&aacute;hu pohybu v&nbsp;čase. Volitelně může b&yacute;t pro vstup vytvořena obalov&aacute; z&oacute;na pomoc&iacute; pole, což vytvoř&iacute; v&nbsp;každ&eacute;m um&iacute;stěn&iacute; polygon. Tyto body obalov&eacute; z&oacute;ny nebo vstupn&iacute; polygony jsou pot&eacute; postupně spojeny, aby vytvořily stopu ve formě polygonu, jehož &scaron;&iacute;řka představuje z&aacute;jmov&yacute; atribut. V&yacute;sledn&eacute; stopy maj&iacute; čas zač&aacute;tku a čas konce, kter&eacute; představuj&iacute; časově prvn&iacute; a posledn&iacute; prvek na dan&eacute; stopě. Při vytv&aacute;řen&iacute; stop se vypoč&iacute;taj&iacute; statistiky vstupn&iacute;ch prvků a přiřad&iacute; se k&nbsp;v&yacute;stupn&iacute; stopě. Nejz&aacute;kladněj&scaron;&iacute; statistikou je počet bodů v&nbsp;oblasti, ale vypoč&iacute;tat lze i jin&eacute; statistiky.
     </p>
     <p>Prvky ve vrstv&aacute;ch s&nbsp;informacemi o čase lze reprezentovat jedn&iacute;m ze dvou způsobů:
         <ul>
@@ -62,7 +62,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Zvolte prvky, ze kterých budou rekonstruovány stopy</h2></div>
+        <div><h2>Zvolte prvky, ze kterých budou sestaveny stopy</h2></div>
         <hr/>
         <div>
             <p>Bodov&aacute; nebo polygonov&aacute; vrstva, kter&aacute; bude rekonstruov&aacute;na do stop. Vstupn&iacute; vrstva mus&iacute; b&yacute;t vrstva s&nbsp;informacemi o čase s prvky, kter&eacute; představuj&iacute; okamžik v&nbsp;čase. Vrstva mus&iacute; b&yacute;t v rovinn&eacute;m souřadnicov&eacute;m syst&eacute;mu nebo souřadnicov&yacute; syst&eacute;m zpracov&aacute;n&iacute; mus&iacute; b&yacute;t nastaven na rovinn&yacute; souřadnicov&yacute; syst&eacute;m použ&iacute;vaj&iacute;c&iacute;  <b>Prostřed&iacute; anal&yacute;zy</b>, pokud je použita obalov&aacute; z&oacute;na.
@@ -82,7 +82,7 @@
         </div>
     </div>
     <div id="method">
-        <div><h2>Zvolte způsob rekonstrukce stop</h2></div>
+        <div><h2>Zvolte způsob sestavení stop</h2></div>
         <hr/>
         <div>
             <p>Způsob spojen&iacute; stop a aplikace obalov&eacute; z&oacute;ny (lze-li aplikovat). Metoda  <b>Rovinn&yacute;</b> může vypoč&iacute;tat v&yacute;sledky rychleji, ale nezalom&iacute; stopy kolem mezin&aacute;rodn&iacute; datov&eacute; hranice ani nebude při vytv&aacute;řen&iacute; obalov&eacute; z&oacute;ny br&aacute;t ohled na re&aacute;ln&yacute; tvar Země. Metoda <b>Geodetick&yacute;</b> v&nbsp;př&iacute;padě potřeby zalom&iacute; stopy kolem datov&eacute; hranice a aplikuje geodetickou obalovou z&oacute;nu, aby kompenzovala tvar Země.
@@ -95,6 +95,8 @@
         <div>
             <p>Rovnice použit&aacute; pro v&yacute;počet &scaron;&iacute;řky obalov&eacute; z&oacute;ny kolem vstupn&iacute;ch prvků. Tato rovnice bude vytvořena pomoc&iacute; kalkul&aacute;toru obalov&eacute; z&oacute;ny. Jsou podporov&aacute;ny z&aacute;kladn&iacute; operace jako sč&iacute;t&aacute;n&iacute;, odeč&iacute;t&aacute;n&iacute;, n&aacute;soben&iacute; a dělen&iacute;. Hodnoty jsou vypoč&iacute;t&aacute;ny pomoc&iacute; souřadnicov&eacute;ho syst&eacute;mu anal&yacute;zy. Vrstva mus&iacute; b&yacute;t v rovinn&eacute;m souřadnicov&eacute;m syst&eacute;mu nebo souřadnicov&yacute; syst&eacute;m zpracov&aacute;n&iacute; mus&iacute; b&yacute;t nastaven na rovinn&yacute; souřadnicov&yacute; syst&eacute;m použ&iacute;vaj&iacute;c&iacute;  <b>Prostřed&iacute; anal&yacute;zy</b>, pokud je použita obalov&aacute; z&oacute;na.
             </p>
+            <p>Rovnice jako  <code>$feature.rychlost_vetru * 1000</code> by použila obalovou z&oacute;nu o hodnotě 1 000, vyn&aacute;sobenou polem <i>rychlost_vetru</i>. V kalkul&aacute;toru obalov&eacute; z&oacute;ny můžete použ&iacute;t v&iacute;ce než jedno pole.
+            </p>
         </div>
     </div>
     <div id="timeSplit">
@@ -102,6 +104,20 @@
         <hr/>
         <div>
             <p>Čas použit&yacute; k&nbsp;dělen&iacute; stop. Pokud mezi sebou maj&iacute; vstupn&iacute; body nebo polygony del&scaron;&iacute; dobu, než je časov&eacute; dělen&iacute;, budou rozděleny do různ&yacute;ch stop.
+            </p>
+            <p>Jestliže specifikujete časov&eacute; dělen&iacute; a dělen&iacute; vzd&aacute;lenosti, budou při splněn&iacute; jedn&eacute; nebo v&iacute;ce podm&iacute;nek stopy rozděleny. 
+            </p>
+            <p>Představte si, že m&aacute;te bodov&eacute; prvky představuj&iacute;c&iacute; lety letadel, kde polem stopy je identifik&aacute;tor letadla. Toto letadlo může podniknout několik cest a st&aacute;le b&yacute;t reprezentov&aacute;no jako jedna stopa.  Pokud byste věděli, že mezi lety je hodinov&aacute; přest&aacute;vka, mohli byste použ&iacute;t  <code>1 hodinu</code> pro rozdělen&iacute; stopy a každ&yacute; let by byl rozdělen do vlastn&iacute; stopy.
+            </p>
+        </div>
+    </div>
+    <div id="distanceSplit">
+        <div><h2>Zvolte vzdálenost pro rozdělení stop (volitelné)</h2></div>
+        <hr/>
+        <div>
+            <p> Vzd&aacute;lenost pro dělen&iacute; stop. Pokud vstupn&iacute; body nebo polygony maj&iacute; mezi sebou vět&scaron;&iacute; vzd&aacute;lenost než je dělen&iacute; vzd&aacute;lenosti, pak budou rozděleny do různ&yacute;ch stop.
+            </p>
+            <p>Jestliže specifikujete časov&eacute; dělen&iacute; a dělen&iacute; vzd&aacute;lenosti, budou při splněn&iacute; jedn&eacute; nebo v&iacute;ce podm&iacute;nek stopy rozděleny. 
             </p>
         </div>
     </div>

@@ -1,7 +1,7 @@
 
 
 
-.esriGEReportPlayer_section .floatingElement {
+.floatingElementContainer.esriGEAdjustableGridValueField .floatingElement {
     background-repeat: no-repeat;
     background-size: contain;
     position: absolute;
@@ -10,36 +10,9 @@
 
 
 
-.reportContainerEditMode .floatingElementContainer.esriGEAdjustableGridValueField {
-    vertical-align: top;
-    border: 1px solid #b2b2b2;
-    display: inline-block;
+
+.esriGEReportPlayer_section .floatingElementContainer.esriGEAdjustableGridValueField {
     overflow: visible;
-    background-color: transparent;
-    padding-bottom: 1px;
-    padding-right: 1px;
-}
-
-.reportContainerPreviewMode .floatingElementContainer.esriGEAdjustableGridValueField {
-    border: 1px solid transparent;
-    background-color: transparent;
-    padding-bottom: 1px;
-    padding-right: 1px;
-    overflow: visible;
-}
-
-
-
-.reportContainerEditMode .floatingElementContainer.templateImageContainerStatic.esriGEAdjustableGridValueField,
-.reportContainerEditMode .floatingElementContainer.templateShapeContainerStatic.esriGEAdjustableGridValueField {
-    border: none;
-    cursor: default;
-}
-
-
-
-.templateImageContainerMovable {
-    cursor: move;
 }
 
 
@@ -49,12 +22,12 @@
     background-size: cover;
 }
 
-.esriGEReportPlayer_section .templateMapImage.templateImageWithThumbnail {
-    background-size: auto;
-}
+    .esriGEReportPlayer_section .templateMapImage.templateImageWithThumbnail {
+        background-size: auto;
+    }
 
-.esriGEReportPlayer_section .templateMap .esriAttributionItem,
-.esriGEReportPlayer_section .templateMap .esriAttributionLastItem {
+.esriGEReportPlayer_section .templateLiveMap .esriAttributionItem,
+.esriGEReportPlayer_section .templateLiveMap .esriAttributionLastItem {
     display: none !important;
 }
 
@@ -96,6 +69,11 @@
 }
 
 
+.esriGEReportPlayer_reportContainerGrid .shapeContainer_svgPlaceholder {
+    display: none;
+}
+
+
 
 .floatingElementContainer.esriGEAdjustableGridValueField.templateImage_logoPlaceholder {
     background-repeat: no-repeat;
@@ -107,36 +85,6 @@
         opacity: 0;
     }
 
-.floatingElementContainer.esriGEAdjustableGridValueField .templateImage_logoPlaceholderText {
-    text-align: center;
-    font-size: 14px;
-    cursor: pointer;
-    width: inherit;
-    position: absolute;
-    color: #6f6f6f;
-}
-
-.floatingElementContainer.esriGEAdjustableGridValueField .templateImage_logoPlaceholderTextShort {
-    text-align: center;
-    font-size: 32px;
-    cursor: pointer;
-    width: inherit;
-    color: #56A5D8;
-    position: absolute;
-}
-
-.floatingElementContainer.esriGEAdjustableGridValueField.templateImage_logoPlaceholder.templateImage_logoPlaceholderShort {
-    background-image: none;
-}
-
-
-
-.templateImage_errorMessage {
-    color: red;
-    font-size: 13px;
-    text-align: center;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-}
+    .floatingElementContainer.esriGEAdjustableGridValueField.templateImage_logoPlaceholder.templateImage_logoPlaceholderShort {
+        background-image: none;
+    }

@@ -12,32 +12,32 @@
     color: #2892CD;
 }
 
-.DataBrowser .dgrid-selected {
-    background: none;
-}
+    .DataBrowser .dgrid-selected {
+        background: none;
+    }
 
-.DataBrowser .dgrid-row {
-    white-space: nowrap;
-    cursor: default;
-}
+    .DataBrowser .dgrid-row {
+        white-space: nowrap;
+        cursor: default;
+    }
 
-.DataBrowser .ShoppingCart .Label {
-    color: #9b9b9b;
-}
+    .DataBrowser .ShoppingCart .Label {
+        color: #9b9b9b;
+    }
 
-.DataBrowser .ShoppingCart .ShoppingCart_CounterDiv {
-    font-weight: 600;
-    font-size: 1.1em;
-}
+    .DataBrowser .ShoppingCart .ShoppingCart_CounterDiv {
+        font-weight: 600;
+        font-size: 1.1em;
+    }
 
-.DataBrowser .Wizard_Buttons {
-    margin: 0 15px;
-}
+    .DataBrowser .Wizard_Buttons {
+        margin: 0 15px;
+    }
 
-.DataBrowser .Wizard_Buttons .Wizard_Button {
-    margin: 5px;
-    float: right;
-}
+        .DataBrowser .Wizard_Buttons .Wizard_Button {
+            margin: 5px;
+            float: right;
+        }
 
 .dj_rtl .DataBrowser .Wizard_Buttons .Wizard_Button {
     float: left;
@@ -46,9 +46,9 @@
 .DataBrowserInfoIcon {
     background: url(./images/InfoIcon.png) no-repeat center center;
     display: inline-block;
-    width:16px;
-    height:16px;
-    margin:0;
+    width: 16px;
+    height: 16px;
+    margin: 0;
     padding: 0;
 }
 
@@ -67,9 +67,9 @@
     top: 1px;
 }
 
-.DataBrowserVarIcon.FavoriteItemIcon {
-    cursor: pointer;
-}
+    .DataBrowserVarIcon.FavoriteItemIcon {
+        cursor: pointer;
+    }
 
 .DataBrowserVarGroup {
     color: #777777;
@@ -108,17 +108,19 @@
     -webkit-animation-name: DataBrowser_SelectVar;
 }
 
-.DataBrowser_SelectVar.Anim_Common {
-    animation-duration: 0.5s;
-    -webkit-animation-duration: 0.5s;
-}
+    .DataBrowser_SelectVar.Anim_Common {
+        animation-duration: 0.5s;
+        -webkit-animation-duration: 0.5s;
+    }
 
 @keyframes DataBrowser_SelectVar {
     0% {
     }
+
     60% {
         opacity: 1;
     }
+
     100% {
         right: 20px;
         top: 20px;
@@ -131,9 +133,11 @@
 @-webkit-keyframes DataBrowser_SelectVar {
     0% {
     }
+
     60% {
         opacity: 1;
     }
+
     100% {
         right: 20px;
         top: 20px;
@@ -151,9 +155,11 @@
 @keyframes RTLDataBrowser_SelectVar {
     0% {
     }
+
     60% {
         opacity: 1;
     }
+
     100% {
         left: 20px;
         top: 20px;
@@ -166,9 +172,11 @@
 @-webkit-keyframes RTLDataBrowser_SelectVar {
     0% {
     }
+
     60% {
         opacity: 1;
     }
+
     100% {
         left: 20px;
         top: 20px;
@@ -216,9 +224,9 @@
     vertical-align: top;
 }
 
-.DataCategoryItem:hover {
-    background-color: #EFEFEF;
-}
+    .DataCategoryItem:hover {
+        background-color: #EFEFEF;
+    }
 
 .DataCategoryItemIconMargins {
     display: block;
@@ -234,7 +242,8 @@
 }
 
 .DataCategoryItemLabel {
-    display: block;
+    display: inline-block;
+    text-align: center;
     width: 88px;
     max-height: 34px;
     overflow-y: hidden;
@@ -257,20 +266,20 @@
 
 
 .DataCategoryImage_AllCategories {
-    background-image: url(./images/analysis/Categories_All.svg) !important;
+    background-image: url(./images/analysis/Categories_All.svg);
 }
 
 .dj_ie8 .DataCategoryImage_AllCategories {
-    background-image: url(./images/analysis/Categories_All.png) !important;
+    background-image: url(./images/analysis/Categories_All.png);
 }
 
 
-.DataCategoryImage_age {
-    background-image: url(./images/analysis/Categories_Age.svg) !important;
+.DataCategoryImage.DataCategoryImage_age {
+    background-image: url(./images/analysis/Categories_Age.svg);
 }
 
-.dj_ie8 .DataCategoryImage_age {
-    background-image: url(./images/analysis/Categories_Age.png) !important;
+.dj_ie8 .DataCategoryImage.DataCategoryImage_age {
+    background-image: url(./images/analysis/Categories_Age.png);
 }
 
 .DataCategoryItemIcon.DataCategoryImage_age {
@@ -279,12 +288,12 @@
 }
 
 
-.DataCategoryImage_atrisk {
-    background-image: url(./images/analysis/Categories_PopulationsAtRisk.svg) !important;
+.DataCategoryImage.DataCategoryImage_atrisk {
+    background-image: url(./images/analysis/Categories_PopulationsAtRisk.svg);
 }
 
-.dj_ie8 .DataCategoryImage_atrisk {
-    background-image: url(./images/analysis/Categories_PopulationsAtRisk.png) !important;
+.dj_ie8 .DataCategoryImage.DataCategoryImage_atrisk {
+    background-image: url(./images/analysis/Categories_PopulationsAtRisk.png);
 }
 
 .DataCategoryItemIcon.DataCategoryImage_atrisk {
@@ -293,12 +302,12 @@
 }
 
 
-.DataCategoryImage_behaviors {
-    background-image: url(./images/analysis/Categories_Behavior.svg) !important;
+.DataCategoryImage.DataCategoryImage_behaviors {
+    background-image: url(./images/analysis/Categories_Behavior.svg);
 }
 
-.dj_ie8 .DataCategoryImage_behaviors {
-    background-image: url(./images/analysis/Categories_Behavior.png) !important;
+.dj_ie8 .DataCategoryImage.DataCategoryImage_behaviors {
+    background-image: url(./images/analysis/Categories_Behavior.png);
 }
 
 .DataCategoryItemIcon.DataCategoryImage_behaviors {
@@ -307,12 +316,12 @@
 }
 
 
-.DataCategoryImage_business {
-    background-image: url(./images/analysis/Categories_Business.svg) !important;
+.DataCategoryImage.DataCategoryImage_business {
+    background-image: url(./images/analysis/Categories_Business.svg);
 }
 
-.dj_ie8 .DataCategoryImage_business {
-    background-image: url(./images/analysis/Categories_Business.png) !important;
+.dj_ie8 .DataCategoryImage.DataCategoryImage_business {
+    background-image: url(./images/analysis/Categories_Business.png);
 }
 
 .DataCategoryItemIcon.DataCategoryImage_business {
@@ -321,12 +330,12 @@
 }
 
 
-.DataCategoryImage_education {
-    background-image: url(./images/analysis/Categories_Education.svg) !important;
+.DataCategoryImage.DataCategoryImage_education {
+    background-image: url(./images/analysis/Categories_Education.svg);
 }
 
-.dj_ie8 .DataCategoryImage_education {
-    background-image: url(./images/analysis/Categories_Education.png) !important;
+.dj_ie8 .DataCategoryImage.DataCategoryImage_education {
+    background-image: url(./images/analysis/Categories_Education.png);
 }
 
 .DataCategoryItemIcon.DataCategoryImage_education {
@@ -335,12 +344,12 @@
 }
 
 
-.DataCategoryImage_households {
-    background-image: url(./images/analysis/Categories_Households.svg) !important;
+.DataCategoryImage.DataCategoryImage_households {
+    background-image: url(./images/analysis/Categories_Households.svg);
 }
 
-.dj_ie8 .DataCategoryImage_households {
-    background-image: url(./images/analysis/Categories_Households.png) !important;
+.dj_ie8 .DataCategoryImage.DataCategoryImage_households {
+    background-image: url(./images/analysis/Categories_Households.png);
 }
 
 .DataCategoryItemIcon.DataCategoryImage_households {
@@ -349,12 +358,12 @@
 }
 
 
-.DataCategoryImage_housing {
-    background-image: url(./images/analysis/Categories_Housing.svg) !important;
+.DataCategoryImage.DataCategoryImage_housing {
+    background-image: url(./images/analysis/Categories_Housing.svg);
 }
 
-.dj_ie8 .DataCategoryImage_housing {
-    background-image: url(./images/analysis/Categories_Housing.png) !important;
+.dj_ie8 .DataCategoryImage.DataCategoryImage_housing {
+    background-image: url(./images/analysis/Categories_Housing.png);
 }
 
 .DataCategoryItemIcon.DataCategoryImage_housing {
@@ -363,12 +372,12 @@
 }
 
 
-.DataCategoryImage_income {
-    background-image: url(./images/analysis/Categories_Wealth.svg) !important;
+.DataCategoryImage.DataCategoryImage_income {
+    background-image: url(./images/analysis/Categories_Wealth.svg);
 }
 
-.dj_ie8 .DataCategoryImage_income {
-    background-image: url(./images/analysis/Categories_Wealth.png) !important;
+.dj_ie8 .DataCategoryImage.DataCategoryImage_income {
+    background-image: url(./images/analysis/Categories_Wealth.png);
 }
 
 .DataCategoryItemIcon.DataCategoryImage_income {
@@ -377,12 +386,12 @@
 }
 
 
-.DataCategoryImage_jobs {
-    background-image: url(./images/analysis/Categories_Jobs.svg) !important;
+.DataCategoryImage.DataCategoryImage_jobs {
+    background-image: url(./images/analysis/Categories_Jobs.svg);
 }
 
-.dj_ie8 .DataCategoryImage_jobs {
-    background-image: url(./images/analysis/Categories_Jobs.png) !important;
+.dj_ie8 .DataCategoryImage.DataCategoryImage_jobs {
+    background-image: url(./images/analysis/Categories_Jobs.png);
 }
 
 .DataCategoryItemIcon.DataCategoryImage_jobs {
@@ -391,12 +400,12 @@
 }
 
 
-.DataCategoryImage_keyfacts {
-    background-image: url(./images/analysis/Categories_KeyFacts.svg) !important;
+.DataCategoryImage.DataCategoryImage_keyfacts {
+    background-image: url(./images/analysis/Categories_KeyFacts.svg);
 }
 
-.dj_ie8 .DataCategoryImage_keyfacts {
-    background-image: url(./images/analysis/Categories_KeyFacts.png) !important;
+.dj_ie8 .DataCategoryImage.DataCategoryImage_keyfacts {
+    background-image: url(./images/analysis/Categories_KeyFacts.png);
 }
 
 .DataCategoryItemIcon.DataCategoryImage_keyfacts {
@@ -405,12 +414,12 @@
 }
 
 
-.DataCategoryImage_maritalstatus {
-    background-image: url(./images/analysis/Categories_MaritalStatus.svg) !important;
+.DataCategoryImage.DataCategoryImage_maritalstatus {
+    background-image: url(./images/analysis/Categories_MaritalStatus.svg);
 }
 
-.dj_ie8 .DataCategoryImage_maritalstatus {
-    background-image: url(./images/analysis/Categories_MaritalStatus.png) !important;
+.dj_ie8 .DataCategoryImage.DataCategoryImage_maritalstatus {
+    background-image: url(./images/analysis/Categories_MaritalStatus.png);
 }
 
 .DataCategoryItemIcon.DataCategoryImage_maritalstatus {
@@ -419,12 +428,12 @@
 }
 
 
-.DataCategoryImage_policy {
-    background-image: url(./images/analysis/Categories_Policy.svg) !important;
+.DataCategoryImage.DataCategoryImage_policy {
+    background-image: url(./images/analysis/Categories_Policy.svg);
 }
 
-.dj_ie8 .DataCategoryImage_policy {
-    background-image: url(./images/analysis/Categories_Policy.png) !important;
+.dj_ie8 .DataCategoryImage.DataCategoryImage_policy {
+    background-image: url(./images/analysis/Categories_Policy.png);
 }
 
 .DataCategoryItemIcon.DataCategoryImage_policy {
@@ -433,12 +442,12 @@
 }
 
 
-.DataCategoryImage_poverty {
-    background-image: url(./images/analysis/Categories_Poverty.svg) !important;
+.DataCategoryImage.DataCategoryImage_poverty {
+    background-image: url(./images/analysis/Categories_Poverty.svg);
 }
 
-.dj_ie8 .DataCategoryImage_poverty {
-    background-image: url(./images/analysis/Categories_Poverty.png) !important;
+.dj_ie8 .DataCategoryImage.DataCategoryImage_poverty {
+    background-image: url(./images/analysis/Categories_Poverty.png);
 }
 
 .DataCategoryItemIcon.DataCategoryImage_poverty {
@@ -447,12 +456,12 @@
 }
 
 
-.DataCategoryImage_population {
-    background-image: url(./images/analysis/Categories_Population.svg) !important;
+.DataCategoryImage.DataCategoryImage_population {
+    background-image: url(./images/analysis/Categories_Population.svg);
 }
 
-.dj_ie8 .DataCategoryImage_population {
-    background-image: url(./images/analysis/Categories_Population.png) !important;
+.dj_ie8 .DataCategoryImage.DataCategoryImage_population {
+    background-image: url(./images/analysis/Categories_Population.png);
 }
 
 .DataCategoryItemIcon.DataCategoryImage_population {
@@ -461,12 +470,12 @@
 }
 
 
-.DataCategoryImage_race {
-    background-image: url(./images/analysis/Categories_Race.svg) !important;
+.DataCategoryImage.DataCategoryImage_race {
+    background-image: url(./images/analysis/Categories_Race.svg);
 }
 
-.dj_ie8 .DataCategoryImage_race {
-    background-image: url(./images/analysis/Categories_Race.png) !important;
+.dj_ie8 .DataCategoryImage.DataCategoryImage_race {
+    background-image: url(./images/analysis/Categories_Race.png);
 }
 
 .DataCategoryItemIcon.DataCategoryImage_race {
@@ -475,12 +484,12 @@
 }
 
 
-.DataCategoryImage_supplyanddemand {
-    background-image: url(./images/analysis/Categories_SupplyAndDemand.svg) !important;
+.DataCategoryImage.DataCategoryImage_supplyanddemand {
+    background-image: url(./images/analysis/Categories_SupplyAndDemand.svg);
 }
     
-.dj_ie8 .DataCategoryImage_supplyanddemand {
-    background-image: url(./images/analysis/Categories_SupplyAndDemand.png) !important;
+.dj_ie8 .DataCategoryImage.DataCategoryImage_supplyanddemand {
+    background-image: url(./images/analysis/Categories_SupplyAndDemand.png);
 }
 
 .DataCategoryItemIcon.DataCategoryImage_supplyanddemand {
@@ -489,12 +498,12 @@
 }
 
 
-.DataCategoryImage_spending {
-    background-image: url(./images/analysis/Categories_Spending.svg) !important;
+.DataCategoryImage.DataCategoryImage_spending {
+    background-image: url(./images/analysis/Categories_Spending.svg);
 }
     
-.dj_ie8 .DataCategoryImage_spending {
-    background-image: url(./images/analysis/Categories_Spending.png) !important;
+.dj_ie8 .DataCategoryImage.DataCategoryImage_spending {
+    background-image: url(./images/analysis/Categories_Spending.png);
 }
 
 .DataCategoryItemIcon.DataCategoryImage_spending {
@@ -503,14 +512,14 @@
 }
 
 
-.DataCategoryImage_tapestry,
-.DataCategoryImage_segmentation {
-    background-image: url(./images/analysis/Categories_Tapestry.svg) !important;
+.DataCategoryImage.DataCategoryImage_tapestry,
+.DataCategoryImage.DataCategoryImage_segmentation {
+    background-image: url(./images/analysis/Categories_Tapestry.svg);
 }
 
-.dj_ie8 .DataCategoryImage_tapestry,
-.dj_ie8 .DataCategoryImage_segmentation {
-    background-image: url(./images/analysis/Categories_Tapestry.png) !important;
+.dj_ie8 .DataCategoryImage.DataCategoryImage_tapestry,
+.dj_ie8 .DataCategoryImage.DataCategoryImage_segmentation {
+    background-image: url(./images/analysis/Categories_Tapestry.png);
 }
 
 .DataCategoryItemIcon.DataCategoryImage_tapestry,
@@ -520,12 +529,12 @@
 }
 
 
-.DataCategoryImage_landscape {
-    background-image: url(./images/analysis/Categories_Landscape.svg) !important;
+.DataCategoryImage.DataCategoryImage_landscape {
+    background-image: url(./images/analysis/Categories_Landscape.svg);
 }
 
-.dj_ie8 .DataCategoryImage_landscape {
-    background-image: url(./images/analysis/Categories_Landscape.png) !important;
+.dj_ie8 .DataCategoryImage.DataCategoryImage_landscape {
+    background-image: url(./images/analysis/Categories_Landscape.png);
 }
 
 .DataCategoryItemIcon.DataCategoryImage_landscape {
@@ -534,12 +543,12 @@
 }
 
 
-.DataCategoryImage_health {
-    background-image: url(./images/analysis/Categories_Health.svg) !important;
+.DataCategoryImage.DataCategoryImage_health {
+    background-image: url(./images/analysis/Categories_Health.svg);
 }
 
-.dj_ie8 .DataCategoryImage_health {
-    background-image: url(./images/analysis/Categories_Health.png) !important;
+.dj_ie8 .DataCategoryImage.DataCategoryImage_health {
+    background-image: url(./images/analysis/Categories_Health.png);
 }
 
 .DataCategoryItemIcon.DataCategoryImage_health {
@@ -635,7 +644,7 @@
 .DataCategoryImage_jobs.Anim_FlyingObj,
 .DataCategoryImage_supplyanddemand.Breadcrumb_DataCollections,
 .DataCategoryImage_supplyanddemand.Anim_FlyingObj,
-.DataCategoryImage_atrisk.Breadcrumb_DataCollections, 
+.DataCategoryImage_atrisk.Breadcrumb_DataCollections,
 .DataCategoryImage_atrisk.Anim_FlyingObj {
     background-position: center 6px;
 }
@@ -693,7 +702,7 @@
 
 
 .Breadcrumb_ConnectDC {
-    width: 108px; 
+    width: 108px;
 }
 
 
@@ -716,6 +725,7 @@
 @keyframes Breadcrumb_SelectCategory {
     from {
     }
+
     to {
         left: 108px;
         top: 54px;
@@ -725,6 +735,7 @@
 @-webkit-keyframes Breadcrumb_SelectCategory {
     from {
     }
+
     to {
         left: 108px;
         top: 54px;
@@ -739,6 +750,7 @@
 @keyframes RTLBreadcrumb_SelectCategory {
     from {
     }
+
     to {
         right: 108px;
         top: 54px;
@@ -748,6 +760,7 @@
 @-webkit-keyframes RTLBreadcrumb_SelectCategory {
     from {
     }
+
     to {
         right: 108px;
         top: 54px;
@@ -763,6 +776,7 @@
 @keyframes Breadcrumb_SelectDC {
     from {
     }
+
     to {
         left: 178px;
         top: 56px;
@@ -772,6 +786,7 @@
 @-webkit-keyframes Breadcrumb_SelectDC {
     from {
     }
+
     to {
         left: 178px;
         top: 56px;
@@ -786,6 +801,7 @@
 @keyframes RTLBreadcrumb_SelectDC {
     from {
     }
+
     to {
         right: 178px;
         top: 56px;
@@ -795,6 +811,7 @@
 @-webkit-keyframes RTLBreadcrumb_SelectDC {
     from {
     }
+
     to {
         right: 178px;
         top: 56px;
@@ -809,9 +826,9 @@
     text-align: center;
 }
 
-.DataCategoriesPage_Country .dijitInputInner::-ms-clear {
-    display: none;
-}
+    .DataCategoriesPage_Country .dijitInputInner::-ms-clear {
+        display: none;
+    }
 
 .DataCategoriesPage_Search {
     position: absolute;
@@ -823,34 +840,34 @@
 }
 
 .DataCategoriesPage_Pagination {
-    min-height:135px;
+    min-height: 135px;
 }
 
-.DataCategoriesPage_Pagination .Pagination_PageAndArrows {
-    top: 15px;
-    left: 20px;
-    right: 20px;
-    border-color: #bcbcbc;
-    border-style: solid;
-    border-width: 1px 1px 0 1px;
-    background-color:white;
-}
+    .DataCategoriesPage_Pagination .Pagination_PageAndArrows {
+        top: 15px;
+        left: 20px;
+        right: 20px;
+        border-color: #bcbcbc;
+        border-style: solid;
+        border-width: 1px 1px 0 1px;
+        background-color: white;
+    }
 
-.DataCategoriesPage_Pagination .Pagination_Items {
-}
+    .DataCategoriesPage_Pagination .Pagination_Items {
+    }
 
-.DataCategoriesPage_Pagination .Pagination_Bullets {
-    left: 20px;
-    right: 20px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-align: center;
-    color:#d1d1d1;
-    border-color: #bcbcbc;
-    border-style: solid;
-    border-width: 0 1px 1px 1px;
-    background-color:white;
-}
+    .DataCategoriesPage_Pagination .Pagination_Bullets {
+        left: 20px;
+        right: 20px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-align: center;
+        color: #d1d1d1;
+        border-color: #bcbcbc;
+        border-style: solid;
+        border-width: 0 1px 1px 1px;
+        background-color: white;
+    }
 
 .DataCategoriesPage_Bullet {
     font-size: 30px;
@@ -866,7 +883,7 @@
 .DataCategoriesPage_ShowFavorites {
     display: block;
     margin: 0 20px;
-        position: absolute;
+    position: absolute;
 }
 
 .DataCategoriesPage_FadeAnim {
@@ -931,9 +948,9 @@
     border: 1px #bcbcbc solid;
 }
 
-.DataCollectionsPage_Panel > div:first-child {
-    margin-top: 0;
-}
+    .DataCollectionsPage_Panel > div:first-child {
+        margin-top: 0;
+    }
 
 .DataCollectionsPage_PanelTop {
     border-bottom: none;
@@ -957,7 +974,7 @@
     width: auto;
     margin-left: 10px;
     margin-right: 10px;
-    width:350px;
+    width: 350px;
 }
 
 .DataCollectionButton {
@@ -971,36 +988,36 @@
     color: #fff;
 }
 
-.DataCollectionButton.DataBrowser_Clickable:hover {
-    background: #7a7a7a;
-}
+    .DataCollectionButton.DataBrowser_Clickable:hover {
+        background: #7a7a7a;
+    }
 
 .DataCollectionsPage_DataCollectionContainer {
-    min-height:100px;
+    min-height: 100px;
 }
 
-.DataCollectionsPage_DataCollectionContainer .DataCollectionButtonContainer {
-    display:inline-block;
-    margin: 5px;
-}
+    .DataCollectionsPage_DataCollectionContainer .DataCollectionButtonContainer {
+        display: inline-block;
+        margin: 5px;
+    }
 
 .DataCollectionsPage_PopularVariables {
     margin: 0 20px;
 }
 
-.DataCollectionsPage_PopularVariables.dgrid {
-    height: auto;
-    border: 0;
-}
+    .DataCollectionsPage_PopularVariables.dgrid {
+        height: auto;
+        border: 0;
+    }
 
-.DataCollectionsPage_PopularVariables .dgrid-cell {
-    border: 0;
-}
+    .DataCollectionsPage_PopularVariables .dgrid-cell {
+        border: 0;
+    }
 
-.DataCollectionsPage_PopularVariables .dgrid-scroller {
-    position: relative;
-    overflow-y: hidden;
-}
+    .DataCollectionsPage_PopularVariables .dgrid-scroller {
+        position: relative;
+        overflow-y: hidden;
+    }
 
 .DataCollectionsPage_DataCollectionContainer .dgrid {
     border: 0;
@@ -1013,9 +1030,9 @@
 }
 
 .DataCollectionsPage_DataCollectionContainer .Pagination {
-    margin-left:20px;
-    margin-right:20px;
-    height:100%;
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 100%;
     background-color: white;
     border-left: 1px #bcbcbc solid;
     border-right: 1px #bcbcbc solid;
@@ -1048,7 +1065,7 @@
     border-style: solid;
     border-color: #bcbcbc;
     background: white;
-    min-height:110px;
+    min-height: 110px;
 }
 
 .DataVariablesPage_Variables.dgrid {

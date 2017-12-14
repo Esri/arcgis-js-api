@@ -59,7 +59,7 @@
     </p>
     <p>Pronađi najbliže vraća sloj koji sadrži najbliže geoobjekte i linijski sloj koji povezuje početne lokacije s najbližim lokacijama. Linijski sloj sadrži informacije o početnim i najbližim lokacijama te udaljenosti među njima.
     </p>
-    <p>Ako je označena opcija  <b>Upotrijebi trenutačni obuhvat karte</b>, samo će se geoobjekti koji su vidljivi unutar trenutačnog obuhvata karte uzeti u obzir kao početni i potencijalni najbliži geoobjekti.  Ako opcija nije označena, svi geoobjekti u sloju unosa uzet će se u obzir, čak i ako se nalaze izvan trenutačnog obuhvata karte.  
+    <p>Ako je označena opcija  <b>Upotrijebi trenutačni obuhvat karte</b>, samo će se geoobjekti koji su vidljivi unutar trenutačnog obuhvata karte uzeti u obzir kao početni i potencijalni najbliži geoobjekti. Ako opcija nije označena, svi geoobjekti u ulaznom sloju uzet će se u obzir, čak i ako se nalaze izvan trenutačnog obuhvata karte.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -86,11 +86,11 @@
         <div><h2>Izmjeri</h2></div>
         <hr/>
         <div>
-            <p>Izaberite hoćete li pronaći najbliže lokacije na temelju udaljenosti zračne linije ili odabranog načina putovanja. Načini putovanja omogućeni su samo kada sloj unosa sadrži točke. Dostupne načine putovanja određuje administrator va&scaron;e organizacije.  Prilikom upotrebe jednog od načina putovanja, mjerenja se rade uz ceste ili staze i po&scaron;tuju primjenjiva pravila, kao &scaron;to su jednosmjerne ulice, zabranjena skretanja itd.
+            <p>Izaberite hoćete li pronaći najbliže lokacije na temelju udaljenosti zračne linije ili odabranog načina putovanja. Načini putovanja omogućeni su samo kada ulazni sloj sadrži točke. Dostupne načine putovanja određuje administrator va&scaron;e organizacije. Prilikom upotrebe jednog od načina putovanja, mjerenja se rade uz ceste ili staze i po&scaron;tuju primjenjiva pravila, kao &scaron;to su jednosmjerne ulice, zabranjena skretanja itd.
             </p>
             <p>Prilikom mjerenja između linija ili povr&scaron;ina, pronalazi se udaljenost od ili do najbliže točke uz liniju ili granicu povr&scaron;ine. 
             </p> 
-            <p>Kada izaberete opciju  <b>Vrijeme vožnje</b>, imate opcije za mjerenje vremena vožnje.
+            <p>Kada odaberete  <b>vrijeme vožnje</b>, <b>vrijeme vožnje ruralnim područjem</b> ili <b>vrijeme vožnje kamionom</b>, možete izmjeriti vrijeme vožnje.
                 <ul>
                     <li>
                         <p>Odznačite opciju  <b>Upotrijebi promet</b> kako biste prona&scaron;li najbliže geoobjekte na temelju statičkih brzina putovanja, kao &scaron;to su ograničenja brzine, a ne na temelju promjenjivih brzina koje su uzrokovane promjenjivim prometnim uvjetima.
@@ -113,7 +113,9 @@
                         </p>
                     </li>
                 </ul>
-                Imajte na umu da kako vozilo vozi dalje od točke, vrijeme prolazi i mijenjaju se prometni uvjeti. Ovaj alat uzima u obzir ove varijacije kada označite <b>Upotrijebi promet</b>. Međutim, ne podržavaju sve regije promet. Kliknite na poveznicu <b>Vidi dostupnost</b> na alatu da biste saznali nudi li se u va&scaron;em području proučavanja. 
+                Imajte na umu da kako vozilo vozi dalje od točke, vrijeme prolazi i mijenjaju se prometni uvjeti. Ovaj alat uzima u obzir ove varijacije kada označite <b>Upotrijebi promet</b>. Međutim, ne podržavaju sve regije promet. Kliknite na poveznicu <b>Vidi dostupnost</b> na alatu da biste saznali nudi li se u va&scaron;em radnom području. 
+            </p>
+            <p> <b>Vrijeme vožnje kamionom</b> može upotrijebiti dinamične brzine putovanja na temelju prometa, ali samo do zakonskog ograničenja brzine kamiona. Na primjer, ako je dinamična brzina za ulicu na temelju prometa uživo 65 milja na sat, ali je brzina kamiona za tu ulicu 55 milja na sat, u izračunu će se upotrijebiti 55 milja na sat za tu ulicu.
             </p>
         </div>
     </div>
@@ -125,7 +127,7 @@
             </p>
             <p>Ako odznačite opcije, maksimalan broj najbližih lokacija koje možete pronaći jest 100 (ograničenje alata), a maksimalni raspon pretraživanja nije ograničen.
             </p>
-            <p>Vrijeme obrade ovisi o broju početnih lokacija, broju obližnjih lokacija i maksimalnom rasponu pretraživanja.   Potrebno je vi&scaron;e vremena za obradu kada se radi o vi&scaron;e lokacija ili većim rasponima pretraživanja.
+            <p>Vrijeme obrade ovisi o broju početnih lokacija, broju obližnjih lokacija i maksimalnom rasponu pretraživanja. Potrebno je vi&scaron;e vremena za obradu kada se radi o vi&scaron;e lokacija ili većim rasponima pretraživanja.
             </p>
             <p>Imajte na umu da kada se postavi ograničenje na rasponu pretraživanja, moguće je da alat neće pronaći najbliže lokacije unutar tog raspona ili da će pronaći manje lokacija od maksimalnog broja najbližih lokacija koji odredite.
             </p>

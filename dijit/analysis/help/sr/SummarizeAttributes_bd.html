@@ -42,12 +42,11 @@
 <div id="topics">
     <div id="toolDescription" class="regularsize">
         <h2>Sumiraj atribute</h2><p/>
-        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Sumiraj atribute"></h2>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Sumiraj atributediagram"></h2>
         <hr/>
-    <p>Ovaj alat sumira sve vrednosti koje se poklapaju u jednom ili vi&scaron;e polja i izračunava statistiku na njima. Najosnovnija statistika je broj geoobjekata koji su zajedno sumirani, ali takođe možete da izračunate i naprednije statistike. 
-
+    <p> Ovaj alat sumira sve vrednosti koje se poklapaju u jednom ili vi&scaron;e polja i izračunava statistiku na njima. Najosnovnija statistika je broj geoobjekata koji su zajedno sumirani, ali takođe možete da izračunate i naprednije statistike.
     </p>
-    <p>Na primer, pretpostavimo da imate tačkaste geoobjekte lokacija prodavnica sa poljem koje predstavlja  <i>DISTRICT_MANAGER_NAME</i> i da vi želite da sumirate prodaju kafe od strane rukovodioca. Možete da navedete polje <i>DISTRICT_MANAGER_NAME</i> kao polje za svođenje i svi redovi podataka koji predstavljaju pojedinačne rukovodioce će biti sumirani. To znači da će sve lokacije prodavnica kojima upravlja Rukovodilac1 biti sumirane u jednom redu sa izračunatom statistikom sumiranja. U ovom slučaju, statistika kao &scaron;to je računanje broja prodavnica i zbir <i>TOTAL_SALES</i> za sve prodavnice kojima rukovodi Rukovodilac1 bi bila izračunata, kao i za bilo kojeg drugog rukovodioca navedenog u polju <i>DISTRICT_MANAGER_NAME</i>.
+    <p>Na primer, pretpostavimo da imate tačkaste geoobjekte lokacija prodavnica sa poljem koje predstavlja  <i>DISTRICT_MANAGER_NAME</i>, i da vi želite da sumirate prodaju kafe od strane rukovodioca. Možete da navedete polje <i>DISTRICT_MANAGER_NAME</i> kao polje za svođenje i svi redovi podataka koji predstavljaju pojedinačne rukovodioce će biti sumirani. To znači da će sve lokacije prodavnica kojima upravlja <pre>Manager1</pre> biti sumirane u jednom redu, sa izračunatom statistikom sumiranja. U ovom slučaju, statistika kao &scaron;to je računanje broja prodavnica i zbir <i>TOTAL_SALES</i> za sve prodavnice kojima rukovodi <pre>Manager1</pre> bi bila izračunata, kao i za bilo kojeg drugog rukovodioca navedenog u polju <i>DISTRICT_MANAGER_NAME</i>.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -62,10 +61,19 @@
         </div>
     </div>
     <div id="fields">
-        <div><h2>Odaberite polja za sumiranje</h2></div>
+        <div><h2>Odaberite kako da sumirate svoje podatke</h2></div>
         <hr/>
         <div>
-            <p>Lista polja iz ulaznog sloja. Izabrana polja će biti sumirana i iskori&scaron;ćena za izračunavanje statistike. Na primer, ako izaberete polje koje se zove  <i>PropertyType</i> sa vrednostima poslovnih i stambenih, sva stambena polja će biti zajedno sumirana, sa izračunatim statistikom sumiranja, a sva poslovna polja će biti sumirana zajedno.
+            <p>Postoje dva načina za sumiranje podataka:
+                <ul>
+                    <li> <b>Svi geoobjekti u jedan geoobjekat</b> &ndash; Izračunava statistiku na svim geoobjektima.
+                    </li>
+                    <li> <b>Po polju</b> &ndash; Grupi&scaron;e geoobjekte po sličnim vrednostima u navedenim poljima.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Na primer, pretpostavimo da ste imali skup podataka o drveću koji uključuje polja  <i>vrsta drveta</i> sa vrednostima <code>Javor</code>, <code>Jela</code> i <code>Bor</code>, kao i polje <i>visina drveća</i>, i da vas zanima da nađete srednju vrednost polja <i>visina drveća</i>. Ako sumirate sve geoobjekte u jedan geoobjekat, pronaći ćete srednju vrednost visine drveća za svo drveće, &scaron;to će rezultirati jednom srednjom vredno&scaron;ću. Ako ste sumirali po polju <i>visina drveća</i>, na kraju biste dobili srednju vrednost za javorovo drveće, srednju vrednost za drveće jele i srednju vrednost za drveće bora.
             </p>
         </div>
     </div>

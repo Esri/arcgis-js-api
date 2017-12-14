@@ -185,7 +185,7 @@
     <div id="FindLocationsCategory" class="largesize">
         <h2>Hae sijainnit</h2>
         <hr/>
-        <p>N&auml;iden ty&ouml;kalujen avulla voidaan tunnistaa alueet, jotka vastaavat useita erilaisia m&auml;&auml;ritt&auml;mi&auml;si kriteerej&auml;. N&auml;m&auml; kriteerit voivat perustua attribuuttikyselyihin (esimerkiksi vapaisiin kiinteist&ouml;ihin) ja sijaintikyselyihin (esimerkiksi yhden kilometrin s&auml;teell&auml; joesta). Voit valita l&ouml;ydett&auml;v&auml;t alueet olemassa olevista kohteista (kuten olemassa olevista kiinteist&ouml;ist&auml;) tai voit luoda uusia kohteita, jotka t&auml;ytt&auml;v&auml;t kaikki vaatimukset.
+        <p>N&auml;iden ty&ouml;kalujen avulla tunnistetaan tai luodaan kohteita, jotka t&auml;ytt&auml;v&auml;t m&auml;&auml;ritt&auml;m&auml;si ehdot.  Ehtojen tyyppi m&auml;&auml;r&auml;ytyy k&auml;ytt&auml;m&auml;si ty&ouml;kalun mukaan. Ehtosi voivat perustua esimerkiksi sijainti- tai ominaisuustietokyselyihin, tietylt&auml; korkeudelta n&auml;kyviin alueisiin, tiettyjen vesist&ouml;pisteiden my&ouml;t&auml;suunta-alueisiin tai ajoaikoihin tietyiss&auml; liikenneoloissa.
             <ul>
                 <li> <b>Valitse parhaat palvelut</b> valitsee parhaat sijainnit palveluille allokoimalla sijainnit, joissa on kysynt&auml;&auml; n&auml;ille palveluille tavalla, joka t&auml;ytt&auml;&auml; annetun tavoitteen.
                 </li>
@@ -195,16 +195,18 @@
                 </li>
                 <li> <b>Laske uudet sijainnit</b> luo uusia alueita tutkimusalueesi sijainneista, jotka t&auml;ytt&auml;v&auml;t hakukriteerit.
                 </li>
+                <li class="OnlineOnly"> <b>Etsi keskipisteet</b> etsi l&auml;ht&ouml;aineiston kohteita edustavan keskikohdan (keskipisteen). 
+                </li>
                 <li> <b>Hae nykyiset sijainnit</b> hakee karttatasossa olevia alueita, jotka vastaavat m&auml;&auml;ritettyj&auml; kriteereit&auml;.
                 </li>
                 <li> <b>Etsi samankaltaisia sijainteja</b> hakee sijainteja, jotka ovat mahdollisimman samanlaisia kuin viitesijainnit ja m&auml;&auml;ritt&auml;m&auml;si vastaavuusehdot.
                 </li>
-                <li class="PortalOnly"> <b>Geokoodaa sijainnit taulukosta</b> muuntaa taulukon osoitteet koordinaateiksi.
+                <li class="PortalOnly"> <b>Geokoodaa sijainnit taulukosta</b> muuntaa taulukon osoitteet koordinaateiksi. 
                 </li>
                 <li> <b>J&auml;ljit&auml; alavirtaan</b> m&auml;&auml;ritt&auml;&auml; virtojen polut alavirran suunnassa m&auml;&auml;ritt&auml;mist&auml;si sijainneista.
                 </li>
             </ul>
-             
+            
         </p>
         <p> 
         </p>
@@ -266,6 +268,21 @@
             </table>
 <hr/>
             <p>Luo tutkittavalle alueelle uusia kohteita, jotka vastaavat m&auml;&auml;ritt&auml;mi&auml;si kriteereit&auml;. Kriteereit&auml; voivat olla attribuuttikyselyt (esimerkiksi vapaat kiinteist&ouml;t) tai sijaintikyselyt (esimerkiksi yhden kilometrin s&auml;teell&auml; joesta). 
+            </p>
+            <br/>
+        </div>
+        <div id="FindCentroidsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Etsi keskipisteet</h2></td>
+                    <td>
+                    <img src="../images/GUID-75D9AF75-68C3-48BF-8062-D5499BD06978-web.png" class="titleImage" alt="Etsi keskipisteet">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Etsii keskikohtaa edustavan keskipisteen kullekin l&auml;ht&ouml;aineiston monipiste-, viiva- tai aluekohteelle.
             </p>
             <br/>
         </div>

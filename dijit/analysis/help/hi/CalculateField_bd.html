@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>फ़ील्ड की गणना करें</h2><p/>
+        <h2><img src="../images/GUID-059C9BE7-7B00-49C8-9917-B0EAEA3DA19D-web.png" alt="फ़ील्ड की गणना करें"></h2>
+        <hr/>
+    <p>
+    </p>
+    <p>उदाहरण के लिए, मान लीजिए कि आप  <i>TotalSales</i> नामक मौजूदा फ़ील्ड को  आप चाहते हैं कि फ़ील्ड 2016 और 2017 में कुल बिक्री के योग को दर्शाए। <pre>$feature[&quot;Sales2016&quot;] + $feature[&quot;Sales2017&quot;]</pre> के रूप में करते हैं।
+    </p>
+    <p>हम  <i>SpeedFrom3</i> नामक एक नया फील्ड बनाना चाहते हैं जो प्रत्येक फीचर के लिए पिछले 3 रिकॉर्ड किए गए GPS माप की गति का औसत करता है। इस गणना के लिए हम ट्रैक जागरूक गणना का उपयोग करेंगे, जहां ट्रैक बस ID बस द्वारा चिह्नित बस है। पिछले 3 समय के चरणों की औसत गति निर्धारित करने की गणना और वर्तमान समय चरण <pre>average($track.field[&quot;speed&quot;].history(-4))</pre> है।
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2></h2></div>
+        <hr/>
+        <div>
+            <p>बिंदु, रेखाएं, क्षेत्र या तालिका जिसमें फ़ील्ड मानों की गणना होगी।  
+            </p>
+            <p>अपने नक्शे से एक लेयर चुनने के अलावा, आप बड़ी डेटा फ़ाइल साझा डेटासेट या फीचर लेयर के लिए अपनी सामग्री ब्राउज़ करने के लिए ड्रॉप-डाउन सूची के निचले भाग में  <b>ब्राउज़ लेयर</b> चुन सकते हैं।
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>फ़ील्ड के लिए फ़ील्ड वैल्यू की गणना करें</h2></div>
+        <hr/>
+        <div>
+            <p>नए या मौजूदा फ़ील्ड जिनमें गणना किया गया मान और उस फ़ील्ड का डेटा प्रकार होगा। यदि आप पहले से मौजूद फ़ील्ड पर मानों की गणना कर रहे हैं, तो आपको डेटा प्रकार को मिलाने की आवश्यकता नहीं है। 
+            </p>
+        </div>
+    </div>
+    <div id="expression">
+        <div><h2>घटना की शुरुआत को दर्शाने के लिए व्यंजक स्थिति बनाएं</h2></div>
+        <hr/>
+        <div>
+            <p>
+            </p>
+            <p>उदाहरण के लिए, मान लीजिए कि हम  <i>आय</i>  और <i>बोनस</i> नाम वाले फील्ड के मानों को जोड़ना चाहते हैं। ऐसा करने के लिए, <code>$feature[&quot;income&quot;] + $feature[&quot;bonus&quot;] </code> जोड़ें।
+            </p>
+        </div>
+    </div>
+    <div id="trackInfo">
+        <div><h2></h2></div>
+        <hr/>
+        <div>
+            <p> <pre>$track.field[&quot;fieldname&quot;].history(...)</pre> शामिल होगा। ट्रैक बिंदु, रेखाओं, क्षेत्रों या तालिकाओं से बने हो सकते हैं और केवल आवश्यक है कि इनपुट में ट्रैक पहचानकर्ता हो और डेटा तुरंत समय प्रकार का समय-सक्षम होता है।
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>परिणामी लेयर का नाम</h2></div>
+        <hr/>
+        <div>
+            <p> यह लेयर का नाम है जो <b>मेरी सामग्री</b> में बनाई जाएगी और मानचित्र में शामिल की जाएगी। इसका मूल नाम उपकरण के नाम और इनपुट लेयर के नाम पर आधारित है। अगर लेयर पहले से मौजूद है, तो टूल असफल हो जायेगा।
+            </p>
+            <p> <b>इसमें सहेजें</b> ड्राप-डाउन बॉक्स का उपयोग करके, आप <b>मेरी सामग्री</b> में एक फोल्डर का नाम निर्दिष्ट कर सकते हैं, जहां परिणामों को सहेजा जाएगा।।
+            </p>
+        </div>
+    </div>
+</div>
+</html>

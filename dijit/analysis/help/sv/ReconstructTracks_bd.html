@@ -95,6 +95,8 @@
         <div>
             <p>Ekvationen som anv&auml;nds f&ouml;r att ber&auml;kna buffertavst&aring;ndet runt indatageoobjekt. Ekvationen kan genereras med buffertkalkylatorn och grundl&auml;ggande &aring;tg&auml;rder som addera, subtrahera, multiplicera och dividera st&ouml;ds. V&auml;rdena ber&auml;knas med analyskoordinatsystemet. Lagret m&aring;ste finnas i ett projicerat koordinatsystem eller s&aring; m&aring;ste den geografiska referensen f&ouml;r bearbetning st&auml;llas in f&ouml;r ett projicerat koordinatsystem med  <b>Analysmilj&ouml;</b> om en buffert till&auml;mpas.
             </p>
+            <p>En ekvation som  <code>$feature.windspeed * 1000</code> till&auml;mpar en buffert p&aring; 1&nbsp;000 multiplicerad med f&auml;ltet <i>windspeed</i>. Du kan anv&auml;nda fler &auml;n ett f&auml;lt i buffertkalkylatorn.
+            </p>
         </div>
     </div>
     <div id="timeSplit">
@@ -102,6 +104,20 @@
         <hr/>
         <div>
             <p>Tid som anv&auml;nds f&ouml;r att dela sp&aring;r. Om indatapunkterna eller -polygonerna &auml;r l&auml;ngre tillsammans &auml;n tidsdelningen, delas de i olika sp&aring;r.
+            </p>
+            <p>Om du anger en tidsdelning och en avst&aring;ndsdelning kommer sp&aring;ren att delas n&auml;r det ena eller b&aring;da villkoren &auml;r uppfyllda. 
+            </p>
+            <p>T&auml;nk dig att du har punktgeoobjekt som representerar flygningar, d&auml;r sp&aring;rf&auml;ltet &auml;r flygplanets ID. Flygplanet kan g&ouml;ra flera resor och representeras som ett sp&aring;r.  Om du vet att det finns en paus p&aring; en timme mellan flygningarna, kan du anv&auml;nda  <code>1 timme</code> som sp&aring;rdelning, och varje flygning delas d&aring; till ett eget sp&aring;r.
+            </p>
+        </div>
+    </div>
+    <div id="distanceSplit">
+        <div><h2>Välj ett avstånd att dela spår från (valfritt)</h2></div>
+        <hr/>
+        <div>
+            <p> Avst&aring;nd som anv&auml;nds f&ouml;r att dela sp&aring;r. Om indatapunkterna eller -polygonerna har ett l&auml;ngre avst&aring;nd mellan sig &auml;n avst&aring;ndsdelningen, delas de i olika sp&aring;r.
+            </p>
+            <p>Om du anger en tidsdelning och en avst&aring;ndsdelning kommer sp&aring;ren att delas n&auml;r det ena eller b&aring;da villkoren &auml;r uppfyllda. 
             </p>
         </div>
     </div>

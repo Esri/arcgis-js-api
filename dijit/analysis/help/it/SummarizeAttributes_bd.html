@@ -42,12 +42,11 @@
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Riepiloga attributi</h2><p/>
-        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Riepiloga attributi"></h2>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Diagramma Riepiloga Attributi"></h2>
         <hr/>
-    <p>Questo strumento riepiloga tutti i valori corrispondenti in uno o pi&ugrave; campi e calcola le statistiche su di essi. La statistica pi&ugrave; semplice &egrave; costituita dal numero di feature che sono state riepilogate insieme, tuttavia &egrave; possibile calcolare anche statistiche pi&ugrave; avanzate. 
-
+    <p> Questo strumento riepiloga tutti i valori corrispondenti in uno o pi&ugrave; campi e calcola le statistiche su di essi. La statistica pi&ugrave; semplice &egrave; costituita dal numero di feature che sono state riepilogate insieme, tuttavia &egrave; possibile calcolare anche statistiche pi&ugrave; avanzate.
     </p>
-    <p>Si supponga, ad esempio, di avere feature punto relative alla posizione di negozi con un campo che rappresenta  <i>DISTRICT_MANAGER_NAME</i> e che si desideri riepilogare le vendite di caff&egrave; per ciascun responsabile. &Egrave; possibile specificare il campo <i>DISTRICT_MANAGER_NAME</i> come quello in cui eseguire la dissolvenza e tutte le righe di dati che rappresentano singoli responsabili verranno riepilogate. Ci&ograve; significa che tutte le posizioni dei negozi gestite da Responsabile1 saranno riepilogate in una riga con le statistiche di riepilogo calcolate. In questo caso, verranno calcolate statistiche come il numero dei negozi e la somma di <i>TOTAL_SALES</i> per tutti i negozi che Responsabile1 gestisce cos&igrave; come per qualsiasi altro responsabile elencato nel campo <i>DISTRICT_MANAGER_NAME</i>.
+    <p>Si supponga, ad esempio, di avere feature puntuali relative alla posizione di negozi con un campo che rappresenta  <i>DISTRICT_MANAGER_NAME</i>, e che si desideri riepilogare le vendite di caff&egrave; per ciascun responsabile. &Egrave; possibile specificare il campo <i>DISTRICT_MANAGER_NAME</i> come quello in cui eseguire la dissolvenza e tutte le righe di dati che rappresentano singoli responsabili verranno riepilogate. Ci&ograve; significa che tutte le posizioni dei negozi gestite da <pre>Manager1</pre> saranno riepilogate in una riga, con le statistiche di riepilogo calcolate. In questo caso, verranno calcolate statistiche come il numero dei negozi e la somma di <i>TOTAL_SALES</i> per tutti i negozi che <pre>Manager1</pre> gestisce , cos&igrave; come per qualsiasi altro responsabile elencato nel campo <i>DISTRICT_MANAGER_NAME</i>.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -57,15 +56,24 @@
         <div>
             <p>Il layer che contiene i campi che verranno riepilogati.  
             </p>
-            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Sfoglia layer</b> alla base dell'elenco a discesa per cercare una dataset di condivisione file Big Data o un feature layer.
+            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Sfoglia layer</b> alla base dell'elenco a discesa per cercare una dataset di condivisione file Big Data o un Feature Layer.
             </p>
         </div>
     </div>
     <div id="fields">
-        <div><h2>Scegliere i campi da riepilogare</h2></div>
+        <div><h2>Scegliere in che modo riepilogare i dati</h2></div>
         <hr/>
         <div>
-            <p>Elenco di campi dal layer di input. I campi selezionati verranno riepilogati e utilizzati per calcolare le statistiche. Ad esempio, se si sceglie un campo denominato  <i>PropertyType</i> con i valori di edifici commerciali e residenziali, tutti i campi degli edifici residenziali verranno riepilogati insieme cos&igrave; come tutti i campi degli edifici commerciali.
+            <p>Sono disponibili due metodi per riepilogare i dati:
+                <ul>
+                    <li> <b>Tutte le feature in un'unica feature</b>&mdash;Calcola le statistiche su tutte le feature.
+                    </li>
+                    <li> <b>Per campi</b>&mdash;Raggruppa le feature in base ai valori nei campi specificati.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Ad esempio, si supponga di avere un set di dati di alberi che includano campi di  <i>tipo di albero</i> con valori <code>Acero</code>, <code>Abete</code> e <code>Pino</code>,  e un campo <i>altezza albero</i>, e si intende trovare il valore di <i>altezza albero</i> medio. Riepilogando tutte le feature in una singola feature, si trover&agrave; l'albero con l'altezza media tra tutti gli alberi, con un unico valore medio. Riepilogando per il campo <i>altezza albero</i>, si otterr&agrave; un valore medio di aceri, un valore medio di abeti, e un valore medio di pini.
             </p>
         </div>
     </div>
@@ -106,10 +114,10 @@
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Scegliere un archivio dati</h2></div>
+        <div><h2>Scegliere il Data Store</h2></div>
         <hr/>
         <div>
-            <p>I risultati GeoAnalytic sono memorizzati in un ArcGIS Data Store ed esposti come un feature layer in  Portal for ArcGIS. Nella maggior parte dei casi, i risultati devono essere memorizzati nello Spatiotemporal Data Store e questa &egrave; l'impostazione predefinita. In alcuni casi, il salvataggio dei risultati nel Data Store relazionale &egrave; un'ottima opzione. Di seguito sono memorizzate le ragioni per memorizzare i risultati nel Data Store relazionale: 
+            <p>I risultati GeoAnalytic sono memorizzati in un ArcGIS Data Store ed esposti come un Feature Layer in  Portal for ArcGIS. Nella maggior parte dei casi, i risultati devono essere memorizzati nello Spatiotemporal Data Store e questa &egrave; l'impostazione predefinita. In alcuni casi, il salvataggio dei risultati nel Data Store relazionale &egrave; un'ottima opzione. Di seguito sono memorizzate le ragioni per memorizzare i risultati nel Data Store relazionale: 
                 <ul>
                     <li>Utilizzare i risultati nella collaborazione da portale a portale.
                     </li>
@@ -121,7 +129,7 @@
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Nome layer di risultati</h2></div>
+        <div><h2>Nome del layer dei risultati</h2></div>
         <hr/>
         <div>
             <p> Questo &egrave; il nome del layer che verr&agrave; creato in <b>I miei contenuti</b> e aggiunto alla mappa.  Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, lo strumento non verr&agrave; eseguito.

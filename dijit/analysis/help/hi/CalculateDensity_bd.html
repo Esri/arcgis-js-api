@@ -42,22 +42,22 @@
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>घनत्व की गणना करें</h2><p/>
-        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Calculate Density"></h2>
+        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="घनत्व की गणना करें"></h2>
         <hr/>
-    <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas classified from least dense to most dense.   
+    <p>घनत्व की गणना करें टूल मानचित्र पर किसी घटक (बिंदुओं के गुणों के रूप में प्रदर्शित) की ज्ञात मात्राओं के विस्तार के जरिए बिंदु फीचर्स से एक घनत्व मानचित्र तैयार करता है। परिणाम के रूप में क्षेत्रों की लेयर न्यूनतम घनी से सर्वाधिक घनी के रूप में वर्गीकृत होती है।   
 
     </p>
-    <p>For point input, each point should represent the location of some event or incident, and the result layer represents a count of the incident per unit area.  A higher density value in a new location means that there are more points near that location.  In many cases, the result layer can be interpreted as a risk surface for future events. For example, if the input points represent locations of lightning strikes, the result layer can be interpreted as a risk surface for future lightning strikes.
+    <p>बिंदु इनपुट हेतु, हरेक बिंदु किसी आयोजन या घटना का स्थान दर्शाना चाहिए, और परिणाम लेयर प्रति इकाई क्षेत्र की एक गणना दर्शाती है। एक नये स्थान में उच्चतर घनत्व का मतलब है कि उस स्थान के पास और अधिक बिंदु हैं। कई मामलों में, परिणाम लेयर की व्याख्या भावी आयोजनों हेतु एक जोखिम सतह के रूप में की जा सकती है। उदाहरण के लिए, यदि इनपुट बिन्दु बिजली कड़कने के स्थान दर्शाते हैं, तो परिणाम लेयर की व्याख्या भविष्य में बिजली कड़कने हेतु एक जोखिम सतह के रूप में की जा सकती है।
     </p>
-    <p>Other use cases of this tool include the following:
+    <p>इस उपकरण के अन्य उपयोगों में निम्न शामिल हैं:
         <ul>
-            <li>Creating crime-density maps to help police departments properly allocate resources to high crime areas.
+            <li>पुलिस विभागों को उच्च अपराध वाले क्षेत्रों में संसाधनों का आवंटन ठीक से करने में मदद करने के लिए अपराध-घनत्व वाले क्षेत्रों के मानचित्र बनाना।
             </li>
-            <li>Calculating densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to decide where new hospitals should be built.
+            <li>किसी देश में अस्पतालों के घनत्व की गणना करना। परिणाम लेयर अस्पतालों में अधिक या कम पहुंच के दायरे वाले क्षेत्र दर्शाएगी, और इस जानकारी का उपयोग यह तय करने में किया जा सकता है कि नये अस्पताल कहां बनाए जाएं।
             </li>
-            <li>Identifying areas that are at high risk of forest fires based on historical locations of forest fires.
+            <li>जंगल में आग लगने के ऐतिहासिक स्थानों के आधार पर जंगल में आग के अधिक जोखिम वाले क्षेत्रों का पता लगाना।
             </li>
-            <li>Locating communities that are far from major highways in order to plan where new roads should be constructed.
+            <li>नई सड़कें बनाने की योजना तैयार करने के लिए, प्रमुख राजमार्गों से दूर रहनेवाले समुदायों का पता लगाना।
             </li>
         </ul>
         
@@ -68,19 +68,19 @@
         <div><h2>वह बिंदु लेयर चुनें जहाँ से घनत्व की गणना की जानी है</h2></div>
         <hr/>
         <div>
-            <p>The point layer on which the density will be calculated.
+            <p>बिंदु लेयर जिस पर घनत्व की गणना की जाएगी।
             </p>
             <p>अपने नक्शे से एक लेयर चुनने के अलावा, आप बड़ी डेटा फ़ाइल साझा डेटासेट या फीचर लेयर के लिए अपनी सामग्री ब्राउज़ करने के लिए ड्रॉप-डाउन सूची के निचले भाग में  <b>ब्राउज़ लेयर</b> चुन सकते हैं।
             </p>
         </div>
     </div>
     <div id="fields">
-        <div><h2>घनत्व की गणना करने के लिए एक या एक से अधिक फील्ड्स का चयन करें  (वैकल्पिक)</h2></div>
+        <div><h2>घनत्व की गणना करने के लिए एक या एक से अधिक फील्ड्स का चयन करें (वैकल्पिक)</h2></div>
         <hr/>
         <div>
-            <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
+            <p>प्रत्येक स्थान पर घटनाओं की संख्या बताते हुए एक या अधिक फील्ड प्रदान करें। उदाहरण के लिए, यदि आपके पास शहर दर्शानेवाले बिंदु हैं, तो आप गणना फील्ड के रूप में शहर की जनसंख्या दर्शाने वाली फील्ड का उपयोग कर सकते हैं, और परिणामकारी जनसंख्या घनत्व लेयर उच्चतर जनसंख्या वाले शहरों के पास उच्चतर जनसंख्या घनत्वों की गणना करेगी।
             </p>
-            <p>The density for the count of points will always be calculated.   If no fields are selected, each location will be assumed to represent a single count.
+            <p>अंकों की गिनती के लिए घनत्व की हमेशा गणना की जाएगी। 
             </p>
         </div>
     </div>
@@ -88,17 +88,17 @@
         <div><h2>डिब्बे के लिए एक आकार चुनें</h2></div>
         <hr/>
         <div>
-            <p>The shape of bins that points are aggregated into and used for the density calculation.
+            <p>डिब्बों के आकार, जो बिंदुओं में एकत्रित होते हैं और घनत्व गणना के लिए उपयोग किए जाते हैं।
             </p>
             <p> <b>वर्ग</b> या <b>षट्भुज</b> पात्रों का उपयोग करके विश्लेषण करने के लिए अनुमानित निर्देशांक प्रणाली आवश्यक होती है। आप <b>विश्लेषण परिवेश</b> में <b>संसाधनीय निर्देशांक प्रणाली</b> सेट कर सकते हैं। यदि आपकी संसाधनीय निर्देशांक प्रणाली किसी अनुमानित निर्देशांक प्रणाली पर सेट नहीं है, तो जब आप <b>विश्लेषण चलाएंगे</b> आपको इसे सेट करने के लिए कहा जाएगा।
             </p>
         </div>
     </div>
     <div id="binSizing">
-        <div><h2>एकत्रीकरण के लिए बिन के आकार का चयन करें</h2></div>
+        <div><h2>संकलन के लिए बिन के आकार का चयन करें</h2></div>
         <hr/>
         <div>
-            <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
+            <p>वर्गाकार बिन के लिए, आकार वर्ग की ऊंचाई को प्रदर्शित करता है। षट्भुज के लिए, आकार षट्भुज की ऊंचाई (समानांतर तरफ से)को प्रदर्शित करता है।
             </p>
         </div>
     </div>
@@ -106,11 +106,11 @@
         <div><h2>लागू करने के लिए घनत्व भारण चुनें</h2></div>
         <hr/>
         <div>
-            <p>The type of weighting applied to the density calculation. There are two options:
+            <p>दो विकल्प हैं:
                 <ul>
-                    <li> <b>Uniform</b>&mdash;This calculates a magnitude per area.
+                    <li> <b>समरूप</b>&mdash;यह प्रति क्षेत्र परिमाण की गणना करता है।
                     </li>
-                    <li> <b>Kernel</b>&mdash;Applies a kernel function to fit a smooth tapered surface to each point.
+                    <li> <b>कर्नेल</b>&mdash;
                     </li>
                 </ul>
                 
@@ -121,7 +121,7 @@
         <div><h2>पड़ोस का आकार चुनें</h2></div>
         <hr/>
         <div>
-            <p>The size of the area used to calculate the density. The neighborhood size must be larger than the bin size.
+            <p>घनत्व की गणना करने के लिए प्रयुक्त क्षेत्र का आकार। पड़ोस का आकार डिब्बे के आकार से बड़ा होना चाहिए।
             </p>
         </div>
     </div>
@@ -129,13 +129,13 @@
         <div><h2>घनत्व के लिए आउटपुट इकाइयाँ चुनें</h2></div>
         <hr/>
         <div>
-            <p>The desired output units of the density values. By default, this is set to square kilometers or square miles based on the default units specified in your profile. If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+            <p>घनत्व मूल्यों की वांछित आउटपुट इकाइयां। डिफ़ॉल्ट रूप से, यह आपकी प्रोफ़ाइल में निर्दिष्ट डिफ़ॉल्ट इकाइयों के आधार पर वर्ग किलोमीटर या वर्ग मील पर सेट है। मान केवल परिणाम को मापते हैं।  
 
             </p>
         </div>
     </div>
     <div id="timeSlicing">
-        <div><h2>समय के चरणों का उपयोग करके घनत्व की गणना करें (वैकल्पिक)</h2></div>
+        <div><h2>समय अंतराल का उपयोग कर घनत्व की गणना करें (वैकल्पिक)</h2></div>
         <hr/>
         <div>
             <p>यदि बिंदु लेयर पर समय सक्रिय होता है, तथा यह तत्काल प्रकार का है, तो आप टाइम स्टेपिंग क्रिया का उपयोग कर विश्लेषण कर सकते हैं। जब आप समय का उपयोग करते हैं आप तीन पैरामीटर सेट कर सकते हैं:
@@ -176,7 +176,7 @@
         </div>
     </div>
     <div id="timeReference">
-        <div><h2>में समय अंतराल संरेखित करने का समय है</h2></div>
+        <div><h2>इससे समय अंतराल को संरेखित करने का समय है</h2></div>
         <hr/>
         <div>
             <p>समय अंश को संरेखित करने के लिए प्रयुक्त दिनांर और समय। समय अंतराल इस समय से शुरू होगा और इसी से पीछे की ओर जारी रहेगा। यदि कोर्इ संदर्भ न चुना गया हो, तो समय अंतराल जनवरी 1, 1970 पर संरेखित होगा। 

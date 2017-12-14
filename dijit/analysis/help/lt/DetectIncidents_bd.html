@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Aptikti įvykius</h2><p/>
+        <h2><img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Aptikti įvykius"></h2>
+        <hr/>
+    <p>&Scaron;is įrankis veikia kartu su ta&scaron;kų, linijų, plotų arba lentelių sluoksniu, kuris nurodo konkretų laiko momentą. Naudodamas i&scaron; eilės i&scaron;dėstytus elementus (trajektorijas), &scaron;is įrankis nustato, kurie elementai yra dominantys įvykiai. Įvykiai nustatomi pagal jūsų nurodytas sąlygas. 
+    </p>
+    <p>Pirmiausia, naudodamas vieną ar kelis laukus, įrankis nustato, kurie elementai priklauso trajektorijai. Naudojant laiką kiekviename elemente, trajektorijos i&scaron;dėstomos eilės tvarka ir pritaikoma įvykio sąlyga. Įvykio pradžios sąlygą atitinkantys elementai pažymimi kaip įvykis. Taip pat galite pritaikyti įvykio pabaigos sąlygą: kai pabaigos sąlygos reik&scaron;mė yra true (teisinga), elementas nebėra įvykis.  Rezultatai bus pateikti su pradiniais elementais (naujuose stulpeliuose bus pateiktas įvykio pavadinimas) ir nurodys, kuris elementas atitinka įvykio sąlygą. Galite pateikti visus pradinius elementus arba tik tuos elementus, kurie yra įvykiai.
+    </p>
+    <p>Pavyzdžiui, tarkime, jūs turite kas 10&nbsp;min. fiksuotus uraganų GPS matavimus. Kiekvienas GPS matavimas užfiksuoja uragano pavadinimą, vietą, įra&scaron;ymo laiką ir vėjo greitį. Naudodami &scaron;iuos laukus galite sukurti įvykį, kurio bet kuris matavimas, kuriame vėjo greitis yra didesnis nei 208 km/h, yra įvykis pavadinimu  <code>Catastrophic</code>. Jei pabaigos sąlyga nenustatyta, įvykis pasibaigs, kai elementas nebeatitiks pradžios sąlygos (vėjo greitis taps mažesnis nei 208).
+    </p>
+    <p>Arba, tarkime, kad naudodami lauką pavadinimu  <code>contanimateLevel</code> jūs stebėjote cheminės medžiagos koncentraciją vietiniame vandentiekyje. Jūs žinote, kad rekomenduojamas lygis yra mažiau nei 0,01 mg/L, o pavojingas lygis &ndash; vir&scaron; 0,03 mg/L. Norėdami aptikti įvykius, kai 0,03mg/L vir&scaron;ijanti reik&scaron;mė yra įvykis ir lieka įvykiu, kol tar&scaron;os lygis negrįžta į normos ribas, jūs sukuriate įvykį naudodami pradžios sąlygą <code>contanimateLevel &gt; 0.03</code> ir pabaigos sąlygą <code>contanimateLevel &lt; 0.01</code>. Taip bus pažymėta bet kuri seka, kur reik&scaron;mės vir&scaron;ija 0,03mg/L, kol jos vėl taps žemesnės nei 0,01.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Pasirinkite sluoksnį, kuriame bus aptinkami įvykiai</h2></div>
+        <hr/>
+        <div>
+            <p>Ta&scaron;kai, linijos, plotai arba lentelės, kurios bus naudojamos įvykiams rasti. Įvesties sluoksnis turi būti susietas su laiku ir jame turi būti elementai, kurie nurodo konkretų laiką, bei vienas arba keli laukai, kuriuos būtų galima naudoti trajektorijoms nustatyti.
+            </p>
+            <p>Galite ne tik nurodyti sluoksnį i&scaron; žemėlapio, bet ir apačioje pasirinkti  <b>Nar&scaron;yti sluoksnius</b>, kad galėtumėte turinyje nar&scaron;yti didelių duomenų rinkinio arba elemento sluoksnio.
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>Pasirinkite vieną arba kelis laukus, kad galėtumėte nustatyti trajektorijas</h2></div>
+        <hr/>
+        <div>
+            <p> Laukai, nurodantys trajektorijos identifikatorių. Unikalioms trajektorijos reik&scaron;mėms nurodyti galite naudoti vieną arba kelis laukus.
+            </p>
+            <p>Pavyzdžiui, jei atkuriate uraganų trajektorijas, sekimo lauke galite nurodyti uragano pavadinimą.
+            </p>
+        </div>
+    </div>
+    <div id="startConditionExpression">
+        <div><h2>Sukurkite išraiškos sąlygą, nurodančią įvykio pradžią</h2></div>
+        <hr/>
+        <div>
+            <p>Norėdami nustatyti įvykį, įtraukite sąlygą naudodami i&scaron;rai&scaron;kų kūrimo priemonę. Jei jūsų nurodytos sąlygos reik&scaron;mė true (teisinga), elementas yra įvykis. Jei nenurodote pabaigos sąlygos, įvykis pasibaigs, kai pradžios sąlygos reik&scaron;mė nebebus true (teisinga).
+            </p>
+            <p>Tarkime, jūs norite gauti įspėjimą, kai laukų  <code>concentration_1</code> ir <code>concentration_2</code> suma bus didesnė nei <code>concentration_3</code>.   Norėdami tai padaryti, taikykite sąlygą <code>($feature[&quot;concentration_1&quot;] +  $feature[&quot;concentration_2&quot;]) &gt; $feature[&quot;concentration_3&quot;])</code>.
+            </p>
+        </div>
+    </div>
+    <div id="endConditionExpression">
+        <div><h2>Sukurkite išraiškos sąlygą, nurodančią įvykio pabaigą</h2></div>
+        <hr/>
+        <div>
+            <p>Norėdami nustatyti įvykio pabaigą, galite įtraukti sąlygą naudodami i&scaron;rai&scaron;kų kūrimo priemonę. Jei jūsų nurodytos pabaigos sąlygos reik&scaron;mė true (teisinga), elementas nebėra įvykis. Jei nenurodote pabaigos sąlygos, įvykis pasibaigs, kai pradžios sąlygos reik&scaron;mė nebebus true (teisinga).    
+            </p>
+            <p>Tarkime, norite gauti įspėjimą, kai laukų  <code>concentration_1</code> ir <code>concentration_2</code> suma bus didesnė nei <code>concentration_3</code>, ir norite, kad įvykis pasibaigtų, jei <code>concentration_4</code> reik&scaron;mė bus mažesnė nei <code>concentration_1</code>. Norėdami tai padaryti, pritaikykite pradžios sąlygą <code>($feature[&quot;concentration_1&quot;] +  $feature[&quot;concentration_2&quot;]) &gt; ($join[&quot;income&quot;] * .20)</code> ir pabaigos sąlygą <code>($feature[&quot;concentration_4&quot;] &lt; $feature[&quot;concentration_1&quot;])</code>.
+            </p>
+        </div>
+    </div>
+    <div id="outputMode">
+        <div><h2>Pasirinkite, kaip turi būti pateikiama išvestis</h2></div>
+        <hr/>
+        <div>
+            <p>Visi i&scaron;vesties metodai pridės laukus prie pradinių elementų. Yra du būdai nustatyti, kurie elementai pateikiami:
+                <ul>
+                    <li> <b>Pateikti tik įvykius</b> &ndash; &scaron;is metodas pateiks tik tuos elementus, kurie yra įvykiai. Jei nebus nustatyta, kad elementas yra įvykis, jis nebus pateiktas.
+                    </li>
+                    <li> <b>Pateikti visus elementus</b> &ndash; &scaron;is metodas yra numatytasis. Bus pateikiami visi įvesties elementai.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Rezultatų sluoksnio pavadinimas</h2></div>
+        <hr/>
+        <div>
+            <p> Tai sluoksnio, kuris bus sukurtas ir patalpintas dalyje <b>Mano turinys</b> ir įtrauktas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas pagal įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau yra, įrankis neveiks.
+            </p>
+            <p>I&scaron;&scaron;okančiame meniu  <b>Įra&scaron;yti rezultatą į</b> galite nurodyti <b>Mano turinys</b> esančio aplanko, kur bus įra&scaron;yti rezultatai, pavadinimą.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

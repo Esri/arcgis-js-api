@@ -61,7 +61,7 @@
         </div>
     </div>
     <div id="bufferType">
-        <div><h2>Izvēlēties lietojamā bufera tipu</h2></div>
+        <div><h2>Izvēlēties lietojamā bufera veidu</h2></div>
         <hr/>
         <div>
             <p>Ievades elementu bufera izmēru var norādīt trijos veidos: 
@@ -70,7 +70,7 @@
                     </li>
                     <li>Norādīt ievades slāņa lauku, kas ietver attāluma vērtību. Varat izmantot teksta lauku vai skaitļu lauku. Ja nav definēta lineārā mērvienība, tiks izmantotas telpiskās atskaites mērvienības. Izmantojot ģeogrāfisko koordinātu sistēmu, tiks pieņemts, ka laukā bez norādītām mērvienībām, tiks izmantoti metri. 
                     </li>
-                    <li>Izveidot izteiksmi ar vairākiem laukiem un matemātiskajiem operatoriem.
+                    <li>Izveidot izteiksmi ar vairākiem laukiem un matemātiskajiem operatoriem. Piemēram: lai izveidotu buferzonu, kas 10&nbsp;reizes lielāka par lauka  <i>wind_speed</i> vērtību, pievienojiet izteiksmi <i>$feature[&quot;wind_speed&quot;]&nbsp;&times;&nbsp;10</i>.
                     </li>
                 </ul>
                 
@@ -81,19 +81,19 @@
         <div><h2>Izvēlēties buferzonas metodi</h2></div>
         <hr/>
         <div>
-            <p>Varat izvēlēties  <b>Plaknes</b> metodi vai <b>Ģeodēzisko</b> metodi. <b>Plaknes</b> metode var būt ātrāka un ir piemērota projekcijas datu lokālajai analīzei. <b>Ģeodēziskā</b> ir piemērota lielām platībām un jebkurai ģeogrāfiskajai koordinātu sistēmai.
+            <p>Varat izvēlēties  <b>Plaknes</b> metodi vai <b>Ģeodēzisko</b> metodi. <b>Plaknes</b> metode var būt ātrāka un ir piemērota projekcijas datu lokālajai analīzei. <b>Ģeodēziskā</b> metode ir piemērota lielām teritorijām un jebkurai ģeogrāfiskajai koordinātu sistēmai.
             </p>
         </div>
     </div>
     <div id="dissolveOption">
-        <div><h2>Izvēlēties robežu sapludināšanas metodes tipu</h2></div>
+        <div><h2>Izvēlēties izšķīdināšanas metodes veidu</h2></div>
         <hr/>
         <div>
-            <p>Opcijas robežu sapludinā&scaron;anas metodes norādī&scaron;anai. Ja izvēlēta teritoriju sapludinā&scaron;anas metode, tiks piedāvāta opcija izveidot vairākdaļu vai viendaļīgas teritorijas, un varēsit aprēķināt statistiku, pamatojoties uz pieejamajiem laukiem.
+            <p>Opcijas robežu iz&scaron;ķīdinā&scaron;anas metodes norādī&scaron;anai. Ja izvēlēta teritoriju sapludinā&scaron;anas metode, tiks piedāvāta opcija izveidot vairākdaļu vai viendaļīgas teritorijas, un varēsit aprēķināt statistiku, pamatojoties uz pieejamajiem laukiem.
                 <ul>
-                    <li> <b>Visi</b> Tiks sapludināti visi teritorijas elementi. Ja ir atļauti vairākdaļu elementi, visi teritorijas elementi tiks sapludināti vienā elementā. Ja vairākdaļu iespēja nav atļauta, tiks sapludināti teritoriju elementi, kas pieskaras vai pārklājas.
+                    <li> <b>Visi</b> -tiks iz&scaron;ķīdināti visi teritorijas elementi. Ja ir atļauti vairākdaļu elementi, visi teritorijas elementi tiks sapludināti vienā elementā. Ja vairākdaļu iespēja nav atļauta, tiks sapludināti teritoriju elementi, kas pieskaras vai pārklājas.
                     </li>
-                    <li> <b>Lauki</b> Tiks sapludināti teritoriju elementi, kam kopīgs norādītais lauks vai lauku kombinācija. Ja ir atļauti vairākdaļu elementi, visi teritorijas elementi, kam kopīgs lauks, tiks sapludināti vienā elementā. Ja vairākdaļu iespēja nav atļauta, tiks sapludināti elementi ar vienādu lauka vērtību, kas,kas pieskaras vai pārklājas.
+                    <li> <b>Lauki</b> -tiks sapludināti teritoriju elementi, kam kopīgs norādītais lauks vai lauku kombinācija. Ja ir atļauti vairākdaļu elementi, visi teritorijas elementi, kam kopīgs lauks, tiks sapludināti vienā elementā. Ja vairākdaļu iespēja nav atļauta, tiks sapludināti elementi ar vienādu lauka vērtību, kas,kas pieskaras vai pārklājas.
                     </li>
                     <li> <b>Neviens</b>- teritoriju elementi netiks sapludināti. Tā ir noklusējuma vērtība.
                     </li>
@@ -111,9 +111,9 @@
             </p>
             <p>
                 <ul>
-                    <li>Atzīmēta. Jūsu analīzes rezultātos būs ietverti vairākdaļu elementi.   
+                    <li>Atzīmēta- jūsu analīzes rezultātos būs ietverti vairākdaļu elementi.   
                     </li>
-                    <li>Neatzīmēta. Jūsu analīzes rezultātos būs ietverti viendaļīgi elementi. &Scaron;ī ir noklusējuma opcija.
+                    <li>Neatzīmēta- jūsu analīzes rezultātos būs ietverti viendaļīgi elementi. &Scaron;ī ir noklusējuma opcija.
                     </li>
                 </ul>
                 

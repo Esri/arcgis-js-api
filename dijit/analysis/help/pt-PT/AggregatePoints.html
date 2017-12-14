@@ -46,7 +46,7 @@
         <hr/>
     <p>Esta ferramenta funciona com camadas de elementos de pontos e camadas de elementos de &aacute;reas. Primeiro identifica quais os pontos que est&atilde;o dentro de cada &aacute;rea. Depois de determinar esses, calcula estat&iacute;sticas sobre todos os pontos da &aacute;rea e atribu&iacute;dos &agrave; &aacute;rea. A estat&iacute;stica mais b&aacute;sica &eacute; a contagem do n&uacute;mero de pontos dentro da &aacute;rea, mas tamb&eacute;m pode obter outras estat&iacute;sticas. 
     </p>
-    <p>Por exemplo, suponha que tem elementos de pontoscom q localiza&ccedil;&atilde;o de lojas de caf&eacute; e elementos de &aacute;rea com os Munic&iacute;pios, e pretende resumir as vendas dos caf&eacute; por munic&iacute;pio. Assumindo que os caf&eacute;s tem um atributo  <i>TOTAL_SALES</i> , pode obter a soma de todos <i>TOTAL_SALES</i> dentro de cada pa&iacute;s, ou o m&iacute;nimo ou o m&aacute;ximo <i>TOTAL_SALES</i>
+    <p>Por exemplo, suponha que tem elementos de pontos com localiza&ccedil;&atilde;o de lojas de caf&eacute; e elementos de &aacute;rea de condados, e pretende resumir as vendas efetuadas pelos caf&eacute;s por munic&iacute;pio. Assumindo que os caf&eacute;s tem um atributo  <i>TOTAL_SALES</i> , pode obter a soma de todos <i>TOTAL_SALES</i> dentro de cada pa&iacute;s, ou o m&iacute;nimo ou o m&aacute;ximo <i>TOTAL_SALES</i>
  m&iacute;nimo ou m&aacute;ximo dentro de cada concelho, ou o desvio padr&atilde;o de todas as vendas dentro de cada concelho.
     </p>
     <p>Se  <b>Usar extens&atilde;o de mapa actual</b> &eacute; validado, apenas os elementos na camada de ponto de entrada e camada de &aacute;rea visivel dentro da actual extens&atilde;o de &aacute;rea ser&atilde;o analizados.  Se n&atilde;o validado, todos os elementos dentro da camada de ponto de entrada e camada de &aacute;rea ir&atilde;o ser analizados, mesmo que estejam fora da extens&atilde;o de mapa actual.
@@ -67,7 +67,9 @@
         <div><h2>Escolher camada contendo áreas de agregação</h2></div>
         <hr/>
         <div>
-            <p>A camada de &aacute;rea &agrave; qual os pontos ser&atilde;o agregados. Todos os pontos que se enquadram dentro dos limites de &aacute;reas nesta camada ser&atilde;o contados e, opcionalmente, resumidos usando as suas escolhas de estat&iacute;sticas.
+            <p>A camada de &aacute;rea &agrave; qual os pontos ser&atilde;o agregados. Todos os pontos que se enquadram dentro dos limites de &aacute;reas nesta camada ser&atilde;o contados e, opcionalmente, resumidos usando as suas escolhas de estat&iacute;sticas.  
+            </p>
+            <p>Pode escolher entre uma camada de &aacute;rea introduzida por si ou por caixas que s&atilde;o geradas enquanto a ferramenta &eacute; executada.   Ao gerar caixas, por  <b>Quadrado</b>, o n&uacute;mero e unidades especificados determinam a altura e o comprimento do quadrado. Para <b>Hex&aacute;gono</b>, o n&uacute;mero e unidades especificados determinam a dist&acirc;ncia entre lados paralelos.
             </p>
             <p class="OnlineOnly">Al&eacute;m de escolher uma camada para o seu mapa, pode selecionar  <b>Escolher Camada de An&aacute;lise do Living Atlas</b> ou <b>Escolher Camada de An&aacute;lise</b> que se encontra no final da lista. Esta abre uma galeria contendo um conjunto de camadas &uacute;teis para v&aacute;rias an&aacute;lises. 
             </p>

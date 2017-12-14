@@ -70,7 +70,7 @@
                     </li>
                     <li>Specificaţi &icirc;n stratul tematic de intrare un c&acirc;mp care să conţină valoarea pentru distanţă. Puteţi utiliza un c&acirc;mp de tip şir sau un c&acirc;mp numeric. Dacă o unitate liniară nu este definită, vor fi utilizate unităţile referinţei spaţiale. Dacă utilizaţi un sistem de coordonate geografice, se va presupune că c&acirc;mpul fără unităţi este &icirc;n metri. 
                     </li>
-                    <li>Creaţi o expresie cu c&acirc;mpuri multiple şi operatori matematici.
+                    <li>Creaţi o expresie cu c&acirc;mpuri multiple şi operatori matematici. De exemplu, pentru a aplica funcţia buffer cu un factor de 10 la valoarea c&acirc;mpului numit  <i>viteză v&acirc;nt (wind_speed),</i> adăugaţi expresia <i>$feature[&quot;viteză v&acirc;nt&quot;(&quot;wind_speed&quot;)] x 10</i>.
                     </li>
                 </ul>
                 
@@ -95,7 +95,7 @@
                     </li>
                     <li> <b>C&acirc;mpuri</b> - Obiectele spaţiale care au acelaşi c&acirc;mp specificat sau aceeaşi combinaţie de c&acirc;mpuri specificate vor fi dizolvate. Dacă sunt permise obiecte spaţiale cu părţi multiple, toate obiectele spaţiale cu acelaşi c&acirc;mp vor fi dizolvate &icirc;ntr-un singur obiect spaţial. Dacă nu sunt permise părţile multiple, obiectele spaţiale care sunt adiacente sau suprapuse şi au aceeaşi valoare de c&acirc;mp vor fi dizolvate.
                     </li>
-                    <li> <b>Niciunul</b> - Niciun obiect spaţial nu va fi dizolvat.  Aceasta este acţiunea implicită.
+                    <li> <b>Niciunul</b> - Niciun obiect spaţial nu va fi dizolvat.  Aceasta este setarea implicită.
                     </li>
                 </ul>
                 
@@ -179,7 +179,7 @@
         <div>
             <p> Acesta este numele stratului tematic care va fi creat &icirc;n <b>Resursele mele</b> şi adăugat &icirc;n hartă.  Numele implicit se bazează pe numele instrumentului şi numele stratului tematic de intrare. Dacă stratul tematic există deja, instrumentul va eşua.
             </p>
-            <p>Utiliz&acirc;nd caseta derulantă  <b>Salvare rezultat &icirc;n</b>, puteţi specifica numele unui director din <b>Resursele mele</b> &icirc;n care va fi salvat rezultatul.
+            <p>Utiliz&acirc;nd caseta derulantă  <b>Salvare rezultat &icirc;n</b> puteţi specifica numele unui director din <b>Resursele mele</b> &icirc;n care va fi salvat rezultatul.
             </p>
         </div>
     </div>

@@ -44,7 +44,7 @@
 	border-left: 2px solid #7f8183;
 }
 
-.light .Tapestry_Details_Name{
+.light .Tapestry_Details_Name.Wizard_Link{
 	background-image: url("images/acrobat.png");
 	color: #336699;
 }

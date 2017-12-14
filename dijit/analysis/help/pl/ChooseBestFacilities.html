@@ -83,7 +83,7 @@
         <div>
             <p>Użyj tego celu, jeśli nie chcesz lokalizować nowych plac&oacute;wek, tylko przypisać zapotrzebowanie do istniejących plac&oacute;wek, kt&oacute;re mogą mieć ograniczone lub nieograniczone możliwości.    
             </p>
-            <p>Ten cel przypisuje zapotrzebowanie do plac&oacute;wek na podstawie możliwości plac&oacute;wki i wartości zapotrzebowania z otaczającego obszaru. Zapotrzebowanie jest przydzielane do najbliższej plac&oacute;wki, aż do wyczerpania dostępnych możliwości. Jeśli podasz maksymalny zasięg dojazdu, żadne lokalizacje zapotrzebowania spoza tego zasięgu nie zostaną przypisane do plac&oacute;wki, nawet jeśli całe zapotrzebowanie nie zostało całkowicie przydzielone.
+            <p>Ten cel przypisuje zapotrzebowanie do plac&oacute;wek na podstawie możliwości plac&oacute;wki i wartości zapotrzebowania z otaczającego obszaru. Zapotrzebowanie jest przydzielane do najbliższej plac&oacute;wki, aż do wyczerpania dostępnych możliwości. Jeśli podasz maksymalny zakres podr&oacute;ży, żadne lokalizacje zapotrzebowania spoza tego zasięgu nie zostaną przypisane do plac&oacute;wki, nawet jeśli całe zapotrzebowanie nie zostało całkowicie przydzielone.
             </p> 
         </div>
     </div>
@@ -110,7 +110,7 @@
         </div>
     </div>
     <div id="maximizeCoverageWithCapacity">
-        <div><h2>Maksymalizuj pokrycie z możliwościami</h2></div>
+        <div><h2>Maksymalizuj pokrycie według możliwości</h2></div>
         <hr/>
         <div>
             <p>Użyj tego celu, aby zmaksymalizować wartość zapotrzebowania pokrywaną przez plac&oacute;wki o ograniczonych możliwościach.    
@@ -125,7 +125,7 @@
         <div>
             <p>Użyj tego celu, jeśli chcesz znaleźć minimalną liczbę plac&oacute;wek potrzebnych do pokrycia określonego procentu zapotrzebowania.
             </p>
-            <p>Ten cel wybiera minimalną liczbę plac&oacute;wek potrzebnych do pokrycia określonego procentu zapotrzebowania. W przypadku lokalizacji zapotrzebowania znajdujących się w maksymalnym zasięgu dojazdu od dw&oacute;ch lub większej liczby plac&oacute;wek, zapotrzebowanie z tej lokalizacji zostanie podzielone na plac&oacute;wki proporcjonalnie do odległości od każdej z nich. Ten cel jest często używany, gdy mieszkańcy mają wyb&oacute;r, z kt&oacute;rej plac&oacute;wki skorzystać, i zakłada się, że w og&oacute;lności odwiedzą oni najbliższą plac&oacute;wkę (traktując wszystkie inne atrybuty jako r&oacute;wne).
+            <p>Ten cel wybiera minimalną liczbę plac&oacute;wek potrzebnych do pokrycia określonego procentu zapotrzebowania. W przypadku lokalizacji zapotrzebowania znajdujących się w maksymalnym zakresie dojazdu od dw&oacute;ch lub większej liczby plac&oacute;wek, zapotrzebowanie z tej lokalizacji zostanie podzielone na plac&oacute;wki proporcjonalnie do odległości od każdej z nich. Ten cel jest często używany, gdy mieszkańcy mają wyb&oacute;r, z kt&oacute;rej plac&oacute;wki skorzystać i zakłada się, że w og&oacute;lności odwiedzą oni najbliższą plac&oacute;wkę (traktując wszystkie inne atrybuty jako r&oacute;wne).
             </p>
             <p>W przeciwieństwie do innych cel&oacute;w, w kt&oacute;rych użytkownik podaje liczbę plac&oacute;wek do wyboru, ten cel sam wybiera liczbę plac&oacute;wek na podstawie procentu zapotrzebowania, kt&oacute;ry ma zostać pokryty. W tym celu zakłada się, że plac&oacute;wki mają nieograniczone możliwości.
             </p> 
@@ -135,7 +135,7 @@
         <div><h2>Zmierz</h2></div>
         <hr/>
         <div>
-            <p>Podobnie jak w przypadku innych narzędzi, kt&oacute;re uwzględniają dojazdy w analizach, można podać, czy dojazd jest mierzony w jednostkach odległości czy czasu oraz wybrać jeden z tryb&oacute;w dojazdu, takich jak spacer pieszo, czas jazdy samochodem, czas jazdy w obszarach wiejskich itd. Dostępne tryby podr&oacute;żowania są określane przez administratora instytucji. W przypadku korzystania z kryterium czasu jazdy lub czasu jazdy w obszarach wiejskich, można opcjonalnie uwzględnić natężenie ruchu w konkretnym dniu tygodnia oraz dla konkretnej pory dnia. 
+            <p>Podobnie jak w przypadku innych narzędzi, kt&oacute;re uwzględniają dojazdy w analizach, można podać, czy dojazd jest mierzony w jednostkach odległości czy czasu oraz wybrać jeden z tryb&oacute;w dojazdu, takich jak spacer pieszo, czas jazdy samochodem, czas jazdy w obszarach wiejskich itd. Dostępne tryby podr&oacute;żowania są określane przez administratora instytucji. Podczas korzystania z narzędzi  <b>Czas jazdy</b>, <b>Czas jazdy w obszarach wiejskich</b> lub <b>Czas przejazdu samochodem ciężarowym</b> można opcjonalnie uwzględnić natężenie ruchu w konkretnym dniu tygodnia oraz dla konkretnej pory dnia.
             </p>
             <p> Aby dokładnie przydzielić lokalizacje zapotrzebowania do plac&oacute;wek, należy podać, czy dojazd odbywa się z plac&oacute;wki do lokalizacji zapotrzebowania (na przykład z posterunku straży pożarnej do domu) albo z lokalizacji zapotrzebowania do plac&oacute;wki (jak w przypadku stałych klient&oacute;w bibliotek). Narzędzie Wybierz najlepszą plac&oacute;wkę uwzględni kierunek dojazdu na ulicach jednokierunkowych, możliwość skrętu z jednej ulicy w inną, zakazy skręt&oacute;w w lewo na skrzyżowaniach i tym podobne, zależnie od tego, czy dojazd odbywa się od plac&oacute;wki do lokalizacji zapotrzebowania, czy z lokalizacji zapotrzebowania do plac&oacute;wek.
             </p>

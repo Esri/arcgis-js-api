@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="bdToolbox">
-        <p>Big Data-analyse verdeelt het analytische werk over uw ArcGIS Server GeoAnalytics Server. Hiermee kunt u sneller meer data analyseren door gebruik te maken van de kracht van meerdere machines. De volgende tools zijn momenteel beschikbaar.
+        <p>GeoAnalytics verdeelt het analytische werk over uw ArcGIS GeoAnalytics Server. Hiermee kunt u sneller meer data analyseren door gebruik te maken van de kracht van meerdere machines. De volgende tools zijn momenteel beschikbaar.
             <ul>
                 <li> <b>Punten aggregeren</b>
                 </li>
@@ -53,6 +53,8 @@
                 </li>
                 <li> <b>Samenvatten in</b>
                 </li>
+                <li> <b>Incidenten detecteren</b>
+                </li>
                 <li> <b>Gelijksoortige locaties zoeken</b>
                 </li>
                 <li> <b>Dichtheid berekenen</b>
@@ -62,6 +64,10 @@
                 <li> <b>Buffers maken</b>
                 </li>
                 <li> <b>Kopi&euml;ren naar gegevensopslag</b>
+                </li>
+                <li> <b>Bereken veld</b>
+                </li>
+                <li> <b>Geocodeer locaties vanuit tabel</b>
                 </li>
             </ul>
             
@@ -125,11 +131,11 @@
 <hr/>
             <p>Door objectlagen of gegevens in tabelvorm te gebruiken, kunt u objecten samenvoegen gebaseerd op specifieke relaties tussen de invoerlagen of tabellen. Samenvoegingen worden bepaald door ruimtelijke, tijdelijke en attribuutrelaties en samenvattende statistieken kunnen optioneel worden berekend.  
             </p>
-            <p> Bijvoorbeeld
+            <p>Bijvoorbeeld
                 <ul>
                     <li>Voeg aan de hand van puntlocaties van criminaliteitsincidenten met een tijd, de criminaliteitsdata toe, specificeer een ruimtelijke relatie van misdaden binnen 1 kilometer van elkaar, en die binnen 1 uur na elkaar zijn ontstaan om te bepalen of er een reeks misdrijven dicht bij elkaar was binnen een bepaalde tijd en ruimte.
                     </li>
-                    <li> Voeg aan de hand van een tabel met postcodes met demografische informatie en een gebiedsobject dat een woongebouw weergeeft de demografische informatie toe van de woningen, zodat iedere woning nu de informatie heeft.
+                    <li>Voeg aan de hand van een tabel met postcodes met demografische informatie en gebiedseigenschappen die woongebouwen vertegenwoordigen de demografische informatie toe van de woningen, zodat iedere woning nu de informatie heeft.
                     </li>
                 </ul>
                 
@@ -153,7 +159,7 @@
                 <ul>
                     <li>Aan de hand van puntlocaties en tijd van orkaanmetingen, worden de gemiddelde windsnelheid en max winddruk van de orkaan gemeten.
                     </li>
-                    <li>Zoek de hoogste en laagste maandinkomsten voor franchiselocaties aan de hand van 100km bins.
+                    <li>Gebruik GPS-metingen van schepen, om vaarroutes als lijnen te reconstrueren.
                     </li>
                 </ul>
                 
@@ -166,7 +172,7 @@
                 <tbody><tr>
                     <td><h2>Attributen samenvatten</h2></td>
                     <td>
-                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="Attributen samenvatten">
+                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="Attributen samenvatten workflow diagram">
                     </td>
                 </tr></tbody>
             </table>
@@ -208,17 +214,64 @@
             </p>
             <br/>
         </div>
-    <div id="FindLocationsCategory" class="smallsize">
+    <div id="FindLocationsCategory" class="regularsize">
         <h2>Locaties zoeken</h2>
         <hr/>
         <p>Deze tools worden gebruikt om gebieden te identificeren die voldoen aan een aantal door u opgegeven criteria.  
             <ul>
+                <li> <b>Incidenten detecteren</b> werkt met tijdgestuurde lagen om te bepalen welke functies aan een opgegeven voorwaarde voldoen.
+                </li>
+                <li> <b>Locaties geocoderen uit tabel</b> converteert adressen naar co&ouml;rdinaten.
+                </li>
                 <li> <b>Gelijksoortige locaties zoeken</b> zoekt naar overeenkomende locaties onder een of meer referentielocaties op basis van de criteria die u opgeeft.
                 </li>
             </ul>
             
         </p>
     </div>
+        <div id="DetectIncidentsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Incidenten detecteren</h2></td>
+                    <td>
+                    <img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" class="titleImage" alt="Incidenten detecteren">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> <img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Incidenten detecteren">
+            </p>
+            <p>Deze tool werkt met een tijdgeschakelde laag van punten, lijnen, gebieden of tabellen die een tijdsmoment vertegenwoordigen. Met behulp van opeenvolgend geordende functies, oftewel traceringen, bepaalt deze tool welke objecten interessante incidenten zijn. Incidenten worden bepaald door de voorwaarden die u opgeeft. 
+            </p>
+            <p>Bijvoorbeeld
+                <ul>
+                    <li>Detecteer orkaanmetingen van orkanen in de categorie 4 op basis van een windsnelheidsattribuut.
+                    </li>
+                    <li>Aan de hand van GPS-metingen van scheepsbewegingen met een veld dat de snelheid van het schip vertegenwoordigt metingen vinden die groter zijn dan 1,5 keer het gemiddelde van de voorgaande vijf metingen.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="GeocodeLocationsfromTableTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Geocodeer locaties vanuit tabel</h2></td>
+                    <td>
+                    <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" class="titleImage" alt="Geocodeer locaties vanuit tabel">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" alt="Geocodeer locaties vanuit tabel">
+            </p>
+            <p>Converteert adressen naar co&ouml;rdinaten. Gebruik deze tool in deeltabellen voor big databestanden.
+            </p>
+            <br/>
+        </div>
         <div id="FindSimilarLocationsTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -232,7 +285,7 @@
 <hr/>
             <p>Op basis van de criteria die u opgeeft meet Gelijksoortige locaties zoeken de overeenkomst van locaties in uw kandidaat-zoeklaag met een of meer referentielocaties. 
             </p>
-            <p> Bijvoorbeeld
+            <p>Bijvoorbeeld 
                 <ul>
                     <li>Zoek de tien winkels die het meest op elkaar lijken door het aantal werknemers en de jaaromzet te onderzoeken.
                     </li>
@@ -262,14 +315,14 @@
                 <tbody><tr>
                     <td><h2>Dichtheid berekenen</h2></td>
                     <td>
-                    <img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" class="titleImage" alt="Calculate Density">
+                    <img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" class="titleImage" alt="Dichtheid berekenen">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
             <p>De tool Dichtheid berekenen maakt een dichtheidskaart vanaf puntobjecten door bekende hoeveelheden van een bepaald fenomeen (voorgesteld als attributen van de punten) over de kaart te verspreiden. Het resultaat is een laag van gebieden die de dichtheid weergeven.
             </p>
-            <p> Bijvoorbeeld
+            <p>Bijvoorbeeld
                 <ul>
                     <li>Dichtheid berekenen van ziekenhuizen binnen een bepaalde streek. De resultaatlaag geeft gebieden weer met hoge en lage toegankelijkheid tot ziekenhuizen en deze informatie kan worden gebruikt om te beslissen waar nieuwe ziekenhuizen moeten worden gebouwd.
                     </li>
@@ -328,7 +381,7 @@
 <hr/>
             <p>Een buffer is een gebied dat een bepaalde afstand vanaf een punt-, lijn- of polygoonobject dekt.
             </p>
-            <p> Bijvoorbeeld
+            <p>Bijvoorbeeld
                 <ul>
                     <li>Buffer met behulp van lineaire rivierobjecten elke rivier met 50 maal de breedte van de rivier om een voorgenomen oevergrens te bepalen.
                     </li>
@@ -344,7 +397,9 @@
         <hr/>
         <p>Deze tools worden gebruikt voor het dagelijkse beheer van geografische en tabulaire gegevens.
             <ul>
-                <li> <b>Kopi&euml;ren naar gegevensopslag</b> kopieert data naar uw ArcGIS Data Store en cre&euml;ert een laag in uw web GIS.
+                <li> <b>Veld berekenen</b> maakt een nieuw veld of wijzigt een bestaand veld en maakt een nieuwe laag aan  in uw content.
+                </li>
+                <li> <b>Kopi&euml;ren naar gegevensopslag</b> kopieert data naar uw ArcGIS Data Store en cre&euml;ert een laag in uw content.
                 </li>
             </ul>
             
@@ -361,12 +416,35 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Kopieert en zet objectlaag of tabel in een  ArcGIS Data Store en maakt een laag in uw web GIS. </p>
-            <p> Bijvoorbeeld
+            <p>Kopieert en zet objectlaag of tabel in een  ArcGIS Data Store en maakt een laag in uw content  ArcGIS Enterprise. </p>
+            <p>Bijvoorbeeld
                 <ul>
-                    <li> Kopieer een verzameling van <code>.csv</code> bestanden in een groot gedeeld databestand naar de tijdruimtelijke gegevensopslag voor visualisatie.
+                    <li>Kopieer een verzameling van  <code>.csv</code> bestanden in een groot gedeeld databestand naar de tijdruimtelijke gegevensopslag voor visualisatie.
                     </li>
                     <li>Kopieer de objecten in de huidige map die zijn opgeslagen in de tijdruimtelijke gegevensopslag op de relationele database.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="CalculateFieldTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Bereken veld</h2></td>
+                    <td>
+                    <img src="../images/GUID-059C9BE7-7B00-49C8-9917-B0EAEA3DA19D-web.png" class="titleImage" alt="Bereken veld">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Berekent waarden voor een nieuw of bestaand veld en maakt een laag in uw content in  ArcGIS Enterprise. </p>
+            <p>Bijvoorbeeld
+                <ul>
+                    <li>Pas een bestaand veld aan met de naam  <i>totaal</i> voor de som van inkomsten uit de velden <i>total_2016</i>, <i>total_2017</i>en <i>total_2018</i>.
+                    </li>
+                    <li>Maak een nieuw veld om gevarenniveaus te categoriseren op basis van veldwaarden zoals  <i>windsnelheid</i> en <i>vervuiler</i>.
                     </li>
                 </ul>
                 

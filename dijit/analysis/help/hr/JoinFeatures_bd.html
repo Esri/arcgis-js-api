@@ -95,7 +95,7 @@
         <div>
             <p>Možete primijeniti jednu, dvije ili tri vrste pridruživanja. Vrste pridruživanja uključuju sljedeće: 
                 <ul>
-                    <li> <b>Prostorno</b> &ndash; upotrebljava određenu prostornu relaciju za pridruživanje geoobjekata. Za to oba sloja trebaju imati geometriju.
+                    <li> <b>Prostorno</b> &ndash; upotrebljava određeni prostorni odnos za pridruživanje geoobjekata. Za to oba sloja trebaju imati geometriju.
                     </li>
                     <li> <b>Vremensko</b> &ndash; upotrebljava vremensku relaciju za pridruživanje geoobjekata. To zahtjeva ovremenjivanje obaju slojeva.
                     </li>
@@ -109,7 +109,7 @@
         </div>
     </div>
     <div id="spatialRelationship">
-        <div><h2>Odaberite prostornu relaciju</h2></div>
+        <div><h2>Odaberite prostorni odnos</h2></div>
         <hr/>
         <div>
             <p> Prostorna relacija koja će odrediti jesu li se geoobjekti međusobno pridružili. Dostupne relacije ovisit će o vrsti geometrije (točka, polilinija, poligoni) koja se koristi kao ulazni geoobjekti. Dostupne relacije uključuju sljedeće:
@@ -146,7 +146,7 @@
         </div>
     </div>
     <div id="temporalRelationship">
-        <div><h2>Odaberite vremensku relaciju</h2></div>
+        <div><h2>Odaberite vremenski odnos</h2></div>
         <hr/>
         <div>
             <p>Vremenska relacija koja će odrediti jesu li se geoobjekti međusobno pridružili. Opcija je dostupna samo ako su oba sloja ovremenjena i dostupne relacije ovisit će o vrsti vremena (instanca ili interval) koje se koristi za ulazne geoobjekte. Dostupne relacije uključuju sljedeće:
@@ -248,7 +248,7 @@
         <div>
             <p>Primjenjuje uvjet na određena polja. Pridružit će se samo geoobjekti s poljima koja zadovoljavaju ove uvjete.
             </p>
-            <p>Na primjer, pretpostavimo da želimo primijeniti pridruživanje skupu podataka samo za one geoobjekte gdje je  <i>davanje_za_zdravlje</i> veće od 20 posto <i>prihoda</i>. Da biste to napravili, primijenite uvjet pridruživanja od <code>ciljno.davanje_za_zdravlje &gt; (pridruži.dohodak * .20)</code> s pomoću polja <i>davanje_za_zdravlje</i> iz prvog skupa podataka (pridružuje se geoobjektima skupa podataka) i polja <i>prihodi</i> iz drugog skupa podataka (skup podataka koji se pridružuje).
+            <p>Na primjer, pretpostavimo da želimo primijeniti pridruživanje skupu podataka samo za one geoobjekte gdje je  <i>davanje_za_zdravlje</i> veće od 20 posto <i>prihoda</i>. Da biste to napravili, primijenite uvjet pridruživanja od <code>$target[&quot;health_spending&quot;] &gt; ($join[&quot;income&quot;] * .20)</code> s pomoću polja <i>health_spending</i> iz prvog skupa podataka (pridružuje se geoobjektima skupa podataka) i polja <i>prihodi</i> iz drugog skupa podataka (skup podataka koji se pridružuje).
             </p>
             <p>Uvjeti pridruživanja mogu se primijeniti s pomoću kalkulatora izraza.
             </p>

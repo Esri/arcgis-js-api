@@ -70,7 +70,7 @@
                     </li>
                     <li>Especificar um campo na camada de entrada que cont&eacute;m o valor de dist&acirc;ncia. Voc&ecirc; pode utilizar um campo de string ou um campo num&eacute;rico. Se uma unidade linear n&atilde;o estiver definida, as unidades da refer&ecirc;ncia espacial ser&atilde;o utilizadas. Se voc&ecirc; estiver utilizando um sistema de coordenadas geogr&aacute;ficas, o campo sem unidade ser&aacute; assumido como sendo metros. 
                     </li>
-                    <li>Construir uma express&atilde;o com m&uacute;ltiplos campos e operadores matem&aacute;ticos.
+                    <li>Construir uma express&atilde;o com m&uacute;ltiplos campos e operadores matem&aacute;ticos. Por exemplo, para gerar buffer por 10 vezes o valor de um campo denominado  <i>wind_speed</i> adicione a express&atilde;o <i>$feature[&quot;wind_speed&quot;] x 10</i>.
                     </li>
                 </ul>
                 
@@ -157,7 +157,7 @@
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Escolha um ArcGIS Data Store para salvar os resultados</h2></div>
+        <div><h2>Escolher um ArcGIS Data Store para salvar os resultados</h2></div>
         <hr/>
         <div>
             <p>Os resultados do GeoAnalytic s&atilde;o armazenados no ArcGIS Data Store e expostos como uma camada de fei&ccedil;&atilde;o no  Portal for ArcGIS. Na maioria dos casos, os resultados devem ser armazenados no armazenamento de dados de espa&ccedil;o-tempo e este &eacute; o padr&atilde;o. Em alguns casos salvar resultados no armazenamento de dados relacional &eacute; uma boa op&ccedil;&atilde;o. Abaixo est&atilde;o as raz&otilde;es pelas quais voc&ecirc; talvez queira armazenar resultados em um armazenamento de dados relacional: 

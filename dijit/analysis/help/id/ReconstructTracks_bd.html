@@ -95,6 +95,8 @@
         <div>
             <p>Persamaan yang digunakan untuk menghitung jarak buffer di sekitar fitur input. Persamaan ini dapat dihasilkan dengan menggunakan kalkulator buffer dan mendukung operasi dasar seperti tambah, kurang, kali, dan bagi. Nilai dihitung berdasarkan sistem koordinat analisis. Layer harus berada pada sistem koordinat yang diproyeksikan atau referensi spasial yang diproses harus ditetapkan ke sistem koordinat yang diproyeksikan menggunakan  <b>Lingkungan Analisis</b> jika buffer diterapkan.
             </p>
+            <p>Persamaan seperti  <code>$feature.kecepatan angin * 1000</code> akan menerapkan buffer 1.000 dikalikan dengan kolom <i>kecepatan angin</i>. Anda dapat menggunakan lebih dari satu kolom di kalkulator buffer.
+            </p>
         </div>
     </div>
     <div id="timeSplit">
@@ -102,6 +104,20 @@
         <hr/>
         <div>
             <p>Waktu yang digunakan untuk memisahkan jalur. Jika titik input atau poligon memiliki durasi yang lebih lama di antara keduanya daripada pemecahan waktu, mereka akan dipisahkan ke jalur yang berbeda.
+            </p>
+            <p>Jika Anda menentukan pemisahan waktu dan pemisahan jarak, jalur akan dipisah ketika satu atau kedua kondisi terpenuhi. 
+            </p>
+            <p>Bayangkan Anda memiliki fitur titik yang mewakili jalur penerbangan, di mana kolom jalur adalah ID pesawat. Pesawat ini dapat melakukan beberapa perjalanan dan akan diwakili sebagai satu jalur.  Jika Anda tahu bahwa ada jeda 1 jam antara setiap penerbangan, Anda dapat menggunakan  <code>1 jam</code> sebagai pemisah jalur dan setiap penerbangan akan dipisah ke jalurnya sendiri.
+            </p>
+        </div>
+    </div>
+    <div id="distanceSplit">
+        <div><h2>Pilih jarak untuk memisahkan jalur berdasarkan (opsional)</h2></div>
+        <hr/>
+        <div>
+            <p> Waktu yang digunakan untuk memisahkan jalur. Jika titik input atau poligon memiliki jarak lebih lebar di antara keduanya daripada pemisahan waktu, mereka akan dipisahkan ke jalur yang berbeda.
+            </p>
+            <p>Jika Anda menentukan pemisahan waktu dan pemisahan jarak, jalur akan dipisah ketika satu atau kedua kondisi terpenuhi. 
             </p>
         </div>
     </div>

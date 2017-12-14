@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="bdToolbox">
-        <p>Big Data Analytics distributes the analytics work across your ArcGIS GeoAnalytics Server. This allows you to analyze more data faster by harnessing the power of multiple machines. The following tools are currently available:
+        <p>GeoAnalytics distributes the analytics work across your ArcGIS GeoAnalytics Server. This allows you to analyze more data faster by harnessing the power of multiple machines. The following tools are currently available:
             <ul>
                 <li> <b>Aggregate Points</b>
                 </li>
@@ -53,6 +53,8 @@
                 </li>
                 <li> <b>Summarize Within</b>
                 </li>
+                <li> <b>Detect Incidents</b>
+                </li>
                 <li> <b>Find Similar Locations</b>
                 </li>
                 <li> <b>Calculate Density</b>
@@ -63,10 +65,14 @@
                 </li>
                 <li> <b>Copy to Data Store</b>
                 </li>
+                <li> <b>Calculate Field</b>
+                </li>
+                <li> <b>Geocode Locations from Table</b>
+                </li>
             </ul>
             
         </p>
-        <p>Big Data Analytics focuses on analyzing large data with an emphasis on both spatial and temporal patterns. 
+        <p>GeoAnalytics focuses on analyzing large data with an emphasis on both spatial and temporal patterns. 
         </p>
     </div>
     <div id="SummarizeDataCategory" class="largesize">
@@ -128,11 +134,11 @@ the points within each area or bin. You may optionally apply time slicing with t
 <hr/>
             <p>Using either feature layers or tabular data, you can join features and records based on specific relationships between the input layers or tables.  Joins will be determined by spatial, temporal, and attribute relationships, and summary statistics can be optionally calculated.  
             </p>
-            <p> For example
+            <p>For example
                 <ul>
                     <li>Given point locations of crime incidents with a time, join the crime data to itself specifying a spatial relationship of crimes within 1 kilometer of each other and that occurred within 1 hour of each other to determine if there are a sequence of crimes close to each other in space and time.
                     </li>
-                    <li> Given a table of ZIP Codes with demographic information and area features representing residential buildings, join the demographic information to the residences so each residence now has the information.
+                    <li>Given a table of ZIP Codes with demographic information and area features representing residential buildings, join the demographic information to the residences so each residence now has the information.
                     </li>
                 </ul>
                 
@@ -158,20 +164,20 @@ determines which input features belong in a track and will order the inputs sequ
                 <ul>
                     <li>Given point locations and time of hurricane measurements, calculate the mean wind speed and max wind pressure of the hurricane.
                     </li>
-                    <li>Find the highest and lowest monthly revenues for franchise locations using 100 km bins.
+                    <li>Use GPS measurements of ships, reconstruct ship paths as lines. 
                     </li>
                 </ul>
                 
             </p>
             <br/>
         </div>
-        <div id="SummarizeAttributesTool" class="regularsize">
+        <div id="SummarizeAttributesTool" class="largesize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
                     <td><h2>Summarize Attributes</h2></td>
                     <td>
-                    <img src="./images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="Summarize Attributes">
+                    <img src="./images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="Summarize Attributes diagram">
                     </td>
                 </tr></tbody>
             </table>
@@ -215,18 +221,62 @@ layers and calculates statistics about the overlap.
             </p>
             <br/>
         </div>
-    <div id="FindLocationsCategory" class="smallsize">
+    <div id="FindLocationsCategory" class="regularsize">
         <h2>Find Locations</h2>
         <hr/>
         <p>These tools are used to identify areas that
 meet a number of different criteria you specify.   
             <ul>
+                <li> <b>Detect Incidents</b> works with time-enabled layers to determine which features meet a specified condition.
+                </li>
+                <li> <b>Geocode Locations from Table</b> converts addresses into coordinates.
+                </li>
                 <li> <b>Find Similar Locations</b> finds locations most similar to one or more reference locations based on criteria you specify.
                 </li>
             </ul>
             
         </p>
     </div>
+        <div id="DetectIncidentsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Detect Incidents</h2></td>
+                    <td>
+                    <img src="./images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" class="titleImage" alt="Detect Incidents">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>This tool works with a time-enabled layer of
+points, lines, areas, or tables that represents an instant in time.   Using sequentially ordered features, called tracks, this tool determines which features are incidents of interest. Incidents are determined by conditions that you specify. 
+            </p>
+            <p>For example
+                <ul>
+                    <li>Detect hurricane measurements that are Category 4 hurricanes based on a wind speed attribute.
+                    </li>
+                    <li>Using GPS measurements of ship movement with a field representing the ship speed, find measurements that are greater than the 1.5 times the mean of the previous five measurements.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="GeocodeLocationsfromTableTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Geocode Locations from Table</h2></td>
+                    <td>
+                    <img src="./images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" class="titleImage" alt="Geocode Locations from Table">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Converts addresses into coordinates. Use this tool on big data file share tables.
+            </p>
+            <br/>
+        </div>
         <div id="FindSimilarLocationsTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -240,7 +290,7 @@ meet a number of different criteria you specify.
 <hr/>
             <p>Based on criteria you specify, find similar locations  by measuring the similarity of locations in your candidate search layer to one or more reference locations. 
             </p>
-            <p> For example
+            <p>For example 
                 <ul>
                     <li>Find the ten most similar stores by examining the number of employees and the annual sales.
                     </li>
@@ -277,7 +327,7 @@ meet a number of different criteria you specify.
 <hr/>
             <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas representing the density.
             </p>
-            <p> For example
+            <p>For example
                 <ul>
                     <li>Calculating densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to decide where new hospitals should be built.
                     </li>
@@ -337,7 +387,7 @@ features.
 <hr/>
             <p>A buffer is an area that covers a given distance from a point, line, or polygon feature.
             </p>
-            <p> For example
+            <p>For example
                 <ul>
                     <li>Using linear river features, buffer each river by 50 times the width of the river to determine a proposed riparian boundary.
                     </li>
@@ -353,7 +403,9 @@ features.
         <hr/>
         <p>These tools are used for the day-to-day management of geographic and tabular data.
             <ul>
-                <li> <b>Copy to Data Store</b> copies data to your ArcGIS Data Store and creates a layer in your web GIS.
+                <li> <b>Calculate Field</b> creates a new field or modifies an existing field and creates a new layer in your contents.
+                </li>
+                <li> <b>Copy to Data Store</b> copies data to your ArcGIS Data Store and creates a layer in your contents.
                 </li>
             </ul>
             
@@ -370,12 +422,35 @@ features.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Copies an input feature layer or table to an  ArcGIS Data Store and creates a layer in your web GIS. </p>
-            <p> For example
+            <p>Copies an input feature layer or table to an  ArcGIS Data Store and creates a layer in your contents on  ArcGIS Enterprise. </p>
+            <p>For example
                 <ul>
-                    <li> Copy a collection of <code>.csv</code> files in a big data file share to the spatiotemporal data store for visualization.
+                    <li>Copy a collection of  <code>.csv</code> files in a big data file share to the spatiotemporal data store for visualization.
                     </li>
                     <li>Copy the features in the current map extent that are stored in the spatiotemporal data store to the relational data store.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="CalculateFieldTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Calculate Field</h2></td>
+                    <td>
+                    <img src="./images/GUID-059C9BE7-7B00-49C8-9917-B0EAEA3DA19D-web.png" class="titleImage" alt="Calculate Field">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Calculates values for a new or existing field and creates a layer in your contents on  ArcGIS Enterprise. </p>
+            <p>For example
+                <ul>
+                    <li>Modify an existing field named  <i>total</i> to be the sum of revenue from fields <i>total_2016</i>, <i>total_2017</i>, and <i>total_2018</i>.
+                    </li>
+                    <li>Create a new field to categorize hazard levels based on field values such as  <i>windspeed</i> and <i>pollutant</i>.
                     </li>
                 </ul>
                 

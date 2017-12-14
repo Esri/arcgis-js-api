@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="bdToolbox">
-        <p>Analiză big data distribuie lucrările de analiză pe serverul dvs. ArcGIS GeoAnalytics. Aceasta vă permite să analizaţi mai multe date mai rapid prin folosirea puterii mai multor echipamente. Următoarele instrumente sunt disponibile &icirc;n prezent:
+        <p>GeoAnalytics distribuie lucrările de analiză pe serverul dvs. ArcGIS GeoAnalytics. Aceasta vă permite să analizaţi mai multe date mai rapid prin folosirea puterii mai multor echipamente. Următoarele instrumente sunt disponibile &icirc;n prezent:
             <ul>
                 <li> <b>&Icirc;nsumare puncte</b>
                 </li>
@@ -53,6 +53,8 @@
                 </li>
                 <li> <b>Rezumat &icirc;n</b>
                 </li>
+                <li> <b>Detecţie incidente</b>
+                </li>
                 <li> <b>Găsire locaţii similare</b>
                 </li>
                 <li> <b>Calcul densitate</b>
@@ -63,10 +65,14 @@
                 </li>
                 <li> <b>Copiaţi &icirc;n depozitul de date</b>
                 </li>
+                <li> <b>Calcul c&acirc;mp</b>
+                </li>
+                <li> <b>Locaţii geocodificate din tabel</b>
+                </li>
             </ul>
             
         </p>
-        <p>Analiză big data se concentrează asupra analizei datelor de mari dimensiuni cu accent pe modelele spaţiale şi temporale. 
+        <p>GeoAnalytics se concentrează asupra analizei datelor de mari dimensiuni cu accent pe modelele spaţiale şi temporale. 
         </p>
     </div>
     <div id="SummarizeDataCategory" class="largesize">
@@ -125,11 +131,11 @@
 <hr/>
             <p>Prin utilizarea de straturi tematice de obiecte spaţiale sau date tabulare, puteţi uni obiecte spaţiale şi &icirc;nregistrări &icirc;n baza relaţiilor specifice dintre straturile tematice de intrare sau tabele.  Unirile vor fi determinate de relaţiile spaţiale, temporale şi de tip atribut şi opţional pot fi calculate statisticile rezumării.  
             </p>
-            <p> De exemplu
+            <p>De exemplu
                 <ul>
                     <li>Odată ce aveţi locaţiile punctuale ale infracţiunilor &icirc;ntr-o perioadă de timp dată, puteţi asocia &icirc;ntre ele datele infracţiunilor, specific&acirc;nd o relaţie spaţială a infracţiunilor comise la distanţă de maximum 1 km una faţă de cealaltă şi care au avut loc &icirc;n interval de 1 oră una faţă de cealaltă pentru a determina dacă există o anumită ordine a infracţiunilor comise &icirc;n locuri şi momente apropiate.
                     </li>
-                    <li> Odată ce aveţi un tabel de coduri ZIP cu informaţii demografice şi un obiect spaţial de tip suprafaţă care reprezintă clădiri rezidenţiale, uniţi informaţiile demografice cu fiecare domiciliu pentru ca fiecare domiciliu să aibă asociate informaţiile respective.
+                    <li>Odată ce aveţi un tabel de coduri ZIP cu informaţii demografice şi un obiect spaţial de tip suprafaţă care reprezintă clădiri rezidenţiale, uniţi informaţiile demografice cu fiecare domiciliu pentru ca fiecare domiciliu să aibă asociate informaţiile respective.
                     </li>
                 </ul>
                 
@@ -153,7 +159,7 @@
                 <ul>
                     <li>Odată ce aveţi locaţii punctuale şi orele măsurătorilor unui uragan, puteţi calcula viteza medie a v&acirc;ntului şi presiunea eoliană maximă a uraganului.
                     </li>
-                    <li>Găsiţi cele mai mari şi cele mai mici venituri lunare pentru locaţiile aflate &icirc;n franciză, utiliz&acirc;nd grupuri de 100 km.
+                    <li>Folosiţi măsurătorile GPS ale navelor pentru a reconstrui traseele ca linii.
                     </li>
                 </ul>
                 
@@ -166,7 +172,7 @@
                 <tbody><tr>
                     <td><h2>Sumarizare atribute</h2></td>
                     <td>
-                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="Sumarizare atribute">
+                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="Diagramă pentru Sumarizare atribute">
                     </td>
                 </tr></tbody>
             </table>
@@ -208,17 +214,64 @@
             </p>
             <br/>
         </div>
-    <div id="FindLocationsCategory" class="smallsize">
+    <div id="FindLocationsCategory" class="regularsize">
         <h2>Găsire locaţii</h2>
         <hr/>
         <p>Aceste instrumente sunt utilizate pentru identifica suprafeţelor care respectă o serie de criterii diferite, specificate de dvs.   
             <ul>
+                <li> <b>Detecţie incidente</b> lucrează cu straturile tematice activate de timp pentru a stabili care obiect spaţial &icirc;ndeplineşte o condiţie specifică.
+                </li>
+                <li> <b>Locaţii geocodificate din tabel</b> converteşte adrese &icirc;n coordonate.
+                </li>
                 <li> <b>Găsire locaţii similare</b> găseşte locaţiile cele mai asemănătoare cu una sau mai multe locaţii de referinţă pe baza criteriilor specificate de dvs.
                 </li>
             </ul>
             
         </p>
     </div>
+        <div id="DetectIncidentsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Detect Incidents</h2></td>
+                    <td>
+                    <img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" class="titleImage" alt="Detecţie incidente">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> <img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Detecţie incidente">
+            </p>
+            <p>Acest instrument funcţionează cu un strat tematic legat de timp cu puncte, linii, suprafeţe sau tabele care reprezintă instantaneu timpul. Folosind obiectele spaţiale ordonate secvenţial, numite trasee, acest instrument stabileşte care obiecte spaţiale sunt incidente care prezintă interes. Incidentele sunt stabilite de condiţiile specificate. 
+            </p>
+            <p>De exemplu
+                <ul>
+                    <li>Detectaţi măsurătorile pentru uraganele de categorie 4 pe baza atributului de viteză a v&acirc;ntului.
+                    </li>
+                    <li>Folosind măsurătorile GPS pentru deplasarea navelor cu un c&acirc;mp care reprezintă viteza navei, identificaţi măsurătorile care sunt de 1,5 ori mai mari dec&acirc;t media celor 5 măsurători anterioare.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="GeocodeLocationsfromTableTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Locaţii geocodificate din tabel</h2></td>
+                    <td>
+                    <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" class="titleImage" alt="Locaţii geocodificate din tabel">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" alt="Locaţii geocodificate din tabel">
+            </p>
+            <p>Converteşte adrese &icirc;n coordonate. Folosiţi acest instrument pentru tabelele big data.
+            </p>
+            <br/>
+        </div>
         <div id="FindSimilarLocationsTool" class="largesize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -232,7 +285,7 @@
 <hr/>
             <p>Pe baza criteriilor specificate de dvs.,găsiţi locaţii similare prin măsurarea gradului de similaritate al locaţiilor din stratul tematic de căutare a candidaţilor cu una sau mai multe locaţii de referinţă. 
             </p>
-            <p> De exemplu
+            <p>De exemplu 
                 <ul>
                     <li>Găsiţi cele mai asemănătoare zece magazine examin&acirc;nd numărul de angajaţi şi v&acirc;nzările anuale.
                     </li>
@@ -262,14 +315,14 @@
                 <tbody><tr>
                     <td><h2>Calcul densitate</h2></td>
                     <td>
-                    <img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" class="titleImage" alt="Calculate Density">
+                    <img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" class="titleImage" alt="Calcul densitate">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
             <p>Instrumentul Calcul densitate creează o hartă de densitate din obiecte spaţiale de tip punct răsp&acirc;ndind pe hartă cantităţi cunoscute ale unui anumit fenomen (reprezentate ca atribute ale punctelor). Rezultatul este un strat tematic de suprafeţe care reprezintă densitatea.
             </p>
-            <p> De exemplu
+            <p>De exemplu
                 <ul>
                     <li>Calculul densităţii spitalelor dintr-un judeţ. Stratul tematic rezultat va prezenta zone cu accesibilitate ridicată şi scăzută la spitale, iar aceste informaţii pot fi utilizate pentru a decide dacă să se construiască noi spitale.
                     </li>
@@ -293,7 +346,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Instrumentul Găsire Hot Spots (zone fierbinți) va determina dacă există grupări semnificative din punct de vedere statistic &icirc;n modelul spaţial al datelor dvs. 
+            <p>Instrumentul Găsire puncte de interes va determina dacă există grupări semnificative din punct de vedere statistic &icirc;n modelul spaţial al datelor dvs. 
                 <ul>
                     <li>Punctele dvs. (incidente criminale, arbori, accidente &icirc;n trafic) sunt cu adevărat grupate? Cum puteţi fi siguri?
                     </li>
@@ -328,7 +381,7 @@
 <hr/>
             <p>Un buffer este o suprafaţă care acoperă o anumită distanţă faţă de un obiect spaţial punct, linie sau poligon.
             </p>
-            <p> De exemplu
+            <p>De exemplu
                 <ul>
                     <li>Utiliz&acirc;nd obiecte spaţiale liniare pentru r&acirc;uri, creaţi pentru fiecare r&acirc;u buffere av&acirc;nd de 50 de ori lăţimea r&acirc;ului pentru a determina o limită propusă pentru proprietăţile riverane.
                     </li>
@@ -344,7 +397,9 @@
         <hr/>
         <p>Aceste instrumente sunt utilizate pentru administrarea cotidiană a datelor geografice şi tabelare.
             <ul>
-                <li> <b>Copiaţi &icirc;n depozitul de date</b> copiază datele &icirc;n ArcGIS Data Store şi creează un strat tematic &icirc;n web GIS.
+                <li> <b>Calculare c&acirc;mp</b> creează un c&acirc;mp nou sau modifică un c&acirc;mp existent şi creează un strat tematic nou &icirc;n conţinutul dvs.
+                </li>
+                <li> <b>Copiere &icirc;n depozitul de date</b> copiază datele &icirc;n ArcGIS Data Store şi creează un strat tematic &icirc;n conţinutul dvs.
                 </li>
             </ul>
             
@@ -361,12 +416,35 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Copiaţi un strat tematic de obiecte spaţiale de intrare sau un tabel &icirc;ntr-un  ArcGIS Data Store şi creaţi un strat tematic &icirc;n web GIS. </p>
-            <p> De exemplu
+            <p>Copiază un strat tematic de obiecte spaţiale sau un tabel de intrare &icirc;n  ArcGIS Data Store şi creează un strat tematic &icirc;n conţinutul dvs. din  ArcGIS Enterprise. </p>
+            <p>De exemplu
                 <ul>
-                    <li> Copiaţi o colecţie de fişiere <code>.csv</code> &icirc;ntr-un fişier big data partajat &icirc;n depozitul de date spaţial-temporale &icirc;n scopul vizualizării.
+                    <li>Copiaţi o colecţie de fişiere  <code>.csv</code> &icirc;ntr-un fişier big data partajat &icirc;n depozitul de date spaţial-temporale &icirc;n scopul vizualizării.
                     </li>
                     <li>Copiaţi &icirc;n depozitul de date relaţionale obiectele spaţiale din extinderea curentă a hărţii care sunt stocate &icirc;n depozitul de date spaţial-temporale.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="CalculateFieldTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Calcul câmp</h2></td>
+                    <td>
+                    <img src="../images/GUID-059C9BE7-7B00-49C8-9917-B0EAEA3DA19D-web.png" class="titleImage" alt="Calcul c&acirc;mp">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Calculează valorile pentru un c&acirc;mp nou sau unul existent şi creează un strat tematic &icirc;n conţinutul dvs. din  ArcGIS Enterprise. </p>
+            <p>De exemplu
+                <ul>
+                    <li>Modificaţi un c&acirc;mp existent numit  <i>total</i> care să fie suma venitului din c&acirc;mpurile <i>total_2016</i>, <i>total_2017</i> şi <i>total_2018</i>.
+                    </li>
+                    <li>Creaţi un c&acirc;mp nou pentru a clasifica nivelurile de pericol pe baza valorilor de c&acirc;mp, cum ar fi  <i>viteză v&acirc;nt (windspeed)</i> şi <i>poluant (pollutant)</i>.
                     </li>
                 </ul>
                 

@@ -42,12 +42,11 @@
 <div id="topics">
     <div id="toolDescription" class="smallsize">
         <h2>汇总属性</h2><p/>
-        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="汇总属性"></h2>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="汇总属性 示意图"></h2>
         <hr/>
-    <p>该工具可汇总一个或多个字段中的所有匹配值并计算相关的统计数据。最基本的统计数据是汇总到一起的要素的计数，但是也可以计算更高级的统计数据。
-
+    <p> 该工具可汇总一个或多个字段中的所有匹配值并计算相关的统计数据。最基本的统计数据是汇总到一起的要素的计数，但是也可以计算更高级的统计数据。
     </p>
-    <p>例如，假设您拥有商店位置的点要素和表示  <i>DISTRICT_MANAGER_NAME</i> 的字段，并且希望按经理汇总咖啡销售额。可以将字段 <i>DISTRICT_MANAGER_NAME</i> 指定为要融合的字段，然后将汇总表示各个经理的所有数据行。这意味着由 Manager1 管理的所有商店位置以及计算的汇总统计数据将汇总到同一行。在此情况下，将计算 Manager1 管理的商店数量计数和所有商店的 <i>TOTAL_SALES</i> 总和等统计数据，这同样适用于在 <i>DISTRICT_MANAGER_NAME</i> 字段中列出的任何其他经理。
+    <p>例如，假设您拥有商店位置的点要素和表示  <i>DISTRICT_MANAGER_NAME</i> 的字段，并且希望按经理汇总咖啡销售额。可以将字段 <i>DISTRICT_MANAGER_NAME</i> 指定为要融合的字段，然后将汇总表示各个经理的所有数据行。这意味着由 <pre>Manager1</pre> 管理的所有商店位置以及计算的汇总统计数据将汇总到同一行。在此情况下，将计算 <pre>Manager1</pre> 管理的商店数量计数和所有商店的 <i>TOTAL_SALES</i> 总和等统计数据，这同样适用于在 <i>DISTRICT_MANAGER_NAME</i> 字段中列出的任何其他经理。
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -62,15 +61,24 @@
         </div>
     </div>
     <div id="fields">
-        <div><h2>选择要汇总的字段</h2></div>
+        <div><h2>选择数据的汇总方法</h2></div>
         <hr/>
         <div>
-            <p>输入图层中的字段列表。汇总选定图层并将其用于计算统计数据。例如，如果选择具有商业和住宅值的名为  <i>PropertyType</i> 的字段，则会将所有住宅字段汇总到一起，计算汇总统计数据，并会将所有商业字段汇总到一起。
+            <p>数据汇总的方法有两种：
+                <ul>
+                    <li> <b>所有要素融合为单个要素</b> - 计算所有要素的统计数据。
+                    </li>
+                    <li> <b>按字段</b> - 在指定字段中按类值对要素进行分组。
+                    </li>
+                </ul>
+                
+            </p>
+            <p>例如，假设您有一个关于树木的数据集，其中包含的  <i>treetype</i> 字段值为 <code>Maple</code>、 <code>Fir</code> 和 <code>Pine</code>，并且还包含一个名为 <i>treeheight</i> 的字段，而您对查找 <i>treeheight</i> 的平均值感兴趣。如果将所有要素汇总到单个要素，则将查找所有树木的平均高度，从而得出一个平均值。如果按字段 <i>treeheight</i> 进行汇总，将分别得到 maple、fir 和 pine 的平均值。
             </p>
         </div>
     </div>
     <div id="summaryFields">
-        <div><h2>添加统计数据(可选)</h2></div>
+        <div><h2>添加统计数据（可选）</h2></div>
         <hr/>
         <div>
             <p> 可以计算汇总的要素的统计数据。可以根据数值字段计算以下内容：

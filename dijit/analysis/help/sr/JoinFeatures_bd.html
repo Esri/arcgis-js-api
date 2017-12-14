@@ -118,7 +118,7 @@
                     </li>
                     <li> <b>Jednaki</b>&mdash;geoobjekti će se upariti ako imaju istu geometriju.
                     </li>
-                    <li> <b>Blizu</b>&mdash;geoobjekti će se upariti ako su unutar navedenog rastojanja jedan od drugog. Ciljni sloj mora da bude u projektovanom koordinatnom sistemu ili prostorna referenca obrade mora da bude postavljena na projektovani koordinatni sistem kori&scaron;ćenjem <b>Okruženja analize</b> ako je prostorna veza <b>Blizu</b> kori&scaron;ćena.
+                    <li> <b>Blizu</b>&mdash;geoobjekti će se upariti ako su unutar navedenog rastojanja jedan od drugog. Ciljni sloj mora da bude u projektovanom koordinatnom sistemu ili prostorna referenca obrade mora da bude postavljena na projektovani koordinatni sistem kori&scaron;ćenjem <b>Okruženja analize</b>, ako se koristi prostorni odnos <b>Blizu</b>.
                     </li>
                     <li> <b>Sadrži</b>&mdash;geoobjekti će se upariti ako sloj kojem se pridružuju se sadrži u geoobjektima koji se pridružuju.
                     </li>
@@ -146,7 +146,7 @@
         </div>
     </div>
     <div id="temporalRelationship">
-        <div><h2>Odaberite vremenski odnos</h2></div>
+        <div><h2>Odaberite vremensku vezu</h2></div>
         <hr/>
         <div>
             <p>Vremenski odnos koji će odrediti da li su geoobjekti pridruženi jedan drugom. Ova opcija je dostupna jedino ukoliko je vreme omogućeno na oba sloja i dostupni odnosi će zavisiti od tipa vremena (trenutak ili interval) koje se koristi za ulazne geoobjekte. Dostupni odnosi uključuju sledeće:
@@ -206,7 +206,7 @@
         <div><h2>Dodaj statistiku (opciono)</h2></div>
         <hr/>
         <div>
-            <p>Ako je operacija pridruživanja   <b>Pridruži jedan  jednome</b>, možete da izračunate statistiku na pridruženim geoobjektima. Podrazumevano, sva statistika će biti izračunata.
+            <p>Ako je operacija pridruživanja  <b>Pridruži jedan  jednome</b>, možete da izračunate statistiku na pridruženim geoobjektima. Podrazumevano, sva statistika će biti izračunata.
             </p>
             <p>Možete da izračunate statistiku na geoobjektima koji su sumirani. U numeričkim poljima možete da izračunate sledeće:
                 <ul>
@@ -248,7 +248,7 @@
         <div>
             <p>Primenjuje uslov na određena polja. Samo geoobjekti sa poljima koja ispunjavaju ove uslove će biti pridružena.
             </p>
-            <p>Na primer, pretpostavimo da želimo da primenimo pridruživanje skupu podataka samo za one geoobjekte gde je  <i>health_spending</i> veći od 20 procenata od <i>prihoda</i>.  Da biste to uradili, primenite uslov pridruživanja <code>target.health_spending &gt; (join.income * .20)</code> kori&scaron;ćenjem polja <i>health_spending</i> iz prvog skupa podataka (geoobjekti skupa podataka kojima se pridružuje) i polja <i>prihod</i> iz drugog skupa podataka (skup podataka koji se pridružuju).
+            <p>Na primer, pretpostavimo da želimo da primenimo pridruživanje skupu podataka samo za one geoobjekte gde je  <i>health_spending</i> veći od 20 procenata od <i>prihoda</i>.  Da biste to uradili, primenite uslov pridruživanja <code>$target[&quot;health_spending&quot;] &gt; ($join[&quot;income&quot;] * .20)</code> kori&scaron;ćenjem polja <i>health_spending</i> iz prvog skupa podataka (geoobjekti skupa podataka kojima se pridružuje) i polja <i>prihod</i> iz drugog skupa podataka (skup podataka koji se pridružuju).
             </p>
             <p>Uslovi pridruživanja mogu da se primene kori&scaron;ćenjem kalkulatora izraza.
             </p>

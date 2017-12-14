@@ -40,24 +40,24 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="smallsize">
         <h2>計算密度</h2><p/>
-        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Calculate Density"></h2>
+        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="計算密度"></h2>
         <hr/>
-    <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas classified from least dense to most dense.   
+    <p>「計算密度」工具透過將已知數量的某種現象（表示為點的屬性）散佈到整個地圖上，來從點圖徵建立密度地圖。結果是按密度從小到大分類的區域圖層。
 
     </p>
-    <p>For point input, each point should represent the location of some event or incident, and the result layer represents a count of the incident per unit area.  A higher density value in a new location means that there are more points near that location.  In many cases, the result layer can be interpreted as a risk surface for future events. For example, if the input points represent locations of lightning strikes, the result layer can be interpreted as a risk surface for future lightning strikes.
+    <p>對於點輸入，每個點應表示某一事件或事件點的位置，結果圖層應表示每個單位面積中的事件點計數。新位置中的密度值越高則表示此位置附近的點越多。在多數情况下，結果圖層可視爲未來事件的風險表面。例如，如果輸入點表示受到雷擊的位置，則結果圖層可視爲未來可能受到雷擊的風險表面。
     </p>
-    <p>Other use cases of this tool include the following:
+    <p>此工具的其他使用範例如下：
         <ul>
-            <li>Creating crime-density maps to help police departments properly allocate resources to high crime areas.
+            <li>建立犯罪密度地圖以幫助警方適當分配資源到高犯罪率區域。
             </li>
-            <li>Calculating densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to decide where new hospitals should be built.
+            <li>計算某郡的醫院密度。結果圖層將顯示容易到達醫院和不容易到達醫院的區域，此資訊可用於確定新建醫院的位置。
             </li>
-            <li>Identifying areas that are at high risk of forest fires based on historical locations of forest fires.
+            <li>根據發生森林火災的歷史位置，確定森林火災的高風險區域。
             </li>
-            <li>Locating communities that are far from major highways in order to plan where new roads should be constructed.
+            <li>尋找距離主幹道較遠的社區，以計劃修建新道路的位置。
             </li>
         </ul>
         
@@ -68,19 +68,19 @@
         <div><h2>選擇計算密度所使用的點圖層</h2></div>
         <hr/>
         <div>
-            <p>The point layer on which the density will be calculated.
+            <p>將在其上計算密度的點圖層。
             </p>
             <p>除了從地圖選擇圖層外，您也可以選擇下拉式清單底部的 <b>瀏覽圖層</b>，以瀏覽到大數據檔案分享資料集或圖徵圖層的內容。
             </p>
         </div>
     </div>
     <div id="fields">
-        <div><h2>選擇用來計算密度的一或多個欄位（選用）</h2></div>
+        <div><h2>選擇要用來計算密度的一或多個欄位 (選用)</h2></div>
         <hr/>
         <div>
-            <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
+            <p>提供一或多個欄位，用於指定每個位置處的事件數量。例如，如果您具有表示城市的點，則您可以將表示城市人口的欄位作爲計數欄位，産生的人口密度圖層將計算擁有較多人口之城市附近的較大的人口密度。
             </p>
-            <p>The density for the count of points will always be calculated.   If no fields are selected, each location will be assumed to represent a single count.
+            <p>一律會計算點計數的密度。若未選擇欄位，則假定每個位置代表一個計數。
             </p>
         </div>
     </div>
@@ -88,17 +88,17 @@
         <div><h2>選擇容器形狀</h2></div>
         <hr/>
         <div>
-            <p>The shape of bins that points are aggregated into and used for the density calculation.
+            <p>匯聚到並使用於密度計算之點的容器形狀。
             </p>
             <p>使用 <b>方形</b>或 <b>六角形</b>容器進行分析時，需要使用投影座標系統。您可以在 <b>分析環境</b>中設定 <b>處理座標系統</b>。若未將處理座標系統設為投影座標系統，系統會在您 <b>執行分析</b>時提醒您設定它。
             </p>
         </div>
     </div>
     <div id="binSizing">
-        <div><h2>選擇用於匯聚的容器大小</h2></div>
+        <div><h2>選擇用於彙聚的容器大小</h2></div>
         <hr/>
         <div>
-            <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
+            <p>產生之容器的大小。對於方形容器，大小表示方形的高度。對於六角形，大小表示六角形的高度（從平行面起算）。
             </p>
         </div>
     </div>
@@ -106,11 +106,11 @@
         <div><h2>選擇要套用的密度加權</h2></div>
         <hr/>
         <div>
-            <p>The type of weighting applied to the density calculation. There are two options:
+            <p>套用到密度計算的加權類型。有兩個選項：
                 <ul>
-                    <li> <b>Uniform</b>&mdash;This calculates a magnitude per area.
+                    <li> <b>統一</b> - 這會計算每個區域的量級。
                     </li>
-                    <li> <b>Kernel</b>&mdash;Applies a kernel function to fit a smooth tapered surface to each point.
+                    <li> <b>核心</b> - 套用核心函數，將平滑的錐形表面擬合到每個點。
                     </li>
                 </ul>
                 
@@ -121,7 +121,7 @@
         <div><h2>選擇鄰域大小</h2></div>
         <hr/>
         <div>
-            <p>The size of the area used to calculate the density. The neighborhood size must be larger than the bin size.
+            <p>用來計算密度之區域的大小。鄰里大小必須大於容器大小。
             </p>
         </div>
     </div>
@@ -129,20 +129,20 @@
         <div><h2>選擇密度的輸出單位</h2></div>
         <hr/>
         <div>
-            <p>The desired output units of the density values. By default, this is set to square kilometers or square miles based on the default units specified in your profile. If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+            <p>密度值的所要輸出單位。預設情況下，會根據您在個人資料中指定的預設單位，將其設定為平方公里或平方英哩。若密度值極小，您可以增加面積單位的大小（例如，從平方公里增加為平方英哩）以傳回更大值。值只會調整結果的比例。
 
             </p>
         </div>
     </div>
     <div id="timeSlicing">
-        <div><h2>使用時間步長計算密度（選用）</h2></div>
+        <div><h2>使用時間步長計算密度 (選用)</h2></div>
         <hr/>
         <div>
             <p>若是在輸入點圖層上啟用時間，且其為即時類型，則可使用時間步長進行分析。使用時間時可設定三個參數：
                 <ul>
                     <li> <b>時間步長間隔</b>
                     </li>
-                    <li> <b>重複時間步長的頻率為何</b>
+                    <li> <b>重複時間步長的頻率</b>
                     </li>
                     <li> <b>將時間步長對齊到的時間</b>
                     </li>
@@ -166,7 +166,7 @@
         </div>
     </div>
     <div id="timeStep">
-        <div><h2>重複時間步長的頻率為何</h2></div>
+        <div><h2>重複時間步長的頻率</h2></div>
         <hr/>
         <div>
             <p> 用於計算時間片段的步長。 <b>重複時間步長的頻率為何</b>可單獨使用，或搭配使用 <b>時間步長間隔</b>、 <b>參考時間</b>，或 <b>時間步長間隔</b>和 <b>將時間步長對齊到的時間</b>二者。
@@ -176,7 +176,7 @@
         </div>
     </div>
     <div id="timeReference">
-        <div><h2>將時間步長對齊到的時間</h2></div>
+        <div><h2>要將時間步長對齊到的時間</h2></div>
         <hr/>
         <div>
             <p>用來對齊時間分段的日期和時間。時間步長將從此時間起算並繼續向後流動。若未選取參考時間，時間步長將對齊到 1970 年 1 月 1 日。

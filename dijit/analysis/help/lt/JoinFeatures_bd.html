@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="regularsize">
-        <h2>Jungti elementus</h2><p/>
+        <h2>Sujungti elementus</h2><p/>
         <h2><img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" alt="Jungti elementus"></h2>
         <hr/>
     <p>Įrankis Jungti elementus veikia naudodamas du duomenų sluoksnius. Įrankis Jungti elementus sujungia vieno elemento atributus su kito elemento atributais atsižvelgiant į erdvinius, laikinuosius ir atributinius ry&scaron;ius arba visų trijų ry&scaron;ių derinį. Įrankis nustato visus įvesties elementus, kurie atitinka nurodytas sujungimo sąlygas, ir sujungia antrąjį įvesties sluoksnį su pirmuoju. Pasirinktinai galima sujungti visus elementus su atitinkančiais elementais arba sukurti atitinkančių elementų suvestinę.
@@ -51,7 +51,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="targetLayer">
-        <div><h2>Pasirinkite paskirties sluoksnį</h2></div>
+        <div><h2>Pasirinkite tikslinį sluoksnį</h2></div>
         <hr/>
         <div>
             <p>Sluoksnis, kuris turės atributus i&scaron; jungtinio sluoksnio, pridėto prie jo lentelės.
@@ -63,10 +63,10 @@
         </div>
     </div>
     <div id="joinLayer">
-        <div><h2>Pasirinkite sluoksnį, kurį prijungsite prie paskirties sluoksnio</h2></div>
+        <div><h2>Pasirinkite sluoksnį, kurį prijungsite prie tikslinio sluoksnio</h2></div>
         <hr/>
         <div>
-            <p>Jungtinis sluoksnis su atributais, kurie bus pridėti prie paskirties sluoksnio.
+            <p>Jungtinis sluoksnis su atributais, kurie bus pridėti prie tikslinio sluoksnio.
             </p>
             <p>Galite ne tik nurodyti sluoksnį i&scaron; žemėlapio, bet ir apačioje pasirinkti  <b>Nar&scaron;yti sluoksnius</b>, kad galėtumėte turinyje nar&scaron;yti didelių duomenų rinkinio arba elemento sluoksnio.
             </p>
@@ -76,7 +76,7 @@
         <div><h2>Pasirinkite prijungimo operaciją</h2></div>
         <hr/>
         <div>
-            <p>Apibrėžiama, kaip bus atliekami sujungimai tarp paskirties ir sujungimo sluoksnių i&scaron;vestyje, jeigu aptinkami keli sujungimo elementai, turintys tą patį ry&scaron;į su prijungiamu sluoksniu. Galima pasirinkti i&scaron; dviejų sujungimo operacijų:
+            <p>Apibrėžiama, kaip bus atliekami sujungimai tarp tikslinio ir jungtinio sluoksnių i&scaron;vestyje, jeigu aptinkami keli sujungimo elementai, turintys tą patį ry&scaron;į su prijungiamu sluoksniu. Galima pasirinkti i&scaron; dviejų sujungimo operacijų:
                 <ul>
                     <li> <b>Sujungti vieną su vienu</b> &ndash; &scaron;i parinktis susumuoja visus atitinkančius elementus su kiekvienu sujungiamu elementu.
                     </li>
@@ -90,7 +90,7 @@
         </div>
     </div>
     <div id="joinOptions">
-        <div><h2>Pasirinkite vieną arba daugiau sujungimų</h2></div>
+        <div><h2>Pasirinkti vieną arba kelis sujungimus</h2></div>
         <hr/>
         <div>
             <p>Galima taikyti vieną, du ar tris sujungimo tipus. Galimi sujungimo tipai: 
@@ -118,7 +118,7 @@
                     </li>
                     <li> <b>Atitikimas</b> &ndash; elementai atitiks, jeigu yra tos pačios geometrijos.
                     </li>
-                    <li> <b>&Scaron;alia</b> &ndash; elementai atitiks, jei jie yra nurodytu atstumu vienas nuo kito. Jei naudojamas erdvinis ry&scaron;ys <b>&Scaron;alia</b>, paskirties sluoksnis turi būti projekcinėje koordinačių sistemoje arba projekcinė koordinačių sistema turi būti nustatyta naudojant <b>Analizės aplinkas</b>.
+                    <li> <b>Gretimumas</b> &ndash; elementai atitiks, jeigu jie yra nurodytu atstumu vienas nuo kito. Jei naudojamas erdvinis ry&scaron;ys <b>&Scaron;alia</b>, tikslinis sluoksnis turi būti projekcinėje koordinačių sistemoje arba projekcinė koordinačių sistema turi būti nustatyta naudojant <b>Analizės aplinką</b>.
                     </li>
                     <li> <b>Apima</b> &ndash; elementai atitiks, jeigu sluoksnis, prie kurio prijungiama, apima prijungiamus elementus.
                     </li>
@@ -193,7 +193,7 @@
         </div>
     </div>
     <div id="attributeRelationship">
-        <div><h2>Pasirinkite laukus, kuriuos norite sujungti</h2></div>
+        <div><h2>Pasirinkite atitinkančius laukus</h2></div>
         <hr/>
         <div>
             <p>Pagal &scaron;į ry&scaron;į bus ie&scaron;koma vieno sluoksnio lauko reik&scaron;mių atitikmenų kito sluoksnio lauko reik&scaron;mėms. 
@@ -248,7 +248,7 @@
         <div>
             <p>Nurodytiems laukams taikoma sąlyga. Bus sujungti tik tas sąlygas atitinkantys elementai.
             </p>
-            <p>Tarkime, kad norime taikyti sujungimo operaciją duomenų rinkiniui tik tiems elementams, kurių  <i>health_spending</i> (i&scaron;laidos sveikatos priežiūrai) yra didesnės negu 20 proc. <i>income</i> (pajamų).  Tam atlikti reikia taikyti sujungimo sąlygą <code>target.health_spending &gt; (join.income * .20)</code> naudojant lauką <i>health_spending</i> i&scaron; pirmojo duomenų rinkinio (duomenų rinkinio elementų, prie kurių prijungiama) ir lauko <i>income</i> i&scaron; antrojo duomenų rinkinio (prijungiamo duomenų rinkinio).
+            <p>Tarkime, kad norime taikyti sujungimo operaciją duomenų rinkiniui tik tiems elementams, kurių  <i>health_spending</i> (i&scaron;laidos sveikatos priežiūrai) yra didesnės negu 20 proc. <i>income</i> (pajamų).  Tam atlikti reikia taikyti sujungimo sąlygą <code>$target[&quot;health_spending&quot;] &gt; ($join[&quot;income&quot;] * .20)</code> naudojant lauką <i>health_spending</i> i&scaron; pirmojo duomenų rinkinio (duomenų rinkinio elementų, prie kurių prijungiama) ir lauko <i>income</i> i&scaron; antrojo duomenų rinkinio (prijungiamo duomenų rinkinio).
             </p>
             <p>Sujungimo sąlygas galima taikyti naudojant i&scaron;rai&scaron;kų skaičiuotuvą.
             </p>

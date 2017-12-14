@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Nastavitve okolja analiz na Portalu</h2><p/>
+        <h2></h2>
+        <hr/>
+    <p> Nastavitve okolja analiz v Portal for ArcGIS in  ArcGIS Online. 
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="overwriteResult">
+        <div><h2>Prepiši sloj z rezultati</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Možnost za prepis obstoječih slojev. Če je to obkljukano in sloj z enakim imenom že obstaja v va&scaron;i vsebini, bo ta prepisan.
+            </p>
+            <p>
+                <ul>
+                    <li>Obkljukano &ndash; Če sloj z enakim imenom že obstaja v va&scaron;i vsebini, bo ta prepisan. Izhodni sloj bo prikazan v istem koordinatnem sistemu kot vhodni sloj.
+                    </li>
+                    <li>Odkljukano &ndash; Če vneseno ime sloja z rezultati že obstaja, bo pri&scaron;lo do napake. Zato morate sloj z rezultati pred izvajanjem orodja preimenovati. To je privzeto.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="closeAnalysisWidget">
+        <div><h2>Po zagonu analize zapri pripomoček</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Možnost, da analizno pogovorno okno ostane odprto in omogočeno med procesiranjem orodja. Ta nastavitev vam bo omogočila, da enostavno spremenite va&scaron;e analizne parametre, medtem ko se izvaja prej&scaron;nje analizno opravilo. Analiza je ponavljajoč se postopek. Če pustite odprto pogovorno okno, lahko enostavno spreminjate parametre in ponovno zaženete analizo.
+            </p>
+            <p>
+                <ul>
+                    <li>Obkljukano &ndash; Okno analiznega orodja se bo zaprlo in poudarek bo vrnjen na vsebino. To je privzeto
+                    </li>
+                    <li>Odkljukano &ndash; Okno analiznega orodja bo ostalo odprto in omogočeno.   
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="storeAnalysisResults">
+        <div><h2>Shrani rezultate analize kot gostujoče geoobjektne sloje</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Možnost, ki navede, ali bo sloj z rezultati, ustvarjen iz va&scaron;e analize, zbirka geoobjektov ali gostujoč geoobjektni sloj. 
+            </p>
+            <p>
+                <ul>
+                    <li>Obkljukano &ndash; Rezultati va&scaron;e analize bodo ustvarili gostujoč geoobjektni sloj in element bo ustvarjen v va&scaron;i vsebini. To je privzeto.
+                    </li>
+                    <li>Odkljukano &ndash; Rezultati va&scaron;e analize bodo ustvarili zbirko geoobjektov.     
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputCoordinateSystem">
+        <div><h2>Izhodni koordinatni sistem</h2></div>
+        <hr/>
+        <div>
+            <p>Nastavitev okolja za rastrsko analizo je uporabljena za določanje koordinatnega sistema sloja z rezultati.    
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Enako kot vnos</b> &ndash; Izhodni sloj va&scaron;e analize bo prikazan v istem koordinatnem sistemu kot vhodni sloj. To je privzeto.
+                    </li>
+                    <li> <b>Kot je navedeno</b> &ndash; Izberite koordinatni sistem za izhodne sloje va&scaron;e analize. Ko je izbrana ta možnost, kliknite ikono globusa, da izberete s seznama znanih koordinatnih sistemov, ali dodajte WKID koordinatnega sistema v določeno polje.
+                    </li>
+                    <li> <b>Sloj
+&lt;name&gt;</b> &ndash; Izberite obstoječi sloj na va&scaron;i spletni karti, ki bo uporabljen za določitev koordinatnega sistema rezultata va&scaron;e analize.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingCoordinateSystem">
+        <div><h2>Koordinatni sistem procesiranja</h2></div>
+        <hr/>
+        <div>
+            <p>Nastavitev okolja za GeoAnalytics, uporabljena za določitev koordinatnega sistema, ki jo bo uporabljala va&scaron;a analiza med izvajanjem.   
+            </p>
+            <p>Za GeoAnalytics nekatere analize zahtevajo, da se procesiranje izvede v projeciranem koordinatnem sistemu. Katero koli orodje, ki uporablja združevanje podatkov ali linearne enote, zahteva projeciran koordinatni sistem. 
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Enako kot vnos</b> &ndash; Va&scaron;a analiza bo obdelana v istem koordinatnem sistemu kot vhodni sloj. To je privzeto.
+                    </li>
+                    <li> <b>Kot je navedeno</b> &ndash; Izberite koordinatni sistem za obdelavo va&scaron;e analize. Ko je izbrana ta možnost, kliknite ikono globusa, da izberete iz seznama znanega projeciranega koordinatnega sistema, ali dodajte WKID koordinatnega sistema v določeno polje.
+                    </li>
+                    <li> <b>Sloj
+&lt;name&gt;</b> &ndash; Izberite obstoječi sloj z va&scaron;e spletne karte. Koordinatni sistem izbranega sloja bo uporabljen za določitev koordinatnega sistema, ki bo uporabljen za procesiranje va&scaron;e analize.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingExtent">
+        <div><h2>Obseg</h2></div>
+        <hr/>
+        <div>
+            <p>Nastavitev okolja, uporabljena za določitev obsega ali meje, ki bo uporabljena med izvajanjem analize. Vsi vhodni geoobjekti, ki so v celoti znotraj ali ki sekajo določen obseg, bodo uporabljeni v analizi.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Privzeto</b> &ndash; Uporablja obseg orodja.
+                    </li>
+                    <li> <b>Kot je navedeno</b> &ndash; Ročno vnesite koordinate za določitev obsega.
+                    </li>
+                    <li> <b>Sloj
+&lt;name&gt;</b> &ndash; Izberite obstoječi sloj z va&scaron;e spletne karte. Prostorski obseg izbranega sloja bo uporabljen za določanje obsega, uporabljenega za procesiranje va&scaron;e analize. 
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="snapRaster">
+        <div><h2>Magneti raster</h2></div>
+        <hr/>
+        <div>
+            <p>Pri izvajanju rastrske analize bo nastavitev okolja   <b>Magneti raster</b> prilagodila obseg izhodnega rastrskega sloja, tako da se ujema s poravnavo celic določenega sloja <b>Magneti raster</b>.
+            </p>
+        </div>
+    </div>
+    <div id="cellSize">
+        <div><h2>Velikost celice</h2></div>
+        <hr/>
+        <div>
+            <p>Pri izvajanju rastrske analize ta nastavitev okolja določa velikost ali ločljivost celic, ki bodo uporabljeni za ustvarjanje izhodnega rastrskega sloja. Privzeta izhodna ločljivost je določena z največjo velikostjo celice vhodnega rastrskega sloja.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Minimum vnosov</b> &ndash; Uporabite najmanj&scaron;o velikost celice vseh vhodnih slojev.
+                    </li>
+                    <li> <b>Maksimum vnosov</b> &ndash; Uporabite največjo velikost celice vseh vhodnih slojev. To je privzeto.
+                    </li>
+                    <li> <b>Kot je navedeno</b> &ndash; Določite &scaron;tevilsko vrednost, da nastavite velikost celice. Če je to izbrano, je privzeta vrednost 1.
+                    </li>
+                    <li> <b>Sloj &lt;name&gt;</b> &ndash; Nastavite velikost celice za izbran rastrski sloj.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="mask">
+        <div><h2>Maska</h2></div>
+        <hr/>
+        <div>
+            <p> Pri izvajanju rastrske analize uporabite nastavitev okolja <b>Maska</b> za navedbo sloja, ki se bo uporabljal za določanje va&scaron;ega interesnega območja. Samo tiste celice, ki padejo znotraj maske analize, bodo upo&scaron;tevane pri izvajanju analize.
+            </p>
+            <ul>
+                <li>Maska je lahko bodisi rastrski bodisi geoobjektni sloj.
+                </li>
+                <li>Če je maska analize raster, bodo vse celice, ki imajo vrednost, upo&scaron;tevane pri določanju maske. Celice v rastru maske, ki so brez podatkov, bodo smatrane, da so izven maske in bodo brez podatkov tudi v sloju z rezultati analize. 
+                </li>
+                <li>Če je maska analize geoobjektni sloj, bo ob izvedbi interno pretvorjena v raster. Iz tega razloga poskrbite, da boste zagotovili, da sta
+ <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank"></a> in <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank"></a> pravilno nastavljena za va&scaron;o analizo.
+                </li>
+            </ul>
+             
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>ArcGIS Data Store</h2></div>
+        <hr/>
+        <div>
+            <p>Rezultati GeoAnalytic so shranjeni v ArcGIS Data Store in prikazani kot geoobjektni sloj v  Portal for ArcGIS. V večini primerov morajo rezultati biti shranjeni v prostorsko-časovno shrambo podatkov. To je privzeto. V nadaljevanju so razlogi, zakaj bi morda želeli shraniti rezultate v relacijsko shrambo podatkov: 
+                <ul>
+                    <li>Za uporabo va&scaron;ih rezultatov pri sodelovanju portal z portalom
+                    </li>
+                    <li>Da omogočite zmožnost sinhronizacije z va&scaron;imi rezultati
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Relacijske shrambe podatkov ne smete uporabljati, če pričakujete, da se bodo va&scaron;i rezultati GeoAnalytics povečali in želite izkoristiti zmožnosti velike prostorsko-časovne shrambe podatkov za obdelavo velikih količin podatkov. 
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -67,7 +67,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Noktaları Birleştir</h2></td>
+                    <td><h2>Toplanan Noktalar</h2></td>
                     <td>
                     <img src="../images/GUID-60C59C66-3038-4D0E-8F6A-EC6C53FEAA02-web.png" class="titleImage" alt="Noktaları Birleştir">
                     </td>
@@ -185,7 +185,7 @@
     <div id="FindLocationsCategory" class="largesize">
         <h2>Konum Bulma</h2>
         <hr/>
-        <p>Bu ara&ccedil;lar, belirlediğiniz bir dizi farklı kriteri karşılayan alanları tanımlamak i&ccedil;in kullanılır. Bu kriterler &ouml;znitelik sorgularını (&ouml;rneğin boş parseller) ve mekansal (&ouml;rneğin, bir nehre bir kilometre mesafedeki t&uuml;m parseller) sorguları temel alabilir. Bulunan alanlar mevcut detaylardan (mevcut arazi parselleri gibi) se&ccedil;ilebilir ya da t&uuml;m gereksinimleri karşılayan yeni detaylar oluşturulabilir.
+        <p>Bu ara&ccedil;lar belirttiğiniz kriterleri karşılayan detayları tanımlamak veya oluşturmak i&ccedil;in kullanılır. Kriterlerin t&uuml;r&uuml;, hangi aracı kullandığınıza bağlı olacaktır. &Ouml;rneğin, kriteriniz mekansal veya nitelik sorgularına, belirli y&uuml;kseklikten g&ouml;r&uuml;n&uuml;r alanlara, belirli drenaj noktaları i&ccedil;in aşağı alanlara veya belirli trafik koşullarındaki s&uuml;r&uuml;ş s&uuml;relerine dayanabilir.
             <ul>
                 <li> <b>En İyi Tesisleri Se&ccedil;</b> kendilerine olan talebe g&ouml;re yer tahsis ederek, belirli bir amacı ger&ccedil;ekleştirmek &uuml;zere en uygun tesis konumlarını se&ccedil;er.
                 </li>
@@ -195,16 +195,18 @@
                 </li>
                 <li> <b>Yeni Konumlar T&uuml;ret</b>, &ccedil;alışma alanınızdaki konumlardan, bir dizi kriteri karşılayan yeni alanlar &uuml;retir.
                 </li>
+                <li class="OnlineOnly"> <b>Ağırlık Merkezi Bul</b> girdi detayları i&ccedil;in temsili merkezi (k&uuml;tle merkezi) bulur. 
+                </li>
                 <li> <b>Mevcut Konumları Bul</b>, katmanda bir dizi kriteri karşılayan mevcut alanları arar.
                 </li>
                 <li> <b>Benzer Konumları Bul</b> belirlediğiniz kriterlere g&ouml;re bir ya da daha fazla referans konuma en benzeyen konumları bulur.
                 </li>
-                <li class="PortalOnly"> <b>Tablodan Alınan Coğrafi Kod Konumları</b> tablodan aldığı adresleri koordinatlara d&ouml;n&uuml;şt&uuml;r&uuml;r.
+                <li class="PortalOnly"> <b>Tablodan Alınan Coğrafi Kod Konumları</b> tablodan aldığı adresleri koordinatlara d&ouml;n&uuml;şt&uuml;r&uuml;r. 
                 </li>
                 <li> <b>Akış Y&ouml;n&uuml;nde İzle</b>, belirttiğiniz konumlardan aşağı y&ouml;nl&uuml; akış yollarını belirler.
                 </li>
             </ul>
-             
+            
         </p>
         <p> 
         </p>
@@ -266,6 +268,21 @@
             </table>
 <hr/>
             <p>&Ccedil;alışma alanınızda belirlediğiniz bir dizi kritere uygun yeni detaylar oluşturur. Bu kriterler &ouml;znitelik sorgularını (&ouml;rneğin boş parseller) ve mekansal (&ouml;rneğin, bir nehre 1 mil mesafedeki t&uuml;m parseller) sorguları temel alabilir. 
+            </p>
+            <br/>
+        </div>
+        <div id="FindCentroidsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Ağırlık Merkezi Bul</h2></td>
+                    <td>
+                    <img src="../images/GUID-75D9AF75-68C3-48BF-8062-D5499BD06978-web.png" class="titleImage" alt="Ağırlık Merkezi Bul">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Girilen her &ccedil;ok noktalı, &ccedil;izgi veya alan detayı i&ccedil;in temsili merkezi (k&uuml;tle merkezi) bulur.
             </p>
             <br/>
         </div>
@@ -457,7 +474,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Tampon Bölge Oluştur</h2></td>
+                    <td><h2>Tampon Bölge Oluşturma</h2></td>
                     <td>
                     <img src="../images/GUID-7F4A8E4D-42E3-41C1-9238-16619CE65079-web.png" class="titleImage" alt="Tampon Oluştur">
                     </td>

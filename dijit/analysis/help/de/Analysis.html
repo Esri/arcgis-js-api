@@ -184,7 +184,7 @@
     <div id="FindLocationsCategory" class="largesize">
         <h2>Positionen suchen</h2>
         <hr/>
-        <p>Mithilfe dieser Werkzeuge lassen sich Fl&auml;chen identifizieren, die verschiedenen von Ihnen definierten Kriterien entsprechen. Diese Kriterien k&ouml;nnen auf Attributabfragen (beispielsweise unbebaute Flurst&uuml;cke) und r&auml;umlichen Abfragen (beispielsweise innerhalb einer Entfernung von einem Kilometer von einem Fluss) basieren. Die gefundenen Fl&auml;chen k&ouml;nnen aus vorhandenen Features (wie vorhandene Flurst&uuml;cke) ausgew&auml;hlt oder es k&ouml;nnen neue Features dort erstellt werden, wo alle Anforderungen erf&uuml;llt sind.
+        <p>Mithilfe dieser Werkzeuge lassen sich Features, die den von Ihnen angegebenen Kriterien entsprechen, identifizieren oder erstellen. Dabei h&auml;ngt der Typ der Kriterien vom verwendeten Werkzeug ab. Zum Beispiel k&ouml;nnen Ihre Kriterien auf r&auml;umlichen oder Attributabfragen, auf Gebieten, die von einer bestimmten H&ouml;he aus sichtbar sind, auf Gebieten, die hinter bestimmen Drainagepunkten flussabw&auml;rts liegen, oder auf Fahrzeiten bei bestimmten Verkehrsbedingungen basieren.
             <ul>
                 <li>Mit  <b>Optimale Einrichtungen ausw&auml;hlen</b> werden die besten Standorte f&uuml;r Einrichtungen ausgew&auml;hlt. Dabei werden Standorte mit einem Bedarf den Einrichtungen so zugewiesen, dass eine spezifische Zielsetzung erf&uuml;llt wird.
                 </li>
@@ -195,16 +195,18 @@
                 <li> <b>Neue Positionen ableiten</b> erstellt neue Fl&auml;chen aus Positionen des
 Untersuchungsgebiets, die eine Reihe von Kriterien erf&uuml;llen.
                 </li>
+                <li class="OnlineOnly"> <b>Schwerpunkte suchen</b> sucht den repr&auml;sentativen Mittelpunkt (Schwerpunkt) f&uuml;r Eingabe-Features. 
+                </li>
                 <li>Mit der Option  <b>Vorhandene Positionen suchen</b> werden vorhandene Fl&auml;chen in einem Layer gesucht, die eine Reihe von Kriterien erf&uuml;llen.
                 </li>
                 <li>Mit dem neuen Werkzeug  <b>&Auml;hnliche Positionen suchen</b> ermitteln Sie Positionen, die basierend auf den angegebenen Kriterien mindestens einer Referenzposition am &auml;hnlichsten sind.
                 </li>
-                <li class="PortalOnly">Mit  <b>Positionen aus Tabelle geokodieren</b> werden Adressen aus einer Tabelle in Koordinaten umgewandelt.
+                <li class="PortalOnly">Mit  <b>Positionen aus Tabelle geokodieren</b> werden Adressen aus einer Tabelle in Koordinaten umgewandelt. 
                 </li>
                 <li> <b>Flussabw&auml;rts verfolgen</b> ermittelt von den angegebenen Positionen aus die Flie&szlig;richtungen flussabw&auml;rts.
                 </li>
             </ul>
-             
+            
         </p>
         <p> 
         </p>
@@ -266,6 +268,21 @@ Untersuchungsgebiets, die eine Reihe von Kriterien erf&uuml;llen.
             </table>
 <hr/>
             <p>Mit dieser Funktion werden neue Features im Untersuchungsgebiet erstellt, die den angegebenen Kriterien entsprechen. Diese Kriterien k&ouml;nnen auf Attributabfragen (beispielsweise unbebaute Flurst&uuml;cke) und r&auml;umlichen Abfragen (beispielsweise innerhalb einer Entfernung von einem Kilometer von einem Fluss) basieren. 
+            </p>
+            <br/>
+        </div>
+        <div id="FindCentroidsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Schwerpunkte suchen</h2></td>
+                    <td>
+                    <img src="../images/GUID-75D9AF75-68C3-48BF-8062-D5499BD06978-web.png" class="titleImage" alt="Schwerpunkte suchen">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Sucht den repr&auml;sentativen Mittelpunkt (Schwerpunkt) f&uuml;r jedes Multipoint-, Linien- oder Fl&auml;chen-Feature.
             </p>
             <br/>
         </div>

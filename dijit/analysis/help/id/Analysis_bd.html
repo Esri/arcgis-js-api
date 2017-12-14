@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="bdToolbox">
-        <p>Analitik Big Data mendistribusikan pekerjaan analitik di seluruh ArcGIS GeoAnalytics Server Anda. Hal ini memungkinkan Anda untuk menganalisis lebih banyak data dan lebih cepat dengan memanfaatkan kekuatan beberapa mesin. Alat berikut kini sudah tersedia:
+        <p>GeoAnalytics mendistribusikan pekerjaan analitik di seluruh ArcGIS GeoAnalytics Server Anda. Hal ini memungkinkan Anda untuk menganalisis lebih banyak data dan lebih cepat dengan memanfaatkan kekuatan beberapa mesin. Alat berikut kini sudah tersedia:
             <ul>
                 <li> <b>Titik Agregat</b>
                 </li>
@@ -53,6 +53,8 @@
                 </li>
                 <li> <b>Ringkas di Dalam</b>
                 </li>
+                <li> <b>Deteksi Insiden</b>
+                </li>
                 <li> <b>Cari Lokasi Serupa</b>
                 </li>
                 <li> <b>Hitung Kepadatan</b>
@@ -63,10 +65,14 @@
                 </li>
                 <li> <b>Salin ke Data Store</b>
                 </li>
+                <li> <b>Hitung Kolom</b>
+                </li>
+                <li> <b>Lakukan Geocode Lokasi dari Tabel</b>
+                </li>
             </ul>
             
         </p>
-        <p>Big Data Analytics berfokus pada menganalisis data besar dengan menekankan pola spasial maupun temporal. 
+        <p>GeoAnalytics berfokus pada menganalisis data besar dengan menekankan pola spasial maupun temporal. 
         </p>
     </div>
     <div id="SummarizeDataCategory" class="regularsize">
@@ -125,11 +131,11 @@
 <hr/>
             <p>Menggunakan feature layer atau data tabular, Anda dapat menggabungkan fitur dan catatan berdasarkan hubungan khusus antara layer input atau tabel.  Gabungan akan ditentukan oleh hubungan spasial, temporal, dan atribut, dan statistik ringkasan dapat dihitung secara opsional.  
             </p>
-            <p> Contoh
+            <p>Contoh
                 <ul>
                     <li>Dengan mengetahui lokasi titik kejadian kejahatan dengan waktu, gabungkan data kejahatan pada dirinya dengan menentukan hubungan spasial kejahatan di dalam kisaran 1 kilometer antara satu sama lainnya dan yang terjadi dalam waktu 1 jam dari setiap kejadian untuk menentukan apakah ada urutan kejahatan yang saling berdekatan dalam ruang dan waktu.
                     </li>
-                    <li> Dengan mengetahui tabel Kode Pos dengan informasi demografis dan fitur area yang mewakili bangunan residensial, gabungkan informasi demografis pada kediaman sehingga setiap kediaman kini memiliki informasi tersebut.
+                    <li>Dengan mengetahui tabel Kode Pos dengan informasi demografis dan fitur area yang mewakili bangunan residensial, gabungkan informasi demografis pada kediaman sehingga setiap kediaman kini memiliki informasi tersebut.
                     </li>
                 </ul>
                 
@@ -153,7 +159,7 @@
                 <ul>
                     <li>Dengan mengetahui lokasi titik dan waktu pengukuran badai, hitung kecepatan angin rata-rata dan tekanan angin maksimal dari badai tersebut.
                     </li>
-                    <li>Temukan pendapatan bulanan tertinggi dan terendah untuk lokasi waralaba dengan menggunakan bin 100 km.
+                    <li>Gunakan pengukuran GPS kapal, untuk merekonstruksi alur kapal sebagai garis.
                     </li>
                 </ul>
                 
@@ -166,7 +172,7 @@
                 <tbody><tr>
                     <td><h2>Ringkas Atribut</h2></td>
                     <td>
-                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="Ringkas Atribut">
+                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="Ringkas Atributdiagram">
                     </td>
                 </tr></tbody>
             </table>
@@ -208,17 +214,64 @@
             </p>
             <br/>
         </div>
-    <div id="FindLocationsCategory" class="smallsize">
+    <div id="FindLocationsCategory" class="regularsize">
         <h2>Temukan Lokasi</h2>
         <hr/>
         <p>Alat ini digunakan untuk mengidentifikasi area yang memenuhi sejumlah kriteria yang Anda tetapkan.   
             <ul>
-                <li> <b>Temukan Lokasi Serupa</b> mencari lokasi yang paling mirip dengan satu atau beberapa lokasi rujukan berdasarkan kriteria yang Anda tetapkan.
+                <li> <b>Deteksi Insiden</b> berfungsi dengan layer diaktifkan waktu untuk menentukan fitur mana yang memenuhi kondisi yang ditentukan.
+                </li>
+                <li> <b>Lokasi Geocode dari Tabel</b> mengubah alamat menjadi koordinat.
+                </li>
+                <li> <b>Temukan Lokasi Serupa</b> mencari lokasi yang paling mirip dengan satu atau beberapa lokasi referensi berdasarkan kriteria yang Anda tetapkan.
                 </li>
             </ul>
             
         </p>
     </div>
+        <div id="DetectIncidentsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Deteksi Insiden</h2></td>
+                    <td>
+                    <img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" class="titleImage" alt="Deteksi Insiden">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> <img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Deteksi Insiden">
+            </p>
+            <p>Alat ini bekerja dengan layer titik, garis, area, atau tabel yang diaktifkan waktu yang memakili instan dalam waktu.   Dengan menggunakan fitur yang disusun berurutan, yang disebut jalur, alat ini menentukan fitur mana yang merupakan insiden pilihan. Insiden ditentukan oleh kondisi yang Anda tentukan. 
+            </p>
+            <p>Contoh
+                <ul>
+                    <li>Mendeteksi pengukuran badai yang merupakan badai Kategori 4 berdasarkan atribut kecepatan angin.
+                    </li>
+                    <li>Menggunakan pengukuran GPS gerakan kapal dengan kolom yang mewakili kecepatan kapal, temukan pengukuran yang lebih besar dari 1,5 kali lima pengukuran sebelumnya.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="GeocodeLocationsfromTableTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Lokasi Geocode dari Tabel</h2></td>
+                    <td>
+                    <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" class="titleImage" alt="Lokasi Geocode dari Tabel">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" alt="Lokasi Geocode dari Tabel">
+            </p>
+            <p>Mengubah alamat menjadi koordinat. Gunakan alat ini pada tabel berbagi file big data.
+            </p>
+            <br/>
+        </div>
         <div id="FindSimilarLocationsTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -232,7 +285,7 @@
 <hr/>
             <p>Berdasarkan pada kriteria yang Anda tentukan, temukan lokasi serupa dengan mengukur kesamaan lokasi pada layer pencarian dengan satu atau lebih lokasi rujukan. 
             </p>
-            <p> Contoh
+            <p>Contoh 
                 <ul>
                     <li>Temukan sepuluh toko yang paling serupa dengan memeriksa jumlah karyawan dan penjualan tahunan.
                     </li>
@@ -262,20 +315,20 @@
                 <tbody><tr>
                     <td><h2>Hitung Kepadatan</h2></td>
                     <td>
-                    <img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" class="titleImage" alt="Calculate Density">
+                    <img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" class="titleImage" alt="Hitung Kepadatan">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
             <p>Alat Hitung Kepadatan membuat peta kepadatan dari fitur titik dengan menyebarkan jumlah beberapa fenomena yang dikenal (diwakilkan sebagai atribut dari titik) lintas peta. Hasilnya adalah layer area yang mewakili kepadatan.
             </p>
-            <p> Contoh
+            <p>Contoh
                 <ul>
                     <li>Menghitung kepadatan rumah sakit dalam sebuah daerah.  Layer hasil akan menampilkan area dengan aksesibilitas tinggi dan rendah terhadap rumah sakit, dan informasi ini dapat digunakan untuk memutuskan tempat rumah sakit baru seharusnya dibangun.
                     </li>
                     <li>Mengenali area yang berisiko tinggi terjadi kebakaran hutan berdasarkan lokasi historis kebakaran hutan.
                     </li>
-                    <li>Menentukan letak masyarakat yang jauh dari jalan raya utama untuk merencanakan tempat jalan baru seharusnya dibangun.
+                    <li>Menemukan masyarakat yang jauh dari jalan raya utama untuk merencanakan lokasi pembangunan jalan baru.
                     </li>
                 </ul>
                 
@@ -328,7 +381,7 @@
 <hr/>
             <p>Buffer adalah sebuah area yang mencakup jarak dari fitur titik, garis, atau poligon yang diberikan.
             </p>
-            <p> Contoh
+            <p>Contoh
                 <ul>
                     <li>Menggunakan fitur sungai linear, buffer setiap sungai dengan 50 kali lebar sungai untuk menentukan batasan riparian yang diusulkan.
                     </li>
@@ -344,7 +397,9 @@
         <hr/>
         <p>Semua alat ini digunakan untuk mengelola data geografis sehari-hari dan tabular.
             <ul>
-                <li> <b>Salin ke Penyimpanan Data</b> menyalin data ke ArcGIS Data Store Anda dan membuat layer di GIS web Anda.
+                <li> <b>Hitung Kolom</b> membuat kolom baru atau mengubah kolom yang sudah ada serta membuat layer baru di konten Anda.
+                </li>
+                <li> <b>Salin ke Data Store</b> menyimpan data ke ArcGIS Data Store Anda dan membuat layer di konten Anda.
                 </li>
             </ul>
             
@@ -361,13 +416,35 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Salinan input feature layer atau tabel ke ArcGIS Data Store dan buat layer di GIS web Anda.
-            </p>
-            <p> Contoh
+            <p>Menyalin input feature layer atau tabel ke  ArcGIS Data Store dan membuat layer di konten Anda dalam  ArcGIS Enterprise. </p>
+            <p>Contoh
                 <ul>
-                    <li> Salin kumpulan <code>.csv</code>&nbsp;file big data yang dibagikan ke penyimpanan data spatiotemporal untuk visualisasi.
+                    <li>Salin kumpulan  <code>.csv</code> file big data yang dibagikan ke data store spatiotemporal untuk visualisasi.
                     </li>
-                    <li>Salin fitur di jangkauan peta saat ini yang disimpan di penyimpanan data spatiotemporal ke penyimpanan data relasional.
+                    <li>Salin fitur di jangkauan peta saat ini yang disimpan di data store spatiotemporal ke data store relasional.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="CalculateFieldTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Hitung Kolom</h2></td>
+                    <td>
+                    <img src="../images/GUID-059C9BE7-7B00-49C8-9917-B0EAEA3DA19D-web.png" class="titleImage" alt="Hitung Kolom">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Menghitung nilai untuk kolom baru atau yang sudah ada dan membuat layer di konten Anda dalam  ArcGIS Enterprise. </p>
+            <p>Contoh
+                <ul>
+                    <li>Ubah kolom yang sudah ada yang bernama  <i>total</i> menjadi jumlah pendapatan dari kolom <i>total_2016</i>, <i>total_2017</i>, dan <i>total_2018</i>.
+                    </li>
+                    <li>Buat kolom baru untuk mengkategorisasikan tingkat bahaya berdasarkan nilai kolom seperti  <i>kecepatan angin</i> dan <i>polutan</i>.
                     </li>
                 </ul>
                 

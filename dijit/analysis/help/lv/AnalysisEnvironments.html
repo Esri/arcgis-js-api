@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Portāla analīzes darba vides  iestatījumi</h2><p/>
+        <h2>Portāla analīzes darba vides iestatījumi</h2><p/>
         <h2></h2>
         <hr/>
     <p> Portāla analīzes darba vides iestatījumi Portal for ArcGIS un  ArcGIS Online. 
@@ -71,7 +71,7 @@
         <hr/>
         <div>
             
-            <p>Opcija paturēt analīzes dialoglodziņu atvērtu un aktivizētu, kamēr rīkā notiek apstrāde.     Izmantojot &scaron;o iestatījumu, varēsiet vienkār&scaron;i modificēt savus analīzes parametrus, kamēr iepriek&scaron;ējais analīzes uzdevums turpinās darboties.  Analīze ir iteratora process, tāpēc, ja rīka dialoglodziņ&scaron; paliks atvērts, jūs varēsiet vienkār&scaron;i mainīt parametrus un atkārtoti palaist analīzi.
+            <p>Opcija paturēt analīzes dialoglodziņu atvērtu un aktivizētu, kamēr rīkā notiek apstrāde.     Izmantojot &scaron;o iestatījumu, varēsiet vienkār&scaron;i modificēt savus analīzes parametrus, kamēr iepriek&scaron;ējais analīzes uzdevums turpinās darboties.  Analīze ir iteratīvs process, tāpēc, ja rīka dialoglodziņ&scaron; paliks atvērts, jūs varēsiet vienkār&scaron;i mainīt parametrus un atkārtoti palaist analīzi.
             </p>
             <p>
                 <ul>
@@ -85,17 +85,17 @@
         </div>
     </div>
     <div id="storeAnalysisResults">
-        <div><h2>Glabāt analīžu rezultātus kā elementu pakalpojumus</h2></div>
+        <div><h2>Saglabāt analīzes rezultātus kā viesotu elementu slāņus</h2></div>
         <hr/>
         <div>
             
-            <p>Opcija norādīt, vai jūsu analīzes rezultāts tiks izveidots kā elementu slānis vai elementu kopums.
+            <p>Iespēja norādīt, vai no jūsu analīzes izveidotais rezultātu slānis būs elementu kolekcija vai viesots elementu slānis. 
             </p>
             <p>
                 <ul>
-                    <li>Atzīmēta&nbsp;&mdash; no jūsu analīzes rezultātiem tiks izveidots elementu slānis un jūsu saturā tiks izveidota vienība. Tā ir noklusējuma vērtība.
+                    <li>Atzīmēta&nbsp;&mdash; jūsu analīzes rezultāti izveidos viesotu elementu slāni un jūsu saturā tiks izveidota vienība. Tā ir noklusējuma vērtība.
                     </li>
-                    <li>Neatzīmēta&nbsp;&mdash; no jūsu analīzes rezultātiem tiks izveidots elementu kopums.    Elementu kopumi tiek glabāti jūsu tīmekļa kartē.
+                    <li>Neatzīmēta&nbsp;&mdash; no jūsu analīzes rezultātiem tiks izveidots elementu kopums.     
                     </li>
                 </ul>
                 
@@ -112,7 +112,7 @@
                 <ul>
                     <li> <b>Atbilsto&scaron;a ievadei</b>&nbsp;&mdash; jūsu analīzes rezultātā tiks izmantota tāda pati koordinātu sistēma kā ievadē. Tā ir noklusējuma vērtība.
                     </li>
-                    <li> <b>Kā norādīta</b>&nbsp;&mdash; izvēlieties savas analīzes rezultātu koordinātu sistēmu.   Ja ir izvēlēta &scaron;ī opcija, noklik&scaron;ķiniet uz globusa ikonas, lai izvēlētos no zināmo koordinātu sistēmu saraksta,, vai pievienojiet telpiskās atskaites WKID norādītajā lodziņā.
+                    <li> <b>Kā norādīta</b>&nbsp;&mdash; izvēlieties savas analīzes rezultātu koordinātu sistēmu.   Ja ir atzīmēta &scaron;ī opcija, noklik&scaron;ķiniet uz globusa ikonas, lai izvēlētos no zināmo koordinātu sistēmu saraksta, vai norādītajā lodziņā pievienojiet telpiskās atskaites WKID.
                     </li>
                     <li> <b>Slānis
 &lt;nosaukums&gt;</b>&nbsp;&mdash; izvēlieties eksistējo&scaron;u slāni savā tīmekļa kartē. &Scaron;is slānis tiks izmantots, lai noteiktu jūsu analīzes rezultāta koordinātu sistēmu.
@@ -134,7 +134,7 @@
                 <ul>
                     <li> <b>Atbilsto&scaron;a ievadei</b>&nbsp;&mdash; jūsu analīze tiks apstrādāta tāda pa&scaron;ā koordinātu sistēmā kā ievade. Tā ir noklusējuma vērtība.
                     </li>
-                    <li> <b>Kā norādīta</b>&nbsp;&mdash; izvēlieties koordinātu sistēmu, kurā tiks apstrādāta jūsu analīze.   Ja ir atlasīta &scaron;ī opcija, noklik&scaron;ķiniet uz globusa ikonas, lai izvēlētos no zināmo projicēto koordinātu sistēmu saraksta,, vai pievienojiet telpiskās atskaites WKID norādītajā lodziņā.
+                    <li> <b>Kā norādīta</b>&nbsp;&mdash; izvēlieties koordinātu sistēmu, kurā tiks apstrādāta jūsu analīze.   Ja ir atzīmēta &scaron;ī opcija, noklik&scaron;ķiniet uz globusa ikonas, lai izvēlētos no zināmo projicēto koordinātu sistēmu saraksta, vai norādītajā lodziņā pievienojiet telpiskās atskaites WKID.
                     </li>
                     <li> <b>Slānis
 &lt;nosaukums&gt;</b>&nbsp;&mdash; izvēlieties eksistējo&scaron;u slāni no savas tīmekļa kartes.  Izvēlētā slāņa koordinātu sistēma tiks lietota, lai noteiktu koordinātu sistēmu, kas tiks izmantota, lai apstrādātu jūsu analīzi.
@@ -184,10 +184,9 @@
                     </li>
                     <li> <b>Ievažu maksimālā vērtība</b>&nbsp;&mdash; izmantojiet visu ievades slāņu lielāko &scaron;ūnu izmēru. Tā ir noklusējuma vērtība.
                     </li>
-                    <li> <b>Kā norādīts</b>&nbsp;&mdash; norādiet ciparu vērtību, lai iestatītu &scaron;ūnu izmēru. Ja atlasīsiet &scaron;o iespēju, noklusējuma vērtība būs&nbsp;1,
+                    <li> <b>Kā norādīts</b>&nbsp;&mdash; norādiet ciparu vērtību, lai iestatītu &scaron;ūnu izmēru. Ja izvēlaties &scaron;o iespēju, noklusējuma vērtība ir&nbsp;1,
                     </li>
-                    <li> <b>Slānis &lt;nosaukums&gt;</b>&nbsp;&mdash; iestatiet
-&scaron;ūnu izmēru atbilsto&scaron;i izvēlētajam rastra slānim.
+                    <li> <b>Slānis &lt;nosaukums&gt;</b>&nbsp;&mdash; izvēlēta &scaron;ūnu izmēru iestatī&scaron;ana atbilsto&scaron;i izvēlētajam rastra slānim.
                     </li>
                 </ul>
                 
@@ -216,11 +215,11 @@
         <div><h2>ArcGIS datu krātuve</h2></div>
         <hr/>
         <div>
-            <p>GeoAnalytic rezultāti tiek glabāti ArcGIS datu krātuvē un parādīts kā elementu slānis   Portal for ArcGIS. Vairumā gadījumu rezultāti ir jāglabā telpas un laika datu krātuvē. Tā ir noklusējuma vērtība. Iemesli, kādēļ jūs varētu vēlēties rezultātus glabāt  saistītajā datu krātuvē: 
+            <p>GeoAnalytic rezultāti tiek glabāti ArcGIS datu krātuvē un parādīts kā elementu slānis   Portal for ArcGIS. Vairumā gadījumu rezultāti ir jāglabā telpas un laika datu krātuvē. Tā ir noklusējuma vērtība. Iemesli, kādēļ rezultātus vajadzētu glabāt saistītajā datu krātuvē: 
                 <ul>
-                    <li>Lai izmantotu rezultātus portāla-sadarbībā ar-portālu
+                    <li>Lai rezultātus izmantotu starpportālu sadarbībā
                     </li>
-                    <li>Lai aktivizētu sinhronizācijas iespējas ar jūsu rezultātiem
+                    <li>Lai aktivizētu sinhronizācijas iespējas ar rezultātiem
                     </li>
                 </ul>
                 

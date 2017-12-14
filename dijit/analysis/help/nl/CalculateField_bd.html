@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Bereken veld</h2><p/>
+        <h2><img src="../images/GUID-059C9BE7-7B00-49C8-9917-B0EAEA3DA19D-web.png" alt="Bereken veld"></h2>
+        <hr/>
+    <p>Deze tool werkt met een invoerlaag om waarden voor een nieuw of bestaand veld te berekenen. Bouw een Arcade-expressie om de waarden te berekenen waarmee functies worden gevuld. Als uw gegevens tijdgeschakeld en het type tijd direct zijn, kunt u optioneel circuitbewuste uitdrukkingen bouwen.
+    </p>
+    <p>Stel dat u een bestaand veld wilt wijzigen met de naam  <i>TotalSales</i>. U wilt dat het veld wordt weergegeven door de som van de totale verkopen in 2016 en 2017. Als u die velden in de uitdrukking gebruikt, berekent u de veldwaarde als <pre>$feature[&quot;Sales2016&quot;] + $feature[&quot;Sales2017&quot;]</pre>.
+    </p>
+    <p>Een ander voorbeeld: Stel dat u GPS-metingen hebt die de locatie, tijd, busnummer en snelheid van de bussen in een stad registreren. We willen een nieuw veld aanmaken met de naam  <i>SpeedFrom3</i> dat de snelheid berekent van de laatste 3 geregistreerde GPS-metingen voor elke functie. Voor deze berekening zouden we een circuitbewuste berekening gebruiken, waarbij het circuit een bus is die wordt aangeduid door het busnummer. De berekening om de gemiddelde snelheid van de vorige 3 tijdstappen en de huidige tijdstap te bepalen is <pre>average($track.field[&quot;speed&quot;].history(-4))</pre>.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Kies een laag om veldwaarden voor te berekenen</h2></div>
+        <hr/>
+        <div>
+            <p>De punten, lijnen, gebieden of tabel waarvoor veldwaarden moeten worden berekend.  
+            </p>
+            <p>Naast het kiezen van een laag van uw kaart, kunt u kiezen voor  <b>Blader door lagen</b> aan de onderkant van de drop-downlijst om in uw content te zoeken naar een groot gedeeld databestand of objectlaag.
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>Bereken veldwaarden voor het veld</h2></div>
+        <hr/>
+        <div>
+            <p>Het nieuwe of bestaande veld waarvan de waarden zijn berekend en het gegevenstype van dat veld. Als u waarden berekent voor een veld dat al bestaat, hoeft u het gegevenstype niet aan te passen. 
+            </p>
+        </div>
+    </div>
+    <div id="expression">
+        <div><h2>Bouw een expressievoorwaarde om het begin van een incident te impliceren</h2></div>
+        <hr/>
+        <div>
+            <p>Voeg een expressie toe met behulp van de expressiebouwer om veldwaarden te berekenen. 
+            </p>
+            <p>Stel dat we de waarden van een veld willen toevoegen met de naam  <i>inkomen</i>  en <i>bonus</i>. Om dit te doen, voegt u de expressie <code>$feature[&quot;inkomen&quot;] + $feature[&quot;bonus&quot;] toe </code>.
+            </p>
+        </div>
+    </div>
+    <div id="trackInfo">
+        <div><h2>De expressie is trackbewust</h2></div>
+        <hr/>
+        <div>
+            <p>Geef aan of uw expressie trackbewust is. Een trackbewuste expressie bevat een opmaak zoals  <pre>$track.field[&quot;fieldname&quot;].history(...)</pre>. Trackbewuste expressies vereisen velden om individuele traceringen te identificeren. Traceringen kunnen worden samengesteld uit punten, lijnen, gebieden of tabellen en vereisen alleen dat de invoer een trackingsnummer heeft en dat de gegevens tijdgeschakeld is en ingesteld op tijdtype direct.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Resultaat laagnaam</h2></div>
+        <hr/>
+        <div>
+            <p> Dit is de naam van de kaartlaag die in <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd.  De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, zal de tool falen.
+            </p>
+            <p>Als u in de vervolgkeuzelijst  <b>Resultaat opslaan</b> gebruikt, kunt u de naam opgeven van een map in <b>Mijn Content</b> waarin het resultaat wordt opgeslagen.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

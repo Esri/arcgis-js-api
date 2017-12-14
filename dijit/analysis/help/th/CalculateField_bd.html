@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>การคำนวณสนาม</h2><p/>
+        <h2><img src="../images/GUID-059C9BE7-7B00-49C8-9917-B0EAEA3DA19D-web.png" alt="การคำนวณสนาม"></h2>
+        <hr/>
+    <p>เครื่องมือนี้จะทำงานกับชั้นข้อมูลอินพุตเพื่อคำนวณค่าสำหรับฟิลด์ใหม่หรือฟิลด์ที่มีอยู่ สร้างสมการอาเคดเพื่อคำนวณค่าที่จะใช้แสดงฟีเจอร์ หากข้อมูลของคุณเปิดใช้เวลาแล้ว และเป็นเวลาประเภททันที คุณอาจเลือกสร้างสมการที่ติดตามได้
+    </p>
+    <p>ตัวอย่างเช่น สมมุติว่าคุณต้องการแก้ไขฟิลด์ที่มีอยู่ที่ชื่อ  <i>TotalSales</i> คุณต้องการให้ฟิลด์นี้แทนที่ด้วยผลรวมของยอดขายในปี 2016 และ 2017 เมื่อใช้ฟิลด์เหล่านั้นในสมการ คุณจะสามารถคำนวณค่าของฟิลด์ในรูปของ <pre>$feature[&quot;Sales2016&quot;] + $feature[&quot;Sales2017&quot;]</pre>
+    </p>
+    <p>หรืออีกตัวอย่างหนึ่ง สมมุติว่าคุณมีการวัดจีพีเอสที่บันทึกสถานที่ เวลา รหัสรถประจำทาง และความเร็วของรถประจำทางในเมือง เราต้องการสร้างฟิลด์ใหม่ที่ชื่อ  <i>SpeedFrom3</i> ที่จะถัวเฉลี่ยความเร็วของการวัดจีพีเอสที่บันทึกไว้ 3 รายการล่าสุดสำหรับแต่ละฟีเจอร์ สำหรับการคำนวณนี้ เราจะใช้การคำนวณการติดตาม โดยการติดตามคือรถประจำทางที่แสดงด้วยรหัสรถประจำทาง    การคำนวณจะตรวจสอบความเร็วเฉลี่ยของช่วงขั้นเวลา 3 ช่วงก่อนหน้า และช่วงขั้นเวลาปัจจุบันคือ <pre>average($track.field[&quot;speed&quot;].history(-4))</pre>
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>เลือกชั้นข้อมูลเพื่อคำนวณค่าฟิลด์สำหรับ</h2></div>
+        <hr/>
+        <div>
+            <p>จุด เส้น พื้นที่หรือตารางที่จะมีค่าฟิลด์ที่คำนวณไว้  
+            </p>
+            <p>นอกเหนือจากการเลือกชั้นข้อมูลจากแผนที่คุณสามารถเลือก <b>เบราว์เลเยอร์</b> ที่ด้านล่างของรายการแบบเลื่อนลงเพื่อเรียกดูเนื้อหาของคุณสำหรับชุดข้อมูลชุดข้อมูลข้อมูลขนาดใหญ่หรือฟีเจอร์เลเยอร์
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>คำนวณค่าฟิลด์สำหรับฟิลด์</h2></div>
+        <hr/>
+        <div>
+            <p>ฟิลด์ใหม่หรือฟิลด์ที่มีอยู่ที่จะมีค่าที่คำนวณไว้ และประเภทข้อมูลของฟิลด์นั้น หากคุณกำลังคำนวณค่าของฟิลด์ที่มีอยู่แล้ว คุณไม่จำเป็นต้องจับคู่ประเภทข้อมูล 
+            </p>
+        </div>
+    </div>
+    <div id="expression">
+        <div><h2>สร้างเงื่อนไข เพื่อบ่งบอกถึงจุดเริ่มต้นของเหตุการณ์</h2></div>
+        <hr/>
+        <div>
+            <p>เพิ่มสมการโดยใช้ตัวสร้างสมการเพื่อคำนวณค่าของฟิลด์ 
+            </p>
+            <p>ตัวอย่างเช่น สมมุติว่าเราต้องการเพิ่มค่าของฟิลด์ที่ชื่อ  <i>income</i>  และ <i>bonus</i> ซึ่งเราทำได้ด้วยการเพิ่มสมการ <code>$feature[&quot;income&quot;] + $feature[&quot;bonus&quot;] </code>
+            </p>
+        </div>
+    </div>
+    <div id="trackInfo">
+        <div><h2>สมการนี้มีความสำคัญต่อการติดตาม</h2></div>
+        <hr/>
+        <div>
+            <p>ระบุว่าสมการของคุณเป็นการติดตามหรือไม่ สมการการติดตามจะรวมการจัดรูปแบบ อย่างเช่น       <pre>$track.field[&quot;fieldname&quot;].history(...)</pre> สมการการติดตามต้องใช้ฟิลด์เพื่อระบุถึงการติดตามแต่ละรายการ การติดตามอาจประกอบด้วยจุด เส้น พื้นที่หรือตาราง และกำหนดเพียงแค่ว่าให้อินพุตมีตัวระบุการติดตาม และข้อมูลเป็นแบบเปิดใช้เวลาของประเภทเวลาทันที
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>ชื่อของชั้นข้อมูลผลลัพธ์</h2></div>
+        <hr/>
+        <div>
+            <p> เป็นชื่อชั้นข้อมูลที่จะถูกสร้างใน <b>เนื้อหาของฉัน</b> และเพิ่มเข้าไปในแผนที่ ชื่อเริ่มต้นจะขึ้นอยู่กับชื่อเครื่องมือและชื่อชั้นข้อมูลอินพุต ถ้าชั้นข้อมูลมีอยู่แล้วเครื่องมือจะล้มเหลว
+            </p>
+            <p>ใช้  <b>บันทึกผลลัพธ์ใน</b> รายการตัวเลือก เพื่อระบุชื่อของโฟล์เดอร์ใน <b>เนื้อหาของฉัน</b> เมื่อบันทึกผล
+            </p>
+        </div>
+    </div>
+</div>
+</html>

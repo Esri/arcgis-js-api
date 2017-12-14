@@ -42,12 +42,11 @@
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Tổng kết Thuộc tính</h2><p/>
-        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Tổng kết Thuộc t&iacute;nh"></h2>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Sơ đồ Tổng kết Thuộc t&iacute;nh"></h2>
         <hr/>
-    <p>C&ocirc;ng cụ n&agrave;y tổng kết tất cả c&aacute;c gi&aacute; trị ph&ugrave; hợp trong một hoặc nhiều trường v&agrave; t&iacute;nh to&aacute;n số liệu thống k&ecirc; tr&ecirc;n ch&uacute;ng. Số liệu thống k&ecirc; cơ bản nhất l&agrave; số đối tượng đ&atilde; được tổng kết c&ugrave;ng nhau, tuy nhi&ecirc;n bạn vẫn c&oacute; thể t&iacute;nh to&aacute;n những số liệu thống k&ecirc; n&acirc;ng cao hơn. 
-
+    <p> C&ocirc;ng cụ n&agrave;y tổng kết tất cả c&aacute;c gi&aacute; trị ph&ugrave; hợp trong một hoặc nhiều trường v&agrave; t&iacute;nh to&aacute;n số liệu thống k&ecirc; tr&ecirc;n ch&uacute;ng. Số liệu thống k&ecirc; cơ bản nhất l&agrave; số đối tượng đ&atilde; được tổng kết c&ugrave;ng nhau, tuy nhi&ecirc;n bạn vẫn c&oacute; thể t&iacute;nh to&aacute;n những số liệu thống k&ecirc; n&acirc;ng cao hơn.
     </p>
-    <p>V&iacute; dụ: giả sử bạn c&oacute; c&aacute;c đối tượng dạng điểm của c&aacute;c vị tr&iacute; cửa h&agrave;ng với một trường đại diện  <i>T&Ecirc;N_NGƯỜI QUẢN L&Yacute;_QUẬN</i> v&agrave; bạn muốn tổng kết doanh số b&aacute;n c&agrave; ph&ecirc; theo người quản l&yacute;. Bạn c&oacute; thể x&aacute;c định trường <i>T&Ecirc;N_NGƯỜI QUẢN L&Yacute;_QUẬN</i> l&agrave; trường để ph&acirc;n r&atilde; v&agrave; tất cả c&aacute;c h&agrave;ng dữ liệu đại diện cho người quản l&yacute; sẽ được tổng kết. Điều n&agrave;y c&oacute; nghĩa l&agrave; tất cả vị tr&iacute; cửa h&agrave;ng được quản l&yacute; bởi Người quản l&yacute;1 sẽ được tổng kết v&agrave;o một h&agrave;ng c&oacute; tổng kết thống k&ecirc; được t&iacute;nh. Trong v&iacute; dụ n&agrave;y, số liệu thống k&ecirc; như số cửa h&agrave;ng v&agrave; tổng <i>TỔNG_DOANH SỐ</i> cho tất cả cửa h&agrave;ng m&agrave; Người quản l&yacute;1 quản l&yacute; sẽ được t&iacute;nh cũng như đối với bất kỳ người quản l&yacute; n&agrave;o được liệt k&ecirc; trong trường <i>T&Ecirc;N_NGƯỜI QUẢN L&Yacute;_QUẬN</i>.
+    <p>V&iacute; dụ: giả sử bạn c&oacute; c&aacute;c đối tượng dạng điểm của c&aacute;c vị tr&iacute; cửa h&agrave;ng với một trường đại diện  <i>T&Ecirc;N_NGƯỜI QUẢN L&Yacute;_QUẬN</i>, v&agrave; bạn muốn tổng kết doanh thu b&aacute;n c&agrave; ph&ecirc; theo người quản l&yacute;. Bạn c&oacute; thể x&aacute;c định trường <i>T&Ecirc;N_NGƯỜI QUẢN L&Yacute;_QUẬN</i> l&agrave; trường để ph&acirc;n r&atilde; v&agrave; tất cả c&aacute;c h&agrave;ng dữ liệu đại diện cho người quản l&yacute; sẽ được tổng kết. Điều n&agrave;y c&oacute; nghĩa l&agrave; tất cả vị tr&iacute; cửa h&agrave;ng được quản l&yacute; bởi <pre>Manager1</pre> sẽ được tổng kết v&agrave;o một h&agrave;ng , c&oacute; tổng kết thống k&ecirc; được t&iacute;nh. Trong v&iacute; dụ n&agrave;y, số liệu thống k&ecirc; như số cửa h&agrave;ng v&agrave; tổng <i>TỔNG_DOANH SỐ</i> cho tất cả cửa h&agrave;ng m&agrave; <pre>Manager1</pre> quản l&yacute; sẽ được t&iacute;nh, cũng như đối với bất kỳ người quản l&yacute; n&agrave;o được liệt k&ecirc; trong trường <i>T&Ecirc;N_NGƯỜI QUẢN L&Yacute;_QUẬN</i>.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -62,10 +61,19 @@
         </div>
     </div>
     <div id="fields">
-        <div><h2>Chọn các trường để tổng kết</h2></div>
+        <div><h2>Chọn cách tổng kết dữ liệu của bạn</h2></div>
         <hr/>
         <div>
-            <p>Danh s&aacute;ch c&aacute;c trường từ lớp đầu v&agrave;o. C&aacute;c trường đ&atilde; chọn sẽ được tổng kết v&agrave; sử dụng để t&iacute;nh số liệu thống k&ecirc;. V&iacute; dụ, nếu bạn chọn một trường c&oacute; t&ecirc;n  <i>Loại Thuộc t&iacute;nh</i> c&oacute; c&aacute;c gi&aacute; trị thương mại v&agrave; d&acirc;n cư, tất cả c&aacute;c trường d&acirc;n cư sẽ được tổng kết c&ugrave;ng nhau với tổng kết thống k&ecirc; đ&atilde; t&iacute;nh v&agrave; tất cả c&aacute;c trường thương mại sẽ được tổng kết c&ugrave;ng nhau.
+            <p>C&oacute; hai c&aacute;ch tổng kết dữ liệu:
+                <ul>
+                    <li> <b>Tất cả đối tượng th&agrave;nh một đối tượng</b>&mdash;T&iacute;nh to&aacute;n số liệu thống k&ecirc; tr&ecirc;n tất cả đối tượng.
+                    </li>
+                    <li> <b>Theo trường</b>&mdash;Nh&oacute;m c&aacute;c đối tượng theo c&aacute;c gi&aacute; trị giống nhau trong trường quy định.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>V&iacute; dụ: giả sử bạn c&oacute; một bộ dữ liệu c&aacute;c c&acirc;y bao gồm c&aacute;c trường   <i>loại c&acirc;y</i> c&oacute; gi&aacute; trị <code>C&acirc;y phong</code>, <code>C&acirc;y t&ugrave;ng</code> v&agrave; <code>C&acirc;y th&ocirc;ng</code>,  v&agrave; trường <i>chiều cao c&acirc;y</i>, v&agrave; bạn muốn t&igrave;m <i>chiều cao c&acirc;y</i> trung b&igrave;nh. Nếu bạn tổng kết tất cả đối tượng th&agrave;nh một đối tượng, bạn sẽ t&igrave;m chiều cao trung b&igrave;nh của tất cả c&aacute;c c&acirc;y, m&agrave; sẽ cho kết quả l&agrave; một gi&aacute; trị trung b&igrave;nh. Nếu bạn tổng kết theo trường <i>chiều cao c&acirc;y</i>, bạn sẽ c&oacute; một gi&aacute; trị trung b&igrave;nh cho c&acirc;y phong, một gi&aacute; trị trung b&igrave;nh cho c&acirc;y t&ugrave;ng, v&agrave; một gi&aacute; trị trung b&igrave;nh cho c&acirc;y th&ocirc;ng.
             </p>
         </div>
     </div>

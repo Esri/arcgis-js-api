@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
 var fa;
 (function(ha){function L(c){return t.Pb.HL(c)}function P(c){return null===c?null:void 0!==c.wkt?t.gh.ML(c.wkt):void 0!==c.wkid?t.gh.create(c.wkid):null}function O(c){if(null===c||void 0===c||c.s())return null;switch(c.D()){case t.Wn.Point:var p=c.hasAttribute(t.xf.Z),g=c.hasAttribute(t.xf.M),b={x:c.lk(),y:c.mk()};p&&(b.z=c.mO());g&&(b.m=c.ON());return b;case t.Wn.Polygon:return p=c.hasAttribute(t.xf.Z),g=c.hasAttribute(t.xf.M),{rings:ga(c,p,g),hasZ:p,hasM:g};case t.Wn.Polyline:return p=c.hasAttribute(t.xf.Z),g=

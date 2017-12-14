@@ -185,7 +185,7 @@
     <div id="FindLocationsCategory" class="largesize">
         <h2>Hitta platser</h2>
         <hr/>
-        <p>Dessa verktyg anv&auml;nds f&ouml;r att identifiera omr&aring;den som uppfyller ett antal olika kriterier du anger. Kriterierna kan bygga p&aring; attributfr&aring;gor (till exempel fastigheter som &auml;r tomma) och geografiska fr&aring;gor (till exempel inom 1 kilometer fr&aring;n en flod). Du kan v&auml;lja de omr&aring;den du hittar bland befintliga geoobjekt (till exempel befintliga landfastigheter), eller s&aring; kan du skapa nya geoobjekt som uppfyller alla krav.
+        <p>Dessa verktyg anv&auml;nds f&ouml;r att identifiera eller skapa geoobjekt som uppfyller villkor som du anger. Typen av villkor beror p&aring; vilket verktyg du anv&auml;nder. Ditt villkor kan till exempel vara baserat p&aring; geografiska fr&aring;gor eller attributfr&aring;gor, synliga omr&aring;den fr&aring;n en angiven h&ouml;jd, omr&aring;den nedstr&ouml;ms f&ouml;r vissa dr&auml;neringspunkter eller k&ouml;rtid under specifika trafikf&ouml;rh&aring;llanden.
             <ul>
                 <li> <b>V&auml;lj b&auml;sta inr&auml;ttningar</b> v&auml;ljer de b&auml;sta platserna f&ouml;r inr&auml;ttningar genom att tilldela platser som efterfr&aring;gar dessa inr&auml;ttningar p&aring; ett s&auml;tt som uppfyller ett visst m&aring;l.
                 </li>
@@ -195,16 +195,18 @@
                 </li>
                 <li> <b>H&auml;rled nya platser</b> skapar nya omr&aring;den fr&aring;n platser i unders&ouml;kningsomr&aring;det som uppfyller en rad kriterier.
                 </li>
+                <li class="OnlineOnly"> <b>Hitta centroider</b> hittar den representativa mittpunkten (centroiden) f&ouml;r indatageoobjekt. 
+                </li>
                 <li> <b>Hitta befintliga platser</b> s&ouml;ker efter befintliga omr&aring;den i ett lager som uppfyller en rad kriterier.
                 </li>
                 <li> <b>Hitta liknande platser</b> hittar de platser som &auml;r mest lika en eller flera referensplatser baserat p&aring; kriterier som du anger.
                 </li>
-                <li class="PortalOnly"> <b>Geokoda platser fr&aring;n tabell</b> konverterar adresser fr&aring;n en tabell till koordinater.
+                <li class="PortalOnly"> <b>Geokoda platser fr&aring;n tabell</b> konverterar adresser fr&aring;n en tabell till koordinater. 
                 </li>
                 <li> <b>Sp&aring;ra nedstr&ouml;ms</b> avg&ouml;r fl&ouml;desm&ouml;nstren nedstr&ouml;ms fr&aring;n de platser du anger.
                 </li>
             </ul>
-             
+            
         </p>
         <p> 
         </p>
@@ -266,6 +268,21 @@
             </table>
 <hr/>
             <p>Skapar nya geoobjekt i unders&ouml;kningsomr&aring;det som uppfyller en rad kriterier du anger. Kriterierna kan bygga p&aring; attributfr&aring;gor (till exempel fastigheter som &auml;r tomma) och geografiska fr&aring;gor (till exempel inom 1 kilometer fr&aring;n en flod). 
+            </p>
+            <br/>
+        </div>
+        <div id="FindCentroidsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Hitta centroider</h2></td>
+                    <td>
+                    <img src="../images/GUID-75D9AF75-68C3-48BF-8062-D5499BD06978-web.png" class="titleImage" alt="Hitta centroider">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Hittar den representativa mittpunkten (centroiden) f&ouml;r varje indatageoobjekt av typen flera punkter, linje eller omr&aring;de.
             </p>
             <br/>
         </div>

@@ -42,12 +42,11 @@
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Summér attributter</h2><p/>
-        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Summ&eacute;r attributter"></h2>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Summ&eacute;r attributter diagram"></h2>
         <hr/>
-    <p>Dette v&aelig;rkt&oslash;j summerer alle de matchende v&aelig;rdier i &eacute;t eller flere felter og beregner statistik for dem. Den mest grundl&aelig;ggende statistik er opt&aelig;llingen af de objekter, der summeres, men du kan ogs&aring; beregne mere avanceret statistik. 
-
+    <p> Dette v&aelig;rkt&oslash;j summerer alle de matchende v&aelig;rdier i &eacute;t eller flere felter og beregner statistik for dem. Den mest grundl&aelig;ggende statistik er opt&aelig;llingen af de objekter, der summeres, men du kan ogs&aring; beregne mere avanceret statistik.
     </p>
-    <p>Forestil dig for eksempel, at du har punktobjekter med butiksplaceringer med et felt, der repr&aelig;senterer  <i>DISTRICT_MANAGER_NAME</i>, og du &oslash;nsker at f&aring; en oversigt over det samlede salg af kaffe pr. leder. Du kan angive feltet <i>DISTRICT_MANAGER_NAME</i> som det felt, der skal opl&oslash;ses til, samt alle de r&aelig;kker med data, der repr&aelig;senterer de enkelte ledere, der skal summeres. Dette betyder, at alle de butiksplaceringer, der styres af Manager1, vil blive summeret til &eacute;n r&aelig;kke med den beregnede oversigtsstatistik. I dette tilf&aelig;lde betyder det, at statistik s&aring;som antallet af butikker og summen af <i>TOTAL_SALES</i> for alle de butikker, som Manager1 styrer, ville blive beregnet, og det samme g&aelig;lder for alle andre ledere, der er angivet i feltet <i>DISTRICT_MANAGER_NAME</i>.
+    <p>Forestil dig for eksempel, at du har punktobjekter med butiksplaceringer med et felt, der repr&aelig;senterer  <i>DISTRICT_MANAGER_NAME</i>, og du &oslash;nsker at f&aring; en oversigt over det samlede salg af kaffe pr. leder. Du kan angive feltet <i>DISTRICT_MANAGER_NAME</i> som det felt, der skal opl&oslash;ses til, samt alle de r&aelig;kker med data, der repr&aelig;senterer de enkelte ledere, der skal summeres. Dette betyder, at alle de butiksplaceringer, der styres af <pre>Manager1</pre>, vil blive summeret til &eacute;n r&aelig;kke , med den beregnede oversigtsstatistik. I dette tilf&aelig;lde betyder det, at statistik s&aring;som antallet af butikker og summen af <i>TOTAL_SALES</i> for alle de butikker, som <pre>Manager1</pre> styrer, ville blive beregnet, og det samme g&aelig;lder for alle andre ledere, der er angivet i feltet <i>DISTRICT_MANAGER_NAME</i>.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -62,10 +61,19 @@
         </div>
     </div>
     <div id="fields">
-        <div><h2>Vælg de felter, der skal summeres</h2></div>
+        <div><h2>Vælg, hvordan dine data skal summeres</h2></div>
         <hr/>
         <div>
-            <p>Liste med felter fra inputlaget. Udvalgte felter vil blive summeret og anvendt til beregning af statistik. Hvis du f.eks. har valgt et felt med titlen  <i>PropertyType</i> med v&aelig;rdier for kommercielle ejendomme og v&aelig;rdier for beboelsesejendomme, ville alle felter for beboelsesejendomme blive summeret sammen, og der ville blive beregnet oversigtsstatistik for disse, og alle felter med v&aelig;rdier for kommercielle ejendomme ville blive summeret sammen.
+            <p>Data kan summeres p&aring; to m&aring;der:
+                <ul>
+                    <li> <b>Alle objekter i et enkelt objekt</b>&mdash;Beregner statistik for alle objekter.
+                    </li>
+                    <li> <b>Efter felter</b>&mdash;Grupperer objekter efter lignende v&aelig;rdier i angivne felter.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Forestil dig f.eks., at du har et datas&aelig;t med tr&aelig;er, der indeholder felter med  <i>tr&aelig;sorter</i> med v&aelig;rdierne <code>Ahorn</code>, <code>Gran</code> og <code>Fyr</code>, samt et felt for <i>tr&aelig;h&oslash;jde</i>, og du gerne vil finde den middelv&aelig;rdien for <i>tr&aelig;h&oslash;jde</i>. Hvis du summerer alle objekter til et enkelt objekt, finder du middeltr&aelig;h&oslash;jden for  alle tr&aelig;er, hvilket vil resultere i &eacute;n middelv&aelig;rdi. Hvis du summerer efter feltet <i>tr&aelig;h&oslash;jde</i>, vil du opn&aring; en middelv&aelig;rdi for ahorntr&aelig;er, en middelv&aelig;rdi for grantr&aelig;er og en middelv&aelig;rdi for fyrretr&aelig;er.
             </p>
         </div>
     </div>

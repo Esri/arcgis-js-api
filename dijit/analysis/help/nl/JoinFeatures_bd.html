@@ -63,7 +63,7 @@
         </div>
     </div>
     <div id="joinLayer">
-        <div><h2>Kies laag om  te koppelen aan de doellaag</h2></div>
+        <div><h2>Kies laag om samen te voegen met de doellaag</h2></div>
         <hr/>
         <div>
             <p>De koppelingslaag met de attributen die zullen worden toegevoegd aan de doellaag.
@@ -76,7 +76,7 @@
         <div><h2>Kies koppelingbewerking</h2></div>
         <hr/>
         <div>
-            <p>Bepaalt hoe koppelingen tussen de doel- en koppelings-lagen worden behandeld in de uitvoer als meerdere gekoppelde objecten dezelfde relatie hebben als de laag die gekoppeld wordt. Er zijn twee samenvoegbewerkingen om uit te kiezen:
+            <p>Bepaalt hoe koppelingen tussen de doel- en koppelingslagen worden behandeld in de uitvoer als meerdere gekoppelde objecten dezelfde relatie hebben als de laag die gekoppeld wordt. Er zijn twee samenvoegbewerkingen om uit te kiezen:
                 <ul>
                     <li> <b>E&eacute;n-aan-&eacute;&eacute;n koppelen</b>&mdash;Deze optie vat alle overeenkomende objecten samen aan elk object dat wordt gekoppeld.
                     </li>
@@ -85,12 +85,12 @@
                 </ul>
                 
             </p>
-            <p>Stel bijvoorbeeld dat we supermarkten willen zoeken binnen 2 kilometer van een boerenmarkt. In dit geval heeft de laag om aan samen te voegen een enkel object, namelijk de boerenmarkt, en de samenvoegende objecten zijn plaatselijke supermarkten met attributen, zoals de totale jaarlijkse omzet. Met behulp van de tool  <b>Objecten samenvoegen</b> vinden we vijf supermarkten die aan de criteria voldoen. Als we een koppelingsbewerking kiezen voor <b>E&eacute;n-aan-meerdere koppelen</b> krijgen we vijf objecten in ons resultaat, elke rij vertegenwoordigt de boerenmarkt en een supermarkt. Als we een relatie <b>E&eacute;n-aan-&eacute;&eacute;n</b> kiezen, krijgen we &eacute;&eacute;n object dat de boerenmarkt vertegenwoordigt en de samengevatte informatie van de supermarkten, zoals het aantal (2), en andere statistieken, zoals de som van de jaarlijkse verkoop.
+            <p>Stel bijvoorbeeld dat we supermarkten willen zoeken binnen 2 kilometer van een boerenmarkt. In dit geval heeft de laag om aan samen te voegen een enkel object, namelijk de boerenmarkt, en de samenvoegende objecten zijn plaatselijke supermarkten met attributen, zoals de totale jaarlijkse omzet. Met behulp van de tool  <b>Objecten samenvoegen</b> vinden we vijf supermarkten die aan de criteria voldoen. Als we een koppelingsbewerking kiezen voor <b>E&eacute;n-aan-meerdere</b>, krijgen we vijf objecten in ons resultaat, waarbij elke rij de boerenmarkt en een supermarkt vertegenwoordigt. Als we een relatie <b>E&eacute;n-aan-&eacute;&eacute;n</b> kiezen, krijgen we &eacute;&eacute;n object dat de boerenmarkt vertegenwoordigt en de samengevatte informatie van de supermarkten, zoals het aantal (2) en andere statistieken, zoals de som van de jaarlijkse verkoop.
             </p>
         </div>
     </div>
     <div id="joinOptions">
-        <div><h2>Selecteer een of meer koppelingen</h2></div>
+        <div><h2>Selecteer een of meer samenvoegingen</h2></div>
         <hr/>
         <div>
             <p>U kunt &eacute;&eacute;n, twee of drie samenvoegtypes toepassen. De typen samenvoegingen omvatten het volgende: 
@@ -118,7 +118,7 @@
                     </li>
                     <li> <b>Gelijk aan</b>&mdash;De objecten worden gekoppeld als ze dezelfde geometrie hebben.
                     </li>
-                    <li> <b>Near</b>&mdash;De objecten worden gekoppeld als ze zich binnen een bepaalde afstand tot elkaar bevinden. De kaartlaag moet in een geprojecteerd co&ouml;rdinaatsysteem of de processing ruimtelijke referentie moet worden ingesteld op een geprojecteerd co&ouml;rdinaatsysteem met behulp van de <b>Analysis Environments</b> als een ruimtelijke <b>Near</b> relatie wordt gebruikt.
+                    <li> <b>Near</b>&mdash;De objecten worden gekoppeld als ze zich binnen een bepaalde afstand tot elkaar bevinden. De kaartlaag moet in een geprojecteerd co&ouml;rdinatensysteem zijn of de verwerkende ruimtelijke referentie moet worden ingesteld op een geprojecteerd co&ouml;rdinatenstelsel met behulp van de <b>Analysis Environments</b> als een ruimtelijke <b>Near</b> relatie wordt gebruikt.
                     </li>
                     <li> <b>Bevat</b>&mdash;Deze objecten worden gekoppeld als de laag waaraan wordt samengevoegd is opgenomen in de samengevoegde objecten.
                     </li>
@@ -206,7 +206,7 @@
         <div><h2>Statistieken toevoegen (optioneel)</h2></div>
         <hr/>
         <div>
-            <p>Indien de koppeling bestaat uit   <b>E&eacute;n aan &eacute;&eacute;n koppelen</b>, kunt u de statistieken van uw gekoppelde objecten berekenen. Standaard worden alle statistieken berekend.
+            <p>Indien de koppeling bestaat uit  <b>E&eacute;n-aan-&eacute;&eacute;n</b>, kunt u de statistieken van uw gekoppelde objecten berekenen. Standaard worden alle statistieken berekend.
             </p>
             <p>U kunt statistieken berekenen over objecten die zijn samengevat. Op numerieke velden kunt u het volgende berekenen:
                 <ul>
@@ -248,7 +248,7 @@
         <div>
             <p>Past een voorwaarde toe op bepaalde velden. Alleen objecten met velden die aan deze voorwaarden voldoen worden samengevoegd.
             </p>
-            <p>Stel bijvoorbeeld dat we een samenvoeging willen toepassen op een dataset voor alleen de objecten waarin  <i>health_spending</i> groter is dan 20 procent van het <i>inkomen</i>. Om dit te doen, past u een samenvoegvoorwaarde van <code>target.health_spending&gt; (join.income * .20)</code> toe met behulp van het veld <i>health_spending</i> uit de eerste dataset (de dataset waaraan de objecten worden samengevoegd) en het veld <i>inkomsten</i> uit de tweede dataset (de dataset die wordt samengevoegd ).
+            <p>Stel bijvoorbeeld dat we een samenvoeging willen toepassen op een dataset voor alleen de objecten waarin  <i>health_spending</i> groter is dan 20 procent van het <i>inkomen</i>. Om dit te doen, past u een samenvoegvoorwaarde van <code>$target[&quot;health_spending&quot;] &gt; ($join[&quot;income&quot;] * .20)</code> toe met behulp van het veld <i>health_spending</i> uit de eerste gegevensset (de gegevensset waaraan de objecten worden samengevoegd) en het veld <i>inkomsten</i> uit de tweede gegevensset (de gegevensset die wordt samengevoegd ).
             </p>
             <p>Samenvoegvoorwaarden kunnen worden toegepast met behulp van de expressiecalculator.
             </p>

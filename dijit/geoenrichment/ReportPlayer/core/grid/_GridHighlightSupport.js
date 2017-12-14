@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/on","dojo/dom-class","dojo/dom-geometry","esri/dijit/geoenrichment/utils/MouseUtil","./coreUtils/GridQueryUtil"],function(e,o,i,r,n,d){return e(null,{_highlightRowsOnHoverHandle:null,_setHighlightRowsOnHoverAttr:function(e){if(this._highlightRowsOnHoverHandle&&this._highlightRowsOnHoverHandle.remove(),this._highlightRowsOnHoverHandle=null,e){var r=this;this._highlightRowsOnHoverHandle=o(this.domNode,"mouseover",function(){var e=o(document.body,"mousemove",function(o){var t;if(r.getFieldCells().forEach(function(e){i.remove(e.domNode,"gridCellOver"),n.isMouseOver(e&&e.domNode)&&(t=e)}),!t)return void e.remove();var l=d.queryCells(r,{rowIndex:t.gridData.index});l&&l.forEach(function(e){i.add(e.domNode,"gridCellOver")})})})}}})});

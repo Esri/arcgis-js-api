@@ -95,6 +95,8 @@
         <div>
             <p>Vienādojums, kas tiek izmantots, lai aprēķinātu buferzonas attālumu ap ievades elementiem. &Scaron;o vienādojumu var ģenerēt, izmantojot buferzonas kalkulatoru. Ir pieejamas pamata darbības, piemēram, saskaitī&scaron;ana, atņem&scaron;ana, reizinā&scaron;ana un dalī&scaron;ana. Vērtības tiek aprēķinātas, izmantojot analīzes koordinātu sistēmu. Slānim ir jābūt plānotajā koordinātu sistēmā, vai, ja tiek lietota buferzona, apstrādes telpiskā atskaite ir jāiestata uz plānoto koordinātu sistēmu, izmantojot  <b>Analīzes darba vidi</b>.
             </p>
+            <p>Vienādojums  <code>$feature.windspeed * 1000</code> lietos buferzonu&nbsp;1000, kas reizināta ar lauka <i>vēja ātrums</i> vērtību. Buferzonas kalkulatorā var izmantot vairāk nekā vienu lauku.
+            </p>
         </div>
     </div>
     <div id="timeSplit">
@@ -102,6 +104,20 @@
         <hr/>
         <div>
             <p>Mar&scaron;rutu sadalei izmantotais laiks. Ja ilgums starp ievades punktiem vai laukumiem ir lielāks par laika dalījumu, tie tiks sadalīti atsevi&scaron;ķos mar&scaron;rutos.
+            </p>
+            <p>Ja norādāt laika sadalījumu un attāluma sadalījumu, mar&scaron;ruti tiks sadalīti, kad tiks panākta atbilstība vienam vai abiem stāvokļiem. 
+            </p>
+            <p>Iedomājieties, ka ir pieejami punktu elementi, kas apzīmē lidma&scaron;īnu reisus, kuru mar&scaron;ruta lauks ir lidma&scaron;īnas ID. &Scaron;ī lidma&scaron;īna var veikt vairākus lidojumus, kas tiks apzīmēti kā viens mar&scaron;ruts. Ja zināt, ka starp lidojumiem ir 1&nbsp;stundas pārtraukums, varat izmantot  <code>1&nbsp;stundu</code> kā mar&scaron;rutu dalījumu, un katrs lidojums tiek sadalīts atsevi&scaron;ķā mar&scaron;rutā.
+            </p>
+        </div>
+    </div>
+    <div id="distanceSplit">
+        <div><h2>Izvēlēties attālumu, pēc kura sadalīt maršrutus (pēc izvēles)</h2></div>
+        <hr/>
+        <div>
+            <p> Mar&scaron;rutu sadalei izmantotais attālums. Ja attālums starp ievades punktiem vai daudzstūriem ir platāks par attāluma dalījumu, tie tiks sadalīti atsevi&scaron;ķos mar&scaron;rutos.
+            </p>
+            <p>Ja norādāt laika sadalījumu un attāluma sadalījumu, mar&scaron;ruti tiks sadalīti, kad tiks panākta atbilstība vienam vai abiem stāvokļiem. 
             </p>
         </div>
     </div>
@@ -142,7 +158,7 @@
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Izvēlieties ArcGIS datu krātuvi, kur saglabāt rezultātus</h2></div>
+        <div><h2>Izvēlieties ArcGIS Data Store, lai saglabātu rezultātus</h2></div>
         <hr/>
         <div>
             <p>GeoAnalytics rezultāti ir krātuves ArcGIS datu krātuvei, kas tiek parādīts kā elementu slānis   Portal for ArcGIS. Vairumā gadījumu rezultāti jāglabā laika un telpas datu krātuvē, kas tiek darīts pēc noklusējuma. Dažos gadījumos noderīga opcija ir saglabāt rezultātus saistītajā datu krātuvē. Iemesli rezultātu glabā&scaron;anai saistītajā datu krātuvē: 

@@ -354,6 +354,9 @@
 .esriViewPopup .esriDateValue {
   text-transform: capitalize;
 }
+.esriViewPopup .statusSection {
+  text-align: center;
+}
 .esriViewPopup .mainSection .attrTable {
   border-collapse: collapse;
 }
@@ -684,4 +687,8 @@
 .esriPopup.dark .esriViewPopup .gallery .mediaHandle,
 .esriPopup.dark .titleButton {
   color: #fff;
+}
+
+svg path[data-popup-highlight] {
+  pointer-events: none;
 }

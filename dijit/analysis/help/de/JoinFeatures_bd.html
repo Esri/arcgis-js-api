@@ -76,7 +76,7 @@
         <div><h2>Verbindungsvorgang auswählen</h2></div>
         <hr/>
         <div>
-            <p>Ermittelt, wie Verbindungen zwischen den Ziel- und Join-Layern in der Ausgabe verarbeitet werden, wenn mehrere Verbindungs-Features dieselbe Beziehung mit dem Layer aufweisen, mit dem sie verbunden sind. Es stehen zwei Verbindungsvorg&auml;nge zur Auswahl:
+            <p>Legt fest, wie Verbindungen zwischen dem Ziel- und dem Join-Layer in der Ausgabe verarbeitet werden, wenn mehrere Verbindungs-Features dieselbe Beziehung mit dem Layer, mit dem sie verbunden sind, aufweisen. Es stehen zwei Verbindungsvorg&auml;nge zur Auswahl:
                 <ul>
                     <li> <b>Eins zu eins verbinden</b>: Mit dieser Option werden alle &uuml;bereinstimmenden Features mit jedem zu verbindenden Feature zusammengefasst.
                     </li>
@@ -85,7 +85,7 @@
                 </ul>
                 
             </p>
-            <p>Angenommen, gesucht werden Superm&auml;rkte im Umkreis von  2 Kilometern von einem Bauernmarkt. In diesem Fall muss der zu verbindende Layer &uuml;ber ein einzelnes Feature verf&uuml;gen, das einen Bauernmarkt darstellt, und die Verbindungs-Features stellen die lokalen Lebensmittelgesch&auml;fte mit Attributen wie dem j&auml;hrlichen Gesamtumsatz dar. Mit dem Werkzeug  <b>Features verbinden</b> wird ermittelt, dass f&uuml;nf Lebensmittelgesch&auml;fte diesen Kriterien entsprechen. Wenn der Verbindungsvorgang <b>Eins zu viele verbinden</b> festgelegt wird, enth&auml;lt das Ergebnis f&uuml;nf Features, wobei jede Zeile den Bauernmarkt und einen Supermarkt darstellt. Wird die Beziehung <b>Eins zu eins verbinden</b> festgelegt, f&uuml;hrt dies zu einem Feature, das den Bauernmarkt und die zusammengefassten Informationen zu den Superm&auml;rkten darstellt, darunter die Anzahl (2), und andere Statistiken wie der Gesamtjahresumsatz.
+            <p>Angenommen, wir suchen Superm&auml;rkte im Umkreis von 2 Kilometern von einem Bauernmarkt. In diesem Fall muss der zu verbindende Layer &uuml;ber ein einzelnes Feature verf&uuml;gen, das einen Bauernmarkt darstellt, und die Verbindungs-Features stellen die lokalen Lebensmittelgesch&auml;fte mit Attributen wie dem j&auml;hrlichen Gesamtumsatz dar. Mit dem Werkzeug  <b>Features verbinden</b> wird ermittelt, dass f&uuml;nf Lebensmittelgesch&auml;fte diesen Kriterien entsprechen. Wenn der Verbindungsvorgang <b>Eins zu viele verbinden</b> festgelegt wird, enth&auml;lt das Ergebnis f&uuml;nf Features, wobei jede Zeile den Baumarkt und einen Supermarkt darstellt. Wird die Beziehung <b>Eins zu eins verbinden</b> festgelegt, f&uuml;hrt dies zu einem Feature, das den Baumarkt und die zusammengefassten Informationen zu den Superm&auml;rkten darstellt, darunter die Anzahl (2) und andere Statistiken wie der Gesamtjahresumsatz.
             </p>
         </div>
     </div>
@@ -118,7 +118,7 @@
                     </li>
                     <li> <b>Gleich</b>: Die Features werden abgeglichen, wenn sie dieselbe Geometrie aufweisen.
                     </li>
-                    <li> <b>In einer Entfernung von</b>: Die Features werden abgeglichen, wenn sie sich innerhalb einer angegebenen Entfernung voneinander befinden. Der Ziel-Layer muss sich in einem projizierten Koordinatensystem befinden, oder der Raumbezug f&uuml;r die Verarbeitung muss unter <b>Analyseumgebungen</b> auf ein projiziertes Koordinatensystem festgelegt werden, wenn die r&auml;umliche Beziehung <b>In einer Entfernung von</b> lautet.
+                    <li> <b>Near</b>: Die Features werden abgeglichen, wenn sich sich innerhalb einer angegebenen Entfernung voneinander befinden. Der Ziel-Layer muss sich in einem projizierten Koordinatensystem befinden, oder der Raumbezug f&uuml;r die Verarbeitung muss unter <b>Analyseumgebungen</b> auf ein projiziertes Koordinatensystem festgelegt werden, wenn die r&auml;umliche Beziehung <b>Near</b> lautet.
                     </li>
                     <li> <b>Enth&auml;lt</b>: Die Features werden abgeglichen, wenn der Layer, mit denen sie verbunden werden, in den Verbindungs-Features enthalten ist.
                     </li>
@@ -175,7 +175,7 @@
                     </li>
                     <li> <b>Schneidet</b>: Die Features werden abgeglichen, wenn sie von allen Zeiten geschnitten werden.
                     </li>
-                    <li> <b>In der N&auml;he von</b>: Die Features werden verbunden, wenn sie einer angegebenen Zeit entsprechend nahe beieinander liegen.
+                    <li> <b>Near</b>: Die Features werden verbunden, wenn sie einer angegebenen Zeit entsprechend nahe beieinander liegen.
                     </li>
                 </ul>
                 
@@ -206,7 +206,7 @@
         <div><h2>Statistiken hinzufügen (optional)</h2></div>
         <hr/>
         <div>
-            <p>Wenn der Verbindungsvorgang  <b>Eins zu  eins verbinden</b>, lautet, k&ouml;nnen Sie Statistiken f&uuml;r Ihre verbundenen Features berechnen. Standardm&auml;&szlig;ig werden alle Statistiken berechnet.
+            <p>Wenn der Verbindungsvorgang  <b>Eins zu eins verbinden</b> lautet, k&ouml;nnen Sie Statistiken f&uuml;r Ihre verbundenen Features berechnen. Standardm&auml;&szlig;ig werden alle Statistiken berechnet.
             </p>
             <p>Sie k&ouml;nnen Statistiken f&uuml;r Features berechnen, die zusammengefasst wurden. F&uuml;r numerische Felder kann Folgendes berechnet werden:
                 <ul>
@@ -248,7 +248,7 @@
         <div>
             <p>Wendet eine Bedingung auf angegebene Felder an. Nur Features mit Feldern, die diese Bedingungen erf&uuml;llen, werden verbunden.
             </p>
-            <p>Ein Beispiel: Angenommen, Sie m&ouml;chten eine Verbindung mit einem Dataset nur f&uuml;r die Features erstellen, f&uuml;r die  <i>health_spending</i> (Gesundheitskosten) mehr als 20 Prozent vom <i>income</i> (Einkommen) ausmacht.  Wenden Sie hierzu die Verbindungsbedingung <code>target.health_spending &gt; (join.income * .20)</code> auf das Feld <i>health_spending</i> aus dem ersten Dataset (die Dataset-Features, mit denen die Verbindung erfolgt) und das Feld <i>income</i> aus dem zweiten Dataset (das Dataset, das verbunden wird) an.
+            <p>Ein Beispiel: Angenommen, Sie m&ouml;chten eine Verbindung mit einem Dataset nur f&uuml;r die Features erstellen, f&uuml;r die  <i>health_spending</i> (Gesundheitskosten) mehr als 20 Prozent vom <i>income</i> (Einkommen) ausmacht.  Wenden Sie hierzu die Verbindungsbedingung <code>$target[&quot;health_spending&quot;] &gt; ($join[&quot;income&quot;] * .20)</code> auf das Feld <i>health_spending</i> aus dem ersten Dataset (die Dataset-Features, mit denen die Verbindung erfolgt) und das Feld <i>income</i> aus dem zweiten Dataset (das Dataset, das verbunden wird) an.
             </p>
             <p>Verbindungsbedingung k&ouml;nnen mithilfe des Ausdrucksrechners angewendet werden.
             </p>
@@ -275,7 +275,7 @@
         <div><h2>Name des Ergebnis-Layers</h2></div>
         <hr/>
         <div>
-            <p> Dies ist der Name des Layers, der in <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird.  Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, kann das Werkzeug nicht ausgef&uuml;hrt werden.
+            <p> Dies ist der Name des Layers, der in <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird. Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, kann das Werkzeug nicht ausgef&uuml;hrt werden.
             </p>
             <p>&Uuml;ber das Dropdown-Feld  <b>Ergebnis speichern in</b> k&ouml;nnen Sie den Namen eines Ordners in <b>Eigene Inhalte</b> angeben, in dem das Ergebnis gespeichert werden soll.
             </p>

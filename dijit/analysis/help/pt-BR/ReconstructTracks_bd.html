@@ -95,6 +95,8 @@
         <div>
             <p>A equa&ccedil;&atilde;o utilzada para calcular a dist&acirc;ncia de buffer ao redor das fei&ccedil;&otilde;es de entrada. Esta equa&ccedil;&atilde;o pode ser gerada utilizando o calculador de buffer e opera&ccedil;&otilde;es b&aacute;sicas, tais como, adicionar, subtrair, multiplicar e dividir s&atilde;o suportadas. Os valores s&atilde;o calculados utilizando o sistema de an&aacute;lise de coordenadas. As camadas de entrada devem estar em um sistema de coordenadas planas ou a refer&ecirc;ncia espacial de processamento deve ser definida para um sistema de coordenadas planas utilizando os  <b>Ambientes de An&aacute;lise</b> se um buffer estiver aplicado.
             </p>
+            <p>Uma equa&ccedil;&atilde;o como  <code>$feature.windspeed * 1000</code>aplicaria um buffer de 1,000 multiplicado pelo campo <i>windspeed</i>. Voc&ecirc; pode utilizar mais de um campo no calculador de buffer.
+            </p>
         </div>
     </div>
     <div id="timeSplit">
@@ -102,6 +104,20 @@
         <hr/>
         <div>
             <p>Tempo utilzado para dividir caminhos. Se pontos ou pol&iacute;gonos de entrada tiverem uma dura&ccedil;&atilde;o mais longa entre eles que o tempo de divis&atilde;o, eles ser&atilde;o divididos em caminhos diferentes.
+            </p>
+            <p>Se voc&ecirc; especificar uma divis&atilde;o de tempo e uma divis&atilde;o de dist&acirc;ncia, os caminhos ser&atilde;o divididos quando uma ou ambas as condi&ccedil;&otilde;es forem atendidas. 
+            </p>
+            <p>Imagine que voc&ecirc; tinha fei&ccedil;&otilde;es de ponto representando voos de aeronaves, onde o campo de caminho era ID da Aeronave. Esta aeronave poderia fazer viagens m&uacute;ltiplas e seria representada como um caminho.  Se voc&ecirc; soubesse que h&aacute; uma pausa de 1 hora entre os voos, voc&ecirc; poderia utilizar  <code>1 hora</code> j&aacute; que seu caminho divide e cada voo seria dividido em seu pr&oacute;prio caminho.
+            </p>
+        </div>
+    </div>
+    <div id="distanceSplit">
+        <div><h2>Selecionar uma distância para dividir caminhos (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p> Dist&acirc;ncia utilizada para dividir caminhos. Se pontos ou pol&iacute;gonos de entrada tiverem uma dist&acirc;ncia mais longa entre eles que a divis&atilde;o de tempo, eles ser&atilde;o divididos em caminhos diferentes.
+            </p>
+            <p>Se voc&ecirc; especificar uma divis&atilde;o de tempo e uma divis&atilde;o de dist&acirc;ncia, os caminhos ser&atilde;o divididos quando uma ou ambas as condi&ccedil;&otilde;es forem atendidas. 
             </p>
         </div>
     </div>
@@ -142,7 +158,7 @@
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Escolha um ArcGIS Data Store para salvar os resultados</h2></div>
+        <div><h2>Escolher um ArcGIS Data Store para salvar os resultados</h2></div>
         <hr/>
         <div>
             <p>Os resultados do GeoAnalytic s&atilde;o armazenados no ArcGIS Data Store e expostos como uma camada de fei&ccedil;&atilde;o no  Portal for ArcGIS. Na maioria dos casos, os resultados devem ser armazenados no armazenamento de dados de espa&ccedil;o-tempo e este &eacute; o padr&atilde;o. Em alguns casos salvar resultados no armazenamento de dados relacional &eacute; uma boa op&ccedil;&atilde;o. Abaixo est&atilde;o as raz&otilde;es pelas quais voc&ecirc; talvez queira armazenar resultados em um armazenamento de dados relacional: 

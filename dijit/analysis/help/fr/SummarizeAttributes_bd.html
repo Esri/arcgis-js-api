@@ -42,12 +42,11 @@
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Synthétiser les attributs</h2><p/>
-        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Synth&eacute;tiser les attributs"></h2>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Summarize Attributes (Synth&eacute;tiser les attributs) diagramme"></h2>
         <hr/>
-    <p>Cet outil synth&eacute;tise toutes les valeurs d'appariement dans un ou plusieurs champs et calcule les statistiques les concernant. La statistique la plus &eacute;l&eacute;mentaire est le total d'entit&eacute;s qui ont &eacute;t&eacute; synth&eacute;tis&eacute;es, mais vous pouvez &eacute;galement calculer des statistiques plus avanc&eacute;es. 
-
+    <p> Cet outil synth&eacute;tise toutes les valeurs d&rsquo;appariement dans un ou plusieurs champs et calcule les statistiques les concernant. La statistique la plus &eacute;l&eacute;mentaire est le total d'entit&eacute;s qui ont &eacute;t&eacute; synth&eacute;tis&eacute;es, mais vous pouvez &eacute;galement calculer des statistiques plus avanc&eacute;es.
     </p>
-    <p>Supposons par exemple que des entit&eacute;s ponctuelles correspondent &agrave; l'emplacement de points de vente avec un champ repr&eacute;sentant  <i>DISTRICT_MANAGER_NAME</i> et que vous souhaitez synth&eacute;tiser les ventes de caf&eacute; par responsable. Vous pouvez sp&eacute;cifier le champ <i>DISTRICT_MANAGER_NAME</i> comme champ de fusion afin que toutes les lignes de donn&eacute;es repr&eacute;sentant chaque responsable soient synth&eacute;tis&eacute;es. Cela signifie que tous les emplacements des points de vente g&eacute;r&eacute;s par Responsable1 seront synth&eacute;tis&eacute;s dans une seule ligne et que les r&eacute;sum&eacute;s statistiques seront calcul&eacute;s. Dans cet exemple, les statistiques telles que le total de points de vente et la somme de <i>TOTAL_SALES</i> pour tous les points de vente g&eacute;r&eacute;s par Responsable1 sont calcul&eacute;es, ainsi que celles des autres responsables r&eacute;pertori&eacute;s dans le champ <i>DISTRICT_MANAGER_NAME</i>.
+    <p>Supposons par exemple que des entit&eacute;s ponctuelles correspondent &agrave; l&rsquo;emplacement de points de vente avec un champ repr&eacute;sentant le nom du responsable de district ( <i>DISTRICT_MANAGER_NAME</i>), et que vous souhaitez synth&eacute;tiser les ventes de caf&eacute; par responsable. Vous pouvez sp&eacute;cifier le champ <i>DISTRICT_MANAGER_NAME</i> comme champ de fusion afin que toutes les lignes de donn&eacute;es repr&eacute;sentant chaque responsable soient synth&eacute;tis&eacute;es. Cela signifie que tous les emplacements des points de vente g&eacute;r&eacute;s par <pre>Manager1</pre> seront synth&eacute;tis&eacute;s dans une seule ligne, et que les r&eacute;sum&eacute;s statistiques seront calcul&eacute;s. Dans cet exemple, les statistiques telles que le total de points de vente et la somme de <i>TOTAL_SALES</i> pour tous les points de vente g&eacute;r&eacute;s par <pre>Manager1</pre> sont calcul&eacute;es,, ainsi que celles des autres responsables r&eacute;pertori&eacute;s dans le champ <i>DISTRICT_MANAGER_NAME (nom du responsable de district)</i>.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -62,10 +61,19 @@
         </div>
     </div>
     <div id="fields">
-        <div><h2>Choisir les champs à synthétiser</h2></div>
+        <div><h2>Sélectionnez une méthode pour synthétiser les données</h2></div>
         <hr/>
         <div>
-            <p>Liste des champs de la couche en entr&eacute;e. Les champs s&eacute;lectionn&eacute;s seront synth&eacute;tis&eacute;s et utilis&eacute;s pour le calcul des statistiques. Par exemple, si vous avez choisi un champ nomm&eacute;  <i>PropertyType</i> avec les valeurs commerciales et r&eacute;sidentielles, tous les champs r&eacute;sidentiels sont synth&eacute;tis&eacute;s ensemble (les statistiques sont calcul&eacute;es) et tous les champs commerciaux sont synth&eacute;tis&eacute;s ensemble.
+            <p>Il existe deux m&eacute;thodes permettant de synth&eacute;tiser vos donn&eacute;es&nbsp;:
+                <ul>
+                    <li> <b>All features into a single feature (Toutes les entit&eacute;s en une seule)</b>&mdash;Calcule les statistiques sur toutes les entit&eacute;s.
+                    </li>
+                    <li> <b>By fields (Par champs)</b>&mdash;Regroupe les entit&eacute;s par valeurs identiques dans des champs sp&eacute;cifi&eacute;s.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Par exemple, vous disposez d&rsquo;un jeu de donn&eacute;es d&rsquo;arbres incluant des champs  <i>treetype (type d&rsquo;arbre)</i> avec les valeurs <code>Maple (&eacute;rable)</code>, <code>Fir (sapin)</code> et <code>Pine (pin)</code> et un champ <i>treeheight (hauteur d&rsquo;arbre)</i>, et vous souhaitez obtenir la hauteur d&rsquo;arbre ( <i>treeheight</i>) moyenne. Si vous synth&eacute;tisez toutes les entit&eacute;s en une seule entit&eacute;, vous obtenez la hauteur d&rsquo;arbre moyenne de tous les arbres, ce qui produira une valeur moyenne uniquement. Si vous synth&eacute;tisez les entit&eacute;s en fonction du champ <i>treeheight (hauteur d&rsquo;arbre)</i>, vous obtenez une moyenne pour les &eacute;rables, une moyenne pour les sapins et une moyenne pour les pins.
             </p>
         </div>
     </div>
@@ -124,9 +132,9 @@
         <div><h2>Nom de la couche de résultat</h2></div>
         <hr/>
         <div>
-            <p> Il s'agit du nom de la couche qui sera cr&eacute;&eacute;e dans votre page <b>Mon contenu</b> et ajout&eacute;e &agrave; la carte.  Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, l'outil &eacute;choue.
+            <p> Il s&rsquo;agit du nom de la couche qui sera sur dans votre page <b>My Content (Mon contenu)</b> et ajout&eacute;e &agrave; la carte. Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, l'outil &eacute;choue.
             </p>
-            <p>La zone de liste d&eacute;roulante  <b>Enregistrer le r&eacute;sultat dans</b> vous permet de sp&eacute;cifier le nom d'un dossier dans <b>Mon contenu</b> o&ugrave; le r&eacute;sultat sera enregistr&eacute;.
+            <p>La zone de liste d&eacute;roulante  <b>Save result in (Enregistrer le r&eacute;sultat dans)</b> vous permet de sp&eacute;cifier le nom d&rsquo;un dossier dans <b>My content (Mon contenu)</b> o&ugrave; le r&eacute;sultat sera enregistr&eacute;.
             </p>
         </div>
     </div>

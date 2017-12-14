@@ -156,21 +156,24 @@
     margin: 5px 55px 0 0;
 }
 
-.Tapestry_Details_Name {
+.Tapestry_Details_Name.Wizard_Link {
+    display: inline-block;
     margin: 0 0 0 10px;
     background-image: url("images/acrobat.png");
     background-repeat: no-repeat;
     padding-left: 20px;
     color: #7FBBDF;
     height: 20px;
+    line-height: 20px;
+    float: left;
 }
 
-.dj_rtl .Tapestry_Details_Name {
+.dj_rtl .Tapestry_Details_Name.Wizard_Link {
     margin: 0 10px 0 0;
     padding-right: 20px;
     padding-left: 0;
     float: right;
-    background-position: 140px 0;
+    background-position: 140px 0; 
 }
 
 .Tapestry_Details_FieldCell {

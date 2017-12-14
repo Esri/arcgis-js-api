@@ -42,22 +42,22 @@
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Blīvuma aprēķināšana</h2><p/>
-        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Calculate Density"></h2>
+        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Aprēķināt blīvumu"></h2>
         <hr/>
-    <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas classified from least dense to most dense.   
+    <p>Rīks Aprēķināt blīvumu izveido blīvuma karti no punktu elementiem, izklājot kartē kādas parādības zināmo daudzumu (attēlots kā punktu atribūti). Rezultāts ir slānis ar laukumiem, kas klasificēti no vismazāk blīvā līdz visblīvākajam.   
 
     </p>
-    <p>For point input, each point should represent the location of some event or incident, and the result layer represents a count of the incident per unit area.  A higher density value in a new location means that there are more points near that location.  In many cases, the result layer can be interpreted as a risk surface for future events. For example, if the input points represent locations of lightning strikes, the result layer can be interpreted as a risk surface for future lightning strikes.
+    <p>Punktu ievadē katram punktam jāattēlo kāda gadījuma vai incidenta atra&scaron;anās vieta, un rezultātu slānim jāattēlo incidentu skaits katrā teritorijā. Lielāka blīvuma vērtība jaunā novietojumā nozīmē, ka &scaron;ī novietojuma tuvumā ir vēl citi punkti. Daudzos gadījumos rezultātu slāni var interpretēt kā riska virsmu turpmākiem gadījumiem. Piemēram, ja ievades punkti attēlo zibens spērienu izvietojumus, rezultātu slāni var interpretēt kā riska virsmu turpmākiem zibens spērieniem.
     </p>
-    <p>Other use cases of this tool include the following:
+    <p>Citi &scaron;ī rīka lieto&scaron;anas gadījumi ietver:
         <ul>
-            <li>Creating crime-density maps to help police departments properly allocate resources to high crime areas.
+            <li>Noziegumu blīvuma kar&scaron;u izveide, lai palīdzētu policijai precīzi izvietot patruļas teritorijās ar augstāko noziedzības līmeni.
             </li>
-            <li>Calculating densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to decide where new hospitals should be built.
+            <li>Slimnīcu blīvuma aprēķinā&scaron;ana valstī. Rezultātu slānī būs redzamas teritorijas ar augstu un zemu piekļuves līmeni slimnīcām, un &scaron;o informāciju var izmantot, lai izvēlētos jaunu slimnīcu atra&scaron;anās vietas.
             </li>
-            <li>Identifying areas that are at high risk of forest fires based on historical locations of forest fires.
+            <li>Teritoriju ar augstu meža ugunsgrēku riska līmeni noteik&scaron;ana, pamatojoties uz meža ugunsgrēku vēsturiskajām izcel&scaron;anās vietām.
             </li>
-            <li>Locating communities that are far from major highways in order to plan where new roads should be constructed.
+            <li>Apdzīvotu teritoriju, kas atrodas tālu no lielajiem autoceļiem, atra&scaron;ana, lai izplānotu jaunu autoceļu būvniecību.
             </li>
         </ul>
         
@@ -68,19 +68,19 @@
         <div><h2>Izvēlēties punktu slāni, no kura aprēķināt blīvumu</h2></div>
         <hr/>
         <div>
-            <p>The point layer on which the density will be calculated.
+            <p>Punktu slānis, no kura tiks aprēķināts blīvums.
             </p>
             <p>Papildus slāņa izvēlei kartē varat izvēlēties  <b>Pārlūkot slāņus</b> nolaižamā saraksta apak&scaron;ā, lai saturā atrastu Big Data koplietojuma datu kopu vai elementu slāni.
             </p>
         </div>
     </div>
     <div id="fields">
-        <div><h2>Izvēlēties vienu vai vairākus laukus, kurā(os) aprēķināt blīvumu (pēc izvēles)</h2></div>
+        <div><h2>Izvēlēties vienu vai vairākus laukus, kurā(os) aprēķināt blīvumu (nav obligāti)</h2></div>
         <hr/>
         <div>
-            <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
+            <p>Uzrādiet vienu vai vairākus laukus, kas norāda negadījumu skaitu katrā vietā. Piemēram, ja jums ir punkti, kas attēlo pilsētas, varat izmantot lauku, kurā attēlots pilsētas iedzīvotāju skaits, kā skaita lauku, un rezultātā iegūtajā iedzīvotāju skaita blīvuma slānī būs aprēķināts lielāks iedzīvotāju skaita blīvums to pilsētu tuvumā, kurās ir liels iedzīvotāju skaits.
             </p>
-            <p>The density for the count of points will always be calculated.   If no fields are selected, each location will be assumed to represent a single count.
+            <p>Punktu skaita blīvums tiks vienmēr aprēķināts. Ja netiek izvēlēts neviens lauks, tiek pieņemts, ka katra vieta parāda atsevi&scaron;ķu skaitu.
             </p>
         </div>
     </div>
@@ -88,17 +88,17 @@
         <div><h2>Izvēlēties nodalījuma formu</h2></div>
         <hr/>
         <div>
-            <p>The shape of bins that points are aggregated into and used for the density calculation.
+            <p>To nodalījumu forma, kurā tiek apkopoti punkti un izmantoti blīvuma aprēķinā&scaron;anā.
             </p>
-            <p>Lai veiktu analīzi, izmantojot nodalījumu  <b>Kvadrāts</b> vai <b>Se&scaron;stūris</b>, ir nepiecie&scaron;ama plānota koordinātu sistēma. Varat iestatīt <b>Apstrādes koordinātu sistēmu</b> <b>Analīzes darba vidē</b>. Ja jūsu apstrādes koordinātu sistēma nav iestatīta kā plānota koordinātu sistēma, jūs saņemsiet pamudinājumu to iestatīt, veicot darbību <b>Analīzes veik&scaron;ana</b>.
+            <p>Lai veiktu analīzi, izmantojot nodalījumu  <b>Kvadrāts</b> vai <b>Se&scaron;stūris</b>, ir nepiecie&scaron;ama plānota koordinātu sistēma. Varat iestatīt <b>Apstrādes koordinātu sistēmu</b> <b>Analīzes darba vidē</b>. Ja kā jūsu apstrādes koordinātu sistēma nav iestatīta projicētā koordinātu sistēma, jūs saņemsiet pamudinājumu to iestatīt, veicot darbību <b>Analīzes veik&scaron;ana</b>.
             </p>
         </div>
     </div>
     <div id="binSizing">
-        <div><h2>Izvēlēties nodalījuma izmēru apkopošanai</h2></div>
+        <div><h2>Izvēlēties nodalījuma lielumu apkopošanai</h2></div>
         <hr/>
         <div>
-            <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
+            <p>Izveidoto nodalījumu lielums. Kvadrāta nodalījuma lielums apzīmē kvadrāta augstumu. Se&scaron;stūra nodalījuma lielums apzīmē se&scaron;stūra augstumu (paralēlo malu).
             </p>
         </div>
     </div>
@@ -106,11 +106,11 @@
         <div><h2>Izvēlēties lietojamo blīvuma svaru</h2></div>
         <hr/>
         <div>
-            <p>The type of weighting applied to the density calculation. There are two options:
+            <p>Blīvuma aprēķinā&scaron;anā izmantotais svara veids. Pastāv divas opcijas:
                 <ul>
-                    <li> <b>Uniform</b>&mdash;This calculates a magnitude per area.
+                    <li> <b>Viendabīga</b>&nbsp;&mdash; tiks aprēķināts teritorijas lielums.
                     </li>
-                    <li> <b>Kernel</b>&mdash;Applies a kernel function to fit a smooth tapered surface to each point.
+                    <li> <b>Kodols</b>&nbsp;&mdash;&nbsp;lai piemērotu katram punktam vienmērīgu konisku virsmu, izmanto kodola funkciju.
                     </li>
                 </ul>
                 
@@ -121,7 +121,7 @@
         <div><h2>Izvēlēties apkārtnes izmēru</h2></div>
         <hr/>
         <div>
-            <p>The size of the area used to calculate the density. The neighborhood size must be larger than the bin size.
+            <p>Teritorijas lielums, ko izmanto blīvuma aprēķinā&scaron;anai. Apkārtnes lielumam jāpārsniedz nodalījuma lielums.
             </p>
         </div>
     </div>
@@ -129,13 +129,13 @@
         <div><h2>Izvēlēties blīvuma izvades vienību</h2></div>
         <hr/>
         <div>
-            <p>The desired output units of the density values. By default, this is set to square kilometers or square miles based on the default units specified in your profile. If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+            <p>Vēlamās blīvuma vērtību mērvienības. Pamatojoties uz jūsu profilā norādītām noklusējuma mērvienībām, tiek iestatīti kvadrātkilometri vai kvadrātjūdzes. Ja blīvuma vērtības ir ļoti mazas, varat palielināt teritorijas mērvienības (piemēram, kvadrātmetrus uz kvadrātkilometriem), lai iegūtu lielākas vērtības. Vērtības tikai mērogo rezultātu.  
 
             </p>
         </div>
     </div>
     <div id="timeSlicing">
-        <div><h2>Aprēķināt blīvumu, izmantojot laika soļus (pēc izvēles)</h2></div>
+        <div><h2>Aprēķināt blīvumu, izmantojot laika soļus (nav obligāti)</h2></div>
         <hr/>
         <div>
             <p>Ja ievades punktu slānī ir aktivizēts laiks, kura veids ir tūlītējs, varat analizēt, lietojot laika soļus. Lietojot laiku, varat iestatīt trīs parametrus:

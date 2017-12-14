@@ -114,3 +114,13 @@
     height: auto !important;
     overflow: visible !important;
 }
+
+
+
+.esriGEOffscreen {
+    position: absolute !important;
+    opacity: 0.01 !important;
+    z-index: -1000 !important;
+    left: 0px;
+    top: 0px;
+}

@@ -41,12 +41,12 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="regularsize">
-        <h2>Připojované prvky</h2><p/>
-        <h2><img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" alt="Připojovan&eacute; prvky"></h2>
+        <h2>Připojit prvky (Join Features)</h2><p/>
+        <h2><img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" alt="Připojit prvky"></h2>
         <hr/>
     <p>&Uacute;loha Připojovan&eacute; prvky pracuje se dvěma vrstvami. Připojovan&eacute; prvky připoj&iacute; atributy jednoho prvku k&nbsp;atributům jin&eacute;ho prvku na z&aacute;kladě prostorov&eacute;ho, časov&eacute;ho a atributov&eacute;ho vztahu nebo jejich kombinace. N&aacute;stroj urč&iacute; v&scaron;echny vstupn&iacute; prvky, kter&eacute; odpov&iacute;daj&iacute; zadan&yacute;m podm&iacute;nk&aacute;m připojen&iacute;, a připoj&iacute; druhou vstupn&iacute; vrstvu k&nbsp;prvn&iacute; vrstvě. Volitelně můžete připojit v&scaron;echny prvky k&nbsp;odpov&iacute;daj&iacute;c&iacute;m prvkům nebo odpov&iacute;daj&iacute;c&iacute; prvky sumarizovat.
     </p>
-    <p>Připojovan&eacute; prvky lze aplikovat na body, linie, oblasti a tabulky. Časov&eacute; připojen&iacute; vyžaduje, aby va&scaron;e vstupn&iacute; data obsahovala informace o čase, a prostorov&eacute; připojen&iacute; vyžaduje, aby data obsahovala geometrii. 
+    <p>N&aacute;stroj Připojit prvky lze použ&iacute;t na body, linie, plochy a tabulky. Časov&eacute; připojen&iacute; vyžaduje, aby va&scaron;e vstupn&iacute; data obsahovala informace o čase, a prostorov&eacute; připojen&iacute; vyžaduje, aby data obsahovala geometrii. 
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -56,7 +56,7 @@
         <div>
             <p>Vrstva, k&nbsp;jej&iacute;ž tabulce budou připojeny atributy z&nbsp;vrstvy připojen&iacute;.
             </p>
-            <p>Anal&yacute;za využ&iacute;vaj&iacute;c&iacute; vztah prostorov&eacute;  <b>bl&iacute;zkosti</b> vyžaduje rovinn&yacute; souřadnicov&yacute; syst&eacute;m. Můžete nastavit <b>Souřadnicov&yacute; syst&eacute;m pro zpracov&aacute;n&iacute;</b> v <b>Prostřed&iacute; anal&yacute;zy</b>. Pokud v&aacute;&scaron; souřadnicov&yacute; syst&eacute;m pro zpracov&aacute;n&iacute; nen&iacute; nastaven na rovinn&yacute; souřadnicov&yacute; syst&eacute;m, budete vyzv&aacute;ni k&nbsp;jeho nastaven&iacute; při <b>Spu&scaron;těn&iacute; anal&yacute;zy</b>.
+            <p>Anal&yacute;za využ&iacute;vaj&iacute;c&iacute; vztah prostorov&eacute; bl&iacute;zkosti  <b>Vzd&aacute;lenost</b> vyžaduje rovinn&yacute; souřadnicov&yacute; syst&eacute;m. Můžete nastavit <b>Souřadnicov&yacute; syst&eacute;m pro zpracov&aacute;n&iacute;</b> v <b>Prostřed&iacute; anal&yacute;zy</b>. Pokud v&aacute;&scaron; souřadnicov&yacute; syst&eacute;m pro zpracov&aacute;n&iacute; nen&iacute; nastaven na rovinn&yacute; souřadnicov&yacute; syst&eacute;m, budete vyzv&aacute;ni k&nbsp;jeho nastaven&iacute; při <b>Spu&scaron;těn&iacute; anal&yacute;zy</b>.
             </p>
             <p>Kromě v&yacute;běru vrstvy z&nbsp;mapy můžete tak&eacute; zvolit položku  <b>Proch&aacute;zet vrstvy</b> kter&aacute; se nach&aacute;z&iacute; v&nbsp;doln&iacute; č&aacute;sti rozbalovac&iacute; nab&iacute;dky, abyste ve sv&eacute;m obsahu mohli naj&iacute;t vrstvu prvků nebo datovou sadu sd&iacute;len&yacute;ch souborů velk&yacute;ch dat.
             </p>
@@ -66,7 +66,7 @@
         <div><h2>Zvolit vrstvu pro připojení k cílové vrstvě</h2></div>
         <hr/>
         <div>
-            <p>Vrstva pro připojen&iacute; s&nbsp;atributy, kter&eacute; budou připojeny k&nbsp;c&iacute;lov&eacute; vrstvě.
+            <p>Vrstva připojen&iacute; s&nbsp;atributy, kter&eacute; budou připojeny k&nbsp;c&iacute;lov&eacute; vrstvě.
             </p>
             <p>Kromě v&yacute;běru vrstvy z&nbsp;mapy můžete tak&eacute; zvolit položku  <b>Proch&aacute;zet vrstvy</b> kter&aacute; se nach&aacute;z&iacute; v&nbsp;doln&iacute; č&aacute;sti rozbalovac&iacute; nab&iacute;dky, abyste ve sv&eacute;m obsahu mohli naj&iacute;t vrstvu prvků nebo datovou sadu sd&iacute;len&yacute;ch souborů velk&yacute;ch dat.
             </p>
@@ -76,7 +76,7 @@
         <div><h2>Zvolit operaci připojení</h2></div>
         <hr/>
         <div>
-            <p>Tato možnost určuje, jak bude ve v&yacute;stupu o&scaron;etřeno připojen&iacute; mezi c&iacute;lovou vrstvou a připojenou vrstvou, pokud bude nalezeno v&iacute;ce připojovac&iacute;ch prvků se stejn&yacute;m vztahem k&nbsp;připojovan&eacute; vrstvě. Můžete si vybrat ze dvou operac&iacute; připojen&iacute;:
+            <p>Tato možnost určuje, jak budou ve v&yacute;stupu o&scaron;etřena připojen&iacute; mezi c&iacute;lov&yacute;mi vrstvami a připojen&yacute;mi vrstvami, pokud bude nalezeno v&iacute;ce připojovac&iacute;ch prvků se stejn&yacute;m vztahem k&nbsp;připojovan&eacute; vrstvě. Můžete si vybrat ze dvou operac&iacute; připojen&iacute;:
                 <ul>
                     <li> <b>Připojit jeden k&nbsp;jednomu</b> &ndash; Tato možnost sumarizuje v&scaron;echny odpov&iacute;daj&iacute;c&iacute; prvky ke každ&eacute;mu připojovan&eacute;mu prvku.
                     </li>
@@ -85,7 +85,7 @@
                 </ul>
                 
             </p>
-            <p>Předpokl&aacute;dejme např&iacute;klad, že chceme naj&iacute;t supermarkety ve vzd&aacute;lenosti 2 km od farm&aacute;řsk&eacute;ho trhu. V tomto př&iacute;padě m&aacute; připojovan&aacute; vrstva jedin&yacute; prvek představuj&iacute;c&iacute; farm&aacute;řsk&yacute; trh a připojuj&iacute;c&iacute; prvky představuj&iacute; m&iacute;stn&iacute; obchody s&nbsp;potravinami, kter&eacute; maj&iacute; atributy, jako jsou např. celkov&eacute; ročn&iacute; tržby. Pomoc&iacute; n&aacute;stroje  <b>Připojovan&eacute; prvky</b> najdeme pět obchodů s&nbsp;potravinami, kter&eacute; splňuj&iacute; krit&eacute;ria. Pokud jsme určili operaci připojen&iacute; <b>Připojit jeden k&nbsp;v&iacute;ce</b>, dostaneme ve v&yacute;sledku pět prvků, kde každ&yacute; ř&aacute;dek představuje farm&aacute;řsk&yacute; trh a supermarket. Pokud jsme určili vztah <b>Připojit jeden k&nbsp;jednomu</b>, dostaneme jeden prvek představuj&iacute;c&iacute; farm&aacute;řsk&yacute; trh a sumarizovan&eacute; informace o supermarketech, jako je počet (2) a jin&eacute; statistiky, např. souhrn ročn&iacute;ch tržeb.
+            <p>Předpokl&aacute;dejme např&iacute;klad, že chceme naj&iacute;t supermarkety ve vzd&aacute;lenosti do dvou kilometrů od farm&aacute;řsk&eacute;ho trhu. V tomto př&iacute;padě m&aacute; připojovan&aacute; vrstva jedin&yacute; prvek představuj&iacute;c&iacute; farm&aacute;řsk&yacute; trh a připojuj&iacute;c&iacute; prvky představuj&iacute; m&iacute;stn&iacute; obchody s&nbsp;potravinami, kter&eacute; maj&iacute; atributy, jako jsou např. celkov&eacute; ročn&iacute; tržby. Pomoc&iacute; n&aacute;stroje  <b>Připojit prvky</b> najdeme pět obchodů s&nbsp;potravinami, kter&eacute; splňuj&iacute; krit&eacute;ria. Pokud jsme určili operaci připojen&iacute; <b>Připojit jeden k&nbsp;mnoha</b>, dostaneme ve v&yacute;sledku pět prvků, kde každ&yacute; ř&aacute;dek představuje farm&aacute;řsk&yacute; trh a supermarket. Pokud jsme určili vztah <b>Připojit jeden k&nbsp;jednomu</b>, dostaneme ve v&yacute;sledku jeden prvek představuj&iacute;c&iacute; farm&aacute;řsk&yacute; trh a sumarizovan&eacute; informace ze supermarketů, jako je počet (2) a jin&eacute; statistiky, např. souhrn ročn&iacute;ch tržeb.
             </p>
         </div>
     </div>
@@ -95,11 +95,11 @@
         <div>
             <p>Můžete použ&iacute;t jeden, dva nebo tři typy připojen&iacute;. Mezi typy připojen&iacute; patř&iacute;: 
                 <ul>
-                    <li> <b>Prostorov&yacute;</b> &ndash; Použ&iacute;v&aacute; k&nbsp;připojen&iacute; prvků zadan&yacute; prostorov&yacute; vztah. Toto vyžaduje, aby obě vrstvy měly geometrii.
+                    <li> <b>Zvolit prostorov&yacute; vztah</b> &ndash; Použ&iacute;v&aacute; k&nbsp;připojen&iacute; prvků zadan&yacute; prostorov&yacute; vztah. Toto vyžaduje, aby obě vrstvy měly geometrii.
                     </li>
                     <li> <b>Časov&yacute;</b> &ndash; Použ&iacute;v&aacute; k&nbsp;připojen&iacute; prvků zadan&yacute; časov&yacute; vztah. Toto vyžaduje, aby obě vrstvy obsahovaly informace o čase.
                     </li>
-                    <li> <b>Atributov&yacute;</b> &ndash; Připoj&iacute; prvky na z&aacute;kladě shodn&yacute;ch pol&iacute;.
+                    <li> <b>Zvolit pole pro shodu</b> &ndash; Připoj&iacute; prvky na z&aacute;kladě shodn&yacute;ch pol&iacute;.
                     </li>
                 </ul>
                 
@@ -118,7 +118,7 @@
                     </li>
                     <li> <b>Rovn&aacute; se</b> &ndash; Prvky budou sp&aacute;rov&aacute;ny, pokud maj&iacute; stejnou geometrii.
                     </li>
-                    <li> <b>Vzd&aacute;lenost</b> &ndash; Prvky budou sp&aacute;rov&aacute;ny, pokud se od sebe nach&aacute;zej&iacute; v&nbsp;určen&eacute; vzd&aacute;lenosti. C&iacute;lov&aacute; vrstva mus&iacute; b&yacute;t v rovinn&eacute;m souřadnicov&eacute;m syst&eacute;mu nebo souřadnicov&yacute; syst&eacute;m zpracov&aacute;n&iacute; mus&iacute; b&yacute;t nastaven na rovinn&yacute; souřadnicov&yacute; syst&eacute;m použ&iacute;vaj&iacute;c&iacute; <b>Prostřed&iacute; anal&yacute;zy</b>, pokud je použit vztah <b>prostorov&eacute;</b> bl&iacute;zkosti.
+                    <li> <b>Vzd&aacute;lenost</b> &ndash; Prvky budou sp&aacute;rov&aacute;ny, pokud se od sebe nach&aacute;zej&iacute; v&nbsp;určen&eacute; vzd&aacute;lenosti. C&iacute;lov&aacute; vrstva mus&iacute; b&yacute;t v rovinn&eacute;m souřadnicov&eacute;m syst&eacute;mu nebo souřadnicov&yacute; syst&eacute;m zpracov&aacute;n&iacute; mus&iacute; b&yacute;t nastaven na rovinn&yacute; souřadnicov&yacute; syst&eacute;m použ&iacute;vaj&iacute;c&iacute; <b>Prostřed&iacute; anal&yacute;zy</b>, pokud je použit vztah bl&iacute;zk&aacute; <b>Vzd&aacute;lenost</b>.
                     </li>
                     <li> <b>Obsahuje</b> &ndash; Prvky budou sp&aacute;rov&aacute;ny, pokud je připojovan&aacute; vrstva obsažena v&nbsp;připojuj&iacute;c&iacute;ch prvc&iacute;ch.
                     </li>
@@ -206,7 +206,7 @@
         <div><h2>Přidat statistiku (volitelné)</h2></div>
         <hr/>
         <div>
-            <p>Pokud je operace připojen&iacute;   <b>Připojit jeden k jednomu</b>, můžete na připojen&yacute;ch prvc&iacute;ch vypoč&iacute;tat statistiky. Ve v&yacute;choz&iacute;m nastaven&iacute; budou vypoč&iacute;t&aacute;ny v&scaron;echny statistiky.
+            <p>Pokud je operace připojen&iacute;  <b>Připojit jeden k jednomu</b>, můžete na připojen&yacute;ch prvc&iacute;ch vypoč&iacute;tat statistiky. Ve v&yacute;choz&iacute;m nastaven&iacute; budou vypoč&iacute;t&aacute;ny v&scaron;echny statistiky.
             </p>
             <p>Můžete vypoč&iacute;tat statistiku sumarizovan&yacute;ch prvků. U č&iacute;seln&yacute;ch pol&iacute; můžete vypoč&iacute;tat n&aacute;sleduj&iacute;c&iacute;:
                 <ul>
@@ -248,7 +248,7 @@
         <div>
             <p>Použije podm&iacute;nku na určen&aacute; pole. Budou připojeny pouze prvky s&nbsp;poli splňuj&iacute;c&iacute;mi tyto podm&iacute;nky.
             </p>
-            <p>Řekněme např&iacute;klad, že chceme použ&iacute;t připojen&iacute; k&nbsp;datov&eacute; sadě pouze pro prvky, u nichž je hodnota  <i>health_spending</i>  vy&scaron;&scaron;&iacute; než 20 procent <i>income</i>.  Abyste tak učinili, použijte podm&iacute;nku připojen&iacute; <code>target.health_spending &gt; (join.income * .20)</code> pomoc&iacute; pole <i>health_spending</i> z&nbsp;prvn&iacute; datov&eacute; sady (datov&aacute; sada, ke kter&eacute; jsou prvky připojeny) a pole <i>income</i> z&nbsp;druh&eacute; datov&eacute; sady (připojovan&aacute; datov&aacute; sada).
+            <p>Řekněme např&iacute;klad, že chceme použ&iacute;t připojen&iacute; k&nbsp;datov&eacute; sadě pouze pro prvky, u nichž je hodnota  <i>zdravotni_vydaje</i> vy&scaron;&scaron;&iacute; než 20 procent <i>prijem</i>.  K tomu použijte podm&iacute;nku připojen&iacute; <code>$target[&quot;zdravotni_vydaje&quot;] &gt; ($join[&quot;prijem&quot;] * .20)</code> pomoc&iacute; pole <i>zdravotni_vydaje</i> z&nbsp;prvn&iacute; datov&eacute; sady (datov&aacute; sada, ke kter&eacute; jsou prvky připojeny) a pole <i>prijem</i> z&nbsp;druh&eacute; datov&eacute; sady (připojovan&aacute; datov&aacute; sada).
             </p>
             <p>Podm&iacute;nky připojen&iacute; lze aplikovat pomoc&iacute; kalkul&aacute;toru v&yacute;razů.
             </p>

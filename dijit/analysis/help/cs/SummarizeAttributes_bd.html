@@ -41,13 +41,12 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Sumarizovat atributy</h2><p/>
-        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Sumarizovat atributy"></h2>
+        <h2>Sumarizovat atributy (Summarize Attributes)</h2><p/>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Diagram sumarizace atributů"></h2>
         <hr/>
-    <p>Tento n&aacute;stroj sumarizuje v&scaron;echny shodn&eacute; hodnoty v jednom nebo v&iacute;ce pol&iacute;ch a vypoč&iacute;t&aacute;v&aacute; jejich statistiku. Nejz&aacute;kladněj&scaron;&iacute; statistikou je počet prvků, kter&eacute; spolu byly sumarizov&aacute;ny, ale můžete vypoč&iacute;t&aacute;vat i pokročilej&scaron;&iacute; statistiky. 
-
+    <p> Tento n&aacute;stroj sumarizuje v&scaron;echny shodn&eacute; hodnoty v jednom nebo v&iacute;ce pol&iacute;ch a vypoč&iacute;t&aacute;v&aacute; jejich statistiku. Nejz&aacute;kladněj&scaron;&iacute; statistikou je počet prvků, kter&eacute; spolu byly sumarizov&aacute;ny, ale můžete vypoč&iacute;t&aacute;vat i pokročilej&scaron;&iacute; statistiky.
     </p>
-    <p>Předpokl&aacute;dejme např&iacute;klad, že m&aacute;te bodov&eacute; prvky um&iacute;stěn&iacute; obchodů s&nbsp;polem představuj&iacute;c&iacute;m  <i>DISTRICT_MANAGER_NAME</i> a chcete sumarizovat prodej k&aacute;vy podle manažerů. Pole <i>DISTRICT_MANAGER_NAME</i> můžete určit jako pole pro sloučen&iacute; a v&scaron;echny ř&aacute;dky dat představuj&iacute;c&iacute; jednotliv&eacute; manažery budou sumarizov&aacute;ny. To znamen&aacute;, že v&scaron;echna um&iacute;stěn&iacute; obchodů, kter&aacute; spravuje Manažer1, budou sumarizov&aacute;na do jednoho ř&aacute;dku s&nbsp;vypoč&iacute;tanou souhrnnou statistikou. V tomto př&iacute;padě by byly statistiky, jako je počet obchodů a součet <i>TOTAL_SALES</i>, vypoč&iacute;t&aacute;ny pro v&scaron;echny obchody spravovan&eacute; Manažerem1 i pro jak&eacute;hokoli jin&eacute;ho manažera uveden&eacute;ho v poli <i>DISTRICT_MANAGER_NAME</i>.
+    <p>Předpokl&aacute;dejme např&iacute;klad, že m&aacute;te bodov&eacute; prvky um&iacute;stěn&iacute; obchodů s&nbsp;polem představuj&iacute;c&iacute;m  <i>DISTRICT_MANAGER_NAME</i>, a chcete sumarizovat prodej k&aacute;vy podle manažerů. Pole <i>DISTRICT_MANAGER_NAME</i> můžete určit jako pole pro sloučen&iacute; a v&scaron;echny ř&aacute;dky dat představuj&iacute;c&iacute; jednotliv&eacute; manažery budou sumarizov&aacute;ny. To znamen&aacute;, že v&scaron;echna um&iacute;stěn&iacute; obchodů, kter&eacute; spravuje <pre>Manager1</pre>, budou sumarizov&aacute;na do jednoho ř&aacute;dku, s vypoč&iacute;tanou souhrnnou statistikou. V tomto př&iacute;padě by statistiky, jako je počet obchodů a hodnota <i>CELKOV&Yacute;CH_PRODEJŮ</i> byly vypoč&iacute;t&aacute;ny za v&scaron;echny obchody, kter&eacute; spravuje <pre>Manager1</pre>, , i v&scaron;ichni ostatn&iacute; manažeři uveden&iacute; v poli <i>DISTRICT_MANAGER_NAME</i> .
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -62,10 +61,19 @@
         </div>
     </div>
     <div id="fields">
-        <div><h2>Zvolit pole k sumarizaci</h2></div>
+        <div><h2>Zvolte, jak sumarizovat svá data</h2></div>
         <hr/>
         <div>
-            <p>Seznam pol&iacute; ze vstupn&iacute; vrstvy Vybran&aacute; pole budou sumarizov&aacute;na a použita pro v&yacute;počet statistiky. Pokud např&iacute;klad zvol&iacute;te pole s&nbsp;n&aacute;zvem  <i>TypNemovitosti</i> s&nbsp;hodnotami komerčn&iacute; a rezidenčn&iacute;, v&scaron;echna rezidenčn&iacute; pole budou sumarizov&aacute;na spolu a bude pro ně vypoč&iacute;t&aacute;na souhrnn&aacute; statistika, a v&scaron;echna komerčn&iacute; pole budou sumarizov&aacute;na spolu.
+            <p>Jsou dva způsoby, jak data sumarizovat:
+                <ul>
+                    <li> <b>V&scaron;echny prvky do jednoho prvku</b>&mdash;Vypoč&iacute;t&aacute; statistiku ze v&scaron;ech prvků.
+                    </li>
+                    <li> <b>Podle pol&iacute;</b>&mdash;Seskup&iacute; prvky podle podobn&yacute;ch hodnot ve specifikovan&yacute;ch pol&iacute;ch.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Předpokl&aacute;dejme např&iacute;klad, že m&aacute;te datov&yacute; soubor stromů, v němž jsou obsažena pole  <i>druh_stromu</i> s hodnotami <code>javor</code>, <code>jedle</code> a <code>borovice</code>, a pole <i>vyska_stromu</i>, a vy potřebujete vyhledat aritmetick&yacute; průměr hodnot <i>vyska_stromu</i>. Když v&scaron;echny prvky sumarizujete do jedin&eacute;ho prvku, tak zjist&iacute;te aritmetick&yacute; průměr v&yacute;&scaron;ky v&scaron;ech stromů, kter&eacute; budou vyj&aacute;dřeny jednou středn&iacute; hodnotou. Pokud byste sumarizaci provedli podle pole <i>vyska_stromu</i>, z&iacute;skali byste aritmetick&yacute; průměr za javory, aritmetick&yacute; průměr za jedle a aritmetick&yacute; průměr za borovice.
             </p>
         </div>
     </div>

@@ -44,11 +44,11 @@
         <h2>Zusammenfassen (in der Nähe)</h2><p/>
         <h2><img src="../images/GUID-A5033D27-81B6-42E7-BA38-50D25C1CCCCA-web.png" alt="Zusammenfassen (in der N&auml;he)"></h2>
         <hr/>
-    <p>  Dieses Werkzeug sucht Features, die sich innerhalb einer angegebenen Entfernung von Features im ersten Eingabe-Layer befinden, und fasst sie zusammen.  Die Entfernung kann als geradlinige Entfernung oder unter Verwendung eines ausgew&auml;hlten Reisemodus gemessen werden. Die verf&uuml;gbaren Optionen f&uuml;r den Reisemodus sind Fahrstrecke, Fahrzeit, Lkw-Strecke, Lkw-Fahrzeit, Gehstrecke oder Gehzeit. Anschlie&szlig;end werden Statistiken f&uuml;r die nahe gelegenen Features berechnet. Beispiel:
+    <p>Dieses Werkzeug sucht Features, die sich innerhalb einer angegebenen Entfernung von Features im ersten Eingabe-Layer befinden, und fasst sie zusammen. Die Entfernung kann als geradlinige Entfernung oder unter Verwendung eines ausgew&auml;hlten Reisemodus gemessen werden. Die verf&uuml;gbaren Optionen f&uuml;r den Reisemodus sind Fahrstrecke, Fahrzeit, Lkw-Strecke, Lkw-Fahrzeit, Gehstrecke oder Gehzeit. Anschlie&szlig;end werden Statistiken f&uuml;r die nahe gelegenen Features berechnet. Beispiel:
         <ul>
-            <li>Die Gesamtbev&ouml;lkerungszahl innerhalb der Fahrtzeit von f&uuml;nf Minuten von einem vorgeschlagenen neuen Ladenstandort ermitteln.
+            <li>Ermitteln Sie die Gesamtbev&ouml;lkerungszahl innerhalb der Fahrtzeit von f&uuml;nf Minuten von einem vorgeschlagenen neuen Ladenstandort.
             </li>
-            <li>Die Anzahl der Autobahnzufahrten innerhalb einer Fahrtstrecke von einem Kilometer von einem vorgeschlagenen neuen Ladenstandort ermitteln, um diese als Ma&szlig; f&uuml;r die Erreichbarkeit des neuen Standorts zu verwenden.
+            <li>Ermitteln Sie die Anzahl der Autobahnzufahrten innerhalb einer Fahrtstrecke von einem Kilometer von einem vorgeschlagenen neuen Ladenstandort, um diese als Ma&szlig; f&uuml;r die Erreichbarkeit des neuen Standorts zu verwenden.
             </li>
         </ul>
         
@@ -70,7 +70,7 @@
         </div>
     </div>
     <div id="Summarize">
-        <div><h2>Layer für die Zusammenfassung auswählen</h2></div>
+        <div><h2>Einen Layer für die Zusammenfassung auswählen</h2></div>
         <hr/>
         <div>
             <p>Features in diesem Layer, die sich innerhalb der angegebenen Entfernung zu Features im oben genannten Layer befinden, werden zusammengefasst. 
@@ -83,7 +83,7 @@
         <div><h2>Nächstgelegene Features zusammenfassen mithilfe von</h2></div>
         <hr/>
         <div>
-            <p> Sie k&ouml;nnen definieren, welche Art von Entfernungsmessung verwendet werden soll: eine geradlinige Entfernung oder ein ausgew&auml;hlter Reisemodus. Reisemodi werden nur dann aktiviert, wenn der erste Eingabe-Layer (der Layer, von dem aus Entfernungen gemessen werden) Punkte enth&auml;lt.  Die verf&uuml;gbaren Reisemodi werden vom Administrator Ihrer Organisation bestimmt. Wenn Sie einen der Reisemodi verwenden, werden die Messungen entlang Stra&szlig;en und Gehwegen vorgenommen, wobei alle geltenden Verkehrsregeln wie Einbahnstra&szlig;en, unzul&auml;ssige Wendepunkte usw. ber&uuml;cksichtigt werden. Die Fahrzeit ber&uuml;cksichtigt Ihre ausgew&auml;hlten Reisegeschwindigkeiten, die entweder auf Live- oder typischen Verkehrsdaten basieren. Live-Geschwindigkeiten werden durch aktuelle Sensormessungen gesammelt und typische Geschwindigkeiten werden anhand von historischen Durchschnittswerten berechnet.
+            <p> Sie k&ouml;nnen definieren, welche Art von Entfernungsmessung verwendet werden soll: eine geradlinige Entfernung oder ein ausgew&auml;hlter Reisemodus. Reisemodi werden nur dann aktiviert, wenn der erste Eingabe-Layer (der Layer, von dem aus Entfernungen gemessen werden) Punkte enth&auml;lt.  Die verf&uuml;gbaren Reisemodi werden vom Administrator Ihrer Organisation bestimmt. Wenn Sie einen der Reisemodi verwenden, werden die Messungen entlang Stra&szlig;en und Gehwegen vorgenommen, wobei alle geltenden Verkehrsregeln wie Einbahnstra&szlig;en, unzul&auml;ssige Wendepunkte usw. ber&uuml;cksichtigt werden. Bei der <b>Fahrzeit</b>, der <b>Fahrzeit auf Landstra&szlig;en</b> und der <b>Lkw-Fahrzeit</b> wird die gew&auml;hlte Reisegeschwindigkeit ber&uuml;cksichtigt. Dabei k&ouml;nnen wahlweise Live- oder typischen Verkehrsdaten zugrunde gelegt werden. Live-Geschwindigkeiten werden durch aktuelle Sensormessungen gesammelt und typische Geschwindigkeiten werden anhand von historischen Durchschnittswerten berechnet.
             </p>
             <p>Sie k&ouml;nnen mehrere Entfernungen eingeben. Features, die innerhalb der eingegebenen Entfernungen liegen (oder ihnen entsprechen), werden zusammengefasst.  
             </p>
@@ -97,18 +97,19 @@
         <div>
             <p>Sie k&ouml;nnen optional Statistiken aller numerischen Attribute der nahe gelegenen Punkte berechnen. 
             </p>
-            <p>Wenn das Kontrollk&auml;stchen  <b>Anzahl der Punkte</b> aktiviert ist, wird die Gesamtzahl der nahe gelegenen Punkte berechnet.  Au&szlig;erdem k&ouml;nnen Sie Statistiken f&uuml;r numerische Felder der nahe gelegenen Punkte berechnen.
+            <p>Wenn das Kontrollk&auml;stchen  <b>Anzahl der Punkte</b> aktiviert ist, wird die Gesamtzahl der nahe gelegenen Punkte berechnet.
+  Au&szlig;erdem k&ouml;nnen Sie Statistiken f&uuml;r numerische Felder der nahe gelegenen Punkte berechnen.
             </p>
             <ul>
-                <li> <b>Summe</b> &ndash; Der Gesamtwert f&uuml;r das angegebene Feld
+                <li> <b>Summe</b>: Der Gesamtwert f&uuml;r das angegebene Feld.
                 </li>
-                <li> <b>Durchschnitt</b> &ndash; Der Durchschnitt bzw. Mittelwert f&uuml;r das angegebene Feld
+                <li> <b>Durchschnitt</b>: Der Durchschnitt bzw. Mittelwert f&uuml;r das angegebene Feld.
                 </li>
-                <li> <b>Minimum</b> &ndash; Der kleinste Wert im angegebenen Feld
+                <li> <b>Minimum</b>: Der kleinste Wert im angegebenen Feld.
                 </li>
-                <li> <b>Maximum</b> &ndash; Der gr&ouml;&szlig;te Wert im angegebenen Feld
+                <li> <b>Maximum</b>: Der gr&ouml;&szlig;te Wert im angegebenen Feld.
                 </li>
-                <li> <b>Standard abweichung</b> &ndash; Die Standardabweichung der Werte im angegebenen Feld.
+                <li> <b>Standard abweichung</b>: Die Standardabweichung der Werte im angegebenen Feld.
                 </li>
             </ul>
             
@@ -123,15 +124,15 @@
             <p>Wenn das Kontrollk&auml;stchen  <b>Gesamtl&auml;nge</b> aktiviert ist, wird die Gesamtl&auml;nge der nahe gelegenen Linien berechnet.  Au&szlig;erdem k&ouml;nnen Sie Statistiken f&uuml;r numerische Felder der nahe gelegenen Linien berechnen.
             </p>
             <ul>
-                <li> <b>Summe</b> &ndash; Der Gesamtwert f&uuml;r das angegebene Feld
+                <li> <b>Summe</b>: Der Gesamtwert f&uuml;r das angegebene Feld.
                 </li>
-                <li> <b>Durchschnitt</b> &ndash; Der Durchschnitt bzw. Mittelwert f&uuml;r das angegebene Feld
+                <li> <b>Durchschnitt</b>: Der Durchschnitt bzw. Mittelwert f&uuml;r das angegebene Feld.
                 </li>
-                <li> <b>Minimum</b> &ndash; Der kleinste Wert im angegebenen Feld
+                <li> <b>Minimum</b>: Der kleinste Wert im angegebenen Feld.
                 </li>
-                <li> <b>Maximum</b> &ndash; Der gr&ouml;&szlig;te Wert im angegebenen Feld
+                <li> <b>Maximum</b>: Der gr&ouml;&szlig;te Wert im angegebenen Feld.
                 </li>
-                <li> <b>Standard abweichung</b> &ndash; Die Standardabweichung der Werte im angegebenen Feld.
+                <li> <b>Standard abweichung</b>: Die Standardabweichung der Werte im angegebenen Feld.
                 </li>
             </ul>
             
@@ -146,15 +147,15 @@
             <p>Wenn das Kontrollk&auml;stchen  <b>Gesamtfl&auml;che</b> aktiviert ist, wird die Gesamtfl&auml;che der nahe gelegenen Features berechnet.  Au&szlig;erdem k&ouml;nnen Sie Statistiken f&uuml;r numerische Felder der nahe gelegenen Features berechnen.
             </p>
             <ul>
-                <li> <b>Summe</b> &ndash; Der Gesamtwert f&uuml;r das angegebene Feld
+                <li> <b>Summe</b>: Der Gesamtwert f&uuml;r das angegebene Feld.
                 </li>
-                <li> <b>Durchschnitt</b> &ndash; Der Durchschnitt bzw. Mittelwert f&uuml;r das angegebene Feld
+                <li> <b>Durchschnitt</b>: Der Durchschnitt bzw. Mittelwert f&uuml;r das angegebene Feld.
                 </li>
-                <li> <b>Minimum</b> &ndash; Der kleinste Wert im angegebenen Feld
+                <li> <b>Minimum</b>: Der kleinste Wert im angegebenen Feld.
                 </li>
-                <li> <b>Maximum</b> &ndash; Der gr&ouml;&szlig;te Wert im angegebenen Feld
+                <li> <b>Maximum</b>: Der gr&ouml;&szlig;te Wert im angegebenen Feld.
                 </li>
-                <li> <b>Standard abweichung</b> &ndash; Die Standardabweichung der Werte im angegebenen Feld.
+                <li> <b>Standard abweichung</b>: Die Standardabweichung der Werte im angegebenen Feld.
                 </li>
             </ul>
             
@@ -167,15 +168,15 @@
             <p>Nachdem Sie einen Layer ausgew&auml;hlt haben, der zusammengefasst werden soll, k&ouml;nnen Sie optional Statistiken aller numerischen Attribute der nahe gelegenen Punkte, Linien oder Fl&auml;chen berechnen. 
             </p>
             <ul>
-                <li> <b>Summe</b> &ndash; Der Gesamtwert f&uuml;r das angegebene Feld
+                <li> <b>Summe</b>: Der Gesamtwert f&uuml;r das angegebene Feld.
                 </li>
-                <li> <b>Durchschnitt</b> &ndash; Der Durchschnitt bzw. Mittelwert f&uuml;r das angegebene Feld
+                <li> <b>Durchschnitt</b>: Der Durchschnitt bzw. Mittelwert f&uuml;r das angegebene Feld.
                 </li>
-                <li> <b>Minimum</b> &ndash; Der kleinste Wert im angegebenen Feld
+                <li> <b>Minimum</b>: Der kleinste Wert im angegebenen Feld.
                 </li>
-                <li> <b>Maximum</b> &ndash; Der gr&ouml;&szlig;te Wert im angegebenen Feld
+                <li> <b>Maximum</b>: Der gr&ouml;&szlig;te Wert im angegebenen Feld.
                 </li>
-                <li> <b>Standard abweichung</b> &ndash; Die Standardabweichung der Werte im angegebenen Feld.
+                <li> <b>Standard abweichung</b>: Die Standardabweichung der Werte im angegebenen Feld.
                 </li>
             </ul>
             

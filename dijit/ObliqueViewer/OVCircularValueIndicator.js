@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojox/gfx","dojox/dgauges/ScaleIndicatorBase","dojo/_base/event"],function(e,i,t,a){return e("esri.dijit.ObliqueViewer.OVCircularValueIndicator",t,{indicatorShapeFunc:function(e,i){return e.createLine({x1:0,y1:0,x2:40,y2:0}).setStroke({color:"black",width:1})},refreshRendering:function(){this.inherited(arguments);var e=isNaN(this._transitionValue)?this.value:this._transitionValue,t=this.scale.positionForValue(e);this._gfxGroup.setTransform([{dx:this.scale.originX,dy:this.scale.originY},i.matrix.rotateg(t)])},_onMouseDown:function(e){this.inherited(arguments);var i=this.scale._gauge._gaugeToPage(this.scale.originX,this.scale.originY),t=180*Math.atan2(e.pageY-i.y,e.pageX-i.x)/Math.PI+this.azimuthAngle;this.set("value",this.scale.valueForPosition(t)),a.stop(e)},_onMouseMove:function(e){this.inherited(arguments);var i=this.scale._gauge._gaugeToPage(this.scale.originX,this.scale.originY),t=180*Math.atan2(e.pageY-i.y,e.pageX-i.x)/Math.PI+this.azimuthAngle;this.set("value",this.scale.valueForPosition(t))}})});

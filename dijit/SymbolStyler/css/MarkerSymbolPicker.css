@@ -44,6 +44,12 @@
   width: 100%;
 }
 
+.esriMarkerSymbolPicker .dijitSelectLabel {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 17em; 
+}
+
 .esriMarkerSymbolPicker .esriOverlay {
   position: absolute;
   left: 0;

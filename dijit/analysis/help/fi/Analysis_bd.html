@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="bdToolbox">
-        <p>Big Data -analytiikka hajauttaa analyysiteht&auml;v&auml;t ArcGIS GeoAnalytics -palvelimelle. N&auml;in voit analysoida aiempaa enemm&auml;n tietoja entist&auml; nopeammin hy&ouml;dynt&auml;m&auml;ll&auml; useiden koneiden tehoa. Saatavissa ovat seuraavat ty&ouml;kalut:
+        <p>GeoAnalytics hajauttaa analyysiteht&auml;v&auml;t ArcGIS GeoAnalytics -palvelimelle. N&auml;in voit analysoida aiempaa enemm&auml;n tietoja entist&auml; nopeammin hy&ouml;dynt&auml;m&auml;ll&auml; useiden koneiden tehoa. Saatavissa ovat seuraavat ty&ouml;kalut:
             <ul>
                 <li> <b>Koosta pisteet</b>
                 </li>
@@ -53,6 +53,8 @@
                 </li>
                 <li> <b>Yhteenveto alueella</b>
                 </li>
+                <li> <b>Havaitse tapahtumat</b>
+                </li>
                 <li> <b>Etsi samankaltaisia sijainteja</b>
                 </li>
                 <li> <b>Laske tiheys</b>
@@ -63,10 +65,14 @@
                 </li>
                 <li> <b>Kopioi aineistos&auml;il&ouml;&ouml;n</b>
                 </li>
+                <li> <b>Laske kentt&auml;</b>
+                </li>
+                <li> <b>Geokoodaa sijainnit taulukosta</b>
+                </li>
             </ul>
             
         </p>
-        <p>Big Data -analytiikka analysoi suuremman m&auml;&auml;r&auml;n tietoja painottaen sek&auml; paikka- ett&auml; aikatietoja. 
+        <p>GeoAnalytics analysoi suuremman m&auml;&auml;r&auml;n tietoja painottaen sek&auml; paikka- ett&auml; aikatietoja. 
         </p>
     </div>
     <div id="SummarizeDataCategory" class="largesize">
@@ -125,11 +131,11 @@
 <hr/>
             <p>Kohdekarttatasojen tai taulukkoaineiston avulla voit liitt&auml;&auml; kohteita ja tietueita l&auml;ht&ouml;aineiston karttatasojen tai taulukoiden tiettyjen suhteiden perusteella.  Liitokset m&auml;&auml;r&auml;ytyv&auml;t tila-, aika- ja ominaisuustietosuhteiden mukaan, ja yhteenvetotilastotiedot lasketaan valinnaisesti.  
             </p>
-            <p> Esimerkki
+            <p>Esimerkki
                 <ul>
                     <li>Jos rikosten tapahtumasijainnit ja -ajat on annettu, voit m&auml;&auml;ritt&auml;&auml;, tapahtuuko rikoksia sijainnillisesti ja ajallisesti l&auml;hekk&auml;in, liitt&auml;m&auml;ll&auml; rikosten tiedot toisiinsa siten, ett&auml; m&auml;&auml;rit&auml;t niiden rikosten sijaintisuhteen, jotka ovat tapahtuneet tunnin v&auml;lein yhden kilometrin et&auml;isyydell&auml; toisistaan.
                     </li>
-                    <li> Jos postinumerotaulukko, demografiatiedot ja asuinrakennuksia esitt&auml;v&auml;t aluekohteet on annettu, voit liitt&auml;&auml; demografiatiedot asuinpaikkoihin, jotta jokaisella asuinpaikalla on tiedot.
+                    <li>Jos postinumerotaulukko, demografiatiedot ja asuinrakennuksia esitt&auml;v&auml;t aluekohteet on annettu, voit liitt&auml;&auml; demografiatiedot asuinpaikkoihin, jotta jokaisella asuinpaikalla on tiedot.
                     </li>
                 </ul>
                 
@@ -153,7 +159,7 @@
                 <ul>
                     <li>Jos hurrikaanimittausten pistesijainnit ja aika on annettu, voit laskea hurrikaanin tuulen keskinopeuden ja enimm&auml;ispaineen.
                     </li>
-                    <li>Voit etsi&auml; my&ouml;s yrityksen korkeimman ja alhaisimman kuukausituoton toimipisteet k&auml;ytt&auml;m&auml;ll&auml; 100 kilometrin lohkoja.
+                    <li>K&auml;yt&auml; laivojen GPS-mittauksia  laivareittien uudelleen muodostamiseksi viivoina.
                     </li>
                 </ul>
                 
@@ -166,7 +172,7 @@
                 <tbody><tr>
                     <td><h2>Laadi yhteenveto ominaisuustiedoista</h2></td>
                     <td>
-                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="Laadi yhteenveto ominaisuustiedoista">
+                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="Laadi yhteenveto ominaisuustiedoista -kaavio">
                     </td>
                 </tr></tbody>
             </table>
@@ -208,17 +214,64 @@
             </p>
             <br/>
         </div>
-    <div id="FindLocationsCategory" class="smallsize">
+    <div id="FindLocationsCategory" class="regularsize">
         <h2>Hae sijainnit</h2>
         <hr/>
         <p>N&auml;iden ty&ouml;kalujen avulla voidaan tunnistaa alueet, jotka vastaavat useita erilaisia m&auml;&auml;ritt&auml;mi&auml;si kriteerej&auml;.   
             <ul>
+                <li> <b>Havaitse tapahtumat</b> toimii ajan huomioivissa karttatasoissa sen selvitt&auml;miseksi, mitk&auml; kohteet t&auml;ytt&auml;v&auml;t m&auml;&auml;ritetyn ehdon.
+                </li>
+                <li> <b>Geokoodaa sijainnit taulukosta</b> muuntaa osoitteet koordinaateiksi.
+                </li>
                 <li> <b>Etsi samankaltaisia sijainteja</b> hakee sijainteja, jotka ovat mahdollisimman samanlaisia kuin viitesijainnit ja m&auml;&auml;ritt&auml;m&auml;si vastaavuusehdot.
                 </li>
             </ul>
             
         </p>
     </div>
+        <div id="DetectIncidentsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Havaitse tapahtumat</h2></td>
+                    <td>
+                    <img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" class="titleImage" alt="Havaitse tapahtumat">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> <img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Havaitse tapahtumat">
+            </p>
+            <p>T&auml;m&auml; ty&ouml;kalu toimii sellaisen karttatason kanssa, jossa on otettu aika k&auml;ytt&ouml;&ouml;n ja joka sis&auml;lt&auml;&auml; hetke&auml; ajassa kuvaavia pisteit&auml;, viivoja, alueita tai taulukoita. K&auml;ytt&auml;m&auml;ll&auml; per&auml;kk&auml;isess&auml; j&auml;rjestyksess&auml; olevia kohteita, joita kutsutaan reiteiksi, t&auml;m&auml; ty&ouml;kalu m&auml;&auml;ritt&auml;&auml;, mitk&auml; kohteet ovat kiinnostavia tapahtumia. Tapahtumat m&auml;&auml;ritet&auml;&auml;n m&auml;&auml;ritt&auml;miesi ehtojen perusteella. 
+            </p>
+            <p>Esimerkki
+                <ul>
+                    <li>Havaitse hurrikaanimittauksia, jotka ovat 4. kategorian hurrikaaneja tuulen nopeuteen liittyv&auml;n ominaisuustiedon perusteella.
+                    </li>
+                    <li>K&auml;ytt&auml;m&auml;ll&auml; laivojen liikkeit&auml; kuvaavia GPS-mittauksia, joissa kentt&auml; edustaa laivan nopeutta, voi l&ouml;yt&auml;&auml; mittauksia, jotka ovat suurempia kuin 1,5 kertaa edellisen viiden mittauksen keskiarvo.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="GeocodeLocationsfromTableTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Geokoodaa sijainnit taulukosta</h2></td>
+                    <td>
+                    <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" class="titleImage" alt="Geokoodaa sijainnit taulukosta">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" alt="Geokoodaa sijainnit taulukosta">
+            </p>
+            <p>Muuntaa osoitteet koordinaateiksi. K&auml;yt&auml; t&auml;t&auml; ty&ouml;kalua Big Data -tiedostojaon taulukoissa.
+            </p>
+            <br/>
+        </div>
         <div id="FindSimilarLocationsTool" class="largesize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -232,7 +285,7 @@
 <hr/>
             <p>M&auml;&auml;ritt&auml;miesi ehtojen perusteella voit etsi&auml; samankaltaisia sijainteja mittaamalla ehdokashakukarttatason sijaintien samankaltaisuutta v&auml;hint&auml;&auml;n yhteen viitesijaintiin. 
             </p>
-            <p> Esimerkki
+            <p>Esimerkki 
                 <ul>
                     <li>Etsi kymmenen samankaltaisinta myym&auml;l&auml;&auml; tutkimalla ty&ouml;ntekij&ouml;iden m&auml;&auml;r&auml;&auml; ja vuosimyynti&auml;.
                     </li>
@@ -262,14 +315,14 @@
                 <tbody><tr>
                     <td><h2>Laske tiheys</h2></td>
                     <td>
-                    <img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" class="titleImage" alt="Calculate Density">
+                    <img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" class="titleImage" alt="Laske tiheys">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
             <p>Laske tiheys -ty&ouml;kalu luo tiheyskartan pistekohteista jakamalla tietyn ilmi&ouml;n tunnetut m&auml;&auml;r&auml;t (esitet&auml;&auml;n pisteiden ominaisuustietoina) kartan alueelle. Tuloksena on tiheytt&auml; esitt&auml;vien alueiden karttataso.
             </p>
-            <p> Esimerkki
+            <p>Esimerkki
                 <ul>
                     <li>Maan sairaaloiden tiheyksien laskeminen. Tulostaso n&auml;ytt&auml;&auml; alueet, joilta sairaalaan p&auml;&auml;sy on helppoa tai vaikeaa. N&auml;it&auml; tietoja voidaan k&auml;ytt&auml;&auml; apuna p&auml;&auml;tett&auml;ess&auml; uusien sairaaloiden sijainneista.
                     </li>
@@ -328,7 +381,7 @@
 <hr/>
             <p>Puskuri on alue, joka muodostuu annetun et&auml;isyyden p&auml;&auml;h&auml;n piste-, viiva- tai aluekohteesta.
             </p>
-            <p> Esimerkki
+            <p>Esimerkki
                 <ul>
                     <li>M&auml;&auml;rit&auml; rantarajaehdotus puskuroimalla jokainen joki lineaaristen jokikohteiden avulla joen 50-kertaisella leveydell&auml;.
                     </li>
@@ -339,12 +392,14 @@
             </p>
             <br/>
         </div>
-    <div id="ManageDataCategory" class="smallsize">
+    <div id="ManageDataCategory" class="regularsize">
         <h2>Hallitse aineistoa</h2>
         <hr/>
         <p>N&auml;it&auml; ty&ouml;kaluja k&auml;ytet&auml;&auml;n maantieteellisen aineiston ja taulukkoaineiston p&auml;ivitt&auml;iseen hallintaan.
             <ul>
-                <li> <b>Kopioi aineistos&auml;il&ouml;&ouml;n</b> kopioi aineiston ArcGIS Data Store -aineistos&auml;il&ouml;&ouml;n ja luo karttatason Web GIS -ohjelmassa.
+                <li> <b>Laske kentt&auml;</b> luo uuden kent&auml;n tai muokkaa aiemmin luotua kentt&auml;&auml; ja luo uuden karttatason sis&auml;lt&ouml;&ouml;si.
+                </li>
+                <li> <b>Kopioi aineistos&auml;il&ouml;&ouml;n</b> kopioi aineiston ArcGIS Data Store -aineistos&auml;il&ouml;&ouml;n ja luo karttatason sis&auml;lt&ouml;&ouml;si.
                 </li>
             </ul>
             
@@ -361,12 +416,35 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Kopioi l&auml;ht&ouml;aineiston kohdekarttatason tai taulukon  ArcGIS Data Store -aineistos&auml;il&ouml;&ouml;n ja luo karttatason Web GIS -ohjelmassa. </p>
-            <p> Esimerkki
+            <p>Kopioi l&auml;ht&ouml;aineiston kohdekarttatason tai taulukon  ArcGIS Data Store -aineistos&auml;il&ouml;&ouml;n ja luo karttatason sis&auml;lt&ouml;&ouml;si kohteessa  ArcGIS Enterprise. </p>
+            <p>Esimerkki
                 <ul>
-                    <li> Voit kopioida Big Data -tiedostoresurssin <code>.csv</code> tiedostokokoelman tila-aikamuotoiseen aineistos&auml;il&ouml;&ouml;n visualisointia varten.
+                    <li>Voit kopioida Big Data -tiedostoresurssin  <code>.csv</code> tiedostokokoelman tila-aikamuotoiseen aineistos&auml;il&ouml;&ouml;n visualisointia varten.
                     </li>
                     <li>Voit kopioida tila-aikamuotoiseen aineistos&auml;il&ouml;&ouml;n tallennetut nykyisen karttalaajuuden kohteet relaatioaineistos&auml;il&ouml;&ouml;n.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="CalculateFieldTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Laske kenttä</h2></td>
+                    <td>
+                    <img src="../images/GUID-059C9BE7-7B00-49C8-9917-B0EAEA3DA19D-web.png" class="titleImage" alt="Laske kentt&auml;">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Laskee uuden tai aiemmin luodun kent&auml;n arvot ja luo karttatason sis&auml;lt&ouml;&ouml;si kohteessa  ArcGIS Enterprise. </p>
+            <p>Esimerkki
+                <ul>
+                    <li>Muokkaa aiemmin luotua kentt&auml;&auml; nimelt&auml;  <i>total</i> siten, ett&auml; se esitt&auml;&auml; kenttien <i>total_2016</i>, <i>total_2017</i> ja <i>total_2018</i> tuottojen summaa.
+                    </li>
+                    <li>Luo uusi kentt&auml;, jolla voit luokitella vahinkojen tasot kenttien arvojen, kuten  <i>windspeed</i> ja <i>pollutant</i> perusteella.
                     </li>
                 </ul>
                 

@@ -51,7 +51,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="targetLayer">
-        <div><h2>Ecolher camada de destino</h2></div>
+        <div><h2>Escolher camada de destino</h2></div>
         <hr/>
         <div>
             <p>A camada que ter&aacute;  atributos da camada de liga&ccedil;&atilde;o anexada &agrave; sua tabela.
@@ -63,7 +63,7 @@
         </div>
     </div>
     <div id="joinLayer">
-        <div><h2>Escolha a camada para ligar à camada de destino</h2></div>
+        <div><h2>Escolha a camada para ligar na camada de destino</h2></div>
         <hr/>
         <div>
             <p>A camada de liga&ccedil;&atilde;o com os atributos que ser&atilde;o anexados &agrave; camada de destino.
@@ -76,7 +76,7 @@
         <div><h2>Escolher operação de ligação</h2></div>
         <hr/>
         <div>
-            <p>Determina como liga&ccedil;&otilde;es entre as camadas de liga&ccedil;&atilde;o e destino ser&atilde;o manipuladas na sa&iacute;da se forem encontradas m&uacute;ltiplas fei&ccedil;&otilde;es de liga&ccedil;&atilde;o com o mesmo relacionamento na camada que est&aacute; sendo ligada. H&aacute; duas opera&ccedil;&otilde;es de liga&ccedil;&atilde;o das quais escolher:
+            <p>Determina como liga&ccedil;&otilde;es entre as camadas de liga&ccedil;&atilde;o e de destino ser&atilde;o manipuladas na sa&iacute;da se forem encontradas m&uacute;ltiplas fei&ccedil;&otilde;es de liga&ccedil;&atilde;o com o mesmo relacionamento na camada que est&aacute; sendo ligada. H&aacute; duas opera&ccedil;&otilde;es de liga&ccedil;&atilde;o das quais escolher:
                 <ul>
                     <li> <b>Liga&ccedil;&atilde;o um para um</b>&mdash;Esta op&ccedil;&atilde;o resume todas as fei&ccedil;&otilde;es correspondentes &agrave; cada fei&ccedil;&atilde;o sendo ligada.
                     </li>
@@ -85,12 +85,12 @@
                 </ul>
                 
             </p>
-            <p>Por exemplo, suponha que desejamos localizar os supermercados dentro de 2 quil&ocirc;metros de um mercado de agricultores.    Neste caso a camada sendo ligada tem uma &uacute;nica fei&ccedil;&atilde;o representando um mercado de agricultores, e as fei&ccedil;&otilde;es de liga&ccedil;&atilde;o representam os supermercados locais que t&ecirc;m atributos como total de vendas anual. Utilizando a ferramenta  <b>Ligar Fei&ccedil;&otilde;es</b>, localizamos cinco supermercados que atendem os crit&eacute;rios. Se especificarmos uma opera&ccedil;&atilde;o de liga&ccedil;&atilde;o como <b>Liga&ccedil;&atilde;o um para muitos</b>, acabaremos com cinco fei&ccedil;&otilde;es em nosso resultado, cada linha representando o mercado de agricultores e um supermercado. Se especificarmos um relacionamento de <b>Liga&ccedil;&atilde;o um para um</b>, acabaremos com uma fei&ccedil;&atilde;o representando o mercado de agricultores e as informa&ccedil;&otilde;es resumidas dos supermercados, como a contagem (2), e outra estat&iacute;stica como a soma de vendas anuais.
+            <p>Por exemplo, suponha que desejamos localizar os supermercados dentro de 2 quil&ocirc;metros de um mercado de agricultores. Neste caso a camada sendo ligada tem uma &uacute;nica fei&ccedil;&atilde;o representando um mercado de agricultores, e as fei&ccedil;&otilde;es de liga&ccedil;&atilde;o representam os supermercados locais que t&ecirc;m atributos como total de vendas anual. Utilizando a ferramenta  <b>Ligar Fei&ccedil;&otilde;es</b>, localizamos cinco supermercados que atendem os crit&eacute;rios. Se especificarmos uma opera&ccedil;&atilde;o de liga&ccedil;&atilde;o como <b>Liga&ccedil;&atilde;o um para muitos</b>, acabaremos com cinco fei&ccedil;&otilde;es em nosso resultado, cada linha representando o mercado de agricultores e um supermercado. Se especificarmos um relacionamento de <b>Liga&ccedil;&atilde;o um para um</b> , acabaremos com uma fei&ccedil;&atilde;o representando o mercado de agricultores e as informa&ccedil;&otilde;es resumidas dos supermercados, como a contagem (2), e outra estat&iacute;stica como a soma de vendas anuais.
             </p>
         </div>
     </div>
     <div id="joinOptions">
-        <div><h2>Selecionar uma ou mais ligações</h2></div>
+        <div><h2>Slecione uma ou mais ligações</h2></div>
         <hr/>
         <div>
             <p>Voc&ecirc; pode aplicar um, dois ou tr&ecirc;s tipos de liga&ccedil;&atilde;o. Os tipos de liga&ccedil;&otilde;es incluem o seguinte: 
@@ -118,7 +118,7 @@
                     </li>
                     <li> <b>Id&ecirc;ntica</b>&mdash;As fei&ccedil;&otilde;es ser&atilde;o correspondidas se tiverem a mesma geometria.
                     </li>
-                    <li> <b>Proximidade</b>&mdash;As fei&ccedil;&otilde;es ser&atilde;o correspondidas se estiverem dentro de uma dist&acirc;ncia especificada uma da outra. A camada de destino deve estar em um sistema de coordenadas planas ou a refer&ecirc;ncia espacial de processamento deve ser definida para um sistema de coordenadas planas utilizando <b>Ambientes de An&aacute;lise</b> se um relacionamento espacial <b>Proximidade</b> for utilizado.
+                    <li> <b>Pr&oacute;xima</b>&mdash;As fei&ccedil;&otilde;es ser&atilde;o correspondidas se estiverem dentro de uma dist&acirc;ncia especificada uma da outra. A camada de destino deve estar em um sistema de coordenadas planas ou a refer&ecirc;ncia espacial de processamento deve ser definida para um sistema de coordenadas planas utilizando <b>Ambientes de An&aacute;lise</b> se um relacionamento espacial <b>Proximidade</b> for utilizado.
                     </li>
                     <li> <b>Cont&eacute;m</b>&mdash;As fei&ccedil;&otilde;es ser&atilde;o correspondidas se a camada sendo ligada estiver contida nas fei&ccedil;&otilde;es de liga&ccedil;&atilde;o.
                     </li>
@@ -206,7 +206,7 @@
         <div><h2>Adicionar estatísticas (opcional)</h2></div>
         <hr/>
         <div>
-            <p>Se a opera&ccedil;&atilde;o de liga&ccedil;&atilde;o for   <b>Liga&ccedil;&atilde;oum para um</b>, voc&ecirc; poder&aacute; calcular estat&iacute;sticas em suas fei&ccedil;&otilde;es ligadas. Por padr&atilde;o, todas as estat&iacute;sticas ser&atilde;o calculadas.
+            <p>Se a opera&ccedil;&atilde;o de liga&ccedil;&atilde;o for  <b>Liga&ccedil;&atilde;o de um para um</b>, voc&ecirc; pode calcular estat&iacute;sticas em suas fei&ccedil;&otilde;es ligadas. Por padr&atilde;o, todas estat&iacute;stica ser&atilde;o calculadas.
             </p>
             <p>Voc&ecirc; pode calcular as estat&iacute;stica em fei&ccedil;&otilde;es que s&atilde;o resumidas. Nos campos num&eacute;ricos voc&ecirc; pode calcular o seguinte:
                 <ul>
@@ -248,7 +248,7 @@
         <div>
             <p>Aplica uma condi&ccedil;&atilde;o para campos especificados. Somente fei&ccedil;&otilde;es com campos que atendem estas condi&ccedil;&otilde;es ser&atilde;o ligadas.
             </p>
-            <p>Por exemplo, suponha que desejamos aplicar uma liga&ccedil;&atilde;o para um conjunto de dados para somente estas fei&ccedil;&otilde;es onde  <i>health_spending</i> &eacute; maior que 20 por cento de <i>income</i>.  Para fazer isto, aplique uma condi&ccedil;&atilde;o de liga&ccedil;&atilde;o de <code>target.health_spending &gt; (join.income * .20)</code> utilizando um campo <i>health_spending</i> do primeiro conjunto de dados (as fei&ccedil;&otilde;es do conjunto de dados s&atilde;o ligadas em) e o campo <i>income</i> do segundo conjunto de dados (o conjunto de dados sendo ligado).
+            <p>Por exemplo, suponha que desejamos aplicar uma liga&ccedil;&atilde;o para um conjunto de dados para somente estas fei&ccedil;&otilde;es onde  <i>health_spending</i> &eacute; maior que 20 por cento de <i>income</i>.  Para fazer isto,  aplique uma condi&ccedil;&atilde;o de liga&ccedil;&atilde;o de <code>$target[&quot;health_spending&quot;] &gt; ($join[&quot;income&quot;] * .20)</code> utilizando um campo <i>health_spending</i> do primeiro conjunto de dados (as fei&ccedil;&otilde;es do conjunto de dados s&atilde;o ligadas em) e o campo <i>income</i> do segundo conjunto de dados (o conjunto de dados sendo ligado).
             </p>
             <p>As condi&ccedil;&otilde;es de liga&ccedil;&atilde;o podem ser aplicadas utilizando a calculadora de express&atilde;o.
             </p>

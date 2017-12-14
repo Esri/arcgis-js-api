@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
 define(["dojo/dom-construct","../InfographicContainer"],function(n,e){var o={};return o.createInfographicPage=function(o,a){var c=o.node?n.create("div",null,o.node):void 0,r=new(a||e)(o.creationParams,c);return"function"==typeof o.placeFunc&&o.placeFunc(r),r.updateInfographic(o.json),r},o});

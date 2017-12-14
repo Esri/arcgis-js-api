@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
 define(["require","exports","esri/Color"],function(n,r,e){var t=function(){function n(n){return new e(n)}return n.toUnitRGBA=function(n){return[n.r/255,n.g/255,n.b/255,null!=n.a?n.a:1]},n}();return t});

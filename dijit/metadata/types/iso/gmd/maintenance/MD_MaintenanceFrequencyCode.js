@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../../base/Descriptor","../../../../form/InputSelectOne","../../../../form/Options","../../../../form/Option","../../../../form/iso/CodeListAttribute","../../../../form/iso/CodeListValueAttribute","../../../../form/iso/CodeListElement","../../../../form/iso/CodeSpaceAttribute","dojo/text!./templates/MD_MaintenanceFrequencyCode.html","../../../../../../kernel"],function(e,t,o,n,i,r,a,s,d,m,c,f,l){var u=e(n,{templateString:f});return o("extend-esri")&&t.setObject("dijit.metadata.types.iso.gmd.maintenance.MD_MaintenanceFrequencyCode",u,l),u});

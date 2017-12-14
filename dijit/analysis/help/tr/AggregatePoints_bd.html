@@ -41,10 +41,10 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Noktaları Kümeleme</h2><p/>
-        <h2><img src="../images/GUID-6C1620D9-D176-41FA-8283-833D8B1CCCFC-web.png" alt="Noktaları Birleştir"></h2>
+        <h2>Toplanan Noktalar</h2><p/>
+        <h2><img src="../images/GUID-6C1620D9-D176-41FA-8283-833D8B1CCCFC-web.png" alt="Toplanan Noktalar"></h2>
         <hr/>
-    <p>Bu ara&ccedil;, nokta detayları katmanı ve alan detayları katmanı ile &ccedil;alışır.  Girdi alanı detayları bir alan katmanından oluşabileceği gibi, ara&ccedil; &ccedil;alıştırıldığında hesaplanan kare veya altıgen kutu bi&ccedil;iminde de olabilir. Ara&ccedil;, &ouml;nce belirtilen alanların her birine hangi noktaların d&uuml;şeceğini belirler. Bu &quot;alan i&ccedil;indeki noktalar&quot; mekansal ilişkisini belirledikten sonra, alandaki t&uuml;m noktaların istatistikleri hesaplanır ve alana atanır. En temel istatistik alan i&ccedil;indeki nokta sayısıdır, ancak diğer istatistikleri de alabilirsiniz. 
+    <p>Bu ara&ccedil;, nokta detayları katmanı ve alan detayları katmanı ile &ccedil;alışır.  Girdi alanı detayları bir alan katmanından oluşabileceği gibi, ara&ccedil; &ccedil;alıştırıldığında hesaplanan kare veya altıgen kutu bi&ccedil;iminde de olabilir. Ara&ccedil;, &ouml;nce belirtilen alanların her birine hangi noktaların d&uuml;şeceğini belirler. Alan i&ccedil;indeki bu noktalar mekansal ilişkiyi belirledikten sonra, alandaki t&uuml;m noktaların istatistikleri hesaplanır ve alana atanır En temel istatistik alan i&ccedil;indeki nokta sayısıdır, ancak diğer istatistikleri de alabilirsiniz. 
 
     </p>
     <p>&Ouml;rneğin, elinizde kahve d&uuml;kkanı konumlarının nokta detayları ve &uuml;lkelerin alan detayları var ve &uuml;lkeye g&ouml;re kahve satışlarını &ouml;zetlemek istiyorsunuz. Kahve d&uuml;kkanlarının bir  <i>TOTAL_SALES</i> &ouml;zniteliği olduğunu varsayalım, her &uuml;lkedeki t&uuml;m <i>TOTAL_SALES</i> toplamını ya da her &uuml;lkedeki minimum ya da maksimum <i>TOTAL_SALES</i>
@@ -52,7 +52,7 @@
     </p>
     <p>Bu ara&ccedil; ayrıca zamana duyarlı verilerle de &ccedil;alışabilir. Girdi noktalarında zaman etkinleştirildiği takdirde, zaman dilimleme se&ccedil;enekleri kullanılabilir. Zaman dilimleme &ouml;zelliği, zaman i&ccedil;inde belirli bir zaman dilimini incelerken alan i&ccedil;indeki nokta ilişkisini hesaplamanıza olanak tanır. &Ouml;rneğin, her saat i&ccedil;in &ccedil;ıktı değerlerini veren saatlik aralıkları inceleyebilirsiniz. 
     </p>
-    <p>Zamanla ilgili bir &ouml;rnek vermek gerekirse, elinizde &ccedil;eşitli kahve d&uuml;kkanı konumlarındaki her işlemin nokta detaylarının olduğunu, ancak alan katmanı olmadığını varsayalım. Veriler bir yık boyunca kaydedilmiş ve her işlemin de bir konum ve zaman damgası olsun. Her işlemin bir  <i>TOTAL_SALES</i> &ouml;zniteliği bulunduğunu varsayarsak, dilediğiniz alan ve zamana ait t&uuml;m <i>TOTAL_SALES</i> toplamını elde edebilirsiniz. S&ouml;z konusu işlemler yalnızca bir şehir i&ccedil;inse, 1 kilometrelik kılavuzlar halinde alanlar oluşturulabilir ve hem zamana hem de alana g&ouml;re işlemleri &ouml;zetleyen haftalık zaman dilimleri incelenebilir.
+    <p>Zamanla ilgili bir &ouml;rnek vermek gerekirse, elinizde &ccedil;eşitli kahve d&uuml;kkanı konumlarındaki her işlemin nokta detaylarının olduğunu, ancak alan katmanı olmadığını varsayalım. It can be &quot;Veriler bir yıl boyunca kaydedildi ve her işlemin bir yeri ve zaman damgası var.&quot; Her işlemin bir  <i>TOTAL_SALES</i> &ouml;zniteliği bulunduğunu varsayarsak, dilediğiniz alan ve zamana ait t&uuml;m <i>TOTAL_SALES</i> toplamını elde edebilirsiniz. S&ouml;z konusu işlemler yalnızca bir şehir i&ccedil;inse, 1 kilometrelik kılavuzlar halinde alanlar oluşturulabilir ve hem zamana hem de alana g&ouml;re işlemleri &ouml;zetleyen haftalık zaman dilimleri incelenebilir.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -62,12 +62,12 @@
         <div>
             <p>Alan olarak birleştirilecek nokta katmanı.  <b>Kare</b> veya <b>Altıgen</b> kutularda k&uuml;melenmiş nokta katmanlarının izd&uuml;ş&uuml;mlenmiş bir koordinat sistemine <b>Analiz Ortamları</b> kullanılarak izd&uuml;ş&uuml;ml&uuml; bir koordinat sistemine ayarlanmış işleme mekansal başvurusu olmalıdır.
             </p>
-            <p>Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, a&ccedil;ılan listenin en altından  <b>Katmanlara G&ouml;zat</b> &ouml;ğesini belirleyerek big data dosya paylaşımı veri k&uuml;mesi veya detay katmanı i&ccedil;eriğinize g&ouml;z atabilirsiniz.
+            <p>Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, a&ccedil;ılan listenin en altından  <b>Katmanlara G&ouml;zat</b> &ouml;gesini belirleyerek b&uuml;y&uuml;k veri dosya paylaşımı veri k&uuml;mesi veya detay katmanı i&ccedil;eriğinize g&ouml;z atabilirsiniz.
             </p>
         </div>
     </div>
     <div id="inputAggregation">
-        <div><h2>Kümelemenin yapılacağı bir alan katmanı seçin</h2></div>
+        <div><h2>Birleştirecek bir alan katmanı seçin</h2></div>
         <hr/>
         <div>
             <p>Nokta katmanının i&ccedil;inde birleştirileceği alanlar. Kendi belirleyeceğiniz bir alan katmanı se&ccedil;ebileceğiniz gibi, ara&ccedil; &ccedil;alıştırıldığında oluşturulan kutulardan da se&ccedil;im yapabilirsiniz.   Kutu oluşturulurken  <b>Kare</b> i&ccedil;in belirtilen sayı ve birim karenin y&uuml;ksekliğini ve uzunluğunu belirler. <b>Altıgen</b> i&ccedil;in ise, belirtilen sayı ve birimler paralel kenarlar arasındaki mesafeyi belirler.
@@ -97,10 +97,10 @@
         </div>
     </div>
     <div id="timeSlicing">
-        <div><h2>Zaman adımlarını kullanarak kümele (isteğe bağlı)</h2></div>
+        <div><h2>Zaman adımlarını kullanarak birleştirme (isteğe bağlı)</h2></div>
         <hr/>
         <div>
-            <p>Girdi nokta katmanında zaman etkinleştirilmiş ve t&uuml;r&uuml; de anlık ise, zaman adımlamasını kullanarak analiz yapabilirsiniz. Zaman &ouml;ğesini kullanırken ayarlayabileceğiniz &uuml;&ccedil; parametre vardır:
+            <p>Girdi nokta katmanında zaman etkinleştirilmiş ve t&uuml;r&uuml; de anlık ise, zaman adımlamasını kullanarak analiz yapabilirsiniz. Zaman &ouml;gesini kullanırken ayarlayabileceğiniz &uuml;&ccedil; parametre vardır:
                 <ul>
                     <li> <b>Zaman adımı aralığı</b>
                     </li>
@@ -187,12 +187,12 @@
         <div><h2>SpatialReference (wkid)</h2></div>
         <hr/>
         <div>
-            <p>Bu, mekansal başvuruyu ayarlamak amacıyla &ouml;n s&uuml;r&uuml;m i&ccedil;in ge&ccedil;ici bir parametredir. Big data ara&ccedil;larının pek &ccedil;oğu, işlem i&ccedil;in mekansal başvuru olarak izd&uuml;ş&uuml;mlendirilmiş bir koordinat sisteminin kullanılmasını gerektirir. Varsayılan olarak, ara&ccedil; girdi koordinat sistemini kullanır, ancak bu bir coğrafi koordinat sistemi olduğunda &ccedil;alışmaz. İzd&uuml;ş&uuml;mlendirilmiş bir koordinat sistemi ayarlamak i&ccedil;in WKID girin. &Ouml;rneğin,  <b>Web Mercator</b> değeri, <code>3857</code>olarak girilebilir.
+            <p>Bu, mekansal başvuruyu ayarlamak amacıyla &ouml;n s&uuml;r&uuml;m i&ccedil;in ge&ccedil;ici bir parametredir. B&uuml;y&uuml;k veri ara&ccedil;larının pek &ccedil;oğu, işlem i&ccedil;in mekansal başvuru olarak izd&uuml;ş&uuml;mlendirilmiş bir koordinat sisteminin kullanılmasını gerektirir. Varsayılan olarak, ara&ccedil; girdi koordinat sistemini kullanır, ancak bu bir coğrafi koordinat sistemi olduğunda &ccedil;alışmaz. İzd&uuml;ş&uuml;mlendirilmiş bir koordinat sistemi ayarlamak i&ccedil;in WKID girin. &Ouml;rneğin,  <b>Web Mercator</b> değeri, <code>3857</code>olarak girilebilir.
             </p>
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Sonuçların kaydedileceği bir ArcGIS Data Store seçin</h2></div>
+        <div><h2>Sonuçların kaydedileceği bir ArcGIS Veri Deposu seçin</h2></div>
         <hr/>
         <div>
             <p>GeoAnalytics sonu&ccedil;ları ArcGIS Data Store i&ccedil;in depo g&ouml;revi g&ouml;r&uuml;r ve  Portal for ArcGIS i&ccedil;inde bir detay katmanı olarak yansıtılır. Pek &ccedil;ok durumda sonu&ccedil;ların spatiotemporal data store &ouml;ğesine depolanması gerekir ve bu varsayılan ayardır. Bazı durumlarda sonu&ccedil;ların ilişkisel veri deposuna kaydedilmesi iyi bir se&ccedil;enektir. Sonu&ccedil;ların ilişkisel veri deposuna saklanmasını isteyebileceğiniz nedenler aşağıda sunulmuştur: 

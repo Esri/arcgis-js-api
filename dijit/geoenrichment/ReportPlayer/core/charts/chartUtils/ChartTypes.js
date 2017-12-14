@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define([],function(){var C={};return C.COLUMN="Column",C.LINE="Line",C.BAR="Bar",C.PIE="Pie",C.DONUT="Donut",C.RING="Ring",C.PICTURE_COLUMN="PictureColumn",C.PICTURE_BAR="PictureBar",C.CLASSIC_CHART_TYPES=[C.COLUMN,C.LINE,C.BAR,C.PIE],C.AVAILABLE_CHART_TYPES=C.CLASSIC_CHART_TYPES.concat([C.DONUT,C.RING]),C});
+define([],function(){var n={};return n.COLUMN="Column",n.LINE="Line",n.BAR="Bar",n.PIE="Pie",n.DONUT="Donut",n.GAUGE="Gauge",n.RING="Ring",n.PICTURE_COLUMN="PictureColumn",n.PICTURE_BAR="PictureBar",n.COLUMN_LINE="ColumnLine",n.BAR_LINE="BarLine",n.CLASSIC_CHART_TYPES=[n.COLUMN,n.LINE,n.BAR,n.PIE],n.AVAILABLE_CHART_TYPES=n.CLASSIC_CHART_TYPES.concat([n.DONUT,n.GAUGE,n.RING,n.PICTURE_COLUMN,n.PICTURE_BAR]),n.isPieLike=function(i){return i===n.PIE||i===n.DONUT||i===n.GAUGE},n.isRoundChart=function(i){return n.isPieLike(i)||i===n.RING},n.isColumnBarLike=function(i){return i===n.COLUMN||i===n.BAR||i===n.PICTURE_COLUMN||i===n.PICTURE_BAR},n.isColumnLike=function(i){return i===n.COLUMN||i===n.PICTURE_COLUMN},n.isBarLike=function(i){return i===n.BAR||i===n.PICTURE_BAR},n.isPictureLike=function(i){return i===n.PICTURE_COLUMN||i===n.PICTURE_BAR},n.isComparisonEnabled=function(i){return i===n.COLUMN||i===n.BAR||i===n.LINE},n.isConditionalStylingEnabled=function(i){return n.isColumnBarLike(i)||i===n.RING},n.isLegendEnabled=function(i){return i!==n.RING&&i!==n.GAUGE},n.isSortingEnabled=function(i){return n.isColumnBarLike(i)||i===n.RING},n});

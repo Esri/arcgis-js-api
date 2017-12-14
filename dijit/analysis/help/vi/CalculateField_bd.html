@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Trường Tính toán</h2><p/>
+        <h2><img src="../images/GUID-059C9BE7-7B00-49C8-9917-B0EAEA3DA19D-web.png" alt="Trường T&iacute;nh to&aacute;n"></h2>
+        <hr/>
+    <p>C&ocirc;ng cụ n&agrave;y hoạt động với một lớp đầu v&agrave;o để t&iacute;nh to&aacute;n gi&aacute; trị cho trường mới hoặc trường hiện c&oacute;. X&acirc;y dựng một biểu thức Arcade nhằm t&iacute;nh to&aacute;n gi&aacute; trị để lồng gh&eacute;p t&iacute;nh năng theo đ&oacute;. Nếu dữ liệu của bạn được k&iacute;ch hoạt theo thời gian v&agrave; thuộc loại thời gian tức th&igrave;, bạn c&oacute; thể t&ugrave;y chọn x&acirc;y dựng biểu thức nhận biết đường đi.
+    </p>
+    <p>V&iacute; dụ: giả sử bạn muốn sửa trường hiện tại c&oacute; t&ecirc;n  <i>Tổng doanh thu</i>. Bạn muốn trường n&agrave;y thể hiện tổng doanh thu trong năm 2016 v&agrave; 2017. Sử dụng c&aacute;c trường n&agrave;y trong biểu thức, bạn t&iacute;nh gi&aacute; trị trường l&agrave; <pre>$feature[&quot;Sales2016&quot;] + $feature[&quot;Sales2017&quot;]</pre>.
+    </p>
+    <p>Sử dụng v&iacute; dụ kh&aacute;c, giả sử bạn c&oacute; c&aacute;c gi&aacute; trị đo GPS ghi lại địa điểm, thời gian, ID xe bu&yacute;t v&agrave; tốc độ của xe bu&yacute;t trong th&agrave;nh phố. Ch&uacute;ng t&ocirc;i muốn tạo một trường mới c&oacute; t&ecirc;n  <i>Tốc độ từ 3</i> lấy trung b&igrave;nh tốc độ của 3 gi&aacute; trị đo GPS được ghi lại gần nhất cho mỗi t&iacute;nh năng. Đối với ph&eacute;p t&iacute;nh n&agrave;y, ch&uacute;ng t&ocirc;i sẽ sử dụng ph&eacute;p t&iacute;nh nhận biết đường đi m&agrave; ở đ&oacute; đường đi l&agrave; một xe bu&yacute;t được biểu thị bởi ID xe bu&yacute;t. Ph&eacute;p t&iacute;nh để x&aacute;c định tốc độ trung b&igrave;nh của 3 bước thời gian trước đ&oacute; v&agrave; bước thời gian hiện tại l&agrave; <pre>average($track.field[&quot;speed&quot;].history(-4))</pre>.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Chọn lớp để tính toán giá trị trường cho</h2></div>
+        <hr/>
+        <div>
+            <p>Điểm, đường, khu vực hoặc bảng sẽ được t&iacute;nh gi&aacute; trị trường.  
+            </p>
+            <p>B&ecirc;n cạnh việc chọn một lớp từ bản đồ, bạn c&oacute; thể chọn  <b>Duyệt Lớp</b> ở dưới danh s&aacute;ch thả xuống để duyệt đến nội dung của m&igrave;nh đối với tập dữ liệu chia sẻ tệp dữ liệu lớn hoặc lớp đối tượng.
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>Tính toán giá trị trường cho trường</h2></div>
+        <hr/>
+        <div>
+            <p>Trường mới hoặc trường hiện tại sẽ được t&iacute;nh to&aacute;n gi&aacute; trị v&agrave; c&oacute; kiểu dữ liệu của trường đ&oacute;. Nếu bạn t&iacute;nh gi&aacute; trị tr&ecirc;n một trường đ&atilde; tồn tại, bạn kh&ocirc;ng cần khớp kiểu dữ liệu. 
+            </p>
+        </div>
+    </div>
+    <div id="expression">
+        <div><h2>Xây dựng điều kiện biểu thức để báo hiệu điểm bắt đầu sự cố</h2></div>
+        <hr/>
+        <div>
+            <p>Th&ecirc;m một biểu thức sử dụng tr&igrave;nh dựng biểu thức để t&iacute;nh to&aacute;n gi&aacute; trị trường. 
+            </p>
+            <p>V&iacute; dụ: giả sử ch&uacute;ng ta muốn th&ecirc;m gi&aacute; trị của trường c&oacute; t&ecirc;n  <i>thu nhập</i>  v&agrave; <i>tiền thưởng</i>. Để tiến h&agrave;nh, h&atilde;y th&ecirc;m biểu thức <code>$đối tượng[&quot;thu nhập&quot;] + $đối tượng[&quot;tiền thưởng&quot;] </code>.
+            </p>
+        </div>
+    </div>
+    <div id="trackInfo">
+        <div><h2>Biểu thức là nhận biết đường đi</h2></div>
+        <hr/>
+        <div>
+            <p>X&aacute;c định liệu biểu thức của bạn c&oacute; phải l&agrave; nhận biết đường đi kh&ocirc;ng. Biểu thức nhận biết đường đi c&oacute; định dạng như l&agrave;       <pre>$track.field[&quot;fieldname&quot;].history(...)</pre>. Biểu thức nhận biết đường đi cần c&oacute; c&aacute;c trường để x&aacute;c định c&aacute;c đường đi ri&ecirc;ng lẻ. Đường đi c&oacute; thể bao gồm điểm, đường, khu vực hoặc bảng v&agrave; chỉ y&ecirc;u cầu đầu v&agrave;o c&oacute; m&atilde; của đường đi v&agrave; dữ liệu được k&iacute;ch hoạt theo thời gian thuộc loại thời gian tức th&igrave;.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tên lớp kết quả</h2></div>
+        <hr/>
+        <div>
+            <p> Đ&acirc;y l&agrave; t&ecirc;n lớp sẽ được tạo trong mục <b>Nội dung của T&ocirc;i</b> v&agrave; th&ecirc;m v&agrave;o bản đồ. T&ecirc;n mặc định dựa v&agrave;o t&ecirc;n c&ocirc;ng cụ v&agrave; t&ecirc;n lớp đầu v&agrave;o. Nếu lớp đ&atilde; tồn tại, c&ocirc;ng cụ sẽ thất bại.
+            </p>
+            <p>Sử dụng chức năng  <b>Lưu kết quả</b> trong hộp xổ xuống, bạn c&oacute; thể chỉ định t&ecirc;n thư mục trong mục <b>Nội dung của T&ocirc;i</b> nơi sẽ lưu trữ kết quả của bạn.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

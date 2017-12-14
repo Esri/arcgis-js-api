@@ -56,6 +56,22 @@
             </td>
           </tr>
           <tr>
+            <td colspan="3">
+              <label class="esriLeadingMargin1">
+                 <div data-dojo-type="dijit/form/RadioButton" data-dojo-attach-point="_allFeaturesCheck" data-dojo-props="checked:false"></div>
+                 ${i18n.allFeaturesToOne}
+              </label> 
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <label class="esriLeadingMargin1">
+                 <div data-dojo-type="dijit/form/RadioButton" data-dojo-attach-point="_byFieldsCheck" data-dojo-props="checked:true" data-dojo-attach-event="onChange:_handleFieldsCheckChange"></div>
+                 ${i18n.byFields}
+              </label> 
+            </td>
+          </tr>
+          <tr>
             <td colspan="3" style="padding-top:0;">
               <select multiple="true"  class="esriLeadingMargin1" style="width:100%;margin-top:10px;" data-dojo-props="required:true" data-dojo-type="dojox/form/CheckedMultiSelect" data-dojo-attach-point="_fieldSelect"></select>
             </td>

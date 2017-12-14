@@ -42,12 +42,11 @@
 <div id="topics">
     <div id="toolDescription" class="regularsize">
         <h2>Summer attributter</h2><p/>
-        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Summer attributter"></h2>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Summer attributter diagram"></h2>
         <hr/>
-    <p>Dette verkt&oslash;yet oppsummerer alle de samsvarende verdiene i ett eller flere felter og beregner statistikk p&aring; dem. Den mest grunnleggende statistikken er antall geoobjekter som er blitt summert sammen, men du kan beregne mer avansert statistikk ogs&aring;. 
-
+    <p> Dette verkt&oslash;yet oppsummerer alle de samsvarende verdiene i et eller flere felt og beregner statistikk p&aring; dem. Den mest grunnleggende statistikken er antall geoobjekter som er blitt summert sammen, men du kan beregne mer avansert statistikk ogs&aring;.
     </p>
-    <p>La oss f.eks. si at du har punktgeoobjekter for butikklokasjoner med et felt som representerer  <i>DISTRICT_MANAGER_NAME</i> og du &oslash;nsker &aring; summere kaffesalget etter sjef. Du kan angi feltet <i>DISTRICT_MANAGER_NAME</i> som feltet &aring; l&oslash;se opp, og alle rader med data som representerer de enkelte sjefene, blir summert. Dette betyr at alle butikklokasjoner som administreres av Sjef1 vil bli summert i en rad med sammendragsstatistikk beregnet. I dette tilfellet blir statistikk som antallet butikker og summen av <i>TOTAL_SALES</i> for alle butikker som Sjef1 leder beregnet, i tillegg til andre sjefer som er oppf&oslash;rt i feltet <i>DISTRICT_MANAGER_NAME</i>.
+    <p>La oss for eksempel si at du har punktgeoobjekter for butikklokasjoner med et felt som representerer  <i>DISTRICT_MANAGER_NAME</i>, og du &oslash;nsker &aring; summere kaffesalget etter sjef. Du kan angi feltet <i>DISTRICT_MANAGER_NAME</i> som feltet &aring; l&oslash;se opp, og alle rader med data som representerer de enkelte sjefene, blir summert. Dette betyr at alle butikklokasjoner som administreres av <pre>Manager1</pre>, vil bli summert i en rad, med sammendragsstatistikk beregnet. I dette tilfellet blir statistikk, som antallet butikker og summen av <i>TOTAL_SALES</i> for alle butikker som <pre>Manager1</pre> ledes, beregnet,, p&aring; samme m&aring;te som for andre sjefer som er oppf&oslash;rt i feltet <i>DISTRICT_MANAGER_NAME</i>.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -62,10 +61,19 @@
         </div>
     </div>
     <div id="fields">
-        <div><h2>Velg feltene som skal summeres</h2></div>
+        <div><h2>Velg hvordan dataene skal summeres</h2></div>
         <hr/>
         <div>
-            <p>Liste over felter fra inndatalaget. De utvalgte feltene blir summert og brukt til &aring; beregne statistikk. Hvis du f.eks. velger et felt ved navn  <i>PropertyType</i> med verdier for kommersielle og boliger, blir alle feltene for bolig summert sammen, med beregnet summeringsstatistikk, og alle feltene for kommersielt blir summert sammen.
+            <p>Dataene kan summeres p&aring; to m&aring;ter:
+                <ul>
+                    <li> <b>Alle geoobjekter til ett geoobjekt</b> &ndash; Beregner statistikk p&aring; alle geoobjekter.
+                    </li>
+                    <li> <b>Etter felt</b> &ndash; Grupperer geoobjekter etter like verdier i spesifiserte felt.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>La oss for eksempel si at du har et datasett med tr&aelig;r som inkluderer feltene  <i>tretype</i> med verdiene <code>L&oslash;nn</code>, <code>Gran</code> og <code>Furu</code>, og feltet <i>treh&oslash;yde</i>, og du er interessert i &aring; finne den gjennomsnittlige <i>treh&oslash;yden</i>. Hvis du summerer alle geoobjektene i ett geoobjekt, vil du finne den gjennomsnittlige treh&oslash;yden til alle tr&aelig;rne, noe som vil gi &eacute;n gjennomsnittsverdi. Hvis du summerte etter feltet <i>treh&oslash;yde</i>, ville du f&aring;tt et gjennomsnitt for l&oslash;nnetr&aelig;r, et gjennomsnitt for grantr&aelig;r og et gjennomsnitt for furutr&aelig;r.
             </p>
         </div>
     </div>

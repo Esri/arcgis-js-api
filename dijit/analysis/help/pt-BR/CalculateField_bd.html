@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Calcular Campo</h2><p/>
+        <h2><img src="../images/GUID-059C9BE7-7B00-49C8-9917-B0EAEA3DA19D-web.png" alt="Calcular Campo"></h2>
+        <hr/>
+    <p>Esta ferramenta funciona com uma camada de entrada para calcular valores para novos campos ou campos existentes. Construa uma express&atilde;o Arcade para calcular os valores para preencher fei&ccedil;&otilde;es.   Se seus dados forem habilitados ao tempo e momento de tipo de tempo, voc&ecirc; pode opcionalmente construir express&otilde;es que s&atilde;o cientes do caminho.
+    </p>
+    <p>Por exemplo, suponha que voc&ecirc; deseja modificar um campo existente denominado  <i>TotalSales</i>. Voc&ecirc; quer o campo seja representado pela soma das vendas totais em 2016 e 2017. Com a utiliza&ccedil;&atilde;o destes campos na express&atilde;o, voc&ecirc; calcula o valor do campo como <pre>$feature[&quot;Sales2016&quot;] + $feature[&quot;Sales2017&quot;]</pre>.
+    </p>
+    <p>Utilizando outro exemplo, suponha que voc&ecirc; tenham medi&ccedil;&otilde;es de GPS que registraram a localiza&ccedil;&atilde;o, hora, ID do &ocirc;nibus e velocidade dos &ocirc;nibus em uma cidade. N&oacute;s queremos criar um novo de campo  <i>SpeedFrom3</i> que &eacute; a m&eacute;dia da velocidade das &uacute;ltimas 3 medi&ccedil;&otilde;es registradas do GPS para cada fei&ccedil;&atilde;o. Para este c&aacute;lculo n&oacute;s utilizar&iacute;amos um c&aacute;lculo de caminho ciente, onde o caminho &eacute; um &ocirc;nibus denotado pelo ID do &ocirc;nibus.    O c&aacute;lculo para determinar a velocidade m&eacute;dia das 3 etapas de tempo anteriores e a etapa de tempo atual &eacute; <pre>average($track.field[&quot;speed&quot;].history(-4))</pre>.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Escolha a camada para calcular os valores de campo</h2></div>
+        <hr/>
+        <div>
+            <p>Os pontos, linhas, &aacute;reas ou tabela que ter&atilde;o valores de campo calculados.  
+            </p>
+            <p>Al&eacute;m de escolher uma camada de seu mapa, voc&ecirc; pode escolher  <b>Procurar Camadas</b> na parte inferior da lista suspensa para procurar por seu conte&uacute;do para um conjunto de dados de compartilhamento de arquivo big data ou camada de fei&ccedil;&atilde;o.
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>Calcula os valores de campo para o campo</h2></div>
+        <hr/>
+        <div>
+            <p>O novo campo ou campo existente que ter&aacute; valores calculados e o tipo de dados deste campo. Se voc&ecirc; estiver calculando valores em um campo que j&aacute; existe, voc&ecirc; n&atilde;o precisa corresponder ao tipo de dados. 
+            </p>
+        </div>
+    </div>
+    <div id="expression">
+        <div><h2>Construir uma condição de expressão para significar o início de um incidente</h2></div>
+        <hr/>
+        <div>
+            <p>Adicione um construtor de express&atilde;o com a utiliza&ccedil;&atilde;o da express&atilde;o para calcular valores de campo. 
+            </p>
+            <p>Por exemplo, suponhamos que n&oacute;s desejamos adicionar os valores de um campo denominado  <i>income</i>  e <i>bonus</i>. Para fazer isto, adicione a express&atilde;o <code>$feature[&quot;income&quot;] + $feature[&quot;bonus&quot;] </code>.
+            </p>
+        </div>
+    </div>
+    <div id="trackInfo">
+        <div><h2>Esta expressão é ciente do caminho</h2></div>
+        <hr/>
+        <div>
+            <p>Especifique se sua express&atilde;o &eacute; ciente do caminho. Uma express&atilde;o ciente do caminho incluir&aacute; formata&ccedil;&atilde;o como       <pre>$track.field[&quot;fieldname&quot;].history(...)</pre>. As express&otilde;es cientes do caminho exigem campos para identificar caminhos individuais. Os caminhos podem ser compostos de pontos, linhas, &aacute;reas ou tabelas e somente requer que a entrada tenha um identificador de caminho e os dados seja habilitada ao tempo do momento de tipo de tempo.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nome da camada resultante</h2></div>
+        <hr/>
+        <div>
+            <p> Este &eacute; o nome da camada que ser&aacute; criada em <b>Meu Conte&uacute;do</b> e adicionada no mapa.  O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existe, a ferramenta falhar&aacute;.
+            </p>
+            <p>Ao utilizar a caixa suspensa  <b>Salvar resultado em</b>, &eacute; poss&iacute;vel especificar o nome de uma pasta em <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

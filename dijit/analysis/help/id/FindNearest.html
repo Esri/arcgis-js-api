@@ -48,7 +48,7 @@
         <ul>
             <li>Taman apa yang paling dekat dari sini?
             </li>
-            <li>Rumah sakit terdekat mana yang dapat dijangkau dengan waktu berkendara tersingkat? Berapa lama perjalanan pada setiap hari Selasa jam 5:30 sore saat jam sibuk?
+            <li>Rumah sakit terdekat mana yang dapat dijangkau dengan waktu mengemudi tersingkat? Berapa lama perjalanan pada setiap hari Selasa jam 5:30 sore saat jam sibuk?
             </li>
             <li>Berapa jarak jalan antara kota besar tersebut?
             </li>
@@ -59,7 +59,7 @@
     </p>
     <p>Temukan Terdekat menampilkan layer yang berisi fitur terdekat dan layer garis yang menautkan lokasi awal ke lokasi terdekatnya. Layer garis berisi informasi mengenai lokasi awal dan lokasi-lokasi terdekatnya serta jarak di antara keduanya.
     </p>
-    <p>Jika  <b>Gunakan jangkauan peta saat ini</b> dicentang, hanya fitur-fitur yang nampak dalam jangkauan peta saat ini yang akan diperhitungkan sebagai awal dan fitur terdekatnya.  Jika tidak dicentang, semua fitur dalam layer input akan diperhitungkan, meskipun fitur tersebut berada di luar jangkauan peta saat ini.  
+    <p>Jika  <b>Gunakan jangkauan peta saat ini</b> dicentang, hanya fitur-fitur yang nampak dalam jangkauan peta saat ini yang akan diperhitungkan sebagai awal dan fitur terdekatnya.  Jika tidak dicentang, semua fitur dalam layer input akan diperhitungkan, meskipun fitur tersebut berada di luar jangkauan peta saat ini.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -90,7 +90,7 @@
             </p>
             <p>Saat mengukur antara garis dan area, jarak dari atau ke titik terdekat sepanjang garis atau batas area sudah ditemukan. 
             </p> 
-            <p>Ketika Anda memilih  <b>Waktu berkendara</b>, Anda memiliki opsi tentang cara mengukur waktu berkendara.
+            <p>Ketika Anda memilih  <b>Waktu Mengemudi</b>, <b>Waktu Mengemudi Pedesaan</b>, atau <b>Waktu Mengemudi Truk</b>, Anda memiliki opsi tentang cara mengukur waktu mengemudi.
                 <ul>
                     <li>
                         <p>Batalkan centang  <b>Gunakan Lalu Lintas</b> untuk menemukan fitur terdekat berdasarkan kecepatan perjalanan statis, seperti batas kecepatan, alih-alih kecepatan berubah-ubah yang disebabkan oleh kondisi lalu lintas yang terus berubah.
@@ -105,7 +105,7 @@
                         </p>
                     </li>
                     <li>
-                        <p>Dengan mencentang  <b>Gunakan Lalu Lintas</b> dan memilih <b>Traffic based on typical conditions for</b> (Lalu lintas berdasarkan kondisi tertentu untuk) hari dan waktu, alat ini akan menemukan fitur terdekat berdasarkan rata-rata kecepatan historis untuk setiap interval lima menit sepanjang satu minggu rutin. Hasil menyertakan lalu lintas tapi menghapus pengaruh kondisi dan peristiwa lalu lintas saat ini, yang mungkin beragam secara signifikan dari norma.
+                        <p>Dengan mencentang  <b>Gunakan Lalu Lintas</b> dan memilih <b>Lalu lintas berdasarkan kondisi khusus</b> hari dan waktu, alat ini akan menemukan fitur terdekat berdasarkan rata-rata kecepatan historis untuk setiap interval lima menit sepanjang satu minggu rutin. Hasil menyertakan lalu lintas tapi menghapus pengaruh kondisi dan peristiwa lalu lintas saat ini, yang mungkin beragam secara signifikan dari norma.
                         </p>
                         <p>Anda dapat menggunakan pengaturan historis lalu lintas ini untuk menanyakan, misalnya, &quot;Fitur apa saja yang dapat dicapai paling cepat jika berangkat dari titik awal pada pukul 11:30 pagi hari Rabu?&quot; 
                         </p>
@@ -113,7 +113,9 @@
                         </p>
                     </li>
                 </ul>
-                Perhatikan bahwa saat kendaraan melaju keluar dari suatu titik, waktu berlalu dan kondisi lalu lintas berubah. Alat ini akan memperhitungkan semua perubahan tersebut jika Anda mencentang <b>Gunakan lalu lintas</b>; meskipun demikian, tidak semua wilayah mendukung lalu lintas. Klik tautan <b>See availability</b> (Lihat ketersediaan) pada alat untuk mengetahui apakah opsi ini ditawarkan di area studi Anda. 
+                Perhatikan bahwa saat kendaraan melaju keluar dari suatu titik, waktu berlalu dan kondisi lalu lintas berubah. Alat ini akan memperhitungkan semua perubahan tersebut jika Anda mencentang <b>Gunakan lalu lintas</b>; meskipun demikian, tidak semua wilayah mendukung lalu lintas. Klik tautan <b>Lihat ketersediaan</b> pada alat untuk mengetahui apakah opsi ini ditawarkan di area studi Anda. 
+            </p>
+            <p> <b>Waktu Mengemudi Truk</b> dapat menggunakan kecepatan perjalanan dinamis pada lalu lintas tetapi hanya hingga batas kecepatan truk legal. Contoh, jika kecepatan dinamis suatu jalan berdasarkan lalu lintas langsung adalah 65 mil per jam, penghitungan akan menggunakan 55 mil per jam untuk jalan tersebut.
             </p>
         </div>
     </div>
@@ -121,7 +123,7 @@
         <div><h2>Untuk setiap lokasi di layer input</h2></div>
         <hr/>
         <div>
-            <p>Anda memiliki dua opsi untuk membatasi pencarian lokasi terdekat. Opsi satu adalah dengan membatasi jumlah maksimum lokasi terdekat yang akan dicari per lokasi awal. Anda dapat mencari satu taman terdekat, dua taman terdekat, dan seterusnya. Opsi lainnya adalah dengan mengatur jarak pencarian atau waktu berkendara maksimum.
+            <p>Anda memiliki dua opsi untuk membatasi pencarian lokasi terdekat. Opsi satu adalah dengan membatasi jumlah maksimum lokasi terdekat yang akan dicari per lokasi awal. Anda dapat mencari satu taman terdekat, dua taman terdekat, dan seterusnya. Opsi lainnya adalah dengan mengatur jarak pencarian atau waktu mengemudi maksimum.
             </p>
             <p>Dengan tidak mencentang opsi tersebut, jumlah maksimum lokasi terdekat yang dicari adalah 100 (batas alat ini), dan rentang pencarian maksimum adalah tidak terbatas.
             </p>

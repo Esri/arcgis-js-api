@@ -184,7 +184,7 @@
     <div id="FindLocationsCategory" class="largesize">
         <h2>Temukan Lokasi</h2>
         <hr/>
-        <p>Alat ini digunakan untuk mengidentifikasi area-area yang memenuhi sejumlah kriteria yang Anda tetapkan.  Kriteria ini bisa didasarkan pada kueri atribut (misalnya, bagian persil yang kosong) dan kueri spasial (misalnya, dalam jarak 1 mil dari sungai).  Area yang ditemukan dapat dipilih dari fitur-fitur yang ada (seperti lahan persil yang ada) atau fitur-fitur baru dapat dibuat bila semua persyaratan sudah terpenuhi.
+        <p>Alat ini digunakan untuk mengidentifikasi atau membuat fitur yang memenuhi kriteria yang Anda tetapkan.  Tipe kriteria akan bergantung pada alat mana yang Anda gunakan; misalnya, kriteria Anda mungkin didasarkan pada kueri spasial atau atribut, area yang terlihat dari ketinggian yang ditentukan, area hilir untuk titik drainase khusus, atau waktu berkendara dalam kondisi lalu lintas spesifik.
             <ul>
                 <li> <b>Pilih Fasilitas Terbaik</b> memilih lokasi terbaik untuk fasilitas dengan mengalokasikan lokasi yang memiliki permintaan atas fasilitas tersebut untuk memenuhi tujuan tertentu.
                 </li>
@@ -194,16 +194,18 @@
                 </li>
                 <li> <b>Ambil Lokasi Baru</b> membuat area baru dari lokasi di area kajian Anda yang memenuhi sejumlah kriteria.
                 </li>
+                <li class="OnlineOnly"> <b>Temukan Titik Berat</b> menemukan pusat representatif (titik berat) untuk fitur input. 
+                </li>
                 <li> <b>Temukan Lokasi yang Ada</b> mencari area yang ada pada suatu layer yang memenuhi sejumlah kriteria.
                 </li>
-                <li> <b>Temukan Lokasi Serupa</b> mencari lokasi yang paling mirip dengan satu atau beberapa lokasi rujukan berdasarkan kriteria yang Anda tetapkan.
+                <li> <b>Temukan Lokasi Serupa</b> mencari lokasi yang paling mirip dengan satu atau beberapa lokasi referensi berdasarkan kriteria yang Anda tetapkan.
                 </li>
-                <li class="PortalOnly"> <b>Lokasi Geocode dari Tabel</b> mengubah alamat dari tabel menjadi koordinat.
+                <li class="PortalOnly"> <b>Lokasi Geocode dari Tabel</b> mengubah alamat dari tabel menjadi koordinat. 
                 </li>
                 <li> <b>Lacak Alur Hilir</b> menentukan jalur aliran ke arah hilir dari lokasi yang Anda tetapkan.
                 </li>
             </ul>
-             
+            
         </p>
         <p> 
         </p>
@@ -264,7 +266,22 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Membuat fitur-fitur baru di area penelitian Anda yang memenuhi sejumlah kriteria yang Anda tetapkan. Kriteria ini bisa didasarkan pada kueri atribut (misalnya, bagian persil yang kosong) dan kueri spasial (misalnya, dalam jarak 1 kilometer dari sungai). 
+            <p>Membuat fitur-fitur baru di area penelitian Anda yang memenuhi sejumlah kriteria yang Anda tetapkan. Kriteria ini bisa didasarkan pada kueri atribut (misalnya, bagian persil yang kosong) dan kueri spasial (misalnya, dalam jarak 1 mil dari sungai). 
+            </p>
+            <br/>
+        </div>
+        <div id="FindCentroidsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Temukan Titik Berat</h2></td>
+                    <td>
+                    <img src="../images/GUID-75D9AF75-68C3-48BF-8062-D5499BD06978-web.png" class="titleImage" alt="Temukan Titik Berat">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Menemukan pusat representatif (titik berat) untuk setiap fitur multititik input, garis, atau fitur area.
             </p>
             <br/>
         </div>
@@ -473,9 +490,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Buat Area Waktu Berkendara</h2></td>
+                    <td><h2>Buat Area Waktu Mengemudi</h2></td>
                     <td>
-                    <img src="../images/GUID-6F629A09-768D-4C04-88A4-AB941811ADE9-web.png" class="titleImage" alt="Buat Area Waktu Berkendara">
+                    <img src="../images/GUID-6F629A09-768D-4C04-88A4-AB941811ADE9-web.png" class="titleImage" alt="Buat Area Waktu Mengemudi">
                     </td>
                 </tr></tbody>
             </table>

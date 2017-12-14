@@ -86,12 +86,12 @@
                 </ul>
                 
             </p>
-            <p>Zał&oacute;żmy, że chcemy znaleźć supermarkety w promieniu 2 kilometr&oacute;w od rynku produkt&oacute;w rolnych. W tym przypadku warstwa, do kt&oacute;rej będą dołączane obiekty, zawiera pojedynczy obiekt reprezentujący rynek produkt&oacute;w rolnych, a dołączane obiekty reprezentują lokalne sklepy spożywcze, kt&oacute;re mają atrybuty, takie jak suma rocznej sprzedaży. Używając narzędzia  <b>Połącz obiekty</b>, stwierdzamy, że pięć sklep&oacute;w spożywczych spełnia kryteria. Jeśli zostanie określona operacja <b>Złączenie jeden do wielu</b>, dane wynikowe będą zawierać pięć obiekt&oacute;w, a każdy wiersz będzie reprezentować rynek produkt&oacute;w rolnych i jeden z supermarket&oacute;w. W przypadku relacji <b>Złączenie jeden do jeden</b> dane wynikowe będą zawierać jeden obiekt reprezentujący rynek produkt&oacute;w spożywczych i zbiorcze informacje o supermarketach, takie jak ich liczba (2) i inne dane statystyczne, na przykład suma rocznej sprzedaży.
+            <p>Zał&oacute;żmy, że chcemy znaleźć supermarkety w promieniu do 2 kilometr&oacute;w od rynku produkt&oacute;w rolnych. W tym przypadku warstwa, do kt&oacute;rej będą dołączane obiekty, zawiera pojedynczy obiekt reprezentujący rynek produkt&oacute;w rolnych, a dołączane obiekty reprezentują lokalne sklepy spożywcze, kt&oacute;re mają atrybuty, takie jak suma rocznej sprzedaży. Używając narzędzia  <b>Połącz obiekty</b>, stwierdzamy, że pięć sklep&oacute;w spożywczych spełnia kryteria. Jeśli zostanie określona operacja <b>Złączenie jeden do wielu</b>, dane wynikowe będą zawierać pięć obiekt&oacute;w, a każdy wiersz będzie reprezentować rynek produkt&oacute;w rolnych i jeden z supermarket&oacute;w. W przypadku relacji <b>Złączenie jeden do jeden</b> dane wynikowe będą zawierać jeden obiekt reprezentujący rynek produkt&oacute;w spożywczych i zbiorcze informacje o supermarketach, takie jak ich liczba (2) i inne dane statystyczne, na przykład suma rocznej sprzedaży.
             </p>
         </div>
     </div>
     <div id="joinOptions">
-        <div><h2>Wybierz jedno lub większą liczbę połączeń</h2></div>
+        <div><h2>Wybierz jedno lub więcej połączeń</h2></div>
         <hr/>
         <div>
             <p>Można zastosować jeden, dwa lub trzy typy połączeń. Istnieją następujące typy połączeń: 
@@ -251,7 +251,7 @@
         <div>
             <p>Stosuje warunek do podanych p&oacute;l. Zostaną połączone tylko obiekty z polami spełniającymi te warunki.
             </p>
-            <p>Na przykład zał&oacute;żmy, że chcemy zastosować połączenie z zestawem danych tylko dla tych obiekt&oacute;w, dla kt&oacute;rych wartość wydatk&oacute;w zdrowotnych  <i>health_spending</i> przekracza 20 procent wartości dochodu <i>income</i>.  W tym celu zastosuj warunek połączenia <code>target.health_spending &gt; (join.income * .20)</code> z użyciem pola wydatk&oacute;w zdrowotnych <i>health_spending</i> z pierwszego zestawu danych (z kt&oacute;rym są połączone obiekty zestawu danych) oraz pola przychodu <i>income</i> z drugiego zestawu danych (łączony zestaw danych).
+            <p>Na przykład zał&oacute;żmy, że chcemy zastosować połączenie z zestawem danych tylko dla tych obiekt&oacute;w, dla kt&oacute;rych wartość wydatk&oacute;w zdrowotnych  <i>health_spending</i> przekracza 20 procent wartości dochodu <i>income</i>.  W tym celu zastosuj warunek połączenia <code>$target[&quot;health_spending&quot;] &gt; ($join[&quot;income&quot;] * .20)</code> z użyciem pola wydatk&oacute;w zdrowotnych <i>health_spending</i> z pierwszego zestawu danych (z kt&oacute;rym są połączone obiekty zestawu danych) oraz pola przychodu <i>income</i> z drugiego zestawu danych (łączony zestaw danych).
             </p>
             <p>Warunki połączenia można zastosować za pomocą kalkulatora wyrażeń.
             </p>
@@ -261,7 +261,7 @@
         <div><h2>Wybierz magazyn danych</h2></div>
         <hr/>
         <div>
-            <p>Wyniki analiz geoprzestrzennych są przechowywane w aplikacji ArcGIS Data Store i udostępniane jako warstwa obiekt&oacute;w w witrynie  Portal for ArcGIS. W większości przypadk&oacute;w wyniki powinny być przechowywane w magazynie danych czasowo-przestrzennych i jest to ustawienie domyślne. W niekt&oacute;rych przypadkach dobrym rozwiązanie jest zapisanie wynik&oacute;w w relacyjnym magazynie danych. Poniżej podano sytuacje, kt&oacute;re mogą uzasadniać przechowywanie wynik&oacute;w w relacyjnym magazynie danych: 
+            <p>Wyniki analiz geoprzestrzennych są przechowywane w aplikacji ArcGIS Data Store i udostępniane jako warstwa obiektowa w witrynie  Portal for ArcGIS. W większości przypadk&oacute;w wyniki powinny być przechowywane w magazynie danych czasowo-przestrzennych i jest to ustawienie domyślne. W niekt&oacute;rych przypadkach dobrym rozwiązanie jest zapisanie wynik&oacute;w w relacyjnym magazynie danych. Poniżej podano sytuacje, kt&oacute;re mogą uzasadniać przechowywanie wynik&oacute;w w relacyjnym magazynie danych: 
                 <ul>
                     <li>Używanie wynik&oacute;w w ramach kooperacji między portalami.
                     </li>

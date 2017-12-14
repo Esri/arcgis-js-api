@@ -1,1 +1,6 @@
 @import url("../dijit/AppProxySettings/css/AppProxySettings.css");
+@import url("../dijit/RasterFunctionEditor/css/RFxArgsEditor.css");
+@import url("../dijit/RasterFunctionEditor/css/RFxArgSlider.css");
+@import url("../dijit/RasterFunctionEditor/css/RFxBandMatrix.css");
+@import url("../dijit/RasterFunctionEditor/css/RFxRasterArrayEditor.css");
+@import url("../dijit/geoenrichment/themes/common/main-2.css");

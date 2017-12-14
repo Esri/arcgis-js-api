@@ -42,22 +42,22 @@
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Arvuta tihedus</h2><p/>
-        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Calculate Density"></h2>
+        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Arvuta tihedus"></h2>
         <hr/>
-    <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas classified from least dense to most dense.   
+    <p>Tiheduse arvutamise t&ouml;&ouml;riist loob punktobjektidest tiheduskaardi, hajutades m&otilde;ned n&auml;htused, mis on esitatud punktide atribuutidena &uuml;le kogu kaardi. Tulemuseks on alade kiht, mis on r&uuml;hmitatud tiheduse alusel.   
 
     </p>
-    <p>For point input, each point should represent the location of some event or incident, and the result layer represents a count of the incident per unit area.  A higher density value in a new location means that there are more points near that location.  In many cases, the result layer can be interpreted as a risk surface for future events. For example, if the input points represent locations of lightning strikes, the result layer can be interpreted as a risk surface for future lightning strikes.
+    <p>Sisendpunkti puhul peaks iga punkt kujutama mingi s&uuml;ndmuse v&otilde;i juhtumi asukohta ja tulemkiht kujutab juhtumite arvu mingi ala kohta. Uue asukoha k&otilde;rgem tihedus t&auml;hendab, et selle asukoha l&auml;heduses on rohkem punkte. Sageli v&otilde;ib tulemkihti pidada tulevaste s&uuml;ndmuste riskipiirkonnaks. Kui sisendpunktid kujutavad n&auml;iteks v&auml;lgul&ouml;&ouml;kide asukohti, v&otilde;ib tulemkihti pidada tulevaste v&auml;lgul&ouml;&ouml;kide riskipiirkonnaks.
     </p>
-    <p>Other use cases of this tool include the following:
+    <p>Seda t&ouml;&ouml;riista saab kasutada ka j&auml;rgmistel eesm&auml;rkidel:
         <ul>
-            <li>Creating crime-density maps to help police departments properly allocate resources to high crime areas.
+            <li>Kuritegevuse tihedusega seotud kaartide loomine, et aidata politseil planeerida ressursse k&otilde;rge kuritegevusega paikadesse.
             </li>
-            <li>Calculating densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to decide where new hospitals should be built.
+            <li>Maakonnas asuvate haiglate tiheduse arvutamine. Tulemkiht n&auml;itab alasid, kus haiglaid on palju ja/v&otilde;i v&auml;he ning seda teavet saab kasutada selleks, et otsustada kuhu uusi haiglaid ehitada.
             </li>
-            <li>Identifying areas that are at high risk of forest fires based on historical locations of forest fires.
+            <li>Metsatulekahjude varasemate asukohtade p&otilde;hjal nende alade tuvastamine, kus metsatulekahju oht on suur.
             </li>
-            <li>Locating communities that are far from major highways in order to plan where new roads should be constructed.
+            <li>Suurtest kiirteedest kaugel olevate kogukondade kindlakstegemine, et planeerida uute teede ehitust.
             </li>
         </ul>
         
@@ -68,19 +68,19 @@
         <div><h2>Valige punktikiht, mille põhjal tihedus arvutada</h2></div>
         <hr/>
         <div>
-            <p>The point layer on which the density will be calculated.
+            <p>Punktikiht, millel tihedus arvutatakse.
             </p>
             <p>Lisaks kihi valimisele kaardil saate valida ripploendi alumises servas  <b>Sirvi kihte</b>, et otsida oma sisust suurandmete failiketta andmestikku v&otilde;i objektikihti.
             </p>
         </div>
     </div>
     <div id="fields">
-        <div><h2>Valige tiheduse arvutamiseks üks või mitu välja (valikuline)</h2></div>
+        <div><h2>Valige tiheduse arvutamiseks üks või mitu välja (valikuline):</h2></div>
         <hr/>
         <div>
-            <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
+            <p>Sisestage v&auml;hemalt &uuml;ks v&auml;li, mis aitab m&auml;&auml;rata iga asukoha juhtumite arvu. Kui Teie punktid kujutavad n&auml;iteks linnu, saate linna rahvaarvu kujutavat v&auml;lja kasutada arvutusv&auml;ljana ning saadav rahvastikutiheduse kiht arvutab suurema rahvaarvuga linnade rahvastikutiheduse.
             </p>
-            <p>The density for the count of points will always be calculated.   If no fields are selected, each location will be assumed to represent a single count.
+            <p>Tihedus punktide arvu kohta arvutatakse alati. Kui &uuml;htegi v&auml;lja pole valitud, eeldatakse, et iga asukoht kujutab &uuml;hte n&auml;htust.
             </p>
         </div>
     </div>
@@ -88,7 +88,7 @@
         <div><h2>Valige salve kuju</h2></div>
         <hr/>
         <div>
-            <p>The shape of bins that points are aggregated into and used for the density calculation.
+            <p>Salvede, millesse punktid on agregeeritud ja mida kasutatakse tiheduse arvutamiseks, kuju.
             </p>
             <p> <b>Ruutsalvede</b> v&otilde;i <b>kuusnurksalvede</b> abil tehtav anal&uuml;&uuml;s n&otilde;uab tasapinnalist ristkoordinaatide s&uuml;steemi. <b>Koordinaats&uuml;steemi t&ouml;&ouml;tlemise</b> saab m&auml;&auml;rata funktsiooniga <b>Anal&uuml;&uuml;sikeskkonnad</b>. Kui koordinaats&uuml;steemi t&ouml;&ouml;tlemine ei ole m&auml;&auml;ratud tasapinnaliseks ristkoordinaatide s&uuml;steemiks, kuvatakse k&auml;su <b>K&auml;ivita anal&uuml;&uuml;s</b> andmisel selle m&auml;&auml;ramist taotlev h&uuml;pikaken.
             </p>
@@ -98,7 +98,7 @@
         <div><h2>Vali salve suurus agregeerimise jaoks</h2></div>
         <hr/>
         <div>
-            <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
+            <p>Loodud salvede suurus. Ruudukujulise salve puhul on suurus ruudu k&otilde;rgus. Kuusnurga puhul on suurus kuusnurga k&otilde;rgus (paralleelk&uuml;lgede vahel).
             </p>
         </div>
     </div>
@@ -106,11 +106,11 @@
         <div><h2>Valige rakendamiseks tiheduse kaalumine</h2></div>
         <hr/>
         <div>
-            <p>The type of weighting applied to the density calculation. There are two options:
+            <p>Tiheduse arvutamisele rakendatava kaalumise t&uuml;&uuml;p. Valikuid on kaks.
                 <ul>
-                    <li> <b>Uniform</b>&mdash;This calculates a magnitude per area.
+                    <li> <b>&Uuml;htne</b> &ndash; see arvutab suurusj&auml;rgu ala kohta.
                     </li>
-                    <li> <b>Kernel</b>&mdash;Applies a kernel function to fit a smooth tapered surface to each point.
+                    <li> <b>Kernel</b> &ndash; rakendab kernelfunktsiooni, et sobitada sile koonusjas pind iga punktiga.
                     </li>
                 </ul>
                 
@@ -121,7 +121,7 @@
         <div><h2>Valige naabruse suurus</h2></div>
         <hr/>
         <div>
-            <p>The size of the area used to calculate the density. The neighborhood size must be larger than the bin size.
+            <p>Tiheduse arvutamiseks kasutatava ala suurus. Naabruse suurus peab olema suurem kui salve suurus.
             </p>
         </div>
     </div>
@@ -129,7 +129,7 @@
         <div><h2>Valige tiheduse väljundüksused</h2></div>
         <hr/>
         <div>
-            <p>The desired output units of the density values. By default, this is set to square kilometers or square miles based on the default units specified in your profile. If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+            <p>Tiheduse v&auml;&auml;rtuste soovitud v&auml;ljundi &uuml;hikud. Vaikimisi on m&auml;&auml;ratud ruutkilomeetrid v&otilde;i ruutmiilid, olenevalt teie profiilis m&auml;&auml;ratud vaike&uuml;hikutest. Kui tiheduse v&auml;&auml;rtused on v&auml;ga v&auml;ikesed, saate suuremate v&auml;&auml;rtuste tagastamiseks suurendada pindala&uuml;hikuid (n&auml;iteks ruutmeetrite asemel ruutkilomeetrid). V&auml;&auml;rtused muudavad ainult tulemuse m&otilde;&otilde;tkava.  
 
             </p>
         </div>
@@ -176,7 +176,7 @@
         </div>
     </div>
     <div id="timeReference">
-        <div><h2>Aeg ajasammude ühildamiseks</h2></div>
+        <div><h2>Aeg ajasammude ühildamiseks:</h2></div>
         <hr/>
         <div>
             <p>Kuup&auml;ev ja kellaaeg, mida kasutatakse ajal&otilde;igu &uuml;hitamiseks. Sellest ajast alustatakse ajasammuga ajas tagasi liikumist. Juhul kui viiteaega ei valita, &uuml;hildatakse ajasamm 1. jaanuariga 1970. 
@@ -197,7 +197,7 @@
         <div><h2>Valige andmeladu</h2></div>
         <hr/>
         <div>
-            <p>GeoAnalyticsi tulemeid k&auml;sitletakse ArcGIS-i andmelaos salvedena ning need kuvatakse portaalis  Portal for ArcGIS objektikihtidena. &Uuml;ldjuhul salvestatakse tulemid ajalisruumilisse andmelattu &ndash; see on vaikimisi valitud. M&otilde;nel juhul on tulemid m&otilde;istlik salvestada relatsioonilisse andmelattu. Allpool on toodud m&otilde;ned p&otilde;hjused, miks oleks soovitatav tulemid salvestada relatsioonilisse andmelattu. 
+            <p>GeoAnalyticsi tulemeid k&auml;sitletakse ArcGIS-i andmelaos salvedena ning need kuvatakse asjakohaste  Portal for ArcGIS objektikihtidena. &Uuml;ldjuhul salvestatakse tulemid ajalisruumilisse andmelattu &ndash; see on vaikimisi valitud. M&otilde;nel juhul on tulemid m&otilde;istlik salvestada relatsioonilisse andmelattu. Allpool on toodud m&otilde;ned p&otilde;hjused, miks oleks soovitatav tulemid salvestada relatsioonilisse andmelattu. 
                 <ul>
                     <li>Saate tulemeid kasutada portaalidevahelises koost&ouml;&ouml;s.
                     </li>

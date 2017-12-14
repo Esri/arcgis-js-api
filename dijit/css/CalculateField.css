@@ -177,3 +177,11 @@
 .esriCalcHelp a, .esriCalcHelp a:hover, .esriCalcHelp a:active, .esriCalcHelp a:visited {
     color: #21759B;
 }
+
+.esriCalcField .esriTitleDivideLine {
+  clear:both;
+  border-bottom: #CCC thin solid;
+  height:4%;
+  max-height:4em;
+  width:100%;
+}

@@ -44,30 +44,32 @@
         <h2>Titik Agregat</h2><p/>
         <h2><img src="../images/GUID-60C59C66-3038-4D0E-8F6A-EC6C53FEAA02-web.png" alt="Titik Agregat"></h2>
         <hr/>
-    <p>Alat ini bekerja dengan layer fitur titik dan layer fitur area. Ini menentukan terlebih dahulu titik mana yang diletakkan dalam setiap area. Setelah menentukan hubungan spasial titik dalam area ini, statistik tentang semua titik dalam area dihitung dan ditetapkan ke area. Statistik yang paling dasar adalah jumlah titik di dalam area, tapi Anda juga dapat memperoleh statistik lain. 
+    <p>Alat ini bekerja dengan layer fitur titik dan layer fitur area. Ini menentukan terlebih dahulu titik mana yang diletakkan dalam setiap area. Setelah menentukan hubungan spasial titik di dalam area ini, statistik terkait semua titik di dalam area dihitung dan ditetapkan ke area. Statistik yang paling dasar adalah jumlah titik di dalam area, tapi Anda juga dapat memperoleh statistik lain. 
     </p>
-    <p>Misalnya, Anda memiliki fitur titik dari lokasi sebuah warung kopi dan fitur area dari daerah, serta Anda ingin meringkas penjualan kopi menurut daerah.  Misalnya warung kopi memiliki atribut  <i>TOTAL_SALES</i>, Anda dapat memperoleh jumlah dari seluruh <i>TOTAL_SALES</i> dalam setiap daerah, atau jumlah minimal atau maksimal <i>TOTAL_SALES</i>
+    <p>Misalnya, Anda memiliki fitur titik dari lokasi sebuah warung kopi dan fitur area dari suatu daerah, serta Anda ingin merekapitulasi penjualan kopi menurut daerah tertentu.  Misalnya warung kopi memiliki atribut  <i>TOTAL_SALES</i>, Anda dapat memperoleh jumlah dari seluruh <i>TOTAL_SALES</i> dalam setiap daerah, atau jumlah minimal atau maksimal <i>TOTAL_SALES</i>
  dalam setiap wilayah, atau simpangan baku dari semua penjualan di dalam setiap daerah.
     </p>
-    <p>Jika  <b>Gunakan jangkauan peta saat ini</b> dicentang, maka hanya fitur dalam layer titik input dan layer area terlihat dalam jangkauan peta saat ini yang akan dianalisis.  Jika centang dihapus, semua fitur baik pada layer titik input maupun layer area akan dianalisis, meskipun berada di luar jangkauan peta yang ada.
+    <p>Jika  <b>Gunakan jangkauan peta saat ini</b> dicentang, maka hanya fitur dalam layer titik input dan layer area yang terlihat dalam jangkauan peta saat ini yang akan dianalisis. Jika centang dihapus, semua fitur baik pada layer titik input maupun layer area akan dianalisis, meskipun berada di luar jangkauan peta yang ada.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="pointLayer">
-        <div><h2>Pilih layer berisi titik yang dikumpulkan ke dalam area</h2></div>
+        <div><h2>Pilih layer berisi titik yang akan diagregasi ke dalam area</h2></div>
         <hr/>
         <div>
-            <p>Layer titik yang akan dikumpulkan ke dalam area.
+            <p>Layer titik yang akan diagregasi ke dalam area.
             </p>
             <p class="OnlineOnly">Selain memilih sebuah layer dari peta, Anda dapat memilih  <b>Pilih Layer Analisis Living Atlas</b> atau <b>Piilih Layer Analisis</b> yang terdapat di bagian paling bawah daftar drop-down. Sebagai tambahan, area yang berdekatan (yaitu, memiliki batasan yang sama) akan digabungkan menjadi satu area. Langkah ini akan membuka galeri yang memuat koleksi layer yang bermanfaat bagi banyak analisis. 
             </p>
         </div>
     </div>
     <div id="polygonLayer">
-        <div><h2>Pilih layer yang berisi area kumpulan</h2></div>
+        <div><h2>Pilih layer yang berisi area agregasi</h2></div>
         <hr/>
         <div>
-            <p>Layer area tempat titik akan dikumpulkan. Titik mana saja yang diletakkan dalam batasan area dalam layer ini akan dihitung dan secara opsional diringkas menggunakan pilihan statistik Anda.
+            <p>Layer area tempat titik akan diagregasi. Titik mana saja yang berada di dalam batasan area dalam layer ini akan dihitung dan secara opsional akan direkapitulasi menggunakan pilihan statistik Anda.  
+            </p>
+            <p>Anda dapat memilih antara layer area yang Anda sediakan atau bin yang dihasilkan ketika alat dijalankan. Ketika membuat bin, untuk  <b>Persegi</b>, angka dan unit yang disebutkan akan menentukan tinggi dan panjang persegi. Untuk <b>Heksagon</b>, angka dan unit yang ditentukan akan menentukan jarak antara sisi paralel.
             </p>
             <p class="OnlineOnly">Selain memilih sebuah layer dari peta, Anda dapat memilih  <b>Pilih Layer Analisis Living Atlas</b> atau <b>Piilih Layer Analisis</b> yang terdapat di bagian paling bawah daftar drop-down. Sebagai tambahan, area yang berdekatan (yaitu, memiliki batasan yang sama) akan digabungkan menjadi satu area. Langkah ini akan membuka galeri yang memuat koleksi layer yang bermanfaat bagi banyak analisis. 
             </p>
@@ -77,7 +79,7 @@
         <div><h2>Simpan area tanpa titik</h2></div>
         <hr/>
         <div>
-            <p>Tentukan apakah area yang tidak memiliki titik padanya akan muncul di layer hasil.  Jika tidak dicentang, area tanpa titik tidak akan muncul pada hasil.  Jika dicentang, area tanpa titik akan muncul pada hasil.  
+            <p>Tentukan apakah area yang tidak memiliki titik di dalamnya akan muncul di layer hasil. Jika tidak dicentang, area tanpa titik tidak akan muncul pada hasil.  Jika dicentang, area tanpa titik akan muncul pada hasil.  
             </p>
         </div>
     </div>
@@ -85,7 +87,7 @@
         <div><h2>Tambahkan statistik</h2></div>
         <hr/>
         <div>
-            <p>Anda dapat menghitung statistik tentang atribut dari layer titik input seperti penjumlahan, rata-rata, minimal, maksimal, dan simpangan baku. Layer hasil akan berisi atribut baru untuk setiap statistik yang dihitung. Angka statistik mana saja dapat ditambahkan dengan memilih sebuah atribut dan statistik (sebuah kotak tarik-turun akan muncul).
+            <p>Anda dapat menghitung statistik tentang atribut dari layer titik input seperti penjumlahan, rata-rata, minimal, maksimal, dan simpangan baku. Layer hasil akan berisi atribut baru untuk setiap statistik yang dihitung. Angka statistik mana saja dapat ditambahkan dengan memilih sebuah atribut dan statistik (sebuah kotak drop-down akan muncul).
  
             </p>
         </div>
@@ -102,9 +104,9 @@
         <div><h2>Tambahkan minoritas, mayoritas</h2></div>
         <hr/>
         <div>
-            <p>Kotak centang ini diaktifkan ketika Anda memilih kolom untuk dikelompokkan.    Jika Anda ingin menemukan nilai atribut mana dalam setiap kelompok yang merupakan minoritas (lebih tidak dominan) atau mayoritas (paling dominan) dalam setiap batasan, pilih  <b>Tambahkan minoritas, mayoritas</b>.   Ketika Anda memilih <b>Tambahkan minoritas, mayoritas</b>, dua kolom baru telah ditambahkan ke layer hasil Anda.   Jika Anda juga memilih <b>Tambahkan persentase</b>, dua kolom tambahan ditambahkan ke layer hasil berisi persentase nilai atribut minoritas dan mayoritas dalam setiap kelompok.
+            <p>Kotak centang ini diaktifkan ketika Anda memilih kolom untuk dikelompokkan.    Jika Anda ingin menemukan nilai atribut mana dalam setiap kelompok yang merupakan minoritas (lebih tidak dominan) atau mayoritas (paling dominan) dalam setiap batasan, pilih  <b>Tambahkan minoritas, mayoritas</b>.   Ketika Anda memilih <b>Tambahkan minoritas, mayoritas</b>, dua kolom baru telah ditambahkan ke layer hasil Anda. Jika Anda juga memilih <b>Tambahkan persentase</b>, dua kolom tambahan ditambahkan ke layer hasil berisi persentase nilai atribut minoritas dan mayoritas dalam setiap kelompok.
             </p>
-            <p>Misalnya, jika Anda adalah perencana kota dan Anda ingin menemukan spesies pohon mana yang merupakan minoritas dan spesies mana yang merupakan mayoritas dalam semua taman kota, kumpulkan data pohon Anda dengan area taman dan centang opsi ini.
+            <p>Misalnya, jika Anda adalah perencana kota dan Anda ingin menemukan spesies pohon mana yang merupakan minoritas dan spesies mana yang merupakan mayoritas dalam semua taman kota, rekapitulasi data pohon Anda dengan area taman dan centang opsi ini.
             </p>
         </div>
     </div>

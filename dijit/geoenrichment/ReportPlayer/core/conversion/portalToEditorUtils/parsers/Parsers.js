@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["dojo/Deferred","require"],function(e,r){var t,n={},i={};return n.initialize=function(){return t?t.promise:(t=new e,r(["./DocumentParser","./ChartConverterPtoE","./InfographicConverterPtoE","./SectionParser","./FieldParser","../../../supportClasses/templateJsonUtils/utils"],function(e,r,n,o,s,a){i.document=e,i.chart=r,i.infographic=n,i.section=o,i.field=s,a.init().then(t.resolve)}),t.promise)},n.getParser=function(e){return i[e]},n});
+define(["dojo/Deferred","require"],function(e,r){var n,t={},i={};return t.initialize=function(){return n?n.promise:(n=new e,r(["./DocumentParser","./ChartConverterPtoE","./InfographicConverterPtoE","./SectionParser","./FieldParser","../../../supportClasses/templateJsonUtils/fieldInfo/utils"],function(e,r,t,o,s,a){i.document=e,i.chart=r,i.infographic=t,i.section=o,i.field=s,a.init().then(n.resolve)}),n.promise)},t.getParser=function(e){return i[e]},t});

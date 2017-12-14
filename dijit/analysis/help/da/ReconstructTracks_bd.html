@@ -95,6 +95,8 @@
         <div>
             <p>Ligning, der benyttes til at beregne bufferafstanden omkring inputobjekterne. Denne ligning kan genereres ved hj&aelig;lp af en bufferberegner, og grundl&aelig;ggende handlinger, s&aring;som addition, subtraktion, multiplikation og division underst&oslash;ttes. V&aelig;rdierne beregnes ved at benytte analysekoordinatsystemet. Laget skal v&aelig;re placeret i et projiceret koordinatsystem, eller den spatiale reference til behandling skal v&aelig;re indstillet til et projiceret koordinatsystem ved hj&aelig;lp af  <b>Analysemilj&oslash;erne</b>, hvis der anvendes en buffer.
             </p>
+            <p>En ligning som f.eks.  <code>$feature.windspeed * 1000</code> ville anvende en buffer p&aring; 1.000 multipliceret med feltet for <i>vindhastighed</i>. Du kan benytte mere end &eacute;t felt til bufferberegningen.
+            </p>
         </div>
     </div>
     <div id="timeSplit">
@@ -102,6 +104,20 @@
         <hr/>
         <div>
             <p>Den tid, der benyttes til at opdele spor. Hvis inputpunkter eller -polygoner har l&aelig;ngere tidsvarighed mellem sig end angivet af tidsopdelingen, vil de blive opdelt i forskellige spor.
+            </p>
+            <p>Hvis du angiver en tidsopdeling og en afstandsopdeling, opdeles sporene, n&aring;r den ene eller begge betingelser er opfyldt. 
+            </p>
+            <p>Forestil dig, at du f.eks. har punktobjekter, der repr&aelig;senterer flyvninger, hvor sporingsfeltet udg&oslash;r flyets ID. Dette fly kunne foretage adskillige flyvninger, som alle ville v&aelig;re repr&aelig;senteret af et enkelt spor.  Hvis du vidste, at der var en pause p&aring; 1 time mellem hver flyvning, kunne du benytte  <code>1 time</code> som din sporopdeling, hvorefter hver flyvning ville blive opdelt og derved f&aring; sit eget spor.
+            </p>
+        </div>
+    </div>
+    <div id="distanceSplit">
+        <div><h2>Vælg en afstand, som spor skal opdeles efter (valgfrit)</h2></div>
+        <hr/>
+        <div>
+            <p> Den afstand, der benyttes til at opdele spor. Hvis inputpunkter eller -polygoner har en st&oslash;rre afstand mellem sig end angivet af afstandsopdelingen, vil de blive opdelt i forskellige spor.
+            </p>
+            <p>Hvis du angiver en tidsopdeling og en afstandsopdeling, opdeles sporene, n&aring;r den ene eller begge betingelser er opfyldt. 
             </p>
         </div>
     </div>

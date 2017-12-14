@@ -40,14 +40,13 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="regularsize">
+    <div id="toolDescription" class="largesize">
         <h2>Summeeri atribuudid</h2><p/>
-        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Summeeri atribuudid"></h2>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Summeeri atribuudid diagramm"></h2>
         <hr/>
-    <p>See t&ouml;&ouml;riist summeerib k&otilde;ik &uuml;hel v&otilde;i mitmel v&auml;ljal olevad vastavad v&auml;&auml;rtused ja arvutab nende p&otilde;hjal statistikud. K&otilde;ige lihtsam statistik on summeeritud objektide arv, aga arvutada saab ka keerulisemaid statistikuid. 
-
+    <p> See t&ouml;&ouml;riist summeerib k&otilde;ik &uuml;hel v&otilde;i mitmel v&auml;ljal olevad vastavad v&auml;&auml;rtused ja arvutab nende p&otilde;hjal statistika. K&otilde;ige lihtsam statistik on summeeritud objektide arv, aga arvutada saab ka keerulisemaid statistikuid.
     </p>
-    <p>Kirjeldatud meetod on kasutatav n&auml;iteks olukorras, kus teil on olemas m&uuml;&uuml;gikohtade punktobjektid v&auml;ljaga  <i>DISTRICT_MANAGER_NAME</i> ja soovite summeerida selle alusel kohvi m&uuml;&uuml;gitulu juhatajate kaupa. Saate m&auml;&auml;rata sulandamise v&auml;ljaks v&auml;lja <i>DISTRICT_MANAGER_NAME</i> ja summeeritakse eraldi k&otilde;ikide juhatajate andmeread. See t&auml;hendab, et k&otilde;ik m&uuml;&uuml;gikohad, mille juhataja on Juhataja1, summeeritakse &uuml;hele reale koos statistikute kokkuv&otilde;ttega. Antud juhul arvutatakse k&otilde;ikide Juhataja1 ja samuti k&otilde;ikide teiste v&auml;ljal <i>DISTRICT_MANAGER_NAME</i> loetletud juhatajate juhitavate m&uuml;&uuml;gikohtade statistikud, nagu m&uuml;&uuml;gikohtade arv ja <i>TOTAL_SALES</i>.
+    <p>Kirjeldatud meetod on kasutatav n&auml;iteks olukorras, kus teil on olemas m&uuml;&uuml;gikohtade punktobjektid v&auml;ljaga  <i>DISTRICT_MANAGER_NAME</i> ja soovite summeerida selle alusel kohvi m&uuml;&uuml;gitulu juhatajate kaupa. Saate m&auml;&auml;rata sulandamise v&auml;ljaks v&auml;lja <i>DISTRICT_MANAGER_NAME</i> ja summeeritakse eraldi k&otilde;ikide juhatajate andmeread. See t&auml;hendab, et k&otilde;ik m&uuml;&uuml;gikohad, mille juhataja on <pre>Manager1</pre>, summeeritakse &uuml;hele reale koos statistikute kokkuv&otilde;ttega. Antud juhul arvutatakse k&otilde;ikide <pre>Manager1</pre> ja samuti k&otilde;ikide teiste v&auml;ljal <i>DISTRICT_MANAGER_NAME</i> loetletud juhatajate juhitavate m&uuml;&uuml;gikohtade statistikud, nagu m&uuml;&uuml;gikohtade arv ja <i>TOTAL_SALES</i>.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -62,10 +61,19 @@
         </div>
     </div>
     <div id="fields">
-        <div><h2>Valige summeerimiseks väljad</h2></div>
+        <div><h2>Valige andmete summeerimise viis</h2></div>
         <hr/>
         <div>
-            <p>Sisendkihi v&auml;ljade loend. Valitud v&auml;ljad summeeritakse ja neid kasutatakse statistikute arvutamiseks. N&auml;iteks kui valite v&auml;lja  <i>Kinnisvara t&uuml;&uuml;p</i> v&auml;&auml;rtustega &auml;rimaa ja elamumaa, summeeritakse k&otilde;ik elamumaa v&auml;ljad, mille jaoks arvutatakse statistika kokkuv&otilde;te, samuti summeeritakse k&otilde;ik &auml;rimaa v&auml;ljad.
+            <p>Andmete summeerimiseks on kaks v&otilde;imalust.
+                <ul>
+                    <li> <b>K&otilde;ik objektid &uuml;heks objektiks</b> &ndash; arvutab k&otilde;igi objektide statistika.
+                    </li>
+                    <li> <b>V&auml;lja j&auml;rgi</b> &ndash; r&uuml;hmitab objektid sarnaste v&auml;&auml;rtuste j&auml;rgi m&auml;&auml;ratud v&auml;ljadel.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Oletame n&auml;iteks, et teil on puude andmekomplekt, mis sisaldab  <i>puuliigi</i> v&auml;lju v&auml;&auml;rtustega <code>Vaher</code>, <code>Kuusk</code> ja <code>M&auml;nd</code> ning v&auml;lja <i>puuk&otilde;rgus</i>, ja teid huvitab keskmise <i>puuk&otilde;rguse</i> leidmine. Kui summeerite k&otilde;ik objektid &uuml;heks objektiks, leiate k&otilde;igi puude keskmise k&otilde;rguse, mis annab tulemuseks &uuml;he keskmise v&auml;&auml;rtuse. Kui summeerite v&auml;lja <i>puuk&otilde;rgus</i> j&auml;rgi, saate vahtrate keskmise, kuuskede keskmises ja m&auml;ndide keskmise.
             </p>
         </div>
     </div>
@@ -109,7 +117,7 @@
         <div><h2>Vali andmeladu</h2></div>
         <hr/>
         <div>
-            <p>GeoAnalyticsi tulemeid k&auml;sitletakse ArcGIS-i andmelaos salvedena ning need kuvatakse portaalis  Portal for ArcGIS objektikihtidena. &Uuml;ldjuhul salvestatakse tulemid ajalisruumilisse andmelattu &ndash; see on vaikimisi valitud. M&otilde;nel juhul on tulemid m&otilde;istlik salvestada relatsioonilisse andmelattu. Allpool on toodud m&otilde;ned p&otilde;hjused, miks oleks soovitatav tulemid salvestada relatsioonilisse andmelattu. 
+            <p>GeoAnalyticsi tulemeid k&auml;sitletakse ArcGIS-i andmelaos salvedena ning need kuvatakse asjakohaste  Portal for ArcGIS objektikihtidena. &Uuml;ldjuhul salvestatakse tulemid ajalisruumilisse andmelattu &ndash; see on vaikimisi valitud. M&otilde;nel juhul on tulemid m&otilde;istlik salvestada relatsioonilisse andmelattu. Allpool on toodud m&otilde;ned p&otilde;hjused, miks oleks soovitatav tulemid salvestada relatsioonilisse andmelattu. 
                 <ul>
                     <li>Saate tulemeid kasutada portaalidevahelises koost&ouml;&ouml;s.
                     </li>

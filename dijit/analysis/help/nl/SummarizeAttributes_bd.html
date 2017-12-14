@@ -42,12 +42,11 @@
 <div id="topics">
     <div id="toolDescription" class="regularsize">
         <h2>Attributen samenvatten</h2><p/>
-        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Attributen samenvatten"></h2>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Attributen samenvatten workflow diagram"></h2>
         <hr/>
-    <p>Deze tool vat alle overeenkomende waarden samen in een of meer velden en berekent de statistieken daarop. De meest eenvoudige statistiek is het aantal objecten die samen zijn gevat, maar u kunt ook geavanceerdere statistieken berekenen. 
-
+    <p> Deze tool vat alle overeenkomende waarden samen in een of meer velden en berekent de statistieken daarop. De meest eenvoudige statistiek is het aantal objecten die samen zijn gevat, maar u kunt ook geavanceerdere statistieken berekenen.
     </p>
-    <p>Stel bijvoorbeeld dat u puntobjecten van winkellocaties hebt met een veld dat de  <i>DISTRICT_MANAGER_NAME</i> vertegenwoordigt en u wilt de koffieverkoop per manager samenvatten. U kunt het veld <i>DISTRICT_MANAGER_NAME</i> opgeven als het veld om op op te lossen en alle rijen met gegevens die individuele managers weergeven zullen worden samengevat. Dit betekent dat alle winkellocaties die worden beheerd door Manager1 zullen worden samengevat in een rij met beknopte statistieken berekend. In dit geval worden de statistieken zoals de telling van het aantal winkels en de som van <i>TOTAL_SALES</i> voor alle winkels die Manager1 beheert ook worden berekend alsmede voor alle andere managers in het veld <i>DISTRICT_MANAGER_NAME</i>.
+    <p>Stel bijvoorbeeld dat u puntobjecten van winkellocaties hebt met een veld dat de  <i>DISTRICT_MANAGER_NAME</i>, vertegenwoordigt en u wilt de koffieverkoop per manager samenvatten. U kunt het veld <i>DISTRICT_MANAGER_NAME</i> opgeven als het veld om in op te lossen en alle rijen met gegevens die individuele managers weergeven zullen worden samengevat. Dit betekent dat alle winkellocaties die worden beheerd door <pre>Manager1</pre> zullen worden samengevat in een rij, met beknopte statistieken berekend. In dit geval worden de statistieken zoals de telling van het aantal winkels en de som van <i>TOTAL_SALES</i> voor alle winkels die <pre>Manager1</pre> beheert ook berekend, , alsook voor alle andere managers in het veld <i>DISTRICT_MANAGER_NAME</i> .
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -62,10 +61,19 @@
         </div>
     </div>
     <div id="fields">
-        <div><h2>Kies de velden om samen te vatten</h2></div>
+        <div><h2>Kies hoe u uw gegevens wilt samenvatten</h2></div>
         <hr/>
         <div>
-            <p>Lijst met velden van de invoerlaag. Geselecteerde velden worden samengevat en gebruikt voor statistische berekening. Bijvoorbeeld, als u een veld kiest met de naam  <i>Type eigendom</i> met de waarden van commercieel en residentieel, dan worden alle residenti&euml;le velden samengevat, met samenvattende statistieken berekend en alle commerci&euml;le worden samengevat.
+            <p>Er zijn twee manieren om uw gegevens samen te vatten:
+                <ul>
+                    <li> <b>Alle objecten in een enkel object</b>&mdash;Berekent statistieken op alle objecten.
+                    </li>
+                    <li> <b>Op velden</b>-Groepeert objecten op like-waarden in gespecificeerde velden.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Stel dat u een gegevensset met bomen had met velden met  <i>boomsoort</i> met de waarden <code>Esdoorn</code>, <code>Spar</code> en <code>Den</code>, en een veld <i>boomhoogte</i>, en u wilt de gemiddelde <i>boomhoogte</i>weten. Als u alle kenmerken samenvat in een enkel kenmerk, vindt u de gemiddelde hoogte van de boom van alle bomen, dat resulteert on een enkele gemiddelde waarde. Als u samenvat op het veld <i>boomhoogte</i>, dan zou u een gemiddelde krijgen voor  esdoorns, een gemiddelde voor sar ren, en een gemiddelde voor dennenbomen.
             </p>
         </div>
     </div>

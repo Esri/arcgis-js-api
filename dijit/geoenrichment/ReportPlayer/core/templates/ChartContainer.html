@@ -1,9 +1,17 @@
 ﻿<div class="esriGEReportPlayer_chartContainer">
-    <div data-dojo-attach-point="editChartButton" class="chartContainer_editChartButton">${nls.editChart}</div>
     <div data-dojo-attach-point="chartLabel" class="chartContainer_chartLabel"></div>
-    <div class="chartContainer_chartContainerWithAxis" data-dojo-attach-point="chartContainerWithAxis">
-        <div data-dojo-attach-point="chartContainerDiv"></div>
+
+    <div data-dojo-attach-point="chartNormalViewDiv">
+        <div class="chartContainer_chartContainerWithAxis" data-dojo-attach-point="chartContainerWithAxis">
+            <div data-dojo-attach-point="chartContainerDiv"></div>
+        </div>
+        <div data-dojo-attach-point="tableContainerDiv"></div>
+        <div data-dojo-attach-point="legendContainerDiv" class="chartContainer_legendContainer"></div>
+        <div data-dojo-attach-point="comparisonSelectBlock" class="chartContainer_comparisonSelectBlock">
+            <div data-dojo-attach-point="comparisonLabel" class="dijitInline esriGESpaceAfterBig"></div>
+            <div data-dojo-attach-point="comparisonSelectDiv" class="dijitInline"></div>
+        </div>
     </div>
-    <div data-dojo-attach-point="tableContainerDiv"></div>
-    <div data-dojo-attach-point="legendContainerDiv" class="chartContainer_legendContainer"></div>
+
+    <div data-dojo-attach-point="errorDiv" class="esriGEReportPlayerErrorMessage">${nls.chartLoadError}</div>
 </div>

@@ -42,12 +42,11 @@
 <div id="topics">
     <div id="toolDescription" class="regularsize">
         <h2>Sažmi atribute</h2><p/>
-        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Sažmi atribute"></h2>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Dijagram  sažimanja atributa"></h2>
         <hr/>
-    <p>Ovaj alat sažima sve vrijednosti koje se podudaraju u jednom ili vi&scaron;e polja i izračunava njihovu statistiku. Najosnovnija statistika je zbroj geoobjekata koji su sažeti zajedno, ali mogu se i izračunati i naprednije statistike. 
-
+    <p> Ovaj alat sažima sve vrijednosti koje se podudaraju u jednom ili vi&scaron;e polja i izračunava njihovu statistiku. Najosnovnija statistika je zbroj geoobjekata koji su sažeti zajedno, ali mogu se i izračunati i naprednije statistike.
     </p>
-    <p>Na primjer, pretpostavimo da imate točkaste geoobjekte lokacija trgovina s poljem koje predstavlja  <i>IME_UPRAVITELJA_OKRUGA</i> i vi želite sažeti prodaju kave po upravitelju. Možete navesti polje <i>IME_UPRAVITELJA_OKRUGA</i> kao polje za uklanjanje i sažeti će se svi redovi podataka koji predstavljaju pojedinačne upravitelje. To znači da će se sve lokacije trgovina kojima upravlja Upravitelj1 sažeti u jedan redak s izračunatim statistikama sažetka. U ovom primjeru izračunat će se statistike kao zbroj broja trgovina i zbroj <i>UKUPNI_PROMET</i> za sve trgovine kojima upravlja Upravitelj1, kao i za bilo kojeg drugog upravitelja navedenog u polju <i>IME _UPRAVITELJA_OKRUGA</i>.
+    <p>Na primjer, pretpostavimo da imate točkaste geoobjekte lokacija trgovina s poljem koje predstavlja  <i>IME_UPRAVITELJA_OKRUGA</i> i vi želite sažeti prodaju kave po upravitelju. Možete navesti polje <i>IME_UPRAVITELJA_OKRUGA</i> kao polje za uklanjanje i sažeti će se svi redovi podataka koji predstavljaju pojedinačne upravitelje. To znači da će se sve lokacije trgovina kojima upravlja <pre>Manager1</pre> sažeti u jedan redak  s izračunatim statistikama sažetka. U ovom primjeru izračunat će se statistike kao zbroj broja trgovina i zbroj <i>UKUPNI_PROMET</i> za sve trgovine kojima upravlja <pre>Manager1</pre>, kao i za bilo kojeg drugog upravitelja navedenog u polju <i>IME _UPRAVITELJA_OKRUGA</i>.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -62,10 +61,19 @@
         </div>
     </div>
     <div id="fields">
-        <div><h2>Odaberite polja za sažimanje</h2></div>
+        <div><h2>Izaberite kako sažeti podatke</h2></div>
         <hr/>
         <div>
-            <p>Popis polja iz ulaznog sloja. Sažet će se odabrana polja i upotrijebiti za izračun statistike. Na primjer, ako odaberete polje pod nazivom  <i>VrstaImovine</i> s komercijalnim i stambenim vrijednostima, sva stambena polja sažet će se zajedno uz izračun statistike sažetka i sva komercijalna polja sažet će se zajedno.
+            <p>Postoje dva načina za sažimanje podataka:
+                <ul>
+                    <li> <b>Sve geoobjekte u jedan geoobjekt</b> &mdash; Izračunava statistike na svim geoobjektima.
+                    </li>
+                    <li> <b>Prema poljima</b> &mdash; Grupira geoobjekta prema sličnim vrijednostima u određenim poljima.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Primjerice, pretpostavimo da imate skup podataka o stablima koji uključuje polja o  <i>vrsti stabla</i> s vrijednostima <code>Javor</code>, <code>Jela</code> i <code>Bor</code> te polje <i>visina stabla</i>, a želite saznati srednju vrijednost <i>visine stabla</i>. Ako sažmete sve geoobjekte u jedan geoobjekt, pronaći ćete srednju vrijednost visine stabla  svih stabala, čime ćete dobiti jednu srednju vrijednost. Ako sažmete prema polju <i>visina stabla</i>, zavr&scaron;it ćete sa srednjom vrijedno&scaron;ću za mjabukovo stablo, srednjom vrijedno&scaron;ću za stablo jele i srednjom vrijedno&scaron;ću za stabala bora.
             </p>
         </div>
     </div>

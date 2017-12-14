@@ -95,6 +95,8 @@
         <div>
             <p>Equa&ccedil;&atilde;o utilizada para calcular a dist&acirc;ncia de buffer em torno de elementos de entrada. Esta equa&ccedil;&atilde;o pode ser gerada utilizando a calculadora de buffer e opera&ccedil;&otilde;es b&aacute;sicas, como adicionar, subtrair, multiplicar e dividir s&atilde;o suportadas. Os valores s&atilde;o calculados utilizando o sistema de coordenadas da an&aacute;lise. A camada tem de encontrar-se num sistema de coordenadas projetado ou a refer&ecirc;ncia espacial de processamento tem de ser definida para um sistema de coordenadas projetado que utilize os  <b>Ambientes de An&aacute;lise</b> no caso de ser aplicado um buffer.
             </p>
+            <p>Uma equa&ccedil;&atilde;o como  <code>velocidade do vento * 1000</code> aplicaria um buffer de 1000 multiplicado pelo campo <i>velocidade do vento</i>. Pode utilizar mais do que um campo na calculadora de buffer.
+            </p>
         </div>
     </div>
     <div id="timeSplit">
@@ -102,6 +104,20 @@
         <hr/>
         <div>
             <p>Hora utilizada para dividir trilhos. Caso os pontos ou pol&iacute;gonos de entrada tenham uma dura&ccedil;&atilde;o maior entre si do que a divis&atilde;o temporal, ser&atilde;o divididos em trilhos diferentes.
+            </p>
+            <p>Caso especifique uma divis&atilde;o temporal e uma divis&atilde;o de dist&acirc;ncia, os trilhos ser&atilde;o divididos quando uma ou ambas as condi&ccedil;&otilde;es forem correspondidas. 
+            </p>
+            <p>Imagine que tem elementos de ponto que representam voos de avi&otilde;es, em que o campo do trilho &eacute; a ID do avi&atilde;o. Este avi&atilde;o poderia efetuar v&aacute;rias viagens e seria representado como um trilho.  Caso soubesse que existe uma pausa de de 1 hora entre os voos, poderia utilizar  <code>1 hora</code> como a sua divis&atilde;o de trilhos, e cada voo seria atribu&iacute;do ao seu respetivo trilho.
+            </p>
+        </div>
+    </div>
+    <div id="distanceSplit">
+        <div><h2>Selecionar uma distância pela qual dividir trilhos (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p> Dist&acirc;ncia utilizada para dividir trilhos. Caso os pontos ou pol&iacute;gonos de entrada tenham uma dist&acirc;ncia maior entre si do que a divis&atilde;o de dist&acirc;ncia, ser&atilde;o divididos em trilhos diferentes.
+            </p>
+            <p>Caso especifique uma divis&atilde;o temporal e uma divis&atilde;o de dist&acirc;ncia, os trilhos ser&atilde;o divididos quando uma ou ambas as condi&ccedil;&otilde;es forem correspondidas. 
             </p>
         </div>
     </div>

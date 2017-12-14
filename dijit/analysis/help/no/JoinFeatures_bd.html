@@ -44,7 +44,7 @@
         <h2>Koble geoobjekter</h2><p/>
         <h2><img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" alt="Koble geoobjekter"></h2>
         <hr/>
-    <p>Oppgaven Koble geoobjekter fungerer med to lag. Koble geoobjekter f&oslash;yer sammen attributter fra ett geoobjekt til et annet p&aring; bakgrunn av romlige, tidsmessige, og attributtmessige forhold eller en kombinasjon av de tre. Verkt&oslash;yet fastsetter alle inndatageoobjekter som oppfyller de angitte betingelsene og koble det andre geoobjektslaget til det f&oslash;rste. Du kan eventuelt koble sammen alle geoobjektene til de samsvarende geoobjektene eller oppsummere de samsvarende geoobjektene.
+    <p>Oppgaven Koble geoobjekter fungerer med to lag. Koble geoobjekter f&oslash;yer sammen attributter fra ett geoobjekt til et annet p&aring; bakgrunn av romlige, tidsmessige, og attributtmessige forhold eller en kombinasjon av de tre. Verkt&oslash;yet fastsetter alle inndatageoobjekter som oppfyller de angitte betingelsene og kobler det andre geoobjektslaget til det f&oslash;rste. Du kan eventuelt koble sammen alle geoobjektene til de samsvarende geoobjektene eller oppsummere de samsvarende geoobjektene.
     </p>
     <p>Koble geoobjekter kan brukes p&aring; punkter, linjer, omr&aring;der og tabeller. En tidsmessig sammenf&oslash;yning krever at inndataene er tidsaktivert, og en romlig sammenf&oslash;yning krever at dataene har en geometri. 
     </p>
@@ -63,7 +63,7 @@
         </div>
     </div>
     <div id="joinLayer">
-        <div><h2>Velg laget som skal kobles med mållaget</h2></div>
+        <div><h2>Velg laget som skal knyttes til mållaget</h2></div>
         <hr/>
         <div>
             <p>Koblingslaget med attributtene som skal legges til i m&aring;llaget.
@@ -85,7 +85,7 @@
                 </ul>
                 
             </p>
-            <p>Anta for eksempel at vi &oslash;nsket &aring; finne supermarkeder innen 2 kilometer fra Bondens marked. I dette tilfellet har laget som det skal kobles til, ett enkelt geoobjekt som representerer Bondens marked, og geoobjektene som skal f&oslash;yes til representerer de lokale dagligvarebutikkene som har attributter som samlet &aring;rlig omsetning. Ved hjelp av verkt&oslash;yet  <b>Koble geoobjekter</b> finner vi ut at fem dagligvarebutikker oppfyller dette kriteriet.  Hvis vi spesifiserte en koblingsoperasjon som <b>Koble en tilmange</b>, vil vi ende opp med fem geoobjekter i resultatet v&aring;rt, der hver rad representerer Bondens marked og et supermarked. Hvis vi spesifiserte et <b>Koble en til mange</b>-forhold, ville vi endt opp med ett geoobjekt som representerer Bondens marked og den oppsummerte informasjonen fra supermarkedene, f.eks. antallet(2), og annen statistikk som summen av &aring;rlig omsetning.
+            <p>La oss for eksempel si at vi &oslash;nsket &aring; finne dagligvaremarkeder innen 2 kilometer fra Bondens marked. I dette tilfellet har laget som det skal kobles til, ett enkelt geoobjekt som representerer Bondens marked, og geoobjektene som skal f&oslash;yes til representerer de lokale dagligvarebutikkene som har attributter som samlet &aring;rlig omsetning. Ved hjelp av verkt&oslash;yet  <b>Koble geoobjekter</b> finner vi ut at fem dagligvarebutikker oppfyller dette kriteriet.  Hvis vi spesifiserte en koblingsoperasjon som <b>Koble en til mange</b>, ville vi endt opp med fem geoobjekter i resultatet, der hver rad representerte Bondens marked og en dagligvarebutikk. Hvis vi spesifiserte et <b>Koble en til en</b>-forhold, ville vi endt opp med et geoobjekt som representerte Bondens marked og den oppsummerte informasjonen fra dagligvarebutikkene, f.eks. antallet (2), og annen statistikk som summen av &aring;rlig omsetning.
             </p>
         </div>
     </div>
@@ -95,7 +95,7 @@
         <div>
             <p>Du kan bruke &eacute;n, to eller tre koblingstyper. Koblingstypene inneholder f&oslash;lgende: 
                 <ul>
-                    <li> <b>Spatial</b> &ndash; Bruker et bestemt romlig forhold til &aring; koble geoobjekter. Dette krever at begge lag har en geometri.
+                    <li> <b>Romlig</b> &ndash; Bruker et bestemt romlig forhold til &aring; koble geoobjekter. Dette krever at begge lag har en geometri.
                     </li>
                     <li> <b>Tidsbestemt</b> &ndash; Bruker et tidsmessig forhold til &aring; koble geoobjekter. Dette krever at tid er aktivert i begge lag.
                     </li>
@@ -118,7 +118,7 @@
                     </li>
                     <li> <b>Like</b> &ndash; Geoobjektene matches hvis de har samme geometri.
                     </li>
-                    <li> <b>N&aelig;r</b> &ndash; Geoobjektene matches hvis de er innenfor en viss avstand av hverandre. M&aring;llaget m&aring; v&aelig;re i et projisert koordinatsystem eller den geografiske referansen for behandling m&aring; v&aelig;re satt til et projisert koordinatsystem som bruker <b>analysemilj&oslash;ene</b> om det brukes en geografisk <b>n&aelig;r</b> relasjon.
+                    <li> <b>N&aelig;r</b> &ndash; Geoobjektene matches hvis de er innenfor en viss avstand fra hverandre. M&aring;llaget m&aring; v&aelig;re i et projisert koordinatsystem, eller den geografiske referansen for behandling m&aring; v&aelig;re satt til et projisert koordinatsystem i <b>analysemilj&oslash;et</b> dersom det brukes en geografisk <b>n&aelig;r</b> relasjon.
                     </li>
                     <li> <b>Inneholder</b> &ndash; Geoobjektene matches hvis laget som det kobles til er omfattet av geoobjektene som skal sammenf&oslash;yes.
                     </li>
@@ -206,7 +206,7 @@
         <div><h2>Legg til statistikk (valgfritt)</h2></div>
         <hr/>
         <div>
-            <p>Hvis koblingsoperasjonen er   <b>Koble en til en</b>, kan du beregne statistikk p&aring; dine koblede geoobjekter. Som standard beregnes all statistikk.
+            <p>Hvis koblingsoperasjonen er  <b>Koble til en</b>, kan du beregne statistikk p&aring; dine koblede geoobjekter. Som standard beregnes all statistikk.
             </p>
             <p>Du kan beregne statistikk p&aring; geoobjekter som er summert. P&aring; numeriske felt kan du beregne f&oslash;lgende:
                 <ul>
@@ -248,7 +248,7 @@
         <div>
             <p>Bruker en betingelse p&aring; spesifiserte felter. Bare geoobjekter med felter som oppfyller disse betingelsene, sl&aring;s sammen.
             </p>
-            <p>La oss f.eks si at vi &oslash;nsker &aring; bruke en sammensl&aring;ing til et datasett bare for geoobjektene der  <i>health_spending</i> er st&oslash;rre enn <i>income</i>.  For &aring; gj&oslash;re dette, bruker du sammensl&aring;ingsbetingelsen <code>target.health_spending &gt; (join.income * .20)</code> med feltet <i>health_spending</i> fra det f&oslash;rste datasettet (datasettgeoobjektene sl&aring;s sammen) og <i>income</i>-feltet fra det andre datasettet (datasettet som blir sl&aring;tt sammen).
+            <p>La oss f.eks si at vi &oslash;nsker &aring; bruke en sammensl&aring;ing til et datasett bare for geoobjektene der  <i>health_spending</i> er st&oslash;rre enn <i>income</i>.  For &aring; gj&oslash;re dette bruker du sammensl&aring;ingsbetingelsen <code>$target[&quot;health_spending&quot;] &gt; ($join[&quot;income&quot;] * .20)</code> med feltet <i>health_spending</i> fra det f&oslash;rste datasettet (datasettgeoobjektene sl&aring;s sammen) og <i>income</i>-feltet fra det andre datasettet (datasettet som blir sl&aring;tt sammen).
             </p>
             <p>Sammensl&aring;ingsbetingelser kan brukes ved hjelp av uttrykkskalkulatoren.
             </p>

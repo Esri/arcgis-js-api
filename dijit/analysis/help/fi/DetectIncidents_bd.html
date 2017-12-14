@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Havaitse tapahtumat</h2><p/>
+        <h2><img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Havaitse tapahtumat"></h2>
+        <hr/>
+    <p>T&auml;m&auml; ty&ouml;kalu toimii sellaisen karttatason kanssa, jossa aika on otettu huomioon ja joka sis&auml;lt&auml;&auml; hetke&auml; ajassa kuvaavia pisteit&auml;, viivoja, alueita tai taulukoita. K&auml;ytt&auml;m&auml;ll&auml; per&auml;kk&auml;isess&auml; j&auml;rjestyksess&auml; olevia kohteita, joita kutsutaan reiteiksi, t&auml;m&auml; ty&ouml;kalu m&auml;&auml;ritt&auml;&auml;, mitk&auml; kohteet ovat kiinnostavia tapahtumia. Tapahtumat m&auml;&auml;ritet&auml;&auml;n m&auml;&auml;ritt&auml;miesi ehtojen perusteella. 
+    </p>
+    <p>Ty&ouml;kalu m&auml;&auml;ritt&auml;&auml; ensin, mitk&auml; kohteet kuuluvat reittiin, k&auml;ytt&auml;m&auml;ll&auml; v&auml;hint&auml;&auml;n yht&auml; kentt&auml;&auml;. K&auml;ytt&auml;m&auml;ll&auml; aikaa kussakin kohteessa, reitit j&auml;rjestet&auml;&auml;n per&auml;kk&auml;in ja tapahtuman ehtoa sovelletaan. Kohteet, jotka t&auml;ytt&auml;v&auml;t tapahtuman aloitusehdon, merkit&auml;&auml;n tapahtumiksi. Voit vaihtoehtoisesti soveltaa tapahtuman lopetusehtoa; jos lopetusehto on tosi, kohde ei ole en&auml;&auml; tapahtuma.  Tulokset palautetaan alkuper&auml;isten kohteiden mukana. Uudet sarakkeet edustavat tapahtuman nime&auml; ja osoittavat, mik&auml; kohde t&auml;ytt&auml;&auml; tapahtuman ehdon. Voit palauttaa kaikki alkuper&auml;iset kohteet tai vain ne kohteet, jotka ovat tapahtumia.
+    </p>
+    <p>Oletetaan esimerkiksi, ett&auml; sinulla on GPS-mittauksia hurrikaaneista aina kymmenen minuutin v&auml;lein. Jokainen GPS-mittaus tallentaa hurrikaanin nimen, sijainnin, tallennusajan ja tuulen nopeuden. K&auml;ytt&auml;m&auml;ll&auml; n&auml;it&auml; kentti&auml; voit luoda tapahtuman, jossa mik&auml; tahansa mittaus, jossa tuulen nopeus on suurempi kuin 208 km/h, on tapahtuma nimelt&auml;  <code>Catastrophic</code>. Jos et m&auml;&auml;rit&auml; lopetusehtoa, tapahtuma p&auml;&auml;ttyy, jos kohteen aloitusehto (tuulen nopeus laskee alle 208:n) ei en&auml;&auml; t&auml;yty.
+    </p>
+    <p>Oletetaan toisessa esimerkiss&auml;, ett&auml; seuraat kemikaalin pitoisuutta paikallisessa vedenjakelussa k&auml;ytt&auml;m&auml;ll&auml; kentt&auml;&auml; nimelt&auml;  <code>contanimateLevel</code>. Tied&auml;t, ett&auml; suositeltu taso on alle 0,01 mg/l, ja vaarallinen pitoisuustaso on yli 0,03 mg/l. Jos haluat havaita tapahtumat, joissa arvon 0,03 mg/l ylitt&auml;v&auml; arvo on tapahtuma, ja se s&auml;ilyy tapahtumana, kunnes saastumistaso on palautunut normaaliksi, voit luoda tapahtuman k&auml;ytt&auml;m&auml;ll&auml; aloitusehtoa <code>contanimateLevel &gt; 0,03</code> ja lopetusehtoa <code>contanimateLevel &lt; 0,01</code>. T&auml;m&auml; ehto merkitsee kaikki jaksot, joissa arvot ylitt&auml;v&auml;t arvon 0,03 mg/l, kunnes ne palautuvat arvoon, joka on alle 0,01.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Valitse karttataso, jossa tapahtumat havaitaan</h2></div>
+        <hr/>
+        <div>
+            <p>Pisteet, viivat, alueet tai taulukot, joita k&auml;ytet&auml;&auml;n tapahtumien etsimiseen. Ajan on oltava k&auml;yt&ouml;ss&auml; l&auml;ht&ouml;aineiston karttatasossa, jossa on ajan hetke&auml; edustavia kohteita. Lis&auml;ksi siin&auml; on oltava v&auml;hint&auml;&auml;n yksi kentt&auml;, jota voi k&auml;ytt&auml;&auml; reittien tunnistamiseen.
+            </p>
+            <p>Sen lis&auml;ksi, ett&auml; voit valita karttatason kartasta, voit valita  <b>Selaa karttatasoja</b> -vaihtoehdon avattavan luettelon alareunasta ja selata Big Data -tiedostoresurssin aineistoryhm&auml;n tai karttatason sis&auml;lt&ouml;&ouml;n.
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>Valitse vähintään yksi kenttä reittien tunnistamista varten</h2></div>
+        <hr/>
+        <div>
+            <p> Kent&auml;t, jotka edustavat reittitunnusta. Voit k&auml;ytt&auml;&auml; yht&auml; kentt&auml;&auml; tai useaa kentt&auml;&auml; reittien yksil&ouml;llisten arvojen esitt&auml;miseen.
+            </p>
+            <p>Jos olet esimerkiksi muodostamassa uudelleen hurrikaanin reitti&auml;, voit k&auml;ytt&auml;&auml; hurrikaanin nime&auml; reittikentt&auml;n&auml;.
+            </p>
+        </div>
+    </div>
+    <div id="startConditionExpression">
+        <div><h2>Muodosta lausekkeen ehto, joka ilmaisee tapahtuman alun</h2></div>
+        <hr/>
+        <div>
+            <p>Lis&auml;&auml; ehto k&auml;ytt&auml;m&auml;ll&auml; lausekkeen muodostustoimintoa, jos haluat selvitt&auml;&auml;, mik&auml; on tapahtuma. Jos m&auml;&auml;ritt&auml;m&auml;si ehto on tosi, kohde on tapahtuma. Jos et m&auml;&auml;rit&auml; lopetusehtoa, tapahtuma p&auml;&auml;ttyy, kun aloitusehto ei ole en&auml;&auml; tosi.
+            </p>
+            <p>Oletetaan esimerkiksi, ett&auml; haluat saada ilmoituksen, kun kenttien  <code>concentration_1</code> ja <code>concentration_2</code> summa on suurempi kuin <code>concentration_3</code>.   Voit tehd&auml; t&auml;m&auml;n soveltamalla ehtoa <code>($feature[&quot;concentration_1&quot;] +  $feature[&quot;concentration_2&quot;]) &gt; $feature[&quot;concentration_3&quot;])</code>.
+            </p>
+        </div>
+    </div>
+    <div id="endConditionExpression">
+        <div><h2>Muodosta lausekkeen ehto, joka ilmaisee tapahtuman lopun</h2></div>
+        <hr/>
+        <div>
+            <p>Voit vaihtoehtoisesti lis&auml;t&auml; ehdon k&auml;ytt&auml;m&auml;ll&auml; lausekkeen muodostustoimintoa, jos haluat selvitt&auml;&auml; tapahtuman p&auml;&auml;ttymisen. Jos m&auml;&auml;ritt&auml;m&auml;si lopetusehto on tosi, kohde ei en&auml;&auml; ole tapahtuma. Jos et m&auml;&auml;rit&auml; lopetusehtoa, tapahtuma p&auml;&auml;ttyy, kun aloitusehto ei ole en&auml;&auml; tosi.    
+            </p>
+            <p>Oletetaan esimerkiksi, ett&auml; haluat saada ilmoituksen, kun kenttien  <code>concentration_1</code> ja <code>concentration_2</code> summa on suurempi kuin <code>concentration_3</code> ja haluat, ett&auml; tapahtuma p&auml;&auml;ttyy, jos kent&auml;n <code>concentration_4</code> arvo on pienempi kuin <code>concentration_1</code>. Voit tehd&auml; t&auml;m&auml;n soveltamalla aloitusehtoa <code>($feature[&quot;concentration_1&quot;] +  $feature[&quot;concentration_2&quot;]) &gt; ($join[&quot;income&quot;] * .20)</code> ja lopetusehtoa <code>($feature[&quot;concentration_4&quot;] &lt; $feature[&quot;concentration_1&quot;])</code>.
+            </p>
+        </div>
+    </div>
+    <div id="outputMode">
+        <div><h2>Valitse tulosten esitystapa</h2></div>
+        <hr/>
+        <div>
+            <p>Kaikki tulosten esitystavat liitt&auml;v&auml;t kent&auml;t alkuper&auml;isiin kohteisiin. Voit selvitt&auml;&auml; palautettavat kohteet kahdella tavalla:
+                <ul>
+                    <li> <b>Palauta vain tapahtumat</b> &ndash; t&auml;m&auml; tapa palauttaa vain kohteet, jotka ovat tapahtumia. Mit&auml;&auml;n kohteita, joiden ei ole todettu olevan tapahtumia, ei palauteta.
+                    </li>
+                    <li> <b>Palauta kaikki kohteet</b> &ndash; t&auml;m&auml; ole oletustapa. Kaikki l&auml;ht&ouml;aineiston kohteet palautetaan.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tulostason nimi</h2></div>
+        <hr/>
+        <div>
+            <p> Sen tason nimi, joka luodaan kohtaan <b>Oma sis&auml;lt&ouml;</b> ja joka lis&auml;t&auml;&auml;n karttaan. Oletusnimi perustuu ty&ouml;kalun nimeen ja l&auml;ht&ouml;karttatason nimeen. Jos karttataso on jo olemassa, ty&ouml;kalua ei voi suorittaa.
+            </p>
+            <p>Avattavan  <b>Tallenna tulos kohteeseen</b> -valikon avulla voit m&auml;&auml;ritt&auml;&auml; sen <b>Oma sis&auml;lt&ouml;</b> -kansion nimen, johon tulos tallennetaan.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

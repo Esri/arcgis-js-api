@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/_base/array","dojo/has","../kernel","../graphic","./DirectionsFeatureSet"],function(e,t,s,r,o,n,i){var a=e(null,{declaredClass:"esri.tasks.RouteResult",constructor:function(e){var t=e.spatialReference,r=e.route;if(e.directions){var o=[],a=[],c=[];s.forEach(e.directions.features,function(e,t){a[t]=e.compressedGeometry,o[t]=e.strings,c[t]=e.events}),e.directions.strings=o,e.directions.events=c,this.directions=new i(e.directions,a)}if(this.routeName=e.routeName,r&&(r.geometry&&(r.geometry.spatialReference=t),this.route=new n(r)),e.stops){var u=this.stops=[];s.forEach(e.stops,function(e,s){e.geometry&&(e.geometry.spatialReference=t),u[e.attributes.Sequence-1]=new n(e)})}},routeName:null,directions:null,route:null,stops:null});return r("extend-esri")&&t.setObject("tasks.RouteResult",a,o),a});

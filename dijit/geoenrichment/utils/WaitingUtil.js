@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["dojo/dom-class"],function(e){var s={},r="esri.dijit.geoenrichment.utils.WaitingUtil.waitingClass";return s.showProgress=function(s,i){s[r]="esriGEProgress esriGEProgressAbsolute "+(i||""),e.add(s,s[r])},s.removeProgress=function(s){e.remove(s,s[r])},s});
+define(["dojo/when","dojo/dom-class","dojo/dom-construct","dojo/dom-geometry","dojo/dom-style"],function(s,r,e,o,i){var n={},g="esri.dijit.geoenrichment.util.WaitingUtil.waitingDiv";return n.showProgress=function(s,r){s&&!s[g]&&(s[g]=e.create("div",{"class":"esriGEProgress esriGEProgressAbsolute "+(r||"")},s))},n.removeProgress=function(s){s&&s[g]&&(e.destroy(s[g]),delete s[g])},n.showProgressBar=function(s){var r=s.node;if(r){r._progressBar&&e.destroy(r._progressBar),delete r._progressBar;var n=Number(s.value);0>=n||isNaN(n)||(n=Math.min(n,1),r._progressBar=e.create("div",{"class":"esriGEWaitingMessageProgressBar esriGEWaitingMessageProgressBar_"+(s.position||"bottom")},r),i.set(r._progressBar,"width",o.position(r).w*n+"px"))}},n.showProgressPromise=function(r,e,o){return o=o||{},void 0===r.__progressIndex&&(r.__progressIndex=0),0===r.__progressIndex&&(n.showProgress(r,o.progressClass),o.onShowProgress&&o.onShowProgress()),r.__progressIndex++,s(e).always(function(){r.__progressIndex=Math.max(0,--r.__progressIndex),0===r.__progressIndex&&(n.removeProgress(r),o.onRemoveProgress&&o.onRemoveProgress())}),e},n});

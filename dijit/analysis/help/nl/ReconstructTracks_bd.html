@@ -95,6 +95,8 @@
         <div>
             <p>Vergelijking gebruikt om de bufferafstand rond de invoerobjecten te berekenen. Deze vergelijking kan worden gegenereerd met behulp van de buffercalculator en basisbewerkingen zoals optellen, aftrekken, vermenigvuldigen en delen worden ondersteund. Waarden worden berekend op basis van het analyseco&ouml;rdinaatsysteem. De kaartlaag moet in een geprojecteerd co&ouml;rdinaatsysteem of de processing ruimtelijke referentie moet worden ingesteld op een geprojecteerd co&ouml;rdinaatsysteem met behulp van de  <b>Analysis Environments</b> als een buffer wordt toegepast.
             </p>
+            <p>Een vergelijking als  <code>$feature.windspeed * 1000</code> past een buffer toe van 1000 vermenigvuldigd met het veld <i>windsnelheid</i>. U kunt meer dan &eacute;&eacute;n veld gebruiken in de buffercalculator.
+            </p>
         </div>
     </div>
     <div id="timeSplit">
@@ -102,6 +104,20 @@
         <hr/>
         <div>
             <p>Tijd gebruikt om traceringen te splitsen. Als inputpunten of -polygonen een langere duur tussen hen hebben dan de gesplitste tijd dan worden ze opgesplitst in verschillende traceringen.
+            </p>
+            <p>Als u een tijd en afstand specificeert om op te splitsen, worden traceringen gesplitst als aan &eacute;&eacute;n of beide voorwaarden is voldaan. 
+            </p>
+            <p>Stel u voor dat u puntobjecten hebt die vliegtuigvluchten voorstellen en het traceringveld is het ID van het vliegtuig. Dit toestel kan meerdere reizen maken en wordt weergegeven als &eacute;&eacute;n tracering. Als u weet dat er een pauze van 1 uur is tussen de vluchten, kunt u gebruik maken van  <code>1 uur</code> als traceringssplitsing en elke vlucht wordt dan gesplitst in een eigen tracering.
+            </p>
+        </div>
+    </div>
+    <div id="distanceSplit">
+        <div><h2>Selecteer een afstand om traceringen op te splitsen (optioneel)</h2></div>
+        <hr/>
+        <div>
+            <p> Tijd gebruikt om traceringen te splitsen. Als invoerpunten of -polygonen een langere afstand tussen zich hebben dan de gesplitste afstand, dan worden ze opgesplitst in verschillende traceringen.
+            </p>
+            <p>Als u een tijd en afstand specificeert om op te splitsen, worden traceringen gesplitst als aan &eacute;&eacute;n of beide voorwaarden is voldaan. 
             </p>
         </div>
     </div>

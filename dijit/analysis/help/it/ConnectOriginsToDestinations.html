@@ -41,10 +41,10 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Connetti origini a destinazioni</h2><p/>
-        <h2><img src="../images/GUID-7266D30B-0250-4132-B1A5-9B59F0212FAD-web.png" alt="Connetti origini a destinazioni"></h2>
+        <h2>Connetti Origini a Destinazioni</h2><p/>
+        <h2><img src="../images/GUID-7266D30B-0250-4132-B1A5-9B59F0212FAD-web.png" alt="Connetti Origini a Destinazioni"></h2>
         <hr/>
-    <p>  Connetti origini a destinazioni consente di misurare il tempo di percorrenza o la distanza tra coppie di punti. Lo strumento segnala distanze in linea retta e distanze e durata dei tragitti calcolate in base alla modalit&agrave; di viaggio (a piedi o in auto). Questo strumento consente di effettuare le seguenti attivit&agrave;:
+    <p>Connetti Origini a Destinazioni consente di misurare il tempo di percorrenza o la distanza tra coppie di punti. Lo strumento segnala distanze in linea retta; distanze e durata dei tragitti calcolate in base alla modalit&agrave; di viaggio (a piedi o in auto). Questo strumento consente di effettuare le seguenti attivit&agrave;:
     </p>
     <p>
         <ul>
@@ -57,17 +57,17 @@
         </ul>
         
     </p>
-    <p>Specificando i punti di partenza e di arrivo, si otterr&agrave; un layer contenente le linee dell'itinerario, incluse le misurazioni, tra le coppie di origini e destinazioni.  
+    <p>Specificando i punti di partenza e di arrivo, si otterr&agrave; un layer contenente le linee dell'itinerario, incluse le misurazioni, tra le coppie di origini e destinazioni. 
     </p>
     <p>Se si seleziona  <b>Usa estensione mappa corrente</b>, nell'analisi verranno considerate solo le feature visibili nell'estensione mappa corrente.  Se questa opzione &egrave; deselezionata, vengono considerate tutte le feature presenti nel layer di input, anche se sono esterne all'estensione mappa corrente.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="originsLayer">
-        <div><h2>Scegli il layer di punti che rappresenta le posizioni di origine</h2></div>
+        <div><h2>Scegli il layer puntuale che rappresenta le posizioni di origine</h2></div>
         <hr/>
         <div>
-            <p>Scegliere il layer di punti che rappresenta l'origine o le origini.  Lo strumento supporta fino a  5,000 origini e  5,000 destinazioni. </p>
+            <p>Scegliere il layer puntuale che rappresenta l'origine o le origini.  Lo strumento supporta fino a  5,000 origini e  5,000 destinazioni. </p>
             <p>Se si sceglie un layer contenente una sola origine, questa verr&agrave; utilizzata per connettere tutte le destinazioni.
             </p>
             <p class="OnlineOnly">Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi dell'atlante attivo</b> o <b>Scegli layer di analisi</b> in fondo all'elenco a discesa. Verr&agrave; aperta una galleria contenente una raccolta di layer utili per numerose analisi. 
@@ -98,7 +98,7 @@
             
             <p>Scegliere se connettere le origini alle destinazioni individuando la distanza in linea retta o una modalit&agrave; di viaggio. Gli itinerari di output seguiranno le strade o i passaggi pedonali, rispettando le norme stradali vigenti come, ad esempio, le strade a senso unico e le svolte non consentite in auto o con il camion. Le modalit&agrave; di viaggio disponibili sono determinate dall'amministratore dell'organizzazione.  
             </p>
-            <p>Se si seleziona  <b>Tempo di percorrenza</b>, vengono visualizzate le opzioni di misurazione del tempo di guida.
+            <p>Quando si sceglie  <b>Tempo di guida</b>, <b>Tempo di guida in aree non urbane</b>, o <b>Tempo di guida in camion</b> vi sono diverse opzioni per misurare il tempo di guida.
                 <ul>
                     <li>
                         <p>Deselezionare  <b>Usa traffico</b> per individuare gli itinerari pi&ugrave; rapidi sulla base di velocit&agrave; fisse.
@@ -122,15 +122,17 @@
                 </ul>
                 
             </p>
-            <p>Si noti che quando una vettura si allontana dal punto di origine, il tempo passa e le condizioni di traffico cambiano. Lo strumento Connetti origini a destinazioni tiene conto di queste variazioni quando si seleziona  <b>Usa traffico</b>; tuttavia, tale funzione non &egrave; supportata per tutte le regioni. Fare clic sul collegamento <b>Visualizza disponibilit&agrave;</b> sullo strumento per scoprire se la funzione &egrave; supportata nella propria area di studio.
+            <p>Si noti che quando una vettura si allontana dal punto di origine, il tempo passa e le condizioni di traffico cambiano. Lo strumento Connetti Origini a Destinazioni tiene conto di queste variazioni quando si seleziona  <b>Usa traffico</b>; tuttavia, tale funzione non &egrave; supportata per tutte le regioni. Fare clic sul collegamento <b>Visualizza disponibilit&agrave;</b> sullo strumento per scoprire se la funzione &egrave; supportata nella propria area di studio.
+            </p>
+            <p> <b>Tempo di guida in camion</b> pu&ograve; utilizzare velocit&agrave; di viaggio dinamiche basate sul traffico ma che non eccedano i limiti di velocit&agrave; consentiti per i camion. Per esempio, se la velocit&agrave; dinamica basata sul traffico in tempo reale in una determinata strada &egrave; di 65 miglia per ora, ma il limite di velocit&agrave; del camion per quella strada &egrave; di 55 miglia per ora, il calcolo utilizzer&agrave; 55 miglia per ora per quella strada.
             </p>
         </div>
     </div>
     <div id="outputLayer">
-        <div><h2>Nome layer di risultati</h2></div>
+        <div><h2>Nome del layer dei risultati</h2></div>
         <hr/>
         <div>
-            <p>Nome del feature layer che verr&agrave; creato in  <b>I miei contenuti</b> e aggiunto alla mappa. Se il feature layer esiste gi&agrave;, verr&agrave; chiesto di fornire un altro nome. Il feature layer conterr&agrave; un layer per ciascuno dei seguenti elementi: itinerari, origini non assegnate e destinazioni non assegnate quando alcune origini non possono essere collegate alle rispettive destinazioni.
+            <p>Nome del Feature Layer che verr&agrave; creato in  <b>I miei contenuti</b> e aggiunto alla mappa. Se il Feature Layer esiste gi&agrave;, verr&agrave; chiesto di fornire un altro nome. Il Feature Layer conterr&agrave; un layer per ciascuno dei seguenti elementi: itinerari, origini non assegnate e destinazioni non assegnate quando alcune origini non possono essere collegate alle rispettive destinazioni.
             </p>
             <p>Se si seleziona  <b>Includi layer percorso</b>, anche ogni percorso incluso nei risultati viene salvato come layer percorso. Un layer percorso include tutte le informazioni relative a un percorso specifico, ad esempio le fermate assegnate al percorso e le direzioni di viaggio. La creazione dei layer percorso risulta utile se si desidera condividere i singoli percorsi con altri membri nell'organizzazione oppure se si desidera modificare ulteriormente i percorsi utilizzando il pulsante <b>Indicazioni</b> nel Map Viewer. I layer percorso utilizzano il nome fornito per il feature layer come prefisso, mentre il nome percorso generato nell'ambito dell'analisi viene aggiunto per creare un nome univoco per ogni layer percorso.
             </p>

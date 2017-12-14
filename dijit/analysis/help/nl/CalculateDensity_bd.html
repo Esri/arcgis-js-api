@@ -42,22 +42,22 @@
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Dichtheid berekenen</h2><p/>
-        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Calculate Density"></h2>
+        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Dichtheid berekenen"></h2>
         <hr/>
-    <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas classified from least dense to most dense.   
+    <p>De tool Dichtheid berekenen maakt een dichtheidskaart vanaf puntobjecten door bekende hoeveelheden van een bepaald fenomeen (voorgesteld als attributen van de punten) over de kaart te verspreiden. Het resultaat is een kaartlaag met gebieden die zijn geclassificeerd van minst dicht tot meest dicht.   
 
     </p>
-    <p>For point input, each point should represent the location of some event or incident, and the result layer represents a count of the incident per unit area.  A higher density value in a new location means that there are more points near that location.  In many cases, the result layer can be interpreted as a risk surface for future events. For example, if the input points represent locations of lightning strikes, the result layer can be interpreted as a risk surface for future lightning strikes.
+    <p>Voor de invoer van punten moet elk punt de locatie van een gebeurtenis of incident voorstellen en de resultaatlaag geeft een telling weer van het aantal incidenten per eenheid van het gebied. Een hogere dichtheidswaarde in een nieuwe locatie betekent dat er meer punten zijn in de buurt van die locatie. In vele gevallen kan de resultaatlaag worden ge&iuml;nterpreteerd als een risicogebied voor toekomstige gebeurtenissen. Als de invoerpunten bijvoorbeeld locaties van blikseminslagen voorstellen, kan de resultaatlaag worden ge&iuml;nterpreteerd als een risicogebied voor toekomstige blikseminslagen.
     </p>
-    <p>Other use cases of this tool include the following:
+    <p>Andere gebruiksvoorbeelden van deze tool zijn de volgende:
         <ul>
-            <li>Creating crime-density maps to help police departments properly allocate resources to high crime areas.
+            <li>Dichtheidskaarten van misdaden maken om politiediensten te helpen op een geschikte manier middelen toe te wijzen aan gebieden met hoge criminaliteit.
             </li>
-            <li>Calculating densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to decide where new hospitals should be built.
+            <li>Dichtheid berekenen van ziekenhuizen binnen een bepaalde streek. De resultaatlaag geeft gebieden weer met hoge en lage toegankelijkheid tot ziekenhuizen en deze informatie kan worden gebruikt om te beslissen waar nieuwe ziekenhuizen moeten worden gebouwd.
             </li>
-            <li>Identifying areas that are at high risk of forest fires based on historical locations of forest fires.
+            <li>Gebieden identificeren met een hoog risico op bosbranden op basis van historische locaties van bosbranden.
             </li>
-            <li>Locating communities that are far from major highways in order to plan where new roads should be constructed.
+            <li>Gemeenschappen lokaliseren die zich ver van belangrijke snelwegen bevinden om te bepalen waar nieuwe wegen moeten worden gebouwd.
             </li>
         </ul>
         
@@ -68,19 +68,19 @@
         <div><h2>Kies een puntlaag waarmee de dichtheid moet worden berekend</h2></div>
         <hr/>
         <div>
-            <p>The point layer on which the density will be calculated.
+            <p>De puntlaag waarmee de dichtheid wordt berekend.
             </p>
             <p>Naast het kiezen van een laag van uw kaart, kunt u kiezen voor  <b>Blader door lagen</b> aan de onderkant van de drop-downlijst om in uw content te zoeken naar een groot gedeeld databestand of objectlaag.
             </p>
         </div>
     </div>
     <div id="fields">
-        <div><h2>Kies een of meer velden op de dichtheid op te berekenen (optioneel)</h2></div>
+        <div><h2>Kies een of meer velden voor de dichtheidberekening (optioneel)</h2></div>
         <hr/>
         <div>
-            <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
+            <p>Geef een of meerdere velden op die het aantal incidenten op elke locatie weergeven. Als u bijvoorbeeld punten hebt die steden voorstellen, dan kunt u een veld gebruiken om het bevolkingsaantal van elke stad voor te stellen als het tellingsveld. De resulterende bevolkingsdichtheidslaag zal grotere bevolkingsdichtheden berekenen bij steden met hogere bevolkingsaantallen.
             </p>
-            <p>The density for the count of points will always be calculated.   If no fields are selected, each location will be assumed to represent a single count.
+            <p>De dichtheid voor het aantal punten wordt altijd berekend. Als er geen velden worden gekozen, zal elke locatie worden beschouwd als &eacute;&eacute;n telling.
             </p>
         </div>
     </div>
@@ -88,7 +88,7 @@
         <div><h2>Kies een vorm</h2></div>
         <hr/>
         <div>
-            <p>The shape of bins that points are aggregated into and used for the density calculation.
+            <p>De binvorm waarin de punten worden geaggregeerd en gebruikt voor de berekening van de dichtheid.
             </p>
             <p>Analyse d.m.v.  <b>vier-</b> of <b>zeshoekige</b> bins vereist een geprojecteerd co&ouml;rdinaatsysteem. U kunt het <b>Processing co&ouml;rdinaatsysteem</b> instellen bij <b>Analysis Environments</b>. Als uw processing co&ouml;rdinaatsysteem niet op een geprojecteerd co&ouml;rdinaatsysteem is ingesteld, zal u gevraagd worden het in te stellen wanneer u <b>Analyse uitvoeren</b> kiest.
             </p>
@@ -98,7 +98,7 @@
         <div><h2>Selecteer de bingrootte voor aggregatie</h2></div>
         <hr/>
         <div>
-            <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
+            <p>De bingrootte die wordt gegenereerd. Voor een vierkante bin vertegenwoordigt de grootte de hoogte van het vierkant. Voor een zeshoek vertegenwoordigt de grootte de hoogte van de zeshoek (van evenwijdige zijden).
             </p>
         </div>
     </div>
@@ -106,11 +106,11 @@
         <div><h2>Selecteer de dichtheidweging om toe te passen</h2></div>
         <hr/>
         <div>
-            <p>The type of weighting applied to the density calculation. There are two options:
+            <p>Het type dichtheidweging toegepast op de berekening van de dichtheid. Er zijn twee opties:
                 <ul>
-                    <li> <b>Uniform</b>&mdash;This calculates a magnitude per area.
+                    <li> <b>Uniform</b>-Dit berekent een grootte per gebied.
                     </li>
-                    <li> <b>Kernel</b>&mdash;Applies a kernel function to fit a smooth tapered surface to each point.
+                    <li> <b>Kernel</b>-Past een kernelfunctie toe om een glad taps toelopend oppervlak op elk punt te passen.
                     </li>
                 </ul>
                 
@@ -121,7 +121,7 @@
         <div><h2>De buurtgrootte selecteren</h2></div>
         <hr/>
         <div>
-            <p>The size of the area used to calculate the density. The neighborhood size must be larger than the bin size.
+            <p>De grootte van het gebied gebruikt voor de berekening van de dichtheid. De buurtgrootte moet groter zijn dan de bingrootte.
             </p>
         </div>
     </div>
@@ -129,7 +129,7 @@
         <div><h2>Kies de uitvoereenheden voor dichtheid</h2></div>
         <hr/>
         <div>
-            <p>The desired output units of the density values. By default, this is set to square kilometers or square miles based on the default units specified in your profile. If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+            <p>De gewenste uitvoereenheden van de dichtheidswaarden. Standaard is dit ingesteld op vierkante kilometers of vierkante mijlen op basis van de standaardeenheden die zijn opgegeven in uw profiel. Als de dichtheidswaarden erg klein zijn, kunt u de oppervlakte-eenheden vergroten (bijvoorbeeld vierkante meters in vierkante kilometers) om grotere waarden te verkrijgen. De waarden schalen alleen het resultaat.  
 
             </p>
         </div>

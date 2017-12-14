@@ -95,6 +95,8 @@
         <div>
             <p>Phương tr&igrave;nh được sử dụng để t&iacute;nh to&aacute;n khoảng c&aacute;ch v&ugrave;ng đệm xung quanh c&aacute;c đối tượng đầu v&agrave;o. C&oacute; thể tạo phương tr&igrave;nh n&agrave;y bằng c&aacute;ch sử dụng m&aacute;y t&iacute;nh v&ugrave;ng đệm v&agrave; c&aacute;c ph&eacute;p to&aacute;n cơ bản như cộng, trừ, nh&acirc;n v&agrave; chia được hỗ trợ. C&aacute;c gi&aacute; trị được t&iacute;nh to&aacute;n bằng c&aacute;ch sử dụng hệ tọa độ ph&acirc;n t&iacute;ch. Lớp phải thuộc hệ tọa độ tham chiếu hoặc tham chiếu kh&ocirc;ng gian xử l&yacute; phải được thiết lập đến một hệ tọa độ tham chiếu th&ocirc;ng qua  <b>M&ocirc;i trường Ph&acirc;n t&iacute;ch</b> nếu v&ugrave;ng đệm được &aacute;p dụng.
             </p>
+            <p>Một phương tr&igrave;nh như  <code>$feature.windspeed * 1000</code> c&oacute; thể &aacute;p dụng v&ugrave;ng đệm 1.000 nh&acirc;n với trường <i>windspeed</i>. Bạn c&oacute; thể sử dụng nhiều trường trong m&aacute;y t&iacute;nh v&ugrave;ng đệm.
+            </p>
         </div>
     </div>
     <div id="timeSplit">
@@ -102,6 +104,20 @@
         <hr/>
         <div>
             <p>Thời gian sử dụng để chia đường đi. Nếu c&aacute;c điểm đầu v&agrave;o hoặc đa gi&aacute;c c&oacute; thời gian d&agrave;i hơn phần chia thời gian, ch&uacute;ng sẽ được chia th&agrave;nh c&aacute;c đường đi kh&aacute;c nhau.
+            </p>
+            <p>Nếu bạn quy định phần chia thời gian v&agrave; phần chia khoảng c&aacute;ch, đường đi sẽ được ph&acirc;n chia khi đ&aacute;p ứng một hoặc cả hai điều kiện. 
+            </p>
+            <p>H&atilde;y tưởng tượng rằng bạn c&oacute; c&aacute;c đối tượng điểm đại diện cho c&aacute;c chuyến bay của m&aacute;y bay, trong đ&oacute; trường đường đi l&agrave; ID m&aacute;y bay. M&aacute;y bay n&agrave;y c&oacute; thể bay nhiều h&agrave;nh tr&igrave;nh v&agrave; cần được thể hiện dưới dạng một đường đi. Nếu bạn biết rằng m&aacute;y bay c&oacute; một giờ nghỉ giữa c&aacute;c chuyến bay, bạn c&oacute; thể sử dụng  <code>1 giờ</code> l&agrave;m phần chia đường đi v&agrave; mỗi chuyến bay được chia th&agrave;nh đường đi của n&oacute;.
+            </p>
+        </div>
+    </div>
+    <div id="distanceSplit">
+        <div><h2>Chọn khoảng cách dùng để chia đường đi (tùy chọn)</h2></div>
+        <hr/>
+        <div>
+            <p> Khoảng c&aacute;ch sử dụng để chia đường đi. Nếu c&aacute;c điểm đầu v&agrave;o hoặc đa gi&aacute;c c&oacute; khoảng c&aacute;ch lớn hơn giữa ch&uacute;ng so với phần chia khoảng c&aacute;ch, ch&uacute;ng sẽ được chia th&agrave;nh c&aacute;c đường đi kh&aacute;c nhau.
+            </p>
+            <p>Nếu bạn quy định phần chia thời gian v&agrave; phần chia khoảng c&aacute;ch, đường đi sẽ được ph&acirc;n chia khi đ&aacute;p ứng một hoặc cả hai điều kiện. 
             </p>
         </div>
     </div>

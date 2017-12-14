@@ -6,7 +6,6 @@
 @import url(DataBrowser.css);
 @import url(Favorites.css);
 @import url(Grid.css);
-@import url(HeadlineLayout.css);
 @import url(InfographicsCarousel.css);
 @import url(InfographicsMainPage.css);
 @import url(NotSupported.css);
@@ -29,9 +28,3 @@
 @import url(../light/OneVar.css);
 @import url(../light/RelatedVariables.css);
 @import url(../light/Tapestry.css);
-@import url('../../ReportPlayer/themes/common/main.css');
-
-@import url("./Shared.css");
-@import url("./Waiting.css");
-@import url('./FlowList.css');
-@import url('./ImageNavigator.css');

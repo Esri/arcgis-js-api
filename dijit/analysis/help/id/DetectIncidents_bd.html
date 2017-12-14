@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Deteksi Insiden</h2><p/>
+        <h2><img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Deteksi Insiden"></h2>
+        <hr/>
+    <p>Alat ini bekerja dengan layer titik, garis, area, atau tabel yang diaktifkan waktu yang memakili instan dalam waktu.   Dengan menggunakan fitur yang disusun berurutan, yang disebut jalur, alat ini menentukan fitur mana yang merupakan insiden pilihan. Insiden ditentukan oleh kondisi yang Anda tentukan. 
+    </p>
+    <p>Pertama, alat ini menentukan fitur mana yang dimiliki jalur dengan menggunakan satu kolom atau lebih. Menggunakan waktu di setiap fitur, jalur diurutkan secara berurutan dan kondisi insiden diterapkan. Fitur yang memenuhi kondisi insiden awal ditandai sebagai insiden. Anda secara opsional dapat menerapkan kondisi insiden akhir; jika kondisi akhir benar, fitur tidak lagi merupakan insiden.  Hasilnya akan dikembalikan dengan fitur asli&mdash;dengan kolom baru yang mewakili nama insiden&mdash;dan menunjukkan fitur mana yang memenuhi kondisi insiden. Anda dapat mengembalikan semua fitur asli atau hanya fitur yang merupakan insiden.
+    </p>
+    <p>Misalnya, katakanlah Anda memiliki pengukuran GPS badai setiap 10 menit. Setiap ukuran GPS mencatat nama, lokasi, waktu perekaman, dan kecepatan angin dari badai itu. Menggunakan kolom ini, Anda dapat membuat insiden tempat pengukuran apa pun dengan kecepatan angin yang lebih besar dari 208 km/j adalah insiden yang diberi judul  <code>Bencana</code>. Dengan tidak mengatur kondisi akhir, insiden akan berakhir jika fitur tidak lagi memenuhi kondisi awal (kecepatan angin melambat hingga kurang dari 208).
+    </p>
+    <p>Menggunakan contoh lain, anggap Anda sedang memantau konsentrasi bahan kimia di pasokan air lokal Anda menggunakan kolom bernama  <code>contanimateLevel</code>. Anda tahu bahwa tingkat yang direkomendasikan adalah kurang dari 0,01 mg/L, dan tingkat berbahaya adalah di atas 0,03 mg/L. Untuk mendeteksi insiden dengan nilai di atas 0,03mg/L adalah insiden dan tetap merupakan insiden sampai tingkat kontaminasi kembali normal, Anda membuat insiden menggunakan kondisi awal <code>contanimateLevel &gt; 0,03</code> dan kondisi akhir <code>contanimateLevel &lt; 0,01</code>. Ini akan menandai setiap urutan dengan nilai melebihi 0,03mg/L sampai nilai tersebut kembali ke nilai kurang dari 0,01.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Pilih layer untuk mendeteksi insiden dari</h2></div>
+        <hr/>
+        <div>
+            <p>Titik, garis, area, atau tabel yang akan digunakan untuk menemukan insiden. Layer input harus diaktifkan waktu dengan fitur yang mewakili suatu instan dalam waktu, serta memiliki satu kolom atau lebih yang dapat digunakan untuk mengidentifikasi jalur.
+            </p>
+            <p>Selain memilih layer dari peta Anda, Anda dapat memilih  <b>Telusuri Layer</b> yang terdapat di bagian paling bawah daftar drop-down ke konten Anda untuk set data yang dibagikan atau feature layer dari big data.
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>Pilih satu atau beberapa kolom untuk mengidentifikasi jalur</h2></div>
+        <hr/>
+        <div>
+            <p> Kolom yang mewakili pengidentifikasi jalur. Anda dapat menggunakan satu kolom atau kolom ganda untuk mewakili nilai jalur unik.
+            </p>
+            <p>Contoh, jika Anda sedang merekonstruksi jalur badai, Anda dapat menggunakan nama badai sebagai kolom jalur.
+            </p>
+        </div>
+    </div>
+    <div id="startConditionExpression">
+        <div><h2>Buat kondisi ekspresi untuk menandakan awal insiden</h2></div>
+        <hr/>
+        <div>
+            <p>Tambahkan suatu kondisi menggunakan pembuat ekspresi untuk menentukan apa yang dimaksud insiden. Jika kondisi yang Anda tentukan benar, fitur tersebut adalah insiden. Jika Anda tidak menentukan kondisi akhir, insiden berakhir ketika kondisi awal tidak lagi benar.
+            </p>
+            <p>Contoh, anggap Anda ingin diberi peringatan saat jumlah kolom  <code>konsentrasi_1</code> dan <code>konsentrasi_2</code> lebih besar dari <code>konsentrasi_3</code>.   Untuk melakukan ini, terapkan kondisi <code>($feature[&quot;konsentrasi_1&quot;] +  $feature[&quot;konsentrasi_2&quot;]) &gt; $feature[&quot;konsentrasi_3&quot;])</code>.
+            </p>
+        </div>
+    </div>
+    <div id="endConditionExpression">
+        <div><h2>Buat kondisi ekspresi untuk menandakan akhir insiden</h2></div>
+        <hr/>
+        <div>
+            <p>Atau tambahkan kondisi menggunakan pembuat ekspresi untuk menentukan akhir insiden. Jika kondisi akhir yang Anda tentukan benar, fitur tersebut tidak lagi menjadi insiden. Jika Anda tidak menentukan kondisi akhir, insiden berakhir ketika kondisi awal tidak lagi benar.    
+            </p>
+            <p>Contoh, anggap Anda ingin diberi peringatan saat jumlah kolom  <code>konsentrasi_1</code> dan <code>konsentrasi_2</code> lebih besar dari <code>konsentrasi_3</code>, dan Anda ingin insiden berakhir jika <code>konsentrasi_4</code> lebih kecil dari <code>konsentrasi_1</code>. Untuk melakukan ini, terapkan kondisi awal <code>($feature[&quot;konsentrasi_1&quot;] + $feature[&quot;konsentrasi_2&quot;]) &gt; ($join[&quot;pendapatan&quot;] * .20)</code> dan kondisi akhir <code>($feature[&quot;konsentrasi_4&quot;] &lt; $feature[&quot;konsentrasi_1&quot;])</code>.
+            </p>
+        </div>
+    </div>
+    <div id="outputMode">
+        <div><h2>Pilih bagaimana Anda ingin output diwakili</h2></div>
+        <hr/>
+        <div>
+            <p>Semua metode output akan melampirkan kolom ke fitur asli. Ada dua cara untuk menentukan fitur mana yang dikembalikan:
+                <ul>
+                    <li> <b>Kembalikan insiden saja</b>&mdash;Metode ini hanya akan mengembalikan fitur yang merupakan insiden. Setiap fitur yang tidak ditemukan sebagai insiden tidak akan dikembalikan.
+                    </li>
+                    <li> <b>Kembalikan semua fitur</b>&mdash;Ini adalah default. Semua fitur dalam input akan dikembalikan.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nama layer hasil</h2></div>
+        <hr/>
+        <div>
+            <p> Ini adalah nama layer yang akan dibuat di <b>Konten Saya</b> dan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer sudah ada, alat tidak akan berfungsi.
+            </p>
+            <p>Menggunakan kotak drop-down  <b>Simpan hasil di</b>, Anda dapat menentukan nama folder di <b>Konten Saya</b> sebagai tempat penyimpanan hasil.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

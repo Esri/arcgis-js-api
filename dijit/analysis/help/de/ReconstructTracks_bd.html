@@ -95,6 +95,8 @@
         <div>
             <p>Die Gleichung zum Berechnen der Pufferentfernung um Eingabe-Features. Diese Gleichung kann mittels Pufferberechnung erstellt werden, und grundlegende Operationen wie Addieren, Subtrahieren, Multiplizieren und Dividieren werden unterst&uuml;tzt. Werte werden anhand des Analyse-Koordinatensystems berechnet. Der Layer muss sich in einem projizierten Koordinatensystem befinden, oder der Raumbezug f&uuml;r die Verarbeitung muss unter  <b>Analyseumgebungen</b> auf ein projiziertes Koordinatensystem festgelegt werden, wenn ein Puffer angewendet wird.
             </p>
+            <p>Eine Gleichung wie  <code>$feature.windspeed * 1000</code> wendet einen Puffer von 1.000, multipliziert mit dem Feld <i>windspeed</i>, an. Sie k&ouml;nnen mehrere Felder in der Pufferberechnung verwenden.
+            </p>
         </div>
     </div>
     <div id="timeSplit">
@@ -102,6 +104,20 @@
         <hr/>
         <div>
             <p>Zeit, die zum Aufteilen von Spuren verwendet wird. Wenn der Zeitraum zwischen Eingabepunkten oder -Polygonen gr&ouml;&szlig;er ist als die Zeitaufteilung, werden sie in verschiedene Spuren aufgeteilt.
+            </p>
+            <p>Wenn Sie eine Zeitaufteilung und eine Entfernungsaufteilung angeben, werden Spuren aufgeteilt, wenn mindestens eine der beiden Bedingungen erf&uuml;llt ist. 
+            </p>
+            <p>Angenommen, Sie verf&uuml;gen &uuml;ber Punkt-Features, die Flugzeuge darstellen, und das Spurfeld entspricht der Flugzeug-ID. Dieses Flugzeug kann mehrere Fl&uuml;ge durchf&uuml;hren und wird als eine Spur dargestellt.  Wenn Ihnen bekannt ist, dass zwischen den Fl&uuml;gen eine einst&uuml;ndige Pause liegt, k&ouml;nnen Sie  <code>1 Stunde</code> als Spuraufteilung verwenden und jeder Flug wird in eine eigene Spur unterteilt.
+            </p>
+        </div>
+    </div>
+    <div id="distanceSplit">
+        <div><h2>Eine Entfernung zum Aufteilen von Spuren auswählen (optional)</h2></div>
+        <hr/>
+        <div>
+            <p> Entfernung, die zum Aufteilen von Spuren verwendet wird. Wenn die Entfernung zwischen Eingabepunkten oder -Polygonen gr&ouml;&szlig;er ist als die Entfernungsaufteilung, werden sie in verschiedene Spuren aufgeteilt.
+            </p>
+            <p>Wenn Sie eine Zeitaufteilung und eine Entfernungsaufteilung angeben, werden Spuren aufgeteilt, wenn mindestens eine der beiden Bedingungen erf&uuml;llt ist. 
             </p>
         </div>
     </div>
@@ -162,7 +178,7 @@
         <div><h2>Name des Ergebnis-Layers</h2></div>
         <hr/>
         <div>
-            <p> Dies ist der Name des Layers, der in <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird.  Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, kann das Werkzeug nicht ausgef&uuml;hrt werden.
+            <p> Dies ist der Name des Layers, der in <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird. Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, kann das Werkzeug nicht ausgef&uuml;hrt werden.
             </p>
             <p>&Uuml;ber das Dropdown-Feld  <b>Ergebnis speichern in</b> k&ouml;nnen Sie den Namen eines Ordners in <b>Eigene Inhalte</b> angeben, in dem das Ergebnis gespeichert werden soll.
             </p>

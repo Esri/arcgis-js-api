@@ -40,24 +40,24 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
-        <h2>密度の計算</h2><p/>
-        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Calculate Density"></h2>
+    <div id="toolDescription" class="regularsize">
+        <h2>密度の計算 (Calculate Density)</h2><p/>
+        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="密度の計算 (Calculate Density)"></h2>
         <hr/>
-    <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas classified from least dense to most dense.   
+    <p>[密度の計算] ツールは、ある現象の既知の数量 (ポイントの属性として表す) をマップ上に展開することによって、ポイント フィーチャから密度マップを作成します。結果として出力されるのは、低密度から高密度に分類されたエリア ポリゴンのレイヤーです。
 
     </p>
-    <p>For point input, each point should represent the location of some event or incident, and the result layer represents a count of the incident per unit area.  A higher density value in a new location means that there are more points near that location.  In many cases, the result layer can be interpreted as a risk surface for future events. For example, if the input points represent locations of lightning strikes, the result layer can be interpreted as a risk surface for future lightning strikes.
+    <p>ポイント入力では、各ポイントは、あるイベントまたはインシデントの場所を表し、結果レイヤーは、単位面積あたりのインシデントの数を表します。新しい場所の密度の値が高い場合、その場所の近くに多くのポイントがあることを意味します。多くの場合、結果レイヤーは、将来のイベントのリスク指標サーフェスと解釈することができます。たとえば、入力ポイントが落雷の位置を表す場合、結果レイヤーは、将来の落雷のリスク指標サーフェスとして解釈することができます。
     </p>
-    <p>Other use cases of this tool include the following:
+    <p>このツールは、次のような場合にも使用されます。
         <ul>
-            <li>Creating crime-density maps to help police departments properly allocate resources to high crime areas.
+            <li>警察が犯罪発生率の高いエリアに適切に人員を配置できるように犯罪密度マップを作成する場合。
             </li>
-            <li>Calculating densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to decide where new hospitals should be built.
+            <li>ある地域内の病院の密度を計算する場合。結果レイヤーは、病院までのアクセスの良し悪しを示し、この情報を使用して、新しい病院を建設する場所を決定することができます。
             </li>
-            <li>Identifying areas that are at high risk of forest fires based on historical locations of forest fires.
+            <li>過去に森林火災があった場所に基づいて、森林火災のリスクの高いエリアを特定する場合。
             </li>
-            <li>Locating communities that are far from major highways in order to plan where new roads should be constructed.
+            <li>新しい道路を建設する場所を計画するために、主要道路から遠い地域を特定する場合。
             </li>
         </ul>
         
@@ -68,7 +68,7 @@
         <div><h2>密度の計算に使用するポイント レイヤーを選択</h2></div>
         <hr/>
         <div>
-            <p>The point layer on which the density will be calculated.
+            <p>密度の計算に使用するポイント レイヤー。
             </p>
             <p>マップからレイヤーを選択できるだけでなく、ドロップダウン リストの下部にある  <b>[レイヤーの参照]</b> を選択し、ビッグ データ ファイル共有データセットまたはフィーチャ レイヤーのコンテンツを参照して選択することもできます。
             </p>
@@ -78,9 +78,9 @@
         <div><h2>密度の計算に使用する 1 つまたは複数のフィールドの選択 (オプション)</h2></div>
         <hr/>
         <div>
-            <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
+            <p>各場所のインシデントの数を指定する 1 つ以上のフィールドを提供します。たとえば、ポイントが都市を表す場合、カウント フィールドとして都市の人口を表すフィールドを使用できます。作成される人口密度レイヤーでは、より人口の多い都市の近くのより高い人口密度が計算されます。
             </p>
-            <p>The density for the count of points will always be calculated.   If no fields are selected, each location will be assumed to represent a single count.
+            <p>ポイント数の密度が常に計算されます。フィールドを選択しなかった場合、各場所は 1 カウントを表すと見なされます。
             </p>
         </div>
     </div>
@@ -88,7 +88,7 @@
         <div><h2>ビンの形状の選択</h2></div>
         <hr/>
         <div>
-            <p>The shape of bins that points are aggregated into and used for the density calculation.
+            <p>ポイントを集約し、密度の計算に使用するビンの形状。
             </p>
             <p> <b>四角形</b>または <b>六角形</b>のビンを使用した解析には、投影座標系が必要です。 <b>[分析環境]</b> で <b>[処理に使用する座標系]</b> を設定できます。処理に使用する座標系が投影座標系に設定されていない場合、 <b>[分析の実行]</b> を行うときに設定するようにプロンプトが表示されます。
             </p>
@@ -98,7 +98,7 @@
         <div><h2>集約するビンのサイズを選択</h2></div>
         <hr/>
         <div>
-            <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
+            <p>生成されるビンのサイズ。四角形のビンの場合、サイズはその四角形の高さを表します。六角形の場合、サイズはその六角形の (平行する 2 辺の) 高さを表します。
             </p>
         </div>
     </div>
@@ -106,11 +106,11 @@
         <div><h2>適用する密度の重み付けを選択</h2></div>
         <hr/>
         <div>
-            <p>The type of weighting applied to the density calculation. There are two options:
+            <p>密度計算に適用される重み付けのタイプ。次の 2 つのオプションがあります。
                 <ul>
-                    <li> <b>Uniform</b>&mdash;This calculates a magnitude per area.
+                    <li> <b>[一様分布]</b> - 面積あたりの大きさを計算します。
                     </li>
-                    <li> <b>Kernel</b>&mdash;Applies a kernel function to fit a smooth tapered surface to each point.
+                    <li> <b>[カーネル]</b> - カーネル関数を適用して、各ポイントに滑らかなテーパ サーフェスを合わせます。
                     </li>
                 </ul>
                 
@@ -121,7 +121,7 @@
         <div><h2>近傍サイズの選択</h2></div>
         <hr/>
         <div>
-            <p>The size of the area used to calculate the density. The neighborhood size must be larger than the bin size.
+            <p>密度の計算に使用される面積のサイズ。近傍サイズはビン サイズより大きくなければなりません。
             </p>
         </div>
     </div>
@@ -129,7 +129,7 @@
         <div><h2>密度の出力単位の選択</h2></div>
         <hr/>
         <div>
-            <p>The desired output units of the density values. By default, this is set to square kilometers or square miles based on the default units specified in your profile. If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+            <p>密度値の望ましい出力単位。デフォルトでは、プロフィールで指定されたデフォルト単位に基づいて、平方キロメートルまたは平方マイルに設定されます。密度の値が非常に小さい場合、面積単位のサイズを大きくすることで (平方メートルを平方キロメートルにするなど)、大きな値を返すことができます。この値は結果のみをスケーリングします。
 
             </p>
         </div>
@@ -189,7 +189,7 @@
         <div><h2>SpatialReference (wkid)</h2></div>
         <hr/>
         <div>
-            <p>処理対象の空間参照を設定するためのプレリリース用の一時的なパラメーターです。多くのビッグ データ ツールでは、投影座標系を処理対象の空間参照として使用する必要があります。デフォルトでは、このツールで入力座標系が使用されます。地理座標系を使用すると、このツールは正常に実行されません。投影座標系を設定するには、WKID を入力します。たとえば、 <b>[Web メルカトル図法]</b> は「 <code>3857</code>」と入力します。
+            <p>これは、プレリリース版での一時的なパラメーターで、処理対象の空間参照を設定します。多くのビッグ データ ツールでは、投影座標系を処理対象の空間参照として使用する必要があります。デフォルトでは、このツールで入力座標系が使用されます。地理座標系を使用すると、このツールは正常に実行されません。投影座標系を設定するには、WKID を入力します。たとえば、 <b>[Web メルカトル図法]</b> は「 <code>3857</code>」と入力します。
             </p>
         </div>
     </div>
@@ -210,7 +210,7 @@
         </div>
     </div>
     <div id="outputName">
-        <div><h2>結果レイヤーの名前</h2></div>
+        <div><h2>結果レイヤー名</h2></div>
         <hr/>
         <div>
             <p>  <b>[マイ コンテンツ]</b> で作成され、マップに追加されるレイヤーの名前です。デフォルトの名前は、ツール名と入力レイヤー名に基づいて設定されます。レイヤーがすでに存在する場合、このツールは正常に実行されません。

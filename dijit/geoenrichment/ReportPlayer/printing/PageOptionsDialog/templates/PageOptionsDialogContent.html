@@ -9,9 +9,10 @@
             <div class="esriGERowHigh">${nls.autoAdjustSections}</div>
             <div class="esriGESpaceBeforeBig">
                 <div class="dijitInline esriGESpaceAfterBig"><label data-dojo-attach-point="autoScaleLabel">&nbsp;${nls.autoScaleRowsLabel}</label></div>
-                <div class="dijitInline pageOptionsDialog_infoIcon" title="${nls.autoScaleRowsTooltip}"></div>
+                <div class="dijitInline pageOptionsDialog_infoIcon" data-dojo-attach-point="autoScaleInfoIcon"></div>
             </div>
         </div>
+
         <div data-dojo-attach-point="layoutBlock" class="pageOptionsDialog_bigRow20 pageOptionsDialog_section">
             <div class="esriGERowHigh">${nls.pageSize}</div>
             <div data-dojo-attach-point="optionsBlock" class="esriGESpaceBeforeBig">
@@ -26,11 +27,18 @@
                 </div>
             </div>
         </div>
+
         <div data-dojo-attach-point="headerFooterBlock" class="pageOptionsDialog_bigRow20 pageOptionsDialog_section">
             <div class="esriGERowHigh">${nls.headerAndFooter}</div>
-            <div class="esriGERowHigh esriGESpaceBeforeBig"><label data-dojo-attach-point="headerLabel">&nbsp;${nls.headerLabel}</label></div>
-            <div class="esriGERowHigh esriGESpaceBeforeBig" data-dojo-attach-point="dataSourceBlock"><label data-dojo-attach-point="dataSourceLabel">&nbsp;${nls.dataSourceLabel}</label></div>
-            <div class="esriGERowHigh esriGESpaceBeforeBig"><label data-dojo-attach-point="footerLabel">&nbsp;${nls.footerLabel}</label></div>
+            <div class="esriGERowHigh esriGESpaceBeforeBig">
+                <label data-dojo-attach-point="headerLabel">&nbsp;${nls.headerLabel}</label>
+            </div>
+            <div class="esriGERowHigh esriGESpaceBeforeBig" data-dojo-attach-point="dataSourceBlock">
+                <label data-dojo-attach-point="dataSourceLabel">&nbsp;${nls.dataSourceLabel}</label>
+            </div>
+            <div class="esriGERowHigh esriGESpaceBeforeBig">
+                <label data-dojo-attach-point="footerLabel">&nbsp;${nls.footerLabel}</label>
+            </div>
         </div>
     </div>
     <div class="pageOptionsDialog_actionButtonsBlock">

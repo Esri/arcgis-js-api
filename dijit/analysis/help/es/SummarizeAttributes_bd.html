@@ -42,35 +42,43 @@
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Resumir atributos</h2><p/>
-        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Resumir atributos"></h2>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Resumir atributosdiagram"></h2>
         <hr/>
-    <p>Esta herramienta resume todos los valores coincidentes en uno o varios campos y calcula estad&iacute;sticas sobre ellos. La estad&iacute;stica m&aacute;s b&aacute;sica es el recuento de las entidades que se han resumido conjuntamente, pero tambi&eacute;n puede calcular estad&iacute;sticas m&aacute;s avanzadas. 
-
+    <p> Esta herramienta resume todos los valores coincidentes en uno o varios campos y calcula estad&iacute;sticas sobre ellos. La estad&iacute;stica m&aacute;s b&aacute;sica es el recuento de las entidades que se han resumido conjuntamente, pero tambi&eacute;n puede calcular estad&iacute;sticas m&aacute;s avanzadas.
     </p>
-    <p>Por ejemplo, supongamos que tiene entidades de ubicaciones de tiendas con un campo que representa el  <i>DISTRICT_MANAGER_NAME</i> y que desea resumir las ventas de caf&eacute; por gestor. Puede especificar el campo <i>DISTRICT_MANAGER_NAME</i> como campo sobre el que disolver; de este modo se resumir&aacute;n todas las filas de datos que representan gestores individuales. Esto significa que todas las ubicaciones de tiendas gestionadas por el Manager1 se resumir&aacute;n en una fila con el resumen de estad&iacute;sticas calculado. En esta instancia, estad&iacute;sticas como, por ejemplo, el recuento de la cantidad de tiendas y la suma de <i>TOTAL_SALES</i> para todas las tiendas que gestiona Manager1 tambi&eacute;n se calcular&iacute;an para cualquier otro gestor incluido en la lista del campo <i>DISTRICT_MANAGER_NAME</i>.
+    <p>Por ejemplo, supongamos que tiene entidades de puntos de ubicaciones de tiendas con un campo que representa el  <i>DISTRICT_MANAGER_NAME</i> y que desea resumir las ventas de caf&eacute; por gestor. Puede especificar el campo <i>DISTRICT_MANAGER_NAME</i> como campo sobre el que disolver; de este modo se resumir&aacute;n todas las filas de datos que representan gestores individuales. Significa que todas las ubicaciones de tiendas gestionadas por el <pre>Manager1</pre> se resumir&aacute;n en una fila, con el resumen de estad&iacute;sticas calculado. En este ejemplo, estad&iacute;sticas como el recuento de la cantidad de tiendas y la suma de <i>TOTAL_SALES</i> para todas las tiendas que gestiona <pre>Manager1</pre> tambi&eacute;n se calcular&iacute;an, as&iacute; como para cualquier otro gestor incluido en la lista del campo <i>DISTRICT_MANAGER_NAME</i>.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Elija la entrada para resumir</h2></div>
+        <div><h2>Elegir la entrada que se va a resumir</h2></div>
         <hr/>
         <div>
             <p>La capa que contiene los campos que se van a resumir.  
             </p>
-            <p>Adem&aacute;s de elegir una capa en el mapa, puede elegir  <b>Examinar capas</b> en la parte inferior de la lista desplegable para examinar el contenido del dataset o la capa de entidades de un archivo compartido de Big Data.
+            <p>Adem&aacute;s de elegir una capa en el mapa, puede elegir  <b>Examinar capas</b> en la parte inferior de la lista desplegable para examinar el contenido del dataset o la capa de entidades de un archivo compartido de big data.
             </p>
         </div>
     </div>
     <div id="fields">
-        <div><h2>Elija los campos para resumir</h2></div>
+        <div><h2>Elegir cómo resumir sus datos</h2></div>
         <hr/>
         <div>
-            <p>Lista de campos de la capa de entrada. Los campos seleccionados se resumir&aacute;n y se utilizar&aacute;n para calcular estad&iacute;sticas. Por ejemplo, si elige un campo llamado  <i>PropertyType</i> con los valores comercial y residencial, todos los campos residenciales se resumir&aacute;n juntos, con el resumen de estad&iacute;sticas calculado, y todos los campos comerciales se resumir&aacute;n juntos.
+            <p>Existen dos formas de resumir sus datos:
+                <ul>
+                    <li> <b>Todas las entidades a una &uacute;nica entidad</b>: calcula estad&iacute;sticas sobre todas las entidades.
+                    </li>
+                    <li> <b>Por campos</b>: agrupa entidades con valores similares en los campos especificados.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Por ejemplo, supongamos que ten&iacute;a un dataset de &aacute;rboles que inclu&iacute;a campos de  <i>treetype</i> con valores <code>Maple</code>, <code>Fir</code> y <code>Pine</code> y un campo <i>treeheight</i>, y ahora le interesa buscar el valor medio de <i>treeheight</i>. Si resume todas las entidades en una sola entidad, dar&aacute; con el valor medio de altura de &aacute;rbol de todos los &aacute;rboles, que dar&aacute; lugar a un &uacute;nico valor medio. Si resume por el campo <i>treeheight</i>, el resultado ser&iacute;a un valor medio para Maple (arces), un valor medio para Fir (abetos) y un valor medio para Pine (pinos).
             </p>
         </div>
     </div>
     <div id="summaryFields">
-        <div><h2>Agregue estadísticas (opcional)</h2></div>
+        <div><h2>Agregar estadísticas (opcional)</h2></div>
         <hr/>
         <div>
             <p> Puede calcular estad&iacute;sticas sobre las entidades resumidas. En los campos num&eacute;ricos puede calcular lo siguiente:
@@ -87,7 +95,7 @@
                     </li>
                     <li>Rango: el rango de un campo num&eacute;rico. Se calcula como los valores m&iacute;nimos restados del valor m&aacute;ximo. El rango de [0, nulo, 1] es 1. El rango de [nulo, 4] es 0.
                     </li>
-                    <li>Varianza: la varianza de un campo num&eacute;rico en una pista. La varianza de [1] es nulo. La varianza de [nulo, 1,1,1] es 1.
+                    <li>Varianza: la varianza de un campo num&eacute;rico en un recorrido. La varianza de [1] es nulo. La varianza de [nulo, 1,1,1] es 1.
                     </li>
                     <li>Desviaci&oacute;n est&aacute;ndar: la desviaci&oacute;n est&aacute;ndar de un campo num&eacute;rico. La desviaci&oacute;n est&aacute;ndar de [1] es nulo. La desviaci&oacute;n est&aacute;ndar de [nulo, 1,1,1] es 1. 
                     </li>

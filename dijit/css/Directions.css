@@ -657,6 +657,7 @@ div[id$="_directionsDepartAtDate_popup_mddb_mdd"]{
     padding: 10px 0;
     text-align: center;
     color: #929292;
+    font-size: small;
 }
 .simpleDirections .esriRoutesError ul {
     margin: 0;
@@ -1008,6 +1009,7 @@ div[id$="_directionsDepartAtDate_popup_mddb_mdd"]{
 .simpleDirections .esriOtherCosts{
     font-size: 0.9em;
     text-align: center\9;
+    padding: 0 5px;
 }
 .simpleDirections .esriTrafficLabel{
     font-weight: bold;

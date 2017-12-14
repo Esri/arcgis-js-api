@@ -1,0 +1,53 @@
+
+
+.esriGEReportPlayer_infographicsPage {
+    position: relative;
+}
+
+    .esriGEReportPlayer_infographicsPage .infographicsPage_reportSectionsBlock {
+        position: relative;
+    }
+
+    .esriGEReportPlayer_infographicsPage .esriGEReportPlayer_reportContainerGrid.reportContainerPreviewMode {
+        overflow-y: auto;
+    }
+
+        .esriGEReportPlayer_infographicsPage .esriGEReportPlayer_reportContainerGrid.reportContainerPreviewMode .reportContainerGrid_stackContainer {
+            background-color: white;
+            overflow: hidden;
+        }
+
+    .esriGEReportPlayer_infographicsPage .infographicsPage_sectionsContainer {
+        overflow: auto;
+    }
+
+    
+
+    .esriGEReportPlayer_infographicsPage .infographicPage_infographicRoot {
+        min-width: 300px;
+        min-height: 150px;
+        margin-top: 20px;
+        border: 1px solid #dddddd;
+        cursor: pointer;
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+        text-align: left;
+        overflow: hidden;
+    }
+
+    
+
+    .esriGEReportPlayer_infographicsPage .Pagination .Pagination_TriangleDisabled {
+        opacity: 0.3;
+    }
+
+    
+
+    .esriGEReportPlayer_infographicsPage .infographicsPage_emptyPlaceholder {
+        text-align: center;
+        padding-top: 100px;
+        font-style: italic;
+        color: #AAAAAA;
+        font-size: 14px;
+    }

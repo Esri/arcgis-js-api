@@ -42,22 +42,22 @@
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Calcul densitate</h2><p/>
-        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Calculate Density"></h2>
+        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Calcul densitate"></h2>
         <hr/>
-    <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas classified from least dense to most dense.   
+    <p>Instrumentul Calcul densitate creează o hartă de densitate din obiecte spaţiale de tip punct răsp&acirc;ndind pe hartă cantităţi cunoscute ale unui anumit fenomen (reprezentate ca atribute ale punctelor). Rezultatul este un strat tematic de suprafeţe clasificate de la cea mai puţin densă la cea mai densă.   
 
     </p>
-    <p>For point input, each point should represent the location of some event or incident, and the result layer represents a count of the incident per unit area.  A higher density value in a new location means that there are more points near that location.  In many cases, the result layer can be interpreted as a risk surface for future events. For example, if the input points represent locations of lightning strikes, the result layer can be interpreted as a risk surface for future lightning strikes.
+    <p>Pentru introducerea punctelor, fiecare punct trebuie să reprezinte locaţia unui eveniment sau incident, iar stratul tematic rezultat reprezintă un număr de incidente pe suprafaţă unitară. O valoare mai are a densităţii &icirc;ntr-o locaţie nouă denotă faptul că există mai multe puncte &icirc;n apropierea acelei locaţii. &Icirc;n multe cazuri, stratul tematic rezultat poate fi interpretat drept o suprafaţă de risc pentru evenimente viitoare. De exemplu, dacă punctele introduse reprezintă locaţii ale loviturilor de fulgere, stratul tematic rezultat poate fi interpretat drept o suprafaţă de risc pentru viitoare lovituri de fulgere.
     </p>
-    <p>Other use cases of this tool include the following:
+    <p>Printre posibilităţile de utilizare ale acestui instrument se numără:
         <ul>
-            <li>Creating crime-density maps to help police departments properly allocate resources to high crime areas.
+            <li>Crearea unor hărţi de densitate pentru criminalitate &icirc;n vederea ajutării secţiilor de poliţie să aloce resurse adecvate zonelor cu criminalitate ridicată.
             </li>
-            <li>Calculating densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to decide where new hospitals should be built.
+            <li>Calculul densităţii spitalelor dintr-un judeţ. Stratul tematic rezultat va prezenta zone cu accesibilitate ridicată şi scăzută la spitale, iar aceste informaţii pot fi utilizate pentru a decide dacă să se construiască noi spitale.
             </li>
-            <li>Identifying areas that are at high risk of forest fires based on historical locations of forest fires.
+            <li>Identificarea zonelor cu risc ridicat de incendii forestiere pe baza locaţiilor istorice de incendii forestiere.
             </li>
-            <li>Locating communities that are far from major highways in order to plan where new roads should be constructed.
+            <li>Localizarea comunităţilor aflate departe de artere rutiere majore, pentru a planifica unde trebuie construite noi drumuri.
             </li>
         </ul>
         
@@ -68,7 +68,7 @@
         <div><h2>Alegeţi un strat tematic de puncte din care să calculaţi densitatea</h2></div>
         <hr/>
         <div>
-            <p>The point layer on which the density will be calculated.
+            <p>Stratul tematic de puncte pentru care se calculează densitatea.
             </p>
             <p>&Icirc;n afară de a alege un strat tematic din harta dvs., puteţi selecta opţiunile  <b>Răsfoire straturi tematice</b> &icirc;n partea inferioară a listei verticale pentru a răsfoi conţinutul pentru stratul tematic sau setul de date pentru partajarea de fişiere big data.
             </p>
@@ -78,9 +78,9 @@
         <div><h2>Alegeţi unul sau mai multe câmpuri pe care să calculaţi densitatea (opţional)</h2></div>
         <hr/>
         <div>
-            <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
+            <p>Furnizaţi unul sau mai multe c&acirc;mpuri, specific&acirc;nd numărul de incidente din fiecare locaţie. De exemplu, dacă aveţi puncte ce reprezintă oraşe, puteţi utiliza un c&acirc;mp care reprezintă populaţia oraşului drept c&acirc;mp de numărare, iar stratul tematic de densitate a populaţiei va calcula densităţile mai mari de populaţie din apropierea oraşelor cu populaţii mai mari.
             </p>
-            <p>The density for the count of points will always be calculated.   If no fields are selected, each location will be assumed to represent a single count.
+            <p>Densitatea pentru numărul de puncte este &icirc;ntotdeauna calculată.   Dacă nu se selectează niciun c&acirc;mp, fiecare locaţie este considerată ca reprezent&acirc;nd un singur număr.
             </p>
         </div>
     </div>
@@ -88,7 +88,7 @@
         <div><h2>Alegeţi o formă de coş</h2></div>
         <hr/>
         <div>
-            <p>The shape of bins that points are aggregated into and used for the density calculation.
+            <p>Forma coşurilor &icirc;n care sunt agregate punctele şi folosite pentru calculul densităţii.
             </p>
             <p>Analiza cu coşurile  <b>Pătrat</b> sau <b>Hexagon</b> necesită un sistem de coordonate proiectat. Puteţi seta <b>Sistemul de coordonate de procesare</b> din <b>Medii de analiză</b>. Dacă sistemul de coordonate de procesare nu este setat la un sistem de coordonate proiectat, vi se va indica să &icirc;l setaţi atunci c&acirc;nd <b>Executaţi analiza</b>.
             </p>
@@ -98,7 +98,7 @@
         <div><h2>Selectaţi dimensiunea coşurilor pentru agregare</h2></div>
         <hr/>
         <div>
-            <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
+            <p>Dimensiunea coşurilor generate. Pentru un coş pătrat, dimensiunea reprezintă &icirc;nălţimea pătratului. Pentru hexagon, dimensiunea reprezintă &icirc;nălţimea hexagonului (de la laturile paralele).
             </p>
         </div>
     </div>
@@ -106,11 +106,11 @@
         <div><h2>Selectaţi ponderarea densităţii care va fi aplicată</h2></div>
         <hr/>
         <div>
-            <p>The type of weighting applied to the density calculation. There are two options:
+            <p>Tipul de greutate aplicată pentru calcularea densităţii. Sunt disponibile două opţiuni:
                 <ul>
-                    <li> <b>Uniform</b>&mdash;This calculates a magnitude per area.
+                    <li> <b>Uniform</b>&mdash;Se calculează magnitudinea per zonă.
                     </li>
-                    <li> <b>Kernel</b>&mdash;Applies a kernel function to fit a smooth tapered surface to each point.
+                    <li> <b>Kernel</b>&mdash;Se aplică funcţia kernel pentru a se potrivi unei suprafeţe conice netede &icirc;n fiecare punct.
                     </li>
                 </ul>
                 
@@ -121,7 +121,7 @@
         <div><h2>Selectaţi dimensiunea cartierului</h2></div>
         <hr/>
         <div>
-            <p>The size of the area used to calculate the density. The neighborhood size must be larger than the bin size.
+            <p>Dimensiunea suprafeţei utilizate pentru calcularea densităţii. Dimensiunea cartierului trebuie să fie mai mare dec&acirc;t dimensiunea coşului.
             </p>
         </div>
     </div>
@@ -129,7 +129,7 @@
         <div><h2>Alegeţi unităţile pentru densitate</h2></div>
         <hr/>
         <div>
-            <p>The desired output units of the density values. By default, this is set to square kilometers or square miles based on the default units specified in your profile. If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+            <p>Unităţile de ieşire dorite pentru valorile de densitate. Acestea sunt implicit setate la kilometri pătraţi sau mile pătrate, pe baza unităţilor implicite specificate &icirc;n profilul dvs. Dacă valorile de densitate sunt foarte mici, puteţi creşte dimensiunea unităţilor suprafeţei (de exemplu, metri pătraţi la kilometri pătraţi) pentru a obţine valori mai mari. Valorile scalează numai rezultatul.  
 
             </p>
         </div>
@@ -216,7 +216,7 @@
         <div>
             <p> Acesta este numele stratului tematic care va fi creat &icirc;n <b>Resursele mele</b> şi adăugat &icirc;n hartă.  Numele implicit se bazează pe numele instrumentului şi numele stratului tematic de intrare. Dacă stratul tematic există deja, instrumentul va eşua.
             </p>
-            <p>Utiliz&acirc;nd caseta derulantă  <b>Salvare rezultat &icirc;n</b>, puteţi specifica numele unui director din <b>Resursele mele</b> &icirc;n care va fi salvat rezultatul.
+            <p>Utiliz&acirc;nd caseta derulantă  <b>Salvare rezultat &icirc;n</b> puteţi specifica numele unui director din <b>Resursele mele</b> &icirc;n care va fi salvat rezultatul.
             </p>
         </div>
     </div>

@@ -90,7 +90,7 @@
         </div>
     </div>
     <div id="joinOptions">
-        <div><h2>Pilih satu atau beberapa penggabungan</h2></div>
+        <div><h2>Pilih satu gabungan atau lebih</h2></div>
         <hr/>
         <div>
             <p>Anda dapat menerapkan satu, dua, atau tiga tipe penggabungan. Tipe penggabungan mencakup tipe berikut: 
@@ -206,7 +206,7 @@
         <div><h2>Tambahkan statistik (opsional)</h2></div>
         <hr/>
         <div>
-            <p>Jika opsi penggabungan adalah   <b>Gabungkan satu ke satu</b>, Anda dapat menghitung statistik pada fitur yang digabungkan. Secara default, semua statistik akan dihitung.
+            <p>Jika opsi penggabungan adalah  <b>Gabungkan satu ke satu</b>, Anda dapat menghitung statistik pada fitur yang digabungkan. Secara default, semua statistik akan dihitung.
             </p>
             <p>Anda dapat menghitung statistik pada fitur yang diringkas. Pada kolom numerik, Anda dapat menghitung hal berikut:
                 <ul>
@@ -248,14 +248,14 @@
         <div>
             <p>Terapkan syarat ke kolom yang ditentukan. Hanya fitur dengan kolom yang memenuhi syarat ini yang akan digabungkan.
             </p>
-            <p>Contoh, misalnya kita ingin menerapkan gabungan ke set data hanya untuk fitur di mana  <i>biaya_kesehatan</i> lebih besar dari 20 persen <i>pendapatan</i>. Untuk melakukan ini, terapkan syarat gabungan <code>target.biaya_kesehatan &gt; (join.pendapatan * 0,20)</code> dengan menggunakan kolom <i>biaya_kesehatan</i> dari set data pertama (feature set data tujuan gabungan) dan kolom <i>pendapatan</i> dari set data kedua (set data yang akan digabungkan).
+            <p>Contoh, misalnya kita ingin menerapkan gabungan ke set data hanya untuk fitur di mana  <i>biaya_kesehatan</i> lebih besar dari 20 persen <i>pendapatan</i>. Untuk melakukan ini, terapkan syarat gabungan <code>$target[&quot;biaya_kesehatan&quot;] &gt; ($join[&quot;pendapatan&quot;] * 0,20)</code> dengan menggunakan kolom <i>biaya_kesehatan</i> dari set data pertama (fitur set data tujuan gabungan) dan kolom <i>pendapatan</i> dari set data kedua (set data yang akan digabungkan).
             </p>
             <p>Syarat gabung dapat diterapkan dengan menggunakan kalkulator ekspresi.
             </p>
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Pilih penyimpanan data</h2></div>
+        <div><h2>Pilih data store</h2></div>
         <hr/>
         <div>
             <p>Hasil GeoAnalytics disimpan di ArcGIS Data Store dan ditampilkan sebagai layer fitur di  Portal for ArcGIS. Di banyak kasus, hasil harus disimpan di data store spatiotemporal dan ini adalah pilihan default. Di banyak kasus, menyimpan hasil data store relasional adalah opsi yang bagus. Berikut adalah alasan mengapa Anda mungkin ingin menyimpan hasil di data store relasional: 

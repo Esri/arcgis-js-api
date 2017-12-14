@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojox/charting/plot2d/StackedBars","./labelsRendering/_BarsLabelRenderingFix"],function(e,n,t){return e([n,t],{_renderInside:function(e,n,t,d,i){x=d.x+d.width-this.opt.labelOffset,y=d.y+e.box.h/e.numRows+(d.height-e.box.h)/2-2,this.renderLabel(n,x,y,e.text,i,!0,"end")}})});

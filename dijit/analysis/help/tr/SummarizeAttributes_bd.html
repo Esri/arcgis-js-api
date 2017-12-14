@@ -42,12 +42,11 @@
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Öznitelikleri Özetleme</h2><p/>
-        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="&Ouml;znitelikleri &Ouml;zetle"></h2>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="&Ouml;znitelikleri &Ouml;zetleme diyagramı"></h2>
         <hr/>
-    <p>Bu ara&ccedil; bir veya birka&ccedil; alan i&ccedil;indeki eşleşen değerlerin t&uuml;m&uuml;n&uuml; &ouml;zetler ve bunlarla ilgili istatistikleri hesaplar. En temel istatistik, birlikte &ouml;zetlenen detay sayısı olmakla birlikte, daha gelişmiş diğer istatistikleri de hesaplayabilirsiniz. 
-
+    <p> Bu ara&ccedil; bir veya birka&ccedil; alan i&ccedil;indeki eşleşen değerlerin t&uuml;m&uuml;n&uuml; &ouml;zetler ve bunlarla ilgili istatistikleri hesaplar. En temel istatistik, birlikte &ouml;zetlenen detay sayısı olmakla birlikte, daha gelişmiş diğer istatistikleri de hesaplayabilirsiniz.
     </p>
-    <p>&Ouml;rneğin, elinizde mağaza konumlarının nokta detaylarıyla birlikte  <i>DISTRICT_MANAGER_NAME</i> bilgisini temsil eden bir alan olduğunu ve y&ouml;neticiye g&ouml;re kahve satışlarını &ouml;zetlemek istediğinizi varsayalım. <i>DISTRICT_MANAGER_NAME</i> alanını yayılımın yapılacağı alan olarak belirtebilirsiniz, bu durumda tek tek y&ouml;neticileri temsil eden veri satırlarının t&uuml;m&uuml; &ouml;zetlenir. Bu, Y&ouml;netici1 tarafından idare edilen t&uuml;m mağaza konumlarının &ouml;zet istatistikleri hesaplanmış olarak tek satırda g&ouml;r&uuml;nt&uuml;leneceği anlamına gelir. Bu durumda, Y&ouml;netici1 tarafından idare edilen t&uuml;m mağazalar i&ccedil;in mağaza sayısı sayımı ve <i>TOTAL_SALES</i> toplamının yanı sıra, <i>DISTRICT_MANAGER_NAME</i> alanında listelenen diğer y&ouml;neticiler i&ccedil;in de aynısı hesaplanır.
+    <p>&Ouml;rneğin, elinizde mağaza konumlarının nokta detaylarıyla birlikte  <i>DISTRICT_MANAGER_NAME</i>, bilgisini temsil eden bir alan olduğunu ve y&ouml;neticiye g&ouml;re kahve satışlarını &ouml;zetlemek istediğinizi varsayalım. <i>DISTRICT_MANAGER_NAME</i> alanını yayılımın yapılacağı alan olarak belirtebilirsiniz, bu durumda tek tek y&ouml;neticileri temsil eden veri satırlarının t&uuml;m&uuml; &ouml;zetlenir. Bu, <pre>Manager1</pre> tarafından idare edilen t&uuml;m mağaza konumlarının &ouml;zet istatistikleri hesaplanmış olarak tek satırda g&ouml;r&uuml;nt&uuml;leneceği anlamına gelir. Bu durumda, <pre>Manager1</pre> tarafından idare edilen t&uuml;m mağazalar i&ccedil;in mağaza sayısı sayımı ve <i>TOTAL_SALES</i> toplamının yanı sıra, <i>DISTRICT_MANAGER_NAME</i> alanında listelenen diğer y&ouml;neticiler i&ccedil;in de aynısı hesaplanır.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -57,15 +56,24 @@
         <div>
             <p>&Ouml;zetlenecek alanları kapsayan katman.  
             </p>
-            <p>Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, a&ccedil;ılan listenin en altından  <b>Katmanlara G&ouml;zat</b> &ouml;ğesini belirleyerek big data dosya paylaşımı veri k&uuml;mesi veya detay katmanı i&ccedil;eriğinize g&ouml;z atabilirsiniz.
+            <p>Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, a&ccedil;ılan listenin en altından  <b>Katmanlara G&ouml;zat</b> &ouml;gesini belirleyerek b&uuml;y&uuml;k veri dosya paylaşımı veri k&uuml;mesi veya detay katmanı i&ccedil;eriğinize g&ouml;z atabilirsiniz.
             </p>
         </div>
     </div>
     <div id="fields">
-        <div><h2>Özetlenecek alanları seçin</h2></div>
+        <div><h2>Verilerinizi nasıl özetlemek istediğinizi seçin</h2></div>
         <hr/>
         <div>
-            <p>Girdi katmanındaki alanların listesi. Se&ccedil;ilen alanlar &ouml;zetlenir ve istatistiklerin hesaplanması i&ccedil;in kullanılır. &Ouml;rneğin, ticari ve meskenle ilgili değerlere sahip  <i>PropertyType</i> adlı bir alan se&ccedil;erseniz, meskenle ilgili t&uuml;m alanlar birlikte &ouml;zetlenir ve &ouml;zet istatistikler hesaplanır; ticari alanların t&uuml;m&uuml; de birlikte &ouml;zetlenir.
+            <p>Verilerinizi &ouml;zetlemenin iki yolu vardır:
+                <ul>
+                    <li> <b>T&uuml;m detaylar tek bir detaya</b>&mdash;T&uuml;m detaylarla ilgili istatistikleri hesaplar.
+                    </li>
+                    <li> <b>Alana g&ouml;re</b>&mdash;Detayları, belirtilen alanlardaki gibi değerlere g&ouml;re gruplar.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>&Ouml;rneğin,  <code>Ak&ccedil;aağa&ccedil;</code>, <code>K&ouml;knar</code> ve <code>&Ccedil;am Ağacı</code> gibi <i>ağa&ccedil; t&uuml;rleri</i> değerlerinin olduğu bir alan ve <i>ağa&ccedil; y&uuml;ksekliğini</i> i&ccedil;eren bir alana sahip bir ağa&ccedil; k&uuml;mesine sahip olduğunuzu varsayın ve ortalama <i>ağa&ccedil; y&uuml;ksekliğini</i> bulmak istiyorsunuz. T&uuml;m detayları tek bir detaya &ouml;zetlerseniz, t&uuml;m ağa&ccedil;ların ortalama ağa&ccedil; y&uuml;ksekliğini bulursunuz ve bu da aradığınız ortalama değerdir. Eğer <i>ağa&ccedil; y&uuml;ksekliği</i> alanına g&ouml;re &ouml;zetleseydiniz, ak&ccedil;aağa&ccedil; ağa&ccedil;ları i&ccedil;in bir ortalama, k&ouml;knar ağa&ccedil;ları i&ccedil;in bir ortalama ve &ccedil;am ağa&ccedil;ları i&ccedil;in bir ortalama bulmuş olurdunuz.
             </p>
         </div>
     </div>

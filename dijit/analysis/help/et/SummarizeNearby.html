@@ -44,7 +44,7 @@
         <h2>Summeeri lähedusest</h2><p/>
         <h2><img src="../images/GUID-A5033D27-81B6-42E7-BA38-50D25C1CCCCA-web.png" alt="Summeeri l&auml;hedusest"></h2>
         <hr/>
-    <p>  See t&ouml;&ouml;riist arvutab ja summeerib esimeses sisendkihis asuvatest objektidest kindlale kaugusele j&auml;&auml;vad objektid.  Vahemaad saab m&otilde;&otilde;ta nii sirgjoonelise vahemaana kui ka valitud liikumisviisi alusel. Liikumisviisid on s&otilde;iduvahemaa, s&otilde;iduaeg, autoveo s&otilde;iduvahemaa, autoveo s&otilde;iduaeg, k&otilde;ndimisvahemaa v&otilde;i k&otilde;ndimisaeg. Seej&auml;rel arvutatakse l&auml;hedalasuvate objektide statistikud. N&auml;ited:
+    <p>See t&ouml;&ouml;riist arvutab ja summeerib esimeses sisendkihis asuvatest objektidest kindlale kaugusele j&auml;&auml;vad objektid. Vahemaad saab m&otilde;&otilde;ta nii sirgjoonelise vahemaana kui ka valitud liikumisviisi alusel. Liikumisviisid on s&otilde;iduvahemaa, s&otilde;iduaeg, autoveo s&otilde;iduvahemaa, autoveo s&otilde;iduaeg, k&otilde;ndimisvahemaa v&otilde;i k&otilde;ndimisaeg. Seej&auml;rel arvutatakse l&auml;hedalasuvate objektide statistika. N&auml;ited:
         <ul>
             <li>Uue kaupluse jaoks plaanitud asukohast viie minuti s&otilde;iduaja raadiuses asuvate elanike arv.
             </li>
@@ -83,7 +83,7 @@
         <div><h2>Summeeri lähimad objektid, kasutades</h2></div>
         <hr/>
         <div>
-            <p> Siin saate m&auml;&auml;ratleda, millist vahemaa m&otilde;&otilde;tmise viisi soovite kasutada: kas sirgjoonelist (lineaarset) vahemaad v&otilde;i valitud liikumisviisi. Liikumisviise saab kasutada &uuml;ksnes juhul, kui teie esimene sisendkiht (kiht, millest alates m&otilde;&otilde;detakse vahemaid) sisaldab punkte.  Lubatud reisiviisid m&auml;&auml;rab teie asutuse administraator. Liikumisviisi kasutamisel m&otilde;&otilde;detakse vahemaad piki maanteid v&otilde;i jalgteid ning arvesse v&otilde;etakse kehtivad reeglid (nt &uuml;hesuunalised teed, keelatud p&ouml;&ouml;rdeid jne). S&otilde;iduajad arvestavad teie valitud s&otilde;idukiiruseid, olgu siis reaalajas liikluse v&otilde;i t&uuml;&uuml;piliste liiklusolude korral. Reaalajas liikluse kiirused kogutakse andurite v&auml;&auml;rtuste p&otilde;hjal, t&uuml;&uuml;pilised kiirused on arvutatud ajalooliste keskmiste p&otilde;hjal.
+            <p> Siin saate m&auml;&auml;ratleda, millist vahemaa m&otilde;&otilde;tmise viisi soovite kasutada: kas sirgjoonelist (lineaarset) vahemaad v&otilde;i valitud liikumisviisi. Liikumisviise saab kasutada &uuml;ksnes juhul, kui teie esimene sisendkiht (kiht, millest alates m&otilde;&otilde;detakse vahemaid) sisaldab punkte.  Lubatud liikumisviisid m&auml;&auml;rab teie asutuse administraator. Liikumisviisi kasutamisel m&otilde;&otilde;detakse vahemaad piki maanteid v&otilde;i jalgteid ning arvesse v&otilde;etakse kehtivad reeglid (nt &uuml;hesuunalised teed, keelatud p&ouml;&ouml;rdeid jne). <b>S&otilde;iduaeg</b>, <b>s&otilde;iduaeg maakohas</b> ja <b>autoveo s&otilde;iduaeg</b> arvestavad teie valitud s&otilde;idukiirustega, olgu siis reaalajas liikluse v&otilde;i t&uuml;&uuml;piliste liiklusolude korral. Reaalajas liikluse kiirused kogutakse andurite v&auml;&auml;rtuste p&otilde;hjal, t&uuml;&uuml;pilised kiirused on arvutatud ajalooliste keskmiste p&otilde;hjal.
             </p>
             <p>Sisestada saab ka mitu vahemaad. Summeeritakse objektid, mis asuvad sisestatud vahemaa piirides.  
             </p>
@@ -184,7 +184,7 @@
         </div>
     </div>
     <div id="GroupBy">
-        <div><h2>Vali väli, mida grupeeritakse</h2></div>
+        <div><h2>Vali väli, mille järgi rühmitada</h2></div>
         <hr/>
         <div>
             <p> See on l&auml;hedalasuvate objektide atribuut, mida saate kasutada iga kordumatu atribuudiv&auml;&auml;rtuse statistika arvutamiseks. Oletagem n&auml;iteks, et teie esimene sisendkiht (kiht, millest alates m&otilde;&otilde;detakse vahemaid) sisaldab vabu maa&uuml;ksusi m&uuml;&uuml;giks ja l&auml;hedalasuvad objektid on ehitiste piirjooned.  &Uuml;ks neist ehitiste kontuuride atribuutidest on <i>UseType</i>, mis sisaldab m&otilde;nda sellist v&auml;&auml;rtust nagu ELUHOONE, T&Ouml;&Ouml;STUSHOONE, TOOTMISHOONE, AVALIK HOONE jne.  Kui soovite l&auml;hemalt anal&uuml;&uuml;sida iga vaba maa&uuml;ksuse l&auml;heduses asuvate hoonete kasutust&uuml;&uuml;pe, v&otilde;ite arvutada k&otilde;igi vabadest maa&uuml;ksustest 2 km raadiuses asuvate ehitiste kasutust&uuml;&uuml;pide kogupindala, kasutades r&uuml;hmitamise aluseks atribuuti <i>UseType</i>.   Tulemkihi h&uuml;pikaknas kuvatakse iga r&uuml;hma statistika ja l&auml;hedalasuvate objektide arv.

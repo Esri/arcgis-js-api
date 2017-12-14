@@ -185,7 +185,7 @@
     <div id="FindLocationsCategory" class="largesize">
         <h2>Buscar ubicaciones</h2>
         <hr/>
-        <p>Estas herramientas se usan para identificar las &aacute;reas que cumplen diversos criterios especificados. Estos criterios se pueden basar en consultas de atributos (por ejemplo, parcelas que est&aacute;n vac&iacute;as) y consultas espaciales (por ejemplo, a 1 km de un r&iacute;o). Las &aacute;reas encontradas se pueden seleccionar en las entidades existentes (como las parcelas de tierra existentes) o se pueden crear nuevas entidades en las que se cumplen todos los requisitos.
+        <p>Estas herramientas se utilizan para identificar o crear las entidades que cumplen los criterios que usted especifica.  El tipo de criterio depender&aacute; de la herramienta que utilice. Por ejemplo, sus criterios pueden basarse en consultas espaciales o de atributos, &aacute;reas visibles desde una altura concreta, &aacute;reas aguas abajo para puntos de drenaje espec&iacute;ficos o tiempo de conducci&oacute;n en unas condiciones de tr&aacute;fico determinadas.
             <ul>
                 <li> <b>Elegir mejores instalaciones</b> selecciona las mejores ubicaciones para las instalaciones asignando ubicaciones que tienen demanda para esas instalaciones de forma que se satisfaga un determinado objetivo.
                 </li>
@@ -195,16 +195,18 @@
                 </li>
                 <li> <b>Derivar nuevas ubicaciones</b> crea nuevas &aacute;reas a partir de ubicaciones del &aacute;rea de estudio que cumplen una serie de criterios.
                 </li>
+                <li class="OnlineOnly"> <b>Buscar centroides</b> busca el centro representativo (centroide) de las entidades de entrada. 
+                </li>
                 <li> <b>Buscar ubicaciones existentes</b> busca &aacute;reas de una capa que cumplen una serie de criterios.
                 </li>
                 <li> <b>Buscar ubicaciones similares</b> busca las ubicaciones m&aacute;s similares a una o varias ubicaciones de referencia en funci&oacute;n de los criterios especificados.
                 </li>
-                <li class="PortalOnly"> <b>Geocodificar ubicaciones de tabla</b> convierte direcciones de una tabla en coordenadas.
+                <li class="PortalOnly"> <b>Geocodificar ubicaciones de tabla</b> convierte direcciones de una tabla en coordenadas. 
                 </li>
                 <li> <b>Trazado aguas abajo</b> determina las rutas de flujo en direcci&oacute;n aguas abajo y desde las ubicaciones especificadas.
                 </li>
             </ul>
-             
+            
         </p>
         <p> 
         </p>
@@ -266,6 +268,21 @@
             </table>
 <hr/>
             <p>Crea en el &aacute;rea de estudio nuevas entidades existentes que cumplen una serie de criterios especificados. Estos criterios se pueden basar en consultas de atributos (por ejemplo, parcelas que est&aacute;n vac&iacute;as) y consultas espaciales (por ejemplo, a 1 kil&oacute;metro de un r&iacute;o). 
+            </p>
+            <br/>
+        </div>
+        <div id="FindCentroidsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Buscar centroides</h2></td>
+                    <td>
+                    <img src="../images/GUID-75D9AF75-68C3-48BF-8062-D5499BD06978-web.png" class="titleImage" alt="Buscar centroides">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Busca el centro representativo (centroide) de cada entidad multipunto, de l&iacute;nea o de &aacute;rea que sea de entrada.
             </p>
             <br/>
         </div>

@@ -159,7 +159,7 @@
 .esriGEImageNavigator .imageThumbnailListItemRoot {
     width: 50px;
     height: 50px;
-    border: 2px solid transparent;
+    border: 1px solid transparent;
     display: inline-block;
     cursor: pointer;
     position: relative;
@@ -172,18 +172,23 @@
     }
 
 .esriGEImageNavigator .imageThumbnailListItemRootSelected {
-    border: 2px solid rgba(0, 145, 251, 1);
+    border: 1px solid rgba(0, 145, 251, 1);
 }
 
 
+
+.esriGEImageNavigator .imageNavigator_allImagesView .imageThumbnailList {
+    overflow-y: auto;
+}
 
 .esriGEImageNavigator .imageNavigator_allImagesView .imageThumbnailListItemRoot {
     width: 150px;
     height: 150px;
 }
 
-.esriGEImageNavigator .imageNavigator_allImagesView .imageThumbnailList {
-    overflow-y: auto;
+.esriGEImageNavigator .imageNavigator_allImagesView .imageThumbnailList .noImage {
+    width: 150px;
+    height: 150px;
 }
 
 

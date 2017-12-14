@@ -1,0 +1,25 @@
+// COPYRIGHT © 2017 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+
+define(["./_SectionJsonCollector"],function(o){var n={},e="document",s="section",c="table",i="sectionElement",r="tableRow",t="field",a={process:function(o,n,i,t,f){var l=t;t=function(o,n,e){o&&l.apply(this,arguments)};var p={processLevel:n,objJson:i,processFunc:t,ignoreComparisonCalculators:f&&f.ignoreComparisonCalculators};return o===n?void t(i):void(o===e?a._processTemplateJson(i,p):o===s?a._processSectionJson(i,p):o===c?a._processTableJson(i,p):o===r&&a._processTableDataObj(i,p))},_processTemplateJson:function(n,e){o.collectSectionJsons(n,{saveParentInfo:!1,processFieldInfoFunc:function(o){e.processLevel===t&&e.processFunc(o)}}).forEach(function(o){a._processSectionJson(o,e)})},_processSectionJson:function(o,n){return n.processLevel===s?void n.processFunc(o):void o.stack.forEach(function(o){n.processLevel===i?n.processFunc(o):"table"===o.id&&(n.processLevel===c?n.processFunc(o):a._processTableJson(o,n))})},_processTableJson:function(o,n,e){o.data.data.forEach(function(o){n.processLevel===r?(n.processFunc(o,e),a._processTableDataObj(o,n,e)):a._processTableDataObj(o,n,e)}),o.backgroundSectionJson&&a._processSectionJson(o.backgroundSectionJson,n),o.foregroundSectionJson&&a._processSectionJson(o.foregroundSectionJson,n),o.floatingTablesSectionJson&&a._processSectionJson(o.floatingTablesSectionJson,n)},_processTableDataObj:function(o,n,e){if(o.fieldInfos)for(var s in o.fieldInfos)a._processFieldInfo(o.fieldInfos[s],n,e)},_processFieldInfo:function(o,n,e){function s(o,e){n.processLevel===t&&n.processFunc(o,e)}function c(o){o&&o.triggerJson&&o.triggerJson.fieldInfo&&o.templateName!==o.triggerJson.fieldInfo.templateName&&s(o.triggerJson.fieldInfo,o)}if(o){if(s(o,e),c(o),o.linkFieldInfo&&s(o.linkFieldInfo,o),o.isInfographic&&o.infographicJson.header&&a._processTableJson(o.infographicJson.header,n,o),o.isInfographic&&o.infographicJson.variableTables&&o.infographicJson.variableTables.forEach(function(e){e.variable&&a._processFieldInfo(e.variable.fieldInfo,n,o),e.description&&e.description.fieldInfo&&a._processFieldInfo(e.description.fieldInfo,n,o)}),o.isInfographic&&o.infographicJson&&o.infographicJson.dataDrilling)for(var i in o.infographicJson.dataDrilling){var r=o.infographicJson.dataDrilling[i];r&&r.sectionJson&&a._processSectionJson(r.sectionJson,n)}if(o.isRichText&&(o.richTextJson.fieldInfos.forEach(function(e){a._processFieldInfo(e,n,o)}),o.richTextJson.specialFieldInfos.forEach(function(e){a._processFieldInfo(e,n,o)})),o.isChart){var f=o.chartJson.visualProperties;f.chartIcons&&f.chartIcons.forEach(function(e){a._processFieldInfo(e,n,o)}),f.floatingIcons&&f.floatingIcons.forEach(function(e){a._processTableJson(e,n,o)}),f.floatingTexts&&f.floatingTexts.forEach(function(e){a._processTableJson(e,n,o)}),o.chartJson.seriesItems.forEach(function(e){e.points.forEach(function(e){n.ignoreComparisonCalculators&&o.chartJson.comparisonInfo||a._processFieldInfo(e.fieldInfo,n,o),e.iconFieldInfo&&a._processFieldInfo(e.iconFieldInfo,n,o),e.captionFieldInfo&&a._processFieldInfo(e.captionFieldInfo,n,o)})})}o.isReportSection&&o.sectionJson&&a._processSectionJson(o.sectionJson,n)}}};return n.DOCUMENT=e,n.SECTION=s,n.TABLE=c,n.SECTION_ELEMENT=i,n.TABLE_ROW=r,n.FIELD=t,n.process=a.process,n.processTemplateFieldInfos=function(o,n,s){a.process(e,t,o,n,s)},n.processSectionFieldInfos=function(o,n,e){a.process(s,t,o,n,e)},n.processSectionElements=function(o,n){a.process(e,i,o,n)},n.processTableFieldInfos=function(o,n,e){a.process(c,t,o,n,e)},n.hasDynamicColumns=function(o){return n._checkTableAttributes(o,function(o){return o.dynamicColumns>0})},n.hasDynamicRows=function(o){return n._checkTableAttributes(o,function(o){return o.dynamicRows>0})},n._checkTableAttributes=function(n,e){return o.collectSectionJsons(n).some(function(o){return o.stack.some(function(o){return"table"===o.id&&o.attributes&&e(o.attributes)?!0:void 0})})},n.hasMultiFeatureChart=function(o){var e=!1;return n.processSectionFieldInfos(o,function(o){e=e||o.isChart&&o.chartJson&&!!o.chartJson.isMultiFeatureChart}),e},n.isGraphicReport=function(o){return!!o.sectionsTables},n.collectSectionJsons=o.collectSectionJsons,n.getParentBox=o.getParentBox,n.getParentStyle=o.getParentStyle,n});

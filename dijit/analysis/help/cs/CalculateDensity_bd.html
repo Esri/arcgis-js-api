@@ -41,23 +41,23 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Vypočítat hustotu</h2><p/>
-        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Calculate Density"></h2>
+        <h2>Vypočítat hustotu (Calculate Density)</h2><p/>
+        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Vypoč&iacute;tat hustotu"></h2>
         <hr/>
-    <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas classified from least dense to most dense.   
+    <p>N&aacute;stroj Vypoč&iacute;tat hustotu vytv&aacute;ř&iacute; mapu hustoty z&nbsp;bodov&yacute;ch prvků rozprostřen&iacute;m zn&aacute;m&eacute;ho množstv&iacute; určit&eacute;ho jevu (v podobě atributů bodů) po mapě. V&yacute;sledkem je vrstva oblast&iacute; klasifikovan&yacute;ch od nejm&eacute;ně hust&yacute;ch po nejhust&scaron;&iacute;.   
 
     </p>
-    <p>For point input, each point should represent the location of some event or incident, and the result layer represents a count of the incident per unit area.  A higher density value in a new location means that there are more points near that location.  In many cases, the result layer can be interpreted as a risk surface for future events. For example, if the input points represent locations of lightning strikes, the result layer can be interpreted as a risk surface for future lightning strikes.
+    <p>V př&iacute;padě vstupn&iacute;ch bodů by měl každ&yacute; bod vyjadřovat polohu určit&eacute; ud&aacute;losti, v&yacute;sledn&aacute; vrstva pak představuje počet ud&aacute;lost&iacute; na jednotkovou plochu. Vy&scaron;&scaron;&iacute; hodnota hustoty v nov&eacute;m um&iacute;stěn&iacute; znamen&aacute;, že se bl&iacute;zko dan&eacute;ho um&iacute;stěn&iacute; nach&aacute;z&iacute; v&iacute;ce bodů. V mnoha př&iacute;padech lze v&yacute;slednou vrstvu vykl&aacute;dat jako grafick&eacute; zobrazen&iacute; rizika budouc&iacute;ch ud&aacute;lost&iacute;. Pokud např&iacute;klad vstupn&iacute; body představuj&iacute; m&iacute;sta &uacute;deru blesku, lze v&yacute;slednou vrstvu vykl&aacute;dat jako grafick&eacute; vyj&aacute;dřen&iacute; rizika budouc&iacute;ch &uacute;derů blesku.
     </p>
-    <p>Other use cases of this tool include the following:
+    <p>Mezi dal&scaron;&iacute; možnosti použit&iacute; tohoto n&aacute;stroje patř&iacute;:
         <ul>
-            <li>Creating crime-density maps to help police departments properly allocate resources to high crime areas.
+            <li>Vytv&aacute;řen&iacute; map hustoty trestn&yacute;ch činů na pomoc policejn&iacute;m oddělen&iacute;m vhodně přidělovat zdroje do oblast&iacute; s&nbsp;vysokou m&iacute;rou kriminality.
             </li>
-            <li>Calculating densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to decide where new hospitals should be built.
+            <li>V&yacute;počet hustoty nemocnic v&nbsp;kraji. V&yacute;sledn&aacute; vrstva uk&aacute;že oblasti s&nbsp;vysokou a n&iacute;zkou m&iacute;rou dostupnosti nemocnic. Tuto informaci lze využ&iacute;t při rozhodov&aacute;n&iacute;, kde by měly b&yacute;t postaveny nov&eacute; nemocnice.
             </li>
-            <li>Identifying areas that are at high risk of forest fires based on historical locations of forest fires.
+            <li>Identifikace oblast&iacute; s&nbsp;vysok&yacute;m rizikem lesn&iacute;ch pož&aacute;rů na z&aacute;kladě historick&yacute;ch um&iacute;stěn&iacute; lesn&iacute;ch pož&aacute;rů.
             </li>
-            <li>Locating communities that are far from major highways in order to plan where new roads should be constructed.
+            <li>Vyhled&aacute;v&aacute;n&iacute; komunit (usedlost&iacute;), kter&eacute; se nach&aacute;zej&iacute; daleko od hlavn&iacute;ch silnic, za &uacute;čelem zji&scaron;těn&iacute;, kde je třeba postavit nov&eacute; silnice.
             </li>
         </ul>
         
@@ -68,7 +68,7 @@
         <div><h2>Zvolit bodovou vrstvu, ze které bude vypočítána hustota</h2></div>
         <hr/>
         <div>
-            <p>The point layer on which the density will be calculated.
+            <p>Bodov&aacute; vrstva, ze kter&eacute; bude vypoč&iacute;t&aacute;na hustota.
             </p>
             <p>Kromě v&yacute;běru vrstvy z&nbsp;mapy můžete tak&eacute; zvolit položku  <b>Proch&aacute;zet vrstvy</b> kter&aacute; se nach&aacute;z&iacute; v&nbsp;doln&iacute; č&aacute;sti rozbalovac&iacute; nab&iacute;dky, abyste ve sv&eacute;m obsahu mohli naj&iacute;t vrstvu prvků nebo datovou sadu sd&iacute;len&yacute;ch souborů velk&yacute;ch dat.
             </p>
@@ -78,27 +78,27 @@
         <div><h2>Zvolit jedno nebo více polí, u kterých bude vypočítána hustota (volitelné)</h2></div>
         <hr/>
         <div>
-            <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
+            <p>Uveďte jedno nebo v&iacute;ce pol&iacute; určuj&iacute;c&iacute; počet ud&aacute;lost&iacute; v&nbsp;každ&eacute;m um&iacute;stěn&iacute;. Pokud např&iacute;klad va&scaron;e body představuj&iacute; města, můžete jako pole počtu použ&iacute;t pole, kter&eacute; uv&aacute;d&iacute; počet obyvatel města. V&yacute;sledn&aacute; vrstva hustoty populace vypoč&iacute;t&aacute; vět&scaron;&iacute; hustoty populace u měst s&nbsp;vět&scaron;&iacute;m počtem obyvatel.
             </p>
-            <p>The density for the count of points will always be calculated.   If no fields are selected, each location will be assumed to represent a single count.
+            <p>Bude vždy vypoč&iacute;t&aacute;na hustota počtu bodů. Pokud nejsou zad&aacute;na ž&aacute;dn&aacute; pole, předpokl&aacute;d&aacute; se, že každ&eacute; um&iacute;stěn&iacute; představuje jedinou ud&aacute;lost.
             </p>
         </div>
     </div>
     <div id="binType">
-        <div><h2>Zvolit tvar zásobníku</h2></div>
+        <div><h2>Zvolit tvar přihrádky</h2></div>
         <hr/>
         <div>
-            <p>The shape of bins that points are aggregated into and used for the density calculation.
+            <p>Tvar přihr&aacute;dek, do nichž jsou body seskupeny a použity pro v&yacute;počet hustoty.
             </p>
-            <p>Anal&yacute;za s&nbsp;použit&iacute;m  <b>čtvercov&yacute;ch</b> nebo <b>&scaron;esti&uacute;heln&iacute;kov&yacute;ch</b> bloků vyžaduje rovinn&yacute; souřadnicov&yacute; syst&eacute;m. Můžete nastavit <b>Souřadnicov&yacute; syst&eacute;m pro zpracov&aacute;n&iacute;</b> v <b>Prostřed&iacute; anal&yacute;zy</b>. Pokud v&aacute;&scaron; souřadnicov&yacute; syst&eacute;m pro zpracov&aacute;n&iacute; nen&iacute; nastaven na rovinn&yacute; souřadnicov&yacute; syst&eacute;m, budete vyzv&aacute;ni k&nbsp;jeho nastaven&iacute; při <b>Spu&scaron;těn&iacute; anal&yacute;zy</b>.
+            <p>Anal&yacute;za s&nbsp;použit&iacute;m  <b>čtvercov&yacute;ch</b> nebo <b>&scaron;esti&uacute;heln&iacute;kov&yacute;ch</b> přihr&aacute;dek vyžaduje rovinn&yacute; souřadnicov&yacute; syst&eacute;m. Můžete nastavit <b>Souřadnicov&yacute; syst&eacute;m pro zpracov&aacute;n&iacute;</b> v <b>Prostřed&iacute; anal&yacute;zy</b>. Pokud v&aacute;&scaron; souřadnicov&yacute; syst&eacute;m pro zpracov&aacute;n&iacute; nen&iacute; nastaven na rovinn&yacute; souřadnicov&yacute; syst&eacute;m, budete vyzv&aacute;ni k&nbsp;jeho nastaven&iacute; při <b>Spu&scaron;těn&iacute; anal&yacute;zy</b>.
             </p>
         </div>
     </div>
     <div id="binSizing">
-        <div><h2>Vybrat velikost zásobníku k seskupení</h2></div>
+        <div><h2>Vybrat velikost přihrádky k seskupení</h2></div>
         <hr/>
         <div>
-            <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
+            <p>Velikost vygenerovan&yacute;ch přihr&aacute;dek. U čtvercov&eacute; přihr&aacute;dky velikost představuje v&yacute;&scaron;ku čtverce. U &scaron;esti&uacute;heln&iacute;kov&eacute; přihr&aacute;dky velikost představuje v&yacute;&scaron;ku &scaron;esti&uacute;heln&iacute;ku (mezi rovnoběžn&yacute;mi stranami).
             </p>
         </div>
     </div>
@@ -106,11 +106,11 @@
         <div><h2>Vybrat váhu hustoty pro použití</h2></div>
         <hr/>
         <div>
-            <p>The type of weighting applied to the density calculation. There are two options:
+            <p>Typ v&aacute;žen&iacute; použit&yacute; k v&yacute;počtu hustoty. Jsou dvě možnosti:
                 <ul>
-                    <li> <b>Uniform</b>&mdash;This calculates a magnitude per area.
+                    <li> <b>Uniformn&iacute;</b>&mdash;Ten vypoč&iacute;t&aacute;v&aacute; velikost podle plochy.
                     </li>
-                    <li> <b>Kernel</b>&mdash;Applies a kernel function to fit a smooth tapered surface to each point.
+                    <li> <b>J&aacute;drov&yacute;</b>&mdash;Použ&iacute;v&aacute; j&aacute;drovou funkci pro připojen&iacute; hladk&eacute;ho zužuj&iacute;c&iacute;ho se povrchu pro každ&yacute; bod.
                     </li>
                 </ul>
                 
@@ -121,7 +121,8 @@
         <div><h2>Vybrat velikost sousedství</h2></div>
         <hr/>
         <div>
-            <p>The size of the area used to calculate the density. The neighborhood size must be larger than the bin size.
+            <p>Velikost oblasti použit&eacute; k v&yacute;počtu hustoty. Velikost sousedstv&iacute; mus&iacute; b&yacute;t vět&scaron;&iacute; než velikost přihr&aacute;dky.
+
             </p>
         </div>
     </div>
@@ -129,7 +130,7 @@
         <div><h2>Zvolit výstupní jednotky hustoty</h2></div>
         <hr/>
         <div>
-            <p>The desired output units of the density values. By default, this is set to square kilometers or square miles based on the default units specified in your profile. If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+            <p>Požadovan&eacute; v&yacute;stupn&iacute; jednotky hodnot hustoty. Ve v&yacute;choz&iacute;m nastaven&iacute; jsou to kilometry čtverečn&iacute; nebo m&iacute;le čtverečn&iacute;, podle toho, jak&eacute; v&yacute;choz&iacute; jednotky m&aacute;te specifikovan&eacute; ve sv&eacute;m profilu. Jestliže jsou hodnoty hustoty velmi mal&eacute;, můžete zvět&scaron;it velikost plo&scaron;n&yacute;ch jednotek (např. metry čtverečn&iacute; na kilometry čtverečn&iacute;), aby byly vr&aacute;ceny vět&scaron;&iacute; hodnoty. Hodnoty pouze určuj&iacute; měř&iacute;tko v&yacute;sledku.  
 
             </p>
         </div>

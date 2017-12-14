@@ -11,33 +11,33 @@
 }
 
 .dj_rtl .ShoppingCart {
-    left:20px;
-    right:auto;
+    left: 20px;
+    right: auto;
 }
 
 .ShoppingCart .Label {
-    border:0;
-    border-collapse:collapse;   
+    border: 0;
+    border-collapse: collapse;
     height: 25px;
-    position:absolute;
+    position: absolute;
     right: 0;
     z-index: 101;
 }
 
 .ShoppingCart td {
-    padding:0px;
+    padding: 0;
 }
 
 .dj_rtl .Label {
-    left:0;
-    right:auto;
+    left: 0;
+    right: auto;
 }
 
 .ShoppingCart .ShoppingCart_CounterTD {
     white-space: nowrap;
-    padding-bottom:0.3em;
-    padding-left:4px;
-    padding-right:4px;
+    padding-bottom: 0.3em;
+    padding-left: 4px;
+    padding-right: 4px;
 }
 
 .ShoppingCart_CounterTD > div {
@@ -45,16 +45,13 @@
     vertical-align: bottom;
 }
 
-.ShoppingCart_CounterDivRightBorder{
+.ShoppingCart_CounterDivRightBorder {
     border-right: 2px solid #d4d4d4;
-    height:15px;
-    
+    height: 15px;
     transform: translateX(-2px) rotate(30deg);
     transform-origin: right bottom;
-
     -ms-transform: translateX(-2px) rotate(30deg); 
     -ms-transform-origin: right bottom;
-
     -webkit-transform: translateX(-2px) rotate(30deg); 
     -webkit-transform-origin: right bottom;
 }
@@ -62,86 +59,79 @@
 .dj_rtl .ShoppingCart_CounterDivRightBorder {
     transform: translateX(2px) rotate(-30deg);
     transform-origin: left bottom;
-
     -ms-transform: translateX(2px) rotate(-30deg); 
     -ms-transform-origin: left bottom;
-
     -webkit-transform: translateX(2px) rotate(-30deg); 
     -webkit-transform-origin: left bottom;
 }
 
-.ShoppingCart_CounterDivLeftBorder  {
+.ShoppingCart_CounterDivLeftBorder {
     border-left: 2px solid #d4d4d4;
-    height:15px;
-    
+    height: 15px;
     transform: translateX(2px) rotate(-30deg);
     transform-origin: left bottom;
-
     -ms-transform: translateX(2px) rotate(-30deg); 
     -ms-transform-origin: left bottom;
-
     -webkit-transform: translateX(2px) rotate(-30deg); 
     -webkit-transform-origin: left bottom;
 }
 
-.dj_rtl .ShoppingCart_CounterDivLeftBorder{
+.dj_rtl .ShoppingCart_CounterDivLeftBorder {
     transform: translateX(-2px) rotate(30deg);
     transform-origin: right bottom;
-
     -ms-transform: translateX(-2px) rotate(30deg); 
     -ms-transform-origin: right bottom;
-
     -webkit-transform: translateX(-2px) rotate(30deg); 
     -webkit-transform-origin: right bottom;
 }
 
 .ShoppingCart_CounterDiv {
     border-bottom: 2px solid #d4d4d4;
-    padding-left:0;
-    padding-right:0;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .ShoppingCart .ShoppingCart_OuterDiv {
-    height:207px; 
-    width:302px; 
-    position:absolute;
-    right:-2px;
-    top:25px;
+    height: 207px;
+    width: 302px;
+    position: absolute;
+    right: -2px;
+    top: 25px;
 }
 
 .dj_rtl .ShoppingCart .ShoppingCart_OuterDiv {
-    left:-2px;
-    right:auto;
+    left: -2px;
+    right: auto;
 }
 
 .ShoppingCart .ShoppingCart_DivList {
-    background-color:white;
-    height:200px; 
-    width:300px; 
-    right:0;
-    top:4px;
+    background-color: white;
+    height: 200px;
+    width: 300px;
+    right: 0;
+    top: 4px;
     -webkit-box-shadow: 2px 2px 6px #9e9e9e;
     box-shadow: 2px 2px 6px #9e9e9e;
 }
 
 .ShoppingCart .ShoppingCart_DivEmpty {
-    height:200px;
-    width:300px;
-    color:#666666;
-    font-size:1.1em;
-    text-align:center;
-    position:absolute;
-    top:4px;
-    display:table;
+    height: 200px;
+    width: 300px;
+    color: #666666;
+    font-size: 1.1em;
+    text-align: center;
+    position: absolute;
+    top: 4px;
+    display: table;
 }
 
-.ShoppingCart .ShoppingCart_DivEmpty div {
-    display:table-cell;
-    width:100%;
-    height:100%;
-    vertical-align:middle;
-    padding: 10px 30px;
-}
+    .ShoppingCart .ShoppingCart_DivEmpty div {
+        display: table-cell;
+        width: 100%;
+        height: 100%;
+        vertical-align: middle;
+        padding: 10px 30px;
+    }
 
 .ShoppingCart .dgrid-content {
     height: 190px;
@@ -153,9 +143,10 @@
 }
 
 .ShoppingCart .ShoppingCart_LabelTd {
-    font-size:0.9em;
+    font-size: 0.9em;
     text-align: center;
     padding: 0 2px 0 6px;
+    white-space: nowrap;
 }
 
 .dj_rtl .ShoppingCart .ShoppingCart_LabelTd {
@@ -163,19 +154,19 @@
 }
 
 .ShoppingCart .ShoppingCart_LabelTd div {
-   display:inline-block;
-   height:100%;
-   line-height:12px; 
+    display: inline-block;
+    height: 100%;
+    line-height: 12px;
 }
 
 .ShoppingCart .ShoppingCartOpener {
     line-height: 22px;
-    font-size:0.8em;
+    font-size: 0.8em;
 }
 
 .ShoppingCart .ShoppingCartRow {
-    color:white;
-    background-color:#f99e19;
+    color: white;
+    background-color: #f99e19;
     height: 34px;
     padding: 0px 5px;
     margin: 5px;
@@ -183,28 +174,53 @@
 
 .ShoppingCart .ShoppingCartRowLabel {
     line-height: 34px;
-    vertical-align:middle;
+    vertical-align: middle;
 }
 
 .ShoppingCart .ShoppingCartRowSpacer {
     width: 3px;
 }
 
+
+
 .ShoppingCart .ShoppingCartRowCloser {
-    background-image:  url('./images/CloseIconforSelectedVariables.png');
+    background-image: url('./images/CloseIconforSelectedVariables.png');
     background-position: center;
     background-repeat: no-repeat;
-    width:15px;
-    height:15px;
-    position:relative;
-    top:10px;
-    display:inline-block;
+    width: 15px;
+    height: 15px;
+    position: relative;
+    top: 10px;
+    display: inline-block;
     cursor: pointer;
 }
 
+
+
+.ShoppingCart .ShoppingCartRowEditButton {
+    background-image: url('./images/edit/editIcon.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+    background-size: contain;
+    position: relative;
+    top: 10px;
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+    .ShoppingCart .ShoppingCartRowEditButton:hover {
+        background-image: url('./images/edit/editIcon_over.svg');
+    }
+
+
+
 .ShoppingCart .VariableToggleButtonGroup {
-    position:relative;
-    top:8px;
+    position: relative;
+    top: 8px;
 }
 
 .ShoppingCart .ShoppingCartRowFloatEnd {
@@ -213,4 +229,37 @@
 
 .dj_rtl .ShoppingCart .ShoppingCartRowFloatEnd {
     float: left;
+}
+
+
+.ShoppingCart .upDownArrowsBlock {
+    position: relative;
+    top: 8px;
+    display: none;
+}
+
+.ShoppingCart .ShoppingCartRow:hover .upDownArrowsBlock {
+    display: block;
+}
+
+.ShoppingCart .upDownArrowsBlock .upArrow,
+.ShoppingCart .upDownArrowsBlock .downArrow {
+    background-image: url('../../ReportPlayer/themes/common/images/arrows/upArrow.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 15px;
+    height: 15px;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.ShoppingCart .upDownArrowsBlock .downArrow {
+    background-image: url('../../ReportPlayer/themes/common/images/arrows/downArrow.svg');
+    margin-left: 5px;
+}
+
+.dj_rtl .ShoppingCart .upDownArrowsBlock .downArrow {
+    margin-left: auto;
+    margin-right: 5px;
 }

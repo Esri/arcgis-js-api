@@ -116,7 +116,7 @@
           </tr>
           <tr>
             <td style="padding-right:0;padding-bottom:0;width:50%;">
-              <input type="text" data-dojo-type="dijit/form/NumberTextBox" data-dojo-attach-event="onChange:_handleDurSplitValue" data-dojo-props="intermediateChanges:true,missingMessage:'${i18n.distanceMsg}'" data-dojo-attach-point="_durSplitValue" class="esriLeadingMargin1"  style="width:75%;"/>
+              <input type="text" data-dojo-type="dijit/form/NumberTextBox" data-dojo-attach-event="onChange:_handleDurSplitValue" data-dojo-props="constraints:{min:1,places:0},intermediateChanges:true,missingMessage:'${i18n.distanceMsg}'" data-dojo-attach-point="_durSplitValue" class="esriLeadingMargin1"  style="width:75%;"/>
             </td>
             <td colspan="2" style="padding-left:0.25em;padding-bottom:0;width:50%;">
               <select class="mediumInput esriAnalysisSelect" data-dojo-type="dijit/form/Select" data-dojo-attach-event="onChange:_handleDistUnitsChange" data-dojo-attach-point="_durSplitUnitsSelect" style="width:80%;table-layout:fixed;">
@@ -138,7 +138,7 @@
           </tr>
           <tr>
             <td style="padding-right:0;padding-bottom:0;width:50%;">
-              <input type="text" data-dojo-type="dijit/form/NumberTextBox" data-dojo-props="intermediateChanges:true,missingMessage:'${i18n.distanceMsg}'" data-dojo-attach-point="_distSplitValue" class="esriLeadingMargin1"  style="width:75%;"/>
+              <input type="text" data-dojo-type="dijit/form/NumberTextBox" data-dojo-props="constraints:{min:0},intermediateChanges:true,missingMessage:'${i18n.distanceMsg}'" data-dojo-attach-point="_distSplitValue" class="esriLeadingMargin1"  style="width:75%;"/>
             </td>
             <td colspan="2" style="padding-left:0.25em;padding-bottom:0;width:50%;">
               <select class="mediumInput esriAnalysisSelect" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_distSplitUnitsSelect" style="width:80%;table-layout:fixed;">

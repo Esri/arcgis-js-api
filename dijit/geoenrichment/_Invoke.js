@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
 define(["../../declare"],function(i){return i("esri.dijit.geoenrichment._Invoke",null,{_invokeTimeoutIDs:null,invoke:function(i,e){if(this._invokeTimeoutIDs){if(this._invokeTimeoutIDs[i]){if(void 0===e)return;clearTimeout(this._invokeTimeoutIDs[i])}}else this._invokeTimeoutIDs={};var o=this;this._invokeTimeoutIDs[i]=setTimeout(function(){o._invokeTimeoutIDs[i]=0,o[i]()},e||0)},pendingInvoke:function(i){return this._invokeTimeoutIDs?this._invokeTimeoutIDs[i]:!1},cancelInvoke:function(i){if(this._invokeTimeoutIDs){var e=this._invokeTimeoutIDs[i];e&&(clearTimeout(e),this._invokeTimeoutIDs[i]=0)}}})});

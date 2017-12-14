@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Detectar Incidentes</h2><p/>
+        <h2><img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Detectar Incidentes"></h2>
+        <hr/>
+    <p>Esta ferramenta funciona com uma camada habilitado ao tempo de pontos, linhas, &aacute;reas ou tabelas que representam um momento no tempo. Com a utiliza&ccedil;&atilde;o das fei&ccedil;&otilde;es ordenadas consecutivamente, chamados caminhos, esta ferramenta determina quais fei&ccedil;&otilde;es s&atilde;o incidentes de interesse. Os incidentes s&atilde;o determinados por condi&ccedil;&otilde;es que voc&ecirc; especifica. 
+    </p>
+    <p>Primeiro, a ferramenta determina quais fei&ccedil;&otilde;es pertencem a um caminho utilizando um ou mais campos. Com a utiliza&ccedil;&atilde;o do tempo em cada fei&ccedil;&atilde;o, os caminhos s&atilde;o consecutivamente ordenados e a condi&ccedil;&atilde;o do incidente &eacute; aplicada. As fei&ccedil;&otilde;es que atendem a condi&ccedil;&atilde;o de incidente inicial s&atilde;o marcadas como um incidente. Voc&ecirc; pode opcionalmente aplicar uma condi&ccedil;&atilde;o de incidente final; quando a condi&ccedil;&atilde;o final for verdadeira, a fei&ccedil;&atilde;o n&atilde;o &eacute; mais um incidente.  Os resultados ser&atilde;o retornados com as fei&ccedil;&otilde;es originais&mdash;com novas colunas representando o nome do incidente&mdash;e indica quais fei&ccedil;&otilde;es atendem a condi&ccedil;&atilde;o de incidente. Voc&ecirc; pode retornar para todas as fei&ccedil;&otilde;es originais ou somente as fei&ccedil;&otilde;es que s&atilde;o incidentes.
+    </p>
+    <p>Por exemplo, suponha que voc&ecirc; tenha medi&ccedil;&otilde;es de GPS dos furac&otilde;es a cada 10 minutos. Cada medi&ccedil;&atilde;o de GPS registra o nome do furac&atilde;o, local, tempo de registro e velocidade do vento. Com a utiliza&ccedil;&atilde;o destes campos, voc&ecirc; pode criar um incidente onde qualquer medi&ccedil;&atilde;o com uma velocidade de vento maior que 208 km/h &eacute; um incidente titulado  <code>Catastr&oacute;fico</code>. Ao n&atilde;o configurar uma condi&ccedil;&atilde;o final, o incidente terminaria se a fei&ccedil;&atilde;o n&atilde;o mais atender a condi&ccedil;&atilde;o inicial (a velocidade do vento diminui para menos que 208).
+    </p>
+    <p>Utilizando outro exemplo, suponha que voc&ecirc; estava monitorando concentra&ccedil;&otilde;es de uma subst&acirc;ncia qu&iacute;mica no fornecimento de &aacute;gua local utilizando um campo denominado  <code>contanimateLevel</code>. Voc&ecirc; sabe que os n&iacute;veis recomendados s&atilde;o menores que 0.01 mg/L, e n&iacute;veis perigosos est&atilde;o acima de 0.03 mg/L. Para descobrir incidentes onde um valor acima de 0.03mg/L &eacute; um incidente e permanece um incidente at&eacute; os n&iacute;veis de contamina&ccedil;&atilde;o voltarem para normais, voc&ecirc; criar um incidente utilizando uma condi&ccedil;&atilde;o inicial de <code>contanimateLevel &gt; 0.03</code> e uma condi&ccedil;&atilde;o final de <code>contanimateLevel &lt; 0.01</code>. Isto marcar&aacute; qualquer sequ&ecirc;ncia onde os valores excedem 0.03mg/L at&eacute; que eles retornem a uma valor menor que 0.01.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Escolher camada para detectar incidentes</h2></div>
+        <hr/>
+        <div>
+            <p>Os pontos, linhas, &aacute;reas ou tabelas que ser&atilde;o utilizados para localizar incidentes. A camada de entrada deve ser de tempo habilitado com fei&ccedil;&otilde;es que representam um momento no tempo, como tamb&eacute;m ter um ou mais campos que podem ser utilizados para identificar caminhos.
+            </p>
+            <p>Al&eacute;m de escolher uma camada de seu mapa, voc&ecirc; pode escolher  <b>Procurar Camadas</b> na parte inferior da lista suspensa para procurar por seu conte&uacute;do para um conjunto de dados de compartilhamento de arquivo big data ou camada de fei&ccedil;&atilde;o.
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>Selecionar um ou mais campos para identificar caminhos</h2></div>
+        <hr/>
+        <div>
+            <p> Os campos que representam o identificador do caminho. Voc&ecirc; pode utilizar um campo ou campos m&uacute;ltiplos para representar valores &uacute;nicos de caminhos.
+            </p>
+            <p>Por exemplo, se voc&ecirc; for reconstruir caminhos de furac&otilde;es, voc&ecirc; pode utilizar o nome de furac&atilde;o como o campo do caminho.
+            </p>
+        </div>
+    </div>
+    <div id="startConditionExpression">
+        <div><h2>Construir uma condição de expressão para significar o início de um incidente</h2></div>
+        <hr/>
+        <div>
+            <p>Adicione uma condi&ccedil;&atilde;o utilizando o construtor de express&atilde;o para determinar o que um incidente &eacute;. Se a condi&ccedil;&atilde;o voc&ecirc; especifica for verdade, a fei&ccedil;&atilde;o &eacute; um incidente. Se voc&ecirc; n&atilde;o especificar uma condi&ccedil;&atilde;o final, um incidente final quando a condi&ccedil;&atilde;o inicial n&atilde;o for mais verdadeira.
+            </p>
+            <p>Por exemplo, suponha que voc&ecirc; deseja ser alertado quando a soma de campos  <code>concentration_1</code> e <code>concentration_2</code> for maior que <code>concentration_3</code>.   Para fazer isto,  aplique uma condi&ccedil;&atilde;o <code>($feature[&quot;concentration_1&quot;] +  $feature[&quot;concentration_2&quot;]) &gt; $feature[&quot;concentration_3&quot;])</code>.
+            </p>
+        </div>
+    </div>
+    <div id="endConditionExpression">
+        <div><h2>Construir uma condição de expressão para significar o fim de um incidente</h2></div>
+        <hr/>
+        <div>
+            <p>Opcionalmente, adicione uma condi&ccedil;&atilde;o utilizando o construtor de express&atilde;o para determinar o fim de um incidente. Se a condi&ccedil;&atilde;o final que voc&ecirc; especifica for verdadeira, a fei&ccedil;&atilde;o n&atilde;o &eacute; mais um incidente. Se voc&ecirc; n&atilde;o especificar uma condi&ccedil;&atilde;o final, um incidente final quando a condi&ccedil;&atilde;o inicial n&atilde;o for mais verdadeira.    
+            </p>
+            <p>Por exemplo, suponha que voc&ecirc; deseja ser alertado quando a soma dos campos   <code>concentration_1</code> e <code>concentration_2</code> for maior que <code>concentration_3</code>, e voc&ecirc; deseja que o incidente finalize se <code>concentration_4</code> for menor que <code>concentration_1</code>. Para fazer isto, aplique uma condi&ccedil;&atilde;o inicial de <code>($feature[&quot;concentration_1&quot;] +  $feature[&quot;concentration_2&quot;]) &gt; ($join[&quot;income&quot;] * .20)</code> e uma condi&ccedil;&atilde;o final de <code>($feature[&quot;concentration_4&quot;] &lt; $feature[&quot;concentration_1&quot;])</code>.
+            </p>
+        </div>
+    </div>
+    <div id="outputMode">
+        <div><h2>Selecione como deseja a saída representada</h2></div>
+        <hr/>
+        <div>
+            <p>Todos os m&eacute;todos de sa&iacute;da ir&atilde;o anexar campos das fei&ccedil;&otilde;es originais. H&aacute; dois caminhos para determinar quais fei&ccedil;&otilde;es s&atilde;o retornadas:
+                <ul>
+                    <li> <b>Somente retornar incidentes</b>&mdash;Este m&eacute;todo somente retornar&aacute; as fei&ccedil;&otilde;es que s&atilde;o incidentes. Quaisquer fei&ccedil;&otilde;es que n&atilde;o s&atilde;o localizadas para serem incidentes n&atilde;o ser&atilde;o retornadas.
+                    </li>
+                    <li> <b>Retornar todas as fei&ccedil;&otilde;es</b>&mdash;Este &eacute; o padr&atilde;o. Todas as fei&ccedil;&otilde;es na entrada ser&atilde;o retornadas.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nome da camada resultante</h2></div>
+        <hr/>
+        <div>
+            <p> Este &eacute; o nome da camada que ser&aacute; criada em <b>Meu Conte&uacute;do</b> e adicionada no mapa.  O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existe, a ferramenta falhar&aacute;.
+            </p>
+            <p>Ao utilizar a caixa suspensa  <b>Salvar resultado em</b>, &eacute; poss&iacute;vel especificar o nome de uma pasta em <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Portal Analiz Ortamı ayarları</h2><p/>
+        <h2>Portal Analizi Ortam ayarları</h2><p/>
         <h2></h2>
         <hr/>
     <p>  Portal for ArcGIS ve  ArcGIS Online uygulamalarındaki analizler i&ccedil;in ortam ayarları. 
@@ -85,17 +85,17 @@
         </div>
     </div>
     <div id="storeAnalysisResults">
-        <div><h2>Analiz sonuçlarını bir detay servisi olarak sakla</h2></div>
+        <div><h2>Analiz sonuçlarını barındırılan detay katmanları olarak sakla</h2></div>
         <hr/>
         <div>
             
-            <p>Analiz sonu&ccedil;larınızın bir detay katmanı olarak mı yoksa bir detay koleksiyonu olarak mı oluşturulacağını belirtme se&ccedil;eneği.
+            <p>Analizinizden oluşturulan sonu&ccedil; katmanının bir detay koleksiyonu mu yoksa barındırılan bir detay katmanı mı olacağını belirleme se&ccedil;eneği. 
             </p>
             <p>
                 <ul>
-                    <li>İşaretli; analiz sonu&ccedil;larınız bir detay katmanı olarak oluşturulur ve i&ccedil;indekiler b&ouml;l&uuml;m&uuml;nde bir &ouml;ğe oluşturulur. Varsayılan değerdir.
+                    <li>İşaretli; analiz sonu&ccedil;larınız, barındırılan bir detay katmanı oluşturur ve i&ccedil;indekiler b&ouml;l&uuml;m&uuml;nde bir &ouml;ğe oluşturulur. Varsayılan değerdir.
                     </li>
-                    <li>İşaretli Değil; analizinizin sonu&ccedil;ları bir detay koleksiyonu olarak oluşturulur.    Detay koleksiyonları web haritanızda saklanır.
+                    <li>İşaretli Değil; analizinizin sonu&ccedil;ları bir detay koleksiyonu olarak oluşturulur.     
                     </li>
                 </ul>
                 
@@ -134,7 +134,7 @@
                 <ul>
                     <li> <b>Girdiyle aynı</b>; analiziniz girdiyle aynı koordinat sisteminde işlenir. Varsayılan değerdir.
                     </li>
-                    <li> <b>Belirtildiği gibi</b>; analizinizin işleneceği koordinat sistemini se&ccedil;in.   Bu se&ccedil;enek belirlendiğinde, d&uuml;nya simgesine tıklayarak bilinen izd&uuml;ş&uuml;ml&uuml; koordinat sistemleri listesinden se&ccedil;im yapın veya mekansal başvuru WKID'sini sağlanan kutuya ekleyin.
+                    <li> <b>Belirtildiği gibi</b>; analizinizin işleneceği koordinat sistemini se&ccedil;in.   Bu se&ccedil;enek belirlendiğinde, d&uuml;nya simgesine tıklayarak bilinen koordinat sistemleri listesinden se&ccedil;im yapın veya mekansal başvuru WKID'sini sağlanan kutuya ekleyin.
                     </li>
                     <li> <b>Katman
 &lt;name&gt;</b>; web haritanızdan mevcut bir katman se&ccedil;in.  Se&ccedil;ilen katman koordinat sistemi, analizinizi işlemek i&ccedil;in kullanılacak koordinat sisteminin belirlenmesinde kullanılır.
@@ -186,8 +186,7 @@
                     </li>
                     <li> <b>Belirtildiği gibi</b>; h&uuml;cre boyutunu ayarlamak i&ccedil;in sayısal bir değer belirtin. Bu se&ccedil;iliyse, varsayılan değer 1'dir.
                     </li>
-                    <li> <b>Layer &lt;name&gt;</b>&mdash;Set
-the cell size to the raster layer chosen.
+                    <li> <b>Katman &lt;adı&gt;</b>; h&uuml;cre boyutunu se&ccedil;ilen raster katmanına ayarlar.
                     </li>
                 </ul>
                 
@@ -205,8 +204,8 @@ the cell size to the raster layer chosen.
                 </li>
                 <li>Analiz maskesi bir rastersa, maskeyi tanımlamak i&ccedil;in değer i&ccedil;eren t&uuml;m h&uuml;creler değerlendirilir. Bir maske rasterında i&ccedil;indeki NoData değerine sahip h&uuml;creler maskenin dışında olarak değerlendirilir ve analiz sonu&ccedil; katmanında NoData değerini alır. 
                 </li>
-                <li>Analiz maskesi bir detay katmanıysa, işlem sırasında  dahili olarak bir rastera d&ouml;n&uuml;şt&uuml;r&uuml;l&uuml;r. For this reason, take care to ensure that
- <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank"></a> and <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank"></a> are set appropriately for your analysis.
+                <li>Analiz maskesi bir detay katmanıysa, işlem sırasında dahili olarak bir raster'a d&ouml;n&uuml;şt&uuml;r&uuml;l&uuml;r. Bu nedenle,
+ <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank"></a> ve <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank"></a> &ouml;zelliklerinin analizinizde uygun bi&ccedil;imde ayarlandığından emin olun.
                 </li>
             </ul>
              
@@ -218,9 +217,9 @@ the cell size to the raster layer chosen.
         <div>
             <p>GeoAnalytic sonu&ccedil;ları ArcGIS Data Store i&ccedil;inde saklanır ve  Portal for ArcGIS i&ccedil;inde bir detay katmanı olarak yansıtılır. Pek &ccedil;ok durumda sonu&ccedil;ların bir spatiotemporal data store i&ccedil;inde saklanması gerekir. Varsayılan değerdir. Sonu&ccedil;ların ilişkisel bir veri deposuna saklanmasını isteyebileceğiniz nedenler aşağıda sunulmuştur: 
                 <ul>
-                    <li>Sonu&ccedil;larınızı portal--portal ortak kullanımında kullanmak i&ccedil;in
+                    <li>Sonu&ccedil;larınızı portal-portal ortak kullanımında kullanmak i&ccedil;in
                     </li>
-                    <li>Sonu&ccedil;larınızı eşzamanlama &ouml;zellikleriyle etkinleştirebilme
+                    <li>Sonu&ccedil;larınızı eşzamanlama &ouml;zellikleriyle etkinleştirebilmek i&ccedil;in
                     </li>
                 </ul>
                 

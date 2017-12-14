@@ -2,6 +2,10 @@
     width: 400px;
 }
 
+    .esriGEPageOptionsDialog .esriGEOnDemandSelect {
+        width: 180px;
+    }
+
     .esriGEPageOptionsDialog .pageOptionsDialog_section {
         margin-left: 20px;
     }
@@ -9,11 +13,6 @@
     .esriGEPageOptionsDialog .pageOptionsDialog_bigRow20 {
         margin-top: 20px;
         margin-bottom: 20px;
-    }
-
-    .esriGEPageOptionsDialog .sizeList .dijitButtonContents,
-    .esriGEPageOptionsDialog .exportSelect .dijitButtonContents {
-        width: 180px;
     }
 
     .esriGEPageOptionsDialog .esriGEDisabledContent {

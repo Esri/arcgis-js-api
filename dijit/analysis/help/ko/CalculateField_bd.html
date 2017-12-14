@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>계산 필드(Calculate Field)</h2><p/>
+        <h2><img src="../images/GUID-059C9BE7-7B00-49C8-9917-B0EAEA3DA19D-web.png" alt="계산 필드"></h2>
+        <hr/>
+    <p>이 도구는 입력 레이어에 사용되어 새 필드 또는 기존 필드의 값을 계산합니다. Arcade 식을 생성하여 피처를 채울 값을 계산합니다.   데이터에 시간이 활성화되어 있고 시간 유형이 인스턴트인 경우 필요에 따라 추적을 인식하는 식을 만들 수 있습니다.
+    </p>
+    <p>예를 들어  <i>TotalSales</i>라는 기존 필드를 수정한다고 가정해 보겠습니다. 필드에 2016년과 2017년 총 매출의 합을 표시하려고 합니다. 식에서 이러한 필드를 사용하여 필드 값을 <pre>$feature[&quot;Sales2016&quot;] + $feature[&quot;Sales2017&quot;]</pre>로 계산합니다.
+    </p>
+    <p>다른 예시를 들면 어떤 도시의 위치, 시간, 버스 ID, 버스 속도를 기록하는 GPS 측정치가 있다고 가정해 보겠습니다. 각 피처에 대해 기록된 마지막 3개의 GPS 측정치 속도의 평균을 계산하는  <i>SpeedFrom3</i>이라는 새로운 필드를 생성하려고 합니다. 이 계산을 위해, 버스 ID로 표시된 버스가 추적인 추적 인식 계산을 사용할 것입니다.    이전 3개의 시간 단계 및 현재 시간 단계의 평균 속도를 확인하는 계산은 <pre>average($track.field[&quot;speed&quot;].history(-4))</pre>입니다.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>필드 값을 계산할 레이어 선택</h2></div>
+        <hr/>
+        <div>
+            <p>필드 값을 계산할 포인트, 라인, 영역 또는 테이블입니다.  
+            </p>
+            <p>맵에서 레이어를 선택하는 것 이외에, 드롭다운 목록의 하단에 있는  <b>레이어 찾아보기</b>를 선택하여 빅 데이터 파일 공유 데이터셋 또는 피처 레이어의 콘텐츠를 찾아볼 수 있습니다.
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>필드에 대한 필드 값 계산</h2></div>
+        <hr/>
+        <div>
+            <p>값을 계산할 새 필드 또는 기존 필드와 해당 필드 데이터 유형입니다. 이미 존재하는 필드의 값을 계산한다면 데이터 유형을 일치시킬 필요가 없습니다. 
+            </p>
+        </div>
+    </div>
+    <div id="expression">
+        <div><h2>사건 시작을 나타내는 식 조건 작성</h2></div>
+        <hr/>
+        <div>
+            <p>필드 값을 계산하려면 식 빌더를 사용하여 식을 추가합니다. 
+            </p>
+            <p>예를 들어  <i>income</i> 및 <i>bonus</i> 필드에 값을 추가한다고 가정해 보겠습니다. 이렇게 하려면 <code>$feature[&quot;income&quot;] + $feature[&quot;bonus&quot;]</code> 식을 추가합니다.
+            </p>
+        </div>
+    </div>
+    <div id="trackInfo">
+        <div><h2>이 식은 추적을 인식합니다.</h2></div>
+        <hr/>
+        <div>
+            <p>식의 추적 인식 여부를 지정합니다. 추적 인식 식은  <pre>$track.field[&quot;fieldname&quot;].history(...)</pre> 같은 형식을 포함합니다. 추적 인식 식에는 개별 추적을 식별하는 필드가 필요합니다. 추적은 포인트, 라인, 영역 또는 테이블로 구성될 수 있습니다. 입력에는 추적 식별자가 있고, 데이터에 시간이 활성화되어 있으며 시간 유형이 인스턴트이기만 하면 됩니다.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>결과 레이어 이름</h2></div>
+        <hr/>
+        <div>
+            <p>  <b>내 콘텐츠</b>에서 생성되어 맵에 추가되는 레이어의 이름입니다.  기본 이름은 도구 이름과 입력 레이어 이름을 기반으로 합니다. 레이어가 이미 있으면 도구를 사용할 수 없습니다.
+            </p>
+            <p> <b>결과 저장:</b> 드롭다운 상자를 사용하여 <b>내 콘텐츠</b>에서 결과를 저장할 폴더의 이름을 지정할 수 있습니다.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

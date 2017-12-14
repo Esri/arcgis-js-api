@@ -42,7 +42,7 @@
 <div id="topics">
     <div id="toolDescription" class="regularsize">
         <h2>Ligar Elementos</h2><p/>
-        <h2><img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" alt="Fei&ccedil;&otilde;es de Liga&ccedil;&atilde;o"></h2>
+        <h2><img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" alt="Unir Elementos"></h2>
         <hr/>
     <p>A tarefa Ligar Elementos Ligar Elementos efetua a liga&ccedil;&atilde;o de atributos entre elementos com base nas rela&ccedil;&otilde;es espacial, temporal e de atributos, ou de uma combina&ccedil;&atilde;o das tr&ecirc;s. A ferramenta determina todos os elementos de entrada que correspondem &agrave;s condi&ccedil;&otilde;es definidas para ligar, e liga a segunda camada de entrada &agrave; primeira. Opcionalmente, pode ligar todos os elementos aos elementos correspondentes ou resumir os elementos correspondentes.
     </p>
@@ -51,7 +51,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="targetLayer">
-        <div><h2>Selecionar camada alvo</h2></div>
+        <div><h2>Escolher camada alvo</h2></div>
         <hr/>
         <div>
             <p>A camada que ter&aacute;  atributos da camada de liga&ccedil;&atilde;o anexada &agrave; respetiva tabela.
@@ -85,7 +85,7 @@
                 </ul>
                 
             </p>
-            <p>Por exemplo, suponha que se pretende encontrar supermercados a at&eacute; 2 quil&oacute;metros de um mercado agr&iacute;cola.   Neste caso, a camada &agrave; qual se ir&aacute; efetuar a liga&ccedil;&atilde;o tem um &uacute;nico elemento que representa um mercado agr&iacute;cola, e os elementos em liga&ccedil;&atilde;o representam as mercearias locais, incluindo atributos como o total de vendas anuais. Utilizando a ferramenta  <b>Ligar Elementos</b> , descobrimos que cinco mercearias correspondem a esses crit&eacute;rios. Caso tenha sido especificada uma opera&ccedil;&atilde;o de <b>Ligar one to many</b>, no final, teremos cinco elementos no nosso resultado, com cada linha a representar o mercado agr&iacute;cola e um supermercado. Caso tenha sido especificada uma opera&ccedil;&atilde;o <b>Ligar one to one</b> , no final, teremos um elemento que representa o mercado agr&iacute;cola e as informa&ccedil;&otilde;es resumidas referentes aos supermercados, como a contagem (2), e outras estat&iacute;sticas, como a soma das vendas anuais.
+            <p>Por exemplo, suponha que pretendemos encontrar supermercados a at&eacute; 2 quil&oacute;metros de um mercado agr&iacute;cola. Neste caso, a camada &agrave; qual se ir&aacute; efetuar a liga&ccedil;&atilde;o tem um &uacute;nico elemento que representa um mercado agr&iacute;cola, e os elementos em liga&ccedil;&atilde;o representam as mercearias locais, incluindo atributos como o total de vendas anuais. Utilizando a ferramenta  <b>Ligar Elementos</b> , descobrimos que cinco mercearias correspondem a esses crit&eacute;rios. Caso fosse especificada uma opera&ccedil;&atilde;o <b>Ligar one to many</b>, no final, ter&iacute;amos cinco elementos no  resultado, com cada linha a representar o mercado agr&iacute;cola e um supermercado. Caso fosse especificada uma rela&ccedil;&atilde;o <b>Ligar one to one</b>, no final ter&iacute;amos um elemento representando o mercado agr&iacute;cola e as informa&ccedil;&otilde;es resumidas dos supermercados, tais como a contagem (2), e outras estat&iacute;sticas, tais como a soma de vendas anuais.
             </p>
         </div>
     </div>
@@ -118,7 +118,7 @@
                     </li>
                     <li> <b>Igual</b>&mdash;Os elementos ser&atilde;o ligados se possu&iacute;rem a mesma geometria.
                     </li>
-                    <li> <b>Pr&oacute;ximo</b>&mdash;Os elementos ser&atilde;o ligados caso se encontrem no limite de determinada dist&acirc;ncia uns dos outros. A camada alvo tem de encontrar-se num sistema de coordenadas projetado ou a refer&ecirc;ncia espacial de processamento tem de ser definida para um sistema de coordenadas projetado que utilize os <b>Ambientes de An&aacute;lise</b> caso uma refer&ecirc;ncia espacial <b>Pr&oacute;ximo</b> seja utilizada.
+                    <li> <b>Pr&oacute;ximo</b>&mdash;Os elementos ser&atilde;o ligados caso se encontrem no limite de determinada dist&acirc;ncia uns dos outros. A camada alvo tem de encontrar-se num sistema de coordenadas projetado ou a refer&ecirc;ncia espacial de processamento tem de ser definida para um sistema de coordenadas projetado, que utilize os <b>Ambientes de An&aacute;lise</b> caso uma refer&ecirc;ncia espacial <b>Pr&oacute;ximo</b> seja utilizada.
                     </li>
                     <li> <b>Cont&eacute;m</b>&mdash;Os elementos ser&atilde;o ligados se a camada &agrave; qual ligar estiver contida nos elementos em liga&ccedil;&atilde;o.
                     </li>
@@ -206,7 +206,7 @@
         <div><h2>Adicionar estatísticas (opcional)</h2></div>
         <hr/>
         <div>
-            <p>Caso opera&ccedil;&atilde;o de liga&ccedil;&atilde;o seja   <b>Ligar one to one</b>, pode efetuar o ca&aacute;lculo de estat&iacute;sticas nos seus elementos ligados. Por predefini&ccedil;&atilde;o, todas as estat&iacute;sticas ser&atilde;o calculadas.
+            <p>Caso a op&ccedil;&atilde;o de liga&ccedil;&atilde;o seja  <b>Ligar one to one</b>, pode calcular as estat&iacute;sticas dos seus elementos ligados. Por predefini&ccedil;&atilde;o, todas as estat&iacute;sticas ser&atilde;o calculadas.
             </p>
             <p>Pode calcular estat&iacute;sticas em elementos que se encontram resumidos. Em campos num&eacute;ricos, pode calcular as seguintes:
                 <ul>
@@ -248,7 +248,7 @@
         <div>
             <p>Aplica uma condi&ccedil;&atilde;o a campos especificados. Apenas elementos com campos que correspondam a estas condi&ccedil;&otilde;es ser&atilde;o ligados.
             </p>
-            <p>Por exemplo, suponha que pretende aplicar uma liga&ccedil;&atilde;o a um conjunto de dados apenas aos resultados em que  <i>health_spending</i> (gastos com sa&uacute;de) &eacute; superior a 20 por cento de <i>receitas</i>.  Para fazer isto, aplique uma condi&ccedil;&atilde;o de liga&ccedil;&atilde;o de <code>target.health_spending &gt; (join.income * .20)</code> utilizando o campo <i>health_spending</i> do primeiro conjunto de dados (o conjunto de dados ao qual os elementos se encontram ligados) e do campo <i>receitas</i> do segundo conjunto de dados (o conjunto de dados ao qual est&aacute; a ser aplicada a liga&ccedil;&atilde;o).
+            <p>Por exemplo, suponha que pretende aplicar uma liga&ccedil;&atilde;o a um conjunto de dados apenas aos resultados em que  <i>health_spending</i> (gastos com sa&uacute;de) &eacute; superior a 20 por cento de <i>receitas</i>.  Para fazer isto, aplique uma condi&ccedil;&atilde;o de liga&ccedil;&atilde;o de <code>$target[&quot;health_spending&quot;] &gt; ($join[&quot;income&quot;] * .20)</code> utilizando o campo <i>health_spending</i> do primeiro conjunto de dados (o conjunto de dados ao qual os elementos s&atilde;o ligados) e o campo <i>receitas</i> do segundo conjunto de dados (o conjunto de dados ao qual est&aacute; a ser aplicada a liga&ccedil;&atilde;o).
             </p>
             <p>As condi&ccedil;&otilde;es de liga&ccedil;&atilde;o podem ser aplicadas utilizando a calculadora de express&otilde;es.
             </p>

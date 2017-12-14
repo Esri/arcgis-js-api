@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="bdToolbox">
-        <p>Analitika velikih podataka distribuira analitički posao na poslužitelju ArcGIS GeoAnalytics Server. To vam omogućuje da brže analizirate vi&scaron;e podataka s pomoću snage vi&scaron;e uređaja. Trenutačno su dostupni sljedeći alati:
+        <p>GeoAnalytics distribuira analitički posao na poslužitelju ArcGIS GeoAnalytics Server. To vam omogućuje da brže analizirate vi&scaron;e podataka s pomoću snage vi&scaron;e uređaja. Trenutačno su dostupni sljedeći alati:
             <ul>
                 <li> <b>Agregiraj točke</b>
                 </li>
@@ -53,6 +53,8 @@
                 </li>
                 <li> <b>Sažmi unutar</b>
                 </li>
+                <li> <b>Otkrivanje incidenata</b>
+                </li>
                 <li> <b>Pronađi slične lokacije</b>
                 </li>
                 <li> <b>Izračunaj gustoću</b>
@@ -63,10 +65,14 @@
                 </li>
                 <li> <b>Kopiraj u spremnik podataka</b>
                 </li>
+                <li> <b>Izračun polja</b>
+                </li>
+                <li> <b>Geokodiranje lokacije iz tablice</b>
+                </li>
             </ul>
             
         </p>
-        <p>Analitika velikih podataka usredotočuje se na analiziranje velikih podataka s naglaskom na prostornim i vremenskim uzorcima. 
+        <p>GeoAnalytics se usredotočuje na analiziranje velikih podataka s naglaskom na prostornim i vremenskim uzorcima. 
         </p>
     </div>
     <div id="SummarizeDataCategory" class="largesize">
@@ -125,11 +131,11 @@
 <hr/>
             <p>Upotrebom slojeva geoobjekata ili tabličnih podataka možete pridružiti geoobjekte i zapise na temelju određenih relacija između ulaznih slojeva ili tablica. Pridruživanja će se odrediti na temelju prostornih, vremenskih i atributnih relacija, a statistike sažetaka mogu se dodatno izračunati.  
             </p>
-            <p> Na primjer
+            <p>Na primjer
                 <ul>
-                    <li>S obzirom na točke lokacije incidenata kriminala kroz vrijeme, možete pridružiti podatke o kriminalu da određuju prostornu relaciju zločina međusobno unutar 1 kilometra i koji su se dogodili u roku od 1 sata kako biste utvrdili postoji li slijed zločina u međusobnoj blizini u prostoru i vremenu.
+                    <li>S obzirom na točke lokacije incidenata kriminala kroz vrijeme, možete pridružiti podatke o kriminalu da određuju prostornu relaciju zločina međusobno unutar 1 kilometra i koji su se dogodili u roku od 1 sata kako biste utvrdili postoji li redoslijed zločina u međusobnoj blizini u prostoru i vremenu.
                     </li>
-                    <li> S obzirom na tablicu po&scaron;tanskih brojeva s demografskim informacijama i poligonalnim geoobjektima koji predstavljaju stambene zgrade, pridružite demografske informacije stambenim povr&scaron;ina tako da dobijete podatke za svaku.
+                    <li>S obzirom na tablicu po&scaron;tanskih brojeva s demografskim informacijama i poligonalnim geoobjektima koji predstavljaju stambene zgrade, pridružite demografske informacije stambenim povr&scaron;ina tako da dobijete podatke za svaku.
                     </li>
                 </ul>
                 
@@ -153,7 +159,7 @@
                 <ul>
                     <li>S obzirom na točke mjesta i vremena mjerenja uragana, izračunajte srednju brzinu vjetra i maksimalni tlak vjetra uragana.
                     </li>
-                    <li>Pronađite najvi&scaron;e i najniže mjesečne prihode za lokacije fran&scaron;iza s pomoću ćelija od 100 km.
+                    <li>Upotrijebite mjerenja GPS-a brodova da biste  rekonstruirali puteve brodova kao linije.
                     </li>
                 </ul>
                 
@@ -166,7 +172,7 @@
                 <tbody><tr>
                     <td><h2>Sažmi atribute</h2></td>
                     <td>
-                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="Sažmi atribute">
+                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="Dijagram  sažimanja atributa">
                     </td>
                 </tr></tbody>
             </table>
@@ -208,17 +214,64 @@
             </p>
             <br/>
         </div>
-    <div id="FindLocationsCategory" class="smallsize">
+    <div id="FindLocationsCategory" class="regularsize">
         <h2>Pronalaženje lokacija</h2>
         <hr/>
         <p>Ovi se alati upotrebljavaju za određivanje područja koja zadovoljavaju niz različitih kriterija koje odredite. 
             <ul>
+                <li> <b>Otkrivanje incidenata</b> radi s ovremenjenim slojevima kako bi se utvrdilo koji geoobjekti ispunjavaju određeni uvjet.
+                </li>
+                <li> <b>Geokodiranje lokacije iz tablice</b> pretvara adrese u koordinate.
+                </li>
                 <li> <b>Pronađi slične lokacije</b> pronalazi lokacije najsličnije jednoj ili vi&scaron;e referentnih lokacija na temelju kriterija koje odredite.
                 </li>
             </ul>
             
         </p>
     </div>
+        <div id="DetectIncidentsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Otkrivanje incidenata</h2></td>
+                    <td>
+                    <img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" class="titleImage" alt="Otkrivanje incidenata">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> <img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Otkrivanje incidenata">
+            </p>
+            <p>Ovaj alat radi s ovremenjenim slojem točaka, linija, područja ili tablica koji predstavljaju instancu u vremenu. Pomoću geoobjekata poredanih po redu, a koji se zovu tragovi, ovaj alat utvrđuje koji su geoobjekti incidenti interesa. Incidenti se utvrđuju uvjetima koje odredite. 
+            </p>
+            <p>Na primjer
+                <ul>
+                    <li>Otkrijte mjerenja uragana koja odgovaraju uraganima 4. kategorije na temelju atributa brzine vjetra.
+                    </li>
+                    <li>Pomoću mjerenja GPS-a kretanja brodova s poljem koji predstavlja brzinu broda pronađite mjerenja koja su veća od1,5 puta srednje vrijednosti prethodnih pet mjerenja.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="GeocodeLocationsfromTableTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Geokodiranje lokacije iz tablice</h2></td>
+                    <td>
+                    <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" class="titleImage" alt="Geokodiranje lokacije iz tablice">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" alt="Geokodiranje lokacije iz tablice">
+            </p>
+            <p>Pretvara adrese u koordinate. Upotrijebite ovaj alat na tablicama za dijeljenje datoteka velikih podataka.
+            </p>
+            <br/>
+        </div>
         <div id="FindSimilarLocationsTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -232,7 +285,7 @@
 <hr/>
             <p>Na temelju kriterija koje odredite pronađite slične lokacije uspoređivanjem sličnosti lokacija u va&scaron;em sloju pretrage kandidata na jednoj ili vi&scaron;e referentnih lokacija. 
             </p>
-            <p> Na primjer
+            <p>Na primjer 
                 <ul>
                     <li>Pronađite deset najsličnijih trgovina ispitivanjem niza zaposlenika i godi&scaron;nje prodaje.
                     </li>
@@ -262,14 +315,14 @@
                 <tbody><tr>
                     <td><h2>Izračunaj gustoću</h2></td>
                     <td>
-                    <img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" class="titleImage" alt="Calculate Density">
+                    <img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" class="titleImage" alt="Izračunaj gustoću">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
             <p>Alat Izračunaj gustoću stvara kartu gustoće iz točkastih geoobjekata &scaron;irenjem poznatih količina određenog fenomena (predstavljenih kao atributi točaka) &scaron;irom karte. Rezultat je sloj područja koji predstavlja gustoću.
             </p>
-            <p> Na primjer
+            <p>Na primjer
                 <ul>
                     <li>Izračunavanje gustoće bolnica unutar okruga.  Sloj rezultata prikazat će područja s visokom i niskom pristupačno&scaron;ću bolnicama, a ti se podaci mogu iskoristiti za odlučivanje gdje treba sagraditi nove bolnice.
                     </li>
@@ -328,7 +381,7 @@
 <hr/>
             <p>Pojas je područje koje pokriva zadanu udaljenost od točkastog, linijskog ili poligonalnog geoobjekta.
             </p>
-            <p> Na primjer
+            <p>Na primjer
                 <ul>
                     <li>Upotrebom linearnih geoobjekata rijeka, odredite pojas za svaku rijeku od 50 puta &scaron;irine rijeke kako biste odredili predloženu obalnu granicu.
                     </li>
@@ -340,11 +393,13 @@
             <br/>
         </div>
     <div id="ManageDataCategory" class="smallsize">
-        <h2>Upravljanje podacima</h2>
+        <h2>Upravljaj podacima</h2>
         <hr/>
         <p>Ovi se alati upotrebljavaju za svakodnevno upravljanje geografskim i tabličnim podacima.
             <ul>
-                <li> <b>Kopiraj u spremnik podataka</b> kopira podatke u va&scaron; ArcGIS Data Store i stvara sloj u va&scaron;em web-GIS-u.
+                <li> <b>Izračun polja</b>stvara novo polje ili mijenja postojeće polje i stvara novi sloj u va&scaron;em sadržaju.
+                </li>
+                <li> <b>Kopiraj u spremnik podataka</b> kopira podatke u va&scaron; ArcGIS Data Store i stvara sloj u va&scaron;em sadržaju.
                 </li>
             </ul>
             
@@ -361,12 +416,35 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Kopira ulazni sloj geoobjekta ili tablicu u  ArcGIS Data Store i stvara sloj u va&scaron;em web-GIS-u. </p>
-            <p> Na primjer
+            <p>Kopira ulazni sloj geoobjekta ili tablicu u  ArcGIS Data Store i stvara sloj u sadržajima u  ArcGIS Enterprise. </p>
+            <p>Na primjer
                 <ul>
-                    <li> Kopirajte kolekciju datoteka <code>.csv</code> iz dijeljenja datoteka velikih podataka u spremnik prostorno-vremenskih podataka radi vizualizacije.
+                    <li>Kopirajte kolekciju datoteka  <code>.csv</code> iz dijeljenja datoteka velikih podataka u spremnik prostorno-vremenskih podataka radi vizualizacije.
                     </li>
                     <li>Kopirajte geoobjekte iz trenutačnog obuhvata karte koji su pohranjeni u spremniku prostorno-vremenskih podataka u spremnik relacijskih podataka.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="CalculateFieldTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Izračun polja</h2></td>
+                    <td>
+                    <img src="../images/GUID-059C9BE7-7B00-49C8-9917-B0EAEA3DA19D-web.png" class="titleImage" alt="Izračun polja">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Izračunava vrijednosti za novo ili postojeće polje i stvara sloj u va&scaron;em sadržaju u  ArcGIS Enterprise. </p>
+            <p>Na primjer
+                <ul>
+                    <li>Izmijenite postojeće polje naziva  <i>ukupno</i> tako da bude zbroj prihoda iz polja <i>total_2016</i>, <i>total_2017</i>, i <i>total_2018</i>.
+                    </li>
+                    <li>Stvorite novo polje da biste kategorizirali razine opasnosti na temelju vrijednosti polja kao &scaron;to su  <i>brzina vjetra</i> i <i>zagađivač</i>.
                     </li>
                 </ul>
                 

@@ -42,12 +42,11 @@
 <div id="topics">
     <div id="toolDescription" class="regularsize">
         <h2>Ringkas Atribut</h2><p/>
-        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Ringkas Atribut"></h2>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Ringkas Atributdiagram"></h2>
         <hr/>
-    <p>Alat ini meringkas semua nilai yang cocok di satu atau beberapa kolom dan menghitung statistiknya. Statistik yang paling dasar adalah jumlah fitur yang telah diringkaskan bersama-sama, tetapi Anda juga dapat menghitung statistik lain yang lebih canggih. 
-
+    <p> Alat ini meringkas semua nilai yang cocok di satu atau beberapa kolom dan menghitung statistiknya. Statistik yang paling dasar adalah jumlah fitur yang telah diringkaskan bersama-sama, tetapi Anda juga dapat menghitung statistik lain yang lebih canggih.
     </p>
-    <p>Contoh, misalnya Anda memiliki fitur titik dari lokasi penyimpanan dengan kolom yang mewakili  <i>DISTRICT_MANAGER_NAME</i> dan Anda ingin meringkas penjualan kopi berdasarkan manager. Anda dapat menentukan kolom <i>DISTRICT_MANAGER_NAME</i> sebagai kolom untuk disatukan, dan semua baris data yang mewakili manajer individual akan diringkaskan. Ini berarti semua lokasi penyimpanan yang dikelola oleh Manager1 akan diringkas ke dalam satu baris dengan menghitung ringkasan statistik. Dalam kesempatan ini, statistik seperti jumlah toko dan jumlah <i>TOTAL_SALES</i> untuk semua toko yang dikelola Manager1 akan dihitung sebagaimana halnya untuk manajer lainnya yang tercantum di kolom <i>DISTRICT_MANAGER_NAME</i>.
+    <p>Contoh, misalnya Anda memiliki fitur titik dari lokasi penyimpanan dengan kolom yang mewakili  <i>DISTRICT_MANAGER_NAME</i>, dan Anda ingin meringkas penjualan kopi berdasarkan manajer. Anda dapat menentukan kolom <i>DISTRICT_MANAGER_NAME</i> sebagai kolom untuk disatukan, dan semua baris data yang mewakili manajer individual akan diringkaskan. Ini berarti semua lokasi penyimpanan yang dikelola oleh <pre>Manager1</pre> akan diringkas ke dalam satu baris, dengan menghitung ringkasan statistik. Dalam kesempatan ini, statistik seperti jumlah toko dan jumlah <i>TOTAL_SALES</i> untuk semua toko yang dikelola <pre>Manager1</pre> akan dihitung, sebagaimana halnya untuk manajer lainnya yang tercantum di kolom <i>DISTRICT_MANAGER_NAME</i>.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -62,10 +61,19 @@
         </div>
     </div>
     <div id="fields">
-        <div><h2>Pilih kolom untuk diringkas</h2></div>
+        <div><h2>Pilih cara meringkas data Anda</h2></div>
         <hr/>
         <div>
-            <p>Daftar kolom dari layer input.  Kolom yang terpilih akan diringkas dan digunakan untuk menghitung statistik. Contoh, jika Anda memilih kolom bernama  <i>PropertyType</i> dengan nilai komersial dan residensial, semua kolom residensial akan diringkas bersama-sama, dengan menghitung statistik ringkasan dan semua kolom komersial akan diringkas bersama-sama.
+            <p>Ada dua cara untuk meringkas data Anda:
+                <ul>
+                    <li> <b>Semua fitur menjadi fitur tunggal</b>&mdash;Menghitung statistik pada semua fitur.
+                    </li>
+                    <li> <b>Menurut kolom</b>&mdash;Mengelompokkan fitur menurut nilai yang sama dalam kolom yang ditentukan.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Contoh, anggap anda memiliki set data untuk pohon yang mencakup kolom  <i>jenispohon</i> dengan nilai <code>Maple</code>, <code>Fir</code> dan <code>Pinus</code>, dan kolom <i>tinggipohon</i>, dan Anda tertarik untuk menemukan rata-rata <i>tinggipohon</i>. Jika Anda meringkas semua fitur menjadi fitur tunggal, Anda akan menemukan nilai rata-rata tinggi semua pohon, yang akan dihasilkan dalam satu nilai rata-rata. Jika Anda meringkas berdasarkan kolom <i>tinggipohon</i>, Anda akan mendapati nilai rata-rata untuk pohon maple, nilai rata-rata untuk pohon fir, dan nilai rata-rata untuk pohon pinus.
             </p>
         </div>
     </div>
@@ -106,7 +114,7 @@
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Pilih penyimpanan data</h2></div>
+        <div><h2>Pilih data store</h2></div>
         <hr/>
         <div>
             <p>Hasil GeoAnalytics disimpan di ArcGIS Data Store dan ditampilkan sebagai layer fitur di  Portal for ArcGIS. Di banyak kasus, hasil harus disimpan di data store spatiotemporal dan ini adalah pilihan default. Di banyak kasus, menyimpan hasil data store relasional adalah opsi yang bagus. Berikut adalah alasan mengapa Anda mungkin ingin menyimpan hasil di data store relasional: 

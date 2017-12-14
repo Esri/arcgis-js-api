@@ -95,6 +95,8 @@
         <div>
             <p>Lygtis, naudojama buferio atstumui aplink įvesties elementus apskaičiuoti. &Scaron;ią lygtį galima sugeneruoti naudojant buferio skaičiuotuvą ir paprastus skaičiavimo veiksmus. Palaikoma sudėtis, atimtis, dalyba ir daugyba. Reik&scaron;mės apskaičiuojamos naudojant analizės koordinačių sistemą. Sluoksnis turi būti projekcinėje koordinačių sistemoje arba ji turi būti nustatyta naudojant  <b>Analizės aplinką</b> (jei taikomas buferis).
             </p>
+            <p>Tokia lygtis kaip  <code>$feature.windspeed * 1000</code> taikytų buferį, kuriam 1000 būtų padaugintas i&scaron; lauko <i>windspeed</i>. Buferio skaičiuotuve galite naudoti daugiau negu vieną lauką.
+            </p>
         </div>
     </div>
     <div id="timeSplit">
@@ -102,6 +104,20 @@
         <hr/>
         <div>
             <p>Laikas, kurio intervalais bus suskaidytos trajektorijos. Jei trukmė tarp įvesties ta&scaron;kų ar plotų yra ilgesnė negu laiko intervalas, jie bus padalinti į mažesnes trajektorijas.
+            </p>
+            <p>Jei nurodysite laiko ir atstumo intervalą, trajektorijos bus skaidomos, kai bus patenkinta viena arba abi sąlygos. 
+            </p>
+            <p>Įsivaizduokite, kad turite ta&scaron;kų elementus, rodančius lėktuvo skrydžius, kur trajektorijos lauke nurodytas lėktuvo ID. &Scaron;is lėktuvas gali atlikti kelis skydžius, kurie būtų parodyti kaip viena trajektorija.  Jei žinotumėte, kad tarp skrydžių buvo 1 valandos pertrauka, galėtumėte panaudoti  <code>1 valandos</code> laiko intervalą, ir kiekvienas skrydis būtų padalintas į atskiras trajektorijas.
+            </p>
+        </div>
+    </div>
+    <div id="distanceSplit">
+        <div><h2>Pasirinkite atstumą, kurio intervalais bus suskaidytos trajektorijos (neprivaloma)</h2></div>
+        <hr/>
+        <div>
+            <p> Atstumas, pagal kurį bus suskaidytos trajektorijos. Jei atstumas tarp įvesties ta&scaron;kų ar plotų yra didesnis nei atstumo intervalas, jie bus padalinti į mažesnes trajektorijas.
+            </p>
+            <p>Jei nurodysite laiko ir atstumo intervalą, trajektorijos bus skaidomos, kai bus patenkinta viena arba abi sąlygos. 
             </p>
         </div>
     </div>
@@ -142,7 +158,7 @@
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Pasirinkite ArcGIS duomenų saugyklą, į kurią norite įrašyti rezultatus</h2></div>
+        <div><h2>Pasirinkite ArcGIS Data Store, kad įrašytumėte rezultatus į</h2></div>
         <hr/>
         <div>
             <p>GeoAnalytics rezultatai yra saugomi ArcGIS duomenų saugykloje ir rodomi kaip   Portal for ArcGIS elementų sluoksnis. Daugeliu atvejų rezultatai turi būti saugomi erdvinių-laiko duomenų saugykloje, ir tai yra numatytasis nustatymas. Kai kuriais atvejais galima rezultatus įra&scaron;yti į releacinę duomenų saugyklą. Toliau pateikiame priežastis, kodėl reikėtų rezultatus įray&scaron;i į releacinių duomenų saugyklą: 

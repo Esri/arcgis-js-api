@@ -42,22 +42,22 @@
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Tính toán Mật độ</h2><p/>
-        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Calculate Density"></h2>
+        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="T&iacute;nh to&aacute;n Mật độ"></h2>
         <hr/>
-    <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas classified from least dense to most dense.   
+    <p>C&ocirc;ng cụ T&iacute;nh to&aacute;n Mật độ tạo bản đồ mật độ từ c&aacute;c đối tượng điểm bằng c&aacute;ch trải rộng số lượng đ&atilde; biết của một số hiện tượng (được biểu diễn dưới dạng thuộc t&iacute;nh của c&aacute;c điểm) tr&ecirc;n bản đồ. Kết quả l&agrave; một lớp v&ugrave;ng được ph&acirc;n loại từ mật độ &iacute;t nhất đến nhiều nhất.   
 
     </p>
-    <p>For point input, each point should represent the location of some event or incident, and the result layer represents a count of the incident per unit area.  A higher density value in a new location means that there are more points near that location.  In many cases, the result layer can be interpreted as a risk surface for future events. For example, if the input points represent locations of lightning strikes, the result layer can be interpreted as a risk surface for future lightning strikes.
+    <p>Đối với điểm đầu v&agrave;o, mỗi điểm cần thể hiện vị tr&iacute; của một số sự kiện hoặc sự cố v&agrave; lớp kết quả thể hiện số lượng sự cố tr&ecirc;n một đơn vị diện t&iacute;ch. Gi&aacute; trị mật độ cao hơn ở một vị tr&iacute; mới c&oacute; nghĩa l&agrave; c&oacute; nhiều điểm gần vị tr&iacute; đ&oacute;. Trong nhiều trường hợp, lớp kết quả c&oacute; thể được hiểu l&agrave; một v&ugrave;ng c&oacute; nguy cơ xảy ra c&aacute;c sự kiện trong tương lai. V&iacute; dụ: nếu điểm đầu v&agrave;o đại diện cho vị tr&iacute; s&eacute;t đ&aacute;nh, lớp kết quả c&oacute; thể được hiểu l&agrave; một v&ugrave;ng c&oacute; nguy cơ bị s&eacute;t đ&aacute;nh trong tương lai.
     </p>
-    <p>Other use cases of this tool include the following:
+    <p>C&ocirc;ng cụ n&agrave;y được d&ugrave;ng trong c&aacute;c t&igrave;nh huống kh&aacute;c như:
         <ul>
-            <li>Creating crime-density maps to help police departments properly allocate resources to high crime areas.
+            <li>Tạo bản đồ mật độ tội phạm để gi&uacute;p ph&ograve;ng cảnh s&aacute;t bố tr&iacute; lực lượng ph&ugrave; hợp đến c&aacute;c khu vực c&oacute; số lượng tội phạm cao.
             </li>
-            <li>Calculating densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to decide where new hospitals should be built.
+            <li>T&iacute;nh to&aacute;n mật độ bệnh viện trong một quận. Lớp kết quả sẽ hiển thị c&aacute;c khu vực c&oacute; khả năng tiếp cận cao v&agrave; thấp đến c&aacute;c bệnh viện, v&agrave; c&oacute; thể sử dụng th&ocirc;ng tin n&agrave;y để quyết định nơi cần x&acirc;y dựng th&ecirc;m bệnh viện mới.
             </li>
-            <li>Identifying areas that are at high risk of forest fires based on historical locations of forest fires.
+            <li>X&aacute;c định c&aacute;c khu vực c&oacute; nguy cơ ch&aacute;y rừng cao dựa v&agrave;o vị tr&iacute; từng xảy ra ch&aacute;y rừng trong lịch sử.
             </li>
-            <li>Locating communities that are far from major highways in order to plan where new roads should be constructed.
+            <li>X&aacute;c định c&aacute;c khu d&acirc;n cư xa đường cao tốc ch&iacute;nh để l&ecirc;n kế hoạch nơi cần x&acirc;y dựng c&aacute;c tuyến đường mới.
             </li>
         </ul>
         
@@ -68,19 +68,19 @@
         <div><h2>Chọn lớp điểm để tính toán mật độ từ đó</h2></div>
         <hr/>
         <div>
-            <p>The point layer on which the density will be calculated.
+            <p>Lớp điểm m&agrave; mật độ sẽ được t&iacute;nh to&aacute;n tr&ecirc;n đ&oacute;.
             </p>
             <p>B&ecirc;n cạnh việc chọn một lớp từ bản đồ, bạn c&oacute; thể chọn  <b>Duyệt Lớp</b> ở dưới danh s&aacute;ch thả xuống để duyệt đến nội dung của m&igrave;nh đối với tập dữ liệu chia sẻ tệp dữ liệu lớn hoặc lớp đối tượng.
             </p>
         </div>
     </div>
     <div id="fields">
-        <div><h2>Chọn một hoặc nhiều trường để tính toán mật độ trên (tùy chọn)</h2></div>
+        <div><h2>Chọn một hoặc nhiều trường để tính toán mật độ (tùy chọn)</h2></div>
         <hr/>
         <div>
-            <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
+            <p>Cung cấp một hoặc nhiều trường x&aacute;c định số lượng sự cố tại mỗi vị tr&iacute;. V&iacute; dụ: nếu bạn c&oacute; c&aacute;c điểm đại diện cho c&aacute;c th&agrave;nh phố, bạn c&oacute; thể sử dụng một trường đại diện cho d&acirc;n số của th&agrave;nh phố l&agrave; trường số liệu t&iacute;nh, v&agrave; lớp mật độ d&acirc;n số kết quả sẽ t&iacute;nh to&aacute;n mật độ d&acirc;n số lớn hơn gần c&aacute;c th&agrave;nh phố c&oacute; d&acirc;n số lớn hơn.
             </p>
-            <p>The density for the count of points will always be calculated.   If no fields are selected, each location will be assumed to represent a single count.
+            <p>Mật độ cho số lượng điểm sẽ lu&ocirc;n được t&iacute;nh to&aacute;n. Nếu kh&ocirc;ng c&oacute; trường n&agrave;o được chọn, mỗi vị tr&iacute; sẽ được giả định để đại diện cho một điểm duy nhất.
             </p>
         </div>
     </div>
@@ -88,17 +88,17 @@
         <div><h2>Chọn hình dạng Bin</h2></div>
         <hr/>
         <div>
-            <p>The shape of bins that points are aggregated into and used for the density calculation.
+            <p>H&igrave;nh dạng bin m&agrave; c&aacute;c điểm được tập hợp v&agrave;o v&agrave; được d&ugrave;ng để t&iacute;nh to&aacute;n mật độ.
             </p>
             <p>Ph&acirc;n t&iacute;ch bằng c&aacute;ch sử dụng c&aacute;c bin  <b>H&igrave;nh vu&ocirc;ng</b> hoặc <b>H&igrave;nh lục gi&aacute;c</b> phải c&oacute; hệ tọa độ tham chiếu. Bạn c&oacute; thể thiết lập <b>Hệ tọa độ xử l&yacute;</b> trong <b>M&ocirc;i trường Ph&acirc;n t&iacute;ch</b>. Nếu hệ tọa độ xử l&yacute; của bạn kh&ocirc;ng thiết lập hệ tọa độ tham chiếu, bạn sẽ được y&ecirc;u cầu thiết lập khi bạn <b>Chạy Ph&acirc;n t&iacute;ch</b>.
             </p>
         </div>
     </div>
     <div id="binSizing">
-        <div><h2>Chọn kích cỡ hình khối để tập hợp</h2></div>
+        <div><h2>Chọn kích cỡ bin để tập hợp</h2></div>
         <hr/>
         <div>
-            <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
+            <p>K&iacute;ch cỡ bin được tạo. Đối với bin vu&ocirc;ng, k&iacute;ch thước thể hiện chiều cao của h&igrave;nh vu&ocirc;ng. Đối với bin lục gi&aacute;c, k&iacute;ch thước thể hiện chiều cao của h&igrave;nh lục gi&aacute;c (từ c&aacute;c mặt song song).
             </p>
         </div>
     </div>
@@ -106,11 +106,11 @@
         <div><h2>Chọn cách tính mật độ để áp dụng</h2></div>
         <hr/>
         <div>
-            <p>The type of weighting applied to the density calculation. There are two options:
+            <p>Kiểu t&iacute;nh được &aacute;p dụng cho t&iacute;nh mật độ. C&oacute; hai lựa chọn:
                 <ul>
-                    <li> <b>Uniform</b>&mdash;This calculates a magnitude per area.
+                    <li> <b>Đồng nhất</b>&mdash;C&aacute;ch n&agrave;y t&iacute;nh độ lớn tr&ecirc;n mỗi khu vực.
                     </li>
-                    <li> <b>Kernel</b>&mdash;Applies a kernel function to fit a smooth tapered surface to each point.
+                    <li> <b>Kernel</b>&mdash;&Aacute;p dụng chức năng kernel để điều chỉnh ph&ugrave; hợp một bề mặt h&igrave;nh n&oacute;n mịn cho mỗi điểm.
                     </li>
                 </ul>
                 
@@ -121,7 +121,7 @@
         <div><h2>Chọn kích cỡ vùng lân cận</h2></div>
         <hr/>
         <div>
-            <p>The size of the area used to calculate the density. The neighborhood size must be larger than the bin size.
+            <p>K&iacute;ch cỡ của khu vực được d&ugrave;ng để t&iacute;nh mật độ. K&iacute;ch cỡ v&ugrave;ng l&acirc;n cận phải lớn hơn k&iacute;ch cỡ bin.
             </p>
         </div>
     </div>
@@ -129,7 +129,7 @@
         <div><h2>Chọn đơn vị đầu ra cho mật độ</h2></div>
         <hr/>
         <div>
-            <p>The desired output units of the density values. By default, this is set to square kilometers or square miles based on the default units specified in your profile. If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+            <p>Đơn vị đầu ra mong muốn của gi&aacute; trị mật độ. Theo mặc định, đơn vị n&agrave;y được đặt th&agrave;nh kil&ocirc;m&eacute;t vu&ocirc;ng hoặc dặm vu&ocirc;ng dựa tr&ecirc;n đơn vị mặc định được quy định trong th&ocirc;ng tin của bạn. Nếu gi&aacute; trị mật độ qu&aacute; nhỏ, bạn c&oacute; thể tăng k&iacute;ch cỡ của đơn vị khu vực (v&iacute; dụ, m&eacute;t vu&ocirc;ng th&agrave;nh kil&ocirc;m&eacute;t vu&ocirc;ng) để trở lại gi&aacute; trị lớn hơn. Gi&aacute; trị chỉ tỷ lệ với kết quả.  
 
             </p>
         </div>
@@ -176,7 +176,7 @@
         </div>
     </div>
     <div id="timeReference">
-        <div><h2>Thời gian để canh chỉnh các bước thời gian thành</h2></div>
+        <div><h2>Thời gian để hiệu chỉnh các bước thời gian thành</h2></div>
         <hr/>
         <div>
             <p>Ng&agrave;y v&agrave; giờ được sử dụng để canh chỉnh ph&acirc;n lớp thời gian. Chia bước thời gian sẽ bắt đầu v&agrave; tiếp tục l&ugrave;i lại từ thời gian tham chiếu. Nếu kh&ocirc;ng chọn thời gian tham chiếu, chia bước thời gian sẽ canh chỉnh đến ng&agrave;y 1 th&aacute;ng 1 năm 1970. 

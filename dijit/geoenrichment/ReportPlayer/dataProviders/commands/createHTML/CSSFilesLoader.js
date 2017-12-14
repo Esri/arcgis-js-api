@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["dojo/Deferred","require"],function(r,e){var n={AVENIR_FONTS:["../../../themes/common/fonts/AvenirNext.css"],loadCssFontFiles:function(){return this._loadFiles(this.AVENIR_FONTS)},_loadFiles:function(n){var t=new r,o="dojo/text!";return e(n.map(function(r){return o+r}),function(){function r(r){for(var e=[];;){var n=r.indexOf("}");if(5e3>n){r&&e.push(r);break}e.push(r.substr(0,n+1).trim()),r=r.substr(n+1).trim()}return e}for(var e=[],n=0;n<arguments.length;n++){var o=arguments[n];r(o).forEach(function(r){e.push(r)})}t.resolve(e)}),t.promise}};return n});
+define(["dojo/Deferred","require"],function(e,r){var s={AVENIR_FONTS:["../../../themes/common/fonts/AvenirNext.css"],_loadPromise:null,_loadedFiles:null,loadCssFontFiles:function(){return this._loadedFiles?this._loadedFiles:(this._loadPromise||(this._loadPromise=this._loadFiles(this.AVENIR_FONTS)),this._loadPromise)},_loadFiles:function(s){var o=this,i=new e,t="dojo/text!";return r(s.map(function(e){return t+e}),function(){function e(e){for(var r=[];;){var s=e.indexOf("}");if(5e3>s){e&&r.push(e);break}r.push(e.substr(0,s+1).trim()),e=e.substr(s+1).trim()}return r}for(var r=[],s=0;s<arguments.length;s++){var t=arguments[s];e(t).forEach(function(e){r.push(e)})}o._loadedFiles=r,i.resolve(r)}),i.promise}};return s});

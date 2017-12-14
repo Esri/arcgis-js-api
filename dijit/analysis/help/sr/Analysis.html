@@ -115,7 +115,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Sumiranje vrednosti za objekte koji se nalaze na definisanoj udaljenosti od ulaznih objekata</h2></td>
+                    <td><h2>Sumiraj u blizini</h2></td>
                     <td>
                     <img src="../images/GUID-A5033D27-81B6-42E7-BA38-50D25C1CCCCA-web.png" class="titleImage" alt="Sumiranje vrednosti za objekte koji se nalaze na definisanoj udaljenosti od ulaznih objekata">
                     </td>
@@ -184,7 +184,7 @@
     <div id="FindLocationsCategory" class="largesize">
         <h2>Pronađi lokacije</h2>
         <hr/>
-        <p>Ove alatke se koriste za određivanje oblasti koje ispunjavaju određeni broj različitih kriterijuma koje navedete. Ovi kriterijumi mogu da budu zasnovani na atributnim upitima (na primer, parcele koje su prazne) i prostornim upitima (na primer, na udaljenosti od 1 km od reke). Oblasti koje su pronađene mogu da budu izabrane iz postojećih geoobjekata (kao &scaron;to su postojeće parcele zemlji&scaron;ta), odnosno nove parcele mogu da budu kreirane ako su svi zahtevi ispunjeni.
+        <p>Ove alatke se koriste za identifikovanje ili kreiranje geoobjekata koji ispunjavaju kriterijume koje odredite. Tip kriterijuma će zavisiti od alatke koju koristite; na primer, va&scaron;i kriterijumi mogu da budu zasnovani na prostornim ili atributnim upitima, vidljivim oblastima sa navedene visine, nizvodnim oblastima za određene tačke odvođenja vode ili vreme vožnje u određenim uslovima u saobraćaju.
             <ul>
                 <li>Alatka  <b>Odaberite najbolje objekte</b> bira najbolje lokacije za objekte dodeljivanjem lokacija koje imaju potrebu za ovim objektima na način koji zadovoljava zadati cilj.
                 </li>
@@ -194,16 +194,18 @@
                 </li>
                 <li> <b>Izvedi nove lokacije</b> kreira nove oblasti od lokacija u oblasti ispitivanja koje ispunjavaju seriju kriterijuma.
                 </li>
+                <li class="OnlineOnly"> <b>Pronađi teži&scaron;ta</b> pronalazi reprezentativni centar (teži&scaron;te) za ulazne geoobjekte. 
+                </li>
                 <li> <b>Pronađi postojeće lokacije</b> pretražuje postojeće oblasti u sloju koje ispunjavaju seriju kriterijuma.
                 </li>
                 <li> <b>Pronađi slične lokacije</b> pronalazi lokacije koje su najsličnije jednoj ili vi&scaron;e referentnih lokacija na osnovu kriterijuma koje navedete.
                 </li>
-                <li class="PortalOnly"> <b>Geokodiranje lokacija iz tabele</b> pretvara adrese iz tabela u koordinate.
+                <li class="PortalOnly"> <b>Geokodiranje lokacija iz tabele</b> pretvara adrese iz tabela u koordinate. 
                 </li>
                 <li> <b>Praćenje toka nizvodno</b> utvrđuje putanju kretanja u smeru nizvodno od lokacije koju navedete.
                 </li>
             </ul>
-             
+            
         </p>
         <p> 
         </p>
@@ -265,6 +267,21 @@
             </table>
 <hr/>
             <p>Kreira nove geoobjekte u va&scaron;oj oblasti ispitivanja koji ispunjavaju seriju kriterijuma koje navedete. Ovi kriterijumi mogu da budu zasnovani na atributnim upitima (na primer, parcele koje su prazne) i prostornim upitima (na primer, na udaljenosti od 1 km od reke). 
+            </p>
+            <br/>
+        </div>
+        <div id="FindCentroidsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Pronađi težišta</h2></td>
+                    <td>
+                    <img src="../images/GUID-75D9AF75-68C3-48BF-8062-D5499BD06978-web.png" class="titleImage" alt="Pronađi teži&scaron;ta">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Pronalazi reprezentativni centar (teži&scaron;te) za svaki ulazni geoobjekat sa vi&scaron;e tačaka, linijski geoobjekat ili geoobjekat oblasti.
             </p>
             <br/>
         </div>

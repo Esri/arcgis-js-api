@@ -63,24 +63,27 @@
          <tr>
            <td colspan="3" class="clear"></td>
          </tr>
-         <tr>
+         <tr data-dojo-attach-point="_bandIndexesLabelRow">
            <td colspan="2" >
              <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.threeLabel}</label>
-             <label class="esriAnalysisStepsLabel">${i18n.bandIndexes}</label>
+             <label class="esriAnalysisStepsLabel"  data-dojo-attach-point="_bandIndexesLabel">${i18n.bandIndexes}</label>
            </td>
            <td class="shortTextInput" >
              <a href="#" class='esriFloatTrailing helpIcon' data-dojo-attach-point="_bandIndexesHelpLink" esrihelptopic="bandIndexes"></a>
            </td>
          </tr>
-         <tr>
-           <td colspan="2" style="padding-top:0;">
-             <table style="width:100%;">
+         <tr data-dojo-attach-point="_bandIndexesInputRow">
+           <td colspan="3">
+             <table class="esriFormTable" style="width:90%;">
                <tr>
-                 <td style="width:45%">
+                 <td>
                    <input type="text" class="esriLeadingMargin1" data-dojo-type="dijit/form/NumberTextBox" data-dojo-props="intermediateChanges:true,required:true,invalidMessage:'${i18n.distanceMsg}'" data-dojo-attach-point="_nirBandIndexInput" style="width:90%;">
                  </td>
-                 <td style="width:45%">
+                 <td>
                    <input type="text" class="esriLeadingMargin1" data-dojo-type="dijit/form/NumberTextBox" data-dojo-props="intermediateChanges:true,required:true,invalidMessage:'${i18n.distanceMsg}'" data-dojo-attach-point="_redBandIndexInput" style="width:90%;">
+                 </td>
+                 <td data-dojo-attach-point="_band3IndexInputRow">
+                   <input type="text" class="esriLeadingMargin1" data-dojo-type="dijit/form/NumberTextBox" data-dojo-props="intermediateChanges:true,required:true,invalidMessage:'${i18n.distanceMsg}'" data-dojo-attach-point="_band3IndexInput" style="width:90%;">
                  </td>
                </tr>
              </table>

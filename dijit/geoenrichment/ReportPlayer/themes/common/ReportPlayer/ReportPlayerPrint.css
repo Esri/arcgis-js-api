@@ -17,8 +17,8 @@
 }
 
 .esriGEReportPlayerPrintNode .esriGEReportPlayer_reportContainerGrid.reportContainerPreviewMode .reportContainerGrid_stackContainer {
-    border: none;
-    display: block;
+    border: none !important;
+    display: block !important;
 }
 
 .esriGEReportPlayerPrintNode .esriGEReportPlayer_reportContainerGrid.reportContainerPreviewMode .reportContainerGrid_gridZoomFillerContainer {
@@ -32,22 +32,22 @@
 }
 
 .esriGEReportPlayerPrintNode .esriSimpleSliderTR {
-    display: none;
+    display: none !important;
 }
 
-.esriGEReportPlayerInPrinting .reportPlayer_header,
-.esriGEReportPlayerInPrinting .reportPlayer_headerPageNavigator {
-    display: none;
+.esriGEReportPlayerInPrinting > .reportPlayer_normalViewDiv > .reportPlayer_header,
+.esriGEReportPlayerInPrinting > .reportPlayer_normalViewDiv > .reportPlayer_headerPageNavigator {
+    display: none !important;
 }
 
 
 
 .esriGEReportPlayerPrintNode .dijitArrowButtonContainer {
-    display: none;
+    display: none !important;
 }
 
 .esriGEReportPlayerPrintNode .dijitSelect {
-    border: none;
+    border: none !important;
 }
 
 .esriGEReportPlayerPrintNode .WidgetBack .BaseSelectComparison_Select .dijitSelect .dijitButtonContents span {
@@ -55,38 +55,38 @@
 }
 
 .esriGEReportPlayerPrintNode .SortArrow {
-    display: none;
+    display: none !important;
 }
 
 .esriGEReportPlayerPrintNode .dynamicInfographic_viewDiv {
 }
 
 .esriGEReportPlayerPrintNode .Wizard_Link {
-    display: none;
+    display: none !important;
 }
 
 
 
 .esriGEReportPlayerPrintNode .Tapestry_thumbnail_Code {
-    border-radius: 18px;
+    border-radius: 18px !important;
 }
 
 .esriGEReportPlayerPrintNode .Tapestry_Details_Image div:first-child {
-    border-radius: 35px;
+    border-radius: 35px !important;
 }
 
 .esriGEReportPlayerPrintNode .Tapestry_Details_Table .Tapestry_Details_Image div:first-child {
-    border-radius: 45px;
+    border-radius: 45px !important;
 }
 
 .esriGEReportPlayerPrintNode .Tapestry_Main_Arrow div {
-    background-image: none;
+    background-image: none !important;
 }
 
 
 
 .esriGEReportPlayerPrintNode .simpleInfographic_topToolbar {
-    display: none;
+    display: none !important;
 }
 
 .esriGEReportPlayerPrintNode .sectionDynamicSettings_settingsButton,
@@ -98,11 +98,26 @@
 
 
 .esriGEReportPlayerPrintNode .esriGEAreaDetailsInfographic .areaDetails_noDetailsPlaceHolderImage {
-    display: none;
+    display: none !important;
 }
 
 
 
 .esriGEReportPlayerPrintNode .esriGEImageNavigator .noImage {
-    display: none;
+    display: none !important;
+}
+
+
+
+.esriGEReportPlayerPrintNode .onDemandSelect_arrow {
+    display: none !important;
+}
+
+.esriGEReportPlayerPrintNode .esriGEOnDemandSelect .onDemandSelect_openButton {
+    border: none !important;
+    background-color: transparent !important;
+}
+
+.esriGEReportPlayerPrintNode .esriGEOnDemandSelect .onDemandSelect_selectedLabel {
+    margin: 0px !important;
 }

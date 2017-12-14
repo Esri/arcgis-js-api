@@ -46,7 +46,7 @@
         <hr/>
     <p>Dette verkt&oslash;yet fungerer med et lag med punktgeoobjekter og et lag med omr&aring;degeoobjekter. Verkt&oslash;yet avgj&oslash;r f&oslash;rst hvilke punkter som h&oslash;rer til hvert enkelt omr&aring;de. N&aring;r verkt&oslash;yet har fastsatt den geografiske relasjonen mellom punkter og omr&aring;de, beregnes statistikken for alle punktene i omr&aring;det og tilordnes omr&aring;det. Den mest grunnleggende statistikken er antall punkter innenfor omr&aring;det, men du kan beregne annen statistikk ogs&aring;. 
     </p>
-    <p>La oss for eksempel si at du har punktgeoobjekter for kafeer og omr&aring;degeoobjekter for fylker, og du vil oppsummere kaffesalget per fylke. Forutsatt at kafeene har et  <i>TOTAL_SALES</i>-attributt, kan du f&aring; summen for <i>TOTAL_SALES</i> i hvert fylke, eller monimum og maksimum <i>TOTAL_SALES</i>
+    <p>La oss for eksempel si at du har punktgeoobjekter for kafeer og omr&aring;degeoobjekter for fylker, og du vil oppsummere kaffesalget per fylke. Forutsatt at kafeene har et  <i>TOTAL_SALES</i>-attributt, kan du f&aring; summen av <i>TOTAL_SALES</i> i hvert fylke, eller minimum og maksimum <i>TOTAL_SALES</i>
  i hvert fylke eller standardavviket for alt salg i hvert fylke.
     </p>
     <p>Hvis det er merket av for  <b>Bruk gjeldende kartutstrekning</b>, er det kun geoobjektene i inndatapunktlaget og omr&aring;delaget som vises i gjeldende kartutstrekning, som analyseres.  Hvis det ikke er merket av for dette alternativet, blir alle geoobjekter i inndatapunktlaget og omr&aring;delaget analysert, selv om de befinner seg utenfor gjeldende kartutstrekning.
@@ -67,7 +67,9 @@
         <div><h2>Velg laget som inneholder samlingsområder</h2></div>
         <hr/>
         <div>
-            <p>Omr&aring;delaget som punktene skal summeres i Alle punkter som er innenfor grensene til omr&aring;dene i dette laget, telles og blir eventuelt oppsummert ved hjelp av de statistikktypene du velger.
+            <p>Omr&aring;delaget som punktene skal summeres i Alle punkter som er innenfor grensene til omr&aring;dene i dette laget, telles og blir eventuelt oppsummert ved hjelp av de statistikktypene du velger.  
+            </p>
+            <p>Du kan velge mellom et omr&aring;delag som du oppgir eller beholdere som genereres n&aring;r verkt&oslash;yet kj&oslash;res.   N&aring;r du genererer beholdere for  <b>Kvadrat</b>, avgj&oslash;r antallet og enhetene som er spesifisert h&oslash;yden og lengden p&aring; kvadratet. For <b>Heksagon</b> avgj&oslash;r antallet og enhetene som er angitt, avstanden mellom de parallelle sidene.
             </p>
             <p class="OnlineOnly">I tillegg til &aring; velge et lag fra kartet kan du velge  <b>Velg analyselag i levende atlas</b> eller <b>Velg analyselag</b> som du finner nederst i rullegardinlisten. Dette &aring;pner et galleri som inneholder en samling lag som vil v&aelig;re nyttige i mange analyser. 
             </p>
@@ -77,7 +79,7 @@
         <div><h2>Behold områder uten punkter</h2></div>
         <hr/>
         <div>
-            <p>Bestemmer om omr&aring;dene som ikke inneholder punkter, skal vises i resultatlaget. Hvis det ikke er merket av for dette alternativet, vises ikke omr&aring;der som ikke innholder punkter, i resultatet. Hvis det er merket av for dette alternativet, vises omr&aring;der som ikke innholder punkter, i resultatet.  
+            <p>Bestemmer om omr&aring;dene som ikke inneholder punkter, skal vises i resultatlaget. Hvis det ikke er merket av for dette alternativet, vises ikke omr&aring;der som ikke inneholder punkter, i resultatet. Hvis det er merket av for dette alternativet, vises omr&aring;der som ikke inneholder punkter, i resultatet.  
             </p>
         </div>
     </div>
@@ -94,7 +96,7 @@
         <div><h2>Velg feltet det skal grupperes etter</h2></div>
         <hr/>
         <div>
-            <p> Du kan opprette statistiske grupper ved &aring; bruke et attributt i inndatapunktlaget. Hvis du for eksempel summerer lovbrudd med tanke p&aring; nabolagsgrenser, har du kanskje et <i>Crime_type</i>-attributt med fem ulike lovbruddstyper.  Hver enkelt lovbruddstype utgj&oslash;r en gruppe, og statistikken du velger, beregnes for hver unike verdi for <i>Crime_type</i>. Statistikken for hver gruppe samt antall punkter vises i resultatlagets sprettoppvindu. N&aring;r du velger et grupperingsattributt, opprettes to resultater &ndash; resultatlaget og en resultattabell som inneholder statistikken for hver unike gruppe.
+            <p> Du kan opprette statistiske grupper ved &aring; bruke et attributt i inndatapunktlaget. Hvis du for eksempel summerer lovbrudd med tanke p&aring; nabolagsgrenser, har du kanskje et <i>Crime_type</i>-attributt med fem ulike lovbruddstyper.  Hver enkelt lovbruddstype utgj&oslash;r en gruppe, og statistikken du velger, beregnes for hver unike verdi for <i>Crime_type</i>. Statistikken for hver gruppe vises i resultatlagets popupvindu sammen med antall punkter. N&aring;r du velger et grupperingsattributt, opprettes to resultater &ndash; resultatlaget og en resultattabell som inneholder statistikken for hver unike gruppe.
             </p>
         </div>
     </div>

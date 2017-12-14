@@ -85,17 +85,17 @@
         </div>
     </div>
     <div id="storeAnalysisResults">
-        <div><h2>Almacenar los resultados del análisis como servicios de entidades</h2></div>
+        <div><h2>Guardar resultados de análisis como capas de entidades alojadas</h2></div>
         <hr/>
         <div>
             
-            <p>Opci&oacute;n que permite especificar si el resultado del an&aacute;lisis se crear&aacute; como una capa de entidades o como un conjunto de entidades.
+            <p>Opci&oacute;n para especificar si la capa de resultados creada a partir del an&aacute;lisis ser&aacute; un conjunto de entidades o una capa de entidades alojada. 
             </p>
             <p>
                 <ul>
-                    <li>Activada: los resultados del an&aacute;lisis se crear&aacute;n como una capa de entidades y se crear&aacute; un elemento en el contenido. Esta es la opci&oacute;n predeterminada.
+                    <li>Activada: los resultados del an&aacute;lisis crear&aacute;n una capa de entidades alojada y se crear&aacute; un elemento en el contenido. Esta es la opci&oacute;n predeterminada.
                     </li>
-                    <li>Desactivada: los resultados del an&aacute;lisis crear&aacute;n un conjunto de entidades.    Los conjuntos de entidades se almacenan dentro del mapa web.
+                    <li>Desactivada: los resultados del an&aacute;lisis crear&aacute;n un conjunto de entidades.     
                     </li>
                 </ul>
                 
@@ -112,7 +112,7 @@
                 <ul>
                     <li> <b>Como la entrada</b>: el resultado del an&aacute;lisis estar&aacute; en el mismo sistema de coordenadas que la entrada. Esta es la opci&oacute;n predeterminada.
                     </li>
-                    <li> <b>Como se especifica</b>: elija el sistema de coordenadas para los resultados del an&aacute;lisis. Si esta opci&oacute;n est&aacute; seleccionada, haga clic en el icono de globo para seleccionar un valor de una lista de sistemas de coordenadas conocidos, o agregue el WKID de la referencia especial en el cuadro correspondiente.
+                    <li> <b>Como se especifica</b>: elija el sistema de coordenadas para los resultados del an&aacute;lisis. Si esta opci&oacute;n est&aacute; seleccionada, haga clic en el icono de globo para seleccionar un valor de una lista de sistemas de coordenadas conocidos, o agregue el WKID de la referencia espacial en el cuadro correspondiente.
                     </li>
                     <li> <b>&lt;Nombre&gt;
 de capa</b>: elija una capa existente del mapa web que se utilizar&aacute; para determinar el sistema de coordenadas del resultado del an&aacute;lisis.
@@ -134,7 +134,7 @@ de capa</b>: elija una capa existente del mapa web que se utilizar&aacute; para 
                 <ul>
                     <li> <b>Como la entrada</b>: el an&aacute;lisis se procesar&aacute; en el mismo sistema de coordenadas que la entrada. Esta es la opci&oacute;n predeterminada.
                     </li>
-                    <li> <b>Como se especifica</b>: elija el sistema de coordenadas para procesar el an&aacute;lisis. Si esta opci&oacute;n est&aacute; seleccionada, haga clic en el icono de globo para seleccionar un valor de una lista de sistemas de coordenadas proyectadas conocidos, o agregue el WKID de la referencia especial en el cuadro correspondiente.
+                    <li> <b>Como se especifica</b>: elija el sistema de coordenadas para procesar el an&aacute;lisis. Si esta opci&oacute;n est&aacute; seleccionada, haga clic en el icono de globo para seleccionar un valor de una lista de sistemas de coordenadas proyectadas conocidos, o agregue el WKID de la referencia espacial en el cuadro correspondiente.
                     </li>
                     <li> <b>&lt;Nombre&gt;
 de capa</b>: elija una capa existente del mapa web. El sistema de coordenadas de la capa elegido se utilizar&aacute; para determinar el sistema de coordenadas que se utilizar&aacute; para procesar el an&aacute;lisis.
@@ -204,7 +204,8 @@ de capa</b>: elija una capa existente del mapa web. El sistema de coordenadas de
                 </li>
                 <li>Si la m&aacute;scara de an&aacute;lisis es un r&aacute;ster, se considerar&aacute;n todas las celdas que tienen un valor para definir la m&aacute;scara. Las celdas en un r&aacute;ster de m&aacute;scara que son NoData se considerar&aacute;n fuera de la m&aacute;scara y ser&aacute;n NoData en la capa de resultados del an&aacute;lisis. 
                 </li>
-                <li>Si la m&aacute;scara de an&aacute;lisis es una capa de entidades, se convertir&aacute; internamente en un r&aacute;ster en la ejecuci&oacute;n. Por este motivo, aseg&uacute;rese de que  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank"></a> y <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank"></a> se establezcan adecuadamente para el an&aacute;lisis.
+                <li>Si la m&aacute;scara de an&aacute;lisis es una capa de entidades, se convertir&aacute; internamente en un r&aacute;ster en la ejecuci&oacute;n. Por este motivo, aseg&uacute;rese de que 
+ <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank"></a> y <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank"></a> se establezcan adecuadamente para el an&aacute;lisis.
                 </li>
             </ul>
              
@@ -216,9 +217,9 @@ de capa</b>: elija una capa existente del mapa web. El sistema de coordenadas de
         <div>
             <p>Los resultados de GeoAnalytics se almacenan en un ArcGIS Data Store y se exponen como capa de entidades en  Portal for ArcGIS. En la mayor&iacute;a de los casos, conviene almacenar los resultados en un almac&eacute;n de datos espaciotemporal. Esta es la opci&oacute;n predeterminada. A continuaci&oacute;n, se exponen motivos por los que resulta buena idea guardar resultados en un almac&eacute;n de datos relacional: 
                 <ul>
-                    <li>Para usar sus resultados en la colaboraci&oacute;n de portal-a portal
+                    <li>Para utilizar los resultados en la colaboraci&oacute;n entre portales
                     </li>
-                    <li>Habilitar capacidades de sincronizaci&oacute;n con sus resultados
+                    <li>Para habilitar los recursos de sincronizaci&oacute;n con los resultados
                     </li>
                 </ul>
                 

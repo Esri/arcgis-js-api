@@ -184,7 +184,7 @@
     <div id="FindLocationsCategory" class="largesize">
         <h2>Pronalaženje lokacija</h2>
         <hr/>
-        <p>Ovi se alati upotrebljavaju za identificiranje područja koja ispunjavaju vi&scaron;e različitih kriterija koje odredite. Ti se kriteriji mogu temeljiti na atributnim upitima (npr. parcele koje su prazne) i prostornim upitima (npr. unutar 1 kilometra od rijeke). Povr&scaron;ine koje se pronađu mogu se odabrati iz postojećih geoobjekata (kao &scaron;to su postojeće parcele zemlji&scaron;ta) ili se mogu stvoriti novi geoobjekti koji ispunjavaju sve zahtjeve.
+        <p>Ovi se alati upotrebljavaju za utvrđivanje ili stvaranje geoobjekata koji ispunjavaju kriterije koje odredite.  Vrsta kriterija ovisit će o alatu koji upotrebljavate. Primjerice, va&scaron;i se kriteriji mogu temeljiti na prostornim ili atributnim upitima, vidljivim područjima s određene visine, područjima nizvodno za određene točke odvoda ili vremenu vožnje u određenim prometnim uvjetima.
             <ul>
                 <li> <b>Izaberite najbolje ustanove</b> izabire najbolje lokacije za ustanove dodjeljivanjem lokacija koje imaju potražnju za tim ustanovama na način koji ispunjava zadani cilj.
                 </li>
@@ -192,18 +192,20 @@
                 </li>
                 <li> <b>Stvori sliv</b> stvara poligone razvođa na temelju lokacija koje odredite.
                 </li>
-                <li> <b>Izvedi nove lokacije</b> stvara nove poligone od lokacija u području proučavanja koji zadovoljavaju niz kriterija.
+                <li> <b>Izvedi nove lokacije</b> stvara nove poligone od lokacija u radnom području koji zadovoljavaju niz kriterija.
+                </li>
+                <li class="OnlineOnly">Opcija  <b>Pronalazak centroida</b> pronalazi reprezentativni centar (centroid) za ulazne geoobjekte. 
                 </li>
                 <li> <b>Pronađi postojeće lokacije</b> pretražuje postojeće povr&scaron;ine u sloju koje ispunjavaju niz kriterija.
                 </li>
                 <li> <b>Pronađi slične lokacije</b> pronalazi lokacije najsličnije jednoj ili vi&scaron;e referentnih lokacija na temelju kriterija koje odredite.
                 </li>
-                <li class="PortalOnly"> <b>Geokodiranje lokacije iz tablice</b> pretvara adrese iz tablice u koordinate.
+                <li class="PortalOnly"> <b>Geokodiranje lokacije</b> iz tablice pretvara adrese iz tablice u koordinate. 
                 </li>
                 <li> <b>Prati nizvodno</b> određuje putanju protoka nizvodno od lokacija koje odredite.
                 </li>
             </ul>
-             
+            
         </p>
         <p> 
         </p>
@@ -265,6 +267,21 @@
             </table>
 <hr/>
             <p>Stvara nove geoobjekte u području proučavanja koji zadovoljavaju niz kriterija koji odredite. Ti se kriteriji mogu temeljiti na atributnim upitima (npr. parcele koje su prazne) i prostornim upitima (npr. unutar 1 milje od rijeke). 
+            </p>
+            <br/>
+        </div>
+        <div id="FindCentroidsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Pronađi centroide</h2></td>
+                    <td>
+                    <img src="../images/GUID-75D9AF75-68C3-48BF-8062-D5499BD06978-web.png" class="titleImage" alt="Pronađi centroide">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Pronalazi reprezentativni centar (centroid) za svaki vi&scaron;e točkasti, linijski ili poligonalni geoobjekt.
             </p>
             <br/>
         </div>

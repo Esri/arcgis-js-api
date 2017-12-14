@@ -95,6 +95,8 @@
         <div>
             <p>Jednačina koja se koristi za izračunavanje rastojanja zone bliskosti oko ulaznih geoobjekata. Ova jednačina može da se generi&scaron;e pomoću kalkulatora zone bliskosti i podržanih osnovnih operacija kao &scaron;to su sabiranje, oduzimanje, množenje i deljenje. Vrednosti se izračunavaju kori&scaron;ćenjem koordinatnog sistema za analizu. Sloj mora da bude u projektovanom koordinatnom sistemu ili prostorna referenca obrade mora da bude postavljena na projektovani koordinatni sistem kori&scaron;ćenjem  <b>Okruženja analize</b> ako se primeni zona bliskosti.
             </p>
+            <p>Jednačina kao &scaron;to je  <code>$feature.windspeed * 1000</code> bi primenila zonu bliskosti 1000 uvećanu poljem <i>brzina vetra</i>. Možete da koristite vi&scaron;e od jednog polja u kalkulatoru zone bliskosti.
+            </p>
         </div>
     </div>
     <div id="timeSplit">
@@ -102,6 +104,20 @@
         <hr/>
         <div>
             <p>Vreme koje se koristi za deljenje staza. Ako ulazne tačke ili poligoni imaju duže trajanje između njih od podeljenog vremena, biće podeljene u različite staze.
+            </p>
+            <p>Ako navedete podeljeno vreme i podeljenu razdaljinu, staze će se podeliti kada se ispuni jedan ili oba uslova. 
+            </p>
+            <p>Zamislite da ste imali tačkaste geoobjekte koji predstavljaju letove aviona, pri čemu je polje staze bio ID aviona. Ovaj avion bi mogao da putuje vi&scaron;e puta i da bude predstavljen kao jedna staza.  Kada biste znali da postoji pauza od 1 sata između letova, mogli biste da koristite  <code>1 sat</code> kako se va&scaron;e staze dele, pa bi svaki let bio podeljen u svoju sopstvenu stazu.
+            </p>
+        </div>
+    </div>
+    <div id="distanceSplit">
+        <div><h2>Izaberite rastojanje po kom će se deliti staze (opciono)</h2></div>
+        <hr/>
+        <div>
+            <p> Rastojanje koje se koristi za deljenje staza. Ako ulazne tačke ili poligoni imaju veće međusobno rastojanje od podeljene razdaljine, biće podeljene u različite staze.
+            </p>
+            <p>Ako navedete podeljeno vreme i podeljenu razdaljinu, staze će se podeliti kada se ispuni jedan ili oba uslova. 
             </p>
         </div>
     </div>

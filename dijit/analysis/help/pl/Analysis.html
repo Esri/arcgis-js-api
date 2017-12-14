@@ -185,7 +185,7 @@
     <div id="FindLocationsCategory" class="largesize">
         <h2>Wyszukiwanie lokalizacji</h2>
         <hr/>
-        <p>Te narzędzia służą do identyfikacji obszar&oacute;w spełniających podane przez Ciebie kryteria. Kryteria te mogą być utworzone na podstawie zapytań o&nbsp;atrybut (na przykład: działki na sprzedaż) oraz zapytań przestrzennych (na przykład: w&nbsp;obrębie 1 kilometra od rzeki). Wyszukane obszary można wybrać spośr&oacute;d istniejących obiekt&oacute;w (np. istniejących działek), można r&oacute;wnież utworzyć nowe obiekty, jeżeli wszystkie wymagania są spełnione.
+        <p>Te narzędzia służą do identyfikowania lub tworzenia obiekt&oacute;w spełniających określone kryteria. Typ kryteri&oacute;w zależy od używanego narzędzia. Na przykład kryteria mogą być określone na podstawie zapytań przestrzennych lub zapytań o atrybuty, obszar&oacute;w widocznych z określonej wysokości, obszar&oacute;w leżących w dalszym biegu rzeki dla określonych punkt&oacute;w spływu lub czasu przejazdu w określonych warunkach drogowych.
             <ul>
                 <li> <b>Wybierz najlepsze plac&oacute;wki</b> wybiera najlepsze lokalizacje dla plac&oacute;wek, przydzielając lokalizacje z zapotrzebowaniem na te plac&oacute;wki w spos&oacute;b realizujący zadany cel.
                 </li>
@@ -195,16 +195,18 @@
                 </li>
                 <li> <b>Wyznacz nowe lokalizacje</b> jest narzędziem do tworzenia nowych obszar&oacute;w na podstawie lokalizacji w&nbsp;badanym obszarze spełniających określone kryteria.
                 </li>
+                <li class="OnlineOnly">Narzędzie  <b>Znajdź centroidy</b> służy do znajdowania reprezentatywnego środka (centroidu) dla obiekt&oacute;w wejściowych. 
+                </li>
                 <li>Narzędzie  <b>Znajdź istniejące lokalizacje</b> wyszukuje istniejące obszary w warstwie analizy, kt&oacute;re spełniają szereg kryteri&oacute;w.
                 </li>
                 <li> <b>Znajdź podobne lokalizacje</b> wyszukuje lokalizacje najbardziej podobne do co najmniej jednej lokalizacji referencyjnej na podstawie określonych przez użytkownika kryteri&oacute;w.
                 </li>
-                <li class="PortalOnly"> <b>Geokoduj lokalizacje z tabeli</b> przekształca adresy z tabeli we wsp&oacute;łrzędne.
+                <li class="PortalOnly"> <b>Geokoduj lokalizacje z tabeli</b> przekształca adresy z tabeli we wsp&oacute;łrzędne. 
                 </li>
                 <li> <b>Śledź w d&oacute;ł</b> określa ścieżki przepływu w d&oacute;ł od określonej lokalizacji.
                 </li>
             </ul>
-             
+            
         </p>
         <p> 
         </p>
@@ -266,6 +268,21 @@
             </table>
 <hr/>
             <p>Umożliwia tworzenie nowych obiekt&oacute;w w&nbsp;badanym obszarze, kt&oacute;re spełniają określone kryteria. Kryteria można tworzyć na podstawie zapytań o&nbsp;atrybut (na przykład działki, kt&oacute;re są wolne) oraz zapytań przestrzennych (na przykład w&nbsp;odległości do 1 kilometra od rzeki). 
+            </p>
+            <br/>
+        </div>
+        <div id="FindCentroidsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Znajdź centroidy</h2></td>
+                    <td>
+                    <img src="../images/GUID-75D9AF75-68C3-48BF-8062-D5499BD06978-web.png" class="titleImage" alt="Znajdź centroidy">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Umożliwia znalezienie reprezentatywnego środka (centroidu) dla każdego wejściowego obiektu wielopunktowego, liniowego lub powierzchniowego.
             </p>
             <br/>
         </div>

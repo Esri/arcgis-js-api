@@ -1,0 +1,34 @@
+
+
+
+.esriGEChartContainer_chartTooltip {
+    text-align: left;
+}
+
+    .esriGEChartContainer_chartTooltip .chartTooltip_row {
+        white-space: nowrap;
+    }
+
+    .esriGEChartContainer_chartTooltip .chartTooltip_current {
+        font-weight: bold;
+    }
+
+    .esriGEChartContainer_chartTooltip .chartTooltip_title {
+        font-weight: bold;
+    }
+
+    .esriGEChartContainer_chartTooltip .chartTooltip_color {
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+    }
+
+    .esriGEChartContainer_chartTooltip .chartTooltip_label {
+        margin-right: 20px;
+    }
+
+.esriGEChartContainer_chartTooltip_masterTooltip,
+.esriGEChartContainer_chartTooltip_containerNode {
+    width: auto !important;
+    max-width: initial !important;
+}

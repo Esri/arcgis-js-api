@@ -42,7 +42,7 @@
 <div id="topics">
     <div id="toolDescription" class="regularsize">
         <h2>Unir entidades</h2><p/>
-        <h2><img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" alt="Entidades de uni&oacute;n"></h2>
+        <h2><img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" alt="Unir entidades"></h2>
         <hr/>
     <p>La tarea Unir entidades funciona con dos capas. La tarea Unir entidades une atributos de una entidad a otra en funci&oacute;n de las relaciones espacial, temporal y de atributos o de alguna combinaci&oacute;n de las tres. La herramienta determina todas las entidades de entrada que cumplen las condiciones de uni&oacute;n especificadas y una la segunda capa de entrada con la primera. Si lo desea, puede unir todas las entidades con las entidades coincidentes o resumir las entidades coincidentes.
     </p>
@@ -58,39 +58,39 @@
             </p>
             <p>El an&aacute;lisis con la relaci&oacute;n espacial  <b>Cercano</b> requiere un sistema de coordenadas proyectadas. Puede definir el <b>Sistema de coordenadas de procesamiento</b> en <b>Entornos de an&aacute;lisis</b>. Si el sistema de coordenadas de procesamiento no se ha definido en un sistema de coordenadas proyectadas, se le pedir&aacute; que lo defina cuando use <b>Ejecutar an&aacute;lisis</b>.
             </p>
-            <p>Adem&aacute;s de elegir una capa en el mapa, puede elegir  <b>Examinar capas</b> en la parte inferior de la lista desplegable para examinar el contenido del dataset o la capa de entidades de un archivo compartido de Big Data.
+            <p>Adem&aacute;s de elegir una capa en el mapa, puede elegir  <b>Examinar capas</b> en la parte inferior de la lista desplegable para examinar el contenido del dataset o la capa de entidades de un archivo compartido de big data.
             </p>
         </div>
     </div>
     <div id="joinLayer">
-        <div><h2>Elija la capa para unir a la capa de destino</h2></div>
+        <div><h2>Elegir la capa que se va a unir a la capa de destino</h2></div>
         <hr/>
         <div>
             <p>La capa de uni&oacute;n cuyos atributos se incorporar&aacute;n a la capa de destino.
             </p>
-            <p>Adem&aacute;s de elegir una capa en el mapa, puede elegir  <b>Examinar capas</b> en la parte inferior de la lista desplegable para examinar el contenido del dataset o la capa de entidades de un archivo compartido de Big Data.
+            <p>Adem&aacute;s de elegir una capa en el mapa, puede elegir  <b>Examinar capas</b> en la parte inferior de la lista desplegable para examinar el contenido del dataset o la capa de entidades de un archivo compartido de big data.
             </p>
         </div>
     </div>
     <div id="joinOperation">
-        <div><h2>Elija una operación de unión</h2></div>
+        <div><h2>Elegir una operación de unión</h2></div>
         <hr/>
         <div>
-            <p>Determina c&oacute;mo se manejar&aacute;n las uniones entre las capas de objetivo y uni&oacute;n si se encuentran varias entidades de uni&oacute;n que tienen la misma relaci&oacute;n con la capa que se va a unir. Se puede elegir entre dos operaciones de uni&oacute;n:
+            <p>Determina c&oacute;mo se manejar&aacute;n las uniones entre las capas de objetivo y uni&oacute;n en la salida si se encuentran varias entidades de uni&oacute;n que tienen la misma relaci&oacute;n con la capa que se va a unir. Se puede elegir entre dos operaciones de uni&oacute;n:
                 <ul>
-                    <li> <b>Uni&oacute;n de uno a uno</b>: todas las entidades coincidentes se resumen con cada entidad que se va a unir.
+                    <li> <b>Unir uno a uno</b>: todas las entidades coincidentes se resumen con cada entidad que se va a unir.
                     </li>
-                    <li> <b>Uni&oacute;n de uno a muchos</b>: todas las entidades coincidentes se unen con la capa de uni&oacute;n.
+                    <li> <b>Unir uno a muchos</b>: todas las entidades coincidentes se unen con la capa de uni&oacute;n.
                     </li>
                 </ul>
                 
             </p>
-            <p>Por ejemplo, supongamos que queremos buscar los supermercados que est&aacute;n en un radio de 2 kil&oacute;metros de un mercado agr&iacute;cola. En este caso, la capa que se va a unir tiene una &uacute;nica entidad que representa un mercado agr&iacute;cola y las entidades de uni&oacute;n representan las tiendas de comestibles locales que tienen atributos del tipo total de ventas anuales. Utilizando la herramienta  <b>Entidades de uni&oacute;n</b>, vemos que existen cinco tiendas de comestibles que cumplen esos criterios. Si especificamos una operaci&oacute;n de uni&oacute;n del tipo <b>Uni&oacute;n de uno a muchos</b>, el resultado ser&iacute;a de cinco entidades donde cada fila representa el mercado agr&iacute;cola y un supermercado. Si especificamos una relaci&oacute;n <b>Uni&oacute;n de uno a uno</b>, el resultado ser&iacute;a una entidad que representa el mercado agr&iacute;cola y la informaci&oacute;n resumida de los supermercados como, por ejemplo, el recuento (2), y otras estad&iacute;sticas como, por ejemplo, la suma de las ventas anuales.
+            <p>Por ejemplo, supongamos que quiere buscar los supermercados que est&aacute;n en un radio de 2 kil&oacute;metros de un mercado agr&iacute;cola. En este caso, la capa que se va a unir tiene una &uacute;nica entidad que representa un mercado agr&iacute;cola y las entidades de uni&oacute;n representan las tiendas de comestibles locales que tienen atributos del tipo total de ventas anuales. Utilizando la herramienta  <b>Unir entidades</b>, vemos que existen cinco tiendas de comestibles que cumplen esos criterios. Si especificamos una operaci&oacute;n de uni&oacute;n del tipo <b>Unir uno a muchos</b>, el resultado ser&iacute;a de cinco entidades en las que cada fila representa el mercado agr&iacute;cola y un supermercado. Si especificamos una relaci&oacute;n <b>Unir uno a uno</b>, el resultado ser&iacute;a una entidad que representa el mercado agr&iacute;cola y la informaci&oacute;n resumida de los supermercados como, por ejemplo, el recuento (2), y otras estad&iacute;sticas tales como, la suma de las ventas anuales.
             </p>
         </div>
     </div>
     <div id="joinOptions">
-        <div><h2>Seleccione una o varias uniones</h2></div>
+        <div><h2>Seleccionar una o varias uniones</h2></div>
         <hr/>
         <div>
             <p>Puede aplicar uno, dos o tres tipos de uni&oacute;n. Entre los tipos de uni&oacute;n se incluyen los siguientes: 
@@ -109,7 +109,7 @@
         </div>
     </div>
     <div id="spatialRelationship">
-        <div><h2>Elija una relación espacial</h2></div>
+        <div><h2>Elegir una relación espacial</h2></div>
         <hr/>
         <div>
             <p> La relaci&oacute;n espacial que determinar&aacute; si las entidades se van a unir entre s&iacute;. Las relaciones disponibles depender&aacute;n del tipo de geometr&iacute;a (punto, polil&iacute;nea, pol&iacute;gonos) que se va a utilizar como entidades de entrada. Entre las relaciones disponibles se incluyen las siguientes:
@@ -118,7 +118,7 @@
                     </li>
                     <li> <b>Igual a</b>: las entidades se cotejar&aacute;n si tienen la misma geometr&iacute;a.
                     </li>
-                    <li> <b>Cerca de</b>: las entidades se cotejar&aacute;n si est&aacute;n dentro de una distancia especificada entre s&iacute;. La capa debe estar en un sistema de coordenadas proyectado o la referencia espacial de procesamiento debe estar definida en un sistema de coordenadas proyectado mediante <b>Analysis Environments</b> si se utiliza una relaci&oacute;n espacial <b>Cerca de</b>.
+                    <li> <b>Cerca de</b>: las entidades se cotejar&aacute;n si est&aacute;n dentro de una distancia especificada entre s&iacute;. La capa de destino debe estar en un sistema de coordenadas proyectadas, o bien la referencia espacial de procesamiento debe estar definida en un sistema de coordenadas proyectadas mediante los <b>Entornos de an&aacute;lisis</b> si se utiliza una relaci&oacute;n espacial <b>Cerca de</b>.
                     </li>
                     <li> <b>Contiene</b>: las entidades se cotejar&aacute;n si la capa con la que se van a unir est&aacute; incluida en las entidades de uni&oacute;n.
                     </li>
@@ -146,7 +146,7 @@
         </div>
     </div>
     <div id="temporalRelationship">
-        <div><h2>Elija una relación temporal</h2></div>
+        <div><h2>Elegir una relación temporal</h2></div>
         <hr/>
         <div>
             <p>La relaci&oacute;n temporal que determinar&aacute; si las entidades se van a unir entre s&iacute;. Esta opci&oacute;n solo est&aacute; disponible si el tiempo est&aacute; habilitado en las dos capas y las relaciones disponibles depender&aacute;n del tipo de tiempo (instante o intervalo) que se va a utilizar para las entidades de entrada. Entre las relaciones disponibles se incluyen las siguientes:
@@ -193,7 +193,7 @@
         </div>
     </div>
     <div id="attributeRelationship">
-        <div><h2>Elija los campos para cotejar</h2></div>
+        <div><h2>Elegir los campos que se van a cotejar</h2></div>
         <hr/>
         <div>
             <p>Esta relaci&oacute;n cotejar&aacute; los valores de un campo de una capa con los valores de un campo de otra capa. 
@@ -203,10 +203,10 @@
         </div>
     </div>
     <div id="summaryFields">
-        <div><h2>Agregue estadísticas (opcional)</h2></div>
+        <div><h2>Agregar estadísticas (opcional)</h2></div>
         <hr/>
         <div>
-            <p>Si la operaci&oacute;n de uni&oacute;n es   <b>Uni&oacute;n de uno a uno</b>, puede calcular estad&iacute;sticas en sus entidades unidas. De forma predeterminada, se calcular&aacute;n todas las estad&iacute;sticas.
+            <p>Si la operaci&oacute;n de uni&oacute;n es  <b>Unir uno a uno</b>, puede calcular estad&iacute;sticas en sus entidades unidas. De forma predeterminada, se calcular&aacute;n todas las estad&iacute;sticas.
             </p>
             <p>Puede calcular estad&iacute;sticas sobre las entidades resumidas. En los campos num&eacute;ricos puede calcular lo siguiente:
                 <ul>
@@ -222,7 +222,7 @@
                     </li>
                     <li>Rango: el rango de un campo num&eacute;rico. Se calcula como los valores m&iacute;nimos restados del valor m&aacute;ximo. El rango de [0, nulo, 1] es 1. El rango de [nulo, 4] es 0.
                     </li>
-                    <li>Varianza: la varianza de un campo num&eacute;rico en una pista. La varianza de [1] es nulo. La varianza de [nulo, 1,1,1] es 1.
+                    <li>Varianza: la varianza de un campo num&eacute;rico en un recorrido. La varianza de [1] es nulo. La varianza de [nulo, 1,1,1] es 1.
                     </li>
                     <li>Desviaci&oacute;n est&aacute;ndar: la desviaci&oacute;n est&aacute;ndar de un campo num&eacute;rico. La desviaci&oacute;n est&aacute;ndar de [1] es nulo. La desviaci&oacute;n est&aacute;ndar de [nulo, 1,1,1] es 1. 
                     </li>
@@ -248,7 +248,7 @@
         <div>
             <p>Aplica una condici&oacute;n a los campos especificados. Solo se unir&aacute;n las entidades con campos que cumplan estas condiciones.
             </p>
-            <p>Por ejemplo, supongamos que queremos aplicar una uni&oacute;n a un dataset solo para aquellas entidades donde  <i>health_spending</i> es superior al 20 por ciento de los <i>ingresos</i>.  Para hacerlo, habr&iacute;a que aplicar una condici&oacute;n de uni&oacute;n de <code>target.health_spending &gt; (join.income * 0,20)</code> utilizando el campo <i>health_spending</i> del primer dataset (el dataset al que se van a unir las entidades) y el campo de <i>ingresos</i> del segundo dataset (el dataset que se va a unir).
+            <p>Por ejemplo, supongamos que queremos aplicar una uni&oacute;n a un dataset solo para aquellas entidades donde  <i>health_spending</i> es superior al 20 por ciento de los <i>ingresos</i>.  Para ello, aplique una condici&oacute;n de <code>$target[&quot;health_spending&quot;] &gt; ($join[&quot;income&quot;] * .20)</code> utilizando el campo <i>health_spending</i> del primer dataset (el dataset al que est&aacute;n unidas las entidades) y el campo <i>income</i> del segundo dataset (el dataset que se va a unir).
             </p>
             <p>Las condiciones de uni&oacute;n se pueden aplicar utilizando la calculadora de expresiones.
             </p>

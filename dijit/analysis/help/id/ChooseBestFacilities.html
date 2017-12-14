@@ -46,7 +46,7 @@
         <hr/>
     <p>Pilih Fasilitas Terbaik memungkinkan Anda memilih lokasi terbaik untuk fasilitas. Alat tersebut mengalokasikan lokasi dengan permintaan untuk fasilitas dengan cara yang mencapai tujuan yang ditentukan.
     </p>
-    <p>Fitur-fitur pada layer ini yang masuk di dalam batas-batas fitur pada layer input di atas akan diringkas. Lokasi permintaan mewakili lokasi yang memiliki permintaan atas layanan yang ditawarkan oleh fasilitas, seperti misalnya titik blok sensus yang meringkas populasi di area yang diberikan.
+    <p>Fasilitas mewakili lokasi yang menawarkan beberapa jenis layanan seperti pemadam kebakaran, sekolah, perpustakaan, toko, atau pusat distribusi. Lokasi permintaan mewakili lokasi yang memiliki permintaan atas layanan yang ditawarkan oleh fasilitas, seperti misalnya titik blok sensus yang meringkas populasi di area yang diberikan.
     </p>
     <p>Alat Pilih Fasilitas Terbaik dapat membantu Anda menjawab pertanyaan seperti
         <ul>
@@ -58,7 +58,7 @@
             </li>
             <li>Di mana taman baru akan berlokasi untuk memastikan jumlah terbesar warga kota tinggal hanya berjarak lima menit jalan kaki dari taman?
             </li>
-            <li>Apakah lokasi terbaik bagi beberapa toko hewan peliharaan di daerah sehingga 40 persen dari pemilik hewan peliharaan wilayah tersebut hanya berjarak tidak lebih dari sepuluh menit berkendara dari salah satu toko?
+            <li>Apakah lokasi terbaik bagi beberapa toko hewan peliharaan di daerah sehingga 40 persen dari pemilik hewan peliharaan wilayah tersebut hanya berjarak tidak lebih dari sepuluh menit mengemudi dari salah satu toko?
             </li>
         </ul>
         
@@ -71,7 +71,7 @@
         <div>
             <p>Tentukan tujuan yang harus dicapai ketika mengalokasikan lokasi permintaan ke fasilitas.
             </p>
-            <p>Dengan Pilih Fasilitas Terbaik Anda dapat menentukan tipe masalah yang sedang Anda pecahkan&mdash;Tujuan. Alat dioptimalkan untuk menyediakan solusi bagi tujuan khusus. Tanpa memandang tujuan, pada dasarnya metode landasan yang sama digunakan untuk mencapai tujuan&mdash;jumlah permintaan dari lokasi permintaan yang diberikan dialokasikan ke fasilitas terdekat. Tujuan beragam terkait seberapa saling mempengaruhi antar jarak (atau waktu) serta permintaan ditangani. Alat mempertimbangkan baik jarak/waktu perjalanan dan jumlah permintaan, serta&mdash;dalam beberapa kasus&mdash;kapasitas dari fasilitas. Jika sebuah tujuan lebih menyukai untuk meminimalkan waktu perjalanan, misalnya, alat akan tetap merupakan upaya sekunder guna memaksimalkan permintaan yang dialokasikan. Serupa dengan hal tersebut, jika tujuan adalah memaksimalkan permintaan yang dialokasikan, maka alat akan melakukan hal tersebut dengan meminimalkan waktu perjalanan (dengan menetapkan lokasi permintaan ke fasilitas terdekat dan bukannya sekedar fasilitas mana saja).
+            <p>Dengan Pilih Fasilitas Terbaik Anda dapat menentukan tipe masalah yang sedang Anda pecahkan&mdash;Tujuan. Alat dioptimalkan untuk menyediakan solusi bagi tujuan khusus. Tanpa memandang tujuan, pada dasarnya metode landasan yang sama digunakan untuk mencapai sebuah solusi&mdash;jumlah permintaan dari lokasi permintaan yang diberikan dialokasikan ke fasilitas terdekat. Tujuan beragam terkait seberapa saling mempengaruhi antar jarak (atau waktu) serta permintaan ditangani. Alat mempertimbangkan baik jarak/waktu perjalanan dan jumlah permintaan, serta&mdash;dalam beberapa kasus&mdash;kapasitas dari fasilitas. Jika sebuah tujuan lebih menyukai untuk meminimalkan waktu perjalanan, misalnya, alat akan tetap merupakan upaya sekunder guna memaksimalkan permintaan yang dialokasikan. Serupa dengan hal tersebut, jika tujuan adalah memaksimalkan permintaan yang dialokasikan, maka alat akan melakukan hal tersebut dengan meminimalkan waktu perjalanan (dengan menetapkan lokasi permintaan ke fasilitas terdekat dan bukannya sekedar fasilitas mana saja).
             </p>
             <p>Tergantung pada data Anda dan pengaturan yang Anda gunakan, tujuan berbeda mungkin menimbulkan hasil yang sama atau serupa. Namun, Anda harus menentukan tujuan yang paling memadai untuk analisis Anda.
             </p> 
@@ -135,7 +135,7 @@
         <div><h2>Ukur</h2></div>
         <hr/>
         <div>
-            <p>Sebagaimana juga dengan alat lain yang melibatkan perjalanan dalam analisis, Anda dapat menentukan apakah perjalanan diukur menggunakan jarak atau waktu, dan dapat memilih dari berbagai mode perjalanan seperti waktu berjalan, waktu berkendara, jarak berkendara pedesaan, dan sebagainya. Mode perjalanan yang tersedia ditentukan oleh administrator organisasi Anda. Ketika menggunakan Waktu Berkendara atau Waktu Berkendara Pedesaan, Anda dapat secara opsional menyertakan lalu lintas untuk hari pada minggu tertentu dan waktu pada hari. 
+            <p>Sebagaimana juga dengan alat lain yang melibatkan perjalanan dalam analisis, Anda dapat menentukan apakah perjalanan diukur menggunakan jarak atau waktu, dan dapat memilih dari berbagai mode perjalanan seperti waktu berjalan, waktu mengemudi, jarak mengemudi pedesaan, dan sebagainya. Mode perjalanan yang tersedia ditentukan oleh administrator organisasi Anda. Ketika menggunakan  <b>Waktu Mengemudi</b>, <b>Waktu Mengemudi Pedesaan</b>, atau <b>Waktu Mengemudi Truk</b> Anda dapat secara opsional menyertakan lalu lintas untuk hari pada minggu tertentu dan waktu hari itu.
             </p>
             <p> Untuk secara akurat mengalokasikan lokasi permintaan ke fasilitas, Anda menentukan apakah perjalanan adalah dari fasilitas ke lokasi permintaan (misalnya dari stasiun pemadam kebakaran) atau dari lokasi permintaan ke fasilitas (sebagaimana dengan pengguna perpustakaan ke perpustakaan). Pilih Fasilitas Terbaik akan memperhitungkan arah perjalanan dalam jalan satu arah, baik Anda dapat membelok dari satu jalan ke jalan lainnya, baik persimpangan tidak memiliki belokan ke kiri, dan sebagainya, tergantung apakah perjalanan ke luar dari fasilitas ke lokasi permintaan, atau ke dalam dari lokasi permintaan ke fasilitas.
             </p>
@@ -145,7 +145,7 @@
         <div><h2>Layer Lokasi Permintaan</h2></div>
         <hr/>
         <div>
-            <p>Fitur titik mewakili lokasi yang memiliki permintaan untuk layanan yang ditawarkan oleh fasilitas. Alat tersebut menetapkan lokasi tujuan ini ke fasilitas yang memadai berdasarkan tujuan yang dipilih.
+            <p>Fitur titik mewakili lokasi yang memiliki permintaan untuk layanan yang ditawarkan oleh fasilitas. Alat tersebut menetapkan lokasi permintaan ini ke fasilitas yang memadai berdasarkan tujuan yang dipilih.
             </p>
             <p>Lokasi permintaan memiliki jumlah permintaan terkait. Gunakan konstanta untuk menentukan nilai jika semua lokasi permintaan memiliki permintaan yang sama. Jika jumlah permintaan beragam menurut lokasi permintaan, gunakan kolom Layer Lokasi Permintaan untuk menentukan nilai bagi setiap lokasi permintaan.
             </p>

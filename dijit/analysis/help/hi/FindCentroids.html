@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>सेंट्रॉइड खोजें</h2><p/>
+        <h2><img src="../images/GUID-75D9AF75-68C3-48BF-8062-D5499BD06978-web.png" alt="सेंट्रॉइड खोजें"></h2>
+        <hr/>
+    <p>यह टूल प्रत्येक फीचर के प्रतिनिधि केंद्र का निर्धारण करने के लिए मल्टीपॉइंट, रेखा या क्षेत्र के फीचर की लेयर के साथ काम करता है।
+    </p>
+    <p>यदि  <b>उपयोग का वर्तमान मानचित्र विस्तार-क्षेत्र</b> चिह्नित किया गया है, तो वर्तमान मानचित्र विस्तार-क्षेत्र में दिखाई देने वाले इनपुट मल्टीपॉइंट रेखा या क्षेत्र लेयर में केवल फीचर का विश्लेषण किया जाएगा।  यदि चयनित नहीं है, तो इनपुट लेयर के सभी फीचर्स का विश्लेषण किया जाएगा, भले ही वे वर्तमान मानचित्र सीमा से बाहर हो।
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>ऐसी लेयर चुनें, जिनकी सुविधाओं से सेंट्रॉइड जनरेट किया जाएगा</h2></div>
+        <hr/>
+        <div>
+            <p> मल्टीपॉइंट, रेखा या क्षेत्र लेयर जिनको सेंट्रॉइड्स को खोजने के लिए इस्तेमाल किया जाएगा।
+            </p>
+            <p class="OnlineOnly">अपने मानचित्र से एक लेयर को चुनने के अलावा, आप चुन सकते हैं  <b>जीवंत एटलस विश्लेषण लेयर को चुनें</b> या <b>विश्लेषण लेयर चुनें</b> जो ड्राप डाउन सूचि के अंत में पाई जाती है। यह एक गैलरी खोलता है जिसमें लेयरों का एक संग्रह होता है जो कई विश्लेषणों के लिए उपयोगी होता है। 
+            </p>
+        </div>
+    </div>
+    <div id="inside">
+        <div><h2>मुझे आउटपुट से जुड़ी जगहें दिखाएँ</h2></div>
+        <hr/>
+        <div>
+            <p> जब <b>सही सेंट्रॉइड पर</b> (डिफ़ॉल्ट) चिह्नित किया जाता है, तो आउटपुट प्रत्येक इनपुट फीचर के लिए सेंट्रॉइड के वास्तविक स्थान को वापस करेगा। सेंट्रॉइड्स निम्नलिखित के अनुसार स्थित होंगे:
+                <ul>
+                    <li>मल्टीपॉइंट फीचर&mdash;आउटपुट सेंट्रॉइड मल्टीपॉइंट फीचर में सभी बिंदुओं के औसत x और y निर्देशांक पर स्थित होगा।
+                    </li>
+                    <li>रेखा फीचर&mdash;आउटपुट सेंट्रॉइड रेखा फीचर में सभी रेखा खंडों के मध्य बिंदुओं के भारित औसत x और y निर्देशांक पर स्थित होगा। वजन खंड की लंबाई पर आधारित है।
+                    </li>
+                    <li>क्षेत्र के फीचर&mdash;आउटपुट सेंट्रॉइड क्षेत्र के केंद्र में स्थित होगा।
+                    </li>
+                </ul>
+                
+            </p>
+            <p>जब  <b>इनपुट फीचर में निहित</b> को चिह्नित किया जाता है, तो आउटपुट बिंदु फीचर प्रत्येक इनपुट फीचर के अंदर या अंदर समाहित होगा। परिणामस्वरूप बिंदु फीचर निम्नानुसार दिखाई देंगे:
+                <ul>
+                    <li>मल्टीपॉइंट फीचर&mdash;आउटपुट सेंट्रॉइड मल्टीप्वाइंट समूह में अंक में से एक का योग होगा।
+                    </li>
+                    <li>रेखा फीचर&mdash;आउटपुट सेंट्रॉइड रेखा पर होगा।  यदि लाइन घुमावदार है, तो आउटपुट लाइन के मध्य बिंदु पर होगा। 
+                    </li>
+                    <li>क्षेत्र के फीचर&mdash;आउटपुट बिंदु क्षेत्र फीचर के अंदर होगा।
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="OutputLayer">
+        <div><h2>परिणामी लेयर का नाम</h2></div>
+        <hr/>
+        <div>
+            <p>यह उस लेयर का नाम है जो  <b>मेरी सामग्री</b> में बनाई जाएगी और मानचित्र में जोड़ी जाएगी। इसका मूल नाम उपकरण के नाम और इनपुट लेयर के नाम पर आधारित है। यदि लेयर पहले से मौजूद हो, तो आपसे दूसरा नाम देने को कहा जाएगा।
+            </p>
+            <p> <b>इसमें सहेजें</b> ड्राप-डाउन बॉक्स का उपयोग करके, आप <b>मेरी सामग्री</b> में एक फोल्डर का नाम निर्दिष्ट कर सकते हैं, जहां परिणामों को सहेजा जाएगा।।
+            </p>
+        </div>
+    </div>
+</div>
+</html>

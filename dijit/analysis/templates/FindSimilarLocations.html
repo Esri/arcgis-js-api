@@ -120,7 +120,7 @@
                   <input type="radio" data-dojo-type="dijit/form/RadioButton" data-dojo-attach-point="_toprankRadioBtn" data-dojo-attach-event="onChange:_handleTopRankRadioChange" data-dojo-props="'class':'esriSelectLabel'" name="features"/> 
                   <label data-dojo-attach-point="_topLabel">${i18n.justShowTop}</label>
                   <input type="text" class="" style="width:20%" data-dojo-type="dijit/form/NumberSpinner" data-dojo-attach-event="onChange:_handleTopRankInputChange" data-dojo-props="disabled:true,intermediateChanges:true,value:1, smallDelta:1, constraints:{min:1,places:0}, required:true" data-dojo-attach-point="_ranksInput"></input>
-                  <select class="mediumInput esriAnalysisSelect"  style="width:35%;table-layout:fixed;" data-dojo-type="dijit/form/Select" data-dojo-props="disabled:false,required:true" data-dojo-attach-point="_mostSimSelect">
+                  <select class="esriAnalysisSelect esriMediumlabel3"  style="table-layout:fixed;" data-dojo-type="dijit/form/Select" data-dojo-props="disabled:false,required:true" data-dojo-attach-point="_mostSimSelect">
                     <option value="MostSimilar">${i18n.mostSimilar}</option>
                     <option value="LeastSimilar">${i18n.leastSimilar}</option>
                     <option value="Both">${i18n.both}</option>

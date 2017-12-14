@@ -1,0 +1,49 @@
+
+.esriGEReportPlayer_reportContainerGrid {
+}
+
+    
+
+    .esriGEReportPlayer_reportContainerGrid.reportContainerPreviewMode .reportContainerGrid_mainContainer {
+        position: relative;
+        overflow-x: auto;
+        overflow-y: auto;
+        width: inherit;
+        text-align: center;
+    }
+
+    .esriGEReportPlayer_reportContainerGrid.reportContainerPreviewMode .reportContainerGrid_stackContainer {
+        position: relative;
+        overflow: visible;
+        min-height: 100px;
+        border: 1px solid #b2b2b2;
+        height: auto;
+        text-align: left;
+        display: inline-block;
+    }
+
+    
+
+    .esriGEReportPlayer_reportContainerGrid .reportContainerGrid_gridZoomFillerContainer {
+        display: inline-block;
+        vertical-align: top;
+        position: relative;
+        overflow: visible;
+    }
+
+    .esriGEReportPlayer_reportContainerGrid .reportContainerGrid_gridZoomScalableContainer {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        overflow: visible;
+    }
+
+    
+
+    .esriGEReportPlayer_reportContainerGrid .sampleValuesWatermark {
+        position: absolute;
+        z-index: 10;
+        background-image: url('../images/sampleWatermarkGraphic.svg');
+        background-repeat: repeat;
+        pointer-events: none;
+    }

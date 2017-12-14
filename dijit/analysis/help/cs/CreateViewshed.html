@@ -41,16 +41,16 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Vytvořit viditelnost</h2><p/>
-        <h2><img src="../images/GUID-491E9A75-30CC-4526-9F71-E47FD25536DE-web.png" alt="Vytvořit viditelnost"></h2>
+        <h2>Vytvořit viditelný povrch (Create Viewshed)</h2><p/>
+        <h2><img src="../images/GUID-491E9A75-30CC-4526-9F71-E47FD25536DE-web.png" alt="Vytvořit viditeln&yacute; povrch"></h2>
         <hr/>
-    <p>N&aacute;stroj Vytvořit viditelnost vytv&aacute;ř&iacute; oblasti, ve kter&yacute;ch může pozorovatel vidět objekty na zemi. Vstupn&iacute; body pozorovatele mohou představovat buď pozorovatele (např. lid&eacute; na zemi nebo hl&iacute;dky v pož&aacute;rn&iacute; věži) nebo pozorovan&eacute; objekty (např. větrn&eacute; turb&iacute;ny, vodojemy, vozidla nebo lid&eacute;). V&yacute;sledn&eacute; oblasti jsou oblasti, kde mohou pozorovatel&eacute; vidět pozorovan&eacute; objekty, a obr&aacute;ceně: pozorovan&eacute; objekty mohou vidět pozorovatele.
+    <p>N&aacute;stroj Vytvořit viditeln&yacute; povrch vytv&aacute;ř&iacute; oblasti, ve kter&yacute;ch může pozorovatel vidět objekty na zemi. Vstupn&iacute; body pozorovatele mohou představovat buď pozorovatele (např. lid&eacute; na zemi nebo hl&iacute;dky v&nbsp;pož&aacute;rn&iacute; věži) nebo pozorovan&eacute; objekty (např. větrn&eacute; turb&iacute;ny, vodojemy, vozidla nebo lid&eacute;). V&yacute;sledn&eacute; oblasti jsou oblasti, kde mohou pozorovatel&eacute; vidět pozorovan&eacute; objekty, a obr&aacute;ceně: pozorovan&eacute; objekty mohou vidět pozorovatele.
     </p>
     <p>Pozorovatel&eacute; i pozorovan&eacute; objekty se mohou nach&aacute;zet v určit&eacute; v&yacute;&scaron;ce nad zem&iacute;. Tyto v&yacute;&scaron;ky ovlivňuj&iacute; určen&iacute; viditelnosti. Např&iacute;klad viditelnost vypoč&iacute;tan&aacute; pro 100 m vysok&eacute; větrn&eacute; turb&iacute;ny a 180 cm vysok&eacute; lidi stoj&iacute;c&iacute; na zemi bude vět&scaron;&iacute; než viditelnost vypoč&iacute;tan&aacute; pro 50 m vysok&eacute; turb&iacute;ny a 180 cm vysok&eacute; lidi.
     </p>
-    <p>V&yacute;počet viditelnosti nebere v potaz přek&aacute;žky, jako jsou stromy nebo budovy. V&yacute;počet předpokl&aacute;d&aacute; holou zem, na kter&eacute; se nach&aacute;z&iacute; pouze pozorovatel a pozorovan&eacute; objekty.
+    <p>V&yacute;počet viditeln&eacute;ho povrchu nebere v potaz přek&aacute;žky, jako jsou stromy nebo budovy. V&yacute;počet předpokl&aacute;d&aacute; holou zem, na kter&eacute; se nach&aacute;z&iacute; pouze pozorovatel a pozorovan&eacute; objekty.
     </p>
-    <p>V&yacute;sledn&aacute; vrstva obsahuje prvky oblasti představuj&iacute;c&iacute; viditeln&eacute; oblasti. Pole  <i>Frekvence</i> zaznamen&aacute;v&aacute; počet bodů pozorovatele, kter&eacute; mohou vidět jednotliv&eacute; oblasti. Pokud např&iacute;klad m&aacute;te pět v&yacute;choz&iacute;ch bodů, kter&eacute; představuj&iacute; jednotliv&eacute; pož&aacute;rn&iacute; věže, pole <i>Frekvence</i> bude m&iacute;t hodnoty mezi 1 a 5; oblasti s hodnotou 1 vid&iacute; pouze jedna věž a oblasti s hodnotou 5 vid&iacute; v&scaron;echny věže. V&yacute;sledn&aacute; vrstva obsahuje tak&eacute; pole <i>Rozli&scaron;en&iacute;DEM</i>, kter&eacute; zaznamen&aacute;v&aacute; rozli&scaron;en&iacute; digit&aacute;ln&iacute;ho v&yacute;&scaron;kov&eacute;ho modelu (DEM) použit&eacute;ho k tvorbě viditelnosti.
+    <p>V&yacute;sledn&aacute; vrstva obsahuje plo&scaron;n&eacute; prvky představuj&iacute;c&iacute; viditeln&eacute; oblasti. Pole  <i>Frequency</i> zaznamen&aacute;v&aacute; počet bodů pozorovatele, kter&eacute; mohou vidět jednotliv&eacute; oblasti. Pokud např&iacute;klad m&aacute;te pět v&yacute;choz&iacute;ch bodů, kter&eacute; představuj&iacute; jednotliv&eacute; pož&aacute;rn&iacute; věže, pole <i>Frequency</i> bude m&iacute;t hodnoty mezi 1 a 5; oblasti s hodnotou 1 vid&iacute; pouze jedna věž a oblasti s hodnotou 5 vid&iacute; v&scaron;echny věže. V&yacute;sledn&aacute; vrstva obsahuje tak&eacute; pole <i>DEMResolution</i>, kter&eacute; zaznamen&aacute;v&aacute; rozli&scaron;en&iacute; digit&aacute;ln&iacute;ho v&yacute;&scaron;kov&eacute;ho modelu (DEM) použit&eacute;ho k tvorbě viditelnosti.
     </p>
     <p>Pokud je za&scaron;krtnuto pole  <b>Použ&iacute;t aktu&aacute;ln&iacute; rozsah mapy</b>, budou analyzov&aacute;ny pouze body pozorovatele viditeln&eacute; v aktu&aacute;ln&iacute;m rozsahu mapy.  Pokud pole za&scaron;krtnuto nen&iacute;, budou analyzov&aacute;ny v&scaron;echny body pozorovatele ve vstupn&iacute; vrstvě, včetně těch, kter&eacute; se nach&aacute;z&iacute; mimo aktu&aacute;ln&iacute; rozsah mapy.
     </p>
@@ -60,8 +60,7 @@
         <div><h2>Bodové prvky, které budou představovat umístění pozorovatele.</h2></div>
         <hr/>
         <div>
-            <p>Bodov&eacute; prvky, kter&eacute; budou představovat um&iacute;stěn&iacute; pozorovatele.
-
+            <p>Bodov&eacute; prvky, kter&eacute; budou představovat um&iacute;stěn&iacute; pozorovatele. 
             </p>
             <p class="OnlineOnly">Kromě v&yacute;běru vrstvy z mapy můžete tak&eacute; zvolit položky  <b>Vybrat vrstvu anal&yacute;zy živ&eacute;ho atlasu</b> nebo <b>Vybrat vrstvu anal&yacute;zy</b>, kter&eacute; se nach&aacute;zej&iacute; v doln&iacute; č&aacute;sti rozbalovac&iacute;ho seznamu. Otevře se galerie obsahuj&iacute;c&iacute; sb&iacute;rku vrstev určen&yacute;ch pro mnoho různ&yacute;ch anal&yacute;z. 
             </p>
@@ -71,7 +70,7 @@
         <div><h2>Výška umístění pozorovatele</h2></div>
         <hr/>
         <div>
-            <p>Toto je nadzemn&iacute; v&yacute;&scaron;ka va&scaron;ich um&iacute;stěn&iacute; pozorovatele.    V&yacute;choz&iacute; hodnota je přibližně průměrn&aacute; v&yacute;&scaron;ka člověka.  
+            <p>Toto je nadzemn&iacute; v&yacute;&scaron;ka um&iacute;stěn&iacute; va&scaron;ich pozorovatelů.    V&yacute;choz&iacute; hodnota je přibližně průměrn&aacute; v&yacute;&scaron;ka člověka.  
             </p>
         </div>
     </div>
@@ -79,7 +78,7 @@
         <div><h2>Výška ostatních objektů na zemi</h2></div>
         <hr/>
         <div>
-            <p>Toto je v&yacute;&scaron;ka staveb nebo lid&iacute; na zemi, kter&aacute; se použ&iacute;v&aacute; k určen&iacute; viditelnosti. V&yacute;sledn&aacute; viditelnost zahrnuje oblasti, ve kter&yacute;ch může bod pozorovatele vidět tyto jin&eacute; objekty.  Plat&iacute; to i obr&aacute;ceně &ndash; jin&eacute; objekty mohou vidět bod pozorovatele. 
+            <p>Toto je v&yacute;&scaron;ka staveb nebo lid&iacute; na zemi, kter&aacute; se použ&iacute;v&aacute; k&nbsp;určen&iacute; viditelnosti. V&yacute;sledn&yacute; viditeln&yacute; povrch zahrnuje plochy, ve kter&yacute;ch může bod pozorovatele vidět tyto jin&eacute; objekty.  Plat&iacute; to i obr&aacute;ceně &ndash; jin&eacute; objekty mohou vidět bod pozorovatele. 
             </p>
             <p>
                 <ul>

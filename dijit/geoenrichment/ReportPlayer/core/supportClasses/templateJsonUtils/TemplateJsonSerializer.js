@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["./TemplateJsonQueryUtil","../images/ImageDataHolder"],function(e,a){return{serialize:function(e){return this._attachImagesToTemplateJson(e),e},_attachImagesToTemplateJson:function(t){function i(e){var t=a.getImageData(e);t&&(n[e]=t)}var n={};e.processTemplateFieldInfos(t,function(e){e&&e.isImage&&i(e.imageJson.fileName)},{innerFields:"all"}),e.processSectionElements(t,function(e){"img"==e.id&&i(e.fileName)}),t.imageData=n},deserialize:function(e){return this._takeImagesFromTemplateJson(e),e},_takeImagesFromTemplateJson:function(e){for(var t in e.imageData)a.putImageData(t,e.imageData[t]);delete e.imageData}}});
+define(["./query/TemplateJsonQueryUtil","../images/ImageDataHolder"],function(e,a){return{serialize:function(e){return this._attachImagesToTemplateJson(e),e},_attachImagesToTemplateJson:function(i){function t(e){var i=a.getImageData(e);i&&(n[e]=i)}var n={};e.processTemplateFieldInfos(i,function(e){e.isImage?t(e.imageJson.fileName):e.isInfographic&&e.infographicJson.variableTables&&e.infographicJson.variableTables.forEach(function(e){e.image&&t(e.image.imageJson.fileName)})}),e.processSectionElements(i,function(e){"img"===e.id&&t(e.fileName)}),i.imageData=n},deserialize:function(e){return this._takeImagesFromTemplateJson(e),e},_takeImagesFromTemplateJson:function(e){for(var i in e.imageData)a.putImageData(i,e.imageData[i]);delete e.imageData}}});

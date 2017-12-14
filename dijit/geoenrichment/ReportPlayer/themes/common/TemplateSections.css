@@ -49,60 +49,10 @@
 
     .esriGEReportPlayer_pageBreak .pageBreakLine {
         width: 45%;
-        border-top: 2px dashed blue;
+        border-top: 2px dashed rgb(0, 145, 251);
     }
 
     .esriGEReportPlayer_pageBreak .pageBreakLabel {
         width: 9%;
         text-align: center;
-    }
-
-
-
-.esriGEReportPlayer_empty {
-    height: 200px;
-    text-align: center;
-}
-
-    .esriGEReportPlayer_empty .emptyBorderContainer {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        right: 10px;
-        bottom: 10px;
-        border: 1px dashed #afafaf;
-        text-align: center;
-        font-size: 12px;
-        font-style: italic;
-        color: #afafaf;
-    }
-
-    .esriGEReportPlayer_empty .empty_backgroundIcon {
-        background-image: url("./images/emptySectionIcon.svg");
-        background-repeat: no-repeat;
-        background-position: center;
-        display: inline-block;
-        background-size: 250px 139px;
-        bottom: 50px;
-        opacity: 0.5;
-    }
-
-.esriGEReportPlayer_reportContainerGrid .esriGEReportPlayer_empty .emptyBorderContainer {
-    border: none;
-    font-size: 12px;
-}
-
-
-
-.esriGEReportPlayer_empty.emptySmallSize {
-    height: 100px;
-}
-
-    .esriGEReportPlayer_empty.emptySmallSize .emptyBorderContainer {
-        min-height: 80px;
-        line-height: 80px;
-    }
-
-    .esriGEReportPlayer_empty.emptySmallSize .empty_backgroundIcon {
-        display: none;
     }

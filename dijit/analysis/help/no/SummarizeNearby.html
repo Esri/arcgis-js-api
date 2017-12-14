@@ -44,7 +44,7 @@
         <h2>Summer nærliggende</h2><p/>
         <h2><img src="../images/GUID-A5033D27-81B6-42E7-BA38-50D25C1CCCCA-web.png" alt="Summer n&aelig;rliggende"></h2>
         <hr/>
-    <p>  Dette verkt&oslash;yet finner og oppsummerer geoobjektene som er innenfor en angitt avstand fra geoobjekter i det f&oslash;rste inndatalaget. Avstand kan m&aring;les som luftlinjeavstand eller ved &aring; bruke en angitt reisem&aring;te. Du kan velge kj&oslash;reavstand, kj&oslash;retid, avstand med lastebil, tid med lastebil, g&aring;avstand eller g&aring;tid som reisem&aring;te. Verkt&oslash;yet beregner deretter statistikk for de n&aelig;rliggende geoobjektene. Eksempel:
+    <p>Dette verkt&oslash;yet finner og oppsummerer geoobjektene som er innenfor en angitt avstand fra geoobjekter i det f&oslash;rste inndatalaget. Avstand kan m&aring;les som luftlinjeavstand eller ved &aring; bruke en angitt reisem&aring;te. Du kan velge kj&oslash;reavstand, kj&oslash;retid, avstand med lastebil, tid med lastebil, g&aring;avstand eller g&aring;tid som reisem&aring;te. Verkt&oslash;yet beregner deretter statistikk for de n&aelig;rliggende geoobjektene. Eksempel:
         <ul>
             <li>Du kan beregne hvor mange som bor innenfor en kj&oslash;retid p&aring; fem minutter fra en mulig ny butikkplassering.
             </li>
@@ -53,7 +53,7 @@
         </ul>
         
     </p>
-    <p>Hvis det er merket av for  <b>Bruk gjeldende kartutstrekning</b>, er det kun geoobjektene i inndatalaget og laget som skal summeres, som vises i gjeldende kartutstrekning, som analyseres. Hvis det ikke er merket av for dette alternativet, analyseres alle geoobjekter i b&aring;de inndatalaget og laget som skal summeres, selv om de befinner seg utenfor gjeldende kartutstrekning.
+    <p>Hvis det er merket av for  <b>Bruk gjeldende kartutstrekning</b>, er det kun geoobjektene i inndatalaget og laget som skal summeres som vises i gjeldende kartutstrekning, som analyseres.  Hvis det ikke er merket av for dette alternativet, analyseres alle geoobjekter i b&aring;de inndatalaget og laget som skal summeres, selv om de befinner seg utenfor gjeldende kartutstrekning.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -80,14 +80,14 @@
         </div>
     </div>
     <div id="BufferOption">
-        <div><h2>Summarize nearest features using a</h2></div>
+        <div><h2>Summer nærmeste geoobjekter ved hjelp av</h2></div>
         <hr/>
         <div>
-            <p> Du kan definere hvilken avstandsm&aring;ling du vil bruke, og velge luftlinjeavstand eller en angitt reisem&aring;te. Reisem&aring;ter er kun aktivert n&aring;r den f&oslash;rste inndatalaget (laget som avstandene m&aring;les fra) inneholder punkter. Tilgjengelige reisem&aring;ter defineres av administratoren i organisasjonen. N&aring;r du bruker en av reisem&aring;tene, foretas m&aring;lingene langs veier og gangstier, og det tas hensyn til gjeldende regler, for eksempel enveiskj&oslash;rte gater og steder der det ikke er lov &aring; snu. Kj&oslash;retider tar hensyn til valgte kj&oslash;rehastigheter, enten de er basert p&aring; trafikkinformasjon i sanntid eller typiske trafikkforhold. Hastigheter i sanntid hentes fra gjeldende sensoravlesninger, og typiske hastigheter beregnes basert p&aring; historiske gjennomsnittshastigheter.
+            <p> Du kan definere hvilken avstandsm&aring;ling du vil bruke, og velge luftlinjeavstand eller en angitt reisem&aring;te. Reisem&aring;ter er kun aktivert n&aring;r det f&oslash;rste inndatalaget (laget som avstandene m&aring;les fra) inneholder punkter. Tilgjengelige reisem&aring;ter defineres av administratoren i organisasjonen. N&aring;r du bruker en av reisem&aring;tene, foretas m&aring;lingene langs veier og gangstier, og det tas hensyn til gjeldende regler, for eksempel enveiskj&oslash;rte gater og steder der det ikke er lov &aring; snu. <b>Kj&oslash;retid</b>, <b>Kj&oslash;retid i rurale omr&aring;der</b> og <b>Lastebiltid</b> tar hensyn til valgte kj&oslash;rehastigheter, enten de er basert p&aring; trafikkinformasjon i sanntid eller typiske trafikkforhold. Hastigheter i sanntid hentes fra gjeldende sensoravlesninger, og typiske hastigheter beregnes basert p&aring; historiske gjennomsnittshastigheter.
             </p>
             <p>Du kan angi flere avstander. Geoobjekter som er innenfor (eller lik) avstandene du angir, summeres.  
             </p>
-            <p>Hvis det er merket av for  <b>Return bounding areas</b>, returneres det et resultatlag med omr&aring;der definert av den angitte avstandsm&aring;lingen. Resultatlaget inneholder all sammendragsinformasjon du har bedt om. Hvis du for eksempel angir en <b>linjeavstand</b> p&aring; &aring;tte kilometer n&aring;r du summerer punkter i n&aelig;rheten, vil resultatet inneholder omr&aring;der med en radius p&aring; &aring;tte kilometer rundt inndatageobjektene og all sammendragsinformasjon, som antall punkter og eventuell statistikk som er lagt til. Hvis det ikke er merket av for dette alternativet, returnerer resultatlaget de samme geoobjektene for det f&oslash;rste inndatalaget med all sammendragsinformasjon du har bedt om.
+            <p>Hvis det er merket av for  <b>Returner tilgrensende omr&aring;de</b>, returneres det et resultatlag med omr&aring;der definert av den angitte avstandsm&aring;lingen. Resultatlaget inneholder all sammendragsinformasjon du har bedt om. Hvis du for eksempel summerer punkter i n&aelig;rheten og bruker en <b>linjeavstand</b> p&aring; &aring;tte kilometer, inneholder resultatet omr&aring;dene innenfor en radius p&aring; &aring;tte kilometer rundt inndatageobjektene og all sammendragsinformasjon, for eksempel antall punkter og eventuell statistikk som er lagt til. Hvis det ikke er merket av for dette alternativet, returnerer resultatlaget de samme geoobjektene for det f&oslash;rste inndatalaget med all sammendragsinformasjon du har bedt om.
             </p>
         </div>
     </div>
@@ -108,7 +108,7 @@
                 </li>
                 <li> <b>Maksimum</b> &ndash; Den st&oslash;rste verdien i det angitte feltet.
                 </li>
-                <li> <b>Standard avvik</b>&ndash; Standardavviket for verdiene i det angitte feltet.
+                <li> <b>Standard Avvik</b> &ndash; Standardavviket for verdiene i det angitte feltet
                 </li>
             </ul>
             
@@ -131,7 +131,7 @@
                 </li>
                 <li> <b>Maksimum</b> &ndash; Den st&oslash;rste verdien i det angitte feltet.
                 </li>
-                <li> <b>Standard avvik</b>&ndash; Standardavviket for verdiene i det angitte feltet.
+                <li> <b>Standard Avvik</b> &ndash; Standardavviket for verdiene i det angitte feltet
                 </li>
             </ul>
             
@@ -154,7 +154,7 @@
                 </li>
                 <li> <b>Maksimum</b> &ndash; Den st&oslash;rste verdien i det angitte feltet.
                 </li>
-                <li> <b>Standard avvik</b>&ndash; Standardavviket for verdiene i det angitte feltet.
+                <li> <b>Standard Avvik</b> &ndash; Standardavviket for verdiene i det angitte feltet
                 </li>
             </ul>
             
@@ -175,7 +175,7 @@
                 </li>
                 <li> <b>Maksimum</b> &ndash; Den st&oslash;rste verdien i det angitte feltet.
                 </li>
-                <li> <b>Standard avvik</b>&ndash; Standardavviket for verdiene i det angitte feltet.
+                <li> <b>Standard Avvik</b> &ndash; Standardavviket for verdiene i det angitte feltet
                 </li>
             </ul>
             
@@ -187,7 +187,7 @@
         <div><h2>Velg feltet det skal grupperes etter</h2></div>
         <hr/>
         <div>
-            <p> Dette er et attributt for de n&aelig;rliggende geoobjektene som du kan bruke til &aring; beregne statistikk for hver unike attributtverdi for seg. La oss for eksempel si at det f&oslash;rste inndatalaget (laget som avstandene m&aring;les fra) inneholder ledige tomter som er til salgs og de n&aelig;rliggende geoobjektene er bygningsavtrykk. Ett av attributtene for avmerkede bygninger er <i>UseType</i> som inneholder verdier som RETAIL, RESIDENTIAL, MANUFACTURING, PUBLIC og s&aring; videre. Hvis du vil beskrive bygningsbruken n&aelig;r hver ledige tomt, kan du beregne det totale omr&aring;det for hver unike bygningsbruk innenfor en radius p&aring; to kilometer rundt ledige tomter, ved &aring; gruppere etter attributtet <i>UseType</i>. Statistikken for hver gruppe i tillegg til antall geoobjekter i n&aelig;rheten, vises i resultatlagets sprettoppvindu.
+            <p> Dette er et attributt for de n&aelig;rliggende geoobjektene som du kan bruke til &aring; beregne statistikk for hver unike attributtverdi for seg. La oss for eksempel si at det f&oslash;rste inndatalaget (laget som avstandene m&aring;les fra) inneholder ledige tomter som er til salgs og de n&aelig;rliggende geoobjektene er bygningsavtrykk. Ett av attributtene for avmerkede bygninger er <i>UseType</i> som inneholder verdier som RETAIL, RESIDENTIAL, MANUFACTURING, PUBLIC og s&aring; videre. Hvis du vil beskrive bygningsbruken n&aelig;r hver ledige tomt, kan du beregne det totale omr&aring;det for hver unike bygningsbruk innenfor en radius p&aring; to kilometer rundt ledige tomter, ved &aring; gruppere etter attributtet <i>UseType</i>. Statistikken for hver gruppe vises i resultatlagets popupvindu sammen med antall geoobjekter i n&aelig;rheten.
             </p>    
         </div>
     </div>
@@ -195,7 +195,7 @@
         <div><h2>Legg til minoritet, majoritet</h2></div>
         <hr/>
         <div>
-            <p>Denne boksen er aktivert n&aring;r du velger gruppere etter et felt. Hvis du &oslash;nsker &aring; finne ut hvilke attributtverdier innenfor hver gruppe som er i mindretall (minst dominant) eller majoriteten (mest dominerende) innenfor den avstanden eller tiden du har angitt,  <b>velger du Legg mindretall, majoritet</b>. N&aring;r du velger <b>Legg til minoritet, majoritet</b>, legges det til to felt i resultatlaget. Hvis du ogs&aring; velger <b>Legg til prosenter</b>, legges det til to ekstra felt i resultatlaget som inneholder prosentene for attributtverdiene for minoritet og majoritet innenfor hver gruppe.
+            <p>Denne boksen er aktivert n&aring;r du velger gruppere etter et felt. Hvis du &oslash;nsker &aring; finne ut hvilke attributtverdier innenfor hver gruppe som er i minoritet (minst dominerende) eller majoriteten (mest dominerende) innenfor den avstanden eller tiden du har angitt, velger du  <b>Legg til minoritet, majoritet</b>.   N&aring;r du velger <b>Legg til minoritet, majoritet</b>, legges det til to felt i resultatlaget. Hvis du ogs&aring; velger <b>Legg til prosenter</b>, legges det til to ekstra felt i resultatlaget som inneholder prosentene for attributtverdiene for minoritet og majoritet innenfor hver gruppe.
             </p>
             <ul>
                 <li>Hvis du summerer punkter i n&aelig;rheten, beregnes minoritets- og majoritetsverdiene p&aring; bakgrunn av telling av punkter innenfor den avstanden eller tiden du har angitt.

@@ -44,7 +44,7 @@
         <h2>Połącz punkty początkowe z docelowymi</h2><p/>
         <h2><img src="../images/GUID-7266D30B-0250-4132-B1A5-9B59F0212FAD-web.png" alt="Połącz punkty początkowe z docelowymi"></h2>
         <hr/>
-    <p>  Narzędzie Połącz Punkty początkowe z&nbsp;Docelowymi służy do pomiaru czasu podr&oacute;ży lub odległości między parami punkt&oacute;w. Narzędzie może wyświetlić odległość w&nbsp;linii prostej; odległość w&nbsp;oparciu o&nbsp;tryb podr&oacute;żowania, np. trasa piesza lub przejazd; lub czas przejazdu w&nbsp;oparciu o&nbsp;tryb podr&oacute;żowania. Dzięki temu narzędziu można wykonywać następujące czynności:
+    <p>Narzędzie Połącz punkty początkowe z docelowymi służy do pomiaru czasu podr&oacute;ży lub odległości między parami punkt&oacute;w. Narzędzie może wyświetlić odległość w&nbsp;linii prostej; odległość w&nbsp;oparciu o&nbsp;tryb podr&oacute;żowania, np. trasa piesza lub przejazd; lub czas przejazdu w&nbsp;oparciu o&nbsp;tryb podr&oacute;żowania. Dzięki temu narzędziu można wykonywać następujące czynności:
     </p>
     <p>
         <ul>
@@ -57,7 +57,7 @@
         </ul>
         
     </p>
-    <p>Po podaniu punkt&oacute;w początkowych i&nbsp;docelowych narzędzie zwraca warstwę zawierającą linie tras między parami punkt&oacute;w początkowych i&nbsp;docelowych wraz z&nbsp;pomiarami.  
+    <p>Po podaniu punkt&oacute;w początkowych i docelowych narzędzie wyświetla warstwę zawierającą linie tras między parami punkt&oacute;w początkowych i docelowych wraz z pomiarami. 
     </p>
     <p>Jeśli zaznaczono opcję  <b>Użyj bieżącego zasięgu mapy</b>, w&nbsp;analizie będą uwzględniane tylko obiekty widoczne w&nbsp;bieżącym zasięgu mapy. Jeśli powyższa opcja nie jest zaznaczona, zostaną uwzględnione wszystkie obiekty w&nbsp;warstwie wejściowej, nawet jeśli będą znajdować się poza bieżącym zasięgiem mapy.
     </p>
@@ -98,7 +98,7 @@
             
             <p>Wybierz czy połączyć punkty początkowe z&nbsp;punktami docelowymi z&nbsp;zastosowaniem odległości w&nbsp;linii prostej, czy trybu podr&oacute;żowania. Trasy wynikowe będą obejmować drogi lub pasaże i&nbsp;respektować obowiązujące zasady, takie jak drogi jednokierunkowe i&nbsp;skręty w&nbsp;niedozwolonych miejscach dla samochod&oacute;w osobowych i&nbsp;samochod&oacute;w ciężarowych. Dostępne typy podr&oacute;żowania są określane przez administratora instytucji.  
             </p>
-            <p>Po wybraniu opcji  <b>Czas przejazdu</b> należy wybrać spos&oacute;b pomiaru czasu przejazdu.
+            <p>Po wybraniu narzędzia  <b>Czas przejazdu</b>, <b>Czas przejazdu w obszarach wiejskich</b> lub <b>Czas przejazdu samochodem ciężarowym</b> należy wybrać spos&oacute;b pomiaru czasu przejazdu.
                 <ul>
                     <li>
                         <p>Aby znaleźć najkr&oacute;tsze trasy na podstawie stałych prędkości, usuń zaznaczenie opcji  <b>Uwzględnij dane o&nbsp;natężeniu ruchu drogowego</b>.
@@ -124,13 +124,15 @@
             </p>
             <p>Uwaga: kiedy pojazd wyjeżdża z&nbsp;punktu początkowego, upływa czas i&nbsp;zmieniają się warunki drogowe. Narzędzie Połącz punkty początkowe z&nbsp;docelowymi uwzględnia te zmienne, jeśli zaznaczono opcję  <b>Uwzględnij dane o&nbsp;natężeniu ruchu drogowego</b>, jednak nie wszystkie regiony przekazują dane o&nbsp;ruchu drogowym. Aby dowiedzieć się, czy ta usługa jest obsługiwana na badanym obszarze, w oknie narzędzia kliknij łącze <b>Sprawdź dostępność</b>.
             </p>
+            <p>Narzędzie  <b>Czas przejazdu samochodem ciężarowym</b> może korzystać z dynamicznych prędkości podr&oacute;ży ustalanych na podstawie danych o ruchu drogowym, przy czym nie będą przekraczane wynikające z przepis&oacute;w ograniczenia prędkości obowiązujące dla samochod&oacute;w ciężarowych. Jeśli na przykład dynamiczna prędkość ustalona dla danej drogi na podstawie danych o aktualnym natężeniu ruchu drogowego wynosi 105 km/h, ale ograniczenie prędkości dla samochod&oacute;w ciężarowych na tej drodze to 90 km/h, w obliczeniach zostanie użyta wartość 90 km/h.
+            </p>
         </div>
     </div>
     <div id="outputLayer">
         <div><h2>Nazwa warstwy wynikowej</h2></div>
         <hr/>
         <div>
-            <p>Nazwa warstwy obiekt&oacute;w, kt&oacute;ra zostanie utworzona w obszarze  <b>Moje zasoby</b> i dodana do mapy. Jeśli warstwa obiekt&oacute;w już istnieje, wyświetlony zostanie komunikat z&nbsp;prośbą o&nbsp;podanie innej nazwy. Ta warstwa obiekt&oacute;w będzie zawierała warstwę dla każdego z następujących element&oacute;w: tras, nieprzypisanych punkt&oacute;w początkowych i nieprzypisanych punkt&oacute;w docelowych, jeśli niekt&oacute;rych punkt&oacute;w początkowych nie można połączyć z ich punktami docelowymi.
+            <p>Nazwa warstwy obiektowej, kt&oacute;ra zostanie utworzona w obszarze  <b>Moje zasoby</b> i dodana do mapy. Jeśli warstwa obiektowa już istnieje, wyświetlony zostanie komunikat z&nbsp;prośbą o&nbsp;podanie innej nazwy. Ta warstwa obiektowa będzie zawierała warstwę dla każdego z następujących element&oacute;w: tras, nieprzypisanych punkt&oacute;w początkowych i nieprzypisanych punkt&oacute;w docelowych, jeśli niekt&oacute;rych punkt&oacute;w początkowych nie można połączyć z ich punktami docelowymi.
             </p>
             <p>Jeśli zostanie wybrana opcja  <b>Dołącz warstwy trasy</b>, każda trasa z wynik&oacute;w zostanie także zapisana jako warstwa trasy. Warstwa trasy zawiera wszystkie informacje dotyczące określonej trasy, takie jak przystanki przypisane do trasy i wskaz&oacute;wki dojazdu. Tworzenie warstw tras jest przydatne, jeśli chcesz udostępnić poszczeg&oacute;lne trasy innym członkom w instytucji lub jeśli chcesz dodatkowo zmodyfikować trasy przy użyciu przycisku <b>Wskaz&oacute;wki dojazdu</b> w przeglądarce map. Unikalna nazwa każdej warstwy trasy jest tworzona poprzez dodanie nazwy trasy wygenerowanej podczas wykonywania analizy do prefiksu będącego nazwą warstwy obiekt&oacute;w.
             </p>

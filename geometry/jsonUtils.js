@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
 define(["dojo/_base/lang","dojo/has","../kernel","./Point","./Polyline","./Polygon","./Multipoint","./Extent"],function(e,o,n,i,t,r,s,y){function l(e){return void 0!==e.x&&void 0!==e.y?new i(e):void 0!==e.paths?new t(e):void 0!==e.rings?new r(e):void 0!==e.points?new s(e):void 0!==e.xmin&&void 0!==e.ymin&&void 0!==e.xmax&&void 0!==e.ymax?new y(e):void 0}function m(e){return e instanceof i?"esriGeometryPoint":e instanceof t?"esriGeometryPolyline":e instanceof r?"esriGeometryPolygon":e instanceof y?"esriGeometryEnvelope":e instanceof s?"esriGeometryMultipoint":null}function d(e){return"esriGeometryPoint"===e?i:"esriGeometryPolyline"===e?t:"esriGeometryPolygon"===e?r:"esriGeometryEnvelope"===e?y:"esriGeometryMultipoint"===e?s:null}var u={fromJson:l,getJsonType:m,getGeometryType:d};return o("extend-esri")&&e.mixin(e.getObject("geometry",!0,n),u),u});

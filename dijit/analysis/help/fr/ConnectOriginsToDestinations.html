@@ -44,7 +44,7 @@
         <h2>Relier les origines aux destinations</h2><p/>
         <h2><img src="../images/GUID-7266D30B-0250-4132-B1A5-9B59F0212FAD-web.png" alt="Relier les origines aux destinations"></h2>
         <hr/>
-    <p>  Relier les origines aux destinations permet de mesurer le temps de trajet ou la distance &agrave; parcourir entre des paires de points. L'outil peut signaler des distances en ligne droite, des distances bas&eacute;es sur un mode de d&eacute;placement comme la marche ou la conduite, ou des dur&eacute;es de voyage bas&eacute;es sur le mode de d&eacute;placement. Cet outil vous permet d'effectuer les actions suivantes&nbsp;:
+    <p>Relier les origines aux destinations permet de mesurer le temps de trajet ou la distance &agrave; parcourir entre des paires de points. L'outil peut signaler des distances en ligne droite, des distances bas&eacute;es sur un mode de d&eacute;placement comme la marche ou la conduite, ou des dur&eacute;es de voyage bas&eacute;es sur le mode de d&eacute;placement. Cet outil vous permet d'effectuer les actions suivantes&nbsp;:
     </p>
     <p>
         <ul>
@@ -57,7 +57,7 @@
         </ul>
         
     </p>
-    <p>Vous indiquez les points de d&eacute;part et d'arriv&eacute;e et l'outil renvoie une couche contenant des lignes d'itin&eacute;raire, notamment des mesures, entre les origines et les destinations appari&eacute;es.  
+    <p>Vous indiquez les points de d&eacute;part et d'arriv&eacute;e et l'outil renvoie une couche contenant des lignes d'itin&eacute;raire, notamment des mesures, entre les origines et les destinations appari&eacute;es. 
     </p>
     <p>Si l'option  <b>Utiliser l'&eacute;tendue courante de la carte</b> est s&eacute;lectionn&eacute;e, seules les entit&eacute;s qui sont visibles au sein de l'&eacute;tendue courante de la carte seront prises en compte dans l'analyse.  Si l'option n'est pas s&eacute;lectionn&eacute;e, toutes les entit&eacute;s qui se trouvent dans la couche en entr&eacute;e seront prises en compte, m&ecirc;me si elles se trouvent en dehors de l'&eacute;tendue courante de la carte.
     </p>
@@ -98,7 +98,7 @@
             
             <p>Indiquez si vous souhaitez relier les origines aux destinations gr&acirc;ce &agrave; la distance en ligne droite ou un mode de d&eacute;placement. Les itin&eacute;raires en sortie suivront les routes ou voies et respecteront les r&egrave;gles en vigueur, par exemple les rues en sens unique et l'interdiction de faire demi-tour pour les voitures ou les camions.  Les modes de d&eacute;placement &agrave; votre disposition sont d&eacute;termin&eacute;s par l'administrateur de votre organisation.  
             </p>
-            <p>Lorsque vous choisissez  <b>Temps de trajet</b>, des options vous permettent de choisir comment mesurer le temps de conduite.
+            <p>Lorsque vous choisissez l&rsquo;option  <b>Driving Time (Temps de trajet)</b>, <b>Rural Driving Time (Temps de trajet en zone rurale)</b> ou <b>Trucking Time (Temps de trajet pour camions)</b>, vous disposez d&rsquo;options concernant la mani&egrave;re de mesurer le temps de trajet.
                 <ul>
                     <li>
                         <p>D&eacute;cochez  <b>Utiliser le trafic</b> pour trouver les itin&eacute;raires les plus rapides selon des vitesses constantes.
@@ -108,7 +108,7 @@
                     </li>
                     <li>
                         <p>Cochez  <b>Utiliser le trafic</b> pour trouver les itin&eacute;raires les plus rapides en fonction d'une heure de d&eacute;part pr&eacute;cise et de conditions de trafic changeantes. Si vous choisissez l'option <b>Trafic r&eacute;el</b>, l'heure de d&eacute;part &agrave; partir des origines est d&eacute;finie sur l'heure actuelle, et les vitesses de trafic actuelles et pr&eacute;vues sont issues de capteurs et de flux afin d'&eacute;tablir les itin&eacute;raires. Les vitesses de trafic pr&eacute;vues sont calcul&eacute;es en faisant r&eacute;f&eacute;rence aux vitesses du trafic r&eacute;el, aux vitesses historiques et aux &eacute;v&eacute;nements actuels (la m&eacute;t&eacute;o par exemple). Les vitesses de trafic &eacute;tant pr&eacute;vues sur 12&nbsp;heures, vous pouvez d&eacute;placer le curseur pour d&eacute;finir l'heure de d&eacute;part jusqu'&agrave;  12&nbsp;heures &agrave; l'avance. </p>
-                        <p>Utilisez ces param&egrave;tres de trafic r&eacute;el pour identifier les temps de trajet en partant maintenant, en partant dans une heure, et ainsi de suite.
+                        <p>Utilisez ces param&egrave;tres de trafic r&eacute;el afin de trouver les heures de d&eacute;part imm&eacute;diat, de d&eacute;part dans une heure, etc.
                         </p>
                     </li>
                     <li>
@@ -123,6 +123,8 @@
                 
             </p>
             <p>Notez qu'au fur et &agrave; mesure qu'un v&eacute;hicule s'&eacute;loigne de l'origine, le temps s'&eacute;coule et les conditions de trafic &eacute;voluent. L'outil Relier les origines aux destinations tient compte de ces variations lorsque vous cochez  <b>Utiliser le trafic</b>. Cependant, toutes les r&eacute;gions ne prennent pas en charge le trafic. Cliquez sur le lien <b>Voir la disponibilit&eacute;</b> sur l'outil pour savoir si le trafic est disponible dans votre zone d'&eacute;tude.
+            </p>
+            <p>L&rsquo;option  <b>Trucking Time (Temps de trajet pour camions)</b> peut utiliser les vitesses de d&eacute;placement en fonction du trafic mais sans d&eacute;passer la limite de vitesse l&eacute;gale des camions. Par exemple, si la vitesse pour une rue en fonction du trafic en temps r&eacute;el est de 65&nbsp;miles par heure mais que la limite de vitesse des camions pour cette rue est de 55&nbsp;miles par heure, le calcul utilise 55&nbsp;miles par heure pour cette rue.
             </p>
         </div>
     </div>

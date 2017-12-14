@@ -26,7 +26,7 @@
 }
 
 .esriGEConditionalStylingLegend_matchIndicator {
-    background-image: url("./images/arrows/leftArrow.svg");
+    background-image: url("./images/arrows/rightArrow.svg");
     background-size: 8px;
     background-repeat: no-repeat;
     background-position: center;

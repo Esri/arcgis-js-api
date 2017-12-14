@@ -42,22 +42,22 @@
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Beregn tæthed</h2><p/>
-        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Calculate Density"></h2>
+        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Beregn t&aelig;thed"></h2>
         <hr/>
-    <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas classified from least dense to most dense.   
+    <p>V&aelig;rkt&oslash;jet Beregn t&aelig;thed opretter et t&aelig;thedskort ud fra punktobjekter ved at sprede kendte kvantiteter af et f&aelig;nomen (repr&aelig;senteret som punktattributter) p&aring; kortet. Resultatet er et lag af omr&aring;der klassificeret fra mindste til st&oslash;rste t&aelig;thed.   
 
     </p>
-    <p>For point input, each point should represent the location of some event or incident, and the result layer represents a count of the incident per unit area.  A higher density value in a new location means that there are more points near that location.  In many cases, the result layer can be interpreted as a risk surface for future events. For example, if the input points represent locations of lightning strikes, the result layer can be interpreted as a risk surface for future lightning strikes.
+    <p>Ved angivelse af punkter skal hvert punkt repr&aelig;sentere placeringen af en begivenhed eller h&aelig;ndelse, og resultatlaget skal repr&aelig;sentere antallet af h&aelig;ndelser pr. enhed omr&aring;de. En h&oslash;j v&aelig;rdi for t&aelig;thed p&aring; en ny placering betyder, at der er flere punkter n&aelig;r placeringen. I mange tilf&aelig;lde kan resultatlaget fortolkes som en risikoflade for fremtidige begivenheder. Hvis de angivne punkter f.eks. repr&aelig;senterer placeringer af lynnedslag, kan resultatlaget fortolkes som en risikoflade for fremtidige lynnedslag.
     </p>
-    <p>Other use cases of this tool include the following:
+    <p>Andre situationer, hvor dette v&aelig;rkt&oslash;j kan anvendes, er:
         <ul>
-            <li>Creating crime-density maps to help police departments properly allocate resources to high crime areas.
+            <li>Oprettelse af t&aelig;thedskort for kriminalitet, som kan hj&aelig;lpe politikredsene med at allokere ressourcer til omr&aring;der med h&oslash;j kriminalitet.
             </li>
-            <li>Calculating densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to decide where new hospitals should be built.
+            <li>Beregning af t&aelig;theder af hospitaler inden for en landsdel. Resultatlaget vil vise omr&aring;der med stor eller lille tilg&aelig;ngelighed til hospitaler, og disse oplysninger kan anvendes til at beslutte, hvor der skal bygges nye hospitaler.
             </li>
-            <li>Identifying areas that are at high risk of forest fires based on historical locations of forest fires.
+            <li>Identifikation af omr&aring;der med h&oslash;j risiko for skovbrande baseret p&aring; steder, hvor der historisk set har v&aelig;ret skovbrande.
             </li>
-            <li>Locating communities that are far from major highways in order to plan where new roads should be constructed.
+            <li>Lokalisering af samfund, der ligger langt fra hovedveje, for at planl&aelig;gge, hvor der skal anl&aelig;gges nye veje.
             </li>
         </ul>
         
@@ -68,7 +68,7 @@
         <div><h2>Vælg et punktag, som tætheden skal beregnes ud fra</h2></div>
         <hr/>
         <div>
-            <p>The point layer on which the density will be calculated.
+            <p>Det punktlag, som t&aelig;theden beregnes ud fra.
             </p>
             <p>Udover at du kan v&aelig;lge et lag i dit kort, kan du v&aelig;lge  <b>Gennemse lag</b> nederst p&aring; rullelisten for at g&aring; til dit indhold til et big data-fildelingsdatas&aelig;t eller -vektorlag.
             </p>
@@ -78,9 +78,9 @@
         <div><h2>Vælg ét eller flere felter, som du vil beregne tætheden for (valgfrit)</h2></div>
         <hr/>
         <div>
-            <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
+            <p>Opret et eller flere felter, der angiver antallet h&aelig;ndelser pr. position. Hvis du f.eks. har punkter, der repr&aelig;senterer byer, kan du bruge et felt, der repr&aelig;senterer byens befolkning, som et t&aelig;llerfelt, og befolkningst&aelig;thedslaget, som er resultatet, vil beregne store befolkningst&aelig;theder n&aelig;r byer med h&oslash;je befolkningstal.
             </p>
-            <p>The density for the count of points will always be calculated.   If no fields are selected, each location will be assumed to represent a single count.
+            <p>T&aelig;theden for antallet af punkter vil altid blive beregnet.   Hvis der ikke er valgt nogen felter, antages det, at hver position repr&aelig;senterer et enkelt antal.
             </p>
         </div>
     </div>
@@ -88,7 +88,7 @@
         <div><h2>Vælg en beholderform</h2></div>
         <hr/>
         <div>
-            <p>The shape of bins that points are aggregated into and used for the density calculation.
+            <p>Formen p&aring; de beholdere, som punkterne aggregeres til, og som benyttes til at beregne t&aelig;theden.
             </p>
             <p>Analyse ved hj&aelig;lp af  <b>kvadratiske</b> eller <b>sekskantede</b> beholdere kr&aelig;ver et projiceret koordinatsystem. Du kan indstille <b>koordinatsystem til behandling</b> i <b>Analysemilj&oslash;erne</b>. Hvis dit koordinatsystem til behandling ikke er indstillet til et projiceret koordinatsystem, vil du blive bedt om at indstille det, n&aring;r du benytter funktionen <b>K&oslash;r analyse</b>.
             </p>
@@ -98,7 +98,7 @@
         <div><h2>Vælg beholderstørrelse for aggregering</h2></div>
         <hr/>
         <div>
-            <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
+            <p>St&oslash;rrelsen p&aring; de genererede beholdere. For en kvadratisk beholder repr&aelig;senterer st&oslash;rrelsen h&oslash;jden p&aring; kvadraten. For en sekskantet beholder repr&aelig;senterer st&oslash;rrelsen h&oslash;jden p&aring; sekskanten (fra de parallelle sider).
             </p>
         </div>
     </div>
@@ -106,11 +106,11 @@
         <div><h2>Vælg den tæthedsvægtning, der skal anvendes</h2></div>
         <hr/>
         <div>
-            <p>The type of weighting applied to the density calculation. There are two options:
+            <p>Den type v&aelig;gtning, der anvendes til t&aelig;thedsberegningen. Der er to muligheder:
                 <ul>
-                    <li> <b>Uniform</b>&mdash;This calculates a magnitude per area.
+                    <li> <b>Ensartet</b>&mdash;Beregner en st&oslash;rrelse pr. omr&aring;de.
                     </li>
-                    <li> <b>Kernel</b>&mdash;Applies a kernel function to fit a smooth tapered surface to each point.
+                    <li> <b>Kerne</b>&mdash;Anvender en kernefunktion, der tilpasser en j&aelig;vn overflade til hvert punkt.
                     </li>
                 </ul>
                 
@@ -121,7 +121,7 @@
         <div><h2>Vælg størrelse på lokalområde</h2></div>
         <hr/>
         <div>
-            <p>The size of the area used to calculate the density. The neighborhood size must be larger than the bin size.
+            <p>St&oslash;rrelsen p&aring; det omr&aring;de, der benyttes til at beregne t&aelig;theden. St&oslash;rrelsen p&aring; omgivelserne skal v&aelig;re st&oslash;rre end beholderst&oslash;rrelsen.
             </p>
         </div>
     </div>
@@ -129,7 +129,7 @@
         <div><h2>Vælg outputenheder for tæthed</h2></div>
         <hr/>
         <div>
-            <p>The desired output units of the density values. By default, this is set to square kilometers or square miles based on the default units specified in your profile. If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+            <p>De &oslash;nskede output-enheder for t&aelig;thedsv&aelig;rdierne. Dette indstilles som standard til kvadratkilometer eller kvadrat-miles baseret p&aring; de standardenheder, der er angivet i din profil. Hvis t&aelig;thedsv&aelig;rdierne er meget sm&aring;, kan du &oslash;ge st&oslash;rrelsen af omr&aring;deenhederne (f.eks. &aelig;ndre kvadratmeter til kvadratkilometer), s&aring; der returneres st&oslash;rre v&aelig;rdier. V&aelig;rdierne skalerer kun resultatet.  
 
             </p>
         </div>

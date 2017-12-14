@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Hitung Kolom</h2><p/>
+        <h2><img src="../images/GUID-059C9BE7-7B00-49C8-9917-B0EAEA3DA19D-web.png" alt="Hitung Kolom"></h2>
+        <hr/>
+    <p>Alat ini bekerja dengan layer input untuk menghitung nilai untuk kolom baru atau yang sudah ada. Buat ekspresi Arcade untuk menghitung nilai untuk mengisi fitur.   Jika data Anda diaktifkan waktu dan merupakan tipe waktu instan, Anda secara opsional dapat membuat ekspresi yang merupakan pengingat jalur.
+    </p>
+    <p>Contoh, anggap saja Anda ingin mengubah kolom yang ada yang bernama  <i>TotalSales</i>. Anda ingin kolom tersebut diwakilkan oleh jumlah total penjualan di tahun 2016 dan 2017. Dengan menggunakan kolom tersebut dalam ekspresi, Anda dapat menghitung nilai kolom sebagai <pre>$feature[&quot;Sales2016&quot;] + $feature[&quot;Sales2017&quot;]</pre>.
+    </p>
+    <p>Menggunakan contoh lain, anggap Anda memiliki pengukuran GPS yang mencatat lokasi, waktu, ID bus, dan kecepatan bus di sebuah kota. Kita ingin membuat kolom baru bernama  <i>SpeedFrom3</i> yang merata-ratakan kecepatan 3 pengukuran GPS tercatat terakhir untuk setiap fitur. Untuk kalkulasi ini, kita akan menggunakan penghitungan pengingat jalur, di mana jalur tersebut adalah bus yang ditandai dengan ID bus.    Penghitungan untuk menentukan kecepatan rata-rata 3 langkah waktu sebelumnya dan langkah waktu saat ini adalah <pre>average($track.field[&quot;speed&quot;].history(-4))</pre>.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Pilih layer untuk menghitung nilai kolom untuk</h2></div>
+        <hr/>
+        <div>
+            <p>Titik, garis, area, atau tabel yang akan dihitung nilai kolomnya.  
+            </p>
+            <p>Selain memilih layer dari peta Anda, Anda dapat memilih  <b>Telusuri Layer</b> yang terdapat di bagian paling bawah daftar drop-down ke konten Anda untuk set data yang dibagikan atau feature layer dari big data.
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>Hitung nilai kolom untuk kolom</h2></div>
+        <hr/>
+        <div>
+            <p>Kolom baru atau yang sudah ada yang akan dihitung nilainya dan tipe data kolom tersebut. Jika Anda menghitung nilai pada kolom yang sudah ada, Anda tidak perlu mencocokkan tipe data. 
+            </p>
+        </div>
+    </div>
+    <div id="expression">
+        <div><h2>Buat kondisi ekspresi untuk menandakan awal insiden</h2></div>
+        <hr/>
+        <div>
+            <p>Tambahkan ekspresi menggunakan pembuat ekspresi untuk menghitung nilai kolom. 
+            </p>
+            <p>Contoh, anggap kita ingin menambahkan nilai suatu kolom bernama  <i>pendapat</i>  dan <i>bonus</i>. Untuk melakukannya, tambahkan ekspresi <code>$feature[&quot;pendapatan&quot;] + $feature[&quot;bonus&quot;] </code>.
+            </p>
+        </div>
+    </div>
+    <div id="trackInfo">
+        <div><h2>Ekspresi ini adalah pengingat jalur</h2></div>
+        <hr/>
+        <div>
+            <p>Tentukan apakah ekspresi Anda adalah pengingat jalur. Ekspresi pengingat jalur akan menyertakan format seperti       <pre>$track.field[&quot;fieldname&quot;].history(...)</pre>. Ekspresi pengingat jalur mengharuskan kolom mengidentifikasi masing-masing. Alur dapat disusun dari titik, garis, area atau tabel dan hanya mengharuskan input memiliki pengidentifikasi jalur serta data diaktifkan waktu dengan tipe waktu instan.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nama layer hasil</h2></div>
+        <hr/>
+        <div>
+            <p> Ini adalah nama layer yang akan dibuat di <b>Konten Saya</b> dan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer sudah ada, alat tidak akan berfungsi.
+            </p>
+            <p>Menggunakan kotak drop-down  <b>Simpan hasil di</b>, Anda dapat menentukan nama folder di <b>Konten Saya</b> sebagai tempat penyimpanan hasil.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

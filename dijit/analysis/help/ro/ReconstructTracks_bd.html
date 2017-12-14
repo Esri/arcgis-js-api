@@ -95,6 +95,8 @@
         <div>
             <p>Ecuaţie utilizată pentru a calcula distanţa tampon din jurul obiectelor spaţiale de intrare. Această ecuaţie poate fi generată prin utilizarea calculatorului de buffer şi sunt acceptate operaţii de bază precum adunarea, scăderea, &icirc;nmulţirea şi &icirc;mpărţirea. Valorile sunt calculate utiliz&acirc;nd sistemul de coordonate de analiză. Stratul tematic trebuie să fie &icirc;ntr-un sistem de coordonate proiectate sau referinţa spaţială de procesare trebuie setată pe un sistem de coordonate proiectate utiliz&acirc;nd  <b>Mediul de analiză</b> &icirc;n cazul &icirc;n care este aplicat un buffer.
             </p>
+            <p>O ecuaţie precum  <code>$feature.windspeed (viteză v&acirc;nt) * 1000</code> ar aplica un buffer de 1.000 &icirc;nmulţit cu <i>viteza v&acirc;ntului</i> din c&acirc;mp. Puteţi utiliza mai multe c&acirc;mpuri &icirc;n calculatorul de buffer.
+            </p>
         </div>
     </div>
     <div id="timeSplit">
@@ -102,6 +104,20 @@
         <hr/>
         <div>
             <p>Timp utilizat pentru a &icirc;mpărţi traseele. Dacă punctele sau poligoanele de intrare au o durată mai lungă &icirc;ntre ele dec&acirc;t segmentul de timp, vor fi &icirc;mpărţite &icirc;n trasee diferite.
+            </p>
+            <p>Dacă specificaţi un segment de timp şi un segment de distanţă, traseele vor fi &icirc;mpărţite c&acirc;nd este &icirc;ndeplinită una din condiţii, sau ambele. 
+            </p>
+            <p>Imaginaţi-vă că aveţi obiecte spaţiale punct care reprezintă zboruri de avioane, &icirc;n care c&acirc;mpul de traseu este ID-ul avionului. Avionul ar putea face călătorii multiple şi ar fi reprezentat ca un singur traseu.  Dacă aţi şti că &icirc;ntre zboruri este pauză de 1 oră, aţi putea utiliza  <code>1 oră</code> atunci c&acirc;nd traseul se &icirc;mparte şi fiecare zbor ar fi &icirc;mpărţit &icirc;n propriul traseu.
+            </p>
+        </div>
+    </div>
+    <div id="distanceSplit">
+        <div><h2>Select a distance to split tracks by (optional)</h2></div>
+        <hr/>
+        <div>
+            <p> Distanţa folosită pentru a &icirc;mpărţi traseele. Dacă punctele sau poligoanele de intrare au o distanţă mai mare &icirc;ntre ele dec&acirc;t segmentul de distanţă, vor fi &icirc;mpărţite &icirc;n trasee diferite.
+            </p>
+            <p>Dacă specificaţi un segment de timp şi un segment de distanţă, traseele vor fi &icirc;mpărţite c&acirc;nd este &icirc;ndeplinită una din condiţii, sau ambele. 
             </p>
         </div>
     </div>
@@ -164,7 +180,7 @@
         <div>
             <p> Acesta este numele stratului tematic care va fi creat &icirc;n <b>Resursele mele</b> şi adăugat &icirc;n hartă.  Numele implicit se bazează pe numele instrumentului şi numele stratului tematic de intrare. Dacă stratul tematic există deja, instrumentul va eşua.
             </p>
-            <p>Utiliz&acirc;nd caseta derulantă  <b>Salvare rezultat &icirc;n</b>, puteţi specifica numele unui director din <b>Resursele mele</b> &icirc;n care va fi salvat rezultatul.
+            <p>Utiliz&acirc;nd caseta derulantă  <b>Salvare rezultat &icirc;n</b> puteţi specifica numele unui director din <b>Resursele mele</b> &icirc;n care va fi salvat rezultatul.
             </p>
         </div>
     </div>

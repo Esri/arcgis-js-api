@@ -41,10 +41,10 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Impostazioni d'ambiente per l'analisi in Portal</h2><p/>
+        <h2>Impostazione dell'ambiente di analisi nel Portal</h2><p/>
         <h2></h2>
         <hr/>
-    <p> Impostazioni d'ambiente per l'analisi in Portal for ArcGIS e  ArcGIS Online. 
+    <p> Impostazioni dell'ambiente di analisi nel Portal for ArcGIS e  ArcGIS Online. 
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -85,17 +85,17 @@
         </div>
     </div>
     <div id="storeAnalysisResults">
-        <div><h2>Memorizza risultati di analisi come feature service</h2></div>
+        <div><h2>Memorizza i risultati delle analisi come feature layer ospitati</h2></div>
         <hr/>
         <div>
             
-            <p>Opzione per specificare se i risultati dell'analisi verranno creati come feature layer o come raccolta di feature.
+            <p>Opzione per specificare se il layer dei risultati creato dall'analisi sar&agrave; una raccolta di feature o un feature layer ospitato. 
             </p>
             <p>
                 <ul>
-                    <li>Selezionata: i risultati dell'analisi verranno creati come feature layer e verr&agrave; creato un elemento nei contenuti personali. Si tratta dell'impostazione predefinita.
+                    <li>Selezionata: i risultati dell'analisi creeranno un feature layer ospitato e verr&agrave; creato un elemento nei contenuti personali. Si tratta dell'impostazione predefinita.
                     </li>
-                    <li>Deselezionata: i risultati dell'analisi verranno creati come raccolta di feature.    Le raccolte di feature sono memorizzate all'interno della mappa Web.
+                    <li>Deselezionata: i risultati dell'analisi verranno creati come raccolta di feature.     
                     </li>
                 </ul>
                 
@@ -115,7 +115,7 @@
                     <li> <b>Come specificato</b>: scegliere il sistema di coordinate per i risultati dell'analisi.   Quando questa opzione &egrave; selezionata, fare clic sull'icona del globo per selezionare da un elenco di sistemi di coordinate noti o aggiungere il WKID del riferimento spaziale nella casella fornita.
                     </li>
                     <li> <b>Layer
-&lt;nome&gt;</b>: scegliere un layer esistente nella mappa Web che verr&agrave; utilizzata per determinare il sistema di coordinate del risultato dell'analisi.
+&lt;nome&gt;</b>: scegliere un layer esistente nella Web Map che verr&agrave; utilizzato per determinare il sistema di coordinate del risultato dell'analisi.
                     </li>
                 </ul>
                 
@@ -137,7 +137,7 @@
                     <li> <b>Come specificato</b>: scegliere il sistema di coordinate per elaborare l'analisi.   Quando questa opzione &egrave; selezionata, fare clic sull'icona del globo per selezionare da un elenco di sistemi di coordinate proiettati noti o aggiungere il WKID del riferimento spaziale nella casella fornita.
                     </li>
                     <li> <b>Layer
-&lt;nome&gt;</b>: scegliere un layer esistente dalla mappa Web.  Il sistema di coordinate del layer scelto servir&agrave; per determinare il sistema di coordinate che verr&agrave; utilizzato per elaborare l'analisi.
+&lt;nome&gt;</b>: scegliere un layer esistente dalla Web Map.  Il sistema di coordinate del layer scelto servir&agrave; per determinare il sistema di coordinate che verr&agrave; utilizzato per elaborare l'analisi.
                     </li>
                 </ul>
                 
@@ -186,8 +186,7 @@
                     </li>
                     <li> <b>Come specificato</b>: specificare un valore numerico per impostare la dimensione della cella. Se questa opzione &egrave; selezionata, il valore predefinito &egrave; 1.
                     </li>
-                    <li> <b>Layer &lt;nome&gt;</b>: imposta
-la dimensione della cella sul layer raster scelto.
+                    <li> <b>Layer &lt;nome&gt;</b>: imposta la dimensione della cella sul layer raster scelto.
                     </li>
                 </ul>
                 
@@ -203,7 +202,7 @@ la dimensione della cella sul layer raster scelto.
             <ul>
                 <li>La maschera pu&ograve; essere un raster o un feature layer.
                 </li>
-                <li>Se la maschera di analisi &egrave; un raster, tutte le celle contenenti un valore verranno considerate per definire la maschera. Le celle in un raster maschera che sono NoData verranno considerate esterne alla maschera e saranno NoData nel layer dei risultati dell'analisi. 
+                <li>Se la maschera di analisi &egrave; un raster, tutte le celle contenenti un valore verranno considerate per definire la maschera. Le celle comprese in un raster usato come maschera che hanno un valore NoData verranno considerate esterne alla maschera e avranno valore NoData anche nel layer dei risultati dell'analisi. 
                 </li>
                 <li>Se la maschera dell'analisi &egrave; un feature layer, sar&agrave; convertito internamente in un raster al momento dell'esecuzione. Per questo motivo, assicurarsi che
  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank"></a> e <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank"></a> siano impostati appropriatamente per l'analisi.
@@ -216,9 +215,9 @@ la dimensione della cella sul layer raster scelto.
         <div><h2>ArcGIS Data Store</h2></div>
         <hr/>
         <div>
-            <p>I risultati GeoAnalytic sono memorizzati in un ArcGIS Data Store ed esposti come un feature layer in  Portal for ArcGIS. Nella maggior parte dei casi, i risultati devono essere memorizzati in uno Spatiotemporal Data Store. Si tratta dell'impostazione predefinita. Di seguito sono riportate le ragioni per memorizzare i risultati in un Data Store relazionale: 
+            <p>I risultati GeoAnalytic sono memorizzati in un ArcGIS Data Store ed esposti come un feature layer in  Portal for ArcGIS. Nella maggior parte dei casi, i risultati devono essere memorizzati in un Data Store spazio-temporale. Si tratta dell'impostazione predefinita. Di seguito sono riportate le ragioni per cui sarebbe preferibile memorizzare i risultati in un Data Store relazionale: 
                 <ul>
-                    <li>Per utilizzare i risultati in collaborazione portale-a-portale
+                    <li>Per utilizzare i risultati nella collaborazione tra portali
                     </li>
                     <li>Per abilitare funzionalit&agrave; di sincronizzazione con i risultati
                     </li>

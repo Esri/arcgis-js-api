@@ -58,17 +58,17 @@
             </p>
             <p>L'analisi utilizzando la relazione spaziale  <b>Vicino</b> richiede un sistema di coordinate proiettate. &Egrave; possibile impostare il <b>Sistema di coordinate di elaborazione</b> negli <b>Ambienti di analisi</b>. Se il sistema di coordinate di elaborazione non &egrave; impostato su un sistema di coordinate proiettate, verr&agrave; chiesto di impostarlo quando si <b>Esegue l'analisi</b>.
             </p>
-            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Sfoglia layer</b> alla base dell'elenco a discesa per cercare una dataset di condivisione file Big Data o un feature layer.
+            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Sfoglia layer</b> alla base dell'elenco a discesa per cercare una dataset di condivisione file Big Data o un Feature Layer.
             </p>
         </div>
     </div>
     <div id="joinLayer">
-        <div><h2>Scegli il layer a cui unire il layer di destinazione</h2></div>
+        <div><h2>Scegli il layer a cui aggiungere il layer di destinazione</h2></div>
         <hr/>
         <div>
             <p>Layer di join con gli attributi che verr&agrave; aggiunto al layer di destinazione.
             </p>
-            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Sfoglia layer</b> alla base dell'elenco a discesa per cercare una dataset di condivisione file Big Data o un feature layer.
+            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Sfoglia layer</b> alla base dell'elenco a discesa per cercare una dataset di condivisione file Big Data o un Feature Layer.
             </p>
         </div>
     </div>
@@ -206,7 +206,7 @@
         <div><h2>Aggiungi statistiche (facoltativo)</h2></div>
         <hr/>
         <div>
-            <p>Se l'operazione join &egrave;   <b>Join uno a uno</b>, &egrave; possibile calcolare le statistiche sulle feature unite. Per impostazione predefinita, tutte le statistiche verranno calcolate.
+            <p>Se l'operazione join &egrave;  <b>Join uno a uno</b>, &egrave; possibile calcolare le statistiche sulle feature unite. Per impostazione predefinita, tutte le statistiche verranno calcolate.
             </p>
             <p>&Egrave; possibile calcolare le statistiche su feature riepilogate. Su campi numerici &egrave; possibile calcolare quanto segue:
                 <ul>
@@ -248,7 +248,7 @@
         <div>
             <p>Applica una condizione a determinati campi. Verranno unite solo le feature con campi che soddisfano queste condizioni.
             </p>
-            <p>Ad esempio, si supponga di voler applicare un join a un dataset solo per le feature in cui  <i>health_spending</i> (Spesa sanitaria) &egrave; maggiore del 20% di <i>income</i> (Reddito).  A tale fine, applicare una condizione di join di <code>target.health_spending &gt; (join.income * .20)</code> utilizzando il campo <i>health_spending</i> dal primo dataset (quello a cui vengono unite le feature) e il campo <i>income</i> dal secondo dataset (quello da unire).
+            <p>Ad esempio, si supponga di voler applicare un join a un dataset solo per le feature in cui  <i>health_spending</i> (Spesa sanitaria) &egrave; maggiore del 20% di <i>income</i> (Reddito).  A tale fine, applicare una condizione di join di <code>$target[&quot;health_spending&quot;] &gt; ($join[&quot;income&quot;] * .20)</code> utilizzando il campo <i>health_spending</i> dal primo dataset (quello a cui vengono unite le feature) e il campo <i>income</i> dal secondo dataset (quello da unire).
             </p>
             <p>Le condizioni di join possono essere applicate utilizzando il calcolatore di espressioni.
             </p>
@@ -258,7 +258,7 @@
         <div><h2>Scegliere il Data Store</h2></div>
         <hr/>
         <div>
-            <p>I risultati GeoAnalytic sono memorizzati in un ArcGIS Data Store ed esposti come un feature layer in  Portal for ArcGIS. Nella maggior parte dei casi, i risultati devono essere memorizzati nello Spatiotemporal Data Store e questa &egrave; l'impostazione predefinita. In alcuni casi, il salvataggio dei risultati nel Data Store relazionale &egrave; un'ottima opzione. Di seguito sono memorizzate le ragioni per memorizzare i risultati nel Data Store relazionale: 
+            <p>I risultati GeoAnalytic sono memorizzati in un ArcGIS Data Store ed esposti come un Feature Layer in  Portal for ArcGIS. Nella maggior parte dei casi, i risultati devono essere memorizzati nello Spatiotemporal Data Store e questa &egrave; l'impostazione predefinita. In alcuni casi, il salvataggio dei risultati nel Data Store relazionale &egrave; un'ottima opzione. Di seguito sono memorizzate le ragioni per memorizzare i risultati nel Data Store relazionale: 
                 <ul>
                     <li>Utilizzare i risultati nella collaborazione da portale a portale.
                     </li>
@@ -272,7 +272,7 @@
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Nome layer di risultati</h2></div>
+        <div><h2>Nome del layer dei risultati</h2></div>
         <hr/>
         <div>
             <p> Questo &egrave; il nome del layer che verr&agrave; creato in <b>I miei contenuti</b> e aggiunto alla mappa.  Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, lo strumento non verr&agrave; eseguito.

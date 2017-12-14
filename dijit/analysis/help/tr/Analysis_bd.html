@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="bdToolbox">
-        <p>Big Data Analytics, analizle ilgili işleri ArcGIS GeoAnalytics Server uygulamanızda dağıtır. Bu, birden &ccedil;ok makine g&uuml;c&uuml; kullanarak daha fazla veriyi daha hızlı analiz etmenize olanak tanır. Aşağıdaki ara&ccedil;lar şu anda kullanılabilir durumdadır:
+        <p>GeoAnalytics, analizle ilgili işleri ArcGIS GeoAnalytics Server uygulamanızda dağıtır. Bu, birden &ccedil;ok makine g&uuml;c&uuml; kullanarak daha fazla veriyi daha hızlı analiz etmenize olanak tanır. Aşağıdaki ara&ccedil;lar şu anda kullanılabilir durumdadır:
             <ul>
                 <li> <b>Noktaları Birleştir</b>
                 </li>
@@ -53,6 +53,8 @@
                 </li>
                 <li> <b>Dahilinde &Ouml;zetle</b>
                 </li>
+                <li> <b>Olayları Algıla</b>
+                </li>
                 <li> <b>Benzer Konumları Bul</b>
                 </li>
                 <li> <b>Yoğunluğu Hesapla</b>
@@ -63,10 +65,14 @@
                 </li>
                 <li> <b>Veri Deposuna Kopyala</b>
                 </li>
+                <li> <b>Alan Hesapla</b>
+                </li>
+                <li> <b>Tablodan Alınan Coğrafi Kod Konumları</b>
+                </li>
             </ul>
             
         </p>
-        <p>Big Data Analytics, hem mekansal hem de zamansal modelleri &ouml;ne &ccedil;ıkararak b&uuml;y&uuml;k miktarda veriyi analiz etmeye odaklıdır. 
+        <p>GeoAnalytics, hem mekansal hem de zamansal modelleri &ouml;ne &ccedil;ıkararak b&uuml;y&uuml;k miktarda veriyi analiz etmeye odaklıdır. 
         </p>
     </div>
     <div id="SummarizeDataCategory" class="largesize">
@@ -92,9 +98,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Noktaları Kümeleme</h2></td>
+                    <td><h2>Toplanan Noktalar</h2></td>
                     <td>
-                    <img src="../images/GUID-6C1620D9-D176-41FA-8283-833D8B1CCCFC-web.png" class="titleImage" alt="Noktaları Birleştir">
+                    <img src="../images/GUID-6C1620D9-D176-41FA-8283-833D8B1CCCFC-web.png" class="titleImage" alt="Toplanan Noktalar">
                     </td>
                 </tr></tbody>
             </table>
@@ -125,11 +131,11 @@
 <hr/>
             <p>Detay katmanlarını veya zamansal verileri kullanarak, girdi katmanları veya tabloları arasındaki belirli ilişkilere g&ouml;re detayları ve kayıtları birleştirebilirsiniz.  Birleştirmeler mekansal, zamansal ve &ouml;znitelik ilişkileri tarafından belirlenir; &ouml;zet istatistikler isteğe bağlı olarak hesaplanabilir.  
             </p>
-            <p> &Ouml;rneğin
+            <p>&Ouml;rneğin
                 <ul>
                     <li>Zaman bilgisiyle birlikte su&ccedil; olaylarının nokta konumları verildiğinde, su&ccedil;ların birbirleriyle arasında 1 kilometrelik bir mekansal ilişki ve 1 saatlik bir zaman diliminde ger&ccedil;ekleşmiş olması koşulu ekleyerek su&ccedil; verilerini kendisiyle birleştirebilir ve alan ve zaman olarak birbirine yakın su&ccedil; olaylarında benzerlik olup olmadığını belirleyebilirsiniz.
                     </li>
-                    <li> N&uuml;fus bilgilerini i&ccedil;eren bir ZIP Kodları tablosu ve konut olarak kullanılan binaları g&ouml;steren alan detayları verildiğinde, her konuta ait bilgileri oluşturmak i&ccedil;in n&uuml;fus bilgilerini konutlarla birleştirebilirsiniz.
+                    <li>N&uuml;fus bilgilerini i&ccedil;eren bir ZIP Kodları tablosu ve konut olarak kullanılan binaları g&ouml;steren alan detayları verildiğinde, her konuta ait bilgileri oluşturmak i&ccedil;in n&uuml;fus bilgilerini konutlarla birleştirebilirsiniz.
                     </li>
                 </ul>
                 
@@ -153,7 +159,7 @@
                 <ul>
                     <li>Nokta konumları ve fırtına &ouml;l&ccedil;&uuml;mleri saati verildiğinde, ortalama r&uuml;zgar hızını ve fırtınanın maksimum r&uuml;zgar basıncını hesaplayabilirsiniz.
                     </li>
-                    <li>100 km'lik kutular kullanarak isim hakkı verilen konumların en y&uuml;ksek ve en d&uuml;ş&uuml;k aylık cirolarını bulun.
+                    <li>Gemi yollarını &ccedil;izgiler olarak yeniden oluşturmak i&ccedil;in gemilerin GPS &ouml;l&ccedil;&uuml;mlerini kullanın.
                     </li>
                 </ul>
                 
@@ -166,7 +172,7 @@
                 <tbody><tr>
                     <td><h2>Öznitelikleri Özetleme</h2></td>
                     <td>
-                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="&Ouml;znitelikleri &Ouml;zetle">
+                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="&Ouml;znitelikleri &Ouml;zetleme diyagramı">
                     </td>
                 </tr></tbody>
             </table>
@@ -208,17 +214,64 @@
             </p>
             <br/>
         </div>
-    <div id="FindLocationsCategory" class="smallsize">
-        <h2>Konum Bul</h2>
+    <div id="FindLocationsCategory" class="regularsize">
+        <h2>Konum Bulma</h2>
         <hr/>
         <p>Bu ara&ccedil;lar, belirlediğiniz bir dizi farklı kriteri karşılayan alanları tanımlamak i&ccedil;in kullanılır.   
             <ul>
-                <li> <b>Benzer Konumları Bul</b>, belirlediğiniz kriterlere g&ouml;re bir ya da daha fazla referans konuma en benzeyen konumları bulur.
+                <li> <b>Olayları Algıla,</b> hangi detayların belirtilen bir şartı karşıladığını belirlemek i&ccedil;in zaman etkili katmanlarla &ccedil;alışır.
+                </li>
+                <li> <b>Tablodan Alınan Coğrafi Kod Konumları,</b> adresleri koordinatlara d&ouml;n&uuml;şt&uuml;r&uuml;r.
+                </li>
+                <li> <b>Benzer Konumları Bul</b> belirlediğiniz kriterlere g&ouml;re bir ya da daha fazla referans konuma en benzeyen konumları bulur.
                 </li>
             </ul>
             
         </p>
     </div>
+        <div id="DetectIncidentsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Olayları Algıla</h2></td>
+                    <td>
+                    <img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" class="titleImage" alt="Olayları Algıla">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> <img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Olayları Algıla">
+            </p>
+            <p>Bu ara&ccedil;, zamanda bir anı g&ouml;steren zaman etkin bir noktalar, &ccedil;izgiler, alanlar/b&ouml;lgeler veya tablolar katmanı ile &ccedil;alışır. Bu ara&ccedil;, par&ccedil;alar adı verilen sıralı olarak d&uuml;zenlenmiş detayları kullanarak, hangi detayların ilgi odağı olaylar olduğunu belirler. Olaylar belirttiğiniz koşullara g&ouml;re belirlenir. 
+            </p>
+            <p>&Ouml;rneğin
+                <ul>
+                    <li>Kategori 4 kasırgalar olan kasırga &ouml;l&ccedil;&uuml;mlerini bir r&uuml;zgar hızı &ouml;zniteliğine dayalı olarak algılar.
+                    </li>
+                    <li>Gemi hareketinin GPS &ouml;l&ccedil;&uuml;mlerini gemi hızını temsil eden bir alanla kullanarak, &ouml;nceki beş &ouml;l&ccedil;&uuml;m&uuml;n ortalamasının 1,5 katından daha b&uuml;y&uuml;k olan &ouml;l&ccedil;&uuml;mleri bulur.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="GeocodeLocationsfromTableTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Tablodan Alınan Coğrafi Kod Konumları</h2></td>
+                    <td>
+                    <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" class="titleImage" alt="Tablodan Alınan Coğrafi Kod Konumları">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" alt="Tablodan Alınan Coğrafi Kod Konumları">
+            </p>
+            <p>Adresleri koordinatlara d&ouml;n&uuml;şt&uuml;r&uuml;r. Bu aracı, b&uuml;y&uuml;k veri dosyası paylaşım tablolarında kullanın.
+            </p>
+            <br/>
+        </div>
         <div id="FindSimilarLocationsTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -232,7 +285,7 @@
 <hr/>
             <p>Belirttiğiniz kriterlere g&ouml;re aday arama katmanınızdaki konumların bir veya birka&ccedil; referans konuma benzerliğini &ouml;l&ccedil;erek benzer konumları bulabilirsiniz. 
             </p>
-            <p> &Ouml;rneğin
+            <p>&Ouml;rneğin 
                 <ul>
                     <li>&Ccedil;alışan sayısını ve yıllık satışları inceleyerek en &ccedil;ok benzer olan on mağazayı bulabilirsiniz.
                     </li>
@@ -262,14 +315,14 @@
                 <tbody><tr>
                     <td><h2>Yoğunluğu Hesaplama</h2></td>
                     <td>
-                    <img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" class="titleImage" alt="Calculate Density">
+                    <img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" class="titleImage" alt="Yoğunluğu Hesapla">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
             <p>Yoğunluğu Hesaplama aracı, bazı olayların bilinen miktarlarını (nokta &ouml;znitelikleri olarak g&ouml;sterilen) haritada dağıtarak nokta detaylı bir yoğunluk haritası oluşturur. Sonu&ccedil;ta ortaya &ccedil;ıkan yoğunluğu g&ouml;steren alanlar katmanıdır.
             </p>
-            <p> &Ouml;rneğin
+            <p>&Ouml;rneğin
                 <ul>
                     <li>B&ouml;lgedeki hastane yoğunluğunu hesaplama. Sonu&ccedil; katmanı, y&uuml;ksek ve d&uuml;ş&uuml;k hastane erişimini g&ouml;sterir ve bu bilgiler yeni hastanelerin yapılması gereken yerleri belirlemek i&ccedil;in kullanılabilir.
                     </li>
@@ -328,7 +381,7 @@
 <hr/>
             <p>Tampon; noktaya, &ccedil;izgiye ya da alan detayına g&ouml;re verilen bir mesafeyi oluşturan alandır.
             </p>
-            <p> &Ouml;rneğin
+            <p>&Ouml;rneğin
                 <ul>
                     <li>Doğrusal nehir detaylarını kullanarak, nehrin genişliğini 50 ile &ccedil;arpabilir ve her nehir i&ccedil;in &ouml;nerilen nehir kıyısı sınırını belirleyebilirsiniz.
                     </li>
@@ -344,13 +397,15 @@
         <hr/>
         <p>Bu ara&ccedil;lar hem g&uuml;nl&uuml;k coğrafi hem de &ccedil;izelgelenen verilerin y&ouml;netimi i&ccedil;in kullanılır.
             <ul>
-                <li> <b>Veri Deposuna Kopyala</b>, verilerinizi ArcGIS Data Store uygulamanıza kopyalar ve web GIS &ouml;ğenizde bir katman oluşturur.
+                <li> <b>Alan Hesapla</b>, yeni bir alan oluşturur veya mevcut bir alanı değiştirir ve i&ccedil;eriklerinizde yeni bir katman oluşturur.
+                </li>
+                <li> <b>Veri Deposuna Kopyala</b>, verilerinizi ArcGIS Data Store uygulamanıza kopyalar ve i&ccedil;eriklerinizde bir katman oluşturur.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="CopyToDataStoreTool" class="regularsize">
+        <div id="CopyToDataStoreTool" class="largesize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -361,12 +416,35 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Bir girdi detayı katmanını veya tablosunu  ArcGIS Data Store i&ccedil;ine kopyalar ve web GIS &ouml;ğenizde bir katman oluşturur. </p>
-            <p> &Ouml;rneğin
+            <p>Bir girdi detayı katmanını veya tablosunu  ArcGIS Data Store i&ccedil;ine kopyalar ve  ArcGIS Enterprise i&ccedil;indeki i&ccedil;eriklerinizde bir katman oluşturur. </p>
+            <p>&Ouml;rneğin
                 <ul>
-                    <li> G&ouml;rselleştirme i&ccedil;in bir big data dosya paylaşımındaki <code>.csv</code> dosyalarını spatiotemporal data store i&ccedil;ine kopyalayabilirsiniz.
+                    <li>G&ouml;rselleştirme i&ccedil;in bir big data dosya paylaşımındaki  <code>.csv</code> dosyalarını spatiotemporal data store i&ccedil;ine kopyalayabilirsiniz.
                     </li>
                     <li>Spatiotemporal data store i&ccedil;inde saklanan ge&ccedil;erli harita yayılımı detaylarını ilişkisel veri deposuna kopyalayın.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="CalculateFieldTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Alan Hesapla</h2></td>
+                    <td>
+                    <img src="../images/GUID-059C9BE7-7B00-49C8-9917-B0EAEA3DA19D-web.png" class="titleImage" alt="Alan Hesapla">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Yeni veya mevcut bir alandaki değerleri hesaplar ve  ArcGIS Enterprise i&ccedil;indeki i&ccedil;eriklerinizde bir katman oluşturur. </p>
+            <p>&Ouml;rneğin
+                <ul>
+                    <li> <i>total (toplam)</i> adlı mevcut bir alanı, <i>total_2016</i>, <i>total_2017</i> ve <i>total_2018</i> alanlarından alınan gelirin toplamı olacak şekilde değiştirin.
+                    </li>
+                    <li> <i>windspeed (r&uuml;zgar hızı)</i> ve <i>pollutant (kirletici)</i> gibi alan değerlerine dayalı tehlike d&uuml;zeylerini kategorize etmek i&ccedil;in yeni bir alan oluşturun.
                     </li>
                 </ul>
                 

@@ -51,17 +51,17 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Elija una capa a la que aplicar la zona de influencia</h2></div>
+        <div><h2>Elegir una capa a la que aplicar la zona de influencia</h2></div>
         <hr/>
         <div>
-            <p>Las entidades de puntos, l&iacute;neas o &aacute;reas que se deben incluir en la zona de influencia. Las capas de entrada deben estar en un sistema de coordenadas proyectado o la referencia espacial de procesamiento debe estar definida en un sistema de coordenadas proyectado mediante  <b>Analysis Environments</b>.
+            <p>Las entidades de puntos, l&iacute;neas o &aacute;reas que se deben incluir en la zona de influencia. Las capas de entrada deben estar en un sistema de coordenadas proyectado o la referencia espacial de procesamiento debe estar definida en un sistema de coordenadas proyectado mediante  <b>Entornos de an&aacute;lisis</b>.
             </p>
-            <p>Adem&aacute;s de elegir una capa en el mapa, puede elegir  <b>Examinar capas</b> en la parte inferior de la lista desplegable para examinar el contenido del dataset o la capa de entidades de un archivo compartido de Big Data.
+            <p>Adem&aacute;s de elegir una capa en el mapa, puede elegir  <b>Examinar capas</b> en la parte inferior de la lista desplegable para examinar el contenido del dataset o la capa de entidades de un archivo compartido de big data.
             </p>
         </div>
     </div>
     <div id="bufferType">
-        <div><h2>Seleccione el tipo de zona de influencia para aplicar</h2></div>
+        <div><h2>Seleccionar el tipo de zona de influencia que se va a aplicar</h2></div>
         <hr/>
         <div>
             <p>Existen tres formas de especificar el tama&ntilde;o de la zona de influencia para las entidades de entrada: 
@@ -70,7 +70,7 @@
                     </li>
                     <li>Especificar un campo de la capa de entrada que contenga el valor de distancia. Puede utilizar un campo de cadena de caracteres o un campo num&eacute;rico. Si no se ha definido una unidad lineal, se utilizar&aacute;n las unidades de la referencia espacial. Si va a utilizar un sistema de coordenadas geogr&aacute;ficas, se asumir&aacute; que el campo sin unidades est&aacute; expresado en metros. 
                     </li>
-                    <li>Cree una expresi&oacute;n con varios campos y operadores matem&aacute;ticos.
+                    <li>Crear una expresi&oacute;n con varios campos y operadores matem&aacute;ticos. Por ejemplo, para crear una zona de influencia 10 veces el valor de un campo denominado  <i>wind_speed</i>, agregue la expresi&oacute;n <i>$feature[&quot;wind_speed&quot;] x 10</i>.
                     </li>
                 </ul>
                 
@@ -78,7 +78,7 @@
         </div>
     </div>
     <div id="method">
-        <div><h2>Seleccione el método de zona de influencia</h2></div>
+        <div><h2>Seleccionar el método de zona de influencia</h2></div>
         <hr/>
         <div>
             <p>Puede optar por utilizar un m&eacute;todo  <b>Planar</b> o un m&eacute;todo <b>Geod&eacute;sico</b>. El m&eacute;todo <b>Planar</b> puede ser m&aacute;s r&aacute;pido y es apropiado para an&aacute;lisis locales sobre datos proyectados. El m&eacute;todo <b>Geod&eacute;sico</b> es apropiado para &aacute;reas grandes y para cualquier sistema de coordenadas geogr&aacute;ficas.
@@ -86,7 +86,7 @@
         </div>
     </div>
     <div id="dissolveOption">
-        <div><h2>Seleccione el tipo de método de disolución</h2></div>
+        <div><h2>Seleccionar el tipo de método de disolución</h2></div>
         <hr/>
         <div>
             <p>Opciones para especificar el m&eacute;todo de disolver.   Si ha elegido un m&eacute;todo de disolver, tendr&aacute; la opci&oacute;n de crear &aacute;reas multiparte o de una sola parte y podr&aacute; calcular estad&iacute;sticas bas&aacute;ndose en los campos proporcionados.
@@ -121,7 +121,7 @@
         </div>
     </div>
     <div id="summaryFields">
-        <div><h2>Agregue estadísticas (opcional)</h2></div>
+        <div><h2>Agregar estadísticas (opcional)</h2></div>
         <hr/>
         <div>
             <p> Puede calcular estad&iacute;sticas sobre las entidades resumidas. En los campos num&eacute;ricos puede calcular lo siguiente:
@@ -138,7 +138,7 @@
                     </li>
                     <li>Rango: el rango de un campo num&eacute;rico. Se calcula como los valores m&iacute;nimos restados del valor m&aacute;ximo. El rango de [0, nulo, 1] es 1. El rango de [nulo, 4] es 0.
                     </li>
-                    <li>Varianza: la varianza de un campo num&eacute;rico en una pista. La varianza de [1] es nulo. La varianza de [nulo, 1,1,1] es 1.
+                    <li>Varianza: la varianza de un campo num&eacute;rico en un recorrido. La varianza de [1] es nulo. La varianza de [nulo, 1,1,1] es 1.
                     </li>
                     <li>Desviaci&oacute;n est&aacute;ndar: la desviaci&oacute;n est&aacute;ndar de un campo num&eacute;rico. La desviaci&oacute;n est&aacute;ndar de [1] es nulo. La desviaci&oacute;n est&aacute;ndar de [nulo, 1,1,1] es 1. 
                     </li>
@@ -157,7 +157,7 @@
         </div>
     </div>
     <div id="dataStore">
-        <div><h2>Seleccione un ArcGIS Data Store en el que guardar los resultados</h2></div>
+        <div><h2>Seleccionar un ArcGIS Data Store en el que guardar los resultados</h2></div>
         <hr/>
         <div>
             <p>Los resultados de GeoAnalytics se almacenan en un ArcGIS Data Store y se exponen como capa de entidades en  Portal for ArcGIS. En la mayor&iacute;a de los casos, conviene almacenar los resultados en el almac&eacute;n de datos espaciotemporal y este es el predeterminado. En algunos casos, guardar los resultados en el almac&eacute;n de datos relacional es una buena opci&oacute;n. A continuaci&oacute;n, se exponen motivos por los que resulta buena idea guardar resultados en el almac&eacute;n de datos relacional: 

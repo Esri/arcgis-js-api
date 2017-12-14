@@ -95,6 +95,8 @@
         <div>
             <p>Equation utilis&eacute;e pour calculer la distance de la zone tampon autour des entit&eacute;s en entr&eacute;e. Cette &eacute;quation peut &ecirc;tre g&eacute;n&eacute;r&eacute;e &agrave; l'aide de la calculatrice de zone tampon. En outre, les op&eacute;rations &eacute;l&eacute;mentaires, telles que l'ajout, la soustraction, la multiplication et la division sont prises en charge. Les valeurs sont calcul&eacute;es &agrave; l'aide du syst&egrave;me de coordonn&eacute;es d'analyse. La couche doit se trouver dans un syst&egrave;me de coordonn&eacute;es projet&eacute;es ou la r&eacute;f&eacute;rence spatiale de traitement doit &ecirc;tre d&eacute;finie sur un syst&egrave;me de coordonn&eacute;es projet&eacute;es &agrave; l'aide des  <b>environnements d'analyse</b> si une zone tampon est appliqu&eacute;e.
             </p>
+            <p>Une &eacute;quation telle que  <code>$feature.windspeed * 1000</code> applique une zone tampon de 1&nbsp;000 multipli&eacute;e par la <i>vitesse du vent</i> du champ. Vous pouvez utiliser plusieurs champs dans la calculatrice de zone tampon.
+            </p>
         </div>
     </div>
     <div id="timeSplit">
@@ -102,6 +104,20 @@
         <hr/>
         <div>
             <p>Temps utilis&eacute; pour fractionner les pistes. Si les points ou polygones en entr&eacute;e sont s&eacute;par&eacute;s par une dur&eacute;e plus longue que la fraction temporelle, ils sont fractionn&eacute;s en diff&eacute;rentes pistes.
+            </p>
+            <p>Si vous sp&eacute;cifiez une fraction temporelle et une distance temporelle, les pistes sont fractionn&eacute;es lorsque l&rsquo;une des conditions ou les deux sont &eacute;tablies. 
+            </p>
+            <p>Imaginez que vous poss&eacute;dez des entit&eacute;s ponctuelles repr&eacute;sentant des vols a&eacute;riens, o&ugrave; le champ de piste est un ID d'avion. Cet avion peut effectuer plusieurs voyages et est repr&eacute;sent&eacute; sous la forme d'une piste unique.  Si vous savez qu'une pause d'une heure s&eacute;pare chaque vol, vous pouvez utiliser  <code>1&nbsp;heure</code> comme fraction pour les pistes. Chaque vol est alors fractionn&eacute; dans sa propre piste.
+            </p>
+        </div>
+    </div>
+    <div id="distanceSplit">
+        <div><h2>Sélectionner une distance en fonction de laquelle fractionner les pistes (facultatif)</h2></div>
+        <hr/>
+        <div>
+            <p> Distance utilis&eacute;e pour fractionner les pistes. Si les points ou polygones en entr&eacute;e sont s&eacute;par&eacute;s par une dur&eacute;e plus large que la distance temporelle, ils sont fractionn&eacute;s en diff&eacute;rentes pistes.
+            </p>
+            <p>Si vous sp&eacute;cifiez une fraction temporelle et une distance temporelle, les pistes sont fractionn&eacute;es lorsque l&rsquo;une des conditions ou les deux sont &eacute;tablies. 
             </p>
         </div>
     </div>
@@ -162,9 +178,9 @@
         <div><h2>Nom de la couche de résultat</h2></div>
         <hr/>
         <div>
-            <p> Il s'agit du nom de la couche qui sera cr&eacute;&eacute;e dans votre page <b>Mon contenu</b> et ajout&eacute;e &agrave; la carte.  Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, l'outil &eacute;choue.
+            <p> Il s&rsquo;agit du nom de la couche qui sera sur dans votre page <b>My Content (Mon contenu)</b> et ajout&eacute;e &agrave; la carte. Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, l'outil &eacute;choue.
             </p>
-            <p>La zone de liste d&eacute;roulante  <b>Enregistrer le r&eacute;sultat dans</b> vous permet de sp&eacute;cifier le nom d'un dossier dans <b>Mon contenu</b> o&ugrave; le r&eacute;sultat sera enregistr&eacute;.
+            <p>La zone de liste d&eacute;roulante  <b>Save result in (Enregistrer le r&eacute;sultat dans)</b> vous permet de sp&eacute;cifier le nom d&rsquo;un dossier dans <b>My content (Mon contenu)</b> o&ugrave; le r&eacute;sultat sera enregistr&eacute;.
             </p>
         </div>
     </div>

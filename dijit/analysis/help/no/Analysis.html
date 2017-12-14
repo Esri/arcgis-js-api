@@ -185,7 +185,7 @@
     <div id="FindLocationsCategory" class="largesize">
         <h2>Finn lokasjoner</h2>
         <hr/>
-        <p>Disse verkt&oslash;yene brukes til &aring; identifisere omr&aring;der som oppfyller en rekke ulike kriterier som du angir. Kriteriene kan baseres p&aring; attributtsp&oslash;rringer (for eksempel ledige tomter) og geografiske sp&oslash;rringer (for eksempel innenfor 1 kilometer fra en elv). Omr&aring;dene som blir funnet, kan velges fra eksisterende geoobjekter (for eksempel eksisterende tomter), eller det kan opprettes nye geoobjekter der alle kravene oppfylles.
+        <p>Disse verkt&oslash;yene brukes til &aring; identifisere eller opprette geoobjekter som tilfredsstiller kriteriene du spesifiserer. Typen kriterier vil avhenge av hvilket verkt&oslash;y du bruker: Kriteriene kan for eksempel v&aelig;re basert p&aring; geografiske eller attributtsp&oslash;rringer, synlige omr&aring;der fra en bestemt h&oslash;yde, nedstr&oslash;ms omr&aring;der for bestemte dreneringspunkter, eller kj&oslash;retid under bestemte trafikkforhold.
             <ul>
                 <li> <b>Velg beste fasiliteter</b> velger de beste lokasjonene for fasiliteter ved &aring; tilordne lokasjoner der det er en ettersp&oslash;rsel etter fasilitetene som oppfyller en gitt m&aring;lsetting.
                 </li>
@@ -195,16 +195,18 @@
                 </li>
                 <li> <b>Utled nye plasseringer</b> oppretter nye omr&aring;der fra plasseringer i studieomr&aring;det som oppfyller en rekke kriterier.
                 </li>
+                <li class="OnlineOnly"> <b>Finn tyngdepunkter</b> finner det representative sentrum (tyngdepunktet) for innlagte geoobjekter. 
+                </li>
                 <li> <b>Finn eksisterende plasseringer</b> s&oslash;ker etter eksisterende omr&aring;der i et lag som oppfyller en serie med kriterier.
                 </li>
                 <li> <b>Finn lignende plasseringer</b> finner lokasjoner som er mest like eller mest ulike &eacute;n eller flere referanselokasjoner basert p&aring; kriterier du har angitt.
                 </li>
-                <li class="PortalOnly"> <b>Geokod lokasjoner fra tabell</b> konverterer adresser fra en tabell til koordinater.
+                <li class="PortalOnly"> <b>Geokod lokasjoner fra tabell</b> konverterer adresser fra en tabell til koordinater. 
                 </li>
                 <li> <b>Spor nedstr&oslash;m</b> finner str&oslash;mningslinjene i nedstr&oslash;ms retning fra lokasjonene du angir.
                 </li>
             </ul>
-             
+            
         </p>
         <p> 
         </p>
@@ -266,6 +268,21 @@
             </table>
 <hr/>
             <p>Oppretter nye geoobjekter i studieomr&aring;det som oppfyller en serie med kriterier angir. Kriteriene kan baseres p&aring; attributtsp&oslash;rringer (for eksempel ledige tomter) og geografiske sp&oslash;rringer (for eksempel innenfor 1,6 kilometer fra en elv). 
+            </p>
+            <br/>
+        </div>
+        <div id="FindCentroidsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Finn tyngdepunkter</h2></td>
+                    <td>
+                    <img src="../images/GUID-75D9AF75-68C3-48BF-8062-D5499BD06978-web.png" class="titleImage" alt="Finn tyngdepunkter">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Finner det representative sentrum (tyngdepunktet) for hvert innlagte multipunkt, linje eller omr&aring;degeoobjekt.
             </p>
             <br/>
         </div>

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
 define(["dojo/_base/lang","dojo/has","../../kernel"],function(e,a,i){var r={BIGDATA:"Big Data File Share",CSV:"CSV",XLS:"Microsoft Excel",FS:"Feature Service",MS:"Map Service",IS:"Image Service",TABLE:"Table",BTABLE:"table"};return a("extend-esri")&&e.setObject("dijit.analysis.itemTypes",r,i),r});

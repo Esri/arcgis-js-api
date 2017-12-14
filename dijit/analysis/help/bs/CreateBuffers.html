@@ -46,9 +46,9 @@
         <hr/>
     <p>Pojas je poligon koji pokriva danu udaljenost od točke, linije ili poligonalnog geoobjekta. 
     </p>
-    <p>Pojasevi se obično upotrebljavaju za stvaranje poligona koji se mogu dodatno analizirati uporabom alata kao &scaron;to je Preklapanje slojeva. Na primjer, ako je pitanje &bdquo;Koje se zgrade nalaze unutar jedne milje od &scaron;kole?&rdquo;, odgovor se može pronaći tako da stvorite pojas od jedne milje oko &scaron;kole i upotrijebite alat Preklapanje slojeva za preklapanje pojaseva sa slojem koji sadrži nacrte zgrada.  Konačni je rezultat sloj zgrada koje se nalaze unutar jedne milje od &scaron;kole.  
+    <p>Pojasevi se obično upotrebljavaju za stvaranje poligona koji se mogu dodatno analizirati uporabom alata kao &scaron;to je Preklapanje slojeva. Na primjer, ako je pitanje &bdquo;Koje se zgrade nalaze unutar jedne milje od &scaron;kole?&rdquo;, odgovor se može pronaći tako da stvorite pojas od jedne milje oko &scaron;kole i upotrijebite alat Preklapanje slojeva za preklapanje pojaseva sa slojem koji sadrži nacrte zgrada. Konačni je rezultat sloj zgrada koje se nalaze unutar jedne milje od &scaron;kole.  
     </p>
-    <p>Ako je označena opcija  <b>Upotrijebi trenutačni obuhvat karte</b>, samo će se geoobjekti koji su vidljivi unutar trenutačnog obuhvata karte upotrijebiti u pojasu.  Ako opcija nije označena, svi geoobjekti u sloju unosa upotrijebit će se u pojasu, čak i ako se nalaze izvan trenutačnog obuhvata karte.
+    <p>Ako je označena opcija  <b>Upotrijebi trenutačni obuhvat karte</b>, samo će se geoobjekti koji su vidljivi unutar trenutačnog obuhvata karte upotrijebiti u pojasu. Ako opcija nije označena, svi geoobjekti u ulaznom sloju upotrijebit će se u pojasu, čak i ako se nalaze izvan trenutačnog obuhvata karte.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -66,7 +66,7 @@
         <div><h2>Unesite veličinu pojasa</h2></div>
         <hr/>
         <div>
-            <p>Možete unijeti jednu vrijednost udaljenosti ili vi&scaron;e vrijednosti, odvajajući svaku vrijednost razmakom.  Također možete odrediti atribut na sloju unosa koji sadrži vrijednost udaljenosti tako da kliknete na  <b>Polje</b>.
+            <p>Možete unijeti jednu vrijednost udaljenosti ili vi&scaron;e vrijednosti, odvajajući svaku vrijednost razmakom. Također možete odrediti atribut na ulaznom sloju koji sadrži vrijednost udaljenosti tako da kliknete na  <b>Polje</b>.
             </p> 
         </div>
     </div>
@@ -74,7 +74,7 @@
         <div><h2>Opcije</h2></div>
         <hr/>
         <div>
-            <p>Odaberite kako želite postupiti s pojasevima koji se preklapaju. Moguće je zadržati sve zajedničke poligone (preklapanje) ili kombinirane poligone (uklanjanje) svakog pojasa koji se nalazi iznad drugog pojasa.
+            <p>Odaberite kako želite postupiti s pojasevima koji se preklapaju. Moguće je zadržati sve zajedničke poligone (preklapanje) ili kombinirane poligone (uklanjanje) svakog pojasa koji se nalazi iznad drugog pojasa. Kada upotrebljavate  <b>Ukloni</b>, svi će se pojasevi međusobno spojiti u jedan geoobjekt s vi&scaron;e dijelova te će nestati sva preklapanja.
             </p>  
             <p> Kada upotrebljavate vi&scaron;e udaljenosti, možete odabrati kako predstaviti udaljenost od posljednje udaljenosti pojasa; primjerice, ako su udaljenosti 10 i 14:
                 <ul>
@@ -91,7 +91,7 @@
         <div><h2>Opcije</h2></div>
         <hr/>
         <div>
-            <p>Odaberite kako želite postupiti s pojasevima koji se preklapaju. Moguće je zadržati sve zajedničke poligone (preklapanje) ili kombinirane poligone (uklanjanje) svakog pojasa koji se nalazi iznad drugog pojasa.
+            <p>Odaberite kako želite postupiti s pojasevima koji se preklapaju. Moguće je zadržati sve zajedničke poligone (preklapanje) ili kombinirane poligone (uklanjanje) svakog pojasa koji se nalazi iznad drugog pojasa. Kada upotrebljavate  <b>Ukloni</b>, svi će se pojasevi međusobno spojiti u jedan geoobjekt s vi&scaron;e dijelova te će nestati sva preklapanja.
             </p>
             <p>Kada stvarate jedan pojas oko poligonalnog geoobjekata (jedna unesena udaljenost), možete odabrati hoće li se geoobjekt za stvaranje pojasa uključiti ili ne u dobiveni pojas.
             </p>
@@ -110,15 +110,15 @@
         <div><h2>Opcije</h2></div>
         <hr/>
         <div>
-            <p>Odaberite kako želite postupiti s pojasevima koji se preklapaju. Moguće je zadržati sve zajedničke poligone (preklapanje) ili kombinirane poligone (uklanjanje) svakog pojasa koji se nalazi iznad drugog pojasa.
+            <p>Odaberite kako želite postupiti s pojasevima koji se preklapaju. Moguće je zadržati sve zajedničke poligone (preklapanje) ili kombinirane poligone (uklanjanje) svakog pojasa koji se nalazi iznad drugog pojasa. Kada upotrebljavate  <b>Ukloni</b>, svi će se pojasevi međusobno spojiti u jedan geoobjekt s vi&scaron;e dijelova te će nestati sva preklapanja.
             </p>
-            <p>Kada stvarate jedan pojas oko linija (jedna unesena udaljenost), možete odabrati stranu linije za stvaranje pojasa.  Obično se upotrijebe obje strane.  Lijevo i desno određuje se kao da hodate od prve koordinate x, y linije (početna koordinata) do posljednje koordinate x, y linije (zavr&scaron;na koordinata).  Odabir lijevo ili desno obično znači da znate da su linijski geoobjekti stvoreni i pohranjeni u određenom smjeru (na primjer, uzvodno ili nizvodno od riječne mreže).   Na krajevima linija pojas se može zaokružiti (zaokruživanje) ili biti ravan (ravno).
+            <p>Kada stvarate jedan pojas oko linija (jedna unesena udaljenost), možete odabrati stranu linije za stvaranje pojasa. Obično se upotrijebe obje strane. Lijevo i desno određuje se kao da hodate od prve koordinate x, y linije (početna koordinata) do posljednje koordinate x, y linije (zavr&scaron;na koordinata). Odabir lijevo ili desno obično znači da znate da su linijski geoobjekti stvoreni i pohranjeni u određenom smjeru (na primjer, uzvodno ili nizvodno od riječne mreže). Na krajevima linija pojas se može zaokružiti (zaokruživanje) ili biti ravan (ravno).
             </p>
             <p>Kada stvarate vi&scaron;e pojaseva (vi&scaron;e od jesne udaljenosti), možete odabrati kako predstaviti udaljenost od posljednje udaljenosti pojasa; primjerice, ako su udaljenosti 10 i 14:
                 <ul>
                     <li>Odabir opcije  <b>Obruči</b> rezultira pojasevima koji se kreću od 0 do 10 i od 10 do 14.
                     </li>
-                    <li>Odabirom opcije  <b>Diskovi</b> rezultira pojasevima koji se kreću od 0 do 10 i od 0 do 14.
+                    <li>Odabir opcije  <b>Diskovi</b> rezultira pojasevima koji se kreću od 0 do 10 i od 0 do 14.
                     </li>
                 </ul>
                 
@@ -129,7 +129,7 @@
         <div><h2>Opcije</h2></div>
         <hr/>
         <div>
-            <p>Jednom kada odaberete sloj za stvaranje pojasa, možete odabrati kako želite postupiti s pojasevima koji se preklapaju. Moguće je zadržati sve zajedničke poligone (preklapanje) ili kombinirane poligone (uklanjanje) svakog pojasa koji se nalazi iznad drugog pojasa. Osim toga, možete odrediti kako će se predstavljati vi&scaron;e udaljenosti.   Za slojeve koji sadrže linijske geoobjekte možete odabrati stranu linije za stvaranje pojasa.  Za slojeve koji sadrže poligonalne geoobjekte, možete odabrati hoće li se geoobjekt za stvaranje pojasa uključiti ili ne u dobiveni pojas.
+            <p>Jednom kada odaberete sloj za stvaranje pojasa, možete odabrati kako želite postupiti s pojasevima koji se preklapaju. Moguće je zadržati sve zajedničke poligone (preklapanje) ili kombinirane poligone (uklanjanje) svakog pojasa koji se nalazi iznad drugog pojasa. Kada upotrebljavate  <b>Ukloni</b>, svi će se pojasevi međusobno spojiti u jedan geoobjekt s vi&scaron;e dijelova te će nestati sva preklapanja. Osim toga, možete odrediti kako će se predstavljati vi&scaron;e udaljenosti. Za slojeve koji sadrže linijske geoobjekte možete odabrati stranu linije za stvaranje pojasa. Za slojeve koji sadrže poligonalne geoobjekte, možete odabrati hoće li se geoobjekt za stvaranje pojasa uključiti ili ne u dobiveni pojas.
             </p>
         </div>
     </div>

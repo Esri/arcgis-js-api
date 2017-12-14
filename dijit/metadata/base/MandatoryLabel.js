@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","./Templated","dojo/text!./templates/MandatoryLabel.html","../../../kernel"],function(e,t,a,n,d,l){var o=e([n],{label:null,templateString:d,postCreate:function(){this.inherited(arguments)}});return a("extend-esri")&&t.setObject("dijit.metadata.base.MandatoryLabel",o,l),o});

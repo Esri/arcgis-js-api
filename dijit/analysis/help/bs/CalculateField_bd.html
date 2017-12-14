@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Izračun polja</h2><p/>
+        <h2><img src="../images/GUID-059C9BE7-7B00-49C8-9917-B0EAEA3DA19D-web.png" alt="Izračun polja"></h2>
+        <hr/>
+    <p>Ovaj alat radi s ulaznim slojem za izračun vrijednosti za novo ili postojeće polje. Izradite Arcade izraz da biste izračunali vrijednosti s kojima ćete ispuniti geoobjekte.   Ako su podaci ovremenjeni i instantne vrste vremena, možete ako želite izraditi izraze koji su svjesni praćenja.
+    </p>
+    <p>Primjerice, pretpostavimo da želite izmijeniti postojeće polje naziva  <i>Ukupne prodaje</i>. Želite da polje predstavlja zbroj ukupnih prodaja u 2016. i 2017. Pomoću tih polja u izraz izračunate vrijednost polja kao <pre>$feature[&quot;Sales2016&quot;] + $feature[&quot;Sales2017&quot;]</pre>.
+    </p>
+    <p>Uzmimo u obzir drugi primjer, pretpostavimo da imate mjerenja GPS-a koja bilježe lokaciju, vrijeme, ID busa i brzinu busova u gradu. Želimo stvoriti novo polje naziva  <i>SpeedFrom3</i> za koji vrijedi prosjek brzina posljednjih 3 zabilježenih mjerenja GPS-a za svaki geoobjekt. Za ovaj bismo izračun upotrijebili izračun svjestan praćenja u kojem bismo pratili bus označen ID-om busa.    Izračun za utvrđivanje prosječne brzine prethodnih 3 vremenskih koraka i trenutačnog vremenskog koraka glasi <pre>average($track.field[&quot;speed&quot;].history(-4))</pre>.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Izaberite sloj za izračun vrijednosti polja za</h2></div>
+        <hr/>
+        <div>
+            <p>Točke, linije, područja ili tablica s izračunatim vrijednostima polja.  
+            </p>
+            <p>Osim odabira sloja s va&scaron;e karte, možete odabrati  <b>Pretraži slojeve</b> na dnu padajućeg popisa za pretraživanje va&scaron;ih sadržaja za skup podataka za dijeljenje datoteka velikih podataka ili sloj geoobjekta.
+            </p>
+        </div>
+    </div>
+    <div id="fields">
+        <div><h2>Izračunajte vrijednosti polja za polje</h2></div>
+        <hr/>
+        <div>
+            <p>Novo ili postojeće polje s izračunatim vrijednostima i vrstama podataka tog polja. Ako izračunavate vrijednosti na polju koje već postoji, ne trebate uparivati vrste podataka. 
+            </p>
+        </div>
+    </div>
+    <div id="expression">
+        <div><h2>Izradite uvjet izraza kojim će se označiti početak incidenta</h2></div>
+        <hr/>
+        <div>
+            <p>Dodajte izraz pomoću sastavljača izraza da biste izračunali vrijednosti polja. 
+            </p>
+            <p>Primjerice, pretpostavimo da želimo dodati vrijednosti polja naziva  <i>prihodi</i>  i <i>bonus</i>. Da biste to učinili, dodajte izraz <code>$feature[&quot;income&quot;] + $feature[&quot;bonus&quot;] </code>.
+            </p>
+        </div>
+    </div>
+    <div id="trackInfo">
+        <div><h2>Taj je izraz svjestan praćenja</h2></div>
+        <hr/>
+        <div>
+            <p>Odredite je li izraz svjestan praćenja. Izraz svjestan praćenja uključivat će formatiranje kao       <pre>$track.field[&quot;fieldname&quot;].history(...)</pre>. Za izraze svjesne praćenja potrebna su polja za utvrđivanje pojedinačnih tragova. Tragovi se mogu sastojati od točaka, linija, područja ili tablica i zahtijevaju samo da unos ima identifikator tragova i da su podaci ovremenjeni instantnom vrstom vremena.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Naziv sloja rezultata</h2></div>
+        <hr/>
+        <div>
+            <p> Ovo je naziv sloja koji će se stvoriti u dijelu <b>Moj sadržaj</b> i dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, alat neće biti uspje&scaron;an.
+            </p>
+            <p>Upotrebom padajućeg izbornika  <b>Spremi rezultat u</b> možete odrediti naziv mape u dijelu <b>Moj sadržaj</b> gdje će se spremiti rezultat.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

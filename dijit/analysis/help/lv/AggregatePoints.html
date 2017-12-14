@@ -41,16 +41,16 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Punktu sakopošana</h2><p/>
-        <h2><img src="../images/GUID-60C59C66-3038-4D0E-8F6A-EC6C53FEAA02-web.png" alt="Punktu sakopo&scaron;ana"></h2>
+        <h2>Apkopot punktus</h2><p/>
+        <h2><img src="../images/GUID-60C59C66-3038-4D0E-8F6A-EC6C53FEAA02-web.png" alt="Punktu apkopo&scaron;ana"></h2>
         <hr/>
-    <p>&Scaron;is rīks darbojas ar punktu elementu slāni un apgabala elementu slāni. Vispirms tiek noteikts, kuri punkti ietilpst katrā laukumā. Pēc tam, kad ir noteikta punktu skaita apgabalā telpiskā attiecība, tiek aprēķināta un pie&scaron;ķirta statistika par visiem punktiem laukumā. Visvienkār&scaron;ākā statistika ir punktu skaits laukumā, bet jūs varat iegūt arī citu statistiku. 
+    <p>&Scaron;is rīks darbojas ar punktu elementu slāni un teritorijas elementu slāni. Vispirms tiek noteikts, kuri punkti ietilpst katrā laukumā. Pēc tam, kad ir noteikta punktu skaita apgabalā telpiskā attiecība, tiek aprēķināta un pie&scaron;ķirta statistika par visiem punktiem laukumā. Visvienkār&scaron;ākā statistika ir punktu skaits laukumā, bet jūs varat iegūt arī citu statistiku. 
     </p>
     <p>Pieņemsim, ka jums ir kafijas veikalu izvietojuma punktu elementi un apgabala laukumu elementi un jūs vēlaties apkopot kafijas pārdo&scaron;anas apjomus apgabalā. Pieņemot, ka kafijas veikaliem ir atribūts  <i>TOTAL_SALES</i>, varat iegūt visu summu
 vienumu <i>TOTAL_SALES</i> katrā apgabalā vai arī minimālo vai maksimālo vērtību <i>TOTAL_SALES</i>
  katra apgabala ietvaros, vai standarta novirzi no visām pārdo&scaron;anām katra apgabala ietvaros.
     </p>
-    <p>Ja ir atzīmēts  <b>Izmantot eso&scaron;o kartes pārklājumu</b>, elementi tiks analizēti tikai ievades punkta slānī un apgabala slānī, kas redzams pa&scaron;reizējā kartes pārklājuma ietvaros.  Ja nav atzīmēts, tiks analizēti visi elementi abos slāņos, arī pa&scaron;reizējā kartes pārklājuma ārpusē.
+    <p>Ja ir atzīmēts  <b>Izmantot eso&scaron;o kartes pārklājumu</b>, elementi tiks analizēti tikai ievades punkta slānī un apgabala slānī, kas redzams pa&scaron;reizējā kartes pārklājuma ietvaros.  Ja nav atzīmēts, tiks analizēti visi elementi abos slāņos, arī ārpus pa&scaron;reizējā kartes pārklājuma.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -68,7 +68,9 @@ vienumu <i>TOTAL_SALES</i> katrā apgabalā vai arī minimālo vai maksimālo v�
         <div><h2>Izvēlieties slāni, kas satur apkopošanas apgabalus</h2></div>
         <hr/>
         <div>
-            <p>Apgabala slānis, kuram tiks apkopoti punkti. Visi punkti, kas ietilpst &scaron;ī slāņa apgabala robežās, tiks saskaitīti un pēc izvēles apkopoti, izmantojot jūsu izvēlēto statistiku.
+            <p>Apgabala slānis, kuram tiks apkopoti punkti. Visi punkti, kas ietilpst &scaron;ī slāņa apgabala robežās, tiks saskaitīti un pēc izvēles apkopoti, izmantojot jūsu izvēlēto statistiku.  
+            </p>
+            <p>Varat izvēlēties savu teritorijas slāni vai nodalījumus, kas tiek ģenerēti, palaižot rīku. Ģenerējot nodalījumus,  <b>Kvadrātam</b> norādītais skaitlis un mērvienības nosaka kvadrāta augstumu un garumu. <b>Se&scaron;stūrim</b> norādītais skaitlis un mērvienības nosaka attālumu starp paralēlajām skaldnēm.
             </p>
             <p class="OnlineOnly">Papildus slāņa izvēlei no kartes nolaižamā saraksta apak&scaron;ā varat atlasīt  <b>Izvēlēties Living Atlas analīzes slāni</b> vai <b>Izvēlēties analīzes slāni</b>. Tādējādi tiek atvērta galerija, kurā apskatāmi dažādi analīzes slāņi. 
             </p>
@@ -78,7 +80,7 @@ vienumu <i>TOTAL_SALES</i> katrā apgabalā vai arī minimālo vai maksimālo v�
         <div><h2>Paturēt laukumus bez punktiem</h2></div>
         <hr/>
         <div>
-            <p>Nosaka, vai laukumi, kuros nav attēloti punkti, tiek rādīti rezultātu slānī. Ja opcija nav atzīmēta, laukumi bez punktiem rezultātos netiks rādīti. Ja opcija ir atzīmēta, laukumi bez punktiem tiks rādīti rezultātā.  
+            <p>Nosaka, vai laukumi, kuros nav attēloti punkti, tiek rādīti rezultātu slānī. Ja opcija nav atzīmēta, laukumi bez punktiem rezultātos netiks rādīti. Ja atzīmēsiet izvēles rūtiņu, rezultātā tiks ietvertas teritorijas bez punktiem.  
             </p>
         </div>
     </div>
@@ -100,12 +102,12 @@ vienumu <i>TOTAL_SALES</i> katrā apgabalā vai arī minimālo vai maksimālo v�
         </div>
     </div>
     <div id="MinorityMajority">
-        <div><h2>Pievienot mazākumu, vairākumu</h2></div>
+        <div><h2>Pievienot mazākuma, vairākuma vērtības</h2></div>
         <hr/>
         <div>
             <p>&Scaron;ī izvēles rūtiņa tiks iespējota, ja izvēlēsieties lauku Grupēt pēc. Ja vēlaties uzzināt, kuras atribūtu vērtības katrā grupā ir mazākumā (mazākā mērā dominējo&scaron;as) vai vairākumā (vislielākajā mērā dominējo&scaron;as) katrās robežās, izvēlieties  <b>Pievienot mazākumu vai vairākumu</b>.   Ja izvēlēsieties <b>Pievienot mazākumu vai vairākumu</b>, jūsu rezultātu slānim tiks pievienoti divi jauni lauki.   Ja izvēlēsieties arī <b>Pievienot procentus</b>, rezultātu slānim tiks pievienoti divi papildu lauki, kuros būs ietverts katrā grupā eso&scaron;ais mazākuma un vairākuma atribūtu vērtību skaits procentos.
             </p>
-            <p>Piemēram, ja nodarbojaties ar pilsētizveides plāno&scaron;anu un vēlaties noteikt, kuras koku sugas visos pilsētas parkos ir mazākumā, bet kuras vairākumā, apkopojiet datus par kokiem ar parku apgabaliem un atzīmējiet &scaron;o opciju.
+            <p>Piemēram, ja nodarbojaties ar teritoriju plāno&scaron;anu un vēlaties noteikt, kuras koku sugas visos pilsētas parkos ir mazākumā, bet kuras vairākumā, apkopojiet datus par kokiem ar parku apgabaliem un atzīmējiet &scaron;o opciju.
             </p>
         </div>
     </div>

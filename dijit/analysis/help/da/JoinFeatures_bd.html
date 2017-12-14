@@ -63,7 +63,7 @@
         </div>
     </div>
     <div id="joinLayer">
-        <div><h2>Vælg lag, der skal knyttes  til destinationslaget</h2></div>
+        <div><h2>Vælg lag, der skal knyttes til destinationslaget</h2></div>
         <hr/>
         <div>
             <p>Tilknytningslaget med de attributter, der skal knyttes til destinationslaget.
@@ -85,7 +85,7 @@
                 </ul>
                 
             </p>
-            <p>Forestil dig f.eks., at vi &oslash;nsker at finde frem til alle de dagligvarebutikker, der ligger inden for 2fra et marked med landbrugsprodukter.   I dette tilf&aelig;lde skal det lag, der tilknyttes til, have et enkelt objekt, der repr&aelig;senterer et marked med landbrugsprodukter, og de tilknyttede objekter repr&aelig;senterer de lokale dagligvarebutikker, der har attributter s&aring;som samlede &aring;rlige salgstal. Med  <b>Forbind objekter</b>-v&aelig;rkt&oslash;jet kan vi afsl&oslash;re, at fem dagligvarebutikker opfylder kriterierne. Hvis vi har angivet tilknytningshandlingen <b>Tilknyt &eacute;n-til-mange</b>, ville vi ende med at have fem objekter i vores resultatlag, hvor hver r&aelig;kke repr&aelig;senterer markedet med landbrugsprodukter og &eacute;n dagligvarebutik. Hvis vi havde angivet en <b>Tilknyt &eacute;n-til-&eacute;n</b>-relation, ville vi ende med at have &eacute;t objekt, der repr&aelig;senterer markedet med landbrugsprodukter og de summerede oplysninger om dagligvarebutikker, s&aring;som antallet (2), samt andre statistiske oplysninger som f.eks. de samlede &aring;rlige salgstal.
+            <p>Forestil dig f.eks., at vi &oslash;nsker at finde de dagligvarebutikker, der ligger inden for 2 km fra et marked med landbrugsprodukter. I dette tilf&aelig;lde skal det lag, der tilknyttes til, have et enkelt objekt, der repr&aelig;senterer et marked med landbrugsprodukter, og de tilknyttede objekter repr&aelig;senterer de lokale dagligvarebutikker, der har attributter s&aring;som samlede &aring;rlige salgstal. Med  <b>Forbind objekter</b>-v&aelig;rkt&oslash;jet kan vi afsl&oslash;re, at fem dagligvarebutikker opfylder kriterierne. Hvis vi har angivet tilknytningshandlingen <b>Tilknyt &eacute;n-til-mange</b>, ville vi ende med at have fem objekter i vores resultatlag, hvor hver r&aelig;kke repr&aelig;senterer markedet med landbrugsprodukter og &eacute;n dagligvarebutik. Hvis vi havde angivet en <b>Tilknyt &eacute;n-til-&eacute;n</b>-relation, ville vi ende med at have &eacute;t objekt, der repr&aelig;senterer markedet med landbrugsprodukter og de summerede oplysninger om dagligvarebutikker, s&aring;som antallet (2), samt andre statistiske oplysninger som f.eks. de samlede &aring;rlige salgstal.
             </p>
         </div>
     </div>
@@ -118,7 +118,7 @@
                     </li>
                     <li> <b>Lig med</b> &ndash; Objekterne matches, hvis de har den samme geometri.
                     </li>
-                    <li> <b>I n&aelig;rheden</b> &ndash; Objekterne matches, hvis de ligger inden for en angivet afstand fra hinanden. Laget skal v&aelig;re placeret i et projiceret koordinatsystem, eller den spatiale reference til behandling skal v&aelig;re indstillet til et projiceret koordinatsystem ved hj&aelig;lp af <b>Analysemilj&oslash;erne</b>, hvis der anvendes en geografisk <b>n&aelig;rliggende</b> relation.
+                    <li> <b>I n&aelig;rheden</b> &ndash; Objekterne matches, hvis de ligger inden for en angivet afstand fra hinanden. Destinationslaget skal v&aelig;re placeret i et projiceret koordinatsystem, eller den spatiale reference til behandling skal v&aelig;re indstillet til et projiceret koordinatsystem ved hj&aelig;lp af <b>Analysemilj&oslash;erne</b>, hvis der anvendes en geografisk <b>n&aelig;rliggende</b> relation.
                     </li>
                     <li> <b>Indeholder</b> &ndash; Objekterne matches, hvis det lag, der tilknyttes til, er indeholdt i de objekter, der skal tilknyttes.
                     </li>
@@ -206,7 +206,7 @@
         <div><h2>Tilføj statistik (valgfrit)</h2></div>
         <hr/>
         <div>
-            <p>Hvis tilknytningshandlingen er   <b>Tilknyt &eacute;n- til- &eacute;n</b>, kan du beregne statistik p&aring; dine tilknyttede objekter. Al statistik vil som standard blive beregnet.
+            <p>Hvis tilknytningshandlingen er  <b>Tilknyt &eacute;n-til-&eacute;n</b>, kan du beregne statistik p&aring; dine tilknyttede objekter. Al statistik vil som standard blive beregnet.
             </p>
             <p>Du kan beregne statistik for objekter, der er summeret. For numeriske felter kan du beregne f&oslash;lgende:
                 <ul>
@@ -248,7 +248,7 @@
         <div>
             <p>Anvender en betingelse til de angivne felter. Kun objekter med felter, der opfylder disse betingelser, vil blive tilknyttet.
             </p>
-            <p>Forestil dig f.eks., at du &oslash;nsker anvende en tilknytning til et datas&aelig;t, der kun omfatter de objekter, hvor  <i>health_spending</i> er mere end 20 procent af <i>indkomsten</i>.  For at g&oslash;re dette skal du anvende en tilknytningsbetingelse for <code>target.health_spending &gt; (join.income * 0,20)</code> ved at bruge feltet <i>health_spending</i> fra det f&oslash;rste datas&aelig;t (det datas&aelig;t, som objekterne knyttes til) og feltet <i>indkomst</i> fra det andet datas&aelig;t (det datas&aelig;t, der tilknyttes).
+            <p>Forestil dig f.eks., at du &oslash;nsker anvende en tilknytning til et datas&aelig;t, der kun omfatter de objekter, hvor  <i>health_spending</i> er mere end 20 procent af <i>indkomsten</i>.  For at g&oslash;re dette skal du anvende en tilknytningsbetingelse for <code>$target[&quot;health_spending&quot;] &gt; ($join[&quot;income&quot;] * .20)</code> ved at bruge feltet <i>health_spending</i> fra det f&oslash;rste datas&aelig;t (det datas&aelig;t, som objekterne knyttes til) og feltet <i>indkomst</i> fra det andet datas&aelig;t (det datas&aelig;t, der tilknyttes).
             </p>
             <p>Tilknytningsbetingelserne kan anvendes ved at bruge udtryksberegneren.
             </p>

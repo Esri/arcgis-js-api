@@ -42,12 +42,11 @@
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Sumuj atrybuty</h2><p/>
-        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Sumuj atrybuty"></h2>
+        <h2><img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Diagram Sumuj atrybuty"></h2>
         <hr/>
-    <p>To narzędzie sumuje wszystkie pasujące wartości w jednym lub kilku polach i wykonuje dla nich obliczenia statystyczne. Najbardziej podstawowym obliczeniem statystycznym jest zliczanie obiekt&oacute;w, kt&oacute;re zostały zsumowane, ale można także wykonać bardziej skomplikowane obliczenia. 
-
+    <p> To narzędzie sumuje wszystkie pasujące wartości w jednym lub kilku polach i wykonuje dla nich obliczenia statystyczne. Najbardziej podstawowym obliczeniem statystycznym jest zliczanie obiekt&oacute;w, kt&oacute;re zostały zsumowane, ale można także wykonać bardziej skomplikowane obliczenia.
     </p>
-    <p>Przyjmijmy na przykład, że mamy obiekty punktowe reprezentujące lokalizacje sklep&oacute;w z polem  <i>DISTRICT_MANAGER_NAME</i> (nazwisko kierownika rejonu) i chcemy uzyskać podsumowanie sprzedaży kawy dla poszczeg&oacute;lnych kierownik&oacute;w. Można wybrać pole <i>DISTRICT_MANAGER_NAME</i> jako pole, na podstawie kt&oacute;rego zostanie przeprowadzona agregacja. Wszystkie wiersze danych reprezentujące poszczeg&oacute;lnych kierownik&oacute;w zostaną zsumowane. Oznacza to, że wszystkie lokalizacje sklep&oacute;w zarządzane przez kierownika oznaczonego jako Manager1 zostaną zsumowane w jednym wierszu i zostaną dla tego wiersza wykonane zbiorcze obliczenia statystyczne. W tej instancji obliczenia statystyczne, takie jak zliczanie sklep&oacute;w i sumowanie wartości w polach <i>TOTAL_SALES</i> (sprzedaż łącznie), będą wykonywane dla wszystkich sklep&oacute;w zarządzanych przez kierownika Manager1, jak r&oacute;wnież dla sklep&oacute;w zarządzanych przez innych kierownik&oacute;w znajdujących się na liście w polu <i>DISTRICT_MANAGER_NAME</i>.
+    <p>Przyjmijmy na przykład, że mamy obiekty punktowe reprezentujące lokalizacje sklep&oacute;w z polem  <i>DISTRICT_MANAGER_NAME</i> (nazwisko kierownika rejonu) i chcemy uzyskać podsumowanie sprzedaży kawy dla poszczeg&oacute;lnych kierownik&oacute;w. Można wybrać pole <i>DISTRICT_MANAGER_NAME</i> jako pole, na podstawie kt&oacute;rego zostanie przeprowadzona agregacja. Wszystkie wiersze danych reprezentujące poszczeg&oacute;lnych kierownik&oacute;w zostaną zsumowane. Oznacza to, że wszystkie lokalizacje sklep&oacute;w zarządzane przez kierownika oznaczonego jako <pre>Manager1</pre> zostaną zsumowane w jednym wierszu i zostaną dla tego wiersza wykonane zbiorcze obliczenia statystyczne. W tej instancji obliczenia statystyczne, takie jak zliczanie sklep&oacute;w i sumowanie wartości w polach <i>TOTAL_SALES</i> (sprzedaż łącznie), będą wykonywane dla wszystkich sklep&oacute;w zarządzanych przez kierownika <pre>Manager1</pre>, jak r&oacute;wnież dla sklep&oacute;w zarządzanych przez innych kierownik&oacute;w znajdujących się na liście w polu <i>DISTRICT_MANAGER_NAME</i>.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -62,10 +61,19 @@
         </div>
     </div>
     <div id="fields">
-        <div><h2>Wybierz pola do sumowania</h2></div>
+        <div><h2>Wybierz sposób sumowania danych</h2></div>
         <hr/>
         <div>
-            <p>Lista p&oacute;l z warstwy wejściowej. Wybrane pola zostaną zsumowane, w wynik tej operacji zostanie użyty podczas wykonywania obliczeń statystycznych. Jeśli na przykład zostanie wybrane pole o nazwie  <i>PropertyType</i> (typ nieruchomości), kt&oacute;re może przyjmować wartości commercial (komercyjna) i residential (mieszkalna), wszystkie pola o wartości residential zostaną zsumowane i zostaną wykonane zbiorcze obliczenia statystyczne. Zostaną także zsumowane wszystkie pola o wartości commercial.
+            <p>Istnieją dwa sposoby sumowania danych:
+                <ul>
+                    <li> <b>Wszystkie obiekty do pojedynczego obiektu</b> &mdash; obliczanie statystyki dla wszystkich obiekt&oacute;w.
+                    </li>
+                    <li> <b>Według p&oacute;l</b> &mdash; grupowanie obiekt&oacute;w według podobnych wartości w podanych polach.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Przyjmijmy na przykład, że istnieje zestaw danych dotyczących drzew, kt&oacute;ry zawiera pole  <i>treetype</i> (gatunek drzewa) z wartościami <code>Maple</code> (klon), <code>Fir</code> (jodła) i <code>Pine</code> (sosna) oraz pole <i>treeheight</i> (wysokość drzewa), a użytkownik chce znać średnią <i>wysokość drzewa</i>. Jeśli wszystkie obiekty zostaną zsumowane do pojedynczego obiektu, obliczona zostanie średnia wysokość wszystkich drzew, czyli wynikiem będzie jedna wartość średnia. W przypadku sumowania według pola <i>treeheight</i> uzyskana zostanie średnia wysokość klon&oacute;w, średnia wysokość jodeł oraz średnia wysokość sosen.
             </p>
         </div>
     </div>
@@ -109,7 +117,7 @@
         <div><h2>Wybierz magazyn danych</h2></div>
         <hr/>
         <div>
-            <p>Wyniki analiz geoprzestrzennych są przechowywane w aplikacji ArcGIS Data Store i udostępniane jako warstwa obiekt&oacute;w w witrynie  Portal for ArcGIS. W większości przypadk&oacute;w wyniki powinny być przechowywane w magazynie danych czasowo-przestrzennych i jest to ustawienie domyślne. W niekt&oacute;rych przypadkach dobrym rozwiązanie jest zapisanie wynik&oacute;w w relacyjnym magazynie danych. Poniżej podano sytuacje, kt&oacute;re mogą uzasadniać przechowywanie wynik&oacute;w w relacyjnym magazynie danych: 
+            <p>Wyniki analiz geoprzestrzennych są przechowywane w aplikacji ArcGIS Data Store i udostępniane jako warstwa obiektowa w witrynie  Portal for ArcGIS. W większości przypadk&oacute;w wyniki powinny być przechowywane w magazynie danych czasowo-przestrzennych i jest to ustawienie domyślne. W niekt&oacute;rych przypadkach dobrym rozwiązanie jest zapisanie wynik&oacute;w w relacyjnym magazynie danych. Poniżej podano sytuacje, kt&oacute;re mogą uzasadniać przechowywanie wynik&oacute;w w relacyjnym magazynie danych: 
                 <ul>
                     <li>Używanie wynik&oacute;w w ramach kooperacji między portalami.
                     </li>

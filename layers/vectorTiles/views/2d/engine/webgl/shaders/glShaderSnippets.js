@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
 define(["require","exports","../../../../webgl/ShaderSnippets","dojo/text!./bitblit.vs.glsl","dojo/text!./bitblit.fs.glsl","dojo/text!./stencil.vs.glsl","dojo/text!./stencil.fs.glsl","dojo/text!./background.vs.glsl","dojo/text!./background.fs.glsl","dojo/text!./tileInfo.vs.glsl","dojo/text!./tileInfo.fs.glsl"],function(t,e,l,s,o,n,i,d,g,r,b){function p(t,e){c+='<snippet name="'+t+'"><![CDATA[',c+=e,c+="]]></snippet>"}var c="";c+='<?xml version="1.0" encoding="UTF-8"?>',c+="<snippets>",p("bitblitVS",s),p("bitblitFS",o),p("stencilVS",n),p("stencilFS",i),p("backgroundVS",d),p("backgroundFS",g),p("tileInfoVS",r),p("tileInfoFS",b),c+="</snippets>";var f=new l;return l.parse(c,f),f});

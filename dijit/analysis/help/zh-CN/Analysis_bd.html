@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="bdToolbox">
-        <p>大数据分析会将分析工作分配到您的整个 ArcGIS GeoAnalytics Server 中。这样您就可以利用多台机器更快地分析更多的数据。目前可用的工具如下所示：
+        <p>GeoAnalytics 会将分析工作分配到您的整个 ArcGIS GeoAnalytics Server 中。这样您就可以利用多台机器更快地分析更多的数据。目前可用的工具如下所示：
             <ul>
                 <li> <b>聚合点</b>
                 </li>
@@ -53,6 +53,8 @@
                 </li>
                 <li> <b>范围内汇总</b>
                 </li>
+                <li> <b>检测事件</b>
+                </li>
                 <li> <b>查找相似位置</b>
                 </li>
                 <li> <b>计算密度</b>
@@ -63,10 +65,14 @@
                 </li>
                 <li> <b>复制到数据存储</b>
                 </li>
+                <li> <b>计算字段</b>
+                </li>
+                <li> <b>对表格中的位置进行地理编码</b>
+                </li>
             </ul>
             
         </p>
-        <p>大数据分析主要用于通过空间和时间模式重点对大数据进行分析。
+        <p>GeoAnalytics 主要用于通过空间和时间模式重点对大数据进行分析。
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -125,11 +131,11 @@
 <hr/>
             <p>使用要素图层或表格数据，可基于输入图层或表之间的特定关系连接要素和记录。连接将取决于空间、时态和属性关系，并可选择计算汇总统计数据。
             </p>
-            <p> 例如
+            <p>例如
                 <ul>
                     <li>已知犯罪事件的点位置与时间，将犯罪数据与其本身连接，并指定彼此 1 千米范围内以及彼此 1 小时内发生的犯罪的空间关系，以确定在空间和时间上是否存在彼此接近的一系列犯罪。
                     </li>
-                    <li> 已知邮政编码表，其中包含人口统计信息和表示住宅建筑物的区域要素，将人口统计信息连接到住宅，这样，每个住宅现在都具有信息。
+                    <li>已知邮政编码表，其中包含人口统计信息和表示住宅建筑物的区域要素，将人口统计信息连接到住宅，这样，每个住宅现在都具有信息。
                     </li>
                 </ul>
                 
@@ -140,9 +146,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>重新构建追踪</h2></td>
+                    <td><h2>重新构建轨迹</h2></td>
                     <td>
-                    <img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" class="titleImage" alt="重建轨迹">
+                    <img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" class="titleImage" alt="重新构建轨迹">
                     </td>
                 </tr></tbody>
             </table>
@@ -153,7 +159,7 @@
                 <ul>
                     <li>已知飓风测量的点位置和时间，计算飓风的平均风速和最大风压。
                     </li>
-                    <li>使用 100 km 条柱来查找特许经营位置的最高月收入和最低月收入。
+                    <li>使用船只的 GPS 测量结果，以 将船只路径重新构建为线。
                     </li>
                 </ul>
                 
@@ -166,7 +172,7 @@
                 <tbody><tr>
                     <td><h2>汇总属性</h2></td>
                     <td>
-                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="汇总属性">
+                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="汇总属性 示意图">
                     </td>
                 </tr></tbody>
             </table>
@@ -213,12 +219,59 @@
         <hr/>
         <p>这些工具用于确定符合多种不同指定标准的区域。 
             <ul>
+                <li> <b>检测事件</b>使用启用了时间的图层来确定哪些要素符合指定的条件。
+                </li>
+                <li> <b>对表格中的位置进行地理编码</b>可将地址转换为坐标。
+                </li>
                 <li> <b>查找相似位置</b>可根据指定条件查找与一个或多个参考位置最相似的位置。
                 </li>
             </ul>
             
         </p>
     </div>
+        <div id="DetectIncidentsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>检测事件</h2></td>
+                    <td>
+                    <img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" class="titleImage" alt="检测事件">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> <img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="检测事件">
+            </p>
+            <p>此工具使用点、线、面或表的启用了时间的图层，该图层在时间上可表示时刻。通过按顺序排列的要素（称为轨迹），该工具可确定哪些要素是感兴趣的事件。事件由您指定的条件确定。
+            </p>
+            <p>例如
+                <ul>
+                    <li>根据风速属性来检测飓风类别为 4 的飓风测量结果。
+                    </li>
+                    <li>可以使用船只运动的 GPS 测量结果和表示船只速度的字段，查找大于前五次测量结果平均值 1.5 倍的测量结果。
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="GeocodeLocationsfromTableTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>对表格中的位置进行地理编码</h2></td>
+                    <td>
+                    <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" class="titleImage" alt="对表格中的位置进行地理编码">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" alt="对表格中的位置进行地理编码">
+            </p>
+            <p>将地址转换为坐标。在大数据文件共享表上使用该工具。
+            </p>
+            <br/>
+        </div>
         <div id="FindSimilarLocationsTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -232,7 +285,7 @@
 <hr/>
             <p>根据所指定的条件，通过测量候选搜索图层中的位置与一个或多个参考位置之间的相似性查找相似位置。
             </p>
-            <p> 例如
+            <p>例如 
                 <ul>
                     <li>通过检查员工数量和年销售额，找到十个最相似的商店。
                     </li>
@@ -262,14 +315,14 @@
                 <tbody><tr>
                     <td><h2>计算密度</h2></td>
                     <td>
-                    <img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" class="titleImage" alt="Calculate Density">
+                    <img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" class="titleImage" alt="计算密度">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
             <p>&ldquo;计算密度&rdquo;工具用于通过将某种现象的已知量（表示为点的属性）散布到整个地图上以从点要素创建密度地图。结果是表示密度的区域图层。
             </p>
-            <p> 例如
+            <p>例如
                 <ul>
                     <li>计算某县的医院密度。结果图层将显示容易到达医院和不容易到达医院的区域，此信息可用于确定新建医院的位置。
                     </li>
@@ -293,7 +346,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>&ldquo;查找热点&rdquo;工具可以确定数据在空间模式方面是否存在任何统计显著性的聚类。
+            <p>查找热点工具可以确定数据在空间模式方面是否存在任何统计显著性的聚类。
                 <ul>
                     <li>各个点要素（犯罪事件、树木、交通事故）是否可进行聚类？ 您又是如何确定的？
                     </li>
@@ -328,7 +381,7 @@
 <hr/>
             <p>缓冲区是一个以点、线或面要素为起点覆盖给定距离的区域。
             </p>
-            <p> 例如
+            <p>例如
                 <ul>
                     <li>使用线状河流要素，按河流宽度的 50 倍对每条河流进行缓冲，以确定拟建河岸边界。
                     </li>
@@ -344,7 +397,9 @@
         <hr/>
         <p>这些工具用于地理数据和表格数据的日常管理。
             <ul>
-                <li> <b>复制到数据存储</b>会将数据复制到 ArcGIS Data Store 并在 web GIS 中创建图层。
+                <li> <b>计算字段</b>可创建新字段或修改现有字段，然后在您的内容中创建新图层。
+                </li>
+                <li> <b>复制到数据存储</b>会将数据复制到 ArcGIS Data Store 并在您的内容中创建图层。
                 </li>
             </ul>
             
@@ -361,12 +416,35 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>将输入要素图层或表复制到  ArcGIS Data Store 并在 web GIS 中创建图层。 </p>
-            <p> 例如
+            <p>将输入要素图层或表复制到  ArcGIS Data Store 并在  ArcGIS Enterprise 的内容中创建图层。 </p>
+            <p>例如
                 <ul>
-                    <li> 将大数据文件共享中的 <code>.csv</code> 文件集合复制到时空数据存储以进行可视化。
+                    <li>将大数据文件共享中的  <code>.csv</code> 文件集合复制到时空数据存储以进行可视化。
                     </li>
                     <li>将存储在时空数据存储中的当前地图范围内的要素复制到关系数据存储中。
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="CalculateFieldTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>计算字段</h2></td>
+                    <td>
+                    <img src="../images/GUID-059C9BE7-7B00-49C8-9917-B0EAEA3DA19D-web.png" class="titleImage" alt="计算字段">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>计算新字段或现有字段的值，并在  ArcGIS Enterprise 的内容中创建图层。 </p>
+            <p>例如
+                <ul>
+                    <li>将名为  <i>total</i> 的现有字段修改为字段 <i>total_2016</i>、 <i>total_2017</i> 和 <i>total_2018</i> 的收入总和。
+                    </li>
+                    <li>创建一个新字段，以基于字段值（例如  <i>windspeed</i> 和 <i>pollutant</i>）对危险级别进行分类。
                     </li>
                 </ul>
                 

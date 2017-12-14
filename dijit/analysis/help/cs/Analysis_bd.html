@@ -41,32 +41,38 @@
 <body onload="init()">
 <div id="topics">
     <div id="bdToolbox">
-        <p>Anal&yacute;za velk&yacute;ch dat distribuuje analytickou činnost např&iacute;č va&scaron;&iacute; službou ArcGIS GeoAnalytics Server. Můžete tak d&iacute;ky využit&iacute; v&yacute;konu v&iacute;ce poč&iacute;tačů analyzovat v&iacute;ce dat rychleji. Moment&aacute;lně jsou k&nbsp;dispozici n&aacute;sleduj&iacute;c&iacute; n&aacute;stroje:
+        <p>Geoanal&yacute;za distribuuje analytickou činnost např&iacute;č va&scaron;&iacute; službou ArcGIS GeoAnalytics Server. Můžete tak d&iacute;ky využit&iacute; v&yacute;konu v&iacute;ce poč&iacute;tačů analyzovat v&iacute;ce dat rychleji. Moment&aacute;lně jsou k&nbsp;dispozici n&aacute;sleduj&iacute;c&iacute; n&aacute;stroje:
             <ul>
-                <li> <b>Agregovat body</b>
+                <li> <b>Seskupit body</b>
                 </li>
-                <li> <b>Připojovan&eacute; prvky</b>
+                <li> <b>Připojit prvky</b>
                 </li>
-                <li> <b>Rekonstruovat stopy</b>
+                <li> <b>Sestavit stopy</b>
                 </li>
                 <li> <b>Sumarizovat atributy</b>
                 </li>
                 <li> <b>Souhrn hodnot v&nbsp;rozmez&iacute;</b>
                 </li>
-                <li> <b>Vyhledat podobn&aacute; um&iacute;stěn&iacute;</b>
+                <li> <b>Detekovat ud&aacute;losti</b>
+                </li>
+                <li> <b>Naj&iacute;t podobn&eacute; lokality</b>
                 </li>
                 <li> <b>Vypoč&iacute;tat hustotu</b>
                 </li>
-                <li> <b>Anal&yacute;za Hot Spot</b>
+                <li> <b>Hot spot anal&yacute;za</b>
                 </li>
                 <li> <b>Vytvořit obalov&eacute; z&oacute;ny</b>
                 </li>
                 <li> <b>Kop&iacute;rovat do datov&eacute;ho &uacute;loži&scaron;tě</b>
                 </li>
+                <li> <b>Vypoč&iacute;tat hodnoty pole</b>
+                </li>
+                <li> <b>Geok&oacute;dovat um&iacute;stěn&iacute; z tabulky</b>
+                </li>
             </ul>
             
         </p>
-        <p>Anal&yacute;za velk&yacute;ch dat se zaměřuje na anal&yacute;zu rozměrn&yacute;ch dat s&nbsp;důrazem na prostorov&eacute; a časov&eacute; vzorce. 
+        <p>Geoanal&yacute;za se zaměřuje na anal&yacute;zu rozměrn&yacute;ch dat, s&nbsp;důrazem na prostorov&eacute; a časov&eacute; vzorce. 
         </p>
     </div>
     <div id="SummarizeDataCategory" class="largesize">
@@ -99,7 +105,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>S využit&iacute;m vrstvy bodov&yacute;ch prvků a vrstvy prvků oblast&iacute; nebo přihr&aacute;dek definovan&yacute;ch zadanou vzd&aacute;lenost&iacute; tento n&aacute;stroj určuje, kter&eacute; body spadaj&iacute; do každ&eacute; oblasti nebo přihr&aacute;dky, a vypoč&iacute;t&aacute;v&aacute; statistiky v&scaron;ech bodů v&nbsp;každ&eacute; oblasti nebo přihr&aacute;dce. Volitelně můžete s&nbsp;t&iacute;mto n&aacute;strojem použ&iacute;t dělen&iacute; času. 
+            <p>S využit&iacute;m vrstvy bodov&yacute;ch prvků a vrstvy plo&scaron;n&yacute;ch prvků nebo přihr&aacute;dek definovan&yacute;ch zadanou vzd&aacute;lenost&iacute; tento n&aacute;stroj určuje, kter&eacute; body spadaj&iacute; do každ&eacute; oblasti nebo přihr&aacute;dky, a vypoč&iacute;t&aacute;v&aacute; statistiky v&scaron;ech bodů v&nbsp;každ&eacute; oblasti nebo přihr&aacute;dce. Volitelně můžete s&nbsp;t&iacute;mto n&aacute;strojem použ&iacute;t dělen&iacute; času. 
             </p>
             <p> Např&iacute;klad
                 <ul>
@@ -116,20 +122,20 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Připojované prvky</h2></td>
+                    <td><h2>Připojit prvky (Join Features)</h2></td>
                     <td>
-                    <img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" class="titleImage" alt="Připojovan&eacute; prvky">
+                    <img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" class="titleImage" alt="Připojit prvky">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
             <p>Pomoc&iacute; vrstev prvků nebo tabulkov&yacute;ch dat můžete spojit prvky a z&aacute;znamy na z&aacute;kladě konkr&eacute;tn&iacute;ch vztahů mezi vstupn&iacute;mi vrstvami nebo tabulkami.  Připojen&iacute; budou určena prostorov&yacute;mi, časov&yacute;mi a atributov&yacute;mi vztahy a volitelně lze vypoč&iacute;tat souhrnnou statistiku.  
             </p>
-            <p> Např&iacute;klad
+            <p>Např&iacute;klad
                 <ul>
                     <li>Na z&aacute;kladě bodov&yacute;ch um&iacute;stěn&iacute; zločinn&yacute;ch ud&aacute;lost&iacute; s&nbsp;časem připojte data o zločinech k&nbsp;nim samotn&yacute;m a zadejte prostorov&yacute; vztah zločinů, kter&eacute; jsou ve vzd&aacute;lenosti 1 km od sebe a do&scaron;lo k&nbsp;nim během 1 hodiny, abyste zjistili, zda existuj&iacute; sekvence zločinů, kter&eacute; jsou si bl&iacute;zko v&nbsp;čase a prostoru.
                     </li>
-                    <li> Na z&aacute;kladě tabulky po&scaron;tovn&iacute;ch k&oacute;dů s&nbsp;demografick&yacute;mi informacemi a prvky plochy představuj&iacute;c&iacute;mi obytn&eacute; budovy připojte demografick&eacute; informace k&nbsp;budov&aacute;m, aby u každ&eacute; obytn&eacute; budovy byly tyto informace.
+                    <li>M&aacute;me-li tabulku PSČ s&nbsp;demografick&yacute;mi daty a prvky ploch, kter&eacute; představuj&iacute; obytn&eacute; budovy, můžeme připojit demografick&aacute; data k&nbsp;těmto obytn&yacute;m budov&aacute;m, aby nyn&iacute; každ&aacute; obytn&aacute; budova měla demografick&eacute; informace.
                     </li>
                 </ul>
                 
@@ -140,9 +146,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Rekonstruovat stopy</h2></td>
+                    <td><h2>Sestavit stopy (Reconstruct Tracks)</h2></td>
                     <td>
-                    <img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" class="titleImage" alt="Rekonstruovat stopy">
+                    <img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" class="titleImage" alt="Sestavit stopy">
                     </td>
                 </tr></tbody>
             </table>
@@ -153,7 +159,7 @@
                 <ul>
                     <li>Na z&aacute;kladě bodov&yacute;ch um&iacute;stěn&iacute; a času měřen&iacute; hurik&aacute;nů vypoč&iacute;tejte průměrnou rychlost větru a maxim&aacute;ln&iacute; tlak větru hurik&aacute;nu.
                     </li>
-                    <li>Najděte nejvy&scaron;&scaron;&iacute; a nejniž&scaron;&iacute; měs&iacute;čn&iacute; tržby franč&iacute;zov&yacute;ch lokalit pomoc&iacute; 100 km přihr&aacute;dek.
+                    <li>Použ&iacute;t měřen&iacute; pohybu lod&iacute; pomoc&iacute; GPS pro sestaven&iacute; stop (tras) lod&iacute; ve formě lini&iacute;.
                     </li>
                 </ul>
                 
@@ -164,9 +170,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Sumarizovat atributy</h2></td>
+                    <td><h2>Sumarizovat atributy (Summarize Attributes)</h2></td>
                     <td>
-                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="Sumarizovat atributy">
+                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="Diagram sumarizace atributů">
                     </td>
                 </tr></tbody>
             </table>
@@ -209,16 +215,63 @@
             <br/>
         </div>
     <div id="FindLocationsCategory" class="regularsize">
-        <h2>Vyhledat lokality</h2>
+        <h2>Najít lokality</h2>
         <hr/>
         <p>Tyto n&aacute;stroje se použ&iacute;vaj&iacute; pro identifikaci oblast&iacute;, kter&eacute; splňuj&iacute; několik různ&yacute;ch v&aacute;mi zadan&yacute;ch krit&eacute;ri&iacute;.   
             <ul>
-                <li>N&aacute;stroj  <b>Vyhledat podobn&aacute; um&iacute;stěn&iacute;</b> vyhled&aacute; um&iacute;stěn&iacute; nejpodobněj&scaron;&iacute; jednomu či v&iacute;ce referenčn&iacute;m um&iacute;stěn&iacute;m na z&aacute;kladě v&aacute;mi určen&yacute;ch krit&eacute;ri&iacute;.
+                <li>N&aacute;stroj <b>Detekovat ud&aacute;losti</b> pracuje s časov&yacute;mi vrstvami pro určen&iacute; toho, kter&eacute; prvky splňuj&iacute; zadanou podm&iacute;nku.
+                </li>
+                <li>N&aacute;stroj <b>Geok&oacute;dovat um&iacute;stěn&iacute; z&nbsp;tabulky</b> přev&aacute;d&iacute; adresy na souřadnice.
+                </li>
+                <li>N&aacute;stroj  <b>Naj&iacute;t podobn&eacute; lokality</b> vyhled&aacute; um&iacute;stěn&iacute; nejpodobněj&scaron;&iacute; jednomu či v&iacute;ce referenčn&iacute;m um&iacute;stěn&iacute;m na z&aacute;kladě v&aacute;mi určen&yacute;ch krit&eacute;ri&iacute;.
                 </li>
             </ul>
             
         </p>
     </div>
+        <div id="DetectIncidentsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Detekovat události</h2></td>
+                    <td>
+                    <img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" class="titleImage" alt="Detekovat ud&aacute;losti">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> <img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Detekovat ud&aacute;losti">
+            </p>
+            <p>Tento n&aacute;stroj pracuje s&nbsp;časovou vrstvou bodů, lini&iacute;, ploch nebo tabulek, kter&aacute; představuje okamžik v čase. Tento n&aacute;stroj použ&iacute;v&aacute; sekvenčně uspoř&aacute;dan&eacute; prvky, zvan&eacute; stopy, a určuje, kter&eacute; prvky jsou ud&aacute;losti, jež jsou předmětem z&aacute;jmu. Ud&aacute;losti jsou určeny podm&iacute;nkami, kter&eacute; specifikujete. 
+            </p>
+            <p>Např&iacute;klad
+                <ul>
+                    <li>Měřen&iacute;m hurik&aacute;nů, na z&aacute;kladě atributu rychlosti větru, detekujte hurik&aacute;ny 4. kategorie.
+                    </li>
+                    <li>S využit&iacute;m měřen&iacute; pomoc&iacute; GPS pohybu lodi s polem představuj&iacute;c&iacute;m rychlost lodi, vyhledejte měřen&iacute;, kter&aacute; jsou vět&scaron;&iacute; než 1,5n&aacute;sobek aritmetick&eacute;ho průměru předchoz&iacute;ch pěti měřen&iacute;.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="GeocodeLocationsfromTableTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Geokódovat umístění z tabulky (Geocode Locations from Table)</h2></td>
+                    <td>
+                    <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" class="titleImage" alt="Geok&oacute;dovat um&iacute;stěn&iacute; z&nbsp;tabulky">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" alt="Geok&oacute;dovat um&iacute;stěn&iacute; z&nbsp;tabulky">
+            </p>
+            <p>Převede adresy na souřadnice. Použ&iacute;t tento n&aacute;stroj na tabulky pro sd&iacute;len&iacute; datov&yacute;ch souborů BIG Data.
+            </p>
+            <br/>
+        </div>
         <div id="FindSimilarLocationsTool" class="largesize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -232,7 +285,7 @@
 <hr/>
             <p>Na z&aacute;kladě v&aacute;mi určen&yacute;ch krit&eacute;ri&iacute; vyhledejte podobn&aacute; um&iacute;stěn&iacute; změřen&iacute;m podobnosti um&iacute;stěn&iacute; ve va&scaron;&iacute; vrstvě vyhled&aacute;v&aacute;n&iacute; kandid&aacute;tů s&nbsp;jedn&iacute;m nebo v&iacute;ce referenčn&iacute;mi um&iacute;stěn&iacute;mi. 
             </p>
-            <p> Např&iacute;klad
+            <p>Např&iacute;klad 
                 <ul>
                     <li>Najděte deset nejpodobněj&scaron;&iacute;ch obchodů vyhodnocen&iacute;m počtu zaměstnanců a ročn&iacute;ch tržeb.
                     </li>
@@ -260,16 +313,16 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Vypočítat hustotu</h2></td>
+                    <td><h2>Vypočítat hustotu (Calculate Density)</h2></td>
                     <td>
-                    <img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" class="titleImage" alt="Calculate Density">
+                    <img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" class="titleImage" alt="Vypoč&iacute;tat hustotu">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
             <p>N&aacute;stroj Vypoč&iacute;tat hustotu vytv&aacute;ř&iacute; mapu hustoty z&nbsp;bodov&yacute;ch prvků rozprostřen&iacute;m zn&aacute;m&eacute;ho množstv&iacute; určit&eacute;ho jevu (v podobě atributů bodů) po mapě. V&yacute;sledkem je vrstva oblast&iacute; přestavuj&iacute;c&iacute; hustotu.
             </p>
-            <p> Např&iacute;klad
+            <p>Např&iacute;klad
                 <ul>
                     <li>V&yacute;počet hustoty nemocnic v&nbsp;kraji. V&yacute;sledn&aacute; vrstva uk&aacute;že oblasti s&nbsp;vysokou a n&iacute;zkou m&iacute;rou dostupnosti nemocnic. Tuto informaci lze využ&iacute;t při rozhodov&aacute;n&iacute;, kde by měly b&yacute;t postaveny nov&eacute; nemocnice.
                     </li>
@@ -293,14 +346,14 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>N&aacute;stroj Anal&yacute;za m&iacute;st s&nbsp;vysokou intenzitou umožňuje zjistit, zda v&nbsp;prostorov&eacute;m obrazci dat existuj&iacute; statisticky v&yacute;znamn&eacute; shluky. 
+            <p>N&aacute;stroj Hot spot anal&yacute;za umožňuje zjistit, zda v&nbsp;prostorov&eacute;m obrazci dat existuj&iacute; statisticky v&yacute;znamn&eacute; shluky. 
                 <ul>
                     <li>Jsou body (trestn&eacute; činy, stromy, dopravn&iacute; nehody) opravdu souč&aacute;st&iacute; shluku? Jak si můžete b&yacute;t jist&iacute;?
                     </li>
                     <li>Narazili jste opravdu na statisticky v&yacute;znamn&yacute; Hot Spot (t&yacute;kaj&iacute;c&iacute; se v&yacute;dajů, kojeneck&eacute; &uacute;mrtnosti, konzistentně vysok&yacute;ch v&yacute;sledků testů), nebo by va&scaron;e mapa vypadala zcela jinak, pokud byste změnili způsob zn&aacute;zorněn&iacute;?
                     </li>
                 </ul>
-                N&aacute;stroj Anal&yacute;za Hot Spot v&aacute;m pomůže s&nbsp;jistotou odpovědět na tyto ot&aacute;zky.
+                N&aacute;stroj Hot spot anal&yacute;za v&aacute;m pomůže s&nbsp;jistotou odpovědět na tyto ot&aacute;zky.
             </p>
             <br/>
         </div>
@@ -319,7 +372,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Vytvořit obalové zóny</h2></td>
+                    <td><h2>Vytvořit obalové zóny (Create Buffers)</h2></td>
                     <td>
                     <img src="../images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" class="titleImage" alt="Vytvořit obalov&eacute; z&oacute;ny">
                     </td>
@@ -328,7 +381,7 @@
 <hr/>
             <p>Obalov&aacute; z&oacute;na je oblast, kter&aacute; sah&aacute; do určit&eacute; vzd&aacute;lenosti od dan&eacute;ho bodu, č&aacute;ry nebo polygonu.
             </p>
-            <p> Např&iacute;klad
+            <p>Např&iacute;klad
                 <ul>
                     <li>Pomoc&iacute; line&aacute;rn&iacute;ch prvků řek uložte každou řeku do obalov&eacute; z&oacute;ny o velikosti 50n&aacute;sobku &scaron;&iacute;řky řeky, abyste určili navrhovanou břehovou hranici.
                     </li>
@@ -339,12 +392,14 @@
             </p>
             <br/>
         </div>
-    <div id="ManageDataCategory" class="smallsize">
+    <div id="ManageDataCategory" class="regularsize">
         <h2>Spravovat data</h2>
         <hr/>
         <p>Tyto n&aacute;stroje lze použ&iacute;t pro každodenn&iacute; spr&aacute;vu geografick&yacute;ch a tabulkov&yacute;ch dat.
             <ul>
-                <li>N&aacute;stroj  <b>Kop&iacute;rovat do datov&eacute;ho &uacute;loži&scaron;tě</b> zkop&iacute;ruje data do va&scaron;eho datov&eacute;ho &uacute;loži&scaron;tě ArcGIS a vytvoř&iacute; vrstvu ve va&scaron;em webov&eacute;m GIS.
+                <li>N&aacute;stroj <b>Vypoč&iacute;tat hodnoty pole</b> vytvoř&iacute; nov&eacute; pole nebo modifikuje již existuj&iacute;c&iacute; pole a vytvoř&iacute; ve va&scaron;em obsahu novou vrstvu.
+                </li>
+                <li>N&aacute;stroj <b>Kop&iacute;rovat do datov&eacute;ho &uacute;loži&scaron;tě</b> zkop&iacute;ruje data do va&scaron;eho datov&eacute;ho &uacute;loži&scaron;tě v ArcGIS a vytvoř&iacute; vrstvu ve va&scaron;em obsahu.
                 </li>
             </ul>
             
@@ -361,12 +416,35 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Zkop&iacute;ruje vstupn&iacute; vrstvu prvků nebo tabulku do  ArcGIS Data Store a vytvoř&iacute; vrstvu ve va&scaron;em webov&eacute;m GIS. </p>
-            <p> Např&iacute;klad
+            <p>Zkop&iacute;ruje vstupn&iacute; vrstvu prvků nebo tabulku do  ArcGIS Data Store a ve va&scaron;em obsahu vytvoř&iacute; vrstvu v  ArcGIS Enterprise. </p>
+            <p>Např&iacute;klad
                 <ul>
-                    <li> Zkop&iacute;rujte sb&iacute;rku souborů <code>.csv</code> ve sd&iacute;len&eacute;m souboru velk&yacute;ch dat do časoprostorov&eacute;ho datov&eacute;ho &uacute;loži&scaron;tě pro vizualizaci.
+                    <li>Zkop&iacute;rujte sb&iacute;rku souborů  <code>.csv</code> ve sd&iacute;len&eacute;m souboru Big Data do časoprostorov&eacute;ho datov&eacute;ho &uacute;loži&scaron;tě pro vizualizaci.
                     </li>
                     <li>Zkop&iacute;rujte prvky v&nbsp;aktu&aacute;ln&iacute;m rozsahu mapy, kter&eacute; jsou uloženy v&nbsp;časoprostorov&eacute;m datov&eacute;m &uacute;loži&scaron;ti, do relačn&iacute;ho datov&eacute;ho &uacute;loži&scaron;tě.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="CalculateFieldTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Vypočítat hodnoty pole (Calculate Field)</h2></td>
+                    <td>
+                    <img src="../images/GUID-059C9BE7-7B00-49C8-9917-B0EAEA3DA19D-web.png" class="titleImage" alt="Vypoč&iacute;tat hodnoty pole">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Vypoč&iacute;t&aacute; hodnoty pro nov&eacute; nebo již existuj&iacute;c&iacute; pole a vytvoř&iacute; ve va&scaron;em obsahu  vrstvu v  ArcGIS Enterprise. </p>
+            <p>Např&iacute;klad
+                <ul>
+                    <li>Modifikovat st&aacute;vaj&iacute;c&iacute; pole  <i>celkem,</i> tak, aby představovalo celkovou hodnotu obratu z pol&iacute; <i>celkem_2016</i>, <i>celkem_2017</i>a <i>celkem_2018</i>.
+                    </li>
+                    <li>Vytvořit nov&eacute; pole pro rozčleněn&iacute; &uacute;rovn&iacute; rizika na z&aacute;kladě hodnot pol&iacute;, jako jsou např&iacute;klad  <i>rychlost_vetru</i> a <i>polutant</i>.
                     </li>
                 </ul>
                 

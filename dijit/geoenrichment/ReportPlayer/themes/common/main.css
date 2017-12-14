@@ -1,26 +1,28 @@
-@import url('./AdjustableGrid_infographic.css');
-@import url('./AdjustableGrid_inSection.css');
-@import url('./AdjustableGrid_pageLayout.css');
-@import url('./AdjustableGrid.css');
-@import url('./ChartContainer.css');
-@import url('./ImagesAndShapes.css');
-@import url('./InfographicContainer.css');
-@import url('./InfographicsPage.css');
-@import url('./ReportContainer.css');
-@import url('./ReportContainerGrid.css');
-@import url('./ReportContainerPagination.css');
-@import url('./SectionDynamicSettings.css');
-@import url('./TemplateSections.css');
-@import url('./PageOptionsDialog.css');
-@import url('./AreaDetails.css');
-@import url('./SimpleInfographic.css');
-@import url('./ConditionalStyleLegend.css');
-
+@import url('./charts/ChartContainer.css');
+@import url('./charts/ChartTooltip.css');
+@import url('./charts/ComparisonSelect.css');
+@import url('./grid/AdjustableGrid_pageLayout.css');
+@import url('./grid/AdjustableGrid.css');
+@import url('./infographics/InfographicContainer.css');
+@import url('./infographics/InfographicsPage.css');
+@import url('./infographics/AreaDetails.css');
+@import url('./infographics/SimpleInfographic.css');
+@import url('./infographics/SimpleInfographic_dataDrilling.css');
+@import url('./infographics/SimpleInfographic_dataDrillingSlide.css');
+@import url('./infographics/SimpleInfographic_dataDrillingZoom.css');
+@import url('./reportContainers/ReportContainer.css');
+@import url('./reportContainers/ReportContainerGrid.css');
+@import url('./reportContainers/ReportContainerPagination.css');
 @import url('./ReportPlayer/ReportPlayer.css');
 @import url('./ReportPlayer/ReportPlayerButtons.css');
 @import url('./ReportPlayer/ReportPlayerHeaderFooter.css');
 @import url('./ReportPlayer/ReportPlayerPrint.css');
-@import url('./ReportPlayer/PlayerSelect.css');
+
+@import url('./ImagesAndShapes.css');
+@import url('./SectionDynamicSettings.css');
+@import url('./TemplateSections.css');
+@import url('./PageOptionsDialog.css');
+@import url('./ConditionalStyleLegend.css');
 
 
 @import url('./fonts/AvenirNext.css');

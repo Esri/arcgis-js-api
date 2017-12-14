@@ -40,24 +40,24 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="smallsize">
         <h2>计算密度</h2><p/>
-        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Calculate Density"></h2>
+        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="计算密度"></h2>
         <hr/>
-    <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas classified from least dense to most dense.   
+    <p>&ldquo;计算密度&rdquo;工具用于通过将某种现象的已知量（表示为点的属性）散布到整个地图上以从点要素创建密度地图。结果是按密度从小到大分类的面图层。
 
     </p>
-    <p>For point input, each point should represent the location of some event or incident, and the result layer represents a count of the incident per unit area.  A higher density value in a new location means that there are more points near that location.  In many cases, the result layer can be interpreted as a risk surface for future events. For example, if the input points represent locations of lightning strikes, the result layer can be interpreted as a risk surface for future lightning strikes.
+    <p>对于点输入，每个点应表示某一事件或事件点的位置，结果图层应表示每个单位面积中的事件点计数。新位置中的密度值越高则表示此位置附近的点越多。在多数情况下，可以将结果图层视为未来事件的风险表面。例如，如果输入点表示受到雷击的位置，则可将结果图层视为未来可能受到雷击的风险表面。
     </p>
-    <p>Other use cases of this tool include the following:
+    <p>此工具的其他用例如下：
         <ul>
-            <li>Creating crime-density maps to help police departments properly allocate resources to high crime areas.
+            <li>创建犯罪密度地图以帮助警方适当地将资源分配到高犯罪率区域。
             </li>
-            <li>Calculating densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to decide where new hospitals should be built.
+            <li>计算某县的医院密度。结果图层将显示容易到达医院和不容易到达医院的区域，此信息可用于确定新建医院的位置。
             </li>
-            <li>Identifying areas that are at high risk of forest fires based on historical locations of forest fires.
+            <li>根据发生森林火灾的历史位置确定森林火灾的高风险区域。
             </li>
-            <li>Locating communities that are far from major highways in order to plan where new roads should be constructed.
+            <li>查找距离主干道较远的社区以计划修建新道路的位置。
             </li>
         </ul>
         
@@ -68,19 +68,19 @@
         <div><h2>选择计算密度所使用的点图层</h2></div>
         <hr/>
         <div>
-            <p>The point layer on which the density will be calculated.
+            <p>要进行密度计算的点图层。
             </p>
             <p>除了从地图中选择图层外，还可以在下拉列表的底部选择 <b>浏览图层</b>，以浏览至大数据文件共享数据集或要素图层中的内容。
             </p>
         </div>
     </div>
     <div id="fields">
-        <div><h2>选择一个或多个字段以计算密度（可选）</h2></div>
+        <div><h2>选择一个或多个字段以计算密度(可选)</h2></div>
         <hr/>
         <div>
-            <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
+            <p>提供一个或多个字段，用于指定每个位置处的事件点数量。例如，如果您具有表示城市的点，则您可以将表示城市人口的字段作为计数字段，结果人口密度图层将计算拥有较多人口的城市附近的较大人口密度。
             </p>
-            <p>The density for the count of points will always be calculated.   If no fields are selected, each location will be assumed to represent a single count.
+            <p>将始终计算点计数的密度。如果未选择任何字段，则假定每个位置代表一个计数。
             </p>
         </div>
     </div>
@@ -88,7 +88,7 @@
         <div><h2>选择条柱形状</h2></div>
         <hr/>
         <div>
-            <p>The shape of bins that points are aggregated into and used for the density calculation.
+            <p>由点聚合成的条柱形状，用于密度计算。
             </p>
             <p>使用 <b>方形</b>或 <b>六边形</b>条柱需要投影坐标系。您可以在 <b>分析环境</b>中设置 <b>处理坐标系</b>。如果您的处理坐标系未设置为投影坐标系，则 <b>运行分析</b>时系统将提示您进行设置。
             </p>
@@ -98,7 +98,7 @@
         <div><h2>选择用于聚合的条柱大小</h2></div>
         <hr/>
         <div>
-            <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
+            <p>所生成条柱的大小。对于方形条柱，大小表示正方形的高度。对于六边形条柱，大小表示六边形的高度（以平行边为起点）。
             </p>
         </div>
     </div>
@@ -106,11 +106,11 @@
         <div><h2>选择要应用的密度加权</h2></div>
         <hr/>
         <div>
-            <p>The type of weighting applied to the density calculation. There are two options:
+            <p>应用于密度计算的权重类型。共有两个选项：
                 <ul>
-                    <li> <b>Uniform</b>&mdash;This calculates a magnitude per area.
+                    <li> <b>统一</b> - 将计算单位面积的量值。
                     </li>
-                    <li> <b>Kernel</b>&mdash;Applies a kernel function to fit a smooth tapered surface to each point.
+                    <li> <b>核</b> - 应用核函数将每个点拟合为光滑锥状表面。
                     </li>
                 </ul>
                 
@@ -121,7 +121,7 @@
         <div><h2>选择邻域大小</h2></div>
         <hr/>
         <div>
-            <p>The size of the area used to calculate the density. The neighborhood size must be larger than the bin size.
+            <p>用于计算密度的面积大小。邻域大小必须大于条柱大小。
             </p>
         </div>
     </div>
@@ -129,13 +129,13 @@
         <div><h2>选择密度的输出单位</h2></div>
         <hr/>
         <div>
-            <p>The desired output units of the density values. By default, this is set to square kilometers or square miles based on the default units specified in your profile. If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+            <p>密度值的所需输出单位。默认情况下，根据配置文件中指定的默认单位，可将其设置为平方公里或平方英里。如果密度值非常小，则可以增大面积单位的大小（例如，从平方米增大为平方公里），以返回较大的值。这些值仅对结果进行缩放。
 
             </p>
         </div>
     </div>
     <div id="timeSlicing">
-        <div><h2>使用时间步长计算密度（可选）</h2></div>
+        <div><h2>使用时间步长计算密度(可选)</h2></div>
         <hr/>
         <div>
             <p>如果输入点图层上启用了时间且类型为时刻，则可以使用时间步长进行分析。使用时间时可设置以下三个参数：

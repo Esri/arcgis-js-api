@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define([],function(){function r(r,a){if(!e){e=[];for(var o=-20;20>o;o++)e.push(1*Math.pow(10,o)),e.push(2*Math.pow(10,o)),e.push(5*Math.pow(10,o))}for(var t,i,n=0;n<e.length;n++){var f=e[n],p=e[n+1];if(r>f&&p>=r){t=p/5,i=t/5;break}}for(var u=0,h=0;r>=(u+1)*t;)u++;for(;r>=u*t+(h+1)*i;)h++;var v={majorTickStep:t,minorTickStep:i,max:u*t+(h+2)*i};return a&&(v.includeZero=!0,v.min=.9*-i,v.fixLower="none"),v}var e,a={};return a.getPrettifyYAxisParameters=r,a});
+define([],function(){var r,e={};return e.getPrettifyYAxisParameters=function(e,a){if(!r){r=[];for(var o=-20;20>o;o++)r.push(1*Math.pow(10,o)),r.push(2*Math.pow(10,o)),r.push(5*Math.pow(10,o))}for(var t,i,n=0;n<r.length;n++){var f=r[n],p=r[n+1];if(e>f&&p>=e){t=p/5,i=t/5;break}}for(var u=0,h=0;e>=(u+1)*t;)u++;for(;e>=u*t+(h+1)*i;)h++;var v={majorTickStep:t,minorTickStep:i,max:u*t+(h+2)*i};return a&&(v.includeZero=!0,v.min=.9*-i,v.fixLower="none"),v},e});

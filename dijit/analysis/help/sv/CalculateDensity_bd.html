@@ -42,22 +42,22 @@
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Beräkna densitet</h2><p/>
-        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Calculate Density"></h2>
+        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Ber&auml;kna densitet"></h2>
         <hr/>
-    <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas classified from least dense to most dense.   
+    <p>Med verktyget Ber&auml;kna densitet kan du skapa en densitetskarta av punktgeoobjekt genom att sprida ut k&auml;nda antal av n&aring;got fenomen (som representeras som attribut f&ouml;r punkterna) &ouml;ver kartan. Resultatet blir ett lager med omr&aring;den klassificerade fr&aring;n l&auml;gsta till h&ouml;gsta densitet.   
 
     </p>
-    <p>For point input, each point should represent the location of some event or incident, and the result layer represents a count of the incident per unit area.  A higher density value in a new location means that there are more points near that location.  In many cases, the result layer can be interpreted as a risk surface for future events. For example, if the input points represent locations of lightning strikes, the result layer can be interpreted as a risk surface for future lightning strikes.
+    <p>F&ouml;r punktdata b&ouml;r varje punkt representera platsen f&ouml;r en h&auml;ndelse eller incident, medan resultatlagret representerar antalet incidenter per enhetsomr&aring;de. Ett h&ouml;gre densitetsv&auml;rde p&aring; en ny plats inneb&auml;r att det finns fler punkter n&auml;ra den platsen. I m&aring;nga fall kan resultatlagret tolkas som ett riskomr&aring;de f&ouml;r framtida h&auml;ndelser. Om indatapunkterna till exempel representerar platser f&ouml;r blixtnedslag, kan resultatlagret tolkas som ett riskomr&aring;de f&ouml;r framtida blixtnedslag.
     </p>
-    <p>Other use cases of this tool include the following:
+    <p>Andra exempel p&aring; anv&auml;ndningsomr&aring;den f&ouml;r det h&auml;r verktyget &auml;r bland annat:
         <ul>
-            <li>Creating crime-density maps to help police departments properly allocate resources to high crime areas.
+            <li>Skapa kartor &ouml;ver brottslighet som hj&auml;lper polisen att f&ouml;rdela sina resurser till omr&aring;den med h&ouml;g brottslighet.
             </li>
-            <li>Calculating densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to decide where new hospitals should be built.
+            <li>Ber&auml;kna densitet f&ouml;r sjukhus inom en kommun. Resultatlagret visar omr&aring;den med h&ouml;g och l&aring;g tillg&aring;ng till sjukhus, och den h&auml;r informationen kan anv&auml;ndas f&ouml;r att avg&ouml;ra var nya sjukhus b&ouml;r byggas.
             </li>
-            <li>Identifying areas that are at high risk of forest fires based on historical locations of forest fires.
+            <li>Identifiera omr&aring;den d&auml;r risken f&ouml;r skogsbr&auml;nder &auml;r stor baserat p&aring; platsen f&ouml;r tidigare skogsbr&auml;nder.
             </li>
-            <li>Locating communities that are far from major highways in order to plan where new roads should be constructed.
+            <li>Hitta orter som ligger l&aring;ngt fr&aring;n st&ouml;rre motorv&auml;gar f&ouml;r att kunna planera var nya v&auml;gar b&ouml;r byggas.
             </li>
         </ul>
         
@@ -68,7 +68,7 @@
         <div><h2>Välj ett punktlager som densiteten ska beräknas från</h2></div>
         <hr/>
         <div>
-            <p>The point layer on which the density will be calculated.
+            <p>Det punktlager p&aring; vilket densiteten ska ber&auml;knas.
             </p>
             <p>F&ouml;rutom att v&auml;lja ett lager fr&aring;n kartan kan du v&auml;lja  <b>Bl&auml;ddra bland lager</b> l&auml;ngst ned i listrutan f&ouml;r att bl&auml;ddra till ditt inneh&aring;ll efter ett big data-fildelningsdataset eller geoobjektslager.
             </p>
@@ -78,9 +78,9 @@
         <div><h2>Välj ett eller flera fält att beräkna densitet från (valfritt)</h2></div>
         <hr/>
         <div>
-            <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
+            <p>Ange ett eller flera f&auml;lt som visar antalet incidenter p&aring; respektive plats. Om du till exempel har punkter som representerar st&auml;der, kan du anv&auml;nda ett f&auml;lt som representerar befolkningen i staden som ett antalsf&auml;lt. D&aring; r&auml;knar det resulterande befolkningst&auml;thetslagret med st&ouml;rre befolkningst&auml;thet n&auml;ra st&auml;der med st&ouml;rre befolkning.
             </p>
-            <p>The density for the count of points will always be calculated.   If no fields are selected, each location will be assumed to represent a single count.
+            <p>Densiteten f&ouml;r antalet punkter ber&auml;knas alltid. Om inga f&auml;lt v&auml;ljs, anses varje plats representera ett enda antal.
             </p>
         </div>
     </div>
@@ -88,7 +88,7 @@
         <div><h2>Välj en lagerplatsform</h2></div>
         <hr/>
         <div>
-            <p>The shape of bins that points are aggregated into and used for the density calculation.
+            <p>Formen p&aring; klasserna som punkterna aggregeras till och som anv&auml;nds f&ouml;r ber&auml;kning av densiteten.
             </p>
             <p>Analyser som anv&auml;nder lagringsplatserna  <b>Kvadrat</b> eller <b>Hexagon</b> kr&auml;ver ett projicerat koordinatsystem. Du kan ange <b>Bearbetande koordinatsystem</b> i <b>Analysmilj&ouml;</b>. Om ditt bearbetande koordinatsystem inte &auml;r inst&auml;llt som ett projicerat koordinatsystem, blir du uppmanad att st&auml;lla in det n&auml;r du anv&auml;nder <b>K&ouml;r analys</b>.
             </p>
@@ -98,7 +98,7 @@
         <div><h2>Välj lagerplatsstorlek för aggregering</h2></div>
         <hr/>
         <div>
-            <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
+            <p>Storleken p&aring; de genererade klasserna. F&ouml;r en kvadratisk lagringsplats motsvarar storleken kvadratens h&ouml;jd. F&ouml;r en hexagon motsvarar storleken hexagonens h&ouml;jd (fr&aring;n parallella sidor).
             </p>
         </div>
     </div>
@@ -106,11 +106,11 @@
         <div><h2>Välj densitetsviktning att tillämpa</h2></div>
         <hr/>
         <div>
-            <p>The type of weighting applied to the density calculation. There are two options:
+            <p>Vilken typ av viktning som till&auml;mpas p&aring; densitetsber&auml;kningen. Det finns tv&aring; alternativ:
                 <ul>
-                    <li> <b>Uniform</b>&mdash;This calculates a magnitude per area.
+                    <li> <b>Enhetlig</b> &ndash; Ber&auml;knar magnituden per omr&aring;de.
                     </li>
-                    <li> <b>Kernel</b>&mdash;Applies a kernel function to fit a smooth tapered surface to each point.
+                    <li> <b>K&auml;rna</b> &ndash; Till&auml;mpar en k&auml;rnfunktion f&ouml;r att passa in en j&auml;mnt avsmalnande yta till varje punkt.
                     </li>
                 </ul>
                 
@@ -121,7 +121,7 @@
         <div><h2>Välj närområdets storlek</h2></div>
         <hr/>
         <div>
-            <p>The size of the area used to calculate the density. The neighborhood size must be larger than the bin size.
+            <p>Storleken p&aring; omr&aring;det som anv&auml;nds f&ouml;r att ber&auml;kna densiteten. N&auml;romr&aring;dets storlek m&aring;ste vara st&ouml;rre &auml;n lagerplatsstorleken.
             </p>
         </div>
     </div>
@@ -129,7 +129,7 @@
         <div><h2>Välj utdataenheter för densitet</h2></div>
         <hr/>
         <div>
-            <p>The desired output units of the density values. By default, this is set to square kilometers or square miles based on the default units specified in your profile. If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+            <p>&Ouml;nskade utdataenheter f&ouml;r densitetsv&auml;rdena. Som standard &auml;r detta inst&auml;llt p&aring; kvadratkilometer eller kvadratmiles beroende p&aring; vilka standardenheter som anges i din profil. Om densitetsv&auml;rdena &auml;r mycket sm&aring; kan du &ouml;ka storleken f&ouml;r omr&aring;desenheterna (till exempel kvadratmeter till kvadratkilometer) f&ouml;r att returnera st&ouml;rre v&auml;rden. V&auml;rdena skalanpassas bara till resultatet.  
 
             </p>
         </div>

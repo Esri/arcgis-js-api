@@ -44,7 +44,7 @@
         <h2>Rekonstruer spor</h2><p/>
         <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Rekonstruer spor"></h2>
         <hr/>
-    <p>Dette verkt&oslash;yet fungerer med et tidsaktivert lag med enten punkt- eller polygongeoobjekter som representerer et  <code>&oslash;yeblikk</code> i tid.   Det fastsl&aring;r f&oslash;rst hvilke geoobjekter som tilh&oslash;rer et spor ved hjelp av en identifikator. Ved &aring; bruke tiden p&aring; hver lokasjon blir sporene organisert sekvensielt og omdannet til en linje eller en polygon som representerer banen for bevegelsen over tid. Eventuelt kan inndataene bufres av et felt, noe som vil skape et polygon p&aring; hver lokasjon. Disse bufrede punktene, eller hvis inndataene er polygoner, blir deretter sl&aring;tt sammen sekvensielt for &aring; lage et spor som et polygon der bredden er representerer det aktuelle attributtet.  De resulterende sporene har en start- og slutt-tid, noe som tidsmessig representerer de f&oslash;rste og siste geoobjektene i et gitt spor. N&aring;r sporene er opprettet, blir statistikk om inndatageoobjektene beregnet og tilordnet utdatasporene. Den mest grunnleggende statistikken er antall punkter innenfor omr&aring;det, men du kan beregne annen statistikk ogs&aring;.
+    <p>Dette verkt&oslash;yet fungerer med et tidsaktivert lag med enten punkt- eller polygongeoobjekter som representerer et  <code>&oslash;yeblikk</code> i tid.   Det fastsl&aring;r f&oslash;rst hvilke geoobjekter som tilh&oslash;rer et spor ved hjelp av en identifikator. Ved &aring; bruke tiden p&aring; hver lokasjon blir sporene organisert sekvensielt og omdannet til en linje eller et polygon som representerer banen for bevegelsen over tid. Eventuelt kan inndataene bufres av et felt, noe som vil skape et polygon p&aring; hver lokasjon. Disse bufrede punktene, eller hvis inndataene er polygoner, blir deretter sl&aring;tt sammen sekvensielt for &aring; lage et spor som et polygon der bredden representerer det aktuelle attributtet.  De resulterende sporene har en start- og slutt-tid, noe som tidsmessig representerer de f&oslash;rste og siste geoobjektene i et gitt spor. N&aring;r sporene er opprettet, blir statistikk om inndatageoobjektene beregnet og tilordnet utdatasporene. Den mest grunnleggende statistikken er antall punkter innenfor omr&aring;det, men du kan beregne annen statistikk ogs&aring;.
     </p>
     <p>Geoobjekter i tidsaktiverte lag kan representeres p&aring; en av to m&aring;ter:
         <ul>
@@ -65,14 +65,14 @@
         <div><h2>Velg geoobjekter som sporene skal rekonstrueres fra</h2></div>
         <hr/>
         <div>
-            <p>Punkt- eller polygonlaget som vil bli rekonstruert til spor. Inndatalageret m&aring; v&aelig;re tidsaktivert med geoobjekter som representerer et &oslash;yeblikk i tid. Laget m&aring; v&aelig;re i et projisert koordinatsystem eller den geografiske referansen for behandling m&aring; v&aelig;re satt til et projisert koordinatsystem som bruker  <b>analysemilj&oslash;ene</b> hvis det brukes buffer.
+            <p>Punkt- eller polygonlaget som vil bli rekonstruert til spor. Inndatalageret m&aring; v&aelig;re tidsaktivert med geoobjekter som representerer et &oslash;yeblikk i tid. Laget m&aring; v&aelig;re i et projisert koordinatsystem, eller den geografiske referansen for behandling m&aring; v&aelig;re satt til et projisert koordinatsystem i  <b>analysemilj&oslash;ene</b>, hvis det brukes buffer.
             </p>
             <p>I tillegg til &aring; velge et lag fra kartet kan du velge  <b>Bla gjennom lag</b>, som du finner nederst i rullegardinlisten, til &aring; bla deg frem til innholdet for et fildelingsdatasett for big data eller et geoobjektslag.
             </p>
         </div>
     </div>
     <div id="trackFields">
-        <div><h2>Velg et eller flere felt å identifisere spor</h2></div>
+        <div><h2>Velg et eller flere felt for å identifisere spor</h2></div>
         <hr/>
         <div>
             <p>Feltene som representerer spor-ID-en. 
@@ -93,7 +93,9 @@
         <div><h2>Opprett et uttrykk som inndatafunksjoner skal bufres med (valgfritt)</h2></div>
         <hr/>
         <div>
-            <p>Ligning som brukes til &aring; beregne bufferavstanden rundt inndatageoobjekter. Denne ligningen kan genereres ved hjelp av bufferkalkulatoren og grunnleggende operasjoner som f.eks. addisjon, subtraksjon, multiplikasjon og divisjon. Verdiene beregnes ved hjelp av analysekoordinatsystemet. Laget m&aring; v&aelig;re i et projisert koordinatsystem eller den geografiske referansen for behandling m&aring; v&aelig;re satt til et projisert koordinatsystem som bruker  <b>analysemilj&oslash;ene</b> hvis det brukes buffer.
+            <p>Ligning som brukes til &aring; beregne bufferavstanden rundt inndatageoobjekter. Denne ligningen kan genereres ved hjelp av bufferkalkulatoren og grunnleggende operasjoner som f.eks. addisjon, subtraksjon, multiplikasjon og divisjon. Verdiene beregnes ved hjelp av analysekoordinatsystemet. Laget m&aring; v&aelig;re i et projisert koordinatsystem, eller den geografiske referansen for behandling m&aring; v&aelig;re satt til et projisert koordinatsystem i  <b>analysemilj&oslash;ene</b>, hvis det brukes buffer.
+            </p>
+            <p>En ligning som  <code>$feature.windspeed * 1000</code> ville benyttet en buffer p&aring; 1000 multiplisert med feltet <i>vindhastighet</i>. Du kan bruke flere enn ett felt i bufferkalkulatoren.
             </p>
         </div>
     </div>
@@ -102,6 +104,20 @@
         <hr/>
         <div>
             <p>Tiden som brukes til &aring; dele spor. Hvis inndatapunktene eller polygonene har lengre varighet mellom dem enn tidsinndelingen, vil de bli delt inn i forskjellige spor.
+            </p>
+            <p>Hvis du angir en tidsinndeling og en avstandsinndeling, vil sporene bli delt n&aring;r en av eller begge betingelsene er oppfylt. 
+            </p>
+            <p>Tenk deg at du hadde punktgeoobjekter som representerte flyvninger med fly, hvor sporfeltet var flyets ID. Dette flyet kan ta flere turer, men likevel v&aelig;re representert som ett spor.  Hvis du visste at det er en pause p&aring; 1 time mellom flyvningene, kan du bruke  <code>1 time</code> som spordeler, og hver flyving vil bli delt inn i sitt eget spor.
+            </p>
+        </div>
+    </div>
+    <div id="distanceSplit">
+        <div><h2>Velg en avstand som sporene skal deles på (valgfritt)</h2></div>
+        <hr/>
+        <div>
+            <p> Avstanden som brukes til &aring; dele spor. Hvis inndatapunktene eller polygonene har lengre avstand mellom seg enn tidsinndelingen, vil de bli delt inn i forskjellige spor.
+            </p>
+            <p>Hvis du angir en tidsinndeling og en avstandsinndeling, vil sporene bli delt n&aring;r en av eller begge betingelsene er oppfylt. 
             </p>
         </div>
     </div>

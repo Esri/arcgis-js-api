@@ -44,7 +44,7 @@
         <h2>Ricostruisci tracce</h2><p/>
         <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Ricostruisci tracce"></h2>
         <hr/>
-    <p>Questo strumento funziona con un layer abilitato per variazioni temporali di feature punto o poligono che rappresentano un  <code>istante</code> nel tempo.   Innanzitutto esso determina quali feature appartengono a una traccia utilizzando un identificatore. Utilizzando il tempo in ciascuna posizione, le tracce sono ordinate in modo sequenziale e trasformate in una linea o in un poligono che rappresenta la traiettoria del movimento nel tempo. Se lo si desidera, l'input pu&ograve; essere bufferizzato in funzione di un campo e verr&agrave; creato un poligono in ciascuna posizione. Questi punti bufferizzati, o se gli input sono dei poligoni, vengono uniti in modo sequenziale per creare una traccia in forma di poligono laddove la larghezza &egrave; indicativa dell'attributo di interesse. Le tracce generate hanno un'ora di inizio e un'ora di fine, che rappresentano temporalmente la prima e l'ultima feature in una determinata traccia. Quando si creano le tracce, vengono calcolate le statistiche su tutte le feature di input e vengono assegnate alla traccia di output. La statistica pi&ugrave; semplice &egrave; costituita dal numero di punti compresi nell'area, tuttavia &egrave; possibile calcolare anche altre statistiche.
+    <p>Questo strumento funziona con un layer abilitato per variazioni temporali di feature puntuali o poligonali che rappresentano un  <code>istante</code> nel tempo.   Innanzitutto esso determina quali feature appartengono a una traccia utilizzando un identificatore. Utilizzando il tempo in ciascuna posizione, le tracce sono ordinate in modo sequenziale e trasformate in una linea o in un poligono che rappresenta la traiettoria del movimento nel tempo. Se lo si desidera, l'input pu&ograve; essere bufferizzato in funzione di un campo e verr&agrave; creato un poligono in ciascuna posizione. Questi punti bufferizzati, o se gli input sono dei poligoni, vengono uniti in modo sequenziale per creare una traccia in forma di poligono laddove la larghezza &egrave; indicativa dell'attributo di interesse. Le tracce generate hanno un'ora di inizio e un'ora di fine, che rappresentano temporalmente la prima e l'ultima feature in una determinata traccia. Quando si creano le tracce, vengono calcolate le statistiche su tutte le feature di input e vengono assegnate alla traccia di output. La statistica pi&ugrave; semplice &egrave; costituita dal numero di punti compresi nell'area, tuttavia &egrave; possibile calcolare anche altre statistiche.
     </p>
     <p>Le feature abilitate per variazioni temporali possono essere rappresentate in due modi diversi:
         <ul>
@@ -67,7 +67,7 @@
         <div>
             <p>Il layer di punti o poligono che verr&agrave; ricostruito nelle tracce. Il layer di input deve essere abilitato per le variazioni temporali con feature che rappresentano un'istante nel tempo. Il layer deve essere in un sistema di coordinate proiettate o il riferimento spaziale di elaborazione deve essere impostato su un sistema di coordinate proiettate utilizzando gli  <b>Ambienti di analisi</b> se viene applicato un buffer.
             </p>
-            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Sfoglia layer</b> alla base dell'elenco a discesa per cercare una dataset di condivisione file Big Data o un feature layer.
+            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Sfoglia layer</b> alla base dell'elenco a discesa per cercare una dataset di condivisione file Big Data o un Feature Layer.
             </p>
         </div>
     </div>
@@ -95,13 +95,29 @@
         <div>
             <p>Equazione utilizzata per calcolare la distanza del buffer intorno alle feature di input. Questa equazione pu&ograve; essere generata utilizzando il calcolatore del buffer e operazioni di base come l'addizione, la sottrazione, la moltiplicazione e la divisione. I valori vengono calcolati utilizzando il sistema di coordinate di analisi. Il layer deve essere in un sistema di coordinate proiettate o il riferimento spaziale di elaborazione deve essere impostato su un sistema di coordinate proiettate utilizzando gli  <b>Ambienti di analisi</b> se viene applicato un buffer.
             </p>
+            <p>Un'equazione come  <code>$feature.windspeed * 1000</code> applicherebbe un buffer di 1000 moltiplicato per il campo della <i>velocit&agrave; del vento</i>. &Egrave; possibile utilizzare pi&ugrave; di un campo nel calcolatore del buffer.
+            </p>
         </div>
     </div>
     <div id="timeSplit">
         <div><h2>Selezionare un'ora in cui suddividere le tracce (facoltativo)</h2></div>
         <hr/>
         <div>
-            <p>Tempo utilizzato per suddividere le tracce. Se i punti di input o i poligoni sono separati da distanza pi&ugrave; lunga del periodo di tempo, verranno suddivisi in tracce differenti.
+            <p>Tempo utilizzato per suddividere le tracce. Se i punti o i poligoni di input hanno tra loro una durata maggiore rispetto alla suddivisione del tempo, verranno suddivisi in tracce differenti.
+            </p>
+            <p>Se si specifica una frazione di tempo e una divisione della distanza, le tracce vengono suddivise quando si soddisfa una o entrambe le condizioni. 
+            </p>
+            <p>Si supponga di avere feature puntuali che rappresentano voli di aerei, in cui il campo della traccia &egrave; l'ID dell'aereo. Questo aereo pu&ograve; effettuare pi&ugrave; voli ma verr&agrave; rappresentato come una sola traccia.  Sapendo che tra un volo e l'altro c'&egrave; una pausa di 1 ora, &egrave; possibile utilizzare  <code>1 ora</code> come suddivisione della traccia e ciascun volo verr&agrave; suddiviso nella propria traccia.
+            </p>
+        </div>
+    </div>
+    <div id="distanceSplit">
+        <div><h2>Selezionare una distanza per suddividere le tracce (facoltativo)</h2></div>
+        <hr/>
+        <div>
+            <p> Distanza utilizzata per suddividere le tracce. Se i punti di input o i poligoni presentano una distanza pi&ugrave; lunga della divisione della distanza, verranno suddivisi in tracce differenti.
+            </p>
+            <p>Se si specifica una frazione di tempo e una divisione della distanza, le tracce vengono suddivise quando si soddisfa una o entrambe le condizioni. 
             </p>
         </div>
     </div>
@@ -145,7 +161,7 @@
         <div><h2>Scegliere un ArcGIS Data Store in cui salvare i risultati</h2></div>
         <hr/>
         <div>
-            <p>I risultati GeoAnalytic sono memorizzati in un ArcGIS Data Store ed esposti come un feature layer in  Portal for ArcGIS. Nella maggior parte dei casi, i risultati devono essere memorizzati nello Spatiotemporal Data Store e questa &egrave; l'impostazione predefinita. In alcuni casi, il salvataggio dei risultati nel Data Store relazionale &egrave; un'ottima opzione. Di seguito sono memorizzate le ragioni per memorizzare i risultati nel Data Store relazionale: 
+            <p>I risultati GeoAnalytic sono memorizzati in un ArcGIS Data Store ed esposti come un Feature Layer in  Portal for ArcGIS. Nella maggior parte dei casi, i risultati devono essere memorizzati nello Spatiotemporal Data Store e questa &egrave; l'impostazione predefinita. In alcuni casi, il salvataggio dei risultati nel Data Store relazionale &egrave; un'ottima opzione. Di seguito sono memorizzate le ragioni per memorizzare i risultati nel Data Store relazionale: 
                 <ul>
                     <li>Utilizzare i risultati nella collaborazione da portale a portale.
                     </li>
@@ -159,7 +175,7 @@
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Nome layer di risultati</h2></div>
+        <div><h2>Nome del layer dei risultati</h2></div>
         <hr/>
         <div>
             <p> Questo &egrave; il nome del layer che verr&agrave; creato in <b>I miei contenuti</b> e aggiunto alla mappa.  Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, lo strumento non verr&agrave; eseguito.

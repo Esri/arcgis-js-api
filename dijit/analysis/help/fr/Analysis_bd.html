@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="bdToolbox">
-        <p>La bo&icirc;te &agrave; outils Analyses Big Data r&eacute;partit les t&acirc;ches d'analyse sur votre instance d'ArcGIS GeoAnalytics Server. Vous pouvez ainsi analyser plus rapidement davantage de donn&eacute;es en exploitant la puissance de plusieurs ordinateurs. Les outils suivants sont actuellement disponibles&nbsp;:
+        <p>GeoAnalytics r&eacute;partit les t&acirc;ches d&rsquo;analyse sur votre instance d&rsquo;ArcGIS GeoAnalytics Server. Vous pouvez ainsi analyser plus rapidement davantage de donn&eacute;es en exploitant la puissance de plusieurs ordinateurs. Les outils suivants sont actuellement disponibles&nbsp;:
             <ul>
                 <li> <b>Agr&eacute;ger les points</b>
                 </li>
@@ -53,6 +53,8 @@
                 </li>
                 <li> <b>Synth&eacute;tiser - A l'int&eacute;rieur</b>
                 </li>
+                <li> <b>Detect Incidents (D&eacute;tecter les incidents)</b>
+                </li>
                 <li> <b>Rechercher des emplacements similaires</b>
                 </li>
                 <li> <b>Calculer la densit&eacute;</b>
@@ -63,10 +65,14 @@
                 </li>
                 <li> <b>Copier dans le stockage des donn&eacute;es</b>
                 </li>
+                <li> <b>Calculate Field (Calculer un champ)</b>
+                </li>
+                <li> <b>Geocode Locations from Table (G&eacute;ocoder des emplacements &agrave; partir d&rsquo;une table)</b>
+                </li>
             </ul>
             
         </p>
-        <p>La bo&icirc;te &agrave; outils Analyses Big Data sert principalement &agrave; analyser des donn&eacute;es volumineuses en s'int&eacute;ressant particuli&egrave;rement aux mod&egrave;les spatiaux et temporels. 
+        <p>GeoAnalytics sert principalement &agrave; analyser des donn&eacute;es volumineuses en s&rsquo;int&eacute;ressant particuli&egrave;rement aux mod&egrave;les spatiaux et temporels. 
         </p>
     </div>
     <div id="SummarizeDataCategory" class="largesize">
@@ -125,11 +131,11 @@
 <hr/>
             <p>A l'aide des couches d'entit&eacute;s ou des donn&eacute;es tabulaires, vous pouvez joindre des entit&eacute;s et des enregistrements en fonction des relations sp&eacute;cifiques entre les couches ou tables en entr&eacute;e.  Les jointures sont d&eacute;termin&eacute;es par des relations spatiales, temporelles et attributaires et des r&eacute;sum&eacute;s statistiques peuvent &ecirc;tre calcul&eacute;s.  
             </p>
-            <p> Par exemple
+            <p>Par exemple
                 <ul>
                     <li>Pour les emplacements des points des d&eacute;lits avec une heure, l'outil joint les donn&eacute;es de criminalit&eacute; &agrave; elles-m&ecirc;mes, en sp&eacute;cifiant une relation spatiale des crimes &agrave; moins d'un kilom&egrave;tre les uns des autres, afin de d&eacute;terminer si une s&eacute;quence de crimes proches les uns des autres a lieu dans l'espace et le temps.
                     </li>
-                    <li> Pour une table de codes postaux avec des informations d&eacute;mographiques et des entit&eacute;s surfaciques repr&eacute;sentant des b&acirc;timents r&eacute;sidentiels, l'outil joint les informations d&eacute;mographiques aux r&eacute;sidences afin que chaque r&eacute;sidence dispose des informations.
+                    <li>Pour une table de codes postaux avec des informations d&eacute;mographiques et des entit&eacute;s surfaciques repr&eacute;sentant des b&acirc;timents r&eacute;sidentiels, l&rsquo;outil joint les informations d&eacute;mographiques aux r&eacute;sidences afin que chaque r&eacute;sidence dispose des informations.
                     </li>
                 </ul>
                 
@@ -153,7 +159,7 @@
                 <ul>
                     <li>Pour les emplacements des points et les mesures horaires de l'ouragan, l'outil calcule la vitesse moyenne du vent et la pression &eacute;olienne maximale de l'ouragan.
                     </li>
-                    <li>Recherche les revenus mensuels les plus &eacute;lev&eacute;s et les plus faibles des franchises &agrave; l'aide de groupes de 10&nbsp;km.
+                    <li>Utilisez les mesures GPS des navires pour reconstruire les trajets des navires en tant que lignes.
                     </li>
                 </ul>
                 
@@ -166,7 +172,7 @@
                 <tbody><tr>
                     <td><h2>Synthétiser les attributs</h2></td>
                     <td>
-                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="Synth&eacute;tiser les attributs">
+                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="Summarize Attributes (Synth&eacute;tiser les attributs) diagramme">
                     </td>
                 </tr></tbody>
             </table>
@@ -208,17 +214,64 @@
             </p>
             <br/>
         </div>
-    <div id="FindLocationsCategory" class="smallsize">
+    <div id="FindLocationsCategory" class="regularsize">
         <h2>Rechercher des emplacements</h2>
         <hr/>
         <p>Ces outils permettent d'identifier les surfaces qui r&eacute;pondent &agrave; un certain nombre de crit&egrave;res que vous d&eacute;finissez.  
             <ul>
+                <li> <b>Detect Incidents (D&eacute;tecter les incidents)</b> fonctionne avec des couches temporelles pour d&eacute;terminer quelles entit&eacute;s r&eacute;pondent &agrave; une condition sp&eacute;cifi&eacute;e.
+                </li>
+                <li> <b>Geocode Locations from Table (G&eacute;ocoder des emplacements &agrave; partir d&rsquo;une table)</b> convertit les adresses en coordonn&eacute;es.
+                </li>
                 <li>L'outil  <b>Rechercher des emplacements similaires</b> recherche les emplacements les plus similaires &agrave; un ou plusieurs emplacements de r&eacute;f&eacute;rence, sur la base des crit&egrave;res que vous d&eacute;finissez.
                 </li>
             </ul>
             
         </p>
     </div>
+        <div id="DetectIncidentsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Détecter les incidents</h2></td>
+                    <td>
+                    <img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" class="titleImage" alt="Detect Incidents (D&eacute;tecter les incidents)">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> <img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Detect Incidents (D&eacute;tecter les incidents)">
+            </p>
+            <p>Cet outil fonctionne avec une couche temporelle de points, de lignes, de surfaces ou de tables qui repr&eacute;sente un instant donn&eacute; dans le temps. &Agrave; l&rsquo;aide d&rsquo;entit&eacute;s organis&eacute;es de mani&egrave;re s&eacute;quentielle, appel&eacute;es pistes, cet outil d&eacute;termine quelle entit&eacute;s sont des incidents d&rsquo;int&eacute;r&ecirc;t. Les incidents sont d&eacute;termin&eacute;s par des conditions que vous sp&eacute;cifiez. 
+            </p>
+            <p>Par exemple
+                <ul>
+                    <li>D&eacute;tectez des mesures d&rsquo;ouragans qui sont des ouragans de cat&eacute;gorie&nbsp;4 en fonction d&rsquo;un attribut de vitesse du vent.
+                    </li>
+                    <li>En utilisant les mesures GPS du mouvement du navire avec un champ repr&eacute;sentant la vitesse du navire, recherchez les mesures sup&eacute;rieures &agrave; 1,5&nbsp;fois la moyenne des cinq mesures pr&eacute;c&eacute;dentes.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="GeocodeLocationsfromTableTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Géocoder des emplacements à partir d'une table</h2></td>
+                    <td>
+                    <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" class="titleImage" alt="G&eacute;ocoder des emplacements &agrave; partir d'une table">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" alt="G&eacute;ocoder des emplacements &agrave; partir d'une table">
+            </p>
+            <p>Convertit des adresses en coordonn&eacute;es. Utilisez cet outil sur les tables de partage de fichiers Big Data.
+            </p>
+            <br/>
+        </div>
         <div id="FindSimilarLocationsTool" class="largesize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -232,7 +285,7 @@
 <hr/>
             <p>Selon les crit&egrave;res que vous sp&eacute;cifiez, l'outil Rechercher des emplacements similaires mesure la similarit&eacute; entre les emplacements figurant dans votre couche de recherche de candidats et un ou plusieurs emplacements de r&eacute;f&eacute;rence. 
             </p>
-            <p> Par exemple
+            <p>Par exemple 
                 <ul>
                     <li>Recherche les dix magasins les plus similaires en examinant le nombre d'employ&eacute;s et les ventes annuelles.
                     </li>
@@ -262,14 +315,14 @@
                 <tbody><tr>
                     <td><h2>Calculer la densité</h2></td>
                     <td>
-                    <img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" class="titleImage" alt="Calculate Density">
+                    <img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" class="titleImage" alt="Calculer la densit&eacute;">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
             <p>L'outil Calculer la densit&eacute; cr&eacute;e une carte de densit&eacute; &agrave; partir d'entit&eacute;s ponctuelles en r&eacute;partissant des quantit&eacute;s connues de certains ph&eacute;nom&egrave;nes (repr&eacute;sent&eacute;s sous forme d'attributs des points) sur la carte. Le r&eacute;sultat est une couche de surfaces repr&eacute;sentant la densit&eacute;.
             </p>
-            <p> Par exemple
+            <p>Par exemple
                 <ul>
                     <li>Calcul des densit&eacute;s des h&ocirc;pitaux au sein d'un comt&eacute;. La couche de r&eacute;sultat affiche les zones dont l'accessibilit&eacute; aux h&ocirc;pitaux est &eacute;lev&eacute;e ou faible et ces informations peuvent servir &agrave; choisir o&ugrave; implanter de nouveaux h&ocirc;pitaux.
                     </li>
@@ -295,9 +348,9 @@
 <hr/>
             <p>L'outil Rechercher les points chauds d&eacute;termine si le mod&egrave;le spatial de vos donn&eacute;es pr&eacute;sente des agr&eacute;gations statistiquement significatives. 
                 <ul>
-                    <li>Vos points (d&eacute;lits, arbres, accidents de la circulation) sont-ils r&eacute;ellement agr&eacute;g&eacute;s ? Comment en &ecirc;tre certain ?
+                    <li>Vos points (d&eacute;lits, arbres, accidents de la circulation) sont-ils r&eacute;ellement agr&eacute;g&eacute;s&nbsp;? Comment en &ecirc;tre certain&nbsp;?
                     </li>
-                    <li>Avez-vous vraiment d&eacute;couvert un hot spot statistiquement significatif (d&eacute;penses, mortalit&eacute; infantile, r&eacute;sultats d'examens &eacute;lev&eacute;s homog&egrave;nes) ou votre carte donnerait-elle des r&eacute;sultats diff&eacute;rents en modifiant sa symbolisation ?
+                    <li>Avez-vous vraiment d&eacute;couvert un hot spot statistiquement significatif (d&eacute;penses, mortalit&eacute; infantile, r&eacute;sultats d'examens &eacute;lev&eacute;s homog&egrave;nes) ou votre carte donnerait-elle des r&eacute;sultats diff&eacute;rents en modifiant sa symbolisation&nbsp;?
                     </li>
                 </ul>
                 L'outil Rechercher les points chauds vous aide &agrave; trouver la r&eacute;ponse &agrave; ces questions en toute confiance.
@@ -328,7 +381,7 @@
 <hr/>
             <p>Une zone tampon est une surface qui couvre une distance donn&eacute;e &agrave; partir d'une entit&eacute; ponctuelle, lin&eacute;aire ou surfacique.
             </p>
-            <p> Par exemple
+            <p>Par exemple
                 <ul>
                     <li>A l'aide d'entit&eacute;s de rivi&egrave;re lin&eacute;aires, buff&eacute;rise chaque rivi&egrave;re de 50&nbsp;fois la largeur de la rivi&egrave;re pour proposer une limite riveraine.
                     </li>
@@ -339,12 +392,14 @@
             </p>
             <br/>
         </div>
-    <div id="ManageDataCategory" class="smallsize">
+    <div id="ManageDataCategory" class="regularsize">
         <h2>Gérer les données</h2>
         <hr/>
         <p>Ces outils permettent de g&eacute;rer au quotidien les donn&eacute;es g&eacute;ographiques et tabulaires.
             <ul>
-                <li> <b>Copier dans le stockage des donn&eacute;es</b> copie des donn&eacute;es dans votre instance ArcGIS Data Store et cr&eacute;e une couche dans votre SIG Web.
+                <li> <b>Calculate Field (Calculer un champ)</b> cr&eacute;e un nouveau champ ou modifie un champ existant et cr&eacute;e une nouvelle couche dans vos contenus.
+                </li>
+                <li> <b>Copy to Data Store (Copier dans le stockage des donn&eacute;es)</b> copie des donn&eacute;es dans votre instance ArcGIS Data Store et cr&eacute;e une couche dans vos contenus.
                 </li>
             </ul>
             
@@ -361,12 +416,35 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Copie une couche d'entit&eacute;s en entr&eacute;e ou une table dans un service  ArcGIS Data Store et cr&eacute;e une couche dans votre SIG Web. </p>
-            <p> Par exemple
+            <p>Copie une couche d&rsquo;entit&eacute;s en entr&eacute;e ou une table dans un  ArcGIS Data Store et cr&eacute;e une couche dans vos contenus dans  ArcGIS Enterprise. </p>
+            <p>Par exemple
                 <ul>
-                    <li> Copie une collection de fichiers <code>.csv</code> d'un partage de fichiers Big Data dans le stockage des donn&eacute;es spatio-temporelles &agrave; des fins de visualisation.
+                    <li>Copie une collection de fichiers  <code>.csv</code> d&rsquo;un partage de fichiers Big Data dans le stockage des donn&eacute;es spatio-temporelles &agrave; des fins de visualisation.
                     </li>
                     <li>Copie les entit&eacute;s de l'&eacute;tendue actuelle de la carte qui sont stock&eacute;es dans le stockage des donn&eacute;es spatio-temporelle vers le stockage des donn&eacute;es relationnelles.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="CalculateFieldTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Calculer un champ</h2></td>
+                    <td>
+                    <img src="../images/GUID-059C9BE7-7B00-49C8-9917-B0EAEA3DA19D-web.png" class="titleImage" alt="Calculer un champ">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Calcule les valeurs d&rsquo;un champ nouveau ou existant et cr&eacute;e une couche dans vos contenus dans  ArcGIS Enterprise. </p>
+            <p>Par exemple
+                <ul>
+                    <li>Modifie un champ existant nomm&eacute;  <i>total</i> pour qu&rsquo;il indique la somme des recettes des champs <i>total_2016</i>, <i>total_2017</i> et <i>total_2018</i>.
+                    </li>
+                    <li>Cr&eacute;e un nouveau champ pour cat&eacute;goriser les niveaux de danger sur des valeurs de champs telles que  <i>windspeed</i> et <i>pollutant</i>.
                     </li>
                 </ul>
                 

@@ -3,6 +3,7 @@
 @import url("BrowseAnalysisLayers.css"); 
 @import url("BufferFieldExpression.css"); 
 @import url("../customgp/css/style.css");
+@import url("BrowseAnalysisTools.css");
 
 .analysisTitle {
   font-weight: bold;
@@ -326,6 +327,15 @@
   margin: 10px;
 }
 
+.calculateFieldIcon {
+  background-image: url("../images/CalculateField32.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 32px;
+  height: 32px;
+  margin: 10px;
+}
+
 .overlayLayersIcon {
   background-image: url("../images/OverlayLayers32.png");
   background-repeat: no-repeat;
@@ -522,6 +532,15 @@
   background-repeat: no-repeat;
   background-size: 100%;
   width: 31px;
+  height: 32px;
+  margin: 8px;
+}
+
+.findCentroidsIcon {
+  background-image: url("../images/FindCentroid32.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 32px;
   height: 32px;
   margin: 8px;
 }
@@ -920,6 +939,12 @@ td.subsectionLineDivider {
 }
 
 
+
+.esriAnalysis .esriMediumlabel3{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 105px;
+}
 
 .esriAnalysis .esriShortlabel .dijitSelectLabel{
   overflow: hidden;
@@ -2082,6 +2107,10 @@ html[dir="rtl"] .esriAnalysis .crumb:first-child {
   background: url(../images/loading-throb.gif) no-repeat center;
   width: 100%;
   height: 100%;
+}
+
+.esriAnalysis .esriLoadingBar2  {
+  background: url(../images/loading-throb.gif) no-repeat center;
 }
 
 

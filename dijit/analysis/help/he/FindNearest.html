@@ -59,7 +59,7 @@
     </p>
     <p>Find Nearest returns a layer containing the nearest features  and a line layer that links the start locations to their nearest locations. The line layer contains information about the start and nearest locations and the distances between.
     </p>
-    <p>If  <b>Use current map extent</b> is checked, only the features that are visible within the current map extent will be considered as start and potentially nearest features.  If unchecked, all features in the input layer will be considered, even if they are outside the current map extent.  
+    <p>If  <b>Use current map extent</b> is checked, only the features that are visible within the current map extent will be considered as start and potentially nearest features.  If unchecked, all features in the input layer will be considered, even if they are outside the current map extent.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -91,7 +91,7 @@
             </p>
             <p>When measuring between lines or areas, the distance from or to the nearest point along the line or the boundary of the area is found. 
             </p> 
-            <p>When you choose  <b>Driving time</b>, you have options on how to measure the drive time.
+            <p>When you choose  <b>Driving Time</b>, <b>Rural Driving Time</b>, or <b>Trucking Time</b> you have options on how to measure the drive time.
                 <ul>
                     <li>
                         <p>Uncheck  <b>Use Traffic</b> to find the nearest features based on static travel speeds, such as speed limits, rather than on fluctuating speeds caused by changing traffic conditions.
@@ -115,6 +115,8 @@
                     </li>
                 </ul>
                 Note that as a vehicle drives outward from a point, time elapses and traffic conditions change. This tool accounts for these variations when you check <b>Use traffic</b>; however, not all regions support traffic. Click the <b>See availability</b> link on the tool to find out whether it is offered in  your study area. 
+            </p>
+            <p> <b>Trucking Time</b> can use dynamic travel speeds based on traffic but only up to the legal truck speed limit. For example, if the dynamic speed for a street based on live traffic is 65 miles per hour but the truck speed limit for that street is 55 miles per hour, the calculation will use 55 miles per hour for that street.
             </p>
         </div>
     </div>

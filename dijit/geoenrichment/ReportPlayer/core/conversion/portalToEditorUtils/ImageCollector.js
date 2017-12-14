@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["dojo/when","dojo/promise/all","esri/dijit/geoenrichment/utils/DataUtil","esri/dijit/geoenrichment/utils/ImageUtil","esri/dijit/geoenrichment/utils/ImageInfoUtil"],function(e,t,i,n,a){return{collectImageResources:function(o,r,l){function s(t){return e(a.getImageInfo(r[t],t),null,function(){delete r[t]})}o&&o.files&&o.files.forEach(function(e){var t=i.getContentType(e.name);t&&"image/"==t.substr(0,6)&&(r[l(e.name)]=n.base64DataToDataURL(e.data,t))});var u=[];for(var c in r)u.push(s(c));return t(u)}}});
+define(["dojo/when","dojo/promise/all","esri/dijit/geoenrichment/utils/DataUtil","esri/dijit/geoenrichment/utils/ImageUtil","esri/dijit/geoenrichment/utils/ImageInfoUtil"],function(e,t,i,n,a){return{collectImageResources:function(o,r,l){function s(t){return e(a.getImageInfo(r[t],t),null,function(){delete r[t]})}o&&o.files&&o.files.forEach(function(e){var t=i.getContentType(e.name);t&&"image/"===t.substr(0,6)&&(r[l(e.name)]=n.base64DataToDataURL(e.data,t))});var u=[];for(var c in r)u.push(s(c));return t(u)}}});

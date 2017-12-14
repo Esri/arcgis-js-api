@@ -4,7 +4,6 @@
 
 .VariableInfo_Header, .VariableInfo_Value {
     color:#666666;
-    max-width: 250px;
 }
 
 .dj_rtl .VariableInfo_Header, .dj_rtl .VariableInfo_Value {

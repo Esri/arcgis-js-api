@@ -185,7 +185,7 @@
     <div id="FindLocationsCategory" class="regularsize">
         <h2>尋找位置</h2>
         <hr/>
-        <p>這些工具用於識別滿足多個不同指定條件的區域。這些條件基於屬性查詢（如閒置宗地）和空間查詢（如距離河流 1 公里以內）。尋找的區域可從現有圖徵（例如現有地塊）中選擇，也可建立滿足所有要求的新圖徵。
+        <p>這些工具用於識別或建立符合您指定條件的圖徵。條件的類型將依據您使用的工具；例如，您的條件可能根據空間或屬性查詢、來自指定高度的可見區域、特定排水點的下游區域，或特定交通狀況的行駛時間。
             <ul>
                 <li> <b>選擇最佳機構</b>會根據指定的目標，為機構配置有需求的位置來選擇這些機構的最佳位置。
                 </li>
@@ -195,16 +195,18 @@
                 </li>
                 <li> <b>衍生新位置</b>可在研究區域中建立滿足一系列條件的新區域。
                 </li>
+                <li class="OnlineOnly"> <b>尋找質心</b>可尋找輸入圖徵的代表中心（質心）。 
+                </li>
                 <li> <b>尋找現有位置</b>用於在圖層中尋找滿足一系列條件的現有區域。
                 </li>
                 <li> <b>尋找相似位置</b>可根據指定的條件，尋找與一個或多個參考位置最相似的位置。
                 </li>
-                <li class="PortalOnly"> <b>來自表格的地理編碼位置</b>會將位址從表格轉換至座標。
+                <li class="PortalOnly"> <b>來自表格的地理編碼位置</b>會將位址從表格轉換至座標。 
                 </li>
                 <li> <b>追踪下游</b>以指定位置為起點，確定其下游方向的水流路徑。
                 </li>
             </ul>
-             
+            
         </p>
         <p> 
         </p>
@@ -266,6 +268,21 @@
             </table>
 <hr/>
             <p>在研究區域中建立滿足一系列指定條件的新圖徵。這些條件基於屬性查詢（如閒置宗地）和空間查詢（如距離河流 1 英里以內）。
+            </p>
+            <br/>
+        </div>
+        <div id="FindCentroidsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>尋找質心</h2></td>
+                    <td>
+                    <img src="../images/GUID-75D9AF75-68C3-48BF-8062-D5499BD06978-web.png" class="titleImage" alt="尋找質心">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>為每一個輸入多點、線或區域圖徵尋找代表中心（質心）。
             </p>
             <br/>
         </div>
@@ -429,9 +446,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>連接起點到目的地</h2></td>
+                    <td><h2>連線起始點到目的地</h2></td>
                     <td>
-                    <img src="../images/GUID-7266D30B-0250-4132-B1A5-9B59F0212FAD-web.png" class="titleImage" alt="連接起始點到目的地">
+                    <img src="../images/GUID-7266D30B-0250-4132-B1A5-9B59F0212FAD-web.png" class="titleImage" alt="連線起始點到目的地">
                     </td>
                 </tr></tbody>
             </table>
@@ -500,7 +517,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>尋找最近</h2></td>
+                    <td><h2>尋找最近點</h2></td>
                     <td>
                     <img src="../images/GUID-150C2484-7459-405A-8835-B4E72CD49738-web.png" class="titleImage" alt="尋找最近點">
                     </td>

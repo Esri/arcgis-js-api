@@ -41,8 +41,8 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="regularsize">
-        <h2>Iekšēja apkopošana</h2><p/>
-        <h2><img src="../images/GUID-9B12DB3F-AA7B-41EB-87C6-D2DEC3D52DA9-web.png" alt="Iek&scaron;ēja apkopo&scaron;ana"></h2>
+        <h2>Apkopot ietvaros</h2><p/>
+        <h2><img src="../images/GUID-9B12DB3F-AA7B-41EB-87C6-D2DEC3D52DA9-web.png" alt="Apkopot ietvaros"></h2>
         <hr/>
     <p>&Scaron;is rīks atrod elementus (un elementu daļas), kas atrodas apgabalu robežās pirmajā ievades slānī.  Piemēram:
         <ul>
@@ -53,22 +53,24 @@
         </ul>
         
     </p>
-    <p>Ja atzīmēts  <b>Lietot pa&scaron;reizējo kartes pārklājumu</b>, tiks analizēti tikai tie analīzes slāņa un apkopojamā slāņa elementi, kas ir redzami pa&scaron;reizējā kartes pārklājumā.  Ja nav atzīmēts, tiks analizēti visi elementi ievades slānī un apkopo&scaron;anas slānī, arī pa&scaron;reizējā kartes pārklājuma ārpusē.
+    <p>Ja atzīmēts  <b>Lietot pa&scaron;reizējo kartes pārklājumu</b>, tiks analizēti tikai tie analīzes slāņa un apkopojamā slāņa elementi, kas ir redzami pa&scaron;reizējā kartes pārklājumā.  Ja noņemsiet atzīmi no izvēles rūtiņas, tiks analizēti visi elementi ievades slānī un apkopo&scaron;anas slānī, arī ja tie atrodas pa&scaron;reizējā kartes pārklājuma ārpusē.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="sumWithinLayer">
-        <div><h2>Izvēlieties apgabala slāni, lai tā robežās apkopotu citus elementus</h2></div>
+        <div><h2>Izvēlieties apgabala slāni, lai apkopotu citus elementus tā robežās</h2></div>
         <hr/>
         <div>
             <p>Apgabala slānis, kas tiks izmantots, lai apkopotu elementus, kas atrodas tā robežās. 
+            </p>
+            <p>Varat izvēlēties savu teritorijas slāni vai nodalījumus, kas tiek ģenerēti, palaižot rīku. Ģenerējot nodalījumus,  <b>Kvadrātam</b> norādītais skaitlis un mērvienības nosaka kvadrāta augstumu un garumu. <b>Se&scaron;stūrim</b> norādītais skaitlis un mērvienības nosaka attālumu starp paralēlajām skaldnēm.
             </p>
             <p class="OnlineOnly">Papildus slāņa izvēlei no kartes nolaižamā saraksta apak&scaron;ā varat atlasīt  <b>Izvēlēties Living Atlas analīzes slāni</b> vai <b>Izvēlēties analīzes slāni</b>. Tādējādi tiek atvērta galerija, kurā apskatāmi dažādi analīzes slāņi. 
             </p>
         </div>
     </div>
     <div id="Summarize">
-        <div><h2>Izvēlieties slāni, ko apkopot</h2></div>
+        <div><h2>Izvēlieties slāni apkopošanai</h2></div>
         <hr/>
         <div>
             <p>Tiks apkopoti &scaron;ī slāņa elementi, kas atrodas iepriek&scaron; minētā ievades slāņa elementu robežās. 
@@ -83,7 +85,7 @@
         <div>
             <p>Pēc izvēles jūs varat kalkulēt statistiku skaitlisko atribūtiem punktiem, kas ietilpst elementu robežās. 
             </p>
-            <p>Izvēlnes rūtiņa  <b>Punktu skaits</b>, ja ir atzīmēta, aprēķinās kopējo punktu skaitu katra areāla robežās. Turklāt, jūs varat aprēķināt statistiku skaitlisko atribūtiem punktiem katra areāla robežās.
+            <p>Ja atzīmēsiet izvēles rūtiņu  <b>Punktu skaits</b>, tiks aprēķināts punktu kopskaits katras teritorijas robežās.  Turklāt, jūs varat aprēķināt statistiku skaitlisko atribūtiem punktiem katras teritorijas robežās.
             </p>
             <ul>
                 <li> <b>Summa</b>&nbsp;&mdash; norādītā lauka kopējā vērtība.
@@ -106,7 +108,7 @@
         <div>
             <p>Jūs varat pēc izvēles aprēķināt statistiku par visu apkopojamo līniju skaitliskajiem atribūtiem. 
             </p>
-            <p>Izvēlnes rūtiņa  <b>Kopējais līniju garums</b>, ja rūtiņa ir atzīmēta, tiks kalkulēts kopējais līniju garums katra areālā robežas. Turklāt, jūs varat aprēķināt statistiku skaitliskajiem atribūtiem līnijai, kas ir katra laukuma robežas.
+            <p>Ja atzīmēsiet izvēles rūtiņu  <b>Līniju kopējais garums</b>, tiks aprēķināts līniju kopējais garums katras teritorijas robežās.  Turklāt, jūs varat aprēķināt statistiku skaitliskajiem atribūtiem līnijai, kas ir katra laukuma robežas.
             </p>
             <ul>
                 <li> <b>Summa</b>&nbsp;&mdash; norādītā lauka kopējā vērtība.
@@ -178,7 +180,7 @@
         </div>
     </div>
     <div id="MinorityMajority">
-        <div><h2>Pievienot mazākumu, vairākumu</h2></div>
+        <div><h2>Pievienot mazākuma, vairākuma vērtības</h2></div>
         <hr/>
         <div>
             <p>&Scaron;ī izvēles rūtiņa tiks iespējota, ja izvēlēsieties lauku Grupēt pēc. Ja vēlaties noskaidrot, kuras atribūtu vērtības katrā grupā ir mazākumā (dominē vismazāk) vai vairākumā (dominē visvairāk) katrās pirmā ievades slāņa robežās, atlasiet  <b>Pievienot mazākumu, vairākumu</b>.   Ja izvēlēsieties <b>Pievienot mazākumu vai vairākumu</b>, jūsu rezultātu slānim tiks pievienoti divi jauni lauki.   Ja izvēlēsieties arī <b>Pievienot procentus</b>, rezultātu slānim tiks pievienoti divi papildu lauki, kuros būs ietverts katrā grupā eso&scaron;ais mazākuma un vairākuma atribūtu vērtību skaits procentos.

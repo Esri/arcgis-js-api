@@ -13,6 +13,9 @@
             "toolDescription": "Calculate_Density/01930000016m000000",
             "inputLayer": "Calculate_Density/01930000016m000000"
         },
+        "CalculateDensity_bd": {
+            "toolDescription": "Calculate_Density/0193000001n9000000"
+        },
         "ChooseBestFacilities": {
             "toolDescription": "Choose_Best_Facilities/019300000105000000",
             "allocateToExistingFacilities": "Choose_Best_Facilities/019300000105000000#ESRI_SECTION3_6E6EB159DCDA4ED79DCE1CF23AC3D3D8",
@@ -43,6 +46,9 @@
             "toolDescription": "Derive_New_Locations/0193000000w9000000",
             "Expression": "Derive_New_Locations/0193000000w9000000"
         },
+        "CopyToDataStore_bd": {
+            "toolDescription": "Copy_To_Data_Store/0193000001nn000000"
+        },        
         "CreateViewshed": {
             "toolDescription": "Create_Viewshed/01930000016r000000"
         },
@@ -51,6 +57,9 @@
         },
         "DissolveBoundaries": {
             "toolDescription": "Dissolve_Boundaries/019300000163000000"
+        },
+        "DetectIncidents_bd": {
+            "toolDescription": "Detect_Incidents/0193000001n4000000"
         },
         "EnrichLayer": {
             "toolDescription": "Enrich_Layer/019300000166000000",
@@ -71,6 +80,9 @@
             "boundingPolygonLayer": "Find_Hot_Spots/0193000000wn000000#ESRI_SECTION3_F9D255E9146E44CF99DCC140A3BB9CBB",
             "aggregationPolygonLayer": "Find_Hot_Spots/0193000000wn000000#ESRI_SECTION3_4AFB54649EC44003A2DDE65953B54AE3"
         },
+        "FindHotSpots_bd": {
+            "toolDescription": "Find_Hot_Spots/0193000001n8000000"
+        },
         "FindNearest": {
             "toolDescription": "Find_Nearest/01930000016n000000",
             "analysisLayer": "Find_Nearest/01930000016n000000"
@@ -84,7 +96,11 @@
             "searchLayer": "Find_Similar_Locations/0193000000wm000000#ESRI_SECTION1_0B2B928A26BC4659B2143D06017F991E",
             "analysisFields": "Find_Similar_Locations/0193000000wm000000#ESRI_SECTION1_B78395564C414EA79B3386D3AA8C740C"
         },
+        "FindSimilarLocations_bd": {
+            "toolDescription": "Find_Similar_Locations/0193000001nm000000"
+        },
         "GeocodeLocationsfromTable": {
+            "toolDescription": "Geocode_Locations_from_Table/01930000018n000000",
             "geocodeServiceURL": "Geocode_Locations_from_Table/01930000018n000000"
         },
         "InterpolatePoints": {

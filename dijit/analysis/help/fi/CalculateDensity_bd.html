@@ -42,22 +42,22 @@
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Laske tiheys</h2><p/>
-        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Calculate Density"></h2>
+        <h2><img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" alt="Laske tiheys"></h2>
         <hr/>
-    <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas classified from least dense to most dense.   
+    <p>Laske tiheys -ty&ouml;kalu luo tiheyskartan pistekohteista jakamalla tietyn ilmi&ouml;n tunnetut m&auml;&auml;r&auml;t (esitet&auml;&auml;n pisteiden ominaisuustietoina) kartan alueelle. Tuloksena syntyy karttataso, jonka alueet on luokiteltu v&auml;hiten tihe&auml;st&auml; tiheimp&auml;&auml;n.   
 
     </p>
-    <p>For point input, each point should represent the location of some event or incident, and the result layer represents a count of the incident per unit area.  A higher density value in a new location means that there are more points near that location.  In many cases, the result layer can be interpreted as a risk surface for future events. For example, if the input points represent locations of lightning strikes, the result layer can be interpreted as a risk surface for future lightning strikes.
+    <p>Pistel&auml;ht&ouml;aineiston kunkin pisteen tulee esitt&auml;&auml; jonkin tapahtuman tai tapauksen sijaintia. Tulostaso kuvaa tapausten m&auml;&auml;r&auml;&auml; tietyll&auml; yksik&ouml;n alueella. Korkeampi tiheysarvo uudessa sijainnissa tarkoittaa, ett&auml; kyseisen sijainnin l&auml;hell&auml; on enemm&auml;n pisteit&auml;. Useissa tapauksissa tulostasoa voidaan tulkita tulevien tapahtumien riskimallina. Jos pistel&auml;ht&ouml;aineisto esitt&auml;&auml; esimerkiksi salamaniskujen sijainteja, tulostasoa voidaan tulkita tulevien salamaniskujen riskimallina.
     </p>
-    <p>Other use cases of this tool include the following:
+    <p>Ty&ouml;kalua voi k&auml;ytt&auml;&auml; my&ouml;s esimerkiksi seuraaviin tarkoituksiin:
         <ul>
-            <li>Creating crime-density maps to help police departments properly allocate resources to high crime areas.
+            <li>Rikostiheyden karttojen luominen voi auttaa poliisilaitoksia kohdentamaan resurssejaan alueille, joilla rikollisuustaso on korkea.
             </li>
-            <li>Calculating densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to decide where new hospitals should be built.
+            <li>Maan sairaaloiden tiheyksien laskeminen. Tulostaso n&auml;ytt&auml;&auml; alueet, joilta sairaalaan p&auml;&auml;sy on helppoa tai vaikeaa. N&auml;it&auml; tietoja voidaan k&auml;ytt&auml;&auml; apuna p&auml;&auml;tett&auml;ess&auml; uusien sairaaloiden sijainneista.
             </li>
-            <li>Identifying areas that are at high risk of forest fires based on historical locations of forest fires.
+            <li>Mets&auml;paloille alttiiden alueiden tunnistaminen mets&auml;palojen historiallisten sijaintien perusteella.
             </li>
-            <li>Locating communities that are far from major highways in order to plan where new roads should be constructed.
+            <li>Kaukana valtateist&auml; sijaitsevien asutusten paikantaminen suunniteltaessa uusien teiden rakentamista.
             </li>
         </ul>
         
@@ -68,7 +68,7 @@
         <div><h2>Valitse pistekarttataso, joista tiheys lasketaan</h2></div>
         <hr/>
         <div>
-            <p>The point layer on which the density will be calculated.
+            <p>Pistekarttataso, jonka perusteella tiheys lasketaan.
             </p>
             <p>Sen lis&auml;ksi, ett&auml; voit valita karttatason kartasta, voit valita  <b>Selaa karttatasoja</b> -vaihtoehdon avattavan luettelon alareunasta ja selata Big Data -tiedostoresurssin aineistoryhm&auml;n tai karttatason sis&auml;lt&ouml;&ouml;n.
             </p>
@@ -78,9 +78,9 @@
         <div><h2>Valitse vähintään yksi kenttä, jonka tiheys lasketaan (valinnainen)</h2></div>
         <hr/>
         <div>
-            <p>Provide  one or more fields specifying the number of incidents at each location.  For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
+            <p>M&auml;&auml;rit&auml; v&auml;hint&auml;&auml;n yksi kentt&auml;, joka osoittaa tapausten m&auml;&auml;r&auml;n kussakin sijainnissa. Jos pisteet esitt&auml;v&auml;t esimerkiksi kaupunkeja, voit k&auml;ytt&auml;&auml; m&auml;&auml;r&auml;kentt&auml;n&auml; kentt&auml;&auml;, joka osoittaa kaupungin asukasluvun. Tuloksena syntyv&auml; v&auml;est&ouml;tiheyden karttataso laskee korkean v&auml;est&ouml;tiheyden asukasluvultaan suurien kaupunkien alueille.
             </p>
-            <p>The density for the count of points will always be calculated.   If no fields are selected, each location will be assumed to represent a single count.
+            <p>Pisteiden m&auml;&auml;r&auml;n tiheys lasketaan aina.   Jos yht&auml;&auml;n kentt&auml;&auml; ei valita, kunkin sijainnin oletetaan esitt&auml;v&auml;n yht&auml; tapausta.
             </p>
         </div>
     </div>
@@ -88,7 +88,7 @@
         <div><h2>Valitse lohkon muoto</h2></div>
         <hr/>
         <div>
-            <p>The shape of bins that points are aggregated into and used for the density calculation.
+            <p>Niiden lohkojen muoto, joihin pisteet kootaan ja joita k&auml;ytet&auml;&auml;n tiheyden laskennassa.
             </p>
             <p>Analysointi  <b>neli&ouml;</b>- tai <b>kuusikolmiolohkojen</b> avulla edellytt&auml;&auml; projisoitua koordinaattij&auml;rjestelm&auml;&auml;. Voit m&auml;&auml;ritt&auml;&auml; <b>k&auml;sittelev&auml;n koordinaattij&auml;rjestelm&auml;n</b> <b>Analyysiymp&auml;rist&ouml;t</b>-kohdassa. Jos k&auml;sittelev&auml;&auml; koordinaattij&auml;rjestelm&auml;&auml; ei ole m&auml;&auml;ritetty projisoiduksi koordinaattij&auml;rjestelm&auml;ksi, sinua pyydet&auml;&auml;n m&auml;&auml;ritt&auml;m&auml;&auml;n se sellaiseksi, kun valitset <b>Suorita analyysi</b>.
             </p>
@@ -98,7 +98,7 @@
         <div><h2>Valitse lohkon koko koostamista varten</h2></div>
         <hr/>
         <div>
-            <p>The size of the bins generated. For a square bin, the size represents the height of the square. For hexagon, the size represents the height of the hexagon (from parallel sides).
+            <p>Luotujen lohkojen koko. Neli&ouml;lohkoissa koko tarkoittaa neli&ouml;n korkeutta. Kuusikulmioissa koko tarkoittaa kuusikulmion korkeutta (rinnakkaisilta sivuilta).
             </p>
         </div>
     </div>
@@ -106,11 +106,11 @@
         <div><h2>Valitse käytettävä tiheyden painotus</h2></div>
         <hr/>
         <div>
-            <p>The type of weighting applied to the density calculation. There are two options:
+            <p>Tiheyslaskennassa k&auml;ytetty painotustapa. Vaihtoehtoja on kaksi:
                 <ul>
-                    <li> <b>Uniform</b>&mdash;This calculates a magnitude per area.
+                    <li> <b>Yhten&auml;inen</b> &ndash; T&auml;m&auml; laskee aluekohtaisen magnitudin.
                     </li>
-                    <li> <b>Kernel</b>&mdash;Applies a kernel function to fit a smooth tapered surface to each point.
+                    <li> <b>Ydin</b> &ndash; K&auml;ytt&auml;&auml; ydintoimintoa tasaisesti kaventuneen pinnan sovittamiseksi kuhunkin pisteeseen.
                     </li>
                 </ul>
                 
@@ -121,7 +121,7 @@
         <div><h2>Valitse naapuruston koko</h2></div>
         <hr/>
         <div>
-            <p>The size of the area used to calculate the density. The neighborhood size must be larger than the bin size.
+            <p>Sen alueen koko, jota k&auml;ytet&auml;&auml;n tiheyden laskennassa. Naapuruston koon on oltava suurempi kuin lohkon koko.
             </p>
         </div>
     </div>
@@ -129,7 +129,7 @@
         <div><h2>Valitse tiheyden tulosyksiköt</h2></div>
         <hr/>
         <div>
-            <p>The desired output units of the density values. By default, this is set to square kilometers or square miles based on the default units specified in your profile. If density values are very small, you can increase the size of the area units (for example, square meters to square kilometers) to return larger values. The values only scale the result.  
+            <p>Halutut tiheysarvojen tulosyksik&ouml;t. Oletusarvon mukaan t&auml;m&auml; on m&auml;&auml;ritetty neli&ouml;kilometreiksi tai neli&ouml;maileiksi profiilissasi m&auml;&auml;ritettyjen oletusyksik&ouml;iden mukaan. Jos tiheysarvot ovat hyvin pieni&auml;, voit lis&auml;t&auml; pinta-alayksik&ouml;n kokoa (esimerkiksi neli&ouml;metreist&auml; neli&ouml;kilometreiksi) suurempien arvojen palauttamiseksi. Arvot skaalautuvat vain tuloksen mukaan.  
 
             </p>
         </div>

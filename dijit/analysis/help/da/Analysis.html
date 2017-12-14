@@ -185,7 +185,7 @@
     <div id="FindLocationsCategory" class="largesize">
         <h2>Find steder</h2>
         <hr/>
-        <p>Disse v&aelig;rkt&oslash;jer bruges til at identificere omr&aring;der, der opfylder en r&aelig;kke kriterier, som du har angivet. Kriterierne kan v&aelig;re baseret p&aring; attribut-foresp&oslash;rgsler (f.eks. ledige parceller) og rumlige foresp&oslash;rgsler (f.eks. inden for 1 km fra en flod). De omr&aring;der, der findes, kan v&aelig;re valgt fra eksisterende objekter (f.eks. eksisterende parceller) eller der kan oprettes nye objekter, hvor alle kriterier opfyldes.
+        <p>Disse v&aelig;rkt&oslash;jer benyttes til at identificere eller oprette objekter, der opfylder de kriterier, som du definerer.  Typen af kriterier afh&aelig;nger af, hvilket v&aelig;rkt&oslash;j du bruger: Dine kriterier kan f.eks. v&aelig;re baseret p&aring; foresp&oslash;rgsler vedr. rumlighed eller attributter, synlige omr&aring;der fra en angivet h&oslash;jde, &quot;nedstr&oslash;msomr&aring;der&quot; i forhold til specifikke afvandingspunkter eller k&oslash;rselstid under specifikke trafikale forhold.
             <ul>
                 <li> <b>V&aelig;lg bedste faciliteter</b> v&aelig;lger de bedste steder til faciliteter ved at allokere steder, hvor der er eftersp&oslash;rgsel efter disse faciliteter p&aring; en m&aring;de, der tilfredsstiller en given m&aring;ls&aelig;tning.
                 </li>
@@ -195,16 +195,18 @@
                 </li>
                 <li> <b>Udled nye steder</b> opretter nye omr&aring;der ud fra steder i dit unders&oslash;gelsesomr&aring;de, der opfylder en r&aelig;kke kriterier.
                 </li>
+                <li class="OnlineOnly"> <b>Find centroider</b> finder det repr&aelig;sentative centrum (centroid) for input-objekterne. 
+                </li>
                 <li> <b>Find eksisterende steder</b> s&oslash;ger efter eksisterende omr&aring;der i et lag, der opfylder en r&aelig;kke kriterier.
                 </li>
                 <li> <b>Find lignende steder</b> finder steder, der mest ligner &eacute;t eller flere referencesteder, baseret p&aring; kriterier, som du angiver.
                 </li>
-                <li class="PortalOnly"> <b>Geokode-positioner fra tabel</b> konverterer adresser fra en tabel til koordinater.
+                <li class="PortalOnly"> <b>Geokode-positioner fra tabel</b> konverterer adresser fra en tabel til koordinater. 
                 </li>
                 <li> <b>G&aring; med str&oslash;mmen</b> bestemmer vandl&oslash;bsretninger i &quot;nedstr&oslash;ms-retning&quot; fra de positioner, som du angiver.
                 </li>
             </ul>
-             
+            
         </p>
         <p> 
         </p>
@@ -266,6 +268,21 @@
             </table>
 <hr/>
             <p>Opretter nye objekter i dit unders&oslash;gelsesomr&aring;de, der opfylder en r&aelig;kke kriterier, som du har angivet. Kriterierne kan v&aelig;re baseret p&aring; attribut-foresp&oslash;rgsler (f.eks. ledige parceller) og rumlige foresp&oslash;rgsler (f.eks. inden for 1 km fra en flod). 
+            </p>
+            <br/>
+        </div>
+        <div id="FindCentroidsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Find centroider</h2></td>
+                    <td>
+                    <img src="../images/GUID-75D9AF75-68C3-48BF-8062-D5499BD06978-web.png" class="titleImage" alt="Find centroider">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Finder det repr&aelig;sentative centrum (centroid) for hvert input-multipunkt-, linje- eller omr&aring;deobjekt.
             </p>
             <br/>
         </div>

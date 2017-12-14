@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="bdToolbox">
-        <p>빅 데이터 분석은 ArcGIS GeoAnalytics Server에서 분석 작업을 배포합니다. 이를 통해 여러 머신을 활용하여 더 많은 데이터를 보다 빠르게 분석할 수 있습니다. 현재 사용 가능한 도구는 다음과 같습니다.
+        <p>GeoAnalytics는 ArcGIS GeoAnalytics Server에서 분석 작업을 배포합니다. 이를 통해 여러 머신을 활용하여 더 많은 데이터를 보다 빠르게 분석할 수 있습니다. 현재 사용 가능한 도구는 다음과 같습니다.
             <ul>
                 <li> <b>포인트 집약</b>
                 </li>
@@ -53,6 +53,8 @@
                 </li>
                 <li> <b>다음 범위 내 요약</b>
                 </li>
+                <li> <b>사건 감지(Detect Incidents)</b>
+                </li>
                 <li> <b>유사한 위치 찾기</b>
                 </li>
                 <li> <b>밀도 계산</b>
@@ -63,10 +65,14 @@
                 </li>
                 <li> <b>데이터 저장소로 복사</b>
                 </li>
+                <li> <b>계산 필드(Calculate Field)</b>
+                </li>
+                <li> <b>테이블의 지오코드 위치(Geocode Locations from Table)</b>
+                </li>
             </ul>
             
         </p>
-        <p>빅 데이터 분석은 공간 및 시간 패턴 모두에서 강조 요소가 있는 대용량 데이터를 분석하는 데 중점을 둡니다. 
+        <p>GeoAnalytics는 공간 및 시간 패턴 모두에서 강조 요소가 있는 대용량 데이터를 분석하는 데 중점을 둡니다. 
         </p>
     </div>
     <div id="SummarizeDataCategory" class="regularsize">
@@ -116,20 +122,20 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>조인 피처(Join Features)</h2></td>
+                    <td><h2>조인 피처 (Join Features)</h2></td>
                     <td>
-                    <img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" class="titleImage" alt="조인 피처">
+                    <img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" class="titleImage" alt="조인 피처(Join Features)">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
             <p>피처 레이어 또는 테이블 형식 데이터를 사용하여 입력 레이어 또는 테이블 간의 특정 대응비에 따라 피처와 레코드를 조인할 수 있습니다.  조인은 공간, 시계열 및 속성 대응비에 따라 결정되며 필요한 경우 요약 통계를 계산할 수 있습니다.  
             </p>
-            <p> 예를 들면 다음과 같습니다.
+            <p>예를 들면 다음과 같습니다.
                 <ul>
                     <li>시간과 함께 범죄 사건에 대한 포인트 위치가 주어진 경우, 서로 1시간 이내 발생한 범죄 사건에 대해 1킬로미터 이내의 공간 대응비를 지정하여 범죄 데이터를 해당 범죄 사건에 조인함으로써 시공간에서 일련의 범죄가 서로 근접하게 발생하는지를 확인할 수 있습니다.
                     </li>
-                    <li> 인구 통계 정보가 포함된 우편 번호 테이블과 주거 건물을 나타내는 영역 피처가 주어진 경우, 인구 통계 정보를 거주지에 조인하여 각 거주지에 인구 통계 정보가 포함되도록 할 수 있습니다.
+                    <li>인구 통계 정보가 포함된 우편 번호 테이블과 주거 건물을 나타내는 영역 피처가 주어진 경우, 인구 통계 정보를 거주지에 조인하여 각 거주지에 인구 통계 정보가 포함되도록 할 수 있습니다.
                     </li>
                 </ul>
                 
@@ -153,7 +159,7 @@
                 <ul>
                     <li>허리케인 측정치 시간과 포인트 위치가 주어진 경우 허리케인의 평균 풍속과 최대 풍압을 계산합니다.
                     </li>
-                    <li>100km 그룹을 사용하여 프랜차이즈 위치의 최고 및 최저 월간 매출을 확인합니다.
+                    <li>선박의 GPS 측정치를 사용하여 라인으로  항로를 재생성하세요.
                     </li>
                 </ul>
                 
@@ -164,9 +170,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>속성 요약(Summarize Attributes)</h2></td>
+                    <td><h2>속성 요약 (Summarize Attributes)</h2></td>
                     <td>
-                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="속성 요약">
+                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="속성 요약 다이어그램">
                     </td>
                 </tr></tbody>
             </table>
@@ -209,16 +215,63 @@
             <br/>
         </div>
     <div id="FindLocationsCategory" class="smallsize">
-        <h2>위치 찾기</h2>
+        <h2>위치 찾기 (Find Locations)</h2>
         <hr/>
         <p>이러한 도구는 지정한 여러 조건을 충족하는 영역을 식별하는 데 사용됩니다. 
             <ul>
+                <li> <b>사건 감지</b>는 시계열 레이어와 함께 작동하여 어떤 피처가 지정한 조건을 충족하는지 확인합니다.
+                </li>
+                <li> <b>테이블의 지오코드 위치</b>는 주소를 좌표로 변환합니다.
+                </li>
                 <li> <b>유사한 위치 찾기</b> - 지정한 조건에 따라 하나 이상의 참조 위치와 가장 유사한 위치를 찾습니다.
                 </li>
             </ul>
             
         </p>
     </div>
+        <div id="DetectIncidentsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>사건 감지</h2></td>
+                    <td>
+                    <img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" class="titleImage" alt="사건 감지">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> <img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="사건 감지">
+            </p>
+            <p>이 도구는 인스턴트 시간을 나타내는 포인트, 라인, 영역 또는 테이블의 시계열 레이어와 함께 작동됩니다.   이 도구는 순서가 순차적으로 지정된 피처, 즉 추적을 사용하여 어떤 피처가 관심 사건인지 파악합니다. 사건은 지정한 조건에 따라 결정됩니다. 
+            </p>
+            <p>예를 들면 다음과 같습니다.
+                <ul>
+                    <li>풍속 속성을 기반으로 범주 4에 속하는 허리케인의 측정치를 감지했습니다.
+                    </li>
+                    <li>선박 속도를 나타내는 필드로 선박 이동에 따른 GPS 측정치를 사용하여 5개의 이전 측정치 평균보다 1.5배 더 큰 측정치를 찾습니다.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="GeocodeLocationsfromTableTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>테이블의 지오코드 위치(Geocode Locations from Table)</h2></td>
+                    <td>
+                    <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" class="titleImage" alt="테이블의 지오코드 위치(Geocode Locations from Table)">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" alt="테이블의 지오코드 위치(Geocode Locations from Table)">
+            </p>
+            <p>주소를 좌표로 변환합니다. 빅데이터 파일 공유 테이블에 이 도구를 사용합니다.
+            </p>
+            <br/>
+        </div>
         <div id="FindSimilarLocationsTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -232,7 +285,7 @@
 <hr/>
             <p>지정한 조건에 따라 하나 이상인 참조 위치에 대한 후보 검색 레이어의 위치 유사성을 측정하여 유사한 위치를 찾습니다. 
             </p>
-            <p> 예를 들면 다음과 같습니다.
+            <p>예를 들면 다음과 같습니다. 
                 <ul>
                     <li>직원 수와 연간 매출을 조사하여 가장 유사한 매장을 찾습니다.
                     </li>
@@ -262,16 +315,16 @@
                 <tbody><tr>
                     <td><h2>밀도 계산(Calculate Density)</h2></td>
                     <td>
-                    <img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" class="titleImage" alt="Calculate Density">
+                    <img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" class="titleImage" alt="밀도 계산">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
             <p>밀도 계산 도구는 맵에서 일부 현상(포인트의 속성으로 표시됨)의 알려진 수량을 분산시켜 포인트 피처에서 밀도 맵을 생성합니다. 결과는 밀도가 나타난 영역의 레이어입니다.
             </p>
-            <p> 예를 들면 다음과 같습니다.
+            <p>예를 들면 다음과 같습니다.
                 <ul>
-                    <li>군/구 내의 병원 밀도를 계산합니다. 결과 레이어가 병원에 대한 높고 낮은 접근성을 지역에 표시하며 신규 병원 건설 장소를 결정하는 데 이 정보를 사용할 수 있습니다.
+                    <li>구/군 내의 병원 밀도를 계산합니다.  결과 레이어가 병원에 대한 높고 낮은 접근성을 지역에 표시하며 신규 병원 건설 장소를 결정하는 데 이 정보를 사용할 수 있습니다.
                     </li>
                     <li>과거 산불이 발생한 위치를 기반으로 산불 발생 위험도가 높은 지역을 식별합니다.
                     </li>
@@ -295,7 +348,7 @@
 <hr/>
             <p>핫 스팟 찾기 도구는 데이터의 공간 패턴에 통계적으로 유의한 군집이 있는지 확인합니다. 
                 <ul>
-                    <li>포인트(범죄 사건, 나무, 교통 사고)가 실제로 군집되어 있습니까? 어떻게 확신할 수 있습니까?
+                    <li>포인트(범죄 사건, 나무, 교통 사고)가 실제로 군집되어 있습니까?  어떻게 확신할 수 있습니까?
                     </li>
                     <li>통계적으로 유의한 핫 스팟(지출, 영아 사망률, 지속적으로 높은 시험 점수)을 발견했습니까? 아니면 심볼화 방식을 변경한 경우 맵에 다른 정보가 나타납니까?
                     </li>
@@ -319,7 +372,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>버퍼 생성(Create Buffers)</h2></td>
+                    <td><h2>버퍼 생성 (Create Buffers)</h2></td>
                     <td>
                     <img src="../images/GUID-6E648C49-37F9-4673-82D5-DB646921A828-web.png" class="titleImage" alt="버퍼 생성">
                     </td>
@@ -328,7 +381,7 @@
 <hr/>
             <p>버퍼는 포인트, 라인 또는 폴리곤 피처에서 지정된 거리를 포함하는 영역입니다.
             </p>
-            <p> 예를 들면 다음과 같습니다.
+            <p>예를 들면 다음과 같습니다.
                 <ul>
                     <li>선형 하천 피처를 사용하는 경우 각 하천에 대해 하천 너비의 50배로 버퍼를 생성하여 제안된 하천 경계를 확인합니다.
                     </li>
@@ -340,11 +393,13 @@
             <br/>
         </div>
     <div id="ManageDataCategory" class="smallsize">
-        <h2>데이터 관리</h2>
+        <h2>데이터 관리 (Manage Data)</h2>
         <hr/>
         <p>지리 데이터 및 테이블 형식 데이터의 일상적인 관리에 사용되는 도구입니다.
             <ul>
-                <li> <b>데이터 저장소에 복사</b> - 데이터를 ArcGIS Data Store에 복사하고 웹 GIS에서 레이어를 생성합니다.
+                <li> <b>필드 계산</b> - 새 필드를 생성하거나 기존 필드를 수정하고 콘텐츠에서 새 레이어를 생성합니다.
+                </li>
+                <li> <b>데이터 저장소에 복사</b> - 데이터를 ArcGIS Data Store에 복사하고 콘텐츠에서 레이어를 생성합니다.
                 </li>
             </ul>
             
@@ -361,12 +416,35 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>입력 피처 레이어 또는 테이블을  ArcGIS Data Store에 복사하고 웹 GIS에서 레이어를 생성합니다. </p>
-            <p> 예를 들면 다음과 같습니다.
+            <p>입력 피처 레이어 또는 테이블을  ArcGIS Data Store에 복사하고  ArcGIS Enterprise의 콘텐츠에서 레이어를 생성합니다. </p>
+            <p>예를 들면 다음과 같습니다.
                 <ul>
-                    <li> 시각화를 위해 빅 데이터 파일 공유의 <code>.csv</code> 파일 컬렉션을 시공간적 데이터 저장소에 복사합니다.
+                    <li>시각화를 위해 빅데이터 파일 공유의  <code>.csv</code> 파일 컬렉션을 시공간 데이터 저장소에 복사합니다.
                     </li>
-                    <li>시공간적 데이터 저장소에 저장된 현재 맵 범위의 피처를 관계형 데이터 저장소에 복사합니다.
+                    <li>시공간형 데이터 저장소에 저장되어 있는 현재 맵 범위의 피처를 관계형 데이터 저장소로 복사합니다.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="CalculateFieldTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>계산 필드(Calculate Field)</h2></td>
+                    <td>
+                    <img src="../images/GUID-059C9BE7-7B00-49C8-9917-B0EAEA3DA19D-web.png" class="titleImage" alt="계산 필드">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>새 필드 또는 기존 필드의 값을 계산하고  ArcGIS Enterprise의 콘텐츠에서 레이어를 생성합니다. </p>
+            <p>예를 들면 다음과 같습니다.
+                <ul>
+                    <li>기존 필드인  <i>total</i>을 필드 <i>total_2016</i>, <i>total_2017</i> 및 <i>total_2018</i> 수익의 합으로 수정합니다.
+                    </li>
+                    <li> <i>windspeed</i> 및 <i>pollutant</i> 같은 필드 값을 기반으로 위험 수준을 분류하는 새 필드를 생성합니다.
                     </li>
                 </ul>
                 

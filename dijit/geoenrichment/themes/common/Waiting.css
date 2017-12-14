@@ -19,3 +19,18 @@
     width: auto !important;
     height: auto !important;
 }
+
+.esriGEWaitingMessageProgressBar {
+    position: absolute;
+    left: 0px;
+    height: 3px;
+    background-color: #0079C1;
+}
+
+.esriGEWaitingMessageProgressBar_top {
+    top: 0px;
+}
+
+.esriGEWaitingMessageProgressBar_bottom {
+    bottom: 0px;
+}

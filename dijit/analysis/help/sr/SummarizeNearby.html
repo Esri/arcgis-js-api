@@ -41,10 +41,10 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Sumiranje vrednosti za objekte koji se nalaze na definisanoj udaljenosti od ulaznih objekata</h2><p/>
+        <h2>Sumiraj u blizini</h2><p/>
         <h2><img src="../images/GUID-A5033D27-81B6-42E7-BA38-50D25C1CCCCA-web.png" alt="Sumiranje vrednosti za objekte koji se nalaze na definisanoj udaljenosti od ulaznih objekata"></h2>
         <hr/>
-    <p>  Ova alatka pronalazi i sumira geoobjekte koji su unutar navedene razdaljine od geoobjekata u prvom ulaznom sloju. Razdaljina može da se izmeri kao pravolinijska razdaljina ili kori&scaron;ćenjem izabranog režima putovanja. Opcije režima putovanja su dužina vožnje, vreme vožnje, dužina vožnje kamiona, vreme vožnje kamiona, dužina pe&scaron;ačenja ili vreme pe&scaron;ačenja. Statistika se zatim izračunava za obližnje geoobjekte. Na primer
+    <p>Ova alatka pronalazi i sumira geoobjekte koji su unutar navedenog rastojanja geoobjekata u prvom ulaznom sloju. Razdaljina može da se izmeri kao pravolinijska razdaljina ili kori&scaron;ćenjem izabranog režima putovanja. Opcije režima putovanja su dužina vožnje, vreme vožnje, dužina vožnje kamiona, vreme vožnje kamiona, dužina pe&scaron;ačenja ili vreme pe&scaron;ačenja. Statistika se zatim izračunava za obližnje geoobjekte. Na primer
         <ul>
             <li>Izračunajte ukupnu populaciju koja je obuhvaćena obla&scaron;ću od najvi&scaron;e pet minuta vožnje od predložene lokacije nove prodavnice.
             </li>
@@ -83,11 +83,11 @@
         <div><h2>Sumiraj najbliže geoobjekte koristeći</h2></div>
         <hr/>
         <div>
-            <p> Možete da defini&scaron;ete koju vrstu merenja razdaljine želite da koristite, pravolinijsku razdaljinu ili izabrani režim putovanja. Režimi putovanja su omogućeni samo kada prvi ulazni sloj (sloj iz kojeg se razdaljine mere) sadrži tačke. Dostupne režime putovanja određuje administrator organizacije. Kada koristite jedan od režima putovanja, merenja se obavljaju duž puteva ili trotoara, i po&scaron;tuju primenljiva pravila kao &scaron;to su jednosmerne ulice, nedozvoljena skretanja i tako dalje. Vreme vožnje po&scaron;tuje izbor brzina putovanja, bilo onih zasnovanih na saobraćaju uživo ili tipičnim uslovima saobraćaja. Brzine uživo se skupljaju putem aktuelnih očitavanja senzora, a tipične brzine se izračunavaju iz istorijskih proseka.
+            <p> Možete da defini&scaron;ete koju vrstu merenja razdaljine želite da koristite, pravolinijsku razdaljinu ili izabrani režim putovanja. Režimi putovanja su omogućeni samo kada prvi ulazni sloj (sloj iz kojeg se razdaljine mere) sadrži tačke. Dostupne režime putovanja određuje administrator organizacije. Kada koristite jedan od režima putovanja, merenja se obavljaju duž puteva ili trotoara, i po&scaron;tuju primenljiva pravila kao &scaron;to su jednosmerne ulice, nedozvoljena skretanja i tako dalje. <b>Vreme vožnje</b>, <b>Vreme vožnje ruralni predelima</b> i <b>Vreme vožnje kamionom</b> po&scaron;tuju va&scaron; izbor brzina kretanja, bilo one zasnovane na saobraćaju uživo ili tipičnim uslovima saobraćaja. Brzine uživo se skupljaju putem aktuelnih očitavanja senzora, a tipične brzine se izračunavaju iz istorijskih proseka.
             </p>
             <p>Možete da unesete vi&scaron;e razdaljina. Biće rezimirani geoobjekti koji su unutar (ili jednaki) razdaljinama koje uneste.  
             </p>
-            <p>Ako je polje za potvrdu  <b>Vrati granične oblasti</b> potvrđeno, dobićete sloj sa rezultatima sa oblastima definisanim navedenim merenjem razdaljine. Sloj sa rezultatima će sadržati sve zahtevane sumirane informacije. Na primer, prilikom sumiranja obližnjih tačaka, ako koristite <b>linijsku razdaljinu</b> od 5 milja, rezultat će sadržati oblasti sa prečnikom od 5 milja oko ulaznih geoobjekata i sve sumirane informacije kao &scaron;to je broj tačaka i svaku dodatu statistiku. Ako nije potvrđeno, rezultujući sloj će dati iste geoobjekte prvog ulaznog sloja sa svih zahtevanim sumiranim informacijama.
+            <p>Ako je polje za potvrdu  <b>Vrati granične oblasti</b> potvrđeno, dobićete sloj sa rezultatima sa oblastima definisanim navedenim merenjem razdaljine. Sloj sa rezultatima će sadržati sve zahtevane sumirane informacije. Na primer, prilikom sumiranja obližnjih tačaka, ako koristite <b>Pravolinijsko rastojanje</b> od 5 milja, va&scaron; rezultat će sadržati oblasti sa poluprečnikom od 5 milja oko ulaznih geoobjekata i sve sumirane informacije, poput broja tačaka i bilo koje dodate statistike. Ako nije potvrđeno, rezultujući sloj će dati iste geoobjekte prvog ulaznog sloja sa svih zahtevanim sumiranim informacijama.
             </p>
         </div>
     </div>

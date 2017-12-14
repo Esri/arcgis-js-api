@@ -44,7 +44,7 @@
         <h2>Connect Origins to Destinations</h2><p/>
         <h2><img src="./images/GUID-7266D30B-0250-4132-B1A5-9B59F0212FAD-web.png" alt="Connect Origins to Destinations"></h2>
         <hr/>
-    <p>  Connect Origins to Destinations measures the travel time or distance between pairs of points. The tool can report straight-line distances; distances based on a travel mode, such as walking or driving; or trip durations based on a travel mode. Using this tool, you can do the following:
+    <p>Connect Origins to Destinations measures the travel time or distance between pairs of points. The tool can report straight-line distances; distances based on a travel mode, such as walking or driving; or trip durations based on a travel mode. Using this tool, you can do the following:
     </p>
     <p>
         <ul>
@@ -57,7 +57,7 @@
         </ul>
         
     </p>
-    <p>You provide starting and ending points, and the tool returns a layer containing route lines, including measurements, between the paired origins and destinations.  
+    <p>You provide starting and ending points, and the tool returns a layer containing route lines, including measurements, between the paired origins and destinations. 
     </p>
     <p>If  <b>Use current map extent</b> is checked, only the features that are visible within the current map extent will be considered in the analysis.  If unchecked, all features in the input layer will be considered, even if they are outside the current map extent.
     </p>
@@ -100,7 +100,7 @@ representing the destination or destinations to which the origins should connect
             
             <p>Choose whether to connect origins to destinations using straight-line distance or a travel mode. The output routes will  follow roads or walkways and honor applicable rules, such as one-way streets and illegal turns for driving or trucking.  The available travel modes are determined by the administrator of your organization.  
             </p>
-            <p>When you choose  <b>Driving time</b>, you have options on how to measure the drive time.
+            <p>When you choose  <b>Driving Time</b>, <b>Rural Driving Time</b>, or <b>Trucking Time</b> you have options on how to measure the drive time.
                 <ul>
                     <li>
                         <p>Uncheck  <b>Use Traffic</b> to find the quickest routes based on fixed speeds.
@@ -125,6 +125,8 @@ representing the destination or destinations to which the origins should connect
                 
             </p>
             <p>Note that as a vehicle drives away from the origin, time elapses and traffic conditions change. The Connect Origins to Destinations tool accounts for these variations when you check  <b>Use traffic</b>; however, not all regions support traffic. Click the <b>See availability</b> link on the tool to find out whether it is offered in  your study area.
+            </p>
+            <p> <b>Trucking Time</b> can use dynamic travel speeds based on traffic but only up to the legal truck speed limit. For example, if the dynamic speed for a street based on live traffic is 65 miles per hour but the truck speed limit for that street is 55 miles per hour, the calculation will use 55 miles per hour for that street.
             </p>
         </div>
     </div>

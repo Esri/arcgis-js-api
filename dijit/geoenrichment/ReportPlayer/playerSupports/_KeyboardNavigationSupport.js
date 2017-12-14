@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["dojo/_base/declare","dojo/on","dojo/when","dojo/keys","../PlayerResizeModes"],function(e,i,o,n,d){return e(null,{_windowSlideNavigationKeyboardHandle:null,resize:function(){var e=this;return o(this.inherited(arguments),function(){e._updateSlideNavigationKeyboardListeners()})},_updateSlideNavigationKeyboardListeners:function(){var e=this;this._windowSlideNavigationKeyboardHandle&&this._windowSlideNavigationKeyboardHandle.remove(),this.isSlidesView&&this.allowKeyboardNavigation&&this.resizeMode===d.FIT_WINDOW&&(this._windowSlideNavigationKeyboardHandle=i(window,"keyup",function(i){i.keyCode==n.RIGHT_ARROW?e.getCurrentReportContainer().showNextSlide():i.keyCode==n.LEFT_ARROW&&e.getCurrentReportContainer().showPreviousSlide()}),this.own(this._windowSlideNavigationKeyboardHandle))}})});
+define(["dojo/_base/declare","dojo/on","dojo/when","dojo/keys","../PlayerResizeModes"],function(e,i,o,n,d){return e(null,{_windowSlideNavigationKeyboardHandle:null,resize:function(){var e=this;return o(this.inherited(arguments),function(){e._updateSlideNavigationKeyboardListeners()})},_updateSlideNavigationKeyboardListeners:function(){var e=this;this._windowSlideNavigationKeyboardHandle&&this._windowSlideNavigationKeyboardHandle.remove(),this.isSlidesView&&this.allowKeyboardNavigation&&this.resizeMode===d.FIT_WINDOW&&(this._windowSlideNavigationKeyboardHandle=i(window,"keyup",function(i){i.keyCode===n.RIGHT_ARROW?e.getCurrentReportContainer().showNextSlide():i.keyCode===n.LEFT_ARROW&&e.getCurrentReportContainer().showPreviousSlide()}),this.own(this._windowSlideNavigationKeyboardHandle))}})});

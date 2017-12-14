@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.22/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define([],function(){var n={};return n.tableJsonHasInfographic=function(n){return n.data.data.some(function(n){if(n.fieldInfos)for(var f in n.fieldInfos){var i=n.fieldInfos[f];if(i&&i.isInfographic)return!0}})},n.tableJsonHasChart=function(n){return n.data.data.some(function(n){if(n.fieldInfos)for(var f in n.fieldInfos){var i=n.fieldInfos[f];if(i&&i.isChart)return!0}})},n});
+define(["esri/dijit/geoenrichment/ReportPlayer/core/sections/SectionTypes"],function(n){var t={};return t.wrapInDetailsSectionJson=function(t,e){var i=Array.isArray(t)?t:[t],a=i.some(function(n){return"table"===n.id&&n.attributes&&(n.attributes.dynamicColumns>0||n.attributes.dynamicRows>0)});return{type:e||(a?n.GROUP:n.DETAILS),stack:i}},t.getSectionJsonInfographic=function(n){var e=n.stack[0];return e&&"table"===e.id&&t.getTableJsonInfographic(e)},t.tableJsonHasInfographic=function(n){return!!t.getTableJsonInfographic(n)},t.getTableJsonInfographic=function(n){var t;return n.data.data.some(function(n){if(n.fieldInfos)for(var e in n.fieldInfos){var i=n.fieldInfos[e];if(i&&i.isInfographic)return t=i.infographicJson,!0}}),t},t.getTableJsonFirstFieldInfo=function(n){return n.data.data[0].fieldInfos[n.data.columns[0].field]},t.tableJsonHasChart=function(n){return n.data.data.some(function(n){if(n.fieldInfos)for(var t in n.fieldInfos){var e=n.fieldInfos[t];if(e&&e.isChart)return!0}})},t});

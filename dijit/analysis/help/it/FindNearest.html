@@ -41,10 +41,10 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Trova più vicine</h2><p/>
-        <h2><img src="../images/GUID-150C2484-7459-405A-8835-B4E72CD49738-web.png" alt="Trova pi&ugrave; vicine"></h2>
+        <h2>Trova Più Vicine</h2><p/>
+        <h2><img src="../images/GUID-150C2484-7459-405A-8835-B4E72CD49738-web.png" alt="Trova Pi&ugrave; Vicine"></h2>
         <hr/>
-    <p>Questo strumento consente di trovare le feature pi&ugrave; vicine e di segnalare e classificare la distanza dalle feature nelle vicinanze. Per trovare le feature pi&ugrave; vicine, lo strumento &egrave; in grado di effettuare le misurazioni usando la distanza in linea retta o una modalit&agrave; di viaggio selezionata. Queste opzioni consentono di limitare il numero di feature pi&ugrave; vicine da trovare o l'intervallo di ricerca in cui trovarle. I risultati ottenuti da questo strumento permettono di rispondere ai seguenti tipi di domande:
+    <p>Questo strumento consente di trovare le feature pi&ugrave; vicine e di segnalare e classificare la distanza dalle feature vicine. Per trovare le feature pi&ugrave; vicine, lo strumento &egrave; in grado di effettuare le misurazioni usando la distanza in linea retta o una modalit&agrave; di viaggio selezionata. Queste opzioni consentono di limitare il numero di feature pi&ugrave; vicine da trovare o l'intervallo di ricerca in cui trovarle. I risultati ottenuti da questo strumento permettono di rispondere ai seguenti tipi di domande:
         <ul>
             <li>Qual &egrave; il parco pi&ugrave; vicino da qui?
             </li>
@@ -57,17 +57,17 @@
         </ul>
         
     </p>
-    <p>La funzione Trova pi&ugrave; vicine restituisce un layer contenente le feature pi&ugrave; vicine e un layer linea che collega le posizioni iniziali alle relative posizioni pi&ugrave; vicine. Il layer linea contiene informazioni relative alle posizioni iniziali e pi&ugrave; vicine, nonch&eacute; alle distanze tra queste.
+    <p>La funzione Trova Pi&ugrave; Vicine restituisce un layer contenente le feature pi&ugrave; vicine e un layer lineare che collega le posizioni iniziali alle relative posizioni pi&ugrave; vicine. Il layer lineare contiene informazioni relative alle posizioni iniziali e pi&ugrave; vicine, nonch&eacute; alle distanze tra queste.
     </p>
-    <p>Se si seleziona  <b>Usa estensione mappa corrente</b>, vengono considerate come iniziali e potenzialmente pi&ugrave; vicine solo le feature visibili all'interno dell'estensione mappa corrente.  Se questa opzione &egrave; deselezionata, vengono considerate tutte le feature presenti nel layer di input, anche se sono esterne all'estensione mappa corrente.  
+    <p>Se si seleziona  <b>Usa estensione mappa corrente</b>, vengono considerate come iniziali e potenzialmente pi&ugrave; vicine solo le feature visibili all'interno dell'estensione mappa corrente.  Se questa opzione &egrave; deselezionata, vengono considerate tutte le feature presenti nel layer di input, anche se sono esterne all'estensione mappa corrente.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="analysisLayer">
-        <div><h2>Scegli il layer da cui trovare le località più vicine</h2></div>
+        <div><h2>Scegli il layer da cui trovare le posizioni più vicine</h2></div>
         <hr/>
         <div>
-            <p>La funzione Trova pi&ugrave; vicine consente di misurare la distanza dalle feature nel layer specificato qui (le posizioni di partenza) alle posizione specificate nel parametro successivo.  Lo strumento supporta fino a 1000 feature in ogni layer.
+            <p>La funzione Trova Pi&ugrave; Vicine consente di misurare la distanza dalle feature nel layer specificato qui (le posizioni di partenza) alle posizione specificate nel parametro successivo.  Lo strumento supporta fino a 1000 feature in ogni layer.
 
             </p>
         </div>
@@ -76,7 +76,7 @@
         <div><h2>Trova le posizioni più vicine in</h2></div>
         <hr/>
         <div>
-            <p>La funzione Trova pi&ugrave; vicine consente di misurare la distanza da ciascuna delle feature presenti nel primo layer alle posizioni presenti nel layer corrente. Lo strumento supporta fino a 1000 posizioni in ogni layer.
+            <p>La funzione Trova Pi&ugrave; Vicine consente di misurare la distanza da ciascuna delle feature presenti nel primo layer alle posizioni presenti nel layer corrente. Lo strumento supporta fino a 1000 posizioni in ogni layer.
             </p>
             <p class="OnlineOnly">Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi dell'atlante attivo</b> o <b>Scegli layer di analisi</b> in fondo all'elenco a discesa. Verr&agrave; aperta una galleria contenente una raccolta di layer utili per numerose analisi. 
             </p>
@@ -90,7 +90,7 @@
             </p>
             <p>Durante la misurazione tra linee o aree, viene calcolata la distanza da o verso il punto pi&ugrave; vicino lungo la linea o il confine dell'area. 
             </p> 
-            <p>Se si seleziona  <b>Tempo di percorrenza</b>, vengono visualizzate le opzioni di misurazione del tempo di guida.
+            <p>Quando si sceglie  <b>Tempo di guida</b>, <b>Tempo di guida in aree non urbane</b>, o <b>Tempo di guida in camion</b> vi sono diverse opzioni per misurare il tempo di guida.
                 <ul>
                     <li>
                         <p>Deselezionare  <b>Usa traffico</b> per trovare le feature pi&ugrave; vicine in base a velocit&agrave; di viaggio statiche, ad esempio limiti di velocit&agrave;, anzich&eacute; velocit&agrave; che variano a seconda delle condizioni di traffico.
@@ -115,6 +115,8 @@
                 </ul>
                 Si noti che quando una vettura si allontana da un punto, il tempo passa e le condizioni di traffico cambiano. Lo strumento tiene conto di queste variazioni quando si seleziona <b>Usa traffico</b>; tuttavia, tale funzione non &egrave; supportata per tutte le regioni. Fare clic sul collegamento <b>Visualizza disponibilit&agrave;</b> sullo strumento per scoprire se la funzione &egrave; supportata nella propria area di studio. 
             </p>
+            <p> <b>Tempo di guida in camion</b> pu&ograve; utilizzare velocit&agrave; di viaggio dinamiche basate sul traffico ma che non eccedano i limiti di velocit&agrave; consentiti per i camion. Per esempio, se la velocit&agrave; dinamica basata sul traffico in tempo reale in una determinata strada &egrave; di 65 miglia per ora, ma il limite di velocit&agrave; del camion per quella strada &egrave; di 55 miglia per ora, il calcolo utilizzer&agrave; 55 miglia per ora per quella strada.
+            </p>
         </div>
     </div>
     <div id="Cutoffs">
@@ -132,10 +134,10 @@
         </div>
     </div>
     <div id="OutputNearestLocationsLayer">
-        <div><h2>Nome layer di risultati</h2></div>
+        <div><h2>Nome del layer dei risultati</h2></div>
         <hr/>
         <div>
-            <p>Questo &egrave; il nome del feature layer che verr&agrave; creato in  <b>I miei contenuti</b> e aggiunto alla mappa. Se il feature layer esiste gi&agrave;, verr&agrave; chiesto di fornire un altro nome. Il feature layer risultante conterr&agrave; due layer: uno relativo alle posizioni pi&ugrave; vicine e un altro relativo alle linee che collegano le posizioni di input alle posizioni pi&ugrave; vicine.
+            <p>Questo &egrave; il nome del Feature Layer che verr&agrave; creato in  <b>I miei contenuti</b> e aggiunto alla mappa. Se il Feature Layer esiste gi&agrave;, verr&agrave; chiesto di fornire un altro nome. Il Feature Layer risultante conterr&agrave; due layer: uno relativo alle posizioni pi&ugrave; vicine e un altro relativo alle linee che collegano le posizioni di input alle posizioni pi&ugrave; vicine.
             </p>
             <p>Se si seleziona  <b>Includi layer percorso</b>, anche ogni percorso incluso nei risultati viene salvato come layer percorso. Un layer percorso include tutte le informazioni relative a un percorso specifico, ad esempio le fermate assegnate al percorso e le direzioni di viaggio. La creazione dei layer percorso risulta utile se si desidera condividere i singoli percorsi con altri membri nell'organizzazione oppure se si desidera modificare ulteriormente i percorsi utilizzando il pulsante <b>Indicazioni</b> nel Map Viewer. I layer percorso utilizzano il nome fornito per il feature layer come prefisso, mentre il nome percorso generato nell'ambito dell'analisi viene aggiunto per creare un nome univoco per ogni layer percorso.
             </p>

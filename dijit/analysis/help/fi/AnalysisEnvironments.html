@@ -85,17 +85,17 @@
         </div>
     </div>
     <div id="storeAnalysisResults">
-        <div><h2>Tallenna analyysin tulokset kohdepalveluina</h2></div>
+        <div><h2>Tallenna analyysin tulokset isännöityinä kohdekarttatasoina</h2></div>
         <hr/>
         <div>
             
-            <p>Valinta, joka m&auml;&auml;ritt&auml;&auml;, luodaanko analyysisi tulos kohdekarttatasona vai kohteiden kokoelmana.
+            <p>T&auml;m&auml;n asetuksen avulla voit m&auml;&auml;ritt&auml;&auml;, onko analyysista luotu tuloskarttataso kohdekokoelma vai is&auml;nn&ouml;ity kohdekarttataso. 
             </p>
             <p>
                 <ul>
                     <li>Valittu: Analyysisi tulokset luovat kohdekarttatason, ja sis&auml;lt&ouml;&ouml;si luodaan vastaava kohde. T&auml;m&auml; on oletusarvo.
                     </li>
-                    <li>Valitsematta: Analyysin tulokset luovat kohteiden kokoelman. Kohteiden kokoelmat tallennetaan web-karttaasi.
+                    <li>Valitsematta: Analyysin tulokset luovat kohteiden kokoelman.     
                     </li>
                 </ul>
                 
@@ -115,7 +115,7 @@
                     <li> <b>Kuten m&auml;&auml;ritetty</b>: Valitse koordinaattij&auml;rjestelm&auml; analyysisi tuloksille. Kun t&auml;m&auml; valinta on valittu, tee valintasi tunnettujen koordinaattij&auml;rjestelmien luettelosta napsauttamalla maapallokuvaketta tai lis&auml;&auml; koordinaatistotieto (WKID) sille tarkoitettuun ruutuun.
                     </li>
                     <li> <b>Karttataso
-&lt;name&gt;</b>: valitse web-kartastasi olemassa oleva karttataso, jota k&auml;tyet&auml;&auml;n m&auml;&auml;ritt&auml;m&auml;&auml;n analyysin tuloksen koodinaattij&auml;rjestelm&auml;.
+&lt;name&gt;</b>: valitse web-kartastasi olemassa oleva karttataso, jota k&auml;ytet&auml;&auml;n m&auml;&auml;ritt&auml;m&auml;&auml;n analyysin tuloksen koordinaattij&auml;rjestelm&auml;.
                     </li>
                 </ul>
                 
@@ -186,7 +186,7 @@
                     </li>
                     <li> <b>Kuten m&auml;&auml;ritetty</b>: M&auml;&auml;rit&auml; numeroarvo, joka m&auml;&auml;ritt&auml;&auml; solukoon. Jos t&auml;m&auml; valitaan, oletusarvo on 1.
                     </li>
-                    <li> <b>Karttataso &lt;name&gt;</b>: m&auml;&auml;rit&auml; valitun rasteritason solukoko.
+                    <li> <b>Karttataso &lt;name&gt;</b>: M&auml;&auml;ritt&auml;&auml; valitun rasteritason solukoon.
                     </li>
                 </ul>
                 
@@ -204,7 +204,8 @@
                 </li>
                 <li>Jos analyysimaski on rasteri, kaikki arvon sis&auml;lt&auml;v&auml;t solut m&auml;&auml;ritt&auml;v&auml;t maskin. Maskirasterin solut, joiden arvona on NoData, ovat maskin ulkopuolella, ja niiden arvona on NoData analyysin tuloskarttatasossa. 
                 </li>
-                <li>Jos analyysin maski on kohdekarttataso, se muunnetaan sis&auml;isesti rasteriksi suorituksen aikana. T&auml;st&auml; syyst&auml; sinun on varmistettava, ett&auml;  <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank"></a>- ja <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank"></a>-asetukset m&auml;&auml;ritet&auml;&auml;n oikein analyysi&auml; varten.
+                <li>Jos analyysin maski on kohdekarttataso, se muunnetaan sis&auml;isesti rasteriksi suorituksen aikana. T&auml;st&auml; syyst&auml; sinun on varmistettava, ett&auml;
+ <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank"></a>- ja <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank"></a>-asetukset m&auml;&auml;ritet&auml;&auml;n oikein analyysi&auml; varten.
                 </li>
             </ul>
              
@@ -214,9 +215,9 @@
         <div><h2>ArcGIS Data Store</h2></div>
         <hr/>
         <div>
-            <p>GeoAnalytic-tulokset tallennetaan ArcGIS Data Store -tietokantaan ja julkaistaan karttatasona  Portal for ArcGIS -portaalissa. Useimmissa tapauksissa tulokset pit&auml;&auml; tallentaa spatiotemporaaliseen tietokantaan. T&auml;m&auml; on oletusarvo. Tulokset kannattaa tallentaa  relaatiotietokantaan seuraavissa tilanteissa: 
+            <p>GeoAnalytic-tulokset tallennetaan ArcGIS Data Store -tietokantaan ja julkaistaan karttatasona  Portal for ArcGIS -portaalissa. Useimmissa tapauksissa tulokset pit&auml;&auml; tallentaa spatiotemporaaliseen tietokantaan. T&auml;m&auml; on oletusarvo. Tulokset kannattaa tallentaa relaatiotietokantaan seuraavissa tilanteissa: 
                 <ul>
-                    <li>Haluat k&auml;ytt&auml;&auml; portaalissa olevia tuloksiaportaaliyhteisty&ouml;h&ouml;n.
+                    <li>Haluat k&auml;ytt&auml;&auml; portaalissa olevia tuloksia portaaliyhteisty&ouml;h&ouml;n.
                     </li>
                     <li>Haluat ottaa k&auml;ytt&ouml;&ouml;n tulosten synkronointitoiminnot.
                     </li>

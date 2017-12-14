@@ -85,7 +85,7 @@
                 </ul>
                 
             </p>
-            <p>Anta till exempel att vi vill hitta snabbk&ouml;p inom 2 kilometer fr&aring;n en jordbruksmarknad. I det h&auml;r fallet har lagret som f&ouml;renas till ett enstaka geoobjekt som representerar en jordbruksmarknad, och de geoobjekt som f&ouml;renas representerar de lokala livsmedelsbutikerna som har attribut som total &aring;rsf&ouml;rs&auml;ljning. Med verktyget  <b>F&ouml;rena geoobjekt</b> hittar vi att fem livsmedelsbutiker uppfyller villkoren. Om vi anger f&ouml;renings&aring;tg&auml;rden <b>F&ouml;rena ett till flera</b>, f&aring;r vi fem geoobjekt i resultatet, d&auml;r varje rad representerar jordbruksmarknaden och ett snabbk&ouml;p. Om vi anger en <b>F&ouml;rena ett till ett</b>-relation, f&aring;r vi ett geoobjekt som representerar jordbruksmarknaden och den summerade informationen fr&aring;n snabbk&ouml;pen, t.ex. antalet (2) och annan statistik som den totala &aring;rsf&ouml;rs&auml;ljningen.
+            <p>Anta till exempel att vi vill hitta snabbk&ouml;p inom 2 kilometer fr&aring;n en jordbruksmarknad. I det h&auml;r fallet har lagret som f&ouml;renas till ett enstaka geoobjekt som representerar en jordbruksmarknad, och de geoobjekt som f&ouml;renas representerar de lokala livsmedelsbutikerna som har attribut som total &aring;rsf&ouml;rs&auml;ljning. Med verktyget  <b>F&ouml;rena geoobjekt</b> hittar vi att fem livsmedelsbutiker uppfyller villkoren. Om vi anger f&ouml;renings&aring;tg&auml;rden <b>F&ouml;rena ett till flera</b> f&aring;r vi fem geoobjekt i resultatet, d&auml;r varje rad representerar jordbruksmarknaden och ett snabbk&ouml;p. Om vi anger en <b>F&ouml;rena ett till ett</b>-relation, f&aring;r vi ett geoobjekt som representerar jordbruksmarknaden och den summerade informationen fr&aring;n snabbk&ouml;pen, t.ex. antalet (2) och annan statistik som den totala &aring;rsf&ouml;rs&auml;ljningen.
             </p>
         </div>
     </div>
@@ -206,7 +206,7 @@
         <div><h2>Lägg till statistik (valfritt)</h2></div>
         <hr/>
         <div>
-            <p>Om f&ouml;renings&aring;tg&auml;rden &auml;r   <b>F&ouml;rena ett till ett</b> kan du g&ouml;ra statistikber&auml;kningar p&aring; de f&ouml;renade geoobjekten. Som standard ber&auml;knas all statistik.
+            <p>Om f&ouml;renings&aring;tg&auml;rden &auml;r  <b>F&ouml;rena ett till ett</b> kan du g&ouml;ra statistikber&auml;kningar p&aring; de f&ouml;renade geoobjekten. Som standard ber&auml;knas all statistik.
             </p>
             <p>Du kan ber&auml;kna statistik p&aring; summerade geoobjekt. P&aring; numeriska f&auml;lt kan du ber&auml;kna f&ouml;ljande:
                 <ul>
@@ -248,7 +248,7 @@
         <div>
             <p>Till&auml;mpar ett villkor f&ouml;r angivna f&auml;lt. Det &auml;r endast geoobjekt med f&auml;lt som uppfyller dessa villkor som f&ouml;renas.
             </p>
-            <p>T&auml;nk dig till exempel att vi till till&auml;mpa en f&ouml;rening f&ouml;r ett dataset f&ouml;r endast dessa geoobjekt, d&auml;r  <i>health_spending</i> &auml;r h&ouml;gre &auml;n 20 procent av <i>income</i>.  F&ouml;r att g&ouml;ra detta till&auml;mpar du villkoret <code>target.health_spending &gt; (join.income * .20)</code> med hj&auml;lp av f&auml;ltet <i>health_spending</i> fr&aring;n det f&ouml;rsta datasetet (det dataset som geoobjekten &auml;r f&ouml;renade med) och f&auml;ltet <i>income</i> fr&aring;n det andra datasetet (det dataset som f&ouml;renas).
+            <p>T&auml;nk dig till exempel att vi till till&auml;mpa en f&ouml;rening f&ouml;r ett dataset f&ouml;r endast dessa geoobjekt, d&auml;r  <i>health_spending</i> &auml;r h&ouml;gre &auml;n 20 procent av <i>income</i>.  F&ouml;r att g&ouml;ra detta till&auml;mpar du villkoret <code>$target[&quot;health_spending&quot;] &gt; ($join[&quot;income&quot;] * .20)</code> med hj&auml;lp av f&auml;ltet <i>health_spending</i> fr&aring;n det f&ouml;rsta datasetet (det dataset som geoobjekten &auml;r f&ouml;renade med) och f&auml;ltet <i>income</i> fr&aring;n det andra datasetet (det dataset som f&ouml;renas).
             </p>
             <p>F&ouml;reningsvillkoren kan till&auml;mpas med uttryckskalkylatorn.
             </p>

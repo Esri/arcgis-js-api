@@ -124,74 +124,92 @@
   box-sizing: border-box;
 }
 
-.esriSymbolStyler .esriLinePatternInput .dijitButtonContents {
+.esriSymbolStyler .esriIconSelect .dijitButtonContents {
   width: 100%;
 }
 
-.esriSymbolStyler .esriLinePatternInput {
+.esriSymbolStyler .esriIconSelect {
   box-sizing: border-box;
   margin: 0;
 }
 
 .esriSymbolStyler .esriLabel.esriDisabled,
-.esriSymbolStyler .esriLinePatternInput.dijitDisabled {
+.esriSymbolStyler .esriIconSelect.dijitDisabled {
   opacity: 0.6;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
 }
 
-.esriSymbolStyler .esriLinePatternInput .dijitButtonText {
+.esriSymbolStyler .esriIconSelect .dijitButtonText {
   padding: 0;
 }
 
-.esriSymbolStylerMenu.esriLinePatternInputMenu .dijitMenuItemIconCell {
+.esriIconSelectMenu .dijitMenuItemIconCell {
   margin: 0 2px;
 }
 
-.esriSymbolStylerMenu.esriLinePatternInputMenu .dijitMenuItemIcon {
+.esriIconSelectMenu .dijitMenuItemIcon {
   width: 100%;
   display: block;
 }
 
-.esriSymbolStylerMenu.esriLinePatternInputMenu .dijitMenuArrowCell,
-.esriSymbolStylerMenu.esriLinePatternInputMenu .dijitMenuItemLabel {
+.esriIconSelectMenu .dijitMenuArrowCell,
+.esriIconSelectMenu .dijitMenuItemLabel {
   display: none;
 }
 
-.esriSymbolStylerMenu.esriLinePatternInputMenu .dijitMenuItemLabel .dijitSelect {
+.esriIconSelectMenu .dijitMenuItemLabel .dijitSelect {
   padding: 0;
   margin: 0 5px;
 }
 
 .esriSymbolStyler .esriLinePattern,
-.esriSymbolStylerMenu .esriLinePattern {
+.esriIconSelectMenu .esriLinePattern {
   background: url("../images/line-patterns.png") repeat-x;
   height: 15px;
   width: 100%;
 }
 
-.esriSymbolStyler .solid,
-.esriSymbolStylerMenu .solid {
+.esriSymbolStyler .esriArrowPattern,
+.esriIconSelectMenu .esriArrowPattern {
+  background: url("../images/arrow-patterns.png") no-repeat;
+  height: 15px;
+  width: 100%;
+}
+
+[class*=esriIconSelect] .solid {
   background-position: 0 0;
 }
 
-.esriSymbolStyler .dot,
-.esriSymbolStylerMenu .dot {
+[class*=esriIconSelect] .dot {
   background-position: 0 -15px;
 }
 
-.esriSymbolStyler .dash,
-.esriSymbolStylerMenu .dash {
+[class*=esriIconSelect] .dash {
   background-position: 0 -30px;
 }
 
-.esriSymbolStyler .dashdot,
-.esriSymbolStylerMenu .dashdot {
+[class*=esriIconSelect] .dashdot {
   background-position: 0 -45px;
 }
 
-.esriSymbolStyler .dashdotdot,
-.esriSymbolStylerMenu .dashdotdot {
+[class*=esriIconSelect] .longdashdotdot {
   background-position: 0 -60px;
+}
+
+[class*=esriIconSelect] .none {
+  background-position: 0 6px;
+}
+
+[class*=esriIconSelect] .begin {
+  background-position: 0 -14px;
+}
+
+[class*=esriIconSelect] .end {
+  background-position: 0 -34px;
+}
+
+[class*=esriIconSelect] .begin-end {
+  background-position: 0 -54px;
 }
 
 .esriSymbolStyler .esriSymbolPreviewContainer {

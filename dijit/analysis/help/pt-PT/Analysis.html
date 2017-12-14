@@ -185,7 +185,7 @@
     <div id="FindLocationsCategory" class="largesize">
         <h2>Encontrar Locais</h2>
         <hr/>
-        <p>Estas ferramentas s&atilde;o utilizadas para identificar &aacute;reas que cumprem um determinado n&uacute;mero de crit&eacute;rios diferentes definidos por si. Estes crit&eacute;rios podem ser baseados em consultas de atributos (por exemplo, parcelas vazias) e consultas espaciais (por exemplo, a 1 quil&oacute;metro do rio).  As &aacute;reas encontradas podem ser seleccionadas a partir de elementos existentes (como parcelas de terrenos existentes) ou novos elementos podem ser criados onde todos os requisitos sejam cumpridos.
+        <p>Estas ferramentas s&atilde;o utilizadas para identificar ou criar elementos que correspondem aos crit&eacute;rios que especifica.  O tipo de crit&eacute;rios depender&aacute; da ferramenta utilizada;  por exemplo, os seus crit&eacute;rios podem ser baseados em consultas espaciais ou de atributos, &aacute;reas vis&iacute;vesi a partir de uma altura especificada, &aacute;reas a jusante para pontos de drenagem espec&iacute;ficos, ou tempo de condu&ccedil;&atilde;o para condi&ccedil;&otilde;es de tr&acirc;nsito espec&iacute;ficas.
             <ul>
                 <li> <b>Escolher Melhores Instala&ccedil;&otilde;es</b> seleciona os melhores locais para instala&ccedil;&otilde;es, alocando localiza&ccedil;&otilde;es que t&ecirc;m necessidade das ditas instala&ccedil;&otilde;es, por forma a cumprir determinado objetivo.
                 </li>
@@ -195,16 +195,18 @@
                 </li>
                 <li> <b>Derivar Novas Localiza&ccedil;&otilde;es</b> cria novas &aacute;reas a partir de localiza&ccedil;&otilde;es na &aacute;rea de estudo que cumprem um conjunto de crit&eacute;rios.
                 </li>
+                <li class="OnlineOnly"> <b>Encontrar Centr&oacute;ides</b> encontra o centro representativo (centr&oacute;ide) para elementos de entrada. 
+                </li>
                 <li> <b>Encontrar Locais Existentes</b> procura por &aacute;reas existentes numa camada que atendam a uma s&eacute;rie de crit&eacute;rios.
                 </li>
                 <li> <b>Encontrar Locais Semelhantes</b> encontra locais mais semelhantes a um ou mais locais de refer&ecirc;ncia com base em crit&eacute;rios especificados.
                 </li>
-                <li class="PortalOnly"> <b>Geocodificar Locais a partir de Tabela</b> converte endere&ccedil;os de uma tabela em coordenadas.
+                <li class="PortalOnly"> <b>Geocodificar Locais a partir de Tabela</b> converte endere&ccedil;os de uma tabela em coordenadas. 
                 </li>
                 <li> <b>Localizar a Jusante</b> determina os percursos de fluxos em dire&ccedil;&atilde;o a jusante a partir dos locais que especificar.
                 </li>
             </ul>
-             
+            
         </p>
         <p> 
         </p>
@@ -266,6 +268,21 @@
             </table>
 <hr/>
             <p>Cria novos elementos na &aacute;rea de estudo que cumprem um conjunto de crit&eacute;rios definidos por si. Estes crit&eacute;rios podem ser baseados em consultas de atributos (por exemplo, parcelas que est&atilde;o vazias) e rela&ccedil;&otilde;es (por exemplo, a 1 milha do rio). 
+            </p>
+            <br/>
+        </div>
+        <div id="FindCentroidsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Encontrar Centróides</h2></td>
+                    <td>
+                    <img src="../images/GUID-75D9AF75-68C3-48BF-8062-D5499BD06978-web.png" class="titleImage" alt="Encontrar Centr&oacute;ides">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Encontra o centro representativo (centr&oacute;ide) para cada elemento de m&uacute;ltiplos pontos, de linha ou de &aacute;rea de entrada.
             </p>
             <br/>
         </div>

@@ -203,11 +203,8 @@ statistics are returned for your chosen areas.
     <div id="FindLocationsCategory" class="largesize">
         <h2>Find Locations</h2>
         <hr/>
-        <p>These tools are used to identify areas that
-meet a number of different criteria you specify.  These criteria can be based on attribute queries (for example, parcels that are vacant) and spatial queries (for example, within 1 kilometer of a river).  The
-areas that are found can be selected from existing features (such as existing
-land parcels) or new features can be created where all the
-requirements are met.
+        <p>These tools are used to identify or create features that
+meet criteria you specify.  The type of criteria will depend on which tool you use;  for example, your criteria  may be based on spatial or attribute queries, visible areas from a specified height, downstream areas for specific drainage points, or driving time in specific traffic conditions.
             <ul>
                 <li> <b>Choose Best Facilities</b> chooses the best locations for facilities by allocating locations that have demand for these facilities in a way that satisfies a given goal.
                 </li>
@@ -217,6 +214,8 @@ requirements are met.
                 </li>
                 <li> <b>Derive New Locations</b> creates new areas from locations in your
 study area that meet a series of criteria.
+                </li>
+                <li class="OnlineOnly"> <b>Find Centroids</b> finds the representative center (centroid) for input features. 
                 </li>
                 <li> <b>Find Existing Locations</b>  searches for existing areas in a layer that meet a series of criteria.
                 </li>
@@ -228,7 +227,7 @@ study area that meet a series of criteria.
 locations you specify.
                 </li>
             </ul>
-             
+            
         </p>
         <p> 
         </p>
@@ -292,6 +291,21 @@ locations you specify.
             <p>Creates new features in your
 study area that meet a series of criteria you specify. These criteria can be based on attribute queries (for example, parcels that are vacant) and spatial queries (for example,  within 1 mile of a river).
 
+            </p>
+            <br/>
+        </div>
+        <div id="FindCentroidsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Find Centroids</h2></td>
+                    <td>
+                    <img src="./images/GUID-75D9AF75-68C3-48BF-8062-D5499BD06978-web.png" class="titleImage" alt="Find Centroids">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Finds the representative center (centroid) for each input multipoint, line, or area feature.
             </p>
             <br/>
         </div>

@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="bdToolbox">
-        <p>An&aacute;lises de Big Data distribui o trabalho de an&aacute;lises atrav&eacute;s do seu ArcGIS GeoAnalytics Server. Isto permite a voc&ecirc; analisar mais dados de forma r&aacute;pida utilizando a capacidade de m&uacute;ltiplas m&aacute;quinas. As seguintes ferramentas est&atilde;o atualmente dispon&iacute;veis:
+        <p>GeoAnalytics distribui o trabalho de an&aacute;lises atrav&eacute;s do seu ArcGIS GeoAnalytics Server. Isto permite a voc&ecirc; analisar mais dados de forma r&aacute;pida utilizando a capacidade de m&uacute;ltiplas m&aacute;quinas. As seguintes ferramentas est&atilde;o atualmente dispon&iacute;veis:
             <ul>
                 <li> <b>Agregar Pontos</b>
                 </li>
@@ -53,6 +53,8 @@
                 </li>
                 <li> <b>Resumir Dentro</b>
                 </li>
+                <li> <b>Detectar Incidentes</b>
+                </li>
                 <li> <b>Encontrar Locais Semelhantes</b>
                 </li>
                 <li> <b>Calcular Densidade</b>
@@ -63,10 +65,14 @@
                 </li>
                 <li> <b>Copiar para Armazenamento de Dados</b>
                 </li>
+                <li> <b>Calcular Campo</b>
+                </li>
+                <li> <b>Geocodificar Locais da Tabela</b>
+                </li>
             </ul>
             
         </p>
-        <p>As An&aacute;lises do Big Data focam em analisar dados grandes com uma &ecirc;nfase em ambos padr&otilde;es espaciais e temporais. 
+        <p>GeoAnalytics foca em analisar dados grandes com uma &ecirc;nfase em ambos padr&otilde;es espaciais e temporais. 
         </p>
     </div>
     <div id="SummarizeDataCategory" class="largesize">
@@ -125,11 +131,11 @@
 <hr/>
             <p>Com a utiliza&ccedil;&atilde;o das camadas de fei&ccedil;&atilde;o ou dados tabelares, voc&ecirc; pode ligar fei&ccedil;&otilde;es e registros baseados em relacionamentos espec&iacute;ficos entre as camadas de entrada ou tabelas.  As liga&ccedil;&otilde;es ser&atilde;o determinadas por relacionamentos de atributos, espacial, temporal e a estat&iacute;stica sum&aacute;ria pode ser calculada opcionalmente.  
             </p>
-            <p> Por exemplo
+            <p>Por exemplo
                 <ul>
                     <li>Dadas as localiza&ccedil;&otilde;es dos pontos de incidentes do crime com um tempo, junte os dados de crime para voc&ecirc; mesmo, especificando um relacionamento espacial de crimes dentro de 1 quil&ocirc;metro um do outro, e que ocorreu no prazo de uma hora um do outro, para determinar se h&aacute; uma sequ&ecirc;ncia de crimes perto um ao outro no espa&ccedil;o e tempo.
                     </li>
-                    <li> Com uma tabela de Ceps fornecida com informa&ccedil;&otilde;es demogr&aacute;ficas e fei&ccedil;&otilde;es de &aacute;rea representando edif&iacute;cios residenciais, ligue as informa&ccedil;&otilde;es demogr&aacute;ficas com as resid&ecirc;ncias de forma que cada resid&ecirc;ncia agora tenha as informa&ccedil;&otilde;es.
+                    <li>Com uma tabela de Ceps fornecida com informa&ccedil;&otilde;es demogr&aacute;ficas e fei&ccedil;&otilde;es de &aacute;rea representando edif&iacute;cios residenciais, ligue as informa&ccedil;&otilde;es demogr&aacute;ficas com as resid&ecirc;ncias de forma que cada resid&ecirc;ncia agora tenha as informa&ccedil;&otilde;es.
                     </li>
                 </ul>
                 
@@ -153,7 +159,7 @@
                 <ul>
                     <li>Dada as localiza&ccedil;&otilde;es de ponto e tempo das medi&ccedil;&otilde;es do furac&atilde;o, calcule a velocidade m&eacute;dia do vento e press&atilde;o m&aacute;xima de vento do furac&atilde;o.
                     </li>
-                    <li>Localizar as rendas mensais mais altas e mais baixas para locais de franquia utilizando caixas de 100 km.
+                    <li>Utilize as medi&ccedil;&otilde;es de GPS de navios, para reconstruir caminhos de navio como linhas.
                     </li>
                 </ul>
                 
@@ -166,7 +172,7 @@
                 <tbody><tr>
                     <td><h2>Resumir Atributos</h2></td>
                     <td>
-                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="Resumir Atributos">
+                    <img src="../images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" class="titleImage" alt="Resumir Atributos diagrama">
                     </td>
                 </tr></tbody>
             </table>
@@ -208,17 +214,64 @@
             </p>
             <br/>
         </div>
-    <div id="FindLocationsCategory" class="smallsize">
+    <div id="FindLocationsCategory" class="regularsize">
         <h2>Encontrar Locais</h2>
         <hr/>
         <p>Estas ferramentas s&atilde;o utilizadas para identificar &aacute;reas que atendem v&aacute;rios crit&eacute;rios diferentes que voc&ecirc; especifica.   
             <ul>
-                <li> <b>Encontrar Locais Semelhantes</b> encontra locais mais semelhantes a um ou mais locais de refer&ecirc;ncia baseada em crit&eacute;rios que voc&ecirc; especifica.
+                <li> <b>Detectar Incidentes</b> funciona com camadas habilitadas ao tempo para determinar quais fei&ccedil;&otilde;es atendem uma condi&ccedil;&atilde;o especificada.
+                </li>
+                <li> <b>Geocodificar Locais da Tabela</b> converte endere&ccedil;os em coordenadas.
+                </li>
+                <li> <b>Encontrar Locais Semelhantes</b> encontra locais mais semelhantes a um ou mais locais de refer&ecirc;ncia baseado em crit&eacute;rios que voc&ecirc; especifica.
                 </li>
             </ul>
             
         </p>
     </div>
+        <div id="DetectIncidentsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Detectar Incidentes</h2></td>
+                    <td>
+                    <img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" class="titleImage" alt="Detectar Incidentes">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> <img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Detectar Incidentes">
+            </p>
+            <p>Esta ferramenta funciona com uma camada habilitado ao tempo de pontos, linhas, &aacute;reas ou tabelas que representam um momento no tempo. Com a utiliza&ccedil;&atilde;o das fei&ccedil;&otilde;es ordenadas consecutivamente, chamados caminhos, esta ferramenta determina quais fei&ccedil;&otilde;es s&atilde;o incidentes de interesse. Os incidentes s&atilde;o determinados por condi&ccedil;&otilde;es que voc&ecirc; especifica. 
+            </p>
+            <p>Por exemplo
+                <ul>
+                    <li>Detecta medi&ccedil;&otilde;es de furac&atilde;o que s&atilde;o de Categoria 4 baseado em uma atributo de velocidade do vento.
+                    </li>
+                    <li>Com a utiliza&ccedil;&atilde;o de medi&ccedil;&otilde;es de GPS de movimento de navio com um campo representando a velocidade de navio, localize medi&ccedil;&otilde;es que s&atilde;o maiores que 1.5 vezes a m&eacute;dia das cinco medi&ccedil;&otilde;es anteriores.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="GeocodeLocationsfromTableTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Geocodificar Locais da Tabela</h2></td>
+                    <td>
+                    <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" class="titleImage" alt="Geocodificar Locais da Tabela">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" alt="Geocodificar Locais da Tabela">
+            </p>
+            <p>Converte endere&ccedil;os em coordenadas. Utilize esta ferramenta em tabelas de compartilhamento de arquivo big data.
+            </p>
+            <br/>
+        </div>
         <div id="FindSimilarLocationsTool" class="largesize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -232,7 +285,7 @@
 <hr/>
             <p>Com base nos crit&eacute;rios especificados, encontre locais semelhantes ao medir a semelhan&ccedil;a dos locais na sua camada de pesquisa do candidato para um ou mais locais de refer&ecirc;ncia. 
             </p>
-            <p> Por exemplo
+            <p>Por exemplo 
                 <ul>
                     <li>Encontrar as dez lojas mais semelhantes atrav&eacute;s da an&aacute;lise do n&uacute;mero de empregados e das vendas anuais.
                     </li>
@@ -262,14 +315,14 @@
                 <tbody><tr>
                     <td><h2>Calcular Densidade</h2></td>
                     <td>
-                    <img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" class="titleImage" alt="Calculate Density">
+                    <img src="../images/GUID-38AD3C19-0400-4E5A-9282-BDE42F2BBFC1-web.png" class="titleImage" alt="Calcular Densidade">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
             <p>A ferramenta Calcular Densidade cria um mapa de densidade a partir das fei&ccedil;&otilde;es de ponto, espalhando quantidades conhecidas de algum fen&ocirc;meno (representado como atributos de pontos) atrav&eacute;s do mapa. O resultado &eacute; uma camada de &aacute;reas representando a densidade.
             </p>
-            <p> Por exemplo
+            <p>Por exemplo
                 <ul>
                     <li>Calcular densidades dos hospitais dentro de um munic&iacute;pio. A camada resultante mostrar&aacute; &aacute;reas com acessibilidade alta e baixa para hospitais, e estas informa&ccedil;&otilde;es podem ser utilizadas para decidir onde novos hospitais devem ser constru&iacute;dos.
                     </li>
@@ -328,7 +381,7 @@
 <hr/>
             <p>O buffer &eacute; uma &aacute;rea que cobre uma determinada dist&acirc;ncia a partir de uma fei&ccedil;&atilde;o de pol&iacute;gono, linha ou ponto.
             </p>
-            <p> Por exemplo
+            <p>Por exemplo
                 <ul>
                     <li>Utilizar fei&ccedil;&otilde;es de rio lineares, criar buffer de cada rio em 50 vezes a largura do rio para determinar um limite ciliar proposto.
                     </li>
@@ -344,7 +397,9 @@
         <hr/>
         <p>Estas ferramentas s&atilde;o utilizadas para gerenciamento di&aacute;rio de dados geogr&aacute;ficos e tabelares.
             <ul>
-                <li> <b>Copiar para Armazenamento de Dados</b> copia dados para seu ArcGIS Data Store e cria uma camada em seu web GIS.
+                <li> <b>Calcular Campo</b> cria um novo campo ou modifica um campo existente e cria uma nova camada em seu conte&uacute;do.
+                </li>
+                <li> <b>Copiar para Armazenamento de Dados</b> copia dados para seu ArcGIS Data Store e cria uma camada em seu conte&uacute;do.
                 </li>
             </ul>
             
@@ -361,12 +416,35 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Copia uma camada de fei&ccedil;&atilde;o de entrada ou tabela para um  ArcGIS Data Store e cria uma camada em seu GIS web. </p>
-            <p> Por exemplo
+            <p>Copia uma camada de fei&ccedil;&atilde;o de entrada ou tabela para um  ArcGIS Data Store e cria uma camada em seu  ArcGIS Enterprise. </p>
+            <p>Por exemplo
                 <ul>
-                    <li> Copiar uma cole&ccedil;&atilde;o de <code>.csv</code> arquivos CSV em um compartilhamento de um grande arquivo de dados para armazenamento de dados de espa&ccedil;o-tempo para visualiza&ccedil;&atilde;o.
+                    <li>Copiar uma cole&ccedil;&atilde;o de  <code>.csv</code> arquivos CSV em um compartilhamento de um grande arquivo de dados para armazenamento de dados de espa&ccedil;o-tempo para visualiza&ccedil;&atilde;o.
                     </li>
                     <li>Copiar as fei&ccedil;&otilde;es na extens&atilde;o de mapa atual que s&atilde;o guardadas no armazenamento de dados de espa&ccedil;o-tempo no armazenamento de dados relacionais.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="CalculateFieldTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Calcular Campo</h2></td>
+                    <td>
+                    <img src="../images/GUID-059C9BE7-7B00-49C8-9917-B0EAEA3DA19D-web.png" class="titleImage" alt="Calcular Campo">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Calcule valores para um campo novo ou existente e crie uma camada em seu conte&uacute;do em  ArcGIS Enterprise. </p>
+            <p>Por exemplo
+                <ul>
+                    <li>Modifique um campo existente denominado  <i>total</i> para ser a soma de renda dos campos <i>total_2016</i>, <i>total_2017</i>, e <i>total_2018</i>.
+                    </li>
+                    <li>Crie um novo campo para categorizar n&iacute;veis de perigo baseado em valores de campos como  <i>windspeed</i> e <i>pollutant</i>.
                     </li>
                 </ul>
                 

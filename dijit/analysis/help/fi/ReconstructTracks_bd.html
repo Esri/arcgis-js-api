@@ -72,7 +72,7 @@
         </div>
     </div>
     <div id="trackFields">
-        <div><h2>Valitse vähintään yksi kenttä seurantojen tunnistamista varten</h2></div>
+        <div><h2>Valitse vähintään yksi kenttä reittien tunnistamista varten</h2></div>
         <hr/>
         <div>
             <p>Kent&auml;t, jotka edustavat reittitunnusta. 
@@ -95,6 +95,8 @@
         <div>
             <p>Yht&auml;l&ouml;, jolla lasketaan puskuriet&auml;isyys l&auml;ht&ouml;aineiston kohteiden ymp&auml;rill&auml;. T&auml;m&auml;n yht&auml;l&ouml;n voi luoda k&auml;ytt&auml;m&auml;ll&auml; puskurilaskinta ja perusoperaattoreita, kuten summa-, v&auml;hennys-, kerto- ja jako-operaattoreita. Arvot lasketaan k&auml;ytt&auml;m&auml;ll&auml; analyysikoordinaattij&auml;rjestelm&auml;&auml;. Karttatason on oltava projisoidussa koordinaattij&auml;rjestelm&auml;ss&auml;, tai k&auml;sittelev&auml; koordinaatisto on m&auml;&auml;ritett&auml;v&auml; projisoituun koordinaattij&auml;rjestelm&auml;&auml;n k&auml;ytt&auml;m&auml;ll&auml;  <b>analyysiymp&auml;rist&ouml;j&auml;</b>, jos puskuri on k&auml;yt&ouml;ss&auml;.
             </p>
+            <p>Yht&auml;l&ouml;  <code>$feature.windspeed * 1000</code> k&auml;ytt&auml;&auml; esimerkiksi puskuria tuhat kerrottuna kent&auml;ll&auml; <i>windspeed</i>. Puskurilaskimessa voi k&auml;ytt&auml;&auml; useita kentti&auml;.
+            </p>
         </div>
     </div>
     <div id="timeSplit">
@@ -102,6 +104,20 @@
         <hr/>
         <div>
             <p>Aika, jonka j&auml;lkeen reitti jaetaan useaksi reitiksi. Jos l&auml;ht&ouml;aineiston piste- tai aluekohteiden v&auml;linen kesto on pitempi kuin jakoaika, ne jaetaan eri reitteihin.
+            </p>
+            <p>Jos m&auml;&auml;rit&auml;t aikajaon ja et&auml;isyyden jaon, reitit jaetaan, kun jompikumpi ehdoista tai molemmat ehdot t&auml;yttyv&auml;t. 
+            </p>
+            <p>Kuvittele, ett&auml; sinulla on lentoja kuvaavia pistekohteita, joissa reittikentt&auml;n&auml; on lentokoneen tunnus. Kyseinen lentokone saattaa tehd&auml; useita lentoja, jotka esitet&auml;&auml;n yhten&auml; reittin&auml;. Jos tied&auml;t, ett&auml; lentojen v&auml;lill&auml; on tunnin tauko, voit k&auml;ytt&auml;&auml;  <code>yht&auml; tuntia</code> reittijakona, ja jokainen lento jaetaan omaksi reitiksi.
+            </p>
+        </div>
+    </div>
+    <div id="distanceSplit">
+        <div><h2>Valitse etäisyys, jonka jälkeen reitti jaetaan (valinnainen)</h2></div>
+        <hr/>
+        <div>
+            <p> Et&auml;isyys, jota k&auml;ytet&auml;&auml;n reittien jakamisessa useaksi reitiksi. Jos l&auml;ht&ouml;aineiston piste- tai aluekohteiden v&auml;linen et&auml;isyys on pitempi kuin et&auml;isyyden jakoarvo, ne jaetaan eri reitteihin.
+            </p>
+            <p>Jos m&auml;&auml;rit&auml;t aikajaon ja et&auml;isyyden jaon, reitit jaetaan, kun jompikumpi ehdoista tai molemmat ehdot t&auml;yttyv&auml;t. 
             </p>
         </div>
     </div>
