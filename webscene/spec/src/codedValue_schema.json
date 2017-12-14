@@ -1,0 +1,22 @@
+{
+  "title": "codedValue",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "A set of valid coded values with unique names.",
+  "properties": {
+    "code": {
+      "type": "string",
+      "description": "String value indicating which unqiue code is used to identify the feature attribute."
+    },
+    "name": {
+      "type": "string",
+      "description": "A string value given for the coded domain."
+    }
+  },
+  "required": [
+    "code",
+    "name"
+  ],
+  "additionalProperties": false
+}
+

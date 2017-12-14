@@ -1,0 +1,60 @@
+{
+  "title": "fieldInfo",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Defines how a field in the dataset participates (or does not participate) in a popup window.",
+  "properties": {
+    "fieldName": {
+      "type": "string",
+      "description": "A string containing the field name as defined by the service. Anywhere that a fieldname is referenced as `{field-name} in popupInfo, an Arcade expression can also be referenced as `{expression/<expression-name>}`."
+    },
+    "format": {
+      "type": "object",
+      "description": "A format object used with numerical or date fields to provide more detail about how the value should be displayed in a popup window.",
+      "$ref": "format_schema.json"
+    },
+    "isEditable": {
+      "type": "boolean",
+      "description": "A Boolean determining whether users can edit this field. Not applicable to Arcade expressions."
+    },
+    "label": {
+      "type": "string",
+      "description": "A string containing the field alias. Not applicable to Arcade expressions as `title` is used instead."
+    },
+    "stringFieldOption": {
+      "type": "string",
+      "description": "A string determining what type of input box editors see when editing the field. Applies only to string fields. Not applicable to Arcade expressions.",
+      "enum": [
+        "textbox",
+        "textarea",
+        "richtext"
+      ]
+    },
+    "tooltip": {
+      "type": "string",
+      "description": "A string providing an editing hint for editors of the field. Not applicable to Arcade expressions."
+    },
+    "visible": {
+      "type": "boolean",
+      "description": "A Boolean determining whether the field is visible in the popup window."
+    }
+  },
+  "additionalProperties": false,
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "fieldInfo",
+        "code": {
+          "fieldInfo": {
+            "fieldName": "relationships/2/Postcode",
+            "label": "Postcode",
+            "isEditable": false,
+            "visible": false,
+            "stringFieldOption": "textbox"
+          }
+        }
+      }
+    ]
+  }
+}
+

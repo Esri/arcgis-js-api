@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","./MaterialUtil"],function(t,e,i){Object.defineProperty(e,"__esModule",{value:!0});var r=function(){function t(t,e,r){this.id=i.__GLMaterial_id++,this.material=t}return t.prototype.getId=function(){return this.id},t.prototype.getMaterialId=function(){return this.material.getId()},t.prototype.isVisible=function(){return this.material.isVisible()},t.prototype.getRenderPriority=function(){return this.material.getRenderPriority()},t}();e.GLMaterialBase=r,e["default"]=r});
+define(["require","exports","./MaterialUtil"],function(t,e,i){Object.defineProperty(e,"__esModule",{value:!0});var r=function(){function t(t,e,r){this.id=i.__GLMaterial_id++,this.material=t}return t.prototype.getId=function(){return this.id},t.prototype.getMaterialId=function(){return this.material.getId()},t.prototype.isVisible=function(){return this.material.isVisible()},t.prototype.isRenderOccluded=function(){return this.material.isRenderOccluded()},t.prototype.getRenderPriority=function(){return this.material.getRenderPriority()},t}();e.GLMaterialBase=r,e["default"]=r});

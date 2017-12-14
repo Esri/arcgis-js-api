@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define({noItemsToDisplay:"目前沒有可顯示的項目。",layerInvisibleAtScale:"無法以目前的比例顯示",layerError:"載入此圖層時發生錯誤",untitledLayer:"未命名的圖層"});

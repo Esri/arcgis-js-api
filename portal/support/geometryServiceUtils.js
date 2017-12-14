@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define(["require","exports","../Portal","../PortalItem","../../config","../../tasks/GeometryService","../../tasks/support/ProjectParameters","../../core/promiseUtils","../../core/Error"],function(e,r,t,n,o,i,c,u,l){function s(e){return u.resolve(new i({url:e}))}function a(e){if(void 0===e&&(e=null),o.geometryServiceUrl)return s(o.geometryServiceUrl);if(!e)return u.reject(new l("internal:geometry-service-url-not-configured"));var r;return e.isInstanceOf(n)?r=e.portal||t.getDefault():e.isInstanceOf(t)&&(r=e),r.load().then(function(e){if(e.helperServices&&e.helperServices.geometry&&e.helperServices.geometry.url)return s(e.helperServices.geometry.url);throw new l("internal:geometry-service-url-not-configured")})}function f(e,r,t){return void 0===t&&(t=null),a(t).then(function(t){var n=new c;return n.geometries=[e],n.outSpatialReference=r,t.project(n)}).then(function(e){return e&&Array.isArray(e)&&1===e.length?e[0]:u.reject()})}Object.defineProperty(r,"__esModule",{value:!0}),r.create=a,r.projectGeometry=f});

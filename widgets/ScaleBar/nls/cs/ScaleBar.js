@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({km:"km",mi:"míle",ft:"stopy",m:"m",unknownUnit:"neznámá jednotka"});
+define({km:"km",mi:"míle",ft:"ft",m:"m",unknownUnit:"neznámá jednotka"});

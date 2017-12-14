@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define({noItemsToDisplay:"Não há nenhum item atualmente para exibir.",layerInvisibleAtScale:"Invisível na escala atual",layerError:"Ocorreu um erro ao carregar esta camada",untitledLayer:"Camada sem título"});

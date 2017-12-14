@@ -1,0 +1,15 @@
+{
+  "title": "PointCloud Size Algorithm",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Size algorithms for point cloud performance.",
+  "oneOf": [
+    {
+      "$ref": "pointCloudFixedSizeAlgorithm_schema.json"
+    },
+    {
+      "$ref": "pointCloudSplatAlgorithm_schema.json"
+    }
+  ]
+}
+

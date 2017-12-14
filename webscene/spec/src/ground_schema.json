@@ -1,0 +1,43 @@
+{
+  "title": "Ground",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Ground defines the main surface of the web scene, based on elevation layers.",
+  "properties": {
+    "layers": {
+      "type": "array",
+      "description": "An array of elevationLayer objects defining the elevation of the ground in the web scene.",
+      "items": {
+        "type": "object",
+        "$ref": "elevationLayer_schema.json"
+      },
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "layers"
+  ],
+  "additionalProperties": false,
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "ground",
+        "code": {
+          "ground": {
+            "layers": [
+              {
+                "id": "worldElevation",
+                "listMode": "hide",
+                "title": "Terrain3D",
+                "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
+                "visibility": true,
+                "layerType": "ArcGISTiledElevationServiceLayer"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}
+

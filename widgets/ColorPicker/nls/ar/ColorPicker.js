@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define({transparency:"الشفافية",suggested:"مقترح",recent:"الأخير",more:"المزيد",moreColorsTooltip:"تفضل برؤية المزيد من الألوان.",paletteTooltip:"تحديد لون",noColorTooltip:"لا يوجد لون",hexInputTooltip:"لون مخصص في منهج سداسي عشري (#FFFF00)."});

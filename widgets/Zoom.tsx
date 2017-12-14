@@ -72,13 +72,13 @@ class Zoom extends declared(Widget) {
 
   postInitialize() {
     this._zoomInButton = new IconButton({
-      action: this.zoomIn.bind(this),
+      action: this.zoomIn,
       iconClass: CSS.zoomInIcon,
       title: i18n.zoomIn
     });
 
     this._zoomOutButton = new IconButton({
-      action: this.zoomOut.bind(this),
+      action: this.zoomOut,
       iconClass: CSS.zoomOutIcon,
       title: i18n.zoomOut
     });
@@ -109,12 +109,10 @@ class Zoom extends declared(Widget) {
    *
    * **Known Values:** vertical | horizontal
    *
-   * **Default Value:** vertical
-   *
    * @name layout
    * @since 4.5
    * @instance
-   *
+   * @default vertical
    * @type {string}
    */
   @property({

@@ -1,0 +1,25 @@
+// COPYRIGHT © 2017 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+
+define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../support/widget","../../../core/accessorSupport/decorators","../../Widget","../../../moment","./TimePickerViewModel","dojo/keys","dojo/i18n!../nls/TimePicker"],function(t,e,i,r,a,n,o,s,u,p,h){function l(t){return t.format(d).indexOf(" ")>-1}var c={base:"esri-time-picker esri-widget",timePicker:"esri-time-picker__date-picker",input:"esri-time-picker__input",button:"esri-widget-button"},d="LT",v=[p.DOWN_ARROW,p.LEFT_ARROW,p.RIGHT_ARROW,p.UP_ARROW,p.TAB],_=function(t){function e(e){var i=t.call(this)||this;return i._activeTime=null,i.value=null,i.viewModel=new u,i}return i(e,t),e.prototype.render=function(){var t=this._activeTime||this.viewModel.value;return a.tsx("div",{"class":c.base},a.tsx("input",{afterUpdate:this._handleInputUpdate,"aria-label":h.inputTitle,bind:this,"class":c.input,onblur:this._handleInputBlur,onfocus:this._handleInputFocus,onkeydown:this._handleInputKeydown,onclick:this._handleInputClick,onpaste:this._handleInputPaste,onwheel:this._handleInputWheel,value:t.format(d)}))},e.prototype._handleInputBlur=function(){this._activeTime.isValid()&&(this.viewModel.value=this._activeTime),this._activeTime=null,this._activePart=null},e.prototype._handleInputUpdate=function(t){this._selectPart(t,this._activePart)},e.prototype._selectPart=function(t,e){var i=this._activeTime;if(i){var r=i.format(d),a=0,n=r.indexOf(":");if("hours"===e)return void t.setSelectionRange(a,n);var o=n+1,s=o+2;if("minutes"===e)return void t.setSelectionRange(o,s);var u=s+1,p=r.length;return"meridiem"===e?void t.setSelectionRange(u,p):void 0}},e.prototype._handleInputFocus=function(t){this._activePart="hours",this._activeTime=this.viewModel.value.clone().startOf("minute"),this._selectPart(t.target,"hours")},e.prototype._caretIndexToPartName=function(t){var e=this._activeTime.format(d),i=e.indexOf(":"),r=e.indexOf(" ");return i>=t?"hours":t>i&&r>=t?"minutes":"meridiem"},e.prototype._handleInputKeydown=function(t){var e=t.ctrlKey,i=t.key,r=t.keyCode,a=t.metaKey,n=t.shiftKey,o=this._activeTime,s=this._activePart,u=/\d/.test(i);if(-1===v.indexOf(r)&&!u){var h=a||e;return void(h||(t.preventDefault(),t.stopImmediatePropagation()))}if(r===p.LEFT_ARROW)this._activePart=this._prevPart();else if(r===p.RIGHT_ARROW)this._activePart=this._nextPart();else if(r===p.TAB){var l=n?this._prevPart():this._nextPart();if(l===this._activePart)return;this._activePart=l}else r===p.UP_ARROW?this._shift("up",o,s):r===p.DOWN_ARROW?this._shift("down",o,s):u&&this._setTime(o,s,Number(i));t.preventDefault(),t.stopImmediatePropagation()},e.prototype._handleInputClick=function(t){var e=t.target;this._activePart=null,this.renderNow(),this._activePart=this._caretIndexToPartName(e.selectionStart)},e.prototype._getOrderedParts=function(){return l(this._activeTime)?["hours","minutes","meridiem"]:["hours","minutes"]},e.prototype._prevPart=function(){var t=this._getOrderedParts(),e=t.indexOf(this._activePart)-1,i=Math.max(e,0);return t[i]},e.prototype._nextPart=function(){var t=this._getOrderedParts(),e=t.indexOf(this._activePart)+1,i=Math.min(e,t.length-1);return t[i]},e.prototype._setTime=function(t,e,i){if("hours"===e){var r=l(t)?12:24,a=""+t.hour()%r,n=i,o=Number(""+a+i);2===a.length||o>r?t.hour(n):r>=o&&t.hour(o)}else if("minutes"===e){var s=59,u=""+t.minute(),p=i,h=Number(""+u+i);2===u.length||h>s?t.minute(p):s>h&&t.minute(h)}},e.prototype._handleInputPaste=function(t){var e=t.clipboardData.getData("text/plain"),i=s(e);i.isValid()&&(this._activeTime=i),t.preventDefault(),t.stopImmediatePropagation()},e.prototype._handleInputWheel=function(t){var e=t.wheelDeltaY>0?"up":"down";this._shift(e,this._activeTime,this._activePart)},e.prototype._shift=function(t,e,i){var r="up"===t?"add":"subtract",a="meridiem"===i?12:1,n="hours"===i?"hour":"minutes"===i?"minute":"hours";e[r](a,n)},r([n.aliasOf("viewModel.value")],e.prototype,"value",void 0),r([n.property({type:u}),a.renderable("viewModel.value")],e.prototype,"viewModel",void 0),e=r([n.subclass("esri.widgets.Directions.support.TimePicker")],e)}(n.declared(o));return _});

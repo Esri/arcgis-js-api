@@ -1,20 +1,23 @@
 
 .esri-view {
+  display: flex;
 
   overflow: hidden;
-  margin: 0;
-  padding: 0;
+  margin:   0;
+  padding:  0;
 
   .esri-view-root {
-    position:  relative;
-    border:    none;
-    padding:   0;
-    margin:    0;
-    left:      0;
-    top:       0;
-    overflow:  hidden;
-    width:     100%;
-    height:    100%;
+    position: relative;
+
+    flex:     1 1 100%;
+
+    border:   none;
+    overflow: hidden;
+    padding:  0;
+    margin:   0;
+
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
   }
 
   .esri-view-surface {
@@ -24,15 +27,74 @@
     margin:    0;
     left:      0;
     top:       0;
-    overflow:  hidden;
     width:     100%;
     height:    100%;
+    overflow:  hidden;
 
     /*
      * TODO
      * Layers should probably manage this on their own
      */
     direction: ltr;
+  }
+
+  /*
+   * CSS2 cursors:
+   * auto, inherit, crosshair, default, help, move, pointer , progress, text, wait,
+   * e-resize, ne-resize, nw-resize, n-resize, se-resize, sw-resize, s-resize, w-resize
+   *
+   * CSS3 cursors:
+   * vertical-text, no-drop, not-allowed,
+   * ew-resize, ns-resize, nesw-resize, nwse-resize, col-resize, row-resize, all-scroll
+   *
+   * CSS3 with limited support:
+   * - cursor: none (not IE, Safari, Opera)
+   * - cursor: context-menu (not Firefox, Chrome)
+   * - cursor: cell (not Safari)
+   * - cursor: alias (not Safari)
+   * - cursor: copy (not Safari)
+   *
+   * Browser specific:
+   * - cursor: -webkit-grab; cursor: -moz-grab;
+   * - cursor: -webkit-grabbing; cursor: -moz-grabbing;
+   * - cursor: -webkit-zoom-in; cursor: -moz-zoom-in;
+   * - cursor: -webkit-zoom-out; cursor: -moz-zoom-out;
+   *
+   * Supported cursors:
+   * default, crosshair, help, move, pointer, progress, grab, grabbing
+   */
+  .esri-view-surface[data-cursor='default'] {
+    cursor: default;
+  }
+  .esri-view-surface[data-cursor='copy'] {
+    cursor: copy;
+  }
+  .esri-view-surface[data-cursor='crosshair'] {
+    cursor: crosshair;
+  }
+  .esri-view-surface[data-cursor='help'] {
+    cursor: help;
+  }
+  .esri-view-surface[data-cursor='move'] {
+    cursor: move;
+  }
+  .esri-view-surface[data-cursor='pointer'] {
+    cursor: pointer;
+  }
+  .esri-view-surface[data-cursor='progress'] {
+    cursor: progress;
+  }
+  .esri-view-surface[data-cursor='grab'] {
+    cursor: move;
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+  }
+  .esri-view-surface[data-cursor='grabbing'] {
+    cursor: move;
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
   }
 
   .esri-view-surface[data-interacting='true'] {

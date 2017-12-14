@@ -1,0 +1,28 @@
+{
+  "title": "visibleLayer",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Object with layer id, used to indicate layer visibility in a slide.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The id of the layer as listed on the operational layer."
+    }
+  },
+  "additionalProperties": false,
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "visibleLayer",
+        "code": {
+          "visibleLayers": [
+            {
+              "id": "73128eb3-05ee-46a7-8c22-0c385a0b1827"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+

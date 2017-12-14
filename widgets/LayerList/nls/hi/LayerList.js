@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define({noItemsToDisplay:"अभी दिखाने के लिए कोई आइटम नहीं है।",layerInvisibleAtScale:"वर्तमान स्केल पर अदृश्य",layerError:"इस लेयर को लोड करने में त्रुटि उत्पन्न हुई है",untitledLayer:"शीर्षकहीन लेयर"});

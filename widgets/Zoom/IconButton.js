@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators","../support/widget","../Widget"],function(t,e,i,r,o,n,s){var a={button:"esri-widget-button esri-widget",disabled:"esri-disabled",interactive:"esri-interactive",iconText:"esri-icon-font-fallback-text",icon:"esri-icon"},c=function(t){function e(){var e=null!==t&&t.apply(this,arguments)||this;return e.enabled=!0,e.iconClass="",e.title="",e}return i(e,t),e.prototype.render=function(){var t=this.enabled?0:-1,e=(r={},r[a.disabled]=!this.enabled,r[a.interactive]=this.enabled,r),i=(o={},o[this.iconClass]=!!this.iconClass,o);return n.tsx("div",{bind:this,"class":a.button,classes:e,onclick:this._triggerAction,onkeydown:this._triggerAction,role:"button",tabIndex:t,title:this.title},n.tsx("span",{"aria-hidden":"true",role:"presentation","class":a.icon,classes:i}),n.tsx("span",{"class":a.iconText},this.title));var r,o},e.prototype._triggerAction=function(){this.action.call(this)},r([o.property()],e.prototype,"action",void 0),r([o.property(),n.renderable()],e.prototype,"enabled",void 0),r([o.property(),n.renderable()],e.prototype,"iconClass",void 0),r([o.property(),n.renderable()],e.prototype,"title",void 0),r([n.accessibleHandler()],e.prototype,"_triggerAction",null),e=r([o.subclass("esri.widgets.IconButton")],e)}(o.declared(s));return c});

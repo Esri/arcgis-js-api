@@ -157,8 +157,8 @@ class BasemapToggle extends declared(Widget) {
    *
    * @instance
    * @name nextBasemap
-   * @type {module:esri/Basemap | string}
-   * @autocast
+   * @type {module:esri/Basemap}
+   * @autocast { "value": "String | Object" }
    */
   @aliasOf("viewModel.nextBasemap")
   @renderable()

@@ -35,7 +35,7 @@
 
 #ifdef SCREEN_SIZE_PERSPECTIVE
       vec4 perspectiveFactor = screenSizePerspectiveScaleFactor(projectAux.absCosAngle, projectAux.distanceToCamera, screenSizePerspectiveAlignment);
-      vec2 screenOffsetScaled = applyScreenSizePerspectiveScaleFactorFloat(screenOffset, perspectiveFactor);
+      vec2 screenOffsetScaled = applyScreenSizePerspectiveScaleFactorVec2(screenOffset, perspectiveFactor);
 #else
       vec2 screenOffsetScaled = screenOffset;
 #endif

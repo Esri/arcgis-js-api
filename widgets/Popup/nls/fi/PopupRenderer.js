@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define({attach:"Liitteet",fields:"Kentät",fieldsSummary:"Ominaisuustietojen ja arvojen luettelo",media:"Media",next:"Seuraava",numCharts:"Kaavioiden määrä",numImages:"Kuvien määrä",noTitle:"Nimetön",previous:"Edellinen"});

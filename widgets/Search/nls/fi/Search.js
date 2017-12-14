@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({searchButtonTitle:"Etsi",clearButtonTitle:"Tyhjennä haku",placeholder:"Etsi osoite tai paikka",searchIn:"Hae kohteesta",all:"Kaikki",allPlaceholder:"Etsi osoite tai paikka",emptyValue:"Anna hakutermi.",untitledResult:"Nimetön",untitledSource:"Nimetön lähde",noResults:"Ei tuloksia",noResultsFound:"Kohteelle {value} ei löytynyt tuloksia.",showMoreResults:"Näytä lisää tuloksia",hideMoreResults:"Hide",searchResult:"Hakutulos",moreResultsHeader:"Lisää tuloksia",esriLocatorName:"Esri World Geocoder"});
+define({searchButtonTitle:"Etsi",clearButtonTitle:"Tyhjennä haku",placeholder:"Etsi osoite tai paikka",searchIn:"Hae kohteesta",all:"Kaikki",allPlaceholder:"Etsi osoite tai paikka",emptyValue:"Anna hakutermi.",untitledResult:"Nimetön",untitledSource:"Nimetön lähde",noResults:"Ei tuloksia",noResultsFound:"Tuloksia ei löytynyt.",noResultsFoundForValue:"Kohteelle {value} ei löytynyt tuloksia.",showMoreResults:"Näytä lisää tuloksia",hideMoreResults:"Hide",searchResult:"Hakutulos",moreResultsHeader:"Lisää tuloksia",esriLocatorName:"Esri World Geocoder",useCurrentLocation:"Käytä nykyistä sijaintia"});

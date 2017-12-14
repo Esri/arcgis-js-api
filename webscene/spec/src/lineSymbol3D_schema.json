@@ -1,0 +1,35 @@
+{
+  "title": "LineSymbol3D",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "LineSymbol3D is used to render features with Polyline geometry in a 3D SceneView.",
+  "properties": {
+    "symbolLayers": {
+      "type": "array",
+      "description": "A Collection of Symbol3DLayer objects used to visualize the graphic or feature.",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "lineSymbol3DLayer_schema.json"
+          },
+          {
+            "$ref": "pathSymbol3DLayer_schema.json"
+          }
+        ]
+      }
+    },
+    "type": {
+      "type": "string",
+      "description": "Specifies the type of symbol used.",
+      "enum": [
+        "LineSymbol3D"
+      ]
+    }
+  },
+  "required": [
+    "symbolLayers",
+    "type"
+  ],
+  "additionalProperties": false
+}
+

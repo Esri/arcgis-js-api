@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define({title:"Título",fileName:"Nome do Ficheiro",titlePlaceHolder:"Título do ficheiro",fileNamePlaceHolder:"Nome do ficheiro",formatDefaultOption:"Selecionar formato",fileFormatTitle:"Formato do ficheiro",layoutTitle:"Configuração de página",layoutDefaultOption:"Selecionar configuração de página",scale:"Definir escala",scaleLabel:"escala",reset:"redefinir",author:"Autor",copyright:"Direitos de autor",legend:"Incluir legenda",lock:"bloquear",swap:"trocar",panelToggle:"Alternar painéis",advancedOptions:"Opções Avançadas",width:"Largura",height:"Altura",attribution:"Incluir atribuição",layoutTab:"Layout",mapOnlyTab:"Apenas Mapa",untitled:"sem título",pending:"A Exportar",ready:"Abrir isto",linkReady:"Abrir numa nova janela.",error:"Selecione para remover.",sceneViewError:"A impressão não é suportada em SceneView.",serviceError:"Parece ter ocorrido um erro.","export":"Exportar",exportDescription:"Exportar. Os ficheiros exportados serão apresentados abaixo.",exportText:"Ficheiros Exportados",exportHint:"Os seus ficheiros exportados irão aparecer aqui."});

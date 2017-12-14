@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define(["require","exports","dojo/keys"],function(e,n,t){function r(){return function(e,n){return{value:u(e[n])}}}function o(e){var n=e.type;return e instanceof KeyboardEvent||"keyup"===n||"keydown"===n||"keypress"===n}function u(e){return function(n){for(var r=[],u=1;u<arguments.length;u++)r[u-1]=arguments[u];return o(n)?void((n.keyCode===t.ENTER||n.keyCode===t.SPACE)&&(n.preventDefault(),n.target.click())):void e.call.apply(e,[this,n].concat(r))}}Object.defineProperty(n,"__esModule",{value:!0}),n.accessibleHandler=r});

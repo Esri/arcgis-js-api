@@ -42,7 +42,7 @@
 
 import { aliasOf, subclass, declared, property } from "../core/accessorSupport/decorators";
 
-import { SearchResponse, SearchResult, SearchResults, SuggestResult } from "./interfaces";
+import { ActiveMenu, SearchItem, SearchResponse, SearchResult, SearchResults, SuggestResult } from "./interfaces";
 
 import {
   accessibleHandler,
@@ -65,6 +65,8 @@ import watchUtils = require("../core/watchUtils");
 
 import Graphic = require("../Graphic");
 
+import Point = require("../geometry/Point");
+
 import PopupTemplate = require("../PopupTemplate");
 
 import MapView = require("../views/MapView");
@@ -72,13 +74,17 @@ import SceneView = require("../views/SceneView");
 
 import regexp = require("dojo/regexp");
 
+import geolocationUtils = require("../core/geolocationUtils");
+
 import {
   copyKey,
   BACKSPACE,
   DELETE,
   DOWN_ARROW,
+  END,
   ENTER,
   ESCAPE,
+  HOME,
   LEFT_ARROW,
   RIGHT_ARROW,
   SHIFT,
@@ -89,6 +95,8 @@ import {
 import query = require("dojo/query");
 
 import * as i18n from "dojo/i18n!./Search/nls/Search";
+
+type State = "disabled" | "ready" | "searching";
 
 const CSS = {
   base: "esri-search esri-widget",
@@ -118,13 +126,17 @@ const CSS = {
   // icons + common
   button: "esri-widget-button",
   fallbackText: "esri-icon-font-fallback-text",
+  locate: "esri-icon-locate-circled",
   menu: "esri-menu",
   header: "esri-header",
   searchIcon: "esri-icon-search",
   dropdownIcon: "esri-icon-down-arrow esri-search__sources-button--down",
   dropupIcon: "esri-icon-up-arrow esri-search__sources-button--up",
   clearIcon: "esri-icon-close",
-  noticeIcon: "esri-icon-notice-triangle"
+  noticeIcon: "esri-icon-notice-triangle",
+
+  // common
+  disabled: "esri-disabled"
 };
 
 @subclass("esri.widgets.Search")
@@ -137,8 +149,8 @@ class Search extends declared(Widget) {
    *
    * @typedef LocatorSource
    *
-   * @property {boolean} autoNavigate - Indicates whether to automatically navigate to the
-   *   selected result once selected. The default is `true`.
+   * @property {boolean} [autoNavigate=true] - Indicates whether to automatically navigate to the
+   *   selected result once selected.
    * @property {string[]} categories - A string array which limits the results to one
    *   or more categories. For example "Populated Place" or
    *   "airport". Only applicable when using the
@@ -156,45 +168,42 @@ class Search extends declared(Widget) {
    *   `minScale` for searching. See the object specification table below for details.
    * @property {number} localSearchOptions.distance - The distance to search.
    * @property {number} localSearchOptions.minScale - The minimum scale used to search locally.
-   * @property {number} locationToAddressDistance - When reverse geocoding a result, use
-   *   this distance in meters. The default is `1500`.
+   * @property {number} [locationToAddressDistance=1500] - When reverse geocoding a result, use
+   *   this distance in meters.
    * @property {module:esri/tasks/Locator} locator - The locator task used to search. This
    *   is **required** and defaults to the
    * [World Geocoding Service](https://developers.arcgis.com/rest/geocode/api-reference/geocoding-category-filtering.htm).
-   * @property {number} maxResults - Indicates the maximum number of search results
-   *   to return. The default value is `6`.
-   * @property {number} maxSuggestions - Indicates the maximum number of suggestions
-   *   to return for the widget's input. The default value is `6`.
-   * @property {number} minSuggestCharacters - Indicates the minimum number of characters
-   *   required before querying for a suggestion. The default value is `1`.
+   * @property {number} [maxResults=6] - Indicates the maximum number of search results
+   *   to return.
+   * @property {number} [maxSuggestions=6] - Indicates the maximum number of suggestions
+   *   to return for the widget's input.
+   * @property {number} [minSuggestCharacters=1] - Indicates the minimum number of characters
+   *   required before querying for a suggestion.
    * @property {string} name - The name of the source for display.
    * @property {string[]} outFields - Specifies the fields returned with the search results.
    * @property {string} placeholder - Used as a hint for the source input text.
    * @property {module:esri/widgets/Popup} popup - The Popup instance used for the selected result.
-   * @property {boolean} popupEnabled - Indicates whether to display a
+   * @property {boolean} [popupEnabled=true] - Indicates whether to display a
    *   {@link module:esri/widgets/Popup Popup} when a selected result is clicked.
-   *   The default is `true`.
-   * @property {boolean} popupOpenOnSelect - Indicates whether to show the
+   * @property {boolean} [popupOpenOnSelect=true] - Indicates whether to show the
    *   {@link module:esri/widgets/Popup Popup} when a result is selected.
-   *   The default value is `true`.
    * @property {string} prefix - Specify this to prefix the input for the search text.
-   * @property {boolean} resultGraphicEnabled - Indicates whether to show a graphic on the
+   * @property {boolean} [resultGraphicEnabled=true] - Indicates whether to show a graphic on the
    *   map for the selected source using the [resultSymbol](#resultSymbol).
-   *   The default value is `true`.
-   * @property {module:esri/symbols/Symbol} resultSymbol - The symbol used for the
+   * @property {module:esri/symbols/Symbol} [resultSymbol] - The symbol used for the
    *   [resultGraphic](#resultGraphic).
-   * @property {string} searchTemplate - A template string used to display multiple
+   * @property {string} [searchTemplate] - A template string used to display multiple
    *   fields in a defined order when results are displayed,
    *   e.g. `"{Street}, {City}, {ZIP}"`.
    * @property {string} singleLineFieldName - The field name of the Single Line Address
    *   Field in the REST services directory for the locator service.
    *   Common values are `SingleLine` and `SingleLineFieldName`.
-   * @property {boolean} suggestionsEnabled - Indicates whether to display suggestions
-   *   as the user enters input text in the widget. The default value is `true`.
-   * @property {string} suffix - Specify this to suffix the input for the search value.
-   * @property {boolean} withinViewEnabled - Indicates whether to constrain the search
+   * @property {boolean} [suggestionsEnabled=true] - Indicates whether to display suggestions
+   *   as the user enters input text in the widget.
+   * @property {string} [suffix] - Specify this to suffix the input for the search value.
+   * @property {boolean} [withinViewEnabled] - Indicates whether to constrain the search
    *   results to the view's extent.
-   * @property {number} zoomScale - The set zoom scale for the resulting search result. This scale is automatically honored.
+   * @property {number} [zoomScale] - The set zoom scale for the resulting search result. This scale is automatically honored.
    */
 
   /**
@@ -204,12 +213,12 @@ class Search extends declared(Widget) {
    *
    * @typedef FeatureLayerSource
    *
-   * @property {boolean} autoNavigate - Indicates whether to automatically navigate to the
-   *   selected result once selected. The default is `true`.
+   * @property {boolean} [autoNavigate=true] - Indicates whether to automatically navigate to the
+   *   selected result once selected.
    * @property {string} displayField - The results are displayed using this field. Defaults
    *   to the layer's `displayField` or the first string field.
-   * @property {boolean} exactMatch - Indicates to only return results that match the
-   *   search value exactly. Default is `false`.
+   * @property {boolean} [exactMatch=false] - Indicates to only return results that match the
+   *   search value exactly.
    *   This property only applies to `string` field searches. `exactMatch` is always
    *   `true` when searching fields of type `number`.
    * @property {module:esri/layers/FeatureLayer} featureLayer - The feature layer queried
@@ -218,33 +227,30 @@ class Search extends declared(Widget) {
    * properties. Please see the object specification table below for details.
    * @property {string} filter.where - The where clause specified for filtering suggests or search results.
    * @property {module:esri/geometry/Geometry} filter.geometry - The filter geometry for suggests or search results.
-   * @property {number} maxResults - Indicates the maximum number of search results to
-   *   return. The default value is `6`.
-   * @property {number} maxSuggestions - Indicates the maximum number of suggestions to
-   *   return for the widget's input. The default value is `6`.
-   * @property {number} minSuggestCharacters - Indicates the minimum number of characters
-   *   required before querying for a suggestion. The default value is `1`.
+   * @property {number} [maxResults=6] - Indicates the maximum number of search results to
+   *   return.
+   * @property {number} [maxSuggestions=6] - Indicates the maximum number of suggestions to
+   *   return for the widget's input.
+   * @property {number} [minSuggestCharacters=1] - Indicates the minimum number of characters
+   *   required before querying for a suggestion.
    * @property {string} name - The name of the source for display.
    * @property {string[]} outFields - Specifies the fields returned with the search results.
    * @property {string} placeholder - Used as a hint for the source input text.
    * @property {module:esri/widgets/Popup} popup - The Popup instance used for the selected result.
-   * @property {boolean} popupEnabled - Indicates whether to display a
-   *   {@link module:esri/widgets/Popup Popup} when a selected result is clicked.
-   *   The default is `true`.
-   * @property {boolean} popupOpenOnSelect - Indicates whether to show the
+   * @property {boolean} [popupEnabled=true] - Indicates whether to display a
+   *   {@link module:esri/widgets/Popup} when a selected result is clicked.
+   * @property {boolean} [popupOpenOnSelect=true] - Indicates whether to show the
    *   {@link module:esri/widgets/Popup Popup} when a result is selected.
-   *   The default value is `true`.
    * @property {string} prefix - Specify this to prefix the input for the search text.
-   * @property {boolean} resultGraphicEnabled - Indicates whether to show a graphic on the
+   * @property {boolean} [resultGraphicEnabled=true] - Indicates whether to show a graphic on the
    *   map for the selected source using the [resultSymbol](#resultSymbol).
-   *   The default value is `true`.
    * @property {module:esri/symbols/Symbol} resultSymbol - The symbol used for the
    *   [resultGraphic](#resultGraphic).
    * @property {string[]} searchFields - An array of string values representing the
    *   names of fields in the feature layer to search.
    * @property {string} suffix - Specify this to suffix the input for the search value.
-   * @property {boolean} suggestionsEnabled - Indicates whether to display suggestions
-   *   as the user enters input text in the widget. The default value is `true`.
+   * @property {boolean} [suggestionsEnabled=true] - Indicates whether to display suggestions
+   *   as the user enters input text in the widget.
    * @property {string} suggestionTemplate - A template string used to display multiple
    *   fields in a defined order
    *   when suggestions are displayed. This takes precedence over `displayField`.
@@ -460,14 +466,21 @@ class Search extends declared(Widget) {
    */
   constructor(value?: any) {
     super();
+
+    this._supportsGeolocation = geolocationUtils.supported();
   }
 
   postInitialize() {
     this.viewModel.popupTemplate = this._popupTemplate;
 
     this.own(
-      watchUtils.whenNot(this, "searchTerm", () => {
-        this.activeMenu = "none";
+      watchUtils.watch(this, "searchTerm", value => {
+        const hideActiveMenu = (value && this.activeMenu === "warning") ||
+          (!value && !this.get("viewModel.selectedSuggestion.location"));
+
+        if (hideActiveMenu) {
+          this.activeMenu = "none";
+        }
       })
     );
   }
@@ -488,7 +501,11 @@ class Search extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
+  private _supportsGeolocation: boolean = null;
+
   private _inputNode: HTMLInputElement = null;
+
+  private _searching: IPromise<SearchResponse<SearchResults<SearchResult>> | Point> = null;
 
   private _sourceMenuButtonNode: HTMLDivElement = null;
 
@@ -525,7 +542,7 @@ class Search extends declared(Widget) {
    */
   @property()
   @renderable()
-  activeMenu: "none" | "suggestion" | "source" | "warning" = "none";
+  activeMenu: ActiveMenu = "none";
 
   //----------------------------------
   //  activeSource
@@ -628,6 +645,33 @@ class Search extends declared(Widget) {
    */
   @aliasOf("viewModel.defaultSource")
   defaultSource: LocatorSearchSource | FeatureLayerSearchSource = null;
+
+  //----------------------------------
+  //  locationEnabled
+  //----------------------------------
+
+  /**
+   * Enables location services within the widget.
+   *
+   * ![locationEnabled](../assets/img/apiref/widgets/search-locationEnabled.png)
+   *
+   * ::: esri-md class="panel trailer-1"
+   * The use of this property is only supported on secure origins.
+   * To use it, switch your application to a secure origin, such as HTTPS.
+   * Note that localhost is considered "potentially secure" and can be used for easy testing in browsers that supports
+   * [Window.isSecureContext](https://developer.mozilla.org/en-US/docs/Web/API/Window/isSecureContext#Browser_compatibility)
+   * (currently Chrome and Firefox).
+   * :::
+   *
+   * @name locationEnabled
+   * @instance
+   * @since 4.6
+   * @type {boolean}
+   * @default true
+   *
+   */
+  @property()
+  locationEnabled = true;
 
   //----------------------------------
   //  locationToAddressDistance
@@ -817,24 +861,6 @@ class Search extends declared(Widget) {
   searchAllEnabled: boolean = null;
 
   //----------------------------------
-  //  searching
-  //----------------------------------
-
-  /**
-   * Indicates if a search or locate task are in the process of searching.
-   *
-   * @name searching
-   * @instance
-   * @type {boolean}
-   * @default false
-   */
-  @property({
-    readOnly: true
-  })
-  @renderable()
-  searching = false;
-
-  //----------------------------------
   //  searchTerm
   //----------------------------------
 
@@ -862,6 +888,7 @@ class Search extends declared(Widget) {
    *
    * @see [Event: select-result](#event:select-result)
    * @see [select()](#select)
+   * @readonly
    */
   @aliasOf("viewModel.selectedResult")
   selectedResult: SearchResult = null;
@@ -984,6 +1011,36 @@ class Search extends declared(Widget) {
   sources: Collection<LocatorSearchSource | FeatureLayerSearchSource> = null;
 
   //----------------------------------
+  //  state
+  //----------------------------------
+
+  /**
+   * The current state of the widget.
+   *
+   * **Known Values:** ready | disabled | searching
+   *
+   * @name state
+   * @instance
+   * @type {string}
+   * @default ready
+   * @readonly
+   * @since 4.6
+   *
+   */
+  @property({
+    readOnly: true,
+    dependsOn: ["sources.length"]
+  })
+  @renderable()
+  get state(): State {
+    return this.sources.length === 0 ?
+      "disabled" :
+      this._searching ?
+        "searching" :
+        "ready";
+  }
+
+  //----------------------------------
   //  suggestions
   //----------------------------------
 
@@ -1062,7 +1119,10 @@ class Search extends declared(Widget) {
   @property({
     type: SearchViewModel
   })
-  @renderable("viewModel")
+  @renderable([
+    "viewModel.activeSource.placeholder",
+    "viewModel.activeSource.name"
+  ])
   viewModel = new SearchViewModel();
 
   //--------------------------------------------------------------------------
@@ -1088,6 +1148,7 @@ class Search extends declared(Widget) {
       return;
     }
 
+    this.activeMenu = "suggestion";
     this._inputNode.focus();
     this.emit("search-focus");
   }
@@ -1120,21 +1181,28 @@ class Search extends declared(Widget) {
    * @return {Promise<module:esri/widgets/Search~SearchResponse>} When resolved, returns a [SearchResponse](#SearchResponse) containing a
    *                   [SearchResult](#SearchResult).
    */
-  search(suggestResult?: SuggestResult): IPromise<SearchResponse<SearchResults<SearchResult>>> {
+
+  search(searchItem?: SearchItem): IPromise<SearchResponse<SearchResults<SearchResult>>> {
     this.activeMenu = "none";
-    this._set("searching", true);
 
     this._cancelSuggest();
 
-    return this.viewModel.search(suggestResult).then(searchResponse => {
+    const searching = this.viewModel.search(searchItem).then(searchResponse => {
       this.activeMenu = !searchResponse.numResults ? "warning" : "none";
-      this._set("searching", false);
       return searchResponse;
     }).otherwise(() => {
-      this._set("searching", false);
       this.activeMenu = "none";
       return null;
+    }).always((result: any) => {
+      this._searching = null;
+      this.notifyChange("state");
+      return result;
     });
+
+    this._searching = searching.isFulfilled() ? null : searching;
+    this.notifyChange("state");
+
+    return searching;
   }
 
   /**
@@ -1159,10 +1227,9 @@ class Search extends declared(Widget) {
       if (suggestResponse.numResults) {
         this.activeMenu = "suggestion";
       }
-
+      this._scrollToTopSuggestion();
       return suggestResponse;
     }).otherwise(() => {
-      this.activeMenu = "none";
       return null;
     });
 
@@ -1174,36 +1241,41 @@ class Search extends declared(Widget) {
   render() {
     const vm = this.viewModel;
 
-    const { searchTerm } = vm;
+    const { placeholder, searchTerm } = vm;
 
     const sourceName = this._getSourceName(vm.activeSourceIndex);
 
-    const trimmedSearchTerm = searchTerm.trim();
+    const trimmedSearchTerm = `${searchTerm}`.trim();
 
-    const { id } = this;
+    const { activeMenu, id, state } = this;
+
+    const suggestionsMenuId = `${this.id}-suggest-menu`;
 
     const inputNode = (
       <input bind={this}
-        placeholder={vm.placeholder}
+        placeholder={placeholder}
         aria-label={i18n.searchButtonTitle}
         maxlength={vm.maxInputLength}
         autocomplete="off"
         type="text"
         tabindex="0"
         class={CSS.input}
+        aria-autocomplete="list"
         value={searchTerm}
         aria-haspopup="true"
-        id={`${id}_input`}
+        aria-owns={suggestionsMenuId}
         role="textbox"
         onkeydown={this._handleInputKeydown}
         onkeyup={this._handleInputKeyup}
+        onclick={this._handleInputClick}
         oninput={this._handleInputPaste}
         onpaste={this._handleInputPaste}
         afterCreate={this._storeInputNode}
         afterUpdate={this._storeInputNode}
         onfocusout={this._storeRelatedTarget}
         onfocus={this.focus}
-        onblur={this.blur} />
+        onblur={this.blur}
+        title={searchTerm ? "" : placeholder} />
     );
 
     const formNode = (
@@ -1228,35 +1300,58 @@ class Search extends declared(Widget) {
       </div>
     ) : null;
 
-    const suggestionsGroupNode = vm.suggestions ? vm.suggestions.map(suggestResults => {
+    const locationEnabled = this.locationEnabled && this._supportsGeolocation && !trimmedSearchTerm;
+
+    const locationSuggestGroupNode = locationEnabled ? (
+      <ul key={`esri-search__suggestion-list-current-location`}>
+        <li
+          bind={this}
+          onclick={this._handleUseCurrentLocationClick}
+          onkeydown={this._handleUseCurrentLocationClick}
+          onkeyup={this._handleSuggestionKeyup}
+          role="menuitem"
+          tabindex="-1">
+          <span aria-hidden="true" role="presentation" class={CSS.locate} /> {i18n.useCurrentLocation}
+        </li>
+      </ul>
+    ) : null;
+
+    const showMultipleSourceResults = vm.sources.length > 1 && vm.activeSourceIndex === SearchViewModel.ALL_INDEX;
+
+    const suggestionsGroupNode = vm.suggestions ? vm.suggestions.map((suggestResults, suggestResultsIndex) => {
       const { sourceIndex } = suggestResults;
-
       const suggestResultCount = suggestResults.results.length;
-
-      const suggestHeaderNode = suggestResultCount ? this._getSuggestionHeaderNode(sourceIndex) : null;
+      const suggestHeaderNode = suggestResultCount && showMultipleSourceResults ?
+        this._getSuggestionHeaderNode(sourceIndex) :
+        null;
 
       const results = suggestResults.results as SuggestResult[];
 
       const suggestItemsNodes = results.map((suggestion, suggestionIndex) => this._getSuggestionNode(suggestion, suggestionIndex, sourceIndex));
 
-      return (
-        <div key={`esri-search__suggestion-container-${sourceIndex}`}>
-          {suggestHeaderNode}
-          <ul key={`esri-search__suggestion-list-${sourceIndex}`}>
-            {suggestItemsNodes}
-          </ul>
-        </div>
-      );
+      const suggestionListContainerNode = suggestResultCount ? (
+        <ul key={`esri-search__suggestion-list-${sourceIndex}`}>
+          {suggestItemsNodes}
+        </ul>
+      ) : null;
+
+      return [
+        suggestHeaderNode,
+        suggestionListContainerNode
+      ];
     }) : null;
 
     const suggestionsMenuNode = (
       <div
+        id={suggestionsMenuId}
+        aria-expanded={activeMenu === "suggestion"}
         key="esri-search__suggestions-menu"
         class={join(CSS.menu, CSS.suggestionsMenu)}
         role="menu"
         bind={this}
         afterCreate={this._storeSuggestionsListNode}
         afterUpdate={this._storeSuggestionsListNode}>
+        {locationSuggestGroupNode}
         {suggestionsGroupNode}
       </div>
     );
@@ -1274,7 +1369,8 @@ class Search extends declared(Widget) {
         key="esri-search__submit-button"
         bind={this} role="button"
         title={i18n.searchButtonTitle}
-        class={join(CSS.submitButton, CSS.button)} tabindex="0"
+        class={join(CSS.submitButton, CSS.button)}
+        tabindex="0"
         onclick={this._handleSearchButtonClick}
         onkeydown={this._handleSearchButtonClick}>
         <span aria-hidden="true" role="presentation" class={CSS.searchIcon} />
@@ -1282,18 +1378,18 @@ class Search extends declared(Widget) {
       </div>
     );
 
-    const notFoundText = esriLang.substitute({
+    const notFoundText = trimmedSearchTerm ? esriLang.substitute({
       value: `"${searchTerm}"`
-    }, i18n.noResultsFound);
+    }, i18n.noResultsFoundForValue) : i18n.noResultsFound;
 
-    const warningNode = trimmedSearchTerm ? (
+    const warningNode = vm.get("selectedSuggestion.location") || trimmedSearchTerm ? (
       <div key="esri-search__no_results">
         <div class={CSS.warningMenuHeader}>{i18n.noResults}</div>
         <div class={CSS.warningMenuText}>{notFoundText}</div>
       </div>
     ) : null;
 
-    const emptySearchTermNode = !trimmedSearchTerm ? (
+    const emptySearchTermNode = !vm.get("selectedSuggestion.location") && !trimmedSearchTerm ? (
       <div key="esri-search__empty-search">
         <span aria-hidden="true" class={CSS.noticeIcon} />
         <span class={CSS.noValueText}>{i18n.emptyValue}</span>
@@ -1313,6 +1409,7 @@ class Search extends declared(Widget) {
     const hasMultipleSources = sources.length > 1;
     const sourceList = sources && sources.toArray();
     const allItemNode = vm.searchAllEnabled ? this._getSourceNode(SearchViewModel.ALL_INDEX) : null;
+    const sourceMenuId = `${id}-source-menu`;
 
     const sourceMenuButtonNode = hasMultipleSources ? (
       <div
@@ -1320,8 +1417,12 @@ class Search extends declared(Widget) {
         bind={this}
         role="button"
         title={i18n.searchIn}
-        id={`${id}_menu_button`} class={join(CSS.sourcesButton, CSS.button)}
-        tabindex="0" onkeydown={this._handleSourcesMenuToggleClick}
+        aria-haspopup="true"
+        aria-expanded={activeMenu === "source"}
+        aria-controls={sourceMenuId}
+        class={join(CSS.sourcesButton, CSS.button)}
+        tabindex="0"
+        onkeydown={this._handleSourceMenuButtonKeydown}
         onclick={this._handleSourcesMenuToggleClick}
         onkeyup={this._handleSourceMenuButtonKeyup}
         onblur={this._sourcesButtonBlur}
@@ -1348,6 +1449,7 @@ class Search extends declared(Widget) {
 
     const sourcesMenuNode = (
       <div
+        id={sourceMenuId}
         key="esri-search__source-menu"
         class={join(CSS.menu, CSS.sourcesMenu)}
         role="menu">
@@ -1355,18 +1457,20 @@ class Search extends declared(Widget) {
       </div>
     );
 
-    const { activeMenu } = this;
-
     const containerNodeClasses = {
       [CSS.hasMultipleSources]: hasMultipleSources,
-      [CSS.isSearchLoading]: this.searching,
+      [CSS.isSearchLoading]: state === "searching",
       [CSS.showWarning]: activeMenu === "warning",
       [CSS.showSources]: activeMenu === "source",
       [CSS.showSuggestions]: activeMenu === "suggestion"
     };
 
+    const baseClasses = {
+      [CSS.disabled]: state === "disabled"
+    };
+
     return (
-      <div class={CSS.base}>
+      <div class={CSS.base} classes={baseClasses}>
         <div
           role="presentation"
           classes={containerNodeClasses}
@@ -1387,15 +1491,51 @@ class Search extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
+  private _handleSourceMenuButtonKeydown(event: KeyboardEvent): void {
+    const { keyCode } = event;
+
+    if (
+      keyCode === UP_ARROW ||
+      keyCode === DOWN_ARROW ||
+      keyCode === END ||
+      keyCode === HOME
+    ) {
+      event.preventDefault();
+      event.stopPropagation();
+      this.activeMenu = "source";
+      return;
+    }
+
+    this._handleSourcesMenuToggleClick(event);
+  }
+
   @accessibleHandler()
-  private _handleSourcesMenuToggleClick(): void {
-    this.activeMenu = this.activeMenu === "source" ? "none" : "source";
+  private _handleSourcesMenuToggleClick(event: KeyboardEvent | MouseEvent): void {
+    const isSourceActive = this.activeMenu === "source";
+    this.activeMenu = isSourceActive ? "none" : "source";
+
+    this.renderNow();
+
+    if (isSourceActive) {
+      this._sourceMenuButtonNode && this._sourceMenuButtonNode.focus();
+      return;
+    }
+
+    const list = this._sourceListNode ? query<HTMLElement>("li", this._sourceListNode) : null;
+
+    if (!list) {
+      return;
+    }
+
+    const { keyCode } = event as KeyboardEvent;
+    const focusNode = keyCode === END ? list[list.length - 1] : list[0];
+    focusNode && focusNode.focus();
   }
 
   @accessibleHandler()
   private _handleClearButtonClick(): void {
     this.viewModel.clear();
-    this.focus();
+    this._focus();
   }
 
   @accessibleHandler()
@@ -1408,9 +1548,27 @@ class Search extends declared(Widget) {
     const node = event.currentTarget as HTMLElement;
     const suggestResult = node["data-suggestion"] as SuggestResult;
     if (suggestResult) {
+      this._focus();
       this.search(suggestResult);
-      this.focus();
     }
+  }
+
+  @accessibleHandler()
+  private _handleUseCurrentLocationClick(): void {
+    this._focus("none");
+
+    const searching = geolocationUtils.getCurrentPosition().then(position => {
+      return geolocationUtils.positionToPoint(position, this.view).then(point => {
+        return this.search(point);
+      });
+    }).always((result: any) => {
+      this._searching = null;
+      this.notifyChange("state");
+      return result;
+    });
+
+    this._searching = searching.isFulfilled() ? null : searching;
+    this.notifyChange("state");
   }
 
   @accessibleHandler()
@@ -1419,8 +1577,7 @@ class Search extends declared(Widget) {
     const node = event.currentTarget as HTMLElement;
     const sourceIndex = node["data-source-index"] as number;
     vm.activeSourceIndex = sourceIndex;
-    this.activeMenu = "none";
-    this.focus();
+    this._focus("none");
   }
 
   private _sourcesButtonBlur(event: FocusEvent): void {
@@ -1486,8 +1643,6 @@ class Search extends declared(Widget) {
     const isIgnorableKey = event.ctrlKey || event.metaKey || keyCode === copyKey || keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW || keyCode === ENTER || keyCode === SHIFT;
 
     const list = this._suggestionListNode ? query<HTMLElement>("li", this._suggestionListNode) : null;
-    const isUp = keyCode === UP_ARROW;
-    const isDown = keyCode === DOWN_ARROW;
 
     if (isIgnorableKey) {
       return;
@@ -1503,12 +1658,12 @@ class Search extends declared(Widget) {
       return;
     }
 
-    if ((isUp || isDown) && list) {
+    if ((keyCode === UP_ARROW || keyCode === DOWN_ARROW) && list) {
       this.activeMenu = "suggestion";
       event.stopPropagation();
       event.preventDefault();
       this._cancelSuggest();
-      const focusIndex = isUp ? list.length - 1 : 0;
+      const focusIndex = keyCode === UP_ARROW ? list.length - 1 : 0;
       const focusNode = list[focusIndex];
       focusNode && focusNode.focus();
       return;
@@ -1519,6 +1674,16 @@ class Search extends declared(Widget) {
     }
 
     this.suggest();
+  }
+
+  private _scrollToTopSuggestion(): void {
+    if (this._suggestionListNode) {
+      this._suggestionListNode.scrollTop = 0;
+    }
+  }
+
+  private _handleInputClick(event: Event): void {
+    this.activeMenu = "suggestion";
   }
 
   private _handleInputPaste(event: Event): void {
@@ -1537,10 +1702,13 @@ class Search extends declared(Widget) {
 
   private _handleSourceMenuButtonKeyup(event: KeyboardEvent): void {
     const { keyCode } = event;
-    const isUp = keyCode === UP_ARROW;
-    const isDown = keyCode === DOWN_ARROW;
 
-    if (!isUp && !isDown) {
+    if (
+      keyCode !== UP_ARROW &&
+      keyCode !== DOWN_ARROW &&
+      keyCode !== HOME &&
+      keyCode !== END
+    ) {
       return;
     }
 
@@ -1548,12 +1716,14 @@ class Search extends declared(Widget) {
     event.preventDefault();
 
     const list = this._sourceListNode ? query<HTMLElement>("li", this._sourceListNode) : null;
-    if (list) {
-      const cursorIndex = isUp ? list.length - 1 : 0;
-      const focusNode = list[cursorIndex];
-      focusNode && focusNode.focus();
+
+    if (!list) {
+      return;
     }
 
+    const cursorIndex = keyCode === UP_ARROW || keyCode === END ? list.length - 1 : 0;
+    const focusNode = list[cursorIndex];
+    focusNode && focusNode.focus();
   }
 
   private _handleSourceKeyup(event: KeyboardEvent): void {
@@ -1562,18 +1732,37 @@ class Search extends declared(Widget) {
     const { keyCode } = event;
 
     if (keyCode === ESCAPE) {
-      this.activeMenu = "none";
-      this.focus();
+      this._focus("none");
+      this._sourceMenuButtonNode && this._sourceMenuButtonNode.focus();
       return;
     }
 
     if (list) {
       const itemIndex = list.indexOf(node);
 
-      if (keyCode === UP_ARROW) {
+      if (
+        keyCode === HOME ||
+        keyCode === END ||
+        keyCode === UP_ARROW ||
+        keyCode === DOWN_ARROW
+      ) {
         event.stopPropagation();
         event.preventDefault();
+      }
 
+      if (keyCode === HOME) {
+        const homeFocusNode = list[0];
+        homeFocusNode && homeFocusNode.focus();
+        return;
+      }
+
+      if (keyCode === END) {
+        const endFocusNode = list[list.length - 1];
+        endFocusNode && endFocusNode.focus();
+        return;
+      }
+
+      if (keyCode === UP_ARROW) {
         const previousItemIndex = itemIndex - 1;
         const previousFocusNode = previousItemIndex < 0 ?
           this._sourceMenuButtonNode :
@@ -1583,9 +1772,6 @@ class Search extends declared(Widget) {
       }
 
       if (keyCode === DOWN_ARROW) {
-        event.stopPropagation();
-        event.preventDefault();
-
         const nextItemIndex = itemIndex + 1;
         const nextFocusNode = nextItemIndex >= list.length ?
           this._sourceMenuButtonNode :
@@ -1605,48 +1791,61 @@ class Search extends declared(Widget) {
     this._cancelSuggest();
 
     if (keyCode === BACKSPACE || keyCode === DELETE) {
-      this.focus();
+      this._focus();
       return;
     }
 
     if (keyCode === ESCAPE) {
-      this.activeMenu = "none";
-      this.focus();
+      this._focus("none");
       return;
     }
 
     if (list) {
-      if (keyCode === UP_ARROW) {
+      if (
+        keyCode === HOME ||
+        keyCode === END ||
+        keyCode === UP_ARROW ||
+        keyCode === DOWN_ARROW
+      ) {
         event.stopPropagation();
         event.preventDefault();
+      }
 
+      if (keyCode === HOME) {
+        const homeFocusNode = list[0];
+        homeFocusNode && homeFocusNode.focus();
+      }
+
+      if (keyCode === END) {
+        const endFocusNode = list[list.length - 1];
+        endFocusNode && endFocusNode.focus();
+      }
+
+      if (keyCode === UP_ARROW) {
         const previousItemIndex = itemIndex - 1;
-        if (previousItemIndex < 0) {
-          this.focus();
-        }
-        else {
-          const previousFocusNode = list[previousItemIndex];
-          previousFocusNode && previousFocusNode.focus();
-        }
+        const previousFocusNode = previousItemIndex < 0 ? list[list.length - 1] : list[previousItemIndex];
+        previousFocusNode && previousFocusNode.focus();
         return;
       }
 
       if (keyCode === DOWN_ARROW) {
-        event.stopPropagation();
-        event.preventDefault();
-
         const nextItemIndex = itemIndex + 1;
-        if (nextItemIndex >= list.length) {
-          this.focus();
-        }
-        else {
-          const nextFocusNode = list[nextItemIndex];
-          nextFocusNode && nextFocusNode.focus();
-        }
+        const nextFocusNode = nextItemIndex >= list.length ? list[0] : list[nextItemIndex];
+        nextFocusNode && nextFocusNode.focus();
         return;
       }
     }
 
+  }
+
+  private _focus(activeMenu?: ActiveMenu): void {
+    this.focus();
+
+    if (!activeMenu) {
+      return;
+    }
+
+    this.activeMenu = activeMenu;
   }
 
   private _formSubmit(event: Event): void {
@@ -1663,14 +1862,10 @@ class Search extends declared(Widget) {
   }
 
   private _getSuggestionHeaderNode(sourceIndex: number) {
-    const vm = this.viewModel;
-    if (vm.sources.length > 1 && vm.activeSourceIndex === SearchViewModel.ALL_INDEX) {
-      const name = this._getSourceName(sourceIndex);
-      return (
-        <div class={CSS.header}>{name}</div>
-      );
-    }
-    return null;
+    const name = this._getSourceName(sourceIndex);
+    return (
+      <div key={`esri-search__suggestion-header-${sourceIndex}`} class={CSS.header}>{name}</div>
+    );
   }
 
   private _splitResult(input: string, needle: string): string[] {
@@ -1709,7 +1904,7 @@ class Search extends declared(Widget) {
           key={`esri-search__suggestion$-{sourceIndex}_${suggestionIndex}`}
           data-suggestion={suggestion}
           role="menuitem"
-          tabindex="0">{matches}</li>
+          tabindex="-1">{matches}</li>
       );
     }
   }
@@ -1720,7 +1915,16 @@ class Search extends declared(Widget) {
     };
 
     return (
-      <li bind={this} key={`esri-search__source-${sourceIndex}`} onclick={this._handleSourceClick} onkeydown={this._handleSourceClick} onkeyup={this._handleSourceKeyup} data-source-index={sourceIndex} role="menuitem" class={CSS.source} classes={itemClasses} tabindex="0">{this._getSourceName(sourceIndex)}</li>
+      <li bind={this}
+        key={`esri-search__source-${sourceIndex}`}
+        onclick={this._handleSourceClick}
+        onkeydown={this._handleSourceClick}
+        onkeyup={this._handleSourceKeyup}
+        data-source-index={sourceIndex}
+        role="menuitem"
+        class={CSS.source}
+        classes={itemClasses}
+        tabindex="-1">{this._getSourceName(sourceIndex)}</li>
     );
   }
 

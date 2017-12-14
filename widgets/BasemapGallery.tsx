@@ -37,6 +37,7 @@ import { BasemapsSource } from "./BasemapGallery/interfaces";
 import { accessibleHandler, tsx, renderable } from "./support/widget";
 import { aliasOf, subclass, declared, property } from "../core/accessorSupport/decorators";
 import { on } from "../core/watchUtils";
+import { CollectionChangeEvent } from "../core/interfaces";
 
 import BasemapGalleryViewModel = require("./BasemapGallery/BasemapGalleryViewModel");
 import BasemapGalleryItem = require("./BasemapGallery/support/BasemapGalleryItem");
@@ -48,12 +49,6 @@ import MapView = require("../views/MapView");
 import SceneView = require("../views/SceneView");
 
 import * as i18n from "dojo/i18n!./BasemapGallery/nls/BasemapGallery";
-
-interface CollectionChangeEventPayload<T> {
-  added: T[];
-  removed: T[];
-  moved: T[];
-}
 
 const DEFAULT_BASEMAP_IMAGE = require.toUrl("../themes/base/images/basemap-toggle-64.svg");
 
@@ -101,21 +96,23 @@ class BasemapGallery extends declared(Widget) {
   }
 
   postInitialize() {
+    const handles = this._handleRegistry;
+
     this.own([
-      on<CollectionChangeEventPayload<BasemapGalleryItem>>(this, "viewModel.items", "change", event => {
+      on<CollectionChangeEvent<BasemapGalleryItem>>(this, "viewModel.items", "change", event => {
         const key = "basemap-gallery-item-changes";
+        const { added, moved} = event;
 
-        this._handleRegistry.remove(key);
+        handles.remove(key);
 
-        this._handleRegistry.add(
-          event.added.map(item => {
-            return item.watch("state", () => this.scheduleRender());
-          }),
-          key
+        handles.add(
+          [...added, ...moved].map(item => item.watch("state", () => this.scheduleRender())), key
         );
+
+        this.scheduleRender();
       }),
 
-      this._handleRegistry
+      handles
     ]);
   }
 
@@ -273,7 +270,7 @@ class BasemapGallery extends declared(Widget) {
     };
 
     const loadingIndicator = item.state === "loading" ?
-      <div class={CSS.loadingIndicator} key="esri-basemap-gallery_loading-indicator" /> :
+      <div class={CSS.loadingIndicator} key="esri-basemap-gallery__loading-indicator" /> :
       null;
 
     return (

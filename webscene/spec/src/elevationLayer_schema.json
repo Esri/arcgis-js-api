@@ -1,0 +1,77 @@
+{
+  "title": "elevationLayer",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "ElevationLayer is a tile layer used for rendering elevation in web scenes.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "A unique identifying string for the layer"
+    },
+    "itemId": {
+      "type": "string",
+      "description": "Optional string containing the item ID of the service if it's registered on ArcGIS Online or your organization's portal."
+    },
+    "layerType": {
+      "type": "string",
+      "description": "String indicating the layer type",
+      "enum": [
+        "ArcGISTiledElevationServiceLayer"
+      ]
+    },
+    "listMode": {
+      "type": "string",
+      "description": "To show or hide the elevation layer in the layer list",
+      "enum": [
+        "show",
+        "hide"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "description": "A user-friendly string title for the layer that can be used in a table of contents. If this is not included, a title is derived from the service."
+    },
+    "url": {
+      "type": "string",
+      "description": "The URL to the layer.If the layer is not from a web service but rather a feature collection, then the url property is omitted",
+      "format": "uri"
+    },
+    "visibility": {
+      "type": "boolean",
+      "description": "Boolean property determining whether the layer is initially visible in the web scene.",
+      "default": true
+    }
+  },
+  "required": [
+    "id",
+    "layerType",
+    "title",
+    "url"
+  ],
+  "additionalProperties": false,
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "elevationLayer",
+        "description": "Live sample web scene showing [elevationLayers](https://www.arcgis.com/home/webscene/viewer.html?webscene=a06aa4a2e4264b789686e66a75d863ca)",
+        "schema": "baseMap_schema.json",
+        "code": {
+          "baseMap": {
+            "title": "elevation-only basemap",
+            "baseMapLayers": [],
+            "elevationLayers": [
+              {
+                "id": "globalElevation",
+                "title": "Terrain3D",
+                "url": "http://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
+                "visibility": true,
+                "layerType": "ArcGISTiledElevationServiceLayer"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}
+

@@ -1,0 +1,92 @@
+{
+  "title": "Tiled Image Service Layer (ArcGISTiledImageServiceLayer)",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "An ArcGIS Tiled Image Service layer displays content from an ArcGIS Server Image service that has been cached (tiled).",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "A string containing the item ID of the service if it's registered on ArcGIS Online or your organization's portal."
+    },
+    "isReference": {
+      "type": "boolean",
+      "description": "Applicable if used as a baseMapLayer. A boolean value indicating whether or not the baseMapLayer draws on top (true) of other layers, including operationalLayers , or below (false)."
+    },
+    "layerType": {
+      "type": "string",
+      "description": "String indicating the layer type.",
+      "enum": [
+        "ArcGISTiledImageServiceLayer"
+      ]
+    },
+    "opacity": {
+      "type": "number",
+      "description": "The degree of transparency applied to the layer on the client side, where 0 is full transparency and 1 is no transparency.",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 1
+    },
+    "showLegend": {
+      "type": "boolean",
+      "description": "Boolean value indicating whether to display the layer in the legend. Default value is `true`.",
+      "default": true
+    },
+    "title": {
+      "type": "string",
+      "description": "A user-friendly string title for the layer that can be used in a table of contents."
+    },
+    "url": {
+      "type": "string",
+      "description": "URL to the ArcGIS Server Image Service."
+    },
+    "visibility": {
+      "type": "boolean",
+      "description": "Boolean property determining whether the layer is initially visible in the web scene."
+    }
+  },
+  "required": [
+    "id",
+    "layerType",
+    "title",
+    "url"
+  ],
+  "additionalProperties": false,
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "operationalLayer",
+        "description": "Live sample web scene showing the ArcGISTiledImageServiceLayer as an [operationalLayer](https://www.arcgis.com/home/webscene/viewer.html?webscene=9cb83d8c8cdb409f9dec93a4c0c9eeb6)",
+        "code": {
+          "operationalLayers": [
+            {
+              "id": "15987e18ba6-layer-1",
+              "layerType": "ArcGISTiledImageServiceLayer",
+              "url": "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Toronto/ImageServer",
+              "visibility": true,
+              "opacity": 1,
+              "title": "Toronto"
+            }
+          ]
+        }
+      },
+      {
+        "title": "basemapMapLayer",
+        "code": {
+          "baseMapLayers": [
+            {
+              "id": "Toronto_4412",
+              "layerType": "ArcGISTiledImageServiceLayer",
+              "url": "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Toronto/ImageServer",
+              "visibility": true,
+              "opacity": 1,
+              "title": "Toronto",
+              "showLegend": true
+            }
+          ],
+          "title": "Tiled Imagery"
+        }
+      }
+    ]
+  }
+}
+

@@ -1,0 +1,21 @@
+{
+  "title": "PointCloud Renderer",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "The renderer assigned to the layer. The renderer defines how to visualize each point in the layer.",
+  "oneOf": [
+    {
+      "$ref": "pointCloudClassBreaksRenderer_schema.json"
+    },
+    {
+      "$ref": "pointCloudRGBRenderer_schema.json"
+    },
+    {
+      "$ref": "pointCloudStretchRenderer_schema.json"
+    },
+    {
+      "$ref": "pointCloudUniqueValueRenderer_schema.json"
+    }
+  ]
+}
+

@@ -261,23 +261,24 @@ class LayerList extends declared(Widget) {
    *   // executes for each ListItem in the LayerList
    *   listItemCreatedFunction: function (event) {
    *
-   *    // The event object contains properties of the
-   *    // layer in the LayerList widget.
+   *     // The event object contains properties of the
+   *     // layer in the LayerList widget.
    *
-   *    var item = event.item;
+   *     var item = event.item;
    *
-   *    if (item.title === "US Demographics") {
-   *      // open the list item in the LayerList
-   *      item.open = true;
-   *      // change the title to something more descriptive
-   *      item.title = "Population by county";
-   *      // set an action for zooming to the full extent of the layer
-   *      item.actionsSections = [[{
-   *        title: "Go to full extent",
-   *        className: "esri-icon-zoom-out-fixed",
-   *        id: "full-extent"
-   *      }]];
-   *    }
+   *     if (item.title === "US Demographics") {
+   *       // open the list item in the LayerList
+   *       item.open = true;
+   *       // change the title to something more descriptive
+   *       item.title = "Population by county";
+   *       // set an action for zooming to the full extent of the layer
+   *       item.actionsSections = [[{
+   *         title: "Go to full extent",
+   *         className: "esri-icon-zoom-out-fixed",
+   *         id: "full-extent"
+   *       }]];
+   *     }
+   *   }
    * });
    */
   @aliasOf("viewModel.listItemCreatedFunction")
@@ -425,7 +426,7 @@ class LayerList extends declared(Widget) {
     const actionsMenuTitle = item.actionsOpen ? i18nCommon.close : i18nCommon.open;
 
     const actionsMenuIcon = actionsCount > 1 ? (
-      <div key={`${uid}__actions-menu-toggle`}
+      <div key={`esri-layer-list__actions-menu-toggle`}
         data-item={item}
         onclick={this._toggleActionsOpen}
         onkeydown={this._toggleActionsOpen}
@@ -440,7 +441,7 @@ class LayerList extends declared(Widget) {
     ) : null;
 
     const actionsMenu = actionsCount ? (
-      <div key={`${uid}__actions-menu`}
+      <div key={`esri-layer-list__actions-menu`}
         class={CSS.actionsMenu}>
         {firstActionButton}
         {actionsMenuIcon}
@@ -450,7 +451,7 @@ class LayerList extends declared(Widget) {
     const actions = actionsCount > 1 ? this._renderActionsSections(item, item.actionsSections, actionsUid) : null;
 
     const children: any = hasChildren ? (
-      <ul key={listUid}
+      <ul key={`esri-layer-list__list-items`}
         id={listUid}
         class={CSS.list}
         classes={childClasses}
@@ -474,7 +475,7 @@ class LayerList extends declared(Widget) {
         onclick={this._toggleChildrenClick}
         onkeydown={this._toggleChildrenClick}
         data-item={item}
-        key={`${uid}__toggle-children`}
+        key={`esri-layer-list__toggle-children`}
         class={CSS.childToggle}
         classes={childToggleClasses}
         tabindex="0"
@@ -488,10 +489,10 @@ class LayerList extends declared(Widget) {
       </span>
     ) : null;
 
-    const itemLabel = this._createLabelNode(item, parent, uid, titleKey);
+    const itemLabel = this._createLabelNode(item, parent, titleKey);
 
     const errorBlock = hasError ? (
-      <div key={`${uid}__error`}
+      <div key={`esri-layer-list__error`}
         class={CSS.errorMessage}
         role="alert">
         <span aria-hidden="true"
@@ -501,11 +502,11 @@ class LayerList extends declared(Widget) {
     ) : null;
 
     return (
-      <li key={`${uid}__list-item`}
+      <li key={item}
         class={CSS.item}
         classes={itemClasses}
         aria-labelledby={titleKey}>
-        <div key={`${uid}__list-item-container`}
+        <div key={`esri-layer-list__list-item-container`}
           class={CSS.itemContainer}>
           {toggleChildren}
           {itemLabel}
@@ -518,8 +519,7 @@ class LayerList extends declared(Widget) {
     );
   }
 
-  private _createLabelNode(item: ListItem, parent: ListItem, uid: string, titleKey: string): any {
-    const labelKey = `${uid}__label`;
+  private _createLabelNode(item: ListItem, parent: ListItem, titleKey: string): any {
     const { exclusive, inherited } = VISIBILITY_MODES;
     const parentVisibilityMode = parent && parent.visibilityMode;
 
@@ -542,13 +542,13 @@ class LayerList extends declared(Widget) {
 
     return parentVisibilityMode === inherited ?
       (
-        <div key={labelKey}
+        <div key={item}
           class={CSS.label}>
           {titleNode}
         </div>
       ) :
       (
-        <div key={labelKey}
+        <div key={item}
           onclick={this._labelClick}
           onkeydown={this._labelClick}
           data-item={item}
@@ -584,7 +584,7 @@ class LayerList extends declared(Widget) {
       const actionTitle = action.title;
 
       return (
-        <div key={`${action.uid}__action-menu-item`}
+        <div key={item}
           bind={this}
           data-item={item}
           data-action={action}
@@ -642,14 +642,11 @@ class LayerList extends declared(Widget) {
   }
 
   private _renderActionsSections(item: ListItem, actionsSections: Collection<Collection<Action>>, actionsUid: string): any {
-    const widgetId = this.id;
-    const uid = `${widgetId}_${item.uid}`;
     const actionSectionsArray = actionsSections.toArray();
 
     const actionSection = actionSectionsArray.map(actionSection => {
       return (
-        <ul key={`${uid}__actions-list`}
-          class={CSS.actionsList}>
+        <ul key={actionSection} class={CSS.actionsList}>
           {this._renderActionSection(item, actionSection)}
         </ul>
       );
@@ -658,7 +655,7 @@ class LayerList extends declared(Widget) {
     return (
       <div role="group"
         aria-expanded={item.actionsOpen ? "true" : "false"}
-        key={`${uid}__actions-section`}
+        key={`esri-layer-list__actions-section`}
         id={actionsUid}
         class={CSS.actions}
         hidden={item.actionsOpen ? null : true}>
@@ -681,10 +678,10 @@ class LayerList extends declared(Widget) {
     };
 
     return (
-      <li key={`${action.uid}__action`}
-        bind={this}
+      <li bind={this}
         data-item={item}
         data-action={action}
+        key={action}
         onclick={this._triggerAction}
         onkeydown={this._triggerAction}
         class={CSS.action}

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define(["require","exports","../../../core/ObjectPool","../../../core/ArrayPool","./TileSpan"],function(o,r,e,n,l){var t=function(){function o(o){this.lodInfo=o,this.spans=n.acquire()}return o.prototype.release=function(){for(var o=0,r=this.spans;o<r.length;o++){var e=r[o];l.pool.release(e)}n.release(this.spans)},o.prototype.forEach=function(o,r){var e=this,n=e.spans,l=e.lodInfo,t=l.level;if(0!==n.length)for(var a=0,s=n;a<s.length;a++)for(var i=s[a],c=i.row,f=i.colFrom,p=i.colTo,u=f;p>=u;u++)o.call(r,t,c,l.normalizeCol(u),l.getWorldForColumn(u))},o.pool=new e(o,!0),o}();return t});

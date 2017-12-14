@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/declareExtendsHelper","../../../../core/tsSupport/decorateHelper","../../../../core/accessorSupport/decorators","../../../../core/HandleRegistry","../../../../core/Accessor","./disposeMembers"],function(e,r,t,o,s,n,p,c){Object.defineProperty(r,"__esModule",{value:!0});var d=function(e){function r(r){var t=e.call(this)||this;return t.handles=new n,t}return t(r,e),r.prototype.destroy=function(){c["default"](this,"handles")},o([s.property({constructOnly:!0})],r.prototype,"renderCoordsHelper",void 0),o([s.property({constructOnly:!0})],r.prototype,"surface",void 0),o([s.property({constructOnly:!0})],r.prototype,"viewState",void 0),r=o([s.subclass("esri.views.3d.support.PointOfInterest")],r)}(s.declared(p));r.PointOfInterest=d,r["default"]=d});
+define(["require","exports","../../../../core/tsSupport/declareExtendsHelper","../../../../core/tsSupport/decorateHelper","../../../../core/accessorSupport/decorators","../../../../core/HandleRegistry","../../../../core/Accessor","./disposeMembers"],function(e,r,t,o,s,n,p,c){Object.defineProperty(r,"__esModule",{value:!0});var d=function(e){function r(r){var t=e.call(this)||this;return t.handles=new n,t}return t(r,e),r.prototype.destroy=function(){c["default"](this,"handles")},o([s.property({constructOnly:!0})],r.prototype,"renderCoordsHelper",void 0),o([s.property({constructOnly:!0})],r.prototype,"surface",void 0),o([s.property({constructOnly:!0})],r.prototype,"state",void 0),r=o([s.subclass("esri.views.3d.support.PointOfInterest")],r)}(s.declared(p));r.PointOfInterest=d,r["default"]=d});

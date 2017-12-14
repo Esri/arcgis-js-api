@@ -49,43 +49,6 @@
  * @see module:esri/widgets/Popup/PopupViewModel
  */
 
-/**
- * Fires after the user clicks on an {@link module:esri/support/Action action} inside a popup. This
- * event may be used to define a custom function to execute when particular
- * actions are clicked. See the example below for details of how this works.
- *
- * @event module:esri/widgets/Popup#trigger-action
- * @property {module:esri/support/Action} action - The action clicked by the user. For a description
- *                    of this object and a specification of its properties,
- *                    see the [actions](#actions) property of this class.
- *
- * @see [actions](#actions)
- * @example
- * // Defines an action to zoom out from the selected feature
- * var zoomOutAction = {
- *   // This text is displayed as a tooltip
- *   title: "Zoom out",
- *   // The ID used to reference this action in the event handler
- *   id: "zoom-out",
- *   // Sets the icon font used to style the action button
- *   className: "esri-icon-zoom-out-magnifying-glass"
- * };
- * // Adds the custom action to the popup.
- * view.popup.actions.push(zoomOutAction);
- *
- * // Fires each time an action is clicked
- * view.popup.on("trigger-action", function(event){
- *   // If the zoom-out action is clicked, then execute the following code
- *   if(event.action.id === "zoom-out"){
- *     // Zoom out two levels (LODs)
- *     view.goTo({
- *       center: view.center,
- *       zoom: view.zoom - 2
- *     });
- *   }
- * });
- */
-
 /// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
 /// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
 /// <amd-dependency path="../core/tsSupport/assignHelper" name="__assign" />
@@ -107,6 +70,7 @@ import {
 
 import Collection = require("../core/Collection");
 import esriLang = require("../core/lang");
+import Logger = require("../core/Logger");
 import HandleRegistry = require("../core/HandleRegistry");
 import watchUtils = require("../core/watchUtils");
 
@@ -130,7 +94,7 @@ import {
   PopupPosition,
   PopupPositionStyle,
   ViewPadding
-} from "Popup/interfaces";
+} from "./Popup/interfaces";
 
 import PopupRenderer = require("./Popup/PopupRenderer");
 import PopupViewModel = require("./Popup/PopupViewModel");
@@ -151,6 +115,16 @@ import domGeometry = require("dojo/dom-geometry");
 
 import _WidgetBase = require("dijit/_WidgetBase");
 
+import {
+  END,
+  HOME,
+  ESCAPE,
+  UP_ARROW,
+  DOWN_ARROW,
+  LEFT_ARROW,
+  RIGHT_ARROW
+} from "dojo/keys";
+
 const DEFAULT_ACTION_IMAGE = require.toUrl("./Popup/images/default-action.svg");
 
 const CSS = {
@@ -165,8 +139,10 @@ const CSS = {
   iconUndock: "esri-icon-minimize",
   iconFeatureMenu: "esri-icon-layer-list",
   iconCheckMark: "esri-icon-check-mark",
-  iconLoading: "esri-rotating esri-icon-loading-indicator",
+  iconLoading: "esri-icon-loading-indicator",
   iconZoom: "esri-icon-zoom-in-magnifying-glass",
+  rotating: "esri-rotating",
+  disabled: "esri-disabled",
   // base
   base: "esri-popup",
   // containers
@@ -306,7 +282,10 @@ function isWidgetBase(value: any): value is _WidgetBase {
  * });
  */
 
-@subclass("esri.widgets.Popup")
+const declaredClass = "esri.widgets.Popup";
+const logger = Logger.getLogger(declaredClass);
+
+@subclass(declaredClass)
 class Popup extends declared(Widget) {
 
   //--------------------------------------------------------------------------
@@ -393,6 +372,10 @@ class Popup extends declared(Widget) {
         "selectedPopupRenderer.viewModel.waitingForContent"
       ], () => this._setContentFromPopupRenderer()),
 
+      watchUtils.watch<boolean>(this, "featureMenuOpen", featureMenuOpen => this._featureMenuOpenChanged(featureMenuOpen)),
+
+      watchUtils.watch<boolean>(this, "visible", visible => this._visibleChanged(visible)),
+
       watchUtils.on<ActionEvent>(this, "viewModel", "trigger-action", event => this._zoomToAction(event))
     );
   }
@@ -410,13 +393,21 @@ class Popup extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
+  private _blurContainer = false;
+
   private _containerNode: HTMLDivElement = null;
 
   private _mainContainerNode: HTMLDivElement = null;
 
-  private _featureMenuButtonNode: HTMLDivElement = null;
+  private _featureMenuNode: HTMLElement = null;
 
-  private _featureMenuViewportNode: HTMLElement = null;
+  private _focusContainer = false;
+
+  private _focusDockButton = false;
+
+  private _focusFeatureMenuButton = false;
+
+  private _focusFirstFeature = false;
 
   private _handleRegistry: HandleRegistry = new HandleRegistry();
 
@@ -446,7 +437,7 @@ class Popup extends declared(Widget) {
    * When this icon is clicked, the view zooms in four LODs and centers on the selected feature.
    *
    * You may override this action by removing it from the `actions` array or by setting the
-   * {@link module:esri/PopupTemplate#overwriteActions overwriteActions} property to `true` in a
+   * [overwriteActions](esri-PopupTemplate.html#overwriteActions) property to `true` in a
    * {@link module:esri/PopupTemplate}. The order of each action in the popup is the order in which
    * they appear in the array.
    *
@@ -552,7 +543,7 @@ class Popup extends declared(Widget) {
    * @name content
    * @instance
    *
-   * @type {string | Node}
+   * @type {string | HTMLElement | module:esri/widgets/Widget}
    * @see [Sample - Popup Docking](../sample-code/popup-docking-position/index.html)
    *
    * @example
@@ -562,7 +553,7 @@ class Popup extends declared(Widget) {
    */
   @aliasOf("viewModel.content")
   @renderable()
-  content: any = null;
+  content: string | HTMLElement | Widget = null;
 
   //----------------------------------
   //  collapsed
@@ -587,7 +578,13 @@ class Popup extends declared(Widget) {
   //----------------------------------
 
   /**
-   * @todo document
+   *
+   * Indicates whether to enable collapse functionality for the popup.
+   *
+   * @name collapseEnabled
+   * @instance
+   * @type {boolean}
+   * @default true
    */
   @property()
   @renderable()
@@ -599,7 +596,7 @@ class Popup extends declared(Widget) {
 
   /**
    *
-   * **Known Values:**  top-center | top-right | bottom-left | bottom-center | bottom-right
+   * **Known Values:**  auto | top-center | top-right | top-left | bottom-left | bottom-center | bottom-right
    *
    * @type {string}
    * @default
@@ -661,18 +658,15 @@ class Popup extends declared(Widget) {
    * @name dockOptions
    * @see [Sample - Popup docking](../sample-code/popup-docking-position/index.html)
    *
-   * @property {Object | boolean} [breakpoint] - Defines the dimensions of the {@link module:esri/views/View}
+   * @property {Object | boolean} [breakpoint=true] - Defines the dimensions of the {@link module:esri/views/View}
    *                        at which to dock the popup. Set to `false` to disable docking at a breakpoint.
-   *                        <br><br>**Default:** true
-   * @property {number} [breakpoint.width] - The maximum width of the {@link module:esri/views/View}
+   * @property {number} [breakpoint.width=544] - The maximum width of the {@link module:esri/views/View}
    *                        at which the popup will be set to dockEnabled automatically.
-   *                        <br><br>**Default:** 544
-   * @property {number} [breakpoint.height] - The maximum height of the {@link module:esri/views/View}
+   * @property {number} [breakpoint.height=544] - The maximum height of the {@link module:esri/views/View}
    *                        at which the popup will be set to dockEnabled automatically.
-   *                        <br><br>**Default:** 544
    * @property {boolean} [buttonEnabled] - If `true`, displays the dock button. If `false`, hides the dock
    *                         button from the popup.
-   * @property {string | function} [position] - The position in the view at which to dock the popup.
+   * @property {string | function} [position=auto] - The position in the view at which to dock the popup.
    *                        Can be set as either a string or function. See the table below for known
    *                        string values and their position in the view based on the view's size.
    *                        <br><br>
@@ -685,8 +679,6 @@ class Popup extends declared(Widget) {
    * bottom-left | bottom-left | bottom 100%
    * bottom-center | bottom-center | bottom 100%
    * bottom-right | bottom-right | bottom 100%
-   *
-   * **Default:** auto
    *
    * @example
    * view.popup.dockOptions = {
@@ -1106,6 +1098,24 @@ class Popup extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   /**
+   * Use this method to remove focus from the Widget.
+   *
+   * @method
+   * @since 4.6
+   *
+   */
+  blur(): void {
+    const { visible } = this;
+
+    if (!visible) {
+      logger.warn("Popup cannot be blurred while visible is false");
+    }
+
+    this._blurContainer = true;
+    this.scheduleRender();
+  }
+
+  /**
    * Removes [promises](#promises), [features](#features), [content](#content),
    * [title](#title) and [location](#location) from the Popup.
    *
@@ -1123,6 +1133,24 @@ class Popup extends declared(Widget) {
    */
   close() {
     this.visible = false;
+  }
+
+  /**
+   * Use this method to give focus to the Widget if the widget is able to be focused.
+   *
+   * @method
+   * @since 4.6
+   *
+   */
+  focus(): void {
+    const { visible } = this;
+
+    if (!visible) {
+      logger.warn("Popup cannot be focused while visible is false");
+    }
+
+    this._focusContainer = true;
+    this.scheduleRender();
   }
 
   /**
@@ -1155,13 +1183,10 @@ class Popup extends declared(Widget) {
    * @param {module:esri/geometry/Geometry} [options.location] - Sets the popup's [location](#location), which is the geometry used to position the popup.
    * @param {module:esri/Graphic[]} [options.features] - Sets the popup's [features](#features), which populate the title and content of the popup based on each graphic's {@link module:esri/PopupTemplate}.
    * @param {Promise[]} [options.promises] - Sets pending [promises](#promises) on the popup. The popup will display once the promises resolve. Each promise must resolve to an array of {@link module:esri/Graphic Graphics}.
-   * @param {boolean} [options.featureMenuOpen] - **Since:** 4.5 <br> This property enables multiple features in a popup to display in a list rather than displaying the first selected feature. Setting this to `true`
+   * @param {boolean} [options.featureMenuOpen=false] - **Since:** 4.5 <br> This property enables multiple features in a popup to display in a list rather than displaying the first selected feature. Setting this to `true`
    * allows the user to scroll through the list of features returned from the query and choose the selection they want to display within the popup.
-   * <br><br>**Default Value:** false
-   * @param {boolean} [options.updateLocationEnabled] - When `true` indicates the popup should update its [location](#location) for each paginated feature based on the [selected feature's](#selectedFeature) geometry.
-   * <br><br>**Default Value:** false
-   * @param {boolean} [options.collapsed] - **Since:** 4.5 <br> When `true`, indicates that only the popup header will display.
-   * <br><br>**Default Value:** false
+   * @param {boolean} [options.updateLocationEnabled=false] - When `true` indicates the popup should update its [location](#location) for each paginated feature based on the [selected feature's](#selectedFeature) geometry.
+   * @param {boolean} [options.collapsed=false] - **Since:** 4.5 <br> When `true`, indicates that only the popup header will display.
    *
    * @example
    * view.on("click", function(event){
@@ -1205,6 +1230,8 @@ class Popup extends declared(Widget) {
     }
 
     this.set(setOptions);
+
+    this._visibleChanged(true);
   }
 
   /**
@@ -1249,7 +1276,6 @@ class Popup extends declared(Widget) {
       collapsed,
       collapseEnabled,
       dockEnabled,
-      dockOptions,
       actions,
       featureMenuOpen,
       featureNavigationEnabled,
@@ -1293,7 +1319,7 @@ class Popup extends declared(Widget) {
         aria-label={i18n.loading}
         title={i18n.loading}>
         <span aria-hidden="true"
-          class={join(CSS.icon, CSS.iconLoading)} />
+          class={join(CSS.icon, CSS.iconLoading, CSS.rotating)} />
       </div>
     ) : null;
 
@@ -1357,15 +1383,20 @@ class Popup extends declared(Widget) {
       </div>
     );
 
+    const featureMenuId = `${this.id}-feature-menu`;
+
     const featureMenuToggleNode = (
       <div role="button"
         tabIndex={0}
         bind={this}
         onclick={this._toggleFeatureMenu}
         onkeydown={this._toggleFeatureMenu}
-        afterCreate={this._storeFeatureMenuButtonNode}
-        afterUpdate={this._storeFeatureMenuButtonNode}
+        afterCreate={this._focusFeatureMenuButtonNode}
+        afterUpdate={this._focusFeatureMenuButtonNode}
         class={join(CSS.button, CSS.featureMenuButton)}
+        aria-haspopup="true"
+        aria-controls={featureMenuId}
+        aria-expanded={featureMenuOpen}
         aria-label={i18n.menu}
         title={i18n.menu}>
         {featureMenuIconNode}
@@ -1386,42 +1417,23 @@ class Popup extends declared(Widget) {
     ) : null;
 
     const wouldDockTo = this._wouldDockTo();
-    const wouldDockToRight = wouldDockTo === "top-right" || wouldDockTo === "bottom-right";
-    const wouldDockToLeft = wouldDockTo === "top-left" || wouldDockTo === "bottom-left";
-    const wouldDockToTop = wouldDockTo === "top-center";
-    const wouldDockToBottom = wouldDockTo === "bottom-center";
 
-    const dockRightIconNode = wouldDockToRight ? (
+    const dockIconClasses = {
+      [CSS.iconUndock]: dockEnabled,
+      [CSS.iconDock]: !dockEnabled,
+      [CSS.iconDockToRight]: !dockEnabled && (wouldDockTo === "top-right" || wouldDockTo === "bottom-right"),
+      [CSS.iconDockToLeft]: !dockEnabled && (wouldDockTo === "top-left" || wouldDockTo === "bottom-left"),
+      [CSS.iconDockToTop]: !dockEnabled && (wouldDockTo === "top-center"),
+      [CSS.iconDockToBottom]: !dockEnabled && (wouldDockTo === "bottom-center")
+    };
+
+    const dockIconNode = (
       <span aria-hidden="true"
-        key={buildKey("dock-right-icon")}
-        class={join(CSS.icon, CSS.iconDock, CSS.iconDockToRight)} />
-    ) : null;
+        classes={dockIconClasses}
+        class={CSS.icon} />
+    );
 
-    const dockLeftIconNode = wouldDockToLeft ? (
-      <span aria-hidden="true"
-        key={buildKey("dock-left-icon")}
-        class={join(CSS.icon, CSS.iconDock, CSS.iconDockToLeft)} />
-    ) : null;
-
-    const dockTopIconNode = wouldDockToTop ? (
-      <span aria-hidden="true"
-        key={buildKey("dock-top-icon")}
-        class={join(CSS.icon, CSS.iconDock, CSS.iconDockToTop)} />
-    ) : null;
-
-    const dockBottomIconNode = wouldDockToBottom ? (
-      <span aria-hidden="true"
-        key={buildKey("dock-bottom-icon")}
-        class={join(CSS.icon, CSS.iconDock, CSS.iconDockToBottom)} />
-    ) : null;
-
-    const undockIconNode = dockEnabled ? (
-      <span aria-hidden="true"
-        key={buildKey("undocked-icon")}
-        class={join(CSS.icon, CSS.iconUndock)} />
-    ) : null;
-
-    const dockButtonNode = dockOptions.buttonEnabled ? (
+    const dockButtonNode = this.get("dockOptions.buttonEnabled") ? (
       <div role="button"
         aria-label={dockTitle}
         title={dockTitle}
@@ -1429,12 +1441,10 @@ class Popup extends declared(Widget) {
         bind={this}
         onclick={this._toggleDockEnabled}
         onkeydown={this._toggleDockEnabled}
+        afterCreate={this._focusDockButtonNode}
+        afterUpdate={this._focusDockButtonNode}
         class={join(CSS.button, CSS.buttonDock)}>
-        {dockRightIconNode}
-        {dockTopIconNode}
-        {dockLeftIconNode}
-        {dockBottomIconNode}
-        {undockIconNode}
+        {dockIconNode}
       </div>
     ) : null;
 
@@ -1451,8 +1461,11 @@ class Popup extends declared(Widget) {
         i18n.collapse :
       "";
 
+    const titleId = `${this.id}-popup-title`;
+
     const titleNode = title ? (
       <h1 class={CSS.headerTitle}
+        id={titleId}
         role={titleRole}
         aria-label={titleLabel}
         title={titleLabel}
@@ -1492,8 +1505,12 @@ class Popup extends declared(Widget) {
       </header>
     );
 
+    const contentId = `${this.id}-popup-content`;
+
     const contentNode = hasContent && !contentVisible ? (
-      <article key={buildKey("content-container")} class={CSS.content}>{content}</article>
+      <article key={buildKey("content-container")}
+        id={contentId}
+        class={CSS.content}>{content}</article>
     ) : null;
 
     const showButtonsTop = !contentVisible && (
@@ -1530,7 +1547,7 @@ class Popup extends declared(Widget) {
       </div>
     ) : null;
 
-    const featureMenuNode = this._renderFeatureMenuNode(popupRenderers, selectedFeatureIndex, isFeatureMenuOpen);
+    const featureMenuNode = this._renderFeatureMenuNode(popupRenderers, selectedFeatureIndex, isFeatureMenuOpen, featureMenuId);
 
     if (featureMenuNode) {
       this._closeFeatureMenuHandle.resume();
@@ -1545,16 +1562,12 @@ class Popup extends declared(Widget) {
         class={CSS.featureMenu}>
         <h2 class={CSS.featureMenuHeader}>{infoText}</h2>
         <nav class={CSS.featureMenuViewport}
-          afterCreate={this._storeFeatureMenuViewportNode}
-          afterUpdate={this._storeFeatureMenuViewportNode}>
+          afterCreate={this._featureMenuViewportNodeUpdated}
+          afterUpdate={this._featureMenuViewportNodeUpdated}>
           {featureMenuNode}
         </nav>
       </section>
     );
-
-    if (this._featureMenuViewportNode) {
-      this._featureMenuViewportNode.scrollTop = 0;
-    }
 
     const pointerNode = !dockEnabled ? (
       <div key={buildKey("pointer")} class={CSS.pointer}
@@ -1609,9 +1622,14 @@ class Popup extends declared(Widget) {
         afterUpdate={this._positionContainer}>
         <div class={join(CSS.main, CSS.widget)}
           classes={mainContainerClasses}
+          tabIndex={-1}
+          aria-role="dialog"
+          aria-labelledby={titleNode ? titleId : ""}
+          aria-describedby={contentNode ? contentId : ""}
           bind={this}
-          afterCreate={this._storeMainContainerNode}
-          afterUpdate={this._storeMainContainerNode}>
+          onkeyup={this._handleMainKeyup}
+          afterCreate={this._mainContainerNodeUpdated}
+          afterUpdate={this._mainContainerNodeUpdated}>
           {buttonsTopNode}
           {menuTopNode}
           {headerNode}
@@ -1634,6 +1652,26 @@ class Popup extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
+  private _visibleChanged(value: boolean): void {
+    if (!value) {
+      return;
+    }
+
+    this._focusContainer = true;
+    this.scheduleRender();
+  }
+
+  private _featureMenuOpenChanged(value: boolean): void {
+    if (value) {
+      this._focusFirstFeature = true;
+    }
+    else {
+      this._focusFeatureMenuButton = true;
+    }
+
+    this.scheduleRender();
+  }
+
   private _setTitleFromPopupRenderer(title: string): void {
     this.viewModel.title = title || "";
   }
@@ -1641,6 +1679,75 @@ class Popup extends declared(Widget) {
   private _setContentFromPopupRenderer(): void {
     this.viewModel.content = this.selectedPopupRenderer || null;
     this.scheduleRender();
+  }
+
+  private _handleFeatureMenuKeyup(event: KeyboardEvent): void {
+    const { keyCode } = event;
+
+    if (keyCode === ESCAPE) {
+      event.stopPropagation();
+      this.featureMenuOpen = false;
+    }
+  }
+
+  private _handleFeatureMenuItemKeyup(event: KeyboardEvent): void {
+    const { keyCode } = event;
+    const { _featureMenuNode } = this;
+    const count = this.get<number>("features.length");
+    const node = event.currentTarget as Element;
+    const featureIndex = node["data-feature-index"] as number;
+
+    if (!_featureMenuNode) {
+      return;
+    }
+
+    const items = _featureMenuNode.querySelectorAll("li");
+
+    if (keyCode === UP_ARROW) {
+      event.stopPropagation();
+      const previousIndex = featureIndex - 1;
+      const value = (previousIndex + count) % count;
+      const previousElement = items[value] as HTMLElement;
+      previousElement.focus();
+      return;
+    }
+
+    if (keyCode === DOWN_ARROW) {
+      event.stopPropagation();
+      const nextIndex = featureIndex + 1;
+      const value = (nextIndex + count) % count;
+      const nextElement = items[value] as HTMLElement;
+      nextElement.focus();
+      return;
+    }
+
+    if (keyCode === HOME) {
+      event.stopPropagation();
+      const firstElement = items[0] as HTMLElement;
+      firstElement.focus();
+      return;
+    }
+
+    if (keyCode === END) {
+      event.stopPropagation();
+      const lastElement = items[items.length - 1] as HTMLElement;
+      lastElement.focus();
+      return;
+    }
+  }
+
+  private _handleMainKeyup(event: KeyboardEvent): void {
+    const { keyCode } = event;
+
+    if (keyCode === LEFT_ARROW) {
+      event.stopPropagation();
+      this.previous();
+    }
+
+    if (keyCode === RIGHT_ARROW) {
+      event.stopPropagation();
+      this.next();
+    }
   }
 
   private _zoomToAction(event: ActionEvent): void {
@@ -1706,7 +1813,10 @@ class Popup extends declared(Widget) {
 
     if (action.id === ZOOM_TO_ACTION_ID) {
       action.title = i18n.zoom;
-      action.className = CSS.iconZoom;
+
+      this._handleRegistry.add(watchUtils.init(this, "view.animation.state", state => {
+        action.className = state === "waiting-for-target" ? join(CSS.icon, CSS.iconLoading, CSS.rotating) : join(CSS.icon, CSS.iconZoom);
+      }), actionsKey);
     }
 
     const { title: actionTitle, className: actionClassName } = action;
@@ -1722,9 +1832,14 @@ class Popup extends declared(Widget) {
       esriLang.substitute(selectedFeatureAttributes, actionImage) :
       actionImage;
 
+    const actionIconClass = subActionClass || CSS.icon;
+
     const iconClasses = {
-      [subActionClass]: !!subActionClass,
       [CSS.actionImage]: !!subActionImage
+    };
+
+    const buttonClasses = {
+      [CSS.disabled]: actionIconClass.indexOf(CSS.iconLoading) !== -1
     };
 
     const textNode = total <= this._displayActionTextLimit ? (
@@ -1738,14 +1853,15 @@ class Popup extends declared(Widget) {
         tabIndex={0}
         title={subActionTitle}
         aria-label={subActionTitle}
+        classes={buttonClasses}
         class={join(CSS.button, CSS.action)}
         bind={this}
         data-action-index={actionIndex}
         onclick={this._triggerAction}
         onkeydown={this._triggerAction}>
-        <span key={buildKey(`action-icon-${actionIndex}-${action.uid}`)}
+        <span key={buildKey(`action-icon-${actionIndex}-${action.uid}-${actionIconClass}`)}
           aria-hidden="true"
-          class={CSS.icon}
+          class={actionIconClass}
           classes={iconClasses}
           styles={this._getIconStyles(subActionImage)} />
         {textNode}
@@ -1770,9 +1886,7 @@ class Popup extends declared(Widget) {
       return this._renderAction(action, index, totalActions, actionsKey);
     });
 
-    return (
-      <div key={buildKey("actions")} class={CSS.actions}>{actionNodes}</div>
-    );
+    return actionNodes;
   }
 
   private _updatePopupRenderer(): void {
@@ -1990,7 +2104,7 @@ class Popup extends declared(Widget) {
 
     return (
       <li role="menuitem"
-        tabIndex={isSelectedFeature || !featureMenuOpen ? -1 : 0}
+        tabIndex={-1}
         key={buildKey(`feature-menu-feature-${selectedFeatureIndex}`)}
         classes={itemClasses}
         class={CSS.featureMenuItem}
@@ -1998,6 +2112,7 @@ class Popup extends declared(Widget) {
         aria-label={itemLabel}
         bind={this}
         data-feature-index={popupRendererIndex}
+        onkeyup={this._handleFeatureMenuItemKeyup}
         onclick={this._selectFeature}
         onkeydown={this._selectFeature}>
         <span class={CSS.featureMenuTitle}>
@@ -2008,9 +2123,14 @@ class Popup extends declared(Widget) {
     );
   }
 
-  private _renderFeatureMenuNode(popupRenderers: PopupRenderer[], selectedFeatureIndex: number, featureMenuOpen: boolean): any {
+  private _renderFeatureMenuNode(popupRenderers: PopupRenderer[], selectedFeatureIndex: number, featureMenuOpen: boolean, featureMenuId: string): any {
     return popupRenderers.length > 1 ? (
       <ol class={CSS.featureMenuList}
+        id={featureMenuId}
+        bind={this}
+        afterCreate={this._featureMenuNodeUpdated}
+        afterUpdate={this._featureMenuNodeUpdated}
+        onkeyup={this._handleFeatureMenuKeyup}
         role="menu">
         {popupRenderers.map((popupRenderer, popupRendererIndex) => {
           return this._renderFeatureMenuItemNode(popupRenderer, popupRendererIndex, selectedFeatureIndex, featureMenuOpen);
@@ -2039,7 +2159,7 @@ class Popup extends declared(Widget) {
   }
 
   private _renderContent(): any {
-    const content = this.get<any>("viewModel.content");
+    const content = this.get("viewModel.content");
     const contentKey = "content";
 
     if (typeof content === "string") {
@@ -2301,16 +2421,61 @@ class Popup extends declared(Widget) {
     _containerNode.classList.add(CSS.hasFeatureUpdated);
   }
 
-  private _storeMainContainerNode(element: HTMLDivElement): void {
+  private _focusDockButtonNode(element: HTMLDivElement): void {
+    if (!this._focusDockButton) {
+      return;
+    }
+
+    this._focusDockButton = false;
+    element.focus();
+  }
+
+  private _mainContainerNodeUpdated(element: HTMLDivElement): void {
     this._mainContainerNode = element;
+
+    if (this._focusContainer) {
+      this._focusContainer = false;
+      element.focus();
+      return;
+    }
+
+    if (this._blurContainer) {
+      this._blurContainer = false;
+      element.blur();
+      return;
+    }
   }
 
-  private _storeFeatureMenuButtonNode(element: HTMLDivElement): void {
-    this._featureMenuButtonNode = element;
+  private _featureMenuNodeUpdated(element: HTMLElement): void {
+    this._featureMenuNode = element;
+
+    if (!element || !this._focusFirstFeature) {
+      return;
+    }
+
+    this._focusFirstFeature = false;
+    const items = element.querySelectorAll("li");
+    if (items.length) {
+      const firstItem = items[0] as HTMLElement;
+      firstItem.focus();
+    }
   }
 
-  private _storeFeatureMenuViewportNode(element: HTMLElement): void {
-    this._featureMenuViewportNode = element;
+  private _focusFeatureMenuButtonNode(element: HTMLDivElement): void {
+    if (!this._focusFeatureMenuButton) {
+      return;
+    }
+
+    this._focusFeatureMenuButton = false;
+    element.focus();
+  }
+
+  private _featureMenuViewportNodeUpdated(element: HTMLElement): void {
+    if (!element) {
+      return;
+    }
+
+    element.scrollTop = 0;
   }
 
   private _toggleScreenLocationEnabled(): void {
@@ -2383,11 +2548,14 @@ class Popup extends declared(Widget) {
   @accessibleHandler()
   private _close(): void {
     this.close();
+    this.view && this.view.focus();
   }
 
   @accessibleHandler()
   private _toggleDockEnabled(): void {
     this.dockEnabled = !this.dockEnabled;
+    this._focusDockButton = true;
+    this.scheduleRender();
   }
 
   @accessibleHandler()
@@ -2411,9 +2579,7 @@ class Popup extends declared(Widget) {
       this.viewModel.selectedFeatureIndex = featureIndex;
     }
 
-    if (this._featureMenuButtonNode) {
-      this._featureMenuButtonNode.focus();
-    }
+    this._closeFeatureMenu();
   }
 
   @accessibleHandler()

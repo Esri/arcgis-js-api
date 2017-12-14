@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/accessorSupport/decorators","../../../core/Accessor","../../../moment"],function(e,r,t,o,p,s,a){var c=function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.value=a(),r}return t(r,e),r.prototype.castValue=function(e){return a(e)},o([p.property()],r.prototype,"state",void 0),o([p.property()],r.prototype,"value",void 0),o([p.cast("value")],r.prototype,"castValue",null),r=o([p.subclass("esri.widgets.Directions.CalendarViewModel")],r)}(p.declared(s));return c});
+define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/accessorSupport/decorators","./MomentElementViewModel"],function(e,r,t,o,n,s){var c=function(e){function r(){return null!==e&&e.apply(this,arguments)||this}return t(r,e),r=o([n.subclass("esri.widgets.Directions.CalendarViewModel")],r)}(n.declared(s));return c});

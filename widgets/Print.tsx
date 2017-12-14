@@ -41,12 +41,14 @@ import PrintViewModel = require("./Print/PrintViewModel");
 import PrintTemplate = require("../tasks/support/PrintTemplate");
 import Collection = require("../core/Collection");
 import EsriError = require("../core/Error");
+import Logger = require("../core/Logger");
 import watchUtils = require("../core/watchUtils");
 import Widget = require("./Widget");
 import FileLink = require("./Print/FileLink");
+import TemplateOptions = require("./Print/TemplateOptions");
 import urlUtils = require("../core/urlUtils");
 
-import { accessibleHandler, join, renderable, tsx } from "./support/widget";
+import { accessibleHandler, join, renderable, storeNode, tsx } from "./support/widget";
 
 import * as i18n from "dojo/i18n!./Print/nls/Print";
 
@@ -124,6 +126,11 @@ const CSS = {
   iconUnlinked: "esri-icon-unlocked-link-horizontal"
 };
 
+const declaredClass = "esri.widgets.Print";
+const logger = Logger.getLogger(declaredClass);
+const invalidLayoutWarningMessage = "User sets an invalid layout, resetting it to the default valid one...";
+const invalidFormatWarningMessage = "User sets an invalid format, resetting it to the default valid one...";
+
 @subclass("esri.widgets.Print")
 class Print extends declared(Widget) {
 
@@ -147,33 +154,101 @@ class Print extends declared(Widget) {
    *   printServiceUrl: "https://www.example.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task"
    * });
    */
-  constructor() {
+  constructor(params?: any) {
     super();
   }
 
   postInitialize() {
+    const {
+      format,
+      height,
+      layout,
+      scale,
+      scaleEnabled,
+      width
+    } = this.templateOptions;
+
     watchUtils.init(this, "viewModel.templatesInfo", (templatesInfo: TemplatesInfo) => {
       if (templatesInfo) {
         this._templatesInfo = templatesInfo;
 
-        this._selectedTemplate.layout = this._templatesInfo.layout.defaultValue;
-        this._selectedTemplate.format = this._templatesInfo.format.defaultValue;
 
-        if (this._selectedTemplate.layout === "MAP_ONLY") {
+
+        const isValidLayout = layout === templatesInfo.layout.defaultValue || (layout && layout.toUpperCase() === "MAP_ONLY") || (templatesInfo.layout.choiceList && templatesInfo.layout.choiceList.indexOf(layout) > -1);
+        const isValidFormat = format === templatesInfo.format.defaultValue || (templatesInfo.format.choiceList && templatesInfo.format.choiceList.indexOf(format) > -1);
+
+        if (!isValidLayout) {
+          if (layout) {
+            logger.warn(invalidLayoutWarningMessage);
+          }
+
+          this.templateOptions.layout = this._templatesInfo.layout.defaultValue;
+        }
+
+        if (!isValidFormat) {
+          if (format) {
+            logger.warn(invalidFormatWarningMessage);
+          }
+
+          this.templateOptions.format = this._templatesInfo.format.defaultValue;
+        }
+
+        if (layout && layout.toUpperCase() === "MAP_ONLY") {
           this._layoutTabSelected = false;
         }
       }
     });
 
-    watchUtils.init(this, "viewModel.view.scale", (newValue: number) => {
-      if (!this._scaleEnabled) {
-        this._scale = newValue;
+    watchUtils.init(this, "templateOptions.format", (newValue: string) => {
+      if (this._templatesInfo && newValue) {
+        let isValidFormat = false;
+        this._templatesInfo.format.choiceList && this._templatesInfo.format.choiceList.forEach(option => {
+          if (option.toUpperCase() === newValue.toUpperCase()) {
+            this.templateOptions.format = option;
+            isValidFormat = true;
+          }
+        });
+
+        if (!isValidFormat) {
+          this.templateOptions.format = this._templatesInfo.format.defaultValue;
+          logger.warn(invalidFormatWarningMessage);
+        }
+
         this.scheduleRender();
       }
     });
 
-    this._width = this._selectedTemplate.exportOptions.width;
-    this._height = this._selectedTemplate.exportOptions.height;
+    watchUtils.init(this, "templateOptions.layout", (newValue: string) => {
+      if (this._templatesInfo && newValue) {
+        this._layoutTabSelected =  newValue.toUpperCase() !== "MAP_ONLY";
+        let isValidLayout = false || !this._layoutTabSelected;
+
+        if (!isValidLayout) {
+          this._templatesInfo.layout.choiceList && this._templatesInfo.layout.choiceList.forEach(option => {
+            if (option.toUpperCase() === newValue.toUpperCase()) {
+              this.templateOptions.layout = option;
+              isValidLayout = true;
+            }
+          });
+        }
+
+        if (!isValidLayout) {
+          this.templateOptions.layout = this._templatesInfo.layout.defaultValue;
+          logger.warn(invalidLayoutWarningMessage);
+        }
+
+        this.scheduleRender();
+      }
+    });
+
+    watchUtils.init(this, "viewModel.view.scale", (newValue: number) => {
+      if (!scaleEnabled || !scale) {
+        this.templateOptions.scale = newValue;
+      }
+    });
+
+    this.templateOptions.width = width || 800;
+    this.templateOptions.height = height || 1100;
   }
 
   //--------------------------------------------------------------------------
@@ -182,41 +257,86 @@ class Print extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  private _attribution = true;
-
-  private _author: string;
-
-  private _copyright: string;
-
   private _exportedFileNameMap: HashMap<number> = {};
 
-  private _height: number;
-
   private _layoutTabSelected = true;
-
-  private _legend = true;
 
   private _advancedOptionsVisible = false;
 
   private _pendingExportScroll = false;
 
-  private _scale: number;
-
-  private _selectedTemplate: PrintTemplate = new PrintTemplate();
-
-  private _scaleEnabled = false;
-
-  private _title: string;
+  private _rootNode: HTMLElement = null;
 
   private _templatesInfo: TemplatesInfo = null;
-
-  private _width: number;
 
   //--------------------------------------------------------------------------
   //
   //  Properties
   //
   //--------------------------------------------------------------------------
+
+  //----------------------------------
+  //  exportedLinks
+  //----------------------------------
+
+  @aliasOf("viewModel.exportedLinks")
+  @renderable()
+  exportedLinks: Collection<FileLink>;
+
+  //----------------------------------
+  //  templateOptions
+  //----------------------------------
+
+  /**
+   * Defines the layout template options used by the {@link module:esri/widgets/Print|Print} widget to generate the print page.
+   *
+   * @name templateOptions
+   * @since 4.6
+   * @instance
+   *
+   * @example
+   * templateOptions: {
+   *   title: "My Print",
+   *   author: "Sam",
+   *   copyright: "My Company",
+   *   legendEnabled: false
+   * }
+   *
+   * @type {module:esri/widgets/Print/TemplateOptions}
+   * @autocast
+   */
+  @renderable()
+  @property({
+    type: TemplateOptions
+  })
+  templateOptions: TemplateOptions = new TemplateOptions();
+
+  //----------------------------------
+  //  error
+  //----------------------------------
+
+  /**
+   * The Error object returned if an error occurred while fetching information from service
+   * @type {EsriError}
+   * @ignore
+   */
+  @aliasOf("viewModel.error")
+  error: EsriError;
+
+  //----------------------------------
+  //  printServiceUrl
+  //----------------------------------
+
+  /**
+   * The URL of the REST endpoint of the Export Web Map Task.
+   *
+   * @name printServiceUrl
+   * @instance
+   * @type {string}
+   */
+
+  @aliasOf("viewModel.printServiceUrl")
+  printServiceUrl: string = null;
 
   //----------------------------------
   //  view
@@ -258,49 +378,6 @@ class Print extends declared(Widget) {
   @renderable(["viewModel.templatesInfo", "viewModel.state"])
   viewModel: PrintViewModel = new PrintViewModel();
 
-  //----------------------------------
-  //  printServiceUrl
-  //----------------------------------
-
-  /**
-   * The URL of the REST endpoint of the Export Web Map Task.
-   *
-   * @name printServiceUrl
-   * @instance
-   * @type {string}
-   */
-
-  @aliasOf("viewModel.printServiceUrl")
-  printServiceUrl: string = null;
-
-  //----------------------------------
-  //  scale
-  //----------------------------------
-
-  @aliasOf("viewModel.scale")
-  @renderable()
-  scale: number;
-
-  //----------------------------------
-  //  exportedLinks
-  //----------------------------------
-
-  @aliasOf("viewModel.exportedLinks")
-  @renderable()
-  exportedLinks: Collection<FileLink>;
-
-  //----------------------------------
-  //  error
-  //----------------------------------
-
-  /**
-   * The Error object returned if an error occurred while fetching information from service
-   * @type {EsriError}
-   * @ignore
-   */
-  @aliasOf("viewModel.error")
-  error: EsriError;
-
   //--------------------------------------------------------------------------
   //
   //  Public Methods
@@ -308,15 +385,29 @@ class Print extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   render() {
+    const {
+      attributionEnabled,
+      author,
+      copyright,
+      format,
+      height,
+      layout,
+      legendEnabled,
+      title,
+      scaleEnabled,
+      scale,
+      width
+    } = this.templateOptions;
+
     const titleSection = (
-      <div key="title-section" class={CSS.formSectionContainer}>
+      <div class={CSS.formSectionContainer}>
         <label>{this._layoutTabSelected ? i18n.title : i18n.fileName}
-        <input key={`${this.id}__title`}
-               name="title"
-               type="text"
+        <input type="text"
                tabIndex={0}
                placeholder={this._layoutTabSelected ? i18n.titlePlaceHolder : i18n.fileNamePlaceHolder}
                class={CSS.inputText}
+               value={title}
+               data-input-name="title"
                oninput={this._updateInputValue}
                bind={this} />
         </label>
@@ -326,19 +417,19 @@ class Print extends declared(Widget) {
     const fileFormatMenuItems = this.get<string[]>("_templatesInfo.format.choiceList") || [];
     const fileFormatOptions = fileFormatMenuItems.length > 0 ? (
       fileFormatMenuItems.map(fileFormatMenuItem => {
-        return (
-          <option key={fileFormatMenuItem}>{fileFormatMenuItem}</option>
-        );
+        const selected = fileFormatMenuItem === format;
+
+        return <option key={fileFormatMenuItem} selected={selected}>{fileFormatMenuItem}</option>;
       })
     ) : (
       <option key="format-default-option">{i18n.formatDefaultOption}</option>
     );
 
     const fileFormatSection = (
-      <div key="file-format-section" class={CSS.formSectionContainer}>
+      <div class={CSS.formSectionContainer}>
         <label>
           {i18n.fileFormatTitle}
-          <select key={`${this.id}__formats`} class={CSS.select} onchange={this._updateFromOption} data-target-property="format" bind={this}>
+          <select class={CSS.select} onchange={this._updateFromOption} data-target-property="format" bind={this}>
             {fileFormatOptions}
           </select>
         </label>
@@ -348,19 +439,19 @@ class Print extends declared(Widget) {
     const layoutMenuItems = this.get<string[]>("_templatesInfo.layout.choiceList") || [];
     const layoutOptions = layoutMenuItems.length > 0 ? (
       layoutMenuItems.map(layoutMenuItem => {
-        return (
-          <option key={layoutMenuItem} bind={this}>{layoutMenuItem}</option>
-        );
+        const selected = layoutMenuItem === layout;
+
+        return <option key={layoutMenuItem} bind={this} selected={selected}>{layoutMenuItem}</option>;
       })
     ) : (
       <option key="layout-default-option">{i18n.layoutDefaultOption}</option>
     );
 
     const pageSetupSection = (
-      <div key="page-setup-section" class={CSS.formSectionContainer}>
+      <div class={CSS.formSectionContainer}>
         <label>
           {i18n.layoutTitle}
-          <select key={`${this.id}__layouts`} class={CSS.select} onchange={this._updateFromOption} data-target-property="layout" bind={this}>
+          <select class={CSS.select} onchange={this._updateFromOption} data-target-property="layout" bind={this}>
             {layoutOptions}
           </select>
         </label>
@@ -372,8 +463,8 @@ class Print extends declared(Widget) {
       <div aria-labelledby={`${this.id}__advancedOptions`} class={CSS.advancedOptionsContainer}>
         <div class={join(CSS.scaleInfoContainer, CSS.formSectionContainer)}>
           <label>
-            <input key={`${this.id}__scaleEnabled`}
-                   name="scaleEnabled"
+            <input data-option-name="scaleEnabled"
+                   checked={scaleEnabled}
                    type="checkbox"
                    tabIndex={0}
                    onchange={this._toggleInputValue}
@@ -381,17 +472,16 @@ class Print extends declared(Widget) {
             {i18n.scale}
           </label>
           <div class={CSS.scaleInputContainer}>
-            <input key={`${this.id}__scale`}
-                   aria-label={i18n.scaleLabel}
-                   aria-valuenow={`${this._scale}`}
+            <input aria-label={i18n.scaleLabel}
+                   aria-valuenow={`${scale}`}
                    role="spinbutton"
                    type="number"
-                   name="scale"
                    class={join(CSS.inputText, CSS.scaleInput)}
                    tabIndex={0}
+                   data-input-name="scale"
                    oninput={this._updateInputValue}
-                   disabled={!this._scaleEnabled}
-                   value={`${this._scale}`}
+                   disabled={!scaleEnabled}
+                   value={`${scale}`}
                    bind={this} />
             <button role="button"
                     aria-label={i18n.reset}
@@ -405,11 +495,11 @@ class Print extends declared(Widget) {
         <div class={join(CSS.authorInfoContainer, CSS.formSectionContainer)}>
           <label>
             {i18n.author}
-            <input key={`${this.id}__author`}
-                   type="text"
-                   name="author"
+            <input type="text"
+                   value={author}
                    class={CSS.inputText}
                    tabIndex={0}
+                   data-input-name="author"
                    oninput={this._updateInputValue}
                    bind={this} />
           </label>
@@ -417,22 +507,21 @@ class Print extends declared(Widget) {
         <div class={join(CSS.copyrightInfoContainer, CSS.formSectionContainer)}>
           <label>
             {i18n.copyright}
-            <input key={`${this.id}__copyright`}
-                   type="text"
-                   name="copyright"
+            <input type="text"
                    class={CSS.inputText}
                    tabIndex={0}
+                   value={copyright}
+                   data-input-value="copyright"
                    oninput={this._updateInputValue}
                    bind={this} />
           </label>
         </div>
         <div class={join(CSS.legendInfoContainer, CSS.formSectionContainer)}>
           <label>
-          <input key={`${this.id}__legend`}
-                 type="checkbox"
-                 name="legend"
+          <input type="checkbox"
+                 data-option-name="legendEnabled"
                  tabIndex={0}
-                 checked
+                 checked={legendEnabled}
                  onchange={this._toggleInputValue}
                  bind={this} />
             {i18n.legend}
@@ -442,22 +531,21 @@ class Print extends declared(Widget) {
     ) : null;
 
     const panel = this._layoutTabSelected ? (
-      <section key={`${this.id}__layoutContent`}
+      <section key="esri-print__layoutContent"
                id={`${this.id}__layoutContent`}
                aria-labelledby={`${this.id}__layoutTab`}
                class={CSS.layoutSection}
                role="tabpanel"
                aria-selected={this._layoutTabSelected}
                >
-        <div key="layout" class={CSS.panelContainer}>
+        <div class={CSS.panelContainer}>
           {titleSection}
           {pageSetupSection}
           {this._layoutTabSelected ? fileFormatSection : null}
         </div>
 
-        <div key="advanced-section" class={join(CSS.panelContainer, CSS.advancedOptionsSection)}>
-          <button key={`${this.id}__advancedOptions`}
-                  aria-label={i18n.advancedOptions}
+        <div class={join(CSS.panelContainer, CSS.advancedOptionsSection)}>
+          <button aria-label={i18n.advancedOptions}
                   aria-expanded={this._advancedOptionsVisible ? "true" : "false"}
                   role="button"
                   class={CSS.advancedOptionsButton}
@@ -474,25 +562,24 @@ class Print extends declared(Widget) {
         </div>
       </section>
     ) : (
-      <section key={`${this.id}__mapOnlyContent`}
+      <section key="esri-print__mapOnlyContent"
                id={`${this.id}__mapOnlyContent`}
                aria-selected={!this._layoutTabSelected}
                aria-labelledby={`${this.id}__mapOnlyTab`}
                class={CSS.mapOnlySection}
                role="tabpanel">
-        <div key="mapOnly" class={CSS.panelContainer}>
+        <div class={CSS.panelContainer}>
           {titleSection}
           {this._layoutTabSelected ? null : fileFormatSection}
           <div class={join(CSS.sizeContainer, CSS.formSectionContainer)}>
             <div class={CSS.widthContainer}>
               <label>
                 {i18n.width}
-                <input key={`${this.id}__width`}
-                       type="text"
-                       name="width"
+                <input type="text"
                        class={CSS.inputText}
+                       data-input-name="width"
                        onchange={this._updateInputValue}
-                       value={`${this._width}`}
+                       value={`${width}`}
                        tabIndex={0}
                        bind={this} />
               </label>
@@ -500,12 +587,11 @@ class Print extends declared(Widget) {
             <div class={CSS.heightContainer}>
               <label>
                 {i18n.height}
-                <input key={`${this.id}__height`}
-                       type="text"
-                       name="height"
+                <input type="text"
                        class={CSS.inputText}
+                       data-input-name="height"
                        onchange={this._updateInputValue}
-                       value={`${this._height}`}
+                       value={`${height}`}
                        tabIndex={0}
                        bind={this} />
               </label>
@@ -518,14 +604,13 @@ class Print extends declared(Widget) {
                     bind={this}>
             </button>
           </div>
-          <div key="attribution-container" class={CSS.formSectionContainer}>
+          <div class={CSS.formSectionContainer}>
             <label>
-              <input key={`${this.id}__attribution`}
-                     name="attribution"
+              <input data-option-name="attributionEnabled"
                      type="checkbox"
                      onchange={this._toggleInputValue}
                      tabIndex={0}
-                     checked
+                     checked={attributionEnabled}
                      bind={this} />
               {i18n.attribution}
             </label>
@@ -537,26 +622,25 @@ class Print extends declared(Widget) {
     const exportedLinksArray = this.exportedLinks.toArray();
     const exportedLinksItems = this._renderExportedLink(exportedLinksArray);
     const exportButtonClasses = {
-      [CSS.disabled]: !this._selectedTemplate.layout && !this._selectedTemplate.format
+      [CSS.disabled]: !layout && !format
     };
 
-    const isSceneView = this.get("view.type") !== "2d";
+    const isSceneView = this.get("view") != null && this.get("view.type") !== "2d";
 
     const errorPanel = (
-      <div key={`${this.id}__errorPanel`} class={CSS.panelError}>
+      <div class={CSS.panelError}>
         {isSceneView ? i18n.sceneViewError : i18n.serviceError}
       </div>
     );
 
     const normalPanel = (
-      <div key={`${this.id}__printPanel`}>
+      <div>
         <ul class={CSS.layoutTabList}
             role="tablist"
             onclick={this._toggleLayoutPanel}
             onkeydown={this._toggleLayoutPanel}
             bind={this}>
           <li id={`${this.id}__layoutTab`}
-              key={`${this.id}__layoutTab`}
               data-tab-id="layoutTab"
               class={CSS.layoutTab}
               role="tab"
@@ -566,7 +650,6 @@ class Print extends declared(Widget) {
             {i18n.layoutTab}
           </li>
           <li id={`${this.id}__mapOnlyTab`}
-              key={`${this.id}__mapOnlyTab`}
               data-tab-id="mapOnlyTab"
               class={CSS.layoutTab}
               role="tab"
@@ -588,11 +671,11 @@ class Print extends declared(Widget) {
                 bind={this}>
           {i18n.export}
         </button>
-        <div key={`${this.id}__exportedFilesContainer`} class={CSS.exportedFilesContainer} afterUpdate={this._scrollExportIntoView} onclick={this._removeLink} bind={this}>
+        <div class={CSS.exportedFilesContainer} afterUpdate={this._scrollExportIntoView} onclick={this._removeLink} bind={this}>
           <h2 class={CSS.exportedFilesTitle}>{i18n.exportText}</h2>
           {
             exportedLinksArray.length > 0 ? null : (
-              <div key="exported-section-hints">
+              <div>
                 <div>{i18n.exportHint}</div>
               </div>
             )
@@ -604,16 +687,16 @@ class Print extends declared(Widget) {
     );
 
     const printWidgetPanel = (
-      <div key={`${this.id}__printContainer`}>
+      <div>
         <div class={CSS.printWidgetContainer}>
           <header class={CSS.headerTitle}>{i18n.export}</header>
-          {(this.error || !this.printServiceUrl || isSceneView) ? errorPanel : normalPanel}
+          {(this.error || !this.printServiceUrl || isSceneView || !this.view) ? errorPanel : normalPanel}
         </div>
       </div>
     );
 
     return (
-      <div class={CSS.base}>
+      <div afterCreate={storeNode} bind={this} class={CSS.base} data-node-ref="_rootNode">
         {printWidgetPanel}
       </div>
     );
@@ -625,34 +708,12 @@ class Print extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  private _configurePrintTemplate(): void {
-    this._selectedTemplate.attributionVisible = this._attribution;
-
-    if (this._width) {
-      this._selectedTemplate.exportOptions.width = this._width;
-    }
-    if (this._height) {
-      this._selectedTemplate.exportOptions.height = this._height;
-    }
-
-    this._selectedTemplate.layoutOptions = {
-      titleText: this._title || "",
-      authorText: this._author || "",
-      copyrightText: this._copyright || ""
-    };
-
-    if (!this._legend) {
-      this._selectedTemplate.layoutOptions.legendLayers = [];
-    }
-
-    this.scale = this._scale;
-    this._selectedTemplate.outScale = this.scale;
-
-    const titleText = this._title || i18n.untitled,
-          lowercaseFormat = this._selectedTemplate.format.toLowerCase(),
-          extension = lowercaseFormat.indexOf("png") > -1 ? "png" : lowercaseFormat,
-          fileName = titleText + extension,
-          hasSameFileName = this._exportedFileNameMap[fileName] !== undefined;
+  private _addFileLink(template: PrintTemplate): void {
+    const titleText = template.layoutOptions.titleText || i18n.untitled,
+    lowercaseFormat = template.format.toLowerCase(),
+    extension = lowercaseFormat.indexOf("png") > -1 ? "png" : lowercaseFormat,
+    fileName = titleText + extension,
+    hasSameFileName = this._exportedFileNameMap[fileName] !== undefined;
 
     if (hasSameFileName) {
       this._exportedFileNameMap[fileName]++;
@@ -668,55 +729,91 @@ class Print extends declared(Widget) {
     }));
   }
 
+  private _toPrintTemplate(templateOptions: TemplateOptions): PrintTemplate {
+    const { attributionEnabled, author, copyright, format, height, layout, legendEnabled, title, scale, width } = this.templateOptions;
+    const printTemplate = new PrintTemplate({
+      attributionVisible: attributionEnabled,
+      layoutOptions: {
+        authorText: author || "",
+        copyrightText: copyright || "",
+        titleText: title || ""
+      },
+      format,
+      layout,
+      outScale: scale
+    });
+
+    if (width) {
+      printTemplate.exportOptions.width = width;
+    }
+    if (height) {
+      printTemplate.exportOptions.height = height;
+    }
+
+    if (!legendEnabled) {
+      printTemplate.layoutOptions.legendLayers = [];
+    }
+
+    return printTemplate;
+  }
+
   private _resetToCurrentScale(): void {
-    this._scale = this.viewModel.view.scale;
+    this.templateOptions.scale = this.viewModel.view.scale;
   }
 
   private _updateInputValue(e: Event): void {
     const target = e.target as HTMLInputElement;
-    const propName = `_${target.name}`;
-    this[propName] = target.value;
+    const targetProperty = target.getAttribute("data-input-name");
+    this.templateOptions[targetProperty] = target.value;
   }
 
   private _handlePrintMap(): void {
-    this._configurePrintTemplate();
     this._pendingExportScroll = true;
-    this.viewModel.print(this._selectedTemplate);
+    const template = this._toPrintTemplate(this.templateOptions);
+
+    this._addFileLink(template);
+    this.viewModel.print(template);
   }
 
   private _updateFromOption(e: Event): void {
     const target = e.target as HTMLSelectElement;
-    const selectedOption = target.selectedOptions.item(0).value;
-    const selectedTemplate = this._selectedTemplate;
+    const selectedOption = target.selectedOptions ? target.selectedOptions.item(0).value : target.options[target.selectedIndex].value;
     const targetProperty = target.getAttribute("data-target-property");
 
-    selectedTemplate[targetProperty] = selectedOption;
+    this.templateOptions[targetProperty] = selectedOption;
   }
 
   private _switchInput(): void {
-    [this._width, this._height] = [this._height, this._width];
+    [this.templateOptions.width, this.templateOptions.height] = [this.templateOptions.height, this.templateOptions.width];
   }
 
   private _showAdvancedOptions(): void {
     this._advancedOptionsVisible = !this._advancedOptionsVisible;
   }
 
-  private _scrollExportIntoView(element: Element) {
+  private _scrollExportIntoView(): void {
     if (this._pendingExportScroll) {
       this._pendingExportScroll = false;
-      element.scrollIntoView();
+      const { _rootNode, _rootNode: { clientHeight, scrollHeight } } = this;
+
+      const delta = scrollHeight - clientHeight;
+
+      if (delta > 0) {
+        // scroll to bottom (export link area) only if root node owns scroller
+        _rootNode.scrollTop = delta;
+      }
     }
   }
 
   private _toggleInputValue(e: Event): void {
     const target = e.target as HTMLInputElement;
-    const propName = "_" + target.name;
+    const propName = target.getAttribute("data-option-name");
 
-    this[propName] = target.checked;
+    this.templateOptions[propName] = target.checked;
 
-    if (propName === "_scaleEnabled") {
-      this.viewModel.scaleEnabled = this[propName];
-      if (!this[propName]) {
+    if (propName === "scaleEnabled") {
+      this.viewModel.scaleEnabled = this.templateOptions.scaleEnabled;
+      if (!this.templateOptions[propName]) {
         this._resetToCurrentScale();
       }
     }
@@ -776,8 +873,7 @@ class Print extends declared(Widget) {
   }
 
   private _resetInputValue(): void {
-    this._title = "";
-    this._selectedTemplate.format = this._templatesInfo.format.defaultValue;
+    this.templateOptions.title = "";
   }
 
   @accessibleHandler()
@@ -788,11 +884,11 @@ class Print extends declared(Widget) {
     this._layoutTabSelected = target.getAttribute("data-tab-id") === "layoutTab";
 
     if (!this._layoutTabSelected) {
-      this._selectedTemplate.layout = "MAP_ONLY";
+      this.templateOptions.layout = "MAP_ONLY";
     }
     else {
       const layoutChoices = this.get<string[]>("_templatesInfo.layout.choiceList");
-      this._selectedTemplate.layout = layoutChoices && layoutChoices[0];
+      this.templateOptions.layout = layoutChoices && layoutChoices[0];
     }
   }
 

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({km:"км",mi:"мили",ft:"футы",m:"м",unknownUnit:"Неизвестная единица измерения"});
+define({km:"км",mi:"мили",ft:"ft",m:"м",unknownUnit:"Неизвестная единица измерения"});

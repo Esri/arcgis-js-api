@@ -1,0 +1,25 @@
+{
+  "title": "labelExpressionInfo",
+  "type": "object",
+  "description": "An object that defines an expression for text of labels",
+  "properties": {
+    "expression": {
+      "type": "string",
+      "description": "An [Arcade expression](https://developers.arcgis.com/arcade/) evaluating to either a string or a number."
+    }
+  },
+  "additionalProperties": false,
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "labelExpressionInfo",
+        "code": {
+          "labelExpressionInfo": {
+            "expression": "return $feature[\"state_name\"] + \" (arcade)\";"
+          }
+        }
+      }
+    ]
+  }
+}
+

@@ -1,0 +1,51 @@
+{
+  "title": "FillSymbol3DLayer",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "FillSymbol3DLayer is used to render the surfaces of flat 2D Polygon geometries and 3D volumetric meshes in a SceneView.",
+  "properties": {
+    "enable": {
+      "type": "boolean"
+    },
+    "material": {
+      "$ref": "material_schema.json"
+    },
+    "outline": {
+      "$ref": "outline_schema.json"
+    },
+    "type": {
+      "type": "string",
+      "description": "Specifies the type of symbol used.",
+      "enum": [
+        "Fill"
+      ]
+    }
+  },
+  "required": [
+    "material",
+    "type"
+  ],
+  "additionalProperties": true,
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "Fill SymbolLayer",
+        "code": {
+          "symbolLayers": [
+            {
+              "type": "Fill",
+              "material": {
+                "color": [
+                  255,
+                  0,
+                  0
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+

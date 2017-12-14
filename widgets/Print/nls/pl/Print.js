@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define({title:"Tytuł",fileName:"Nazwa pliku",titlePlaceHolder:"Tytuł pliku",fileNamePlaceHolder:"Nazwa pliku",formatDefaultOption:"Wybierz format",fileFormatTitle:"Format pliku",layoutTitle:"Konfiguracja strony",layoutDefaultOption:"Wybierz konfigurację strony",scale:"Ustaw skalę",scaleLabel:"skalować",reset:"resetuj",author:"Autor",copyright:"Prawa autorskie",legend:"Uwzględnij legendę",lock:"zablokuj",swap:"zamień",panelToggle:"Przełączanie panelu",advancedOptions:"Opcje zaawansowane",width:"Szerokość",height:"Wysokość",attribution:"Uwzględnij atrybuty",layoutTab:"Kompozycja",mapOnlyTab:"Tylko mapa",untitled:"bez tytułu",pending:"Eksportowanie",ready:"Otwórz to",linkReady:"Otwórz w nowym oknie.",error:"Wybierz to, aby usunąć.",sceneViewError:"W widoku SceneView nie jest obsługiwane drukowanie.",serviceError:"Najwyraźniej wystąpił błąd.","export":"Eksportuj",exportDescription:"Eksport. Poniżej pojawią się wyeksportowane pliki.",exportText:"Eksportowane pliki",exportHint:"W tym miejscu pojawią się eksportowane pliki."});

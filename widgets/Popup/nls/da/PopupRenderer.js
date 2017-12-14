@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define({attach:"Vedhæftede filer",fields:"Felter",fieldsSummary:"Liste med attributter og værdier",media:"Medier",next:"Næste",numCharts:"Antal diagrammer",numImages:"Number billeder",noTitle:"Uden titel",previous:"Forrige"});

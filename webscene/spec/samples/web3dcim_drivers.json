@@ -1,0 +1,791 @@
+{
+  "operationalLayers": [
+    {
+      "id": "14bad55ecc2-layer1",
+      "listMode": "show",
+      "opacity": 1,
+      "title": "points",
+      "visibility": true,
+      "layers": [
+        {
+          "id": "148c17b3c12-layer9",
+          "listMode": "show",
+          "opacity": 1,
+          "title": "draped drive col size",
+          "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers/FeatureServer/3",
+          "visibility": true,
+          "layerType": "ArcGISFeatureLayer",
+          "layerDefinition": {
+            "elevationInfo": {
+              "mode": "onTheGround"
+            },
+            "drawingInfo": {
+              "renderer": {
+                "type": "simple",
+                "visualVariables": [
+                  {
+                    "type": "colorInfo",
+                    "field": "driverFloat",
+                    "minDataValue": 1,
+                    "maxDataValue": 6,
+                    "colors": [
+                      [
+                        255,
+                        0,
+                        0,
+                        255
+                      ],
+                      [
+                        0,
+                        255,
+                        0,
+                        255
+                      ]
+                    ]
+                  },
+                  {
+                    "type": "sizeInfo",
+                    "field": "driverFloat",
+                    "axis": "width",
+                    "minDataValue": 1,
+                    "maxDataValue": 6,
+                    "minSize": 8,
+                    "maxSize": 32
+                  }
+                ],
+                "symbol": {
+                  "type": "PointSymbol3D",
+                  "symbolLayers": [
+                    {
+                      "material": {
+                        "color": [
+                          0,
+                          0,
+                          0
+                        ],
+                        "transparency": 50
+                      },
+                      "type": "Icon",
+                      "resource": {
+                        "primitive": "circle"
+                      },
+                      "size": 32
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "14bad55ede9-layer6",
+          "listMode": "show",
+          "opacity": 1,
+          "title": "points driven col size",
+          "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers/FeatureServer/3",
+          "visibility": true,
+          "layerType": "ArcGISFeatureLayer",
+          "layerDefinition": {
+            "elevationInfo": {
+              "mode": "absoluteHeight",
+              "offset": 150
+            },
+            "drawingInfo": {
+              "renderer": {
+                "type": "simple",
+                "visualVariables": [
+                  {
+                    "type": "colorInfo",
+                    "field": "driverFloat",
+                    "minDataValue": 1,
+                    "maxDataValue": 6,
+                    "colors": [
+                      [
+                        255,
+                        0,
+                        0,
+                        255
+                      ],
+                      [
+                        0,
+                        255,
+                        0,
+                        255
+                      ]
+                    ]
+                  },
+                  {
+                    "type": "sizeInfo",
+                    "field": "driverFloat",
+                    "axis": "width",
+                    "minDataValue": 1,
+                    "maxDataValue": 6,
+                    "minSize": 8,
+                    "maxSize": 32
+                  }
+                ],
+                "symbol": {
+                  "type": "PointSymbol3D",
+                  "symbolLayers": [
+                    {
+                      "material": {
+                        "color": [
+                          0,
+                          0,
+                          0
+                        ],
+                        "transparency": 50
+                      },
+                      "type": "Icon",
+                      "resource": {
+                        "primitive": "circle"
+                      },
+                      "size": 32
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "14bad55eddd-layer5",
+          "listMode": "show",
+          "opacity": 1,
+          "title": "spheres driven col size",
+          "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers/FeatureServer/3",
+          "visibility": true,
+          "layerType": "ArcGISFeatureLayer",
+          "layerDefinition": {
+            "elevationInfo": {
+              "mode": "absoluteHeight",
+              "offset": 300
+            },
+            "drawingInfo": {
+              "renderer": {
+                "type": "simple",
+                "visualVariables": [
+                  {
+                    "type": "colorInfo",
+                    "field": "driverFloat",
+                    "minDataValue": 1,
+                    "maxDataValue": 6,
+                    "colors": [
+                      [
+                        255,
+                        0,
+                        0,
+                        255
+                      ],
+                      [
+                        0,
+                        255,
+                        0,
+                        255
+                      ]
+                    ]
+                  },
+                  {
+                    "type": "sizeInfo",
+                    "field": "driverFloat",
+                    "axis": "all",
+                    "minDataValue": 1,
+                    "maxDataValue": 6,
+                    "minSize": 16,
+                    "maxSize": 256
+                  }
+                ],
+                "symbol": {
+                  "type": "PointSymbol3D",
+                  "symbolLayers": [
+                    {
+                      "material": {
+                        "color": [
+                          0,
+                          0,
+                          0
+                        ],
+                        "transparency": 50
+                      },
+                      "type": "Object",
+                      "resource": {
+                        "primitive": "sphere"
+                      },
+                      "width": 32,
+                      "height": 32
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "14bad55ee17-layer7",
+          "listMode": "show",
+          "opacity": 1,
+          "title": "trees driven col size",
+          "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers/FeatureServer/3",
+          "visibility": true,
+          "layerType": "ArcGISFeatureLayer",
+          "layerDefinition": {
+            "elevationInfo": {
+              "mode": "absoluteHeight",
+              "offset": 450
+            },
+            "drawingInfo": {
+              "renderer": {
+                "type": "simple",
+                "visualVariables": [
+                  {
+                    "type": "colorInfo",
+                    "field": "driverFloat",
+                    "minDataValue": 1,
+                    "maxDataValue": 6,
+                    "colors": [
+                      [
+                        255,
+                        0,
+                        0,
+                        255
+                      ],
+                      [
+                        0,
+                        255,
+                        0,
+                        255
+                      ]
+                    ]
+                  },
+                  {
+                    "type": "sizeInfo",
+                    "field": "driverFloat",
+                    "axis": "all",
+                    "minDataValue": 1,
+                    "maxDataValue": 6,
+                    "minSize": 30,
+                    "maxSize": 300
+                  }
+                ],
+                "symbol": {
+                  "type": "styleSymbolReference",
+                  "styleUrl": "https://www.arcgis.com/sharing/rest/content/items/34c0db1d903b4bccad96ce2518e19d92/data",
+                  "name": "Frangula"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "layerType": "GroupLayer",
+      "visibilityMode": "independent"
+    },
+    {
+      "id": "14bad55ece0-layer2",
+      "listMode": "show",
+      "opacity": 1,
+      "title": "lines",
+      "visibility": true,
+      "layers": [
+        {
+          "id": "14bad55ee48-layer8",
+          "listMode": "show",
+          "opacity": 1,
+          "title": "draped drive col size",
+          "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers/FeatureServer/1",
+          "visibility": true,
+          "layerType": "ArcGISFeatureLayer",
+          "layerDefinition": {
+            "elevationInfo": {
+              "mode": "onTheGround"
+            },
+            "drawingInfo": {
+              "renderer": {
+                "type": "simple",
+                "visualVariables": [
+                  {
+                    "type": "colorInfo",
+                    "field": "driverFloat",
+                    "minDataValue": 1,
+                    "maxDataValue": 6,
+                    "colors": [
+                      [
+                        255,
+                        0,
+                        0,
+                        255
+                      ],
+                      [
+                        0,
+                        255,
+                        0,
+                        255
+                      ]
+                    ]
+                  },
+                  {
+                    "type": "sizeInfo",
+                    "field": "driverFloat",
+                    "axis": "width",
+                    "minDataValue": 1,
+                    "maxDataValue": 6,
+                    "minSize": 0.5,
+                    "maxSize": 10
+                  }
+                ],
+                "symbol": {
+                  "type": "LineSymbol3D",
+                  "symbolLayers": [
+                    {
+                      "material": {
+                        "color": [
+                          0,
+                          0,
+                          0
+                        ],
+                        "transparency": 50
+                      },
+                      "type": "Line",
+                      "size": 1
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "14bad55ee4f-layer9",
+          "listMode": "show",
+          "opacity": 1,
+          "title": "line drive col size",
+          "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers/FeatureServer/1",
+          "visibility": true,
+          "layerType": "ArcGISFeatureLayer",
+          "layerDefinition": {
+            "elevationInfo": {
+              "mode": "absoluteHeight",
+              "offset": 150
+            },
+            "drawingInfo": {
+              "renderer": {
+                "type": "simple",
+                "visualVariables": [
+                  {
+                    "type": "colorInfo",
+                    "field": "driverFloat",
+                    "minDataValue": 1,
+                    "maxDataValue": 6,
+                    "colors": [
+                      [
+                        255,
+                        0,
+                        0,
+                        255
+                      ],
+                      [
+                        0,
+                        255,
+                        0,
+                        255
+                      ]
+                    ]
+                  },
+                  {
+                    "type": "sizeInfo",
+                    "field": "driverFloat",
+                    "axis": "width",
+                    "minDataValue": 1,
+                    "maxDataValue": 6,
+                    "minSize": 0.5,
+                    "maxSize": 10
+                  }
+                ],
+                "symbol": {
+                  "type": "LineSymbol3D",
+                  "symbolLayers": [
+                    {
+                      "material": {
+                        "color": [
+                          0,
+                          0,
+                          0
+                        ],
+                        "transparency": 50
+                      },
+                      "type": "Line",
+                      "size": 1
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "14bad55ee93-layer10",
+          "listMode": "show",
+          "opacity": 1,
+          "title": "ribbon drive col size",
+          "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers/FeatureServer/1",
+          "visibility": true,
+          "layerType": "ArcGISFeatureLayer",
+          "layerDefinition": {
+            "elevationInfo": {
+              "mode": "absoluteHeight",
+              "offset": 300
+            },
+            "drawingInfo": {
+              "renderer": {
+                "type": "simple",
+                "visualVariables": [
+                  {
+                    "type": "colorInfo",
+                    "field": "driverFloat",
+                    "minDataValue": 1,
+                    "maxDataValue": 6,
+                    "colors": [
+                      [
+                        255,
+                        0,
+                        0,
+                        255
+                      ],
+                      [
+                        0,
+                        255,
+                        0,
+                        255
+                      ]
+                    ]
+                  },
+                  {
+                    "type": "sizeInfo",
+                    "field": "driverFloat",
+                    "axis": "width",
+                    "minDataValue": 1,
+                    "maxDataValue": 6,
+                    "minSize": 0.5,
+                    "maxSize": 10
+                  }
+                ],
+                "symbol": {
+                  "type": "LineSymbol3D",
+                  "symbolLayers": [
+                    {
+                      "material": {
+                        "color": [
+                          0,
+                          0,
+                          0
+                        ],
+                        "transparency": 50
+                      },
+                      "type": "Line",
+                      "size": 5
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "14bad55eea2-layer11",
+          "listMode": "show",
+          "opacity": 1,
+          "title": "tube drive col size",
+          "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers/FeatureServer/1",
+          "visibility": true,
+          "layerType": "ArcGISFeatureLayer",
+          "layerDefinition": {
+            "elevationInfo": {
+              "mode": "absoluteHeight",
+              "offset": 450
+            },
+            "drawingInfo": {
+              "renderer": {
+                "type": "simple",
+                "visualVariables": [
+                  {
+                    "type": "colorInfo",
+                    "field": "driverFloat",
+                    "minDataValue": 1,
+                    "maxDataValue": 6,
+                    "colors": [
+                      [
+                        255,
+                        0,
+                        0,
+                        255
+                      ],
+                      [
+                        0,
+                        255,
+                        0,
+                        255
+                      ]
+                    ]
+                  },
+                  {
+                    "type": "sizeInfo",
+                    "field": "driverFloat",
+                    "axis": "width",
+                    "minDataValue": 1,
+                    "maxDataValue": 6,
+                    "minSize": 0.1,
+                    "maxSize": 6
+                  }
+                ],
+                "symbol": {
+                  "type": "LineSymbol3D",
+                  "symbolLayers": [
+                    {
+                      "material": {
+                        "color": [
+                          0,
+                          0,
+                          0
+                        ],
+                        "transparency": 50
+                      },
+                      "type": "Path",
+                      "size": 30
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ],
+      "layerType": "GroupLayer",
+      "visibilityMode": "independent"
+    },
+    {
+      "id": "14bad55ecfa-layer3",
+      "listMode": "show",
+      "opacity": 1,
+      "title": "polygons",
+      "visibility": true,
+      "layers": [
+        {
+          "id": "14bad55eebe-layer12",
+          "listMode": "show",
+          "opacity": 1,
+          "title": "draped drive col",
+          "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers/FeatureServer/2",
+          "visibility": true,
+          "layerType": "ArcGISFeatureLayer",
+          "layerDefinition": {
+            "elevationInfo": {
+              "mode": "onTheGround"
+            },
+            "drawingInfo": {
+              "renderer": {
+                "type": "simple",
+                "visualVariables": [
+                  {
+                    "type": "colorInfo",
+                    "field": "driverFloat",
+                    "minDataValue": 1,
+                    "maxDataValue": 6,
+                    "colors": [
+                      [
+                        255,
+                        0,
+                        0,
+                        255
+                      ],
+                      [
+                        0,
+                        255,
+                        0,
+                        255
+                      ]
+                    ]
+                  }
+                ],
+                "symbol": {
+                  "type": "PolygonSymbol3D",
+                  "symbolLayers": [
+                    {
+                      "material": {
+                        "color": [
+                          0,
+                          0,
+                          0
+                        ],
+                        "transparency": 50
+                      },
+                      "type": "Fill",
+                      "outline": {
+                        "color": [
+                          0,
+                          0,
+                          0
+                        ],
+                        "transparency": 50,
+                        "size": 2
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "14bad55ef46-layer15",
+          "listMode": "show",
+          "opacity": 1,
+          "title": "polygons drive col",
+          "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers/FeatureServer/2",
+          "visibility": true,
+          "layerType": "ArcGISFeatureLayer",
+          "layerDefinition": {
+            "elevationInfo": {
+              "mode": "absoluteHeight",
+              "offset": 150
+            },
+            "drawingInfo": {
+              "renderer": {
+                "type": "simple",
+                "visualVariables": [
+                  {
+                    "type": "colorInfo",
+                    "field": "driverFloat",
+                    "minDataValue": 1,
+                    "maxDataValue": 6,
+                    "colors": [
+                      [
+                        255,
+                        0,
+                        0,
+                        255
+                      ],
+                      [
+                        0,
+                        255,
+                        0,
+                        255
+                      ]
+                    ]
+                  }
+                ],
+                "symbol": {
+                  "type": "PolygonSymbol3D",
+                  "symbolLayers": [
+                    {
+                      "material": {
+                        "color": [
+                          0,
+                          0,
+                          0
+                        ],
+                        "transparency": 50
+                      },
+                      "type": "Fill",
+                      "outline": {
+                        "color": [
+                          0,
+                          0,
+                          0
+                        ],
+                        "transparency": 50,
+                        "size": 2
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ],
+      "layerType": "GroupLayer",
+      "visibilityMode": "independent"
+    }
+  ],
+  "baseMap": {
+    "baseMapLayers": [
+      {
+        "id": "14df2e18ec8-layer-12",
+        "opacity": 1,
+        "title": "World Imagery",
+        "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledMapServiceLayer"
+      }
+    ],
+    "id": "basemap",
+    "title": "Topographic",
+    "elevationLayers": [
+      {
+        "id": "globalElevation",
+        "listMode": "show",
+        "title": "Terrain3D",
+        "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledElevationServiceLayer"
+      }
+    ]
+  },
+  "ground": {
+    "layers": [
+      {
+        "id": "globalElevation",
+        "listMode": "show",
+        "title": "Terrain3D",
+        "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledElevationServiceLayer"
+      }
+    ]
+  },
+  "version": "1.9",
+  "authoringApp": "ArcGIS API for JavaScript",
+  "authoringAppVersion": "4.6",
+  "presentation": {
+    "slides": []
+  },
+  "initialState": {
+    "environment": {
+      "lighting": {
+        "datetime": 1426419730000,
+        "displayUTCOffset": 0
+      }
+    },
+    "viewpoint": {
+      "rotation": 336.9493562423394,
+      "scale": 26885.6833039255,
+      "targetGeometry": {
+        "spatialReference": {
+          "latestWkid": 3857,
+          "wkid": 102100
+        },
+        "x": 501055.7760751304,
+        "y": 6784733.56634904,
+        "z": 0.00016805436462163925
+      },
+      "camera": {
+        "position": {
+          "spatialReference": {
+            "latestWkid": 3857,
+            "wkid": 102100
+          },
+          "x": 496277.31296394434,
+          "y": 6773512.996892474,
+          "z": 4899.044642386958
+        },
+        "heading": 23.050643757660637,
+        "tilt": 56.92080781024676
+      }
+    }
+  },
+  "spatialReference": {
+    "latestWkid": 3857,
+    "wkid": 102100
+  },
+  "viewingMode": "global"
+}

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define(["require","exports","../../../../core/Logger","../../../../symbols/callouts/calloutUtils","./Graphics3DLineCalloutSymbolLayer"],function(e,l,r,o,t){function a(e,l){if(!o.isCalloutSupport(e))return u.error("Graphics3DCalloutSymbolLayerFactory#make","symbol of type '"+e.type+"' does not support callouts"),null;if(!e.callout)return null;var r=n[e.callout.type];return r?new r(e,l):(u.error("Graphics3DCalloutSymbolLayerFactory#make","unknown or unsupported callout type "+e.callout.type),null)}Object.defineProperty(l,"__esModule",{value:!0});var u=r.getLogger("esri.views.3d.layers.graphics.Graphics3DCalloutSymbolLayerFactory");l.make=a;var n={line:t}});

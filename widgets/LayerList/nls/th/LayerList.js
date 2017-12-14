@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define({noItemsToDisplay:"ขณะนี้ยังไม่มีรายการที่จะแสดง",layerInvisibleAtScale:"มองไม่เห็นในระดับปัจจุบัน",layerError:"เกิดข้อผิดพลาดในการโหลดชั้นข้อมูลนี้",untitledLayer:"ชั้นข้อมูลไม่มีชื่อ"});

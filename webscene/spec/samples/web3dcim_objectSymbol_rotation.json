@@ -1,0 +1,157 @@
+{
+  "operationalLayers": [
+    {
+      "id": "heading15",
+      "listMode": "show",
+      "opacity": 1,
+      "title": "15° heading",
+      "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/F__3857__NL_Rotterdam__Drivers/FeatureServer/0",
+      "visibility": true,
+      "layerType": "ArcGISFeatureLayer",
+      "layerDefinition": {
+        "elevationInfo": {
+          "mode": "absoluteHeight",
+          "offset": 300
+        },
+        "drawingInfo": {
+          "renderer": {
+            "type": "simple",
+            "symbol": {
+              "type": "PointSymbol3D",
+              "symbolLayers": [
+                {
+                  "material": {
+                    "color": [
+                      255,
+                      0,
+                      0
+                    ]
+                  },
+                  "type": "Object",
+                  "resource": {
+                    "primitive": "cube"
+                  },
+                  "width": 200,
+                  "height": 50,
+                  "depth": 300,
+                  "heading": 15
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "visvarrotationinfo",
+      "listMode": "show",
+      "opacity": 1,
+      "title": "rotationInfo visualVariables",
+      "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/F__3857__NL_Rotterdam__Drivers/FeatureServer/0",
+      "visibility": true,
+      "layerType": "ArcGISFeatureLayer",
+      "layerDefinition": {
+        "elevationInfo": {
+          "mode": "absoluteHeight",
+          "offset": 900
+        },
+        "drawingInfo": {
+          "renderer": {
+            "type": "simple",
+            "visualVariables": [
+              {
+                "type": "rotationInfo",
+                "field": "angle",
+                "rotationType": "geographic"
+              }
+            ],
+            "symbol": {
+              "type": "PointSymbol3D",
+              "symbolLayers": [
+                {
+                  "material": {
+                    "color": [
+                      0,
+                      0,
+                      255
+                    ]
+                  },
+                  "type": "Object",
+                  "resource": {
+                    "primitive": "cube"
+                  },
+                  "width": 200,
+                  "height": 50,
+                  "depth": 300
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "baseMap": {
+    "baseMapLayers": [
+      {
+        "id": "topo",
+        "opacity": 1,
+        "title": "World Topo Map",
+        "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledMapServiceLayer"
+      }
+    ],
+    "id": "basemap",
+    "title": "Topographic",
+    "elevationLayers": []
+  },
+  "ground": {
+    "layers": []
+  },
+  "version": "1.9",
+  "authoringApp": "ArcGIS API for JavaScript",
+  "authoringAppVersion": "4.6",
+  "presentation": {
+    "slides": []
+  },
+  "initialState": {
+    "environment": {
+      "lighting": {
+        "datetime": 1426419730000,
+        "displayUTCOffset": 0
+      }
+    },
+    "viewpoint": {
+      "rotation": 336.9493562423394,
+      "scale": 26885.6833039255,
+      "targetGeometry": {
+        "spatialReference": {
+          "latestWkid": 3857,
+          "wkid": 102100
+        },
+        "x": 501055.7760751304,
+        "y": 6784733.56634904,
+        "z": 0.00016805436462163925
+      },
+      "camera": {
+        "position": {
+          "spatialReference": {
+            "latestWkid": 3857,
+            "wkid": 102100
+          },
+          "x": 496277.31296394434,
+          "y": 6773512.996892474,
+          "z": 4899.044642386958
+        },
+        "heading": 23.050643757660637,
+        "tilt": 56.92080781024676
+      }
+    }
+  },
+  "spatialReference": {
+    "latestWkid": 3857,
+    "wkid": 102100
+  },
+  "viewingMode": "global"
+}

@@ -1,7 +1,7 @@
 /**
  * The Compass widget indicates where north is in relation to the current view
  * {@link module:esri/views/MapView#rotation rotation}
- * or {@link module:esri/Camera#heading camera heading}. Clicking the compass
+ * or {@link module:esri/Camera#heading camera heading}. Clicking the Compass widget
  * rotates the view to face north (heading = 0). This widget is added to a {@link module:esri/views/SceneView}
  * by default.
  *
@@ -56,8 +56,11 @@ import View = require("../views/View");
 
 import * as i18n from "dojo/i18n!./Compass/nls/Compass";
 
+type CompassMode = "device-orientation" | "reset" | "none";
+
 const CSS = {
   base: "esri-compass esri-widget-button esri-widget",
+  active: "esri-compass--active",
   text: "esri-icon-font-fallback-text",
   icon: "esri-compass__icon",
   rotationIcon: "esri-icon-dial",
@@ -93,6 +96,26 @@ class Compass extends declared(Widget) {
   //  Properties
   //
   //--------------------------------------------------------------------------
+
+  //----------------------------------
+  //  activeMode
+  //----------------------------------
+
+  /**
+   * @todo doc
+   */
+  @aliasOf("viewModel.activeMode")
+  activeMode: CompassMode = null;
+
+  //----------------------------------
+  //  modes
+  //----------------------------------
+
+  /**
+   * @todo doc
+   */
+  @aliasOf("viewModel.modes")
+  modes: CompassMode[] = null;
 
   //----------------------------------
   //  view
@@ -164,6 +187,7 @@ class Compass extends declared(Widget) {
 
     const dynamicRootClasses = {
       [CSS.disabled]: disabled,
+      [CSS.active]: this.viewModel.activeMode === "device-orientation",
       [CSS.interactive]: !disabled
     };
 
@@ -176,8 +200,8 @@ class Compass extends declared(Widget) {
       <div bind={this}
         class={CSS.base}
         classes={dynamicRootClasses}
-        onclick={this._reset}
-        onkeydown={this._reset}
+        onclick={this._start}
+        onkeydown={this._start}
         role="button"
         tabIndex={tabIndex}
         aria-label={i18n.reset}
@@ -198,8 +222,11 @@ class Compass extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   @accessibleHandler()
-  private _reset() {
-    this.reset();
+  private _start() {
+    const { viewModel } = this;
+
+    viewModel.nextMode();
+    viewModel.startMode();
   }
 
   private _toRotationTransform(orientation: Axes): HashMap<string> {

@@ -1,0 +1,146 @@
+{
+  "operationalLayers": [
+    {
+      "id": "14e50d823c4-layer-4",
+      "opacity": 1,
+      "title": "Census",
+      "url": "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer/3",
+      "visibility": true,
+      "layerType": "ArcGISFeatureLayer",
+      "layerDefinition": {
+        "drawingInfo": {
+          "renderer": {
+            "type": "simple",
+            "visualVariables": [
+              {
+                "type": "sizeInfo",
+                "field": "POP07_SQMI",
+                "minSize": 40000,
+                "maxSize": 1000000,
+                "minDataValue": 1,
+                "maxDataValue": 1000
+              },
+              {
+                "type": "colorInfo",
+                "field": "POP07_SQMI",
+                "minDataValue": 1,
+                "maxDataValue": 1000,
+                "colors": [
+                  [
+                    255,
+                    255,
+                    255,
+                    255
+                  ],
+                  [
+                    255,
+                    0,
+                    0,
+                    255
+                  ]
+                ]
+              }
+            ],
+            "symbol": {
+              "type": "PolygonSymbol3D",
+              "symbolLayers": [
+                {
+                  "material": {
+                    "color": [
+                      255,
+                      165,
+                      0
+                    ]
+                  },
+                  "type": "Extrude",
+                  "size": 100000
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "baseMap": {
+    "baseMapLayers": [
+      {
+        "id": "worldTopoBase",
+        "opacity": 1,
+        "title": "World Topo Map",
+        "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledMapServiceLayer"
+      }
+    ],
+    "id": "14e50d80b6b-basemap-0",
+    "title": "Topographic",
+    "elevationLayers": [
+      {
+        "id": "globalElevation",
+        "listMode": "show",
+        "title": "Terrain3D",
+        "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledElevationServiceLayer"
+      }
+    ]
+  },
+  "ground": {
+    "layers": [
+      {
+        "id": "globalElevation",
+        "listMode": "show",
+        "title": "Terrain3D",
+        "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledElevationServiceLayer"
+      }
+    ]
+  },
+  "version": "1.9",
+  "authoringApp": "ArcGIS API for JavaScript",
+  "authoringAppVersion": "4.6",
+  "presentation": {
+    "slides": []
+  },
+  "initialState": {
+    "environment": {
+      "lighting": {
+        "datetime": 1426442365000,
+        "displayUTCOffset": -5
+      }
+    },
+    "viewpoint": {
+      "rotation": 11.388663637165507,
+      "scale": 16212354.327215007,
+      "targetGeometry": {
+        "spatialReference": {
+          "latestWkid": 3857,
+          "wkid": 102100
+        },
+        "x": -10616927.165443046,
+        "y": 3591048.5756827914,
+        "z": 121155.44433725625
+      },
+      "camera": {
+        "position": {
+          "spatialReference": {
+            "latestWkid": 3857,
+            "wkid": 102100
+          },
+          "x": -10002712.874240857,
+          "y": 721544.7381783228,
+          "z": 6569930.782706801
+        },
+        "heading": 348.6113363628345,
+        "tilt": 21.120603361318587
+      }
+    }
+  },
+  "spatialReference": {
+    "latestWkid": 3857,
+    "wkid": 102100
+  },
+  "viewingMode": "global"
+}

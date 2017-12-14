@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define(["dijit/registry","dojo/_base/lang","dojo/dom","dojo/dom-construct","dojox/widget/Standby","require"],function(o,a,r,t,e,n){var d={_defaultStandbyParams:{image:n.toUrl("../../themes/base/images/loading-throb.gif"),color:"#fff",opacity:.75,duration:200},create:function(o){var a;return(o=this._normalizeParams(o))?(a=new e(d._toStandbyParams(o)),t.place(a.domNode,document.body),d._createHandle(a)):void 0},_normalizeParams:function(a){var t;if(a){if(a.target)return a;if("string"==typeof a){var e=o.byId(a);t=e?e.domNode:r.byId(a)}else t=a.domNode?a.domNode:r.byId(a);if(t)return{target:t}}},_toStandbyParams:function(o){return o.imageUrl&&(o.image=o.imageUrl),o.backgroundColor&&(o.color=o.backgroundColor),o.backgroundOpacity&&(o.opacity=o.backgroundOpacity),o.fadeDuration&&(o.duration=o.fadeDuration),a.mixin({},d._defaultStandbyParams,o)},_createHandle:function(o){return{show:function(){o&&o.show()},hide:function(){o&&o.hide()},destroy:function(){o&&(o.destroy(),o=null)}}}};return d});

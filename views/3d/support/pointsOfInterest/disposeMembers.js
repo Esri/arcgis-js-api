@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define(["require","exports","../../../../core/Accessor"],function(e,o,r){function t(e){for(var o=[],r=1;r<arguments.length;r++)o[r-1]=arguments[r];if(n(e)&&e.destroyed)try{throw new Error("instance is already destroyed")}catch(t){console.warn(t.stack)}else for(var s=0,a=o;s<a.length;s++){var i=a[s];if(!(i in e))throw new Error("Property '"+i+"' does not exist and cannot be disposed");var c=e[i];c&&("function"==typeof c.destroy?c.destroy():"function"==typeof c.dispose?c.dispose():"function"==typeof c.remove&&c.remove()),n(e)&&i in e.__accessor__.metadatas?e._set(i,null):e[i]=null}}function n(e){return e instanceof r}Object.defineProperty(o,"__esModule",{value:!0}),o.disposeMembers=t,o["default"]=t});

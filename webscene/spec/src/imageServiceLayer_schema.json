@@ -1,0 +1,214 @@
+{
+  "title": "Image Service Layer (ArcGISImageServiceLayer)",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "An image service provides access to raster data through a web service. Multiple rasters can be served as one image service through mosaic dataset technology, dynamically processed and mosaicked on the fly. An image service supports accessing both the mosaicked image and its catalog, as well as individual rasters in the catalog. Also, image services can be cached (tiled) or uncached (dynamic). This object specifically details properties within uncached image services.",
+  "properties": {
+    "bandIds": {
+      "type": "array",
+      "description": "An array of bandIds that are visible, can specify bands to export or rearrange band order(from image service).",
+      "items": {
+        "type": "integer"
+      }
+    },
+    "compressionQuality": {
+      "type": "number",
+      "description": "Controls how much loss the image will be subjected to by the compression algorithm (from image service).",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "disablePopup": {
+      "type": "boolean",
+      "description": "Boolean property indicating whether to ignore popups defined by the service item.",
+      "default": false
+    },
+    "format": {
+      "type": "string",
+      "description": "String value representing image format.",
+      "enum": [
+        "jpgpng",
+        "png",
+        "png8",
+        "png24",
+        "jpg",
+        "bmp",
+        "gif",
+        "tiff",
+        "png32"
+      ],
+      "default": "png"
+    },
+    "id": {
+      "type": "string",
+      "description": "A unique identifying string for the layer."
+    },
+    "interpolation": {
+      "type": "string",
+      "description": "The algorithm used for interpolation.",
+      "enum": [
+        "RSP_BilinearInterpolation",
+        "RSP_CubicConvolution",
+        "RSP_Majority",
+        "RSP_NearestNeighbor"
+      ]
+    },
+    "isReference": {
+      "type": "boolean",
+      "description": "This is applicable if used as a baseMapLayer. A boolean value indicating whether or not the baseMapLayer draws on top (true) of other layers, including operationalLayers , or below (false).",
+      "default": false
+    },
+    "itemId": {
+      "type": "string",
+      "description": "Optional string containing the item ID of the service if it's registered on ArcGIS Online or your organization's portal."
+    },
+    "layerDefinition": {
+      "type": "object",
+      "description": "A layerDefinition object defining the attribute schema and drawing information for the layer.",
+      "$ref": "layerDefinition_schema.json"
+    },
+    "layerType": {
+      "type": "string",
+      "description": "String indicating the layer type.",
+      "enum": [
+        "ArcGISImageServiceLayer"
+      ]
+    },
+    "listMode": {
+      "type": "string",
+      "description": "To show or hide layers in the layer list",
+      "enum": [
+        "show",
+        "hide"
+      ],
+      "default": "show"
+    },
+    "maxScale": {
+      "type": "number",
+      "description": "A number representing the maximum scale at which the layer will be visible. The number is the scale's denominator.",
+      "minimum": 0
+    },
+    "minScale": {
+      "type": "number",
+      "description": "A number representing the minimum scale at which the layer will be visible. The number is the scale's denominator.",
+      "minimum": 0
+    },
+    "mosaicRule": {
+      "type": "object",
+      "description": "Specifies the mosaic rule when defining how individual images should be mosaicked.",
+      "$ref": "mosaicRule_schema.json"
+    },
+    "noData": {
+      "type": "integer",
+      "description": "The pixel value that represents no information."
+    },
+    "noDataInterpretation": {
+      "type": "string",
+      "description": "A string value of interpretation of noData setting. Default is 'esriNoDataMatchAny' when noData is a number, and 'esriNoDataMatchAll' when noData is an array.",
+      "enum": [
+        "esriNoDataMatchAny",
+        "esriNoDataMatchAll"
+      ],
+      "default": "esriNoDataMatchAny"
+    },
+    "opacity": {
+      "type": "number",
+      "description": "The degree of transparency applied to the layer on the client side, where 0 is full transparency and 1 is no transparency.",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 1
+    },
+    "pixelType": {
+      "type": "string",
+      "description": "Pertains to the type of values stored in the raster, such as signed integer, unsigned integer, or floating point.",
+      "enum": [
+        "C128",
+        "C64",
+        "F32",
+        "F64",
+        "S16",
+        "S32",
+        "S8",
+        "U1",
+        "U16",
+        "U2",
+        "U32",
+        "U4",
+        "U8",
+        "UNKNOWN"
+      ]
+    },
+    "popupInfo": {
+      "type": "object",
+      "description": "A popupInfo object defining the content of popup windows when you click or query a feature.",
+      "$ref": "popupInfo_schema.json"
+    },
+    "renderingRule": {
+      "type": "object",
+      "description": "Specifies the rendering rule for how the requested image should be rendered.",
+      "$ref": "renderingRule_schema.json"
+    },
+    "showLegend": {
+      "type": "boolean",
+      "description": "Indicates whether to allow map authors the ability to control what layers should be shown in a client's legend control.",
+      "default": true
+    },
+    "title": {
+      "type": "string",
+      "description": "A user-friendly string title for the layer that can be used in a table of contents."
+    },
+    "url": {
+      "type": "string",
+      "description": "The URL to the layer.",
+      "format": "uri"
+    },
+    "visibility": {
+      "type": "boolean",
+      "description": "Boolean property determining whether the layer is initially visible in the web map.",
+      "default": true
+    }
+  },
+  "required": [
+    "layerType",
+    "title",
+    "url"
+  ],
+  "additionalProperties": false,
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "",
+        "code": {
+          "operationalLayers": [
+            {
+              "id": "CharlotteLAS_88",
+              "layerType": "ArcGISImageServiceLayer",
+              "url": "https://sampleserver6.arcgisonline.com/arcgis/rest/services/CharlotteLAS/ImageServer",
+              "visibility": true,
+              "format": "jpgpng",
+              "compressionQuality": 95,
+              "opacity": 1,
+              "title": "CharlotteLAS",
+              "renderingRule": {
+                "rasterFunction": "Stretch",
+                "rasterFunctionArguments": {
+                  "StretchType": 5,
+                  "DRA": false,
+                  "Gamma": [
+                    1
+                  ],
+                  "UseGamma": true
+                },
+                "outputPixelType": "U8"
+              },
+              "mosaicRule": {
+                "mosaicMethod": "esriMosaicSeamline",
+                "mosaicOperation": "MT_BLEND"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+

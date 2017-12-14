@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define({statsAvg:"औसत : ${avg}",count:"गिनती : ${count}",percent:"${num}%",high:"उच्च",low:"निम्न",color:{changeMinMaxToolTIp:"कोई मान टाइप करें.",handleToolTip:"डेटा मानों के साथ रंगों को मिलाएँ.",maxValueToolTip:"सबसे बड़ा अपेक्षित डेटा मान टाइप करें.",minValueToolTip:"सबसे छोटा अपेक्षित डेटा मान टाइप करें.",changeSymbol:"प्रतीक बदलें"},size:{handleToolTip:"डेटा मानों के साथ प्रतीक आकार को मिलाएँ.",sizeInputBoxLines:"रेखा मोटाई को 0 से 18 पिक्सेल तक निर्धारित करें.",sizeInputBoxPoints:"प्रतीक आकार को 1 से 120 पिक्सेल तक निर्धारित करें"}});

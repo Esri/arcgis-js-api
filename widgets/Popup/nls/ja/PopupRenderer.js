@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define({attach:"添付ファイル",fields:"フィールド",fieldsSummary:"属性および値のリスト",media:"メディア",next:"次へ",numCharts:"チャート数",numImages:"イメージ数",noTitle:"無題",previous:"前へ"});

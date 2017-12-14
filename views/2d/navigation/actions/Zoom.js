@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define(["require","exports","../../../../core/tsSupport/declareExtendsHelper","../../../../core/tsSupport/decorateHelper","../../../../core/accessorSupport/decorators","../../../../core/Accessor"],function(o,t,n,i,e,r){var a=.6,s=function(o){function t(t){var n=o.call(this)||this;return n._canZoom=!0,n}return n(t,o),t.prototype.scroll=function(o,t){var n=this;if(this._canZoom){var i=t.data,e=i.x,r=i.y,s=i.deltaY;if(0===s)return void this.navigation.end();this.navigation.begin();var c=Math.pow(a,1/60*s);o.constraints.snapToZoom?(this._canZoom=!1,0>s?this.navigation.zoomIn([e,r]).then(function(){n._canZoom=!0}):this.navigation.zoomOut([e,r]).then(function(){n._canZoom=!0})):this.navigation.setViewpoint([e,r],c,0)}},i([e.property()],t.prototype,"navigation",void 0),t=i([e.subclass("esri.views.2d.navigation.actions.Zoom")],t)}(e.declared(r));return s});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({attach:"Priedai",fields:"Laukai",fieldsSummary:"Atributų ir reikšmių sąrašas",media:"Medija",next:"Kitas",numCharts:"Diagramų skaičius",numImages:"Paveikslėlių skaičius",noTitle:"Bevardis",previous:"Ankstesnis"});
+define({attach:"Priedai",fields:"Laukai",fieldsSummary:"Atributų ir reikšmių sąrašas",media:"Medija",next:"Sekantis",numCharts:"Diagramų skaičius",numImages:"Paveikslėlių skaičius",noTitle:"Bevardis",previous:"Ankstesnis"});

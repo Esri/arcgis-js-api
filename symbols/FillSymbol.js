@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define(["dojo/_base/lang","./Symbol","./SimpleLineSymbol"],function(e,l,n){var i=l.createSubclass({declaredClass:"esri.symbols.FillSymbol",properties:{outline:{type:n,json:{write:!0}},type:null},read:function t(l,n){var i=this.getInherited(t,arguments);return i.call(this,e.mixin({outline:null},l),n)}});return i});

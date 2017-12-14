@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/accessorSupport/decorators","../../../core/Accessor","../../../Color"],function(r,o,e,t,p,c,i){var s=function(r){function o(){var o=null!==r&&r.apply(this,arguments)||this;return o.color=new i([0,255,255]),o.haloOpacity=1,o.fillOpacity=.5,o}return e(o,r),t([p.property({type:i})],o.prototype,"color",void 0),t([p.property()],o.prototype,"haloOpacity",void 0),t([p.property()],o.prototype,"fillOpacity",void 0),o=t([p.subclass("esri.views.2d.support.HighlightOptions")],o)}(p.declared(c));return s});

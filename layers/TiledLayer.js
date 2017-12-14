@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["../request","./Layer","./support/TileInfo"],function(e,t,r){var n=t.createSubclass({properties:{attributionDataUrl:null,tileInfo:r},viewModulePaths:{"2d":"../views/2d/layers/TiledLayerView2D","3d":"../views/3d/layers/TileLayerView3D"},getTileUrl:function(e,t,r){},fetchTile:function(t,r,n,a){var i=this.getTileUrl(t,r,n),l={responseType:"image",allowImageDataAccess:a&&a.allowImageDataAccess||!1};return"string"==typeof i?e(i,l).then(function(e){return e.data}):i.then(function(t){return e(t,{responseType:"image"})}).then(function(e){return e.data})}});return n});
+define(["../request","./Layer","./support/TileInfo"],function(e,t,r){var a=t.createSubclass({properties:{attributionDataUrl:null,tileInfo:r},viewModulePaths:{"2d":"../views/2d/layers/TiledLayerView2D","3d":"../views/3d/layers/TileLayerView3D"},getTileUrl:function(e,t,r){},fetchTile:function(t,r,a,i){var n=this.getTileUrl(t,r,a),s={responseType:"image",allowImageDataAccess:i&&i.allowImageDataAccess||!1};return i&&i.timestamp&&(s.query={_ts:i.timestamp}),"string"==typeof n?e(n,s).then(function(e){return e.data}):n.then(function(t){return e(t,{responseType:"image"})}).then(function(e){return e.data})}});return a});

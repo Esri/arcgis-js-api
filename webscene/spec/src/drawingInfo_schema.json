@@ -1,0 +1,28 @@
+{
+  "title": "drawingInfo",
+  "type": "object",
+  "description": "The drawingInfo object contains drawing information for a feature layer.",
+  "properties": {
+    "labelingInfo": {
+      "type": "array",
+      "description": "An object defining the properties used for labeling the layer.",
+      "items": {
+        "type": "object",
+        "$ref": "labelingInfo_schema.json"
+      }
+    },
+    "renderer": {
+      "type": "object",
+      "description": "An object defined which provides the symbology for the layer.",
+      "$ref": "renderer_schema.json"
+    },
+    "transparency": {
+      "type": "number",
+      "description": "Number value ranging between 0 (no transparency) to 100 (completely transparent).",
+      "minimum": 0,
+      "maximum": 100
+    }
+  },
+  "additionalProperties": false
+}
+

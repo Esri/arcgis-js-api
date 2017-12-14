@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["./mathUtils","../lib/glMatrix"],function(t,a){function e(a,e,n,l,o){var c=d;r.normalize(a,c);var s=r.dot(c,l),g=s>0;s=Math.abs(s),s>.99&&(s=Math.abs(r.dot(e,l)),.99>s?(r.set(e,c),g&&r.scale(c,-1)):c=null);var h=0;if(c){r.scale(l,r.dot(l,c),i),r.subtract(c,i);var v=r.dot(c,o),u=v/(r.length(c)*r.length(o));r.cross(c,o,i);var b=r.dot(i,l)>0?1:-1;h=b*t.rad2deg(t.acos(u))}var f=t.rad2deg(t.acos(-r.dot(l,a)/r.length(a)));return n?(n.heading=h,n.tilt=f,n):{heading:h,tilt:f}}var r=a.vec3d,d=r.create(),i=r.create();return{directionToHeadingTilt:e}});
+define(["require","exports","./mathUtils","../lib/glMatrix"],function(e,d,t,c){function a(e,d,a,i,o){var l=v;c.vec3d.normalize(e,l);var n=c.vec3d.dot(l,i),s=n>0;n=Math.abs(n),n>.99&&(n=Math.abs(c.vec3d.dot(d,i)),.99>n?(c.vec3d.set(d,l),s&&c.vec3d.scale(l,-1)):l=null);var g=0;if(l){c.vec3d.scale(i,c.vec3d.dot(i,l),r),c.vec3d.subtract(l,r);var h=c.vec3d.dot(l,o),u=h/(c.vec3d.length(l)*c.vec3d.length(o));c.vec3d.cross(l,o,r);var b=c.vec3d.dot(r,i)>0?1:-1;g=b*t.rad2deg(t.acos(u))}var f=t.rad2deg(t.acos(-c.vec3d.dot(i,e)/c.vec3d.length(e)));return a?(a.heading=g,a.tilt=f,a):{heading:g,tilt:f}}Object.defineProperty(d,"__esModule",{value:!0});var v=c.vec3d.create(),r=c.vec3d.create();d.directionToHeadingTilt=a});

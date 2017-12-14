@@ -1,0 +1,72 @@
+{
+  "title": "mediaInfo",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Defines an image or a chart to be displayed in a popup window.",
+  "properties": {
+    "caption": {
+      "type": "string",
+      "description": "A string caption describing the media."
+    },
+    "refreshInterval": {
+      "type": "number",
+      "description": "Refresh interval of the layer in minutes. Non-zero value indicates automatic layer refresh at the specified interval. Value of 0 indicates auto refresh is not enabled. If the property does not exist, it's equivalent to having a value of 0. Only applicable when `type` is set to `image`.",
+      "default": 0
+    },
+    "title": {
+      "description": "A string title for the media.",
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "type": {
+      "type": "string",
+      "description": "A string defining the type of media.",
+      "enum": [
+        "image",
+        "barchart",
+        "columnchart",
+        "linechart",
+        "piechart"
+      ]
+    },
+    "value": {
+      "description": "A value object containing information about how the image should be retrieved or how the chart should be constructed.",
+      "oneOf": [
+        {
+          "$ref": "value_schema.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "mediaInfo",
+        "code": {
+          "mediaInfo": {
+            "title": "Chart stats",
+            "type": "barchart",
+            "caption": "For a better idea...",
+            "value": {
+              "fields": [
+                "relationships/0/Pledge"
+              ],
+              "tooltipField": "relationships/2/Official"
+            }
+          }
+        }
+      }
+    ]
+  }
+}
+

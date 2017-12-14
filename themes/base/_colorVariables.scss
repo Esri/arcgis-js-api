@@ -4,6 +4,7 @@
 
 //  Main Colors Vars
 $text_color                 : $Calcite_Gray_700                                !default ;
+$header_color               : $Calcite_Gray_600                                !default ;
 $background_color           : $Calcite_Gray_050                                !default ;
 $anchor_color               : $Calcite_Gray_550                                !default ;
 $button_text_color          : $Calcite_Gray_550                                !default ;
@@ -26,6 +27,10 @@ $active_text_reverse_color          : offset-background-color($background_color,
 // Selected
 $selected_border_color      : $Calcite_Highlight_Blue_350                      !default ;
 $selected_background_color  : $Calcite_Highlight_Blue_100                      !default ;
+
+// Offset
+$text_offset_color          : offset-foreground-color($text_color, 25%);
+$background_offset_color    : offset-background-color($background_color, 4%);
 
 // Other
 $disabled_opacity           : 0.4                                              !default ;

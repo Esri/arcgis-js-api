@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/extendsHelper","../../core/tsSupport/decorateHelper"],function(t,e,n,r){Object.defineProperty(e,"__esModule",{value:!0});var i=function(){function t(t){this.type=t}return t}();e.RenderBucket=i;var u=function(t){function e(){var e=t.call(this,2)||this;return e.triangleElementStart=0,e.triangleElementCount=0,e.joinStart=0,e.joinCount=0,e}return n(e,t),e.prototype.hasData=function(){return this.triangleElementCount>0||this.joinCount>0},e}(i);e.LineRenderBucket=u;var a=function(t){function e(){var e=t.call(this,1)||this;return e.triangleElementStart=0,e.triangleElementCount=0,e.outlineElementStart=0,e.outlineElementCount=0,e}return n(e,t),e.prototype.hasData=function(){return this.triangleElementCount>0||this.outlineElementCount>0},e}(i);e.FillRenderBucket=a;var o=function(t){function e(){var e=t.call(this,3)||this;return e.markerPerPageElementsMap=new Map,e.glyphPerPageElementsMap=new Map,e.isSDF=!1,e}return n(e,t),e.prototype.hasData=function(){return this.markerPerPageElementsMap.size>0||this.glyphPerPageElementsMap.size>0},e}(i);e.SymbolRenderBucket=o;var l=function(t){function e(){return t.call(this,0)||this}return n(e,t),e.prototype.hasData=function(){return!0},e}(i);e.BackgroundRenderBucket=l});

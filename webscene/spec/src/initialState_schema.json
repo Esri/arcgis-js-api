@@ -1,0 +1,22 @@
+{
+  "title": "initialState",
+  "type": "object",
+  "description": "Defines the initial state when opening web scene.",
+  "properties": {
+    "environment": {
+      "type": "object",
+      "$ref": "environment_schema.json"
+    },
+    "viewpoint": {
+      "type": "object",
+      "description": "Describes a point of view for a 2D or 3D view. In a 3D view, it is determined using a camera position.",
+      "$ref": "viewpoint_schema.json"
+    }
+  },
+  "required": [
+    "environment",
+    "viewpoint"
+  ],
+  "additionalProperties": false
+}
+

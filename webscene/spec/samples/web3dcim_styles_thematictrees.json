@@ -1,0 +1,150 @@
+{
+  "operationalLayers": [
+    {
+      "id": "148e1a43aa5-layer4",
+      "listMode": "show",
+      "opacity": 1,
+      "title": "Thematic Trees",
+      "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers11/FeatureServer/2",
+      "visibility": true,
+      "layerType": "ArcGISFeatureLayer",
+      "layerDefinition": {
+        "minScale": 0,
+        "maxScale": 0,
+        "elevationInfo": {
+          "mode": "relativeToGround",
+          "offset": 1
+        },
+        "drawingInfo": {
+          "renderer": {
+            "type": "uniqueValue",
+            "field1": "styleitemname",
+            "styleName": "EsriThematicTreesStyle"
+          }
+        }
+      },
+      "popupInfo": {
+        "showAttachments": false,
+        "popupElements": [
+          {
+            "type": "fields"
+          }
+        ],
+        "fieldInfos": [
+          {
+            "fieldName": "OBJECTID",
+            "label": "OBJECTID",
+            "visible": true
+          },
+          {
+            "fieldName": "id",
+            "label": "id",
+            "visible": true
+          },
+          {
+            "fieldName": "style",
+            "label": "style",
+            "visible": true
+          },
+          {
+            "fieldName": "filename",
+            "label": "filename",
+            "visible": true
+          },
+          {
+            "fieldName": "styleitemname",
+            "label": "styleitemname",
+            "visible": true
+          },
+          {
+            "fieldName": "ORIG_FID",
+            "label": "ORIG_FID",
+            "visible": true
+          }
+        ],
+        "title": "drivers4"
+      }
+    }
+  ],
+  "baseMap": {
+    "baseMapLayers": [
+      {
+        "id": "14df2e1fec7-layer-228",
+        "opacity": 1,
+        "title": "World Topo Map",
+        "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledMapServiceLayer"
+      }
+    ],
+    "id": "basemap",
+    "title": "Topographic",
+    "elevationLayers": [
+      {
+        "id": "globalElevation",
+        "listMode": "show",
+        "title": "Terrain3D",
+        "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledElevationServiceLayer"
+      }
+    ]
+  },
+  "ground": {
+    "layers": [
+      {
+        "id": "globalElevation",
+        "listMode": "show",
+        "title": "Terrain3D",
+        "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledElevationServiceLayer"
+      }
+    ]
+  },
+  "version": "1.9",
+  "authoringApp": "ArcGIS API for JavaScript",
+  "authoringAppVersion": "4.6",
+  "presentation": {
+    "slides": []
+  },
+  "initialState": {
+    "environment": {
+      "lighting": {
+        "datetime": 1426419728000,
+        "displayUTCOffset": 0
+      }
+    },
+    "viewpoint": {
+      "rotation": 287.3896807908716,
+      "scale": 1326.0843929591458,
+      "targetGeometry": {
+        "spatialReference": {
+          "latestWkid": 3857,
+          "wkid": 102100
+        },
+        "x": 497935.3484855439,
+        "y": 6789641.217224029,
+        "z": -0.9996240753680468
+      },
+      "camera": {
+        "position": {
+          "spatialReference": {
+            "latestWkid": 3857,
+            "wkid": 102100
+          },
+          "x": 497253.233811708,
+          "y": 6789427.6218874175,
+          "z": 43.2562214480713
+        },
+        "heading": 72.61031920912839,
+        "tilt": 84.26269029016716
+      }
+    }
+  },
+  "spatialReference": {
+    "latestWkid": 3857,
+    "wkid": 102100
+  },
+  "viewingMode": "global"
+}

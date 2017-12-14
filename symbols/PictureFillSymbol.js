@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define(["../core/declare","dojo/_base/lang","../core/lang","../core/screenUtils","./FillSymbol","./support/urlUtils"],function(t,e,i,s,o,l){var r={xscale:1,yscale:1,xoffset:0,yoffset:0,width:12,height:12},n=t(o,{declaredClass:"esri.symbols.PictureFillSymbol",properties:{type:"picture-fill",url:l.urlPropertyDefinition,xscale:{value:1,json:{write:!0}},yscale:{value:1,json:{write:!0}},width:{value:12,cast:s.toPt,json:{write:!0}},height:{value:12,cast:s.toPt,json:{write:!0}},xoffset:{value:0,cast:s.toPt,json:{write:!0}},yoffset:{value:0,cast:s.toPt,json:{write:!0}},source:l.sourcePropertyDefinition},getDefaults:function(){return e.mixin(this.inherited(arguments),r)},normalizeCtorArgs:function(t,e,i,o){if(t&&"string"!=typeof t&&null==t.imageData)return t;var l={};return t&&(l.url=t),e&&(l.outline=e),null!=i&&(l.width=s.toPt(i)),null!=o&&(l.height=s.toPt(o)),l},clone:function(){var t=new n({color:i.clone(this.color),height:this.height,outline:this.outline&&this.outline.clone(),url:this.url,width:this.width,xoffset:this.xoffset,xscale:this.xscale,yoffset:this.yoffset,yscale:this.yscale});return t._set("source",i.clone(this.source)),t}});return n.defaultProps=r,n});

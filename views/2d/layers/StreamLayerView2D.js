@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/accessorSupport/decorators","./FeatureLayerView2D","../../layers/StreamLayerView"],function(e,r,t,a,o,s,c){var i=function(e){function r(){return e.call(this)||this}return t(r,e),a([o.property({aliasOf:"controller.graphics",readOnly:!0})],r.prototype,"graphics",void 0),r=a([o.subclass("esri.views.2d.layers.StreamLayerView2D")],r)}(o.declared(c,s));return i});

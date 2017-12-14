@@ -1,0 +1,181 @@
+{
+  "operationalLayers": [
+    {
+      "id": "148e1a43b03-layer6",
+      "listMode": "show",
+      "opacity": 1,
+      "title": "Icons",
+      "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers11/FeatureServer/1",
+      "visibility": true,
+      "layerType": "ArcGISFeatureLayer",
+      "layerDefinition": {
+        "minScale": 0,
+        "maxScale": 0,
+        "elevationInfo": {
+          "mode": "relativeToGround",
+          "offset": 1
+        },
+        "drawingInfo": {
+          "renderer": {
+            "type": "uniqueValue",
+            "visualVariables": [
+              {
+                "type": "sizeInfo",
+                "field": "idInt",
+                "minDataValue": 1,
+                "maxDataValue": 28,
+                "minSize": 8,
+                "maxSize": 16,
+                "axis": "width"
+              },
+              {
+                "type": "colorInfo",
+                "field": "idInt",
+                "minDataValue": 1,
+                "maxDataValue": 28,
+                "colors": [
+                  [
+                    255,
+                    0,
+                    0,
+                    255
+                  ],
+                  [
+                    0,
+                    0,
+                    255,
+                    255
+                  ]
+                ]
+              }
+            ],
+            "field1": "styleitemname",
+            "styleName": "EsriIconsStyle"
+          }
+        }
+      },
+      "popupInfo": {
+        "showAttachments": false,
+        "popupElements": [
+          {
+            "type": "fields"
+          }
+        ],
+        "fieldInfos": [
+          {
+            "fieldName": "OBJECTID",
+            "label": "OBJECTID",
+            "visible": true
+          },
+          {
+            "fieldName": "id",
+            "label": "id",
+            "visible": true
+          },
+          {
+            "fieldName": "style",
+            "label": "style",
+            "visible": true
+          },
+          {
+            "fieldName": "filename",
+            "label": "filename",
+            "visible": true
+          },
+          {
+            "fieldName": "styleitemname",
+            "label": "styleitemname",
+            "visible": true
+          },
+          {
+            "fieldName": "ORIG_FID",
+            "label": "ORIG_FID",
+            "visible": true
+          }
+        ],
+        "title": "drivers4"
+      }
+    }
+  ],
+  "baseMap": {
+    "baseMapLayers": [
+      {
+        "id": "14df2e1f8c5-layer-207",
+        "opacity": 1,
+        "title": "World Topo Map",
+        "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledMapServiceLayer"
+      }
+    ],
+    "id": "basemap",
+    "title": "Topographic",
+    "elevationLayers": [
+      {
+        "id": "globalElevation",
+        "listMode": "show",
+        "title": "Terrain3D",
+        "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledElevationServiceLayer"
+      }
+    ]
+  },
+  "ground": {
+    "layers": [
+      {
+        "id": "globalElevation",
+        "listMode": "show",
+        "title": "Terrain3D",
+        "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledElevationServiceLayer"
+      }
+    ]
+  },
+  "version": "1.9",
+  "authoringApp": "ArcGIS API for JavaScript",
+  "authoringAppVersion": "4.6",
+  "presentation": {
+    "slides": []
+  },
+  "initialState": {
+    "environment": {
+      "lighting": {
+        "datetime": 1426419720000,
+        "displayUTCOffset": 0
+      }
+    },
+    "viewpoint": {
+      "rotation": 359.54045008813694,
+      "scale": 15037.121656340458,
+      "targetGeometry": {
+        "spatialReference": {
+          "latestWkid": 3857,
+          "wkid": 102100
+        },
+        "x": 500798.9454046444,
+        "y": 6789743.177641345,
+        "z": -0.579712513834238
+      },
+      "camera": {
+        "position": {
+          "spatialReference": {
+            "latestWkid": 3857,
+            "wkid": 102100
+          },
+          "x": 500743.28847738757,
+          "y": 6782807.099762832,
+          "z": 2628.2496392168105
+        },
+        "heading": 0.4595499118630492,
+        "tilt": 58.41368958333732
+      }
+    }
+  },
+  "spatialReference": {
+    "latestWkid": 3857,
+    "wkid": 102100
+  },
+  "viewingMode": "global"
+}

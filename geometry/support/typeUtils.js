@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define(["require","exports","../../core/accessorSupport/ensureType","../Geometry","../Extent","../Multipoint","../Point","../Polyline","../Polygon"],function(e,t,n,o,p,y,i,r,l){Object.defineProperty(t,"__esModule",{value:!0}),t.types={base:o,key:"type",typeMap:{extent:p,multipoint:y,point:i,polyline:r,polygon:l}},t.ensureType=n.ensureOneOfType(t.types)});

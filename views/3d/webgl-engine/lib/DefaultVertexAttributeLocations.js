@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define(["require","exports"],function(e,o){Object.defineProperty(o,"__esModule",{value:!0}),o.Default3D={position:0,normal:1,uv0:2,color:3,instanceColor:3,size:4,auxpos1:5,symbolColor:5,auxpos2:6,featureAttribute:6,instanceFeatureAttribute:6,region:7,model:8,modelNormal:12}});

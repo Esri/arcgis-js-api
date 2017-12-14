@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 /**
              * An array of strings representing the default
@@ -28,9 +28,11 @@
              * {@link module:esri/views/SceneView} is created. The default widgets differ between MapView
              * and SceneView.
              *
-             * **Default Value (for MapView):** ["attribution", "zoom"]
+             * The following are the default components in each view:
              *
-             * **Default Value (for SceneView):** ["attribution", "navigation-toggle", "compass", "zoom"]
+             * **MapView:** `["attribution", "zoom"]`
+             *
+             * **SceneView:** `["attribution", "navigation-toggle", "compass", "zoom"]`
              *
              * ::: esri-md class="panel trailer-1"
              * Esri requires that when you use an ArcGIS Online basemap in your app, the map must include Esri attribution and you must be licensed to use the content.

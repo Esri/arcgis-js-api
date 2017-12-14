@@ -1,0 +1,153 @@
+{
+  "operationalLayers": [
+    {
+      "id": "USA_Income_NetWorth",
+      "listMode": "show",
+      "opacity": 1,
+      "title": "(exclusive) US Pop Change",
+      "visibility": true,
+      "layers": [
+        {
+          "id": "148b40184cf-layer6",
+          "opacity": 1,
+          "title": "USA_Median_Household_Income",
+          "url": "https://server.arcgisonline.com/arcgis/rest/services/Demographics/USA_Median_Household_Income/MapServer",
+          "visibility": true,
+          "minScale": 591657527.591555,
+          "maxScale": 72223.819286,
+          "layerType": "ArcGISTiledMapServiceLayer"
+        },
+        {
+          "id": "148b4018527-layer7",
+          "opacity": 1,
+          "title": "USA_Median_Net_Worth",
+          "url": "https://server.arcgisonline.com/arcgis/rest/services/Demographics/USA_Median_Net_Worth/MapServer",
+          "visibility": false,
+          "minScale": 591657527.591555,
+          "maxScale": 72223.819286,
+          "layerType": "ArcGISTiledMapServiceLayer"
+        }
+      ],
+      "layerType": "GroupLayer",
+      "visibilityMode": "exclusive"
+    },
+    {
+      "id": "HurricaneAndrew",
+      "listMode": "show",
+      "opacity": 1,
+      "title": "(independent) Hurr. Andrew ",
+      "visibility": true,
+      "layers": [
+        {
+          "id": "148b4018604-layer8",
+          "listMode": "show",
+          "opacity": 1,
+          "title": "Hurricane Points",
+          "url": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/05_HurricaneAndrew_1992/FeatureServer/0",
+          "visibility": true,
+          "layerType": "ArcGISFeatureLayer",
+          "layerDefinition": {
+            "minScale": 0,
+            "maxScale": 1000000
+          }
+        },
+        {
+          "id": "148b40186b9-layer9",
+          "listMode": "show",
+          "opacity": 1,
+          "title": "Hurricane Lines",
+          "url": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/05_HurricaneAndrew_1992/FeatureServer/1",
+          "visibility": false,
+          "layerType": "ArcGISFeatureLayer",
+          "layerDefinition": {
+            "minScale": 0,
+            "maxScale": 1000000
+          }
+        }
+      ],
+      "layerType": "GroupLayer",
+      "visibilityMode": "independent"
+    }
+  ],
+  "baseMap": {
+    "baseMapLayers": [
+      {
+        "id": "14df2e20bfc-layer-272",
+        "opacity": 1,
+        "title": "World Imagery",
+        "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledMapServiceLayer"
+      }
+    ],
+    "id": "basemap",
+    "title": "Imagery",
+    "elevationLayers": [
+      {
+        "id": "globalElevation",
+        "listMode": "show",
+        "title": "Terrain3D",
+        "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledElevationServiceLayer"
+      }
+    ]
+  },
+  "ground": {
+    "layers": [
+      {
+        "id": "globalElevation",
+        "listMode": "show",
+        "title": "Terrain3D",
+        "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledElevationServiceLayer"
+      }
+    ]
+  },
+  "version": "1.9",
+  "authoringApp": "ArcGIS API for JavaScript",
+  "authoringAppVersion": "4.6",
+  "presentation": {
+    "slides": []
+  },
+  "initialState": {
+    "environment": {
+      "lighting": {
+        "datetime": 1426440747000,
+        "displayUTCOffset": -5
+      }
+    },
+    "viewpoint": {
+      "rotation": 13.663668114026052,
+      "scale": 24322196.29844658,
+      "targetGeometry": {
+        "spatialReference": {
+          "latestWkid": 3857,
+          "wkid": 102100
+        },
+        "x": -9262907.040017063,
+        "y": 2613916.406323672,
+        "z": -535.4542311225086
+      },
+      "camera": {
+        "position": {
+          "spatialReference": {
+            "latestWkid": 3857,
+            "wkid": 102100
+          },
+          "x": -9252189.96052197,
+          "y": 2569893.6359510347,
+          "z": 12141357.598728385
+        },
+        "heading": 346.33633188597395,
+        "tilt": 0.1972673149387381
+      }
+    }
+  },
+  "spatialReference": {
+    "latestWkid": 3857,
+    "wkid": 102100
+  },
+  "viewingMode": "global"
+}

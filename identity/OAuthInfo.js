@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/accessorSupport/decorators","../core/JSONSupport"],function(o,r,t,p,e,i){var n=function(o){function r(r){var t=o.call(this)||this;return t._oAuthCred=null,t.appId=null,t.authNamespace="/",t.expiration=20160,t.forceLogin=!1,t.locale=null,t.minTimeUntilExpiration=30,t.popup=!1,t.popupCallbackUrl="oauth-callback.html",t.popupWindowFeatures="height=490,width=800,resizable,scrollbars,status",t.portalUrl="https://www.arcgis.com",t}return t(r,o),i=r,r.prototype.clone=function(){return i.fromJSON(this.toJSON())},p([e.property({json:{write:!0}})],r.prototype,"appId",void 0),p([e.property({json:{write:!0}})],r.prototype,"authNamespace",void 0),p([e.property({json:{write:!0}})],r.prototype,"expiration",void 0),p([e.property({json:{write:!0}})],r.prototype,"forceLogin",void 0),p([e.property({json:{write:!0}})],r.prototype,"locale",void 0),p([e.property({json:{write:!0}})],r.prototype,"minTimeUntilExpiration",void 0),p([e.property({json:{write:!0}})],r.prototype,"popup",void 0),p([e.property({json:{write:!0}})],r.prototype,"popupCallbackUrl",void 0),p([e.property({json:{write:!0}})],r.prototype,"popupWindowFeatures",void 0),p([e.property({json:{write:!0}})],r.prototype,"portalUrl",void 0),r=i=p([e.subclass("esri.identity.OAuthInfo")],r);var i}(e.declared(i));return n});

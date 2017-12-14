@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define({noItemsToDisplay:"Det er for øyeblikket ingen elementer å vise.",layerInvisibleAtScale:"Usynlig med gjeldende målestokk",layerError:"Det oppstod en feil under lasting av dette laget",untitledLayer:"Lag uten tittel"});

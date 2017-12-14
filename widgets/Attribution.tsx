@@ -47,6 +47,7 @@ import {
 import Widget = require("./Widget");
 import AttributionViewModel = require("./Attribution/AttributionViewModel");
 import View = require("../views/View");
+import watchUtils = require("../core/watchUtils");
 
 const CSS = {
   base: "esri-attribution esri-widget",
@@ -80,6 +81,12 @@ class Attribution extends declared(Widget) {
     super();
   }
 
+  postInitialize() {
+    this.own(
+      watchUtils.on(this, "viewModel.items", "change", () => this.scheduleRender())
+    );
+  }
+
   //--------------------------------------------------------------------------
   //
   //  Variables
@@ -97,6 +104,43 @@ class Attribution extends declared(Widget) {
   //  Properties
   //
   //--------------------------------------------------------------------------
+
+  //----------------------------------
+  //  attributionText
+  //----------------------------------
+
+  /**
+   * Full attribution text.
+   *
+   * @name attributionText
+   * @instance
+   * @type {string}
+   * @readonly
+   */
+  @property({
+    dependsOn: ["viewModel.items.length", "itemDelimiter"],
+    readOnly: true
+  })
+  @renderable()
+  get attributionText(): string {
+    return this.viewModel.items.map(item => item.text).join(this.itemDelimiter);
+  }
+
+  //----------------------------------
+  //  itemDelimiter
+  //----------------------------------
+
+  /**
+   * Text used to split attribution by {@link module:esri/layers/Layer layers}
+   *
+   * @name itemDelimiter
+   * @instance
+   * @type {string}
+   * @default |
+   */
+  @property()
+  @renderable()
+  itemDelimiter = " | ";
 
   //----------------------------------
   //  view
@@ -131,7 +175,6 @@ class Attribution extends declared(Widget) {
     type: AttributionViewModel
   })
   @renderable([
-    "attributionText",
     "state",
     "view.size"
   ])
@@ -150,14 +193,14 @@ class Attribution extends declared(Widget) {
 
     return (
       <div bind={this}
-           class={CSS.base}
-           classes={classes}
-           onclick={this._toggleState}
-           onkeydown={this._toggleState}>
+        class={CSS.base}
+        classes={classes}
+        onclick={this._toggleState}
+        onkeydown={this._toggleState}>
         {this._renderSourcesNode()}
         <div class={CSS.poweredBy}>Powered by <a target="_blank"
-                                                 href="http://www.esri.com/"
-                                                 class={CSS.link}>Esri</a></div>
+          href="http://www.esri.com/"
+          class={CSS.link}>Esri</a></div>
       </div>
     );
   }
@@ -172,7 +215,7 @@ class Attribution extends declared(Widget) {
     const isOpen = this._isOpen;
     const interactive = this._isInteractive();
     const sourceTabIndex = interactive ? 0 : -1;
-    const attributionText = this.get<string>("viewModel.attributionText");
+    const { attributionText } = this;
     const role = interactive ? "button" : undefined;
 
     const sourceClasses = {
@@ -181,13 +224,13 @@ class Attribution extends declared(Widget) {
     };
 
     return <div afterCreate={this._afterSourcesNodeCreate}
-                afterUpdate={this._afterSourcesNodeUpdate}
-                bind={this}
-                class={CSS.sources}
-                classes={sourceClasses}
-                innerHTML={attributionText}
-                role={role}
-                tabIndex={sourceTabIndex} />;
+      afterUpdate={this._afterSourcesNodeUpdate}
+      bind={this}
+      class={CSS.sources}
+      classes={sourceClasses}
+      innerHTML={attributionText}
+      role={role}
+      tabIndex={sourceTabIndex} />;
   }
 
   private _afterSourcesNodeCreate(element: Element): void {

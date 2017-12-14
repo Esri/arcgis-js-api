@@ -18,6 +18,10 @@
   varying vec3 vpos;
   varying vec3 vnormal;
 
+#ifdef RECEIVE_SHADOWS
+  varying float linearDepth;
+#endif
+
 #if defined(WIREFRAME) || defined(TILE_BORDERS)
   varying vec2 vuv;
 #endif
@@ -77,6 +81,14 @@
 
     gl_Position = proj * view * vec4(vpos, 1.0);
 
+#ifdef RECEIVE_SHADOWS
+    // Shadowmap's cascading index used to be based on '1.0 / gl_FragCoord.w'
+    // (i.e. the perspective interpolation of 'gl_Position.w'). Precision
+    // issues on iPad/iPhone with the 'w' component require the depth to be
+    // passed as varying to properly drive the cascading shadow map index.
+    linearDepth = gl_Position.w;
+#endif
+
     vtc = $uv0*texScale + texOffset;
 
 #ifdef OVERLAY
@@ -135,6 +147,7 @@
 #endif
 
 #ifdef RECEIVE_SHADOWS
+	varying float linearDepth;
 	$evalShadow
 #endif
 
@@ -178,7 +191,7 @@
 
     float shadow = 0.0;
 #ifdef RECEIVE_SHADOWS
-    shadow = evalShadow(vpos, 1.0 / gl_FragCoord.w, depthTex, shadowMapNum, shadowMapDistance, shadowMapMatrix, depthHalfPixelSz);
+    shadow = evalShadow(vpos, linearDepth, depthTex, shadowMapNum, shadowMapDistance, shadowMapMatrix, depthHalfPixelSz);
 #endif
     float vndl = dot(normalize(vnormal), lightDirection);
     float k = smoothstep(0.0, 1.0, clamp(vndl*diffuseHardness, 0.0, 1.0));
@@ -256,15 +269,15 @@
 
     $fsTerrainCommon
 
-    vec2 dVuv;
     vec2 vuvScaled = vuv * wireframe.subdivision;
     vec2 vuvMod = fract(vuvScaled);
 
 #ifdef GL_OES_standard_derivatives
-    dVuv = fwidth(vuvScaled);
+    vec2 dVuv = fwidth(vuvScaled);
+    dVuv = max(vec2(0.00001), dVuv); // workaround against flickering skirts, see #10245
 #else
     // Something that reasonably works
-    dVuv = vec2(0.05);
+    vec2 dVuv = vec2(0.05);
 #endif
 
     vec2 edgeFactors = smoothstep((wireframe.width - wireframe.falloff) * dVuv,

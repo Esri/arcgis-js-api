@@ -1,0 +1,871 @@
+{
+  "operationalLayers": [
+    {
+      "id": "14bad5e9347-layer1",
+      "listMode": "show",
+      "opacity": 1,
+      "title": "points",
+      "visibility": true,
+      "layers": [
+        {
+          "id": "14bad5e952b-layer7",
+          "listMode": "show",
+          "opacity": 1,
+          "title": "IconsAndLabelsDefault",
+          "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FP__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
+          "visibility": true,
+          "layerType": "ArcGISFeatureLayer"
+        },
+        {
+          "id": "14bad5e9414-layer6",
+          "listMode": "show",
+          "opacity": 1,
+          "title": "IconsDefaultNoZService",
+          "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FP__3857__CH_Fiesch__Paraglide_NoZ/FeatureServer/0",
+          "visibility": true,
+          "layerType": "ArcGISFeatureLayer"
+        },
+        {
+          "id": "14bad5e9537-layer9",
+          "listMode": "show",
+          "opacity": 1,
+          "title": "Icons RTG no Shape.Z",
+          "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FP__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
+          "visibility": true,
+          "layerType": "ArcGISFeatureLayer",
+          "layerDefinition": {
+            "elevationInfo": {
+              "featureExpressionInfo": {
+                "expression": "0"
+              },
+              "featureExpression": {
+                "value": 0
+              },
+              "mode": "relativeToGround"
+            },
+            "drawingInfo": {
+              "labelingInfo": [
+                {
+                  "labelExpression": "[distance_km]",
+                  "labelExpressionInfo": {
+                    "expression": "$feature[\"distance_km\"]"
+                  },
+                  "symbol": {
+                    "type": "LabelSymbol3D",
+                    "symbolLayers": [
+                      {
+                        "material": {
+                          "color": [
+                            255,
+                            255,
+                            0
+                          ]
+                        },
+                        "type": "Text",
+                        "size": 12
+                      }
+                    ]
+                  }
+                }
+              ],
+              "renderer": {
+                "type": "simple",
+                "symbol": {
+                  "type": "PointSymbol3D",
+                  "symbolLayers": [
+                    {
+                      "material": {
+                        "color": [
+                          0,
+                          255,
+                          0
+                        ],
+                        "transparency": 40
+                      },
+                      "type": "Icon",
+                      "resource": {
+                        "primitive": "circle"
+                      },
+                      "size": 6.666666666666666,
+                      "outline": {
+                        "color": [
+                          0,
+                          0,
+                          0
+                        ],
+                        "size": 1
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "148b34513f3-layer3",
+          "listMode": "show",
+          "opacity": 1,
+          "title": "IconsAndLabels RTG Offset",
+          "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FP__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
+          "visibility": true,
+          "layerType": "ArcGISFeatureLayer",
+          "layerDefinition": {
+            "elevationInfo": {
+              "mode": "relativeToGround",
+              "offset": 100
+            },
+            "drawingInfo": {
+              "labelingInfo": [
+                {
+                  "labelExpression": "[distance_km]",
+                  "labelExpressionInfo": {
+                    "expression": "$feature[\"distance_km\"]"
+                  },
+                  "symbol": {
+                    "type": "LabelSymbol3D",
+                    "symbolLayers": [
+                      {
+                        "material": {
+                          "color": [
+                            255,
+                            255,
+                            0
+                          ]
+                        },
+                        "type": "Text",
+                        "size": 12
+                      }
+                    ]
+                  }
+                }
+              ],
+              "renderer": {
+                "type": "simple",
+                "symbol": {
+                  "type": "PointSymbol3D",
+                  "symbolLayers": [
+                    {
+                      "material": {
+                        "color": [
+                          0,
+                          255,
+                          0
+                        ],
+                        "transparency": 40
+                      },
+                      "type": "Icon",
+                      "resource": {
+                        "primitive": "circle"
+                      },
+                      "size": 6.666666666666666,
+                      "outline": {
+                        "color": [
+                          0,
+                          0,
+                          0
+                        ],
+                        "size": 1
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "148b3451405-layer5",
+          "listMode": "show",
+          "opacity": 1,
+          "title": "IconsAndLabels ABS NoOffset",
+          "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FP__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
+          "visibility": true,
+          "layerType": "ArcGISFeatureLayer",
+          "layerDefinition": {
+            "elevationInfo": {
+              "mode": "absoluteHeight"
+            },
+            "drawingInfo": {
+              "labelingInfo": [
+                {
+                  "labelExpression": "[distance_km]",
+                  "labelExpressionInfo": {
+                    "expression": "$feature[\"distance_km\"]"
+                  },
+                  "symbol": {
+                    "type": "LabelSymbol3D",
+                    "symbolLayers": [
+                      {
+                        "material": {
+                          "color": [
+                            255,
+                            255,
+                            0
+                          ]
+                        },
+                        "type": "Text",
+                        "size": 12
+                      }
+                    ]
+                  }
+                }
+              ],
+              "renderer": {
+                "type": "simple",
+                "symbol": {
+                  "type": "PointSymbol3D",
+                  "symbolLayers": [
+                    {
+                      "material": {
+                        "color": [
+                          0,
+                          255,
+                          0
+                        ],
+                        "transparency": 40
+                      },
+                      "type": "Icon",
+                      "resource": {
+                        "primitive": "circle"
+                      },
+                      "size": 6.666666666666666,
+                      "outline": {
+                        "color": [
+                          0,
+                          0,
+                          0
+                        ],
+                        "size": 1
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "IconsAndLabelsOnTheGround",
+          "listMode": "show",
+          "opacity": 1,
+          "title": "IconsAndLabels OTG",
+          "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FP__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
+          "visibility": true,
+          "layerType": "ArcGISFeatureLayer",
+          "layerDefinition": {
+            "elevationInfo": {
+              "mode": "onTheGround"
+            },
+            "drawingInfo": {
+              "labelingInfo": [
+                {
+                  "labelExpression": "[distance_km]",
+                  "labelExpressionInfo": {
+                    "expression": "$feature[\"distance_km\"]"
+                  },
+                  "symbol": {
+                    "type": "LabelSymbol3D",
+                    "symbolLayers": [
+                      {
+                        "material": {
+                          "color": [
+                            255,
+                            255,
+                            0
+                          ]
+                        },
+                        "type": "Text",
+                        "size": 12
+                      }
+                    ]
+                  }
+                }
+              ],
+              "renderer": {
+                "type": "simple",
+                "symbol": {
+                  "type": "PointSymbol3D",
+                  "symbolLayers": [
+                    {
+                      "material": {
+                        "color": [
+                          0,
+                          255,
+                          0
+                        ],
+                        "transparency": 40
+                      },
+                      "type": "Icon",
+                      "resource": {
+                        "primitive": "circle"
+                      },
+                      "size": 6.666666666666666,
+                      "outline": {
+                        "color": [
+                          0,
+                          0,
+                          0
+                        ],
+                        "size": 1
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "148b3451485-layer8",
+          "listMode": "show",
+          "opacity": 1,
+          "title": "ObjectsAndLabels ABS Offset",
+          "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FP__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
+          "visibility": true,
+          "layerType": "ArcGISFeatureLayer",
+          "layerDefinition": {
+            "elevationInfo": {
+              "mode": "absoluteHeight",
+              "offset": 10000
+            },
+            "drawingInfo": {
+              "labelingInfo": [
+                {
+                  "labelExpression": "[distance_km]",
+                  "labelExpressionInfo": {
+                    "expression": "$feature[\"distance_km\"]"
+                  },
+                  "symbol": {
+                    "type": "LabelSymbol3D",
+                    "symbolLayers": [
+                      {
+                        "material": {
+                          "color": [
+                            255,
+                            255,
+                            0
+                          ]
+                        },
+                        "type": "Text",
+                        "size": 12
+                      }
+                    ]
+                  }
+                }
+              ],
+              "renderer": {
+                "type": "simple",
+                "symbol": {
+                  "type": "PointSymbol3D",
+                  "symbolLayers": [
+                    {
+                      "material": {
+                        "color": [
+                          0,
+                          255,
+                          0
+                        ],
+                        "transparency": 40
+                      },
+                      "type": "Object",
+                      "resource": {
+                        "primitive": "sphere"
+                      },
+                      "width": 500,
+                      "height": 500
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ],
+      "layerType": "GroupLayer",
+      "visibilityMode": "independent"
+    },
+    {
+      "id": "148b345bd65-layer19",
+      "listMode": "show",
+      "opacity": 1,
+      "title": "lines",
+      "visibility": true,
+      "layers": [
+        {
+          "id": "LinesDefault",
+          "listMode": "show",
+          "opacity": 1,
+          "title": "LinesDefault",
+          "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FL__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
+          "visibility": true,
+          "layerType": "ArcGISFeatureLayer"
+        },
+        {
+          "id": "LinesOnTheGroundNoOffset",
+          "listMode": "show",
+          "opacity": 1,
+          "title": "Lines OTG",
+          "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FL__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
+          "visibility": true,
+          "layerType": "ArcGISFeatureLayer",
+          "layerDefinition": {
+            "elevationInfo": {
+              "mode": "onTheGround"
+            },
+            "drawingInfo": {
+              "renderer": {
+                "type": "simple",
+                "description": "",
+                "label": "",
+                "symbol": {
+                  "type": "LineSymbol3D",
+                  "symbolLayers": [
+                    {
+                      "material": {
+                        "color": [
+                          255,
+                          128,
+                          0
+                        ]
+                      },
+                      "type": "Line",
+                      "size": 4
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "RTG no Shape.z",
+          "listMode": "show",
+          "opacity": 1,
+          "title": "Lines RTG no Shape.z",
+          "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FL__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
+          "visibility": true,
+          "layerType": "ArcGISFeatureLayer",
+          "layerDefinition": {
+            "elevationInfo": {
+              "featureExpressionInfo": {
+                "expression": "0"
+              },
+              "featureExpression": {
+                "value": 0
+              },
+              "mode": "relativeToGround",
+              "offset": 100
+            },
+            "drawingInfo": {
+              "renderer": {
+                "type": "simple",
+                "description": "",
+                "label": "",
+                "symbol": {
+                  "type": "LineSymbol3D",
+                  "symbolLayers": [
+                    {
+                      "material": {
+                        "color": [
+                          128,
+                          255,
+                          0
+                        ]
+                      },
+                      "type": "Line",
+                      "size": 4
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "LinesRelativeToGroundOffset",
+          "listMode": "show",
+          "opacity": 1,
+          "title": "Lines RTG Offset",
+          "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FL__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
+          "visibility": true,
+          "layerType": "ArcGISFeatureLayer",
+          "layerDefinition": {
+            "elevationInfo": {
+              "mode": "relativeToGround",
+              "offset": 500
+            },
+            "drawingInfo": {
+              "renderer": {
+                "type": "simple",
+                "description": "",
+                "label": "",
+                "symbol": {
+                  "type": "LineSymbol3D",
+                  "symbolLayers": [
+                    {
+                      "material": {
+                        "color": [
+                          128,
+                          255,
+                          128
+                        ]
+                      },
+                      "type": "Line",
+                      "size": 4
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "LinesRelativeToGroundNoOffset",
+          "listMode": "show",
+          "opacity": 1,
+          "title": "Lines RTG NoOffset",
+          "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FL__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
+          "visibility": true,
+          "layerType": "ArcGISFeatureLayer",
+          "layerDefinition": {
+            "elevationInfo": {
+              "mode": "relativeToGround"
+            },
+            "drawingInfo": {
+              "renderer": {
+                "type": "simple",
+                "description": "",
+                "label": "",
+                "symbol": {
+                  "type": "LineSymbol3D",
+                  "symbolLayers": [
+                    {
+                      "material": {
+                        "color": [
+                          128,
+                          255,
+                          0
+                        ]
+                      },
+                      "type": "Line",
+                      "size": 4
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "LinesAbsoluteHeightNoOffset",
+          "listMode": "show",
+          "opacity": 1,
+          "title": "Lines ABS NoOffset",
+          "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FL__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
+          "visibility": true,
+          "layerType": "ArcGISFeatureLayer",
+          "layerDefinition": {
+            "elevationInfo": {
+              "mode": "absoluteHeight"
+            },
+            "drawingInfo": {
+              "renderer": {
+                "type": "simple",
+                "description": "",
+                "label": "",
+                "symbol": {
+                  "type": "LineSymbol3D",
+                  "symbolLayers": [
+                    {
+                      "material": {
+                        "color": [
+                          128,
+                          255,
+                          0
+                        ]
+                      },
+                      "type": "Line",
+                      "size": 4
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "LinesAbsoluteHeightOffset",
+          "listMode": "show",
+          "opacity": 1,
+          "title": "Lines ABS Offset",
+          "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FL__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
+          "visibility": true,
+          "layerType": "ArcGISFeatureLayer",
+          "layerDefinition": {
+            "elevationInfo": {
+              "mode": "absoluteHeight",
+              "offset": 10000
+            },
+            "drawingInfo": {
+              "renderer": {
+                "type": "simple",
+                "description": "",
+                "label": "",
+                "symbol": {
+                  "type": "LineSymbol3D",
+                  "symbolLayers": [
+                    {
+                      "material": {
+                        "color": [
+                          128,
+                          128,
+                          255
+                        ]
+                      },
+                      "type": "Line",
+                      "size": 4
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "14bad5e95e6-layer20",
+          "listMode": "show",
+          "opacity": 1,
+          "title": "Tubes RTG",
+          "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FL__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
+          "visibility": true,
+          "layerType": "ArcGISFeatureLayer",
+          "layerDefinition": {
+            "elevationInfo": {
+              "mode": "relativeToGround",
+              "offset": 500
+            },
+            "drawingInfo": {
+              "renderer": {
+                "type": "simple",
+                "symbol": {
+                  "type": "LineSymbol3D",
+                  "symbolLayers": [
+                    {
+                      "material": {
+                        "color": [
+                          128,
+                          255,
+                          128
+                        ]
+                      },
+                      "type": "Path",
+                      "size": 50
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ],
+      "layerType": "GroupLayer",
+      "visibilityMode": "independent"
+    },
+    {
+      "id": "14bad5e939f-layer3",
+      "listMode": "show",
+      "opacity": 1,
+      "title": "area",
+      "visibility": true,
+      "layers": [
+        {
+          "id": "AreaOnTheGroundNoOffset",
+          "listMode": "show",
+          "opacity": 1,
+          "title": "AreaDefault",
+          "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FA__3857__CH_Fiesch__Paraglide_NoZ/FeatureServer/0",
+          "visibility": true,
+          "layerType": "ArcGISFeatureLayer"
+        },
+        {
+          "id": "14bad5e9816-layer22",
+          "listMode": "show",
+          "opacity": 1,
+          "title": "Area RTG Offset",
+          "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FA__3857__CH_Fiesch__Paraglide_NoZ/FeatureServer/0",
+          "visibility": true,
+          "layerType": "ArcGISFeatureLayer",
+          "layerDefinition": {
+            "elevationInfo": {
+              "mode": "relativeToGround",
+              "offset": 1000
+            },
+            "drawingInfo": {
+              "renderer": {
+                "type": "simple",
+                "description": "",
+                "label": "",
+                "symbol": {
+                  "type": "PolygonSymbol3D",
+                  "symbolLayers": [
+                    {
+                      "material": {
+                        "color": [
+                          255,
+                          128,
+                          0
+                        ],
+                        "transparency": 50
+                      },
+                      "type": "Fill",
+                      "outline": {
+                        "color": [
+                          255,
+                          128,
+                          0
+                        ],
+                        "transparency": 10,
+                        "size": 1
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "14bad5e98ca-layer23",
+          "listMode": "show",
+          "opacity": 1,
+          "title": "Area ABS Offset",
+          "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FA__3857__CH_Fiesch__Paraglide_NoZ/FeatureServer/0",
+          "visibility": true,
+          "layerType": "ArcGISFeatureLayer",
+          "layerDefinition": {
+            "elevationInfo": {
+              "mode": "absoluteHeight",
+              "offset": 10000
+            },
+            "drawingInfo": {
+              "renderer": {
+                "type": "simple",
+                "description": "",
+                "label": "",
+                "symbol": {
+                  "type": "PolygonSymbol3D",
+                  "symbolLayers": [
+                    {
+                      "material": {
+                        "color": [
+                          255,
+                          128,
+                          0
+                        ],
+                        "transparency": 50
+                      },
+                      "type": "Fill",
+                      "outline": {
+                        "color": [
+                          255,
+                          128,
+                          0
+                        ],
+                        "transparency": 10,
+                        "size": 1
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ],
+      "layerType": "GroupLayer",
+      "visibilityMode": "independent"
+    }
+  ],
+  "baseMap": {
+    "baseMapLayers": [
+      {
+        "id": "worldTopoBase",
+        "opacity": 1,
+        "title": "World Imagery",
+        "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledMapServiceLayer"
+      }
+    ],
+    "id": "basemap",
+    "title": "Imagery",
+    "elevationLayers": [
+      {
+        "id": "globalElevation",
+        "listMode": "show",
+        "title": "Terrain3D",
+        "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledElevationServiceLayer"
+      }
+    ]
+  },
+  "ground": {
+    "layers": [
+      {
+        "id": "globalElevation",
+        "listMode": "show",
+        "title": "Terrain3D",
+        "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledElevationServiceLayer"
+      }
+    ]
+  },
+  "version": "1.9",
+  "authoringApp": "ArcGIS API for JavaScript",
+  "authoringAppVersion": "4.6",
+  "presentation": {
+    "slides": []
+  },
+  "initialState": {
+    "environment": {
+      "lighting": {
+        "datetime": 1426418403000,
+        "displayUTCOffset": 0
+      }
+    },
+    "viewpoint": {
+      "rotation": 30.45998391671276,
+      "scale": 394625.89509555843,
+      "targetGeometry": {
+        "spatialReference": {
+          "latestWkid": 3857,
+          "wkid": 102100
+        },
+        "x": 1019759.9793267964,
+        "y": 5945296.131259259,
+        "z": 1866.2850465187803
+      },
+      "camera": {
+        "position": {
+          "spatialReference": {
+            "latestWkid": 3857,
+            "wkid": 102100
+          },
+          "x": 1111814.4122961748,
+          "y": 5790618.483831852,
+          "z": 77525.9665912725
+        },
+        "heading": 329.54001608328724,
+        "tilt": 58.17205729801162
+      }
+    }
+  },
+  "spatialReference": {
+    "latestWkid": 3857,
+    "wkid": 102100
+  },
+  "viewingMode": "global"
+}

@@ -61,6 +61,7 @@ type ScaleBarUnit = MapUnitType | "dual";
 const CSS = {
   base: "esri-scale-bar esri-widget",
   labelContainer: "esri-scale-bar__label-container",
+  rulerLabelContainer: "esri-scale-bar__label-container--ruler",
   lineLabelContainer: "esri-scale-bar__label-container--line",
   label: "esri-scale-bar__label",
   line: "esri-scale-bar__line",
@@ -69,6 +70,8 @@ const CSS = {
   ruler: "esri-scale-bar__ruler",
   rulerBlock: "esri-scale-bar__ruler-block",
   barContainer: "esri-scale-bar__bar-container",
+  rulerBarContainer: "esri-scale-bar__bar-container--ruler",
+  lineBarContainer: "esri-scale-bar__bar-container--line",
 
   // common
   disabled: "esri-disabled"
@@ -235,17 +238,21 @@ class ScaleBar extends declared(Widget) {
       if (useNonMetric) {
         const nonMetricScale = this.viewModel.getScaleBarProperties(baseLengthInPixels, "non-metric");
 
-        nonMetricScaleBar = style === "ruler" ?
-          this._renderRuler(nonMetricScale) :
-          this._renderLine(nonMetricScale, "bottom");
+        if (nonMetricScale) {
+          nonMetricScaleBar = style === "ruler" ?
+                              this._renderRuler(nonMetricScale) :
+                              this._renderLine(nonMetricScale, "bottom");
+        }
       }
 
       if (useMetric) {
         const metricScale = this.viewModel.getScaleBarProperties(baseLengthInPixels, "metric");
 
-        metricScaleBar = style === "ruler" ?
-          this._renderRuler(metricScale) :
-          this._renderLine(metricScale, "top");
+        if (metricScale) {
+          metricScaleBar = style === "ruler" ?
+                           this._renderRuler(metricScale) :
+                           this._renderLine(metricScale, "top");
+        }
       }
     }
 
@@ -270,14 +277,14 @@ class ScaleBar extends declared(Widget) {
     const unitLabel = `${double(scaleBarProps.value)} ${unit}`;
 
     return (
-      <div class={CSS.barContainer} styles={{"width": `${length}px`}} key="esri-scale-bar__ruler">
-        <div class={CSS.ruler}>
+      <div class={join(CSS.barContainer, CSS.rulerBarContainer)} key="esri-scale-bar__ruler">
+        <div class={CSS.ruler} styles={{"width": `${length}px`}}>
           <div class={CSS.rulerBlock} />
           <div class={CSS.rulerBlock} />
           <div class={CSS.rulerBlock} />
           <div class={CSS.rulerBlock} />
         </div>
-        <div class={CSS.labelContainer}>
+        <div class={join(CSS.labelContainer, CSS.rulerLabelContainer)}>
           <div class={CSS.label}>0</div>
           <div class={CSS.label}>{scaleBarProps.value}</div>
           <div class={CSS.label}>{unitLabel}</div>
@@ -301,16 +308,13 @@ class ScaleBar extends declared(Widget) {
       [CSS.bottomLine]: labelPosition === "bottom"
     };
 
+    const length = double(Math.round(scaleBarProps.length));
     const line = (
-      <div class={CSS.line} classes={lineClasses} key="esri-scale-bar__line" />
+      <div class={CSS.line} classes={lineClasses} key="esri-scale-bar__line" styles={{"width": `${length}px`}} />
     );
 
-    const length = double(Math.round(scaleBarProps.length));
-
     return (
-      <div class={CSS.barContainer} styles={{"width": `${length}px`}} key="esri-scale-bar__line-container">{
-        labelPosition === "top" ?
-          [label, line] :
+      <div class={join(CSS.barContainer, CSS.lineBarContainer)} key="esri-scale-bar__line-container">{
           [line, label]
       }</div>
     );

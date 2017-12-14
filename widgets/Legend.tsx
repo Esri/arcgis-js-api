@@ -72,14 +72,13 @@ import Color = require("../Color");
 
 import * as i18n from "dojo/i18n!./Legend/nls/Legend";
 import { substitute } from "../core/lang";
-import { join } from "./support/widgetUtils";
 import { createSurface } from "dojox/gfx";
 import {
   ColorOpacityRampElement, LayerInfo, LegendElement, RampTitle, RendererTitle,
   SymbolTableElement
 } from "./interfaces";
 import { aliasOf, subclass, declared, property } from "../core/accessorSupport/decorators";
-import { tsx, renderable } from "./support/widget";
+import { join, tsx, renderable } from "./support/widget";
 
 import Element = JSX.Element;
 
@@ -196,7 +195,7 @@ class Legend extends declared(Widget) {
    * @instance
    *
    * @type {module:esri/core/Collection<Object>}
-   * @autocast
+   * @autocast { "value": "Object[]" }
    * @ignore
    */
   @aliasOf("viewModel.activeLayerInfos")
@@ -250,8 +249,8 @@ class Legend extends declared(Widget) {
    * @property {string} [title] - Specifies a title for the layer to display above its symbols and descriptions.
    * If no title is specified the service name is used.
    * @property {module:esri/layers/Layer} layer - A layer to display in the legend.
-   * @todo @property {boolean} defaultSymbol - When `false`, the default symbol for the renderer will
-   * not display in the legend. The default value is `true`. Only applicable to
+   * @todo @property {boolean} [defaultSymbol=true] - When `false`, the default symbol for the renderer will
+   * not display in the legend. Only applicable to
    * {@link module:esri/layers/FeatureLayer}.
    * @todo @property {number[]} hideLayers -  List of sublayer ids that will not be displayed in the legend
    *                                    even if they are visible in the map.

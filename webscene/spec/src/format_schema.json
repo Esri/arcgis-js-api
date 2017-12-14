@@ -1,0 +1,40 @@
+{
+  "title": "format",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "The format object can be used with numerical or date fields to provide more detail about how values should be displayed in popup windows.",
+  "properties": {
+    "dateFormat": {
+      "type": "string",
+      "description": "A string used with date fields to specify how the date should appear in popup windows.",
+      "enum": [
+        "shortDate",
+        "shortDateLE",
+        "longMonthDayYear",
+        "dayShortMonthYear",
+        "longDate",
+        "shortDateShortTime",
+        "shortDateLEShortTime",
+        "shortDateShortTime24",
+        "shortDateLEShortTime24",
+        "shortDateLongTime",
+        "shortDateLELongTime",
+        "shortDateLongTime24",
+        "shortDateLELongTime24",
+        "longMonthYear",
+        "shortMonthYear",
+        "year"
+      ]
+    },
+    "digitSeparator": {
+      "type": "boolean",
+      "description": "A Boolean used with numerical fields. A value of true allows the number to have a digit (or thousands) separator when the value appears in popup windows. Depending on the locale, this separator is a decimal point or a comma. A value of false means that no separator will be used."
+    },
+    "places": {
+      "type": "integer",
+      "description": "An integer used with numerical fields to specify the number of supported decimal places that should appear in popup windows. Any places beyond this value are rounded."
+    }
+  },
+  "additionalProperties": false
+}
+

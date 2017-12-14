@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define({title:"Naslov",fileName:"Ime datoteke",titlePlaceHolder:"Naslov datoteke",fileNamePlaceHolder:"Ime datoteke",formatDefaultOption:"Izaberi format",fileFormatTitle:"Format datoteke",layoutTitle:"Podešavanje stranice",layoutDefaultOption:"Izaberi podešavanje stranice",scale:"Podesi razmeru",scaleLabel:"razmera",reset:"poništi",author:"Autor",copyright:"Autorsko pravo",legend:"Uključi legendu",lock:"zaključaj",swap:"zameni",panelToggle:"Prebaci tablu",advancedOptions:"Napredne opcije",width:"Širina",height:"Visina",attribution:"Uključi atribuciju",layoutTab:"Priprema za štampu",mapOnlyTab:"Samo mapa",untitled:"bez naslova",pending:"Izvoz",ready:"Otvori ovo",linkReady:"Otvorite u novom prozoru.",error:"Izaberite ovo da biste ga uklonili.",sceneViewError:"Štampanje nije podržano u SceneView (Prikaz scene).",serviceError:"Izgleda da je došlo do greške.","export":"Izvezi",exportDescription:"Izvezite. Izvezene datoteke će se pojaviti ispod.",exportText:"Izvezene datoteke",exportHint:"Vaše izvezene datoteke će se pojaviti ovde."});

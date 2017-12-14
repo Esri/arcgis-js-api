@@ -52,7 +52,7 @@
 
     inputSize = screenSizePerspectiveScaleVec2($size, projectAux.absCosAngle, projectAux.distanceToCamera, screenSizePerspective);
 
-    vec2 screenOffsetScaled = screenSizePerspectiveScaleFloat(screenOffset, projectAux.absCosAngle, projectAux.distanceToCamera, screenSizePerspectiveAlignment);
+    vec2 screenOffsetScaled = screenSizePerspectiveScaleVec2(screenOffset, projectAux.absCosAngle, projectAux.distanceToCamera, screenSizePerspectiveAlignment);
 
 #else
 

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/accessorSupport/decorators","../../../core/Accessor"],function(t,e,r,o,n,a){var i=function(t){function e(){var e=null!==t&&t.apply(this,arguments)||this;return e.enabled=!0,e.rotationEnabled=!0,e}return r(e,t),a=e,e.prototype.constrain=function(t,e){return this.enabled?(this.rotationEnabled||(t.rotation=0),t):t},e.prototype.clone=function(){return new a({enabled:this.enabled,rotationEnabled:this.rotationEnabled})},o([n.property()],e.prototype,"enabled",void 0),o([n.property()],e.prototype,"rotationEnabled",void 0),e=a=o([n.subclass("esri.views.2d.constraints.RotationConstraint")],e);var a}(n.declared(a));return i});

@@ -1,0 +1,18 @@
+{
+  "title": "PointCloud Filter",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Filters applied to the pointCloud which will hide a point.",
+  "oneOf": [
+    {
+      "$ref": "pointCloudBitfieldFilter_schema.json"
+    },
+    {
+      "$ref": "pointCloudReturnFilter_schema.json"
+    },
+    {
+      "$ref": "pointCloudValueFilter_schema.json"
+    }
+  ]
+}
+

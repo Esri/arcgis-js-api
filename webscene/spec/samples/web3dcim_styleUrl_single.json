@@ -1,0 +1,328 @@
+{
+  "operationalLayers": [
+    {
+      "id": "14badba8372-layer7",
+      "opacity": 1,
+      "title": "UVRenderer from styleUrl",
+      "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/ArcGIS/rest/services/911_driver/FeatureServer/0",
+      "visibility": true,
+      "layerType": "ArcGISFeatureLayer",
+      "layerDefinition": {
+        "minScale": 0,
+        "maxScale": 10,
+        "elevationInfo": {
+          "mode": "relativeToGround"
+        },
+        "drawingInfo": {
+          "renderer": {
+            "type": "uniqueValue",
+            "visualVariables": [
+              {
+                "type": "sizeInfo",
+                "field": "z_accuracy",
+                "minDataValue": 5,
+                "maxDataValue": 50,
+                "minSize": 50,
+                "maxSize": 200,
+                "axis": "all"
+              },
+              {
+                "type": "colorInfo",
+                "field": "xy_accuracy",
+                "minDataValue": 15,
+                "maxDataValue": 50,
+                "colors": [
+                  [
+                    0,
+                    0,
+                    255,
+                    255
+                  ],
+                  [
+                    255,
+                    0,
+                    0,
+                    255
+                  ]
+                ]
+              }
+            ],
+            "field1": "driver_string",
+            "styleUrl": "https://www.arcgis.com/sharing/rest/content/items/bf27400d167d4c2e8e12c8a46f87afe4/data"
+          }
+        }
+      }
+    },
+    {
+      "id": "14badba8319-layer6",
+      "opacity": 1,
+      "title": "styleSymbolReference inv Cone",
+      "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/ArcGIS/rest/services/911_driver/FeatureServer/0",
+      "visibility": true,
+      "layerType": "ArcGISFeatureLayer",
+      "layerDefinition": {
+        "minScale": 0,
+        "maxScale": 10,
+        "elevationInfo": {
+          "mode": "relativeToGround"
+        },
+        "drawingInfo": {
+          "renderer": {
+            "type": "simple",
+            "visualVariables": [
+              {
+                "type": "sizeInfo",
+                "field": "z_accuracy",
+                "minDataValue": 5,
+                "maxDataValue": 50,
+                "minSize": 50,
+                "maxSize": 200,
+                "axis": "height"
+              },
+              {
+                "type": "sizeInfo",
+                "minSize": 50,
+                "axis": "widthAndDepth"
+              },
+              {
+                "type": "colorInfo",
+                "field": "xy_accuracy",
+                "minDataValue": 15,
+                "maxDataValue": 50,
+                "colors": [
+                  [
+                    0,
+                    0,
+                    255,
+                    255
+                  ],
+                  [
+                    255,
+                    0,
+                    0,
+                    255
+                  ]
+                ]
+              }
+            ],
+            "symbol": {
+              "type": "styleSymbolReference",
+              "styleUrl": "https://www.arcgis.com/sharing/rest/content/items/bf27400d167d4c2e8e12c8a46f87afe4/data",
+              "name": "Standing Diamond"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "14badba81d6-layer1",
+      "opacity": 1,
+      "title": "styleSymbolReference schem. Tree",
+      "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/ArcGIS/rest/services/911_driver/FeatureServer/0",
+      "visibility": false,
+      "layerType": "ArcGISFeatureLayer",
+      "layerDefinition": {
+        "minScale": 0,
+        "maxScale": 10,
+        "elevationInfo": {
+          "mode": "relativeToGround"
+        },
+        "drawingInfo": {
+          "renderer": {
+            "type": "simple",
+            "visualVariables": [
+              {
+                "type": "sizeInfo",
+                "field": "z_accuracy",
+                "minDataValue": 5,
+                "maxDataValue": 50,
+                "minSize": 50,
+                "maxSize": 200,
+                "axis": "height"
+              },
+              {
+                "type": "colorInfo",
+                "field": "xy_accuracy",
+                "minDataValue": 15,
+                "maxDataValue": 50,
+                "colors": [
+                  [
+                    0,
+                    0,
+                    255,
+                    255
+                  ],
+                  [
+                    255,
+                    0,
+                    0,
+                    255
+                  ]
+                ]
+              }
+            ],
+            "symbol": {
+              "type": "styleSymbolReference",
+              "styleUrl": "https://www.arcgis.com/sharing/rest/content/items/34c0db1d903b4bccad96ce2518e19d92/data",
+              "name": "Frangula"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "14badba81fa-layer4",
+      "opacity": 1,
+      "title": "styleSymbolReference real. Tree",
+      "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/ArcGIS/rest/services/911_driver/FeatureServer/0",
+      "visibility": false,
+      "layerType": "ArcGISFeatureLayer",
+      "layerDefinition": {
+        "minScale": 0,
+        "maxScale": 10,
+        "elevationInfo": {
+          "mode": "relativeToGround"
+        },
+        "drawingInfo": {
+          "renderer": {
+            "type": "simple",
+            "visualVariables": [
+              {
+                "type": "sizeInfo",
+                "field": "z_accuracy",
+                "minDataValue": 5,
+                "maxDataValue": 50,
+                "minSize": 50,
+                "maxSize": 200,
+                "axis": "height"
+              }
+            ],
+            "symbol": {
+              "type": "styleSymbolReference",
+              "styleUrl": "https://www.arcgis.com/sharing/rest/content/items/46512894542b4857b338b95bf1a1b7b6/data",
+              "name": "Frangula"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "14badba82ef-layer5",
+      "opacity": 1,
+      "title": "styleSymbolReference Icon",
+      "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/ArcGIS/rest/services/911_driver/FeatureServer/0",
+      "visibility": false,
+      "layerType": "ArcGISFeatureLayer",
+      "layerDefinition": {
+        "minScale": 0,
+        "maxScale": 10,
+        "elevationInfo": {
+          "mode": "relativeToGround",
+          "offset": 200
+        },
+        "drawingInfo": {
+          "renderer": {
+            "type": "simple",
+            "visualVariables": [
+              {
+                "type": "sizeInfo",
+                "field": "z_accuracy",
+                "minDataValue": 5,
+                "maxDataValue": 50,
+                "minSize": 12,
+                "maxSize": 48,
+                "axis": "height"
+              }
+            ],
+            "symbol": {
+              "type": "styleSymbolReference",
+              "styleUrl": "https://www.arcgis.com/sharing/rest/content/items/a91ce080e9414810b71d55edc51b5837/data",
+              "name": "Airport"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "baseMap": {
+    "baseMapLayers": [
+      {
+        "id": "worldTopoBase",
+        "opacity": 1,
+        "title": "World Topo Map",
+        "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledMapServiceLayer"
+      }
+    ],
+    "id": "basemap",
+    "title": "Topographic",
+    "elevationLayers": [
+      {
+        "id": "globalElevation",
+        "listMode": "show",
+        "title": "Terrain3D",
+        "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledElevationServiceLayer"
+      }
+    ]
+  },
+  "ground": {
+    "layers": [
+      {
+        "id": "globalElevation",
+        "listMode": "show",
+        "title": "Terrain3D",
+        "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledElevationServiceLayer"
+      }
+    ]
+  },
+  "version": "1.9",
+  "authoringApp": "ArcGIS API for JavaScript",
+  "authoringAppVersion": "4.6",
+  "presentation": {
+    "slides": []
+  },
+  "initialState": {
+    "environment": {
+      "lighting": {
+        "datetime": 1426419733000,
+        "displayUTCOffset": 0
+      }
+    },
+    "viewpoint": {
+      "rotation": 326.0164127450096,
+      "scale": 15452.525348369445,
+      "targetGeometry": {
+        "spatialReference": {
+          "latestWkid": 3857,
+          "wkid": 102100
+        },
+        "x": 498465.81416876963,
+        "y": 6783272.939468486,
+        "z": 2.7392569053918123
+      },
+      "camera": {
+        "position": {
+          "spatialReference": {
+            "latestWkid": 3857,
+            "wkid": 102100
+          },
+          "x": 494898.5960581822,
+          "y": 6777983.562918087,
+          "z": 3343.671751866117
+        },
+        "heading": 33.98358725499045,
+        "tilt": 49.6739740739134
+      }
+    }
+  },
+  "spatialReference": {
+    "latestWkid": 3857,
+    "wkid": 102100
+  },
+  "viewingMode": "global"
+}

@@ -1,0 +1,52 @@
+.esri-text-overlay-item {
+  display: block;
+  position: absolute;
+  overflow: hidden;
+  white-space: nowrap;
+
+  color: white;
+  font-size: $text_size;
+  font-family: $font_family;
+  line-height: $line_height;
+
+  text-shadow: 0 0 1px black;
+
+  background: rgba(0, 0, 0, 0.6);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.esri-text-overlay-item-anchor-bottom {
+  transform: translate(-50%, -100%);
+}
+.esri-text-overlay-item-anchor-bottom-right {
+  transform: translate(-100%, -100%);
+}
+.esri-text-overlay-item-anchor-bottom-left {
+  transform: translate(0, -100%);
+}
+.esri-text-overlay-item-anchor-top {
+  transform: translate(-50%, 0);
+}
+.esri-text-overlay-item-anchor-top-right {
+  transform: translate(-100%, 0);
+}
+.esri-text-overlay-item-anchor-top-left {
+  transform: translate(0, 0);
+}
+.esri-text-overlay-item-anchor-center {
+  transform: translate(-50%, -50%);
+}
+.esri-text-overlay-item-anchor-right {
+  transform: translate(-100%, -50%);
+}
+.esri-text-overlay-item-anchor-left {
+  transform: translate(0, -50%);
+}
+
+.esri-line-overlay-item {
+  display: block;
+  position: absolute;
+  overflow: hidden;
+  white-space: nowrap;
+}

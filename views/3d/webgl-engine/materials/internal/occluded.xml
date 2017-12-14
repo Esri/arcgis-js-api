@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<snippets>
+
+<snippet name="vsRenderOccludedApply"><![CDATA[
+  $vsprecisionf
+
+  attribute vec2 $position;
+  varying vec2 uv;
+
+  void main(void) {
+    gl_Position = vec4($position, 0.0, 1.0);
+    uv = $position.xy * 0.5 + vec2(0.5);
+  }
+]]></snippet>
+
+<snippet name="fsRenderOccludedApply"><![CDATA[
+  $fsprecisionf
+
+  uniform sampler2D occludedColorMap;
+
+  varying vec2 uv;
+
+  void main() {
+    vec4 occludedColor = texture2D(occludedColorMap, uv);
+    gl_FragColor = occludedColor * vec4(1.0, 1.0, 1.0, 0.4);
+  }
+
+]]></snippet>
+
+</snippets>

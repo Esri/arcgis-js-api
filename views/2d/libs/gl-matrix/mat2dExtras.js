@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define(["require","exports","./mat2d","./vec2","./common"],function(t,e,r,n,a){Object.defineProperty(e,"__esModule",{value:!0});var o=function(){var t=r.create(),e=n.create();return function(a,o,u){return r.fromTranslation(t,u),r.multiply(a,t,o),n.negate(e,u),r.translate(a,a,e),a}}();e.rotategAt=function(){var t=r.create();return function(e,n,u,i){return r.fromRotation(t,a.toRadian(u)),o(t,t,i),r.multiply(e,t,n),e}}(),e.scaleAt=function(){var t=r.create();return function(e,n,a,u){return r.fromScaling(t,a),o(t,t,u),r.multiply(e,t,n),e}}()});

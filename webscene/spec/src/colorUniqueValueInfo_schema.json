@@ -1,0 +1,39 @@
+{
+  "title": "colorUniqueValueInfo",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "The colorUniqueValueInfo object matches a unique value with a specific color.",
+  "properties": {
+    "color": {
+      "$ref": "color_schema.json"
+    },
+    "description": {
+      "type": "string",
+      "description": "String value used to describe the class."
+    },
+    "label": {
+      "type": "string",
+      "description": "String value used to label the class."
+    },
+    "values": {
+      "type": "array",
+      "description": "List of string or number values used to classifiy points.",
+      "items": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "number"
+          }
+        ]
+      }
+    }
+  },
+  "required": [
+    "color",
+    "values"
+  ],
+  "additionalProperties": false
+}
+

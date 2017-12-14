@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define({title:"Pealkiri",fileName:"Faili nimi",titlePlaceHolder:"Faili pealkiri",fileNamePlaceHolder:"Faili nimi",formatDefaultOption:"Vali formaat",fileFormatTitle:"Faili formaat",layoutTitle:"Lehe seadistus",layoutDefaultOption:"Vali lehe seadistus",scale:"Määra mõõtkava",scaleLabel:"mõõtkava",reset:"lähtesta",author:"Autor",copyright:"Autoriõigus",legend:"Kaasa legend",lock:"lukk",swap:"vaheta",panelToggle:"Paneeli vahetus",advancedOptions:"Täiendavad võimalused",width:"Laius",height:"Kõrgus",attribution:"Kaasa atribuudid",layoutTab:"Paigutus",mapOnlyTab:"Ainult kaart",untitled:"pealkirjata",pending:"Eksportimine",ready:"Ava see",linkReady:"Ava uues aknas.",error:"Selle eemaldamiseks valige see.",sceneViewError:"Vaates SceneView printimist ei toetata.",serviceError:"Ilmnes tõrge.","export":"Ekspordi",exportDescription:"Eksport. Eksporditud failid kuvatakse allpool.",exportText:"Eksporditud failid",exportHint:"Eksporditud failid kuvatakse siin."});

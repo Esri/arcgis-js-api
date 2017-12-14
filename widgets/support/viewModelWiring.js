@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define(["../../core/watchUtils"],function(e){function t(e){var t="viewModel."+e;return function(){return this.get(t)}}function n(e){return function(t){var n=this.get("viewModel");n&&n.set(e,t)}}function r(e){var t="viewModel."+e;return function(){var e=this.get(t);return e?e.apply(this.viewModel,arguments):void 0}}function i(t,n){var r=o(t,n),i=e.init(t,"viewModel",function(e,i){r.forEach(function(e){e.remove()}),r.length=0,e&&(r=o(t,n)),t.own.apply(t,r)});t.own(i)}function o(e,t){return Array.isArray(t)||(t=[t]),t.map(function(t){return e.viewModel.on(t,function(n){e.emit(t,n)})})}return{createGetterDelegate:t,createSetterDelegate:n,createMethodDelegate:r,setUpEventDelegates:i}});

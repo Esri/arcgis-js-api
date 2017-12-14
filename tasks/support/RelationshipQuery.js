@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define(["../../core/Accessor"],function(e){var t=e.createSubclass({declaredClass:"esri.tasks.support.RelationshipQuery",properties:{definitionExpression:"",geometryPrecision:null,maxAllowableOffset:null,objectIds:null,outFields:null,outSpatialReference:null,relationshipId:null,returnGeometry:!1},toJSON:function(){var e={definitionExpression:this.definitionExpression,relationshipId:this.relationshipId,returnGeometry:this.returnGeometry,maxAllowableOffset:this.maxAllowableOffset,geometryPrecision:this.geometryPrecision},t=this.objectIds,i=this.outFields,s=this.outSpatialReference;return t&&(e.objectIds=t.join(",")),i&&(e.outFields=i.join(",")),s&&(e.outSR=s.wkid||JSON.stringify(s.toJSON())),e._ts=this._ts,e}});return t});

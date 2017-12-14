@@ -5,6 +5,10 @@ $compass_size: 20px !default;
     border-radius: 50%;
   }
 
+  .esri-compass--active {
+    background-color: $selected_background_color;
+  }
+
   .esri-compass__icon {
     font-size: $compass_size;
     line-height: $compass_size;

@@ -1,41 +1,46 @@
 # arcgis-js-api
 
-A minified, unbuilt version of the [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/) to be used with [bower](http://bower.io/) and npm.
+A minified, unbuilt version of the [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/) to be used with [bower](http://bower.io).
 
 ## Features
-You can install the ArcGIS API for JavaScript via [bower](http://bower.io/) and create your own custom builds with [Dojo](http://dojotoolkit.org/) or [RequireJS](http://requirejs.org/) or via [npm](https://www.npmjs.com/package/arcgis-js-api).
+A minified, unbuilt version of the [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/).
+You can install this repo via [bower](http://bower.io/) and create your own custom builds with [Dojo](http://dojotoolkit.org/) or [RequireJS](http://requirejs.org/).
 
 ## Instructions
 
-```
-npm install arcgis-js-api
-```
+Building an ArcGIS API for JavaScript application requires signing up for an [ArcGIS account](https://developers.arcgis.com).
 
-or
+`npm install arcgis-js-api`
 
-```
-bower install arcgis-js-api
-```
+Or
+
+`bower install arcgis-js-api`
 
 ## Requirements
 
-To install and use via `bower` or `npm`:
+To install and use as a `bower` or `npm` installation:
 
 * [node](http://nodejs.org/)
 * [git](http://git-scm.org/)
 * [bower](http://bower.io/)
 
-Building an ArcGIS API for JavaScript application requires an [ArcGIS account](https://developers.arcgis.com).
+This repo has dependencies on the following repos.
 
-## Dependencies
+| Library | Repo | Submodule path |
+| :------ |:---- |:-------------- |
+| dojo  | https://github.com/Esri/dojo/tree/1.13.0-esri   | /dojo |
+| dijit | https://github.com/Esri/dijit/tree/1.13.0-esri  | /dijit |
+| dojox | https://github.com/Esri/dojox/tree/1.13.0-esri  | /dojox |
+| util | https://github.com/Esri/dojo-util/tree/1.13.0-esri    | /util |
+| dgrid | https://github.com/Esri/dgrid/tree/1.2.1-esri  | /dgrid |
+| dstore | https://github.com/SitePen/dstore/tree/v1.1.2 | /dstore |
+| moment | https://github.com/moment/moment/tree/2.19.2 | /moment |
 
-This repository has dependencies on other projects, see `dependencies` in [package.json](package.json).
+Please see our [recommended guide](https://developers.arcgis.com/javascript/latest/guide/using-bower/index.html).
 
 ## Resources
 
-* [Using Bower for Custom Builds](https://developers.arcgis.com/javascript/latest/guide/using-bower/index.html)
-* [npm and the ArcGIS API for JavaScript](https://community.esri.com/community/developers/web-developers/arcgis-api-for-javascript/blog/2017/04/13/npm-and-arcgis-api-for-javascript-43)
-* [API Reference, Guide and Sample Code](https://developers.arcgis.com/javascript/)
+* [ArcGIS for JavaScript](https://developers.arcgis.com/javascript/)
 * [http://blogs.esri.com/esri/arcgis/tag/javascript/](http://blogs.esri.com/esri/arcgis/tag/javascript/)
 * [twitter@esri](http://twitter.com/esri)
 

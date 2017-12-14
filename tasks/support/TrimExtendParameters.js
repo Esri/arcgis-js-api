@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define(["../../core/Accessor","../../core/kebabDictionary","dojo/_base/array"],function(e,t,n){var r=t({0:"default-curve-extension",1:"relocate-ends",2:"keep-end-attributes",4:"no-end-attributes",8:"no-extend-at-from",16:"no-extend-at-to"}),o=e.createSubclass({declaredClass:"esri.tasks.support.TrimExtendParameters",properties:{extendHow:"default-curve-extension",polylines:null,trimExtendTo:null},toJSON:function(){var e=n.map(this.polylines,function(e){return e.toJSON()}),t={};return t.polylines=JSON.stringify(e),t.trimExtendTo=JSON.stringify(this.trimExtendTo.toJSON()),t.sr=JSON.stringify(this.polylines[0].spatialReference.toJSON()),t.extendHow=r.toJSON(this.extendHow),t}});return o});

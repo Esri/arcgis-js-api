@@ -191,6 +191,7 @@
 	}
 ]]></snippet>
 
+
 <snippet name="fsRibbonLine"><![CDATA[
   $fsprecisionf
 
@@ -198,16 +199,36 @@
 	varying vec4 vColor;
 	varying vec2 vtc;
 
+#ifdef STIPPLE
+  uniform float stippleLengthDoubleInv;
+#endif
+
 	void main() {
-		gl_FragColor = eColor * vColor;
-		//gl_FragColor.a = 1;
+
+#ifdef STIPPLE
+    if (fract(vtc.x * stippleLengthDoubleInv) > 0.5) {
+      discard;
+    }
+#endif
+
+    gl_FragColor = eColor * vColor;
 	}
 ]]></snippet>
 
 <snippet name="fsRibbonLineHighlight"><![CDATA[
 	$fsprecisionf
 
+#ifdef STIPPLE
+  uniform float stippleLengthDoubleInv;
+#endif
+
 	void main() {
+#ifdef STIPPLE
+    if (fract(vtc.x * stippleLengthDoubleInv) > 0.5) {
+      discard;
+    }
+#endif
+
 		gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
 	}
 ]]></snippet>

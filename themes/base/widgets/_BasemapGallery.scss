@@ -149,6 +149,8 @@
     }
     .esri-basemap-gallery__item-title {
       margin-top: floor($cap_spacing/2);
+
+      width: 100%;  // ie11 needs this for title to wrap
     }
     .esri-basemap-gallery__item--selected,
     .esri-basemap-gallery__item.esri-basemap-gallery__item--selected:hover,

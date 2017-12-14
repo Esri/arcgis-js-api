@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define({title:"标题",fileName:"文件名",titlePlaceHolder:"文件标题",fileNamePlaceHolder:"文件名",formatDefaultOption:"选择格式",fileFormatTitle:"文件格式",layoutTitle:"页面设置",layoutDefaultOption:"选择页面设置",scale:"设置比例",scaleLabel:"比例",reset:"重置",author:"作者",copyright:"版权所有",legend:"包括图例",lock:"锁定",swap:"交换",panelToggle:"面板切换",advancedOptions:"高级选项",width:"宽度",height:"高度",attribution:"包括属性",layoutTab:"布局",mapOnlyTab:"仅地图",untitled:"无标题",pending:"导出",ready:"打开此项",linkReady:"在新窗口中打开。",error:"选择此项以将其移除。",sceneViewError:"SceneView 中不支持打印。",serviceError:"似乎存在一个错误。","export":"导出",exportDescription:"导出。导出的文件将在下面显示。",exportText:"已导出文件",exportHint:"导出的文件将在此处显示。"});

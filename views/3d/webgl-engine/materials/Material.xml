@@ -66,6 +66,10 @@
 	varying vec3 vpos;
 	varying vec3 vnormal;
 
+#ifdef RECEIVE_SHADOWS
+	varying float linearDepth;
+#endif
+
 #ifdef VERTEXCOLORS
 	attribute vec4 $color;
 #endif
@@ -126,6 +130,14 @@ $vvUniforms
 #endif
 
 		gl_Position = proj * view * vec4(vpos, 1.0);
+
+#ifdef RECEIVE_SHADOWS
+		// Shadowmap's cascading index used to be based on '1.0 / gl_FragCoord.w'
+		// (i.e. the perspective interpolation of 'gl_Position.w'). Precision
+		// issues on iPad/iPhone with the 'w' component require the depth to be
+		// passed as varying to properly drive the cascading shadow map index.
+		linearDepth = gl_Position.w;
+#endif
 
 #ifdef VERTEXCOLORS
 		vcolor = $color * 0.003921568627451; // = 1/255
@@ -196,6 +208,7 @@ $vvUniforms
 #endif
 
 #ifdef RECEIVE_SHADOWS
+	varying float linearDepth;
 	$evalShadow
 #endif
 
@@ -223,7 +236,7 @@ $vvUniforms
 		// compute shadowing
 		float shadow = 0.0;
 		#ifdef RECEIVE_SHADOWS
-			shadow = evalShadow(vpos, 1.0 / gl_FragCoord.w, depthTex, shadowMapNum, shadowMapDistance, shadowMapMatrix, depthHalfPixelSz);
+			shadow = evalShadow(vpos, linearDepth, depthTex, shadowMapNum, shadowMapDistance, shadowMapMatrix, depthHalfPixelSz);
 		#elif defined(VIEWING_MODE_GLOBAL)
 			// at global scale (and in global scenes) we fall back to this approximation
 			// to shadow objects on the dark side of the earth

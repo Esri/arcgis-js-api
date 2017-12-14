@@ -1,6 +1,7 @@
 /**
  * Provides a simple widget that animates the {@link module:esri/views/View}
- * to the user's current location. By default the widget looks like the following:
+ * to the user's current location. The view rotates according to the direction
+ * where the tracked device is heading towards. By default the widget looks like the following:
  *
  * ![locate-button](../assets/img/apiref/widgets/widgets-locate.png)
  *
@@ -189,6 +190,25 @@ class Locate extends declared(Widget) {
    */
   @aliasOf("viewModel.graphic")
   graphic: Graphic = null;
+
+  //----------------------------------
+  //  useHeadingEnabled
+  //----------------------------------
+
+  /**
+   * Indicates whether the widget will automatically [rotate to user's direction](https://www.w3.org/TR/geolocation-API/#coordinates_interface).
+   * Set to `false` to disable this behavior.
+   *
+   * @since 4.6
+   *
+   * @name useHeadingEnabled
+   * @instance
+   *
+   * @type {boolean}
+   * @default true
+   */
+  @aliasOf("viewModel.useHeadingEnabled")
+  useHeadingEnabled: boolean = null;
 
   //----------------------------------
   //  view

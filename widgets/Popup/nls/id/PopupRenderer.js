@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define({attach:"Lampiran",fields:"Kolom",fieldsSummary:"Daftar atribut dan nilai",media:"Media",next:"Berikutnya",numCharts:"Jumlah bagan",numImages:"Jumlah gambar",noTitle:"Tidak berjudul",previous:"Sebelumnya"});

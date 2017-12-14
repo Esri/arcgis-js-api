@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators","../../core/JSONSupport","../../core/kebabDictionary"],function(e,r,t,o,p,n,c){var i=c({codedValue:"coded-value"}),u=function(e){function r(r){var t=e.call(this,r)||this;return t.name=null,t.type=null,t}return t(r,e),r.prototype.writeType=function(e,r){r.type=i.toJSON(e)},o([p.property({json:{write:!0}})],r.prototype,"name",void 0),o([p.property({json:{read:i.fromJSON,write:!0}})],r.prototype,"type",void 0),o([p.writer("type")],r.prototype,"writeType",null),r=o([p.subclass("esri.layers.support.Domain")],r)}(p.declared(n));return u});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators","../../core/JSONSupport","../../core/kebabDictionary"],function(e,r,t,o,n,p,a){var i=a({inherited:"inherited",codedValue:"coded-value",range:"range"}),c=function(e){function r(r){var t=e.call(this,r)||this;return t.name=null,t.type=null,t}return t(r,e),o([n.property({json:{write:!0}})],r.prototype,"name",void 0),o([n.property({json:{read:i.read,write:i.write}})],r.prototype,"type",void 0),r=o([n.subclass("esri.layers.support.Domain")],r)}(n.declared(p));return c});

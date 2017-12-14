@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define(["dojo/_base/lang","../request","../geometry/support/normalizeUtils","./Task","./support/IdentifyResult"],function(e,r,t,s,n){var i=s.createSubclass({declaredClass:"esri.tasks.IdentifyTask",properties:{gdbVersion:{value:null,type:String},parsedUrl:{get:function(){var e=this._parseUrl(this.url);return e.path+="/identify",e}},url:{}},execute:function(s,n){var i=s.geometry?[s.geometry]:[];return t.normalizeCentralMeridian(i).then(function(t){var i=this._encode(e.mixin({},this.parsedUrl.query,{f:"json"},s.toJSON({geometry:t&&t[0]})));this.gdbVersion&&(i.gdbVersion=this.gdbVersion);var a={query:i,callbackParamName:"callback"};return(this.requestOptions||n)&&(a=e.mixin({},this.requestOptions,n,a)),r(this.parsedUrl.path,a)}.bind(this)).then(this._handleExecuteResponse)},_handleExecuteResponse:function(e){var r=e.data,t=r.results||[];return r.results=t.map(function(e){return n.fromJSON(e)}),r}});return i});

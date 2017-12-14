@@ -1,0 +1,270 @@
+{
+  "operationalLayers": [
+    {
+      "id": "15c68cbc4c2-layer-0",
+      "opacity": 1,
+      "title": "Landsat8 Views",
+      "url": "https://landsat2.arcgis.com/arcgis/rest/services/Landsat8_Views/ImageServer",
+      "visibility": true,
+      "popupInfo": {
+        "showAttachments": true,
+        "popupElements": [
+          {
+            "type": "fields"
+          },
+          {
+            "type": "attachments"
+          }
+        ],
+        "fieldInfos": [
+          {
+            "fieldName": "Name",
+            "label": "Name",
+            "visible": true
+          },
+          {
+            "fieldName": "MinPS",
+            "label": "MinPS",
+            "visible": true,
+            "format": {
+              "digitSeparator": true,
+              "places": 2
+            }
+          },
+          {
+            "fieldName": "MaxPS",
+            "label": "MaxPS",
+            "visible": true,
+            "format": {
+              "digitSeparator": true,
+              "places": 2
+            }
+          },
+          {
+            "fieldName": "LowPS",
+            "label": "LowPS",
+            "visible": true,
+            "format": {
+              "digitSeparator": true,
+              "places": 2
+            }
+          },
+          {
+            "fieldName": "HighPS",
+            "label": "HighPS",
+            "visible": true,
+            "format": {
+              "digitSeparator": true,
+              "places": 2
+            }
+          },
+          {
+            "fieldName": "Category",
+            "label": "Category",
+            "visible": true,
+            "format": {
+              "digitSeparator": true,
+              "places": 0
+            }
+          },
+          {
+            "fieldName": "ProductName",
+            "label": "ProductName",
+            "visible": true
+          },
+          {
+            "fieldName": "WRS_Path",
+            "label": "WRS_Path",
+            "visible": true,
+            "format": {
+              "digitSeparator": true,
+              "places": 0
+            }
+          },
+          {
+            "fieldName": "WRS_Row",
+            "label": "WRS_Row",
+            "visible": true,
+            "format": {
+              "digitSeparator": true,
+              "places": 0
+            }
+          },
+          {
+            "fieldName": "Best",
+            "label": "Best",
+            "visible": true,
+            "format": {
+              "digitSeparator": true,
+              "places": 0
+            }
+          },
+          {
+            "fieldName": "AcquisitionDate",
+            "label": "AcquisitionDate",
+            "visible": true,
+            "format": {
+              "dateFormat": "longMonthDayYear"
+            }
+          },
+          {
+            "fieldName": "SunAzimuth",
+            "label": "SunAzimuth",
+            "visible": true,
+            "format": {
+              "digitSeparator": true,
+              "places": 0
+            }
+          },
+          {
+            "fieldName": "SunElevation",
+            "label": "SunElevation",
+            "visible": true,
+            "format": {
+              "digitSeparator": true,
+              "places": 0
+            }
+          },
+          {
+            "fieldName": "CloudCover",
+            "label": "CloudCover",
+            "visible": true,
+            "format": {
+              "digitSeparator": true,
+              "places": 0
+            }
+          },
+          {
+            "fieldName": "PR",
+            "label": "PR",
+            "visible": true,
+            "format": {
+              "digitSeparator": true,
+              "places": 0
+            }
+          },
+          {
+            "fieldName": "Latest",
+            "label": "Latest",
+            "visible": true,
+            "format": {
+              "digitSeparator": true,
+              "places": 0
+            }
+          },
+          {
+            "fieldName": "DayOfYear",
+            "label": "DayOfYear",
+            "visible": true,
+            "format": {
+              "digitSeparator": true,
+              "places": 0
+            }
+          },
+          {
+            "fieldName": "Month",
+            "label": "Month",
+            "visible": true,
+            "format": {
+              "digitSeparator": true,
+              "places": 0
+            }
+          },
+          {
+            "fieldName": "SensorName",
+            "label": "Sensor Name",
+            "visible": true
+          },
+          {
+            "fieldName": "dataset_id",
+            "label": "dataset_id",
+            "visible": true
+          }
+        ],
+        "title": "Landsat8 Views: {Name}"
+      },
+      "layerType": "ArcGISImageServiceLayer"
+    }
+  ],
+  "baseMap": {
+    "baseMapLayers": [
+      {
+        "id": "defaultBasemap",
+        "opacity": 1,
+        "title": "Topographic",
+        "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledMapServiceLayer"
+      }
+    ],
+    "id": "topo",
+    "title": "World Topo",
+    "elevationLayers": [
+      {
+        "id": "globalElevation",
+        "listMode": "hide",
+        "title": "Terrain3D",
+        "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledElevationServiceLayer"
+      }
+    ]
+  },
+  "ground": {
+    "layers": [
+      {
+        "id": "globalElevation",
+        "listMode": "hide",
+        "title": "Terrain3D",
+        "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledElevationServiceLayer"
+      }
+    ]
+  },
+  "version": "1.9",
+  "authoringApp": "ArcGIS API for JavaScript",
+  "authoringAppVersion": "4.6",
+  "presentation": {
+    "slides": []
+  },
+  "initialState": {
+    "environment": {
+      "lighting": {
+        "datetime": 1426434557000,
+        "displayUTCOffset": -3
+      }
+    },
+    "viewpoint": {
+      "rotation": 14.218432125554784,
+      "scale": 77098021.41956906,
+      "targetGeometry": {
+        "spatialReference": {
+          "latestWkid": 3857,
+          "wkid": 102100
+        },
+        "x": -4850702.3141648425,
+        "y": 5547098.981989685,
+        "z": -1395.7745538484305
+      },
+      "camera": {
+        "position": {
+          "spatialReference": {
+            "latestWkid": 3857,
+            "wkid": 102100
+          },
+          "x": -4835433.321406812,
+          "y": 5487048.668938005,
+          "z": 24902440.432268605
+        },
+        "heading": 345.7815678744452,
+        "tilt": 0.10194332106850632
+      }
+    }
+  },
+  "spatialReference": {
+    "latestWkid": 3857,
+    "wkid": 102100
+  },
+  "viewingMode": "global"
+}

@@ -1,6 +1,7 @@
 /**
  * Provides a simple button that animates the {@link module:esri/views/View}
- * to the user's location when clicked. While tracking, the default button looks like the following:
+ * to the user's location when clicked. The view rotates according to the direction where the
+ * tracked device is heading towards. While tracking, the default button looks like the following:
  *
  * ![track-button](../assets/img/apiref/widgets/widgets-track.png)
  *
@@ -17,7 +18,7 @@
  * As of version 4.2, the Track Button no longer displays in non-secure web apps. At version
  * [4.1](https://blogs.esri.com/esri/arcgis/2016/04/14/increased-web-api-security-in-google-chrome/)
  * this only applied to Google Chrome.
- * :::
+ *
  * For additional information regarding this, visit the ArcGIS blog,
  * [Increased web API security in Google Chrome](https://blogs.esri.com/esri/arcgis/2016/04/14/increased-web-api-security-in-google-chrome/).
  * :::
@@ -191,6 +192,25 @@ class Track extends declared(Widget) {
    */
   @aliasOf("viewModel.tracking")
   tracking: boolean = null;
+
+  //----------------------------------
+  //  useHeadingEnabled
+  //----------------------------------
+
+  /**
+   * Indicates whether the widget will automatically [rotate to user's direction](https://www.w3.org/TR/geolocation-API/#coordinates_interface).
+   * Set to `false` to disable this behavior.
+   *
+   * @since 4.6
+   *
+   * @name useHeadingEnabled
+   * @instance
+   *
+   * @type {boolean}
+   * @default true
+   */
+  @aliasOf("viewModel.useHeadingEnabled")
+  useHeadingEnabled: boolean = null;
 
   //----------------------------------
   //  view

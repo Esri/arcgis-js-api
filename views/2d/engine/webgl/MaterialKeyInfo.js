@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define(["require","exports","../../../../core/ObjectPool","./enums"],function(i,t,e,v){var s=function(){function i(){this.sdf=!1,this.vvSizeMinMaxValue=!1,this.vvSizeScaleStops=!1,this.vvSizeFieldStops=!1,this.vvSizeUnitValue=!1,this.vvColor=!1,this.vvRotation=!1,this.vvOpacity=!1,this.visibility=!1,this.pattern=!1,this.heatmap=!1}return i.prototype.copy=function(i){this.geometryType=i.geometryType,this.sdf=i.sdf,this.vvSizeMinMaxValue=i.vvSizeMinMaxValue,this.vvSizeScaleStops=i.vvSizeScaleStops,this.vvSizeFieldStops=i.vvSizeFieldStops,this.vvSizeUnitValue=i.vvSizeUnitValue,this.vvColor=i.vvColor,this.vvRotation=i.vvRotation,this.vvOpacity=i.vvOpacity,this.visibility=i.visibility,this.pattern=i.pattern,this.heatmap=i.heatmap},i.prototype.release=function(){this.geometryType=v.WGLGeometryType.UNKNOWN,this.sdf=!1,this.vvSizeMinMaxValue=!1,this.vvSizeScaleStops=!1,this.vvSizeFieldStops=!1,this.vvSizeUnitValue=!1,this.vvColor=!1,this.vvRotation=!1,this.vvOpacity=!1,this.visibility=!1,this.pattern=!1,this.heatmap=!1},i.pool=new e(i),i}();return s});

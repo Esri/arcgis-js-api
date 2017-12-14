@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({zoom:"Parodyti visą",next:"Kitas elementas",previous:"Ankstesnis elementas",close:"Užverti",dock:"Prijungti",undock:"Atjungti",menu:"Meniu",untitled:"Bevardis",pageText:"{index} iš {total}",selectedFeature:"Pasirinktas elementas",selectedFeatures:"{total} rezultatai",loading:"Įkeliama",collapse:"Suskleisti",expand:"Išskleisti"});
+define({zoom:"Parodyti visą",next:"Kitas elementas",previous:"Ankstesnis elementas",close:"Užverti",dock:"Prijungti",undock:"Atjungti",menu:"Meniu",untitled:"Bevardis",pageText:"{index} iš {total}",selectedFeature:"Pasirinktas elementas",selectedFeatures:"{total} rezultatai",loading:"Kraunama",collapse:"Suskleisti",expand:"Išskleisti"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define(["dojo/_base/lang","../../request","./WMBaseTask"],function(e,r,l){var n=l.createSubclass({declaredClass:"esri.tasks.workflow.LOILayerTask",properties:{url:{}},_getJobIdField:function(){var l=this.parsedUrl.path,n=this._encode(e.mixin({},this.parsedUrl.query,{f:"json"}));return r(l,{query:n,callbackParamName:"callback"},this.requestOptions).then(function(e){var r=e.data,n="JOB_ID",a=null,t=null,s=r.fields;if(null==s)return new Error(l+", data fields = null");for(var u=0,i=s.length;i>u;u++)t=s[u].name.toString(),null!=t&&t.toUpperCase().substring(t.length-n.length)==n&&(null==a?a=t:-1!=t.toUpperCase().indexOf("JTX_JOBS_AOI")&&(a=t));return null!=a?a:new Error("jobIDField = null")})}});return n});

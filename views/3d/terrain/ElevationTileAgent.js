@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define(["require","exports","../../../core/tsSupport/extendsHelper","../../../core/ObjectPool","./TerrainConst","./TileAgentBase","./UpsampleInfo"],function(e,t,i,n,r,l,s){var a=function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t._scaleRangeEnabled=!1,t}return i(t,e),t.prototype.dataArrived=function(e){e!==this.tile?this._setUpsamplingTile(e):(this._unsetUpsamplingTile(),this.updateGeometry()),this._dataRequested=null,this._requestNext()},t.prototype.updateGeometry=function(){this._tileLayerInfo.pendingUpdates|=r.TileUpdateTypes.UPDATE_GEOMETRY,this.tile.updateGeometry()},t.prototype._findAncestorWithData=function(){for(var e,t=this.layerClass,i=this.layerIdx,n=this.tile,l=n.vlevel;n&&!(n.layerInfo[t][i].data&&(e=n,l-n.lij[0]>=r.ELEVATION_DESIRED_RESOLUTION_LEVEL));)n=n.parent;if(e){var a=s.Pool.acquire();return a.init(e,0,0,1),a}return null},t.prototype._desiredMinLevelDelta=function(){return r.ELEVATION_DESIRED_RESOLUTION_LEVEL-(this.tile.vlevel-this.tile.lij[0])},t.prototype._setUpsamplingTile=function(e){this._unsetUpsamplingTile();var t=s.Pool.acquire();t.init(e,0,0,1),this._tileLayerInfo.upsampleFromTile=t,this.updateGeometry()},t.Pool=new n(t),t}(l);return a});

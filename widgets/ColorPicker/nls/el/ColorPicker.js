@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define({transparency:"Διαφάνεια",suggested:"Προτεινόμενα",recent:"Πρόσφατες",more:"Περισσότερα",moreColorsTooltip:"Δείτε περισσότερα χρώματα.",paletteTooltip:"Επιλέξτε χρώμα.",noColorTooltip:"Χωρίς χρώμα",hexInputTooltip:"Ένα προσαρμοσμένο χρώμα σε δεκαεξαδική μορφή (#FFFF00)."});

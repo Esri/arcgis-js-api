@@ -1,0 +1,150 @@
+{
+  "title": "authoringInfo",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "The authoringInfo is an object containing metadata about the authoring process for creating a renderer object. This allows the authoring clients to save specific overridable settings so that next time it is accessed via an authoring client, their selections are remembered. Non-authoring clients can ignore it. Properties for color/size/transparency sliders, theme selection, classification information, and additional properties are saved within this object.",
+  "properties": {
+    "classificationMethod": {
+      "type": "string",
+      "description": "Used for classed color or size. The default value is `esriClassifyManual`.",
+      "enum": [
+        "esriClassifyNaturalBreaks",
+        "esriClassifyEqualInterval",
+        "esriClassifyQuantile",
+        "esriClassifyStandardDeviation",
+        "esriClassifyManual"
+      ],
+      "default": "esriClassifyManual"
+    },
+    "fields": {
+      "type": "array",
+      "description": "An array of string values representing field names used for creating predominance renderers.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "lengthUnit": {
+      "type": "string",
+      "description": "Unit used in user interfaces to display world/map sizes and distances",
+      "enum": [
+        "inches",
+        "feet",
+        "yards",
+        "miles",
+        "nautical-miles",
+        "millimeters",
+        "centimeters",
+        "decimeters",
+        "meters",
+        "kilometers",
+        "decimal-degrees"
+      ]
+    },
+    "standardDeviationInterval": {
+      "type": "number",
+      "description": "Use this property if the classificationMethod is `esriClassifyStandardDeviation`.",
+      "enum": [
+        1,
+        0.5,
+        0.33,
+        0.25
+      ]
+    },
+    "type": {
+      "type": "string",
+      "description": "Used in case of classed renderers.",
+      "enum": [
+        "classedSize",
+        "classedColor",
+        "predominance",
+        "univariateColorSize"
+      ]
+    },
+    "visualVariables": {
+      "type": "array",
+      "description": "An array of visualVariable objects containing additional information needed when authoring the renderer.",
+      "items": {
+        "type": "object",
+        "$ref": "authoringInfo_visualVariable_schema.json"
+      }
+    }
+  },
+  "esriDocumentation": {
+    "additionalInformation": "The authoringInfo object is not required with a renderer. It is only used if rendering was generated using the Scene Viewer rendering tools. All snippets provided below show a portion of what is contained within `authoringInfo`. Please refer to the sample snippets in the [authoringInfo visual variable](authoringInfo_visualVariable.md) object for additional help.",
+    "examples": [
+      {
+        "title": "Classed Size Renderer (Option 1)",
+        "code": {
+          "authoringInfo": {
+            "type": "classedSize",
+            "classificationMethod": "esriClassifyNaturalBreaks"
+          }
+        }
+      },
+      {
+        "title": "Classed Size Renderer (Option 2)",
+        "code": {
+          "authoringInfo": {
+            "type": "classedSize",
+            "classificationMethod": "esriClassifyStandardDeviation",
+            "standardDeviationInterval": 0.5
+          }
+        }
+      },
+      {
+        "title": "Classed Color Renderer (Option 1)",
+        "code": {
+          "authoringInfo": {
+            "type": "classedColor",
+            "classificationMethod": "esriClassifyNaturalBreaks"
+          }
+        }
+      },
+      {
+        "title": "Classed Color Renderer (Option 2)",
+        "code": {
+          "authoringInfo": {
+            "type": "classedColor",
+            "classificationMethod": "esriClassifyStandardDeviation",
+            "standardDeviationInterval": 0.5
+          }
+        }
+      },
+      {
+        "title": "Predominance Renderer",
+        "code": {
+          "authoringInfo": {
+            "type": "predominance",
+            "fields": [
+              "COST",
+              "DOLLARS",
+              "PRICE"
+            ]
+          }
+        }
+      },
+      {
+        "title": "Univariate Color Size Renderer",
+        "code": {
+          "authoringInfo": {
+            "type": "univariateColorSize",
+            "visualVariables": [
+              {
+                "type": "sizeInfo",
+                "minSliderValue": 1,
+                "maxSliderValue": 1000
+              },
+              {
+                "type": "colorInfo",
+                "minSliderValue": 1,
+                "maxSliderValue": 1000,
+                "theme": "high-to-low"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}
+

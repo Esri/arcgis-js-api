@@ -80,9 +80,10 @@
     align-items: center;
   }
   .esri-print__advanced-options-section {
-    background-color: $Calcite_Gray_150;
+    background-color: $background_offset_color;
   }
   .esri-print__advanced-options-button-container {
+    color: $text_color;
     display: flex;
     justify-content: flex-start;
     align-items: center;

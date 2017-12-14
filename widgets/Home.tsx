@@ -28,19 +28,6 @@
  * view.ui.add(homeWidget, "top-left");
  */
 
-/**
- * Fires when the [go()](#go) method is called.
- *
- * @event module:esri/widgets/Home#go
- *
- * @see [go()](#go)
- *
- * @example
- * homeWidget.on("go", function(event){
- *   console.log("updating viewpoint");
- * });
- */
-
 /// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
 /// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
 
@@ -67,6 +54,19 @@ const CSS = {
 
 @subclass("esri.widgets.Home")
 class Home extends declared(Widget) {
+
+  /**
+   * Fires when the [go()](#go) method is called.
+   *
+   * @event module:esri/widgets/Home#go
+   *
+   * @see [go()](#go)
+   *
+   * @example
+   * homeWidget.on("go", function(event){
+   *   console.log("updating viewpoint");
+   * });
+   */
 
   //--------------------------------------------------------------------------
   //

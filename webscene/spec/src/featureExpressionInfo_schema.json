@@ -1,0 +1,42 @@
+{
+  "title": "featureExpressionInfo",
+  "type": "object",
+  "description": "An object that defines an expression for per-feature elevation.",
+  "properties": {
+    "expression": {
+      "type": "string",
+      "description": "An [Arcade expression](https://developers.arcgis.com/arcade/) evaluating to a number.",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "description": "Title of the expression.",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false,
+  "required": ["expression"],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "Zero expression",
+        "description": "Do not use geometry.z values",
+        "code": {
+          "featureExpressionInfo": {
+            "expression": "0"
+          }
+        }
+      },
+      {
+        "title": "Expression with field name",
+        "description": "Elevation from field value without geometry.z",
+        "code": {
+          "featureExpressionInfo": {
+            "expression": "$feature.ELEVATION_FOOT"
+          }
+        }
+      }
+    ]
+  }
+}
+

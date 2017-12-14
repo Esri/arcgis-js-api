@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/accessorSupport/decorators","../../../core/Accessor","../../../core/Evented"],function(e,r,t,o,c,s,n){var p=function(e){function r(){return null!==e&&e.apply(this,arguments)||this}return t(r,e),o([c.property()],r.prototype,"view",void 0),r=o([c.subclass("esri.views.2d.draw.DrawAction")],r)}(c.declared(s,n));return p});
+define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/accessorSupport/decorators","../../../core/Accessor","../../../core/Evented"],function(e,r,t,o,c,n,s){var p=function(e){function r(){return null!==e&&e.apply(this,arguments)||this}return t(r,e),r.prototype.getCoordsFromScreenPoint=function(e){var r=this.view.toMap(e);return[r.x,r.y]},o([c.property()],r.prototype,"view",void 0),r=o([c.subclass("esri.views.2d.draw.DrawAction")],r)}(c.declared(n,s));return p});

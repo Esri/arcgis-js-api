@@ -73,6 +73,9 @@
       color: $active_text_color;
       cursor: default;
     }
+    li [class^="esri-icon"] {
+      padding-right:  $text_size * 0.2;
+    }
   }
   table {
     color: $text_color;
@@ -207,7 +210,7 @@ button.esri-disabled {
    UI Corners
    ========================================================================== */
 .esri-ui-corner {
-  .esri-widget {
+  .esri-component {
     @include defaultBoxShadow();
   }
   .esri-widget--panel {
@@ -243,6 +246,10 @@ html[dir="rtl"] .esri-widget {
   }
   select {
     background-position: left 50%;
+  }
+  .esri-menu ul li [class^="esri-icon"] {
+    padding-right: 0;
+    padding-left: $text_size * 0.2;
   }
 }
 
@@ -342,4 +349,10 @@ html[dir="rtl"] .esri-widget {
 
 .esri-invisible {
   visibility: hidden !important;
+}
+
+.esri-offscreen {
+  position: absolute;
+  top: -999em;
+  left: -999em;
 }

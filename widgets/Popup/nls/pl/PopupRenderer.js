@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({attach:"Załączniki",fields:"Pola",fieldsSummary:"Lista atrybutów i wartości",media:"Multimedia",next:"Dalej",numCharts:"Liczba wykresów",numImages:"Liczba obrazów",noTitle:"Bez tytułu",previous:"Powrót"});
+define({attach:"Załączniki",fields:"Pola",fieldsSummary:"Lista atrybutów i wartości",media:"Multimedia",next:"Dalej",numCharts:"Liczba wykresów",numImages:"Liczba obrazów",noTitle:"Bez tytułu",previous:"Wstecz"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/lang","./Symbol3D","../core/accessorSupport/decorators"],function(e,r,t,o,n,s,l){var i=function(e){function r(r){var t=e.call(this)||this;return t.type="line-3d",t}return t(r,e),s=r,r.prototype.clone=function(){return new s({styleOrigin:n.clone(this.styleOrigin),symbolLayers:n.clone(this.symbolLayers),thumbnail:n.clone(this.thumbnail)})},o([l.property()],r.prototype,"type",void 0),o([l.shared(["line","path","text"])],r.prototype,"_allowedLayerTypes",void 0),r=s=o([l.subclass("esri.symbols.LineSymbol3D")],r);var s}(l.declared(s));return i});
+define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/lang","../core/Collection","./Symbol3D","./LineSymbol3DLayer","./PathSymbol3DLayer","./TextSymbol3DLayer","../core/accessorSupport/decorators"],function(e,r,t,o,l,n,y,s,p,i,a){var c=n.ofType({base:null,key:"type",typeMap:{line:s,text:i,path:p}}),u=function(e){function r(r){var t=e.call(this)||this;return t.symbolLayers=new c,t.type="line-3d",t}return t(r,e),n=r,r.prototype.clone=function(){return new n({styleOrigin:l.clone(this.styleOrigin),symbolLayers:l.clone(this.symbolLayers),thumbnail:l.clone(this.thumbnail)})},o([a.property({type:c})],r.prototype,"symbolLayers",void 0),o([a.property()],r.prototype,"type",void 0),r=n=o([a.subclass("esri.symbols.LineSymbol3D")],r);var n}(a.declared(y));return u});

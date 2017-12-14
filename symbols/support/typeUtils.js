@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../../core/accessorSupport/ensureType","../Symbol","../PictureFillSymbol","../PictureMarkerSymbol","../SimpleFillSymbol","../SimpleLineSymbol","../SimpleMarkerSymbol","../TextSymbol","../WebStyleSymbol","../LabelSymbol3D","../LineSymbol3D","../MeshSymbol3D","../PointSymbol3D","../PolygonSymbol3D"],function(e,l,o,y,i,r,m,p,t,b,S,n,s,u,a,c){Object.defineProperty(l,"__esModule",{value:!0}),l.types={base:y,key:"type",typeMap:{"simple-fill":m,"picture-fill":i,"picture-marker":r,"simple-line":p,"simple-marker":t,text:b,"label-3d":n,"line-3d":s,"mesh-3d":u,"point-3d":a,"polygon-3d":c,"web-style":S}},l.ensureType=o.ensureOneOfType(l.types)});
+define(["require","exports","../../core/accessorSupport/ensureType","../Symbol","../PictureFillSymbol","../PictureMarkerSymbol","../SimpleFillSymbol","../SimpleLineSymbol","../SimpleMarkerSymbol","../TextSymbol","../WebStyleSymbol","../LabelSymbol3D","../LineSymbol3D","../MeshSymbol3D","../PointSymbol3D","../PolygonSymbol3D"],function(e,l,y,o,p,i,t,m,r,b,s,n,S,a,d,u){Object.defineProperty(l,"__esModule",{value:!0}),l.types={base:o,key:"type",typeMap:{"simple-fill":t,"picture-fill":p,"picture-marker":i,"simple-line":m,"simple-marker":r,text:b,"label-3d":n,"line-3d":S,"mesh-3d":a,"point-3d":d,"polygon-3d":u,"web-style":s}},l.types3D={base:o,key:"type",typeMap:{"label-3d":n,"line-3d":S,"mesh-3d":a,"point-3d":d,"polygon-3d":u,"web-style":s}},l.ensureType=y.ensureOneOfType(l.types)});

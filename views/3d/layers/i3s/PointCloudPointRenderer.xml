@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<snippets>
+
+<snippet name="vsPointCloudPointRenderer"><![CDATA[
+$vsprecisionf
+
+attribute vec3 aPosition;
+attribute vec3 aColor;
+
+uniform mat4 uModelViewMatrix;
+uniform mat4 uProjectionMatrix;
+uniform vec2 uScreenMinMaxSize;
+uniform vec2 uPointScale;
+uniform vec3 uClipMin;
+uniform vec3 uClipMax;
+
+#ifdef DEPTH_PASS
+uniform vec2 nearFar;
+
+varying float depth;
+#else
+varying vec3 vColor;
+#endif
+
+void main(void) {
+
+  // Move clipped points outside of clipspace
+  if (aPosition.x < uClipMin.x || aPosition.y < uClipMin.y || aPosition.z < uClipMin.z ||
+      aPosition.x > uClipMax.x || aPosition.y > uClipMax.y || aPosition.z > uClipMax.z) {
+    gl_Position = vec4(0.0,0.0,0.0,2.0);
+    gl_PointSize = 0.0;
+    return;
+  }
+
+  // Position in camera space
+  vec4 camera = uModelViewMatrix * vec4(aPosition, 1.0);
+
+  float pointSize = uPointScale.x;
+  vec4 position = uProjectionMatrix * camera;
+
+  // Calculate Size
+  #ifdef DRAW_SCREEN_SIZE
+    float clampedScreenSize = pointSize;
+  #else
+    float pointRadius = 0.5 * pointSize;
+    vec4 cameraOffset = camera + vec4(0.0, pointRadius, 0.0, 0.0);
+    vec4 positionOffset = uProjectionMatrix * cameraOffset;
+    float radius = abs(positionOffset.y - position.y);
+
+    float viewHeight = uPointScale.y;
+
+    // screen diameter = (2 * r / w) * (h / 2)
+    float screenPointSize = (radius / position.w) * viewHeight;
+    float clampedScreenSize = clamp(screenPointSize, uScreenMinMaxSize.x, uScreenMinMaxSize.y);
+
+    // Shift towards camera, to move rendered point out of terrain i.e. to
+    // the camera-facing end of the virtual point when considering it as a
+    // 3D sphere.
+    camera.xyz -= normalize(camera.xyz) * pointRadius * clampedScreenSize / screenPointSize;
+    position = uProjectionMatrix * camera;
+  #endif
+
+  gl_PointSize = clampedScreenSize;
+  gl_Position = position;
+
+  #ifdef DEPTH_PASS
+  depth = (-camera.z - nearFar[0]) / (nearFar[1] - nearFar[0]);
+  #else
+  vColor = aColor;
+  #endif
+}
+]]></snippet>
+
+<snippet name="fsPointCloudPointRenderer"><![CDATA[
+$fsprecisionf
+
+#ifdef DEPTH_PASS
+$float2rgba
+
+varying float depth;
+#else
+varying vec3 vColor;
+#endif
+
+void main(void) {
+  vec2 vOffset = gl_PointCoord - vec2(0.5, 0.5);
+  float r2 = dot(vOffset, vOffset);
+
+  if (r2 > 0.25) {
+    discard;
+  }
+
+  #ifdef DEPTH_PASS
+  gl_FragColor = float2rgba(depth);
+  #else
+  gl_FragColor = vec4(vColor, 1.0);
+  #endif
+}
+]]></snippet>
+
+</snippets>

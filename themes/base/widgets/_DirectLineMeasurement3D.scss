@@ -1,0 +1,129 @@
+@mixin directLineMeasurement3D() {
+  .esri-direct-line-measurement-3d {
+    pointer-events: none;
+  }
+
+  .esri-direct-line-measurement-3d__container {
+    position: relative;
+    padding: $cap_spacing $side_spacing;
+    overflow-y: auto;
+    a {
+      text-decoration: none;
+    }
+    button,
+    [role="button"] {
+      height: $button_height;
+      cursor: pointer;
+      border: none;
+    }
+  }
+
+  .esri-direct-line-measurement-3d__header {
+    position: relative;
+    font-size: $body_text_size;
+    align-items: flex-start;
+    justify-content: space-between;
+    display: flex;
+    flex: 0 0 auto;
+  }
+
+  .esri-direct-line-measurement-3d__header-title,
+  h1.esri-direct-line-measurement-3d__header-title {
+    font-size: $title_text_size;
+    font-weight: $text_weight_title;
+    padding: 8px 0;
+    margin: 0;
+    display: block;
+    flex: 1;
+    word-break: break-word;
+    text-align: left;
+  }
+
+  .esri-direct-line-measurement-3d__header-buttons {
+    padding: 0;
+    margin: 0 0 0 auto; // `auto` here helps place each node at either end of the container node
+    display: flex;
+    button,
+    [role="button"] {
+      width: $button_width;
+      height: $button_height;
+      cursor: pointer;
+      border: none;
+      padding: 8px;
+    }
+  }
+
+  .esri-direct-line-measurement-3d__hint {
+    padding-bottom: 12px;
+  }
+
+  .esri-direct-line-measurement-3d__panel--error {
+    color: $error_text_color;
+  }
+
+  .esri-direct-line-measurement-3d__measurement {
+  }
+
+  .esri-direct-line-measurement-3d__measurement-item {
+    display: flex;
+    align-items: baseline;
+  }
+
+  .esri-direct-line-measurement-3d__measurement-item--disabled {
+    display: flex;
+    color: rgba($text_color, $disabled_opacity);
+  }
+
+  .esri-direct-line-measurement-3d__measurement-item-title {
+    flex: 1;
+    line-height: 24px;
+  }
+
+  .esri-direct-line-measurement-3d__measurement-item-value {
+    flex: 1;
+    line-height: 24px;
+  }
+
+  .esri-direct-line-measurement-3d__units {
+    display: flex;
+    padding-bottom: 12px;
+    align-items: baseline;
+  }
+
+  .esri-direct-line-measurement-3d__units-label {
+    flex: 1;
+    line-height: 24px;
+  }
+
+  .esri-direct-line-measurement-3d__units-select-wrapper {
+    flex: 1;
+  }
+
+  .esri-direct-line-measurement-3d__units-select {
+    width: 100%;
+    padding-right: 2.7em;
+  }
+
+  .esri-button.esri-direct-line-measurement-3d__clear-button {
+    // TODO:
+    // + make general styles at theme level
+    // + replace $esri_blue_button_bg with more general variable
+    color: $esri_blue_button_bg;
+    border: 1px solid $esri_blue_button_bg;
+    background-color: $background_color;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+    white-space: nowrap;
+  }
+
+  .esri-button.esri-direct-line-measurement-3d__clear-button:hover {
+    color: $text_inverse_color;
+    background-color: $esri_blue_button_bg
+  }
+
+}
+
+@if $include_DirectLineMeasurement3D == true {
+  @include directLineMeasurement3D();
+}

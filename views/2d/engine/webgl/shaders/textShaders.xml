@@ -16,10 +16,10 @@
       attribute vec2 a_pos;           // 2 * 2 (2 x signed 16)
       attribute vec4 a_id;            // 4 (4 x unsigned byte)
       attribute vec4 a_color;         // 4 (4 x unsigned byte)
-      attribute vec4 a_vertexOffset; // 2 * 2 // (2 x signed 16) offset from the anchor point of the string
+      attribute vec2 a_vertexOffset; // 2 * 2 // (2 x signed 16) offset from the anchor point of the string
       attribute vec4 a_texFontSize; // 4 (4 x unsigned byte) texture coordinatesm and font size
 
-      attribute lowp float  a_visible; // --> a one byte controlling the visibility of the vertex (a separate visibility buffer), values are 0 or 1 (visible)
+      attribute lowp float  a_visible; // a one byte controlling the visibility of the vertex (a separate visibility buffer), values are 0 or 1 (visible)
 
       // the relative transformation of a vertex given in tile coordinates to a relative normalized coordinate
       // relative to the tile's upper left corner
@@ -38,6 +38,7 @@
 
       varying mediump vec4 v_color;
       varying mediump float v_antialiasingWidth;
+      varying mediump float v_edgeDistanceOffset;
 
       // the interpolated texture coordinate value to be used by the fragment shader in order to sample the sprite texture
       varying mediump vec2 v_tex;
@@ -48,21 +49,34 @@
       // the vertex offsets are given in integers, therefore in order to maintain a reasonable precission we multiply the values
       // by 16 and then at the shader devide by the same number
       const float offsetPrecision = 1.0 / 32.0;
+      const float outlineScale = 1.0 / 10.0;
       const float sdfFontSize = 24.0;
+
+      // maximum SDF distance of 8 pixels represent the distance values that range from -2 inside the geometry to 6 on the outside.
+      // 6 is actually the maximum distance outside the glyph, therefore it is the limitation of the halo which is 1/4 of the geometry size.
+      const float maxSdfDistance = 8.0;
 
       void main()
       {
+        // make sure to clip the vertices in case that given record is marked as invisible
+        float z = 2.0 * step(1.0, a_visible);
+
+        // we use the list significant bit of the position in order to store the indication whethe the vertex is of a halow of a glyph
+        mediump float halo = mod(a_pos, 2.0).x;
+
         float fontScale = a_texFontSize.z / sdfFontSize;
         // we need to scale the extrude matrix by the font-scale in order to get the right text size
         mat4 extrudeMatrix = fontScale * u_extrudeMatrix;
 
         // If the label rotates with the map, and if the rotated label is upside down, hide it
-        gl_Position = vec4(u_normalized_origin, 0.0, 0.0) + u_transformMatrix * vec4(a_pos, 0.0, 1.0) + extrudeMatrix * vec4(offsetPrecision * a_vertexOffset, 0.0, 0.0);
+        gl_Position = vec4(u_normalized_origin, 0.0, 0.0) + u_transformMatrix * vec4(floor(a_pos * 0.5), z, 1.0) + extrudeMatrix * vec4(offsetPrecision * a_vertexOffset, 0.0, 0.0);
 
-        v_transparency *= u_opacity;
+        v_transparency = u_opacity;
         v_tex = a_texFontSize.xy / u_mosaicSize;
         v_color = a_color;
-        v_antialiasingWidth = 0.1 * sdfFontSize / a_texFontSize.z / u_pixelRatio;
+        v_antialiasingWidth = 0.105 * sdfFontSize / a_texFontSize.z / u_pixelRatio;
+        // if halo.x is zero (not a halo) v_edgeDistanceOffset will end up being zero as well.
+        v_edgeDistanceOffset = halo * outlineScale * a_texFontSize.w / fontScale / maxSdfDistance;
       }
     ]]>
   </snippet>
@@ -75,16 +89,19 @@
 
       varying mediump vec4 v_color;
       varying mediump float v_antialiasingWidth;
+      varying mediump float v_edgeDistanceOffset;
       varying mediump vec2 v_tex;
       varying lowp float v_transparency;
 
-      // 0.75 is the value of the edge of the geometry in the SDF glyphs
-      const float glyphEdgeDistance = 0.75;
 
       void main()
       {
         // read the distance from the SDF texture
         lowp float dist = texture2D(u_texture, v_tex).a;
+
+        // the edge distance if a factor of the outline width
+        float glyphEdgeDistance = 0.75 - v_edgeDistanceOffset;
+
         // use a smooth-step in order to calculate the geometry of the shape given by the distance field
         lowp float alpha = smoothstep(glyphEdgeDistance - v_antialiasingWidth, glyphEdgeDistance + v_antialiasingWidth, dist) * v_transparency;
 

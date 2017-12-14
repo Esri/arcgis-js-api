@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define({title:"Tiêu đề",fileName:"Tên Tệp",titlePlaceHolder:"Tiêu đề tệp",fileNamePlaceHolder:"Tên tệp",formatDefaultOption:"Chọn định dạng",fileFormatTitle:"Định dạng tệp",layoutTitle:"Thiết lập trang",layoutDefaultOption:"Chọn thiết lập trang",scale:"Thiết lập tỷ lệ",scaleLabel:"tỷ lệ",reset:"thiết lập lại",author:"Tác giả",copyright:"Bản quyền",legend:"Bao gồm chú giải",lock:"khóa",swap:"hoán đổi",panelToggle:"Thay đổi bảng điều khiển",advancedOptions:"Tùy chọn nâng cao",width:"Chiều rộng",height:"Chiều cao",attribution:"Bao gồm thuộc tính",layoutTab:"Bố cục",mapOnlyTab:"Chỉ Bản đồ",untitled:"chưa có tiêu đề",pending:"Đang xuất",ready:"Mở mục này",linkReady:"Mở trong cửa sổ mới.",error:"Chọn mục này để loại bỏ.",sceneViewError:"Không hỗ trợ in trong SceneView.",serviceError:"Dường như đã có lỗi.","export":"Xuất",exportDescription:"Xuất. Tệp đã xuất sẽ xuất hiện dưới đây.",exportText:"Tệp Đã xuất",exportHint:"Tệp đã xuất của bạn sẽ xuất hiện tại đây."});

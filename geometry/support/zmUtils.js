@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define([],function(){function a(a,h,n){var r=a.hasZ,s=a.hasM;Array.isArray(h)?4!==h.length||s||r?3===h.length&&n&&!s?(r=!0,s=!1):3===h.length&&s&&r&&(s=!1,r=!1):(s=!0,r=!0):(r=!r&&h.hasZ&&(!s||h.hasM),s=!s&&h.hasM&&(!r||h.hasZ)),a.hasZ=r,a.hasM=s}return{updateSupportFromPoint:a}});
+define(["require","exports"],function(e,a){function r(e,a,r){void 0===r&&(r=!1);var h=e.hasM,s=e.hasZ;Array.isArray(a)?4!==a.length||h||s?3===a.length&&r&&!h?(s=!0,h=!1):3===a.length&&h&&s&&(h=!1,s=!1):(h=!0,s=!0):(s=!s&&a.hasZ&&(!h||a.hasM),h=!h&&a.hasM&&(!s||a.hasZ)),e.hasZ=s,e.hasM=h}Object.defineProperty(a,"__esModule",{value:!0}),a.updateSupportFromPoint=r});

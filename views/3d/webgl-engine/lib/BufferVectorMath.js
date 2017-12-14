@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define(["require","exports"],function(t,n){Object.defineProperty(n,"__esModule",{value:!0});var e;!function(t){function n(t,n){var e=t[n],o=t[n+1],c=t[n+2];return Math.sqrt(e*e+o*o+c*c)}function e(t,n){var e=t[n],o=t[n+1],c=t[n+2],r=1/Math.sqrt(e*e+o*o+c*c);t[n]*=r,t[n+1]*=r,t[n+2]*=r}function o(t,n,e){t[n]*=e,t[n+1]*=e,t[n+2]*=e}function c(t,n,e,o,c,r){void 0===r&&(r=n),c=c||t,c[r]=t[n]+e[o],c[r+1]=t[n+1]+e[o+1],c[r+2]=t[n+2]+e[o+2]}function r(t,n,e,o,c,r){void 0===r&&(r=n),c=c||t,c[r]=t[n]-e[o],c[r+1]=t[n+1]-e[o+1],c[r+2]=t[n+2]-e[o+2]}t.length=n,t.normalize=e,t.scale=o,t.add=c,t.subtract=r}(e=n.Vec3Compact||(n.Vec3Compact={}))});

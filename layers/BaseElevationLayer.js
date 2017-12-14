@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/Error","../geometry/Extent","../geometry/SpatialReference","./Layer","./support/TileInfo","../core/accessorSupport/decorators"],function(e,t,r,o,n,l,p,a,i,s){var c={id:"0/0/0",level:0,row:0,col:0,extent:null},u=function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.tileInfo=i.create({spatialReference:p.WebMercator,size:256}),t.fullExtent=new l(-20037508.342787,-20037508.34278,20037508.34278,20037508.342787,p.WebMercator),t.spatialReference=p.WebMercator,t.type="base-elevation",t}return r(t,e),t.prototype.getTileBounds=function(e,t,r,o){var n=o||[0,0,0,0];return c.level=e,c.row=t,c.col=r,c.extent=n,this.tileInfo.updateTileInfo(c),c.extent=null,n},t.prototype.fetchTile=function(e,t,r,o){throw new n("BaseElevationLayer:fetchtile-not-implemented","fetchTile() is not implemented")},o([s.shared({"3d":"../views/3d/layers/ElevationLayerView3D"})],t.prototype,"viewModulePaths",void 0),o([s.property({type:i})],t.prototype,"tileInfo",void 0),o([s.property()],t.prototype,"fullExtent",void 0),o([s.property()],t.prototype,"spatialReference",void 0),o([s.property({readOnly:!0,value:"base-elevation"})],t.prototype,"type",void 0),t=o([s.subclass("esri.layers.BaseElevationLayer")],t)}(s.declared(a));return u});

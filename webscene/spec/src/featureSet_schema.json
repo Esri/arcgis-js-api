@@ -1,0 +1,34 @@
+{
+  "title": "featureSet",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "A featureSet object contains the geometry and attributes of features in a layer. This object is used with feature collections only.",
+  "properties": {
+    "features": {
+      "type": "array",
+      "description": "An array of feature objects containing geometry and a set of attributes.",
+      "items": {
+        "type": "object",
+        "$ref": "feature_schema.json"
+      },
+      "uniqueItems": true
+    },
+    "geometryType": {
+      "type": "string",
+      "description": "The type of geometry.",
+      "enum": [
+        "esriGeometryPoint",
+        "esriGeometryMultipoint",
+        "esriGeometryPolyline",
+        "esriGeometryPolygon",
+        "esriGeometryEnvelope"
+      ]
+    }
+  },
+  "required": [
+    "features",
+    "geometryType"
+  ],
+  "additionalProperties": false
+}
+

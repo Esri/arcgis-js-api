@@ -1,0 +1,99 @@
+{
+  "operationalLayers": [
+    {
+      "id": "layer3",
+      "opacity": 1,
+      "title": "Census dynamic map",
+      "url": "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer",
+      "visibility": true,
+      "layerType": "ArcGISMapServiceLayer"
+    }
+  ],
+  "baseMap": {
+    "baseMapLayers": [
+      {
+        "id": "14df2e207fa-layer-264",
+        "opacity": 1,
+        "title": "World Light Gray Base",
+        "url": "https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledMapServiceLayer"
+      },
+      {
+        "id": "14df2e207fb-layer-265",
+        "opacity": 1,
+        "title": "World Light Gray Reference",
+        "url": "https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledMapServiceLayer"
+      }
+    ],
+    "id": "basemap",
+    "title": "Light Gray Canvas",
+    "elevationLayers": [
+      {
+        "id": "globalElevation",
+        "listMode": "show",
+        "title": "Terrain3D",
+        "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledElevationServiceLayer"
+      }
+    ]
+  },
+  "ground": {
+    "layers": [
+      {
+        "id": "globalElevation",
+        "listMode": "show",
+        "title": "Terrain3D",
+        "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledElevationServiceLayer"
+      }
+    ]
+  },
+  "version": "1.9",
+  "authoringApp": "ArcGIS API for JavaScript",
+  "authoringAppVersion": "4.6",
+  "presentation": {
+    "slides": []
+  },
+  "initialState": {
+    "environment": {
+      "lighting": {
+        "datetime": 1426443539000,
+        "displayUTCOffset": -6
+      }
+    },
+    "viewpoint": {
+      "rotation": 2.0475841268706176,
+      "scale": 21424562.24472496,
+      "targetGeometry": {
+        "spatialReference": {
+          "wkid": 102100
+        },
+        "x": -10633466.345134925,
+        "y": 4653233.957940467,
+        "z": -262.330322785303
+      },
+      "camera": {
+        "position": {
+          "spatialReference": {
+            "wkid": 102100
+          },
+          "x": -10547243.494119074,
+          "y": 2429514.7847107863,
+          "z": 8596134.365119688
+        },
+        "heading": 357.9524158731294,
+        "tilt": 11.999687947113111
+      }
+    }
+  },
+  "spatialReference": {
+    "latestWkid": 3857,
+    "wkid": 102100
+  },
+  "viewingMode": "global"
+}

@@ -1,0 +1,157 @@
+{
+  "operationalLayers": [
+    {
+      "id": "Paraglide_Track_Lines",
+      "listMode": "show",
+      "opacity": 1,
+      "title": "Paraglide Track Lines",
+      "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FL__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
+      "visibility": true,
+      "layerType": "ArcGISFeatureLayer",
+      "layerDefinition": {
+        "elevationInfo": {
+          "mode": "absoluteHeight"
+        },
+        "drawingInfo": {
+          "renderer": {
+            "type": "simple",
+            "symbol": {
+              "type": "LineSymbol3D",
+              "symbolLayers": [
+                {
+                  "material": {
+                    "color": [
+                      0,
+                      255,
+                      255
+                    ],
+                    "transparency": 30
+                  },
+                  "type": "Line",
+                  "size": 3
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "148b3f6788a-layer5",
+      "listMode": "show",
+      "opacity": 1,
+      "title": "Paraglide Track Cylinders",
+      "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FL__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
+      "visibility": true,
+      "layerType": "ArcGISFeatureLayer",
+      "layerDefinition": {
+        "elevationInfo": {
+          "mode": "absoluteHeight"
+        },
+        "drawingInfo": {
+          "renderer": {
+            "type": "simple",
+            "symbol": {
+              "type": "LineSymbol3D",
+              "symbolLayers": [
+                {
+                  "material": {
+                    "color": [
+                      255,
+                      0,
+                      255
+                    ],
+                    "transparency": 30
+                  },
+                  "type": "Path",
+                  "size": 300
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "baseMap": {
+    "baseMapLayers": [
+      {
+        "id": "worldTopoBase",
+        "opacity": 1,
+        "title": "World Imagery",
+        "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledMapServiceLayer"
+      }
+    ],
+    "id": "basemap",
+    "title": "Imagery",
+    "elevationLayers": [
+      {
+        "id": "globalElevation",
+        "listMode": "show",
+        "title": "Terrain3D",
+        "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledElevationServiceLayer"
+      }
+    ]
+  },
+  "ground": {
+    "layers": [
+      {
+        "id": "globalElevation",
+        "listMode": "show",
+        "title": "Terrain3D",
+        "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledElevationServiceLayer"
+      }
+    ]
+  },
+  "version": "1.9",
+  "authoringApp": "ArcGIS API for JavaScript",
+  "authoringAppVersion": "4.6",
+  "presentation": {
+    "slides": []
+  },
+  "initialState": {
+    "environment": {
+      "lighting": {
+        "datetime": 1426418695000,
+        "displayUTCOffset": 0
+      }
+    },
+    "viewpoint": {
+      "rotation": 2.487473418445404,
+      "scale": 315519.5790720974,
+      "targetGeometry": {
+        "spatialReference": {
+          "latestWkid": 3857,
+          "wkid": 102100
+        },
+        "x": 969995.5507821087,
+        "y": 5901358.033714125,
+        "z": 1341.5689475666732
+      },
+      "camera": {
+        "position": {
+          "spatialReference": {
+            "latestWkid": 3857,
+            "wkid": 102100
+          },
+          "x": 976258.7354816322,
+          "y": 5758349.078102244,
+          "z": 63305.816294550896
+        },
+        "heading": 357.5125265815546,
+        "tilt": 57.61346794508897
+      }
+    }
+  },
+  "spatialReference": {
+    "latestWkid": 3857,
+    "wkid": 102100
+  },
+  "viewingMode": "global"
+}

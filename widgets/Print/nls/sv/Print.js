@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define({title:"Titel",fileName:"Filnamn",titlePlaceHolder:"Filens titel",fileNamePlaceHolder:"Filnamn",formatDefaultOption:"Välj format",fileFormatTitle:"Filformat",layoutTitle:"Utskriftsformat",layoutDefaultOption:"Välj utskriftsformat",scale:"Ange skala",scaleLabel:"skala",reset:"återställ",author:"Upphovsman",copyright:"Copyright",legend:"Inkludera teckenförklaring",lock:"lås",swap:"växla",panelToggle:"Panelväxling",advancedOptions:"Avancerade alternativ",width:"Bredd",height:"Höjd",attribution:"Inkludera attribuering",layoutTab:"Layout",mapOnlyTab:"Endast karta",untitled:"namnlös",pending:"Exporterar",ready:"Öppna denna",linkReady:"Öppna i nytt fönster.",error:"Markera denna för att ta bort den.",sceneViewError:"Utskrift stöds inte i SceneView.",serviceError:"Ett fel verkar ha uppstått.","export":"Exportera",exportDescription:"Exportera. Exporterade filer visas nedan.",exportText:"Exportera filer",exportHint:"Dina exporterade filer kommer att visas här."});

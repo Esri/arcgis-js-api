@@ -1,0 +1,291 @@
+{
+  "operationalLayers": [
+    {
+      "id": "14bad63ad52-layer3",
+      "opacity": 1,
+      "title": "circle",
+      "url": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/05_HurricaneAndrew_1992/FeatureServer/0",
+      "visibility": false,
+      "layerType": "ArcGISFeatureLayer",
+      "layerDefinition": {
+        "drawingInfo": {
+          "renderer": {
+            "type": "simple",
+            "symbol": {
+              "type": "PointSymbol3D",
+              "symbolLayers": [
+                {
+                  "material": {
+                    "color": [
+                      255,
+                      255,
+                      255
+                    ],
+                    "transparency": 100
+                  },
+                  "type": "Icon",
+                  "resource": {
+                    "primitive": "circle"
+                  },
+                  "size": 24,
+                  "outline": {
+                    "color": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "size": 1
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "14bad63aed8-layer4",
+      "opacity": 1,
+      "title": "square",
+      "url": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/05_HurricaneAndrew_1992/FeatureServer/0",
+      "visibility": false,
+      "layerType": "ArcGISFeatureLayer",
+      "layerDefinition": {
+        "drawingInfo": {
+          "renderer": {
+            "type": "simple",
+            "symbol": {
+              "type": "PointSymbol3D",
+              "symbolLayers": [
+                {
+                  "material": {
+                    "color": [
+                      192,
+                      255,
+                      192
+                    ]
+                  },
+                  "type": "Icon",
+                  "resource": {
+                    "primitive": "square"
+                  },
+                  "size": 24,
+                  "outline": {
+                    "color": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "size": 0
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "14bad63aef3-layer5",
+      "opacity": 1,
+      "title": "cross",
+      "url": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/05_HurricaneAndrew_1992/FeatureServer/0",
+      "visibility": false,
+      "layerType": "ArcGISFeatureLayer",
+      "layerDefinition": {
+        "drawingInfo": {
+          "renderer": {
+            "type": "simple",
+            "symbol": {
+              "type": "PointSymbol3D",
+              "symbolLayers": [
+                {
+                  "type": "Icon",
+                  "resource": {
+                    "primitive": "cross"
+                  },
+                  "size": 24,
+                  "outline": {
+                    "color": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "size": 1
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "14bad63af23-layer6",
+      "opacity": 1,
+      "title": "x",
+      "url": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/05_HurricaneAndrew_1992/FeatureServer/0",
+      "visibility": false,
+      "layerType": "ArcGISFeatureLayer",
+      "layerDefinition": {
+        "drawingInfo": {
+          "renderer": {
+            "type": "simple",
+            "symbol": {
+              "type": "PointSymbol3D",
+              "symbolLayers": [
+                {
+                  "material": {
+                    "color": [
+                      255,
+                      255,
+                      255
+                    ]
+                  },
+                  "type": "Icon",
+                  "resource": {
+                    "primitive": "x"
+                  },
+                  "size": 24,
+                  "outline": {
+                    "color": [
+                      255,
+                      0,
+                      0
+                    ],
+                    "transparency": 50,
+                    "size": 5
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "14bad63af4c-layer7",
+      "opacity": 1,
+      "title": "kite",
+      "url": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/05_HurricaneAndrew_1992/FeatureServer/0",
+      "visibility": true,
+      "layerType": "ArcGISFeatureLayer",
+      "layerDefinition": {
+        "drawingInfo": {
+          "renderer": {
+            "type": "simple",
+            "symbol": {
+              "type": "PointSymbol3D",
+              "symbolLayers": [
+                {
+                  "material": {
+                    "color": [
+                      255,
+                      255,
+                      255
+                    ]
+                  },
+                  "type": "Icon",
+                  "resource": {
+                    "primitive": "kite"
+                  },
+                  "size": 24,
+                  "outline": {
+                    "color": [
+                      0,
+                      0,
+                      255
+                    ],
+                    "transparency": 75,
+                    "size": 3
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "baseMap": {
+    "baseMapLayers": [
+      {
+        "id": "worldTopoBase",
+        "opacity": 1,
+        "title": "World Topo Map",
+        "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledMapServiceLayer"
+      }
+    ],
+    "id": "basemap",
+    "title": "Topographic",
+    "elevationLayers": [
+      {
+        "id": "globalElevation",
+        "listMode": "show",
+        "title": "Terrain3D",
+        "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledElevationServiceLayer"
+      }
+    ]
+  },
+  "ground": {
+    "layers": [
+      {
+        "id": "globalElevation",
+        "listMode": "show",
+        "title": "Terrain3D",
+        "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledElevationServiceLayer"
+      }
+    ]
+  },
+  "version": "1.9",
+  "authoringApp": "ArcGIS API for JavaScript",
+  "authoringAppVersion": "4.6",
+  "presentation": {
+    "slides": []
+  },
+  "initialState": {
+    "environment": {
+      "lighting": {
+        "datetime": 1426436005000,
+        "displayUTCOffset": -4
+      }
+    },
+    "viewpoint": {
+      "rotation": 359.1253840667117,
+      "scale": 14540945.207473813,
+      "targetGeometry": {
+        "spatialReference": {
+          "latestWkid": 3857,
+          "wkid": 102100
+        },
+        "x": -7031874.522175635,
+        "y": 2119982.9038947327,
+        "z": -101.63259159494191
+      },
+      "camera": {
+        "position": {
+          "spatialReference": {
+            "latestWkid": 3857,
+            "wkid": 102100
+          },
+          "x": -7052543.015821142,
+          "y": 792843.4562427036,
+          "z": 7219906.850309089
+        },
+        "heading": 0.8746159332882646,
+        "tilt": 9.897613898709157
+      }
+    }
+  },
+  "spatialReference": {
+    "latestWkid": 3857,
+    "wkid": 102100
+  },
+  "viewingMode": "global"
+}

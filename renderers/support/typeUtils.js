@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define(["require","exports","../Renderer","../SimpleRenderer","../UniqueValueRenderer","../ClassBreaksRenderer"],function(e,r,s,n,a,u){Object.defineProperty(r,"__esModule",{value:!0}),r.types={key:"type",base:s,typeMap:{simple:n,"unique-value":a,"class-breaks":u}}});

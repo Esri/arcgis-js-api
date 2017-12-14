@@ -1,0 +1,53 @@
+{
+  "title": "parameter",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Objects defined by a [definitionEditor](definitionEditor.md) input.",
+  "properties": {
+    "defaultValue": {
+      "description": "The default value that is automatically given if nothing is provided.",
+      "oneOf": [
+        {
+          "type": "number",
+          "description": "Value given automatically if none provided."
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "fieldName": {
+      "type": "string",
+      "description": "A string value representing the name of the field to query."
+    },
+    "parameterId": {
+      "type": "integer",
+      "description": "Number given to uniquely identify the specified parameter."
+    },
+    "type": {
+      "type": "string",
+      "description": "The field type for the specified field parameter.",
+      "enum": [
+        "esriFieldTypeBlob",
+        "esriFieldTypeDate",
+        "esriFieldTypeDouble",
+        "esriFieldTypeGeometry",
+        "esriFieldTypeGlobalID",
+        "esriFieldTypeGUID",
+        "esriFieldTypeInteger",
+        "esriFieldTypeOID",
+        "esriFieldTypeRaster",
+        "esriFieldTypeSingle",
+        "esriFieldTypeSmallInteger",
+        "esriFieldTypeString",
+        "esriFieldTypeXML"
+      ]
+    },
+    "utcValue": {
+      "type": "integer",
+      "description": "An integer value representing exact UNIX time used when `defaultValue` is a date string."
+    }
+  },
+  "additionalProperties": false
+}
+

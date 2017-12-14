@@ -1,0 +1,276 @@
+{
+  "operationalLayers": [
+    {
+      "id": "circle",
+      "listMode": "show",
+      "opacity": 1,
+      "title": "circle",
+      "url": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/05_HurricaneAndrew_1992/FeatureServer/0",
+      "visibility": false,
+      "layerType": "ArcGISFeatureLayer",
+      "layerDefinition": {
+        "minScale": 0,
+        "maxScale": 1000000,
+        "elevationInfo": {
+          "mode": "relativeToGround"
+        },
+        "drawingInfo": {
+          "renderer": {
+            "type": "simple",
+            "symbol": {
+              "type": "PointSymbol3D",
+              "symbolLayers": [
+                {
+                  "material": {
+                    "color": [
+                      128,
+                      128,
+                      255
+                    ]
+                  },
+                  "type": "Icon",
+                  "resource": {
+                    "primitive": "circle"
+                  },
+                  "size": 12
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "pushpin",
+      "listMode": "show",
+      "opacity": 1,
+      "title": "flag",
+      "url": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/05_HurricaneAndrew_1992/FeatureServer/0",
+      "visibility": false,
+      "layerType": "ArcGISFeatureLayer",
+      "layerDefinition": {
+        "minScale": 0,
+        "maxScale": 1000000,
+        "elevationInfo": {
+          "mode": "relativeToGround"
+        },
+        "drawingInfo": {
+          "renderer": {
+            "type": "simple",
+            "symbol": {
+              "type": "PointSymbol3D",
+              "symbolLayers": [
+                {
+                  "type": "Icon",
+                  "resource": {
+                    "dataURI": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAANVJREFUOI3t0TFKA0EUBuBvY3TsxE478QpqZ5XWwg12ab1BGsFGvIB4AS9gk5gD5ARewFJvYCE4LmQt3MBikx1204h/NQOPb96b17eG9P/RRrmkfCDbZ3JKPmMaGbZCb3BBuYM9XJN/UB5hC494wxVZZ+OfYDe101XZqGGdoT0sukbrSUKXxZsoqvMXttugRQX2/PxhqIDiV10S+o4zDvCK8zumx/hsg47IatenMdkYAyaH5M8h3Iuxm0XNGc4hxvROm+YPoimvN64t14G+hHC73O6qfAP/OCZofepckgAAAABJRU5ErkJggg=="
+                  },
+                  "size": 36,
+                  "anchor": "bottom"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "stickpin",
+      "listMode": "show",
+      "opacity": 1,
+      "title": "stickpin",
+      "url": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/05_HurricaneAndrew_1992/FeatureServer/0",
+      "visibility": false,
+      "layerType": "ArcGISFeatureLayer",
+      "layerDefinition": {
+        "minScale": 0,
+        "maxScale": 1000000,
+        "elevationInfo": {
+          "mode": "relativeToGround"
+        },
+        "drawingInfo": {
+          "renderer": {
+            "type": "simple",
+            "symbol": {
+              "type": "PointSymbol3D",
+              "symbolLayers": [
+                {
+                  "type": "Icon",
+                  "resource": {
+                    "href": "https://static.arcgis.com/images/Symbols/Basic/RedStickpin.png"
+                  },
+                  "size": 13.999999999999998,
+                  "anchor": "bottom"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "cylinder",
+      "listMode": "show",
+      "opacity": 1,
+      "title": "cylinder",
+      "url": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/05_HurricaneAndrew_1992/FeatureServer/0",
+      "visibility": false,
+      "layerType": "ArcGISFeatureLayer",
+      "layerDefinition": {
+        "minScale": 0,
+        "maxScale": 1000000,
+        "elevationInfo": {
+          "mode": "relativeToGround"
+        },
+        "drawingInfo": {
+          "renderer": {
+            "type": "simple",
+            "symbol": {
+              "type": "PointSymbol3D",
+              "symbolLayers": [
+                {
+                  "material": {
+                    "color": [
+                      255,
+                      0,
+                      0
+                    ]
+                  },
+                  "type": "Object",
+                  "resource": {
+                    "primitive": "cylinder"
+                  },
+                  "width": 30000,
+                  "height": 500000
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "sphere",
+      "listMode": "show",
+      "opacity": 1,
+      "title": "sphere",
+      "url": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/05_HurricaneAndrew_1992/FeatureServer/0",
+      "visibility": true,
+      "layerType": "ArcGISFeatureLayer",
+      "layerDefinition": {
+        "minScale": 0,
+        "maxScale": 1000000,
+        "elevationInfo": {
+          "mode": "relativeToGround",
+          "offset": 100000
+        },
+        "drawingInfo": {
+          "renderer": {
+            "type": "simple",
+            "symbol": {
+              "type": "PointSymbol3D",
+              "symbolLayers": [
+                {
+                  "material": {
+                    "color": [
+                      0,
+                      255,
+                      0
+                    ]
+                  },
+                  "type": "Object",
+                  "resource": {
+                    "primitive": "sphere"
+                  },
+                  "width": 100000,
+                  "height": 100000
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "baseMap": {
+    "baseMapLayers": [
+      {
+        "id": "worldTopoBase",
+        "opacity": 1,
+        "title": "World Topo Map",
+        "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledMapServiceLayer"
+      }
+    ],
+    "id": "basemap",
+    "title": "Topographic",
+    "elevationLayers": [
+      {
+        "id": "globalElevation",
+        "listMode": "show",
+        "title": "Terrain3D",
+        "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledElevationServiceLayer"
+      }
+    ]
+  },
+  "ground": {
+    "layers": [
+      {
+        "id": "globalElevation",
+        "listMode": "show",
+        "title": "Terrain3D",
+        "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledElevationServiceLayer"
+      }
+    ]
+  },
+  "version": "1.9",
+  "authoringApp": "ArcGIS API for JavaScript",
+  "authoringAppVersion": "4.6",
+  "presentation": {
+    "slides": []
+  },
+  "initialState": {
+    "environment": {
+      "lighting": {
+        "datetime": 1426436005000,
+        "displayUTCOffset": -4
+      }
+    },
+    "viewpoint": {
+      "rotation": 359.12538576585825,
+      "scale": 14540919.621711401,
+      "targetGeometry": {
+        "spatialReference": {
+          "latestWkid": 3857,
+          "wkid": 102100
+        },
+        "x": -7031874.791248278,
+        "y": 2119966.0294563174,
+        "z": -101.56045974977314
+      },
+      "camera": {
+        "position": {
+          "spatialReference": {
+            "latestWkid": 3857,
+            "wkid": 102100
+          },
+          "x": -7052544.576272635,
+          "y": 792741.2394697431,
+          "z": 7219868.225384567
+        },
+        "heading": 0.8746142341417275,
+        "tilt": 9.898275658038884
+      }
+    }
+  },
+  "spatialReference": {
+    "latestWkid": 3857,
+    "wkid": 102100
+  },
+  "viewingMode": "global"
+}

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define(["require","exports","../../../../portal/support/geometryServiceUtils","../../../../core/promiseUtils","../../../../geometry/support/webMercatorUtils"],function(e,t,r,l,o){function n(e){var t=e.view.spatialReference,n=e.layer.fullExtent&&e.layer.fullExtent.spatialReference;return!n||n.equals(t)||"local"!==e.view.viewingMode?l.resolve(null):o.canProject(n,t)?l.resolve(o.project(e.layer.fullExtent,t)):r.projectGeometry(e.layer.fullExtent,t,e.layer.portalItem).then(function(t){return!e.destroyed&&t?t:void 0}).otherwise(function(){return null})}Object.defineProperty(t,"__esModule",{value:!0}),t.toView=n});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define(["require","exports"],function(e,t){var i=function(){function e(){this._numTileTexturesComposited=0}return Object.defineProperty(e.prototype,"numTileTexturesComposited",{get:function(){return this._numTileTexturesComposited},enumerable:!0,configurable:!0}),e.prototype.incrementNumTileTexturesComposited=function(){this._numTileTexturesComposited++},e.prototype.resetNumTileTexturesComposited=function(){this._numTileTexturesComposited=0},e}();return i});

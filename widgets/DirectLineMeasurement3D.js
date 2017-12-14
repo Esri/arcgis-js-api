@@ -1,0 +1,25 @@
+// COPYRIGHT © 2017 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+
+define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/accessorSupport/decorators","./support/widget","./Widget","./DirectLineMeasurement3D/DirectLineMeasurement3DViewModel","dojo/i18n!./DirectLineMeasurement3D/nls/DirectLineMeasurement3D"],function(e,t,i,s,n,r,l,a,u){var o={button:"esri-button",base:"esri-direct-line-measurement-3d",container:"esri-direct-line-measurement-3d__container esri-widget esri-widget--panel",hint:"esri-direct-line-measurement-3d__hint",panelError:"esri-direct-line-measurement-3d__panel--error",measurement:"esri-direct-line-measurement-3d__measurement",measurementItem:"esri-direct-line-measurement-3d__measurement-item",measurementItemDisabled:"esri-direct-line-measurement-3d__measurement-item--disabled",measurementItemTitle:"esri-direct-line-measurement-3d__measurement-item-title",measurementItemValue:"esri-direct-line-measurement-3d__measurement-item-value",units:"esri-direct-line-measurement-3d__units",unitsLabel:"esri-direct-line-measurement-3d__units-label",unitsSelect:"esri-direct-line-measurement-3d__units-select esri-select",unitsSelectWrapper:"esri-direct-line-measurement-3d__units-select-wrapper",clearButton:"esri-direct-line-measurement-3d__clear-button"},d=function(e){function t(t){var i=e.call(this)||this;return i.view=null,i.visible=null,i.viewModel=new a,i}return i(t,e),t.prototype.clearMeasurement=function(){},t.prototype.render=function(){var e=this,t="measure"===this.viewModel.state,i="hint"===this.viewModel.state,s="unsupported"===this.viewModel.state,n=i?r.tsx("section",{key:"esri-direct-line-measurement-3d__hint","class":o.hint},r.tsx("p",null,u.hint)):null,l=s?r.tsx("section",{key:"esri-direct-line-measurement-3d__unsupported","class":o.panelError},r.tsx("p",null,"Direct line measurement is not supported in MapView.")):null,a=function(e,t,i){return t.visible?r.tsx("div",{key:i+"-enabled","class":o.measurementItem},r.tsx("span",{"class":o.measurementItemTitle},e),r.tsx("span",{"class":o.measurementItemValue},t.text)):r.tsx("div",{key:i+"-disabled","class":r.join(o.measurementItem,o.measurementItemDisabled)},r.tsx("span",{"class":o.measurementItemTitle},e))},d=t?r.tsx("section",{key:"esri-direct-line-measurement-3d__measurement","class":o.measurement},a(u.direct,this.viewModel.directLabel,"direct"),a(u.horizontal,this.viewModel.horizontalLabel,"horizontal"),a(u.vertical,this.viewModel.verticalLabel,"vertical")):null,c=this.id+"__units",m=r.tsx("label",{"class":o.unitsLabel,"for":c},u.unit),p=r.tsx("div",{"class":o.unitsSelectWrapper},r.tsx("select",{"class":o.unitsSelect,id:c,onchange:this._changeUnit,bind:this},this.viewModel.selectableUnits.map(function(t){return t===e.viewModel.unit?r.tsx("option",{key:t,value:t,selected:!0},u.units[t]):r.tsx("option",{key:t,value:t},u.units[t])}))),v=t?r.tsx("section",{key:"esri-direct-line-measurement-3d__units","class":o.units},m,p):null,_=t?r.tsx("button",{"class":r.join(o.button,o.clearButton),bind:this,onclick:this._newMeasurement},u.newMeasurement):null,b=this.visible?r.tsx("div",{"class":o.container},l,n,d,v,_):null;return r.tsx("div",{key:"","class":o.base,role:"presentation"},b)},t.prototype._newMeasurement=function(){this.clearMeasurement()},t.prototype._changeUnit=function(e){var t=e.target,i=t.options[t.selectedIndex];i&&(this.unit=i.value)},s([n.aliasOf("viewModel.view")],t.prototype,"view",void 0),s([n.aliasOf("viewModel.visible"),r.renderable()],t.prototype,"visible",void 0),s([n.property({type:a}),r.renderable(["viewModel.state","viewModel.selectableUnits","viewModel.unit","viewModel.directLabel","viewModel.horizontalLabel","viewModel.verticalLabel"])],t.prototype,"viewModel",void 0),s([n.aliasOf("viewModel.selectableUnits")],t.prototype,"selectableUnits",void 0),s([n.aliasOf("viewModel.unit")],t.prototype,"unit",void 0),s([n.aliasOf("viewModel.clearMeasurement")],t.prototype,"clearMeasurement",null),s([r.accessibleHandler()],t.prototype,"_newMeasurement",null),s([r.accessibleHandler()],t.prototype,"_changeUnit",null),t=s([n.subclass("esri.widgets.DirectLineMeasurement3D")],t)}(n.declared(l));return d});

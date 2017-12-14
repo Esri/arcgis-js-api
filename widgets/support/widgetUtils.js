@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports"],function(e,n){function r(){for(var e=[],n=0;n<arguments.length;n++)e[n]=arguments[n];return e.join(" ")}function t(){return"rtl"===document.dir}Object.defineProperty(n,"__esModule",{value:!0}),n.join=r,n.isRtl=t});
+define(["require","exports","../../core/Logger","dojo/has"],function(e,r,t,o){function n(){for(var e=[],r=0;r<arguments.length;r++)e[r]=arguments[r];return s&&e.length<2&&u.error("[Widget] `join` is intended for 2 or more CSS classes."),e.join(" ")}function i(){return"rtl"===document.dir}function d(e){var r="data-node-ref",t=e.getAttribute(r);if(s){if(!t)return void u.error("[Widget] node ref not found, did you forget the 'data-node-ref' attribute?");var o=t in this;if(!o)return void u.error("[Widget] cannot store "+t+" if not defined on instance.")}this[t]=e}Object.defineProperty(r,"__esModule",{value:!0});var s=o("dojo-debug-messages"),u=t.getLogger("esri.widgets.support.widgetUtils");r.join=n,r.isRtl=i,r.storeNode=d});

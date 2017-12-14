@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define({lblItem:"element",title:"Logg inn",info:"Logg på for å få tilgang til elementet på {server} {resource}",oAuthInfo:"Logg på for å fortsette.",lblUser:"Brukernavn:",lblPwd:"Passord:",lblOk:"OK",lblSigning:"Logger på...",lblCancel:"Avbryt",errorMsg:"Ugyldig brukernavn/passord. Prøv igjen.",invalidUser:"Brukernavnet eller passordet du oppgav, er feil.",forbidden:"Brukernavnet og passordet er gyldig, men du har ikke tilgang til denne ressursen.",noAuthService:"Får ikke tilgang til godkjenningstjeneste."});

@@ -1,0 +1,51 @@
+{
+  "title": "ExtrudeSymbol3DLayer",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "ExtrudeSymbol3DLayer is used to render Polygon geometries by extruding them upward from the ground, creating a 3D volumetric object.",
+  "properties": {
+    "enable": {
+      "type": "boolean"
+    },
+    "material": {
+      "$ref": "material_schema.json"
+    },
+    "size": {
+      "type": "number",
+      "description": "Extrusion height in meters."
+    },
+    "type": {
+      "type": "string",
+      "description": "Specifies the type of symbol used",
+      "enum": [
+        "Extrude"
+      ]
+    }
+  },
+  "required": [
+    "size",
+    "type"
+  ],
+  "additionalProperties": true,
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "Extrude SymbolLayer",
+        "code": {
+          "symbolLayer": {
+            "type": "Extrude",
+            "material": {
+              "color": [
+                255,
+                0,
+                0
+              ]
+            },
+            "size": 250
+          }
+        }
+      }
+    ]
+  }
+}
+

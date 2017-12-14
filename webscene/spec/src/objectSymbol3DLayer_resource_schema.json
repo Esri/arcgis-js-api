@@ -1,0 +1,48 @@
+{
+  "title": "ObjectSymbol3DLayer Resource",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "The primitive shape (primitive) or external 3D model (href) used to visualize the points.",
+  "properties": {
+    "href": {
+      "oneOf": [
+        {
+          "type": "string",
+          "description": "An absolute URL",
+          "pattern": "^https?://.+$"
+        },
+        {
+          "type": "string",
+          "description": "A relative path starting with ./",
+          "pattern": "^\\./.+$"
+        }
+      ]
+    },
+    "primitive": {
+      "type": "string",
+      "enum": [
+        "sphere",
+        "cylinder",
+        "cube",
+        "cone",
+        "invertedCone",
+        "diamond",
+        "tetrahedron"
+      ]
+    }
+  },
+  "oneOf": [
+    {
+      "required": [
+        "primitive"
+      ]
+    },
+    {
+      "required": [
+        "href"
+      ]
+    }
+  ],
+  "additionalProperties": false
+}
+

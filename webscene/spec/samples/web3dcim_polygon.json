@@ -1,0 +1,158 @@
+{
+  "operationalLayers": [
+    {
+      "id": "14bad7b7d42-layer3",
+      "opacity": 1,
+      "title": "floating Polygons",
+      "url": "https://servicesdev1.arcgis.com/5uh3wwYLNzBuU0Eu/arcgis/rest/services/drivers/FeatureServer/2",
+      "visibility": true,
+      "layerType": "ArcGISFeatureLayer",
+      "layerDefinition": {
+        "elevationInfo": {
+          "mode": "absoluteHeight",
+          "offset": 100
+        },
+        "drawingInfo": {
+          "renderer": {
+            "type": "uniqueValue",
+            "field1": "driverText",
+            "defaultSymbol": {
+              "type": "PolygonSymbol3D",
+              "symbolLayers": [
+                {
+                  "material": {
+                    "color": [
+                      20,
+                      158,
+                      206
+                    ]
+                  },
+                  "type": "Fill",
+                  "outline": {
+                    "color": [
+                      92,
+                      92,
+                      92
+                    ],
+                    "transparency": 60,
+                    "size": 1
+                  }
+                }
+              ]
+            },
+            "uniqueValueInfos": [
+              {
+                "label": "No",
+                "symbol": {
+                  "type": "PolygonSymbol3D",
+                  "symbolLayers": [
+                    {
+                      "material": {
+                        "color": [
+                          237,
+                          81,
+                          81
+                        ],
+                        "transparency": 50
+                      },
+                      "type": "Fill",
+                      "outline": {
+                        "color": [
+                          92,
+                          92,
+                          92
+                        ],
+                        "transparency": 60,
+                        "size": 1
+                      }
+                    }
+                  ]
+                },
+                "value": "null"
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "baseMap": {
+    "baseMapLayers": [
+      {
+        "id": "worldTopoBase",
+        "opacity": 1,
+        "title": "World Topo Map",
+        "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledMapServiceLayer"
+      }
+    ],
+    "id": "basemap",
+    "title": "Topographic",
+    "elevationLayers": [
+      {
+        "id": "globalElevation",
+        "listMode": "show",
+        "title": "Terrain3D",
+        "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledElevationServiceLayer"
+      }
+    ]
+  },
+  "ground": {
+    "layers": [
+      {
+        "id": "globalElevation",
+        "listMode": "show",
+        "title": "Terrain3D",
+        "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledElevationServiceLayer"
+      }
+    ]
+  },
+  "version": "1.9",
+  "authoringApp": "ArcGIS API for JavaScript",
+  "authoringAppVersion": "4.6",
+  "presentation": {
+    "slides": []
+  },
+  "initialState": {
+    "environment": {
+      "lighting": {
+        "datetime": 1426419731000,
+        "displayUTCOffset": 0
+      }
+    },
+    "viewpoint": {
+      "rotation": 339.3756897078476,
+      "scale": 32874.90249481636,
+      "targetGeometry": {
+        "spatialReference": {
+          "wkid": 102100
+        },
+        "x": 500445.96155041497,
+        "y": 6787314.707354402,
+        "z": 2.578166937455535
+      },
+      "camera": {
+        "position": {
+          "spatialReference": {
+            "wkid": 102100
+          },
+          "x": 495635.3864659803,
+          "y": 6774544.340585646,
+          "z": 4827.2974823489785
+        },
+        "heading": 20.624310292152416,
+        "tilt": 60.16289290865568
+      }
+    }
+  },
+  "spatialReference": {
+    "latestWkid": 3857,
+    "wkid": 102100
+  },
+  "viewingMode": "global"
+}

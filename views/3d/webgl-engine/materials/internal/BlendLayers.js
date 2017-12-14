@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define(["dojo/text!./BlendLayers.xml","../../../../webgl/Program","../../lib/DefaultVertexAttributeLocations"],function(e,r,a){var t={loadShaders:function(t,n,d,l){t._parse(e);var o=new r(l,t.vertexShaderBlendLayers,t.fragmentShaderBlendLayers,a.Default3D);d.add("blendLayers",o)}};return t});

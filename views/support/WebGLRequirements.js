@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define(["require","exports","../../core/Error","../../core/sniff"],function(e,r,i,t){function n(){var e=null;return t("esri-webgl")?t("esri-webgl-major-performance-caveat")?e=new i("webgl:major-performance-caveat-detected","Your WebGL implementation doesn't seem to support hardware accelerated rendering. Check if your GPU is blacklisted."):t("esri-webgl-high-precision-fragment")?t("esri-webgl-vertex-shader-samplers")?t("esri-webgl-element-index-uint")||(e=new i("webgl:element-index-uint-required","WebGL support for uint vertex indices is required but not supported.")):e=new i("webgl:vertex-shader-samplers-required","WebGL support for vertex shader samplers is required but not supported."):e=new i("webgl:high-precision-fragment-required","WebGL support for high precision fragment shaders is required but not supported."):e=new i("webgl:required","WebGL is required but not supported."),e}Object.defineProperty(r,"__esModule",{value:!0}),r.check=n});

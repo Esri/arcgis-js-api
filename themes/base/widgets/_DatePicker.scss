@@ -8,16 +8,18 @@
     position: relative;
     align-items: center;
     border: 1px solid $border_color;
+    background-color: $background_color;
   }
 
   .esri-date-picker__calendar {
     @include defaultBoxShadow();
 
     position: absolute;
-    background: inherit;
+    background-color: $background_color;
     top: $cap_spacing * 3;
-    left: $docked_margin;
+    left: 0;
     padding: $section_margin;
+    z-index: 1;
   }
 
   .esri-date-picker__day-picker,
@@ -44,8 +46,9 @@
     font-size: $text_size;
     width: 100%;
     margin: 0;
-    padding: 0 $section_margin;
+    padding: 0 0.5em;
     height: $button_height;
+    color: $text_color;
   }
 
   .esri-date-picker .esri-date-picker__month-dropdown {

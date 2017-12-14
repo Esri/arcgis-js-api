@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define({statsAvg:"Μέση τιμή : ${avg}",count:"Πλήθος: ${count}",percent:"${num}%",high:"Υψηλό",low:"Χαμηλό",color:{changeMinMaxToolTIp:"Πληκτρολογήστε μια τιμή.",handleToolTip:"Αντιστοίχιση τιμών δεδομένων με χρώματα.",maxValueToolTip:"Πληκτρολογήστε τη μέγιστη αναμενόμενη τιμή δεδομένων.",minValueToolTip:"Πληκτρολογήστε τη μικρότερη αναμενόμενη τιμή δεδομένων.",changeSymbol:"Αλλαγή συμβόλου"},size:{handleToolTip:"Αντιστοίχιση τιμών δεδομένων με το μέγεθος συμβόλου.",sizeInputBoxLines:"Ορίστε το πάχος γραμμής από 0 έως 18 pixel.",sizeInputBoxPoints:"Ορίστε το μέγεθος του συμβόλου από 1 έως 120 pixel"}});

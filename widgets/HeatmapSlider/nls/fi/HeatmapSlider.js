@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define({statsAvg:"Keskiarvo: ${avg}",count:"Määrä: ${count}",percent:"${num} %",high:"Suuri",low:"Alhainen",color:{changeMinMaxToolTIp:"Kirjoita arvo.",handleToolTip:"Etsi aineistoarvojen ja värien vastineet.",maxValueToolTip:"Kirjoita suurin odotettu aineistoarvo.",minValueToolTip:"Kirjoita pienin odotettu aineistoarvo.",changeSymbol:"Muuta symbolia"},size:{handleToolTip:"Etsi aineistoarvojen ja symbolin koon vastineet.",sizeInputBoxLines:"Määritä paksuudeksi 0–18 pikseliä.",sizeInputBoxPoints:"Määritä symbolin kooksi 1–120 pikseliä"}});

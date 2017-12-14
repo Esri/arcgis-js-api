@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({searchButtonTitle:"Ieškoti",clearButtonTitle:"Valyti paiešką",placeholder:"Surasti adresą arba vietą",searchIn:"Ieškoti",all:"Viskas",allPlaceholder:"Surasti adresą arba vietą",emptyValue:"Įveskite paieškos žodį.",untitledResult:"Bevardis",untitledSource:"Šaltinis be pavadinimo",noResults:"Rezultatų nėra",noResultsFound:"Reikšmei {value} rezultatų nerasta.",showMoreResults:"Rodyti daugiau rezultatų",hideMoreResults:"Slėpti",searchResult:"Paieškos rezultatas",moreResultsHeader:"Daugiau rezultatų",esriLocatorName:"Esri pasaulio geokoderis"});
+define({searchButtonTitle:"Ieškoti",clearButtonTitle:"Valyti paiešką",placeholder:"Surasti adresą arba vietą",searchIn:"Ieškoti",all:"Viskas",allPlaceholder:"Surasti adresą arba vietą",emptyValue:"Įveskite paieškos žodį.",untitledResult:"Bevardis",untitledSource:"Šaltinis be pavadinimo",noResults:"Rezultatų nėra",noResultsFound:"Rezultatų nerasta.",noResultsFoundForValue:"Reikšmei {value} rezultatų nerasta.",showMoreResults:"Rodyti daugiau rezultatų",hideMoreResults:"Slėpti",searchResult:"Paieškos rezultatas",moreResultsHeader:"Daugiau rezultatų",esriLocatorName:"Esri pasaulio geokoderis",useCurrentLocation:"Naudoti esamą padėtį"});

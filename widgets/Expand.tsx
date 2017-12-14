@@ -1,8 +1,7 @@
 /**
- * The Expand widget acts as a clickable button for opening a widget
+ * The Expand widget acts as a clickable button for opening a widget.
  *
  * @module esri/widgets/Expand
- * @beta
  * @since 4.3
  *
  * @see [Expand.tsx (widget view)]({{ JSAPI_BOWER_URL }}/widgets/Expand.tsx)
@@ -144,6 +143,22 @@ class Expand extends declared(Widget) {
   collapseIconClass: string = "";
 
   //----------------------------------
+  //  collapseTooltip
+  //----------------------------------
+
+  /**
+   * Tooltip to display to indicate Expand widget can be collapsed.
+   *
+   * @name collapseTooltip
+   * @instance
+   * @type {string}
+   * @default "Collapse" (English locale)
+   */
+  @property()
+  @renderable()
+  collapseTooltip: string = "";
+
+  //----------------------------------
   //  content
   //----------------------------------
 
@@ -221,23 +236,6 @@ class Expand extends declared(Widget) {
   expanded = false;
 
   //----------------------------------
-  //  iconNumber
-  //----------------------------------
-
-  /**
-   * A number to display at the corner of the widget to indicate the number of, for example, open issues or unread notices.
-   *
-   * ![expand widget icon number](../assets/img/apiref/widgets/expand-with-iconnumber.png)
-   *
-   * @name iconNumber
-   * @instance
-   * @type {string}
-   */
-  @property()
-  @renderable()
-  iconNumber: number = 0;
-
-  //----------------------------------
   //  expandIconClass
   //----------------------------------
 
@@ -271,20 +269,59 @@ class Expand extends declared(Widget) {
   expandTooltip: string = "";
 
   //----------------------------------
-  //  collapseTooltip
+  //  group
   //----------------------------------
 
   /**
-   * Tooltip to display to indicate Expand widget can be collapsed.
+   * This value associates two or more Expand widget instances with each other, allowing one
+   * instance to auto collapse when another instance in the same group is expanded. For auto collapsing
+   * to take effect, all instances of the group must be included in the {@link module:esri/views/View#ui view.ui}.
    *
-   * @name collapseTooltip
+   * For example, if you place multiple Expand instances in the top-left of the view's ui, you can assign them to a
+   * group called `top-left`. If one Expand instance is expanded and the user clicks on a different instance in the
+   * `top-left` group, then the first instance is collapsed, allowing the content of the second instance to be
+   * fully visible.
+   *
+   * @name group
    * @instance
+   * @since 4.6
    * @type {string}
-   * @default "Collapse" (English locale)
+   *
+   * @example
+   * var expand1 = new Expand({
+   *   view: view,
+   *   content: document.getElementById("bg-gallery"),
+   *   expandIconClass: "esri-icon-basemap",
+   *   group: "bottom-right"
+   * });
+   * var expand2 = new Expand({
+   *   view: view,
+   *   content: document.getElementById("legend"),
+   *   expandIconClass: "esri-icon-key",
+   *   group: "bottom-right"
+   * });
+   *
+   * view.ui.add([expand1, expand2], "bottom-right");
+   */
+  @aliasOf("viewModel.group")
+  group: string = null;
+
+  //----------------------------------
+  //  iconNumber
+  //----------------------------------
+
+  /**
+   * A number to display at the corner of the widget to indicate the number of, for example, open issues or unread notices.
+   *
+   * ![expand widget icon number](../assets/img/apiref/widgets/expand-with-iconnumber.png)
+   *
+   * @name iconNumber
+   * @instance
+   * @type {number}
    */
   @property()
   @renderable()
-  collapseTooltip: string = "";
+  iconNumber: number = 0;
 
   //----------------------------------
   //  view

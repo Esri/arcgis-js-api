@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators","../../core/Accessor"],function(e,r,t,o,n,c){var i=function(e){function r(){return null!==e&&e.apply(this,arguments)||this}return t(r,e),Object.defineProperty(r.prototype,"canZoomIn",{get:function(){var e=this.get("view.scale"),r=this.get("view.constraints.effectiveMaxScale");return 0===r||e>r},enumerable:!0,configurable:!0}),Object.defineProperty(r.prototype,"canZoomOut",{get:function(){var e=this.get("view.scale"),r=this.get("view.constraints.effectiveMinScale");return 0===r||r>e},enumerable:!0,configurable:!0}),o([n.property({dependsOn:["view.ready","view.scale"],readOnly:!0})],r.prototype,"canZoomIn",null),o([n.property({dependsOn:["view.ready","view.scale"],readOnly:!0})],r.prototype,"canZoomOut",null),o([n.property()],r.prototype,"view",void 0),r=o([n.subclass("esri.widgets.Zoom.ZoomConditions2D")],r)}(n.declared(c));return i});

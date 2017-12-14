@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<snippets>
+
+<snippet name="fsLaserLine"><![CDATA[
+#ifdef GL_OES_standard_derivatives
+#extension GL_OES_standard_derivatives : enable
+#endif
+
+  $fsprecisionf
+
+  varying vec2 uv;
+
+  uniform sampler2D depthMap;
+
+  uniform vec2 nearFar;
+  uniform vec4 projInfo;
+
+  // focus plane in camera space
+  uniform vec4 focusPlane;
+
+  // segment plane in camera space
+  uniform vec4 segmentPlane;
+
+  // line segment
+  uniform vec3 segmentStart;
+  uniform vec3 segmentEnd;
+
+  // styling
+  uniform vec3 glowColor;
+  uniform float glowWidth;
+  uniform vec3 innerColor;
+  uniform float innerWidth;
+  uniform float globalAlpha;
+
+  #define INFINITY 100000.0
+
+  $rgba2float
+
+  // reconstruct depth value from linear depth map
+  float linearDepth(vec2 uv) {
+    return -(rgba2float(texture2D(depthMap, uv)) * (nearFar[1] - nearFar[0]) + nearFar[0]);
+  }
+
+  // reconstruct position in view space
+  vec3 reconstructPosition(vec2 fragCoord, float depth) {
+    return vec3((fragCoord * projInfo.xy + projInfo.zw) * depth, depth);
+  }
+
+#ifdef GL_OES_standard_derivatives
+  float planeDistancePixels(vec4 plane, vec3 pos) {
+    // compute distance to plane
+    float dist = dot(plane.xyz, pos) + plane.w;
+    // compute derivative of distance function with respect to pixels
+    float width = fwidth(dist);
+    // normalize distance by the derivative to get a measurement with respect to pixels
+    // the clamping is used to prevent excessive artifacts along depth discontinuities
+    dist /= clamp(width, 0.01, 5.0);
+    return abs(dist);
+  }
+#endif
+
+  // computes laser line color based on distance in pixels
+  vec4 laserLineProfile(float dist) {
+    if (dist > glowWidth) {
+      return vec4(0.0);
+    }
+
+    float inner = smoothstep(innerWidth, 0.0, dist);
+    float alpha = globalAlpha * pow(max(0.0, 1.0 - dist / glowWidth), 8.0);
+    vec3 color = glowColor + inner * innerColor;
+    return vec4(color, alpha);
+  }
+
+  void main() {
+#ifdef GL_OES_standard_derivatives
+    // do not draw laserline on background
+    float depth = linearDepth(uv);
+    if (-depth == nearFar[0]) {
+      discard;
+    }
+
+    // reconstruct position in view space
+    vec3 pos = reconstructPosition(gl_FragCoord.xy, depth);
+
+    // empirical hack to fade out laser line in problematic areas:
+    // the derivatives to normalize the distance function are valid inside smooth surfaces,
+    // but break down at depth discontinuities (e.g. edges). We fade out the laser lines in
+    // areas where depth valus have large variations in order to avoid this problem.
+    float ddepth = fwidth(depth);
+    float fade = smoothstep(0.01, 0.0, -ddepth / depth);
+
+    // reconstruct normal using derivatives
+    vec3 normal = normalize(cross(dFdx(pos), dFdy(pos)));
+
+    // distance to focus plane
+    float focusDistance = planeDistancePixels(focusPlane, pos);
+
+    // distance to segment plane
+    float segmentDistance = INFINITY;
+    float segmentLength = length(segmentEnd - segmentStart);
+    vec3 segmentDir = (segmentEnd - segmentStart) / segmentLength;
+    float t = dot(segmentDir, pos - segmentStart);
+    if (segmentLength > 0.0 && t >= 0.0 && t <= segmentLength) {
+      segmentDistance = planeDistancePixels(segmentPlane, pos);
+    }
+
+    // evaluate color profile for both planes
+    vec4 focusColor = laserLineProfile(focusDistance);
+    vec4 segmentColor = laserLineProfile(segmentDistance);
+
+    // empirical hack to fade out laser line when planes are nearly parallel
+    float focusFade = smoothstep(0.999, 0.995, abs(dot(normal, focusPlane.xyz)));
+    float segmentFade = smoothstep(0.999, 0.995, abs(dot(normal, segmentPlane.xyz)));
+
+    // combine colors
+    vec4 color = max(focusColor * focusFade, segmentColor * segmentFade);
+    color.a = min(1.0, color.a) * fade;
+    gl_FragColor = color;
+#else
+    // we might compute the derivatives ourselves, but because
+    // GL_OES_standard_derivatives should be widely supported we just
+    // disable laser lines when support is missing.
+    gl_FragColor = vec4(0.0);
+#endif
+  }
+]]></snippet>
+
+</snippets>

@@ -1,0 +1,74 @@
+{
+  "title": "layer",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "A layer object may allow overrides on popup content and drawing behavior for individual layers of a web service. This object also contains geographic features and their attributes when used in a feature collection.",
+  "properties": {
+    "defaultVisibility": {
+      "type": "boolean",
+      "description": "Default visibility of the layers in the map service."
+    },
+    "definitionEditor": {
+      "type": "object",
+      "description": "An object that provides interactive filters.",
+      "$ref": "definitionEditor_schema.json"
+    },
+    "featureSet": {
+      "type": "object",
+      "description": "A featureSet object containing the geometry and attributes of the features in the layer. Used with feature collections only.",
+      "$ref": "featureSet_schema.json"
+    },
+    "id": {
+      "type": "string",
+      "description": "A string indicating the index position of the layer in the map service or feature collection."
+    },
+    "layerDefinition": {
+      "type": "object",
+      "description": "The layerDefinition object defines the attribute schema and drawing information for the layer.",
+      "$ref": "layerDefinition_schema.json"
+    },
+    "layerUrl": {
+      "type": "string",
+      "description": "A string URL to a service that should be used for all queries against the layer. Used with hosted tiled map services on ArcGIS Online when there is an associated feature service that allows for queries."
+    },
+    "maxScale": {
+      "type": "number",
+      "description": "Represents the maximum scale at which the layer definition will be applied."
+    },
+    "minScale": {
+      "type": "number",
+      "description": "Represents the minimum scale at which the layer definition will be applied."
+    },
+    "parentLayerId": {
+      "type": "number",
+      "description": "If working with nested layers, this is the numeric value indicating the layer id of the next layer (parent) directly above the current referenced layer."
+    },
+    "popupInfo": {
+      "type": "object",
+      "description": "A popupInfo object defining the popup window content for the layer.",
+      "$ref": "popupInfo_schema.json"
+    },
+    "showLegend": {
+      "type": "boolean",
+      "description": "Boolean value indicating whether to display the layer in the legend. Default value is `true`.",
+      "default": true
+    },
+    "subLayer": {
+      "type": "number",
+      "description": "Array of numeric values indicating the layer index for layers nested directly under the parent layer."
+    },
+    "subLayerIds": {
+      "type": "array",
+      "description": "If the layer is a parent layer, it will have one or more sub layers included in an array.",
+      "items": {
+        "type": "integer"
+      }
+    },
+    "title": {
+      "type": "string",
+      "description": "A user-friendly string title for the layer that can be used in a table of contents."
+    }
+  },
+  "additionalProperties": false
+}
+

@@ -2,15 +2,47 @@ import FeatureLayerSearchSource = require("./Search/FeatureLayerSearchSource");
 import LocatorSearchSource = require("./Search/LocatorSearchSource");
 import EsriError = require("../core/Error");
 import Extent = require("../geometry/Extent");
+import Point = require("../geometry/Point");
 import Graphic = require("../Graphic");
 import Layer = require("../layers/Layer");
 import Symbol = require("../symbols/Symbol");
 import Color = require("../Color");
+import PopupTemplate = require("../PopupTemplate");
+import Collection = require("../core/Collection");
+import SceneView = require("../views/SceneView");
+import SearchViewModel = require("./Search/SearchViewModel");
+import MapView = require("../views/MapView");
 
 interface Axes {
   x?: number;
   y?: number;
   z?: number;
+}
+
+export type ActiveMenu = "none" | "suggestion" | "source" | "warning";
+
+export type SearchItem = SuggestResult | string | Point | number[] | Graphic;
+
+export interface SearchProperties {
+  activeSourceIndex: number;
+  allPlaceholder: string;
+  autoNavigate: boolean;
+  autoSelect: boolean;
+  defaultSource: LocatorSearchSource | FeatureLayerSearchSource;
+  maxResults: number;
+  maxSuggestions: number;
+  minSuggestCharacters: number;
+  popupEnabled: boolean;
+  popupOpenOnSelect: boolean;
+  popupTemplate: PopupTemplate;
+  resultGraphicEnabled: boolean;
+  searchAllEnabled: boolean;
+  searchTerm: string;
+  selectedResult: SearchResult;
+  sources: Collection<LocatorSearchSource | FeatureLayerSearchSource>;
+  suggestionsEnabled: boolean;
+  view: MapView | SceneView;
+  viewModel: SearchViewModel;
 }
 
 export interface SearchResult {
@@ -28,6 +60,7 @@ export interface SearchResults<T> {
 }
 
 export interface SuggestResult {
+  location?: Point;
   text: string;
   key: string;
   sourceIndex: number;
@@ -146,4 +179,9 @@ interface ColorOpacityRampStop {
 interface ZoomConditions {
   readonly canZoomIn: boolean;
   readonly canZoomOut: boolean;
+}
+
+interface AttributionItem<L extends Layer = Layer> {
+  readonly text: string;
+  readonly layers: L[];
 }

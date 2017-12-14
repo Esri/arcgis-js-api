@@ -1,0 +1,14 @@
+{
+    "title": "Renderer Legend Options",
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "description": "Options available for the renderer legend.",
+    "properties": {
+      "title": {
+        "type": "string",
+        "description": "The title of the legend."
+      }
+    }
+  }
+  
+  

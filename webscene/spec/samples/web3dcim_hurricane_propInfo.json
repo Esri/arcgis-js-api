@@ -1,0 +1,155 @@
+{
+  "operationalLayers": [
+    {
+      "id": "05_HurricaneAndrew_1992_7083",
+      "listMode": "show",
+      "opacity": 1,
+      "title": "05_HurricaneAndrew_1992 - Hurricane Points",
+      "url": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/05_HurricaneAndrew_1992/FeatureServer/0",
+      "visibility": true,
+      "layerType": "ArcGISFeatureLayer",
+      "layerDefinition": {
+        "minScale": 55000000,
+        "maxScale": 1000000,
+        "elevationInfo": {
+          "mode": "relativeToGround"
+        },
+        "drawingInfo": {
+          "renderer": {
+            "type": "simple",
+            "visualVariables": [
+              {
+                "type": "colorInfo",
+                "field": "WIND_KTS",
+                "minDataValue": 20,
+                "maxDataValue": 150,
+                "colors": [
+                  [
+                    0,
+                    0,
+                    255,
+                    255
+                  ],
+                  [
+                    255,
+                    0,
+                    0,
+                    255
+                  ]
+                ]
+              },
+              {
+                "type": "sizeInfo",
+                "field": "WIND_KTS",
+                "minDataValue": 20,
+                "maxDataValue": 150,
+                "minSize": 60000,
+                "maxSize": 450000,
+                "axis": "height"
+              },
+              {
+                "type": "sizeInfo",
+                "minSize": 50000,
+                "axis": "width"
+              }
+            ],
+            "symbol": {
+              "type": "PointSymbol3D",
+              "symbolLayers": [
+                {
+                  "type": "Object",
+                  "resource": {
+                    "primitive": "cylinder"
+                  },
+                  "width": 1000,
+                  "height": 100000
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "baseMap": {
+    "baseMapLayers": [
+      {
+        "id": "worldTopoBase",
+        "opacity": 1,
+        "title": "World Topo Map",
+        "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledMapServiceLayer"
+      }
+    ],
+    "id": "basemap",
+    "title": "Topographic",
+    "elevationLayers": [
+      {
+        "id": "globalElevation",
+        "listMode": "show",
+        "title": "Terrain3D",
+        "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledElevationServiceLayer"
+      }
+    ]
+  },
+  "ground": {
+    "layers": [
+      {
+        "id": "globalElevation",
+        "listMode": "show",
+        "title": "Terrain3D",
+        "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
+        "visibility": true,
+        "layerType": "ArcGISTiledElevationServiceLayer"
+      }
+    ]
+  },
+  "version": "1.9",
+  "authoringApp": "ArcGIS API for JavaScript",
+  "authoringAppVersion": "4.6",
+  "presentation": {
+    "slides": []
+  },
+  "initialState": {
+    "environment": {
+      "lighting": {
+        "datetime": 1426435986000,
+        "displayUTCOffset": -4
+      }
+    },
+    "viewpoint": {
+      "rotation": 11.09423824533684,
+      "scale": 25051815.94768372,
+      "targetGeometry": {
+        "spatialReference": {
+          "latestWkid": 3857,
+          "wkid": 102100
+        },
+        "x": -7052135.76786729,
+        "y": 1676951.352347769,
+        "z": -403.9568989323452
+      },
+      "camera": {
+        "position": {
+          "spatialReference": {
+            "latestWkid": 3857,
+            "wkid": 102100
+          },
+          "x": -7043593.809602808,
+          "y": 1633428.4726087584,
+          "z": 13114825.109029941
+        },
+        "heading": 348.90576175466316,
+        "tilt": 0.18740070703603293
+      }
+    }
+  },
+  "spatialReference": {
+    "latestWkid": 3857,
+    "wkid": 102100
+  },
+  "viewingMode": "global"
+}

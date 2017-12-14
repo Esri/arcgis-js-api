@@ -20,6 +20,8 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["../config","./WebTileLayer"],function(e,r){e.request.corsEnabledServers.push("a.tile.openstreetmap.org","b.tile.openstreetmap.org","c.tile.openstreetmap.org");var t=r.createSubclass({declaredClass:"esri.layers.OpenStreetMapLayer",properties:{copyright:"Map data &copy; OpenStreetMap contributors, CC-BY-SA",subDomains:{value:["a","b","c"]},urlTemplate:"https://{subDomain}.tile.openstreetmap.org/{level}/{col}/{row}.png",operationalLayerType:"OpenStreetMap",type:{value:"open-street-map",json:{read:!1}}}});return t});
+//  copyright
+
+define(["../config","./WebTileLayer"],function(e,r){e.request.corsEnabledServers.push("a.tile.openstreetmap.org","b.tile.openstreetmap.org","c.tile.openstreetmap.org");var t=r.createSubclass({declaredClass:"esri.layers.OpenStreetMapLayer",properties:{subDomains:{value:["a","b","c"],json:{read:!1,write:!1}},fullExtent:{json:{read:!1,write:!1}},urlTemplate:{value:"https://{subDomain}.tile.openstreetmap.org/{level}/{col}/{row}.png",json:{read:!1,write:!1}},operationalLayerType:"OpenStreetMap",type:{value:"open-street-map",json:{read:!1}},copyright:{value:"Map data &copy; OpenStreetMap contributors, CC-BY-SA",json:{origins:{"web-document":{read:!1,write:!1}}}},wmtsInfo:{json:{read:!1,write:!1}}}});return t});

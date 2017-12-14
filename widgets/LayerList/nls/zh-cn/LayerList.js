@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.5/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
 define({noItemsToDisplay:"当前没有要显示的项目。",layerInvisibleAtScale:"在当前比例下不可见",layerError:"加载此图层时出错",untitledLayer:"无标题图层"});
