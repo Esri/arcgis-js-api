@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../kernel","./RangeDomain","./CodedValueDomain"],function(e,a,i,n,s,t){var l=e(null,{declaredClass:"esri.layers.Field",constructor:function(e){if(e&&a.isObject(e)){this.name=e.name,this.type=e.type,this.alias=e.alias,this.length=e.length,this.editable=e.editable,this.nullable=e.nullable;var i=e.domain;if(i&&a.isObject(i))switch(i.type){case"range":this.domain=new s(i);break;case"codedValue":this.domain=new t(i)}}}});return i("extend-esri")&&a.setObject("layers.Field",l,n),l});
+define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../kernel","../lang","./RangeDomain","./CodedValueDomain"],function(e,t,i,a,n,s,l){var o=e(null,{declaredClass:"esri.layers.Field",constructor:function(e){if(e&&t.isObject(e)){this.name=e.name,this.type=e.type,this.alias=e.alias,this.length=e.length,this.editable=e.editable,this.nullable=e.nullable;var i=e.domain;if(i&&t.isObject(i))switch(i.type){case"range":this.domain=new s(i);break;case"codedValue":this.domain=new l(i)}}},toJson:function(){return n.fixJson({name:this.name,type:this.type,alias:this.alias,length:this.length,editable:this.editable,nullable:this.nullable,domain:this.domain?this.domain.toJson():null})},toJSON:function(){return this.toJson()}});return i("extend-esri")&&t.setObject("layers.Field",o,a),o});

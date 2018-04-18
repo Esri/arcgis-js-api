@@ -1356,7 +1356,7 @@
       },
       "FeatureClass": {
         "required": true,
-        "dataType": "featureClass",
+        "dataType": "featureclass",
         "displayName": "${rasterFunctions.rfxArgs.featureClassName}",
         "hidden": false
       },
@@ -1439,7 +1439,7 @@
       },
       "PointFeatureClass": {
         "required": true,
-        "dataType": "featureClass",
+        "dataType": "featureclass",
         "displayName": "${rasterFunctions.rfxArgs.pointFeatureClassName}",
         "hidden": false
       },
@@ -1626,7 +1626,7 @@
     "rasterFunctionArguments": {
       "PointFeatureClass": {
         "required": true,
-        "dataType": "featureClass",
+        "dataType": "featureclass",
         "dataTypeAttributes": {
           "type": "point",
           "hasZ": true

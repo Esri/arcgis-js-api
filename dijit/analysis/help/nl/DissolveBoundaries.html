@@ -46,7 +46,7 @@
         <hr/>
     <p>Gebieden die elkaar overlappen of een gemeenschappelijke grens hebben, worden samengevoegd tot &eacute;&eacute;n gebied.    
     </p>
-    <p>U kunt bepalen welke grenzen worden samengevoegd door een veld op te geven. Als u bijvoorbeeld een laag met regio's hebt en elke regio een  <i>State_Name</i>-attribuut heeft, kunt u grenzen oplossen op basis van het <i>State_Name</i>-attribuut. Aangrenzende regio's worden samengevoegd als ze dezelfde waarde hebben voor <i>State_Name</i>. Het eindresultaat is een laag met grenzen van provincies.
+    <p>U kunt bepalen welke grenzen worden samengevoegd door een veld op te geven. Als u bijvoorbeeld een laag met regio's hebt en elke regio een  <i>State_Name</i>-attribuut heeft, kunt u grenzen oplossen op basis van het <i>State_Name</i>-attribuut. Aangrenzende provincies worden samengevoegd als ze dezelfde waarde hebben voor <i>State_Name</i>. Het eindresultaat is een laag met grenzen van provincies.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -54,8 +54,7 @@
         <div><h2>Kies de vlakkenlaag waarvan de grenzen worden opgelost.</h2></div>
         <hr/>
         <div>
-            <p>Geef de laag op met gebiedsobjecten die worden opgelost.
-
+            <p>Geef de laag op met gebiedsobjecten die worden opgelost. 
             </p>
             <p class="OnlineOnly">Naast het kiezen van een laag uit uw kaart, kunt u  <b>Analyselaag Levende Atlas kiezen</b> of <b>Analyselaag kiezen</b> selecteren onderaan de vervolgkeuzelijst. Er wordt een galerij geopend met een verzameling lagen die handig zijn voor veel analyses. 
             </p>
@@ -70,13 +69,28 @@
                     <li> <b>Gebieden die elkaar overlappen of aan elkaar grenzen</b>&mdash;Twee of meer gebieden met overlappende grenzen worden samengevoegd tot &eacute;&eacute;n gebied. Daarnaast worden aangrenzende gebieden (dus gebieden met een gemeenschappelijke grens) samengevoegd tot &eacute;&eacute;n gebied.
                     </li>
                     <li> <b>Gebieden met dezelfde veldwaarde</b>&mdash;Gebieden die elkaar overlappen of die een gemeenschappelijke grens hebben, worden samengevoegd tot &eacute;&eacute;n gebied als ze dezelfde attribuutwaarde hebben.
-                        <p>Als u bijvoorbeeld een laag met regio's hebt en elke regio een  <i>State_Name</i>-attribuut heeft, kunt u grenzen oplossen op basis van het <i>State_Name</i>-veld. Aangrenzende regio's worden samengevoegd als ze dezelfde waarde hebben voor <i>State_Name</i>. Het eindresultaat is een laag met grenzen van provincies.
+                        <p>Als u bijvoorbeeld een laag met regio's hebt en elke regio een  <i>State_Name</i>-veld heeft, kunt u grenzen oplossen op basis van het <i>State_Name</i>-veld. Aangrenzende provincies worden samengevoegd als ze dezelfde waarde hebben voor <i>State_Name</i>. Het eindresultaat is een laag met grenzen van provincies.
                         </p>
                     </li>
                 </ul>
                 
             </p>
-            <p>Als  <b>Huidige kaartextent gebruiken</b> is geselecteerd, worden alleen de objecten opgelost in de invoerlaag die zichtbaar is binnen het huidige kaartextent. Als deze optie niet wordt geselecteerd, worden alle objecten in de invoerlaag opgelost, ook als ze zich buiten de huidige kaartomvang bevinden.
+            <p>Als  <b>Huidig extent van de kaart gebruiken</b> is aangevinkt, worden alleen de objecten in de invoerlaag die binnen het huidige extent van de kaart zichtbaar zijn, opgelost. Als deze optie niet wordt geselecteerd, worden alle objecten in de invoerlaag opgelost, ook als ze zich buiten de huidige kaartomvang bevinden.
+            </p>
+        </div>
+    </div>
+    <div id="multiPartFeatures">
+        <div><h2>Meerdelige objecten maken</h2></div>
+        <hr/>
+        <div>
+            <p>In ArcGIS, een digitale representatie van een plaats of een ding dat meer dan &eacute;&eacute;n deel heeft maar is gedefinieerd als &eacute;&eacute;n object omdat het verwijst naar &eacute;&eacute;n set attributen. In een laag van staten bijvoorbeeld, kan de staat Hawa&iuml; worden beschouwd als een meerdelig object, want de afzonderlijke geometrische delen worden geclassificeerd als &eacute;&eacute;n staat. Een meerdelig object kan een punt, lijn of polygoon zijn. Deze booleaanse parameter biedt twee opties:
+                <ul>
+                    <li>Waar (aangevinkt): de output service kan meerdelige objecten bevatten.
+                    </li>
+                    <li>Niet waar (niet aangevinkt): de output service bevat alleen objecten uit &eacute;&eacute;n deel en individuele objecten worden voor elk deel gemaakt.
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>
@@ -84,7 +98,7 @@
         <div><h2>Statistieken toevoegen</h2></div>
         <hr/>
         <div>
-            <p>Wanneer gebieden worden samengevoegd, kunt u een samenvatting van hun attributen maken. Als u bijvoorbeeld de grens tussen regio's oplost op basis van  <i>State_Name</i>, en elke regio een <i>Bevolking</i>-veld heeft, kunt u de som van <i>Bevolking</i> voor de staat berekenen.
+            <p>Wanneer gebieden worden samengevoegd, kunt u een samenvatting van hun attributen maken. Als u bijvoorbeeld de grens tussen regio's oplost op basis van  <i>State_Name</i>, en elke regio heeft een <i>Population</i>-veld, dan kunt u de som berekenen van <i>Population</i> voor de staat.
             </p>
             <p>Beschikbare soorten statistieken zijn:
             </p>
@@ -105,7 +119,7 @@
                     
 
                 </li>
-                <li> <b>Std. afwijking</b>&mdash;Hiermee wordt de standaardafwijking gegeven van de waarden in het opgegeven veld
+                <li> <b>Std. Afwijking</b>&mdash;Hiermee wordt de standaardafwijking gegeven van de waarden in het opgegeven veld
                     
 
                 </li>

@@ -130,6 +130,7 @@
 }
 .esriBookmarksRTL .esriBookmarkLabel{
   float:right;
+  text-align: right;
 }
 .esriBookmarksRTL .esriBookmarkEditBox{
   float:right;

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define([],function(){var r,e={};return e.getPrettifyYAxisParameters=function(e,a){if(!r){r=[];for(var o=-20;20>o;o++)r.push(1*Math.pow(10,o)),r.push(2*Math.pow(10,o)),r.push(5*Math.pow(10,o))}for(var t,i,n=0;n<r.length;n++){var f=r[n],p=r[n+1];if(e>f&&p>=e){t=p/5,i=t/5;break}}for(var u=0,h=0;e>=(u+1)*t;)u++;for(;e>=u*t+(h+1)*i;)h++;var v={majorTickStep:t,minorTickStep:i,max:u*t+(h+2)*i};return a&&(v.includeZero=!0,v.min=.9*-i,v.fixLower="none"),v},e});
+define([],function(){function r(r,e,n,a){for(var i=0,t=0;(i+1)*e<=r;)i++;for(;i*e+(t+1)*n<=r;)t++;return i*e+t*n+(a?n:-n)}var e,n={};return n.getPrettifyYAxisParameters=function(n,a,i){i=i||{};var t=i.baseLineValue||0;n=Math.min(n,t),a=Math.max(a,t);var o=Math.abs(a-n);if(!e){e=[];for(var m=-20;m<20;m++){var f=Math.pow(10,m);e.push(1*f,2*f,5*f)}}for(var h,s,u=0;u<e.length;u++){var v=e[u],p=e[u+1];if(o>v&&o<=p){h=p/5,s=h/5;break}}var M={majorTickStep:h,minorTickStep:s,min:0===n?0:r(Math.abs(n),h,s,n<0)*(n>0?1:-1),max:0===a?0:r(Math.abs(a),h,s,a>0)*(a>0?1:-1),includeZero:0===t,fixUpper:"none",fixLower:"none"};return 0===t&&(i.renderColumnBarsInOppositeDirections?M.min=-M.max:i.goBelowZero?M.min=Math.min(M.min,.9*-s):i.previewBelowZero&&(M.min=Math.min(M.min,.5*-s))),M},n});

@@ -46,7 +46,7 @@
         <hr/>
     <p>&Uuml;hist piiri omavad v&otilde;i kattuvuses olevad alad liidetakse &uuml;heks tervikuks.    
     </p>
-    <p>Te saate kontrollida, kas piirajad &uuml;hendatakse m&auml;&auml;ratud v&auml;lja alusel. N&auml;iteks kui Teil on kasutada maakondade kiht, milles igal maakonnal on atribuut  <i>State_Name</i>, saate piiride &uuml;leminekud sulatada atribuudi <i>State_Name</i> kaudu.  K&uuml;lgnevad maakonnad &uuml;hendatakse kokku juhul, kui nende atribuudi <i>State_Name</i> v&auml;&auml;rtus on sama.  L&otilde;pptulemusena tekib suurema ulatusega haldus&uuml;ksuste kiht.
+    <p>Te saate kontrollida, kas piirajad &uuml;hendatakse m&auml;&auml;ratud v&auml;lja alusel. Kui teil on n&auml;iteks maakondade kiht ja igal maakonnal on atribuut  <i>State_Name</i>, saate piirajad sulandada atribuudiga <i>State_Name</i>.  K&uuml;lgnevad maakonnad &uuml;hendatakse, kui neil on v&auml;ljal <i>State_Name</i> sama v&auml;&auml;rtus. L&otilde;pptulemusena tekib suurema ulatusega haldus&uuml;ksuste kiht.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -69,13 +69,28 @@
                     <li> <b>Alad, mis on &uuml;lekattes v&otilde;i k&uuml;lgnevad</b> &ndash; kaks v&otilde;i enam ala, mille piirid kattuvad, liidetakse &uuml;heks alaks.  Lisaks sellele alad, mis on omavahel k&uuml;lgnevad ehk mis omavad &uuml;hist piiri, liidetakse samuti &uuml;heks tervikalaks.
                     </li>
                     <li> <b>Sama v&auml;lja v&auml;&auml;rtust omavad alad</b> &ndash; alad, mis kattuvad v&otilde;i mis omavad &uuml;hist piiri, liidetakse &uuml;heks alaks juhul, kui neil on sama v&auml;lja v&auml;&auml;rtus.
-                        <p>N&auml;iteks kui Teil on kasutada maakondade kiht, milles igal maakonnal on v&auml;li  <i>State_Name</i>, saate piiride &uuml;leminekud sulatada v&auml;lja <i>State_Name</i> kaudu.  K&uuml;lgnevad maakonnad &uuml;hendatakse kokku juhul, kui nende atribuudi <i>State_Name</i> v&auml;&auml;rtus on sama.  L&otilde;pptulemusena tekib suurema ulatusega haldus&uuml;ksuste kiht.
+                        <p>Kui teil on n&auml;iteks maakondade kiht ja igal maakonnal on v&auml;li  <i>State_Name</i>, saate piirajad sulandada v&auml;lja <i>State_Name</i> abil.  K&uuml;lgnevad maakonnad &uuml;hendatakse, kui neil on v&auml;ljal <i>State_Name</i> sama v&auml;&auml;rtus. L&otilde;pptulemusena tekib suurema ulatusega haldus&uuml;ksuste kiht.
                         </p>
                     </li>
                 </ul>
                 
             </p>
-            <p>Kui ruut  <b>Kasuta praegust kaardi ulatust</b> on m&auml;rgitud, sulandatakse ainult need sisendkihi objektid, mis on kaardil praegu n&auml;htavad.  Kui see ruut pole m&auml;rgitud, sulandatakse k&otilde;ik sisendkihis olevad objektid ka siis, kui neid pole praegu kaardil n&auml;ha.
+            <p>Kui ruut  <b>Kasuta praegust kaardi ulatust</b> on m&auml;rgitud, anal&uuml;&uuml;sitakse ainult neid sisendkihi objekte, mis on kaardil praegu n&auml;htavad. Kui see ruut pole m&auml;rgitud, sulandatakse k&otilde;ik sisendkihis olevad objektid ka siis, kui neid pole praegu kaardil n&auml;ha.
+            </p>
+        </div>
+    </div>
+    <div id="multiPartFeatures">
+        <div><h2>Loo mitmeosalised objektid</h2></div>
+        <hr/>
+        <div>
+            <p>Mitmeosaline objekt on ArcGIS-i kontekstis paiga v&otilde;i n&auml;htuse digitaalne kujutis, mis koosneb rohkem kui &uuml;hest osast, ent on kirjeldatud &uuml;he objektina, kuna see viitab &uuml;hele atribuutide komplektile. USA osariikide kihis n&auml;iteks v&otilde;iks Hawaii osariiki k&auml;sitleda mitmeosalise objektina, kuna selle erinevad geomeetrilised osad on liigitatud &uuml;he osariigina. Mitmeosaline objekt v&otilde;ib olla punkt, joon v&otilde;i hulknurk. See Boole'i parameeter pakub kahte varianti:
+                <ul>
+                    <li>t&otilde;ene (m&auml;rgitud): v&auml;ljundi teenus v&otilde;ib sisaldada mitmeosalisi objekte;
+                    </li>
+                    <li>v&auml;&auml;r (m&auml;rkimata): v&auml;ljundi teenus sisaldab ainult &uuml;heosalisi objekte ja iga osa jaoks luuakse eraldiseisev &uuml;ksikobjekt.
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>
@@ -83,7 +98,7 @@
         <div><h2>Lisa statistika</h2></div>
         <hr/>
         <div>
-            <p>P&auml;rast alade kokku &uuml;hendamist saate summeerida ka nende atribuudid. N&auml;iteks kui sulandate maakondade piirid kokku atribuudi  <i>State_Name</i> alusel ja igal maakonnal on v&auml;li <i>Rahvastik</i>, saate arvutada ka v&auml;lja <i>Rahvastik</i> summa maakonna jaoks.
+            <p>P&auml;rast alade kokku &uuml;hendamist saate summeerida ka nende atribuudid. Kui n&auml;iteks sulandate maakondade piirid kokku atribuudi  <i>State_Name</i> alusel ja igal maakonnal on v&auml;li <i>Population</i>, saate arvutada ka v&auml;lja <i>Population</i> summa maakonna jaoks.
             </p>
             <p>Kasutatavad statistikute t&uuml;&uuml;bid on:
             </p>

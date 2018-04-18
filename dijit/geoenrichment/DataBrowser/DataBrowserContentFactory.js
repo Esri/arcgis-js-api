@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["dojo/_base/declare","dojo/dom-class","../_WizardPage","../_PageButtons","./Breadcrumb","./DataBrowserBase","./DataBrowserManager","./DataCategoriesPage","./DataCollectionsPage","./DataVariablesPage","./DataVariableGrid","dojo/i18n!../../../nls/jsapi"],function(e,a,t,n,r,i,o,s,u,c,d,l){return e(null,{createManager:function(e){return new o(e)},createBreadcrumb:function(e){return new r(e)},createPage:function(a,r){var o;switch(a){case i.CATEGORIES_PAGE:o=s;break;case i.COLLECTIONS_PAGE:o=u;break;case i.VARIABLES_PAGE:o=c}return new(o=e([t,n,o],{buildRendering:function(){function e(e){var n=e.toLowerCase(),r=t[n+"Button"];r===!0&&(r=l.geoenrichment.dijit.WizardButtons[n]),r&&a.push({id:n,label:r,onClick:function(){t.emit(e,{bubbles:!1})}})}this.inherited(arguments);var a=[],t=this;e("Cancel"),e("OK"),e("Back"),a.length?this.addButtons(a):this.buttonsNode&&(this.buttonsNode.style.display="none")}}))(r)},createVariableGrid:function(e,a){return new d(e,a)}})});
+define(["dojo/_base/declare","dojo/dom-class","../_WizardPage","../_PageButtons","./Breadcrumb","./DataBrowserBase","./DataBrowserManager","./DataCategoriesPage","./DataCollectionsPage","./DataVariablesPage","./DataVariableGrid","dojo/i18n!../../../nls/jsapi"],function(e,a,t,n,r,i,o,s,c,u,d,l){return e(null,{createManager:function(e){return new o(e)},createBreadcrumb:function(e){return new r(e)},createPage:function(a,r){var o;switch(a){case i.CATEGORIES_PAGE:o=s;break;case i.COLLECTIONS_PAGE:o=c;break;case i.VARIABLES_PAGE:o=u}return new(o=e([t,n,o],{buildRendering:function(){function e(e){var n=e.toLowerCase(),r=t[n+"Button"];!0===r&&(r=l.geoenrichment.dijit.WizardButtons[n]),r&&a.push({id:n,label:r,onClick:function(){t.emit(e,{bubbles:!1})}})}this.inherited(arguments);var a=[],t=this;e("Cancel"),e("OK"),e("Back"),a.length?this.addButtons(a):this.buttonsNode&&(this.buttonsNode.style.display="none")}}))(r)},createVariableGrid:function(e,a){return new d(e,a)}})});

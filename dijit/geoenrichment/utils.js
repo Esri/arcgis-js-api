@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define([],function(){return{getCeiling:function(t,n){if(0===t)return 0;var r;0>t?(t=-t,r=-1):r=1;var a=2,e=Math.pow(10,Math.ceil(Math.log(t)/Math.LN10)-1),i=Math.ceil(t/e/a)*a*e;return n&&Math.log(i)/Math.LN10%1===0&&(i*=a),i*r},supportsComparison:function(t,n){return"OneVar"==t||"Tapestry"!=t&&n}}});
+define([],function(){return{getCeiling:function(t,n){if(0===t)return 0;var r;t<0?(t=-t,r=-1):r=1;var a=Math.pow(10,Math.ceil(Math.log(t)/Math.LN10)-1),e=2*Math.ceil(t/a/2)*a;return n&&Math.log(e)/Math.LN10%1==0&&(e*=2),e*r},supportsComparison:function(t,n){return"OneVar"==t||"Tapestry"!=t&&n}}});

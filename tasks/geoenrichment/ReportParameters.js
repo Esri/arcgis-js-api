@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["../../declare","./EnrichParametersBase"],function(r,t){var e=r("esri.tasks.geoenrichment.ReportParameters",[t],{reportID:null,format:"pdf",fields:null,constructor:function(r){r&&(this.reportID=r.report||r.reportID||null,this.format=r.format,this.fields=r.reportFields||r.fields||null)},toJson:function(){var r=this.inherited(arguments);return this.reportID&&(r.report=this.reportID),this.format&&(r.format=this.format),this.fields&&(r.reportFields=this.fields),r}});return e});
+define(["../../declare","./EnrichParametersBase"],function(r,t){return r("esri.tasks.geoenrichment.ReportParameters",[t],{reportID:null,format:"pdf",fields:null,constructor:function(r){r&&(this.reportID=r.report||r.reportID||null,this.format=r.format,this.fields=r.reportFields||r.fields||null)},toJson:function(){var r=this.inherited(arguments);return this.reportID&&(r.report=this.reportID),this.format&&(r.format=this.format),this.fields&&(r.reportFields=this.fields),r}})});

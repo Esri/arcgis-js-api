@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -38,4 +38,4 @@
 // limitations under the License.
 ///////////////////////////////////////////////////////////////////////////
 
-define(["dojo/_base/declare","dijit/_WidgetBase","dojo/dom-style","dojo/dom-construct"],function(d,i,o,e){return d(i,{baseClass:"jimu-loading-indicator",declaredClass:"esri.dijit.analysis.customgp.common.dijit.LoadingIndicator",hidden:!1,postCreate:function(){this.inherited(arguments),this.hidden=this.hidden===!0,this.hidden&&o.set(this.domNode,{display:"none"}),o.set(this.domNode,{width:"100%",height:"100%"});var d='<div class"jimu-loading"></div>';e.place(d,this.domNode)},show:function(){this.domNode&&o.set(this.domNode,"display","block")},hide:function(){this.domNode&&o.set(this.domNode,"display","none")}})});
+define(["dojo/_base/declare","dijit/_WidgetBase","dojo/dom-style","dojo/dom-construct"],function(d,i,o,e){return d(i,{baseClass:"jimu-loading-indicator",declaredClass:"esri.dijit.analysis.customgp.common.dijit.LoadingIndicator",hidden:!1,postCreate:function(){this.inherited(arguments),this.hidden=!0===this.hidden,this.hidden&&o.set(this.domNode,{display:"none"}),o.set(this.domNode,{width:"100%",height:"100%"});e.place('<div class"jimu-loading"></div>',this.domNode)},show:function(){this.domNode&&o.set(this.domNode,"display","block")},hide:function(){this.domNode&&o.set(this.domNode,"display","none")}})});

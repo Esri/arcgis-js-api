@@ -17,3 +17,7 @@
     .esriGEReportPlayer_infographicContainer .AgePyramid_MinMax {
         top: 0px;
     }
+
+    .esriGEReportPlayer_infographicContainer .BaseWidget_Title {
+        font-weight: normal;
+    }

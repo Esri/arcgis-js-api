@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["dojo/_base/declare","dojo/when","../core/annotations/supportClasses/DynamicBehaviors","../core/supportClasses/images/DefaultLogoLoader"],function(t,e,o,n){return t(null,{_getReportLogo:function(t,n){function a(){return e(r._reportData.attachmentsStore&&r._reportData.attachmentsStore.getAttachments(),function(t){return e(t&&t[0]&&t[0].getThumbnail(),function(t){return t||r._getDefaultLogo(n)})})}var r=this;switch(t){case o.ATTACHMENTS:return a();default:return this._getDefaultLogo(n)}},_getDefaultLogo:function(t){return n.getDefaultLogo(this._viewModel.getDocumentDefaultStyles())}})});
+define(["dojo/_base/declare","dojo/when","../core/annotations/supportClasses/DynamicBehaviors","../core/supportClasses/images/DefaultLogoLoader"],function(t,e,o,n){return t(null,{_getReportLogo:function(t,n){var a=this;switch(t){case o.ATTACHMENTS:return function(){return e(a._reportData.attachmentsStore&&a._reportData.attachmentsStore.getAttachments(),function(t){return e(t&&t[0]&&t[0].getThumbnail(),function(t){return t||a._getDefaultLogo(n)})})}();default:return this._getDefaultLogo(n)}},_getDefaultLogo:function(t){return n.getDefaultLogo(this._viewModel.getDocumentDefaultStyles())}})});

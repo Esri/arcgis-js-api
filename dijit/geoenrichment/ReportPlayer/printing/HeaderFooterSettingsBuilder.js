@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -24,4 +24,4 @@
 
 //            copyrightText: String,
 
-define(["esri/dijit/geoenrichment/utils/DateUtil"],function(e){return{createHeaderFooterParams:function(t,a,r){var l;return l=r.allAreas?t.getAnalysisAreas():[t.getCurrentAnalysisArea()],l.map(function(l){var o=a.getDocumentDefaultStyles(),i=t.getReportData().reportObject.dataVintageDescription;return{header:{show:r.addHeader,title:t.getReportTitle(),subtitle:t.printConfig.subtitle,siteName:l.name,siteDesc:l.description,siteAddr:l.address,latitude:l.latitude,longitude:l.longitude,style:{headerStyle:o,titleStyle:a.getTableDefaultStyles(null,"ReportTitle"),latLongStyle:a.getTableDefaultStyles(null,"GreyText")}},dataSource:{show:i&&r.addDataSource,sourceText:"Source: "+i,style:{dataSourceStyle:o}},footer:{show:r.addFooter,copyrightText:"©"+(new Date).getFullYear()+" Esri",formattedDate:e.getReportFooterDate(),style:{footerStyle:o}},documentStyle:o}})}}});
+define(["esri/dijit/geoenrichment/utils/DateUtil"],function(e){return{createHeaderFooterParams:function(t,r,a){var l;return l=a.allAreas?t.getAnalysisAreas():[t.getCurrentAnalysisArea()],l.map(function(l){var o=r.getDocumentDefaultStyles(),i=t.getReportData().reportObject.dataVintageDescription;return{header:{show:a.addHeader,title:a.reportTitle||t.getReportTitle(),subtitle:a.reportSubtitle||t.printConfig.subtitle,siteName:l.name,siteDesc:l.description,siteAddr:l.address,latitude:l.latitude,longitude:l.longitude,style:{headerStyle:o,titleStyle:r.getTableDefaultStyles(null,"ReportTitle"),latLongStyle:r.getTableDefaultStyles(null,"GreyText")}},dataSource:{show:i&&a.addDataSource,sourceText:"Source: "+i,style:{dataSourceStyle:o}},footer:{show:a.addFooter,copyrightText:"©"+(new Date).getFullYear()+" Esri",formattedDate:e.getReportFooterDate(),style:{footerStyle:o}},documentStyle:o}})}}});

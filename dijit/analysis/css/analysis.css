@@ -58,9 +58,10 @@
 .toolContainer {
   display: block;
   width: 95%;
-  height: 3.25em;
-  margin: .75em .25em;
-  border-bottom: .1em solid #e5e5e5;   	
+  height: 100%;
+  margin: 0.75em .25em;
+  border-bottom: .1em solid #e5e5e5;
+  min-height: 40px;    
 }
 
 .analysisTooltip {
@@ -103,7 +104,8 @@
 }
 
 .esriAnalysis .esriChoosePane .toolContainer .toolContent {
-  margin-top: -4.75em;
+  min-height: 32px;
+  padding-top: 2em;
 }
 
 .esriAnalysis .esriChoosePane .toolDesc {
@@ -173,149 +175,101 @@
   z-index: 900;
 }
 
+.toolIcon{
+  float: left;
+  margin: 4px 0px 4px 10px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 32px;
+  height: 32px;
+}
+
+.toolContent .toolDesc:empty{
+  display: none;
+}
+
 .aggregateIcon {
-	background-image: url("../images/AggregatePoints32.png");
-	background-repeat: no-repeat;
-	background-size: 100%;
-	width: 32px;
-	height: 32px;
-	margin: 10px;
+  background-image: url("../images/AggregatePoints32.png");
 }
 
 .sumNearbyIcon {
-	background-image: url("../images/SummarizeNearby32.png");
-	background-repeat: no-repeat;
-	background-size: 100%;
-	width: 32px;
-	height: 32px;
-	margin: 10px;
+  background-image: url("../images/SummarizeNearby32.png");
 }
 
 .sumWithinIcon {
   background-image: url("../images/SummarizeWithin32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 10px;
 }
 
+.summarizeCenterAndDispersionIcon {
+  background-image: url("../images/DistributionsTool32.png");
+}
+
+.oneSdIcon{
+  background-image: url("../images/1_SD32.png");
+}
+
+.twoSdIcon{
+  background-image: url("../images/2_SD32.png");
+}
+
+.threeSdIcon{
+  background-image: url("../images/3_SD32.png");
+}
 
 .buffersIcon {
-	background-image: url("../images/CreateBuffers32.png");
-	background-repeat: no-repeat;
-	background-size: 100%;
-	width: 32px;
-	height: 32px;
-	margin: 10px;
+  background-image: url("../images/CreateBuffers32.png");
 }
 
 .driveIcon {
-	background-image: url("../images/CreateDriveTimeAreas32.png");
-	background-repeat: no-repeat;
-	background-size: 100%;
-	width: 32px;
-	height: 32px;
-	margin: 8px;
+  background-image: url("../images/CreateDriveTimeAreas32.png");
 }
 
 .findLocationsIcon {
   background-image: url("../images/FindExistingLocations32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 10px;
 }
 
 .findNewLocationsIcon {
   background-image: url("../images/FindNewLocations32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 10px;
 }
 
 .findSimilarLocationsIcon {
   background-image: url("../images/FindSimilarLocations32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 10px;
 }
 
 .geoenrichLayerIcon {
   background-image: url("../images/GeoenrichFeatures32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 10px;
 }
 
 .findClosestFacilityIcon {
   background-image: url("../images/FindNearest32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 10px;
 }
 
 .extractDataIcon{
   background-image: url("../images/ClipAndShip32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 10px;
 }
 
 .findHotSpotsIcon {
   background-image: url("../images/FindHotSpots32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 10px;
 }
 
 .findOutliersIcon {
   background-image: url("../images/FindOutliers32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 10px;
+}
+
+.findPointClustersIcon {
+  background-image: url("../images/FindClustersTool32.png");
 }
 
 .createDensitySurfaceIcon {
   background-image: url("../images/CreateDensitySurface32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 10px;
 }
 
 .correlationReporterIcon {
   background-image: url("../images/CorrelationFinder32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 10px;
 }
 
 .createInterpolatedSurfaceIcon {
   background-image: url("../images/CreateInterpolatedSurface32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 10px;
 }
 
 .attributeCalculatorIcon {
@@ -329,20 +283,18 @@
 
 .calculateFieldIcon {
   background-image: url("../images/CalculateField32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 10px;
 }
 
 .overlayLayersIcon {
   background-image: url("../images/OverlayLayers32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 10px;
+}
+
+.appendDataIcon {
+  background-image: url("../images/AppendData32.png");
+}
+
+.watershedIcon {
+  background-image: url("../images/Watershed32.png");
 }
 
 .eraseLayersDisabledIcon {
@@ -401,130 +353,60 @@
 
 .mergeLayersIcon {
   background-image: url("../images/MergeLayers32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 10px;
 }
 
 .dissolveBoundariesIcon {
   background-image: url("../images/DissolveBoundaries32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 10px;
 }
 
 .planRoutesIcon {
   background-image: url("../images/PlanRoutes32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 8px;
 }
 
 .connectODIcon {
   background-image: url("../images/ConnectOriginstoDestinations32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 8px;
 }
 
 .createViewshedIcon {
   background-image: url("../images/Viewshed32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 8px;
 }
 
 
 .createWatershedIcon {
   background-image: url("../images/Watershed32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 8px;
 }
 
 .chooseBestFacilitiesIcon {
   background-image: url("../images/ChooseBestFacilities32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 8px;
 }
 
 
 .traceDownstreamIcon {
   background-image: url("../images/TraceDownstream32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 8px;
 }
 
 .reconstructIcon {
   background-image: url("../images/ReconstructTracks32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 8px;
 }
 
 .joinFeaturesIcon {
   background-image: url("../images/JoinFeatures32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 8px;
 }
 
 .createSpaceTimeCubeIcon {
   background-image: url("../images/CreateSpaceTimeCube32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 8px;
 }
 
 .sumAttributesIcon {
   background-image: url("../images/SummarizeAttributes32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 8px;
 }
 
 .geocodeLocationsIcon {
   background-image: url("../images/GeocodeLocations32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 8px;
 }
 
 .detectTrackIncidentsIcon {
   background-image: url("../images/DetectTrackIncidents32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 8px;
 }
 
 .GPWidgetIcon {
@@ -538,11 +420,6 @@
 
 .findCentroidsIcon {
   background-image: url("../images/FindCentroid32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 8px;
 }
 
 .esriAnalysisCloseIcon {
@@ -588,12 +465,12 @@
 
 
 .helpIcon {
-	background-image: url("../images/Help16.png");
-	background-repeat: no-repeat;
-	background-size: 100%;
-	width: 12px;
-	height: 12px;
-	margin: 1px;
+  background-image: url("../images/Help16.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 12px;
+  height: 12px;
+  margin: 1px;
 }
 
 .circleIcon {
@@ -1292,6 +1169,12 @@ td.subsectionLineDivider {
 
 .esriAnalysis .esriToolIconTd {
   width: 32px;
+  height: 32px;
+}
+
+.esriAnalysis td.esriToolIconTd>div[class$='Icon']{
+  width: 32px;
+  height: 32px;
 }
 
 .esri .esriAnalysis .dijitMenuSeparatorBottom {
@@ -1664,10 +1547,13 @@ td.subsectionLineDivider {
 
 .esriAnalysis .analysisCategoryCtr {
   border: none;
+  height: 90%;
+  overflow-y: auto;
 }
 
 .esriAnalysis .toolContainer .toolContent {
-  margin-top: -2.75em;
+  min-height: 32px;
+  padding-top: 1em;
 }
 
 .esriAnalysis .analysisCategoryCtr .dijitTitlePaneContentInner {
@@ -1700,47 +1586,22 @@ td.subsectionLineDivider {
 
 .allocateIcon {
   background-image: url("../images/Allocate_to_Existing_Facilities.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 3px 5px;
- }
+}
 
 .maximizeIcon {
   background-image: url("../images/Maximize_Coverage.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 3px 5px;
 }
 
 .minimizeIcon {
   background-image: url("../images/Minimize_Travel.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 3px 5px;
 }
 
 .maximizelimIcon {
   background-image: url("../images/Maximize_Coverage_with_Capacity.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 3px 5px;
 }
 
 .percentageIcon {
   background-image: url("../images/Cover_Percentage_of_Demand.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 3px 5px;
 }
 
 .goalIcon {
@@ -1760,6 +1621,7 @@ td.subsectionLineDivider {
   width: 32px;
   height: 32px;
   margin: 10px;
+  float: none !important; 
 }
 
 .rasterAnalysisIcon {
@@ -1769,6 +1631,7 @@ td.subsectionLineDivider {
   width: 32px;
   height: 32px;
   margin: 10px;
+  float: none !important; 
 }
 
 
@@ -1786,47 +1649,22 @@ td.subsectionLineDivider {
 
 .calculateSlopeIcon {
   background-image: url("../images/CalculateSlope32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 10px;
 }
 
 .deriveAspectIcon {
   background-image: url("../images/DeriveAspect32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 10px;
 }
 
 .monitorVegetationIcon {
   background-image: url("../images/MonitorVegetation32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 10px;
 }
 
 .remapIcon {
   background-image: url("../images/Remap32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 10px;
 }
 
 .extractRasterIcon {
   background-image: url("../images/ExtractRaster32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 10px;
 }
 
 .esriAnalysis .esriAnalysisAddIcon {
@@ -1849,57 +1687,27 @@ td.subsectionLineDivider {
 
 .sumRasterWithinIcon {
   background-image: url("../images/SummarizeRasterWithin32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 10px;
 }
 
 .convertFeatureToRasterIcon {
   background-image: url("../images/FeatureToRaster32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 10px;
 }
 
 .convertRasterToFeatureIcon {
   background-image: url("../images/RasterToFeature32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 10px;
 }
 
 .createViewshedRasterIcon {
   background-image: url("../images/CreateViewshed32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 10px;
 }
 
 .createInterpolatedRasterIcon {
   background-image: url("../images/InterpolatePoints32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 10px;
 }
 
 
 .createDensityRasterIcon {
   background-image: url("../images/CalculateDensity32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  margin: 10px;
 }
 
 .viewshedInnerIcon {
@@ -2012,6 +1820,10 @@ html[dir="rtl"] .esriAnalysis .crumb:first-child {
     padding: 0 0 0 10px;
 }
 
+.esriAnalysis .breadcrumbs__modelabel {
+  font-size: 12px;
+}
+
 .esriAnalysisSpatialRefTree .dgrid-cell {
   border: none;
 }
@@ -2071,12 +1883,12 @@ html[dir="rtl"] .esriAnalysis .crumb:first-child {
 }
 
 .esriSwitchField label:hover {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .esriSwitchField input:checked + label {
   background-color: #007ac2;
-	color: white;
+  color: white;
 }
 
 .esriSwitchField label:first-of-type {
@@ -2114,7 +1926,7 @@ html[dir="rtl"] .esriAnalysis .crumb:first-child {
 }
 
 
-.calciteWebTable {
+.esriAnalysis .calciteWebTable {
   width: 100%;
   background-color: white;
   border-collapse: collapse;
@@ -2126,89 +1938,150 @@ html[dir="rtl"] .esriAnalysis .crumb:first-child {
   line-height: 1.55rem;
   }
   @media screen and (max-width: 859px) {
-    .calciteWebTable {
+    .esriAnalysis .calciteWebTable {
       font-size: 0.875rem; } }
   @media screen and (max-width: 479px) {
-    .calciteWebTable {
+    .esriAnalysis .calciteWebTable {
       font-size: 0.875rem; } }
-  html[dir="rtl"] .calciteWebTable {
+  html[dir="rtl"] .esriAnalysis.calciteWebTable {
     text-align: right; }
-  .calciteWebTable > thead {
+    .esriAnalysis .calciteWebTable > thead {
     background-color: #efefef;
     border-bottom: 1px solid #cccccc;
     font-weight: 400;
     font-style: normal;
     font-size: 0.875rem;
     line-height: 1.55rem; }
-    .calciteWebTable > thead b, .calciteWebTable > thead strong {
+    .esriAnalysis .calciteWebTable > thead b, .esriAnalysis .calciteWebTable > thead strong {
       font-weight: 500; }
     @media screen and (max-width: 859px) {
-      .calciteWebTable > thead {
+      .esriAnalysis .calciteWebTable > thead {
         font-size: 0.875rem; } }
     @media screen and (max-width: 479px) {
-      .calciteWebTable > thead {
+      .esriAnalysis .calciteWebTable > thead {
         font-size: 0.875rem; } }
-  .calciteWebTable > tbody {
+  .esriAnalysis .calciteWebTable > tbody {
     overflow: auto;
     width: 100%; }
-  .calciteWebTable > tfoot {
+  .esriAnalysis .calciteWebTable > tfoot {
     background-color: #efefef;
     border-top: 1px solid #cccccc; }
-  .calciteWebTable th, .calciteWebTable td {
+  .esriAnalysis .calciteWebTable th, .calciteWebTable td {
     font-weight: 300;
     border-left: 1px solid #cccccc;
     border-right: 1px solid #cccccc;
     padding: 0.5166666667rem;
     }
-    html[dir="rtl"] .calciteWebTable th, html[dir="rtl"] .calciteWebTable td {
+    html[dir="rtl"] .esriAnalysis .calciteWebTable th, html[dir="rtl"] .esriAnalysis .calciteWebTable td {
       text-align: right; }
-  .calciteWebTable tr {
+    .esriAnalysis .calciteWebTable tr {
     border-bottom: 1px solid #cccccc;
     text-align: left; }
-    .calciteWebTable tr:last-child {
+    .esriAnalysis .calciteWebTable tr:last-child {
       border-bottom: none; }
-  .calciteWebTable caption {
+   .esriAnalysis .calciteWebTable caption {
     color: #959595;
     caption-side: bottom;
     line-height: 1.55rem;
     padding: 0.3875rem 0.775rem; }
 
-.table-blue {
+.esriAnalysis .table-blue {
   border: 1px solid #0079c1; }
-  .table-blue > thead {
+  .esriAnalysis .table-blue > thead {
     background-color: #0079c1;
     border: none;
     border-bottom: 1px solid #0079c1;
     color: white; }
-    .table-blue > thead tr:nth-child(even) {
+    .esriAnalysis .table-blue > thead tr:nth-child(even) {
       background-color: #bcdaed;
       color: #4c4c4c; }
-  .table-blue > tfoot {
+  .esriAnalysis .table-blue > tfoot {
     border-top: 1px solid #0079c1; }
-  .table-blue th, .table-blue td {
+  .esriAnalysis .table-blue th, .table-blue td {
     border-left: 1px solid #0079c1;
     border-right: 1px solid #0079c1; }
-  .table-blue tr {
+  .esriAnalysis .table-blue tr {
     border-bottom: 1px solid #0079c1; }
 
-.table-plain {
+.esriAnalysis .table-plain {
   border: none; }
-  .table-plain > thead, .table-plain > tfoot, .table-plain th, .table-plain td {
+  .esriAnalysis .table-plain > thead, .table-plain > tfoot, .esriAnalysis .table-plain th, .esriAnalysis .table-plain td {
     background-color: transparent;
     border: none; }
-  .table-plain tr {
+  .esriAnalysis .table-plain tr {
     border: none; }
-    .table-plain tr:nth-child(even) {
+    .esriAnalysis .table-plain tr:nth-child(even) {
       background-color: transparent; }
-      .table-plain tr:nth-child(even) td {
+    .esriAnalysis .table-plain tr:nth-child(even) td {
         background-color: transparent; }
 
-.table-striped tr:nth-child(even) {
+.esriAnalysis .table-striped tr:nth-child(even) {
   background-color: #f8f8f8; }
-  .table-striped tr:nth-child(even) td {
+.esriAnalysis .table-striped tr:nth-child(even) td {
     background-color: #f8f8f8; }
 
-.table-striped.table-blue tr:nth-child(even) {
+.esriAnalysis .table-striped.table-blue tr:nth-child(even) {
   background-color: #d2e9f9; }
-  .table-striped.table-blue tr:nth-child(even) td {
+.esriAnalysis .table-striped.table-blue tr:nth-child(even) td {
     background-color: #d2e9f9; }
+
+.one-width {
+  width: 100%;
+}
+.strict-onebythree-width{
+  width: 33.33% !important;
+}
+.onebythree-width{
+  width: 33.33%;
+}
+.twobythree-width{
+  width: 66.66%;
+}
+.overlayTypeCell{
+  width: 33%;
+}
+.gaxOverlayTypeCell{
+  width: 50%;
+}
+.esriAnalysis #noStripedGrid .dgrid-row-odd, #no-striped-rows .dgrid-row-even{
+  background-color: #fff;
+}
+.esriAnalysis #noStripedGrid .dgrid-row-odd, #no-striped-rows .dgrid-row-even{
+  background-color: #fff;
+}
+.esriAnalysis #noStripedGrid .dgrid-row-highlight{
+  background-color: #ccc;
+}
+.esriAnalysis .toggleIconButton{
+  height: 36px;
+  width: 36px;
+}
+
+
+.esriAnalysis .alert {
+  font-size: 0.9375rem;
+  line-height: 1.55rem;
+  padding: 0.775rem 0.775rem;
+  color: rgba(0, 0, 0, 0.75);
+  background-color: #d2e9f9;
+  position: relative;
+  display: none;
+  z-index: 100;
+  max-width: 40em;
+  border: 1px solid #0079c1;
+  -webkit-box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.05);
+  color: #4c4c4c; 
+}
+.esriAnalysis .alert.is-active {
+  display: block;
+}
+.esriAnalysis .alert.alert-yellow {
+  background-color: #f3edc7;
+  border-color: #e4d154; 
+}
+.esriAnalysis .alert.alert-red {
+  background-color: #f3ded7;
+  border-color: #e4a793;
+}

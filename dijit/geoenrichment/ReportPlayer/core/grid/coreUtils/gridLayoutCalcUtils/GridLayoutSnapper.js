@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["dojo/_base/lang","./rows/RowDataUtil","./columns/ColumnDataUtil","./GridElementBoxCalculator"],function(a,t,i,n){var o={},e=.5;return o.autoSnapLayout=function(o){function d(){var t=[];return o.store.data.forEach(function(i){o.columns.forEach(function(e){t.push(a.mixin({id:i.index+"_"+e.field,data:i,dataIndex:i.index,column:e,field:e.field},n.calcDataBox(o,i,e.field)))})}),t}if(o.looseResize)for(var l=o.store.data.length*o.columns.length,f={},r=0;l>r;r++){var u=d(),c=u[r],s=c.x+c.w,h=c.y+c.h;f[c.id]=!0,u.forEach(function(a){if(!f[a.id]){var n=s-(a.x+a.w);Math.abs(n)<=e&&i.setFieldWidth(o,a.data,a.field,a.w+n);var d=h-(a.y+a.h);Math.abs(d)<=e&&t.setDataHeight(o,a.data,a.field,a.h+d)}})}},o});
+define(["dojo/_base/lang","./rows/RowDataUtil","./columns/ColumnDataUtil","./GridElementBoxCalculator"],function(a,t,i,n){var o={};return o.autoSnapLayout=function(o){if(o.looseResize)for(var e=o.store.data.length*o.columns.length,d={},l=0;l<e;l++){var f=function(){var t=[];return o.store.data.forEach(function(i){o.columns.forEach(function(e){t.push(a.mixin({id:i.index+"_"+e.field,data:i,dataIndex:i.index,column:e,field:e.field},n.calcDataBox(o,i,e.field)))})}),t}(),r=f[l],u=r.x+r.w,c=r.y+r.h;d[r.id]=!0,f.forEach(function(a){if(!d[a.id]){var n=u-(a.x+a.w);Math.abs(n)<=.5&&i.setFieldWidth(o,a.data,a.field,a.w+n);var e=c-(a.y+a.h);Math.abs(e)<=.5&&t.setDataHeight(o,a.data,a.field,a.h+e)}})}},o});

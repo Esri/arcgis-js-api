@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["../../declare","dojo/on","dojo/dom-construct","dijit/layout/ContentPane"],function(t,o,n,d){return t(null,{buttonsNode:null,addButtons:function(t){if(!this.buttonsNode){for(var e,i=this.layoutGrid.getChildren(),r=0;r<i.length;r++)2==i[r].row&&(e=i[r]);e||(e=new d({row:2,"class":"Wizard_BottomPane"}),this.layoutGrid.addChild(e)),this.buttonsNode=n.create("div",{"class":"Wizard_Buttons"},e.domNode)}for(var a={},r=0;r<t.length;r++){var l=t[r],s=n.create("button",{"class":"Wizard_Button",innerHTML:l.label||""},this.buttonsNode);l.id&&(a[l.id]=s),l.onClick&&o(s,"click",l.onClick)}return a}})});
+define(["../../declare","dojo/on","dojo/dom-construct","dijit/layout/ContentPane"],function(t,o,n,d){return t(null,{buttonsNode:null,addButtons:function(t){if(!this.buttonsNode){for(var e,i=this.layoutGrid.getChildren(),r=0;r<i.length;r++)2==i[r].row&&(e=i[r]);e||(e=new d({row:2,class:"Wizard_BottomPane"}),this.layoutGrid.addChild(e)),this.buttonsNode=n.create("div",{class:"Wizard_Buttons"},e.domNode)}for(var a={},r=0;r<t.length;r++){var l=t[r],s=n.create("button",{class:"Wizard_Button",innerHTML:l.label||""},this.buttonsNode);l.id&&(a[l.id]=s),l.onClick&&o(s,"click",l.onClick)}return a}})});

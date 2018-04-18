@@ -44,14 +44,14 @@
         <h2>Sloučit hranice (Dissolve Boundaries)</h2><p/>
         <h2><img src="../images/GUID-7B5F69B0-3625-404F-8B52-2B562766C0BB-web.png" alt="Sloučit hranice"></h2>
         <hr/>
-    <p>Oblasti, kter&eacute; se překr&yacute;vaj&iacute; nebo maj&iacute; společnou hranici, se spoj&iacute; a vytvoř&iacute; jedinou oblast.    
+    <p>Oblasti, kter&eacute; se překr&yacute;vaj&iacute; nebo maj&iacute; společnou hranici, se slouč&iacute; a vytvoř&iacute; jedinou oblast.    
     </p>
-    <p>Zvolen&iacute;m pole stanov&iacute;te, kter&eacute; hranice se maj&iacute; spojit. Pokud m&aacute;te např. vrstvu krajů a každ&yacute; kraj m&aacute; atribut  <i>State_Name</i>, můžete hranice sloučit na z&aacute;kladě atributu <i>State_Name</i>.  Sousedn&iacute; kraje se spoj&iacute; tehdy, pokud maj&iacute; shodnou hodnotu <i>State_Name</i>.  Konečn&yacute;m v&yacute;sledkem je vrstva hranic st&aacute;tů.
+    <p>Zvolen&iacute;m pole stanov&iacute;te, kter&eacute; hranice se maj&iacute; sloučit. Pokud m&aacute;te např. vrstvu krajů a každ&yacute; kraj m&aacute; atribut  <i>State_Name</i>, můžete hranice sloučit na z&aacute;kladě atributu <i>State_Name</i>. Sousedn&iacute; kraje se slouč&iacute; tehdy, pokud maj&iacute; shodnou hodnotu atributu <i>State_Name</i>. Konečn&yacute;m v&yacute;sledkem je vrstva hranic st&aacute;tů.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Zvolte vrstvu oblastí, která se použije ke sloučení hranic</h2></div>
+        <div><h2>Zvolte vrstvu ploch, jejichž hranice budou sloučeny</h2></div>
         <hr/>
         <div>
             <p>Vrstva obsahuj&iacute;c&iacute; polygonov&eacute; prvky, kter&eacute; chcete sloučit. 
@@ -66,16 +66,31 @@
         <div>
             <p>Ke spojen&iacute; prvků v oblasti můžete použ&iacute;t jednu ze dvou metod:
                 <ul>
-                    <li> <b>Oblasti, kter&eacute; se překr&yacute;vaj&iacute; nebo soused&iacute;</b> &ndash; Dvě nebo v&iacute;ce oblast&iacute;, jejichž hranice se překr&yacute;vaj&iacute;, se spoj&iacute; v jedinou oblast.  Vedle toho se spoj&iacute; oblasti, kter&eacute; soused&iacute; (tj. sd&iacute;l&iacute; společnou hranici).
+                    <li> <b>Překr&yacute;vaj&iacute;c&iacute; nebo přilehl&eacute; oblasti</b> &ndash; Dvě nebo v&iacute;ce oblast&iacute;, jejichž hranice se překr&yacute;vaj&iacute;, se spoj&iacute; v jedinou oblast.  Vedle toho se spoj&iacute; oblasti, kter&eacute; soused&iacute; (tj. sd&iacute;l&iacute; společnou hranici).
                     </li>
-                    <li> <b>Oblasti se shodnou hodnotou pole</b> &ndash; Oblasti, kter&eacute; se překr&yacute;vaj&iacute; nebo maj&iacute; společnou hranici, se spoj&iacute; tehdy, pokud maj&iacute; shodnou hodnotu pole.
-                        <p>Pokud m&aacute;te např. vrstvu krajů a každ&yacute; kraj m&aacute; pole  <i>State_Name</i>, můžete hranice sloučit na z&aacute;kladě pole <i>State_Name</i>.  Sousedn&iacute; kraje se spoj&iacute; tehdy, pokud maj&iacute; shodnou hodnotu <i>State_Name</i>.  Konečn&yacute;m v&yacute;sledkem je vrstva hranic st&aacute;tů.
+                    <li> <b>Oblasti se stejnou hodnotou pole</b> &ndash; Oblasti, kter&eacute; se překr&yacute;vaj&iacute; nebo maj&iacute; společnou hranici, se spoj&iacute; tehdy, pokud maj&iacute; shodnou hodnotu pole.
+                        <p>Pokud m&aacute;te např. vrstvu krajů a každ&yacute; kraj m&aacute; pole  <i>State_Name</i>, můžete hranice sloučit na z&aacute;kladě pole <i>State_Name</i>. Sousedn&iacute; kraje se slouč&iacute; tehdy, pokud maj&iacute; shodnou hodnotu atributu <i>State_Name</i>. Konečn&yacute;m v&yacute;sledkem je vrstva hranic st&aacute;tů.
                         </p>
                     </li>
                 </ul>
                 
             </p>
-            <p>Pokud je za&scaron;krtnuto  <b>Použ&iacute;t rozsah aktu&aacute;ln&iacute; mapy</b>, budou sloučeny pouze prvky ve vstupn&iacute; vrstvě viditeln&eacute; v aktu&aacute;ln&iacute;m rozsahu mapy.  Pokud pole za&scaron;krtnuto nen&iacute;, budou sloučeny v&scaron;echny prvky ve vstupn&iacute; vrstvě, včetně těch, kter&eacute; se nach&aacute;z&iacute; mimo rozsah aktu&aacute;ln&iacute; mapy.
+            <p>Pokud je za&scaron;krtnuto pole  <b>Použ&iacute;t rozsah aktu&aacute;ln&iacute; mapy</b>, budou sloučeny pouze prvky ve vstupn&iacute; vrstvě, kter&eacute; jsou viditeln&eacute; v rozsahu aktu&aacute;ln&iacute; mapy. Pokud pole za&scaron;krtnuto nen&iacute;, budou sloučeny v&scaron;echny prvky ve vstupn&iacute; vrstvě, včetně těch, kter&eacute; se nach&aacute;z&iacute; mimo rozsah aktu&aacute;ln&iacute; mapy.
+            </p>
+        </div>
+    </div>
+    <div id="multiPartFeatures">
+        <div><h2>Vytvořit vícenásobné prvky</h2></div>
+        <hr/>
+        <div>
+            <p>V ArcGIS se jedn&aacute; o digit&aacute;ln&iacute; zn&aacute;zorněn&iacute; m&iacute;sta nebo věci, kter&aacute; m&aacute; v&iacute;ce než jednu č&aacute;st, ale je definov&aacute;na jako jeden prvek, protože se odkazuje na jednu sadu atributů. Např&iacute;klad ve vrstvě st&aacute;tů by se st&aacute;t Havaj dal považovat za v&iacute;cen&aacute;sobn&yacute; prvek, protože jeho jednotliv&eacute; geometrick&eacute; č&aacute;sti jsou klasifikov&aacute;ny jako jeden st&aacute;t. V&iacute;cen&aacute;sobn&yacute; prvek může b&yacute;t bod, linie nebo polygon. Tento logick&yacute; parametr nab&iacute;z&iacute; dvě možnosti:
+                <ul>
+                    <li>Pravda (za&scaron;krtnuto): v&yacute;stupn&iacute; služba může obsahovat v&iacute;cen&aacute;sobn&eacute; prvky.
+                    </li>
+                    <li>Nepravda (neza&scaron;krtnuto): v&yacute;stupn&iacute; služba bude obsahovat pouze jednoduch&eacute; prvky a pro každou č&aacute;st budou vytvořeny jednotliv&eacute; prvky.
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>
@@ -88,7 +103,7 @@
             <p>Dostupn&eacute; typy statistik jsou:
             </p>
             <ul>
-                <li> <b>Součet</b> &ndash; Přid&aacute; celkovou hodnotu určen&eacute;ho pole.
+                <li> <b>Suma</b> &ndash; Přid&aacute; celkovou hodnotu určen&eacute;ho pole.
                     
 
                 </li>

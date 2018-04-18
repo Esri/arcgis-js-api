@@ -1,0 +1,25 @@
+// COPYRIGHT © 201 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+
+define(["require","exports"],function(e,r){function n(e){switch(e){case"defaults":return i.DEFAULTS;case"service":return i.SERVICE;case"portal-item":return i.PORTAL_ITEM;case"web-scene":return i.WEB_SCENE;case"web-map":return i.WEB_MAP;case"user":return i.USER}}function E(e){switch(e){case i.DEFAULTS:return"defaults";case i.SERVICE:return"service";case i.PORTAL_ITEM:return"portal-item";case i.WEB_SCENE:return"web-scene";case i.WEB_MAP:return"web-map";case i.USER:return"user"}}function t(e){return n(e)}function a(e){return E(e)}function u(e){return n(e)}function c(e){return E(e)}Object.defineProperty(r,"__esModule",{value:!0});var i;!function(e){e[e.DEFAULTS=0]="DEFAULTS",e[e.COMPUTED=1]="COMPUTED",e[e.SERVICE=2]="SERVICE",e[e.PORTAL_ITEM=3]="PORTAL_ITEM",e[e.WEB_SCENE=4]="WEB_SCENE",e[e.WEB_MAP=5]="WEB_MAP",e[e.USER=6]="USER",e[e.NUM=7]="NUM"}(i=r.OriginId||(r.OriginId={})),r.nameToId=n,r.idToName=E,r.readableNameToId=t,r.idToReadableName=a,r.writableNameToId=u,r.idToWritableName=c});

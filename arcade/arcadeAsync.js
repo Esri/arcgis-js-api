@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["require","exports","./arcadeAsyncRuntime","./parser","./Feature"],function(e,r,t,n,c){function u(e,r){var n=function(r,n){return t.executeScript(e,r,n)};return n}function i(e){t.extend(e)}function f(e){return c.fromFeature(e)}function o(e){return n.parseScript(e)}function p(e,r){return n.validateScript(e,r,"full")}function a(e,r,t){return n.scriptCheck(e,r,t,"full")}function s(e,r,c){return t.executeScript(n.parseScript(e),r,c)}function l(e,r,n){return t.executeScript(e,r,n)}function d(e,r){return t.referencesMember(e,r)}function S(e,r){return t.referencesFunction(e,r)}function x(e,r){return void 0===r&&(r=!1),n.extractFieldLiterals(e,r)}Object.defineProperty(r,"__esModule",{value:!0}),r.compileScript=u,r.extend=i,r.constructFeature=f,r.parseScript=o,r.validateScript=p,r.scriptCheck=a,r.parseAndExecuteScript=s,r.executeScript=l,r.referencesMember=d,r.referencesFunction=S,r.extractFieldLiterals=x});
+define(["require","exports","./arcadeAsyncRuntime","./parser","./Feature"],function(e,r,t,n,c){function u(e,r){return function(r,n){return t.executeScript(e,r,n)}}function i(e){t.extend(e)}function f(e){return c.fromFeature(e)}function o(e){return n.parseScript(e)}function p(e,r){return n.validateScript(e,r,"full")}function a(e,r,t){return n.scriptCheck(e,r,t,"full")}function s(e,r,c){return t.executeScript(n.parseScript(e),r,c)}function l(e,r,n){return t.executeScript(e,r,n)}function d(e,r){return t.referencesMember(e,r)}function S(e,r){return t.referencesFunction(e,r)}function x(e,r){return void 0===r&&(r=!1),n.extractFieldLiterals(e,r)}Object.defineProperty(r,"__esModule",{value:!0}),r.compileScript=u,r.extend=i,r.constructFeature=f,r.parseScript=o,r.validateScript=p,r.scriptCheck=a,r.parseAndExecuteScript=s,r.executeScript=l,r.referencesMember=d,r.referencesFunction=S,r.extractFieldLiterals=x});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["dojo/_base/lang","dojo/dom-construct"],function(e,t){var o={};return o.renderBackground=function(e,t,n){return o._renderSection(e,t,n,!0)},o.renderForeground=function(e,t,n){return o._renderSection(e,t,n,!1)},o._renderSection=function(o,n,r,d){if(t.empty(d?o.backgroundNode:o.foregroundNode),!n)return null;var i={};i["class"]="esriGEAbsoluteStretched "+(d?"adjustableGrid_backgroundSection":"adjustableGrid_foregroundSection"),i.initialWidth=o.getAllowedWidth(),i.json=n,i.viewModel=o.viewModel,i.themeContext=o.themeContext,i.theme=o.theme,i.hasFixedLayout=!1,i.parentWidget=o,e.mixin(i,r);var u=o.viewModel.layoutBuilder.createElement("section",i,d?o.backgroundNode:o.foregroundNode);return u.setResizedHeight(o.getHeight()),u.setViewMode(o.getViewMode(),o.getSpecificViewMode()),u},o});
+define(["dojo/_base/lang","dojo/dom-construct"],function(e,o){var r={};return r.renderBackground=function(e,o,t){return r._renderSection(e,o,t,!0)},r.renderForeground=function(e,o,t){return r._renderSection(e,o,t,!1)},r._renderSection=function(r,t,n,d){if(o.empty(d?r.backgroundNode:r.foregroundNode),!t)return null;var i={};i.class="esriGEAbsoluteStretched "+(d?"adjustableGrid_backgroundSection":"adjustableGrid_foregroundSection"),i.initialWidth=r.getAllowedWidth(),i.json=t,i.viewModel=r.viewModel,i.theme=r.theme,i.hasFixedLayout=!1,i.parentWidget=r,e.mixin(i,n);var u=r.viewModel.layoutBuilder.createElement("section",i,d?r.backgroundNode:r.foregroundNode);return u.setResizedHeight(r.getHeight()),u.setViewMode(r.getViewMode(),r.getSpecificViewMode()),u},r});

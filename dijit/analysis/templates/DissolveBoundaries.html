@@ -3,11 +3,11 @@
       <div data-dojo-attach-point="_dissolveBoundariesToolContentTitle" class="analysisTitle">
         <table class="esriFormTable" > 
           <tr>
-            <td><div class="dissolveBoundariesIcon"></div></td>
+            <td class="esriToolIconTd"><div class="dissolveBoundariesIcon"></div></td>
             <td class="esriAnalysisTitle" data-dojo-attach-point="_toolTitle">
               <label data-dojo-attach-point="_titleLbl">${i18n.dissolveBoundaries}</label>
               <nav class="breadcrumbs"  data-dojo-attach-point="_analysisModeLblNode" style="display:none;">
-                <a href="#" class="crumb" style="font-size:12px;" data-dojo-attach-event="onclick:_handleModeCrumbClick" data-dojo-attach-point="_analysisModeCrumb"></a>
+                <a href="#" class="crumb breadcrumbs__modelabel" data-dojo-attach-event="onclick:_handleModeCrumbClick" data-dojo-attach-point="_analysisModeCrumb"></a>
                 <a href="#" class="crumb is-active" data-dojo-attach-point="_analysisTitleCrumb" style="font-size:16px;">${i18n.dissolveBoundaries}</a>
               </nav>               
             </td>
@@ -75,7 +75,18 @@
           <td colspan="3">  
              <select class="esriLeadingMargin1  longInput"  multiple="true" data-dojo-type="dojox/form/CheckedMultiSelect" data-dojo-attach-point="_dissolveFieldsSelect"></select>
           </td>        	
-        </tr>    
+        </tr>
+        <tr>
+          <td colspan="2">
+            <label class="esriLeadingMargin2">
+              <div data-dojo-type="dijit/form/CheckBox" data-dojo-attach-point="_multiplePartFeatureCheck" data-dojo-props="checked:true" data-dojo-attach-event="onChange:_handleMultiPartFeatureChange"></div>
+              ${i18n.createMultiPartFeature} 
+            </label>
+          </td>
+          <td class="shortTextInput">
+            <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="multiPartFeatures"></a> 
+          </td>
+        </tr>      
         <tr>
           <td colspan="2">
             <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.twoLabel}</label>

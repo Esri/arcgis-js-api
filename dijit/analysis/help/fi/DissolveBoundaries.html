@@ -46,7 +46,7 @@
         <hr/>
     <p>P&auml;&auml;llekk&auml;iset tai yhteisen rajan jakavat alueet yhdistet&auml;&auml;n yhdeksi alueeksi.    
     </p>
-    <p>M&auml;&auml;ritt&auml;m&auml;ll&auml; kent&auml;n voi m&auml;&auml;ritt&auml;&auml;, mitk&auml; rajat yhdistet&auml;&auml;n. Esimerkiksi jos taso koostuu piirikunnista ja jos jokainen piirikunta sis&auml;lt&auml;&auml; ominaisuuden  <i>State_Name</i>, voit sulauttaa rajoja k&auml;ytt&auml;m&auml;ll&auml; ominaisuutta <i>State_Name</i>. Vierekk&auml;iset piirikunnat yhdistyv&auml;t, jos niill&auml; on sama ominaisuuden <i>State_Name</i> arvo. Tuloksena on osavaltion rajojen mukainen taso.
+    <p>M&auml;&auml;ritt&auml;m&auml;ll&auml; kent&auml;n voi m&auml;&auml;ritt&auml;&auml;, mitk&auml; rajat yhdistet&auml;&auml;n. Jos taso koostuu esimerkiksi Yhdysvaltain piirikunnista ja jokainen piirikunta sis&auml;lt&auml;&auml;  <i>State_Name</i>-ominaisuuden, voit sulauttaa rajoja k&auml;ytt&auml;m&auml;ll&auml; <i>State_Name</i>-ominaisuutta. Vierekk&auml;iset piirikunnat yhdistyv&auml;t, jos niill&auml; on sama <i>State_Name</i>-ominaisuuden  arvo. Tuloksena on osavaltion rajojen mukainen taso.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -54,8 +54,7 @@
         <div><h2>Valitse aluekarttataso, jonka rajat sulautetaan</h2></div>
         <hr/>
         <div>
-            <p>Karttataso, joka sis&auml;lt&auml;&auml; sulautettavat aluekohteet.
-
+            <p>Karttataso, joka sis&auml;lt&auml;&auml; sulautettavat aluekohteet. 
             </p>
             <p class="OnlineOnly">Kartasta valittavan karttatason lis&auml;ksi voit valita alareunan avattavasta luettelosta  <b>Valitse maailmankartaston analyysikarttataso</b>- tai <b>Valitse analyysikarttataso</b> -vaihtoehdon. T&auml;m&auml; vaihtoehto avaa gallerian, joka sis&auml;lt&auml;&auml; monissa analyyseissa hy&ouml;dyllisten karttatasojen kokoelman. 
             </p>
@@ -70,13 +69,28 @@
                     <li> <b>P&auml;&auml;llekk&auml;iset tai vierekk&auml;iset alueet</b>&ndash;V&auml;hint&auml;&auml;n kaksi aluetta, joiden rajat menev&auml;t p&auml;&auml;llekk&auml;in, yhdistyv&auml;t yhdeksi alueeksi. Lis&auml;ksi vierekk&auml;iset (eli yhteisen rajan jakavat) alueet yhdistyv&auml;t yhdeksi alueeksi.
                     </li>
                     <li> <b>Alueet, joilla on sama kent&auml;n arvo</b> &ndash; P&auml;&auml;llekk&auml;iset tai yhteisen rajan jakavat alueet yhdistyv&auml;t yhdeksi alueeksi, jos niill&auml; on sama kent&auml;n arvo.
-                        <p>Esimerkiksi jos taso koostuu piirikunnista ja jos jokainen piirikunta sis&auml;lt&auml;&auml; kent&auml;n  <i>State_Name</i>, voit sulauttaa rajoja k&auml;ytt&auml;m&auml;ll&auml; kentt&auml;&auml; <i>State_Name</i>. Vierekk&auml;iset piirikunnat yhdistyv&auml;t, jos niill&auml; on sama ominaisuuden <i>State_Name</i> arvo. Tuloksena on osavaltion rajojen mukainen taso.
+                        <p>Jos k&auml;yt&ouml;ss&auml; on esimerkiksi Yhdysvaltain piirikuntien karttataso ja kullakin piirikunnalla on  <i>State_Name</i>-kentt&auml;, voit purkaa rajat <i>State_Name</i>-kent&auml;n avulla.  Vierekk&auml;iset piirikunnat yhdistyv&auml;t, jos niill&auml; on sama <i>State_Name</i>-ominaisuuden  arvo. Tuloksena on osavaltion rajojen mukainen taso.
                         </p>
                     </li>
                 </ul>
                 
             </p>
-            <p>Jos vaihtoehto  <b>K&auml;yt&auml; nykyist&auml; karttalaajuutta</b> on valittuna, vain nykyisess&auml; karttalaajuudessa n&auml;kyv&auml;ss&auml; l&auml;ht&ouml;karttatasossa olevat kohteet yhdistet&auml;&auml;n. Jos toimintoa ei ole valittu, kaikki l&auml;ht&ouml;karttatason kohteet sulautetaan &ndash; my&ouml;s kohteet, jotka ovat nykyisen karttalaajuuden ulkopuolella.
+            <p>Jos  <b>K&auml;yt&auml; nykyist&auml; karttalaajuutta</b> -asetus on valittuna, vain l&auml;ht&ouml;karttatason kohteet, jotka ovat n&auml;kyviss&auml; nykyisess&auml; karttalaajuudessa, puretaan. Jos toimintoa ei ole valittu, kaikki l&auml;ht&ouml;karttatason kohteet sulautetaan &ndash; my&ouml;s kohteet, jotka ovat nykyisen karttalaajuuden ulkopuolella.
+            </p>
+        </div>
+    </div>
+    <div id="multiPartFeatures">
+        <div><h2>Luo moniosaisia kohteita</h2></div>
+        <hr/>
+        <div>
+            <p>ArcGISissa sellaisen paikan tai asian digitaalinen esitystapa, jossa on useita osia mutta joka m&auml;&auml;ritell&auml;&auml;n yhdeksi kohteeksi, koska se viittaa yhteen ominaisuusjoukkoon. Osavaltioiden karttatasossa Hawaijin osavaltiota voidaan esimerkiksi pit&auml;&auml; moniosaisena kohteena, koska sen erilliset geometriset osat luokitellaan yhdeksi osavaltioksi. Moniosainen kohde voi olla piste-, viiva- tai aluekohde. T&auml;ss&auml; boolean-parametrissa on kaksi vaihtoehtoa:
+                <ul>
+                    <li>True (valittu): tulosaineistopalvelu voi sis&auml;lt&auml;&auml; moniosaisia kohteita.
+                    </li>
+                    <li>False (ei valittu): tulosaineistopalvelu sis&auml;lt&auml;&auml; vain yksiosaisia kohteita, ja kullekin osalle luodaan yksitt&auml;iset kohteet.
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>
@@ -84,7 +98,7 @@
         <div><h2>Lisää tilastotieto</h2></div>
         <hr/>
         <div>
-            <p>Kun alueet on yhdistetty, voit luoda niiden ominaisuuksien yhteenvedon. Esimerkiksi jos sulautat piirikuntien v&auml;lisen rajan ominaisuuden  <i>State_Name</i> perusteella ja jos jokaisella piirikunnalla on <i>V&auml;est&ouml;</i>-kentt&auml;, voit laskea osavaltiolle ominaisuuden <i>V&auml;est&ouml;</i> summan.
+            <p>Kun alueet on yhdistetty, voit luoda niiden ominaisuuksien yhteenvedon. Esimerkiksi jos sulautat piirikuntien v&auml;lisen rajan ominaisuuden  <i>State_Name</i> perusteella ja jos jokaisella piirikunnalla on <i>Population</i>-kentt&auml;, voit laskea osavaltiolle ominaisuuden <i>Population</i> summan.
             </p>
             <p>K&auml;ytett&auml;viss&auml; ovat seuraavat tilastotyypit:
             </p>

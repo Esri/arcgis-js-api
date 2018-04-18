@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["require","exports","dojo/Deferred","./now"],function(e,r,o,i){function n(e,r){var n;(!r||0>=r)&&(r=500);var t=new o(function(){n&&clearTimeout(n)}),u=function(){if(!t.isFulfilled()){for(var o=i(),f=!1;!f&&i()-o<r;)f=e()===!0;f?t.resolve():n=setTimeout(u,0)}};return n=setTimeout(u,0),t.promise}return n});
+define(["require","exports","dojo/has","./nextTick","./now","./promiseUtils"],function(e,n,t,r,i,l){function o(e){return e?l.create(function(n){u.push(e),a.set(e,n),1===u.length&&r(c)},function(){u[u.indexOf(e)]=null,a.delete(e)}):l.reject(new TypeError("callback is not a function"))}function c(){var e=0===u.length;if(!e){for(var n=i();!e&&i()-n<f;){var t=u[s];if(t){if(!0===t()){var l=a.get(t);u[s]=null,a.delete(t),l()}s=(s+1)%u.length}else u.splice(s,1),e=0===u.length,e?s=0:s%=u.length}e||r(c)}}var f=t("host-browser")?6:200,u=[],a=new Map,s=0;return o});

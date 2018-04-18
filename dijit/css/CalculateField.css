@@ -94,18 +94,18 @@
 }
 
 .esriCalcField .esriFunctionLabelDiv {
-  padding-bottom: 2em;
+  padding-bottom: 1em;
 }
 
 .esriCalcField .esriCalcFieldsList {
   width: 70%;
-  height: 85%;
+  height: 80%;
   overflow-y: auto;
 }
 
 .esriCalcField .esriCalcFunctionList {
   width: 90%;
-  height: 85%;
+  height: 100%;
   overflow-y: auto;
 }
 
@@ -184,4 +184,12 @@
   height:4%;
   max-height:4em;
   width:100%;
+}
+
+.esriCalcField label{
+  display: block;
+}
+
+.esriCalcFieldActionCtr {
+  padding: 3em 0 2em 0;
 }

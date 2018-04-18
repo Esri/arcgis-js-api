@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["dojo/_base/declare","dojo/_base/lang","dojo/has","dojo/query","dijit/registry","../../../types/iso/base/PortalItemTransformer","../../../../../kernel"],function(e,t,r,n,i,o,a){var s=e([o],{postCreate:function(){this.inherited(arguments)},findInputWidget:function(e,t,r){if("tags"!==e)return this.inherited(arguments);var o,a,s=n(".gxeOtherKeywords",this.gxeDocument.rootDescriptor.domNode);return s&&s.length>0&&(a=n("[data-gxe-path='"+t+"']",s[0]),a&&1===a.length&&(o=i.byNode(a[0])))?o.inputWidget:null}});return r("extend-esri")&&t.setObject("dijit.metadata.types.inspire.base.PortalItemTransformer",s,a),s});
+define(["dojo/_base/declare","dojo/_base/lang","dojo/has","dojo/query","dijit/registry","../../../types/iso/base/PortalItemTransformer","../../../../../kernel"],function(e,t,r,i,n,o,a){var s=e([o],{postCreate:function(){this.inherited(arguments)},findInputWidget:function(e,t,r){if("tags"!==e)return this.inherited(arguments);var o,a,s=i(".gxeOtherKeywords",this.gxeDocument.rootDescriptor.domNode);return s&&s.length>0&&(a=i("[data-gxe-path='"+t+"']",s[0]))&&1===a.length&&(o=n.byNode(a[0]))?o.inputWidget:null}});return r("extend-esri")&&t.setObject("dijit.metadata.types.inspire.base.PortalItemTransformer",s,a),s});

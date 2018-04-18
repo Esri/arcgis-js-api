@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["dojo/_base/declare","./messageHandler","./errorMessages","./ExtensionBase"],function(e,n,i,s){return e([s],{config:null,_setConfig:function(e){this.config=e||{}},__messageReceived:function(e){return"updateconfig"===e.functionName.toLowerCase()?(e.args={configuration:this.config},n._sendMessage(e)):void this.inherited(arguments)},readyToPersistConfig:function(e){if(!this._isHostInitialized())throw new Error(i.hostNotReady);n._sendMessage({functionName:"readyToPersistConfig",args:{canAccept:e}})}})});
+define(["dojo/_base/declare","./messageHandler","./errorMessages","./ExtensionBase"],function(e,n,i,s){return e([s],{config:null,_setConfig:function(e){this.config=e||{}},__messageReceived:function(e){if("updateconfig"===e.functionName.toLowerCase())return e.args={configuration:this.config},n._sendMessage(e);this.inherited(arguments)},readyToPersistConfig:function(e){if(!this._isHostInitialized())throw new Error(i.hostNotReady);n._sendMessage({functionName:"readyToPersistConfig",args:{canAccept:e}})}})});

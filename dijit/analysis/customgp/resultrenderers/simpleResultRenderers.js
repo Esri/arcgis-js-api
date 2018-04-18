@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -38,4 +38,4 @@
 // limitations under the License.
 ///////////////////////////////////////////////////////////////////////////
 
-define(["dojo/_base/declare","dojo/_base/html","../BaseResultRenderer","./FeatureSetRenderer","./RecordSetRenderer","./ResultImageLayerRenderer"],function(e,r,t,s,n,a){var i={};return i.UnsupportRenderer=e(t,{baseClass:"jimu-gp-resultrenderer-base jimu-gp-renderer-unsupport",postCreate:function(){this.inherited(arguments),r.setAttr(this.domNode,"innerHTML",this.message)}}),i.SimpleResultRenderer=e(t,{baseClass:"jimu-gp-resultrenderer-base jimu-gp-renderer-simple",postCreate:function(){this.inherited(arguments),r.setAttr(this.domNode,"innerHTML",this.message)}}),i.ErrorResultRenderer=e(t,{baseClass:"jimu-gp-resultrenderer-base jimu-gp-renderer-error",postCreate:function(){this.inherited(arguments),r.setAttr(this.domNode,"innerHTML",this.message)}}),i.RecordSetTable=n,i.DrawResultFeatureSet=s,i.AddResultImageLayer=a,i});
+define(["dojo/_base/declare","dojo/_base/html","../BaseResultRenderer","./FeatureSetRenderer","./RecordSetRenderer","./ResultImageLayerRenderer"],function(e,r,t,s,n,i){var d={};return d.UnsupportRenderer=e(t,{baseClass:"jimu-gp-resultrenderer-base jimu-gp-renderer-unsupport",postCreate:function(){this.inherited(arguments),r.setAttr(this.domNode,"innerHTML",this.message)}}),d.SimpleResultRenderer=e(t,{baseClass:"jimu-gp-resultrenderer-base jimu-gp-renderer-simple",postCreate:function(){this.inherited(arguments),r.setAttr(this.domNode,"innerHTML",this.message)}}),d.ErrorResultRenderer=e(t,{baseClass:"jimu-gp-resultrenderer-base jimu-gp-renderer-error",postCreate:function(){this.inherited(arguments),r.setAttr(this.domNode,"innerHTML",this.message)}}),d.RecordSetTable=n,d.DrawResultFeatureSet=s,d.AddResultImageLayer=i,d});

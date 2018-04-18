@@ -1,6 +1,8 @@
 @import url('./charts/ChartContainer.css');
 @import url('./charts/ChartTooltip.css');
 @import url('./charts/ComparisonSelect.css');
+@import url('./charts/ChartContainerSelectableLegend.css');
+@import url('./charts/ChartContainerMinMaxLegend.css');
 @import url('./grid/AdjustableGrid_pageLayout.css');
 @import url('./grid/AdjustableGrid.css');
 @import url('./infographics/InfographicContainer.css');

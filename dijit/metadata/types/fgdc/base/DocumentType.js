@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../base/DocumentType","./Root","./PortalItemTransformer","dojo/i18n!../../../nls/i18nFgdc","../../../../../kernel"],function(t,e,a,n,i,o,c,r){var d=t(n,{caption:c.documentTypes.fgdc.caption,description:c.documentTypes.fgdc.description,key:"fgdc",metadataStandardName:"FGDC Content Standard for Digital Geospatial Metadata",metadataStandardVersion:"FGDC-STD-001-1998",beforeInitializeElement:function(t,e){var a=e.gxePath;"/metadata/idinfo/ptcontac/cntinfo"===a?e.label=c.idinfo.ptcontac:"/metadata/dataqual/lineage/srcinfo/srccite/citeinfo"===a?e.label=c.dataqual.srcinfo.srccite:"/metadata/dataqual/lineage/procstep/proccont/cntinfo"===a?e.minOccurs=1:"/metadata/distinfo/distrib/cntinfo"===a?e.minOccurs=1:"/metadata/metainfo/metc/cntinfo"===a?e.minOccurs=1:this.inherited(arguments)},newPortalItemTransformer:function(t){return new o},newRootDescriptor:function(){return new i}});return a("extend-esri")&&e.setObject("dijit.metadata.types.fgdc.base.DocumentType",d,r),d});
+define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../base/DocumentType","./Root","./PortalItemTransformer","dojo/i18n!../../../nls/i18nFgdc","../../../../../kernel"],function(t,e,a,n,i,o,c,d){var r=t(n,{caption:c.documentTypes.fgdc.caption,description:c.documentTypes.fgdc.description,key:"fgdc",metadataStandardName:"FGDC Content Standard for Digital Geospatial Metadata",metadataStandardVersion:"FGDC-STD-001-1998",beforeInitializeElement:function(t,e){var a=e.gxePath;"/metadata/idinfo/ptcontac/cntinfo"===a?e.label=c.idinfo.ptcontac:"/metadata/dataqual/lineage/srcinfo/srccite/citeinfo"===a?e.label=c.dataqual.srcinfo.srccite:"/metadata/dataqual/lineage/procstep/proccont/cntinfo"===a?e.minOccurs=1:"/metadata/distinfo/distrib/cntinfo"===a?e.minOccurs=1:"/metadata/metainfo/metc/cntinfo"===a?e.minOccurs=1:this.inherited(arguments)},newPortalItemTransformer:function(t){return new o},newRootDescriptor:function(){return new i}});return a("extend-esri")&&e.setObject("dijit.metadata.types.fgdc.base.DocumentType",r,d),r});

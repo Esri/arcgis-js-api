@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,7 +22,7 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define("require exports esri/kernel module esri/geometry/Geometry esri/geometry/Polygon esri/geometry/Polyline esri/geometry/Point esri/geometry/Extent esri/geometry/Multipoint esri/workers/WorkerClient dojo/Deferred".split(" "),function(C,Q,K,L,w,D,E,B,F,G,M,k){function N(b){if(void 0===B.fromJson){if(void 0!==b.x&&void 0!==b.y)return new B(b);if(void 0!==b.paths)return new E(b);if(void 0!==b.rings)return new D(b);if(void 0!==b.points)return new G(b);if(void 0!==b.xmin&&void 0!==b.ymin&&void 0!==
+define("require exports ../kernel module ./Geometry ./Polygon ./Polyline ./Point ./Extent ./Multipoint ../workers/WorkerClient dojo/Deferred".split(" "),function(C,Q,K,L,w,D,E,B,F,G,M,k){function N(b){if(void 0===B.fromJson){if(void 0!==b.x&&void 0!==b.y)return new B(b);if(void 0!==b.paths)return new E(b);if(void 0!==b.rings)return new D(b);if(void 0!==b.points)return new G(b);if(void 0!==b.xmin&&void 0!==b.ymin&&void 0!==
 b.xmax&&void 0!==b.ymax)return new F(b)}else{if(void 0!==b.x&&void 0!==b.y)return B.fromJson(b);if(void 0!==b.paths)return E.fromJson(b);if(void 0!==b.rings)return D.fromJson(b);if(void 0!==b.points)return G.fromJson(b);if(void 0!==b.xmin&&void 0!==b.ymin&&void 0!==b.xmax&&void 0!==b.ymax)return F.fromJson(b)}}function u(b,a){var e;if(null==b||void 0===b)return b;if("number"===typeof b)return b;var c=b.toString();if(""===c)return null;if(2==a){if(e=O[c],void 0!==e)return e}else if(0==a){e=H[c];if(void 0!==
 e)return e;e=I[b];if(void 0!==e)return e}else if(3==a&&(e=H[c],void 0!==e))return e;if(1==a&&(e=I[b],void 0!==e))return e;if(!0===/^\d+$/.test(c))return parseInt(c);throw Error("Unrecognised Unit Type");}function z(b){if(void 0!==b&&null!==b)switch(b){case "loxodrome":return 1;case "great-elliptic":return 2;case "normal-section":return 3;case "shape-preserving":return 4}return 0}function g(b){if(null===b||void 0===b)return null;if(x)switch(b.type){case "point":return{x:b.x,y:b.y,z:b.z,m:b.m};case "multipoint":return{points:b.points,
 hasZ:b.hasZ,hasM:b.hasM};case "polyline":return{paths:b.paths,hasZ:b.hasZ,hasM:b.hasM};case "polygon":return{rings:b.rings,hasZ:b.hasZ,hasM:b.hasM};case "extent":return{xmin:b.xmin,ymin:b.ymin,xmax:b.xmax,ymax:b.ymax,zmin:b.zmin,zmax:b.zmax,mmin:b.mmin,mmax:b.mmax}}else switch(b.type){case "point":return{x:b.x,y:b.y};case "multipoint":return{points:b.points};case "polyline":return{paths:b.paths};case "polygon":return{rings:b.rings};case "extent":return{xmin:b.xmin,ymin:b.ymin,xmax:b.xmax,ymax:b.ymax}}return null}

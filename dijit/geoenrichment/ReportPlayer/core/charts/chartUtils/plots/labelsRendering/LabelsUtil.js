@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["dojox/gfx"],function(e){var o={};return o.getLabelInfo=function(o,t,n){function r(o){return e._base._getTextBox(o,{font:n.series.font})}var l=o.opt.labelFunc.apply(o,[t,o.opt.fixed,o.opt.precision])||"",a=-1!==l.indexOf("two-row-label='true'")?2:1;return l=l.replace(" two-row-label='true'",""),l=l.replace(" two-row-label='false'",""),{text:l,numRows:a,box:r(l)}},o});
+define(["dojox/gfx","dojox/charting/plot2d/common"],function(e,o){var t={};return t.getLabelInfo=function(t,n,r){var l=t.opt.labelFunc?t.opt.labelFunc.apply(t,[n,t.opt.fixed,t.opt.precision]):n.text||o.getLabel(n[n.valueProp],t.opt.fixed,t.opt.precision)||"",a=-1!==l.indexOf("two-row-label='true'")?2:1;return l=l.replace(" two-row-label='true'",""),l=l.replace(" two-row-label='false'",""),{text:l,numRows:a,box:function(o){return e._base._getTextBox(o,{font:r.series.font})}(l)}},t});

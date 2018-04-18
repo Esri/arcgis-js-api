@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["esri/dijit/geoenrichment/config","esri/dijit/geoenrichment/utils/ArrayUtil"],function(e,t){var l={};return l.getDefaultLevels=function(){var t=e.levels.slice();return t.push(e.highestLevel),t},l.getLevels=function(e){var n=e.levels&&e.levels.length?e.levels:l.getDefaultLevels();return t.removeDuplicates(n)},l.getSubLevels=function(e){var t=l.getLevels(e);return t.pop(),t},l.getHighestLevel=function(e){var t=l.getLevels(e);return t[t.length-1]},l.setLevels=function(e,n){n=t.removeDuplicates(n||[]),e.levels=n.length?n:l.getDefaultLevels()},l});
+define(["esri/dijit/geoenrichment/config","esri/dijit/geoenrichment/utils/ArrayUtil"],function(e,l){var t={};return t.getDefaultLevels=function(){var l=e.levels.slice();return l.push(e.highestLevel),l},t.getLevels=function(e){var n=e.levels&&e.levels.length?e.levels:t.getDefaultLevels();return l.removeDuplicates(n)},t.getSubLevels=function(e){var l=t.getLevels(e);return l.pop(),l},t.getHighestLevel=function(e){var l=t.getLevels(e);return l[l.length-1]},t.setLevels=function(e,n){n=l.removeDuplicates(n||[]),e.levels=n.length?n:t.getDefaultLevels()},t.analyzeVariables=function(e){var l;if(l=e.fieldInfos?e.fieldInfos.map(function(e){return e.fullName}):e.variables,1===l.length&&-1!==l[0].indexOf(".*"))return{dataCollectionID:l[0].substr(0,l[0].indexOf("."))};var t,n,i={};return l.forEach(function(e,l){i[e.substr(0,e.indexOf("."))]=1,t=e.substr(e.indexOf(".")+1),n=e}),{dataCollectionID:1===Object.keys(i).length?Object.keys(i)[0]:null,variableID:1===l.length?t:null,fullName:1===l.length?n:null}},t});

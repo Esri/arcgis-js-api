@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define([],function(){var t={};return t.fieldTagToVariable=function(t,e){return t.attributes.MapTo&&"AREA_ID"!==t.attributes.Name?{id:t.attributes.MapTo.substr(t.attributes.MapTo.lastIndexOf(".")+1),fullName:t.attributes.MapTo,alias:t.attributes.Alias,fieldCategory:t.attributes.FieldCategory,fieldName:t.attributes.Name,precision:Number(t.attributes.Decimals)||0,calculatorName:e,templateName:e?e+"."+t.attributes.Name:null,isScriptVariable:!1}:null},t.scriptTagToVariable=function(t,e){return{id:t.attributes.Name,fullName:t.attributes.Name,fieldName:t.attributes.Name,alias:t.attributes.Alias,fieldCategory:t.attributes.FieldCategory,precision:Number(t.attributes.Decimals)||0,usedFields:t.attributes.usedFields?t.attributes.usedFields.split(","):[],calculatorName:e,templateName:e?e+"."+t.attributes.Name:null,isScriptVariable:!0}},t});
+define([],function(){var t={};return t.getType=function(t){return t&&(0===t.indexOf("esriFieldType")?t:"esriFieldType"+t)},t.fieldTagToVariable=function(e,a){return e.attributes.MapTo&&"AREA_ID"!==e.attributes.Name?{id:e.attributes.MapTo.substr(e.attributes.MapTo.lastIndexOf(".")+1),fullName:e.attributes.MapTo,alias:e.attributes.Alias,fieldName:e.attributes.Name,precision:Number(e.attributes.Decimals)||0,calculatorName:a,templateName:a+"."+e.attributes.Name,type:t.getType(e.attributes.Type)}:null},t.scriptTagToVariable=function(e,a){return{id:e.attributes.Name,fullName:a+"."+e.attributes.Name,fieldName:e.attributes.Name,alias:e.attributes.Alias,precision:Number(e.attributes.Decimals)||0,usedFields:e.attributes.usedFields?e.attributes.usedFields.split(","):[],calculatorName:a,templateName:a+"."+e.attributes.Name,type:t.getType(e.attributes.Type)}},t});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["dojo/_base/declare","dojo/_base/lang","dojo/_base/json","dojo/has","../kernel","../config","../request","../urlUtils","./ServiceGeneratedFeatureCollection"],function(e,r,t,o,s,i,a,l,n){var c=e([n],{declaredClass:"esri.layers.GeoRSSLayer",serviceUrl:l.getProtocolForWebResource()+"//utility.arcgis.com/sharing/rss",constructor:function(e,r){i.defaults.geoRSSService&&(this.serviceUrl=i.defaults.geoRSSService),this._createLayer()},parse:function(){return this._io=a({url:this.serviceUrl,content:{url:this.url,refresh:this.loaded?!0:void 0,outSR:this._outSR?t.toJson(this._outSR.toJson()):void 0},callbackParamName:"callback"}),this._io},_initLayer:function(e){this.inherited(arguments),this.loaded||(this.loaded=!0,this.onLoad(this))}});return o("extend-esri")&&r.setObject("layers.GeoRSSLayer",c,s),c});
+define(["dojo/_base/declare","dojo/_base/lang","dojo/_base/json","dojo/has","../kernel","../config","../request","../urlUtils","./ServiceGeneratedFeatureCollection"],function(e,r,t,o,s,i,a,l,c){var n=e([c],{declaredClass:"esri.layers.GeoRSSLayer",serviceUrl:l.getProtocolForWebResource()+"//utility.arcgis.com/sharing/rss",constructor:function(e,r){i.defaults.geoRSSService&&(this.serviceUrl=i.defaults.geoRSSService),this._createLayer()},parse:function(){return this._io=a({url:this.serviceUrl,content:{url:this.url,refresh:!!this.loaded||void 0,outSR:this._outSR?t.toJson(this._outSR.toJson()):void 0},callbackParamName:"callback"}),this._io},_initLayer:function(e){this.inherited(arguments),this.loaded||(this.loaded=!0,this.onLoad(this))}});return o("extend-esri")&&r.setObject("layers.GeoRSSLayer",n,s),n});

@@ -52,9 +52,9 @@
         <div><h2>Slojevi za izdvajanje</h2></div>
         <hr/>
         <div>
-            <p>Ovo su slojevi u va&scaron;oj tablici sadržaja iz koje možete izdvojiti geoobjekte.  Označeni slojevi izdvajaju se i uključuju u dobivenu ZIP ili CSV datoteku.
+            <p>Ovo su slojevi u va&scaron;oj tablici sadržaja iz koje možete izdvojiti geoobjekte. Označeni slojevi izdvajaju se i uključuju u dobivenu ZIP ili CSV datoteku.
             </p>
-            <p>Da bi se sloj pojavio na popisu slojeva za izdvajanje, morate posjedovati podatke ili vam vlasnik podataka mora omogućiti izvoz podataka.    Za omogućivanje izvoza podataka koje posjedujete: 
+            <p>Da bi se sloj pojavio na popisu slojeva za izdvajanje, morate posjedovati podatke ili vam vlasnik podataka mora omogućiti izvoz podataka. Za omogućivanje izvoza podataka koje posjedujete: 
                 <ul>
                     <li>Otvorite opis stavke podataka.
                     </li>
@@ -81,14 +81,14 @@
                     </li>
                     <li>Jedan od slojeva iz va&scaron;e tablice sadržaja.
                     </li>
-                    <li>Nacrtajte poligon za određivanje područja proučavanja.
+                    <li>Nacrtajte poligon za određivanje radnog područja.
                     </li>
                 </ul>
-                 Svi geoobjekti koji su potpuno unutar obuhvata karte.  Za geoobjekte koji prelaze preko ili presijecaju granicu obuhvata karte, ali nisu potpuno unutar obuhvata, imate dvije opcije:
+                 Svi geoobjekti koji su potpuno unutar obuhvata karte. Za geoobjekte koji prelaze preko ili presijecaju granicu obuhvata karte, ali nisu potpuno unutar obuhvata, imate dvije opcije:
                 <ul>
-                    <li> <b>Odaberi geoobjekte</b> &mdash; izdvojit će se cijeli geoobjekti koji sijeku granicu područja proučavanja.
+                    <li> <b>Odaberi geoobjekte</b> &mdash; izdvojit će se cijeli geoobjekti koji sijeku granicu radnog područja.
                     </li>
-                    <li> <b>Izreži geoobjekte</b>&mdash; izdvojit će se samo oni dijelovi geoobjekata koji su unutar područja proučavanja.
+                    <li> <b>Izreži geoobjekte</b>&mdash; izdvojit će se samo oni dijelovi geoobjekata koji su unutar radnog područja.
                     </li>
                 </ul>
                 
@@ -101,13 +101,15 @@
         <div>
             <p>Format podataka koji će se izdvojiti. Kada izdvajate linijske ili poligonalne geoobjekte u CSV datoteke, izdvajaju se samo neprostorni atributi. Prilikom izdvajanja točkastih geoobjekata, izdvajaju se prostorni i neprostorni atributi.  
             </p>
+            <p>Izdvojeni podaci koristit će se projekcijom Web Mercator 1984. Za CSV datoteke polja  <i>Lat</i> i <i>Long</i> priložit će se podacima s koordinatama u Web Mercatoru 1984.
+            </p>
         </div>
     </div>
     <div id="OutputName">
         <div><h2>Naziv izlazne datoteke</h2></div>
         <hr/>
         <div>
-            <p>Ovo je naziv stavke koja će se dodati u  <b>Moj sadržaj</b>. Naziv stavke temelji se na odabranom <b>Format izlaznih podataka</b>.     Ako stavka već postoji, od vas će se zatražiti da unesete drugi naziv.
+            <p>Ovo je naziv stavke koja će se dodati u  <b>Moj sadržaj</b>. Naziv stavke temelji se na odabranom <b>Format izlaznih podataka</b>. Ako stavka već postoji, od vas će se zatražiti da unesete drugi naziv.
             </p>
             <p>Upotrebom padajućeg izbornika  <b>Spremi rezultat u</b> možete odrediti naziv mape u dijelu <b>Moj sadržaj</b> gdje će se spremiti rezultat.
             </p>

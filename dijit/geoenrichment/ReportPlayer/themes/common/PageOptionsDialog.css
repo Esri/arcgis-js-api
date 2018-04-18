@@ -50,3 +50,11 @@
         .esriGEPageOptionsDialog .pageOptionsDialog_actionButton:hover {
             background-color: #EEEEEE;
         }
+
+    .esriGEPageOptionsDialog .dijitTextBox {
+        width: 250px;
+    }
+
+    .esriGEPageOptionsDialog .reportTitleBlock_label {
+        min-width: 60px;
+    }

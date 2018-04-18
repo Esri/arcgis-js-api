@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -38,4 +38,4 @@
 // limitations under the License.
 ///////////////////////////////////////////////////////////////////////////
 
-define(["dojo/_base/declare","dojo/_base/html","dijit/form/ValidationTextBox","dojox/validate/regexp","dojo/i18n!../nls/main"],function(i,e,t,s,a){return i([t],{required:!0,invalidMessage:"Invalid url.",trim:!0,rest:!0,allowNamed:!0,allowLocal:!0,declaredClass:"esri.dijit.analysis.customgp.common.dijit.URLInput",postMixInProperties:function(){this.inherited(arguments),this.nls=a.urlInput,this.invalidMessage=this.nls?this.nls.invalidUrl:"Invalid Url"},postCreate:function(){this.inherited(arguments),e.addClass(this.domNode,"jimu-url-input")},validator:function(i){if(!1===this.required&&""===i)return!0;if(isFinite(i))return!1;var e="^"+s.url({allowNamed:this.allowNamed,allowLocal:this.allowLocal}),t=new RegExp(e,"g");t.lastIndex=0;var a=t.test(i);if(this.rest){var r=/\/rest\/services/gi,l=r.test(i);return a&&l}return a}})});
+define(["dojo/_base/declare","dojo/_base/html","dijit/form/ValidationTextBox","dojox/validate/regexp","dojo/i18n!../nls/main"],function(i,e,t,s,a){return i([t],{required:!0,invalidMessage:"Invalid url.",trim:!0,rest:!0,allowNamed:!0,allowLocal:!0,declaredClass:"esri.dijit.analysis.customgp.common.dijit.URLInput",postMixInProperties:function(){this.inherited(arguments),this.nls=a.urlInput,this.invalidMessage=this.nls?this.nls.invalidUrl:"Invalid Url"},postCreate:function(){this.inherited(arguments),e.addClass(this.domNode,"jimu-url-input")},validator:function(i){if(!1===this.required&&""===i)return!0;if(isFinite(i))return!1;var e="^"+s.url({allowNamed:this.allowNamed,allowLocal:this.allowLocal}),t=new RegExp(e,"g");t.lastIndex=0;var a=t.test(i);if(this.rest){var l=/\/rest\/services/gi,r=l.test(i);return a&&r}return a}})});

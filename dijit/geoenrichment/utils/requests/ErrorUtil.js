@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["dojo/_base/lang","dojo/Deferred","require"],function(r,e,n){function t(r){var t=new e;return n(["./DataResource"],function(e){when(new e(r).getFileContent(),t.resolve,t.reject)}),t.promise}var o={};return o.getErrorFromBin=function(r){var e=/^text\//;return r&&r.type&&!e.test(r.type)?null:when(r&&t(r),function(r){if(r){if(r.hasOwnProperty("contentType")&&!e.test(r.contentType))return null;try{var n=JSON.parse(decodeURIComponent(escape(r.data))),t=o.parseError(n);if(t)return t;if(n.messages&&n.messages.length){var a=n.messages[0];if("esriJobMessageTypeError"==a.type)return new Error(a.description)}}catch(s){}}return new Error("Binary data error.")})},o.parseError=function(r){var e;return r.error?e=o.makeError(r.error):"error"===r.status&&(e=o.makeError(r)),e&&e.code&&null==e.httpCode&&(e.httpCode=e.code),e},o.makeError=function(e){return e instanceof Error||("string"==typeof e&&(e={message:e}),e=r.mixin(new Error,e)),e.log=dojoConfig.isDebug,e},o});
+define(["dojo/_base/lang","dojo/Deferred","dojo/when","require"],function(r,e,n,t){function o(r){var o=new e;return t(["./DataResource"],function(e){n(new e(r).getFileContent(),o.resolve,o.reject)}),o.promise}var a={};return a.getErrorFromBin=function(r){var e=/^text\//;return r&&r.type&&!e.test(r.type)?null:n(r&&o(r),function(r){if(r){if(r.hasOwnProperty("contentType")&&!e.test(r.contentType))return null;try{var n=JSON.parse(decodeURIComponent(escape(r.data))),t=a.parseError(n);if(t)return t;if(n.messages&&n.messages.length){var o=n.messages[0];if("esriJobMessageTypeError"==o.type)return new Error(o.description)}}catch(r){}}return new Error("Binary data error.")})},a.parseError=function(r){var e;return r.error?e=a.makeError(r.error):"error"===r.status&&(e=a.makeError(r)),e&&e.code&&null==e.httpCode&&(e.httpCode=e.code),e},a.makeError=function(e){return e instanceof Error||("string"==typeof e&&(e={message:e}),e=r.mixin(new Error,e)),e.log=dojoConfig.isDebug,e},a});

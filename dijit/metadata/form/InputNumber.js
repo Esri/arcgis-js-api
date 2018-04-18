@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["dojo/_base/declare","dojo/_base/lang","dojo/has","./InputText","dojo/i18n!../nls/i18nBase","../../../kernel"],function(e,n,t,i,s,r){var u=e([i],{_isGxeInputNumber:!0,hint:s.hints.number,integerOnly:!1,minValue:null,maxValue:null,minValueIsExclusive:!1,maxValueIsExclusive:!1,small:!0,postCreate:function(){this.inherited(arguments)},postMixInProperties:function(){this.inherited(arguments),this.integerOnly&&this.hint===s.hints.number&&(this.hint=s.hints.integer)}});return t("extend-esri")&&n.setObject("dijit.metadata.form.InputNumber",u,r),u});
+define(["dojo/_base/declare","dojo/_base/lang","dojo/has","./InputText","dojo/i18n!../nls/i18nBase","../../../kernel"],function(e,n,i,t,s,r){var u=e([t],{_isGxeInputNumber:!0,hint:s.hints.number,integerOnly:!1,minValue:null,maxValue:null,minValueIsExclusive:!1,maxValueIsExclusive:!1,small:!0,postCreate:function(){this.inherited(arguments)},postMixInProperties:function(){this.inherited(arguments),this.integerOnly&&this.hint===s.hints.number&&(this.hint=s.hints.integer)}});return i("extend-esri")&&n.setObject("dijit.metadata.form.InputNumber",u,r),u});

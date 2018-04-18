@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["dojo/_base/declare","dojo/_base/lang","dojo/has","./kernel","./lang","./SpatialReference"],function(i,s,n,e,c,t){var r=i(t,{declaredClass:"esri.ImageSpatialReference",constructor:function(i){i&&s.isObject(i)&&s.mixin(this,i)},icsid:null,icsns:null,ics:null,_isWebMercator:function(){return!1},_isWrappable:function(){return!1},equals:function(i){var s=!1;return i&&(this.icsid&&i.icsid?(s=this.icsid===i.icsid,(this.icsns||i.icsns)&&(s=s&&this.icsns===i.icsns)):this.ics&&i.ics&&(s=this.ics===i.ics)),s},toJson:function(i){var s=null,n=c.isDefined;return i=n(i)?i:!0,n(this.icsid)?(s={icsid:this.icsid},n(this.icsns)&&(s.icsns=this.icsns)):n(this.ics)&&(s={ics:this.ics}),n(this.url)&&n(s)&&i&&(s.url=this.url),s}});return n("extend-esri")&&(e.ImageSpatialReference=r),r});
+define(["dojo/_base/declare","dojo/_base/lang","dojo/has","./kernel","./lang","./SpatialReference"],function(i,s,n,e,c,t){var r=i(t,{declaredClass:"esri.ImageSpatialReference",constructor:function(i){i&&s.isObject(i)&&s.mixin(this,i)},icsid:null,icsns:null,ics:null,_isWebMercator:function(){return!1},_isWrappable:function(){return!1},equals:function(i){var s=!1;return i&&(this.icsid&&i.icsid?(s=this.icsid===i.icsid,(this.icsns||i.icsns)&&(s=s&&this.icsns===i.icsns)):this.ics&&i.ics&&(s=this.ics===i.ics)),s},toJson:function(i){var s=null,n=c.isDefined;return i=!n(i)||i,n(this.icsid)?(s={icsid:this.icsid},n(this.icsns)&&(s.icsns=this.icsns)):n(this.ics)&&(s={ics:this.ics}),n(this.url)&&n(s)&&i&&(s.url=this.url),s}});return n("extend-esri")&&(e.ImageSpatialReference=r),r});

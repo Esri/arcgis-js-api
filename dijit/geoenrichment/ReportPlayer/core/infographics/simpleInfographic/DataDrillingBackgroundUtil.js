@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["dojo/dom-style","esri/dijit/geoenrichment/utils/ColorUtil","../../themes/BackgroundThemeUtil"],function(e,o,t){var n={};return n.setUpDDPanelBackgroundColor=function(n){if(n.infographicJson){var r=n.viewModel.getStaticInfographicDefaultStyles(n.theme||n.themeContext),i=n.viewModel.getDocumentDefaultStyles(n.theme||n.themeContext);[n.infographicJson.style.backgroundColor,r&&r.backgroundColor,i.backgroundColor].some(function(t){return t&&!o.isTransparent(t)?(e.set(n.node,"backgroundColor",t),!0):void 0})||t.applyBackgroundImageFromSettings(n.node,i.backgroundImage)}},n});
+define(["dojo/dom-style","esri/dijit/geoenrichment/utils/ColorUtil","../../themes/BackgroundThemeUtil"],function(e,o,n){var t={};return t.setUpDDPanelBackgroundColor=function(t){if(t.infographicJson){var r=t.viewModel.getStaticInfographicDefaultStyles(t.theme),i=t.viewModel.getDocumentDefaultStyles(t.theme);[t.infographicJson.style.backgroundColor,r&&r.backgroundColor,i.backgroundColor].some(function(n){if(n&&!o.isTransparent(n))return e.set(t.node,"backgroundColor",n),!0})||n.applyBackgroundImageFromSettings(t.node,i.backgroundImage)}},t});

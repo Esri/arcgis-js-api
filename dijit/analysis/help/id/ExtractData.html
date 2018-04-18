@@ -49,7 +49,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="InputLayers">
-        <div><h2>Layer untuk Mengekstrak</h2></div>
+        <div><h2>Layer yang akan Diekstrak</h2></div>
         <hr/>
         <div>
             <p>Ada beberapa layer dalam daftar isi Anda yang dapat digunakan untuk mengekstrak fitur.  Layer-layer yang dicentang adalah layer yang diekstrak dan termasuk pada file hasil yang berupa ZIP atau CSV.
@@ -60,7 +60,7 @@
                     </li>
                     <li>Klik tab  <b>Pengaturan</b>.
                     </li>
-                    <li>Gulir ke bawah ke bagian  <b>Export Data</b> (Ekspor Data)
+                    <li>Gulir ke bawah ke bagian  <b>Ekspor Data</b>
                     </li>
                     <li>Centang  <b>Izinkan orang lain mengekspor ke format berbeda</b>.  Klik <b>Simpan</b> saat selesai.
                     </li>
@@ -77,11 +77,11 @@
         <div>
             <p>Area yang menentukan fitur mana yang akan dimasukkan sebagai file output ZIP atau CSV.   Anda dapat memilih dari yang berikut ini:
                 <ul>
-                    <li>Jangkauan visibel peta Anda saat ini ( <b>Sama seperti Tampilan</b>).
+                    <li>Jangkauan terlihat peta Anda saat ini ( <b>Sama seperti Tampilan</b>).
                     </li>
                     <li>Satu opsi membatasi jumlah maksimum lokasi terdekat untuk ditemukan per lokasi mulai.
                     </li>
-                    <li>Waktu berkendara mengikuti pilihan Anda terkait kecepatan perjalanan, baik yang berdasarkan lalu lintas sesungguhnya saat itu atau situasi lalu lintas pada umumnya.
+                    <li>Gambar daerah untuk menentukan daerah penelitian.
                     </li>
                 </ul>
                  Semua fitur yang berada dalam jangkauan peta akan diekstrak.  Untuk fitur-fitur yang bersilangan atau memotong batas jangkauan peta, namun tidak sepenuhnya berada dalam jangkauan peta, Anda memiliki dua opsi:
@@ -101,15 +101,17 @@
         <div>
             <p>Format data yang akan diekstrak. Saat mengekspor fitur garis atau area ke file CSV, hanya atribut nonspasial yang akan diekstrak.  Saat mengekspor fitur titik, baik atribut spasial maupun nonspasial akan diekstrak.  
             </p>
+            <p>Data yang diekstrak akan menggunakan proyeksi Web Mercator 1984.  Untuk filke CSV, kolom  <i>Lat</i> dan <i>Long</i> akan ditambahkan ke data dengan koordinat dalam Web Mercator 1984.
+            </p>
         </div>
     </div>
     <div id="OutputName">
         <div><h2>Nama file output</h2></div>
         <hr/>
         <div>
-            <p>Ini adalah nama item yang akan ditambahkan ke  <b>Konten Saya</b> Anda.  Nama item akan dipilih berdasarkan dengan <b>Format data output</b> yang dipilih.     Jika item sudah ada, Anda akan diminta untuk memberikan nama lain.
+            <p>Ini adalah nama item yang akan ditambahkan ke  <b>Konten Saya</b>.  Nama item akan dipilih berdasarkan dengan <b>Format data output</b> yang dipilih.     Jika item sudah ada, Anda akan diminta untuk memberikan nama lain.
             </p>
-            <p>Menggunakan kotak tarik turun (drop-down box)  <b>Simpan hasil di</b>, Anda dapat menentukan nama folder di <b>Konten Saya</b> tempat hasilnya akan disimpan.
+            <p>Dengan menggunakan kotak drop-down  <b>Simpan hasil di</b>, Anda dapat menentukan nama folder di <b>Konten Saya</b> sebagai tempat penyimpanan hasil.
             </p>
         </div>
     </div>

@@ -69,6 +69,8 @@
                 </li>
                 <li> <b>Geocode Locations from Table</b>
                 </li>
+                <li> <b>Overlay Layers</b>
+                </li>
             </ul>
             
         </p>
@@ -110,7 +112,7 @@ point features and either a layer of area features or bins defined by a specifie
 determines which points fall within each area or bin and calculates statistics about all
 the points within each area or bin. You may optionally apply time slicing with this tool. 
             </p>
-            <p> For example
+            <p>For example
                 <ul>
                     <li>Given point locations of crime incidents, count the number of crimes per county or other administrative district.
                     </li>
@@ -164,7 +166,7 @@ determines which input features belong in a track and will order the inputs sequ
                 <ul>
                     <li>Given point locations and time of hurricane measurements, calculate the mean wind speed and max wind pressure of the hurricane.
                     </li>
-                    <li>Use GPS measurements of ships, reconstruct ship paths as lines. 
+                    <li>Use GPS measurements of ships, to reconstruct ship paths as lines.
                     </li>
                 </ul>
                 
@@ -255,14 +257,14 @@ points, lines, areas, or tables that represents an instant in time.   Using sequ
                 <ul>
                     <li>Detect hurricane measurements that are Category 4 hurricanes based on a wind speed attribute.
                     </li>
-                    <li>Using GPS measurements of ship movement with a field representing the ship speed, find measurements that are greater than the 1.5 times the mean of the previous five measurements.
+                    <li>Using GPS measurements of ship movement with a field representing the ship speed, find measurements that are greater than 1.5 times the mean of the previous five measurements.
                     </li>
                 </ul>
                 
             </p>
             <br/>
         </div>
-        <div id="GeocodeLocationsfromTableTool" class="regularsize">
+        <div id="GeocodeLocationsfromTableTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -398,14 +400,18 @@ features.
             </p>
             <br/>
         </div>
-    <div id="ManageDataCategory" class="smallsize">
+    <div id="ManageDataCategory" class="regularsize">
         <h2>Manage Data</h2>
         <hr/>
         <p>These tools are used for the day-to-day management of geographic and tabular data.
             <ul>
+                <li> <b>Append Data</b> appends features to an existing hosted feature layer.
+                </li>
                 <li> <b>Calculate Field</b> creates a new field or modifies an existing field and creates a new layer in your contents.
                 </li>
                 <li> <b>Copy to Data Store</b> copies data to your ArcGIS Data Store and creates a layer in your contents.
+                </li>
+                <li> <b>Overlay Layers</b> combines two or more layers into one single layer.
                 </li>
             </ul>
             
@@ -422,7 +428,7 @@ features.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Copies an input feature layer or table to an  ArcGIS Data Store and creates a layer in your contents on  ArcGIS Enterprise. </p>
+            <p>Copies an input feature layer or table to an  ArcGIS Data Store and creates a layer in your contents in  ArcGIS Enterprise. </p>
             <p>For example
                 <ul>
                     <li>Copy a collection of  <code>.csv</code> files in a big data file share to the spatiotemporal data store for visualization.
@@ -445,7 +451,7 @@ features.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Calculates values for a new or existing field and creates a layer in your contents on  ArcGIS Enterprise. </p>
+            <p>Calculates values for a new or existing field and creates a layer in your contents in  ArcGIS Enterprise. </p>
             <p>For example
                 <ul>
                     <li>Modify an existing field named  <i>total</i> to be the sum of revenue from fields <i>total_2016</i>, <i>total_2017</i>, and <i>total_2018</i>.
@@ -454,6 +460,55 @@ features.
                     </li>
                 </ul>
                 
+            </p>
+            <br/>
+        </div>
+        <div id="OverlayLayersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Overlay Layers</h2></td>
+                    <td>
+                    <img src="./images/GUID-00A64703-4E97-4398-AE5C-F1885375BC30-web.png" class="titleImage" alt="Overlay Layers">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Overlay combines two or more layers into one single layer.  Overlay is used to answer one of the most basic questions of geography, &quot;What is on top of what?&quot; For example:
+                <ul>
+                    <li>What parcels are within the 100-year floodplain? (Within is just another way of saying on top of.)
+                          
+                    </li>
+                    <li>What land use is on top of what soil type?
+                         
+                    </li>
+                    <li>What wells are within abandoned military bases?
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="AppendDataTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Append Data</h2></td>
+                    <td>
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Appends features to an existing hosted layer in your contents in  ArcGIS Enterprise. </p>
+            <p>For example
+                <ul>
+                    <li>Update your &quot;2018_Sales&quot; feature layer each month as your reports become available.
+                    </li>
+                    <li>Append hurricane tracking datasets from the years 2016 and 2017 into a master hurricane dataset.
+                    </li>
+                    <li>Collect and append datasets from various sources with different schemas using custom field mapping.
+                    </li>
+                </ul>
             </p>
             <br/>
         </div>

@@ -44,9 +44,9 @@
         <h2>Razgradi meje</h2><p/>
         <h2><img src="../images/GUID-7B5F69B0-3625-404F-8B52-2B562766C0BB-web.png" alt="Razgradi meje"></h2>
         <hr/>
-    <p>Poligoni, ki se prekrivajo ali si delijo skupno mejo, so med seboj združeni, da oblikujejo en poligon.    
+    <p>Poligoni, ki se prekrivajo ali si delijo skupno mejo, so med seboj združeni v enojen poligon.    
     </p>
-    <p>Katere meje so združijo lahko nadzirate tako, da navedete polje. Na primer, če imate sloj okrožij in ima vsako okrožje atribut  <i>Ime_Drzave</i>, lahko razgradite meje z uporabo atributa <i>Ime_Drzave</i>. Sosednja okrožja bodo združena, če imajo enako vrednost za <i>Ime_Drzave</i>. Končni rezultat je sloj državnih mej.
+    <p>Katere meje so združijo lahko nadzirate tako, da navedete polje. Na primer, če imate sloj okrožij in ima vsako okrožje atribut  <i>State_Name</i>, lahko razgradite meje posameznih okrožij s pomočjo atributa <i>State_Name</i>. Sosednja okrožja bodo združena, če imajo enako vrednost atributa <i>State_Name</i>. Končni rezultat je sloj državnih mej.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -66,16 +66,31 @@
         <div>
             <p>Izberete lahko eno od dveh metod za združevanje poligonskih geoobjektov:
                 <ul>
-                    <li> <b>Poligoni, ki se prekrivajo ali so sosednji</b> &ndash; Dva ali več poligonov, katerih meje se prekrivajo, bo združenih v eno območje. Poleg tega bodo sosednji poligoni (torej si delijo skupno mejo), združeni v en poligon.
+                    <li> <b>Poligoni, ki se prekrivajo ali so sosednji</b> &ndash; Dva ali več poligonov, katerih meje se prekrivajo, bo združenih v en poligon. Poleg tega bodo sosednji poligoni (ki si delijo skupno mejo), združeni v en poligon.
                     </li>
                     <li> <b>Poligoni z enako vrednostjo polja</b> &ndash; Poligoni, ki se prekrivajo ali si delijo skupno mejo, bodo združeni v en poligon, če imajo enako vrednost polja.
-                        <p>Na primer, če imate sloj okrožij in ima vsako okrožje polje  <i>Ime_Drzave</i>, lahko razgradite meje z uporabo polja <i>Ime_Drzave</i>. Sosednja okrožja bodo združena, če imajo enako vrednost za <i>Ime_Drzave</i>. Končni rezultat je sloj državnih mej.
+                        <p>Na primer, če imate sloj okrožij in ima vsako okrožje polje  <i>State_Name</i>, lahko razgradite meje posameznih okrožij s pomočjo polja <i>State_Name</i>. Sosednja okrožja bodo združena, če imajo enako vrednost atributa <i>State_Name</i>. Končni rezultat je sloj državnih mej.
                         </p>
                     </li>
                 </ul>
                 
             </p>
-            <p>Če je obkljukano  <b>Uporabi trenutni obseg karte</b>, bodo razgrajeni samo geoobjekti vhodnega sloja, ki so vidni znotraj trenutnega obsega karte. Če je možnost odkljukana, bodo razgrajeni vsi geoobjekti v vhodnem sloju, tudi če so zunaj trenutnega obsega karte.
+            <p>Če je obkljukano  <b>Uporabi trenutni obseg karte</b>, bodo razgrajeni samo geoobjekti vhodnega sloja, ki so vidni znotraj trenutnega obsega karte.Če je možnost odkljukana, bodo razgrajeni vsi geoobjekti v vhodnem sloju, tudi če so zunaj trenutnega obsega karte.
+            </p>
+        </div>
+    </div>
+    <div id="multiPartFeatures">
+        <div><h2>Ustvari mnogodelne geoobjekte</h2></div>
+        <hr/>
+        <div>
+            <p>V ArcGIS-u je digitalna predstavitev kraja ali elementa, ki ima več kot en del, določena kot en geoobjekt, saj se sklicuje na en niz atributov. Tako se na sloju z državami, na primer, država Havaji lahko &scaron;teje kot mnogodelni geoobjekt, ker so njeni ločeni geometrijski deli razvr&scaron;čeni kot ena država. Mnogodelni geoobjekt je lahko točka, linija ali poligon. Ta boolov parameter ponuja dve možnosti:
+                <ul>
+                    <li>Resnično (obkljukano): izhodna storitev lahko vsebuje mnogodelne geoobjekte.
+                    </li>
+                    <li>Neresnično (odkljukano): izhodna storitev bo vsebovala samo enodelne geoobjekte, posamezni geoobjekti pa bodo ustvarjeni za vsak del posebej.
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>
@@ -83,7 +98,7 @@
         <div><h2>Dodaj statistiko</h2></div>
         <hr/>
         <div>
-            <p>Kjer so območja združena, lahko povzamete njihove atribute. Na primer, če razgrajujete mejo med okrožji na podlagi  <i>Ime_Drzave</i> in ima vsako okrožje polje <i>Prebivalstvo</i>, lahko izračunate vsoto <i>Prebivalstva</i> za državo.
+            <p>Kjer so območja združena, lahko povzamete njihove atribute. Na primer, če razgrajujete mejo med okrožji na podlagi  <i>State_Name</i> in ima vsako okrožje polje <i>Population</i>, lahko izračunate vsoto polja <i>Population</i> za državo.
             </p>
             <p>Razpoložljivi tipi statistik so:
             </p>
@@ -104,7 +119,7 @@
                     
 
                 </li>
-                <li> <b>St. Odklon</b> &ndash; Najde standardni odklon od vrednosti v navedenem polju
+                <li> <b>St. odklon</b> &ndash; Najde standardni odklon od vrednosti v navedenem polju
                     
 
                 </li>

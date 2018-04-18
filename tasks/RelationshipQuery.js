@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["dojo/_base/declare","dojo/_base/lang","dojo/_base/json","dojo/has","../kernel"],function(e,t,s,i,o){var n=e(null,{declaredClass:"esri.tasks.RelationshipQuery",definitionExpression:"",relationshipId:null,returnGeometry:!1,objectIds:null,outSpatialReference:null,outFields:null,toJson:function(){var e={definitionExpression:this.definitionExpression,relationshipId:this.relationshipId,returnGeometry:this.returnGeometry,maxAllowableOffset:this.maxAllowableOffset,geometryPrecision:this.geometryPrecision},t=this.objectIds,i=this.outFields,o=this.outSpatialReference;return t&&(e.objectIds=t.join(",")),i&&(e.outFields=i.join(",")),o&&(e.outSR=o.wkid||s.toJson(o.toJson())),e._ts=this._ts,e}});return i("extend-esri")&&t.setObject("tasks.RelationshipQuery",n,o),n});
+define(["dojo/_base/declare","dojo/_base/lang","dojo/_base/json","dojo/has","../kernel"],function(e,i,s,t,o){var n=e(null,{declaredClass:"esri.tasks.RelationshipQuery",definitionExpression:"",relationshipId:null,returnGeometry:!1,objectIds:null,outSpatialReference:null,outFields:null,orderByFields:null,toJson:function(){var e={definitionExpression:this.definitionExpression,relationshipId:this.relationshipId,returnGeometry:this.returnGeometry,maxAllowableOffset:this.maxAllowableOffset,geometryPrecision:this.geometryPrecision},i=this.objectIds,t=this.outFields,o=this.outSpatialReference,n=this.orderByFields;return i&&(e.objectIds=i.join(",")),t&&(e.outFields=t.join(",")),o&&(e.outSR=o.wkid||s.toJson(o.toJson())),n&&(e.orderByFields=n.join(",")),e._ts=this._ts,e}});return t("extend-esri")&&i.setObject("tasks.RelationshipQuery",n,o),n});

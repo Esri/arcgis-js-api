@@ -3,11 +3,11 @@
       <div data-dojo-attach-point="_mergeLayersToolContentTitle" class="analysisTitle">
         <table class="esriFormTable" > 
           <tr>
-            <td><div class="mergeLayersIcon"></div></td>
+            <td class="esriToolIconTd"><div class="mergeLayersIcon"></div></td>
             <td class="esriAnalysisTitle" data-dojo-attach-point="_toolTitle">
 							<label data-dojo-attach-point="_titleLbl">${i18n.mergeLayers}</label>
 							<nav class="breadcrumbs"  data-dojo-attach-point="_analysisModeLblNode" style="display:none;">
-								<a href="#" class="crumb" style="font-size:12px;" data-dojo-attach-event="onclick:_handleModeCrumbClick" data-dojo-attach-point="_analysisModeCrumb"></a>
+								<a href="#" class="crumb breadcrumbs__modelabel" data-dojo-attach-event="onclick:_handleModeCrumbClick" data-dojo-attach-point="_analysisModeCrumb"></a>
 								<a href="#" class="crumb is-active" data-dojo-attach-point="_analysisTitleCrumb" style="font-size:16px;">${i18n.mergeLayers}</a>
 							</nav>               
             </td>
@@ -57,7 +57,7 @@
           </tr>
           <tr>    
             <td colspan="3" style="padding-top:0;">
-                <select class="esriLeadingMargin1 longInput esriLongLabel"  style="margin-top:1.0em;" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_mergeLayersSelect" data-dojo-attach-event="onChange:_handleLayerChange"></select>
+                <select class="esriLeadingMargin1 longInput esriLongLabel"  style="margin-top:1.0em;" data-dojo-props="required:true" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_mergeLayersSelect" data-dojo-attach-event="onChange:_handleLayerChange"></select>
             </td>
           </tr>     
           <tr>

@@ -666,11 +666,11 @@
     ],
     "gpsaKernelDensityMethods": [
       {
-        "key": "DENSITIES",
+        "key": "PLANAR",
         "label": "${rasterFunctions.enumLabels.planar}"
       },
       {
-        "key": "EXPECTED_COUNTS",
+        "key": "GEODESIC",
         "label": "${rasterFunctions.enumLabels.geodesic}"
       }
     ],

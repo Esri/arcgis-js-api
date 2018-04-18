@@ -56,7 +56,8 @@
             "toolDescription": "Create_Watersheds/01930000016s000000"
         },
         "DissolveBoundaries": {
-            "toolDescription": "Dissolve_Boundaries/019300000163000000"
+            "toolDescription": "Dissolve_Boundaries/019300000163000000",
+            "multiPartFeatures": "Dissolve_Boundaries/019300000163000000"
         },
         "DetectIncidents_bd": {
             "toolDescription": "Detect_Incidents/0193000001n4000000"
@@ -103,6 +104,9 @@
             "toolDescription": "Geocode_Locations_from_Table/01930000018n000000",
             "geocodeServiceURL": "Geocode_Locations_from_Table/01930000018n000000"
         },
+        "GeocodeLocationsfromTable_bd": {
+          "toolDescription": "Geocode_Locations_from_Table/0193000001pn000000"
+        },
         "InterpolatePoints": {
             "toolDescription": "Interpolate_Points/019300000169000000"
         },
@@ -118,6 +122,9 @@
         "OverlayLayers": {
             "toolDescription": "Overlay_Layers/019300000168000000",
             "inputLayer": "Overlay_Layers/019300000168000000"
+        },
+        "OverlayLayers_bd": {
+            "toolDescription": "Overlay_Layers/0193000001q5000000"
         },
         "PlanRoutes": {
             "toolDescription": "Plan_Routes/0193000000wt000000",
@@ -141,6 +148,9 @@
         },
         "TraceDownstream": {
             "toolDescription": "Trace_Downstream/01930000016q000000"
+        },
+        "AppendData_bd": {
+            "toolDescription": "Append_Data/0193000001sq000000"
         }
     }
 }

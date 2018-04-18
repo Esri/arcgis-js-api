@@ -7,7 +7,7 @@
               <td class="esriAlignLeading esriAnalysisTitle" data-dojo-attach-point="_toolTitle">
                 <label data-dojo-attach-point="_titleLbl">${i18n.interpolatePoints}</label>
                 <nav class="breadcrumbs"  data-dojo-attach-point="_analysisModeLblNode" style="display:none;">
-                  <a href="#" class="crumb" style="font-size:12px;" data-dojo-attach-event="onclick:_handleModeCrumbClick" data-dojo-attach-point="_analysisModeCrumb"></a>
+                  <a href="#" class="crumb breadcrumbs__modelabel" data-dojo-attach-event="onclick:_handleModeCrumbClick" data-dojo-attach-point="_analysisModeCrumb"></a>
                   <a href="#" class="crumb is-active" data-dojo-attach-point="_analysisTitleCrumb" style="font-size:16px;">${i18n.interpolatePoints}</a>
                 </nav>                 
               </td>
@@ -104,10 +104,10 @@
               <table class="esriFormTable optionsTable">
                 <tbody>
                   <tr>
-                    <td colspan="2">
+                    <td colspan="2" class="twobythree-width">
                       <label class="esriLeadingMargin2">${i18n.interpolateWithin}</label>
                     </td>
-                    <td class="shortTextInput">
+                    <td class="shortTextInput strict-onebythree-width">
                       <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="boundingPolygonLayer"></a>
                     </td>                    
                   </tr>

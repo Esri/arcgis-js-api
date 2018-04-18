@@ -1,0 +1,25 @@
+// COPYRIGHT © 201 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+
+define(["require","exports","dojo/_base/lang","./property"],function(e,r,t,o){function i(e,r,i){var n,a;return void 0===r?(a=e,n=[void 0]):"string"!=typeof r?(a=e,n=[void 0],i=r):(a=r,n=Array.isArray(e)?e:[e]),function(e,r,c){var p=e.constructor.prototype;n.forEach(function(n){var c=o.propertyJSONMeta(e,n,a);c.write&&"object"!=typeof c.write&&(c.write={}),i&&t.setObject("write.target",i,c),t.setObject("write.writer",p[r],c)})}}Object.defineProperty(r,"__esModule",{value:!0}),r.writer=i});

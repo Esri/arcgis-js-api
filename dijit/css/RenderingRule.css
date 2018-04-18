@@ -26,7 +26,7 @@ div.esriRenderingRuleContainer {
 }
 .esriRenderingRuleHeadingLabel {
   font-weight:bold;
-  padding-bottom:10px;
+  padding-bottom: 10px;
 }
 .esriRenderingRuleEnhancementHeadingLabel{
   font-weight:bold;
@@ -91,6 +91,7 @@ div.esriRenderingRuleContainer {
   vertical-align: middle;
   line-height: inherit !important;
   width: 100%;
+  box-sizing: border-box;
 }
 .esriRenderingRuleStretchMethodList .dijitReset {
   line-height: inherit !important;
@@ -101,18 +102,37 @@ div.esriRenderingRuleContainer {
 .esriRenderingRuleBandIdsBlueList .dijitInputInner,
 .esriRenderingRuleRasterFunctionList .dijitInputInner,
 .esriRenderingRuleColorRampList .dijitInputInner { 
-  height: 100%;
+  height: 24px!important;
   line-height: 22px;
   direction: inherit!important;
   text-align: inherit!important;
+  padding: 0 0.2em !important;
   
+}
+.esriRenderingRuleClassifyMethodSelect .dijitInputInner,
+.esriRenderingRuleClassifyClassSelect .dijitInputInner,
+.esriRenderingRuleClassifyIntervalSelect .dijitInputInner {
+  line-height: 22px;
+  height: 24px;
+}
+
+.esriRenderingRuleClassifyMethodSelect .dijitInputInner {
+  padding: 0 0.2em !important;
+}
+
+.esriRenderingRuleClassifyClassSelect .dijitInputField,
+.esriRenderingRuleClassifyIntervalSelect .dijitInputField {
+  padding-right: 0.2em;
 }
 
 .esriRenderingRuleBandIdsRedList .dijitButtonNode.dijitArrowButton,
 .esriRenderingRuleBandIdsGreenList .dijitButtonNode.dijitArrowButton,
 .esriRenderingRuleBandIdsBlueList .dijitButtonNode.dijitDownArrowButton,
 .esriRenderingRuleRasterFunctionList .dijitButtonNode.dijitDownArrowButton,
-.esriRenderingRuleColorRampList .dijitButtonNode.dijitDownArrowButton {
+.esriRenderingRuleColorRampList .dijitButtonNode.dijitDownArrowButton,
+.esriRenderingRuleClassifyMethodSelect .dijitButtonNode.dijitDownArrowButton,
+.esriRenderingRuleClassifyClassSelect .dijitButtonNode.dijitDownArrowButton,
+.esriRenderingRuleClassifyIntervalSelect .dijitButtonNode.dijitDownArrowButton {
   padding-top: 3px!important;
   padding-bottom: 0px!important;
 }
@@ -150,6 +170,14 @@ div.esriRenderingRuleContainer {
 .esriRenderingRuleClassifySelect,
 .esriRenderingRuleUniqueValuesSelect {
   width: 100%;
+  box-sizing: border-box !important;
+}
+
+.esriRenderingRuleClassifyMethodSelect,
+.esriRenderingRuleClassifyClassSelect,
+.esriRenderingRuleClassifyIntervalSelect {
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .esriRenderingRuleSymbolCell {
@@ -180,6 +208,7 @@ div.esriRenderingRuleContainer {
 
 .esriRenderingRuleTable .dijitButtonNode.dijitDownArrowButton {
   width: 20px;
+  height: 22px !important;
   border-left: solid grey 1px;
 }
 
@@ -199,4 +228,18 @@ div.esriRenderingRuleContainer {
 
 .esriRenderingRuleDisabledGrid .dgrid-content {
   color: gray;
+}
+
+.esriRenderingRuleWarningIcon {
+  width: 15px;
+  height: 15px;
+  background-image: url(../images/warning.png);
+  background-size: 13px;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: inline-block;
+  margin-bottom: -2px;
+}
+.esriRenderingRuleVectorTooltip {
+  width: 22em;
 }

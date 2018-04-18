@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["../../declare","./StudyAreaOptions","./GeographyLevel"],function(e,r,n){var a=e("esri.tasks.geoenrichment.IntersectingGeographies",[r],{geographyLevels:null,constructor:function(e){var r;r=e?e.intersectingGeographies||e.levels||e.geographyLevels:[{layerID:"Admin2"}],this.geographyLevels=n.fromJsonArray(r)},toJson:function(){var e={areaType:"StandardGeography",intersectingGeographies:n.toJsonArray(this.geographyLevels)};return e}});return a});
+define(["../../declare","./StudyAreaOptions","./GeographyLevel"],function(e,r,n){return e("esri.tasks.geoenrichment.IntersectingGeographies",[r],{geographyLevels:null,constructor:function(e){var r;r=e?e.intersectingGeographies||e.levels||e.geographyLevels:[{layerID:"Admin2"}],this.geographyLevels=n.fromJsonArray(r)},toJson:function(){return{areaType:"StandardGeography",intersectingGeographies:n.toJsonArray(this.geographyLevels)}}})});

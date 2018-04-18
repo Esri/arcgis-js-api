@@ -1,0 +1,25 @@
+// COPYRIGHT © 201 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+
+define(["dojo/_base/lang","dojo/when","dojo/promise/all","./tasks/EnrichAreasTask","./tasks/RunReportTask","./AreaDataUtil","./CustomReportsManager","./attachments/AttributesUtil","esri/dijit/geoenrichment/utils/DateUtil","../../core/supportClasses/templateJsonUtils/fieldInfo/FieldInfoNameUtil","../../core/supportClasses/templateJsonUtils/fieldInfo/FieldLibrary","../../core/infographics/dataDrilling/EnrichUtil","./tasks/parsers/FeatureSetParser"],function(e,a,t,r,n,i,o,s,l,u,A,c,f){var d={ENRICHED_DATA_NO_LEVELS:"enrichFieldData_noLevels",addFeatureAttributesCalculator:function(e,a){for(var t in e.attributes){var r=t;i.setAreaDataObjectValue(r,e.attributes[t],a,u.AREA_ATTRIBUTES_CALCULATOR_NAME)}},addAreaInfoCalculator:function(e,a){i.setAreaDataObjectValue("SITE_NAME",e.name||e.shortName||"",a,u.AREA_ATTRIBUTES_CALCULATOR_NAME),i.setAreaDataObjectValue("STORE_NAME",e.name||e.shortName||"",a,u.AREA_ATTRIBUTES_CALCULATOR_NAME),i.setAreaDataObjectValue("AREA_DESC",e.description||"",a,u.AREA_ATTRIBUTES_CALCULATOR_NAME),i.setAreaDataObjectValue("AREA_DESC2",e.description||"",a,u.AREA_ATTRIBUTES_CALCULATOR_NAME),i.setAreaDataObjectValue("AREA_DESC3",e.description||"",a,u.AREA_ATTRIBUTES_CALCULATOR_NAME),i.setAreaDataObjectValue("STORE_ADDR",e.address||"",a,u.AREA_ATTRIBUTES_CALCULATOR_NAME),i.setAreaDataObjectValue("STORE_LAT",e.latitude||"",a,u.AREA_ATTRIBUTES_CALCULATOR_NAME),i.setAreaDataObjectValue("STORE_LONG",e.longitude||"",a,u.AREA_ATTRIBUTES_CALCULATOR_NAME)},addEnrichFeatureSet:function(e,a,t,r){var n=f.parse(e,t||d.ENRICHED_DATA_NO_LEVELS,function(e){return a[e]||e});i.mergeAreaData(n,r.fieldData.areaData)}};return{populateReportDataFromAttachmentsStore:function(e,r){var n=[];return n.push(a(r.getNotes(),function(a){a&&a.length&&(e.fieldData.metadata[A.SITENOTE_FIELD_NAME]=a[0].text,e.fieldData.metadata[A.SITENOTES_FIELD_NAME]=a.map(function(e){return e.text}).join("<br/><br/>"))})),n.push(a(r.getAttributes(),function(a){if(!a||!a.length)return null;var t={attributes:{}};a.forEach(function(e){var a=e.name;t.attributes[a]=e.value}),e.analysisAreas.forEach(function(a,r){var n=e.fieldData.areaData[r];n&&d.addFeatureAttributesCalculator(t,n)})})),t(n)},runReportAndGetData:function(e){return a(o.getCustomReportByID(e),function(a){function t(a){return e.fieldData.errors.push(a),null}return(new n).execute({geoenrichmentUrl:e.geoenrichmentUrl,analysisAreas:e.analysisAreas,countryID:e.countryID,hierarchy:a.hierarchy,report:{reportID:a.reportID,portalUrl:a.templateData.getPortalUrl(!0),modified:a.modified},cacheResult:!0}).then(function(e){return{taskID:e.taskID,selectedReport:a,areaData:e.areaData}},t)})},applyRunReportAndGetDataResults:function(e,a){e&&e.areaData&&(a.fieldData.runReportTaskID=e.taskID,a.fieldData.areaData=e.areaData,a.analysisAreas&&this._reportDataFromAreas(a.analysisAreas,a.fieldData.areaData),e.selectedReport&&this._reportDataFromReport(e.selectedReport,a.fieldData))},_reportDataFromAreas:function(e,a){e.forEach(function(e,t){var r=e.feature,n=a[t];n&&(d.addFeatureAttributesCalculator(r,n),d.addAreaInfoCalculator(e,n))})},_reportDataFromReport:function(e,a){var t=a.metadata;e&&!t.Title&&(t.Title=e.title),t.Source="Esri",t.Date=l.getReportFooterDate(),t.Copyright="©"+l.getFullYear()+" Esri",t.ProductLabel="",t.ProductUrl="",t.PhoneNumber="",t.TrialUrlText=""},enrichFieldData:function(e,n){function s(e,a,t){function r(e){return n.fieldData.areaData.every(function(a,r){return void 0!==i.getAreaDataValue(e,n.fieldData,t,r,!0)})}var o=[],s={};return e.forEach(function(e){r(e.fieldName)||(o.push(e.mapTo),s[e.mapTo]=e.fieldName,s[e.mapTo.substr(e.mapTo.indexOf(".")+1)]=e.fieldName)}),o.length?{fields:o,fieldsMap:s,comparisonLevels:a,calculatorName:t}:null}var l=[];if(e=c.optimizeInfos(e),e.forEach(function(e){var a;(e.isGeneral||e.isChart)&&(a=s(e.fields,e.levels,e.calculatorName)),a&&l.push(a)}),l.length)return a(o.getCustomReportByID(n),function(e){function a(e){n.fieldData.errors.push(e)}return t(l.map(function(t){return(new r).enrichAreas({geoenrichmentUrl:n.geoenrichmentUrl,analysisAreas:n.analysisAreas,countryID:n.countryID,hierarchy:e.hierarchy,fields:t.fields,comparisonLevels:t.comparisonLevels}).then(function(e){d.addEnrichFeatureSet(e[0],t.fieldsMap,t.calculatorName,n)},a)}))})}}});

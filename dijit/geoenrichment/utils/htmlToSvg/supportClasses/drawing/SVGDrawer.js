@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["./_TextDrawer","./_ImageDrawer","./_RectDrawer","./_SVGDrawer"],function(r,e,a,n){var t={drawRect:function(r,e){return a.drawRect(r,e)},drawBorder:function(r,e){return a.drawBorder(r,e)},drawText:function(e,a,n,t){return r.drawText(e,a,n,t)},drawSVG:function(r,e,a){return n.drawSVG(r,e,a)},drawBackgroundImage:function(r,a,n){return e.drawBackgroundImage(r,a,n)},drawImage:function(r,a,n,t){return e.drawImage(r,a,n,t)}};return t});
+define(["./_TextDrawer","./_ImageDrawer","./_RectDrawer","./_SVGDrawer"],function(r,e,n,a){return{drawRect:function(r,e){return n.drawRect(r,e)},drawBorder:function(r,e){return n.drawBorder(r,e)},drawText:function(e,n,a,t){return r.drawText(e,n,a,t)},drawSVG:function(r,e,n){return a.drawSVG(r,e,n)},drawBackgroundImage:function(r,n,a){return e.drawBackgroundImage(r,n,a)},drawImage:function(r,n,a,t){return e.drawImage(r,n,a,t)}}});

@@ -41,12 +41,12 @@
 
 .esriGEOnDemandSelect .onDemandSelect_arrow {
     float: right;
-    margin: 0px 5px 0;
+    margin: 0 5px;
     width: 12px;
     height: 20px;
     background-image: url('./images/arrows/drop-down.svg');
     background-repeat: no-repeat;
-    background-size: 12px 20px;
+    background-size: cover;
     background-position: center;
     display: inline-block;
     cursor: pointer;

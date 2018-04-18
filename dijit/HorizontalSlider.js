@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["dijit/form/HorizontalRuleLabels","dijit/form/HorizontalSlider","dojo/_base/declare","dojo/_base/lang","dojo/has","../kernel"],function(e,i,l,t,o,s){var r=l("esri.dijit.HorizontalSlider",i,{baseClass:"esriHorizontalSlider",showButtons:!1,labels:null,constructor:function(e){e=e||{},e.labels&&(this.labels=e.labels)},buildRendering:function(){if(this.inherited(arguments),this.labels){var i=new e({labels:this.labels});i.placeAt(this.bottomDecoration)}}});return o("extend-esri")&&t.setObject("dijit.HorizontalSlider",r,s),r});
+define(["dijit/form/HorizontalRuleLabels","dijit/form/HorizontalSlider","dojo/_base/declare","dojo/_base/lang","dojo/has","../kernel"],function(e,i,l,t,o,s){var n=l("esri.dijit.HorizontalSlider",i,{baseClass:"esriHorizontalSlider",showButtons:!1,labels:null,constructor:function(e){e=e||{},e.labels&&(this.labels=e.labels)},buildRendering:function(){if(this.inherited(arguments),this.labels){new e({labels:this.labels}).placeAt(this.bottomDecoration)}}});return o("extend-esri")&&t.setObject("dijit.HorizontalSlider",n,s),n});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["esri/dijit/geoenrichment/ReportPlayer/config","../ChartTypes","./_RoundChartBuilder","./_ColumnBarLineChartBuilder","esri/dijit/geoenrichment/utils/ObjectUtil"],function(n,t,i,r,e){var a={};return a.supportConditionalStyling=function(n){return r.supportConditionalStyling(n)||i.supportConditionalStyling(n)},a.getChartBuilder=function(n){return t.isRoundChart(n)?i:r},a.checkSeriesAreValid=function(t){return n.charts.showErrorIfHasUnavailableData?!t.some(function(n){return n.data.some(function(n){return n.isUnavailableData})}):!0},a});
+define(["esri/dijit/geoenrichment/ReportPlayer/config","../ChartTypes","./round/RoundChartBuilder","./columnBarLine/ColumnBarLineChartBuilder","esri/dijit/geoenrichment/utils/ObjectUtil"],function(n,r,i,e,t){var a={};return a.supportConditionalStyling=function(n){return r.isConditionalStylingEnabled(n)},a.getChartBuilder=function(n){return r.isRoundChart(n)?i:e},a.checkSeriesAreValid=function(r){return!n.charts.showErrorIfHasUnavailableData||!r.some(function(n){return n.data.some(function(n){return n.isUnavailableData})})},a});

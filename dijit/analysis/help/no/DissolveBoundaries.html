@@ -46,7 +46,7 @@
         <hr/>
     <p>Omr&aring;der som overlapper eller har en felles grense, sl&aring;s sammen til et enkelt omr&aring;de.    
     </p>
-    <p>Du kan kontrollere hvilke grenser som sl&aring;s sammen, ved &aring; angi et felt. Hvis du for eksempel har et lag med fylker og hvert fylke har et  <i>State_Name</i>-attributt, kan du viske ut grensene ved hjelp av <i>State_Name</i>-attributtet. Fylker som ligger inntil hverandre, sl&aring;s sammen hvis de har samme verdi for <i>State_Name</i>. Sluttresultatet blir et lag med delstatsgrenser.
+    <p>Du kan kontrollere hvilke grenser som sl&aring;s sammen, ved &aring; angi et felt. Hvis du for eksempel har et lag med fylker og hvert fylke har et  <i>State_Name</i>-attributt, kan du viske ut grensene ved hjelp av <i>State_Name</i>-attributtet.  Fylker som ligger inntil hverandre, sl&aring;s sammen hvis de har samme verdi for <i>State_Name</i>.  Sluttresultatet blir et lag med delstatsgrenser.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -54,8 +54,7 @@
         <div><h2>Velg områdelaget du vil viske ut grenser i</h2></div>
         <hr/>
         <div>
-            <p>Laget som inneholder omr&aring;degeoobjekter som skal vises ut.
-
+            <p>Laget som inneholder omr&aring;degeoobjekter som skal vises ut. 
             </p>
             <p class="OnlineOnly">I tillegg til &aring; velge et lag fra kartet kan du velge  <b>Velg analyselag i levende atlas</b> eller <b>Velg analyselag</b> som du finner nederst i rullegardinlisten. Dette &aring;pner et galleri som inneholder en samling lag som vil v&aelig;re nyttige i mange analyser. 
             </p>
@@ -65,12 +64,12 @@
         <div><h2>Velg oppløsningsmetode</h2></div>
         <hr/>
         <div>
-            <p>Du kan sl&aring; sammen omr&aring;degeoobjekter p&aring; to m&aring;ter: 
+            <p>Du kan sl&aring; sammen omr&aring;degeoobjekter p&aring; to m&aring;ter:
                 <ul>
                     <li> <b>Omr&aring;der som overlapper eller er tilst&oslash;tende</b> &ndash; To eller flere omr&aring;der som har overlappende grenser, sl&aring;s sammen til ett omr&aring;de. I tillegg blir omr&aring;der som ligger inntil hverandre (det vil si at de har felles grense), sl&aring;tt sammen til ett omr&aring;de.
                     </li>
                     <li> <b>Omr&aring;der med samme feltverdi</b> &ndash; Omr&aring;der som overlapper hverandre eller har felles grense, sl&aring;s sammen til ett omr&aring;de hvis de har samme feltverdi.
-                        <p>Hvis du for eksempel har et lag med fylker og hvert fylke har et  <i>State_Name</i>-felt, kan du viske ut grensene ved hjelp av <i>State_Name</i>-feltet. Fylker som ligger inntil hverandre, sl&aring;s sammen hvis de har samme verdi for <i>State_Name</i>. Sluttresultatet blir et lag med delstatsgrenser.
+                        <p>Hvis du for eksempel har et lag med fylker og hvert fylke har et  <i>State_Name</i>-felt, kan du viske ut grensen ved hjelp av <i>State_Name</i>-feltet.  Fylker som ligger inntil hverandre, sl&aring;s sammen hvis de har samme verdi for <i>State_Name</i>. Sluttresultatet blir et lag med delstatsgrenser.
                         </p>
                     </li>
                 </ul>
@@ -80,11 +79,26 @@
             </p>
         </div>
     </div>
+    <div id="multiPartFeatures">
+        <div><h2>Opprett geoobjekter med flere deler</h2></div>
+        <hr/>
+        <div>
+            <p>I ArcGIS en digital visning av et sted eller en ting som har mer enn &eacute;n del, men er definert som ett geoobjekt fordi det henviser til ett sett med attributter. I et lag med stater kan for eksempel staten Hawaii betraktes som et geoobjekt med flere deler fordi dens separate geometriske deler er klassifisert som en enkelt stat. Et geoobjekt med flere deler kan v&aelig;re et punkt, en linje eller en polygon. Den boolske parameteren har to alternativer:
+                <ul>
+                    <li>Sant (avmerket): utdatatjeneste kan inneholde geoobjekter med flere deler.
+                    </li>
+                    <li>Usant (ikke avmerket): utdatatjenesten inneholder kun geoobjekter med &eacute;n del, og det opprettes individuelle geoobjekter for hver del.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
     <div id="SummaryFields">
         <div><h2>Legg til statistikk</h2></div>
         <hr/>
         <div>
-            <p>N&aring;r omr&aring;der sl&aring;s sammen, kan du summere attributtene for omr&aring;dene. Hvis du for eksempel visker ut grensen mellom fylker basert p&aring;  <i>State_Name</i> og hvert fylke har et <i>Befolkning</i>-felt, kan du beregne samlet <i>befolkning</i> for delstaten.
+            <p>N&aring;r omr&aring;der sl&aring;s sammen, kan du summere attributtene for omr&aring;dene. Hvis du for eksempel visker ut grensen mellom fylker basert p&aring;  <i>State_Name</i>-feltet og hvert fylke har et <i>Population</i>-felt, kan du beregne totalen for <i>Population</i> for staten.
             </p>
             <p>F&oslash;lgende statistikktyper er tilgjengelige:
             </p>

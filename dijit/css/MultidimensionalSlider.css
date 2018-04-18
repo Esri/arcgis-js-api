@@ -149,13 +149,7 @@
   background-image: none;
 }
 
-.esriMdSliderActive .dijitSliderTopBumper,
-.esriMdSliderActive .dijitSliderBottomBumper
-{
-  background-color: #0215B5!important;
-  background-image: none!important;
-}
-
+.esriMdSliderPassive .dijitSliderBottomBumper,
 .esriMdSliderPassive .dijitSliderProgressBarV
 {
   background-color: rgba(30,110,195,0.5);
@@ -164,24 +158,18 @@
 }
 
 .esriMdSliderPassive .dijitSliderTopBumper,
-.esriMdSliderPassive .dijitSliderBottomBumper
-{
-  background-color: rgba(2,21,181,0.5)!important;
-  background-image: none!important;
-}
-
-.esriMdSliderPassive .dijitSliderTopBumper,
 .esriMdSliderPassive .dijitSliderRemainingBarV,
-.esriMdSliderPassive .dijitSliderBottomBumper
+.esriMdSliderPassive .dojoxRangeSlider .dijitSliderBottomBumper,
+.esriMdSliderActive .dojoxRangeSlider .dijitSliderBottomBumper
 {
-  border-color: rgba(2,21,181,0.5)!important;
-  background-color: rgba(255,255,255,0.7);
+  border-color: rgba(2,21,181,0.5);
+  background-color: rgba(255,255,255,0.7)!important;
   background-image: none;
 }
-
+.esriMdSliderActive .dijitSliderBottomBumper,
 .esriMdSliderActive .dijitSliderProgressBarV
 {
-  background-color: #1E6EC3!important;
+  background-color: #1E6EC3;
   background-image: none!important;
   border-color: #0215B5!important;
 }
@@ -192,7 +180,6 @@
   padding: 0;
   padding-bottom: 2px;
 }
-
 
 .esriMdSliderVertical .dijitButtonText
 {

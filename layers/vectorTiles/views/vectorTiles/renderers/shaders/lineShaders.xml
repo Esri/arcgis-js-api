@@ -139,7 +139,7 @@
 
         // calculate the alpha given the difference between the line-width and the distance of the fragment from the center-line.
         // We need to count for both sides of the line.
-        lowp float alpha = clamp(min(fragDist + u_blur + 1.0, v_lineHalfWidth - fragDist) / u_blur, 0.0, 1.0);
+        lowp float alpha = clamp((v_lineHalfWidth - fragDist) / u_blur, 0.0, 1.0);
 
       #ifdef PATTERN
         // we need to calculate the relative portion of the line texture along the line given the accumulated distance aliong the line

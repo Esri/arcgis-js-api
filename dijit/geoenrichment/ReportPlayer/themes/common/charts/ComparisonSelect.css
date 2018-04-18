@@ -3,56 +3,30 @@
 
 .esriGEReportPlayer_chartContainer .chartContainer_comparisonSelectBlock {
     position: absolute;
-    right: 20px;
+    right: 10px;
     bottom: 10px;
     font-size: 11px;
+    text-align: left;
 }
+
+    .esriGEReportPlayer_chartContainer .chartContainer_comparisonSelectBlock .chartContainer_comparisonLabel {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 10px;
+    }
+
+    .esriGEReportPlayer_chartContainer .chartContainer_comparisonSelectBlock .esriGEOnDemandSelect {
+        max-width: 150px;
+    }
+
+    .esriGEReportPlayer_chartContainer .chartContainer_comparisonSelectBlock .chartContainer_comparisonSelectDiv {
+        display: inline-block;
+        vertical-align: middle;
+    }
 
     .esriGEReportPlayer_chartContainer .chartContainer_comparisonSelectBlock .esriGEDisabledContent {
         opacity: 0.01;
     }
-
-    .esriGEReportPlayer_chartContainer .chartContainer_comparisonSelectBlock .dijitSelect {
-        position: relative;
-        color: #e2e2e2;
-        border-color: #ACACAC;
-        width: 100%;
-        height: 1.6em;
-        background: none;
-    }
-
-        .esriGEReportPlayer_chartContainer .chartContainer_comparisonSelectBlock .dijitSelect .dijitButtonContents,
-        .esriGEReportPlayer_chartContainer .chartContainer_comparisonSelectBlock .dijitSelect .dijitArrowButton {
-            color: #e2e2e2;
-            background: none;
-            border: none;
-        }
-
-        .esriGEReportPlayer_chartContainer .chartContainer_comparisonSelectBlock .dijitSelect .dijitArrowButtonContainer {
-            border: 0;
-            width: 12pt;
-        }
-
-        .esriGEReportPlayer_chartContainer .chartContainer_comparisonSelectBlock .dijitSelect .dijitArrowButtonInner {
-            position: absolute;
-            top: 50%;
-            right: 3pt;
-            margin-top: -2.25pt;
-            width: 0;
-            height: 0;
-            border-left: 2.7pt solid transparent;
-            border-right: 2.7pt solid transparent;
-            border-top: 4.5pt solid #e2e2e2;
-        }
-
-.esriGEReportPlayer_chartContainer.light .chartContainer_comparisonSelectBlock .dijitSelect .dijitButtonContents,
-.esriGEReportPlayer_chartContainer.light .chartContainer_comparisonSelectBlock .dijitSelect .dijitArrowButton {
-    color: #666666;
-}
-
-.esriGEReportPlayer_chartContainer.light .chartContainer_comparisonSelectBlock .dijitSelect .dijitArrowButtonInner {
-    border-top: 6px solid #666666;
-}
 
 .esriGEComparisonList_areaItemRoot {
     padding-left: 20px;

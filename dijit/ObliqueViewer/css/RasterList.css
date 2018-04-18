@@ -36,3 +36,10 @@
   height: 100%;
   width: 100%;
 }
+
+.esriRasterListDiv {
+  height: 300px; 
+  width: 250px; 
+  background-color: white;
+}
+

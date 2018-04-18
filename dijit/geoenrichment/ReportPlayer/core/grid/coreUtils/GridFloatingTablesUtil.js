@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["dojo/_base/lang","dojo/dom-construct"],function(e,t){var i={};return i.renderFloatingTables=function(i,o,n){if(t.empty(i.floatingTablesNode),!o)return null;var d={};d["class"]="esriGEAbsoluteStretched adjustableGrid_floatingTablesSection",d.initialWidth=i.getAllowedWidth(),d.json=o,d.viewModel=i.viewModel,d.themeContext=i.themeContext,d.theme=i.theme,d.hasFixedLayout=!1,d.parentWidget=i,e.mixin(d,n);var l=i.viewModel.layoutBuilder.createElement("section",d,i.floatingTablesNode);return l.setResizedHeight(i.getHeight()),l.setViewMode(i.getViewMode(),i.getSpecificViewMode()),l},i});
+define(["dojo/_base/lang","dojo/dom-construct"],function(e,t){var i={};return i.renderFloatingTables=function(i,o,d){if(t.empty(i.floatingTablesNode),!o)return null;var l={};l.class="esriGEAbsoluteStretched adjustableGrid_floatingTablesSection",l.initialWidth=i.getAllowedWidth(),l.json=o,l.viewModel=i.viewModel,l.theme=i.theme,l.hasFixedLayout=!1,l.parentWidget=i,e.mixin(l,d);var n=i.viewModel.layoutBuilder.createElement("section",l,i.floatingTablesNode);return n.setResizedHeight(i.getHeight()),n.setViewMode(i.getViewMode(),i.getSpecificViewMode()),n},i});

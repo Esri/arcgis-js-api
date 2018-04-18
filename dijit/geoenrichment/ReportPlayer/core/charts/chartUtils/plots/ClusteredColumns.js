@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["dojo/_base/declare","./_ClusteredColumnsBase"],function(e,t){return e(t,{_drawColumn:function(e,t,r,s,i,l,o){s.series.showColumnBarBackground&&this.createRect(o,e,{x:r.x,y:l.t,width:r.width,height:i.height-l.t-l.b}).setFill(s.series.columnBarBackgroundColor);var n=this._plotFill(s.series.fill,i,l);n=this._shapeFill(n,r);var a=this.createRect(o,e,r).setFill(n).setStroke(s.series.stroke);return o.dyn.fill=a.getFill(),o.dyn.stroke=a.getStroke(),{shape:a,rect:r}}})});
+define(["dojo/_base/declare","./_ClusteredColumnsBase"],function(e,t){return e(t,{_drawColumn:function(e,t,r,i,l,s,o,n){this._drawColumnBackground(e,t,r,i,l,s,o,n);var a=this._plotFill(i.series.fill,l,s);a=this._shapeFill(a,r);var u=this.createRect(o,e,r).setFill(a).setStroke(i.series.stroke);return o.dyn.fill=u.getFill(),o.dyn.stroke=u.getStroke(),{shape:u,rect:r}},_drawColumnBackground:function(e,t,r,i,l,s,o,n){if(i.series.showColumnBarBackground){var a=t[t.valueProp],u={x:r.x,y:a>0?s.t:l.height-s.b-n,width:r.width,height:a>0?l.height-s.t-s.b-n:n};this.createRect(o,e,u).setFill(i.series.columnBarBackgroundColor)}}})});

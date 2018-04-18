@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["dojo/_base/declare","dojo/aspect","./PageOptionsDialogContent","dijit/Dialog","esri/dijit/geoenrichment/ReportPlayer/dataProviders/commands/supportClasses/PlayerCommands","dojo/i18n!../../../../../nls/jsapi"],function(i,n,o,t,e,a){a=a.geoenrichment.dijit.ReportPlayer.PageOptionsDialog;var l;return i(null,{_dialog:null,show:function(i){function d(i){s._dialog&&(l=r.getSettings(),i&&s.onCancel(),s._dialog.destroy(),s._dialog=null)}var s=this;if(!this._dialog||!this._dialog.open){var r=new o({onPrint:function(){s.onPrint(r.getSettings()),d(!1)},onCancel:function(){d(!0)}});this._dialog=new t({title:i.commandId===e.PRINT?a.dialogTitlePrint:a.dialogTitleExport,content:r}),this._dialog.own(r),this._dialog.show(),n.after(this._dialog,"hide",function(){d(!0)}),r.update(i),l&&r.setState(l)}},onPrint:function(i){},onCancel:function(){}})});
+define(["dojo/_base/declare","dojo/aspect","./PageOptionsDialogContent","dijit/Dialog","esri/dijit/geoenrichment/ReportPlayer/PlayerCommands","dojo/i18n!../../../../../nls/jsapi"],function(i,n,o,t,e,a){a=a.geoenrichment.dijit.ReportPlayer.PageOptionsDialog;var l;return i(null,{_dialog:null,show:function(i){function d(i){g._dialog&&(l=r.getSettings(),i&&g.onCancel(),g._dialog.destroy(),g._dialog=null)}var g=this;if(!this._dialog||!this._dialog.open){var r=new o({onPrint:function(){g.onPrint(r.getSettings()),d(!1)},onCancel:function(){d(!0)}});this._dialog=new t({title:i.commandId===e.PRINT?a.dialogTitlePrint:a.dialogTitleExport,content:r}),this._dialog.own(r),this._dialog.show(),n.after(this._dialog,"hide",function(){d(!0)}),r.update(i),l&&r.setState(l)}},onPrint:function(i){},onCancel:function(){}})});

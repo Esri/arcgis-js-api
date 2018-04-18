@@ -80,6 +80,15 @@
     margin-left: auto;
 }
 
+.esriGESpaceBefore30 {
+    margin-left: 30px;
+}
+
+.dj_rtl .esriGESpaceBefore30 {
+    margin-right: 30px;
+    margin-left: auto;
+}
+
 
 
 .esriGESpaceAfterBig {
@@ -97,6 +106,15 @@
 
 .dj_rtl .esriGESpaceAfter20 {
     margin-left: 20px;
+    margin-right: auto;
+}
+
+.esriGESpaceAfter30 {
+    margin-right: 30px;
+}
+
+.dj_rtl .esriGESpaceAfter30 {
+    margin-left: 30px;
     margin-right: auto;
 }
 

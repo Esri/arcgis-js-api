@@ -7,7 +7,7 @@
             <td class="esriAlignLeading esriAnalysisTitle" data-dojo-attach-point="_toolTitle">
               <label data-dojo-attach-point="_titleLbl">${i18n.calculateField}</label>
               <nav class="breadcrumbs"  data-dojo-attach-point="_analysisModeLblNode" style="display:none;">
-                <a href="#" class="crumb" style="font-size:12px;" data-dojo-attach-event="onclick:_handleModeCrumbClick" data-dojo-attach-point="_analysisModeCrumb"></a>
+                <a href="#" class="crumb breadcrumbs__modelabel" data-dojo-attach-event="onclick:_handleModeCrumbClick" data-dojo-attach-point="_analysisModeCrumb"></a>
                 <a href="#" class="crumb is-active" data-dojo-attach-point="_analysisTitleCrumb" style="font-size:16px;">${i18n.calculateField}</a>
               </nav>
             </td>
@@ -65,10 +65,10 @@
             <td colspan="3" style="padding-top:0;">
                 <label class="esriLeadingMargin1">${i18n.ofTypeLabel}</label>
                 <select class="esriLeadingMargin1 longTextInput"  style="margin-top:10px;" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_fieldTypeSelect">
-                  <option value="Date">${i18n.dateLabel}</option>
-                  <option value="Double">${i18n.doubleLabel}</option>
+                  <option value="Double" selected="selected">${i18n.doubleLabel}</option>
                   <option value="Integer">${i18n.integerLabel}</option>
                   <option value="String">${i18n.stringLabel}</option>
+                  <option value="Date">${i18n.dateLabel}</option>
                 </select>
             </td>
           </tr> 

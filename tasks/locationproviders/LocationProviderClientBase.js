@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["../../declare","dojo/Deferred","dojo/promise/all","../../graphic","./LocationProviderBase","../../SpatialReference","../../geometry/jsonUtils"],function(e,t,n,o,r,i,a){var c=100,s=25;return e("esri.tasks.locationproviders.LocationProviderClientBase",r,{inSpatialReference:null,constructor:function(e){this.inSpatialReference||(this.inSpatialReference=new i(4326))},_locate:function(e,o){function r(){setTimeout(function(){for(var t=+new Date+c,s=[];t>+new Date&&u<e.length;){var p=e[u],h=f.getGeometry(p);p.geometry=h,h&&s.push(p),++u}o.outSpatialReference?i.push(f._project(s,o.outSpatialReference).then(function(){a=a.concat(s),l.progress(s)})):(a=a.concat(s),l.progress(s)),u<e.length?r():n(i).then(function(){l.resolve(a)})},s)}var i=[],a=[],l=new t,f=this,u=0;return r(),l.promise}})});
+define(["../../declare","dojo/Deferred","dojo/promise/all","../../graphic","./LocationProviderBase","../../SpatialReference","../../geometry/jsonUtils"],function(e,t,n,o,r,i,a){var c=100;return e("esri.tasks.locationproviders.LocationProviderClientBase",r,{inSpatialReference:null,constructor:function(e){this.inSpatialReference||(this.inSpatialReference=new i(4326))},_locate:function(e,o){function r(){setTimeout(function(){for(var t=+new Date+c,u=[];t>+new Date&&f<e.length;){var p=e[f],h=l.getGeometry(p);p.geometry=h,h&&u.push(p),++f}o.outSpatialReference?i.push(l._project(u,o.outSpatialReference).then(function(){a=a.concat(u),s.progress(u)})):(a=a.concat(u),s.progress(u)),f<e.length?r():n(i).then(function(){s.resolve(a)})},25)}var i=[],a=[],s=new t,l=this,f=0;return r(),s.promise}})});

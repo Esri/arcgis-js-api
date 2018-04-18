@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["dojo/_base/declare","dojo/_base/lang","dojo/Deferred","dojo/has","../../../../../kernel","../../../form/InputSelectOne","../../../form/Option","dojo/i18n!../../../nls/i18nArcGIS"],function(e,t,a,l,n,s,i,r){var u=e([s],{allInline:!0,serializeIfFalse:!1,falseLabel:r.booleanOptions._false,trueLabel:r.booleanOptions._true,falseValue:"False",trueValue:"True",postCreate:function(){this.inherited(arguments)},fetchOptionWidgets:function(){var e=new a,t=[];return t.push(new i({label:this.falseLabel,value:this.falseValue})),t.push(new i({label:this.trueLabel,value:this.trueValue})),e.resolve(t),e},getXmlValue:function(){var e=this.inherited(arguments);return null===e||this.serializeIfFalse||e!==this.falseValue?e:null},importValue:function(e,t){if("undefined"!=typeof t&&null!==t&&t.toLowerCase){var a=t.toLowerCase();"true"===a||"1"===a?t=this.trueValue:("false"===a||"0"===a)&&(t=this.falseValue)}this.setInputValue(t)}});return l("extend-esri")&&t.setObject("dijit.metadata.types.arcgis.form.InputSelectBoolean",u,n),u});
+define(["dojo/_base/declare","dojo/_base/lang","dojo/Deferred","dojo/has","../../../../../kernel","../../../form/InputSelectOne","../../../form/Option","dojo/i18n!../../../nls/i18nArcGIS"],function(e,l,t,a,s,n,i,r){var o=e([n],{allInline:!0,serializeIfFalse:!1,falseLabel:r.booleanOptions._false,trueLabel:r.booleanOptions._true,falseValue:"False",trueValue:"True",postCreate:function(){this.inherited(arguments)},fetchOptionWidgets:function(){var e=new t,l=[];return l.push(new i({label:this.falseLabel,value:this.falseValue})),l.push(new i({label:this.trueLabel,value:this.trueValue})),e.resolve(l),e},getXmlValue:function(){var e=this.inherited(arguments);return null===e||this.serializeIfFalse||e!==this.falseValue?e:null},importValue:function(e,l){if(void 0!==l&&null!==l&&l.toLowerCase){var t=l.toLowerCase();"true"===t||"1"===t?l=this.trueValue:"false"!==t&&"0"!==t||(l=this.falseValue)}this.setInputValue(l)}});return a("extend-esri")&&l.setObject("dijit.metadata.types.arcgis.form.InputSelectBoolean",o,s),o});

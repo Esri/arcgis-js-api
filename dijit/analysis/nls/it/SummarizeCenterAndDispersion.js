@@ -1,0 +1,25 @@
+// COPYRIGHT © 201 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+
+define({inputLayerLabel:"Scegli un layer da descrivere",summaryTypes:"Tipi riepilogo",centralFeature:"Feature Centrale",meanCenter:"Centro medio",medianCenter:"Centro Mediano",ellipse:"Ellisse",weightBy:"Peso per (opzionale)",groupBy:"Raggruppa per (opzionale)",resultLayerName:"Nome del layer dei risultati",outputLayerName:"Descrivi distribuzione di ${layerName}",none:"Nessuna",itemDescription:"Feature layer generato in seguito all'esecuzione di Riepiloga centro e dispersione su ${inputLayerName}. ",itemTags:"Risultato analisi, Riepiloga centro e dispersione, ${layerName}",itemSnippet:"Feature layer generato da Riepiloga centro e dispersione"});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["../../declare","dojo/json","../../geometry/jsonUtils","./LocationProviderClientBase"],function(e,t,r,i){return e("esri.tasks.locationproviders.GeometryLocationProvider",i,{geometryField:null,getGeometry:function(e){var i=e.attributes[this.geometryField];if(i)try{"string"==typeof i&&(i=t.parse(i));var o;i.spatialReference||(o=this.inSpatialReference);var n=r.fromJson(i);if(n&&r.getJsonType(n)===this.geometryType)return o&&n.setSpatialReference(o),n}catch(a){}}})});
+define(["../../declare","dojo/json","../../geometry/jsonUtils","./LocationProviderClientBase"],function(e,t,r,i){return e("esri.tasks.locationproviders.GeometryLocationProvider",i,{geometryField:null,getGeometry:function(e){var i=e.attributes[this.geometryField];if(i)try{"string"==typeof i&&(i=t.parse(i));var o;i.spatialReference||(o=this.inSpatialReference);var n=r.fromJson(i);if(n&&r.getJsonType(n)===this.geometryType)return o&&n.setSpatialReference(o),n}catch(e){}}})});

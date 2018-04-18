@@ -46,12 +46,12 @@
         <hr/>
     <p>Fl&auml;chen, die sich &uuml;berlappen oder eine gemeinsame Grenze haben, werden zu einer Fl&auml;che zusammengef&uuml;hrt.    
     </p>
-    <p>Durch Angabe eines Feldes k&ouml;nnen Sie steuern, welche Grenzen zusammengef&uuml;hrt werden. Wenn Sie beispielsweise &uuml;ber einen Landkreis-Layer verf&uuml;gen und jeder Landkreis das Attribut  <i>State_Name</i> aufweist, k&ouml;nnen Sie Grenzen anhand des Attributs <i>State_Name</i> aufl&ouml;sen.  Benachbarte Landkreise werden zusammengef&uuml;hrt, wenn sie den gleichen Wert f&uuml;r <i>State_Name</i> haben.  Das Endresultat ist ein Layer der Bundeslandgrenzen.
+    <p>Durch Angabe eines Feldes k&ouml;nnen Sie steuern, welche Grenzen zusammengef&uuml;hrt werden. Wenn Sie beispielsweise &uuml;ber einen Landkreis-Layer verf&uuml;gen und jeder Landkreis das Attribut  <i>State_Name</i> aufweist, k&ouml;nnen Sie Grenzen anhand des Attributs <i>State_Name</i> zusammenf&uuml;hren. Benachbarte Landkreise werden zusammengef&uuml;hrt, wenn sie den gleichen Wert f&uuml;r <i>State_Name</i> haben. Der Ergebnis-Layer zeigt Bundeslandgrenzen.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Flächen-Layer auswählen, dessen Grenzen aufgelöst werden</h2></div>
+        <div><h2>Flächen-Layer auswählen, deren Grenzen aufgelöst werden</h2></div>
         <hr/>
         <div>
             <p>Der Layer, der Fl&auml;chen-Features enth&auml;lt, die zusammengef&uuml;hrt werden. 
@@ -69,21 +69,36 @@
                     <li> <b>&Uuml;berlappende oder benachbarte Fl&auml;chen</b> &ndash; Mindestens zwei Fl&auml;chen, deren Grenzen sich &uuml;berlappen, werden zu einer Fl&auml;che zusammengef&uuml;hrt.  Au&szlig;erdem werden benachbarte Fl&auml;chen (d.&nbsp;h. sie haben eine gemeinsame Grenze) zu einer Fl&auml;che zusammengef&uuml;hrt.
                     </li>
                     <li> <b>Fl&auml;chen mit dem gleichen Feldwert</b> &ndash; Fl&auml;chen, die sich &uuml;berlappen oder eine gemeinsame Grenze aufweisen, werden zu einer Fl&auml;che zusammengef&uuml;hrt, wenn sie den gleichen Feldwert aufweisen.
-                        <p>Wenn Sie beispielsweise &uuml;ber einen Landkreis-Layer verf&uuml;gen und jeder Landkreis das Feld  <i>State_Name</i> aufweist, k&ouml;nnen Sie Grenzen anhand des Feldes <i>State_Name</i> aufl&ouml;sen.  Benachbarte Landkreise werden zusammengef&uuml;hrt, wenn sie den gleichen Wert f&uuml;r <i>State_Name</i> haben.  Das Endresultat ist ein Layer der Bundeslandgrenzen.
+                        <p>Wenn Sie beispielsweise &uuml;ber einen Landkreis-Layer verf&uuml;gen und jeder Landkreis das Feld  <i>State_Name</i> aufweist, k&ouml;nnen Sie Grenzen anhand des Feldes <i>State_Name</i> zusammenf&uuml;hren. Benachbarte Landkreise werden zusammengef&uuml;hrt, wenn sie den gleichen Wert f&uuml;r <i>State_Name</i> haben. Der Ergebnis-Layer zeigt Bundeslandgrenzen.
                         </p>
                     </li>
                 </ul>
                 
             </p>
-            <p>Wenn die Option  <b>Aktuelle Kartenausdehnung verwenden</b> aktiviert ist, werden nur die Features im Eingabe-Layer aufgel&ouml;st, die in der aktuellen Kartenausdehnung sichtbar sind.  Wenn diese Option deaktiviert ist, werden auch dann alle Features im Eingabe-Layer aufgel&ouml;st, wenn sie sich au&szlig;erhalb der aktuellen Kartenausdehnung befinden.
+            <p>Wenn die Option  <b>Aktuelle Kartenausdehnung verwenden</b> aktiviert ist, werden nur die Features im Eingabe-Layer zusammengef&uuml;hrt, die in der aktuellen Kartenausdehnung sichtbar sind. Wenn diese Option deaktiviert ist, werden auch dann alle Features im Eingabe-Layer aufgel&ouml;st, wenn sie sich au&szlig;erhalb der aktuellen Kartenausdehnung befinden.
+            </p>
+        </div>
+    </div>
+    <div id="multiPartFeatures">
+        <div><h2>Multipart-Features erstellen</h2></div>
+        <hr/>
+        <div>
+            <p>In ArcGIS eine digitale Darstellung eines Ortes oder Objekts, der bzw. das aus mehreren Teilen besteht, jedoch als ein Feature definiert ist, da es einen Satz von Attributen referenziert. Bei einem Layer mit Bundesstaaten kann beispielsweise der Bundesstaat Hawaii als Multipart-Feature betrachtet werden, da dessen separate geometrische Teile als ein Bundesstaat klassifiziert werden. Bei einem Multipart-Feature kann es sich um einen Punkt, eine Linie oder ein Polygon handeln. Dieser boolesche Parameter bietet zwei Optionen:
+                <ul>
+                    <li>True (aktiviert): Der Ausgabeservice kann Multipart-Features enthalten.
+                    </li>
+                    <li>False (deaktiviert): Der Ausgabeservice enth&auml;lt nur Singlepart-Features, und f&uuml;r jeden Teil werden jeweils einzelne Features erstellt.
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>
     <div id="SummaryFields">
-        <div><h2>Statistik hinzufügen</h2></div>
+        <div><h2>Statistiken hinzufügen</h2></div>
         <hr/>
         <div>
-            <p>Wenn Fl&auml;chen zusammengef&uuml;hrt werden, k&ouml;nnen Sie deren Attribute zusammenfassen. Wenn Sie beispielsweise die Grenze zwischen Landkreisen auf Grundlage von  <i>State_Name</i> aufl&ouml;sen und jeder Landkreis &uuml;ber ein <i>Population</i>-Feld verf&uuml;gt, k&ouml;nnen Sie die Summe der <i>Population</i> f&uuml;r das Bundesland berechnen.
+            <p>Wenn Fl&auml;chen zusammengef&uuml;hrt werden, k&ouml;nnen Sie deren Attribute zusammenfassen. Wenn Sie beispielsweise die Grenze zwischen Landkreisen auf Grundlage von  <i>State_Name</i> zusammenf&uuml;hren und jeder Landkreis &uuml;ber ein <i>Population</i>-Feld verf&uuml;gt, k&ouml;nnen Sie die Summe der <i>Population</i> f&uuml;r das Bundesland berechnen.
             </p>
             <p>Die verf&uuml;gbaren Statistiktypen lauten:
             </p>

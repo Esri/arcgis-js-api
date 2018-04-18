@@ -7,6 +7,7 @@
       <tr>
         <td colspan="3">
           <label class="esriRenderingRuleHeadingLabel" data-dojo-attach-point="rendererLabel">${_i18n.widgets.renderingRule.rendererLabelTitle}</label>
+          <a class="esriRenderingRuleWarningIcon" data-dojo-attach-point="vectorWarningIcon"></a>
         </td>
       </tr>
       <tr>
@@ -162,7 +163,7 @@
             <label data-dojo-attach-point="classifyMethodLabel">${_i18n.widgets.renderingRule.methodLabel}</label>
           </td>
           <td colspan="2">
-            <input data-dojo-type="dijit/form/FilteringSelect" data-dojo-attach-point="classifyMethodSelect" class="esriRenderingRuleClassifySelect" 
+            <input data-dojo-type="dijit/form/FilteringSelect" data-dojo-attach-point="classifyMethodSelect" class="esriRenderingRuleClassifyMethodSelect" 
             data-dojo-props="labelAttr: 'label', labelType: 'html'" data-dojo-attach-event="onChange: _onClassifyMethodChange"></input>
           </td>
         </tr>
@@ -171,7 +172,7 @@
             <label data-dojo-attach-point="classifyNClassesLabel">${_i18n.widgets.renderingRule.nClassesLabel}</label>
           </td>
           <td colspan="2">
-            <input data-dojo-type="dijit/form/NumberTextBox" data-dojo-attach-point="classifyNClassesInput" class="esriRenderingRuleClassifySelect" data-dojo-attach-event="onChange: _updateClassifyGrid"></input>
+            <input data-dojo-type="dijit/form/NumberTextBox" data-dojo-attach-point="classifyNClassesInput" class="esriRenderingRuleClassifyClassSelect" data-dojo-attach-event="onChange: _updateClassifyGrid"></input>
           </td>
         </tr>
         <tr data-dojo-attach-point="classifyIntervalsBlock">
@@ -179,7 +180,7 @@
             <label data-dojo-attach-point="classifyIntervalLabel">${_i18n.widgets.renderingRule.intervalLabel}</label>
           </td>
           <td colspan="2">
-            <input data-dojo-type="dijit/form/NumberTextBox" data-dojo-attach-point="classifyIntervalInput" class="esriRenderingRuleClassifySelect" 
+            <input data-dojo-type="dijit/form/NumberTextBox" data-dojo-attach-point="classifyIntervalInput" class="esriRenderingRuleClassifyIntervalSelect" 
             data-dojo-attach-event="onChange: _updateClassifyGrid"></input>
           </td>
         </tr>
@@ -220,4 +221,12 @@
       </tr>      
     </tbody>
   </table>
+   <div data-dojo-type="dijit/TooltipDialog" data-dojo-attach-point="_vectorTooltipDlg" 
+    class="esriRenderingRuleVectorTooltip" style="display: none;">
+      <p>${_i18n.widgets.renderingRule.createVectorLayerDesc}</p>
+      <div class='dijitDialogPaneActionBar'>
+        <button data-dojo-type='dijit/form/Button' data-dojo-attach-event='onClick: _createVectorLayer' class="calcite blue">${_i18n.common.yesLabel}</button>
+        <button data-dojo-type='dijit/form/Button' data-dojo-attach-event='onClick: _hideVectorWarning' class="calcite transparent">${_i18n.common.noLabel}</button>
+      </div>
+    </div>
 </div>

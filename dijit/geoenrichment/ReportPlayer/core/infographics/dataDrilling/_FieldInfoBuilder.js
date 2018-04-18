@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["../../supportClasses/templateJsonUtils/fieldInfo/FieldInfoNameUtil","../../supportClasses/templateJsonUtils/fieldInfo/FieldInfoBuilder"],function(e,l){var i={};return i.provideFieldInfoForChartPoint=function(i,a,t,f,r){var o=i.fullName;if(delete i.fullName,o){f=f||"n";var n=f+"/"+o;i.fieldInfo={name:e.createFieldNameFromVariable(o,f),alias:i.label,fieldCategory:t?"":a.label,hasVariable:!0,variableID:o.substr(o.indexOf(".")+1),fullName:o,fieldCategory:"",statefulName:n},e.provideQualifiedFieldInfoTemplateName(i.fieldInfo,r)}else i.script&&(i.fieldInfo=l.createFieldInfoFromScript(i.script),delete i.script)},i});
+define(["../../supportClasses/templateJsonUtils/fieldInfo/FieldInfoNameUtil","../../supportClasses/templateJsonUtils/fieldInfo/FieldInfoBuilder"],function(e,l){var i={};return i.provideFieldInfoForChartPoint=function(i,a,t,f,r){var o=i.fullName;if(delete i.fullName,o){f=f||"n";var n=f+"/"+o;i.fieldInfo={name:e.createFieldNameFromVariable(o,f),alias:i.label,fieldCategory:t?"":a.label,hasVariable:!0,variableID:o.substr(o.indexOf(".")+1),fullName:o,statefulName:n},e.provideQualifiedFieldInfoTemplateName(i.fieldInfo,r)}else i.script&&(i.fieldInfo=l.createFieldInfoFromScript(i.script),delete i.script)},i});

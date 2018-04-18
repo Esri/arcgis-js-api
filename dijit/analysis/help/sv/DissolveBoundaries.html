@@ -46,7 +46,7 @@
         <hr/>
     <p>Omr&aring;den som &ouml;verlappar eller delar en gemensam gr&auml;ns sammanfogas till ett enda omr&aring;de.    
     </p>
-    <p>Du kan styra vilka gr&auml;nser som sammanfogas genom att ange ett f&auml;lt. Om du till exempel har ett lager med l&auml;n och varje l&auml;n har attributet  <i>State_Name</i>, kan du l&ouml;sa upp gr&auml;nserna med hj&auml;lp av attributet <i>State_Name</i>. Omr&aring;den som ligger bredvid varandra sammanfogas om de har samma v&auml;rde f&ouml;r <i>State_Name</i>. Slutresultatet blir ett lager med delstatsgr&auml;nser.
+    <p>Du kan styra vilka gr&auml;nser som sammanfogas genom att ange ett f&auml;lt. Om du till exempel har ett lager med l&auml;n och varje l&auml;n har attributet  <i>State_Name</i>, kan du l&ouml;sa upp gr&auml;nserna med hj&auml;lp av attributet <i>State_Name</i>.  Omr&aring;den som ligger bredvid varandra sammanfogas om de har samma v&auml;rde f&ouml;r <i>State_Name</i>.  Slutresultatet blir ett lager med delstatsgr&auml;nser.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -54,8 +54,7 @@
         <div><h2>Välj det områdeslager vars gränser ska lösas upp</h2></div>
         <hr/>
         <div>
-            <p>Lagret som inneh&aring;ller omr&aring;desgeoobjekt som ska l&ouml;sas upp.
-
+            <p>Lagret som inneh&aring;ller omr&aring;desgeoobjekt som ska l&ouml;sas upp. 
             </p>
             <p class="OnlineOnly">F&ouml;rutom att v&auml;lja ett lager p&aring; din karta kan du v&auml;lja  <b>V&auml;lj analyslager i v&auml;rldsatlasen</b> eller <b>V&auml;lj analyslager</b>, som du hittar l&auml;ngst ned i listrutan. D&aring; &ouml;ppnas ett galleri med en samling lager som kan vara praktiska att anv&auml;nda vid m&aring;nga analyser. 
             </p>
@@ -70,13 +69,28 @@
                     <li> <b>Omr&aring;den som &ouml;verlappar eller ligger bredvid varandra</b> &ndash;  Tv&aring; eller flera omr&aring;den vars gr&auml;nser &ouml;verlappar sammanfogas till ett omr&aring;de. Dessutom sammanfogas omr&aring;den som ligger bredvid varandra (som delar en gemensam gr&auml;ns) till ett omr&aring;de.
                     </li>
                     <li> <b>Omr&aring;den med samma f&auml;ltv&auml;rden</b> &ndash; Omr&aring;den som &ouml;verlappar eller delar en gemensam gr&auml;ns sammanfogas till ett omr&aring;de om de har samma f&auml;ltv&auml;rde.
-                        <p>Om du till exempel har ett lager med l&auml;n och varje l&auml;n har f&auml;ltet  <i>State_Name</i>, kan du l&ouml;sa upp gr&auml;nserna med hj&auml;lp av f&auml;ltet <i>State_Name</i>. Omr&aring;den som ligger bredvid varandra sammanfogas om de har samma v&auml;rde f&ouml;r <i>State_Name</i>. Slutresultatet blir ett lager med delstatsgr&auml;nser.
+                        <p>Om du till exempel har ett lager med l&auml;n och varje l&auml;n har f&auml;ltet  <i>State_Name</i> kan du l&ouml;sa upp gr&auml;nserna med hj&auml;lp av f&auml;ltet <i>State_Name</i>.  Omr&aring;den som ligger bredvid varandra sammanfogas om de har samma v&auml;rde f&ouml;r <i>State_Name</i>. Slutresultatet blir ett lager med delstatsgr&auml;nser.
                         </p>
                     </li>
                 </ul>
                 
             </p>
-            <p>Om  <b>Anv&auml;nd aktuell kartutbredning</b> markeras, blir endast de geoobjekt i indatalagret och omr&aring;deslagret som visas i den aktuella kartutbredningen uppl&ouml;sta. Om alternativet inte markeras, l&ouml;ses alla geoobjekt i indatalagret upp, &auml;ven om de ligger utanf&ouml;r den aktuella kartutbredningen.
+            <p>Om  <b>Anv&auml;nd aktuell kartutbredning</b> markeras, uppl&ouml;ses bara de geoobjekt i  indatalagret som visas i den aktuella kartutbredningen. Om alternativet inte markeras, l&ouml;ses alla geoobjekt i indatalagret upp, &auml;ven om de ligger utanf&ouml;r den aktuella kartutbredningen.
+            </p>
+        </div>
+    </div>
+    <div id="multiPartFeatures">
+        <div><h2>Skapa flerdelat geoobjekt</h2></div>
+        <hr/>
+        <div>
+            <p>I ArcGIS &auml;r detta en digital representation av en plats eller ett objekt som har fler &auml;n en del men som definieras som ett geoobjekt eftersom det refererar till en upps&auml;ttning attribut. I ett lager med stater kan staten Hawaii betraktas som ett flerdelat geoobjekt eftersom dess separata geometiska delar klassificeras som en enda stat. Ett flerdelat geoobjekt kan vara en punkt, linje eller polygon. Denna booleska parameter erbjuder tv&aring; alternativ:
+                <ul>
+                    <li>True (markerat): utdatatj&auml;nsten kan inneh&aring;lla flerdelade geoobjekt.
+                    </li>
+                    <li>False (avmarkerat): utdatatj&auml;nsten inneh&aring;ller bara endelade geoobjekt och enskilda geoobjekt skapas f&ouml;r varje del.
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>
@@ -84,7 +98,7 @@
         <div><h2>Lägg till statistik</h2></div>
         <hr/>
         <div>
-            <p>N&auml;r omr&aring;den sammanfogas kan du summera deras attribut. Om du till exempel l&ouml;ser upp gr&auml;nsen mellan l&auml;n baserat p&aring;  <i>State_Name</i> och varje l&auml;n har f&auml;ltet <i>Population</i>, kan du ber&auml;kna summan av <i>Population</i> f&ouml;r landet (eller delstaten).
+            <p>N&auml;r omr&aring;den sammanfogas kan du summera deras attribut. Om du till exempel uppl&ouml;ser gr&auml;nsen mellan l&auml;n baserat p&aring;  <i>State_Name</i> och varje l&auml;n har f&auml;ltet <i>Population</i>, kan du ber&auml;kna summan av <i>Population</i> f&ouml;r delstaten.
             </p>
             <p>F&ouml;ljande statistiktyper kan anv&auml;ndas:
             </p>

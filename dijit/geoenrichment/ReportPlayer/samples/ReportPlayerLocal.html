@@ -67,9 +67,8 @@
                     "esri/dijit/geoenrichment/ReportPlayer/ReportPlayer",
                     "esri/dijit/geoenrichment/ReportPlayer/PlayerResizeModes",
                     "esri/dijit/geoenrichment/ReportPlayer/PlayerThemes",
-                    "esri/dijit/geoenrichment/ReportPlayer/dataProviders/DataProviderGE",
-                    "esri/dijit/geoenrichment/ReportPlayer/dataProviders/supportClasses/AnalysisAreaJsonUtil",
-                    "esri/dijit/geoenrichment/ReportPlayer/dataProviders/commands/supportClasses/PlayerCommands",
+                    "esri/dijit/geoenrichment/ReportPlayer/DataProviderGE",
+                    "esri/dijit/geoenrichment/ReportPlayer/PlayerCommands",
                     "esri/dijit/geoenrichment/ReportPlayer/samples/supportClasses/AnalysisAreas",
                     "esri/dijit/geoenrichment/utils/UrlUtil",
                     "esri/dijit/geoenrichment/utils/signIn/SignInHelper",
@@ -83,7 +82,6 @@
                    PlayerResizeModes,
                    PlayerThemes,
                    DataProviderGE,
-                   AnalysisAreaJsonUtil,
                    PlayerCommands,
                    AnalysisAreas,
                    UrlUtil,
@@ -97,7 +95,6 @@
                    URL query parameters (case insensitive):
                        appId - Application ID.
                        portalUrl - URL of the ArcGIS Portal.
-                       geoenrichmentUrl - URL of the Geoenrichment server.
                        countryID - 2 charachter id of the country the report template data belongs to (e.g. US).
                        reportID - ID of the report template portal item.
                        proxy - URL of the proxy. Needed for printing and exporting the infographic when external resources need to be accessed (e.g. when printing a map).
@@ -109,13 +106,13 @@
 
                        Case 1: Feature with geometry
 
-                       .../ReportPlayerLocal.html?appId=g5vpmnaAyj9UmLKJ&portalUrl=https://www.arcgis.com&geoenrichmentUrl=https://geoenrich.arcgis.com/arcgis/rest/services/World/geoenrichmentserver&countryID=US&reportID=d87ca044fc9a4f488bc6807389e3f029&analysisAreas=[{"name":"Area name","shortName":"Area from url (short)","description":"Area description","address":"Area address","latitude":"Area Lat.","longitude":"Area Long.","feature":{"geometry":{"rings":[[[-10800107.01591563,3862641.714572819],[-10716918.351420047,4636712.237704219],[-9901669.439363334,4969050.952364072],[-9909988.305812893,4278585.037050734],[-10800107.01591563,3862641.714572819]]],"spatialReference":{"wkid":102100}},"attributes":{},"symbol":{"color":[200,50,50,50],"outline":{"color":[255,0,0,255],"width":1.5,"type":"esriSLS","style":"esriSLSSolid"},"type":"esriSFS","style":"esriSFSSolid"}}}]&slidesView=false&theme=light
+                       .../ReportPlayerLocal.html?appId=g5vpmnaAyj9UmLKJ&portalUrl=https://www.arcgis.com&countryID=US&reportID=transportation-to-work-US&analysisAreas=[{"name":"Area name","shortName":"Area from url (short)","description":"Area description","address":"Area address","latitude":"Area Lat.","longitude":"Area Long.","feature":{"geometry":{"rings":[[[-10800107.01591563,3862641.714572819],[-10716918.351420047,4636712.237704219],[-9901669.439363334,4969050.952364072],[-9909988.305812893,4278585.037050734],[-10800107.01591563,3862641.714572819]]],"spatialReference":{"wkid":102100}},"attributes":{},"symbol":{"color":[200,50,50,50],"outline":{"color":[255,0,0,255],"width":1.5,"type":"esriSLS","style":"esriSLSSolid"},"type":"esriSFS","style":"esriSFSSolid"}}}]&slidesView=false&theme=light
 
                        OR
 
                        Case 2: only geography ids
 
-                       .../ReportPlayerLocal.html?appId=g5vpmnaAyj9UmLKJ&portalUrl=https://www.arcgis.com&geoenrichmentUrl=https://geoenrich.arcgis.com/arcgis/rest/services/World/geoenrichmentserver&countryID=US&reportID=d87ca044fc9a4f488bc6807389e3f029&analysisAreas=[{"name":"Area name","shortName":"Area from url (short)","description":"Area description","address":"Area address","latitude":"Area Lat.","longitude":"Area Long.", "geographies": [{"id":"32","levelId":"US.States"},{"id":"06","levelId":"US.States"}]}]&slidesView=false&theme=light
+                       .../ReportPlayerLocal.html?appId=g5vpmnaAyj9UmLKJ&portalUrl=https://www.arcgis.com&&countryID=US&reportID=transportation-to-work-US&analysisAreas=[{"name":"Area name","shortName":"Area from url (short)","description":"Area description","address":"Area address","latitude":"Area Lat.","longitude":"Area Long.", "geographies": [{"id":"32","levelId":"US.States"},{"id":"06","levelId":"US.States"}]}]&slidesView=false&theme=light
                    */
 
                    /* test: currently is referencing a report template from the content of user ak_prod. */
@@ -123,9 +120,8 @@
                    var DEFAULTS = {
                        appId: "g5vpmnaAyj9UmLKJ",
                        portalUrl: "https://www.arcgis.com",
-                       geoenrichmentUrl: "https://geoenrich.arcgis.com/arcgis/rest/services/World/geoenrichmentserver",
                        countryID: "US",
-                       reportID: "e0742b026980487eb2b1c1c8ddead5dd",
+                       reportID: "transportation-to-work-US",
                        slidesView: "false",
                        theme: PlayerThemes.DARK
                    };
@@ -135,7 +131,6 @@
                    // override defaults
                    /*
                    DEFAULTS.portalUrl = "https://qaext.arcgis.com";
-                   DEFAULTS.geoenrichmentUrl = "http://ec2-52-21-196-36.compute-1.amazonaws.com/arcgis/rest/services/World/GeoEnrichmentServer";
                    // QA
                    DEFAULTS.reportID = "5b2f40bf1a5c4ad1b27c75f375607754";
                    DEFAULTS.appId = "gzYR5C8WR8c0aRCH";
@@ -151,7 +146,6 @@
 
                    var appId = getUrlVar("appId");
                    var portalUrl = getUrlVar("portalUrl");
-                   var geoenrichmentUrl = getUrlVar("geoenrichmentUrl");
                    var countryID = getUrlVar("countryID");
                    var reportID = getUrlVar("reportID");
                    var analysisAreasJson = getUrlVar("analysisAreas");
@@ -177,8 +171,14 @@
                            dataProvider.registerCommand(PlayerCommands.PDF);
                            dataProvider.registerCommand(PlayerCommands.IMAGE);
                            dataProvider.registerCommand(PlayerCommands.PRINT);
+                           dataProvider.registerCommand(PlayerCommands.DYNAMIC_HTML);
 
                            var player = new ReportPlayer({
+                               config: {
+                                   esriDijitCssUrl: "",
+                                   esriCssUrl: "",
+                                   playerSourceRootUrl: ""
+                               },
                                isSlidesView: isSlidesView,
                                theme: theme,
                                dataProvider: dataProvider,
@@ -187,12 +187,9 @@
 
                            var params = {
                                portalUrl: portalUrl,
-                               geoenrichmentUrl: geoenrichmentUrl,
                                countryID: countryID,
                                reportID: reportID,
-                               analysisAreas: analysisAreasJson
-                                   ? AnalysisAreaJsonUtil.areasFromJson(analysisAreasJson)
-                                   : AnalysisAreas.getAreas({
+                               analysisAreas: analysisAreasJson || AnalysisAreas.getAreas({
                                        numAreas: 1,
                                        big: false,
                                        isGeographyId: false,
@@ -200,20 +197,16 @@
                                    })
                            };
 
-                           when(player.playReport(params, { waitUntilAllContentIsReady: true }), function () {
+                           when(player.playReport(params, {
+                               waitUntilAllContentIsReady: true,
+                               disableAnimation: false
+                           }), function () {
 
-                               // The content is ready, you can call export commands
-                               // 3 cases:
-                               // returnAsHtmlText = true => HTML text will be returend.
-                               // returnAsSvgText = true => Array of SVG strings will be retured.
-                               // Both are false => HTML file will be downloaded.
-
-                               /*when(player.executeCommand(PlayerCommands.HTML, {
-                                   returnAsHtmlText: false,
-                                   returnAsSvgText: true
-                               }), function (htmlText) {
-                                   console.log(htmlText);
-                               });*/
+                               //when(player.executeCommand(PlayerCommands.DYNAMIC_HTML, {
+                               //    returnAsHtmlText: true
+                               //}), function (htmlText) {
+                               //    console.log(htmlText);
+                               //});
                            });
                        }
                    });

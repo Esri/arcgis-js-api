@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["dojo/_base/declare","dojo/_base/lang","dojo/dom-class","dojo/has","./Tabs","../../../kernel"],function(e,o,t,d,a,i){var s=e([a],{_isGxeElementChoice:!0,useRadios:!0,postCreate:function(){this.inherited(arguments),t.add(this.domNode,"gxeElementChoice")}});return d("extend-esri")&&o.setObject("dijit.metadata.form.ElementChoice",s,i),s});
+define(["dojo/_base/declare","dojo/_base/lang","dojo/dom-class","dojo/has","./Tabs","../../../kernel"],function(e,o,t,d,i,a){var s=e([i],{_isGxeElementChoice:!0,useRadios:!0,postCreate:function(){this.inherited(arguments),t.add(this.domNode,"gxeElementChoice")}});return d("extend-esri")&&o.setObject("dijit.metadata.form.ElementChoice",s,a),s});

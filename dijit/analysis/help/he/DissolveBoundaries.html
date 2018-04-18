@@ -76,7 +76,27 @@
                 </ul>
                 
             </p>
-            <p>If  <b>Use current map extent</b> is checked, only the features in input layer visible within the current map extent will be dissolved.  If unchecked, all features in  the input layer will be dissolved, even if they are outside the current map extent.
+            <p>If  <b>Use current map extent</b> is checked, only the features in the input layer that are visible within the current map extent will be dissolved.  If unchecked, all features in  the input layer will be dissolved, even if they are outside the current map extent.
+            </p>
+        </div>
+    </div>
+    <div id="multiPartFeatures">
+        <div><h2>Create Multipart Features</h2></div>
+        <hr/>
+        <div>
+            <p>In ArcGIS, a digital representation of a place or thing that has
+more than one part but is defined as one feature because it
+references one set of attributes. In a layer of states, for
+example, the state of Hawaii could be considered a multipart
+feature because its separate geometric parts are classified as a
+single state. A multipart feature can be a point, line, or polygon. This boolean parameter offers two options:
+                <ul>
+                    <li>True (checked): the output service can contain multipart features.
+                    </li>
+                    <li>False (unchecked): the output service will only contain single-part features, and individual features will be created for each part.
+                    </li>
+                </ul>
+                
             </p>
         </div>
     </div>

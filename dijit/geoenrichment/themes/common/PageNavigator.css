@@ -1,8 +1,8 @@
-.esriGETemplateEditor_pageNavigator {
+.esriGEPageNavigator {
 }
 
-    .esriGETemplateEditor_pageNavigator .esriGEPaginationArrowLeft,
-    .esriGETemplateEditor_pageNavigator .esriGEPaginationArrowRight {
+    .esriGEPageNavigator .esriGEPaginationArrowLeft,
+    .esriGEPageNavigator .esriGEPaginationArrowRight {
         width: 20px;
         height: 30px;
     }

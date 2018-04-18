@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["require","exports","./mat2d","./vec2","./common"],function(t,e,r,n,a){Object.defineProperty(e,"__esModule",{value:!0});var o=function(){var t=r.create(),e=n.create();return function(a,o,u){return r.fromTranslation(t,u),r.multiply(a,t,o),n.negate(e,u),r.translate(a,a,e),a}}();e.rotategAt=function(){var t=r.create();return function(e,n,u,i){return r.fromRotation(t,a.toRadian(u)),o(t,t,i),r.multiply(e,t,n),e}}(),e.scaleAt=function(){var t=r.create();return function(e,n,a,u){return r.fromScaling(t,a),o(t,t,u),r.multiply(e,t,n),e}}()});
+define(["require","exports","./common","./mat2d","./vec2"],function(t,e,r,n,a){Object.defineProperty(e,"__esModule",{value:!0});var o=function(){var t=n.create(),e=a.create();return function(r,o,u){return n.fromTranslation(t,u),n.multiply(r,t,o),a.negate(e,u),n.translate(r,r,e),r}}();e.rotategAt=function(){var t=n.create();return function(e,a,u,i){return n.fromRotation(t,r.toRadian(u)),o(t,t,i),n.multiply(e,t,a),e}}(),e.scaleAt=function(){var t=n.create();return function(e,r,a,u){return n.fromScaling(t,a),o(t,t,u),n.multiply(e,t,r),e}}()});

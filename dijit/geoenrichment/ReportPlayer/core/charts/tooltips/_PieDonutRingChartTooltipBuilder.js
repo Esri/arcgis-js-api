@@ -1,0 +1,25 @@
+// COPYRIGHT © 201 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+
+define(["dojo/dom-construct","dojo/string","./_BuilderUtil","dojo/i18n!../../../../../../nls/jsapi"],function(a,e,l,t){return t=t.geoenrichment.dijit.ReportPlayer.ChartTooltip,{buildPieDonutRingChartTooltip:function(i,o){l.addTitle(o,i.label,i.color);var r=a.create("div",{class:"chartTooltip_row esriGERowHigh"},o);if(l.addRowOffset(r),i.isUnavailableData)l.addLabel(t.unavailableData,r);else{l.addLabel(e.substitute(t.pieChartTooltip_label,{value:i.valueLabel,total:i.sumValueLabel}),r);var d=l.buildStatLabels(i,o,t.weight,t.minValue,t.maxValue,t.avgValue);l.formatTable(d)}}}});

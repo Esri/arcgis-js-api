@@ -129,7 +129,7 @@ the area, but you can get other statistics as well.
         <div>
             <p>Interval of time used for generating time steps. Time step interval may be used alone or used with the  <b>How often to repeat the time step</b> or <b>Time to align the time steps to</b> parameters.
             </p>
-            <p>If you wanted to create time slices that took place every Monday from 9:00 a.m. until 10:00 a.m.,  <b>Time step interval</b> would be <code>1 hour</code>, <b>How often to repeat the time step</b> would be <code>1 week</code>, and <b>Time to align the time steps to</b> would be <code>9:00:00 a.m. on a Monday</code>.
+            <p>If you wanted to create time steps that took place every Monday from 9:00 a.m. until 10:00 a.m.,  <b>Time step interval</b> would be <code>1 hour</code>, <b>How often to repeat the time step</b> would be <code>1 week</code>, and <b>Time to align the time steps to</b> would be <code>9:00:00 a.m. on a Monday</code>.
             </p>
         </div>
     </div>
@@ -137,9 +137,9 @@ the area, but you can get other statistics as well.
         <div><h2>How often to repeat the time step</h2></div>
         <hr/>
         <div>
-            <p> The step used for calculating a time slice. <b>How often to repeat the time step</b> may be used alone or with <b>Time step interval</b>, with <b>Reference Time</b>, or with both <b>Time step interval</b> and <b>Time to align the time steps to</b>.
+            <p> The step used for calculating a time step. <b>How often to repeat the time step</b> may be used alone or with <b>Time step interval</b>, with <b>Reference Time</b>, or with both <b>Time step interval</b> and <b>Time to align the time steps to</b>.
             </p>
-            <p> If you wanted to create time slices that took place every Monday from 9:00 a.m. until 10:00 a.m., <b>Time step interval</b> would be <code>1 hour</code>, <b>How often to repeat the time step</b> would be <code>1 week</code>, and <b>Time to align the time steps to</b> would be <code>9:00:00 a.m. on a Monday</code>.
+            <p> If you wanted to create time step that took place every Monday from 9:00 a.m. until 10:00 a.m., <b>Time step interval</b> would be <code>1 hour</code>, <b>How often to repeat the time step</b> would be <code>1 week</code>, and <b>Time to align the time steps to</b> would be <code>9:00:00 a.m. on a Monday</code>.
             </p>
         </div>
     </div>
@@ -149,7 +149,7 @@ the area, but you can get other statistics as well.
         <div>
             <p>The date and time used to align time slicing. Time stepping will start from and continue backward from this time. If no reference time is selected, time stepping will align to January 1st, 1970. 
             </p>
-            <p> If you wanted to create time slices that took place every Monday from 9:00 a.m. until 10:00 a.m., <b>Time step interval</b> would be <code>1 hour</code>, <b>How often to repeat the time step</b> would be <code>1 week</code>, and <b>Time to align the time steps to</b> would be <code>9:00:00 a.m. on a Monday</code>.
+            <p> If you wanted to create time step that took place every Monday from 9:00 a.m. until 10:00 a.m., <b>Time step interval</b> would be <code>1 hour</code>, <b>How often to repeat the time step</b> would be <code>1 week</code>, and <b>Time to align the time steps to</b> would be <code>9:00:00 a.m. on a Monday</code>.
             </p>
         </div>
     </div>
@@ -171,9 +171,9 @@ the area, but you can get other statistics as well.
                     </li>
                     <li>Range&mdash;The range of a numeric field. This is calculated as the minimum values subtracted from the maximum value. The range of [0, null, 1] is 1. The range of [null, 4] is 0.
                     </li>
-                    <li>Variance&mdash;The variance of a numeric field in a track. The  variance of [1] is null. The variance of [null, 1,1,1] is 1.
+                    <li>Variance&mdash;The variance of a numeric field in a track. The  variance of [1] is null. The variance of [null, 1,0,1,1] is 0.25.
                     </li>
-                    <li>Standard deviation&mdash;The standard deviation of a numeric field. The standard deviation of [1] is null. The standard deviation of [null, 1,1,1] is 1. 
+                    <li>Standard deviation&mdash;The standard deviation of a numeric field. The standard deviation of [1] is null. The standard deviation of [null, 1,0,1,1] is 0.5. 
                     </li>
                 </ul>
                 
@@ -201,16 +201,16 @@ the area, but you can get other statistics as well.
         <div><h2>Choose an ArcGIS Data Store to save results to</h2></div>
         <hr/>
         <div>
-            <p>GeoAnalytics results are stores to an ArcGIS Data Store and exposed as a feature layer in   Portal for ArcGIS. In most cases, results should be stored to the spatiotemporal data store and this is the default. In some cases saving results to the  relational data store is a good option. The following are reasons why you may want to store results in the relational data store: 
+            <p>GeoAnalytics results are stored to an ArcGIS Data Store and exposed as a feature layer in   Portal for ArcGIS. In most cases, results should be stored to the spatiotemporal data store and this is the default. In some cases, saving results to the  relational data store is a good option. The following are reasons why you may want to store results to the relational data store: 
                 <ul>
-                    <li>Use results in portal to portal collaboration.
+                    <li>You can ue results in portal-to-portal collaboration.
                     </li>
-                    <li>Enable sync capabilities with your results.
+                    <li>You can enable sync capabilities with your results.
                     </li>
                 </ul>
                 
             </p>
-            <p>You should not use the relational data store if you expect your GeoAnalytics results to increase, and need to take advantage of the spatiotemporal big data store's capabilities to handle large amounts of data. 
+            <p>You should not use the relational data store if you expect your GeoAnalytics results to increase and need to take advantage of the spatiotemporal big data store's capabilities to handle large amounts of data.
             </p>
         </div>
     </div>
@@ -218,7 +218,7 @@ the area, but you can get other statistics as well.
         <div><h2>Result layer name</h2></div>
         <hr/>
         <div>
-            <p> This is the name of the layer that will be created in <b>My
+            <p> The name of the layer that will be created in <b>My
 Content</b> and added to the map. The default name is based on the
 tool name and the input layer name. If the layer already exists, the tool will fail.
             </p>

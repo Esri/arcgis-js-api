@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["esri/dijit/geoenrichment/utils/ObjectUtil","./ThemeLibrary","./ThemeUtil"],function(e,i,o){var l={};return l.populateMissingStyles=function(l){if(l){var t=o.getThemeColors(l),n=i.getDefaultTheme({defaultFontFamilty:l.document.fontFamily,defaultFontSize:l.document.fontSize}),r=l.chart.colors.slice();o.applyThemeColorsToTheme(n,t,r),e.populateObject(l,n,!1);var c=l.chart;c.colors=r,c.icon=c.icon||lang.clone(l.infographic.staticInfographic.icon),c.xAxis.lineColor=c.xAxis.lineColor||c.xAxis.axisStyle.color,c.yAxis.lineColor=c.yAxis.lineColor||c.yAxis.axisStyle.color}},l});
+define(["dojo/_base/lang","esri/dijit/geoenrichment/utils/ObjectUtil","./ThemeLibrary","./ThemeUtil"],function(e,i,o,l){var t={};return t.populateMissingStyles=function(t){if(t){t.table.overrideStyles||(t.table={overrideStyles:e.mixin({},t.table)});var n=l.getThemeColors(t),r=o.getDefaultTheme({defaultFontFamilty:t.document.fontFamily,defaultFontSize:t.document.fontSize}),a=t.chart.colors.slice();l.applyThemeColorsToTheme(r,n,a),i.populateObject(t,r,!1);var s=t.chart;s.colors=a,s.icon=s.icon||e.clone(t.infographic.staticInfographic.icon),s.xAxis.lineColor=s.xAxis.lineColor||s.xAxis.axisStyle.color,s.yAxis.lineColor=s.yAxis.lineColor||s.yAxis.axisStyle.color}},t});

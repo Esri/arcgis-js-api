@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -38,4 +38,4 @@
 // limitations under the License.
 ///////////////////////////////////////////////////////////////////////////
 
-define(["dojo/_base/declare","dijit/_WidgetBase"],function(e,r){var t=e([r],{baseClass:"jimu-gp-resultrenderer-base",postCreate:function(){this.inherited(arguments)}});return t});
+define(["dojo/_base/declare","dijit/_WidgetBase"],function(e,i){return e([i],{baseClass:"jimu-gp-resultrenderer-base",postCreate:function(){this.inherited(arguments)}})});

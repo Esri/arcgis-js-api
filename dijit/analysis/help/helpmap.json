@@ -50,7 +50,8 @@
             "toolDescription": "create-watersheds.htm"
         },
         "DissolveBoundaries": {
-            "toolDescription": "dissolve-boundaries.htm"
+            "toolDescription": "dissolve-boundaries.htm",
+            "multiPartFeatures": "dissolve-boundaries.htm#GUID-84ECA8C6-2027-4C08-9B48-8F81D95A94AB"
         },
         "EnrichLayer": {
             "toolDescription": "enrich-layer.htm",

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.23/esri/copyright.txt for details.
 
-define(["dojo/_base/lang","dojo/has","../../kernel"],function(e,a,i){var r={BIGDATA:"Big Data File Share",CSV:"CSV",XLS:"Microsoft Excel",FS:"Feature Service",MS:"Map Service",IS:"Image Service",TABLE:"Table",BTABLE:"table"};return a("extend-esri")&&e.setObject("dijit.analysis.itemTypes",r,i),r});
+define(["dojo/_base/lang","dojo/has","../../kernel"],function(e,a,r){var i={BIGDATA:"Big Data File Share",CSV:"CSV",XLS:"Microsoft Excel",FS:"Feature Service",MS:"Map Service",IS:"Image Service",FLAYER:"Feature Layer",BDATAFEATURE:"featureClass",TABLE:"Table",BTABLE:"table"};return a("extend-esri")&&e.setObject("dijit.analysis.itemTypes",i,r),i});

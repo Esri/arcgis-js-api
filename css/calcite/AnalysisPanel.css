@@ -45,6 +45,9 @@
 	height: 32px;
 	float: left;
 }
+.esriRtl .toolIcon {
+  float: right;
+}
 .calcite .toolContainer .toolText {
 	float: left;
 	margin: 8px 14px;
