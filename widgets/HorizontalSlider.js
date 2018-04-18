@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["dijit/form/HorizontalRuleLabels","dijit/form/HorizontalSlider"],function(e,i){var l=i.createSubclass({declaredClass:"esri.widgets.HorizontalSlider",baseClass:"esri-horizontal-slider",buildRendering:function(){if(this.inherited(arguments),this.labels){var i=new e({labels:this.labels});i.placeAt(this.bottomDecoration)}},labels:null,showButtons:!1});return l});
+define(["dijit/form/HorizontalRuleLabels","dijit/form/HorizontalSlider"],function(e,i){return i.createSubclass({declaredClass:"esri.widgets.HorizontalSlider",baseClass:"esri-horizontal-slider",buildRendering:function(){if(this.inherited(arguments),this.labels){new e({labels:this.labels}).placeAt(this.bottomDecoration)}},labels:null,showButtons:!1})});

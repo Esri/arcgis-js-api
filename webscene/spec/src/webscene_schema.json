@@ -4,6 +4,10 @@
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "The web scene data lists the basemap, operational layers, and bookmarks to be used in the web scene. It also contains information about pop-up windows and layer styling overrides to be used in the web scene. A version property allows you to supply the version of the web scene JSON format being used",
   "properties": {
+    "applicationProperties": {
+      "type": "object",
+      "$ref": "applicationProperties_schema.json"
+    },
     "authoringApp": {
       "type": "string",
       "description": "String value indicating the application which authored the webmap"
@@ -92,4 +96,3 @@
   ],
   "additionalProperties": false
 }
-

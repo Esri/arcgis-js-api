@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../Color","../../core/JSONSupport","../../core/lang","./materialUtils","../../core/accessorSupport/decorators"],function(e,r,o,t,p,l,s,c,n){Object.defineProperty(r,"__esModule",{value:!0});var i=function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.color=new p([0,0,0,1]),r.size=0,r}return o(r,e),l=r,r.prototype.clone=function(){return new l({color:s.clone(this.color),size:this.size})},t([n.property(c.colorAndTransparencyProperty)],r.prototype,"color",void 0),t([n.property(c.screenSizeProperty)],r.prototype,"size",void 0),r=l=t([n.subclass("esri.symbols.support.Symbol3DHalo")],r);var l}(n.declared(l));r.Symbol3DHalo=i,r["default"]=i});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../Color","../../core/JSONSupport","../../core/lang","../../core/accessorSupport/decorators","./materialUtils"],function(e,r,o,t,p,l,c,s,n){Object.defineProperty(r,"__esModule",{value:!0});var i=function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.color=new p([0,0,0,1]),r.size=0,r}return o(r,e),l=r,r.prototype.clone=function(){return new l({color:c.clone(this.color),size:this.size})},t([s.property(n.colorAndTransparencyProperty)],r.prototype,"color",void 0),t([s.property(n.screenSizeProperty)],r.prototype,"size",void 0),r=l=t([s.subclass("esri.symbols.support.Symbol3DHalo")],r);var l}(s.declared(l));r.Symbol3DHalo=i,r.default=i});

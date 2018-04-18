@@ -39,22 +39,55 @@
 ]]></snippet>
 
 <snippet name="float2rgba"><![CDATA[
-	vec4 float2rgba(const in float v) {
-		vec4 enc = vec4(1.0, 255.0, 65025.0, 16581375.0) * v;
-		enc = fract(enc);
-		enc -= enc.yzww * vec4(1.0/255.0, 1.0/255.0, 1.0/255.0, 0.0);
-		return enc;
+  // This is the maximum float value representable as 32bit fixed point,
+  // it is rgba2float(vec4(1)) inlined.
+  const float MAX_RGBA_FLOAT =
+    255.0 / 256.0 +
+    255.0 / 256.0 / 256.0 +
+    255.0 / 256.0 / 256.0 / 256.0 +
+    255.0 / 256.0 / 256.0 / 256.0 / 256.0;
+
+  vec4 float2rgba(const float value) {
+    // Factors to convert to fixed point, i.e. factors (256^0, 256^1, 256^2, 256^3)
+    const vec4 fixedPointFactors = vec4(1, 256, 256 * 256, 256 * 256 * 256);
+
+    // Make sure value is in the domain we can represent
+    float valueInValidDomain = clamp(value, 0.0, MAX_RGBA_FLOAT);
+
+    // Decompose value in 32bit fixed point parts represented as
+    // uint8 rgba components. Decomposition uses the fractional part after multiplying
+    // by a power of 256 (this removes the bits that are represented in the previous
+    // component) and then converts the fractional part to 8bits.
+    vec4 fixedPointU8 = floor(fract(valueInValidDomain * fixedPointFactors) * 256.0);
+
+    // Convert uint8 values (from 0 to 255) to floating point representation for
+    // the shader
+    const float toU8AsFloat = 1.0 / 255.0;
+
+    return fixedPointU8 * toU8AsFloat;
 	}
 ]]></snippet>
 
 <snippet name="rgba2float"><![CDATA[
-	float rgba2float(vec4 rgba) {
-		return dot(rgba, vec4(1.0, 1.0/255.0, 1.0/65025.0, 1.0/16581375.0));
+  float rgba2float(vec4 rgba) {
+    // Convert components from 0->1 back to 0->255 and then
+    // add the components together with their corresponding
+    // fixed point factors, i.e. (256^1, 256^2, 256^3, 256^4)
+    const vec4 factors = vec4(
+      255.0 / (256.0),
+      255.0 / (256.0 * 256.0),
+      255.0 / (256.0 * 256.0 * 256.0),
+      255.0 / (256.0 * 256.0 * 256.0 * 256.0)
+    );
+
+		return dot(rgba, factors);
 	}
 ]]></snippet>
 
 <snippet name="calcFragDepth"><![CDATA[
-	#extension GL_OES_standard_derivatives : enable
+	#ifdef GL_OES_standard_derivatives
+		#extension GL_OES_standard_derivatives : enable
+	#endif
 
 	float calcFragDepth(const in float depth) {
 		//calc polygon offset
@@ -226,15 +259,23 @@
 ]]></snippet>
 
 <snippet name="sceneLightingAdditionalLightGlobal"><![CDATA[
-	// heuristic lighting model originally used in the terrain shading
-	// now used to generated additional ambient light
-	#ifdef VIEWING_MODE_GLOBAL
-		float vndl = -dot(normalize(vpos + localOrigin), lightingMainDirection);
-	#else
-		float vndl = -dot(vec3(0,0,1), lightingMainDirection);
-	#endif
-	float additionalAmbientScale = smoothstep(0.0, 1.0, clamp(vndl*2.5, 0.0, 1.0));
-	vec3 additionalLight = ssao * lightingMainIntensity * additionalAmbientScale * ambientBoostFactor * lightingGlobalFactor;
+  vec3 sceneLightingAdditionalLightGlobal(vec3 worldPos, float ssao, out float additionalAmbientScale) {
+    // heuristic lighting model originally used in the terrain shading
+    // now used to generated additional ambient light
+
+#ifdef VIEWING_MODE_GLOBAL
+
+      float vndl = -dot(normalize(worldPos), lightingMainDirection);
+
+#else
+
+      float vndl = -dot(vec3(0,0,1), lightingMainDirection);
+
+#endif
+
+    additionalAmbientScale = smoothstep(0.0, 1.0, clamp(vndl * 2.5, 0.0, 1.0));
+    return ssao * lightingMainIntensity * additionalAmbientScale * ambientBoostFactor * lightingGlobalFactor;
+  }
 ]]></snippet>
 
 <snippet name="normal2envTC"><![CDATA[
@@ -636,21 +677,31 @@ vec2 screenSizePerspectiveScaleVec2(vec2 size, float absCosAngle, float distance
 ]]></snippet>
 
 <snippet name="computeNormal"><![CDATA[
-	#ifdef GROUND_NORMAL_SHADING
-		#ifdef VIEWING_MODE_GLOBAL
-			vec3 normal = normalize(vpos + localOrigin);
-		#else
-			vec3 normal = vec3(0,0,1);
-		#endif
-	#else
-			// compute normal
-		#ifndef DOUBLESIDED
-				vec3 normal = vnormal;
-		#else
-				vec3 normal = dot(vnormal, viewDir)>0.0 ? -vnormal : vnormal;
-		#endif
-		normal = normalize(normal);
-	#endif
+  #ifdef GROUND_NORMAL_SHADING
+    #ifdef VIEWING_MODE_GLOBAL
+      vec3 normal = normalize(vpos + localOrigin);
+    #else
+      vec3 normal = vec3(0,0,1);
+    #endif
+  #else
+    // compute normal
+    #ifdef DOUBLESIDED
+      vec3 normal = dot(vnormal, viewDir)>0.0 ? -vnormal : vnormal;
+    #elif defined(WINDINGORDERDOUBLESIDED)
+      vec3 normal = gl_FrontFacing ? vnormal : -vnormal;
+    #else
+      vec3 normal = vnormal;
+    #endif
+    normal = normalize(normal);
+  #endif
+]]></snippet>
+
+<snippet name="decodeNormal"><![CDATA[
+vec3 decodeNormal(vec2 f)
+{
+    float z = 1.0 - abs(f.x) - abs(f.y);
+    return vec3(f + sign(f) * min(z, 0.0), z);
+}
 ]]></snippet>
 
 </snippets>

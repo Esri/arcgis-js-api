@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper"],function(e,r,t,n){var o=function(){function e(){}return e}();return o});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper"],function(e,r,t,n){return function(){function e(){}return e}()});

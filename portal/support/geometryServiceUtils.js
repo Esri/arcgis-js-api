@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../Portal","../PortalItem","../../config","../../tasks/GeometryService","../../tasks/support/ProjectParameters","../../core/promiseUtils","../../core/Error"],function(e,r,t,n,o,i,c,u,l){function s(e){return u.resolve(new i({url:e}))}function a(e){if(void 0===e&&(e=null),o.geometryServiceUrl)return s(o.geometryServiceUrl);if(!e)return u.reject(new l("internal:geometry-service-url-not-configured"));var r;return e.isInstanceOf(n)?r=e.portal||t.getDefault():e.isInstanceOf(t)&&(r=e),r.load().then(function(e){if(e.helperServices&&e.helperServices.geometry&&e.helperServices.geometry.url)return s(e.helperServices.geometry.url);throw new l("internal:geometry-service-url-not-configured")})}function f(e,r,t){return void 0===t&&(t=null),a(t).then(function(t){var n=new c;return n.geometries=[e],n.outSpatialReference=r,t.project(n)}).then(function(e){return e&&Array.isArray(e)&&1===e.length?e[0]:u.reject()})}Object.defineProperty(r,"__esModule",{value:!0}),r.create=a,r.projectGeometry=f});
+define(["require","exports","../../config","../../core/Error","../../core/promiseUtils","../Portal","../PortalItem","../../tasks/GeometryService","../../tasks/support/ProjectParameters"],function(e,r,t,n,o,i,c,u,l){function s(e){return o.resolve(new u({url:e}))}function a(e){if(void 0===e&&(e=null),t.geometryServiceUrl)return s(t.geometryServiceUrl);if(!e)return o.reject(new n("internal:geometry-service-url-not-configured"));var r;return e.isInstanceOf(c)?r=e.portal||i.getDefault():e.isInstanceOf(i)&&(r=e),r.load().then(function(e){if(e.helperServices&&e.helperServices.geometry&&e.helperServices.geometry.url)return s(e.helperServices.geometry.url);throw new n("internal:geometry-service-url-not-configured")})}function f(e,r,t){return void 0===t&&(t=null),a(t).then(function(t){var n=new l;return n.geometries=[e],n.outSpatialReference=r,t.project(n)}).then(function(e){return e&&Array.isArray(e)&&1===e.length?e[0]:o.reject()})}Object.defineProperty(r,"__esModule",{value:!0}),r.create=a,r.projectGeometry=f});

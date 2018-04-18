@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports"],function(e,t){function r(e,t){switch(t){case"primary":return"touch"===e.pointerType||0===e.button;case"secondary":return"touch"!==e.pointerType&&2===e.button;case"tertiary":return"touch"!==e.pointerType&&1===e.button}}function n(e,t){if("touch"===e.pointerType)return!1;switch(t){case"primary":return 0===e.button;case"secondary":return 2===e.button;case"tertiary":return 1===e.button}}Object.defineProperty(t,"__esModule",{value:!0}),t.eventMatchesPointerType=r,t.eventMatchesMousePointerType=n});
+define(["require","exports"],function(t,e){function r(t,e){switch(e){case"primary":return"touch"===t.pointerType||0===t.button;case"secondary":return"touch"!==t.pointerType&&2===t.button;case"tertiary":return"touch"!==t.pointerType&&1===t.button}}function n(t,e){if("touch"===t.pointerType)return!1;switch(e){case"primary":return 0===t.button;case"secondary":return 2===t.button;case"tertiary":return 1===t.button}}Object.defineProperty(e,"__esModule",{value:!0}),e.eventMatchesPointerAction=r,e.eventMatchesMousePointerAction=n});

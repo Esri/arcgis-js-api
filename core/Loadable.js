@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["./Promise","./Accessor","./Error","./Warning","dojo/aspect","dojo/_base/lang","dojo/Deferred"],function(t,a,o,n,e,s,r){var i="not-loaded",d="loading",l="failed",c="loaded",u=t.createSubclass([a],{declaredClass:"esri.core.Loadable","-chains-":s.mixin(a._meta.chains,{load:"after"}),constructor:function(){this._set("loadWarnings",[]);var t=new r;this.addResolvingPromise(t.promise),e.around(this,"load",function(a){return function(){return this.loadStatus===i&&(this.loadStatus=d,a.apply(this)),t&&(t.resolve(),t=null),this.when()}}),this.when(function(t){this.loadStatus=c}.bind(this),function(t){this.loadStatus=l,this.loadError=t}.bind(this))},properties:{loaded:{readOnly:!0,dependsOn:["loadStatus"],get:function(){return this.loadStatus===c}},loadError:null,loadStatus:i,loadWarnings:{type:[n],readOnly:!0}},load:function(){},cancelLoad:function(){return this.isFulfilled()?this:(this.loadError=new o("load:cancelled","Cancelled"),this._promiseProps.cancel(this.loadError),this)}});return u});
+define(["./Promise","./Accessor","./Error","./Warning","dojo/aspect","dojo/_base/lang","dojo/Deferred"],function(o,t,a,n,e,s,d){return o.createSubclass([t],{declaredClass:"esri.core.Loadable","-chains-":s.mixin(t._meta.chains,{load:"after"}),constructor:function(){this._set("loadWarnings",[]);var o=new d;this.addResolvingPromise(o.promise),e.around(this,"load",function(t){return function(){return"not-loaded"===this.loadStatus&&(this.loadStatus="loading",t.apply(this)),o&&(o.resolve(),o=null),this.when()}}),this.when(function(o){this.loadStatus="loaded"}.bind(this),function(o){this.loadStatus="failed",this.loadError=o}.bind(this))},properties:{loaded:{readOnly:!0,dependsOn:["loadStatus"],get:function(){return"loaded"===this.loadStatus}},loadError:null,loadStatus:"not-loaded",loadWarnings:{type:[n],readOnly:!0}},load:function(){},cancelLoad:function(){return this.isFulfilled()?this:(this.loadError=new a("load:cancelled","Cancelled"),this._promiseProps.cancel(this.loadError),this)}})});

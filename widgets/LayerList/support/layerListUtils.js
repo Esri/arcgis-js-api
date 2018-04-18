@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports"],function(e,i){function r(e){return e&&e.hasOwnProperty("listMode")?e.listMode:void 0}function n(e){return e&&e.hasOwnProperty("minScale")?e.minScale:void 0}function t(e){return e&&e.hasOwnProperty("maxScale")?e.maxScale:void 0}function a(e){if(e){var i=e.get("layer.capabilities");return i&&-1===i.indexOf("supportsSublayerVisibility")?"inherited":e.hasOwnProperty("visibilityMode")?e.visibilityMode:void 0}}function d(e){if(e){var i=e.listMode===s.hideChildren||"wmts"===e.type;if(!i)return"group"===e.type?"layers":"sublayers"}}function o(e){var i=r(e);return i!==s.hide}function l(e,i){if(!e||isNaN(i))return!1;var r=n(e),a=t(e),d=!isNaN(r)&&r>0&&i>=r,o=!isNaN(a)&&a>0&&a>=i;return d||o}Object.defineProperty(i,"__esModule",{value:!0});var s={hide:"hide",hideChildren:"hide-children"};i.findLayerListMode=r,i.findLayerMinScale=n,i.findLayerMaxScale=t,i.findLayerVisibilityMode=a,i.getNormalizedChildLayerProperty=d,i.canDisplayLayer=o,i.isLayerOutsideScaleRange=l});
+define(["require","exports"],function(i,e){function r(i){if(i)return i.hasOwnProperty("listMode")?i.listMode:void 0}function n(i){if(i)return i.hasOwnProperty("minScale")?i.minScale:void 0}function t(i){if(i)return i.hasOwnProperty("maxScale")?i.maxScale:void 0}function a(i){if(i){var e=i.get("layer.capabilities");return e&&-1===e.indexOf("supportsSublayerVisibility")?"inherited":i.hasOwnProperty("visibilityMode")?i.visibilityMode:void 0}}function d(i){if(i){if(!(i.listMode===s.hideChildren||"wmts"===i.type))return"group"===i.type?"layers":"sublayers"}}function o(i){return r(i)!==s.hide}function l(i,e){if(!i||isNaN(e))return!1;var r=n(i),a=t(i),d=!isNaN(r)&&r>0&&e>=r,o=!isNaN(a)&&a>0&&e<=a;return d||o}Object.defineProperty(e,"__esModule",{value:!0});var s={hide:"hide",hideChildren:"hide-children"};e.findLayerListMode=r,e.findLayerMinScale=n,e.findLayerMaxScale=t,e.findLayerVisibilityMode=a,e.getNormalizedChildLayerProperty=d,e.canDisplayLayer=o,e.isLayerOutsideScaleRange=l});

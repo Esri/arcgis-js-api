@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","dojo/keys"],function(e,n,t){function r(){return function(e,n){return{value:u(e[n])}}}function o(e){var n=e.type;return e instanceof KeyboardEvent||"keyup"===n||"keydown"===n||"keypress"===n}function u(e){return function(n){for(var r=[],u=1;u<arguments.length;u++)r[u-1]=arguments[u];return o(n)?void((n.keyCode===t.ENTER||n.keyCode===t.SPACE)&&(n.preventDefault(),n.target.click())):void e.call.apply(e,[this,n].concat(r))}}Object.defineProperty(n,"__esModule",{value:!0}),n.accessibleHandler=r});
+define(["require","exports","dojo/keys"],function(e,n,t){function r(){return function(e,n){return{value:u(e[n])}}}function o(e){var n=e.type;return e instanceof KeyboardEvent||"keyup"===n||"keydown"===n||"keypress"===n}function u(e){return function(n){for(var r=[],u=1;u<arguments.length;u++)r[u-1]=arguments[u];if(o(n))return void(n.keyCode!==t.ENTER&&n.keyCode!==t.SPACE||(n.preventDefault(),n.target.click()));e.call.apply(e,[this,n].concat(r))}}Object.defineProperty(n,"__esModule",{value:!0}),n.accessibleHandler=r});

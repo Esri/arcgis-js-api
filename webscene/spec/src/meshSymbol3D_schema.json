@@ -4,6 +4,9 @@
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "MeshSymbol3D is used to render 3D mesh features in a SceneLayer in a 3D SceneView.",
   "properties": {
+    "styleOrigin": {
+      "$ref": "styleOrigin_schema.json"
+    },
     "symbolLayers": {
       "type": "array",
       "description": "A Collection of Symbol3DLayer objects used to visualize the graphic or feature.",
@@ -29,4 +32,3 @@
   ],
   "additionalProperties": false
 }
-

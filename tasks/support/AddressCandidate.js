@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["../../core/JSONSupport","../../geometry/Extent","../../geometry/Point"],function(e,t,r){var l=e.createSubclass({declaredClass:"esri.tasks.support.AddressCandidate",properties:{address:null,attributes:null,extent:{value:null,type:t},location:{value:null,type:r},score:null}});return l});
+define(["../../core/JSONSupport","../../geometry/Extent","../../geometry/Point"],function(e,t,l){return e.createSubclass({declaredClass:"esri.tasks.support.AddressCandidate",properties:{address:null,attributes:null,extent:{value:null,type:t},location:{value:null,type:l},score:null}})});

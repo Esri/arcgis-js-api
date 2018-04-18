@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({noItemsToDisplay:"Just nu finns det inga objekt att visa.",layerInvisibleAtScale:"Osynlig på den aktuella skalan",layerError:"Ett fel uppstod när det här lagret skulle läsas in",untitledLayer:"Namnlöst lager"});
+define({widgetLabel:"Lagerlista",noItemsToDisplay:"Just nu finns det inga objekt att visa.",layerInvisibleAtScale:"Osynlig på den aktuella skalan",layerError:"Ett fel uppstod när det här lagret skulle läsas in",untitledLayer:"Namnlöst lager"});

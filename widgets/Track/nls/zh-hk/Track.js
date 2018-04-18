@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({startTracking:"開始追蹤我的位置",stopTracking:"停止追蹤我的位置"});
+define({widgetLabel:"追蹤",startTracking:"開始追蹤我的位置",stopTracking:"停止追蹤我的位置"});

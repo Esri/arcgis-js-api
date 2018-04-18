@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({points:"Punten",lines:"Lijnen",polygons:"Vlakken",creatingLegend:"Legenda maken",noLegend:"Geen legenda",dotValue:"1 punt = {value} {unit}",currentObservations:"Huidige observaties",previousObservations:"Vorige observaties",high:"Hoog",low:"Laag",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/u",esriKnots:"knopen",esriFeetPerSecond:"ft/sec",esriMilesPerHour:"mpu",showField:"{field}",showNormField:"{field} gedeeld door {normField}",showNormPct:"{field} als procent van het totaal",showRatio:"Verhouding van {field} tot {normField}",showRatioPercent:"{field} als een procent van {normField}",showRatioPercentTotal:"{field} als een procent van {field} en {normField}"});
+define({widgetLabel:"Legenda",points:"Punten",lines:"Lijnen",polygons:"Vlakken",creatingLegend:"Legenda maken",noLegend:"Geen legenda",dotValue:"1 punt = {value} {unit}",currentObservations:"Huidige observaties",previousObservations:"Vorige observaties",high:"Hoog",low:"Laag",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/u",esriKnots:"knopen",esriFeetPerSecond:"ft/sec",esriMilesPerHour:"mpu",showField:"{field}",showNormField:"{field} gedeeld door {normField}",showNormPct:"{field} als procent van het totaal",showRatio:"Verhouding van {field} tot {normField}",showRatioPercent:"{field} als een procent van {normField}",showRatioPercentTotal:"{field} als een procent van {field} en {normField}"});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/Logger","./Graphics3DIconSymbolLayer","./Graphics3DObjectSymbolLayer","./Graphics3DLineSymbolLayer","./Graphics3DPathSymbolLayer","./Graphics3DFillSymbolLayer","./Graphics3DExtrudeSymbolLayer","./Graphics3DTextSymbolLayer"],function(e,r,a,y,o,i,t,c,l,n){function p(e,r,a,y){var o=b[r.type];return o?new o(e,r,a,y):(s.error("GraphicsLayerFactory#make","unknown symbol type "+r.type),null)}Object.defineProperty(r,"__esModule",{value:!0});var s=a.getLogger("esri.views.3d.layers.graphics.Graphics3DSymbolLayerFactory");r.make=p;var b={icon:y,object:o,line:i,path:t,fill:c,extrude:l,text:n}});
+define(["require","exports","../../../../core/Logger","./Graphics3DExtrudeSymbolLayer","./Graphics3DIconSymbolLayer","./Graphics3DLineSymbolLayer","./Graphics3DMeshFillSymbolLayer","./Graphics3DObjectSymbolLayer","./Graphics3DPathSymbolLayer","./Graphics3DPolygonFillSymbolLayer","./Graphics3DTextSymbolLayer"],function(e,r,a,y,o,i,l,t,c,p,s){function n(e,r,a,y){var o=m[e.type]&&m[e.type][r.type]||b[r.type];return o?new o(e,r,a,y):(h.error("GraphicsLayerFactory#make","unknown symbol type "+r.type),null)}Object.defineProperty(r,"__esModule",{value:!0});var h=a.getLogger("esri.views.3d.layers.graphics.Graphics3DSymbolLayerFactory");r.make=n;var b={icon:o,object:t,line:i,path:c,fill:p,extrude:y,text:s},m={"mesh-3d":{fill:l}}});

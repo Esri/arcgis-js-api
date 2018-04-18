@@ -1,0 +1,121 @@
+@mixin areaMeasurement3D() {
+  .esri-area-measurement-3d__container {
+    position: relative;
+    padding: $cap_spacing $side_spacing;
+    overflow-y: auto;
+    a {
+      text-decoration: none;
+    }
+    button,
+    [role="button"] {
+      height: $button_height;
+      cursor: pointer;
+      border: none;
+    }
+  }
+
+  .esri-area-measurement-3d__header {
+    position: relative;
+    font-size: $body_text_size;
+    align-items: flex-start;
+    justify-content: space-between;
+    display: flex;
+    flex: 0 0 auto;
+  }
+
+  .esri-area-measurement-3d__header-title,
+  h1.esri-area-measurement-3d__header-title {
+    font-size: $title_text_size;
+    font-weight: $text_weight_title;
+    padding: 8px 0;
+    margin: 0;
+    display: block;
+    flex: 1;
+    word-break: break-word;
+    text-align: left;
+  }
+
+  .esri-area-measurement-3d__header-buttons {
+    padding: 0;
+    margin: 0 0 0 auto; // `auto` here helps place each node at either end of the container node
+    display: flex;
+    button,
+    [role="button"] {
+      width: $button_width;
+      height: $button_height;
+      cursor: pointer;
+      border: none;
+      padding: 8px;
+    }
+  }
+
+  .esri-area-measurement-3d__hint {
+    padding-bottom: 12px;
+  }
+
+  .esri-area-measurement-3d__panel--error {
+    color: $error_text_color;
+  }
+
+  .esri-area-measurement-3d__measurement {
+  }
+
+  .esri-area-measurement-3d__measurement-item {
+    display: flex;
+    align-items: baseline;
+  }
+
+  .esri-area-measurement-3d__measurement-item--disabled {
+    display: flex;
+    color: rgba($text_color, $disabled_opacity);
+  }
+
+  .esri-area-measurement-3d__measurement-item-title {
+    flex: 1;
+    line-height: 24px;
+  }
+
+  .esri-area-measurement-3d__measurement-item-value {
+    flex: 1;
+    line-height: 24px;
+  }
+
+  .esri-area-measurement-3d__units {
+    display: flex;
+    padding-bottom: 12px;
+    align-items: baseline;
+  }
+
+  .esri-area-measurement-3d__units-label {
+    flex: 1;
+    line-height: 24px;
+  }
+
+  .esri-area-measurement-3d__units-select-wrapper {
+    flex: 1;
+  }
+
+  .esri-area-measurement-3d__units-select {
+    width: 100%;
+    padding-right: 2.7em;
+  }
+
+  .esri-button.esri-area-measurement-3d__clear-button {
+    color: $button_color;
+    border: 1px solid $button_color;
+    background-color: $background_color;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+    white-space: nowrap;
+  }
+
+  .esri-button.esri-area-measurement-3d__clear-button:hover {
+    color: $background_color;
+    background-color: $button_hover_color;
+  }
+}
+
+@if $include_AreaMeasurement3D == true {
+  @include areaMeasurement3D();
+}

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({noItemsToDisplay:"Der er ikke nogen elementer at vise på nuværende tidspunkt.",layerInvisibleAtScale:"Usynlig ved det aktuelle målestoksforhold",layerError:"Der opstod en fejl under indlæsning af dette lag",untitledLayer:"Lag uden titel"});
+define({widgetLabel:"Lagliste",noItemsToDisplay:"Der er ikke nogen elementer at vise på nuværende tidspunkt.",layerInvisibleAtScale:"Usynlig ved det aktuelle målestoksforhold",layerError:"Der opstod en fejl under indlæsning af dette lag",untitledLayer:"Lag uden titel"});

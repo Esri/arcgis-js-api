@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../../core/sniff"],function(e,r,t){function n(e){var r=e&&e.symbolLayers;return r?r.some(function(e){var r=e.type;return"object"===r||"path"===r||"extrude"===r}):!1}function o(e,r){var n=r.resource.href,o=!t("esri-canvas-svg-support");return o&&e.styleOrigin&&s.test(n)?n.replace(s,"/resource/png/$1.png"):n}Object.defineProperty(r,"__esModule",{value:!0}),r.isVolumetricSymbol=n,r.getIconHref=o;var s=/\/resource\/(.*?)\.svg$/});
+define(["require","exports","../../core/sniff"],function(e,r,t){function n(e){var r=e&&e.symbolLayers;return!!r&&r.some(function(e){var r=e.type;return"object"===r||"path"===r||"extrude"===r})}function o(e,r){var n=r.resource.href;return!t("esri-canvas-svg-support")&&e.styleOrigin&&s.test(n)?n.replace(s,"/resource/png/$1.png"):n}Object.defineProperty(r,"__esModule",{value:!0}),r.isVolumetricSymbol=n,r.getIconHref=o;var s=/\/resource\/(.*?)\.svg$/});

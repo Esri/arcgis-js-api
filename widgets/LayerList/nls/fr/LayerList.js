@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({noItemsToDisplay:"Aucun élément à afficher actuellement.",layerInvisibleAtScale:"Invisible à l’échelle actuelle",layerError:"Une erreur s'est produite lors du chargement de cette couche",untitledLayer:"Couche sans titre"});
+define({widgetLabel:"Liste des couches",noItemsToDisplay:"Aucun élément à afficher actuellement.",layerInvisibleAtScale:"Invisible à l’échelle actuelle",layerError:"Une erreur s'est produite lors du chargement de cette couche",untitledLayer:"Couche sans titre"});

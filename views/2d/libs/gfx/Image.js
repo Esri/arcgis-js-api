@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/extendsHelper","dojox/gfx/_base","./Shape","./svg"],function(e,t,r,s,i,n){Object.defineProperty(t,"__esModule",{value:!0});var o=function(e){function t(t){var r=e.call(this)||this;return r.shape=s.getDefault("Image"),r.rawNode=t,r}return r(t,e),t.prototype.setShape=function(e){this.shape=s.makeParameters(this.shape,e),this.bbox=null;var t=this.rawNode;for(var r in this.shape)if("type"!==r&&"src"!==r){var i=this.shape[r];("width"===r||"height"===r)&&(i=0>i?0:i),t.setAttribute(r,i)}return t.setAttribute("preserveAspectRatio","none"),n._setAttributeNS(t,n.xmlns.xlink,"xlink:href",this.shape.src),t.__gfxObject__=this,this},t.prototype.getBoundingBox=function(){return this.shape},t.prototype.setStroke=function(){return this},t.prototype.setFill=function(){return this},t.nodeType="image",t}(i["default"]);t["default"]=o});
+define(["require","exports","../../../../core/tsSupport/extendsHelper","dojox/gfx/_base","./Shape","./svg"],function(e,t,r,s,i,n){Object.defineProperty(t,"__esModule",{value:!0});var o=function(e){function t(t){var r=e.call(this)||this;return r.shape=s.getDefault("Image"),r.rawNode=t,r}return r(t,e),t.prototype.setShape=function(e){this.shape=s.makeParameters(this.shape,e),this.bbox=null;var t=this.rawNode;for(var r in this.shape)if("type"!==r&&"src"!==r){var i=this.shape[r];"width"!==r&&"height"!==r||(i=i<0?0:i),t.setAttribute(r,i)}return t.setAttribute("preserveAspectRatio","none"),n._setAttributeNS(t,n.xmlns.xlink,"xlink:href",this.shape.src),t.__gfxObject__=this,this},t.prototype.getBoundingBox=function(){return this.shape},t.prototype.setStroke=function(){return this},t.prototype.setFill=function(){return this},t.nodeType="image",t}(i.default);t.default=o});

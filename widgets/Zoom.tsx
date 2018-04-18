@@ -31,21 +31,31 @@
 /// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
 /// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
 
-import { aliasOf, subclass, declared, property } from "../core/accessorSupport/decorators";
-import { tsx, renderable } from "./support/widget";
+// dojo
+import * as i18n from "dojo/i18n!./Zoom/nls/Zoom";
 
-import Widget = require("./Widget");
-import IconButton = require("./Zoom/IconButton");
-import ZoomViewModel = require("./Zoom/ZoomViewModel");
+// esri.core.accessorSupport
+import { aliasOf, subclass, declared, property } from "../core/accessorSupport/decorators";
+
+// esri.views
 import View = require("../views/View");
 
-import * as i18n from "dojo/i18n!./Zoom/nls/Zoom";
+// esri.widgets
+import Widget = require("./Widget");
+
+// esri.widgets.Zoom
+import IconButton = require("./Zoom/IconButton");
+import ZoomViewModel = require("./Zoom/ZoomViewModel");
+
+// esri.widgets.support
+import { tsx, renderable } from "./support/widget";
 
 const CSS = {
   base: "esri-zoom esri-widget",
   horizontalLayout: "esri-zoom--horizontal",
   zoomInIcon: "esri-icon-plus",
-  zoomOutIcon: "esri-icon-minus"
+  zoomOutIcon: "esri-icon-minus",
+  widgetIcon: "esri-icon-zoom-in-magnifying-glass"
 };
 
 type Layout = "vertical" | "horizontal";
@@ -99,6 +109,38 @@ class Zoom extends declared(Widget) {
   //  Properties
   //
   //--------------------------------------------------------------------------
+
+  //----------------------------------
+  //  iconClass
+  //----------------------------------
+
+  /**
+   * The widget's default icon font.
+   *
+   * @since 4.7
+   * @name iconClass
+   * @instance
+   * @type {string}
+   * @readonly
+   */
+  @property()
+  iconClass = CSS.widgetIcon;
+
+  //----------------------------------
+  //  label
+  //----------------------------------
+
+  /**
+   * The widget's default label.
+   *
+   * @since 4.7
+   * @name label
+   * @instance
+   * @type {string}
+   * @readonly
+   */
+  @property()
+  label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  layout

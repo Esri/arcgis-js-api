@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({title:"Zmierz",hint:"Rozpocznij pomiar, klikając w scenie, aby umiejscowić pierwszy punkt",distance:"Odległość",direct:"Bezpośrednio",horizontal:"Poziomo",vertical:"Pionowo",unit:"Jednostka",newMeasurement:"Nowy pomiar",units:{metric:"Metryczne",imperial:"Angielskie",kilometers:"Kilometry",meters:"Metry",miles:"Mile",inches:"Cale",feet:"Stopy",yards:"Jardy","nautical-miles":"Mile morskie","us-feet":"Stopy (US)","degrees-minutes-seconds":"Stopnie-Minuty-Sekundy (DMS)",degrees:"Stopnie"}});
+define({title:"Zmierz",hint:"Rozpocznij pomiar, klikając w scenie, aby umiejscowić pierwszy punkt",unsupported:"Bezpośredni pomiar linii nie jest obsługiwany w przeglądarce map.",distance:"Odległość",direct:"Bezpośrednio",horizontal:"Poziomo",vertical:"Pionowo",unit:"Jednostka",newMeasurement:"Nowy pomiar",units:{metric:"Metryczne",imperial:"Angielskie",kilometers:"Kilometry",meters:"Metry",miles:"Mile",inches:"Cale",feet:"Stopy",yards:"Jardy","nautical-miles":"Mile morskie","us-feet":"Stopy (US)","degrees-minutes-seconds":"Stopnie-Minuty-Sekundy (DMS)",degrees:"Stopnie"}});

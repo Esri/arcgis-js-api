@@ -3,6 +3,13 @@
   // YF TODO: (doc)
 -->
 <snippets>
+  <snippet name="thinLineParams">
+     <![CDATA[
+    float thinLineHalfWidth = 1.0; // meaning that a 2 pixels line width is considered a thin line
+    float thinLineWidthFactor = 1.1;
+     ]]>
+  </snippet>
+
   <snippet name="lineVVUniformsVS">
     <![CDATA[
   #if defined(VV_COLOR) || defined(VV_SIZE_MIN_MAX_VALUE) || defined(VV_SIZE_SCALE_STOPS) || defined(VV_SIZE_FIELD_STOPS) || defined(VV_SIZE_UNIT_VALUE) || defined(VV_OPACITY)
@@ -131,21 +138,20 @@
      // u_normalized_origin is the tile's upper left corner given in normalized coordinates
      uniform highp vec2 u_normalized_origin;
      uniform lowp float u_opacity; // the layer's opacity
-     uniform mediump float u_tileCoordRatio;
+     uniform mediump float u_zoomFactor;
      uniform mediump float u_antialiasing;
 
      // the interpolated normal to the line. the information is packed into the two LSBs of the vertex coordinate
      varying mediump vec2 v_normal;
-     // the accumulated distance along the line. We need this information in order to render the dashes.
-     varying highp float v_accumulatedDistance;
      varying mediump float v_lineHalfWidth;
      varying lowp vec4 v_color;
      varying lowp float v_transparency;
 
-#ifdef SDF
-     const float scale = 1.0 / 15.5;
-#else
      const float scale = 1.0 / 31.0;
+#ifdef SDF
+     const float widthFactor = 2.0;
+#else
+     const float widthFactor = 1.0;
 #endif
 
 
@@ -155,6 +161,11 @@
      varying mediump vec4 v_tlbr; // normalized pattern coordinates [0, 1]
      varying mediump vec2 v_patternSize;
 #endif // PATTERN
+
+// we need to accumulated distance only if it is a pattern or an SDF line
+#if defined(PATTERN) || defined(SDF)
+     varying highp float v_accumulatedDistance;
+#endif // PATTERN SDF
 
 #ifdef ID
      varying highp vec4 v_id;
@@ -189,14 +200,6 @@
        mediump float lineHalfWidth = a_accumulatedDistanceAndHalfWidth.y * scale;
 #endif // defined(VV_SIZE_MIN_MAX_VALUE) || defined(VV_SIZE_SCALE_STOPS) || defined(VV_SIZE_FIELD_STOPS) || defined(VV_SIZE_UNIT_VALUE)
 
-#ifdef HIGHLIGHT
-       // TODO: Decide what to do here. Do we want the
-       // highlight of line features to be slighly larger
-       // than the feature itself, when the line is too
-       // thin?
-       // lineHalfWidth = max(lineHalfWidth, 3.0);
-#endif
-
 #ifdef VV_OPACITY
       v_transparency = u_opacity * getVVOpacity(a_vv.z);
 #else
@@ -212,21 +215,31 @@
        // make sure to clip the vertices in case that the width of the line is 0 (or negative)
        float z = 2.0 * step(lineHalfWidth, 0.0);
 
-       // add the antialiasing factor to the line width. Limit the line width to 0.5 pixels (otherwise it does not look good)
-       lineHalfWidth = max(lineHalfWidth, 0.5) + u_antialiasing;
+       // add an antialiasing distance. We use 0.2 rather than 0.5 in order to match the SVG renderer
+       // also limit the total line width to 1.3 pixels. Below this value lines don't look good compared to the SVG renderer
+       lineHalfWidth = max(lineHalfWidth, 0.45) + 0.2 * u_antialiasing;
+
+       // include the thin line parameters (thinLineHalfWidth and thinLineWidthFactor)
+       $thinLineParams
+       // for now assume that a thin line is a line which is under 2 pixels (1 pixels on either sides of the centerline)
+       // in practice, a thin line is a line who's half width vary from 0.45px to the value of thinLineHalfWidth, as the value
+       // is claped in line 221 above
+       mediump float thinLineFactor = max(thinLineWidthFactor * step(lineHalfWidth, thinLineHalfWidth), 1.0);
 
        v_lineHalfWidth = lineHalfWidth;
 
        // calculate the relative distance from the centerline to the edge of the line. Since offset is given in integers (for the
-       // sake of using less attribute memory, we need to scale it back to the original range of ~ 0: 1)
-       mediump vec2 dist = lineHalfWidth * a_offsetAndNormal.xy * scale;
+       // sake of using less attribute memory, we need to scale it back to the original range of ~ [0, 1])
+       // in a case of a thin line we move each vertex twice as far
+       mediump vec2 dist = thinLineFactor * widthFactor * lineHalfWidth * a_offsetAndNormal.xy * scale;
 
        // transform the vertex
        gl_Position = vec4(u_normalized_origin, 0.0, 0.0) + u_transformMatrix * vec4(a_pos, z, 1.0) + u_extrudeMatrix * vec4(dist, 0.0, 0.0);
-
-       // the accumulated distance will be used to calculate the dashes (or the no-data...)
-       v_accumulatedDistance = a_accumulatedDistanceAndHalfWidth.x + dot(scale * a_segmentDirection.xy, dist / u_tileCoordRatio);
        v_normal = a_offsetAndNormal.zw * scale;
+
+#if defined(PATTERN) || defined(SDF)
+       v_accumulatedDistance = a_accumulatedDistanceAndHalfWidth.x + dot(scale * a_segmentDirection.xy, dist / u_zoomFactor);
+#endif // PATTERN || SDF
 
 #ifdef PATTERN
       v_tlbr = vec4(a_tlbr.x / u_mosaicSize.x, a_tlbr.y / u_mosaicSize.y, a_tlbr.z / u_mosaicSize.x, a_tlbr.w / u_mosaicSize.y);
@@ -248,22 +261,22 @@
        uniform mediump float u_antialiasing;
 
        varying mediump vec2 v_normal;
-       varying highp float v_accumulatedDistance;
        varying mediump float v_lineHalfWidth;
        varying lowp vec4 v_color;
        varying lowp float v_transparency;
 
 #if defined(PATTERN) || defined(SDF)
       uniform sampler2D u_texture;
+      uniform mediump float u_zoomFactor;
 
       varying mediump vec4 v_tlbr; // normalized pattern coordinates [0, 1]
       varying mediump vec2 v_patternSize;
-      uniform mediump float u_zoomFactor;
-      uniform mediump float u_tileCoordRatio;
-#endif // PATTERN
+      varying highp float v_accumulatedDistance;
+#endif // PATTERN SDF
 
 #ifdef SDF
-      const float sdfPatternHalfWidth = 15.5; // YF: assumed that the width will be set to 32
+      const float sdfPatternHalfWidth = 15.5; // YF: assumed that the width will be set to 31
+     const float widthFactor = 2.0;
 
       float rgba2float(vec4 rgba) {
         return dot(rgba,  vec4(1.0/16777216.0, 1.0/65535.0, 1.0/256.0, 1.0));
@@ -276,8 +289,11 @@
 
        void main()
        {
-          // add an antialiasing factor as long as we are under two pixels
-          mediump float antialiasingFactor = u_antialiasing * step(v_lineHalfWidth, 2.0);
+         // include the thin line parameters (thinLineHalfWidth and thinLineWidthFactor)
+         $thinLineParams
+
+         // for now assume that a thin line is a line which is under 2 pixels (1 pixels on either sides of the centerline)
+         mediump float thinLineFactor = max(thinLineWidthFactor * step(v_lineHalfWidth, thinLineHalfWidth), 1.0);
 
          // dist represent the distance of the fragment from the line. 1.0 or -1.0 will be the values on the edge of the line,
          // and any value in between will be inside the line (the sign represent the direction - right or left).
@@ -285,11 +301,13 @@
          mediump float fragDist = length(v_normal) * v_lineHalfWidth;
 
          // calculate the alpha given the difference between the line-width and the distance of the fragment from the center-line.
-         lowp float alpha = clamp((v_lineHalfWidth - fragDist - 0.5 * antialiasingFactor) / (u_blur + 2.0 * antialiasingFactor), 0.0, 1.0);
+         // when it is a thin line then use a slightly shallower slope in order to add more feathering
+         lowp float alpha = clamp(thinLineFactor * (v_lineHalfWidth - fragDist) / (u_blur + thinLineFactor - 1.0), 0.0, 1.0);
 
 #if defined(SDF)
-         mediump float lineWidthRatio = v_lineHalfWidth / sdfPatternHalfWidth;
-         mediump float relativeTexX = mod((u_zoomFactor * u_tileCoordRatio * v_accumulatedDistance + v_normal.x * v_lineHalfWidth) / (lineWidthRatio * v_patternSize.x), 1.0);
+         mediump float lineHalfWidth = widthFactor * v_lineHalfWidth;
+         mediump float lineWidthRatio = lineHalfWidth / sdfPatternHalfWidth;
+         mediump float relativeTexX = mod((u_zoomFactor * v_accumulatedDistance + v_normal.x * lineHalfWidth) / (lineWidthRatio * v_patternSize.x), 1.0);
          mediump float relativeTexY = 0.5 + 0.5 * v_normal.y;
 
           // claculate the actual texture coordinates by interpolating between the TL/BR pattern coordinates
@@ -299,14 +317,14 @@
          mediump float d = rgba2float(texture2D(u_texture, texCoord)) - 0.5;
 
          // the distance is a proportional to the line width
-         float dist = d * v_lineHalfWidth;
+         float dist = d * lineHalfWidth;
 
          lowp vec4 fillPixelColor = v_transparency * alpha * clamp(0.5 - dist, 0.0, 1.0) * v_color;
         gl_FragColor = fillPixelColor;
 #elif defined(PATTERN)
          // we need to calculate the relative portion of the line texture along the line given the accumulated distance along the line
          // The computed value should is anumber btween 0 and 1 which will later be used to interpolate btween the BR and TL values
-         mediump float relativeTexX = mod((u_zoomFactor * u_tileCoordRatio * v_accumulatedDistance + v_normal.x * v_lineHalfWidth) / v_patternSize.x, 1.0);
+         mediump float relativeTexX = mod((u_zoomFactor * v_accumulatedDistance + v_normal.x * v_lineHalfWidth) / v_patternSize.x, 1.0);
 
          // in order to calculate the texture coordinates prependicular to the line (Y axis), we use the interpolated normal values
          // which range from -1.0 to 1.0. On the line's centerline, the value of the interpolated normal is 0.0, however the relative

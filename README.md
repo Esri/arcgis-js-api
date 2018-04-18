@@ -12,29 +12,13 @@ Building an ArcGIS API for JavaScript application requires signing up for an [Ar
 
 `npm install arcgis-js-api`
 
-Or
-
-`bower install arcgis-js-api`
 
 ## Requirements
 
-To install and use as a `bower` or `npm` installation:
+To install and use as a `npm`:
 
 * [node](http://nodejs.org/)
 * [git](http://git-scm.org/)
-* [bower](http://bower.io/)
-
-This repo has dependencies on the following repos.
-
-| Library | Repo | Submodule path |
-| :------ |:---- |:-------------- |
-| dojo  | https://github.com/Esri/dojo/tree/1.13.0-esri   | /dojo |
-| dijit | https://github.com/Esri/dijit/tree/1.13.0-esri  | /dijit |
-| dojox | https://github.com/Esri/dojox/tree/1.13.0-esri  | /dojox |
-| util | https://github.com/Esri/dojo-util/tree/1.13.0-esri    | /util |
-| dgrid | https://github.com/Esri/dgrid/tree/1.2.1-esri  | /dgrid |
-| dstore | https://github.com/SitePen/dstore/tree/v1.1.2 | /dstore |
-| moment | https://github.com/moment/moment/tree/2.19.2 | /moment |
 
 Please see our [recommended guide](https://developers.arcgis.com/javascript/latest/guide/using-bower/index.html).
 
@@ -52,7 +36,7 @@ Find a bug or want to request a new feature?  Please refer to [support.esri.com]
 For assistance, please refer to [support.esri.com](http://support.esri.com/).
 
 ## Licensing
-COPYRIGHT © 2017 Esri
+COPYRIGHT © 2018 Esri
 
 All rights reserved under the copyright laws of the United States
 and applicable international laws, treaties, and conventions.

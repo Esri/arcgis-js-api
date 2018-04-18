@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({noItemsToDisplay:"Tidak ada item untuk ditampilkan saat ini.",layerInvisibleAtScale:"Tidak terlihat pada skala saat ini",layerError:"Terjadi kesalahan saat memuat layer ini",untitledLayer:"Layer tanpa judul"});
+define({widgetLabel:"Daftar Layer",noItemsToDisplay:"Tidak ada item untuk ditampilkan saat ini.",layerInvisibleAtScale:"Tidak terlihat pada skala saat ini",layerError:"Terjadi kesalahan saat memuat layer ini",untitledLayer:"Layer tanpa judul"});

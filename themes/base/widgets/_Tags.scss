@@ -1,5 +1,5 @@
 .esri-tags .select2-container-multi .select2-choices {
-  list-style-type:none;
+  list-style-type: none;
 }
 
 .esri-tags .select2-container-multi .select2-choices .select2-search-choice {
@@ -9,15 +9,15 @@
   line-height: 13px;
   color: #333;
   cursor: default;
-  border: 1px solid #7FBBDF;
-  display:inline-block;
+  border: 1px solid #7fbbdf;
+  display: inline-block;
   border-radius: 3px;
   box-shadow: 0 0 2px #ffffff inset, 0 1px 0 rgba(0, 0, 0, 0.05);
   -moz-background-clip: padding;
   background-clip: padding-box;
   -webkit-touch-callout: none;
   user-select: none;
-  background-color: #D1E9F9;
+  background-color: #d1e9f9;
   filter: none;
   background-image: none;
 }
@@ -31,7 +31,7 @@
   background-position: -48px -81px;
   width: 13px;
   height: 13px;
-  display:block;
+  display: block;
   position: absolute;
   left: auto;
   right: 3px;
@@ -41,21 +41,25 @@
 }
 
 .esri-tags .select2-search-choice-close:hover,
-.esri-tags .select2-search-choice-close:focus { background-position: -32px -81px; }
+.esri-tags .select2-search-choice-close:focus {
+  background-position: -32px -81px;
+}
 
 .esri-tags .select2-container .dgrid-row.ui-state-default {
-  padding:3px 3px 4px 3px;
-  cursor:pointer;
+  padding: 3px 3px 4px 3px;
+  cursor: pointer;
   outline: none !important;
 }
 
-.esri-tags .select2-container .dgrid-row.ui-state-default.dgrid-row-odd { background:#eee; }
+.esri-tags .select2-container .dgrid-row.ui-state-default.dgrid-row-odd {
+  background: #eee;
+}
 
 .esri-tags .select2-container .dgrid-row.ui-state-default.dgrid-hover,
 .esri-tags .select2-container .dgrid-row.ui-state-default.dgrid-row-odd.dgrid-hover,
 .esri-tags .dgrid-focus,
 .esri-tags .select2-container-multi .select2-choices .select2-search-choice-focus {
-  background: #E1F0FB !important;
+  background: #e1f0fb !important;
 }
 
 .esri-tags .select2-container .dgrid-no-data {
@@ -65,7 +69,9 @@
   text-align: center;
 }
 
-.esri-tags .select2-container .dgrid-scroller { outline: none !important; }
+.esri-tags .select2-container .dgrid-scroller {
+  outline: none !important;
+}
 
 .esri-tags .select2-container-multi .select2-choices .select2-search-choice {
   padding: 3px 20px 3px 3px;
@@ -77,9 +83,13 @@
   float: right;
 }
 
-.dj_rtl .esri-tags .select2-container-multi .select2-search-choice-close { right: auto; left: 3px; }
+.dj_rtl .esri-tags .select2-container-multi .select2-search-choice-close {
+  right: auto;
+  left: 3px;
+}
 
-.esri-tags .dijitReset .dijitInputInner, .esri-tags .dijitInputField {
+.esri-tags .dijitReset .dijitInputInner,
+.esri-tags .dijitInputField {
   /*line-height: 23px;*/
   /*padding: 0 0 2px;*/
   margin-left: 0.3em;
@@ -106,7 +116,8 @@ div.esri-tags {
 }
 
 /* No data in dGrid */
-.esri-tags .dgrid-no-data, .esri-tags .dgrid-loading {
+.esri-tags .dgrid-no-data,
+.esri-tags .dgrid-loading {
   color: #aaa;
   font-size: 2em;
   padding: 1em;
@@ -130,7 +141,7 @@ div.esri-tags {
 }
 
 .esri-tags .dgrid-focus {
-  background-color: #CCCCCC;
+  background-color: #cccccc;
 }
 
 .esri-tags .dijitInputInner {
@@ -192,7 +203,11 @@ div.esri-tags {
   user-select: none;
   background-color: #fff;
   background-image: -ms-linear-gradient(to top, #ffffff 0%, #eeeeee 50%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#eeeeee", GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(
+      startColorstr="#ffffff",
+      endColorstr="#eeeeee",
+      GradientType=0
+    );
   background-image: linear-gradient(to top, #ffffff 0%, #eeeeee 50%);
 }
 
@@ -229,8 +244,10 @@ div.esri-tags {
   border-radius: 0;
   box-shadow: none;
   background: #fff url("../base/images/select.png") no-repeat 100% -22px;
-  background: url("../base/images/select.png") no-repeat 100% -22px, -ms-linear-gradient(to top, #ffffff 85%, #eeeeee 99%);
-  background: url("../base/images/select.png") no-repeat 100% -22px, linear-gradient(to top, #ffffff 85%, #eeeeee 99%);
+  background: url("../base/images/select.png") no-repeat 100% -22px,
+    -ms-linear-gradient(to top, #ffffff 85%, #eeeeee 99%);
+  background: url("../base/images/select.png") no-repeat 100% -22px,
+    linear-gradient(to top, #ffffff 85%, #eeeeee 99%);
 }
 
 /* multiselect */
@@ -252,7 +269,7 @@ div.esri-tags {
 .esri-tags .select2-container-multi.select2-container-active .select2-choices {
   border: 1px solid #5897fb;
   outline: none;
-  box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 .esri-tags .select2-container-multi .select2-choices li {
@@ -382,7 +399,7 @@ div.esri-tags {
 
 .esri-tags .grid_1,
 .esri-tags .grid_2 {
-  display:inline;
+  display: inline;
   float: left;
   position: relative;
   margin: 0;
@@ -402,27 +419,27 @@ div.esri-tags {
 }
 
 .esri-tags .container_2 .grid_1 {
-  width:48.0%;
+  width: 48%;
 }
 
 .esri-tags .container_2 .grid_2 {
-  width:98.0%;
+  width: 98%;
 }
 
 .esri-tags .container_2 .prefix_1 {
-  padding-left:50.0%;
+  padding-left: 50%;
 }
 
 .esri-tags .container_2 .suffix_1 {
-  padding-right:50.0%;
+  padding-right: 50%;
 }
 
 .esri-tags .container_2 .push_1 {
-  left:50.0%;
+  left: 50%;
 }
 
 .esri-tags .container_2 .pull_1 {
-  left:-50.0%;
+  left: -50%;
 }
 
 /* http://sonspring.com/journal/clearing-floats */

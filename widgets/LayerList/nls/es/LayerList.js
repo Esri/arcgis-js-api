@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({noItemsToDisplay:"No existen elementos disponibles actualmente para mostrar.",layerInvisibleAtScale:"Invisible en la escala actual",layerError:"Se ha producido un error al cargar esta capa",untitledLayer:"Capa sin título"});
+define({widgetLabel:"Lista de capas",noItemsToDisplay:"No existen elementos disponibles actualmente para mostrar.",layerInvisibleAtScale:"Invisible en la escala actual",layerError:"Se ha producido un error al cargar esta capa",untitledLayer:"Capa sin título"});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({searchButtonTitle:"Išči",clearButtonTitle:"Počisti iskanje",placeholder:"Najdi naslov ali kraj",searchIn:"Poišči v",all:"Vse",allPlaceholder:"Najdi naslov ali kraj",emptyValue:"Vnesite iskalni izraz.",untitledResult:"Neimenovano",untitledSource:"Neimenovan vir",noResults:"Ni rezultatov",noResultsFound:"Ni najdenih rezultatov.",noResultsFoundForValue:"Ni najdenih rezultatov za {value}.",showMoreResults:"Prikaži več rezultatov",hideMoreResults:"Skrij",searchResult:"Iskani rezultat",moreResultsHeader:"Več rezultatov",esriLocatorName:"Esrijev globalni geokodirnik",useCurrentLocation:"Uporabi trenutno lokacijo"});
+define({widgetLabel:"Išči",searchButtonTitle:"Išči",clearButtonTitle:"Počisti iskanje",placeholder:"Najdi naslov ali kraj",searchIn:"Poišči v",all:"Vse",allPlaceholder:"Najdi naslov ali kraj",emptyValue:"Vnesite iskalni izraz.",untitledResult:"Neimenovano",untitledSource:"Neimenovan vir",noResults:"Ni rezultatov",noResultsFound:"Ni najdenih rezultatov.",noResultsFoundForValue:"Ni najdenih rezultatov za {value}.",showMoreResults:"Prikaži več rezultatov",hideMoreResults:"Skrij",searchResult:"Iskani rezultat",moreResultsHeader:"Več rezultatov",esriLocatorName:"Esrijev globalni geokodirnik",useCurrentLocation:"Uporabi trenutno lokacijo"});

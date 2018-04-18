@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["dojo/_base/lang","../request","../geometry/support/normalizeUtils","./Task","./support/IdentifyResult"],function(e,r,t,s,n){var i=s.createSubclass({declaredClass:"esri.tasks.IdentifyTask",properties:{gdbVersion:{value:null,type:String},parsedUrl:{get:function(){var e=this._parseUrl(this.url);return e.path+="/identify",e}},url:{}},execute:function(s,n){var i=s.geometry?[s.geometry]:[];return t.normalizeCentralMeridian(i).then(function(t){var i=this._encode(e.mixin({},this.parsedUrl.query,{f:"json"},s.toJSON({geometry:t&&t[0]})));this.gdbVersion&&(i.gdbVersion=this.gdbVersion);var a={query:i,callbackParamName:"callback"};return(this.requestOptions||n)&&(a=e.mixin({},this.requestOptions,n,a)),r(this.parsedUrl.path,a)}.bind(this)).then(this._handleExecuteResponse)},_handleExecuteResponse:function(e){var r=e.data,t=r.results||[];return r.results=t.map(function(e){return n.fromJSON(e)}),r}});return i});
+define(["dojo/_base/lang","../request","../geometry/support/normalizeUtils","./Task","./support/IdentifyResult"],function(e,t,r,s,n){return s.createSubclass({declaredClass:"esri.tasks.IdentifyTask",properties:{gdbVersion:{value:null,type:String},parsedUrl:{get:function(){var e=this._parseUrl(this.url);return e.path+="/identify",e}},url:{}},execute:function(s,n){var i=s.geometry?[s.geometry]:[];return r.normalizeCentralMeridian(i).then(function(r){var i=this._encode(e.mixin({},this.parsedUrl.query,{f:"json"},s.toJSON({geometry:r&&r[0]})));this.gdbVersion&&(i.gdbVersion=this.gdbVersion);var a={query:i,callbackParamName:"callback"};return(this.requestOptions||n)&&(a=e.mixin({},this.requestOptions,n,a)),t(this.parsedUrl.path,a)}.bind(this)).then(this._handleExecuteResponse)},_handleExecuteResponse:function(e){var t=e.data,r=t.results||[];return t.results=r.map(function(e){return n.fromJSON(e)}),t}})});

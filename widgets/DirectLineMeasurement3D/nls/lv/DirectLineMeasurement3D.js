@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({title:"Mērīt",hint:"Sāciet mērīt, noklikšķinot scēnā, lai novietotu pirmo punktu",distance:"Attālums",direct:"Virziens",horizontal:"Horizontāli",vertical:"Vertikāli",unit:"Mērvienība",newMeasurement:"Jauns mērījums",units:{metric:"Metriskā",imperial:"Imperiālā",kilometers:"Kilometri",meters:"Metri",miles:"Jūdzes",inches:"Collas",feet:"Pēdas",yards:"Jardi","nautical-miles":"Jūras jūdzes","us-feet":"Pēdas (ASV)","degrees-minutes-seconds":"GMS",degrees:"Grādi"}});
+define({title:"Mērīt",hint:"Sāciet mērīt, noklikšķinot scēnā, lai novietotu pirmo punktu",unsupported:"MapView nav atbalstīta tiešo līniju mērīšana.",distance:"Attālums",direct:"Virziens",horizontal:"Horizontāli",vertical:"Vertikāli",unit:"Mērvienība",newMeasurement:"Jauns mērījums",units:{metric:"Metriskā",imperial:"Imperiālā",kilometers:"Kilometri",meters:"Metri",miles:"Jūdzes",inches:"Collas",feet:"Pēdas",yards:"Jardi","nautical-miles":"Jūras jūdzes","us-feet":"Pēdas (ASV)","degrees-minutes-seconds":"GMS",degrees:"Grādi"}});

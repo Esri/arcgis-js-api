@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({title:"Merenja",hint:"Otpočnite merenja klikom na scenu kako biste namestili prvu tačku",distance:"Rastojanje",direct:"Direktno",horizontal:"Horizontalno",vertical:"Vertikalno",unit:"Jedinica",newMeasurement:"Novo merenje",units:{metric:"Metrika",imperial:"Imperijalne",kilometers:"Kilometri",meters:"Metri",miles:"Milje",inches:"Inči",feet:"Stope",yards:"Jardi","nautical-miles":"Nautičke milje","us-feet":"Stope (SAD)","degrees-minutes-seconds":"DMS",degrees:"Stepeni"}});
+define({title:"Merenja",hint:"Otpočnite merenja klikom na scenu kako biste namestili prvu tačku",unsupported:"Direktno merenje linije nije podržano u aplikaciji MapView.",distance:"Rastojanje",direct:"Direktno",horizontal:"Horizontalno",vertical:"Vertikalno",unit:"Jedinica",newMeasurement:"Novo merenje",units:{metric:"Metrika",imperial:"Imperijalne",kilometers:"Kilometri",meters:"Metri",miles:"Milje",inches:"Inči",feet:"Stope",yards:"Jardi","nautical-miles":"Nautičke milje","us-feet":"Stope (SAD)","degrees-minutes-seconds":"DMS",degrees:"Stepeni"}});

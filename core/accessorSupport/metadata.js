@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports"],function(e,a){function t(e){return null!=e.__accessorMetadata__}function r(e){return t(e)&&null!=o(e).properties}function n(e,a){return r(e)&&null!=s(e)[a]}function u(e,a){return t(e)&&null!=o(e).parameters&&null!=o(e).parameters[a]}function o(e){return e.__accessorMetadata__||Object.defineProperty(e,"__accessorMetadata__",{value:{},enumerable:!0,configurable:!0,writable:!0}),e.__accessorMetadata__}function s(e){var a=o(e),t=a.properties;return t||(t=a.properties={}),t}function i(e,a){var t=s(e),r=t[a];return r||(r=t[a]={}),r}function c(e,a,t){var r=s(e);r[a]=t}function d(e,a){var t=o(e),r=t.parameters;r||(r=t.parameters={});var n=r[a];return n||(n=[],r[a]=n),n}function p(e,a,t){var r=d(e,a)[t];return r||(d(e,a)[t]=r={index:t}),r}Object.defineProperty(a,"__esModule",{value:!0}),a.hasMetadata=t,a.hasPropertiesMetadata=r,a.hasPropertyMetadata=n,a.hasParametersMetadata=u,a.getMetadata=o,a.getPropertiesMetadata=s,a.getPropertyMetadata=i,a.setPropertyMetadata=c,a.getParametersMetadata=d,a.getParameterMetadata=p});
+define(["require","exports"],function(e,t){function a(e){return null!=e.__accessorMetadata__}function r(e){return a(e)&&null!=o(e).properties}function n(e,t){return r(e)&&null!=s(e)[t]}function u(e,t){return a(e)&&null!=o(e).parameters&&null!=o(e).parameters[t]}function o(e){return e.__accessorMetadata__||Object.defineProperty(e,"__accessorMetadata__",{value:{},enumerable:!0,configurable:!0,writable:!0}),e.__accessorMetadata__}function s(e){var t=o(e),a=t.properties;return a||(a=t.properties={}),a}function i(e,t){var a=s(e),r=a[t];return r||(r=a[t]={}),r}function c(e,t,a){s(e)[t]=a}function d(e,t){var a=o(e),r=a.parameters;r||(r=a.parameters={});var n=r[t];return n||(n=[],r[t]=n),n}function p(e,t,a){var r=d(e,t)[a];return r||(d(e,t)[a]=r={index:a}),r}Object.defineProperty(t,"__esModule",{value:!0}),t.hasMetadata=a,t.hasPropertiesMetadata=r,t.hasPropertyMetadata=n,t.hasParametersMetadata=u,t.getMetadata=o,t.getPropertiesMetadata=s,t.getPropertyMetadata=i,t.setPropertyMetadata=c,t.getParametersMetadata=d,t.getParameterMetadata=p});

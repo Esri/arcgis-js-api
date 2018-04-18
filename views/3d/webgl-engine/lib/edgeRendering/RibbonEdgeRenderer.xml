@@ -1,0 +1,683 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<snippets>
+
+<snippet name="vsRibbonEdgeSketch"><![CDATA[
+#if defined(SKETCH) || defined(UBER)
+
+uniform vec2 uStrokesTextureScale;
+uniform float uStrokesLog2Resolution;
+uniform float uStrokeVariants;
+
+varying vec2 vStrokeUV;
+varying float vLineIndex;
+
+  void calculateStyleOutputsSketch(float lineLength, UnpackedAttributes unpackedAttributes) {
+    vec2 sidenessNorm = unpackedAttributes.sidenessNorm;
+
+    float lineIndex = clamp(ceil(log2(lineLength)), 0.0, uStrokesLog2Resolution);
+
+    vStrokeUV = vec2(exp2(lineIndex) * sidenessNorm.y, lineIndex * uStrokeVariants + variantStroke + 0.5) * uStrokesTextureScale;
+    vStrokeUV.x += variantOffset;
+
+    vLineIndex = lineIndex;
+  }
+
+#endif /* SKETCH || UBER */
+
+#ifdef SKETCH
+
+  void calculateStyleOutputs(vec4 viewPosV0, vec4 viewPosV1, vec4 worldPosV0, vec4 worldPosV1, vec4 projPos, vec3 worldNormal, UnpackedAttributes unpackedAttributes) {
+    calculateStyleOutputsSketch(vLineLengthPixels, unpackedAttributes);
+  }
+
+#endif /* SKETCH */
+
+]]></snippet>
+
+<snippet name="vsRibbonEdgeEmissiveLighting"><![CDATA[
+
+#if defined(EMISSIVE_LIGHTING) || defined(UBER)
+
+  void calculateStyleOutputsEmissive(vec4 viewPosV0, vec4 viewPosV1, vec4 worldPosV0, vec4 worldPosV1, vec4 projPos, vec3 worldNormal, UnpackedAttributes unpackedAttributes) {
+  }
+#endif /* EMISSIVE_LIGHTING || UBER */
+
+#ifdef EMISSIVE_LIGHTING
+
+  void calculateStyleOutputs(vec4 viewPosV0, vec4 viewPosV1, vec4 worldPosV0, vec4 worldPosV1, vec4 projPos, vec3 worldNormal, UnpackedAttributes unpackedAttributes) {
+    calculateStyleOutputsEmissive(viewPosV0, viewPosV1, worldPosV0, worldPosV1, projPos, worldNormal, unpackedAttributes);
+  }
+
+#endif /* EMISSIVE_LIGHTING */
+
+]]></snippet>
+
+<snippet name="vsRibbonEdgeUberLighting">
+<![CDATA[
+
+#ifdef UBER
+
+  varying float vType;
+
+  void calculateStyleOutputs(vec4 viewPosV0, vec4 viewPosV1, vec4 worldPosV0, vec4 worldPosV1, vec4 projPos, vec3 worldNormal, UnpackedAttributes unpackedAttributes) {
+    vType = unpackedAttributes.type;
+
+    if (unpackedAttributes.type == 0.0) {
+      calculateStyleOutputsEmissive(viewPosV0, viewPosV1, worldPosV0, worldPosV1, projPos, worldNormal, unpackedAttributes);
+    }
+    else {
+      calculateStyleOutputsSketch(vLineLengthPixels, unpackedAttributes);
+    }
+  }
+
+#endif /* UBER */
+
+]]></snippet>
+
+<snippet name="vsRibbonEdgeLineAmplitudeRegular"><![CDATA[
+
+#if defined(UBER) || !defined(SKETCH)
+
+  float calculateLineAmplitudeRegular() {
+    return 0.0;
+  }
+
+#endif /* UBER || !SKETCH */
+
+#if !defined(UBER) && !defined(SKETCH)
+
+  float calculateLineAmplitude(UnpackedAttributes unpackedAttributes) {
+    return calculateLineAmplitudeRegular();
+  }
+
+#endif /* !UBER && !SKETCH */
+
+]]></snippet>
+
+<snippet name="vsRibbonEdgeLineAmplitudeSketch"><![CDATA[
+
+#if defined(UBER) || defined(SKETCH)
+
+  uniform float uStrokesAmplitude;
+
+  float calculateLineAmplitudeSketch() {
+    return uStrokesAmplitude;
+  }
+
+#endif /* UBER || SKETCH */
+
+#ifdef SKETCH
+
+  float calculateLineAmplitude(UnpackedAttributes unpackedAttributes) {
+    return calculateLineAmplitudeSketch();
+  }
+
+#endif /* SKETCH */
+
+]]></snippet>
+
+<snippet name="vsRibbonEdgeLineAmplitudeUber"><![CDATA[
+
+#ifdef UBER
+
+  float calculateLineAmplitude(UnpackedAttributes unpackedAttributes) {
+    float type = unpackedAttributes.type;
+
+    if (type <= 0.0) {
+      return calculateLineAmplitudeSketch();
+    }
+    else {
+      return calculateLineAmplitudeRegular();
+    }
+  }
+
+#endif /* UBER */
+
+]]></snippet>
+
+<snippet name="vsRibbonEdge"><![CDATA[
+  $vsprecisionf
+
+  // Transformations
+  uniform mat4 uProj;
+  uniform mat4 uView;
+  uniform mat4 uModel;
+  uniform vec3 uCameraPosition;
+
+  // Line configuration
+
+#ifndef UBER
+
+  uniform int uLineWidth;
+  uniform int uExtensionLength;
+
+#endif
+
+  // Conversion constants
+  uniform vec2 uPixelToNDC;
+  uniform vec2 uNDCToPixel;
+
+  // Inputs
+  attribute vec3 position0;
+  attribute vec3 position1;
+  attribute float variantOffset;
+  attribute float variantStroke;
+  attribute float variantExtension;
+
+#ifdef SILHOUETTE
+
+  attribute vec3 normalA;
+  attribute vec3 normalB;
+
+#else /* SILHOUETTE */
+
+  attribute vec3 normal;
+
+#endif /* SILHOUETTE */
+
+attribute vec2 sidenessAtt;
+attribute vec2 packedAttributes;
+
+struct UnpackedAttributes {
+  vec2 sideness;
+  vec2 sidenessNorm;
+  float lineWidthPixels;
+  float extensionLengthPixels;
+
+#ifdef UBER
+
+  float type;
+
+#endif
+};
+
+  // Output required to compute color
+  varying vec4 vColor;
+
+  // Output required to compute distance to line/caps
+  varying vec3 vPosition;
+  varying float vRadius;
+  varying float vLineLengthPixels;
+  varying float vSizeFalloffFactor;
+
+  $EdgeRendererUtils_adjustProjectedPosition
+
+  $vsRibbonEdgeEmissiveLighting
+  $vsRibbonEdgeSketch
+  $vsRibbonEdgeUberLighting
+
+  $vsRibbonEdgeLineAmplitudeRegular
+  $vsRibbonEdgeLineAmplitudeSketch
+  $vsRibbonEdgeLineAmplitudeUber
+
+  $EdgeRendererUtils_readComponentColor
+  $EdgeRendererUtils_distanceBasedPerspectiveFactor
+  $EdgeRendererUtils_worldNormal
+  $EdgeRendererUtils_extensionFalloff
+
+#ifdef SILHOUETTE
+
+  $EdgeRendererUtils_isSilhouetteEdge
+
+#endif /* SILHOUETTE */
+
+  vec4 calculateGeometricOutputs(vec4 viewPosV0, vec4 viewPosV1, vec4 worldPosV0, vec4 worldPosV1, vec3 worldNormal, UnpackedAttributes unpackedAttributes) {
+    vec2 sideness = unpackedAttributes.sideness;
+    vec2 sidenessNorm = unpackedAttributes.sidenessNorm;
+
+    vec4 viewPos = mix(viewPosV0, viewPosV1, sidenessNorm.y);
+    vec4 projPosV0 = uProj * viewPosV0;
+    vec4 projPosV1 = uProj * viewPosV1;
+    vec4 projPos = uProj * viewPos;
+
+    vec3 screenSpaceLineNDC = (projPosV1.xyz / projPosV1.w - projPosV0.xyz / projPosV0.w);
+    vec2 screenSpaceLinePixels = screenSpaceLineNDC.xy * uNDCToPixel;
+    float lineLengthPixels = length(screenSpaceLinePixels);
+
+    float dzPerPixel = screenSpaceLineNDC.z / lineLengthPixels;
+    vec2 screenSpaceDirection = screenSpaceLinePixels / lineLengthPixels;
+    vec2 perpendicularScreenSpaceDirection = vec2(screenSpaceDirection.y, -screenSpaceDirection.x) * sideness.x;
+
+    float falloffFactor = distanceBasedPerspectiveFactor(-viewPos.z);
+    float lineWidthPixels = unpackedAttributes.lineWidthPixels * falloffFactor;
+
+    float extensionLengthPixels = calculateExtensionLength(unpackedAttributes.extensionLengthPixels, lineLengthPixels) * falloffFactor;
+    float lineAmplitudePixels = calculateLineAmplitude(unpackedAttributes);
+
+    vSizeFalloffFactor = falloffFactor;
+
+    float lineWidthAndAmplitudePixels = lineWidthPixels + lineAmplitudePixels + lineAmplitudePixels;
+    float extendedLineLengthPixels = lineLengthPixels + extensionLengthPixels + extensionLengthPixels;
+
+#ifdef ANTIALIASING
+
+    const float aaPaddingPixels = 1.0;
+
+    // Line size with padding
+    float halfAAPaddedLineWidthAndAmplitudePixels = lineWidthAndAmplitudePixels * 0.5 + aaPaddingPixels;
+    float aaPaddedRoundedCapSizePixels = lineWidthPixels * 0.5 + aaPaddingPixels;
+
+    // Line length with padding
+    float aaPaddedLineLengthPixels = extendedLineLengthPixels + aaPaddingPixels + aaPaddingPixels;
+    float halfAAPaddedLineLengthPixels = aaPaddedLineLengthPixels * 0.5;
+
+#else /* ANTIALIASING */
+
+    // Even if there is no AA, we still want to do proper <1px rendering,
+    // so we effectively clamp the pixel sizes to minimum of 1px and compute
+    // coverage in the fragment shader
+    float halfAAPaddedLineWidthAndAmplitudePixels = max(lineWidthAndAmplitudePixels, 1.0) * 0.5;
+    float aaPaddedRoundedCapSizePixels = max(lineWidthPixels, 1.0) * 0.5;
+
+    float halfAAPaddedLineLengthPixels = max(extendedLineLengthPixels, 1.0) * 0.5;
+
+#endif /* ANTIALIASING */
+
+    // Half line width in NDC including padding for anti aliasing
+    vec2 halfAAPaddedLineWidthAndAmplitudeNDC = halfAAPaddedLineWidthAndAmplitudePixels * uPixelToNDC;
+    vec2 aaPaddedRoundedCapSizeNDC = aaPaddedRoundedCapSizePixels * uPixelToNDC;
+    vec2 extensionLengthNDC = extensionLengthPixels * uPixelToNDC;
+
+    // Compute screen space position of vertex, offsetting for line size and end caps
+    vec2 ndcOffset = (
+        screenSpaceDirection * sideness.y * (aaPaddedRoundedCapSizeNDC + extensionLengthNDC)
+      + perpendicularScreenSpaceDirection * halfAAPaddedLineWidthAndAmplitudeNDC
+    );
+
+    projPos.xy += ndcOffset * projPos.w;
+    projPos.z += (dzPerPixel * (aaPaddedRoundedCapSizePixels + extensionLengthPixels)) * sideness.y * projPos.w;
+
+    projPos = adjustProjectedPosition(projPos, worldNormal, 1.0 + max((lineWidthAndAmplitudePixels - 1.0) * 0.5, 0.0));
+
+    // Line length with end caps
+    float aaPaddedLineWithCapsLengthPixels = extendedLineLengthPixels + aaPaddedRoundedCapSizePixels + aaPaddedRoundedCapSizePixels;
+
+    float pixelPositionAlongLine = aaPaddedLineWithCapsLengthPixels * sidenessNorm.y - aaPaddedRoundedCapSizePixels;
+
+    // Position in pixels with origin at first vertex of line segment
+    vPosition = vec3(
+      halfAAPaddedLineWidthAndAmplitudePixels * sideness.x,
+      pixelPositionAlongLine,
+      pixelPositionAlongLine / extendedLineLengthPixels
+    );
+
+    // The line width radius in pixels
+    vRadius = lineWidthPixels * 0.5;
+    vLineLengthPixels = extendedLineLengthPixels;
+
+#ifdef SILHOUETTE
+
+    gl_Position = isSilhouetteEdge(viewPosV0) ? projPos : vec4(10, 10, 10, 1);
+
+#else /* SILHOUETTE */
+
+    gl_Position = projPos;
+
+#endif /* SILHOUETTE */
+
+#ifdef UBER
+
+    if (unpackedAttributes.type <= 0.0 && lineLengthPixels <= 3.0) {
+      gl_Position = vec4(10, 10, 10, 1);
+    }
+
+#elif defined(SKETCH)
+
+    if (lineLengthPixels <= 3.0) {
+      gl_Position = vec4(10, 10, 10, 1);
+    }
+
+#endif
+
+    return projPos;
+  }
+
+  void calculateColorOutputs() {
+    vColor = readComponentColor();
+  }
+
+#ifdef UBER
+
+#if __VERSION__ != 100
+#define SUPPORTS_BITWISE_OPERATIONS
+#endif
+
+#ifndef SUPPORTS_BITWISE_OPERATIONS
+
+  /**
+   * Returns whether the first bit in x is set (0 or 1) and shifts
+   * the input by one bit.
+   */
+  int isSetAndShift(inout int x) {
+    int isSet = x - 2 * (x / 2);
+    x /= 2;
+
+    return isSet;
+  }
+
+#endif /* SUPPORTS_BITWISE_OPERATIONS */
+
+  UnpackedAttributes unpackAttributes() {
+    int packedTypeAndLineWidth = int(packedAttributes.x);
+    float extensionLengthPixels = float(packedAttributes.y);
+
+#ifndef SUPPORTS_BITWISE_OPERATIONS
+
+    int type = isSetAndShift(packedTypeAndLineWidth);
+    int lineWidthPixels = packedTypeAndLineWidth;
+
+#else /* SUPPORTS_BITWISE_OPERATIONS */
+
+    int type = (packedTypeAndLineWidth ) & 0x01;
+    int lineWidthPixels = (packedTypeAndLineWidth >> 1) & 0xf;
+
+#endif /* SUPPORTS_BITWISE_OPERATIONS */
+
+    vec2 sidenessNorm = sidenessAtt;
+    vec2 sideness = sidenessNorm * 2.0 - 1.0;
+
+    float fType = -float(type) + 0.5; // SOLID (=0) needs to be > 0.0, SKETCHY (=1) needs to be <= 0;
+
+    if (fType <= 0.0) {
+      extensionLengthPixels *= variantExtension * 2.0 - 1.0;
+    }
+
+    return UnpackedAttributes(sideness, sidenessNorm, float(lineWidthPixels), extensionLengthPixels, fType);
+  }
+
+#else /* UBER */
+
+  UnpackedAttributes unpackAttributes() {
+    vec2 sidenessNorm = sidenessAtt;
+    vec2 sideness = sidenessNorm * 2.0 - 1.0;
+    float extensionLengthPixels = float(uExtensionLength);
+
+#ifdef SKETCH
+
+    extensionLengthPixels *= variantExtension * 2.0 - 1.0;
+
+#endif /* SKETCH */
+
+    return UnpackedAttributes(sideness, sidenessNorm, float(uLineWidth), extensionLengthPixels);
+  }
+
+#endif /* UBER */
+
+  void main() {
+
+    UnpackedAttributes unpackedAttributes = unpackAttributes();
+
+    vec4 worldPosV0 = uModel * vec4(position0, 1.0);
+    vec4 worldPosV1 = uModel * vec4(position1, 1.0);
+
+    vec4 viewPosV0 = uView * worldPosV0;
+    vec4 viewPosV1 = uView * worldPosV1;
+
+#ifdef SILHOUETTE
+
+    vec3 worldNormal = silhouetteWorldNormal(normalA, normalB);
+
+#else /* SILHOUETTE */
+
+    vec3 worldNormal = modelToWorldNormal(normal);
+
+#endif /* SILHOUETTE */
+
+    // General geometric computation for all types of edges
+    vec4 projPos = calculateGeometricOutputs(viewPosV0, viewPosV1, worldPosV0, worldPosV1, worldNormal, unpackedAttributes);
+    calculateColorOutputs();
+
+    // Specific computation for different edge styles
+    calculateStyleOutputs(viewPosV0, viewPosV1, worldPosV0, worldPosV1, projPos, worldNormal, unpackedAttributes);
+  }
+]]></snippet>
+
+<snippet name="fsRibbonEdgeEmissiveLighting"><![CDATA[
+
+#if defined(EMISSIVE_LIGHTING) || defined(UBER)
+
+  vec3 evaluateEdgeLightingEmissive(vec2 distance) {
+    return vColor.rgb;
+  }
+
+#endif /* EMISSIVE_LIGHTING || UBER */
+
+#ifdef EMISSIVE_LIGHTING
+
+  vec3 evaluateEdgeLighting(vec2 distance) {
+    return evaluateEdgeLightingEmissive(distance);
+  }
+
+#endif /* EMISSIVE_LIGHTING */
+
+]]></snippet>
+
+<snippet name="fsRibbonEdgeSketchLighting"><![CDATA[
+
+#if defined(SKETCH) || defined(UBER)
+
+  vec3 evaluateEdgeLightingSketch(vec2 distance) {
+    return vColor.rgb;
+  }
+
+#endif /* SKETCH || UBER */
+
+#ifdef SKETCH
+
+  vec3 evaluateEdgeLighting(vec2 distance) {
+    return evaluateEdgeLightingSketch(distance);
+  }
+
+#endif /* SKETCH */
+
+]]></snippet>
+
+<snippet name="fsRibbonEdgeUberLighting"><![CDATA[
+
+#ifdef UBER
+
+  varying float vType;
+
+  vec3 evaluateEdgeLighting(vec2 distance) {
+    if (vType > 0.0) { // EMISSIVE
+      return evaluateEdgeLightingEmissive(distance);
+    }
+    else { // SKETCH
+      return evaluateEdgeLightingSketch(distance);
+    }
+  }
+
+#endif
+
+]]></snippet>
+
+<snippet name="fsRibbonEdgeLineOffsetSketch"><![CDATA[
+
+$rgba2float
+
+#if defined(UBER) || defined(SKETCH)
+
+  uniform sampler2D uStrokesTexture;
+  uniform float uStrokesNormalizationScale;
+
+  varying vec2 vStrokeUV;
+
+  float calculateLineOffsetSketch() {
+    float offsetNorm = rgba2float(texture2D(uStrokesTexture, vStrokeUV));
+    return (offsetNorm - 0.5) * uStrokesNormalizationScale;
+  }
+
+  float calculateLinePressureSketch() {
+
+#ifdef PRESSURE
+
+    return rgba2float(texture2D(uStrokesTexture, vStrokeUV + vec2(0, 0.5)));
+
+#else
+
+    return 1.0;
+
+#endif /* PRESSURE */
+
+  }
+
+#endif /* UBER || SKETCH */
+
+#ifdef SKETCH
+
+  float calculateLineOffset() {
+    return calculateLineOffsetSketch();
+  }
+
+  float calculateLinePressure() {
+    return calculateLinePressureSketch();
+  }
+
+#endif /* SKETCH */
+
+]]></snippet>
+
+<snippet name="fsRibbonEdgeLineOffsetRegular"><![CDATA[
+
+#if defined(UBER) || !defined(SKETCH)
+
+  float calculateLineOffsetRegular() {
+    return 0.0;
+  }
+
+  float calculateLinePressureRegular() {
+    return 1.0;
+  }
+
+#endif /* UBER || !SKETCH */
+
+#if !defined(UBER) && !defined(SKETCH)
+
+  float calculateLineOffset() {
+    return calculateLineOffsetRegular();
+  }
+
+  float calculateLinePressure() {
+    return calculateLinePressureRegular();
+  }
+
+#endif /* !UBER || !SKETCH */
+
+]]></snippet>
+
+<snippet name="fsRibbonEdgeLineOffsetUber"><![CDATA[
+
+#ifdef UBER
+
+  float calculateLineOffset() {
+    if (vType <= 0.0) {
+      return calculateLineOffsetSketch();
+    }
+    else {
+      return calculateLineOffsetRegular();
+    }
+  }
+
+  float calculateLinePressure() {
+
+#ifdef PRESSURE
+
+    if (vType <= 0.0) {
+      return calculateLinePressureSketch();
+    }
+    else {
+      return calculateLinePressureRegular();
+    }
+
+#else
+
+    return calculateLinePressureRegular();
+
+#endif /* PRESSURE */
+
+  }
+
+#endif /* UBER */
+
+]]></snippet>
+
+<snippet name="fsRibbonEdge"><![CDATA[
+  $fsprecisionf
+
+  varying vec4 vColor;
+  varying float vRadius;
+  varying vec3 vPosition;
+  varying float vLineLengthPixels;
+  varying float vSizeFalloffFactor;
+  varying float vLineIndex;
+
+  // At which coverage threshold we discard a fragment completely
+  #define COVERAGE_TEST_THRESHOLD 0.01
+
+  $fsRibbonEdgeEmissiveLighting
+  $fsRibbonEdgeSketchLighting
+  $fsRibbonEdgeUberLighting
+
+  $fsRibbonEdgeLineOffsetRegular
+  $fsRibbonEdgeLineOffsetSketch
+  $fsRibbonEdgeLineOffsetUber
+
+  vec2 lineWithCapsDistance(float radius, vec2 position, float lineLength) {
+    float lineOffset = calculateLineOffset();
+    float positionX = position.x - lineOffset;
+
+    if (radius < 1.0) {
+      // Handle this specifically for subpixel sizes:
+      // 1. Compute correct coverage (note coverage is computed by
+      //    0.5 - dist, so we make sure that that will lead to correct
+      //    subpixel coverage
+      // 2. Ignore rounded caps
+      float coverageX = clamp(min(radius, positionX + 0.5) - max(-radius, positionX - 0.5), 0.0, 1.0);
+      float coverageY = clamp(min(lineLength, position.y + 0.5) - max(0.0, position.y - 0.5), 0.0, 1.0);
+
+      float coverage = min(coverageX, coverageY);
+
+      return vec2(0.5 - coverage, 0.0);
+    }
+    else {
+      // Between -radius -> 0 for start cap, 0 for line, 0 -> radius
+      float positionOnCap = position.y - clamp(position.y, 0.0, lineLength);
+
+      vec2 lineToPosition = vec2(positionX, positionOnCap);
+      return vec2(length(lineToPosition) - radius, positionOnCap / radius);
+    }
+  }
+
+  void main() {
+
+    float radius = vRadius * calculateLinePressure();
+
+    vec2 distance = lineWithCapsDistance(radius, vPosition.xy, vLineLengthPixels);
+    float coverage = clamp(0.5 - distance.x, 0.0, 1.0);
+
+#ifdef ANTIALIASING
+
+    const float coverageLimit = COVERAGE_TEST_THRESHOLD;
+
+#else /* ANTIALIASING */
+
+    // Use subpixel coverage computation when lines get subpixel widths
+    // so we still render them appropriately. Otherwise discard anything
+    // that is not fully within the line
+    float coverageLimit = radius <= 0.5 ? COVERAGE_TEST_THRESHOLD : 0.75;
+
+#endif /* ANTIALIASING */
+
+    if (coverage < coverageLimit) {
+      discard;
+    }
+
+    vec3 shadedColor = evaluateEdgeLighting(distance);
+    float alpha = vColor.a * coverage;
+
+    gl_FragColor = vec4(shadedColor, alpha);
+  }
+]]></snippet>
+
+</snippets>

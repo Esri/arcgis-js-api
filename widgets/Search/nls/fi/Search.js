@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({searchButtonTitle:"Etsi",clearButtonTitle:"Tyhjennä haku",placeholder:"Etsi osoite tai paikka",searchIn:"Hae kohteesta",all:"Kaikki",allPlaceholder:"Etsi osoite tai paikka",emptyValue:"Anna hakutermi.",untitledResult:"Nimetön",untitledSource:"Nimetön lähde",noResults:"Ei tuloksia",noResultsFound:"Tuloksia ei löytynyt.",noResultsFoundForValue:"Kohteelle {value} ei löytynyt tuloksia.",showMoreResults:"Näytä lisää tuloksia",hideMoreResults:"Hide",searchResult:"Hakutulos",moreResultsHeader:"Lisää tuloksia",esriLocatorName:"Esri World Geocoder",useCurrentLocation:"Käytä nykyistä sijaintia"});
+define({widgetLabel:"Hae",searchButtonTitle:"Etsi",clearButtonTitle:"Tyhjennä haku",placeholder:"Etsi osoite tai paikka",searchIn:"Hae kohteesta",all:"Kaikki",allPlaceholder:"Etsi osoite tai paikka",emptyValue:"Anna hakutermi.",untitledResult:"Nimetön",untitledSource:"Nimetön lähde",noResults:"Ei tuloksia",noResultsFound:"Tuloksia ei löytynyt.",noResultsFoundForValue:"Kohteelle {value} ei löytynyt tuloksia.",showMoreResults:"Näytä lisää tuloksia",hideMoreResults:"Hide",searchResult:"Hakutulos",moreResultsHeader:"Lisää tuloksia",esriLocatorName:"Esri World Geocoder",useCurrentLocation:"Käytä nykyistä sijaintia"});

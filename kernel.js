@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","./core/requireUtils","dojo/main","dojo/has"],function(e,n,r,t){function o(){var e=r.config,n=void 0!==e.useDeferredInstrumentation,o=e.has&&void 0!==e.has["config-deferredInstrumentation"],s=e.has&&void 0!==e.has["config-useDeferredInstrumentation"];n||o||s||(t.add("config-deferredInstrumentation",!1,!0,!0),t.add("config-useDeferredInstrumentation",!1,!0,!0))}o();var s={version:"4.6",workerMessages:{request:function(r){return n.when(e,"./request").then(function(e){var n=r.options||{};return n.responseType="array-buffer",e(r.url,n)}).then(function(e){return{data:{data:e.data,ssl:e.ssl},buffers:[e.data]}})}}};return s});
+define(["require","./core/promiseUtils","dojo/main","dojo/has"],function(e,n,r,t){return function(){var e=r.config,n=void 0!==e.useDeferredInstrumentation,s=e.has&&void 0!==e.has["config-deferredInstrumentation"],o=e.has&&void 0!==e.has["config-useDeferredInstrumentation"];n||s||o||(t.add("config-deferredInstrumentation",!1,!0,!0),t.add("config-useDeferredInstrumentation",!1,!0,!0))}(),{version:"4.7",workerMessages:{request:function(r){return n.create(function(n){e(["./request"],n)}).then(function(e){var n=r.options||{};return n.responseType="array-buffer",e(r.url,n)}).then(function(e){return{result:{data:e.data,ssl:e.ssl},transferList:[e.data]}})}}}});

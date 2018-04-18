@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({title:"Meten",hint:"Begin met meten door in de scene te klikken om uw eerste punt te plaatsen",distance:"Afstand",direct:"Direct",horizontal:"Horizontaal",vertical:"Verticaal",unit:"Eenheid",newMeasurement:"Nieuwe meting",units:{metric:"Metrisch",imperial:"Imperiaal",kilometers:"Kilometer",meters:"Meter",miles:"Mijl",inches:"Inch",feet:"Voet",yards:"Yard","nautical-miles":"Zeemijl","us-feet":"Voet (US)","degrees-minutes-seconds":"DMS",degrees:"Graden"}});
+define({title:"Meten",hint:"Begin met meten door in de scene te klikken om uw eerste punt te plaatsen",unsupported:"Directe lijnmeting wordt niet ondersteund in MapView.",distance:"Afstand",direct:"Direct",horizontal:"Horizontaal",vertical:"Verticaal",unit:"Eenheid",newMeasurement:"Nieuwe meting",units:{metric:"Metrisch",imperial:"Imperiaal",kilometers:"Kilometer",meters:"Meter",miles:"Mijl",inches:"Inch",feet:"Voet",yards:"Yard","nautical-miles":"Zeemijl","us-feet":"Voet (US)","degrees-minutes-seconds":"DMS",degrees:"Graden"}});

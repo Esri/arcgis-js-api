@@ -70,21 +70,25 @@
                   {
                     "type": "colorInfo",
                     "field": "idInt",
-                    "minDataValue": 1,
-                    "maxDataValue": 28,
-                    "colors": [
-                      [
-                        255,
-                        0,
-                        0,
-                        255
-                      ],
-                      [
-                        0,
-                        0,
-                        255,
-                        255
-                      ]
+                    "stops": [
+                      {
+                        "value": 1,
+                        "color": [
+                          255,
+                          0,
+                          0,
+                          255
+                        ]
+                      },
+                      {
+                        "value": 28,
+                        "color": [
+                          0,
+                          0,
+                          255,
+                          255
+                        ]
+                      }
                     ]
                   }
                 ],
@@ -216,21 +220,25 @@
                   {
                     "type": "colorInfo",
                     "field": "idInt",
-                    "minDataValue": 1,
-                    "maxDataValue": 28,
-                    "colors": [
-                      [
-                        255,
-                        0,
-                        0,
-                        255
-                      ],
-                      [
-                        0,
-                        0,
-                        255,
-                        255
-                      ]
+                    "stops": [
+                      {
+                        "value": 1,
+                        "color": [
+                          255,
+                          0,
+                          0,
+                          255
+                        ]
+                      },
+                      {
+                        "value": 28,
+                        "color": [
+                          0,
+                          0,
+                          255,
+                          255
+                        ]
+                      }
                     ]
                   }
                 ],
@@ -362,21 +370,25 @@
                   {
                     "type": "colorInfo",
                     "field": "idInt",
-                    "minDataValue": 1,
-                    "maxDataValue": 28,
-                    "colors": [
-                      [
-                        255,
-                        0,
-                        0,
-                        255
-                      ],
-                      [
-                        0,
-                        0,
-                        255,
-                        255
-                      ]
+                    "stops": [
+                      {
+                        "value": 1,
+                        "color": [
+                          255,
+                          0,
+                          0,
+                          255
+                        ]
+                      },
+                      {
+                        "value": 28,
+                        "color": [
+                          0,
+                          0,
+                          255,
+                          255
+                        ]
+                      }
                     ]
                   }
                 ],
@@ -508,21 +520,25 @@
                   {
                     "type": "colorInfo",
                     "field": "idInt",
-                    "minDataValue": 1,
-                    "maxDataValue": 28,
-                    "colors": [
-                      [
-                        255,
-                        0,
-                        0,
-                        255
-                      ],
-                      [
-                        0,
-                        0,
-                        255,
-                        255
-                      ]
+                    "stops": [
+                      {
+                        "value": 1,
+                        "color": [
+                          255,
+                          0,
+                          0,
+                          255
+                        ]
+                      },
+                      {
+                        "value": 28,
+                        "color": [
+                          0,
+                          0,
+                          255,
+                          255
+                        ]
+                      }
                     ]
                   }
                 ],
@@ -654,21 +670,25 @@
                   {
                     "type": "colorInfo",
                     "field": "idInt",
-                    "minDataValue": 1,
-                    "maxDataValue": 28,
-                    "colors": [
-                      [
-                        255,
-                        0,
-                        0,
-                        255
-                      ],
-                      [
-                        0,
-                        0,
-                        255,
-                        255
-                      ]
+                    "stops": [
+                      {
+                        "value": 1,
+                        "color": [
+                          255,
+                          0,
+                          0,
+                          255
+                        ]
+                      },
+                      {
+                        "value": 28,
+                        "color": [
+                          0,
+                          0,
+                          255,
+                          255
+                        ]
+                      }
                     ]
                   }
                 ],
@@ -815,21 +835,25 @@
                   {
                     "type": "colorInfo",
                     "field": "idInt",
-                    "minDataValue": 0,
-                    "maxDataValue": 10,
-                    "colors": [
-                      [
-                        255,
-                        0,
-                        0,
-                        255
-                      ],
-                      [
-                        0,
-                        0,
-                        255,
-                        255
-                      ]
+                    "stops": [
+                      {
+                        "value": 0,
+                        "color": [
+                          255,
+                          0,
+                          0,
+                          255
+                        ]
+                      },
+                      {
+                        "value": 10,
+                        "color": [
+                          0,
+                          0,
+                          255,
+                          255
+                        ]
+                      }
                     ]
                   }
                 ],
@@ -966,21 +990,25 @@
                   {
                     "type": "colorInfo",
                     "field": "idInt",
-                    "minDataValue": 0,
-                    "maxDataValue": 10,
-                    "colors": [
-                      [
-                        255,
-                        0,
-                        0,
-                        255
-                      ],
-                      [
-                        0,
-                        0,
-                        255,
-                        255
-                      ]
+                    "stops": [
+                      {
+                        "value": 0,
+                        "color": [
+                          255,
+                          0,
+                          0,
+                          255
+                        ]
+                      },
+                      {
+                        "value": 10,
+                        "color": [
+                          0,
+                          0,
+                          255,
+                          255
+                        ]
+                      }
                     ]
                   }
                 ],
@@ -1117,21 +1145,25 @@
                   {
                     "type": "colorInfo",
                     "field": "idInt",
-                    "minDataValue": 0,
-                    "maxDataValue": 10,
-                    "colors": [
-                      [
-                        255,
-                        0,
-                        0,
-                        255
-                      ],
-                      [
-                        0,
-                        0,
-                        255,
-                        255
-                      ]
+                    "stops": [
+                      {
+                        "value": 0,
+                        "color": [
+                          255,
+                          0,
+                          0,
+                          255
+                        ]
+                      },
+                      {
+                        "value": 10,
+                        "color": [
+                          0,
+                          0,
+                          255,
+                          255
+                        ]
+                      }
                     ]
                   }
                 ],
@@ -1268,21 +1300,25 @@
                   {
                     "type": "colorInfo",
                     "field": "idInt",
-                    "minDataValue": 0,
-                    "maxDataValue": 10,
-                    "colors": [
-                      [
-                        255,
-                        0,
-                        0,
-                        255
-                      ],
-                      [
-                        0,
-                        0,
-                        255,
-                        255
-                      ]
+                    "stops": [
+                      {
+                        "value": 0,
+                        "color": [
+                          255,
+                          0,
+                          0,
+                          255
+                        ]
+                      },
+                      {
+                        "value": 10,
+                        "color": [
+                          0,
+                          0,
+                          255,
+                          255
+                        ]
+                      }
                     ]
                   }
                 ],
@@ -1419,21 +1455,25 @@
                   {
                     "type": "colorInfo",
                     "field": "idInt",
-                    "minDataValue": 0,
-                    "maxDataValue": 10,
-                    "colors": [
-                      [
-                        255,
-                        0,
-                        0,
-                        255
-                      ],
-                      [
-                        0,
-                        0,
-                        255,
-                        255
-                      ]
+                    "stops": [
+                      {
+                        "value": 0,
+                        "color": [
+                          255,
+                          0,
+                          0,
+                          255
+                        ]
+                      },
+                      {
+                        "value": 10,
+                        "color": [
+                          0,
+                          0,
+                          255,
+                          255
+                        ]
+                      }
                     ]
                   }
                 ],
@@ -1581,21 +1621,25 @@
                   {
                     "type": "colorInfo",
                     "field": "idInt",
-                    "minDataValue": 1,
-                    "maxDataValue": 28,
-                    "colors": [
-                      [
-                        255,
-                        0,
-                        0,
-                        255
-                      ],
-                      [
-                        0,
-                        0,
-                        255,
-                        255
-                      ]
+                    "stops": [
+                      {
+                        "value": 0,
+                        "color": [
+                          255,
+                          0,
+                          0,
+                          255
+                        ]
+                      },
+                      {
+                        "value": 10,
+                        "color": [
+                          0,
+                          0,
+                          255,
+                          255
+                        ]
+                      }
                     ]
                   }
                 ],
@@ -1732,21 +1776,25 @@
                   {
                     "type": "colorInfo",
                     "field": "idInt",
-                    "minDataValue": 0,
-                    "maxDataValue": 10,
-                    "colors": [
-                      [
-                        255,
-                        0,
-                        0,
-                        255
-                      ],
-                      [
-                        0,
-                        0,
-                        255,
-                        255
-                      ]
+                    "stops": [
+                      {
+                        "value": 0,
+                        "color": [
+                          255,
+                          0,
+                          0,
+                          255
+                        ]
+                      },
+                      {
+                        "value": 10,
+                        "color": [
+                          0,
+                          0,
+                          255,
+                          255
+                        ]
+                      }
                     ]
                   }
                 ],
@@ -1883,21 +1931,25 @@
                   {
                     "type": "colorInfo",
                     "field": "idInt",
-                    "minDataValue": 0,
-                    "maxDataValue": 10,
-                    "colors": [
-                      [
-                        255,
-                        0,
-                        0,
-                        255
-                      ],
-                      [
-                        0,
-                        0,
-                        255,
-                        255
-                      ]
+                    "stops": [
+                      {
+                        "value": 0,
+                        "color": [
+                          255,
+                          0,
+                          0,
+                          255
+                        ]
+                      },
+                      {
+                        "value": 10,
+                        "color": [
+                          0,
+                          0,
+                          255,
+                          255
+                        ]
+                      }
                     ]
                   }
                 ],
@@ -2034,21 +2086,25 @@
                   {
                     "type": "colorInfo",
                     "field": "idInt",
-                    "minDataValue": 0,
-                    "maxDataValue": 10,
-                    "colors": [
-                      [
-                        255,
-                        0,
-                        0,
-                        255
-                      ],
-                      [
-                        0,
-                        0,
-                        255,
-                        255
-                      ]
+                    "stops": [
+                      {
+                        "value": 0,
+                        "color": [
+                          255,
+                          0,
+                          0,
+                          255
+                        ]
+                      },
+                      {
+                        "value": 10,
+                        "color": [
+                          0,
+                          0,
+                          255,
+                          255
+                        ]
+                      }
                     ]
                   }
                 ],
@@ -2185,21 +2241,25 @@
                   {
                     "type": "colorInfo",
                     "field": "idInt",
-                    "minDataValue": 0,
-                    "maxDataValue": 10,
-                    "colors": [
-                      [
-                        255,
-                        0,
-                        0,
-                        255
-                      ],
-                      [
-                        0,
-                        0,
-                        255,
-                        255
-                      ]
+                    "stops": [
+                      {
+                        "value": 0,
+                        "color": [
+                          255,
+                          0,
+                          0,
+                          255
+                        ]
+                      },
+                      {
+                        "value": 10,
+                        "color": [
+                          0,
+                          0,
+                          255,
+                          255
+                        ]
+                      }
                     ]
                   }
                 ],

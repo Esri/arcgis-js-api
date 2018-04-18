@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({noItemsToDisplay:"अभी दिखाने के लिए कोई आइटम नहीं है।",layerInvisibleAtScale:"वर्तमान स्केल पर अदृश्य",layerError:"इस लेयर को लोड करने में त्रुटि उत्पन्न हुई है",untitledLayer:"शीर्षकहीन लेयर"});
+define({widgetLabel:"लेयर सूची",noItemsToDisplay:"अभी दिखाने के लिए कोई आइटम नहीं है।",layerInvisibleAtScale:"वर्तमान स्केल पर अदृश्य",layerError:"इस लेयर को लोड करने में त्रुटि उत्पन्न हुई है",untitledLayer:"शीर्षकहीन लेयर"});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","./tsSupport/declareExtendsHelper","./tsSupport/decorateHelper","./Accessor","./declare","./accessorSupport/read","./accessorSupport/write","./accessorSupport/decorators"],function(r,t,e,o,n,u,s,i,a){function c(r,t){if(!r)return null;if(r.declaredClass)throw new Error("JSON object is already hydrated");var e=this,o=new e;return o.read(r,t),o}var p=function(r){function t(){return null!==r&&r.apply(this,arguments)||this}return e(t,r),t.prototype.read=function(r,t){return s["default"](this,r,t),this},t.prototype.write=function(r,t){return i["default"](this,r||{},t)},t.prototype.toJSON=function(r){return this.write(null,r)},t.fromJSON=function(r,t){return c.call(this,r,t)},t=o([a.subclass("esri.core.JSONSupport")],t)}(a.declared(n));return p.prototype.toJSON.isDefaultToJSON=!0,u.after(function(r){u.hasMixin(r,p)&&(r.fromJSON=c.bind(r))}),p});
+define(["require","exports","./tsSupport/declareExtendsHelper","./tsSupport/decorateHelper","./Accessor","./declare","./accessorSupport/decorators","./accessorSupport/read","./accessorSupport/write"],function(r,t,e,o,n,u,i,s,c){function a(r,t){if(!r)return null;if(r.declaredClass)throw new Error("JSON object is already hydrated");var e=this,o=new e;return o.read(r,t),o}var p=function(r){function t(){return null!==r&&r.apply(this,arguments)||this}return e(t,r),t.prototype.read=function(r,t){return s.default(this,r,t),this},t.prototype.write=function(r,t){return c.default(this,r||{},t)},t.prototype.toJSON=function(r){return this.write(null,r)},t.fromJSON=function(r,t){return a.call(this,r,t)},t=o([i.subclass("esri.core.JSONSupport")],t)}(i.declared(n));return p.prototype.toJSON.isDefaultToJSON=!0,u.after(function(r){u.hasMixin(r,p)&&(r.fromJSON=a.bind(r))}),p});

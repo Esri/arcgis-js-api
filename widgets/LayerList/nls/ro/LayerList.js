@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({noItemsToDisplay:"În prezent, nu există elemente disponibile pentru afişare.",layerInvisibleAtScale:"Invisible at current scale",layerError:"A survenit o eroare la încărcarea acestui strat tematic",untitledLayer:"Strat tematic fără titlu"});
+define({widgetLabel:"Listă de straturi tematice",noItemsToDisplay:"În prezent, nu există elemente disponibile pentru afişare.",layerInvisibleAtScale:"Invizibil la scara actuală.",layerError:"A survenit o eroare la încărcarea acestui strat tematic",untitledLayer:"Strat tematic fără titlu"});

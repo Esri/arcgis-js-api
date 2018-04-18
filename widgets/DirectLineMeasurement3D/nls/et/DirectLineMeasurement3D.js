@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({title:"Mõõda",hint:"Mõõtmise alustamiseks klõpsake stseeni, kuhu soovite asetada oma esimese punkti",distance:"Vahemaa",direct:"Otse",horizontal:"Horisontaalne",vertical:"Vertikaalne",unit:"Ühik",newMeasurement:"Uus mõõtmine",units:{metric:"Meetriline",imperial:"Briti",kilometers:"Kilomeetrit",meters:"Meetrit",miles:"Miili",inches:"Tolli",feet:"Jalga",yards:"Jardi","nautical-miles":"Meremiili","us-feet":"Jalga (USA)","degrees-minutes-seconds":"DMS",degrees:"Kraadi"}});
+define({title:"Mõõda",hint:"Mõõtmise alustamiseks klõpsake stseeni, kuhu soovite asetada oma esimese punkti",unsupported:"MapView ei toeta sirgjoonelist mõõtmist.",distance:"Vahemaa",direct:"Otse",horizontal:"Horisontaalne",vertical:"Vertikaalne",unit:"Ühik",newMeasurement:"Uus mõõtmine",units:{metric:"Meetriline",imperial:"Briti",kilometers:"Kilomeetrit",meters:"Meetrit",miles:"Miili",inches:"Tolli",feet:"Jalga",yards:"Jardi","nautical-miles":"Meremiili","us-feet":"Jalga (USA)","degrees-minutes-seconds":"DMS",degrees:"Kraadi"}});

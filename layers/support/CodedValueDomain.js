@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators","./Domain","../../core/lang"],function(e,o,r,t,n,u,a){var d=function(e){function o(o){var r=e.call(this,o)||this;return r.codedValues=null,r.type="coded-value",r}return r(o,e),u=o,o.prototype.writeCodedValues=function(e,o){var r=null;e&&(r=e.map(function(e){return a.fixJson(a.clone(e))})),o.codedValues=r},o.prototype.getName=function(e){var o=null;if(this.codedValues){var r=String(e);this.codedValues.some(function(e){return String(e.code)===r&&(o=e.name),!!o})}return o},o.prototype.clone=function(){return new u({codedValues:a.clone(this.codedValues),name:this.name})},t([n.property({json:{write:!0}})],o.prototype,"codedValues",void 0),t([n.writer("codedValues")],o.prototype,"writeCodedValues",null),t([n.property()],o.prototype,"type",void 0),o=u=t([n.subclass("esri.layers.support.CodedValueDomain")],o);var u}(n.declared(u));return d});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/lang","../../core/accessorSupport/decorators","./Domain"],function(e,o,r,t,n,u,d){return function(e){function o(o){var r=e.call(this,o)||this;return r.codedValues=null,r.type="coded-value",r}return r(o,e),d=o,o.prototype.writeCodedValues=function(e,o){var r=null;e&&(r=e.map(function(e){return n.fixJson(n.clone(e))})),o.codedValues=r},o.prototype.getName=function(e){var o=null;if(this.codedValues){var r=String(e);this.codedValues.some(function(e){return String(e.code)===r&&(o=e.name),!!o})}return o},o.prototype.clone=function(){return new d({codedValues:n.clone(this.codedValues),name:this.name})},t([u.property({json:{write:!0}})],o.prototype,"codedValues",void 0),t([u.writer("codedValues")],o.prototype,"writeCodedValues",null),t([u.property()],o.prototype,"type",void 0),o=d=t([u.subclass("esri.layers.support.CodedValueDomain")],o);var d}(u.declared(d))});

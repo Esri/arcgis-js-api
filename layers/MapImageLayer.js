@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -43,9 +43,6 @@
  * MapImageLayer does not display tiled images. To display
  * tiled map service layers, see {@link module:esri/layers/TileLayer}.
  *
- * An instance of this class is also a [Promise](../guide/working-with-promises/index.html#classes-as-promises).
- * This allows you to execute code once the promise resolves, or when the layer finishes loading its resources.
- * See [when()](#when) for additional details.
  *
  * ## Creating a MapImageLayer
  *
@@ -81,9 +78,9 @@
  * server and then add it to the proxy rules list in {@link module:esri/config esriConfig} using
  * {@link module:esri/core/urlUtils#addProxyRule addProxyRule()}.
  *
- * ### Reference an ArcGIS Portal Item ID
+ * ### Reference an ArcGIS portal Item ID
  *
- * You can also create a MapImageLayer from its ID if it exists as an item in ArcGIS Online or ArcGIS for Portal.
+ * You can also create a MapImageLayer from its ID if it exists as an item in ArcGIS Online or ArcGIS Enterprise.
  * For example, the following snippet shows how to add a new MapImageLayer instance to a map using the
  * [portalItem](#portalItem) property.
  *
@@ -173,4 +170,4 @@
  * });
  */
 
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/tsSupport/paramHelper","../core/accessorSupport/decorators","dojo/_base/lang","dojo/io-query","../core/Error","../core/promiseUtils","../geometry/Extent","../config","../request","./DynamicLayer","./mixins/ScaleRangeLayer","./mixins/ArcGISDynamicMapService","./mixins/OperationalLayer","./mixins/PortalLayer","./mixins/RefreshableLayer"],function(e,r,t,a,o,n,i,s,p,l,c,y,u,d,h,m,g,f,v){var b=function(e){function r(r,t){var a=e.call(this)||this;return a.alwaysRefetch=!1,a.legendEnabled=!0,a.operationalLayerType="ArcGISMapServiceLayer",a.type="map-image",a}return t(r,e),r.prototype.normalizeCtorArgs=function(e,r){return"string"==typeof e?i.mixin({url:e},r):e},r.prototype.load=function(){var e=this;return this.addResolvingPromise(this.loadFromPortal({supportedTypes:["Map Service"]}).then(function(){return e._fetchService()})),this.when()},r.prototype.getImageUrl=function(e,r,t,a){var o=this,n=this.parsedUrl.path+"/export",c=i.mixin({},this.parsedUrl.query,this.createExportImageParameters(e,r,t,a),{f:"image",token:this.token,_ts:this.alwaysRefetch?(new Date).getTime():null});if(null!=c.dynamicLayers&&-1===this.capabilities.indexOf("DynamicLayers"))return l.reject(new p("mapimagelayer:dynamiclayer-not-supported","service "+this.url+" doesn't support dynamic layers, which is required to be able to change the sublayer's order, rendering, labeling or source.",{query:c}));var d=n+"?"+s.objectToQuery(c);return d.length>y.request.maxUrlLength?(c.f="json",u(n,{query:c,responseType:"json",callbackParamName:"callback"}).then(function(e){return e.data.href+(o.token?"?token="+o.token:"")})):d},r.prototype._fetchService=function(){var e=this;return l.resolve().then(function(){return e.resourceInfo?{ssl:!1,data:e.resourceInfo}:u(e.parsedUrl.path,{query:i.mixin({f:"json"},e.parsedUrl.query),responseType:"json",callbackParamName:"callback"})}).then(function(r){r.ssl&&(e.url=e.url.replace(/^http:/i,"https:")),e.read(r.data,{origin:"service",url:e.parsedUrl})})},a([n.property()],r.prototype,"alwaysRefetch",void 0),a([n.property({type:Boolean,json:{origins:{service:{read:{enabled:!1}}},read:{source:"showLegend"},write:{target:"showLegend"}}})],r.prototype,"legendEnabled",void 0),a([n.property()],r.prototype,"operationalLayerType",void 0),a([n.property({json:{read:!1},readOnly:!0,value:"map-image"})],r.prototype,"type",void 0),a([o(0,n.cast(c))],r.prototype,"getImageUrl",null),r=a([n.subclass("esri.layers.MapImageLayer")],r)}(n.declared(d,m,g,f,v,h));return b});
+define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/tsSupport/paramHelper","dojo/io-query","dojo/_base/lang","../config","../request","../core/Error","../core/promiseUtils","../core/accessorSupport/decorators","../geometry/Extent","./DynamicLayer","./mixins/ArcGISDynamicMapService","./mixins/OperationalLayer","./mixins/PortalLayer","./mixins/RefreshableLayer","./mixins/ScaleRangeLayer"],function(e,r,t,a,o,n,i,s,p,l,c,y,u,d,m,h,g,f,v){return function(e){function r(r,t){var a=e.call(this)||this;return a.alwaysRefetch=!1,a.legendEnabled=!0,a.operationalLayerType="ArcGISMapServiceLayer",a.type="map-image",a}return t(r,e),r.prototype.normalizeCtorArgs=function(e,r){return"string"==typeof e?i.mixin({url:e},r):e},r.prototype.load=function(){var e=this;return this.addResolvingPromise(this.loadFromPortal({supportedTypes:["Map Service"]}).then(function(){return e._fetchService()})),this.when()},r.prototype.getImageUrl=function(e,r,t,a){var o=this,y=this.parsedUrl.path+"/export",u=i.mixin({},this.parsedUrl.query,this.createExportImageParameters(e,r,t,a),{f:"image",token:this.token,_ts:this.alwaysRefetch?(new Date).getTime():null});if(null!=u.dynamicLayers&&-1===this.capabilities.indexOf("DynamicLayers"))return c.reject(new l("mapimagelayer:dynamiclayer-not-supported","service "+this.url+" doesn't support dynamic layers, which is required to be able to change the sublayer's order, rendering, labeling or source.",{query:u}));var d=y+"?"+n.objectToQuery(u);return d.length>s.request.maxUrlLength?(u.f="json",p(y,{query:u,responseType:"json",callbackParamName:"callback"}).then(function(e){if("imageData"in e.data){var r=e.data,t=r.imageData;return"data:"+(r.contentType||"image")+";base64,"+t}var a=e.data.href;return o.token?a+(-1===a.indexOf("?")?"?token="+o.token:"&token="+o.token):a})):d},r.prototype._fetchService=function(){var e=this;return c.resolve().then(function(){return e.resourceInfo?{ssl:!1,data:e.resourceInfo}:p(e.parsedUrl.path,{query:i.mixin({f:"json"},e.parsedUrl.query),responseType:"json",callbackParamName:"callback"})}).then(function(r){r.ssl&&(e.url=e.url.replace(/^http:/i,"https:")),e.read(r.data,{origin:"service",url:e.parsedUrl})})},a([y.property()],r.prototype,"alwaysRefetch",void 0),a([y.property({type:Boolean,json:{origins:{service:{read:{enabled:!1}}},read:{source:"showLegend"},write:{target:"showLegend"}}})],r.prototype,"legendEnabled",void 0),a([y.property()],r.prototype,"operationalLayerType",void 0),a([y.property({json:{read:!1},readOnly:!0,value:"map-image"})],r.prototype,"type",void 0),a([o(0,y.cast(u))],r.prototype,"getImageUrl",null),r=a([y.subclass("esri.layers.MapImageLayer")],r)}(y.declared(d,m,h,g,f,v))});

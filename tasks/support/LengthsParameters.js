@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["../../core/Accessor","../../core/kebabDictionary","dojo/_base/array"],function(e,t,i){var s=t({preserveShape:"preserve-shape"}),n=e.createSubclass({declaredClass:"esri.tasks.support.LengthsParameters",properties:{calculationType:null,geodesic:null,lengthUnit:null,polylines:null},toJSON:function(){var e=i.map(this.polylines,function(e){return e.toJSON()}),t={};t.polylines=JSON.stringify(e);var n=this.polylines[0].spatialReference;return t.sr=n.wkid?n.wkid:JSON.stringify(n.toJSON()),this.lengthUnit&&(t.lengthUnit=this.lengthUnit),this.geodesic&&(t.geodesic=this.geodesic),this.calculationType&&(t.calculationType=s.toJSON(this.calculationType)),t}});return n});
+define(["../../core/Accessor","../../core/kebabDictionary","dojo/_base/array"],function(e,t,i){var s=t({preserveShape:"preserve-shape"});return e.createSubclass({declaredClass:"esri.tasks.support.LengthsParameters",properties:{calculationType:null,geodesic:null,lengthUnit:null,polylines:null},toJSON:function(){var e=i.map(this.polylines,function(e){return e.toJSON()}),t={};t.polylines=JSON.stringify(e);var n=this.polylines[0].spatialReference;return t.sr=n.wkid?n.wkid:JSON.stringify(n.toJSON()),this.lengthUnit&&(t.lengthUnit=this.lengthUnit),this.geodesic&&(t.geodesic=this.geodesic),this.calculationType&&(t.calculationType=s.toJSON(this.calculationType)),t}})});

@@ -12,7 +12,7 @@
  * @since 4.6
  *
  * @see [Fullscreen.tsx (widget view)]({{ JSAPI_BOWER_URL }}/widgets/Fullscreen.tsx)
- * @see [Sample - Animate opacity visual variable](../../sample-code/visualization-vv-opacity-animate/index.html)
+ * @see [Sample - Animate opacity visual variable](../sample-code/visualization-vv-opacity-animate/index.html)
  * @see [Sample - Animate color visual variable](../sample-code/visualization-vv-color-animate/index.html)
  * @see module:esri/widgets/Fullscreen/FullscreenViewModel
  * @see module:esri/views/ui/DefaultUI
@@ -28,14 +28,23 @@
 /// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
 /// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
 
-import { aliasOf, subclass, property, declared } from "../core/accessorSupport/decorators";
-import { accessibleHandler, tsx, renderable } from "./support/widget";
+// dojo
+import * as i18n from "dojo/i18n!./Fullscreen/nls/Fullscreen";
 
-import Widget = require("./Widget");
-import FullscreenViewModel = require("./Fullscreen/FullscreenViewModel");
+// esri.core.accessorSupport
+import { aliasOf, subclass, property, declared } from "../core/accessorSupport/decorators";
+
+// esri.views
 import View = require("../views/View");
 
-import * as i18n from "dojo/i18n!./Fullscreen/nls/Fullscreen";
+// esri.widgets
+import Widget = require("./Widget");
+
+// esri.widgets.Fullscreen
+import FullscreenViewModel = require("./Fullscreen/FullscreenViewModel");
+
+// esri.widgets.support
+import { accessibleHandler, tsx, renderable } from "./support/widget";
 
 const CSS = {
   base: "esri-fullscreen esri-widget-button esri-widget",

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators","../../core/JSONSupport"],function(e,r,t,o,p,u){Object.defineProperty(r,"__esModule",{value:!0});var n=function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.type=null,r}return t(r,e),o([p.property({type:String,readOnly:!0,json:{read:!1,write:!0}})],r.prototype,"type",void 0),r=o([p.subclass("esri.layers.support.FeatureReduction")],r)}(p.declared(u));r.FeatureReduction=n;var s=function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.type="selection",r}return t(r,e),o([p.property()],r.prototype,"type",void 0),r=o([p.subclass("esri.layers.support.FeatureReductionSelection")],r)}(p.declared(n));r.FeatureReductionSelection=s});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/JSONSupport","../../core/accessorSupport/decorators"],function(e,r,t,o,p,u){Object.defineProperty(r,"__esModule",{value:!0});var n=function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.type=null,r}return t(r,e),o([u.property({type:String,readOnly:!0,json:{read:!1,write:!0}})],r.prototype,"type",void 0),r=o([u.subclass("esri.layers.support.FeatureReduction")],r)}(u.declared(p));r.FeatureReduction=n,r.default=n});

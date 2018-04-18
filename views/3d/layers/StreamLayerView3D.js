@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/accessorSupport/decorators","../../../layers/graphics/controllers/StreamController","../../layers/StreamLayerView","./GraphicLayerView3DBase","../../../core/Error","../../../core/promiseUtils"],function(r,e,t,o,a,l,n,c,i,s){var p=function(r){function e(){var e=r.call(this)||this;return e.labelingEnabled=!0,e}return t(e,r),e.prototype.createController=function(){var r=this;return this.layer.createGraphicsController({layerView:this}).then(function(e){if(e instanceof l)return r.controller=e,e;throw new Error("Invalid controller created.")}).otherwise(function(r){return s.reject(new i("streamlayerview3d:create-controller",r.message))})},o([a.property()],e.prototype,"controller",void 0),o([a.property({aliasOf:"controller.graphics",readOnly:!0})],e.prototype,"graphics",void 0),e=o([a.subclass("esri.views.3d.layers.StreamLayerView3D")],e)}(a.declared(n,c));return p});
+define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/Error","../../../core/promiseUtils","../../../core/accessorSupport/decorators","../../../layers/graphics/controllers/StreamController","./GraphicLayerView3DBase","../../layers/StreamLayerView"],function(r,e,t,o,a,c,l,n,i,s){return function(r){function e(){var e=r.call(this)||this;return e.labelingEnabled=!0,e}return t(e,r),e.prototype.createController=function(){var r=this;return this.layer.createGraphicsController({layerView:this}).then(function(e){if(e instanceof n)return r.controller=e,e;throw new Error("Invalid controller created.")}).catch(function(r){return c.reject(new a("streamlayerview3d:create-controller",r.message))})},o([l.property()],e.prototype,"controller",void 0),o([l.property({aliasOf:"controller.graphics",readOnly:!0})],e.prototype,"graphics",void 0),e=o([l.subclass("esri.views.3d.layers.StreamLayerView3D")],e)}(l.declared(s,i))});

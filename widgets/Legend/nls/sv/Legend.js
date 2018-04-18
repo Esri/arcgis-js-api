@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({points:"Punkter",lines:"Linjer",polygons:"Polygoner",creatingLegend:"Teckenförklaring skapas",noLegend:"Ingen teckenförklaring",dotValue:"1 prick = {value} {unit}",currentObservations:"Aktuella observationer",previousObservations:"Tidigare observationer",high:"Hög",low:"Låg",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"knop",esriFeetPerSecond:"fot/s",esriMilesPerHour:"mph",showField:"{field}",showNormField:"{field} delat med {normField}",showNormPct:"{field} som en procentandel av helheten",showRatio:"Förhållande på {field} till {normField}",showRatioPercent:"{field} som en procentandel av {normField}",showRatioPercentTotal:"{field} som en procentandel av {field} och {normField}"});
+define({widgetLabel:"Teckenförklaring",points:"Punkter",lines:"Linjer",polygons:"Polygoner",creatingLegend:"Teckenförklaring skapas",noLegend:"Ingen teckenförklaring",dotValue:"1 prick = {value} {unit}",currentObservations:"Aktuella observationer",previousObservations:"Tidigare observationer",high:"Hög",low:"Låg",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"knop",esriFeetPerSecond:"fot/s",esriMilesPerHour:"mph",showField:"{field}",showNormField:"{field} delat med {normField}",showNormPct:"{field} som en procentandel av helheten",showRatio:"Förhållande på {field} till {normField}",showRatioPercent:"{field} som en procentandel av {normField}",showRatioPercentTotal:"{field} som en procentandel av {field} och {normField}"});

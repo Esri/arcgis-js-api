@@ -128,7 +128,7 @@
   }
 
   .esri-renderer-slider .esri-handler-tick {
-    border-top: 1px solid #FFF;
+    border-top: 1px solid #fff;
     border-bottom: 1px solid #000;
     box-sizing: border-box;
     height: 1px;
@@ -140,13 +140,13 @@
   }
 
   .esri-renderer-slider .esri-handler-tick-top {
-    border-top: 1px solid #FFF;
+    border-top: 1px solid #fff;
     border-bottom: 1px solid #000;
   }
 
   .esri-renderer-slider .esri-handler-tick-bottom {
     border-top: 1px solid #000;
-    border-bottom: 1px solid #FFF;
+    border-bottom: 1px solid #fff;
   }
 
   .esri-renderer-slider .esri-top-label-node {
@@ -190,7 +190,6 @@
     cursor: pointer;
     text-decoration: underline;
   }
-
 
   /* RTL Fixes */
 

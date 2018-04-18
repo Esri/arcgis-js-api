@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","./workers/workers"],function(e,r,o){function n(e){for(var o in e)r.hasOwnProperty(o)||(r[o]=e[o])}Object.defineProperty(r,"__esModule",{value:!0}),n(o)});
+define(["require","exports","./workers/workers"],function(e,r,o){Object.defineProperty(r,"__esModule",{value:!0}),function(e){for(var o in e)r.hasOwnProperty(o)||(r[o]=e[o])}(o)});

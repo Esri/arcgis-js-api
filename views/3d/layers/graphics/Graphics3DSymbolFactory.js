@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","./Graphics3DSymbol","./Graphics3DPointSymbol"],function(e,r,t,i){function n(e,r,n){var o;switch(e.type){case"point-3d":o=i;break;default:o=t}return new o(e,r,n)}Object.defineProperty(r,"__esModule",{value:!0}),r.make=n});
+define(["require","exports","./Graphics3DPointSymbol","./Graphics3DSymbol"],function(e,r,t,i){function n(e,r,n){var o;switch(e.type){case"point-3d":o=t;break;default:o=i}return new o(e,r,n)}Object.defineProperty(r,"__esModule",{value:!0}),r.make=n});

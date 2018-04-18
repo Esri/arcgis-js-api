@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({title:"วัด",hint:"เริ่มวัดด้วยการคลิกในซีน เพื่อวางจุดแรกของคุณ",distance:"ระยะทาง",direct:"แนวตรง",horizontal:"แนวนอน",vertical:"ตั้งฉาก",unit:"หน่วย",newMeasurement:"การวัดใหม่",units:{metric:"ระบบเมตริก",imperial:"ระบบการวัด",kilometers:"กิโลเมตร",meters:"เมตร",miles:"ไมล์",inches:"นิ้ว",feet:"ฟุต",yards:"หลา","nautical-miles":"ไมล์ทะเล","us-feet":"ฟุต (สหรัฐ)","degrees-minutes-seconds":"DMS",degrees:"องศา"}});
+define({title:"วัด",hint:"เริ่มวัดด้วยการคลิกในซีน เพื่อวางจุดแรกของคุณ",unsupported:"ไม่รองรับการวัดเส้นโดยตรงใน MapView",distance:"ระยะทาง",direct:"แนวตรง",horizontal:"แนวนอน",vertical:"ตั้งฉาก",unit:"หน่วย",newMeasurement:"การวัดใหม่",units:{metric:"ระบบเมตริก",imperial:"ระบบการวัด",kilometers:"กิโลเมตร",meters:"เมตร",miles:"ไมล์",inches:"นิ้ว",feet:"ฟุต",yards:"หลา","nautical-miles":"ไมล์ทะเล","us-feet":"ฟุต (สหรัฐ)","degrees-minutes-seconds":"DMS",degrees:"องศา"}});

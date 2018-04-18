@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["../../core/declare","dojo/_base/lang"],function(e,r){var n=e(null,{declaredClass:"esri.layers.support.TimeReference",constructor:function(e){e&&r.mixin(this,e)}});return n});
+define(["../../core/declare","dojo/_base/lang"],function(e,n){return e(null,{declaredClass:"esri.layers.support.TimeReference",constructor:function(e){e&&n.mixin(this,e)}})});

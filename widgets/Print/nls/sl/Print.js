@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({title:"Naslov",fileName:"Ime datoteke",titlePlaceHolder:"Naziv datoteke",fileNamePlaceHolder:"Ime datoteke",formatDefaultOption:"Izberi obliko",fileFormatTitle:"Format datoteke",layoutTitle:"Postavitev strani",layoutDefaultOption:"Izberi postavitev strani",scale:"Nastavi merilo",scaleLabel:"merilo",reset:"ponastavi",author:"Avtor",copyright:"Avtorske pravice",legend:"Vključi legendo",lock:"zakleni",swap:"zamenjaj",panelToggle:"Preklop plošče",advancedOptions:"Napredne možnosti",width:"Širina",height:"Višina",attribution:"Vključi pripis",layoutTab:"Postavitev",mapOnlyTab:"Samo karta",untitled:"neimenovano",pending:"Izvažanje",ready:"Odpri tole",linkReady:"Odpri v novem oknu.",error:"Izberi to za odstranitev.",sceneViewError:"Tiskanje ni podprto v pogledu 3D-prizora.",serviceError:"Zdi se, da je prišlo do napake.","export":"Izvoz",exportDescription:"Izvoz. Izvožene datoteke bodo prikazane spodaj.",exportText:"Izvožene datoteke",exportHint:"Vaše izvožene datoteke bodo prikazane tukaj."});
+define({widgetLabel:"Tiskanje",title:"Naslov",fileName:"Ime datoteke",titlePlaceHolder:"Naziv datoteke",fileNamePlaceHolder:"Ime datoteke",formatDefaultOption:"Izberi format",fileFormatTitle:"Format datoteke",layoutTitle:"Postavitev strani",layoutDefaultOption:"Izberi postavitev strani",scale:"Nastavi merilo",scaleLabel:"merilo",reset:"ponastavi",author:"Avtor",copyright:"Avtorske pravice",legend:"Vključi legendo",lock:"zakleni",swap:"zamenjaj",panelToggle:"Preklop plošče",advancedOptions:"Napredne možnosti",width:"Širina",height:"Višina",dpi:"DPI",attribution:"Vključi vir podatkov",layoutTab:"Postavitev",mapOnlyTab:"Samo karta",untitled:"neimenovano",pending:"Izvažanje",ready:"Odpri tole",linkReady:"Odpri v novem oknu.",error:"Izberi to za odstranitev.",sceneViewError:"Tiskanje ni podprto v pogledu 3D-prizora.",serviceError:"Zdi se, da je prišlo do napake.",export:"Izvoz",exportDescription:"Izvoz. Izvožene datoteke bodo prikazane spodaj.",exportText:"Izvožene datoteke",exportHint:"Vaše izvožene datoteke bodo prikazane tukaj."});

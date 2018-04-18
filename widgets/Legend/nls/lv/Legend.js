@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({points:"Punkti",lines:"Līnijas",polygons:"Daudzstūri",creatingLegend:"Izveido apzīmējumus",noLegend:"Nav apzīmējumu",dotValue:"1 punkts = {value} {unit}",currentObservations:"Pašreizējie novērojumi",previousObservations:"Iepriekšējie novērojumi",high:"Augsts",low:"Zems",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"mezgli",esriFeetPerSecond:"pēdas/s",esriMilesPerHour:"jūdzes/h",showField:"{field}",showNormField:"{field}, dalīts ar {normField}",showNormPct:"{field} kā procentuālā daļa no visa",showRatio:"{field} attiecība pret {normField}",showRatioPercent:"{field} kā procentuālā daļa no {normField}",showRatioPercentTotal:"{field} kā procentuālā daļa no {field} un {normField}"});
+define({widgetLabel:"Apzīmējumi",points:"Punkti",lines:"Līnijas",polygons:"Daudzstūri",creatingLegend:"Izveido apzīmējumus",noLegend:"Nav apzīmējumu",dotValue:"1 punkts = {value} {unit}",currentObservations:"Pašreizējie novērojumi",previousObservations:"Iepriekšējie novērojumi",high:"Augsts",low:"Zems",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"mezgli",esriFeetPerSecond:"pēdas/s",esriMilesPerHour:"jūdzes/h",showField:"{field}",showNormField:"{field}, dalīts ar {normField}",showNormPct:"{field} kā procentuālā daļa no visa",showRatio:"{field} attiecība pret {normField}",showRatioPercent:"{field} kā procentuālā daļa no {normField}",showRatioPercentTotal:"{field} kā procentuālā daļa no {field} un {normField}"});

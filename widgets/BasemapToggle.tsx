@@ -35,14 +35,13 @@
 /// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
 /// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
 
-import {
-  vmEvent,
-  renderable,
-  tsx,
-  accessibleHandler,
-  join
-} from "./support/widget";
+// dojo
+import * as i18n from "dojo/i18n!./BasemapToggle/nls/BasemapToggle";
 
+// esri
+import Basemap = require("../Basemap");
+
+// esri.core.accessorSupport
 import {
   aliasOf,
   subclass,
@@ -50,12 +49,23 @@ import {
   declared
 } from "../core/accessorSupport/decorators";
 
-import Widget = require("./Widget");
-import BasemapToggleViewModel = require("./BasemapToggle/BasemapToggleViewModel");
-import Basemap = require("../Basemap");
+// esri.views
 import View = require("../views/View");
 
-import * as i18n from "dojo/i18n!./BasemapToggle/nls/BasemapToggle";
+// esri.widgets
+import Widget = require("./Widget");
+
+// esri.widgets.BasemapToggle
+import BasemapToggleViewModel = require("./BasemapToggle/BasemapToggleViewModel");
+
+// esri.widgets.support
+import {
+  vmEvent,
+  renderable,
+  tsx,
+  accessibleHandler,
+  join
+} from "./support/widget";
 
 const CSS: any = {
   base: "esri-basemap-toggle esri-widget",

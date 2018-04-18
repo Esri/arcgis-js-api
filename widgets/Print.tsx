@@ -7,7 +7,10 @@
  * ::: esri-md class="panel trailer-1"
  * **Known Limitations**
  *
- * There is no current support for printing {@link module:esri/views/SceneView SceneViews}.
+ * * There is no current support for printing {@link module:esri/views/SceneView SceneViews}.
+ * * The print server does not directly print [SVG](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/symbol) symbols. Rather, they are converted to {@link module:esri/symbols/PictureMarkerSymbol PictureMarkerSymbols} for display.
+ * * Make certain that any resources to be printed are accessible by the print server. For example, if printing a map containing {@link module:esri/symbols/PictureMarkerSymbol PictureMarkerSymbols},
+ * the URL to these symbols must be accessible to the print server for it to work properly.
  * :::
  *
  * @module esri/widgets/Print
@@ -19,7 +22,7 @@
  * @see module:esri/widgets/Print/PrintViewModel
  * @see [Printing in web applications](https://server.arcgis.com/en/server/latest/create-web-apps/windows/printing-in-web-applications.htm)
  * @see [Configure the portal to print maps](https://server.arcgis.com/en/portal/latest/administer/windows/configure-the-portal-to-print-maps.htm)
- * @see [Export Web Map Task (Geoprocessing service) [REST doc]](http://resources.arcgis.com/en/help/rest/apiref/gp_exportwebmaptask.html)
+ * @see [Export Web Map Task (Geoprocessing service) [REST doc]](https://developers.arcgis.com/rest/services-reference/export-web-map-task.htm)
  *
  * @example
  * var print = new Print({
@@ -34,23 +37,35 @@
 /// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
 /// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
 
-import { aliasOf, subclass, declared, property } from "../core/accessorSupport/decorators";
+// dojo
+import * as i18n from "dojo/i18n!./Print/nls/Print";
 
-import View = require("../views/View");
-import PrintViewModel = require("./Print/PrintViewModel");
-import PrintTemplate = require("../tasks/support/PrintTemplate");
+// esri.core
 import Collection = require("../core/Collection");
 import EsriError = require("../core/Error");
 import Logger = require("../core/Logger");
-import watchUtils = require("../core/watchUtils");
-import Widget = require("./Widget");
-import FileLink = require("./Print/FileLink");
-import TemplateOptions = require("./Print/TemplateOptions");
 import urlUtils = require("../core/urlUtils");
+import watchUtils = require("../core/watchUtils");
 
+// esri.core.accessorSupport
+import { aliasOf, subclass, declared, property } from "../core/accessorSupport/decorators";
+
+// esri.tasks.support
+import PrintTemplate = require("../tasks/support/PrintTemplate");
+
+// esri.views
+import View = require("../views/View");
+
+// esri.widgets
+import Widget = require("./Widget");
+
+// esri.widgets.Print
+import FileLink = require("./Print/FileLink");
+import PrintViewModel = require("./Print/PrintViewModel");
+import TemplateOptions = require("./Print/TemplateOptions");
+
+// esri.widgets.support
 import { accessibleHandler, join, renderable, storeNode, tsx } from "./support/widget";
-
-import * as i18n from "dojo/i18n!./Print/nls/Print";
 
 interface TemplateInfo {
   choiceList: string[];
@@ -73,6 +88,8 @@ const CSS = {
   layoutSection: "esri-print__layout-section",
   mapOnlySection: "esri-print__map-only-section",
   scaleInput: "esri-print__scale-input",
+  // startup
+  loader: "esri-print__loader",
   // buttons
   advancedOptionsButton: "esri-print__advanced-options-button",
   advancedOptionsButtonContainer: "esri-print__advanced-options-button-container",
@@ -104,8 +121,10 @@ const CSS = {
   sizeContainer: "esri-print__size-container",
   widthContainer: "esri-print__width-container",
   // common
-  button: "esri-widget-button",
+  widgetButton: "esri-widget-button",
+  button: "esri-button",
   select: "esri-select",
+  input: "esri-input",
   disabled: "esri-disabled",
   panelError: "esri-print__panel--error",
   exportedFileError: "esri-print__exported-file--error",
@@ -123,7 +142,8 @@ const CSS = {
   iconSpinner: "esri-icon-loading-indicator",
   iconSwap: "esri-icon-swap",
   iconLinked: "esri-icon-link-horizontal",
-  iconUnlinked: "esri-icon-unlocked-link-horizontal"
+  iconUnlinked: "esri-icon-unlocked-link-horizontal",
+  widgetIcon: "esri-icon-printer"
 };
 
 const declaredClass = "esri.widgets.Print";
@@ -168,84 +188,107 @@ class Print extends declared(Widget) {
       width
     } = this.templateOptions;
 
-    watchUtils.init(this, "viewModel.templatesInfo", (templatesInfo: TemplatesInfo) => {
-      if (templatesInfo) {
-        this._templatesInfo = templatesInfo;
+    this.own([
+      watchUtils.init(this, "viewModel.templatesInfo", (templatesInfo: TemplatesInfo) => {
+        if (templatesInfo) {
+          this._templatesInfo = templatesInfo;
 
 
 
-        const isValidLayout = layout === templatesInfo.layout.defaultValue || (layout && layout.toUpperCase() === "MAP_ONLY") || (templatesInfo.layout.choiceList && templatesInfo.layout.choiceList.indexOf(layout) > -1);
-        const isValidFormat = format === templatesInfo.format.defaultValue || (templatesInfo.format.choiceList && templatesInfo.format.choiceList.indexOf(format) > -1);
+          const isValidLayout = layout === templatesInfo.layout.defaultValue || (layout && layout.toUpperCase() === "MAP_ONLY") || (templatesInfo.layout.choiceList && templatesInfo.layout.choiceList.indexOf(layout) > -1);
+          const isValidFormat = format === templatesInfo.format.defaultValue || (templatesInfo.format.choiceList && templatesInfo.format.choiceList.indexOf(format) > -1);
 
-        if (!isValidLayout) {
-          if (layout) {
-            logger.warn(invalidLayoutWarningMessage);
+          if (!isValidLayout) {
+            if (layout) {
+              logger.warn(invalidLayoutWarningMessage);
+            }
+
+            this.templateOptions.layout = this._templatesInfo.layout.defaultValue;
           }
 
-          this.templateOptions.layout = this._templatesInfo.layout.defaultValue;
-        }
+          if (!isValidFormat) {
+            if (format) {
+              logger.warn(invalidFormatWarningMessage);
+            }
 
-        if (!isValidFormat) {
-          if (format) {
+            this.templateOptions.format = this._templatesInfo.format.defaultValue;
+          }
+
+          if (layout && layout.toUpperCase() === "MAP_ONLY") {
+            this._layoutTabSelected = false;
+          }
+        }
+      }),
+
+      watchUtils.init(this, "templateOptions.format", (newValue: string) => {
+        if (this._templatesInfo && newValue) {
+          let isValidFormat = false;
+          this._templatesInfo.format.choiceList && this._templatesInfo.format.choiceList.forEach(option => {
+            if (option.toUpperCase() === newValue.toUpperCase()) {
+              this.templateOptions.format = option;
+              isValidFormat = true;
+            }
+          });
+
+          if (!isValidFormat) {
+            this.templateOptions.format = this._templatesInfo.format.defaultValue;
             logger.warn(invalidFormatWarningMessage);
           }
 
-          this.templateOptions.format = this._templatesInfo.format.defaultValue;
+          this.scheduleRender();
         }
+      }),
 
-        if (layout && layout.toUpperCase() === "MAP_ONLY") {
-          this._layoutTabSelected = false;
-        }
-      }
-    });
+      watchUtils.init(this, "templateOptions.layout", (newValue: string) => {
+        if (this._templatesInfo && newValue) {
+          this._layoutTabSelected =  newValue.toUpperCase() !== "MAP_ONLY";
+          let isValidLayout = false || !this._layoutTabSelected;
 
-    watchUtils.init(this, "templateOptions.format", (newValue: string) => {
-      if (this._templatesInfo && newValue) {
-        let isValidFormat = false;
-        this._templatesInfo.format.choiceList && this._templatesInfo.format.choiceList.forEach(option => {
-          if (option.toUpperCase() === newValue.toUpperCase()) {
-            this.templateOptions.format = option;
-            isValidFormat = true;
+          if (!isValidLayout) {
+            this._templatesInfo.layout.choiceList && this._templatesInfo.layout.choiceList.forEach(option => {
+              if (option.toUpperCase() === newValue.toUpperCase()) {
+                this.templateOptions.layout = option;
+                isValidLayout = true;
+              }
+            });
           }
-        });
 
-        if (!isValidFormat) {
-          this.templateOptions.format = this._templatesInfo.format.defaultValue;
-          logger.warn(invalidFormatWarningMessage);
+          if (!isValidLayout) {
+            this.templateOptions.layout = this._templatesInfo.layout.defaultValue;
+            logger.warn(invalidLayoutWarningMessage);
+          }
+
+          this.scheduleRender();
+        }
+      }),
+
+      watchUtils.init(this, "templateOptions.dpi", (newValue: number) => {
+        if (newValue <= 0) {
+          this.templateOptions.dpi = 1;
+          return;
         }
 
         this.scheduleRender();
-      }
-    });
+      }),
 
-    watchUtils.init(this, "templateOptions.layout", (newValue: string) => {
-      if (this._templatesInfo && newValue) {
-        this._layoutTabSelected =  newValue.toUpperCase() !== "MAP_ONLY";
-        let isValidLayout = false || !this._layoutTabSelected;
-
-        if (!isValidLayout) {
-          this._templatesInfo.layout.choiceList && this._templatesInfo.layout.choiceList.forEach(option => {
-            if (option.toUpperCase() === newValue.toUpperCase()) {
-              this.templateOptions.layout = option;
-              isValidLayout = true;
-            }
-          });
+      watchUtils.init(this, "viewModel.view.scale", (newValue: number) => {
+        if (!scaleEnabled || !scale) {
+          this.templateOptions.scale = newValue;
         }
+      }),
 
-        if (!isValidLayout) {
-          this.templateOptions.layout = this._templatesInfo.layout.defaultValue;
-          logger.warn(invalidLayoutWarningMessage);
-        }
+      watchUtils.whenOnce(this, "printServiceUrl", () => {
+        const maxWaitTime = 500;
 
-        this.scheduleRender();
-      }
-    });
+        const timeoutId = setTimeout(() => {
+          this._awaitingServerResponse = true;
+          this.scheduleRender();
+        }, maxWaitTime);
 
-    watchUtils.init(this, "viewModel.view.scale", (newValue: number) => {
-      if (!scaleEnabled || !scale) {
-        this.templateOptions.scale = newValue;
-      }
-    });
+        this.viewModel.load()
+          .then(() => clearTimeout(timeoutId));
+      })
+    ]);
 
     this.templateOptions.width = width || 800;
     this.templateOptions.height = height || 1100;
@@ -261,13 +304,17 @@ class Print extends declared(Widget) {
 
   private _layoutTabSelected = true;
 
-  private _advancedOptionsVisible = false;
+  private _advancedOptionsVisibleForLayout = false;
+
+  private _advancedOptionsVisibleForMapOnly = false;
 
   private _pendingExportScroll = false;
 
   private _rootNode: HTMLElement = null;
 
   private _templatesInfo: TemplatesInfo = null;
+
+  private _awaitingServerResponse = false;
 
   //--------------------------------------------------------------------------
   //
@@ -282,6 +329,38 @@ class Print extends declared(Widget) {
   @aliasOf("viewModel.exportedLinks")
   @renderable()
   exportedLinks: Collection<FileLink>;
+
+  //----------------------------------
+  //  iconClass
+  //----------------------------------
+
+  /**
+   * The widget's default icon font.
+   *
+   * @since 4.7
+   * @name iconClass
+   * @instance
+   * @type {string}
+   * @readonly
+   */
+  @property()
+  iconClass = CSS.widgetIcon;
+
+  //----------------------------------
+  //  label
+  //----------------------------------
+
+  /**
+   * The widget's default label.
+   *
+   * @since 4.7
+   * @name label
+   * @instance
+   * @type {string}
+   * @readonly
+   */
+  @property()
+  label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  templateOptions
@@ -389,6 +468,7 @@ class Print extends declared(Widget) {
       attributionEnabled,
       author,
       copyright,
+      dpi,
       format,
       height,
       layout,
@@ -405,7 +485,7 @@ class Print extends declared(Widget) {
         <input type="text"
                tabIndex={0}
                placeholder={this._layoutTabSelected ? i18n.titlePlaceHolder : i18n.fileNamePlaceHolder}
-               class={CSS.inputText}
+               class={this.classes(CSS.inputText, CSS.input)}
                value={title}
                data-input-name="title"
                oninput={this._updateInputValue}
@@ -459,45 +539,65 @@ class Print extends declared(Widget) {
       </div>
     );
 
-    const advancedSection = this._advancedOptionsVisible ? (
-      <div aria-labelledby={`${this.id}__advancedOptions`} class={CSS.advancedOptionsContainer}>
-        <div class={join(CSS.scaleInfoContainer, CSS.formSectionContainer)}>
-          <label>
-            <input data-option-name="scaleEnabled"
-                   checked={scaleEnabled}
-                   type="checkbox"
-                   tabIndex={0}
-                   onchange={this._toggleInputValue}
-                   bind={this} />
-            {i18n.scale}
-          </label>
-          <div class={CSS.scaleInputContainer}>
-            <input aria-label={i18n.scaleLabel}
-                   aria-valuenow={`${scale}`}
-                   role="spinbutton"
-                   type="number"
-                   class={join(CSS.inputText, CSS.scaleInput)}
-                   tabIndex={0}
-                   data-input-name="scale"
-                   oninput={this._updateInputValue}
-                   disabled={!scaleEnabled}
-                   value={`${scale}`}
-                   bind={this} />
-            <button role="button"
-                    aria-label={i18n.reset}
-                    class={join(CSS.button, CSS.refreshButton, CSS.iconRefresh)}
-                    tabIndex={0}
-                    onclick={this._resetToCurrentScale}
-                    bind={this}>
-            </button>
-          </div>
+    const dpiSection = (
+      <div class={CSS.formSectionContainer}>
+        <label>
+          {i18n.dpi}
+          <input type="number"
+                class={this.classes(CSS.inputText, CSS.input)}
+                data-input-name="dpi"
+                oninput={this._updateInputValue}
+                value={`${dpi}`}
+                min="1"
+                tabIndex={0}
+                bind={this} />
+        </label>
+      </div>
+    );
+
+    const scaleSection = (
+      <div class={join(CSS.scaleInfoContainer, CSS.formSectionContainer)}>
+        <label>
+          <input data-option-name="scaleEnabled"
+                checked={scaleEnabled}
+                type="checkbox"
+                tabIndex={0}
+                onchange={this._toggleInputValue}
+                bind={this} />
+          {i18n.scale}
+        </label>
+        <div class={CSS.scaleInputContainer}>
+          <input aria-label={i18n.scaleLabel}
+                aria-valuenow={`${scale}`}
+                role="spinbutton"
+                type="number"
+                class={this.classes(CSS.inputText, CSS.input, CSS.scaleInput)}
+                tabIndex={0}
+                data-input-name="scale"
+                oninput={this._updateInputValue}
+                disabled={!scaleEnabled}
+                value={`${scale}`}
+                bind={this} />
+          <button role="button"
+                  aria-label={i18n.reset}
+                  class={join(CSS.widgetButton, CSS.refreshButton, CSS.iconRefresh)}
+                  tabIndex={0}
+                  onclick={this._resetToCurrentScale}
+                  bind={this}>
+          </button>
         </div>
+      </div>
+    );
+
+    const advancedSectionForLayout = this._advancedOptionsVisibleForLayout ? (
+      <div aria-labelledby={`${this.id}__advancedOptionsForLayout`} class={CSS.advancedOptionsContainer}>
+        {scaleSection}
         <div class={join(CSS.authorInfoContainer, CSS.formSectionContainer)}>
           <label>
             {i18n.author}
             <input type="text"
                    value={author}
-                   class={CSS.inputText}
+                   class={this.classes(CSS.inputText, CSS.input)}
                    tabIndex={0}
                    data-input-name="author"
                    oninput={this._updateInputValue}
@@ -508,14 +608,15 @@ class Print extends declared(Widget) {
           <label>
             {i18n.copyright}
             <input type="text"
-                   class={CSS.inputText}
+                   class={this.classes(CSS.inputText, CSS.input)}
                    tabIndex={0}
                    value={copyright}
-                   data-input-value="copyright"
+                   data-input-name="copyright"
                    oninput={this._updateInputValue}
                    bind={this} />
           </label>
         </div>
+        {dpiSection}
         <div class={join(CSS.legendInfoContainer, CSS.formSectionContainer)}>
           <label>
           <input type="checkbox"
@@ -527,6 +628,24 @@ class Print extends declared(Widget) {
             {i18n.legend}
           </label>
         </div>
+      </div>
+    ) : null;
+
+    const advancedSectionForMapOnly = this._advancedOptionsVisibleForMapOnly ? (
+      <div aria-labelledby={`${this.id}__advancedOptionsForMapOnly`} class={CSS.advancedOptionsContainer}>
+          {scaleSection}
+          {dpiSection}
+          <div class={CSS.formSectionContainer}>
+            <label>
+              <input data-option-name="attributionEnabled"
+                     type="checkbox"
+                     onchange={this._toggleInputValue}
+                     tabIndex={0}
+                     checked={attributionEnabled}
+                     bind={this} />
+              {i18n.attribution}
+            </label>
+          </div>
       </div>
     ) : null;
 
@@ -546,7 +665,7 @@ class Print extends declared(Widget) {
 
         <div class={join(CSS.panelContainer, CSS.advancedOptionsSection)}>
           <button aria-label={i18n.advancedOptions}
-                  aria-expanded={this._advancedOptionsVisible ? "true" : "false"}
+                  aria-expanded={this._advancedOptionsVisibleForLayout ? "true" : "false"}
                   role="button"
                   class={CSS.advancedOptionsButton}
                   onclick={this._showAdvancedOptions}
@@ -558,7 +677,7 @@ class Print extends declared(Widget) {
               <span class={CSS.advancedOptionsButtonTitle}>{i18n.advancedOptions}</span>
             </div>
           </button>
-          {advancedSection}
+          {advancedSectionForLayout}
         </div>
       </section>
     ) : (
@@ -576,7 +695,7 @@ class Print extends declared(Widget) {
               <label>
                 {i18n.width}
                 <input type="text"
-                       class={CSS.inputText}
+                       class={this.classes(CSS.inputText, CSS.input)}
                        data-input-name="width"
                        onchange={this._updateInputValue}
                        value={`${width}`}
@@ -588,7 +707,7 @@ class Print extends declared(Widget) {
               <label>
                 {i18n.height}
                 <input type="text"
-                       class={CSS.inputText}
+                       class={this.classes(CSS.inputText, CSS.input)}
                        data-input-name="height"
                        onchange={this._updateInputValue}
                        value={`${height}`}
@@ -598,23 +717,28 @@ class Print extends declared(Widget) {
             </div>
             <button role="button"
                     aria-label={i18n.swap}
-                    class={join(CSS.button, CSS.swapButton, CSS.iconSwap)}
+                    class={join(CSS.widgetButton, CSS.swapButton, CSS.iconSwap)}
                     onclick={this._switchInput}
                     tabIndex={0}
                     bind={this}>
             </button>
           </div>
-          <div class={CSS.formSectionContainer}>
-            <label>
-              <input data-option-name="attributionEnabled"
-                     type="checkbox"
-                     onchange={this._toggleInputValue}
-                     tabIndex={0}
-                     checked={attributionEnabled}
-                     bind={this} />
-              {i18n.attribution}
-            </label>
-          </div>
+          <div class={join(CSS.panelContainer, CSS.advancedOptionsSection)}>
+            <button aria-label={i18n.advancedOptions}
+                  aria-expanded={this._advancedOptionsVisibleForMapOnly ? "true" : "false"}
+                  role="button"
+                  class={CSS.advancedOptionsButton}
+                  onclick={this._showAdvancedOptions}
+                  bind={this}>
+            <div class={CSS.advancedOptionsButtonContainer}>
+              <span aria-hidden="true" class={join(CSS.iconRightTriangleArrow, CSS.advancedOptionsButtonIconClosed)} />
+              <span aria-hidden="true" class={join(CSS.iconLeftTriangleArrow, CSS.advancedOptionsButtonIconClosed_RTL)} />
+              <span aria-hidden="true" class={join(CSS.iconDownArrow, CSS.advancedOptionsButtonIconOpened)} />
+              <span class={CSS.advancedOptionsButtonTitle}>{i18n.advancedOptions}</span>
+            </div>
+          </button>
+          {advancedSectionForMapOnly}
+        </div>
         </div>
       </section>
     );
@@ -664,7 +788,7 @@ class Print extends declared(Widget) {
 
         <button aria-label={i18n.exportDescription}
                 role="button"
-                class={CSS.printButton}
+                class={this.classes(CSS.printButton, CSS.button)}
                 tabIndex={0}
                 classes={exportButtonClasses}
                 onclick={this._handlePrintMap}
@@ -695,9 +819,14 @@ class Print extends declared(Widget) {
       </div>
     );
 
+    const initializing = this.get("viewModel.state") === "initializing";
+    const panelContent = initializing ?
+                    this._renderLoader() :
+                    printWidgetPanel;
+
     return (
       <div afterCreate={storeNode} bind={this} class={CSS.base} data-node-ref="_rootNode">
-        {printWidgetPanel}
+        {panelContent}
       </div>
     );
   }
@@ -707,6 +836,16 @@ class Print extends declared(Widget) {
   //  Private Methods
   //
   //--------------------------------------------------------------------------
+
+  private _renderLoader(): any {
+    const classes = {
+      [CSS.loader]: this._awaitingServerResponse
+    };
+
+    return (
+      <div classes={classes} key="loader" />
+    );
+  }
 
   private _addFileLink(template: PrintTemplate): void {
     const titleText = template.layoutOptions.titleText || i18n.untitled,
@@ -730,7 +869,7 @@ class Print extends declared(Widget) {
   }
 
   private _toPrintTemplate(templateOptions: TemplateOptions): PrintTemplate {
-    const { attributionEnabled, author, copyright, format, height, layout, legendEnabled, title, scale, width } = this.templateOptions;
+    const { attributionEnabled, author, copyright, dpi, format, height, layout, legendEnabled, title, scale, width } = this.templateOptions;
     const printTemplate = new PrintTemplate({
       attributionVisible: attributionEnabled,
       layoutOptions: {
@@ -746,8 +885,13 @@ class Print extends declared(Widget) {
     if (width) {
       printTemplate.exportOptions.width = width;
     }
+
     if (height) {
       printTemplate.exportOptions.height = height;
+    }
+
+    if (dpi) {
+      printTemplate.exportOptions.dpi = dpi;
     }
 
     if (!legendEnabled) {
@@ -764,6 +908,7 @@ class Print extends declared(Widget) {
   private _updateInputValue(e: Event): void {
     const target = e.target as HTMLInputElement;
     const targetProperty = target.getAttribute("data-input-name");
+
     this.templateOptions[targetProperty] = target.value;
   }
 
@@ -788,7 +933,12 @@ class Print extends declared(Widget) {
   }
 
   private _showAdvancedOptions(): void {
-    this._advancedOptionsVisible = !this._advancedOptionsVisible;
+    if (this._layoutTabSelected) {
+      this._advancedOptionsVisibleForLayout = !this._advancedOptionsVisibleForLayout;
+    }
+    else {
+      this._advancedOptionsVisibleForMapOnly = !this._advancedOptionsVisibleForMapOnly;
+    }
   }
 
   private _scrollExportIntoView(): void {

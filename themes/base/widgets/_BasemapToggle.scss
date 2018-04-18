@@ -1,5 +1,5 @@
 $basemap_toggle_offset: 5px !default;
-$basemap_toggle_size: $button_width * 2  !default;
+$basemap_toggle_size: $button_width * 2 !default;
 
 @mixin basemapToggle() {
   .esri-basemap-toggle {
@@ -71,7 +71,7 @@ $basemap_toggle_size: $button_width * 2  !default;
     font-size: 9px;
     font-weight: 500;
     line-height: $line_height;
-    padding: .5em;
+    padding: 0.5em;
     background-color: rgba(255, 255, 255, 0.7);
     text-align: center;
   }

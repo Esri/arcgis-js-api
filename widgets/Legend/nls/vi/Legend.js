@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({points:"Điểm",lines:"Đường",polygons:"Vùng",creatingLegend:"Đang tạo chú giải",noLegend:"Không có chú giải",dotValue:"1 Chấm = {value} {unit}",currentObservations:"Quan sát hiện tại",previousObservations:"Quan sát trước đó",high:"Cao",low:"Thấp",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"điểm nút",esriFeetPerSecond:"ft/sec",esriMilesPerHour:"mph",showField:"{field}",showNormField:"{field} chia cho {normField}",showNormPct:"{field} dưới dạng phần trăm của tổng",showRatio:"Tỷ lệ của {field} trong {normField}",showRatioPercent:"{field} dưới dạng phần trăm của {normField}",showRatioPercentTotal:"{field} dưới dạng phần trăm của {field} và {normField}"});
+define({widgetLabel:"Chú giải",points:"Điểm",lines:"Đường",polygons:"Vùng",creatingLegend:"Đang tạo chú giải",noLegend:"Không có chú giải",dotValue:"1 Chấm = {value} {unit}",currentObservations:"Quan sát hiện tại",previousObservations:"Quan sát trước đó",high:"Cao",low:"Thấp",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"điểm nút",esriFeetPerSecond:"ft/sec",esriMilesPerHour:"mph",showField:"{field}",showNormField:"{field} chia cho {normField}",showNormPct:"{field} dưới dạng phần trăm của tổng",showRatio:"Tỷ lệ của {field} trong {normField}",showRatioPercent:"{field} dưới dạng phần trăm của {normField}",showRatioPercentTotal:"{field} dưới dạng phần trăm của {field} và {normField}"});

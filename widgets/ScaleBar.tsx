@@ -37,23 +37,35 @@
 /// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
 /// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
 
-import { join, tsx, renderable } from "./support/widget";
-import { aliasOf, cast, declared, property, subclass } from "../core/accessorSupport/decorators";
+// dojo
+import domGeometry = require("dojo/dom-geometry");
+import * as i18n from "dojo/i18n!./ScaleBar/nls/ScaleBar";
+
+// esri.core
 import { whenTrue } from "../core/watchUtils";
 
+// esri.core.accessorSupport
+import { aliasOf, cast, declared, property, subclass } from "../core/accessorSupport/decorators";
+
+// esri.geometry
+import ScreenPoint = require("../geometry/ScreenPoint");
+
+// esri.views
+import MapView = require("../views/MapView");
+
+// esri.widgets
 import {
   MapUnitType,
   ScaleBarProperties
 } from "./interfaces";
 
 import Widget = require("./Widget");
+
+// esri.widgets.ScaleBar
 import ScaleBarViewModel = require("./ScaleBar/ScaleBarViewModel");
-import ScreenPoint = require("../geometry/ScreenPoint");
-import MapView = require("../views/MapView");
 
-import domGeometry = require("dojo/dom-geometry");
-
-import * as i18n from "dojo/i18n!./ScaleBar/nls/ScaleBar";
+// esri.widgets.support
+import { join, tsx, renderable } from "./support/widget";
 
 type ScaleBarStyle = "line" | "ruler";
 type ScaleBarUnit = MapUnitType | "dual";

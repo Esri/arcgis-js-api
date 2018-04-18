@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({title:"Ölçü",hint:"İlk noktanızı yerleştirmek için sahneyi tıklatarak ölçüme başlayın",distance:"Mesafe",direct:"Doğrudan",horizontal:"Yatay",vertical:"Dikey",unit:"Birim",newMeasurement:"Yeni Ölçüm",units:{metric:"Metrik",imperial:"İngiliz",kilometers:"Kilometre",meters:"Metre",miles:"Mil",inches:"İnç",feet:"Fit",yards:"Yarda","nautical-miles":"Deniz Mili","us-feet":"Feet (ABD)","degrees-minutes-seconds":"DMS",degrees:"Derece"}});
+define({title:"Ölçü",hint:"İlk noktanızı yerleştirmek için sahneyi tıklatarak ölçüme başlayın",unsupported:"Doğrudan hat ölçümü MapView'da desteklenmiyor.",distance:"Mesafe",direct:"Doğrudan",horizontal:"Yatay",vertical:"Dikey",unit:"Birim",newMeasurement:"Yeni Ölçüm",units:{metric:"Metrik",imperial:"İngiliz",kilometers:"Kilometre",meters:"Metre",miles:"Mil",inches:"İnç",feet:"Fit",yards:"Yarda","nautical-miles":"Deniz Mili","us-feet":"Feet (ABD)","degrees-minutes-seconds":"DMS",degrees:"Derece"}});

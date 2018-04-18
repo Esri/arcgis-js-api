@@ -8,7 +8,7 @@
  * ![navigation-toggle](../assets/img/apiref/widgets/navigation-toggle.png)
  *
  * The default navigation mode of the {@link module:esri/views/SceneView} is always
- * `pan`. The various mouse interations of this mode are outlined
+ * `pan`. The various mouse interactions of this mode are outlined
  * [here](../api-reference/esri-views-SceneView.html#navigation).
  * The alternate navigation mode to toggle to is `rotate`. This allows the user to
  * rotate the view with a mouse drag and pan the view with a right-click and drag
@@ -40,14 +40,23 @@
 /// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
 /// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
 
-import { aliasOf, declared, property, subclass } from "../core/accessorSupport/decorators";
-import { accessibleHandler, join, tsx, renderable } from "./support/widget";
+// dojo
+import * as i18n from "dojo/i18n!./NavigationToggle/nls/NavigationToggle";
 
-import Widget = require("./Widget");
-import NavigationToggleViewModel = require("./NavigationToggle/NavigationToggleViewModel");
+// esri.core.accessorSupport
+import { aliasOf, declared, property, subclass } from "../core/accessorSupport/decorators";
+
+// esri.views
 import View = require("../views/View");
 
-import * as i18n from "dojo/i18n!./NavigationToggle/nls/NavigationToggle";
+// esri.widgets
+import Widget = require("./Widget");
+
+// esri.widgets.NavigationToggle
+import NavigationToggleViewModel = require("./NavigationToggle/NavigationToggleViewModel");
+
+// esri.widgets.support
+import { accessibleHandler, join, tsx, renderable } from "./support/widget";
 
 const CSS = {
   base: "esri-navigation-toggle esri-widget",
@@ -59,6 +68,7 @@ const CSS = {
   // icons
   rotationIcon: "esri-icon-rotate",
   panIcon: "esri-icon-pan",
+  widgetIcon: "esri-icon-pan2",
   // common
   disabled: "esri-disabled"
 };
@@ -96,6 +106,38 @@ class NavigationToggle extends declared(Widget) {
   //  Properties
   //
   //--------------------------------------------------------------------------
+
+  //----------------------------------
+  //  iconClass
+  //----------------------------------
+
+  /**
+   * The widget's default icon font.
+   *
+   * @since 4.7
+   * @name iconClass
+   * @instance
+   * @type {string}
+   * @readonly
+   */
+  @property()
+  iconClass = CSS.widgetIcon;
+
+  //----------------------------------
+  //  label
+  //----------------------------------
+
+  /**
+   * The widget's default label.
+   *
+   * @since 4.7
+   * @name label
+   * @instance
+   * @type {string}
+   * @readonly
+   */
+  @property()
+  label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  layout

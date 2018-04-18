@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({points:"ポイント",lines:"ライン",polygons:"ポリゴン",creatingLegend:"凡例の作成",noLegend:"凡例がありません",dotValue:"1 ドット = {value} {unit}",currentObservations:"現在の観測データ",previousObservations:"前の観測データ",high:"高",low:"低",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"ノット",esriFeetPerSecond:"ft/sec",esriMilesPerHour:"mph",showField:"{field}",showNormField:"{field} を {normField} で割る",showNormPct:"合計に占める割合としての {field}",showRatio:"{normField} に対する {field} の比率",showRatioPercent:"{normField} に占める割合としての {field}",showRatioPercentTotal:"{field} および {normField} に占める割合としての {field}"});
+define({widgetLabel:"凡例",points:"ポイント",lines:"ライン",polygons:"ポリゴン",creatingLegend:"凡例の作成",noLegend:"凡例がありません",dotValue:"1 ドット = {value} {unit}",currentObservations:"現在の観測データ",previousObservations:"前の観測データ",high:"高",low:"低",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"ノット",esriFeetPerSecond:"ft/sec",esriMilesPerHour:"mph",showField:"{field}",showNormField:"{field} を {normField} で割る",showNormPct:"合計に占める割合としての {field}",showRatio:"{normField} に対する {field} の比率",showRatioPercent:"{normField} に占める割合としての {field}",showRatioPercentTotal:"{field} および {normField} に占める割合としての {field}"});

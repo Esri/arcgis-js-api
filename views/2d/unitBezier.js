@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -47,4 +47,4 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-define([],function(){var n=function(n,e,r,t){function u(n){return((c*n+s)*n+o)*n}function a(n){return((p*n+b)*n+l)*n}function i(n){return(3*c*n+2*s)*n+o}function f(n,e){var r,t,a,f,o,s;for(e=null==e?1e-6:e,a=n,s=0;8>s;s++){if(f=u(a)-n,Math.abs(f)<e)return a;if(o=i(a),Math.abs(o)<1e-6)break;a-=f/o}if(r=0,t=1,a=n,r>a)return r;if(a>t)return t;for(;t>r;){if(f=u(a),Math.abs(f-n)<e)return a;n>f?r=a:t=a,a=.5*(t-r)+r}return a}var o=3*n,s=3*(r-n)-o,c=1-o-s,l=3*e,b=3*(t-e)-l,p=1-l-b;return function(n,e){return a(f(n,e))}},e=/^cubic-bezier\((.*)\)/;return n.parse=function(r){var t=n[r]||null;if(!t){var u=e.exec(r);if(u){var a=u[1].split(",").map(function(n){return parseFloat(n.trim())});4!==a.length||a.some(function(n){return isNaN(n)})||(t=n.apply(n,a))}}return t},n.ease=n(.25,.1,.25,1),n.linear=n(0,0,1,1),n.easeIn=n["ease-in"]=n(.42,0,1,1),n.easeOut=n["ease-out"]=n(0,0,.58,1),n.easeInOut=n["ease-in-out"]=n(.42,0,.58,1),n});
+define([],function(){var n=function(n,e,r,t){function u(n){return((c*n+s)*n+o)*n}function a(n){return((p*n+b)*n+l)*n}function i(n){return(3*c*n+2*s)*n+o}function f(n,e){var r,t,a,f,o,s;for(e=null==e?1e-6:e,a=n,s=0;s<8;s++){if(f=u(a)-n,Math.abs(f)<e)return a;if(o=i(a),Math.abs(o)<1e-6)break;a-=f/o}if(r=0,t=1,(a=n)<r)return r;if(a>t)return t;for(;r<t;){if(f=u(a),Math.abs(f-n)<e)return a;n>f?r=a:t=a,a=.5*(t-r)+r}return a}var o=3*n,s=3*(r-n)-o,c=1-o-s,l=3*e,b=3*(t-e)-l,p=1-l-b;return function(n,e){return a(f(n,e))}},e=/^cubic-bezier\((.*)\)/;return n.parse=function(r){var t=n[r]||null;if(!t){var u=e.exec(r);if(u){var a=u[1].split(",").map(function(n){return parseFloat(n.trim())});4!==a.length||a.some(function(n){return isNaN(n)})||(t=n.apply(n,a))}}return t},n.ease=n(.25,.1,.25,1),n.linear=n(0,0,1,1),n.easeIn=n["ease-in"]=n(.42,0,1,1),n.easeOut=n["ease-out"]=n(0,0,.58,1),n.easeInOut=n["ease-in-out"]=n(.42,0,.58,1),n});

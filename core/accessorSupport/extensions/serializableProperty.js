@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","./serializableProperty/shorthands","./serializableProperty/originAliases","./serializableProperty/reader","./serializableProperty/writer"],function(r,e,i,o,n,t){function a(r,e){return c(r,"read",e)}function s(r,e){return c(r,"write",e)}function c(r,e,i){var o=r&&r.json;if(r&&r.json&&r.json.origins&&i){var n=r.json.origins[i.origin];n&&e in n&&(o=n)}return o}function p(r,e){for(var i=e.type,o=0;Array.isArray(i);)i=i[0],o++;if(e.json.origins)for(var a in e.json.origins){var s=e.json.origins[a];n.create(i,o,r,s),t.create(i,o,r,s)}n.create(i,o,r,e.json),t.create(i,o,r,e.json)}Object.defineProperty(e,"__esModule",{value:!0}),e.originSpecificReadPropertyDefinition=a,e.originSpecificWritePropertyDefinition=s,e.SerializablePropertyExtension={processPrototypePropertyMetadata:function(r,e,n,t){i.process(e)&&(o.process(e),p(r,e))}},e["default"]=e.SerializablePropertyExtension});
+define(["require","exports","./serializableProperty/originAliases","./serializableProperty/reader","./serializableProperty/shorthands","./serializableProperty/writer"],function(r,e,i,o,n,t){function a(r,e){return c(r,"read",e)}function s(r,e){return c(r,"write",e)}function c(r,e,i){var o=r&&r.json;if(r&&r.json&&r.json.origins&&i){var n=r.json.origins[i.origin];n&&e in n&&(o=n)}return o}function p(r,e){for(var i=e.type,n=0;Array.isArray(i);)i=i[0],n++;if(e.json.origins)for(var a in e.json.origins){var s=e.json.origins[a];o.create(i,n,r,s),t.create(i,n,r,s)}o.create(i,n,r,e.json),t.create(i,n,r,e.json)}Object.defineProperty(e,"__esModule",{value:!0}),e.originSpecificReadPropertyDefinition=a,e.originSpecificWritePropertyDefinition=s,e.SerializablePropertyExtension={processPrototypePropertyMetadata:function(r,e,o,t){n.process(e)&&(i.process(e),p(r,e))}},e.default=e.SerializablePropertyExtension});

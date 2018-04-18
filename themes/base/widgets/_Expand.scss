@@ -100,110 +100,143 @@
     display: none;
   }
 
-  .esri-view-width-xsmall {
+  @mixin expandPanelOpen($modeClass) {
+    .#{$modeClass} {
+      .esri-widget {
+        max-width: 100%;
+        width: 100%;
+      }
 
-    .esri-expand .esri-widget {
-      max-width: 100%;
-      width: 100%;
-    }
+      .esri-expand__container--expanded {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        margin: 0;
+        height: 100%;
+        background: $background_color;
+        z-index: 1;
+        overflow: auto;
 
-    .esri-expand__container--expanded {
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      margin: 0;
-      height: 100%;
-      background: #fff;
-      z-index: 1;
-      overflow: auto;
+        .esri-expand__panel {
+          display: flex;
+          justify-content: space-between;
+          padding: 1.023rem;
+          align-items: center;
 
-      .esri-expand__panel {
-        display: flex;
-        justify-content: space-between;
-        padding: 1.023rem;
-        align-items: center;
-
-        .esri-expand__icon-number--expanded {
-          display: block;
+          .esri-expand__icon-number--expanded {
+            display: block;
+          }
         }
+      }
+
+      .esri-expand__mask--expanded {
+        background-color: #000;
+        position: fixed;
+        right: 0;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        bottom: 0;
+        opacity: 0.8;
+        z-index: 1;
       }
     }
 
     .esri-ui-top-right,
     .esri-ui-bottom-right {
+      .#{$modeClass} {
+        .esri-expand__panel {
+          flex-flow: row nowrap;
+        }
 
-      .esri-expand__panel {
-        flex-flow: row nowrap;
-      }
-
-      .esri-expand__container--expanded {
-        width: 75%;
-        animation: expand-slide-rtl-ani 300ms forwards;
+        .esri-expand__container--expanded {
+          width: 75%;
+          max-width: $panel_width;
+          animation: expand-slide-rtl-ani 300ms forwards;
+        }
       }
     }
 
     .esri-ui-top-left,
     .esri-ui-bottom-left {
+      #{$modeClass} {
+        .esri-expand__panel {
+          flex-flow: row-reverse nowrap;
+        }
 
-      .esri-expand__panel {
-        flex-flow: row-reverse nowrap;
+        .esri-expand__container--expanded {
+          width: 75%;
+          max-width: $panel_width;
+          animation: expand-slide-ltr-ani 300ms forwards;
+        }
       }
-
-      .esri-expand__container--expanded {
-        width: 75%;
-        animation: expand-slide-ltr-ani 300ms forwards;
-      }
-    }
-
-
-
-
-
-    .esri-expand__mask--expanded {
-      background-color: #000;
-      position: fixed;
-      right: 0;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      bottom: 0;
-      opacity: 0.8;
-      z-index: 1;
     }
   }
 
+
+// Max heights
+.esri-view-height-greater-than-medium {
+  .esri-ui-corner .esri-component .esri-expand__content {
+    max-height: $gt_medium_height;
+  }
+}
+.esri-view-height-medium {
+  .esri-ui-corner .esri-component .esri-expand__content {
+    max-height: $medium_height;
+  }
+}
+.esri-view-height-small {
+  .esri-ui-corner .esri-component .esri-expand__content {
+    max-height: $small_height;
+  }
+}
+.esri-view-height-xsmall {
+  .esri-ui-corner .esri-component .esri-expand__content {
+    max-height: $xsmall_height;
+  }
+}
+
+  @mixin expandPanelClosed($modeClass) {
+    .#{$modeClass} {
+      .esri-expand__content {
+        position: absolute;
+      }
+
+      .esri-expand__mask,
+      .esri-expand__content-panel {
+        display: none;
+      }
+    }
+  }
+
+  @include expandPanelOpen("esri-expand--drawer");
+
+  .esri-view-width-xsmall {
+    @include expandPanelOpen("esri-expand--auto");
+  }
+
+  @include expandPanelClosed("esri-expand--floating");
+
   .esri-view-width-greater-than-xsmall {
-
-    .esri-expand__content {
-      position: absolute;
-    }
-
-    .esri-expand__mask,
-    .esri-expand__content-panel {
-      display: none;
-    }
+    @include expandPanelClosed("esri-expand--auto");
   }
 
   @keyframes expand-slide-rtl-ani {
     from {
       right: -600px;
-      left: 100%;
     }
     to {
       right: 0;
-      left: 25%;
     }
   }
 
   @keyframes expand-slide-ltr-ani {
     from {
       left: -600px;
-      right: 100%;
     }
     to {
       left: 0;
-      right: 25%;
     }
   }
 
@@ -223,7 +256,6 @@
   }
 }
 
-@if $include_Expand == true {
+@if $include_Expand==true {
   @include expand();
 }
-

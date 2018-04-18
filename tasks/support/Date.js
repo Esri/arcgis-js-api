@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["dojo/date/locale","../../core/JSONSupport"],function(t,e){var a=e.createSubclass({declaredClass:"esri.tasks.support.Date",properties:{date:{type:Date,json:{read:function(e,a){return t.parse(e,{selector:"date",datePattern:a.format||this.format})}}},format:"EEE MMM dd HH:mm:ss zzz yyyy"},toJSON:function(){return{date:t.format(this.date,{selector:"date",datePattern:this.format}),format:this.format}}});return a});
+define(["dojo/date/locale","../../core/JSONSupport"],function(t,e){return e.createSubclass({declaredClass:"esri.tasks.support.Date",properties:{date:{type:Date,json:{read:function(e,a){return t.parse(e,{selector:"date",datePattern:a.format||this.format})}}},format:"EEE MMM dd HH:mm:ss zzz yyyy"},toJSON:function(){return{date:t.format(this.date,{selector:"date",datePattern:this.format}),format:this.format}}})});

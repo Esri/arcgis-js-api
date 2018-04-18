@@ -1,0 +1,59 @@
+{
+  "title": "Solid Edges",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "The solid edge rendering configuration of a symbol layer.",
+  "properties": {
+    "color": {
+      "$ref": "color_schema.json"
+    },
+    "extensionLength": {
+      "type": "number",
+      "description": "Additional length (in points) to which to extend the edge beyond its end-point. Positive only.",
+      "minimum": 0
+    },
+    "size": {
+      "type": "number",
+      "description": "Edge size in points, positive only",
+      "minimum": 0
+    },
+    "transparency": {
+      "type": "integer",
+      "description": "The value has to lie between `100` (full transparency) and `0` (full opacity).",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "type": {
+      "type": "string",
+      "description": "The type of edge visualization. Edges of type 'solid' are rendered in a single color, unaffected by scene lighting.",
+      "enum": [
+        "solid"
+      ]
+    }
+  },
+  "required": [
+    "color",
+    "type"
+  ],
+  "additionalProperties": false,
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "edges",
+        "code": {
+          "edges": {
+            "type": "solid",
+            "color": [
+              255,
+              0,
+              0
+            ],
+            "extensionLength": 3,
+            "size": 0.75,
+            "transparency": 10
+          }
+        }
+      }
+    ]
+  }
+}

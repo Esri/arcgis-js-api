@@ -47,6 +47,10 @@
       "maximum": 1,
       "default": 1
     },
+    "refreshInterval": {
+      "type": "number",
+      "description": "Refresh interval of the layer in minutes. Non-zero value indicates automatic layer refresh at the specified interval. Value of 0 indicates auto refresh is not enabled."
+    },
     "showLegend": {
       "type": "boolean",
       "description": "Boolean value indicating whether to display the layer in the legend. Default value is `true`.",
@@ -122,4 +126,3 @@
     ]
   }
 }
-

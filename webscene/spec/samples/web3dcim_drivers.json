@@ -26,21 +26,25 @@
                   {
                     "type": "colorInfo",
                     "field": "driverFloat",
-                    "minDataValue": 1,
-                    "maxDataValue": 6,
-                    "colors": [
-                      [
-                        255,
-                        0,
-                        0,
-                        255
-                      ],
-                      [
-                        0,
-                        255,
-                        0,
-                        255
-                      ]
+                    "stops": [
+                      {
+                        "value": 1,
+                        "color": [
+                          255,
+                          0,
+                          0,
+                          255
+                        ]
+                      },
+                      {
+                        "value": 6, 
+                        "color": [
+                          0,
+                          255,
+                          0,
+                          255
+                        ]
+                      }
                     ]
                   },
                   {
@@ -97,21 +101,25 @@
                   {
                     "type": "colorInfo",
                     "field": "driverFloat",
-                    "minDataValue": 1,
-                    "maxDataValue": 6,
-                    "colors": [
-                      [
-                        255,
-                        0,
-                        0,
-                        255
-                      ],
-                      [
-                        0,
-                        255,
-                        0,
-                        255
-                      ]
+                    "stops": [
+                      {
+                        "value": 1,
+                        "color": [
+                          255,
+                          0,
+                          0,
+                          255
+                        ]
+                      },
+                      {
+                        "value": 6, 
+                        "color": [
+                          0,
+                          255,
+                          0,
+                          255
+                        ]
+                      }
                     ]
                   },
                   {
@@ -168,21 +176,25 @@
                   {
                     "type": "colorInfo",
                     "field": "driverFloat",
-                    "minDataValue": 1,
-                    "maxDataValue": 6,
-                    "colors": [
-                      [
-                        255,
-                        0,
-                        0,
-                        255
-                      ],
-                      [
-                        0,
-                        255,
-                        0,
-                        255
-                      ]
+                    "stops": [
+                      {
+                        "value": 1,
+                        "color": [
+                          255,
+                          0,
+                          0,
+                          255
+                        ]
+                      },
+                      {
+                        "value": 6, 
+                        "color": [
+                          0,
+                          255,
+                          0,
+                          255
+                        ]
+                      }
                     ]
                   },
                   {
@@ -240,21 +252,25 @@
                   {
                     "type": "colorInfo",
                     "field": "driverFloat",
-                    "minDataValue": 1,
-                    "maxDataValue": 6,
-                    "colors": [
-                      [
-                        255,
-                        0,
-                        0,
-                        255
-                      ],
-                      [
-                        0,
-                        255,
-                        0,
-                        255
-                      ]
+                    "stops": [
+                      {
+                        "value": 1,
+                        "color": [
+                          255,
+                          0,
+                          0,
+                          255
+                        ]
+                      },
+                      {
+                        "value": 6, 
+                        "color": [
+                          0,
+                          255,
+                          0,
+                          255
+                        ]
+                      }
                     ]
                   },
                   {
@@ -306,21 +322,25 @@
                   {
                     "type": "colorInfo",
                     "field": "driverFloat",
-                    "minDataValue": 1,
-                    "maxDataValue": 6,
-                    "colors": [
-                      [
-                        255,
-                        0,
-                        0,
-                        255
-                      ],
-                      [
-                        0,
-                        255,
-                        0,
-                        255
-                      ]
+                    "stops": [
+                      {
+                        "value": 1,
+                        "color": [
+                          255,
+                          0,
+                          0,
+                          255
+                        ]
+                      },
+                      {
+                        "value": 6, 
+                        "color": [
+                          0,
+                          255,
+                          0,
+                          255
+                        ]
+                      }
                     ]
                   },
                   {
@@ -374,21 +394,25 @@
                   {
                     "type": "colorInfo",
                     "field": "driverFloat",
-                    "minDataValue": 1,
-                    "maxDataValue": 6,
-                    "colors": [
-                      [
-                        255,
-                        0,
-                        0,
-                        255
-                      ],
-                      [
-                        0,
-                        255,
-                        0,
-                        255
-                      ]
+                    "stops": [
+                      {
+                        "value": 1,
+                        "color": [
+                          255,
+                          0,
+                          0,
+                          255
+                        ]
+                      },
+                      {
+                        "value": 6, 
+                        "color": [
+                          0,
+                          255,
+                          0,
+                          255
+                        ]
+                      }
                     ]
                   },
                   {
@@ -442,21 +466,25 @@
                   {
                     "type": "colorInfo",
                     "field": "driverFloat",
-                    "minDataValue": 1,
-                    "maxDataValue": 6,
-                    "colors": [
-                      [
-                        255,
-                        0,
-                        0,
-                        255
-                      ],
-                      [
-                        0,
-                        255,
-                        0,
-                        255
-                      ]
+                    "stops": [
+                      {
+                        "value": 1,
+                        "color": [
+                          255,
+                          0,
+                          0,
+                          255
+                        ]
+                      },
+                      {
+                        "value": 6, 
+                        "color": [
+                          0,
+                          255,
+                          0,
+                          255
+                        ]
+                      }
                     ]
                   },
                   {
@@ -510,21 +538,25 @@
                   {
                     "type": "colorInfo",
                     "field": "driverFloat",
-                    "minDataValue": 1,
-                    "maxDataValue": 6,
-                    "colors": [
-                      [
-                        255,
-                        0,
-                        0,
-                        255
-                      ],
-                      [
-                        0,
-                        255,
-                        0,
-                        255
-                      ]
+                    "stops": [
+                      {
+                        "value": 1,
+                        "color": [
+                          255,
+                          0,
+                          0,
+                          255
+                        ]
+                      },
+                      {
+                        "value": 6, 
+                        "color": [
+                          0,
+                          255,
+                          0,
+                          255
+                        ]
+                      }
                     ]
                   },
                   {
@@ -588,21 +620,25 @@
                   {
                     "type": "colorInfo",
                     "field": "driverFloat",
-                    "minDataValue": 1,
-                    "maxDataValue": 6,
-                    "colors": [
-                      [
-                        255,
-                        0,
-                        0,
-                        255
-                      ],
-                      [
-                        0,
-                        255,
-                        0,
-                        255
-                      ]
+                    "stops": [
+                      {
+                        "value": 1,
+                        "color": [
+                          255,
+                          0,
+                          0,
+                          255
+                        ]
+                      },
+                      {
+                        "value": 6, 
+                        "color": [
+                          0,
+                          255,
+                          0,
+                          255
+                        ]
+                      }
                     ]
                   }
                 ],
@@ -655,21 +691,25 @@
                   {
                     "type": "colorInfo",
                     "field": "driverFloat",
-                    "minDataValue": 1,
-                    "maxDataValue": 6,
-                    "colors": [
-                      [
-                        255,
-                        0,
-                        0,
-                        255
-                      ],
-                      [
-                        0,
-                        255,
-                        0,
-                        255
-                      ]
+                    "stops": [
+                      {
+                        "value": 1,
+                        "color": [
+                          255,
+                          0,
+                          0,
+                          255
+                        ]
+                      },
+                      {
+                        "value": 6, 
+                        "color": [
+                          0,
+                          255,
+                          0,
+                          255
+                        ]
+                      }
                     ]
                   }
                 ],

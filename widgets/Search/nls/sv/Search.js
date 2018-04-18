@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({searchButtonTitle:"Sök",clearButtonTitle:"Rensa sökning",placeholder:"Sök efter adress eller plats",searchIn:"Sök i",all:"Alla",allPlaceholder:"Sök efter adress eller plats",emptyValue:"Ange en sökterm",untitledResult:"Namnlös",untitledSource:"Namnlös källa",noResults:"Inga resultat",noResultsFound:"Inga resultat hittades.",noResultsFoundForValue:"Inga resultat hittades för {value}.",showMoreResults:"Visa fler resultat",hideMoreResults:"Dölj",searchResult:"Sökresultat",moreResultsHeader:"Fler resultat",esriLocatorName:"Esri World Geocoder",useCurrentLocation:"Använd aktuell plats"});
+define({widgetLabel:"Sök",searchButtonTitle:"Sök",clearButtonTitle:"Rensa sökning",placeholder:"Sök efter adress eller plats",searchIn:"Sök i",all:"Alla",allPlaceholder:"Sök efter adress eller plats",emptyValue:"Ange en sökterm",untitledResult:"Namnlös",untitledSource:"Namnlös källa",noResults:"Inga resultat",noResultsFound:"Inga resultat hittades.",noResultsFoundForValue:"Inga resultat hittades för {value}.",showMoreResults:"Visa fler resultat",hideMoreResults:"Dölj",searchResult:"Sökresultat",moreResultsHeader:"Fler resultat",esriLocatorName:"Esri World Geocoder",useCurrentLocation:"Använd aktuell plats"});

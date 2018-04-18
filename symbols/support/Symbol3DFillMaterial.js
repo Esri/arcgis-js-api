@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","./Symbol3DMaterial","../../core/accessorSupport/decorators"],function(e,o,r,t,l,i){Object.defineProperty(o,"__esModule",{value:!0});var c=function(e){function o(){return null!==e&&e.apply(this,arguments)||this}return r(o,e),l=o,o.prototype.clone=function(){return new l({color:this.color?this.color.clone():null,colorMixMode:this.colorMixMode})},t([i.property({type:String,json:{read:!0,write:!0}})],o.prototype,"colorMixMode",void 0),o=l=t([i.subclass("esri.symbols.support.Symbol3DFillMaterial")],o);var l}(i.declared(l["default"]));o.Symbol3DFillMaterial=c,o["default"]=c});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators","./Symbol3DMaterial"],function(e,o,r,t,l,i){Object.defineProperty(o,"__esModule",{value:!0});var c=function(e){function o(){return null!==e&&e.apply(this,arguments)||this}return r(o,e),i=o,o.prototype.clone=function(){return new i({color:this.color?this.color.clone():null,colorMixMode:this.colorMixMode})},t([l.property({type:String,json:{read:!0,write:!0}})],o.prototype,"colorMixMode",void 0),o=i=t([l.subclass("esri.symbols.support.Symbol3DFillMaterial")],o);var i}(l.declared(i.default));o.Symbol3DFillMaterial=c,o.default=c});

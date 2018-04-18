@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","./PointSizeAlgorithm","./PointSizeFixedSizeAlgorithm","./PointSizeSplatAlgorithm"],function(e,i,t,o,l){Object.defineProperty(i,"__esModule",{value:!0}),i.pointSizeAlgorithmTypes={key:"type",base:t["default"],typeMap:{"fixed-size":o["default"],splat:l["default"]}}});
+define(["require","exports","./PointSizeAlgorithm","./PointSizeFixedSizeAlgorithm","./PointSizeSplatAlgorithm"],function(e,i,t,o,l){Object.defineProperty(i,"__esModule",{value:!0}),i.pointSizeAlgorithmTypes={key:"type",base:t.default,typeMap:{"fixed-size":o.default,splat:l.default}}});

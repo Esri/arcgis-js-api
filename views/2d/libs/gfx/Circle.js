@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/extendsHelper","./Shape","dojox/gfx/_base"],function(e,t,r,o,i){Object.defineProperty(t,"__esModule",{value:!0});var n=function(e){function t(t){var r=e.call(this)||this;return r.shape=i.getDefault("Circle"),r.rawNode=t,r}return r(t,e),t.prototype.getBoundingBox=function(){if(!this.bbox){var e=this.shape;this.bbox={x:e.cx-e.r,y:e.cy-e.r,width:2*e.r,height:2*e.r}}return this.bbox},t.nodeType="circle",t}(o["default"]);t["default"]=n});
+define(["require","exports","../../../../core/tsSupport/extendsHelper","dojox/gfx/_base","./Shape"],function(e,t,r,o,i){Object.defineProperty(t,"__esModule",{value:!0});var n=function(e){function t(t){var r=e.call(this)||this;return r.shape=o.getDefault("Circle"),r.rawNode=t,r}return r(t,e),t.prototype.getBoundingBox=function(){if(!this.bbox){var e=this.shape;this.bbox={x:e.cx-e.r,y:e.cy-e.r,width:2*e.r,height:2*e.r}}return this.bbox},t.nodeType="circle",t}(i.default);t.default=n});

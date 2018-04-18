@@ -4,6 +4,9 @@
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "PolygonSymbol3D is used to render features with Polygon geometry in a 3D SceneView. Polygon features may also be rendered as points with icons or objects at the centroid of each polygon.",
   "properties": {
+    "styleOrigin": {
+      "$ref": "styleOrigin_schema.json"
+    },
     "symbolLayers": {
       "type": "array",
       "description": "A Collection of Symbol3DLayer objects used to visualize the graphic or feature.",
@@ -42,4 +45,3 @@
   ],
   "additionalProperties": false
 }
-

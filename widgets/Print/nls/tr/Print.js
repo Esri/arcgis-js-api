@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({title:"Başlık",fileName:"Dosya İsmi",titlePlaceHolder:"Dosya başlığı",fileNamePlaceHolder:"Dosya adı",formatDefaultOption:"Biçim seç",fileFormatTitle:"Dosya biçimi",layoutTitle:"Sayfa düzeni",layoutDefaultOption:"Sayfa düzenini seç",scale:"Ölçeği ayarla",scaleLabel:"ölçek",reset:"sıfırla",author:"Yazar",copyright:"Telif Hakkı",legend:"Gösterim ekle",lock:"kilitle",swap:"değiştir",panelToggle:"İkili panel ayarı",advancedOptions:"Gelişmiş Seçenekler",width:"Genişlik",height:"Yükseklik",attribution:"Özniteliği ekle",layoutTab:"Düzen",mapOnlyTab:"Yalnızca Harita",untitled:"adsız",pending:"Aktarılıyor",ready:"Bunu aç",linkReady:"Yeni pencerede aç.",error:"Kaldırmak için bunu seçin.",sceneViewError:"Yazdırma SceneView’de desteklenmez.",serviceError:"Bir hata oluşmuş gibi görünüyor.","export":"Dışa Aktar",exportDescription:"Dışa aktarın. Aktarılan dosyalar aşağıda görüntülenir.",exportText:"Dışa Aktarılan Dosyalar",exportHint:"Dışa aktarılan dosyalarınız burada görüntülenir."});
+define({widgetLabel:"Yazdır",title:"Başlık",fileName:"Dosya İsmi",titlePlaceHolder:"Dosya başlığı",fileNamePlaceHolder:"Dosya adı",formatDefaultOption:"Biçim seç",fileFormatTitle:"Dosya biçimi",layoutTitle:"Sayfa düzeni",layoutDefaultOption:"Sayfa düzenini seç",scale:"Ölçeği ayarla",scaleLabel:"ölçek",reset:"sıfırla",author:"Yazar",copyright:"Telif Hakkı",legend:"Gösterim ekle",lock:"kilitle",swap:"değiştir",panelToggle:"İkili panel ayarı",advancedOptions:"Gelişmiş Seçenekler",width:"Genişlik",height:"Yükseklik",dpi:"DPI",attribution:"Özniteliği ekle",layoutTab:"Düzen",mapOnlyTab:"Yalnızca Harita",untitled:"adsız",pending:"Aktarılıyor",ready:"Bunu aç",linkReady:"Yeni pencerede aç.",error:"Kaldırmak için bunu seçin.",sceneViewError:"Yazdırma SceneView’de desteklenmez.",serviceError:"Bir hata oluşmuş gibi görünüyor.",export:"Dışa Aktar",exportDescription:"Dışa aktarın. Aktarılan dosyalar aşağıda görüntülenir.",exportText:"Dışa Aktarılan Dosyalar",exportHint:"Dışa aktarılan dosyalarınız burada görüntülenir."});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({title:"Đo lường",hint:"Bắt đầu đo bằng cách bấm vào scene để đặt điểm đầu tiên của bạn",distance:"Khoảng cách",direct:"Trực tiếp",horizontal:"Ngang",vertical:"Dọc",unit:"Đơn vị",newMeasurement:"Phép đo Mới",units:{metric:"Hệ mét",imperial:"Hệ đo lường Anh",kilometers:"Kilômét",meters:"Mét",miles:"Dặm",inches:"Inch",feet:"Bộ",yards:"Thước","nautical-miles":"Hải lý","us-feet":"Feet (Hoa Kỳ)","degrees-minutes-seconds":"DMS",degrees:"Độ"}});
+define({title:"Đo lường",hint:"Bắt đầu đo bằng cách bấm vào scene để đặt điểm đầu tiên của bạn",unsupported:"Phép đo đường trực tiếp không được hỗ trợ trong MapView.",distance:"Khoảng cách",direct:"Trực tiếp",horizontal:"Ngang",vertical:"Dọc",unit:"Đơn vị",newMeasurement:"Phép đo Mới",units:{metric:"Hệ mét",imperial:"Hệ đo lường Anh",kilometers:"Kilômét",meters:"Mét",miles:"Dặm",inches:"Inch",feet:"Bộ",yards:"Thước","nautical-miles":"Hải lý","us-feet":"Feet (Hoa Kỳ)","degrees-minutes-seconds":"DMS",degrees:"Độ"}});

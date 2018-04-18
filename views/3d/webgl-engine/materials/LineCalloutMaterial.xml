@@ -102,7 +102,7 @@
 
       // Compute full ndc offset, adding 1px padding for doing anti-aliasing and the border size
       float padding = 1.0 + borderSizeScaled;
-      vec2 ndcOffset = (pixelOffset - padding + $uv0 * (lineSizeScaled + padding + padding)) * pixelToNDC;
+      vec2 ndcOffset = (pixelOffset - padding + $uv0.x * (lineSizeScaled + padding + padding)) * pixelToNDC;
 
       // Offset x/y from the center of the line in screen space
       projectedPosition.xy += perpendicularScreenSpaceDirection * ndcOffset * projectedPosition.w;

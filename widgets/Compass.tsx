@@ -40,21 +40,28 @@
 /// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
 /// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
 
+// dojo
+import * as i18n from "dojo/i18n!./Compass/nls/Compass";
+
+// esri.core.accessorSupport
 import { aliasOf, subclass, property, declared } from "../core/accessorSupport/decorators";
 
+// esri.views
+import View = require("../views/View");
+
+// esri.widgets
+import { Axes } from "./interfaces";
+import Widget = require("./Widget");
+
+// esri.widgets.Compass
+import CompassViewModel = require("./Compass/CompassViewModel");
+
+// esri.widgets.support
 import {
   tsx,
   renderable,
   accessibleHandler
 } from "./support/widget";
-
-import { Axes } from "./interfaces";
-
-import Widget = require("./Widget");
-import CompassViewModel = require("./Compass/CompassViewModel");
-import View = require("../views/View");
-
-import * as i18n from "dojo/i18n!./Compass/nls/Compass";
 
 type CompassMode = "device-orientation" | "reset" | "none";
 
@@ -65,6 +72,7 @@ const CSS = {
   icon: "esri-compass__icon",
   rotationIcon: "esri-icon-dial",
   northIcon: "esri-icon-compass",
+  widgetIcon: "esri-icon-locate-circled",
 
   // common
   interactive: "esri-interactive",
@@ -106,6 +114,38 @@ class Compass extends declared(Widget) {
    */
   @aliasOf("viewModel.activeMode")
   activeMode: CompassMode = null;
+
+  //----------------------------------
+  //  iconClass
+  //----------------------------------
+
+  /**
+   * The widget's default icon font.
+   *
+   * @since 4.7
+   * @name iconClass
+   * @instance
+   * @type {string}
+   * @readonly
+   */
+  @property()
+  iconClass = CSS.widgetIcon;
+
+  //----------------------------------
+  //  label
+  //----------------------------------
+
+  /**
+   * The widget's default label.
+   *
+   * @since 4.7
+   * @name label
+   * @instance
+   * @type {string}
+   * @readonly
+   */
+  @property()
+  label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  modes

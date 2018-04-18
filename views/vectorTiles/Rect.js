@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports"],function(t,i){var e=function(){function t(t,i,e,n){void 0===t&&(t=0),void 0===i&&(i=0),void 0===e&&(e=0),void 0===n&&(n=0),this.x=t,this.y=i,this.width=e,this.height=n}return Object.defineProperty(t.prototype,"isEmpty",{get:function(){return this.width<=0||this.height<=0},enumerable:!0,configurable:!0}),t}();return e});
+define(["require","exports"],function(t,i){return function(){function t(t,i,e,n){void 0===t&&(t=0),void 0===i&&(i=0),void 0===e&&(e=0),void 0===n&&(n=0),this.x=t,this.y=i,this.width=e,this.height=n}return Object.defineProperty(t.prototype,"isEmpty",{get:function(){return this.width<=0||this.height<=0},enumerable:!0,configurable:!0}),t}()});

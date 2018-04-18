@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({title:"Tittel",fileName:"Filnavn",titlePlaceHolder:"Tittel på fil",fileNamePlaceHolder:"Filnavn",formatDefaultOption:"Velg format",fileFormatTitle:"Filformat",layoutTitle:"Utskriftsformat",layoutDefaultOption:"Velg utskriftsformat",scale:"Angi målestokk",scaleLabel:"målestokk",reset:"tilbakestill",author:"Forfatter",copyright:"Opphavsrett",legend:"Inkluder tegnforklaring",lock:"lås",swap:"bytt",panelToggle:"Panelveksling",advancedOptions:"Avanserte alternativer",width:"Bredde",height:"Høyde",attribution:"Inkluder kildeinformasjon",layoutTab:"Oppsett",mapOnlyTab:"Kun kart",untitled:"uten tittel",pending:"Eksporterer",ready:"Åpne",linkReady:"Åpne i nytt vindu.",error:"Velg dette for å fjerne.",sceneViewError:"Utskrift støttes ikke i SceneView.",serviceError:"Det virker som det har oppstått en feil.","export":"Eksporter",exportDescription:"Eksporter. De eksporterte filene vises nedenfor.",exportText:"Eksporterte filer",exportHint:"De eksporterte filene vises her."});
+define({widgetLabel:"Skriv ut",title:"Tittel",fileName:"Filnavn",titlePlaceHolder:"Tittel på fil",fileNamePlaceHolder:"Filnavn",formatDefaultOption:"Velg format",fileFormatTitle:"Filformat",layoutTitle:"Utskriftsformat",layoutDefaultOption:"Velg utskriftsformat",scale:"Angi målestokk",scaleLabel:"målestokk",reset:"tilbakestill",author:"Forfatter",copyright:"Opphavsrett",legend:"Inkluder tegnforklaring",lock:"lås",swap:"bytt",panelToggle:"Panelveksling",advancedOptions:"Avanserte alternativer",width:"Bredde",height:"Høyde",dpi:"DPI",attribution:"Inkluder kildeinformasjon",layoutTab:"Oppsett",mapOnlyTab:"Kun kart",untitled:"uten tittel",pending:"Eksporterer",ready:"Åpne",linkReady:"Åpne i nytt vindu.",error:"Velg dette for å fjerne.",sceneViewError:"Utskrift støttes ikke i SceneView.",serviceError:"Det virker som det har oppstått en feil.",export:"Eksporter",exportDescription:"Eksporter. De eksporterte filene vises nedenfor.",exportText:"Eksporterte filer",exportHint:"De eksporterte filene vises her."});

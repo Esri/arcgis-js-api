@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","./Symbol3DLayer","../core/accessorSupport/decorators"],function(e,r,t,o,i,n){var a=function(e){function r(r){var t=e.call(this)||this;return t.type="extrude",t.size=void 0,t.material=null,t}return t(r,e),i=r,r.prototype.clone=function(){return new i({enabled:this.enabled,elevationInfo:this.elevationInfo&&this.elevationInfo.clone(),material:this.material&&this.material.clone(),size:this.size})},o([n.property()],r.prototype,"type",void 0),o([n.property({type:Number,json:{write:!0}})],r.prototype,"size",void 0),o([n.property()],r.prototype,"material",void 0),r=i=o([n.subclass("esri.symbols.ExtrudeSymbol3DLayer")],r);var i}(n.declared(i));return a});
+define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/accessorSupport/decorators","./Symbol3DLayer","./edges/utils"],function(e,t,r,o,s,i,p){return function(e){function t(t){var r=e.call(this)||this;return r.type="extrude",r.size=void 0,r.material=null,r.edges=null,r}return r(t,e),i=t,t.prototype.clone=function(){return new i({edges:this.edges&&this.edges.clone(),enabled:this.enabled,elevationInfo:this.elevationInfo&&this.elevationInfo.clone(),material:this.material&&this.material.clone(),size:this.size})},o([s.property()],t.prototype,"type",void 0),o([s.property({type:Number,json:{write:!0}})],t.prototype,"size",void 0),o([s.property()],t.prototype,"material",void 0),o([s.property(p.symbol3dEdgesProperty)],t.prototype,"edges",void 0),t=i=o([s.subclass("esri.symbols.ExtrudeSymbol3DLayer")],t);var i}(s.declared(i))});

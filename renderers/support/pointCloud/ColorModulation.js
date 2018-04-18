@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/accessorSupport/decorators","../../../core/JSONSupport"],function(e,r,o,t,l,n){Object.defineProperty(r,"__esModule",{value:!0});var u=function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.field=null,r.minValue=0,r.maxValue=255,r}return o(r,e),n=r,r.prototype.clone=function(){return new n({field:this.field,minValue:this.minValue,maxValue:this.maxValue})},t([l.property({type:String,json:{write:!0}})],r.prototype,"field",void 0),t([l.property({type:Number,nonNullable:!0,json:{write:!0}})],r.prototype,"minValue",void 0),t([l.property({type:Number,nonNullable:!0,json:{write:!0}})],r.prototype,"maxValue",void 0),r=n=t([l.subclass("esri.renderers.support.pointCloud.ColorModulation")],r);var n}(l.declared(n));r.ColorModulation=u,r["default"]=u});
+define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/JSONSupport","../../../core/accessorSupport/decorators"],function(e,r,o,t,l,n){Object.defineProperty(r,"__esModule",{value:!0});var p=function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.field=null,r.minValue=0,r.maxValue=255,r}return o(r,e),l=r,r.prototype.clone=function(){return new l({field:this.field,minValue:this.minValue,maxValue:this.maxValue})},t([n.property({type:String,json:{write:!0}})],r.prototype,"field",void 0),t([n.property({type:Number,nonNullable:!0,json:{write:!0}})],r.prototype,"minValue",void 0),t([n.property({type:Number,nonNullable:!0,json:{write:!0}})],r.prototype,"maxValue",void 0),r=l=t([n.subclass("esri.renderers.support.pointCloud.ColorModulation")],r);var l}(n.declared(l));r.ColorModulation=p,r.default=p});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/ObjectPool","./WGLDisplayRecord","./Utils"],function(e,i,r,s,d){var t=function(){function e(){this.displayRecords=[]}return e.prototype.acquire=function(e){this.id=e},e.prototype.release=function(){this.id=void 0,this.displayRecords.length=0},e.serialize=function(e,i,r){var t=0;t+=d.serializeInteger(e.id,i,r+t),t+=d.serializeInteger(e.displayRecords.length,i,r+t);for(var a=0,n=e.displayRecords;a<n.length;a++){var o=n[a];t+=s.serialize(o,i,r+t,!0)}return t},e.deserialize=function(i,r,t){var a=0,n={n:0};a+=d.deserializeInteger(n,r,t+a);var o={n:0};a+=d.deserializeInteger(o,r,t+a);var l={displayRecord:void 0};i.displayObject=e.pool.acquire(),i.displayObject.id=n.n,i.displayObject.displayRecords.length=o.n;for(var c=0;c<o.n;++c)a+=s.deserialize(l,r,t+a,!0),i.displayObject.displayRecords[c]=l.displayRecord,i.displayObject.displayRecords[c].id=n.n;return a},e.pool=new r(e),e}();return t});
+define(["require","exports","./WGLDisplayRecord","./util/serializationUtils"],function(i,e,r,t){return function(){function i(i){this.displayRecords=[],this.id=i}return i.prototype.serialize=function(i){return i.writeInt32(this.id),t.serializeList(i,this.displayRecords),i},i.deserialize=function(e){var s=e.readInt32(),n=new i(s),d={id:s};return n.displayRecords=t.deserializeList(e,r,d),n},i}()});

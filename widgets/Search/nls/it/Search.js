@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({searchButtonTitle:"Ricerca",clearButtonTitle:"Cancella ricerca",placeholder:"Trova indirizzo o luogo",searchIn:"Cerca in",all:"tutte le",allPlaceholder:"Trova indirizzo o luogo",emptyValue:"Immettere un termine di ricerca.",untitledResult:"Senza titolo",untitledSource:"Origine senza titolo",noResults:"Nessun risultato",noResultsFound:"Nessun risultato trovato.",noResultsFoundForValue:"Nessun risultato trovato per {value}.",showMoreResults:"Mostra altri risultati",hideMoreResults:"Nascondi",searchResult:"Risultato ricerca",moreResultsHeader:"Altri risultati",esriLocatorName:"Esri World Geocoder",useCurrentLocation:"Usa posizione corrente"});
+define({widgetLabel:"Cercare",searchButtonTitle:"Ricerca",clearButtonTitle:"Cancella ricerca",placeholder:"Trova indirizzo o luogo",searchIn:"Cerca in",all:"tutte le",allPlaceholder:"Trova indirizzo o luogo",emptyValue:"Immettere un termine di ricerca.",untitledResult:"Senza titolo",untitledSource:"Origine senza titolo",noResults:"Nessun risultato",noResultsFound:"Nessun risultato trovato.",noResultsFoundForValue:"Nessun risultato trovato per {value}.",showMoreResults:"Mostra altri risultati",hideMoreResults:"Nascondi",searchResult:"Risultato ricerca",moreResultsHeader:"Altri risultati",esriLocatorName:"Esri World Geocoder",useCurrentLocation:"Usa posizione corrente"});

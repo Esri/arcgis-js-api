@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../Viewpoint","../core/Accessor","../geometry/SpatialReference","../core/accessorSupport/decorators"],function(e,r,t,o,i,n,p,l){var a=function(e){function r(r){var t=e.call(this,r)||this;return t.spatialReference=null,t.viewpoint=null,t}return t(r,e),n=r,r.prototype.clone=function(){return new n({spatialReference:this.spatialReference?this.spatialReference.clone():null,viewpoint:this.viewpoint?this.viewpoint.clone():null})},o([l.shared("esri.webmap.InitialViewProperties")],r.prototype,"declaredClass",void 0),o([l.property({value:null,type:p})],r.prototype,"spatialReference",void 0),o([l.property({value:null,type:i})],r.prototype,"viewpoint",void 0),r=n=o([l.subclass()],r);var n}(l.declared(n));return a});
+define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../Viewpoint","../core/Accessor","../core/accessorSupport/decorators","../geometry/SpatialReference"],function(e,t,r,o,i,n,p,l){return function(e){function t(t){var r=e.call(this,t)||this;return r.spatialReference=null,r.viewpoint=null,r}return r(t,e),n=t,t.prototype.clone=function(){return new n({spatialReference:this.spatialReference?this.spatialReference.clone():null,viewpoint:this.viewpoint?this.viewpoint.clone():null})},o([p.shared("esri.webmap.InitialViewProperties")],t.prototype,"declaredClass",void 0),o([p.property({value:null,type:l})],t.prototype,"spatialReference",void 0),o([p.property({value:null,type:i})],t.prototype,"viewpoint",void 0),t=n=o([p.subclass()],t);var n}(p.declared(n))});

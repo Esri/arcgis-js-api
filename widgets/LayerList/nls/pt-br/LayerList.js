@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({noItemsToDisplay:"Não há nenhum item atualmente para exibir.",layerInvisibleAtScale:"Invisível na escala atual",layerError:"Ocorreu um erro ao carregar esta camada",untitledLayer:"Camada sem título"});
+define({widgetLabel:"Lista de Camada",noItemsToDisplay:"Não há nenhum item atualmente para exibir.",layerInvisibleAtScale:"Invisível na escala atual",layerError:"Ocorreu um erro ao carregar esta camada",untitledLayer:"Camada sem título"});

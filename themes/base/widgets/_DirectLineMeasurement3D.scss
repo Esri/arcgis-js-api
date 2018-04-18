@@ -1,8 +1,4 @@
 @mixin directLineMeasurement3D() {
-  .esri-direct-line-measurement-3d {
-    pointer-events: none;
-  }
-
   .esri-direct-line-measurement-3d__container {
     position: relative;
     padding: $cap_spacing $side_spacing;
@@ -105,11 +101,8 @@
   }
 
   .esri-button.esri-direct-line-measurement-3d__clear-button {
-    // TODO:
-    // + make general styles at theme level
-    // + replace $esri_blue_button_bg with more general variable
-    color: $esri_blue_button_bg;
-    border: 1px solid $esri_blue_button_bg;
+    color: $button_color;
+    border: 1px solid $button_color;
     background-color: $background_color;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -118,10 +111,9 @@
   }
 
   .esri-button.esri-direct-line-measurement-3d__clear-button:hover {
-    color: $text_inverse_color;
-    background-color: $esri_blue_button_bg
+    color: $background_color;
+    background-color: $button_color;
   }
-
 }
 
 @if $include_DirectLineMeasurement3D == true {

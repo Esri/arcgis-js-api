@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","./ModelContentType"],function(t,e,i){var r=function(){function t(t){this.materials={},this.stage=t}return t.prototype.getMaterial=function(t){return this.materials[t]},t.prototype.addMaterial=function(t,e){this.materials[t]=e,this.stage.add(i.MATERIAL,e)},t.prototype.dispose=function(){for(var t in this.materials)this.stage.remove(i.MATERIAL,this.materials[t].getId());this.materials={}},t}();return r});
+define(["require","exports","./ModelContentType"],function(t,e,i){return function(){function t(t){this.materials={},this.stage=t}return t.prototype.getMaterial=function(t){return this.materials[t]},t.prototype.addMaterial=function(t,e){this.materials[t]=e,this.stage.add(i.MATERIAL,e)},t.prototype.dispose=function(){for(var t in this.materials)this.stage.remove(i.MATERIAL,this.materials[t].id);this.materials={}},t}()});

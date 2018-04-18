@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({points:"Puncte",lines:"Linii",polygons:"Poligoane",creatingLegend:"Creare legendă",noLegend:"Nicio legendă",dotValue:"1 punct = {value} {unit}",currentObservations:"Observaţii actuale",previousObservations:"Observaţii anterioare",high:"Ridicat",low:"Redus",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"noduri",esriFeetPerSecond:"ft/sec",esriMilesPerHour:"mph",showField:"{field}",showNormField:"{field} împărţit la {normField}",showNormPct:"{field} ca procent din total",showRatio:"Raport {field} supra {normField}",showRatioPercent:"{field} ca procent din {normField}",showRatioPercentTotal:"{field} ca procent din {field} şi {normField}"});
+define({widgetLabel:"Legendă",points:"Puncte",lines:"Linii",polygons:"Poligoane",creatingLegend:"Creare legendă",noLegend:"Nicio legendă",dotValue:"1 punct = {value} {unit}",currentObservations:"Observaţii actuale",previousObservations:"Observaţii anterioare",high:"Ridicat",low:"Redus",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"noduri",esriFeetPerSecond:"ft/sec",esriMilesPerHour:"mph",showField:"{field}",showNormField:"{field} împărţit la {normField}",showNormPct:"{field} ca procent din total",showRatio:"Raport {field} supra {normField}",showRatioPercent:"{field} ca procent din {normField}",showRatioPercentTotal:"{field} ca procent din {field} şi {normField}"});

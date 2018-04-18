@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({noItemsToDisplay:"Aktualnie brak elementów do wyświetlenia.",layerInvisibleAtScale:"Niewidoczne w bieżącej skali",layerError:"Wystąpił błąd podczas ładowania tej warstwy",untitledLayer:"Warstwa bez nazwy"});
+define({widgetLabel:"Lista warstw",noItemsToDisplay:"Aktualnie brak elementów do wyświetlenia.",layerInvisibleAtScale:"Niewidoczne w bieżącej skali",layerError:"Wystąpił błąd podczas wczytywania tej warstwy",untitledLayer:"Warstwa bez nazwy"});

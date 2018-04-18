@@ -9,13 +9,10 @@ $compass_size: 20px !default;
     background-color: $selected_background_color;
   }
 
-  .esri-compass__icon {
+  .esri-compass .esri-compass__icon {
     font-size: $compass_size;
-    line-height: $compass_size;
-    text-align: center;
-    width: $compass_size;
-    height: $compass_size;
   }
+  // TODO: update with correctly sized compass SVG.
 }
 
 @if $include_Compass == true {

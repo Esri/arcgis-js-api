@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -53,4 +53,4 @@
        * @type {Object}
        */
 
-define(["../../core/Accessor"],function(e){var t=e.createSubclass({declaredClass:"esri.tasks.support.PrintTemplate",properties:{label:{value:null,type:String},exportOptions:{value:{width:800,height:1100,dpi:96},type:Object},layoutOptions:{value:null,type:Object},format:{value:"png32",type:String},layout:{value:"map-only",type:String},outScale:{value:0,type:Number},preserveScale:{value:!0,type:Boolean},attributionVisible:{type:Boolean},showLabels:{value:!0,type:Boolean}}});return t});
+define(["../../core/Accessor"],function(e){return e.createSubclass({declaredClass:"esri.tasks.support.PrintTemplate",properties:{label:{value:null,type:String},exportOptions:{value:{width:800,height:1100,dpi:96},type:Object},layoutOptions:{value:null,type:Object},format:{value:"png32",type:String},layout:{value:"map-only",type:String},outScale:{value:0,type:Number},preserveScale:{value:!0,type:Boolean},attributionVisible:{type:Boolean},showLabels:{value:!0,type:Boolean}}})});

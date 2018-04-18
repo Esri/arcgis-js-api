@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({points:"Punti",lines:"Linee",polygons:"Poligoni",creatingLegend:"Creazione legenda",noLegend:"Nessuna legenda",dotValue:"1 punto = {value} {unit}",currentObservations:"Osservazioni correnti",previousObservations:"Osservazioni precedenti",high:"Massimo",low:"Minimo",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"nodi",esriFeetPerSecond:"piedi/sec",esriMilesPerHour:"miglio orario",showField:"{field}",showNormField:"{field} diviso per {normField}",showNormPct:"{field} come una percentuale del totale",showRatio:"Rapporto di {field} a {normField}",showRatioPercent:"{field} come una percentuale di {normField}",showRatioPercentTotal:"$field} come una percentuale di {field} e {normField}"});
+define({widgetLabel:"Legenda",points:"Punti",lines:"Linee",polygons:"Poligoni",creatingLegend:"Creazione legenda",noLegend:"Nessuna legenda",dotValue:"1 punto = {value} {unit}",currentObservations:"Osservazioni correnti",previousObservations:"Osservazioni precedenti",high:"Massimo",low:"Minimo",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"nodi",esriFeetPerSecond:"piedi/sec",esriMilesPerHour:"miglio orario",showField:"{field}",showNormField:"{field} diviso per {normField}",showNormPct:"{field} come una percentuale del totale",showRatio:"Rapporto di {field} a {normField}",showRatioPercent:"{field} come una percentuale di {normField}",showRatioPercentTotal:"$field} come una percentuale di {field} e {normField}"});

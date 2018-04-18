@@ -31,15 +31,26 @@
 /// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
 /// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
 
-import { aliasOf, subclass, property, declared } from "../core/accessorSupport/decorators";
-import { accessibleHandler, tsx, renderable, vmEvent } from "./support/widget";
+// dojo
+import * as i18n from "dojo/i18n!./Home/nls/Home";
 
-import Widget = require("./Widget");
-import HomeViewModel = require("./Home/HomeViewModel");
+// esri
 import Viewpoint = require("../Viewpoint");
+
+// esri.core.accessorSupport
+import { aliasOf, subclass, property, declared } from "../core/accessorSupport/decorators";
+
+// esri.views
 import View = require("../views/View");
 
-import * as i18n from "dojo/i18n!./Home/nls/Home";
+// esri.widgets
+import Widget = require("./Widget");
+
+// esri.widgets.Home
+import HomeViewModel = require("./Home/HomeViewModel");
+
+// esri.widgets.support
+import { accessibleHandler, tsx, renderable, vmEvent } from "./support/widget";
 
 const CSS = {
   base: "esri-home esri-widget-button esri-widget",
@@ -47,6 +58,7 @@ const CSS = {
   homeIcon: "esri-icon esri-icon-home",
   loadingIcon: "esri-icon-loading-indicator",
   rotatingIcon: "esri-rotating",
+  widgetIcon: "esri-icon-home",
 
   // common
   disabled: "esri-disabled"
@@ -97,6 +109,38 @@ class Home extends declared(Widget) {
   //  Properties
   //
   //--------------------------------------------------------------------------
+
+  //----------------------------------
+  //  iconClass
+  //----------------------------------
+
+  /**
+   * The widget's default icon font.
+   *
+   * @since 4.7
+   * @name iconClass
+   * @instance
+   * @type {string}
+   * @readonly
+   */
+  @property()
+  iconClass = CSS.widgetIcon;
+
+  //----------------------------------
+  //  label
+  //----------------------------------
+
+  /**
+   * The widget's default label.
+   *
+   * @since 4.7
+   * @name label
+   * @instance
+   * @type {string}
+   * @readonly
+   */
+  @property()
+  label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  view

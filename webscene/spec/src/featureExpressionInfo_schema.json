@@ -14,8 +14,10 @@
       "minLength": 1
     }
   },
+  "required": [
+    "expression"
+  ],
   "additionalProperties": false,
-  "required": ["expression"],
   "esriDocumentation": {
     "examples": [
       {
@@ -39,4 +41,3 @@
     ]
   }
 }
-

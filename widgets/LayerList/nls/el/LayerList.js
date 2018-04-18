@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({noItemsToDisplay:"Δεν υπάρχουν αντικείμενα για εμφάνιση αυτήν τη στιγμή.",layerInvisibleAtScale:"Μη ορατό στην τρέχουσα κλίμακα",layerError:"Παρουσιάστηκε σφάλμα κατά τη φόρτωση αυτού του θεματικού επιπέδου",untitledLayer:"Θεματικό επίπεδο χωρίς τίτλο"});
+define({widgetLabel:"Λίστα θεματικών επιπέδων",noItemsToDisplay:"Δεν υπάρχουν αντικείμενα για εμφάνιση αυτήν τη στιγμή.",layerInvisibleAtScale:"Μη ορατό στην τρέχουσα κλίμακα",layerError:"Παρουσιάστηκε σφάλμα κατά τη φόρτωση αυτού του θεματικού επιπέδου",untitledLayer:"Θεματικό επίπεδο χωρίς τίτλο"});

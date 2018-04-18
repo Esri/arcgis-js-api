@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../lib/glMatrix","../../../core/ObjectPool"],function(t,i,e,s){var o=e.vec2d,n=function(){function t(t,i,e,s){this.scale=0,this.tile=null,this.offset=o.create(),void 0!==t&&this.init(t,i,e,s)}return t.prototype.init=function(t,i,e,s){this.tile=t,this.offset[0]=i,this.offset[1]=e,this.scale=s},t.prototype.dispose=function(){this.tile=null,this.offset[0]=0,this.offset[1]=0,this.scale=0},t.Pool=new s(t),t}();return n});
+define(["require","exports","../../../core/ObjectPool","../lib/glMatrix"],function(t,i,e,s){var o=s.vec2d;return function(){function t(t,i,e,s){this.scale=0,this.tile=null,this.offset=o.create(),void 0!==t&&this.init(t,i,e,s)}return t.prototype.init=function(t,i,e,s){this.tile=t,this.offset[0]=i,this.offset[1]=e,this.scale=s},t.prototype.dispose=function(){this.tile=null,this.offset[0]=0,this.offset[1]=0,this.scale=0},t.Pool=new e(t),t}()});

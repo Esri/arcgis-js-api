@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({noItemsToDisplay:"Trenutno ni nobenih elementov za prikaz.",layerInvisibleAtScale:"Ni vidno pri trenutnem merilu",layerError:"Pri nalaganju tega sloja je prišlo do napake",untitledLayer:"Neimenovan sloj"});
+define({widgetLabel:"Seznam slojev",noItemsToDisplay:"Trenutno ni nobenih elementov za prikaz.",layerInvisibleAtScale:"Ni vidno pri trenutnem merilu",layerError:"Pri nalaganju tega sloja je prišlo do napake",untitledLayer:"Neimenovan sloj"});

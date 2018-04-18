@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/accessorSupport/decorators","./MomentElementViewModel"],function(e,r,t,o,n,s){var c=function(e){function r(){return null!==e&&e.apply(this,arguments)||this}return t(r,e),r=o([n.subclass("esri.widgets.Directions.CalendarViewModel")],r)}(n.declared(s));return c});
+define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/accessorSupport/decorators","./MomentElementViewModel"],function(e,r,t,o,n,s){return function(e){function r(){return null!==e&&e.apply(this,arguments)||this}return t(r,e),r=o([n.subclass("esri.widgets.Directions.CalendarViewModel")],r)}(n.declared(s))});

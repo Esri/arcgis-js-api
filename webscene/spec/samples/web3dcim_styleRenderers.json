@@ -28,21 +28,25 @@
               {
                 "type": "colorInfo",
                 "field": "xy_accuracy",
-                "minDataValue": 15,
-                "maxDataValue": 50,
-                "colors": [
-                  [
-                    0,
-                    0,
-                    255,
-                    255
-                  ],
-                  [
-                    255,
-                    0,
-                    0,
-                    255
-                  ]
+                "stops": [
+                  {
+                    "value": 15,
+                    "color": [
+                      0,
+                      0,
+                      255,
+                      255
+                    ]
+                  },
+                  {
+                    "value": 50,
+                    "color": [
+                      255,
+                      0,
+                      0,
+                      255
+                    ]
+                  }
                 ]
               }
             ],
@@ -80,21 +84,25 @@
               {
                 "type": "colorInfo",
                 "field": "xy_accuracy",
-                "minDataValue": 15,
-                "maxDataValue": 50,
-                "colors": [
-                  [
-                    0,
-                    0,
-                    255,
-                    255
-                  ],
-                  [
-                    255,
-                    0,
-                    0,
-                    255
-                  ]
+                "stops": [
+                  {
+                    "value": 15,
+                    "color": [
+                      0,
+                      0,
+                      255,
+                      255
+                    ]
+                  },
+                  {
+                    "value": 50,
+                    "color": [
+                      255,
+                      0,
+                      0,
+                      255
+                    ]
+                  }
                 ]
               }
             ],
@@ -136,21 +144,25 @@
               {
                 "type": "colorInfo",
                 "field": "xy_accuracy",
-                "minDataValue": 15,
-                "maxDataValue": 50,
-                "colors": [
-                  [
-                    0,
-                    0,
-                    255,
-                    255
-                  ],
-                  [
-                    255,
-                    0,
-                    0,
-                    255
-                  ]
+                "stops": [
+                  {
+                    "value": 15,
+                    "color": [
+                      0,
+                      0,
+                      255,
+                      255
+                    ]
+                  },
+                  {
+                    "value": 50,
+                    "color": [
+                      255,
+                      0,
+                      0,
+                      255
+                    ]
+                  }
                 ]
               }
             ],
@@ -194,21 +206,25 @@
               {
                 "type": "colorInfo",
                 "field": "xy_accuracy",
-                "minDataValue": 15,
-                "maxDataValue": 50,
-                "colors": [
-                  [
-                    0,
-                    0,
-                    255,
-                    255
-                  ],
-                  [
-                    255,
-                    0,
-                    0,
-                    255
-                  ]
+                "stops": [
+                  {
+                    "value": 15,
+                    "color": [
+                      0,
+                      0,
+                      255,
+                      255
+                    ]
+                  },
+                  {
+                    "value": 50,
+                    "color": [
+                      255,
+                      0,
+                      0,
+                      255
+                    ]
+                  }
                 ]
               }
             ],
@@ -250,21 +266,25 @@
               {
                 "type": "colorInfo",
                 "field": "xy_accuracy",
-                "minDataValue": 15,
-                "maxDataValue": 50,
-                "colors": [
-                  [
-                    0,
-                    0,
-                    255,
-                    255
-                  ],
-                  [
-                    255,
-                    0,
-                    0,
-                    255
-                  ]
+                "stops": [
+                  {
+                    "value": 15,
+                    "color": [
+                      0,
+                      0,
+                      255,
+                      255
+                    ]
+                  },
+                  {
+                    "value": 50,
+                    "color": [
+                      255,
+                      0,
+                      0,
+                      255
+                    ]
+                  }
                 ]
               }
             ],
@@ -303,21 +323,25 @@
               {
                 "type": "colorInfo",
                 "field": "xy_accuracy",
-                "minDataValue": 15,
-                "maxDataValue": 50,
-                "colors": [
-                  [
-                    0,
-                    0,
-                    255,
-                    255
-                  ],
-                  [
-                    255,
-                    0,
-                    0,
-                    255
-                  ]
+                "stops": [
+                  {
+                    "value": 15,
+                    "color": [
+                      0,
+                      0,
+                      255,
+                      255
+                    ]
+                  },
+                  {
+                    "value": 50,
+                    "color": [
+                      255,
+                      0,
+                      0,
+                      255
+                    ]
+                  }
                 ]
               }
             ],
@@ -428,21 +452,25 @@
               {
                 "type": "colorInfo",
                 "field": "xy_accuracy",
-                "minDataValue": 15,
-                "maxDataValue": 50,
-                "colors": [
-                  [
-                    0,
-                    0,
-                    255,
-                    255
-                  ],
-                  [
-                    255,
-                    0,
-                    0,
-                    255
-                  ]
+                "stops": [
+                  {
+                    "value": 15,
+                    "color": [
+                      0,
+                      0,
+                      255,
+                      255
+                    ]
+                  },
+                  {
+                    "value": 50,
+                    "color": [
+                      255,
+                      0,
+                      0,
+                      255
+                    ]
+                  }
                 ]
               }
             ],

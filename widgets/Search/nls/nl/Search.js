@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({searchButtonTitle:"Zoeken",clearButtonTitle:"Zoekopdracht wissen",placeholder:"Adres of plaats zoeken",searchIn:"Zoeken in",all:"Alle",allPlaceholder:"Adres of plaats zoeken",emptyValue:"Voer een zoekterm in",untitledResult:"Naamloos",untitledSource:"Ongetitelde bron",noResults:"Geen resultaten",noResultsFound:"Er zijn geen resultaten gevonden.",noResultsFoundForValue:"Er zijn geen resultaten gevonden voor {value}.",showMoreResults:"Meer resultaten weergeven",hideMoreResults:"Verbergen",searchResult:"Search Results",moreResultsHeader:"Meer resultaten",esriLocatorName:"Esri World-geocoderingservice",useCurrentLocation:"Gebruik huidige locatie"});
+define({widgetLabel:"Zoeken",searchButtonTitle:"Zoeken",clearButtonTitle:"Zoekopdracht wissen",placeholder:"Adres of plaats zoeken",searchIn:"Zoeken in",all:"Alle",allPlaceholder:"Adres of plaats zoeken",emptyValue:"Voer een zoekterm in",untitledResult:"Naamloos",untitledSource:"Ongetitelde bron",noResults:"Geen resultaten",noResultsFound:"Er zijn geen resultaten gevonden.",noResultsFoundForValue:"Er zijn geen resultaten gevonden voor {value}.",showMoreResults:"Meer resultaten weergeven",hideMoreResults:"Verbergen",searchResult:"Search Results",moreResultsHeader:"Meer resultaten",esriLocatorName:"Esri World-geocoderingservice",useCurrentLocation:"Gebruik huidige locatie"});

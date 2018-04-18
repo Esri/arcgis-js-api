@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<snippets>
+
+<snippet name="fsLaserLine"><![CDATA[
+#ifdef GL_OES_standard_derivatives
+#extension GL_OES_standard_derivatives : enable
+#endif
+
+  $fsprecisionf
+
+  varying vec2 uv;
+
+  uniform sampler2D depthMap;
+
+  uniform vec2 nearFar;
+  uniform vec4 projInfo;
+  uniform float maxPixelDistance;
+
+  // focus plane in camera space
+  uniform vec4 focusPlane;
+
+  // focus sphere in camera space
+  uniform vec4 focusSphere;
+
+  // segment plane in camera space
+  uniform vec4 segmentPlane;
+
+  // line segment
+  uniform vec3 segmentStart;
+  uniform vec3 segmentEnd;
+
+  // styling
+  uniform vec3 glowColor;
+  uniform float glowWidth;
+  uniform vec3 innerColor;
+  uniform float innerWidth;
+  uniform float globalAlpha;
+
+  #define INFINITY 100000.0
+
+  $rgba2float
+
+  // reconstruct depth value from linear depth map
+  float linearDepth(vec2 uv) {
+    return -(rgba2float(texture2D(depthMap, uv)) * (nearFar[1] - nearFar[0]) + nearFar[0]);
+  }
+
+  // reconstruct position in view space
+  vec3 reconstructPosition(vec2 fragCoord, float depth) {
+    return vec3((fragCoord * projInfo.xy + projInfo.zw) * depth, depth);
+  }
+
+#ifdef GL_OES_standard_derivatives
+  float planeDistancePixels(vec4 plane, vec3 pos) {
+    // compute distance to plane
+    float dist = dot(plane.xyz, pos) + plane.w;
+    // compute derivative of distance function with respect to pixels
+    float width = fwidth(dist);
+    // normalize distance by the derivative to get a measurement with respect to pixels
+    // the clamping is used to prevent excessive artifacts along depth discontinuities
+    dist /= min(width, maxPixelDistance);
+    return abs(dist);
+  }
+
+  float sphereDistancePixels(vec4 sphere, vec3 pos) {
+    // compute distance to sphere
+    float dist = distance(sphere.xyz, pos) - sphere.w;
+    // compute derivative of distance function with respect to pixels
+    float width = fwidth(dist);
+    // normalize distance by the derivative to get a measurement with respect to pixels
+    // the clamping is used to prevent excessive artifacts along depth discontinuities
+    dist /= min(width, maxPixelDistance);
+    return abs(dist);
+  }
+#endif
+
+  vec4 blendPremultiplied(vec4 source, vec4 dest) {
+    float oneMinusSourceAlpha = 1.0 - source.a;
+
+    return vec4(
+      source.rgb + dest.rgb * oneMinusSourceAlpha,
+      source.a + dest.a * oneMinusSourceAlpha
+    );
+  }
+
+  vec4 premultipliedColor(vec3 rgb, float alpha) {
+    return vec4(rgb * alpha, alpha);
+  }
+
+  // computes laser line color based on distance in pixels
+  vec4 laserLineProfile(float dist) {
+    if (dist > glowWidth) {
+      return vec4(0.0);
+    }
+
+    float innerAlpha = (1.0 - smoothstep(0.0, innerWidth, dist));
+    float glowAlpha = pow(max(0.0, 1.0 - dist / glowWidth), 8.0);
+
+    return blendPremultiplied(
+      premultipliedColor(innerColor, innerAlpha),
+      premultipliedColor(glowColor, glowAlpha)
+    );
+  }
+
+  void main() {
+#ifdef GL_OES_standard_derivatives
+    // do not draw laserline on background
+    float depth = linearDepth(uv);
+    if (-depth == nearFar[0]) {
+      discard;
+    }
+
+    // reconstruct position in view space
+    vec3 pos = reconstructPosition(gl_FragCoord.xy, depth);
+
+    // empirical hack to fade out laser line in problematic areas:
+    // the derivatives to normalize the distance function are valid inside smooth surfaces,
+    // but break down at depth discontinuities (e.g. edges). We fade out the laser lines in
+    // areas where depth valus have large variations in order to avoid this problem.
+    float ddepth = fwidth(depth);
+    float depthDiscontinuityAlpha = 1.0 - smoothstep(0.0, 0.01, -ddepth / depth);
+
+    // reconstruct normal using derivatives
+    vec3 normal = normalize(cross(dFdx(pos), dFdy(pos)));
+
+    // distance to focus plane
+    float focusPlaneDistance = planeDistancePixels(focusPlane, pos);
+
+    // distance to focus sphere
+    float focusSphereDistance = sphereDistancePixels(focusSphere, pos);
+
+    // distance to segment plane
+    float segmentDistance = INFINITY;
+    float segmentLength = length(segmentEnd - segmentStart);
+    vec3 segmentDir = (segmentEnd - segmentStart) / segmentLength;
+    float t = dot(segmentDir, pos - segmentStart);
+
+    if (segmentLength > 0.0 && t >= 0.0 && t <= segmentLength) {
+      segmentDistance = planeDistancePixels(segmentPlane, pos);
+    }
+
+    // evaluate color profile for both planes and the sphere
+    vec4 focusPlaneColor = laserLineProfile(focusPlaneDistance);
+    vec4 focusSphereColor = laserLineProfile(focusSphereDistance);
+    vec4 segmentColor = laserLineProfile(segmentDistance);
+
+    // empirical hack to fade out laser line when planes are nearly parallel
+    float focusPlaneAlpha = 1.0 - smoothstep(0.995, 0.999, abs(dot(normal, focusPlane.xyz)));
+    float focusSphereAlpha = 1.0 - smoothstep(0.995, 0.999, abs(dot(normal, normalize(pos - focusSphere.xyz))));
+    float segmentAlpha = 1.0 - smoothstep(0.995, 0.999, abs(dot(normal, segmentPlane.xyz)));
+
+    // combine colors
+    vec4 color = max(
+      focusPlaneColor * focusPlaneAlpha,
+      max(
+        focusSphereColor * focusSphereAlpha,
+        segmentColor * segmentAlpha
+      )
+    );
+
+    gl_FragColor = color * globalAlpha * depthDiscontinuityAlpha;
+#else
+    // we might compute the derivatives ourselves, but because
+    // GL_OES_standard_derivatives should be widely supported we just
+    // disable laser lines when support is missing.
+    gl_FragColor = vec4(0.0);
+#endif
+  }
+]]></snippet>
+
+</snippets>

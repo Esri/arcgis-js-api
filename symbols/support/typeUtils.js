@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../../core/accessorSupport/ensureType","../Symbol","../PictureFillSymbol","../PictureMarkerSymbol","../SimpleFillSymbol","../SimpleLineSymbol","../SimpleMarkerSymbol","../TextSymbol","../WebStyleSymbol","../LabelSymbol3D","../LineSymbol3D","../MeshSymbol3D","../PointSymbol3D","../PolygonSymbol3D"],function(e,l,y,o,p,i,t,m,r,b,s,n,S,a,d,u){Object.defineProperty(l,"__esModule",{value:!0}),l.types={base:o,key:"type",typeMap:{"simple-fill":t,"picture-fill":p,"picture-marker":i,"simple-line":m,"simple-marker":r,text:b,"label-3d":n,"line-3d":S,"mesh-3d":a,"point-3d":d,"polygon-3d":u,"web-style":s}},l.types3D={base:o,key:"type",typeMap:{"label-3d":n,"line-3d":S,"mesh-3d":a,"point-3d":d,"polygon-3d":u,"web-style":s}},l.ensureType=y.ensureOneOfType(l.types)});
+define(["require","exports","../../core/accessorSupport/ensureType","../LabelSymbol3D","../LineSymbol3D","../MeshSymbol3D","../PictureFillSymbol","../PictureMarkerSymbol","../PointSymbol3D","../PolygonSymbol3D","../SimpleFillSymbol","../SimpleLineSymbol","../SimpleMarkerSymbol","../Symbol","../TextSymbol","../WebStyleSymbol"],function(e,l,p,y,t,i,o,r,s,b,m,n,a,d,S,u){Object.defineProperty(l,"__esModule",{value:!0}),l.types={base:d,key:"type",typeMap:{"simple-fill":m,"picture-fill":o,"picture-marker":r,"simple-line":n,"simple-marker":a,text:S,"label-3d":y,"line-3d":t,"mesh-3d":i,"point-3d":s,"polygon-3d":b,"web-style":u}},l.rendererTypes={base:d,key:"type",typeMap:{"simple-fill":m,"picture-fill":o,"picture-marker":r,"simple-line":n,"simple-marker":a,text:S,"line-3d":t,"mesh-3d":i,"point-3d":s,"polygon-3d":b,"web-style":u}},l.labelTypes={base:d,key:"type",typeMap:{text:S,"label-3d":y}},l.types3D={base:d,key:"type",typeMap:{"label-3d":y,"line-3d":t,"mesh-3d":i,"point-3d":s,"polygon-3d":b,"web-style":u}},l.rendererTypes3D={base:d,key:"type",typeMap:{"line-3d":t,"mesh-3d":i,"point-3d":s,"polygon-3d":b,"web-style":u}},l.labelTypes3D={base:d,key:"type",typeMap:{"label-3d":y}},l.ensureType=p.ensureOneOfType(l.types)});

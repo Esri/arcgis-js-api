@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/HandleRegistry","../Evented"],function(e,t,n,i){Object.defineProperty(t,"__esModule",{value:!0});var s=function(){function e(e){this.handles=new n,this.events=new i.Evented,this.contentLayerViews=e.contentLayerViews,this.handles.add(this.contentLayerViews.on("change",this.layerViewsChanged.bind(this))),this.layerViewsChanged({added:this.contentLayerViews.toArray(),removed:[],moved:[],target:this.contentLayerViews})}return e.prototype.destroy=function(){this.handles&&(this.handles.destroy(),this.handles=null)},e.prototype.layerViewsChanged=function(e){var t=this;e.added.forEach(function(e){"esri.views.3d.layers.SceneLayerView3D"===e.declaredClass&&t.handles.add(e.on("visible-geometry-changed",t.contentChanged.bind(t)),e.uid)}),e.removed.forEach(function(e){return t.handles.remove(e.uid)})},e.prototype.contentChanged=function(){this.events.emit("request-update",d)},e}();t.ContentGeometryUpdates=s;var d={};t["default"]=s});
+define(["require","exports","../../../../core/Handles","../Evented"],function(e,t,n,s){Object.defineProperty(t,"__esModule",{value:!0});var d=function(){function e(e){this.handles=new n,this.events=new s.Evented,this.contentLayerViews=e.contentLayerViews,this.handles.add(this.contentLayerViews.on("change",this.layerViewsChanged.bind(this))),this.layerViewsChanged({added:this.contentLayerViews.toArray(),removed:[],moved:[],target:this.contentLayerViews})}return e.prototype.destroy=function(){this.handles&&(this.handles.destroy(),this.handles=null)},e.prototype.layerViewsChanged=function(e){var t=this;e.added.forEach(function(e){"esri.views.3d.layers.SceneLayerView3D"===e.declaredClass&&t.handles.add(e.on("visible-geometry-changed",t.contentChanged.bind(t)),e.uid)}),e.removed.forEach(function(e){return t.handles.remove(e.uid)})},e.prototype.contentChanged=function(){this.events.emit("request-update",i)},e}();t.ContentGeometryUpdates=d;var i={};t.default=d});

@@ -56,6 +56,11 @@
       "description": "A popupInfo object defining the content of popup windows when you click or query a feature.",
       "$ref": "popupInfo_schema.json"
     },
+    "refreshInterval": {
+      "type": "number",
+      "description": "Refresh interval of the layer in minutes. Non-zero value indicates automatic layer refresh at the specified interval. Value of 0 indicates auto refresh is not enabled.",
+      "default": 0
+    },
     "screenSizePerspective": {
       "type": "boolean",
       "description": "Apply [perspective scaling](https://developers.arcgis.com/javascript/latest/api-reference/esri-layers-FeatureLayer.html#screenSizePerspectiveEnabled) to screen-size symbols.",
@@ -149,4 +154,3 @@
     ]
   }
 }
-

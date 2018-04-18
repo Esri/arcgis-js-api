@@ -24,6 +24,8 @@
  * {@link module:esri/layers/IntegratedMeshLayer},
  * {@link module:esri/layers/KMLLayer},
  * {@link module:esri/layers/OpenStreetMapLayer},
+ * {@link module:esri/layers/GraphicsLayer},
+ * {@link module:esri/layers/GeoRSSLayer},
  * {@link module:esri/layers/VectorTileLayer}, and
  * {@link module:esri/layers/WebTileLayer}
  * * {@link module:esri/symbols/Symbol3D  3D symbols} with more than one
@@ -54,91 +56,53 @@
 /// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
 /// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
 
-import Widget = require("./Widget");
 
-import HandleRegistry = require("../core/HandleRegistry");
+// dojo
+import * as i18n from "dojo/i18n!./Legend/nls/Legend";
+
+// esri.core
 import Collection = require("../core/Collection");
+import Handles = require("../core/Handles");
 import watchUtils = require("../core/watchUtils");
 
-import View = require("../views/View");
+// esri.core.accessorSupport
+import { aliasOf, subclass, declared, property } from "../core/accessorSupport/decorators";
 
+// esri.views
+import MapView = require("../views/MapView");
+import SceneView = require("../views/SceneView");
+
+// esri.widgets
+import { LayerInfo } from "./interfaces";
+import Widget = require("./Widget");
+
+// esri.widgets.Legend
 import LegendViewModel = require("./Legend/LegendViewModel");
+
+// esri.widgets.Legend.styles
+import Card = require("./Legend/styles/Card");
+import Classic = require("./Legend/styles/Classic");
+
+// esri.widgets.Legend.support
 import ActiveLayerInfo = require("./Legend/support/ActiveLayerInfo");
 
-import Layer = require("../layers/Layer");
-import ImageryLayer = require("../layers/ImageryLayer");
-
-import Color = require("../Color");
-
-import * as i18n from "dojo/i18n!./Legend/nls/Legend";
-import { substitute } from "../core/lang";
-import { createSurface } from "dojox/gfx";
-import {
-  ColorOpacityRampElement, LayerInfo, LegendElement, RampTitle, RendererTitle,
-  SymbolTableElement
-} from "./interfaces";
-import { aliasOf, subclass, declared, property } from "../core/accessorSupport/decorators";
-import { join, tsx, renderable } from "./support/widget";
-
-import Element = JSX.Element;
+// esri.widgets.support
+import { renderable } from "./support/widget";
 
 const CSS = {
-  widget: "esri-widget",
-  base: "esri-legend",
-  service: "esri-legend__service",
-  label: "esri-legend__service-label",
-  layer: "esri-legend__layer",
-  groupLayer: "esri-legend__group-layer",
-  groupLayerChild: "esri-legend__group-layer-child",
-  layerTable: "esri-legend__layer-table",
-  layerChildTable: "esri-legend__layer-child-table",
-  layerCaption: "esri-legend__layer-caption",
-  layerBody: "esri-legend__layer-body",
-  layerRow: "esri-legend__layer-row",
-  layerCell: "esri-legend__layer-cell",
-  layerInfo: "esri-legend__layer-cell esri-legend__layer-cell--info",
-  imageryLayerStretchedImage: "esri-legend__imagery-layer-image--stretched",
-  imageryLayerCellStretched: "esri-legend__imagery-layer-cell--stretched",
-  imageryLayerInfoStretched: "esri-legend__imagery-layer-info--stretched",
-  symbolContainer: "esri-legend__layer-cell esri-legend__layer-cell--symbols",
-  symbol: "esri-legend__symbol",
-  rampContainer: "esri-legend__ramps",
-  sizeRamp: "esri-legend__size-ramp",
-  colorRamp: "esri-legend__color-ramp",
-  opacityRamp: "esri-legend__opacity-ramp",
-  borderlessRamp: "esri-legend__borderless-ramp",
-  rampTick: "esri-legend__ramp-tick",
-  rampFirstTick: "esri-legend__ramp-tick-first",
-  rampLastTick: "esri-legend__ramp-tick-last",
-  rampLabelsContainer: "esri-legend__ramp-labels",
-  rampLabel: "esri-legend__ramp-label",
-  message: "esri-legend__message",
-
-  // common
-  hidden: "esri-hidden"
+  widgetIcon: "esri-icon-layer-list"
 };
 
-const KEY = "esri-legend__",
-  GRADIENT_WIDTH = 24,
-  GRADIENT_HEIGHT = 25,
-  MIN_RAMP_HEIGHT = 50;
-
-function isRendererTitle(titleInfo: any, isRamp: boolean): titleInfo is RendererTitle {
-  return !isRamp;
-}
-
-function isRampTitle(titleInfo: any, isRamp: boolean): titleInfo is RampTitle {
-  return isRamp;
-}
+type Style = "classic" | "card";
 
 @subclass("esri.widgets.Legend")
 class Legend extends declared(Widget) {
 
-//--------------------------------------------------------------------------
-//
-//  Lifecycle
-//
-//--------------------------------------------------------------------------
+  //--------------------------------------------------------------------------
+  //
+  //  Lifecycle
+  //
+  //--------------------------------------------------------------------------
 
   /**
    * @extends module:esri/widgets/Widget
@@ -158,14 +122,18 @@ class Legend extends declared(Widget) {
   }
 
   postInitialize() {
+    this._updateStyleRenderer(this.style);
+
     this.own(
-      watchUtils.on(this, "activeLayerInfos", "change", () => this._refreshActiveLayerInfos(this.activeLayerInfos))
+      watchUtils.on(this, "activeLayerInfos", "change", () => {
+        return this._refreshActiveLayerInfos(this.activeLayerInfos);
+      })
     );
   }
 
   destroy() {
-    this._handleRegistry.destroy();
-    this._handleRegistry = null;
+    this._handles.destroy();
+    this._handles = null;
   }
 
   //--------------------------------------------------------------------------
@@ -174,7 +142,9 @@ class Legend extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  private _handleRegistry = new HandleRegistry();
+  private _handles = new Handles();
+
+  private _styleRenderer: Card | Classic = null;
 
   //--------------------------------------------------------------------------
   //
@@ -233,6 +203,38 @@ class Legend extends declared(Widget) {
   groundLegendVisible = false;
 
   //----------------------------------
+  //  iconClass
+  //----------------------------------
+
+  /**
+   * The widget's default icon font.
+   *
+   * @since 4.7
+   * @name iconClass
+   * @instance
+   * @type {string}
+   * @readonly
+   */
+  @property()
+  iconClass = CSS.widgetIcon;
+
+  //----------------------------------
+  //  label
+  //----------------------------------
+
+  /**
+   * The widget's default label.
+   *
+   * @since 4.7
+   * @name label
+   * @instance
+   * @type {string}
+   * @readonly
+   */
+  @property()
+  label: string = i18n.widgetLabel;
+
+  //----------------------------------
   //  layerInfos
   //----------------------------------
 
@@ -260,6 +262,39 @@ class Legend extends declared(Widget) {
   layerInfos: LayerInfo[] = null;
 
   //----------------------------------
+  //  style
+  //----------------------------------
+
+  /**
+   * Indicates the style of the legend. The style determines the legend's layout and behavior.
+   * See the table below for a list of possible values.
+   *
+   * Value | Description
+   * ------|------------
+   * classic | The legend has a portrait orientation. The user can scroll vertically when many elements are included in the legend's content.
+   * card | In wide views, the legend has a landscape orientation that allows users to scroll horizontally to view all legend elements. This style is responsive, making it ideal for mobile web apps. In smaller views, the legend collapses to occupy less space. One element is shown at a time in a card-style layout, which the user can navigate horizontally.
+   *
+   * @name style
+   * @instance
+   * @type {string}
+   * @default classic
+   * @since 4.7
+   * @beta
+   */
+  @property({
+    value: "classic",
+    dependsOn: ["activeLayerInfos"]
+  })
+  @renderable()
+  get style() {
+    return this._get("style");
+  }
+  set style(value: Style) {
+    this._updateStyleRenderer(value);
+    this._set("style", value);
+  }
+
+  //----------------------------------
   //  view
   //----------------------------------
 
@@ -273,7 +308,7 @@ class Legend extends declared(Widget) {
    */
   @aliasOf("viewModel.view")
   @renderable()
-  view: View = null;
+  view: MapView | SceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -293,7 +328,9 @@ class Legend extends declared(Widget) {
    * @autocast
    */
   @property()
-  @renderable()
+  @renderable([
+    "view.size"
+  ])
   viewModel: LegendViewModel = new LegendViewModel();
 
   //-------------------------------------------------------------------
@@ -303,19 +340,7 @@ class Legend extends declared(Widget) {
   //-------------------------------------------------------------------
 
   render() {
-    const activeLayerInfos = this.activeLayerInfos,
-      baseClasses = join(CSS.base, CSS.widget),
-      filteredLayers = activeLayerInfos && activeLayerInfos.toArray()
-          .map(activeLayerInfo => this._renderLegendForLayer(activeLayerInfo))
-          .filter(layer => !!layer);
-
-    return (
-      <div class={baseClasses}>{
-        filteredLayers && filteredLayers.length ?
-          filteredLayers :
-          <div class={CSS.message}>{i18n.noLegend}</div>
-      }</div>
-    );
+    return this._styleRenderer.render();
   }
 
   //--------------------------------------------------------------------------
@@ -324,280 +349,32 @@ class Legend extends declared(Widget) {
   //
   //-------------------------------------------------------------------
 
+  private _updateStyleRenderer(style: Style): void {
+    if (this._styleRenderer) {
+      this._styleRenderer.destroy();
+    }
+
+    this._styleRenderer = style === "card" ?
+      new Card({
+        activeLayerInfos: this.activeLayerInfos,
+        view: this.view
+      }) :
+      new Classic({
+        activeLayerInfos: this.activeLayerInfos
+      });
+  }
+
   private _refreshActiveLayerInfos(activeLayerInfos: Collection<ActiveLayerInfo>): void {
-    this._handleRegistry.removeAll();
+    this._handles.removeAll();
     activeLayerInfos.forEach(activeLayerInfo => this._renderOnActiveLayerInfoChange(activeLayerInfo));
     this.scheduleRender();
   }
 
   private _renderOnActiveLayerInfoChange(activeLayerInfo: ActiveLayerInfo): void {
     const infoVersionHandle = watchUtils.init(activeLayerInfo, "version", () => this.scheduleRender());
-    this._handleRegistry.add(infoVersionHandle, `version_${activeLayerInfo.layer.uid}`);
+    this._handles.add(infoVersionHandle, `version_${activeLayerInfo.layer.uid}`);
 
     activeLayerInfo.children.forEach(childActiveLayerInfo => this._renderOnActiveLayerInfoChange(childActiveLayerInfo));
-  }
-
-  private _renderLegendForLayer(activeLayerInfo: ActiveLayerInfo): any {
-    if (!activeLayerInfo.ready) {
-      return null;
-    }
-
-    const hasChildren = !!activeLayerInfo.children.length;
-    const key = `${KEY}${activeLayerInfo.layer.uid}-version-${activeLayerInfo.version}`;
-
-    if (hasChildren) {
-      const layers = activeLayerInfo.children.map(childActiveLayerInfo => this._renderLegendForLayer(childActiveLayerInfo)).toArray();
-
-      const layerClasses = {
-        [CSS.groupLayer]: hasChildren
-      };
-
-      return (
-        <div key={key} class={CSS.service} classes={layerClasses}>
-          <p class={CSS.label}>{activeLayerInfo.title}</p>
-          {layers}
-        </div>
-      );
-    }
-    else {
-      const legendElements = activeLayerInfo.legendElements;
-
-      if (legendElements && !legendElements.length) {
-        return null;
-      }
-
-      const filteredElements = legendElements
-        .map(legendElement => this._renderLegendForElement(legendElement, activeLayerInfo.layer))
-        .filter(element => !!element);
-
-      if (!filteredElements.length) {
-        return null;
-      }
-
-      const layerClasses = {
-        [CSS.groupLayerChild]: !!activeLayerInfo.parent
-      };
-
-      return (
-        <div key={key} class={CSS.service} classes={layerClasses}>
-          <p class={CSS.label}>{activeLayerInfo.title}</p>
-          <div class={CSS.layer}>{filteredElements}</div>
-        </div>
-      );
-    }
-  }
-
-  private _renderLegendForElement(legendElement: LegendElement, layer: Layer, isChild?: boolean): any {
-    const isColorRamp = legendElement.type === "color-ramp",
-      isOpacityRamp = legendElement.type === "opacity-ramp",
-      isSizeRamp = legendElement.type === "size-ramp";
-
-    let content: Element = null;
-
-    // build symbol table or size ramp
-    if (legendElement.type === "symbol-table" || isSizeRamp) {
-      const rows = (legendElement.infos as any)
-        .map((info: any) => this._renderLegendForElementInfo(info, layer, isSizeRamp, (legendElement as SymbolTableElement).legendType))
-        .filter((row: any) => !!row);
-
-      if (rows.length) {
-        content = (<div class={CSS.layerBody}>{rows}</div>);
-      }
-    }
-    else if (isColorRamp || isOpacityRamp) {
-      content = this._renderLegendForRamp(legendElement.infos, (legendElement as ColorOpacityRampElement).overlayColor, isOpacityRamp);
-    }
-
-    if (!content) {
-      return null;
-    }
-
-    const titleObj = legendElement.title;
-    let title: string = null;
-
-    if (typeof titleObj === "string") {
-      title = titleObj;
-    }
-    else if (titleObj) {
-      const genTitle = this._getTitle(titleObj, isColorRamp || isOpacityRamp);
-      if ((titleObj as RendererTitle).title) {
-        title = `${(titleObj as RendererTitle).title} (${genTitle})`;
-      }
-      else {
-        title = genTitle;
-      }
-    }
-
-    const tableClass = isChild ? CSS.layerChildTable : CSS.layerTable,
-      caption = title ? (<div class={CSS.layerCaption}>{title}</div>) : null;
-
-    return (
-      <div class={tableClass}>
-        {caption}
-        {content}
-      </div>
-    );
-  }
-
-  private _renderLegendForRamp(rampStops: any[], overlayColor: Color, isOpacityRamp: boolean): any {
-    const numGradients = rampStops.length - 1;
-
-    const rampWidth = "100%";
-    let rampHeight: number = null;
-
-    if (numGradients > 2) {
-      rampHeight = GRADIENT_HEIGHT * numGradients;
-    }
-    else {
-      rampHeight = MIN_RAMP_HEIGHT;
-    }
-
-    const rampDiv = document.createElement("div");
-    const opacityRampClass = isOpacityRamp ? CSS.opacityRamp : "";
-    rampDiv.className = `${CSS.colorRamp} ${opacityRampClass}`;
-    rampDiv.style.height = `${rampHeight}px`;
-
-    const surface = createSurface(rampDiv, rampWidth, rampHeight);
-
-    try {
-      // TODO: When HeatmapRenderer is supported, stop offsets should not be adjusted.
-      // equalIntervalStops will be true for sizeInfo, false for heatmap.
-      // Heatmaps tend to have lots of colors, we don't want a giant color ramp.
-      // Hence equalIntervalStops = false.
-
-      // Adjust the stop offsets so that we have stops at fixed/equal interval.
-      rampStops.forEach((stop, index) => { stop.offset = index / numGradients; });
-
-      surface
-        .createRect({ x: 0, y: 0, width: rampWidth as any, height: rampHeight })
-        .setFill({ type: "linear", x1: 0, y1: 0, x2: 0, y2: rampHeight, colors: rampStops })
-        .setStroke(null);
-
-      if (overlayColor && overlayColor.a > 0) {
-        surface
-          .createRect({ x: 0, y: 0, width: rampWidth as any, height: rampHeight })
-          .setFill(overlayColor)
-          .setStroke(null);
-      }
-
-    }
-    catch (e) {
-      surface.clear();
-      surface.destroy();
-    }
-
-    if (!surface) {
-      return null;
-    }
-
-    const labelsContent = rampStops
-      .filter(stop => !!stop.label)
-      .map(stop => (<div class={CSS.rampLabel}>{stop.label}</div>));
-
-    const symbolContainerStyles = { width: `${GRADIENT_WIDTH}px` },
-      rampLabelsContainerStyles = { height: `${rampHeight}px` };
-
-    return (
-      <div class={CSS.layerRow}>
-        <div class={CSS.symbolContainer} styles={symbolContainerStyles}>
-          <div class={CSS.rampContainer} bind={rampDiv} afterCreate={this._attachToNode}></div>
-        </div>
-        <div class={CSS.layerInfo}>
-          <div class={CSS.rampLabelsContainer} styles={rampLabelsContainerStyles}>{labelsContent}</div>
-        </div>
-      </div>
-    );
-  }
-
-  private _renderLegendForElementInfo(elementInfo: any, layer: Layer, isSizeRamp: boolean, legendType: string): any {
-    // nested
-    if (elementInfo.type) {
-      return this._renderLegendForElement(elementInfo, layer, true);
-    }
-
-    let content: Element = null;
-    const isStretched = this._isImageryStretchedLegend(layer as ImageryLayer, legendType);
-
-    if (elementInfo.symbol && elementInfo.preview) {
-      content = (<div class={CSS.symbol} bind={elementInfo.preview} afterCreate={this._attachToNode}></div>);
-    }
-    else if (elementInfo.src) {
-      content = this._renderImage(elementInfo, layer, isStretched);
-    }
-
-    if (!content) {
-      return null;
-    }
-
-    const labelClasses = {
-      [CSS.imageryLayerInfoStretched]: isStretched
-    };
-
-    const symbolClasses = {
-      [CSS.imageryLayerInfoStretched]: isStretched,
-      [CSS.sizeRamp]: !isStretched && isSizeRamp
-    };
-
-    return (
-      <div class={CSS.layerRow}>
-        <div class={CSS.symbolContainer} classes={symbolClasses}>{content}</div>
-        <div class={CSS.layerInfo} classes={labelClasses}>{elementInfo.label || ""}</div>
-      </div>
-    );
-  }
-
-  private _attachToNode(this: HTMLElement, node: HTMLElement): void {
-    const content: HTMLElement = this;
-    node.appendChild(content);
-  }
-
-  private _renderImage(elementInfo: any, layer: Layer, isStretched: boolean): any {
-    const { src, opacity } = elementInfo;
-
-    const stretchedClasses = {
-      [CSS.imageryLayerStretchedImage]: isStretched,
-      [CSS.symbol]: !isStretched
-    };
-
-    const dynamicStyles = {
-      opacity: `${(opacity != null) ? opacity : layer.opacity}`
-    };
-
-    return (
-      <img src={src} border={0}
-           width={elementInfo.width} height={elementInfo.height}
-           classes={stretchedClasses} styles={dynamicStyles} />
-    );
-  }
-
-  private _isImageryStretchedLegend(layer: ImageryLayer, legendType: string): boolean {
-    return !!(
-      legendType &&
-      legendType === "Stretched" &&
-      layer.version >= 10.3 &&
-      layer.declaredClass === "esri.layers.ImageryLayer"
-    );
-  }
-
-  private _getTitle(titleInfo: RendererTitle | RampTitle, isRamp: boolean): string {
-    let bundleKey: string = null;
-
-    if (isRampTitle(titleInfo, isRamp)) {
-      bundleKey = titleInfo.ratioPercentTotal ? "showRatioPercentTotal" :
-        titleInfo.ratioPercent ? "showRatioPercent" :
-          titleInfo.ratio ? "showRatio" :
-            titleInfo.normField ? "showNormField" :
-              titleInfo.field ? "showField" :
-        null;
-    }
-    else if (isRendererTitle(titleInfo, isRamp)) {
-      bundleKey = titleInfo.normField ? "showNormField" :
-        titleInfo.normByPct ? "showNormPct" :
-          titleInfo.field ? "showField" :
-            null;
-    }
-
-    return bundleKey ? substitute({ field: titleInfo.field, normField: titleInfo.normField }, i18n[bundleKey]) : null;
   }
 }
 

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/Warning","../../support/pointCloud/PointSizeFixedSizeAlgorithm","../../support/pointCloud/PointSizeSplatAlgorithm"],function(e,t,n,o,i){function r(e){return e?p[e.type]||null:null}function u(e,t,o){var i=r(e);if(i){var u=new i;return u.read(e,o),u}return o&&o.messages&&e&&o.messages.push(new n("pointsizealgorithm:unsupported","Point size algorithms of type '"+(e.type||"unknown")+"' are not supported",{definition:e,context:o})),null}function l(e){var t=r(e);return t?t.fromJSON(e):null}Object.defineProperty(t,"__esModule",{value:!0});var p={pointCloudFixedSizeAlgorithm:o["default"],pointCloudSplatAlgorithm:i["default"]};t.read=u,t.fromJSON=l});
+define(["require","exports","../../../core/Warning","../../support/pointCloud/PointSizeFixedSizeAlgorithm","../../support/pointCloud/PointSizeSplatAlgorithm"],function(e,t,n,o,i){function r(e){return e?p[e.type]||null:null}function u(e,t,o){var i=r(e);if(i){var u=new i;return u.read(e,o),u}return o&&o.messages&&e&&o.messages.push(new n("pointsizealgorithm:unsupported","Point size algorithms of type '"+(e.type||"unknown")+"' are not supported",{definition:e,context:o})),null}function l(e){var t=r(e);return t?t.fromJSON(e):null}Object.defineProperty(t,"__esModule",{value:!0});var p={pointCloudFixedSizeAlgorithm:o.default,pointCloudSplatAlgorithm:i.default};t.read=u,t.fromJSON=l});

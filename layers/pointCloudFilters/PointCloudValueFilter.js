@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators","../../core/lang","./PointCloudFilter"],function(e,r,t,o,i,l,p){var n=function(e){function r(r){var t=e.call(this)||this;return t.mode="exclude",t.type="value",t.values=[],t}return t(r,e),p=r,r.prototype.clone=function(){return new p({field:this.field,mode:this.mode,values:l.clone(this.values)})},o([i.property({type:String,json:{write:{enabled:!0,isRequired:!0}}})],r.prototype,"mode",void 0),o([i.property()],r.prototype,"type",void 0),o([i.property({type:[Number],json:{write:{enabled:!0,isRequired:!0}}})],r.prototype,"values",void 0),r=p=o([i.subclass("esri.layers.pointCloudFilters.PointCloudValueFilter")],r);var p}(i.declared(p));return n});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/lang","../../core/accessorSupport/decorators","./PointCloudFilter"],function(e,r,t,o,i,l,p){return function(e){function r(r){var t=e.call(this)||this;return t.mode="exclude",t.type="value",t.values=[],t}return t(r,e),p=r,r.prototype.clone=function(){return new p({field:this.field,mode:this.mode,values:i.clone(this.values)})},o([l.property({type:String,json:{write:{enabled:!0,isRequired:!0}}})],r.prototype,"mode",void 0),o([l.property()],r.prototype,"type",void 0),o([l.property({type:[Number],json:{write:{enabled:!0,isRequired:!0}}})],r.prototype,"values",void 0),r=p=o([l.subclass("esri.layers.pointCloudFilters.PointCloudValueFilter")],r);var p}(l.declared(p))});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../libs/maquette/maquette"],function(e,t,u){Object.defineProperty(t,"__esModule",{value:!0}),t.tsx=u.h});
+define(["require","exports","maquette-jsx"],function(e,t,r){Object.defineProperty(t,"__esModule",{value:!0}),t.tsx=r.jsx});

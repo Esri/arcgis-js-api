@@ -29,21 +29,25 @@
               {
                 "type": "colorInfo",
                 "field": "ORIG_FID",
-                "minDataValue": 1,
-                "maxDataValue": 9,
-                "colors": [
-                  [
-                    255,
-                    0,
-                    0,
-                    255
-                  ],
-                  [
-                    0,
-                    255,
-                    0,
-                    255
-                  ]
+                "stops": [
+                  {
+                    "value": 1,
+                    "color": [
+                      255,
+                      0,
+                      0,
+                      255
+                    ]
+                  },
+                  {
+                    "value": 9,
+                    "color": [
+                      0,
+                      255,
+                      0,
+                      255
+                    ]
+                  }
                 ]
               }
             ],
@@ -97,21 +101,25 @@
               {
                 "type": "colorInfo",
                 "field": "ORIG_FID",
-                "minDataValue": 1,
-                "maxDataValue": 9,
-                "colors": [
-                  [
-                    255,
-                    0,
-                    0,
-                    255
-                  ],
-                  [
-                    0,
-                    255,
-                    0,
-                    255
-                  ]
+                "stops": [
+                  {
+                    "value": 1,
+                    "color": [
+                      255,
+                      0,
+                      0,
+                      255
+                    ]
+                  },
+                  {
+                    "value": 9,
+                    "color": [
+                      0,
+                      255,
+                      0,
+                      255
+                    ]
+                  }
                 ]
               }
             ],
@@ -170,21 +178,25 @@
               {
                 "type": "colorInfo",
                 "field": "ORIG_FID",
-                "minDataValue": 1,
-                "maxDataValue": 9,
-                "colors": [
-                  [
-                    255,
-                    0,
-                    0,
-                    255
-                  ],
-                  [
-                    0,
-                    255,
-                    0,
-                    255
-                  ]
+                "stops": [
+                  {
+                    "value": 1,
+                    "color": [
+                      255,
+                      0,
+                      0,
+                      255
+                    ]
+                  },
+                  {
+                    "value": 9,
+                    "color": [
+                      0,
+                      255,
+                      0,
+                      255
+                    ]
+                  }
                 ]
               }
             ],
@@ -243,21 +255,25 @@
               {
                 "type": "colorInfo",
                 "field": "ORIG_FID",
-                "minDataValue": 1,
-                "maxDataValue": 9,
-                "colors": [
-                  [
-                    255,
-                    0,
-                    0,
-                    255
-                  ],
-                  [
-                    0,
-                    255,
-                    0,
-                    255
-                  ]
+                "stops": [
+                  {
+                    "value": 1,
+                    "color": [
+                      255,
+                      0,
+                      0,
+                      255
+                    ]
+                  },
+                  {
+                    "value": 9,
+                    "color": [
+                      0,
+                      255,
+                      0,
+                      255
+                    ]
+                  }
                 ]
               }
             ],
@@ -311,21 +327,25 @@
               {
                 "type": "colorInfo",
                 "field": "ORIG_FID",
-                "minDataValue": 1,
-                "maxDataValue": 9,
-                "colors": [
-                  [
-                    255,
-                    0,
-                    0,
-                    255
-                  ],
-                  [
-                    0,
-                    255,
-                    0,
-                    255
-                  ]
+                "stops": [
+                  {
+                    "value": 1,
+                    "color": [
+                      255,
+                      0,
+                      0,
+                      255
+                    ]
+                  },
+                  {
+                    "value": 9,
+                    "color": [
+                      0,
+                      255,
+                      0,
+                      255
+                    ]
+                  }
                 ]
               }
             ],
@@ -369,21 +389,25 @@
               {
                 "type": "colorInfo",
                 "field": "ORIG_FID",
-                "minDataValue": 1,
-                "maxDataValue": 9,
-                "colors": [
-                  [
-                    255,
-                    0,
-                    0,
-                    255
-                  ],
-                  [
-                    0,
-                    255,
-                    0,
-                    255
-                  ]
+                "stops": [
+                  {
+                    "value": 1,
+                    "color": [
+                      255,
+                      0,
+                      0,
+                      255
+                    ]
+                  },
+                  {
+                    "value": 9,
+                    "color": [
+                      0,
+                      255,
+                      0,
+                      255
+                    ]
+                  }
                 ]
               }
             ],
@@ -427,21 +451,25 @@
               {
                 "type": "colorInfo",
                 "field": "ORIG_FID",
-                "minDataValue": 1,
-                "maxDataValue": 9,
-                "colors": [
-                  [
-                    255,
-                    0,
-                    0,
-                    255
-                  ],
-                  [
-                    0,
-                    255,
-                    0,
-                    255
-                  ]
+                "stops": [
+                  {
+                    "value": 1,
+                    "color": [
+                      255,
+                      0,
+                      0,
+                      255
+                    ]
+                  },
+                  {
+                    "value": 9,
+                    "color": [
+                      0,
+                      255,
+                      0,
+                      255
+                    ]
+                  }
                 ]
               }
             ],
@@ -486,21 +514,25 @@
               {
                 "type": "colorInfo",
                 "field": "ORIG_FID",
-                "minDataValue": 1,
-                "maxDataValue": 9,
-                "colors": [
-                  [
-                    255,
-                    0,
-                    0,
-                    255
-                  ],
-                  [
-                    0,
-                    255,
-                    0,
-                    255
-                  ]
+                "stops": [
+                  {
+                    "value": 1,
+                    "color": [
+                      255,
+                      0,
+                      0,
+                      255
+                    ]
+                  },
+                  {
+                    "value": 9,
+                    "color": [
+                      0,
+                      255,
+                      0,
+                      255
+                    ]
+                  }
                 ]
               }
             ],
@@ -560,21 +592,25 @@
               {
                 "type": "colorInfo",
                 "field": "ORIG_FID",
-                "minDataValue": 1,
-                "maxDataValue": 9,
-                "colors": [
-                  [
-                    255,
-                    0,
-                    0,
-                    255
-                  ],
-                  [
-                    0,
-                    255,
-                    0,
-                    255
-                  ]
+                "stops": [
+                  {
+                    "value": 1,
+                    "color": [
+                      255,
+                      0,
+                      0,
+                      255
+                    ]
+                  },
+                  {
+                    "value": 9,
+                    "color": [
+                      0,
+                      255,
+                      0,
+                      255
+                    ]
+                  }
                 ]
               }
             ],

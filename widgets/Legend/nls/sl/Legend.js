@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({points:"Točke",lines:"Linije",polygons:"Poligoni",creatingLegend:"Ustvarjanje legende",noLegend:"Ni legende",dotValue:"1 pika = {value} {unit}",currentObservations:"Trenutne ugotovitve",previousObservations:"Prejšnje ugotovitve",high:"Visoko",low:"Nizko",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"vozlov",esriFeetPerSecond:"čevljev/sekundo",esriMilesPerHour:"mi/h",showField:"{field}",showNormField:"{field} deljeno z {normField}",showNormPct:"{field} kot odstotek skupne vrednosti",showRatio:"Razmerje {field} glede na {normField}",showRatioPercent:"{field} kot odstotek {normField}",showRatioPercentTotal:"{field} kot odstotek {field} in {normField}"});
+define({widgetLabel:"Legenda",points:"Točke",lines:"Linije",polygons:"Poligoni",creatingLegend:"Ustvarjanje legende",noLegend:"Ni legende",dotValue:"1 pika = {value} {unit}",currentObservations:"Trenutne ugotovitve",previousObservations:"Prejšnje ugotovitve",high:"Visoko",low:"Nizko",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"vozlov",esriFeetPerSecond:"čevljev/sekundo",esriMilesPerHour:"mi/h",showField:"{field}",showNormField:"{field} deljeno z {normField}",showNormPct:"{field} kot odstotek skupne vrednosti",showRatio:"Razmerje {field} glede na {normField}",showRatioPercent:"{field} kot odstotek {normField}",showRatioPercentTotal:"{field} kot odstotek {field} in {normField}"});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({noItemsToDisplay:"Non è attualmente disponibile alcun elemento da visualizzare.",layerInvisibleAtScale:"Invisibile con la scala attuale",layerError:"Errore durante il caricamento di questo layer",untitledLayer:"Layer senza titolo"});
+define({widgetLabel:"Elenco layer",noItemsToDisplay:"Non è attualmente disponibile alcun elemento da visualizzare.",layerInvisibleAtScale:"Invisibile con la scala attuale",layerError:"Errore durante il caricamento di questo layer",untitledLayer:"Layer senza titolo"});

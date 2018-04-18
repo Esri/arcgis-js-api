@@ -50,6 +50,10 @@
     uniform float u_vvOpacities[8];
   #endif // VV_OPACITY
 
+  #ifdef VV_ROTATION
+    uniform lowp float u_vvRotationType;
+  #endif // VV_ROTATION
+
     ]]>
   </snippet>
 
@@ -59,7 +63,8 @@
     float getVVMinMaxSize(float sizeValue) {
       // we need to multiply by 8 in order to translate to tile coordinates
       float interpolationRatio = (sizeValue  - u_vvSizeMinMaxValue.x) / (u_vvSizeMinMaxValue.y - u_vvSizeMinMaxValue.x);
-      return clamp(u_vvSizeMinMaxValue.z + interpolationRatio * (u_vvSizeMinMaxValue.w - u_vvSizeMinMaxValue.z), u_vvSizeMinMaxValue.z, u_vvSizeMinMaxValue.w);
+      interpolationRatio = clamp(interpolationRatio, 0.0, 1.0);
+      return u_vvSizeMinMaxValue.z + interpolationRatio * (u_vvSizeMinMaxValue.w - u_vvSizeMinMaxValue.z);
     }
   #endif // VV_SIZE_MIN_MAX_VALUE
 
@@ -108,7 +113,13 @@
   #ifdef VV_ROTATION
     mat4 getVVRotation(float rotationValue) {
       // YF TODO: if the symbol has rotation we need to combine the symbo's rotation with the VV one
-      float angle = C_DEG_TO_RAD * rotationValue;
+
+      float rotation = rotationValue;
+      if (u_vvRotationType == 1.0) {
+        rotation = 90.0 - rotation;
+      }
+
+      float angle = C_DEG_TO_RAD * rotation;
 
       float sinA = sin(angle);
       float cosA = cos(angle);
@@ -220,21 +231,23 @@
 
   #ifdef VV_SIZE_MIN_MAX_VALUE
       // vv size override the original symbol's size
-      vec2 size = vec2(getVVMinMaxSize(a_vv.x));
+      float h = getVVMinMaxSize(a_vv.x);
   #endif // VV_SIZE_MIN_MAX_VALUE
 
   #ifdef VV_SIZE_SCALE_STOPS
-      vec2 size = vec2(u_vvSizeScaleStopsValue);
+      float h = u_vvSizeScaleStopsValue;
   #endif // VV_SIZE_SCALE_STOPS
 
   #ifdef VV_SIZE_FIELD_STOPS
-      vec2 size = vec2(getVVStopsSize(a_vv.x));
+      float h = getVVStopsSize(a_vv.x);
   #endif // VV_SIZE_FIELD_STOPS
 
   #ifdef VV_SIZE_UNIT_VALUE
-      vec2 size = vec2(getVVUnitValue(a_vv.x));
+      float h = getVVUnitValue(a_vv.x);
   #endif // VV_SIZE_UNIT_VALUE
 
+      // make sure to preserve the aspect ratio of the symbol
+      vec2 size = vec2(h * a_size.x / a_size.y, h);
       vec2 offset = C_OFFSET_PRECISION * a_offset * size;
       v_size = size;
   #else

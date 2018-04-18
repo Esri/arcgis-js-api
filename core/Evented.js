@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["./declare","dojo/Evented"],function(e,t){return e(t,{declaredClass:"esri.core.Evented",hasEventListener:function(e){return e="on"+e,!(!this[e]||!this[e].after)},emit:function(e,t){return this.hasEventListener(e)?(t=t||{},t.target||(t.target=this),this.inherited(arguments,[e,t])):void 0}})});
+define(["require","exports","dojo/aspect","dojo/on"],function(t,r,n,e){function o(t,r,n,e){var i;if(Array.isArray(r)?i=r:r.indexOf(",")>-1&&(i=r.split(/\s*,\s*/)),i){for(var u=[],f=0,s=i;f<s.length;f++){var a=s[f];u.push(o(t,a,n,e))}return u.remove=function(){for(var t=0;t<u.length;t++)u[t].remove()},u}return e(t,r)}return function(){function t(){}return t.prototype.emit=function(t,r){if(this.hasEventListener(t))return r=r||{},r.target||(r.target=this),e.emit(this,t,r)},t.prototype.on=function(t,r){return o(this,t,r,function(t,e){return n.after(t,"on"+e,r,!0)})},t.prototype.hasEventListener=function(t){return t="on"+t,!(!this[t]||!this[t].after)},t}()});

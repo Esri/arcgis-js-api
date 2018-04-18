@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({searchButtonTitle:"Søk",clearButtonTitle:"Tøm søk",placeholder:"Finn adresse eller sted",searchIn:"Søk i",all:"Alle",allPlaceholder:"Finn adresse eller sted",emptyValue:"Skriv inn et søkeord",untitledResult:"Uten tittel",untitledSource:"Kilde uten tittel",noResults:"Ingen resultater",noResultsFound:"Fant ingen resultater.",noResultsFoundForValue:"Finner ingen resultater for ${value}.",showMoreResults:"Vis flere resultater",hideMoreResults:"Skjul",searchResult:"Søkeresultater",moreResultsHeader:"Flere resultater",esriLocatorName:"Esri World Geokoder",useCurrentLocation:"Bruk gjeldende lokasjon"});
+define({widgetLabel:"Søk",searchButtonTitle:"Søk",clearButtonTitle:"Tøm søk",placeholder:"Finn adresse eller sted",searchIn:"Søk i",all:"Alle",allPlaceholder:"Finn adresse eller sted",emptyValue:"Skriv inn et søkeord",untitledResult:"Uten tittel",untitledSource:"Kilde uten tittel",noResults:"Ingen resultater",noResultsFound:"Fant ingen resultater.",noResultsFoundForValue:"Finner ingen resultater for ${value}.",showMoreResults:"Vis flere resultater",hideMoreResults:"Skjul",searchResult:"Søkeresultater",moreResultsHeader:"Flere resultater",esriLocatorName:"Esri World Geokoder",useCurrentLocation:"Bruk gjeldende lokasjon"});

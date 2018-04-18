@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["../../core/JSONSupport","../../core/kebabDictionary","./GPMessage"],function(e,o,i){var b=o({esriJobCancelled:"job-cancelled",esriJobCancelling:"job-cancelling",esriJobDeleted:"job-deleted",esriJobDeleting:"job-deleting",esriJobTimedOut:"job-timed-out",esriJobExecuting:"job-executing",esriJobFailed:"job-failed",esriJobNew:"job-new",esriJobSubmitted:"job-submitted",esriJobSucceeded:"job-succeeded",esriJobWaiting:"job-waiting"}),s=e.createSubclass({declaredClass:"esri.tasks.support.JobInfo",properties:{jobId:"",jobStatus:{value:"",json:{read:b.fromJSON}},messages:{value:[],type:[i]}}});return s});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/JSONSupport","../../core/kebabDictionary","../../core/accessorSupport/decorators","./GPMessage"],function(e,o,r,t,i,s,b,d){var n=s({esriJobCancelled:"job-cancelled",esriJobCancelling:"job-cancelling",esriJobDeleted:"job-deleted",esriJobDeleting:"job-deleting",esriJobTimedOut:"job-timed-out",esriJobExecuting:"job-executing",esriJobFailed:"job-failed",esriJobNew:"job-new",esriJobSubmitted:"job-submitted",esriJobSucceeded:"job-succeeded",esriJobWaiting:"job-waiting"});return function(e){function o(o){var r=e.call(this)||this;return r.jobId=null,r.jobStatus=null,r.messages=null,r}return r(o,e),t([b.property()],o.prototype,"jobId",void 0),t([b.property({json:{read:n.read}})],o.prototype,"jobStatus",void 0),t([b.property({type:[d]})],o.prototype,"messages",void 0),o=t([b.subclass("esri.tasks.support.JobInfo")],o)}(b.declared(i))});

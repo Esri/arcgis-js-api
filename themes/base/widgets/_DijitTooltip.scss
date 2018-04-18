@@ -1,0 +1,41 @@
+/*
+The following CSS came from the Dojo dijit.css style in order to support tooltip styles used in Popup charts without having to include a dijit theme CSS in a document.
+
+See styles here: https://github.com/dojo/dijit/blob/master/themes/dijit.css#L795-L825
+
+Related issue: https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/12385
+*/
+
+.dijitTooltip {
+  position: absolute;
+  z-index: 2000;
+  display: block;
+  /* make visible but off screen */
+  left: 0;
+  top: -10000px;
+  overflow: visible;
+}
+
+.dijitTooltipContainer {
+  border: solid black 2px;
+  background: #b8b5b5;
+  color: black;
+  font-size: small;
+}
+
+.dijitTooltipFocusNode {
+  padding: 2px 2px 2px 2px;
+}
+
+.dijitTooltipConnector {
+  position: absolute;
+}
+
+.dj_a11y .dijitTooltipConnector {
+  display: none;
+  /* won't show b/c it's background-image; hide to avoid border gap */
+}
+
+.dijitTooltipData {
+  display: none;
+}

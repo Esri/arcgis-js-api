@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({title:"Ukur",hint:"Mulai pengukuran dengan mengklik di scene untuk meletakkan titik pertama Anda",distance:"Jarak",direct:"Langsung",horizontal:"Horizontal",vertical:"Vertikal",unit:"Unit",newMeasurement:"Pengukuran Baru",units:{metric:"Metrik",imperial:"Imperial",kilometers:"Kilometer",meters:"Meter",miles:"Mil",inches:"Inci",feet:"Kaki",yards:"Yard","nautical-miles":"Mil Laut","us-feet":"Kaki (AS)","degrees-minutes-seconds":"DMS",degrees:"Derajat"}});
+define({title:"Ukur",hint:"Mulai pengukuran dengan mengklik di scene untuk meletakkan titik pertama Anda",unsupported:"Pengukuran garis langsung tidak didukung di MapView.",distance:"Jarak",direct:"Langsung",horizontal:"Horizontal",vertical:"Vertikal",unit:"Unit",newMeasurement:"Pengukuran Baru",units:{metric:"Metrik",imperial:"Imperial",kilometers:"Kilometer",meters:"Meter",miles:"Mil",inches:"Inci",feet:"Kaki",yards:"Yard","nautical-miles":"Mil Laut","us-feet":"Kaki (AS)","degrees-minutes-seconds":"DMS",degrees:"Derajat"}});

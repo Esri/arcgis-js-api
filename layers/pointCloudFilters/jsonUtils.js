@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","dojo/_base/lang","../../core/Warning","./PointCloudValueFilter","./PointCloudBitfieldFilter","./PointCloudReturnFilter"],function(e,t,n,r,i,o,u){function l(e){return e?p[e.type]||null:null}function a(e,t,n){return e&&Array.isArray(e)?e.map(function(e){var t=l(e);if(t){var i=new t;return i.read(e,n),i}n&&n.messages&&e&&n.messages.push(new r("point-cloud-filter:unsupported","Point cloud filters of type '"+(e.type||"unknown")+"' are not supported",{definition:e,context:n}))}):void 0}function d(e,t,r,i){var o=e.map(function(e){return e.write({},i)});n.setObject(r,o,t)}function f(e){var t=l(e);return t?t.fromJSON(e):null}Object.defineProperty(t,"__esModule",{value:!0});var p={pointCloudValueFilter:i,pointCloudBitfieldFilter:o,pointCloudReturnFilter:u};t.read=a,t.write=d,t.fromJSON=f});
+define(["require","exports","dojo/_base/lang","../../core/Warning","./PointCloudBitfieldFilter","./PointCloudReturnFilter","./PointCloudValueFilter"],function(e,t,n,r,i,o,u){function l(e){return e?p[e.type]||null:null}function a(e,t,n){if(e&&Array.isArray(e))return e.map(function(e){var t=l(e);if(t){var i=new t;return i.read(e,n),i}n&&n.messages&&e&&n.messages.push(new r("point-cloud-filter:unsupported","Point cloud filters of type '"+(e.type||"unknown")+"' are not supported",{definition:e,context:n}))})}function d(e,t,r,i){var o=e.map(function(e){return e.write({},i)});n.setObject(r,o,t)}function f(e){var t=l(e);return t?t.fromJSON(e):null}Object.defineProperty(t,"__esModule",{value:!0});var p={pointCloudValueFilter:u,pointCloudBitfieldFilter:i,pointCloudReturnFilter:o};t.read=a,t.write=d,t.fromJSON=f});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({noItemsToDisplay:"Šiuo metu nėra rodytinų elementų.",layerInvisibleAtScale:"Nematoma naudojant dabartinį mastelį",layerError:"Įkeliant šį sluoksnį įvyko klaida",untitledLayer:"Sluoksnis be pavadinimo"});
+define({widgetLabel:"Sluoksniai",noItemsToDisplay:"Šiuo metu nėra rodytinų elementų.",layerInvisibleAtScale:"Nematoma naudojant dabartinį mastelį",layerError:"Įkeliant šį sluoksnį įvyko klaida",untitledLayer:"Sluoksnis be pavadinimo"});

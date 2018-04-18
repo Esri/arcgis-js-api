@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["../../core/declare","dojo/_base/array"],function(e,t){var s=e(null,{declaredClass:"esri.layers.support.WMSLayerInfo",name:null,title:null,description:null,extent:null,legendURL:null,subLayers:[],allExtents:[],spatialReferences:[],constructor:function(e){e&&(this.name=e.name,this.title=e.title,this.description=e.description,this.extent=e.extent,this.legendURL=e.legendURL,this.subLayers=e.subLayers?e.subLayers:[],this.allExtents=e.allExtents?e.allExtents:[],this.spatialReferences=e.spatialReferences?e.spatialReferences:[])},clone:function(){var e,s={name:this.name,title:this.title,description:this.description,legendURL:this.legendURL};this.extent&&(s.extent=this.extent.getExtent()),s.subLayers=[],t.forEach(this.subLayers,function(e){s.subLayers.push(e.clone())}),s.allExtents=[];for(e in this.allExtents)e=parseInt(e,10),isNaN(e)||(s.allExtents[e]=this.allExtents[e].getExtent());return s.spatialReferences=[],t.forEach(this.spatialReferences,function(e){s.spatialReferences.push(e)}),s}});return s});
+define(["../../core/declare","dojo/_base/array"],function(e,t){return e(null,{declaredClass:"esri.layers.support.WMSLayerInfo",name:null,title:null,description:null,extent:null,legendURL:null,subLayers:[],allExtents:[],spatialReferences:[],constructor:function(e){e&&(this.name=e.name,this.title=e.title,this.description=e.description,this.extent=e.extent,this.legendURL=e.legendURL,this.subLayers=e.subLayers?e.subLayers:[],this.allExtents=e.allExtents?e.allExtents:[],this.spatialReferences=e.spatialReferences?e.spatialReferences:[])},clone:function(){var e,s={name:this.name,title:this.title,description:this.description,legendURL:this.legendURL};this.extent&&(s.extent=this.extent.getExtent()),s.subLayers=[],t.forEach(this.subLayers,function(e){s.subLayers.push(e.clone())}),s.allExtents=[];for(e in this.allExtents)e=parseInt(e,10),isNaN(e)||(s.allExtents[e]=this.allExtents[e].getExtent());return s.spatialReferences=[],t.forEach(this.spatialReferences,function(e){s.spatialReferences.push(e)}),s}})});

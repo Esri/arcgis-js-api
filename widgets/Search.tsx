@@ -40,41 +40,8 @@
 /// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
 /// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
 
-import { aliasOf, subclass, declared, property } from "../core/accessorSupport/decorators";
-
-import { ActiveMenu, SearchItem, SearchResponse, SearchResult, SearchResults, SuggestResult } from "./interfaces";
-
-import {
-  accessibleHandler,
-  renderable,
-  tsx,
-  join,
-  vmEvent
-} from "./support/widget";
-
-import FeatureLayerSearchSource = require("./Search/FeatureLayerSearchSource");
-import LocatorSearchSource = require("./Search/LocatorSearchSource");
-import SearchViewModel = require("./Search/SearchViewModel");
-import SearchResultRenderer = require("./Search/SearchResultRenderer");
-
-import Widget = require("./Widget");
-
-import Collection = require("../core/Collection");
-import esriLang = require("../core/lang");
-import watchUtils = require("../core/watchUtils");
-
-import Graphic = require("../Graphic");
-
-import Point = require("../geometry/Point");
-
-import PopupTemplate = require("../PopupTemplate");
-
-import MapView = require("../views/MapView");
-import SceneView = require("../views/SceneView");
-
-import regexp = require("dojo/regexp");
-
-import geolocationUtils = require("../core/geolocationUtils");
+// dojo
+import * as i18n from "dojo/i18n!./Search/nls/Search";
 
 import {
   copyKey,
@@ -93,13 +60,53 @@ import {
 } from "dojo/keys";
 
 import query = require("dojo/query");
+import regexp = require("dojo/regexp");
 
-import * as i18n from "dojo/i18n!./Search/nls/Search";
+// esri
+import Graphic = require("../Graphic");
+import PopupTemplate = require("../PopupTemplate");
+
+// esri.core
+import Collection = require("../core/Collection");
+import geolocationUtils = require("../core/geolocationUtils");
+import esriLang = require("../core/lang");
+import watchUtils = require("../core/watchUtils");
+
+// esri.core.accessorSupport
+import { aliasOf, subclass, declared, property } from "../core/accessorSupport/decorators";
+
+// esri.geometry
+import Point = require("../geometry/Point");
+
+// esri.views
+import MapView = require("../views/MapView");
+import SceneView = require("../views/SceneView");
+
+// esri.widgets
+import { ActiveMenu, SearchItem, SearchResponse, SearchResult, SearchResults, SuggestResult } from "./interfaces";
+import Widget = require("./Widget");
+
+// esri.widgets.Search
+import FeatureLayerSearchSource = require("./Search/FeatureLayerSearchSource");
+import LocatorSearchSource = require("./Search/LocatorSearchSource");
+import SearchResultRenderer = require("./Search/SearchResultRenderer");
+import SearchViewModel = require("./Search/SearchViewModel");
+
+// esri.widgets.support
+import {
+  accessibleHandler,
+  renderable,
+  tsx,
+  join,
+  storeNode,
+  vmEvent
+} from "./support/widget";
 
 type State = "disabled" | "ready" | "searching";
 
 const CSS = {
   base: "esri-search esri-widget",
+  esriInput: "esri-input",
   hasMultipleSources: "esri-search--multiple-sources",
   isSearchLoading: "esri-search--loading",
   showSuggestions: "esri-search--show-suggestions",
@@ -114,6 +121,8 @@ const CSS = {
   clearButton: "esri-search__clear-button",
   sourceName: "esri-search__source-name",
   suggestionsMenu: "esri-search__suggestions-menu",
+  suggestionList: "esri-search__suggestions-list",
+  suggestionListCurrentLocation: "esri-search__suggestions-list--current-location",
   sourcesMenu: "esri-search__sources-menu",
   source: "esri-search__source",
   activeSource: "esri-search__source--active",
@@ -134,10 +143,13 @@ const CSS = {
   dropupIcon: "esri-icon-up-arrow esri-search__sources-button--up",
   clearIcon: "esri-icon-close",
   noticeIcon: "esri-icon-notice-triangle",
+  widgetIcon: "esri-icon-search",
 
   // common
   disabled: "esri-disabled"
 };
+
+const regexContainsHTML = /<[a-z/][\s\S]*>/i;
 
 @subclass("esri.widgets.Search")
 class Search extends declared(Widget) {
@@ -645,6 +657,38 @@ class Search extends declared(Widget) {
    */
   @aliasOf("viewModel.defaultSource")
   defaultSource: LocatorSearchSource | FeatureLayerSearchSource = null;
+
+  //----------------------------------
+  //  iconClass
+  //----------------------------------
+
+  /**
+   * The widget's default icon font.
+   *
+   * @since 4.7
+   * @name iconClass
+   * @instance
+   * @type {string}
+   * @readonly
+   */
+  @property()
+  iconClass = CSS.widgetIcon;
+
+  //----------------------------------
+  //  label
+  //----------------------------------
+
+  /**
+   * The widget's default label.
+   *
+   * @since 4.7
+   * @name label
+   * @instance
+   * @type {string}
+   * @readonly
+   */
+  @property()
+  label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  locationEnabled
@@ -1190,7 +1234,7 @@ class Search extends declared(Widget) {
     const searching = this.viewModel.search(searchItem).then(searchResponse => {
       this.activeMenu = !searchResponse.numResults ? "warning" : "none";
       return searchResponse;
-    }).otherwise(() => {
+    }).catch(() => {
       this.activeMenu = "none";
       return null;
     }).always((result: any) => {
@@ -1229,7 +1273,7 @@ class Search extends declared(Widget) {
       }
       this._scrollToTopSuggestion();
       return suggestResponse;
-    }).otherwise(() => {
+    }).catch(() => {
       return null;
     });
 
@@ -1259,7 +1303,7 @@ class Search extends declared(Widget) {
         autocomplete="off"
         type="text"
         tabindex="0"
-        class={CSS.input}
+        class={this.classes(CSS.esriInput, CSS.input)}
         aria-autocomplete="list"
         value={searchTerm}
         aria-haspopup="true"
@@ -1270,8 +1314,8 @@ class Search extends declared(Widget) {
         onclick={this._handleInputClick}
         oninput={this._handleInputPaste}
         onpaste={this._handleInputPaste}
-        afterCreate={this._storeInputNode}
-        afterUpdate={this._storeInputNode}
+        afterCreate={storeNode}
+        data-node-ref="_inputNode"
         onfocusout={this._storeRelatedTarget}
         onfocus={this.focus}
         onblur={this.blur}
@@ -1303,7 +1347,7 @@ class Search extends declared(Widget) {
     const locationEnabled = this.locationEnabled && this._supportsGeolocation && !trimmedSearchTerm;
 
     const locationSuggestGroupNode = locationEnabled ? (
-      <ul key={`esri-search__suggestion-list-current-location`}>
+      <ul key={`esri-search__suggestion-list-current-location`} class={join(CSS.suggestionList, CSS.suggestionListCurrentLocation)} >
         <li
           bind={this}
           onclick={this._handleUseCurrentLocationClick}
@@ -1330,7 +1374,7 @@ class Search extends declared(Widget) {
       const suggestItemsNodes = results.map((suggestion, suggestionIndex) => this._getSuggestionNode(suggestion, suggestionIndex, sourceIndex));
 
       const suggestionListContainerNode = suggestResultCount ? (
-        <ul key={`esri-search__suggestion-list-${sourceIndex}`}>
+        <ul key={`esri-search__suggestion-list-${sourceIndex}`} class={CSS.suggestionList}>
           {suggestItemsNodes}
         </ul>
       ) : null;
@@ -1349,8 +1393,8 @@ class Search extends declared(Widget) {
         class={join(CSS.menu, CSS.suggestionsMenu)}
         role="menu"
         bind={this}
-        afterCreate={this._storeSuggestionsListNode}
-        afterUpdate={this._storeSuggestionsListNode}>
+        afterCreate={storeNode}
+        data-node-ref="_suggestionListNode">
         {locationSuggestGroupNode}
         {suggestionsGroupNode}
       </div>
@@ -1426,8 +1470,8 @@ class Search extends declared(Widget) {
         onclick={this._handleSourcesMenuToggleClick}
         onkeyup={this._handleSourceMenuButtonKeyup}
         onblur={this._sourcesButtonBlur}
-        afterCreate={this._storeSourceMenuButtonNode}
-        afterUpdate={this._storeSourceMenuButtonNode}>
+        afterCreate={storeNode}
+        data-node-ref="_sourceMenuButtonNode">
         <span
           aria-hidden="true"
           role="presentation"
@@ -1440,8 +1484,8 @@ class Search extends declared(Widget) {
 
     const sourcesListNode = hasMultipleSources ? (
       <ul bind={this}
-        afterCreate={this._storeSourcesListNode}
-        afterUpdate={this._storeSourcesListNode}>
+        afterCreate={storeNode}
+        data-node-ref="_sourceListNode">
         {allItemNode}
         {sourceList.map((source, sourceIndex) => this._getSourceNode(sourceIndex))}
       </ul>
@@ -1613,22 +1657,6 @@ class Search extends declared(Widget) {
       suggestPromise.cancel();
       this._suggestPromise = null;
     }
-  }
-
-  private _storeSuggestionsListNode(div: HTMLDivElement): void {
-    this._suggestionListNode = div;
-  }
-
-  private _storeSourcesListNode(ul: HTMLUListElement): void {
-    this._sourceListNode = ul;
-  }
-
-  private _storeInputNode(inputElement: HTMLInputElement): void {
-    this._inputNode = inputElement;
-  }
-
-  private _storeSourceMenuButtonNode(divElement: HTMLDivElement): void {
-    this._sourceMenuButtonNode = divElement;
   }
 
   private _handleInputKeydown(event: KeyboardEvent): void {
@@ -1880,21 +1908,25 @@ class Search extends declared(Widget) {
     if (searchTerm) {
       const { text } = suggestion;
       const resultText = text || i18n.untitledResult as string;
-      const resultParts = this._splitResult(resultText, searchTerm);
-      const searchTermLC = searchTerm.toLowerCase();
+      const containsHTML = regexContainsHTML.test(resultText);
       const matches: any = [];
-
-      resultParts.forEach((part, partIndex) => {
-        if (part && part.length) {
-          const keyNumber = `${sourceIndex}-${suggestionIndex}-${partIndex}`;
-          if (part.toLowerCase() === searchTermLC) {
-            matches.push(<strong key={`esri-search__partial-match-${keyNumber}`}>{part}</strong>);
+      if (containsHTML) {
+        matches.push(<div innerHTML={resultText} />);
+      }
+      else {
+        const resultParts = this._splitResult(resultText, searchTerm);
+        const searchTermLC = searchTerm.toLowerCase();
+        resultParts.forEach((part, partIndex) => {
+          if (part && part.length) {
+            if (part.toLowerCase() === searchTermLC) {
+              matches.push(<strong key={partIndex}>{part}</strong>);
+            }
+            else {
+              matches.push(part);
+            }
           }
-          else {
-            matches.push(part);
-          }
-        }
-      });
+        });
+      }
 
       return (
         <li bind={this}

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","./webgl-debug"],function(e,n,t){function u(){n.enabled&&(a=[])}function r(e){n.enabled&&null!=a&&a.push(e)}function l(){if(n.enabled){var e=a;return a=null,e&&(c.forEach(function(n){return n(e)}),c.length=0),e}}function i(e){return n.enabled?t.makeDebugContext(e,void 0,function(e,u){n.enabled&&a&&a.push("gl."+e+"("+t.glFunctionArgsToString(e,u)+")")}):e}function o(e){c.push(e)}Object.defineProperty(n,"__esModule",{value:!0});var a=null,c=[];n.enabled=!1,n.begin=u,n.trace=r,n.end=l,n.instrumentContext=i,n.request=o});
+define(["require","exports","./webgl-debug","../../../webgl/capabilities/isWebGL2Context"],function(e,n,t,u){function o(){n.enabled&&(b=[])}function r(e){n.enabled&&null!=b&&b.push(e)}function i(){if(n.enabled){var e=b;return b=null,e&&(c.forEach(function(n){return n(e)}),c.length=0),e}}function l(e){return n.enabled?u.default(e)?(console.warn("WebGL tracer is not supported on a WebGL2 Context"),e):t.makeDebugContext(e,void 0,function(e,u){n.enabled&&b&&b.push("gl."+e+"("+t.glFunctionArgsToString(e,u)+")")}):e}function a(e){c.push(e)}Object.defineProperty(n,"__esModule",{value:!0});var b=null,c=[];n.enabled=!1,n.begin=o,n.trace=r,n.end=i,n.instrumentContext=l,n.request=a});

@@ -1,7 +1,6 @@
 $earmark_size: 6px !default;
 
 @mixin navigationToggle() {
-
   .esri-navigation-toggle {
     display: flex;
     flex-flow: column nowrap;

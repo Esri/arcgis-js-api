@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({noItemsToDisplay:"Det er for øyeblikket ingen elementer å vise.",layerInvisibleAtScale:"Usynlig med gjeldende målestokk",layerError:"Det oppstod en feil under lasting av dette laget",untitledLayer:"Lag uten tittel"});
+define({widgetLabel:"Kartlagliste",noItemsToDisplay:"Det er for øyeblikket ingen elementer å vise.",layerInvisibleAtScale:"Usynlig med gjeldende målestokk",layerError:"Det oppstod en feil under lasting av dette laget",untitledLayer:"Lag uten tittel"});

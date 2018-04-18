@@ -47,16 +47,23 @@
 /// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
 /// <amd-dependency path="../core/tsSupport/assignHelper" name="__assign" />
 
-import {
-  formatDistance, formatTime,
-  getAssociatedStop,
-  toSpatiallyLocalTimeString,
-  useSpatiallyLocalTime
-} from "./Directions/support/directionsUtils";
+// dojo
+import * as i18nCommon from "dojo/i18n!../nls/common";
+import * as i18n from "dojo/i18n!./Directions/nls/Directions";
 
-import { toIconName } from "./Directions/support/maneuverUtils";
-import { accessibleHandler, join, renderable, tsx } from "./support/widget";
+// esri
+import Graphic = require("../Graphic");
+import moment = require("../moment");
 
+// esri.core
+import Collection = require("../core/Collection");
+import Handles = require("../core/Handles");
+import { PausableHandle } from "../core/interfaces";
+import { substitute } from "../core/lang";
+import { on, pausable } from "../core/on";
+import { init, when, whenOnce } from "../core/watchUtils";
+
+// esri.core.accessorSupport
 import {
   aliasOf,
   declared,
@@ -64,12 +71,32 @@ import {
   subclass
 } from "../core/accessorSupport/decorators";
 
-import { substitute } from "../core/lang";
-import { on, pausable } from "../core/on";
-import { init, when, whenOnce } from "../core/watchUtils";
+// esri.symbols
+import Symbol = require("../symbols/Symbol");
 
+// esri.views
+import MapView = require("../views/MapView");
+import SceneView = require("../views/SceneView");
+
+// esri.widgets
 import { SearchProperties, SearchResponse, SearchResult, SearchResults } from "./interfaces";
-import { PausableHandle } from "../core/interfaces";
+import Search = require("./Search");
+import Widget = require("./Widget");
+
+// esri.widgets.Directions
+import DirectionsViewModel = require("./Directions/DirectionsViewModel");
+
+// esri.widgets.Directions.support
+import CostSummary = require("./Directions/support/CostSummary");
+import DatePicker = require("./Directions/support/DatePicker");
+
+import {
+  formatDistance, formatTime,
+  getAssociatedStop,
+  toSpatiallyLocalTimeString,
+  useSpatiallyLocalTime
+} from "./Directions/support/directionsUtils";
+
 
 import {
   Maneuver,
@@ -77,34 +104,24 @@ import {
   StopSymbols
 } from "./Directions/support/interfaces";
 
-import DirectionsViewModel = require("./Directions/DirectionsViewModel");
-import CostSummary = require("./Directions/support/CostSummary");
-import DatePicker = require("./Directions/support/DatePicker");
+import { toIconName } from "./Directions/support/maneuverUtils";
 import RouteSections = require("./Directions/support/RouteSections");
 import TimePicker = require("./Directions/support/TimePicker");
-import Search = require("./Search");
-import Widget = require("./Widget");
-import Collection = require("../core/Collection");
-import HandleRegistry = require("../core/HandleRegistry");
-import Graphic = require("../Graphic");
-import moment = require("../moment");
-import Symbol = require("../symbols/Symbol");
-import MapView = require("../views/MapView");
-import SceneView = require("../views/SceneView");
 
-import * as i18n from "dojo/i18n!./Directions/nls/Directions";
-import * as i18nCommon from "dojo/i18n!../nls/common";
+// esri.widgets.support
+import { accessibleHandler, join, renderable, tsx } from "./support/widget";
 
 const NOW = "now";
 const DEPART_BY = "depart-by";
 
 const CSS = {
-  base: "esri-directions esri-widget",
+  base: "esri-directions esri-widget esri-widget--panel",
   button: "esri-directions__button",
   scroller: "esri-directions__scroller",
   panelContent: "esri-directions__panel-content",
   panelContentLoading: "esri-directions__panel-content--loading",
   panelContentError: "esri-directions__panel-content--error",
+  loader: "esri-directions__loader",
   message: "esri-directions__message",
   travelModeSelect: "esri-directions__travel-modes-select",
   departureTime: "esri-directions__departure-time",
@@ -161,16 +178,16 @@ const CSS = {
   // icons
   stopsIcon: "esri-icon-radio-unchecked",
   lastStopIcon: "esri-icon-radio-checked",
-  loadingIcon: "esri-icon-loading-indicator",
-  rotatingIcon: "esri-rotating",
   handleIcon: "esri-icon-handle-vertical",
   addStopIcon: "esri-icon-plus",
   removeStopIcon: "esri-icon-close",
   reverseStopIcon: "esri-icon-up-down-arrows",
   openIcon: "esri-icon-right-triangle-arrow",
   closeIcon: "esri-icon-down-arrow",
+  widgetIcon: "esri-icon-directions",
 
   // common
+  emptyContent: "esri-widget__content--empty",
   offscreen: "esri-offscreen",
   select: "esri-select",
   screenReaderText: "esri-icon-font-fallback-text"
@@ -229,13 +246,13 @@ class Directions extends declared(Widget) {
       when<MapView | SceneView>(this, "view", (value, oldValue) => {
         if (oldValue) {
           this._viewClickHandle = null;
-          this._handleRegistry.remove(oldValue);
+          this._handles.remove(oldValue);
         }
 
         if (value) {
           const viewClickHandle = this._prepViewClick();
 
-          this._handleRegistry.add([
+          this._handles.add([
               on(value.surface, "mousedown", () => this._autoStopRemovalDelay = viewClickDelayInMs),
               on(value.surface, "mouseup", () => this._autoStopRemovalDelay = defaultDelayInMs),
               viewClickHandle
@@ -284,7 +301,7 @@ class Directions extends declared(Widget) {
 
   private _focusedManeuver: Maneuver;
 
-  private _handleRegistry = new HandleRegistry();
+  private _handles = new Handles();
 
   private _ghost: HTMLElement;
 
@@ -307,6 +324,38 @@ class Directions extends declared(Widget) {
   //  Properties
   //
   //--------------------------------------------------------------------------
+
+  //----------------------------------
+  //  iconClass
+  //----------------------------------
+
+  /**
+   * The widget's default icon font.
+   *
+   * @since 4.7
+   * @name iconClass
+   * @instance
+   * @type {string}
+   * @readonly
+   */
+  @property()
+  iconClass = CSS.widgetIcon;
+
+  //----------------------------------
+  //  label
+  //----------------------------------
+
+  /**
+   * The widget's default label.
+   *
+   * @since 4.7
+   * @name label
+   * @instance
+   * @type {string}
+   * @readonly
+   */
+  @property()
+  label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  maxStops
@@ -359,11 +408,14 @@ class Directions extends declared(Widget) {
   //----------------------------------
 
   /**
-   * This property controls the default properties for {@link module:esri/widgets/Search Searching}. These properties can be configured per application.
+   * Controls the default properties used when {@link module:esri/widgets/Search searching}.
+   * Note that the default `searchProperties` differ slightly from
+   * the {@link module:esri/widgets/Search Search widget}.
    *
    * @name searchProperties
    * @instance
    * @type {module:esri/widgets/Directions~SearchProperties}
+   * @default null
    *
    */
 
@@ -388,10 +440,10 @@ class Directions extends declared(Widget) {
    * @property {number} [maxResults=6] - Indicates the maximum number of search results to return.
    * @property {number} [maxSuggestions=6] - Indicates the maximum number of suggestions to return for the widget's input.
    * @property {number} [minSuggestCharacters=1] - Indicates the minimum number of characters required before querying for a suggestion.
-   * @property {boolean} [popupEnabled=true] - Indicates whether to display a {@link module:esri/widgets/Popup Popup} when a selected result is clicked.
+   * @property {boolean} [popupEnabled=false] - Indicates whether to display a {@link module:esri/widgets/Popup Popup} when a selected result is clicked.
    * @property {boolean} [popupOpenOnSelect=true] - Indicates whether to show the {@link module:esri/widgets/Popup Popup} when a result is selected.
    * @property {module:esri/PopupTemplate} [popupTemplate] - A customized PopupTemplate for the selected feature.
-   * @property {boolean} [resultGraphicEnabled=true] - Indicates whether to show a graphic on the map for the selected source.
+   * @property {boolean} [resultGraphicEnabled=false] - Indicates whether to show a graphic on the map for the selected source.
    * @property {boolean} [searchAllEnabled] - Indicates whether to display the option to search all sources.
    * @property {string} [searchTerm] - The value of the search box input text string.
    * @property {module:esri/core/Collection<module:esri/widgets/Search~FeatureLayerSource | module:esri/widgets/Search~LocatorSource>} [sources] - Specifies the sources
@@ -513,8 +565,8 @@ class Directions extends declared(Widget) {
     const role = initializing ? "presentation" : "group";
 
     const content = failed ? this._renderMessage(i18n.serviceError) :
-                    !initializing ? this._renderReadyContent() :
-                    null;
+                    initializing ? this._renderLoader() :
+                    this._renderReadyContent();
 
     return (
       <div class={CSS.panelContent} classes={panelClasses} role={role}>{content}</div>
@@ -767,7 +819,7 @@ class Directions extends declared(Widget) {
   }
 
   private _handleStopInputBlur(search: Search, stop: PlaceholderStop): void {
-    this._handleRegistry.remove(REGISTRY_KEYS.awaitingViewClickStop);
+    this._handles.remove(REGISTRY_KEYS.awaitingViewClickStop);
     this.view.cursor = this._previousCursor;
 
     const unchanged = !!search.selectedResult && !!stop.result &&
@@ -816,7 +868,7 @@ class Directions extends declared(Widget) {
   }
 
   private _handleStopInputFocus(search: Search, stop: PlaceholderStop): void {
-    if (this._handleRegistry.has(REGISTRY_KEYS.awaitingViewClickStop)) {
+    if (this._handles.has(REGISTRY_KEYS.awaitingViewClickStop)) {
       return;
     }
 
@@ -824,7 +876,7 @@ class Directions extends declared(Widget) {
 
     this._previousCursor = previousCursor;
 
-    this._handleRegistry.add(
+    this._handles.add(
       init(search, "searchTerm", term => {
         view.cursor = term.length === 0 ? "copy" : previousCursor;
       }),
@@ -1004,12 +1056,12 @@ class Directions extends declared(Widget) {
     if (option.value === NOW) {
       this._departureTime = NOW;
       this.viewModel.departureTime = NOW;
-      this._handleRegistry.remove("departure-time-controls");
+      this._handles.remove("departure-time-controls");
     }
     else if (option.value === DEPART_BY) {
       this._departureTime = DEPART_BY;
 
-      this._handleRegistry.add([
+      this._handles.add([
         init(this._datePicker, "value", () => this._updateDepartureTime()),
         init(this._timePicker, "value", () => this._updateDepartureTime())
       ], "departure-time-controls");
@@ -1063,6 +1115,12 @@ class Directions extends declared(Widget) {
     );
   }
 
+  private _renderLoader(): any {
+    return (
+      <div class={CSS.loader} key="loader" />
+    );
+  }
+
   private _renderDirectionsContainerContent(): any {
     const { lastRoute: directions, state } = this.viewModel;
     const hasError = state === "error";
@@ -1073,9 +1131,7 @@ class Directions extends declared(Widget) {
     }
 
     if (isRouting) {
-      return (
-        <span class={join(CSS.loadingIcon, CSS.rotatingIcon)} key="esri-directions__loading" />
-      );
+      return this._renderLoader();
     }
 
     if (directions) {
@@ -1088,7 +1144,14 @@ class Directions extends declared(Widget) {
     }
 
     return (
-      <h3 class={CSS.message} key="esri-directions__placeholder">{i18n.directionsPlaceholder}</h3>
+      <div key="esri-directions__placeholder" class={CSS.emptyContent}>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+          <path fill="currentcolor"
+                d="M192 36c-15.477 0-24 6.034-24 16.99v45.822l24 24 24-24v-45.82C216 42.033 207.477 36 192 36zm20 61.155l-20 20-20-20V52.99c0-8.62 6.73-12.99 20-12.99s20 4.37 20 12.99zM192 52a12 12 0 1 0 12 12 12.013 12.013 0 0 0-12-12zm0 20a8 8 0 1 1 8-8 8.008 8.008 0 0 1-8 8zM92 140.99C92 130.035 83.477 124 68 124s-24 6.034-24 16.99v45.822l24 24 24-24zm-4 44.165l-20 20-20-20V140.99c0-8.62 6.73-12.99 20-12.99s20 4.37 20 12.99zM68 140a12 12 0 1 0 12 12 12.013 12.013 0 0 0-12-12zm0 20a8 8 0 1 1 8-8 8.008 8.008 0 0 1-8 8zm84-44h16v4h-16zm-24 80h4v12h-12v-4h8zm0-28h4v16h-4zm0-52h12v4h-8v8h-4zm0 24h4v16h-4zm-36 64h16v4H92z"
+          />
+        </svg>
+        <h4 class={CSS.message}>{i18n.directionsPlaceholder}</h4>
+      </div>
     );
   }
 
@@ -1252,7 +1315,7 @@ class Directions extends declared(Widget) {
     search.defaultSource.placeholder = placeholder;
     search.defaultSource.autoNavigate = false;
 
-    this._handleRegistry.add([
+    this._handles.add([
       search.on("select-result", () => {
         stop.result = search.selectedResult;
 

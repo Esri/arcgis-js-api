@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/ObjectPool","../../../core/ArrayPool","./TileSpan"],function(o,r,e,n,l){var t=function(){function o(o){this.lodInfo=o,this.spans=n.acquire()}return o.prototype.release=function(){for(var o=0,r=this.spans;o<r.length;o++){var e=r[o];l.pool.release(e)}n.release(this.spans)},o.prototype.forEach=function(o,r){var e=this,n=e.spans,l=e.lodInfo,t=l.level;if(0!==n.length)for(var a=0,s=n;a<s.length;a++)for(var i=s[a],c=i.row,f=i.colFrom,p=i.colTo,u=f;p>=u;u++)o.call(r,t,c,l.normalizeCol(u),l.getWorldForColumn(u))},o.pool=new e(o,!0),o}();return t});
+define(["require","exports","../../../core/ArrayPool","../../../core/ObjectPool","./TileSpan"],function(o,e,r,n,l){return function(){function o(o){this.lodInfo=o,this.spans=r.acquire()}return o.prototype.release=function(){for(var o=0,e=this.spans;o<e.length;o++){var n=e[o];l.pool.release(n)}r.release(this.spans)},o.prototype.forEach=function(o,e){var r=this,n=r.spans,l=r.lodInfo,t=l.level;if(0!==n.length)for(var a=0,s=n;a<s.length;a++)for(var i=s[a],c=i.row,f=i.colFrom,p=i.colTo,u=f;u<=p;u++)o.call(e,t,c,l.normalizeCol(u),l.getWorldForColumn(u))},o.pool=new n(o,!0),o}()});

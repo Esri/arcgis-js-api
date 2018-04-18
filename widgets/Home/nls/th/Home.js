@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({button:"หน้าแรก",title:"มุมมองแผนที่เริ่มต้น"});
+define({widgetLabel:"หน้าหลัก",button:"หน้าหลัก",title:"มุมมองแผนที่เริ่มต้น"});

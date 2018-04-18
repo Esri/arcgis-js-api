@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","./gfx/svg","./gfx/Circle","./gfx/Group","./gfx/Path","./gfx/Image","./gfx/Rect","./gfx/Shape","./gfx/Surface","./gfx/Text"],function(e,f,a,t,u,r,c,g,l,x,d){Object.defineProperty(f,"__esModule",{value:!0}),f.createSurface=a.createSurface,f.Circle=t["default"],f.Group=u["default"],f.Path=r["default"],f.Image=c["default"],f.Rect=g["default"],f.Shape=l["default"],f.Surface=x["default"],f.Text=d["default"]});
+define(["require","exports","./gfx/Circle","./gfx/Group","./gfx/Image","./gfx/Path","./gfx/Rect","./gfx/Shape","./gfx/Surface","./gfx/svgSurface","./gfx/Text"],function(e,f,a,t,u,r,c,g,l,x,d){Object.defineProperty(f,"__esModule",{value:!0}),f.Circle=a.default,f.Group=t.default,f.Image=u.default,f.Path=r.default,f.Rect=c.default,f.Shape=g.default,f.Surface=l.default,f.createSurface=x.createSurface,f.Text=d.default});

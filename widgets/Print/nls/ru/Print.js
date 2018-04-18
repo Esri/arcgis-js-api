@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({title:"Название",fileName:"Имя файла",titlePlaceHolder:"Лист файла",fileNamePlaceHolder:"Имя файла",formatDefaultOption:"Выбрать формат",fileFormatTitle:"Формат файла",layoutTitle:"Параметры страницы",layoutDefaultOption:"Выбрать параметры страницы",scale:"Установить масштаб",scaleLabel:"масштаб",reset:"сбросить",author:"Автор",copyright:"Авторские права",legend:"Включать легенду",lock:"блокировка",swap:"обмен",panelToggle:"Переключатель панели",advancedOptions:"Дополнительные опции",width:"Ширина",height:"Высота",attribution:"Включить атрибуты",layoutTab:"Компоновка",mapOnlyTab:"Только карта",untitled:"без заголовка",pending:"Экспорт",ready:"Открыть",linkReady:"Открыть в новом окне.",error:"Выберите его для удаления.",sceneViewError:"Печать в SceneView не поддерживается.",serviceError:"Вероятно, имеется ошибка.","export":"Экспорт",exportDescription:"Экспорт. Экспортированные файлы появятся ниже.",exportText:"Экспортированные файлы",exportHint:"Ваши экспортированные карты появятся здесь."});
+define({widgetLabel:"Печать",title:"Название",fileName:"Имя файла",titlePlaceHolder:"Лист файла",fileNamePlaceHolder:"Имя файла",formatDefaultOption:"Выбрать формат",fileFormatTitle:"Формат файла",layoutTitle:"Параметры страницы",layoutDefaultOption:"Выбрать параметры страницы",scale:"Установить масштаб",scaleLabel:"масштаб",reset:"сбросить",author:"Автор",copyright:"Авторские права",legend:"Включать легенду",lock:"блокировка",swap:"обмен",panelToggle:"Переключатель панели",advancedOptions:"Дополнительные опции",width:"Ширина",height:"Высота",dpi:"DPI",attribution:"Включить атрибуты",layoutTab:"Компоновка",mapOnlyTab:"Только карта",untitled:"без заголовка",pending:"Экспорт",ready:"Открыть",linkReady:"Открыть в новом окне.",error:"Выберите его для удаления.",sceneViewError:"Печать в SceneView не поддерживается.",serviceError:"Вероятно, имеется ошибка.",export:"Экспорт",exportDescription:"Экспорт. Экспортированные файлы появятся ниже.",exportText:"Экспортированные файлы",exportHint:"Ваши экспортированные карты появятся здесь."});

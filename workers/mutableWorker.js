@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-!function(a){function s(a){var s,t,r=a.data;if(r.action){switch(r.action){case"import-script":try{Array.isArray(r.url)||(r.url=[r.url]),e.importScripts.apply(e,r.url),t=!0}catch(c){s=c,postMessage({msgId:r.msgId,urls:r.url,status:"debug",message:"import failed - "+c.message})}break;case"add-callback":try{e.importScripts(r.url);var i=e[r.cbName||"main"];if(!i){s={message:(r.cbName||"main")+" was not found in "+r.url};break}e.postMessage=function(a){return function(s,e){i(s)!==!1&&(e?a(s,e):a(s))}}(e.postMessage),t=!0}catch(c){s=c}}if(t){var m={msgId:r.msgId,success:!0,action:r.action,actionUrl:r.url};"add-callback"==r.action&&(m.cbName=r.cbName||"main"),postMessage(m)}else s&&postMessage({status:"error",msgId:r.msgId,message:s.message,action:r.action})}}var e=a;e.__mutable||e.addEventListener("message",s,!1),e.__mutable=!0}(self);
+!function(a){function s(a){var s,t,r=a.data;if(r.action){switch(r.action){case"import-script":try{Array.isArray(r.url)||(r.url=[r.url]),e.importScripts.apply(e,r.url),t=!0}catch(a){s=a,postMessage({msgId:r.msgId,urls:r.url,status:"debug",message:"import failed - "+a.message})}break;case"add-callback":try{e.importScripts(r.url);var c=e[r.cbName||"main"];if(!c){s={message:(r.cbName||"main")+" was not found in "+r.url};break}e.postMessage=function(a){return function(s,e){!1!==c(s)&&(e?a(s,e):a(s))}}(e.postMessage),t=!0}catch(a){s=a}}if(t){var i={msgId:r.msgId,success:!0,action:r.action,actionUrl:r.url};"add-callback"==r.action&&(i.cbName=r.cbName||"main"),postMessage(i)}else s&&postMessage({status:"error",msgId:r.msgId,message:s.message,action:r.action})}}var e=a;e.__mutable||e.addEventListener("message",s,!1),e.__mutable=!0}(self);

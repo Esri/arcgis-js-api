@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports"],function(r,n){function o(r,n){void 0===n&&(n={});var o=n.ignoreUnknown||!1,t={};for(var e in r){var i=r[e];t[i]=e}var u=function(r){return t.hasOwnProperty(r)?t[r]:o?void 0:r},f=function(n){return r.hasOwnProperty(n)?r[n]:o?void 0:n},v=function(r){return f(r)},a=function(r,n,o){var t=u(r);void 0!==t&&(n[o]=t)};return{toJSON:u,fromJSON:f,read:v,write:a}}return o});
+define(["require","exports"],function(r,n){function o(r,n){void 0===n&&(n={});var o=n.ignoreUnknown||!1,t={};for(var e in r){var i=r[e];t[i]=e}var u=function(r){return t.hasOwnProperty(r)?t[r]:o?void 0:r},f=function(n){return r.hasOwnProperty(n)?r[n]:o?void 0:n};return{toJSON:u,fromJSON:f,read:function(r){return f(r)},write:function(r,n,o){var t=u(r);void 0!==t&&(n[o]=t)}}}return o});

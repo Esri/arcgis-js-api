@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({points:"Σημεία",lines:"Γραμμές",polygons:"Πολύγωνα",creatingLegend:"Δημιουργία υπομνήματος",noLegend:"Χωρίς υπόμνημα",dotValue:"1 κουκκίδα = {value} {unit}",currentObservations:"Τρέχουσες παρατηρήσεις",previousObservations:"Προηγούμενες παρατηρήσεις",high:"Υψηλό",low:"Χαμηλό",esriMetersPerSecond:"μ./δευτ.",esriKilometersPerHour:"χλμ/ώρα",esriKnots:"κόμβοι",esriFeetPerSecond:"πόδ./δευτ.",esriMilesPerHour:"μίλ./ώρα",showField:"{field}",showNormField:"{field} διαιρούμενο με {normField}",showNormPct:"{field} ως ποσοστό του συνόλου",showRatio:"Λόγος του {field} προς {normField}",showRatioPercent:"{field} ως ποσοστό του {normField}",showRatioPercentTotal:"{field} ως ποσοστό του {field} και του {normField}"});
+define({widgetLabel:"Υπόμνημα",points:"Σημεία",lines:"Γραμμές",polygons:"Πολύγωνα",creatingLegend:"Δημιουργία υπομνήματος",noLegend:"Χωρίς υπόμνημα",dotValue:"1 κουκκίδα = {value} {unit}",currentObservations:"Τρέχουσες παρατηρήσεις",previousObservations:"Προηγούμενες παρατηρήσεις",high:"Υψηλό",low:"Χαμηλό",esriMetersPerSecond:"μ./δευτ.",esriKilometersPerHour:"χλμ/ώρα",esriKnots:"κόμβοι",esriFeetPerSecond:"πόδ./δευτ.",esriMilesPerHour:"μίλ./ώρα",showField:"{field}",showNormField:"{field} διαιρούμενο με {normField}",showNormPct:"{field} ως ποσοστό του συνόλου",showRatio:"Λόγος του {field} προς {normField}",showRatioPercent:"{field} ως ποσοστό του {normField}",showRatioPercentTotal:"{field} ως ποσοστό του {field} και του {normField}"});

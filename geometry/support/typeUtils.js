@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../../core/accessorSupport/ensureType","../Geometry","../Extent","../Multipoint","../Point","../Polyline","../Polygon"],function(e,t,n,o,p,y,i,r,l){Object.defineProperty(t,"__esModule",{value:!0}),t.types={base:o,key:"type",typeMap:{extent:p,multipoint:y,point:i,polyline:r,polygon:l}},t.ensureType=n.ensureOneOfType(t.types)});
+define(["require","exports","../../core/accessorSupport/ensureType","../Extent","../Geometry","../Mesh","../Multipoint","../Point","../Polygon","../Polyline"],function(e,t,n,o,p,y,i,r,s,l){Object.defineProperty(t,"__esModule",{value:!0}),t.types={base:p,key:"type",typeMap:{extent:o,multipoint:i,point:r,polyline:l,polygon:s,mesh:y}},t.ensureType=n.ensureOneOfType(t.types)});

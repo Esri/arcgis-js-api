@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({noItemsToDisplay:"Trenutno nema stavki za prikaz.",layerInvisibleAtScale:"Nevidljivo u trenutačnom mjerilu",layerError:"Došlo je do pogreške pri učitavanju ovog sloja",untitledLayer:"Neimenovani sloj"});
+define({widgetLabel:"Popis slojeva",noItemsToDisplay:"Trenutačno nema stavaka za prikaz.",layerInvisibleAtScale:"Nevidljivo u trenutačnom mjerilu",layerError:"Došlo je do pogreške prilikom učitavanja ovog sloja",untitledLayer:"Sloj bez naslova"});

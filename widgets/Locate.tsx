@@ -58,15 +58,26 @@
 /// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
 /// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
 
-import { aliasOf, subclass, property, declared } from "../core/accessorSupport/decorators";
-import { accessibleHandler, join, tsx, renderable, vmEvent } from "./support/widget";
+// dojo
+import * as i18n from "dojo/i18n!./Locate/nls/Locate";
 
-import Widget = require("./Widget");
-import LocateViewModel = require("./Locate/LocateViewModel");
+// esri
 import Graphic = require("../Graphic");
+
+// esri.core.accessorSupport
+import { aliasOf, subclass, property, declared } from "../core/accessorSupport/decorators";
+
+// esri.views
 import View = require("../views/View");
 
-import * as i18n from "dojo/i18n!./Locate/nls/Locate";
+// esri.widgets
+import Widget = require("./Widget");
+
+// esri.widgets.Locate
+import LocateViewModel = require("./Locate/LocateViewModel");
+
+// esri.widgets.support
+import { accessibleHandler, join, tsx, renderable, vmEvent } from "./support/widget";
 
 const CSS = {
   base: "esri-locate esri-widget-button esri-widget",
@@ -75,6 +86,7 @@ const CSS = {
   locate: "esri-icon-locate",
   loading: "esri-icon-loading-indicator",
   rotating: "esri-rotating",
+  widgetIcon: "esri-icon-north-navigation",
 
   // common
   disabled: "esri-disabled",
@@ -190,6 +202,63 @@ class Locate extends declared(Widget) {
    */
   @aliasOf("viewModel.graphic")
   graphic: Graphic = null;
+
+  //----------------------------------
+  //  iconClass
+  //----------------------------------
+
+  /**
+   * The widget's default icon font.
+   *
+   * @since 4.7
+   * @name iconClass
+   * @instance
+   * @type {string}
+   */
+  @property()
+  iconClass = CSS.widgetIcon;
+
+  //----------------------------------
+  //  scale
+  //----------------------------------
+  /**
+   * Indicates the scale to set on the view when navigating to the position of the geolocated
+   * result once a location is returned from the [track](#event:track) event.
+   * If a scale value is not explicitly set, then the view will navigate to a default scale of `2500`.
+   * For 2D views the value should be within the {@link module:esri/views/MapView#constraints effectiveMinScale}
+   * and {@link module:esri/views/MapView#constraints effectiveMaxScale}.
+   *
+   * @since 4.7
+   * @name scale
+   * @instance
+   * @type {number}
+   * @default null
+   *
+   * @example
+   * mapView.watch("scale", function (currentScale){
+   *   console.log("scale: %s", currentScale);
+   * });
+   *
+   * mapView.when(function(){
+   *   // Create an instance of the Locate widget
+   *   var locateWidget = new Locate({
+   *     view: mapView,
+   *     scale: 5000
+   *   });
+   *
+   *   // and add it to the view's UI
+   *   mapView.ui.add(locateWidget, "top-left");
+   *
+   *   locateWidget.locate();
+   *
+   *   locateWidget.on("locate", function(locateEvent){
+   *     console.log(locateEvent);
+   *     console.log("locate: %s", mapView.scale);
+   *   })
+   * });
+   */
+  @aliasOf("viewModel.scale")
+  scale: number = null;
 
   //----------------------------------
   //  useHeadingEnabled

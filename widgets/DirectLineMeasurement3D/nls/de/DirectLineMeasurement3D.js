@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({title:"Messwert",hint:"Beginnen Sie die Messung, indem Sie in die Szene klicken, um den ersten Punkt zu positionieren.",distance:"Abstand",direct:"Direct",horizontal:"Horizontal",vertical:"Vertikal",unit:"Einheit",newMeasurement:"Neue Messung",units:{metric:"Metrisch",imperial:"Britisch",kilometers:"Kilometer",meters:"Meter",miles:"Meilen",inches:"Zoll",feet:"Fuß",yards:"Yards","nautical-miles":"Seemeilen","us-feet":"Fuß (US)","degrees-minutes-seconds":"DMS",degrees:"Grad"}});
+define({title:"Messwert",hint:"Beginnen Sie die Messung, indem Sie in die Szene klicken, um den ersten Punkt zu positionieren.",unsupported:"Die direkte Linienmessung wird in MapView nicht unterstützt.",distance:"Abstand",direct:"Direct",horizontal:"Horizontal",vertical:"Vertikal",unit:"Einheit",newMeasurement:"Neue Messung",units:{metric:"Metrisch",imperial:"Britisch",kilometers:"Kilometer",meters:"Meter",miles:"Meilen",inches:"Zoll",feet:"Fuß",yards:"Yards","nautical-miles":"Seemeilen","us-feet":"Fuß (US)","degrees-minutes-seconds":"DMS",degrees:"Grad"}});

@@ -1,0 +1,36 @@
+{
+  "title": "search layer",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Layer configuration for search.",
+  "properties": {
+    "field": {
+      "allOf": [
+        {
+          "$ref": "field_schema.json"
+        },
+        {
+          "properties": {
+            "name": {},
+            "exactMatch": {},
+            "type": {}
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "id": {
+      "type": "string",
+      "description": "A string identifying the layer."
+    },
+    "subLayer": {
+      "type": "integer",
+      "description": "Optional index for a sublayer."
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "field",
+    "id"
+  ]
+}

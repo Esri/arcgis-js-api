@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","./geometry/Extent","./geometry/Multipoint","./geometry/Point","./geometry/Polygon","./geometry/Polyline","./geometry/SpatialReference","./geometry/ScreenPoint","./geometry/Geometry","./geometry/support/jsonUtils"],function(e,t,o,r,n,i,y,m,l,g,f){function s(e){return e instanceof t.BaseGeometry}Object.defineProperty(t,"__esModule",{value:!0}),t.Extent=o,t.Multipoint=r,t.Point=n,t.Polygon=i,t.Polyline=y,t.SpatialReference=m,t.ScreenPoint=l,t.BaseGeometry=g,t.isGeometry=s,t.fromJSON=f.fromJSON});
+define(["require","exports","./geometry/Extent","./geometry/Geometry","./geometry/Mesh","./geometry/Multipoint","./geometry/Point","./geometry/Polygon","./geometry/Polyline","./geometry/ScreenPoint","./geometry/SpatialReference","./geometry/support/jsonUtils"],function(e,t,o,n,i,r,y,l,m,p,g,s){function P(e){return e instanceof t.BaseGeometry}Object.defineProperty(t,"__esModule",{value:!0}),t.Extent=o,t.BaseGeometry=n,t.Mesh=i,t.Multipoint=r,t.Point=y,t.Polygon=l,t.Polyline=m,t.ScreenPoint=p,t.SpatialReference=g,t.isGeometry=P,t.fromJSON=s.fromJSON,t.typeMap={point:t.Point,extent:t.Extent,polyline:t.Polyline,polygon:t.Polygon,multipoint:t.Multipoint,mesh:t.Mesh},t.typeMap});

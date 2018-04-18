@@ -203,8 +203,9 @@ vec3 hsv2rgb(vec3 c)
 
 
 <snippet name="atmosphereDiscardPixels"><![CDATA[
-      bool continueComputation = true;
 #ifdef HAZE
+      bool continueComputation = true;
+
       // only use red channel from depth texture.
       // see 'Issues' at https://www.khronos.org/registry/webgl/extensions/WEBGL_depth_texture
       float depthSample = texture2D(tDepth, vtc).r;
@@ -217,12 +218,8 @@ vec3 hsv2rgb(vec3 c)
       float linDepth = 2.0 * zNear * zFar /
         (zFar + zNear - zNorm * (zFar - zNear));
 
-      float nearSurfaceT;
-      if (detSur>0.0){
-        nearSurfaceT = 0.5 *(-B - sqrt(detSur));
-      }
-
       float rayEndT;
+      float altitudeAlpha = 1.0;
 
       // find intersections with ground, but only between the near and far
       // clipping planes.
@@ -230,32 +227,43 @@ vec3 hsv2rgb(vec3 c)
         vec3 cameraSpaceRay = normalize(v3EyeDir);
         cameraSpaceRay /= cameraSpaceRay.z;
         cameraSpaceRay *= linDepth;
+
+        float cameraSpaceRayLength = length(cameraSpaceRay);
+
 #ifndef PLANAR
-        if((fCameraHeight-fInnerRadius)>8000000.0 && detSur>0.0){
-          rayEndT = nearSurfaceT;
-        } else  if ((fCameraHeight-fInnerRadius)>2000000.0 && detSur>0.0){
-          rayEndT = mix(length(cameraSpaceRay),nearSurfaceT,((fCameraHeight-fInnerRadius)-2000000.0)/6000000.0);
-        } else {
-          rayEndT = length(cameraSpaceRay);
+        vec3 v3World = cameraPosition + worldSpaceRay * cameraSpaceRayLength;
+        float v3WorldRadius2 = dot(v3World, v3World);
+
+        // Handle tall structures:
+        // https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/5450
+        float transitionStart = fInnerRadius + 20000.0;
+        float transitionHeight = 25000.0;
+        float transitionEnd = transitionStart + transitionHeight;
+
+        float edge0 = transitionStart * transitionStart;
+        float edge1 = transitionEnd * transitionEnd;
+
+        altitudeAlpha = 1.0 - clamp((v3WorldRadius2 - edge0) / (edge1 - edge0), 0.0, 1.0);
+        rayEndT = cameraSpaceRayLength;
+
+        if (altitudeAlpha > 0.0) {
+          continueComputation = true;
+
+          if (detSur > 0.0) {
+            float nearSurfaceT = 0.5 *(-B - sqrt(detSur));
+            float interp = clamp(((fCameraHeight - fInnerRadius) - 2000000.0) / 6000000.0, 0.0, 1.0);
+            rayEndT = mix(cameraSpaceRayLength, nearSurfaceT, interp);
+          }
         }
 #else
-        rayEndT = length(cameraSpaceRay);
+        rayEndT = cameraSpaceRayLength;
 #endif
-      } else {
-        continueComputation = false;
       }
 #ifdef PLANAR
-      if (16500.0+ fInnerRadius < fCameraHeight){
-        continueComputation = false;
+      if (16500.0 + fInnerRadius >= fCameraHeight){
+        continueComputation = true;
       }
 #endif
-#else
-      if (detSur>0.0){
-        float nearSurfaceT = 0.5 *(-B - sqrt(detSur));
-        if (nearSurfaceT > 0.0){
-          continueComputation = false;
-        }
-      }
 #endif
 
 ]]></snippet>
@@ -469,7 +477,7 @@ vec3 hsv2rgb(vec3 c)
         float atmosStrength = clamp((length(ldrRed)-0.05)*1.05,0.0,1.0);
         gl_FragColor = vec4(finalColor, atmosStrength*clamp(1.0-(atmoHeight-fInnerRadius)/(fOuterRadius-fInnerRadius),0.0,1.0));
 #else
-        gl_FragColor = vec4(finalColor, 1.0);
+        gl_FragColor = vec4(finalColor, 1.0) * altitudeAlpha;
 #endif
 #endif
 
@@ -503,12 +511,12 @@ $HSVColorSpace
     $atmospherePrecomputation
 
     //Inside Atmosphere
-    if (det >= 0.0){
-
+    if (det >= 0.0) {
+#ifdef HAZE
       $atmosphereDiscardPixels
 
-      if(continueComputation){
-
+      if (continueComputation) {
+#endif
         $atmosphereUnpackAddUniforms
 
         $atmosphereComputeRayAndLoopSetup
@@ -527,10 +535,11 @@ $HSVColorSpace
         if(showTest>0.0){
           gl_FragColor = vec4(test,1.0);
         }
-
+#ifdef HAZE
       } else {//Not on surface
         gl_FragColor = vec4(0.0);
       }
+#endif
     } else {//Outside Atmosphere
       gl_FragColor = vec4(0.0);
     }

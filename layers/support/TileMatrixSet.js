@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/tsSupport/paramHelper","../../core/accessorSupport/decorators","../../core/JSONSupport"],function(t,e,r,o,n,l,i){var p=function(t){function e(e){var r=t.call(this)||this;return r.fullExtent=null,r.id=null,r.tileInfo=null,r}return r(e,t),n=e,e.prototype.clone=function(){var t=new n;return this.hasOwnProperty("fullExtent")&&(t.fullExtent=this.fullExtent&&this.fullExtent.clone()),this.hasOwnProperty("id")&&(t.id=this.id),this.hasOwnProperty("tileInfo")&&(t.tileInfo=this.tileInfo&&this.tileInfo.clone()),t},o([l.property({json:{read:{source:"fullExtent"}}})],e.prototype,"fullExtent",void 0),o([l.property({json:{read:{source:"id"}}})],e.prototype,"id",void 0),o([l.property({json:{read:{source:"tileInfo"}}})],e.prototype,"tileInfo",void 0),e=n=o([l.subclass("esri.layer.support.TileMatrixSet")],e);var n}(l.declared(i));return p});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/tsSupport/paramHelper","../../core/JSONSupport","../../core/accessorSupport/decorators"],function(t,e,r,o,n,l,i){return function(t){function e(e){var r=t.call(this)||this;return r.fullExtent=null,r.id=null,r.tileInfo=null,r}return r(e,t),n=e,e.prototype.clone=function(){var t=new n;return this.hasOwnProperty("fullExtent")&&(t.fullExtent=this.fullExtent&&this.fullExtent.clone()),this.hasOwnProperty("id")&&(t.id=this.id),this.hasOwnProperty("tileInfo")&&(t.tileInfo=this.tileInfo&&this.tileInfo.clone()),t},o([i.property({json:{read:{source:"fullExtent"}}})],e.prototype,"fullExtent",void 0),o([i.property({json:{read:{source:"id"}}})],e.prototype,"id",void 0),o([i.property({json:{read:{source:"tileInfo"}}})],e.prototype,"tileInfo",void 0),e=n=o([i.subclass("esri.layer.support.TileMatrixSet")],e);var n}(i.declared(l))});

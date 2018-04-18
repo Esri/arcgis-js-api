@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","./RenderSlot","./RenderPass"],function(e,n,t,l){var i=function(){function e(){this.camera=null,this.depth=null,this.highlight=null,this.lightingData=null,this.normals=null,this.pass=l.MATERIAL,this.shadowMap=null,this.slot=t.BACKGROUND,this.ssaoHelper=null,this.offscreenRenderingHelper=null,this.stencilRenderingHelper=null,this.framebufferTex=null,this.rctx=null,this.options=null,this.renderOccludedOnly=!1}return Object.defineProperty(e.prototype,"isHighlightPass",{get:function(){return this.pass===l.MATERIAL_HIGHLIGHT},enumerable:!0,configurable:!0}),e}();return i});
+define(["require","exports","./RenderPass","./RenderSlot"],function(e,n,t,l){return function(){function e(){this.camera=null,this.depth=null,this.highlight=null,this.lightingData=null,this.normals=null,this.pass=t.MATERIAL,this.shadowMap=null,this.slot=l.BACKGROUND,this.ssaoHelper=null,this.offscreenRenderingHelper=null,this.stencilRenderingHelper=null,this.framebufferTex=null,this.rctx=null,this.options=null,this.renderOccludedOnly=!1}return Object.defineProperty(e.prototype,"isHighlightPass",{get:function(){return this.pass===t.MATERIAL_HIGHLIGHT},enumerable:!0,configurable:!0}),e}()});

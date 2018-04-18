@@ -29,10 +29,6 @@
       "type": "string",
       "description": "A string defining the field name."
     },
-    "name": {
-      "type": "string",
-      "description": "A string defining the field name."
-    },
     "nullable": {
       "type": "boolean",
       "description": "A Boolean defining whether this field can have a null value."
@@ -74,4 +70,3 @@
     ]
   }
 }
-

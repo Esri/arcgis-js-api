@@ -1,41 +1,58 @@
-
 .esri-view {
   display: flex;
+  margin: 0;
+  padding: 0;
 
-  overflow: hidden;
-  margin:   0;
-  padding:  0;
+  .esri-view-user-storage {
+    overflow: hidden;
+  }
 
   .esri-view-root {
     position: relative;
-
-    flex:     1 1 100%;
-
-    border:   none;
-    overflow: hidden;
-    padding:  0;
-    margin:   0;
-
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    flex: 1 1 100%;
+    border: none;
+    padding: 0;
+    margin: 0;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -webkit-tap-highlight-color: transparent;
   }
 
   .esri-view-surface {
-    position:  absolute;
-    border:    none;
-    padding:   0;
-    margin:    0;
-    left:      0;
-    top:       0;
-    width:     100%;
-    height:    100%;
-    overflow:  hidden;
+    position: absolute;
+    border: none;
+    padding: 0;
+    margin: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 
     /*
      * TODO
      * Layers should probably manage this on their own
      */
     direction: ltr;
+  }
+
+  .esri-view-surface--inset-outline {
+    outline: 0;
+  }
+
+  .esri-view-surface--inset-outline:focus::after {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    outline: auto 2px Highlight;
+    outline: auto 5px -webkit-focus-ring-color;
+    outline-offset: -3px;
+    pointer-events: none;
+    overflow: hidden;
   }
 
   /*
@@ -63,41 +80,42 @@
    * Supported cursors:
    * default, crosshair, help, move, pointer, progress, grab, grabbing
    */
-  .esri-view-surface[data-cursor='default'] {
+  .esri-view-surface[data-cursor="default"] {
     cursor: default;
   }
-  .esri-view-surface[data-cursor='copy'] {
+
+  .esri-view-surface[data-cursor="copy"] {
     cursor: copy;
   }
-  .esri-view-surface[data-cursor='crosshair'] {
+  .esri-view-surface[data-cursor="crosshair"] {
     cursor: crosshair;
   }
-  .esri-view-surface[data-cursor='help'] {
+  .esri-view-surface[data-cursor="help"] {
     cursor: help;
   }
-  .esri-view-surface[data-cursor='move'] {
+  .esri-view-surface[data-cursor="move"] {
     cursor: move;
   }
-  .esri-view-surface[data-cursor='pointer'] {
+  .esri-view-surface[data-cursor="pointer"] {
     cursor: pointer;
   }
-  .esri-view-surface[data-cursor='progress'] {
+  .esri-view-surface[data-cursor="progress"] {
     cursor: progress;
   }
-  .esri-view-surface[data-cursor='grab'] {
+  .esri-view-surface[data-cursor="grab"] {
     cursor: move;
     cursor: grab;
     cursor: -moz-grab;
     cursor: -webkit-grab;
   }
-  .esri-view-surface[data-cursor='grabbing'] {
+  .esri-view-surface[data-cursor="grabbing"] {
     cursor: move;
     cursor: grabbing;
     cursor: -moz-grabbing;
     cursor: -webkit-grabbing;
   }
 
-  .esri-view-surface[data-interacting='true'] {
+  .esri-view-surface[data-interacting="true"] {
     cursor: move;
     cursor: grabbing;
     cursor: -moz-grabbing;
@@ -106,11 +124,10 @@
 
   .esri-display-object,
   .esri-bitmap {
-    position:  absolute;
-    border:    none;
-    margin:    0;
-    padding:   0;
-    // @dris0000 @juan6600
+    position: absolute;
+    border: none;
+    margin: 0;
+    padding: 0; // @dris0000 @juan6600
     // Keep these prefixes?
     -webkit-user-drag: none;
     -webkit-user-select: none;

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define([],function(){var T={ADD:1,UPDATE:2,REMOVE:4},I={REINSERT:1,VISIBILITIES:2,VERTEXATTRS:4,COLORATTRS:8,TRANSFORMATION:16,HIGHLIGHTS:32};return{GeomDirtyType:T,UpdateTypes:I}});
+define([],function(){return{GeomDirtyType:{ADD:1,UPDATE:2,REMOVE:4},UpdateTypes:{REINSERT:1,VISIBILITIES:2,VERTEXATTRS:4,COLORATTRS:8,TRANSFORMATION:16,HIGHLIGHTS:32}}});

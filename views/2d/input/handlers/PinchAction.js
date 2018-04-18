@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/extendsHelper","../../../input/InputHandler"],function(t,n,e,i){Object.defineProperty(n,"__esModule",{value:!0});var o=function(t){function n(n){var e=t.call(this,!0)||this;return e.view=n,e.registerIncoming("drag",function(t){return e._handleDrag(t)}),e.registerIncoming("pointer-down",function(t){return e.stopMomentumNavigation()}),e}return e(n,t),n.prototype._handleDrag=function(t){var n=t.data;if(!(n.pointers.length<2)){var e=this.view.navigation.pinch;switch(n.action){case"start":e.begin(this.view,n);break;case"update":e.update(this.view,n);break;case"end":e.end(this.view,n)}t.stopPropagation()}},n.prototype.stopMomentumNavigation=function(){var t=this.view.navigation.pinch;t.stopMomentumNavigation()},n}(i.InputHandler);n.PinchRotateAndZoom=o});
+define(["require","exports","../../../../core/tsSupport/extendsHelper","../../../input/DragEventSeparator","../../../input/InputHandler"],function(n,t,e,o,i){Object.defineProperty(t,"__esModule",{value:!0});var a=function(n){function t(t){var e=n.call(this,!0)||this;e.view=t,e.registerIncoming("drag",function(n){return e._handleDrag(n)}),e.registerIncoming("pointer-down",function(n){return e.stopMomentumNavigation()});var i=e.view.navigation;return e.dragEventSeparator=new o.DragEventSeparator({start:function(n,t){i.pinch.begin(e.view,t.data),t.stopPropagation()},update:function(n,t){i.pinch.update(e.view,t.data),t.stopPropagation()},end:function(n,t){i.pinch.end(e.view,t.data),t.stopPropagation()},condition:function(n){return n>=2}}),e}return e(t,n),t.prototype._handleDrag=function(n){this.dragEventSeparator.handle(n)},t.prototype.stopMomentumNavigation=function(){this.view.navigation.pinch.stopMomentumNavigation()},t}(i.InputHandler);t.PinchRotateAndZoom=a});

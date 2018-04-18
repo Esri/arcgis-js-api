@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({points:"Titik",lines:"Garis",polygons:"Polygon",creatingLegend:"Membuat legenda",noLegend:"Tidak ada legenda",dotValue:"1 Titik = {value} {unit}",currentObservations:"Observasi saat ini",previousObservations:"Observasi sebelumnya",high:"Tinggi",low:"Rendah",esriMetersPerSecond:"m/dtk",esriKilometersPerHour:"km/j",esriKnots:"knot",esriFeetPerSecond:"kaki/dtk",esriMilesPerHour:"mph",showField:"{field}",showNormField:"{field} dibagi oleh {normField}",showNormPct:"{field} sebagai persentase dari total",showRatio:"Rasio {field} ke {normField}",showRatioPercent:"{field} sebagai persentase dari {normField}",showRatioPercentTotal:"{field} sebagai persentase dari {field} dan {normField}"});
+define({widgetLabel:"Legenda",points:"Titik",lines:"Garis",polygons:"Polygon",creatingLegend:"Membuat legenda",noLegend:"Tidak ada legenda",dotValue:"1 Titik = {value} {unit}",currentObservations:"Observasi saat ini",previousObservations:"Observasi sebelumnya",high:"Tinggi",low:"Rendah",esriMetersPerSecond:"m/dtk",esriKilometersPerHour:"km/j",esriKnots:"knot",esriFeetPerSecond:"kaki/dtk",esriMilesPerHour:"mph",showField:"{field}",showNormField:"{field} dibagi oleh {normField}",showNormPct:"{field} sebagai persentase dari total",showRatio:"Rasio {field} ke {normField}",showRatioPercent:"{field} sebagai persentase dari {normField}",showRatioPercentTotal:"{field} sebagai persentase dari {field} dan {normField}"});

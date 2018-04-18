@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["../../core/kebabDictionary","../../core/JSONSupport"],function(e,s){var r=e({esriJobMessageTypeInformative:"informative",esriJobMessageTypeProcessDefinition:"process-definition",esriJobMessageTypeProcessStart:"process-start",esriJobMessageTypeProcessStop:"process-stop",esriJobMessageTypeWarning:"warning",esriJobMessageTypeError:"error",esriJobMessageTypeEmpty:"empty",esriJobMessageTypeAbort:"abort"}),o=s.createSubclass({declaredClass:"esri.tasks.support.GPMessage",properties:{description:{value:null,type:String,json:{write:!0}},type:{value:null,json:{read:r.fromJSON,write:function(e,s){s.type=r.toJSON(e)}}}}});return o});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/JSONSupport","../../core/kebabDictionary","../../core/accessorSupport/decorators"],function(e,r,s,o,t,p,i){var a=p({esriJobMessageTypeInformative:"informative",esriJobMessageTypeProcessDefinition:"process-definition",esriJobMessageTypeProcessStart:"process-start",esriJobMessageTypeProcessStop:"process-stop",esriJobMessageTypeWarning:"warning",esriJobMessageTypeError:"error",esriJobMessageTypeEmpty:"empty",esriJobMessageTypeAbort:"abort"});return function(e){function r(r){var s=e.call(this)||this;return s.description=null,s.type=null,s}return s(r,e),o([i.property({type:String,json:{write:!0}})],r.prototype,"description",void 0),o([i.property({json:{read:a.read,write:a.write}})],r.prototype,"type",void 0),r=o([i.subclass("esri.tasks.support.GPMessage")],r)}(i.declared(t))});

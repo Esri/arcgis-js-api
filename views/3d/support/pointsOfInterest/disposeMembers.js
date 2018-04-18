@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/Accessor"],function(e,o,r){function t(e){for(var o=[],r=1;r<arguments.length;r++)o[r-1]=arguments[r];if(n(e)&&e.destroyed)try{throw new Error("instance is already destroyed")}catch(t){console.warn(t.stack)}else for(var s=0,a=o;s<a.length;s++){var i=a[s];if(!(i in e))throw new Error("Property '"+i+"' does not exist and cannot be disposed");var c=e[i];c&&("function"==typeof c.destroy?c.destroy():"function"==typeof c.dispose?c.dispose():"function"==typeof c.remove&&c.remove()),n(e)&&i in e.__accessor__.metadatas?e._set(i,null):e[i]=null}}function n(e){return e instanceof r}Object.defineProperty(o,"__esModule",{value:!0}),o.disposeMembers=t,o["default"]=t});
+define(["require","exports","../../../../core/Accessor"],function(e,o,r){function t(e){for(var o=[],r=1;r<arguments.length;r++)o[r-1]=arguments[r];if(n(e)&&e.destroyed)try{throw new Error("instance is already destroyed")}catch(e){console.warn(e.stack)}else for(var t=0,s=o;t<s.length;t++){var i=s[t];if(!(i in e))throw new Error("Property '"+i+"' does not exist and cannot be disposed");var a=e[i];a&&("function"==typeof a.destroy?a.destroy():"function"==typeof a.dispose?a.dispose():"function"==typeof a.remove&&a.remove()),n(e)&&i in e.__accessor__.metadatas?e._set(i,null):e[i]=null}}function n(e){return e instanceof r}Object.defineProperty(o,"__esModule",{value:!0}),o.disposeMembers=t,o.default=t});

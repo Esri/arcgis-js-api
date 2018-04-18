@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/tsSupport/paramHelper","../../core/accessorSupport/decorators","../../core/JSONSupport","../../geometry/Extent"],function(e,r,t,o,p,i,l,n){var y=function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.extent=null,r.height=null,r.href=null,r.opacity=1,r.rotation=0,r.scale=null,r.visible=!0,r.width=null,r}return t(r,e),o([i.property({type:n})],r.prototype,"extent",void 0),o([i.property()],r.prototype,"height",void 0),o([i.property()],r.prototype,"href",void 0),o([i.property()],r.prototype,"opacity",void 0),o([i.property()],r.prototype,"rotation",void 0),o([i.property()],r.prototype,"scale",void 0),o([i.property()],r.prototype,"visible",void 0),o([i.property()],r.prototype,"width",void 0),r=o([i.subclass("esri.layer.support.MapImage")],r)}(i.declared(l));return y});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/tsSupport/paramHelper","../../core/JSONSupport","../../core/accessorSupport/decorators","../../geometry/Extent"],function(e,t,r,o,p,i,l,n){return function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.extent=null,t.height=null,t.href=null,t.opacity=1,t.rotation=0,t.scale=null,t.visible=!0,t.width=null,t}return r(t,e),o([l.property({type:n})],t.prototype,"extent",void 0),o([l.property()],t.prototype,"height",void 0),o([l.property()],t.prototype,"href",void 0),o([l.property()],t.prototype,"opacity",void 0),o([l.property()],t.prototype,"rotation",void 0),o([l.property()],t.prototype,"scale",void 0),o([l.property()],t.prototype,"visible",void 0),o([l.property()],t.prototype,"width",void 0),t=o([l.subclass("esri.layer.support.MapImage")],t)}(l.declared(i))});

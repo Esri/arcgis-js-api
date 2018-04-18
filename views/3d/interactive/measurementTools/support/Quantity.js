@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","./unitUtils"],function(t,i,n){var e=function(){function t(t,i){this.measure=n.measureForUnit(i),this.value=t,this.unit=i}return Object.defineProperty(t.prototype,"isBaseUnit",{get:function(){return n.isBaseUnit(this.unit)},enumerable:!0,configurable:!0}),t.prototype.toUnit=function(i){return new t(n.convertUnit(this.value,this.unit,i),i)},t.prototype.toBaseUnit=function(){return this.toUnit(n.baseUnitForUnit(this.unit))},t.prototype.toDecimalString=function(t,i){return void 0===t&&(t=2),n.formatDecimal(this.value,this.unit,t,i)},t}();return e});
+define(["require","exports","./unitUtils"],function(t,i,n){return function(){function t(t,i){this.measure=n.measureForUnit(i),this.value=t,this.unit=i}return Object.defineProperty(t.prototype,"isBaseUnit",{get:function(){return n.isBaseUnit(this.unit)},enumerable:!0,configurable:!0}),t.prototype.toUnit=function(i){return new t(n.convertUnit(this.value,this.unit,i),i)},t.prototype.toBaseUnit=function(){return this.toUnit(n.baseUnitForUnit(this.unit))},t.prototype.toDecimalString=function(t,i){return void 0===t&&(t=2),n.formatDecimal(this.value,this.unit,t,i)},t}()});

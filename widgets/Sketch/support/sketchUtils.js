@@ -1,0 +1,25 @@
+// COPYRIGHT © 2018 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+
+define(["require","exports","../../../geometry","../../../geometry/Circle","../../../geometry/geometryEngine"],function(e,n,t,a,r){function o(e,n){var a=e.map(function(e){return Array.apply([],e)});a.forEach(function(e,n){e[0][0]===e[e.length-1][0]&&e[0][1]===e[e.length-1][1]||e.push(e[0])});var o=new t.Polygon({rings:a,spatialReference:n.spatialReference});return o.rings.forEach(function(e){o.isClockwise(e)||e.reverse()}),o.isSelfIntersecting&&(o=r.simplify(o)),o}function i(e,n){return new t.Polyline({paths:e,spatialReference:n.spatialReference})}function c(e,n){return new t.Multipoint({points:e,spatialReference:n.spatialReference})}function l(e,n,t){if(n.toScreen(e[0][0],e[0][1],null,P),n.toScreen(e[1][0],e[1][1],null,m),t){var a=Math.round(m.x-P.x),r=Math.round(m.y-P.y);n.toMap(P.x+a,P.y+r,S),n.toMap(P.x-a,P.y-r,R)}else{var i=Math.round(Math.min(m.x,P.x)),c=Math.round(Math.min(m.y,P.y)),l=Math.abs(m.x-P.x),y=Math.abs(m.y-P.y);n.toMap(i,c+y,S),n.toMap(i+l,c,R)}return o([[[S.x,R.y],[R.x,R.y],[R.x,S.y],[S.x,S.y]]],n)}function y(e,n,t){n.toScreen(e[0][0],e[0][1],null,P),n.toScreen(e[1][0],e[1][1],null,m);var a=Math.round(m.x-P.x),r=Math.round(m.y-P.y),i=Math.max(Math.abs(a),Math.abs(r));return t?(n.toMap(P.x+i,P.y+i,S),n.toMap(P.x-i,P.y-i,R)):(n.toMap(P.x,P.y,S),n.toMap(a>0?P.x+i:P.x-i,r>0?P.y+i:P.y-i,R)),o([[[S.x,R.y],[R.x,R.y],[R.x,S.y],[S.x,S.y]]],n)}function u(e,n,a){n.toScreen(e[0][0],e[0][1],null,P),n.toScreen(e[1][0],e[1][1],null,m);var r=Math.round(m.x-P.x),o=Math.round(m.y-P.y),i=new t.Point({x:a?P.x:P.x+r/2,y:a?P.y:P.y+o/2}),c=t.Polygon.createEllipse({center:i,longAxis:a?r:r/2,shortAxis:a?o:o/2,numberOfPoints:60,view:n});return c.isClockwise(c.rings[0])||(c.rings[0].reverse(),c=c.clone()),c}function x(e,n,o){var i=null,c=null;if(o)i=new t.Point({x:e[0][0],y:e[0][1],spatialReference:n.spatialReference}),c=new t.Point({x:e[1][0],y:e[1][1],spatialReference:n.spatialReference});else{n.toScreen(e[0][0],e[0][1],null,P),n.toScreen(e[1][0],e[1][1],null,m);var l=Math.round(m.x-P.x),y=Math.round(m.y-P.y),u=Math.max(Math.abs(l),Math.abs(y)),x=new t.ScreenPoint({x:l>0?P.x+u/2:P.x-u/2,y:y>0?P.y+u/2:P.y-u/2});i=n.toMap(x),c=n.toMap(Math.abs(l)>Math.abs(y)?x.x-u/2:x.x,Math.abs(l)>Math.abs(y)?x.y:x.y-u/2)}var s=r.distance(i,c,v);return new a({center:i,radius:s,radiusUnit:v,spatialReference:n.spatialReference})}function s(e,n,t,a){n.toScreen(e[0][0],e[0][1],null,P),n.toScreen(e[1][0],e[1][1],null,m);var r=Math.round(m.x-P.x),i=Math.round(m.y-P.y);if(t&&a){var c=Math.sqrt(r*r+i*i);n.toMap(-.8660254037844386*c+P.x,.5*c+P.y,S),n.toMap(.8660254037844386*c+P.x,.5*c+P.y,w),n.toMap(P.x,P.y-c,d)}else if(t)n.toMap(i>0?m.x:P.x,P.y+i,S),n.toMap(P.x-r,i>0?m.y:P.y-i,w),n.toMap(i>0?P.x:m.x,P.y-i,d);else if(a){var l=Math.max(Math.abs(r),Math.abs(i)),y=l*Math.sqrt(3)/2;n.toMap(P.x,i>0?P.y+l:P.y,S),n.toMap(r>0?P.x+l:P.x-l,i>0?P.y+l:P.y,w),n.toMap(r>0?P.x+l/2:P.x-l/2,i>0?P.y+l-y:P.y-y,d)}else n.toMap(i>0?P.x+r/2:m.x,P.y,S),n.toMap(i>0?P.x:P.x+r/2,m.y,w),n.toMap(i>0?m.x:P.x,i>0?m.y:P.y,d);return o([[[S.x,S.y],[d.x,d.y],[w.x,w.y]]],n)}function p(e,n,t,a){var r=e.clone();return r.paths.forEach(function(e,o){e.forEach(function(e,i){var c=n.toScreen(e[0],e[1],null),l=n.toMap(c.x+t,c.y+a);r.setPoint(o,i,l)})}),r}function M(e,n,t,a){var r=e.clone();return r.rings.forEach(function(e,o){e.forEach(function(e,i){var c=n.toScreen(e[0],e[1],null),l=n.toMap(c.x+t,c.y+a);r.setPoint(o,i,l)})}),r}function f(e){var n=e.rings.map(function(e){return Array.apply([],e)});return n.forEach(function(e){e[0][0]===e[e.length-1][0]&&e[0][1]===e[e.length-1][1]&&e.pop()}),n}function h(e){return e.paths.map(function(e){return Array.apply([],e)})}function g(e,n){var a=e.extent;return n.toScreen(new t.Point(a.xmin,a.ymax,n.spatialReference),P),n.toScreen(new t.Point(a.xmax,a.ymin,n.spatialReference),m),(m.y-P.y)/(m.x-P.x)}Object.defineProperty(n,"__esModule",{value:!0});var v="meters",P=new t.ScreenPoint,m=new t.ScreenPoint,S=new t.Point,w=new t.Point,d=new t.Point,R=new t.Point;n.createPolygon=o,n.createPolyline=i,n.createMultipoint=c,n.createRectangle=l,n.createSquare=y,n.createEllipse=u,n.createCircle=x,n.createTriangle=s,n.movePolyline=p,n.movePolygon=M,n.getVerticesForPolygon=f,n.getVerticesForPolyline=h,n.getScaleFactor=g});

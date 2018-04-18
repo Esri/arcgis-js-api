@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({points:"النقاط",lines:"خطوط",polygons:"المضلعات",creatingLegend:"إنشاء وسيلة إيضاح",noLegend:"بدون وسيلة إيضاح",dotValue:"نقطة واحدة = {value} {unit}",currentObservations:"الملاحظات الحالية",previousObservations:"الملاحظات السابقة",high:"ارتفاع",low:"منخفض",esriMetersPerSecond:"متر/ثانية",esriKilometersPerHour:"كم/ساعة",esriKnots:"عقدة",esriFeetPerSecond:"قدم/ثانية",esriMilesPerHour:"ميل/ثانية",showField:"{field}",showNormField:"{field} مقسومًا على {normField}",showNormPct:"{field} كنسبة مئوية من الإجمالي",showRatio:"نسبة {field} إلى {normField}",showRatioPercent:"{field} كنسبة مئوية من {normField}",showRatioPercentTotal:"{field} كنسبة مئوية من {field} و{normField}"});
+define({widgetLabel:"وسيلة الإيضاح",points:"النقاط",lines:"خطوط",polygons:"المضلعات",creatingLegend:"إنشاء وسيلة إيضاح",noLegend:"بدون وسيلة إيضاح",dotValue:"نقطة واحدة = {value} {unit}",currentObservations:"الملاحظات الحالية",previousObservations:"الملاحظات السابقة",high:"ارتفاع",low:"منخفض",esriMetersPerSecond:"متر/ثانية",esriKilometersPerHour:"كم/ساعة",esriKnots:"عقدة",esriFeetPerSecond:"قدم/ثانية",esriMilesPerHour:"ميل/ثانية",showField:"{field}",showNormField:"{field} مقسومًا على {normField}",showNormPct:"{field} كنسبة مئوية من الإجمالي",showRatio:"نسبة {field} إلى {normField}",showRatioPercent:"{field} كنسبة مئوية من {normField}",showRatioPercentTotal:"{field} كنسبة مئوية من {field} و{normField}"});

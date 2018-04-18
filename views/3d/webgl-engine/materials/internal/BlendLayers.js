@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["dojo/text!./BlendLayers.xml","../../../../webgl/Program","../../lib/DefaultVertexAttributeLocations"],function(e,r,a){var t={loadShaders:function(t,n,d,l){t._parse(e);var o=new r(l,t.vertexShaderBlendLayers,t.fragmentShaderBlendLayers,a.Default3D);d.add("blendLayers",o)}};return t});
+define(["require","exports","dojo/text!./BlendLayers.xml","../../lib/DefaultVertexAttributeLocations","../../../../webgl/Program"],function(e,r,n,t,a){return function(){function e(){}return e.loadShaders=function(e,r,d){e._parse(n);var o=new a(d,e.vertexShaderBlendLayers,e.fragmentShaderBlendLayers,t.Default3D);r.add("blendLayers",o)},e}()});

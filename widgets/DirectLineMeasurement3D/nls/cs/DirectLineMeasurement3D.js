@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({title:"Měření",hint:"Začněte měření kliknutím na scénu pro umístění prvního bodu",distance:"Velikost",direct:"Přímo",horizontal:"Vodorovně",vertical:"Svisle",unit:"Jednotka",newMeasurement:"Nové měření",units:{metric:"Metrické",imperial:"Imperiální",kilometers:"kilometry",meters:"metry",miles:"míle",inches:"palce",feet:"stopy",yards:"yardy","nautical-miles":"námořní míle","us-feet":"Stopy (US)","degrees-minutes-seconds":"DMS",degrees:"stupně"}});
+define({title:"Měření",hint:"Začněte měření kliknutím na scénu pro umístění prvního bodu",unsupported:"Měření přímých linií není v MapView podporováno.",distance:"Velikost",direct:"Přímo",horizontal:"Vodorovně",vertical:"Svisle",unit:"Jednotka",newMeasurement:"Nové měření",units:{metric:"Metrické",imperial:"Imperiální",kilometers:"kilometry",meters:"metry",miles:"míle",inches:"palce",feet:"stopy",yards:"yardy","nautical-miles":"námořní míle","us-feet":"Stopy (US)","degrees-minutes-seconds":"DMS",degrees:"stupně"}});

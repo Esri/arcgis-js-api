@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({noItemsToDisplay:"現在表示するアイテムがありません。",layerInvisibleAtScale:"現在の縮尺では表示されません",layerError:"このレイヤーの読み込み中にエラーが発生しました。",untitledLayer:"無題のレイヤー"});
+define({widgetLabel:"レイヤー リスト",noItemsToDisplay:"現在表示するアイテムがありません。",layerInvisibleAtScale:"現在の縮尺では表示されません",layerError:"このレイヤーの読み込み中にエラーが発生しました。",untitledLayer:"無題のレイヤー"});

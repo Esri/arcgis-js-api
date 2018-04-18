@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["../request","./Layer","./support/TileInfo"],function(e,t,r){var a=t.createSubclass({properties:{attributionDataUrl:null,tileInfo:r},viewModulePaths:{"2d":"../views/2d/layers/TiledLayerView2D","3d":"../views/3d/layers/TileLayerView3D"},getTileUrl:function(e,t,r){},fetchTile:function(t,r,a,i){var n=this.getTileUrl(t,r,a),s={responseType:"image",allowImageDataAccess:i&&i.allowImageDataAccess||!1};return i&&i.timestamp&&(s.query={_ts:i.timestamp}),"string"==typeof n?e(n,s).then(function(e){return e.data}):n.then(function(t){return e(t,{responseType:"image"})}).then(function(e){return e.data})}});return a});
+define(["require","../request","../core/promiseUtils","./Layer","./support/TileInfo"],function(e,t,r,i,n){return i.createSubclass({properties:{attributionDataUrl:null,tileInfo:n},getTileUrl:function(e,t,r){},fetchTile:function(e,r,i,n){var a=this.getTileUrl(e,r,i),s={responseType:"image",allowImageDataAccess:n&&n.allowImageDataAccess||!1};return n&&n.timestamp&&(s.query={_ts:n.timestamp}),"string"==typeof a?t(a,s).then(function(e){return e.data}):a.then(function(e){return t(e,{responseType:"image"})}).then(function(e){return e.data})},importLayerViewModule:function(t){switch(t.type){case"2d":return r.create(function(t){e(["../views/2d/layers/TiledLayerView2D"],t)});case"3d":return r.create(function(t){e(["../views/3d/layers/TileLayerView3D"],t)})}}})});

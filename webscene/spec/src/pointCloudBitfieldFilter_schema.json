@@ -29,17 +29,21 @@
       ]
     }
   },
+  "anyOf": [
+    {
+      "required": [
+        "requiredClearBits"
+      ]
+    },
+    {
+      "required": [
+        "requiredSetBits"
+      ]
+    }
+  ],
   "required": [
     "field",
     "type"
-  ],
-  "anyOf": [
-    {
-      "required":["requiredClearBits"]
-    },
-    {
-      "required":["requiredSetBits"]
-    }
   ],
   "additionalProperties": false,
   "esriDocumentation": {
@@ -66,4 +70,3 @@
     ]
   }
 }
-

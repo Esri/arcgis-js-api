@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<snippets>
+
+<snippet name="EdgeRendererUtils_distanceBasedPerspectiveFactor"><![CDATA[
+  uniform float uDistanceFalloffFactor;
+
+  float distanceBasedPerspectiveFactor(float distance) {
+    return clamp(sqrt(uDistanceFalloffFactor / distance), 0.0, 1.0);
+  }
+]]></snippet>
+
+<snippet name="EdgeRendererUtils_readComponentColor"><![CDATA[
+  uniform sampler2D uComponentColorTex;
+  uniform vec2 uComponentColorTexInvDim;
+
+  attribute float componentIndex;
+
+  vec4 readComponentColor() {
+    float normalizedIndex = (componentIndex + 0.5) * uComponentColorTexInvDim.x;
+    vec2 indexCoord = vec2(
+      mod(normalizedIndex, 1.0),
+      (floor(normalizedIndex) + 0.5) * uComponentColorTexInvDim.y
+    );
+    return texture2D(uComponentColorTex, indexCoord);
+  }
+]]></snippet>
+
+<snippet name="EdgeRendererUtils_isSilhouetteEdge"><![CDATA[
+  // #uniforms: uView, uModel
+  // #attributes: normalA, normalB
+  bool isSilhouetteEdge(vec4 viewPos) {
+    // transform the two face normals
+    vec3 viewNormalA = (uView * uModel * vec4(normalA, 0.0)).xyz;
+    vec3 viewNormalB = (uView * uModel * vec4(normalB, 0.0)).xyz;
+
+    // compute the direction from the edge to the camera
+    vec3 viewDir = -viewPos.xyz;
+
+    // check which of the two faces are visible
+    // display the edge if exactly one of the two is visible
+    float faceAVisible = dot(viewDir, viewNormalA); // positive if visible
+    float faceBVisible = dot(viewDir, viewNormalB); // positive if visible
+
+    // 1 if exactly one face visible, 0 otherwise
+    return faceAVisible * faceBVisible < 0.0;
+  }
+]]></snippet>
+
+<snippet name="EdgeRendererUtils_adjustProjectedPosition"><![CDATA[
+  uniform vec2 uDepthBias;
+  uniform vec2 uViewportDimInv;
+
+  // Utility function to check for NaN values
+  bool isNaN(float val) {
+    return ( val < 0.0 || 0.0 < val || val == 0.0 ) ? false : true;
+    // important: some nVidias failed to cope with version below.
+    // Probably wrong optimization.
+    /*return ( val <= 0.0 || 0.0 <= val ) ? false : true;*/
+  }
+
+  // An offset in xy screen space, along the projected normal of the edge
+  // This reduces depth fighting when looking at a face from a flat angle
+  vec2 calculateProjectedBiasXY(vec4 projPos, vec3 worldNormal) {
+    float offsetXY = uDepthBias.x;
+    float offsetZ  = uDepthBias.y;
+
+    // screen space pixel offset
+    // we multiply by two to account for the fact that NDC go from -1 to 1
+    // we multiply by projPos.w to compensate for the perspective divison that happens later
+    // normalizing over xyz means that the xy influence is reduced the more the normal is pointing
+    // towards the camera
+    vec4 projNormal = uProj * uView * vec4(worldNormal, 0.0);
+
+    return offsetXY * projPos.w * 2.0 * uViewportDimInv * normalize(projNormal.xyz).xy;
+  }
+
+  // A z-offset, using a depth based heuristic.
+  float calculateProjectedBiasZ(vec4 projPos) {
+    float offsetZ = uDepthBias.y;
+    return sqrt(projPos.z) * offsetZ;
+  }
+
+  vec4 adjustProjectedPosition(vec4 projPos, vec3 worldNormal, float lineWidth) {
+    vec2 offsetXY = calculateProjectedBiasXY(projPos, worldNormal);
+
+    // we currently have to do this check because some geometries come with 0 length edge normals.
+    // see https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/12890
+    if (!isNaN(offsetXY.x) && !isNaN(offsetXY.y)) {
+      projPos.xy += offsetXY;
+    }
+
+    projPos.z += calculateProjectedBiasZ(projPos) * lineWidth;
+
+    return projPos;
+  }
+]]></snippet>
+
+<snippet name="EdgeRendererUtils_worldNormal"><![CDATA[
+  vec3 modelToWorldNormal(vec3 normal) {
+    return (uModel * vec4(normal, 0)).xyz;
+  }
+
+  vec3 silhouetteWorldNormal(vec3 normalA, vec3 normalB) {
+    return modelToWorldNormal(normalize(normalA + normalB));
+  }
+]]></snippet>
+
+<snippet name="EdgeRendererUtils_extensionFalloff"><![CDATA[
+  // Fall-off extension length for shorter strokes, starting from strokes that are 256 size,
+  // fall-off exponentially
+  float calculateExtensionLength(float extensionLength, float lineLength) {
+    return extensionLength / (log2(max(1.0, 256.0 / lineLength)) * 0.2 + 1.0);
+  }
+]]></snippet>
+
+</snippets>

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({noItemsToDisplay:"Hiện không có mục nào để hiển thị.",layerInvisibleAtScale:"Không hiển thị ở tỷ lệ hiện tại",layerError:"Đã xảy ra lỗi khi tải lớp này",untitledLayer:"Lớp chưa có tiêu đề"});
+define({widgetLabel:"Danh sách Lớp",noItemsToDisplay:"Hiện không có mục nào để hiển thị.",layerInvisibleAtScale:"Không hiển thị ở tỷ lệ hiện tại",layerError:"Đã xảy ra lỗi khi tải lớp này",untitledLayer:"Lớp chưa có tiêu đề"});

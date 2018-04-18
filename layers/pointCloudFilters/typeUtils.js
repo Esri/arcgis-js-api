@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","./PointCloudFilter","./PointCloudValueFilter","./PointCloudBitfieldFilter","./PointCloudReturnFilter"],function(e,t,i,l,o,r){Object.defineProperty(t,"__esModule",{value:!0}),t.types={key:"type",base:i,typeMap:{value:l,bitfield:o,"return":r}}});
+define(["require","exports","./PointCloudBitfieldFilter","./PointCloudFilter","./PointCloudReturnFilter","./PointCloudValueFilter"],function(e,t,i,l,o,r){Object.defineProperty(t,"__esModule",{value:!0}),t.types={key:"type",base:l,typeMap:{value:r,bitfield:i,return:o}}});

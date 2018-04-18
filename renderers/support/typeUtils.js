@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../Renderer","../SimpleRenderer","../UniqueValueRenderer","../ClassBreaksRenderer"],function(e,r,s,n,a,u){Object.defineProperty(r,"__esModule",{value:!0}),r.types={key:"type",base:s,typeMap:{simple:n,"unique-value":a,"class-breaks":u}}});
+define(["require","exports","../ClassBreaksRenderer","../Renderer","../SimpleRenderer","../UniqueValueRenderer"],function(e,r,s,n,a,u){Object.defineProperty(r,"__esModule",{value:!0}),r.types={key:"type",base:n,typeMap:{simple:a,"unique-value":u,"class-breaks":s}}});

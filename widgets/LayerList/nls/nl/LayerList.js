@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({noItemsToDisplay:"Er zijn momenteel geen items om weer te geven.",layerInvisibleAtScale:"Onzichtbaar op de huidige schaal",layerError:"Er is een fout opgetreden bij het laden van dit item",untitledLayer:"Laag zonder naam"});
+define({widgetLabel:"Lijst met lagen",noItemsToDisplay:"Er zijn momenteel geen items om weer te geven.",layerInvisibleAtScale:"Onzichtbaar op de huidige schaal",layerError:"Er is een fout opgetreden bij het laden van dit item",untitledLayer:"Laag zonder naam"});

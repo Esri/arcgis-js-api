@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({searchButtonTitle:"Αναζήτηση",clearButtonTitle:"Εκκαθάριση αναζήτησης",placeholder:"Αναζήτηση διεύθυνσης ή μέρους",searchIn:"Αναζήτηση σε",all:"Όλες",allPlaceholder:"Αναζήτηση διεύθυνσης ή μέρους",emptyValue:"Εισαγάγετε όρο αναζήτησης.",untitledResult:"Χωρίς τίτλο",untitledSource:"Ανώνυμη προέλευση",noResults:"Κανένα αποτέλεσμα",noResultsFound:"Δεν βρέθηκαν αποτελέσματα.",noResultsFoundForValue:"Δεν βρέθηκαν αποτελέσματα για {value}.",showMoreResults:"Εμφάνιση περισσότερων αποτελεσμάτων",hideMoreResults:"Απόκρυψη",searchResult:"Αναζήτηση αποτελέσματος",moreResultsHeader:"Περισσότερα αποτελέσματα",esriLocatorName:"Υπηρεσία εύρεσης διευθύνσεων ESRI",useCurrentLocation:"Χρήση τρέχουσας τοποθεσίας"});
+define({widgetLabel:"Αναζήτηση",searchButtonTitle:"Αναζήτηση",clearButtonTitle:"Εκκαθάριση αναζήτησης",placeholder:"Αναζήτηση διεύθυνσης ή μέρους",searchIn:"Αναζήτηση σε",all:"Όλες",allPlaceholder:"Αναζήτηση διεύθυνσης ή μέρους",emptyValue:"Εισαγάγετε όρο αναζήτησης.",untitledResult:"Χωρίς τίτλο",untitledSource:"Ανώνυμη προέλευση",noResults:"Κανένα αποτέλεσμα",noResultsFound:"Δεν βρέθηκαν αποτελέσματα.",noResultsFoundForValue:"Δεν βρέθηκαν αποτελέσματα για {value}.",showMoreResults:"Εμφάνιση περισσότερων αποτελεσμάτων",hideMoreResults:"Απόκρυψη",searchResult:"Αναζήτηση αποτελέσματος",moreResultsHeader:"Περισσότερα αποτελέσματα",esriLocatorName:"Υπηρεσία εύρεσης διευθύνσεων ESRI",useCurrentLocation:"Χρήση τρέχουσας τοποθεσίας"});

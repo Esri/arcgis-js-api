@@ -1,0 +1,102 @@
+{
+  "env": {
+    "amd": true,
+    "browser": true
+  },
+  "globals": {
+    "ArrayBuffer": false,
+    "Float32Array": false,
+    "Float64Array": false,
+    "Int8Array": false,
+    "Int16Array": false,
+    "Int32Array": false,
+    "Map": false,
+    "Set": false,
+    "Uint8Array": false,
+    "Uint8ClampedArray": false,
+    "Uint16Array": false,
+    "Uint32Array": false
+  },
+  "settings": {
+    "amd-imports": {
+      "base": "../"
+    }
+  },
+  "plugins": [
+    "amd-imports"
+  ],
+  "rules": {
+    "block-spacing": 2,
+    "brace-style": [2, "stroustrup"],
+    "comma-dangle": 2,
+    "comma-spacing": 2,
+    "comma-style": 2,
+    "curly": 2,
+    "dot-notation": 2,
+    "eol-last": 2,
+    "func-call-spacing": 2,
+    "key-spacing": [
+      2,
+      {
+        "multiLine": {
+          "mode": "minimum"
+        }
+      }
+    ],
+    "keyword-spacing": 2,
+    "new-cap": 2,
+    "no-bitwise": 2,
+    "no-caller": 2,
+    "no-cond-assign": 2,
+    "no-debugger": 2,
+    "no-empty": [
+      2,
+      {
+        "allowEmptyCatch": true
+      }
+    ],
+    "no-eval": 2,
+    "no-extra-semi": 2,
+    "no-iterator": 2,
+    "no-multi-str": 2,
+    "no-new": 2,
+    "no-new-func": 2,
+    "no-new-wrappers": 2,
+    "no-proto": 2,
+    "no-trailing-spaces": 2,
+    "no-undef": 2,
+    "no-unused-vars": [
+      1,
+      {
+        "vars": "all",
+        "args": "none"
+      }
+    ],
+    "quotes": [
+      2,
+      "double",
+      {
+        "avoidEscape": true
+      }
+    ],
+    "radix": 2,
+    "semi": 2,
+    "space-before-blocks": 2,
+    "space-before-function-paren": [
+      2,
+      "never"
+    ],
+    "space-infix-ops": 2,
+    "space-unary-ops": 2,
+    "wrap-iife": [
+      2,
+      "any"
+    ],
+    "amd-imports/no-unexisting-imports": 2,
+    "amd-imports/no-unused-imports": 2,
+    "amd-imports/prefer-relative-imports": 2
+  },
+  "parserOptions": {
+    "ecmaVersion": 5
+  }
+}

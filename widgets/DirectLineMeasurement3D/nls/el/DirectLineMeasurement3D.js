@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({title:"Μέτρηση",hint:"Εκκινήστε τη μέτρηση κάνοντας κλικ στην προβολή 3D για να τοποθετήσετε το πρώτο σας σημείο",distance:"Απόσταση",direct:"Απευθείας",horizontal:"Οριζόντια",vertical:"Κατακόρυφα",unit:"Μονάδα",newMeasurement:"Νέα μέτρηση",units:{metric:"Μετρικό",imperial:"Βρετανικό σύστημα",kilometers:"Χιλιόμετρα",meters:"Μέτρα",miles:"Μίλια",inches:"Ίντσες",feet:"Πόδια",yards:"Γιάρδες","nautical-miles":"Ναυτικά μίλια","us-feet":"Πόδια (US)","degrees-minutes-seconds":"DMS",degrees:"Μοίρες"}});
+define({title:"Μέτρηση",hint:"Εκκινήστε τη μέτρηση κάνοντας κλικ στην προβολή 3D για να τοποθετήσετε το πρώτο σας σημείο",unsupported:"Η μέτρηση άμεσων γραμμών δεν υποστηρίζεται στο MapView.",distance:"Απόσταση",direct:"Απευθείας",horizontal:"Οριζόντια",vertical:"Κατακόρυφα",unit:"Μονάδα",newMeasurement:"Νέα μέτρηση",units:{metric:"Μετρικό",imperial:"Βρετανικό σύστημα",kilometers:"Χιλιόμετρα",meters:"Μέτρα",miles:"Μίλια",inches:"Ίντσες",feet:"Πόδια",yards:"Γιάρδες","nautical-miles":"Ναυτικά μίλια","us-feet":"Πόδια (US)","degrees-minutes-seconds":"DMS",degrees:"Μοίρες"}});

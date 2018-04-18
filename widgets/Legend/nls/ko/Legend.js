@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({points:"포인트",lines:"라인",polygons:"폴리곤",creatingLegend:"범례 생성",noLegend:"범례 없음",dotValue:"점 1개 = {value} {unit}",currentObservations:"현재 관찰",previousObservations:"이전 관찰",high:"높음",low:"낮음",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"knot",esriFeetPerSecond:"ft/sec",esriMilesPerHour:"mph",showField:"{field}",showNormField:"{field}을(를) {normField}(으)로 나눔",showNormPct:"{field}을(를) 전체로 나눈 백분율",showRatio:"{field} 대 {normField}의 비율",showRatioPercent:"{field}을(를) ${normField}(으)로 나눈 백분율",showRatioPercentTotal:"{field}을(를) {field}와(과) {normField}의 합으로 나눈 백분율"});
+define({widgetLabel:"범례",points:"포인트",lines:"라인",polygons:"폴리곤",creatingLegend:"범례 생성",noLegend:"범례 없음",dotValue:"점 1개 = {value} {unit}",currentObservations:"현재 관찰",previousObservations:"이전 관찰",high:"높음",low:"낮음",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"knot",esriFeetPerSecond:"ft/sec",esriMilesPerHour:"mph",showField:"{field}",showNormField:"{field}을(를) {normField}(으)로 나눔",showNormPct:"{field}을(를) 전체로 나눈 백분율",showRatio:"{field} 대 {normField}의 비율",showRatioPercent:"{field}을(를) ${normField}(으)로 나눈 백분율",showRatioPercentTotal:"{field}을(를) {field}와(과) {normField}의 합으로 나눈 백분율"});

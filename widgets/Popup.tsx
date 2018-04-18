@@ -45,6 +45,7 @@
  * @see [Sample - Dock positions with popup](../sample-code/popup-docking-position/index.html)
  * @see [Sample - Popup actions](../sample-code/popup-actions/index.html)
  * @see [Sample - Custom popup actions per feature](../sample-code/popup-custom-action/index.html)
+ * @see [Sample - Popup with DOM node](../sample-code/popup-domnode/index.html)
  * @see [Guide - Esri Icon Font](../guide/esri-icon-font/index.html)
  * @see module:esri/widgets/Popup/PopupViewModel
  */
@@ -53,14 +54,31 @@
 /// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
 /// <amd-dependency path="../core/tsSupport/assignHelper" name="__assign" />
 
-import {
-  accessibleHandler,
-  join,
-  tsx,
-  renderable,
-  vmEvent
-} from "./support/widget";
+// dojo
+import domGeometry = require("dojo/dom-geometry");
+import * as i18n from "dojo/i18n!./Popup/nls/Popup";
 
+import {
+  END,
+  HOME,
+  ESCAPE,
+  UP_ARROW,
+  DOWN_ARROW,
+  LEFT_ARROW,
+  RIGHT_ARROW
+} from "dojo/keys";
+
+// esri
+import Graphic = require("../Graphic");
+
+// esri.core
+import Collection = require("../core/Collection");
+import Handles = require("../core/Handles");
+import esriLang = require("../core/lang");
+import Logger = require("../core/Logger");
+import watchUtils = require("../core/watchUtils");
+
+// esri.core.accessorSupport
 import {
   aliasOf,
   declared,
@@ -68,21 +86,27 @@ import {
   subclass
 } from "../core/accessorSupport/decorators";
 
-import Collection = require("../core/Collection");
-import esriLang = require("../core/lang");
-import Logger = require("../core/Logger");
-import HandleRegistry = require("../core/HandleRegistry");
-import watchUtils = require("../core/watchUtils");
+// esri.geometry
+import Point = require("../geometry/Point");
+import ScreenPoint = require("../geometry/ScreenPoint");
 
-import Widget = require("./Widget");
-import widgetUtils = require("../widgets/support/widgetUtils");
-
+// esri.support
 import Action = require("../support/Action");
 
-import { PausableHandle } from "../core/interfaces";
-
+// esri.views
 import { Breakpoints } from "../views/interfaces";
+import MapView = require("../views/MapView");
+import SceneView = require("../views/SceneView");
 
+// esri.views.ui
+import UI = require("../views/ui/UI");
+
+// esri.widgets
+import Feature = require("./Feature");
+import Spinner = require("./Spinner");
+import Widget = require("./Widget");
+
+// esri.widgets.Popup
 import {
   ActionEvent,
   Alignment,
@@ -96,36 +120,24 @@ import {
   ViewPadding
 } from "./Popup/interfaces";
 
-import PopupRenderer = require("./Popup/PopupRenderer");
 import PopupViewModel = require("./Popup/PopupViewModel");
-import * as i18n from "dojo/i18n!./Popup/nls/Popup";
 
-import Graphic = require("../Graphic");
-
-import Point = require("../geometry/Point");
-import ScreenPoint = require("../geometry/ScreenPoint");
-
-import Spinner = require("./Spinner");
-
-import UI = require("../views/ui/UI");
-import MapView = require("../views/MapView");
-import SceneView = require("../views/SceneView");
-
-import domGeometry = require("dojo/dom-geometry");
-
-import _WidgetBase = require("dijit/_WidgetBase");
+// esri.widgets.support
+import widgetUtils = require("../widgets/support/widgetUtils");
 
 import {
-  END,
-  HOME,
-  ESCAPE,
-  UP_ARROW,
-  DOWN_ARROW,
-  LEFT_ARROW,
-  RIGHT_ARROW
-} from "dojo/keys";
+  accessibleHandler,
+  join,
+  tsx,
+  renderable,
+  vmEvent, isWidgetBase, isWidget
+} from "./support/widget";
 
 const DEFAULT_ACTION_IMAGE = require.toUrl("./Popup/images/default-action.svg");
+
+const SELECTED_INDEX_HANDLE_KEY = "selected-index";
+
+const SPINNER_KEY = "popup-spinner";
 
 const CSS = {
   // common
@@ -147,7 +159,6 @@ const CSS = {
   base: "esri-popup",
   // containers
   widget: "esri-widget",
-  container: "esri-popup__position-container",
   main: "esri-popup__main-container",
   loadingContainer: "esri-popup__loading-container",
   // global modifiers
@@ -231,20 +242,6 @@ function buildKey(element: string, index?: number): string {
   return `${WIDGET_KEY_PARTIAL}__${element}-${index}`;
 }
 
-function isWidget(value: any): value is Widget {
-  return value && value.isInstanceOf && value.isInstanceOf(Widget);
-}
-
-function isWidgetBase(value: any): value is _WidgetBase {
-  // naive type check
-
-  return value &&
-    typeof value.postMixInProperties === "function" &&
-    typeof value.buildRendering === "function" &&
-    typeof value.postCreate === "function" &&
-    typeof value.startup === "function";
-}
-
 /**
  * Fires after the user clicks on an {@link module:esri/support/Action action} inside a popup. This
  * event may be used to define a custom function to execute when particular
@@ -307,13 +304,7 @@ class Popup extends declared(Widget) {
   }
 
   postInitialize() {
-    const closeFeatureMenuHandle = watchUtils.pausable(this, `
-      viewModel.visible,
-      dockEnabled,
-      viewModel.selectedFeature
-    `, () => this._closeFeatureMenu());
-
-    this._closeFeatureMenuHandle = closeFeatureMenuHandle;
+    this._addSelectedFeatureIndexHandle();
 
     this.own(
       watchUtils.watch<ScreenPoint>(this, "viewModel.screenLocation", () => this._positionContainer()),
@@ -329,7 +320,7 @@ class Popup extends declared(Widget) {
         }
       }),
 
-      watchUtils.watch<Graphic[]>(this, "viewModel.features", features => this._createPopupRenderers(features)),
+      watchUtils.watch<Graphic[]>(this, "viewModel.features", features => this._createFeatureWidgets(features)),
 
       watchUtils.watch(this, [
         "viewModel.view.padding",
@@ -340,14 +331,7 @@ class Popup extends declared(Widget) {
         "alignment"
       ], () => this.reposition()),
 
-      closeFeatureMenuHandle,
-
       watchUtils.watch<boolean>(this, "spinnerEnabled", value => this._spinnerEnabledChange(value)),
-
-      watchUtils.watch(this, [
-        "title",
-        "content"
-      ], () => this._hasFeatureUpdated()),
 
       watchUtils.watch<number[]>(this, "viewModel.view.size", (newSize, oldSize) => this._updateDockEnabledForViewSize(newSize, oldSize)),
 
@@ -361,30 +345,26 @@ class Popup extends declared(Widget) {
       ], () => this._displaySpinner()),
 
       watchUtils.watch(this, [
-        "popupRenderers",
+        "featureWidgets",
         "viewModel.selectedFeatureIndex"
-      ], () => this._updatePopupRenderer()),
+      ], () => this._updateFeatureWidget()),
 
-      watchUtils.watch<string>(this, "selectedPopupRenderer.viewModel.title", title => this._setTitleFromPopupRenderer(title)),
+      watchUtils.watch<string>(this, "selectedFeatureWidget.viewModel.title", title => this._setTitleFromFeatureWidget(title)),
 
       watchUtils.watch(this, [
-        "selectedPopupRenderer.viewModel.content",
-        "selectedPopupRenderer.viewModel.waitingForContent"
-      ], () => this._setContentFromPopupRenderer()),
-
-      watchUtils.watch<boolean>(this, "featureMenuOpen", featureMenuOpen => this._featureMenuOpenChanged(featureMenuOpen)),
-
-      watchUtils.watch<boolean>(this, "visible", visible => this._visibleChanged(visible)),
+        "selectedFeatureWidget.viewModel.content",
+        "selectedFeatureWidget.viewModel.waitingForContent"
+      ], () => this._setContentFromFeatureWidget()),
 
       watchUtils.on<ActionEvent>(this, "viewModel", "trigger-action", event => this._zoomToAction(event))
     );
   }
 
   destroy() {
-    this._destroyPopupRenderers();
+    this._destroyFeatureWidgets();
     this._destroySpinner();
-    this._handleRegistry.destroy();
-    this._handleRegistry = null;
+    this._handles && this._handles.destroy();
+    this._handles = null;
   }
 
   //--------------------------------------------------------------------------
@@ -409,15 +389,13 @@ class Popup extends declared(Widget) {
 
   private _focusFirstFeature = false;
 
-  private _handleRegistry: HandleRegistry = new HandleRegistry();
+  private _handles: Handles = new Handles();
 
   private _displayActionTextLimit = 2;
 
   private _pointerOffsetInPx = 16;
 
   private _spinner: Spinner = null;
-
-  private _closeFeatureMenuHandle: PausableHandle = null;
 
   //--------------------------------------------------------------------------
   //
@@ -454,6 +432,8 @@ class Popup extends declared(Widget) {
    * @instance
    *
    * @type {module:esri/core/Collection<module:esri/support/Action>}
+   * @autocast { "value": "Object[]" }
+   *
    * @see [Sample - Popup actions](../sample-code/popup-actions/index.html)
    * @see [Sample - Custom popup actions per feature](../sample-code/popup-custom-action/index.html)
    *
@@ -545,6 +525,7 @@ class Popup extends declared(Widget) {
    *
    * @type {string | HTMLElement | module:esri/widgets/Widget}
    * @see [Sample - Popup Docking](../sample-code/popup-docking-position/index.html)
+   * @see [Sample - Popup with DOM node](../sample-code/popup-domnode/index.html)
    *
    * @example
    * // This sets generic instructions in the popup that will always be displayed
@@ -631,6 +612,7 @@ class Popup extends declared(Widget) {
   @property({
     readOnly: true,
     dependsOn: [
+      "viewModel.view.ready",
       "dockEnabled",
       "dockOptions"
     ]
@@ -777,9 +759,20 @@ class Popup extends declared(Widget) {
    * @todo document
    */
 
-  @property()
+  @property({
+    dependsOn: [
+      "viewModel.visible"
+    ]
+  })
   @renderable()
-  featureMenuOpen = false;
+  set featureMenuOpen(value: boolean) {
+    this._set("featureMenuOpen", !!value);
+  }
+  get featureMenuOpen(): boolean {
+    return this.viewModel.visible ?
+      this._get("featureMenuOpen") :
+      false;
+  }
 
   //----------------------------------
   //  features
@@ -791,7 +784,7 @@ class Popup extends declared(Widget) {
    * {@link module:esri/PopupTemplate} or have unique
    * {@link module:esri/PopupTemplate PopupTemplates} depending on their attributes.
    * The [content](#content) and [title](#title)
-   * of the poup is set based on the `content` and `title` properties of each graphic's respective
+   * of the popup is set based on the `content` and `title` properties of each graphic's respective
    * {@link module:esri/PopupTemplate}.
    *
    * When more than one graphic exists in this array, the current content of the
@@ -837,9 +830,10 @@ class Popup extends declared(Widget) {
    *
    * ![popup-feature-menu](../assets/img/apiref/widgets/popup-pagination-menu.png)
    *
+   * @name featureNavigationEnabled
+   * @instance
    * @type {Boolean}
    * @default
-   * @ignore
    */
   @property()
   @renderable()
@@ -904,7 +898,7 @@ class Popup extends declared(Widget) {
   location: Point = null;
 
   //----------------------------------
-  //  popupRenderers
+  //  featureWidgets
   //----------------------------------
 
   /**
@@ -914,7 +908,7 @@ class Popup extends declared(Widget) {
     readOnly: true
   })
   @renderable()
-  popupRenderers: PopupRenderer[] = [];
+  featureWidgets: Feature[] = [];
 
   //----------------------------------
   //  promises
@@ -971,7 +965,7 @@ class Popup extends declared(Widget) {
   selectedFeatureIndex: number = null;
 
   //----------------------------------
-  //  selectedPopupRenderer
+  //  selectedFeatureWidget
   //----------------------------------
 
   /**
@@ -981,7 +975,7 @@ class Popup extends declared(Widget) {
     readOnly: true
   })
   @renderable()
-  selectedPopupRenderer: PopupRenderer = null;
+  selectedFeatureWidget: Feature = null;
 
   //----------------------------------
   //  spinnerEnabled
@@ -991,9 +985,10 @@ class Popup extends declared(Widget) {
    * Indicates whether to display a spinner at the popup location prior to its
    * display when it has pending promises.
    *
+   * @name spinnerEnabled
+   * @instance
    * @type {boolean}
    * @default
-   * @ignore
    */
   @property()
   spinnerEnabled = true;
@@ -1176,6 +1171,7 @@ class Popup extends declared(Widget) {
    * @see [Intro to popups](../sample-code/intro-popup/index.html)
    * @see [Popup.visible](#visible)
    * @see [Sample - QueryTask](../sample-code/tasks-query/index.html)
+   * @see [Sample - Popup with DOM node](../sample-code/popup-domnode/index.html)
    *
    * @param {Object} [options] - Defines the location and content of the popup when opened.
    * @param {string} [options.title] - Sets the [title](#title) of the popup.
@@ -1212,26 +1208,22 @@ class Popup extends declared(Widget) {
    * });
    *
    */
-  open(options?: PopupOpenOptions) {
-    const defaultOptions: PopupOpenOptions = {
-      featureMenuOpen: false,
-      updateLocationEnabled: false,
-      promises: []
-    };
+  open(options?: PopupOpenOptions): void {
+    this._handles.remove(SELECTED_INDEX_HANDLE_KEY);
 
-    const setOptions = {
-      visible: true,
-      ...defaultOptions,
-      ...options
-    };
+    const featureMenuOpen = options ?
+      !!options.featureMenuOpen :
+      false;
 
-    if (setOptions.featureMenuOpen) {
-      this._closeFeatureMenuHandle.pause();
-    }
+    const setOptions: PopupOpenOptions = {
+      featureMenuOpen
+    };
 
     this.set(setOptions);
 
-    this._visibleChanged(true);
+    this.viewModel.open(options);
+
+    this._addSelectedFeatureIndexHandle();
   }
 
   /**
@@ -1279,17 +1271,16 @@ class Popup extends declared(Widget) {
       actions,
       featureMenuOpen,
       featureNavigationEnabled,
-      popupRenderers,
+      featureWidgets,
       visible
     } = this;
 
     const {
+      content,
       featureCount,
-      promiseCount,
       pendingPromisesCount,
       selectedFeatureIndex,
-      title,
-      waitingForResult
+      title
     } = this.viewModel;
 
     const featureNavigationVisible = featureCount > 1 && featureNavigationEnabled;
@@ -1297,12 +1288,12 @@ class Popup extends declared(Widget) {
     const contentVisible = collapseEnabled && !isFeatureMenuOpen && collapsed;
     const actionsCount = actions && actions.length;
     const pageText = featureNavigationVisible && this._getPageText(featureCount, selectedFeatureIndex);
-    const content = this._renderContent();
+    const contentNode = this._renderContent();
     const isRtl = widgetUtils.isRtl();
-    const hasContent = this.get("selectedPopupRenderer") ?
-      this.get("selectedPopupRenderer.viewModel.waitingForContent") ||
-      this.get("selectedPopupRenderer.viewModel.content") :
-      content;
+    const hasContent = this.get("selectedFeatureWidget") ?
+      this.get("selectedFeatureWidget.viewModel.waitingForContent") ||
+      this.get("selectedFeatureWidget.viewModel.content") :
+      contentNode;
 
     const dockTitle = dockEnabled ?
       i18n.undock :
@@ -1311,7 +1302,7 @@ class Popup extends declared(Widget) {
     const {
       currentAlignment,
       currentDockPosition
-     } = this;
+    } = this;
 
     const loadingContainerNode = !!pendingPromisesCount ? (
       <div key={buildKey("loading-container")} role="presentation"
@@ -1383,6 +1374,8 @@ class Popup extends declared(Widget) {
       </div>
     );
 
+    const featureUpdatedAnim = widgetUtils.cssTransition("enter", CSS.hasFeatureUpdated);
+
     const featureMenuId = `${this.id}-feature-menu`;
 
     const featureMenuToggleNode = (
@@ -1408,11 +1401,12 @@ class Popup extends declared(Widget) {
     );
 
     const navigationButtonsNode = featureNavigationVisible ? (
-      <div class={CSS.navigationButtons}>
+      <div class={CSS.navigationButtons}
+        enterAnimation={featureUpdatedAnim}>
         {paginationPreviousButtonNode}
         {paginationTextNode}
         {paginationNextButtonNode}
-        {featureMenuToggleNode}
+        {loadingContainerNode || featureMenuToggleNode}
       </div>
     ) : null;
 
@@ -1448,7 +1442,7 @@ class Popup extends declared(Widget) {
       </div>
     ) : null;
 
-    const canBeCollapsed = collapseEnabled && (hasContent || actionsCount || featureNavigationVisible);
+    const canBeCollapsed = collapseEnabled && title && (hasContent || actionsCount || featureNavigationVisible);
     const titleClasses = {
       [CSS.headerTitleButton]: canBeCollapsed
     };
@@ -1464,7 +1458,9 @@ class Popup extends declared(Widget) {
     const titleId = `${this.id}-popup-title`;
 
     const titleNode = title ? (
-      <h1 class={CSS.headerTitle}
+      <h2 class={CSS.headerTitle}
+        key={title}
+        enterAnimation={featureUpdatedAnim}
         id={titleId}
         role={titleRole}
         aria-label={titleLabel}
@@ -1507,10 +1503,11 @@ class Popup extends declared(Widget) {
 
     const contentId = `${this.id}-popup-content`;
 
-    const contentNode = hasContent && !contentVisible ? (
-      <article key={buildKey("content-container")}
+    const contentNodeContainer = hasContent && !contentVisible ? (
+      <article key={content}
+        enterAnimation={featureUpdatedAnim}
         id={contentId}
-        class={CSS.content}>{content}</article>
+        class={CSS.content}>{contentNode}</article>
     ) : null;
 
     const showButtonsTop = !contentVisible && (
@@ -1535,7 +1532,6 @@ class Popup extends declared(Widget) {
 
     const navigationNode = (
       <section key={buildKey("navigation")} class={CSS.navigation}>
-        {loadingContainerNode}
         {navigationButtonsNode}
       </section>
     );
@@ -1547,14 +1543,10 @@ class Popup extends declared(Widget) {
       </div>
     ) : null;
 
-    const featureMenuNode = this._renderFeatureMenuNode(popupRenderers, selectedFeatureIndex, isFeatureMenuOpen, featureMenuId);
-
-    if (featureMenuNode) {
-      this._closeFeatureMenuHandle.resume();
-    }
+    const featureMenuNode = this._renderFeatureMenuNode(featureWidgets, selectedFeatureIndex, isFeatureMenuOpen, featureMenuId);
 
     const infoText = esriLang.substitute({
-      total: popupRenderers.length
+      total: featureWidgets.length
     }, i18n.selectedFeatures);
 
     const menuNode = (
@@ -1576,25 +1568,6 @@ class Popup extends declared(Widget) {
       </div>
     ) : null;
 
-    const containerClasses = {
-      [CSS.alignTopCenter]: currentAlignment === "top-center",
-      [CSS.alignBottomCenter]: currentAlignment === "bottom-center",
-      [CSS.alignTopLeft]: currentAlignment === "top-left",
-      [CSS.alignBottomLeft]: currentAlignment === "bottom-left",
-      [CSS.alignTopRight]: currentAlignment === "top-right",
-      [CSS.alignBottomRight]: currentAlignment === "bottom-right",
-      [CSS.isDocked]: dockEnabled,
-      [CSS.shadow]: !dockEnabled,
-      [CSS.hasFeatureUpdated]: visible,
-      [CSS.isDockedTopLeft]: currentDockPosition === "top-left",
-      [CSS.isDockedTopCenter]: currentDockPosition === "top-center",
-      [CSS.isDockedTopRight]: currentDockPosition === "top-right",
-      [CSS.isDockedBottomLeft]: currentDockPosition === "bottom-left",
-      [CSS.isDockedBottomCenter]: currentDockPosition === "bottom-center",
-      [CSS.isDockedBottomRight]: currentDockPosition === "bottom-right",
-      [CSS.isFeatureMenuOpen]: isFeatureMenuOpen
-    };
-
     const layerTitle = this.get("selectedFeature.layer.title");
     const layerId = this.get("selectedFeature.layer.id");
 
@@ -1602,47 +1575,60 @@ class Popup extends declared(Widget) {
       [CSS.shadow]: dockEnabled
     };
 
-    const hasPromises = !!promiseCount;
-    const hasFeatures = !!featureCount;
-    const canBeDisplayed = hasPromises ? hasFeatures : true;
-    const isVisible = visible && !waitingForResult && canBeDisplayed;
+    const baseClasses = {
+      [CSS.alignTopCenter]: visible && currentAlignment === "top-center",
+      [CSS.alignBottomCenter]: visible && currentAlignment === "bottom-center",
+      [CSS.alignTopLeft]: visible && currentAlignment === "top-left",
+      [CSS.alignBottomLeft]: visible && currentAlignment === "bottom-left",
+      [CSS.alignTopRight]: visible && currentAlignment === "top-right",
+      [CSS.alignBottomRight]: currentAlignment === "bottom-right",
+      [CSS.isDocked]: visible && dockEnabled,
+      [CSS.shadow]: visible && !dockEnabled,
+      [CSS.isDockedTopLeft]: visible && currentDockPosition === "top-left",
+      [CSS.isDockedTopCenter]: visible && currentDockPosition === "top-center",
+      [CSS.isDockedTopRight]: visible && currentDockPosition === "top-right",
+      [CSS.isDockedBottomLeft]: visible && currentDockPosition === "bottom-left",
+      [CSS.isDockedBottomCenter]: visible && currentDockPosition === "bottom-center",
+      [CSS.isDockedBottomRight]: visible && currentDockPosition === "bottom-right",
+      [CSS.isFeatureMenuOpen]: visible && isFeatureMenuOpen
+    };
 
     const menuTopNode = showButtonsTop ? menuNode : null;
     const menuBottomNode = showButtonsBottom ? menuNode : null;
     const buttonsTopNode = showButtonsTop ? featureButtonsNode : null;
     const buttonsBottomNode = showButtonsBottom ? featureButtonsNode : null;
 
-    const containerNode = isVisible ? (
-      <div key={buildKey("container")} class={CSS.container}
-        classes={containerClasses}
+    const mainContainerNode = (
+      <div class={join(CSS.main, CSS.widget)}
+        classes={mainContainerClasses}
+        tabIndex={-1}
+        role="dialog"
+        aria-labelledby={titleNode ? titleId : ""}
+        aria-describedby={contentNodeContainer ? contentId : ""}
+        bind={this}
+        onkeyup={this._handleMainKeyup}
+        afterCreate={this._mainContainerNodeUpdated}
+        afterUpdate={this._mainContainerNodeUpdated}>
+        {buttonsTopNode}
+        {menuTopNode}
+        {headerNode}
+        {contentNodeContainer}
+        {buttonsBottomNode}
+        {menuBottomNode}
+      </div>
+    );
+
+    return (
+      <div key={buildKey("base")} class={CSS.base}
+        role="presentation"
+        classes={baseClasses}
         data-layer-title={layerTitle}
         data-layer-id={layerId}
         bind={this}
         afterCreate={this._positionContainer}
         afterUpdate={this._positionContainer}>
-        <div class={join(CSS.main, CSS.widget)}
-          classes={mainContainerClasses}
-          tabIndex={-1}
-          aria-role="dialog"
-          aria-labelledby={titleNode ? titleId : ""}
-          aria-describedby={contentNode ? contentId : ""}
-          bind={this}
-          onkeyup={this._handleMainKeyup}
-          afterCreate={this._mainContainerNodeUpdated}
-          afterUpdate={this._mainContainerNodeUpdated}>
-          {buttonsTopNode}
-          {menuTopNode}
-          {headerNode}
-          {contentNode}
-          {buttonsBottomNode}
-          {menuBottomNode}
-        </div>
-        {pointerNode}
+        {visible ? [mainContainerNode, pointerNode] : null}
       </div>
-    ) : null;
-
-    return (
-      <div key={buildKey("base")} class={CSS.base} role="presentation">{containerNode}</div>
     );
   }
 
@@ -1652,15 +1638,6 @@ class Popup extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  private _visibleChanged(value: boolean): void {
-    if (!value) {
-      return;
-    }
-
-    this._focusContainer = true;
-    this.scheduleRender();
-  }
-
   private _featureMenuOpenChanged(value: boolean): void {
     if (value) {
       this._focusFirstFeature = true;
@@ -1668,17 +1645,20 @@ class Popup extends declared(Widget) {
     else {
       this._focusFeatureMenuButton = true;
     }
-
-    this.scheduleRender();
   }
 
-  private _setTitleFromPopupRenderer(title: string): void {
-    this.viewModel.title = title || "";
+  private _setTitleFromFeatureWidget(title: string): void {
+    const { selectedFeatureWidget } = this;
+    if (selectedFeatureWidget) {
+      this.viewModel.title = title || "";
+    }
   }
 
-  private _setContentFromPopupRenderer(): void {
-    this.viewModel.content = this.selectedPopupRenderer || null;
-    this.scheduleRender();
+  private _setContentFromFeatureWidget(): void {
+    const { selectedFeatureWidget } = this;
+    if (selectedFeatureWidget) {
+      this.viewModel.content = selectedFeatureWidget;
+    }
   }
 
   private _handleFeatureMenuKeyup(event: KeyboardEvent): void {
@@ -1807,14 +1787,14 @@ class Popup extends declared(Widget) {
       "visible"
     ], () => this.scheduleRender());
 
-    this._handleRegistry.add(actionHandle, actionsKey);
+    this._handles.add(actionHandle, actionsKey);
 
     const selectedFeatureAttributes = this.get("selectedFeature.attributes");
 
     if (action.id === ZOOM_TO_ACTION_ID) {
       action.title = i18n.zoom;
 
-      this._handleRegistry.add(watchUtils.init(this, "view.animation.state", state => {
+      this._handles.add(watchUtils.init(this, "view.animation.state", state => {
         action.className = state === "waiting-for-target" ? join(CSS.icon, CSS.iconLoading, CSS.rotating) : join(CSS.icon, CSS.iconZoom);
       }), actionsKey);
     }
@@ -1871,7 +1851,7 @@ class Popup extends declared(Widget) {
 
   private _renderActions(): any {
     const actionsKey = "actions";
-    this._handleRegistry.remove(actionsKey);
+    this._handles.remove(actionsKey);
 
     const { actions } = this;
 
@@ -1889,38 +1869,70 @@ class Popup extends declared(Widget) {
     return actionNodes;
   }
 
-  private _updatePopupRenderer(): void {
-    const { popupRenderers } = this;
-    const { selectedFeatureIndex } = this.viewModel;
-    const selectedPopupRenderer = popupRenderers[selectedFeatureIndex] || null;
+  private _addSelectedFeatureIndexHandle(): void {
+    const selectedFeatureIndexHandle = watchUtils.watch<number>(this, "viewModel.selectedFeatureIndex", (value, oldValue) => this._selectedFeatureIndexUpdated(value, oldValue));
 
-    if (selectedPopupRenderer && !selectedPopupRenderer.contentEnabled) {
-      selectedPopupRenderer.contentEnabled = true;
+    this._handles.add(selectedFeatureIndexHandle, SELECTED_INDEX_HANDLE_KEY);
+  }
+
+  private _selectedFeatureIndexUpdated(value: number, oldValue: number): void {
+    const { featureCount, featureMenuOpen } = this;
+
+    if (!featureCount || !featureMenuOpen || value === oldValue || value === -1) {
+      return;
     }
 
-    this._set("selectedPopupRenderer", selectedPopupRenderer);
+    this.featureMenuOpen = false;
+  }
+  private _updateFeatureWidget(): void {
+    const { featureWidgets } = this;
+    const { selectedFeatureIndex } = this.viewModel;
+    const selectedFeatureWidget = featureWidgets[selectedFeatureIndex] || null;
+
+    if (selectedFeatureWidget && !selectedFeatureWidget.contentEnabled) {
+      selectedFeatureWidget.contentEnabled = true;
+    }
+
+    this._set("selectedFeatureWidget", selectedFeatureWidget);
   }
 
-  private _destroyPopupRenderers(): void {
-    this.popupRenderers.forEach(popupRenderer => popupRenderer.destroy());
-    this._set("popupRenderers", []);
+  private _destroyFeatureWidgets(): void {
+    this.featureWidgets.forEach(featureWidget => featureWidget.destroy());
+    this._set("featureWidgets", []);
   }
 
-  private _createPopupRenderers(features: Graphic[]): void {
-    this._destroyPopupRenderers();
+  private _createFeatureWidgets(features: Graphic[]): void {
+    const { featureWidgets } = this;
+    const featureWidgetsCopy = featureWidgets.slice(0);
+    const view = this.get("viewModel.view");
+    const newFeatureWidgets: Feature[] = [];
 
-    const popupRenderers: PopupRenderer[] = [];
+    features.forEach((feature, featureIndex) => {
+      if (!feature) {
+        return;
+      }
 
-    features && features.forEach(feature => {
-      const popupRenderer = new PopupRenderer({
+      let foundWidget: Feature = null;
+
+      featureWidgetsCopy.some((featureWidget, featureWidgetIndex) => {
+        if (featureWidget && featureWidget.graphic === feature) {
+          foundWidget = featureWidget;
+          featureWidgetsCopy.splice(featureWidgetIndex, 1);
+        }
+
+        return !!foundWidget;
+      });
+
+      newFeatureWidgets[featureIndex] = foundWidget || new Feature({
         contentEnabled: false,
         graphic: feature,
-        view: this.get("viewModel.view")
+        view
       });
-      popupRenderers.push(popupRenderer);
     });
 
-    this._set("popupRenderers", popupRenderers);
+    featureWidgetsCopy.forEach(featureWidget => featureWidget && featureWidget.destroy());
+
+    this._set("featureWidgets", newFeatureWidgets);
   }
 
   private _isScreenLocationWithinView(screenLocation: ScreenPoint, view: MapView | SceneView): boolean {
@@ -2084,14 +2096,12 @@ class Popup extends declared(Widget) {
     return !this.dockEnabled ? this._getDockPosition() : null;
   }
 
-  private _renderFeatureMenuItemNode(popupRenderer: PopupRenderer, popupRendererIndex: number, selectedFeatureIndex: number, featureMenuOpen: boolean): any {
-    const isSelectedFeature = popupRendererIndex === selectedFeatureIndex;
+  private _renderFeatureMenuItemNode(featureWidget: Feature, featureWidgetIndex: number, selectedFeatureIndex: number, featureMenuOpen: boolean): any {
+    const isSelectedFeature = featureWidgetIndex === selectedFeatureIndex;
 
     const itemClasses = {
       [CSS.featureMenuSelected]: isSelectedFeature
     };
-
-    const itemLabel = popupRenderer.title || i18n.untitled;
 
     const checkMarkNode = isSelectedFeature ?
       (
@@ -2102,29 +2112,31 @@ class Popup extends declared(Widget) {
       ) :
       null;
 
+    const titleNode = (
+      <span innerHTML={featureWidget.title || i18n.untitled} />
+    );
+
     return (
       <li role="menuitem"
         tabIndex={-1}
         key={buildKey(`feature-menu-feature-${selectedFeatureIndex}`)}
         classes={itemClasses}
         class={CSS.featureMenuItem}
-        title={itemLabel}
-        aria-label={itemLabel}
         bind={this}
-        data-feature-index={popupRendererIndex}
+        data-feature-index={featureWidgetIndex}
         onkeyup={this._handleFeatureMenuItemKeyup}
         onclick={this._selectFeature}
         onkeydown={this._selectFeature}>
         <span class={CSS.featureMenuTitle}>
-          {itemLabel}
+          {titleNode}
           {checkMarkNode}
         </span>
       </li>
     );
   }
 
-  private _renderFeatureMenuNode(popupRenderers: PopupRenderer[], selectedFeatureIndex: number, featureMenuOpen: boolean, featureMenuId: string): any {
-    return popupRenderers.length > 1 ? (
+  private _renderFeatureMenuNode(featureWidgets: Feature[], selectedFeatureIndex: number, featureMenuOpen: boolean, featureMenuId: string): any {
+    return featureWidgets.length > 1 ? (
       <ol class={CSS.featureMenuList}
         id={featureMenuId}
         bind={this}
@@ -2132,8 +2144,8 @@ class Popup extends declared(Widget) {
         afterUpdate={this._featureMenuNodeUpdated}
         onkeyup={this._handleFeatureMenuKeyup}
         role="menu">
-        {popupRenderers.map((popupRenderer, popupRendererIndex) => {
-          return this._renderFeatureMenuItemNode(popupRenderer, popupRendererIndex, selectedFeatureIndex, featureMenuOpen);
+        {featureWidgets.map((featureWidget, featureWidgetIndex) => {
+          return this._renderFeatureMenuItemNode(featureWidget, featureWidgetIndex, selectedFeatureIndex, featureMenuOpen);
         })}
       </ol>
     ) : null;
@@ -2160,29 +2172,26 @@ class Popup extends declared(Widget) {
 
   private _renderContent(): any {
     const content = this.get("viewModel.content");
-    const contentKey = "content";
 
     if (typeof content === "string") {
-      return <div key={buildKey(`${contentKey}-string`)} innerHTML={content} />;
+      return <div key={content} innerHTML={content} />;
     }
 
     if (isWidget(content)) {
-      return <div key={buildKey(`${contentKey}-widget`)}>
+      return <div key={content}>
         {content.render()}
       </div>;
     }
 
     if (content instanceof HTMLElement) {
-      return <div key={buildKey(`${contentKey}-html-element`)}
+      return <div key={content}
         bind={content}
-        afterUpdate={this._attachToNode}
         afterCreate={this._attachToNode} />;
     }
 
     if (isWidgetBase(content)) {
-      return <div key={buildKey(`${contentKey}-dijit`)}
+      return <div key={content}
         bind={content.domNode}
-        afterUpdate={this._attachToNode}
         afterCreate={this._attachToNode} />;
     }
   }
@@ -2235,46 +2244,47 @@ class Popup extends declared(Widget) {
     const halfWidth = width / 2;
     const viewHeightOffset = view.height - y;
     const viewWidthOffset = view.width - x;
+    const { padding } = this.view;
 
     if (currentAlignment === "bottom-center") {
       return {
-        top: y + pointerOffset,
-        left: x - halfWidth
+        top: y + pointerOffset - padding.top,
+        left: x - halfWidth - padding.left
       };
     }
 
     if (currentAlignment === "top-left") {
       return {
-        bottom: viewHeightOffset + pointerOffset,
-        right: viewWidthOffset + pointerOffset
+        bottom: viewHeightOffset + pointerOffset - padding.bottom,
+        right: viewWidthOffset + pointerOffset - padding.right
       };
     }
 
     if (currentAlignment === "bottom-left") {
       return {
-        top: y + pointerOffset,
-        right: viewWidthOffset + pointerOffset
+        top: y + pointerOffset - padding.top,
+        right: viewWidthOffset + pointerOffset - padding.right
       };
     }
 
     if (currentAlignment === "top-right") {
       return {
-        bottom: viewHeightOffset + pointerOffset,
-        left: x + pointerOffset
+        bottom: viewHeightOffset + pointerOffset - padding.bottom,
+        left: x + pointerOffset - padding.left
       };
     }
 
     if (currentAlignment === "bottom-right") {
       return {
-        top: y + pointerOffset,
-        left: x + pointerOffset
+        top: y + pointerOffset - padding.top,
+        left: x + pointerOffset - padding.left
       };
     }
 
     if (currentAlignment === "top-center") {
       return {
-        bottom: viewHeightOffset + pointerOffset,
-        left: x - halfWidth
+        bottom: viewHeightOffset + pointerOffset - padding.bottom,
+        left: x - halfWidth - padding.left
       };
     }
   }
@@ -2286,22 +2296,12 @@ class Popup extends declared(Widget) {
       return;
     }
 
-    const padding = view.padding;
-
     if (dockEnabled) {
       return {
-        left: padding.left ?
-          `${padding.left}px` :
-          "",
-        top: padding.top ?
-          `${padding.top}px` :
-          "",
-        right: padding.right ?
-          `${padding.right}px` :
-          "",
-        bottom: padding.bottom ?
-          `${padding.bottom}px` :
-          ""
+        left: "",
+        top: "",
+        right: "",
+        bottom: ""
       };
     }
 
@@ -2406,21 +2406,6 @@ class Popup extends declared(Widget) {
     this._setCurrentDockPosition();
   }
 
-  private _hasFeatureUpdated(): void {
-    const { _containerNode } = this;
-    const { pendingPromisesCount } = this.viewModel;
-    const waitingForContent = this.get<boolean>("selectedPopupRenderer.viewModel.waitingForContent");
-
-    if (!_containerNode || !!pendingPromisesCount || waitingForContent) {
-      return;
-    }
-
-    // todo: @juan6600 need a better way to do this.
-    _containerNode.classList.remove(CSS.hasFeatureUpdated);
-    _containerNode.offsetHeight;
-    _containerNode.classList.add(CSS.hasFeatureUpdated);
-  }
-
   private _focusDockButtonNode(element: HTMLDivElement): void {
     if (!this._focusDockButton) {
       return;
@@ -2517,8 +2502,10 @@ class Popup extends declared(Widget) {
   }
 
   private _destroySpinner(): void {
-    if (this._spinner) {
-      this._spinner.destroy();
+    const { _spinner, view } = this;
+    if (_spinner) {
+      view && view.ui.remove(this._spinner as any, SPINNER_KEY); // todo: fix with typings
+      _spinner.destroy();
       this._spinner = null;
     }
   }
@@ -2529,15 +2516,13 @@ class Popup extends declared(Widget) {
     }
 
     this._spinner = new Spinner({
-      container: document.createElement("div"),
       view: view
     });
 
-    view.root.appendChild(this._spinner.container);
-  }
-
-  private _closeFeatureMenu(): void {
-    this.featureMenuOpen = false;
+    view.ui.add(this._spinner as any, { // todo: fix with typings
+      key: SPINNER_KEY,
+      position: "manual"
+    });
   }
 
   @accessibleHandler()
@@ -2560,7 +2545,9 @@ class Popup extends declared(Widget) {
 
   @accessibleHandler()
   private _toggleFeatureMenu(): void {
-    this.featureMenuOpen = !this.featureMenuOpen;
+    const toggleValue = !this.featureMenuOpen;
+    this._featureMenuOpenChanged(toggleValue);
+    this.featureMenuOpen = toggleValue;
   }
 
   @accessibleHandler()
@@ -2578,8 +2565,6 @@ class Popup extends declared(Widget) {
     if (!isNaN(featureIndex)) {
       this.viewModel.selectedFeatureIndex = featureIndex;
     }
-
-    this._closeFeatureMenu();
   }
 
   @accessibleHandler()

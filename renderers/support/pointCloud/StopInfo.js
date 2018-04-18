@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/accessorSupport/decorators","../../../Color","../../../core/JSONSupport","../../../core/lang"],function(e,r,o,t,l,p,n,u){Object.defineProperty(r,"__esModule",{value:!0});var a=function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.label=null,r.value=0,r.color=null,r}return o(r,e),n=r,r.prototype.clone=function(){return new n({label:this.label,value:this.value,color:u.clone(this.color)})},t([l.property({type:String,json:{write:!0}})],r.prototype,"label",void 0),t([l.property({type:Number,nonNullable:!0,json:{write:!0}})],r.prototype,"value",void 0),t([l.property({type:p,json:{type:[Number],write:!0}})],r.prototype,"color",void 0),r=n=t([l.subclass("esri.renderers.support.pointCloud.StopInfo")],r);var n}(l.declared(n));r.StopInfo=a,r["default"]=a});
+define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../Color","../../../core/JSONSupport","../../../core/lang","../../../core/accessorSupport/decorators","../../../core/accessorSupport/ensureType"],function(e,r,o,t,p,l,n,u,c){Object.defineProperty(r,"__esModule",{value:!0});var s=function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.label=null,r.value=0,r.color=null,r}return o(r,e),l=r,r.prototype.clone=function(){return new l({label:this.label,value:this.value,color:n.clone(this.color)})},t([u.property({type:String,json:{write:!0}})],r.prototype,"label",void 0),t([u.property({type:Number,nonNullable:!0,json:{write:!0}})],r.prototype,"value",void 0),t([u.property({type:p,json:{type:[c.Integer],write:!0}})],r.prototype,"color",void 0),r=l=t([u.subclass("esri.renderers.support.pointCloud.StopInfo")],r);var l}(u.declared(l));r.StopInfo=s,r.default=s});

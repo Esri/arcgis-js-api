@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["dojo/_base/array","../../Graphic","../../core/JSONSupport","./DirectionsFeatureSet"],function(e,r,t,a){var n=t.createSubclass({declaredClass:"esri.tasks.support.RouteResult",properties:{directions:{value:null,type:a},route:{value:null,json:{read:function(e,t){return e.geometry&&(e.geometry.spatialReference=t.spatialReference),r.fromJSON(e)}}},routeName:null,stops:{value:null,json:{read:function(t,a){var n=[],o=a.spatialReference;return e.forEach(t,function(e){e.geometry&&(e.geometry.spatialReference=o),n[e.attributes.Sequence-1]=r.fromJSON(e)}),n}}}}});return n});
+define(["dojo/_base/array","../../Graphic","../../core/JSONSupport","./DirectionsFeatureSet"],function(e,r,t,a){return t.createSubclass({declaredClass:"esri.tasks.support.RouteResult",properties:{directions:{value:null,type:a},route:{value:null,json:{read:function(e,t){return e.geometry&&(e.geometry.spatialReference=t.spatialReference),r.fromJSON(e)}}},routeName:null,stops:{value:null,json:{read:function(t,a){var n=[],o=a.spatialReference;return e.forEach(t,function(e){e.geometry&&(e.geometry.spatialReference=o),n[e.attributes.Sequence-1]=r.fromJSON(e)}),n}}}}})});

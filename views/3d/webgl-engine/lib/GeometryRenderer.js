@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../materials/internal/MaterialUtil","./Util","./DefaultVertexAttributeLocations","../../../webgl/VertexArrayObject","../../../webgl/BufferObject","../../../webgl/Util","../../../webgl/enums"],function(t,e,r,i,n,o,a,l,s){var u=function(){function t(t,e,s,u){this._drawMode=4,this._count=t.indices[i.VertexAttrConstants.POSITION].length;var d=new Float32Array(this._count*l.getStride(e)/4);s?s(t,void 0,void 0,null,e,d,0):r.fillInterleaved(t,void 0,void 0,null,e,d,0),this._rctx=u,this._vao=new o(u,n.Default3D,{geometry:e},{geometry:a.createVertex(u,35044,d)})}return t.prototype.enablePointRendering=function(t){this._drawMode=t?0:4},t.prototype.render=function(t){var e=this._rctx;e.bindVAO(this._vao),l.assertCompatibleVertexAttributeLocations(this._vao,t),e.drawArrays(this._drawMode,0,this._count)},t}();return u});
+define(["require","exports","./DefaultVertexAttributeLocations","./Util","../materials/internal/MaterialUtil","../../../webgl/BufferObject","../../../webgl/Util","../../../webgl/VertexArrayObject"],function(t,e,r,i,n,o,a,l){return function(){function t(t,e,s,d){this._drawMode=4,this._count=t.indices[i.VertexAttrConstants.POSITION].length;var u=new Float32Array(this._count*a.getStride(e)/4);s?s(t,void 0,void 0,null,e,u,0):n.fillInterleaved(t,void 0,void 0,null,e,u,0),this._rctx=d,this._vao=new l(d,r.Default3D,{geometry:e},{geometry:o.createVertex(d,35044,u)})}return t.prototype.enablePointRendering=function(t){this._drawMode=t?0:4},t.prototype.render=function(t){var e=this._rctx;e.bindVAO(this._vao),a.assertCompatibleVertexAttributeLocations(this._vao,t),e.drawArrays(this._drawMode,0,this._count)},t}()});

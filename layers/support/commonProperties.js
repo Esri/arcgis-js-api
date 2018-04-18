@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../../core/accessorSupport/write","../../core/accessorSupport/utils","../../core/accessorSupport/PropertyOrigin"],function(e,r,i,s,t){Object.defineProperty(r,"__esModule",{value:!0}),r.screenSizePerspectiveEnabled={type:Boolean,value:!0,json:{origins:{"web-scene":{read:{source:["id","url","layerType"],reader:function(e,r){return null==r.screenSizePerspective&&"defaults"===this.originOf("screenSizePerspectiveEnabled")?void s.getProperties(this).store.set("screenSizePerspectiveEnabled",!1,t.OriginId.DEFAULTS):r.screenSizePerspective}},write:{ignoreOrigin:!0,target:"screenSizePerspective",writer:function(e,r,s,t){"defaults"===this.originOf("screenSizePerspectiveEnabled")&&e?r[s]=e:i.willPropertyWrite(this,"screenSizePerspectiveEnabled",{},t)&&(r[s]=e)}}}}}}});
+define(["require","exports","../../core/accessorSupport/PropertyOrigin","../../core/accessorSupport/utils","../../core/accessorSupport/write"],function(e,r,i,s,t){Object.defineProperty(r,"__esModule",{value:!0}),r.screenSizePerspectiveEnabled={type:Boolean,value:!0,json:{origins:{"web-scene":{read:{source:["id","url","layerType"],reader:function(e,r){return null==r.screenSizePerspective&&"defaults"===this.originOf("screenSizePerspectiveEnabled")?void s.getProperties(this).store.set("screenSizePerspectiveEnabled",!1,i.OriginId.DEFAULTS):r.screenSizePerspective}},write:{ignoreOrigin:!0,target:"screenSizePerspective",writer:function(e,r,i,s){"defaults"===this.originOf("screenSizePerspectiveEnabled")&&e?r[i]=e:t.willPropertyWrite(this,"screenSizePerspectiveEnabled",{},s)&&(r[i]=e)}}}}}},r.popupEnabled={type:Boolean,json:{read:{source:"disablePopup",reader:function(e,r){return!r.disablePopup}},write:{target:"disablePopup",writer:function(e,r,i){r[i]=!e}}}},r.labelsVisible={type:Boolean,json:{read:{source:"showLabels"},write:{target:"showLabels"}}}});

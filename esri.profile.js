@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -24,7 +24,7 @@
 
 var profile = (function(){
   var testResourceRe = /^esri\/(.*\/)?tests\//,
-    
+
     jsRe = /\.js$/i,
     onlineFolderRe = /^esri\/arcgisonline\//i,
     mobileFolderRe = /^esri\/mobile\//i,
@@ -44,13 +44,13 @@ var profile = (function(){
         "esri/workers/scripts/indexInterface": 1,
         "esri/views/2d/layers/vector-tile": 1
       };
-      
+
       return (
-        metadataFolderRe.test(mid) || 
+        metadataFolderRe.test(mid) ||
         (mid in mids)
       );
     },
-    
+
     legacyModules = {
       "esri/arcgisonline": 1,
       "esri/base": 1,
@@ -73,9 +73,9 @@ var profile = (function(){
       amd: function(filename, mid){
         return jsRe.test(filename) && !copyOnly(filename, mid) && (
           /^esri\/arcgisonline\/sharing\/dijit\/FeatureLayerQueryResult/i.test(mid) ||
-          /^esri\/arcgisonline\/coachmarks\/tours/i.test(mid) || 
-          !( 
-            (mid in legacyModules) || onlineFolderRe.test(mid) || 
+          /^esri\/arcgisonline\/coachmarks\/tours/i.test(mid) ||
+          !(
+            (mid in legacyModules) || onlineFolderRe.test(mid) ||
             mobileFolderRe.test(mid) || discoveryFolderRe.test(mid)
            )
         );

@@ -31,6 +31,13 @@
 /// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
 /// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
 
+// dojo
+import * as i18n from "dojo/i18n!./Attribution/nls/Attribution";
+
+// esri.core
+import watchUtils = require("../core/watchUtils");
+
+// esri.core.accessorSupport
 import {
   aliasOf,
   subclass,
@@ -38,16 +45,21 @@ import {
   declared
 } from "../core/accessorSupport/decorators";
 
+// esri.views
+import View = require("../views/View");
+
+// esri.widgets
+import Widget = require("./Widget");
+
+// esri.widgets.Attribution
+import AttributionViewModel = require("./Attribution/AttributionViewModel");
+
+// esri.widgets.support
 import {
   tsx,
   renderable,
   accessibleHandler
 } from "./support/widget";
-
-import Widget = require("./Widget");
-import AttributionViewModel = require("./Attribution/AttributionViewModel");
-import View = require("../views/View");
-import watchUtils = require("../core/watchUtils");
 
 const CSS = {
   base: "esri-attribution esri-widget",
@@ -56,6 +68,7 @@ const CSS = {
   open: "esri-attribution--open",
   sourcesOpen: "esri-attribution__sources--open",
   link: "esri-attribution__link",
+  widgetIcon: "esri-icon-description",
 
   // common.css
   interactive: "esri-interactive"
@@ -123,8 +136,30 @@ class Attribution extends declared(Widget) {
   })
   @renderable()
   get attributionText(): string {
-    return this.viewModel.items.map(item => item.text).join(this.itemDelimiter);
+    return this.viewModel.items.reduce((unique, item) => {
+      if (unique.indexOf(item.text) === -1) {
+        unique.push(item.text);
+      }
+
+      return unique;
+    }, []).join(this.itemDelimiter);
   }
+
+  //----------------------------------
+  //  iconClass
+  //----------------------------------
+
+  /**
+   * The widget's default icon font.
+   *
+   * @since 4.7
+   * @name iconClass
+   * @instance
+   * @type {string}
+   * @readonly
+   */
+  @property()
+  iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  itemDelimiter
@@ -141,6 +176,22 @@ class Attribution extends declared(Widget) {
   @property()
   @renderable()
   itemDelimiter = " | ";
+
+  //----------------------------------
+  //  label
+  //----------------------------------
+
+  /**
+   * The widget's default label.
+   *
+   * @since 4.7
+   * @name label
+   * @instance
+   * @type {string}
+   * @readonly
+   */
+  @property()
+  label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  view

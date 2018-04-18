@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({noItemsToDisplay:"Momentálně nejsou k zobrazení žádné položky.",layerInvisibleAtScale:"V aktuálním měřítku neviditelné",layerError:"Při načítání této vrstvy došlo k chybě.",untitledLayer:"Vrstva bez názvu"});
+define({widgetLabel:"Seznam vrstev",noItemsToDisplay:"Momentálně nejsou k zobrazení žádné položky.",layerInvisibleAtScale:"V aktuálním měřítku neviditelné",layerError:"Při načítání této vrstvy došlo k chybě.",untitledLayer:"Vrstva bez názvu"});

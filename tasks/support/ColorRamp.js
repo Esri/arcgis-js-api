@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["../../core/Accessor"],function(e){var r=e.createSubclass({declaredClass:"esri.tasks.support.ColorRamp",properties:{type:null}});return r});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/JSONSupport","../../core/accessorSupport/decorators"],function(r,e,t,o,p,s){return function(r){function e(){var e=null!==r&&r.apply(this,arguments)||this;return e.type=null,e}return t(e,r),o([s.property({json:{write:!0}})],e.prototype,"type",void 0),e=o([s.subclass("esri.tasks.support.ColorRamp")],e)}(s.declared(p))});

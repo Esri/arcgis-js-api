@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/extendsHelper","../../../core/ObjectPool","./TileAgentBase","./tileUtils"],function(e,t,i,l,s,n){var r=function(e){function t(){var t=e.call(this)||this;return t._scaleRangeEnabled=!0,t}return i(t,e),t.prototype.dataArrived=function(e){e!==this.tile?this._setUpsamplingTile(e):(this._unsetUpsamplingTile(),this.tile.updateTexture()),this._dataRequested=null,e!==this.tile&&this._requestNext()},t.prototype._desiredMinLevelDelta=function(){return 0},t.prototype._setUpsamplingTile=function(e){this._tileLayerInfo.upsampleFromTile&&this._tileLayerInfo.upsampleFromTile.tile===e||(this._unsetUpsamplingTile(),this._tileLayerInfo.upsampleFromTile=n.computeUpsampleInfoForAncestor(this.tile,e),this.tile.updateTexture())},t.Pool=new l(t),t}(s);return r});
+define(["require","exports","../../../core/tsSupport/extendsHelper","../../../core/ObjectPool","./TileAgentBase","./tileUtils"],function(e,t,i,l,s,n){return function(e){function t(){var t=e.call(this)||this;return t._scaleRangeEnabled=!0,t}return i(t,e),t.prototype.dataArrived=function(e){e!==this.tile?this._setUpsamplingTile(e):(this._unsetUpsamplingTile(),this.tile.updateTexture()),this._dataRequested=null,e!==this.tile&&this._requestNext()},t.prototype._desiredMinLevelDelta=function(){return 0},t.prototype._setUpsamplingTile=function(e){this._tileLayerInfo.upsampleFromTile&&this._tileLayerInfo.upsampleFromTile.tile===e||(this._unsetUpsamplingTile(),this._tileLayerInfo.upsampleFromTile=n.computeUpsampleInfoForAncestor(this.tile,e),this.tile.updateTexture())},t.Pool=new l(t),t}(s)});

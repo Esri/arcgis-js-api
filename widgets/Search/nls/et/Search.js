@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({searchButtonTitle:"Otsi",clearButtonTitle:"Tühjenda otsing",placeholder:"Otsi aadressi või kohta",searchIn:"Otsi",all:"Kõik",allPlaceholder:"Otsi aadressi või kohta",emptyValue:"Sisestage otsingutermin.",untitledResult:"Pealkirjata",untitledSource:"Pealkirjata allikas",noResults:"Tulemusi pole",noResultsFound:"Tulemeid ei leitud.",noResultsFoundForValue:"Väärtuse {value} jaoks ei leitud tulemusi.",showMoreResults:"Kuva veel tulemusi",hideMoreResults:"Peida",searchResult:"Otsi tulemusi",moreResultsHeader:"Veel tulemusi",esriLocatorName:"Esri World Geocoder",useCurrentLocation:"Kasuta praegust asukohta"});
+define({widgetLabel:"Otsing",searchButtonTitle:"Otsi",clearButtonTitle:"Tühjenda otsing",placeholder:"Otsi aadressi või kohta",searchIn:"Otsi",all:"Kõik",allPlaceholder:"Otsi aadressi või kohta",emptyValue:"Sisestage otsingutermin.",untitledResult:"Pealkirjata",untitledSource:"Pealkirjata allikas",noResults:"Tulemusi pole",noResultsFound:"Tulemeid ei leitud.",noResultsFoundForValue:"Väärtuse {value} jaoks ei leitud tulemusi.",showMoreResults:"Kuva veel tulemusi",hideMoreResults:"Peida",searchResult:"Otsi tulemusi",moreResultsHeader:"Veel tulemusi",esriLocatorName:"Esri World Geocoder",useCurrentLocation:"Kasuta praegust asukohta"});

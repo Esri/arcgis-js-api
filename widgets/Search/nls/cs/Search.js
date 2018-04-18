@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({searchButtonTitle:"Hledat",clearButtonTitle:"Vymazat vyhledávání",placeholder:"Najít adresu nebo místo",searchIn:"Hledat v",all:"Všechny",allPlaceholder:"Najít adresu nebo místo",emptyValue:"Zadejte vyhledávací dotaz.",untitledResult:"Bez názvu",untitledSource:"Nepojmenovaný zdroj",noResults:"Žádné výsledky",noResultsFound:"Nebyly nalezeny žádné výsledky vyhledávání.",noResultsFoundForValue:"Pro {value} nebyly nalezeny žádné výsledky.",showMoreResults:"Zobrazit další výsledky",hideMoreResults:"Skrýt",searchResult:"Výsledek vyhledávání",moreResultsHeader:"Další výsledky",esriLocatorName:"Esri World Geocoder",useCurrentLocation:"Použít aktuální umístění"});
+define({widgetLabel:"Hledat",searchButtonTitle:"Hledat",clearButtonTitle:"Vymazat vyhledávání",placeholder:"Najít adresu nebo místo",searchIn:"Hledat v",all:"Všechny",allPlaceholder:"Najít adresu nebo místo",emptyValue:"Zadejte vyhledávací dotaz.",untitledResult:"Bez názvu",untitledSource:"Nepojmenovaný zdroj",noResults:"Žádné výsledky",noResultsFound:"Nebyly nalezeny žádné výsledky vyhledávání.",noResultsFoundForValue:"Pro {value} nebyly nalezeny žádné výsledky.",showMoreResults:"Zobrazit další výsledky",hideMoreResults:"Skrýt",searchResult:"Výsledek vyhledávání",moreResultsHeader:"Další výsledky",esriLocatorName:"Esri World Geocoder",useCurrentLocation:"Použít aktuální umístění"});

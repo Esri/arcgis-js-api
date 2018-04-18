@@ -39,7 +39,7 @@
                   response: response
                 });
               })
-              .otherwise(function(error) {
+              .catch(function(error) {
                 port.postMessage({
                   id: data.id,
                   isError: true,

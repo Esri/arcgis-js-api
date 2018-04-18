@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","./Symbol3DLayer","../core/accessorSupport/decorators"],function(e,t,r,o,i,a){var n=function(e){function t(t){var r=e.call(this)||this;return r.material=null,r.type="path",r.size=void 0,r}return r(t,e),i=t,t.prototype.readSize=function(e,t){return e||t.width||0},t.prototype.clone=function(){return new i({enabled:this.enabled,elevationInfo:this.elevationInfo&&this.elevationInfo.clone(),material:this.material&&this.material.clone(),size:this.size})},o([a.property()],t.prototype,"material",void 0),o([a.property()],t.prototype,"type",void 0),o([a.property({type:Number,json:{write:!0}})],t.prototype,"size",void 0),o([a.reader("size",["size","width"])],t.prototype,"readSize",null),t=i=o([a.subclass("esri.symbols.PathSymbol3DLayer")],t);var i}(a.declared(i));return n});
+define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/accessorSupport/decorators","./Symbol3DLayer"],function(e,t,r,o,i,a){return function(e){function t(t){var r=e.call(this)||this;return r.material=null,r.type="path",r.size=void 0,r}return r(t,e),a=t,t.prototype.readSize=function(e,t){return e||t.width||0},t.prototype.clone=function(){return new a({enabled:this.enabled,elevationInfo:this.elevationInfo&&this.elevationInfo.clone(),material:this.material&&this.material.clone(),size:this.size})},o([i.property()],t.prototype,"material",void 0),o([i.property()],t.prototype,"type",void 0),o([i.property({type:Number,json:{write:{enabled:!0,target:{size:{type:Number},width:{type:Number}}}}})],t.prototype,"size",void 0),o([i.reader("size",["size","width"])],t.prototype,"readSize",null),t=a=o([i.subclass("esri.symbols.PathSymbol3DLayer")],t);var a}(i.declared(a))});

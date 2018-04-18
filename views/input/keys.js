@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../../core/sniff"],function(r,e,o){function t(r){if(void 0!==r.key)return f[r.key]||r.key;var e=i[r.keyCode];return Array.isArray(e)?r.shiftKey?e[1]:e[0]:e}function a(r){switch(r){case"Ctrl":case"Alt":case"Shift":case"Meta":case"Primary":return!0}}Object.defineProperty(e,"__esModule",{value:!0}),e.primaryKey=o("mac")?"Meta":"Ctrl";for(var i={8:"Backspace",9:"Tab",13:"Enter",27:"Escape",33:"PageUp",34:"PageDown",35:"End",36:"Home",37:"ArrowLeft",38:"ArrowUp",39:"ArrowRight",40:"ArrowDown",45:"Insert",46:"Delete"},n=48;58>n;n++)i[n]=String.fromCharCode(n);for(var n=1;25>n;n++)i[111+n]="F"+n;for(var n=65;91>n;n++)i[n]=[String.fromCharCode(n+32),String.fromCharCode(n)];var f={Left:"ArrowLeft",Right:"ArrowRight",Up:"ArrowUp",Down:"ArrowDown",Esc:"Escape"};e.eventKey=t,e.isSystemModifier=a});
+define(["require","exports","../../core/sniff"],function(r,e,o){function t(r){if(void 0!==r.key)return f[r.key]||r.key;var e=i[r.keyCode];return Array.isArray(e)?r.shiftKey?e[1]:e[0]:e}function a(r){switch(r){case"Ctrl":case"Alt":case"Shift":case"Meta":case"Primary":return!0}}Object.defineProperty(e,"__esModule",{value:!0}),e.primaryKey=o("mac")?"Meta":"Ctrl";for(var i={8:"Backspace",9:"Tab",13:"Enter",27:"Escape",33:"PageUp",34:"PageDown",35:"End",36:"Home",37:"ArrowLeft",38:"ArrowUp",39:"ArrowRight",40:"ArrowDown",45:"Insert",46:"Delete"},n=48;n<58;n++)i[n]=String.fromCharCode(n);for(var n=1;n<25;n++)i[111+n]="F"+n;for(var n=65;n<91;n++)i[n]=[String.fromCharCode(n+32),String.fromCharCode(n)];var f={Left:"ArrowLeft",Right:"ArrowRight",Up:"ArrowUp",Down:"ArrowDown",Esc:"Escape"};e.eventKey=t,e.isSystemModifier=a});

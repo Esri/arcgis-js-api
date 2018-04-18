@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({title:"Medir",hint:"Empiece a medir haciendo clic en la escena para colocar su primer punto",distance:"Distancia",direct:"Direct",horizontal:"Horizontal",vertical:"Vertical",unit:"Unidad",newMeasurement:"Nueva medición",units:{metric:"Sistema métrico",imperial:"Sistema imperial",kilometers:"Kilómetros",meters:"Metros",miles:"Millas",inches:"Pulgadas",feet:"Pies",yards:"Yardas","nautical-miles":"Millas náuticas","us-feet":"Pies (EE. UU.)","degrees-minutes-seconds":"DMS",degrees:"Grados"}});
+define({title:"Medir",hint:"Empiece a medir haciendo clic en la escena para colocar su primer punto",unsupported:"La medición de líneas directas no se admite en MapView.",distance:"Distancia",direct:"Direct",horizontal:"Horizontal",vertical:"Vertical",unit:"Unidad",newMeasurement:"Nueva medición",units:{metric:"Sistema métrico",imperial:"Sistema imperial",kilometers:"Kilómetros",meters:"Metros",miles:"Millas",inches:"Pulgadas",feet:"Pies",yards:"Yardas","nautical-miles":"Millas náuticas","us-feet":"Pies (EE. UU.)","degrees-minutes-seconds":"DMS",degrees:"Grados"}});

@@ -4,13 +4,6 @@
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "The colorInfo visual variable defines how a continuous color ramp is applied to features based on the values of a numeric field attribute.",
   "properties": {
-    "colors": {
-      "type": "array",
-      "description": "The color object used to render the value.",
-      "items": {
-        "$ref": "color_schema.json"
-      }
-    },
     "field": {
       "type": "string",
       "description": "Attribute field used for color rendering if no valueExpression is provided."
@@ -18,14 +11,6 @@
     "legendOptions": {
       "type": "object",
       "$ref": "visualVariableLegendOptions_schema.json"
-    },
-    "maxDataValue": {
-      "type": "number",
-      "description": "The maximum data value."
-    },
-    "minDataValue": {
-      "type": "number",
-      "description": "The minimum data value."
     },
     "normalizationField": {
       "type": "string",
@@ -126,4 +111,3 @@
     ]
   }
 }
-

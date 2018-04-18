@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({title:"العنوان",fileName:"اسم الملف",titlePlaceHolder:"عنوان الملف",fileNamePlaceHolder:"اسم الملف",formatDefaultOption:"تحديد التنسيق",fileFormatTitle:"تنسيق الملف",layoutTitle:"إعداد الصفحة",layoutDefaultOption:"حدد إعداد الصفحة",scale:"عين المقياس",scaleLabel:"مقياس رسم",reset:"إعادة تعيين",author:"المؤلف",copyright:"حقوق النشر",legend:"تضمين وسيلة الإيضاح",lock:"تأمين",swap:"تبديل",panelToggle:"تبديل اللوحة",advancedOptions:"خيارات متقدمة",width:"العرض",height:"ارتفاع",attribution:"تضمين البيانات الجدولية",layoutTab:"تخطيط",mapOnlyTab:"الخريطة فقط",untitled:"بدون عنوان",pending:"تصدير",ready:"افتح هذا",linkReady:"فتح في نافذة جديدة.",error:"حدد هذا لإزالته.",sceneViewError:"لا يتم دعم الطباعة في SceneView.",serviceError:"يبدوا أن هناك خطأ.","export":"تصدير",exportDescription:"تصدير. سوف تظهر الملفات التي تم تصديرها أدناه.",exportText:"الملفات المُصدّرة",exportHint:"ستظهر الملفات المصدرة هنا."});
+define({widgetLabel:"طباعة",title:"العنوان",fileName:"اسم الملف",titlePlaceHolder:"عنوان الملف",fileNamePlaceHolder:"اسم الملف",formatDefaultOption:"تحديد التنسيق",fileFormatTitle:"تنسيق الملف",layoutTitle:"إعداد الصفحة",layoutDefaultOption:"حدد إعداد الصفحة",scale:"عين المقياس",scaleLabel:"مقياس رسم",reset:"إعادة تعيين",author:"المؤلف",copyright:"حقوق النشر",legend:"تضمين وسيلة الإيضاح",lock:"تأمين",swap:"تبديل",panelToggle:"تبديل اللوحة",advancedOptions:"خيارات متقدمة",width:"العرض",height:"ارتفاع",dpi:"DPI",attribution:"تضمين البيانات الجدولية",layoutTab:"تخطيط",mapOnlyTab:"الخريطة فقط",untitled:"بدون عنوان",pending:"تصدير",ready:"افتح هذا",linkReady:"فتح في نافذة جديدة.",error:"حدد هذا لإزالته.",sceneViewError:"لا يتم دعم الطباعة في SceneView.",serviceError:"يبدوا أن هناك خطأ.",export:"تصدير",exportDescription:"تصدير. سوف تظهر الملفات التي تم تصديرها أدناه.",exportText:"الملفات المُصدّرة",exportHint:"ستظهر الملفات المصدرة هنا."});

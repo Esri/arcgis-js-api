@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","./Domain","./RangeDomain","./CodedValueDomain","./InheritedDomain"],function(e,a,n,o,i,d){Object.defineProperty(a,"__esModule",{value:!0}),a.DomainBase=n,a.RangeDomain=o,a.CodedValueDomain=i,a.InheritedDomain=d,a.types={key:"type",base:a.DomainBase,typeMap:{range:a.RangeDomain,"coded-value":a.CodedValueDomain}}});
+define(["require","exports","./CodedValueDomain","./Domain","./InheritedDomain","./RangeDomain"],function(e,a,n,o,i,d){Object.defineProperty(a,"__esModule",{value:!0}),a.CodedValueDomain=n,a.DomainBase=o,a.InheritedDomain=i,a.RangeDomain=d,a.types={key:"type",base:a.DomainBase,typeMap:{range:a.RangeDomain,"coded-value":a.CodedValueDomain}}});

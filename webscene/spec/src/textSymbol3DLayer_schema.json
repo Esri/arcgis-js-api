@@ -4,6 +4,9 @@
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "Symbol layer for text and font definitions.",
   "properties": {
+    "enable": {
+      "type": "boolean"
+    },
     "font": {
       "$ref": "font_schema.json"
     },
@@ -60,4 +63,3 @@
     ]
   }
 }
-

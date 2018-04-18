@@ -1,5 +1,4 @@
 @mixin scaleBar() {
-
   $dark_color: $button_text_color;
   $light_color: $background_color;
 
@@ -38,7 +37,7 @@
     flex-wrap: wrap;
     height: 6px;
     background-color: $light_color;
-    margin: 0 $offset_for_unit_label 0 ($offset_for_unit_label / 4) ;
+    margin: 0 $offset_for_unit_label 0 ($offset_for_unit_label / 4);
     @include defaultBoxShadow();
   }
 
@@ -49,12 +48,12 @@
   }
 
   // top row
-  .esri-scale-bar__ruler-block:nth-child(-n+2) {
+  .esri-scale-bar__ruler-block:nth-child(-n + 2) {
     margin-right: 25%;
   }
 
   // bottom row
-  .esri-scale-bar__ruler-block:nth-child(n+3) {
+  .esri-scale-bar__ruler-block:nth-child(n + 3) {
     margin-left: 25%;
   }
 

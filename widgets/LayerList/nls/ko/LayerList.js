@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({noItemsToDisplay:"현재 표시할 항목이 없습니다.",layerInvisibleAtScale:"현재 축척에서는 보이지 않음",layerError:"이 레이어를 불러오는 중 오류가 발생함",untitledLayer:"제목 없는 레이어"});
+define({widgetLabel:"레이어 목록",noItemsToDisplay:"현재 표시할 항목이 없습니다.",layerInvisibleAtScale:"현재 축척에서는 보이지 않음",layerError:"이 레이어를 불러오는 중 오류가 발생함",untitledLayer:"제목 없는 레이어"});

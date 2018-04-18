@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({noItemsToDisplay:"В текущий момент нет элементов для отображения.",layerInvisibleAtScale:"Не видимый в текущем масштабе",layerError:"При загрузке этого слоя произошла ошибка",untitledLayer:"Слой без названия"});
+define({widgetLabel:"Список слоев",noItemsToDisplay:"В текущий момент нет элементов для отображения.",layerInvisibleAtScale:"Невидимый в текущем масштабе",layerError:"При загрузке этого слоя произошла ошибка",untitledLayer:"Слой без названия"});

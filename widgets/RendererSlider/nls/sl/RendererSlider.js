@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({statsAvg:"Povprečje: ${avg}",count:"Števec: ${count}",percent:"${num}%",high:"Visoko",low:"Nizko",color:{changeMinMaxToolTIp:"Vpišite vrednost.",handleToolTip:"Uskladi vrednosti podatkov z barvami.",maxValueToolTip:"Vpišite največjo pričakovano podatkovno vrednost.",minValueToolTip:"Vpišite najmanjšo pričakovano podatkovno vrednost.",changeSymbol:"Spremeni simbol"},size:{handleToolTip:"Uskladi vrednosti podatkov z vrednostjo simbola.",sizeInputBoxLines:"Nastavi debelino linije od 0 do 18 pikslov.",sizeInputBoxPoints:"Nastavi velikost simbola od 1 do 120 pikslov."}});
+define({statsAvg:"Povprečje: ${avg}",count:"Števec: ${count}",percent:"${num}%",high:"Visoko",low:"Nizko",color:{changeMinMaxToolTIp:"Vpišite vrednost.",handleToolTip:"Uskladi vrednosti podatkov z barvami.",maxValueToolTip:"Vpišite največjo pričakovano podatkovno vrednost.",minValueToolTip:"Vpišite najmanjšo pričakovano podatkovno vrednost.",changeSymbol:"Spremeni simbol"},size:{handleToolTip:"Uskladi podatkovne vrednosti z vrednostjo simbola.",sizeInputBoxLines:"Nastavi debelino linije od 0 do 18 pikslov.",sizeInputBoxPoints:"Nastavi velikost simbola od 1 do 120 pikslov."}});

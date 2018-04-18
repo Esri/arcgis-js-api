@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({points:"Punkter",lines:"Linjer",polygons:"Polygoner",creatingLegend:"Opretter forklaring",noLegend:"Ingen forklaring",dotValue:"1 prik = {value} {unit}",currentObservations:"Aktuelle observationer",previousObservations:"Tidligere observationer",high:"Høj",low:"Lav",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/t",esriKnots:"knob",esriFeetPerSecond:"fod/sek",esriMilesPerHour:"mil/t",showField:"{field}",showNormField:"{field} divideret med {normField}",showNormPct:"{field} som en procent af den samlede værdi",showRatio:"Forholdet af {field} til {normField}",showRatioPercent:"{field} som en procent af {normField}",showRatioPercentTotal:"{field} som en procent af {field} og {normField}"});
+define({widgetLabel:"Signaturforklaring",points:"Punkter",lines:"Linjer",polygons:"Polygoner",creatingLegend:"Opretter forklaring",noLegend:"Ingen forklaring",dotValue:"1 prik = {value} {unit}",currentObservations:"Aktuelle observationer",previousObservations:"Tidligere observationer",high:"Høj",low:"Lav",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/t",esriKnots:"knob",esriFeetPerSecond:"fod/sek",esriMilesPerHour:"mil/t",showField:"{field}",showNormField:"{field} divideret med {normField}",showNormPct:"{field} som en procent af den samlede værdi",showRatio:"Forholdet af {field} til {normField}",showRatioPercent:"{field} som en procent af {normField}",showRatioPercentTotal:"{field} som en procent af {field} og {normField}"});

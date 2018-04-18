@@ -1,0 +1,25 @@
+// COPYRIGHT © 2018 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+
+define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","dojo/i18n!./AreaMeasurement3D/nls/AreaMeasurement3D","../core/accessorSupport/decorators","./Widget","./AreaMeasurement3D/AreaMeasurement3DViewModel","./support/widget"],function(e,t,s,a,r,n,i,l,u){var m={button:"esri-button",base:"esri-area-measurement-3d esri-widget esri-widget--panel",container:"esri-area-measurement-3d__container",hint:"esri-area-measurement-3d__hint",panelError:"esri-area-measurement-3d__panel--error",measurement:"esri-area-measurement-3d__measurement",measurementItem:"esri-area-measurement-3d__measurement-item",measurementItemDisabled:"esri-area-measurement-3d__measurement-item--disabled",measurementItemTitle:"esri-area-measurement-3d__measurement-item-title",measurementItemValue:"esri-area-measurement-3d__measurement-item-value",units:"esri-area-measurement-3d__units",unitsLabel:"esri-area-measurement-3d__units-label",unitsSelect:"esri-area-measurement-3d__units-select esri-select",unitsSelectWrapper:"esri-area-measurement-3d__units-select-wrapper",clearButton:"esri-area-measurement-3d__clear-button"};return function(e){function t(t){var s=e.call(this)||this;return s.view=null,s.visible=null,s.viewModel=new l,s.unitOptions=null,s}return s(t,e),t.prototype.clearMeasurement=function(){},t.prototype.render=function(){var e=this,t=!this.viewModel.isSupported,s="measuring"===this.viewModel.state,a="ready"===this.viewModel.state,n=this.viewModel.measurement,i=a?u.tsx("section",{key:"esri-area-measurement-3d__hint",class:m.hint},u.tsx("p",null,r.hint)):null,l=t?u.tsx("section",{key:"esri-area-measurement-3d__unsupported",class:m.panelError},u.tsx("p",null,r.unsupported)):null,o=function(e,t,s){switch(t.state){case"available":return u.tsx("div",{key:s+"-enabled",class:m.measurementItem},u.tsx("span",{class:m.measurementItemTitle},e),u.tsx("span",{class:m.measurementItemValue},t.text));case"unavailable":return u.tsx("div",{key:s+"-disabled",class:u.join(m.measurementItem,m.measurementItemDisabled)},u.tsx("span",{class:m.measurementItemTitle},e));case"invalid":return u.tsx("div",{key:s+"-enabled",class:m.measurementItem},u.tsx("span",{class:m.measurementItemTitle},e),u.tsx("span",{class:m.measurementItemValue},r.notApplicable))}},d=s?u.tsx("section",{key:"esri-area-measurement-3d__measurement",class:m.measurement},o(r.area,n.area,"area"),o(r.perimeterLength,n.perimeterLength,"perimeter-length")):null,c=this.id+"__units",p=u.tsx("label",{class:m.unitsLabel,for:c},r.unit),v=u.tsx("div",{class:m.unitsSelectWrapper},u.tsx("select",{class:m.unitsSelect,id:c,onchange:this._changeUnit,bind:this},this.viewModel.unitOptions.map(function(t){return t===e.viewModel.unit?u.tsx("option",{key:t,value:t,selected:!0},r.units[t]):u.tsx("option",{key:t,value:t},r.units[t])}))),_=s?u.tsx("section",{key:"esri-area-measurement-3d__units",class:m.units},p,v):null,w=s?u.tsx("button",{class:u.join(m.button,m.clearButton),bind:this,onclick:this._newMeasurement},r.newMeasurement):null,b=this.visible?u.tsx("div",{class:m.container},l,i,d,_,w):null;return u.tsx("div",{key:"",class:m.base,role:"presentation"},b)},t.prototype._newMeasurement=function(){this.clearMeasurement()},t.prototype._changeUnit=function(e){var t=e.target,s=t.options[t.selectedIndex];s&&(this.unit=s.value)},a([n.aliasOf("viewModel.view")],t.prototype,"view",void 0),a([n.aliasOf("viewModel.visible"),u.renderable()],t.prototype,"visible",void 0),a([n.property({type:l}),u.renderable(["viewModel.state","viewModel.unitOptions","viewModel.unit","viewModel.measurement"])],t.prototype,"viewModel",void 0),a([n.aliasOf("viewModel.unitOptions")],t.prototype,"unitOptions",void 0),a([n.aliasOf("viewModel.unit")],t.prototype,"unit",void 0),a([n.aliasOf("viewModel.clearMeasurement")],t.prototype,"clearMeasurement",null),a([u.accessibleHandler()],t.prototype,"_newMeasurement",null),a([u.accessibleHandler()],t.prototype,"_changeUnit",null),t=a([n.subclass("esri.widgets.AreaMeasurement3D")],t)}(n.declared(i))});

@@ -178,7 +178,7 @@
     uniform mediump vec2 u_minMaxDistance;
 
     // Signed distance estimation.
-    mediump float distance() {
+    mediump float estimateDistance() {
       // Use the largest sigma and the corresponding distance value stored in the
       // last channel of the highlight map.
       mediump float sigma = u_sigmas[3];
@@ -211,7 +211,7 @@
 
     void main(void) {
       // Estimate the distance.
-      mediump float d = distance();
+      mediump float d = estimateDistance();
 
       // Shade the distance.
       gl_FragColor = shade(d);

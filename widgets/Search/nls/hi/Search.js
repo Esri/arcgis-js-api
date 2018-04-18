@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({searchButtonTitle:"खोजें",clearButtonTitle:"खोज साफ़ करें",placeholder:"पता या स्थान खोजें",searchIn:"में खोजें",all:"सभी",allPlaceholder:"पता या स्थान खोजें",emptyValue:"कृपया एक खोज शब्द डालें.",untitledResult:"अनटाइटल्ड",untitledSource:"शीर्षकहीन स्रोत",noResults:"कोई परिणाम नहीं",noResultsFound:"कोई परिणाम नहीं मिला।",noResultsFoundForValue:"{value} के लिए कोई परिणाम नहीं मिले।",showMoreResults:"और परिणाम दिखाएँ",hideMoreResults:"छिपाएँ",searchResult:"खोज परिणाम",moreResultsHeader:"और परिणाम",esriLocatorName:"Esri World Geocoder",useCurrentLocation:"वर्तमान स्थान का इस्तेमाल करें"});
+define({widgetLabel:"खोजें",searchButtonTitle:"खोजें",clearButtonTitle:"खोज साफ़ करें",placeholder:"पता या स्थान खोजें",searchIn:"में खोजें",all:"सभी",allPlaceholder:"पता या स्थान खोजें",emptyValue:"कृपया एक खोज शब्द डालें.",untitledResult:"अनटाइटल्ड",untitledSource:"शीर्षकहीन स्रोत",noResults:"कोई परिणाम नहीं",noResultsFound:"कोई परिणाम नहीं मिला।",noResultsFoundForValue:"{value} के लिए कोई परिणाम नहीं मिले।",showMoreResults:"और परिणाम दिखाएँ",hideMoreResults:"छिपाएँ",searchResult:"खोज परिणाम",moreResultsHeader:"और परिणाम",esriLocatorName:"Esri World Geocoder",useCurrentLocation:"वर्तमान स्थान का इस्तेमाल करें"});

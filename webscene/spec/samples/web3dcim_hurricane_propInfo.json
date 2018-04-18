@@ -21,21 +21,25 @@
               {
                 "type": "colorInfo",
                 "field": "WIND_KTS",
-                "minDataValue": 20,
-                "maxDataValue": 150,
-                "colors": [
-                  [
-                    0,
-                    0,
-                    255,
-                    255
-                  ],
-                  [
-                    255,
-                    0,
-                    0,
-                    255
-                  ]
+                "stops": [
+                  {
+                    "value": 20,
+                    "color": [
+                      0,
+                      0,
+                      255,
+                      255
+                    ]
+                  },
+                  {
+                    "value": 150,
+                    "color": [
+                      255,
+                      0,
+                      0,
+                      255
+                    ]
+                  }
                 ]
               },
               {

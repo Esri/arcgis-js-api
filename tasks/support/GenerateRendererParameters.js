@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["../../core/JSONSupport","./ClassificationDefinition"],function(e,i){var r=e.createSubclass({declaredClass:"esri.tasks.support.GenerateRendererParameters",properties:{classificationDefinition:{value:null,type:i,json:{read:{source:"classificationDef"},write:{target:"classificationDef"}}},where:{value:null,type:String,json:{write:!0}}}});return r});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/JSONSupport","../../core/accessorSupport/decorators","./ClassificationDefinition"],function(e,r,t,i,o,n,s){return function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.classificationDefinition=null,r.where=null,r}return t(r,e),i([n.property({type:s,json:{read:{source:"classificationDef"},write:{target:"classificationDef"}}})],r.prototype,"classificationDefinition",void 0),i([n.property({type:String,json:{write:!0}})],r.prototype,"where",void 0),r=i([n.subclass("esri.tasks.support.GenerateRendererParameters")],r)}(n.declared(o))});

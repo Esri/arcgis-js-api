@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["dojo/_base/lang","../request","./Task","./support/FindResult"],function(e,r,s,t){var n=s.createSubclass({declaredClass:"esri.tasks.FindTask",properties:{parsedUrl:{get:function(){var e=this._parseUrl(this.url);return e.path+="/find",e}},gdbVersion:{value:null,type:String},url:{}},execute:function(s,t){var n=this._encode(e.mixin({},this.parsedUrl.query,{f:"json"},s.toJSON()));this.gdbVersion&&(n.gdbVersion=this.gdbVersion);var a={query:n,callbackParamName:"callback"};return(this.requestOptions||t)&&(a=e.mixin({},this.requestOptions,t,a)),r(this.parsedUrl.path,a).then(this._handleExecuteResponse)},_handleExecuteResponse:function(e){var r=e.data,s=r.results||[];return r.results=s.map(function(e){return t.fromJSON(e)}),r}});return n});
+define(["dojo/_base/lang","../request","./Task","./support/FindResult"],function(e,s,r,t){return r.createSubclass({declaredClass:"esri.tasks.FindTask",properties:{parsedUrl:{get:function(){var e=this._parseUrl(this.url);return e.path+="/find",e}},gdbVersion:{value:null,type:String},url:{}},execute:function(r,t){var n=this._encode(e.mixin({},this.parsedUrl.query,{f:"json"},r.toJSON()));this.gdbVersion&&(n.gdbVersion=this.gdbVersion);var a={query:n,callbackParamName:"callback"};return(this.requestOptions||t)&&(a=e.mixin({},this.requestOptions,t,a)),s(this.parsedUrl.path,a).then(this._handleExecuteResponse)},_handleExecuteResponse:function(e){var s=e.data,r=s.results||[];return s.results=r.map(function(e){return t.fromJSON(e)}),s}})});

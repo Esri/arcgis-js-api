@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/accessorSupport/decorators","../../../core/Accessor"],function(t,e,r,o,n,a){var i=function(t){function e(){var e=null!==t&&t.apply(this,arguments)||this;return e.enabled=!0,e.rotationEnabled=!0,e}return r(e,t),a=e,e.prototype.constrain=function(t,e){return this.enabled?(this.rotationEnabled||(t.rotation=0),t):t},e.prototype.clone=function(){return new a({enabled:this.enabled,rotationEnabled:this.rotationEnabled})},o([n.property()],e.prototype,"enabled",void 0),o([n.property()],e.prototype,"rotationEnabled",void 0),e=a=o([n.subclass("esri.views.2d.constraints.RotationConstraint")],e);var a}(n.declared(a));return i});
+define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/Accessor","../../../core/accessorSupport/decorators"],function(t,e,o,r,n,a){return function(t){function e(){var e=null!==t&&t.apply(this,arguments)||this;return e.enabled=!0,e.rotationEnabled=!0,e}return o(e,t),n=e,e.prototype.constrain=function(t,e){return this.enabled&&e?(this.rotationEnabled||(t.rotation=e.rotation),t):t},e.prototype.clone=function(){return new n({enabled:this.enabled,rotationEnabled:this.rotationEnabled})},r([a.property()],e.prototype,"enabled",void 0),r([a.property()],e.prototype,"rotationEnabled",void 0),e=n=r([a.subclass("esri.views.2d.constraints.RotationConstraint")],e);var n}(a.declared(n))});

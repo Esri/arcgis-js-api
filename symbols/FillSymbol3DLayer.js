@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","./Symbol3DLayer","./support/Symbol3DOutline","./support/Symbol3DFillMaterial","../core/accessorSupport/decorators"],function(e,t,o,r,l,i,n,a){var p=function(e){function t(t){var o=e.call(this)||this;return o.type="fill",o.material=null,o.outline=null,o}return o(t,e),l=t,t.prototype.clone=function(){return new l({enabled:this.enabled,elevationInfo:this.elevationInfo&&this.elevationInfo.clone(),material:this.material&&this.material.clone(),outline:this.outline&&this.outline.clone()})},r([a.property()],t.prototype,"type",void 0),r([a.property({type:n["default"]})],t.prototype,"material",void 0),r([a.property({type:i["default"],json:{write:!0}})],t.prototype,"outline",void 0),t=l=r([a.subclass("esri.symbols.FillSymbol3DLayer")],t);var l}(a.declared(l));return p});
+define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/accessorSupport/decorators","./Symbol3DLayer","./edges/utils","./support/Symbol3DFillMaterial","./support/Symbol3DOutline"],function(e,t,o,r,l,i,n,p,s){return function(e){function t(t){var o=e.call(this)||this;return o.type="fill",o.material=null,o.outline=null,o.edges=null,o}return o(t,e),i=t,t.prototype.clone=function(){return new i({edges:this.edges&&this.edges.clone(),enabled:this.enabled,elevationInfo:this.elevationInfo&&this.elevationInfo.clone(),material:this.material&&this.material.clone(),outline:this.outline&&this.outline.clone()})},r([l.property()],t.prototype,"type",void 0),r([l.property({type:p.default})],t.prototype,"material",void 0),r([l.property({type:s.default,json:{write:!0}})],t.prototype,"outline",void 0),r([l.property(n.symbol3dEdgesProperty)],t.prototype,"edges",void 0),t=i=r([l.subclass("esri.symbols.FillSymbol3DLayer")],t);var i}(l.declared(i))});

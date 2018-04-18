@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports"],function(e,t){var i=function(){function e(){this._numTileTexturesComposited=0}return Object.defineProperty(e.prototype,"numTileTexturesComposited",{get:function(){return this._numTileTexturesComposited},enumerable:!0,configurable:!0}),e.prototype.incrementNumTileTexturesComposited=function(){this._numTileTexturesComposited++},e.prototype.resetNumTileTexturesComposited=function(){this._numTileTexturesComposited=0},e}();return i});
+define(["require","exports"],function(e,t){return function(){function e(){this._numTileTexturesComposited=0}return Object.defineProperty(e.prototype,"numTileTexturesComposited",{get:function(){return this._numTileTexturesComposited},enumerable:!0,configurable:!0}),e.prototype.incrementNumTileTexturesComposited=function(){this._numTileTexturesComposited++},e.prototype.resetNumTileTexturesComposited=function(){this._numTileTexturesComposited=0},e}()});

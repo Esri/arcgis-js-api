@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({points:"Точки",lines:"Линии",polygons:"Полигоны",creatingLegend:"Построение легенды",noLegend:"Без легенды",dotValue:"1 точка = {value} {unit}",currentObservations:"Текущие наблюдения",previousObservations:"Предыдущие наблюдения",high:"Высокий",low:"Низкий",esriMetersPerSecond:"м/с",esriKilometersPerHour:"км/ч",esriKnots:"узлы",esriFeetPerSecond:"фт/сек",esriMilesPerHour:"миль/час",showField:"{field}",showNormField:"{field} деленное на {normField}",showNormPct:"{field} в процентах от общего",showRatio:"Доля {field} по отношению к {normField}",showRatioPercent:"{field} в процентах от {normField}",showRatioPercentTotal:"{field} в процентах от {field} и {normField}"});
+define({widgetLabel:"Легенда",points:"Точки",lines:"Линии",polygons:"Полигоны",creatingLegend:"Построение легенды",noLegend:"Без легенды",dotValue:"1 точка = {value} {unit}",currentObservations:"Текущие наблюдения",previousObservations:"Предыдущие наблюдения",high:"Высокий",low:"Низкий",esriMetersPerSecond:"м/с",esriKilometersPerHour:"км/ч",esriKnots:"узлы",esriFeetPerSecond:"фт/сек",esriMilesPerHour:"миль/час",showField:"{field}",showNormField:"{field} деленное на {normField}",showNormPct:"{field} в процентах от общего",showRatio:"Доля {field} по отношению к {normField}",showRatioPercent:"{field} в процентах от {normField}",showRatioPercentTotal:"{field} в процентах от {field} и {normField}"});

@@ -3,33 +3,35 @@
 */
 
 // Widgets (sorted alphabetically)
-$include_Attribution              : true !default;
-$include_BasemapGallery           : true !default;
-$include_BasemapToggle            : true !default;
-$include_BrowseItems              : true !default;
-$include_ColorPicker              : true !default;
-$include_Compass                  : true !default;
-$include_DatePicker               : true !default;
-$include_Directions               : true !default;
-$include_Expand                   : true !default;
-$include_HorizontalSlider         : true !default;
-$include_LayerList                : true !default;
-$include_Legend                   : true !default;
-$include_NavigationToggle         : true !default;
-$include_Print                    : true !default;
-$include_DirectLineMeasurement3D  : true !default;
-$include_Popup                    : true !default;
-$include_PopupRenderer            : true !default;
-$include_RasterSymbologyEditor    : true !default;
-$include_RendererSlider           : true !default;
-$include_ScaleBar                 : true !default;
-$include_Search                   : true !default;
-$include_Spinner                  : true !default;
-$include_Tags                     : true !default; // TODO : make _Tags.scss use this var.  Currently something around line 251 is causing issues when it's in a mixin
-$include_TimePicker               : true !default;
-$include_Zoom                     : true !default;
+$include_AreaMeasurement3D: true !default;
+$include_Attribution: true !default;
+$include_BasemapGallery: true !default;
+$include_BasemapToggle: true !default;
+$include_BrowseItems: true !default;
+$include_ColorPicker: true !default;
+$include_Compass: true !default;
+$include_CoordinateConversion: true !default;
+$include_DatePicker: true !default;
+$include_Directions: true !default;
+$include_Expand: true !default;
+$include_Feature: true !default;
+$include_HorizontalSlider: true !default;
+$include_LayerList: true !default;
+$include_Legend: true !default;
+$include_NavigationToggle: true !default;
+$include_Print: true !default;
+$include_DirectLineMeasurement3D: true !default;
+$include_Popup: true !default;
+$include_RasterSymbologyEditor: true !default;
+$include_RendererSlider: true !default;
+$include_ScaleBar: true !default;
+$include_Search: true !default;
+$include_Spinner: true !default;
+$include_Tags: true !default; // TODO : make _Tags.scss use this var.  Currently something around line 251 is causing issues when it's in a mixin
+$include_TimePicker: true !default;
+$include_Zoom: true !default;
 
-$icomoon-font-path             : '../base/icons/fonts'; // Override for esri/themes/base/icons/style.scss
+$icomoon-font-path: "../base/icons/fonts"; // Override for esri/themes/base/icons/style.scss
 
 @import "fonts/avenir-next/avenir-next.scss";
 @import "icons/style.scss";
@@ -47,15 +49,19 @@ $icomoon-font-path             : '../base/icons/fonts'; // Override for esri/the
 @import "widgets/Widget";
 
 // Widgets (sorted alphabetically)
+@import "widgets/AreaMeasurement3D";
 @import "widgets/Attribution";
 @import "widgets/BasemapGallery";
 @import "widgets/BasemapToggle";
 @import "widgets/BrowseItems";
 @import "widgets/ColorPicker";
 @import "widgets/Compass";
+@import "widgets/CoordinateConversion";
 @import "widgets/DatePicker";
+@import "widgets/DijitTooltip";
 @import "widgets/Directions";
 @import "widgets/Expand";
+@import "widgets/Feature";
 @import "widgets/HorizontalSlider";
 @import "widgets/IdentityDialog";
 @import "widgets/LayerList";
@@ -64,7 +70,6 @@ $icomoon-font-path             : '../base/icons/fonts'; // Override for esri/the
 @import "widgets/Popup";
 @import "widgets/Print";
 @import "widgets/DirectLineMeasurement3D";
-@import "widgets/PopupRenderer";
 @import "widgets/RasterSymbologyEditor";
 @import "widgets/RendererSlider";
 @import "widgets/ScaleBar";

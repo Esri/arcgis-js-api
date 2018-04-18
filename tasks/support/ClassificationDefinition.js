@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["dojo/_base/lang","../../core/Accessor"],function(o,s){var i=s.createSubclass({declaredClass:"esri.tasks.support.ClassificationDefinition",properties:{baseSymbol:null,colorRamp:null,type:null},toJSON:function(){var s={};return this.baseSymbol&&o.mixin(s,{baseSymbol:this.baseSymbol.toJSON()}),this.colorRamp&&!o.isString(this.colorRamp)&&o.mixin(s,{colorRamp:this.colorRamp.toJSON()}),s}});return i});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/JSONSupport","../../core/kebabDictionary","../../core/accessorSupport/decorators","../../symbols/Symbol","./ColorRamp"],function(e,r,o,t,p,s,a,l,i){var n=s({classBreaksDef:"class-breaks-definition",uniqueValueDef:"unique-value-definition"});return function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.baseSymbol=null,r.colorRamp=null,r.type=null,r}return o(r,e),t([a.property({type:l,json:{write:!0}})],r.prototype,"baseSymbol",void 0),t([a.property({type:i,json:{write:!0}})],r.prototype,"colorRamp",void 0),t([a.property({json:{read:n.read,write:n.write}})],r.prototype,"type",void 0),r=t([a.subclass("esri.tasks.support.ColorRamp")],r)}(a.declared(p))});

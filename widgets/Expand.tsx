@@ -28,29 +28,39 @@
 /// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
 /// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
 
+// dijit
+import _WidgetBase = require("dijit/_WidgetBase");
+
+// dojo
+import * as i18nCommon from "dojo/i18n!../nls/common";
+
+// esri.core.accessorSupport
 import { aliasOf, subclass, declared, property } from "../core/accessorSupport/decorators";
 
+// esri.views
+import View = require("../views/View");
+
+// esri.widgets
 import Widget = require("./Widget");
 
+// esri.widgets.Expand
+import ExpandViewModel = require("./Expand/ExpandViewModel");
+
+// esri.widgets.support
 import {
   accessibleHandler,
   renderable,
   join,
-  tsx
+  tsx, isWidgetBase, isWidget
 } from "./support/widget";
-
-import * as i18nCommon from "dojo/i18n!../nls/common";
-
-import ExpandViewModel = require("./Expand/ExpandViewModel");
-
-import View = require("../views/View");
-
-import _WidgetBase = require("dijit/_WidgetBase");
 
 type ContentSource = string | HTMLElement | Widget | _WidgetBase;
 
 const CSS = {
   base: "esri-expand esri-widget",
+  modeAuto: "esri-expand--auto",
+  modeDrawer: "esri-expand--drawer",
+  modeFloating: "esri-expand--floating",
   container: "esri-expand__container",
   containerExpanded: "esri-expand__container--expanded",
   panel: "esri-expand__panel",
@@ -67,20 +77,6 @@ const CSS = {
   expandMask: "esri-expand__mask",
   expandMaskExpanded: "esri-expand__mask--expanded"
 };
-
-function isWidget(value: any): value is Widget {
-  return value && value.isInstanceOf && value.isInstanceOf(Widget);
-}
-
-function isWidgetBase(value: any): value is _WidgetBase {
-  // naive type check
-
-  return value &&
-    typeof value.postMixInProperties === "function" &&
-    typeof value.buildRendering === "function" &&
-    typeof value.postCreate === "function" &&
-    typeof value.startup === "function";
-}
 
 @subclass("esri.widgets.Expand")
 class Expand extends declared(Widget) {
@@ -122,7 +118,7 @@ class Expand extends declared(Widget) {
    * @default false
    */
   @aliasOf("viewModel.autoCollapse")
-  autoCollapse = false;
+  autoCollapse: boolean = null;
 
   //----------------------------------
   //  collapseIconClass
@@ -138,9 +134,21 @@ class Expand extends declared(Widget) {
    * @instance
    * @type {string}
    */
-  @property()
+  @property({
+    dependsOn: ["content"]
+  })
   @renderable()
-  collapseIconClass: string = "";
+  get collapseIconClass(): string {
+    return CSS.collapseIcon;
+  }
+  set collapseIconClass(value: string) {
+    if (!value) {
+      this._clearOverride("collapseIconClass");
+      return;
+    }
+
+    this._override("collapseIconClass", value);
+  }
 
   //----------------------------------
   //  collapseTooltip
@@ -233,7 +241,7 @@ class Expand extends declared(Widget) {
    */
   @aliasOf("viewModel.expanded")
   @renderable()
-  expanded = false;
+  expanded: boolean = null;
 
   //----------------------------------
   //  expandIconClass
@@ -248,9 +256,21 @@ class Expand extends declared(Widget) {
    * @instance
    * @type {string}
    */
-  @property()
+  @property({
+    dependsOn: ["content"]
+  })
   @renderable()
-  expandIconClass: string = "";
+  get expandIconClass(): string {
+    return isWidget(this.content) ? this.content.iconClass : CSS.expandIcon;
+  }
+  set expandIconClass(value: string) {
+    if (!value) {
+      this._clearOverride("expandIconClass");
+      return;
+    }
+
+    this._override("expandIconClass", value);
+  }
 
   //----------------------------------
   //  expandTooltip
@@ -324,6 +344,29 @@ class Expand extends declared(Widget) {
   iconNumber: number = 0;
 
   //----------------------------------
+  //  mode
+  //----------------------------------
+
+  /**
+   * The mode in which the widget displays. These modes are listed below.
+   *
+   * mode | description
+   * ---------------|------------
+   * auto | This is the default mode. It is responsive to browser size changes and will update based on whether the widget is viewed in a desktop or mobile application.
+   * floating | Use this mode if you wish to always display the widget as floating regardless of browser size.
+   * drawer | Use this mode if you wish to always display the widget in a panel regardless of browser size.
+   *
+   * @name mode
+   * @instance
+   * @since 4.7
+   * @default "auto"
+   * @type {string}
+   */
+  @property()
+  @renderable()
+  mode: "auto" | "floating" | "drawer" = "auto";
+
+  //----------------------------------
   //  view
   //----------------------------------
 
@@ -394,12 +437,12 @@ class Expand extends declared(Widget) {
 
   render() {
     const expanded = this.viewModel.expanded;
-
+    const { mode } = this;
     const expandTooltip = this.expandTooltip || i18nCommon.expand;
     const collapseTooltip = this.collapseTooltip || i18nCommon.collapse;
     const title = expanded ? collapseTooltip : expandTooltip;
-    const collapseIconClass = this.collapseIconClass || CSS.collapseIcon;
-    const expandIconClass = this.expandIconClass || CSS.expandIcon;
+    const collapseIconClass = this.collapseIconClass;
+    const expandIconClass = this.expandIconClass;
 
     const expandIconClasses = {
       [CSS.iconExpanded]: expanded,
@@ -431,8 +474,14 @@ class Expand extends declared(Widget) {
         class={join(CSS.iconNumber, CSS.iconNumberExpanded)}>{iconNumber}</span>
     ) : null;
 
+    const baseClasses = {
+      [CSS.modeAuto]: mode === "auto",
+      [CSS.modeDrawer]: mode === "drawer",
+      [CSS.modeFloating]: mode === "floating"
+    };
+
     return (
-      <div class={CSS.base}>
+      <div class={CSS.base} classes={baseClasses}>
         <div
           bind={this}
           onclick={this._toggle}

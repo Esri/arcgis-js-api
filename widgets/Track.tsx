@@ -44,15 +44,26 @@
 /// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
 /// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
 
-import { aliasOf, subclass, property, declared } from "../core/accessorSupport/decorators";
-import { accessibleHandler, join, tsx, renderable, vmEvent } from "./support/widget";
+// dojo
+import * as i18n from "dojo/i18n!./Track/nls/Track";
 
-import Widget = require("./Widget");
-import TrackViewModel = require("./Track/TrackViewModel");
+// esri
 import Graphic = require("../Graphic");
+
+// esri.core.accessorSupport
+import { aliasOf, subclass, property, declared } from "../core/accessorSupport/decorators";
+
+// esri.views
 import View = require("../views/View");
 
-import * as i18n from "dojo/i18n!./Track/nls/Track";
+// esri.widgets
+import Widget = require("./Widget");
+
+// esri.widgets.Track
+import TrackViewModel = require("./Track/TrackViewModel");
+
+// esri.widgets.support
+import { accessibleHandler, join, tsx, renderable, vmEvent } from "./support/widget";
 
 const CSS = {
   base: "esri-track esri-widget-button esri-widget",
@@ -62,6 +73,7 @@ const CSS = {
   rotating: "esri-rotating",
   startTrackingIcon: "esri-icon-tracking",
   stopTrackingIcon: "esri-icon-pause",
+  widgetIcon: "esri-icon-tracking",
 
   // common
   disabled: "esri-disabled",
@@ -72,14 +84,14 @@ const CSS = {
 class Track extends declared(Widget) {
 
   /**
-   * Fires after the [track()](#track) method is called and a position is found.
+   * Fires after the [start()](#start) method is called and a position is found.
    *
    * @event module:esri/widgets/Track#track
    * @property {Object} position - Geoposition returned from the [Geolocation API](#geolocationOptions).
    */
 
   /**
-   * Fires after the [track()](#track) method is called and an error is returned.
+   * Fires after the [start()](#start) method is called and an error is returned.
    *
    * @event module:esri/widgets/Track#track-error
    * @property {Error} error - The Error object returned if an error occurred while tracking.
@@ -174,6 +186,80 @@ class Track extends declared(Widget) {
    */
   @aliasOf("viewModel.graphic")
   graphic: Graphic = null;
+
+  //----------------------------------
+  //  iconClass
+  //----------------------------------
+
+  /**
+   * The widget's default icon font.
+   *
+   * @since 4.7
+   * @name iconClass
+   * @instance
+   * @type {string}
+   * @readonly
+   */
+  @property()
+  iconClass = CSS.widgetIcon;
+
+  //----------------------------------
+  //  label
+  //----------------------------------
+
+  /**
+   * The widget's default label.
+   *
+   * @since 4.7
+   * @name label
+   * @instance
+   * @type {string}
+   * @readonly
+   */
+  @property()
+  label: string = i18n.widgetLabel;
+
+  //----------------------------------
+  //  scale
+  //----------------------------------
+  /**
+   * Indicates the scale to set on the view when navigating to the position of the geolocated
+   * result once a location is returned from the [track](#event:track) event.
+   * If a scale value is not explicitly set, then the view will navigate to a default scale of `2500`.
+   * For 2D views the value should be within the {@link module:esri/views/MapView#constraints effectiveMinScale}
+   * and {@link module:esri/views/MapView#constraints effectiveMaxScale}.
+   *
+   * @since 4.7
+   * @name scale
+   * @instance
+   * @type {number}
+   * @default null
+   *
+   * @example
+   * mapView.watch("scale", function (currentScale){
+   *   console.log("scale: %s", currentScale);
+   * });
+   *
+   * mapView.when(function(){
+   *   // Create an instance of the Track widget
+   *   var track = new Track({
+   *     view: mapView,
+   *     scale: 5000
+   *   });
+   *
+   *   // and add it to the view's UI
+   *   mapView.ui.add(track, "top-left");
+   *
+   *   track.start();
+   *
+   *   track.on("track", function(trackEvent){
+   *     console.log(trackEvent);
+   *     console.log("track: %s", mapView.scale);
+   *   })
+   * });
+   */
+  @aliasOf("viewModel.scale")
+  scale: number = null;
 
   //----------------------------------
   //  tracking

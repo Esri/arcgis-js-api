@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","dojo/Deferred","../../../core/urlUtils","../../../request"],function(e,r,t,n,o){function a(e){for(var r=atob(e.split(",")[1]),t=e.split(",")[0].split(":")[1].split(";")[0],n=new ArrayBuffer(r.length),o=new Uint8Array(n),a=0;a<r.length;a++)o[a]=r.charCodeAt(a);return new Blob([n],{type:t})}function i(e){var r=!1,n=new Image,o=new t(function(){r=!0,n.src=""}),a=function(){r||o.resolve(n)},i=function(){r||o.reject()};return n.onload=a,n.onerror=i,n.onabort=i,n.src=e,o.promise}function u(e){return n.isDataProtocol(e)?i(e):o(e,{responseType:"image",allowImageDataAccess:!0}).then(function(e){return e.data})}Object.defineProperty(r,"__esModule",{value:!0}),r.dataURItoBlob=a,r.dataUriToImage=i,r.requestImage=u});
+define(["require","exports","../../../request"],function(e,t,r){function n(e){for(var t=atob(e.split(",")[1]),r=e.split(",")[0].split(":")[1].split(";")[0],n=new ArrayBuffer(t.length),a=new Uint8Array(n),o=0;o<t.length;o++)a[o]=t.charCodeAt(o);return new Blob([n],{type:r})}function a(e){return r(e,{responseType:"image",allowImageDataAccess:!0}).then(function(e){return e.data})}Object.defineProperty(t,"__esModule",{value:!0}),t.dataURItoBlob=n,t.requestImage=a});

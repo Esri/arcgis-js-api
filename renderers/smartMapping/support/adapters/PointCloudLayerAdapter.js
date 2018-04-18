@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/declareExtendsHelper","../../../../core/tsSupport/decorateHelper","../../../../core/accessorSupport/decorators","../../../../layers/support/fieldUtils","./SceneLayerAdapter"],function(e,t,r,o,s,n,i){var p=function(e){function t(t){return e.call(this,t)||this}return r(t,e),t.prototype.getField=function(e){return void 0===e&&(e=""),n.getField(e,this._layer.fields)},t.prototype.getFieldUsageInfo=function(e){var t=this.getField(e);if(!t)return null;var r=this._hasCachedStatistics(t.name);return{supportsLabelingInfo:r,supportsPopupTemplate:r,supportsRenderer:r,supportsLayerQuery:!1,supportsStatistics:r}},t.prototype.getFieldDomain=function(e,t){return null},t.prototype.load=function(){var e=this,t=this._layer,r=t.load().then(function(){e.geometryType="point",e.objectIdField=null,e.supportsSQLExpression=!1});return this.addResolvingPromise(r),this.when()},t=o([s.subclass()],t)}(s.declared(i));return p});
+define(["require","exports","../../../../core/tsSupport/declareExtendsHelper","../../../../core/tsSupport/decorateHelper","../../../../core/accessorSupport/decorators","../../../../layers/support/fieldUtils","./SceneLayerAdapter"],function(e,t,r,o,s,n,i){return function(e){function t(t){return e.call(this,t)||this}return r(t,e),t.prototype.getField=function(e){return void 0===e&&(e=""),n.getField(e,this._layer.fields)},t.prototype.getFieldUsageInfo=function(e){var t=this.getField(e);if(!t)return null;var r=this._hasCachedStatistics(t.name);return{supportsLabelingInfo:r,supportsPopupTemplate:r,supportsRenderer:r,supportsLayerQuery:!1,supportsStatistics:r}},t.prototype.getFieldDomain=function(e,t){return null},t.prototype.load=function(){var e=this,t=this._layer,r=t.load().then(function(){e.geometryType="point",e.objectIdField=null,e.supportsSQLExpression=!1});return this.addResolvingPromise(r),this.when()},t=o([s.subclass()],t)}(s.declared(i))});

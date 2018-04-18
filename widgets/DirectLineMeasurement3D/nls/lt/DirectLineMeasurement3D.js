@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({title:"Matuoti",hint:"Spustelėkite norimoje scenos vietoje",distance:"Atstumas",direct:"Įžambinė",horizontal:"Horizontalė",vertical:"Vertikalė",unit:"Matavimo vienetai",newMeasurement:"Matuoti iš naujo",units:{metric:"Metriniai",imperial:"Imperiniai",kilometers:"Kilometrai",meters:"Metrai",miles:"Mylios",inches:"Coliai",feet:"Pėdos",yards:"Jardai","nautical-miles":"Jūrmylės","us-feet":"Pėdos (JAV)","degrees-minutes-seconds":"Laipsniai, Minutės, Sekundės",degrees:"Laipsniai"}});
+define({title:"Matuoti",hint:"Spustelėkite norimoje scenos vietoje",unsupported:"Tiesioginės linijos matavimas nepalaikomas žemėlapio peržiūroje.",distance:"Atstumas",direct:"Įžambinė",horizontal:"Horizontalė",vertical:"Vertikalė",unit:"Matavimo vienetai",newMeasurement:"Matuoti iš naujo",units:{metric:"Metriniai",imperial:"Imperiniai",kilometers:"Kilometrai",meters:"Metrai",miles:"Mylios",inches:"Coliai",feet:"Pėdos",yards:"Jardai","nautical-miles":"Jūrmylės","us-feet":"Pėdos (JAV)","degrees-minutes-seconds":"Laipsniai, Minutės, Sekundės",degrees:"Laipsniai"}});

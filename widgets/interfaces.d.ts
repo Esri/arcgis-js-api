@@ -1,17 +1,34 @@
-import FeatureLayerSearchSource = require("./Search/FeatureLayerSearchSource");
-import LocatorSearchSource = require("./Search/LocatorSearchSource");
+// esri
+import Color = require("../Color");
+import Graphic = require("../Graphic");
+import PopupTemplate = require("../PopupTemplate");
+
+// esri.core
+import Collection = require("../core/Collection");
 import EsriError = require("../core/Error");
+
+// esri.geometry
 import Extent = require("../geometry/Extent");
 import Point = require("../geometry/Point");
-import Graphic = require("../Graphic");
+import SpatialReference = require("../geometry/SpatialReference");
+
+// esri.layers
 import Layer = require("../layers/Layer");
+
+// esri.symbols
 import Symbol = require("../symbols/Symbol");
-import Color = require("../Color");
-import PopupTemplate = require("../PopupTemplate");
-import Collection = require("../core/Collection");
-import SceneView = require("../views/SceneView");
-import SearchViewModel = require("./Search/SearchViewModel");
+
+// esri.tasks
+import GeometryService = require("../tasks/GeometryService");
+
+// esri.views
 import MapView = require("../views/MapView");
+import SceneView = require("../views/SceneView");
+
+// esri.widgets.Search
+import FeatureLayerSearchSource = require("./Search/FeatureLayerSearchSource");
+import LocatorSearchSource = require("./Search/LocatorSearchSource");
+import SearchViewModel = require("./Search/SearchViewModel");
 
 interface Axes {
   x?: number;
@@ -49,6 +66,7 @@ export interface SearchResult {
   extent: Extent;
   feature: Graphic;
   name: string;
+  key: string;
   sourceIndex: number;
 }
 
@@ -95,6 +113,70 @@ export interface ScaleBarProperties {
 export interface Bounds {
   max: number;
   min: number;
+}
+
+// Coordinate Conversion
+
+export interface Position {
+  location: Point;
+  coordinate: string;
+}
+
+export type Mode = "live" | "capture";
+
+export interface ConversionInfo {
+  convert?: (point: Point) => Position;
+  convertDeferred?: (point: Point) => IPromise<Position>;
+  reverseConvert?: (input: string) => Point;
+  spatialReference?: SpatialReference;
+}
+
+export interface CoordinateSegment {
+  alias: string;
+  description: string;
+  searchPattern: RegExp;
+  substitution: Substitution;
+}
+
+interface Substitution {
+  input: Replacer;
+  output: Replacer;
+}
+
+interface Replacer {
+  (input: string): string;
+}
+
+export interface FromGeoCoordinateStringParameters {
+  coordinate: string;
+  spatialReference: SpatialReference;
+  formatName: string;
+  geometryServicePromise: IPromise<GeometryService>;
+}
+
+export interface ToGeoCoordinateStringParameters {
+  location: Point;
+  formatName: string;
+  geometryServicePromise: IPromise<GeometryService>;
+}
+
+export interface ProjectPointParameters {
+  location: Point;
+  spatialReference: SpatialReference;
+  geometryServicePromise: IPromise<GeometryService>;
+  scale?: number;
+}
+
+export interface CoordinateConversionWidgetState {
+  formats: FormatJSON[];
+  locale: string;
+}
+
+export interface FormatJSON {
+  currentPattern: string;
+  defaultPattern: string;
+  name: string;
+  index: number;
 }
 
 // Legend
@@ -183,5 +265,5 @@ interface ZoomConditions {
 
 interface AttributionItem<L extends Layer = Layer> {
   readonly text: string;
-  readonly layers: L[];
+  readonly layer: L;
 }

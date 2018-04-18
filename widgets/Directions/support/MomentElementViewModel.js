@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/accessorSupport/decorators","../../../core/Accessor","../../../moment"],function(e,r,t,o,p,s,c){var n=function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.value=c(),r}return t(r,e),r.prototype.castValue=function(e){return c(e)},o([p.property()],r.prototype,"state",void 0),o([p.property()],r.prototype,"value",void 0),o([p.cast("value")],r.prototype,"castValue",null),r=o([p.subclass("esri.widgets.Directions.MomentElementViewModel")],r)}(p.declared(s));return n});
+define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../moment","../../../core/Accessor","../../../core/accessorSupport/decorators"],function(e,t,r,o,p,c,s){return function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.value=p(),t}return r(t,e),t.prototype.castValue=function(e){return p(e)},o([s.property()],t.prototype,"state",void 0),o([s.property()],t.prototype,"value",void 0),o([s.cast("value")],t.prototype,"castValue",null),t=o([s.subclass("esri.widgets.Directions.MomentElementViewModel")],t)}(s.declared(c))});

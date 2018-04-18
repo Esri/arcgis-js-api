@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/lang","../core/Collection","./Symbol3D","./FillSymbol3DLayer","../core/accessorSupport/decorators"],function(e,r,o,t,l,s,n,y,p){var i=s.ofType({base:null,key:"type",typeMap:{fill:y}}),c=function(e){function r(r){var o=e.call(this)||this;return o.symbolLayers=new i,o.type="mesh-3d",o}return o(r,e),s=r,r.prototype.clone=function(){return new s({styleOrigin:l.clone(this.styleOrigin),symbolLayers:l.clone(this.symbolLayers),thumbnail:l.clone(this.thumbnail)})},t([p.property({type:i})],r.prototype,"symbolLayers",void 0),t([p.property()],r.prototype,"type",void 0),r=s=t([p.subclass("esri.symbols.MeshSymbol3D")],r);var s}(p.declared(n));return c});
+define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/Collection","../core/lang","../core/accessorSupport/decorators","./FillSymbol3DLayer","./Symbol3D"],function(e,r,o,t,l,s,n,y,p){var i=l.ofType({base:null,key:"type",typeMap:{fill:y}});return function(e){function r(r){var o=e.call(this)||this;return o.symbolLayers=new i,o.type="mesh-3d",o}return o(r,e),l=r,r.prototype.clone=function(){return new l({styleOrigin:s.clone(this.styleOrigin),symbolLayers:s.clone(this.symbolLayers),thumbnail:s.clone(this.thumbnail)})},t([n.property({type:i})],r.prototype,"symbolLayers",void 0),t([n.property()],r.prototype,"type",void 0),r=l=t([n.subclass("esri.symbols.MeshSymbol3D")],r);var l}(n.declared(p))});

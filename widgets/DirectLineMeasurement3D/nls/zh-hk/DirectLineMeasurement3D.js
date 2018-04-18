@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({title:"測量",hint:"按一下場景來放置第一個點，以開始測量",distance:"距離",direct:"方向",horizontal:"水平",vertical:"垂直",unit:"單位",newMeasurement:"新測量",units:{metric:"公制",imperial:"英制",kilometers:"公里",meters:"公尺",miles:"英里",inches:"英吋",feet:"英呎",yards:"碼","nautical-miles":"海浬","us-feet":"英呎 (美制)","degrees-minutes-seconds":"DMS",degrees:"度"}});
+define({title:"測量",hint:"按一下場景來放置第一個點，以開始測量",unsupported:"MapView 不支援直線測量。",distance:"距離",direct:"方向",horizontal:"水平",vertical:"垂直",unit:"單位",newMeasurement:"新測量",units:{metric:"公制",imperial:"英制",kilometers:"公里",meters:"公尺",miles:"英里",inches:"英吋",feet:"英呎",yards:"碼","nautical-miles":"海浬","us-feet":"英呎 (美制)","degrees-minutes-seconds":"DMS",degrees:"度"}});

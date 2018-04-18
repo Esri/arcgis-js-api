@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../core/accessorSupport/ensureType","../core/Logger","../Ground","../layers/ElevationLayer"],function(e,r,o,n,i,a){function l(e){var n;if("string"==typeof e)if(e in r.groundElevationLayers){var l=r.groundElevationLayers[e],s=new a({id:l.id,url:l.url});n=new i({layers:[s]})}else t.warn("Unable to find ground definition for: "+e+'. Try "world-elevation"');else n=o["default"](i,e);return n}Object.defineProperty(r,"__esModule",{value:!0});var t=n.getLogger("esri.support.groundUtils");r.groundElevationLayers={"world-elevation":{id:"worldElevation",url:"//elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer"}},r.ensureType=l});
+define(["require","exports","../Ground","../core/Logger","../core/accessorSupport/ensureType","../layers/ElevationLayer"],function(e,r,o,n,i,a){function l(e){var n;if("string"==typeof e)if(e in r.groundElevationLayers){var l=r.groundElevationLayers[e],s=new a({id:l.id,url:l.url});n=new o({layers:[s]})}else t.warn("Unable to find ground definition for: "+e+'. Try "world-elevation"');else n=i.default(o,e);return n}Object.defineProperty(r,"__esModule",{value:!0});var t=n.getLogger("esri.support.groundUtils");r.groundElevationLayers={"world-elevation":{id:"worldElevation",url:"//elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer"}},r.ensureType=l});

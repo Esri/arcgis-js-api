@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/accessorSupport/decorators","../../../Graphic","../../../core/Accessor","../../../core/Collection","../../../core/Promise"],function(r,e,o,t,p,c,n,s,i){var l=s.ofType(c),a=function(r){function e(e){var o=r.call(this)||this;return o.updating=!1,o}return o(e,r),t([p.property({constructOnly:!0})],e.prototype,"layer",void 0),t([p.property({constructOnly:!0})],e.prototype,"layerView",void 0),t([p.property({type:l,constructOnly:!0})],e.prototype,"graphics",void 0),t([p.property({readOnly:!0})],e.prototype,"updating",void 0),e=t([p.subclass("esri.layers.graphics.controllers.MemoryController")],e)}(p.declared(n,i));return a});
+define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../Graphic","../../../core/Accessor","../../../core/Collection","../../../core/Promise","../../../core/accessorSupport/decorators"],function(r,e,o,t,p,c,n,s,i){var l=n.ofType(p);return function(r){function e(e){var o=r.call(this)||this;return o.updating=!1,o}return o(e,r),t([i.property({constructOnly:!0})],e.prototype,"layer",void 0),t([i.property({constructOnly:!0})],e.prototype,"layerView",void 0),t([i.property({type:l,constructOnly:!0})],e.prototype,"graphics",void 0),t([i.property({readOnly:!0})],e.prototype,"updating",void 0),e=t([i.subclass("esri.layers.graphics.controllers.MemoryController")],e)}(i.declared(c,s))});

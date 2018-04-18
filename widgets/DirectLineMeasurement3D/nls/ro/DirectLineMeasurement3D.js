@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define({title:"Măsurarea",hint:"Începeţi să măsuraţi făcând clic în scenă pentru a plasa primul punct",distance:"Distanţă",direct:"Direct",horizontal:"Orizontal",vertical:"Vertical",unit:"Unitate",newMeasurement:"Măsurătoare nouă",units:{metric:"Metric",imperial:"Englez",kilometers:"Kilometri",meters:"Metri",miles:"Mile",inches:"Inci",feet:"Ft",yards:"Yarzi","nautical-miles":"Mile marine","us-feet":"Picioare (SUA)","degrees-minutes-seconds":"DMS",degrees:"Grade"}});
+define({title:"Măsurarea",hint:"Începeţi să măsuraţi făcând clic în scenă pentru a plasa primul punct",unsupported:"Măsurarea directă a liniei nu este suportată în MapView.",distance:"Distanţă",direct:"Direct",horizontal:"Orizontal",vertical:"Vertical",unit:"Unitate",newMeasurement:"Măsurătoare nouă",units:{metric:"Metric",imperial:"Englez",kilometers:"Kilometri",meters:"Metri",miles:"Mile",inches:"Inci",feet:"Ft",yards:"Yarzi","nautical-miles":"Mile marine","us-feet":"Picioare (SUA)","degrees-minutes-seconds":"DMS",degrees:"Grade"}});

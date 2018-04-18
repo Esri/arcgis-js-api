@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/JSONSupport","../core/Collection","../core/collectionUtils","../core/accessorSupport/decorators","./Slide"],function(e,r,t,s,o,i,n,c,l){var u=i.ofType(l),p=function(e){function r(r){var t=e.call(this,r)||this;return t.slides=new u,t}return t(r,e),Object.defineProperty(r.prototype,"slides",{set:function(e){this._set("slides",n.referenceSetter(e,this._get("slides"),u))},enumerable:!0,configurable:!0}),r.prototype.clone=function(){var e=this.constructor;return new e({slides:this.slides.clone()})},r.sanitizeJSON=function(e){var r;return r=void 0!==e.slides&&Array.isArray(e.slides)?e.slides.filter(function(e){return e&&!!e.viewpoint}).map(function(e){return l.sanitizeJSON(e)}):[],{slides:r}},s([c.property({type:u,json:{write:!0}}),c.cast(n.castForReferenceSetter)],r.prototype,"slides",null),r=s([c.subclass("esri.webscene.Presentation")],r)}(c.declared(o));return p});
+define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/Collection","../core/collectionUtils","../core/JSONSupport","../core/accessorSupport/decorators","./Slide"],function(e,r,t,s,o,i,n,c,l){var u=o.ofType(l);return function(e){function r(r){var t=e.call(this,r)||this;return t.slides=new u,t}return t(r,e),Object.defineProperty(r.prototype,"slides",{set:function(e){this._set("slides",i.referenceSetter(e,this._get("slides"),u))},enumerable:!0,configurable:!0}),r.prototype.clone=function(){return new(0,this.constructor)({slides:this.slides.clone()})},r.sanitizeJSON=function(e){var r;return r=void 0!==e.slides&&Array.isArray(e.slides)?e.slides.filter(function(e){return e&&!!e.viewpoint}).map(function(e){return l.sanitizeJSON(e)}):[],{slides:r}},s([c.property({type:u,json:{write:!0}}),c.cast(i.castForReferenceSetter)],r.prototype,"slides",null),r=s([c.subclass("esri.webscene.Presentation")],r)}(c.declared(n))});

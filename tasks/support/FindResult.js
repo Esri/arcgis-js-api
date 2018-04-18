@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["../../core/JSONSupport","../../Graphic"],function(e,r){var t=e.createSubclass({declaredClass:"esri.tasks.support.FindResult",properties:{displayFieldName:null,feature:{value:null,type:r,json:{read:{source:["attributes","geometry"],reader:function(e,t){var a={};return t.attributes&&(a.attributes=t.attributes),t.geometry&&(a.geometry=t.geometry),r.fromJSON(a)}}}},foundFieldName:null,layerId:null,layerName:null,value:{value:null}}});return t});
+define(["../../core/JSONSupport","../../Graphic"],function(e,r){return e.createSubclass({declaredClass:"esri.tasks.support.FindResult",properties:{displayFieldName:null,feature:{value:null,type:r,json:{read:{source:["attributes","geometry"],reader:function(e,t){var l={};return t.attributes&&(l.attributes=t.attributes),t.geometry&&(l.geometry=t.geometry),r.fromJSON(l)}}}},foundFieldName:null,layerId:null,layerName:null,value:{value:null}}})});

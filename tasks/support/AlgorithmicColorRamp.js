@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["../../Color","./ColorRamp"],function(o,r){var l=r.createSubclass({declaredClass:"esri.tasks.support.AlgorithmicColorRamp",properties:{algorithm:null,fromColor:{value:null,type:o},toColor:{value:null,type:o},type:"algorithmic"},toJSON:function(){var r;switch(this.algorithm.toLowerCase()){case"cie-lab":r="esriCIELabAlgorithm";break;case"hsv":r="esriHSVAlgorithm";break;case"lab-lch":r="esriLabLChAlgorithm"}var l={type:"algorithmic",algorithm:r};return l.fromColor=o.toJSON(this.fromColor),l.toColor=o.toJSON(this.toColor),l}});return l});
+define(["../../Color","./ColorRamp"],function(o,r){return r.createSubclass({declaredClass:"esri.tasks.support.AlgorithmicColorRamp",properties:{algorithm:null,fromColor:{value:null,type:o},toColor:{value:null,type:o},type:"algorithmic"},toJSON:function(){var r;switch(this.algorithm.toLowerCase()){case"cie-lab":r="esriCIELabAlgorithm";break;case"hsv":r="esriHSVAlgorithm";break;case"lab-lch":r="esriLabLChAlgorithm"}var l={type:"algorithmic",algorithm:r};return l.fromColor=o.toJSON(this.fromColor),l.toColor=o.toJSON(this.toColor),l}})});

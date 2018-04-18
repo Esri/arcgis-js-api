@@ -1,4 +1,4 @@
-// COPYRIGHT © 2017 Esri
+// COPYRIGHT © 2018 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/4.6/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../Color","../../core/JSONSupport","../../core/lang","../../core/accessorSupport/decorators","../support/materialUtils"],function(r,e,o,t,l,n,p,c,s){Object.defineProperty(e,"__esModule",{value:!0});var u=function(r){function e(){var e=null!==r&&r.apply(this,arguments)||this;return e.color=new l("white"),e}return o(e,r),n=e,e.prototype.clone=function(){return new n({color:p.clone(this.color)})},t([c.property(s.colorAndTransparencyProperty)],e.prototype,"color",void 0),e=n=t([c.subclass("esri.symbols.support.LineCallout3DBorder")],e);var n}(c.declared(n));e.LineCallout3DBorder=u,e["default"]=u});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../Color","../../core/JSONSupport","../../core/lang","../../core/accessorSupport/decorators","../support/materialUtils"],function(r,e,o,t,l,c,n,p,s){Object.defineProperty(e,"__esModule",{value:!0});var u=function(r){function e(){var e=null!==r&&r.apply(this,arguments)||this;return e.color=new l("white"),e}return o(e,r),c=e,e.prototype.clone=function(){return new c({color:n.clone(this.color)})},t([p.property(s.colorAndTransparencyProperty)],e.prototype,"color",void 0),e=c=t([p.subclass("esri.symbols.callouts.LineCallout3DBorder")],e);var c}(p.declared(c));e.LineCallout3DBorder=u,e.default=u});
