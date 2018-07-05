@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({zoom:"ズーム",next:"次のフィーチャ",previous:"前のフィーチャ",close:"閉じる",dock:"ドッキング",undock:"ドッキング解除",menu:"メニュー",untitled:"無題",pageText:"{index} / {total}",selectedFeature:"選択フィーチャ",selectedFeatures:"{total} 件の結果",loading:"読み込んでいます",collapse:"折りたたむ",expand:"展開する"});

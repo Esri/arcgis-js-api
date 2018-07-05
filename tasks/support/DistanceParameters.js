@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define(["../../core/Accessor","../../core/kebabDictionary","../../geometry/support/jsonUtils"],function(e,t,s){var r=t({9001:"meters",9002:"feet",9036:"kilometers",9093:"miles",109012:"nautical-miles",109001:"yards"});return e.createSubclass({declaredClass:"esri.tasks.support.DistanceParameters",properties:{geometry1:null,geometry2:null,distanceUnit:null,geodesic:null},toJSON:function(){var e={},t=this.geometry1;t&&(e.geometry1=JSON.stringify({geometryType:s.getJsonType(t),geometry:t}),e.sr=JSON.stringify(this.geometry1.spatialReference.toJSON()));var i=this.geometry2;return i&&(e.geometry2=JSON.stringify({geometryType:s.getJsonType(i),geometry:i})),this.distanceUnit&&(e.distanceUnit=r.toJSON(this.distanceUnit)),this.geodesic&&(e.geodesic=this.geodesic),e}})});

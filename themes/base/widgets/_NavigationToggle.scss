@@ -8,7 +8,7 @@ $earmark_size: 6px !default;
     &:focus {
       background-color: $background_hover_color;
       .esri-navigation-toggle__button {
-        color: $button_text_hover_color;
+        color: $interactive_text_color--hover;
       }
     }
   }
@@ -29,7 +29,7 @@ $earmark_size: 6px !default;
       @include earmarkStem();
       opacity: 0;
       border-width: 0 $earmark_size $earmark_size 0;
-      border-color: transparent $button_text_hover_color transparent transparent;
+      border-color: transparent $interactive_text_color--hover transparent transparent;
     }
     &:hover,
     &:focus {
@@ -46,7 +46,7 @@ $earmark_size: 6px !default;
   }
 
   .esri-navigation-toggle__button--active {
-    color: $button_text_hover_color;
+    color: $interactive_text_color--hover;
     &:before {
       opacity: 1;
     }
@@ -74,7 +74,7 @@ $earmark_size: 6px !default;
     .esri-navigation-toggle__button {
       &:before {
         border-width: $earmark_size $earmark_size 0 0;
-        border-color: $button_text_hover_color transparent transparent transparent;
+        border-color: $interactive_text_color--hover transparent transparent transparent;
         right: auto;
         left: 1px;
       }

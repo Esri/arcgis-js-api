@@ -15,14 +15,37 @@
         "\t"
       ]
     },
+    "disablePopup": {
+      "type": "boolean",
+      "description": "Indicates whether to allow a client to ignore popups defined by the service item."
+    },
     "id": {
       "type": "string",
       "description": "A unique identifying string for the layer."
     },
     "layerDefinition": {
-      "type": "object",
-      "description": "A layerDefinition object defining the attribute schema and drawing information for the layer.",
-      "$ref": "layerDefinition_schema.json"
+      "description": "Additional properties that define drawing information and other configurations for the layer.",
+      "allOf": [
+        {
+          "$ref": "layerDefinition_schema.json"
+        },
+        {
+          "properties": {
+            "definitionExpression": {},
+            "drawingInfo": {},
+            "elevationInfo": {},
+            "featureReduction": {},
+            "fields": {},
+            "maxScale": {},
+            "minScale": {},
+            "name": {},
+            "type": {},
+            "typeIdField": {},
+            "types": {}
+          },
+          "additionalProperties": false
+        }
+      ]
     },
     "layerType": {
       "type": "string",

@@ -21,10 +21,7 @@
 ]]></snippet>
 
 <snippet name="fsCheckerBoard"><![CDATA[
-#ifdef GL_OES_standard_derivatives
-#extension GL_OES_standard_derivatives : enable
-#endif
-
+  $enableRequiredExtensions
   $fsprecisionf
 
   uniform vec2 size;
@@ -36,15 +33,10 @@
   void main() {
     vec2 uvScaled = vUV / (2.0 * size);
 
-#ifdef GL_OES_standard_derivatives
     vec2 uv = fract(uvScaled - 0.25);
     vec2 ab = clamp((abs(uv - 0.5) - 0.25) / fwidth(uvScaled), -0.5, 0.5);
     float fade = smoothstep(0.25, 0.5, max(fwidth(uvScaled.x), fwidth(uvScaled.y)));
     float t = mix(abs(ab.x + ab.y), 0.5, fade);
-#else
-    vec2 ab = step(0.5, fract(uvScaled));
-    float t = abs(1.0 - ab.x - ab.y);
-#endif
 
     gl_FragColor = mix(color2, color1, t);
   }

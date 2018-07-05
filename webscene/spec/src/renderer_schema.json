@@ -8,7 +8,10 @@
       "$ref": "classBreaksRenderer_schema.json"
     },
     {
-      "$ref": "pointCloudRenderer_schema.json"
+      "$ref": "pointCloudRenderers_schema.json"
+    },
+    {
+      "$ref": "rasterRenderers_schema.json"
     },
     {
       "$ref": "simpleRenderer_schema.json"

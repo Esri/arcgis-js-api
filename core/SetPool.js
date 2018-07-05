@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
-define(["require","exports","./ObjectPool"],function(e,r,n){var t=function(){function e(e,r){void 0===e&&(e=50),void 0===r&&(r=50),this._pool=new n(Set,!1,function(e){return e.clear()},r,e)}return e.prototype.acquire=function(){return this._pool.acquire()},e.prototype.release=function(e){this._pool.release(e)},e.acquire=function(){return o.acquire()},e.release=function(e){return o.release(e)},e}(),o=new t(100);return t});
+define(["require","exports","@dojo/shim/Set"],function(e,t,o){Object.defineProperty(t,"__esModule",{value:!0});var r=function(){function e(){this._pool=[],this._set=new o.default}return e.prototype.acquire=function(){if(0===this._pool.length)return new o.default;var e=this._pool.pop();return this._set.delete(e),e},e.prototype.release=function(e){e&&!this._set.has(e)&&(e.clear(),this._pool.length<5e4&&(this._pool.push(e),this._set.add(e)))},e.acquire=function(){return n.acquire()},e.release=function(e){return n.release(e)},e}();t.default=r;var n=new r});

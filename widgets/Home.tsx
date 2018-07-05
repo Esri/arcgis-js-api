@@ -28,32 +28,33 @@
  * view.ui.add(homeWidget, "top-left");
  */
 
-/// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
+/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
+/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
 
 // dojo
-import * as i18n from "dojo/i18n!./Home/nls/Home";
+import * as i18n from "dojo/i18n!esri/widgets/Home/nls/Home";
 
 // esri
-import Viewpoint = require("../Viewpoint");
+import Viewpoint = require("esri/Viewpoint");
 
 // esri.core.accessorSupport
-import { aliasOf, subclass, property, declared } from "../core/accessorSupport/decorators";
+import { aliasOf, subclass, property, declared } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import View = require("../views/View");
+import View = require("esri/views/View");
 
 // esri.widgets
-import Widget = require("./Widget");
+import Widget = require("esri/widgets/Widget");
 
 // esri.widgets.Home
-import HomeViewModel = require("./Home/HomeViewModel");
+import HomeViewModel = require("esri/widgets/Home/HomeViewModel");
 
 // esri.widgets.support
-import { accessibleHandler, tsx, renderable, vmEvent } from "./support/widget";
+import { GoToOverride } from "esri/widgets/support/interfaces";
+import { accessibleHandler, tsx, renderable, vmEvent } from "esri/widgets/support/widget";
 
 const CSS = {
-  base: "esri-home esri-widget-button esri-widget",
+  base: "esri-home esri-widget--button esri-widget",
   text: "esri-icon-font-fallback-text",
   homeIcon: "esri-icon esri-icon-home",
   loadingIcon: "esri-icon-loading-indicator",
@@ -66,7 +67,6 @@ const CSS = {
 
 @subclass("esri.widgets.Home")
 class Home extends declared(Widget) {
-
   /**
    * Fires when the [go()](#go) method is called.
    *
@@ -90,6 +90,7 @@ class Home extends declared(Widget) {
    * @constructor
    * @alias module:esri/widgets/Home
    * @extends module:esri/widgets/Widget
+   * @mixes module:esri/widgets/support/GoTo
    * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                              that may be passed into the constructor.
    *
@@ -111,11 +112,17 @@ class Home extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   //----------------------------------
+  //  goToOverride
+  //----------------------------------
+
+  @aliasOf("viewModel.goToOverride") goToOverride: GoToOverride = null;
+
+  //----------------------------------
   //  iconClass
   //----------------------------------
 
   /**
-   * The widget's default icon font.
+   * The widget's default CSS icon class.
    *
    * @since 4.7
    * @name iconClass
@@ -123,8 +130,7 @@ class Home extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property()
-  iconClass = CSS.widgetIcon;
+  @property() iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -139,8 +145,7 @@ class Home extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property()
-  label: string = i18n.widgetLabel;
+  @property() label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  view
@@ -207,8 +212,7 @@ class Home extends declared(Widget) {
    * // Sets the model's viewpoint to the Viewpoint based on a polygon geometry
    * home.viewpoint = vp;
    */
-  @aliasOf("viewModel.viewpoint")
-  viewpoint: Viewpoint = null;
+  @aliasOf("viewModel.viewpoint") viewpoint: Viewpoint = null;
 
   //--------------------------------------------------------------------------
   //
@@ -224,7 +228,9 @@ class Home extends declared(Widget) {
    * @see [Event: go](#event:go)
    */
   @aliasOf("viewModel.go")
-  go(): IPromise<void> { return null; }
+  go(): IPromise<void> {
+    return null;
+  }
 
   render() {
     const state = this.get("viewModel.state");
@@ -237,18 +243,17 @@ class Home extends declared(Widget) {
     };
 
     return (
-      <div bind={this}
-        class={CSS.base}
-        classes={rootClasses}
+      <div
+        bind={this}
+        class={this.classes(CSS.base, rootClasses)}
         role="button"
         tabIndex={0}
         onclick={this._go}
         onkeydown={this._go}
         aria-label={i18n.title}
-        title={i18n.title}>
-        <span classes={iconClasses}
-          aria-hidden="true"
-          class={CSS.homeIcon} />
+        title={i18n.title}
+      >
+        <span aria-hidden="true" class={this.classes(CSS.homeIcon, iconClasses)} />
         <span class={CSS.text}>{i18n.button}</span>
       </div>
     );
@@ -264,7 +269,6 @@ class Home extends declared(Widget) {
   private _go() {
     this.go();
   }
-
 }
 
 export = Home;

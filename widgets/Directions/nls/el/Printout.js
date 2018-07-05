@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({printNotes:"Εισαγάγετε σημειώσεις εδώ",printDisclaimer:"Οι οδηγίες παρέχονται μόνο για σκοπούς προγραμματισμού και διέπονται από τους <a href='http://www.esri.com/legal/licensing-translations' target='_blank'>όρους χρήσης υπηρεσιών της Esri</a>. Ενδέχεται να υπάρχουν δυναμικές οδικές συνθήκες οι οποίες επηρεάζουν την ορθότητα των οδηγιών σας και πρέπει να ληφθούν υπόψη σε συνδυασμό με σήματα και νομικούς περιορισμούς. Η συνολική ευθύνη της χρήσης βαρύνει αποκλειστικά εσάς.",printoutError:"Φαίνεται να έχει προκύψει κάποιο σφάλμα."});

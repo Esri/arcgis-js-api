@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({printNotes:"Insira anotações aqui",printDisclaimer:"As direções são fornecidas para propósitos de planejamento somente e estão sujeitas aos <a href='http://www.esri.com/legal/licensing-translations' target='_blank'>Termos de Uso da Esri</a>. As condições da estrada dinâmica podem existir fazendo com que a precisão seja diferente das suas direções e devem ser levadas em consideração juntamente com sinais e restrições legais. Você assume todo o risco de uso.",printoutError:"Parece haver um erro."});

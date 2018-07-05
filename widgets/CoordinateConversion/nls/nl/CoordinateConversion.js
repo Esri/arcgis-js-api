@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({abbreviatedDirections:{north:"N",south:"Z",east:"O",west:"W"},addConversion:"Conversie toevoegen",captureMode:"Registratiemodus",changeCoordinateDisplay:"Coördinatenweergave wijzigen",convert:"Omzetten",conversionOutputSuffix:"conversie-uitvoer",copySuccessMessage:"Coördinaat gekopieerd naar klembord",defaultPattern:"Herstellen naar standaardinstellingen",goTo:"Ga naar locatie",inputCoordTitle:"Invoercoördinaat",invalidCoordinate:"Ongeldige coördinaat",liveMode:"Livemodus",locationOffBasemap:"Invoercoördinaat bevindt zich buiten basiskaartextent",noBasemap:"Geen basiskaart.",noLocation:"Geen positie",removeConversion:"Conversie verwijderen",selectFormat:"Formaat selecteren",settingsTitle:"Opmaakinstellingen"});

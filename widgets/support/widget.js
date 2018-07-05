@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
-define(["require","exports","./decorators","./jsxFactory","./widgetUtils","../Widget"],function(e,t,n,i,o,r){function f(e){for(var n in e)t.hasOwnProperty(n)||(t[n]=e[n])}function u(e){return e&&e instanceof r}function s(e){return e&&"function"==typeof e.postMixInProperties&&"function"==typeof e.buildRendering&&"function"==typeof e.postCreate&&"function"==typeof e.startup}Object.defineProperty(t,"__esModule",{value:!0}),f(n),f(i),f(o),t.isWidget=u,t.isWidgetBase=s});
+define(["require","exports","./decorators","./jsxFactory","./widgetUtils"],function(e,t,n,o,i){function r(e){for(var n in e)t.hasOwnProperty(n)||(t[n]=e[n])}function f(e){return e&&"function"==typeof e.render}function u(e){return e&&"function"==typeof e.postMixInProperties&&"function"==typeof e.buildRendering&&"function"==typeof e.postCreate&&"function"==typeof e.startup}Object.defineProperty(t,"__esModule",{value:!0}),r(n),r(o),r(i),t.isWidget=f,t.isWidgetBase=u});

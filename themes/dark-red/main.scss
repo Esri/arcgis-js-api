@@ -10,17 +10,20 @@ $text_color: $Calcite_Gray_200;
 $background_color: $Calcite_Dark_Gray_050;
 $anchor_color: $Calcite_Vibrant_Red_150;
 $anchor_hover_color: rgba($Calcite_Vibrant_Red_150, 0.75);
-$button_text_color: $Calcite_Vibrant_Red_150;
-$button_text_hover_color: $Calcite_Vibrant_Red_150;
+$interactive_text_color: $Calcite_Vibrant_Red_150;
+$interactive_text_color--hover: $Calcite_Vibrant_Red_150;
 $border_color: rgba($Calcite_Vibrant_Red_150, 0.2);
 
+$header_color: $text_color;
+
 $button_color: $Calcite_Vibrant_Red_150;
+$button_color--inverse: $background_color;
 
 // Inverse
-$text_inverse_color: $button_text_color;
+$interactive_text_color--inverse: $interactive_text_color;
 
 // Selected
-$selected_border_color: $button_text_color;
+$selected_border_color: $interactive_text_color;
 $selected_background_color: #000000;
 
 @import "../base/core";

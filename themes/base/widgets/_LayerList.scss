@@ -30,7 +30,7 @@
     border-bottom: 1px solid $border_color;
     position: relative;
     overflow: hidden;
-    color: $button_text_color;
+    color: $interactive_text_color;
     list-style: none;
     margin: floor($cap_spacing/4) 0;
     padding: 0;
@@ -39,8 +39,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    padding: floor($cap_spacing * 0.75) floor($side_spacing/2) floor($cap_spacing * 0.75)
-      ($side_spacing + 5);
+    padding: floor($cap_spacing * 0.75) floor($side_spacing/2) floor($cap_spacing * 0.75) ($side_spacing + 5);
   }
   .esri-layer-list__item--invisible-at-scale > .esri-layer-list__item-container {
     padding-top: floor($cap_spacing * 0.5);
@@ -57,7 +56,7 @@
     font-size: $text_size_small;
   }
   .esri-layer-list__child-toggle {
-    color: $button_text_color;
+    color: $interactive_text_color;
     width: $side_spacing; // Matches side padding on items that don't have this toggle.
     cursor: pointer;
   }
@@ -139,7 +138,7 @@
     z-index: 1;
   }
   .esri-layer-list__item:after {
-    background-color: $button_text_color;
+    background-color: $interactive_text_color;
     width: $looping_progress_bar_width;
     z-index: 2;
     animation: looping-progresss-bar-ani $looping_progress_bar_params;
@@ -156,7 +155,7 @@
     flex: 1 0 floor($text_size * 1.5);
     justify-content: center;
     align-items: center;
-    color: $button_text_color;
+    color: $interactive_text_color;
     cursor: pointer;
     padding: 0 floor($side_spacing/4);
     transition: border-color 250ms ease-in-out;
@@ -174,7 +173,7 @@
   .esri-layer-list__item-actions {
     position: relative;
     background-color: $background_inverse_color;
-    color: $text_inverse_color;
+    color: $interactive_text_color--inverse;
     margin: -1px floor($side_spacing/2) floor($cap_spacing/2);
     height: auto;
   }
@@ -188,7 +187,7 @@
     display: none;
   }
   .esri-layer-list__item-actions-close {
-    color: $button_text_color;
+    color: $interactive_text_color;
     position: absolute;
     top: 0;
     right: 0;
@@ -208,10 +207,10 @@
   .esri-layer-list__item-actions-list:first-of-type {
     border-top: 0;
   }
-  .esri-layer-list .esri-layer-list__item-action {
+  .esri-layer-list__item-action,
+  .esri-layer-list__action-toggle {
     border: 1px solid transparent;
     display: flex;
-    flex-flow: row;
     justify-content: flex-start;
     align-items: flex-start;
     cursor: pointer;
@@ -222,21 +221,64 @@
     opacity: 1;
     transition: opacity 250ms ease-in-out 250ms, background-color 250ms ease-in-out;
   }
-  .esri-layer-list__item-action:hover {
-    background-color: $background_active_reverse_color;
+
+  .esri-layer-list__item-action {
+    justify-content: flex-start;
+    flex-flow: row;
   }
-  .esri-layer-list__item-action:focus {
+  .esri-layer-list__action-toggle {
+    flex-flow: row-reverse;
+    justify-content: space-between;
+    .esri-layer-list__item-action-title {
+      margin-left: 0;
+    }
+    .esri-layer-list__item-action-icon {
+      background-color: $background_inverse_color;
+      border-radius: $toggle_height;
+      box-shadow: 0 0 0 1px $interactive_text_color--inverse;
+      flex: 0 0 $toggle_width;
+      height: $toggle_height;
+      overflow: hidden;
+      padding: 0;
+      position: relative;
+      transition: background-color 125ms ease-in-out;
+      width: $toggle_width;
+      &:before {
+        // Toggle handle. Overrides any icon class
+        background-color: $interactive_text_color--inverse;
+        border-radius: 100%;
+        content: "";
+        display: block;
+        height: $toggle_height - 4;
+        left: 0;
+        margin: 2px;
+        position: absolute;
+        top: 0;
+        transition: background-color 125ms ease-in-out;
+        width: $toggle_height - 4;
+      }
+    }
+  }
+  .esri-layer-list__action-toggle--on .esri-layer-list__item-action-icon {
+    // Toggle on
+    background-color: $interactive_text_color--inverse;
+    &:before {
+      background-color: $background_inverse_color;
+      box-shadow: 0 0 0 1px $background_inverse_color;
+      left: unset;
+      right: 0px;
+    }
+  }
+  .esri-layer-list__item-action:hover,
+  .esri-layer-list__action-toggle:hover {
     background-color: $background_active_reverse_color;
-    outline: none;
-    border: solid 1px rgba($background_color, 0.5);
   }
   .esri-layer-list__item-actions[hidden] .esri-layer-list__item-action {
     opacity: 0;
   }
   .esri-layer-list__item-action-icon {
     flex: 0 0 $side_spacing;
-    font-size: $text_size;
-    margin-top: 0.2em;
+    margin-top: 0.1em;
   }
   .esri-layer-list__item-action-image {
     flex: 0 0 $side_spacing;
@@ -253,6 +295,10 @@
   }
   .esri-layer-list-panel {
     margin: $cap_spacing $side_spacing;
+  }
+  // Legend as content
+  .esri-layer-list-panel__content--legend .esri-legend__service {
+    padding: 0 0 $cap_spacing 0;
   }
 
   html[dir="rtl"] .esri-layer-list {
@@ -278,6 +324,9 @@
     .esri-layer-list__item-action-title {
       margin-left: 0;
       margin-right: 5px;
+    }
+    .esri-layer-list__action-toggle .esri-layer-list__action-toggle {
+      margin-right: 0;
     }
     .esri-layer-list__item:after {
       animation: looping-progresss-bar-ani $looping_progress_bar_params reverse;

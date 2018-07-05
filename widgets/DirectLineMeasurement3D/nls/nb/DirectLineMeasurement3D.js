@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({title:"Mål",hint:"Begynn å måle ved å klikke på scenen for å plassere ditt første punkt",unsupported:"MapView har ikke støtte for måling av direkte linje.",distance:"Avstand",direct:"Direkte",horizontal:"Vannrett",vertical:"Loddrett",unit:"Enhet",newMeasurement:"Ny måling",units:{metric:"Metrisk",imperial:"Britiske målenheter",kilometers:"Kilometer",meters:"Meter",miles:"Miles",inches:"Tommer",feet:"Fot",yards:"Yard","nautical-miles":"Nautiske mil","us-feet":"fot (USA)","degrees-minutes-seconds":"DMS",degrees:"Grader"}});

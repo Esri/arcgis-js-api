@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({statsAvg:"Среднее : ${avg}",count:"Число : ${count}",percent:"${num}%",high:"Высокий",low:"Низкий",color:{changeMinMaxToolTIp:"Введите значение.",handleToolTip:"Установите соответствие значений для цветов.",maxValueToolTip:"Введите самое большое ожидаемое значение.",minValueToolTip:"Введите самое малое ожидаемое значение.",changeSymbol:"Изменить символ"},size:{handleToolTip:"Укажите соответствие значений для размера символов.",sizeInputBoxLines:"Задайте толщину линии от 0 до 18 пикселов.",sizeInputBoxPoints:"Задайте размер символа от 1 до 120 пикселов"}});

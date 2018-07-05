@@ -1,0 +1,14 @@
+{
+  "title": "Edges",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Edges describe additional styles applied to visually important edges of 3D objects.",
+  "oneOf": [
+    {
+      "$ref": "sketchEdges_schema.json"
+    },
+    {
+      "$ref": "solidEdges_schema.json"
+    }
+  ]
+}

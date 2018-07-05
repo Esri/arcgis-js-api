@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
-define(["require","exports","./DefaultVertexAttributeLocations","./DefaultVertexBufferLayouts","../../../webgl/BufferObject","../../../webgl/Texture","../../../webgl/VertexArrayObject"],function(e,t,r,a,o,u,n){function i(e,t){void 0===t&&(t=a.Pos2);var u=t===a.Pos3Tex?new Float32Array([-1,-1,0,0,0,1,-1,0,1,0,-1,1,0,0,1,1,1,0,1,1]):new Float32Array([-1,-1,1,-1,-1,1,1,1]);return new n(e,r.Default3D,{geometry:t},{geometry:o.createVertex(e,35044,u)})}function f(e){return new u(e,{target:3553,pixelFormat:6408,dataType:5121,samplingMode:9728,width:4,height:4})}Object.defineProperty(t,"__esModule",{value:!0}),t.createQuadVAO=i,t.createEmptyTexture=f});
+define(["require","exports","./DefaultVertexAttributeLocations","./DefaultVertexBufferLayouts","../../../webgl/BufferObject","../../../webgl/Texture","../../../webgl/VertexArrayObject"],function(e,t,r,a,o,n,i){function u(e,t){void 0===t&&(t=a.Pos2);var n=t===a.Pos3Tex?new Float32Array([-1,-1,0,0,0,1,-1,0,1,0,-1,1,0,0,1,1,1,0,1,1]):new Float32Array([-1,-1,1,-1,-1,1,1,1]);return new i(e,r.Default3D,{geometry:t},{geometry:o.createVertex(e,35044,n)})}function l(e,t){return void 0===t&&(t=d),new n(e,{target:3553,pixelFormat:6408,dataType:5121,samplingMode:9728,width:t,height:t})}function f(e,t,r){void 0===r&&(r=d);for(var a=new Uint8Array(r*r*4),o=0;o<a.length;o+=4)a[o+0]=255*t[0],a[o+1]=255*t[1],a[o+2]=255*t[2],a[o+3]=255*t[3];return new n(e,{target:3553,pixelFormat:6408,dataType:5121,samplingMode:9728,width:r,height:r},a)}Object.defineProperty(t,"__esModule",{value:!0}),t.createQuadVAO=u;var d=4;t.createEmptyTexture=l,t.createColorTexture=f});

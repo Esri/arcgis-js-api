@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 /**
        * Defines the layout elements. It's an object with the following properties:
@@ -30,7 +30,7 @@
        * @property {string} copyrightText - The text used for the copyright if the specified layout contains an copyright text element.
        * @property {string} [scalebarUnit=Miles] - The unit used for the scalebar.
        *
-       * **Known Values:** `Miles` | `Kilometers` | `Meters` | `Feet`
+       * **Possible Values:** `Miles` | `Kilometers` | `Meters` | `Feet`
        * @property {module:esri/tasks/support/LegendLayer[]} legendLayers - An array of {@link module:esri/tasks/support/LegendLayer} containing the id's of the layers that
        * will be included in the legend. If `legendLayers` is not specified, all operational layers will be present in the legend. To specify
        * that no layers will be included in the legend set `legendLayer = []`.
@@ -53,4 +53,4 @@
        * @type {Object}
        */
 
-define(["../../core/Accessor"],function(e){return e.createSubclass({declaredClass:"esri.tasks.support.PrintTemplate",properties:{label:{value:null,type:String},exportOptions:{value:{width:800,height:1100,dpi:96},type:Object},layoutOptions:{value:null,type:Object},format:{value:"png32",type:String},layout:{value:"map-only",type:String},outScale:{value:0,type:Number},preserveScale:{value:!0,type:Boolean},attributionVisible:{type:Boolean},showLabels:{value:!0,type:Boolean}}})});
+define(["../../core/Accessor"],function(e){return e.createSubclass({declaredClass:"esri.tasks.support.PrintTemplate",properties:{attributionVisible:{value:!0,type:Boolean},exportOptions:{value:{width:800,height:1100,dpi:96},type:Object},forceFeatureAttributes:{value:!1,type:Boolean},format:{value:"png32",type:String},label:{value:null,type:String},layout:{value:"map-only",type:String},layoutOptions:{value:null,type:Object},outScale:{value:0,type:Number},preserveScale:{value:!0,type:Boolean},showLabels:{value:!0,type:Boolean}}})});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define(["require","exports","./Handles","./Logger"],function(e,r,n,s){return s.getLogger("esri.core.HandleRegistry").warn("HandleRegistry is deprecated, use esri.core.Handles instead."),n});

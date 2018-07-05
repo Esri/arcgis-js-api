@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
-define({title:"Finn min lokasjon"});
+define({widgetLabel:"Finn",title:"Finn min lokasjon"});

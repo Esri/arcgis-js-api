@@ -89,7 +89,7 @@
     },
     "where": {
       "type": "string",
-      "description": "Use a where clause to define a subset of rasters used in the mosaic, be aware that the rasters may not be visible at all scales."
+      "description": "Deprecated. Use `layerDefinition.definitionExpression` instead."
     }
   },
   "required": [

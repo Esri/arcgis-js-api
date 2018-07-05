@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({addTags:"Pievienot atslēgas vārdu(s)",noTagsFound:"Neatbilst neviens no esošajiem atslēgas vārdiem.",required:"Nepieciešams viens vai vairāki atslēgas vārdi."});

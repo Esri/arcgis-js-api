@@ -9,6 +9,12 @@
     padding: $cap_spacing 0;
   }
 
+  .esri-directions__sign-in-panel {
+    color: $interactive_text_color;
+    display: flex;
+    justify-content: center;
+  }
+
   .esri-directions__section {
     margin-top: $cap_spacing;
     margin-bottom: $cap_spacing;
@@ -26,9 +32,11 @@
     width: calc(100% - #{$side_spacing * 2});
   }
 
+  .esri-directions__panel-content--sign-in,
   .esri-directions__panel-content--loading,
   .esri-directions__panel-content--error {
     min-height: $panel_max_height;
+    color: $interactive_text_color;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -73,11 +81,24 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: $panel_min_height * 4;
   }
 
-  .esri-directions__message {
-    color: $button_text_color;
+  .esri-directions__sign-in-content {
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .esri-directions__sign-in-button {
+    width: auto;
+  }
+
+  .esri-directions__content-title {
+    margin-top: 0;
+    padding: 0 $cap_spacing;
+    align-self: flex-start;
   }
 
   .esri-directions__summary {
@@ -255,7 +276,7 @@
     justify-content: space-around;
     width: 100%;
     cursor: pointer;
-    padding: $cap_spacing $side_spacing;
+    padding: $cap_spacing $side_spacing 0;
   }
 
   .esri-directions__costs-details {
@@ -274,7 +295,7 @@
   .esri-directions__costs-value,
   .esri-directions__other-costs-total,
   .esri-directions__vertical-splitter {
-    color: $button_text_color;
+    color: $interactive_text_color;
     font-size: 1.5em;
     line-height: 1.5;
   }
@@ -298,8 +319,7 @@
 
   .esri-directions__maneuver {
     display: flex;
-    padding: floor($cap_spacing * 0.75) $side_spacing floor($cap_spacing * 0.75)
-      floor($side_spacing * 1.25);
+    padding: floor($cap_spacing * 0.75) $side_spacing floor($cap_spacing * 0.75) floor($side_spacing * 1.25);
     border: none;
     border-left: $border_size_active solid transparent;
     cursor: pointer;
@@ -334,9 +354,7 @@
   }
 
   .esri-directions__maneuver-section-title {
-    font-size: $h1_text_size;
-    color: $header_color;
-    padding: 0 floor($side_spacing * 0.5) $cap_spacing;
+    padding: 0 floor($side_spacing * 0.5) floor($cap_spacing * 0.5);
   }
 
   .esri-directions__maneuver-section-toggle {
@@ -381,30 +399,10 @@
     }
   }
 
-  .esri-directions__button {
-    height: $button_height;
-    width: 50%;
-    margin: floor($cap_spacing * 0.5) 0;
-    cursor: pointer;
-    border-radius: 0;
-    background-color: transparent;
-    border: 1px solid $button_color;
-    color: $button_color;
-  }
-
-  .esri-directions__button:hover {
-    background-color: $button_hover_color;
-    color: $background_color;
-  }
-
   .esri-directions__disclaimer {
     font-size: $text_size_small;
     color: $header_color;
     padding: 0 $side_spacing;
-  }
-
-  .esri-directions__disclaimer a {
-    color: $button_color;
   }
 
   // search overrides
@@ -412,7 +410,7 @@
     box-shadow: none;
     width: auto;
 
-    .esri-widget-button {
+    .esri-widget--button {
       display: none;
     }
   }

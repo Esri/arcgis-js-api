@@ -2,9 +2,12 @@
 $border_size_active: 4px !default;
 $button_width: 32px !default;
 $button_height: 32px !default;
+$toggle_width: floor($icon_text_size * 1.75) !default;
+$toggle_height: $icon_text_size !default;
 $panel_width: 300px !default;
 $panel_max_height: 420px !default;
-$panel_min_height: 32px !default;
+$panel_loading_height: 150ox !default;
+$panel_min_height: $button_height !default;
 $thumbnail_width: 100px !default;
 $thumbnail_height: 67px !default;
 $side_spacing: 15px !default;
@@ -20,6 +23,7 @@ $popup_pointer_corner_scale_x: 1 !default;
 $popup_pointer_corner_scale_y: 3.5 !default;
 $looping_progress_bar_width: 20% !default;
 $looping_progress_bar_params: 1500ms linear infinite !default;
+$spinning_loader_size: $icon_text_size !default;
 $view_ui_spacing: 10px !default;
 
 // Component Heights

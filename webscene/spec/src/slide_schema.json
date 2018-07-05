@@ -4,35 +4,21 @@
   "description": "A slide object used within a presentation.",
   "properties": {
     "baseMap": {
-      "type": "object",
-      "description": "Basemaps give the web scene a geographic context. Same as [baseMap](baseMap.md), but without `elevationLayers` property.",
-      "properties": {
-        "baseMapLayers": {
-          "type": "array",
-          "description": "An array of baseMapLayer objects defining the basemaps used in the web scene.",
-          "items": {
-            "type": "object",
-            "$ref": "baseMapLayer_schema.json"
+      "description": "The basemap to be displayed on the slide.",
+      "allOf": [
+        {
+          "$ref": "baseMap_schema.json"
+        },
+        {
+          "properties": {
+            "baseMapLayers": {},
+            "title": {},
+            "id": {},
+            "transparency": {}
           },
-          "uniqueItems": true
-        },
-        "title": {
-          "type": "string",
-          "description": "String title for the basemap that can be used in a table of contents. If not defined, then it takes the title of the first basemapLayer in the array."
-        },
-        "id": {
-          "type": "string",
-          "description": "A unique identifying string for the layer."
-        },
-        "transparency": {
-          "type": "number",
-          "description": "The degree of transparency applied to the layer on the client side, where 0 is full transparency and 1 is no transparency."
+          "additionalProperties": false
         }
-      },
-      "required": [
-        "baseMapLayers"
-      ],
-      "additionalProperties": false
+      ]
     },
     "description": {
       "type": "object",
@@ -41,7 +27,22 @@
     },
     "environment": {
       "type": "object",
-      "$ref": "environment_schema.json"
+      "description": "Represents settings that affect the environment in which the web scene is displayed.",
+      "allOf": [
+        {
+          "$ref": "environment_schema.json"
+        },
+        {
+          "properties": {
+            "lighting": {}
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "ground": {
+      "description": "The ground properties to be set in the slide.",
+      "$ref": "slide_ground_schema.json"
     },
     "id": {
       "type": "string",
@@ -144,6 +145,9 @@
                   "directShadows": true,
                   "displayUTCOffset": -5
                 }
+              },
+              "ground": {
+                "transparency": 60
               }
             }
           ]

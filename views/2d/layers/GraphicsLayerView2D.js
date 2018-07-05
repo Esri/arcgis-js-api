@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define(["require","exports","../../../core/tsSupport/extendsHelper","../../../core/tsSupport/decorateHelper","../../../core/Handles","../../../core/accessorSupport/decorators","./LayerView2D","./support/GraphicsView2D"],function(e,r,t,i,n,o,a,p){return function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r._handles=new n,r.graphicsView=new p,r.container=r.graphicsView.container,r}return t(r,e),r.prototype.hitTest=function(e,r){return this.graphicsView.hitTest(e,r)},r.prototype.attach=function(){var e=this;this.layer.createGraphicsController({layerView:this}).then(function(r){e._handles.add(e.layer.on("graphic-update",function(r){return e.graphicsView.graphicUpdateHandler(r)})),e.graphicsView.view=e.view,e.graphicsView.graphics=r.graphics})},r.prototype.detach=function(){this.graphicsView.graphics=null,this._handles.removeAll()},r.prototype.update=function(e){},r.prototype.moveStart=function(){},r.prototype.viewChange=function(){},r.prototype.moveEnd=function(){},r=i([o.subclass("esri.views.2d.layers.GraphicsLayerView2D")],r)}(o.declared(a))});

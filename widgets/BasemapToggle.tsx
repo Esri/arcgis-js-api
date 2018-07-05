@@ -32,40 +32,29 @@
  * });
  */
 
-/// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
+/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
+/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
 
 // dojo
-import * as i18n from "dojo/i18n!./BasemapToggle/nls/BasemapToggle";
+import * as i18n from "dojo/i18n!esri/widgets/BasemapToggle/nls/BasemapToggle";
 
 // esri
-import Basemap = require("../Basemap");
+import Basemap = require("esri/Basemap");
 
 // esri.core.accessorSupport
-import {
-  aliasOf,
-  subclass,
-  property,
-  declared
-} from "../core/accessorSupport/decorators";
+import { aliasOf, subclass, property, declared } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import View = require("../views/View");
+import View = require("esri/views/View");
 
 // esri.widgets
-import Widget = require("./Widget");
+import Widget = require("esri/widgets/Widget");
 
 // esri.widgets.BasemapToggle
-import BasemapToggleViewModel = require("./BasemapToggle/BasemapToggleViewModel");
+import BasemapToggleViewModel = require("esri/widgets/BasemapToggle/BasemapToggleViewModel");
 
 // esri.widgets.support
-import {
-  vmEvent,
-  renderable,
-  tsx,
-  accessibleHandler,
-  join
-} from "./support/widget";
+import { vmEvent, renderable, tsx, accessibleHandler } from "esri/widgets/support/widget";
 
 const CSS: any = {
   base: "esri-basemap-toggle esri-widget",
@@ -83,14 +72,11 @@ const CSS: any = {
 function getThumbnailStyles(basemap: Basemap): HashMap<string> {
   const thumbnailUrl = BasemapToggleViewModel.getThumbnailUrl(basemap);
 
-  return thumbnailUrl ?
-    { backgroundImage: "url(" + thumbnailUrl + ")" } :
-    { backgroundImage: "" };
+  return thumbnailUrl ? { backgroundImage: "url(" + thumbnailUrl + ")" } : { backgroundImage: "" };
 }
 
 @subclass("esri.widgets.BasemapToggle")
 class BasemapToggle extends declared(Widget) {
-
   /**
    * Fires after the [toggle()](#toggle) method is called.
    *
@@ -256,25 +242,29 @@ class BasemapToggle extends declared(Widget) {
       titleNode = (
         // need key to distinguish children - see http://maquettejs.org/docs/rules.html
         <div class={CSS.overlay} key="esri-basemap-toggle__overlay">
-          <span class={CSS.title} title={title}>{title}</span>
+          <span class={CSS.title} title={title}>
+            {title}
+          </span>
         </div>
       );
     }
 
     return (
-      <div class={CSS.base}
-           role="button"
-           data-basemap-id={nextBasemap ? nextBasemap.id : ""}
-           bind={this}
-           onclick={this._toggle}
-           onkeydown={this._toggle}
-           tabIndex={0}
-           title={i18n.toggle}>
+      <div
+        class={CSS.base}
+        role="button"
+        data-basemap-id={nextBasemap ? nextBasemap.id : ""}
+        bind={this}
+        onclick={this._toggle}
+        onkeydown={this._toggle}
+        tabIndex={0}
+        title={i18n.toggle}
+      >
         <div class={CSS.container}>
           <div class={CSS.image} styles={getThumbnailStyles(nextBasemap)} />
           {titleNode}
         </div>
-        <div class={join(CSS.container, CSS.secondaryBasemapImage)}>
+        <div class={this.classes(CSS.container, CSS.secondaryBasemapImage)}>
           <div class={CSS.image} styles={getThumbnailStyles(activeBasemap)} />
         </div>
       </div>
@@ -291,7 +281,6 @@ class BasemapToggle extends declared(Widget) {
   private _toggle() {
     this.toggle();
   }
-
 }
 
 export = BasemapToggle;

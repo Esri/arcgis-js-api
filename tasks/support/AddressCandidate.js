@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
-define(["../../core/JSONSupport","../../geometry/Extent","../../geometry/Point"],function(e,t,l){return e.createSubclass({declaredClass:"esri.tasks.support.AddressCandidate",properties:{address:null,attributes:null,extent:{value:null,type:t},location:{value:null,type:l},score:null}})});
+define(["../../core/JSONSupport","../../geometry/Extent","../../geometry/Point"],function(e,t,r){return e.createSubclass({declaredClass:"esri.tasks.support.AddressCandidate",properties:{address:{value:null,json:{write:!0}},attributes:{value:null,json:{write:!0}},extent:{value:null,type:t,json:{write:!0}},location:{value:null,type:r,json:{write:!0}},score:{value:null,json:{write:!0}}}})});

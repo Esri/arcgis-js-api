@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
-define({attach:"קישורים",fields:"שדות",fieldsSummary:"רשימת מאפיינים וערכים",media:"מדיה",next:"הבא",numCharts:"מספר התרשימים",numImages:"מספר התמונות",noTitle:"ללא כותרת",previous:"קודם"});
+define({attach:"קבצים מצורפים",fields:"שדות",fieldsSummary:"רשימת מאפיינים וערכים",media:"מדיה",next:"הבא",numCharts:"מספר התרשימים",numImages:"מספר התמונות",noTitle:"ללא כותרת",previous:"הקודם"});

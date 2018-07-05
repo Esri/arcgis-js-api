@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define(["require","exports","../../../core/tsSupport/extendsHelper","./Container"],function(e,t,n,r){return function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return n(t,e),t.prototype.createElement=function(){var e=document.createElement("div");return e.setAttribute("class","esri-display-object"),e},t.prototype.setElement=function(e){this.element=e},t.prototype.doRender=function(t){var n=this.element.style;if(!this.visible)return void(n.display="none");n.display="block",e.prototype.doRender.call(this,t)},t.prototype.prepareChildrenRenderParameters=function(e){return e},t.prototype.attachChild=function(e,t){var n=e.element;return n||(n=e.createElement(),e.setElement(n)),e.attach(t)},t.prototype.detachChild=function(e,t){e.detach(t),this.element.contains(e.element)&&this.element.removeChild(e.element),e.setElement(null)},t.prototype.renderChildren=function(t){for(var n=this.children,r=this.element.childNodes,i=0,l=n.length,o=0;o<l;o++)if(n[o].attached){var s=n[o].element;r[i]!==s&&(null!=r[i+1]?this.element.insertBefore(s,r[i]):this.element.appendChild(s)),i+=1}e.prototype.renderChildren.call(this,t)},t}(r)});

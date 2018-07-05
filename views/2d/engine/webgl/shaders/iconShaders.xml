@@ -9,13 +9,24 @@
 -->
 <snippets>
 
-  <snippet name="rgba2floatFunc">
-    <![CDATA[
+  <snippet name="rgba2float"><![CDATA[
+    // TODO consider moving this snippet into a util.xml file
+
+    // Factors to convert rgba back to float
+    const vec4 rgba2float_factors = vec4(
+        255.0 / (256.0),
+        255.0 / (256.0 * 256.0),
+        255.0 / (256.0 * 256.0 * 256.0),
+        255.0 / (256.0 * 256.0 * 256.0 * 256.0)
+      );
+
     float rgba2float(vec4 rgba) {
-      return dot(rgba,  vec4(1.0/16777216.0, 1.0/65535.0, 1.0/256.0, 1.0));
+      // Convert components from 0->1 back to 0->255 and then
+      // add the components together with their corresponding
+      // fixed point factors, i.e. (256^1, 256^2, 256^3, 256^4)
+      return dot(rgba, rgba2float_factors);
     }
-    ]]>
-  </snippet>
+  ]]></snippet>
 
   <snippet name="iconVVUniformsVS">
     <![CDATA[
@@ -59,8 +70,16 @@
 
   <snippet name="iconVVFunctions">
     <![CDATA[
+    bool isNan(float val) {
+      return !( val < 0.0 || 0.0 < val || val == 0.0 );
+    }
+
   #ifdef VV_SIZE_MIN_MAX_VALUE
-    float getVVMinMaxSize(float sizeValue) {
+    float getVVMinMaxSize(float sizeValue, float fallback) {
+      if (isNan(sizeValue)) {
+        return fallback;
+      }
+
       // we need to multiply by 8 in order to translate to tile coordinates
       float interpolationRatio = (sizeValue  - u_vvSizeMinMaxValue.x) / (u_vvSizeMinMaxValue.y - u_vvSizeMinMaxValue.x);
       interpolationRatio = clamp(interpolationRatio, 0.0, 1.0);
@@ -70,7 +89,11 @@
 
   #ifdef VV_SIZE_FIELD_STOPS
     const int VV_SIZE_N = 6;
-    float getVVStopsSize(float sizeValue) {
+    float getVVStopsSize(float sizeValue, float fallback) {
+      if (isNan(sizeValue)) {
+        return fallback;
+      }
+
       if (sizeValue <= u_vvSizeFieldStopsValues[0]) {
         return u_vvSizeFieldStopsSizes[0];
       }
@@ -87,7 +110,11 @@
   #endif // VV_SIZE_FIELD_STOPS
 
   #ifdef VV_SIZE_UNIT_VALUE
-    float getVVUnitValue(float sizeValue) {
+    float getVVUnitValue(float sizeValue, float fallback) {
+      if (isNan(sizeValue)) {
+        return fallback;
+      }
+
       return u_vvSizeUnitValueWorldToPixelsRatio * sizeValue;
     }
   #endif // VV_SIZE_UNIT_VALUE
@@ -95,6 +122,10 @@
   #ifdef VV_OPACITY
     const int VV_OPACITY_N = 8;
     float getVVOpacity(float opacityValue) {
+      if (isNan(opacityValue)) {
+        return 1.0;
+      }
+
       if (opacityValue <= u_vvOpacityValues[0]) {
         return u_vvOpacities[0];
       }
@@ -113,6 +144,12 @@
   #ifdef VV_ROTATION
     mat4 getVVRotation(float rotationValue) {
       // YF TODO: if the symbol has rotation we need to combine the symbo's rotation with the VV one
+      if (isNan(rotationValue)) {
+        return mat4(1, 0, 0, 0,
+                    0, 1, 0, 0,
+                    0, 0, 1, 0,
+                    0, 0, 0, 1);
+      }
 
       float rotation = rotationValue;
       if (u_vvRotationType == 1.0) {
@@ -134,7 +171,11 @@
   #ifdef VV_COLOR
     const int VV_COLOR_N = 8;
 
-    vec4 getVVColor(float colorValue) {
+    vec4 getVVColor(float colorValue, vec4 fallback) {
+      if (isNan(colorValue)) {
+        return fallback;
+      }
+
       if (colorValue <= u_vvColorValues[0]) {
         return u_vvColors[0];
       }
@@ -159,13 +200,10 @@
 
     //const float C_256_TO_RAD = 3.14159265359 / 128.0;
     const float C_DEG_TO_RAD = 3.14159265359 / 180.0;
-    const float C_OFFSET_PRECISION = 1.0 / 64.0;
-
-    // per-vertex attributes (4 bytes)
-    attribute vec4 a_vertexOffsetAndTex;
 
     // per quad (instance) attributes (20 bytes ==> equivalent of 5 bytes per vertex)
     attribute vec2 a_pos;
+    attribute vec4 a_vertexOffsetAndTex;
     attribute vec4 a_id; // since we need to render the Id as a color we need to break it into RGBA components. so just like a color, the Id is normalized.
     attribute vec4 a_color;
     attribute vec4 a_outlineColor;
@@ -231,7 +269,7 @@
 
   #ifdef VV_SIZE_MIN_MAX_VALUE
       // vv size override the original symbol's size
-      float h = getVVMinMaxSize(a_vv.x);
+      float h = getVVMinMaxSize(a_vv.x, a_size.y);
   #endif // VV_SIZE_MIN_MAX_VALUE
 
   #ifdef VV_SIZE_SCALE_STOPS
@@ -239,16 +277,16 @@
   #endif // VV_SIZE_SCALE_STOPS
 
   #ifdef VV_SIZE_FIELD_STOPS
-      float h = getVVStopsSize(a_vv.x);
+      float h = getVVStopsSize(a_vv.x, a_size.y);
   #endif // VV_SIZE_FIELD_STOPS
 
   #ifdef VV_SIZE_UNIT_VALUE
-      float h = getVVUnitValue(a_vv.x);
+      float h = getVVUnitValue(a_vv.x, a_size.y);
   #endif // VV_SIZE_UNIT_VALUE
 
       // make sure to preserve the aspect ratio of the symbol
       vec2 size = vec2(h * a_size.x / a_size.y, h);
-      vec2 offset = C_OFFSET_PRECISION * a_offset * size;
+      vec2 offset = a_offset * size / a_size;
       v_size = size;
   #else
   #ifdef HEATMAP
@@ -256,7 +294,7 @@
       a_size = 9.0 * a_size + 1.0;
   #endif // HEATMAP
 
-      vec2 offset = C_OFFSET_PRECISION * a_offset * a_size;
+      vec2 offset = a_offset;
       v_size = a_size;
   #endif // defined(VV_SIZE_MIN_MAX_VALUE) || defined(VV_SIZE_SCALE_STOPS) || defined(VV_SIZE_FIELD_STOPS) || defined(VV_SIZE_UNIT_VALUE)
 
@@ -277,7 +315,7 @@
   #endif // VV_OPACITY
 
   #ifdef VV_COLOR
-      v_color = getVVColor(a_vv.y);
+      v_color = getVVColor(a_vv.y, a_color);
   #else
       v_color = a_color;
   #endif // VV_COLOR
@@ -317,7 +355,7 @@
     varying mediump float v_outlineWidth;
 
     // we need the conversion function from RGBA to float
-    $rgba2floatFunc
+    $rgba2float
  #endif // SDF
 
  #ifdef ID
@@ -337,16 +375,6 @@
 
       // calculate the distance from the edge [-0.5, 0.5]
       float d = 0.5 - rgba2float(texture2D(u_texture, v_tex));
-
-      // Work around loss of precision for 'd = 0.0'.
-      // '0' gets normalised to 0.5 * 256 = 128 before float packing, but can only
-      // be stored in the texture as 128 / 255 = 0.502.
-      // see: https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/7058#issuecomment-603110
-      const float diff = (128.0/255.0 - 0.5);
-
-      // adjust all values, not just those close to 0, to avoid discontinuities in
-      // the outlines of other shapes e.g. circles
-      d = d - diff;
 
       // the soft edge ratio is about 1.5 pixels allocated for the soft edge.
       float size = max(v_size.x, v_size.y);

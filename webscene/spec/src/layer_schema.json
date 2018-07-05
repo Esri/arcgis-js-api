@@ -59,8 +59,8 @@
       "default": true
     },
     "subLayer": {
-      "type": "number",
-      "description": "Array of numeric values indicating the layer index for layers nested directly under the parent layer."
+      "type": "integer",
+      "description": "Integer value indicating the layer id."
     },
     "subLayerIds": {
       "type": "array",

@@ -17,9 +17,24 @@
       "description": "Optional string containing the item ID of the service if it's registered on ArcGIS Online or your organization's portal."
     },
     "layerDefinition": {
-      "type": "object",
-      "description": "A layerDefinition object defining the attribute schema and drawing information for the layer.",
-      "$ref": "layerDefinition_schema.json"
+      "description": "Additional properties that define drawing information and other configurations for the layer.",
+      "allOf": [
+        {
+          "$ref": "layerDefinition_schema.json"
+        },
+        {
+          "properties": {
+            "capabilities": {},
+            "definitionExpression": {},
+            "drawingInfo": {},
+            "elevationInfo": {},
+            "featureReduction": {},
+            "maxScale": {},
+            "minScale": {}
+          },
+          "additionalProperties": false
+        }
+      ]
     },
     "layerType": {
       "type": "string",
@@ -108,7 +123,6 @@
               "url": "http://sampleserver6.arcgisonline.com/arcgis/rest/services/Recreation/MapServer/0",
               "visibility": true,
               "opacity": 1,
-              "mode": 1,
               "title": "Map Service Layer",
               "popupInfo": {
                 "title": "Facilities: {description}",
@@ -124,7 +138,6 @@
               "url": "http://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0",
               "visibility": true,
               "opacity": 1,
-              "mode": 1,
               "title": "Feature Service",
               "itemId": "f6df665cdf3d45e094e0e2379cf90f1c",
               "popupInfo": {

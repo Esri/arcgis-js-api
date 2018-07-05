@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
-define({widgetLabel:"Hledat",searchButtonTitle:"Hledat",clearButtonTitle:"Vymazat vyhledávání",placeholder:"Najít adresu nebo místo",searchIn:"Hledat v",all:"Všechny",allPlaceholder:"Najít adresu nebo místo",emptyValue:"Zadejte vyhledávací dotaz.",untitledResult:"Bez názvu",untitledSource:"Nepojmenovaný zdroj",noResults:"Žádné výsledky",noResultsFound:"Nebyly nalezeny žádné výsledky vyhledávání.",noResultsFoundForValue:"Pro {value} nebyly nalezeny žádné výsledky.",showMoreResults:"Zobrazit další výsledky",hideMoreResults:"Skrýt",searchResult:"Výsledek vyhledávání",moreResultsHeader:"Další výsledky",esriLocatorName:"Esri World Geocoder",useCurrentLocation:"Použít aktuální umístění"});
+define({widgetLabel:"Hledat",searchButtonTitle:"Hledat",clearButtonTitle:"Vymazat vyhledávání",placeholder:"Najít adresu nebo místo",searchIn:"Hledat v",all:"Všechny",allPlaceholder:"Najít adresu nebo místo",emptyValue:"Zadejte vyhledávací dotaz.",untitledResult:"Bez názvu",untitledSource:"Nepojmenovaný zdroj",noResults:"Žádné výsledky",noResultsFound:"Nebyly nalezeny žádné výsledky vyhledávání.",noResultsFoundForValue:"Pro {value} nebyly nalezeny žádné výsledky.",showMoreResults:"Zobrazit další výsledky",hideMoreResults:"Skrýt",searchResult:"Výsledek vyhledávání",moreResultsHeader:"Další výsledky",useCurrentLocation:"Použít aktuální umístění"});

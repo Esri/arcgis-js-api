@@ -28,9 +28,9 @@
       "description": "Optional index for a sublayer."
     }
   },
-  "additionalProperties": false,
   "required": [
     "field",
     "id"
-  ]
+  ],
+  "additionalProperties": false
 }

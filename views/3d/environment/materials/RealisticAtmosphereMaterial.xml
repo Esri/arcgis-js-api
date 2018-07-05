@@ -132,6 +132,8 @@ vec3 hsv2rgb(vec3 c)
   uniform vec4 v4AtmosParams2; //(g,fScaleDepthBlue,fScaleOverScaleDepthBlue,fOneOverScaleDepthBlue)
 #ifndef HAZE
   uniform vec4 v4AtmosParams3; //(g2,fMiePhaseCoefficients,fLowerAlphaBlendBound,fOneOverOuterRadiusMinusAlphaBlendBound)
+  uniform float fInnerFadeDistance;
+  uniform float fAltitudeFade;
 #endif
 
   //Camera
@@ -180,11 +182,7 @@ vec3 hsv2rgb(vec3 c)
     float fC = v4SphereComp[2];
     float fCSur = v4SphereComp[3];
 
-#ifdef PLANAR
-    vec3 cameraPosition = vec3(0.0,0.0,fCameraHeight);
-#else
     vec3 cameraPosition = v3CameraPos;
-#endif
 
     //Debug variables
     vec3 test = vec3(0.0,0.0,0.0);
@@ -204,8 +202,6 @@ vec3 hsv2rgb(vec3 c)
 
 <snippet name="atmosphereDiscardPixels"><![CDATA[
 #ifdef HAZE
-      bool continueComputation = true;
-
       // only use red channel from depth texture.
       // see 'Issues' at https://www.khronos.org/registry/webgl/extensions/WEBGL_depth_texture
       float depthSample = texture2D(tDepth, vtc).r;
@@ -230,7 +226,6 @@ vec3 hsv2rgb(vec3 c)
 
         float cameraSpaceRayLength = length(cameraSpaceRay);
 
-#ifndef PLANAR
         vec3 v3World = cameraPosition + worldSpaceRay * cameraSpaceRayLength;
         float v3WorldRadius2 = dot(v3World, v3World);
 
@@ -246,26 +241,13 @@ vec3 hsv2rgb(vec3 c)
         altitudeAlpha = 1.0 - clamp((v3WorldRadius2 - edge0) / (edge1 - edge0), 0.0, 1.0);
         rayEndT = cameraSpaceRayLength;
 
-        if (altitudeAlpha > 0.0) {
-          continueComputation = true;
-
-          if (detSur > 0.0) {
-            float nearSurfaceT = 0.5 *(-B - sqrt(detSur));
-            float interp = clamp(((fCameraHeight - fInnerRadius) - 2000000.0) / 6000000.0, 0.0, 1.0);
-            rayEndT = mix(cameraSpaceRayLength, nearSurfaceT, interp);
-          }
+        if (altitudeAlpha > 0.0 && detSur > 0.0) {
+          float nearSurfaceT = 0.5 *(-B - sqrt(detSur));
+          float interp = clamp(((fCameraHeight - fInnerRadius) - 2000000.0) / 6000000.0, 0.0, 1.0);
+          rayEndT = mix(cameraSpaceRayLength, nearSurfaceT, interp);
         }
-#else
-        rayEndT = cameraSpaceRayLength;
-#endif
-      }
-#ifdef PLANAR
-      if (16500.0 + fInnerRadius >= fCameraHeight){
-        continueComputation = true;
       }
 #endif
-#endif
-
 ]]></snippet>
 
 <snippet name="atmosphereUnpackAddUniforms"><![CDATA[
@@ -296,11 +278,12 @@ vec3 hsv2rgb(vec3 c)
 
         float fDistance;//calculate its scattering offset
         // Calculate the ray's starting position
-        if (rayStartT < 0.0)
-        { //ray starts from camera to far
-          rayStartT = 0.0;
+        if (rayStartT < fMinRayStart)
+        { //ray starts from camera or inner radius sphere to far
+          rayStartT = fMinRayStart;
 #ifndef HAZE
-          fDistance = fScale*(fInnerRadius - fCameraHeight);
+          // clamp to value at inner radius altitude
+          fDistance = fScale * min(0.0, fInnerRadius - fCameraHeight);
 #endif
         }
 #ifndef HAZE
@@ -460,28 +443,12 @@ vec3 hsv2rgb(vec3 c)
         hsv.y = clamp(hsv.y*1.5,0.0,1.0);//boost sky saturation by 50%
         finalColor = hsv2rgb(hsv);
 #endif
-#ifdef PLANAR
 #ifndef HAZE
-        float alpha = clamp(fCameraHeight-fInnerRadius,7000.0,30000.0);
-        alpha = alpha / (30000.0-7000.0);
-        gl_FragColor = vec4(finalColor, 1.0-alpha);
-#else
-        float alpha = clamp(fCameraHeight-fInnerRadius,0.0,16500.0);
-        alpha = alpha / (16500.0-0.0);
-        gl_FragColor = vec4(finalColor, 1.0-alpha);
-#endif
-#else
-#ifndef HAZE
-        float alpha = clamp(fCameraHeight-fInnerRadius,7000.0,30000.0);
-        alpha = alpha / (30000.0-7000.0);
         float atmosStrength = clamp((length(ldrRed)-0.05)*1.05,0.0,1.0);
         gl_FragColor = vec4(finalColor, atmosStrength*clamp(1.0-(atmoHeight-fInnerRadius)/(fOuterRadius-fInnerRadius),0.0,1.0));
 #else
         gl_FragColor = vec4(finalColor, 1.0) * altitudeAlpha;
 #endif
-#endif
-
-
 ]]></snippet>
 
 <!--Fragment Shader for Atmosphere-->
@@ -510,36 +477,74 @@ $HSVColorSpace
 
     $atmospherePrecomputation
 
+    // the minimal sample start position:
+    // at the camera by default, on the earth radius surface if the camera is underground.
+    float fMinRayStart = 0.0;
+#ifndef HAZE
+    // When the ray intersects the earth surface, fade the sky to a simple light direction
+    // based color. This is used to make sure we have a white background in underground
+    // mode (at noon).
+    float fSurfaceBlend = 0.0;
+    vec4 surfaceColor = vec4(0.0);
+    if (detSur >= 0.0) {
+      float nearSurfaceT = max(0.0, 0.5 *(-B - sqrt(detSur)));
+      float farSurfaceT = max(0.0, 0.5 *(-B + sqrt(detSur)));
+
+      if (nearSurfaceT == 0.0) {
+        fMinRayStart = farSurfaceT;
+      }
+
+      // Compute lighting at the point where the ray enters the earth surface
+      // Lighting computation is copied from the terrain shader.
+      vec3 vPos = cameraPosition + worldSpaceRay * nearSurfaceT;
+      float fLightAngle = dot(v3LightDir, normalize(vPos));
+      float fBrightness = max(0.0, (smoothstep(-1.0, 0.8, 2.0 * fLightAngle)));
+
+      // Make the surface transparent based on altitude
+      surfaceColor = vec4(fBrightness, fBrightness, fBrightness, 1.0 - fAltitudeFade);
+
+      // Fade based on the distance the ray travels below the earth surface
+      float fRelDist = (farSurfaceT - nearSurfaceT) / fInnerFadeDistance;
+
+      // early exit
+      if (fRelDist > 1.0) {
+        gl_FragColor = surfaceColor;
+        return;
+      }
+
+      fSurfaceBlend = smoothstep(0.0, 1.0, fRelDist * fRelDist);
+    }
+#endif
+
     //Inside Atmosphere
     if (det >= 0.0) {
 #ifdef HAZE
       $atmosphereDiscardPixels
-
-      if (continueComputation) {
 #endif
-        $atmosphereUnpackAddUniforms
+      $atmosphereUnpackAddUniforms
 
-        $atmosphereComputeRayAndLoopSetup
+      $atmosphereComputeRayAndLoopSetup
 
-        // Now loop through the sample rays
-        for(int i=0; i<maxSamples; i++)
-        {
-          $atmosphereComputeSampleContribution
-        }
+      // Now loop through the sample rays
+      for(int i=0; i<maxSamples; i++)
+      {
+        $atmosphereComputeSampleContribution
+      }
 
-        $atmosphereComputeHDRColors
+      $atmosphereComputeHDRColors
 
-        $atmosphereComputePixelColor
+      $atmosphereComputePixelColor
 
-        //Debug variable overlay
-        if(showTest>0.0){
-          gl_FragColor = vec4(test,1.0);
-        }
-#ifdef HAZE
-      } else {//Not on surface
-        gl_FragColor = vec4(0.0);
+#ifndef HAZE
+      if (fSurfaceBlend > 0.0) {
+        gl_FragColor = mix(gl_FragColor, surfaceColor, fSurfaceBlend);
       }
 #endif
+
+      //Debug variable overlay
+      if(showTest>0.0){
+        gl_FragColor = vec4(test,1.0);
+      }
     } else {//Outside Atmosphere
       gl_FragColor = vec4(0.0);
     }

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({widgetLabel:"שרטוט",draw:"ציור",drawPoint:"שרטט נקודה",drawPolygon:"שרטט פוליגון",drawPolyline:"שרטט קו",drawMultipoint:"שרטט ריבוי נקודות",drawCircle:"שרטט עיגול",drawRectangle:"שרטט מלבן",drawTriangle:"שרטט משולש",drawSquare:"שרטט ריבוע",drawEllipse:"שרטט אליפסה",pan:"הזז את המפה",undo:"בטל",redo:"בצע מחדש",updateDrawing:"עדכן שרטוט",clear:"נקה שרטוט",completeDrawing:"השלם שרטוט",pauseDrawing:"השהה שרטוט",resumeDrawing:"המשך שרטוט",rotate:"סובב",scale:"קנה מידה",addPointTooltip:"הקש להוספת נקודה",removePointTooltip:"לחץ להסרת נקודה זו",completePolygonTooltip:"לחץ על נקודה זו לסיום",startDrawingTooltip:"לחץ כדי להתחיל בשרטוט",continueDrawingTooltip:"לחץ להמשך שרטוט",completeDrawingTooltip:"לחיצה כפולה להשלמה",addMultipointTooltip:"הקש כדי להתחיל בהוספת נקודות",finishMultipointTooltip:"לחיצה כפולה לסיום",addFreehandTooltip:"לחץ כלפי מטה כדי להתחיל ושחרר כדי לסיים",addShapeTooltip:"לחץ להוספת צורה, או לחץ למטה כדי להתחיל ושחרר בסיום"});

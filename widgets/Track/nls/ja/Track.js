@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({widgetLabel:"軌跡",startTracking:"自分の位置の追跡を開始",stopTracking:"自分の位置の追跡を停止"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({transparency:"Saydamlık",suggested:"Önerilen",recent:"Yakın Tarihli",more:"Dahası",moreColorsTooltip:"Daha fazla renk incele.",paletteTooltip:"Bir renk seçin.",noColorTooltip:"Renksiz",hexInputTooltip:"Onaltılık gösterimde özel renk (#FFFF00)."});

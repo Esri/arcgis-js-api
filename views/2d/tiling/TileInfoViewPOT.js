@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define(["require","exports","../../../core/tsSupport/extendsHelper","../../../core/tsSupport/decorateHelper","./TileInfoView","./TileKey"],function(e,r,o,t,l,n){return function(e){function r(){return null!==e&&e.apply(this,arguments)||this}return o(r,e),r.prototype.getTileParentId=function(e){var r=n.pool.acquire(e),o=0===r.level?null:n.getId(r.level-1,r.row>>1,r.col>>1,r.world);return n.pool.release(r),o},r.prototype.getTileIdAtParent=function(e,r){var o=n.pool.acquire(r),t=this._infoByLevel[o.level];if(e.resolution<t.resolution)throw n.pool.release(o),new Error("Cannot calculate parent tile. destination LOD's resolution "+e.resolution+" is not a parent resolution of "+t.resolution);if(e.resolution===t.resolution){var l=o.id;return n.pool.release(o),l}var i=o.level-e.level;if(i<0)throw n.pool.release(o),new Error("Wrong way...!");var u=n.getId(e.level,o.row>>i,o.col>>i,o.world);return n.pool.release(o),u},r.prototype.getTileCoverage=function(r){var o=e.prototype.getTileCoverage.call(this,r);if(!o)return o;var t=1<<o.lodInfo.level;return o.spans=o.spans.filter(function(e){return e.row>=0&&e.row<t}),o},r}(l)});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({zoom:"縮放至",next:"下一個圖徵",previous:"上一個圖徵",close:"關閉",dock:"固定",undock:"浮動",menu:"功能表",untitled:"無標題",pageText:"{index}/{total}",selectedFeature:"選取的圖徵",selectedFeatures:"{Total} 個結果",loading:"正在載入",collapse:"最小化",expand:"展開"});

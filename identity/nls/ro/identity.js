@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({lblItem:"element",title:"Autentificare",info:"Vă rugăm să vă autentificaţi pentru a accesa elementul din {server} {resource}",oAuthInfo:"Autentificaţi-vă pentru a continua.",lblUser:"Nume de utilizator:",lblPwd:"Parolă:",lblOk:"OK",lblSigning:"Autentificare...",lblCancel:"Anulare",errorMsg:"Nume de utilizator/Parolă nevalidă. Încercaţi din nou.",invalidUser:"Numele de utilizator sau parola introdusă este incorectă.",forbidden:"Numele de utilizator şi parola sunt valide, însă nu aveţi acces la această resursă.",noAuthService:"Nu se poate accesa serviciul de autentificare."});

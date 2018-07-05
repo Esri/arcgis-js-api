@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({printNotes:"Notizen hier eingeben",printDisclaimer:"Wegbeschreibungen werden lediglich zu Planungszwecken bereitgestellt und unterliegen den <a href='http://www.esri.com/legal/licensing-translations' target='_blank'>Esri Lizenzbedingungen</a>. Durch sich ändernde Straßenbedingungen kann die Genauigkeit der Wegbeschreibungen abweichen. Außerdem sind vorhandene Verkehrszeichen und gesetzliche Beschränkungen zu berücksichtigen. Die Nutzung erfolgt vollständig auf eigene Verantwortung.",printoutError:"Offenbar ist ein Fehler aufgetreten."});

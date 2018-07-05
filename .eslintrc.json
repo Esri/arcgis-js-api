@@ -19,7 +19,10 @@
   },
   "settings": {
     "amd-imports": {
-      "base": "../"
+      "base": "../",
+      "packages": {
+       "@dojo": "node_modules/@dojo"
+     }
     }
   },
   "plugins": [

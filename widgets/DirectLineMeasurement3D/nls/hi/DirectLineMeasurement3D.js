@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({title:"माप",hint:"अपना पहला बिंदु लगाने के लिए दृश्य में क्लिक करके मापना प्रारंभ करें",unsupported:"प्रत्यक्ष रेखा मापन MapView में समर्थित नहीं है।",distance:"दूरी",direct:"सीधा",horizontal:"क्षैतिज",vertical:"लंबवत",unit:"इकाई",newMeasurement:"नया मापन",units:{metric:"मीट्रिक",imperial:"इम्पीरियल",kilometers:"किलोमीटर",meters:"मीटर",miles:"मील",inches:"इंच",feet:"फुट",yards:"गज","nautical-miles":"समुद्री मील","us-feet":"फीट (US)","degrees-minutes-seconds":"DMS",degrees:"डिग्री"}});

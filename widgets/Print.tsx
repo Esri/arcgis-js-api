@@ -34,38 +34,38 @@
  * });
  */
 
-/// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
+/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
+/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
 
 // dojo
-import * as i18n from "dojo/i18n!./Print/nls/Print";
+import * as i18n from "dojo/i18n!esri/widgets/Print/nls/Print";
 
 // esri.core
-import Collection = require("../core/Collection");
-import EsriError = require("../core/Error");
-import Logger = require("../core/Logger");
-import urlUtils = require("../core/urlUtils");
-import watchUtils = require("../core/watchUtils");
+import Collection = require("esri/core/Collection");
+import EsriError = require("esri/core/Error");
+import Logger = require("esri/core/Logger");
+import urlUtils = require("esri/core/urlUtils");
+import watchUtils = require("esri/core/watchUtils");
 
 // esri.core.accessorSupport
-import { aliasOf, subclass, declared, property } from "../core/accessorSupport/decorators";
+import { aliasOf, subclass, declared, property } from "esri/core/accessorSupport/decorators";
 
 // esri.tasks.support
-import PrintTemplate = require("../tasks/support/PrintTemplate");
+import PrintTemplate = require("esri/tasks/support/PrintTemplate");
 
 // esri.views
-import View = require("../views/View");
+import View = require("esri/views/View");
 
 // esri.widgets
-import Widget = require("./Widget");
+import Widget = require("esri/widgets/Widget");
 
 // esri.widgets.Print
-import FileLink = require("./Print/FileLink");
-import PrintViewModel = require("./Print/PrintViewModel");
-import TemplateOptions = require("./Print/TemplateOptions");
+import FileLink = require("esri/widgets/Print/FileLink");
+import PrintViewModel = require("esri/widgets/Print/PrintViewModel");
+import TemplateOptions = require("esri/widgets/Print/TemplateOptions");
 
 // esri.widgets.support
-import { accessibleHandler, join, renderable, storeNode, tsx } from "./support/widget";
+import { accessibleHandler, renderable, storeNode, tsx } from "esri/widgets/support/widget";
 
 interface TemplateInfo {
   choiceList: string[];
@@ -76,6 +76,8 @@ interface TemplatesInfo {
   format: TemplateInfo;
   layout: TemplateInfo;
 }
+
+const FileLinkCollection = Collection.ofType<FileLink>(FileLink);
 
 const CSS = {
   // base
@@ -110,7 +112,7 @@ const CSS = {
   exportedFilesContainer: "esri-print__export-panel-container",
   exportedFilesTitle: "esri-print__export-title",
   exportedFile: "esri-print__exported-file",
-  exportedFileLink: "esri-print__exported-file-link",
+  exportedFileLink: "esri-widget__anchor esri-print__exported-file-link",
   exportedFileLinkTitle: "esri-print__exported-file-link-title",
   heightContainer: "esri-print__height-container",
   legendInfoContainer: "esri-print__legend-info-container",
@@ -121,11 +123,14 @@ const CSS = {
   sizeContainer: "esri-print__size-container",
   widthContainer: "esri-print__width-container",
   // common
-  widgetButton: "esri-widget-button",
+  widgetButton: "esri-widget--button",
   button: "esri-button",
   select: "esri-select",
+  header: "esri-widget__header",
   input: "esri-input",
   disabled: "esri-disabled",
+  anchorDisabled: "esri-widget__anchor--disabled",
+  buttonDisabled: "esri-button--disabled",
   panelError: "esri-print__panel--error",
   exportedFileError: "esri-print__exported-file--error",
   hide: "esri-hidden",
@@ -148,12 +153,13 @@ const CSS = {
 
 const declaredClass = "esri.widgets.Print";
 const logger = Logger.getLogger(declaredClass);
-const invalidLayoutWarningMessage = "User sets an invalid layout, resetting it to the default valid one...";
-const invalidFormatWarningMessage = "User sets an invalid format, resetting it to the default valid one...";
+const invalidLayoutWarningMessage =
+  "User sets an invalid layout, resetting it to the default valid one...";
+const invalidFormatWarningMessage =
+  "User sets an invalid format, resetting it to the default valid one...";
 
 @subclass("esri.widgets.Print")
 class Print extends declared(Widget) {
-
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -179,31 +185,27 @@ class Print extends declared(Widget) {
   }
 
   postInitialize() {
-    const {
-      format,
-      height,
-      layout,
-      scale,
-      scaleEnabled,
-      width
-    } = this.templateOptions;
-
     this.own([
       watchUtils.init(this, "viewModel.templatesInfo", (templatesInfo: TemplatesInfo) => {
+        const { format, layout } = this.templateOptions;
+
         if (templatesInfo) {
-          this._templatesInfo = templatesInfo;
-
-
-
-          const isValidLayout = layout === templatesInfo.layout.defaultValue || (layout && layout.toUpperCase() === "MAP_ONLY") || (templatesInfo.layout.choiceList && templatesInfo.layout.choiceList.indexOf(layout) > -1);
-          const isValidFormat = format === templatesInfo.format.defaultValue || (templatesInfo.format.choiceList && templatesInfo.format.choiceList.indexOf(format) > -1);
+          const isValidLayout =
+            layout === templatesInfo.layout.defaultValue ||
+            (layout && layout.toUpperCase() === "MAP_ONLY") ||
+            (templatesInfo.layout.choiceList &&
+              templatesInfo.layout.choiceList.indexOf(layout) > -1);
+          const isValidFormat =
+            format === templatesInfo.format.defaultValue ||
+            (templatesInfo.format.choiceList &&
+              templatesInfo.format.choiceList.indexOf(format) > -1);
 
           if (!isValidLayout) {
             if (layout) {
               logger.warn(invalidLayoutWarningMessage);
             }
 
-            this.templateOptions.layout = this._templatesInfo.layout.defaultValue;
+            this.templateOptions.layout = templatesInfo.layout.defaultValue;
           }
 
           if (!isValidFormat) {
@@ -211,7 +213,7 @@ class Print extends declared(Widget) {
               logger.warn(invalidFormatWarningMessage);
             }
 
-            this.templateOptions.format = this._templatesInfo.format.defaultValue;
+            this.templateOptions.format = templatesInfo.format.defaultValue;
           }
 
           if (layout && layout.toUpperCase() === "MAP_ONLY") {
@@ -221,17 +223,22 @@ class Print extends declared(Widget) {
       }),
 
       watchUtils.init(this, "templateOptions.format", (newValue: string) => {
-        if (this._templatesInfo && newValue) {
+        const {
+          viewModel: { templatesInfo }
+        } = this;
+
+        if (templatesInfo && newValue) {
           let isValidFormat = false;
-          this._templatesInfo.format.choiceList && this._templatesInfo.format.choiceList.forEach(option => {
-            if (option.toUpperCase() === newValue.toUpperCase()) {
-              this.templateOptions.format = option;
-              isValidFormat = true;
-            }
-          });
+          templatesInfo.format.choiceList &&
+            templatesInfo.format.choiceList.forEach((option) => {
+              if (option.toUpperCase() === newValue.toUpperCase()) {
+                this.templateOptions.format = option;
+                isValidFormat = true;
+              }
+            });
 
           if (!isValidFormat) {
-            this.templateOptions.format = this._templatesInfo.format.defaultValue;
+            this.templateOptions.format = templatesInfo.format.defaultValue;
             logger.warn(invalidFormatWarningMessage);
           }
 
@@ -240,21 +247,26 @@ class Print extends declared(Widget) {
       }),
 
       watchUtils.init(this, "templateOptions.layout", (newValue: string) => {
-        if (this._templatesInfo && newValue) {
-          this._layoutTabSelected =  newValue.toUpperCase() !== "MAP_ONLY";
+        const {
+          viewModel: { templatesInfo }
+        } = this;
+
+        if (templatesInfo && newValue) {
+          this._layoutTabSelected = newValue.toUpperCase() !== "MAP_ONLY";
           let isValidLayout = false || !this._layoutTabSelected;
 
           if (!isValidLayout) {
-            this._templatesInfo.layout.choiceList && this._templatesInfo.layout.choiceList.forEach(option => {
-              if (option.toUpperCase() === newValue.toUpperCase()) {
-                this.templateOptions.layout = option;
-                isValidLayout = true;
-              }
-            });
+            templatesInfo.layout.choiceList &&
+              templatesInfo.layout.choiceList.forEach((option) => {
+                if (option.toUpperCase() === newValue.toUpperCase()) {
+                  this.templateOptions.layout = option;
+                  isValidLayout = true;
+                }
+              });
           }
 
           if (!isValidLayout) {
-            this.templateOptions.layout = this._templatesInfo.layout.defaultValue;
+            this.templateOptions.layout = templatesInfo.layout.defaultValue;
             logger.warn(invalidLayoutWarningMessage);
           }
 
@@ -272,6 +284,7 @@ class Print extends declared(Widget) {
       }),
 
       watchUtils.init(this, "viewModel.view.scale", (newValue: number) => {
+        const { scale, scaleEnabled } = this.templateOptions;
         if (!scaleEnabled || !scale) {
           this.templateOptions.scale = newValue;
         }
@@ -285,10 +298,11 @@ class Print extends declared(Widget) {
           this.scheduleRender();
         }, maxWaitTime);
 
-        this.viewModel.load()
-          .then(() => clearTimeout(timeoutId));
+        this.viewModel.load().then(() => clearTimeout(timeoutId));
       })
     ]);
+
+    const { height, width } = this.templateOptions;
 
     this.templateOptions.width = width || 800;
     this.templateOptions.height = height || 1100;
@@ -312,8 +326,6 @@ class Print extends declared(Widget) {
 
   private _rootNode: HTMLElement = null;
 
-  private _templatesInfo: TemplatesInfo = null;
-
   private _awaitingServerResponse = false;
 
   //--------------------------------------------------------------------------
@@ -326,16 +338,23 @@ class Print extends declared(Widget) {
   //  exportedLinks
   //----------------------------------
 
-  @aliasOf("viewModel.exportedLinks")
+  /**
+   * @todo doc
+   * @type {module:esri/core/Collection<module:esri/widgets/Print/FileLink>}
+   * @ignore
+   */
+  @property({
+    type: FileLinkCollection
+  })
   @renderable()
-  exportedLinks: Collection<FileLink>;
+  exportedLinks: Collection<FileLink> = new FileLinkCollection();
 
   //----------------------------------
   //  iconClass
   //----------------------------------
 
   /**
-   * The widget's default icon font.
+   * The widget's default CSS icon class.
    *
    * @since 4.7
    * @name iconClass
@@ -343,8 +362,7 @@ class Print extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property()
-  iconClass = CSS.widgetIcon;
+  @property() iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -359,8 +377,7 @@ class Print extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property()
-  label: string = i18n.widgetLabel;
+  @property() label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  templateOptions
@@ -399,8 +416,7 @@ class Print extends declared(Widget) {
    * @type {EsriError}
    * @ignore
    */
-  @aliasOf("viewModel.error")
-  error: EsriError;
+  @aliasOf("viewModel.error") error: EsriError;
 
   //----------------------------------
   //  printServiceUrl
@@ -414,8 +430,7 @@ class Print extends declared(Widget) {
    * @type {string}
    */
 
-  @aliasOf("viewModel.printServiceUrl")
-  printServiceUrl: string = null;
+  @aliasOf("viewModel.printServiceUrl") printServiceUrl: string = null;
 
   //----------------------------------
   //  view
@@ -481,61 +496,85 @@ class Print extends declared(Widget) {
 
     const titleSection = (
       <div class={CSS.formSectionContainer}>
-        <label>{this._layoutTabSelected ? i18n.title : i18n.fileName}
-        <input type="text"
-               tabIndex={0}
-               placeholder={this._layoutTabSelected ? i18n.titlePlaceHolder : i18n.fileNamePlaceHolder}
-               class={this.classes(CSS.inputText, CSS.input)}
-               value={title}
-               data-input-name="title"
-               oninput={this._updateInputValue}
-               bind={this} />
+        <label>
+          {this._layoutTabSelected ? i18n.title : i18n.fileName}
+          <input
+            type="text"
+            tabIndex={0}
+            placeholder={this._layoutTabSelected ? i18n.titlePlaceHolder : i18n.fileNamePlaceHolder}
+            class={this.classes(CSS.inputText, CSS.input)}
+            value={title}
+            data-input-name="title"
+            oninput={this._updateInputValue}
+            bind={this}
+          />
         </label>
       </div>
     );
 
-    const fileFormatMenuItems = this.get<string[]>("_templatesInfo.format.choiceList") || [];
-    const fileFormatOptions = fileFormatMenuItems.length > 0 ? (
-      fileFormatMenuItems.map(fileFormatMenuItem => {
-        const selected = fileFormatMenuItem === format;
+    const fileFormatMenuItems =
+      this.get<string[]>("viewModel.templatesInfo.format.choiceList") || [];
+    const fileFormatOptions =
+      fileFormatMenuItems.length > 0 ? (
+        fileFormatMenuItems.map((fileFormatMenuItem) => {
+          const selected = fileFormatMenuItem === format;
 
-        return <option key={fileFormatMenuItem} selected={selected}>{fileFormatMenuItem}</option>;
-      })
-    ) : (
-      <option key="format-default-option">{i18n.formatDefaultOption}</option>
-    );
+          return (
+            <option key={fileFormatMenuItem} selected={selected} value={fileFormatMenuItem}>
+              {fileFormatMenuItem.toUpperCase()}
+            </option>
+          );
+        })
+      ) : (
+        <option key="format-default-option">{i18n.formatDefaultOption}</option>
+      );
 
     const fileFormatSection = (
       <div class={CSS.formSectionContainer}>
         <label>
           {i18n.fileFormatTitle}
-          <select class={CSS.select} onchange={this._updateFromOption} data-target-property="format" bind={this}>
+          <select
+            class={CSS.select}
+            onchange={this._updateFromOption}
+            data-target-property="format"
+            bind={this}
+          >
             {fileFormatOptions}
           </select>
         </label>
       </div>
     );
 
-    const layoutMenuItems = this.get<string[]>("_templatesInfo.layout.choiceList") || [];
-    const layoutOptions = layoutMenuItems.length > 0 ? (
-      layoutMenuItems.map(layoutMenuItem => {
-        const selected = layoutMenuItem === layout;
+    const layoutMenuItems = this.get<string[]>("viewModel.templatesInfo.layout.choiceList") || [];
+    const layoutOptions =
+      layoutMenuItems.length > 0 ? (
+        layoutMenuItems.map((layoutMenuItem) => {
+          const selected = layoutMenuItem === layout;
+          const label = i18n[layoutMenuItem] || layoutMenuItem;
 
-        return <option key={layoutMenuItem} bind={this} selected={selected}>{layoutMenuItem}</option>;
-      })
-    ) : (
-      <option key="layout-default-option">{i18n.layoutDefaultOption}</option>
-    );
+          return (
+            <option key={layoutMenuItem} selected={selected} value={layoutMenuItem}>
+              {label}
+            </option>
+          );
+        })
+      ) : (
+        <option key="layout-default-option">{i18n.layoutDefaultOption}</option>
+      );
 
     const pageSetupSection = (
       <div class={CSS.formSectionContainer}>
         <label>
           {i18n.layoutTitle}
-          <select class={CSS.select} onchange={this._updateFromOption} data-target-property="layout" bind={this}>
+          <select
+            class={CSS.select}
+            onchange={this._updateFromOption}
+            data-target-property="layout"
+            bind={this}
+          >
             {layoutOptions}
           </select>
         </label>
-
       </div>
     );
 
@@ -543,88 +582,104 @@ class Print extends declared(Widget) {
       <div class={CSS.formSectionContainer}>
         <label>
           {i18n.dpi}
-          <input type="number"
-                class={this.classes(CSS.inputText, CSS.input)}
-                data-input-name="dpi"
-                oninput={this._updateInputValue}
-                value={`${dpi}`}
-                min="1"
-                tabIndex={0}
-                bind={this} />
+          <input
+            type="number"
+            class={this.classes(CSS.inputText, CSS.input)}
+            data-input-name="dpi"
+            oninput={this._updateInputValue}
+            value={`${dpi}`}
+            min="1"
+            tabIndex={0}
+            bind={this}
+          />
         </label>
       </div>
     );
 
     const scaleSection = (
-      <div class={join(CSS.scaleInfoContainer, CSS.formSectionContainer)}>
+      <div class={this.classes(CSS.scaleInfoContainer, CSS.formSectionContainer)}>
         <label>
-          <input data-option-name="scaleEnabled"
-                checked={scaleEnabled}
-                type="checkbox"
-                tabIndex={0}
-                onchange={this._toggleInputValue}
-                bind={this} />
+          <input
+            data-option-name="scaleEnabled"
+            checked={scaleEnabled}
+            type="checkbox"
+            tabIndex={0}
+            onchange={this._toggleInputValue}
+            bind={this}
+          />
           {i18n.scale}
         </label>
         <div class={CSS.scaleInputContainer}>
-          <input aria-label={i18n.scaleLabel}
-                aria-valuenow={`${scale}`}
-                role="spinbutton"
-                type="number"
-                class={this.classes(CSS.inputText, CSS.input, CSS.scaleInput)}
-                tabIndex={0}
-                data-input-name="scale"
-                oninput={this._updateInputValue}
-                disabled={!scaleEnabled}
-                value={`${scale}`}
-                bind={this} />
-          <button role="button"
-                  aria-label={i18n.reset}
-                  class={join(CSS.widgetButton, CSS.refreshButton, CSS.iconRefresh)}
-                  tabIndex={0}
-                  onclick={this._resetToCurrentScale}
-                  bind={this}>
-          </button>
+          <input
+            aria-label={i18n.scaleLabel}
+            aria-valuenow={`${scale}`}
+            role="spinbutton"
+            type="number"
+            class={this.classes(CSS.inputText, CSS.input, CSS.scaleInput)}
+            tabIndex={0}
+            data-input-name="scale"
+            oninput={this._updateInputValue}
+            disabled={!scaleEnabled}
+            value={`${scale}`}
+            bind={this}
+          />
+          <button
+            role="button"
+            aria-label={i18n.reset}
+            class={this.classes(CSS.widgetButton, CSS.refreshButton, CSS.iconRefresh)}
+            tabIndex={0}
+            onclick={this._resetToCurrentScale}
+            bind={this}
+          />
         </div>
       </div>
     );
 
     const advancedSectionForLayout = this._advancedOptionsVisibleForLayout ? (
-      <div aria-labelledby={`${this.id}__advancedOptionsForLayout`} class={CSS.advancedOptionsContainer}>
+      <div
+        aria-labelledby={`${this.id}__advancedOptionsForLayout`}
+        class={CSS.advancedOptionsContainer}
+      >
         {scaleSection}
-        <div class={join(CSS.authorInfoContainer, CSS.formSectionContainer)}>
+        <div class={this.classes(CSS.authorInfoContainer, CSS.formSectionContainer)}>
           <label>
             {i18n.author}
-            <input type="text"
-                   value={author}
-                   class={this.classes(CSS.inputText, CSS.input)}
-                   tabIndex={0}
-                   data-input-name="author"
-                   oninput={this._updateInputValue}
-                   bind={this} />
+            <input
+              type="text"
+              value={author}
+              class={this.classes(CSS.inputText, CSS.input)}
+              tabIndex={0}
+              data-input-name="author"
+              oninput={this._updateInputValue}
+              bind={this}
+            />
           </label>
         </div>
-        <div class={join(CSS.copyrightInfoContainer, CSS.formSectionContainer)}>
+        <div class={this.classes(CSS.copyrightInfoContainer, CSS.formSectionContainer)}>
           <label>
             {i18n.copyright}
-            <input type="text"
-                   class={this.classes(CSS.inputText, CSS.input)}
-                   tabIndex={0}
-                   value={copyright}
-                   data-input-name="copyright"
-                   oninput={this._updateInputValue}
-                   bind={this} />
+            <input
+              type="text"
+              class={this.classes(CSS.inputText, CSS.input)}
+              tabIndex={0}
+              value={copyright}
+              data-input-name="copyright"
+              oninput={this._updateInputValue}
+              bind={this}
+            />
           </label>
         </div>
         {dpiSection}
-        <div class={join(CSS.legendInfoContainer, CSS.formSectionContainer)}>
+        <div class={this.classes(CSS.legendInfoContainer, CSS.formSectionContainer)}>
           <label>
-          <input type="checkbox"
-                 data-option-name="legendEnabled"
-                 tabIndex={0}
-                 checked={legendEnabled}
-                 onchange={this._toggleInputValue}
-                 bind={this} />
+            <input
+              type="checkbox"
+              data-option-name="legendEnabled"
+              tabIndex={0}
+              checked={legendEnabled}
+              onchange={this._toggleInputValue}
+              bind={this}
+            />
             {i18n.legend}
           </label>
         </div>
@@ -632,48 +687,71 @@ class Print extends declared(Widget) {
     ) : null;
 
     const advancedSectionForMapOnly = this._advancedOptionsVisibleForMapOnly ? (
-      <div aria-labelledby={`${this.id}__advancedOptionsForMapOnly`} class={CSS.advancedOptionsContainer}>
-          {scaleSection}
-          {dpiSection}
-          <div class={CSS.formSectionContainer}>
-            <label>
-              <input data-option-name="attributionEnabled"
-                     type="checkbox"
-                     onchange={this._toggleInputValue}
-                     tabIndex={0}
-                     checked={attributionEnabled}
-                     bind={this} />
-              {i18n.attribution}
-            </label>
-          </div>
+      <div
+        aria-labelledby={`${this.id}__advancedOptionsForMapOnly`}
+        class={CSS.advancedOptionsContainer}
+      >
+        {scaleSection}
+        {dpiSection}
+        <div class={CSS.formSectionContainer}>
+          <label>
+            <input
+              data-option-name="attributionEnabled"
+              type="checkbox"
+              onchange={this._toggleInputValue}
+              tabIndex={0}
+              checked={attributionEnabled}
+              bind={this}
+            />
+            {i18n.attribution}
+          </label>
+        </div>
       </div>
     ) : null;
 
     const panel = this._layoutTabSelected ? (
-      <section key="esri-print__layoutContent"
-               id={`${this.id}__layoutContent`}
-               aria-labelledby={`${this.id}__layoutTab`}
-               class={CSS.layoutSection}
-               role="tabpanel"
-               aria-selected={this._layoutTabSelected}
-               >
+      <section
+        key="esri-print__layoutContent"
+        id={`${this.id}__layoutContent`}
+        aria-labelledby={`${this.id}__layoutTab`}
+        class={CSS.layoutSection}
+        role="tabpanel"
+        aria-selected={this._layoutTabSelected}
+      >
         <div class={CSS.panelContainer}>
           {titleSection}
           {pageSetupSection}
           {this._layoutTabSelected ? fileFormatSection : null}
         </div>
 
-        <div class={join(CSS.panelContainer, CSS.advancedOptionsSection)}>
-          <button aria-label={i18n.advancedOptions}
-                  aria-expanded={this._advancedOptionsVisibleForLayout ? "true" : "false"}
-                  role="button"
-                  class={CSS.advancedOptionsButton}
-                  onclick={this._showAdvancedOptions}
-                  bind={this}>
+        <div class={this.classes(CSS.panelContainer, CSS.advancedOptionsSection)}>
+          <button
+            aria-label={i18n.advancedOptions}
+            aria-expanded={this._advancedOptionsVisibleForLayout ? "true" : "false"}
+            role="button"
+            class={CSS.advancedOptionsButton}
+            onclick={this._showAdvancedOptions}
+            bind={this}
+          >
             <div class={CSS.advancedOptionsButtonContainer}>
-              <span aria-hidden="true" class={join(CSS.iconRightTriangleArrow, CSS.advancedOptionsButtonIconClosed)} />
-              <span aria-hidden="true" class={join(CSS.iconLeftTriangleArrow, CSS.advancedOptionsButtonIconClosed_RTL)} />
-              <span aria-hidden="true" class={join(CSS.iconDownArrow, CSS.advancedOptionsButtonIconOpened)} />
+              <span
+                aria-hidden="true"
+                class={this.classes(
+                  CSS.iconRightTriangleArrow,
+                  CSS.advancedOptionsButtonIconClosed
+                )}
+              />
+              <span
+                aria-hidden="true"
+                class={this.classes(
+                  CSS.iconLeftTriangleArrow,
+                  CSS.advancedOptionsButtonIconClosed_RTL
+                )}
+              />
+              <span
+                aria-hidden="true"
+                class={this.classes(CSS.iconDownArrow, CSS.advancedOptionsButtonIconOpened)}
+              />
               <span class={CSS.advancedOptionsButtonTitle}>{i18n.advancedOptions}</span>
             </div>
           </button>
@@ -681,64 +759,88 @@ class Print extends declared(Widget) {
         </div>
       </section>
     ) : (
-      <section key="esri-print__mapOnlyContent"
-               id={`${this.id}__mapOnlyContent`}
-               aria-selected={!this._layoutTabSelected}
-               aria-labelledby={`${this.id}__mapOnlyTab`}
-               class={CSS.mapOnlySection}
-               role="tabpanel">
+      <section
+        key="esri-print__mapOnlyContent"
+        id={`${this.id}__mapOnlyContent`}
+        aria-selected={!this._layoutTabSelected}
+        aria-labelledby={`${this.id}__mapOnlyTab`}
+        class={CSS.mapOnlySection}
+        role="tabpanel"
+      >
         <div class={CSS.panelContainer}>
           {titleSection}
           {this._layoutTabSelected ? null : fileFormatSection}
-          <div class={join(CSS.sizeContainer, CSS.formSectionContainer)}>
+          <div class={this.classes(CSS.sizeContainer, CSS.formSectionContainer)}>
             <div class={CSS.widthContainer}>
               <label>
                 {i18n.width}
-                <input type="text"
-                       class={this.classes(CSS.inputText, CSS.input)}
-                       data-input-name="width"
-                       onchange={this._updateInputValue}
-                       value={`${width}`}
-                       tabIndex={0}
-                       bind={this} />
+                <input
+                  type="text"
+                  class={this.classes(CSS.inputText, CSS.input)}
+                  data-input-name="width"
+                  onchange={this._updateInputValue}
+                  value={`${width}`}
+                  tabIndex={0}
+                  bind={this}
+                />
               </label>
             </div>
             <div class={CSS.heightContainer}>
               <label>
                 {i18n.height}
-                <input type="text"
-                       class={this.classes(CSS.inputText, CSS.input)}
-                       data-input-name="height"
-                       onchange={this._updateInputValue}
-                       value={`${height}`}
-                       tabIndex={0}
-                       bind={this} />
+                <input
+                  type="text"
+                  class={this.classes(CSS.inputText, CSS.input)}
+                  data-input-name="height"
+                  onchange={this._updateInputValue}
+                  value={`${height}`}
+                  tabIndex={0}
+                  bind={this}
+                />
               </label>
             </div>
-            <button role="button"
-                    aria-label={i18n.swap}
-                    class={join(CSS.widgetButton, CSS.swapButton, CSS.iconSwap)}
-                    onclick={this._switchInput}
-                    tabIndex={0}
-                    bind={this}>
-            </button>
+            <button
+              role="button"
+              aria-label={i18n.swap}
+              class={this.classes(CSS.widgetButton, CSS.swapButton, CSS.iconSwap)}
+              onclick={this._switchInput}
+              tabIndex={0}
+              bind={this}
+            />
           </div>
-          <div class={join(CSS.panelContainer, CSS.advancedOptionsSection)}>
-            <button aria-label={i18n.advancedOptions}
-                  aria-expanded={this._advancedOptionsVisibleForMapOnly ? "true" : "false"}
-                  role="button"
-                  class={CSS.advancedOptionsButton}
-                  onclick={this._showAdvancedOptions}
-                  bind={this}>
-            <div class={CSS.advancedOptionsButtonContainer}>
-              <span aria-hidden="true" class={join(CSS.iconRightTriangleArrow, CSS.advancedOptionsButtonIconClosed)} />
-              <span aria-hidden="true" class={join(CSS.iconLeftTriangleArrow, CSS.advancedOptionsButtonIconClosed_RTL)} />
-              <span aria-hidden="true" class={join(CSS.iconDownArrow, CSS.advancedOptionsButtonIconOpened)} />
-              <span class={CSS.advancedOptionsButtonTitle}>{i18n.advancedOptions}</span>
-            </div>
-          </button>
-          {advancedSectionForMapOnly}
-        </div>
+          <div class={this.classes(CSS.panelContainer, CSS.advancedOptionsSection)}>
+            <button
+              aria-label={i18n.advancedOptions}
+              aria-expanded={this._advancedOptionsVisibleForMapOnly ? "true" : "false"}
+              role="button"
+              class={CSS.advancedOptionsButton}
+              onclick={this._showAdvancedOptions}
+              bind={this}
+            >
+              <div class={CSS.advancedOptionsButtonContainer}>
+                <span
+                  aria-hidden="true"
+                  class={this.classes(
+                    CSS.iconRightTriangleArrow,
+                    CSS.advancedOptionsButtonIconClosed
+                  )}
+                />
+                <span
+                  aria-hidden="true"
+                  class={this.classes(
+                    CSS.iconLeftTriangleArrow,
+                    CSS.advancedOptionsButtonIconClosed_RTL
+                  )}
+                />
+                <span
+                  aria-hidden="true"
+                  class={this.classes(CSS.iconDownArrow, CSS.advancedOptionsButtonIconOpened)}
+                />
+                <span class={CSS.advancedOptionsButtonTitle}>{i18n.advancedOptions}</span>
+              </div>
+            </button>
+            {advancedSectionForMapOnly}
+          </div>
         </div>
       </section>
     );
@@ -746,64 +848,70 @@ class Print extends declared(Widget) {
     const exportedLinksArray = this.exportedLinks.toArray();
     const exportedLinksItems = this._renderExportedLink(exportedLinksArray);
     const exportButtonClasses = {
-      [CSS.disabled]: !layout && !format
+      [CSS.buttonDisabled]: !layout && !format
     };
 
     const isSceneView = this.get("view") != null && this.get("view.type") !== "2d";
 
     const errorPanel = (
-      <div class={CSS.panelError}>
-        {isSceneView ? i18n.sceneViewError : i18n.serviceError}
-      </div>
+      <div class={CSS.panelError}>{isSceneView ? i18n.sceneViewError : i18n.serviceError}</div>
     );
 
     const normalPanel = (
       <div>
-        <ul class={CSS.layoutTabList}
-            role="tablist"
-            onclick={this._toggleLayoutPanel}
-            onkeydown={this._toggleLayoutPanel}
-            bind={this}>
-          <li id={`${this.id}__layoutTab`}
-              data-tab-id="layoutTab"
-              class={CSS.layoutTab}
-              role="tab"
-              tabIndex={0}
-              aria-selected={`${this._layoutTabSelected}`}
-              bind={this}>
+        <ul
+          class={CSS.layoutTabList}
+          role="tablist"
+          onclick={this._toggleLayoutPanel}
+          onkeydown={this._toggleLayoutPanel}
+          bind={this}
+        >
+          <li
+            id={`${this.id}__layoutTab`}
+            data-tab-id="layoutTab"
+            class={CSS.layoutTab}
+            role="tab"
+            tabIndex={0}
+            aria-selected={`${this._layoutTabSelected}`}
+          >
             {i18n.layoutTab}
           </li>
-          <li id={`${this.id}__mapOnlyTab`}
-              data-tab-id="mapOnlyTab"
-              class={CSS.layoutTab}
-              role="tab"
-              tabIndex={0}
-              aria-selected={`${!this._layoutTabSelected}`}
-              bind={this}>
+          <li
+            id={`${this.id}__mapOnlyTab`}
+            data-tab-id="mapOnlyTab"
+            class={CSS.layoutTab}
+            role="tab"
+            tabIndex={0}
+            aria-selected={`${!this._layoutTabSelected}`}
+          >
             {i18n.mapOnlyTab}
           </li>
         </ul>
 
         {panel}
 
-        <button aria-label={i18n.exportDescription}
-                role="button"
-                class={this.classes(CSS.printButton, CSS.button)}
-                tabIndex={0}
-                classes={exportButtonClasses}
-                onclick={this._handlePrintMap}
-                bind={this}>
+        <button
+          aria-label={i18n.exportDescription}
+          role="button"
+          class={this.classes(CSS.printButton, CSS.button, exportButtonClasses)}
+          tabIndex={0}
+          onclick={this._handlePrintMap}
+          bind={this}
+        >
           {i18n.export}
         </button>
-        <div class={CSS.exportedFilesContainer} afterUpdate={this._scrollExportIntoView} onclick={this._removeLink} bind={this}>
-          <h2 class={CSS.exportedFilesTitle}>{i18n.exportText}</h2>
-          {
-            exportedLinksArray.length > 0 ? null : (
-              <div>
-                <div>{i18n.exportHint}</div>
-              </div>
-            )
-          }
+        <div
+          class={CSS.exportedFilesContainer}
+          afterUpdate={this._scrollExportIntoView}
+          onclick={this._removeLink}
+          bind={this}
+        >
+          <h3 class={this.classes(CSS.exportedFilesTitle, CSS.header)}>{i18n.exportText}</h3>
+          {exportedLinksArray.length > 0 ? null : (
+            <div>
+              <div>{i18n.exportHint}</div>
+            </div>
+          )}
 
           {exportedLinksItems}
         </div>
@@ -814,15 +922,15 @@ class Print extends declared(Widget) {
       <div>
         <div class={CSS.printWidgetContainer}>
           <header class={CSS.headerTitle}>{i18n.export}</header>
-          {(this.error || !this.printServiceUrl || isSceneView || !this.view) ? errorPanel : normalPanel}
+          {this.error || !this.printServiceUrl || isSceneView || !this.view
+            ? errorPanel
+            : normalPanel}
         </div>
       </div>
     );
 
     const initializing = this.get("viewModel.state") === "initializing";
-    const panelContent = initializing ?
-                    this._renderLoader() :
-                    printWidgetPanel;
+    const panelContent = initializing ? this._renderLoader() : printWidgetPanel;
 
     return (
       <div afterCreate={storeNode} bind={this} class={CSS.base} data-node-ref="_rootNode">
@@ -842,34 +950,44 @@ class Print extends declared(Widget) {
       [CSS.loader]: this._awaitingServerResponse
     };
 
-    return (
-      <div classes={classes} key="loader" />
-    );
+    return <div class={this.classes(classes)} key="loader" />;
   }
 
-  private _addFileLink(template: PrintTemplate): void {
+  private _createFileLink(template: PrintTemplate): FileLink {
     const titleText = template.layoutOptions.titleText || i18n.untitled,
-    lowercaseFormat = template.format.toLowerCase(),
-    extension = lowercaseFormat.indexOf("png") > -1 ? "png" : lowercaseFormat,
-    fileName = titleText + extension,
-    hasSameFileName = this._exportedFileNameMap[fileName] !== undefined;
+      lowercaseFormat = template.format.toLowerCase(),
+      extension = lowercaseFormat.indexOf("png") > -1 ? "png" : lowercaseFormat,
+      fileName = titleText + extension,
+      hasSameFileName = this._exportedFileNameMap[fileName] !== undefined;
 
     if (hasSameFileName) {
       this._exportedFileNameMap[fileName]++;
-    }
-    else {
+    } else {
       this._exportedFileNameMap[fileName] = 0;
     }
 
-    this.exportedLinks.add(new FileLink({
+    return new FileLink({
       name: titleText,
       extension: extension,
       count: this._exportedFileNameMap[fileName]
-    }));
+    });
   }
 
   private _toPrintTemplate(templateOptions: TemplateOptions): PrintTemplate {
-    const { attributionEnabled, author, copyright, dpi, format, height, layout, legendEnabled, title, scale, width } = this.templateOptions;
+    const {
+      attributionEnabled,
+      author,
+      copyright,
+      dpi,
+      forceFeatureAttributes,
+      format,
+      height,
+      layout,
+      legendEnabled,
+      title,
+      scale,
+      width
+    } = templateOptions;
     const printTemplate = new PrintTemplate({
       attributionVisible: attributionEnabled,
       layoutOptions: {
@@ -877,6 +995,7 @@ class Print extends declared(Widget) {
         copyrightText: copyright || "",
         titleText: title || ""
       },
+      forceFeatureAttributes,
       format,
       layout,
       outScale: scale
@@ -915,28 +1034,46 @@ class Print extends declared(Widget) {
   private _handlePrintMap(): void {
     this._pendingExportScroll = true;
     const template = this._toPrintTemplate(this.templateOptions);
+    const link = this._createFileLink(template);
+    this.exportedLinks.add(link);
 
-    this._addFileLink(template);
-    this.viewModel.print(template);
+    this.viewModel
+      .print(template)
+      .then((result) => {
+        link.set({
+          url: result && result.url,
+          state: "ready"
+        });
+      })
+      .catch(() => {
+        link.set({
+          state: "error"
+        });
+      })
+      .then(() => this.scheduleRender());
   }
 
   private _updateFromOption(e: Event): void {
     const target = e.target as HTMLSelectElement;
-    const selectedOption = target.selectedOptions ? target.selectedOptions.item(0).value : target.options[target.selectedIndex].value;
+    const selectedOption = target.selectedOptions
+      ? target.selectedOptions.item(0).value
+      : target.options[target.selectedIndex].value;
     const targetProperty = target.getAttribute("data-target-property");
 
     this.templateOptions[targetProperty] = selectedOption;
   }
 
   private _switchInput(): void {
-    [this.templateOptions.width, this.templateOptions.height] = [this.templateOptions.height, this.templateOptions.width];
+    [this.templateOptions.width, this.templateOptions.height] = [
+      this.templateOptions.height,
+      this.templateOptions.width
+    ];
   }
 
   private _showAdvancedOptions(): void {
     if (this._layoutTabSelected) {
       this._advancedOptionsVisibleForLayout = !this._advancedOptionsVisibleForLayout;
-    }
-    else {
+    } else {
       this._advancedOptionsVisibleForMapOnly = !this._advancedOptionsVisibleForMapOnly;
     }
   }
@@ -944,7 +1081,10 @@ class Print extends declared(Widget) {
   private _scrollExportIntoView(): void {
     if (this._pendingExportScroll) {
       this._pendingExportScroll = false;
-      const { _rootNode, _rootNode: { clientHeight, scrollHeight } } = this;
+      const {
+        _rootNode,
+        _rootNode: { clientHeight, scrollHeight }
+      } = this;
 
       const delta = scrollHeight - clientHeight;
 
@@ -979,7 +1119,11 @@ class Print extends declared(Widget) {
   }
 
   private _renderExportedLink(exportedLinksArray: FileLink[]): any {
-    return exportedLinksArray.map(exportedLink => {
+    return exportedLinksArray.map((exportedLink) => {
+      const anchorClasses = {
+        [CSS.anchorDisabled]: exportedLink.state === "pending" || exportedLink.state === "error"
+      };
+
       const iconClasses = {
         [CSS.iconSpinner]: exportedLink.state === "pending",
         [CSS.rotate]: exportedLink.state === "pending",
@@ -989,7 +1133,6 @@ class Print extends declared(Widget) {
       };
 
       const linkTitleClasses = {
-        [CSS.disabled]: exportedLink.state === "pending",
         [CSS.exportedFileError]: exportedLink.state === "error"
       };
 
@@ -1003,19 +1146,32 @@ class Print extends declared(Widget) {
 
       if (exportedLink.state === "pending") {
         itemDescriptiveStatus = i18n.pending;
-      }
-      else if (exportedLink.state === "ready") {
+      } else if (exportedLink.state === "ready") {
         itemDescriptiveStatus = i18n.ready;
-      }
-      else {
+      } else {
         itemDescriptiveStatus = i18n.error;
       }
 
       return (
-        <div aria-label={itemDescriptiveStatus} key={exportedLink.formattedName} class={CSS.exportedFile}>
-          <a aria-label={`${exportedLink.formattedName}. ${i18n.linkReady}`} href={url} tabIndex={0} target="_blank" class={CSS.exportedFileLink}>
-            <span data-item={exportedLink} classes={iconClasses} />
-            <span data-item={exportedLink} class={CSS.exportedFileLinkTitle} classes={linkTitleClasses}>{exportedLink.formattedName}</span>
+        <div
+          aria-label={itemDescriptiveStatus}
+          key={exportedLink.formattedName}
+          class={CSS.exportedFile}
+        >
+          <a
+            aria-label={`${exportedLink.formattedName}. ${i18n.linkReady}`}
+            href={url}
+            tabIndex={0}
+            target="_blank"
+            class={this.classes(CSS.exportedFileLink, anchorClasses)}
+          >
+            <span data-item={exportedLink} class={this.classes(iconClasses)} />
+            <span
+              data-item={exportedLink}
+              class={this.classes(CSS.exportedFileLinkTitle, linkTitleClasses)}
+            >
+              {exportedLink.formattedName}
+            </span>
           </a>
         </div>
       );
@@ -1035,13 +1191,11 @@ class Print extends declared(Widget) {
 
     if (!this._layoutTabSelected) {
       this.templateOptions.layout = "MAP_ONLY";
-    }
-    else {
-      const layoutChoices = this.get<string[]>("_templatesInfo.layout.choiceList");
+    } else {
+      const layoutChoices = this.get<string[]>("viewModel.templatesInfo.layout.choiceList");
       this.templateOptions.layout = layoutChoices && layoutChoices[0];
     }
   }
-
 }
 
 export = Print;

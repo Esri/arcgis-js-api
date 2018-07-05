@@ -18,13 +18,26 @@
   $fsprecisionf
 
   uniform sampler2D tex;
+
   varying vec2 vtc;
 
   void main() {
-    vec4 texColor = texture2D(tex, vtc);
-    gl_FragColor = texColor;
+    gl_FragColor = texture2D(tex, vtc);
   }
-
 ]]></snippet>
+
+<snippet name="fsOffscreenRendererTransparentToHUDVisibility"><![CDATA[
+  $fsprecisionf
+
+  uniform sampler2D tex;
+
+  varying vec2 vtc;
+
+  void main() {
+    gl_FragColor = vec4(1.0 - texture2D(tex, vtc).a);
+  }
+]]></snippet>
+
+
 
 </snippets>

@@ -54,6 +54,10 @@
                     255,
                     0
                   ]
+                },
+                "font": {
+                  "family": "Arial",
+                  "weight": "bold"
                 }
               }
             ]

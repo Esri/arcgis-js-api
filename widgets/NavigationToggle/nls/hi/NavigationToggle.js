@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({widgetLabel:"नेविगेशन टॉगल",toggle:"पैन करने या 3D में घुमाने के लिए टॉगल करें"});

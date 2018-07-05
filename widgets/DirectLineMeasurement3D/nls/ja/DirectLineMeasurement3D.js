@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({title:"計測",hint:"シーンで始点となる位置をクリックし、計測を開始します",unsupported:"MapView で直線計測はサポートされていません。",distance:"距離",direct:"直線",horizontal:"水平",vertical:"垂直",unit:"単位",newMeasurement:"新しい計測",units:{metric:"メートル法",imperial:"ヤード・ポンド法",kilometers:"キロメートル",meters:"メートル",miles:"マイル",inches:"インチ",feet:"フィート",yards:"ヤード","nautical-miles":"海里","us-feet":"フィート (米国)","degrees-minutes-seconds":"DMS",degrees:"度"}});

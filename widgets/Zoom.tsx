@@ -28,27 +28,27 @@
  * @see module:esri/views/ui/DefaultUI
  */
 
-/// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
+/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
+/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
 
 // dojo
-import * as i18n from "dojo/i18n!./Zoom/nls/Zoom";
+import * as i18n from "dojo/i18n!esri/widgets/Zoom/nls/Zoom";
 
 // esri.core.accessorSupport
-import { aliasOf, subclass, declared, property } from "../core/accessorSupport/decorators";
+import { aliasOf, subclass, declared, property } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import View = require("../views/View");
+import View = require("esri/views/View");
 
 // esri.widgets
-import Widget = require("./Widget");
+import Widget = require("esri/widgets/Widget");
 
 // esri.widgets.Zoom
-import IconButton = require("./Zoom/IconButton");
-import ZoomViewModel = require("./Zoom/ZoomViewModel");
+import IconButton = require("esri/widgets/Zoom/IconButton");
+import ZoomViewModel = require("esri/widgets/Zoom/ZoomViewModel");
 
 // esri.widgets.support
-import { tsx, renderable } from "./support/widget";
+import { tsx, renderable } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-zoom esri-widget",
@@ -62,7 +62,6 @@ type Layout = "vertical" | "horizontal";
 
 @subclass("esri.widgets.Zoom")
 class Zoom extends declared(Widget) {
-
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -115,7 +114,7 @@ class Zoom extends declared(Widget) {
   //----------------------------------
 
   /**
-   * The widget's default icon font.
+   * The widget's default CSS icon class.
    *
    * @since 4.7
    * @name iconClass
@@ -123,8 +122,7 @@ class Zoom extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property()
-  iconClass = CSS.widgetIcon;
+  @property() iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -139,8 +137,7 @@ class Zoom extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property()
-  label: string = i18n.widgetLabel;
+  @property() label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  layout
@@ -149,7 +146,7 @@ class Zoom extends declared(Widget) {
   /**
    * Determines the layout/orientation of the Zoom widget.
    *
-   * **Known Values:** vertical | horizontal
+   * **Possible Values:** vertical | horizontal
    *
    * @name layout
    * @since 4.5
@@ -203,11 +200,7 @@ class Zoom extends declared(Widget) {
   @property({
     type: ZoomViewModel
   })
-  @renderable([
-    "viewModel.canZoomIn",
-    "viewModel.canZoomOut",
-    "viewModel.state"
-  ])
+  @renderable(["viewModel.canZoomIn", "viewModel.canZoomOut", "viewModel.state"])
   viewModel = new ZoomViewModel();
 
   //--------------------------------------------------------------------------
@@ -226,7 +219,7 @@ class Zoom extends declared(Widget) {
     this._zoomOutButton.enabled = vm.state === "ready" && vm.canZoomOut;
 
     return (
-      <div class={CSS.base} classes={rootClasses}>
+      <div class={this.classes(CSS.base, rootClasses)}>
         {this._zoomInButton.render()}
         {this._zoomOutButton.render()}
       </div>

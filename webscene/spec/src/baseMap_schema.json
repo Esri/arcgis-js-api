@@ -2,7 +2,7 @@
   "title": "baseMap",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "A basemap layer is a layer that provides geographic context to the map and scene. A web scene is not required to always contain a basemap.",
+  "description": "The basemap provides geographic context to the map and scene.",
   "properties": {
     "baseMapLayers": {
       "type": "array",
@@ -24,7 +24,7 @@
     },
     "id": {
       "type": "string",
-      "description": "A unique identifying string for the layer."
+      "description": "A unique identifying string for the basemap."
     },
     "title": {
       "type": "string",
@@ -32,7 +32,7 @@
     },
     "transparency": {
       "type": "number",
-      "description": "The degree of transparency applied to the layer on the client side, where 0 is full transparency and 1 is no transparency."
+      "description": "The degree of transparency applied to the basemap on the client side, where 0 is fully opaque and 1 is fully transparent."
     }
   },
   "required": [

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define(["../../core/JSONSupport","../../core/kebabDictionary"],function(e,a){var r=a({GPString:"string",GPDouble:"double",GPLong:"long",GPBoolean:"boolean",GPDate:"date",GPLinearUnit:"linear-unit",GPDataFile:"data-file",GPRasterData:"raster-data",GPRecordSet:"record-set",GPRasterDataLayer:"raster-data-layer",GPFeatureRecordSetLayer:"feature-record-set-layer",GPMultiValue:"multi-value"});return e.createSubclass({declaredClass:"esri.tasks.support.ParameterValue",properties:{dataType:{value:null,json:{read:r.fromJSON,write:r.toJSON}},value:null}})});

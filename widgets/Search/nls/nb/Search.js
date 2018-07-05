@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
-define({widgetLabel:"Søk",searchButtonTitle:"Søk",clearButtonTitle:"Tøm søk",placeholder:"Finn adresse eller sted",searchIn:"Søk i",all:"Alle",allPlaceholder:"Finn adresse eller sted",emptyValue:"Skriv inn et søkeord",untitledResult:"Uten tittel",untitledSource:"Kilde uten tittel",noResults:"Ingen resultater",noResultsFound:"Fant ingen resultater.",noResultsFoundForValue:"Finner ingen resultater for ${value}.",showMoreResults:"Vis flere resultater",hideMoreResults:"Skjul",searchResult:"Søkeresultater",moreResultsHeader:"Flere resultater",esriLocatorName:"Esri World Geokoder",useCurrentLocation:"Bruk gjeldende lokasjon"});
+define({widgetLabel:"Søk",searchButtonTitle:"Søk",clearButtonTitle:"Tøm søk",placeholder:"Finn adresse eller sted",searchIn:"Søk i",all:"Alle",allPlaceholder:"Finn adresse eller sted",emptyValue:"Skriv inn et søkeord",untitledResult:"Uten tittel",untitledSource:"Kilde uten tittel",noResults:"Ingen resultater",noResultsFound:"Fant ingen resultater.",noResultsFoundForValue:"Finner ingen resultater for ${value}.",showMoreResults:"Vis flere resultater",hideMoreResults:"Skjul",searchResult:"Søkeresultater",moreResultsHeader:"Flere resultater",useCurrentLocation:"Bruk gjeldende lokasjon"});

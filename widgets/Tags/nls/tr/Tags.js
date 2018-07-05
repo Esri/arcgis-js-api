@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({addTags:"Etiket ekle",noTagsFound:"Mevcut etiket eşleşmesi yok.",required:"Bir veya birkaç etiket gerekli."});

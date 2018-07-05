@@ -70,7 +70,7 @@
     right: 0;
   }
   .esri-basemap-gallery__loader:after {
-    background-color: $button_text_color;
+    background-color: $interactive_text_color;
     width: $looping_progress_bar_width;
     z-index: 2;
     animation: looping-progresss-bar-ani $looping_progress_bar_params;
@@ -96,7 +96,7 @@
   .esri-basemap-gallery__item-title {
     font-size: $text_size_small;
     word-break: break-word;
-    color: $button_text_color;
+    color: $interactive_text_color;
     padding: 0 floor($side_spacing/2);
   }
 
@@ -119,7 +119,7 @@
     border-left-color: $background_hover_color;
 
     .esri-basemap-gallery__item-title {
-      color: $button_text_color;
+      color: $interactive_text_color;
     }
   }
 

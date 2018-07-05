@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/Logger","./Graphics3DExtrudeSymbolLayer","./Graphics3DIconSymbolLayer","./Graphics3DLineSymbolLayer","./Graphics3DMeshFillSymbolLayer","./Graphics3DObjectSymbolLayer","./Graphics3DPathSymbolLayer","./Graphics3DPolygonFillSymbolLayer","./Graphics3DTextSymbolLayer"],function(e,r,a,y,o,i,l,t,c,p,s){function n(e,r,a,y){var o=m[e.type]&&m[e.type][r.type]||b[r.type];return o?new o(e,r,a,y):(h.error("GraphicsLayerFactory#make","unknown symbol type "+r.type),null)}Object.defineProperty(r,"__esModule",{value:!0});var h=a.getLogger("esri.views.3d.layers.graphics.Graphics3DSymbolLayerFactory");r.make=n;var b={icon:o,object:t,line:i,path:c,fill:p,extrude:y,text:s},m={"mesh-3d":{fill:l}}});
+define(["require","exports","dojo/has","../../../../core/Logger","./Graphics3DExtrudeSymbolLayer","./Graphics3DIconSymbolLayer","./Graphics3DLineSymbolLayer","./Graphics3DMeshFillSymbolLayer","./Graphics3DObjectSymbolLayer","./Graphics3DObjectSymbolLayerLod","./Graphics3DPathSymbolLayer","./Graphics3DPolygonFillSymbolLayer","./Graphics3DTextSymbolLayer"],function(e,r,a,y,o,l,i,t,c,s,p,n,h){function b(e,r,a,y){var o=d[e.type]&&d[e.type][r.type]||m[r.type];return o?new o(e,r,a,y):(L.error("GraphicsLayerFactory#make","unknown symbol type "+r.type),null)}Object.defineProperty(r,"__esModule",{value:!0});var L=y.getLogger("esri.views.3d.layers.graphics.Graphics3DSymbolLayerFactory");r.make=b;var m={icon:l,object:a("enable-feature:skallweit/lod-rendering")?s:c,line:i,path:p,fill:n,extrude:o,text:h},d={"mesh-3d":{fill:t}}});

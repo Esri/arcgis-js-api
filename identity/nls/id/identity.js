@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({lblItem:"item",title:"Masuk",info:"Harap masuk untuk mengakses item di {server} {resource}",oAuthInfo:"Harap masuk untuk melanjutkan.",lblUser:"Nama pengguna:",lblPwd:"Kata sandi:",lblOk:"YA",lblSigning:"Sedang Masuk...",lblCancel:"Batal",errorMsg:"Nama pengguna/kata sandi tidak valid. Harap coba lagi.",invalidUser:"Nama pengguna atau kata sandi yang Anda masukkan salah.",forbidden:"Nama pengguna dan kata sandi valid, tapi Anda tidak memiliki akses ke sumber daya ini.",noAuthService:"Tidak dapat mengakses layanan autentikasi."});

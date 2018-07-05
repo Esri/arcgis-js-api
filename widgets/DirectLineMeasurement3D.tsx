@@ -19,9 +19,8 @@
  * ::: esri-md class="panel trailer-1"
  * **Known Limitations**
  *
- * * This widget is designed to work in 3D, so it can't be used in a {@link module:esri/views/MapView}.
- * * Currently the widget isn't supported when the {@link module:esri/views/SceneView#padding view.padding}
- * is set.
+ * This widget is designed to work in 3D, so it can't be used in a {@link module:esri/views/MapView}.
+ *
  * :::
  *
  * @example
@@ -43,35 +42,30 @@
  * @see module:esri/views/ui/DefaultUI
  */
 
-/// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
+/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
+/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
 
 // dojo
-import * as i18n from "dojo/i18n!./DirectLineMeasurement3D/nls/DirectLineMeasurement3D";
+import * as i18n from "dojo/i18n!esri/widgets/DirectLineMeasurement3D/nls/DirectLineMeasurement3D";
 
 // esri.core.accessorSupport
-import { aliasOf, subclass, property, declared } from "../core/accessorSupport/decorators";
+import { aliasOf, subclass, property, declared } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import View = require("../views/View");
+import View = require("esri/views/View");
 
 // esri.widgets
-import Widget = require("./Widget");
+import Widget = require("esri/widgets/Widget");
 
 // esri.widgets.DirectLineMeasurement3D
-import DirectLineMeasurement3DViewModel = require("./DirectLineMeasurement3D/DirectLineMeasurement3DViewModel");
+import DirectLineMeasurement3DViewModel = require("esri/widgets/DirectLineMeasurement3D/DirectLineMeasurement3DViewModel");
 
 // esri.widgets.support
-import {
-  tsx,
-  renderable,
-  accessibleHandler,
-  join
-} from "./support/widget";
+import { tsx, renderable, accessibleHandler } from "esri/widgets/support/widget";
 
 const CSS = {
   // common
-  button: "esri-button",
+  button: "esri-button esri-button--secondary",
   // base
   base: "esri-direct-line-measurement-3d esri-widget esri-widget--panel",
   // container
@@ -96,7 +90,6 @@ const CSS = {
 
 @subclass("esri.widgets.DirectLineMeasurement3D")
 class DirectLineMeasurement3D extends declared(Widget) {
-
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -135,8 +128,7 @@ class DirectLineMeasurement3D extends declared(Widget) {
    * @instance
    * @type {module:esri/views/SceneView}
    */
-  @aliasOf("viewModel.view")
-  view: View = null;
+  @aliasOf("viewModel.view") view: View = null;
 
   //----------------------------------
   //  visible
@@ -199,9 +191,17 @@ class DirectLineMeasurement3D extends declared(Widget) {
   //----------------------------------
   //  unit
   //----------------------------------
-
-  @aliasOf("viewModel.unit")
-  unit: DirectLineMeasurement3DViewModel.Unit;
+  /**
+   * Unit system (imperial, metric) or specific unit used for displaying the distance values.
+   *
+   * **Possible Values:** imperial | metric | inches | feet | yards | miles | nautical-miles |  meters | kilometers | us-feet
+   *
+   * @name unit
+   * @instance
+   * @since 4.8
+   * @type {string}
+   */
+  @aliasOf("viewModel.unit") unit: DirectLineMeasurement3DViewModel.Unit = null;
 
   //--------------------------------------------------------------------------
   //
@@ -210,7 +210,7 @@ class DirectLineMeasurement3D extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   @aliasOf("viewModel.clearMeasurement")
-  clearMeasurement(): void { }
+  clearMeasurement(): void {}
 
   render() {
     const isUnsupported = !this.viewModel.isSupported;
@@ -230,7 +230,11 @@ class DirectLineMeasurement3D extends declared(Widget) {
       </section>
     ) : null;
 
-    const measurementLabelNode = (title: string, value: DirectLineMeasurement3DViewModel.MeasurementValue, key: string) => {
+    const measurementLabelNode = (
+      title: string,
+      value: DirectLineMeasurement3DViewModel.MeasurementValue,
+      key: string
+    ) => {
       switch (value.state) {
         case "available":
           return (
@@ -242,7 +246,10 @@ class DirectLineMeasurement3D extends declared(Widget) {
 
         case "unavailable":
           return (
-            <div key={`${key}-disabled`} class={join(CSS.measurementItem, CSS.measurementItemDisabled)}>
+            <div
+              key={`${key}-disabled`}
+              class={this.classes(CSS.measurementItem, CSS.measurementItemDisabled)}
+            >
               <span class={CSS.measurementItemTitle}>{title}</span>
             </div>
           );
@@ -268,11 +275,18 @@ class DirectLineMeasurement3D extends declared(Widget) {
     const unitsSelectNode = (
       <div class={CSS.unitsSelectWrapper}>
         <select class={CSS.unitsSelect} id={unitsId} onchange={this._changeUnit} bind={this}>
-          { this.viewModel.unitOptions.map(unit => (unit === this.viewModel.unit) ? (
-            <option key={unit} value={unit} selected>{ i18n.units[unit] }</option>
-          ) : (
-            <option key={unit} value={unit}>{ i18n.units[unit] }</option>
-          ))}
+          {this.viewModel.unitOptions.map(
+            (unit) =>
+              unit === this.viewModel.unit ? (
+                <option key={unit} value={unit} selected>
+                  {i18n.units[unit]}
+                </option>
+              ) : (
+                <option key={unit} value={unit}>
+                  {i18n.units[unit]}
+                </option>
+              )
+          )}
         </select>
       </div>
     );
@@ -285,7 +299,11 @@ class DirectLineMeasurement3D extends declared(Widget) {
     ) : null;
 
     const newMeasurementNode = isMeasuring ? (
-      <button class={join(CSS.button, CSS.clearButton)} bind={this} onclick={this._newMeasurement}>
+      <button
+        class={this.classes(CSS.button, CSS.clearButton)}
+        bind={this}
+        onclick={this._newMeasurement}
+      >
         {i18n.newMeasurement}
       </button>
     ) : null;
@@ -301,7 +319,9 @@ class DirectLineMeasurement3D extends declared(Widget) {
     ) : null;
 
     return (
-      <div key="" class={CSS.base} role="presentation">{containerNode}</div>
+      <div key="" class={CSS.base} role="presentation">
+        {containerNode}
+      </div>
     );
   }
 
@@ -326,7 +346,6 @@ class DirectLineMeasurement3D extends declared(Widget) {
       this.unit = selected.value as DirectLineMeasurement3DViewModel.Unit;
     }
   }
-
 }
 
 export = DirectLineMeasurement3D;

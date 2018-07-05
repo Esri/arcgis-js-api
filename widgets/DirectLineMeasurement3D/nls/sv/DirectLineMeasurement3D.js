@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({title:"Mät",hint:"Börja mäta genom att klicka i scenen för att placera den första punkten",unsupported:"Direkt linjemätning stöds inte i MapView.",distance:"Avstånd",direct:"Direkt",horizontal:"Horisontell",vertical:"Vertikal",unit:"Enhet",newMeasurement:"Ny mätning",units:{metric:"Metriska",imperial:"Imperial",kilometers:"Kilometer",meters:"Meter",miles:"Mile",inches:"Tum",feet:"Fot",yards:"Yard","nautical-miles":"Nautiska mil","us-feet":"Fot (USA)","degrees-minutes-seconds":"DMS",degrees:"Grader"}});

@@ -48,17 +48,21 @@
       uniform mediump float u_depth;
 
       // the opacity of the layer given by the painter
-      uniform mediump float u_opacity;
+      uniform mediump float u_radius;
+      uniform lowp vec4 u_color;
+      uniform mediump float u_blur;
+      uniform mediump float u_stroke_width;
+      uniform lowp vec4 u_stroke_color;
 
       uniform mediump float u_antialiasingWidth; // antialiasing (factors in the pixel_ratio for high res devices)
 
       void main()
       {
-        v_color = a_color;
-        v_stroke_color = a_stroke_color;
-        v_stroke_width = a_data[1] * sizePrecision;
-        v_radius = a_data[2];
-        v_blur = max(a_data[0] * blurPrecision, u_antialiasingWidth / (v_radius + v_stroke_width));
+        v_color = a_color * u_color;
+        v_stroke_color = a_stroke_color * u_stroke_color;
+        v_stroke_width = a_data[1] * sizePrecision * u_stroke_width;
+        v_radius = a_data[2] * u_radius;
+        v_blur = max(a_data[0] * blurPrecision + u_blur, u_antialiasingWidth / (v_radius + v_stroke_width));
 
         mediump vec2 offset = vec2(mod(a_pos, 2.0) * 2.0 - 1.0);
         v_offset = offset;

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({widgetLabel:"مخطط",draw:"رسم",drawPoint:"رسم نقطة",drawPolygon:"رسم مضلع",drawPolyline:"رسم خط",drawMultipoint:"رسم تعدد النقاط",drawCircle:"رسم دائرة",drawRectangle:"رسم مستطيل",drawTriangle:"رسم مثلث",drawSquare:"رسم مربع",drawEllipse:"رسم قطع ناقص",pan:"إزاحة الخريطة",undo:"تراجع",redo:"إعادة",updateDrawing:"تحديث الرسم",clear:"مسح الرسم",completeDrawing:"إكمال الرسم",pauseDrawing:"إيقاف الرسم مؤقتًا",resumeDrawing:"متابعة الرسم",rotate:"استدارة",scale:"مقياس",addPointTooltip:"انقر لإضافة نقطة.",removePointTooltip:"انقر لإزالة هذه النقطة",completePolygonTooltip:"انقر على هذه النقطة للإنهاء",startDrawingTooltip:"انقر لبدء الرسم",continueDrawingTooltip:"انقر للاستمرار في الرسم",completeDrawingTooltip:"انقر نقرًا مزدوجًا للإتمام",addMultipointTooltip:"انقر لبدء إضافة نقاط",finishMultipointTooltip:"انقر نقرًا مزدوجًا للإنهاء",addFreehandTooltip:"اضغط لأسفل للبدء والتقدم للإنهاء",addShapeTooltip:"انقر لإضافة شكل أو اضغط للأسفل لكي تبدأ واستمر للإنهاء"});

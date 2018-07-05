@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({lblItem:"element",title:"Zaloguj się",info:"Zaloguj się, aby uzyskać dostęp do elementu na serwerze {server} {resource}",oAuthInfo:"Zaloguj się, aby kontynuować.",lblUser:"Nazwa użytkownika:",lblPwd:"Hasło:",lblOk:"OK",lblSigning:"Logowanie...",lblCancel:"Anuluj",errorMsg:"Nieprawidłowa nazwa użytkownika/hasło. Spróbuj jeszcze raz.",invalidUser:"Wprowadzone hasło lub nazwa użytkownika są nieprawidłowe.",forbidden:"Nazwa użytkownika i hasło są prawidłowe, jednak nie masz dostępu do tego zasobu.",noAuthService:"Nie można uzyskać dostępu do usługi uwierzytelniania."});

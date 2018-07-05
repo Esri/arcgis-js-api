@@ -8,6 +8,7 @@
       "type": "string",
       "description": "Used for classed color or size. The default value is `esriClassifyManual`.",
       "enum": [
+        "esriClassifyDefinedInterval",
         "esriClassifyNaturalBreaks",
         "esriClassifyEqualInterval",
         "esriClassifyQuantile",
@@ -15,6 +16,10 @@
         "esriClassifyManual"
       ],
       "default": "esriClassifyManual"
+    },
+    "colorRamp": {
+      "type": "object",
+      "$ref": "colorRamp_schema.json"
     },
     "fields": {
       "type": "array",
@@ -52,7 +57,6 @@
     },
     "type": {
       "type": "string",
-      "description": "Used in case of classed renderers.",
       "enum": [
         "classedSize",
         "classedColor",
@@ -69,6 +73,7 @@
       }
     }
   },
+  "additionalProperties": false,
   "esriDocumentation": {
     "additionalInformation": "The authoringInfo object is not required with a renderer. It is only used if rendering was generated using the Scene Viewer rendering tools. All snippets provided below show a portion of what is contained within `authoringInfo`. Please refer to the sample snippets in the [authoringInfo visual variable](authoringInfo_visualVariable.md) object for additional help.",
     "examples": [

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({statsAvg:"평균: ${avg}",count:"개수: ${count}",percent:"${num}%",high:"높음",low:"낮음",color:{changeMinMaxToolTIp:"값을 입력합니다.",handleToolTip:"데이터 값을 색상에 일치시킵니다.",maxValueToolTip:"최대 예상 데이터 값을 입력합니다.",minValueToolTip:"최소 예상 데이터 값을 입력합니다.",changeSymbol:"심볼 변경"},size:{handleToolTip:"데이터 값을 심볼 크기에 일치시킵니다.",sizeInputBoxLines:"라인 두께를 0에서 18픽셀 사이로 설정합니다.",sizeInputBoxPoints:"심볼 크기를 1에서 120픽셀 사이로 설정합니다."}});

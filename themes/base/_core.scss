@@ -2,34 +2,40 @@
   Core Settings and Imports
 */
 
+$include_widgets: true !default;
+
+// Widget core
+$include_Widget: $include_widgets !default;
+
 // Widgets (sorted alphabetically)
-$include_AreaMeasurement3D: true !default;
-$include_Attribution: true !default;
-$include_BasemapGallery: true !default;
-$include_BasemapToggle: true !default;
-$include_BrowseItems: true !default;
-$include_ColorPicker: true !default;
-$include_Compass: true !default;
-$include_CoordinateConversion: true !default;
-$include_DatePicker: true !default;
-$include_Directions: true !default;
-$include_Expand: true !default;
-$include_Feature: true !default;
-$include_HorizontalSlider: true !default;
-$include_LayerList: true !default;
-$include_Legend: true !default;
-$include_NavigationToggle: true !default;
-$include_Print: true !default;
-$include_DirectLineMeasurement3D: true !default;
-$include_Popup: true !default;
-$include_RasterSymbologyEditor: true !default;
-$include_RendererSlider: true !default;
-$include_ScaleBar: true !default;
-$include_Search: true !default;
-$include_Spinner: true !default;
-$include_Tags: true !default; // TODO : make _Tags.scss use this var.  Currently something around line 251 is causing issues when it's in a mixin
-$include_TimePicker: true !default;
-$include_Zoom: true !default;
+$include_AreaMeasurement3D: $include_widgets !default;
+$include_Attribution: $include_widgets !default;
+$include_BasemapGallery: $include_widgets !default;
+$include_BasemapToggle: $include_widgets !default;
+$include_Bookmarks: $include_widgets !default;
+$include_BrowseItems: $include_widgets !default;
+$include_ColorPicker: $include_widgets !default;
+$include_Compass: $include_widgets !default;
+$include_CoordinateConversion: $include_widgets !default;
+$include_DatePicker: $include_widgets !default;
+$include_Directions: $include_widgets !default;
+$include_Expand: $include_widgets !default;
+$include_Feature: $include_widgets !default;
+$include_HorizontalSlider: $include_widgets !default;
+$include_LayerList: $include_widgets !default;
+$include_Legend: $include_widgets !default;
+$include_NavigationToggle: $include_widgets !default;
+$include_Print: $include_widgets !default;
+$include_DirectLineMeasurement3D: $include_widgets !default;
+$include_Popup: $include_widgets !default;
+$include_RasterSymbologyEditor: $include_widgets !default;
+$include_RendererSlider: $include_widgets !default;
+$include_ScaleBar: $include_widgets !default;
+$include_Search: $include_widgets !default;
+$include_Spinner: $include_widgets !default;
+$include_Tags: $include_widgets !default; // TODO : make _Tags.scss use this var.  Currently something around line 251 is causing issues when it's in a mixin
+$include_TimePicker: $include_widgets !default;
+$include_Zoom: $include_widgets !default;
 
 $icomoon-font-path: "../base/icons/fonts"; // Override for esri/themes/base/icons/style.scss
 
@@ -53,6 +59,7 @@ $icomoon-font-path: "../base/icons/fonts"; // Override for esri/themes/base/icon
 @import "widgets/Attribution";
 @import "widgets/BasemapGallery";
 @import "widgets/BasemapToggle";
+@import "widgets/Bookmarks";
 @import "widgets/BrowseItems";
 @import "widgets/ColorPicker";
 @import "widgets/Compass";

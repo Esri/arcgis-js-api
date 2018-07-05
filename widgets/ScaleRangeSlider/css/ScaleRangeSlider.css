@@ -1,0 +1,188 @@
+@import url(../../../../dojox/form/resources/RangeSlider.css);
+
+.esri-scale-range-slider {
+  font-family: "Avenir Next W00", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  position: relative;
+}
+
+.esri-scale-range-slider__scale-indicator-container {
+  position: absolute;
+  height: 4px;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.esri-scale-range-slider__scale-indicator {
+  position: absolute;
+  bottom: 4px;
+  margin: 0 -4px ;
+  width: 0;
+  height: 0;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  border-top: 8px solid black;
+}
+
+.esri-scale-range-slider__scale-indicator {
+  transition-property: left, right, width;
+  transition-duration: 0.2s;
+}
+
+
+.esri-scale-previewPopup {
+  border: none;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+
+  padding: 6px 0;
+}
+
+.esri-scale-preview {
+  font-family: "Avenir Next W00", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #fff;
+  padding: 6px;
+
+  box-shadow: #4d4d4d 0 0 6px;
+}
+
+.esri-scale-preview__header {
+  color: #5cace1;
+  margin: 0 0 4px 0;
+  max-width: 128px;
+  word-wrap: break-word;
+}
+
+.esri-scale-preview__thumbnail {
+  display: block;
+  box-sizing: border-box;
+
+  
+  padding: 64px;
+}
+
+.esri-scale-menu__button {
+  margin-top: 6px;
+  width: 50%;
+}
+
+.esri-scale-menu__button .dijitButtonNode,
+.esri-scale-menu__button .dijitButtonContents {
+  width: 100%;
+}
+
+.esri-scale-menu__button .dijitButtonText {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 80%;
+}
+
+.esri-scale-menu__button--min .dijitButtonNode {
+  text-align: left;
+}
+
+.esri-scale-menu__button--max .dijitButtonNode {
+  text-align: right;
+}
+
+.dijitRtl .esri-scale-menu__button--min .dijitButtonNode {
+  text-align: right;
+}
+
+.dijitRtl .esri-scale-menu__button--max .dijitButtonNode {
+  text-align: left;
+}
+
+.esri-scale-menu__button .dijitButtonNode {
+  border: none;
+  background: transparent none;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+.esri-scale-menu__header {
+  display: flex;
+  align-items: center;
+  background-color: #a6a8ab;
+  padding: 4px 8px;
+  color: #f6f6f8;
+  text-transform: uppercase;
+}
+
+.esri-scale-menu__label--secondary {
+  font-size: 0.8em;
+  padding: 0 4px;
+}
+
+.esri-scale-menu__content {
+  padding: 15px 4px;
+}
+
+.esri-scale-menu {
+  font-family: "Avenir Next W00", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 0;
+  background-color: #f6f6f8;
+  color: #4d4d4d;
+}
+
+.esri-scale-menu__list {
+  padding: 0;
+  margin: 0;
+}
+
+.esri-scale-menu__item {
+  padding: 4px 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.esri-scale-menu__item:hover {
+  cursor: pointer;
+  color: #21759B;
+  text-decoration: underline;
+}
+
+.esri-scale-menu__item--current {
+  white-space: nowrap;
+  display: inline-block;
+  padding: 0 4px 0 0;
+  font-size: 1.2em;
+  font-weight: bolder;
+  vertical-align: middle;
+}
+
+.dijitRtl .esri-scale-menu__item--current {
+  padding: 0 0 0 4px;
+}
+
+.esri-scale-menu__input {
+  width: 10em;
+}
+
+.esri-scale-menu {
+  padding: 0;
+  background-color: #f6f6f8;
+  border: 1px solid #999;
+}
+
+.esri-scale-menu .dijitTooltipContainer {
+  padding: 0;
+  box-shadow: none;
+  border: none;
+}
+
+.esri-scale-menu .dijitTooltipContainer .dijitTooltipFocusNode {
+  padding: 0;
+}
+
+.esri-scale-menu .dijitTooltipContainer + .dijitTooltipConnector {
+  background-image: none;
+}
+
+.esri-scale-menu__button .dijitArrowButtonInner {
+  background: url("../../../themes/base/images/ago_sprite.png") -66px -50px;
+}
+
+.esri-scale-range-slider .esri-horizontal-slider.dijitDisabled {
+  pointer-events: none;
+}

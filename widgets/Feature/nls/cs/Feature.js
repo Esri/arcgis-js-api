@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
-define({attach:"Přílohy",fields:"Pole",fieldsSummary:"Seznam atributů a hodnot",media:"Multimédia",next:"Další",numCharts:"Počet grafů",numImages:"Počet obrázků",noTitle:"Bez názvu",previous:"Předchozí"});
+define({attach:"Přílohy",fields:"Pole",fieldsSummary:"Seznam atributů a hodnot",media:"Média",next:"Další",numCharts:"Počet grafů",numImages:"Počet obrázků",noTitle:"Bez názvu",previous:"Předchozí"});

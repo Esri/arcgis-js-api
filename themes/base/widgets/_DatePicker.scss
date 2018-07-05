@@ -114,7 +114,7 @@
 
   .esri-date-picker__day-item--selected,
   .esri-date-picker__year-picker-item--selected {
-    color: $text_inverse_color;
+    color: $interactive_text_color--inverse;
     background-color: $selected_border_color;
     cursor: auto;
   }

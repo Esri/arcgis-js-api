@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({zoom:"Perbesar hingga",next:"Fitur selanjutnya",previous:"Fitur sebelumnya",close:"Tutup",dock:"Dok",undock:"Lepas dari dok",menu:"Menu",untitled:"Tidak berjudul",pageText:"{index} dari {total}",selectedFeature:"Fitur yang dipilih",selectedFeatures:"{total} hasil",loading:"Memuat",collapse:"Ciutkan",expand:"Bentangkan"});

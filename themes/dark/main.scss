@@ -7,9 +7,12 @@
 $text_color: #d1d1d1; // $Calcite_Gray_700 (dark)
 $background_color: #242424; // $Calcite_Gray_050 (dark)
 $anchor_color: #9e9e8e; // $Calcite_Gray_050 (dark)
-$button_text_color: #adadad; // $Calcite_Gray_600 (dark)
+$interactive_text_color: #adadad; // $Calcite_Gray_600 (dark)
+
+$header_color: $text_color;
 
 $button_color: #adadad;
+$button_color--inverse: $background_color;
 
 // Selected
 $selected_border_color: #d1d1d1;

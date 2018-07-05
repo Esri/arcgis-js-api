@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({widgetLabel:"Seznam vrstev",noItemsToDisplay:"Momentálně nejsou k zobrazení žádné položky.",layerInvisibleAtScale:"V aktuálním měřítku neviditelné",layerError:"Při načítání této vrstvy došlo k chybě.",untitledLayer:"Vrstva bez názvu"});

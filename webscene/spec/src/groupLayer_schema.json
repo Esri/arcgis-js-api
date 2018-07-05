@@ -82,7 +82,7 @@
                   "id": "devA",
                   "opacity": 1,
                   "title": "Dev A Buildings",
-                  "url": "http://scenesampleserverdev.arcgis.com/arcgis/rest/services/Hosted/DevA_BuildingShell_Textured/SceneServer/layers/0",
+                  "url": "https://scenesampleserverdev.arcgis.com/arcgis/rest/services/Hosted/DevA_BuildingShell_Textured/SceneServer/layers/0",
                   "visibility": true,
                   "layerType": "ArcGISSceneServiceLayer",
                   "itemId": "e3e09257b8e14872b56b4801b01e6c6e"

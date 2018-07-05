@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({widgetLabel:"Skica",draw:"Crtaj",drawPoint:"Nacrtaj točku",drawPolygon:"Nacrtaj poligon",drawPolyline:"Nacrtaj liniju",drawMultipoint:"Nacrtaj više točaka",drawCircle:"Nacrtaj krug",drawRectangle:"Nacrtaj pravokutnik",drawTriangle:"Nacrtaj trokut",drawSquare:"Nacrtaj kvadrat",drawEllipse:"Nacrtaj elipsu",pan:"Pomičite se po karti",undo:"Poništi",redo:"Ponovi",updateDrawing:"Ažuriraj crtež",clear:"Izbriši crtež",completeDrawing:"Dovrši crtež",pauseDrawing:"Pauziraj crtanje",resumeDrawing:"Nastavi crtanje",rotate:"Zakreni",scale:"Mjerilo",addPointTooltip:"Kliknite da biste dodali točku",removePointTooltip:"Kliknite da biste uklonili točku",completePolygonTooltip:"Kliknite na ovu točku da biste završili",startDrawingTooltip:"Kliknite da biste počeli crtati",continueDrawingTooltip:"Kliknite da biste nastavili crtati",completeDrawingTooltip:"Kliknite dvaput za dovršetak",addMultipointTooltip:"Kliknite da biste počeli dodavati točke",finishMultipointTooltip:"Kliknite dvaput za završetak",addFreehandTooltip:"Pritisnite prema dolje za početak i pustite za završetak",addShapeTooltip:"Kliknite da biste dodali oblik ili pritisnite prema dolje za početak te pustite za završetak"});

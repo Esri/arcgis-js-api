@@ -22,14 +22,25 @@ $action_size: 16px;
     line-height: $line_height;
     cursor: pointer;
     user-select: none;
-    color: $button_text_color;
+    color: $interactive_text_color;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     display: flex;
+    &.esri-widget__action-toggle {
+      padding: 0;
+    }
+  }
+  .esri-popup__button--disabled {
+    cursor: default;
+    opacity: $disabled_opacity;
+    color: $disabled_color;
   }
   .esri-popup__button:hover {
-    color: $button_text_hover_color;
+    color: $interactive_text_color--hover;
+  }
+  .esri-popup__button--disabled {
+    opacity: $disabled_opacity;
   }
   .esri-popup--aligned-top-center {
     transform-origin: 50% 100%;
@@ -79,8 +90,8 @@ $action_size: 16px;
     margin: 0 0 0 auto; // `auto` here helps place each node at either end of the container node
     display: flex;
   }
-  h2.esri-popup__header-title { // More specific to overwrite .esri-widget h2 selector
-    font-size: $h2_text_size;
+  .esri-popup__header-title {
+    font-size: $text_size;
     padding: $cap_spacing $side_spacing;
     margin: 0 auto 0 0;
     display: block;
@@ -158,6 +169,10 @@ $action_size: 16px;
   .esri-popup__feature-buttons .esri-popup__action {
     max-width: 50%;
   }
+  .esri-popup__feature-buttons .esri-popup__action-toggle--on .esri-popup__icon {
+    outline: 1px solid $interactive_text_color;
+    outline-offset: 2px;
+  }
   .esri-popup--feature-menu-open .esri-popup__feature-buttons {
     justify-content: flex-end;
   }
@@ -189,7 +204,7 @@ $action_size: 16px;
     position: absolute;
     width: 100%;
     background-color: $page_menu_background_color;
-    color: $text_inverse_color;
+    color: $interactive_text_color--inverse;
     z-index: $page_menu_z;
     max-height: 0;
     opacity: 0;
@@ -282,8 +297,7 @@ $action_size: 16px;
     z-index: $page_menu_viewport_z;
     transition: max-height 250ms ease-out 62ms;
   }
-  .esri-popup__feature-menu .esri-popup__feature-menu-header {
-    // More specific to override some default H2 styles.
+  .esri-popup__feature-menu-header {
     background-color: transparent;
     border-bottom: solid 1px $border_color;
     padding: 0;

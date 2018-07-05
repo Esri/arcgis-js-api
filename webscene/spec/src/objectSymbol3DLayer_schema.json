@@ -64,7 +64,7 @@
   ],
   "additionalProperties": false,
   "esriDocumentation": {
-    "additionalInformation": "[Anchor and `origin`](https://developers.arcgis.com/javascript/latest/api-reference/esri-symbols-ObjectSymbol3DLayer.html#anchor) in ArcGIS API for JavaScript.",
+    "additionalInformation": "- [Size property interaction](static/objectSymbolLayerSize.md)\n- [Anchor and `origin`](https://developers.arcgis.com/javascript/latest/api-reference/esri-symbols-ObjectSymbol3DLayer.html#anchor) in ArcGIS API for JavaScript.",
     "examples": [
       {
         "title": "Object Symbol",

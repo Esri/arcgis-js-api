@@ -32,16 +32,12 @@
  *
  */
 
-/// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
+/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
+/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
 
 // dojo
-import * as i18n from "dojo/i18n!./Feature/nls/Feature";
-
-import {
-  LEFT_ARROW,
-  RIGHT_ARROW
-} from "dojo/keys";
+import * as i18n from "dojo/i18n!esri/widgets/Feature/nls/Feature";
+import { LEFT_ARROW, RIGHT_ARROW } from "dojo/keys";
 
 // dojox.charting.Chart2DConstructor
 import Chart2DConstructor = dojox.charting.Chart2DConstructor;
@@ -53,39 +49,35 @@ import ThemeConstructor = dojox.charting.ThemeConstructor;
 import TooltipConstructor = dojox.charting.action2d.TooltipConstructor;
 
 // esri
-import Graphic = require("../Graphic");
+import Graphic = require("esri/Graphic");
 
 // esri.core
-import promiseUtils = require("../core/promiseUtils");
-import watchUtils = require("../core/watchUtils");
+import promiseUtils = require("esri/core/promiseUtils");
+import watchUtils = require("esri/core/watchUtils");
 
 // esri.core.accessorSupport
-import { aliasOf, subclass, property, declared } from "../core/accessorSupport/decorators";
+import { aliasOf, subclass, property, declared } from "esri/core/accessorSupport/decorators";
 
 // esri.portal
-import { AttachmentInfo, ContentElement, FieldInfo, MediaInfo } from "../portal/jsonTypes";
+import { AttachmentInfo, ContentElement, FieldInfo, MediaInfo } from "esri/portal/jsonTypes";
 
 // esri.views
-import MapView = require("../views/MapView");
-import SceneView = require("../views/SceneView");
+import MapView = require("esri/views/MapView");
+import SceneView = require("esri/views/SceneView");
 
 // esri.widgets
-import Widget = require("./Widget");
+import Widget = require("esri/widgets/Widget");
 
 // esri.widgets.Feature
-import FeatureViewModel = require("./Feature/FeatureViewModel");
-import { FeatureMediaInfo, FeatureChartOption, FeatureValue } from "./Feature/interfaces";
+import FeatureViewModel = require("esri/widgets/Feature/FeatureViewModel");
+import { FeatureMediaInfo, FeatureChartOption, FeatureValue } from "esri/widgets/Feature/interfaces";
 
 // esri.widgets.Feature.support
-import attachmentUtils = require("./Feature/support/attachmentUtils");
+import attachmentUtils = require("esri/widgets/Feature/support/attachmentUtils");
 
 // esri.widgets.support
-import uriUtils = require("./support/uriUtils");
-
-import {
-  accessibleHandler, join, tsx, renderable,
-  isWidget, isWidgetBase
-} from "./support/widget";
+import uriUtils = require("esri/widgets/support/uriUtils");
+import { accessibleHandler, tsx, renderable, isWidget, isWidgetBase } from "esri/widgets/support/widget";
 
 const CSS = {
   // common
@@ -95,7 +87,7 @@ const CSS = {
   iconRightTriangleArrow: "esri-icon-right-triangle-arrow",
   iconMedia: "esri-icon-media",
   iconChart: "esri-icon-chart",
-  esriTable: "esri-table",
+  esriTable: "esri-widget__table",
   // popup renderer
   base: "esri-feature",
   // containers and content
@@ -193,7 +185,6 @@ function buildKey(element: string, index?: number): string {
 
 @subclass("esri.widgets.Feature")
 class Feature extends declared(Widget) {
-
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -213,9 +204,7 @@ class Feature extends declared(Widget) {
   }
 
   postInitialize() {
-    this.own(
-      watchUtils.init(this, "viewModel.content", () => this._setupMediaRefreshTimers())
-    );
+    this.own(watchUtils.init(this, "viewModel.content", () => this._setupMediaRefreshTimers()));
   }
 
   destroy() {
@@ -252,8 +241,7 @@ class Feature extends declared(Widget) {
   //  contentEnabled
   //----------------------------------
 
-  @aliasOf("viewModel.contentEnabled")
-  contentEnabled: boolean = null;
+  @aliasOf("viewModel.contentEnabled") contentEnabled: boolean = null;
 
   //----------------------------------
   //  graphic
@@ -292,8 +280,7 @@ class Feature extends declared(Widget) {
    *
    */
 
-  @aliasOf("viewModel.graphic")
-  graphic: Graphic = null;
+  @aliasOf("viewModel.graphic") graphic: Graphic = null;
 
   //----------------------------------
   //  title
@@ -309,8 +296,7 @@ class Feature extends declared(Widget) {
    * @readonly
    *
    */
-  @aliasOf("viewModel.title")
-  title: string = null;
+  @aliasOf("viewModel.title") title: string = null;
 
   //----------------------------------
   //  view
@@ -325,8 +311,7 @@ class Feature extends declared(Widget) {
    * @default null
    */
 
-  @aliasOf("viewModel.view")
-  view: MapView | SceneView = null;
+  @aliasOf("viewModel.view") view: MapView | SceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -347,10 +332,7 @@ class Feature extends declared(Widget) {
   @property({
     type: FeatureViewModel
   })
-  @renderable([
-    "viewModel.waitingForContent",
-    "viewModel.content"
-  ])
+  @renderable(["viewModel.waitingForContent", "viewModel.content"])
   viewModel = new FeatureViewModel();
 
   //--------------------------------------------------------------------------
@@ -361,9 +343,8 @@ class Feature extends declared(Widget) {
 
   render() {
     const loadingNode = (
-      <div key={buildKey("loading-container")}
-        class={CSS.loadingSpinnerContainer}>
-        <span class={join(CSS.iconLoading, CSS.spinner)}></span>
+      <div key={buildKey("loading-container")} class={CSS.loadingSpinnerContainer}>
+        <span class={this.classes(CSS.iconLoading, CSS.spinner)} />
       </div>
     );
 
@@ -422,9 +403,13 @@ class Feature extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   private _cancelChartModules(): void {
-    if (this._chartRequirePromise) {
-      this._chartRequirePromise.cancel();
+    const { _chartRequirePromise } = this;
+
+    if (_chartRequirePromise) {
+      _chartRequirePromise.cancel();
     }
+
+    this._chartRequirePromise = null;
   }
 
   private _destroyChart(contentElementIndex: number): void {
@@ -437,7 +422,7 @@ class Feature extends declared(Widget) {
   }
 
   private _destroyCharts(): void {
-    this._chartMap.forEach(mapItem => {
+    this._chartMap.forEach((mapItem) => {
       mapItem.chart.destroy();
       mapItem.tooltip.destroy();
     });
@@ -454,21 +439,27 @@ class Feature extends declared(Widget) {
     }
 
     if (isWidget(content)) {
-      return <div key={buildKey(`${contentKey}-widget`)}>
-        {content.render()}
-      </div>;
+      return <div key={buildKey(`${contentKey}-widget`)}>{content.render()}</div>;
     }
 
     if (content instanceof HTMLElement) {
-      return <div key={buildKey(`${contentKey}-html-element`)}
-        bind={content}
-        afterCreate={this._attachToNode} />;
+      return (
+        <div
+          key={buildKey(`${contentKey}-html-element`)}
+          bind={content}
+          afterCreate={this._attachToNode}
+        />
+      );
     }
 
     if (isWidgetBase(content)) {
-      return <div key={buildKey(`${contentKey}-dijit`)}
-        bind={content.domNode}
-        afterCreate={this._attachToNode} />;
+      return (
+        <div
+          key={buildKey(`${contentKey}-dijit`)}
+          bind={content.domNode}
+          afterCreate={this._attachToNode}
+        />
+      );
     }
 
     if (Array.isArray(content)) {
@@ -498,27 +489,20 @@ class Feature extends declared(Widget) {
   }
 
   private _renderAttachmentInfo(options: AttachmentInfoOptions): any {
-    const {
-      attachmentInfo,
-      supportsResizeAttachments
-    } = options;
+    const { attachmentInfo, supportsResizeAttachments } = options;
 
-    const {
-      contentType,
-      name,
-      url
-    } = attachmentInfo;
+    const { contentType, name, url } = attachmentInfo;
 
     const thumbSize = 48;
 
-    const hasSupportedImageFormat = supportsResizeAttachments &&
-      attachmentUtils.isSupportedImage(contentType);
+    const hasSupportedImageFormat =
+      supportsResizeAttachments && attachmentUtils.isSupportedImage(contentType);
 
     const sep = url.indexOf("?") === -1 ? "?" : "&";
 
-    const thumbnail = hasSupportedImageFormat ?
-      `${url}${sep}w=${thumbSize}` :
-      attachmentUtils.getIconPath(contentType);
+    const thumbnail = hasSupportedImageFormat
+      ? `${url}${sep}w=${thumbSize}`
+      : attachmentUtils.getIconPath(contentType);
 
     const attachmentsItemMaskClasses = {
       [CSS.attachmentsItemMaskIcon]: !hasSupportedImageFormat
@@ -531,14 +515,15 @@ class Feature extends declared(Widget) {
     return (
       <li class={CSS.attachmentsItem} key={attachmentInfo}>
         <a class={CSS.attachmentsItemLink} href={url} target="_blank">
-          <div classes={attachmentsItemMaskClasses} class={CSS.attachmentsItemMask}>
-            <img alt={name}
-              classes={attachmentsItemImageClasses}
-              class={CSS.attachmentsItemImage}
+          <div class={this.classes(attachmentsItemMaskClasses, CSS.attachmentsItemMask)}>
+            <img
+              alt={name}
+              class={this.classes(attachmentsItemImageClasses, CSS.attachmentsItemImage)}
               title={name}
-              src={thumbnail} />
+              src={thumbnail}
+            />
             <span class={CSS.attachmentsItemImageOverlay}>
-              <span aria-hidden="true" class={CSS.attachmentsItemLinkIcon}></span>
+              <span aria-hidden="true" class={CSS.attachmentsItemLinkIcon} />
             </span>
           </div>
           <span class={CSS.attachmentsItemFilename}>{name || i18n.noTitle}</span>
@@ -548,13 +533,12 @@ class Feature extends declared(Widget) {
   }
 
   private _renderAttachments(contentElement: ContentElement, contentElementIndex: number): any {
-    const {
-      displayType,
-      attachmentInfos
-    } = contentElement;
+    const { displayType, attachmentInfos } = contentElement;
 
     const hasAttachments = attachmentInfos && attachmentInfos.length;
-    const supportsResizeAttachments = this.get<boolean>("graphic.layer.capabilities.operations.supportsResizeAttachments");
+    const supportsResizeAttachments = this.get<boolean>(
+      "graphic.layer.capabilities.operations.supportsResizeAttachments"
+    );
 
     const attachmentsClasses = {
       [CSS.attachmentsList]: displayType !== "preview",
@@ -562,17 +546,20 @@ class Feature extends declared(Widget) {
     };
 
     return hasAttachments ? (
-      <div key={buildKey("attachments-element")}
-        class={join(CSS.attachments, CSS.contentElement)}
-        classes={attachmentsClasses}>
+      <div
+        key={buildKey("attachments-element")}
+        class={this.classes(CSS.attachments, CSS.contentElement, attachmentsClasses)}
+      >
         <div class={CSS.attachmentsTitle}>{i18n.attach}</div>
         <ul class={CSS.attachmentsItems}>
-          {attachmentInfos.map((attachmentInfo, attachmentInfoIndex) => this._renderAttachmentInfo({
-            attachmentInfo,
-            attachmentInfoIndex,
-            supportsResizeAttachments,
-            contentElement
-          }))}
+          {attachmentInfos.map((attachmentInfo, attachmentInfoIndex) =>
+            this._renderAttachmentInfo({
+              attachmentInfo,
+              attachmentInfoIndex,
+              supportsResizeAttachments,
+              contentElement
+            })
+          )}
         </ul>
       </div>
     ) : null;
@@ -594,32 +581,37 @@ class Feature extends declared(Widget) {
   private _renderFieldInfo(fieldInfo: FieldInfo, contentElementIndex: number): any {
     const viewModel = this.viewModel;
     const { formattedAttributes } = viewModel;
-    const availableFormattedAttributes = formattedAttributes ?
-      formattedAttributes.content[contentElementIndex] || formattedAttributes.global :
-      null;
+    const availableFormattedAttributes = formattedAttributes
+      ? formattedAttributes.content[contentElementIndex] || formattedAttributes.global
+      : null;
     const fieldName = fieldInfo.fieldName;
     const fieldLabel = fieldInfo.label || fieldName;
-    const fieldValue = availableFormattedAttributes ?
-      availableFormattedAttributes[fieldName] == null ?
-        "" :
-        availableFormattedAttributes[fieldName] :
-      "";
+    const fieldValue = availableFormattedAttributes
+      ? availableFormattedAttributes[fieldName] == null
+        ? ""
+        : availableFormattedAttributes[fieldName]
+      : "";
     const isDateField = !!(fieldInfo.format && fieldInfo.format.dateFormat);
-    const isNumericField = (
-      typeof fieldValue === "number" &&
-      !isDateField
-    );
-    const formattedFieldValue = isNumericField ?
-      this._forceLTR(fieldValue) :
-      uriUtils.autoLink(fieldValue);
+    const isNumericField = typeof fieldValue === "number" && !isDateField;
+    const formattedFieldValue = isNumericField
+      ? this._forceLTR(fieldValue)
+      : uriUtils.autoLink(fieldValue);
     const valueCellClasses = {
       [CSS.fieldDataDate]: isDateField
     };
 
     return (
       <tr key={buildKey("fields-element-info-row", contentElementIndex)}>
-        <th key={buildKey("fields-element-info-row-header", contentElementIndex)} class={CSS.fieldHeader} innerHTML={fieldLabel} />
-        <td key={buildKey("fields-element-info-row-data", contentElementIndex)} class={CSS.fieldData} classes={valueCellClasses} innerHTML={formattedFieldValue} />
+        <th
+          key={buildKey("fields-element-info-row-header", contentElementIndex)}
+          class={CSS.fieldHeader}
+          innerHTML={fieldLabel}
+        />
+        <td
+          key={buildKey("fields-element-info-row-data", contentElementIndex)}
+          class={this.classes(CSS.fieldData, valueCellClasses)}
+          innerHTML={formattedFieldValue}
+        />
       </tr>
     );
   }
@@ -628,11 +620,17 @@ class Feature extends declared(Widget) {
     const fieldInfos = contentElement.fieldInfos;
 
     return fieldInfos ? (
-      <div key={buildKey("fields-element", contentElementIndex)}
-        class={join(CSS.fields, CSS.contentElement)}>
-        <table class={CSS.esriTable} summary={i18n.fieldsSummary} key={buildKey("fields-element-table", contentElementIndex)}>
+      <div
+        key={buildKey("fields-element", contentElementIndex)}
+        class={this.classes(CSS.fields, CSS.contentElement)}
+      >
+        <table
+          class={CSS.esriTable}
+          summary={i18n.fieldsSummary}
+          key={buildKey("fields-element-table", contentElementIndex)}
+        >
           <tbody key={buildKey("fields-element-table-body", contentElementIndex)}>
-            {fieldInfos.map(fieldInfo => this._renderFieldInfo(fieldInfo, contentElementIndex))}
+            {fieldInfos.map((fieldInfo) => this._renderFieldInfo(fieldInfo, contentElementIndex))}
           </tbody>
         </table>
       </div>
@@ -651,7 +649,7 @@ class Feature extends declared(Widget) {
   }
 
   private _clearMediaRefreshTimers(): void {
-    this._refreshTimers.forEach(timerId => clearTimeout(timerId));
+    this._refreshTimers.forEach((timerId) => clearTimeout(timerId));
     this._refreshTimers.clear();
   }
 
@@ -708,7 +706,9 @@ class Feature extends declared(Widget) {
       return;
     }
 
-    content.forEach((contentElement: ContentElement, contentElementIndex) => this._setupMediaRefreshTimer(contentElementIndex));
+    content.forEach((contentElement: ContentElement, contentElementIndex) =>
+      this._setupMediaRefreshTimer(contentElementIndex)
+    );
   }
 
   private _updateMediaInfoTimestamp(sourceURL: string, contentElementIndex: number): void {
@@ -750,26 +750,32 @@ class Feature extends declared(Widget) {
       const imageNode = (
         <img
           alt={title}
-          key={buildKey(`media-image-${timestamp}`, contentElementIndex)} // unique key is needed to redraw image node when refreshInterval is defined for a mediaInfo.
+          key={
+            /* unique key is needed to redraw image node when refreshInterval is defined for a mediaInfo. */
+            buildKey(`media-image-${timestamp}`, contentElementIndex)
+          }
           src={imgSrc}
         />
       );
 
       const linkNode = linkURL ? (
-        <a title={title} href={linkURL} target={linkTarget}>{imageNode}</a>
+        <a title={title} href={linkURL} target={linkTarget}>
+          {imageNode}
+        </a>
       ) : null;
 
       return linkNode ? linkNode : imageNode;
-    }
-    else if (type.indexOf("chart") !== -1) {
+    } else if (type.indexOf("chart") !== -1) {
       return (
-        <div key={buildKey("chart", contentElementIndex)}
+        <div
+          key={buildKey("chart", contentElementIndex)}
           bind={this}
           data-media-info={mediaInfo}
           data-content-element-index={contentElementIndex}
           class={CSS.mediaChart}
           afterCreate={this._getChartDependencies}
-          afterUpdate={this._getChartDependencies} />
+          afterUpdate={this._getChartDependencies}
+        />
       );
     }
     return undefined;
@@ -790,16 +796,37 @@ class Feature extends declared(Widget) {
 
     this._cancelChartModules();
 
-    this._chartRequirePromise = promiseUtils.create<any[]>(resolve => require([
-      "dojox/charting/Chart2D", "dojox/charting/action2d/Tooltip", `dojox/charting/themes/${formattedTheme}`
-    ], (...modules) => resolve(modules)))
+    this._chartRequirePromise = promiseUtils
+      .create<any[]>((resolve) =>
+        require([
+          "dojox/charting/Chart2D",
+          "dojox/charting/action2d/Tooltip",
+          `dojox/charting/themes/${formattedTheme}`
+        ], (...modules) => resolve(modules))
+      )
       .then(([Chart2D, ChartTooltip, Theme]) => {
-        this._renderChart(divElement, contentElementIndex, type, value, Chart2D, ChartTooltip, Theme);
+        this._renderChart(
+          divElement,
+          contentElementIndex,
+          type,
+          value,
+          Chart2D,
+          ChartTooltip,
+          Theme
+        );
         this._chartRequirePromise = null;
       });
   }
 
-  private _renderChart<T extends ThemeConstructor>(chartDiv: HTMLDivElement, contentElementIndex: number, type: MediaInfoType, value: FeatureValue, Chart2D: Chart2DConstructor, ChartTooltip: TooltipConstructor, ThemeClass: T): void {
+  private _renderChart<T extends ThemeConstructor>(
+    chartDiv: HTMLDivElement,
+    contentElementIndex: number,
+    type: MediaInfoType,
+    value: FeatureValue,
+    Chart2D: Chart2DConstructor,
+    ChartTooltip: TooltipConstructor,
+    ThemeClass: T
+  ): void {
     const chart = new Chart2D(chartDiv, {
       margins: {
         l: 4,
@@ -888,22 +915,24 @@ class Feature extends declared(Widget) {
     const mediaTypeNode = this._renderMediaInfoType(mediaInfo, contentElementIndex);
 
     const titleNode = mediaInfo.title ? (
-      <div key={buildKey("media-title", contentElementIndex)}
+      <div
+        key={buildKey("media-title", contentElementIndex)}
         class={CSS.mediaItemTitle}
-        innerHTML={mediaInfo.title} />
+        innerHTML={mediaInfo.title}
+      />
     ) : null;
 
     const captionNode = mediaInfo.caption ? (
-      <div key={buildKey("media-caption", contentElementIndex)}
+      <div
+        key={buildKey("media-caption", contentElementIndex)}
         class={CSS.mediaItemCaption}
-        innerHTML={mediaInfo.caption} />
+        innerHTML={mediaInfo.caption}
+      />
     ) : null;
 
     return (
-      <div key={buildKey("media-container", contentElementIndex)}
-        class={CSS.mediaItemContainer}>
-        <div key={buildKey("media-item-container", contentElementIndex)}
-          class={CSS.mediaItem}>
+      <div key={buildKey("media-container", contentElementIndex)} class={CSS.mediaItemContainer}>
+        <div key={buildKey("media-item-container", contentElementIndex)} class={CSS.mediaItem}>
           {mediaTypeNode}
         </div>
         {titleNode}
@@ -913,13 +942,14 @@ class Feature extends declared(Widget) {
   }
 
   private _renderMediaStatsItem(label: string, total: number, stat: MediaStat): any {
-    const mediaIconClasses = stat === "chart" ?
-      join(CSS.mediaChartIcon, CSS.iconChart) :
-      join(CSS.mediaImageIcon, CSS.iconMedia);
+    const mediaIconClasses =
+      stat === "chart"
+        ? this.classes(CSS.mediaChartIcon, CSS.iconChart)
+        : this.classes(CSS.mediaImageIcon, CSS.iconMedia);
 
     return (
       <li class={CSS.mediaImageSummary}>
-        <span aria-hidden="true" class={mediaIconClasses}></span>
+        <span aria-hidden="true" class={mediaIconClasses} />
         <span class={CSS.mediaCount} aria-label={label}>{`(${total})`}</span>
       </li>
     );
@@ -928,20 +958,21 @@ class Feature extends declared(Widget) {
   private _renderMediaPageButton(direction: MediaPageDirection, contentElementIndex: number): any {
     const isPrevious = direction === "previous";
     const title = isPrevious ? i18n.previous : i18n.next;
-    const buttonClasses = isPrevious ?
-      join(CSS.btn, CSS.mediaPrevious) :
-      join(CSS.btn, CSS.mediaNext);
-    const LTRIconClasses = isPrevious ?
-      join(CSS.icon, CSS.mediaPreviousIconLTR, CSS.iconLeftTriangleArrow) :
-      join(CSS.icon, CSS.mediaNextIconLTR, CSS.iconRightTriangleArrow);
-    const RTLIconClasses = isPrevious ?
-      join(CSS.icon, CSS.mediaPreviousIconRTL, CSS.iconRightTriangleArrow) :
-      join(CSS.icon, CSS.mediaNextIconRTL, CSS.iconLeftTriangleArrow);
+    const buttonClasses = isPrevious
+      ? this.classes(CSS.btn, CSS.mediaPrevious)
+      : this.classes(CSS.btn, CSS.mediaNext);
+    const LTRIconClasses = isPrevious
+      ? this.classes(CSS.icon, CSS.mediaPreviousIconLTR, CSS.iconLeftTriangleArrow)
+      : this.classes(CSS.icon, CSS.mediaNextIconLTR, CSS.iconRightTriangleArrow);
+    const RTLIconClasses = isPrevious
+      ? this.classes(CSS.icon, CSS.mediaPreviousIconRTL, CSS.iconRightTriangleArrow)
+      : this.classes(CSS.icon, CSS.mediaNextIconRTL, CSS.iconLeftTriangleArrow);
     const keyName = isPrevious ? "previous" : "next";
     const buttonClick = isPrevious ? this._previousClick : this._nextClick;
 
     return (
-      <div key={buildKey(keyName, contentElementIndex)}
+      <div
+        key={buildKey(keyName, contentElementIndex)}
         title={title}
         tabIndex={0}
         role="button"
@@ -949,9 +980,10 @@ class Feature extends declared(Widget) {
         data-content-element-index={contentElementIndex}
         bind={this}
         onkeydown={buttonClick}
-        onclick={buttonClick}>
-        <span aria-hidden="true" class={LTRIconClasses}></span>
-        <span aria-hidden="true" class={RTLIconClasses}></span>
+        onclick={buttonClick}
+      >
+        <span aria-hidden="true" class={LTRIconClasses} />
+        <span aria-hidden="true" class={RTLIconClasses} />
         <span class={CSS.iconText}>{title}</span>
       </div>
     );
@@ -994,18 +1026,21 @@ class Feature extends declared(Widget) {
     }
 
     return total ? (
-      <div key={buildKey("media-element", contentElementIndex)}
+      <div
+        key={buildKey("media-element", contentElementIndex)}
         data-content-element-index={contentElementIndex}
         bind={this}
         onkeyup={this._handleMediaKeyup}
-        class={join(CSS.media, CSS.contentElement)}
-        classes={mediaClasses}>
+        class={this.classes(CSS.media, CSS.contentElement, mediaClasses)}
+      >
         <ul class={CSS.mediaSummary}>
           {mediaStatsNode}
           {chartStatsNode}
         </ul>
-        <div key={buildKey("media-element-container", contentElementIndex)}
-          class={CSS.mediaContainer}>
+        <div
+          key={buildKey("media-element-container", contentElementIndex)}
+          class={CSS.mediaContainer}
+        >
           {previousButtonNode}
           {this._renderMediaInfo(mediaInfos[activeMediaIndex], contentElementIndex)}
           {nextButtonNode}
@@ -1018,9 +1053,11 @@ class Feature extends declared(Widget) {
     const hasText = contentElement.text;
 
     return hasText ? (
-      <div key={buildKey("text-element", contentElementIndex)}
+      <div
+        key={buildKey("text-element", contentElementIndex)}
         innerHTML={contentElement.text}
-        class={join(CSS.text, CSS.contentElement)} />
+        class={this.classes(CSS.text, CSS.contentElement)}
+      />
     ) : null;
   }
 
@@ -1032,12 +1069,11 @@ class Feature extends declared(Widget) {
   private _getMediaStats(mediaInfos: FeatureMediaInfo[]): MediaStats {
     let images = 0,
       charts = 0;
-    mediaInfos.forEach(mediaInfo => {
+    mediaInfos.forEach((mediaInfo) => {
       const type = mediaInfo.type;
       if (type === "image") {
         images++;
-      }
-      else if (type.indexOf("chart") !== -1) {
+      } else if (type.indexOf("chart") !== -1) {
         charts++;
       }
     });
@@ -1065,7 +1101,10 @@ class Feature extends declared(Widget) {
     this.scheduleRender();
   }
 
-  private _pageContentElementMedia(contentElementIndex: number, direction: MediaPageDirection): void {
+  private _pageContentElementMedia(
+    contentElementIndex: number,
+    direction: MediaPageDirection
+  ): void {
     const delta = direction === "previous" ? -1 : 1;
     const pagedMediaIndex = this._activeMediaMap.get(contentElementIndex) + delta;
     this._setContentElementMedia(contentElementIndex, pagedMediaIndex);
@@ -1084,7 +1123,6 @@ class Feature extends declared(Widget) {
     const elementIndex = node["data-content-element-index"] as number;
     this.nextMedia(elementIndex);
   }
-
 }
 
 export = Feature;

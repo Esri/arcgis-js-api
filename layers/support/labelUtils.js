@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
-define(["require","exports","dojo/_base/lang"],function(e,r,n){function t(e){var r;return e?(r=n.replace(e,function(e,r){return a+'$feature["'+r+'"]'+i}),r=_.test(r)?r.replace(_,""):g+r,r=o.test(r)?r.replace(o,""):r+g,r=r.replace(p,l).replace(c,u)):r='""',r}Object.defineProperty(r,"__esModule",{value:!0});var a="__begin__",i="__end__",p=new RegExp(a,"ig"),c=new RegExp(i,"ig"),_=new RegExp("^"+a,"i"),o=new RegExp(i+"$","i"),g='"',l=g+" + ",u=" + "+g;r.convertTemplatedStringToArcade=t});
+define(["require","exports","../../core/string"],function(e,r,n){function t(e){var r;return e?(r=n.replace(e,function(e,r){return i+'$feature["'+r+'"]'+c}),r=_.test(r)?r.replace(_,""):o+r,r=g.test(r)?r.replace(g,""):r+o,r=r.replace(p,u).replace(a,l)):r='""',r}Object.defineProperty(r,"__esModule",{value:!0});var i="__begin__",c="__end__",p=new RegExp(i,"ig"),a=new RegExp(c,"ig"),_=new RegExp("^"+i,"i"),g=new RegExp(c+"$","i"),o='"',u=o+" + ",l=" + "+o;r.convertTemplatedStringToArcade=t});

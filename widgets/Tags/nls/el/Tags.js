@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({addTags:"Προσθήκη ετικέτας(ών)",noTagsFound:"Δε βρέθηκαν υπάρχουσες ετικέτες.",required:"Απαιτούνται μία ή περισσότερες ετικέτες."});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({title:"Izmeri",hint:"Začnite meriti tako, da kliknete na 3D-prizor in postavite vašo prvo točko",unsupported:"Meritev območja ni podprta v MapViewju.",perimeterLength:"Obseg",area:"Ploščinski",unit:"Enota",notApplicable:"ni na voljo",newMeasurement:"Nova meritev",units:{metric:"Metrično",imperial:"Anglosaško","square-kilometers":"Kvadratni kilometri","square-meters":"Kvadratni metri","square-miles":"Kvadratne milje","square-inches":"Kvadratni palci","square-feet":"Kvadratni čevlji","square-yards":"Kvadratni jardi","square-us-feet":"Kvadratni čevlji (ZDA)",acres:"Akri",ares:"Ari",hectares:"Hektarji"}});

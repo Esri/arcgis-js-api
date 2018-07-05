@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({statsAvg:"Povprečje: ${avg}",count:"Števec: ${count}",percent:"${num}%",high:"Visoko",low:"Nizko",color:{changeMinMaxToolTIp:"Vpišite vrednost.",handleToolTip:"Uskladi vrednosti podatkov z barvami.",maxValueToolTip:"Vpišite največjo pričakovano podatkovno vrednost.",minValueToolTip:"Vpišite najmanjšo pričakovano podatkovno vrednost.",changeSymbol:"Spremeni simbol"},size:{handleToolTip:"Uskladi podatkovno vrednost z vrednostjo simbola.",sizeInputBoxLines:"Nastavi debelino linije od 0 do 18 pikslov.",sizeInputBoxPoints:"Nastavi velikost simbola od 1 do 120 pikslov."}});

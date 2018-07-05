@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define(["require","exports","dojo/text!./backgroundShaders.xml","dojo/text!./bitblitShaders.xml","dojo/text!./stencilShaders.xml","dojo/text!./tileInfo.xml","../../../../webgl/ShaderSnippets"],function(e,t,r,o,a,d,s){var n=new s;return s.parse(r,n),s.parse(o,n),s.parse(a,n),s.parse(d,n),n});

@@ -20,6 +20,17 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
-define(["dojo/_base/lang","dojo/io-query","./ArcGISService","../support/TileInfo","../support/TilemapCache"],function(e,i,r,l,n){return r.createSubclass([],{declaredClass:"esri.layers.mixins.ArcGISCachedService",properties:{minScale:{json:{origins:{service:{read:!1}}}},maxScale:{json:{origins:{service:{read:!1}}}},resampling:!0,supportsBlankTile:{value:!1,readOnly:!0,dependsOn:["version"],get:function(){return this.version>=10.2}},tileInfo:{value:null,type:l,json:{read:function(e,i){var r=i.minScale?i.minScale:1/0,n=i.maxScale?i.maxScale:-1/0;return e?(e.lods=e.lods.filter(function(e){return e.scale<=r&&e.scale>=n}),l.fromJSON(e)):null}}},tilemapCache:{value:null,json:{read:{source:["capabilities"],reader:function(e,i){return i.capabilities&&i.capabilities.indexOf("Tilemap")>-1?new n({layer:this}):null}}}},version:{}},getTileUrl:function(r,l,n){var a=!this.tilemapCache&&this.resampling&&this.supportsBlankTile,s=e.mixin({},this.parsedUrl.query,{token:this.token,blankTile:!a&&null}),t=this.parsedUrl.path+"/tile/"+r+"/"+l+"/"+n;return s=i.objectToQuery(s),t+=s?"?"+s:""}})});
+//  copyright
+
+/**
+             * The copyright text as defined by the service.
+             *
+             * @name copyright
+             * @type {string}
+             *
+             * @memberof module:esri/layers/mixins/ArcGISCachedService
+             */
+
+define(["require","exports","../../core/tsSupport/assignHelper","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../geometry","../../core/accessorSupport/decorators","./ArcGISService","../support/TileInfo","../support/TilemapCache"],function(e,r,t,o,p,i,n,a,l,c){return function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.copyright=null,r.minScale=0,r.maxScale=0,r.spatialReference=null,r.tileInfo=null,r.tilemapCache=null,r}return o(r,e),Object.defineProperty(r.prototype,"supportsBlankTile",{get:function(){return this.version>=10.2},enumerable:!0,configurable:!0}),r.prototype.readTileInfo=function(e,r){var t=function(e){return Math.round(1e4*e)/1e4},o=r.minScale?t(r.minScale):1/0,p=r.maxScale?t(r.maxScale):-1/0;return e?(e.lods=e.lods.filter(function(e){var r=t(e.scale);return r<=o&&r>=p}),l.fromJSON(e)):null},r.prototype.readTilemapCache=function(e,r){return r.capabilities&&r.capabilities.indexOf("Tilemap")>-1?new c({layer:this}):null},p([n.property({json:{read:{source:"copyrightText"}}})],r.prototype,"copyright",void 0),p([n.property({json:{origins:{service:{read:!1}}}})],r.prototype,"minScale",void 0),p([n.property({json:{origins:{service:{read:!1}}}})],r.prototype,"maxScale",void 0),p([n.property({type:i.SpatialReference})],r.prototype,"spatialReference",void 0),p([n.property({readOnly:!0,dependsOn:["version"]})],r.prototype,"supportsBlankTile",null),p([n.property({type:l})],r.prototype,"tileInfo",void 0),p([n.reader("service","tileInfo",["tileInfo","minScale","maxScale"])],r.prototype,"readTileInfo",null),p([n.property()],r.prototype,"tilemapCache",void 0),p([n.reader("service","tilemapCache",["capabilities"])],r.prototype,"readTilemapCache",null),p([n.property()],r.prototype,"version",void 0),r=p([n.subclass("esri.layers.mixins.ArcGISCachedService")],r)}(n.declared(a))});

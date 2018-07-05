@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define(["../../core/JSONSupport","../../Graphic"],function(e,r){return e.createSubclass({declaredClass:"esri.tasks.support.IdentifyResult",properties:{displayFieldName:null,feature:{value:null,json:{read:{source:["attributes","geometry"],reader:function(e,t){var a={};return t.attributes&&(a.attributes=t.attributes),t.geometry&&(a.geometry=t.geometry),r.fromJSON(a)}}}},layerId:null,layerName:null}})});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({addTags:"Теги",noTagsFound:"Нет совпадающих тегов.",required:"Требуется один или несколько тегов."});

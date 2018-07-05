@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
-define({attach:"Adjuntos",fields:"Campos",fieldsSummary:"Lista de atributos y valores",media:"Medios",next:"Siguiente",numCharts:"Número de gráficos",numImages:"Número de imágenes",noTitle:"Sin título",previous:"Anterior"});
+define({attach:"Adjuntos",fields:"Campos",fieldsSummary:"Lista de atributos y valores",media:"Multimedia",next:"Siguiente",numCharts:"Número de gráficos",numImages:"Número de imágenes",noTitle:"Sin título",previous:"Anterior"});

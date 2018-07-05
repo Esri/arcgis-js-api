@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({title:"Merenja",hint:"Otpočnite merenja klikom na scenu kako biste namestili prvu tačku",unsupported:"Direktno merenje linije nije podržano u aplikaciji MapView.",distance:"Rastojanje",direct:"Direktno",horizontal:"Horizontalno",vertical:"Vertikalno",unit:"Jedinica",newMeasurement:"Novo merenje",units:{metric:"Metrika",imperial:"Imperijalne",kilometers:"Kilometri",meters:"Metri",miles:"Milje",inches:"Inči",feet:"Stope",yards:"Jardi","nautical-miles":"Nautičke milje","us-feet":"Stope (SAD)","degrees-minutes-seconds":"DMS",degrees:"Stepeni"}});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({transparency:"Prozirnost",suggested:"Predloženo",recent:"Nedavno",more:"Više",moreColorsTooltip:"Prikažite više boja.",paletteTooltip:"Izaberite boju.",noColorTooltip:"Nema boje",hexInputTooltip:"Prilagođena boja u heksadecimalom označavanju (#FFFF00)."});

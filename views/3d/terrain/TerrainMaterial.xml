@@ -2,14 +2,46 @@
 
 <snippets>
 
+<snippet name="getOverlayColor"><![CDATA[
+  vec4 getOverlayColor(vec4 texCoords, float opacity) {
+    vec4 color = vec4(0, 0, 0, 0);
+
+    if ((texCoords.x > 0.0) && (texCoords.x < 1.0) && (texCoords.y > 0.0) && (texCoords.y < 1.0)) {
+      // inner overlay texture coordinates are within bounds -> sample from inner overlay
+      color = texture2D(overlay0Tex, texCoords.xy);
+    } else if ((texCoords.z > 0.0) && (texCoords.z < 1.0) && (texCoords.w > 0.0) && (texCoords.w < 1.0)) {
+      // sample from outer overlay
+      color = texture2D(overlay1Tex, texCoords.zw);
+    }
+
+    return color * opacity;
+  }
+]]></snippet>
+
+<snippet name="applySkirts"><![CDATA[
+  uniform float skirtScale;
+
+  vec3 applySkirts(inout vec2 uv, vec3 vpos, vec3 vnormal) {
+    float skirtLength = 0.0;
+
+    if (uv.x >= 2.0) {
+      skirtLength = uv.y * skirtScale;
+      // decode original uv-coordinates (see `encodeSkirtPos`)
+      vec2 x = vec2(uv.x) - vec2(3.5, 4.5);
+      uv = clamp(vec2(1.5) - abs(x), vec2(0.0), vec2(1.0));
+    }
+
+    return vpos - vnormal * skirtLength;
+  }
+]]></snippet>
+
 <snippet name="vsTerrain"><![CDATA[
   $vsprecisionf
 
   uniform mat4 proj;
   uniform mat4 view;
   uniform vec3 origin;
-  uniform vec2 texOffset;
-  uniform float texScale;
+  uniform vec4 texOffsetAndScale;
   uniform mat4 viewNormal;
 
   attribute vec3 $position;
@@ -35,9 +67,11 @@
 #endif
 
 #ifdef OVERLAY
-  uniform vec2 overlayTexOffset;
-  uniform vec2 overlayTexScale;
-  varying vec2 vtcOverlay;
+  // these variables combine two possible overlays into one by using a vec4:
+  // components x/y are x/y of overlay 0, and components z/w are x/y of overlay 1
+  uniform vec4 overlayTexOffset;
+  uniform vec4 overlayTexScale;
+  varying vec4 vtcOverlay;
 #endif
 
 #ifdef SCREEN_SIZE_PERSPECTIVE /* debug only */
@@ -49,6 +83,8 @@
 
 #endif
 
+$applySkirts
+
   void main(void) {
     vpos = $position;
 
@@ -58,6 +94,9 @@
     vnormal = vec3(0, 0, 1); // WARNING: up-axis dependent code
 #endif
 
+  vec2 uv = $uv0;
+  vpos = applySkirts(uv, vpos, vnormal);
+
 #ifdef ATMOSPHERE
     wpos = (view * vec4(vpos, 1.0)).xyz;
     wnormal = (viewNormal * vec4(normalize(vpos+origin), 1.0)).xyz;
@@ -65,7 +104,7 @@
 #endif
 
 #if defined(WIREFRAME) || defined(TILE_BORDERS)
-    vuv = $uv0;
+    vuv = uv;
 #endif
 
 #ifdef SCREEN_SIZE_PERSPECTIVE /* debug only */
@@ -89,10 +128,10 @@
     linearDepth = gl_Position.w;
 #endif
 
-    vtc = $uv0*texScale + texOffset;
+    vtc = uv * texOffsetAndScale.zw + texOffsetAndScale.xy;
 
 #ifdef OVERLAY
-    vtcOverlay = $uv0*overlayTexScale + overlayTexOffset;
+    vtcOverlay = vec4(uv, uv) * overlayTexScale + overlayTexOffset;
 #endif
   }
 ]]></snippet>
@@ -141,9 +180,12 @@
   const float diffuseHardness = 2.5;
 
 #ifdef OVERLAY
-  uniform sampler2D overlayTex;
+  uniform sampler2D overlay0Tex;
+  uniform sampler2D overlay1Tex;
   uniform float overlayOpacity;
-  varying vec2 vtcOverlay;
+  varying vec4 vtcOverlay;
+
+  $getOverlayColor
 #endif
 
 #ifdef RECEIVE_SHADOWS
@@ -198,32 +240,32 @@
     vec3 d = (1.0 - shadow/1.8) * diffuse * k;
 
     float ssao = viewportPixelSz.w < .0 ? 1.0 : texture2D(ssaoTex, (gl_FragCoord.xy - viewportPixelSz.xy) * viewportPixelSz.zw).a;
-    vec4 texCol = texture2D(tex, vtc);
+    vec4 tileColor = texture2D(tex, vtc) * opacity;
 
 #ifdef OVERLAY
-    if ((vtcOverlay.x > 0.0) && (vtcOverlay.y > 0.0) && (vtcOverlay.x < 1.0) && (vtcOverlay.y < 1.0)) {
-      vec4 overlayTexCol = texture2D(overlayTex, vtcOverlay);
-      overlayTexCol *= overlayOpacity;
-      texCol = texCol * (1.0 - overlayTexCol.a) + overlayTexCol; // texCol and overlayTexCol have pre-multiplied alpha
-    }
+    vec4 overlayColor = getOverlayColor(vtcOverlay, overlayOpacity);
+
+    // tileColor and overlayTexCols have pre-multiplied alpha
+    tileColor = tileColor * (1.0 - overlayColor.a) + overlayColor;
 #endif
 
     vec3 atm = vec3(0.0);
 #ifdef ATMOSPHERE
     float ndotl = max(0.0, min(1.0, vndl));
     atm = atmosphere(wlight, wnormal, -viewDirection);
-    atm *= max(0.0, min(1.0, (1.0-lum(texCol.rgb)*1.5))); //avoid atmosphere on bright base maps
+    atm *= max(0.0, min(1.0, (1.0-lum(tileColor.rgb)*1.5))); //avoid atmosphere on bright base maps
     atm *= max(0.0, min(1.0, ndotl*2.0)); // avoid atmosphere on dark side of the globe
+    atm *= tileColor.a; // premultiply with tile alpha
 #endif
 
-    vec3 albedo = atm + texCol.rgb;
+    vec3 albedo = atm + tileColor.rgb;
     vec3 normal = normalize(vnormal);
 
     // heuristic shading function used in the old terrain, now used to add ambient lighting
     float additionalAmbientScale = smoothstep(0.0, 1.0, clamp(vndl*2.5, 0.0, 1.0));
 		vec3 additionalLight = ssao * lightingMainIntensity * additionalAmbientScale * ambientBoostFactor * lightingGlobalFactor;
 
-    gl_FragColor = vec4(evaluateSceneLighting(normal, albedo, shadow, 1.0 - ssao, additionalLight), texCol.a) * opacity;
+    gl_FragColor = vec4(evaluateSceneLighting(normal, albedo, shadow, 1.0 - ssao, additionalLight), tileColor.a);
 
 #ifdef SCREEN_SIZE_PERSPECTIVE /* debug only */
     // This is only used for debug rendering the screenSize perspective
@@ -250,10 +292,7 @@
 ]]></snippet>
 
 <snippet name="fsTerrainWireframe"><![CDATA[
-#ifdef GL_OES_standard_derivatives
-#extension GL_OES_standard_derivatives : enable
-#endif
-
+  $enableRequiredExtensions
   $fsprecisionf
 
   struct WireframeSettings {
@@ -272,13 +311,8 @@
     vec2 vuvScaled = vuv * wireframe.subdivision;
     vec2 vuvMod = fract(vuvScaled);
 
-#ifdef GL_OES_standard_derivatives
     vec2 dVuv = fwidth(vuvScaled);
     dVuv = max(vec2(0.00001), dVuv); // workaround against flickering skirts, see #10245
-#else
-    // Something that reasonably works
-    vec2 dVuv = vec2(0.05);
-#endif
 
     vec2 edgeFactors = smoothstep((wireframe.width - wireframe.falloff) * dVuv,
                                   wireframe.width * dVuv, min(vuvMod, 1.0 - vuvMod));
@@ -286,8 +320,9 @@
     float edgeFactor = 1.0 - min(edgeFactors.x, edgeFactors.y);
 
 #ifdef WIREFRAME
-    gl_FragColor = vec4(mix(gl_FragColor.rgb, wireframe.color.rgb, edgeFactor * wireframe.color.a),
-                        mix(wireframe.surfaceOpacity, wireframe.wireOpacity, edgeFactor));
+    vec3 wireframeColor = mix(gl_FragColor.rgb, wireframe.color.rgb, edgeFactor * wireframe.color.a);
+    float wireframeAlpha = mix(wireframe.surfaceOpacity, wireframe.wireOpacity, edgeFactor);
+    gl_FragColor = vec4(wireframeColor * wireframeAlpha, wireframeAlpha * gl_FragColor.a);
 #endif
 
 
@@ -316,77 +351,105 @@
   uniform mat4 view;
   uniform mat4 viewNormal;
   attribute vec3 $position;
+  attribute vec2 $uv0;
   varying vec3 vnormal;
+
+$applySkirts
 
   void main(void) {
 #ifdef SPHERICAL
     vec4 normal = vec4(normalize($position + origin), 1.0);
 #else
-    vec4 normal = vec4(0.0, 1.0, 0.0, 1.0);
+    vec4 normal = vec4(0.0, 0.0, 1.0, 1.0);
 #endif
 
-    gl_Position = proj * view * vec4($position, 1.0);
+    vec2 uv = $uv0;
+    vec3 vpos = applySkirts(uv, $position, normal.xyz);
+
+    gl_Position = proj * view * vec4(vpos, 1.0);
     vnormal = normalize((viewNormal * normal).xyz);
   }
 ]]></snippet>
 
-<snippet name="vsTerrainDepthOnly"><![CDATA[
+<snippet name="vsTerrainDepth"><![CDATA[
   $vsprecisionf
 
+  uniform vec3 origin;
   uniform mat4 proj;
   uniform mat4 view;
-
+  uniform vec2 nearFar;
   attribute vec3 $position;
+  attribute vec2 $uv0;
+  varying float depth;
 
-  void main() {
-    gl_Position = proj * view * vec4($position, 1.0);
-  }
-]]></snippet>
+$applySkirts
 
-<snippet name="fsTerrainDepthOnly"><![CDATA[
-  $fsprecisionf
+  void main(void) {
+#ifdef SPHERICAL
+    vec3 normal = normalize($position + origin);
+#else
+    vec3 normal = vec3(0.0, 0.0, 1.0);
+#endif
 
-  void main() {
+    vec2 uv = $uv0;
+    vec3 vpos = applySkirts(uv, $position, normal.xyz);
+
+    vec4 eye = view * vec4(vpos, 1.0);
+    gl_Position = proj * eye;
+    depth = (-eye.z - nearFar[0]) / (nearFar[1] - nearFar[0]) ;
   }
 ]]></snippet>
 
 <snippet name="vsTerrainHighlight"><![CDATA[
   $vsprecisionf
 
+  uniform vec3 origin;
   uniform mat4 proj;
   uniform mat4 view;
-  uniform vec2 overlayTexScale;
-  uniform vec2 overlayTexOffset;
+  uniform vec4 overlayTexScale;
+  uniform vec4 overlayTexOffset;
 
   attribute vec3 $position;
   attribute vec2 $uv0;
 
-  varying vec2 vtcOverlay;
+  varying vec4 vtcOverlay;
+
+$applySkirts
 
   void main() {
-    vtcOverlay = $uv0*overlayTexScale + overlayTexOffset;
+    #ifdef SPHERICAL
+      vec3 vnormal = normalize($position + origin);
+    #else
+      vec3 vnormal = vec3(0, 0, 1); // WARNING: up-axis dependent code
+    #endif
 
-    gl_Position = proj * view * vec4($position, 1.0);
+    vec2 uv = $uv0;
+    vec3 vpos = applySkirts(uv, $position, vnormal);
+
+    vtcOverlay = vec4(uv, uv) * overlayTexScale + overlayTexOffset;
+
+    gl_Position = proj * view * vec4(vpos, 1.0);
   }
 ]]></snippet>
 
 <snippet name="fsTerrainHighlight"><![CDATA[
   $fsprecisionf
 
-  uniform sampler2D overlayTex;
+  uniform sampler2D overlay0Tex;
+  uniform sampler2D overlay1Tex;
+  uniform float overlayOpacity;
 
   uniform sampler2D depthTex;
   uniform vec4 highlightViewportPixelSz;
 
-  varying vec2 vtcOverlay;
+  varying vec4 vtcOverlay;
+
+  $getOverlayColor
 
   void main() {
-    vec4 texCol = vec4(0,0,0,0);
-    if ((vtcOverlay.x > 0.0) && (vtcOverlay.y > 0.0) && (vtcOverlay.x < 1.0) && (vtcOverlay.y < 1.0)) {
-      texCol = texture2D(overlayTex, vtcOverlay);
-    }
+    vec4 overlayColor = getOverlayColor(vtcOverlay, overlayOpacity);
 
-    if (texCol.a == 0.0) {
+    if (overlayColor.a == 0.0) {
       // Here we have to write black, instead of discarding the fragment in order to overwrite
       // the highlights which might have been written by skirts of other tiles.
       // As a consequence skirts are not visible, but terrain overwrites draped highlights.

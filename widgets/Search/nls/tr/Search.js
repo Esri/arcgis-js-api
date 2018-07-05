@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
-define({widgetLabel:"Ara",searchButtonTitle:"Ara",clearButtonTitle:"Aramayı temizle",placeholder:"Adres veya yer bul",searchIn:"Şurada Ara:",all:"Tümü",allPlaceholder:"Adres veya yer bul",emptyValue:"Arama terimi girin.",untitledResult:"Başlıksız",untitledSource:"Başlıksız kaynak",noResults:"Sonuç yok",noResultsFound:"Sonuç bulunamadı.",noResultsFoundForValue:"{value} için herhangi bir sonuç bulunamadı.",showMoreResults:"Daha fazla sonuç göster",hideMoreResults:"Gizle",searchResult:"Sonuç ara",moreResultsHeader:"Diğer sonuçlar",esriLocatorName:"Esri Dünya Coğrafi Kodlayıcısı",useCurrentLocation:"Mevcut konumu kullan"});
+define({widgetLabel:"Ara",searchButtonTitle:"Ara",clearButtonTitle:"Aramayı temizle",placeholder:"Adres veya yer bul",searchIn:"Şurada Ara:",all:"Tümü",allPlaceholder:"Adres veya yer bul",emptyValue:"Arama terimi girin.",untitledResult:"Başlıksız",untitledSource:"Başlıksız kaynak",noResults:"Sonuç yok",noResultsFound:"Sonuç bulunamadı.",noResultsFoundForValue:"{value} için herhangi bir sonuç bulunamadı.",showMoreResults:"Daha fazla sonuç göster",hideMoreResults:"Gizle",searchResult:"Sonuç ara",moreResultsHeader:"Diğer sonuçlar",useCurrentLocation:"Mevcut konumu kullan"});

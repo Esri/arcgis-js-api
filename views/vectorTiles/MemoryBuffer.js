@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define(["require","exports"],function(e,t){return function(){function e(e){this._array=[],e<=0&&console.error("strideInBytes must be positive!"),this._stride=e}return Object.defineProperty(e.prototype,"array",{get:function(){return this._array},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"index",{get:function(){return 4*this._array.length/this._stride},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"itemSize",{get:function(){return this._stride},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"sizeInBytes",{get:function(){return 4*this._array.length},enumerable:!0,configurable:!0}),e.prototype.reset=function(){this.array.length=0},e.prototype.toBuffer=function(){return new Uint32Array(this._array).buffer},e.i1616to32=function(e,t){return 65535&e|t<<16},e.i8888to32=function(e,t,r,n){return 255&e|(255&t)<<8|(255&r)<<16|n<<24},e.i8816to32=function(e,t,r){return 255&e|(255&t)<<8|r<<16},e}()});

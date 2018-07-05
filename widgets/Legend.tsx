@@ -19,7 +19,7 @@
  * ::: esri-md class="panel trailer-1"
  * **Known Limitations**
  *
- * * Legend does not support the following layer types:
+ * * Currently, the legend widget does not support the following layer types:
  * {@link module:esri/layers/ElevationLayer},
  * {@link module:esri/layers/IntegratedMeshLayer},
  * {@link module:esri/layers/KMLLayer},
@@ -47,47 +47,46 @@
  * @since 4.0
  *
  * @see [Sample - Legend widget](../sample-code/widgets-legend/index.html)
- * @see [Legend.js (widget view)]({{ JSAPI_BOWER_URL }}/widgets/Legend.js)
+ * @see [Legend.tsx (widget view)]({{ JSAPI_BOWER_URL }}/widgets/Legend.tsx)
  * @see [Legend.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_Legend.scss)
  * @see {@link module:esri/views/View#ui View.ui}
  * @see module:esri/views/ui/DefaultUI
  */
 
-/// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
-
+/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
+/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
 
 // dojo
-import * as i18n from "dojo/i18n!./Legend/nls/Legend";
+import * as i18n from "dojo/i18n!esri/widgets/Legend/nls/Legend";
 
 // esri.core
-import Collection = require("../core/Collection");
-import Handles = require("../core/Handles");
-import watchUtils = require("../core/watchUtils");
+import Collection = require("esri/core/Collection");
+import Handles = require("esri/core/Handles");
+import watchUtils = require("esri/core/watchUtils");
 
 // esri.core.accessorSupport
-import { aliasOf, subclass, declared, property } from "../core/accessorSupport/decorators";
+import { aliasOf, subclass, declared, property } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import MapView = require("../views/MapView");
-import SceneView = require("../views/SceneView");
+import MapView = require("esri/views/MapView");
+import SceneView = require("esri/views/SceneView");
 
 // esri.widgets
-import { LayerInfo } from "./interfaces";
-import Widget = require("./Widget");
+import { LayerInfo } from "esri/widgets/interfaces";
+import Widget = require("esri/widgets/Widget");
 
 // esri.widgets.Legend
-import LegendViewModel = require("./Legend/LegendViewModel");
+import LegendViewModel = require("esri/widgets/Legend/LegendViewModel");
 
 // esri.widgets.Legend.styles
-import Card = require("./Legend/styles/Card");
-import Classic = require("./Legend/styles/Classic");
+import Card = require("esri/widgets/Legend/styles/Card");
+import Classic = require("esri/widgets/Legend/styles/Classic");
 
 // esri.widgets.Legend.support
-import ActiveLayerInfo = require("./Legend/support/ActiveLayerInfo");
+import ActiveLayerInfo = require("esri/widgets/Legend/support/ActiveLayerInfo");
 
 // esri.widgets.support
-import { renderable } from "./support/widget";
+import { renderable } from "esri/widgets/support/widget";
 
 const CSS = {
   widgetIcon: "esri-icon-layer-list"
@@ -97,7 +96,6 @@ type Style = "classic" | "card";
 
 @subclass("esri.widgets.Legend")
 class Legend extends declared(Widget) {
-
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -207,7 +205,7 @@ class Legend extends declared(Widget) {
   //----------------------------------
 
   /**
-   * The widget's default icon font.
+   * The widget's default CSS icon class.
    *
    * @since 4.7
    * @name iconClass
@@ -215,8 +213,7 @@ class Legend extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property()
-  iconClass = CSS.widgetIcon;
+  @property() iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -231,8 +228,7 @@ class Legend extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property()
-  label: string = i18n.widgetLabel;
+  @property() label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  layerInfos
@@ -328,9 +324,7 @@ class Legend extends declared(Widget) {
    * @autocast
    */
   @property()
-  @renderable([
-    "view.size"
-  ])
+  @renderable(["view.size"])
   viewModel: LegendViewModel = new LegendViewModel();
 
   //-------------------------------------------------------------------
@@ -354,27 +348,34 @@ class Legend extends declared(Widget) {
       this._styleRenderer.destroy();
     }
 
-    this._styleRenderer = style === "card" ?
-      new Card({
-        activeLayerInfos: this.activeLayerInfos,
-        view: this.view
-      }) :
-      new Classic({
-        activeLayerInfos: this.activeLayerInfos
-      });
+    this._styleRenderer =
+      style === "card"
+        ? new Card({
+            activeLayerInfos: this.activeLayerInfos,
+            view: this.view
+          })
+        : new Classic({
+            activeLayerInfos: this.activeLayerInfos
+          });
   }
 
   private _refreshActiveLayerInfos(activeLayerInfos: Collection<ActiveLayerInfo>): void {
     this._handles.removeAll();
-    activeLayerInfos.forEach(activeLayerInfo => this._renderOnActiveLayerInfoChange(activeLayerInfo));
+    activeLayerInfos.forEach((activeLayerInfo) =>
+      this._renderOnActiveLayerInfoChange(activeLayerInfo)
+    );
     this.scheduleRender();
   }
 
   private _renderOnActiveLayerInfoChange(activeLayerInfo: ActiveLayerInfo): void {
-    const infoVersionHandle = watchUtils.init(activeLayerInfo, "version", () => this.scheduleRender());
+    const infoVersionHandle = watchUtils.init(activeLayerInfo, "version", () =>
+      this.scheduleRender()
+    );
     this._handles.add(infoVersionHandle, `version_${activeLayerInfo.layer.uid}`);
 
-    activeLayerInfo.children.forEach(childActiveLayerInfo => this._renderOnActiveLayerInfoChange(childActiveLayerInfo));
+    activeLayerInfo.children.forEach((childActiveLayerInfo) =>
+      this._renderOnActiveLayerInfoChange(childActiveLayerInfo)
+    );
   }
 }
 

@@ -1,22 +1,19 @@
+// dojox
+import { Fill } from "dojox/gfx";
+
 // esri
 import Color = require("../Color");
+import { Point, Extent, SpatialReference } from "../geometry";
 import Graphic = require("../Graphic");
 import PopupTemplate = require("../PopupTemplate");
+import { Symbol } from "../symbols";
 
 // esri.core
 import Collection = require("../core/Collection");
 import EsriError = require("../core/Error");
 
-// esri.geometry
-import Extent = require("../geometry/Extent");
-import Point = require("../geometry/Point");
-import SpatialReference = require("../geometry/SpatialReference");
-
 // esri.layers
 import Layer = require("../layers/Layer");
-
-// esri.symbols
-import Symbol = require("../symbols/Symbol");
 
 // esri.tasks
 import GeometryService = require("../tasks/GeometryService");
@@ -36,7 +33,11 @@ interface Axes {
   z?: number;
 }
 
+export type SupportedSearchSource = LocatorSearchSource | FeatureLayerSearchSource;
+
 export type ActiveMenu = "none" | "suggestion" | "source" | "warning";
+
+export type SearchState = "disabled" | "ready" | "searching" | "loading";
 
 export type SearchItem = SuggestResult | string | Point | number[] | Graphic;
 
@@ -97,6 +98,12 @@ export interface SuggestionCandidate {
   isCollection: boolean;
   magicKey: string;
   text: string;
+}
+
+export interface SourcesHandler {
+  (
+    options: { sources: Collection<SupportedSearchSource>; defaultSources: Collection<SupportedSearchSource> }
+  ): Collection<SupportedSearchSource>;
 }
 
 type MapUnitType = "metric" | "non-metric";
@@ -186,20 +193,24 @@ interface LayerInfo {
   title: string;
 }
 
-type LegendElement = SymbolTableElement | ColorOpacityRampElement | SizeRampElement;
-type LegendElementType = "symbol-table" | "color-ramp" | "opacity-ramp" | "size-ramp";
-
+type LegendElement =
+  | SymbolTableElement
+  | ColorRampElement
+  | OpacityRampElement
+  | SizeRampElement
+  | HeatmapRampElement
+  | RelationshipRampElement;
 type SymbolTableElementType = ImageSymbolTableElementInfo | SymbolTableElementInfo;
 
 interface SymbolTableElement {
-  type: LegendElementType;
+  type: "symbol-table";
   title?: RendererTitle | string;
   infos: SymbolTableElementType[];
   legendType?: string;
 }
 
 interface SymbolTableElementInfo {
-  label: string;
+  label: RampTitle | string;
   value?: any;
   symbol: Symbol;
   size?: number;
@@ -214,18 +225,43 @@ interface ImageSymbolTableElementInfo {
   height?: number;
 }
 
-interface ColorOpacityRampElement {
-  type: LegendElementType;
+interface ColorRampElement {
+  type: "color-ramp";
   title: RampTitle | string;
   borderColor: Color;
   overlayColor: Color;
-  infos: ColorOpacityRampStop[];
+  infos: ColorRampStop[];
+}
+
+interface OpacityRampElement {
+  type: "opacity-ramp";
+  title: RampTitle | string;
+  borderColor: Color;
+  overlayColor: Color;
+  infos: OpacityRampStop[];
 }
 
 interface SizeRampElement {
-  type: LegendElementType;
+  type: "size-ramp";
   title: RampTitle | string;
   infos: SizeRampStop[];
+}
+
+interface HeatmapRampElement {
+  type: "heatmap-ramp";
+  title: RampTitle | string;
+  infos: HeatmapRampStop[];
+}
+
+interface RelationshipRampElement {
+  type: "relationship-ramp";
+  numClasses: number;
+  focus: string;
+  colors: Fill[][];
+  labels: RelationshipLabels;
+  rotation: number;
+  title?: string;
+  infos?: any[];
 }
 
 interface RendererTitle {
@@ -251,11 +287,32 @@ interface SizeRampStop {
   preview?: HTMLElement;
 }
 
-interface ColorOpacityRampStop {
+interface ColorRampStop {
   value: number;
   color: Color;
   offset: number;
   label: string;
+}
+
+interface OpacityRampStop {
+  value: number;
+  color: Color;
+  offset: number;
+  label: string;
+}
+
+interface HeatmapRampStop {
+  color: Color;
+  offset: number;
+  ratio: number;
+  label: string;
+}
+
+interface RelationshipLabels {
+  top: string;
+  bottom: string;
+  left: string;
+  right: string;
 }
 
 interface ZoomConditions {
@@ -266,4 +323,32 @@ interface ZoomConditions {
 interface AttributionItem<L extends Layer = Layer> {
   readonly text: string;
   readonly layer: L;
+}
+
+type BoundingBox = [number, number, number, number];
+
+export interface CoverageArea {
+  zoomMax: number;
+  zoomMin: number;
+  score: number;
+  bbox: BoundingBox;
+}
+
+export interface MaxKeyOwner {
+  maxKey?: number;
+}
+
+export interface Contributor extends MaxKeyOwner {
+  attribution?: string;
+  coverageAreas?: CoverageArea[];
+  score?: number;
+  extent?: Extent;
+  id?: number;
+  objectId?: number;
+}
+
+export interface Contributors extends MaxKeyOwner, Array<Contributor> {}
+
+export interface AttributionData extends MaxKeyOwner {
+  contributors?: Contributors;
 }

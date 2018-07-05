@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({title:"Mesurer",hint:"Commencer les mesures en cliquant dans la scène pour placer le premier point",unsupported:"La mesure de surface n’est pas prise en charge dans la vue cartographique.",perimeterLength:"Périmètre",area:"Surface",unit:"Unité",notApplicable:"n/d",newMeasurement:"Nouvelle mesure",units:{metric:"Métriques",imperial:"Impériales","square-kilometers":"Kilomètres carrés","square-meters":"Mètres carrés","square-miles":"Miles carrés","square-inches":"Pouces carrés","square-feet":"Pieds carrés","square-yards":"Yards carrés","square-us-feet":"Pieds carrés (US)",acres:"Acres",ares:"Ares",hectares:"Hectares"}});

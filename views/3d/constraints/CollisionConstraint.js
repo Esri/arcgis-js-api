@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/Accessor","../../../core/accessorSupport/decorators"],function(e,r,o,t,s,n){Object.defineProperty(r,"__esModule",{value:!0});var c=function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.enabled=!0,r}return o(r,e),t([n.property()],r.prototype,"enabled",void 0),r=t([n.subclass("esri.views.3d.constraints.CollisionConstraint")],r)}(n.declared(s));r.CollisionConstraint=c,r.default=c});
+define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","dojo/_base/kernel","../../../core/Accessor","../../../core/accessorSupport/decorators"],function(e,r,t,n,o,s,i){Object.defineProperty(r,"__esModule",{value:!0});var a=function(e){function r(){return null!==e&&e.apply(this,arguments)||this}return t(r,e),Object.defineProperty(r.prototype,"enabled",{set:function(e){o.deprecated("SceneView.constraint.collision.enabled","Use Map.ground.navigationConstraint instead","4.8"),this._set("enabled",e)},enumerable:!0,configurable:!0}),n([i.property({value:!0})],r.prototype,"enabled",null),r=n([i.subclass("esri.views.3d.constraints.CollisionConstraint")],r)}(i.declared(s));r.CollisionConstraint=a,r.default=a});

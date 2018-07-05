@@ -8,7 +8,7 @@ $search_width: 240px !default;
     justify-content: center;
     align-items: center;
     overflow: visible;
-    .esri-widget-button {
+    .esri-widget--button {
       box-shadow: none;
     }
     .esri-icon-notice-triangle {
@@ -16,6 +16,15 @@ $search_width: 240px !default;
       line-height: 16px;
       margin: 0 5px 0 0;
       vertical-align: text-bottom;
+    }
+    .esri-widget__loader {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      min-height: $button_height;
+    }
+    .esri-widget__loader-text {
+      margin: 0 floor($side_spacing/3);
     }
   }
   .esri-search__container,
@@ -29,29 +38,28 @@ $search_width: 240px !default;
     align-items: stretch;
     flex: 1 0 100%;
     .esri-search__input,
-    .esri-widget-button {
+    .esri-widget--button {
       z-index: 0;
     }
     .esri-search__input:focus,
-    .esri-widget-button:focus {
+    .esri-widget--button:focus {
       z-index: 1;
     }
   }
-  .esri-search__container:before,
-  .esri-search__container:after {
+  .esri-search--searching:before,
+  .esri-search--searching:after {
     content: "";
-    opacity: 0;
     position: absolute;
     height: 2px;
     top: 0;
   }
-  .esri-search__container:before {
+  .esri-search--searching:before {
     background-color: $border_color;
     width: 100%;
     z-index: 1;
   }
-  .esri-search__container:after {
-    background-color: $button_text_color;
+  .esri-search--searching:after {
+    background-color: $interactive_text_color;
     width: $looping_progress_bar_width;
     z-index: 2;
     animation: looping-progresss-bar-ani $looping_progress_bar_params;
@@ -110,16 +118,8 @@ $search_width: 240px !default;
     height: 1px;
     width: 1px;
   }
-  .esri-search--loading:before,
-  .esri-search--loading:after {
-    opacity: 1;
-  }
   .esri-search__suggestions-menu [class^="esri-icon"] {
     vertical-align: middle;
-  }
-  .esri-search__suggestions-menu .esri-header,
-  .esri-search__suggestions-menu ul {
-    border-top: solid 1px $border_color;
   }
   .esri-search__suggestions-menu .esri-header:first-child,
   .esri-search__suggestions-menu ul:first-child {

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
-define({attach:"Priponke",fields:"Polja",fieldsSummary:"Seznam atributov in vrednosti",media:"Mediji",next:"Naprej",numCharts:"Število grafov",numImages:"Število slik",noTitle:"Neimenovano",previous:"Prejšnji"});
+define({attach:"Priloge",fields:"Polj",fieldsSummary:"Seznam atributov in vrednosti",media:"Omrežja",next:"Naslednji",numCharts:"Število grafikonov",numImages:"Število slik",noTitle:"Neimenovano",previous:"Prejšnji"});

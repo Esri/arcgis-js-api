@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({statsAvg:"ממוצע: ${avg}",count:"כמות : ${count}",percent:"${num}%",high:"גבוה",low:"נמוך",color:{changeMinMaxToolTIp:"הקלד ערך.",handleToolTip:"התאם ערכי נתונים לצבעים.",maxValueToolTip:"הקלד את ערך הנתונים הגבוה ביותר הצפוי.",minValueToolTip:"הקלד את ערך הנתונים הנמוך ביותר הצפוי.",changeSymbol:"שנה סמל"},size:{handleToolTip:"התאם את ערכי הנתונים לגודל הסמל.",sizeInputBoxLines:"קבע את עובי הקו בין 0 ל-18 פיקסלים.",sizeInputBoxPoints:"קבע את גודל הסמל בין 1 ל-120 פיקסלים."}});

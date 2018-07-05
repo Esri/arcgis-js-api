@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
-define({attach:"Ekler",fields:"Alanlar",fieldsSummary:"Öznitelik ve değer listesi",media:"Medya",next:"Sonraki",numCharts:"Grafik sayısı",numImages:"Görüntülerin sayısı",noTitle:"Başlıksız",previous:"Önceki"});
+define({attach:"Ekler",fields:"Alanlar",fieldsSummary:"Öznitelik ve değer listesi",media:"Ortam",next:"Sonraki",numCharts:"Grafik sayısı",numImages:"Görüntülerin sayısı",noTitle:"Adsız",previous:"Önceki"});

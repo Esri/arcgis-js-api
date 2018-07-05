@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({widgetLabel:"Lijst met lagen",noItemsToDisplay:"Er zijn momenteel geen items om weer te geven.",layerInvisibleAtScale:"Onzichtbaar op de huidige schaal",layerError:"Er is een fout opgetreden bij het laden van dit item",untitledLayer:"Laag zonder naam"});

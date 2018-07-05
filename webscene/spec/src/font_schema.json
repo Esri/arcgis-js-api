@@ -11,7 +11,8 @@
         "line-through",
         "underline",
         "none"
-      ]
+      ],
+      "default": "none"
     },
     "family": {
       "type": "string",
@@ -19,7 +20,7 @@
     },
     "size": {
       "type": "number",
-      "description": "The font size in points."
+      "description": "The font size in points. Ignored when font is used on TextSymbol3DLayer."
     },
     "style": {
       "type": "string",
@@ -28,7 +29,8 @@
         "italic",
         "normal",
         "oblique"
-      ]
+      ],
+      "default": "normal"
     },
     "weight": {
       "type": "string",
@@ -38,7 +40,8 @@
         "bolder",
         "lighter",
         "normal"
-      ]
+      ],
+      "default": "normal"
     }
   },
   "additionalProperties": false,

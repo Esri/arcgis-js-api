@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define(["require","exports","../../../../core/tsSupport/extendsHelper","../../../input/InputHandler"],function(e,n,o,t){Object.defineProperty(n,"__esModule",{value:!0});var a=function(e){function n(n,o){var t=e.call(this,!0)||this;return t.view=n,t._canZoom=!0,t.registerIncoming("mouse-wheel",o,function(e){return t._handleMouseWheel(e)}),t}return o(n,e),n.prototype._handleMouseWheel=function(e){var n=this;if(this._canZoom){var o=this.view.navigation,t=e.data,a=t.x,i=t.y,r=t.deltaY,u=1/Math.pow(.6,1/60*r),s=o.zoom(u,[a,i]);s&&(this._canZoom=!1,s.always(function(){n._canZoom=!0,o.end()})),e.stopPropagation()}},n}(t.InputHandler);n.MouseWheelZoom=a});

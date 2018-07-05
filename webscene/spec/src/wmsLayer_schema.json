@@ -10,7 +10,7 @@
     },
     "customLayerParameters": {
       "type": "object",
-      "description": "A sequence of custom parameters to WMS layer requests. These parameters are applied to `Getmap` and `GetFeatureInfo` requests. The `customLayerParameters` property takes precedence if `customParameters` is also present.",
+      "description": "A sequence of custom parameters to WMS layer requests. These parameters are applied to `GetMap` and `GetFeatureInfo` requests. The `customLayerParameters` property takes precedence if `customParameters` is also present.",
       "patternProperties": {
         ".*": {
           "type": "string"
@@ -75,7 +75,7 @@
     },
     "layers": {
       "type": "array",
-      "description": "An array of layer objects defining the styling, geometry, and attribute information for the features.",
+      "description": "An array of layer objects from the WMS service.",
       "items": {
         "type": "object",
         "$ref": "wmsLayer_layer_schema.json"

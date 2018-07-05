@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({attach:"Anexos",fields:"Campos",fieldsSummary:"Lista de atributos e valores",media:"Mídia",next:"Próximo",numCharts:"Número de gráficos",numImages:"Número de imagens",noTitle:"Sem título",previous:"Anterior"});

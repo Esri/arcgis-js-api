@@ -18,11 +18,11 @@
     },
     "styleName": {
       "type": "string",
-      "description": "A registered web style name. Can not be used in conjunction with styleName."
+      "description": "A registered web style name. Can not be used in conjunction with styleUrl."
     },
     "styleUrl": {
       "type": "string",
-      "description": "URL that points to the web style definition. Can not be used in conjunction with styleUrl.",
+      "description": "URL that points to the web style definition. Can not be used in conjunction with styleName.",
       "format": "uri"
     },
     "type": {

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({addTags:"टैग्स जोड़ें",noTagsFound:"कोई मौजूदा टैग मेल नहीं खाता.",required:"एक या अधिक टैग्स की आवश्यकता है।"});

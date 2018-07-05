@@ -38,7 +38,7 @@
     },
     "drawingInfo": {
       "type": "object",
-      "description": "Contains drawing, labeling, and transparency information.",
+      "description": "Contains the drawing and labeling information.",
       "$ref": "drawingInfo_schema.json"
     },
     "elevationInfo": {
@@ -125,11 +125,11 @@
     },
     "maxScale": {
       "type": "number",
-      "description": "Represents the maximum scale at which the layer definition will be applied. This does not apply to layers of type: `ArcGISMapServiceLayer`, `ImageServiceVectorLayer` or `ImageServiceLayer`."
+      "description": "Represents the maximum scale at which the layer definition will be applied."
     },
     "minScale": {
       "type": "number",
-      "description": "Represents the minimum scale at which the layer definition will be applied. This does not apply to layers of type: `ArcGISMapServiceLayer`, `ImageServiceVectorLayer` or `ImageServiceLayer`."
+      "description": "Represents the minimum scale at which the layer definition will be applied."
     },
     "name": {
       "type": "string",
@@ -196,7 +196,8 @@
       "enum": [
         "Feature Layer",
         "Table"
-      ]
+      ],
+      "default": "Feature Layer"
     },
     "typeIdField": {
       "type": "string",

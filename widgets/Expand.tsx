@@ -25,34 +25,29 @@
  * view.ui.add(layerListExpand, "top-right");
  */
 
-/// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
+/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
+/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
 
 // dijit
 import _WidgetBase = require("dijit/_WidgetBase");
 
 // dojo
-import * as i18nCommon from "dojo/i18n!../nls/common";
+import * as i18nCommon from "dojo/i18n!esri/nls/common";
 
 // esri.core.accessorSupport
-import { aliasOf, subclass, declared, property } from "../core/accessorSupport/decorators";
+import { aliasOf, subclass, declared, property } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import View = require("../views/View");
+import View = require("esri/views/View");
 
 // esri.widgets
-import Widget = require("./Widget");
+import Widget = require("esri/widgets/Widget");
 
 // esri.widgets.Expand
-import ExpandViewModel = require("./Expand/ExpandViewModel");
+import ExpandViewModel = require("esri/widgets/Expand/ExpandViewModel");
 
 // esri.widgets.support
-import {
-  accessibleHandler,
-  renderable,
-  join,
-  tsx, isWidgetBase, isWidget
-} from "./support/widget";
+import { accessibleHandler, renderable, tsx, isWidgetBase, isWidget } from "esri/widgets/support/widget";
 
 type ContentSource = string | HTMLElement | Widget | _WidgetBase;
 
@@ -64,7 +59,7 @@ const CSS = {
   container: "esri-expand__container",
   containerExpanded: "esri-expand__container--expanded",
   panel: "esri-expand__panel",
-  button: "esri-widget-button",
+  button: "esri-widget--button",
   text: "esri-icon-font-fallback-text",
   icon: "esri-collapse__icon",
   iconExpanded: "esri-expand__icon--expanded",
@@ -80,7 +75,6 @@ const CSS = {
 
 @subclass("esri.widgets.Expand")
 class Expand extends declared(Widget) {
-
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -117,8 +111,7 @@ class Expand extends declared(Widget) {
    * @type {boolean}
    * @default false
    */
-  @aliasOf("viewModel.autoCollapse")
-  autoCollapse: boolean = null;
+  @aliasOf("viewModel.autoCollapse") autoCollapse: boolean = null;
 
   //----------------------------------
   //  collapseIconClass
@@ -323,8 +316,7 @@ class Expand extends declared(Widget) {
    *
    * view.ui.add([expand1, expand2], "bottom-right");
    */
-  @aliasOf("viewModel.group")
-  group: string = null;
+  @aliasOf("viewModel.group") group: string = null;
 
   //----------------------------------
   //  iconNumber
@@ -464,15 +456,22 @@ class Expand extends declared(Widget) {
 
     const iconNumber = this.iconNumber;
 
-    const badgeNumberNode = iconNumber && !expanded ? (
-      <span key={"expand__icon-number"}
-        class={CSS.iconNumber}>{iconNumber}</span>
-    ) : null;
+    const badgeNumberNode =
+      iconNumber && !expanded ? (
+        <span key={"expand__icon-number"} class={CSS.iconNumber}>
+          {iconNumber}
+        </span>
+      ) : null;
 
-    const expandedBadgeNumberNode = iconNumber && expanded ? (
-      <span key={"expand__expand-icon-number"}
-        class={join(CSS.iconNumber, CSS.iconNumberExpanded)}>{iconNumber}</span>
-    ) : null;
+    const expandedBadgeNumberNode =
+      iconNumber && expanded ? (
+        <span
+          key={"expand__expand-icon-number"}
+          class={this.classes(CSS.iconNumber, CSS.iconNumberExpanded)}
+        >
+          {iconNumber}
+        </span>
+      ) : null;
 
     const baseClasses = {
       [CSS.modeAuto]: mode === "auto",
@@ -481,29 +480,27 @@ class Expand extends declared(Widget) {
     };
 
     return (
-      <div class={CSS.base} classes={baseClasses}>
-        <div
-          bind={this}
-          onclick={this._toggle}
-          class={CSS.expandMask}
-          classes={maskClasses}></div>
-        <div class={CSS.container} classes={containerExpanded}>
+      <div class={this.classes(CSS.base, baseClasses)}>
+        <div bind={this} onclick={this._toggle} class={this.classes(CSS.expandMask, maskClasses)} />
+        <div class={this.classes(CSS.container, containerExpanded)}>
           <div class={CSS.panel}>
-            <div bind={this}
+            <div
+              bind={this}
               onclick={this._toggle}
               onkeydown={this._toggle}
               aria-label={title}
               title={title}
               role="button"
               tabindex="0"
-              class={CSS.button}>
+              class={CSS.button}
+            >
               {badgeNumberNode}
-              <span aria-hidden="true" class={CSS.icon} classes={expandIconClasses} />
+              <span aria-hidden="true" class={this.classes(CSS.icon, expandIconClasses)} />
               <span class={CSS.text}>{title}</span>
             </div>
             {expandedBadgeNumberNode}
           </div>
-          <div class={CSS.content} classes={contentClasses} bind={this}>
+          <div class={this.classes(CSS.content, contentClasses)} bind={this}>
             {this._renderContent()}
           </div>
         </div>

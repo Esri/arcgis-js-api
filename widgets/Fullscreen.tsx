@@ -25,29 +25,29 @@
  * view.ui.add(fullscreen, "top-right");
  */
 
-/// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
+/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
+/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
 
 // dojo
-import * as i18n from "dojo/i18n!./Fullscreen/nls/Fullscreen";
+import * as i18n from "dojo/i18n!esri/widgets/Fullscreen/nls/Fullscreen";
 
 // esri.core.accessorSupport
-import { aliasOf, subclass, property, declared } from "../core/accessorSupport/decorators";
+import { aliasOf, subclass, property, declared } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import View = require("../views/View");
+import View = require("esri/views/View");
 
 // esri.widgets
-import Widget = require("./Widget");
+import Widget = require("esri/widgets/Widget");
 
 // esri.widgets.Fullscreen
-import FullscreenViewModel = require("./Fullscreen/FullscreenViewModel");
+import FullscreenViewModel = require("esri/widgets/Fullscreen/FullscreenViewModel");
 
 // esri.widgets.support
-import { accessibleHandler, tsx, renderable } from "./support/widget";
+import { accessibleHandler, tsx, renderable } from "esri/widgets/support/widget";
 
 const CSS = {
-  base: "esri-fullscreen esri-widget-button esri-widget",
+  base: "esri-fullscreen esri-widget--button esri-widget",
   text: "esri-icon-font-fallback-text",
   icon: "esri-icon",
   enter: "esri-icon-zoom-out-fixed",
@@ -59,7 +59,6 @@ const CSS = {
 
 @subclass("esri.widgets.Fullscreen")
 class Fullscreen extends declared(Widget) {
-
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -95,8 +94,7 @@ class Fullscreen extends declared(Widget) {
    * @name element
    * @instance
    */
-  @aliasOf("viewModel.element")
-  element: HTMLElement = null;
+  @aliasOf("viewModel.element") element: HTMLElement = null;
 
   //----------------------------------
   //  view
@@ -110,8 +108,7 @@ class Fullscreen extends declared(Widget) {
    * @name view
    * @instance
    */
-  @aliasOf("viewModel.view")
-  view: View = null;
+  @aliasOf("viewModel.view") view: View = null;
 
   //----------------------------------
   //  viewModel
@@ -152,25 +149,20 @@ class Fullscreen extends declared(Widget) {
       [CSS.exit]: state === "active"
     };
 
-    const title = state === "active" ?
-      i18n.exit :
-      state === "ready" ?
-        i18n.enter :
-        "";
+    const title = state === "active" ? i18n.exit : state === "ready" ? i18n.enter : "";
 
     return (
-      <div bind={this}
-        class={CSS.base}
-        classes={rootClasses}
+      <div
+        bind={this}
+        class={this.classes(CSS.base, rootClasses)}
         role="button"
         tabIndex={0}
         onclick={this._toggle}
         onkeydown={this._toggle}
         aria-label={title}
-        title={title}>
-        <span class={CSS.icon}
-          classes={iconClasses}
-          aria-hidden="true" />
+        title={title}
+      >
+        <span class={this.classes(CSS.icon, iconClasses)} aria-hidden="true" />
         <span class={CSS.text}>{title}</span>
       </div>
     );
@@ -186,7 +178,6 @@ class Fullscreen extends declared(Widget) {
   private _toggle() {
     this.viewModel.toggle();
   }
-
 }
 
 export = Fullscreen;

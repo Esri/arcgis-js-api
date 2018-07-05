@@ -10,14 +10,13 @@
   }
 
   .esri-attribution__link {
-    :hover,
-    :active,
-    :visited,
-    :focus {
+    &:hover,
+    &:active,
+    &:visited,
+    &:focus {
       color: currentColor;
     }
     color: currentColor;
-    text-decoration: underline;
   }
 
   .esri-attribution__sources {

@@ -61,7 +61,7 @@ $basemap_toggle_size: $button_width * 2 !default;
     align-items: flex-end;
     justify-content: center;
     .esri-basemap-toggle:hover {
-      background-color: rgba($button_text_hover_color, 0.4);
+      background-color: rgba($interactive_text_color--hover, 0.4);
     }
   }
 

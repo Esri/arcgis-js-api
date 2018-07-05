@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define(["require","exports","dojo/text!./internal/hud.xml","dojo/text!./internal/util.xml","../lib/edgeRendering/EdgeView","./CheckerBoardMaterial","./ColorMaterial","./DefaultMaterial","./HUDMaterial","./LineCalloutMaterial","./MeasurementArrowMaterial","./RibbonLineMaterial","./internal/BlendLayers","./internal/SimpleGLMaterial","./internal/TexOnlyGLMaterial"],function(e,a,r,l,d,i,t,o,n,s,h,S,M,u,x){function f(e,a,f){e._parse(l),e._parse(r),u.loadShaders(e,a,f),x.loadShaders(e,a,f),o.loadShaders(e,a,f),n.loadShaders(e,a,f),s.loadShaders(e,a,f),S.loadShaders(e,a,f),M.loadShaders(e,a,f),t.loadShaders(e,a,f),h.loadShaders(e,a,f),d.EdgeView.loadShaders(e,a,f),i.loadShaders(e,a,f)}Object.defineProperty(a,"__esModule",{value:!0}),a.initializeShaders=f});

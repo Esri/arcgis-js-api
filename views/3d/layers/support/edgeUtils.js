@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
-define(["require","exports","../../../../Color","../../../../core/screenUtils"],function(e,t,r,n){function o(e,t,o){var i=t&&t.enabled&&t.edges;if(!i||0===i.color.a||0===o)return null;var s=r.toUnitRGBA(i.color);switch(s[3]*=o,i.type){case"solid":return e.createSolidEdgeMaterial({color:s,size:n.pt2px(i.size),extensionLength:n.pt2px(i.extensionLength)});case"sketch":return e.createSketchEdgeMaterial({color:s,size:n.pt2px(i.size),extensionLength:n.pt2px(i.extensionLength)})}}Object.defineProperty(t,"__esModule",{value:!0}),t.createMaterial=o});
+define(["require","exports","../../../../Color","../../../../core/screenUtils"],function(e,t,n,r){function i(e,t,i){var o=t&&t.enabled&&t.edges;if(!o)return null;var c=n.toUnitRGBA(o.color),s=i;switch(o.type){case"solid":return e.createSolidEdgeMaterial({color:c,size:r.pt2px(o.size),extensionLength:r.pt2px(o.extensionLength),opacity:s});case"sketch":return e.createSketchEdgeMaterial({color:c,size:r.pt2px(o.size),extensionLength:r.pt2px(o.extensionLength),opacity:s})}}Object.defineProperty(t,"__esModule",{value:!0}),t.createMaterial=i});

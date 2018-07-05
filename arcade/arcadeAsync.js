@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define(["require","exports","./arcadeAsyncRuntime","./parser"],function(e,r,t,n){function c(e,r){return function(r,n){return t.executeScript(e,r,n)}}function i(e){t.extend(e)}function u(e){return n.parseScript(e)}function p(e,r){return n.validateScript(e,r,"full")}function f(e,r,t){return n.scriptCheck(e,r,t,"full")}function o(e,r,c){return t.executeScript(n.parseScript(e),r,c)}function a(e,r,n){return t.executeScript(e,r,n)}function s(e,r){return t.referencesMember(e,r)}function l(e,r){return t.referencesFunction(e,r)}function d(e,r){return void 0===r&&(r=!1),n.extractFieldLiterals(e,r)}Object.defineProperty(r,"__esModule",{value:!0}),r.compileScript=c,r.extend=i,r.parseScript=u,r.validateScript=p,r.scriptCheck=f,r.parseAndExecuteScript=o,r.executeScript=a,r.referencesMember=s,r.referencesFunction=l,r.extractFieldLiterals=d});

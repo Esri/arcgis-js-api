@@ -10,9 +10,7 @@
  * ::: esri-md class="panel trailer-1"
  * **Known Limitations**
  *
- * * This widget is designed to work in 3D, so it can't be used in a {@link module:esri/views/MapView}.
- * * Currently the widget isn't supported when the {@link module:esri/views/SceneView#padding view.padding}
- * is set.
+ * This widget is designed to work in 3D, so it can't be used in a {@link module:esri/views/MapView}.
  *
  * :::
  *
@@ -35,35 +33,30 @@
  * @see module:esri/views/ui/DefaultUI
  */
 
-/// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
+/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
+/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
 
 // dojo
-import * as i18n from "dojo/i18n!./AreaMeasurement3D/nls/AreaMeasurement3D";
+import * as i18n from "dojo/i18n!esri/widgets/AreaMeasurement3D/nls/AreaMeasurement3D";
 
 // esri.core.accessorSupport
-import { aliasOf, subclass, property, declared } from "../core/accessorSupport/decorators";
+import { aliasOf, subclass, property, declared } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import View = require("../views/View");
+import View = require("esri/views/View");
 
 // esri.widgets
-import Widget = require("./Widget");
+import Widget = require("esri/widgets/Widget");
 
 // esri.widgets.AreaMeasurement3D
-import AreaMeasurement3DViewModel = require("./AreaMeasurement3D/AreaMeasurement3DViewModel");
+import AreaMeasurement3DViewModel = require("esri/widgets/AreaMeasurement3D/AreaMeasurement3DViewModel");
 
 // esri.widgets.support
-import {
-  tsx,
-  renderable,
-  accessibleHandler,
-  join
-} from "./support/widget";
+import { tsx, renderable, accessibleHandler } from "esri/widgets/support/widget";
 
 const CSS = {
   // common
-  button: "esri-button",
+  button: "esri-button esri-button--secondary",
   // base
   base: "esri-area-measurement-3d esri-widget esri-widget--panel",
   // container
@@ -88,7 +81,6 @@ const CSS = {
 
 @subclass("esri.widgets.AreaMeasurement3D")
 class AreaMeasurement3D extends declared(Widget) {
-
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -127,8 +119,7 @@ class AreaMeasurement3D extends declared(Widget) {
    * @instance
    * @type {module:esri/views/SceneView}
    */
-  @aliasOf("viewModel.view")
-  view: View = null;
+  @aliasOf("viewModel.view") view: View = null;
 
   //----------------------------------
   //  visible
@@ -184,15 +175,23 @@ class AreaMeasurement3D extends declared(Widget) {
    * @default ["metric", "imperial", "square-inches", "square-feet", "square-yards", "square-miles", "square-us-feet", "square-meters", "square-kilometers", "acres", "ares", "hectares"]
    * @type {string[]}
    */
-  @aliasOf("viewModel.unitOptions")
-  unitOptions: Array<AreaMeasurement3DViewModel.Unit> = null;
+  @aliasOf("viewModel.unitOptions") unitOptions: Array<AreaMeasurement3DViewModel.Unit> = null;
 
   //----------------------------------
   //  unit
   //----------------------------------
+  /**
+   * Unit system (imperial, metric) or specific unit used for displaying the distance values.
+   *
+   * **Possible Values:** imperial | metric | square-inches | square-feet | square-yards | square-miles | square-meters | square-kilometers | square-us-feet | acres | ares | hectares
+   *
+   * @name unit
+   * @instance
+   * @since 4.8
+   * @type {string}
+   */
 
-  @aliasOf("viewModel.unit")
-  unit: AreaMeasurement3DViewModel.Unit;
+  @aliasOf("viewModel.unit") unit: AreaMeasurement3DViewModel.Unit = null;
 
   //--------------------------------------------------------------------------
   //
@@ -201,7 +200,7 @@ class AreaMeasurement3D extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   @aliasOf("viewModel.clearMeasurement")
-  clearMeasurement(): void { }
+  clearMeasurement(): void {}
 
   render() {
     const isUnsupported = !this.viewModel.isSupported;
@@ -221,7 +220,11 @@ class AreaMeasurement3D extends declared(Widget) {
       </section>
     ) : null;
 
-    const measurementLabelNode = (title: string, value: AreaMeasurement3DViewModel.MeasurementValue, key: string) => {
+    const measurementLabelNode = (
+      title: string,
+      value: AreaMeasurement3DViewModel.MeasurementValue,
+      key: string
+    ) => {
       switch (value.state) {
         case "available":
           return (
@@ -233,7 +236,10 @@ class AreaMeasurement3D extends declared(Widget) {
 
         case "unavailable":
           return (
-            <div key={`${key}-disabled`} class={join(CSS.measurementItem, CSS.measurementItemDisabled)}>
+            <div
+              key={`${key}-disabled`}
+              class={this.classes(CSS.measurementItem, CSS.measurementItemDisabled)}
+            >
               <span class={CSS.measurementItemTitle}>{title}</span>
             </div>
           );
@@ -251,7 +257,11 @@ class AreaMeasurement3D extends declared(Widget) {
     const measurementNode = isMeasuring ? (
       <section key="esri-area-measurement-3d__measurement" class={CSS.measurement}>
         {measurementLabelNode(i18n.area, measurement.area, "area")}
-        {measurementLabelNode(i18n.perimeterLength, measurement.perimeterLength, "perimeter-length")}
+        {measurementLabelNode(
+          i18n.perimeterLength,
+          measurement.perimeterLength,
+          "perimeter-length"
+        )}
       </section>
     ) : null;
 
@@ -266,11 +276,18 @@ class AreaMeasurement3D extends declared(Widget) {
     const unitsSelectNode = (
       <div class={CSS.unitsSelectWrapper}>
         <select class={CSS.unitsSelect} id={unitsId} onchange={this._changeUnit} bind={this}>
-          { this.viewModel.unitOptions.map(unit => (unit === this.viewModel.unit) ? (
-            <option key={unit} value={unit} selected>{ i18n.units[unit] }</option>
-          ) : (
-            <option key={unit} value={unit}>{ i18n.units[unit] }</option>
-          ))}
+          {this.viewModel.unitOptions.map(
+            (unit) =>
+              unit === this.viewModel.unit ? (
+                <option key={unit} value={unit} selected>
+                  {i18n.units[unit]}
+                </option>
+              ) : (
+                <option key={unit} value={unit}>
+                  {i18n.units[unit]}
+                </option>
+              )
+          )}
         </select>
       </div>
     );
@@ -283,7 +300,11 @@ class AreaMeasurement3D extends declared(Widget) {
     ) : null;
 
     const newMeasurementNode = isMeasuring ? (
-      <button class={join(CSS.button, CSS.clearButton)} bind={this} onclick={this._newMeasurement}>
+      <button
+        class={this.classes(CSS.button, CSS.clearButton)}
+        bind={this}
+        onclick={this._newMeasurement}
+      >
         {i18n.newMeasurement}
       </button>
     ) : null;
@@ -299,7 +320,9 @@ class AreaMeasurement3D extends declared(Widget) {
     ) : null;
 
     return (
-      <div key="" class={CSS.base} role="presentation">{containerNode}</div>
+      <div key="" class={CSS.base} role="presentation">
+        {containerNode}
+      </div>
     );
   }
 
@@ -324,7 +347,6 @@ class AreaMeasurement3D extends declared(Widget) {
       this.unit = selected.value as AreaMeasurement3DViewModel.Unit;
     }
   }
-
 }
 
 export = AreaMeasurement3D;

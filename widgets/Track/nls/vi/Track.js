@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({widgetLabel:"Theo dõi",startTracking:"Bắt đầu theo dõi vị trí của tôi",stopTracking:"Dừng theo dõi vị trí của tôi"});

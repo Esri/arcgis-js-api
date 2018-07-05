@@ -24,10 +24,18 @@
 
   <snippet name="fillVVFunctions">
     <![CDATA[
+    bool isNan(float val) {
+      return !( val < 0.0 || 0.0 < val || val == 0.0 );
+    }
+    
   #ifdef VV_OPACITY
     const int VV_OPACITY_N = 8;
 
     float getVVOpacity(float opacityValue) {
+      if (isNan(opacityValue)) { 
+        return 1.0;
+      }
+
       if (opacityValue <= u_vvOpacityValues[0]) {
         return u_vvOpacities[0];
       }
@@ -46,7 +54,11 @@
   #ifdef VV_COLOR
     const int VV_COLOR_N = 8;
 
-    vec4 getVVColor(float colorValue) {
+    vec4 getVVColor(float colorValue, vec4 fallback) {
+      if (isNan(colorValue)) { 
+        return fallback;
+      }
+      
       if (colorValue <= u_vvColorValues[0]) {
         return u_vvColors[0];
       }
@@ -104,8 +116,8 @@
         v_opacity = 1.0;
   #endif
 
-    #ifdef VV_COLOR
-       v_color = getVVColor(a_vv.x);
+  #ifdef VV_COLOR
+       v_color = getVVColor(a_vv.x, a_color);
   #else
        v_color = a_color;
   #endif // VV_COLOR

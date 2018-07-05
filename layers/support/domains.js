@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define(["require","exports","./CodedValueDomain","./Domain","./InheritedDomain","./RangeDomain"],function(e,a,n,o,i,d){Object.defineProperty(a,"__esModule",{value:!0}),a.CodedValueDomain=n,a.DomainBase=o,a.InheritedDomain=i,a.RangeDomain=d,a.types={key:"type",base:a.DomainBase,typeMap:{range:a.RangeDomain,"coded-value":a.CodedValueDomain}}});

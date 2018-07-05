@@ -22,7 +22,7 @@ Please see our guide: [Using npm for Custom Builds](https://developers.arcgis.co
 
 * [ArcGIS for JavaScript](https://developers.arcgis.com/javascript/)
 * [http://blogs.esri.com/esri/arcgis/tag/javascript/](http://blogs.esri.com/esri/arcgis/tag/javascript/)
-* [twitter@esri](http://twitter.com/esri)
+* [twitter@ArcGISJSAPI](https://twitter.com/ArcGISJSAPI)
 
 ## Issues
 

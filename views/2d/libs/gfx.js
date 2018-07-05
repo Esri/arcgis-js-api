@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define(["require","exports","./gfx/Circle","./gfx/Group","./gfx/Image","./gfx/Path","./gfx/Rect","./gfx/Shape","./gfx/Surface","./gfx/svgSurface","./gfx/Text"],function(e,f,a,t,u,r,c,g,l,x,d){Object.defineProperty(f,"__esModule",{value:!0}),f.Circle=a.default,f.Group=t.default,f.Image=u.default,f.Path=r.default,f.Rect=c.default,f.Shape=g.default,f.Surface=l.default,f.createSurface=x.createSurface,f.Text=d.default});

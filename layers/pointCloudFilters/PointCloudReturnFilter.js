@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/lang","../../core/accessorSupport/decorators","./PointCloudFilter"],function(e,r,t,o,n,i,u){return function(e){function r(r){var t=e.call(this)||this;return t.includedReturns=[],t.type="return",t}return t(r,e),u=r,r.prototype.clone=function(){return new u({field:this.field,includedReturns:n.clone(this.includedReturns)})},o([i.property({type:[String],json:{write:{enabled:!0,isRequired:!0}}})],r.prototype,"includedReturns",void 0),o([i.property()],r.prototype,"type",void 0),r=u=o([i.subclass("esri.layers.pointCloudFilters.PointCloudReturnFilter")],r);var u}(i.declared(u))});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/lang","../../core/accessorSupport/decorators","./PointCloudFilter"],function(e,r,t,o,n,i,u){return function(e){function r(r){var t=e.call(this)||this;return t.includedReturns=[],t.type="return",t}t(r,e),u=r,r.prototype.clone=function(){return new u({field:this.field,includedReturns:n.clone(this.includedReturns)})};var u;return o([i.property({type:[String],json:{write:{enabled:!0,isRequired:!0}}})],r.prototype,"includedReturns",void 0),o([i.property()],r.prototype,"type",void 0),r=u=o([i.subclass("esri.layers.pointCloudFilters.PointCloudReturnFilter")],r)}(i.declared(u))});

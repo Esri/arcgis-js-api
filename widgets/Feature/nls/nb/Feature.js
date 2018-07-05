@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({attach:"Vedlegg",fields:"Felter",fieldsSummary:"Liste med attributter og verdier",media:"Medier",next:"Neste",numCharts:"Antall diagrammer",numImages:"Antall bilder",noTitle:"Uten tittel",previous:"Forrige"});

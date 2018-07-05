@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
-define({widgetLabel:"Поиск",searchButtonTitle:"Поиск",clearButtonTitle:"Очистить поиск",placeholder:"Найти адрес или место",searchIn:"Поиск в",all:"все",allPlaceholder:"Найти адрес или место",emptyValue:"Введите термин поиска.",untitledResult:"Без имени",untitledSource:"Источник без названия",noResults:"Нет результатов",noResultsFound:"Результаты не найдены.",noResultsFoundForValue:"Для {value} результатов не найдено.",showMoreResults:"Показать больше результатов",hideMoreResults:"Спрятать",searchResult:"Результаты поиска",moreResultsHeader:"Больше результатов",esriLocatorName:"Геокодер Esri World",useCurrentLocation:"Использовать текущее местоположение"});
+define({widgetLabel:"Поиск",searchButtonTitle:"Поиск",clearButtonTitle:"Очистить поиск",placeholder:"Найти адрес или место",searchIn:"Поиск в",all:"все",allPlaceholder:"Найти адрес или место",emptyValue:"Введите термин поиска.",untitledResult:"Без имени",untitledSource:"Источник без названия",noResults:"Нет результатов",noResultsFound:"Результаты не найдены.",noResultsFoundForValue:"Для {value} результатов не найдено.",showMoreResults:"Показать больше результатов",hideMoreResults:"Спрятать",searchResult:"Результаты поиска",moreResultsHeader:"Больше результатов",useCurrentLocation:"Использовать текущее местоположение"});

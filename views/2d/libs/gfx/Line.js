@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define(["require","exports","../../../../core/tsSupport/extendsHelper","dojox/gfx/_base","./Shape"],function(e,t,i,n,o){Object.defineProperty(t,"__esModule",{value:!0});var a=function(e){function t(t){var i=e.call(this)||this;return i.shape=n.getDefault("Line"),i.rawNode=t,i}return i(t,e),t.prototype.getBoundingBox=function(){if(!this.bbox){var e=this.shape;this.bbox={x:Math.min(e.x1,e.x2),y:Math.min(e.y1,e.y2),width:Math.abs(e.x2-e.x1),height:Math.abs(e.y2-e.y1)}}return this.bbox},t.nodeType="line",t}(o.default);t.default=a});

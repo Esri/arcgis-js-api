@@ -28,41 +28,33 @@
  * @see module:esri/views/ui/DefaultUI
  */
 
-/// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
+/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
+/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
 
 // dojo
-import * as i18n from "dojo/i18n!./Attribution/nls/Attribution";
+import * as i18n from "dojo/i18n!esri/widgets/Attribution/nls/Attribution";
 
 // esri.core
-import watchUtils = require("../core/watchUtils");
+import watchUtils = require("esri/core/watchUtils");
 
 // esri.core.accessorSupport
-import {
-  aliasOf,
-  subclass,
-  property,
-  declared
-} from "../core/accessorSupport/decorators";
+import { aliasOf, subclass, property, declared } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import View = require("../views/View");
+import View = require("esri/views/View");
 
 // esri.widgets
-import Widget = require("./Widget");
+import Widget = require("esri/widgets/Widget");
 
 // esri.widgets.Attribution
-import AttributionViewModel = require("./Attribution/AttributionViewModel");
+import AttributionViewModel = require("esri/widgets/Attribution/AttributionViewModel");
 
 // esri.widgets.support
-import {
-  tsx,
-  renderable,
-  accessibleHandler
-} from "./support/widget";
+import { tsx, renderable, accessibleHandler } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-attribution esri-widget",
+  anchor: "esri-widget__anchor",
   poweredBy: "esri-attribution__powered-by",
   sources: "esri-attribution__sources",
   open: "esri-attribution--open",
@@ -76,7 +68,6 @@ const CSS = {
 
 @subclass("esri.widgets.Attribution")
 class Attribution extends declared(Widget) {
-
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -95,9 +86,7 @@ class Attribution extends declared(Widget) {
   }
 
   postInitialize() {
-    this.own(
-      watchUtils.on(this, "viewModel.items", "change", () => this.scheduleRender())
-    );
+    this.own(watchUtils.on(this, "viewModel.items", "change", () => this.scheduleRender()));
   }
 
   //--------------------------------------------------------------------------
@@ -136,13 +125,15 @@ class Attribution extends declared(Widget) {
   })
   @renderable()
   get attributionText(): string {
-    return this.viewModel.items.reduce((unique, item) => {
-      if (unique.indexOf(item.text) === -1) {
-        unique.push(item.text);
-      }
+    return this.viewModel.items
+      .reduce((unique, item) => {
+        if (unique.indexOf(item.text) === -1) {
+          unique.push(item.text);
+        }
 
-      return unique;
-    }, []).join(this.itemDelimiter);
+        return unique;
+      }, [])
+      .join(this.itemDelimiter);
   }
 
   //----------------------------------
@@ -150,7 +141,7 @@ class Attribution extends declared(Widget) {
   //----------------------------------
 
   /**
-   * The widget's default icon font.
+   * The widget's default CSS icon class.
    *
    * @since 4.7
    * @name iconClass
@@ -158,8 +149,7 @@ class Attribution extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property()
-  iconClass = CSS.widgetIcon;
+  @property() iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  itemDelimiter
@@ -190,8 +180,7 @@ class Attribution extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property()
-  label: string = i18n.widgetLabel;
+  @property() label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  view
@@ -204,8 +193,7 @@ class Attribution extends declared(Widget) {
    * @name view
    * @instance
    */
-  @aliasOf("viewModel.view")
-  view: View = null;
+  @aliasOf("viewModel.view") view: View = null;
 
   //----------------------------------
   //  viewModel
@@ -225,10 +213,7 @@ class Attribution extends declared(Widget) {
   @property({
     type: AttributionViewModel
   })
-  @renderable([
-    "state",
-    "view.size"
-  ])
+  @renderable(["state", "view.size"])
   viewModel: AttributionViewModel = new AttributionViewModel();
 
   //--------------------------------------------------------------------------
@@ -243,15 +228,19 @@ class Attribution extends declared(Widget) {
     };
 
     return (
-      <div bind={this}
-        class={CSS.base}
-        classes={classes}
+      <div
+        bind={this}
+        class={this.classes(CSS.base, classes)}
         onclick={this._toggleState}
-        onkeydown={this._toggleState}>
+        onkeydown={this._toggleState}
+      >
         {this._renderSourcesNode()}
-        <div class={CSS.poweredBy}>Powered by <a target="_blank"
-          href="http://www.esri.com/"
-          class={CSS.link}>Esri</a></div>
+        <div class={CSS.poweredBy}>
+          Powered by{" "}
+          <a target="_blank" href="http://www.esri.com/" class={this.classes(CSS.link, CSS.anchor)}>
+            Esri
+          </a>
+        </div>
       </div>
     );
   }
@@ -274,14 +263,17 @@ class Attribution extends declared(Widget) {
       [CSS.interactive]: interactive
     };
 
-    return <div afterCreate={this._afterSourcesNodeCreate}
-      afterUpdate={this._afterSourcesNodeUpdate}
-      bind={this}
-      class={CSS.sources}
-      classes={sourceClasses}
-      innerHTML={attributionText}
-      role={role}
-      tabIndex={sourceTabIndex} />;
+    return (
+      <div
+        afterCreate={this._afterSourcesNodeCreate}
+        afterUpdate={this._afterSourcesNodeUpdate}
+        bind={this}
+        class={this.classes(CSS.sources, sourceClasses)}
+        innerHTML={attributionText}
+        role={role}
+        tabIndex={sourceTabIndex}
+      />
+    );
   }
 
   private _afterSourcesNodeCreate(element: Element): void {
@@ -294,7 +286,8 @@ class Attribution extends declared(Widget) {
     const { clientHeight, clientWidth, scrollWidth } = element;
 
     const attributionTextOverflowed = scrollWidth >= clientWidth;
-    const attributionTextOverflowChanged = this._attributionTextOverflowed !== attributionTextOverflowed;
+    const attributionTextOverflowChanged =
+      this._attributionTextOverflowed !== attributionTextOverflowed;
     this._attributionTextOverflowed = attributionTextOverflowed;
 
     if (attributionTextOverflowChanged) {
@@ -326,7 +319,6 @@ class Attribution extends declared(Widget) {
   private _isInteractive(): boolean {
     return this._isOpen || this._attributionTextOverflowed;
   }
-
 }
 
 export = Attribution;

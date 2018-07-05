@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
-define({title:"العثور على الموقع الخاص بي"});
+define({widgetLabel:"تحديد موقع",title:"بحث عن الموقع"});

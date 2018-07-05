@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define(["require","exports","../../../../core/tsSupport/extendsHelper","../../state/controllers/global/ZoomStepController","../../state/controllers/local/ZoomStepController","../../state/helpers/PickingHelper","../../../input/InputHandler","../../../input/handlers/support"],function(e,t,o,i,n,r,l,a){Object.defineProperty(t,"__esModule",{value:!0});var p=function(e){function t(t,o){var i=e.call(this,!0)||this;return i.view=t,i.pickingHelper=new r.PickingHelper(t),i.registerIncoming("double-click",o,function(e){return i.handleDoubleClick(e)}),i}return o(t,e),t.prototype.handleDoubleClick=function(e){var t=e.data;if(a.eventMatchesPointerAction(t,"primary")){var o=this.view.state.isGlobal?new i.ZoomStepController(this.view,this.pickingHelper,"animation"):new n.ZoomStepController(this.view,this.pickingHelper,"animation");this.view.state.switchCameraController(o),o.zoomStep(Math.log(.5)/Math.log(.6),[t.x,this.view.height-t.y]),e.stopPropagation()}},t}(l.InputHandler);t.DoubleClickZoom=p});

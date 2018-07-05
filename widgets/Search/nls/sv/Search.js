@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
-define({widgetLabel:"Sök",searchButtonTitle:"Sök",clearButtonTitle:"Rensa sökning",placeholder:"Sök efter adress eller plats",searchIn:"Sök i",all:"Alla",allPlaceholder:"Sök efter adress eller plats",emptyValue:"Ange en sökterm",untitledResult:"Namnlös",untitledSource:"Namnlös källa",noResults:"Inga resultat",noResultsFound:"Inga resultat hittades.",noResultsFoundForValue:"Inga resultat hittades för {value}.",showMoreResults:"Visa fler resultat",hideMoreResults:"Dölj",searchResult:"Sökresultat",moreResultsHeader:"Fler resultat",esriLocatorName:"Esri World Geocoder",useCurrentLocation:"Använd aktuell plats"});
+define({widgetLabel:"Sök",searchButtonTitle:"Sök",clearButtonTitle:"Rensa sökning",placeholder:"Sök efter adress eller plats",searchIn:"Sök i",all:"Alla",allPlaceholder:"Sök efter adress eller plats",emptyValue:"Ange en sökterm",untitledResult:"Namnlös",untitledSource:"Namnlös källa",noResults:"Inga resultat",noResultsFound:"Inga resultat hittades.",noResultsFoundForValue:"Inga resultat hittades för {value}.",showMoreResults:"Visa fler resultat",hideMoreResults:"Dölj",searchResult:"Sökresultat",moreResultsHeader:"Fler resultat",useCurrentLocation:"Använd aktuell plats"});

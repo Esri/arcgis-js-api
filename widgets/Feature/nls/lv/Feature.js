@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
-define({attach:"Piesaistes",fields:"Lauki",fieldsSummary:"Atribūtu un vērtību saraksts",media:"Mediji",next:"Tālāk",numCharts:"Diagrammu skaits",numImages:"Attēlu skaits",noTitle:"Bez virsraksta",previous:"Iepriekšējais"});
+define({attach:"Uzdevumi",fields:"Lauki",fieldsSummary:"Atribūtu un vērtību saraksts",media:"Informācijas datu nesēji",next:"Nākošais",numCharts:"Diagrammu skaits",numImages:"Attēlu skaits",noTitle:"Bez nosaukuma",previous:"Iepriekšējā"});

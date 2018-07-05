@@ -1,7 +1,7 @@
 @mixin colorPicker() {
   .esri-color-picker {
     font-size: $text_size_small;
-    color: $button_text_color;
+    color: $interactive_text_color;
     text-shadow: none;
     width: 226px;
   }
@@ -22,7 +22,7 @@
 
   .esri-color-picker .esri-hex-input {
     display: inline-block;
-    color: $button_text_color;
+    color: $interactive_text_color;
     width: 5.6em;
     border: 1px solid $border_color;
     direction: ltr;
@@ -81,7 +81,7 @@
   .esri-color-picker .esri-palette-options .esri-palette-toggle {
     position: absolute;
     right: 0;
-    color: $button_text_color;
+    color: $interactive_text_color;
     vertical-align: middle;
     box-shadow: none;
     border: none;
@@ -192,15 +192,14 @@
     height: floor($button_height/2);
     width: 10px;
     border-radius: 2px;
-    background-color: $button_text_color;
+    background-color: $interactive_text_color;
     cursor: pointer;
     -webkit-appearance: none;
     margin-top: floor($button_height/5) * -1;
     transition: background-color 250ms ease-in-out;
   }
 
-  .esri-color-picker
-    .esri-transparency-slider[type="range"][disabled]::-webkit-slider-runnable-track {
+  .esri-color-picker .esri-transparency-slider[type="range"][disabled]::-webkit-slider-runnable-track {
     background-color: rgba($disabled_color, $disabled_opacity);
   }
 
@@ -209,8 +208,7 @@
   }
 
   .esri-color-picker .esri-transparency-slider[type="range"][disabled],
-  .esri-color-picker
-    .esri-transparency-slider[type="range"][disabled]::-webkit-slider-runnable-track,
+  .esri-color-picker .esri-transparency-slider[type="range"][disabled]::-webkit-slider-runnable-track,
   .esri-color-picker .esri-transparency-slider[type="range"][disabled]::-webkit-slider-thumb {
     cursor: default;
   }
@@ -243,7 +241,7 @@
     height: floor($button_height/2);
     width: 10px;
     border-radius: 2px;
-    background: $button_text_color;
+    background: $interactive_text_color;
     cursor: pointer;
   }
 

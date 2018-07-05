@@ -6,12 +6,6 @@
     a {
       text-decoration: none;
     }
-    button,
-    [role="button"] {
-      height: $button_height;
-      cursor: pointer;
-      border: none;
-    }
   }
 
   .esri-area-measurement-3d__header {
@@ -33,20 +27,6 @@
     flex: 1;
     word-break: break-word;
     text-align: left;
-  }
-
-  .esri-area-measurement-3d__header-buttons {
-    padding: 0;
-    margin: 0 0 0 auto; // `auto` here helps place each node at either end of the container node
-    display: flex;
-    button,
-    [role="button"] {
-      width: $button_width;
-      height: $button_height;
-      cursor: pointer;
-      border: none;
-      padding: 8px;
-    }
   }
 
   .esri-area-measurement-3d__hint {
@@ -98,21 +78,6 @@
   .esri-area-measurement-3d__units-select {
     width: 100%;
     padding-right: 2.7em;
-  }
-
-  .esri-button.esri-area-measurement-3d__clear-button {
-    color: $button_color;
-    border: 1px solid $button_color;
-    background-color: $background_color;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    width: 100%;
-    white-space: nowrap;
-  }
-
-  .esri-button.esri-area-measurement-3d__clear-button:hover {
-    color: $background_color;
-    background-color: $button_hover_color;
   }
 }
 

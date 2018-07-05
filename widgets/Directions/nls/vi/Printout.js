@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({printNotes:"Nhập ghi chú ở đây",printDisclaimer:"Chỉ đường chỉ được cung cấp cho mục đích lập kế hoạch và tuân theo <a href='http://www.esri.com/legal/licensing-translations' target='_blank'>điều khoản sử dụng của Esri</a>. Điều kiện đường xá động có thể tồn tại, dẫn đến độ chính xác khác với chỉ đường của bạn và phải được xem xét cùng với các tín hiệu và giới hạn pháp lý. Bạn phải chịu mọi rủi ro khi sử dụng.",printoutError:"Dường như đã có lỗi."});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({statsAvg:"平均 : ${avg}",count:"数: ${count}",percent:"${num}%",high:"高",low:"低",color:{changeMinMaxToolTIp:"値を入力します。",handleToolTip:"色のデータ値を合わせます。",maxValueToolTip:"想定される最大のデータ値を入力します。",minValueToolTip:"想定される最小のデータ値を入力します。",changeSymbol:"シンボルの変更"},size:{handleToolTip:"データ値のシンボル サイズを合わせます。",sizeInputBoxLines:"ラインの太さを 0 ～ 18 ピクセルの範囲で設定します。",sizeInputBoxPoints:"シンボル サイズを 1 ～ 120 ピクセルの範囲で設定します"}});

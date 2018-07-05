@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/accessorSupport/decorators","../DefaultUI"],function(e,r,t,o,n,s){return function(e){function r(){var r=e.call(this)||this;return r.components=["attribution","zoom","navigation-toggle","compass"],r}return t(r,e),o([n.property()],r.prototype,"components",void 0),r=o([n.subclass("esri.views.ui.3d.DefaultUI3D")],r)}(n.declared(s))});
+define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/accessorSupport/decorators","../DefaultUI"],function(e,r,t,o,n,s){return function(e){function r(r){var t=e.call(this)||this;return t.components=["attribution","zoom","navigation-toggle","compass"],t}return t(r,e),o([n.property()],r.prototype,"components",void 0),r=o([n.subclass("esri.views.ui.3d.DefaultUI3D")],r)}(n.declared(s))});

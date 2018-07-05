@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({widgetLabel:"Phác họa",draw:"Vẽ",drawPoint:"Vẽ điểm",drawPolygon:"Vẽ đa giác",drawPolyline:"Vẽ đường",drawMultipoint:"Vẽ đa điểm",drawCircle:"Vẽ hình tròn",drawRectangle:"Vẽ hình chữ nhật",drawTriangle:"Vẽ hình tam giác",drawSquare:"Vẽ hình vuông",drawEllipse:"Vẽ hình elip",pan:"Di chuyển bản đồ",undo:"Hoàn tác",redo:"Làm lại",updateDrawing:"Cập nhật bản vẽ",clear:"Xóa bản vẽ",completeDrawing:"Hoàn thành bản vẽ",pauseDrawing:"Tạm dừng vẽ",resumeDrawing:"Tiếp tục vẽ",rotate:"Xoay",scale:"Tỷ lệ",addPointTooltip:"Bấm để thêm điểm",removePointTooltip:"Nhấp vào để xóa điểm này",completePolygonTooltip:"Nhấp vào điểm này để hoàn thành",startDrawingTooltip:"Bấm để bắt đầu vẽ",continueDrawingTooltip:"Bấm để tiếp tục vẽ",completeDrawingTooltip:"Bấm đúp để hoàn thành",addMultipointTooltip:"Bấm để bắt đầu thêm điểm",finishMultipointTooltip:"Bấm đúp để kết thúc",addFreehandTooltip:"Nhấn xuống để bắt đầu và để đến phần kết thúc",addShapeTooltip:"Bấm để thêm một hình hoặc nhấn xuống để bắt đầu và để đến phần kết thúc"});

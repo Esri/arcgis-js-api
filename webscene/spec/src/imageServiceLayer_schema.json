@@ -62,9 +62,17 @@
       "description": "Optional string containing the item ID of the service if it's registered on ArcGIS Online or your organization's portal."
     },
     "layerDefinition": {
-      "type": "object",
-      "description": "A layerDefinition object defining the attribute schema and drawing information for the layer.",
-      "$ref": "layerDefinition_schema.json"
+      "allOf": [
+        {
+          "$ref": "layerDefinition_schema.json"
+        },
+        {
+          "properties": {
+            "definitionExpression": {}
+          },
+          "additionalProperties": false
+        }
+      ]
     },
     "layerType": {
       "type": "string",

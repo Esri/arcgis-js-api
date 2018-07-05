@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
-define(["require","exports"],function(e,t){function r(e){var t=e.font,r=n(t)+i(t)+o(t);return t.family.charAt(0).toUpperCase()+t.family.slice(1)+(r.length>0?r:" Regular")}function n(e){switch(e.weight.toLowerCase()){case"bold":case"bolder":return" Bold"}return""}function i(e){switch(e.style.toLowerCase()){case"italic":case"oblic":return" Italic"}return""}function o(e){switch(e.decoration.toLowerCase()){case"underline":return" Underline";case"line-through":return" Strikethrough"}return""}Object.defineProperty(t,"__esModule",{value:!0}),t.getFullyQualifiedFontName=r});
+define(["require","exports"],function(e,r){function t(e){var r=e.toLowerCase().split(" ").join("-");switch(r){case"serif":return"noto-serif";case"sans-serif":return"arial-unicode-ms";case"monospace":return"ubuntu-mono";case"fantasy":return"cabin-sketch";case"cursive":return"redressed";default:return r}}function n(e){var r=s(e)+a(e);return t(e.family)+(r.length>0?r:"-regular")}function i(e){switch(e.decoration.toLowerCase()){case"underline":return o;case"line-through":return u}return NaN}function s(e){if(!e.weight)return"";switch(e.weight.toLowerCase()){case"bold":case"bolder":return"-bold"}return""}function a(e){if(!e.style)return"";switch(e.style.toLowerCase()){case"italic":case"oblic":return"-italic"}return""}Object.defineProperty(r,"__esModule",{value:!0});var o=8,u=-3;r.getFullyQualifiedFontName=n,r.getFontDecorationOffset=i});

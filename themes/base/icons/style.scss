@@ -3,9 +3,9 @@
 @font-face {
   font-family: 'CalciteWebCoreIcons';
   src:
-    url('#{$icomoon-font-path}/CalciteWebCoreIcons.ttf?cu4poq') format('truetype'),
-    url('#{$icomoon-font-path}/CalciteWebCoreIcons.woff?cu4poq') format('woff'),
-    url('#{$icomoon-font-path}/CalciteWebCoreIcons.svg?cu4poq#CalciteWebCoreIcons') format('svg');
+    url('#{$icomoon-font-path}/CalciteWebCoreIcons.ttf?im9r4h') format('truetype'),
+    url('#{$icomoon-font-path}/CalciteWebCoreIcons.woff?im9r4h') format('woff'),
+    url('#{$icomoon-font-path}/CalciteWebCoreIcons.svg?im9r4h#CalciteWebCoreIcons') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -25,819 +25,1010 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+@function unicode($str) {
+  @return unquote("\"") + $str + unquote("\"");
+}
+
 .esri-icon-close {
   &:before {
-    content: $esri-icon-close;
+    content: unicode($esri-icon-close);
+    color: $fill-color;
   }
 }
 .esri-icon-drag-horizontal {
   &:before {
-    content: $esri-icon-drag-horizontal;
+    content: unicode($esri-icon-drag-horizontal);
+    color: $fill-color;
   }
 }
 .esri-icon-drag-vertical {
   &:before {
-    content: $esri-icon-drag-vertical;
+    content: unicode($esri-icon-drag-vertical);
+    color: $fill-color;
   }
 }
 .esri-icon-handle-horizontal {
   &:before {
-    content: $esri-icon-handle-horizontal;
+    content: unicode($esri-icon-handle-horizontal);
+    color: $fill-color;
   }
 }
 .esri-icon-handle-vertical {
   &:before {
-    content: $esri-icon-handle-vertical;
+    content: unicode($esri-icon-handle-vertical);
+    color: $fill-color;
   }
 }
 .esri-icon-check-mark {
   &:before {
-    content: $esri-icon-check-mark;
+    content: unicode($esri-icon-check-mark);
+    color: $fill-color;
   }
 }
 .esri-icon-left-triangle-arrow {
   &:before {
-    content: $esri-icon-left-triangle-arrow;
+    content: unicode($esri-icon-left-triangle-arrow);
+    color: $fill-color;
   }
 }
 .esri-icon-right-triangle-arrow {
   &:before {
-    content: $esri-icon-right-triangle-arrow;
+    content: unicode($esri-icon-right-triangle-arrow);
+    color: $fill-color;
   }
 }
 .esri-icon-down-arrow {
   &:before {
-    content: $esri-icon-down-arrow;
+    content: unicode($esri-icon-down-arrow);
+    color: $fill-color;
   }
 }
 .esri-icon-up-arrow {
   &:before {
-    content: $esri-icon-up-arrow;
+    content: unicode($esri-icon-up-arrow);
+    color: $fill-color;
   }
 }
 .esri-icon-overview-arrow-bottom-left {
   &:before {
-    content: $esri-icon-overview-arrow-bottom-left;
+    content: unicode($esri-icon-overview-arrow-bottom-left);
+    color: $fill-color;
   }
 }
 .esri-icon-overview-arrow-bottom-right {
   &:before {
-    content: $esri-icon-overview-arrow-bottom-right;
+    content: unicode($esri-icon-overview-arrow-bottom-right);
+    color: $fill-color;
   }
 }
 .esri-icon-overview-arrow-top-left {
   &:before {
-    content: $esri-icon-overview-arrow-top-left;
+    content: unicode($esri-icon-overview-arrow-top-left);
+    color: $fill-color;
   }
 }
 .esri-icon-overview-arrow-top-right {
   &:before {
-    content: $esri-icon-overview-arrow-top-right;
+    content: unicode($esri-icon-overview-arrow-top-right);
+    color: $fill-color;
   }
 }
 .esri-icon-maximize {
   &:before {
-    content: $esri-icon-maximize;
+    content: unicode($esri-icon-maximize);
+    color: $fill-color;
   }
 }
 .esri-icon-minimize {
   &:before {
-    content: $esri-icon-minimize;
+    content: unicode($esri-icon-minimize);
+    color: $fill-color;
   }
 }
 .esri-icon-checkbox-unchecked {
   &:before {
-    content: $esri-icon-checkbox-unchecked;
+    content: unicode($esri-icon-checkbox-unchecked);
+    color: $fill-color;
   }
 }
 .esri-icon-checkbox-checked {
   &:before {
-    content: $esri-icon-checkbox-checked;
+    content: unicode($esri-icon-checkbox-checked);
+    color: $fill-color;
   }
 }
 .esri-icon-radio-unchecked {
   &:before {
-    content: $esri-icon-radio-unchecked;
+    content: unicode($esri-icon-radio-unchecked);
+    color: $fill-color;
   }
 }
 .esri-icon-radio-checked {
   &:before {
-    content: $esri-icon-radio-checked;
+    content: unicode($esri-icon-radio-checked);
+    color: $fill-color;
   }
 }
 .esri-icon-up-arrow-circled {
   &:before {
-    content: $esri-icon-up-arrow-circled;
+    content: unicode($esri-icon-up-arrow-circled);
+    color: $fill-color;
   }
 }
 .esri-icon-down-arrow-circled {
   &:before {
-    content: $esri-icon-down-arrow-circled;
+    content: unicode($esri-icon-down-arrow-circled);
+    color: $fill-color;
   }
 }
 .esri-icon-left-arrow-circled {
   &:before {
-    content: $esri-icon-left-arrow-circled;
+    content: unicode($esri-icon-left-arrow-circled);
+    color: $fill-color;
   }
 }
 .esri-icon-right-arrow-circled {
   &:before {
-    content: $esri-icon-right-arrow-circled;
+    content: unicode($esri-icon-right-arrow-circled);
+    color: $fill-color;
   }
 }
 .esri-icon-zoom-out-fixed {
   &:before {
-    content: $esri-icon-zoom-out-fixed;
+    content: unicode($esri-icon-zoom-out-fixed);
+    color: $fill-color;
   }
 }
 .esri-icon-zoom-in-fixed {
   &:before {
-    content: $esri-icon-zoom-in-fixed;
+    content: unicode($esri-icon-zoom-in-fixed);
+    color: $fill-color;
   }
 }
 .esri-icon-refresh {
   &:before {
-    content: $esri-icon-refresh;
+    content: unicode($esri-icon-refresh);
+    color: $fill-color;
   }
 }
 .esri-icon-edit {
   &:before {
-    content: $esri-icon-edit;
+    content: unicode($esri-icon-edit);
+    color: $fill-color;
   }
 }
 .esri-icon-authorize {
   &:before {
-    content: $esri-icon-authorize;
+    content: unicode($esri-icon-authorize);
+    color: $fill-color;
   }
 }
 .esri-icon-map-pin {
   &:before {
-    content: $esri-icon-map-pin;
+    content: unicode($esri-icon-map-pin);
+    color: $fill-color;
   }
 }
 .esri-icon-blank-map-pin {
   &:before {
-    content: $esri-icon-blank-map-pin;
+    content: unicode($esri-icon-blank-map-pin);
+    color: $fill-color;
   }
 }
 .esri-icon-table {
   &:before {
-    content: $esri-icon-table;
+    content: unicode($esri-icon-table);
+    color: $fill-color;
   }
 }
 .esri-icon-plus {
   &:before {
-    content: $esri-icon-plus;
+    content: unicode($esri-icon-plus);
+    color: $fill-color;
   }
 }
 .esri-icon-minus {
   &:before {
-    content: $esri-icon-minus;
+    content: unicode($esri-icon-minus);
+    color: $fill-color;
   }
 }
 .esri-icon-beginning {
   &:before {
-    content: $esri-icon-beginning;
+    content: unicode($esri-icon-beginning);
+    color: $fill-color;
   }
 }
 .esri-icon-reverse {
   &:before {
-    content: $esri-icon-reverse;
+    content: unicode($esri-icon-reverse);
+    color: $fill-color;
   }
 }
 .esri-icon-pause {
   &:before {
-    content: $esri-icon-pause;
+    content: unicode($esri-icon-pause);
+    color: $fill-color;
   }
 }
 .esri-icon-play {
   &:before {
-    content: $esri-icon-play;
+    content: unicode($esri-icon-play);
+    color: $fill-color;
   }
 }
 .esri-icon-forward {
   &:before {
-    content: $esri-icon-forward;
+    content: unicode($esri-icon-forward);
+    color: $fill-color;
   }
 }
 .esri-icon-end {
   &:before {
-    content: $esri-icon-end;
+    content: unicode($esri-icon-end);
+    color: $fill-color;
   }
 }
 .esri-icon-erase {
   &:before {
-    content: $esri-icon-erase;
+    content: unicode($esri-icon-erase);
+    color: $fill-color;
   }
 }
 .esri-icon-up-down-arrows {
   &:before {
-    content: $esri-icon-up-down-arrows;
+    content: unicode($esri-icon-up-down-arrows);
+    color: $fill-color;
   }
 }
 .esri-icon-left {
   &:before {
-    content: $esri-icon-left;
+    content: unicode($esri-icon-left);
+    color: $fill-color;
   }
 }
 .esri-icon-right {
   &:before {
-    content: $esri-icon-right;
+    content: unicode($esri-icon-right);
+    color: $fill-color;
   }
 }
 .esri-icon-announcement {
   &:before {
-    content: $esri-icon-announcement;
+    content: unicode($esri-icon-announcement);
+    color: $fill-color;
   }
 }
 .esri-icon-notice-round {
   &:before {
-    content: $esri-icon-notice-round;
+    content: unicode($esri-icon-notice-round);
+    color: $fill-color;
   }
 }
 .esri-icon-notice-triangle {
   &:before {
-    content: $esri-icon-notice-triangle;
+    content: unicode($esri-icon-notice-triangle);
+    color: $fill-color;
   }
 }
 .esri-icon-home {
   &:before {
-    content: $esri-icon-home;
+    content: unicode($esri-icon-home);
+    color: $fill-color;
   }
 }
 .esri-icon-locate {
   &:before {
-    content: $esri-icon-locate;
+    content: unicode($esri-icon-locate);
+    color: $fill-color;
   }
 }
 .esri-icon-expand {
   &:before {
-    content: $esri-icon-expand;
+    content: unicode($esri-icon-expand);
+    color: $fill-color;
   }
 }
 .esri-icon-collapse {
   &:before {
-    content: $esri-icon-collapse;
+    content: unicode($esri-icon-collapse);
+    color: $fill-color;
   }
 }
 .esri-icon-layer-list {
   &:before {
-    content: $esri-icon-layer-list;
+    content: unicode($esri-icon-layer-list);
+    color: $fill-color;
   }
 }
 .esri-icon-basemap {
   &:before {
-    content: $esri-icon-basemap;
+    content: unicode($esri-icon-basemap);
+    color: $fill-color;
   }
 }
 .esri-icon-globe {
   &:before {
-    content: $esri-icon-globe;
+    content: unicode($esri-icon-globe);
+    color: $fill-color;
   }
 }
 .esri-icon-applications {
   &:before {
-    content: $esri-icon-applications;
+    content: unicode($esri-icon-applications);
+    color: $fill-color;
   }
 }
 .esri-icon-arrow-up-circled {
   &:before {
-    content: $esri-icon-arrow-up-circled;
+    content: unicode($esri-icon-arrow-up-circled);
+    color: $fill-color;
   }
 }
 .esri-icon-arrow-down-circled {
   &:before {
-    content: $esri-icon-arrow-down-circled;
+    content: unicode($esri-icon-arrow-down-circled);
+    color: $fill-color;
   }
 }
 .esri-icon-arrow-left-circled {
   &:before {
-    content: $esri-icon-arrow-left-circled;
+    content: unicode($esri-icon-arrow-left-circled);
+    color: $fill-color;
   }
 }
 .esri-icon-arrow-right-circled {
   &:before {
-    content: $esri-icon-arrow-right-circled;
+    content: unicode($esri-icon-arrow-right-circled);
+    color: $fill-color;
   }
 }
 .esri-icon-minus-circled {
   &:before {
-    content: $esri-icon-minus-circled;
+    content: unicode($esri-icon-minus-circled);
+    color: $fill-color;
   }
 }
 .esri-icon-plus-circled {
   &:before {
-    content: $esri-icon-plus-circled;
+    content: unicode($esri-icon-plus-circled);
+    color: $fill-color;
   }
 }
 .esri-icon-add-attachment {
   &:before {
-    content: $esri-icon-add-attachment;
+    content: unicode($esri-icon-add-attachment);
+    color: $fill-color;
   }
 }
 .esri-icon-attachment {
   &:before {
-    content: $esri-icon-attachment;
+    content: unicode($esri-icon-attachment);
+    color: $fill-color;
   }
 }
 .esri-icon-calendar {
   &:before {
-    content: $esri-icon-calendar;
+    content: unicode($esri-icon-calendar);
+    color: $fill-color;
   }
 }
 .esri-icon-close-circled {
   &:before {
-    content: $esri-icon-close-circled;
+    content: unicode($esri-icon-close-circled);
+    color: $fill-color;
   }
 }
 .esri-icon-browser {
   &:before {
-    content: $esri-icon-browser;
+    content: unicode($esri-icon-browser);
+    color: $fill-color;
   }
 }
 .esri-icon-collection {
   &:before {
-    content: $esri-icon-collection;
+    content: unicode($esri-icon-collection);
+    color: $fill-color;
   }
 }
 .esri-icon-comment {
   &:before {
-    content: $esri-icon-comment;
+    content: unicode($esri-icon-comment);
+    color: $fill-color;
   }
 }
 .esri-icon-configure-popup {
   &:before {
-    content: $esri-icon-configure-popup;
+    content: unicode($esri-icon-configure-popup);
+    color: $fill-color;
   }
 }
 .esri-icon-contact {
   &:before {
-    content: $esri-icon-contact;
+    content: unicode($esri-icon-contact);
+    color: $fill-color;
   }
 }
 .esri-icon-dashboard {
   &:before {
-    content: $esri-icon-dashboard;
+    content: unicode($esri-icon-dashboard);
+    color: $fill-color;
   }
 }
 .esri-icon-deny {
   &:before {
-    content: $esri-icon-deny;
+    content: unicode($esri-icon-deny);
+    color: $fill-color;
   }
 }
 .esri-icon-description {
   &:before {
-    content: $esri-icon-description;
+    content: unicode($esri-icon-description);
+    color: $fill-color;
   }
 }
 .esri-icon-directions {
   &:before {
-    content: $esri-icon-directions;
+    content: unicode($esri-icon-directions);
+    color: $fill-color;
   }
 }
 .esri-icon-directions2 {
   &:before {
-    content: $esri-icon-directions2;
+    content: unicode($esri-icon-directions2);
+    color: $fill-color;
   }
 }
 .esri-icon-documentation {
   &:before {
-    content: $esri-icon-documentation;
+    content: unicode($esri-icon-documentation);
+    color: $fill-color;
   }
 }
 .esri-icon-duplicate {
   &:before {
-    content: $esri-icon-duplicate;
+    content: unicode($esri-icon-duplicate);
+    color: $fill-color;
   }
 }
 .esri-icon-review {
   &:before {
-    content: $esri-icon-review;
+    content: unicode($esri-icon-review);
+    color: $fill-color;
   }
 }
 .esri-icon-environment-settings {
   &:before {
-    content: $esri-icon-environment-settings;
+    content: unicode($esri-icon-environment-settings);
+    color: $fill-color;
   }
 }
 .esri-icon-error {
   &:before {
-    content: $esri-icon-error;
+    content: unicode($esri-icon-error);
+    color: $fill-color;
   }
 }
 .esri-icon-error2 {
   &:before {
-    content: $esri-icon-error2;
+    content: unicode($esri-icon-error2);
+    color: $fill-color;
   }
 }
 .esri-icon-experimental {
   &:before {
-    content: $esri-icon-experimental;
+    content: unicode($esri-icon-experimental);
+    color: $fill-color;
   }
 }
 .esri-icon-feature-layer {
   &:before {
-    content: $esri-icon-feature-layer;
+    content: unicode($esri-icon-feature-layer);
+    color: $fill-color;
   }
 }
 .esri-icon-filter {
   &:before {
-    content: $esri-icon-filter;
+    content: unicode($esri-icon-filter);
+    color: $fill-color;
   }
 }
 .esri-icon-grant {
   &:before {
-    content: $esri-icon-grant;
+    content: unicode($esri-icon-grant);
+    color: $fill-color;
   }
 }
 .esri-icon-group {
   &:before {
-    content: $esri-icon-group;
+    content: unicode($esri-icon-group);
+    color: $fill-color;
   }
 }
 .esri-icon-key {
   &:before {
-    content: $esri-icon-key;
+    content: unicode($esri-icon-key);
+    color: $fill-color;
   }
 }
 .esri-icon-labels {
   &:before {
-    content: $esri-icon-labels;
+    content: unicode($esri-icon-labels);
+    color: $fill-color;
   }
 }
 .esri-icon-tag {
   &:before {
-    content: $esri-icon-tag;
+    content: unicode($esri-icon-tag);
+    color: $fill-color;
   }
 }
 .esri-icon-layers {
   &:before {
-    content: $esri-icon-layers;
+    content: unicode($esri-icon-layers);
+    color: $fill-color;
   }
 }
 .esri-icon-left-arrow {
   &:before {
-    content: $esri-icon-left-arrow;
+    content: unicode($esri-icon-left-arrow);
+    color: $fill-color;
   }
 }
 .esri-icon-right-arrow {
   &:before {
-    content: $esri-icon-right-arrow;
+    content: unicode($esri-icon-right-arrow);
+    color: $fill-color;
   }
 }
 .esri-icon-link-external {
   &:before {
-    content: $esri-icon-link-external;
+    content: unicode($esri-icon-link-external);
+    color: $fill-color;
   }
 }
 .esri-icon-link {
   &:before {
-    content: $esri-icon-link;
+    content: unicode($esri-icon-link);
+    color: $fill-color;
   }
 }
 .esri-icon-loading-indicator {
   &:before {
-    content: $esri-icon-loading-indicator;
+    content: unicode($esri-icon-loading-indicator);
+    color: $fill-color;
   }
 }
 .esri-icon-maps {
   &:before {
-    content: $esri-icon-maps;
+    content: unicode($esri-icon-maps);
+    color: $fill-color;
   }
 }
 .esri-icon-marketplace {
   &:before {
-    content: $esri-icon-marketplace;
+    content: unicode($esri-icon-marketplace);
+    color: $fill-color;
   }
 }
 .esri-icon-media {
   &:before {
-    content: $esri-icon-media;
+    content: unicode($esri-icon-media);
+    color: $fill-color;
   }
 }
 .esri-icon-media2 {
   &:before {
-    content: $esri-icon-media2;
+    content: unicode($esri-icon-media2);
+    color: $fill-color;
   }
 }
 .esri-icon-menu {
   &:before {
-    content: $esri-icon-menu;
+    content: unicode($esri-icon-menu);
+    color: $fill-color;
   }
 }
 .esri-icon-mobile {
   &:before {
-    content: $esri-icon-mobile;
+    content: unicode($esri-icon-mobile);
+    color: $fill-color;
   }
 }
 .esri-icon-phone {
   &:before {
-    content: $esri-icon-phone;
+    content: unicode($esri-icon-phone);
+    color: $fill-color;
   }
 }
 .esri-icon-navigation {
   &:before {
-    content: $esri-icon-navigation;
+    content: unicode($esri-icon-navigation);
+    color: $fill-color;
   }
 }
 .esri-icon-pan {
   &:before {
-    content: $esri-icon-pan;
+    content: unicode($esri-icon-pan);
+    color: $fill-color;
   }
 }
 .esri-icon-printer {
   &:before {
-    content: $esri-icon-printer;
+    content: unicode($esri-icon-printer);
+    color: $fill-color;
   }
 }
 .esri-icon-pie-chart {
   &:before {
-    content: $esri-icon-pie-chart;
+    content: unicode($esri-icon-pie-chart);
+    color: $fill-color;
   }
 }
 .esri-icon-chart {
   &:before {
-    content: $esri-icon-chart;
+    content: unicode($esri-icon-chart);
+    color: $fill-color;
   }
 }
 .esri-icon-line-chart {
   &:before {
-    content: $esri-icon-line-chart;
+    content: unicode($esri-icon-line-chart);
+    color: $fill-color;
   }
 }
 .esri-icon-question {
   &:before {
-    content: $esri-icon-question;
+    content: unicode($esri-icon-question);
+    color: $fill-color;
   }
 }
 .esri-icon-resend-invitation {
   &:before {
-    content: $esri-icon-resend-invitation;
+    content: unicode($esri-icon-resend-invitation);
+    color: $fill-color;
   }
 }
 .esri-icon-rotate {
   &:before {
-    content: $esri-icon-rotate;
+    content: unicode($esri-icon-rotate);
+    color: $fill-color;
   }
 }
 .esri-icon-save {
   &:before {
-    content: $esri-icon-save;
+    content: unicode($esri-icon-save);
+    color: $fill-color;
   }
 }
 .esri-icon-settings {
   &:before {
-    content: $esri-icon-settings;
+    content: unicode($esri-icon-settings);
+    color: $fill-color;
   }
 }
 .esri-icon-settings2 {
   &:before {
-    content: $esri-icon-settings2;
+    content: unicode($esri-icon-settings2);
+    color: $fill-color;
   }
 }
 .esri-icon-share {
   &:before {
-    content: $esri-icon-share;
+    content: unicode($esri-icon-share);
+    color: $fill-color;
   }
 }
 .esri-icon-sign-out {
   &:before {
-    content: $esri-icon-sign-out;
+    content: unicode($esri-icon-sign-out);
+    color: $fill-color;
   }
 }
 .esri-icon-support {
   &:before {
-    content: $esri-icon-support;
+    content: unicode($esri-icon-support);
+    color: $fill-color;
   }
 }
 .esri-icon-user {
   &:before {
-    content: $esri-icon-user;
+    content: unicode($esri-icon-user);
+    color: $fill-color;
   }
 }
 .esri-icon-time-clock {
   &:before {
-    content: $esri-icon-time-clock;
+    content: unicode($esri-icon-time-clock);
+    color: $fill-color;
   }
 }
 .esri-icon-trash {
   &:before {
-    content: $esri-icon-trash;
+    content: unicode($esri-icon-trash);
+    color: $fill-color;
   }
 }
 .esri-icon-upload {
   &:before {
-    content: $esri-icon-upload;
+    content: unicode($esri-icon-upload);
+    color: $fill-color;
   }
 }
 .esri-icon-download {
   &:before {
-    content: $esri-icon-download;
+    content: unicode($esri-icon-download);
+    color: $fill-color;
   }
 }
 .esri-icon-zoom-in-magnifying-glass {
   &:before {
-    content: $esri-icon-zoom-in-magnifying-glass;
+    content: unicode($esri-icon-zoom-in-magnifying-glass);
+    color: $fill-color;
   }
 }
 .esri-icon-search {
   &:before {
-    content: $esri-icon-search;
+    content: unicode($esri-icon-search);
+    color: $fill-color;
   }
 }
 .esri-icon-zoom-out-magnifying-glass {
   &:before {
-    content: $esri-icon-zoom-out-magnifying-glass;
+    content: unicode($esri-icon-zoom-out-magnifying-glass);
+    color: $fill-color;
   }
 }
 .esri-icon-locked {
   &:before {
-    content: $esri-icon-locked;
+    content: unicode($esri-icon-locked);
+    color: $fill-color;
   }
 }
 .esri-icon-unlocked {
   &:before {
-    content: $esri-icon-unlocked;
+    content: unicode($esri-icon-unlocked);
+    color: $fill-color;
   }
 }
 .esri-icon-favorites {
   &:before {
-    content: $esri-icon-favorites;
+    content: unicode($esri-icon-favorites);
+    color: $fill-color;
   }
 }
 .esri-icon-compass {
   &:before {
-    content: $esri-icon-compass;
+    content: unicode($esri-icon-compass);
+    color: $fill-color;
   }
 }
 .esri-icon-down {
   &:before {
-    content: $esri-icon-down;
+    content: unicode($esri-icon-down);
+    color: $fill-color;
   }
 }
 .esri-icon-up {
   &:before {
-    content: $esri-icon-up;
+    content: unicode($esri-icon-up);
+    color: $fill-color;
   }
 }
 .esri-icon-chat {
   &:before {
-    content: $esri-icon-chat;
+    content: unicode($esri-icon-chat);
+    color: $fill-color;
   }
 }
 .esri-icon-dock-bottom {
   &:before {
-    content: $esri-icon-dock-bottom;
+    content: unicode($esri-icon-dock-bottom);
+    color: $fill-color;
   }
 }
 .esri-icon-dock-left {
   &:before {
-    content: $esri-icon-dock-left;
+    content: unicode($esri-icon-dock-left);
+    color: $fill-color;
   }
 }
 .esri-icon-dock-right {
   &:before {
-    content: $esri-icon-dock-right;
+    content: unicode($esri-icon-dock-right);
+    color: $fill-color;
   }
 }
 .esri-icon-organization {
   &:before {
-    content: $esri-icon-organization;
+    content: unicode($esri-icon-organization);
+    color: $fill-color;
   }
 }
 .esri-icon-north-navigation {
   &:before {
-    content: $esri-icon-north-navigation;
+    content: unicode($esri-icon-north-navigation);
+    color: $fill-color;
   }
 }
 .esri-icon-locate-circled {
   &:before {
-    content: $esri-icon-locate-circled;
+    content: unicode($esri-icon-locate-circled);
+    color: $fill-color;
   }
 }
 .esri-icon-dial {
   &:before {
-    content: $esri-icon-dial;
+    content: unicode($esri-icon-dial);
+    color: $fill-color;
   }
 }
 .esri-icon-polygon {
   &:before {
-    content: $esri-icon-polygon;
+    content: unicode($esri-icon-polygon);
+    color: $fill-color;
   }
 }
 .esri-icon-polyline {
   &:before {
-    content: $esri-icon-polyline;
+    content: unicode($esri-icon-polyline);
+    color: $fill-color;
   }
 }
 .esri-icon-visible {
   &:before {
-    content: $esri-icon-visible;
+    content: unicode($esri-icon-visible);
+    color: $fill-color;
   }
 }
 .esri-icon-non-visible {
   &:before {
-    content: $esri-icon-non-visible;
+    content: unicode($esri-icon-non-visible);
+    color: $fill-color;
   }
 }
 .esri-icon-link-vertical {
   &:before {
-    content: $esri-icon-link-vertical;
+    content: unicode($esri-icon-link-vertical);
+    color: $fill-color;
   }
 }
 .esri-icon-unlocked-link-vertical {
   &:before {
-    content: $esri-icon-unlocked-link-vertical;
+    content: unicode($esri-icon-unlocked-link-vertical);
+    color: $fill-color;
   }
 }
 .esri-icon-link-horizontal {
   &:before {
-    content: $esri-icon-link-horizontal;
+    content: unicode($esri-icon-link-horizontal);
+    color: $fill-color;
   }
 }
 .esri-icon-unlocked-link-horizontal {
   &:before {
-    content: $esri-icon-unlocked-link-horizontal;
+    content: unicode($esri-icon-unlocked-link-horizontal);
+    color: $fill-color;
   }
 }
 .esri-icon-swap {
   &:before {
-    content: $esri-icon-swap;
+    content: unicode($esri-icon-swap);
+    color: $fill-color;
   }
 }
 .esri-icon-cta-link-external {
   &:before {
-    content: $esri-icon-cta-link-external;
+    content: unicode($esri-icon-cta-link-external);
+    color: $fill-color;
   }
 }
 .esri-icon-reply {
   &:before {
-    content: $esri-icon-reply;
+    content: unicode($esri-icon-reply);
+    color: $fill-color;
   }
 }
 .esri-icon-public {
   &:before {
-    content: $esri-icon-public;
+    content: unicode($esri-icon-public);
+    color: $fill-color;
   }
 }
 .esri-icon-share2 {
   &:before {
-    content: $esri-icon-share2;
+    content: unicode($esri-icon-share2);
+    color: $fill-color;
   }
 }
 .esri-icon-launch-link-external {
   &:before {
-    content: $esri-icon-launch-link-external;
+    content: unicode($esri-icon-launch-link-external);
+    color: $fill-color;
   }
 }
 .esri-icon-rotate-back {
   &:before {
-    content: $esri-icon-rotate-back;
+    content: unicode($esri-icon-rotate-back);
+    color: $fill-color;
   }
 }
 .esri-icon-pan2 {
   &:before {
-    content: $esri-icon-pan2;
+    content: unicode($esri-icon-pan2);
+    color: $fill-color;
   }
 }
 .esri-icon-tracking {
   &:before {
-    content: $esri-icon-tracking;
+    content: unicode($esri-icon-tracking);
+    color: $fill-color;
   }
 }
 .esri-icon-expand2 {
   &:before {
-    content: $esri-icon-expand2;
+    content: unicode($esri-icon-expand2);
+    color: $fill-color;
   }
 }
 .esri-icon-arrow-down {
   &:before {
-    content: $esri-icon-arrow-down;
+    content: unicode($esri-icon-arrow-down);
+    color: $fill-color;
   }
 }
 .esri-icon-arrow-up {
   &:before {
-    content: $esri-icon-arrow-up;
+    content: unicode($esri-icon-arrow-up);
+    color: $fill-color;
   }
 }
 .esri-icon-hollow-eye {
   &:before {
-    content: $esri-icon-hollow-eye;
+    content: unicode($esri-icon-hollow-eye);
+    color: $fill-color;
   }
 }
 .esri-icon-play-circled {
   &:before {
-    content: $esri-icon-play-circled;
+    content: unicode($esri-icon-play-circled);
+    color: $fill-color;
   }
 }
 .esri-icon-volume-off {
   &:before {
-    content: $esri-icon-volume-off;
+    content: unicode($esri-icon-volume-off);
+    color: $fill-color;
   }
 }
 .esri-icon-volume-on {
   &:before {
-    content: $esri-icon-volume-on;
+    content: unicode($esri-icon-volume-on);
+    color: $fill-color;
+  }
+}
+.esri-icon-bookmark {
+  &:before {
+    content: unicode($esri-icon-bookmark);
+    color: $fill-color;
+  }
+}
+.esri-icon-lightbulb {
+  &:before {
+    content: unicode($esri-icon-lightbulb);
+    color: $fill-color;
+  }
+}
+.esri-icon-sketch-rectangle {
+  &:before {
+    content: unicode($esri-icon-sketch-rectangle);
+    color: $fill-color;
+  }
+}
+.esri-icon-north-navigation-filled {
+  &:before {
+    content: unicode($esri-icon-north-navigation-filled);
+    color: $fill-color;
   }
 }
 

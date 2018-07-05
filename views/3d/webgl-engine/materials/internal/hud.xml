@@ -238,6 +238,8 @@
     return posProj;
   }
 
+  uniform float uRenderTransparentlyOccludedHUD;
+
   /**
    * Test for visibility of a HUD object.
    *
@@ -253,7 +255,24 @@
     // subpixel filtering messing up the color we use to test for
     vec4 posProjCenter = alignToPixelCenter(posProj, viewport.zw);
 
-    return texture2D(hudVisibilityTexture, .5 + .5 * posProjCenter.xy / posProjCenter.w).r > 0.0;
+    vec4 occlusionPixel = texture2D(hudVisibilityTexture, .5 + .5 * posProjCenter.xy / posProjCenter.w);
+
+    // the red pixel here indicates that the occlusion pixel passed the depth test against solid geometry and was written
+    // the green pixel stores transparency of transparent geometry (1.0 -> fully transparent)
+    // note that we also check against green == 0.0, i.e. transparent geometry that has opaque parts
+
+    // thus we render visible pixels that are occluded by semi-transparent (but not fully transparent!) geometry here
+    if (uRenderTransparentlyOccludedHUD > 0.5) {
+      // multiplying by uRenderTransparentlyOccludedHUD allows us to ignore the second condition if
+      // uRenderTransparentlyOccludedHUD = 0.75
+      return occlusionPixel.r * occlusionPixel.g > 0.0 && occlusionPixel.g * uRenderTransparentlyOccludedHUD < 1.0;
+    }
+    // and visible pixels that are not occluded by semi-transparent geometry here
+    else {
+      return occlusionPixel.r * occlusionPixel.g > 0.0 && occlusionPixel.g == 1.0;
+    }
+
+    // return texture2D(hudVisibilityTexture, .5 + .5 * posProjCenter.xy / posProjCenter.w).r > 0.0;
   }
 ]]></snippet>
 

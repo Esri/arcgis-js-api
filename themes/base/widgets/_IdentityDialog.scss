@@ -332,13 +332,13 @@
   border: 1px solid transparent;
   white-space: nowrap;
   user-select: none;
-  color: $button_text_color;
+  color: $interactive_text_color;
   background-color: $background_color;
   transition: all 0.25s ease;
   border-color: $border_color;
 }
 .esriIdentityDialog .dijitButtonNode:hover {
-  color: $button_text_color;
+  color: $interactive_text_color;
   background-color: $background_color;
 }
 .esriIdentityDialog .dijitButtonNode:active,
@@ -407,7 +407,7 @@
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
   line-height: 1;
-  color: $button_text_color;
+  color: $interactive_text_color;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=20);
   opacity: 0.2;
 }
@@ -416,7 +416,7 @@
 }
 .esriIdentityDialog .dijitDialogCloseIcon:hover,
 .esriIdentityDialog .dijitDialogCloseIcon:focus {
-  color: $button_text_color;
+  color: $interactive_text_color;
   text-decoration: none;
   cursor: pointer;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
@@ -470,7 +470,7 @@
 }
 .esriIdentityDialog .dijitTextBox .dijitPlaceHolder {
   font-style: normal;
-  color: $button_text_color;
+  color: $interactive_text_color;
 }
 .esriIdentityDialog .dijitTextBoxFocused {
   border-color: $selected_border_color;
@@ -525,7 +525,7 @@
   font-size: 12px;
   line-height: 1.4;
   max-width: 200px;
-  color: $text_inverse_color;
+  color: $interactive_text_color--inverse;
   text-align: center;
   text-decoration: none;
   background-color: $background_inverse_color;
@@ -612,12 +612,8 @@
   margin-left: 9px;
 }
 
-.esriIdentityDialog--visible
-  ~ .dijitTooltip.dijitTooltipBelow.dijitTooltipABRight
-  .dijitTooltipConnector,
-.esriIdentityDialog--visible
-  ~ .dijitTooltip.dijitTooltipAbove.dijitTooltipABRight
-  .dijitTooltipConnector {
+.esriIdentityDialog--visible ~ .dijitTooltip.dijitTooltipBelow.dijitTooltipABRight .dijitTooltipConnector,
+.esriIdentityDialog--visible ~ .dijitTooltip.dijitTooltipAbove.dijitTooltipABRight .dijitTooltipConnector {
   left: auto;
   right: 15px;
 }

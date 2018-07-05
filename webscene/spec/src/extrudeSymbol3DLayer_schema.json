@@ -5,15 +5,9 @@
   "description": "ExtrudeSymbol3DLayer is used to render Polygon geometries by extruding them upward from the ground, creating a 3D volumetric object.",
   "properties": {
     "edges": {
+      "type": "object",
       "description": "Specifies an edge visualization style.",
-      "oneOf": [
-        {
-          "$ref": "edges_shaded_schema.json"
-        },
-        {
-          "$ref": "edges_solid_schema.json"
-        }
-      ]
+      "$ref": "edges_schema.json"
     },
     "enable": {
       "type": "boolean"

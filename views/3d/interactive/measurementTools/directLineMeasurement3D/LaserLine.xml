@@ -3,10 +3,7 @@
 <snippets>
 
 <snippet name="fsLaserLine"><![CDATA[
-#ifdef GL_OES_standard_derivatives
-#extension GL_OES_standard_derivatives : enable
-#endif
-
+  $enableRequiredExtensions
   $fsprecisionf
 
   varying vec2 uv;
@@ -15,6 +12,7 @@
 
   uniform vec2 nearFar;
   uniform vec4 projInfo;
+  uniform vec2 zScale;
   uniform float maxPixelDistance;
 
   // focus plane in camera space
@@ -48,10 +46,9 @@
 
   // reconstruct position in view space
   vec3 reconstructPosition(vec2 fragCoord, float depth) {
-    return vec3((fragCoord * projInfo.xy + projInfo.zw) * depth, depth);
+    return vec3((fragCoord * projInfo.xy + projInfo.zw) * (zScale.x * depth + zScale.y), depth);
   }
 
-#ifdef GL_OES_standard_derivatives
   float planeDistancePixels(vec4 plane, vec3 pos) {
     // compute distance to plane
     float dist = dot(plane.xyz, pos) + plane.w;
@@ -73,7 +70,6 @@
     dist /= min(width, maxPixelDistance);
     return abs(dist);
   }
-#endif
 
   vec4 blendPremultiplied(vec4 source, vec4 dest) {
     float oneMinusSourceAlpha = 1.0 - source.a;
@@ -104,7 +100,6 @@
   }
 
   void main() {
-#ifdef GL_OES_standard_derivatives
     // do not draw laserline on background
     float depth = linearDepth(uv);
     if (-depth == nearFar[0]) {
@@ -160,12 +155,6 @@
     );
 
     gl_FragColor = color * globalAlpha * depthDiscontinuityAlpha;
-#else
-    // we might compute the derivatives ourselves, but because
-    // GL_OES_standard_derivatives should be widely supported we just
-    // disable laser lines when support is missing.
-    gl_FragColor = vec4(0.0);
-#endif
   }
 ]]></snippet>
 

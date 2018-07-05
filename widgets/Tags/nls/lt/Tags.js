@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({addTags:"Pridėti raktažodį (-ius)",noTagsFound:"Neatitinka jokie esami raktažodžiai",required:"Reikia bent vieno raktažodžio."});

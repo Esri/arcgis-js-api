@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({title:"Ölçü",hint:"İlk noktanızı yerleştirmek için sahneye tıklayarak ölçüme başlayın",unsupported:"Alan ölçümü MapView'da desteklenmiyor.",perimeterLength:"Çevre",area:"Alan",unit:"Birim",notApplicable:"yok",newMeasurement:"Yeni Ölçüm",units:{metric:"Metrik",imperial:"İngiliz","square-kilometers":"Kilometrekare","square-meters":"Metrekare","square-miles":"Milkare","square-inches":"İnçkare","square-feet":"Fitkare","square-yards":"Yardakare","square-us-feet":"Fitkare (ABD)",acres:"Akre",ares:"Ar",hectares:"Hektar"}});

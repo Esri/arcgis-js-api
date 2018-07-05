@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define(["require","exports","./Graphics3DPointSymbol","./Graphics3DSymbol"],function(e,r,t,i){function n(e,r,n){var o;switch(e.type){case"point-3d":o=t;break;default:o=i}return new o(e,r,n)}Object.defineProperty(r,"__esModule",{value:!0}),r.make=n});

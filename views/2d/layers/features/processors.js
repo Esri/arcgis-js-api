@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/assignHelper","../../../../core/promiseUtils"],function(e,r,t,n){function o(e,r){return i[e]().then(function(e){return e.default}).then(function(e){var n=r.serviceAndViewInfo,o=r.remoteClient,i=r.tileStore;return new e(t({},n,{tileStore:i,remoteClient:o}))})}Object.defineProperty(r,"__esModule",{value:!0});var i={symbol:function(){return n.create(function(r){return e(["./processors/SymbolProcessor"],r)})}};r.createProcessor=o});
+define(["require","exports","../../../../core/tsSupport/assignHelper","../../../../core/promiseUtils"],function(e,r,t,o){function n(r,n){var s;return"heatmap"===r?s=o.create(function(r){return e(["./processors/HeatmapProcessor"],r)}):"symbol"===r&&(s=o.create(function(r){return e(["./processors/SymbolProcessor"],r)})),s.then(function(e){return e.default}).then(function(e){var r=n.serviceAndViewInfo,o=n.remoteClient,s=n.tileStore;return new e(t({},r,{tileStore:s,remoteClient:o}))})}Object.defineProperty(r,"__esModule",{value:!0}),r.createProcessor=n});

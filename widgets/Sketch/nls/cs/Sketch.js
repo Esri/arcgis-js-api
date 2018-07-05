@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({widgetLabel:"Skica",draw:"Vykreslit",drawPoint:"Nakreslit bod",drawPolygon:"Nakreslit polygon",drawPolyline:"Nakreslit linii",drawMultipoint:"Nakreslit vícenásobný bod",drawCircle:"Nakreslit kružnici",drawRectangle:"Nakreslit obdélník",drawTriangle:"Nakreslit trojúhelník",drawSquare:"Nakreslit čtverec",drawEllipse:"Nakreslit elipsu",pan:"Posunout mapu",undo:"Zpět",redo:"Znovu",updateDrawing:"Aktualizovat kresbu",clear:"Vymazat kresbu",completeDrawing:"Dokončit vykreslování",pauseDrawing:"Přerušit vykreslování",resumeDrawing:"Pokračovat ve vykreslování",rotate:"Otočit (Rotate)",scale:"Měřítko",addPointTooltip:"Kliknutím přidáte bod.",removePointTooltip:"Kliknutím odstraníte tento bod",completePolygonTooltip:"Klikněte na tento bod pro dokončení",startDrawingTooltip:"Kliknutím zahájíte kreslení.",continueDrawingTooltip:"Kliknutím budete pokračovat v kreslení",completeDrawingTooltip:"Dvojklikem dokončíte akci",addMultipointTooltip:"Kliknutím zahájíte přidávání bodů",finishMultipointTooltip:"Dvojklikem ukončíte akci",addFreehandTooltip:"Stiskem zahájíte akci a uvolněním ukončíte",addShapeTooltip:"Kliknutím přidáte tvar, případně stiskem zahájíte akci a uvolněním ukončíte"});

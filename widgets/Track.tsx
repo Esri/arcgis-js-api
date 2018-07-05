@@ -41,32 +41,33 @@
  * view.ui.add(trackWidget, "top-left");
  */
 
-/// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
+/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
+/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
 
 // dojo
-import * as i18n from "dojo/i18n!./Track/nls/Track";
+import * as i18n from "dojo/i18n!esri/widgets/Track/nls/Track";
 
 // esri
-import Graphic = require("../Graphic");
+import Graphic = require("esri/Graphic");
 
 // esri.core.accessorSupport
-import { aliasOf, subclass, property, declared } from "../core/accessorSupport/decorators";
+import { aliasOf, subclass, property, declared } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import View = require("../views/View");
+import View = require("esri/views/View");
 
 // esri.widgets
-import Widget = require("./Widget");
+import Widget = require("esri/widgets/Widget");
 
 // esri.widgets.Track
-import TrackViewModel = require("./Track/TrackViewModel");
+import TrackViewModel = require("esri/widgets/Track/TrackViewModel");
 
 // esri.widgets.support
-import { accessibleHandler, join, tsx, renderable, vmEvent } from "./support/widget";
+import { GoToOverride } from "esri/widgets/support/interfaces";
+import { accessibleHandler, tsx, renderable, vmEvent } from "esri/widgets/support/widget";
 
 const CSS = {
-  base: "esri-track esri-widget-button esri-widget",
+  base: "esri-track esri-widget--button esri-widget",
   text: "esri-icon-font-fallback-text",
   icon: "esri-icon",
   loading: "esri-icon-loading-indicator",
@@ -82,7 +83,6 @@ const CSS = {
 
 @subclass("esri.widgets.Track")
 class Track extends declared(Widget) {
-
   /**
    * Fires after the [start()](#start) method is called and a position is found.
    *
@@ -107,6 +107,7 @@ class Track extends declared(Widget) {
    * @constructor
    * @alias module:esri/widgets/Track
    * @extends module:esri/widgets/Widget
+   * @mixes module:esri/widgets/support/GoTo
    * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                              that may be passed into the constructor.
    *
@@ -141,8 +142,7 @@ class Track extends declared(Widget) {
    * @type {Object}
    * @default { maximumAge: 0, timeout: 15000, enableHighAccuracy: true }
    */
-  @aliasOf("viewModel.geolocationOptions")
-  geolocationOptions: PositionOptions = null;
+  @aliasOf("viewModel.geolocationOptions") geolocationOptions: PositionOptions = null;
 
   //----------------------------------
   //  goToLocationEnabled
@@ -159,8 +159,13 @@ class Track extends declared(Widget) {
    * @type {boolean}
    * @default true
    */
-  @aliasOf("viewModel.goToLocationEnabled")
-  goToLocationEnabled: boolean = null;
+  @aliasOf("viewModel.goToLocationEnabled") goToLocationEnabled: boolean = null;
+
+  //----------------------------------
+  //  goToOverride
+  //----------------------------------
+
+  @aliasOf("viewModel.goToOverride") goToOverride: GoToOverride = null;
 
   //----------------------------------
   //  graphic
@@ -184,15 +189,14 @@ class Track extends declared(Widget) {
    *     })
    * });
    */
-  @aliasOf("viewModel.graphic")
-  graphic: Graphic = null;
+  @aliasOf("viewModel.graphic") graphic: Graphic = null;
 
   //----------------------------------
   //  iconClass
   //----------------------------------
 
   /**
-   * The widget's default icon font.
+   * The widget's default CSS icon class.
    *
    * @since 4.7
    * @name iconClass
@@ -200,8 +204,7 @@ class Track extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property()
-  iconClass = CSS.widgetIcon;
+  @property() iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -216,8 +219,7 @@ class Track extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property()
-  label: string = i18n.widgetLabel;
+  @property() label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  scale
@@ -258,8 +260,7 @@ class Track extends declared(Widget) {
    *   })
    * });
    */
-  @aliasOf("viewModel.scale")
-  scale: number = null;
+  @aliasOf("viewModel.scale") scale: number = null;
 
   //----------------------------------
   //  tracking
@@ -276,8 +277,7 @@ class Track extends declared(Widget) {
    * @default false
    * @readonly
    */
-  @aliasOf("viewModel.tracking")
-  tracking: boolean = null;
+  @aliasOf("viewModel.tracking") tracking: boolean = null;
 
   //----------------------------------
   //  useHeadingEnabled
@@ -295,8 +295,7 @@ class Track extends declared(Widget) {
    * @type {boolean}
    * @default true
    */
-  @aliasOf("viewModel.useHeadingEnabled")
-  useHeadingEnabled: boolean = null;
+  @aliasOf("viewModel.useHeadingEnabled") useHeadingEnabled: boolean = null;
 
   //----------------------------------
   //  view
@@ -350,7 +349,7 @@ class Track extends declared(Widget) {
    * @instance
    */
   @aliasOf("viewModel.start")
-  start(): void { }
+  start(): void {}
 
   /**
    * Stops tracking the user's location when executed.
@@ -359,7 +358,7 @@ class Track extends declared(Widget) {
    * @instance
    */
   @aliasOf("viewModel.stop")
-  stop(): void { }
+  stop(): void {}
 
   render() {
     const state = this.get("viewModel.state");
@@ -380,19 +379,21 @@ class Track extends declared(Widget) {
     const text = isTracking ? i18n.stopTracking : i18n.startTracking;
 
     return (
-      <div bind={this}
-        class={CSS.base}
-        classes={rootClasses}
+      <div
+        bind={this}
+        class={this.classes(CSS.base, rootClasses)}
         hidden={state === "feature-unsupported"}
         onclick={this._toggleTracking}
         onkeydown={this._toggleTracking}
         role="button"
         tabIndex={0}
         aria-label={text}
-        title={text}>
-        <span classes={iconClasses}
+        title={text}
+      >
+        <span
           aria-hidden="true"
-          class={join(CSS.icon, CSS.startTrackingIcon)} />
+          class={this.classes(CSS.icon, CSS.startTrackingIcon, iconClasses)}
+        />
         <span class={CSS.text}>{text}</span>
       </div>
     );
@@ -418,8 +419,6 @@ class Track extends declared(Widget) {
 
     this.viewModel.start();
   }
-
 }
 
 export = Track;
-

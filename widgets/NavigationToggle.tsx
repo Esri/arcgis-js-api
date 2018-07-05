@@ -37,30 +37,30 @@
  * view.ui.add(navigationToggle, "top-right");
  */
 
-/// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
+/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
+/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
 
 // dojo
-import * as i18n from "dojo/i18n!./NavigationToggle/nls/NavigationToggle";
+import * as i18n from "dojo/i18n!esri/widgets/NavigationToggle/nls/NavigationToggle";
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "../core/accessorSupport/decorators";
+import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import View = require("../views/View");
+import View = require("esri/views/View");
 
 // esri.widgets
-import Widget = require("./Widget");
+import Widget = require("esri/widgets/Widget");
 
 // esri.widgets.NavigationToggle
-import NavigationToggleViewModel = require("./NavigationToggle/NavigationToggleViewModel");
+import NavigationToggleViewModel = require("esri/widgets/NavigationToggle/NavigationToggleViewModel");
 
 // esri.widgets.support
-import { accessibleHandler, join, tsx, renderable } from "./support/widget";
+import { accessibleHandler, tsx, renderable } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-navigation-toggle esri-widget",
-  button: "esri-navigation-toggle__button esri-widget-button",
+  button: "esri-navigation-toggle__button esri-widget--button",
   activeButton: "esri-navigation-toggle__button--active",
   panButton: "esri-navigation-toggle__button--pan",
   rotateButton: "esri-navigation-toggle__button--rotate",
@@ -77,7 +77,6 @@ type LayoutMode = "vertical" | "horizontal";
 
 @subclass("esri.widgets.NavigationToggle")
 class NavigationToggle extends declared(Widget) {
-
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -112,7 +111,7 @@ class NavigationToggle extends declared(Widget) {
   //----------------------------------
 
   /**
-   * The widget's default icon font.
+   * The widget's default CSS icon class.
    *
    * @since 4.7
    * @name iconClass
@@ -120,8 +119,7 @@ class NavigationToggle extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property()
-  iconClass = CSS.widgetIcon;
+  @property() iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -136,8 +134,7 @@ class NavigationToggle extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property()
-  label: string = i18n.widgetLabel;
+  @property() label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  layout
@@ -210,10 +207,7 @@ class NavigationToggle extends declared(Widget) {
   @property({
     type: NavigationToggleViewModel
   })
-  @renderable([
-    "viewModel.state",
-    "viewModel.navigationMode"
-  ])
+  @renderable(["viewModel.state", "viewModel.navigationMode"])
   viewModel = new NavigationToggleViewModel();
 
   //--------------------------------------------------------------------------
@@ -230,7 +224,7 @@ class NavigationToggle extends declared(Widget) {
    * @instance
    */
   @aliasOf("viewModel.toggle")
-  toggle(): void { }
+  toggle(): void {}
 
   render() {
     const disabled = this.get<string>("viewModel.state") === "disabled";
@@ -252,20 +246,19 @@ class NavigationToggle extends declared(Widget) {
     const tabIndex = disabled ? -1 : 0;
 
     return (
-      <div bind={this}
-        class={CSS.base}
-        classes={rootClasses}
+      <div
+        bind={this}
+        class={this.classes(CSS.base, rootClasses)}
         onclick={this._toggle}
         onkeydown={this._toggle}
         tabIndex={tabIndex}
         aria-label={i18n.toggle}
-        title={i18n.toggle}>
-        <div class={join(CSS.button, CSS.panButton)}
-          classes={panButtonClasses}>
+        title={i18n.toggle}
+      >
+        <div class={this.classes(CSS.button, CSS.panButton, panButtonClasses)}>
           <span class={CSS.panIcon} />
         </div>
-        <div class={join(CSS.button, CSS.rotateButton)}
-          classes={rotateButtonClasses}>
+        <div class={this.classes(CSS.button, CSS.rotateButton, rotateButtonClasses)}>
           <span class={CSS.rotationIcon} />
         </div>
       </div>
@@ -282,7 +275,6 @@ class NavigationToggle extends declared(Widget) {
   private _toggle() {
     this.toggle();
   }
-
 }
 
 export = NavigationToggle;

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({widgetLabel:"レイヤー リスト",noItemsToDisplay:"現在表示するアイテムがありません。",layerInvisibleAtScale:"現在の縮尺では表示されません",layerError:"このレイヤーの読み込み中にエラーが発生しました。",untitledLayer:"無題のレイヤー"});

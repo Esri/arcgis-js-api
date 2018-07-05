@@ -7,15 +7,15 @@ $text_color: $Calcite_Gray_700 !default;
 $header_color: $Calcite_Gray_600 !default;
 $background_color: $Calcite_Gray_050 !default;
 $anchor_color: $Calcite_Gray_550 !default;
-$button_text_color: $Calcite_Gray_550 !default;
+$interactive_text_color: $Calcite_Gray_550 !default;
 
 // Inverse
-$text_inverse_color: $Calcite_Gray_050 !default;
+$interactive_text_color--inverse: $Calcite_Gray_050 !default;
 $background_inverse_color: $Calcite_Gray_650 !default;
-$border_inverse_color: rgba($text_inverse_color, 0.25) !default;
+$border_inverse_color: rgba($interactive_text_color--inverse, 0.25) !default;
 
 // Hover
-$button_text_hover_color: offset-foreground-color($button_text_color, 25%) !default;
+$interactive_text_color--hover: offset-foreground-color($interactive_text_color, 25%) !default;
 $anchor_hover_color: offset-foreground-color($anchor_color, 25%) !default;
 $background_hover_color: offset-background-color($background_color, 6%) !default;
 
@@ -23,7 +23,7 @@ $background_hover_color: offset-background-color($background_color, 6%) !default
 $background_active_color: offset-background-color($background_color, 7%) !default;
 $active_text_color: offset-background-color($text_color, 10%) !default;
 $background_active_reverse_color: offset-background-color($background_inverse_color, 10%) !default;
-$active_text_reverse_color: offset-background-color($text_inverse_color, 10%) !default;
+$active_text_reverse_color: offset-background-color($interactive_text_color--inverse, 10%) !default;
 
 // Selected
 $selected_border_color: $Calcite_Highlight_Blue_350 !default;
@@ -38,12 +38,13 @@ $text_fade_color: fade-foreground-color($text_color, 3%);
 
 // Buttons
 $button_color: $Calcite_Highlight_Blue_350 !default;
-$button_hover_color: fade-foreground-color($button_color, 25%) !default;
+$button_color--hover: darken($button_color, 10%) !default;
+$button_color--inverse: $interactive_text_color--inverse !default;
 
 // Other
 $bacground_overlay_color: rgba(0, 0, 0, 0.8) !default;
 $disabled_opacity: 0.4 !default;
-$disabled_color: rgba($button_text_color, $disabled_opacity) !default;
+$disabled_color: rgba($interactive_text_color, $disabled_opacity) !default;
 $placeholder_color: rgba($text_color, $disabled_opacity) !default;
 $border_color: rgba($text_color, 0.25) !default;
 $list_header_color: offset-background-color($background_color, 5%) !default;

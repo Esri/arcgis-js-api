@@ -20,47 +20,39 @@
  * });
  */
 
-/// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
+/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
+/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
 
 // dojo
-import * as i18nCommon from "dojo/i18n!../nls/common";
-import * as i18n from "dojo/i18n!./LayerList/nls/LayerList";
+import * as i18nCommon from "dojo/i18n!esri/nls/common";
+import * as i18n from "dojo/i18n!esri/widgets/LayerList/nls/LayerList";
 
 // esri.core
-import Collection = require("../core/Collection");
-import Handles = require("../core/Handles");
-import watchUtils = require("../core/watchUtils");
+import Collection = require("esri/core/Collection");
+import Handles = require("esri/core/Handles");
+import watchUtils = require("esri/core/watchUtils");
 
 // esri.core.accessorSupport
-import { aliasOf, subclass, declared, property } from "../core/accessorSupport/decorators";
+import { aliasOf, subclass, declared, property } from "esri/core/accessorSupport/decorators";
 
-// esri.support
-import Action = require("../support/Action");
+// esri.support.actions
+import ActionButton = require("esri/support/actions/ActionButton");
+import ActionToggle = require("esri/support/actions/ActionToggle");
 
 // esri.views
-import View = require("../views/View");
+import View = require("esri/views/View");
 
 // esri.widgets
-import Widget = require("./Widget");
+import Widget = require("esri/widgets/Widget");
 
 // esri.widgets.LayerList
-import {
-  ListItemModifier
-} from "./LayerList/interfaces";
-
-import LayerListViewModel = require("./LayerList/LayerListViewModel");
-import ListItem = require("./LayerList/ListItem");
-import ListItemPanel = require("./LayerList/ListItemPanel");
+import { Action, Actions, ListItemModifier, Sections } from "esri/widgets/LayerList/interfaces";
+import LayerListViewModel = require("esri/widgets/LayerList/LayerListViewModel");
+import ListItem = require("esri/widgets/LayerList/ListItem");
+import ListItemPanel = require("esri/widgets/LayerList/ListItemPanel");
 
 // esri.widgets.support
-import {
-  vmEvent,
-  renderable,
-  tsx,
-  accessibleHandler,
-  join
-} from "./support/widget";
+import { vmEvent, renderable, tsx, accessibleHandler } from "esri/widgets/support/widget";
 
 const CSS = {
   // layerlist classes
@@ -87,6 +79,8 @@ const CSS = {
   actionIcon: "esri-layer-list__item-action-icon",
   actionImage: "esri-layer-list__item-action-image",
   actionTitle: "esri-layer-list__item-action-title",
+  actionToggle: "esri-layer-list__action-toggle",
+  actionToggleOn: "esri-layer-list__action-toggle--on",
   label: "esri-layer-list__item-label",
   errorMessage: "esri-layer-list__item-error-message",
   title: "esri-layer-list__item-title",
@@ -100,7 +94,9 @@ const CSS = {
 
   // common
   disabled: "esri-disabled",
+  disabledElement: "esri-disabled-element",
   hidden: "esri-hidden",
+  rotating: "esri-rotating",
 
   // icon classes
   iconEllipses: "esri-icon-handle-horizontal",
@@ -113,6 +109,7 @@ const CSS = {
   iconDownArrow: "esri-icon-down-arrow",
   iconRightArrow: "esri-icon-right-triangle-arrow",
   iconLeftArrow: "esri-icon-left-triangle-arrow",
+  iconLoading: "esri-icon-loading-indicator",
   widgetIcon: "esri-icon-layers"
 };
 
@@ -137,16 +134,16 @@ function closeItemActions(item: ListItem): void {
     item.actionsOpen = false;
   }
 
-  children.forEach(child => closeItemActions(child));
+  children.forEach((child) => closeItemActions(child));
 }
 
 /**
- * Fires after the user clicks on an {@link module:esri/support/Action action} inside the LayerList widget.
+ * Fires after the user clicks on an {@link module:esri/support/actions/ActionButton action} or {@link module:esri/support/actions/ActionToggle action toggle} inside the LayerList widget.
  * This event may be used to define a custom function to execute when particular
  * actions are clicked.
  *
  * @event module:esri/widgets/LayerList#trigger-action
- * @property {module:esri/support/Action} action - The action clicked by the user.
+ * @property {module:esri/support/actions/ActionButton | module:esri/support/actions/ActionToggle} action - The action clicked by the user.
  * @property {module:esri/widgets/LayerList/ListItem} item - An item associated with the action.
  */
 
@@ -207,7 +204,7 @@ class LayerList extends declared(Widget) {
   //----------------------------------
 
   /**
-   * The widget's default icon font.
+   * The widget's default CSS icon class.
    *
    * @since 4.7
    * @name iconClass
@@ -215,8 +212,7 @@ class LayerList extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property()
-  iconClass = CSS.widgetIcon;
+  @property() iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  statusIndicatorsVisible
@@ -268,12 +264,24 @@ class LayerList extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property()
-  label: string = i18n.widgetLabel;
+  @property() label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  listItemCreatedFunction
   //----------------------------------
+
+  /**
+   * Function definition for the [listItemCreatedFunction](#listItemCreatedFunction) property.
+   * See the example snippet in the  [listItemCreatedFunction](#listItemCreatedFunction)
+   * documentation for more details.
+   *
+   * @callback module:esri/widgets/LayerList~ListItemCreatedHandler
+   * @param {Object} event - An object containing a list item created by the LayerList.
+   * @param {module:esri/widgets/LayerList/ListItem} event.item - A list item
+   *   created by the LayerList. You can modify the properties of this item to customize
+   *   the text, actions, panel content, and visibility of the list item. See the
+   *   documentation for the [listItemCreatedFunction](#listItemCreatedFunction) for more details.
+   */
 
   /**
    * Specifies a function that accesses each {@link module:esri/widgets/LayerList/ListItem}.
@@ -286,7 +294,7 @@ class LayerList extends declared(Widget) {
    *
    * @name listItemCreatedFunction
    * @instance
-   * @type {function}
+   * @type {module:esri/widgets/LayerList~ListItemCreatedHandler}
    * @see [Sample - LayerList widget with actions](../sample-code/widgets-layerlist-actions/index.html)
    *
    * @example
@@ -379,31 +387,33 @@ class LayerList extends declared(Widget) {
 
   /**
    * Triggers the [trigger-action](#event:trigger-action) event and executes
-   * the given {@link module:esri/support/Action action}.
+   * the given {@link module:esri/support/actions/ActionButton action} or {@link module:esri/support/actions/ActionToggle action toggle}.
    *
-   * @param {module:esri/support/Action} - The action to execute.
+   * @param {module:esri/support/actions/ActionButton | module:esri/support/actions/ActionToggle} - The action to execute.
    * @param {module:esri/widgets/LayerList/ListItem} - An item associated with the action.
    */
   @aliasOf("viewModel.triggerAction")
-  triggerAction(action: Action, item: ListItem): void { }
+  triggerAction(action: Action, item: ListItem): void {}
 
   render() {
     const items = this._getItems();
     const state = this.get("viewModel.state");
 
-    const content = items.length === 0 ?
-      (<div class={CSS.noItems}>{i18n.noItemsToDisplay}</div>) :
-      (<ul class={join(CSS.list, CSS.listRoot, CSS.listIndependent)}>{items.map((item, key) => this._renderItem(item, null))}</ul>);
+    const content =
+      items.length === 0 ? (
+        <div class={CSS.noItems}>{i18n.noItemsToDisplay}</div>
+      ) : (
+        <ul class={this.classes(CSS.list, CSS.listRoot, CSS.listIndependent)}>
+          {items.map((item, key) => this._renderItem(item, null))}
+        </ul>
+      );
 
     const baseClasses = {
       [CSS.hidden]: state === "loading",
       [CSS.disabled]: state === "disabled"
     };
 
-    return (
-      <div class={CSS.base}
-        classes={baseClasses}>{content}</div>
-    );
+    return <div class={this.classes(CSS.base, baseClasses)}>{content}</div>;
   }
 
   //--------------------------------------------------------------------------
@@ -413,7 +423,7 @@ class LayerList extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   private _getItems() {
-    return this.operationalItems.toArray().filter(item => this.errorsVisible || !item.error);
+    return this.operationalItems.toArray().filter((item) => this.errorsVisible || !item.error);
   }
 
   private _renderItem(item: ListItem, parent: ListItem): any {
@@ -452,13 +462,9 @@ class LayerList extends declared(Widget) {
 
     const { panel } = item;
 
-    const contentNode = panel && panel.open ?
-      panel.render() :
-      null;
+    const contentNode = panel && panel.open ? panel.render() : null;
 
-    const contentActionNode = panel && panel.visible ?
-      this._renderPanelButton(panel) :
-      null;
+    const contentActionNode = panel && panel.visible ? this._renderPanelButton(panel) : null;
 
     const actionsMenuClasses = {
       [CSS.actionsMenuItemActive]: item.actionsOpen
@@ -467,43 +473,45 @@ class LayerList extends declared(Widget) {
     const actionsMenuTitle = item.actionsOpen ? i18nCommon.close : i18nCommon.open;
 
     const actionsMenuIcon = actionsCount ? (
-      <div key={`esri-layer-list__actions-menu-toggle`}
+      <div
+        key={`esri-layer-list__actions-menu-toggle`}
         data-item={item}
         bind={this}
         onclick={this._toggleActionsOpen}
         onkeydown={this._toggleActionsOpen}
-        class={CSS.actionsMenuItem}
-        classes={actionsMenuClasses}
+        class={this.classes(CSS.actionsMenuItem, actionsMenuClasses)}
         tabindex="0"
         role="button"
         aria-controls={actionsUid}
         aria-label={actionsMenuTitle}
-        title={actionsMenuTitle}>
+        title={actionsMenuTitle}
+      >
         <span aria-hidden="true" class={CSS.iconEllipses} />
       </div>
     ) : null;
 
-    const actionsMenu = actionsCount || contentActionNode ? (
-      <div key={`esri-layer-list__actions-menu`}
-        class={CSS.actionsMenu}>
-        {contentActionNode}
-        {actionsMenuIcon}
-      </div>
-    ) : null;
+    const actionsMenu =
+      actionsCount || contentActionNode ? (
+        <div key={`esri-layer-list__actions-menu`} class={CSS.actionsMenu}>
+          {contentActionNode}
+          {actionsMenuIcon}
+        </div>
+      ) : null;
 
-    const actions = actionsCount ? this._renderActionsSections(item, item.actionsSections, actionsUid) : null;
+    const actions = actionsCount
+      ? this._renderActionsSections(item, item.actionsSections, actionsUid)
+      : null;
 
     const children: any = hasChildren ? (
-      <ul key={`esri-layer-list__list-items`}
+      <ul
+        key={`esri-layer-list__list-items`}
         id={listUid}
-        class={CSS.list}
-        classes={childClasses}
+        class={this.classes(CSS.list, childClasses)}
         aria-expanded={item.open ? "true" : "false"}
         role={visibilityMode === exclusive ? "radiogroup" : "group"}
-        hidden={item.open ? null : true}>
-        {
-          childItems.map((childItem, childKey) => this._renderItem(childItem, item))
-        }
+        hidden={item.open ? null : true}
+      >
+        {childItems.map((childItem, childKey) => this._renderItem(childItem, item))}
       </ul>
     ) : null;
 
@@ -519,38 +527,31 @@ class LayerList extends declared(Widget) {
         onkeydown={this._toggleChildrenClick}
         data-item={item}
         key={`esri-layer-list__toggle-children`}
-        class={CSS.childToggle}
-        classes={childToggleClasses}
+        class={this.classes(CSS.childToggle, childToggleClasses)}
         tabindex="0"
         role="button"
         aria-controls={listUid}
         aria-label={toggleChildrenTitle}
-        title={toggleChildrenTitle}>
-        <span aria-hidden="true" class={join(CSS.childClosed, CSS.iconRightArrow)} />
-        <span aria-hidden="true" class={join(CSS.childOpened, CSS.iconDownArrow)} />
-        <span aria-hidden="true" class={join(CSS.childClosed_RTL, CSS.iconLeftArrow)} />
+        title={toggleChildrenTitle}
+      >
+        <span aria-hidden="true" class={this.classes(CSS.childClosed, CSS.iconRightArrow)} />
+        <span aria-hidden="true" class={this.classes(CSS.childOpened, CSS.iconDownArrow)} />
+        <span aria-hidden="true" class={this.classes(CSS.childClosed_RTL, CSS.iconLeftArrow)} />
       </span>
     ) : null;
 
     const itemLabel = this._createLabelNode(item, parent, titleKey);
 
     const errorBlock = hasError ? (
-      <div key={`esri-layer-list__error`}
-        class={CSS.errorMessage}
-        role="alert">
-        <span aria-hidden="true"
-          class={CSS.iconNoticeTriangle} />
+      <div key={`esri-layer-list__error`} class={CSS.errorMessage} role="alert">
+        <span aria-hidden="true" class={CSS.iconNoticeTriangle} />
         <span>{errorMessage}</span>
       </div>
     ) : null;
 
     return (
-      <li key={item}
-        class={CSS.item}
-        classes={itemClasses}
-        aria-labelledby={titleKey}>
-        <div key={`esri-layer-list__list-item-container`}
-          class={CSS.itemContainer}>
+      <li key={item} class={this.classes(CSS.item, itemClasses)} aria-labelledby={titleKey}>
+        <div key={`esri-layer-list__list-item-container`} class={CSS.itemContainer}>
           {toggleChildren}
           {itemLabel}
           {actionsMenu}
@@ -578,46 +579,38 @@ class LayerList extends declared(Widget) {
     const title = item.title || i18n.untitledLayer;
     const label = !item.visibleAtCurrentScale ? `${title} (${i18n.layerInvisibleAtScale})` : title;
     const titleNode = (
-      <span id={titleKey}
-        title={label}
-        aria-label={label}
-        class={CSS.title}>{title}</span>
+      <span id={titleKey} title={label} aria-label={label} class={CSS.title}>
+        {title}
+      </span>
     );
 
-    return parentVisibilityMode === inherited ?
-      (
-        <div key={item}
-          class={CSS.label}>
-          {titleNode}
-        </div>
-      ) :
-      (
-        <div key={item}
-          onclick={this._labelClick}
-          onkeydown={this._labelClick}
-          data-item={item}
-          data-parent-visibility={parentVisibilityMode}
-          tabindex="0"
-          aria-checked={item.visible ? "true" : "false"}
-          role={toggleRole}
-          aria-labelledby={titleKey}
-          class={CSS.label}>
-          <span class={CSS.toggleVisible}>
-            <span class={CSS.toggleVisibleIcon}
-              aria-hidden="true"
-              classes={toggleIconClasses} />
-          </span>
-          {titleNode}
-        </div>
-      );
+    return parentVisibilityMode === inherited ? (
+      <div key={item} class={CSS.label}>
+        {titleNode}
+      </div>
+    ) : (
+      <div
+        key={item}
+        onclick={this._labelClick}
+        onkeydown={this._labelClick}
+        data-item={item}
+        data-parent-visibility={parentVisibilityMode}
+        tabindex="0"
+        aria-checked={item.visible ? "true" : "false"}
+        role={toggleRole}
+        aria-labelledby={titleKey}
+        class={CSS.label}
+      >
+        <span class={CSS.toggleVisible}>
+          <span class={this.classes(CSS.toggleVisibleIcon, toggleIconClasses)} aria-hidden="true" />
+        </span>
+        {titleNode}
+      </div>
+    );
   }
 
   private _renderPanelButton(panel: ListItemPanel): any {
-    const {
-      className,
-      open,
-      title
-    } = panel;
+    const { className, open, title } = panel;
 
     const iconStyles = this._getIconImageStyles(panel);
 
@@ -631,36 +624,79 @@ class LayerList extends declared(Widget) {
     };
 
     return (
-      <div key={panel}
+      <div
+        key={panel}
         bind={this}
         data-panel={panel}
         onclick={this._triggerPanel}
         onkeydown={this._triggerPanel}
-        class={CSS.actionsMenuItem}
-        classes={buttonClasses}
+        class={this.classes(CSS.actionsMenuItem, buttonClasses)}
         role="button"
         tabindex="0"
         title={title}
-        aria-label={title}>
-        <span classes={iconClasses} styles={iconStyles} />
+        aria-label={title}
+      >
+        <span class={this.classes(iconClasses)} styles={iconStyles} />
       </div>
     );
   }
 
-  private _watchActionSectionChanges(actionSection: Collection<Action>, itemId: string): void {
+  private _watchActionSectionChanges(actionSection: Actions, itemId: string): void {
     const registryKey = REGISTRY_KEYS.actionSection + itemId;
 
     this._handles.add(actionSection.on("change", this.scheduleRender.bind(this)), registryKey);
 
-    actionSection.forEach(action => this._renderOnActionChanges(action, itemId));
+    actionSection.forEach((action) => this._renderOnActionChanges(action, itemId));
   }
 
   private _renderOnActionChanges(action: Action, itemId: string): void {
     const registryKey = REGISTRY_KEYS.actions + itemId;
 
-    this._handles.add([
-      watchUtils.init(action, "className, image, id, title, visible", () => this.scheduleRender())
-    ], registryKey);
+    if (action.type === "toggle") {
+      this._handles.add(
+        [
+          watchUtils.init(action, ["className", "image", "id", "title", "visible", "value"], () =>
+            this.scheduleRender()
+          )
+        ],
+        registryKey
+      );
+
+      return;
+    }
+
+    if (action.type === "slider") {
+      this._handles.add(
+        [
+          watchUtils.init(
+            action,
+            [
+              "className",
+              "id",
+              "title",
+              "visible",
+              "value",
+              "displayValueEnabled",
+              "max",
+              "min",
+              "step"
+            ],
+            () => this.scheduleRender()
+          )
+        ],
+        registryKey
+      );
+      return;
+    }
+
+    this._handles.add(
+      [
+        watchUtils.init(action, ["className", "image", "id", "title", "visible"], () =>
+          this.scheduleRender()
+        )
+      ],
+      registryKey
+    );
   }
 
   private _renderOnItemChanges(item: ListItem): void {
@@ -668,41 +704,54 @@ class LayerList extends declared(Widget) {
 
     const registryKey = REGISTRY_KEYS.items + itemId;
 
-    this._handles.add([
-      watchUtils.init(item, [
-        "actionsOpen",
-        "visible",
-        "open",
-        "updating",
-        "title",
-        "visibleAtCurrentScale",
-        "error",
-        "visibilityMode",
-        "panel",
-        "panel.title",
-        "panel.content",
-        "panel.className"
-      ], () => this.scheduleRender()),
-      item.actionsSections.on("change", () => this.scheduleRender()),
-      item.children.on("change", () => this.scheduleRender())
-    ], registryKey);
+    this._handles.add(
+      [
+        watchUtils.init(
+          item,
+          [
+            "actionsOpen",
+            "visible",
+            "open",
+            "updating",
+            "title",
+            "visibleAtCurrentScale",
+            "error",
+            "visibilityMode",
+            "panel",
+            "panel.title",
+            "panel.content",
+            "panel.className"
+          ],
+          () => this.scheduleRender()
+        ),
+        item.actionsSections.on("change", () => this.scheduleRender()),
+        item.children.on("change", () => this.scheduleRender())
+      ],
+      registryKey
+    );
 
-    item.children.forEach(child => this._renderOnItemChanges(child));
-    item.actionsSections.forEach(actionSection => this._watchActionSectionChanges(actionSection, itemId));
+    item.children.forEach((child) => this._renderOnItemChanges(child));
+    item.actionsSections.forEach((actionSection) =>
+      this._watchActionSectionChanges(actionSection, itemId)
+    );
   }
 
   private _itemsChanged(items: Collection<ListItem>): void {
     this._handles.removeAll();
 
-    items.forEach(item => this._renderOnItemChanges(item));
+    items.forEach((item) => this._renderOnItemChanges(item));
 
     this.scheduleRender();
   }
 
-  private _renderActionsSections(item: ListItem, actionsSections: Collection<Collection<Action>>, actionsUid: string): any {
+  private _renderActionsSections(
+    item: ListItem,
+    actionsSections: Sections,
+    actionsUid: string
+  ): any {
     const actionSectionsArray = actionsSections.toArray();
 
-    const actionSection = actionSectionsArray.map(actionSection => {
+    const actionSection = actionSectionsArray.map((actionSection) => {
       return (
         <ul key={actionSection} class={CSS.actionsList}>
           {this._renderActionSection(item, actionSection)}
@@ -711,55 +760,83 @@ class LayerList extends declared(Widget) {
     });
 
     return (
-      <div role="group"
+      <div
+        role="group"
         aria-expanded={item.actionsOpen ? "true" : "false"}
         key={`esri-layer-list__actions-section`}
         id={actionsUid}
         class={CSS.actions}
-        hidden={item.actionsOpen ? null : true}>
+        hidden={item.actionsOpen ? null : true}
+      >
         {actionSection}
       </div>
     );
   }
 
-  private _renderActionSection(item: ListItem, actionSection: Collection<Action>): any {
+  private _renderActionSection(item: ListItem, actionSection: Actions): any {
     const actionSectionArray = actionSection && actionSection.toArray();
-    return actionSectionArray.map(action => this._renderAction(item, action));
+    return actionSectionArray.map((action) => this._renderAction(item, action));
   }
 
   private _renderAction(item: ListItem, action: Action): any {
     const iconStyles = this._getIconImageStyles(action);
 
-    const iconClasses = {
-      [action.className]: !!action.className,
-      [CSS.actionImage]: !!iconStyles["background-image"]
+    const { active, className, disabled, title } = action;
+
+    const buttonClasses = {
+      [CSS.action]: action.type !== "toggle",
+      [CSS.actionToggle]: action.type === "toggle",
+      [CSS.actionToggleOn]: action.type === "toggle" && action.value,
+      [CSS.disabledElement]: disabled
     };
 
+    const iconClasses = {
+      [CSS.actionImage]: !active && !!iconStyles["background-image"],
+      [CSS.iconLoading]: active,
+      [CSS.rotating]: active
+    };
+
+    if (className) {
+      iconClasses[className] = true;
+    }
+
     return (
-      <li bind={this}
+      <li
+        bind={this}
         data-item={item}
         data-action={action}
         key={action}
         onclick={this._triggerAction}
         onkeydown={this._triggerAction}
-        class={CSS.action}
+        classes={buttonClasses}
         tabindex="0"
         role="button"
-        title={action.title}
-        aria-label={action.title}>
-        <span aria-hidden="true" class={CSS.actionIcon} classes={iconClasses} styles={iconStyles} />
-        <span class={CSS.actionTitle}>{action.title}</span>
+        title={title}
+        aria-label={title}
+      >
+        <span
+          aria-hidden="true"
+          class={this.classes(CSS.actionIcon, iconClasses)}
+          styles={iconStyles}
+        />
+        <span class={CSS.actionTitle}>{title}</span>
       </li>
     );
   }
 
-  private _countActions(actionSections: Collection<Collection<Action>>): number {
+  private _countActions(actionSections: Sections): number {
     return actionSections.reduce((count, section) => count + section.length, 0);
   }
 
-  private _getIconImageStyles(type: Action | ListItemPanel): HashMap<string> {
-    let image = type.image || null;
-    if (!type.className && !image) {
+  private _getIconImageStyles(source: Action | ListItemPanel): HashMap<string> {
+    let image = (source.declaredClass =
+      "esri.widgets.LayerList.ListItemPanel" ||
+      source.declaredClass === "esri.support.Action.ActionButton" ||
+      source.declaredClass === "esri.support.Action.ActionToggle"
+        ? (source as ActionButton | ActionToggle | ListItemPanel).image
+        : null);
+
+    if (!source.className && !image) {
       image = DEFAULT_ACTION_IMAGE;
     }
 
@@ -776,7 +853,7 @@ class LayerList extends declared(Widget) {
     const toggledValue = !actionsOpen;
 
     if (toggledValue) {
-      this.operationalItems.forEach(item => closeItemActions(item));
+      this.operationalItems.forEach((item) => closeItemActions(item));
     }
 
     item.actionsOpen = toggledValue;
@@ -797,6 +874,11 @@ class LayerList extends declared(Widget) {
     const node = event.currentTarget as Element;
     const action = node["data-action"] as Action;
     const item = node["data-item"] as ListItem;
+
+    if (action.type === "toggle") {
+      action.value = !action.value;
+    }
+
     this.triggerAction(action, item);
   }
 
@@ -816,7 +898,6 @@ class LayerList extends declared(Widget) {
     const item = node["data-item"];
     item.open = !item.open;
   }
-
 }
 
 export = LayerList;

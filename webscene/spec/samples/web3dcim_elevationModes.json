@@ -812,6 +812,7 @@
     ]
   },
   "ground": {
+    "transparency": 0,
     "layers": [
       {
         "id": "globalElevation",
@@ -823,14 +824,13 @@
       }
     ]
   },
-  "version": "1.9",
+  "version": "1.11",
   "authoringApp": "ArcGIS API for JavaScript",
-  "authoringAppVersion": "4.6",
-  "presentation": {
-    "slides": []
-  },
+  "authoringAppVersion": "4.8",
   "initialState": {
     "environment": {
+      "atmosphereEnabled": true,
+      "starsEnabled": true,
       "lighting": {
         "datetime": 1426418403000,
         "displayUTCOffset": 0

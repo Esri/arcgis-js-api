@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({title:"Измерение",hint:"Начните измерение, щелкнув сцену, чтобы разместить первую точку",unsupported:"Измерение площади не поддерживается в виде карты.",perimeterLength:"Периметр",area:"Площадь",unit:"Единицы измерения",notApplicable:"недоступно",newMeasurement:"Новое измерение",units:{metric:"Метрические",imperial:"Английские","square-kilometers":"Квадратные километры","square-meters":"Квадратные метры","square-miles":"Квадратные мили","square-inches":"Квадратные дюймы","square-feet":"Квадратные футы","square-yards":"Квадратные ярды","square-us-feet":"Квадратные футы (US)",acres:"Акры",ares:"Ары",hectares:"Гектары"}});

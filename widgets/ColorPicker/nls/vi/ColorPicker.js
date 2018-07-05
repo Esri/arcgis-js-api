@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.6/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
 
 define({transparency:"Độ trong suốt",suggested:"Gợi ý",recent:"Gần dây",more:"Khác",moreColorsTooltip:"Xem thêm màu khác.",paletteTooltip:"Chọn màu sắc.",noColorTooltip:"Không có màu nào",hexInputTooltip:"Màu sắc tùy chỉnh trong ký hiệu thập lục phân (#FFFF00)."});

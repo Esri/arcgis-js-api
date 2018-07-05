@@ -22,19 +22,6 @@
         "$ref": "classBreakInfo_schema.json"
       }
     },
-    "classificationMethod": {
-      "type": "string",
-      "description": "Determines the classification method that was used to generate class breaks. This has been replaced by [authoringInfo](authoringInfo.md).",
-      "enum": [
-        "esriClassifyEqualInterval",
-        "esriClassifyGeometricalInterval",
-        "esriClassifyNaturalBreaks",
-        "esriClassifyQuantile",
-        "esriClassifyStandardDeviation",
-        "esriClassifyManual"
-      ],
-      "default": "esriClassifyManual"
-    },
     "defaultLabel": {
       "type": "string",
       "description": "Label for the default symbol used to draw unspecified values."

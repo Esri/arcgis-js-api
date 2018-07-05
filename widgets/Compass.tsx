@@ -37,36 +37,33 @@
  * @see module:esri/views/SceneView
  * @see module:esri/Camera
  */
-/// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
+/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
+/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
 
 // dojo
-import * as i18n from "dojo/i18n!./Compass/nls/Compass";
+import * as i18n from "dojo/i18n!esri/widgets/Compass/nls/Compass";
 
 // esri.core.accessorSupport
-import { aliasOf, subclass, property, declared } from "../core/accessorSupport/decorators";
+import { aliasOf, subclass, property, declared } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import View = require("../views/View");
+import View = require("esri/views/View");
 
 // esri.widgets
-import { Axes } from "./interfaces";
-import Widget = require("./Widget");
+import { Axes } from "esri/widgets/interfaces";
+import Widget = require("esri/widgets/Widget");
 
 // esri.widgets.Compass
-import CompassViewModel = require("./Compass/CompassViewModel");
+import CompassViewModel = require("esri/widgets/Compass/CompassViewModel");
 
 // esri.widgets.support
-import {
-  tsx,
-  renderable,
-  accessibleHandler
-} from "./support/widget";
+import { GoToOverride } from "esri/widgets/support/interfaces";
+import { tsx, renderable, accessibleHandler } from "esri/widgets/support/widget";
 
 type CompassMode = "device-orientation" | "reset" | "none";
 
 const CSS = {
-  base: "esri-compass esri-widget-button esri-widget",
+  base: "esri-compass esri-widget--button esri-widget",
   active: "esri-compass--active",
   text: "esri-icon-font-fallback-text",
   icon: "esri-compass__icon",
@@ -81,7 +78,6 @@ const CSS = {
 
 @subclass("esri.widgets.Compass")
 class Compass extends declared(Widget) {
-
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -89,6 +85,7 @@ class Compass extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   /**
+   * @mixes module:esri/widgets/support/GoTo
    * @constructor
    * @alias module:esri/widgets/Compass
    * @extends module:esri/widgets/Widget
@@ -112,15 +109,20 @@ class Compass extends declared(Widget) {
   /**
    * @todo doc
    */
-  @aliasOf("viewModel.activeMode")
-  activeMode: CompassMode = null;
+  @aliasOf("viewModel.activeMode") activeMode: CompassMode = null;
+
+  //----------------------------------
+  //  goToOverride
+  //----------------------------------
+
+  @aliasOf("viewModel.goToOverride") goToOverride: GoToOverride = null;
 
   //----------------------------------
   //  iconClass
   //----------------------------------
 
   /**
-   * The widget's default icon font.
+   * The widget's default CSS icon class.
    *
    * @since 4.7
    * @name iconClass
@@ -128,8 +130,7 @@ class Compass extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property()
-  iconClass = CSS.widgetIcon;
+  @property() iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -144,8 +145,7 @@ class Compass extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property()
-  label: string = i18n.widgetLabel;
+  @property() label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  modes
@@ -154,8 +154,7 @@ class Compass extends declared(Widget) {
   /**
    * @todo doc
    */
-  @aliasOf("viewModel.modes")
-  modes: CompassMode[] = null;
+  @aliasOf("viewModel.modes") modes: CompassMode[] = null;
 
   //----------------------------------
   //  view
@@ -170,8 +169,7 @@ class Compass extends declared(Widget) {
    * @instance
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
-  @aliasOf("viewModel.view")
-  view: View = null;
+  @aliasOf("viewModel.view") view: View = null;
 
   //----------------------------------
   //  viewModel
@@ -191,10 +189,7 @@ class Compass extends declared(Widget) {
   @property({
     type: CompassViewModel
   })
-  @renderable([
-    "viewModel.orientation",
-    "viewModel.state"
-  ])
+  @renderable(["viewModel.orientation", "viewModel.state"])
   viewModel: CompassViewModel = new CompassViewModel();
 
   //--------------------------------------------------------------------------
@@ -213,7 +208,7 @@ class Compass extends declared(Widget) {
    * @method
    */
   @aliasOf("viewModel.reset")
-  reset(): void { }
+  reset(): void {}
 
   render() {
     const orientation = this.viewModel.orientation;
@@ -237,19 +232,21 @@ class Compass extends declared(Widget) {
     };
 
     return (
-      <div bind={this}
-        class={CSS.base}
-        classes={dynamicRootClasses}
+      <div
+        bind={this}
+        class={this.classes(CSS.base, dynamicRootClasses)}
         onclick={this._start}
         onkeydown={this._start}
         role="button"
         tabIndex={tabIndex}
         aria-label={i18n.reset}
-        title={i18n.reset}>
-        <span aria-hidden="true"
-          class={CSS.icon}
-          classes={dynamicIconClasses}
-          styles={this._toRotationTransform(orientation)} />
+        title={i18n.reset}
+      >
+        <span
+          aria-hidden="true"
+          class={this.classes(CSS.icon, dynamicIconClasses)}
+          styles={this._toRotationTransform(orientation)}
+        />
         <span class={CSS.text}>{i18n.reset}</span>
       </div>
     );
@@ -274,7 +271,6 @@ class Compass extends declared(Widget) {
       transform: `rotateZ(${orientation.z}deg)`
     };
   }
-
 }
 
 export = Compass;

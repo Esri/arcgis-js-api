@@ -8,13 +8,25 @@
   instance to access the GLSL code, instead of importing it directly with require("dojo/text!...").
 -->
 <snippets>
-  <snippet name="rgba2floatFunc">
-    <![CDATA[
+
+  <snippet name="rgba2float"><![CDATA[
+    // TODO this snippet should only be in views/3d/webgl-engine/materials/internal/Util.xml
+
+    // Factors to convert rgba back to float
+    const vec4 toFloat = vec4(
+        255.0 / (256.0),
+        255.0 / (256.0 * 256.0),
+        255.0 / (256.0 * 256.0 * 256.0),
+        255.0 / (256.0 * 256.0 * 256.0 * 256.0)
+      );
+
     float rgba2float(vec4 rgba) {
-      return dot(rgba, vec4(1.0/16777216.0, 1.0/65535.0, 1.0/256.0, 1.0));
+      // Convert components from 0->1 back to 0->255 and then
+      // add the components together with their corresponding
+      // fixed point factors, i.e. (256^1, 256^2, 256^3, 256^4)
+      return dot(rgba, toFloat);
     }
-    ]]>
-  </snippet>
+  ]]></snippet>
 
   <snippet name="textVS">
     <![CDATA[
@@ -29,10 +41,9 @@
     #endif // DD
       varying lowp vec4 v_color;
 
+      uniform mediump float u_size;
     #ifdef DD
       attribute mediump float a_size;
-    #else
-      uniform mediump float u_size;
     #endif // DD
       varying mediump float v_size;
 
@@ -90,9 +101,9 @@
       // opacity of the layer given by the painter
       varying lowp float v_transparency;
 
-      // the vertex offsets are given in integers, therefore in order to maintain a reasonable precission we multiply the values
-      // by 16 and then at the shader devide by the same number
-      const float offsetPrecision = 1.0 / 32.0;
+      // the vertex offsets are given in integers, therefore in order to maintain a reasonable precision we multiply the values
+      // by 8 and then at the shader divide by the same number
+      const float offsetPrecision = 1.0 / 8.0;
 
       // outline position and appearance
       const mediump float edgePos = 0.75; // defined by the SDF encoding
@@ -151,20 +162,18 @@
         if (u_halo > 0.5)
         {
           v_color = u_color;
-          v_transparency *= u_opacity;
         }
         else
         {
-          v_color = a_color;
+          v_color = a_color * u_color;
           // opacity already factored in a_color
         }
       #else
         v_color = u_color;
-        v_transparency *= u_opacity;
       #endif // DD
 
       #ifdef DD
-        v_size = a_size;
+        v_size = a_size * u_size;
       #else
         v_size = u_size;
       #endif // DD
