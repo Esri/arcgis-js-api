@@ -2,12 +2,19 @@
   width: 3em;
 }
 
+.esriRFxWeightedSumTableEditor .field-idNum.dgrid-sortable {
+  width: 2.75em;
+}
+
 .esriRFxWeightedSumTableEditor .field-weight {
   width: 4em;
 }
 
-.esriRFxWeightedSumTableEditor .dgrid .dijitNumberTextBox,
-.esriRFxWeightedSumTableEditor .dgrid input {
-  height: 2.5em;
+.esriRFxWeightedSumTableEditor .field-weight.dgrid-sortable {
+  width: 3.7em;
+}
+
+.esriRFxWeightedSumTableEditor .dgrid .dijitNumberTextBox {
+  height: 29px !important;
   width: 100%;
 }

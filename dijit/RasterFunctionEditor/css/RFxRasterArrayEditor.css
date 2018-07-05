@@ -8,6 +8,7 @@
 
 .esriRFxRasterArrayEditor__grid.dgrid {
   height: 8em;
+  overflow: auto;
 }
 
 .esriRFxRasterArrayEditor__grid .dgrid-row.dgrid-row-odd.dgrid-selected {

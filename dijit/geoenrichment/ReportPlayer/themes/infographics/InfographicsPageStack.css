@@ -1,0 +1,18 @@
+.esriGEReportPlayer_infographicsPageStack {
+    position: relative;
+}
+
+    .esriGEReportPlayer_infographicsPageStack .infographicPageStack_infographicRow {
+        text-align: center;
+    }
+
+    .esriGEReportPlayer_infographicsPageStack .infographicPageStack_infographicSectionNode {
+        display: inline-block;
+        text-align: left;
+        margin: 10px;
+        position: relative;
+        border: 1px solid #dddddd;
+    }
+
+    .esriGEReportPlayer_infographicsPageStack .infographicPageStack_infographicSectionBackground {
+    }

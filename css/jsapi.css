@@ -41,7 +41,10 @@
 
 .map .esriMapContainer .esriMapLayers > div[data-reference="true"] { z-index: 1; }
 
-.map .esriMapContainer .esriMapLayers > div[data-reference="true"] canvas { pointer-events: none; }
+.map .esriMapContainer .esriMapLayers > div[data-reference="true"] canvas,
+.map .esriMapContainer .esriMapLayers > div[data-vectortiles="true"] canvas {
+  pointer-events: none;
+}
 
 
 .map .esriMapContainer .esriMapContainer {

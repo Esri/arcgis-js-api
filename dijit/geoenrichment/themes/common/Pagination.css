@@ -29,51 +29,75 @@
     cursor: default !important;
 }
 
+
+
 .Pagination_TriangleBack {
-    background: url(./images/leftArrow_Normal.png) no-repeat right center;
-    left:0;
-    margin-left:20px;
-    margin-right:0;
+    background: url(./images/paginationArrows/LeftArrow.svg) no-repeat right center;
+    left: 0;
+    margin-left: 20px;
+    margin-right: 0;
+    background-size: 13px;
 }
 
 .dj_rtl .Pagination_TriangleBack {
-    background-image: url(./images/rightArrow_Normal.png);
-    left:auto;
-    right:0;
-    margin-left:0;
-    margin-right:20px;
+    background-image: url(./images/paginationArrows/RightArrow.svg);
+    left: auto;
+    right: 0;
+    margin-left: 0;
+    margin-right: 20px;
 }
 
 .Pagination_TriangleBack.Pagination_TriangleEnabled:hover {
-    background-image: url(./images/leftArrow_hover.png);
+    background-image: url(./images/paginationArrows/LeftArrow_hover.svg);
 }
 
 .dj_rtl .Pagination_TriangleBack.Pagination_TriangleEnabled:hover {
-    background-image: url(./images/rightArrow_hover.png);
+    background-image: url(./images/paginationArrows/RightArrow_hover.svg);
 }
 
+.Pagination_TriangleBack.Pagination_TriangleDisabled {
+    background-image: url(./images/paginationArrows/LeftArrow_disable.svg);
+}
+
+.dj_rtl .Pagination_TriangleBack.Pagination_TriangleDisabled {
+    background-image: url(./images/paginationArrows/RightArrow_disable.svg);
+}
+
+
+
 .Pagination_TriangleForward {
-    background: url(./images/rightArrow_Normal.png) no-repeat left center;
-    right:0;
-    margin-left:0;
-    margin-right:20px;
+    background: url(./images/paginationArrows/RightArrow.svg) no-repeat left center;
+    right: 0;
+    margin-left: 0;
+    margin-right: 20px;
+    background-size: 13px;
 }
 
 .dj_rtl .Pagination_TriangleForward {
-    background-image: url(./images/leftArrow_Normal.png);
-    right:auto;
-    left:0;
-    margin-left:20px;
-    margin-right:0;
+    background-image: url(./images/paginationArrows/LeftArrow.svg);
+    right: auto;
+    left: 0;
+    margin-left: 20px;
+    margin-right: 0;
 }
 
 .Pagination_TriangleForward.Pagination_TriangleEnabled:hover {
-    background-image: url(./images/rightArrow_hover.png);
+    background-image: url(./images/paginationArrows/RightArrow_hover.svg);
 }
 
 .dj_rtl .Pagination_TriangleForward.Pagination_TriangleEnabled:hover {
-    background-image: url(./images/leftArrow_hover.png);
+    background-image: url(./images/paginationArrows/LeftArrow_hover.svg);
 }
+
+.Pagination_TriangleForward.Pagination_TriangleDisabled {
+    background-image: url(./images/paginationArrows/RightArrow_disable.svg);
+}
+
+.dj_rtl .Pagination_TriangleForward.Pagination_TriangleDisabled {
+    background-image: url(./images/paginationArrows/LeftArrow_disable.svg);
+}
+
+
 
 .Pagination_Items {
     overflow: hidden;
@@ -122,9 +146,9 @@
     cursor: default !important;
 }
 
-.Pagination_BulletCurrent:hover {
-    background-color: #898989 !important;
-}
+    .Pagination_BulletCurrent:hover {
+        background-color: #898989 !important;
+    }
 
 .Pagination_SlideAnim {
     position: absolute;
@@ -132,12 +156,12 @@
     width: 100%;
 }
 
-.Pagination_SlideAnim > div {
-    display: inline-block;
-    width: 100%;
-    white-space: normal;
-    vertical-align: top;
-}
+    .Pagination_SlideAnim > div {
+        display: inline-block;
+        width: 100%;
+        white-space: normal;
+        vertical-align: top;
+    }
 
 .Pagination_FadeAnim {
     position: absolute;

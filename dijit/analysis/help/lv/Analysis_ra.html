@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Rastru analīze ļauj veikt lielu rastru datu kopu analīzi, izmantojot  ArcGIS Image Server. Tādējādi varat ātrāk analizēt lielāku datu apjomu, izmantojot servera jaudu. Rīku komplekti, kas &scaron;obrīd pieejami  Portal for ArcGIS tīmekļa lietotājiem ietver  <b>Apkopot datus</b>, <b>Analizēt modeļus</b>, <b>Analizēt attēlu</b>, <b>Analizēt reljefu</b> un <b>Pārvaldīt datus</b>.
+        <p>Rastra analīze ļauj veikt lielu rastra datu kopu analīzi, izmantojot  ArcGIS Image Server. Tādējādi varat ātrāk analizēt lielāku datu apjomu, izmantojot servera jaudu. Rīku komplekti, kas &scaron;obrīd pieejami  Portal for ArcGIS tīmekļa lietotājiem ietver  <b>Apkopot datus</b>, <b>Analizēt modeļus</b>, <b>Analizēt attēlu</b>, <b>Analizēt reljefu</b> un <b>Pārvaldīt datus</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -132,6 +132,71 @@
             </p>
             <br/>
         </div>
+    <div id="UseProximityCategory" class="regularsize">
+        <h2>Lietot tuvumu</h2>
+        <hr/>
+        <p>&Scaron;ie rīki palīdz jums atbildēt uz vienu no visbiežāk uzdotajiem jautājumiem par telpisko analīzi: &ldquo;Kas atrodas tuvumā kam?&rdquo;
+
+            <ul>
+                <li>Rīks  <b>Aprēķināt attālumu</b> aprēķina Eiklīda attālumu, virzienu un sadalījumu no viena avota vai avotu kopas.
+                    
+
+                </li>
+                <li>Rīks  <b>Optimālo ceļo&scaron;anas izmaksu tīkla noteik&scaron;ana</b> aprēķina optimālo izmaksu tīklu no ievades reģionu kopas.
+                    
+
+                </li>
+                <li>Rīks  <b>Noteikt ceļo&scaron;anas izmaksu ceļu kā polilīniju</b> aprēķina minimālo izmaksu polilīniju ceļu starp avotiem un zināmiem galamērķiem.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateDistanceTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Aprēķināt attālumu</h2></td>
+                    <td>
+                    <img src="../images/GUID-34E2E6F3-2F60-43F5-B499-D5735DE08602-web.png" class="titleImage" alt="Aprēķināt attālumu">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Aprēķina Eiklīda attālumu, virzienu un sadalījumu no viena avota vai avotu kopas. Jūs varat izmantot &scaron;o rīku, lai noteiktu, kādā attālumā no ceļa, ēkas vai parka atrodas novietojums. Jūs varat arī noteikt, kurā virzienā no novietojuma jums jāceļo, lai atgrieztos atpakaļ pie avota pa vistaisnāko ceļu. Jūs varat redzēt ikvienu novietojumu pētāmajā teritorijā, kas ir vistuvākais avots.
+            </p>
+            <br/>
+        </div>
+        <div id="DetermineOptimumTravelCostNetworkTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimālo ceļošanas izmaksu tīklu noteikšana</h2></td>
+                    <td>
+                    <img src="../images/GUID-097BDD6E-0AD8-44F2-BB70-C5395F4B1AF4-web.png" class="titleImage" alt="Rīka Optimālo ceļo&scaron;anas izmaksu tīklu noteik&scaron;ana ilustrācija">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Aprēķina optimālo ceļo&scaron;anas izmaksu tīklu no ievades reģionu kopas.
+            </p>
+            <br/>
+        </div>
+        <div id="DetermineTravelCostPathAsPolylineTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Noteikt pārvietošanas izmaksu ceļu kā polilīniju</h2></td>
+                    <td>
+                    <img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" class="titleImage" alt="Rīka Noteikt ceļo&scaron;anas izmaksu ceļu kā polilīniju ilustrācija">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Aprēķina minimālo izmaksu polilīniju ceļu starp avotiem un zināmiem galamērķiem.
+            </p>
+            <br/>
+        </div>
     <div id="AnalyzeImageCategory" class="smallsize">
         <h2>Analizēt attēlu</h2>
         <hr/>
@@ -185,11 +250,15 @@
                     
 
                 </li>
-                <li>Rīks  <b>Aspekta atvasinā&scaron;ana</b> aprēķina stāvākā slīpuma virzienu katram izvietojumam.
+                <li>Rīks  <b>Aspekta atvasinā&scaron;ana</b> aprēķina stāvākā slīpuma virzienu katram novietojumam.
                     
 
                 </li>
-                <li>Rīks  <b>Skata aizseguma izveide</b> nosaka, ko var redzēt no jebkura punkta ainavā.
+                <li>Rīks  <b>Redzamības lauka izveide</b> nosaka, ko var redzēt no jebkura punkta ainavā.
+                    
+
+                </li>
+                <li>Rīks  <b>Ūdens&scaron;ķirtne</b> aprēķina atbilsto&scaron;o teritoriju virs identificētajām atra&scaron;anās vietām uz virsmas.
                     
 
                 </li>
@@ -238,7 +307,22 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Nosaka uz rastra virsmas eso&scaron;us izvietojumus, kas ir redzami vērotāju kopai.
+            <p>Nosaka novietojumus uz rastra virsmas, kas ir redzami vērotāju kopai.
+            </p>
+            <br/>
+        </div>
+        <div id="WatershedTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Ūdensšķirtne</h2></td>
+                    <td>
+                    <img src="../images/GUID-AF749369-8C2D-46FF-9D74-2CF7CAB7C7B0-web.png" class="titleImage" alt="Ūdens&scaron;ķirtnes uzdevums">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Nosaka atbilsto&scaron;o teritoriju virs rastra &scaron;ūnu kopas.
             </p>
             <br/>
         </div>

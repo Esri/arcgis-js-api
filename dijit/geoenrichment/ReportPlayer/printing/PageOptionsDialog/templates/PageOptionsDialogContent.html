@@ -13,46 +13,54 @@
             </div>
         </div>
 
-        <div data-dojo-attach-point="layoutBlock" class="pageOptionsDialog_bigRow20 pageOptionsDialog_section">
-            <div class="esriGERowHigh">${nls.pageSize}</div>
-            <div data-dojo-attach-point="optionsBlock" class="esriGESpaceBeforeBig">
-                <div class="esriGERowHigh" data-dojo-attach-point="sizeListDiv"></div>
+        <div data-dojo-attach-point="staticExportSettings">
+            <div data-dojo-attach-point="layoutBlock" class="pageOptionsDialog_bigRow20 pageOptionsDialog_section">
+                <div class="esriGERowHigh">${nls.pageSize}</div>
+                <div data-dojo-attach-point="optionsBlock" class="esriGESpaceBeforeBig">
+                    <div class="esriGERowHigh" data-dojo-attach-point="sizeListDiv"></div>
+                    <div class="esriGERowHigh esriGESpaceBeforeBig">
+                        <div class="dijitInline esriGESpaceAfterBig" data-dojo-attach-point="portraitRadioButtonDiv"></div>
+                        <div class="dijitInline esriGEClickable" data-dojo-attach-point="portraitRadioButtonLabel">${nls.portrait}</div>
+                    </div>
+                    <div class="esriGERowHigh esriGESpaceBeforeBig">
+                        <div class="dijitInline esriGESpaceAfterBig" data-dojo-attach-point="landscapeRadioButtonDiv"></div>
+                        <div class="dijitInline esriGEClickable" data-dojo-attach-point="landscapeRadioButtonLabel">${nls.landscape}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div data-dojo-attach-point="headerFooterBlock" class="pageOptionsDialog_bigRow20 pageOptionsDialog_section">
+                <div class="esriGERowHigh">${nls.headerAndFooter}</div>
                 <div class="esriGERowHigh esriGESpaceBeforeBig">
-                    <div class="dijitInline esriGESpaceAfterBig" data-dojo-attach-point="portraitRadioButtonDiv"></div>
-                    <div class="dijitInline esriGEClickable">${nls.portrait}</div>
+                    <label data-dojo-attach-point="headerLabel">&nbsp;${nls.headerLabel}</label>
+                </div>
+                <div data-dojo-attach-point="reportTitleBlock">
+                    <div class="esriGERowHigh esriGESpaceBefore30">
+                        <div class="dijitInline esriGESpaceAfterBig reportTitleBlock_label">${nls.title}</div>
+                        <div class="dijitInline" data-dojo-attach-point="reportTitleTextBoxDiv"></div>
+                    </div>
+                    <div class="esriGERowHigh esriGESpaceBefore30">
+                        <div class="dijitInline esriGESpaceAfterBig reportTitleBlock_label">${nls.subtitle}</div>
+                        <div class="dijitInline" data-dojo-attach-point="reportSubtitleTextBoxDiv"></div>
+                    </div>
+                </div>
+                <div class="esriGERowHigh esriGESpaceBeforeBig" data-dojo-attach-point="dataSourceBlock">
+                    <label data-dojo-attach-point="dataSourceLabel">&nbsp;${nls.dataSourceLabel}</label>
                 </div>
                 <div class="esriGERowHigh esriGESpaceBeforeBig">
-                    <div class="dijitInline esriGESpaceAfterBig" data-dojo-attach-point="landscapeRadioButtonDiv"></div>
-                    <div class="dijitInline esriGEClickable">${nls.landscape}</div>
+                    <label data-dojo-attach-point="footerLabel">&nbsp;${nls.footerLabel}</label>
                 </div>
             </div>
         </div>
 
-        <div data-dojo-attach-point="headerFooterBlock" class="pageOptionsDialog_bigRow20 pageOptionsDialog_section">
-            <div class="esriGERowHigh">${nls.headerAndFooter}</div>
-            <div class="esriGERowHigh esriGESpaceBeforeBig">
-                <label data-dojo-attach-point="headerLabel">&nbsp;${nls.headerLabel}</label>
-            </div>
-            <div data-dojo-attach-point="reportTitleBlock">
-                <div class="esriGERowHigh esriGESpaceBefore30">
-                    <div class="dijitInline esriGESpaceAfterBig reportTitleBlock_label">${nls.title}</div>
-                    <div class="dijitInline" data-dojo-attach-point="reportTitleTextBoxDiv"></div>
-                </div>
-                <div class="esriGERowHigh esriGESpaceBefore30">
-                    <div class="dijitInline esriGESpaceAfterBig reportTitleBlock_label">${nls.subtitle}</div>
-                    <div class="dijitInline" data-dojo-attach-point="reportSubtitleTextBoxDiv"></div>
-                </div>
-            </div>
-            <div class="esriGERowHigh esriGESpaceBeforeBig" data-dojo-attach-point="dataSourceBlock">
-                <label data-dojo-attach-point="dataSourceLabel">&nbsp;${nls.dataSourceLabel}</label>
-            </div>
-            <div class="esriGERowHigh esriGESpaceBeforeBig">
-                <label data-dojo-attach-point="footerLabel">&nbsp;${nls.footerLabel}</label>
+        <div data-dojo-attach-point="dynamicExportSettings" class="pageOptionsDialog_bigRow20 pageOptionsDialog_section">
+            <div class="esriGERowHigh">
+                <label data-dojo-attach-point="dataDrillingLabel">&nbsp;${nls.dataDrillingLabel}</label>
             </div>
         </div>
     </div>
     <div class="pageOptionsDialog_actionButtonsBlock">
-        <div class="pageOptionsDialog_actionButton dijitInline" data-dojo-attach-point="cancelButton">${nls.cancel}</div>
         <div class="pageOptionsDialog_actionButton dijitInline" data-dojo-attach-point="exportButton"></div>
+        <div class="pageOptionsDialog_actionButton dijitInline" data-dojo-attach-point="cancelButton">${nls.cancel}</div>
     </div>
 </div>

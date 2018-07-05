@@ -1,0 +1,25 @@
+// COPYRIGHT © 201 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+
+define(["dojo/_base/lang","../../ThemeCalculator","../../ChartTypes","../../ChartLineStyles","../../ChartLineMarkers","../../AxisUtil","../utils/ChartDataUtil","../utils/TooltipInfoBuilder","../ChartPlots","esri/dijit/geoenrichment/utils/ColorUtil","./_AxisBuilder","./_PointLabelUtil"],function(e,i,a,t,r,s,o,l,n,u,m,c){var p={calcLineStyle:function(e,s,o,l){var n=l.comparisonInfo,m=l.themeSettings,c=l.visualProperties,p=i.calcColorForPoint(null,e,0,s,o.length,a.LINE,m,e.isComparisonSeries,n),S=c.lineThickness||1,h=c.fillLineArea?c.lineAreaOpacity:1,d=t.SOLID,v=void 0;if(e.isComparisonSeries&&n&&(n.lineThickness&&(S=n.lineThickness),n.lineStyle&&(d=n.lineStyle),v=n.lineMarker?r.getMarkerPath(n.lineMarker):i.getComparisonSymbol()),h<1&&p){var p=u.toColor(p);p.a=h}return{color:p,width:S,style:t.toGFXValue(d),marker:v}}};return{calcSeriesLine:function(i){var r=i.chart,o=i.visualProperties,u=i.seriesItems,S=i.seriesItemsWithComparison||u,h=i.isSecondaryPlot,d=i.reverseXY,v=i.comparisonInfo,V=i.themeSettings,f=i.viewModel,x=[],y={minYValue:1/0,maxYValue:-1/0,stackedValues:o.isStacked?[]:null},I=i.primaryPlotStat&&i.primaryPlotStat.pointIndexToTooltipsHash||{};if(S.forEach(function(e,s){if(e.points.length){var u=h?2*s+1:s,m=p.calcLineStyle(e,u,S,i),V={name:e.label,data:[],isComparisonSeries:e.isComparisonSeries,params:{plot:h?n.SECONDARY:void 0,stroke:{color:m.color,width:m.width,style:m.style},fill:m.color,outline:!1}},k=this._collectStatisticsForSeries(i,e,u,y);e.points.forEach(function(n,u){function p(){return h&&i.oppositeDirections&&1===s?-1:1}function S(){return h&&!i.oppositeDirections&&2===i.primarySeries.length?0===s?-.15:.15:0}var x=k.values[u],y=x||0,g=u+1;c.updatePointIndexToLabelMap(r,g,n,f);var C=l.getTooltipInfo(x,c.getPointLabel(n,f),e.label,k.minInSeries,k.maxInSeries,k.valuesSum,k.absValuesSum,k.avgInSeries,o,a.LINE,m.color,null,n.fieldInfo,v?!e.isComparisonSeries:void 0),P=I[g]=I[g]||[];P.push(C),C.getGroup=function(){return P};var L={originalValue:x,isUnavailableData:isNaN(x),unsortedIndex:u,name:c.getPointLabel(n,f),_valuesSumsInSeries:k.absValuesSum,point:n,fill:"#FFFFFF",stroke:{color:m.color,width:1,style:t.toGFXValue(t.SOLID)},outline:!1,tooltip:C};f.isGraphicStyle?m.marker&&(L.marker=m.marker):L.marker=void 0,d?(L.x=y*p(),L.y=g+S(),L.valueProp="x"):(L.x=g+S(),L.y=y*p(),L.valueProp="y"),o.yAxis.showValuesAsWeightsInSeries&&(L[d?"x":"y"]/=k.absValuesSum/100),V.data.push(L)}),x.push(V)}},this),y.stackedValues&&(y.stackedValues.sort(function(e,i){return i-e}),y.minYValue=y.stackedValues[y.stackedValues.length-1],y.maxYValue=y.stackedValues[0]),h){if(i.primaryPlotStat){var k=s.getPrettifyYAxisParameters(Math.min(y.minYValue,i.primaryPlotStat.minYValue),Math.max(y.maxYValue,i.primaryPlotStat.maxYValue),{baseLineValue:o.yAxis.baseLineValue,renderColumnBarsInOppositeDirections:i.oppositeDirections,previewBelowZero:!f.dynamicReportInfo});e.mixin(r.axes.y.opt,{majorTickStep:k.majorTickStep,minorTickStep:k.minorTickStep,min:k.min,max:k.max})}if(1===i.primarySeries.length){var g=d?"y":"x",C=[];i.primarySeries[0].data.forEach(function(e){var i=x[0].data[e.unsortedIndex];i[g]=e.x,C.push(i)}),x[0].data=C}}else m.prettifyYAxis(y.minYValue,y.maxYValue,o.yAxis.baseLineValue,r,o,a.LINE,V,f);return x},_collectStatisticsForSeries:function(e,i,t,r){var s=e.viewModel,l=e.visualProperties,n=e.seriesItems,u=e.previewFeatureIndex,m=e.isMultiFeatureChart,c=e.selectedComparisonIndex,p=e.isSecondaryPlot,S=e.ge,h=[],d=0,v=0,V=1e6,f=-1e6,x=2===n.length&&e.oppositeDirections&&p?o.CHART_DATA_SMOOTH:null;return i.points.forEach(function(e,r){var n=o.getPreviewValue(e,r,t,!1,a.LINE,l,s,m?r:u,x,i.isComparisonSeries,c,S,!1);h[r]=n,n=n||0,d+=n,v+=Math.abs(n),V=Math.min(V,n),f=Math.max(f,n)}),i.points.forEach(function(e,i){var a=h[i],a=l.yAxis.showValuesAsWeightsInSeries?a/v*100:a;r.stackedValues?(r.stackedValues[i]=r.stackedValues[i]||0,r.stackedValues[i]+=a):(r.minYValue=Math.min(a,r.minYValue),r.maxYValue=Math.max(a,r.maxYValue))}),{values:h,valuesSum:d,absValuesSum:v,minInSeries:V,maxInSeries:f,avgInSeries:d/i.points.length}}}});

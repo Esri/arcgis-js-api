@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
 define(["dojo/_base/lang","../../../supportClasses/ReportTemplateTypes","../../../supportClasses/templateJsonUtils/fieldInfo/FieldInfoNameUtil","../../ConversionUtil","../ReportingEnginePageSizeCompatibilityUtil"],function(t,e,n,i,o){var a={};return a.buildDocumentTag=function(e){var n=e.report,r=i.pxToPtObj(t.mixin({},n.templateJson.documentOptions)),l={name:"HTMLextReport",attributes:{version:"10.1",pagesize:o.getReportingEnginePageSize(r.pagesize,r.orientation),orientation:r.orientation,left:r.left,right:r.right,top:r.top,bottom:r.bottom,style:i.composeStyleString(a.buildDocumentStyle(e))},tags:[{name:"def",attributes:{align:r.align,lineSpacing:r.lineSpacing}}]};return e.addDefaultQuery&&l.tags.unshift({name:"queries",tags:[{name:"query",attributes:{name:"default",table:"headers"}}]}),{documentTag:l}},a.buildDocumentStyle=function(e){var n=i.pxToPtObj(t.mixin({},e.report.templateJson.documentOptions));return{fontSize:n.fontSize,fontFamily:n.fontFamily}},a});

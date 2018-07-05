@@ -41,12 +41,12 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="regularsize">
-        <h2>Přemapovat hodnoty</h2><p/>
+        <h2>Přemapovat hodnoty (Remap Values)</h2><p/>
         <h2><img src="../images/GUID-4006E442-A60B-469A-891D-5ED442F64CB8-web.png" alt="N&aacute;stroj Přemapovat hodnoty pro port&aacute;l"></h2>
         <hr/>
     <p>Tento n&aacute;stroj v&aacute;m umožňuje změnit nebo překlasifikovat hodnoty pixelů rastrov&yacute;ch dat. Hodnoty pixelů se přemapuj&iacute; zad&aacute;n&iacute;m rozsahu hodnot pixelů, kter&eacute; maj&iacute; b&yacute;t namapov&aacute;ny na v&yacute;stupn&iacute; hodnotu pixelu. V&yacute;stupn&iacute; hodnota pixelu může b&yacute;t platn&aacute; hodnota nebo hodnota NoData, kter&aacute; označuje pixely bez přiřazen&eacute; zn&aacute;m&eacute; hodnoty.
     </p>
-    <p>Pokud je za&scaron;krtnuto pole  <b>Použ&iacute;vat aktu&aacute;ln&iacute; rozsah mapy</b>, budou přemapov&aacute;ny pouze buňky viditeln&eacute; v&nbsp;aktu&aacute;ln&iacute;m rozsahu mapy. Pokud pole nen&iacute; za&scaron;krtnuto, budou zpracov&aacute;ny v&scaron;echny buňky v&nbsp;rastru, i když se nach&aacute;zej&iacute; mimo aktu&aacute;ln&iacute; rozsah mapy.
+    <p>Pokud je za&scaron;krtnuto  <b>Použ&iacute;t rozsah aktu&aacute;ln&iacute; mapy</b>, přemapov&aacute;ny budou pouze buňky viditeln&eacute; v&nbsp;aktu&aacute;ln&iacute;m rozsahu mapy. Pokud pole nen&iacute; za&scaron;krtnuto, budou zpracov&aacute;ny v&scaron;echny buňky v&nbsp;rastru, i když se nach&aacute;zej&iacute; mimo aktu&aacute;ln&iacute; rozsah mapy.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -119,7 +119,9 @@
                 </td>
             </tr>
             </table>
-            <p>Pořad&iacute; rozsahů v&nbsp;tabulce je tak&eacute; důležit&eacute;. Horn&iacute; ř&aacute;dek tabulky se zpracuje jako prvn&iacute;, pak n&aacute;sleduje ř&aacute;dek pod n&iacute;m. Dvě n&iacute;že uveden&eacute; tabulky ukazuj&iacute;, jak stejn&eacute; rozsahy hodnot vedou k&nbsp;různ&yacute;m v&yacute;sledkům z&nbsp;důvodu odli&scaron;n&eacute;ho pořad&iacute; ř&aacute;dků tabulky. 
+            <p>Pořad&iacute; rozsahů v&nbsp;tabulce je tak&eacute; důležit&eacute;. Horn&iacute; ř&aacute;dek tabulky se zpracuje jako prvn&iacute;, pak n&aacute;sleduje ř&aacute;dek pod n&iacute;m. Dvě n&iacute;že uveden&eacute; tabulky ukazuj&iacute;, jak stejn&eacute; rozsahy hodnot vedou k&nbsp;různ&yacute;m v&yacute;sledkům z&nbsp;důvodu odli&scaron;n&eacute;ho pořad&iacute; ř&aacute;dků tabulky.
+            </p> 
+            <p>N&iacute;že uveden&aacute; tabulka ukazuje v&yacute;stupn&iacute; hodnotu, pokud je prvn&iacute; sloupec seřazen&yacute; č&iacute;selně:
             </p>
             <table border="1">
             <tr>
@@ -165,6 +167,8 @@
                 </td>
             </tr>
             </table>
+            <p>Tabulka n&iacute;že uveden&aacute; ukazuje, jak různ&eacute; řazen&iacute; řad vytvoř&iacute; různ&eacute; v&yacute;stupn&iacute; hodnoty:
+            </p> 
             <table border="1">
             <tr>
                 <td>
@@ -219,7 +223,7 @@
         <div>
             <p>N&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce  <b>Můj obsah</b> a přid&aacute; se do mapy. V&yacute;choz&iacute; n&aacute;zev se ř&iacute;d&iacute; n&aacute;zvem n&aacute;stroje a n&aacute;zvem vstupn&iacute; vrstvy. Pokud v&yacute;sledn&aacute; vrstva již existuje, budete pož&aacute;d&aacute;ni o zad&aacute;n&iacute; jin&eacute;ho n&aacute;zvu.
             </p>
-            <p>V rozbalovac&iacute;m seznamu  <b>Uložit v&yacute;sledek do</b> můžete zadat n&aacute;zev složky ve složce <b>Můj obsah</b>, do kter&eacute; se m&aacute; v&yacute;sledek uložit.
+            <p>V&nbsp;rozbalovac&iacute;m seznamu  <b>Uložit v&yacute;sledek do</b> můžete zadat n&aacute;zev složky ve složce <b>Můj obsah</b>, do kter&eacute; se m&aacute; v&yacute;sledek uložit.
             </p>
         </div>
     </div>

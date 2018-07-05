@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Ph&acirc;n t&iacute;ch Raster cho ph&eacute;p bạn tiến h&agrave;nh ph&acirc;n t&iacute;ch c&aacute;c tập dữ liệu raster lớn bằng c&aacute;ch sử dụng  ArcGIS Image Server. Điều n&agrave;y cho ph&eacute;p bạn ph&acirc;n t&iacute;ch lượng dữ liệu lớn hơn nhanh hơn bằng c&aacute;ch khai th&aacute;c sức mạnh của m&aacute;y chủ. Bộ c&ocirc;ng cụ hiện c&oacute; sẵn cho nhiều trải nghiệm người d&ugrave;ng web  Portal for ArcGIS bao gồm  <b>T&oacute;m tắt Dữ liệu</b>, <b>Ph&acirc;n t&iacute;ch M&ocirc; h&igrave;nh</b>, <b>Ph&acirc;n t&iacute;ch H&igrave;nh ảnh</b>, <b>Ph&acirc;n t&iacute;ch Địa h&igrave;nh</b> v&agrave; <b>Quản l&yacute; Dữ liệu</b>.
+        <p>Ph&acirc;n t&iacute;ch Raster cho ph&eacute;p bạn tiến h&agrave;nh ph&acirc;n t&iacute;ch c&aacute;c tập dữ liệu raster lớn bằng c&aacute;ch sử dụng  ArcGIS Image Server. Điều n&agrave;y cho ph&eacute;p bạn ph&acirc;n t&iacute;ch lượng dữ liệu lớn hơn nhanh hơn bằng c&aacute;ch khai th&aacute;c sức mạnh của m&aacute;y chủ. Bộ c&ocirc;ng cụ hiện c&oacute; sẵn cho nhiều trải nghiệm người d&ugrave;ng web  Portal for ArcGIS bao gồm  <b>T&oacute;m tắt Dữ liệu</b>, <b>Ph&acirc;n t&iacute;ch C&aacute;c m&ocirc; h&igrave;nh</b>, <b>Ph&acirc;n t&iacute;ch H&igrave;nh ảnh</b>, <b>Ph&acirc;n t&iacute;ch Địa h&igrave;nh</b> v&agrave; <b>Quản l&yacute; Dữ liệu</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -132,6 +132,71 @@
             </p>
             <br/>
         </div>
+    <div id="UseProximityCategory" class="regularsize">
+        <h2>Sử dụng Vùng lân cận</h2>
+        <hr/>
+        <p>C&aacute;c c&ocirc;ng cụ n&agrave;y gi&uacute;p bạn trả lời một trong c&aacute;c c&acirc;u hỏi thường gặp nhất đặt ra trong ph&acirc;n t&iacute;ch kh&ocirc;ng gian: &ldquo;C&aacute;i g&igrave; gần c&aacute;i g&igrave;?&rdquo;
+
+            <ul>
+                <li> <b>T&iacute;nh to&aacute;n Khoảng c&aacute;ch</b> t&iacute;nh to&aacute;n khoảng c&aacute;ch Euclid, hướng v&agrave; sự ph&acirc;n bổ từ một nguồn hoặc tập hợp nguồn.
+                    
+
+                </li>
+                <li> <b>X&aacute;c định Mạng lưới Chi ph&iacute; Đi lại Tối ưu</b> t&iacute;nh to&aacute;n mạng lưới chi ph&iacute; tối ưu từ một tập hợp c&aacute;c khu vực đầu v&agrave;o.
+                    
+
+                </li>
+                <li> <b>X&aacute;c định Đường dẫn Chi ph&iacute; Đi lại dưới dạng Đa tuyến</b> t&iacute;nh to&aacute;n đường dẫn đa tuyến tối ưu giữa c&aacute;c điểm nguồn v&agrave; điểm đ&iacute;ch đ&atilde; biết.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateDistanceTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Tính toán Khoảng cách</h2></td>
+                    <td>
+                    <img src="../images/GUID-34E2E6F3-2F60-43F5-B499-D5735DE08602-web.png" class="titleImage" alt="T&iacute;nh to&aacute;n Khoảng c&aacute;ch">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>T&iacute;nh to&aacute;n khoảng c&aacute;ch Euclid, hướng v&agrave; sự ph&acirc;n bổ từ một nguồn hoặc tập hợp nguồn. Bạn c&oacute; thể sử dụng c&ocirc;ng cụ n&agrave;y để x&aacute;c định một vị tr&iacute; c&aacute;ch một con đường, một t&ograve;a nh&agrave; hoặc một c&ocirc;ng vi&ecirc;n bao xa. Bạn cũng c&oacute; thể x&aacute;c định bạn phải đi hướng n&agrave;o từ một vị tr&iacute; để quay lại nguồn theo hướng thẳng nhất. Bạn cũng c&oacute; thể xem mọi vị tr&iacute; trong khu vực nghi&ecirc;n cứu của bạn để biết vị tr&iacute; n&agrave;o gần nguồn nhất.
+            </p>
+            <br/>
+        </div>
+        <div id="DetermineOptimumTravelCostNetworkTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Xác định Mạng lưới Chi phí Đi lại Tối ưu</h2></td>
+                    <td>
+                    <img src="../images/GUID-097BDD6E-0AD8-44F2-BB70-C5395F4B1AF4-web.png" class="titleImage" alt="H&igrave;nh minh họa c&ocirc;ng cụ X&aacute;c định Mạng lưới Chi ph&iacute; Đi lại Tối ưu">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>T&iacute;nh to&aacute;n mạng lưới chi ph&iacute; tối ưu từ một tập hợp c&aacute;c khu vực đầu v&agrave;o.
+            </p>
+            <br/>
+        </div>
+        <div id="DetermineTravelCostPathAsPolylineTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Xác định Đường dẫn Chi phí Đi lại dưới dạng Đa tuyến</h2></td>
+                    <td>
+                    <img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" class="titleImage" alt="H&igrave;nh minh họa c&ocirc;ng cụ X&aacute;c định Đường dẫn Chi ph&iacute; Đi lại dưới dạng Đa tuyến">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>T&iacute;nh to&aacute;n đường dẫn đa tuyến c&oacute; chi ph&iacute; tối ưu giữa c&aacute;c điểm nguồn v&agrave; điểm đ&iacute;ch đ&atilde; biết.
+            </p>
+            <br/>
+        </div>
     <div id="AnalyzeImageCategory" class="regularsize">
         <h2>Phân tích Hình ảnh</h2>
         <hr/>
@@ -193,6 +258,10 @@
                     
 
                 </li>
+                <li> <b>Lưu vực s&ocirc;ng</b> t&iacute;nh to&aacute;n khu vực hợp lưu ph&iacute;a tr&ecirc;n (c&aacute;c) vị tr&iacute; x&aacute;c định tr&ecirc;n một bề mặt.
+                    
+
+                </li>
             </ul>
             
         </p>
@@ -223,7 +292,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Nhận biết hướng dốc xuống tốc độ thay đổi gi&aacute; trị tối đa từ từng &ocirc; đến c&aacute;c v&ugrave;ng l&acirc;n cận. C&oacute; thể xem hướng l&agrave; hướng dốc.
+            <p>Nhận biết hướng dốc xuống tốc độ thay đổi gi&aacute; trị tối đa từ từng &ocirc; đến c&aacute;c v&ugrave;ng l&acirc;n cận. Hướng c&oacute; thể được coi l&agrave; hướng dốc.
             </p>
             <br/>
         </div>
@@ -239,6 +308,21 @@
             </table>
 <hr/>
             <p>X&aacute;c định vị tr&iacute; tr&ecirc;n bề mặt raster hiển thị đối với nhiều người quan s&aacute;t.
+            </p>
+            <br/>
+        </div>
+        <div id="WatershedTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Lưu vực sông</h2></td>
+                    <td>
+                    <img src="../images/GUID-AF749369-8C2D-46FF-9D74-2CF7CAB7C7B0-web.png" class="titleImage" alt="T&aacute;c vụ lưu vực s&ocirc;ng">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>X&aacute;c định khu vực hợp lưu ph&iacute;a tr&ecirc;n một tập hợp c&aacute;c &ocirc; trong một raster.
             </p>
             <br/>
         </div>

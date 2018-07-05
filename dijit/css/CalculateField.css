@@ -145,7 +145,7 @@
 
 .esriCalcField .esriFormWarning {
   padding:0.5em;
-  margin: 0.7em 0;
+  margin: 2.5em 0 0 0;
   border: 1px solid #a67032;
   background-color: #F4DA6E;
   height: 3em;
@@ -154,7 +154,7 @@
 
 .esriCalcField .esriFormSuccess {
   padding: 1.2em;
-  margin: 0.7em 0;
+  margin: 2.5em 0 0 0;
   border: 1px solid #257824;
   background-color: #D2E959;
 }

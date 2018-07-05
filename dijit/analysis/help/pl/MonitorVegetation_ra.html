@@ -60,7 +60,7 @@
         <div><h2>Wybierz metodę monitorowania roślinności</h2></div>
         <hr/>
         <div>
-            <p>Wybierz metodę używaną do tworzenia warstwy indeksu roślinności. R&oacute;żne indeksy roślinności ułatwiają wyr&oacute;żnianie określonych obiekt&oacute;w lub redukowanie r&oacute;żnych szum&oacute;w informacyjnych.
+            <p>Pozwala wybrać metodę używaną do tworzenia warstwy wskaźnika roślinności. Poszczeg&oacute;lne wskaźniki roślinności ułatwiają wyr&oacute;żnianie określonych obiekt&oacute;w lub redukowanie r&oacute;żnych szum&oacute;w informacyjnych.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
@@ -76,7 +76,7 @@ MSAVI2 jest indeksem roślinności, w przypadku kt&oacute;rego podjęto pr&oacut
 
                 </li>
                 <li>Normalized Difference Vegetation Index  &mdash; 
-NDVI jest standardowym indeksem umożliwiającym generowanie obraz&oacute;w zawierających obszary zielone (względną biomasę). Indeks wykorzystuje kontrast między charakterystykami dw&oacute;ch pasm z wielospektralnego zestawu danych rastrowych - absorpcji chlorofilu w paśmie czerwieni i wysokiego wsp&oacute;łczynnik odbicia roślinności w paśmie bliskiej podczerwieni (NIR).
+NDVI jest standardowym indeksem umożliwiającym generowanie obraz&oacute;w zawierających obszary zielone (względną biomasę). Ten indeks wykorzystuje kontrast między charakterystykami dw&oacute;ch pasm z wielospektralnego zestawu danych rastrowych: absorpcji chlorofilu w paśmie czerwieni i wysokiego wsp&oacute;łczynnik odbicia roślinności w paśmie bliskiej podczerwieni (NIR).
 
                 </li>
                 <li>Perpendicular Vegetation Index &mdash; 
@@ -102,7 +102,7 @@ Przekształcony indeks SAVI (Transformed-SAVI) jest indeksem roślinności, w pr
         <div><h2>Określ indeksy pasma NIR i pasma Red</h2></div>
         <hr/>
         <div>
-            <p>Wpisz indeksy pasm dla pasma bliskiej podczerwieni (NIR) i pasma czerwieni (Red).
+            <p>Określa indeksy pasm dla pasma bliskiej podczerwieni (NIR) i pasma czerwieni (Red).
             </p>
             <p>Wszystkie czujniki satelitarne i kamery lotnicze przechwytują informacje podzielone na indeksy pasm. Każdy indeks pasma zawiera informacje dotyczące określonej części spektrum promieniowania elektromagnetycznego. Ta metoda monitorowania roślinności wymaga podania indeksu pasma przechwytującego fale o długości w zakresie bliskiej podczerwieni (NIR) i czerwieni (Red).
             </p>
@@ -114,7 +114,7 @@ Przekształcony indeks SAVI (Transformed-SAVI) jest indeksem roślinności, w pr
         <div>
             <p>Spadek linii gleb. Spadek jest przybliżoną relacją liniową między pasmami bliskiej podczerwieni i czerwieni na diagramie punktowym.
             </p>
-            <p>Ten parametr dotyczy tylko indeksu Transformed Soil-Adjusted Vegetation Index.
+            <p>Ten parametr dotyczy tylko metody Przetransformowany wskaźnik roślinności dostosowany względem gleby (Transformed Soil-Adjusted Vegetation Index).
             </p>
         </div>
     </div>
@@ -122,11 +122,11 @@ Przekształcony indeks SAVI (Transformed-SAVI) jest indeksem roślinności, w pr
         <div><h2>Przecięcie</h2></div>
         <hr/>
         <div>
-            <p>Jest to wartość w bliskiej podczerwieni (NIR), gdy wartość wsp&oacute;łczynnika odbicia pasma czerwieni (Red) wynosi 0 dla określonych linii gleb.
+            <p>Jest to wartość w bliskiej podczerwieni (NIR), gdy wsp&oacute;łczynnik odbicia pasma czerwieni (Red) wynosi 0 dla określonych linii gleb.
             </p>
             <p> <code>(a = NIR - sRed)</code> , gdy Red ma wartość 0.
             </p> 
-            <p>Ten parametr dotyczy tylko indeksu Transformed Soil-Adjusted Vegetation Index.
+            <p>Ten parametr dotyczy tylko metody Przetransformowany wskaźnik roślinności dostosowany względem gleby (Transformed Soil-Adjusted Vegetation Index).
             </p>
         </div>
     </div>
@@ -134,9 +134,9 @@ Przekształcony indeks SAVI (Transformed-SAVI) jest indeksem roślinności, w pr
         <div><h2>Wielkość pokrycia roślinnością zieloną</h2></div>
         <hr/>
         <div>
-            <p>Metoda SAVI wymaga podania wsp&oacute;łczynnika zagęszczenia szaty roślinnej.
+            <p>Określa stopień pokrycia roślinnością zieloną, ta wielkość jest wymagana w metodzie SAVI.
             </p>
-            <p>Powinna to być wartość z&nbsp;zakresu od 0,0 do 1,0, gdzie: 
+            <p>Poniżej podano prawidłowe wartości: 
 
                 <ul>
                     <li>1 = obszary bez szaty roślinnej
@@ -160,9 +160,9 @@ Przekształcony indeks SAVI (Transformed-SAVI) jest indeksem roślinności, w pr
         <div><h2>Współczynnik dostosowania</h2></div>
         <hr/>
         <div>
-            <p>Metoda Transformed Soil-Adjusted Vegetation Index wymaga ustawienia wsp&oacute;łczynnika korygującego w celu ograniczenia wpływu efektu gleb. Wartość domyślna wynosi 0,08.
+            <p>Określa wsp&oacute;łczynnik korygujący pozwalający zminimalizować efekt gleb, kt&oacute;ra to wielkość jest wymagana w metodzie Przetransformowany wskaźnik roślinności dostosowany względem gleby (Transformed Soil-Adjusted Vegetation Index). Wartość domyślna wynosi 0,08.
             </p>
-            <p>Niższa wartość oznacza, że efekt gleb jest ignorowany. Wyższa wartość oznacza, że gleby będą miały wpływ na wynik.
+            <p>Niska wartość oznacza, że efekt gleb jest ignorowany. Wysoka wartość oznacza, że gleby będą miały wpływ na wynik.
             </p>
         </div>
     </div>

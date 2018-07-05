@@ -41,6 +41,11 @@
   display: inline-block;
 }
 
+.esriColorRampPicker .esriPreview.esriGrid {
+  width: 40px;
+  height: 40px;
+}
+
 .esriColorRampPicker .esriItem.esriSelected {
   cursor: auto;
 }
@@ -53,7 +58,7 @@
 }
 
 .esriColorRampPicker .esriFlipper {
-  margin: 6px 0 0;
+  margin: 6px auto auto;
   display: block;
   cursor: pointer;
   background: url("../images/flip.png") no-repeat;
@@ -67,5 +72,9 @@
 
 .esriColorRampPicker .esriFlipper:hover {
   background-position: -24px;
+}
+
+.esriColorRampPickerTransparencySection {
+  width: 100%;
 }
 

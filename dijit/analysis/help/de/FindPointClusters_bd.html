@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Punkt-Cluster suchen</h2><p/>
+        <h2><img src="../images/GUID-40DA7286-67EA-4333-91C5-4CD527C21B4A-web.png" alt="Punkt-Cluster suchen"></h2>
+        <hr/>
+    <p>Das Werkzeug  Punkt-Cluster suchen findet Cluster aus Punkt-Features im Datenrauschen des Umfelds basierend auf deren r&auml;umlicher Verteilung.
+    </p>
+    <p>Eine nichtstaatliche Organisation untersucht eine bestimmte durch Sch&auml;dlinge &uuml;bertragene Krankheit. Sie verf&uuml;gt &uuml;ber ein Punkt-Dataset, das Haushalte in einem Untersuchungsgebiet darstellt, von denen einige betroffen sind und andere nicht. Mithilfe des Werkzeugs  Punkt-Cluster suchen kann ein Analyst die Cluster betroffener Haushalte ermitteln, um einen Bereich besser aufzeigen und mit der Behandlung und Vernichtung krankheits&uuml;bertragender Erreger beginnen zu k&ouml;nnen.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Wählen Sie den Layer aus, für den nach Clustern gesucht wird.</h2></div>
+        <hr/>
+        <div>
+            <p>Der Punkt-Layer, in dem nach Clustern gesucht wird. Layer m&uuml;ssen sich in einem projizierten Raumbezug befinden oder einen Raumbezug f&uuml;r die Verarbeitung aufweisen, der unter  <b>Analyseumgebungen</b> auf ein projiziertes Koordinatensystem festgelegt wurde.
+            </p>
+            <p>Sie k&ouml;nnen nicht nur einen Layer aus der Karte ausw&auml;hlen, sondern auch unten in der Dropdown-Liste  <b>Layer durchsuchen</b> ausw&auml;hlen, um zu Ihren Inhalten f&uuml;r ein Big-Data-Dateifreigabe-Dataset bzw. -Feature-Layer zu navigieren.
+            </p>
+        </div>
+    </div>
+    <div id="minFeaturesCluster">
+        <div><h2>Minimale Anzahl von Punkten, die als Cluster gelten</h2></div>
+        <hr/>
+        <div>
+            <p>Die minimale Anzahl an Features, die als Cluster betrachtet werden sollen.
+            </p>
+        </div>
+    </div>
+    <div id="searchDistance">
+        <div><h2>Suchbereich begrenzen auf</h2></div>
+        <hr/>
+        <div>
+            <p>Die maximale Entfernung, bei der Features demselben Cluster angeh&ouml;ren k&ouml;nnen.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Name des Ergebnis-Layers</h2></div>
+        <hr/>
+        <div>
+            <p> Der Name des Layers, der in <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird. Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, kann das Werkzeug nicht ausgef&uuml;hrt werden.
+            </p>
+            <p>&Uuml;ber das Dropdown-Feld  <b>Ergebnis speichern in</b> k&ouml;nnen Sie den Namen eines Ordners in <b>Eigene Inhalte</b> angeben, in dem das Ergebnis gespeichert werden soll.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

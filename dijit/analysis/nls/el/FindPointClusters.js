@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
-define({clustersLabel:"Για το θεματικό επίπεδο ${inputLayerName} βρείτε τις συστάδες.",chooseLayerLabel:"Επιλέξτε το θεματικό επίπεδο για το οποίο θα βρεθούν συστάδες.",minClusterPtsLabel:"Ελάχιστος αριθμός σημείων που μπορεί να θεωρηθεί συστάδα",limitSearchLabel:"Περιορισμός του εύρους αναζήτησης σε (προαιρετικά)",limitSearchReqLabel:"Limit the search range to",outputLayerName:"Εύρεση συστάδων για το θεματικό επίπεδο ${inputLayerName}",itemDescription:"Δημιουργήθηκε feature layer από την εκτέλεση της λύσης «Εύρεση Συστάδων Σημείων» για το θεματικό επίπεδο ${inputLayerName}.",itemTags:"Αποτέλεσμα Ανάλυσης, Εύρεση Συστάδων Σημείων, Θεματικό επίπεδο ${inputLayername}",itemSnippet:"Επιτυχής δημιουργία feature layer από τη λύση «Εύρεση Συστάδων Σημείων»"});
+define({clustersLabel:"Για το θεματικό επίπεδο ${inputLayerName} βρείτε τις συστάδες.",chooseLayerLabel:"Επιλέξτε το θεματικό επίπεδο για το οποίο θα βρεθούν συστάδες.",minClusterPtsLabel:"Ελάχιστος αριθμός σημείων που μπορεί να θεωρηθεί συστάδα",limitSearchLabel:"Περιορισμός του εύρους αναζήτησης σε (προαιρετικά)",limitSearchReqLabel:"Περιορισμός του εύρους αναζήτησης σε",outputLayerName:"Εύρεση συστάδων για το θεματικό επίπεδο ${inputLayerName}",itemDescription:"Δημιουργήθηκε feature layer από την εκτέλεση της λύσης «Εύρεση Συστάδων Σημείων» για το θεματικό επίπεδο ${inputLayerName}.",itemTags:"Αποτέλεσμα Ανάλυσης, Εύρεση Συστάδων Σημείων, Θεματικό επίπεδο ${inputLayerName}",itemSnippet:"Επιτυχής δημιουργία feature layer από τη λύση «Εύρεση Συστάδων Σημείων»"});

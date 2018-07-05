@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
 define(["dojo/dom-style","esri/dijit/geoenrichment/utils/ColorUtil","../../themes/BackgroundThemeUtil"],function(e,o,n){var t={};return t.setUpDDPanelBackgroundColor=function(t){if(t.infographicJson){var r=t.viewModel.getStaticInfographicDefaultStyles(t.theme),i=t.viewModel.getDocumentDefaultStyles(t.theme);[t.infographicJson.style.backgroundColor,r&&r.backgroundColor,i.backgroundColor].some(function(n){if(n&&!o.isTransparent(n))return e.set(t.node,"backgroundColor",n),!0})||n.applyBackgroundImageFromSettings(t.node,i.backgroundImage)}},t});

@@ -1,0 +1,104 @@
+
+
+
+.simpleInfographic_dataDrillingViewDiv.isZoomAnimation {
+    box-shadow: 0px 0px 3px 3px rgba(50, 50, 50, 0.2);
+}
+
+    
+
+    .simpleInfographic_dataDrillingViewDiv.isZoomAnimation .simpleInfographic_backToMainViewButton {
+        background-repeat: no-repeat;
+        background-size: 24px;
+        background-position: center;
+        width: 24px;
+        height: 24px;
+        background-image: url("../images/closeWindowWhite.svg");
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    
+
+    .simpleInfographic_dataDrillingViewDiv.isZoomAnimation.canPrintDataDrilling .simpleInfographic_printButton {
+        background-repeat: no-repeat;
+        background-size: 24px;
+        background-position: center;
+        width: 24px;
+        height: 24px;
+        background-image: url("../images/commands/printWhite.svg");
+        cursor: pointer;
+        margin-top: 10px;
+        margin-right: 15px;
+    }
+
+    
+
+    .simpleInfographic_dataDrillingViewDiv.isZoomAnimation.canExportDataDrilling .simpleInfographic_exportButton {
+        background-repeat: no-repeat;
+        background-size: 24px;
+        background-position: center;
+        width: 24px;
+        height: 24px;
+        background-image: url("../images/commands/exportWhite.svg");
+        cursor: pointer;
+        margin-top: 10px;
+        margin-right: 15px;
+    }
+
+    
+
+    .simpleInfographic_dataDrillingViewDiv.isZoomAnimation.hasMultipleDrillingOptions .simpleInfographic_drillingOptionsButton {
+        background-color: transparent;
+        margin-top: 10px;
+        margin-right: 15px;
+    }
+
+    .simpleInfographic_dataDrillingViewDiv.isZoomAnimation.hasChartSettingsButton .simpleInfographic_drillingOptionsButton {
+        margin-right: 50px;
+    }
+
+    
+
+    .simpleInfographic_dataDrillingViewDiv.isZoomAnimation .esriGEReportPlayer_section .sectionDynamicSettings_toolbar {
+        right: 42px;
+        top: -36px;
+        background-color: transparent;
+        background-size: 24px;
+        z-index: 1; 
+        opacity: 1 !important;
+    }
+
+    .simpleInfographic_dataDrillingViewDiv.isZoomAnimation.canPrintDataDrilling .esriGEReportPlayer_section .sectionDynamicSettings_toolbar,
+    .simpleInfographic_dataDrillingViewDiv.isZoomAnimation.canExportDataDrilling .esriGEReportPlayer_section .sectionDynamicSettings_toolbar {
+        right: 84px;
+    }
+
+    .simpleInfographic_dataDrillingViewDiv.isZoomAnimation.canPrintDataDrilling.canExportDataDrilling .esriGEReportPlayer_section .sectionDynamicSettings_toolbar {
+        right: 122px;
+    }
+
+    
+
+    .simpleInfographic_dataDrillingViewDiv.isZoomAnimation .simpleInfographic_topToolbar {
+        left: 0px;
+        top: -42px;
+        height: 42px;
+        right: 0px;
+        position: absolute;
+        background-color: rgba(0,0,0,0.01); 
+        text-align: right;
+    }
+
+
+
+.simpleInfographic_dataDrillingViewDivScreen {
+    background-color: rgba(70, 70, 70, 0.7);
+}
+
+
+
+.simpleInfographic_dataDrillingViewDiv.isZoomAnimation,
+.simpleInfographic_dataDrillingViewDivScreen {
+    z-index: 151; 
+}

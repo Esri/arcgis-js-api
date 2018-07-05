@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>ऑप्टिमम यात्रा लागत नेटवर्क निर्धारित करें</h2><p/>
+        <h2><img src="../images/GUID-097BDD6E-0AD8-44F2-BB70-C5395F4B1AF4-web.png" alt="ऑप्टिमम यात्रा लागत नेटवर्क निर्धारित करें टूल द्वारा चित्रण"></h2>
+        <hr/>
+    <p>यह टूल, इनपुट क्षेत्रों के समूह के ऑप्टिमम लागत नेटवर्क का परिकलन करता है।
+    </p>
+    <p>इस टूल का एक उदाहरण एप्लिकेशन, आपातकालीन वाहनों के लिए सर्वोत्तम नेटवर्क खोजना है।
+    </p>
+    <p>अगर  <b>वर्तमान मैप स्तर का उपयोग करें</b> चयनित है, तो इनपुट लेयर में केवल उन फीचर्स का विश्लेषण किया जाएगा, जो वर्तमान मानचित्र स्तर में दृश्यमान हों। यदि चयनित नहीं है, तो इनपुट लेयर के सभी स्थानों का विश्लेषण किया जाएगा, भले ही वे वर्तमान मानचित्र सीमा से बाहर हो।
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRegionsRasterOrFeatures">
+        <div><h2>इनके बीच के यात्रा पथ का निर्धारण करने के लिए रास्टर या फ़ीचर स्थान लेयर को चुनें</h2></div>
+        <hr/>
+        <div>
+            <p>वे इनपुट क्षेत्र जिन्हें सबसे कम लागत वाले नेटवर्क से कनेक्ट किया जाएगा।
+            </p>
+            <p>क्षेत्रों को किसी छवि सेवा द्वारा या फ़ीचर सेवा द्वारा निर्धारित किया जा सकता है।
+            </p>
+            <p>छवि सेवा के लिए, क्षेत्रों को एक ही मान के समीपस्थ (नज़दीकी) कक्षों के समूह द्वारा निर्धारित किया जाता है। हर क्षेत्र को अद्वितीय नंबर दिया जाना आवश्यक है। जो कक्ष किसी भी क्षेत्र का भाग नहीं हैं, उन्हें NoData होना चाहिए। रास्टर प्रकार पूर्णांक होना चाहिए और मान धनात्मक या ऋणात्मक हो सकते हैं।
+            </p>
+            <p>फ़ीचर सेवा के लिए इनपुट पॉइंट, लाइन या पॉलीगोन हो सकता है।
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>यात्रा लागत रास्टर लेयर को चुनें</h2></div>
+        <hr/>
+        <div>
+            <p>प्लेनिमेट्रिकल रूप से प्रत्येक कक्ष से गुजरने वाले इंपीडेंस या लागत को परिभाषित करने वाला रास्टर।
+            </p>
+            <p>हर कक्ष स्थान का मान, कक्ष से स्थानांतरण के लिए लागत प्रति इकाई दूरी प्रदर्शित करता है। प्रत्येक कक्ष स्थान मान का गुणा कक्ष के रिज़ॉल्यूशन से किया जाता है जबकि इसके साथ ही कक्ष से होकर पास होने की कुल लागत प्राप्त करने के लिए विकर्ण गतिविधि की पूर्ति भी की जाती है।
+            </p>
+            <p>लागत रास्टर के मान पूर्णांक या फ़्लोटिंग पॉइंट हो सकते हैं लेकिन वे ऋणात्मक या शून्य नहीं हो सकते हैं (आपकी लागत ऋणात्मक या शून्य नहीं हो सकती है)।
+            </p> 
+        </div>
+    </div>
+    <div id="outputOptimumNetworkName">
+        <div><h2>परिणामी ऑप्टिमम पथ पॉलीलाइन लेयर नाम</h2></div>
+        <hr/>
+        <div>
+            <p>फीचर लेयर का नाम, जो  <b>मेरी सामग्री</b> में बनाया जाएगा और मानचित्र में जोड़ा जाएगा। इसका मूल नाम उपकरण के नाम और इनपुट लेयर के नाम पर आधारित है। यदि लेयर पहले से मौजूद हो, तो आपसे दूसरा नाम देने को कहा जाएगा।
+            </p>
+            <p> <b>इसमें सहेजें</b> ड्राप-डाउन बॉक्स का उपयोग करके, आप <b>मेरी सामग्री</b> में एक फोल्डर का नाम निर्दिष्ट कर सकते हैं, जहां परिणामों को सहेजा जाएगा।।
+            </p>
+        </div>
+    </div>
+    <div id="outputNeighborNetworkName">
+        <div><h2>परिणामी निकटस्थ पथ पॉलीलाइन लेयर नाम</h2></div>
+        <hr/>
+        <div>
+            <p>फीचर लेयर का नाम, जो  <b>मेरी सामग्री</b> में बनाया जाएगा और मानचित्र में जोड़ा जाएगा। इसका मूल नाम उपकरण के नाम और इनपुट लेयर के नाम पर आधारित है। यदि लेयर पहले से मौजूद हो, तो आपसे दूसरा नाम देने को कहा जाएगा।
+            </p>
+            <p> <b>इसमें सहेजें</b> ड्राप-डाउन बॉक्स का उपयोग करके, आप <b>मेरी सामग्री</b> में एक फोल्डर का नाम निर्दिष्ट कर सकते हैं, जहां परिणामों को सहेजा जाएगा।।
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -44,13 +44,13 @@
         <h2>Olayları Algıla</h2><p/>
         <h2><img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Olayları Algıla"></h2>
         <hr/>
-    <p>Bu ara&ccedil;, zamanda bir anı g&ouml;steren zaman etkin bir noktalar, &ccedil;izgiler, alanlar/b&ouml;lgeler veya tablolar katmanı ile &ccedil;alışır. Bu ara&ccedil;, par&ccedil;alar adı verilen sıralı olarak d&uuml;zenlenmiş detayları kullanarak, hangi detayların ilgi odağı olaylar olduğunu belirler. Olaylar belirttiğiniz koşullara g&ouml;re belirlenir. 
+    <p>Bu ara&ccedil;, zamana bağlı olarak nokta,&ccedil;izgi,alan veya tabloların zamanla etkinleştirilmiş bir katmanı ile &ccedil;alışır. Bu ara&ccedil;, par&ccedil;alar adı verilen sıralı olarak d&uuml;zenlenmiş detayları kullanarak, hangi detayların ilgi odağı olaylar olduğunu belirler. Olaylar belirttiğiniz koşullara g&ouml;re belirlenir. 
     </p>
-    <p>&Ouml;nce ara&ccedil;, bir veya daha fazla alan kullanarak hangi detayların bir par&ccedil;aya ait olduğunu belirler. Her detaydaki zamanı kullanarak par&ccedil;alar sıralı olarak d&uuml;zenlenir ve olay koşulu uygulanır. Başlangı&ccedil;taki olay koşulunu karşılayan detaylar bir olay olarak işaretlenir. İsteğe bağlı olarak biten bir olay koşulunu uygulayabilirsiniz; son koşul doğru olduğunda, detay artık bir olay değildir. Sonu&ccedil;lar, olay ismini temsil eden yeni s&uuml;tunlarla birlikte orijinal detaylarla birlikte getirilir ve hangi detayın olay koşullarını karşıladığını g&ouml;sterir. T&uuml;m orijinal detayları veya sadece olay olan detayları geri y&uuml;kleyebilirsiniz.
+    <p>&Ouml;nce, ara&ccedil; bir veya daha fazla alan kullanarak hangi detayların bir par&ccedil;aya ait olduğunu belirler. Her detaydaki zamanı kullanarak par&ccedil;alar sıralı olarak d&uuml;zenlenir ve olay koşulu uygulanır. Başlangı&ccedil;taki olay koşulunu karşılayan detaylar bir olay olarak işaretlenir. İsteğe bağlı olarak biten bir olay koşulunu uygulayabilirsiniz; son koşul doğru olduğunda, detay artık bir olay değildir. Sonu&ccedil;lar, olay ismini temsil eden yeni s&uuml;tunlarla birlikte orijinal detaylarla birlikte getirilir ve hangi detayın olay koşullarını karşıladığını g&ouml;sterir. T&uuml;m orijinal detayları veya sadece olay olan detayları geri y&uuml;kleyebilirsiniz.
     </p>
-    <p>&Ouml;rneğin, 10 dakikada bir yapılan fırtına GPS &ouml;l&ccedil;&uuml;mleriniz var. Her GPS &ouml;l&ccedil;&uuml;m&uuml; fırtınanın adını, konumunu, kayıt zamanını ve r&uuml;zgar hızını kaydeder. Bu alanları kullanarak, 208 km/saatten daha b&uuml;y&uuml;k bir r&uuml;zgar hızı olan herhangi bir &ouml;l&ccedil;&uuml;m&uuml;n  <code>Katastrofik</code> başlıklı bir olay olduğu bir olay oluşturabilirsiniz. Bir bitiş koşulu ayarlanmazsa, detay artık başlangı&ccedil; koşulunu karşılamadığında olay sona erer (r&uuml;zgar hızı yavaşlayarak 208'in altına d&uuml;şer).
+    <p>&Ouml;rneğin, her 10 dakikada bir yapılan kasırga GPS &ouml;l&ccedil;&uuml;mleriniz var. Her GPS &ouml;l&ccedil;&uuml;m&uuml; fırtınanın adını, konumunu, kayıt zamanını ve r&uuml;zgar hızını kaydeder. Bu alanları kullanarak, 208 km/saatten daha b&uuml;y&uuml;k bir r&uuml;zgar hızı olan herhangi bir &ouml;l&ccedil;&uuml;m&uuml;n  <code>Katastrofik</code> başlığıyla bir olay oluşturabilirsiniz. Bir bitiş koşulu ayarlanmazsa, detay artık başlangı&ccedil; koşulunu karşılamadığında olay sona erer (r&uuml;zgar hızı yavaşlayarak 208'in altına d&uuml;şer).
     </p>
-    <p>Başka bir &ouml;rnekte,  <code>contanimateLevel</code> adlı bir alanı kullanarak yerel su kaynağınızdaki bir kimyasalın konsantrasyonlarını izlediğinizi varsayalım. &Ouml;nerilen seviyelerin 0,01 mg/L'nin altında olduğunu ve tehlikeli seviyelerin 0,03 mg/L'nin &uuml;zerinde olduğunu biliyorsunuz. 0,03mg/L'nin &uuml;zerindeki bir değerin bir olay olduğu ve kontaminasyon seviyeleri normale d&ouml;n&uuml;nceye kadar bir olay olmaya devam ettiği olayları tespit etmek i&ccedil;in <code>contanimateLevel&gt; 0,03</code> başlangı&ccedil; koşulunu ve <code>contanimateLevel &lt;0,01</code> bitiş koşulunu kullanarak bir olay yaratırsınız. Bu, değerlerin 0,03 mg/L'yi aştığı herhangi bir sekansı, 0,01'den k&uuml;&ccedil;&uuml;k bir değere d&ouml;n&uuml;nceye kadar işaretler.
+    <p>Başka bir &ouml;rnekte,  <code>contaminateLevel</code> adlı bir alanı kullanarak yerel su kaynağınızdaki bir kimyasalın konsantrasyonlarını izlediğinizi varsayalım. &Ouml;nerilen seviyelerin 0,01 mg/L'nin altında olduğunu ve tehlikeli seviyelerin 0,03 mg/L'nin &uuml;zerinde olduğunu biliyorsunuz. 0,03mg/L&rsquo;nin &uuml;zerindeki bir değerin bir olay olduğu ve kontaminasyon seviyeleri normale d&ouml;n&uuml;nceye kadar bir olay olmaya devam ettiği olayları tespit etmek i&ccedil;in <code>contaminateLevel &gt; 0,03</code> başlangı&ccedil; koşulunu ve <code>contaminateLevel &lt; 0,01</code> bitiş koşulunu kullanarak bir olay yaratırsınız. Bu, değerlerin 0,03 mg/L'yi aştığı herhangi bir sekansı, 0,01'den k&uuml;&ccedil;&uuml;k bir değere d&ouml;n&uuml;nceye kadar işaretler.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -68,7 +68,7 @@
         <div><h2>İzleri tanımlamak için bir veya birkaç alan seçin</h2></div>
         <hr/>
         <div>
-            <p> Par&ccedil;a tanımlayıcısını g&ouml;steren alanlar. Par&ccedil;aların benzersiz değerlerini g&ouml;stermek i&ccedil;in bir alanı veya birden fazla alanı kullanabilirsiniz.
+            <p>İz tanımlayıcısını g&ouml;steren alanlar. Par&ccedil;aların benzersiz değerlerini g&ouml;stermek i&ccedil;in bir alanı veya birden fazla alanı kullanabilirsiniz.
             </p>
             <p>&Ouml;rneğin, fırtına izlerini yeniden oluştururken, iz alanı olarak fırtınanın adını kullanabilirsiniz.
             </p>
@@ -82,15 +82,19 @@
             </p>
             <p>&Ouml;rneğin,  <code>concentration_1</code> ve <code>concentration_2</code> alanlarının toplamı <code>concentration_3</code>'ten daha b&uuml;y&uuml;k olduğunda uyarılmak istediğinizi varsayalım. Bunu yapmak i&ccedil;in, şu koşulu uygulayın: <code>($feature[&quot;concentration_1&quot;] +  $feature[&quot;concentration_2&quot;]) &gt; $feature[&quot;concentration_3&quot;])</code>.
             </p>
+            <p>Konsantrasyonların zamanla nasıl değiştiğini merak ettiyseniz ve mevcut  <code>concentration_1</code> değeri &ouml;nceki iki <code>concentration_2</code> konsantrasyon değerinden daha b&uuml;y&uuml;k olduğunda uyarılmak istediyseniz, <code>$feature[&rdquo;concentration_1&rdquo;] &gt;   $track.field[&rdquo;concentration_2&rdquo;].history(-3,-1)</code> gibi bir ifade kullanabilirdiniz.
+            </p>
         </div>
     </div>
     <div id="endConditionExpression">
         <div><h2>Bir olayın bitişini belirtmek için bir ifade koşulu oluşturun</h2></div>
         <hr/>
         <div>
-            <p>Bir olayın bitişini belirlemek i&ccedil;in ifade oluşturucuyu kullanarak bir koşul ekleyin. Belirttiğiniz bitiş koşulu doğruysa, detay artık bir olay değildir. Bir bitiş koşulu belirtmezseniz bir olay, başlangı&ccedil; koşulu artık doğru olmadığında sona erer.    
+            <p>İsteğe bağlı olarak bir olayın bitişini belirlemek i&ccedil;in ifade oluşturucuyu kullanarak bir koşul ekleyin. Belirttiğiniz bitiş koşulu doğruysa, detay artık bir olay değildir. Bir bitiş koşulu belirtmezseniz bir olay, başlangı&ccedil; koşulu artık doğru olmadığında sona erer.    
             </p>
             <p>&Ouml;rneğin,  <code>concentration_1</code> ve <code>concentration_2</code> alanlarının toplamı <code>concentration_3</code>'ten daha b&uuml;y&uuml;k olduğunda uyarılmak istediğinizi ve olayın <code>concentration_4</code> <code>concentration_1</code>'den k&uuml;&ccedil;&uuml;k olduğunda bitmesini istediğinizi varsayalım. Bunu yapmak i&ccedil;in, başlangı&ccedil; koşulu olarak <code>($feature[&quot;concentration_1&quot;] +  $feature[&quot;concentration_2&quot;]) &gt; ($join[&quot;income&quot;] * .20)</code> ve bitiş koşulu olarak <code>($feature[&quot;concentration_4&quot;] &lt; $feature[&quot;concentration_1&quot;])</code> koşulunu uygulayın.
+            </p>
+            <p>Mevcut  <code>concentration_1</code> ile &ouml;nceki d&ouml;rt &ouml;l&ccedil;&uuml;m&uuml;n ortalaması ilk &ouml;l&ccedil;&uuml;mden daha b&uuml;y&uuml;k olduğunda bir olayın bitmiş olmasını istediyseniz, <code>$track.field[&rdquo;concentration_1&rdquo;].history(-5) &gt; $track.field[&rdquo;concentration_1&rdquo;].history(0)</code> gibi bir ifade kullanabilirdiniz.
             </p>
         </div>
     </div>
@@ -113,7 +117,7 @@
         <div><h2>Sonuç katmanı adı</h2></div>
         <hr/>
         <div>
-            <p> Bu, <b>İ&ccedil;eriğim</b>&rsquo;de oluşturulacak ve haritaya eklenecek katmanın adıdır.  Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Detay katmanı zaten varsa ara&ccedil; &ccedil;alışmaz.
+            <p>  <b>İ&ccedil;eriğim</b>'de oluşturulacak ve haritaya eklenecek katmanın adı. Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Detay katmanı zaten varsa ara&ccedil; &ccedil;alışmaz.
             </p>
             <p> <b>Sonu&ccedil;ları kaydet</b> a&ccedil;ılır kutusunu kullanarak <b>İ&ccedil;eriğim</b> alanında sonucun kaydedileceği klas&ouml;r adını belirleyebilirsiniz.
             </p>

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
-define(["../../ConversionUtil","esri/dijit/geoenrichment/ReportPlayer/core/infographics/InfographicTypes","./infographic/StaticInfographicParser","./infographic/DynamicInfographicParser","./infographic/AreaDetailsInfographicParser","./infographic/AttachmentsInfographicParser","./infographic/InterestingFactsInfographicParser"],function(r,i,a,e,n,t,o){var c={},p={};return p[i.STATIC]=a,p[i.ATTACHMENTS]=t,p[i.AREA_DETAILS]=n,p[i.INTERESTING_FACTS]=o,p[i.AGE_PYRAMID]=e,p[i.TAPESTRY]=e,p[i.RELATED_VARS]=e,p[i.ONE_VAR]=e,c.portalToEditor=function(r,a,e){var n=i.fixTapestryNameToWidget(r.attributes.type);return p[n].portalToEditor(r,e)},c});
+define(["../../ConversionUtil","esri/dijit/geoenrichment/ReportPlayer/core/infographics/InfographicTypes","./infographic/StaticInfographicParser","./infographic/DynamicInfographicParser","./infographic/AreaDetailsInfographicParser","./infographic/AttachmentsInfographicParser","./infographic/InterestingFactsInfographicParser","./infographic/LocatorTableInfographicParser","./infographic/ComparisonTableInfographicParser"],function(r,i,a,o,n,e,t,c,p){var s={},f={};return f[i.STATIC]=a,f[i.ATTACHMENTS]=e,f[i.AREA_DETAILS]=n,f[i.INTERESTING_FACTS]=t,f[i.LOCATOR_TABLE]=c,f[i.COMPARISON_TABLE]=p,f[i.AGE_PYRAMID]=o,f[i.TAPESTRY]=o,f[i.RELATED_VARS]=o,f[i.ONE_VAR]=o,s.portalToEditor=function(r,a,o){var n=i.fixTapestryNameToWidget(r.attributes.type),e=f[n].portalToEditor(r,o);return o.postProcessInfographicJson&&o.postProcessInfographicJson(r,e),e},s});

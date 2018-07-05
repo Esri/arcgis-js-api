@@ -44,7 +44,7 @@
         <h2>Återskapa spår</h2><p/>
         <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="&Aring;terskapa sp&aring;r"></h2>
         <hr/>
-    <p>Det h&auml;r verktyget fungerar med ett tidsaktiverat lager med antingen punkt- eller polygongeoobjekt som representerar en  <code>punkt</code> i tiden.   Det avg&ouml;r f&ouml;rst vilka geoobjekt som tillh&ouml;r ett sp&aring;r med en identifierare. Utifr&aring;n tiden vid varje plats ordnas sp&aring;ren i tur och ordning och omvandlas till en linje eller polygon som representerar r&ouml;relsev&auml;gen &ouml;ver tid. Indata kan ocks&aring; buffras av ett f&auml;lt, vilket skapar en polygon p&aring; varje plats. De buffrade punkterna, eller om indata &auml;r polygoner, f&ouml;renas sedan sekventiellt f&ouml;r att skapa ett sp&aring;r som en polygon d&auml;r bredden representerar det intressanta attributet. Resulterande sp&aring;r har en start- och en sluttid, som tidsm&auml;ssigt representerar det f&ouml;rsta och det sista geoobjektet i ett angivet sp&aring;r. N&auml;r sp&aring;ren skapas ber&auml;knas statistik om indatageoobjekten och tilldelas till utdatasp&aring;ret. Den mest grundl&auml;ggande statistiken &auml;r antalet punkter inom omr&aring;det, men du kan &auml;ven ber&auml;kna annan statistik.
+    <p>Det h&auml;r verktyget fungerar med ett tidsaktiverat lager med antingen punkt- eller omr&aring;desgeoobjekt som representerar en  <code>punkt</code> i tiden. Det avg&ouml;r f&ouml;rst vilka geoobjekt som tillh&ouml;r ett sp&aring;r med en identifierare. Utifr&aring;n tiden vid varje plats ordnas sp&aring;ren i tur och ordning och omvandlas till en linje eller ett omr&aring;de som representerar r&ouml;relsev&auml;gen &ouml;ver tid. Indata kan ocks&aring; buffras av ett f&auml;lt, vilket skapar ett omr&aring;de p&aring; varje plats. De buffrade punkterna eller indataomr&aring;dena f&ouml;renas sedan sekventiellt f&ouml;r att skapa ett sp&aring;r som ett omr&aring;de d&auml;r bredden representerar det intressanta attributet. Resulterande sp&aring;r har en start- och en sluttid, som tidsm&auml;ssigt representerar det f&ouml;rsta och det sista geoobjektet i ett angivet sp&aring;r. N&auml;r sp&aring;ren skapas ber&auml;knas statistik om indatageoobjekten och tilldelas till utdatasp&aring;ret. Den mest grundl&auml;ggande statistiken &auml;r antalet punkter inom omr&aring;det, men du kan &auml;ven ber&auml;kna annan statistik.
     </p>
     <p>Geoobjekt i tidsaktiverade lager kan representeras p&aring; ett av tv&aring; s&auml;tt:
         <ul>
@@ -57,7 +57,7 @@
     </p>
     <p>Anta som exempel att du har GPS-m&auml;tningar av orkaner var 10 minut. Varje GPS-m&auml;tning registrerar orkanens namn, plats, registreringstid och vindhastighet. Med den informationen kan du skapa sp&aring;r f&ouml;r varje orkan med namnet f&ouml;r sp&aring;ridentifiering, och sp&aring;r f&ouml;r varje orkan genereras. Du kan ocks&aring; ber&auml;kna statistik som genomsnittlig, maximal och minimal vindhastighet f&ouml;r varje orkan, samt antalet m&auml;tningar inom varje sp&aring;r.
     </p>
-    <p>Med samma exempel kan du buffra sp&aring;ren efter vindhastighet. Det buffrar varje m&auml;tning av f&auml;ltet vindhastighet p&aring; den platsen och f&ouml;renar de buffrade omr&aring;dena. D&aring; skapas en polygon som representerar sp&aring;rets v&auml;g, samt &auml;ndringarna i vindhastighet allt eftersom orkanerna drog fram.   
+    <p>Med samma exempel kan du buffra sp&aring;ren efter vindhastighet. Det buffrar varje m&auml;tning av f&auml;ltet vindhastighet p&aring; den platsen och f&ouml;renar de buffrade omr&aring;dena. D&aring; skapas ett omr&aring;de som representerar sp&aring;rets v&auml;g, samt &auml;ndringarna i vindhastighet allt eftersom orkanerna drog fram.   
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -65,7 +65,7 @@
         <div><h2>Välj geoobjekt att rekonstruera spår från</h2></div>
         <hr/>
         <div>
-            <p>Det punkt- eller polygonlager som ska rekonstrueras till sp&aring;r. Indatalagret m&aring;ste vara tidsaktiverat med geoobjekt som motsvarar en tidspunkt. Lagret m&aring;ste finnas i ett projicerat koordinatsystem eller s&aring; m&aring;ste den geografiska referensen f&ouml;r bearbetning st&auml;llas in f&ouml;r ett projicerat koordinatsystem med  <b>Analysmilj&ouml;</b> om en buffert till&auml;mpas.
+            <p>Det punkt- eller omr&aring;deslager som ska rekonstrueras till sp&aring;r. Indatalagret m&aring;ste vara tidsaktiverat med geoobjekt som motsvarar en tidspunkt. Lagret m&aring;ste finnas i ett projicerat koordinatsystem eller s&aring; m&aring;ste den geografiska referensen f&ouml;r bearbetning st&auml;llas in f&ouml;r ett projicerat koordinatsystem med  <b>Analysmilj&ouml;</b> om en buffert till&auml;mpas.
             </p>
             <p>F&ouml;rutom att v&auml;lja ett lager fr&aring;n kartan kan du v&auml;lja  <b>Bl&auml;ddra bland lager</b> l&auml;ngst ned i listrutan f&ouml;r att bl&auml;ddra till ditt inneh&aring;ll efter ett big data-fildelningsdataset eller geoobjektslager.
             </p>
@@ -97,13 +97,15 @@
             </p>
             <p>En ekvation som  <code>$feature.windspeed * 1000</code> till&auml;mpar en buffert p&aring; 1&nbsp;000 multiplicerad med f&auml;ltet <i>windspeed</i>. Du kan anv&auml;nda fler &auml;n ett f&auml;lt i buffertkalkylatorn.
             </p>
+            <p> Du kan ocks&aring; ange ett sp&aring;rmedvetet uttryck. Du kan till exempel ber&auml;kna summan av f&auml;ltv&auml;rdet <i>windspeed</i> f&ouml;r det aktuella geoobjektet och tv&aring; tidigare geoobjekt med en ekvation som <code>$track.field(windspeed).history(-3)</code>. P&aring; varje plats skulle summan av aktuell <i>windspeed</i> och tv&aring; tidigare m&auml;tningar ber&auml;knas och buffras.
+            </p>
         </div>
     </div>
     <div id="timeSplit">
         <div><h2>Välj en tidpunkt att dela spår från (valfritt)</h2></div>
         <hr/>
         <div>
-            <p>Tid som anv&auml;nds f&ouml;r att dela sp&aring;r. Om indatapunkterna eller -polygonerna &auml;r l&auml;ngre tillsammans &auml;n tidsdelningen, delas de i olika sp&aring;r.
+            <p>Tid som anv&auml;nds f&ouml;r att dela sp&aring;r. Om indatapunkterna eller indataomr&aring;dena &auml;r l&auml;ngre tillsammans &auml;n tidsdelningen, delas de i olika sp&aring;r.
             </p>
             <p>Om du anger en tidsdelning och en avst&aring;ndsdelning kommer sp&aring;ren att delas n&auml;r det ena eller b&aring;da villkoren &auml;r uppfyllda. 
             </p>
@@ -115,7 +117,7 @@
         <div><h2>Välj ett avstånd att dela spår från (valfritt)</h2></div>
         <hr/>
         <div>
-            <p> Avst&aring;nd som anv&auml;nds f&ouml;r att dela sp&aring;r. Om indatapunkterna eller -polygonerna har ett l&auml;ngre avst&aring;nd mellan sig &auml;n avst&aring;ndsdelningen, delas de i olika sp&aring;r.
+            <p> Avst&aring;nd som anv&auml;nds f&ouml;r att dela sp&aring;r. Om indatapunkterna eller indataomr&aring;dena har ett l&auml;ngre avst&aring;nd mellan sig &auml;n avst&aring;ndsdelningen, delas de i olika sp&aring;r.
             </p>
             <p>Om du anger en tidsdelning och en avst&aring;ndsdelning kommer sp&aring;ren att delas n&auml;r det ena eller b&aring;da villkoren &auml;r uppfyllda. 
             </p>
@@ -125,7 +127,7 @@
         <div><h2>Lägg till statistik (valfritt)</h2></div>
         <hr/>
         <div>
-            <p> Du kan ber&auml;kna statistik p&aring; summerade geoobjekt. P&aring; numeriska f&auml;lt kan du ber&auml;kna f&ouml;ljande:
+            <p> Du kan ber&auml;kna statistik p&aring; summerade geoobjekt. Du kan ber&auml;kna f&ouml;ljande p&aring; numeriska f&auml;lt:
                 <ul>
                     <li>Antal &ndash; Ber&auml;knar antal v&auml;rden som inte &auml;r null. Kan anv&auml;ndas p&aring; numeriska f&auml;lt eller str&auml;ngar. Antalet f&ouml;r [null, 0, 2] &auml;r 2.
                     </li>
@@ -139,14 +141,14 @@
                     </li>
                     <li>Intervall &ndash; Intervallet f&ouml;r ett numeriskt f&auml;lt. Det ber&auml;knas som det maximala v&auml;rdet minus minimiv&auml;rdena. Intervallet f&ouml;r [0, null, 1] &auml;r 1. Intervallet f&ouml;r [null, 4] &auml;r 0.
                     </li>
-                    <li>Varians &ndash; Variansen hos ett numeriskt f&auml;lt i ett sp&aring;r. Variansen hos [1] &auml;r null. Variansen hos [null, 1,1,1] &auml;r 1.
+                    <li>Varians &ndash; Variansen hos ett numeriskt f&auml;lt i ett sp&aring;r. Variansen hos [1] &auml;r null. Variansen hos [null, 1,0,1,1] &auml;r 0,25.
                     </li>
-                    <li>Standardavvikelse &ndash; Standardavvikelsen hos ett numeriskt f&auml;lt. Standardavvikelsen hos [1] &auml;r null. Standardavvikelsen hos [null, 1,1,1] &auml;r 1. 
+                    <li>Standardavvikelse &ndash; Standardavvikelsen hos ett numeriskt f&auml;lt. Standardavvikelsen hos [1] &auml;r null. Standardavvikelsen hos [null, 1,0,1,1] &auml;r 0,5. 
                     </li>
                 </ul>
                 
             </p>
-            <p>P&aring; f&auml;lt med str&auml;ngar kan du ber&auml;kna f&ouml;ljande:
+            <p>Du kan ber&auml;kna f&ouml;ljande p&aring; numeriska f&auml;lt:
                 <ul>
                     <li>Antal &ndash; Antalet str&auml;ngar som inte &auml;r null.
                     </li>
@@ -163,14 +165,14 @@
         <div>
             <p>GeoAnalytics-resultat sparas i ett ArcGIS-datalager och visas som ett geoobjektslager i  Portal for ArcGIS. I de flesta fall ska resultat sparas i det rumstemporala datalagret och det &auml;r standardinst&auml;llningen. I vissa fall &auml;r det ett bra alternativ att spara resultat i det relationella datalagret. F&ouml;ljande &auml;r anledningar till varf&ouml;r du kanske vill spara resultat i det relationella datalagret: 
                 <ul>
-                    <li>anv&auml;nda resultaten i samarbeten portal till portal
+                    <li>Du kan anv&auml;nda resultaten i portal-till-portal-samarbeten.
                     </li>
-                    <li>aktivera synkroniseringsfunktioner med dina resultat.
+                    <li>Du kan aktivera synkroniseringsfunktioner med dina resultat.
                     </li>
                 </ul>
                 
             </p>
-            <p>Du b&ouml;r inte anv&auml;nda det relationella datalagret om du f&ouml;rv&auml;ntar dig att dina GeoAnalytics-resultat kommer att &ouml;ka och du beh&ouml;ver anv&auml;nda det rumstemporala big data-lagrets funktioner till att hantera stora m&auml;ngder data. 
+            <p>Du b&ouml;r inte anv&auml;nda det relationella datalagret om du f&ouml;rv&auml;ntar dig att dina GeoAnalytics-resultat kommer att &ouml;ka och du beh&ouml;ver anv&auml;nda det rumstemporala big data-lagrets funktioner till att hantera stora m&auml;ngder data.
             </p>
         </div>
     </div>
@@ -178,7 +180,7 @@
         <div><h2>Resultatlagrets namn</h2></div>
         <hr/>
         <div>
-            <p> Det h&auml;r &auml;r namnet p&aring; lagret som skapas i <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns misslyckas verktyget.
+            <p> Namnet p&aring; lagret som skapas i <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns misslyckas verktyget.
             </p>
             <p>Om du anv&auml;nder listrutan  <b>Spara resultat i</b> kan du ange namnet p&aring; en mapp i <b>Mitt inneh&aring;ll</b> d&auml;r resultatet ska sparas.
             </p>

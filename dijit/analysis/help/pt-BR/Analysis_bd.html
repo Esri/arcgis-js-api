@@ -45,6 +45,8 @@
             <ul>
                 <li> <b>Agregar Pontos</b>
                 </li>
+                <li> <b>Construir Grade de M&uacute;ltiplas Vari&aacute;veis</b>
+                </li>
                 <li> <b>Ligar Fei&ccedil;&otilde;es</b>
                 </li>
                 <li> <b>Reconstruir Caminhos</b>
@@ -53,21 +55,27 @@
                 </li>
                 <li> <b>Resumir Dentro</b>
                 </li>
+                <li> <b>Geocodificar Locais da Tabela</b>
+                </li>
                 <li> <b>Detectar Incidentes</b>
                 </li>
                 <li> <b>Encontrar Locais Semelhantes</b>
                 </li>
                 <li> <b>Calcular Densidade</b>
                 </li>
+                <li> <b>Localizar Agrupamentos de Pontos</b>
+                </li>
                 <li> <b>Localizar Valor Alto de Incid&ecirc;ncia</b>
                 </li>
                 <li> <b>Criar Buffers</b>
                 </li>
-                <li> <b>Copiar para Armazenamento de Dados</b>
+                <li> <b>Anexar Dados</b>
                 </li>
                 <li> <b>Calcular Campo</b>
                 </li>
-                <li> <b>Geocodificar Locais da Tabela</b>
+                <li> <b>Copiar para Armazenamento de Dados</b>
+                </li>
+                <li> <b>Sobrepor Camadas</b>
                 </li>
             </ul>
             
@@ -78,9 +86,11 @@
     <div id="SummarizeDataCategory" class="largesize">
         <h2>Resumir Dados</h2>
         <hr/>
-        <p>O conjunto de ferramentas Resumir Dados cont&eacute;m ferramentas que calculam contagens totais, comprimentos, &aacute;reas e estat&iacute;stica descritiva b&aacute;sica de fei&ccedil;&otilde;es e seus atributos dentro de &aacute;reas ou pr&oacute;ximas de outras fei&ccedil;&otilde;es.
+        <p> O conjunto de ferramentas Resumir Dados cont&eacute;m ferramentas que calculam contagens totais, comprimentos, &aacute;reas e estat&iacute;stica descritiva b&aacute;sica de fei&ccedil;&otilde;es e seus atributos dentro de &aacute;reas ou pr&oacute;ximas de outras fei&ccedil;&otilde;es.
             <ul>
                 <li> <b>Agregar Pontos</b> calcula estat&iacute;sticas sobre pontos que caem dentro de &aacute;reas ou bandejas especificadas.
+                </li>
+                <li>A ferramenta  <b>Construir Grade de Vari&aacute;vel M&uacute;ltipla</b> gera uma grade de caixas quadrada ou hexagonais e calcula os valores para cada caixa baseado na proximidade de cada camada de entrada.
                 </li>
                 <li> <b>Ligar Fei&ccedil;&otilde;es</b> calcula estat&iacute;sticas sobre fei&ccedil;&otilde;es que compartilham um relacionamento de atributo ou espacial, temporal ou com outras fei&ccedil;&otilde;es.
                 </li>
@@ -107,11 +117,37 @@
 <hr/>
             <p>Utilize uma camada de fei&ccedil;&otilde;es de ponto ou uma camada de fei&ccedil;&otilde;es de &aacute;rea ou bandejas definidas por uma dist&acirc;ncia especificada, esta ferramenta determina quais pontos caem dentro de cada &aacute;rea ou bandeja e calcula estat&iacute;sticas sobre todos os pontos dentro de cada &aacute;rea ou bandeja. Voc&ecirc; pode opcionalmente aplicar um corte de tempo com esta ferramenta. 
             </p>
-            <p> Por exemplo
+            <p>Os seguintes s&atilde;o exemplos:
                 <ul>
-                    <li>Determinados locais de ponto dos incidentes de crime, contagem do n&uacute;mero de crimes por munic&iacute;pio ou outro distrito administrativo.
+                    <li>Determinados os locais de ponto dos incidentes de crime, contar o n&uacute;mero de crimes por munic&iacute;pio ou outro distrito administrativo.
                     </li>
-                    <li>Localizar as rendas mensais mais altas e mais baixas para locais de franquia utilizando caixas de 100 km.
+                    <li>Localizar as rendas mensais mais altas e mais baixas para locais de franquia utilizando caixas de 100-quil&ocirc;metros .
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="BuildMultiVariableGridTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Construir Grade de Múltiplas Variáveis</h2></td>
+                    <td>
+                    <img src="../images/GUID-B78AB95A-E412-4983-ADBA-3678BF207A79-web.png" class="titleImage" alt="Diagrama do Fluxo de Trabalho Anexar Dados">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>A ferramenta Construir Grade de M&uacute;ltiplas Vari&aacute;veis gera uma grade de caixas quadradas ou hexagonais e calcula vari&aacute;veis para cada caixa baseado na proximidade de uma ou mais camadas de entrada.
+            </p>
+            <p>Os seguintes s&atilde;o exemplos:
+                <ul>
+                    <li>Com as m&uacute;ltiplas camadas de infraestrutura de transporte p&uacute;blico fornecidas, qual parte da cidade &eacute; menos acess&iacute;vel pelo transporte p&uacute;blico?
+                    </li>
+                    <li>Com as camadas de vias fluviais fornecidas, como lagos e rios, qual &eacute; o nome do corpo d&rsquo;&aacute;gua mais pr&oacute;ximo de cada localiza&ccedil;&atilde;o nos Estados Unidos?
+                    </li>
+                    <li>Com uma camada de renda dom&eacute;stica fornecida, onde nos Estados Unidos a varia&ccedil;&atilde;o de renda nas 50 milhas circundantes &eacute; maior?
                     </li>
                 </ul>
                 
@@ -131,7 +167,7 @@
 <hr/>
             <p>Com a utiliza&ccedil;&atilde;o das camadas de fei&ccedil;&atilde;o ou dados tabelares, voc&ecirc; pode ligar fei&ccedil;&otilde;es e registros baseados em relacionamentos espec&iacute;ficos entre as camadas de entrada ou tabelas.  As liga&ccedil;&otilde;es ser&atilde;o determinadas por relacionamentos de atributos, espacial, temporal e a estat&iacute;stica sum&aacute;ria pode ser calculada opcionalmente.  
             </p>
-            <p>Por exemplo
+            <p>Os seguintes s&atilde;o exemplos:
                 <ul>
                     <li>Dadas as localiza&ccedil;&otilde;es dos pontos de incidentes do crime com um tempo, junte os dados de crime para voc&ecirc; mesmo, especificando um relacionamento espacial de crimes dentro de 1 quil&ocirc;metro um do outro, e que ocorreu no prazo de uma hora um do outro, para determinar se h&aacute; uma sequ&ecirc;ncia de crimes perto um ao outro no espa&ccedil;o e tempo.
                     </li>
@@ -155,7 +191,7 @@
 <hr/>
             <p>Utilize uma camada habilitada ao tempo de fei&ccedil;&otilde;es de pol&iacute;gono e de ponto ou que representa um  <code>momento</code> no tempo, esta ferramenta determina quais fei&ccedil;&otilde;es de entrada pertencem em um caminho e ordenar&aacute; as entradas consecutivamente no tempo. As estat&iacute;sticas s&atilde;o opcionalmente calculadas para as fei&ccedil;&otilde;es de entrada dentro de cada caminho.
             </p>
-            <p> Por exemplo
+            <p> Os seguintes s&atilde;o exemplos:
                 <ul>
                     <li>Dada as localiza&ccedil;&otilde;es de ponto e tempo das medi&ccedil;&otilde;es do furac&atilde;o, calcule a velocidade m&eacute;dia do vento e press&atilde;o m&aacute;xima de vento do furac&atilde;o.
                     </li>
@@ -179,11 +215,11 @@
 <hr/>
             <p> Com a utiliza&ccedil;&atilde;o de dados de fei&ccedil;&atilde;o ou tabelares, esta ferramenta resume as estat&iacute;sticas dos campos especificados.
             </p>
-            <p> Por exemplo
+            <p>Os seguintes s&atilde;o exemplos:
                 <ul>
-                    <li> Dadas as localiza&ccedil;&otilde;es de supermercados com um campo <i>COMPANY_NAME</i>, resuma as lojas pelo nome da companhia para determinar estat&iacute;sticas para cada companhia.
+                    <li>Com as localiza&ccedil;&otilde;es de supermercados fornecidas com um campo  <i>COMPANY_NAME</i>, resuma as lojas pelo nome da companhia para determinar estat&iacute;sticas para cada companhia.
                     </li>
-                    <li>Dada uma tabela de supermercados com campos  <i>COMPANY_NAME</i> e <i>COUNTY</i>, resuma as lojas pelo nome da companhia e munic&iacute;pio para determinar estat&iacute;sticas para cada companhia em cada munic&iacute;pio.
+                    <li>Com uma tabela de supermercados fornecida com campos   <i>COMPANY_NAME</i> e <i>COUNTY</i>, resuma as lojas pelo nome da companhia e munic&iacute;pio para determinar estat&iacute;sticas para cada companhia em cada munic&iacute;pio.
                     </li>
                 </ul>
                 
@@ -196,14 +232,14 @@
                 <tbody><tr>
                     <td><h2>Resumir Dentro</h2></td>
                     <td>
-                    <img src="../images/GUID-90E0CB1F-EB97-4752-B2EE-452B7B45475E-web.png" class="titleImage" alt="Resumir Dentro">
+                    <img src="../images/GUID-9B12DB3F-AA7B-41EB-87C6-D2DEC3D52DA9-web.png" class="titleImage" alt="Resumir Dentro">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
             <p>Localiza &aacute;reas (e por&ccedil;&otilde;es de &aacute;reas) que sobrep&otilde;em entre duas camadas e calcula a estat&iacute;stica da sobreposi&ccedil;&atilde;o. 
             </p>
-            <p> Por exemplo
+            <p>Os seguintes s&atilde;o exemplos:
                 <ul>
                     <li>Dada uma camada de &aacute;reas de bacia e uma camada de &aacute;reas de uso da superf&iacute;cie por tipo de uso do solo, calcular a &aacute;rea total em acres do tipo de uso do solo para cada bacia. 
                     </li>
@@ -240,11 +276,9 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p> <img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Detectar Incidentes">
+            <p>Esta ferramenta funciona com uma camada de pontos, linhas, &aacute;reas ou tabelas habilitadas ao tempo que representa um instante no tempo. Utilizando fei&ccedil;&otilde;es ordenadas sequencialmente, denominadas trilhas, esta ferramenta determina quais fei&ccedil;&otilde;es s&atilde;o incidentes de interesse. Os incidentes s&atilde;o determinados pelas condi&ccedil;&otilde;es que voc&ecirc; especifica. 
             </p>
-            <p>Esta ferramenta funciona com uma camada habilitado ao tempo de pontos, linhas, &aacute;reas ou tabelas que representam um momento no tempo. Com a utiliza&ccedil;&atilde;o das fei&ccedil;&otilde;es ordenadas consecutivamente, chamados caminhos, esta ferramenta determina quais fei&ccedil;&otilde;es s&atilde;o incidentes de interesse. Os incidentes s&atilde;o determinados por condi&ccedil;&otilde;es que voc&ecirc; especifica. 
-            </p>
-            <p>Por exemplo
+            <p>Os seguintes s&atilde;o exemplos:
                 <ul>
                     <li>Detecta medi&ccedil;&otilde;es de furac&atilde;o que s&atilde;o de Categoria 4 baseado em uma atributo de velocidade do vento.
                     </li>
@@ -266,9 +300,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p> <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" alt="Geocodificar Locais da Tabela">
-            </p>
-            <p>Converte endere&ccedil;os em coordenadas. Utilize esta ferramenta em tabelas de compartilhamento de arquivo big data.
+            <p>Converte endere&ccedil;os em coordenadas. Utilize esta ferramenta em tabelas de compartilhamento do arquivo de grandes dados.
             </p>
             <br/>
         </div>
@@ -285,7 +317,7 @@
 <hr/>
             <p>Com base nos crit&eacute;rios especificados, encontre locais semelhantes ao medir a semelhan&ccedil;a dos locais na sua camada de pesquisa do candidato para um ou mais locais de refer&ecirc;ncia. 
             </p>
-            <p>Por exemplo 
+            <p>Os seguintes s&atilde;o exemplos: 
                 <ul>
                     <li>Encontrar as dez lojas mais semelhantes atrav&eacute;s da an&aacute;lise do n&uacute;mero de empregados e das vendas anuais.
                     </li>
@@ -296,14 +328,16 @@
             </p>
             <br/>
         </div>
-    <div id="AnalyzePatternsCategory" class="smallsize">
-        <h2>Analisar Modelos</h2>
+    <div id="AnalyzePatternsCategory" class="regularsize">
+        <h2>Analisar Padrões</h2>
         <hr/>
-        <p>Estas ferramentas ajudam voc&ecirc; a identificar, quantificar e visualizar modelos espaciais em seus dados.  
+        <p> Estas ferramentas ajudam voc&ecirc; a identificar, quantificar e visualizar modelos espaciais em seus dados.
             <ul>
                 <li> <b>Calcular Densidade</b> obt&eacute;m quantidades conhecidas de algum fen&ocirc;meno e distribui estas quantidades pelo mapa.
                 </li>
                 <li> <b>Localizar Alto Valor de Incid&ecirc;ncia</b> identifica agrupamentos estatisticamente significativos no modelo espacial dos seus dados.
+                </li>
+                <li> <b>Localizar Agrupamentos de Ponto</b> localiza agrupamentos de fei&ccedil;&otilde;es de ponto ao redor de ru&iacute;do baseado em sua distribui&ccedil;&atilde;o espacial.
                 </li>
             </ul>
             
@@ -322,13 +356,37 @@
 <hr/>
             <p>A ferramenta Calcular Densidade cria um mapa de densidade a partir das fei&ccedil;&otilde;es de ponto, espalhando quantidades conhecidas de algum fen&ocirc;meno (representado como atributos de pontos) atrav&eacute;s do mapa. O resultado &eacute; uma camada de &aacute;reas representando a densidade.
             </p>
-            <p>Por exemplo
+            <p>Os seguintes s&atilde;o exemplos:
                 <ul>
                     <li>Calcular densidades dos hospitais dentro de um munic&iacute;pio. A camada resultante mostrar&aacute; &aacute;reas com acessibilidade alta e baixa para hospitais, e estas informa&ccedil;&otilde;es podem ser utilizadas para decidir onde novos hospitais devem ser constru&iacute;dos.
                     </li>
                     <li>Identificar &aacute;reas que est&atilde;o em alto risco de inc&ecirc;ndio em florestas baseado em hist&oacute;rico dos locais de inc&ecirc;ndio em florestas.
                     </li>
                     <li>Localizar comunidades que est&atilde;o longe de estradas importantes para planejar onde novas estradas devem ser constru&iacute;das.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="FindPointClustersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Localizar Agrupamentos de Pontos</h2></td>
+                    <td>
+                    <img src="../images/GUID-40DA7286-67EA-4333-91C5-4CD527C21B4A-web.png" class="titleImage" alt="Localizar Agrupamentos de Pontos">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>A ferramenta Localizar Agrupamentos de Pontos localiza agrupamentos de fei&ccedil;&otilde;es de ponto ao redor de ru&iacute;do baseado em sua distribui&ccedil;&atilde;o espacial.
+            </p>
+            <p>Os seguintes s&atilde;o exemplos:
+                <ul>
+                    <li>Localize agrupamentos de-casas infestadas por pragas para ajudar nos esfor&ccedil;os de erradica&ccedil;&atilde;o de alvo.  
+                    </li>
+                    <li>Informe e atue no salvamento e necessidades de evacua&ccedil;&atilde;o baseado no tamanho e localiza&ccedil;&atilde;o dos agrupamentos utilizando tweets localizados geograficamente seguindo perigos naturais ou ataques.
                     </li>
                 </ul>
                 
@@ -368,7 +426,7 @@
             
         </p>
     </div>
-        <div id="CreateBuffersTool" class="regularsize">
+        <div id="CreateBuffersTool" class="largesize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -381,7 +439,7 @@
 <hr/>
             <p>O buffer &eacute; uma &aacute;rea que cobre uma determinada dist&acirc;ncia a partir de uma fei&ccedil;&atilde;o de pol&iacute;gono, linha ou ponto.
             </p>
-            <p>Por exemplo
+            <p>Os seguintes s&atilde;o exemplos:
                 <ul>
                     <li>Utilizar fei&ccedil;&otilde;es de rio lineares, criar buffer de cada rio em 50 vezes a largura do rio para determinar um limite ciliar proposto.
                     </li>
@@ -392,14 +450,18 @@
             </p>
             <br/>
         </div>
-    <div id="ManageDataCategory" class="smallsize">
+    <div id="ManageDataCategory" class="regularsize">
         <h2>Gerenciar Dados</h2>
         <hr/>
-        <p>Estas ferramentas s&atilde;o utilizadas para gerenciamento di&aacute;rio de dados geogr&aacute;ficos e tabelares.
+        <p>Estas ferramentas s&atilde;o utilizadas para gerenciamento di&aacute;rio de dados geogr&aacute;ficos e tabelares. 
             <ul>
+                <li> <b>Anexar Dados</b> anexa fei&ccedil;&otilde;es a uma camada de fei&ccedil;&atilde;o hospedada existente.
+                </li>
                 <li> <b>Calcular Campo</b> cria um novo campo ou modifica um campo existente e cria uma nova camada em seu conte&uacute;do.
                 </li>
-                <li> <b>Copiar para Armazenamento de Dados</b> copia dados para seu ArcGIS Data Store e cria uma camada em seu conte&uacute;do.
+                <li> <b>Copiar para Armazenamento de Dados</b> copia dados para seu ArcGIS Data Store e cria uma camada em seu conte&uacute;do. 
+                </li>
+                <li> <b>Sobrepor Camadas</b> combina duas ou mais camadas em uma &uacute;nica camada.
                 </li>
             </ul>
             
@@ -417,7 +479,7 @@
             </table>
 <hr/>
             <p>Copia uma camada de fei&ccedil;&atilde;o de entrada ou tabela para um  ArcGIS Data Store e cria uma camada em seu  ArcGIS Enterprise. </p>
-            <p>Por exemplo
+            <p>Os seguintes s&atilde;o exemplos:
                 <ul>
                     <li>Copiar uma cole&ccedil;&atilde;o de  <code>.csv</code> arquivos CSV em um compartilhamento de um grande arquivo de dados para armazenamento de dados de espa&ccedil;o-tempo para visualiza&ccedil;&atilde;o.
                     </li>
@@ -440,11 +502,63 @@
             </table>
 <hr/>
             <p>Calcule valores para um campo novo ou existente e crie uma camada em seu conte&uacute;do em  ArcGIS Enterprise. </p>
-            <p>Por exemplo
+            <p>Os seguintes s&atilde;o exemplos:
                 <ul>
-                    <li>Modifique um campo existente denominado  <i>total</i> para ser a soma de renda dos campos <i>total_2016</i>, <i>total_2017</i>, e <i>total_2018</i>.
+                    <li>Modificar um campo existente denominado  <i>total</i> para ser a soma das receitas dos campos <i>total_2016</i>, <i>total_2017</i>, e <i>total_2018</i>.
                     </li>
-                    <li>Crie um novo campo para categorizar n&iacute;veis de perigo baseado em valores de campos como  <i>windspeed</i> e <i>pollutant</i>.
+                    <li>Criar um novo campo para categorizar os n&iacute;veis de perigo com base em valores de campo, como  <i>windspeed</i> e <i>pollutant</i>.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="OverlayLayersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Sobrepor Camadas</h2></td>
+                    <td>
+                    <img src="../images/GUID-00A64703-4E97-4398-AE5C-F1885375BC30-web.png" class="titleImage" alt="Sobrepor Camadas
+">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>A sobreposi&ccedil;&atilde;o combina duas ou mais camadas em uma &uacute;nica camada. A sobreposi&ccedil;&atilde;o &eacute; utilizada para responder uma das perguntas mais b&aacute;sicas da geografia,O que est&aacute; por cima do que? Os seguintes s&atilde;o exemplos:
+                <ul>
+                    <li>Quais lotes est&atilde;o dentro da &aacute;rea de inunda&ccedil;&atilde;o de 100 anos? (Dentro &eacute; somente outro modo de dizer sobre.)
+                          
+                    </li>
+                    <li>Qual uso do solo est&aacute; sobre qual tipo de solo?
+                         
+                    </li>
+                    <li>Quais po&ccedil;os est&atilde;o dentro de bases militares abandonadas?
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="AppendDataTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Acrescentar Dados</h2></td>
+                    <td>
+                    <img src="../images/GUID-8C95EAE0-904A-42C4-8C3D-303E74FD6DD7-web.png" class="titleImage" alt="Diagrama do Fluxo de Trabalho Anexar Dados">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Anexa fei&ccedil;&otilde;es para umas camada hospedada existentes em seu conte&uacute;do em  ArcGIS Enterprise. </p>
+            <p>Os seguintes s&atilde;o exemplos:
+                <ul>
+                    <li>Atualize sua camada de fei&ccedil;&atilde;o 2018_Sales cada m&ecirc;s que seus relat&oacute;rios forem disponibilizados. 
+                    </li>
+                    <li>Anexe conjunto de dados de acompanhamento de furac&atilde;o a partir dos anos 2016 e 2017 em um conjunto de dados de furac&atilde;o mestre.
+                    </li>
+                    <li>Colete e anexe conjunto de dados de v&aacute;rias origens com esquemas diferentes utilizando mapeamento de campo personalizado.
                     </li>
                 </ul>
                 

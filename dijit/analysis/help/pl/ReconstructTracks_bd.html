@@ -44,7 +44,7 @@
         <h2>Rekonstruuj ścieżki</h2><p/>
         <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Rekonstruuj ścieżki"></h2>
         <hr/>
-    <p>To narzędzie działa z zawierającą dane czasowe warstwą obiekt&oacute;w punktowych lub poligonowych reprezentujących  <code>moment</code> w czasie.   Najpierw narzędzie ustala przy użyciu identyfikatora to, kt&oacute;re obiekty należą do ścieżki. Ścieżki są porządkowane sekwencyjnie przy użyciu czasu w każdej lokalizacji i przekształcane w linię lub poligon reprezentujący ścieżkę przemieszczania się z biegiem czasu. Opcjonalnie dane wejściowe mogą być buforowane według pola, co spowoduje utworzenie poligonu w każdej lokalizacji. Te buforowane punkty (lub poligony, jeśli taką formę mają dane wejściowe) są następnie sekwencyjnie łączone w celu utworzenia ścieżki jako poligonu, kt&oacute;rego szerokość reprezentuje interesujący użytkownika atrybut. Wynikowe ścieżki mają czas rozpoczęcia i czas zakończenia, kt&oacute;re tymczasowo reprezentują pierwszy i ostatni obiekt ścieżki. Podczas tworzenia ścieżek statystyki dotyczące obiekt&oacute;w wejściowych są obliczane i przypisywane do ścieżki wynikowej. Najbardziej podstawowym obliczeniem statystycznym jest ustalenie liczby punkt&oacute;w przypadających na dany obszar, jednak można obliczyć r&oacute;wnież inne statystyki.
+    <p>To narzędzie działa z zawierającą dane czasowe warstwą obiekt&oacute;w punktowych lub powierzchniowych reprezentujących  <code>moment</code> w czasie. Najpierw narzędzie ustala przy użyciu identyfikatora to, kt&oacute;re obiekty należą do ścieżki. Ścieżki są porządkowane sekwencyjnie przy użyciu czasu w każdej lokalizacji i przekształcane w linię lub obszar reprezentujący ścieżkę przemieszczania się z biegiem czasu. Opcjonalnie dane wejściowe mogą być buforowane według pola, co spowoduje utworzenie obszaru w każdej lokalizacji. Te buforowane punkty lub obszary wejściowe są następnie sekwencyjnie łączone w celu utworzenia ścieżki w postaci obszaru, kt&oacute;rego szerokość reprezentuje interesujący użytkownika atrybut. Wynikowe ścieżki mają czas rozpoczęcia i czas zakończenia, kt&oacute;re czasowo reprezentują pierwszy i ostatni obiekt ścieżki. Podczas tworzenia ścieżek statystyki dotyczące obiekt&oacute;w wejściowych są obliczane i przypisywane do ścieżki wynikowej. Najbardziej podstawowym obliczeniem statystycznym jest ustalenie liczby punkt&oacute;w przypadających na dany obszar, jednak można obliczyć r&oacute;wnież inne statystyki.
     </p>
     <p>Obiekty na warstwach z danymi czasowymi mogą być reprezentowane na jeden z dw&oacute;ch sposob&oacute;w:
         <ul>
@@ -57,7 +57,7 @@
     </p>
     <p>Przyjmijmy na przykład, że dysponujesz pomiarami GPS huragan&oacute;w wykonywanymi co 10 minut. W ramach każdego pomiaru GPS rejestrowana jest nazwa huraganu, jego lokalizacja, czas rejestracji i prędkość wiatru. Przy użyciu tych informacji można utworzyć ścieżkę każdego huraganu, kt&oacute;ry będzie identyfikowany za pomocą nazwy. Dla każdego huraganu zostanie wygenerowana ścieżka.  Dodatkowo można będzie wykonać obliczenia statystyczne, takie jaki średnia, maksymalna i minimalna prędkość wiatru dla każdego huraganu lub liczba pomiar&oacute;w w ramach każdej ścieżki.
     </p>
-    <p>Używając tego samego przykładu, można buforować ścieżki według prędkości wiatru. Każdy pomiar będzie buforowany według pola prędkości wiatru w danej lokalizacji, a buforowane obszary zostaną połączone, tworząc poligonową reprezentację ścieżki, zawierającą także informacje o zmianach prędkości wiatru w trakcie trwania huraganu.   
+    <p>Używając tego samego przykładu, można buforować ścieżki według prędkości wiatru. Każdy pomiar będzie buforowany według pola prędkości wiatru w danej lokalizacji, a buforowane obszary zostaną połączone, tworząc obszarową reprezentację ścieżki, zawierającą także informacje o zmianach prędkości wiatru w trakcie trwania huraganu.   
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -65,7 +65,7 @@
         <div><h2>Wybierz obiekty do rekonstrukcji ścieżek</h2></div>
         <hr/>
         <div>
-            <p>Warstwa punktowa lub poligonowa, na podstawie kt&oacute;rej zostaną zrekonstruowane ścieżki. Warstwa wejściowa musi zawierać dane czasowe z obiektami reprezentującymi moment w czasie. Ta warstwa musi korzystać z układu wsp&oacute;łrzędnych odwzorowanych lub odniesienie przestrzenne przetwarzania musi zostać skonfigurowane w układzie wsp&oacute;łrzędnych odwzorowanych w oknie  <b>Środowiska analizy</b>, jeśli stosowany jest bufor.
+            <p>Warstwa punktowa lub obszarowa, kt&oacute;ra zostanie zrekonstruowana do postaci ścieżki. Warstwa wejściowa musi zawierać dane czasowe z obiektami reprezentującymi moment w czasie. Ta warstwa musi korzystać z układu wsp&oacute;łrzędnych odwzorowanych lub odniesienie przestrzenne przetwarzania musi zostać skonfigurowane w układzie wsp&oacute;łrzędnych odwzorowanych w oknie  <b>Środowiska analizy</b>, jeśli stosowany jest bufor.
             </p>
             <p>Opr&oacute;cz wybrania warstwy z mapy, można wybrać opcję  <b>Przeglądaj warstwy</b> znajdującą się w dolnej części listy rozwijanej, aby przejść do zasob&oacute;w zestawu danych udostępnionych plik&oacute;w dużych zbior&oacute;w danych lub warstwy obiektowej.
             </p>
@@ -95,7 +95,9 @@
         <div>
             <p>R&oacute;wnanie używane do obliczania odległości wok&oacute;ł obiekt&oacute;w wejściowych na potrzeby buforowania. To r&oacute;wnanie można wygenerować przy użyciu kalkulatora bufora i podstawowych operacji, takich jak dodawanie, odejmowanie, mnożenie i dzielenie. Wartości są obliczane przy użyciu układu wsp&oacute;łrzędnych analizy. Ta warstwa musi korzystać z układu wsp&oacute;łrzędnych odwzorowanych lub odniesienie przestrzenne przetwarzania musi zostać skonfigurowane w układzie wsp&oacute;łrzędnych odwzorowanych w oknie  <b>Środowiska analizy</b>, jeśli stosowany jest bufor.
             </p>
-            <p>R&oacute;wnanie w postaci  <code>$feature.predkosc_wiatru * 1000</code> spowoduje zastosowanie bufora o wielkości wynoszącej 1000 pomnożonego przez wartość w polu <i>predkosc_wiatru</i>. W kalkulatorze bufora można użyć więcej niż jednego pola.
+            <p>R&oacute;wnanie w postaci  <code>$feature.windspeed * 1000</code> spowoduje zastosowanie wartości bufora r&oacute;wnej 1000 pomnożonej przez wartość w polu <i>windspeed</i>. W kalkulatorze bufora można użyć więcej niż jednego pola.
+            </p>
+            <p> Można także określić wyrażenie zawierające dane o ścieżkach. Na przykład można obliczyć sumę wartości w polu <i>windspeed</i> dla bieżącego obiektu i dw&oacute;ch wcześniejszych obiekt&oacute;w za pomocą wyrażenia w postaci <code>$track.field(windspeed).history(-3)</code>. Suma bieżącej wartości pola <i>windspeed</i> i dw&oacute;ch wcześniejszych pomiar&oacute;w może być obliczona i buforowana dla każdej lokalizacji.
             </p>
         </div>
     </div>
@@ -103,7 +105,7 @@
         <div><h2>Wybierz okno czasowe do dzielenia ścieżek (opcjonalnie)</h2></div>
         <hr/>
         <div>
-            <p>Czas używany do dzielenia ścieżek. Jeśli okres między wejściowymi punktami lub poligonami jest dłuższy niż okno czasowe, zostaną one podzielone na r&oacute;żne ścieżki.
+            <p>Czas używany do dzielenia ścieżek. Jeśli okres między wejściowymi punktami lub obszaramijest dłuższy niż okno czasowe, zostaną one podzielone na r&oacute;żne ścieżki.
             </p>
             <p>Jeśli zostanie określone okno czasowe i podział odległości, ścieżki będą dzielone przy spełnieniu jednego lub obu warunk&oacute;w. 
             </p>
@@ -115,7 +117,7 @@
         <div><h2>Wybierz odległość do dzielenia ścieżek (opcjonalnie)</h2></div>
         <hr/>
         <div>
-            <p> Odległość używana do dzielenia ścieżek. Jeśli odległość między wejściowymi punktami lub poligonami jest większa niż podział odległości, zostaną one podzielone na r&oacute;żne ścieżki.
+            <p> Odległość używana do dzielenia ścieżek. Jeśli odległość między wejściowymi punktami lub obszarami jest większa niż podział odległości, zostaną one podzielone na r&oacute;żne ścieżki.
             </p>
             <p>Jeśli zostanie określone okno czasowe i podział odległości, ścieżki będą dzielone przy spełnieniu jednego lub obu warunk&oacute;w. 
             </p>
@@ -125,9 +127,9 @@
         <div><h2>Dodaj statystyki (opcjonalnie)</h2></div>
         <hr/>
         <div>
-            <p> Można obliczyć statystyki dla zsumowanych obiekt&oacute;w. W polach liczbowych można obliczyć następujące wartości:
+            <p> Można obliczyć statystyki dla zsumowanych obiekt&oacute;w.W polach liczbowych można obliczyć następujące wartości:
                 <ul>
-                    <li>Liczba &mdash; zlicza wartości inne niż null. Może być używane w polach liczbowych lub znakowych. Liczba dla wartości [null, 0, 2] wynosi 2.
+                    <li>Liczba &mdash; zlicza wartości inne niż null.Może być używane w polach liczbowych lub znakowych. Liczba dla wartości [null, 0, 2] wynosi 2.
                     </li>
                     <li>Suma &mdash; suma wartości liczbowych w polu. Suma dla wartości [null, null, 3] wynosi 3.
                     </li>
@@ -139,14 +141,14 @@
                     </li>
                     <li>Zakres &mdash; zakres pola liczbowego. Zakres jest obliczany przez odjęcie wartości minimalnych od wartości maksymalnej. Zakres dla wartości [0, null, 1] wynosi 1. Zakres dla wartości [null, 4] wynosi 0.
                     </li>
-                    <li>Wariancja &mdash; wariancja pola liczbowego w ścieżce. Wariancja dla wartości [1] wynosi null. Wariancja dla wartości [null, 1, 1 ,1] wynosi 1.
+                    <li>Wariancja &mdash; wariancja pola liczbowego w ścieżce. Wariancja dla wartości [1] wynosi null. Wariancja dla wartości [null, 1,0,1,1] wynosi 0,25.
                     </li>
-                    <li>Odchylenie standardowe &mdash; odchylenie standardowe pola liczbowego. Odchylenie standardowe dla wartości [1] wynosi null. Odchylenie standardowe dla wartości [null, 1, 1 ,1] wynosi 1. 
+                    <li>Odchylenie standardowe &mdash; odchylenie standardowe pola liczbowego. Odchylenie standardowe dla wartości [1] wynosi null. Odchylenie standardowe dla wartości [null, 1,0,1,1] wynosi 0,5. 
                     </li>
                 </ul>
                 
             </p>
-            <p>W polach ciąg&oacute;w znakowych można obliczyć następujące wartości:
+            <p>W polach znakowych można obliczyć następujące wartości:
                 <ul>
                     <li>Liczba &mdash; liczba ciąg&oacute;w znakowych innych niż null.
                     </li>
@@ -161,16 +163,16 @@
         <div><h2>Wybierz aplikację ArcGIS Data Store, w której zostaną zapisane wyniki</h2></div>
         <hr/>
         <div>
-            <p>Wyniki analiz geoprzestrzennych są przechowywane w aplikacji ArcGIS Data Store i udostępniane jako warstwa obiektowa w witrynie  Portal for ArcGIS. W większości przypadk&oacute;w wyniki powinny być przechowywane w magazynie danych czasowo-przestrzennych i jest to ustawienie domyślne. W niekt&oacute;rych przypadkach dobrym rozwiązanie jest zapisanie wynik&oacute;w w relacyjnym magazynie danych. Poniżej podano sytuacje, kt&oacute;re mogą uzasadniać przechowywanie wynik&oacute;w w relacyjnym magazynie danych: 
+            <p>Wyniki analiz geoprzestrzennych są przechowywane w aplikacji ArcGIS Data Store i udostępniane jako warstwa obiektowa w witrynie  Portal for ArcGIS. W większości przypadk&oacute;w wyniki powinny być przechowywane w magazynie danych czasowo-przestrzennych i jest to ustawienie domyślne. W niekt&oacute;rych przypadkach dobrym rozwiązaniem jest zapisanie wynik&oacute;w w relacyjnym magazynie danych. Poniżej podano sytuacje, kt&oacute;re mogą uzasadniać przechowywanie wynik&oacute;w w relacyjnym magazynie danych: 
                 <ul>
-                    <li>Używanie wynik&oacute;w w ramach kooperacji między portalami.
+                    <li>Wyniki mogą być używane w ramach kooperacji między portalami.
                     </li>
-                    <li>Włączanie możliwości synchronizacji dla wynik&oacute;w.
+                    <li>Została włączona możliwość synchronizacji wynik&oacute;w.
                     </li>
                 </ul>
                 
             </p>
-            <p>Nie należy używać relacyjnego magazynu danych, jeśli liczba wynik&oacute;w analiz geoprzestrzennych może się zwiększyć i może być konieczne zastosowanie magazynu dużych zbior&oacute;w danych czasowo-przestrzennych w celu obsłużenia dużych ilości danych. 
+            <p>Nie należy używać relacyjnego magazynu danych, jeśli liczba wynik&oacute;w analiz geoprzestrzennych może się zwiększyć i może być konieczne zastosowanie magazynu dużych zbior&oacute;w danych czasowo-przestrzennych w celu obsłużenia dużych ilości danych.
             </p>
         </div>
     </div>
@@ -178,7 +180,7 @@
         <div><h2>Nazwa warstwy wynikowej</h2></div>
         <hr/>
         <div>
-            <p> Jest to nazwa warstwy, kt&oacute;ra zostanie utworzona w&nbsp;zakładce <b>Moje zasoby</b> i&nbsp;zostanie dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, działanie narzędzia nie powiedzie się.
+            <p> Nazwa warstwy, kt&oacute;ra zostanie utworzona w obszarze <b>Moje zasoby</b> i dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, działanie narzędzia nie powiedzie się.
             </p>
             <p>Używając listy rozwijanej  <b>Zapisz wynik w</b>, można określić nazwę folderu w zakładce <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
             </p>

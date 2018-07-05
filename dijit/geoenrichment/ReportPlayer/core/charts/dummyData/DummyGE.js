@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
-define(["esri/dijit/geoenrichment/ReportPlayer/dataProvider/supportClasses/ge/LocalGEChart","dojo/i18n!../../../../../../nls/jsapi"],function(e,t){return t=t.geoenrichment.dijit.ReportPlayer.DummyGE,{_ge:null,getInstance:function(){return this._ge||(this._ge=this._createGE()),this._ge},_createGE:function(){var a={calculatorName:"dummyCalc"},r={dummyCalc:{data:{StdGeographyName:null},comparisonLevels:[{StdGeographyName:t.sampleData}]}};return new e(a,r)}}});
+define(["esri/dijit/geoenrichment/ReportPlayer/dataProvider/supportClasses/ge/LocalGEChart","dojo/i18n!esri/nls/jsapi"],function(e,t){return t=t.geoenrichment.dijit.ReportPlayer.DummyGE,{_ge:null,getInstance:function(){return this._ge||(this._ge=this._createGE()),this._ge},_createGE:function(){var a={calculatorName:"dummyCalc"},r={dummyCalc:{data:{StdGeographyName:null},comparisonLevels:[{StdGeographyName:t.sampleData}]}};return new e(a,r)}}});

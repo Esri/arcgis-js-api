@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>インシデントの検出</h2><p/>
+        <h2>インシデントの検出 (Detect Incidents)</h2><p/>
         <h2><img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="インシデントの検出"></h2>
         <hr/>
     <p>このツールは、特定時点を表すポイント、ライン、エリア、またはテーブルの時間対応レイヤーを操作します。このツールでは、トラッキングという順番に並んだフィーチャを使用して、対象となるインシデントのフィーチャを決定します。インシデントはユーザーの指定する条件によって決まります。
@@ -50,7 +50,7 @@
     </p>
     <p>たとえば、10 分間隔でのハリケーンの GPS 計測値があるとします。GPS 計測値ごとに、ハリケーンの名前、場所、記録時刻、および風速が記録されています。これらのフィールドを使用してインシデントを作成し、計測値が風速 208 km/時を超えると  <code>[Catastrophic]</code> というタイトルのインシデントにすることができます。終了条件を設定しないので、このインシデントはフィーチャが開始条件を満たさなくなった (風速 208 を下回った) 時点で終了します。
     </p>
-    <p>別の例を使用して、地域の水道の化学物質濃度を  <code>[contanimateLevel]</code> という名前のフィールドを使用して監視するとします。推奨されるレベルは 0.01 mg/L 未満で、0.03 mg/L を超えると危険レベルであることがわかっています。値が 0.03 mg/L を超えるとインシデントとなり、汚染レベルが正常に戻るまで解除されないインシデントを検出するには、開始条件に「 <code>contanimateLevel &gt; 0.03</code>」、終了条件に「 <code>contanimateLevel &lt; 0.01</code>」を使用してインシデントを作成します。これにより、値が 0.03 mg/L を超えてから 0.01 未満に戻るまでのすべてのシーケンスがマーク付けされます。
+    <p>別の例を使用して、地域の水道の化学物質濃度を  <code>[contaminateLevel]</code> という名前のフィールドを使用して監視するとします。推奨されるレベルは 0.01 mg/L 未満で、0.03 mg/L を超えると危険レベルであることがわかっています。値が 0.03 mg/L を超えるとインシデントとなり、汚染レベルが正常に戻るまで解除されないインシデントを検出するには、開始条件に「 <code>contaminateLevel &gt; 0.03</code>」、終了条件に「 <code>contaminateLevel &lt; 0.01</code>」を使用してインシデントを作成します。これにより、値が 0.03 mg/L を超えてから 0.01 未満に戻るまでのすべてのシーケンスがマーク付けされます。
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -68,7 +68,7 @@
         <div><h2>トラックの識別に使用する 1 つ以上のフィールドの選択</h2></div>
         <hr/>
         <div>
-            <p> トラッキングの識別子を表すフィールド。1 つまたは複数のフィールドを使用して、トラックの一意の値を表すことができます。
+            <p>トラッキング識別子を表すフィールド。1 つまたは複数のフィールドを使用して、トラックの一意の値を表すことができます。
             </p>
             <p>たとえば、ハリケーンのトラックを再構築する場合は、ハリケーン名をトラック フィールドとして使用できます。
             </p>
@@ -82,6 +82,8 @@
             </p>
             <p>たとえば、フィールド  <code>[concentration_1]</code> と <code>[concentration_2]</code> の合計が <code>[concentration_3]</code> を上回った時点で警告を表示するとします。このためには、条件として「 <code>($feature[&quot;concentration_1&quot;] +  $feature[&quot;concentration_2&quot;]) &gt; $feature[&quot;concentration_3&quot;])</code>」を適用します。
             </p>
+            <p>時間とともに濃度がどのように変化するかに興味があり、現在の  <code>[concentration_1]</code> が <code>[concentration_2]</code> の 2 つの前の計測値よりも大きい場合に警告されたい場合は、「 <code>$feature[&quot;concentration_1&quot;] &gt;   $track.field[&quot;concentration_2&quot;].history(-3,-1)</code>」のような条件式を使用できます。
+            </p>
         </div>
     </div>
     <div id="endConditionExpression">
@@ -91,6 +93,8 @@
             <p>オプションで、式の設定を使用して条件を追加し、インシデントの終了を決定します。指定した終了条件が true の場合、そのフィーチャはインシデントでなくなります。終了条件を指定しない場合、開始条件が true でなくなった時点でインシデントが終了します。
             </p>
             <p>たとえば、フィールド  <code>[concentration_1]</code> と <code>[concentration_2]</code> の合計が <code>[concentration_3]</code> を上回った時点で警告を表示し、 <code>[concentration_4]</code> が <code>[concentration_1]</code> を下回った時点でインシデントを終了するとします。このためには、開始条件として「 <code>($feature[&quot;concentration_1&quot;] +  $feature[&quot;concentration_2&quot;]) &gt; ($join[&quot;income&quot;] * .20)</code>」を適用し、終了条件として「 <code>($feature[&quot;concentration_4&quot;] &lt; $feature[&quot;concentration_1&quot;])</code>」を適用します。
+            </p>
+            <p>現在の  <code>[concentration_1]</code> および 4 つの前の計測値の平均が 1 番目の計測値よりも大きい場合にインシデントを終了したい場合は、「 <code>$track.field[&quot;concentration_1&quot;].history(-5) &gt; $track.field[&quot;concentration_1&quot;].history(0)</code>」のような条件式を使用できます。
             </p>
         </div>
     </div>
@@ -113,7 +117,7 @@
         <div><h2>結果レイヤー名</h2></div>
         <hr/>
         <div>
-            <p>  <b>[マイ コンテンツ]</b> で作成され、マップに追加されるレイヤーの名前です。デフォルトの名前は、ツール名と入力レイヤー名に基づいて設定されます。レイヤーがすでに存在する場合、このツールは正常に実行されません。
+            <p>  <b>[マイ コンテンツ]</b> で作成され、マップに追加されるレイヤーの名前。デフォルトの名前は、ツール名と入力レイヤー名に基づいて設定されます。レイヤーがすでに存在する場合、このツールは正常に実行されません。
             </p>
             <p> <b>[出力の保存場所]</b> ドロップダウン ボックスを使用して、結果を保存する <b>[マイ コンテンツ]</b> 内のフォルダーの名前を指定できます。
             </p>

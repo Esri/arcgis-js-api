@@ -102,7 +102,7 @@ the area, but other statistics can be calculated  as well.
             </p>
             <p>An equation like  <code>$feature.windspeed * 1000</code> would apply a buffer of 1,000 multiplied by the field <i>windspeed</i>. You may use more than one field in the buffer calculator.
             </p>
-            <p>You can also specify a track aware expression. For example, you could calculate the sum of field value  <i>windspeed</i> for the current feature and previous two features with an equation like <code>$track.field(windspeed).history(-3)</code>. At each location, the sum of the current <i>windspeed</i>, and previous two measurements would be calculated and buffered.
+            <p> You can also specify a track aware expression. For example, you could calculate the sum of field value <i>windspeed</i> for the current feature and previous two features with an equation like <code>$track.field(windspeed).history(-3)</code>. At each location, the sum of the current <i>windspeed</i>, and previous two measurements would be calculated and buffered.
             </p>
         </div>
     </div>
@@ -132,9 +132,9 @@ the area, but other statistics can be calculated  as well.
         <div><h2>Add statistics (optional)</h2></div>
         <hr/>
         <div>
-            <p> You can calculate statistics on features that are summarized. On numeric fields you can calculate the following:
+            <p> You can calculate statistics on features that are summarized. You can calculate the following on numeric fields:
                 <ul>
-                    <li>Count&mdash;Calculates the number of nonnull values. Can be used on numeric fields or strings. The count of [null, 0, 2] is 2.
+                    <li>Count&mdash;Calculates the number of nonnull values. It can be used on numeric fields or strings. The count of [null, 0, 2] is 2.
                     </li>
                     <li>Sum&mdash;The sum of numeric values in a field. The sum of [null, null, 3] is 3.
                     </li>
@@ -153,7 +153,7 @@ the area, but other statistics can be calculated  as well.
                 </ul>
                 
             </p>
-            <p>On string fields you can calculate the following:
+            <p>You can calculate the following on string fields:
                 <ul>
                     <li>Count&mdash;The number of nonnull strings.
                     </li>
@@ -170,7 +170,7 @@ the area, but other statistics can be calculated  as well.
         <div>
             <p>GeoAnalytics results are stored to an ArcGIS Data Store and exposed as a feature layer in   Portal for ArcGIS. In most cases, results should be stored to the spatiotemporal data store and this is the default. In some cases, saving results to the  relational data store is a good option. The following are reasons why you may want to store results to the relational data store: 
                 <ul>
-                    <li>You can ue results in portal-to-portal collaboration.
+                    <li>You can use results in portal-to-portal collaboration.
                     </li>
                     <li>You can enable sync capabilities with your results.
                     </li>

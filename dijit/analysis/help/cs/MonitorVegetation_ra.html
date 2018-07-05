@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Monitorovat vegetaci</h2><p/>
+        <h2>Monitorovat vegetaci (Monitor Vegetation)</h2><p/>
         <h2><img src="../images/GUID-7763FCC0-2EA1-463B-98D0-4EBDF6150907-web.png" alt="N&aacute;stroj Monitorovat vegetaci pro port&aacute;l"></h2>
         <hr/>
     <p>Tento n&aacute;stroj provede aritmetickou operaci s&nbsp;p&aacute;smy v&iacute;cep&aacute;smov&eacute; rastrov&eacute; vrstvy, aby zjistil informace o pokryt&iacute; vegetac&iacute; v&nbsp;z&aacute;jmov&eacute; oblasti.
@@ -60,7 +60,7 @@
         <div><h2>Zvolte způsob monitorování vegetace</h2></div>
         <hr/>
         <div>
-            <p>Vyberte metodu vytvořen&iacute; vrstvy vegetačn&iacute;ho indexu. Různ&eacute; vegetačn&iacute; indexy mohou pomoci zv&yacute;raznit určit&eacute; prvky nebo pomoci omezit různ&eacute; druhy &scaron;umu.
+            <p>Vyberte metodu vytvořen&iacute; vrstvy vegetačn&iacute;ho indexu. Různ&eacute; vegetačn&iacute; indexy mohou pomoci zv&yacute;raznit určit&eacute; prvky nebo omezit různ&eacute; druhy &scaron;umu.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
@@ -76,7 +76,7 @@ MSAVI2 je vegetačn&iacute; index, kter&yacute; se snaž&iacute; minimalizovat v
 
                 </li>
                 <li>Normalized Difference Vegetation Index  &mdash; 
-NDVI je standardizovan&yacute; index, kter&yacute; v&aacute;m umožňuje vygenerovat obr&aacute;zek zobrazuj&iacute;c&iacute; zelenost (relativn&iacute; biomasu). Tento index využ&iacute;v&aacute; kontrastu charakteristik dvou p&aacute;sem z&nbsp;multispektr&aacute;ln&iacute; rastrov&eacute; datov&eacute; sady: absorpce chlorofylov&eacute;ho barviva v&nbsp;červen&eacute;m p&aacute;smu a vysok&eacute; odrazivosti rostlinn&yacute;ch materi&aacute;lů v&nbsp;bl&iacute;zk&eacute;m infračerven&eacute;m (NIR) p&aacute;smu.
+NDVI je standardizovan&yacute; index, kter&yacute; v&aacute;m umožňuje vygenerovat obr&aacute;zek zobrazuj&iacute;c&iacute; zelenost či relativn&iacute; biomasu. Tento index využ&iacute;v&aacute; kontrastu charakteristik dvou p&aacute;sem z&nbsp;multispektr&aacute;ln&iacute; rastrov&eacute; datov&eacute; sady: absorpce chlorofylov&eacute;ho barviva v&nbsp;červen&eacute;m p&aacute;smu a vysok&eacute; odrazivosti rostlinn&yacute;ch materi&aacute;lů v&nbsp;bl&iacute;zk&eacute;m infračerven&eacute;m (NIR) p&aacute;smu.
 
                 </li>
                 <li>Perpendicular Vegetation Index &mdash; 
@@ -102,9 +102,9 @@ Transformovan&yacute; SAVI je vegetačn&iacute; index, kter&yacute; se snaž&iac
         <div><h2>Určete indexy pro pásmo NIR a červené pásmo</h2></div>
         <hr/>
         <div>
-            <p>Zadejte indexy p&aacute;sem pro bl&iacute;zk&eacute; infračerven&eacute; (NIR) a červen&eacute; p&aacute;smo.
+            <p>Zadejte indexy p&aacute;sem pro NIR a červen&eacute; p&aacute;smo.
             </p>
-            <p>Každ&yacute; satelitn&iacute; senzor a leteck&yacute; fotoapar&aacute;t zachycuje informace, kter&eacute; se děl&iacute; na indexy p&aacute;sem. Každ&yacute; index p&aacute;sma obsahuje informace pro konkr&eacute;tn&iacute; č&aacute;st elektromagnetick&eacute;ho spektra. Tato metoda monitorov&aacute;n&iacute; vegetace vyžaduje, abyste zadali index p&aacute;sma, kter&yacute; zachytil vlnov&eacute; d&eacute;lky červen&eacute;ho a NIR p&aacute;sma.
+            <p>Každ&yacute; satelitn&iacute; senzor a leteck&yacute; fotoapar&aacute;t zachycuje informace, kter&eacute; se děl&iacute; na indexy p&aacute;sem. Každ&yacute; index p&aacute;sma obsahuje informace pro konkr&eacute;tn&iacute; č&aacute;st elektromagnetick&eacute;ho spektra. Tato metoda monitorov&aacute;n&iacute; vegetace vyžaduje, abyste zadali index p&aacute;sma, kter&yacute; zachytil vlnov&eacute; d&eacute;lky NIR a červen&eacute;ho p&aacute;sma.
             </p>
         </div>
     </div>
@@ -114,19 +114,19 @@ Transformovan&yacute; SAVI je vegetačn&iacute; index, kter&yacute; se snaž&iac
         <div>
             <p>Svažitost linie půdy. Svažitost je přibližn&yacute; line&aacute;rn&iacute; vztah mezi p&aacute;smem NIR a červen&yacute;m p&aacute;smem na rozpt&yacute;len&eacute;m bodov&eacute;m grafu.
             </p>
-            <p>Tento parametr je platn&yacute; pouze pro Transformovan&yacute; půdně přizpůsoben&yacute; vegetačn&iacute; index.
+            <p>Tento parametr je platn&yacute; pouze pro metodu Transformovan&yacute; půdně přizpůsoben&yacute; vegetačn&iacute; index.
             </p>
         </div>
     </div>
     <div id="interceptOfSoilLine">
-        <div><h2>Průsečík</h2></div>
+        <div><h2>Intercepce</h2></div>
         <hr/>
         <div>
-            <p>Toto je hodnota bl&iacute;zk&eacute;ho infračerven&eacute;ho (NIR) p&aacute;sma, když hodnota odrazu pro červen&eacute; p&aacute;smo pro konkr&eacute;tn&iacute; linie půdy je 0.
+            <p>Hodnota NIR p&aacute;sma, když hodnota odrazu pro červen&eacute; p&aacute;smo pro konkr&eacute;tn&iacute; linie půdy je 0.
             </p>
             <p> <code>(a = NIR - sRed)</code> , když hodnota červen&eacute;ho p&aacute;sma je 0.
             </p> 
-            <p>Tento parametr je platn&yacute; pouze pro Transformovan&yacute; půdně přizpůsoben&yacute; vegetačn&iacute; index.
+            <p>Tento parametr je platn&yacute; pouze pro metodu Transformovan&yacute; půdně přizpůsoben&yacute; vegetačn&iacute; index.
             </p>
         </div>
     </div>
@@ -134,9 +134,9 @@ Transformovan&yacute; SAVI je vegetačn&iacute; index, kter&yacute; se snaž&iac
         <div><h2>Množství zeleného vegetačního krytu</h2></div>
         <hr/>
         <div>
-            <p>Metoda SAVI vyžaduje zad&aacute;n&iacute; množstv&iacute; vegetačn&iacute;ho krytu.
+            <p>Určuje množstv&iacute; zelen&eacute;ho vegetačn&iacute;ho krytu, kter&yacute; je vyžadov&aacute;n pro metodu SAVI.
             </p>
-            <p>Zadejte hodnotu mezi 0,0 a 1,0, kde 
+            <p>Platn&eacute; hodnoty jsou n&aacute;sleduj&iacute;c&iacute;: 
 
                 <ul>
                     <li>1 = oblasti bez zelen&eacute;ho vegetačn&iacute;ho krytu
@@ -160,9 +160,9 @@ Transformovan&yacute; SAVI je vegetačn&iacute; index, kter&yacute; se snaž&iac
         <div><h2>Faktor přizpůsobení</h2></div>
         <hr/>
         <div>
-            <p>Metoda Transformovan&yacute; půdně upraven&yacute; vegetačn&iacute; index vyžaduje nastaven&iacute; faktoru přizpůsoben&iacute;, aby mohl b&yacute;t l&eacute;pe minimalizov&aacute;n &uacute;činek půdy. V&yacute;choz&iacute; hodnota je 0,08.
+            <p>Určuje faktor přizpůsoben&iacute; pro minimalizaci &uacute;činku půdy, kter&yacute; se vyžaduje metodou Transformovan&yacute; půdně přizpůsoben&yacute; vegetačn&iacute; index. V&yacute;choz&iacute; hodnota je 0,08.
             </p>
-            <p>Niž&scaron;&iacute; hodnota znamen&aacute;, že &uacute;činek půdy ignorujete. Vysok&aacute; hodnota znamen&aacute;, že půda ovlivn&iacute; v&aacute;&scaron; v&yacute;sledek.
+            <p>N&iacute;zk&aacute; hodnota znamen&aacute;, že &uacute;činek půdy ignorujete. Vysok&aacute; hodnota znamen&aacute;, že půda ovlivn&iacute; v&aacute;&scaron; v&yacute;sledek.
             </p>
         </div>
     </div>
@@ -172,7 +172,7 @@ Transformovan&yacute; SAVI je vegetačn&iacute; index, kter&yacute; se snaž&iac
         <div>
             <p>N&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce  <b>Můj obsah</b> a přid&aacute; se do mapy. V&yacute;choz&iacute; n&aacute;zev se ř&iacute;d&iacute; n&aacute;zvem n&aacute;stroje a n&aacute;zvem vstupn&iacute; vrstvy. Pokud v&yacute;sledn&aacute; vrstva již existuje, budete pož&aacute;d&aacute;ni o zad&aacute;n&iacute; jin&eacute;ho n&aacute;zvu.
             </p>
-            <p>V rozbalovac&iacute;m seznamu  <b>Uložit v&yacute;sledek do</b> můžete zadat n&aacute;zev složky ve složce <b>Můj obsah</b>, do kter&eacute; se m&aacute; v&yacute;sledek uložit.
+            <p>V&nbsp;rozbalovac&iacute;m seznamu  <b>Uložit v&yacute;sledek do</b> můžete zadat n&aacute;zev složky ve složce <b>Můj obsah</b>, do kter&eacute; se m&aacute; v&yacute;sledek uložit.
             </p>
         </div>
     </div>

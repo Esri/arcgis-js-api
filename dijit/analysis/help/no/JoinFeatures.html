@@ -78,7 +78,7 @@
         <div>
             <p>Du kan legge til en geografisk kobling, en attributtkobling eller en kombinasjon av de to. 
                 <ul>
-                    <li> <b>Spatial</b> &ndash; Bruker et bestemt romlig forhold til &aring; koble geoobjekter. Dette krever at begge lag har en geometri.
+                    <li> <b>Romlig</b> &ndash; Bruker et bestemt romlig forhold til &aring; koble geoobjekter. Dette krever at begge lag har en geometri.
                     </li>
                     <li> <b>Attributt</b> &ndash; Kobler geoobjekter p&aring; bakgrunn av p&aring; like felt.
                     </li>
@@ -116,7 +116,7 @@
         <div>
             <p>Attributtforholdet som vil avgj&oslash;re om geoobjektene skal kobles med hverandre. Geoobjekter matches n&aring;r feltverdiene i koblingslaget er lik feltverdiene i m&aring;llaget. 
             </p>
-            <p>La oss f.eks. si at vi har et landsdekkende geografisk lag med boligadresser (inkludert et felt med navnet  <i>POSTNR</i>) og et tabellarisk datasett med helsedemografi i henhold til postnummeret (inkludert et felt med navnet <i>HELSEPOST</i>). Du kan koble helsedatasettet til boligdataene ved &aring; matche feltet <i>POSTNR</i> til <i>HELSEPOST</i>, som vil resultere i et lag med boliger med tilh&oslash;rende helsedata.
+            <p>La oss for eksempel si at vi har et landsdekkende geografisk lag med boligadresser (inkludert et felt med navnet  <i>ZIP</i>) og et tabellbasert helsedatasett fordelt p&aring; postnummer (inkludert et felt med navnet <i>HEALTHZIP</i>). Du kan knytte helsedatasettet til boligdataene ved &aring; matche feltet <i>ZIP</i> med <i>HEALTHZIP</i>, noe som gir et lag med boliger med tilh&oslash;rende helsedata.
             </p>
         </div>
     </div>
@@ -144,7 +144,7 @@
             <p>Hvis alternativet for &aring;  <b>koble en til en</b> er valgt, kan du for numeriske felt summere og beregne statistikk p&aring; dine koblede geoobjekter. Som standard blir antallet samsvarende koblede geoobjekter beregnet og lagt til i resultatlaget. Hvis du lar v&aelig;re &aring; legge til mer statistikk, blir det f&oslash;rste samsvarende geoobjekt i koblingslaget koblet til det f&oslash;rste samsvarende geoobjektet i m&aring;llaget. Du kan ogs&aring; beregne ett eller flere av f&oslash;lgende:
             </p>
             <ul>
-                <li>Summer
+                <li>Sum
                 </li>
                 <li>Minimum
                 </li>
@@ -167,6 +167,14 @@
             <p>Dette er navnet p&aring; laget som opprettes i  <b>Mitt innhold</b> og legges til kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget allerede finnes, blir du bedt om &aring; oppgi et annet navn.
             </p>
             <p>Bruk rullegardinlisten  <b>Lagre resultat i</b> til &aring; angi navnet p&aring; en mappe i <b>Mitt innhold</b> som resultatene skal lagres i.
+            </p>
+        </div>
+    </div>
+    <div id="isView">
+        <div><h2>Lagre som en hostet geoobjektlagvisning</h2></div>
+        <hr/>
+        <div>
+            <p>N&aring;r du lagrer resultatene som en hostet geoobjektlagvisning, oppdateres dataene n&aring;r kildedataene endres.  Hostede geoobjektlagvisninger som inneholder tilknytninger, vil v&aelig;re skivebeskyttet og bruker ikke credits til analyse og lagring. 
             </p>
         </div>
     </div>

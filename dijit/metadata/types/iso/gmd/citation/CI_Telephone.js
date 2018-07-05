@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../../base/Descriptor","../../../../form/Element","../../../../form/iso/AbstractObject","../../../../form/iso/GcoElement","dojo/text!./templates/CI_Telephone.html","../../../../../../kernel"],function(e,t,o,a,n,r,s,i,d){var l=e(a,{templateString:i});return o("extend-esri")&&t.setObject("dijit.metadata.types.iso.gmd.citation.CI_Telephone",l,d),l});

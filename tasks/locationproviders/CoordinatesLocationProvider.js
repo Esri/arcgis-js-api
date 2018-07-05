@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
 define(["../../declare","../../geometry/Point","./LocationProviderClientBase"],function(e,i,t){return e("esri.tasks.locationproviders.CoordinatesLocationProvider",t,{xField:null,yField:null,geometryType:"esriGeometryPoint",getGeometry:function(e){var t=parseFloat(e.attributes[this.xField]),r=parseFloat(e.attributes[this.yField]);if(!isNaN(t)&&!isNaN(r))return new i(t,r,this.inSpatialReference)}})});

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>बिंदु क्लस्टर खोजें</h2><p/>
+        <h2><img src="../images/GUID-40DA7286-67EA-4333-91C5-4CD527C21B4A-web.png" alt="पॉइंट क्लस्टर खोजें"></h2>
+        <hr/>
+    <p> पॉइंट क्लस्टर खोजें टूल आसपास के शोर में पॉइंट फ़ीचर के स्पाशियल वितरण के आधार पर उनके क्लस्टर खोजता है।
+    </p>
+    <p>गैर-सरकारी संगठन कीट से पैदा होने वाले एक खास रोग के बारे में अध्ययन कर रहा है। इसके पास एक अध्ययन क्षेत्र के घरों को दर्शाने वाला पॉइंट डेटासेट है, जिनमें से कुछ पर आक्रमण हुआ है और कुछ पर नहीं।  पॉइंट क्लस्टर खोजें टूल का उपयोग करके,विश्लेषक उन घरों के क्लस्टर निर्धारित कर सकता है, जिन पर आक्रमण हुआ है, जिससे उपचार शुरू करने और कीटों के निर्मूलन के लिए उपचार शुरू करने में मदद मिल सके।
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>वह लेयर चुनें जिसके लिए क्लस्टर खोजा जाएगा</h2></div>
+        <hr/>
+        <div>
+            <p>वह पॉइंट लेयर जिसमें क्लस्टर मिलेंगे। लेयर प्रोजेक्ट किए गए स्पाशियल के संदर्भ में होनी चाहिए या उनमें  <b>विश्लेषण परिवेश</b> का उपयोग करने वाले प्रोजेक्ट किए गए निर्देशांक सिस्टम पर सेट किया गया प्रोसेसिंग स्पाशियल संदर्भ होना आवश्यक है।
+            </p>
+            <p>अपने नक्शे से एक लेयर चुनने के अलावा, आप बड़ी डेटा फ़ाइल साझा डेटासेट या फीचर लेयर के लिए अपनी सामग्री ब्राउज़ करने के लिए ड्रॉप-डाउन सूची के निचले भाग में  <b>ब्राउज़ लेयर</b> चुन सकते हैं।
+            </p>
+        </div>
+    </div>
+    <div id="minFeaturesCluster">
+        <div><h2>क्लस्टर मानने के लिए पॉइंट की न्यूनतम संख्या</h2></div>
+        <hr/>
+        <div>
+            <p>क्लस्टर आरंभ करने के लिए फ़ीचर की न्यूनतम संख्या।
+            </p>
+        </div>
+    </div>
+    <div id="searchDistance">
+        <div><h2>तक खोज सीमा को सीमित करें</h2></div>
+        <hr/>
+        <div>
+            <p>एक ही क्लस्टर का भाग होने के लिए विचार किए जाने वाले फ़ीचर हेतु दूरी।
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>परिणामी लेयर का नाम</h2></div>
+        <hr/>
+        <div>
+            <p> उस लेयर का नाम, जिसे <b>मेरी सामग्री</b> में बनाया जाएगा और मैप में जोड़ा जाएगा। इसका मूल नाम उपकरण के नाम और इनपुट लेयर के नाम पर आधारित है। अगर लेयर पहले से मौजूद है, तो टूल असफल हो जायेगा।
+            </p>
+            <p> <b>इसमें सहेजें</b> ड्राप-डाउन बॉक्स का उपयोग करके, आप <b>मेरी सामग्री</b> में एक फोल्डर का नाम निर्दिष्ट कर सकते हैं, जहां परिणामों को सहेजा जाएगा।।
+            </p>
+        </div>
+    </div>
+</div>
+</html>

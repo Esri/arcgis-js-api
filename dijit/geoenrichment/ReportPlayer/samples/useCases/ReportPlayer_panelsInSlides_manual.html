@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
+    <title>Report Player Sample (Local)</title>
+
+    <link rel="stylesheet" href="../../../../../../dijit/themes/claro/claro.css">
+    <link rel="stylesheet" href="../../../../../../esri/css/esri.css">
+
+    <script>
+        var dojoConfig = { async: true, locale: typeof dojoConfig !== 'undefined' && dojoConfig.locale || null, packages: [{ name: 'dojo', location: './dojo' }, { name: 'dijit', location: './dijit' }, { name: 'dojox', location: './dojox' }, { name: 'dgrid', location: './dgrid' }, { name: 'dstore', location: './dstore' }, { name: 'put-selector', location: './put-selector' }, { name: 'xstyle', location: './xstyle' }, { name: 'esri', location: './esri' }, { name: 'moment', location: './moment' }] };
+    </script>
+    <script data-dojo-config="baseUrl: '../../../../../..', isDebug: 1, waitSeconds: 60" src='../../../../../../dojo/dojo.js'></script>
+
+    <style>
+        html, body {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            overflow: hidden;
+            font-size: 13px;
+            font-family: "Avenir Next";
+            background-color: black;
+        }
+
+        .mapImage {
+            background-image: url("./images/grayMap.png");
+            background-size: cover;
+        }
+
+        .webSiteTitle {
+            font-size: 50px;
+            border-bottom: 2px solid orange;
+            margin: 30px;
+            color: orange;
+            padding-bottom: 10px;
+            position: relative;
+        }
+
+        .webSiteSubtitle {
+            margin: 30px;
+            font-size: 20px;
+            position: relative;
+            color: orange;
+        }
+
+        .playerWindow {
+            border: 5px solid orange;
+            width: 1000px;
+            height: 700px;
+            display: inline-block;
+            margin-left: 30px;
+            position: relative;
+            background-color: gray;
+            vertical-align: top;
+        }
+
+        .textArea {
+            display: inline-block;
+            color: orange;
+            width: 600px;
+            height: 700px;
+            position: relative;
+            vertical-align: top;
+            margin-left: 70px;
+            font-size: 24px;
+        }
+    </style>
+
+    <script>
+        require([
+            "esri/dijit/geoenrichment/ReportPlayer/samples/useCases/_sample",
+            "esri/dijit/geoenrichment/ReportPlayer/PlayerResizeModes",
+            "esri/dijit/geoenrichment/ReportPlayer/PlayerViewModes"
+        ],
+       function (
+           _sample,
+           PlayerResizeModes,
+           PlayerViewModes
+           ) {
+           _sample.run({
+               viewMode: PlayerViewModes.PANELS_IN_SLIDES,
+               resizeMode: PlayerResizeModes.MANUAL,
+               showToolbarInPopup: true,
+               playerDiv: playerDiv,
+               dimensions: {
+                   w: playerDiv.clientWidth,
+                   h: playerDiv.clientHeight
+               }
+           });
+       });
+    </script>
+</head>
+<body class="claro">
+    <div class="esriGEAbsoluteStretched mapImage"></div>
+    <div class="webSiteTitle">
+        Welcome to our web site
+    </div>
+    <div class="webSiteSubtitle">
+        In the window below you can see a nice infographic (fixed window 1000x700px).
+    </div>
+    <div class="playerWindow">
+        <div id="playerDiv" class="esriGEAbsoluteStretched"></div>
+    </div>
+    <div class="textArea">
+        <div style="font-size:30px">
+            About us
+        </div>
+        <p>
+            Esri (a.k.a. Environmental Systems Research Institute) is an international supplier of geographic information system (GIS) software, web GIS and geodatabase management applications. The company is headquartered in Redlands, California.
+        </p>
+
+        <p>
+            The company was founded as Environmental Systems Research Institute in 1969 as a land-use consulting firm. Esri products (particularly ArcGIS Desktop) have 40.7% of the global market share. In 2014, Esri had approximately a 43 percent share of the GIS software market worldwide, more than any other vendor.
+        </p>
+
+        <p>
+            The company has 10 regional offices in the U.S. and a network of 80+ international distributors,[5] with about a million users in 200 countries. The firm has 3,200 employees in the U.S., and is privately held by its founders. In 2006, revenues were about $660 million. In a 2016 Investor's Business Daily article, Esri's annual revenues were indicated to be $1.1 Billion, from 300,000 customers ($4000/customer/year).
+        </p>
+    </div>
+</body>
+</html>

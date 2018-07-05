@@ -33,3 +33,15 @@
         cursor: default;
         display: block;
     }
+
+    
+
+    .esriGEFlowList.esriGEFlowListWhiteBackground .listItem {
+        background-color: white;
+    }
+
+    
+
+    .esriGEFlowList.esriGEFlowListSpacedOut .listItem {
+        padding: 10px;
+    }

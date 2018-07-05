@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
 define(["../../declare","dojo/_base/lang","dojo/string","dojox/mvc/Templated","dojo/text!./templates/_WizardPage.html","./Grid","./ProgressHandler"],function(t,e,s,r,i,n,o){return t("esri.dijit.geoenrichment._WizardPage",r,{buttonsNode:null,_progressHandler:null,buildRendering:function(){var t=this.templateString;t&&"\ufeff"==t[0]&&(t=t.substr(1)),this.templateString=s.substitute(i,{content:t}),this.inherited(arguments),this.layoutGrid.rows=[n.AUTO,n.AUTO,n.AUTO]},resize:function(){this.layoutGrid.resize()},_setStackingAttr:function(t){switch(t){case"stretch":this.layoutGrid.rows[1]=n.STRETCH;break;case"stack":this.layoutGrid.rows[1]=n.STACK}},showProgress:function(t,s){return this._progressHandler||(this._progressHandler=new o(this.progressDiv,{queryNode:this.domNode}),this.own(this._progressHandler)),t=this._progressHandler.showProgress(t,"string"==typeof s?s:""),s=s?"function"==typeof s?s:this[s]:null,"function"==typeof s&&t.then(e.hitch(this,s)),t},cancelProgress:function(t){this._progressHandler&&this._progressHandler.cancelProgress("string"==typeof t?t:"")}})});

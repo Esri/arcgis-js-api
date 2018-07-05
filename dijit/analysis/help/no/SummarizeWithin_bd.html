@@ -42,7 +42,7 @@
 <div id="topics">
     <div id="toolDescription" class="regularsize">
         <h2>Summer innenfor</h2><p/>
-        <h2><img src="../images/GUID-90E0CB1F-EB97-4752-B2EE-452B7B45475E-web.png" alt="Summer innenfor"></h2>
+        <h2><img src="../images/GUID-9B12DB3F-AA7B-41EB-87C6-D2DEC3D52DA9-web.png" alt="Summer innenfor"></h2>
         <hr/>
     <p>Dette verkt&oslash;yet finner geoobjekter (og deler av geoobjekter) som er innenfor grensene for omr&aring;dene i det f&oslash;rste inndatalaget.  
         <ul>
@@ -53,7 +53,7 @@
         </ul>
         
     </p>
-    <p>Hvis det er merket av for  <b>Bruk gjeldende kartutstrekning</b>, er det kun geoobjektene i inndatalaget og laget som skal summeres, som er synlige i gjeldende kartutstrekning, som analyseres. Hvis det ikke er merket av for dette alternativet, analyseres alle geoobjekter i b&aring;de inndatalaget og laget som skal summeres, selv om de befinner seg utenfor gjeldende kartutstrekning.
+    <p>Hvis det er merket av for  <b>Bruk gjeldende kartutstrekning</b>, er det kun geoobjektene i inndatalaget og laget som skal summeres som er synlige i gjeldende kartutstrekning, som analyseres. Hvis det ikke er merket av for dette alternativet, analyseres alle geoobjekter i b&aring;de inndatalaget og laget som skal summeres, selv om de befinner seg utenfor gjeldende kartutstrekning.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -63,7 +63,7 @@
         <div>
             <p>Omr&aring;delaget som skal brukes til &aring; summere geoobjekter som er innenfor grensene. Du kan velge &aring; summere innenfor et polygonlag som du oppgir eller innenfor kvadrat eller heksagonbeholdere som genereres n&aring;r verkt&oslash;yet kj&oslash;res.  N&aring;r du genererer beholdere for  <b>Kvadrat</b>, avgj&oslash;r antallet og enhetene som er spesifisert h&oslash;yden og lengden p&aring; kvadratet. For <b>Heksagon</b> avgj&oslash;r antallet og enhetene som er angitt, avstanden mellom de parallelle sidene.
             </p>
-            <p>Analyse ved hjelp av beholderne  <b>Kvadrat</b> eller <b>Heksagon</b> krever et projisert koordinatsystem. Du kan angi <b>Behandlende koordinatsystem</b> i <b>Analysemilj&oslash;er</b>. Hvis koordinatsystemet for behandling ikke er angitt som et projisert koordinatsystem, blir du bedt om &aring; angi det n&aring;r du bruker funksjonen <b>Kj&oslash;r analyse</b>.
+            <p>Analyse ved hjelp av beholderne  <b>Kvadrat</b> eller <b>Heksagon</b> krever et projisert koordinatsystem. Du kan angi <b>Behandlende koordinatsystem</b> i <b>Analysemilj&oslash;er</b>. Hvis koordinatsystemet for behandling ikke er angitt som et projisert koordinatsystem, blir du bedt om &aring; angi det n&aring;r du bruker funksjonen <b>Kj&oslash;r analyse</b> .
             </p>
             <p>I tillegg til &aring; velge et lag fra kartet kan du velge  <b>Bla gjennom lag</b>, som du finner nederst i rullegardinlisten, til &aring; bla deg frem til innholdet for et fildelingsdatasett for big data eller et geoobjektslag.
             </p>
@@ -85,7 +85,7 @@
         <div>
             <p>Avstanden som brukes til &aring; generere beholdere.  
             </p>
-            <p>Enten  <b>Bin Size</b> (beholderst&oslash;rrelse) for trakter eller et <b>Omr&aring;delag</b> m&aring; angis.
+            <p>Du m&aring; angi enten  <b>Bin Size</b> (Beholderst&oslash;rrelse) for beholdere eller <b>Area Layer</b> (Omr&aring;delag).
             </p>
         </div>
     </div>
@@ -104,9 +104,9 @@
                 </ul>
                 
             </p>
-            <p>Tenk deg at du hadde data som representerte et &aring;r i tid, og du &oslash;nsket &aring; analysere ved hjelp av ukentlige trinn. Det kan du gj&oslash;re ved &aring; stille inn  <b>Tidsstegintervall</b> p&aring; <code>1 uke</code>.
+            <p>Hvis du for eksempel har data som representerer et &aring;r i tid, og du vil analysere dem ved &aring; bruke ukentlige trinn, setter du  <b>Tidsstegintervall</b> til <code>1 uke</code>. 
             </p>
-            <p>Tenk deg at du hadde data som representerte et &aring;r i tid, og du &oslash;nsket &aring; analysere ved hjelp av den f&oslash;rste uken i m&aring;neden. Det kan du gj&oslash;re ved &aring; stille inn  <b>Tidsstegintervall</b> p&aring; <code>1 uke</code>, <b>Hvor ofte skal tidssteget gjentas</b> til <code>1 m&aring;ned</code> og <b>Tid som tidssteg justeres mot</b> til <code>1. januar klokken 12.00</code>.
+            <p>Hvis du for eksempel har data som representerer et &aring;r i tid, og du vil analysere dem ved &aring; bruke den f&oslash;rste uken i m&aring;neden, setter du  <b>Tidsstegintervall</b> til <code>1 uke</code>, <b>Hvor ofte skal tidssteget gjentas</b> til <code>1 m&aring;ned</code>, og <b>Tid som tidssteg justeres mot</b> til <code>1. Januar kl. 12:00</code>.
             </p>
         </div>
     </div>
@@ -114,9 +114,9 @@
         <div><h2>Tidsintervall som det skal samles inn i</h2></div>
         <hr/>
         <div>
-            <p>Tidsintervall som brukes til &aring; generere tidssteg. Tidsintervallet kan brukes alene eller sammen med parameterne   <b>Hvor ofte skal tidssteget gjentas</b> eller <b>Tid som tidssteg justeres mot</b>.
+            <p>Intervallene som brukes til &aring; generere tidssteg.  <b>Tidsstegintervall</b> kan brukes alene eller sammen med parameterne <b>Hvor ofte skal tidssteget gjentas</b> eller <b>Tid som tidssteg justeres mot</b> .
             </p>
-            <p>Hvis du &oslash;nsket &aring; lage tidsinndelinger som fant sted hver mandag fra 09.00 til 10.00, ville  <b>Tidsstegintervall</b> v&aelig;rt <code>1 time</code>, <b>Hvor ofte skal tidssteget gjentas</b> ville v&aelig;rt <code>1 uke</code>, og <b>Tid som tidssteg justeres mot</b> ville v&aelig;rt <code>9.00.00 p&aring; en mandag</code>.
+            <p>Hvis du for eksempel vil opprette tidssteg som finner sted hver mandag fra kl. 09:00 til kl. 10:00, setter du  <b>Tidsstegintervall</b> til <code>1 time</code>, <b>Hvor ofte skal tidssteget gjentas</b> til <code>1 uke</code>, og <b>Tid som tidssteg justeres mot</b> til <code>kl. 09:00:00 p&aring; en mandag</code>.
             </p>
         </div>
     </div>
@@ -124,9 +124,9 @@
         <div><h2>Tidstrinn som det skal samles inn i</h2></div>
         <hr/>
         <div>
-            <p> Trinnet som brukes til &aring; beregne en tidsinndeling. <b>Hvor ofte skal tidssteget gjentas</b> kan brukes alene eller med <b>Tidsstegintervall</b>, <b>Referansetid</b> eller med b&aring;de <b>Tidsstegintervall</b> og <b>Tid som tidssteg justeres mot</b>.
+            <p> Trinnet som brukes til &aring; beregne et tidssteg. <b>Hvor ofte skal tidssteget gjentas</b> kan brukes alene, sammen med <b>Tidsstegintervall</b>, med <b>Referansetid</b>, eller med b&aring;de <b>Tidsstegintervall</b> og <b>Tid som tidssteg justeres mot</b>.
             </p>
-            <p> Hvis du &oslash;nsket &aring; lage tidsinndelinger som fant sted hver mandag fra 09.00 til 10.00, ville <b>Tidsstegintervall</b> v&aelig;rt <code>1 time</code>, <b>Hvor ofte skal tidssteget gjentas</b> ville v&aelig;rt <code>1 uke</code>, og <b>Tid som tidssteg justeres mot</b> ville v&aelig;rt <code>9.00.00 p&aring; en mandag</code>.
+            <p> Hvis du for eksempel vil opprette tidssteg som finner sted hver mandag fra kl. 09:00 til kl. kl.&nbsp;10:00, setter du <b>Tidsstegintervall</b> til <code>1 time</code>, <b>Hvor ofte skal tidssteget gjentas</b> til <code>1 uke</code>, og <b>Tid som tidssteg justeres mot</b> til <code>kl. 09:00:00 p&aring; en mandag</code>.
             </p>
         </div>
     </div>
@@ -134,9 +134,9 @@
         <div><h2>Referansetid som brukes til å innrette tidsinndelingen</h2></div>
         <hr/>
         <div>
-            <p>Datoen og tidspunktet som brukes til &aring; justere tidsinndelingene. Tidssteg starter fra og fortsetter bakover fra denne tiden. Hvis ingen referansetid velges, justeres tidssteg mot 1. januar 1970. 
+            <p>Datoen og tidspunktet som brukes til &aring; justere tidsinndelingene. Tidssteg starter fra p&aring; og fortsetter bakover fra denne tiden. Hvis ingen referansetid velges, justeres tidssteg mot 1. januar 1970. 
             </p>
-            <p> Hvis du &oslash;nsket &aring; lage tidsinndelinger som fant sted hver mandag fra 09.00 til 10.00, ville <b>Tidsstegintervall</b> v&aelig;rt <code>1 time</code>, <b>Hvor ofte skal tidssteget gjentas</b> ville v&aelig;rt <code>1 uke</code>, og <b>Tid som tidssteg justeres mot</b> ville v&aelig;rt <code>9.00.00 p&aring; en mandag</code>.
+            <p> Hvis du for eksempel vil opprette tidssteg som finner sted hver mandag fra kl. 09:00 til kl. 10:00, setter du <b>Tidsstegintervall</b> til <code>1 time</code>, <b>Hvor ofte skal tidssteget gjentas</b> til <code>1 uke</code>, og <b>Tid som tidssteg justeres mot</b> til <code>kl. 09:00:00 p&aring; en mandag</code>.
             </p>
         </div>
     </div>
@@ -144,9 +144,9 @@
         <div><h2>Legg til statistikk (valgfritt)</h2></div>
         <hr/>
         <div>
-            <p> Du kan beregne statistikk p&aring; geoobjekter som er summert. P&aring; numeriske felt kan du beregne f&oslash;lgende:
+            <p> Du kan beregne statistikk p&aring; geoobjekter som er summert. Du kan beregne f&oslash;lgende p&aring; numeriske felt:
                 <ul>
-                    <li>Antall &ndash; Beregner antall verdier som ikke er null. Kan brukes p&aring; numeriske felt eller strenger. Antallet for [null, 0, 2] er 2.
+                    <li>Antall&nbsp;&ndash; Beregner antall verdier som ikke er null. Det kan brukes p&aring; numeriske felt eller strenger. Antallet for [null, 0, 2] er 2.
                     </li>
                     <li>Sum &ndash; Summen av numeriske verdier i et felt. Summen av [null, null, 3] er 3.
                     </li>
@@ -158,14 +158,14 @@
                     </li>
                     <li>Omr&aring;de &ndash; Omr&aring;det for et numerisk felt. Beregnes som den maksimale verdien minus minimumsverdien. Omr&aring;det av [0, null, 1] er 1. Omr&aring;det av [null, 4] er 0.
                     </li>
-                    <li>Varians &ndash; Variansen for et numerisk felt i et spor. Variansen for [1] er null. Variansen for [null, 1,1,1] er 1.
+                    <li>Varians &ndash; Variansen for et numerisk felt i et spor. Variansen for [1] er null. Variansen for [null, 1,0,1,1] er 0,25.
                     </li>
-                    <li>Standardavvik &ndash; Standardavviket for et numerisk felt. Standardavviket for [1] er null. Standardavviket for [null, 1,1,1] er 1. 
+                    <li>Standardavvik &ndash; Standardavviket for et numerisk felt. Standardavviket for [1] er null. Standardavviket for [null, 1,0,1,1] er 0,5. 
                     </li>
                 </ul>
                 
             </p>
-            <p>P&aring; strengfelter kan du beregne f&oslash;lgende:
+            <p>Du kan beregne f&oslash;lgende p&aring; strengfelter:
                 <ul>
                     <li>Antall &ndash; Antallet strenger som ikke er null.
                     </li>
@@ -195,11 +195,36 @@
             </p>
         </div>
     </div>
-    <div id="spatialReference">
-        <div><h2>SpatialReference (wkid)</h2></div>
+    <div id="GroupBy">
+        <div><h2>Velg feltet det skal grupperes etter</h2></div>
         <hr/>
         <div>
-            <p>Dette er en midlertidig parameter for forh&aring;ndslansering, for &aring; angi den romlige referansen for behandling. Mange big data-verkt&oslash;y krever at et projisert koordinatsystem blir anvendt som den romlige referansen for behandling. Som standard vil verkt&oslash;yet bruke inndatakoordinatsystemet, men vil mislykkes hvis det er et geografisk koordinatsystem. Hvis du vil angi et projisert koordinatsystem, skriver du inn WKID. For eksempel angis  <b>Web Mercator</b> som <code>3857</code>.
+            <p>Dette er et attributt for funksjonen for summering  <b></b> av geoobjekter som du kan bruke til &aring; beregne statistikk for hver unike attributtverdi for seg. La oss for eksempel si at det f&oslash;rste inndatalaget inneholder bygrenser og geoobjektene for summering er tomter. Ett av attributtene for tomtene er <i>Status</i>, som inneholder to verdier: LEDIG og OPPTATT. N&aring;r du skal beregne det totale omr&aring;det med ledige og opptatte tomter innenfor byenes grenser, grupperer du etter attributtet <i>Status</i>. Statistikken for hver gruppe vises i resultatlagets popupvindu sammen med antall geoobjekter innenfor hver omr&aring;degrense.
+            </p>
+        </div>
+    </div>
+    <div id="MinorityMajority">
+        <div><h2>Legg til minoritet, majoritet</h2></div>
+        <hr/>
+        <div>
+            <p>Denne avmerkingsboksen er aktivert n&aring;r du velger &aring; gruppere etter et felt. Hvis du vil finne ut hvilke attributtverdier innenfor hver gruppe som er minoriteten (minst dominerende) eller majoriteten (mest dominerende) innenfor hver grense i det f&oslash;rste inndatalaget, velger du  <b>Legg til minoritet, majoritet</b>. N&aring;r du velger <b>Legg til minoritet, majoritet</b>, legges det til to felt i resultatlaget. Hvis du ogs&aring; velger <b>Legg til prosenter</b>, legges det til to ekstra felt i resultatlaget som inneholder prosentene for attributtverdiene for minoritet og majoritet innenfor hver gruppe.
+            </p>
+            <ul>
+                <li>Hvis du summerer punkter, beregnes minoritets- og majoritetsverdiene basert p&aring; antall punkt innenfor hvert avgrensningsomr&aring;de i det f&oslash;rste inndatalaget.  
+                </li>
+                <li>Hvis du summerer linjer, beregnes minoritets- og majoritetsverdiene basert p&aring; lengden av linjer innenfor hvert avgrensningsomr&aring;de i omr&aring;delaget med inndata.  
+                </li>
+                <li>Hvis du summerer omr&aring;der, beregnes minoritets- og majoritetsverdiene basert p&aring; omr&aring;dene innenfor hvert avgrensningsomr&aring;de i omr&aring;delaget med inndata  
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="PercentShape">
+        <div><h2>Legg til prosenter</h2></div>
+        <hr/>
+        <div>
+            <p>Denne boksen er aktivert n&aring;r du velger gruppere etter et felt.    Velg  <b>Legg til prosenter</b>  hvis du vil finne prosenten for hver attributtverdi innenfor hver gruppe.  Det legges til et nytt felt i resultattabellen som inneholder prosentene for hver attributtverdi innenfor hver gruppe.   Hvis det ogs&aring; er merket av for <b>Legg til prosenter</b>, legges det til to ekstra felt i resultatlaget som inneholder prosentene for attributtverdiene for minoritet og majoritet innenfor hver gruppe.
             </p>
         </div>
     </div>
@@ -207,16 +232,16 @@
         <div><h2>Velg datalager</h2></div>
         <hr/>
         <div>
-            <p>GeoAnalytics-resultater lagres i et ArcGIS Data Store og vises som et geoobjektslag i  Portal for ArcGIS. Resultatene b&oslash;r i de fleste tilfeller lagres i et spatiotemporalt datalager, og dette er standarden. I enkelte tilfeller er det en god l&oslash;sning &aring; lagre resultatene i relasjonsdatalageret. Du b&oslash;r lagre resultatene i relasjonsdatalageret av f&oslash;lgende &aring;rsaker: 
+            <p>GeoAnalytics-resultater lagres i en ArcGIS Data Store og vises som et geoobjektslag i  Portal for ArcGIS. Resultatene b&oslash;r i de fleste tilfeller lagres i et spatiotemporalt datalager, og dette er standarden. I enkelte tilfeller, er det en god l&oslash;sning &aring; lagre resultatene i relasjonsdatalageret. Du b&oslash;r lagre resultatene i to relasjonsdatalageret av f&oslash;lgende grunner: 
                 <ul>
-                    <li>Du kan bruke resultatene i portal til portal-samarbeid.
+                    <li>Du kan bruke resultater i portal-til-portal-samarbeid.
                     </li>
                     <li>Du kan aktivere synkroniseringsfunksjoner for resultatene dine.
                     </li>
                 </ul>
                 
             </p>
-            <p>Du b&oslash;r ikke bruke relasjonsdatalageret hvis du forventer at GeoAnalytics-resultatene kommer til &aring; &oslash;ke og du &oslash;nsker &aring; dra fordeler av det spatiotemporale stordatalagerets funksjoner til &aring; h&aring;ndtere store mengder data. 
+            <p>Du b&oslash;r ikke bruke relasjonsdatalageret hvis du forventer at GeoAnalytics-resultatene skal &oslash;ke, og du &oslash;nsker &aring; dra fordeler av det spatiotemporale stordatalagerets funksjoner til &aring; h&aring;ndtere store mengder data.
             </p>
         </div>
     </div>
@@ -224,7 +249,7 @@
         <div><h2>Navn på resultatlag</h2></div>
         <hr/>
         <div>
-            <p> Dette er navnet p&aring; laget som vil bli laget i <b>Mitt Innhold</b> og lagt til i kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget allerede eksisterer, vil verkt&oslash;yet mislykkes.
+            <p> Navnet p&aring; laget som opprettes i <b>Mitt innhold</b> og legges til kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget allerede eksisterer, vil verkt&oslash;yet mislykkes.
             </p>
             <p>Bruk rullegardinlisten  <b>Lagre resultat</b> i til &aring; angi navnet p&aring; en mappe i <b>Mitt innhold</b> som resultatene skal lagres i.
             </p>

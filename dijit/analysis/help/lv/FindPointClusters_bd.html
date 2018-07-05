@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Atrast punktu klasterus</h2><p/>
+        <h2><img src="../images/GUID-40DA7286-67EA-4333-91C5-4CD527C21B4A-web.png" alt="Atrast punktu klasterus"></h2>
+        <hr/>
+    <p>Rīks  Atrast punktu klasterus uz apkārtējo &quot;trok&scaron;ņu&quot; fona atrod punktu elementu klasterus, ņemot vērā to telpisko sadalījumu.
+    </p>
+    <p>Nevalstiskā organizācija pēta konkrētu kaitēkļu izraisītu slimību. Tās rīcībā ir punktu datu kopa, kas apzīmē mājsaimniecības pētāmajā teritorijā, un daži no &scaron;iem punktiem ir invadēti, bet daži nav. Izmantojot rīku  Atrast punktu klasterus, analītiķis var noteikt inficēto mājsaimniecību datu klasterus, lai palīdzētu atrast teritoriju, kur sākt ārstē&scaron;anu un kaitēkļu iznīcinā&scaron;anu.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Izvēlēties slāni, kuram tiks atrasti klasteri</h2></div>
+        <hr/>
+        <div>
+            <p>Punktu slānis, kurā tiks atrasti klasteri. Slāņiem ir jābūt ar projicēto telpisko atskaiti, vai arī apstrādes telpiskā atskaite ir jāiestata uz projicēto koordinātu sistēmu, izmantojot  <b>Analīzes darba vidi</b>.
+            </p>
+            <p>Papildus slāņa izvēlei kartē varat izvēlēties  <b>Pārlūkot slāņus</b> nolaižamā saraksta apak&scaron;ā, lai saturā atrastu Big Data koplietojuma datu kopu vai elementu slāni.
+            </p>
+        </div>
+    </div>
+    <div id="minFeaturesCluster">
+        <div><h2>Minimālais punktu skaits, kas uzskatāms par klasteri</h2></div>
+        <hr/>
+        <div>
+            <p>Minimālais elementu skaits, kas uzskatāms par klasteri.
+            </p>
+        </div>
+    </div>
+    <div id="searchDistance">
+        <div><h2>Ierobežojiet meklēšanas diapazonu līdz</h2></div>
+        <hr/>
+        <div>
+            <p>Maksimālais attālums, lai elementi būtu uzskatāmi par viena klastera daļu.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Rezultātu slāņa nosaukums</h2></div>
+        <hr/>
+        <div>
+            <p> Tā slāņa nosaukums, kas tiks izveidots sadaļā <b>Mans saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja slānis jau pastāv, rīks nedarbosies.
+            </p>
+            <p>Lietojot  <b>Saglabāt rezultātus</b> nolaižamajā sarakstlodziņā, jūs varat norādīt nosaukumu mapē <b>Mans saturs</b>, kur tiks saglabāti rezultāti.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

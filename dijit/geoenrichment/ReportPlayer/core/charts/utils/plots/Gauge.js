@@ -1,0 +1,25 @@
+// COPYRIGHT © 201 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
+
+define(["dojo/_base/declare","dojo/_base/lang","dojo/dom-style","dojox/gfx","dojox/gfx/matrix","./Donut","./animation/_GaugeAnimation","./supportClasses/GaugeLabelPlacement"],function(e,t,n,o,a,s,i,r){var l={getLabelInfo:function(e,n,s,i,l,u,h){var d=(void 0!==h?h:e[0].tooltip.valueLabel)+(n.series.isPercentState?"%":""),c=(n.series.donutHolePercent||0)/100,f=s*c*1.5;n.series.donutMainLabelPosition===r.INSIDE&&n.series.donutShowIcons&&(f/=2);var b=30,x=100,M=30,I={series:t.mixin({},n.series)};I.series.font=n.series.donutMainLabelFont||I.series.font,n.series.donutMainLabelFontColorFromConditionalStyling?I.series.fontColor=e[0].fill:I.series.fontColor=n.series.donutMainLabelFontColor||I.series.fontColor;var g=function(){if(n.series.donutMainLabelFontSize)return n.series.donutMainLabelFontSize;if(n.series.donutMainLabelPosition===r.OUTSIDE)return M;I.series.font=I.series.font.replace(/\s\w*px/," "+M+"px");var e=o._base._getTextBox(d,{font:I.series.font}),t=Math.max(e.w,e.h);return Math.min(x,Math.max(b,M*f/t))}();I.series.font=I.series.font.replace(/\s\w*px/," "+g+"px");var L,_=o._base._getTextBox(d,{font:I.series.font});if(n.series.donutMainLabelPosition===r.OUTSIDE){var S=a._degToRad(u),m=S+2*l*Math.PI,p=n.series.donutShowArrowIndicator?m:(S+m)/2,P=_.w*Math.cos(p),w=_.h*Math.sin(p);L={labelX:i.cx+s*Math.cos(p)-_.w/2+.8*P,labelY:i.cy+s*Math.sin(p)+_.h/3+.8*w,pushX:P,pushY:w}}return{text:d,fontSize:g,labelBox:_,labelT:I,maxLabelSize:f,outsideInfo:L}}},u={renderLabel:function(e,t,o,a,s,i,u,h){var d=function(h,d){var c,f,b,x=l.getLabelInfo(e,t,o,s,h,u,d);return t.series.donutMainLabelPosition===r.OUTSIDE?b=i.renderLabel(a,x.outsideInfo.labelX,x.outsideInfo.labelY,x.text,x.labelT,!0,"left"):(c=s.cx-x.labelBox.w/2,f=s.cy,50!==t.series.donutArcPercent&&(f+=x.labelBox.h/3),t.series.donutShowIcons&&(f-=x.maxLabelSize/1.5),b=i.renderLabel(a,c,f,x.text,x.labelT,!0,"left")),b&&"underline"===t.series.donutMainLabelTextDecoration&&(n.set(b,"textDecoration","underline"),n.set(b,"textDecorationColor",x.labelT.series.fontColor)),{labelInfo:x,element:b}};return h.push({isLabel:!0,func:d}),d}},h={renderArrow:function(e,t,n,o,s,i){var r=function(i){var r=a._degToRad(s),l=r+2*i*Math.PI,u=[];return u.push({x:o.cx+5*Math.cos(l+Math.PI/2),y:o.cy+5*Math.sin(l+Math.PI/2)}),u.push({x:o.cx+5*Math.cos(l+Math.PI),y:o.cy+5*Math.sin(l+Math.PI)}),u.push({x:o.cx+5*Math.cos(l-Math.PI/2),y:o.cy+5*Math.sin(l-Math.PI/2)}),u.push({x:o.cx+n*Math.cos(l),y:o.cy+n*Math.sin(l)}),{shape:e.createPath().moveTo(u[0].x,u[0].y).lineTo(u[1].x,u[1].y).lineTo(u[2].x,u[2].y).lineTo(u[3].x,u[3].y).lineTo(u[0].x,u[0].y).setStroke(t.series.donutArrowIndicatorLineColor).setFill(t.series.donutArrowIndicatorFillColor)}};return i.push({isArrow:!0,func:r}),r}};return e([s,i],{startAngleOffset:-90,_getLabelInfo:function(e,t,n,o,a){return l.getLabelInfo(e,t,n,o,this._getSliceValueAt(a,0,t),this._getStartAngle(t))},_preprocessParams:function(e,t,n,o,a,s,i){var l=this._getLabelInfo(e,t,n,s,i);if(t.series.donutMainLabelPosition===r.OUTSIDE){var u=l.outsideInfo.pushX/2,h=l.outsideInfo.pushY/2,d=n;n=Math.min(o-Math.abs(u),a-Math.abs(h))-5,n=Math.max(n,d/2),s.cx-=u,s.cy-=h,this._lastRenderResults.chartShiftX=-u,this._lastRenderResults.chartShiftY=-h}return{circle:s,r:n}},_renderAdditionalElements:function(e,t,n,o,a,s){this._lastRenderResults.ryMultiplier=this._getRYMultiplier(t),this._renderGaugeDataLabel(e,t,n,o,a,s),this._renderGaugeArrowIndicator(e,t,n,o,a,s)},_gaugeLabelElement:null,_renderGaugeDataLabel:function(e,t,n,o,a,s){if(t.series.donutMainLabelPosition!==r.NONE){var i=u.renderLabel(e,t,n,o,a,this,this._getStartAngle(t),this._animationInfos)(this._getSliceValueAt(s,0,t));this._gaugeLabelElement=i.element,t.series.donutMainLabelPosition===r.INSIDE&&(this._lastRenderResults.maxIconSize=i.labelInfo.maxLabelSize,this._lastRenderResults.chartIconOffset=i.labelInfo.maxLabelSize/1.25)}},_renderGaugeArrowIndicator:function(e,t,n,o,a,s){t.series.donutShowArrowIndicator&&h.renderArrow(o,t,n,a,this._getStartAngle(t),this._animationInfos)(this._getSliceValueAt(s,0,t))}})});

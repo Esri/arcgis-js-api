@@ -138,9 +138,9 @@
                     </li>
                     <li>Intervallo: l'intervallo di un campo numerico. Questo viene calcolato come i valori minimi sottratti dal valore massimo. L'intervallo di [0, null, 1] &egrave; 1. L'intervallo di [null, 4] &egrave; 0.
                     </li>
-                    <li>Varianza: la varianza di un campo numerico in una traccia. La varianza di [1] is null. La varianza di [null, 1,1,1] &egrave; 1.
+                    <li>Varianza: la varianza di un campo numerico in una traccia. La varianza di [1] is null. La varianza di [null, 1,0,1,1] &egrave; 0,25.
                     </li>
-                    <li>Deviazione standard: la deviazione standard di un campo numerico. La deviazione standard di [1] &egrave; null. La deviazione standard di [null, 1,1,1] &egrave; 1. 
+                    <li>Deviazione standard: la deviazione standard di un campo numerico. La deviazione standard di [1] &egrave; null. La deviazione standard di [null, 1,0,1,1] &egrave; 0,5. 
                     </li>
                 </ul>
                 
@@ -160,16 +160,16 @@
         <div><h2>Scegliere un ArcGIS Data Store in cui salvare i risultati</h2></div>
         <hr/>
         <div>
-            <p>I risultati GeoAnalytic sono memorizzati in un ArcGIS Data Store ed esposti come un Feature Layer in  Portal for ArcGIS. Nella maggior parte dei casi, i risultati devono essere memorizzati nello Spatiotemporal Data Store e questa &egrave; l'impostazione predefinita. In alcuni casi, il salvataggio dei risultati nel Data Store relazionale &egrave; un'ottima opzione. Di seguito sono memorizzate le ragioni per memorizzare i risultati nel Data Store relazionale: 
+            <p>I risultati GeoAnalytic sono memorizzati in un ArcGIS Data Store ed esposti come un feature layer in  Portal for ArcGIS. Nella maggior parte dei casi, i risultati devono essere memorizzati nello Spatiotemporal Data Store e questa &egrave; l'impostazione predefinita. In alcuni casi,, il salvataggio dei risultati nel Data Store relazionale &egrave; un'ottima opzione. Di seguito sono memorizzate le ragioni per memorizzare i risultati nel Data Store relazionale: 
                 <ul>
-                    <li>Utilizzare i risultati nella collaborazione da portale a portale.
+                    <li>&Egrave; possibile utilizzare i risultati in una collaborazione tra portali.
                     </li>
-                    <li>Abilitare funzionalit&agrave; di sincronizzazione con i risultati.
+                    <li>&Egrave; possibile abilitare funzionalit&agrave; di sincronizzazione con i risultati.
                     </li>
                 </ul>
                 
             </p>
-            <p>Non utilizzare il Data Store relazionale se si prevede un incremento dei risultati GeoAnalytics ed &egrave; necessario sfruttare le funzionalit&agrave; dello Spatiotemporal Big Data Store per gestire grandi quantit&agrave; di dati. 
+            <p>Non utilizzare il Data Store relazionale se si prevede un incremento dei risultati GeoAnalytics ed &egrave; necessario sfruttare le funzionalit&agrave; dello Spatiotemporal Big Data Store per gestire grandi quantit&agrave; di dati.
             </p>
         </div>
     </div>
@@ -177,7 +177,7 @@
         <div><h2>Nome del layer dei risultati</h2></div>
         <hr/>
         <div>
-            <p> Questo &egrave; il nome del layer che verr&agrave; creato in <b>I miei contenuti</b> e aggiunto alla mappa.  Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, lo strumento non verr&agrave; eseguito.
+            <p> Il nome del layer che verr&agrave; creato in <b>I miei contenuti</b> e aggiunto alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, lo strumento non verr&agrave; eseguito.
             </p>
             <p>Utilizzare la casella a discesa  <b>Salva risultato in</b> per specificare il nome di una cartella in <b>I miei contenuti</b> in cui salvare il risultato.
             </p>

@@ -46,7 +46,7 @@
         <hr/>
     <p>&quot;Elementu savieno&scaron;ana&quot; strādā ar diviem slāņiem un savieno viena elementa atribūtus ar otra elementa atribūtiem atkarībā no telpiskajām un atribūtu saistībām. Rīks nosaka visus ievades elementus, kas atbilst norādītajiem savieno&scaron;anas nosacījumiem, un mērķa slānim pievieno savienojamo slāni. 
     </p>
-    <p>Rīku Elementu savieno&scaron;ana var lietot punktiem, līnijām, laukumiem un tabulām. Lai varētu veikt telpisko savieno&scaron;anu, jūsu datiem ir jābūt ģeometrijai. 
+    <p>Rīku Savienot elementus var lietot punktiem, līnijām, laukumiem un tabulām. Lai varētu veikt telpisko savieno&scaron;anu, jūsu datiem ir jābūt ģeometrijai. 
     </p>
     <p>Ja ir atzīmēts iestatījums  <b>Lietot pa&scaron;reizējo kartes pārklājumu</b>, tad tiek analizēti tikai tie elementi, kas redzami pa&scaron;reizējā kartes pārklājumā. Ja tas nav atzīmēts, tiek analizēti visi elementi gan mērķa slānī, gan savienojuma slānī par tad, ja tie atrodas ārpus pa&scaron;reizējā kartes pārklājuma.
     </p>
@@ -78,9 +78,9 @@
         <div>
             <p>Varat lietot telpisko savieno&scaron;anu, atribūtu savieno&scaron;anu vai abu &scaron;o veidu kombināciju. 
                 <ul>
-                    <li> <b>Telpiskā</b>&nbsp;&mdash; izmanto norādīto telpisko saistību, lai savienotu elementus. &Scaron;im nolūkam abiem slāņiem nepiecie&scaron;ama ģeometrija.
+                    <li> <b>Telpiskais</b>&nbsp;&mdash; izmanto norādīto telpisko saistību, lai savienotu elementus. Lai izmantotu &scaron;o veidu, abiem slāņiem ir jābūt ģeometrijai.
                     </li>
-                    <li> <b>Atribūtu</b>&nbsp;&mdash; savieno elementus atkarībā no vienādiem laukiem.
+                    <li> <b>Atribūtu</b>&nbsp;&mdash; savieno elementus, balstoties uz vienādiem laukiem.
                     </li>
                 </ul>
                 
@@ -93,7 +93,7 @@
         <div><h2>Izvēlēties telpisko saistību</h2></div>
         <hr/>
         <div>
-            <p>Telpiskā saistība, kas nosaka, vai elementi tiks savienoti. Pieejamās saistības ir atkarīgas no ievades elementos izmantotās ģeometrijas veida (punkti, līnijas, platības). Pieejamās saistības iekļauj sekojo&scaron;o:
+            <p>Telpiskā saistība, kas nosaka, vai elementi tiks savienoti. Pieejamās saistības ir atkarīgas no ievades elementos izmantotās ģeometrijas veida (punkti, līnijas, platības). Pieejamās saistības iekļauj sekojo&scaron;ās:
                 <ul>
                     <li> <b>Identiski ar</b>&nbsp;&mdash; mērķa slāņa elementi tiek saskaņoti, raugoties, vai tie ir identiski ar savienojuma slāņa elementiem.
                     </li>
@@ -116,7 +116,7 @@
         <div>
             <p>Atribūtu saistība, kas nosaka, vai elementi tiek savienoti cits ar citu. Elementi tiek savienoti, kad savienojamā slāņa lauku vērtības ir vienādas ar mērķa slāņa lauku vērtībām. 
             </p>
-            <p>Pieņemsim, ka jums ir visa apgabala dzīvesvietu adre&scaron;u ģeogrāfiskais slānis (ieskaitot lauku  <i>ZIP</i>) un datukopas tabula ar veselības demogrāfiskajiem datiem pēc pasta indeksa (lauks ar nosaukumu <i>HEALTHZIP</i>). Jūs varat savienot veselības datukopu ar dzīvesvietu datiem, saskaņojot lauku <i>ZIP</i> ar lauku <i>HEALTHZIP</i>, iegūstot dzīvesvietu slāni ar atbilsto&scaron;ajiem veselības datiem.
+            <p>Pieņemsim, ka jums ir visa apgabala dzīvesvietu adre&scaron;u ģeogrāfiskais slānis (ieskaitot lauku  <i>ZIP</i>) un datu kopas tabula ar veselības demogrāfiskajiem datiem pēc pasta indeksa (lauks ar nosaukumu <i>HEALTHZIP</i>). Jūs varat savienot veselības datu kopu ar dzīvesvietu datiem, saskaņojot lauku <i>ZIP</i> ar lauku <i>HEALTHZIP</i>, iegūstot dzīvesvietu slāni ar atbilsto&scaron;ajiem veselības datiem.
             </p>
         </div>
     </div>
@@ -167,6 +167,14 @@
             <p>Tas ir slāņa nosaukums, kas tiks izveidots lapā  <b>Mans saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja slānis jau pastāv, jums tiks lūgts norādīt citu nosaukumu.
             </p>
             <p>Lietojot iespēju  <b>Saglabāt rezultātu</b> nolaižamajā sarakstlodziņā, jūs varat norādīt mapes nosaukumu sadaļā <b>Mans saturs</b>, kur tiks saglabāts rezultāts.
+            </p>
+        </div>
+    </div>
+    <div id="isView">
+        <div><h2>Glabāt kā viesotu elementu slāņa skatu</h2></div>
+        <hr/>
+        <div>
+            <p>Rezultātu glabā&scaron;ana viesotu elementu slāņa veidā, mainoties avota datiem, ļauj uzturēt atjauninātus datus.  Viesotu elementu slāņu skati, kuros ir savienojumi, ir tikai lasāmi un netērē kredītus analīzei un glabā&scaron;anai. 
             </p>
         </div>
     </div>

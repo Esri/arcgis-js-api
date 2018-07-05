@@ -53,6 +53,9 @@
     color: #fff;
 }
 
+.calcite .DataCollectionsPage_ContentPane_DataCollectionContainer {
+    min-height: 65px;
+}
 .calcite .DataCollectionsPage_DataCollectionContainer {
     min-height:65px;
     overflow: hidden;

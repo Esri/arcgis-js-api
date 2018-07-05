@@ -60,7 +60,7 @@
         <div><h2>Selectare metodă de monitorizare vegetaţie</h2></div>
         <hr/>
         <div>
-            <p>Selectaţi metoda utilizată pentru a crea stratul tematic de indexare a vegetaţiei. Indecşii diferiţi pentru vegetaţie pot contribui la evidenţierea anumitor obiecte spaţiale sau pot contribui la reducerea zgomotului variat.
+            <p>Alegeţi metoda pentru a crea stratul tematic de indexare a vegetaţiei. Indecşii diferiţi pentru vegetaţie pot contribui la evidenţierea anumitor obiecte spaţiale sau pot contribui reducerea zgomotului variat.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
@@ -76,7 +76,7 @@ MSAVI2 este un index de vegetaţie care &icirc;ncearcă să minimizeze influenţ
 
                 </li>
                 <li>Normalized Difference Vegetation Index  &mdash; 
-NDVI este un index standardizat care vă permite să generaţi o imagine care afişează intensitatea verdelui, biomasa relativă. Acest index profită de contrastul caracteristicilor celor două benzi dintr-un set de date raster multispectrale; absorbţiile pigmentului clorofilei din banda roşie şi reflectivitatea ridicată a materialelor plantelor din banda aproape infraroşie (NIR).
+NDVI este un index standardizat care vă permite să generaţi o imagine care afişează intensitatea verdelui sau biomasa relativă. Acest index profită de contrastul caracteristicilor celor două benzi dintr-un set de date raster multispectrale: absorbţiile pigmentului clorofilei din banda roşie şi reflectivitatea ridicată a materialelor plantelor din banda aproape infraroşie (NIR).
 
                 </li>
                 <li>Perpendicular Vegetation Index &mdash; 
@@ -102,7 +102,7 @@ Indexul de vegetaţie ajustat cu solul transformat (Transformed-SAVI) este un in
         <div><h2>Specificarea indecşilor benzilor NIR şi Roşu</h2></div>
         <hr/>
         <div>
-            <p>Introduceţi indecşii de bandă pentru benzile aproape infraroşii (NIR) şi roşii.
+            <p>Specificarea indecşilor de bandă pentru benzile NIR şi roşii.
             </p>
             <p>Fiecare senzor de satelit şi fiecare cameră aeriană capturează informaţii care sunt &icirc;mpărţite &icirc;n indecşi de bandă. Fiecare index de bandă conţine informaţiile pentru o parte specifică a spectrului electromagnetic. Această monitorizare a vegetaţiei necesită specificarea indexului de bandă care a capturat lungimile de undă NIR şi Roşu.
             </p>
@@ -114,7 +114,7 @@ Indexul de vegetaţie ajustat cu solul transformat (Transformed-SAVI) este un in
         <div>
             <p>Panta liniei solului. Panta este relaţia liniară aproximativă dintre benzile NIR şi roşii pe un grafic de dispersie.
             </p>
-            <p>Acest parametru este valid doar pentru indexul de vegetaţie ajustat cu solul transformat.
+            <p>Acest parametru este valid doar pentru metoda Indice de vegetaţie ajustat cu solul transformat.
             </p>
         </div>
     </div>
@@ -122,11 +122,11 @@ Indexul de vegetaţie ajustat cu solul transformat (Transformed-SAVI) este un in
         <div><h2>Interceptare</h2></div>
         <hr/>
         <div>
-            <p>Aceasta este valoarea pentru aproape infraroşu (NIR) atunci c&acirc;nd valoarea de reflexie pentru banda roşie (Roşu) este 0 pentru liniile specifice ale solului.
+            <p>Valoarea pentru NIR atunci c&acirc;nd valoarea de reflexie pentru banda roşie (Roşu) este 0 pentru liniile specifice ale solului.
             </p>
             <p> <code>(a = NIR - sRed)</code> , c&acirc;nd roşu este 0.
             </p> 
-            <p>Acest parametru este valid doar pentru indexul de vegetaţie ajustat cu solul transformat.
+            <p>Acest parametru este valid doar pentru metoda Indice de vegetaţie ajustat cu solul transformat.
             </p>
         </div>
     </div>
@@ -134,16 +134,16 @@ Indexul de vegetaţie ajustat cu solul transformat (Transformed-SAVI) este un in
         <div><h2>Valoare acoperirii cu vegetaţie verde</h2></div>
         <hr/>
         <div>
-            <p>Metoda SAVI necesită specificarea acoperirii cantităţii de vegetaţie.
+            <p>Specifică cantitatea acoperirii cu vegetaţie verde, care este necesară metodei SAVI.
             </p>
-            <p>Introduceţi o valoare &icirc;ntre 0.0 şi 1.0, unde 
+            <p>Valorile valabile sunt următoarele: 
 
                 <ul>
-                    <li>1 = zone fără acoperire cu vegetaţie verde
+                    <li>1 = Zone fără acoperire cu vegetaţie verde
                         
  
                     </li>
-                    <li>0.5 = zone cu acoperire moderată cu vegetaţie verde
+                    <li>0,5 = zone cu acoperire moderată cu vegetaţie verde
                         
  
                     </li>
@@ -160,9 +160,9 @@ Indexul de vegetaţie ajustat cu solul transformat (Transformed-SAVI) este un in
         <div><h2>Factor de ajustare</h2></div>
         <hr/>
         <div>
-            <p>Metoda indexului de vegetaţie ajustat cu solul transformat necesită setarea factorului de ajustare pentru a contribui la minimizarea efectului solului. Valoarea implicită este 0.08.
+            <p>Specifică factorul de ajustare pentru a ajuta la reducerea la minimum a efectului de sol, care este necesar metodei Indice de vegetaţie ajustat cu solul transformat. Valoarea implicită este 0.08.
             </p>
-            <p>O valoare mai redusă &icirc;nseamnă că ignoraţi efectul solului. O valoare ridicată &icirc;nseamnă că solul vă va afecta rezultatul.
+            <p>O valoare mai mică &icirc;nseamnă că ignoraţi efectul solului. O valoare ridicată &icirc;nseamnă că solul va afecta rezultatul.
             </p>
         </div>
     </div>
@@ -172,7 +172,7 @@ Indexul de vegetaţie ajustat cu solul transformat (Transformed-SAVI) este un in
         <div>
             <p>Acesta este numele stratului tematic ce va fi creat &icirc;n  <b>Resursele mele</b> şi va fi adăugat pe hartă. Numele implicit se bazează pe numele instrumentului şi numele stratului tematic de intrare. Dacă stratul tematic rezultat există deja, vi se va solicita să furnizaţi un alt nume.
             </p>
-            <p>Utiliz&acirc;nd caseta derulantă  <b>Salvare rezultat &icirc;n</b>, puteţi specifica numele unui director din <b>Resursele mele</b> &icirc;n care va fi salvat rezultatul.
+            <p>Utiliz&acirc;nd caseta derulantă  <b>Salvare rezultat &icirc;n</b> puteţi specifica numele unui director din <b>Resursele mele</b> &icirc;n care va fi salvat rezultatul.
             </p>
         </div>
     </div>

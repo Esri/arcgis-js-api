@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
 define(["dojo/_base/lang","dojo/dom-class","esri/dijit/geoenrichment/BaseSelectComparison","esri/dijit/geoenrichment/OnDemandSelect","../../supportClasses/comparison/ComparisonListUtil"],function(e,t,s,i,n){function a(){o||(o=!0,e.extend(s,{_createComboBox:function(e){var s=this;t.add(e,"BaseSelectComparison_Select"),this.select=new i({listClass:"esriGEOnDemandSelectVeryTallList",itemRenderer:new n.ComparisonListItemRenderer,onChange:function(){var e=s._state.selectedComparison;s._state.selectedComparison=+s.select.get("value"),s._state.selectedComparison!==e&&s.updateUIExpanded()}}),this.select.placeAt(e)},updateUIExpanded:function(){if(this.inherited("updateUIExpanded",arguments),this.select&&!this.select.options){var e=n.getListOptions(this.data.features);this.select.set("options",e),this.select.set("value",this._state.selectedComparison.toString())}}}))}var o=!1;return{init:a}});

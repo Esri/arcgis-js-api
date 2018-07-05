@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
-define({inputLayerLabel:"Velg et lag som skal beskrives",summaryTypes:"Sammendragstyper",centralFeature:"Sentralt geoobjekt",meanCenter:"Snitt for midtpunkt",medianCenter:"Median for midtpunkt",ellipse:"Ellipse",weightBy:"Vekt etter (valgfritt)",groupBy:"Grupper etter (valgfritt)",resultLayerName:"Navn på resultatlag",outputLayerName:"Beskriv fordeling for ${layerName}",none:"Ingen",itemDescription:"Geoobjektslag generert ved kjøring av Summer midtpunkt og fordeling på ${inputLayername}. ",itemTags:"Analyseresultat, Summer midtpunkt og fordeling,  ${layerName}",itemSnippet:"Geoobjektslag generert fra Summer midtpunkt og fordeling"});
+define({inputLayerLabel:"Velg et lag som skal beskrives",summaryTypes:"Sammendragstyper",centralFeature:"Sentralt geoobjekt",meanCenter:"Snitt for midtpunkt",medianCenter:"Median for midtpunkt",ellipse:"Ellipse",weightBy:"Vekt etter (valgfritt)",groupBy:"Grupper etter (valgfritt)",resultLayerName:"Navn på resultatlag",outputLayerName:"Beskriv fordeling for ${layerName}",none:"Ingen",itemDescription:"Geoobjektslag generert ved kjøring av Summer midtpunkt og fordeling på ${layerName}. ",itemTags:"Analyseresultat, Summer midtpunkt og fordeling,  ${layerName}",itemSnippet:"Geoobjektslag generert fra Summer midtpunkt og fordeling"});

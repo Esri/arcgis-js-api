@@ -203,6 +203,39 @@
             </p>
         </div>
     </div>
+    <div id="GroupBy">
+      <div><h2>Choose field to group by</h2></div>
+      <hr/>
+      <div>
+          <p>This is an attribute of the  <b>Summarize</b> features that you can use to calculate statistics separately for each unique attribute value. For example, suppose the first input layer contains city boundaries and the summary features are parcels.  One of the attributes of the parcels is <i>Status</i> which contains two values: VACANT and OCCUPIED. To calculate the total area of vacant and occupied parcels within the boundaries of cities,  use <i>Status</i> as the group by attribute.
+The statistics for each group, as well as the count of features within each area boundary, will be displayed in the result layer's pop-up.
+          </p>
+      </div>
+  </div>
+  <div id="MinorityMajority">
+      <div><h2>Add minority, majority</h2></div>
+      <hr/>
+      <div>
+          <p>This checkbox is enabled  when you choose a field to group by.    If you want to find out which attribute values within each group are the minority (least dominant) or the majority (most dominant)  within each boundary of the first input layer,  select  <b>Add minority, majority</b>.   When you select <b>Add minority, majority</b>, two new fields are added to your result layer.   If you also select <b>Add percentages</b>, two additional fields are added to the result layer containing the percentages of the minority and majority attribute values within each group.
+          </p>
+          <ul>
+              <li>If you are summarizing points, minority and majority values are calculated based on the count of points within each bounding area in the input area layer.  
+              </li>
+              <li>If you are summarizing  lines, minority and majority values are calculated based on the length of  lines within each bounding area in the input area layer.  
+              </li>
+              <li>If you are summarizing  areas, minority and majority values are calculated based on the areas within each bounding area in the input area layer.  
+              </li>
+          </ul>
+      </div>
+  </div>
+  <div id="PercentShape">
+      <div><h2>Add percentages</h2></div>
+      <hr/>
+      <div>
+          <p>This check box is enabled  when you choose a field to group by.    Select  <b>Add percentages</b>   if you want to find the percentage of each attribute value within each group.  A new field  is added to the result table containing the percentages of each attribute value within each group.   If <b>Add minority, majority</b> is also checked, two additional fields are added to the result layer containing the percentages of the minority and majority attribute values within each group.
+          </p>
+      </div>
+   </div>
     <div id="dataStore">
         <div><h2>Selecionar armazenamento de dados</h2></div>
         <hr/>

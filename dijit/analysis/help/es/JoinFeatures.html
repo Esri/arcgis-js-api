@@ -41,8 +41,8 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="regularsize">
-        <h2>Entidades de unión</h2><p/>
-        <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Entidades de uni&oacute;n"></h2>
+        <h2>Unir entidades</h2><p/>
+        <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Unir entidades"></h2>
         <hr/>
     <p>Unir entidades funciona con dos capas y une atributos de una entidad con otra bas&aacute;ndose en relaciones espaciales y de atributos. La herramienta determina todas las entidades de entrada que cumplen las condiciones de uni&oacute;n especificadas e incorpora la capa de uni&oacute;n a la capa de destino. 
     </p>
@@ -63,7 +63,7 @@
         </div>
     </div>
     <div id="joinLayer">
-        <div><h2>Elija la capa para unir a la capa de destino</h2></div>
+        <div><h2>Elegir la capa que se va a unir a la capa de destino</h2></div>
         <hr/>
         <div>
             <p>La capa de uni&oacute;n cuyos atributos se incorporar&aacute;n a la capa de destino.
@@ -90,7 +90,7 @@
         </div>
     </div>
     <div id="spatialRelationship">
-        <div><h2>Elija una relación espacial</h2></div>
+        <div><h2>Elegir una relación espacial</h2></div>
         <hr/>
         <div>
             <p>La relaci&oacute;n espacial que determinar&aacute; si las entidades se van a unir entre s&iacute;. Las relaciones disponibles depender&aacute;n del tipo de geometr&iacute;a (puntos, l&iacute;neas, &aacute;reas) que se utiliza como entidades de entrada. Entre las relaciones disponibles se incluyen las siguientes:
@@ -116,17 +116,17 @@
         <div>
             <p>La relaci&oacute;n de atributos que determinar&aacute; si las entidades se unen entre s&iacute;. Las entidades se cotejan si los valores de campo de la capa de uni&oacute;n son iguales a los valores de campo de la capa de destino. 
             </p>
-            <p>Por ejemplo, supongamos que tiene una capa geogr&aacute;fica del condado para direcciones residenciales (incluido un campo  <i>ZIP</i>) y un dataset tabular de informaci&oacute;n demogr&aacute;fica sobre salud por c&oacute;digo postal (incluido un campo llamado <i>HEALTHZIP</i>). Puede unir el dataset sobre salud con los datos residenciales cotejando el campo <i>ZIP</i> con el campo <i>HEALTHZIP</i>, con lo que se obtendr&aacute; una capa de residencias con los datos sobre salud correspondientes.
+            <p>Por ejemplo, supongamos que tiene una capa geogr&aacute;fica del condado para direcciones residenciales (incluido un campo  <i>ZIP</i>) y un dataset tabular de informaci&oacute;n demogr&aacute;fica sobre salud por c&oacute;digo postal (incluido un campo llamado <i>HEALTHZIP</i>). Puede unir el dataset sobre salud con los datos residenciales cotejando el campo <i>ZIP</i> con el campo <i>HEALTHZIP</i>, con lo que se obtendr&aacute; una capa de viviendas con los datos sobre salud correspondientes.
             </p>
         </div>
     </div>
     <div id="joinOperation">
-        <div><h2>Elija una operación de unión</h2></div>
+        <div><h2>Elegir una operación de unión</h2></div>
         <hr/>
         <div>
             <p>Determina c&oacute;mo se manejar&aacute; la uni&oacute;n entre la capa de destino y de uni&oacute;n si en la capa de uni&oacute;n existen varias entidades que tienen la misma relaci&oacute;n con la capa de destino. Estas son las dos operaciones de uni&oacute;n entre las que puede elegir:
                 <ul>
-                    <li> <b>Uni&oacute;n de uno a uno</b>: esta opci&oacute;n une la primera entidad coincidente de la capa de uni&oacute;n con la primera entidad coincidente de la capa de destino.  Opcionalmente, si se agregan estad&iacute;sticas, las entidades unidas coincidentes se resumir&aacute;n para cada entidad de la capa de destino.  El recuento de entidades unidas se agregar&aacute; de forma predeterminada.
+                    <li> <b>Uni&oacute;n de uno a uno</b>: esta opci&oacute;n une la primera entidad coincidente de la capa de uni&oacute;n con la primera entidad coincidente de la capa de destino.  Opcionalmente, si se agregan estad&iacute;sticas, las entidades unidas cotejadas se resumir&aacute;n para cada entidad de la capa de destino. El recuento de entidades unidas se agregar&aacute; de forma predeterminada.
                     </li>
                     <li> <b>Uni&oacute;n de uno a muchos</b>: esta opci&oacute;n une todas las entidades coincidentes de la capa de uni&oacute;n con la capa de destino.  La capa de resultados contendr&aacute; varios registros de la entidad de destino.
                     </li>
@@ -138,7 +138,7 @@
         </div>
     </div>
     <div id="summaryFields">
-        <div><h2>Agregue estadísticas (opcional)</h2></div>
+        <div><h2>Agregar estadísticas (opcional)</h2></div>
         <hr/>
         <div>
             <p>Si selecciona la opci&oacute;n  <b>Uni&oacute;n de uno a uno</b>, para los campos num&eacute;ricos puede resumir y calcular estad&iacute;sticas de las entidades unidas.   De forma predeterminada, el recuento de las entidades de uni&oacute;n coincidentes se calcular&aacute; y se agregar&aacute; a la capa de resultados.  Si elige no agregar estad&iacute;sticas adicionales, la primera entidad coincidente de la capa de uni&oacute;n se unir&aacute; a la primera entidad coincidente de la capa de destino.   Puede calcular uno o varios de los valores siguientes:
@@ -167,6 +167,14 @@
             <p>Este es el nombre de la capa que se crear&aacute; en  <b>Mi contenido</b> y se agregar&aacute; al mapa.  El nombre predeterminado se basa en el nombre de la herramienta y el nombre de la capa de entrada. Si la capa ya existe, se le pedir&aacute; que indique otro nombre.
             </p>
             <p>En el cuadro desplegable  <b>Guardar el resultado en</b>, puedes especificar el nombre de una carpeta de <b>Mi contenido</b> en la que se guardar&aacute; el resultado.
+            </p>
+        </div>
+    </div>
+    <div id="isView">
+        <div><h2>Almacenar como una vista de capa de entidades alojada</h2></div>
+        <hr/>
+        <div>
+            <p>Almacenar los resultados como una vista de capa de entidades alojada permite que los datos se mantengan actualizados a medida que los datos de origen cambian.  Las vistas de capas de entidades alojadas contienen uniones de solo lectura y no consumen cr&eacute;ditos por el an&aacute;lisis ni el almacenamiento. 
             </p>
         </div>
     </div>

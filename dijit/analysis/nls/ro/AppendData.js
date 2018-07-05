@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
-define({inputLayerLabel:"Alegeți strat tematic pe care să adăugați",inputWarningLabel:"Avertizare: Stratul tematic pe care îl anexați va fi modificat.",inputHostedLayerWarning:"The selected layer was not a hosted feature layer. Please select a hosted feature layer to append to.",appendLayerLabel:"Alegeți strat tematic pe care să adăugați",filterLabel:"Adăugați toate caracteristicile sau definiți un subset (opțional)",fieldMappingLabel:"Alegeți modul de adăugare a câmpurilor (opțional)",inputField:"Câmp de intrare",appendValue:"Adăugați valoare",expression:"Expresie"});
+define({inputLayerLabel:"Alegeți strat tematic pe care să adăugați",inputWarningLabel:"Avertizare: Stratul tematic pe care îl anexați va fi modificat.",inputHostedLayerWarning:"Stratul tematic selectat nu a fost un strat tematic de obiecte spațiale găzduit. Vă rugăm să selectați un strat tematic de obiecte spațiale găzduit, pentru anexare.",appendLayerLabel:"Alegeți strat tematic pe care să adăugați",filterLabel:"Adăugați toate caracteristicile sau definiți un subset (opțional)",fieldMappingLabel:"Alegeți modul de adăugare a câmpurilor (opțional)",inputField:"Câmp de intrare",appendValue:"Adăugați valoare",expression:"Expresie"});

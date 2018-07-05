@@ -56,7 +56,7 @@
         <div>
             <p>Der Layer enth&auml;lt die Felder, die zusammengefasst werden.  
             </p>
-            <p>Sie k&ouml;nnen nicht nur einen Layer aus der Karte ausw&auml;hlen, sondern auch unten in der Dropdown-Liste  <b>Layer durchsuchen</b> ausw&auml;hlen, um zu Ihren f&uuml;r ein Big-Data-Dateifreigabe-Dataset bzw. -Feature-Layer zu navigieren.
+            <p>Sie k&ouml;nnen nicht nur einen Layer aus der Karte ausw&auml;hlen, sondern auch unten in der Dropdown-Liste  <b>Layer durchsuchen</b> ausw&auml;hlen, um zu Ihren Inhalten f&uuml;r ein Big-Data-Dateifreigabe-Dataset bzw. -Feature-Layer zu navigieren.
             </p>
         </div>
     </div>
@@ -81,9 +81,9 @@
         <div><h2>Statistiken hinzufügen (optional)</h2></div>
         <hr/>
         <div>
-            <p> Sie k&ouml;nnen Statistiken f&uuml;r Features berechnen, die zusammengefasst wurden. F&uuml;r numerische Felder kann Folgendes berechnet werden:
+            <p> Sie k&ouml;nnen f&uuml;r Features, die zusammengefasst wurden, Statistiken berechnen.F&uuml;r numerische Felder sind folgende Berechnungen m&ouml;glich:
                 <ul>
-                    <li>Anzahl: Berechnet die Anzahl der Nicht-NULL-Werte. Kann f&uuml;r numerische Felder oder Zeichenfolgen verwendet werden. Die Anzahl von [NULL, 0, 2] betr&auml;gt 2.
+                    <li>Anzahl: Berechnet die Anzahl der Nicht-NULL-Werte.Sie kann f&uuml;r numerische Felder oder Zeichenfolgen verwendet werden. Die Anzahl von [NULL, 0, 2] betr&auml;gt 2.
                     </li>
                     <li>Summe: Die Summe der numerischen Werte in einem Feld. Die Summe von [NULL, NULL, 3] betr&auml;gt 3.
                     </li>
@@ -95,14 +95,14 @@
                     </li>
                     <li>Bereich: Der Bereich eines numerischen Feldes. Dieser wird durch die Subtraktion der Minimalwerte vom Maximalwert berechnet. Der Bereich von [0, NULL, 1] lautet 1. Der Bereich von [NULL, 4] lautet 0.
                     </li>
-                    <li>Varianz: Die Varianz eines numerischen Feldes in einer Spur. Die Varianz von [1] betr&auml;gt Null. Die Varianz von [NULL, 1,1,1] betr&auml;gt Null.
+                    <li>Varianz: Die Varianz eines numerischen Feldes in einer Spur. Die Varianz von [1] betr&auml;gt Null. Die Varianz von [NULL, 1,0,1,1] betr&auml;gt 0,25.
                     </li>
-                    <li>Standardabweichung: Die Standardabweichung eines numerischen Feldes. Die Standardabweichung von [1] ist Null. Die Standardabweichung von [NULL, 1,1,1] ist 1. 
+                    <li>Standardabweichung: Die Standardabweichung eines numerischen Feldes. Die Standardabweichung von [1] ist Null. Die Standardabweichung von [NULL, 1,0,1,1] ist 0,5. 
                     </li>
                 </ul>
                 
             </p>
-            <p>F&uuml;r Zeichenfolgenfelder kann Folgendes berechnet werden:
+            <p>F&uuml;r Zeichenfolgenfelder sind folgende Berechnungen m&ouml;glich:
                 <ul>
                     <li>Anzahl: Die Anzahl der Nicht-NULL-Werte.
                     </li>
@@ -117,11 +117,11 @@
         <div><h2>Data Store auswählen</h2></div>
         <hr/>
         <div>
-            <p>GeoAnalytics-Ergebnisse werden in einem ArcGIS Data Store gespeichert und als Feature-Layer in  Portal for ArcGIS dargestellt. In den meisten F&auml;llen sollten Ergebnisse im Data Store vom Typ &quot;spatiotemporal&quot; gespeichert werden, was gleichzeitig die Standardeinstellung ist. Manchmal empfiehlt es sich auch, Ergebnisse im Data Store vom Typ &quot;relational&quot; zu speichern. Im Folgenden sind Gr&uuml;nde aufgef&uuml;hrt, die f&uuml;r ein Speichern der Ergebnisse in einem Data Store vom Typ &quot;relational&quot; sprechen: 
+            <p>GeoAnalytics-Ergebnisse werden in einem ArcGIS Data Store gespeichert und als Feature-Layer in  Portal for ArcGIS dargestellt. In den meisten F&auml;llen sollten Ergebnisse im Data Store vom Typ &quot;spatiotemporal&quot; gespeichert werden, was gleichzeitig die Standardeinstellung ist. Manchmal empfiehlt es sich auch, Ergebnisse im Data Store vom Typ &quot;relational&quot; zu speichern. Die folgenden Gr&uuml;nde sprechen daf&uuml;r, die Ergebnisse im Data Store vom Typ &quot;relational&quot; zu speichern: 
                 <ul>
-                    <li>Verwenden der Ergebnisse in portal&uuml;bergreifender Zusammenarbeit
+                    <li>Sie k&ouml;nnen die Ergebnisse in portal&uuml;bergreifender Zusammenarbeit verwenden.
                     </li>
-                    <li>Aktivieren von Synchronisierungsfunktionen f&uuml;r Ihre Ergebnisse
+                    <li>Sie sind in der Lage, Synchronisierungsfunktionen mit Ihren Ergebnissen zu aktivieren.
                     </li>
                 </ul>
                 
@@ -132,7 +132,7 @@
         <div><h2>Name des Ergebnis-Layers</h2></div>
         <hr/>
         <div>
-            <p> Dies ist der Name des Layers, der in <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird. Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, kann das Werkzeug nicht ausgef&uuml;hrt werden.
+            <p> Der Name des Layers, der in <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird. Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, kann das Werkzeug nicht ausgef&uuml;hrt werden.
             </p>
             <p>&Uuml;ber das Dropdown-Feld  <b>Ergebnis speichern in</b> k&ouml;nnen Sie den Namen eines Ordners in <b>Eigene Inhalte</b> angeben, in dem das Ergebnis gespeichert werden soll.
             </p>

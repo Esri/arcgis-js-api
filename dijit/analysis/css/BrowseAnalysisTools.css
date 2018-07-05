@@ -1,7 +1,8 @@
 .esriBrowseAnalysisTools {
   margin: 0 auto;
   width: 45em;
-  height: 40em;
+  min-height: 38em;
+  max-height: 40em;
 }
 
 
@@ -56,11 +57,14 @@
   overflow-y: hidden;
 }
 
+.esriBrowseAnalysisTools.esriBrowseItemsCtr .dgrid-grid.dgrid .dgrid-scroller {
+  margin-bottom: 25px!important;
+}
+
 .esriBrowseAnalysisTools.esriBrowseItemsCtr .gallery .gallery-right {
   margin-top: 15px;
-  
-  
   width: 73%;
+  max-height: 35em;
 }
 
 .esriBrowseAnalysisTools.esriBrowseItemsCtr .gallery {

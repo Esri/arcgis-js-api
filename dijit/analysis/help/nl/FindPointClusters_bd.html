@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Puntclusters zoeken</h2><p/>
+        <h2><img src="../images/GUID-40DA7286-67EA-4333-91C5-4CD527C21B4A-web.png" alt="Puntclusters zoeken"></h2>
+        <hr/>
+    <p>Het  Puntclusters zoeken tool zoekt clusters van puntfeatures binnen omringend geluid gebaseerd op hun ruimtelijke distributie.
+    </p>
+    <p>Een niet-overheidsinstantie bestudeert een bepaalde door plagen overgedragen ziekte. Het heeft een puntdataset van huishoudens in een studiegebied, waarvan sommige wel en andere niet besmet zijn. Door de  Puntclusters zoeken too te gebruiken, kan een analist clusters van besmette huishoudens bepalen om een gebied aan te wijzen waar met de behandeling en uitroeiing van plagen kan worden begonnen.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Kies de laag waarvoor clusters zullen worden gevonden</h2></div>
+        <hr/>
+        <div>
+            <p>De puntslaag waarin clusters zich bevinden.  Lagen moeten in een geprojecteerd ruimtelijke referentie of de processing ruimtelijke referentie moet worden ingesteld op een geprojecteerd co&ouml;rdinaatsysteem met behulp van de  <b>Analysis Environments</b>.
+            </p>
+            <p>Naast het kiezen van een laag van uw kaart, kunt u kiezen voor  <b>Blader door lagen</b> aan de onderkant van de drop-downlijst om in uw content te zoeken naar een groot gedeeld databestand of objectlaag.
+            </p>
+        </div>
+    </div>
+    <div id="minFeaturesCluster">
+        <div><h2>Minimumaantal punten dat als een cluster moet worden beschouwd</h2></div>
+        <hr/>
+        <div>
+            <p>Het minimum aantal kenmerken om een cluster te bepalen.
+            </p>
+        </div>
+    </div>
+    <div id="searchDistance">
+        <div><h2>Beperk het zoekbereik tot</h2></div>
+        <hr/>
+        <div>
+            <p>De maximale afstand om kenmerken te beschouwen als deel uitmakend van dezelfde cluster.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Resultaat laagnaam</h2></div>
+        <hr/>
+        <div>
+            <p> De naam van de laag die in <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, zal de tool falen.
+            </p>
+            <p>Als u in de vervolgkeuzelijst  <b>Resultaat opslaan</b> gebruikt, kunt u de naam opgeven van een map in <b>Mijn Content</b> waarin het resultaat wordt opgeslagen.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>포인트 군집 찾기</h2><p/>
+        <h2><img src="../images/GUID-40DA7286-67EA-4333-91C5-4CD527C21B4A-web.png" alt="포인트 군집 찾기"></h2>
+        <hr/>
+    <p> 포인트 군집 찾기 도구는 공간 분포에 따라 주변 노이즈 내 포인트 피처의 군집을 찾습니다.
+    </p>
+    <p>비정부 기관은 특정 해충으로 인한 질병을 연구하고 있습니다. 연구 영역에 있는 가구를 나타내는 포인트 데이터셋이 있으며, 일부는 감염되었으며 일부는 감염되지 않았습니다.  포인트 군집 찾기 도구를 사용하여 분석 기관에서는 감염된 가구의 군집을 파악하여 해충의 치료 및 박멸을 시작할 지역을 정확하게 찾을 수 있습니다.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>군집을 찾을 레이어 선택</h2></div>
+        <hr/>
+        <div>
+            <p>군집을 찾을 수 있는 포인트 레이어입니다.  레이어가 투영 공간 참조에 있거나  <b>분석 환경</b>을 사용하여 처리 공간 참조가 투영 좌표계로 설정되어 있어야 합니다.
+            </p>
+            <p>맵에서 레이어를 선택하는 것 이외에, 드롭다운 목록의 하단에 있는  <b>레이어 찾아보기</b>를 선택하여 빅데이터 파일 공유 데이터셋 또는 피처 레이어의 콘텐츠를 찾아볼 수 있습니다.
+            </p>
+        </div>
+    </div>
+    <div id="minFeaturesCluster">
+        <div><h2>군집으로 간주될 최소 포인트 수</h2></div>
+        <hr/>
+        <div>
+            <p>군집의 초기값으로 사용할 최소 피처 수입니다.
+            </p>
+        </div>
+    </div>
+    <div id="searchDistance">
+        <div><h2>다음으로 검색 범위 제한</h2></div>
+        <hr/>
+        <div>
+            <p>피처를 동일한 군집의 일부로 간주할 수 있는 최대 거리입니다.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>결과 레이어 이름</h2></div>
+        <hr/>
+        <div>
+            <p>  <b>내 콘텐츠</b>에 생성되고 맵에 추가되는 레이어의 이름입니다. 기본 이름은 도구 이름과 입력 레이어 이름을 기반으로 합니다. 레이어가 이미 있으면 도구를 사용할 수 없습니다.
+            </p>
+            <p> <b>결과 저장:</b> 드롭다운 상자를 사용하여 <b>내 콘텐츠</b>에서 결과를 저장할 폴더의 이름을 지정할 수 있습니다.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

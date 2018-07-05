@@ -1,0 +1,10 @@
+
+
+
+.dynamicInfographic_viewDiv .Tapestry_Details_Image div:first-child {
+    background-size: cover;
+}
+
+.dynamicInfographic_viewDiv .RelatedVariables_ComparisonDiv {
+    text-align: right;
+}

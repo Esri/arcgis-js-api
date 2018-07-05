@@ -289,12 +289,16 @@
   background-image: url("../images/OverlayLayers32.png");
 }
 
+.buildMultiVariableGridIcon {
+  background-image: url("../images/BuildMulti-VariableGrid32.png");
+}
+
 .appendDataIcon {
   background-image: url("../images/AppendData32.png");
 }
 
 .watershedIcon {
-  background-image: url("../images/Watershed32.png");
+  background-image: url("../images/Raster_Watershed_ra.png");
 }
 
 .eraseLayersDisabledIcon {
@@ -411,15 +415,22 @@
 
 .GPWidgetIcon {
   background-image: url("../images/GPWidget32.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 31px;
-  height: 32px;
-  margin: 8px;
 }
 
 .findCentroidsIcon {
   background-image: url("../images/FindCentroid32.png");
+}
+
+.calculateDistanceIcon {
+  background-image: url("../images/CalculateDistance_ra.png");
+}
+
+.travelCostNetworkIcon {
+  background-image: url("../images/DetermineOptimumTravelCostNetwork_ra.png");
+}
+
+.determineTravelCostPathAsPolylineIcon {
+  background-image: url("../images/DetermineTravelCostPathAsPolyline_ra.png");
 }
 
 .esriAnalysisCloseIcon {
@@ -813,6 +824,7 @@ td.subsectionLineDivider {
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 150px;
+  
 }
 
 
@@ -1219,6 +1231,16 @@ td.subsectionLineDivider {
 
 .esriAnalysis .ui-widget-content {
   width: 100%;
+}
+
+
+.esriAnalysis .esriRemapgrid .ui-widget-content {
+  overflow-y: visible;
+}
+
+
+.esriAnalysis .esriRemapgrid .dgrid-resize-header-container {
+  padding-left: 3px;
 }
 
 .esriAnalysis .EnrichOptionsPage_Fields .dgrid-row.dgrid-row-odd { background-color:#ffffff !important; }
@@ -2085,3 +2107,297 @@ html[dir="rtl"] .esriAnalysis .crumb:first-child {
   background-color: #f3ded7;
   border-color: #e4a793;
 }
+
+
+.esriAnalysis .card:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.esriAnalysis .card-header {
+  background-color: #f8f8f8;
+  border: 1px solid #efefef;
+  padding: 1.023rem;
+}
+
+.esriAnalysis .card-header:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+esriAnalysis .card-header > :last-child {
+  margin-bottom: 0;
+}
+
+.card-header > [class*="column-"] {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+html[dir="rtl"] .esriAnalysis .card-header > [class*="column-"] {
+    padding-right: 1.5rem;
+}
+
+html[dir="rtl"] .esriAnalysis .card-header > [class*="column-"] {
+    padding-left: 1.5rem;
+}
+
+.esriAnalysis .card-header code {
+  background-color: white;
+}
+
+.esriAnalysis .card-image {
+  background-color: white;
+  border: 1px solid #efefef;
+}
+
+.esriAnalysis .card-image code {
+  background-color: #f8f8f8;
+}
+
+.esriAnalysis .card-image img {
+  display: block;
+}
+
+.esriAnalysis .card-body {
+  padding: 1.023rem;
+  background-color: white;
+  border: 1px solid #efefef;
+}
+
+.esriAnalysis .card-body code {
+  background-color: #f8f8f8;
+}
+
+.esriAnalysis .card-image, .esriAnalysis .card-body {
+  color: #6e6e6e;
+}
+
+
+.esriAnalysis  .btn {
+  position: relative;
+  display: inline-block;
+  padding: 0.31rem 0.9rem;
+  width: auto;
+  color: #ffffff;
+  border: 1px solid #0079c1;
+  background-color: #0079c1;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.05s linear;
+  transition: all 0.05s linear;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 0.9375rem;
+  line-height: 1.55rem; }
+  .esriAnalysis  .btn:hover {
+    text-decoration: none;
+    background-color: #005e95;
+    color: #ffffff; }
+
+.esriAnalysis  .btn-transparent {
+  background: none;
+  color: #0079c1;
+  border: none; }
+  .esriAnalysis  .btn-transparent:hover {
+    color: #005e95;
+    background: none;
+    text-decoration: underline; }
+
+.esriAnalysis  .btn-clear {
+  color: #0079c1;
+  background: #ffffff;
+  border-color: #0079c1; }
+  .esriAnalysis .btn-clear:hover {
+    color: #ffffff;
+    background: #005e95;
+    border-color: #005e95; }
+
+.esriAnalysis .btn-clear-white {
+  background: none;
+  color: #ffffff;
+  border: 1px solid #ffffff; }
+  .esriAnalysis .btn-clear-white:hover {
+    color: #959595;
+    background: #ffffff; }
+
+.esriAnalysis .btn-small {
+  font-size: 0.875rem;
+  line-height: 1.55rem;
+  padding: 0.2325rem 0.675rem; }
+
+.esriAnalysis .btn-large {
+  font-size: 1rem;
+  line-height: 1.55rem;
+  padding: .5rem 1rem .5rem; }
+
+.esriAnalysis .btn-fill {
+  width: 100%;
+  text-align: center; }
+
+.esriAnalysis .btn-half {
+  width: 50%;
+  text-align: center; }
+
+.esriAnalysis .btn-grouped {
+  float: left; }
+  html[dir="rtl"] .esriAnalysis .btn-grouped {
+    float: right; }
+  .esriAnalysis .btn-grouped + .esriAnalysis  .btn-grouped {
+    margin-left: 1px; }
+    html[dir="rtl"] .esriAnalysis .btn-grouped + .esriAnalysis .btn-grouped {
+      margin-left: 0;
+      margin-right: 1px; }
+  .esriAnalysis .btn-grouped:last-of-type {
+    float: none; }
+  .esriAnalysis .btn-grouped.btn-half {
+    margin-left: 0; }
+
+.esriAnalysis .btn-white {
+  background: #ffffff;
+  color: #4c4c4c;
+  border: 1px solid #ffffff; }
+  .esriAnalysis .btn-white:hover {
+    color: #4c4c4c;
+    background: #efefef; }
+
+.esriAnalysis .btn-red {
+  color: #de2900;
+  background: transparent;
+  border-color: #de2900; }
+  .esriAnalysis .btn-red:hover {
+    color: #ffffff;
+    background: #ab3c16;
+    border-color: #ab3c16; }
+
+.esriAnalysis .btn-green {
+  background-color: #5a9359;
+  border-color: #5a9359; }
+  .esriAnalysis .btn-green:hover {
+    background-color: #338033; }
+
+.esriAnalysis .btn:disabled,
+.esriAnalysis .btn-disabled,
+button[disabled] {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: .3; }
+
+  .esriAnalysis.card .card-collapsible {
+    margin-bottom: 1.2rem 0;
+  }
+  
+  .esriAnalysis.card .card-toggle {
+    display: none;
+  }
+  
+  .esriAnalysis.card .card-lbl-toggle {
+    display: block;
+    
+    padding: 1rem;
+    background-color: #f8f8f8;
+    border: 1px solid #efefef;
+    cursor: pointer;
+    border-radius: 7px;
+    transition: all 0.25s ease-out;
+  }
+  
+  
+  
+  .esriAnalysis.card .card-lbl-toggle::before {
+    content: ' ';
+    display: inline-block;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid currentColor;
+    vertical-align: middle;
+    
+    transform: translateY(-2px);
+    transition: transform .2s ease-out;
+    float: left;
+  }
+  
+  .esriAnalysis.card .card-toggle:checked + .card-lbl-toggle::before {
+    transform: rotate(90deg) translateX(-3px);
+  }
+  
+  .esriAnalysis.card .card-content {
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height .25s ease-in-out;
+  }
+  
+  .esriAnalysis.card .card-toggle:checked + .card-lbl-toggle + .card-content {
+    max-height: 300px;
+  }
+  
+  .esriAnalysis.card .card-toggle:checked + .card-lbl-toggle {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  
+  .esriAnalysis.card .card-content .card-content-inner {
+    background-color: white;
+    border: 1px solid #efefef;
+    border-top: 0;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    padding: .5rem 1rem;
+  }
+
+  .esriAnalysis .addVariableAction {
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+  }
+
+  .esriAnalysis .center {
+    margin: auto;
+    width: 50%;
+  }
+
+  .esriAnalysis .variableListContainer {
+    height: 20em !important;
+    overflow-y: scroll;
+  }
+  
+  .esriAnalysis .esriListItemGrid {
+    border: none;
+  }
+  .esriAnalysis .esriListItemGrid .dgrid-cell {
+    border: none;
+  }
+  
+  .esriAnalysis .esriListItemGrid .dgrid-row-table {
+    border: 1px solid #bbb;
+  }
+  
+  .esriAnalysis .esriListItemGrid .dgrid-row {
+    padding: 0.25em;
+  }
+  
+  .esriAnalysis .esriListItemGrid .esriGridCellEllipses {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 70%;
+  }
+  
+  .esriMultiVarDialogContent  {
+    width: 40em !important;
+  }
+  .esriAnalysis.esriMultiVariableForm .attrSelect div.dijitReset.dijitInputField.dijitButtonText ,
+  .esriAnalysis.esriMultiVariableForm .statsSelect div.dijitReset.dijitInputField.dijitButtonText {
+    width: 86%;
+    overflow: hidden;
+    text-align: left;
+  }
+
+  .esriAnalysis.esriMultiVariableForm .attrSelect span.dijitReset.dijitInline.dijitSelectLabel.dijitValidationTextBoxLabel ,
+  .esriAnalysis.esriMultiVariableForm .statsSelect span.dijitReset.dijitInline.dijitSelectLabel.dijitValidationTextBoxLabel {
+    width: 86%;
+    overflow: hidden;
+  }

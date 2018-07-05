@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
-define(["dojo/when","./DefaultLogoGraphicReportGeneric","./DefaultLogoGraphicReportLight","./DefaultLogoGraphicReportDark","esri/dijit/geoenrichment/utils/ColorUtil"],function(r,t,o,e,i){return{_identifyDefaultLogoBackground:function(r){return!r||i.isTransparent(r.backgroundColor)?"transparent":i.isLightColor(r.backgroundColor)?"light":"dark"},getDefaultLogo:function(i){switch(this._identifyDefaultLogoBackground(i)){case"light":return r(e);case"dark":return r(o);default:return r(t)}}}});
+define(["dojo/Deferred","require","esri/dijit/geoenrichment/utils/ColorUtil"],function(o,r,e){return{_identifyDefaultLogoBackground:function(o){return!o||e.isTransparent(o.backgroundColor)?"transparent":e.isLightColor(o.backgroundColor)?"light":"dark"},_loadLogo:function(e){var t=new o;return r(["./"+e],function(o){t.resolve(o)}),t.promise},getDefaultLogo:function(o){switch(this._identifyDefaultLogoBackground(o)){case"light":return this._loadLogo("DefaultLogoGraphicReportDark");case"dark":return this._loadLogo("DefaultLogoGraphicReportLight");default:return this._loadLogo("DefaultLogoGraphicReportGeneric")}}}});

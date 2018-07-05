@@ -208,11 +208,17 @@
         </td>
       </tr>
       <tr data-dojo-attach-point="classifyGridBlock">
-        <td colspan="3"><div data-dojo-attach-point="classifyGrid"></div></td>
+        <td colspan="3">
+          <div data-dojo-attach-point="classifyLoadingMsg" class="esriRenderingRuleLoadingMsg">${_i18n.widgets.renderingRule.classifyLoadingMsg}</div>
+          <div data-dojo-attach-point="classifyGrid"></div>
+        </td>
       </tr>   
       <tr>
       <tr data-dojo-attach-point="uniqueValuesGridBlock">
-        <td colspan="3"><div data-dojo-attach-point="uniqueValuesGrid"></div></td>
+        <td colspan="3">
+            <div data-dojo-attach-point="uniqueValuesLoadingMsg" class="esriRenderingRuleLoadingMsg">${_i18n.widgets.renderingRule.uniqueValuesLoadingMsg}</div>
+          <div data-dojo-attach-point="uniqueValuesGrid"></div>
+        </td>
       </tr>   
       <tr>
         <td colspan="3">

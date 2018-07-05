@@ -60,7 +60,7 @@
         <div><h2>Kies methode voor controle van vegetatie</h2></div>
         <hr/>
         <div>
-            <p>Selecteer de methode die wordt gebruikt om de vegetatie-indexlaag te maken. De verschillende vegetatie-indexen kunnen bepaalde objecten helpen benadrukken of verschillende geluiden helpen verminderen.
+            <p>Kies de methode om de vegetatie-indexlaag te maken. De verschillende vegetatie-indexen kunnen bepaalde objecten helpen benadrukken of verschillende geluiden verminderen.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
@@ -76,7 +76,7 @@ MSAVI2 is een vegetatie-index die probeert om de invloeden van de kale grond van
 
                 </li>
                 <li>Normalized Difference Vegetation Index  &mdash; 
-NDVI is een gestandaardiseerde index zodat u een beeld komt vormen van de groenheid, ten opzichte van de biomassa. Deze index maakt gebruik van het contrast van de kenmerken van de twee banden van een multispectraal rasterdataset; de chlorofylpigmentabsorptie in de rode band en de hoge reflectiviteit van plantaardige materialen in het nabije infrarood (NIR) band.
+NDVI is een gestandaardiseerde index zodat u een beeld komt vormen van de groenheid of ten opzichte van de biomassa. Deze index maakt gebruik van het contrast van de kenmerken van de twee banden van een multispectraal rasterdataset; de chlorofylpigmentabsorptie in de rode band en de hoge reflectiviteit van plantaardige materialen in het nabije infrarood (NIR) band.
 
                 </li>
                 <li>Perpendicular Vegetation Index &mdash; 
@@ -102,7 +102,7 @@ Getransformeerde-SAVI is een vegetatie-index die probeert om de helderheid van d
         <div><h2>Specificeer indexen van NIR-bandbreedte en Red-bandbreedte</h2></div>
         <hr/>
         <div>
-            <p>Typ de bandindexen voor de nabij-infrarood (NIR) en Red banden.
+            <p>Specificeer de bandindexen voor de NIR en red banden.
             </p>
             <p>Elke satellietsensor en luchtfotocamera legt informatie vast die is opgesplitst in bandindexen. Elke bandindex bevat de informatie voor een specifiek deel van het elektromagnetische spectrum. Deze vegetatiecontrolemethode vereist dat u de bandindex specificeert die de NIR en de Red golflengten heeft vastgelegd.
             </p>
@@ -114,7 +114,7 @@ Getransformeerde-SAVI is een vegetatie-index die probeert om de helderheid van d
         <div>
             <p>De helling van de bodemlijn. De helling is de geschatte lineaire relatie tussen de NIR en rode banden op een spreidingsdiagram.
             </p>
-            <p>Deze parameter is alleen geldig voor de Transformed-Soil-Adjusted Vegetation Index.
+            <p>Deze parameter is alleen geldig voor de Transformed-Soil-Adjusted Vegetation Indexmethode.
             </p>
         </div>
     </div>
@@ -122,11 +122,11 @@ Getransformeerde-SAVI is een vegetatie-index die probeert om de helderheid van d
         <div><h2>Onderscheppen</h2></div>
         <hr/>
         <div>
-            <p>Dit is de waarde van nabij infrarood (NIR) als de reflectiewaarde van de rood (red) band 0 is voor de bepaalde bodemlijnen.
+            <p>De waarde van NIR als de reflectiewaarde van de rood (red) band 0 is voor de bepaalde bodemlijnen.
             </p>
             <p> <code>(a = NIR - sRed)</code> , als Red 0 is.
             </p> 
-            <p>Deze parameter is alleen geldig voor de Transformed-Soil-Adjusted Vegetation Index.
+            <p>Deze parameter is alleen geldig voor de Transformed-Soil-Adjusted Vegetation Indexmethode.
             </p>
         </div>
     </div>
@@ -134,9 +134,9 @@ Getransformeerde-SAVI is een vegetatie-index die probeert om de helderheid van d
         <div><h2>Hoeveelheid dekking groene vegetatie</h2></div>
         <hr/>
         <div>
-            <p>De SAVI-methode vereist dat de vegetatiedekking gespecificeerd wordt.
+            <p>Specificeert de hoeveelheid groene vegetatiebedekking die vereist is volgens de SAVI-methode.
             </p>
-            <p>Dit moet een waarde zijn tussen 0.0 en 1.0 waarbij 
+            <p>Geldige waarden zijn als volgt: 
 
                 <ul>
                     <li>1 = gebieden zonder groene vegetatiedekking
@@ -160,9 +160,9 @@ Getransformeerde-SAVI is een vegetatie-index die probeert om de helderheid van d
         <div><h2>Aanpassingsfactor</h2></div>
         <hr/>
         <div>
-            <p>De Transformed Soil-Adjusted Vegetation Index-methode vereist dat de aanpassingsfactor wordt ingesteld om de gevolgen voor de bodem tot een minimum te beperken. De standaardwaarde is 0.08.
+            <p>Specificeert de aanpassingsfactor om het bodemeffect tot een minimum te helpen beperken, wat vereist is bij de methode van de Transformed-Soil-Adjusted Vegetation Index. De standaardwaarde is 0.08.
             </p>
-            <p>Een lagere waarde betekent dat u het bodemeffect negeert. Een hoge waarde betekent dat de bodem het resultaat zal be&iuml;nvloeden.
+            <p>Een lage waarde betekent dat u het bodemeffect negeert. Een hoge waarde betekent dat de bodem het resultaat zal be&iuml;nvloeden.
             </p>
         </div>
     </div>

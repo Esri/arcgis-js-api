@@ -50,7 +50,7 @@
     </p>
     <p>La oss for eksempel si at du har GPS-m&aring;linger av orkaner hvert 10. minutt. Hver GPS-m&aring;ling registrerer orkanens navn, lokasjon, tidspunktet for registreringen og vindhastigheten. Ved &aring; bruke disse feltene kan du opprette en hendelse der en m&aring;ling med en vindhastighet som er st&oslash;rre enn 208 km/h, er en hendelse som heter  <code>Katastrofisk</code>. Ved &aring; ikke angi en sluttbetingelse vil hendelsen slutte hvis geoobjektet ikke lenger oppfyller startbetingelsen (vindhastigheten avtar til mindre enn 208).
     </p>
-    <p>For &aring; ta et annet eksempel, la oss si at du skal overv&aring;ke konsentrasjoner av et kjemikalie i den lokale vannforsyningen ved &aring; bruke et felt som heter  <code>forurensningsniv&aring;</code>. Du vet at de anbefalte niv&aring;ene er mindre enn 0,01 mg/l, og at de farlige niv&aring;ene er over 0,03 mg/l. For &aring; identifisere hendelser der en verdi over 0,03 mg/l er en hendelse og forblir en hendelse til forurensningsniv&aring;ene g&aring;r tilbake til normalt igjen, oppretter du en hendelse med en startbetingelse p&aring; <code>forurensningsniv&aring; &gt; 0,03</code> og en sluttbetingelse p&aring; <code>forurensningsniv&aring; &lt; 0,01</code>. Dette vil merke en hvilken som helst sekvens der verdiene overstiger 0,03 mg/l til de g&aring;r tilbake til en verdi p&aring; mindre enn 0,01.
+    <p>For &aring; ta et annet eksempel kan vi si at du skal overv&aring;ke konsentrasjoner av et kjemikalium i den lokale vannforsyningen ved &aring; bruke et felt som heter  <code>Forurensningsniv&aring;</code>. Du vet at de anbefalte niv&aring;ene er mindre enn 0,01 mg/l, og at de farlige niv&aring;ene er over 0,03 mg/l. For &aring; identifisere hendelser der en verdi over 0,03 mg/l er en hendelse og forblir en hendelse til forurensningsniv&aring;ene g&aring;r tilbake til normalt igjen, oppretter du en hendelse med en startbetingelse p&aring; <code>forurensningsniv&aring; &gt; 0,03</code> og en sluttbetingelse p&aring; <code>forurensningsniv&aring; &lt; 0,01</code>. Dette vil merke en hvilken som helst sekvens der verdiene overstiger 0,03 mg/l til de g&aring;r tilbake til en verdi p&aring; mindre enn 0,01.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -68,7 +68,7 @@
         <div><h2>Velg ett eller flere felt for å identifisere spor</h2></div>
         <hr/>
         <div>
-            <p> Feltene som representerer spor-ID-en. Du kan bruke et felt eller flere felt til &aring; representere unike sporverdier.
+            <p>Feltene som representerer spor-ID-en. Du kan bruke et felt eller flere felt til &aring; representere unike sporverdier.
             </p>
             <p>Hvis du for eksempel skulle rekonstruere spor etter orkaner, kunne du ha brukt orkanens navn som sporfelt.
             </p>
@@ -82,6 +82,8 @@
             </p>
             <p>La oss for eksempel si at du &oslash;nsker &aring; bli varslet n&aring;r summen av feltene   <code>konsentrasjon_1</code> og <code>konsentrasjon_2</code> er st&oslash;rre enn <code>konsentrasjon_3</code>.   Du m&aring; da bruke betingelsen <code>($feature[&ldquo;concentration_1&quot;] +  $feature[&quot;concentration_2&quot;]) &gt; $feature[&quot;concentration_3&quot;])</code>.
             </p>
+            <p>Hvis du var interessert i hvordan konsentrasjonene ble endret over tid, og &oslash;nsket &aring; bli varslet n&aring;r gjeldende  <code>konsentrasjon_1</code> var h&oslash;yere enn de to foreg&aring;ende m&aring;lingene av <code>konsentrasjon_2</code>, kunne du bruke et uttrykk som <code>$feature[&quot;concentration_1&quot;] &gt;   $track.field[&quot;concentration_2&quot;].history(-3,-1)</code>.
+            </p>
         </div>
     </div>
     <div id="endConditionExpression">
@@ -91,6 +93,8 @@
             <p>Du kan ogs&aring; legge til en betingelse med Expression Builder for &aring; fastsette slutten p&aring; en hendelse. Hvis sluttbetingelsen du angir er sann, er geoobjektet ikke lenger en hendelse. Hvis du ikke angir en sluttbetingelse, slutter hendelsen n&aring;r startbetingelsen ikke lenger er sann.    
             </p>
             <p>La oss for eksempel si at du vil bli varslet n&aring;r summen av feltene  <code>konsentrasjon_1</code> og <code>konsentrasjon_2</code> er st&oslash;rre enn <code>konsentrasjon_3</code>, og at du vil at hendelsen skal slutte hvis <code>konsentrasjon_4</code> er mindre enn <code>konsentrasjon_1</code>. Du m&aring; da bruke startbetingelsen <code>($feature[&quot;concentration_1&quot;] +  $feature[&quot;concentration_2&quot;]) &gt; ($join[&quot;income&quot;] * .20)</code> og sluttbetingelsen <code>($feature[&quot;concentration_4&quot;] &lt; $feature[&quot;concentration_1&quot;])</code>.
+            </p>
+            <p>Hvis du ville at en hendelse skulle avsluttes n&aring;r gjennomsnittet for gjeldende  <code>konsentrasjon_1</code> og fire foreg&aring;ende m&aring;linger var h&oslash;yere enn den f&oslash;rste m&aring;lingen, kunne du bruke et uttrykk som <code>$track.field[&quot;concentration_1&quot;].history(-5) &gt; $track.field[&quot;concentration_1&quot;].history(0)</code>.
             </p>
         </div>
     </div>
@@ -113,7 +117,7 @@
         <div><h2>Navn på resultatlag</h2></div>
         <hr/>
         <div>
-            <p> Dette er navnet p&aring; laget som vil bli laget i <b>Mitt Innhold</b> og lagt til i kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget allerede eksisterer, vil verkt&oslash;yet mislykkes.
+            <p> Navnet p&aring; laget som opprettes i <b>Mitt innhold</b> og legges til kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget allerede eksisterer, vil verkt&oslash;yet mislykkes.
             </p>
             <p>Bruk rullegardinlisten  <b>Lagre resultat</b> i til &aring; angi navnet p&aring; en mappe i <b>Mitt innhold</b> som resultatene skal lagres i.
             </p>

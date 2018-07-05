@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>केंद्र और प्रसार को सारांशित करें</h2><p/>
+        <h2><img src="../images/GUID-D2D53CA4-8A35-4163-9765-77BF232E569D-web.png" alt="केंद्र और प्रसार को सारांशित करें"></h2>
+        <hr/>
+    <p>यह उपकरण केंद्रीय फ़ीचर्स का और दिशा-संबंधी वितरणों का पता लगाता है।
+इसका उपयोग निम्न प्रकार के प्रश्नों का उत्तर देने के लिए किया जा सकता है:
+        <ul>
+            <li>केंद्र क्या है?
+            </li>
+            <li>अन्य सभी फ़ीचर्स में से सर्वाधिक पहुंच योग्य फ़ीचर कौन सा है?
+            </li>
+            <li>फ़ीचर्स कितने फैले हुए, ठोस या एकीकृत हैं?
+            </li>
+            <li>क्या कोई दिशात्मक रुझान मौजूद हैं?
+            </li>
+        </ul>
+        
+    </p>
+    <p>अगर  <b>वर्तमान मैप स्तर का उपयोग करें</b> चयनित है, तो केवल वर्तमान मानचित्र स्तर के अंतर्गत दिखाई देने वाले इनपुट पॉइंट लेयर के फीचर्स का ही विश्लेषण किया जाएगा।  चयनित नहीं होने पर, इनपुट पॉइंट लेयर के स्थान-संबंधी फीचर्स का विश्लेषण किया जाएगा, भले ही वे वर्तमान मानचित्र सीमा से बाहर हो।
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="analysisLayer">
+        <div><h2>वर्णन करने के लिए कोई लेयर चुनें</h2></div>
+        <hr/>
+        <div>
+            <p>वह पॉइंट लेयर जिसका उपयोग केंद्रीय फ़ीचर्स और डायरेक्शनल फ़ीचर्स का पता लगाने के लिए किया जाएगा।
+            </p>
+        </div>
+    </div>
+    <div id="summarizeTypes">
+        <div><h2>सारांश प्रकार</h2></div>
+        <hr/>
+        <div>
+            <p>केंद्र और प्रसार को सारांशित करने की विधि। 
+            </p>
+            <ul>
+                <li>केंद्रीय फ़ीचर - किसी पॉइंट लेयर में सबसे केंद्रीय फ़ीचर की पहचान करता है।
+                </li>
+                <li>माध्य लेयर - फ़ीचर्स के सेट के लिए (या सांद्रता के केंद्र) भौगोलिक केंद्र की पहचान करता है।
+                </li>
+                <li>माध्यमिक केंद्र - उस स्थान की पहचान करता है, जो संपूर्ण युक्लिडियन दूरी को डेटासेट के किसी फ़ीचर के लिए न्यूनतम करता है।
+                </li>
+                <li>दीर्घवृत्त - भौगोलिक फ़ीचर्स की स्पाशियल विशेषताओं का सारांश प्रस्तुत करने के लिए मानक विचलन दीर्घवृत्त बनाता है: केंद्रीय प्रवृत्ति, प्रसार, और दिशात्मक रुझान। दीर्घवृत्तो का आकार 1, 2, या 3 मानक विचलनों का हो सकता है।
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="weightBy">
+        <div><h2>इसके अनुसार मूल्य देना (वैकल्पिक)</h2></div>
+        <hr/>
+        <div>
+            <p>स्थानों को उनके तुलनात्मक महत्व के अनुसार मूल्य देने के लिए प्रयुक्त फ़ील्ड। 
+            </p>
+        </div>
+    </div>
+    <div id="groupBy">
+        <div><h2>समूह द्वारा (वैकल्पिक)</h2></div>
+        <hr/>
+        <div>
+            <p>केंद्रीय फ़ीचर्स या प्रसार की अलग से गणनाएँ करने के लिए फ़ीचर्स को समूहीकृत करने के लिए प्रयुक्त फ़ील्ड। 
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>परिणामी लेयर का नाम</h2></div>
+        <hr/>
+        <div>
+            <p>यह उस लेयर का नाम है जो  <b>मेरी सामग्री</b> में बनाई जाएगी और मानचित्र में जोड़ी जाएगी। इसका मूल नाम उपकरण के नाम और इनपुट लेयर के नाम पर आधारित है। यदि लेयर पहले से मौजूद हो, तो आपसे दूसरा नाम देने को कहा जाएगा।
+            </p>
+            <p> <b>इसमें सहेजें</b> ड्राप-डाउन बॉक्स का उपयोग करके, आप <b>मेरी सामग्री</b> में एक फोल्डर का नाम निर्दिष्ट कर सकते हैं, जहां परिणामों को सहेजा जाएगा।।
+            </p>
+        </div>
+    </div>
+</div>
+</html>

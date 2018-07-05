@@ -60,11 +60,11 @@
         <div><h2>Bitki örtüsünü izleme yöntemini seçin</h2></div>
         <hr/>
         <div>
-            <p>Bitki &ouml;rt&uuml;s&uuml; indeks katmanını oluşturmak i&ccedil;in kullanılan y&ouml;ntemi ayarlayın. Farklı bitki &ouml;rt&uuml;s&uuml; indeksleri &ouml;zel detayların vurgulanmasını sağlayabilir veya varyans g&uuml;r&uuml;lt&uuml;s&uuml;n&uuml; azaltabilir.
+            <p>Bitki &ouml;rt&uuml;s&uuml; indeks katmanını oluşturmak i&ccedil;in kullanılacak y&ouml;ntemi se&ccedil;in. Farklı bitki &ouml;rt&uuml;s&uuml; indeksleri &ouml;zel detayların vurgulanmasını sağlayabilir veya &ccedil;eşitli g&uuml;r&uuml;lt&uuml;leri azaltabilir.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
-GEMI, uygu g&ouml;r&uuml;nt&uuml;lerinden global &ccedil;evre izleme i&ccedil;in kullanılan doğrusal olmayan bir bitki &ouml;rt&uuml;s&uuml; indeksidir. NDVI &ouml;ğesine benzer, ancak atmosfer etkilerine karşı duyarlılığı daha d&uuml;ş&uuml;kt&uuml;r. &Ccedil;ıplak toprak tarafından etkilenir; bu nedenle &ccedil;ok seyrek ya da &ccedil;ok yoğun bitki &ouml;rt&uuml;s&uuml; bulunana alanlarda kullanılması &ouml;nerilmez.
+GEMI, uydu g&ouml;r&uuml;nt&uuml;lerinden global &ccedil;evre izleme i&ccedil;in kullanılan doğrusal olmayan bir bitki &ouml;rt&uuml;s&uuml; indeksidir. NDVI &ouml;ğesine benzer, ancak atmosfer etkilerine karşı duyarlılığı daha d&uuml;ş&uuml;kt&uuml;r. &Ccedil;ıplak toprak tarafından etkilenir; bu nedenle &ccedil;ok seyrek ya da &ccedil;ok yoğun bitki &ouml;rt&uuml;s&uuml; bulunana alanlarda kullanılması &ouml;nerilmez.
 
                 </li>
                 <li>Green Vegetation Index - Landsat TM &mdash; 
@@ -76,7 +76,7 @@ MSAVI2, SAVI y&ouml;ntemi &uuml;zerinde &ccedil;ıplak toprak etkisini minimize 
 
                 </li>
                 <li>Normalized Difference Vegetation Index  &mdash; 
-NAVI, standartlaştırılmış bir indekstir ve yeşilliği ve relatif biyok&uuml;tleyi g&ouml;steren bir g&ouml;r&uuml;nt&uuml; oluşturmanıza olanak tanır. Bu indeks, &ccedil;oklu spektral raster veri k&uuml;mesinden gelen iki bandın şu kontrast &ouml;zelliklerinin avantajını kullanır; kırmızı banttaki klorofil pigmenti emilimleri ve kızıl&ouml;tesine yakın (NIR) bandındaki bitki malzemelerinin y&uuml;ksek yansıma &ouml;zelliği.
+NDVI, standartlaştırılmış bir indekstir ve yeşilliği veya relatif biyok&uuml;tleyi g&ouml;steren bir g&ouml;r&uuml;nt&uuml; oluşturmanıza olanak tanır. Bu indeks, &ccedil;oklu spektral raster veri k&uuml;mesinden gelen iki bandın şu kontrast &ouml;zelliklerinin avantajını kullanır; kırmızı banttaki klorofil pigmenti emilimleri ve kızıl&ouml;tesine yakın (NIR) bandındaki bitki malzemelerinin y&uuml;ksek yansıma &ouml;zelliği.
 
                 </li>
                 <li>Perpendicular Vegetation Index &mdash; 
@@ -102,9 +102,9 @@ D&ouml;n&uuml;şt&uuml;r&uuml;len SAVI, toprak hattının rastgele bir eğimi ve
         <div><h2>NIR bandı ve Kırmızı band indekslerini belirtin</h2></div>
         <hr/>
         <div>
-            <p>Yakın kızıl&ouml;tesi (NIR) ve Kırmızı bantlar i&ccedil;in bant indekslerini yazın.
+            <p>Yakın kızıl&ouml;tesi (NIR) ve kızıl bantlar i&ccedil;in bant indekslerini belirtin.
             </p>
-            <p>Her uydu sens&ouml;r&uuml; ve hava kamerası, bant indekslerine ayrıştırılan bilgiler yakalar. Her bant indeksinde elektromanyetik spektrumun &ouml;zel bir b&ouml;l&uuml;m&uuml; i&ccedil;in bilgiler bulunur. Bu bitki &ouml;rt&uuml;s&uuml; izleme y&ouml;ntemi, NIR ve Kızıl dalga boylarını yakalayan bant indeksinin belirtilmesini gerektirir.
+            <p>Her uydu sens&ouml;r&uuml; ve hava kamerası, bant indekslerine ayrıştırılan bilgiler yakalar. Her bant indeksinde elektromanyetik spektrumun &ouml;zel bir b&ouml;l&uuml;m&uuml; i&ccedil;in bilgiler bulunur. Bu bitki &ouml;rt&uuml;s&uuml; izleme y&ouml;ntemi, NIR ve kızıl dalga boylarını yakalayan bant indeksinin belirtilmesini gerektirir.
             </p>
         </div>
     </div>
@@ -114,7 +114,7 @@ D&ouml;n&uuml;şt&uuml;r&uuml;len SAVI, toprak hattının rastgele bir eğimi ve
         <div>
             <p>Toprak hattının eğimi. Eğim, bir dağılım d&uuml;zenindeki NIR ve kızıl bantlar arasındaki yaklaşık doğrusal ilişkiyi temsil eder.
             </p>
-            <p>Bu parametre yalnızca D&ouml;n&uuml;şt&uuml;r&uuml;lm&uuml;ş Toprağa G&ouml;re Ayarlı Bitki &Ouml;rt&uuml;s&uuml; İndeksi i&ccedil;in ge&ccedil;erlidir.
+            <p>Bu parametre yalnızca D&ouml;n&uuml;şt&uuml;r&uuml;lm&uuml;ş Toprağa G&ouml;re Ayarlı Bitki &Ouml;rt&uuml;s&uuml; İndeksi y&ouml;ntemi i&ccedil;in ge&ccedil;erlidir.
             </p>
         </div>
     </div>
@@ -122,11 +122,11 @@ D&ouml;n&uuml;şt&uuml;r&uuml;len SAVI, toprak hattının rastgele bir eğimi ve
         <div><h2>Kesme Noktası</h2></div>
         <hr/>
         <div>
-            <p>Bu, belirli toprak &ccedil;izgileri i&ccedil;in kızıl (Kızıl) bant yansıma değeri 0 iken yakın kızıl&ouml;tesi (NIR) değeridir.
+            <p>Belirli toprak &ccedil;izgileri i&ccedil;in kızıl (Kızıl) bant yansıma değeri 0 iken yakın kızıl&ouml;tesinin (NIR) değeridir.
             </p>
-            <p> <code>(a = NIR - sRed)</code> , Kızıl 0 iken.
+            <p> <code>(a = NIR - sRed)</code> , kırmızı 0 iken.
             </p> 
-            <p>Bu parametre yalnızca D&ouml;n&uuml;şt&uuml;r&uuml;lm&uuml;ş Toprağa G&ouml;re Ayarlı Bitki &Ouml;rt&uuml;s&uuml; İndeksi i&ccedil;in ge&ccedil;erlidir.
+            <p>Bu parametre yalnızca D&ouml;n&uuml;şt&uuml;r&uuml;lm&uuml;ş Toprağa G&ouml;re Ayarlı Bitki &Ouml;rt&uuml;s&uuml; İndeksi y&ouml;ntemi i&ccedil;in ge&ccedil;erlidir.
             </p>
         </div>
     </div>
@@ -134,20 +134,20 @@ D&ouml;n&uuml;şt&uuml;r&uuml;len SAVI, toprak hattının rastgele bir eğimi ve
         <div><h2>Yeşil bitki örtüsü miktarı</h2></div>
         <hr/>
         <div>
-            <p>SAVI y&ouml;ntemi, bitki &ouml;rt&uuml;s&uuml; miktarının belirtilmesini gerektirir.
+            <p>SAVI y&ouml;nteminin gerektirdiği yeşil bitki &ouml;rt&uuml;s&uuml; miktarını belirtir.
             </p>
-            <p>0,0 ila 1,0 arasında bir değer girin, burada 
+            <p>Ge&ccedil;erli değerler aşağıdaki gibidir: 
 
                 <ul>
-                    <li>1 = yeşil bitki &ouml;rt&uuml;s&uuml; bulunmayan alanlar
+                    <li>1 = Yeşil bitki &ouml;rt&uuml;s&uuml; bulunmayan alanlar
                         
  
                     </li>
-                    <li>0,5 = orta d&uuml;zeyde yeşil bitki &ouml;rt&uuml;s&uuml; bulunan alanlar
+                    <li>0,5 = Orta d&uuml;zeyde yeşil bitki &ouml;rt&uuml;s&uuml; bulunan alanlar
                         
  
                     </li>
-                    <li>0 = yoğun yeşil bitki &ouml;rt&uuml;s&uuml; bulunan alanlar
+                    <li>0 = Yoğun yeşil bitki &ouml;rt&uuml;s&uuml; bulunan alanlar
                         
 
                     </li>
@@ -160,9 +160,9 @@ D&ouml;n&uuml;şt&uuml;r&uuml;len SAVI, toprak hattının rastgele bir eğimi ve
         <div><h2>Ayarlama faktörü</h2></div>
         <hr/>
         <div>
-            <p>Toprağa G&ouml;re Ayarlanan Bitki &Ouml;rt&uuml;s&uuml; İndeksi y&ouml;ntemi, toprak etkisini minimize etmeye &ccedil;alıştırırken ayarlama fakt&ouml;r&uuml;n&uuml;n ayarlanmış olmasını gerektirir. Varsayılan değer 0.08'dır.
+            <p>Toprağa G&ouml;re Ayarlanan Bitki &Ouml;rt&uuml;s&uuml; İndeksi y&ouml;nteminde gerekli olan, toprak etkisini minimize etmeye yardımcı ayarlama fakt&ouml;r&uuml;n&uuml; belirtir. Varsayılan değer 0.08'dır.
             </p>
-            <p>Daha d&uuml;ş&uuml;k bir değer toprak etkisinin dikkate alınmadığı anlamına gelir. Daha y&uuml;ksek bir değer, toprağın sonucunuzu etkileyebileceği anlamına gelir.
+            <p>D&uuml;ş&uuml;k bir değer toprak etkisinin dikkate alınmadığı anlamına gelir. Y&uuml;ksek bir değer, toprağın sonucunuzu etkileyebileceği anlamına gelir.
             </p>
         </div>
     </div>

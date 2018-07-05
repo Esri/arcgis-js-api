@@ -124,9 +124,9 @@
         <div><h2>Dodaj statistiku (opciono)</h2></div>
         <hr/>
         <div>
-            <p> Možete da izračunate statistiku na geoobjektima koji su sumirani. U numeričkim poljima možete da izračunate sledeće:
+            <p> Možete da izračunate statistiku na geoobjektima koji su sumirani. Možete da izračunate sledeće na numeričkim poljima:
                 <ul>
-                    <li>Brojač&mdash;izračunava broj vrednosti koje nisu null (bez vrednosti). Može da bude kori&scaron;ćen u numeričkim poljima ili niskama. Brojač od [null, 0, 2] je 2.
+                    <li>Brojač&mdash;izračunava broj vrednosti koje nisu null. Može da bude kori&scaron;ćen u numeričkim poljima ili niskama. Brojač od [null, 0, 2] je 2.
                     </li>
                     <li>Zbir&mdash;zbir numeričkih vrednosti u polju. Zbir od [null, null, 3] je 3.
                     </li>
@@ -138,14 +138,14 @@
                     </li>
                     <li>Opseg&mdash;opseg numeričkog polja. Ovo se izračunava kada se minimalna vrednost oduzme od maksimalne vrednosti. Opseg od [0, null, 1] je 1. Opseg od [null, 4] je 0.
                     </li>
-                    <li>Varijansa&mdash;varijansa numeričkog polja u stazi. Varijansa od [1] je null. Varijansa od [null, 1,1,1] je 1.
+                    <li>Varijansa&mdash;varijansa numeričkog polja u stazi. Varijansa od [1] je null. Varijansa od [null, 1,0,1,1] je 0,25.
                     </li>
-                    <li>Standardna devijacija&mdash;standardna devijacija numeričkog polja. Standardna devijacija od [1] je null. Standardna devijacija od [null, 1,1,1] je 1. 
+                    <li>Standardna devijacija&mdash;standardna devijacija numeričkog polja. Standardna devijacija od [1] je null. Standardna devijacija od [null, 1,0,1,1] je 0,5. 
                     </li>
                 </ul>
                 
             </p>
-            <p>U poljima niske možete da izračunate sledeće:
+            <p>Možete da izračunate sledeće na poljima niski:
                 <ul>
                     <li>Brojač&mdash;broj vrednosti koje nisu null.
                     </li>
@@ -160,16 +160,16 @@
         <div><h2>Odaberite ArcGIS skladište podataka u koje će se čuvati rezultati</h2></div>
         <hr/>
         <div>
-            <p>Rezultati geoanalize se skladi&scaron;te u ArcGIS skladi&scaron;tu podataka i izloženi su kao sloj geoobjekata u  Portal for ArcGIS. U većini slučajeva, rezultati bi trebali da budu skladi&scaron;teni u u skladi&scaron;te prostorno-vremenskih podataka i ovo je podrazumevano. U nekim slučajevima čuvanje rezultata u skladi&scaron;te relacionih podataka je dobar izbor. Slede razlozi zbog kojih ćete želeti da skladi&scaron;tite rezultate u skladi&scaron;tu relacionih podataka: 
+            <p>Rezultati geoanalize se skladi&scaron;te u ArcGIS skladi&scaron;tu podataka i izloženi su kao sloj geoobjekata u  Portal for ArcGIS. U većini slučajeva, rezultati bi trebali da budu skladi&scaron;teni u u skladi&scaron;te prostorno-vremenskih podataka i ovo je podrazumevano. U nekim slučajevima, čuvanje rezultata u skladi&scaron;te relacionih podataka je dobar izbor. Slede razlozi zbog kojih ćete želeti da skladi&scaron;tite rezultate u skladi&scaron;tu relacionih podataka: 
                 <ul>
-                    <li>Da biste koristili va&scaron;e rezultate u portal-ka-portalu kolaboraciji.
+                    <li>Možete da koristite rezultate u kolaboraciji portal-sa-portalom.
                     </li>
-                    <li>Da biste omogućili mogućnosti sinhronizacije sa rezultatima.
+                    <li>Možete da omogućite mogućnosti sinhronizacije sa va&scaron;im rezultatima.
                     </li>
                 </ul>
                 
             </p>
-            <p>Ne treba da koristite skladi&scaron;te relacionih podataka ako očekujete da se geoanalitički podaci povećaju i treba da iskoristite mogućnosti prostorno-vremenskog skladi&scaron;ta velikih podataka kako biste upravljali velikim količinama podataka. 
+            <p>Ne treba da koristite skladi&scaron;te relacionih podataka ako očekujete da se geoanalitički podaci povećaju i treba da iskoristite mogućnosti prostorno-vremenskog skladi&scaron;ta velikih podataka kako biste upravljali velikim količinama podataka.
             </p>
         </div>
     </div>
@@ -177,7 +177,7 @@
         <div><h2>Naziv sloja sa rezultatima</h2></div>
         <hr/>
         <div>
-            <p> Ovo je naziv sloja koji će biti kreiran u <b>Mom sadržaju</b> i dodat na mapu. Podrazumevani naziv je zasnovan na nazivu alatke i nazivu ulaznog sloja. Ako sloj već postoji, alatka će otkazati.
+            <p> Naziv sloja koji će biti kreiran u opciji <b>Moj sadržaj</b> i dodat mapi. Ako sloj već postoji, alatka će otkazati.
             </p>
             <p>Koristeći  <b>Sačuvaj rezultat u</b> padajućem polju, možete da navedete ime fascikle u <b>Mom sadržaju</b> u kojoj će rezultat biti sačuvan.
             </p>

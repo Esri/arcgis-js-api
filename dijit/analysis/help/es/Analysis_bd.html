@@ -45,6 +45,8 @@
             <ul>
                 <li> <b>Consolidar puntos</b>
                 </li>
+                <li> <b>Crear cuadr&iacute;cula multivariable</b>
+                </li>
                 <li> <b>Unir entidades</b>
                 </li>
                 <li> <b>Reconstruir recorridos</b>
@@ -53,21 +55,27 @@
                 </li>
                 <li> <b>Resumir dentro de</b>
                 </li>
+                <li> <b>Geocodificar ubicaciones de tabla</b>
+                </li>
                 <li> <b>Detectar incidentes</b>
                 </li>
                 <li> <b>Buscar ubicaciones similares</b>
                 </li>
                 <li> <b>Calcular densidad</b>
                 </li>
+                <li> <b>Buscar cl&uacute;steres de puntos</b>
+                </li>
                 <li> <b>Buscar puntos calientes</b>
                 </li>
                 <li> <b>Crear zonas de influencia</b>
                 </li>
-                <li> <b>Copiar en Data Store</b>
+                <li> <b>Incorporar datos</b>
                 </li>
                 <li> <b>Calcular campo</b>
                 </li>
-                <li> <b>Geocodificar ubicaciones de tabla</b>
+                <li> <b>Copiar en Data Store</b>
+                </li>
+                <li> <b>Superponer capas</b>
                 </li>
             </ul>
             
@@ -78,9 +86,11 @@
     <div id="SummarizeDataCategory" class="largesize">
         <h2>Resumir datos</h2>
         <hr/>
-        <p>El conjunto de herramientas Resumir datos contiene herramientas que permiten calcular recuentos totales, longitudes, &aacute;reas y estad&iacute;sticas descriptivas b&aacute;sicas de entidades y sus atributos dentro de &aacute;reas o cerca de otras entidades.
+        <p> El conjunto de herramientas Resumir datos contiene herramientas que calculan recuentos totales, longitudes, &aacute;reas y estad&iacute;sticas descriptivas b&aacute;sicas de entidades y sus atributos dentro de &aacute;reas o cerca de otras entidades.
             <ul>
                 <li> <b>Consolidar puntos</b> calcula estad&iacute;sticas acerca de los puntos que se encuentran dentro de las &aacute;reas o bins especificados.
+                </li>
+                <li> <b>Crear cuadr&iacute;cula multivariable</b> genera una cuadr&iacute;cula de bins cuadrados o hexagonales y calcula valores para cada bin bas&aacute;ndose en la proximidad de cada capa de entrada.
                 </li>
                 <li> <b>Unir entidades</b> calcula estad&iacute;sticas sobre las entidades que comparten una relaci&oacute;n espacial, temporal o de atributos con otras entidades.
                 </li>
@@ -107,11 +117,37 @@
 <hr/>
             <p>Utilizando una capa de entidades de puntos y una capa de entidades de &aacute;rea o bins definida mediante una distancia especificada, esta herramienta determina qu&eacute; puntos quedan dentro de cada &aacute;rea o bin y calcula las estad&iacute;sticas de todos los puntos dentro de cada &aacute;rea o bin. Si lo desea, puede aplicar la funci&oacute;n de intervalo de tiempo con esta herramienta. 
             </p>
-            <p> Por ejemplo
+            <p>A continuaci&oacute;n se muestran algunos ejemplos:
                 <ul>
                     <li>Dadas las ubicaciones de puntos de los incidentes criminales, cuenta el n&uacute;mero de cr&iacute;menes por condado o por otros distritos administrativos.
                     </li>
                     <li>Busca los ingresos mensuales m&aacute;s altos y m&aacute;s bajos para las ubicaciones de franquicia utilizando bins de 100 km.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="BuildMultiVariableGridTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Crear cuadrícula multivariable</h2></td>
+                    <td>
+                    <img src="../images/GUID-B78AB95A-E412-4983-ADBA-3678BF207A79-web.png" class="titleImage" alt="Diagrama de flujo de trabajo de Incorporar datos">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>La herramienta Crear cuadr&iacute;cula multivariable genera una cuadr&iacute;cula de bins cuadrados o hexagonales y calcula variables para cada bin bas&aacute;ndose en la proximidad de una o varias capas de entrada.
+            </p>
+            <p>A continuaci&oacute;n se muestran algunos ejemplos:
+                <ul>
+                    <li>Considerando varias capas de infraestructuras de transporte p&uacute;blico, &iquest;qu&eacute; parte de la ciudad es la menos accesible mediante transporte p&uacute;blico?
+                    </li>
+                    <li>Considerando capas de v&iacute;as acu&aacute;ticas, tales como lagos y r&iacute;os, &iquest;cu&aacute;l es el nombre de la masa de agua m&aacute;s cercana a cada ubicaci&oacute;n en los EE.&nbsp;UU.?
+                    </li>
+                    <li>Considerando una capa de ingresos por hogar, &iquest;en qu&eacute; parte de los EE.&nbsp;UU. es mayor la variaci&oacute;n entre los ingresos de 50 millas a la redonda?
                     </li>
                 </ul>
                 
@@ -131,7 +167,7 @@
 <hr/>
             <p>Utilizando capas de entidades o datos tabulares, puede unir entidades y registros bas&aacute;ndose en relaciones espec&iacute;ficas entre las capas o tablas de entrada.  Las uniones vendr&aacute;n determinadas por las relaciones espaciales, temporales y de atributos, y tambi&eacute;n es posible calcular resumen de estad&iacute;sticas.  
             </p>
-            <p>Por ejemplo
+            <p>A continuaci&oacute;n se muestran algunos ejemplos:
                 <ul>
                     <li>Dadas unas ubicaciones de puntos de incidentes delictivos en un intervalo tiempo, une a s&iacute; mismo los datos de los delitos especificando una relaci&oacute;n espacial de los delitos cometidos en un radio de 1 kil&oacute;metro de distancia y producidos con una diferencia de 1 hora entre s&iacute; para determinar si existe una secuencia de delitos cercanos entre s&iacute; en espacio y tiempo.
                     </li>
@@ -155,7 +191,7 @@
 <hr/>
             <p>Utilizando una capa de entidades de puntos o poligonales con la funci&oacute;n de tiempo habilitada que representa un  <code>instante</code> en el tiempo, esta herramienta determina qu&eacute; entidades de entrada pertenecen a un recorrido y ordena las entradas secuencialmente en el tiempo. Opcionalmente, se calculan estad&iacute;sticas para las entidades de entrada dentro de cada recorrido.
             </p>
-            <p> Por ejemplo
+            <p> A continuaci&oacute;n se muestran algunos ejemplos:
                 <ul>
                     <li>Dadas unas ubicaciones de puntos y mediciones sobre el momento en que se produjo el hurac&aacute;n, calcula la velocidad media del viento y la presi&oacute;n m&aacute;xima del viento del hurac&aacute;n.
                     </li>
@@ -179,11 +215,11 @@
 <hr/>
             <p> Utilizando datos de entidades o tabulares, esta herramienta resume estad&iacute;sticas para campos espec&iacute;ficos.
             </p>
-            <p> Por ejemplo
+            <p>A continuaci&oacute;n se muestran algunos ejemplos:
                 <ul>
-                    <li> Dadas unas ubicaciones de tiendas de alimentaci&oacute;n con el campo <i>COMPANY_NAME</i>, resume las tiendas por el nombre de la compa&ntilde;&iacute;a para determinar estad&iacute;sticas para cada compa&ntilde;&iacute;a.
+                    <li>Dadas unas ubicaciones de tiendas de comestibles con el campo  <i>COMPANY_NAME</i>, resume las tiendas por el nombre de la empresa para determinar estad&iacute;sticas para cada empresa.
                     </li>
-                    <li>Dada una tabla de tiendas de alimentaci&oacute;n con los campos  <i>COMPANY_NAME</i> y <i>COUNTY</i>, resume las tiendas por el nombre de la compa&ntilde;&iacute;a y condado a fin de determinar estad&iacute;sticas para cada compa&ntilde;&iacute;a dentro de cada condado.
+                    <li>Dada una tabla de tiendas de comestibles con los campos  <i>COMPANY_NAME</i> y <i>COUNTY</i>, resume las tiendas por el nombre de la empresa y condado a fin de determinar estad&iacute;sticas para cada empresa dentro de cada condado.
                     </li>
                 </ul>
                 
@@ -196,14 +232,14 @@
                 <tbody><tr>
                     <td><h2>Resumir dentro de</h2></td>
                     <td>
-                    <img src="../images/GUID-90E0CB1F-EB97-4752-B2EE-452B7B45475E-web.png" class="titleImage" alt="Resumir dentro de">
+                    <img src="../images/GUID-9B12DB3F-AA7B-41EB-87C6-D2DEC3D52DA9-web.png" class="titleImage" alt="Resumir dentro de">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
             <p>Busca &aacute;reas (y porciones de &aacute;reas) que se superponen entre dos capas y calcula estad&iacute;sticas sobre la superposici&oacute;n. 
             </p>
-            <p> Por ejemplo
+            <p>A continuaci&oacute;n se muestran algunos ejemplos:
                 <ul>
                     <li>Dada una capa de &aacute;reas de cuencas hidrogr&aacute;ficas y una capa de &aacute;reas de uso del suelo, calcule la superficie total del tipo de uso del suelo para cada cuenca hidrogr&aacute;fica. 
                     </li>
@@ -240,11 +276,9 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p> <img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Detectar incidentes">
-            </p>
             <p>Esta herramienta funciona con una capa de puntos, l&iacute;neas, &aacute;reas o tablas con la funci&oacute;n de tiempo habilitada que representa un instante en el tiempo.   Si utiliza entidades ordenadas secuencialmente, denominadas recorridos, esta herramienta determina qu&eacute; entidades son incidentes de inter&eacute;s. Los incidentes se determinan atendiendo a las condiciones que usted especifique. 
             </p>
-            <p>Por ejemplo
+            <p>A continuaci&oacute;n se muestran algunos ejemplos:
                 <ul>
                     <li>Detecte mediciones de huracanes de categor&iacute;a 4 en funci&oacute;n de un atributo de velocidad del viento.
                     </li>
@@ -266,8 +300,6 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p> <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" alt="Geocodificar ubicaciones de tabla">
-            </p>
             <p>Convierte direcciones en coordenadas. Utilice esta herramienta en tablas de uso compartido de archivos de big data.
             </p>
             <br/>
@@ -285,7 +317,7 @@
 <hr/>
             <p>En funci&oacute;n de los criterios que se especifiquen, puede buscar ubicaciones similares midiendo la similitud de las ubicaciones de la capa de b&uacute;squeda de candidatos con una o varias ubicaciones de referencia. 
             </p>
-            <p>Por ejemplo 
+            <p>A continuaci&oacute;n se muestran algunos ejemplos: 
                 <ul>
                     <li>Busque las diez tiendas m&aacute;s similares examinando la cantidad de empleados y las ventas anuales.
                     </li>
@@ -296,14 +328,16 @@
             </p>
             <br/>
         </div>
-    <div id="AnalyzePatternsCategory" class="smallsize">
+    <div id="AnalyzePatternsCategory" class="regularsize">
         <h2>Analizar patrones</h2>
         <hr/>
-        <p>Estas herramientas te ayudan a identificar, cuantificar y visualizar los patrones espaciales de tus datos.  
+        <p> Estas herramientas le ayudan a identificar, cuantificar y visualizar los patrones espaciales de sus datos.
             <ul>
                 <li> <b>Calcular densidad</b> toma cantidades conocidas de un fen&oacute;meno y las expande a trav&eacute;s del mapa.
                 </li>
                 <li> <b>Buscar puntos calientes</b> identifica clustering estad&iacute;sticamente significativo en el patr&oacute;n espacial de sus datos.
+                </li>
+                <li> <b>Buscar cl&uacute;steres de puntos</b> encuentra cl&uacute;steres de entidades de punto dentro del ruido colindante en funci&oacute;n de su distribuci&oacute;n espacial.
                 </li>
             </ul>
             
@@ -322,13 +356,37 @@
 <hr/>
             <p>La herramienta Calcular densidad crea un mapa de densidad a partir de entidades de punto mediante la extensi&oacute;n de cantidades conocidas de alg&uacute;n fen&oacute;meno (representado como atributos de los puntos) a todo el mapa. El resultado es una capa de &aacute;reas que representan la densidad.
             </p>
-            <p>Por ejemplo
+            <p>A continuaci&oacute;n se muestran algunos ejemplos:
                 <ul>
                     <li>Calcular las densidades de hospitales en un condado. La capa de resultados mostrar&aacute; las &aacute;reas con una accesibilidad alta y baja a los hospitales, y esta informaci&oacute;n se puede usar para decidir d&oacute;nde se deben construir nuevos hospitales.
                     </li>
                     <li>Identificar &aacute;reas con un alto riesgo de incendio forestal en funci&oacute;n del historial de ubicaciones de estos incendios.
                     </li>
                     <li>Buscar comunidades alejadas de las principales carreteras para planificar d&oacute;nde se deben construir nuevas carreteras.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="FindPointClustersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Buscar clústeres de puntos</h2></td>
+                    <td>
+                    <img src="../images/GUID-40DA7286-67EA-4333-91C5-4CD527C21B4A-web.png" class="titleImage" alt="Buscar cl&uacute;steres de puntos">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>La herramienta Buscar cl&uacute;steres de puntos encuentra cl&uacute;steres de entidades de punto dentro del ruido colindante en funci&oacute;n de su distribuci&oacute;n espacial.
+            </p>
+            <p>A continuaci&oacute;n se muestran algunos ejemplos:
+                <ul>
+                    <li>Busque cl&uacute;steres de hogares infestados por la peste para ayudar a focalizar acciones hacia la erradicaci&oacute;n.  
+                    </li>
+                    <li>Informe y act&uacute;e sobre las necesidades de rescate y evacuaci&oacute;n en funci&oacute;n del tama&ntilde;o y la ubicaci&oacute;n de los cl&uacute;steres por medio de tuits geolocalizados despu&eacute;s de una cat&aacute;strofe natural o un ataque terrorista.
                     </li>
                 </ul>
                 
@@ -381,7 +439,7 @@
 <hr/>
             <p>Una zona de influencia es un &aacute;rea que cubre una distancia dada desde una entidad de puntos, de l&iacute;nea o de entidad poligonal.
             </p>
-            <p>Por ejemplo
+            <p>A continuaci&oacute;n se muestran algunos ejemplos:
                 <ul>
                     <li>Utilizando entidades de r&iacute;o lineales, crea una zona de influencia de cada r&iacute;o multiplicando por 50 el ancho del r&iacute;o para determinar el l&iacute;mite ribere&ntilde;o propuesto.
                     </li>
@@ -392,20 +450,24 @@
             </p>
             <br/>
         </div>
-    <div id="ManageDataCategory" class="smallsize">
+    <div id="ManageDataCategory" class="regularsize">
         <h2>Administrar datos</h2>
         <hr/>
-        <p>Estas herramientas se usan para la administraci&oacute;n diaria de los datos geogr&aacute;ficos y tabulares.
+        <p>Estas herramientas se utilizan para la administraci&oacute;n diaria de datos geogr&aacute;ficos y tabulares. 
             <ul>
+                <li> <b>Incorporar datos</b> incorpora entidades a una capa de entidades alojada existente.
+                </li>
                 <li> <b>Calcular campo</b> crea un campo nuevo o modifica uno existente y crea una capa nueva en su contenido.
                 </li>
-                <li> <b>Copiar en Data Store</b> copia datos en su ArcGIS Data Store y crea una capa en su contenido.
+                <li> <b>Copiar a Data Store</b> copia datos en su ArcGIS Data Store y crea una capa en su contenido. 
+                </li>
+                <li> <b>Superponer capas</b> combina dos o m&aacute;s capas en una sola capa.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="CopyToDataStoreTool" class="regularsize">
+        <div id="CopyToDataStoreTool" class="largesize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -417,7 +479,7 @@
             </table>
 <hr/>
             <p>Copia una tabla o capa de entidades de entrada en un  ArcGIS Data Store y crea una capa en su contenido de  ArcGIS Enterprise. </p>
-            <p>Por ejemplo
+            <p>A continuaci&oacute;n se muestran algunos ejemplos:
                 <ul>
                     <li>Copie un conjunto de archivos  <code>.csv</code> de un archivo de big data compartido en el data store espacio-temporal para su visualizaci&oacute;n.
                     </li>
@@ -440,11 +502,62 @@
             </table>
 <hr/>
             <p>Calcula los valores para un campo nuevo o existente y crea una capa en su contenido de  ArcGIS Enterprise. </p>
-            <p>Por ejemplo
+            <p>A continuaci&oacute;n se muestran algunos ejemplos:
                 <ul>
                     <li>Modifique un campo existente denominado  <i>total</i> para que sea la suma de ingresos de los campos <i>total_2016</i>, <i>total_2017</i> y <i>total_2018</i>.
                     </li>
                     <li>Cree un campo nuevo para categorizar los niveles de riesgo en funci&oacute;n de valores de campo tales como  <i>windspeed</i> y <i>pollutant</i>.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="OverlayLayersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Superponer capas</h2></td>
+                    <td>
+                    <img src="../images/GUID-00A64703-4E97-4398-AE5C-F1885375BC30-web.png" class="titleImage" alt="Superponer capas">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Superposici&oacute;n combina dos o m&aacute;s capas en una sola capa. La superposici&oacute;n se utiliza para responder a una de las preguntas geogr&aacute;ficas m&aacute;s sencillas: &iquest;Qu&eacute; est&aacute; encima de qu&eacute;? A continuaci&oacute;n se muestran algunos ejemplos:
+                <ul>
+                    <li>&iquest;Qu&eacute; parcelas est&aacute;n dentro de la llanura inundable con una probabilidad de inundaci&oacute;n anual de un 1 %? (&quot;Dentro de&quot; es solo otra forma de decir &quot;encima de&quot;.)
+                          
+                    </li>
+                    <li>&iquest;Qu&eacute; uso del suelo est&aacute; encima de qu&eacute; tipo de suelo?
+                         
+                    </li>
+                    <li>&iquest;Qu&eacute; pozos est&aacute;n dentro de bases militares abandonadas?
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="AppendDataTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Incorporar datos</h2></td>
+                    <td>
+                    <img src="../images/GUID-8C95EAE0-904A-42C4-8C3D-303E74FD6DD7-web.png" class="titleImage" alt="Diagrama de flujo de trabajo de Incorporar datos">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Incorpora entidades a una capa existente alojada en su contenido de  ArcGIS Enterprise. </p>
+            <p>A continuaci&oacute;n se muestran algunos ejemplos:
+                <ul>
+                    <li>Actualice su capa de entidades 2018_Sales cada mes a medida que los informes est&eacute;n disponibles. 
+                    </li>
+                    <li>Incorpore datasets de rastreo de huracanes de los a&ntilde;os 2016 y 2017 en un dataset de huracanes maestro.
+                    </li>
+                    <li>Recopile e incorpore datasets de varios or&iacute;genes con distintos esquemas mediante la asignaci&oacute;n de campos personalizada.
                     </li>
                 </ul>
                 

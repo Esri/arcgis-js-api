@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>尋找點叢集</h2><p/>
+        <h2><img src="../images/GUID-40DA7286-67EA-4333-91C5-4CD527C21B4A-web.png" alt="尋找點叢集"></h2>
+        <hr/>
+    <p> 尋找點叢集工具可在基於其空間分佈的周圍噪訊內，尋找點圖徵的叢集。
+    </p>
+    <p>一個非政府組織正在研究一種特殊的害蟲傳播疾病。它有一個代表研究區域中家庭的點資料集，其中一些已經被感染，另一些則沒有。藉由使用 尋找點叢集工具，分析人員可判定受感染的家庭叢集，以協助鎖定某個區域來開始治療和消滅害蟲。
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>選擇要尋找的叢集所在的圖層</h2></div>
+        <hr/>
+        <div>
+            <p>將在其中尋找叢集的點圖層。圖層必須位於投影空間參考中，或必須使用 <b>分析環境</b>，將處理空間參考設為投影座標系統。
+            </p>
+            <p>除了從地圖選擇圖層外，您也可以選擇下拉式清單底部的 <b>瀏覽圖層</b>，以瀏覽到大數據檔案分享資料集或圖徵圖層的內容。
+            </p>
+        </div>
+    </div>
+    <div id="minFeaturesCluster">
+        <div><h2>要視為一個叢集的最少點數</h2></div>
+        <hr/>
+        <div>
+            <p>要產生叢集的圖徵數下限。
+            </p>
+        </div>
+    </div>
+    <div id="searchDistance">
+        <div><h2>將搜尋範圍限制為</h2></div>
+        <hr/>
+        <div>
+            <p>用來將圖徵視為屬於相同叢集的最長距離。
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>結果圖層名稱</h2></div>
+        <hr/>
+        <div>
+            <p> 在 <b>我的內容</b>中建立並新增到地圖中的圖層的名稱。預設名稱參照工具名稱以及輸入圖層名稱。如果圖層已存在，工具將失敗。
+            </p>
+            <p>使用 <b>將結果儲存到</b>下拉式方塊，可以在 <b>我的內容</b>中指定储存结果的文件夾的名稱。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

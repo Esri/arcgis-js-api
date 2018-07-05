@@ -44,7 +44,7 @@
         <h2>Muodosta reitit uudelleen</h2><p/>
         <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Muodosta reitit uudelleen"></h2>
         <hr/>
-    <p>T&auml;m&auml; ty&ouml;kalu toimii sellaisen ajan huomioivan karttatason kanssa, jossa on  <code>hetke&auml;</code> ajassa kuvaavia piste- tai aluekohteita.   Se m&auml;&auml;ritt&auml;&auml; ensin tunnuksen avulla, mitk&auml; kohteet kuuluvat reittiin. K&auml;ytt&auml;m&auml;ll&auml; jokaisen sijainnin aikaa reitit j&auml;rjestet&auml;&auml;n per&auml;kk&auml;in ja muunnetaan viivaksi tai aluekohteeksi, joka kuvaa liikett&auml; ajan my&ouml;t&auml;. Vaihtoehtoisesti l&auml;ht&ouml;aineisto voidaan puskuroida kent&auml;n mukaan, jolloin aluekohde luodaan jokaiseen sijaintiin. N&auml;m&auml; puskuroidut pisteet, tai jos l&auml;ht&ouml;aineistot ovat aluekohteita, liitet&auml;&auml;n per&auml;kk&auml;in ja reitti luodaan aluekohteena, jossa leveys edustaa kiinnostuksen kohteena olevaa ominaisuustietoa. Tuloksena olevilla reiteill&auml; on aloitus- ja lopetusaika, joka kuvaa ajallisesti ensimm&auml;ist&auml; ja viimeist&auml; kohdetta annetulla reitill&auml;. Reittien luonnin aikana l&auml;ht&ouml;aineiston kohteista lasketaan tilastotiedot, ja tilastotiedot m&auml;&auml;ritet&auml;&auml;n tulosaineiston reitille. Perustilastotietoja ovat alueella olevien pisteiden m&auml;&auml;r&auml;, mutta my&ouml;s muita tilastotietoja voidaan laskea.
+    <p>T&auml;m&auml; ty&ouml;kalu toimii sellaisen ajan huomioivan karttatason kanssa, jossa on hetke&auml; ajassa kuvaavia  <code>piste-</code> tai aluekohteita. Se m&auml;&auml;ritt&auml;&auml; ensin tunnuksen avulla, mitk&auml; kohteet kuuluvat reittiin. K&auml;ytt&auml;m&auml;ll&auml; jokaisen sijainnin aikaa reitit j&auml;rjestet&auml;&auml;n per&auml;kk&auml;in ja muunnetaan viivaksi tai aluekohteeksi, joka kuvaa liikett&auml; ajan my&ouml;t&auml;. Vaihtoehtoisesti l&auml;ht&ouml;aineisto voidaan puskuroida kent&auml;n mukaan, jolloin aluekohde luodaan jokaiseen sijaintiin N&auml;m&auml; puskuroidut pisteet tai l&auml;ht&ouml;alueet liitet&auml;&auml;n per&auml;kk&auml;in, ja reitti luodaan  aluekohteena, jossa leveys edustaa kiinnostuksen kohteena olevaa ominaisuustietoa. Tuloksena olevilla reiteill&auml; on aloitus- ja lopetusaika, joka kuvaa ajallisesti ensimm&auml;ist&auml; ja viimeist&auml; kohdetta annetulla reitill&auml;. Reittien luonnin aikana l&auml;ht&ouml;aineiston kohteista lasketaan tilastotiedot, ja tilastotiedot m&auml;&auml;ritet&auml;&auml;n tulosaineiston reitille. Perustilastotietoja ovat alueella olevien pisteiden m&auml;&auml;r&auml;, mutta my&ouml;s muita tilastotietoja voidaan laskea.
     </p>
     <p>Kohteet ajan huomioivissa karttatasoissa voidaan kuvata jommallakummalla seuraavista tavoista:
         <ul>
@@ -95,7 +95,9 @@
         <div>
             <p>Yht&auml;l&ouml;, jolla lasketaan puskuriet&auml;isyys l&auml;ht&ouml;aineiston kohteiden ymp&auml;rill&auml;. T&auml;m&auml;n yht&auml;l&ouml;n voi luoda k&auml;ytt&auml;m&auml;ll&auml; puskurilaskinta ja perusoperaattoreita, kuten summa-, v&auml;hennys-, kerto- ja jako-operaattoreita. Arvot lasketaan k&auml;ytt&auml;m&auml;ll&auml; analyysikoordinaattij&auml;rjestelm&auml;&auml;. Karttatason on oltava projisoidussa koordinaattij&auml;rjestelm&auml;ss&auml;, tai k&auml;sittelev&auml; koordinaatisto on m&auml;&auml;ritett&auml;v&auml; projisoituun koordinaattij&auml;rjestelm&auml;&auml;n k&auml;ytt&auml;m&auml;ll&auml;  <b>analyysiymp&auml;rist&ouml;j&auml;</b>, jos puskuri on k&auml;yt&ouml;ss&auml;.
             </p>
-            <p>Yht&auml;l&ouml;  <code>$feature.windspeed * 1000</code> k&auml;ytt&auml;&auml; esimerkiksi puskuria tuhat kerrottuna kent&auml;ll&auml; <i>windspeed</i>. Puskurilaskimessa voi k&auml;ytt&auml;&auml; useita kentti&auml;.
+            <p>Yht&auml;l&ouml;, kuten  <code>$feature.windspeed * 1000</code> k&auml;ytt&auml;&auml; esimerkiksi puskuria tuhat kerrottuna kent&auml;ll&auml; <i>windspeed</i>. Puskurilaskimessa voi k&auml;ytt&auml;&auml; useita kentti&auml;.
+            </p>
+            <p> Voit m&auml;&auml;ritt&auml;&auml; my&ouml;s reittitietoisen lausekkeen. Jos esimerkiksi haluat laskea summan kentt&auml;arvosta <i>windspeed</i> nykyiselle kohteelle ja kaksi aiempaa kohdetta esim. yht&auml;l&ouml;ll&auml; <code>$track.field(windspeed).history(-3)</code>. Jokaisessa kohteessa nykyisen <i>windspeed</i> -kent&auml;n summa sek&auml; kaksi aiempaa mittausta laskettaisiin ja puskuroitaisiin.
             </p>
         </div>
     </div>
@@ -103,7 +105,7 @@
         <div><h2>Valitse aika, jonka jälkeen reitti jaetaan (valinnainen)</h2></div>
         <hr/>
         <div>
-            <p>Aika, jonka j&auml;lkeen reitti jaetaan useaksi reitiksi. Jos l&auml;ht&ouml;aineiston piste- tai aluekohteiden v&auml;linen kesto on pitempi kuin jakoaika, ne jaetaan eri reitteihin.
+            <p>Aika, jonka j&auml;lkeen reitti jaetaan useaksi reitiksi. Jos l&auml;ht&ouml;aineiston piste- tai aluekohteidenv&auml;linen kesto on pitempi kuin jakoaika, ne jaetaan eri reitteihin.
             </p>
             <p>Jos m&auml;&auml;rit&auml;t aikajaon ja et&auml;isyyden jaon, reitit jaetaan, kun jompikumpi ehdoista tai molemmat ehdot t&auml;yttyv&auml;t. 
             </p>
@@ -115,7 +117,7 @@
         <div><h2>Valitse etäisyys, jonka jälkeen reitti jaetaan (valinnainen)</h2></div>
         <hr/>
         <div>
-            <p> Et&auml;isyys, jota k&auml;ytet&auml;&auml;n reittien jakamisessa useaksi reitiksi. Jos l&auml;ht&ouml;aineiston piste- tai aluekohteiden v&auml;linen et&auml;isyys on pitempi kuin et&auml;isyyden jakoarvo, ne jaetaan eri reitteihin.
+            <p> Et&auml;isyys, jota k&auml;ytet&auml;&auml;n reittien jakamisessa useaksi reitiksi. Jos l&auml;ht&ouml;aineiston piste- tai aluekohteidenv&auml;linen et&auml;isyys on pitempi kuin et&auml;isyyden jakoarvo, ne jaetaan eri reitteihin.
             </p>
             <p>Jos m&auml;&auml;rit&auml;t aikajaon ja et&auml;isyyden jaon, reitit jaetaan, kun jompikumpi ehdoista tai molemmat ehdot t&auml;yttyv&auml;t. 
             </p>
@@ -125,9 +127,9 @@
         <div><h2>Lisää tilastotiedot (valinnainen)</h2></div>
         <hr/>
         <div>
-            <p> Voit laskea tilastotiedot kohteista, joista on laadittu yhteenveto. Numerokentist&auml; voit laskea seuraavat tilastotiedot:
+            <p> Voit laskea tilastotiedot kohteista, joista on laadittu yhteenveto.Voit laskea seuraavat numerokentist&auml;:
                 <ul>
-                    <li>M&auml;&auml;r&auml;: laskee muiden kuin nolla-arvojen m&auml;&auml;r&auml;n. Voidaan k&auml;ytt&auml;&auml; numerokentiss&auml; tai merkkijonoissa. Arvojen [nolla, 0, 2] nolla-arvojen m&auml;&auml;r&auml; on 2.
+                    <li>M&auml;&auml;r&auml;: laskee muiden kuin nolla-arvojen m&auml;&auml;r&auml;n.Voidaan k&auml;ytt&auml;&auml; numerokentiss&auml; tai merkkijonoissa. Arvojen [nolla, 0, 2] nolla-arvojen m&auml;&auml;r&auml; on 2.
                     </li>
                     <li>Summa: kunkin kent&auml;n numeroarvojen summa. Numeroarvojen [nolla, nolla, 3] summa on 3.
                     </li>
@@ -139,14 +141,14 @@
                     </li>
                     <li>Alue: numerokent&auml;n alue. T&auml;m&auml; lasketaan minimiarvoina, jotka on v&auml;hennetty maksimiarvosta. Arvojen [0, nolla, 1] alue on 1. Arvojen [nolla, 4] alue on 0.
                     </li>
-                    <li>Varianssi: numerokent&auml;n varianssi reitill&auml;. Arvon [1] varianssi on nolla. Arvojen [nolla, 1,1, 1] varianssi on 1.
+                    <li>Varianssi: numerokent&auml;n varianssi reitill&auml;. Arvon [1] varianssi on nolla. Arvojen [nolla, 1,0, 1,1] varianssi on 0,25.
                     </li>
-                    <li>Vakio keskihajonta: numerokent&auml;n keskihajonta. Arvon [1] varianssi on nolla. Arvojen [nolla, 1,1, 1] vakio keskihajonta on 1. 
+                    <li>Vakio keskihajonta: numerokent&auml;n keskihajonta. Arvon [1] varianssi on nolla. Arvojen [nolla, 1,0, 1,1] vakio keskihajonta on 0,5. 
                     </li>
                 </ul>
                 
             </p>
-            <p>Merkkijonokentist&auml; voit laskea seuraavat tilastotiedot:
+            <p>Voit laskea seuraavat merkkijonokentist&auml;:
                 <ul>
                     <li>M&auml;&auml;r&auml;: muiden kuin nolla-merkkijonojen m&auml;&auml;r&auml;.
                     </li>
@@ -161,16 +163,16 @@
         <div><h2>Valitse ArcGIS Data Store -tietokanta, johon tulokset tallennetaan</h2></div>
         <hr/>
         <div>
-            <p>GeoAnalytics-tulokset tallennetaan ArcGIS Data Store -tietokantaan ja julkaistaan karttatasona  Portal for ArcGIS -portaalissa. Useimmissa tapauksissa tulokset pit&auml;&auml; tallentaa spatiotemporaaliseen tietokantaan (t&auml;m&auml; on oletusarvo). Joissakin tapauksissa tulosten tallentaminen relaatiotietokantaan on hyv&auml; vaihtoehto. Tiedot kannattaa tallentaa relaatiotietokantaan seuraavista syist&auml;: 
+            <p>GeoAnalytics-tulokset tallennetaan ArcGIS Data Store -tietokantaan ja julkaistaan karttatasona   Portal for ArcGIS -portaalissa. Useimmissa tapauksissa tulokset pit&auml;&auml; tallentaa spatiotemporaaliseen tietokantaan (t&auml;m&auml; on oletusarvo). Joissakin tapauksissa, tulosten tallentaminen relaatiotietokantaan on hyv&auml; vaihtoehto. Tiedot kannattaa tallentaa relaatiotietokantaan seuraavista syist&auml;: 
                 <ul>
-                    <li>Haluat k&auml;ytt&auml;&auml; portaalissa olevia tietoja portaaliyhteisty&ouml;h&ouml;n.
+                    <li>Voitk&auml;ytt&auml;&auml; portaalissa olevia tuloksiaportaaliyhteisty&ouml;h&ouml;n.
                     </li>
-                    <li>Haluat ottaa k&auml;ytt&ouml;&ouml;n tulosten synkronointitoiminnot.
+                    <li>Voit ottaa k&auml;ytt&ouml;&ouml;n tulosten synkronointitoiminnot.
                     </li>
                 </ul>
                 
             </p>
-            <p>Relaatiotietokantaa ei tule k&auml;ytt&auml;&auml;, jos GeoAnalytics-tulosten m&auml;&auml;r&auml; kasvaa ja sinun t&auml;ytyy hy&ouml;dynt&auml;&auml; spatiotemporaalisen big data -tietokannan toimintoja suurten tietom&auml;&auml;rien k&auml;sittelyyn. 
+            <p>Relaatiotietokantaa ei tule k&auml;ytt&auml;&auml;, jos GeoAnalytics-tulosten m&auml;&auml;r&auml; kasvaa ja sinun t&auml;ytyy hy&ouml;dynt&auml;&auml; spatiotemporaalisen big data -tietokannan toimintoja suurten tietom&auml;&auml;rien k&auml;sittelyyn.
             </p>
         </div>
     </div>
@@ -178,7 +180,7 @@
         <div><h2>Tulostason nimi</h2></div>
         <hr/>
         <div>
-            <p> Sen tason nimi, joka luodaan kohtaan <b>Oma sis&auml;lt&ouml;</b> ja joka lis&auml;t&auml;&auml;n karttaan. Oletusnimi perustuu ty&ouml;kalun nimeen ja l&auml;ht&ouml;karttatason nimeen. Jos karttataso on jo olemassa, ty&ouml;kalua ei voi suorittaa.
+            <p> Sen karttatason nimi, joka luodaan <b>Oma sis&auml;lt&ouml;-kohtaan</b> ja lis&auml;t&auml;&auml;n karttaan. Oletusnimi perustuu ty&ouml;kalun nimeen ja l&auml;ht&ouml;karttatason nimeen. Jos karttataso on jo olemassa, ty&ouml;kalua ei voi suorittaa.
             </p>
             <p>Avattavan  <b>Tallenna tulos kohteeseen</b> -valikon avulla voit m&auml;&auml;ritt&auml;&auml; sen <b>Oma sis&auml;lt&ouml;</b> -kansion nimen, johon tulos tallennetaan.
             </p>

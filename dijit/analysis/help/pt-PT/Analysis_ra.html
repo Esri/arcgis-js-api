@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>A an&aacute;lise raster permite-lhe efetuar an&aacute;lise de conjuntos de dados de grandes dimens&otilde;es utilizando o  ArcGIS Image Server. Isto permite-lhe analisar mais dados, mais depressa, aproveitando a pot&ecirc;ncia do servidor. Os conjuntos de ferramentas atualmente dispon&iacute;veis atrav&eacute;s da experi&ecirc;ncia de utilizador web do  Portal for ArcGIS s&atilde;o  <b>Resumir Dados</b>, <b>Analisar Padr&otilde;es</b>, <b>Analisar Imagem</b>, <b>Analisar Terreno</b>, e <b>Gerir Dados</b>.
+        <p>Raster analysis allows you to perform analysis of large raster datasets using the  ArcGIS Image Server. This allows you to analyze more data faster by harnessing the power of the server. The toolsets currently available through the  Portal for ArcGIS web user experience are  <b>Summarize Data</b>, <b>Analyze Patterns</b>, <b>Analyze Image</b>, <b>Analyze Terrain</b>, and <b>Manage Data</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -59,9 +59,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Resumir Raster Em</h2></td>
+                    <td><h2>Summarize Raster Within</h2></td>
                     <td>
-                    <img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" class="titleImage" alt="Ferramenta Resumir Raster Em">
+                    <img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" class="titleImage" alt="Summarize Raster Within tool">
                     </td>
                 </tr></tbody>
             </table>
@@ -106,9 +106,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Calcular Densidade</h2></td>
+                    <td><h2>Calculate Density</h2></td>
                     <td>
-                    <img src="../images/GUID-4EE4838C-E210-43CE-99C7-1A648A18C10B-web.png" class="titleImage" alt="Ferramenta Calcular Densidade">
+                    <img src="../images/GUID-4EE4838C-E210-43CE-99C7-1A648A18C10B-web.png" class="titleImage" alt="Calculate Density tool">
                     </td>
                 </tr></tbody>
             </table>
@@ -121,14 +121,79 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Interpolar Pontos</h2></td>
+                    <td><h2>Interpolate Points</h2></td>
                     <td>
-                    <img src="../images/GUID-06D80BB3-7154-4FAA-9C9B-D665450EF3BC-web.png" class="titleImage" alt="Ferramenta Interpolar Pontos">
+                    <img src="../images/GUID-06D80BB3-7154-4FAA-9C9B-D665450EF3BC-web.png" class="titleImage" alt="Interpolate Points tool">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
             <p>Esta ferramenta permite-lhe prever valores em novos locais baseados em medi&ccedil;&otilde;es encontrados numa colec&ccedil;&atilde;o de pontos. A ferramenta leva dados de ponto com valores em cada ponto e retorna zonas classificadas pelos valores previstos. Pode usar esta ferramenta, por exemplo, para prever os n&iacute;veis de precipita&ccedil;&atilde;o numa bacia hidrogr&aacute;fica com base em medi&ccedil;&otilde;es feitas em pluvi&oacute;metros individuais.
+            </p>
+            <br/>
+        </div>
+    <div id="UseProximityCategory" class="regularsize">
+        <h2>Utilizar Proximidade</h2>
+        <hr/>
+        <p>Estas ferramentas ajudam-no a responder uma das quest&otilde;es mais comuns colocadas na an&aacute;lise espacial: &quot;O que &eacute; que fica pr&oacute;ximo do que?&quot;
+
+            <ul>
+                <li> <b>Calcular Dist&acirc;ncia</b> calcula a dist&acirc;ncia euclideana, dire&ccedil;&atilde;o e aloca&ccedil;&atilde;o de uma origem &uacute;nica ou de um conjunto de origens.
+                    
+
+                </li>
+                <li> <b>Determinar Rede &Oacute;tima de Custo de Viagem</b> calcula a rede &oacute;tima de custo a partir de um conjunto de regi&otilde;es de entrada.
+                    
+
+                </li>
+                <li> <b>Determinar Custo de Viagem como Polilinha</b> calcula o percurso de polilinhas de menor custo entre origens e destinos conhecidos.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateDistanceTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Calculate Distance</h2></td>
+                    <td>
+                    <img src="../images/GUID-34E2E6F3-2F60-43F5-B499-D5735DE08602-web.png" class="titleImage" alt="Calculate Distance">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Calcula a dist&acirc;ncia euclideana, dire&ccedil;&atilde;o e aloca&ccedil;&atilde;o de uma origem &uacute;nica ou de um conjunto de origens. Pode utilizar esta ferramenta para determinar a dist&acirc;ncia a que um local se encontra de uma estrada, um edif&iacute;cio ou um parque. Pode ainda determinar em que dire&ccedil;&atilde;o tem de viajar a partir de um local para retornar a uma origem do modo mais direto. Pode visualizar, para cada local na sua &aacute;rea de estudo, qual &eacute; a origem mais pr&oacute;xima.
+            </p>
+            <br/>
+        </div>
+        <div id="DetermineOptimumTravelCostNetworkTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Determinar Rede Ótima de Custo de Viagem</h2></td>
+                    <td>
+                    <img src="../images/GUID-097BDD6E-0AD8-44F2-BB70-C5395F4B1AF4-web.png" class="titleImage" alt="Ilustra&ccedil;&atilde;o de ferramenta Determinar Rede &Oacute;tima de Custo de Viagem">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Calcula a rede de custo &oacute;timo de um conjunto de regi&otilde;es de entrada.
+            </p>
+            <br/>
+        </div>
+        <div id="DetermineTravelCostPathAsPolylineTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Determinar Percurso de Custo de Viagem Como Polilinha</h2></td>
+                    <td>
+                    <img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" class="titleImage" alt="Ilustra&ccedil;&atilde;o de ferramenta Determinar Percurso de Custo de Viagem Como Polilinha">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Calcula o percurso de polilinhas de menor custo entre origens e destinos conhecidos.
             </p>
             <br/>
         </div>
@@ -165,9 +230,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Monitorizar Vegetação</h2></td>
+                    <td><h2>Monitor Vegetation</h2></td>
                     <td>
-                    <img src="../images/GUID-7763FCC0-2EA1-463B-98D0-4EBDF6150907-web.png" class="titleImage" alt="Ferramenta Monitorizar Vegeta&ccedil;&atilde;o para Portal">
+                    <img src="../images/GUID-7763FCC0-2EA1-463B-98D0-4EBDF6150907-web.png" class="titleImage" alt="Monitor Vegetation tool for Portal">
                     </td>
                 </tr></tbody>
             </table>
@@ -177,19 +242,24 @@
             <br/>
         </div>
     <div id="AnalyzeTerrainCategory" class="regularsize">
-        <h2>Analisar Terreno</h2>
+        <h2>Analyze Terrain</h2>
         <hr/>
-        <p>Estas ferramentas ajudam-no a analisar superf&iacute;cies de raster. 
+        <p>These tools help you analyze raster surfaces.
+
             <ul>
-                <li> <b>Calcular Inclina&ccedil;&atilde;o</b> calcula o declive do terreno.
+                <li> <b>Calculate Slope</b> calculates the steepness of terrain.
                     
 
                 </li>
-                <li> <b>Derivar Aspeto</b> calcula a dire&ccedil;&atilde;o da inclina&ccedil;&atilde;o mais acentuada para cada local.
+                <li> <b>Derive Aspect</b> calculates the direction of steepest slope for each location.
                     
 
                 </li>
-                <li> <b>Criar Viewshed</b> identifica o que pode ser visto a partir de qualquer ponto da paisagem.
+                <li> <b>Create Viewshed</b> identifies what can be seen from any point on the landscape.
+                    
+
+                </li>
+                <li> <b>Watershed</b> calculates the contributing area above identified location(s) on a surface.
                     
 
                 </li>
@@ -201,14 +271,14 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Calcular Inclinação</h2></td>
+                    <td><h2>Calculate Slope</h2></td>
                     <td>
-                    <img src="../images/GUID-D33862C6-01BB-445E-B0C3-BC8B8C1858DA-web.png" class="titleImage" alt="Ferramenta Calcular Inclina&ccedil;&atilde;o para o Portal">
+                    <img src="../images/GUID-D33862C6-01BB-445E-B0C3-BC8B8C1858DA-web.png" class="titleImage" alt="Calculate Slope tool for Portal">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Identifica uma superf&iacute;cie que apresente a inclina&ccedil;&atilde;o dos dados de eleva&ccedil;&atilde;o introduzidos. Inclina&ccedil;&atilde;o representa a taxa de mudan&ccedil;a de eleva&ccedil;&atilde;o por cada c&eacute;lula de modelo digital de eleva&ccedil;&atilde;o (digital elevation model -DEM).
+            <p>Identifies a surface that shows the slope of the input elevation data. Slope represents the rate of change of elevation for each digital elevation model (DEM) cell.
             </p>
             <br/>
         </div>
@@ -216,14 +286,14 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Derivar Aspeto</h2></td>
+                    <td><h2>Derive Aspect</h2></td>
                     <td>
-                    <img src="../images/GUID-D03FF025-0530-4D0D-87A3-B25D6716F8F0-web.png" class="titleImage" alt="Ferramenta Derivar Aspeto para Portal">
+                    <img src="../images/GUID-D03FF025-0530-4D0D-87A3-B25D6716F8F0-web.png" class="titleImage" alt="Derive Aspect tool for Portal">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Identifica a dire&ccedil;&atilde;o de inclina&ccedil;&atilde;o descendente da taxa m&aacute;xima de mudan&ccedil;a em valor desde cada uma das c&eacute;lulas at&eacute; &agrave;s respetivas c&eacute;lulas vizinhas. Aspeto pode ser visto como a dire&ccedil;&atilde;o da inclina&ccedil;&atilde;o.
+            <p>Identifies the downslope direction of the maximum rate of change in value from each cell to its neighbors. Aspect can be thought of as the slope direction.
             </p>
             <br/>
         </div>
@@ -231,14 +301,29 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Criar Viewshed</h2></td>
+                    <td><h2>Create Viewshed</h2></td>
                     <td>
-                    <img src="../images/GUID-BB8B8CAF-330E-4C41-9D94-AF4728D0D0F3-web.png" class="titleImage" alt="Ferramenta Criar Viewshed">
+                    <img src="../images/GUID-BB8B8CAF-330E-4C41-9D94-AF4728D0D0F3-web.png" class="titleImage" alt="Create Viewshed tool">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Determina os locais, numa superf&iacute;cie de raster, que s&atilde;o vis&iacute;veis para um conjunto de observadores.
+            <p>Determines the locations on a raster surface that are visible to a set of observers.
+            </p>
+            <br/>
+        </div>
+        <div id="WatershedTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Área de Separação de Águas</h2></td>
+                    <td>
+                    <img src="../images/GUID-AF749369-8C2D-46FF-9D74-2CF7CAB7C7B0-web.png" class="titleImage" alt="Tarefa Watershed">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Determines the contributing area above a set of cells in a raster.
             </p>
             <br/>
         </div>
@@ -271,9 +356,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Extrair Raster</h2></td>
+                    <td><h2>Extract Raster</h2></td>
                     <td>
-                    <img src="../images/GUID-DC9CBCB9-A07C-42D3-A0CB-2FB1483CBF4C-web.png" class="titleImage" alt="Ferramenta Extrair Raster para Portal">
+                    <img src="../images/GUID-DC9CBCB9-A07C-42D3-A0CB-2FB1483CBF4C-web.png" class="titleImage" alt="Extract Raster tool for Portal">
                     </td>
                 </tr></tbody>
             </table>
@@ -286,9 +371,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Voltar a Cartografar Valores</h2></td>
+                    <td><h2>Remap Values</h2></td>
                     <td>
-                    <img src="../images/GUID-4006E442-A60B-469A-891D-5ED442F64CB8-web.png" class="titleImage" alt="Ferramenta Voltar a Cartografar Valores para Portal">
+                    <img src="../images/GUID-4006E442-A60B-469A-891D-5ED442F64CB8-web.png" class="titleImage" alt="Remap Values tool for Portal">
                     </td>
                 </tr></tbody>
             </table>
@@ -316,9 +401,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Converter Raster para Elemento</h2></td>
+                    <td><h2>Convert Raster to Feature</h2></td>
                     <td>
-                    <img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" class="titleImage" alt="Ferramenta Converter Raster para Elemento">
+                    <img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" class="titleImage" alt="Convert Raster to Feature tool">
                     </td>
                 </tr></tbody>
             </table>

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
-define({inputLayerLabel:"Selecionar camada à qual anexar",inputWarningLabel:"Aviso: A camada à qual é aplicado o anexo será modificada.",inputHostedLayerWarning:"The selected layer was not a hosted feature layer. Please select a hosted feature layer to append to.",appendLayerLabel:"Selecionar camada para anexar",filterLabel:"Anexar todos os elementos ou definir um subconjunto (opcional)",fieldMappingLabel:"Selecionar como anexar campos (opcional)",inputField:"Introduzir Campo",appendValue:"Anexar Valor",expression:"Expressão"});
+define({inputLayerLabel:"Selecionar camada à qual anexar",inputWarningLabel:"Aviso: A camada à qual é aplicado o anexo será modificada.",inputHostedLayerWarning:"A camada selecionada não era uma camada de elementos alojada. Por favor, selecione uma camada de elementos alojada à qual anexar.",appendLayerLabel:"Selecionar camada para anexar",filterLabel:"Anexar todos os elementos ou definir um subconjunto (opcional)",fieldMappingLabel:"Selecionar como anexar campos (opcional)",inputField:"Introduzir Campo",appendValue:"Anexar Valor",expression:"Expressão"});

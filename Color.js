@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/Color","dojo/has","./kernel"],function(o,r,e,n){var a=o([r],{declaredClass:"esri.Color"});a.toJsonColor=function(o){return o&&[o.r,o.g,o.b,o.a>1?o.a:Math.round(255*o.a)]},a.toDojoColor=function(o){return o&&new r([o[0],o[1],o[2],o[3]/255])};var l,t=["named","blendColors","fromRgb","fromHex","fromArray","fromString"];for(l=0;l<t.length;l++)a[t[l]]=r[t[l]];return e("extend-esri")&&(n.Color=a),a});

@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Rastrov&aacute; anal&yacute;za v&aacute;m umožňuje prov&aacute;dět anal&yacute;zu velk&yacute;ch rastrov&yacute;ch datov&yacute;ch sad pomoc&iacute;  ArcGIS Image Server. Můžete tak d&iacute;ky využit&iacute; v&yacute;konu serveru analyzovat v&iacute;ce dat rychleji. Sady n&aacute;strojů moment&aacute;lně dostupn&eacute; pro webov&eacute; uživatele  Portal for ArcGIS jsou  <b>Sumarizovat data</b>, <b>Analyzovat vzorce</b>, <b>Analyzovat obr&aacute;zek</b>, <b>Analyzovat ter&eacute;n</b> a <b>Spravovat data</b>.
+        <p>Rastrov&aacute; anal&yacute;za v&aacute;m umožňuje prov&aacute;dět anal&yacute;zu velk&yacute;ch rastrov&yacute;ch datov&yacute;ch sad pomoc&iacute;  ArcGIS Image Server. Můžete tak d&iacute;ky využit&iacute; v&yacute;konu serveru analyzovat v&iacute;ce dat rychleji. Sady n&aacute;strojů moment&aacute;lně dostupn&eacute; pro webov&eacute; uživatele  Portal for ArcGIS jsou  <b>Sumarizovat data</b>, <b>Analyzovat vzory</b>, <b>Analyzovat obr&aacute;zek</b>, <b>Analyzovat ter&eacute;n</b> a <b>Spravovat data</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -59,9 +59,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Sumarizace rastru uvnitř</h2></td>
+                    <td><h2>Souhrn hodnot rastru v rozmezí (Summarize Raster Within)</h2></td>
                     <td>
-                    <img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" class="titleImage" alt="N&aacute;stroj Sumarizace rastru uvnitř">
+                    <img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" class="titleImage" alt="N&aacute;stroj Souhrn hodnot rastru v rozmez&iacute;">
                     </td>
                 </tr></tbody>
             </table>
@@ -106,7 +106,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Vypočítat hustotu</h2></td>
+                    <td><h2>Vypočítat hustotu (Calculate Density)</h2></td>
                     <td>
                     <img src="../images/GUID-4EE4838C-E210-43CE-99C7-1A648A18C10B-web.png" class="titleImage" alt="N&aacute;stroj Vypoč&iacute;tat hustotu">
                     </td>
@@ -121,7 +121,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Interpolovat body</h2></td>
+                    <td><h2>Interpolovat body (Interpolate Points)</h2></td>
                     <td>
                     <img src="../images/GUID-06D80BB3-7154-4FAA-9C9B-D665450EF3BC-web.png" class="titleImage" alt="N&aacute;stroj Interpolovat body">
                     </td>
@@ -129,6 +129,71 @@
             </table>
 <hr/>
             <p>Tento n&aacute;stroj v&aacute;m umožňuje odhadovat hodnoty v&nbsp;nov&yacute;ch um&iacute;stěn&iacute;ch na z&aacute;kladě hodnot existuj&iacute;c&iacute;ch bodů. N&aacute;stroj poč&iacute;t&aacute; s&nbsp;hodnotami v&scaron;ech zn&aacute;m&yacute;ch bodů a vytv&aacute;ř&iacute; nov&eacute; plochy klasifikovan&eacute; podle předpov&iacute;dan&yacute;ch hodnot. Pomoc&iacute; tohoto n&aacute;stroje můžete např&iacute;klad předpov&iacute;dat &uacute;roveň sr&aacute;žek v&nbsp;r&aacute;mci cel&eacute;ho povod&iacute; na z&aacute;kladě v&yacute;sledků měřen&iacute; z&iacute;skan&yacute;ch z&nbsp;jednotliv&yacute;ch př&iacute;strojů pro měřen&iacute; sr&aacute;žek.
+            </p>
+            <br/>
+        </div>
+    <div id="UseProximityCategory" class="regularsize">
+        <h2>Obalové zóny, vzdálenost</h2>
+        <hr/>
+        <p>Tyto n&aacute;stroje v&aacute;m pomohou odpovědět na jednu z nejčastěj&scaron;&iacute;ch ot&aacute;zek prostorov&eacute; anal&yacute;zy: &bdquo;Co je v bl&iacute;zkosti čeho&ldquo;?
+
+            <ul>
+                <li> <b>Vypoč&iacute;tat vzd&aacute;lenost</b> vypoč&iacute;t&aacute; euklidovskou vzd&aacute;lenost, směr a přiřazen&iacute; z jedin&eacute;ho zdroje nebo sady zdrojů.
+                    
+
+                </li>
+                <li> <b>Stanovit s&iacute;ť optim&aacute;ln&iacute;ch cestovn&iacute;ch n&aacute;kladů </b> vypoč&iacute;t&aacute; s&iacute;ť optim&aacute;ln&iacute;ch n&aacute;kladů ze sady vstupn&iacute;ch regionů.
+                    
+
+                </li>
+                <li> <b>Stanovit cestovn&iacute; n&aacute;klady tras jako polylinii</b> vypoč&iacute;t&aacute; polyliniovou trasu s nejniž&scaron;&iacute;mi n&aacute;klady mezi zdroji a zn&aacute;m&yacute;mi destinacemi.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateDistanceTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Vypočítat vzdálenost (Calculate Distance)</h2></td>
+                    <td>
+                    <img src="../images/GUID-34E2E6F3-2F60-43F5-B499-D5735DE08602-web.png" class="titleImage" alt="Vypoč&iacute;tat vzd&aacute;lenost">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Vypoč&iacute;t&aacute; euklidovskou vzd&aacute;lenost, směr a přiřazen&iacute; z jedin&eacute;ho zdroje nebo sady zdrojů. Tento n&aacute;stroj můžete využ&iacute;t pro určen&iacute; vzd&aacute;lenosti lokace od silnice, budovy nebo parku. Můžete tak&eacute; určit, jak&yacute;m směrem mus&iacute;te cestovat z lokace, abyste se do zdroje vr&aacute;tili nepř&iacute;měj&scaron;&iacute;m způsobem. Můžete zobrazit každou lokaci ve sv&eacute; studijn&iacute; oblasti, kter&aacute; je nejbliž&scaron;&iacute;m zdrojem.
+            </p>
+            <br/>
+        </div>
+        <div id="DetermineOptimumTravelCostNetworkTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Stanovit síť optimálních cestovních nákladů (Determine Optimum Travel Cost Network)</h2></td>
+                    <td>
+                    <img src="../images/GUID-097BDD6E-0AD8-44F2-BB70-C5395F4B1AF4-web.png" class="titleImage" alt="Obr&aacute;zek n&aacute;stroje Stanovit s&iacute;ť optim&aacute;ln&iacute;ch cestovn&iacute;ch n&aacute;kladů">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Vypoč&iacute;t&aacute; optim&aacute;ln&iacute; s&iacute;ť n&aacute;kladů ze souboru vstupn&iacute;ch regionů.
+            </p>
+            <br/>
+        </div>
+        <div id="DetermineTravelCostPathAsPolylineTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Stanovit cestovní náklady tras jako polylinii (Determine Travel Cost Path As Polyline)</h2></td>
+                    <td>
+                    <img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" class="titleImage" alt="Obr&aacute;zek n&aacute;stroje Stanovit cestovn&iacute; n&aacute;klady tras jako polylinii">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Vypoč&iacute;t&aacute; polyliniovou trasu s nejniž&scaron;&iacute;mi n&aacute;klady mezi zdroji a zn&aacute;m&yacute;mi destinacemi.
             </p>
             <br/>
         </div>
@@ -165,7 +230,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Monitorovat vegetaci</h2></td>
+                    <td><h2>Monitorovat vegetaci (Monitor Vegetation)</h2></td>
                     <td>
                     <img src="../images/GUID-7763FCC0-2EA1-463B-98D0-4EBDF6150907-web.png" class="titleImage" alt="N&aacute;stroj Monitorovat vegetaci pro port&aacute;l">
                     </td>
@@ -189,7 +254,11 @@
                     
 
                 </li>
-                <li> <b>Vytvořit viditelnost</b> urč&iacute;, co je možn&eacute; vidět z&nbsp;libovoln&eacute;ho bodu v&nbsp;krajině.
+                <li> <b>Vytvořit viditeln&yacute; povrch</b> urč&iacute;, co je možn&eacute; vidět z&nbsp;libovoln&eacute;ho bodu v&nbsp;krajině.
+                    
+
+                </li>
+                <li> <b>Povod&iacute;</b> vypoč&iacute;t&aacute; př&iacute;tokovou oblast nad identifikovan&yacute;mi lokacemi na povrchu.
                     
 
                 </li>
@@ -201,7 +270,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Vypočítat svažitost</h2></td>
+                    <td><h2>Vypočítat svažitost (Calculate Slope)</h2></td>
                     <td>
                     <img src="../images/GUID-D33862C6-01BB-445E-B0C3-BC8B8C1858DA-web.png" class="titleImage" alt="N&aacute;stroj Vypoč&iacute;tat svažitost pro port&aacute;l">
                     </td>
@@ -216,7 +285,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Odvodit orientaci</h2></td>
+                    <td><h2>Odvodit orientaci (Derive Aspect)</h2></td>
                     <td>
                     <img src="../images/GUID-D03FF025-0530-4D0D-87A3-B25D6716F8F0-web.png" class="titleImage" alt="N&aacute;stroj Odvodit orientaci pro port&aacute;l">
                     </td>
@@ -227,18 +296,33 @@
             </p>
             <br/>
         </div>
-        <div id="CreateViewshedRasterTool" class="smallsize">
+        <div id="CreateViewshedRasterTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Vytvořit viditelnost</h2></td>
+                    <td><h2>Vytvořit viditelný povrch (Create Viewshed)</h2></td>
                     <td>
-                    <img src="../images/GUID-BB8B8CAF-330E-4C41-9D94-AF4728D0D0F3-web.png" class="titleImage" alt="N&aacute;stroj Vytvořit viditelnost">
+                    <img src="../images/GUID-BB8B8CAF-330E-4C41-9D94-AF4728D0D0F3-web.png" class="titleImage" alt="N&aacute;stroj Vytvořit viditeln&yacute; povrch">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
             <p>Urč&iacute; um&iacute;stěn&iacute; na rastrov&eacute;m povrchu, kter&aacute; jsou viditeln&aacute; pro sadu pozorovatelů.
+            </p>
+            <br/>
+        </div>
+        <div id="WatershedTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Povodí (Watershed)</h2></td>
+                    <td>
+                    <img src="../images/GUID-AF749369-8C2D-46FF-9D74-2CF7CAB7C7B0-web.png" class="titleImage" alt="&Uacute;loha Povod&iacute;">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Stanov&iacute; př&iacute;tokovou oblast nad sadou buněk v rastru.
             </p>
             <br/>
         </div>
@@ -267,11 +351,11 @@
             
         </p>
     </div>
-        <div id="ExtractRasterTool" class="smallsize">
+        <div id="ExtractRasterTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Extrahovat rastr</h2></td>
+                    <td><h2>Extrahovat rastr (Extract Raster)</h2></td>
                     <td>
                     <img src="../images/GUID-DC9CBCB9-A07C-42D3-A0CB-2FB1483CBF4C-web.png" class="titleImage" alt="N&aacute;stroj Extrahovat rastr pro port&aacute;l">
                     </td>
@@ -286,7 +370,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Přemapovat hodnoty</h2></td>
+                    <td><h2>Přemapovat hodnoty (Remap Values)</h2></td>
                     <td>
                     <img src="../images/GUID-4006E442-A60B-469A-891D-5ED442F64CB8-web.png" class="titleImage" alt="N&aacute;stroj Přemapovat hodnoty pro port&aacute;l">
                     </td>
@@ -312,11 +396,11 @@
             </p>
             <br/>
         </div>
-        <div id="ConvertRasterToFeatureTool" class="smallsize">
+        <div id="ConvertRasterToFeatureTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Převést rastr na prvek</h2></td>
+                    <td><h2>Převést rastr na prvek (Convert Raster to Feature)</h2></td>
                     <td>
                     <img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" class="titleImage" alt="N&aacute;stroj Přev&eacute;st rastr na prvek">
                     </td>

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../base/Descriptor","../../../form/Element","../../../form/InputSelectOne","../../../form/Options","../../../form/Option","../../../form/iso/AbstractObject","../../../form/iso/CodeListAttribute","../../../form/iso/CodeListValueAttribute","../../../form/iso/CodeListElement","../../../form/iso/CodeListReference","../../../form/iso/CodeSpaceAttribute","../../../form/iso/GcoElement","../../../form/iso/ObjectReference","../gmd/citation/CI_OnlineFunctionCode","dojo/text!./templates/ContainsOperations.html","../../../../../kernel"],function(e,t,o,i,r,s,n,a,m,d,f,c,l,b,p,C,O,j,u){var A=e(i,{templateString:j});return o("extend-esri")&&t.setObject("dijit.metadata.types.iso.srv.ContainsOperations",A,u),A});

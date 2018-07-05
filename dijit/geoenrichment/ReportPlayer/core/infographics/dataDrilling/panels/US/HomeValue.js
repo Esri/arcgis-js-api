@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
-define(["../../ChartBuilder"],function(l){var e={};return e.homeValue={states:"n,p",fieldInfo:{isChart:!0,chartJson:l.createChart({title:"Home Value",points:[{label:"0-49999",fullName:"Wealth.VAL0_CY"},{label:"50000-99999",fullName:"Wealth.VAL50K_CY"},{label:"100000-149999",fullName:"Wealth.VAL100K_CY"},{label:"150000-199999",fullName:"Wealth.VAL150K_CY"},{label:"200000-249999",fullName:"Wealth.VAL200K_CY"},{label:"250000-299999",fullName:"Wealth.VAL250K_CY"},{label:"300000-399999",fullName:"Wealth.VAL300K_CY"},{label:"400000-499999",fullName:"Wealth.VAL400K_CY"},{label:"500000-749999",fullName:"Wealth.VAL500K_CY"},{label:"750000-999999",fullName:"Wealth.VAL750K_CY"},{label:"1000000+",fullName:"Wealth.VAL1M_CY"}]})}},e});
+define(["../../ChartBuilder"],function(l){var e={};return e.homeValue={states:"n,p",defaultState:"p",fieldInfo:{isChart:!0,chartJson:l.createChart({title:"Home Value",points:[{label:"0-49999",fullName:"Wealth.VAL0_CY"},{label:"50000-99999",fullName:"Wealth.VAL50K_CY"},{label:"100000-149999",fullName:"Wealth.VAL100K_CY"},{label:"150000-199999",fullName:"Wealth.VAL150K_CY"},{label:"200000-249999",fullName:"Wealth.VAL200K_CY"},{label:"250000-299999",fullName:"Wealth.VAL250K_CY"},{label:"300000-399999",fullName:"Wealth.VAL300K_CY"},{label:"400000-499999",fullName:"Wealth.VAL400K_CY"},{label:"500000-749999",fullName:"Wealth.VAL500K_CY"},{label:"750000-999999",fullName:"Wealth.VAL750K_CY"},{label:"1000000+",fullName:"Wealth.VAL1M_CY"}]})}},e});

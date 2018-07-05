@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Pronađi klastere točaka</h2><p/>
+        <h2><img src="../images/GUID-40DA7286-67EA-4333-91C5-4CD527C21B4A-web.png" alt="Pronađi klastere točaka"></h2>
+        <hr/>
+    <p>Alat  Pronađi klastere točaka pronalazi klastere točkastih geoobjekata unutar okolnih podataka na temelju njihove prostorne distribucije.
+    </p>
+    <p>Nevladina organizacija proučava određenu bolest koju prenose nametnici. Ima točkasti skup podataka koji predstavlja kućanstva u radnom području od kojih su neka zaražena, a neka nisu. Upotrebom alata  Pronađi klastere točaka analitičar može odrediti klastere zaraženih kućanstava kako bi se pomoglo odrediti područje za početak tretiranja i istrebljivanja nametnika.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Izaberite sloj za koji će se pronaći klasteri</h2></div>
+        <hr/>
+        <div>
+            <p>Točkasti sloj u kojem se nalaze klasteri. Slojevi moraju biti u predviđenoj prostornoj referenci ili imati prostornu referencu koja se obrađuje postavljenu u predviđenom koordinatnom sustavu pomoću  <b>Okruženja za analizu</b>.
+            </p>
+            <p>Osim odabira sloja s va&scaron;e karte, možete odabrati  <b>Pretraži slojeve</b> na dnu padajućeg popisa za pretraživanje va&scaron;ih sadržaja za skup podataka za dijeljenje datoteka velikih podataka ili sloj geoobjekta.
+            </p>
+        </div>
+    </div>
+    <div id="minFeaturesCluster">
+        <div><h2>Minimalni broj točaka koji će se smatrati klasterom</h2></div>
+        <hr/>
+        <div>
+            <p>Minimalni broj geoobjekata za nastanak klastera.
+            </p>
+        </div>
+    </div>
+    <div id="searchDistance">
+        <div><h2>Ograniči raspon pretraživanja na</h2></div>
+        <hr/>
+        <div>
+            <p>Maksimalna udaljenost da bi se geoobjekti smatrali dijelom istog klastera.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Naziv sloja rezultata</h2></div>
+        <hr/>
+        <div>
+            <p> Naziv sloja koji će se stvoriti u stavci <b>Moj sadržaj</b> i dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, alat neće biti uspje&scaron;an.
+            </p>
+            <p>Upotrebom padajućeg izbornika  <b>Spremi rezultat u</b> možete odrediti naziv mape u dijelu <b>Moj sadržaj</b> gdje će se spremiti rezultat.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
-define({clustersLabel:"Hitta kluster för lagret ${inputLayerName}.",chooseLayerLabel:"Välj det lager som klustren ska hittas från",minClusterPtsLabel:"Minimalt antal punkter för att betraktas som ett kluster",limitSearchLabel:"Begränsa sökintervallet till (valfritt)",limitSearchReqLabel:"Limit the search range to",outputLayerName:"Hitta kluster för ${inputLayerName}",itemDescription:"Geoobjektlager som genererats genom att lösningen Hitta punktkluster för ${inputLayerName} har körts.",itemTags:"Analysresultat, Hitta punktkluster, ${inputLayerName}",itemSnippet:"Geoobjektlager som genererats av Hitta punktkluster"});
+define({clustersLabel:"Hitta kluster för lagret ${inputLayerName}.",chooseLayerLabel:"Välj det lager som klustren ska hittas från",minClusterPtsLabel:"Minimalt antal punkter för att betraktas som ett kluster",limitSearchLabel:"Begränsa sökintervallet till (valfritt)",limitSearchReqLabel:"Begränsa sökintervallet till",outputLayerName:"Hitta kluster för ${inputLayerName}",itemDescription:"Geoobjektlager som genererats genom att lösningen Hitta punktkluster för ${inputLayerName} har körts.",itemTags:"Analysresultat, Hitta punktkluster, ${inputLayerName}",itemSnippet:"Geoobjektlager som genererats av Hitta punktkluster"});

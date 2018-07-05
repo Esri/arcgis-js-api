@@ -60,7 +60,7 @@
         <div><h2>Vælg metode til at overvåge vegetation</h2></div>
         <hr/>
         <div>
-            <p>V&aelig;lg den metode, der er anvendt til oprettelse af vegetationsindekslaget. De forskellige vegetationsindekser kan hj&aelig;lpe med at fremh&aelig;ve visse objekter eller med at reducere forskellige typer st&oslash;j.
+            <p>V&aelig;lg den metode, der skal bruges til oprettelse af vegetationsindekslaget. De forskellige vegetationsindekser kan hj&aelig;lpe med at fremh&aelig;ve visse objekter eller med at reducere forskellige typer st&oslash;j.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
@@ -88,7 +88,7 @@ SAVI er et vegetationsindeks, der fors&oslash;ger at minimere p&aring;virkning f
 
                 </li>
                 <li>Sultan's Formula &mdash; 
-Sultan's Formula-processen tager et seksb&aring;nds 8-bit-billede og anvender en specifik algoritme til at skabe et treb&aring;nds 8-bit-billede. Det resulterende billede fremh&aelig;ver klippeformationer kaldet ofiolitter p&aring; kystlinjer. Denne formel blev udviklet p&aring; grundlag af TM- og ETM-b&aring;ndene for en Landsat 5- eller 7-scene.
+Sultans formelproces tager et seksb&aring;nds 8-bit billede og anvender en specifik algoritme til det for at fremstille et treb&aring;nds 8-bit billede. Det resulterende billede fremh&aelig;ver klippeformationer kaldet ofiolitter p&aring; kystlinjer. Denne formel blev udviklet p&aring; grundlag af TM- og ETM-b&aring;ndene for en Landsat 5- eller 7-scene.
 
                 </li>
                 <li>Transformed Soil-Adjusted Vegetation Index &mdash; 
@@ -102,7 +102,7 @@ Transformed-SAVI er et vegetationsindeks, der fors&oslash;ger at minimere p&arin
         <div><h2>Angiv indekser for NIR-bånd og RED-bånd</h2></div>
         <hr/>
         <div>
-            <p>Angiv b&aring;ndindekser for de n&aelig;r-infrar&oslash;de (NIR) og r&oslash;de b&aring;nd.
+            <p>Angiv b&aring;ndindekser for de NIR-b&aring;nd og r&oslash;de b&aring;nd.
             </p>
             <p>Hver satellitsensor og flykamera optager informationer, der nedbrydes i b&aring;ndindekser. Hvert b&aring;ndindeks indeholder information om en specifik del af det elektromagnetiske spektrum. Denne vegetationsoverv&aring;gningsmetode kr&aelig;ver, at du specificerer det b&aring;ndindeks, som har optaget NIR-b&oslash;lgel&aelig;ngder og r&oslash;de b&oslash;lgel&aelig;ngder.
             </p>
@@ -114,7 +114,7 @@ Transformed-SAVI er et vegetationsindeks, der fors&oslash;ger at minimere p&arin
         <div>
             <p>Jordbundslinjens h&aelig;ldning. H&aelig;ldningen er en omtrentlig line&aelig;r relation mellem NIR-b&aring;ndet og det r&oslash;de b&aring;nd p&aring; et spredningsdiagram.
             </p>
-            <p>Denne parameter er kun gyldig for Transformed Soil-Adjusted Vegetation Index.
+            <p>Denne parameter er kun gyldig for Transformed Soil-Adjusted Vegetation Index-metoden.
             </p>
         </div>
     </div>
@@ -122,11 +122,11 @@ Transformed-SAVI er et vegetationsindeks, der fors&oslash;ger at minimere p&arin
         <div><h2>Skæringspunkt</h2></div>
         <hr/>
         <div>
-            <p>Dette er v&aelig;rdien for det n&aelig;r-infrar&oslash;de (NIR) b&aring;nd, n&aring;r refleksionsv&aelig;rdien for det r&oslash;de (Red) b&aring;nd er 0 for de specifikke jordbundslinjer.
+            <p>V&aelig;rdien for NIR-b&aring;ndet, n&aring;r refleksionsv&aelig;rdien for det r&oslash;de (Red) b&aring;nd er 0 for de specifikke jordbundslinjer.
             </p>
             <p> <code>(a = NIR - sRed)</code> , n&aring;r r&oslash;d er 0.
             </p> 
-            <p>Denne parameter er kun gyldig for Transformed Soil-Adjusted Vegetation Index.
+            <p>Denne parameter er kun gyldig for Transformed Soil-Adjusted Vegetation Index-metoden.
             </p>
         </div>
     </div>
@@ -134,9 +134,9 @@ Transformed-SAVI er et vegetationsindeks, der fors&oslash;ger at minimere p&arin
         <div><h2>Mængde af grøn vegetation</h2></div>
         <hr/>
         <div>
-            <p>SAVI-metoden kr&aelig;ver, at m&aelig;ngden af vegetationsd&aelig;kke er angivet.
+            <p>Angiver m&aelig;ngden af gr&oslash;nt vegetationsd&aelig;kke, som kr&aelig;ves af SAVI-metoden.
             </p>
-            <p>Angiv en v&aelig;rdi mellem 0,0 og 1,0, hvor 
+            <p>Gyldige v&aelig;rdier er: 
 
                 <ul>
                     <li>1 = omr&aring;der uden gr&oslash;nt vegetationsd&aelig;kke
@@ -160,9 +160,9 @@ Transformed-SAVI er et vegetationsindeks, der fors&oslash;ger at minimere p&arin
         <div><h2>Justeringsfaktor</h2></div>
         <hr/>
         <div>
-            <p>Transformed Soil-Adjusted Vegetation Index-metoden kr&aelig;ver, at der er angivet en justeringsfaktor med henblik p&aring; at minimere p&aring;virkning fra jordens farve. Standardv&aelig;rdien er 0,08.
+            <p>Angiver justeringsfaktoren med henblik p&aring; at minimere p&aring;virkning fra jordens farve, hvilket kr&aelig;ves af Transformed Soil-Adjusted Vegetation Index-metoden. Standardv&aelig;rdien er 0,08.
             </p>
-            <p>Den laveste v&aelig;rdi angiver, at du ser bort fra p&aring;virkning fra jordens farve. En h&oslash;j v&aelig;rdi betyder, at jordens farve vil p&aring;virke dit resultat.
+            <p>En lav v&aelig;rdi angiver, at du ser bort fra p&aring;virkning fra jordens farve. En h&oslash;j v&aelig;rdi betyder, at jordens farve vil p&aring;virke dit resultat.
             </p>
         </div>
     </div>

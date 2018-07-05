@@ -124,9 +124,9 @@
         <div><h2>Přidat statistiku (volitelné)</h2></div>
         <hr/>
         <div>
-            <p> Můžete vypoč&iacute;tat statistiku sumarizovan&yacute;ch prvků. U č&iacute;seln&yacute;ch pol&iacute; můžete vypoč&iacute;tat n&aacute;sleduj&iacute;c&iacute;:
+            <p> Můžete vypoč&iacute;tat statistiku sumarizovan&yacute;ch prvků.Můžete vypoč&iacute;tat n&aacute;sleduj&iacute;c&iacute; v č&iacute;seln&yacute;ch pol&iacute;ch:
                 <ul>
-                    <li>Počet &ndash; Vypočte počet nenulov&yacute;ch hodnot. Lze jej použ&iacute;t na č&iacute;seln&yacute;ch pol&iacute;ch nebo řetězc&iacute;ch. Počet pro [null, 0, 2] je 2.
+                    <li>Počet &ndash; Spoč&iacute;t&aacute; počet nenulov&yacute;ch hodnot. Lze jej použ&iacute;t na č&iacute;seln&yacute;ch pol&iacute;ch nebo řetězc&iacute;ch. Počet pro [null, 0, 2] je 2.
                     </li>
                     <li>Součet &ndash; Součet č&iacute;seln&yacute;ch hodnot v poli. Součet pro [null, null, 3] je 3.
                     </li>
@@ -138,14 +138,14 @@
                     </li>
                     <li>Rozsah &ndash; Rozsah č&iacute;seln&eacute;ho pole. Vypočtou se jako minim&aacute;ln&iacute; hodnoty odečten&eacute; od maxim&aacute;ln&iacute; hodnoty. Rozsah pro [0, null, 1] je 1. Rozsah pro [null, 4] je 0.
                     </li>
-                    <li>Odchylka &ndash; Odchylka č&iacute;seln&eacute;ho pole ve stopě. Odchylka pro [1]  je null. Odchylka pro [null, 1,1,1] je 1.
+                    <li>Odchylka &ndash; Odchylka č&iacute;seln&eacute;ho pole ve stopě. Odchylka pro [1]  je null. Odchylka pro [null, 1,0,1,1] je 0,25.
                     </li>
-                    <li>Standardn&iacute; odchylka &ndash; Standardn&iacute; odchylka č&iacute;seln&eacute;ho pole. Standardn&iacute; odchylka pro [1]  je null. Standardn&iacute; odchylka pro [null, 1,1,1] je 1. 
+                    <li>Standardn&iacute; odchylka &ndash; Standardn&iacute; odchylka č&iacute;seln&eacute;ho pole. Standardn&iacute; odchylka pro [1] je null. Standardn&iacute; odchylka pro [null, 1,0,1,1] je 0,5. 
                     </li>
                 </ul>
                 
             </p>
-            <p>U řetězcov&yacute;ch pol&iacute; můžete vypoč&iacute;tat n&aacute;sleduj&iacute;c&iacute;:
+            <p>N&aacute;sleduj&iacute;c&iacute; můžete vypoč&iacute;tat  v pol&iacute;ch řetězců:
                 <ul>
                     <li>Počet &ndash; Počet nenulov&yacute;ch řetězců.
                     </li>
@@ -162,14 +162,14 @@
         <div>
             <p>V&yacute;sledky GeoAnalytics jsou ukl&aacute;d&aacute;ny do ArcGIS Data Store a jsou zobrazeny jako vrstva prvků v  Portal for ArcGIS. Ve vět&scaron;ině př&iacute;padů by v&yacute;sledky měly b&yacute;t uloženy do časoprostorov&eacute;ho datov&eacute;ho &uacute;loži&scaron;tě a toto je v&yacute;choz&iacute; nastaven&iacute;. V někter&yacute;ch př&iacute;padech je vhodn&eacute; uložit v&yacute;sledky do relačn&iacute;ho datov&eacute;ho &uacute;loži&scaron;tě. Důvody k uložen&iacute; v&yacute;sledků do relačn&iacute;ho datov&eacute;ho &uacute;loži&scaron;tě: 
                 <ul>
-                    <li>Použit&iacute; v&yacute;sledků mezi spolupracuj&iacute;c&iacute;mi port&aacute;ly.
+                    <li>Můžete použ&iacute;t v&yacute;sledky ke spolupr&aacute;ci mezi port&aacute;ly.
                     </li>
-                    <li>Povolen&iacute; funkc&iacute; synchronizace s v&yacute;sledky.
+                    <li>Můžete povolit funkce synchronizace s v&yacute;sledky
                     </li>
                 </ul>
                 
             </p>
-            <p>Relačn&iacute; datov&eacute; &uacute;loži&scaron;tě byste použ&iacute;vat neměli, pokud oček&aacute;v&aacute;te n&aacute;růst v&yacute;sledků GeoAnalytics a potřebujete využ&iacute;t v&yacute;hod časoprostorov&eacute;ho &uacute;loži&scaron;tě Big Data ke zpracov&aacute;n&iacute; velk&yacute;ch objemů dat. 
+            <p>Relačn&iacute; datov&eacute; &uacute;loži&scaron;tě byste použ&iacute;vat neměli, pokud oček&aacute;v&aacute;te n&aacute;růst v&yacute;sledků GeoAnalytics a potřebujete využ&iacute;t v&yacute;hod časoprostorov&eacute;ho &uacute;loži&scaron;tě Big Data ke zpracov&aacute;n&iacute; velk&yacute;ch objemů dat.
             </p>
         </div>
     </div>
@@ -177,7 +177,7 @@
         <div><h2>Název výsledné vrstvy</h2></div>
         <hr/>
         <div>
-            <p> Toto je n&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce <b>Můj obsah</b> a přid&aacute; do mapy.  V&yacute;choz&iacute; n&aacute;zev se ř&iacute;d&iacute; n&aacute;zvem n&aacute;stroje a n&aacute;zvem vstupn&iacute; vrstvy. Pokud vrstva již existuje, n&aacute;stroj selže.
+            <p> N&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce <b>Můj obsah</b> a přid&aacute; se do mapy. V&yacute;choz&iacute; n&aacute;zev se ř&iacute;d&iacute; n&aacute;zvem n&aacute;stroje a n&aacute;zvem vstupn&iacute; vrstvy. Pokud vrstva již existuje, n&aacute;stroj selže.
             </p>
             <p>V&nbsp;rozbalovac&iacute;m seznamu  <b>Uložit v&yacute;sledek do</b> můžete zadat n&aacute;zev složky ve složce <b>Můj obsah</b>, do kter&eacute; se m&aacute; v&yacute;sledek uložit.
             </p>

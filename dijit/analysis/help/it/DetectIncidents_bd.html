@@ -44,13 +44,13 @@
         <h2>Rileva Eventi</h2><p/>
         <h2><img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Rileva Eventi"></h2>
         <hr/>
-    <p>Questo strumento funziona con un layer abilitato per variazioni temporali di punti, linee, aree o tabelle che rappresentano un istante nel tempo. Con l'uso di feature ordinate in sequenza, denominate tracce, questo strumento determina le feature che sono eventi di interesse. Gli eventi vengono determinati dalle condizioni specificate. 
+    <p>Questo strumento funziona con un layer abilitato per variazioni temporali di punti, linee, aree o tabelle che rappresentano un istante nel tempo. L&rsquo;uso di feature ordinate in sequenza, denominate tracce, questo strumento determina quali feature sono eventi di interesse. Gli eventi vengono determinati dalle condizioni specificate. 
     </p>
-    <p>Innanzitutto, lo strumento determina le feature che appartengono ad una traccia utilizzando uno o pi&ugrave; campi. Utilizzando il tempo per ciascuna feature, le tracce vengono ordinate in sequenza e viene applicata la condizione di evento. Le feature che soddisfano la condizione di evente iniziale sono contrassegnate come evento.Opzionalmente, &egrave; possibile applicare una condizione di evento finale; quando la condizione finale &egrave; vera, la feature non &egrave; pi&ugrave; un evento. I risultati vengono restituiti con le feature originali, con nuove colonne che rappresentano il nome dell'evento, e indicano la feature che soddisfa la condizione di evento. &Egrave; possibile restituire tutte le feature originali o solo le feature che sono eventi.
+    <p>Innanzitutto, lo strumento determina le feature che appartengono ad una traccia utilizzando uno o pi&ugrave; campi. Utilizzando il tempo per ciascuna feature, le tracce vengono ordinate in sequenza e viene applicata la condizione di evento. Le feature che soddisfano la condizione di evente iniziale sono contrassegnate come evento. Opzionalmente, &egrave; possibile applicare una condizione di evento finale; quando la condizione finale &egrave; vera, la feature non &egrave; pi&ugrave; un evento. I risultati vengono restituiti con le feature originali, con nuove colonne che rappresentano il nome dell'evento, e indicano la feature che soddisfa la condizione di evento. &Egrave; possibile restituire tutte le feature originali o solo le feature che sono eventi.
     </p>
     <p>Si supponga, ad esempio, di avere misurazioni GPS di uragani ogni 10 minuti. Ogni misurazione GPS registra il nome dell'uragano, la posizione, l'ora di registrazione e la velocit&agrave; del vento. Utilizzando questi campi, &egrave; possibile creare un evento in cui la misurazione con una velocit&agrave; del vento superiore a 208 km/h &egrave; un evento denominato  <code>Catastrofico</code>. Non impostando una condizione finale, l'evento termina se la funzione non soddisfa pi&ugrave; la condizione iniziale (la velocit&agrave; del vento rallenta a meno di 208).
     </p>
-    <p>Usando un altro esempio, si supponga di monitorare le concentrazioni di una sostanza chimica nella rete idrica locale utilizzando un campo denominato  <code>contanimateLevel</code>. &Egrave; noto che i livelli raccomandati sono inferiori a 0,01 mg/L e i livelli pericolosi sono superiori a 0,03 mg/L. Per rilevare gli eventi in cui un valore superiore a 0,03 mg/L &egrave; e rimane un evento finch&eacute; i livelli di contaminazione non tornano alla normalit&agrave;, si crea un evento utilizzando una condizione iniziale di <code>contanimateLevel &gt; 0,03</code> e una condizione finale di <code>contanimateLevel &lt; 0,01</code>. Ci&ograve; contrassegna qualsiasi sequenza in cui i valori superano 0,03 mg/L finch&eacute; non torna ad un valore inferiore a 0,01.
+    <p>Usando un altro esempio, si supponga di monitorare le concentrazioni di una sostanza chimica nella rete idrica locale utilizzando un campo denominato  <code>contaminateLevel</code>. &Egrave; noto che i livelli raccomandati sono inferiori a 0,01 mg/L e i livelli pericolosi sono superiori a 0,03 mg/L. Per rilevare gli eventi in cui un valore superiore a 0,03 mg/L &egrave; e rimane un evento finch&eacute; i livelli di contaminazione non tornano alla normalit&agrave;, si crea un evento utilizzando una condizione iniziale di <code>contaminateLevel &gt; 0,03</code> e una condizione finale di <code>contaminateLevel &lt; 0,01</code>. Ci&ograve; contrassegna qualsiasi sequenza in cui i valori superano 0,03 mg/L finch&eacute; non torna ad un valore inferiore a 0,01.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -68,7 +68,7 @@
         <div><h2>Selezionare uno o più campi per identificare le tracce</h2></div>
         <hr/>
         <div>
-            <p> I campi che rappresentano l'identificatore di tracce. &Egrave; possibile utilizzare uno o pi&ugrave; campi per rappresentare valori univoci delle tracce.
+            <p>I campi che rappresentano l'identificatore di tracce. &Egrave; possibile utilizzare uno o pi&ugrave; campi per rappresentare valori univoci delle tracce.
             </p>
             <p>Ad esempio, se si stanno ricostruendo tracce di uragani, si dovrebbe usare il nome dell'uragano come campo della traccia.
             </p>
@@ -82,6 +82,8 @@
             </p>
             <p>Si supponga, ad esempio, di voler essere avvisati quando la somma dei campi  <code>concentrazione_1</code> e <code>concentrazione_2</code> &egrave; superiore a <code>concentrazione_3</code>. A tal fine, applicare una condizione di <code>($feature[&quot;concentration_1&quot;] +  $feature[&quot;concentration_2&quot;]) &gt; $feature[&quot;concentration_3&quot;])</code>.
             </p>
+            <p>Se si &egrave; interessati alle variazioni delle concentrazioni nel tempo e si desidera essere avvisati quando  <code>concentration_1</code> corrente &egrave; maggiore delle due precedenti misurazioni di <code>concentration_2</code>, si pu&ograve; usare un'espressione come <code>$feature[&quot;concentration_1&quot;] &gt;   $track.field[&quot;concentration_2&quot;].history(-3,-1)</code>.
+            </p>
         </div>
     </div>
     <div id="endConditionExpression">
@@ -91,6 +93,8 @@
             <p>Opzionalmente, aggiungere una condizione utilizzando il generatore di espressioni per determinare la fine di un evento. Se la condizione finale specificata &egrave; vera, la feature non &egrave; pi&ugrave; un evento. Se non si specifica una condizione finale, un evento termina quando la condizione di avvio non &egrave; pi&ugrave; vera.    
             </p>
             <p>Si supponga, ad esempio, di voler essere avvisati quando la somma dei campi  <code>concentrazione_1</code> e <code>concentrazione_2</code> &egrave; superiore <code>concentrazione_3</code>, e di volere che l&rsquo;evento termini se <code>concentrazione_4</code> &egrave; inferiore a <code>concentrazione_1</code>. A tal fine, applicare una condizione iniziale di <code>($feature[&quot;concentration_1&quot;] +  $feature[&quot;concentration_2&quot;]) &gt; ($join[&quot;income&quot;] * .20)</code> e una condizione finale di <code>($feature[&quot;concentration_4&quot;] &lt; $feature[&quot;concentration_1&quot;])</code>.
+            </p>
+            <p>Se si desidera che un incidente termini quando la media di   <code>concentration_1</code> e le quattro misurazioni precedenti sono maggiori della prima misurazione, si pu&ograve; usare un'espressione come <code>$track.field[&quot;concentration_1&quot;].history(-5) &gt; $track.field[&quot;concentration_1&quot;].history(0)</code>.
             </p>
         </div>
     </div>
@@ -113,7 +117,7 @@
         <div><h2>Nome del layer dei risultati</h2></div>
         <hr/>
         <div>
-            <p> Questo &egrave; il nome del layer che verr&agrave; creato in <b>I miei contenuti</b> e aggiunto alla mappa.  Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, lo strumento non verr&agrave; eseguito.
+            <p> Il nome del layer che verr&agrave; creato in <b>I miei contenuti</b> e aggiunto alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, lo strumento non verr&agrave; eseguito.
             </p>
             <p>Utilizzare la casella a discesa  <b>Salva risultato in</b> per specificare il nome di una cartella in <b>I miei contenuti</b> in cui salvare il risultato.
             </p>

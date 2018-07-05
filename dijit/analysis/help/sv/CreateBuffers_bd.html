@@ -124,7 +124,7 @@
         <div><h2>Lägg till statistik (valfritt)</h2></div>
         <hr/>
         <div>
-            <p> Du kan ber&auml;kna statistik p&aring; summerade geoobjekt. P&aring; numeriska f&auml;lt kan du ber&auml;kna f&ouml;ljande:
+            <p> Du kan ber&auml;kna statistik p&aring; summerade geoobjekt. Du kan ber&auml;kna f&ouml;ljande p&aring; numeriska f&auml;lt:
                 <ul>
                     <li>Antal &ndash; Ber&auml;knar antal v&auml;rden som inte &auml;r null. Kan anv&auml;ndas p&aring; numeriska f&auml;lt eller str&auml;ngar. Antalet f&ouml;r [null, 0, 2] &auml;r 2.
                     </li>
@@ -138,14 +138,14 @@
                     </li>
                     <li>Intervall &ndash; Intervallet f&ouml;r ett numeriskt f&auml;lt. Det ber&auml;knas som det maximala v&auml;rdet minus minimiv&auml;rdena. Intervallet f&ouml;r [0, null, 1] &auml;r 1. Intervallet f&ouml;r [null, 4] &auml;r 0.
                     </li>
-                    <li>Varians &ndash; Variansen hos ett numeriskt f&auml;lt i ett sp&aring;r. Variansen hos [1] &auml;r null. Variansen hos [null, 1,1,1] &auml;r 1.
+                    <li>Varians &ndash; Variansen hos ett numeriskt f&auml;lt i ett sp&aring;r. Variansen hos [1] &auml;r null. Variansen hos [null, 1,0,1,1] &auml;r 0,25.
                     </li>
-                    <li>Standardavvikelse &ndash; Standardavvikelsen hos ett numeriskt f&auml;lt. Standardavvikelsen hos [1] &auml;r null. Standardavvikelsen hos [null, 1,1,1] &auml;r 1. 
+                    <li>Standardavvikelse &ndash; Standardavvikelsen hos ett numeriskt f&auml;lt. Standardavvikelsen hos [1] &auml;r null. Standardavvikelsen hos [null, 1,0,1,1] &auml;r 0,5. 
                     </li>
                 </ul>
                 
             </p>
-            <p>P&aring; f&auml;lt med str&auml;ngar kan du ber&auml;kna f&ouml;ljande:
+            <p>Du kan ber&auml;kna f&ouml;ljande p&aring; numeriska f&auml;lt:
                 <ul>
                     <li>Antal &ndash; Antalet str&auml;ngar som inte &auml;r null.
                     </li>
@@ -162,14 +162,14 @@
         <div>
             <p>GeoAnalytics-resultat sparas i ett ArcGIS-datalager och visas som ett geoobjektslager i  Portal for ArcGIS. I de flesta fall ska resultat sparas i det rumstemporala datalagret och det &auml;r standardinst&auml;llningen. I vissa fall &auml;r det ett bra alternativ att spara resultat i det relationella datalagret. F&ouml;ljande &auml;r anledningar till varf&ouml;r du kanske vill spara resultat i det relationella datalagret: 
                 <ul>
-                    <li>anv&auml;nda resultaten i samarbeten portal till portal
+                    <li>Du kan anv&auml;nda resultaten i portal-till-portal-samarbeten.
                     </li>
-                    <li>aktivera synkroniseringsfunktioner med dina resultat.
+                    <li>Du kan aktivera synkroniseringsfunktioner med dina resultat.
                     </li>
                 </ul>
                 
             </p>
-            <p>Du b&ouml;r inte anv&auml;nda det relationella datalagret om du f&ouml;rv&auml;ntar dig att dina GeoAnalytics-resultat kommer att &ouml;ka och du beh&ouml;ver anv&auml;nda det rumstemporala big data-lagrets funktioner till att hantera stora m&auml;ngder data. 
+            <p>Du b&ouml;r inte anv&auml;nda det relationella datalagret om du f&ouml;rv&auml;ntar dig att dina GeoAnalytics-resultat kommer att &ouml;ka och du beh&ouml;ver anv&auml;nda det rumstemporala big data-lagrets funktioner till att hantera stora m&auml;ngder data.
             </p>
         </div>
     </div>
@@ -177,7 +177,7 @@
         <div><h2>Resultatlagrets namn</h2></div>
         <hr/>
         <div>
-            <p> Det h&auml;r &auml;r namnet p&aring; lagret som skapas i <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns misslyckas verktyget.
+            <p> Namnet p&aring; lagret som skapas i <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns misslyckas verktyget.
             </p>
             <p>Om du anv&auml;nder listrutan  <b>Spara resultat i</b> kan du ange namnet p&aring; en mapp i <b>Mitt inneh&aring;ll</b> d&auml;r resultatet ska sparas.
             </p>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Otsi punktklastreid</h2><p/>
+        <h2><img src="../images/GUID-40DA7286-67EA-4333-91C5-4CD527C21B4A-web.png" alt="Otsi punktklastreid"></h2>
+        <hr/>
+    <p>T&ouml;&ouml;vahend Otsi punktklastreid leiab &uuml;mbritseva m&uuml;ra hulgast punktobjektide klastrid nende ruumilise jaotuse p&otilde;hjal.
+    </p>
+    <p>Valitsusv&auml;line organisatsioon uurib konkreetset kahjuritest p&otilde;hjustatud haigust. Selles kasutatakse punktandmestikku, mis esindab uuringupiirkonna kodusid, millest m&otilde;ned on nakatunud ja m&otilde;ned mitte. T&ouml;&ouml;vahendi  Otsi punktklastreid abil saab anal&uuml;&uuml;tik leida nakatunud kodude klastrid, et aidata m&auml;&auml;rata piirkonda, kus tuleb alustada ravi ja h&auml;vitada kahjurid.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Valige kiht klastrite otsimiseks</h2></div>
+        <hr/>
+        <div>
+            <p>Punktkiht, milles leiduvad klastrid.  Kihid peavad olema tasapinnalises ruumilise l&auml;hiseose s&uuml;steemis v&otilde;i tasapinnaliseks ruumilise l&auml;hiseose s&uuml;steemiks peab olema funktsiooni  <b>Anal&uuml;&uuml;sikeskkonnad</b> abil m&auml;&auml;ratud tasapinnaline koordinaats&uuml;steem.
+            </p>
+            <p>Lisaks kihi valimisele kaardil saate valida ripploendi alumises servas  <b>Sirvi kihte</b>, et otsida oma sisust suurandmete failiketta andmestikku v&otilde;i objektikihti.
+            </p>
+        </div>
+    </div>
+    <div id="minFeaturesCluster">
+        <div><h2>Minimaalne punktide arv, mida käsitletakse klastrina</h2></div>
+        <hr/>
+        <div>
+            <p>Klastri loomiseks vajalik minimaalne objektide arv.
+            </p>
+        </div>
+    </div>
+    <div id="searchDistance">
+        <div><h2>Piira otsinguvahemikku</h2></div>
+        <hr/>
+        <div>
+            <p>Maksimaalne kaugus, et kaaluda objekte, mis kuuluvad samasse klastrisse
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tulemkihi nimi</h2></div>
+        <hr/>
+        <div>
+            <p> Selle kihi nimi, mis luuakse jaotises <b>Minu sisu</b> ja lisatakse kaardile. Vaikimisi nimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui see kiht on juba olemas, siis t&ouml;&ouml;tlemine nurjub.
+            </p>
+            <p>Kasutades rippmen&uuml;&uuml;d  <b>Salvesta tulemused</b>, saate jaotises <b>Minu sisu</b> m&auml;&auml;rata selle kausta nime, kuhu tulemused salvestatakse.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

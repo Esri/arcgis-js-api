@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
-define(["dojo/dom-construct","dojo/dom-style","dojo/sniff","../ElementBuilder","../StyleParser","esri/dijit/geoenrichment/utils/SVGUtil"],function(t,e,r,i,u,s){function o(t){return Math.round(100*t)/100}return{_svgTempParentNode:null,drawSVG:function(t,r,n){var l=e.toPixelValue(t,t.getAttribute("x")),a=e.toPixelValue(t,t.getAttribute("y"));t.setAttribute("x",o(l+r.box.x)+"px"),t.setAttribute("y",o(a+r.box.y)+"px");var d=t.getAttribute("style")||"";if(d){t.setAttribute("style","");var b=u.parseStyleString(d);b.width&&t.setAttribute("width",b.width),b.height&&t.setAttribute("height",b.height)}var y=i.buildElement("g",{opacity:r.style.opacity,clipParams:n,transform:r.style.transform},s.getOuterHTML(t));return t.setAttribute("x",l+"px"),t.setAttribute("y",a+"px"),t.setAttribute("style",d),y}}});
+define(["dojo/dom-construct","../dom-style","dojo/sniff","../ElementBuilder","../StyleParser","esri/dijit/geoenrichment/utils/SVGUtil"],function(t,e,r,i,u,s){function n(t){return Math.round(100*t)/100}return{_svgTempParentNode:null,drawSVG:function(t,r,l){var o=e.toPixelValue(t,t.getAttribute("x")),a=e.toPixelValue(t,t.getAttribute("y"));t.setAttribute("x",n(o+r.box.x)+"px"),t.setAttribute("y",n(a+r.box.y)+"px");var b=t.getAttribute("style")||"";if(b){t.setAttribute("style","");var d=u.parseStyleString(b);d.width&&t.setAttribute("width",d.width),d.height&&t.setAttribute("height",d.height)}var y=i.buildElement("g",{opacity:r.style.opacity,clipParams:l,transform:r.style.transform},s.getOuterHTML(t));return t.setAttribute("x",o+"px"),t.setAttribute("y",a+"px"),t.setAttribute("style",b),y}}});

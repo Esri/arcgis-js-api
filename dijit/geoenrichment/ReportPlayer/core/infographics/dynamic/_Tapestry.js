@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/dom-class","esri/dijit/geoenrichment/Tapestry"],function(e,n,t){return e(t,{_toDetailView:function(e){this.inherited(arguments),this.onExpandedStateChanged()},collapseContent:function(){this._mainTable&&n.remove(this._mainTable,"clicked"),this._toMainView(),this.onExpandedStateChanged()},onExpandedStateChanged:function(){}})});

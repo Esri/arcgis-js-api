@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
-define([],function(){return{esriDijitCssUrl:"",esriCssUrl:"",playerSourceRootUrl:"",playerConfigUrl:"/reportPlayer/config.js",playerMainUrl:"/reportPlayer/main.js",charts:{showErrorIfHasUnavailableData:!1},tables:{showUnavailableData:!0},createPlayerCommand:{prettifyDataJson:!0},dataDrilling:{canPrint:!0,canExport:!0}}});
+define([],function(){return{esriDijitCssUrl:"",esriCssUrl:"",playerSourceRootUrl:"",runReportTask:{ignoreErrors:!0},charts:{showErrorIfHasUnavailableData:!1},tables:{showUnavailableData:!0},createImageCommand:{skipSavingFile:!1},createPDFCommand:{skipSavingFile:!1},createPlayerCommand:{prettifyDataJson:!0},dataDrilling:{canPrint:!0,canExport:!0}}});

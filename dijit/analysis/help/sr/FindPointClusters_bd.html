@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Pronađi klastere tačaka</h2><p/>
+        <h2><img src="../images/GUID-40DA7286-67EA-4333-91C5-4CD527C21B4A-web.png" alt="Pronađi klastere tačaka"></h2>
+        <hr/>
+    <p>Alatka  Pronađi klastere tačaka pronalazi klastere tačkastih geoobjekata sa okružujućom bukom na osnovu njihove prostorne distribucije.
+    </p>
+    <p>Nevladina organizacija proučava određeno oboljenje koje izaziva &scaron;tetočina. Ima tačkasti skup podataka koji predstavlja domaćinstva u proučavanoj oblasti, od kojih su neka napadnuta &scaron;tetočinama a druga nisu. Kori&scaron;ćenjem alatke  Pronađi klastere tačaka analitičar može da odredi klastere napadnutih domaćinstava kako bi pomogao da se istakne oblast na kojoj se počinje sa tretiranjem i uklanjanjem &scaron;tetočina.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Odaberite sloj za koji će klasteri da budu pronađeni</h2></div>
+        <hr/>
+        <div>
+            <p>Tačkasti sloj na kome će biti pronađeni klasteri. Slojevi moraju da budu u projektovanoj prostornoj referenci ili da imaju obradu prostorne reference postavljenu na projektovani koordinatni sistem kori&scaron;ćenjem  <b>Okruženja analize</b>.
+            </p>
+            <p>Kao dodatak odabiru sloja iz mape, možete da odaberete  <b>Pregledaj slojeve</b> na dnu padajuće liste da biste potražili deljeni skup podataka za datoteke sa velikim podacima ili sloj geoobjekta u svojim sadržajima.
+            </p>
+        </div>
+    </div>
+    <div id="minFeaturesCluster">
+        <div><h2>Minimalni broj tačaka koje se uzimaju u razmatranje za klaster</h2></div>
+        <hr/>
+        <div>
+            <p>Minimalni broj geoobjekata za početnu vrednost klastera.
+            </p>
+        </div>
+    </div>
+    <div id="searchDistance">
+        <div><h2>Ograničite opseg pretrage na</h2></div>
+        <hr/>
+        <div>
+            <p>Maksimalno rastojanje između geoobjekata za koje se smatra da su delovi istog klastera.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Naziv sloja sa rezultatima</h2></div>
+        <hr/>
+        <div>
+            <p> Naziv sloja koji će biti kreiran u opciji <b>Moj sadržaj</b> i dodat mapi. Ako sloj već postoji, alatka će otkazati.
+            </p>
+            <p>Koristeći  <b>Sačuvaj rezultat u</b> padajućem polju, možete da navedete ime fascikle u <b>Mom sadržaju</b> u kojoj će rezultat biti sačuvan.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

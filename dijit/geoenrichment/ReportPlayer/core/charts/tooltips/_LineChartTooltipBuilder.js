@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
-define(["dojo/dom-construct","./_BuilderUtil","dojo/i18n!../../../../../../nls/jsapi"],function(a,e,l){return l=l.geoenrichment.dijit.ReportPlayer.ChartTooltip,{buildLineChartTooltip:function(i,o){var r=[];e.addTitle(o,i.label);var t=a.create("div",{class:"chartTooltip_row esriGERowHigh"},o);e.addColor(i.color,t),r.push(e.addLabel(e.buildSeriesLabel(i),t)),e.addValue(i.valueLabel,t),r=r.concat(e.buildStatLabels(i,o,l.weightInSeries,l.minValueInSeries,l.maxValueInSeries,l.avgValueInSeries)),i.getGroup().forEach(function(t){if(i!==t){var d=a.create("div",{class:"chartTooltip_row esriGERowHigh"},o);e.addColor(t.color,d),r.push(e.addLabel(e.buildSeriesLabel(t),d)),t.isUnavailableData?e.addValue(l.unavailableData,d):e.addValue(t.valueLabel,d)}}),e.formatTable(r)}}});
+define(["dojo/dom-construct","./_BuilderUtil","dojo/i18n!esri/nls/jsapi"],function(a,e,l){return l=l.geoenrichment.dijit.ReportPlayer.ChartTooltip,{buildLineChartTooltip:function(i,o){var r=[];e.addTitle(o,i.label);var t=a.create("div",{class:"chartTooltip_row esriGERowHigh"},o);e.addColor(i.color,t),r.push(e.addLabel(e.buildSeriesLabel(i),t)),e.addValue(i.valueLabel,t),r=r.concat(e.buildStatLabels(i,o,l.weightInSeries,l.minValueInSeries,l.maxValueInSeries,l.avgValueInSeries)),i.getGroup().forEach(function(t){if(i!==t){var d=a.create("div",{class:"chartTooltip_row esriGERowHigh"},o);e.addColor(t.color,d),r.push(e.addLabel(e.buildSeriesLabel(t),d)),t.isUnavailableData?e.addValue(l.unavailableData,d):e.addValue(t.valueLabel,d)}}),e.formatTable(r)}}});

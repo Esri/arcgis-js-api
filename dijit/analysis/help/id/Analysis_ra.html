@@ -121,7 +121,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Sisipkan Titik</h2></td>
+                    <td><h2>Interpolasikan Titik</h2></td>
                     <td>
                     <img src="../images/GUID-06D80BB3-7154-4FAA-9C9B-D665450EF3BC-web.png" class="titleImage" alt="Alat Interpolasikan Titik">
                     </td>
@@ -129,6 +129,71 @@
             </table>
 <hr/>
             <p>Alat ini memungkinkan Anda memprediksi nilai-nilai di lokasi baru berdasarkan pengukuran yang ditemukan pada sekumpulan titik. Alat ini mengambil nilai data pada setiap titik dan menampilkan area yang dikelompokkan menurut nilai prediksi. Anda dapat menggunakan alat ini, misalnya, untuk memprediksi tingkat curah hujan di sepanjang batas air berdasarkan pengukuran yang diambil di suatu alat pengukur hujan.
+            </p>
+            <br/>
+        </div>
+    <div id="UseProximityCategory" class="regularsize">
+        <h2>Gunakan Kedekatan Jarak</h2>
+        <hr/>
+        <p>Alat ini membantu Anda menjawab salah satu pertanyaan yang paling sering diajukan dalam analisis ruang: &quot;Apa yang berada di dekat apa?&quot;
+
+            <ul>
+                <li> <b>Hitung Jarak</b> menghitung jarak, arah, dan alokasi Euclidean untuk satu atau serangkaian sumber.
+                    
+
+                </li>
+                <li> <b>Tentukan Jaringan Biaya Perjalanan Optimal</b> menghitung jaringan biaya optimal dari serangkaian wilayah input.
+                    
+
+                </li>
+                <li> <b>Tentukan Jalur Biaya Perjalanan Sebagai Polyline</b> menghitung jalur polyline biaya paling sedikit antara sumber dan tujuan yang diketahui.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateDistanceTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Hitung Jarak</h2></td>
+                    <td>
+                    <img src="../images/GUID-34E2E6F3-2F60-43F5-B499-D5735DE08602-web.png" class="titleImage" alt="Hitung Jarak">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Menghitung jarak, arah, dan alokasi Euclidean untuk satu atau serangkaian sumber. Anda dapat menggunakan alat ini untuk menentukan seberapa jauh lokasi ke jalanan, gedung, atau taman. Anda juga dapat menentukan arah mana yang harus Anda lalui dari lokasi sebelum kembali ke sumber di sebagian besar jalur langsung. Anda dapat melihat setiap lokasi di area studi yang terdekat dari sumber.
+            </p>
+            <br/>
+        </div>
+        <div id="DetermineOptimumTravelCostNetworkTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Tentukan Jaringan Biaya Perjalanan Optimal</h2></td>
+                    <td>
+                    <img src="../images/GUID-097BDD6E-0AD8-44F2-BB70-C5395F4B1AF4-web.png" class="titleImage" alt="Ilustrasi alat Tentukan Jaringan Biaya Perjalanan Optimal">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Menghitung jaringan biaya optimal dari serangkaian wilayah input.
+            </p>
+            <br/>
+        </div>
+        <div id="DetermineTravelCostPathAsPolylineTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Tentukan Jalur Biaya Perjalanan sebagai Polyline</h2></td>
+                    <td>
+                    <img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" class="titleImage" alt="Alat ilustrasi Tentukan Jalur Biaya Perjalanan sebagai Polyline">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Menghitung jalur polyline biaya paling sedikit antara sumber dan tujuan yang diketahui.
             </p>
             <br/>
         </div>
@@ -176,12 +241,12 @@
             </p>
             <br/>
         </div>
-    <div id="AnalyzeTerrainCategory" class="smallsize">
-        <h2>Menganalisis Medan</h2>
+    <div id="AnalyzeTerrainCategory" class="regularsize">
+        <h2>Analisis Medan</h2>
         <hr/>
         <p>Alat ini membantu Anda menganalisis permukaan raster. 
             <ul>
-                <li> <b>Hitung Kemiringan</b> menghitung kecuraman medan.
+                <li> <b>Hitung Kelerengan</b> menghitung kecuraman medan.
                     
 
                 </li>
@@ -190,6 +255,10 @@
 
                 </li>
                 <li> <b>Buat Jarak Pandang</b> mengidentifikasi apa yang dapat dilihat dari setiap titik lanskap.
+                    
+
+                </li>
+                <li> <b>Batas Air</b> menghitung area kontribusi di atas lokasi yang teridentifikasi pada permukaan.
                     
 
                 </li>
@@ -223,7 +292,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Mengidentifikasi arah kemiringan tingkat perubahan maksimum dalam nilai dari setiap sel ke tetangganya. Aspek dapat dianggap sebagai arah lereng.
+            <p>Mengidentifikasi arah kelerengan tingkat perubahan maksimum dalam nilai dari setiap sel ke tetangganya. Aspek dapat dianggap sebagai arah lereng.
             </p>
             <br/>
         </div>
@@ -231,7 +300,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Buat Viewshed</h2></td>
+                    <td><h2>Buat Jarak Pandang</h2></td>
                     <td>
                     <img src="../images/GUID-BB8B8CAF-330E-4C41-9D94-AF4728D0D0F3-web.png" class="titleImage" alt="Alat Buat Jarak Pandang">
                     </td>
@@ -239,6 +308,21 @@
             </table>
 <hr/>
             <p>Menentukan lokasi pada permukaan raster yang terlihat oleh sejumlah pengamat.
+            </p>
+            <br/>
+        </div>
+        <div id="WatershedTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Batas Air</h2></td>
+                    <td>
+                    <img src="../images/GUID-AF749369-8C2D-46FF-9D74-2CF7CAB7C7B0-web.png" class="titleImage" alt="Tugas batas air">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Menentukan area kontribusi di atas rangkaian sel dalam raster.
             </p>
             <br/>
         </div>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Encontrar Clusters de Ponto</h2><p/>
+        <h2><img src="../images/GUID-40DA7286-67EA-4333-91C5-4CD527C21B4A-web.png" alt="Encontrar Clusters de Ponto"></h2>
+        <hr/>
+    <p>A ferramenta  Encontrar Clusters de Ponto encontra clusters de elementos de pontos no ru&iacute;do circundante com base na sua distribui&ccedil;&atilde;o espacial.
+    </p>
+    <p>Uma organiza&ccedil;&atilde;o n&atilde;o-governamental est&aacute; a estudar uma doen&ccedil;a espec&iacute;fica transmitida por parasita. Possui um conjunto de dados de ponto que representa agregados familiares numa &aacute;rea de estudo, algumas das quais se encontram infestadas, outras n&atilde;o. Ao utilizar a ferramenta  Encontrar Clusters de Ponto , um analista pode determinar clusters de agregados familiares infestados para ajudar a definir uma &aacute;rea na qual iniciar o tratamento e a extermina&ccedil;&atilde;o dos parasitas.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Selecione a camada a partir da qual os clusters serão encontrados.</h2></div>
+        <hr/>
+        <div>
+            <p>A camada de pontos na qual os clusters se encontrar&atilde;o.  As camadas t&ecirc;m de encontrar-se numa refer&ecirc;ncia espacial projetada ou a refer&ecirc;ncia espacial de processamento tem de ser definida para um sistema de coordenadas projetado que utilize os  <b>Ambientes de An&aacute;lise</b>.
+            </p>
+            <p>In addition to choosing a layer from your map, you can choose  <b>Browse Layers</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer.
+            </p>
+        </div>
+    </div>
+    <div id="minFeaturesCluster">
+        <div><h2>Número mínimo de pontos para ser coniderado um cluster</h2></div>
+        <hr/>
+        <div>
+            <p>O n&uacute;mero m&iacute;nimo de elementos para compor um cluster.
+            </p>
+        </div>
+    </div>
+    <div id="searchDistance">
+        <div><h2>Limite o intervalo de pesquisa para</h2></div>
+        <hr/>
+        <div>
+            <p>A dist&acirc;ncia m&aacute;xima para considerar elementos como parte do mesmo cluster.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nome da camada resultante</h2></div>
+        <hr/>
+        <div>
+            <p> The name of the layer that will be created in <b>My
+Content</b> and added to the map. The default name is based on the
+tool name and the input layer name. If the layer already exists, the tool will fail.
+            </p>
+            <p>Using the  <b>Save result in</b> drop-down box, you can specify
+the name of a folder in <b>My Content</b> where the result will be
+saved.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

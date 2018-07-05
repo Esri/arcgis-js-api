@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
-define([],function(){var e={};return e.PAGE_HEADER="PageHeader",e.DETAILS_HEADER="DetailsHeader",e.DETAILS="Details",e.GROUP="Group",e.DATA_SOURCE="DataSource",e.REPORT_FOOTER="ReportFooter",e.PAGE_FOOTER="PageFooter",e.EMPTY="empty",e.INFOGRAPHIC_HEADER="InfographicHeader",e.INFOGRAPHIC_VARIABLE="InfographicVariable",e.INFOGRAPHIC_BACKGROUND="InfographicBackground",e.INFOGRAPHIC_FOREGROUND="InfographicForeground",e.TABLE_BACKGROUND="TableBackground",e.TABLE_FOREGROUND="TableForeground",e.TABLE_FLOATING_PANELS="FloatingPanels",e});
+define([],function(){var A={};return A.PAGE_HEADER="PageHeader",A.DETAILS_HEADER="DetailsHeader",A.DETAILS="Details",A.GROUP="Group",A.DATA_SOURCE="DataSource",A.REPORT_FOOTER="ReportFooter",A.PAGE_FOOTER="PageFooter",A.EMPTY="empty",A.INFOGRAPHIC_HEADER="InfographicHeader",A.INFOGRAPHIC_VARIABLE="InfographicVariable",A.INFOGRAPHIC_BACKGROUND="InfographicBackground",A.INFOGRAPHIC_FOREGROUND="InfographicForeground",A.TABLE_BACKGROUND="TableBackground",A.TABLE_FOREGROUND="TableForeground",A.TABLE_BACKGROUND_FLOATING_PANELS="BackgroundFloatingPanels",A.TABLE_FOREGROUND_FLOATING_PANELS="ForegroundFloatingPanels",A.TABLE_FLOATING_PANELS="FloatingPanels",A});

@@ -47,8 +47,16 @@
 
   <snippet name="lineVVFunctions">
     <![CDATA[
+    bool isNan(float val) {
+      return !( val < 0.0 || 0.0 < val || val == 0.0 );
+    }
+    
   #ifdef VV_SIZE_MIN_MAX_VALUE
-    float getVVMinMaxSize(float sizeValue) {
+    float getVVMinMaxSize(float sizeValue, float fallback) {
+      if (isNan(sizeValue)) { 
+        return fallback;
+      }
+
       float f = (sizeValue - u_vvSizeMinMaxValue.x) / (u_vvSizeMinMaxValue.y - u_vvSizeMinMaxValue.x);
       return clamp(mix(u_vvSizeMinMaxValue.z, u_vvSizeMinMaxValue.w, f), u_vvSizeMinMaxValue.z, u_vvSizeMinMaxValue.w);
     }
@@ -56,7 +64,11 @@
 
   #ifdef VV_SIZE_FIELD_STOPS
     const int VV_SIZE_N = 6;
-    float getVVStopsSize(float sizeValue) {
+    float getVVStopsSize(float sizeValue, float fallback) {
+      if (isNan(sizeValue)) { 
+        return fallback;
+      }
+
       if (sizeValue <= u_vvSizeFieldStopsValues[0]) {
         return u_vvSizeFieldStopsSizes[0];
       }
@@ -73,7 +85,11 @@
   #endif // VV_SIZE_FIELD_STOPS
 
   #ifdef VV_SIZE_UNIT_VALUE
-    float getVVUnitValue(float sizeValue) {
+    float getVVUnitValue(float sizeValue, float fallback) {
+      if (isNan(sizeValue)) { 
+        return fallback;
+      }
+
       return u_vvSizeUnitValueWorldToPixelsRatio * sizeValue;
     }
   #endif // VV_SIZE_UNIT_VALUE
@@ -81,6 +97,10 @@
   #ifdef VV_OPACITY
     const int VV_OPACITY_N = 8;
     float getVVOpacity(float opacityValue) {
+      if (isNan(opacityValue)) { 
+        return 1.0;
+      }
+
       if (opacityValue <= u_vvOpacityValues[0]) {
         return u_vvOpacities[0];
       }
@@ -99,7 +119,11 @@
   #ifdef VV_COLOR
     const int VV_COLOR_N = 8;
 
-    vec4 getVVColor(float colorValue) {
+    vec4 getVVColor(float colorValue, vec4 fallback) {
+      if (isNan(colorValue)) { 
+        return fallback;
+      }
+
       if (colorValue <= u_vvColorValues[0]) {
         return u_vvColors[0];
       }
@@ -181,7 +205,7 @@
 #if defined(VV_SIZE_MIN_MAX_VALUE) || defined(VV_SIZE_SCALE_STOPS) || defined(VV_SIZE_FIELD_STOPS) || defined(VV_SIZE_UNIT_VALUE)
 
 #ifdef VV_SIZE_MIN_MAX_VALUE
-       mediump float lineHalfWidth = 0.5 * getVVMinMaxSize(a_vv.x);
+       mediump float lineHalfWidth = 0.5 * getVVMinMaxSize(a_vv.x, 2.0 * a_accumulatedDistanceAndHalfWidth.y * scale);
 #endif // VV_SIZE_MIN_MAX_VALUE
 
 #ifdef VV_SIZE_SCALE_STOPS
@@ -189,11 +213,11 @@
 #endif // VV_SIZE_SCALE_STOPS
 
 #ifdef VV_SIZE_FIELD_STOPS
-        mediump float lineHalfWidth = 0.5 * getVVStopsSize(a_vv.x);
+       mediump float lineHalfWidth = 0.5 * getVVStopsSize(a_vv.x, 2.0 * a_accumulatedDistanceAndHalfWidth.y * scale);
 #endif // VV_SIZE_FIELD_STOPS
 
 #ifdef VV_SIZE_UNIT_VALUE
-  mediump float lineHalfWidth = 0.5 * getVVUnitValue(a_vv.x);
+       mediump float lineHalfWidth = 0.5 * getVVUnitValue(a_vv.x, 2.0 * a_accumulatedDistanceAndHalfWidth.y * scale);
 #endif // VV_SIZE_UNIT_VALUE
 
 #else // no VV
@@ -203,13 +227,13 @@
 #ifdef VV_OPACITY
       v_transparency = u_opacity * getVVOpacity(a_vv.z);
 #else
-    v_transparency = u_opacity;
+      v_transparency = u_opacity;
 #endif // VV_OPACITY
 
- #ifdef VV_COLOR
-    v_color = getVVColor(a_vv.y);
+#ifdef VV_COLOR
+      v_color = getVVColor(a_vv.y, a_color);
 #else
-    v_color = a_color;
+      v_color = a_color;
 #endif // VV_COLOR
 
        // make sure to clip the vertices in case that the width of the line is 0 (or negative)
@@ -278,9 +302,20 @@
       const float sdfPatternHalfWidth = 15.5; // YF: assumed that the width will be set to 31
      const float widthFactor = 2.0;
 
-      float rgba2float(vec4 rgba) {
-        return dot(rgba,  vec4(1.0/16777216.0, 1.0/65535.0, 1.0/256.0, 1.0));
-      }
+    // Factors to convert rgba back to float
+    const vec4 rgba2float_factors = vec4(
+        255.0 / (256.0),
+        255.0 / (256.0 * 256.0),
+        255.0 / (256.0 * 256.0 * 256.0),
+        255.0 / (256.0 * 256.0 * 256.0 * 256.0)
+      );
+
+    float rgba2float(vec4 rgba) {
+      // Convert components from 0->1 back to 0->255 and then
+      // add the components together with their corresponding
+      // fixed point factors, i.e. (256^1, 256^2, 256^3, 256^4)
+      return dot(rgba, rgba2float_factors);
+    }
 #endif // SDF
 
 #ifdef ID

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../kernel","../geometry/jsonUtils","./FeatureSet"],function(e,t,s,i,a,o){var l=e(null,{declaredClass:"esri.tasks.ImageServiceIdentifyResult",constructor:function(e){e.catalogItems&&(this.catalogItems=new o(e.catalogItems)),e.location&&(this.location=a.fromJson(e.location)),this.catalogItemVisibilities=e.catalogItemVisibilities,this.name=e.name,this.objectId=e.objectId,this.value=e.value,this.processedValues=e.processedValues,this.properties=e.properties}});return s("extend-esri")&&t.setObject("tasks.ImageServiceIdentifyResult",l,i),l});

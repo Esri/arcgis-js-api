@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
-define(["dojo/_base/lang","dojo/Deferred","dojo/json","../../request","../../extend"],function(e,n,r,t,o){var s={invokeMethod:function(e,r,o,s,i,c){function u(){f&&(f.cancel(),f=null)}function a(n){var r;try{r=s(n)}catch(e){return void l(e)}d&&d.resolve(r),e[i](r)}function l(n){d&&d.reject(n),e[c](n)}var f=null,d=null;d=new n(u);try{var v=o?o():{};v.f="json",e.token&&(v.token=e.token),f=t({url:e.url+r,content:v,handleAs:"json"}),f.then(a,l)}catch(e){l(e)}return d.promise},jsonToRest:function(n){var t={};for(var o in n)e.isString(n[o])?t[o]=n[o]:t[o]=r.stringify(n[o]);return t},throwEmptyResponse:function(){throw new Error("Geoenrichment service returned empty response")}};return o("esri.tasks.geoenrichment.taskHelper",s),s});
+define(["dojo/_base/lang","dojo/Deferred","dojo/json","../../request","../../extend"],function(n,e,r,t,o){var i={invokeMethod:function(n,r,o,i,s,c){function u(){f&&(f.cancel(),f=null)}function a(e){var r;try{r=i(e)}catch(n){return void l(n)}d&&d.resolve(r),n[s](r)}function l(e){d&&d.reject(e),n[c](e)}var f=null,d=null;d=new e(u);try{var h=o?o():{};h.f="json",n.token&&(h.token=n.token),f=t({url:n.url+r,content:h,handleAs:"json"}),f.then(a,l)}catch(n){l(n)}return d.promise},jsonToRest:function(e,t){t=n.mixin({},t);for(var o in e)n.isString(e[o])?t[o]=e[o]:t[o]=r.stringify(e[o]);return t},throwEmptyResponse:function(){throw new Error("Geoenrichment service returned empty response")}};return o("esri.tasks.geoenrichment.taskHelper",i),i});

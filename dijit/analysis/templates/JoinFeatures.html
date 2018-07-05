@@ -263,10 +263,25 @@
   	<div style="padding:5px;margin-top:5px;border-top:solid 1px #BBB;">
       	<div class="esriExtentCreditsCtr">
         <a class="esriFloatTrailing esriSmallFont"  href="#" data-dojo-attach-point="_showCreditsLink" data-dojo-attach-event="onclick:_handleShowCreditsClick">${i18n.showCredits}</a>
-       	<label data-dojo-attach-point="_chooseExtentDiv" class="esriSelectLabel esriExtentLabel">
-         	<input type="radio" data-dojo-attach-point="_useExtentCheck" data-dojo-type="dijit/form/CheckBox" data-dojo-props="checked:true" name="extent" value="true"/>
+       	<label data-dojo-attach-point="_chooseExtentDiv" class="esriSelectLabel esriExtentLabel esriLeadingMargin025">
+         	<input type="radio" data-dojo-attach-point="_useExtentCheck" data-dojo-type="dijit/form/CheckBox" data-dojo-attach-event="onChange:_handleExtentChange" data-dojo-props="checked:true" name="extent" value="true"/>
            	${i18n.useMapExtent}
        	</label>
+      </div>
+      <div data-dojo-attach-point="_outputTypeRow" class="padBottom1">
+        <table style="width:100%;">
+          <tr>
+            <td colspan="3" style="padding:0;">
+              <label data-dojo-attach-point="" class="esriSelectLabel esriExtentLabel">
+                <input type="radio" data-dojo-attach-point="_checkCreateView" data-dojo-attach-event="onChange:_handleCreateViewChange" data-dojo-type="dijit/form/CheckBox" name="storeResultAsView"/>
+                ${i18n.saveResultAsView}
+              </label>
+            </td>
+            <td class="shortTextInput">
+              <a href="#" class="esriFloatTrailing helpIcon" esrihelptopic="isView"></a>
+            </td>
+          </tr>
+        </table>
       </div>
       <div class="esriFormWarning esriRoundedBox" data-dojo-attach-point="_errorMessagePane" style="display:none;">
         <a href="#" title="${i18n.close}" class="esriFloatTrailing esriAnalysisCloseIcon" title='${i18n.close}' data-dojo-attach-event="onclick:_handleCloseMsg"></a>

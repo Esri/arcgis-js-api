@@ -124,9 +124,9 @@
         <div><h2>Dodaj statystyki (opcjonalnie)</h2></div>
         <hr/>
         <div>
-            <p> Można obliczyć statystyki dla zsumowanych obiekt&oacute;w. W polach liczbowych można obliczyć następujące wartości:
+            <p> Można obliczyć statystyki dla zsumowanych obiekt&oacute;w.W polach liczbowych można obliczyć następujące wartości:
                 <ul>
-                    <li>Liczba &mdash; zlicza wartości inne niż null. Może być używane w polach liczbowych lub znakowych. Liczba dla wartości [null, 0, 2] wynosi 2.
+                    <li>Liczba &mdash; zlicza wartości inne niż null.Może być używane w polach liczbowych lub znakowych. Liczba dla wartości [null, 0, 2] wynosi 2.
                     </li>
                     <li>Suma &mdash; suma wartości liczbowych w polu. Suma dla wartości [null, null, 3] wynosi 3.
                     </li>
@@ -138,14 +138,14 @@
                     </li>
                     <li>Zakres &mdash; zakres pola liczbowego. Zakres jest obliczany przez odjęcie wartości minimalnych od wartości maksymalnej. Zakres dla wartości [0, null, 1] wynosi 1. Zakres dla wartości [null, 4] wynosi 0.
                     </li>
-                    <li>Wariancja &mdash; wariancja pola liczbowego w ścieżce. Wariancja dla wartości [1] wynosi null. Wariancja dla wartości [null, 1, 1 ,1] wynosi 1.
+                    <li>Wariancja &mdash; wariancja pola liczbowego w ścieżce. Wariancja dla wartości [1] wynosi null. Wariancja dla wartości [null, 1,0,1,1] wynosi 0,25.
                     </li>
-                    <li>Odchylenie standardowe &mdash; odchylenie standardowe pola liczbowego. Odchylenie standardowe dla wartości [1] wynosi null. Odchylenie standardowe dla wartości [null, 1, 1 ,1] wynosi 1. 
+                    <li>Odchylenie standardowe &mdash; odchylenie standardowe pola liczbowego. Odchylenie standardowe dla wartości [1] wynosi null. Odchylenie standardowe dla wartości [null, 1,0,1,1] wynosi 0,5. 
                     </li>
                 </ul>
                 
             </p>
-            <p>W polach ciąg&oacute;w znakowych można obliczyć następujące wartości:
+            <p>W polach znakowych można obliczyć następujące wartości:
                 <ul>
                     <li>Liczba &mdash; liczba ciąg&oacute;w znakowych innych niż null.
                     </li>
@@ -160,16 +160,16 @@
         <div><h2>Wybierz aplikację ArcGIS Data Store, w której zostaną zapisane wyniki</h2></div>
         <hr/>
         <div>
-            <p>Wyniki analiz geoprzestrzennych są przechowywane w aplikacji ArcGIS Data Store i udostępniane jako warstwa obiektowa w witrynie  Portal for ArcGIS. W większości przypadk&oacute;w wyniki powinny być przechowywane w magazynie danych czasowo-przestrzennych i jest to ustawienie domyślne. W niekt&oacute;rych przypadkach dobrym rozwiązanie jest zapisanie wynik&oacute;w w relacyjnym magazynie danych. Poniżej podano sytuacje, kt&oacute;re mogą uzasadniać przechowywanie wynik&oacute;w w relacyjnym magazynie danych: 
+            <p>Wyniki analiz geoprzestrzennych są przechowywane w aplikacji ArcGIS Data Store i udostępniane jako warstwa obiektowa w witrynie  Portal for ArcGIS. W większości przypadk&oacute;w wyniki powinny być przechowywane w magazynie danych czasowo-przestrzennych i jest to ustawienie domyślne. W niekt&oacute;rych przypadkach dobrym rozwiązaniem jest zapisanie wynik&oacute;w w relacyjnym magazynie danych. Poniżej podano sytuacje, kt&oacute;re mogą uzasadniać przechowywanie wynik&oacute;w w relacyjnym magazynie danych: 
                 <ul>
-                    <li>Używanie wynik&oacute;w w ramach kooperacji między portalami.
+                    <li>Wyniki mogą być używane w ramach kooperacji między portalami.
                     </li>
-                    <li>Włączanie możliwości synchronizacji dla wynik&oacute;w.
+                    <li>Została włączona możliwość synchronizacji wynik&oacute;w.
                     </li>
                 </ul>
                 
             </p>
-            <p>Nie należy używać relacyjnego magazynu danych, jeśli liczba wynik&oacute;w analiz geoprzestrzennych może się zwiększyć i może być konieczne zastosowanie magazynu dużych zbior&oacute;w danych czasowo-przestrzennych w celu obsłużenia dużych ilości danych. 
+            <p>Nie należy używać relacyjnego magazynu danych, jeśli liczba wynik&oacute;w analiz geoprzestrzennych może się zwiększyć i może być konieczne zastosowanie magazynu dużych zbior&oacute;w danych czasowo-przestrzennych w celu obsłużenia dużych ilości danych.
             </p>
         </div>
     </div>
@@ -177,7 +177,7 @@
         <div><h2>Nazwa warstwy wynikowej</h2></div>
         <hr/>
         <div>
-            <p> Jest to nazwa warstwy, kt&oacute;ra zostanie utworzona w&nbsp;zakładce <b>Moje zasoby</b> i&nbsp;zostanie dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, działanie narzędzia nie powiedzie się.
+            <p> Nazwa warstwy, kt&oacute;ra zostanie utworzona w obszarze <b>Moje zasoby</b> i dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, działanie narzędzia nie powiedzie się.
             </p>
             <p>Używając listy rozwijanej  <b>Zapisz wynik w</b>, można określić nazwę folderu w zakładce <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
             </p>

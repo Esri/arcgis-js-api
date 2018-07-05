@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
 define(["dojo/_base/lang","esri/dijit/geoenrichment/utils/JsonXmlConverter","../../ConversionUtil","../../../supportClasses/templateJsonUtils/fieldInfo/FieldInfoNameUtil","../../../supportClasses/DocumentOptions"],function(t,e,i,n,o){var s={};return s.parseDocument=function(n,s){var r=s.templateJson,a="HTMLextReport"===n.name?n:e.queryJson(n,"HTMLextReport",!0)[0];if(a){var u=a.attributes.pagesize,p=a.attributes.orientation||"portrait";r.documentOptions.pagesize=o.tryGetStandardPageSize(u,p),r.documentOptions.orientation=p,["left","right","top","bottom"].forEach(function(t){r.documentOptions[t]=i.ptToPx(a.attributes[t]||0)}),t.mixin(r.documentOptions,i.ptToPxObj(i.parseStyleString(a.attributes.style)));var l=e.queryJson(n,"def",!0)[0];l&&(l.attributes.align&&(r.documentOptions.align=l.attributes.align),l.attributes.lineSpacing&&(r.documentOptions.lineSpacing=i.ptToPx(l.attributes.lineSpacing))),s.revisionVersion=a.attributes.revisionVersion?Number(a.attributes.revisionVersion):-1}},s});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
-define({inputLayerLabel:"Välj lager att bifoga till",inputWarningLabel:"Varning: Lagret du bifogar till kommer att ändras.",inputHostedLayerWarning:"The selected layer was not a hosted feature layer. Please select a hosted feature layer to append to.",appendLayerLabel:"Välj lager att bifoga",filterLabel:"Bifoga alla geoobjekt eller definiera en delmängd (valfritt)",fieldMappingLabel:"Välj hur fält bifogas (valfritt)",inputField:"Indatafält",appendValue:"Bifoga värde",expression:"Uttryck"});
+define({inputLayerLabel:"Välj lager att bifoga till",inputWarningLabel:"Varning: Lagret du bifogar till kommer att ändras.",inputHostedLayerWarning:"Det valda lagret var inte ett driftat geoobjektlager. Välj ett driftat geoobjektlager att bifoga till.",appendLayerLabel:"Välj lager att bifoga",filterLabel:"Bifoga alla geoobjekt eller definiera en delmängd (valfritt)",fieldMappingLabel:"Välj hur fält bifogas (valfritt)",inputField:"Indatafält",appendValue:"Bifoga värde",expression:"Uttryck"});

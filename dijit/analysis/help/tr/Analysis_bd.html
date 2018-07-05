@@ -43,15 +43,19 @@
     <div id="bdToolbox">
         <p>GeoAnalytics, analizle ilgili işleri ArcGIS GeoAnalytics Server uygulamanızda dağıtır. Bu, birden &ccedil;ok makine g&uuml;c&uuml; kullanarak daha fazla veriyi daha hızlı analiz etmenize olanak tanır. Aşağıdaki ara&ccedil;lar şu anda kullanılabilir durumdadır:
             <ul>
-                <li> <b>Noktaları Birleştir</b>
+                <li> <b>Noktaları K&uuml;mele</b>
                 </li>
-                <li> <b>Ekleme Detayları</b>
+                <li> <b>&Ccedil;ok Değişkenli Grid Oluştur</b>
+                </li>
+                <li> <b>Detayları Birleştir</b>
                 </li>
                 <li> <b>İzleri Yeniden Oluştur</b>
                 </li>
                 <li> <b>&Ouml;znitelikleri &Ouml;zetle</b>
                 </li>
-                <li> <b>Dahilinde &Ouml;zetle</b>
+                <li> <b>İ&ccedil;inde &Ouml;zetle</b>
+                </li>
+                <li> <b>Tablodan Alınan Coğrafi Kod Konumları</b>
                 </li>
                 <li> <b>Olayları Algıla</b>
                 </li>
@@ -59,15 +63,19 @@
                 </li>
                 <li> <b>Yoğunluğu Hesapla</b>
                 </li>
+                <li> <b>Nokta K&uuml;melerini Bul</b>
+                </li>
                 <li> <b>Etkin Nokta Bul</b>
                 </li>
                 <li> <b>Tampon B&ouml;lge Oluştur</b>
                 </li>
-                <li> <b>Veri Deposuna Kopyala</b>
+                <li> <b>Veri Ekle</b>
                 </li>
                 <li> <b>Alan Hesapla</b>
                 </li>
-                <li> <b>Tablodan Alınan Coğrafi Kod Konumları</b>
+                <li> <b>Veri Deposuna Kopyala</b>
+                </li>
+                <li> <b>Katmanları &Ccedil;akıştır</b>
                 </li>
             </ul>
             
@@ -78,9 +86,11 @@
     <div id="SummarizeDataCategory" class="largesize">
         <h2>Veriyi Özetle</h2>
         <hr/>
-        <p>Veriyi &Ouml;zetle ara&ccedil; setinde bulunan ara&ccedil;lar; alanlardaki detayların ya da yakındaki diğer detayların toplam sayısını, uzunluğunu, alanını ve temel a&ccedil;ıklayıcı istatistiklerini ve bunların &ouml;zniteliklerini hesaplar.
+        <p> Veri &Ouml;zetleme ara&ccedil; setinde bulunan ara&ccedil;lar; alanlardaki detayların ya da yakındaki diğer detayların toplam sayısını, uzunluğunu, alanını ve temel a&ccedil;ıklayıcı istatistiklerini ve bunların &ouml;zniteliklerini hesaplar.
             <ul>
                 <li> <b>Noktaları Birleştir</b>, belirtilen alanlar veya kutular i&ccedil;inde kalan noktalar hakkındaki istatistikleri hesaplar.
+                </li>
+                <li> <b>&Ccedil;ok Değişkenli Grid Oluştur</b> kare veya altıgen kutu bi&ccedil;iminde grid oluşturur ve her kutu i&ccedil;in değerleri her bir girdi katmanının yakınlığına dayalı olarak hesaplar.
                 </li>
                 <li> <b>Detayları Birleştir</b>, diğer detaylarla bir mekansal ilişki, ge&ccedil;ici ilişki veya &ouml;znitelik ilişkisi paylaşan detaylar hakkındaki istatistikleri hesaplar.
                 </li>
@@ -107,11 +117,37 @@
 <hr/>
             <p>Bir nokta detayları katmanı ve bir alan detayları katmanı veya belirli bir mesafeyle tanımlanan kutular kullanan bu ara&ccedil;, her bir alana veya kutuya hangi noktaların d&uuml;şt&uuml;ğ&uuml;n&uuml; belirler ve her bir alan ya da kutu i&ccedil;indeki noktaların t&uuml;m&uuml; hakkındaki istatistikleri hesaplar. Bu ara&ccedil;la birlikte isteğe bağlı olarak zaman dilimleme uygulayabilirsiniz. 
             </p>
-            <p> &Ouml;rneğin
+            <p>Aşağıda &ouml;rnekleri verilmiştir:
                 <ul>
                     <li>Su&ccedil; olaylarının nokta konumlarını ele alarak il&ccedil;e ve diğer idari b&ouml;lgeler başına su&ccedil; sayımını yapın.
                     </li>
-                    <li>100 km'lik kutular kullanarak isim hakkı verilen konumların en y&uuml;ksek ve en d&uuml;ş&uuml;k aylık cirolarını bulun.
+                    <li>100-kilometrelik kutular kullanarak isim hakkı verilen konumların en y&uuml;ksek ve en d&uuml;ş&uuml;k aylık cirolarını bulun.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="BuildMultiVariableGridTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Çok Değişkenli Grid Oluştur</h2></td>
+                    <td>
+                    <img src="../images/GUID-B78AB95A-E412-4983-ADBA-3678BF207A79-web.png" class="titleImage" alt="Veri Ekle iş akışı diyagramı">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>&Ccedil;ok Değişkenli Grid Oluşturma aracı, bir kare veya altıgen kutu bi&ccedil;iminde grid oluşturur ve her kutu i&ccedil;in değişkenleri bir ya da daha fazla sayıda girdi katmanının yakınlığına dayalı olarak hesaplar.
+            </p>
+            <p>Aşağıda &ouml;rnekleri verilmiştir:
+                <ul>
+                    <li>Toplu taşıma altyapısının &ccedil;oklu katmanları verildiğinde, şehrin hangi b&ouml;l&uuml;m&uuml; toplu taşıma ara&ccedil;larıyla en az erişilebilir durumdadır?
+                    </li>
+                    <li>G&ouml;ller ve nehirler gibi su yolları katmanları verildiğinde, ABD&rsquo;de her konuma en yakın su kaynağının adı nedir?
+                    </li>
+                    <li>Bir hane geliri katmanı verildiğinde, ABD&rsquo;de nerede 50 mil civarında, gelirdeki değişim en b&uuml;y&uuml;kt&uuml;r?
                     </li>
                 </ul>
                 
@@ -122,16 +158,16 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Detayları Birleştirme</h2></td>
+                    <td><h2>Detayları Birleştir</h2></td>
                     <td>
-                    <img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" class="titleImage" alt="Ekleme Detayları">
+                    <img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" class="titleImage" alt="Detayları Birleştir">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
             <p>Detay katmanlarını veya zamansal verileri kullanarak, girdi katmanları veya tabloları arasındaki belirli ilişkilere g&ouml;re detayları ve kayıtları birleştirebilirsiniz.  Birleştirmeler mekansal, zamansal ve &ouml;znitelik ilişkileri tarafından belirlenir; &ouml;zet istatistikler isteğe bağlı olarak hesaplanabilir.  
             </p>
-            <p>&Ouml;rneğin
+            <p>Aşağıda &ouml;rnekleri verilmiştir:
                 <ul>
                     <li>Zaman bilgisiyle birlikte su&ccedil; olaylarının nokta konumları verildiğinde, su&ccedil;ların birbirleriyle arasında 1 kilometrelik bir mekansal ilişki ve 1 saatlik bir zaman diliminde ger&ccedil;ekleşmiş olması koşulu ekleyerek su&ccedil; verilerini kendisiyle birleştirebilir ve alan ve zaman olarak birbirine yakın su&ccedil; olaylarında benzerlik olup olmadığını belirleyebilirsiniz.
                     </li>
@@ -148,14 +184,14 @@
                 <tbody><tr>
                     <td><h2>İzleri Yeniden Oluşturma</h2></td>
                     <td>
-                    <img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" class="titleImage" alt="İzleri Yeniden Oluştur">
+                    <img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" class="titleImage" alt="İzleri Yeniden Oluşturma">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
             <p>Zaman i&ccedil;inde bir  <code>an</code> g&ouml;steren zaman etkin nokta veya alan detayları katmanı kullanan bu ara&ccedil;, bir ize sahip olan ve girdileri zamana g&ouml;re sıralı bi&ccedil;imde d&uuml;zenleyen girdi detaylarını belirler. Her iz i&ccedil;indeki girdi detayları i&ccedil;in istatistikler isteğe bağlı olarak hesaplanır.
             </p>
-            <p> &Ouml;rneğin
+            <p> Aşağıda &ouml;rnekleri verilmiştir:
                 <ul>
                     <li>Nokta konumları ve fırtına &ouml;l&ccedil;&uuml;mleri saati verildiğinde, ortalama r&uuml;zgar hızını ve fırtınanın maksimum r&uuml;zgar basıncını hesaplayabilirsiniz.
                     </li>
@@ -179,9 +215,9 @@
 <hr/>
             <p> Detay verilerini veya zamansal verileri kullanan bu ara&ccedil;, belirtilen alanlar i&ccedil;in istatistikleri &ouml;zetler.
             </p>
-            <p> &Ouml;rneğin
+            <p>Aşağıda &ouml;rnekleri verilmiştir:
                 <ul>
-                    <li>  <i>COMPANY_NAME</i> alanı olan s&uuml;permarketlerin konumları verildiğinde, her şirket i&ccedil;in istatistikleri belirlemek &uuml;zere mağazaları şirket adına g&ouml;re &ouml;zetleyebilirsiniz.
+                    <li> <i>COMPANY_NAME</i> alanı olan s&uuml;permarketlerin konumları verildiğinde, her şirket i&ccedil;in istatistikleri belirlemek &uuml;zere mağazaları şirket adına g&ouml;re &ouml;zetleyebilirsiniz.
                     </li>
                     <li> <i>COMPANY_NAME</i> ve <i>COUNTY</i> alanlarına sahip şark&uuml;teri tablosu verildiğinde, her b&ouml;lgedeki her şirket i&ccedil;in istatistikleri belirlemek &uuml;zere şirket adına ve bulunduğu yere g&ouml;re mağaza bilgilerini &ouml;zetleyebilirsiniz.
                     </li>
@@ -196,14 +232,14 @@
                 <tbody><tr>
                     <td><h2>İçinde Özetle</h2></td>
                     <td>
-                    <img src="../images/GUID-90E0CB1F-EB97-4752-B2EE-452B7B45475E-web.png" class="titleImage" alt="İ&ccedil;inde &Ouml;zetle">
+                    <img src="../images/GUID-9B12DB3F-AA7B-41EB-87C6-D2DEC3D52DA9-web.png" class="titleImage" alt="İ&ccedil;inde &Ouml;zetle">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
             <p>İki katman arasında bindirme yapan alanları (ve alanların kısımlarını) bulur ve bindirme hakkındaki istatistikleri hesaplar. 
             </p>
-            <p> &Ouml;rneğin
+            <p>Aşağıda &ouml;rnekleri verilmiştir:
                 <ul>
                     <li>Bir boşaltma havzası alanları katmanı ve arazi kullanım t&uuml;r&uuml;ne g&ouml;re bir arazi kullanım alanları katmanı verildiğinde, her boşaltma havzası i&ccedil;in arazi kullanım t&uuml;r&uuml;n&uuml;n toplam y&uuml;z &ouml;l&ccedil;&uuml;m&uuml;n&uuml; hesaplayın. 
                     </li>
@@ -240,13 +276,11 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p> <img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Olayları Algıla">
+            <p>Bu ara&ccedil;, zamana bağlı olarak nokta,&ccedil;izgi,alan veya tabloların zamanla etkinleştirilmiş bir katmanı ile &ccedil;alışır. Bu ara&ccedil;, par&ccedil;alar adı verilen sıralı olarak d&uuml;zenlenmiş detayları kullanarak, hangi detayların ilgi odağı olaylar olduğunu belirler. Olaylar belirttiğiniz koşullara g&ouml;re belirlenir. 
             </p>
-            <p>Bu ara&ccedil;, zamanda bir anı g&ouml;steren zaman etkin bir noktalar, &ccedil;izgiler, alanlar/b&ouml;lgeler veya tablolar katmanı ile &ccedil;alışır. Bu ara&ccedil;, par&ccedil;alar adı verilen sıralı olarak d&uuml;zenlenmiş detayları kullanarak, hangi detayların ilgi odağı olaylar olduğunu belirler. Olaylar belirttiğiniz koşullara g&ouml;re belirlenir. 
-            </p>
-            <p>&Ouml;rneğin
+            <p>Aşağıda &ouml;rnekleri verilmiştir:
                 <ul>
-                    <li>Kategori 4 kasırgalar olan kasırga &ouml;l&ccedil;&uuml;mlerini bir r&uuml;zgar hızı &ouml;zniteliğine dayalı olarak algılar.
+                    <li>Kategori 4 kasırgaları olan kasırga &ouml;l&ccedil;&uuml;mlerini bir r&uuml;zgar hızı &ouml;zniteliğine dayalı olarak algılar.
                     </li>
                     <li>Gemi hareketinin GPS &ouml;l&ccedil;&uuml;mlerini gemi hızını temsil eden bir alanla kullanarak, &ouml;nceki beş &ouml;l&ccedil;&uuml;m&uuml;n ortalamasının 1,5 katından daha b&uuml;y&uuml;k olan &ouml;l&ccedil;&uuml;mleri bulur.
                     </li>
@@ -266,13 +300,11 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p> <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" alt="Tablodan Alınan Coğrafi Kod Konumları">
-            </p>
             <p>Adresleri koordinatlara d&ouml;n&uuml;şt&uuml;r&uuml;r. Bu aracı, b&uuml;y&uuml;k veri dosyası paylaşım tablolarında kullanın.
             </p>
             <br/>
         </div>
-        <div id="FindSimilarLocationsTool" class="regularsize">
+        <div id="FindSimilarLocationsTool" class="largesize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -285,7 +317,7 @@
 <hr/>
             <p>Belirttiğiniz kriterlere g&ouml;re aday arama katmanınızdaki konumların bir veya birka&ccedil; referans konuma benzerliğini &ouml;l&ccedil;erek benzer konumları bulabilirsiniz. 
             </p>
-            <p>&Ouml;rneğin 
+            <p>Aşağıda &ouml;rnekleri verilmiştir: 
                 <ul>
                     <li>&Ccedil;alışan sayısını ve yıllık satışları inceleyerek en &ccedil;ok benzer olan on mağazayı bulabilirsiniz.
                     </li>
@@ -296,14 +328,16 @@
             </p>
             <br/>
         </div>
-    <div id="AnalyzePatternsCategory" class="smallsize">
+    <div id="AnalyzePatternsCategory" class="regularsize">
         <h2>Modelleri Analiz Et</h2>
         <hr/>
-        <p>Bu ara&ccedil;lar, mekansal modelleri tanımlamanıza, sayısallaştırmanıza ve g&ouml;rselleştirmenize yardımcı olur.  
+        <p> Bu ara&ccedil;lar, mekansal modelleri tanımlamanıza, sayısallaştırmanıza ve g&ouml;rselleştirmenize yardımcı olur.
             <ul>
                 <li> <b>Yoğunluğu Hesapla</b>, bazı olayların bilinen miktarlarını alır ve bu miktarları haritada dağıtır.
                 </li>
                 <li> <b>Etkin Nokta Bul</b> aracı, verilerinizin mekansal modelindeki istatistiksel a&ccedil;ıdan anlamlı olan k&uuml;melenmeyi tanımlar.
+                </li>
+                <li> <b>Nokta K&uuml;melerini Bul </b>aracı, ortam g&uuml;r&uuml;lt&uuml;s&uuml;ndeki nokta &ouml;zellikli k&uuml;melerini mekansal dağılımlarına g&ouml;re bulur.
                 </li>
             </ul>
             
@@ -322,13 +356,37 @@
 <hr/>
             <p>Yoğunluğu Hesaplama aracı, bazı olayların bilinen miktarlarını (nokta &ouml;znitelikleri olarak g&ouml;sterilen) haritada dağıtarak nokta detaylı bir yoğunluk haritası oluşturur. Sonu&ccedil;ta ortaya &ccedil;ıkan yoğunluğu g&ouml;steren alanlar katmanıdır.
             </p>
-            <p>&Ouml;rneğin
+            <p>Aşağıda &ouml;rnekleri verilmiştir:
                 <ul>
                     <li>B&ouml;lgedeki hastane yoğunluğunu hesaplama. Sonu&ccedil; katmanı, y&uuml;ksek ve d&uuml;ş&uuml;k hastane erişimini g&ouml;sterir ve bu bilgiler yeni hastanelerin yapılması gereken yerleri belirlemek i&ccedil;in kullanılabilir.
                     </li>
                     <li>Orman yangınlarının ge&ccedil;mişte oluştuğu yerlere g&ouml;re, orman yangını riskinin y&uuml;ksek olduğu alanların tanımlanması.
                     </li>
                     <li>Yeni yolların nereye yapılması gerektiğini planlamak amacıyla ana yollardan uzakta yaşayan toplulukların belirlenmesi.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="FindPointClustersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Nokta Kümelerini Bul</h2></td>
+                    <td>
+                    <img src="../images/GUID-40DA7286-67EA-4333-91C5-4CD527C21B4A-web.png" class="titleImage" alt="Nokta K&uuml;melerini Bul">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Nokta K&uuml;melerini Bul aracı, ortam g&uuml;r&uuml;lt&uuml;s&uuml;ndeki nokta &ouml;zellikli k&uuml;melerini mekansal dağılımlarına g&ouml;re bulur.
+            </p>
+            <p>Aşağıda &ouml;rnekleri verilmiştir:
+                <ul>
+                    <li>İmha &ccedil;abalarını desteklemek i&ccedil;in zararlılarla m&uuml;cadele eden hane k&uuml;melerini bulabilirsiniz.  
+                    </li>
+                    <li>Doğal afetler veya ter&ouml;r saldırılarının ardından coğrafi konum tweet&rsquo;lerini kullanarak k&uuml;melerin boyut ve konumlarına g&ouml;re kurtarma ve tahliye ihtiya&ccedil;ları konusunda bilgilendirme yapabilir ve harekete ge&ccedil;ebilirsiniz.
                     </li>
                 </ul>
                 
@@ -381,7 +439,7 @@
 <hr/>
             <p>Tampon; noktaya, &ccedil;izgiye ya da alan detayına g&ouml;re verilen bir mesafeyi oluşturan alandır.
             </p>
-            <p>&Ouml;rneğin
+            <p>Aşağıda &ouml;rnekleri verilmiştir:
                 <ul>
                     <li>Doğrusal nehir detaylarını kullanarak, nehrin genişliğini 50 ile &ccedil;arpabilir ve her nehir i&ccedil;in &ouml;nerilen nehir kıyısı sınırını belirleyebilirsiniz.
                     </li>
@@ -392,14 +450,18 @@
             </p>
             <br/>
         </div>
-    <div id="ManageDataCategory" class="smallsize">
+    <div id="ManageDataCategory" class="regularsize">
         <h2>Verileri Yönet</h2>
         <hr/>
-        <p>Bu ara&ccedil;lar hem g&uuml;nl&uuml;k coğrafi hem de &ccedil;izelgelenen verilerin y&ouml;netimi i&ccedil;in kullanılır.
+        <p>Bu ara&ccedil;lar coğrafi ve &ccedil;izelgelenen verilerin g&uuml;ndelik y&ouml;netimi i&ccedil;in kullanılır. 
             <ul>
+                <li> <b>Verileri Ekle</b> &ouml;zellikleri mevcut bir barındırılan detay katmanına ekler.
+                </li>
                 <li> <b>Alan Hesapla</b>, yeni bir alan oluşturur veya mevcut bir alanı değiştirir ve i&ccedil;eriklerinizde yeni bir katman oluşturur.
                 </li>
-                <li> <b>Veri Deposuna Kopyala</b>, verilerinizi ArcGIS Data Store uygulamanıza kopyalar ve i&ccedil;eriklerinizde bir katman oluşturur.
+                <li> <b>Veri Deposuna Kopyala</b> verileri ArcGIS Data Store &ouml;ğesine kopyalar ve i&ccedil;eriklerinizde bir katman oluşturur. 
+                </li>
+                <li> <b>Katmanları &Ccedil;akıştır</b> iki veya daha fazla katmanı birleştirerek tek bir katman haline getirir.
                 </li>
             </ul>
             
@@ -417,11 +479,11 @@
             </table>
 <hr/>
             <p>Bir girdi detayı katmanını veya tablosunu  ArcGIS Data Store i&ccedil;ine kopyalar ve  ArcGIS Enterprise i&ccedil;indeki i&ccedil;eriklerinizde bir katman oluşturur. </p>
-            <p>&Ouml;rneğin
+            <p>Aşağıda &ouml;rnekleri verilmiştir:
                 <ul>
-                    <li>G&ouml;rselleştirme i&ccedil;in bir big data dosya paylaşımındaki  <code>.csv</code> dosyalarını spatiotemporal data store i&ccedil;ine kopyalayabilirsiniz.
+                    <li>G&ouml;rselleştirme i&ccedil;in bir b&uuml;y&uuml;k veri dosya paylaşımındaki  <code>.csv</code> dosyalarını mekan zamansal veri deposu i&ccedil;ine kopyalayabilirsiniz.
                     </li>
-                    <li>Spatiotemporal data store i&ccedil;inde saklanan ge&ccedil;erli harita yayılımı detaylarını ilişkisel veri deposuna kopyalayın.
+                    <li>Mekan zamansal veri deposu i&ccedil;inde saklanan ge&ccedil;erli harita yayılımı detaylarını ilişkisel veri deposuna kopyalayın.
                     </li>
                 </ul>
                 
@@ -440,11 +502,62 @@
             </table>
 <hr/>
             <p>Yeni veya mevcut bir alandaki değerleri hesaplar ve  ArcGIS Enterprise i&ccedil;indeki i&ccedil;eriklerinizde bir katman oluşturur. </p>
-            <p>&Ouml;rneğin
+            <p>Aşağıda &ouml;rnekleri verilmiştir:
                 <ul>
-                    <li> <i>total (toplam)</i> adlı mevcut bir alanı, <i>total_2016</i>, <i>total_2017</i> ve <i>total_2018</i> alanlarından alınan gelirin toplamı olacak şekilde değiştirin.
+                    <li> <i>total</i> adlı mevcut bir alanı, <i>total_2016</i>, <i>total_2017</i> ve <i>total_2018</i> alanlarından alınan gelirin toplamı olacak şekilde değiştirin.
                     </li>
-                    <li> <i>windspeed (r&uuml;zgar hızı)</i> ve <i>pollutant (kirletici)</i> gibi alan değerlerine dayalı tehlike d&uuml;zeylerini kategorize etmek i&ccedil;in yeni bir alan oluşturun.
+                    <li> <i>windspeed</i> (r&uuml;zgar hızı) ve <i>pollutant</i> (kirletici) gibi alan değerlerine dayalı tehlike d&uuml;zeylerini kategorize etmek i&ccedil;in yeni bir alan oluşturun.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="OverlayLayersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Katmanları Çakıştır</h2></td>
+                    <td>
+                    <img src="../images/GUID-00A64703-4E97-4398-AE5C-F1885375BC30-web.png" class="titleImage" alt="Katmanları &Ccedil;akıştır">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>&Ccedil;akıştırma aracı iki ya da daha fazla katmanı tek bir katmana &ccedil;akıştırır. &Ccedil;akıştırma, coğrafyanın en temel sorularından birine cevap vermek i&ccedil;in kullanılır: Neyin &uuml;st&uuml;nde ne var? Aşağıda &ouml;rnekleri verilmiştir:
+                <ul>
+                    <li>Hangi parseller 100 yıllık taşkın ovaların i&ccedil;erisinde bulunuyor? (&quot;İ&ccedil;erisinde&quot;, &quot;&uuml;st&uuml;nde&quot; demenin bir diğer yoludur.)
+                          
+                    </li>
+                    <li>Hangi arazi kullanımı hangi toprak t&uuml;r&uuml; &uuml;zerinde?
+                         
+                    </li>
+                    <li>Hangi kuyular terk edilmiş askeri &uuml;slerin i&ccedil;inde?
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="AppendDataTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Veri Ekle</h2></td>
+                    <td>
+                    <img src="../images/GUID-8C95EAE0-904A-42C4-8C3D-303E74FD6DD7-web.png" class="titleImage" alt="Veri Ekle iş akışı diyagramı">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p> ArcGIS Enterprise i&ccedil;indeki i&ccedil;eriğinizde barındırılan mevcut bir katmana detaylar ekler. </p>
+            <p>Aşağıda &ouml;rnekleri verilmiştir:
+                <ul>
+                    <li>Raporlarınız kullanıma sunulduğunda her ay 2018_Sales detay katmanını g&uuml;ncelleyebilirsiniz. 
+                    </li>
+                    <li>2016 ve 2017 yıllarındaki kasırga izleme veri k&uuml;melerini ana kasırga veri k&uuml;mesine ekleyebilirsiniz.
+                    </li>
+                    <li>&Ouml;zel alan eşlemesini kullanarak farklı şemalara sahip &ccedil;eşitli kaynaklardan veri k&uuml;meleri toplayabilir ve bunları ekleyebilirsiniz.
                     </li>
                 </ul>
                 

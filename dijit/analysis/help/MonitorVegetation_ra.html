@@ -60,7 +60,7 @@
         <div><h2>Choose method to monitor vegetation</h2></div>
         <hr/>
         <div>
-            <p>Select the method used to create the vegetation index layer. The different vegetation indexes can help highlight certain features, or help reduce various noise.
+            <p>Choose the method to create the vegetation index layer. The different vegetation indexes can help highlight certain features or reduce various noise.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
@@ -76,7 +76,7 @@ MSAVI2 is a vegetation index that tries to minimize bare soil influences of the 
 
                 </li>
                 <li>Normalized Difference Vegetation Index  &mdash; 
-NDVI is a standardized index allowing you to generate an image displaying greenness, relative biomass. This index takes advantage of the contrast of the characteristics of two bands from a multispectral raster dataset; the chlorophyll pigment absorptions in the red band and the high reflectivity of plant materials in the near-infrared (NIR) band.
+NDVI is a standardized index allowing you to generate an image displaying greenness, or relative biomass. This index takes advantage of the contrast of the characteristics of two bands from a multispectral raster dataset: the chlorophyll pigment absorptions in the red band and the high reflectivity of plant materials in the near-infrared (NIR) band.
 
                 </li>
                 <li>Perpendicular Vegetation Index &mdash; 
@@ -88,7 +88,7 @@ SAVI is a vegetation index that attempts to minimize soil brightness influences 
 
                 </li>
                 <li>Sultan's Formula &mdash; 
-The Sultan's Formula process takes a six-band 8-bit image and applied a specific algorithm to it to produce a three-band 8-bit image. The resulting image highlights rock formations called ophiolites on coastlines. This formula was designed based on the TM and ETM bands of a Landsat 5 or 7 scene.
+The Sultan's Formula process takes a six-band 8-bit image and applies a specific algorithm to it to produce a three-band 8-bit image. The resulting image highlights rock formations called ophiolites on coastlines. This formula was designed based on the TM and ETM bands of a Landsat 5 or 7 scene.
 
                 </li>
                 <li>Transformed Soil-Adjusted Vegetation Index &mdash; 
@@ -102,9 +102,9 @@ Transformed-SAVI is a vegetation index that attempts to minimize soil brightness
         <div><h2>Specify indexes of NIR band and Red band</h2></div>
         <hr/>
         <div>
-            <p>Type the band indexes for the near-infrared (NIR) and Red bands.
+            <p>Specify the band indexes for the NIR and red bands.
             </p>
-            <p>Each satellite sensor and aerial camera captures information that is broken up into band indexes. Each band index contains the information for a specific part of the electromagnetic spectrum. This vegetation monitoring method requires you to specify the band index that captured the NIR and Red wavelengths.
+            <p>Each satellite sensor and aerial camera captures information that is broken up into band indexes. Each band index contains the information for a specific part of the electromagnetic spectrum. This vegetation monitoring method requires you to specify the band index that captured the NIR and red wavelengths.
             </p>
         </div>
     </div>
@@ -114,7 +114,7 @@ Transformed-SAVI is a vegetation index that attempts to minimize soil brightness
         <div>
             <p>The slope of the soil line. The slope is the approximate linear relationship between the NIR and red bands on a scatterplot.
             </p>
-            <p>This parameter is only valid for Transformed Soil-Adjusted Vegetation Index.
+            <p>This parameter is only valid for the Transformed Soil-Adjusted Vegetation Index method.
             </p>
         </div>
     </div>
@@ -122,11 +122,11 @@ Transformed-SAVI is a vegetation index that attempts to minimize soil brightness
         <div><h2>Intercept</h2></div>
         <hr/>
         <div>
-            <p>This is the value of near infrared (NIR) when the reflection value of the red (Red) band is 0 for the particular soil lines.
+            <p>The value of the NIR when the reflection value of the red (Red) band is 0 for the particular soil lines.
             </p>
             <p> <code>(a = NIR - sRed)</code> , when Red is 0.
             </p> 
-            <p>This parameter is only valid for Transformed Soil-Adjusted Vegetation Index.
+            <p>This parameter is only valid for the Transformed Soil-Adjusted Vegetation Index method.
             </p>
         </div>
     </div>
@@ -134,20 +134,20 @@ Transformed-SAVI is a vegetation index that attempts to minimize soil brightness
         <div><h2>Amount of green vegetation cover</h2></div>
         <hr/>
         <div>
-            <p>The SAVI method requires the amount of vegetation cover to be specified.
+            <p>Specifies the amount of green vegetation cover, which is required by the SAVI method.
             </p>
-            <p>Type in a value between 0.0 and 1.0, where 
+            <p>Valid values are as follows: 
 
                 <ul>
-                    <li>1 = areas with no green vegetation cover
+                    <li>1 = Areas with no green vegetation cover
                         
  
                     </li>
-                    <li>0.5 = areas with moderate green vegetation cover
+                    <li>0.5 = Areas with moderate green vegetation cover
                         
  
                     </li>
-                    <li>0 = areas with high green vegetation cover
+                    <li>0 = Areas with high green vegetation cover
                         
 
                     </li>
@@ -160,9 +160,9 @@ Transformed-SAVI is a vegetation index that attempts to minimize soil brightness
         <div><h2>Adjustment factor</h2></div>
         <hr/>
         <div>
-            <p>The Transformed Soil-Adjusted Vegetation Index method requires the adjustment factor set in order to help minimize soil effect. The default value is 0.08.
+            <p>Specifies the adjustment factor to help minimize soil effect, which is required by the Transformed Soil-Adjusted Vegetation Index method. The default value is 0.08.
             </p>
-            <p>A lower value means that you are ignoring the soil effect. A high value means that the soil is will affect your result.
+            <p>A low value means that you are ignoring the soil effect. A high value means that the soil will affect your result.
             </p>
         </div>
     </div>

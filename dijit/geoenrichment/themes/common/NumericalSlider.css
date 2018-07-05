@@ -1,0 +1,104 @@
+.esriGENumericalSlider {
+}
+
+.esriGENumericalSliderContainer {
+    width: 125px;
+    height: 30px;
+    display: inline-block;
+    position: relative;
+    bottom: 2px;
+    float: left;
+}
+
+.esriGENumericalSliderMinValueTextBox,
+.esriGENumericalSliderMaxValueTextBox {
+    width: 65px;
+    margin-top: 3px;
+    margin-right: 4px;
+    margin-left: 4px;
+    float: left;
+}
+
+    .esriGENumericalSliderMinValueTextBox .dijitTextBox,
+    .esriGENumericalSliderMaxValueTextBox .dijitTextBox {
+        width: 65px;
+    }
+
+.dj_rtl .esriGENumericalSliderContainer,
+.dj_rtl .esriGENumericalSliderMinValueTextBox,
+.dj_rtl .esriGENumericalSliderMaxValueTextBox {
+    float: right;
+}
+
+.esriGENumericalSliderContainer .dojoxRangeSlider {
+    position: relative;
+}
+
+.esriGENumericalSliderContainer .dijitSliderButtonContainerH {
+    padding: 0 2px 0 2px;
+}
+
+.esriGENumericalSliderContainer .dijitSliderH, .esriGENumericalSliderContainer .dijitSliderBarH {
+    height: 20px;
+}
+
+.esriGENumericalSliderContainer .dijitSliderBumperH {
+    height: 20px !important;
+    width: 0px !important;
+}
+
+.esriGENumericalSliderContainer .dijitSliderImageHandleH {
+    
+    background-image: url("./images/sliderThumb.svg");
+    height: 20px;
+    width: 20px;
+    top: 1px;
+    z-index: 1000;
+    background-position: 3px 4px !important;
+}
+
+.esriGENumericalSliderContainer .dijitSlider .dijitSliderProgressBarH {
+    opacity: 0;
+}
+
+.esriGENumericalSliderContainer .dijitSliderRemainingBarH {
+    background-color: transparent !important;
+    z-index: 10;
+}
+
+.esriGENumericalSliderContainer .dojoxRangeSliderBarContainer {
+    border-bottom: 1px #767766 solid;
+}
+
+.esriGENumericalSliderContainer .dijitSliderFocused .dijitSliderProgressBarH,
+.esriGENumericalSliderContainer .dijitSliderFocused .dijitSliderLeftBumper,
+.esriGENumericalSliderContainer .dijitSliderFocused .dijitSliderRemainingBarH,
+.esriGENumericalSliderContainer .dijitSliderFocused .dijitSliderRightBumper,
+.esriGENumericalSliderContainer .dijitSliderFocused .dijitSliderProgressBar,
+.esriGENumericalSliderContainer .dijitSliderFocused .dijitSliderBottomBumper,
+.esriGENumericalSliderContainer .dijitSliderFocused .dijitSliderRemainingBarV,
+.esriGENumericalSliderContainer .dijitSliderFocused .dijitSliderTopBumper .esriGENumericalSliderContainer .dijitSliderProgressBarH,
+.esriGENumericalSliderContainer .dijitSliderLeftBumper,
+.esriGENumericalSliderContainer .dijitSliderRemainingBarH,
+.esriGENumericalSliderContainer .dijitSliderRightBumper,
+.esriGENumericalSliderContainer .dijitSliderProgressBar,
+.esriGENumericalSliderContainer .dijitSliderBottomBumper,
+.esriGENumericalSliderContainer .dijitSliderRemainingBarV,
+.esriGENumericalSliderContainer .dijitSliderTopBumper {
+    border: 0px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.esriGENumericalSliderContainer .dojoxRangeSlider .dijitSliderMoveableH {
+    margin-left: -10px;
+}
+
+.esriGENumericalSliderContainer .dojoxRangeSlider .dijitSliderImageHandleH {
+    left: 0;
+}
+
+.dj_rtl .esriGENumericalSliderContainer .dojoxRangeSlider .dijitSliderImageHandleH {
+    right: 0px;
+}

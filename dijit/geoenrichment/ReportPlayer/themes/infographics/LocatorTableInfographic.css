@@ -1,0 +1,122 @@
+
+.esriGELocatorTableInfographic {
+    overflow-x: hidden;
+    font-size: 13px;
+}
+
+    
+
+    .esriGELocatorTableInfographic .locatorTableInfographic_noDataPlaceHolder {
+        text-align: center;
+    }
+
+    .esriGELocatorTableInfographic .locatorTableInfographic_noDataPlaceHolderImage {
+        background-image: url("../images/emptySectionIcon.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        display: inline-block;
+        background-size: 250px 139px;
+        width: 250px;
+        height: 139px;
+        opacity: 0.5;
+    }
+
+    .esriGELocatorTableInfographic .locatorTableInfographic_noDataPlaceHolderLabel {
+        text-align: center;
+        font-style: italic;
+        margin-top: 5px;
+        color: #AAAAAA;
+    }
+
+    
+
+    .esriGELocatorTableInfographic .locatorTableInfographic_contentDiv {
+        position: relative;
+    }
+
+    
+
+    .esriGELocatorTableInfographic .Pagination .Pagination_TriangleBack {
+        margin-left: 0px;
+        z-index: 1; 
+        display: none;
+    }
+
+    .esriGELocatorTableInfographic .Pagination .Pagination_TriangleForward {
+        margin-right: 0px;
+        display: none;
+    }
+
+    .esriGELocatorTableInfographic .Pagination .Pagination_Items {
+        left: 0px;
+        right: 0px;
+    }
+
+    
+
+    .esriGELocatorTableInfographic .Pagination .Pagination_PageAndArrows {
+        bottom: 0px;
+    }
+
+    .esriGELocatorTableInfographic:hover .Pagination .Pagination_TriangleBack,
+    .esriGELocatorTableInfographic:hover .Pagination .Pagination_TriangleForward {
+        display: block;
+        background-color: rgba(100, 100, 100, 0.75);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        background-position: center;
+        background-size: 10px;
+    }
+
+    .esriGELocatorTableInfographic:hover .Pagination .Pagination_TriangleBack {
+        background-image: url('../../../themes/common/images/paginationArrows/LeftArrowWhite.svg');
+    }
+
+    .esriGELocatorTableInfographic:hover .Pagination .Pagination_TriangleForward {
+        background-image: url('../../../themes/common/images/paginationArrows/RightArrowWhite.svg');
+    }
+
+        .esriGELocatorTableInfographic:hover .Pagination .Pagination_TriangleBack.Pagination_TriangleDisabled,
+        .esriGELocatorTableInfographic:hover .Pagination .Pagination_TriangleForward.Pagination_TriangleDisabled {
+            display: none;
+        }
+
+    
+
+    .esriGELocatorTableInfographic .Pagination .Pagination_Bullets {
+        display: none;
+    }
+
+    
+
+    .esriGELocatorTableInfographic .locatorTableInfographic_pageNavigatorDiv {
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        height: 30px;
+        text-align: center;
+        line-height: 32px;
+    }
+
+    .esriGELocatorTableInfographic.hasFootnote .locatorTableInfographic_pageNavigatorDiv {
+        left: auto;
+        right: 30px;
+        text-align: right;
+    }
+
+    .esriGELocatorTableInfographic .locatorTableInfographic_pageNavigatorDiv .esriGEPageNavigator {
+        color: #4d4d4d;
+    }
+
+    
+
+    .esriGELocatorTableInfographic .locatorTableInfographic_footNoteDiv {
+        position: absolute;
+        left: 30px;
+        bottom: 0px;
+        height: 30px;
+        line-height: 32px;
+        font-style: italic;
+    }

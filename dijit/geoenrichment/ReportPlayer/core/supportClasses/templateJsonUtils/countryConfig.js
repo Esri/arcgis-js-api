@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
 define([],function(){var n,e={};e.getCountryID=function(){return n&&n.id},e.getCurrencySymbol=function(){return n&&n.currencySymbol||"$"},e.setCountry=function(e){n=e};var r;e.getHierarchyID=function(){return r},e.setHierarchyID=function(n){r=n||"census"};var t;return e.getGeographiesModel=function(){return t},e.setGeographiesModel=function(n){t=n},e});

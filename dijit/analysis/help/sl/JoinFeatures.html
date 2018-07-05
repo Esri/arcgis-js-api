@@ -78,9 +78,9 @@
         <div>
             <p>Uporabite lahko prostorski spoj, atributni spoj ali kombinacijo obeh. 
                 <ul>
-                    <li> <b>Prostorski</b> &ndash; Uporablja določeno prostorsko relacijo za spajanje geoobjektov. To zahteva, da imata oba sloja geometrijo.
+                    <li> <b>Prostorski spoj</b> &ndash; Uporablja določeno prostorsko relacijo za spajanje geoobjektov. To zahteva, da imata oba sloja geometrijo.
                     </li>
-                    <li> <b>Atribut</b> &ndash; Spoji geoobjekte na podlagi enakih polj.
+                    <li> <b>Atributni spoj</b> &ndash; Spoji geoobjekte na podlagi enakih polj.
                     </li>
                 </ul>
                 
@@ -116,12 +116,12 @@
         <div>
             <p>Atributna relacija, ki bo določila, če so geoobjekti med seboj spojeni. Geoobjekti se ujemajo, ko so vrednosti polj v spojitvenem sloju enake vrednostim polj ciljnega sloja. 
             </p>
-            <p>Na primer, denimo, da imate prostorski sloj stanovanj z naslovi (vključno s poljem  <i>POST_ST</i>) in tabelarične podatke o zdravju prebivalcev po po&scaron;tnih &scaron;tevilkah (vključno s poljem, imenovanim <i>ZDRAVJE_POST_ST</i>). Podatke o zdravju lahko spojite s stanovanjskimi podatki z ujemanjem polja <i>POST_ST</i> s poljem <i>ZDRAVJE_POST_ST</i>, kar bo dalo rezultat stanovanjskega sloja z ustreznimi zdravstvenimi podatki.
+            <p>Na primer, denimo, da imate prostorski sloj stanovanj z naslovi (vključno s poljem  <i>ZIP</i>) in tabelarične podatke o zdravju prebivalcev po po&scaron;tnih &scaron;tevilkah (vključno s poljem, imenovanim <i>HEALTHZIP</i>). Podatke o zdravju lahko spojite s stanovanjskimi podatki z ujemanjem polja <i>ZIP</i> do <i>HEALTHZIP</i>, kar bo dalo rezultat stanovanjskega sloja z ustreznimi zdravstvenimi podatki.
             </p>
         </div>
     </div>
     <div id="joinOperation">
-        <div><h2>Izberi način spajanja</h2></div>
+        <div><h2>Izberi operacijo spajanja</h2></div>
         <hr/>
         <div>
             <p>Določa, kako bodo obravnavani spoji med ciljnim in spojitvenim slojem, če bo več geoobjektov v spojitvenem sloju imelo enako relacijo s ciljnim slojem. V nadaljevanju sta dva načina spajanja, med katerimi lahko izbirate:
@@ -167,6 +167,14 @@
             <p>To je ime sloja, ki bo ustvarjen v  <b>Moji vsebini</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, bo od vas zahtevano, da vnesete drugo ime.
             </p>
             <p>S pomočjo spustnega menija  <b>Shrani rezultat v</b> lahko navedete ime mape v <b>Moji vsebini</b>, kjer bo shranjen rezultat.
+            </p>
+        </div>
+    </div>
+    <div id="isView">
+        <div><h2>Shranite kot pogled gostujočega geoobjektnega sloja</h2></div>
+        <hr/>
+        <div>
+            <p>Shranjevanje rezultatov kot pogleda gostujočega goobjektnega sloja omogoča, da ostanejo podatki posodobljeni kljub spremembam izvornih podatkov. Pogled gostujočega geoobjektnega sloja, ki vsebuje spoje, bo samo za branje in ne porablja kreditov za analizo in shranjevanje. 
             </p>
         </div>
     </div>

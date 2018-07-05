@@ -60,7 +60,7 @@
         <div><h2>Scegliere metodo per monitorare vegetazione</h2></div>
         <hr/>
         <div>
-            <p>Selezionare il metodo utilizzato per creare il layer di indice della vegetazione. I differenti indici di vegetazione consentono di mettere in evidenza alcune feature o di ridurre diversi rumori.
+            <p>Selezionare il metodo per creare il layer di indice della vegetazione. I differenti indici di vegetazione consentono di mettere in evidenza alcune feature o di ridurre diversi rumori.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
@@ -76,7 +76,7 @@ MSAVI2 &egrave; un indice di vegetazione che tenta di ridurre le influenze del t
 
                 </li>
                 <li>Normalized Difference Vegetation Index  &mdash; 
-NDVI &egrave; un indice standardizzato che consente di generare un'immagine raffigurante aree verdi (biomassa relativa). Questo indice sfrutta le caratteristiche contrastanti di due bande di un dataset raster multispettrale: l'assorbimento dei pigmenti di clorofilla nella banda rossa e l'elevata riflettivit&agrave; dei materiali vegetali nella banda dell'infrarosso vicino (NIR).
+NDVI &egrave; un indice standardizzato che consente di generare un'immagine raffigurante aree verdi o biomassa relativa. Questo indice sfrutta le caratteristiche contrastanti di due bande di un raster dataset multispettrale: l'assorbimento dei pigmenti di clorofilla nella banda rossa e l'elevata riflettanza dei materiali vegetali nella banda dell'infrarosso vicino (NIR).
 
                 </li>
                 <li>Perpendicular Vegetation Index &mdash; 
@@ -102,7 +102,7 @@ L'indice SAVI trasformato &egrave; un indice di vegetazione che tenta di ridurre
         <div><h2>Specificare gli indici per le bande del quasi infrarosso e del rosso</h2></div>
         <hr/>
         <div>
-            <p>Digitare gli indici per le bande del quasi infrarosso e del rosso.
+            <p>Specificare gli indici per le bande del quasi infrarosso e del rosso.
             </p>
             <p>Ciascun sensore satellitare e la fotocamera aerea catturano informazioni che vengono suddivise in indici di banda. Ciascun indice di banda contiene le informazioni per una parte specifica dello spettro elettromagnetico. Questo metodo di monitoraggio della vegetazione richiede di specificare l'indice di banda che ha acquisito le lunghezze d'onda del quasi infrarosso e del rosso.
             </p>
@@ -114,7 +114,7 @@ L'indice SAVI trasformato &egrave; un indice di vegetazione che tenta di ridurre
         <div>
             <p>La pendenza della linea del terreno. La pendenza &egrave; la relazione lineare approssimativa tra le bande del quasi infrarosso e del rosso in un grafico a dispersione.
             </p>
-            <p>Questo parametro &egrave; valido solo per l'indice di vegetazione in funzione del suolo e trasformato.
+            <p>Questo parametro &egrave; valido solo per il metodo dell'indice di vegetazione in funzione del suolo e trasformato.
             </p>
         </div>
     </div>
@@ -122,11 +122,11 @@ L'indice SAVI trasformato &egrave; un indice di vegetazione che tenta di ridurre
         <div><h2>Intercept</h2></div>
         <hr/>
         <div>
-            <p>Questo &egrave; il valore della banda del quasi rosso (NIR) quando il valore di riflessione della banda del rosso (Red) &egrave; 0 per determinate linee del terreno.
+            <p>Il valore della banda del quasi rosso quando il valore di riflessione della banda del rosso (Red) &egrave; 0 per determinate linee del terreno.
             </p>
             <p> <code>(a = NIR - sRed)</code> , quando Red &egrave; 0.
             </p> 
-            <p>Questo parametro &egrave; valido solo per l'indice di vegetazione in funzione del suolo e trasformato.
+            <p>Questo parametro &egrave; valido solo per il metodo dell'indice di vegetazione in funzione del suolo e trasformato.
             </p>
         </div>
     </div>
@@ -134,20 +134,20 @@ L'indice SAVI trasformato &egrave; un indice di vegetazione che tenta di ridurre
         <div><h2>Quantità di copertura di vegetazione verde</h2></div>
         <hr/>
         <div>
-            <p>Il metodo SAVI richiede che sia specificata la quantit&agrave; di copertura della vegetazione.
+            <p>Specifica la quantit&agrave; di copertura della vegetazione, richiesta dal metodo SAVI.
             </p>
-            <p>Immettere un valore compreso tra 0.0 e 1.0, dove 
+            <p>I valori validi sono i seguenti: 
 
                 <ul>
-                    <li>1 = aree con nessuna copertura di vegetazione verde
+                    <li>1 = Aree con nessuna copertura di vegetazione verde
                         
  
                     </li>
-                    <li>0.5 = aree con copertura di vegetazione verde moderata
+                    <li>0.5 = Aree con copertura di vegetazione verde moderata
                         
  
                     </li>
-                    <li>0 = aree con elevata copertura di vegetazione verde
+                    <li>0 = Aree con elevata copertura di vegetazione verde
                         
 
                     </li>
@@ -160,19 +160,19 @@ L'indice SAVI trasformato &egrave; un indice di vegetazione che tenta di ridurre
         <div><h2>Fattore di regolazione</h2></div>
         <hr/>
         <div>
-            <p>L'Indice di vegetazione in funzione del suolo e trasformato richiede che sia impostato il fattore di regolazione per ridurre l'effetto del terreno. Il valore predefinito &egrave; 0.08.
+            <p>Specifica il fattore di regolazione per ridurre l'effetto del terreno, richiesto dal metodo dell'indice di vegetazione in funzione del suolo e trasformato. Il valore predefinito &egrave; 0.08.
             </p>
-            <p>Un valore inferiore significa ignorare l'effetto del terreno. Un valore elevato significa che il terreno influenzer&agrave; il risultato.
+            <p>Un valore ridotto significa ignorare l'effetto del terreno. Un valore elevato significa che il terreno influenzer&agrave; il risultato.
             </p>
         </div>
     </div>
     <div id="outputLayer">
-        <div><h2>Nome layer risultati</h2></div>
+        <div><h2>Nome del layer dei risultati</h2></div>
         <hr/>
         <div>
             <p>Il nome del layer che verr&agrave; creato in  <b>I miei contenuti</b> e aggiunto alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, verr&agrave; chiesto di fornire un altro nome.
             </p>
-            <p>Utilizzare la casella a discesa  <b>Salva risultato in</b> per specificare il nome di una cartella di <b>I miei contenuti</b> in cui salvare il risultato.
+            <p>Utilizzare la casella a discesa  <b>Salva risultato in</b> per specificare il nome di una cartella in <b>I miei contenuti</b> in cui salvare il risultato.
             </p>
         </div>
     </div>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Portál elemzési környezet beállításai</h2><p/>
+        <h2></h2>
+        <hr/>
+    <p> K&ouml;rnyezeti be&aacute;ll&iacute;t&aacute;sok Portal for ArcGIS &eacute;s  ArcGIS Online elemz&eacute;shez. 
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="overwriteResult">
+        <div><h2>Eredmény réteg felülírása</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Megl&eacute;vő r&eacute;tegek fel&uuml;l&iacute;r&aacute;s&aacute;nak lehetős&eacute;ge.    Ha m&aacute;r l&eacute;tezik azonos nevű r&eacute;teg a tartalmon bel&uuml;l &eacute;s ki van jel&ouml;lve, akkor a program fel&uuml;l&iacute;rja.
+            </p>
+            <p>
+                <ul>
+                    <li>Kijel&ouml;lt &ndash; ha m&aacute;r l&eacute;tezik azonos nevű r&eacute;teg a tartalmon bel&uuml;l, akkor a program fel&uuml;l&iacute;rja. A kimenet koordin&aacute;ta-rendszere azonos lesz a bemenet&eacute;vel.
+                    </li>
+                    <li>Nincs bejel&ouml;lve &ndash; ha az eredm&eacute;ny r&eacute;teg megadott neve m&aacute;r l&eacute;tezik, akkor hiba l&eacute;p fel, &eacute;s az eredm&eacute;ny r&eacute;teget &aacute;t kell nevezni az eszk&ouml;z futtat&aacute;sa előtt. Ez az alap&eacute;rtelmez&eacute;s.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="closeAnalysisWidget">
+        <div><h2>Elemző widget bezárása az elemzés futtatása után</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Opci&oacute;, amellyel az elemz&eacute;si p&aacute;rbesz&eacute;dpanel nyitva &eacute;s akt&iacute;van tarthat&oacute;, mik&ouml;zben az eszk&ouml;z feldolgoz&aacute;st hajt v&eacute;gre.     Ezzel a be&aacute;ll&iacute;t&aacute;ssal k&ouml;nnyen m&oacute;dos&iacute;thatja az elemz&eacute;si param&eacute;tereket, mik&ouml;zben a kor&aacute;bbi elemz&eacute;si feladat tov&aacute;bb fut.  Az elemz&eacute;s egy ism&eacute;tlődő folyamat, &eacute;s az eszk&ouml;z p&aacute;rbesz&eacute;dpanelj&eacute;t nyitva tartva k&ouml;nnyed&eacute;n elv&eacute;gezheti a param&eacute;term&oacute;dos&iacute;t&aacute;sokat, &eacute;s &uacute;jrafuttathatja az elemz&eacute;st.
+            </p>
+            <p>
+                <ul>
+                    <li>Kijel&ouml;lt &ndash; az elemzőeszk&ouml;z ablaka bez&aacute;rul, &eacute;s a f&oacute;kusz visszat&eacute;r a tartalomjegyz&eacute;khez. Ez az alap&eacute;rtelmez&eacute;s
+                    </li>
+                    <li>Nincs bejel&ouml;lve &ndash; az elemzőeszk&ouml;z ablaka nyitva &eacute;s aktiv&aacute;lva marad.   
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="storeAnalysisResults">
+        <div><h2>Elemzési eredmények központilag tárolt vektoros rétegként történő tárolása</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Ezzel az opci&oacute;val megadhatja, hogy az elemz&eacute;sből l&eacute;trehozott eredm&eacute;ny r&eacute;teg vektoros gyűjtem&eacute;ny vagy k&ouml;zpontilag t&aacute;rolt vektoros r&eacute;teg-e. 
+            </p>
+            <p>
+                <ul>
+                    <li>Kijel&ouml;lt &ndash; az elemz&eacute;s eredm&eacute;nyei l&eacute;trehoznak egy k&ouml;zpontilag t&aacute;rolt vektoros r&eacute;teget, &eacute;s l&eacute;trej&ouml;n egy elem a saj&aacute;t tartalmai k&ouml;z&ouml;tt. Ez az alap&eacute;rtelmez&eacute;s.
+                    </li>
+                    <li>Nincs bejel&ouml;lve &ndash; az elemz&eacute;s eredm&eacute;nyei l&eacute;trehoznak egy vektoros gyűjtem&eacute;nyt.     
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputCoordinateSystem">
+        <div><h2>Kimeneti koordináta-rendszer</h2></div>
+        <hr/>
+        <div>
+            <p>K&ouml;rnyezeti be&aacute;ll&iacute;t&aacute;s az eredm&eacute;nyr&eacute;teg koordin&aacute;ta-rendszer&eacute;nek meghat&aacute;roz&aacute;s&aacute;hoz haszn&aacute;lt raszterelemz&eacute;shez.    
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Bemenettel azonos</b> &ndash; az elemz&eacute;s eredm&eacute;ny&eacute;nek koordin&aacute;ta-rendszere azonos lesz a bemenet&eacute;vel. Ez az alap&eacute;rtelmez&eacute;s.
+                    </li>
+                    <li> <b>Megadott</b> &ndash; v&aacute;lassza ki a koordin&aacute;ta-rendszert az elemz&eacute;s eredm&eacute;nyeihez.   Az opci&oacute; bejel&ouml;l&eacute;sekor a f&ouml;ldg&ouml;mb ikonra kattintva v&aacute;laszthat ismert koordin&aacute;ta-rendszerek list&aacute;j&aacute;r&oacute;l, vagy megadhatja a t&eacute;rbeli referencia WKID-azonos&iacute;t&oacute;j&aacute;t a megadott mezőben.
+                    </li>
+                    <li> <b>R&eacute;teg
+&lt;neve&gt;</b> &ndash; v&aacute;lasszon ki egy megl&eacute;vő r&eacute;teget a webt&eacute;rk&eacute;pről, amelyet az elemz&eacute;si eredm&eacute;ny koordin&aacute;ta-rendszer&eacute;nek meghat&aacute;roz&aacute;s&aacute;hoz k&iacute;v&aacute;n haszn&aacute;lni.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingCoordinateSystem">
+        <div><h2>Koordináta-rendszer feldolgozása</h2></div>
+        <hr/>
+        <div>
+            <p>Geoanalitikai k&ouml;rnyezeti be&aacute;ll&iacute;t&aacute;s, amelynek haszn&aacute;lat&aacute;val meghat&aacute;rozhat&oacute; a koordin&aacute;ta-rendszer, amelyet az elemz&eacute;s haszn&aacute;lni fog az elemz&eacute;s v&eacute;grehajt&aacute;sakor.   
+            </p>
+            <p>Egyes elemz&eacute;sek a geoanalitik&aacute;hoz megk&ouml;vetelik a feldolgoz&aacute;s vet&uuml;leti koordin&aacute;ta rendszerben t&ouml;rt&eacute;nő v&eacute;grehajt&aacute;s&aacute;t.   B&aacute;rmely adat- vagy line&aacute;risegys&eacute;g-t&aacute;rol&aacute;st alkalmaz&oacute; eszk&ouml;z vet&uuml;leti koordin&aacute;ta rendszert ig&eacute;nyel. 
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Bemenettel azonos</b> &ndash; az elemz&eacute;s feldolgoz&aacute;sa a bemenettel azonos koordin&aacute;ta-rendszereben t&ouml;rt&eacute;nik. Ez az alap&eacute;rtelmez&eacute;s.
+                    </li>
+                    <li> <b>Megadott</b> &ndash; v&aacute;lassza ki a koordin&aacute;ta-rendszert az elemz&eacute;s feldolgoz&aacute;s&aacute;hoz.   Az opci&oacute; bejel&ouml;l&eacute;sekor a f&ouml;ldg&ouml;mb ikonra kattintva v&aacute;laszthat ismert vet&uuml;leti koordin&aacute;ta-rendszerek list&aacute;j&aacute;r&oacute;l, vagy megadhatja a t&eacute;rbeli referencia WKID-azonos&iacute;t&oacute;j&aacute;t a megadott mezőben.
+                    </li>
+                    <li> <b>R&eacute;teg
+&lt;neve&gt;</b> &ndash; v&aacute;lasszon ki egy megl&eacute;vő r&eacute;teget a webt&eacute;rk&eacute;pről.  A kiv&aacute;lasztott r&eacute;teg koordin&aacute;ta-rendszere meghat&aacute;rozza az elemz&eacute;s feldolgoz&aacute;s&aacute;hoz haszn&aacute;land&oacute; koordin&aacute;ta-rendszert.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingExtent">
+        <div><h2>Kiterjedés</h2></div>
+        <hr/>
+        <div>
+            <p>K&ouml;rnyezeti be&aacute;ll&iacute;t&aacute;s, amelynek haszn&aacute;lat&aacute;val meghat&aacute;rozhat&oacute; az elemz&eacute;s v&eacute;grehajt&aacute;sakor haszn&aacute;lt kiterjed&eacute;s vagy hat&aacute;rvonal.  Az elemz&eacute;s minden olyan bemenő vektoros elemet haszn&aacute;l, amely teljes m&eacute;rt&eacute;kben a megadott terjedelmen bel&uuml;l van, vagy metszi azt.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Alap&eacute;rtelmezett</b> &ndash; az eszk&ouml;z &aacute;ltal javasolt kiterjed&eacute;s haszn&aacute;lata.
+                    </li>
+                    <li> <b>Megadott</b>&ndash; egyedileg adja meg  a koordin&aacute;t&aacute;kat a kiterjed&eacute;s meghat&aacute;roz&aacute;s&aacute;hoz.
+                    </li>
+                    <li> <b>R&eacute;teg
+&lt;neve&gt;</b> &ndash; v&aacute;lasszon ki egy megl&eacute;vő r&eacute;teget a webt&eacute;rk&eacute;pről. A kiv&aacute;lasztott r&eacute;teg t&eacute;rbeli kiterjed&eacute;s&eacute;nek haszn&aacute;lat&aacute;val meghat&aacute;rozhat&oacute; az elemz&eacute;s feldolgoz&aacute;s&aacute;hoz haszn&aacute;lt kiterjed&eacute;s. 
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="snapRaster">
+        <div><h2>Raszterillesztés</h2></div>
+        <hr/>
+        <div>
+            <p>Raszterelemz&eacute;s v&eacute;grehajt&aacute;sakor az  <b>Raszterilleszt&eacute;s</b> k&ouml;rnyezet a megadott <b>Raszterilleszt&eacute;s</b> r&eacute;teg cellaigaz&iacute;t&aacute;s&aacute;val egyeztetve m&oacute;dos&iacute;tja a kimenő raszterr&eacute;teg terjedelm&eacute;t.
+            </p>
+        </div>
+    </div>
+    <div id="cellSize">
+        <div><h2>Cellaméret</h2></div>
+        <hr/>
+        <div>
+            <p>Raszterelemz&eacute;s v&eacute;grehajt&aacute;sakor ez a k&ouml;rnyezet be&aacute;ll&iacute;tja a kimenő raszterr&eacute;teg l&eacute;trehoz&aacute;shoz haszn&aacute;lt cellam&eacute;retet vagy felbont&aacute;st. Az alap&eacute;rtelmezett kimenő felbont&aacute;st a bemenő raszterr&eacute;teg legnagyobb cellam&eacute;rete hat&aacute;rozza meg.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Bemenetek minimuma</b> &ndash; az &ouml;sszes bemenő r&eacute;teg k&ouml;z&uuml;l a legkisebb cellam&eacute;rettel rendelkezőnek haszn&aacute;lata.
+                    </li>
+                    <li> <b>Bemenetek maximuma</b> &ndash; az &ouml;sszes bemenő r&eacute;teg k&ouml;z&uuml;l a legnagyobb cellam&eacute;rettel rendelkezőnek haszn&aacute;lata.Ez az alap&eacute;rtelmez&eacute;s.
+                    </li>
+                    <li> <b>Megadott</b> &ndash; adjon meg egy numerikus &eacute;rt&eacute;ket a cellam&eacute;ret be&aacute;ll&iacute;t&aacute;s&aacute;hoz. Kiv&aacute;laszt&aacute;sa eset&eacute;n az alap&eacute;rtelmezett &eacute;rt&eacute;k 1.
+                    </li>
+                    <li> <b>&lt;N&eacute;v&gt; r&eacute;teg</b>&ndash; &aacute;ll&iacute;tsa be a cellam&eacute;retet a kiv&aacute;lasztott raszteres r&eacute;teghez.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="mask">
+        <div><h2>Maszk:</h2></div>
+        <hr/>
+        <div>
+            <p> Raszterelemz&eacute;s v&eacute;grehajt&aacute;sakor a <b>Maszk</b> k&ouml;rnyezet haszn&aacute;lat&aacute;val megadhat egy r&eacute;teget, amely meghat&aacute;rozza a vizsg&aacute;lati ter&uuml;letet.   Műk&ouml;d&eacute;se sor&aacute;n az elemz&eacute;s csak az elemző maszkon bel&uuml;l eső cell&aacute;kat veszi figyelembe.
+            </p>
+            <ul>
+                <li>A maszk lehet raszter vagy vektoros r&eacute;teg.
+                </li>
+                <li>Ha az elemző maszk raszter, akkor az eszk&ouml;z az &eacute;rt&eacute;kkel rendelkező cell&aacute;kat figyelembe veszi a maszk meghat&aacute;roz&aacute;sakor. A maszk raszterben NincsAdat jel&ouml;l&eacute;ssel szereplő cell&aacute;kat az eszk&ouml;z a maszkon k&iacute;v&uuml;linek tekinti, &eacute;s az elemz&eacute;s eredm&eacute;ny r&eacute;teg&eacute;n is NincsAdat jel&ouml;l&eacute;ssel szerepelnek. 
+                </li>
+                <li>Ha az elemz&eacute;shez haszn&aacute;lt vektoros r&eacute;teg egy maszk, akkor az eszk&ouml;z v&eacute;grehajt&aacute;skor a maszk hat&aacute;r&aacute;n bel&uuml;l eső vektoros adatot raszterr&eacute; konvert&aacute;lja. Emiatt &uuml;gyeljen a
+ <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000001S000000.HTM" target="blank"></a> &eacute;s a <a href="MK:@MSITSTORE:C:\PROGRAM%20FILES%20(X86)\ARCGIS\DESKTOP10.5\HELP\ENVIRONMENTS.CHM::/001W0000000M000000.HTM" target="blank"></a> elemz&eacute;shez megfelelő be&aacute;ll&iacute;t&aacute;s&aacute;ra.
+                </li>
+            </ul>
+             
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>ArcGIS Data Store</h2></div>
+        <hr/>
+        <div>
+            <p>A geoanalitikai eredm&eacute;nyek ment&eacute;se ArcGIS Data Store-ban t&ouml;rt&eacute;nik, &eacute;s a  Portal for ArcGIS vektoros r&eacute;tegeik&eacute;nt szerepelnek. Az eredm&eacute;nyeket t&ouml;bbnyire t&eacute;rbeli-időbeli adatt&aacute;rban aj&aacute;nlott t&aacute;rolni. Ez az alap&eacute;rtelmez&eacute;s. Az al&aacute;bbi &eacute;rvek sz&oacute;lnak az eredm&eacute;nyek rel&aacute;ci&oacute;s adatt&aacute;rban t&ouml;rt&eacute;nő t&aacute;rol&aacute;sa mellett: 
+                <ul>
+                    <li>Eredm&eacute;nyek port&aacute;lok k&ouml;z&ouml;tti egy&uuml;ttműk&ouml;d&eacute;sre val&oacute; haszn&aacute;lata
+                    </li>
+                    <li>Eredm&eacute;nyekkel val&oacute; szinkroniz&aacute;l&aacute;si lehetős&eacute;gek enged&eacute;lyez&eacute;se
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Nem aj&aacute;nlott rel&aacute;ci&oacute;s adatt&aacute;r haszn&aacute;lata, ha a geoanalitikai eredm&eacute;nyek mennyis&eacute;g&eacute;nek n&ouml;veked&eacute;se v&aacute;rhat&oacute;, &eacute;s szeretn&eacute; kihaszn&aacute;lni a t&eacute;rbeli-időbeli big data adatt&aacute;r k&eacute;pess&eacute;geit a nagy adatmennyis&eacute;g kezel&eacute;s&eacute;re. 
+            </p>
+        </div>
+    </div>
+</div>
+</html>

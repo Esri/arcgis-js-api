@@ -41,14 +41,14 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="regularsize">
-        <h2>Ekleme Detayları</h2><p/>
-        <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Ekleme Detayları"></h2>
+        <h2>Detayları Birleştirme</h2><p/>
+        <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Detayları Birleştir"></h2>
         <hr/>
-    <p>Detayları Birleştir; iki katman ile &ccedil;alışan ve mekansal ve &ouml;znitelik ilişkilerine bağlı olarak bir detaydan gelen &ouml;znitelikleri bir diğeriyle birleştirir. Ara&ccedil; belirtilen birleşme koşullarını karşılayan t&uuml;m girdi detaylarını belirler ve birleşim katmanını hedef katmanla birleştirir. 
+    <p>Detayları Birleştir; iki katman ile &ccedil;alışan ve mekansal ve &ouml;znitelik ilişkilerine bağlı olarak bir detaydan gelen &ouml;znitelikleri bir diğeriyle birleştirir. Ara&ccedil;, belirtilen birleşme koşullarını karşılayan t&uuml;m girdi detaylarını belirler ve birleşim katmanını hedef katmanla birleştirir. 
     </p>
     <p>Detayları Birleştir noktalara, &ccedil;izgilere, alanlara ve tablolara uygulanabilir. Mekansal birleşim verilerinizin bir geometrisi olmasını gerektirir. 
     </p>
-    <p> <b>Ge&ccedil;erli harita kapsamını kullan</b> işaretli ise, yalnızca ge&ccedil;erli harita yayılımında g&ouml;r&uuml;n&uuml;r olan detaylar analiz edilir.  İşaretli değilse hem hedef katman hem de birleşim katmanındaki t&uuml;m detaylar, ge&ccedil;erli harita kapsamının dışında olsa bile analiz edilir.
+    <p> <b>Ge&ccedil;erli harita yayılımını kullan</b> işaretli ise, yalnızca ge&ccedil;erli harita yayılımında g&ouml;r&uuml;n&uuml;r olan detaylar analiz edilir. İşaretli değilse hem hedef katman hem de birleşim katmanındaki t&uuml;m detaylar, ge&ccedil;erli harita kapsamının dışında olsa bile analiz edilir.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -80,7 +80,7 @@
                 <ul>
                     <li> <b>Mekansal</b>; detayları birleştirmek i&ccedil;in belirtilen bir mekansal ilişkiyi kullanır. Bu, her iki katmanın da bir geometrisi olmasını gerektirir.
                     </li>
-                    <li> <b>&Ouml;znitelik</b>; eşit alanlara g&ouml;re detayları birleştirir.
+                    <li> <b>&Ouml;znitelik</b> eşit alanlara g&ouml;re detayları birleştirir.
                     </li>
                 </ul>
                 
@@ -167,6 +167,14 @@
             <p>Bu,  <b>İ&ccedil;eriğim</b>'de oluşturulacak ve haritaya eklenecek katmanın adıdır.  Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Katman zaten mevcutsa, başka bir ad sağlamanız istenir.
             </p>
             <p> <b>Sonu&ccedil;ları kaydet</b> a&ccedil;ılır kutusunu kullanarak <b>İ&ccedil;eriğim</b> alanında sonucun kaydedileceği klas&ouml;r adını belirleyebilirsiniz.
+            </p>
+        </div>
+    </div>
+    <div id="isView">
+        <div><h2>Barındırılan detay katman görünümü olarak sakla</h2></div>
+        <hr/>
+        <div>
+            <p>Sonu&ccedil;ları barındırılan bir detay katman g&ouml;r&uuml;n&uuml;m&uuml; olarak saklamak, kaynak veriler değiştik&ccedil;e verilerin g&uuml;ncel kalmasını sağlar. Barındırılan detay katman g&ouml;r&uuml;n&uuml;mleri, salt okunurdur ve analiz ve depolama i&ccedil;in kredi kullanmaz. 
             </p>
         </div>
     </div>

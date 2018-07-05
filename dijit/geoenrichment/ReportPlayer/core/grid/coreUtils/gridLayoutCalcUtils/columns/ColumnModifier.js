@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
 define(["../GridLayoutCalculatorQueryUtil","./ColumnDataUtil","./_ColumnModifierNormal","./_ColumnModifierLoose"],function(e,i,l,t){var o={},n={getColumnToChange:function(l,t,o,n){var d=e.getMovableColumn(l,t,o.field);if(d){n-=i.calcFieldWidth(l,t,o.field,d.field)}return{column:d||o,width:n}}},d={finalResizeGridCells:function(e){e.getFieldCells().forEach(function(l){l.setWidth(i.calcFieldWidth(e,l.gridData,l.column.field))}),i.recalcGridWidth(e)}},c={recalcToStick:function(e){var l=e.columns[e.columns.length-1];e.store.data.some(function(t,o){if(!e.looseResize&&o)return!0;var n=0;e.columns.forEach(function(o){o!==l&&(n+=i.getFieldWidth(e,t,o.field))}),i.setFieldWidth(e,t,l.field,i.getAllowedWidth(e)-n)})}};return o.adjustColumnWidth=function(e,i,o,u){var a=n.getColumnToChange(e,i,o,u);(e.looseResize?t:l).adjustColumnWidth(e,i,a.column,a.width),e.stickToRight&&c.recalcToStick(e),d.finalResizeGridCells(e)},o.getAffectedCells=function(e,i,l){return e.looseResize?t.getAffectedCells(e,i,l):null},o});

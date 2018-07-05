@@ -60,7 +60,7 @@
         <div><h2>Odaberite metodu praćenja vegetacije</h2></div>
         <hr/>
         <div>
-            <p>Odaberite metodu kori&scaron;tenu za izradu sloja indeksa vegetacije. Različiti indeksi vegetacije mogu pomoći istaknuti određene geoobjekte ili pomoći smanjiti razne smetnje.
+            <p>Odaberite metodu za izradu sloja indeksa vegetacije. Različiti indeksi vegetacije mogu pomoći istaknuti određene geoobjekte ili smanjiti razne smetnje.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
@@ -76,7 +76,7 @@ MSAVI2 je indeks vegetacije koji nastoji smanjiti utjecaj golog tla na metodu SA
 
                 </li>
                 <li>Normalized Difference Vegetation Index  &mdash; 
-NDVI je standardizirani indeks koji vam omogućuje da generirate snimku s prikazom zelenila, relativne biomase. Ovaj indeks koristi kontrast karakteristika dvaju kanala iz skupa podataka vi&scaron;espektarskog rastera; upijanje pigmenta klorofila u crvenom knalu i visoka reflektivnost biljnih materijala u blisko crvenom kanalu (NIR).
+NDVI je standardizirani indeks koji vam omogućuje da generirate snimku s prikazom zelenila ili relativne biomase. Ovaj indeks koristi kontrast karakteristika dvaju kanala iz skupa podataka vi&scaron;espektarskog rastera: upijanja pigmenta klorofila u crvenom kanalu i visoku reflektivnost biljnih materijala u blisko crvenom kanalu (NIR).
 
                 </li>
                 <li>Perpendicular Vegetation Index &mdash; 
@@ -88,7 +88,7 @@ SAVI je indeks vegetacije koji nastoji umanjiti utjecaje svjetline tla s pomoću
 
                 </li>
                 <li>Sultan's Formula &mdash; 
-Postupku Sultan's Formula potrebna je 8-bitna slika i &scaron;est pojasa te primjena specifičnog algoritma za proizvodnju 8-bitne slike s tri kanala. Dobivena slika nagla&scaron;ava formacije stijena nazvane o fioliti na obalama. Ova je formula osmi&scaron;ljena na temelju kanala TM i ETM scena satelita Landsat 5 ili 7.
+Postupku Sultan's Formula potrebna je 8-bitna slika i &scaron;est kanala te primjena specifičnog algoritma za proizvodnju 8-bitne slike s tri kanala. Dobivena slika nagla&scaron;ava formacije stijena nazvane o fioliti na obalama. Ova je formula osmi&scaron;ljena na temelju kanala TM i ETM scena satelita Landsat 5 ili 7.
 
                 </li>
                 <li>Transformed Soil-Adjusted Vegetation Index &mdash; 
@@ -102,7 +102,7 @@ Transformed-SAVI je indeks vegetacije koji nastoji smanjiti utjecaje svjetline t
         <div><h2>Odredite indekse kanala NIR i kanala Crvena</h2></div>
         <hr/>
         <div>
-            <p>Vrsta indeksa za blisko crveni kanal (NIR) i crveni kanal.
+            <p>Navedite vrstu indeksa za blisko crveni kanal (NIR) i crvene kanale.
             </p>
             <p>Svaki satelitski senzor i kamera antene snimaju podatke koji se dijele u indeks kanala. Svaki indeks kanala sadrži informacije za određeni dio elektromagnetskog spektra. Ova metoda praćenja vegetacije zahtijeva da odredite indeks kanala koji hvata NIR i crvene valne duljine.
             </p>
@@ -114,7 +114,7 @@ Transformed-SAVI je indeks vegetacije koji nastoji smanjiti utjecaje svjetline t
         <div>
             <p>Nagib linije tla. Nagib je približna linearna relacija između NIR-a i crvenih kanala na raspr&scaron;enom zemlji&scaron;tu.
             </p>
-            <p>Ovaj je parametar važeći samo za indeks Transformed-SAVI.
+            <p>Ovaj je parametar važeći samo za metodu indeksa Transformed-SAVI.
             </p>
         </div>
     </div>
@@ -122,11 +122,11 @@ Transformed-SAVI je indeks vegetacije koji nastoji smanjiti utjecaje svjetline t
         <div><h2>Presijecanje</h2></div>
         <hr/>
         <div>
-            <p>Ovo je vrijednost NIR-a kad je vrijednost refleksije crvenog kanala0 za određene linije tla.
+            <p>Vrijednost NIR-a kad je vrijednost refleksije crvenog kanala 0 za određene linije tla.
             </p>
             <p> <code>(a = NIR - sRed)</code> , kad je crveno 0.
             </p> 
-            <p>Ovaj je parametar važeći samo za indeks Transformed-SAVI.
+            <p>Ovaj je parametar važeći samo za metodu indeksa Transformed-SAVI.
             </p>
         </div>
     </div>
@@ -134,9 +134,9 @@ Transformed-SAVI je indeks vegetacije koji nastoji smanjiti utjecaje svjetline t
         <div><h2>Količina zelenog pokrova vegetacije</h2></div>
         <hr/>
         <div>
-            <p>Metoda SAVI zahtijeva određivanje količine pokrova vegetacije.
+            <p>Označava količinu zelenog pokrova vegetacije, &scaron;to je potrebno za metodu SAVI.
             </p>
-            <p>Upi&scaron;ite vrijednost između 0,0 i 1,0, gdje vrijedi 
+            <p>Valjane su vrijednosti sljedeće: 
 
                 <ul>
                     <li>1 = područja bez zelenog pokrova vegetacije
@@ -160,9 +160,9 @@ Transformed-SAVI je indeks vegetacije koji nastoji smanjiti utjecaje svjetline t
         <div><h2>Faktor podešavanja</h2></div>
         <hr/>
         <div>
-            <p>Metoda Transformed-SAVI zahtijeva postavljanje faktora pode&scaron;enja kako bi se umanjio učinak tla. Zadana vrijednost je 0,08.
+            <p>Određuje faktora pode&scaron;avanja kako bi se umanjio učinak tla, &scaron;to je potrebno za metodu indeksa Transformed-SAVI. Zadana vrijednost je 0,08.
             </p>
-            <p>Niža vrijednost znači da zanemarujete učinak tla. Visoka vrijednost znači da će tlo utjecati na va&scaron; rezultat.
+            <p>Niska vrijednost znači da zanemarujete učinak tla. Visoka vrijednost znači da će tlo utjecati na va&scaron; rezultat.
             </p>
         </div>
     </div>

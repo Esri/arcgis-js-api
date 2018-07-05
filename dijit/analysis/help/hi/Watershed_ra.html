@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>वाटरशेड</h2><p/>
+        <h2><img src="../images/GUID-AF749369-8C2D-46FF-9D74-2CF7CAB7C7B0-web.png" alt="वाटरशेड कार्य"></h2>
+        <hr/>
+    <p>यह टूल किसी रैस्टर में कक्षों के ऊपर योगदान करने वाले क्षेत्र का निर्धारण करता है।
+    </p>
+    <p>वाटरशेड वह ढाल वाला क्षेत्र है, जो आमतौर पर किसी आम आउटलेट में संकेंद्रित ड्रेनेज के रूप में होने वाले प्रवाह&mdash;सामान्यतः जल प्रवाह&mdash;में योगदान देता है। यह किसी बड़े वाटरशेड का भाग हो सकता है और इसमें सब-बेसिन नामक छोटे वाटरशेड शामिल हो सकते हैं।
+    </p>
+    <p>प्रत्येक वाटरशेड का मान इनपुट रास्टर या फ़ीचर भरण पॉइंट लेयर के स्रोत के मान से लिया जाएगा। जब भरण पॉइंट एक रास्टर डेटासेट हो, तो कक्ष के मानों का उपयोग डिफ़ॉल्ट रूप से किया जाता है। जब भरण पॉइंट एक पॉइंट फ़ीचर डेटासेट हो, तो मान एक निर्दिष्ट फ़ील्ड से लिए जाएंगे।
+    </p>
+    <p>वाटरशेड उपकरण केवल D8 इनपुट फ़्लो डायरेक्शन रास्टर लेयर का ही समर्थन करता है।
+    </p>
+    <p>इनपुट भरण पॉइंट स्थान को फ़ीचर डेटा के रूप में निर्दिष्ट करते समय डिफ़ॉल्ट फ़ील्ड, पहली उपलब्ध मान्य फ़ील्ड थी। अगर कोई भी मान्य फ़ील्ड मौजूद नहीं हो, तो ObjectID फ़ील्ड (उदाहरण के लिए, OID या FID) डिफ़ॉल्ट होगी।
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputFlowDirectionRaster">
+        <div><h2>फ़्लो डायरेक्शन लेयर का उपयोग करें</h2></div>
+        <hr/>
+        <div>
+            <p>वह इनपुट रास्टर जो प्रत्येक कक्ष से फ़्लो की दिशा दिखाता है।
+            </p>
+            <p>फ़्लो डायरेक्शन रास्टर को फ़्लो डायरेक्शन उपकरण का या RasterAnalysisTools सेवा में मौजूद FlowDirection कार्य का उपयोग करके बनाया जा सकता है और डिफ़ॉल्ट फ़्लो डायरेक्शन प्रकार  <b>D8</b> का उपयोग करके चलाया जाता है।
+            </p>
+        </div>
+    </div>
+    <div id="inPourPointRasterOrFeatures">
+        <div><h2>इनपुट भरण बिंदु स्थान निर्दिष्ट करें</h2></div>
+        <hr/>
+        <div>
+            <p>इनपुट भरण बिंदु स्थान।
+            </p>
+            <p>रास्टर के लिए, यह ऐसे कक्षों का प्रतिनिधित्व करता है, जिनके ऊपर योगदान करने वाले क्षेत्र, या कैचमेंट का निर्धारण किया जाएगा। जो भी कक्ष NoData नहीं हैं, उनका उपयोग स्रोत कक्षों के रूप में किया जाएगा। पॉइंट इनपुट के लिए, यह ऐसे स्थानों का प्रतिनिधित्व करता है, जिनके ऊपर योगदान करने वाले क्षेत्र, या कैचमेंट का निर्धारण किया जाएगा।
+            </p>
+        </div>
+    </div>
+    <div id="pourPointField">
+        <div><h2>भरण पॉइंट फ़ील्ड चुनें</h2></div>
+        <hr/>
+        <div>
+            <p>मानों को भरण पॉइंट स्थानों पर असाइन करने के लिए प्रयुक्त फ़ील्ड।
+            </p>
+            <p>अगर इनपुट भरण पॉइंट लेयर एक रास्टर हो, तो मान का उपयोग किया जाता है। अगर यह फ़ीचर है, तो एक सांख्यिक फ़ील्ड का उपयोग किया जाता है। अगर फ़ील्ड में फ़्लोटिंग-पॉइंट मान शामिल हैं, तो उन्हें पूर्णांकों में छोटा किया जाएगा।
+            </p>
+        </div>
+    </div>
+    <div id="resultLayer">
+        <div><h2>परिणामी लेयर का नाम</h2></div>
+        <hr/>
+        <div>
+            <p>फीचर लेयर का नाम, जो  <b>मेरी सामग्री</b> में बनाया जाएगा और मानचित्र में जोड़ा जाएगा। इसका मूल नाम उपकरण के नाम और इनपुट लेयर के नाम पर आधारित है। यदि लेयर पहले से मौजूद हो, तो आपसे दूसरा नाम देने को कहा जाएगा।
+            </p>
+            <p> <b>इसमें सहेजें</b> ड्राप-डाउन बॉक्स का उपयोग करके, आप <b>मेरी सामग्री</b> में एक फोल्डर का नाम निर्दिष्ट कर सकते हैं, जहां परिणामों को सहेजा जाएगा।।
+            </p>
+        </div>
+    </div>
+</div>
+</html>

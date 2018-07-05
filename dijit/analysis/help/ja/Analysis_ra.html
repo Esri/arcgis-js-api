@@ -59,9 +59,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>エリア内でのラスターの集約</h2></td>
+                    <td><h2>エリア内でのラスターの集約 (Summarize Raster Within)</h2></td>
                     <td>
-                    <img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" class="titleImage" alt="[エリア内でのラスターの集約] ツール">
+                    <img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" class="titleImage" alt="エリア内でのラスターの集約ツール">
                     </td>
                 </tr></tbody>
             </table>
@@ -106,9 +106,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>密度の計算</h2></td>
+                    <td><h2>密度の計算 (Calculate Density)</h2></td>
                     <td>
-                    <img src="../images/GUID-4EE4838C-E210-43CE-99C7-1A648A18C10B-web.png" class="titleImage" alt="[密度の計算] ツール">
+                    <img src="../images/GUID-4EE4838C-E210-43CE-99C7-1A648A18C10B-web.png" class="titleImage" alt="密度の計算 (Calculate Density) ツール">
                     </td>
                 </tr></tbody>
             </table>
@@ -117,18 +117,83 @@
             </p>
             <br/>
         </div>
-        <div id="InterpolatePointsEBKTool" class="smallsize">
+        <div id="InterpolatePointsEBKTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>ポイントの内挿</h2></td>
+                    <td><h2>ポイントの内挿 (Interpolate Points)</h2></td>
                     <td>
-                    <img src="../images/GUID-06D80BB3-7154-4FAA-9C9B-D665450EF3BC-web.png" class="titleImage" alt="[ポイントの内挿] ツール">
+                    <img src="../images/GUID-06D80BB3-7154-4FAA-9C9B-D665450EF3BC-web.png" class="titleImage" alt="[ポイントの内挿 (Interpolate Points)] ツール">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
             <p>このツールを使用すると、一連のポイントでの計測値に基づいて、新しい場所の値を推定できます。このツールは、各ポイントの値を持つポイント データを取得して、推定値で分類したエリアを返します。このツールを使用すると、たとえば、個々の雨量計で計測した値に基づいて、集水域全体の雨量を推定できます。
+            </p>
+            <br/>
+        </div>
+    <div id="UseProximityCategory" class="smallsize">
+        <h2>近接エリアの分析</h2>
+        <hr/>
+        <p>次のツールを使用すると、「近くにあるのは何か」という空間解析で最も一般的な質問の 1 つに答えることができます。
+
+            <ul>
+                <li> <b>[距離の計算]</b> は、1 つのソースまたは複数のソースからのユークリッド距離、方向、および割り当てを計算します。
+                    
+
+                </li>
+                <li> <b>[最適な移動コスト ネットワークの特定]</b> は、最適なコスト ネットワークを、入力された一群の地域から計算します。
+                    
+
+                </li>
+                <li> <b>[ポリラインとしての移動コスト パスの決定]</b> は、ソースと既知の目的地の間のポリラインとしての最小コスト パスを計算します。
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateDistanceTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>距離の計算</h2></td>
+                    <td>
+                    <img src="../images/GUID-34E2E6F3-2F60-43F5-B499-D5735DE08602-web.png" class="titleImage" alt="距離の計算">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>1 つのソースまたは複数のソースからのユークリッド距離、方向、および割り当てを計算します。このツールを使用して、ある位置から道路、建物、または公園までの距離を決定できます。最も直接的な方法でソースに戻るために、ある位置からどの方向に移動する必要があるかを決定することもできます。分析範囲内の、最も近いソースであるすべての位置を確認することができます。
+            </p>
+            <br/>
+        </div>
+        <div id="DetermineOptimumTravelCostNetworkTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>最適な移動コスト ネットワークの決定</h2></td>
+                    <td>
+                    <img src="../images/GUID-097BDD6E-0AD8-44F2-BB70-C5395F4B1AF4-web.png" class="titleImage" alt="[最適移動コスト ネットワークの決定 (Determine Optimum Travel Cost Network)] ツールの図">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>入力地域から、最適コスト ネットワークを計算します。
+            </p>
+            <br/>
+        </div>
+        <div id="DetermineTravelCostPathAsPolylineTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>ポリラインとしての移動コスト パスの決定</h2></td>
+                    <td>
+                    <img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" class="titleImage" alt="[ポリラインとしての移動コスト パスの決定] ツールの図">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>ソースと既知の目的地の間のポリラインとしての最小コスト パスを計算します。
             </p>
             <br/>
         </div>
@@ -193,6 +258,10 @@
                     
 
                 </li>
+                <li> <b>[集水域ラスターの作成]</b> では、サーフェス上の識別された位置で流出寄与域を計算します。
+                    
+
+                </li>
             </ul>
             
         </p>
@@ -239,6 +308,21 @@
             </table>
 <hr/>
             <p>一連の観測点から見通せるラスター サーフェスの位置を特定します。
+            </p>
+            <br/>
+        </div>
+        <div id="WatershedTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>集水域ラスターの作成</h2></td>
+                    <td>
+                    <img src="../images/GUID-AF749369-8C2D-46FF-9D74-2CF7CAB7C7B0-web.png" class="titleImage" alt="[集水域ラスターの作成] タスク">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>ラスター内のセルに対する集水域を決定します。
             </p>
             <br/>
         </div>
@@ -303,7 +387,7 @@
                 <tbody><tr>
                     <td><h2>フィーチャをラスターに変換</h2></td>
                     <td>
-                    <img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" class="titleImage" alt="[フィーチャをラスターに変換] ツール">
+                    <img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" class="titleImage" alt="フィーチャをラスターに変換ツール">
                     </td>
                 </tr></tbody>
             </table>
@@ -318,7 +402,7 @@
                 <tbody><tr>
                     <td><h2>ラスターをフィーチャに変換</h2></td>
                     <td>
-                    <img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" class="titleImage" alt="[ラスターをフィーチャに変換] ツール">
+                    <img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" class="titleImage" alt="ラスターをフィーチャに変換ツール">
                     </td>
                 </tr></tbody>
             </table>

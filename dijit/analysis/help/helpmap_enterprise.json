@@ -9,12 +9,18 @@
         "AggregatePoints_bd": {
             "toolDescription": "Aggregate_Points/01930000017p000000"
         },
+        "BuildMultiVariableGrid_bd": {
+          "toolDescription": "Build_Multi_Variable_Grid/0193000001t8000000"
+        },
         "CalculateDensity": {
             "toolDescription": "Calculate_Density/01930000016m000000",
             "inputLayer": "Calculate_Density/01930000016m000000"
         },
         "CalculateDensity_bd": {
             "toolDescription": "Calculate_Density/0193000001n9000000"
+        },
+        "CalculateField_bd": {
+          "toolDescription": "Calculate_Field/0193000001pm000000"
         },
         "ChooseBestFacilities": {
             "toolDescription": "Choose_Best_Facilities/019300000105000000",
@@ -48,7 +54,7 @@
         },
         "CopyToDataStore_bd": {
             "toolDescription": "Copy_To_Data_Store/0193000001nn000000"
-        },        
+        },
         "CreateViewshed": {
             "toolDescription": "Create_Viewshed/01930000016r000000"
         },
@@ -90,6 +96,12 @@
         },
         "FindOutliers": {
             "toolDescription": "Find_Outliers/01930000018m000000"
+        },
+        "FindPointClusters": {
+          "toolDescription": "Find_Point_Clusters/0193000001tw000000/"
+        },
+        "FindPointClusters_bd": {
+          "toolDescription": "Find_Point_Clusters/0193000001tr000000/"
         },
         "FindSimilarLocations": {
             "toolDescription": "Find_Similar_Locations/0193000000wm000000",
@@ -136,6 +148,9 @@
         },
         "SummarizeAttributes_bd": {
             "toolDescription": "Summarize_Attributes/019300000182000000"
+        },
+        "SummarizeCenterAndDispersion": {
+          "toolDescription": "Summarize_Center_and_Dispersion/0193000001tv000000"
         },
         "SummarizeNearby": {
             "toolDescription": "Summarize_Nearby/019300000165000000"

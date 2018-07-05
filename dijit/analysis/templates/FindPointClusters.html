@@ -38,7 +38,7 @@
               <label class="esriAnalysisStepsLabel">${i18n.chooseLayerLabel}</label>
             </td>
             <td class="shortTextInput" style="padding-bottom:0;">
-              <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="analysisLayer"></a>
+              <a href="#" class='esriFloatTrailing helpIcon' data-dojo-attach-point="_analysisHelpNode" esriHelpTopic="analysisLayer"></a>
             </td>
           </tr>
           <tr data-dojo-attach-point="_selectAnalysisRow" style="display:none;">
@@ -55,12 +55,12 @@
               <label class="esriAnalysisStepsLabel">${i18n.minClusterPtsLabel}</label>
             </td>
             <td class="shortTextInput">
-              <a href="#" class='esriFloatTrailing helpIcon' data-dojo-attach-point="_analysisFieldHelpLink" esriHelpTopic="MeasurementMethod"></a>
+              <a href="#" class='esriFloatTrailing helpIcon' data-dojo-attach-point="_analysisFieldHelpLink" esriHelpTopic="minFeaturesCluster"></a>
             </td>
           </tr>
           <tr>
             <td colspan="3" style="padding-bottom:0.25;padding-top:0.25;">
-              <input data-dojo-type="dijit/form/NumberSpinner"  class= "esriMediumlabel esriLeadingMargin2"  data-dojo-attach-point="_maxCountInput" data-dojo-props="style: 'width:25%',smallDelta:1,value:2, constraints: { min:2, places:0 }">
+              <input data-dojo-type="dijit/form/NumberSpinner"  class= "esriMediumlabel esriLeadingMargin2"  data-dojo-attach-point="_maxCountInput" data-dojo-props="style: 'width:25%',smallDelta:1,value:2, constraints: { min:2, places:0 }, required:true">
                 <label>${i18n.points}</label>
               </input>
             </td>
@@ -74,12 +74,12 @@
               <label class="esriAnalysisStepsLabel" data-dojo-attach-point="_forLocationLabel">${i18n.limitSearchLabel}</label>
             </td>
             <td class="shortTextInput">
-              <a href="#" class='esriFloatTrailing helpIcon' data-dojo-attach-point="_addStatsHelpLink" esriHelpTopic="Cutoffs"></a>
+              <a href="#" class='esriFloatTrailing helpIcon' data-dojo-attach-point="_addStatsHelpLink" esriHelpTopic="searchDistance"></a>
             </td>
           </tr>
          <tr>
             <td style="padding-right:0;padding-top:0;width:30%;">
-              <input type="text" class="esriLeadingMargin2" data-dojo-type="dijit/form/NumberTextBox" data-dojo-attach-event="onChange:_handleDistValueChange" data-dojo-props="intermediateChanges:true,invalidMessage:'${i18n.distanceMsg}'" data-dojo-attach-point="_searchCutoffInput" class="esriLeadingMargin1"  style="width:60%;">
+              <input type="text" class="esriLeadingMargin2" data-dojo-type="dijit/form/NumberTextBox" data-dojo-attach-event="onChange:_handleDistValueChange" data-dojo-props="intermediateChanges:true,invalidMessage:'${i18n.distanceMsg}',constraints:{min:0.000001}" data-dojo-attach-point="_searchCutoffInput" class="esriLeadingMargin1"  style="width:60%;">
             </td>
             <td colspan="2" style="padding-left:0.25em;padding-top:0;width:60%;">
               <select class="mediumInput esriMediumlabel esriAnalysisSelect esriLeadingMargin1" data-dojo-type="dijit/form/Select" data-dojo-attach-event="onChange:_handleUnitsChange" data-dojo-attach-point="_distanceUnitsSelect" style="width:65%;table-layout:fixed;">
@@ -95,7 +95,7 @@
               <label class="longTextInput esriAnalysisStepsLabel">${i18n.outputLayerLabel}</label>
             </td>
             <td class="shortTextInput">
-              <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="OutputNearestLocationsLayer"></a>
+              <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="outputName"></a>
             </td>
           </tr>
           <tr>

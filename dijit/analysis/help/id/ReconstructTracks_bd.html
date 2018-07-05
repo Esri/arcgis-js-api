@@ -44,7 +44,7 @@
         <h2>Rekonstruksi Jalur</h2><p/>
         <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Rekonstruksi Jalur"></h2>
         <hr/>
-    <p>Alat ini bekerja dengan layer yang diaktifkan waktu dari fitur titik atau poligon yang mewakili sebuah  <code>instan</code> dalam waktu.   Alat ini terlebih dahulu menentukan fitur manakah yang dimiliki jalur dengan menggunakan pengidentifikasi. Menggunakan waktu di setiap lokasi, jalur diurutkan secara berurutan dan diubah menjadi garis atau poligon yang mewakili jalur pergerakan seiring berjalannya waktu. Atau input dapat di-buffer oleh kolom yang akan menciptakan poligon di setiap lokasi. Titik yang di-buffer ini, atau jika input adalah berbentuk poligon, kemudian digabungkan secara berurutan untuk menciptakan jalur sebagai poligon di mana lebarnya menggambarkan atribut tertentu. Jalur yang dihasilkan memiliki waktu mulai dan waktu akhir, yang sementara waktu mewakili fitur pertama dan terakhir dalam jalur yang ada. Ketika jalur dibuat, statistik tentang fitur input dihitung dan ditugaskan pada jalur output. Statistik yang paling dasar adalah jumlah titik di dalam area, tapi statistik lain pun dapat dihitung.
+    <p>Alat ini berfungsi dengan layer yang diaktifkan waktu dari fitur titik atau area yang mewakili sebuah  <code>instan</code> dalam waktu.   Alat ini terlebih dahulu menentukan fitur manakah yang dimiliki jalur dengan menggunakan pengidentifikasi. Menggunakan waktu di setiap lokasi, jalur diurutkan secara berurutan dan diubah menjadi garis atau area yang mewakili jalur pergerakan seiring berjalannya waktu. Atau, input dapat di-buffer oleh kolom yang akan menciptakan area di setiap lokasi. Titik yang di-buffer ini atau area input, kemudian digabungkan secara berurutan untuk menciptakan jalur sebagai area di mana lebarnya menggambarkan atribut tertentu. Jalur yang dihasilkan memiliki waktu mulai dan waktu akhir, yang sementara waktu mewakili fitur pertama dan terakhir dalam jalur yang ada. Ketika jalur dibuat, statistik tentang fitur input dihitung dan ditugaskan pada jalur output. Statistik yang paling dasar adalah jumlah titik di dalam area, tapi statistik lain pun dapat dihitung.
     </p>
     <p>Fitur pada layer yang diaktifkan waktu dapat diwakili pada satu atau dua cara:
         <ul>
@@ -57,7 +57,7 @@
     </p>
     <p>Misalnya, katakanlah Anda memiliki pengukuran GPS badai setiap 10 menit. Setiap ukuran GPS mencatat nama, lokasi, waktu perekaman, dan kecepatan angin dari badai itu. Dengan informasi ini, Anda dapat membuat jalur untuk setiap badai dengan menggunakan nama untuk identifikasi jalur dan jalur untuk setiap badai yang akan dihasilkan. Selain itu, Anda dapat menghitung statistik seperti kecepatan angin rata-rata, maks. dan min. dari setiap badai serta penghitungan ukuran di dalam setiap jalur.
     </p>
-    <p>Menggunakan contoh yang sama, Anda dapat buffer jalur Anda dengan kecepatan angin. Hal ini akan mem-buffer setiap ukuran berdasarkan kolom kecepatan angin di lokasi itu dan menggabungkan area yang di-buffer bersama-sama, menciptakan poligon yang mewakili jalur, serta perubahan dalam kecepatan angin saat badai berlalu.   
+    <p>Menggunakan contoh yang sama, Anda dapat buffer jalur Anda dengan kecepatan angin. Hal ini akan mem-buffer setiap ukuran berdasarkan kolom kecepatan angin di lokasi itu dan menggabungkan area yang di-buffer bersama-sama, menciptakan area yang mewakili jalur, serta perubahan dalam kecepatan angin saat badai berlalu.   
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -65,7 +65,7 @@
         <div><h2>Pilih fitur untuk merekonstruksi jalur dari</h2></div>
         <hr/>
         <div>
-            <p>Layer titik atau poligon akan direkonstruksi ke dalam jalur. Layer input harus diaktifkan waktu dengan fitur yang mewakili satu saat dalam waktu. Layer harus berada pada sistem koordinat yang diproyeksikan atau referensi spasial yang diproses harus ditetapkan ke sistem koordinat yang diproyeksikan menggunakan  <b>Lingkungan Analisis</b> jika buffer diterapkan.
+            <p>Layer titik atau area akan direkonstruksi ke dalam jalur. Layer input harus diaktifkan waktu dengan fitur yang mewakili satu saat dalam waktu. Layer harus berada pada sistem koordinat yang diproyeksikan atau referensi spasial yang diproses harus ditetapkan ke sistem koordinat yang diproyeksikan menggunakan  <b>Lingkungan Analisis</b> jika buffer diterapkan.
             </p>
             <p>Selain memilih layer dari peta Anda, Anda dapat memilih  <b>Telusuri Layer</b> yang terdapat di bagian paling bawah daftar drop-down ke konten Anda untuk set data yang dibagikan atau feature layer dari big data.
             </p>
@@ -95,7 +95,9 @@
         <div>
             <p>Persamaan yang digunakan untuk menghitung jarak buffer di sekitar fitur input. Persamaan ini dapat dihasilkan dengan menggunakan kalkulator buffer dan mendukung operasi dasar seperti tambah, kurang, kali, dan bagi. Nilai dihitung berdasarkan sistem koordinat analisis. Layer harus berada pada sistem koordinat yang diproyeksikan atau referensi spasial yang diproses harus ditetapkan ke sistem koordinat yang diproyeksikan menggunakan  <b>Lingkungan Analisis</b> jika buffer diterapkan.
             </p>
-            <p>Persamaan seperti  <code>$feature.kecepatan angin * 1000</code> akan menerapkan buffer 1.000 dikalikan dengan kolom <i>kecepatan angin</i>. Anda dapat menggunakan lebih dari satu kolom di kalkulator buffer.
+            <p>Persamaan seperti  <code>$feature.windspeed * 1000</code> akan menerapkan buffer 1.000 dikalikan dengan kolom <i>windspeed</i>. Anda dapat menggunakan lebih dari satu kolom di kalkulator buffer.
+            </p>
+            <p> Anda juga dapat menetapkan ekspresi yang dapat disesuaikan dengan jalur. Contoh, Anda dapat menghitung jumlah nilai kolom <i>windspeed</i> untuk fitur saat ini dan dua fitur sebelumnya dengan persamaan seperti <code>$track.field(windspeed).history(-3)</code>. Di setiap lokasi, jumlah <i>windspeed</i> saat ini, dan dua pengukuran berikutnya akan dihitung dan di-buffer.
             </p>
         </div>
     </div>
@@ -103,7 +105,7 @@
         <div><h2>Pilih waktu untuk memisahkan jalur berdasarkan (opsional)</h2></div>
         <hr/>
         <div>
-            <p>Waktu yang digunakan untuk memisahkan jalur. Jika titik input atau poligon memiliki durasi yang lebih lama di antara keduanya daripada pemecahan waktu, mereka akan dipisahkan ke jalur yang berbeda.
+            <p>Waktu yang digunakan untuk memisahkan jalur. Jika titik input atau area memiliki durasi yang lebih lama di antara keduanya daripada pemecahan waktu, mereka akan dipisahkan ke jalur yang berbeda.
             </p>
             <p>Jika Anda menentukan pemisahan waktu dan pemisahan jarak, jalur akan dipisah ketika satu atau kedua kondisi terpenuhi. 
             </p>
@@ -115,7 +117,7 @@
         <div><h2>Pilih jarak untuk memisahkan jalur berdasarkan (opsional)</h2></div>
         <hr/>
         <div>
-            <p> Waktu yang digunakan untuk memisahkan jalur. Jika titik input atau poligon memiliki jarak lebih lebar di antara keduanya daripada pemisahan waktu, mereka akan dipisahkan ke jalur yang berbeda.
+            <p> Waktu yang digunakan untuk memisahkan jalur. Jika titik input atau area memiliki jarak lebih lebar di antara keduanya daripada pemisahan waktu, mereka akan dipisahkan ke jalur yang berbeda.
             </p>
             <p>Jika Anda menentukan pemisahan waktu dan pemisahan jarak, jalur akan dipisah ketika satu atau kedua kondisi terpenuhi. 
             </p>
@@ -125,7 +127,7 @@
         <div><h2>Tambahkan statistik (opsional)</h2></div>
         <hr/>
         <div>
-            <p> Anda dapat menghitung statistik pada fitur yang diringkas. Pada kolom numerik, Anda dapat menghitung hal berikut:
+            <p> Anda dapat menghitung statistik pada fitur yang diringkas. Anda dapat menghitung yang berikut di kolom numerik:
                 <ul>
                     <li>Jumlah&mdash;Menghitung jumlah nilai nonnull. Dapat digunakan di kolom numerik ataupun string. Jumlah [null, 0, 2] adalah 2.
                     </li>
@@ -139,14 +141,14 @@
                     </li>
                     <li>Rentang&mdash;Rentang kolom numerik. Ini dihitung sebagai nilai minimum yang disubtraksi dari nilai maksimum. Rentang [0, null, 1] adalah 1. Rentang [null, 4] adalah 0.
                     </li>
-                    <li>Varian&mdash;Varian kolom numerik di jalur. Varian [1] adalah null. Varian [null, 1,1,1] adalah 1.
+                    <li>Varian&mdash;Varian kolom numerik di jalur. Varian [1] adalah null. Varian [null, 1,0,1,1] adalah 0,25.
                     </li>
-                    <li>Simpangan baku&mdash;Simpangan baku kolom numerik. Simpangan baku [1] adalah null. Simpangan baku [null, 1,1,1] adalah 1. 
+                    <li>Simpangan baku&mdash;Simpangan baku kolom numerik. Simpangan baku [1] adalah null. Simpangan baku [null, 1,0,1,1] adalah 0,5. 
                     </li>
                 </ul>
                 
             </p>
-            <p>Pada kolom string, Anda dapat menghitung hal berikut:
+            <p>Anda dapat menghitung yang berikut di kolom numerik:
                 <ul>
                     <li>Jumlah&mdash;Jumlah string nonnull.
                     </li>
@@ -161,16 +163,16 @@
         <div><h2>Pilih ArcGIS Data Store untuk penyimpanan hasil</h2></div>
         <hr/>
         <div>
-            <p>Hasil GeoAnalytics disimpan di ArcGIS Data Store dan ditampilkan sebagai layer fitur di  Portal for ArcGIS. Di banyak kasus, hasil harus disimpan di data store spatiotemporal dan ini adalah pilihan default. Di banyak kasus, menyimpan hasil data store relasional adalah opsi yang bagus. Berikut adalah alasan mengapa Anda mungkin ingin menyimpan hasil di data store relasional: 
+            <p>Hasil GeoAnalytics disimpan di ArcGIS Data Store dan ditampilkan sebagai layer fitur di  Portal for ArcGIS. Secara umum, hasil harus disimpan di data store spatiotemporal dan ini adalah pilihan default. Secara umum, menyimpan hasil data store relasional adalah opsi yang bagus. Berikut adalah alasan mengapa Anda mungkin ingin menyimpan hasil di data store relasional: 
                 <ul>
-                    <li>Gunakan hasil di kolaborasi portal-ke-portal
+                    <li>Anda dapat menggunakan hasil di portal-ke-kolaborasi portal.
                     </li>
-                    <li>Aktifkan kemampuan sinkronisasi dengan hasil Anda.
+                    <li>Anda dapat mengaktifkan kemampuan sinkronisasi dengan hasil Anda.
                     </li>
                 </ul>
                 
             </p>
-            <p>Anda tidak boleh menggunakan data store relasional jika Anda berharap hasil GeoAnalytics untuk ditingkatkan, dan ingin memanfaatkan kemampuan big data store spatiotemporal untuk menangani jumlah data yang besar. 
+            <p>Anda tidak boleh menggunakan data store relasional jika Anda berharap hasil GeoAnalytics untuk ditingkatkan dan ingin memanfaatkan kemampuan big data store spatiotemporal untuk menangani jumlah data yang besar.
             </p>
         </div>
     </div>
@@ -178,7 +180,7 @@
         <div><h2>Nama layer hasil</h2></div>
         <hr/>
         <div>
-            <p> Ini adalah nama layer yang akan dibuat di <b>Konten Saya</b> dan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer sudah ada, alat tidak akan berfungsi.
+            <p> Nama layer yang akan dibuat di <b>Konten Saya</b> dan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer sudah ada, alat tidak akan berfungsi.
             </p>
             <p>Menggunakan kotak drop-down  <b>Simpan hasil di</b>, Anda dapat menentukan nama folder di <b>Konten Saya</b> sebagai tempat penyimpanan hasil.
             </p>

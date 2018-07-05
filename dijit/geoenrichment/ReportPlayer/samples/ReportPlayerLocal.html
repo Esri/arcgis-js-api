@@ -9,38 +9,7 @@
     <link rel="stylesheet" href="../../../../../esri/css/esri.css">
 
     <script>
-        var dojoConfig = {
-            async: true,
-            locale: typeof dojoConfig !== 'undefined' && dojoConfig.locale || null,
-            packages: [{
-                name: 'dojo',
-                location: './dojo'
-            }, {
-                name: 'dijit',
-                location: './dijit'
-            }, {
-                name: 'dojox',
-                location: './dojox'
-            }, {
-                name: 'dgrid',
-                location: './dgrid'
-            }, {
-                name: 'dstore',
-                location: './dstore'
-            }, {
-                name: 'put-selector',
-                location: './put-selector'
-            }, {
-                name: 'xstyle',
-                location: './xstyle'
-            }, {
-                name: 'esri',
-                location: './esri'
-            }, {
-                name: 'moment',
-                location: './moment'
-            }]
-        };
+        var dojoConfig = { async: true, locale: typeof dojoConfig !== 'undefined' && dojoConfig.locale || null, packages: [{ name: 'dojo', location: './dojo' }, { name: 'dijit', location: './dijit' }, { name: 'dojox', location: './dojox' }, { name: 'dgrid', location: './dgrid' }, { name: 'dstore', location: './dstore' }, { name: 'put-selector', location: './put-selector' }, { name: 'xstyle', location: './xstyle' }, { name: 'esri', location: './esri' }, { name: 'moment', location: './moment' }] };
     </script>
     <script data-dojo-config="baseUrl: '../../../../..', isDebug: 1, waitSeconds: 60" src='../../../../../dojo/dojo.js'></script>
 
@@ -66,9 +35,11 @@
 
                     "esri/dijit/geoenrichment/ReportPlayer/ReportPlayer",
                     "esri/dijit/geoenrichment/ReportPlayer/PlayerResizeModes",
+                    "esri/dijit/geoenrichment/ReportPlayer/PlayerViewModes",
                     "esri/dijit/geoenrichment/ReportPlayer/PlayerThemes",
                     "esri/dijit/geoenrichment/ReportPlayer/DataProviderGE",
                     "esri/dijit/geoenrichment/ReportPlayer/PlayerCommands",
+                    "esri/dijit/geoenrichment/ReportPlayer/_devConfig",
                     "esri/dijit/geoenrichment/ReportPlayer/samples/supportClasses/AnalysisAreas",
                     "esri/dijit/geoenrichment/utils/UrlUtil",
                     "esri/dijit/geoenrichment/utils/signIn/SignInHelper",
@@ -80,9 +51,11 @@
 
                    ReportPlayer,
                    PlayerResizeModes,
+                   PlayerViewModes,
                    PlayerThemes,
                    DataProviderGE,
                    PlayerCommands,
+                   _devConfig,
                    AnalysisAreas,
                    UrlUtil,
                    SignInHelper
@@ -92,50 +65,55 @@
 
                    INFO:
 
-                   URL query parameters (case insensitive):
-                       appId - Application ID.
-                       portalUrl - URL of the ArcGIS Portal.
-                       countryID - 2 charachter id of the country the report template data belongs to (e.g. US).
-                       reportID - ID of the report template portal item.
-                       proxy - URL of the proxy. Needed for printing and exporting the infographic when external resources need to be accessed (e.g. when printing a map).
-                       analysisAreas - array of anaysis areas in json format (see DataProviderGE.js for more details about the format).
-                       slidesView - true/false. Pass true if you want the player to be viewed as a pagination. Default false.
-                       theme - "light", "dark". Default is "dark"
+                   URL query parameters:
+                       appId                        Application ID.
+                       portalUrl                    URL of the ArcGIS Portal.
+                       countryID                    2 charachter id of the country the report template data belongs to (e.g. US).
+                       reportID                     ID of the report template portal item.
+                       proxy                        URL of the proxy. Needed for printing and exporting the infographic when external resources need to be accessed (e.g. when printing a map).
+                       analysisAreas                Array of anaysis areas in json format (see DataProviderGE.js for more details about the format).
+                       viewMode                     Supported values: fullPages|panelsInSlides|panelsInStack. Default is "fullPages".
+                       theme                        Supported values: light|dark. Default is "dark".
+                       showToolbarInPopup           If true the toolbar will be shown in a compact popup mode.
+                       scaleSlidesToFitWindow       If true, the panels will be scaled to fit the whole window. Applicable only in viewMode=panelsInSlides.
+                       fitWindow                    If true, the player will be scaled to fit the window. Default is true.
 
                        Example:
 
                        Case 1: Feature with geometry
 
-                       .../ReportPlayerLocal.html?appId=g5vpmnaAyj9UmLKJ&portalUrl=https://www.arcgis.com&countryID=US&reportID=transportation-to-work-US&analysisAreas=[{"name":"Area name","shortName":"Area from url (short)","description":"Area description","address":"Area address","latitude":"Area Lat.","longitude":"Area Long.","feature":{"geometry":{"rings":[[[-10800107.01591563,3862641.714572819],[-10716918.351420047,4636712.237704219],[-9901669.439363334,4969050.952364072],[-9909988.305812893,4278585.037050734],[-10800107.01591563,3862641.714572819]]],"spatialReference":{"wkid":102100}},"attributes":{},"symbol":{"color":[200,50,50,50],"outline":{"color":[255,0,0,255],"width":1.5,"type":"esriSLS","style":"esriSLSSolid"},"type":"esriSFS","style":"esriSFSSolid"}}}]&slidesView=false&theme=light
+                       .../ReportPlayerLocal.html?appId=g5vpmnaAyj9UmLKJ&portalUrl=https://www.arcgis.com&countryID=US&reportID=transportation-to-work-US&analysisAreas=[{"name":"Area name","shortName":"Area from url (short)","description":"Area description","address":"Area address","latitude":"Area Lat.","longitude":"Area Long.","feature":{"geometry":{"rings":[[[-10800107.01591563,3862641.714572819],[-10716918.351420047,4636712.237704219],[-9901669.439363334,4969050.952364072],[-9909988.305812893,4278585.037050734],[-10800107.01591563,3862641.714572819]]],"spatialReference":{"wkid":102100}},"attributes":{},"symbol":{"color":[200,50,50,50],"outline":{"color":[255,0,0,255],"width":1.5,"type":"esriSLS","style":"esriSLSSolid"},"type":"esriSFS","style":"esriSFSSolid"}}}]
 
                        OR
 
                        Case 2: only geography ids
 
-                       .../ReportPlayerLocal.html?appId=g5vpmnaAyj9UmLKJ&portalUrl=https://www.arcgis.com&&countryID=US&reportID=transportation-to-work-US&analysisAreas=[{"name":"Area name","shortName":"Area from url (short)","description":"Area description","address":"Area address","latitude":"Area Lat.","longitude":"Area Long.", "geographies": [{"id":"32","levelId":"US.States"},{"id":"06","levelId":"US.States"}]}]&slidesView=false&theme=light
-                   */
+                       .../ReportPlayerLocal.html?appId=g5vpmnaAyj9UmLKJ&portalUrl=https://www.arcgis.com&&countryID=US&reportID=transportation-to-work-US&analysisAreas=[{"name":"Area name","shortName":"Area from url (short)","description":"Area description","address":"Area address","latitude":"Area Lat.","longitude":"Area Long.", "geographies": [{"id":"32","levelId":"US.States"},{"id":"06","levelId":"US.States"}]}]
 
-                   /* test: currently is referencing a report template from the content of user ak_prod. */
+                       OR
+
+                       Case 3: only buffer
+
+                       .../ReportPlayerLocal.html?appId=g5vpmnaAyj9UmLKJ&portalUrl=https://www.arcgis.com&&countryID=US&reportID=transportation-to-work-US&analysisAreas=[{"name":"Area name","shortName":"Area from url (short)","description":"Area description","address":"Area address","latitude":"Area Lat.","longitude":"Area Long.","buffer":{"point":{"x":-13163008.811087687,"y":4035986.6896486743,"spatialReference":{"wkid":102100}},"units":"esriMiles","radius":1}}]
+                   */
 
                    var DEFAULTS = {
                        appId: "g5vpmnaAyj9UmLKJ",
                        portalUrl: "https://www.arcgis.com",
                        countryID: "US",
-                       reportID: "transportation-to-work-US",
-                       slidesView: "false",
+                       reportID: "transportation-to-work",
+                       viewMode: PlayerViewModes.FULL_PAGES,
                        theme: PlayerThemes.DARK
                    };
 
-                   //---------------------------------------------------------------------------
                    // QA
-                   // override defaults
-                   /*
-                   DEFAULTS.portalUrl = "https://qaext.arcgis.com";
-                   // QA
-                   DEFAULTS.reportID = "5b2f40bf1a5c4ad1b27c75f375607754";
-                   DEFAULTS.appId = "gzYR5C8WR8c0aRCH";
-                   */
-                   //---------------------------------------------------------------------------
+                   if (getUrlVar("env") === "qa") {
+                       DEFAULTS.appId = "gzYR5C8WR8c0aRCH";
+                       DEFAULTS.portalUrl = "https://qaext.arcgis.com";
+                       DEFAULTS.geoenrichmentUrl = "http://ec2-52-21-196-36.compute-1.amazonaws.com/arcgis/rest/services/World/GeoEnrichmentServer";
+                   }
+
+                   _devConfig.createPlayerCommand.useTestBuild = true;
 
                    function getUrlVar(name) {
                        var href = window.location.href;
@@ -146,15 +124,21 @@
 
                    var appId = getUrlVar("appId");
                    var portalUrl = getUrlVar("portalUrl");
-                   var countryID = getUrlVar("countryID");
+                   var countryID = getUrlVar("countryID").toUpperCase();
                    var reportID = getUrlVar("reportID");
                    var analysisAreasJson = getUrlVar("analysisAreas");
                    if (typeof analysisAreasJson === "string")
                        analysisAreasJson = JSON.parse(analysisAreasJson);
-                   var isSlidesView = String(getUrlVar("slidesView")) === "true";
+                   var viewMode = getUrlVar("viewMode");
+                   var showToolbarInPopup = getUrlVar("showToolbarInPopup") === "true";
+                   var scaleSlidesToFitWindow = getUrlVar("scaleSlidesToFitWindow") === "true";
+                   var fitWindow = getUrlVar("fitWindow") !== "false";
                    var theme = getUrlVar("theme");
 
                    esriConfig.defaults.io.proxyUrl = getUrlVar("proxy") || null;
+
+                   if (!fitWindow)
+                       playerDiv.style.display = "inline-block";
 
                    //--------------------------------------------------------------------------
                    //
@@ -179,22 +163,26 @@
                                    esriCssUrl: "",
                                    playerSourceRootUrl: ""
                                },
-                               isSlidesView: isSlidesView,
+                               viewMode: viewMode,
                                theme: theme,
-                               dataProvider: dataProvider,
-                               resizeMode: PlayerResizeModes.FIT_WINDOW
+                               showToolbarInPopup: showToolbarInPopup,
+                               scaleSlidesToFitWindow: scaleSlidesToFitWindow,
+                               resizeMode: fitWindow ? PlayerResizeModes.FIT_WINDOW : PlayerResizeModes.AUTO,
+                               dataProvider: dataProvider
                            }).placeAt(playerDiv);
 
                            var params = {
                                portalUrl: portalUrl,
+                               geoenrichmentUrl: DEFAULTS.geoenrichmentUrl,
                                countryID: countryID,
                                reportID: reportID,
                                analysisAreas: analysisAreasJson || AnalysisAreas.getAreas({
-                                       numAreas: 1,
-                                       big: false,
-                                       isGeographyId: false,
-                                       initialize: true
-                                   })
+                                   numAreas: 2,
+                                   big: false,
+                                   isGeographyId: false,
+                                   initialize: true,
+                                   countryID: countryID
+                               })
                            };
 
                            when(player.playReport(params, {

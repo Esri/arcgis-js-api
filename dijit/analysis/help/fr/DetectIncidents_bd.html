@@ -50,7 +50,7 @@
     </p>
     <p>Supposons par exemple que vous poss&eacute;diez des mesures GPS d'ouragans toutes les 10&nbsp;minutes. Chaque mesure GPS consigne le nom de l'ouragan, sa position, l'heure d'enregistrement et la vitesse du vent. Avec ces champs, vous pouvez cr&eacute;er un incident dans lequel une mesure dont la vitesse de vent est sup&eacute;rieure &agrave; 208&nbsp;km/h constitue un incident nomm&eacute;  <code>Catastrophique</code>. Si une condition de fin n&rsquo;est pas d&eacute;finie, l&rsquo;incident se termine si l&rsquo;entit&eacute; ne r&eacute;pond plus &agrave; la condition de d&eacute;but (la vitesse du vent ralentit &agrave; moins de 208&nbsp;km/h).
     </p>
-    <p>Dans un autre exemple, vous surveillez les concentrations d&rsquo;un produit chimique dans vos canalisations d&rsquo;eau &agrave; l&rsquo;aide d&rsquo;un champ nomm&eacute;  <code>NiveauContamination</code>. Vous savez que les niveaux recommand&eacute;s sont inf&eacute;rieurs &agrave; 0,01&nbsp;mg/L et que les niveaux dangereux sup&eacute;rieurs &agrave; 0,03&nbsp;mg/L. Pour d&eacute;tecter les incidents o&ugrave; une valeur sup&eacute;rieure &agrave; 0,03&nbsp;mg/L constitue un incident et reste un incident jusqu&rsquo;au retour &agrave; la normale des niveaux de contamination, vous cr&eacute;ez un incident &agrave; l&rsquo;aide d&rsquo;une condition de d&eacute;but de <code>NiveauContamination&gt; 0,03</code> et d&rsquo;une condition de fin de <code>NiveauContamination &lt; 0,01</code>. Ceci marque toute s&eacute;quence dans laquelle les valeurs d&eacute;passent 0,03&nbsp;mg/L jusqu&rsquo;&agrave; leur retour &agrave; une valeur inf&eacute;rieure &agrave; 0,01.
+    <p>Dans un autre exemple, vous surveillez les concentrations d&rsquo;un produit chimique dans vos canalisations d&rsquo;eau &agrave; l&rsquo;aide d&rsquo;un champ nomm&eacute;  <code>NiveauContamination</code>. Vous savez que les niveaux recommand&eacute;s sont inf&eacute;rieurs &agrave; 0,01&nbsp;mg/L et que les niveaux dangereux sup&eacute;rieurs &agrave; 0,03&nbsp;mg/L. Pour d&eacute;tecter les incidents o&ugrave; une valeur sup&eacute;rieure &agrave; 0,03&nbsp;mg/L constitue un incident et reste un incident jusqu&rsquo;au retour &agrave; la normale des niveaux de contamination, vous cr&eacute;ez un incident &agrave; l&rsquo;aide d&rsquo;une condition de d&eacute;but de <code>NiveauContamination&nbsp;&gt;&nbsp;0,03</code> et d&rsquo;une condition de fin de <code>NiveauContamination&nbsp;&lt;&nbsp;0,01</code>. Ceci marque toute s&eacute;quence dans laquelle les valeurs d&eacute;passent 0,03&nbsp;mg/L jusqu&rsquo;&agrave; leur retour &agrave; une valeur inf&eacute;rieure &agrave; 0,01.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -68,19 +68,21 @@
         <div><h2>Sélectionner un ou plusieurs champs pour identifier les pistes</h2></div>
         <hr/>
         <div>
-            <p> Les champs qui repr&eacute;sentent l&rsquo;identifiant de piste. Vous pouvez utiliser un ou plusieurs champs pour repr&eacute;senter des valeurs de pistes uniques.
+            <p>Les champs qui repr&eacute;sentent l&rsquo;identifiant de piste. Vous pouvez utiliser un ou plusieurs champs pour repr&eacute;senter des valeurs de pistes uniques.
             </p>
             <p>Par exemple, si vous reconstruisez les pistes des ouragans, vous pouvez utiliser le nom de l&rsquo;ouragan comme nom de piste.
             </p>
         </div>
     </div>
     <div id="startConditionExpression">
-        <div><h2>Créer une condition d’expression pour indiquer le début d’un incident</h2></div>
+        <div><h2>Créer une condition d'expression pour indiquer le début d'un incident</h2></div>
         <hr/>
         <div>
             <p>Ajoutez une condition &agrave; l&rsquo;aide du g&eacute;n&eacute;rateur d&rsquo;expressions pour d&eacute;terminer ce que constitue un incident. Si la condition que vous sp&eacute;cifiez est vraie, l&rsquo;entit&eacute; constitue un incident. Si vous ne sp&eacute;cifiez pas de condition de fin, un incident se termine lorsque la condition de d&eacute;but n&rsquo;est plus vraie.
             </p>
             <p>Par exemple, vous souhaitez &ecirc;tre alert&eacute; lorsque la somme des champs  <code>concentration_1</code> et <code>concentration_2</code> est sup&eacute;rieure &agrave; <code>concentration_3</code>.   Pour ce faire, appliquez une condition de <code>($feature[&quot;concentration_1&quot;] +  $feature[&quot;concentration_2&quot;]) &gt; $feature[&quot;concentration_3&quot;])</code>.
+            </p>
+            <p>Si vous vous int&eacute;ressez &agrave; la mani&egrave;re dont les concentrations varient dans le temps et souhaitez recevoir une alerte lorsque la  <code>concentration_1</code> actuelle est sup&eacute;rieure aux deux mesures pr&eacute;c&eacute;dentes de <code>concentration_2</code>, vous pouvez utiliser une expression telle que <code>$feature[&quot;concentration_1&quot;] &gt;   $track.field[&quot;concentration_2&quot;].history(-3,-1)</code>.
             </p>
         </div>
     </div>
@@ -91,6 +93,8 @@
             <p>Si vous le souhaitez, ajoutez une condition &agrave; l&rsquo;aide du g&eacute;n&eacute;rateur d&rsquo;expressions pour d&eacute;terminer la fin d&rsquo;un incident. Si la condition de fin que vous sp&eacute;cifiez est vraie, l&rsquo;entit&eacute; ne constitue plus un incident. Si vous ne sp&eacute;cifiez pas de condition de fin, un incident se termine lorsque la condition de d&eacute;but n&rsquo;est plus vraie.    
             </p>
             <p>Par exemple, vous souhaitez &ecirc;tre alert&eacute; lorsque la somme des champs  <code>concentration_1</code> et <code>concentration_2</code> est sup&eacute;rieure &agrave; <code>concentration_3</code>, et vous souhaitez que l&rsquo;incident se termine si <code>concentration_4</code> est inf&eacute;rieur &agrave; <code>concentration_1</code>. Pour ce faire, appliquez une condition de d&eacute;but de <code>($feature[&quot;concentration_1&quot;] +  $feature[&quot;concentration_2&quot;]) &gt; ($join[&quot;revenu&quot;] * .20)</code> et une condition de fin de <code>($feature[&quot;concentration_4&quot;] &lt; $feature[&quot;concentration_1&quot;])</code>.
+            </p>
+            <p>Si vous voulez qu&rsquo;un incident prenne fin lorsque la moyenne de la valeur actuelle de  <code>concentration_1</code> et les quatre mesures pr&eacute;c&eacute;dentes sont sup&eacute;rieures &agrave; la premi&egrave;re mesure, vous pouvez utiliser une expression telle que <code>$track.field[&quot;concentration_1&quot;].history(-5) &gt; $track.field[&quot;concentration_1&quot;].history(0)</code>.
             </p>
         </div>
     </div>
@@ -113,7 +117,7 @@
         <div><h2>Nom de la couche de résultat</h2></div>
         <hr/>
         <div>
-            <p> Il s&rsquo;agit du nom de la couche qui sera sur dans votre page <b>My Content (Mon contenu)</b> et ajout&eacute;e &agrave; la carte. Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, l'outil &eacute;choue.
+            <p> Le nom de la couche qui sera cr&eacute;&eacute;e dans la page <b>My Content (Mon contenu)</b> et ajout&eacute;e &agrave; la carte. Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, l'outil &eacute;choue.
             </p>
             <p>La zone de liste d&eacute;roulante  <b>Save result in (Enregistrer le r&eacute;sultat dans)</b> vous permet de sp&eacute;cifier le nom d&rsquo;un dossier dans <b>My content (Mon contenu)</b> o&ugrave; le r&eacute;sultat sera enregistr&eacute;.
             </p>

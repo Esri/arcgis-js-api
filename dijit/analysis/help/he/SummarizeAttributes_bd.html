@@ -82,9 +82,9 @@ most basic statistic is the count of features that have been summarized together
         <div><h2>Add statistics (optional)</h2></div>
         <hr/>
         <div>
-            <p> You can calculate statistics on features that are summarized. On numeric fields you can calculate the following:
+            <p> You can calculate statistics on features that are summarized. You can calculate the following on numeric fields:
                 <ul>
-                    <li>Count&mdash;Calculates the number of nonnull values. Can be used on numeric fields or strings. The count of [null, 0, 2] is 2.
+                    <li>Count&mdash;Calculates the number of nonnull values. It can be used on numeric fields or strings. The count of [null, 0, 2] is 2.
                     </li>
                     <li>Sum&mdash;The sum of numeric values in a field. The sum of [null, null, 3] is 3.
                     </li>
@@ -96,14 +96,14 @@ most basic statistic is the count of features that have been summarized together
                     </li>
                     <li>Range&mdash;The range of a numeric field. This is calculated as the minimum values subtracted from the maximum value. The range of [0, null, 1] is 1. The range of [null, 4] is 0.
                     </li>
-                    <li>Variance&mdash;The variance of a numeric field in a track. The  variance of [1] is null. The variance of [null, 1,1,1] is 1.
+                    <li>Variance&mdash;The variance of a numeric field in a track. The  variance of [1] is null. The variance of [null, 1,0,1,1] is 0.25.
                     </li>
-                    <li>Standard deviation&mdash;The standard deviation of a numeric field. The standard deviation of [1] is null. The standard deviation of [null, 1,1,1] is 1. 
+                    <li>Standard deviation&mdash;The standard deviation of a numeric field. The standard deviation of [1] is null. The standard deviation of [null, 1,0,1,1] is 0.5. 
                     </li>
                 </ul>
                 
             </p>
-            <p>On string fields you can calculate the following:
+            <p>You can calculate the following on string fields:
                 <ul>
                     <li>Count&mdash;The number of nonnull strings.
                     </li>
@@ -118,11 +118,11 @@ most basic statistic is the count of features that have been summarized together
         <div><h2>Choose datastore</h2></div>
         <hr/>
         <div>
-            <p>GeoAnalytics results are stores to an ArcGIS Data Store and exposed as a feature layer in   Portal for ArcGIS. In most cases, results should be stored to the spatiotemporal data store and this is the default. In some cases saving results to the  relational data store is a good option. The following are reasons why you may want to store results in the relational data store: 
+            <p>GeoAnalytics results are stored to an ArcGIS Data Store and exposed as a feature layer in   Portal for ArcGIS. In most cases, results should be stored to the spatiotemporal data store and this is the default. In some cases, saving results to the  relational data store is a good option. The following are reasons why you may want to store results to the relational data store: 
                 <ul>
-                    <li>Use results in portal to portal collaboration.
+                    <li>You can use results in portal-to-portal collaboration.
                     </li>
-                    <li>Enable sync capabilities with your results.
+                    <li>You can enable sync capabilities with your results.
                     </li>
                 </ul>
                 
@@ -133,7 +133,7 @@ most basic statistic is the count of features that have been summarized together
         <div><h2>Result layer name</h2></div>
         <hr/>
         <div>
-            <p> This is the name of the layer that will be created in <b>My
+            <p> The name of the layer that will be created in <b>My
 Content</b> and added to the map. The default name is based on the
 tool name and the input layer name. If the layer already exists, the tool will fail.
             </p>

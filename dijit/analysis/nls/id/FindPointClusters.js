@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
-define({clustersLabel:"Untuk layer ${inputLayerName} temukan gugusnya.",chooseLayerLabel:"Pilih layer tempat mencari gugus",minClusterPtsLabel:"Jumlah titik minimum untuk dapat dianggap gugus",limitSearchLabel:"Batasi rentang pencarian hingga (opsional)",limitSearchReqLabel:"Limit the search range to",outputLayerName:"Temukan Gugus untuk ${inputLayerName}",itemDescription:"Feature layer yang dihasilkan dari menjalankan solusi Temukan Gugus Titik untuk ${inputLayerName}.",itemTags:"Hasil Analisis, Temukan Gugus Titik, ${inputLayerName}",itemSnippet:"Feature layer dihasilkan dari Temukan Gugus Titik"});
+define({clustersLabel:"Untuk layer ${inputLayerName} temukan gugusnya.",chooseLayerLabel:"Pilih layer tempat mencari gugus",minClusterPtsLabel:"Jumlah titik minimum untuk dapat dianggap gugus",limitSearchLabel:"Batasi rentang pencarian hingga (opsional)",limitSearchReqLabel:"Batasi rentang pencarian menjadi",outputLayerName:"Temukan Gugus untuk ${inputLayerName}",itemDescription:"Feature layer yang dihasilkan dari menjalankan solusi Temukan Gugus Titik untuk ${inputLayerName}.",itemTags:"Hasil Analisis, Temukan Gugus Titik, ${inputLayerName}",itemSnippet:"Feature layer dihasilkan dari Temukan Gugus Titik"});

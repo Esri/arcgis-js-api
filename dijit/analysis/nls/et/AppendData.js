@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
-define({inputLayerLabel:"Valige kiht, millele lisada",inputWarningLabel:"Hoiatus: kihti, kuhu te sisu lisate, muudetakse.",inputHostedLayerWarning:"The selected layer was not a hosted feature layer. Please select a hosted feature layer to append to.",appendLayerLabel:"Valige lisatav kiht",filterLabel:"Lisage kõik objektid või määratlege alamhulk (valikuline)",fieldMappingLabel:"Valige, kuidas välju lisada (valikuline)",inputField:"Sisendi väli",appendValue:"Lisa väärtus",expression:"Avaldis"});
+define({inputLayerLabel:"Valige kiht, millele lisada",inputWarningLabel:"Hoiatus: kihti, kuhu te sisu lisate, muudetakse.",inputHostedLayerWarning:"Valitud kiht ei olnud majutatud objektikiht. Valige majutatud objektikiht, millele lisada.",appendLayerLabel:"Valige lisatav kiht",filterLabel:"Lisage kõik objektid või määratlege alamhulk (valikuline)",fieldMappingLabel:"Valige, kuidas välju lisada (valikuline)",inputField:"Sisendi väli",appendValue:"Lisa väärtus",expression:"Avaldis"});

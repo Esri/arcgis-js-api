@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Tìm Cụm điểm</h2><p/>
+        <h2><img src="../images/GUID-40DA7286-67EA-4333-91C5-4CD527C21B4A-web.png" alt="T&igrave;m Cụm điểm"></h2>
+        <hr/>
+    <p>C&ocirc;ng cụ  T&igrave;m Cụm điểm sẽ t&igrave;m c&aacute;c cụm đối tượng điểm trong phạm vi nhiễu xung quanh căn cứ tr&ecirc;n ph&acirc;n bổ kh&ocirc;ng gian của ch&uacute;ng.
+    </p>
+    <p>Một tổ chức phi ch&iacute;nh phủ đang nghi&ecirc;n cứu một căn bệnh g&acirc;y dịch hại cụ thể. Tổ chức n&agrave;y c&oacute; một bộ dữ liệu điểm thể hiện c&aacute;c hộ gia đ&igrave;nh trong khu vực nghi&ecirc;n cứu, một số gia đ&igrave;nh bị nhiễm bệnh, c&ograve;n một số th&igrave; kh&ocirc;ng. Bằng c&aacute;ch sử dụng c&ocirc;ng cụ  T&igrave;m Cụm điểm, một nh&agrave; ph&acirc;n t&iacute;ch c&oacute; thể x&aacute;c định c&aacute;c cụm hộ gia đ&igrave;nh bị nhiễm bệnh để gi&uacute;p ghim một khu vực để bắt đầu việc điều trị v&agrave; ti&ecirc;u diệt s&acirc;u bệnh.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Chọn lớp cần tìm các cụm cho nó</h2></div>
+        <hr/>
+        <div>
+            <p>Lớp điểm c&oacute; c&aacute;c cụm trong đ&oacute;. C&aacute;c lớp phải nằm trong một tham chiếu kh&ocirc;ng gian được tham chiếu đến hoặc c&oacute; một tham chiếu kh&ocirc;ng gian đang xử l&yacute; thiết lập đến một hệ tọa độ tham chiếu th&ocirc;ng qua  <b>M&ocirc;i trường Ph&acirc;n t&iacute;ch</b>.
+            </p>
+            <p>B&ecirc;n cạnh việc chọn một lớp dữ liệu từ bản đồ, bạn c&oacute; thể chọn  <b>Duyệt Lớp</b> ở dưới danh s&aacute;ch thả xuống để t&igrave;m đến nội dung của m&igrave;nh đối với bộ dữ liệu chia sẻ tệp dữ liệu lớn hoặc lớp đối tượng.
+            </p>
+        </div>
+    </div>
+    <div id="minFeaturesCluster">
+        <div><h2>Số điểm tối thiểu cần xem xét một cụm</h2></div>
+        <hr/>
+        <div>
+            <p>Số lượng đối tượng tối thiểu để gieo một cụm.
+            </p>
+        </div>
+    </div>
+    <div id="searchDistance">
+        <div><h2>Giới hạn phạm vi tìm kiếm đến</h2></div>
+        <hr/>
+        <div>
+            <p>Khoảng c&aacute;ch tối đa để coi đối tượng thuộc c&ugrave;ng một cụm điểm.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tên lớp kết quả</h2></div>
+        <hr/>
+        <div>
+            <p> T&ecirc;n lớp sẽ được tạo trong mục <b>Nội dung của t&ocirc;i</b> v&agrave; được th&ecirc;m v&agrave;o bản đồ. T&ecirc;n mặc định dựa v&agrave;o t&ecirc;n c&ocirc;ng cụ v&agrave; t&ecirc;n lớp đầu v&agrave;o. Nếu lớp đ&atilde; tồn tại, c&ocirc;ng cụ sẽ thất bại.
+            </p>
+            <p>Sử dụng chức năng  <b>Lưu kết quả</b> trong hộp xổ xuống, bạn c&oacute; thể chỉ định t&ecirc;n thư mục trong mục <b>Nội dung của T&ocirc;i</b> nơi sẽ lưu trữ kết quả của bạn.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
-define({clustersLabel:"Znajdź klastry dla warstwy ${inputLayername}.",chooseLayerLabel:"Wybierz warstwę, dla której mają zostać znalezione klastry",minClusterPtsLabel:"Minimalna liczba punktów, które są uznawane za klaster",limitSearchLabel:"Ogranicz zakres wyszukiwania do (opcjonalnie)",limitSearchReqLabel:"Limit the search range to",outputLayerName:"Znajdź klastry dla warstwy ${inputLayername}",itemDescription:"Warstwa obiektowa utworzona w wyniku uruchomienia narzędzia Znajdź klastry punktów dla warstwy ${inputLayerName}.",itemTags:"Wynik analizy, Znajdź klastry punktów, ${inputLayerName}",itemSnippet:"Warstwa obiektowa wygenerowana w wyniku uruchomienia narzędzia Znajdź klastry punktów"});
+define({clustersLabel:"Znajdź klastry dla warstwy ${inputLayerName}.",chooseLayerLabel:"Wybierz warstwę, dla której mają zostać znalezione klastry",minClusterPtsLabel:"Minimalna liczba punktów, które są uznawane za klaster",limitSearchLabel:"Ogranicz zakres wyszukiwania do (opcjonalnie)",limitSearchReqLabel:"Ogranicz zakres wyszukiwania do",outputLayerName:"Znajdź klastry dla warstwy ${inputLayerName}",itemDescription:"Warstwa obiektowa utworzona w wyniku uruchomienia narzędzia Znajdź klastry punktów dla warstwy ${inputLayerName}.",itemTags:"Wynik analizy, Znajdź klastry punktów, ${inputLayerName}",itemSnippet:"Warstwa obiektowa wygenerowana w wyniku uruchomienia narzędzia Znajdź klastry punktów"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","./LocalGEBase"],function(t,e){return t(e,{_cacheData:!0,constructor:function(t,e){this._initGE(null,e,t.calculatorName)},getFieldValueAt:function(t,e){var a=this.getData(),n=a.features[e];return n&&n.attributes[t]||0}})});

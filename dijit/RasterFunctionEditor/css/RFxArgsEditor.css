@@ -62,6 +62,7 @@
 .esriRFxArgsEditor__label--fx-desc {
   white-space: pre-line;
   width: 200px;
+  overflow-x: auto;
 }
 
 .esriRFxArgsEditor .esriRFxArgsEditor__icon--warning {
@@ -111,7 +112,32 @@
   width: 100%;
 }
 
+
+.esriRFxArgsEditor .dgrid.esriRemapgrid .dgrid-scroller {
+  position: absolute;
+  overflow-y: scroll;
+}
+
+
+.esriRFxArgsEditor .esriRemapgrid .dgrid-header {
+  width: inherit;
+}
+
 .esriRFxArgsEditor td.dgrid-cell.field-idNum {
   vertical-align: middle;
   text-align: center;
+}
+
+.esriRFxArgsEditor .dijitComboBox input.dijitArrowButtonInner {
+  height: 100%!important;
+  vertical-align: middle;
+  background-position: -65px -27px;
+}
+
+.esriRFxArgsEditor .dijitComboBox input.dijitInputInner {
+  height: 22px;
+}
+
+.esriRFxArgsEditor .dijitComboBox {
+  height: 27px !important;
 }

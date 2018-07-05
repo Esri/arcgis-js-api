@@ -1,21 +1,9 @@
-﻿<div data-dojo-attach-point="mainNode" class="esriGEReportPlayer esriGENonSelectable esriGEReportPlayerFullScreen">
+﻿<div class="esriGEReportPlayer esriGENonSelectable">
 
     <div data-dojo-attach-point="printBackgroundView" class="esriGEAbsoluteStretched"></div>
 
-    <div data-dojo-attach-point="normalViewDiv" class="reportPlayer_normalViewDiv">
-
-        <div data-dojo-attach-point="playerHeader" class="reportPlayer_header">
-            <div data-dojo-attach-point="infographicsSelectDiv" class="reportPlayer_infographicsSelectDiv"></div>
-            <div data-dojo-attach-point="areaTitleDiv" class="reportPlayer_areaTitleDiv">
-                <div data-dojo-attach-point="areaTitleInnerDiv" class="dijitInline reportPlayer_areaTitleInnerDiv TrimWithEllipses"></div>
-            </div>
-            <div data-dojo-attach-point="areasSelectDiv" class="reportPlayer_areasSelectDiv"></div>
-            <div data-dojo-attach-point="zoomPageBlockDiv" class="reportPlayer_zoomSelectPageSelectBlock">
-                <div data-dojo-attach-point="zoomSelectDiv" class="dijitInline reportPlayer_zoomSelectDiv"></div>
-                <div data-dojo-attach-point="pageSelectDiv" class="dijitInline reportPlayer_pageSelectDiv"></div>
-            </div>
-            <div data-dojo-attach-point="commandButtonsContainer" class="reportPlayer_commandButtonsContainer"></div>
-        </div>
+    <div data-dojo-attach-point="normalViewDiv">
+        <div data-dojo-attach-point="playerToolbarDiv"></div>
 
         <div data-dojo-attach-point="printableDivContainer" class="reportPalyer_printableDivContainer">
             <div data-dojo-attach-point="printableDiv" class="reportPalyer_printableDiv">
@@ -23,11 +11,12 @@
             </div>
         </div>
 
-        <div class="reportPlayer_headerPageNavigator" data-dojo-attach-point="headerPageNavigator">
+        <div class="reportPlayer_sidePageNavigator" data-dojo-attach-point="sidePageNavigator">
             <div class="reportPlayer_paginationArrowUp" data-dojo-attach-point="prevPageButton"></div>
             <div class="reportPlayer_paginationArrowDown" data-dojo-attach-point="nextPageButton"></div>
         </div>
 
+        <div data-dojo-attach-point="playerAfterToolbarDiv" class="reportPlayer_playerAfterToolbarDiv"></div>
     </div>
 
     <div data-dojo-attach-point="errorViewDiv" class="esriGEReportPlayerErrorMessage">

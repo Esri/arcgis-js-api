@@ -50,7 +50,7 @@
     </p>
     <p>Anta som exempel att du har GPS-m&auml;tningar av orkaner var 10 minut. Varje GPS-m&auml;tning registrerar orkanens namn, plats, registreringstid och vindhastighet. Med hj&auml;lp av dessa f&auml;lt kan du till exempel skapa en h&auml;ndelse d&auml;r en uppm&auml;tt vindhastighet p&aring; &ouml;ver 208 km/h r&auml;knas som en h&auml;ndelse med titeln  <code>Katastrofl&auml;ge</code>. Om du inte st&auml;ller in n&aring;got slutvillkor avslutas h&auml;ndelsen n&auml;r geoobjektet inte l&auml;ngre uppfyller startvillkoret (vindhastigheten sjunker under 208 km/h).
     </p>
-    <p>I ett annat exempel kan vi anta att du &ouml;vervakar koncentrationer av kemiskt &auml;mne i det lokala vattentaget med hj&auml;lp av ett f&auml;lt som heter  <code>contanimateLevel</code>. Du vet att de rekommenderade niv&aring;erna ligger under 0,01 mg/L, medan niv&aring;er &ouml;ver 0,03 mg/L r&auml;knas som farliga. F&ouml;r att uppt&auml;cka h&auml;ndelser d&auml;r v&auml;rden &ouml;ver 0,03 mg/L r&auml;knas som en h&auml;ndelse och f&ouml;rblir en h&auml;ndelse tills f&ouml;roreningsniv&aring;erna har &aring;terg&aring;tt till de normala, skapar du en h&auml;ndelse med ett startvillkor p&aring; <code>contanimateLevel &gt; 0,03</code> och ett slutvillkor p&aring; <code>contanimateLevel &lt; 0,01</code>. D&aring; markeras alla sekvenser d&auml;r v&auml;rdena &ouml;verstiger 0,03 mg/L fram tills dess att v&auml;rdet &aring;ter &auml;r under 0,01.
+    <p>I ett annat exempel kan vi anta att du &ouml;vervakar koncentrationer av kemiskt &auml;mne i det lokala vattentaget med hj&auml;lp av ett f&auml;lt som heter  <code>contaminateLevel</code>. Du vet att de rekommenderade niv&aring;erna ligger under 0,01 mg/L, medan niv&aring;er &ouml;ver 0,03 mg/L r&auml;knas som farliga. F&ouml;r att uppt&auml;cka h&auml;ndelser d&auml;r v&auml;rden &ouml;ver 0,03 mg/L r&auml;knas som en h&auml;ndelse och f&ouml;rblir en h&auml;ndelse tills f&ouml;roreningsniv&aring;erna har &aring;terg&aring;tt till de normala, skapar du en h&auml;ndelse med ett startvillkor p&aring; <code>contaminateLevel &gt; 0,03</code> och ett slutvillkor p&aring; <code>contaminateLevel &lt; 0,01</code>. D&aring; markeras alla sekvenser d&auml;r v&auml;rdena &ouml;verstiger 0,03 mg/L fram tills dess att v&auml;rdet &aring;ter &auml;r under 0,01.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -68,7 +68,7 @@
         <div><h2>Välj ett eller flera fält att identifiera spår ifrån</h2></div>
         <hr/>
         <div>
-            <p> De f&auml;lt som representerar sp&aring;ridentifieraren. Du kan anv&auml;nda ett eller flera f&auml;lt f&ouml;r att representera unika v&auml;rden f&ouml;r sp&aring;r.
+            <p>De f&auml;lt som representerar sp&aring;ridentifieraren. Du kan anv&auml;nda ett eller flera f&auml;lt f&ouml;r att representera unika v&auml;rden f&ouml;r sp&aring;r.
             </p>
             <p>Om du exempelvis rekonstruerar orkansp&aring;r kan du anv&auml;nda orkanens namn som sp&aring;rf&auml;lt.
             </p>
@@ -82,6 +82,8 @@
             </p>
             <p>Anta att du till exempel vill bli varnad om summan av f&auml;lten  <code>concentration_1</code> och <code>concentration_2</code> &auml;r st&ouml;rre &auml;n <code>concentration_3</code>.   Det g&ouml;r du genom att till&auml;mpa f&ouml;ljande villkor <code>($feature[&quot;concentration_1&quot;] +  $feature[&quot;concentration_2&quot;]) &gt; $feature[&quot;concentration_3&quot;])</code>.
             </p>
+            <p>Om du var intresserad av hur koncentrationerna har f&ouml;r&auml;ndrats &ouml;ver tid och ville bli varnad n&auml;r den aktuella  <code>concentration_1</code> var st&ouml;rre &auml;n de tv&aring; f&ouml;reg&aring;ende m&auml;tningarna av <code>concentration_2</code>, skulle du kunna anv&auml;nda ett uttryck som <code>$feature[&quot;concentration_1&quot;] &gt;   $track.field[&quot;concentration_2&quot;].history(-3,-1)</code>.
+            </p>
         </div>
     </div>
     <div id="endConditionExpression">
@@ -91,6 +93,8 @@
             <p>Om du vill kan du l&auml;gga till ett villkor med hj&auml;lp av uttrycksskaparen f&ouml;r att fastst&auml;lla slutet p&aring; en h&auml;ndelse. Om slutvillkoret som du anger &auml;r sant &auml;r geoobjektet inte l&auml;ngre en h&auml;ndelse. Om du inte anger ett slutvillkor avslutas en h&auml;ndelse n&auml;r startvillkoret inte l&auml;ngre &auml;r sant.    
             </p>
             <p>S&auml;g att du till exempel vill bli varnad n&auml;r summan av f&auml;lten  <code>concentration_1</code> och <code>concentration_2</code> &auml;r st&ouml;rre &auml;n <code>concentration_3</code>, och du vill att h&auml;ndelsen ska avslutas om <code>concentration_4</code> &auml;r mindre &auml;n <code>concentration_1</code>. Det g&ouml;r du genom att till&auml;mpa ett startvillkor p&aring; <code>($feature[&quot;concentration_1&quot;] +  $feature[&quot;concentration_2&quot;]) &gt; ($join[&quot;income&quot;] * .20)</code> och ett slutvillkor p&aring; <code>($feature[&quot;concentration_4&quot;] &lt; $feature[&quot;concentration_1&quot;])</code>.
+            </p>
+            <p>Om du ville att en incident skulle sluta n&auml;r medelv&auml;rdet av den aktuella  <code>concentration_1</code> och de fyra f&ouml;reg&aring;ende m&auml;tningarna var st&ouml;rre &auml;n den f&ouml;rsta m&auml;tningen, skulle du kunna anv&auml;nda ett uttryck som <code>$track.field[&quot;concentration_1&quot;].history(-5) &gt; $track.field[&quot;concentration_1&quot;].history(0)</code>.
             </p>
         </div>
     </div>
@@ -113,7 +117,7 @@
         <div><h2>Resultatlagrets namn</h2></div>
         <hr/>
         <div>
-            <p> Det h&auml;r &auml;r namnet p&aring; lagret som skapas i <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns misslyckas verktyget.
+            <p> Namnet p&aring; lagret som skapas i <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns misslyckas verktyget.
             </p>
             <p>Om du anv&auml;nder listrutan  <b>Spara resultat i</b> kan du ange namnet p&aring; en mapp i <b>Mitt inneh&aring;ll</b> d&auml;r resultatet ska sparas.
             </p>

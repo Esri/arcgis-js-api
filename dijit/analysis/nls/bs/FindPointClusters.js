@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
-define({clustersLabel:"Pronađi klastere za sloj ${inputLayerName}.",chooseLayerLabel:"Izaberite sloj za koji će se pronaći klasteri",minClusterPtsLabel:"Minimalni broj točaka koji će se smatrati klasterom",limitSearchLabel:"Ograniči raspon pretraživanja na (neobavezno)",limitSearchReqLabel:"Limit the search range to",outputLayerName:"Pronađi klastere za ${inputLayerName}",itemDescription:"Sloj geoobjekata koji je generiran pokretanjem rješenja Pronađi klastere točaka za ${inputLayerName}.",itemTags:"Rezultat analize, Pronađi klastere točaka, ${inputLayerName}",itemSnippet:"Sloj geoobjekata koji je generiran funkcijom Pronađi klastere točaka"});
+define({clustersLabel:"Pronađi klastere za sloj ${inputLayerName}.",chooseLayerLabel:"Izaberite sloj za koji će se pronaći klasteri",minClusterPtsLabel:"Minimalni broj točaka koji će se smatrati klasterom",limitSearchLabel:"Ograniči raspon pretraživanja na (neobavezno)",limitSearchReqLabel:"Ograniči raspon pretraživanja na",outputLayerName:"Pronađi klastere za ${inputLayerName}",itemDescription:"Sloj geoobjekata koji je generiran pokretanjem rješenja Pronađi klastere točaka za ${inputLayerName}.",itemTags:"Rezultat analize, Pronađi klastere točaka, ${inputLayerName}",itemSnippet:"Sloj geoobjekata koji je generiran funkcijom Pronađi klastere točaka"});

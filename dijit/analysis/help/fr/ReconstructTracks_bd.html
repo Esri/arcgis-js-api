@@ -44,7 +44,7 @@
         <h2>Reconstruire les pistes</h2><p/>
         <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Reconstruire les pistes"></h2>
         <hr/>
-    <p>Cet outil fonctionne avec une couche temporelle d'entit&eacute;s ponctuelles ou surfaciques qui repr&eacute;sentent un  <code>instant</code> donn&eacute; dans le temps.   Il commence par identifier les entit&eacute;s qui appartiennent &agrave; une piste &agrave; l'aide d'un identifiant. En utilisant l'heure de chaque emplacement, les pistes sont class&eacute;es s&eacute;quentiellement et transform&eacute;es en une ligne ou un polygone repr&eacute;sentant la trajectoire du d&eacute;placement au fil du temps. L'entr&eacute;e peut &eacute;galement &ecirc;tre buff&eacute;ris&eacute;e par un champ, ce qui g&eacute;n&egrave;re un polygone &agrave; chaque emplacement. Ces points buff&eacute;ris&eacute;s (ou si les entr&eacute;es sont des polygones) sont ensuite joints s&eacute;quentiellement pour cr&eacute;er une piste sous forme de polygone o&ugrave; la longueur est repr&eacute;sentative de l'attribut d'int&eacute;r&ecirc;t. Les pistes g&eacute;n&eacute;r&eacute;es poss&egrave;dent une heure de d&eacute;but et de fin, qui repr&eacute;sentent temporellement la premi&egrave;re et la derni&egrave;re entit&eacute;s dans une piste donn&eacute;e. Lorsque les pistes sont cr&eacute;&eacute;es, des statistiques concernant les entit&eacute;s en entr&eacute;e sont calcul&eacute;es et attribu&eacute;es &agrave; la piste en sortie. La statistique la plus &eacute;l&eacute;mentaire est le total de points au sein de la surface, mais vous pouvez &eacute;galement en calculer d'autres.
+    <p>Cet outil fonctionne avec une couche temporelle d&rsquo;entit&eacute;s ponctuelles ou surfaciques qui repr&eacute;sentent un  <code>instant</code> donn&eacute; dans le temps. Il commence par identifier les entit&eacute;s qui appartiennent &agrave; une piste &agrave; l'aide d'un identifiant. En utilisant l&rsquo;heure de chaque emplacement, les pistes sont class&eacute;es s&eacute;quentiellement et transform&eacute;es en une ligne ou une surface repr&eacute;sentant la trajectoire du d&eacute;placement au fil du temps. L&rsquo;entr&eacute;e peut &eacute;galement &ecirc;tre buff&eacute;ris&eacute;e par un champ, ce qui g&eacute;n&egrave;re une surface &agrave; chaque emplacement. Ces points buff&eacute;ris&eacute;s, ou les surfaces en entr&eacute;e, sont ensuite joints s&eacute;quentiellement pour cr&eacute;er une piste sous forme de surface pour laquelle la longueur est repr&eacute;sentative de l&rsquo;attribut d&rsquo;int&eacute;r&ecirc;t. Les pistes g&eacute;n&eacute;r&eacute;es poss&egrave;dent une heure de d&eacute;but et de fin, qui repr&eacute;sentent temporellement la premi&egrave;re et la derni&egrave;re entit&eacute;s dans une piste donn&eacute;e. Lorsque les pistes sont cr&eacute;&eacute;es, des statistiques concernant les entit&eacute;s en entr&eacute;e sont calcul&eacute;es et attribu&eacute;es &agrave; la piste en sortie. La statistique la plus &eacute;l&eacute;mentaire est le total de points au sein de la surface, mais vous pouvez &eacute;galement en calculer d'autres.
     </p>
     <p>Les entit&eacute;s dans les couches temporelles peuvent &ecirc;tre repr&eacute;sent&eacute;es de deux mani&egrave;res&nbsp;:
         <ul>
@@ -57,7 +57,7 @@
     </p>
     <p>Supposons par exemple que vous poss&eacute;diez des mesures GPS d'ouragans toutes les 10&nbsp;minutes. Chaque mesure GPS consigne le nom de l'ouragan, sa position, l'heure d'enregistrement et la vitesse du vent. Avec ces informations, vous pouvez cr&eacute;er des pistes pour chaque ouragan en utilisant le nom pour identifier la piste. Des pistes pour chaque ouragan sont alors g&eacute;n&eacute;r&eacute;es. Vous pouvez en outre calculer des statistiques, telles que la vitesse moyenne, maximale et minimale du vent pour chaque ouragan, ainsi que le total de mesures au sein de chaque piste.
     </p>
-    <p>En utilisant le m&ecirc;me exemple, vous pouvez buff&eacute;riser vos pistes en fonction de la vitesse du vent. Cette op&eacute;ration a pour effet de buff&eacute;riser chaque mesure en fonction du champ de vitesse du vent &agrave; cet emplacement et de joindre les surfaces buff&eacute;ris&eacute;es ensemble, g&eacute;n&eacute;rant un polygone repr&eacute;sentatif de la trajectoire de la piste, ainsi que l'&eacute;volution de la vitesse du vent au fur et &agrave; mesure de la progression des ouragans.   
+    <p>En utilisant le m&ecirc;me exemple, vous pouvez buff&eacute;riser vos pistes en fonction de la vitesse du vent. Cette op&eacute;ration a pour effet de buff&eacute;riser chaque mesure en fonction du champ de vitesse du vent &agrave; cet emplacement et de joindre les surfaces buff&eacute;ris&eacute;es ensemble, g&eacute;n&eacute;rant une surface repr&eacute;sentative de la trajectoire de la piste, ainsi que l&rsquo;&eacute;volution de la vitesse du vent au fur et &agrave; mesure de la progression des ouragans.   
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -95,7 +95,9 @@
         <div>
             <p>Equation utilis&eacute;e pour calculer la distance de la zone tampon autour des entit&eacute;s en entr&eacute;e. Cette &eacute;quation peut &ecirc;tre g&eacute;n&eacute;r&eacute;e &agrave; l'aide de la calculatrice de zone tampon. En outre, les op&eacute;rations &eacute;l&eacute;mentaires, telles que l'ajout, la soustraction, la multiplication et la division sont prises en charge. Les valeurs sont calcul&eacute;es &agrave; l'aide du syst&egrave;me de coordonn&eacute;es d'analyse. La couche doit se trouver dans un syst&egrave;me de coordonn&eacute;es projet&eacute;es ou la r&eacute;f&eacute;rence spatiale de traitement doit &ecirc;tre d&eacute;finie sur un syst&egrave;me de coordonn&eacute;es projet&eacute;es &agrave; l'aide des  <b>environnements d'analyse</b> si une zone tampon est appliqu&eacute;e.
             </p>
-            <p>Une &eacute;quation telle que  <code>$feature.windspeed * 1000</code> applique une zone tampon de 1&nbsp;000 multipli&eacute;e par la <i>vitesse du vent</i> du champ. Vous pouvez utiliser plusieurs champs dans la calculatrice de zone tampon.
+            <p>Une &eacute;quation telle que  <code>$feature.windspeed * 1000</code> applique une zone tampon de 1&nbsp;000 multipli&eacute;e par le champ <i>windspeed</i>. Vous pouvez utiliser plusieurs champs dans la calculatrice de zone tampon.
+            </p>
+            <p> Vous pouvez &eacute;galement sp&eacute;cifier une expression de suivi. Par exemple, vous pouvez calculer la somme de la valeur des champs <i>windspeed</i> pour l&rsquo;entit&eacute; actuelle et pour les deux entit&eacute;s pr&eacute;c&eacute;dentes avec une &eacute;quation du type <code>$track.field(windspeed).history(-3)</code>. &Agrave; chaque emplacement, la somme de la mesures <i>windspeed</i> actuelle et des deux mesures pr&eacute;c&eacute;dentes seront calcul&eacute;es et buff&eacute;ris&eacute;es.
             </p>
         </div>
     </div>
@@ -103,7 +105,7 @@
         <div><h2>Sélectionner une heure en fonction de laquelle fractionner les pistes (facultatif)</h2></div>
         <hr/>
         <div>
-            <p>Temps utilis&eacute; pour fractionner les pistes. Si les points ou polygones en entr&eacute;e sont s&eacute;par&eacute;s par une dur&eacute;e plus longue que la fraction temporelle, ils sont fractionn&eacute;s en diff&eacute;rentes pistes.
+            <p>Temps utilis&eacute; pour fractionner les pistes. Si les points ou surfaces en entr&eacute;e sont s&eacute;par&eacute;s par une dur&eacute;e plus longue que la fraction temporelle, ils sont fractionn&eacute;s en diff&eacute;rentes pistes.
             </p>
             <p>Si vous sp&eacute;cifiez une fraction temporelle et une distance temporelle, les pistes sont fractionn&eacute;es lorsque l&rsquo;une des conditions ou les deux sont &eacute;tablies. 
             </p>
@@ -115,7 +117,7 @@
         <div><h2>Sélectionner une distance en fonction de laquelle fractionner les pistes (facultatif)</h2></div>
         <hr/>
         <div>
-            <p> Distance utilis&eacute;e pour fractionner les pistes. Si les points ou polygones en entr&eacute;e sont s&eacute;par&eacute;s par une dur&eacute;e plus large que la distance temporelle, ils sont fractionn&eacute;s en diff&eacute;rentes pistes.
+            <p> Distance utilis&eacute;e pour fractionner les pistes. Si les points ou surfaces en entr&eacute;e sont s&eacute;par&eacute;s par une distance plus large que la distance temporelle, ils sont fractionn&eacute;s en diff&eacute;rentes pistes.
             </p>
             <p>Si vous sp&eacute;cifiez une fraction temporelle et une distance temporelle, les pistes sont fractionn&eacute;es lorsque l&rsquo;une des conditions ou les deux sont &eacute;tablies. 
             </p>
@@ -125,9 +127,9 @@
         <div><h2>Ajouter des statistiques (facultatif)</h2></div>
         <hr/>
         <div>
-            <p> Vous pouvez calculer des statistiques sur des entit&eacute;s synth&eacute;tis&eacute;es. Dans les champs num&eacute;riques, vous pouvez calculer ce qui suit&nbsp;:
+            <p> Vous pouvez calculer des statistiques sur des entit&eacute;s synth&eacute;tis&eacute;es. Dans les champs num&eacute;riques,  vous pouvez calculer ce qui suit&nbsp;:
                 <ul>
-                    <li>Total&nbsp;: calcule le nombre de valeurs non Null. Peut &ecirc;tre utilis&eacute; sur des champs num&eacute;riques ou des cha&icirc;nes. Le total de [Null, 0, 2] est &eacute;gal &agrave; 2.
+                    <li>Count (Total)&nbsp;: calcule le nombre de valeurs non Null. Il peut &ecirc;tre utilis&eacute; sur des champs num&eacute;riques ou des cha&icirc;nes. Le total de [Null, 0, 2] est &eacute;gal &agrave; 2.
                     </li>
                     <li>Somme&nbsp;: somme des valeurs num&eacute;riques dans un champ. La somme de [Null, 0, 3] est &eacute;gale &agrave; 3.
                     </li>
@@ -139,14 +141,14 @@
                     </li>
                     <li>Plage&nbsp;: plage d'un champ num&eacute;rique. Elle est calcul&eacute;e pour correspondre aux valeurs minimales soustraites de la valeur maximale. La plage de [0, Null, 1] est &eacute;gale &agrave; 1. La plage de [Null, 4] est &eacute;gale &agrave; 0.
                     </li>
-                    <li>Variance&nbsp;: variance d'un champ num&eacute;rique dans une piste. La variance de [1] est la valeur Null. La variance de [Null, 1,1, 1] est &eacute;gale &agrave; 1.
+                    <li>Variance&nbsp;: variance d'un champ num&eacute;rique dans une piste. La variance de [1] est la valeur Null. La variance de [null, 1,0,1,1] est &eacute;gale &agrave; 0,25.
                     </li>
-                    <li>Ecart type&nbsp;: &eacute;cart type d'un champ num&eacute;rique. L'&eacute;cart type de [1] est la valeur Null. L'&eacute;cart type de [Null, 1,1, 1] est &eacute;gale &agrave; 1. 
+                    <li>Ecart type&nbsp;: &eacute;cart type d'un champ num&eacute;rique. L'&eacute;cart type de [1] est la valeur Null. L&rsquo;&eacute;cart type de [null, 1,0,1,1] est &eacute;gale &agrave; 0,5. 
                     </li>
                 </ul>
                 
             </p>
-            <p>Dans les champs de cha&icirc;ne, vous pouvez calculer ce qui suit&nbsp;:
+            <p>Dans les champs de type cha&icirc;ne,  vous pouvez calculer ce qui suit&nbsp;:
                 <ul>
                     <li>Total&nbsp;: le nombre de cha&icirc;nes diff&eacute;rentes de la valeur Null.
                     </li>
@@ -161,16 +163,16 @@
         <div><h2>Choisir une instance ArcGIS Data Store dans laquelle enregistrer les résultats</h2></div>
         <hr/>
         <div>
-            <p>Les r&eacute;sultats de l'outil GeoAnalytic sont stock&eacute;s dans une instance ArcGIS Data Store et s'affichent en tant que couche d'entit&eacute;s dans  Portal for ArcGIS. Dans la plupart des cas, les r&eacute;sultats doivent &ecirc;tre stock&eacute;s dans le stockage des donn&eacute;es spatio-temporelles, ce qui est le param&egrave;tre par d&eacute;faut. Dans certains cas, il peut &ecirc;tre judicieux d'enregistrer les r&eacute;sultats dans un stockage des donn&eacute;es relationnelles. Voici les raisons pour lesquelles stocker les r&eacute;sultats dans le stockage des donn&eacute;es relationnelles&nbsp;: 
+            <p>Les r&eacute;sultats de l&rsquo;outil GeoAnalytics sont stock&eacute;s dans une instance ArcGIS Data Store et s&rsquo;affichent en tant que couche d&rsquo;entit&eacute;s dans  Portal for ArcGIS. Dans la plupart des cas, les r&eacute;sultats doivent &ecirc;tre stock&eacute;s dans le stockage des donn&eacute;es spatio-temporelles, ce qui est le param&egrave;tre par d&eacute;faut. Dans certains cas, il peut &ecirc;tre judicieux d&rsquo;enregistrer les r&eacute;sultats dans un data store relationnel. Voici les raisons pour lesquelles stocker les r&eacute;sultats dans le data store relationnel&nbsp;: 
                 <ul>
-                    <li>Utiliser vos r&eacute;sultats dans une collaboration de portail &agrave; portail.
+                    <li>Vous pouvez utiliser les r&eacute;sultats en mode de collaboration de portail &agrave; portail.
                     </li>
-                    <li>Activer les fonctionnalit&eacute;s de synchronisation avec vos r&eacute;sultats.
+                    <li>Vous pouvez activer la synchronisation de vos r&eacute;sultats.
                     </li>
                 </ul>
                 
             </p>
-            <p>Vous ne devez pas utiliser le stockage des donn&eacute;es relationnelles si vous pensez que vos r&eacute;sultats GeoAnalytics vont augmenter et que vous devez tirer part des fonctionnalit&eacute;s du stockage de Big Data spatio-temporelles pour g&eacute;rer les grands volumes de donn&eacute;es. 
+            <p>Vous ne devez pas utiliser le data store relationnel&nbsp;si vous pensez que vos r&eacute;sultats GeoAnalytics vont augmenter et que vous devez tirer parti des fonctionnalit&eacute;s du le data store Big Data spatio-temporel pour g&eacute;rer les grands volumes de donn&eacute;es.
             </p>
         </div>
     </div>
@@ -178,7 +180,7 @@
         <div><h2>Nom de la couche de résultat</h2></div>
         <hr/>
         <div>
-            <p> Il s&rsquo;agit du nom de la couche qui sera sur dans votre page <b>My Content (Mon contenu)</b> et ajout&eacute;e &agrave; la carte. Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, l'outil &eacute;choue.
+            <p> Le nom de la couche qui sera cr&eacute;&eacute;e dans la page <b>My Content (Mon contenu)</b> et ajout&eacute;e &agrave; la carte. Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, l'outil &eacute;choue.
             </p>
             <p>La zone de liste d&eacute;roulante  <b>Save result in (Enregistrer le r&eacute;sultat dans)</b> vous permet de sp&eacute;cifier le nom d&rsquo;un dossier dans <b>My content (Mon contenu)</b> o&ugrave; le r&eacute;sultat sera enregistr&eacute;.
             </p>

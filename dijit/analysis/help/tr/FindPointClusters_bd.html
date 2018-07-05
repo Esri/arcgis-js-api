@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Nokta Kümelerini Bul</h2><p/>
+        <h2><img src="../images/GUID-40DA7286-67EA-4333-91C5-4CD527C21B4A-web.png" alt="Nokta K&uuml;melerini Bul"></h2>
+        <hr/>
+    <p> Nokta K&uuml;melerini Bul aracı, ortam g&uuml;r&uuml;lt&uuml;s&uuml;ndeki nokta &ouml;zellikli k&uuml;melerini mekansal dağılımlarına g&ouml;re bulur.
+    </p>
+    <p>Bir sivil toplum &ouml;rg&uuml;t&uuml;, haşere kaynaklı spesifik bir hastalık &uuml;zerinde &ccedil;alışıyor. Bir &ccedil;alışma alanında, bazıları istila edilmiş ve bazıları edilmemiş olan haneleri temsil eden bir nokta veri k&uuml;mesine sahiptir. Bir analist,  Nokta K&uuml;melerini Bul aracını kullanarak bir alanda işlem yapmaya başlayıp haşerelerin yok edilmesine yardımcı olmak i&ccedil;in, istila edilmiş hane halklarının k&uuml;melerini belirleyebilir.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Kümelerin bulunacağı katmanı seçin</h2></div>
+        <hr/>
+        <div>
+            <p>K&uuml;melerin bulunacağı nokta katmanıdır. Katmanların izd&uuml;ş&uuml;ml&uuml; bir mekansal referansta olması gerekir veya işlemci mekansal başvuru  <b>Analiz Ortamları</b> kullanılarak izd&uuml;ş&uuml;mlenmiş bir koordinat sistemine ayarlanmalıdır.
+            </p>
+            <p>Haritanızdan bir katman se&ccedil;ebileceğiniz gibi, a&ccedil;ılan listenin en altından  <b>Katmanlara G&ouml;zat</b> &ouml;gesini belirleyerek b&uuml;y&uuml;k veri dosya paylaşımı veri k&uuml;mesi veya detay katmanı i&ccedil;eriğinize g&ouml;z atabilirsiniz.
+            </p>
+        </div>
+    </div>
+    <div id="minFeaturesCluster">
+        <div><h2>Bir küme olarak kabul edilecek minimum nokta sayısı</h2></div>
+        <hr/>
+        <div>
+            <p>Bir k&uuml;menin &ccedil;ekirdeğini oluşturmak i&ccedil;in minimum detay sayısı.
+            </p>
+        </div>
+    </div>
+    <div id="searchDistance">
+        <div><h2>Arama aralığını şununla sınırla:</h2></div>
+        <hr/>
+        <div>
+            <p>Detayların aynı k&uuml;menin par&ccedil;ası olması i&ccedil;in g&ouml;z &ouml;n&uuml;nde bulundurulması gereken maksimum mesafe.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Sonuç katmanı adı</h2></div>
+        <hr/>
+        <div>
+            <p>  <b>İ&ccedil;eriğim</b>'de oluşturulacak ve haritaya eklenecek katmanın adı. Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Detay katmanı zaten varsa ara&ccedil; &ccedil;alışmaz.
+            </p>
+            <p> <b>Sonu&ccedil;ları kaydet</b> a&ccedil;ılır kutusunu kullanarak <b>İ&ccedil;eriğim</b> alanında sonucun kaydedileceği klas&ouml;r adını belirleyebilirsiniz.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -333,7 +333,7 @@
                 </tr>
                 <tr data-dojo-attach-point="_cellSizeRow">
                   <td style="padding-right:0;margin-top:1.0em;idth:50%;">
-                    <input type="text" data-dojo-type="dijit/form/NumberTextBox" class="esriLeadingMargin2" data-dojo-props="intermediateChanges:true,required:false,missingMessage:'${i18n.distanceMsg}'" data-dojo-attach-point="_cellSizeInput" style="width:75%;">
+                    <input type="text" data-dojo-type="dijit/form/NumberTextBox" class="esriLeadingMargin2" data-dojo-props="intermediateChanges:true,required:false,missingMessage:'${i18n.distanceMsg}',constraints:{min:0.000001}" data-dojo-attach-point="_cellSizeInput" style="width:75%;">
                   </td>
                   <td colspan="2" style="padding-left:0.25em;margin-top:1.0em;width:50%;">
                     <select class="mediumInput esriAnalysisSelect" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_cellSizeUnits" style="width:80%;table-layout:fixed;">
@@ -355,7 +355,7 @@
                 </tr>
                 <tr data-dojo-attach-point="_distanceBandRow">
                   <td style="padding-right:0;margin-top:1.0em;idth:50%;">
-                    <input type="text" data-dojo-type="dijit/form/NumberTextBox" class="esriLeadingMargin2" data-dojo-props="intermediateChanges:true,required:false,missingMessage:'${i18n.distanceMsg}'" data-dojo-attach-point="_dbandInput" style="width:75%;">
+                    <input type="text" data-dojo-type="dijit/form/NumberTextBox" class="esriLeadingMargin2" data-dojo-props="intermediateChanges:true,required:false,missingMessage:'${i18n.distanceMsg}',constraints:{min:0.000001}" data-dojo-attach-point="_dbandInput" style="width:75%;">
                   </td>
                   <td colspan="2" style="padding-left:0.25em;margin-top:1.0em;width:50%;">
                     <select class="mediumInput esriAnalysisSelect" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_dbandUnits" style="width:80%;table-layout:fixed;">

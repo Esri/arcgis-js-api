@@ -45,6 +45,8 @@
             <ul>
                 <li> <b>Punten aggregeren</b>
                 </li>
+                <li> <b>Multivariabel rooster bouwen</b>
+                </li>
                 <li> <b>Objecten samenvoegen</b>
                 </li>
                 <li> <b>Traceringen reconstrueren</b>
@@ -53,21 +55,27 @@
                 </li>
                 <li> <b>Samenvatten in</b>
                 </li>
-                <li> <b>Incidenten detecteren</b>
+                <li> <b>Geocodeer Locaties vanuit Tabel</b>
+                </li>
+                <li> <b>Incidenten Detecteren</b>
                 </li>
                 <li> <b>Gelijksoortige locaties zoeken</b>
                 </li>
                 <li> <b>Dichtheid berekenen</b>
                 </li>
+                <li> <b>Puntclusters zoeken</b>
+                </li>
                 <li> <b>Hotspots zoeken</b>
                 </li>
                 <li> <b>Buffers maken</b>
                 </li>
+                <li> <b>Data bijvoegen</b>
+                </li>
+                <li> <b>Veld Berekenen</b>
+                </li>
                 <li> <b>Kopi&euml;ren naar gegevensopslag</b>
                 </li>
-                <li> <b>Bereken veld</b>
-                </li>
-                <li> <b>Geocodeer locaties vanuit tabel</b>
+                <li> <b>Lagen bovenop plaatsen</b>
                 </li>
             </ul>
             
@@ -78,9 +86,11 @@
     <div id="SummarizeDataCategory" class="largesize">
         <h2>Gegevens samenvatten</h2>
         <hr/>
-        <p>De toolset Gegevens samenvatten bevat tools die totale tellingen, lengtes, gebieden en eenvoudige beschrijvende statistieken van objecten en hun attributen berekenen binnen oppervlakken of dicht bij andere objecten.
+        <p> De toolset Gegevens samenvatten bevat tools die totale tellingen, lengtes, gebieden en eenvoudige beschrijvende statistieken van objecten en hun attributen berekenen binnen oppervlakken of dicht bij andere objecten.
             <ul>
                 <li> <b>Punten aggregeren</b> berekent statistieken over punten die binnen specifieke oppervlakken of bins vallen.
+                </li>
+                <li> <b>Multivariabel grid bouwen</b> genereert een grid met vierkante of zeshoekige bins en berekent waarden voor elke bin gebaseerd op de nabijheid van elke invoerlaag.
                 </li>
                 <li> <b>Objecten samenvoegen</b> berekent statistieken over objecten die een ruimtelijke, tijdelijke of attribuutrelatie delen met andere objecten.
                 </li>
@@ -88,7 +98,7 @@
                 </li>
                 <li> <b>Attributen samenvatten</b> berekent statistieken over objectgegevens of gegevens in tabelvorm die attributen delen.
                 </li>
-                <li> <b>Samenvatten in</b> berekent statistieken voor gebiedsobjecten en attributen die elkaar overlappen.
+                <li> <b>Samenvatten in</b>  berekent statistieken voor gebiedsobjecten en attributen die elkaar overlappen.
                 </li>
             </ul>
             
@@ -107,11 +117,37 @@
 <hr/>
             <p>Met behulp van een laag van puntobjecten en oftewel een laag van gebiedsobjecten of bins gedefinieerd door een gespecificeerde afstand, bepaalt deze tool welke punten binnen elk gebied vallen en berekent de tool de statistieken voor alle punten binnen elk gebied of bin. U kunt eventueel ook tijdsplitsing toepassen met deze tool. 
             </p>
-            <p> Bijvoorbeeld
+            <p>Hier volgen enkele voorbeelden:
                 <ul>
                     <li>Bereken aan de hand van bepaalde puntlocaties van criminele incidenten het aantal misdrijven per gemeente of ander administratieve regio.
                     </li>
                     <li>Zoek de hoogste en laagste maandinkomsten voor franchiselocaties aan de hand van 100km bins.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="BuildMultiVariableGridTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Multivariabel rooster bouwen</h2></td>
+                    <td>
+                    <img src="../images/GUID-B78AB95A-E412-4983-ADBA-3678BF207A79-web.png" class="titleImage" alt="Gegevens bijvoegen workflowdiagram">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>De Multivariabel rooster bouwen tool genereert een rooster met vierkante of zeshoekige bins en berekend variabelen voor elke bin gebaseerd op de nabijheid van een of meer invoerlaag.
+            </p>
+            <p>Hier volgen enkele voorbeelden:
+                <ul>
+                    <li>Welk deel van de stad is het minst toegankelijk met het openbaar vervoer, gelet op de verschillende lagen van de infrastructuur van het openbaar vervoer?
+                    </li>
+                    <li>Wat is de naam van het waterlichaam dat het dichtst bij elke locatie in de V.S. ligt, gezien de lagen van de waterwegen, zoals meren en rivieren?
+                    </li>
+                    <li>Waar in de V.S. is de variatie van het inkomen in 50 mijl rondom het grootst gezien een laag van inkomen van een huishouden?
                     </li>
                 </ul>
                 
@@ -131,7 +167,7 @@
 <hr/>
             <p>Door objectlagen of gegevens in tabelvorm te gebruiken, kunt u objecten samenvoegen gebaseerd op specifieke relaties tussen de invoerlagen of tabellen. Samenvoegingen worden bepaald door ruimtelijke, tijdelijke en attribuutrelaties en samenvattende statistieken kunnen optioneel worden berekend.  
             </p>
-            <p>Bijvoorbeeld
+            <p>Hier volgen enkele voorbeelden:
                 <ul>
                     <li>Voeg aan de hand van puntlocaties van criminaliteitsincidenten met een tijd, de criminaliteitsdata toe, specificeer een ruimtelijke relatie van misdaden binnen 1 kilometer van elkaar, en die binnen 1 uur na elkaar zijn ontstaan om te bepalen of er een reeks misdrijven dicht bij elkaar was binnen een bepaalde tijd en ruimte.
                     </li>
@@ -155,7 +191,7 @@
 <hr/>
             <p>Aan de hand van een laag met tijdingeschakelde puntobjecten of polygoonobjecten die voor een  <code>moment</code> in de tijd staan, kan met deze tool bepaald worden welke invoerobjecten bij een tracering horen waarbij de invoer op volgorde van tijd wordt gezet. Statistieken worden optioneel berekend voor de invoerobjecten binnen elke tracering.
             </p>
-            <p> Bijvoorbeeld
+            <p> Hier volgen enkele voorbeelden:
                 <ul>
                     <li>Aan de hand van puntlocaties en tijd van orkaanmetingen, worden de gemiddelde windsnelheid en max winddruk van de orkaan gemeten.
                     </li>
@@ -179,31 +215,31 @@
 <hr/>
             <p> Deze tool gebruikt object- of tabelgegevens om de statistieken voor gespecificeerde velden samen te vatten.
             </p>
-            <p> Bijvoorbeeld
+            <p>Hier volgen enkele voorbeelden:
                 <ul>
-                    <li> Aan de hand van de locaties van supermarkten met een veld <i>COMPANY-NAME</i>, worden de winkels samengevat op bedrijfsnaam om de statistieken van elk bedrijf te bepalen.
+                    <li>Aan de hand van de locaties van supermarkten met een veld  <i>COMPANY_NAME</i> worden de winkels samengevat op bedrijfsnaam om de statistieken van elk bedrijf te bepalen.
                     </li>
-                    <li>Aan de hand van een tabel van supermarkten met de velden  <i>COMPANY-NAME</i> en <i>COUNTY</i>, worden de winkels samengevat op bedrijfsnaam en provincie om de statistieken van elk bedrijf in elke provincie te bepalen.
+                    <li>Aan de hand van een tabel van supermarkten met de velden  <i>COMPANY_NAME</i> en <i>COUNTY</i>, worden de winkels samengevat op bedrijfsnaam en provincie om de statistieken van elk bedrijf in elke provincie te bepalen.
                     </li>
                 </ul>
                 
             </p>
             <br/>
         </div>
-        <div id="SummarizeWithinTool" class="regularsize">
+        <div id="SummarizeWithinTool" class="largesize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
                     <td><h2>Samenvatten in</h2></td>
                     <td>
-                    <img src="../images/GUID-90E0CB1F-EB97-4752-B2EE-452B7B45475E-web.png" class="titleImage" alt="Samenvatten in">
+                    <img src="../images/GUID-9B12DB3F-AA7B-41EB-87C6-D2DEC3D52DA9-web.png" class="titleImage" alt="Samenvatten in">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
             <p>Zoekt naar gebieden (en delen van gebieden) die overlappen tussen twee lagen en berekent statistieken over de overlapping. 
             </p>
-            <p> Bijvoorbeeld
+            <p>Hier volgen enkele voorbeelden:
                 <ul>
                     <li>Er is een kaartlaag met stroomgebieden en een laag met landgebruikgebieden per type landgebruik; bereken het totale oppervlak van het landgebruiktype voor elk stroomgebied. 
                     </li>
@@ -219,9 +255,9 @@
         <hr/>
         <p>Deze tools worden gebruikt om gebieden te identificeren die voldoen aan een aantal door u opgegeven criteria.  
             <ul>
-                <li> <b>Incidenten detecteren</b> werkt met tijdgestuurde lagen om te bepalen welke functies aan een opgegeven voorwaarde voldoen.
+                <li> <b>Incidenten Detecteren</b> werkt met tijdgestuurde lagen om te bepalen welke functies aan een opgegeven voorwaarde voldoen.
                 </li>
-                <li> <b>Locaties geocoderen uit tabel</b> converteert adressen naar co&ouml;rdinaten.
+                <li> <b>Locaties Geocoderen uit Tabel</b> converteert adressen naar co&ouml;rdinaten.
                 </li>
                 <li> <b>Gelijksoortige locaties zoeken</b> zoekt naar overeenkomende locaties onder een of meer referentielocaties op basis van de criteria die u opgeeft.
                 </li>
@@ -233,18 +269,16 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Incidenten detecteren</h2></td>
+                    <td><h2>Incidenten Detecteren</h2></td>
                     <td>
-                    <img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" class="titleImage" alt="Incidenten detecteren">
+                    <img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" class="titleImage" alt="Incidenten Detecteren">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p> <img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Incidenten detecteren">
+            <p>Deze tool werkt met een tijdgeschakelde laag van punten, lijnen, gebieden of tabellen die een tijdsmoment vertegenwoordigen. Met behulp van opeenvolgend geordende functies, oftewel tracks, bepaalt deze tool welke objecten interessante incidenten zijn. Incidenten worden bepaald door de voorwaarden die u opgeeft. 
             </p>
-            <p>Deze tool werkt met een tijdgeschakelde laag van punten, lijnen, gebieden of tabellen die een tijdsmoment vertegenwoordigen. Met behulp van opeenvolgend geordende functies, oftewel traceringen, bepaalt deze tool welke objecten interessante incidenten zijn. Incidenten worden bepaald door de voorwaarden die u opgeeft. 
-            </p>
-            <p>Bijvoorbeeld
+            <p>Hier volgen enkele voorbeelden:
                 <ul>
                     <li>Detecteer orkaanmetingen van orkanen in de categorie 4 op basis van een windsnelheidsattribuut.
                     </li>
@@ -255,24 +289,22 @@
             </p>
             <br/>
         </div>
-        <div id="GeocodeLocationsfromTableTool" class="regularsize">
+        <div id="GeocodeLocationsfromTableTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Geocodeer locaties vanuit tabel</h2></td>
+                    <td><h2>Geocodeer Locaties vanuit Tabel</h2></td>
                     <td>
-                    <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" class="titleImage" alt="Geocodeer locaties vanuit tabel">
+                    <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" class="titleImage" alt="Geocodeer Locaties vanuit Tabel">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p> <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" alt="Geocodeer locaties vanuit tabel">
-            </p>
             <p>Converteert adressen naar co&ouml;rdinaten. Gebruik deze tool in deeltabellen voor big databestanden.
             </p>
             <br/>
         </div>
-        <div id="FindSimilarLocationsTool" class="regularsize">
+        <div id="FindSimilarLocationsTool" class="largesize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -285,7 +317,7 @@
 <hr/>
             <p>Op basis van de criteria die u opgeeft meet Gelijksoortige locaties zoeken de overeenkomst van locaties in uw kandidaat-zoeklaag met een of meer referentielocaties. 
             </p>
-            <p>Bijvoorbeeld 
+            <p>Hier volgen enkele voorbeelden: 
                 <ul>
                     <li>Zoek de tien winkels die het meest op elkaar lijken door het aantal werknemers en de jaaromzet te onderzoeken.
                     </li>
@@ -296,14 +328,16 @@
             </p>
             <br/>
         </div>
-    <div id="AnalyzePatternsCategory" class="smallsize">
+    <div id="AnalyzePatternsCategory" class="regularsize">
         <h2>Patronen analyseren</h2>
         <hr/>
-        <p>Deze tools helpen u ruimtelijke patronen in uw gegevens te identificeren, kwantificeren en visualiseren.  
+        <p> Deze tools helpen u ruimtelijke patronen in uw gegevens te identificeren, kwantificeren en visualiseren.
             <ul>
                 <li> <b>Dichtheid berekenen</b> gebruikt bekende hoeveelheden van een bepaald fenomeen en spreidt deze hoeveelheden over de kaart.
                 </li>
                 <li>Met  <b>Hotspots zoeken</b> wordt statistisch significante clustering in het ruimtelijke patroon van uw gegevens ge&iuml;dentificeerd.
+                </li>
+                <li>Het  <b>Puntclusters zoeken</b> zoekt clusters van puntfeatures binnen omringend geluid gebaseerd op hun ruimtelijke distributie.
                 </li>
             </ul>
             
@@ -322,13 +356,37 @@
 <hr/>
             <p>De tool Dichtheid berekenen maakt een dichtheidskaart vanaf puntobjecten door bekende hoeveelheden van een bepaald fenomeen (voorgesteld als attributen van de punten) over de kaart te verspreiden. Het resultaat is een laag van gebieden die de dichtheid weergeven.
             </p>
-            <p>Bijvoorbeeld
+            <p>Hier volgen enkele voorbeelden:
                 <ul>
                     <li>Dichtheid berekenen van ziekenhuizen binnen een bepaalde streek. De resultaatlaag geeft gebieden weer met hoge en lage toegankelijkheid tot ziekenhuizen en deze informatie kan worden gebruikt om te beslissen waar nieuwe ziekenhuizen moeten worden gebouwd.
                     </li>
                     <li>Gebieden identificeren met een hoog risico op bosbranden op basis van historische locaties van bosbranden.
                     </li>
                     <li>Gemeenschappen lokaliseren die zich ver van belangrijke snelwegen bevinden om te bepalen waar nieuwe wegen moeten worden gebouwd.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="FindPointClustersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Puntclusters zoeken</h2></td>
+                    <td>
+                    <img src="../images/GUID-40DA7286-67EA-4333-91C5-4CD527C21B4A-web.png" class="titleImage" alt="Puntclusters zoeken">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Het Puntclusters zoeken tool zoekt clusters van puntfeatures binnen omringend geluid gebaseerd op hun ruimtelijke distributie.
+            </p>
+            <p>Hier volgen enkele voorbeelden:
+                <ul>
+                    <li>Clusters zoeken van huishoudens-met plagen omgericht verdelgingsacties uit te kunnen voeren.  
+                    </li>
+                    <li>Informeren en handelen met betrekking tot reddings- en evacuatiebehoeften op basis van de grootte en locatie van de clusters met behulp van geogelocaliseerde tweets die natuurrampen of terroristische aanvallen volgen.
                     </li>
                 </ul>
                 
@@ -381,7 +439,7 @@
 <hr/>
             <p>Een buffer is een gebied dat een bepaalde afstand vanaf een punt-, lijn- of polygoonobject dekt.
             </p>
-            <p>Bijvoorbeeld
+            <p>Hier volgen enkele voorbeelden:
                 <ul>
                     <li>Buffer met behulp van lineaire rivierobjecten elke rivier met 50 maal de breedte van de rivier om een voorgenomen oevergrens te bepalen.
                     </li>
@@ -392,14 +450,18 @@
             </p>
             <br/>
         </div>
-    <div id="ManageDataCategory" class="smallsize">
+    <div id="ManageDataCategory" class="regularsize">
         <h2>Data beheren</h2>
         <hr/>
-        <p>Deze tools worden gebruikt voor het dagelijkse beheer van geografische en tabulaire gegevens.
+        <p>Deze tools worden gebruikt voor het dagelijkse beheer van geografische en tabulaire gegevens. 
             <ul>
-                <li> <b>Veld berekenen</b> maakt een nieuw veld of wijzigt een bestaand veld en maakt een nieuwe laag aan  in uw content.
+                <li> <b>Data toevoegen</b> voegt data toe aan een bestaande gehoste objectlaag.
                 </li>
-                <li> <b>Kopi&euml;ren naar gegevensopslag</b> kopieert data naar uw ArcGIS Data Store en cre&euml;ert een laag in uw content.
+                <li> <b>Veld Berekenen</b> maakt een nieuw veld of wijzigt een bestaand veld en maakt een nieuwe laag aan  in uw content.
+                </li>
+                <li> <b>Kopi&euml;ren naar Data Store</b> kopieert data naar uw ArcGIS Data Store en cre&euml;ert een laag in uw content. 
+                </li>
+                <li> <b>Overlay lagen</b> combineert twee of meer lagen tot &eacute;&eacute;n enkele laag.
                 </li>
             </ul>
             
@@ -417,7 +479,7 @@
             </table>
 <hr/>
             <p>Kopieert en zet objectlaag of tabel in een  ArcGIS Data Store en maakt een laag in uw content  ArcGIS Enterprise. </p>
-            <p>Bijvoorbeeld
+            <p>Hier volgen enkele voorbeelden:
                 <ul>
                     <li>Kopieer een verzameling van  <code>.csv</code> bestanden in een groot gedeeld databestand naar de tijdruimtelijke gegevensopslag voor visualisatie.
                     </li>
@@ -440,11 +502,62 @@
             </table>
 <hr/>
             <p>Berekent waarden voor een nieuw of bestaand veld en maakt een laag in uw content in  ArcGIS Enterprise. </p>
-            <p>Bijvoorbeeld
+            <p>Hier volgen enkele voorbeelden:
                 <ul>
-                    <li>Pas een bestaand veld aan met de naam  <i>totaal</i> voor de som van inkomsten uit de velden <i>total_2016</i>, <i>total_2017</i>en <i>total_2018</i>.
+                    <li>Pas een bestaand veld aan met de naam <i>total</i> voor de som van inkomsten uit de velden <i>total_2016</i>, <i>total_2017</i> en <i>total_2018</i>
                     </li>
-                    <li>Maak een nieuw veld om gevarenniveaus te categoriseren op basis van veldwaarden zoals  <i>windsnelheid</i> en <i>vervuiler</i>.
+                    <li>Maak een nieuw veld om gevarenniveaus te categoriseren op basis van veldwaarden zoals  <i>windspeed</i> en <i>pollutant</i>.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="OverlayLayersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Lagen bovenop plaatsen</h2></td>
+                    <td>
+                    <img src="../images/GUID-00A64703-4E97-4398-AE5C-F1885375BC30-web.png" class="titleImage" alt="Overlay lagen">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Overlay maakt van twee of meer lagen &eacute;&eacute;n enkele laag. Overlay wordt gebruikt om een antwoord te bieden op een van de basisvragen in de geografie: &quot;Wat ligt boven op wat?&rdquo;Hier volgen enkele voorbeelden:
+                <ul>
+                    <li>Welke percelen bevinden zich binnen het 100-jarige overstromingsgebied? (Binnen betekent hierbij hetzelfde als boven op.)
+                          
+                    </li>
+                    <li>Welk bodemgebruik ligt boven op welk bodemtype?
+                         
+                    </li>
+                    <li>Welke bronnen bevinden zich binnen verlaten militaire basissen?
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="AppendDataTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Data bijvoegen</h2></td>
+                    <td>
+                    <img src="../images/GUID-8C95EAE0-904A-42C4-8C3D-303E74FD6DD7-web.png" class="titleImage" alt="Gegevens bijvoegen workflowdiagram">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Voegt objecten toe aan een bestaande gehoste lager in uw contents in  ArcGIS Enterprise. </p>
+            <p>Hier volgen enkele voorbeelden:
+                <ul>
+                    <li>Werk u 2018_Sales objectlaag elke maand bij als de verslagen beschikbaar komen. 
+                    </li>
+                    <li>Voeg orkaanvolgdataset uit de jaren 2016 en 2017 toe aan een master orkaandataset.
+                    </li>
+                    <li>Verzamel en voeg datasets van verschillende bronnen met verschillende schema's met behulp van aangepaste veldkartering.
                     </li>
                 </ul>
                 

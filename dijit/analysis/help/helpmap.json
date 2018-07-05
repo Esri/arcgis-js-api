@@ -76,6 +76,9 @@
             "toolDescription": "find-nearest.htm",
             "analysisLayer": "find-nearest.htm"
         },
+        "FindPointClusters": {
+          "toolDescription": "find-point-clusters.htm"
+        },
         "FindOutliers": {
             "toolDescription": "find-outliers.htm"
         },
@@ -112,6 +115,9 @@
         },
         "SummarizeAttributes_bd": {
             "toolDescription": "geoanalytics-summarize-attributes.htm"
+        },
+        "SummarizeCenterAndDispersion": {
+          "toolDescription": "summarize-center-and-dispersion.htm"
         },
         "SummarizeNearby": {
             "toolDescription": "summarize-nearby.htm"

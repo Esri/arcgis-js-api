@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Temukan Klaster Titik</h2><p/>
+        <h2><img src="../images/GUID-40DA7286-67EA-4333-91C5-4CD527C21B4A-web.png" alt="Temukan Klaster Titik"></h2>
+        <hr/>
+    <p>Alat  Temukan Klaster Titik menemukan klaster fitur titik dalam kebisingan di sekitar berdasarkan distribusi spasialnya.
+    </p>
+    <p>Organisasi non-pemerintah sedang melakukan studi tentang penyakit tertentu yang dibawa hama. Organisasi ini memiliki set data titik yang mewakili rumah tangga di area studi, beberapa di antaranya sudah penuh, dan beberapa di antaranya tidak. Dengan menggunakan alat  Temukan Klaster Titik, seorang analis dapat menentukan kelompok rumah tangga yang dipenuhi untuk membantu menentukan suatu area untuk memulai penanganan dan pemusnahan hama.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Pilih layer yang memiliki klaster</h2></div>
+        <hr/>
+        <div>
+            <p>Layer titik tempat klaster akan ditemukan.  Layer harus dalam referensi spasial yang diproyeksikan atau memiliki referensi spasial pemrosesan yang ditetapkan ke sistem koordinat yang diproyeksikan menggunakan  <b>Lingkungan Analisis</b>.
+            </p>
+            <p>Selain memilih layer dari peta Anda, Anda dapat memilih  <b>Telusuri Layer</b> yang terdapat di bagian paling bawah daftar drop-down ke konten Anda untuk set data yang dibagikan atau feature layer dari big data.
+            </p>
+        </div>
+    </div>
+    <div id="minFeaturesCluster">
+        <div><h2>Jumlah titik minimum untuk dapat dianggap sebagai klaster</h2></div>
+        <hr/>
+        <div>
+            <p>Jumlah fitur minimum untuk menyemai klaster.
+            </p>
+        </div>
+    </div>
+    <div id="searchDistance">
+        <div><h2>Batasi rentang pencarian menjadi</h2></div>
+        <hr/>
+        <div>
+            <p>Jarak maksimum untuk mempertimbangkan fitur menjadi bagian dari klaster yang sama.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nama layer hasil</h2></div>
+        <hr/>
+        <div>
+            <p> Nama layer yang akan dibuat di <b>Konten Saya</b> dan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer sudah ada, alat tidak akan berfungsi.
+            </p>
+            <p>Menggunakan kotak drop-down  <b>Simpan hasil di</b>, Anda dapat menentukan nama folder di <b>Konten Saya</b> sebagai tempat penyimpanan hasil.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

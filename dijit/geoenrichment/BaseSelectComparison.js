@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
 define(["../../declare","./BaseWidget","dijit/form/Select","dojo/dom-class"],function(e,t,s,i){return e("esri.dijit.geoenrichment.BaseSelectComparison",[t],{updateUI:function(){this.inherited(arguments),this._state.selectedComparison=Math.min(this._state.selectedComparison||0,this.data.features.length-2)},updateUIExpanded:function(){if(this.inherited(arguments),this.select){for(var e=[],t=[],s=Math.max(this.data.features.length-1,0),i=0;i<s;i++){var n=this.getFeatureTitle(i+1),o={label:n,value:i.toString()};i>=this.select.options.length?e.push(o):t.push(o)}for(e.length>0&&this.select.addOption(e),t.length>0&&this.select.updateOption(t);this.select.options.length>s;)this.select.removeOption(this.select.options.length-1);this.select.set("value",this._state.selectedComparison.toString())}},_createComboBox:function(e){var t=this;i.add(e,"BaseSelectComparison_Select"),this.select=new s({maxHeight:151,onChange:function(){var e=t._state.selectedComparison;t._state.selectedComparison=+t.select.get("value"),t._state.selectedComparison!=e&&t.updateUIExpanded()}}),this.select.placeAt(e)},_getComparisonRow:function(){var e=this._state.selectedComparison;return e>=0?e+1:void 0},destroy:function(){this.select&&(this.select.destroy(),this.select=null),this.inherited(arguments)}})});

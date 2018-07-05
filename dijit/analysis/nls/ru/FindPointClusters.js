@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
-define({clustersLabel:"Найдите кластеры для слоя ${inputLayerName}.",chooseLayerLabel:"Выберите слой, для которого будут найдены кластеры",minClusterPtsLabel:"Минимальное число точек, которые будут считаться кластером",limitSearchLabel:"Ограничить диапазон поиска до (дополнительно)",limitSearchReqLabel:"Limit the search range to",outputLayerName:"Найти кластеры для ${inputLayerName}",itemDescription:"Векторный слой, созданный с помощью решения Поиск кластеров точек для ${inputLayerName}.",itemTags:"Результаты анализа, Поиск кластеров точек, ${inputLayerName}",itemSnippet:"Векторный слой, созданный в результате работы Поиск кластеров точек"});
+define({clustersLabel:"Найдите кластеры для слоя ${inputLayerName}.",chooseLayerLabel:"Выберите слой, для которого будут найдены кластеры",minClusterPtsLabel:"Минимальное число точек, которые будут считаться кластером",limitSearchLabel:"Ограничить диапазон поиска до (дополнительно)",limitSearchReqLabel:"Ограничить диапазон поиска до",outputLayerName:"Найти кластеры для ${inputLayerName}",itemDescription:"Векторный слой, созданный с помощью решения Поиск кластеров точек для ${inputLayerName}.",itemTags:"Результаты анализа, Поиск кластеров точек, ${inputLayerName}",itemSnippet:"Векторный слой, созданный в результате работы Поиск кластеров точек"});

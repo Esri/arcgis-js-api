@@ -60,7 +60,7 @@
         <div><h2>Izaberite metod za nadgledanje vegetacije</h2></div>
         <hr/>
         <div>
-            <p>Izaberite metod koji se koristi za kreiranje sloja indeksa vegetacije. Različiti indeksi vegetacije mogu da pomognu u isticanju određenih geoobjekata ili u smanjenju raznovrsne buke.
+            <p>Izaberite metod za kreiranje sloja indeksa vegetacije. Različiti indeksi vegetacije mogu da pomognu u isticanju određenih geoobjekata ili u smanjenju raznovrsne buke.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
@@ -76,7 +76,7 @@ MSAVI2 je indeks vegetacije koji poku&scaron;ava da smanji uticaje golog zemlji&
 
                 </li>
                 <li>Normalized Difference Vegetation Index  &mdash; 
-NDVI je standardizovan indeks koji vam omogućava da generi&scaron;ete snimak koji prikazuje zelenilo, relativnu biomasu. Ovaj indeks koristi prednosti kontrasta karakteristika dva opsega iz vi&scaron;espektralnog rasterskog skupa podataka; apsorpcije pigmenta hlorofila u crvenom opsegu i velika reflektivnost materijala biljaka u blizu infracrvenom (NIR) opsegu.
+NDVI je standardizovan indeks koji vam omogućava da generi&scaron;ete snimak koji prikazuje zelenilo ili relativnu biomasu. Ovaj indeks koristi prednosti kontrasta karakteristika dva opsega iz vi&scaron;espektralnog rasterskog skupa podataka: apsorpcije pigmenta hlorofila u crvenom opsegu i velika reflektivnost materijala biljaka u blizu infracrvenom (NIR) opsegu.
 
                 </li>
                 <li>Perpendicular Vegetation Index &mdash; 
@@ -102,7 +102,7 @@ Transformisani-SAVI je indeks vegetacije koji poku&scaron;ava da smanji uticaje 
         <div><h2>Navedite indekse NIR opsega i Red opsega</h2></div>
         <hr/>
         <div>
-            <p>Unesite indekse za NIR (blizu infracrveni) i Red (vidljivi) opseg.
+            <p>Navedite indekse opsega za NIR (blizu infracrveni) i Red (vidljivi) opseg.
             </p>
             <p>Svaki satelitski senzor i vazdu&scaron;na kamera snimaju informacije koje se rastavljaju u indekse opsega. Svaki indeks opsega sadrži informacije za specifični deo elektromagnetnog spektra. Ovaj metod nadgledanja vegetacije zahteva da navedete indeks opsega koji je uhvatio NIR i Red talasne dužine.
             </p>
@@ -114,7 +114,7 @@ Transformisani-SAVI je indeks vegetacije koji poku&scaron;ava da smanji uticaje 
         <div>
             <p>Nagib linije zemlji&scaron;ta. Nagib je približan linearni odnos između NIR i crvenog opsega na XY grafikonu.
             </p>
-            <p>Ovaj parametar je važeći samo za Transformisani indeks vegetacije prilagođen zemlji&scaron;tu.
+            <p>Ovaj parametar je važeći samo za metod Transformisani indeks vegetacije prilagođen zemlji&scaron;tu.
             </p>
         </div>
     </div>
@@ -122,11 +122,11 @@ Transformisani-SAVI je indeks vegetacije koji poku&scaron;ava da smanji uticaje 
         <div><h2>Prekid</h2></div>
         <hr/>
         <div>
-            <p>Ovo je vrednost blizu infracrvenog (NIR) kada je vrednost refleksije crvenog (Red) opsega 0 za posebne linije zemlji&scaron;ta.
+            <p>Vrednost infracrvenog (NIR) kada je vrednost refleksije crvenog (Red) opsega 0 za posebne linije zemlji&scaron;ta.
             </p>
             <p> <code>(a = NIR - sRed)</code> , kada je Red 0.
             </p> 
-            <p>Ovaj parametar je važeći samo za Transformisani indeks vegetacije prilagođen zemlji&scaron;tu.
+            <p>Ovaj parametar je važeći samo za metod Transformisani indeks vegetacije prilagođen zemlji&scaron;tu.
             </p>
         </div>
     </div>
@@ -134,9 +134,9 @@ Transformisani-SAVI je indeks vegetacije koji poku&scaron;ava da smanji uticaje 
         <div><h2>Količina zelenog pokrivača</h2></div>
         <hr/>
         <div>
-            <p>SAVI metod zahteva da se navede količina vegetativnog pokrivača.
+            <p>Određuje količinu pokrivača zelene vegetacije, koji je obavezan prema SAVI metodi.
             </p>
-            <p>Unesite vrednost između 0,0 i 1,0, gde 
+            <p>Validne vrednosti su kako sledi: 
 
                 <ul>
                     <li>1 = oblasti bez zelenog vegetativnog pokrivača
@@ -160,9 +160,9 @@ Transformisani-SAVI je indeks vegetacije koji poku&scaron;ava da smanji uticaje 
         <div><h2>Faktor podešavanja</h2></div>
         <hr/>
         <div>
-            <p>Metod Transformisanog indeksa vegetacije prilagođen zemlji&scaron;tu zahteva faktor za prilagođavanje postavljen kako bi se pomoglo da se efekat zemlji&scaron;ta svede na najmanju meru. Podrazumevana vrednost je 0,08.
+            <p>Navodi faktor prilagođavanja kako bi se pomoglo da se efekat zemlji&scaron;ta svede na najmanju meru, &scaron;to je zahtevano metodom Transformisani indeks vegetacije prilagođen zemlji&scaron;tu. Podrazumevana vrednost je 0,08.
             </p>
-            <p>Niža vrednost znači da ignori&scaron;ete efekat zemlji&scaron;ta. Visoka vrednost znači da će zemlji&scaron;te uticati na va&scaron; rezultat.
+            <p>Niska vrednost znači da ignori&scaron;ete efekat zemlji&scaron;ta. Visoka vrednost znači da će zemlji&scaron;te uticati na va&scaron; rezultat.
             </p>
         </div>
     </div>

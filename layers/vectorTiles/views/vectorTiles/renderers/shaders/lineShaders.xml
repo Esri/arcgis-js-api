@@ -24,7 +24,8 @@
       // u_normalized_origin is the tile's upper left corner given in normalized coordinates
       uniform highp vec2 u_normalized_origin;
 
-      uniform mediump float u_blur; // the feather distance at which the line edge fades out
+      uniform mediump float u_blur;
+      uniform mediump float u_antialiasing; // the feather distance at which the line edge fades out
 
       // the z of the layer. Given by the order of the layers in the style
       uniform mediump float u_depth;
@@ -40,10 +41,9 @@
     #ifdef DD
       attribute vec4 a_color;
       attribute mediump float a_width;
-    #else
+    #endif // DD
       uniform lowp vec4 u_color;
       uniform mediump float u_width;
-    #endif // DD
 
     #ifdef ID
       uniform mediump vec4 u_id;
@@ -52,6 +52,7 @@
 
       varying lowp vec4 v_color;
       varying mediump float v_lineHalfWidth; // the inset and outset of the line
+      varying mediump float v_blur;
 
     #ifndef PATTERN
       uniform mediump vec2 u_dasharray;
@@ -63,11 +64,12 @@
         v_normal = a_offsetAndNormal.zw * scale;
 
       #ifdef DD
-        v_lineHalfWidth = a_width + u_blur;
+        v_lineHalfWidth = a_width * u_width;
       #else
-        v_lineHalfWidth = u_width + u_blur;
+        v_lineHalfWidth = u_width;
       #endif // DD
 
+        v_lineHalfWidth += u_antialiasing;
         v_lineHalfWidth *= 0.5;
 
       #ifndef PATTERN
@@ -88,8 +90,10 @@
         // the accumulated distance will be used to calculate the dashes (or the no-data...)
         v_accumulatedDistance = a_accumulatedDistance.x;
 
+        v_blur = u_blur + u_antialiasing;
+
         #ifdef DD
-          v_color = a_color;
+          v_color = a_color * u_color;
         #else
           v_color = u_color;
         #endif // DD
@@ -103,13 +107,13 @@
 
   <snippet name="lineFS">
     <![CDATA[
-      uniform mediump float u_blur;
-
       varying mediump vec2 v_normal;
       varying highp float v_accumulatedDistance;
 
       varying mediump float v_lineHalfWidth;
       varying lowp vec4 v_color;
+
+      varying mediump float v_blur;
 
     #ifdef PATTERN
       uniform mediump vec2 u_pattern_tl;
@@ -139,7 +143,7 @@
 
         // calculate the alpha given the difference between the line-width and the distance of the fragment from the center-line.
         // We need to count for both sides of the line.
-        lowp float alpha = clamp((v_lineHalfWidth - fragDist) / u_blur, 0.0, 1.0);
+        lowp float alpha = clamp((v_lineHalfWidth - fragDist) / v_blur, 0.0, 1.0);
 
       #ifdef PATTERN
         // we need to calculate the relative portion of the line texture along the line given the accumulated distance aliong the line

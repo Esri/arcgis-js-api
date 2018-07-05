@@ -50,7 +50,7 @@
     </p>
     <p>Teil on n&auml;iteks 10-minutiste vahedega tehtud GPS-m&otilde;&otilde;tmised orkaanide jaoks. Iga GPS-m&otilde;&otilde;tmise juurde on j&auml;&auml;dvustatud orkaani nimi, asukoht, j&auml;&auml;dvustamise aeg ja tuule kiirus. Nende v&auml;ljade abil saate luua juhtumi, kus k&otilde;ik m&otilde;&otilde;tmised, mille tuule kiirus on suurem kui 208 km/h, on juhtumid pealkirjaga  <code>Katastroofiline</code>. Kui l&otilde;putingimust pole m&auml;&auml;ratud, l&otilde;peb juhtum siis, kui objekt ei vasta enam algustingimusele (tuule kiirus langeb alla 208 km/h).
     </p>
-    <p>Teises n&auml;ites oletame, et j&auml;lgisite v&auml;lja  <code>contanimateLevel</code> abil kemikaali kontsentratsiooni kohalikus veev&otilde;rgus. Teate, et soovitatav tase on alla 0,01 mg/l ja ohtlik tase on &uuml;le 0,03 mg/l. Selleks, et tuvastada juhtumeid, kus v&auml;&auml;rtus &uuml;le 0,03mg/l on juhtum ja j&auml;&auml;b juhtumiks seni, kuni reostustase on langenud lubatud tasemele, loote juhtumi algustingimusega <code>contanimateLevel &gt; 0,03</code> ja l&otilde;putingimusega <code>contanimateLevel &lt; 0,01</code>. See m&auml;rgib mis tahes j&auml;rjestused, mille v&auml;&auml;rtused &uuml;letavad 0,03mg/l, seni kuni need tagastavad v&auml;&auml;rtuse, mis on v&auml;iksem kui 0,01.
+    <p>Teises n&auml;ites oletame, et j&auml;lgisite v&auml;lja  <code>contanimateLevel</code> abil kemikaali kontsentratsiooni kohalikus veev&otilde;rgus. Teate, et soovitatav tase on alla 0,01 mg/l ja ohtlik tase on &uuml;le 0,03 mg/l. Selleks, et tuvastada juhtumeid, kus v&auml;&auml;rtus &uuml;le 0,03 mg/l on juhtum ja j&auml;&auml;b juhtumiks seni, kuni reostustase on langenud lubatud tasemele, loote juhtumi algustingimusega <code>contanimateLevel &gt; 0,03</code> ja l&otilde;putingimusega <code>contanimateLevel &lt; 0,01</code>. See m&auml;rgib mis tahes j&auml;rjestused, mille v&auml;&auml;rtused &uuml;letavad 0,03mg/l, seni kuni need tagastavad v&auml;&auml;rtuse, mis on v&auml;iksem kui 0,01.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -68,7 +68,7 @@
         <div><h2>Valige radade tuvastamiseks vähemalt üks väli</h2></div>
         <hr/>
         <div>
-            <p> Raja identifikaatorit t&auml;histavad v&auml;ljad. Radade kordumatute v&auml;&auml;rtuste t&auml;histamiseks saate kasutada &uuml;hte v&otilde;i mitut v&auml;lja.
+            <p>Raja identifikaatorit t&auml;histavad v&auml;ljad. Radade kordumatute v&auml;&auml;rtuste t&auml;histamiseks saate kasutada &uuml;hte v&otilde;i mitut v&auml;lja.
             </p>
             <p>N&auml;iteks v&otilde;ite kasutada orkaanide radade rekonstrueerimisel raja nimena orkaani nime.
             </p>
@@ -82,6 +82,8 @@
             </p>
             <p>Oletame n&auml;iteks, et soovite saada teavitust, kui v&auml;ljade  <code>kontsentratsioon_1</code> ja <code>kontsentratsioon_2</code> summa on suurem kui <code>kontsentratsioon_3</code>. Selleks rakendage tingimus <code>($feature[&quot;kontsentratsioon_1&quot;] +  $feature[&quot;kontsentratsioon_2&quot;]) &gt; $feature[&quot;kontsentratsioon_3&quot;])</code>.
             </p>
+            <p>Kui olete huvitatud kontsentratsiooni muutumisest aja jooksul ja soovite saada hoiatust, kui praegune  <code>kontsentratsioon_1</code> on suurem kui <code>kontsentratsiooni_2</code> kaks eelmist m&otilde;&otilde;tmistulemust, siis v&otilde;ite kasutada n&auml;iteks sellist avaldist <code>$feature[&quot;kontsentratsioon_1&quot;] &gt;   $track.field[&quot;kontsentratsioon_2&quot;].history(-3,-1)</code>.
+            </p>
         </div>
     </div>
     <div id="endConditionExpression">
@@ -91,6 +93,8 @@
             <p>Saate avaldisekoosturi abil lisada tingimuse juhtumi l&otilde;pu m&auml;&auml;ratlemiseks. Kui m&auml;&auml;ratud tingimus on t&otilde;ene, ei ole objekt enam juhtum. Kui te l&otilde;putingimust ei m&auml;&auml;ra, l&otilde;peb juhtum siis, kui algustingimus ei ole enam t&otilde;ene.    
             </p>
             <p>Oletame n&auml;iteks, et soovite saada teavitust, kui v&auml;ljade  <code>kontsentratsioon_1</code> ja <code>kontsentratsioon_2</code> summa on suurem kui <code>kontsentratsioon_3</code>, ja soovite, et juhtum l&otilde;peks, kui <code>kontsentratsioon_4</code> on v&auml;iksem kui <code>concentration_1</code>. Selleks rakendage algustingimus <code>($feature[&quot;kontsentratsioon_1&quot;] +  $feature[&quot;kontsentratsioon_2&quot;]) &gt; ($join[&quot;income&quot;] * .20)</code> ja l&otilde;putingimus <code>($feature[&quot;kontsentratsioon_4&quot;] &lt; $feature[&quot;kontsentratsioon_1&quot;])</code>.
+            </p>
+            <p>Kui soovite juhtumi l&otilde;ppemist, kui praeguse  <code>kontsentratsiooni_1</code> keskmine v&auml;&auml;rtus ja nelja eelmise m&otilde;&otilde;tmise tulemus on suurem kui esimese m&otilde;&otilde;tmise tulemus, siis v&otilde;ite kasutada n&auml;iteks avaldist <code>$track.field[&quot;kontsentratsioon_1&quot;].history(-5) &gt; $track.field[&quot;kontsentratsioon_1&quot;].history(0)</code>.
             </p>
         </div>
     </div>
@@ -113,7 +117,7 @@
         <div><h2>Tulemkihi nimi</h2></div>
         <hr/>
         <div>
-            <p> See on selle kihi nimi, mis luuakse jaotises <b>Minu sisu</b> ja lisatakse kaardile.  Vaikimisi nimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui see kiht on juba olemas, siis t&ouml;&ouml;tlemine nurjub.
+            <p> Selle kihi nimi, mis luuakse jaotises <b>Minu sisu</b> ja lisatakse kaardile. Vaikimisi nimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui see kiht on juba olemas, siis t&ouml;&ouml;tlemine nurjub.
             </p>
             <p>Kasutades rippmen&uuml;&uuml;d  <b>Salvesta tulemused</b>, saate jaotises <b>Minu sisu</b> m&auml;&auml;rata selle kausta nime, kuhu tulemused salvestatakse.
             </p>

@@ -1,0 +1,56 @@
+
+
+
+.esriGEAdjustableGridValueField_cellTooltipContent {
+    text-align: left;
+}
+
+.esriGEAdjustableGridValueField_cellTooltipContentValue {
+    font-weight: bold;
+}
+
+
+
+.esriGEAdjustableGrid_cellTooltip_expression {
+    max-width: 1000px;
+    max-height: 250px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.esriGEAdjustableGrid_cellTooltip_expressionVariable {
+    border: 1px solid #b2b2b2;
+    background-color: white;
+    margin: 10px;
+    padding: 10px;
+    max-width: 250px;
+    height: 30px;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.esriGEAdjustableGrid_cellTooltip_expressionNumber {
+    border: 1px solid #b2b2b2;
+    background-color: white;
+    margin: 10px;
+    padding: 10px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.esriGEAdjustableGrid_cellTooltip_expressionOperator {
+    border: 1px solid #b2b2b2;
+    background-color: rgb(169,169,169);
+    color: white;
+    margin: 10px;
+    padding: 10px;
+    width: 15px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+}

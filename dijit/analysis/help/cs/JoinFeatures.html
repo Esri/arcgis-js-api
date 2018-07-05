@@ -46,7 +46,7 @@
         <hr/>
     <p>N&aacute;stroj Připojit prvky pracuje se dvěma vrstvami a spojuje atributy jednoho prvku s&nbsp;jin&yacute;m prvkem na z&aacute;kladě prostorov&eacute;ho a atributov&eacute;ho vztahu. N&aacute;stroj urč&iacute; v&scaron;echny vstupn&iacute; prvky, kter&eacute; odpov&iacute;daj&iacute; zadan&yacute;m podm&iacute;nk&aacute;m připojen&iacute;, a připoj&iacute; vrstvu připojen&iacute; k&nbsp;c&iacute;lov&eacute; vrstvě. 
     </p>
-    <p>Připojit prvky lze aplikovat na body, linie, oblasti a tabulky. Prostorov&eacute; připojen&iacute; vyžaduje, aby va&scaron;e data měla geometrii. 
+    <p>N&aacute;stroj Připojit prvky lze použ&iacute;t na body, linie, plochy a tabulky. Prostorov&eacute; připojen&iacute; vyžaduje, aby va&scaron;e data měla geometrii. 
     </p>
     <p>Pokud je za&scaron;krtnuto pole  <b>Použ&iacute;t aktu&aacute;ln&iacute; rozsah mapy</b>, analyzuj&iacute; se pouze prvky viditeln&eacute; v&nbsp;aktu&aacute;ln&iacute;m rozsahu mapy.  Pokud toto pole za&scaron;krtnuto nen&iacute;, budou analyzov&aacute;ny v&scaron;echny prvky v&nbsp;c&iacute;lov&eacute; vrstvě i vrstvě připojen&iacute;, včetně těch, kter&eacute; se nach&aacute;z&iacute; mimo aktu&aacute;ln&iacute; rozsah mapy.
     </p>
@@ -116,7 +116,7 @@
         <div>
             <p>Atributov&yacute; vztah urč&iacute;, zda budou prvky připojeny jeden k&nbsp;druh&eacute;mu. Prvky budou sp&aacute;rov&aacute;ny, pokud jsou hodnoty pol&iacute; ve vrstvě připojen&iacute; rovny hodnot&aacute;m pol&iacute; v&nbsp;c&iacute;lov&eacute; vrstvě. 
             </p>
-            <p>Předpokl&aacute;dejme např&iacute;klad, že m&aacute;te geografickou vrstvu cel&eacute;ho okresu s&nbsp;rezidenčn&iacute;mi adresami (včetně pole  <i>ZIP</i>) a tabulkovou datovou sadu demografick&yacute;ch &uacute;dajů o zdrav&iacute; podle k&oacute;du ZIP (včetně pole s&nbsp;n&aacute;zvem <i>HEALTHZIP</i>). Datovou sadu zdrav&iacute; můžete připojit k&nbsp;rezidenčn&iacute;m datům přiřazen&iacute;m pole <i>ZIP</i> k&nbsp;poli <i>HEALTHZIP</i>, č&iacute;mž dostanete vrstvu obydl&iacute; s&nbsp;př&iacute;slu&scaron;n&yacute;mi zdravotn&iacute;mi daty.
+            <p>Předpokl&aacute;dejme např&iacute;klad, že m&aacute;te geografickou vrstvu cel&eacute;ho okresu s&nbsp;rezidenčn&iacute;mi adresami (včetně pole  <i>ZIP</i>) a tabulkovou datovou sadu demografick&yacute;ch &uacute;dajů o zdrav&iacute; podle k&oacute;du ZIP (včetně pole s&nbsp;n&aacute;zvem <i>HEALTHZIP</i>). Datovou sadu s &uacute;daji o zdrav&iacute; můžete připojit k&nbsp;rezidenčn&iacute;m datům přiřazen&iacute;m pole <i>ZIP</i> k&nbsp;poli <i>HEALTHZIP</i>, č&iacute;mž dostanete rezidenčn&iacute; vrstvu obydl&iacute; s&nbsp;př&iacute;slu&scaron;n&yacute;mi zdravotn&iacute;mi &uacute;daji.
             </p>
         </div>
     </div>
@@ -144,7 +144,7 @@
             <p>Pokud je vybr&aacute;na možnost  <b>Připojit jeden k&nbsp;jednomu</b>, můžete u numerick&yacute;ch pol&iacute; sumarizovat a poč&iacute;tat statistiku připojen&yacute;ch prvků.   Ve v&yacute;choz&iacute;m nastaven&iacute; se vypoč&iacute;t&aacute; počet odpov&iacute;daj&iacute;c&iacute;ch připojen&yacute;ch prvků a přid&aacute; se k&nbsp;v&yacute;sledn&eacute; vrstvě.  Pokud zvol&iacute;te, že se statistika přidat nem&aacute;, připoj&iacute; se prvn&iacute; odpov&iacute;daj&iacute;c&iacute; prvek ve vrstvě připojen&iacute; k&nbsp;prvn&iacute;mu odpov&iacute;daj&iacute;c&iacute;mu prvku v&nbsp;c&iacute;lov&eacute; vrstvě.   Můžete vypoč&iacute;tat jeden nebo v&iacute;ce n&aacute;sleduj&iacute;c&iacute;ch parametrů:
             </p>
             <ul>
-                <li>Suma
+                <li>Součet
                 </li>
                 <li>Minimum
                 </li>
@@ -167,6 +167,14 @@
             <p>Toto je n&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce  <b>Můj obsah</b> a přid&aacute; do mapy.  V&yacute;choz&iacute; n&aacute;zev se ř&iacute;d&iacute; n&aacute;zvem n&aacute;stroje a n&aacute;zvem vstupn&iacute; vrstvy. Pokud v&yacute;sledn&aacute; vrstva již existuje, budete pož&aacute;d&aacute;ni o zad&aacute;n&iacute; jin&eacute;ho n&aacute;zvu.
             </p>
             <p>V&nbsp;rozbalovac&iacute;m seznamu  <b>Uložit v&yacute;sledek do</b> můžete zadat n&aacute;zev složky ve složce <b>Můj obsah</b>, do kter&eacute; se m&aacute; v&yacute;sledek uložit.
+            </p>
+        </div>
+    </div>
+    <div id="isView">
+        <div><h2>Uložit jako pohled na hostovanou vrstvu prvků</h2></div>
+        <hr/>
+        <div>
+            <p>Ukl&aacute;d&aacute;n&iacute; v&yacute;sledků jako pohled na hostovanou vrstvu prvků umožňuje zachovat aktu&aacute;lnost dat, i když se zdrojov&aacute; data změn&iacute;. Pohledy na hostovan&eacute; vrstvy prvků obsahuj&iacute;c&iacute; připojen&iacute; budou pouze pro čten&iacute; a nespotřebov&aacute;vaj&iacute; kredity za anal&yacute;zu a ukl&aacute;d&aacute;n&iacute;. 
             </p>
         </div>
     </div>

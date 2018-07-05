@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
-define(["dojo/dom-construct","dojo/string","./_BuilderUtil","dojo/i18n!../../../../../../nls/jsapi"],function(a,e,l,t){return t=t.geoenrichment.dijit.ReportPlayer.ChartTooltip,{buildGaugeChartTooltip:function(o,i){l.addTitle(i,o.label,o.color);var d=a.create("div",{class:"chartTooltip_row esriGERowHigh"},i);l.addRowOffset(d),o.isUnavailableData?l.addLabel(t.unavailableData,d):l.addLabel(e.substitute(t.gaugeChartTooltip_label,{value:o.valueLabel,total:o.sumValueLabel}),d)}}});
+define(["dojo/dom-construct","dojo/string","./_BuilderUtil","dojo/i18n!esri/nls/jsapi"],function(a,e,l,t){return t=t.geoenrichment.dijit.ReportPlayer.ChartTooltip,{buildGaugeChartTooltip:function(o,i){l.addTitle(i,o.label,o.color);var r=a.create("div",{class:"chartTooltip_row esriGERowHigh"},i);l.addRowOffset(r),o.isUnavailableData?l.addLabel(t.unavailableData,r):l.addLabel(e.substitute(t.gaugeChartTooltip_label,{value:o.valueLabel,total:o.sumValueLabel}),r)}}});

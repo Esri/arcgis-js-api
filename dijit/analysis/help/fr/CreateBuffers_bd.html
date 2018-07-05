@@ -124,9 +124,9 @@
         <div><h2>Ajouter des statistiques (facultatif)</h2></div>
         <hr/>
         <div>
-            <p> Vous pouvez calculer des statistiques sur des entit&eacute;s synth&eacute;tis&eacute;es. Dans les champs num&eacute;riques, vous pouvez calculer ce qui suit&nbsp;:
+            <p> Vous pouvez calculer des statistiques sur des entit&eacute;s synth&eacute;tis&eacute;es. Dans les champs num&eacute;riques,  vous pouvez calculer ce qui suit&nbsp;:
                 <ul>
-                    <li>Total&nbsp;: calcule le nombre de valeurs non Null. Peut &ecirc;tre utilis&eacute; sur des champs num&eacute;riques ou des cha&icirc;nes. Le total de [Null, 0, 2] est &eacute;gal &agrave; 2.
+                    <li>Count (Total)&nbsp;: calcule le nombre de valeurs non Null. Il peut &ecirc;tre utilis&eacute; sur des champs num&eacute;riques ou des cha&icirc;nes. Le total de [Null, 0, 2] est &eacute;gal &agrave; 2.
                     </li>
                     <li>Somme&nbsp;: somme des valeurs num&eacute;riques dans un champ. La somme de [Null, 0, 3] est &eacute;gale &agrave; 3.
                     </li>
@@ -138,14 +138,14 @@
                     </li>
                     <li>Plage&nbsp;: plage d'un champ num&eacute;rique. Elle est calcul&eacute;e pour correspondre aux valeurs minimales soustraites de la valeur maximale. La plage de [0, Null, 1] est &eacute;gale &agrave; 1. La plage de [Null, 4] est &eacute;gale &agrave; 0.
                     </li>
-                    <li>Variance&nbsp;: variance d'un champ num&eacute;rique dans une piste. La variance de [1] est la valeur Null. La variance de [Null, 1,1, 1] est &eacute;gale &agrave; 1.
+                    <li>Variance&nbsp;: variance d'un champ num&eacute;rique dans une piste. La variance de [1] est la valeur Null. La variance de [null, 1,0,1,1] est &eacute;gale &agrave; 0,25.
                     </li>
-                    <li>Ecart type&nbsp;: &eacute;cart type d'un champ num&eacute;rique. L'&eacute;cart type de [1] est la valeur Null. L'&eacute;cart type de [Null, 1,1, 1] est &eacute;gale &agrave; 1. 
+                    <li>Ecart type&nbsp;: &eacute;cart type d'un champ num&eacute;rique. L'&eacute;cart type de [1] est la valeur Null. L&rsquo;&eacute;cart type de [null, 1,0,1,1] est &eacute;gale &agrave; 0,5. 
                     </li>
                 </ul>
                 
             </p>
-            <p>Dans les champs de cha&icirc;ne, vous pouvez calculer ce qui suit&nbsp;:
+            <p>Dans les champs de type cha&icirc;ne,  vous pouvez calculer ce qui suit&nbsp;:
                 <ul>
                     <li>Total&nbsp;: le nombre de cha&icirc;nes diff&eacute;rentes de la valeur Null.
                     </li>
@@ -160,16 +160,16 @@
         <div><h2>Choisir une instance ArcGIS Data Store dans laquelle enregistrer les résultats</h2></div>
         <hr/>
         <div>
-            <p>Les r&eacute;sultats de l'outil GeoAnalytic sont stock&eacute;s dans une instance ArcGIS Data Store et s'affichent en tant que couche d'entit&eacute;s dans  Portal for ArcGIS. Dans la plupart des cas, les r&eacute;sultats doivent &ecirc;tre stock&eacute;s dans le stockage des donn&eacute;es spatio-temporelles, ce qui est le param&egrave;tre par d&eacute;faut. Dans certains cas, il peut &ecirc;tre judicieux d'enregistrer les r&eacute;sultats dans un stockage des donn&eacute;es relationnelles. Voici les raisons pour lesquelles stocker les r&eacute;sultats dans le stockage des donn&eacute;es relationnelles&nbsp;: 
+            <p>Les r&eacute;sultats de l&rsquo;outil GeoAnalytics sont stock&eacute;s dans une instance ArcGIS Data Store et s&rsquo;affichent en tant que couche d&rsquo;entit&eacute;s dans  Portal for ArcGIS. Dans la plupart des cas, les r&eacute;sultats doivent &ecirc;tre stock&eacute;s dans le stockage des donn&eacute;es spatio-temporelles, ce qui est le param&egrave;tre par d&eacute;faut. Dans certains cas, il peut &ecirc;tre judicieux d&rsquo;enregistrer les r&eacute;sultats dans un data store relationnel. Voici les raisons pour lesquelles stocker les r&eacute;sultats dans le data store relationnel&nbsp;: 
                 <ul>
-                    <li>Utiliser vos r&eacute;sultats dans une collaboration de portail &agrave; portail.
+                    <li>Vous pouvez utiliser les r&eacute;sultats en mode de collaboration de portail &agrave; portail.
                     </li>
-                    <li>Activer les fonctionnalit&eacute;s de synchronisation avec vos r&eacute;sultats.
+                    <li>Vous pouvez activer la synchronisation de vos r&eacute;sultats.
                     </li>
                 </ul>
                 
             </p>
-            <p>Vous ne devez pas utiliser le stockage des donn&eacute;es relationnelles si vous pensez que vos r&eacute;sultats GeoAnalytics vont augmenter et que vous devez tirer part des fonctionnalit&eacute;s du stockage de Big Data spatio-temporelles pour g&eacute;rer les grands volumes de donn&eacute;es. 
+            <p>Vous ne devez pas utiliser le data store relationnel&nbsp;si vous pensez que vos r&eacute;sultats GeoAnalytics vont augmenter et que vous devez tirer parti des fonctionnalit&eacute;s du le data store Big Data spatio-temporel pour g&eacute;rer les grands volumes de donn&eacute;es.
             </p>
         </div>
     </div>
@@ -177,7 +177,7 @@
         <div><h2>Nom de la couche de résultat</h2></div>
         <hr/>
         <div>
-            <p> Il s&rsquo;agit du nom de la couche qui sera sur dans votre page <b>My Content (Mon contenu)</b> et ajout&eacute;e &agrave; la carte. Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, l'outil &eacute;choue.
+            <p> Le nom de la couche qui sera cr&eacute;&eacute;e dans la page <b>My Content (Mon contenu)</b> et ajout&eacute;e &agrave; la carte. Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, l'outil &eacute;choue.
             </p>
             <p>La zone de liste d&eacute;roulante  <b>Save result in (Enregistrer le r&eacute;sultat dans)</b> vous permet de sp&eacute;cifier le nom d&rsquo;un dossier dans <b>My content (Mon contenu)</b> o&ugrave; le r&eacute;sultat sera enregistr&eacute;.
             </p>

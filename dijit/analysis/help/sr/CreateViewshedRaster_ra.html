@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Kreiraj vidno polje</h2><p/>
+        <h2>Kreiraj linije dogledanja</h2><p/>
         <h2><img src="../images/GUID-BB8B8CAF-330E-4C41-9D94-AF4728D0D0F3-web.png" alt="Alatka Kreiraj vidno polje"></h2>
         <hr/>
     <p>Ova alatka identifikuje oblasti koje posmatra može da vidi, uzimajući u obzir topografiju terena. Ulazne lokacije tačaka mogu da predstavljaju posmatrače (kao &scaron;to su ljudi na zemlji ili u tornjevima za uočavanje požara) ili posmatrane objekte (kao &scaron;to su vetrogeneratori, vodotornjevi, vozila ili drugi ljudi). Rezultati defini&scaron;u oblasti koje su vidljive sa posmatračkih lokacija.
@@ -93,11 +93,11 @@ Ovaj metod je optimizovan za tačnost u rezultatima, na račun dužeg vremena ob
         </div>
     </div>
     <div id="maximumDistance">
-        <div><h2>Maksimalno rastojanje dogledanja</h2></div>
+        <div><h2>Maksimalno rastojanje prikazivanja</h2></div>
         <hr/>
         <div>
             <p>Unesite rastojanje prekida gde će prestati izračunavanje vidljivih oblasti. Iza ovog rastojanja se neće određivati da li tačke posmatrača i drugi objekti mogu da se međusobno vide.
-            </p> 
+            </p>
             <p>Možete da navedete bilo numeričku vrednost koja predstavlja linearno rastojanje ili da izaberete numeričko polje iz ulaznih geoobjekata posmatrača. Ako je polje obezbeđeno, vrednosti sadržane u polju moraju da budu u istim jedinicama kao i XY jedinica ulaznih podataka povr&scaron;ine elevacije.
             </p>
             <p>Imajte na umu da će velike vrednosti povećati vreme izračunavanja. Ukoliko nije drugačije navedeno, podrazumevano maksimalno rastojanje će biti izračunato na osnovu rezolucije i obuhvata ulaza elevacione povr&scaron;i.
@@ -107,7 +107,7 @@ Ovaj metod je optimizovan za tačnost u rezultatima, na račun dužeg vremena ob
         </div>
     </div>
     <div id="maximumDistanceField">
-        <div><h2>Maksimalno rastojanje dogledanja</h2></div>
+        <div><h2>Maksimalno rastojanje prikazivanja</h2></div>
         <hr/>
         <div>
             
@@ -118,7 +118,7 @@ Ovaj metod je optimizovan za tačnost u rezultatima, na račun dužeg vremena ob
         <hr/>
         <div>
             <p>Unesite rastojanje gde treba da počne izračunavanje vidljivih oblasti. Ćelije na povr&scaron;i bliže od ovog rastojanja nisu vidljive u izlazu ali mogu i dalje da blokiraju vidljivost ćelija između minimalnog i maksimalnog rastojanja dogledanja.
-            </p> 
+            </p>
             <p>Možete da navedete bilo numeričku vrednost koja predstavlja linearno rastojanje ili da izaberete numeričko polje iz ulaznih geoobjekata posmatrača. Ako je polje obezbeđeno, vrednosti sadržane u polju moraju da budu u istim jedinicama kao i XY jedinica ulaznih podataka povr&scaron;ine elevacije.
             </p>
             <p>Ovaj parametar je koristan za kontrolisanje oblasti analize vidnog polja na određenom rastojanju od posmatrača. Na primer, ako procenjujete vidljivost sa vrha zgrade do udaljenog parka, možete da podesite minimalno rastojanje dogledanja tako da isključi oblasti u blizini koje vas ne zanimaju i da ostvarite bolju brzinu obrade.
@@ -183,7 +183,7 @@ Ovaj metod je optimizovan za tačnost u rezultatima, na račun dužeg vremena ob
         <hr/>
         <div>
             <p>Unesite visinu struktura ili ljudi na zemlji koji se koriste za uspostavljanje vidljivosti.
-            </p> 
+            </p>
             <p>Možete da navedete bilo numeričku vrednost za visinu ili polje iz ulaznih geoobjekata posmatrača. Ako je polje obezbeđeno, vrednost sadržana u polju moraju da budu u istim jedinicama kao i Z jedinica ulaznih podataka povr&scaron;ine elevacije.
             </p>
             <p>Rezultujuće vidno polje identifikuje one oblasti gde tačka posmatrača može da vidi ove objekte na zemlji. Suprotno je takođe tačno; objekti na zemlji mogu da vide tačku posmatrača. 

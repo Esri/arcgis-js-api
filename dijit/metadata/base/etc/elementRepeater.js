@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
 define(["dojo/_base/lang","dojo/_base/array","dojo/has","dojo/Deferred","./docUtil","./matchTopNodeUtil","../../../../kernel"],function(e,t,n,r,l,o,a){var i={_findClonedElement:function(e,n,r,l){var a=null,i=!0;if(n._isGxeElement)if(null!=l?l+="/":l="",l+=n.target,r===l){if(i=!1,o.evaluateXNodeMatch(e,n))return n}else i=!1,0===r.indexOf(l)&&(i=!0);else n._isGxeAttribute?i=!1:n._isGxeDescriptor&&null!=l&&(i=!1);return i&&t.some(n.getChildren(),function(t){if(a=this._findClonedElement(e,t,r,l))return!0},this),a},repeatElement:function(e,t,n){var o=new r;if(!t._isGxeElement)return o.resolve(null),o;var a=l.findDescriptorAndPath(t);if(!a.descriptor)return console.error("repeatElement: Unable to locate parent Descriptor for: ",t),o.resolve(null),o;var i=a.descriptor,s=a.path,d=i.newInstance();if(!d)return console.error("repeatElement: Cannot create a new Descriptor was null: ",t),o.resolve(null),o;var c=this._findClonedElement(t,d,a.path,null);return c?(e.adoptElement(c,n),o.resolve(c)):(console.error("repeatElement: Unable to locate new element instance for: ",s,t),o.resolve(null)),o}};return n("extend-esri")&&e.setObject("dijit.metadata.base.etc.elementRepeater",i,a),i});

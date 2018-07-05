@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
-define(["dojo/_base/array"],function(n){var t={},r={},o=r.toString(),i="__ArrayUtil.js_uniqueKey__";return t.composeIdentityFunction=function(n,t){var r="function"==typeof n?n:n?function(t){return t[n]}:function(n){return n};return function(n){var o=r(n);return o&&o.toString?o.toString():t&&void 0===o?o:String(o)}},t.removeDuplicates=function(r,u){var e=[],c={};return u=t.composeIdentityFunction(u,!0),n.forEach(r,function(n,t){var r=u(n);r===o&&(void 0===n[i]&&(n[i]=i+t),r=n[i]),void 0===r||r in c||(c[r]=n,e.push(n))}),e},t});
+define(["dojo/_base/array"],function(n){var t={},r={},o=r.toString(),i="__ArrayUtil.js_uniqueKey__";return t.composeIdentityFunction=function(n,t){var r="function"==typeof n?n:n?function(t){return t[n]}:function(n){return n};return function(n){var o=r(n);return o&&o.toString?o.toString():t&&void 0===o?o:String(o)}},t.removeDuplicates=function(r,u){var e=[],c={};return u=t.composeIdentityFunction(u,!0),n.forEach(r,function(n,t){var r=u(n);r===o&&(void 0===n[i]&&(n[i]=i+t),r=n[i]),void 0===r||r in c||(c[r]=n,e.push(n))}),e},t.splitArrayToBunches=function(n,t){t=t||100;for(var r,o=[],i=0,u=n.length;i<u;i++)r&&r.length!==t||(r=[],o.push(r)),r.push(n[i]);return o},t});

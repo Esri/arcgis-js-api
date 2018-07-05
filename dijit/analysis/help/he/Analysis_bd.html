@@ -45,6 +45,8 @@
             <ul>
                 <li> <b>Aggregate Points</b>
                 </li>
+                <li> <b>Build Multi-Variable Grid</b>
+                </li>
                 <li> <b>Join Features</b>
                 </li>
                 <li> <b>Reconstruct Tracks</b>
@@ -53,21 +55,27 @@
                 </li>
                 <li> <b>Summarize Within</b>
                 </li>
+                <li> <b>Geocode Locations from Table</b>
+                </li>
                 <li> <b>Detect Incidents</b>
                 </li>
                 <li> <b>Find Similar Locations</b>
                 </li>
                 <li> <b>Calculate Density</b>
                 </li>
+                <li> <b>Find Point Clusters</b>
+                </li>
                 <li> <b>Find Hot Spots</b>
                 </li>
                 <li> <b>Create Buffers</b>
                 </li>
-                <li> <b>Copy to Data Store</b>
+                <li> <b>Append Data</b>
                 </li>
                 <li> <b>Calculate Field</b>
                 </li>
-                <li> <b>Geocode Locations from Table</b>
+                <li> <b>Copy to Data Store</b>
+                </li>
+                <li> <b>Overlay Layers</b>
                 </li>
             </ul>
             
@@ -78,9 +86,11 @@
     <div id="SummarizeDataCategory" class="largesize">
         <h2>Summarize Data</h2>
         <hr/>
-        <p>The Summarize Data toolset contains tools that calculate total counts, lengths, areas, and basic descriptive statistics of features and their attributes within areas or near other features.
+        <p> The Summarize Data toolset contains tools that calculate total counts, lengths, areas, and basic descriptive statistics of features and their attributes within areas or near other features.
             <ul>
                 <li> <b>Aggregate Points</b> calculates statistics about points that fall within specified areas or bins.
+                </li>
+                <li> <b>Build Multi-Variable Grid</b> generates a grid of square or hexagonal bins and calculates values for each bin based on the proximity of each input layer.
                 </li>
                 <li> <b>Join Features</b> calculates statistics about features that share a spatial, temporal, or attribute relationship with other features.
                 </li>
@@ -110,11 +120,37 @@ point features and either a layer of area features or bins defined by a specifie
 determines which points fall within each area or bin and calculates statistics about all
 the points within each area or bin. You may optionally apply time slicing with this tool. 
             </p>
-            <p> For example
+            <p>The following are examples:
                 <ul>
                     <li>Given point locations of crime incidents, count the number of crimes per county or other administrative district.
                     </li>
-                    <li>Find the highest and lowest monthly revenues for franchise locations using 100 km bins.
+                    <li>Find the highest and lowest monthly revenues for franchise locations using 100-kilometer bins.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="BuildMultiVariableGridTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Build Multi-Variable Grid</h2></td>
+                    <td>
+                    <img src="../images/GUID-B78AB95A-E412-4983-ADBA-3678BF207A79-web.png" class="titleImage" alt="Append Data workflow diagram">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>The Build Multi-Variable Grid tool generates a grid of square or hexagonal bins and calculates variables for each bin based on the proximity of one or more input layers.
+            </p>
+            <p>The following are examples:
+                <ul>
+                    <li>Given multiple layers of public transportation infrastructure, what part of the city is least accessible by public transportation?
+                    </li>
+                    <li>Given layers of waterways, such as lakes and rivers, what is the name of the water body closest to each  location in the U.S.?
+                    </li>
+                    <li>Given a layer of household income, where in the U.S. is the variation of income in the surrounding 50 miles the greatest?
                     </li>
                 </ul>
                 
@@ -134,7 +170,7 @@ the points within each area or bin. You may optionally apply time slicing with t
 <hr/>
             <p>Using either feature layers or tabular data, you can join features and records based on specific relationships between the input layers or tables.  Joins will be determined by spatial, temporal, and attribute relationships, and summary statistics can be optionally calculated.  
             </p>
-            <p>For example
+            <p>The following are examples:
                 <ul>
                     <li>Given point locations of crime incidents with a time, join the crime data to itself specifying a spatial relationship of crimes within 1 kilometer of each other and that occurred within 1 hour of each other to determine if there are a sequence of crimes close to each other in space and time.
                     </li>
@@ -160,7 +196,7 @@ the points within each area or bin. You may optionally apply time slicing with t
 point  or polygon features that represent an  <code>instant</code> in time, this tool
 determines which input features belong in a track and will order the inputs sequentially in time. Statistics are optionally calculated for the input features within each track.
             </p>
-            <p> For example
+            <p> The following are examples:
                 <ul>
                     <li>Given point locations and time of hurricane measurements, calculate the mean wind speed and max wind pressure of the hurricane.
                     </li>
@@ -185,9 +221,9 @@ determines which input features belong in a track and will order the inputs sequ
             <p> Using either feature or tabular data, this tool
 summarizes statistics for specified fields.
             </p>
-            <p> For example
+            <p>The following are examples:
                 <ul>
-                    <li> Given locations of grocery stores with a field <i>COMPANY_NAME</i>, summarize the stores by the company name to determine statistics for each company.
+                    <li>Given locations of grocery stores with a field  <i>COMPANY_NAME</i>, summarize the stores by the company name to determine statistics for each company.
                     </li>
                     <li>Given a table of grocery stores with  fields  <i>COMPANY_NAME</i> and <i>COUNTY</i>, summarize the stores by the company name and county to determine statistics for each company within each county.
                     </li>
@@ -202,7 +238,7 @@ summarizes statistics for specified fields.
                 <tbody><tr>
                     <td><h2>Summarize Within</h2></td>
                     <td>
-                    <img src="../images/GUID-90E0CB1F-EB97-4752-B2EE-452B7B45475E-web.png" class="titleImage" alt="Summarize Within">
+                    <img src="../images/GUID-9B12DB3F-AA7B-41EB-87C6-D2DEC3D52DA9-web.png" class="titleImage" alt="Summarize Within">
                     </td>
                 </tr></tbody>
             </table>
@@ -210,7 +246,7 @@ summarizes statistics for specified fields.
             <p>Finds areas (and portions of areas) that overlap between two
 layers and calculates statistics about the overlap. 
             </p>
-            <p> For example
+            <p>The following are examples:
                 <ul>
                     <li>Given a layer of watershed areas and a layer of land-use areas by land-use type, calculate total acreage of land-use type for each watershed. 
                     </li>
@@ -248,12 +284,10 @@ meet a number of different criteria you specify.
                 </tr></tbody>
             </table>
 <hr/>
-            <p> <img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Detect Incidents">
-            </p>
             <p>This tool works with a time-enabled layer of
 points, lines, areas, or tables that represents an instant in time.   Using sequentially ordered features, called tracks, this tool determines which features are incidents of interest. Incidents are determined by conditions that you specify. 
             </p>
-            <p>For example
+            <p>The following are examples:
                 <ul>
                     <li>Detect hurricane measurements that are Category 4 hurricanes based on a wind speed attribute.
                     </li>
@@ -264,7 +298,7 @@ points, lines, areas, or tables that represents an instant in time.   Using sequ
             </p>
             <br/>
         </div>
-        <div id="GeocodeLocationsfromTableTool" class="regularsize">
+        <div id="GeocodeLocationsfromTableTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -275,8 +309,6 @@ points, lines, areas, or tables that represents an instant in time.   Using sequ
                 </tr></tbody>
             </table>
 <hr/>
-            <p> <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" alt="Geocode Locations from Table">
-            </p>
             <p>Converts addresses into coordinates. Use this tool on big data file share tables.
             </p>
             <br/>
@@ -294,7 +326,7 @@ points, lines, areas, or tables that represents an instant in time.   Using sequ
 <hr/>
             <p>Based on criteria you specify, find similar locations  by measuring the similarity of locations in your candidate search layer to one or more reference locations. 
             </p>
-            <p>For example 
+            <p>The following are examples: 
                 <ul>
                     <li>Find the ten most similar stores by examining the number of employees and the annual sales.
                     </li>
@@ -305,14 +337,16 @@ points, lines, areas, or tables that represents an instant in time.   Using sequ
             </p>
             <br/>
         </div>
-    <div id="AnalyzePatternsCategory" class="smallsize">
+    <div id="AnalyzePatternsCategory" class="regularsize">
         <h2>Analyze Patterns</h2>
         <hr/>
-        <p>These tools help you identify, quantify, and visualize spatial patterns in your data.  
+        <p> These tools help you identify, quantify, and visualize spatial patterns in your data.
             <ul>
                 <li> <b>Calculate Density</b> takes known quantities of some phenomenon and spreads these quantities across the map.
                 </li>
                 <li> <b>Find Hot Spots</b>  identifies statistically significant clustering in the spatial pattern of your data.
+                </li>
+                <li> <b>Find Point Clusters</b> finds clusters of point features in surrounding noise based on their spatial distribution.
                 </li>
             </ul>
             
@@ -331,13 +365,37 @@ points, lines, areas, or tables that represents an instant in time.   Using sequ
 <hr/>
             <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas representing the density.
             </p>
-            <p>For example
+            <p>The following are examples:
                 <ul>
                     <li>Calculating densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to decide where new hospitals should be built.
                     </li>
                     <li>Identifying areas that are at high risk of forest fires based on historical locations of forest fires.
                     </li>
                     <li>Locating communities that are far from major highways in order to plan where new roads should be constructed.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="FindPointClustersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Find Point Clusters</h2></td>
+                    <td>
+                    <img src="../images/GUID-40DA7286-67EA-4333-91C5-4CD527C21B4A-web.png" class="titleImage" alt="Find Point Clusters">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>The Find Point Clusters tool  finds clusters of point features in surrounding noise based on their spatial distribution.
+            </p>
+            <p>The following are examples:
+                <ul>
+                    <li>Find clusters of pest-infested households to help target eradication efforts.  
+                    </li>
+                    <li>Inform and act on rescue and evacuation needs  based on the size and location of the clusters using geolocated tweets following natural hazards or terror attacks.
                     </li>
                 </ul>
                 
@@ -391,7 +449,7 @@ features.
 <hr/>
             <p>A buffer is an area that covers a given distance from a point, line, or polygon feature.
             </p>
-            <p>For example
+            <p>The following are examples:
                 <ul>
                     <li>Using linear river features, buffer each river by 50 times the width of the river to determine a proposed riparian boundary.
                     </li>
@@ -402,14 +460,18 @@ features.
             </p>
             <br/>
         </div>
-    <div id="ManageDataCategory" class="smallsize">
+    <div id="ManageDataCategory" class="regularsize">
         <h2>Manage Data</h2>
         <hr/>
-        <p>These tools are used for the day-to-day management of geographic and tabular data.
+        <p>These tools are used for the day-to-day management of geographic and tabular data. 
             <ul>
+                <li> <b>Append Data</b> appends features to an existing hosted feature layer.
+                </li>
                 <li> <b>Calculate Field</b> creates a new field or modifies an existing field and creates a new layer in your contents.
                 </li>
-                <li> <b>Copy to Data Store</b> copies data to your ArcGIS Data Store and creates a layer in your contents.
+                <li> <b>Copy to Data Store</b> copies data to your ArcGIS Data Store and creates a layer in your contents. 
+                </li>
+                <li> <b>Overlay Layers</b> combines two or more layers into a single layer.
                 </li>
             </ul>
             
@@ -427,7 +489,7 @@ features.
             </table>
 <hr/>
             <p>Copies an input feature layer or table to an  ArcGIS Data Store and creates a layer in your contents in  ArcGIS Enterprise. </p>
-            <p>For example
+            <p>The following are examples:
                 <ul>
                     <li>Copy a collection of  <code>.csv</code> files in a big data file share to the spatiotemporal data store for visualization.
                     </li>
@@ -450,11 +512,62 @@ features.
             </table>
 <hr/>
             <p>Calculates values for a new or existing field and creates a layer in your contents in  ArcGIS Enterprise. </p>
-            <p>For example
+            <p>The following are examples:
                 <ul>
                     <li>Modify an existing field named  <i>total</i> to be the sum of revenue from fields <i>total_2016</i>, <i>total_2017</i>, and <i>total_2018</i>.
                     </li>
                     <li>Create a new field to categorize hazard levels based on field values such as  <i>windspeed</i> and <i>pollutant</i>.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="OverlayLayersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Overlay Layers</h2></td>
+                    <td>
+                    <img src="../images/GUID-00A64703-4E97-4398-AE5C-F1885375BC30-web.png" class="titleImage" alt="Overlay Layers">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Overlay combines two or more layers into one single layer.  Overlay is used to answer one of the most basic questions of geography, What is on top of what? The following are examples:
+                <ul>
+                    <li>What parcels are within the 100-year flood plain? (Within is just another way of saying on top of.)
+                          
+                    </li>
+                    <li>What land use is on top of what soil type?
+                         
+                    </li>
+                    <li>What wells are within abandoned military bases?
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="AppendDataTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Append Data</h2></td>
+                    <td>
+                    <img src="../images/GUID-8C95EAE0-904A-42C4-8C3D-303E74FD6DD7-web.png" class="titleImage" alt="Append Data workflow diagram">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Appends features to an existing hosted layer in your contents in  ArcGIS Enterprise. </p>
+            <p>The following are examples:
+                <ul>
+                    <li>Update your 2018_Sales feature layer each month as your reports become available. 
+                    </li>
+                    <li>Append hurricane tracking datasets from the years 2016 and 2017 into a master hurricane dataset.
+                    </li>
+                    <li>Collect and append datasets from various sources with different schemas using custom field mapping.
                     </li>
                 </ul>
                 

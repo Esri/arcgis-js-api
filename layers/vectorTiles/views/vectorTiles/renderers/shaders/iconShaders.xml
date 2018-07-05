@@ -8,13 +8,23 @@
   instance to access the GLSL code, instead of importing it directly with require("dojo/text!...").
 -->
 <snippets>
-  <snippet name="rgba2floatFunc">
-    <![CDATA[
+
+  <snippet name="rgba2float"><![CDATA[
+    // TODO consider moving this snippet into a util.xml file
+    const vec4 rgba2float_factors = vec4(
+        255.0 / (256.0),
+        255.0 / (256.0 * 256.0),
+        255.0 / (256.0 * 256.0 * 256.0),
+        255.0 / (256.0 * 256.0 * 256.0 * 256.0)
+      );
+
     float rgba2float(vec4 rgba) {
-      return dot(rgba,  vec4(1.0/16777216.0, 1.0/65535.0, 1.0/256.0, 1.0));
+      // Convert components from 0->1 back to 0->255 and then
+      // add the components together with their corresponding
+      // fixed point factors, i.e. (256^1, 256^2, 256^3, 256^4)
+      return dot(rgba, rgba2float_factors);
     }
-    ]]>
-  </snippet>
+  ]]></snippet>
 
   <snippet name="iconVS">
     <![CDATA[
@@ -26,10 +36,9 @@
     #ifdef DD
       attribute vec4 a_color;
       attribute mediump float a_size;
-    #else
+    #endif // DD
       uniform lowp vec4 u_color;
       uniform mediump float u_size;
-    #endif // DD
 
     #ifdef ID
       uniform mediump vec4 u_id;
@@ -87,8 +96,8 @@
       varying mediump vec2 v_size;
 
       // the vertex offsets are given in integers, therefore in order to maintain a reasonable precision we multiply the values
-      // by 16 and then at the shader devide by the same number
-      const float C_OFFSET_PRECISION = 1.0 / 32.0;
+      // by 8 and then at the shader devide by the same number
+      const float C_OFFSET_PRECISION = 1.0 / 8.0;
 
       const float C_256_TO_RAD = 3.14159265359 / 128.0;
       const float C_DEG_TO_RAD = 3.14159265359 / 180.0;
@@ -140,35 +149,24 @@
       #endif // SDF
 
       #ifdef DD
-        mediump float icon_size = a_size;
+        mediump float icon_size = a_size * u_size;
       #else
         mediump float icon_size = u_size;
       #endif // DD
         gl_Position = vec4(u_normalized_origin, u_depth, 0.0) + u_transformMatrix * vec4(a_pos, 0.0, 1.0) + u_extrudeMatrix * icon_size * vec4(offset, delta_z, 0.0);
 
-        float opacity;
-
-      #ifdef SDF
       #ifdef DD
-        v_color = a_color;
+        v_color = a_color * u_color;
       #else
         v_color = u_color;
       #endif // DD
-        opacity = u_opacity;
-      #else // SDF
-      #ifdef DD
-        opacity = a_color.w;
-      #else
-        opacity = u_opacity;
-      #endif // DD
-      #endif // SDF
 
       #ifdef ID
         v_id = u_id / 255.0;
       #endif // ID
 
         v_tex = a_tex.xy / u_mosaicSize;
-        v_transparency *= opacity;
+        v_transparency *= v_color.w;
       }
     ]]>
   </snippet>
@@ -191,16 +189,14 @@
 
       varying mediump vec2 v_size;
 
-    #ifdef SDF
       varying lowp vec4 v_color;
-    #endif // SDF
 
     #ifdef ID
       varying mediump vec4 v_id;
     #endif // ID
 
       // we need the conversion function from RGBA to float
-      $rgba2floatFunc
+      $rgba2float
 
       vec4 mixColors(vec4 color1, vec4 color2) {
         // perform un-premultiplied over operator (see https://en.wikipedia.org/wiki/Alpha_compositing#Alpha_blending)
@@ -219,18 +215,8 @@
         // calculate the distance from the edge [-0.5, 0.5]
         float d = rgba2float(texture2D(u_texture, v_tex)) - 0.5;
 
-        // Work around loss of precision for 'd = 0.0'.
-        // '0' gets normalised to 0.5 * 256 = 128 before float packing, but can only
-        // be stored in the texture as 128 / 255 = 0.502.
-        // see: https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/7058#issuecomment-603110
-        const float diff = (128.0 / 255.0 - 0.5);
-
-        // adjust all values, not just those close to 0, to avoid discontinuities in
-        // the outlines of other shapes e.g. circles
-        d = d - diff;
-
         // the soft edge ratio is about 1.5 pixels allocated for the soft edge.
-        // 1 / 86 represents a single pixel given the the size of the SDF is 128 and we add 4 pixels margins to deal with
+        // 1 / 86 represents a single pixel given the size of the SDF is 128 and we add 4 pixels margins to deal with
         // other non SDF types.
         // The rasterized geometry takes only 86 pixels because of the extra 16 pixels margin for the outline.
         const float sofetEdgeRatio = 0.248062016; // ==> (32.0 / 86.0) / 1.5;

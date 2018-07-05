@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Hitta punktkluster</h2><p/>
+        <h2><img src="../images/GUID-40DA7286-67EA-4333-91C5-4CD527C21B4A-web.png" alt="Hitta punktkluster"></h2>
+        <hr/>
+    <p>Verktyget  Hitta punktkluster hittar kluster av punktgeoobjekt i bakgrundsbrus baserat p&aring; deras rumsliga f&ouml;rdelning.
+    </p>
+    <p>En icke-statlig organisation studerar en viss insektsburen sjukdom. Den har ett punktdataset som representerar hush&aring;llen i ett unders&ouml;kningsomr&aring;de, d&auml;r vissa &auml;r angripna och andra inte. Med verktyget  Hitta punktkluster kan en analytiker fastst&auml;lla kluster med smittade hush&aring;ll och hj&auml;lpa dig att lokalisera ett omr&aring;de d&auml;r behandlingen och utrotning av skadedjuren ska inledas.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Välj det lager som klustren ska hittas från</h2></div>
+        <hr/>
+        <div>
+            <p>Det punktlager som klustren kommer att hittas i.  Lagren m&aring;ste finnas i en projicerad spatial referens eller s&aring; m&aring;ste den spatiala referensen vara inst&auml;lld p&aring; ett projicerat koordinatsystem med  <b>Analysmilj&ouml;</b>.
+            </p>
+            <p>F&ouml;rutom att v&auml;lja ett lager fr&aring;n kartan kan du v&auml;lja  <b>Bl&auml;ddra bland lager</b> l&auml;ngst ned i listrutan f&ouml;r att bl&auml;ddra till ditt inneh&aring;ll efter ett big data-fildelningsdataset eller geoobjektslager.
+            </p>
+        </div>
+    </div>
+    <div id="minFeaturesCluster">
+        <div><h2>Minimalt antal punkter för att betraktas som ett kluster</h2></div>
+        <hr/>
+        <div>
+            <p>Minsta antal geoobjekt som kan fungera som utg&aring;ngsv&auml;rde f&ouml;r ett kluster.
+            </p>
+        </div>
+    </div>
+    <div id="searchDistance">
+        <div><h2>Begränsa sökintervallet till</h2></div>
+        <hr/>
+        <div>
+            <p>Det maximala avst&aring;ndet f&ouml;r att geoobjekt ska anses ing&aring; i samma kluster.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Resultatlagrets namn</h2></div>
+        <hr/>
+        <div>
+            <p> Namnet p&aring; lagret som skapas i <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns misslyckas verktyget.
+            </p>
+            <p>Om du anv&auml;nder listrutan  <b>Spara resultat i</b> kan du ange namnet p&aring; en mapp i <b>Mitt inneh&aring;ll</b> d&auml;r resultatet ska sparas.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

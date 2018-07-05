@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
-define([],function(){return{Modes:{Raster:"raster",Bigdata:"bigdata",Standard:"standard",Feature:"feature"},Tools:{FindCentroids:"FindCentroids",ChooseBestFacilities:"ChooseBestFacilities"},GeometryTypes:{Polygon:"esriGeometryPolygon",Line:"esriGeometryPolyline",Point:"esriGeometryPoint",MultiPoint:"esriGeometryMultipoint"},FieldTypes:{String:"esriFieldTypeString",Short:"esriFieldTypeSmallInteger",Integer:"esriFieldTypeInteger",Float:"esriFieldTypeSingle",Double:"esriFieldTypeDouble"}}});
+define([],function(){return{Modes:{Raster:"raster",Bigdata:"bigdata",Standard:"standard",Feature:"feature"},Tools:{FindCentroids:"FindCentroids",ChooseBestFacilities:"ChooseBestFacilities"},GeometryTypes:{Polygon:"esriGeometryPolygon",Line:"esriGeometryPolyline",Point:"esriGeometryPoint",MultiPoint:"esriGeometryMultipoint"},FieldTypes:{ObjectId:"esriFieldTypeOID",String:"esriFieldTypeString",Short:"esriFieldTypeSmallInteger",Integer:"esriFieldTypeInteger",Float:"esriFieldTypeSingle",Double:"esriFieldTypeDouble"}}});

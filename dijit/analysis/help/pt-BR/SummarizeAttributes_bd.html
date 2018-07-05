@@ -56,7 +56,7 @@
         <div>
             <p>A camada que cont&eacute;m os campos que ser&atilde;o resumidos.  
             </p>
-            <p>Al&eacute;m de escolher uma camada de seu mapa, voc&ecirc; pode escolher  <b>Procurar Camadas</b> na parte inferior da lista suspensa para procurar por seu conte&uacute;do para um conjunto de dados de compartilhamento de arquivo big data ou camada de fei&ccedil;&atilde;o.
+            <p>Al&eacute;m de escolher uma camada do seu mapa, voc&ecirc; pode escolher  <b>Procurar Camadas</b> na parte inferior da lista suspensa para procurar por seu conte&uacute;do para um conjunto de dados de compartilhamento do arquivo de grandes dados ou camada de fei&ccedil;&atilde;o.
             </p>
         </div>
     </div>
@@ -81,9 +81,11 @@
         <div><h2>Adicionar estatísticas (opcional)</h2></div>
         <hr/>
         <div>
-            <p> Voc&ecirc; pode calcular as estat&iacute;stica em fei&ccedil;&otilde;es que s&atilde;o resumidas. Nos campos num&eacute;ricos voc&ecirc; pode calcular o seguinte:
+            <p> Voc&ecirc; pode calcular as estat&iacute;stica em fei&ccedil;&otilde;es que s&atilde;o resumidas.
+Voc&ecirc; pode calcular o seguinte em campos num&eacute;ricos:
                 <ul>
-                    <li>Contagem&mdash;Calcula o n&uacute;mero de valores diferentes de nulo. Pode ser utilizado em campos num&eacute;ricos ou strings. 'A contagem de [null, 0, 2] &eacute; 2.
+                    <li>Contagem&mdash;Calcula o n&uacute;mero de valores diferentes de nulo.
+Pode ser utilizado em campos num&eacute;ricos ou strings. 'A contagem de [null, 0, 2] &eacute; 2.
                     </li>
                     <li>Soma&mdash;A soma de valores num&eacute;ricos em um campo. A soma de [null, null, 3] &eacute; 3.
                     </li>
@@ -95,14 +97,14 @@
                     </li>
                     <li>Alcance&mdash;O alcance de um campo num&eacute;rico. Isto &eacute; calculado como os valores m&iacute;nimos subtra&iacute;dos do valor m&aacute;ximo. O alcance de [0, null, 1] &eacute; 1. O alcance de [null, 4] &eacute; 0.
                     </li>
-                    <li>Vari&acirc;ncia&mdash;A vari&acirc;ncia de um campo num&eacute;rico em um caminho. A vari&acirc;ncia de [1] &eacute; nula. A vari&acirc;ncia de [null, 1,1,1] &eacute; 1.
+                    <li>Vari&acirc;ncia&mdash;A vari&acirc;ncia de um campo num&eacute;rico em um caminho. A vari&acirc;ncia de [1] &eacute; nula. A vari&acirc;ncia de [null, 1,0,1,1] &eacute; 0,25.
                     </li>
-                    <li>Desvio padr&atilde;o&mdash;O desvio padr&atilde;o de um campo num&eacute;rico. O desvio padr&atilde;o de [1] &eacute; nulo. O desvio padr&atilde;o de [nulo, 1,1,1] &eacute; 1. 
+                    <li>Desvio padr&atilde;o&mdash;O desvio padr&atilde;o de um campo num&eacute;rico. O desvio padr&atilde;o de [1] &eacute; nulo. O desvio padr&atilde;o de [nulo, 1,0,1,1] &eacute; 0,5. 
                     </li>
                 </ul>
                 
             </p>
-            <p>Nos campos de string voc&ecirc; pode calcular o seguinte:
+            <p>Voc&ecirc; pode calcular o seguinte em campos de strings:
                 <ul>
                     <li>Contagem&mdash;O n&uacute;mero de strings diferente de nulo.
                     </li>
@@ -117,11 +119,11 @@
         <div><h2>Escolher armazenamento de dados</h2></div>
         <hr/>
         <div>
-            <p>Os resultados do GeoAnalytic s&atilde;o armazenados no ArcGIS Data Store e expostos como uma camada de fei&ccedil;&atilde;o no  Portal for ArcGIS. Na maioria dos casos, os resultados devem ser armazenados no armazenamento de dados de espa&ccedil;o-tempo e este &eacute; o padr&atilde;o. Em alguns casos salvar resultados no armazenamento de dados relacional &eacute; uma boa op&ccedil;&atilde;o. Abaixo est&atilde;o as raz&otilde;es pelas quais voc&ecirc; talvez queira armazenar resultados em um armazenamento de dados relacional: 
+            <p>Os resultados do GeoAnalytic s&atilde;o armazenados no ArcGIS Data Store e expostos como uma camada de fei&ccedil;&atilde;o no  Portal for ArcGIS. Na maioria dos casos, os resultados devem ser armazenados no armazenamento de dados de espa&ccedil;o-tempo e este &eacute; o padr&atilde;o. Em alguns casos, salvar resultados no armazenamento de dados relacional &eacute; uma boa op&ccedil;&atilde;o. Abaixo est&atilde;o as raz&otilde;es pelas quais voc&ecirc; talvez queira armazenar resultados em to um armazenamento de dados relacional: 
                 <ul>
-                    <li>Utilizar os resultados no portal para colabora&ccedil;&atilde;o do portal.
+                    <li>Voc&ecirc; pode  utilizar os resultados no portal-para-colabora&ccedil;&atilde;o do portal.
                     </li>
-                    <li>Habilitar recursos de sincroniza&ccedil;&atilde;o com seus resultados.
+                    <li>Voc&ecirc; pode habilitar os recursos de sincroniza&ccedil;&atilde;o com seus resultados.
                     </li>
                 </ul>
                 
@@ -132,7 +134,7 @@
         <div><h2>Nome da camada resultante</h2></div>
         <hr/>
         <div>
-            <p> Este &eacute; o nome da camada que ser&aacute; criada em <b>Meu Conte&uacute;do</b> e adicionada no mapa.  O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existe, a ferramenta falhar&aacute;.
+            <p> O nome da camada que ser&aacute; criada em <b>Meu Conte&uacute;do</b> e adicionada ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existe, a ferramenta falhar&aacute;.
             </p>
             <p>Ao utilizar a caixa suspensa  <b>Salvar resultado em</b>, &eacute; poss&iacute;vel especificar o nome de uma pasta em <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo.
             </p>

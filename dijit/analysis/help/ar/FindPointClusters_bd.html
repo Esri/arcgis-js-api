@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>بحث عن مجموعات النقاط</h2><p/>
+        <h2><img src="../images/GUID-40DA7286-67EA-4333-91C5-4CD527C21B4A-web.png" alt="بحث عن تجميعات النقاط"></h2>
+        <hr/>
+    <p>تبحث أداة  بحث عن تجمعات النقاط عن المعالم النقطية ضمن الضوضاء المحيطة بناءً على توزيعها المكاني.
+    </p>
+    <p>مؤسسة غير حكومية تدرس مرضًا محددًا ينتقل عبر الحشرات. لديها مجموعة بيانات نقطية تمثل الأُسر في منطقة دراسة محددة، بعض منها موبوء والآخر غير موبوء. باستخدام أداة  بحث عن تجمعات النقاط يمكن للمحلل تحديد تجميعات الأُسر الموبوءة للمساعدة في تحديد منطقة لبدء معالجة ومحاربة الحشرات.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>اختر الطبقة التي سيتم العثور على مجموعاتها</h2></div>
+        <hr/>
+        <div>
+            <p>الطبقة النقطية التي سيتم العثور فيها على تجميعات. يجب أن تكون الطبقات في إسناد مكاني مُسقط أو يجب تعيين إسناد مكاني للمعالجة إلى نظام إحداثي مسقط باستخدام  <b>بيئات التحليل</b>.
+            </p>
+            <p>بالإضافة إلى اختيار طبقة من الخريطة، يمكنك اختيار  <b>استعراض الطبقات</b> أسفل القائمة المنسدلة لاستعراض محتوياتك لمجموعة بيانات مشاركة ملف البيانات الضخمة أو طبقة معالم.
+            </p>
+        </div>
+    </div>
+    <div id="minFeaturesCluster">
+        <div><h2>أدنى عدد من النقاط يجب أخذه في الاعتبار على أنه مجموعة</h2></div>
+        <hr/>
+        <div>
+            <p>أدنى عدد من المعالم المطلوب لإضافة تجميع.
+            </p>
+        </div>
+    </div>
+    <div id="searchDistance">
+        <div><h2>تحديد نطاق البحث إلى</h2></div>
+        <hr/>
+        <div>
+            <p>أقصى مسافة لأخذ المعالم في الاعتبار كجزء من نفس التجميع.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>اسم طبقة النتيجة</h2></div>
+        <hr/>
+        <div>
+            <p> اسمالطبقة التي سيتم إنشاؤها في <b>المحتوى</b> وإضافتها إلى الخريطة. يستند الاسم الافتراضي إلى اسم الأداة واسم الطبقة المدخلة. إذا وُجِدَت الطبقة بالفعل، ستفشل الأداة.
+            </p>
+            <p>عند استخدام مربع السهم المنسدل  <b>حفظ النتائج في</b> يمكن تحديد اسم المجلد في <b>المحتويات</b> حيث يتم حفظ النتائج.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

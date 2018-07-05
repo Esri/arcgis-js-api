@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Pronađi vruće tačke</h2><p/>
+        <h2>Pronađite žarišta</h2><p/>
         <h2><img src="../images/GUID-6D600155-AA9B-4F02-AD8B-2E84150AB743-web.png" alt="Pronađite vruće tačke"></h2>
         <hr/>
     <p>Alatka Pronađite vruće tačke odrediće da li postoje statistički značajni klasteri u prostornom obrascu va&scaron;ih podataka. 
@@ -58,12 +58,12 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="analysisLayer">
-        <div><h2>Odaberite sloj za koji će biti izračunate vruće tačke</h2></div>
+        <div><h2>Odaberite sloj za koji će biti izračunata žarišta</h2></div>
         <hr/>
         <div>
             <p>Tačkasti sloj iz kog mogu da se pronađu vruće i hladne tačke.
             </p>
-            <p>Ova analiza koristi blokove i zahteva projektovani koordinatni sistem.  <b>Koordinatni sistem obrade</b> možete da podesite u <b>Okruženja analize</b>. Ako koordinatni sistem obrade nije pode&scaron;en na projektovani koordinatni sistem, od vas će se tražiti da ga podesite prilikom <b>pokretanja analize</b>.
+            <p>Ova analiza koristi blokove i zahteva projektovani koordinatni sistem.  <b>Koordinatni sistem obrade</b> možete da podesite u <b>Okruženja analize</b>. Ako koordinatni sistem obrade nije pode&scaron;en na projektovani koordinatni sistem, od vas će se tražiti da ga podesite prilikom kori&scaron;ćenja opcije <b>Pokreni analizu</b> 
             </p>
             <p>Kao dodatak odabiru sloja iz mape, možete da odaberete  <b>Pregledaj slojeve</b> na dnu padajuće liste da biste potražili deljeni skup podataka za datoteke sa velikim podacima ili sloj geoobjekta u svojim sadržajima.
             </p>
@@ -99,10 +99,10 @@
         </div>
     </div>
     <div id="timeInterval">
-        <div><h2>Interval vremenskih korakao</h2></div>
+        <div><h2>Interval vremenskih koraka</h2></div>
         <hr/>
         <div>
-            <p>Interval vremena koji se koristi za generisanje vremenskih koraka.  Vreme može da se poravna sa vremenom početka ili kraja unosa podataka ili sa navedenim referentnim vremenom.  
+            <p>Interval vremena koji se koristi za generisanje vremenskih koraka. Vreme može da se poravna sa vremenom početka ili kraja unosa podataka ili sa navedenim referentnim vremenom.  
             </p>
         </div>
     </div>
@@ -159,16 +159,16 @@
         <div><h2>Odaberite ArcGIS skladište podataka u koje će se čuvati rezultati</h2></div>
         <hr/>
         <div>
-            <p>Rezultati geoanalize se skladi&scaron;te u ArcGIS skladi&scaron;tu podataka i izloženi su kao sloj geoobjekata u  Portal for ArcGIS. U većini slučajeva, rezultati bi trebali da budu skladi&scaron;teni u u skladi&scaron;te prostorno-vremenskih podataka i ovo je podrazumevano. U nekim slučajevima čuvanje rezultata u skladi&scaron;te relacionih podataka je dobar izbor. Slede razlozi zbog kojih ćete želeti da skladi&scaron;tite rezultate u skladi&scaron;tu relacionih podataka: 
+            <p>Rezultati geoanalize se skladi&scaron;te u ArcGIS skladi&scaron;tu podataka i izloženi su kao sloj geoobjekata u  Portal for ArcGIS. U većini slučajeva, rezultati bi trebali da budu skladi&scaron;teni u u skladi&scaron;te prostorno-vremenskih podataka i ovo je podrazumevano. U nekim slučajevima, čuvanje rezultata u skladi&scaron;te relacionih podataka je dobar izbor. Slede razlozi zbog kojih ćete želeti da skladi&scaron;tite rezultate u skladi&scaron;tu relacionih podataka: 
                 <ul>
-                    <li>Da biste koristili va&scaron;e rezultate u portal-ka-portalu kolaboraciji.
+                    <li>Možete da koristite rezultate u kolaboraciji portal-sa-portalom.
                     </li>
-                    <li>Da biste omogućili mogućnosti sinhronizacije sa rezultatima.
+                    <li>Možete da omogućite mogućnosti sinhronizacije sa va&scaron;im rezultatima.
                     </li>
                 </ul>
                 
             </p>
-            <p>Ne treba da koristite skladi&scaron;te relacionih podataka ako očekujete da se geoanalitički podaci povećaju i treba da iskoristite mogućnosti prostorno-vremenskog skladi&scaron;ta velikih podataka kako biste upravljali velikim količinama podataka. 
+            <p>Ne treba da koristite skladi&scaron;te relacionih podataka ako očekujete da se geoanalitički podaci povećaju i treba da iskoristite mogućnosti prostorno-vremenskog skladi&scaron;ta velikih podataka kako biste upravljali velikim količinama podataka.
             </p>
         </div>
     </div>
@@ -176,7 +176,7 @@
         <div><h2>Naziv sloja sa rezultatima</h2></div>
         <hr/>
         <div>
-            <p> Ovo je naziv sloja koji će biti kreiran u <b>Mom sadržaju</b> i dodat na mapu. Podrazumevani naziv je zasnovan na nazivu alatke i nazivu ulaznog sloja. Ako sloj već postoji, alatka će otkazati.
+            <p> Naziv sloja koji će biti kreiran u opciji <b>Moj sadržaj</b> i dodat mapi. Ako sloj već postoji, alatka će otkazati.
             </p>
             <p>Ovaj sloj sa rezultatima će vam prikazati statistički značajne klastere visokih i niskih vrednosti ili brojeve tačaka. Ako naziv rezultujućeg sloja već postoji, od vas će se tražiti da ga preimenujete.
             </p>

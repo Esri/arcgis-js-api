@@ -231,12 +231,28 @@
 .esriImageFilterResultTable .esriRasterListCheckboxCol {
   vertical-align: bottom;
   text-align: right;
+  width: 10%;
 }
 
 .esriImageFilterResultTable .esriRasterListThumbnailRow.dgrid-row {
   overflow: auto;
-  height: 120px;
   margin: 3px 0;
+  display: table;
+}
+
+.esriImageFilterResultTable .esriRasterListInfoTag {
+  display: block;
+  overflow: visible;
+  word-break: break-all;
+}
+
+.esriImageFilterResultTable .esriRasterListThumbnailCol {
+  width: 30%;
+}
+
+.esriImageFilterResultTable .esriRasterListThumbnail {
+  height: 40%;
+  width: 100%;
 }
 
 .esriImageFilterResultPanelOptions {
@@ -279,6 +295,7 @@
 .esriImageFilterResultTable .esriRasterListRowTable {
   border: 1px groove #ddd;
   border-spacing: 6px;
+  table-layout: fixed;
 }
 
 .esriImageFilterAddToMap .dijitReset.dijitInline.dijitButtonText {
@@ -300,4 +317,22 @@ padding: 6px 5px;
 
 .esriImageFilterFieldFormat .timeCheckbox.disabled {
   color: #ccc;
+}
+
+.esriImageFilterWarning {
+  padding-right: 6px;
+  vertical-align: text-top;
+}
+
+.linkPanel table {
+  width: 100%;
+}
+
+table.esriImageFilterSliderTableHorizontal {
+  table-layout: fixed;
+  height: 7rem;
+}
+
+.esriImageFilterSliderCellHorizontal .dijitSelect .dijitButtonContents {
+  overflow: hidden;
 }

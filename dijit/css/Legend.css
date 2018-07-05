@@ -107,3 +107,9 @@
 .esriLegendSizeRampLabel {
   white-space: nowrap;
 }
+
+.esriLegendRelationshipLabel {
+  font-size: 12px;
+  color: "#555555";
+  padding: 2.5px 5px;
+}

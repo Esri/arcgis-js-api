@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Trova cluster punti</h2><p/>
+        <h2><img src="../images/GUID-40DA7286-67EA-4333-91C5-4CD527C21B4A-web.png" alt="Trova cluster punti"></h2>
+        <hr/>
+    <p>Lo strumento  Trova cluster punti trova i cluster di feature punto entro il disturbo circostante in base alla loro distribuzione spaziale.
+    </p>
+    <p>Un'organizzazione non governativa sta studiando una particolare malattia trasmessa da un parassita. Dispone di un dataset di punti che rappresenta le famiglie in un'area di studio, alcune delle quali sono infestate e altre no. Utilizzando lo strumento  Trova cluster punti, un analista &egrave; in grado di determinare le famiglie infestate per poter individuare un'area in cui iniziare il trattamento e lo sterminio dei parassiti.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Scegliere il layer per il quale verranno trovati i cluster</h2></div>
+        <hr/>
+        <div>
+            <p>Il layer di punti in cui si trovano i cluster. I layer devono essere in un riferimento spaziale proiettato o disporre di un riferimento spaziale di elaborazione su un sistema di coordinate proiettate utilizzando gli  <b>Ambienti di analisi</b>.
+            </p>
+            <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Sfoglia layer</b> alla base dell'elenco a discesa per cercare una dataset di condivisione file Big Data o un Feature Layer.
+            </p>
+        </div>
+    </div>
+    <div id="minFeaturesCluster">
+        <div><h2>Numero minimo di punti da considerare cluster</h2></div>
+        <hr/>
+        <div>
+            <p>Il numero minimo di feature per creare un cluster.
+            </p>
+        </div>
+    </div>
+    <div id="searchDistance">
+        <div><h2>Limita l\'intervallo di ricerca a</h2></div>
+        <hr/>
+        <div>
+            <p>La distanza minima per considerare le feature come parte dello stesso cluster.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nome del layer dei risultati</h2></div>
+        <hr/>
+        <div>
+            <p> Il nome del layer che verr&agrave; creato in <b>I miei contenuti</b> e aggiunto alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, lo strumento non verr&agrave; eseguito.
+            </p>
+            <p>Utilizzare la casella a discesa  <b>Salva risultato in</b> per specificare il nome di una cartella in <b>I miei contenuti</b> in cui salvare il risultato.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

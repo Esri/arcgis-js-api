@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>बिंदु क्लस्टर खोजें</h2><p/>
+        <h2><img src="../images/GUID-025ADB1C-E4BF-4C8D-A35F-1D0E222627F9-web.png" alt="पॉइंट क्लस्टर खोजें"></h2>
+        <hr/>
+    <p>यह टूल आसपास के शोर में पॉइंट फ़ीचर के स्पाशियल वितरण के आधार पर उनके क्लस्टर खोजता है।
+    </p>
+    <p>अगर  <b>वर्तमान मैप स्तर का उपयोग करें</b> चयनित है, तो केवल वर्तमान मानचित्र स्तर के इनपुट पॉइंट लेयर के फीचर का विश्लेषण किया जाएगा।  चयनित नहीं होने पर, इनपुट पॉइंट लेयर के स्थान-संबंधी फीचर्स का विश्लेषण किया जाएगा, भले ही वे वर्तमान मानचित्र सीमा से बाहर हो।
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="analysisLayer">
+        <div><h2>वह लेयर चुनें जिसके लिए क्लस्टर खोजा जाएगा</h2></div>
+        <hr/>
+        <div>
+            <p>वह पॉइंट लेयर जिसमें क्लस्टर मिलेंगे। 
+            </p>
+        </div>
+    </div>
+    <div id="minFeaturesCluster">
+        <div><h2>क्लस्टर मानने के लिए पॉइंट की न्यूनतम संख्या</h2></div>
+        <hr/>
+        <div>
+            <p>क्लस्टर मानने के लिए फ़ीचर्स की न्यूनतम संख्या। प्रदान किए गए फ़ीचर से कम फीचर वाला किसी भी क्लस्टर को शोर माना जाएगा। 
+            </p>
+        </div>
+    </div>
+    <div id="searchDistance">
+        <div><h2>खोज सीमा को (वैकल्पिक) तक सीमित करें</h2></div>
+        <hr/>
+        <div>
+            <p>एक ही क्लस्टर का भाग होने के लिए विचार किए जाने वाले फ़ीचर हेतु दूरी। रिक्त छोड़ दिए जाने पर, प्रयुक्त डिफ़ॉल्ट दूरी डेटासेट में मिलने वाली सर्वाधिक मूल दूरी होगी, इसमें वे मूल दूरियां शामिल नहीं होंगी जो शीर्ष 1% (सबसे अधिक मूल दूरियों को शामिल नहीं करके) लूप में शामिल हैं। 
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>परिणामी लेयर का नाम</h2></div>
+        <hr/>
+        <div>
+            <p>यह उस लेयर का नाम है जो  <b>मेरी सामग्री</b> में बनाई जाएगी और मानचित्र में जोड़ी जाएगी। इसका मूल नाम उपकरण के नाम और इनपुट लेयर के नाम पर आधारित है। यदि लेयर पहले से मौजूद हो, तो आपसे दूसरा नाम देने को कहा जाएगा।
+            </p>
+            <p> <b>इसमें सहेजें</b> ड्राप-डाउन बॉक्स का उपयोग करके, आप <b>मेरी सामग्री</b> में एक फोल्डर का नाम निर्दिष्ट कर सकते हैं, जहां परिणामों को सहेजा जाएगा।।
+            </p>
+        </div>
+    </div>
+</div>
+</html>

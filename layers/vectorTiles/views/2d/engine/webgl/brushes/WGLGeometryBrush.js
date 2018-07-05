@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
 define(["require","exports","../../../../../core/tsSupport/extendsHelper","./WGLBrush","../util/iterator"],function(e,t,r,i,n){Object.defineProperty(t,"__esModule",{value:!0});var o=function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return r(t,e),t.prototype.draw=function(e,t){var r=this;if(t.canDisplay){var i=this.getGeometryType(),o=t.getDisplayList(e.drawPhase),u=t.getGeometry(i);u&&n.forEachIter(o.ofType(i),function(i){return r.drawGeometry(e,t,i,u)})}},t}(i.default);t.default=o});

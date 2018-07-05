@@ -41,10 +41,10 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Ricostruisci tracce</h2><p/>
+        <h2>Ricostruisci Tracce</h2><p/>
         <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Ricostruisci tracce"></h2>
         <hr/>
-    <p>Questo strumento funziona con un layer abilitato per variazioni temporali di feature puntuali o poligonali che rappresentano un  <code>istante</code> nel tempo.   Innanzitutto esso determina quali feature appartengono a una traccia utilizzando un identificatore. Utilizzando il tempo in ciascuna posizione, le tracce sono ordinate in modo sequenziale e trasformate in una linea o in un poligono che rappresenta la traiettoria del movimento nel tempo. Se lo si desidera, l'input pu&ograve; essere bufferizzato in funzione di un campo e verr&agrave; creato un poligono in ciascuna posizione. Questi punti bufferizzati, o se gli input sono dei poligoni, vengono uniti in modo sequenziale per creare una traccia in forma di poligono laddove la larghezza &egrave; indicativa dell'attributo di interesse. Le tracce generate hanno un'ora di inizio e un'ora di fine, che rappresentano temporalmente la prima e l'ultima feature in una determinata traccia. Quando si creano le tracce, vengono calcolate le statistiche su tutte le feature di input e vengono assegnate alla traccia di output. La statistica pi&ugrave; semplice &egrave; costituita dal numero di punti compresi nell'area, tuttavia &egrave; possibile calcolare anche altre statistiche.
+    <p>Questo strumento funziona con un layer abilitato per variazioni temporali di feature puntuali o areali che rappresentano un  <code>istante</code> nel tempo. Innanzitutto esso determina quali feature appartengono a una traccia utilizzando un identificatore. Utilizzando il tempo in ciascuna posizione, le tracce sono ordinate in modo sequenziale e trasformate in una linea o in un&rsquo;area che rappresenta la traiettoria del movimento nel tempo. Se lo si desidera, l'input pu&ograve; essere bufferizzato in funzione di un campo e verr&agrave; creata un&rsquo;area in ciascuna posizione. Questi punti bufferizzati o le aree di input vengono uniti in modo sequenziale per creare una traccia in forma di area laddove la larghezza &egrave; indicativa dell'attributo di interesse. Le tracce generate hanno un'ora di inizio e un'ora di fine, che rappresentano temporalmente la prima e l'ultima feature in una determinata traccia. Quando si creano le tracce, vengono calcolate le statistiche su tutte le feature di input e vengono assegnate alla traccia di output. La statistica pi&ugrave; semplice &egrave; costituita dal numero di punti compresi nell'area, tuttavia &egrave; possibile calcolare anche altre statistiche.
     </p>
     <p>Le feature abilitate per variazioni temporali possono essere rappresentate in due modi diversi:
         <ul>
@@ -57,7 +57,7 @@
     </p>
     <p>Si supponga, ad esempio, di avere misurazioni GPS di uragani ogni 10 minuti. Ogni misurazione GPS registra il nome dell'uragano, la posizione, l'ora di registrazione e la velocit&agrave; del vento. Con queste informazioni, &egrave; possibile creare tracce per ciascun uragano utilizzando il nome per identificare la traccia. Per ogni uragano verranno generate tracce. Inoltre, &egrave; possibile calcolare statistiche come la velocit&agrave; media, massima e minima del vento di ciascun uragano, nonch&eacute; il numero delle misurazioni all'interno di ciascuna traccia.
     </p>
-    <p>Utilizzando lo stesso esempio, &egrave; possibile eseguire il buffer delle tracce in funzione della velocit&agrave; del vento. Verr&agrave; eseguito il buffer di ciascuna misurazione in funzione del campo della velocit&agrave; del vento in tale posizione e verranno unite le aree bufferizzate, creando un poligono che rappresenta la traiettoria della traccia e le modifiche alla velocit&agrave; del vento e al procedere degli uragani.   
+    <p>Utilizzando lo stesso esempio, &egrave; possibile eseguire il buffer delle tracce in funzione della velocit&agrave; del vento. Verr&agrave; eseguito il buffer di ciascuna misurazione in funzione del campo della velocit&agrave; del vento in tale posizione e verranno unite le aree bufferizzate, creando un&rsquo;area che rappresenta la traiettoria della traccia e le modifiche alla velocit&agrave; del vento e al procedere degli uragani.   
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -65,7 +65,7 @@
         <div><h2>Scegliere le feature da cui ricostruire le tracce</h2></div>
         <hr/>
         <div>
-            <p>Il layer di punti o poligono che verr&agrave; ricostruito nelle tracce. Il layer di input deve essere abilitato per le variazioni temporali con feature che rappresentano un'istante nel tempo. Il layer deve essere in un sistema di coordinate proiettate o il riferimento spaziale di elaborazione deve essere impostato su un sistema di coordinate proiettate utilizzando gli  <b>Ambienti di analisi</b> se viene applicato un buffer.
+            <p>Il layer di punti o area che verr&agrave; ricostruito nelle tracce. Il layer di input deve essere abilitato per le variazioni temporali con feature che rappresentano un'istante nel tempo. Il layer deve essere in un sistema di coordinate proiettate o il riferimento spaziale di elaborazione deve essere impostato su un sistema di coordinate proiettate utilizzando gli  <b>Ambienti di analisi</b> se viene applicato un buffer.
             </p>
             <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Sfoglia layer</b> alla base dell'elenco a discesa per cercare una dataset di condivisione file Big Data o un Feature Layer.
             </p>
@@ -95,7 +95,9 @@
         <div>
             <p>Equazione utilizzata per calcolare la distanza del buffer intorno alle feature di input. Questa equazione pu&ograve; essere generata utilizzando il calcolatore del buffer e operazioni di base come l'addizione, la sottrazione, la moltiplicazione e la divisione. I valori vengono calcolati utilizzando il sistema di coordinate di analisi. Il layer deve essere in un sistema di coordinate proiettate o il riferimento spaziale di elaborazione deve essere impostato su un sistema di coordinate proiettate utilizzando gli  <b>Ambienti di analisi</b> se viene applicato un buffer.
             </p>
-            <p>Un'equazione come  <code>$feature.windspeed * 1000</code> applicherebbe un buffer di 1000 moltiplicato per il campo della <i>velocit&agrave; del vento</i>. &Egrave; possibile utilizzare pi&ugrave; di un campo nel calcolatore del buffer.
+            <p>Un'equazione come  <code>$feature.windspeed * 1000</code> applicherebbe un buffer di 1000 moltiplicato per il campo <i>windspeed</i>. &Egrave; possibile utilizzare pi&ugrave; di un campo nel calcolatore del buffer.
+            </p>
+            <p> &Egrave; inoltre possibile specificare una espressione che prende in considerazione le tracce. Ad esempio, si supponga di calcolare la somma del valore di campo <i>windspeed</i> per la feature attuale e le due feature precedenti con un'equazione quale <code>$track.field(windspeed).history(-3)</code>. In ciascuna posizione, la somma di <i>windspeed</i> attuale e le due misurazioni precedenti vengono calcolate e bufferizzate.
             </p>
         </div>
     </div>
@@ -103,7 +105,7 @@
         <div><h2>Selezionare un'ora in cui suddividere le tracce (facoltativo)</h2></div>
         <hr/>
         <div>
-            <p>Tempo utilizzato per suddividere le tracce. Se i punti o i poligoni di input hanno tra loro una durata maggiore rispetto alla suddivisione del tempo, verranno suddivisi in tracce differenti.
+            <p>Tempo utilizzato per suddividere le tracce. Se i punti o le aree di input hanno tra loro una durata maggiore rispetto alla suddivisione del tempo, verranno suddivisi in tracce differenti.
             </p>
             <p>Se si specifica una frazione di tempo e una divisione della distanza, le tracce vengono suddivise quando si soddisfa una o entrambe le condizioni. 
             </p>
@@ -115,7 +117,7 @@
         <div><h2>Selezionare una distanza per suddividere le tracce (facoltativo)</h2></div>
         <hr/>
         <div>
-            <p> Distanza utilizzata per suddividere le tracce. Se i punti di input o i poligoni presentano una distanza pi&ugrave; lunga della divisione della distanza, verranno suddivisi in tracce differenti.
+            <p> Distanza utilizzata per suddividere le tracce. Se i punti o le aree di input presentano una distanza pi&ugrave; lunga della divisione della distanza, verranno suddivisi in tracce differenti.
             </p>
             <p>Se si specifica una frazione di tempo e una divisione della distanza, le tracce vengono suddivise quando si soddisfa una o entrambe le condizioni. 
             </p>
@@ -139,9 +141,9 @@
                     </li>
                     <li>Intervallo: l'intervallo di un campo numerico. Questo viene calcolato come i valori minimi sottratti dal valore massimo. L'intervallo di [0, null, 1] &egrave; 1. L'intervallo di [null, 4] &egrave; 0.
                     </li>
-                    <li>Varianza: la varianza di un campo numerico in una traccia. La varianza di [1] is null. La varianza di [null, 1,1,1] &egrave; 1.
+                    <li>Varianza: la varianza di un campo numerico in una traccia. La varianza di [1] is null. La varianza di [null, 1,0,1,1] &egrave; 0,25.
                     </li>
-                    <li>Deviazione standard: la deviazione standard di un campo numerico. La deviazione standard di [1] &egrave; null. La deviazione standard di [null, 1,1,1] &egrave; 1. 
+                    <li>Deviazione standard: la deviazione standard di un campo numerico. La deviazione standard di [1] &egrave; null. La deviazione standard di [null, 1,0,1,1] &egrave; 0,5. 
                     </li>
                 </ul>
                 
@@ -161,16 +163,16 @@
         <div><h2>Scegliere un ArcGIS Data Store in cui salvare i risultati</h2></div>
         <hr/>
         <div>
-            <p>I risultati GeoAnalytic sono memorizzati in un ArcGIS Data Store ed esposti come un Feature Layer in  Portal for ArcGIS. Nella maggior parte dei casi, i risultati devono essere memorizzati nello Spatiotemporal Data Store e questa &egrave; l'impostazione predefinita. In alcuni casi, il salvataggio dei risultati nel Data Store relazionale &egrave; un'ottima opzione. Di seguito sono memorizzate le ragioni per memorizzare i risultati nel Data Store relazionale: 
+            <p>I risultati GeoAnalytic sono memorizzati in un ArcGIS Data Store ed esposti come un feature layer in  Portal for ArcGIS. Nella maggior parte dei casi, i risultati devono essere memorizzati nello Spatiotemporal Data Store e questa &egrave; l'impostazione predefinita. In alcuni casi,, il salvataggio dei risultati nel Data Store relazionale &egrave; un'ottima opzione. Di seguito sono memorizzate le ragioni per memorizzare i risultati nel Data Store relazionale: 
                 <ul>
-                    <li>Utilizzare i risultati nella collaborazione da portale a portale.
+                    <li>&Egrave; possibile utilizzare i risultati in una collaborazione tra portali.
                     </li>
-                    <li>Abilitare funzionalit&agrave; di sincronizzazione con i risultati.
+                    <li>&Egrave; possibile abilitare funzionalit&agrave; di sincronizzazione con i risultati.
                     </li>
                 </ul>
                 
             </p>
-            <p>Non utilizzare il Data Store relazionale se si prevede un incremento dei risultati GeoAnalytics ed &egrave; necessario sfruttare le funzionalit&agrave; dello Spatiotemporal Big Data Store per gestire grandi quantit&agrave; di dati. 
+            <p>Non utilizzare il Data Store relazionale se si prevede un incremento dei risultati GeoAnalytics ed &egrave; necessario sfruttare le funzionalit&agrave; dello Spatiotemporal Big Data Store per gestire grandi quantit&agrave; di dati.
             </p>
         </div>
     </div>
@@ -178,7 +180,7 @@
         <div><h2>Nome del layer dei risultati</h2></div>
         <hr/>
         <div>
-            <p> Questo &egrave; il nome del layer che verr&agrave; creato in <b>I miei contenuti</b> e aggiunto alla mappa.  Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, lo strumento non verr&agrave; eseguito.
+            <p> Il nome del layer che verr&agrave; creato in <b>I miei contenuti</b> e aggiunto alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, lo strumento non verr&agrave; eseguito.
             </p>
             <p>Utilizzare la casella a discesa  <b>Salva risultato in</b> per specificare il nome di una cartella in <b>I miei contenuti</b> in cui salvare il risultato.
             </p>

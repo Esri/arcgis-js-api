@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>การวิเคราะห์ราสเตอร์อนุญาตให้คุณวิเคราะห์ราสเตอร์ขนาดใหญ่โดยใช้  ArcGIS Image Server. นี่อนุญาตให้คุณวิเคราะห์ข้อมูลเพิ่มขึ้นได้อย่างรวดเร็วโดยการควบคุมของเซิร์ฟเวอร์ ชุดเครื่องมือสามารถใช้งานได้ผ่านPortal for ArcGIS ผู้ใช้งานผ่านเว็ป  <b>สรุปค่าข้อมูล,</b> <b>วิเคราะห์รูปแบบ</b>, <b>วิเคราะห์ภาพถ่าย</b>, <b>วิเคราะห์ Terrain</b>, และ <b>จัดการข้อมูล</b>.
+        <p>การวิเคราะห์แรสเตอร์อนุญาตให้คุณวิเคราะห์แรสเตอร์ขนาดใหญ่โดยใช้  ArcGIS Image Server. นี่อนุญาตให้คุณวิเคราะห์ข้อมูลเพิ่มขึ้นได้อย่างรวดเร็วโดยการควบคุมของเซิร์ฟเวอร์ ชุดเครื่องมือสามารถใช้งานได้ผ่านPortal for ArcGIS ผู้ใช้งานผ่านเว็ป  <b>สรุปค่าข้อมูล,</b> <b>วิเคราะห์รูปแบบ</b>, <b>วิเคราะห์ภาพถ่าย</b>, <b>วิเคราะห์ Terrain</b>, และ <b>จัดการข้อมูล</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -59,9 +59,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>สรุปราสเตอร์ที่อยู่ภายใน</h2></td>
+                    <td><h2>สรุปแรสเตอร์ที่อยู่ภายใน</h2></td>
                     <td>
-                    <img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" class="titleImage" alt="สรุปราสเตอร์ภายในเครื่องมือ">
+                    <img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" class="titleImage" alt="สรุปแรสเตอร์ภายในเครื่องมือ">
                     </td>
                 </tr></tbody>
             </table>
@@ -132,6 +132,71 @@
             </p>
             <br/>
         </div>
+    <div id="UseProximityCategory" class="regularsize">
+        <h2>ใช้การหาด้วยระยะ</h2>
+        <hr/>
+        <p>เครื่องมือเหล่านี้ช่วยให้คุณตอบคำถามที่พบมากที่สุดในการวิเคราะห์เชิงพื้นที่: &ldquo;อะไรคือสิ่งที่อยู่ใกล้&rdquo;
+
+            <ul>
+                <li> <b>คำนวณระยะทาง</b> คำนวณระยะทาง Euclidean, ทิศทางและการจัดสรรจากต้นทางเดียวหรือชุดของต้นทาง
+                    
+
+                </li>
+                <li> <b>กำหนดโครงข่ายต้นทุนการเดินทางที่ดีที่สุด</b> คำนวณโครงข่ายต้นทุนที่ดีที่สุดจากชุดของส่วนอินพุต
+                    
+
+                </li>
+                <li> <b>กำหนดเส้นทางของค่าเดินทางเป็นเส้นรอบ</b> คำนวณเส้นทางเส้นรอบที่มีต้นทุนต่ำที่สุดระหว่างต้นทางและปลายทางที่รู้จัก
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateDistanceTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>คำนวณระยะทาง</h2></td>
+                    <td>
+                    <img src="../images/GUID-34E2E6F3-2F60-43F5-B499-D5735DE08602-web.png" class="titleImage" alt="คำนวณระยะทาง">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>คำนวณระยะทาง Euclidean, ทิศทางและการจัดสรรจากต้นทางเดียวหรือชุดของต้นทาง คุณสามารถใช้เครื่องมือนี้เพื่อกำหนดระยะใกล้ไกลของตำแหน่งที่ตั้งไปยังถนน อาคารหรือสวนสาธารณะ คุณยังสามารถกำหนดว่าคุณต้องใช้ทิศทางใดเพื่อเดินทางจากตำแหน่งหนึ่งกลับไปยังต้นทางโดยใช้เส้นทางที่ตรงมากที่สุด คุณสามารถมองเห็นทุกตำแหน่งในพื้นที่ศึกษาของคุณซึ่งเป็นต้นทางที่ใกล้ที่สุด
+            </p>
+            <br/>
+        </div>
+        <div id="DetermineOptimumTravelCostNetworkTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>กำหนดโครงข่ายต้นทุนการเดินทางที่ดีที่สุด</h2></td>
+                    <td>
+                    <img src="../images/GUID-097BDD6E-0AD8-44F2-BB70-C5395F4B1AF4-web.png" class="titleImage" alt="ภาพประกอบเครื่องมือกำหนดโครงข่ายต้นทุนการเดินทางที่ดีที่สุด">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>คำนวณโครงข่ายต้นทุนที่ดีที่สุดจากชุดของส่วนอินพุต
+            </p>
+            <br/>
+        </div>
+        <div id="DetermineTravelCostPathAsPolylineTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>กำหนดเส้นทางของค่าเดินทางเป็นเส้นรอบ</h2></td>
+                    <td>
+                    <img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" class="titleImage" alt="ภาพประกอบเครื่องมือกำหนดเส้นทางของค่าเดินทางเป็นเส้นรอบ">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>คำนวณเส้นทางเส้นรอบที่มีต้นทุนต่ำที่สุดระหว่างต้นทางและปลายทางที่รู้จัก
+            </p>
+            <br/>
+        </div>
     <div id="AnalyzeImageCategory" class="smallsize">
         <h2>วิเคราะห์ภาพ</h2>
         <hr/>
@@ -176,7 +241,7 @@
             </p>
             <br/>
         </div>
-    <div id="AnalyzeTerrainCategory" class="smallsize">
+    <div id="AnalyzeTerrainCategory" class="regularsize">
         <h2>วิเคราะห์ภูมิประเทศ</h2>
         <hr/>
         <p>เครื่องมือเหล่านี้ช่วยให้คุณสามารถวิเคราะห์พื้นผิวแรสเตอร์ 
@@ -190,6 +255,10 @@
 
                 </li>
                 <li> <b>สร้างทัศนวิสัยการมอง</b> ระบุสิ่งที่สามารถมองเห็นได้จากจุดบนภูมิทัศน์ใด ๆ
+                    
+
+                </li>
+                <li> <b>ลุ่มน้ำ</b> คำนวณพื้นที่การกระจายเหนือตำแหน่งที่ระบุบนพื้นผิว
                     
 
                 </li>
@@ -208,7 +277,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>ระบุพื้นผิวแสดงให้เห็นความลาดเอียงของข้อมูลระดับความสูงอินพุท ความลาดชันหมายถึงอัตราการเปลี่ยนแปลงของระดับความสูงสำหรับแต่ละเซลล์ค่าความสูงในรูปแบบดิจิตอล (DEM)
+            <p>ระบุพื้นผิวแสดงให้เห็นความลาดเอียงของข้อมูลระดับความสูงอินพุต ความลาดชันหมายถึงอัตราการเปลี่ยนแปลงของระดับความสูงสำหรับแต่ละเซลล์ค่าความสูงในรูปแบบดิจิตอล (DEM)
             </p>
             <br/>
         </div>
@@ -242,6 +311,21 @@
             </p>
             <br/>
         </div>
+        <div id="WatershedTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>ลุ่มน้ำ</h2></td>
+                    <td>
+                    <img src="../images/GUID-AF749369-8C2D-46FF-9D74-2CF7CAB7C7B0-web.png" class="titleImage" alt="งานลุ่มน้ำ">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>กำหนดพื้นที่การไหลเหนือชุดของเซลล์ในแรสเตอร์
+            </p>
+            <br/>
+        </div>
     <div id="ManageDataCategory" class="regularsize">
         <h2>จัดการข้อมูล</h2>
         <hr/>
@@ -271,9 +355,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>ดึงข้อมูลราสเตอร์</h2></td>
+                    <td><h2>ดึงข้อมูลแรสเตอร์</h2></td>
                     <td>
-                    <img src="../images/GUID-DC9CBCB9-A07C-42D3-A0CB-2FB1483CBF4C-web.png" class="titleImage" alt="เครื่องมือตัดราสเตอร์สำหรับ portal">
+                    <img src="../images/GUID-DC9CBCB9-A07C-42D3-A0CB-2FB1483CBF4C-web.png" class="titleImage" alt="เครื่องมือตัดแรสเตอร์สำหรับ portal">
                     </td>
                 </tr></tbody>
             </table>
@@ -301,9 +385,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>แปลงเวกเตอร์เป็นราสเตอร์</h2></td>
+                    <td><h2>แปลงเวกเตอร์เป็นแรสเตอร์</h2></td>
                     <td>
-                    <img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" class="titleImage" alt="เครื่องมือแปลงเวกเตอร์เป็นราสเตอร์">
+                    <img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" class="titleImage" alt="เครื่องมือแปลงเวกเตอร์เป็นแรสเตอร์">
                     </td>
                 </tr></tbody>
             </table>
@@ -316,9 +400,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>แปลงราสเตอร์เป็นเวกเตอต์</h2></td>
+                    <td><h2>แปลงแรสเตอร์เป็นเวกเตอร์</h2></td>
                     <td>
-                    <img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" class="titleImage" alt="เครื่องมือแปลงราสเตอร์เป็นเวกเตอร์">
+                    <img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" class="titleImage" alt="เครื่องมือแปลงแรสเตอร์เป็นเวกเตอร์">
                     </td>
                 </tr></tbody>
             </table>

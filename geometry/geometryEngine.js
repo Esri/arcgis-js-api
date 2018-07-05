@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
 define("require exports ../kernel ./Geometry ./Polygon ./Polyline ./Point ./Extent ./Multipoint dojo/_base/lang".split(" "),function(pa,za,ua,ca,ja,ka,ha,la,ma,qa){function W(c){if(void 0===ha.fromJson){if(void 0!==c.x&&void 0!==c.y)return new ha(c);if(void 0!==c.paths)return new ka(c);if(void 0!==c.rings)return new ja(c);if(void 0!==c.points)return new ma(c);if(void 0!==c.xmin&&void 0!==c.ymin&&void 0!==c.xmax&&void 0!==c.ymax)return new la(c)}else{if(void 0!==
 c.x&&void 0!==c.y)return ha.fromJson(c);if(void 0!==c.paths)return ka.fromJson(c);if(void 0!==c.rings)return ja.fromJson(c);if(void 0!==c.points)return ma.fromJson(c);if(void 0!==c.xmin&&void 0!==c.ymin&&void 0!==c.xmax&&void 0!==c.ymax)return la.fromJson(c)}}function Y(c){if(void 0===ha.fromJson){if(void 0!==c.x&&void 0!==c.y)return new ha(c);if(void 0!==c.paths)return new ka(c);if(void 0!==c.rings)return new ja(c);if(void 0!==c.points)return new ma(c);if(void 0!==c.xmin&&void 0!==c.ymin&&void 0!==

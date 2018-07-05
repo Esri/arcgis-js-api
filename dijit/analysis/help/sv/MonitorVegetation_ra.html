@@ -60,7 +60,7 @@
         <div><h2>Välj metod för att övervaka vegetation</h2></div>
         <hr/>
         <div>
-            <p>V&auml;lj den metod som ska anv&auml;ndas f&ouml;r att skapa vegetationsindexlagret. De olika vegetationsindexen kan hj&auml;lpa till att belysa vissa geoobjekt eller hj&auml;lpa till att minska brus.
+            <p>V&auml;lj den metod som ska anv&auml;ndas f&ouml;r att skapa vegetationsindexlagret. De olika vegetationsindexen kan hj&auml;lpa till att belysa vissa geoobjekt eller minska brus.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
@@ -76,7 +76,7 @@ MSAVI2 &auml;r ett vegetationsindex som f&ouml;rs&ouml;ker minimera p&aring;verk
 
                 </li>
                 <li>Normalized Difference Vegetation Index  &mdash; 
-NDVI &auml;r ett standardiserat index som l&aring;ter dig generera en bild som visar gr&ouml;nhet (relativ biomassa). Det h&auml;r indexet drar nytta av kontrasten mellan egenskaperna hos tv&aring; band i ett multispektralt rasterdataset: klorofyllpigmentabsorptionerna i det r&ouml;da bandet och den h&ouml;ga reflektiviteten hos v&auml;xtmaterial i det n&auml;ra infrar&ouml;da (NIR) bandet.
+NDVI &auml;r ett standardiserat index som l&aring;ter dig generera en bild som visar gr&ouml;nhet, eller relativ biomassa. Det h&auml;r indexet drar nytta av kontrasten mellan egenskaperna hos tv&aring; band i ett multispektralt rasterdataset: klorofyllpigmentabsorptionerna i det r&ouml;da bandet och den h&ouml;ga reflektiviteten hos v&auml;xtmaterial i det n&auml;ra infrar&ouml;da (NIR) bandet.
 
                 </li>
                 <li>Perpendicular Vegetation Index &mdash; 
@@ -102,7 +102,7 @@ Transformed SAVI &auml;r ett vegetationsindex som f&ouml;rs&ouml;ker minimera in
         <div><h2>Ange index för NIR-band och Red-band</h2></div>
         <hr/>
         <div>
-            <p>Ange bandindex f&ouml;r de n&auml;ra infrar&ouml;da- (NIR) och Red-banden.
+            <p>Ange bandindexen f&ouml;r NIR- och Red-banden.
             </p>
             <p>Varje satellitsensor och flygfoto samlar in information som delas upp i bandindex. Varje bandindex inneh&aring;ller information f&ouml;r en viss del av det elektromagnetiska spektrat. Den h&auml;r metoden f&ouml;r vegetations&ouml;vervakning kr&auml;ver att du anger det bandindex som f&aring;ngade in NIR- och r&ouml;dv&aring;gl&auml;ngderna.
             </p>
@@ -114,7 +114,7 @@ Transformed SAVI &auml;r ett vegetationsindex som f&ouml;rs&ouml;ker minimera in
         <div>
             <p>Lutningen f&ouml;r marklinjen. Lutningen &auml;r den ungef&auml;rliga linj&auml;ra relationen mellan NIR- och r&ouml;dbanden p&aring; ett sambandsdiagram.
             </p>
-            <p>Den h&auml;r parametern &auml;r bara giltig f&ouml;r Transformed Soil-Adjusted Vegetation Index.
+            <p>Den h&auml;r parametern &auml;r bara giltig f&ouml;r metoden Transformed Soil-Adjusted Vegetation Index.
             </p>
         </div>
     </div>
@@ -122,11 +122,11 @@ Transformed SAVI &auml;r ett vegetationsindex som f&ouml;rs&ouml;ker minimera in
         <div><h2>Skärningspunkt</h2></div>
         <hr/>
         <div>
-            <p>Det h&auml;r &auml;r v&auml;rdet f&ouml;r n&auml;ra infrar&ouml;tt (NIR) n&auml;r reflektionsv&auml;rdet f&ouml;r det r&ouml;da bandet (Red) &auml;r 0 f&ouml;r de specifika marklinjerna.
+            <p>V&auml;rdet f&ouml;r NIR n&auml;r reflektionsv&auml;rdet f&ouml;r det r&ouml;da bandet (Red) &auml;r 0 f&ouml;r de specifika marklinjerna.
             </p>
             <p> <code>(a = NIR - sRed)</code> , n&auml;r Red &auml;r 0.
             </p> 
-            <p>Den h&auml;r parametern &auml;r bara giltig f&ouml;r Transformed Soil-Adjusted Vegetation Index.
+            <p>Den h&auml;r parametern &auml;r bara giltig f&ouml;r metoden Transformed Soil-Adjusted Vegetation Index.
             </p>
         </div>
     </div>
@@ -134,9 +134,9 @@ Transformed SAVI &auml;r ett vegetationsindex som f&ouml;rs&ouml;ker minimera in
         <div><h2>Mängden grönt växttäcke</h2></div>
         <hr/>
         <div>
-            <p>SAVI-metoden kr&auml;ver att m&auml;ngden v&auml;xtt&auml;cke anges.
+            <p>Anger m&auml;ngden gr&ouml;nt vegetationst&auml;cke, som kr&auml;vs av SAVI-metoden.
             </p>
-            <p>Ange ett v&auml;rde mellan 0,0 och 1,0 d&auml;r 
+            <p>F&ouml;ljande &auml;r giltiga v&auml;rden: 
 
                 <ul>
                     <li>1 = omr&aring;den utan gr&ouml;nt v&auml;xtt&auml;cke
@@ -160,9 +160,9 @@ Transformed SAVI &auml;r ett vegetationsindex som f&ouml;rs&ouml;ker minimera in
         <div><h2>Justeringsfaktor</h2></div>
         <hr/>
         <div>
-            <p>Metoden Transformed Soil-Adjusted Vegetation Index kr&auml;ver att justeringsfaktorn anges som hj&auml;lp att minimera markeffekten. Standardv&auml;rdet &auml;r 0,08.
+            <p>Anger den justeringsfaktor som hj&auml;lper till att minimera markeffekt, vilket kr&auml;vs av metoden Transformed Soil-Adjusted Vegetation Index. Standardv&auml;rdet &auml;r 0,08.
             </p>
-            <p>Ett l&auml;gre v&auml;rde betyder att du ignorerar markeffekten. Ett h&ouml;gt v&auml;rde betyder att jorden p&aring;verkar ditt resultat.
+            <p>Ett l&aring;gt v&auml;rde betyder att du ignorerar markeffekten. Ett h&ouml;gt v&auml;rde betyder att jorden p&aring;verkar ditt resultat.
             </p>
         </div>
     </div>

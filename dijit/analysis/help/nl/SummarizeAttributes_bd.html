@@ -81,9 +81,9 @@
         <div><h2>Statistieken toevoegen (optioneel)</h2></div>
         <hr/>
         <div>
-            <p> U kunt statistieken berekenen over objecten die zijn samengevat. Op numerieke velden kunt u het volgende berekenen:
+            <p> U kunt statistieken berekenen over objecten die zijn samengevat.U kunt het volgende berekenen in numerieke velden:
                 <ul>
-                    <li>Count&mdash;Berekent het aantal non-nulwaarden. Kan gebruikt worden op numerieke velden of strings. De telling van [nul, 0, 2] is 2.
+                    <li>Count&mdash;Berekent het aantal non-nulwaarden.Kan gebruikt worden op numerieke velden of strings. De telling van [nul, 0, 2] is 2.
                     </li>
                     <li>Som&mdash;De som van numerieke waarden in een veld. De som van [nul, nul, 3] is 3.
                     </li>
@@ -95,14 +95,14 @@
                     </li>
                     <li>Bereik&mdash;Het bereik van een numeriek veld. Dit wordt berekend als de minimumwaarden afgetrokken van de maximumwaarde. Het bereik van [0, nul, 1] is 1. Het bereik van [nul, 4] is 0.
                     </li>
-                    <li>Variantie&mdash;De variantie van een numeriek veld in een track. De variantie van [1] is nul. De variantie van [null, 1,1,1] is 1.
+                    <li>Variantie&mdash;De variantie van een numeriek veld in een track. De variantie van [1] is nul. De variantie van [null, 1,0,1,1] is 0,25.
                     </li>
-                    <li>Standaarddeviatie&mdash;De standaarddeviatie van een numeriek veld. De standaarddeviatie van [1] is nul. De standaarddeviatie van [null, 1,1,1] is 1. 
+                    <li>Standaarddeviatie&mdash;De standaarddeviatie van een numeriek veld. De standaarddeviatie van [1] is nul. De standaarddeviatie van [null, 1,0,1,1] is 0,5. 
                     </li>
                 </ul>
                 
             </p>
-            <p>Op stringvelden kunt u het volgende berekenen:
+            <p>U kunt het volgende berekenen in numerieke velden:
                 <ul>
                     <li>Telling&mdash;Het aantal non-nul strings.
                     </li>
@@ -119,7 +119,7 @@
         <div>
             <p>GeoAnalytische resultaten worden opgeslagen in een ArcGIS Data Store en weergegeven als een objectlaag in  Portal for ArcGIS. In de meeste gevallen moeten de resultaten worden opgeslagen in de spatiotemporele data-opslag en dit is de standaardinstelling. In sommige gevallen is het opslaan van de resultaten in de relationele data-opslag een goede optie. Hier volgen redenen waarom u resultaten zou willen opslaan in een relationele data-opslag: 
                 <ul>
-                    <li>Om uw resultaten te gebruiken voor portaalsamenwerking.
+                    <li>U kunt resultaten gebruiken in portaal-tot-portaal samenwerking.
                     </li>
                     <li>Om synchronisatiemogelijkheden met uw resultaten mogelijk te maken.
                     </li>
@@ -132,7 +132,7 @@
         <div><h2>Resultaat laagnaam</h2></div>
         <hr/>
         <div>
-            <p> Dit is de naam van de kaartlaag die in <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd.  De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, zal de tool falen.
+            <p> De naam van de laag die in <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, zal de tool falen.
             </p>
             <p>Als u in de vervolgkeuzelijst  <b>Resultaat opslaan</b> gebruikt, kunt u de naam opgeven van een map in <b>Mijn Content</b> waarin het resultaat wordt opgeslagen.
             </p>

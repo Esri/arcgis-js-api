@@ -1,10 +1,14 @@
 
 
 .esriGEDisabledContent {
-    background-color: #F2F3F3; 
+    background-color: white;
     opacity: 0.6;
     cursor: default;
 }
+
+    .esriGEDisabledContent.esriGEDisabledContentTransparent {
+        opacity: 0.01;
+    }
 
 .esriGEHidden {
     display: none !important;
@@ -137,7 +141,14 @@
 
 .esriGEOffscreen {
     position: absolute !important;
-    opacity: 0.01 !important;
+    z-index: -1000 !important;
+    opacity: 0.01;
+    left: 0px;
+    top: 0px;
+}
+
+.esriGEBehindScreen {
+    position: absolute !important;
     z-index: -1000 !important;
     left: 0px;
     top: 0px;

@@ -244,7 +244,7 @@
 
 .ShoppingCart .upDownArrowsBlock .upArrow,
 .ShoppingCart .upDownArrowsBlock .downArrow {
-    background-image: url('../../ReportPlayer/themes/common/images/arrows/upArrow.svg');
+    background-image: url('../../ReportPlayer/themes/images/arrows/upArrow.svg');
     background-position: center;
     background-repeat: no-repeat;
     width: 15px;
@@ -255,7 +255,7 @@
 }
 
 .ShoppingCart .upDownArrowsBlock .downArrow {
-    background-image: url('../../ReportPlayer/themes/common/images/arrows/downArrow.svg');
+    background-image: url('../../ReportPlayer/themes/images/arrows/downArrow.svg');
     margin-left: 5px;
 }
 

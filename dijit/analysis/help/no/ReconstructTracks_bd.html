@@ -44,7 +44,7 @@
         <h2>Rekonstruer spor</h2><p/>
         <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Rekonstruer spor"></h2>
         <hr/>
-    <p>Dette verkt&oslash;yet fungerer med et tidsaktivert lag med enten punkt- eller polygongeoobjekter som representerer et  <code>&oslash;yeblikk</code> i tid.   Det fastsl&aring;r f&oslash;rst hvilke geoobjekter som tilh&oslash;rer et spor ved hjelp av en identifikator. Ved &aring; bruke tiden p&aring; hver lokasjon blir sporene organisert sekvensielt og omdannet til en linje eller et polygon som representerer banen for bevegelsen over tid. Eventuelt kan inndataene bufres av et felt, noe som vil skape et polygon p&aring; hver lokasjon. Disse bufrede punktene, eller hvis inndataene er polygoner, blir deretter sl&aring;tt sammen sekvensielt for &aring; lage et spor som et polygon der bredden representerer det aktuelle attributtet.  De resulterende sporene har en start- og slutt-tid, noe som tidsmessig representerer de f&oslash;rste og siste geoobjektene i et gitt spor. N&aring;r sporene er opprettet, blir statistikk om inndatageoobjektene beregnet og tilordnet utdatasporene. Den mest grunnleggende statistikken er antall punkter innenfor omr&aring;det, men du kan beregne annen statistikk ogs&aring;.
+    <p>Dette verkt&oslash;yet fungerer med et tidsaktivert lag med enten punkt- eller omr&aring;degeoobjekter som representerer et  <code>&oslash;yeblikk</code> i tid.   Det fastsl&aring;r f&oslash;rst hvilke geoobjekter som tilh&oslash;rer et spor ved hjelp av en identifikator. Ved &aring; bruke tiden p&aring; hver lokasjon blir sporene organisert sekvensielt og omdannet til en linje eller et omr&aring;de som representerer banen for bevegelsen over tid. Inndataene kan eventuelt bufres av et felt, noe som vil skape et omr&aring;de p&aring; hver lokasjon. Disse bufrede punktene eller innlagte omr&aring;dene blir deretter sl&aring;tt sammen sekvensielt for &aring; opprette et spor som et omr&aring;de der bredden representerer det aktuelle attributtet. De resulterende sporene har en start- og slutt-tid, noe som tidsmessig representerer de f&oslash;rste og siste geoobjektene i et gitt spor. N&aring;r sporene er opprettet, blir statistikk om inndatageoobjektene beregnet og tilordnet utdatasporene. Den mest grunnleggende statistikken er antall punkter innenfor omr&aring;det, men du kan beregne annen statistikk ogs&aring;.
     </p>
     <p>Geoobjekter i tidsaktiverte lag kan representeres p&aring; en av to m&aring;ter:
         <ul>
@@ -57,7 +57,7 @@
     </p>
     <p>La oss for eksempel si at du har GPS-m&aring;linger av orkaner hvert 10. minutt. Hver GPS-m&aring;ling registrerer orkanens navn, lokasjon, tidspunktet for registreringen og vindhastigheten. Med denne informasjonen kan du lage spor for hver orkan med navnet som sporidentifikasjon, og spor for hver orkan vil bli generert. I tillegg kan du beregne statistikk, for eksempel gjennomsnittlig, h&oslash;yeste og laveste vindhastighet for hver orkan, i tillegg til antallet av m&aring;linger innenfor hvert spor.
     </p>
-    <p>Med det samme eksempel kan du bufre sporene etter vindhastighet. Dette bufrer hver m&aring;ling etter vindhastigheten p&aring; den lokasjonen, og sl&aring;r sammen de bufrede omr&aring;dene, noe som skaper et polygon som representerer sporbanen, i tillegg til endringer i vindhastigheten etter hvert som orkanen flytter seg.   
+    <p>Med det samme eksempel kan du bufre sporene etter vindhastighet. Dette bufrer hver m&aring;ling etter vindhastigheten p&aring; den lokasjonen og sl&aring;r sammen de bufrede omr&aring;dene, noe som oppretter et omr&aring;de som representerer sporbanen, i tillegg til endringer i vindhastigheten etter hvert som orkanen flytter seg.   
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -65,7 +65,7 @@
         <div><h2>Velg geoobjekter som sporene skal rekonstrueres fra</h2></div>
         <hr/>
         <div>
-            <p>Punkt- eller polygonlaget som vil bli rekonstruert til spor. Inndatalageret m&aring; v&aelig;re tidsaktivert med geoobjekter som representerer et &oslash;yeblikk i tid. Laget m&aring; v&aelig;re i et projisert koordinatsystem, eller den geografiske referansen for behandling m&aring; v&aelig;re satt til et projisert koordinatsystem i  <b>analysemilj&oslash;ene</b>, hvis det brukes buffer.
+            <p>Punkt- eller omr&aring;delaget som blir rekonstruert til spor. Inndatalageret m&aring; v&aelig;re tidsaktivert med geoobjekter som representerer et &oslash;yeblikk i tid. Laget m&aring; v&aelig;re i et projisert koordinatsystem, eller den geografiske referansen for behandling m&aring; v&aelig;re satt til et projisert koordinatsystem i  <b>analysemilj&oslash;ene</b>, hvis det brukes buffer.
             </p>
             <p>I tillegg til &aring; velge et lag fra kartet kan du velge  <b>Bla gjennom lag</b>, som du finner nederst i rullegardinlisten, til &aring; bla deg frem til innholdet for et fildelingsdatasett for big data eller et geoobjektslag.
             </p>
@@ -95,7 +95,9 @@
         <div>
             <p>Ligning som brukes til &aring; beregne bufferavstanden rundt inndatageoobjekter. Denne ligningen kan genereres ved hjelp av bufferkalkulatoren og grunnleggende operasjoner som f.eks. addisjon, subtraksjon, multiplikasjon og divisjon. Verdiene beregnes ved hjelp av analysekoordinatsystemet. Laget m&aring; v&aelig;re i et projisert koordinatsystem, eller den geografiske referansen for behandling m&aring; v&aelig;re satt til et projisert koordinatsystem i  <b>analysemilj&oslash;ene</b>, hvis det brukes buffer.
             </p>
-            <p>En ligning som  <code>$feature.windspeed * 1000</code> ville benyttet en buffer p&aring; 1000 multiplisert med feltet <i>vindhastighet</i>. Du kan bruke flere enn ett felt i bufferkalkulatoren.
+            <p>En ligning som  <code>$feature.windspeed * 1000</code> ville benyttet en buffer p&aring; 1000 multiplisert med feltet <i>windspeed</i>. Du kan bruke flere enn ett felt i bufferkalkulatoren.
+            </p>
+            <p> Du kan ogs&aring; angi et sporingsf&oslash;lsomt uttrykk. Du kunne for eksempel beregne summen av feltverdien <i>windspeed</i> for det gjeldende geoobjektet og de to foreg&aring;ende geoobjektene med en ligning som <code>$track.field(windspeed).history(-3)</code>. P&aring; hver lokasjon beregnes og bufres summen av den gjeldende <i>windspeed</i> og de foreg&aring;ende to m&aring;lingene.
             </p>
         </div>
     </div>
@@ -103,7 +105,7 @@
         <div><h2>Velg en tid som sporene skal deles på (valgfritt)</h2></div>
         <hr/>
         <div>
-            <p>Tiden som brukes til &aring; dele spor. Hvis inndatapunktene eller polygonene har lengre varighet mellom dem enn tidsinndelingen, vil de bli delt inn i forskjellige spor.
+            <p>Tiden som brukes til &aring; dele spor. Hvis inndatapunktene eller omr&aring;dene har lengre varighet mellom seg enn tidsinndelingen, blir de delt inn i forskjellige spor.
             </p>
             <p>Hvis du angir en tidsinndeling og en avstandsinndeling, vil sporene bli delt n&aring;r en av eller begge betingelsene er oppfylt. 
             </p>
@@ -115,7 +117,7 @@
         <div><h2>Velg en avstand som sporene skal deles på (valgfritt)</h2></div>
         <hr/>
         <div>
-            <p> Avstanden som brukes til &aring; dele spor. Hvis inndatapunktene eller polygonene har lengre avstand mellom seg enn tidsinndelingen, vil de bli delt inn i forskjellige spor.
+            <p> Avstanden som brukes til &aring; dele spor. Hvis inndatapunktene eller omr&aring;dene har st&oslash;rre avstand mellom seg enn avstandsinndelingen, blir de delt inn i forskjellige spor.
             </p>
             <p>Hvis du angir en tidsinndeling og en avstandsinndeling, vil sporene bli delt n&aring;r en av eller begge betingelsene er oppfylt. 
             </p>
@@ -125,9 +127,9 @@
         <div><h2>Legg til statistikk (valgfritt)</h2></div>
         <hr/>
         <div>
-            <p> Du kan beregne statistikk p&aring; geoobjekter som er summert. P&aring; numeriske felt kan du beregne f&oslash;lgende:
+            <p> Du kan beregne statistikk p&aring; geoobjekter som er summert. Du kan beregne f&oslash;lgende p&aring; numeriske felt:
                 <ul>
-                    <li>Antall &ndash; Beregner antall verdier som ikke er null. Kan brukes p&aring; numeriske felt eller strenger. Antallet for [null, 0, 2] er 2.
+                    <li>Antall&nbsp;&ndash; Beregner antall verdier som ikke er null. Det kan brukes p&aring; numeriske felt eller strenger. Antallet for [null, 0, 2] er 2.
                     </li>
                     <li>Sum &ndash; Summen av numeriske verdier i et felt. Summen av [null, null, 3] er 3.
                     </li>
@@ -139,14 +141,14 @@
                     </li>
                     <li>Omr&aring;de &ndash; Omr&aring;det for et numerisk felt. Beregnes som den maksimale verdien minus minimumsverdien. Omr&aring;det av [0, null, 1] er 1. Omr&aring;det av [null, 4] er 0.
                     </li>
-                    <li>Varians &ndash; Variansen for et numerisk felt i et spor. Variansen for [1] er null. Variansen for [null, 1,1,1] er 1.
+                    <li>Varians &ndash; Variansen for et numerisk felt i et spor. Variansen for [1] er null. Variansen for [null, 1,0,1,1] er 0,25.
                     </li>
-                    <li>Standardavvik &ndash; Standardavviket for et numerisk felt. Standardavviket for [1] er null. Standardavviket for [null, 1,1,1] er 1. 
+                    <li>Standardavvik &ndash; Standardavviket for et numerisk felt. Standardavviket for [1] er null. Standardavviket for [null, 1,0,1,1] er 0,5. 
                     </li>
                 </ul>
                 
             </p>
-            <p>P&aring; strengfelter kan du beregne f&oslash;lgende:
+            <p>Du kan beregne f&oslash;lgende p&aring; strengfelter:
                 <ul>
                     <li>Antall &ndash; Antallet strenger som ikke er null.
                     </li>
@@ -161,16 +163,16 @@
         <div><h2>Velg ArcGIS Data Store som resultatene skal lagres i</h2></div>
         <hr/>
         <div>
-            <p>GeoAnalytics-resultater lagres i et ArcGIS Data Store og vises som et geoobjektslag i  Portal for ArcGIS. Resultatene b&oslash;r i de fleste tilfeller lagres i et spatiotemporalt datalager, og dette er standarden. I enkelte tilfeller er det en god l&oslash;sning &aring; lagre resultatene i relasjonsdatalageret. Du b&oslash;r lagre resultatene i relasjonsdatalageret av f&oslash;lgende &aring;rsaker: 
+            <p>GeoAnalytics-resultater lagres i en ArcGIS Data Store og vises som et geoobjektslag i  Portal for ArcGIS. Resultatene b&oslash;r i de fleste tilfeller lagres i et spatiotemporalt datalager, og dette er standarden. I enkelte tilfeller, er det en god l&oslash;sning &aring; lagre resultatene i relasjonsdatalageret. Du b&oslash;r lagre resultatene i to relasjonsdatalageret av f&oslash;lgende grunner: 
                 <ul>
-                    <li>Du kan bruke resultatene i portal til portal-samarbeid.
+                    <li>Du kan bruke resultater i portal-til-portal-samarbeid.
                     </li>
                     <li>Du kan aktivere synkroniseringsfunksjoner for resultatene dine.
                     </li>
                 </ul>
                 
             </p>
-            <p>Du b&oslash;r ikke bruke relasjonsdatalageret hvis du forventer at GeoAnalytics-resultatene kommer til &aring; &oslash;ke og du &oslash;nsker &aring; dra fordeler av det spatiotemporale stordatalagerets funksjoner til &aring; h&aring;ndtere store mengder data. 
+            <p>Du b&oslash;r ikke bruke relasjonsdatalageret hvis du forventer at GeoAnalytics-resultatene skal &oslash;ke, og du &oslash;nsker &aring; dra fordeler av det spatiotemporale stordatalagerets funksjoner til &aring; h&aring;ndtere store mengder data.
             </p>
         </div>
     </div>
@@ -178,7 +180,7 @@
         <div><h2>Navn på resultatlag</h2></div>
         <hr/>
         <div>
-            <p> Dette er navnet p&aring; laget som vil bli laget i <b>Mitt Innhold</b> og lagt til i kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget allerede eksisterer, vil verkt&oslash;yet mislykkes.
+            <p> Navnet p&aring; laget som opprettes i <b>Mitt innhold</b> og legges til kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget allerede eksisterer, vil verkt&oslash;yet mislykkes.
             </p>
             <p>Bruk rullegardinlisten  <b>Lagre resultat</b> i til &aring; angi navnet p&aring; en mappe i <b>Mitt innhold</b> som resultatene skal lagres i.
             </p>

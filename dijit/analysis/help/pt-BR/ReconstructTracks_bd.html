@@ -44,7 +44,7 @@
         <h2>Reconstruir Caminhos</h2><p/>
         <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Reconstruir Caminhos"></h2>
         <hr/>
-    <p>Esta ferramenta funciona com uma camada habilitado ao tempo ou fei&ccedil;&otilde;es de pol&iacute;gono e ponto que representam um  <code>momento</code> no tempo.   Ela primeiro determina quais fei&ccedil;&otilde;es pertencem a um caminho utilizando um identificador. Com a utiliza&ccedil;&atilde;o do tempo em cada localiza&ccedil;&atilde;o, os caminhos s&atilde;o consecutivamente ordenados e transformados em uma linha ou pol&iacute;gono representando o caminho de movimento com o passar do tempo. Opcionalmente, a entrada pode ter o buffer gerado por um campo, que criar&aacute; um pol&iacute;gono em cada localiza&ccedil;&atilde;o. Estes pontos com buffer ou se as entradas forem de pol&iacute;gonos, s&atilde;o ent&atilde;o ligadas consecutivamente para criar um caminho como um pol&iacute;gono onde a largura &eacute; representante do atributo de interesse. Os caminhos resultantes t&ecirc;m um tempo inicial e final, que representa a primeira e &uacute;ltima fei&ccedil;&atilde;o temporariamente em um caminho fornecido. Quando os caminhos s&atilde;o criados, as estat&iacute;sticas sobre as fei&ccedil;&otilde;es de entrada s&atilde;o calculadas e atribu&iacute;das para o caminho de sa&iacute;da. A estat&iacute;stica mais b&aacute;sica &eacute; a contagem de pontos dentro da &aacute;rea, mas outras estat&iacute;sticas podem ser calculadas tamb&eacute;m.
+    <p>Esta ferramenta funciona com uma camada de fei&ccedil;&otilde;es de &aacute;rea ou ponto habilitada ao tempo que representa um  <code>momento</code> no tempo. Ela primeiro determina quais fei&ccedil;&otilde;es pertencem a um caminho utilizando um identificador. Com a utiliza&ccedil;&atilde;o do tempo em cada localiza&ccedil;&atilde;o, os caminhos s&atilde;o consecutivamente ordenados e transformados em uma linha ou &aacute;rea representando o caminho de movimento com o passar do tempo. Opcionalmente, a entrada pode ter o buffer gerado por um campo, que criar&aacute; uma  &aacute;rea em cada localiza&ccedil;&atilde;o. Estes pontos com buffer  ou &aacute;reas de entrada  , s&atilde;o ent&atilde;o ligadas consecutivamente para criar um caminho como uma &aacute;rea onde a largura &eacute; representante do atributo de interesse. Os caminhos resultantes t&ecirc;m um tempo inicial e final, que representa a primeira e &uacute;ltima fei&ccedil;&atilde;o temporariamente em um caminho fornecido. Quando os caminhos s&atilde;o criados, as estat&iacute;sticas sobre as fei&ccedil;&otilde;es de entrada s&atilde;o calculadas e atribu&iacute;das para o caminho de sa&iacute;da. A estat&iacute;stica mais b&aacute;sica &eacute; a contagem de pontos dentro da &aacute;rea, mas outras estat&iacute;sticas podem ser calculadas tamb&eacute;m.
     </p>
     <p>Fei&ccedil;&otilde;es nas camads habilitadas ao tempo podem ser representadas em uma de duas maneiras:
         <ul>
@@ -57,7 +57,7 @@
     </p>
     <p>Por exemplo, suponha que voc&ecirc; tenha medi&ccedil;&otilde;es de GPS dos furac&otilde;es a cada 10 minutos. Cada medi&ccedil;&atilde;o de GPS registra o nome do furac&atilde;o, local, tempo de registro e velocidade do vento. Com estas informa&ccedil;&otilde;es, voc&ecirc; pode criar caminhos para cada furac&atilde;o utilizando o nome da identifica&ccedil;&atilde;o do caminho e caminhos para cada furac&atilde;o que ser&aacute; gerado. Adicionalmente, voc&ecirc; pode calcular estat&iacute;stica como a velocidade do vento m&eacute;dia, m&aacute;xima e m&iacute;nimo de cada furac&atilde;o, como tamb&eacute;m a contagem das medi&ccedil;&otilde;es dentro de cada caminho.
     </p>
-    <p>Com a utiliza&ccedil;&atilde;o do mesmo exemplo, voc&ecirc; pode criar o buffer dos seus caminhos pela velocidade do vento. Isto ir&aacute; criar um buffer de cada medi&ccedil;&atilde;o pelo campo da velocidade do vento neste local e ligar as &aacute;reas com buffer, criando um pol&iacute;gono representativo do caminho, como tamb&eacute;m as altera&ccedil;&otilde;es na velocidade do vento quando os furac&otilde;es progredirem.   
+    <p>Com a utiliza&ccedil;&atilde;o do mesmo exemplo, voc&ecirc; pode criar o buffer dos seus caminhos pela velocidade do vento. Isto ir&aacute; criar um buffer de cada medi&ccedil;&atilde;o pelo campo da velocidade do vento neste local e ligar as &aacute;reas com buffer, criando uma  &aacute;rea representativa do caminho, como tamb&eacute;m as altera&ccedil;&otilde;es na velocidade do vento quando os furac&otilde;es progredirem.   
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -65,14 +65,14 @@
         <div><h2>Escolher feições para reconstruir caminhos</h2></div>
         <hr/>
         <div>
-            <p>A camada de ponto ou de pol&iacute;gono que ser&aacute; reconstru&iacute;da nos caminhos. A camada de entrada deve ser habilitada ao tempo com fei&ccedil;&otilde;es que representam um instante no tempo. As camadas de entrada devem estar em um sistema de coordenadas planas ou a refer&ecirc;ncia espacial de processamento deve ser definida para um sistema de coordenadas planas utilizando os  <b>Ambientes de An&aacute;lise</b> se um buffer estiver aplicado.
+            <p>A camada de ponto ou de  &aacute;rea que ser&aacute; reconstru&iacute;da nos caminhos. A camada de entrada deve ser habilitada ao tempo com fei&ccedil;&otilde;es que representam um instante no tempo. As camadas de entrada devem estar em um sistema de coordenadas planas ou a refer&ecirc;ncia espacial de processamento deve ser definida para um sistema de coordenadas planas utilizando os  <b>Ambientes de An&aacute;lise</b> se um buffer estiver aplicado.
             </p>
-            <p>Al&eacute;m de escolher uma camada de seu mapa, voc&ecirc; pode escolher  <b>Procurar Camadas</b> na parte inferior da lista suspensa para procurar por seu conte&uacute;do para um conjunto de dados de compartilhamento de arquivo big data ou camada de fei&ccedil;&atilde;o.
+            <p>Al&eacute;m de escolher uma camada do seu mapa, voc&ecirc; pode escolher  <b>Procurar Camadas</b> na parte inferior da lista suspensa para procurar por seu conte&uacute;do para um conjunto de dados de compartilhamento do arquivo de grandes dados ou camada de fei&ccedil;&atilde;o.
             </p>
         </div>
     </div>
     <div id="trackFields">
-        <div><h2>Escolha um ou mais campos para identificar caminhos</h2></div>
+        <div><h2>Escolher um ou mais campos para identificar caminhos</h2></div>
         <hr/>
         <div>
             <p>Os campos que representam o identificador do caminho. 
@@ -95,7 +95,9 @@
         <div>
             <p>A equa&ccedil;&atilde;o utilzada para calcular a dist&acirc;ncia de buffer ao redor das fei&ccedil;&otilde;es de entrada. Esta equa&ccedil;&atilde;o pode ser gerada utilizando o calculador de buffer e opera&ccedil;&otilde;es b&aacute;sicas, tais como, adicionar, subtrair, multiplicar e dividir s&atilde;o suportadas. Os valores s&atilde;o calculados utilizando o sistema de an&aacute;lise de coordenadas. As camadas de entrada devem estar em um sistema de coordenadas planas ou a refer&ecirc;ncia espacial de processamento deve ser definida para um sistema de coordenadas planas utilizando os  <b>Ambientes de An&aacute;lise</b> se um buffer estiver aplicado.
             </p>
-            <p>Uma equa&ccedil;&atilde;o como  <code>$feature.windspeed * 1000</code>aplicaria um buffer de 1,000 multiplicado pelo campo <i>windspeed</i>. Voc&ecirc; pode utilizar mais de um campo no calculador de buffer.
+            <p>Uma equa&ccedil;&atilde;o como  <code>$feature.windspeed * 1000</code> aplicaria um buffer de 1.000 multiplicado pelo campo <i>windspeed</i>. Voc&ecirc; pode utilizar mais de um campo no calculador de buffer.
+            </p>
+            <p> Voc&ecirc; tamb&eacute;m pode especificar uma express&atilde;o de caminho ciente. Por exemplo, voc&ecirc; pode calcular a soma do valor do campo <i>windspeed</i> da fei&ccedil;&atilde;o atual e anterior, duas fei&ccedil;&otilde;es com uma equa&ccedil;&atilde;o como <code>$track.field(windspeed).history(-3)</code>. Em cada localiza&ccedil;&atilde;o, a soma da atual <i>windspeed</i>, e anterior, duas medidas seriam calculadas e gerados o buffer.
             </p>
         </div>
     </div>
@@ -103,7 +105,7 @@
         <div><h2>Selecionar um tempo para dividir caminhos (opcional)</h2></div>
         <hr/>
         <div>
-            <p>Tempo utilzado para dividir caminhos. Se pontos ou pol&iacute;gonos de entrada tiverem uma dura&ccedil;&atilde;o mais longa entre eles que o tempo de divis&atilde;o, eles ser&atilde;o divididos em caminhos diferentes.
+            <p>Tempo utilzado para dividir caminhos. Se pontos ou &aacute;reas de entrada tiverem uma dura&ccedil;&atilde;o mais longa entre eles que o tempo de divis&atilde;o, eles ser&atilde;o divididos em caminhos diferentes.
             </p>
             <p>Se voc&ecirc; especificar uma divis&atilde;o de tempo e uma divis&atilde;o de dist&acirc;ncia, os caminhos ser&atilde;o divididos quando uma ou ambas as condi&ccedil;&otilde;es forem atendidas. 
             </p>
@@ -115,7 +117,7 @@
         <div><h2>Selecionar uma distância para dividir caminhos (opcional)</h2></div>
         <hr/>
         <div>
-            <p> Dist&acirc;ncia utilizada para dividir caminhos. Se pontos ou pol&iacute;gonos de entrada tiverem uma dist&acirc;ncia mais longa entre eles que a divis&atilde;o de tempo, eles ser&atilde;o divididos em caminhos diferentes.
+            <p> Dist&acirc;ncia utilizada para dividir caminhos. Se pontos ou &aacute;reas de entrada tiverem uma dist&acirc;ncia mais longa entre eles que o tempo de divis&atilde;o, eles ser&atilde;o divididos em caminhos diferentes.
             </p>
             <p>Se voc&ecirc; especificar uma divis&atilde;o de tempo e uma divis&atilde;o de dist&acirc;ncia, os caminhos ser&atilde;o divididos quando uma ou ambas as condi&ccedil;&otilde;es forem atendidas. 
             </p>
@@ -125,9 +127,11 @@
         <div><h2>Adicionar estatísticas (opcional)</h2></div>
         <hr/>
         <div>
-            <p> Voc&ecirc; pode calcular as estat&iacute;stica em fei&ccedil;&otilde;es que s&atilde;o resumidas. Nos campos num&eacute;ricos voc&ecirc; pode calcular o seguinte:
+            <p> Voc&ecirc; pode calcular as estat&iacute;stica em fei&ccedil;&otilde;es que s&atilde;o resumidas.
+Voc&ecirc; pode calcular o seguinte em campos num&eacute;ricos:
                 <ul>
-                    <li>Contagem&mdash;Calcula o n&uacute;mero de valores diferentes de nulo. Pode ser utilizado em campos num&eacute;ricos ou strings. 'A contagem de [null, 0, 2] &eacute; 2.
+                    <li>Contagem&mdash;Calcula o n&uacute;mero de valores diferentes de nulo.
+Pode ser utilizado em campos num&eacute;ricos ou strings. 'A contagem de [null, 0, 2] &eacute; 2.
                     </li>
                     <li>Soma&mdash;A soma de valores num&eacute;ricos em um campo. A soma de [null, null, 3] &eacute; 3.
                     </li>
@@ -139,14 +143,14 @@
                     </li>
                     <li>Alcance&mdash;O alcance de um campo num&eacute;rico. Isto &eacute; calculado como os valores m&iacute;nimos subtra&iacute;dos do valor m&aacute;ximo. O alcance de [0, null, 1] &eacute; 1. O alcance de [null, 4] &eacute; 0.
                     </li>
-                    <li>Vari&acirc;ncia&mdash;A vari&acirc;ncia de um campo num&eacute;rico em um caminho. A vari&acirc;ncia de [1] &eacute; nula. A vari&acirc;ncia de [null, 1,1,1] &eacute; 1.
+                    <li>Vari&acirc;ncia&mdash;A vari&acirc;ncia de um campo num&eacute;rico em um caminho. A vari&acirc;ncia de [1] &eacute; nula. A vari&acirc;ncia de [null, 1,0,1,1] &eacute; 0,25.
                     </li>
-                    <li>Desvio padr&atilde;o&mdash;O desvio padr&atilde;o de um campo num&eacute;rico. O desvio padr&atilde;o de [1] &eacute; nulo. O desvio padr&atilde;o de [nulo, 1,1,1] &eacute; 1. 
+                    <li>Desvio padr&atilde;o&mdash;O desvio padr&atilde;o de um campo num&eacute;rico. O desvio padr&atilde;o de [1] &eacute; nulo. O desvio padr&atilde;o de [nulo, 1,0,1,1] &eacute; 0,5. 
                     </li>
                 </ul>
                 
             </p>
-            <p>Nos campos de string voc&ecirc; pode calcular o seguinte:
+            <p>Voc&ecirc; pode calcular o seguinte em campos de strings:
                 <ul>
                     <li>Contagem&mdash;O n&uacute;mero de strings diferente de nulo.
                     </li>
@@ -161,16 +165,16 @@
         <div><h2>Escolher um ArcGIS Data Store para salvar os resultados</h2></div>
         <hr/>
         <div>
-            <p>Os resultados do GeoAnalytic s&atilde;o armazenados no ArcGIS Data Store e expostos como uma camada de fei&ccedil;&atilde;o no  Portal for ArcGIS. Na maioria dos casos, os resultados devem ser armazenados no armazenamento de dados de espa&ccedil;o-tempo e este &eacute; o padr&atilde;o. Em alguns casos salvar resultados no armazenamento de dados relacional &eacute; uma boa op&ccedil;&atilde;o. Abaixo est&atilde;o as raz&otilde;es pelas quais voc&ecirc; talvez queira armazenar resultados em um armazenamento de dados relacional: 
+            <p>Os resultados do GeoAnalytic s&atilde;o armazenados no ArcGIS Data Store e expostos como uma camada de fei&ccedil;&atilde;o no  Portal for ArcGIS. Na maioria dos casos, os resultados devem ser armazenados no armazenamento de dados de espa&ccedil;o-tempo e este &eacute; o padr&atilde;o. Em alguns casos, salvar resultados no armazenamento de dados relacional &eacute; uma boa op&ccedil;&atilde;o. Abaixo est&atilde;o as raz&otilde;es pelas quais voc&ecirc; talvez queira armazenar resultados em to um armazenamento de dados relacional: 
                 <ul>
-                    <li>Utilizar os resultados no portal para colabora&ccedil;&atilde;o do portal.
+                    <li>Voc&ecirc; pode  utilizar os resultados no portal-para-colabora&ccedil;&atilde;o do portal.
                     </li>
-                    <li>Habilitar recursos de sincroniza&ccedil;&atilde;o com seus resultados.
+                    <li>Voc&ecirc; pode habilitar os recursos de sincroniza&ccedil;&atilde;o com seus resultados.
                     </li>
                 </ul>
                 
             </p>
-            <p>Voc&ecirc; n&atilde;o deve utilizar um armazenamento de dados relacional se voc&ecirc; espera que os resultados do GeoAnalytics aumentem e deseja aproveitar os recursos do armazenamento de grandes dados de espa&ccedil;o-tempo para lidar com grandes quantidades de dados. 
+            <p>Voc&ecirc; n&atilde;o deve utilizar um armazenamento de dados relacional se voc&ecirc; espera que os resultados do GeoAnalytics aumentem e deseja aproveitar os recursos do armazenamento de grandes dados de espa&ccedil;o-tempo para lidar com grandes quantidades de dados.
             </p>
         </div>
     </div>
@@ -178,7 +182,7 @@
         <div><h2>Nome da camada resultante</h2></div>
         <hr/>
         <div>
-            <p> Este &eacute; o nome da camada que ser&aacute; criada em <b>Meu Conte&uacute;do</b> e adicionada no mapa.  O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existe, a ferramenta falhar&aacute;.
+            <p> O nome da camada que ser&aacute; criada em <b>Meu Conte&uacute;do</b> e adicionada ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existe, a ferramenta falhar&aacute;.
             </p>
             <p>Ao utilizar a caixa suspensa  <b>Salvar resultado em</b>, &eacute; poss&iacute;vel especificar o nome de uma pasta em <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo.
             </p>

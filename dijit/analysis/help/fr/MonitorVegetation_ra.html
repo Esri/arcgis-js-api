@@ -60,7 +60,7 @@
         <div><h2>Choisir la méthode permettant de surveiller la végétation</h2></div>
         <hr/>
         <div>
-            <p>S&eacute;lectionnez la m&eacute;thode utilis&eacute;e pour cr&eacute;er la couche d'indice de v&eacute;g&eacute;tation. Les diff&eacute;rents indices de v&eacute;g&eacute;tation permettent de mettre en surbrillance certaines entit&eacute;s ou de r&eacute;duire diff&eacute;rents bruits.
+            <p>Choisir la m&eacute;thode pour cr&eacute;er la couche d&rsquo;indice de v&eacute;g&eacute;tation. Les diff&eacute;rents indices de v&eacute;g&eacute;tation permettent de mettre en &eacute;vidence certaines entit&eacute;s ou de r&eacute;duire diff&eacute;rents bruits.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
@@ -76,7 +76,7 @@ MSAVI2 est un indice de v&eacute;g&eacute;tation qui tente de minimiser les infl
 
                 </li>
                 <li>Normalized Difference Vegetation Index  &mdash; 
-NDVI est un indice normalis&eacute; qui vous permet de g&eacute;n&eacute;rer une image illustrant une couverture v&eacute;g&eacute;tale, la biomasse relative. Cet indice tire parti du contraste des caract&eacute;ristiques de deux canaux d'un jeu de donn&eacute;es raster multispectral&nbsp;: l'absorption de pigments chlorophylliens dans le canal rouge et la r&eacute;flectivit&eacute; &eacute;lev&eacute;e des mati&egrave;res v&eacute;g&eacute;tales dans le canal proche infrarouge (NIR).
+NDVI est un indice normalis&eacute; qui vous permet de g&eacute;n&eacute;rer une image illustrant une couverture v&eacute;g&eacute;tale ou la biomasse relative. Cet indice repose sur le contraste des caract&eacute;ristiques de deux canaux d&rsquo;un jeu de donn&eacute;es raster multispectral&nbsp;: l&rsquo;absorption du pigment chlorophyllien dans le canal rouge et la haute r&eacute;flectivit&eacute; des mati&egrave;res v&eacute;g&eacute;tales dans le canal proche infrarouge (NIR).
 
                 </li>
                 <li>Perpendicular Vegetation Index &mdash; 
@@ -102,9 +102,9 @@ L'indice transform&eacute; SAVI est un indice de v&eacute;g&eacute;tation qui te
         <div><h2>Spécifier les indices canal NIR et du canal rouge</h2></div>
         <hr/>
         <div>
-            <p>Saisissez les indices des canaux proche infrarouge (NIR) et rouge.
+            <p>Sp&eacute;cifiez les indices des canaux proche NIR et rouge.
             </p>
-            <p>Chaque capteur satellitaire et cam&eacute;ra a&eacute;rienne capturent des informations qui sont d&eacute;compos&eacute;es en indices de canaux. Chaque indice de canal contient les informations propres &agrave; une partie sp&eacute;cifique du spectre &eacute;lectromagn&eacute;tique. Pour recourir &agrave; cette m&eacute;thode de surveillance de la v&eacute;g&eacute;tation, vous devez sp&eacute;cifier l'indice de canal qui a captur&eacute; les longueurs d'onde NIR et Rouge.
+            <p>Chaque capteur satellitaire et cam&eacute;ra a&eacute;rienne capturent des informations qui sont d&eacute;compos&eacute;es en indices de canaux. Chaque indice de canal contient les informations propres &agrave; une partie sp&eacute;cifique du spectre &eacute;lectromagn&eacute;tique. Pour recourir &agrave; cette m&eacute;thode de surveillance de la v&eacute;g&eacute;tation, vous devez sp&eacute;cifier l&rsquo;indice de canal qui a captur&eacute; les longueurs d&rsquo;onde NIR et rouge.
             </p>
         </div>
     </div>
@@ -114,7 +114,7 @@ L'indice transform&eacute; SAVI est un indice de v&eacute;g&eacute;tation qui te
         <div>
             <p>La pente de la ligne de sol. La pente est la relation lin&eacute;aire approximative entre les canaux NIR et rouge dans un nuage de points.
             </p>
-            <p>Ce param&egrave;tre est valide uniquement pour l'indice de v&eacute;g&eacute;tation ajust&eacute; en fonction du sol et transform&eacute;.
+            <p>Ce param&egrave;tre est valide uniquement pour la m&eacute;thode d&rsquo;indice de v&eacute;g&eacute;tation ajust&eacute; en fonction du sol et transform&eacute;.
             </p>
         </div>
     </div>
@@ -122,11 +122,11 @@ L'indice transform&eacute; SAVI est un indice de v&eacute;g&eacute;tation qui te
         <div><h2>Intersection</h2></div>
         <hr/>
         <div>
-            <p>Il s'agit de la valeur du canal proche infrarouge (NIR) lorsque la valeur de r&eacute;flexion du canal rouge (Rouge) est &eacute;gale &agrave; 0 pour les lignes de sol donn&eacute;es.
+            <p>La valeur du canal proche NIR lorsque la valeur de r&eacute;flexion du canal rouge (Rouge) est &eacute;gale &agrave; 0 pour les lignes de sol donn&eacute;es.
             </p>
             <p> <code>(a = NIR - sRed)</code> , lorsque le canal Rouge est &eacute;gal &agrave; 0.
             </p> 
-            <p>Ce param&egrave;tre est valide uniquement pour l'indice de v&eacute;g&eacute;tation ajust&eacute; en fonction du sol et transform&eacute;.
+            <p>Ce param&egrave;tre est valide uniquement pour la m&eacute;thode d&rsquo;indice de v&eacute;g&eacute;tation ajust&eacute; en fonction du sol et transform&eacute;.
             </p>
         </div>
     </div>
@@ -134,20 +134,20 @@ L'indice transform&eacute; SAVI est un indice de v&eacute;g&eacute;tation qui te
         <div><h2>Surface de couvert végétal</h2></div>
         <hr/>
         <div>
-            <p>Pour recourir &agrave; la m&eacute;thode SAVI, l'&eacute;tendue de la couverture v&eacute;g&eacute;tale doit &ecirc;tre sp&eacute;cifi&eacute;e.
+            <p>Indique la surface verte de couvert v&eacute;g&eacute;tal requise par la m&eacute;thode SAVI.
             </p>
-            <p>Saisissez une valeur comprise entre 0.0 et 1.0, o&ugrave; 
+            <p>Les valeurs valides sont les suivantes&nbsp;: 
 
                 <ul>
-                    <li>1 = surface sans aucune couverture v&eacute;g&eacute;tale verte
+                    <li>1 = surfaces sans aucune couverture v&eacute;g&eacute;tale verte
                         
  
                     </li>
-                    <li>0.5 = surface avec une couverture v&eacute;g&eacute;tale verte mod&eacute;r&eacute;e
+                    <li>0,5 = surfaces avec une couverture v&eacute;g&eacute;tale verte mod&eacute;r&eacute;e
                         
  
                     </li>
-                    <li>0 = surface avec une couverture v&eacute;g&eacute;tale verte &eacute;lev&eacute;e
+                    <li>0 = surfaces avec une couverture v&eacute;g&eacute;tale verte &eacute;lev&eacute;e
                         
 
                     </li>
@@ -160,19 +160,19 @@ L'indice transform&eacute; SAVI est un indice de v&eacute;g&eacute;tation qui te
         <div><h2>Facteur d'ajustement</h2></div>
         <hr/>
         <div>
-            <p>Pour recourir &agrave; la m&eacute;thode de l'indice de v&eacute;g&eacute;tation ajust&eacute; en fonction du sol et transform&eacute;, le facteur d'ajustement doit &ecirc;tre d&eacute;fini en vue de minimiser l'effet du sol. La valeur par d&eacute;faut est 0,08.
+            <p>Sp&eacute;cifie le facteur d&rsquo;ajustement en vue de minimiser l&rsquo;effet du sol, requis par la m&eacute;thode de l&rsquo;indice de v&eacute;g&eacute;tation ajust&eacute; en fonction du sol et transform&eacute;. La valeur par d&eacute;faut est 0,08.
             </p>
-            <p>Une valeur inf&eacute;rieure signifie que vous ignorez l'effet du sol. Une valeur &eacute;lev&eacute;e signifie que le sol affectera votre r&eacute;sultat.
+            <p>Une valeur basse signifie que vous ignorez l&rsquo;effet du sol. Une valeur &eacute;lev&eacute;e signifie que le sol affectera votre r&eacute;sultat.
             </p>
         </div>
     </div>
     <div id="outputLayer">
-        <div><h2>Nom de la couche résultat</h2></div>
+        <div><h2>Nom de la couche de résultat</h2></div>
         <hr/>
         <div>
             <p>Le nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>Mon contenu</b> et ajout&eacute;e &agrave; la carte. Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom.
             </p>
-            <p>La zone de liste d&eacute;roulante  <b>Enregistrer le r&eacute;sultat dans</b> vous permet de sp&eacute;cifier le nom d'un dossier dans <b>Mon contenu</b> o&ugrave; le r&eacute;sultat sera enregistr&eacute;.
+            <p>La zone de liste d&eacute;roulante  <b>Save result in (Enregistrer le r&eacute;sultat dans)</b> vous permet de sp&eacute;cifier le nom d&rsquo;un dossier dans <b>My content (Mon contenu)</b> o&ugrave; le r&eacute;sultat sera enregistr&eacute;.
             </p>
         </div>
     </div>

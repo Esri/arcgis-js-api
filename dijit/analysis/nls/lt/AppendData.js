@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
-define({inputLayerLabel:"Pasirinkite sluoksnį, prie kurio norite pridėti",inputWarningLabel:"Įspėjimas: jūsų pridėtas sluoksnis bus modifikuotas.",inputHostedLayerWarning:"The selected layer was not a hosted feature layer. Please select a hosted feature layer to append to.",appendLayerLabel:"Pasirinkite sluoksnį, kurį norite pridėti",filterLabel:"Pridėkite visus elementus arba apibrėžkite poaibį (neprivaloma)",fieldMappingLabel:"Pasirinkite, kaip pridėti laukus (neprivaloma)",inputField:"Įvesties laukas",appendValue:"Pridėti reikšmę",expression:"Išraiška"});
+define({inputLayerLabel:"Pasirinkite sluoksnį, prie kurio norite pridėti",inputWarningLabel:"Įspėjimas: jūsų pridėtas sluoksnis bus modifikuotas.",inputHostedLayerWarning:"Pasirinktas sluoksnis nebuvo talpinamas elementų sluoksnis. Pasirinkite talpinamą elementų sluoksnį, kad pridėtumėte.",appendLayerLabel:"Pasirinkite sluoksnį, kurį norite pridėti",filterLabel:"Pridėkite visus elementus arba apibrėžkite poaibį (neprivaloma)",fieldMappingLabel:"Pasirinkite, kaip pridėti laukus (neprivaloma)",inputField:"Įvesties laukas",appendValue:"Pridėti reikšmę",expression:"Išraiška"});

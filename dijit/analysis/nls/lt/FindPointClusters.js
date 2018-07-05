@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
-define({clustersLabel:"Raskite sluoksnio ${inputLayerName} sankaupas.",chooseLayerLabel:"Pasirinkite sluoksnį, kurio sankaupų bus ieškoma",minClusterPtsLabel:"Minimalus taškų skaičius, kuris bus laikomas sankaupa",limitSearchLabel:"Apriboti paieškos intervalą iki (neprivaloma)",limitSearchReqLabel:"Limit the search range to",outputLayerName:"Rasti ${inputLayerName} sankaupas",itemDescription:"Elementų sluoksnis, sukurtas naudojant sprendimą Ieškoti taškų sankaupų, skirtą ${inputLayerName}.",itemTags:"Analizės rezultatas, Rasti taškų sankaupas, ${inputLayerName}",itemSnippet:"Elementų sluoksnis, sukurtas naudojant Rasti taškų sankaupas"});
+define({clustersLabel:"Raskite sluoksnio ${inputLayerName} sankaupas.",chooseLayerLabel:"Pasirinkite sluoksnį, kurio sankaupų bus ieškoma",minClusterPtsLabel:"Minimalus taškų skaičius, kuris bus laikomas sankaupa",limitSearchLabel:"Apriboti paieškos intervalą iki (neprivaloma)",limitSearchReqLabel:"Apriboti paieškos intervalą iki",outputLayerName:"Rasti ${inputLayerName} sankaupas",itemDescription:"Elementų sluoksnis, sukurtas naudojant sprendimą Ieškoti taškų sankaupų, skirtą ${inputLayerName}.",itemTags:"Analizės rezultatas, Rasti taškų sankaupas, ${inputLayerName}",itemSnippet:"Elementų sluoksnis, sukurtas naudojant Rasti taškų sankaupas"});

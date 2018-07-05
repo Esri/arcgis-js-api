@@ -44,7 +44,7 @@
         <h2>Ühenda objektid</h2><p/>
         <h2><img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" alt="&Uuml;henda objektid"></h2>
         <hr/>
-    <p>Objektide &uuml;hendamise toiming t&ouml;&ouml;tab kahe kihiga. T&ouml;&ouml;riist &bdquo;&Uuml;henda objektid&rdquo; &uuml;hendab &uuml;he objekti atribuudid teisega ruumiliste, ajaliste ja atribuutide seoste v&otilde;i nende kolme kombinatsiooni p&otilde;hjal. T&ouml;&ouml;riist teeb kindlaks k&otilde;ik sisendobjektid, mis vastavad m&auml;&auml;ratud &uuml;hendamistingimustele ja &uuml;hendab teise sisendkihi esimesega. Soovi korral saate &uuml;hendada k&otilde;ik objektid &uuml;hilduvate objektidega v&otilde;i summeerida &uuml;hilduvad objektid.
+    <p>Objektide &uuml;hendamise t&ouml;&ouml;vahend t&ouml;&ouml;tab kahe kihiga. T&ouml;&ouml;riist &bdquo;&Uuml;henda objektid&rdquo; &uuml;hendab &uuml;he objekti atribuudid teisega ruumiliste, ajaliste ja atribuutide seoste v&otilde;i nende kolme kombinatsiooni p&otilde;hjal. T&ouml;&ouml;riist teeb kindlaks k&otilde;ik sisendobjektid, mis vastavad m&auml;&auml;ratud &uuml;hendamistingimustele ja &uuml;hendab teise sisendkihi esimesega. Soovi korral saate &uuml;hendada k&otilde;ik objektid &uuml;hilduvate objektidega v&otilde;i summeerida &uuml;hilduvad objektid.
     </p>
     <p>T&ouml;&ouml;rista &bdquo;Liida objektid&rdquo; saab kasutada punktide, joonte, alade ja tabelitega. Ajaline &uuml;hendamine n&otilde;uab, et sisendandmed oleksid ajateadlikud ja ruumiline &uuml;hendamine n&otilde;uab, et andmed sisaldaksid geomeetriat. 
     </p>
@@ -85,7 +85,7 @@
                 </ul>
                 
             </p>
-            <p>Oletame n&auml;iteks, et soovime leida k&otilde;ik kaubamajad, mis j&auml;&auml;vad turust kahe kilomeetri raadiusesse. Sellisel juhul on &uuml;hendataval kihil &uuml;ks objekt, mis t&auml;histab turgu ja &uuml;hendatavad objektid t&auml;histavad kohalikke toidupoode, millel on n&auml;iteks atribuut aastane kogul&auml;bim&uuml;&uuml;k.  <b>Objektide &uuml;hendamise t&ouml;&ouml;riista</b> abil leiame, et viis toidupoodi vastavad sellele kriteeriumile. Kui kasutaksime &uuml;hendamistoimingut <b>&Uuml;henda &uuml;ks mitmele</b>, saaksime tulemuseks viis objekti, kus iga rida t&auml;histab turgu ja kaubamaja. Kui kasutaksime toimingut <b>&Uuml;henda &uuml;ks &uuml;hele</b>, saaksime tulemuseks &uuml;he objekti, mis t&auml;histab turgu ja sisaldab kaubamajade teabe kokkuv&otilde;tet (nt arv 2) ning muud statistikat (nt aastast kogul&auml;bim&uuml;&uuml;ki).
+            <p>Oletame n&auml;iteks, et soovite leida k&otilde;ik kaubamajad, mis j&auml;&auml;vad turust 2 kilomeetri raadiusesse. Sellisel juhul on &uuml;hendataval kihil &uuml;ks objekt, mis t&auml;histab turgu ja &uuml;hendatavad objektid t&auml;histavad kohalikke toidupoode, millel on n&auml;iteks atribuut aastane kogul&auml;bim&uuml;&uuml;k. Objektide liitmise t&ouml;&ouml;riista abil saate teada, et sellele kriteeriumile vastavad viis toidupoodi. Kui t&auml;psustate liitmistoimingut  <b>Liida &uuml;ks mitmega</b>, saaksite tulemuseks viis objekti, kus iga rida t&auml;histab turgu ja kaubamaja. Kui kasutaksime toimingut <b>&Uuml;henda &uuml;ks &uuml;hega</b>, saaksime tulemuseks &uuml;he objekti, mis t&auml;histab turgu ja sisaldab kaubamajade teabe kokkuv&otilde;tet (nt arv 2) ning muud statistikat (nt aastast kogul&auml;bim&uuml;&uuml;ki).
             </p>
         </div>
     </div>
@@ -93,7 +93,7 @@
         <div><h2>Vali üks või mitu ühendust</h2></div>
         <hr/>
         <div>
-            <p>Kasutada saab &uuml;hte, kahte v&otilde;i kolme &uuml;hendust&uuml;&uuml;pi. &Uuml;hendust&uuml;&uuml;bid on j&auml;rgmised. 
+            <p>M&auml;&auml;rab kasutatava &uuml;hendusvariandi. Kasutada saab &uuml;hte, kahte v&otilde;i kolme allj&auml;rgnevat &uuml;hendust&uuml;&uuml;pi: 
                 <ul>
                     <li> <b>Ruumiline</b> &ndash; kasutab objektide &uuml;hendamiseks m&auml;&auml;ratletud ruumilist seost. See n&otilde;uab, et m&otilde;lemad kihid sisaldaksid geomeetriat.
                     </li>
@@ -112,7 +112,7 @@
         <div><h2>Vali ruumiline seos</h2></div>
         <hr/>
         <div>
-            <p> Ruumiline seos, mis m&auml;&auml;rab, kas objektid liidetakse. Saadaolevad seosed olenevad sellest, mis t&uuml;&uuml;pi geomeetriat (punkt, murdjoon, pol&uuml;goon) sisendobjektide jaoks kasutatakse. Saadaolevate seoste hulka kuuluvad j&auml;rgmised seosed.
+            <p>Ruumiline seos, mis m&auml;&auml;rab, kas objektid liidetakse. Saadaolevad seosed olenevad sellest, mis t&uuml;&uuml;pi geomeetriat (punkt, murdjoon, pol&uuml;goon) sisendobjektide jaoks kasutatakse.
                 <ul>
                     <li> <b>L&otilde;ikub</b> &ndash; objektid vastendatakse, kui need l&otilde;ikuvad omavahel.
                     </li>
@@ -122,7 +122,7 @@
                     </li>
                     <li> <b>Sisaldab</b> &ndash; objektid vastendatakse, kui kiht, millega &uuml;hendatakse, sisaldub &uuml;hendatavates objektides.
                     </li>
-                    <li> <b>Sees</b> &ndash; objektid vastendatakse, kui kiht, millega &uuml;hendatakse, on &uuml;hendatavate objektide sees.
+                    <li> <b>Sisaldab</b> &ndash; objektid vastendatakse, kui kiht, millega &uuml;hendatakse, sisaldub &uuml;hendatavates objektides.
                     </li>
                     <li> <b>Puudutab</b> &ndash; objektid vastendatakse, kui nende piir puutub kokku objektiga, millega neid &uuml;hendatakse.
                     </li>
@@ -139,9 +139,9 @@
         <div><h2></h2></div>
         <hr/>
         <div>
-            <p>See vahemaa m&auml;&auml;rab raadiuse, mida rakendatakse ruumilise l&auml;hiseose korral.
+            <p> See vahemaa m&auml;&auml;rab raadiuse, mida rakendatakse ruumilise l&auml;hiseose korral.
             </p>
-            <p>Oletame, et teil on andmestik, mis t&auml;histab tuumaelektrijaama ja andmestik, mis t&auml;histab elumajasid. Saaksite m&auml;&auml;rata l&auml;heduse jaoks &uuml;hekilomeetrise kauguse, et leida tuumaelektrijaamast 1 km raadiuses olevad majad. 
+            <p>Kui teil on n&auml;iteks andmestik, mis esindab tuumaelektrijaama ja andmestik, mis esindab elamupiirkonda, siis v&otilde;ite seadistada ruumilise l&auml;hiseose vahemaa, et leida elamud, mis asuvad tuumaelektrijaamast 1 kilomeetri raadiuses.
             </p> 
         </div>
     </div>
@@ -149,7 +149,7 @@
         <div><h2>Vali ajaline seos</h2></div>
         <hr/>
         <div>
-            <p>Ajaline seos, mis m&auml;&auml;rab, kas objektid &uuml;hendatakse. See suvand on saadaval ainult siis, kui m&otilde;lemas kihis on aeg lubatud ja saadaolevad seosed s&otilde;ltuvad sisendobjektide jaoks kasutusel olevast aja t&uuml;&uuml;bist (jooksev v&otilde;i intervall). Saadaolevate seoste hulka kuuluvad j&auml;rgmised seosed.
+            <p>Ajaline seos, mis m&auml;&auml;rab, kas objektid &uuml;hendatakse. See suvand on saadaval ainult siis, kui m&otilde;lemas kihis on aeg lubatud ja saadaolevad seosed s&otilde;ltuvad sisendobjektide jaoks kasutusel olevast aja t&uuml;&uuml;bist (jooksev v&otilde;i intervall). Saadaval on allj&auml;rgnevad ajaseosed:
                 <ul>
                     <li> <b>Vastab</b> &ndash; objektid vastendatakse, kui esimene objekt vastab teisele.
                     </li>
@@ -171,11 +171,15 @@
                     </li>
                     <li> <b>K&auml;ivitub</b> &ndash; objektid vastendatakse, kui esimene objekt k&auml;ivitab teise.
                     </li>
-                    <li> <b>K&auml;ivitaja:</b> &ndash; objektid vastendatakse, kui teine objekt k&auml;ivitab esimesed.
+                    <li> <b>K&auml;ivitaja:</b> &ndash; objektid vastendatakse, kui teine objekt k&auml;ivitab esimese.
                     </li>
-                    <li> <b>L&otilde;ikub</b> &ndash; objektid vastendatakse, kui nende ajad l&otilde;ikuvad.
+                    <li> <b>L&otilde;ikub</b>&mdash;objektid vastendatakse, kui nende k&otilde;ik ajad l&otilde;ikuvad.
                     </li>
                     <li> <b>L&auml;hedal</b> &ndash; objektid &uuml;hendatakse, kui need on m&auml;&auml;ratud ajal &uuml;ksteise l&auml;hedal.
+                    </li>
+                    <li> <b>L&auml;hedal enne</b>&mdash;Objektid &uuml;hendatakse, kui esimene objekt on enne teist objekti ja toimub etten&auml;htud ajavahemikus.
+                    </li>
+                    <li> <b>L&auml;hedal p&auml;rast</b>&mdash;Objektid &uuml;hendatakse, kui esimene objekt on p&auml;rast teist objekti ja toimub etten&auml;htud ajavahemikus.
                     </li>
                 </ul>
                 
@@ -186,9 +190,10 @@
         <div><h2></h2></div>
         <hr/>
         <div>
-            <p>See ajaline vahemaa m&auml;&auml;rab raadiuse, mida rakendatakse ajalise l&auml;hiseose korral.
+            
+            <p>See ajaline vahemaa m&auml;&auml;rab raadiuse, mida rakendatakse ajalise l&auml;hiseose korral. Ajaline l&auml;hiseos sisaldab j&auml;rgmisi seoseid:  <b>L&auml;hedal</b>, <b>L&auml;hedal enne</b>, ja <b>L&auml;hedal p&auml;rast</b>.
             </p>
-            <p>Oletame, et teil on paadi&otilde;nnetuste kiht ja orkaani GPS-radade kiht. V&otilde;ite otsida paadi&otilde;nnetusi, mis j&auml;&auml;vad orkaani radadest kindla ruumilise (1 kilomeeter) ja ajalise (5 tundi) vahemaa kaugusele. Selle tulemusena &uuml;hendatakse paadi&otilde;nnetused orkaanidega, mis leidsid aset ruumiliselt ja ajaliselt l&auml;hestikku. 
+            <p>Kui teil on n&auml;iteks paadi&otilde;nnetuste kiht ja orkaani edasiliikumise GPS-radade kiht, saate vaadata paadi&otilde;nnetusi, mis asuvad tormi trajektoorist teatud ruumilisel (1 kilomeeter) ja ajalisel kaugusel (5 tundi). Selle tulemusena &uuml;hendatakse paadi&otilde;nnetused orkaanidega, mis leidsid aset ruumiliselt ja ajaliselt l&auml;hestikku.
             </p>
         </div>
     </div>
@@ -198,7 +203,7 @@
         <div>
             <p>See seos vastendab &uuml;he kihi v&auml;lja v&auml;&auml;rtused teise kihi v&auml;lja v&auml;&auml;rtustega. 
             </p>
-            <p>N&auml;iteks teil on &uuml;leriigiline geograafiline elumajade aadresside kiht (sh v&auml;li  <i>SIHTNUMBER</i>) ja tabeli kujul andmestik demograafiliste terviseandmetega vastavalt sihtnumbrile (v&auml;li nimega <i>TERVISSIHTNUMBER</i>). Saate &uuml;hendada tervise andmestiku elumajade andmetega, vastendades v&auml;lja <i>SIHTNUMBER</i> v&auml;ljaga <i>TERVISSIHTNUMBER</i>. Tulemuseks on vastavate terviseandmetega elumajade kiht.
+            <p>Kui teil on n&auml;iteks kogu riiki h&otilde;lmav elukoha-aadresside geograafiline kiht (sealhulgas v&auml;li  <i>ZIP</i>) ja tabelikujuline andmestik tervishoiuga seotud demograafliste andmete kohta postiindeksite kaupa (v&auml;li nimega <i>HEALTHZIP</i>), saate tervishoiu andmestiku &uuml;hendada elukohaandmetega, sobitades v&auml;lja <i>ZIP</i> kokku v&auml;ljaga <i>HEALTHZIP</i>. Tulemuseks on elukoha-aadresside kiht koos vastavate tervishoiuandmetega.
             </p>
         </div>
     </div>
@@ -206,9 +211,9 @@
         <div><h2>Lisa statistika (valikuline)</h2></div>
         <hr/>
         <div>
-            <p>Toiming  <b>&Uuml;henda &uuml;ks &uuml;hele </b> v&otilde;imaldab arvutada liidetud objektide statistika. Vaikimisi arvutatakse kogu statistika.
+            <p>Arvutab statistika &uuml;hendatud objektide kohta, kui &uuml;hendamistoiming on  <b>&Uuml;henda &uuml;kshaaval</b>. Vaikimisi &uuml;hendatakse kogu statistika.
             </p>
-            <p>Saate arvutada summeeritud objektide statistika. Numbriv&auml;ljadel saab arvutada j&auml;rgmised statistikud.
+            <p>Saate arvutada summeeritud objektide statistika. Numbriv&auml;ljadel saab arvutada j&auml;rgmised statistikad: 
                 <ul>
                     <li>Koguarv &ndash; arvutatakse v&auml;&auml;rtuste, mis pole nullv&auml;&auml;rtused, hulk. See funktsioon on kasutatav numbriv&auml;ljade v&otilde;i stringide korral. V&auml;&auml;rtuste [null, 0 ja 2] koguarv on 2.
                     </li>
@@ -222,14 +227,14 @@
                     </li>
                     <li>Vahemik &ndash; numbriv&auml;lja vahemik. Selle arvutamiseks lahutatakse maksimumv&auml;&auml;rtusest miinimumv&auml;&auml;rtus. V&auml;&auml;rtuste [0, null ja 1] vahemik on 1. V&auml;&auml;rtuste [null ja 4] vahemik on 0.
                     </li>
-                    <li>Dispersioon &ndash; raja numbriv&auml;lja dispersioon. V&auml;&auml;rtuse [1] dispersiooni on null. V&auml;&auml;rtuste [null, 1;1 ja 1] dispersioon on 1.
+                    <li>Dispersioon &ndash; raja numbriv&auml;lja dispersioon. V&auml;&auml;rtuse [1] dispersiooni on null. V&auml;&auml;rtuste [null, 1,0,1,1] dispersioon on 0,25.
                     </li>
-                    <li>Standardh&auml;lve &ndash; numbriv&auml;lja standardh&auml;lve. V&auml;&auml;rtuse [1] standardh&auml;lve on null. V&auml;&auml;rtuste [null, 1;1 ja 1] standardh&auml;lve on 1. 
+                    <li>Standardh&auml;lve &ndash; numbriv&auml;lja standardh&auml;lve. V&auml;&auml;rtuse [1] standardh&auml;lve on null. V&auml;&auml;rtuste [null, 1,0,1,1] standardh&auml;lve on 0,5. 
                     </li>
                 </ul>
                 
             </p>
-            <p>Tekstiv&auml;ljadel saab arvutada j&auml;rgmised statistikud:
+            <p>Tekstiv&auml;ljadel saab arvutada j&auml;rgmised statistikad:
                 <ul>
                     <li>Koguarv &ndash; stringide, mis pole nullv&auml;&auml;rtused, hulk.
                     </li>
@@ -238,7 +243,7 @@
                 </ul>
                 K&otilde;ik statistikud arvutatakse v&auml;&auml;rtustega, mis ei ole nullv&auml;&auml;rtus. Tulemkiht sisaldab uut v&auml;lja iga arvutatud statistiku kohta. Soovitud statistika lisamiseks valige uus atribuut ja statistik.
             </p>
-            <p>K&otilde;ik statistikud arvutatakse v&auml;&auml;rtustega, mis ei ole nullv&auml;&auml;rtus. Tulemkiht sisaldab uusi v&auml;lju iga arvutatud statistiku kohta. Soovitud statistika lisamiseks valige uus atribuut ja statistik.
+            <p>K&otilde;ik statistikud arvutatakse v&auml;&auml;rtustega, mis ei ole nullv&auml;&auml;rtus. Tulemkiht sisaldab uut v&auml;lja iga arvutatud statistiku kohta. Soovitud statistika lisamiseks valige uus atribuut ja statistik.
             </p>
         </div>
     </div>
@@ -248,7 +253,7 @@
         <div>
             <p>Rakendab m&auml;&auml;ratud v&auml;ljadele tingimuse. &Uuml;hendatakse ainult nende v&auml;ljadega objektid, mis vastavad tingimustele.
             </p>
-            <p>Oletame n&auml;iteks, et soovime andmestikus &uuml;hendada ainult need objektid, mille puhul on v&auml;lja  <i>health_spending</i> v&auml;&auml;rtus suurem kui 20% v&auml;lja <i>income</i> v&auml;&auml;rtusest.  Selleks rakendame &uuml;hendamistingimuse <code>$target[&quot;health_spending&quot;] &gt; ($join[&quot;income&quot;] * .20)</code> esimese andmestiku (andmestik, millega objekte &uuml;hendatakse) v&auml;ljale <i>health_spending</i> ja teise andmestiku (andmestik, mida &uuml;hendatakse) v&auml;ljale <i>income</i>.
+            <p>Kui soovite n&auml;iteks andmestikuga liita v&otilde;i &uuml;hendada ainult objektid, kus  <i>health_spending</i>  on suurem kui 20 protsenti sissetulekust <i>income</i>, liitke v&otilde;i &uuml;hendage tingimus <code>$target[&quot;health_spending&quot;] &gt; ($join[&quot;income&quot;] * .20)</code>, kasutades v&auml;lja <i>health_spending</i> esimesest andmestikust (andmestiku objektid &uuml;hendatakse) ja v&auml;lja <i>income</i> teisest andmestikust (andmestik liidetakse).
             </p>
             <p>&Uuml;hendamistingimusi saab rakendada tingimuste kalkulaatori abil.
             </p>
@@ -258,16 +263,16 @@
         <div><h2>Vali andmeladu</h2></div>
         <hr/>
         <div>
-            <p>GeoAnalyticsi tulemeid k&auml;sitletakse ArcGIS-i andmelaos salvedena ning need kuvatakse asjakohaste  Portal for ArcGIS objektikihtidena. &Uuml;ldjuhul salvestatakse tulemid ajalisruumilisse andmelattu &ndash; see on vaikimisi valitud. M&otilde;nel juhul on tulemid m&otilde;istlik salvestada relatsioonilisse andmelattu. Allpool on toodud m&otilde;ned p&otilde;hjused, miks oleks soovitatav tulemid salvestada relatsioonilisse andmelattu. 
+            <p>GeoAnalyticsi tulemeid k&auml;sitletakse  ArcGIS-i andmelaos salvedena ning need kuvatakse portaalis   Portal for ArcGIS objektikihtidena. &Uuml;ldjuhul salvestatakse tulemid ajalisruumilisse andmelattu &ndash; see on vaikimisi valitud. M&otilde;nel juhul on , tulemid m&otilde;istlik salvestada relatsioonilisse andmelattu. Allpool on toodud m&otilde;ned p&otilde;hjused, miks oleks soovitatav tulemid   salvestada relatsioonilisse andmelattu: 
                 <ul>
-                    <li>Saate tulemeid kasutada portaalidevahelises koost&ouml;&ouml;s.
+                    <li>Tulemeid saateportaaliskasutadaportaali koost&ouml;&ouml;ks.
                     </li>
-                    <li>Saate tulemustega s&uuml;nkroniseerida.
+                    <li>Saate lubada tulemitega s&uuml;nkroniseerimise funktsiooni.
                     </li>
                 </ul>
                 
             </p>
-            <p>Relatsioonilist andmeladu pole otstarbekas kasutada, kui GeoAnalyticsi tulemite arv suureneb. Sel juhul peaksite kasutama suurt ajalisruumilist andmeladu, mis v&otilde;imaldab hallata suurt andmemahtu. 
+            <p>Relatsioonilist andmeladu pole otstarbekas kasutada, kui GeoAnalyticsi tulemite arv suureneb. Sel juhul peaksite kasutama suurt ajalisruumilist andmeladu, mis v&otilde;imaldab hallata suurt andmemahtu.
             </p>
         </div>
     </div>
@@ -275,7 +280,7 @@
         <div><h2>Tulemkihi nimi</h2></div>
         <hr/>
         <div>
-            <p> See on selle kihi nimi, mis luuakse jaotises <b>Minu sisu</b> ja lisatakse kaardile.  Vaikimisi nimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui see kiht on juba olemas, siis t&ouml;&ouml;tlemine nurjub.
+            <p> Selle kihi nimi, mis luuakse jaotises <b>Minu sisu</b> ja lisatakse kaardile. Vaikimisi nimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui see kiht on juba olemas, siis t&ouml;&ouml;tlemine nurjub.
             </p>
             <p>Kasutades rippmen&uuml;&uuml;d  <b>Salvesta tulemused</b>, saate jaotises <b>Minu sisu</b> m&auml;&auml;rata selle kausta nime, kuhu tulemused salvestatakse.
             </p>

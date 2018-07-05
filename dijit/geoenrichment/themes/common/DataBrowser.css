@@ -992,6 +992,7 @@
         background: #7a7a7a;
     }
 
+.DataCollectionsPage_ContentPane_DataCollectionContainer,
 .DataCollectionsPage_DataCollectionContainer {
     min-height: 100px;
 }

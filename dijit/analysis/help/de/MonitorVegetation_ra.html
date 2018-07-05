@@ -60,7 +60,7 @@
         <div><h2>Methode zum Überwachen der Vegetation auswählen</h2></div>
         <hr/>
         <div>
-            <p>W&auml;hlen Sie die Methode zum Erstellen des Vegetationsindex-Layers aus. Die verschiedenen Vegetationsindizes k&ouml;nnen die Hervorhebung bestimmter Features oder die Reduzierung von Rauschen unterst&uuml;tzen.
+            <p>W&auml;hlen Sie die Methode zum Erstellen des Vegetationsindex-Layers aus. Mit den unterschiedlichen Vegetationsindizes k&ouml;nnen bestimmte Features hervorgehoben oder verschiedene Arten von Rauschen reduziert werden.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
@@ -76,7 +76,7 @@ MSAVI2 ist ein Vegetationsindex, der versucht, Helligkeitseinfl&uuml;sse des nac
 
                 </li>
                 <li>Normalized Difference Vegetation Index  &mdash; 
-NDVI ist ein standardisierter Index, der Ihnen das Erstellen eines Bildes mit Gr&uuml;nanteilen (relative Biomasse) erm&ouml;glicht. Dieser Index nutzt den Kontrast der Eigenschaften zweier B&auml;nder aus einem multispektralen Raster-Dataset; die Absorption durch die Chlorophyllpigmente im roten Band und den Pflanzen-Reflexionsgrad im infrarotnahen Band (NIR).
+NDVI ist ein standardisierter Index, der Ihnen das Erstellen eines Bildes mit Gr&uuml;nanteilen (relative Biomasse) erm&ouml;glicht. Dieser Index nutzt den Kontrast der Eigenschaften zweier B&auml;nder aus einem multispektralen Raster-Dataset: die Absorption durch die Chlorophyllpigmente im roten Band und den Pflanzen-Reflexionsgrad im nahinfraroten Band (NIR).
 
                 </li>
                 <li>Perpendicular Vegetation Index &mdash; 
@@ -88,7 +88,7 @@ SAVI ist ein Vegetationsindex, der versucht, Einfl&uuml;sse durch die Bodenhelli
 
                 </li>
                 <li>Sultan's Formula &mdash; 
-Die Sultan-Formel nimmt ein Sechsband-8-Bit-Bild und wendet einen bestimmten Algorithmus darauf an, um ein Dreiband-8-Bit-Bild zu erzeugen. Das sich ergebende Bild hebt Felsformationen, so genannte Ophiolite, an K&uuml;stenlinien hervor. Diese Formel wurde auf Grundlage der TM- und ETM-B&auml;nder einer Landsat 5- oder Landsat 7-Szene entworfen.
+Bei der Sultan-Formel wird ein bestimmter Algorithmus auf ein Sechsband-8-Bit-Bild angewendet, um ein Dreiband-8-Bit-Bild zu erzeugen. Das sich ergebende Bild hebt Felsformationen, so genannte Ophiolite, an K&uuml;stenlinien hervor. Diese Formel wurde auf Grundlage der TM- und ETM-B&auml;nder einer Landsat 5- oder Landsat 7-Szene entworfen.
 
                 </li>
                 <li>Transformed Soil-Adjusted Vegetation Index &mdash; 
@@ -102,9 +102,9 @@ Der Transformed-SAVI ist ein Vegetationsindex, der versucht, Bodenhelligkeitsein
         <div><h2>Index des NIR- und des roten Bands festlegen</h2></div>
         <hr/>
         <div>
-            <p>Geben Sie die Bandindizes f&uuml;r das infrarotnahe Band (NIR) und das rote Band ein.
+            <p>Geben Sie die Bandindizes f&uuml;r das NIR- und das rote Band ein.
             </p>
-            <p>Jeder Satellitensensor und jede Luftbildkamera erfasst Informationen, die in Bandindizes unterteilt sind. Jeder Bandindex enth&auml;lt die Informationen f&uuml;r einen bestimmten Teil des elektromagnetischen Spektrums. Diese Methode der Vegetations&uuml;berwachung erfordert die Festlegung des Bandindexes, der die NIR- und Rot-Wellenl&auml;ngen erfasst hat.
+            <p>Jeder Satellitensensor und jede Luftbildkamera erfasst Informationen, die in Bandindizes unterteilt sind. Jeder Bandindex enth&auml;lt die Informationen f&uuml;r einen bestimmten Teil des elektromagnetischen Spektrums. F&uuml;r diese Methode zur &Uuml;berwachung der Vegetation ist es erforderlich, den Bandindex anzugeben, der die NIR- und die roten Wellenl&auml;ngen erfasst hat.
             </p>
         </div>
     </div>
@@ -114,7 +114,7 @@ Der Transformed-SAVI ist ein Vegetationsindex, der versucht, Bodenhelligkeitsein
         <div>
             <p>Die Neigung der Bodenlinie. Die Neigung ist die ungef&auml;hre lineare Beziehung zwischen NIR- und Rot-B&auml;ndern in einem Scatterplot.
             </p>
-            <p>Dieser Parameter ist nur f&uuml;r den Transformed Soil-Adjusted Vegetation Index g&uuml;ltig.
+            <p>Dieser Parameter ist nur f&uuml;r die Methode &quot;Transformed Soil-Adjusted Vegetation Index&quot; g&uuml;ltig.
             </p>
         </div>
     </div>
@@ -122,11 +122,11 @@ Der Transformed-SAVI ist ein Vegetationsindex, der versucht, Bodenhelligkeitsein
         <div><h2>Intercept</h2></div>
         <hr/>
         <div>
-            <p>Dies ist der infrarotnahe (NIR) Wert, wenn der Reflexionswert des roten (Rot) Bandes f&uuml;r die speziellen Bodenlinien 0 ist.
+            <p>Dies ist der NIR-Wert, wenn der Reflexionswert des roten (Rot) Bandes f&uuml;r die speziellen Bodenlinien 0 ist.
             </p>
             <p> <code>(a = NIR - sRed)</code> , wenn Rot 0 betr&auml;gt.
             </p> 
-            <p>Diese Parameter ist nur f&uuml;r den Transformed Soil-Adjusted Vegetation Index g&uuml;ltig.
+            <p>Dieser Parameter ist nur f&uuml;r die Methode &quot;Transformed Soil-Adjusted Vegetation Index&quot; g&uuml;ltig.
             </p>
         </div>
     </div>
@@ -134,20 +134,20 @@ Der Transformed-SAVI ist ein Vegetationsindex, der versucht, Bodenhelligkeitsein
         <div><h2>Grüne vegetative Bodenbedeckung</h2></div>
         <hr/>
         <div>
-            <p>Bei der SAVI-Methode muss der Anteil der vegetativen Bodenbedeckung angegeben werden.
+            <p>Gibt den Anteil der gr&uuml;nen Vegetations-Bodendeckung an, der f&uuml;r die SAVI-Methode erforderlich ist.
             </p>
-            <p>Geben Sie einen Wert zwischen 0,0 und 1,0 ein, wobei Folgendes gilt: 
+            <p>Zul&auml;ssige Werte: 
 
                 <ul>
-                    <li>1 = Fl&auml;chen ohne vegetative Abdeckung
+                    <li>1 = Fl&auml;chen ohne gr&uuml;ne Vegetations-Bodendeckung
                         
  
                     </li>
-                    <li>0,5 = Fl&auml;chen mit gem&auml;&szlig;igter vegetativer Abdeckung
+                    <li>0.5 = Fl&auml;chen mit m&auml;&szlig;iger gr&uuml;ner Vegetations-Bodendeckung
                         
  
                     </li>
-                    <li>0 = Fl&auml;chen mit hoher vegetativer Abdeckung
+                    <li>0 = Fl&auml;chen mit hoher gr&uuml;ner Vegetations-Bodendeckung
                         
 
                     </li>
@@ -160,9 +160,9 @@ Der Transformed-SAVI ist ein Vegetationsindex, der versucht, Bodenhelligkeitsein
         <div><h2>Anpassungsfaktor</h2></div>
         <hr/>
         <div>
-            <p>Bei der Methode &quot;Transformed Soil-Adjusted Vegetation Index&quot; muss der Anpassungsfaktor festgelegt werden, um die Auswirkungen des Erdbodens zu minimieren. Der Standardwert ist 0.08.
+            <p>Gibt den Anpassungsfaktor zur Minimierung der Auswirkungen des Bodens an, der f&uuml;r die Methode &quot;Transformed Soil-Adjusted Vegetation Index&quot; erforderlich ist. Der Standardwert ist 0.08.
             </p>
-            <p>Ein niedrigerer Wert bedeutet, dass die Auswirkungen des Erdbodens ignoriert werden. Ein hoher Wert bedeutet, dass der Erdboden Auswirkungen auf das Ergebnis hat.
+            <p>Ein niedriger Wert bedeutet, dass die Auswirkungen des Bodens ignoriert werden. Ein hoher Wert bedeutet, dass das Ergebnis durch die Bodenbeschaffenheit beeinflusst wird.
             </p>
         </div>
     </div>

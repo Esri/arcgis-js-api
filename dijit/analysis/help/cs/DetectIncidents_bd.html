@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Detekovat události</h2><p/>
+        <h2>Detekovat události (Detect Incidents)</h2><p/>
         <h2><img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Detekovat ud&aacute;losti"></h2>
         <hr/>
     <p>Tento n&aacute;stroj pracuje s&nbsp;časovou vrstvou bodů, lini&iacute;, ploch nebo tabulek, kter&aacute; představuje okamžik v čase. Tento n&aacute;stroj použ&iacute;v&aacute; sekvenčně uspoř&aacute;dan&eacute; prvky, zvan&eacute; stopy, a určuje, kter&eacute; prvky jsou ud&aacute;losti, jež jsou předmětem z&aacute;jmu. Ud&aacute;losti jsou určeny podm&iacute;nkami, kter&eacute; specifikujete. 
@@ -50,7 +50,7 @@
     </p>
     <p>Předpokl&aacute;dejme např&iacute;klad, že každ&yacute;ch 10 minut m&aacute;te GPS měřen&iacute; hurik&aacute;nů. Každ&eacute; GPS měřen&iacute; zaznamen&aacute;v&aacute; n&aacute;zev a um&iacute;stěn&iacute; hurik&aacute;nu, čas z&aacute;znamu a rychlost větru. S použit&iacute;m těchto pol&iacute; byste mohli vytvořit ud&aacute;lost, kde jak&eacute;koliv měřen&iacute; při rychlosti větru vy&scaron;&scaron;&iacute; než 208 km/h je ud&aacute;lost označen&aacute; jako  <code>Katastrofick&aacute;</code>. Pokud byste nenastavili konečnou podm&iacute;nku, pak by ud&aacute;lost skončila, když by tento prvek již nesplňoval poč&aacute;tečn&iacute; podm&iacute;nku (rychlost větru by poklesla pod 208).
     </p>
-    <p>Dal&scaron;&iacute; př&iacute;klad, předpokl&aacute;dejme, že monitorujete koncentraci nějak&eacute; chemik&aacute;lie v m&iacute;stn&iacute; dod&aacute;vce vody s použit&iacute;m pole nazvan&eacute;ho  <code>Uroven_znecisteni</code>. V&iacute;te, že doporučen&aacute; &uacute;roveň je m&eacute;ně než 0,01 mg/L a nebezpečn&eacute; &uacute;rovně jsou nad 0,03 mg/L. Pro detekov&aacute;n&iacute; ud&aacute;lost&iacute;, kde hodnota vy&scaron;&scaron;&iacute; než 0,03 mg/L je ud&aacute;lost&iacute;, a zůst&aacute;v&aacute; ud&aacute;lost&iacute;, dokud se &uacute;roveň zneči&scaron;těn&iacute; nevr&aacute;t&iacute; do norm&aacute;lu, vytvoř&iacute;te ud&aacute;lost s použit&iacute;m poč&aacute;tečn&iacute; podm&iacute;nky <code>Uroven_znecisteni &gt; 0,03</code> a konečn&eacute; podm&iacute;nky <code>Uroven_znecisteni &lt; 0,01</code>. T&iacute;m dojde k označen&iacute; jak&eacute;koliv n&aacute;sledn&eacute; ud&aacute;losti, kdy hodnoty překroč&iacute; 0,03 mg/L, dokud se nevr&aacute;t&iacute; zpět na hodnotu men&scaron;&iacute; než 0,01.
+    <p>V dal&scaron;&iacute;m př&iacute;padě předpokl&aacute;dejme, že monitorujete koncentraci určit&eacute; chemick&eacute; l&aacute;tky v m&iacute;stn&iacute;ch z&aacute;sob&aacute;ch vody za použit&iacute; pole nazvan&eacute;ho  <code>Uroven_znecisteni</code>. V&iacute;te, že doporučen&aacute; &uacute;roveň je m&eacute;ně než 0,01 mg/L a nebezpečn&eacute; &uacute;rovně jsou nad 0,03 mg/L. Pro detekov&aacute;n&iacute; ud&aacute;lost&iacute;, kde hodnota vy&scaron;&scaron;&iacute; než 0,03 mg/L je ud&aacute;lost&iacute;, a zůst&aacute;v&aacute; ud&aacute;lost&iacute;, dokud se &uacute;roveň zneči&scaron;těn&iacute; nevr&aacute;t&iacute; do norm&aacute;lu, vytvoř&iacute;te ud&aacute;lost s použit&iacute;m poč&aacute;tečn&iacute; podm&iacute;nky <code>Uroven_znecisteni &gt; 0,03</code> a konečn&eacute; podm&iacute;nky <code>Uroven_znecisteni &lt; 0,01</code>. T&iacute;m dojde k označen&iacute; jak&eacute;koliv n&aacute;sledn&eacute; ud&aacute;losti, kdy hodnoty překroč&iacute; 0,03 mg/L, dokud se nevr&aacute;t&iacute; zpět na hodnotu men&scaron;&iacute; než 0,01.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -68,7 +68,7 @@
         <div><h2>Zvolte jedno nebo více polí k identifikaci stop</h2></div>
         <hr/>
         <div>
-            <p> Pole, kter&aacute; představuj&iacute; identifik&aacute;tor stop. Pro vyj&aacute;dřen&iacute; jedinečn&yacute;ch hodnot stop můžete použ&iacute;t jedno pole nebo v&iacute;ce pol&iacute;.
+            <p>Pole, kter&aacute; představuj&iacute; identifik&aacute;tor stopy. Pro vyj&aacute;dřen&iacute; jedinečn&yacute;ch hodnot stop můžete použ&iacute;t jedno pole nebo v&iacute;ce pol&iacute;.
             </p>
             <p>Př&iacute;klad: Pokud byste rekonstruovali stopy hurik&aacute;nů, mohli byste jako pole stop použ&iacute;t n&aacute;zev hurik&aacute;nu.
             </p>
@@ -82,6 +82,8 @@
             </p>
             <p>Např&iacute;klad, chcete b&yacute;t upozorněni, když součet pol&iacute;  <code>koncentrace_1</code> a <code>koncentrace_2</code> je vy&scaron;&scaron;&iacute; než <code>koncentrace_3</code>.   K tomu použijte podm&iacute;nku <code>($feature[&quot;koncentrace_1&quot;] +  $feature[&quot;koncentrace_2&quot;]) &gt; $feature[&quot;koncentrace_3&quot;])</code>.
             </p>
+            <p>Pokud by v&aacute;s zaj&iacute;malo, jak se koncentrace měnily v čase, a chtěli b&yacute;t upozorněni, jakmile bude  <code>concentration_1</code> vy&scaron;&scaron;&iacute; než přede&scaron;l&eacute; dvě měřen&iacute; <code>concentration_2</code>, můžete použ&iacute;t v&yacute;raz jako <code>$feature[&quot;concentration_1&quot;] &gt;   $track.field[&quot;concentration_2&quot;].history(-3,-1)</code>.
+            </p>
         </div>
     </div>
     <div id="endConditionExpression">
@@ -91,6 +93,8 @@
             <p>Volitelně přidejte podm&iacute;nku, s použit&iacute;m n&aacute;stroje pro sestaven&iacute; v&yacute;razů, k určen&iacute; konce ud&aacute;losti. Jestliže je v&aacute;mi specifikovan&aacute; konečn&aacute; podm&iacute;nka pravdiv&aacute;, prvek už nen&iacute; ud&aacute;lost&iacute;. Pokud nespecifikujete konečnou podm&iacute;nku, ud&aacute;lost skonč&iacute;, když poč&aacute;tečn&iacute; podm&iacute;nka už nebude pravdiv&aacute;.    
             </p>
             <p>Předpokl&aacute;dejme např&iacute;klad, že chcete b&yacute;t upozorněni, když součet pol&iacute;  <code>koncentrace_1</code> a <code>koncentrace_2</code> je vy&scaron;&scaron;&iacute; než <code>koncentrace_3</code>, a chcete, aby ud&aacute;lost skončila, když <code>koncentrace_4</code> je men&scaron;&iacute; než <code>koncentrace_1</code>. K tomu použijte poč&aacute;tečn&iacute; podm&iacute;nku <code>($feature[&quot;koncentrace_1&quot;] +  $feature[&quot;koncentrace_2&quot;]) &gt; ($join[&quot;prijem&quot;] * .20)</code> a konečnou podm&iacute;nku <code>($feature[&quot;koncentrace_4&quot;] &lt; $feature[&quot;koncentrace_1&quot;])</code>.
+            </p>
+            <p>Pokud byste chtěli, aby incident skončil, když je středn&iacute; hodnota  <code>concentration_1</code> a přede&scaron;l&aacute; čtyři měřen&iacute; vy&scaron;&scaron;&iacute; než prvn&iacute; měřen&iacute;, můžete použ&iacute;t v&yacute;raz jako <code>$track.field[&quot;concentration_1&quot;].history(-5) &gt; $track.field[&quot;concentration_1&quot;].history(0)</code>.
             </p>
         </div>
     </div>
@@ -113,7 +117,7 @@
         <div><h2>Název výsledné vrstvy</h2></div>
         <hr/>
         <div>
-            <p> Toto je n&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce <b>Můj obsah</b> a přid&aacute; do mapy.  V&yacute;choz&iacute; n&aacute;zev se ř&iacute;d&iacute; n&aacute;zvem n&aacute;stroje a n&aacute;zvem vstupn&iacute; vrstvy. Pokud vrstva již existuje, n&aacute;stroj selže.
+            <p> N&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce <b>Můj obsah</b> a přid&aacute; se do mapy. V&yacute;choz&iacute; n&aacute;zev se ř&iacute;d&iacute; n&aacute;zvem n&aacute;stroje a n&aacute;zvem vstupn&iacute; vrstvy. Pokud vrstva již existuje, n&aacute;stroj selže.
             </p>
             <p>V&nbsp;rozbalovac&iacute;m seznamu  <b>Uložit v&yacute;sledek do</b> můžete zadat n&aacute;zev složky ve složce <b>Můj obsah</b>, do kter&eacute; se m&aacute; v&yacute;sledek uložit.
             </p>

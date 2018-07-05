@@ -46,7 +46,7 @@
         <hr/>
     <p>Cet outil vous permet de modifier ou de reclasser les valeurs de pixel des donn&eacute;es raster. Les valeurs de pixel sont r&eacute;appari&eacute;es en sp&eacute;cifiant une plage de valeurs de pixel &agrave; apparier &agrave; une valeur de pixel en sortie. La valeur de pixel en sortie peut &ecirc;tre une valeur valide ou une valeur NoData, c'est-&agrave;-dire des pixels auxquels aucune valeur connue n'est associ&eacute;e.
     </p>
-    <p>Si l'option  <b>Utiliser l'&eacute;tendue actuelle de la carte</b> est s&eacute;lectionn&eacute;e, seules ces cellules visibles au sein de l'&eacute;tendue actuelle de la carte seront r&eacute;appari&eacute;es. Si l'option n'est pas s&eacute;lectionn&eacute;e, toutes les cellules du raster sont trait&eacute;es, m&ecirc;me si elles se trouvent en dehors de l'&eacute;tendue actuelle de la carte.
+    <p>Si l&rsquo;option  <b>Use current map extent (Utiliser l&rsquo;&eacute;tendue actuelle de la carte)</b> est s&eacute;lectionn&eacute;e, seules ces cellules visibles au sein de l&rsquo;&eacute;tendue actuelle de la carte seront r&eacute;appari&eacute;es. Si l'option n'est pas s&eacute;lectionn&eacute;e, toutes les cellules du raster sont trait&eacute;es, m&ecirc;me si elles se trouvent en dehors de l'&eacute;tendue actuelle de la carte.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -119,7 +119,9 @@
                 </td>
             </tr>
             </table>
-            <p>L'ordre des plages sp&eacute;cifi&eacute; dans la table est &eacute;galement important. La ligne sup&eacute;rieure de la table est trait&eacute;e en premier, puis la ligne suivante est trait&eacute;e. Les deux tables ci-dessous montrent comment les m&ecirc;mes plages de valeurs g&eacute;n&egrave;rent des r&eacute;sultats diff&eacute;rents, selon l'ordre des lignes des tables. 
+            <p>L'ordre des plages sp&eacute;cifi&eacute; dans la table est &eacute;galement important. La ligne sup&eacute;rieure de la table est trait&eacute;e en premier, puis la ligne suivante est trait&eacute;e. Les deux tables ci-dessous montrent comment les m&ecirc;mes plages de valeurs g&eacute;n&egrave;rent des r&eacute;sultats diff&eacute;rents, selon l'ordre des lignes des tables.
+            </p> 
+            <p>La table ci-dessous indique la valeur en sortie lorsque la premi&egrave;re colonne est class&eacute;e dans l&rsquo;ordre num&eacute;rique&nbsp;:
             </p>
             <table border="1">
             <tr>
@@ -165,6 +167,8 @@
                 </td>
             </tr>
             </table>
+            <p>La table ci-dessous montre qu&rsquo;un classement diff&eacute;rent des lignes influe sur les valeurs produites en sortie.
+            </p> 
             <table border="1">
             <tr>
                 <td>
@@ -214,12 +218,12 @@
         </div>
     </div>
     <div id="OutputLayer">
-        <div><h2>Nom de la couche résultat</h2></div>
+        <div><h2>Nom de la couche de résultat</h2></div>
         <hr/>
         <div>
             <p>Le nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>Mon contenu</b> et ajout&eacute;e &agrave; la carte. Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom.
             </p>
-            <p>La zone de liste d&eacute;roulante  <b>Enregistrer le r&eacute;sultat dans</b> vous permet de sp&eacute;cifier le nom d'un dossier dans <b>Mon contenu</b> o&ugrave; le r&eacute;sultat sera enregistr&eacute;.
+            <p>La zone de liste d&eacute;roulante  <b>Save result in (Enregistrer le r&eacute;sultat dans)</b> vous permet de sp&eacute;cifier le nom d&rsquo;un dossier dans <b>My content (Mon contenu)</b> o&ugrave; le r&eacute;sultat sera enregistr&eacute;.
             </p>
         </div>
     </div>

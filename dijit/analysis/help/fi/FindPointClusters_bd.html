@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Etsi pisteklustereita</h2><p/>
+        <h2><img src="../images/GUID-40DA7286-67EA-4333-91C5-4CD527C21B4A-web.png" alt="Etsi pisteklustereita"></h2>
+        <hr/>
+    <p> Etsi pisteklustereita -ty&ouml;kalu etsii pistekohdeklustereita ymp&auml;r&ouml;iv&auml;st&auml; kohinasta sijainnin jakauman perusteella.
+    </p>
+    <p>Er&auml;s kansalaisj&auml;rjest&ouml; tutkii tietty&auml; tuhoel&auml;inten aiheuttamaa sairautta. Siin&auml; on pisteaineistoryhm&auml;, joka edustaa tutkittavan alueen kotitalouksia. Osassa n&auml;ist&auml; on tuhoel&auml;imi&auml;.   Etsi pisteklustereita -ty&ouml;kalun avulla analysoija voi m&auml;&auml;ritt&auml;&auml; tuhoel&auml;inten valtaaman kotitalousklusterin kyseisen alueen paikantamiseksi, jotta tuhoel&auml;inten torjunta voidaan aloittaa.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Valitse karttataso, jolle klusterit etsitään</h2></div>
+        <hr/>
+        <div>
+            <p>Pistekarttataso, miss&auml; klusterit ovat. Karttatasojen on oltava projisoidussa koordinaattij&auml;rjestelm&auml;ss&auml;, tai k&auml;sittelev&auml; koordinaatisto on m&auml;&auml;ritett&auml;v&auml; projisoituun koordinaattij&auml;rjestelm&auml;&auml;n k&auml;ytt&auml;m&auml;ll&auml;  <b>analyysiymp&auml;rist&ouml;j&auml;</b>.
+            </p>
+            <p>Sen lis&auml;ksi, ett&auml; voit valita karttatason kartasta, voit valita  <b>Selaa karttatasoja</b> -vaihtoehdon avattavan luettelon alareunasta ja selata Big Data -tiedostoresurssin aineistoryhm&auml;n tai karttatason sis&auml;lt&ouml;&ouml;n.
+            </p>
+        </div>
+    </div>
+    <div id="minFeaturesCluster">
+        <div><h2>Klusteriksi laskettavien pisteiden minimimäärä</h2></div>
+        <hr/>
+        <div>
+            <p>Klusteriksi m&auml;&auml;ritett&auml;vien kohteiden minimim&auml;&auml;r&auml;
+            </p>
+        </div>
+    </div>
+    <div id="searchDistance">
+        <div><h2>Rajoita hakualue arvoon</h2></div>
+        <hr/>
+        <div>
+            <p>Enimm&auml;iset&auml;isyys, joka kattaa samaan klusteriin kuuluvat kohteet.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Tulostason nimi</h2></div>
+        <hr/>
+        <div>
+            <p> Sen karttatason nimi, joka luodaan <b>Oma sis&auml;lt&ouml;-kohtaan</b> ja lis&auml;t&auml;&auml;n karttaan. Oletusnimi perustuu ty&ouml;kalun nimeen ja l&auml;ht&ouml;karttatason nimeen. Jos karttataso on jo olemassa, ty&ouml;kalua ei voi suorittaa.
+            </p>
+            <p>Avattavan  <b>Tallenna tulos kohteeseen</b> -valikon avulla voit m&auml;&auml;ritt&auml;&auml; sen <b>Oma sis&auml;lt&ouml;</b> -kansion nimen, johon tulos tallennetaan.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
 define(["dojo/json","dojo/text!./symbol.json","esri/symbols/SimpleLineSymbol","esri/symbols/SimpleFillSymbol","esri/symbols/jsonUtils","esri/Color"],function(o,e,n,l,s,i){var S=o.parse(e),m={};return m.pointSymbol=s.fromJson(S.pointSymbol),m.lineSymbol=new n(n.STYLE_SOLID,new i([0,69,117]),2),m.polygonSymbol=new l(l.STYLE_SOLID,new n(n.STYLE_SOLID,new i([110,110,110]),1),new i([0,100,255,.6])),m});

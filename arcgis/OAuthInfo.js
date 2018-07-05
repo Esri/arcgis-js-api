@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
 define(["../kernel","../lang","dojo/_base/declare","dojo/_base/lang","dojo/has"],function(i,t,o,a,e){var n=o(null,{declaredClass:"esri.arcgis.OAuthInfo",constructor:function(i){var t={expiration:20160,minTimeUntilExpiration:30,portalUrl:"https://www.arcgis.com",authNamespace:"/",forceLogin:!1,popup:!1,popupCallbackUrl:"oauth-callback.html",popupWindowFeatures:"height=490,width=800,resizable,scrollbars,status"};a.mixin(this,t,i)},_oAuthCred:null,toJson:function(){return t.fixJson({appId:this.appId,expiration:this.expiration,locale:this.locale,minTimeUntilExpiration:this.minTimeUntilExpiration,portalUrl:this.portalUrl,authNamespace:this.authNamespace,forceLogin:this.forceLogin,popup:this.popup,popupCallbackUrl:this.popupCallbackUrl,popupWindowFeatures:this.popupWindowFeatures})},clone:function(){return new n(this.toJson())}});return e("extend-esri")&&a.setObject("arcgis.OAuthInfo",n,i),n});

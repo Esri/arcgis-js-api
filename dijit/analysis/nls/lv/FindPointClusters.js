@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
-define({clustersLabel:"Atrodiet slāņa ${inputLayerName} klasterus.",chooseLayerLabel:"Izvēlēties slāni, kuram tiks atrasti klasteri",minClusterPtsLabel:"Minimālais punktu skaits, kas uzskatāms par klasteri",limitSearchLabel:"Ierobežojiet meklēšanas diapazonu līdz (pēc izvēles)",limitSearchReqLabel:"Limit the search range to",outputLayerName:"Atrast slāņa ${inputLayerName} klasterus",itemDescription:"Elementu slānis, kas ģenerēts, palaižot risinājumu Atrast punktu klasterus slānim ${inputLayername}.",itemTags:"Analīzes rezultāts, Atrast punktu klasterus, ${analysisLayerName}",itemSnippet:"Elementu slānis ir ģenerēts, izmantojot Atrast punktu klasterus"});
+define({clustersLabel:"Atrodiet slāņa ${inputLayerName} klasterus.",chooseLayerLabel:"Izvēlēties slāni, kuram tiks atrasti klasteri",minClusterPtsLabel:"Minimālais punktu skaits, kas uzskatāms par klasteri",limitSearchLabel:"Ierobežojiet meklēšanas diapazonu līdz (pēc izvēles)",limitSearchReqLabel:"Ierobežojiet meklēšanas diapazonu līdz",outputLayerName:"Atrast slāņa ${inputLayerName} klasterus",itemDescription:"Elementu slānis, kas ģenerēts, palaižot risinājumu Atrast punktu klasterus slānim ${inputLayerName}.",itemTags:"Analīzes rezultāts, Atrast punktu klasterus, ${inputLayerName}",itemSnippet:"Elementu slānis ir ģenerēts, izmantojot Atrast punktu klasterus"});

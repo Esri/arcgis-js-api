@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
-define({inputLayerLabel:"Izaberite sloj kojem ćete priložiti",inputWarningLabel:"Upozorenje: sloj na koji pridodajte bit će izmijenjen.",inputHostedLayerWarning:"The selected layer was not a hosted feature layer. Please select a hosted feature layer to append to.",appendLayerLabel:"Izaberite sloj koji ćete priložiti",filterLabel:"Priložite sve geoobjekte ili definirajte podskup (neobavezno)",fieldMappingLabel:"Izaberite kako priložiti polja (neobavezno)",inputField:"Ulazno polje",appendValue:"Prilaganje vrijednosti",expression:"Izraz"});
+define({inputLayerLabel:"Izaberite sloj kojem ćete priložiti",inputWarningLabel:"Upozorenje: sloj na koji pridodajte bit će izmijenjen.",inputHostedLayerWarning:"Odabrani sloj nije hostirani sloj geoobjekata. Odaberite hostirani sloj geoobjekata za prilaganje.",appendLayerLabel:"Izaberite sloj koji ćete priložiti",filterLabel:"Priložite sve geoobjekte ili definirajte podskup (neobavezno)",fieldMappingLabel:"Izaberite kako priložiti polja (neobavezno)",inputField:"Ulazno polje",appendValue:"Prilaganje vrijednosti",expression:"Izraz"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
-define({inputLayerLabel:"Valitse karttataso, johon liitetään",inputWarningLabel:"Varoitus: karttatasoa, johon liität, muokataan.",inputHostedLayerWarning:"The selected layer was not a hosted feature layer. Please select a hosted feature layer to append to.",appendLayerLabel:"Valitse liitettävä karttataso",filterLabel:"Liitä kaikki kohteet tai määritä alijoukko (valinnainen)",fieldMappingLabel:"Valitse, miten kentät liitetään (valinnainen)",inputField:"Lähtökenttä",appendValue:"Liitä arvo",expression:"Lauseke"});
+define({inputLayerLabel:"Valitse karttataso, johon liitetään",inputWarningLabel:"Varoitus: karttatasoa, johon liität, muokataan.",inputHostedLayerWarning:"Valittu karttataso ei ole isännöity kohdekarttataso. Valitse isännöity kohdekarttataso, johon liitetään.",appendLayerLabel:"Valitse liitettävä karttataso",filterLabel:"Liitä kaikki kohteet tai määritä alijoukko (valinnainen)",fieldMappingLabel:"Valitse, miten kentät liitetään (valinnainen)",inputField:"Lähtökenttä",appendValue:"Liitä arvo",expression:"Lauseke"});

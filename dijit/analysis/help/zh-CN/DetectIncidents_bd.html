@@ -44,13 +44,13 @@
         <h2>检测事件</h2><p/>
         <h2><img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="检测事件"></h2>
         <hr/>
-    <p>此工具使用启用时间的点、线、面图层或表，且将时间表示为时刻。通过按顺序排列的要素（称为轨迹），该工具可确定哪些要素是感兴趣的事件。事件由您指定的条件确定。
+    <p>此工具使用点、线、面或表的启用了时间的图层，该图层在时间上可表示时刻。通过按顺序排列的要素（称为轨迹），该工具可确定哪些要素是感兴趣的事件。事件由您指定的条件确定。
     </p>
     <p>首先，工具通过一个或多个字段来确定属于轨迹的要素。通过每个要素处的时间，按顺序排列轨迹并应用事件条件。符合开始事件条件的要素被标记为事件。您可以选择应用结束事件条件；当结束条件为 true 时，该要素将不再为事件。结果将返回原始要素（具有表示事件名称的新列），并指示符合事件条件的要素。可以返回所有原始要素，或仅返回事件要素。
     </p>
     <p>例如，假设您拥有每隔 10 分钟的飓风 GPS 测量。每个 GPS 测量记录了飓风的名称、位置、记录时间和风速。通过这些字段，您可以创建一个事件，其中所有风速超过 208 km/h 的测量结果将标记为  <code>Catastrophic</code> 事件。在未设置结束条件的情况下，如果要素不再满足开始条件（风速减慢，直到低于 208 km/h），则事件结束。
     </p>
-    <p>再举一个例子，假设您正在使用名为  <code>contanimateLevel</code> 的字段来监控本地供水中某种化学物质的浓度。已知建议水平为 0.01 mg/L 以下，危险水平为 0.03 mg/L 以上。要检测值高于 0.03 mg/L 的事件，并且在污染水平恢复正常之前保持该事件，可以使用开始条件 <code>contanimateLevel &gt; 0.03</code> 和结束条件 <code>contanimateLevel &lt; 0.01</code> 创建事件。这将标记值超过 0.03 mg/L 的所有序列，直到其恢复为小于 0.01 的值。
+    <p>再举一例，假设您正在使用名为  <code>contaminateLevel</code> 的字段来监控本地供水中某种化学物质的浓度。已知建议水平为 0.01 mg/L 以下，危险水平为 0.03 mg/L 以上。要检测值高于 0.03 mg/L 的事件，并且在污染水平恢复正常之前保持该事件，可使用开始条件 <code>contaminateLevel &gt; 0.03</code> 和结束条件 <code>contaminateLevel &lt; 0.01</code> 创建事件。这将标记值超过 0.03 mg/L 的所有序列，直到其恢复为小于 0.01 的值。
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -68,7 +68,7 @@
         <div><h2>选择用于标识轨迹的一个或多个字段</h2></div>
         <hr/>
         <div>
-            <p> 表示轨迹标识符的字段。可以使用一个或多个字段来表示轨迹的唯一值。
+            <p>表示轨迹标识符的字段。可以使用一个或多个字段来表示轨迹的唯一值。
             </p>
             <p>例如，如果要重新构建飓风的轨迹，则可以使用飓风名称作为轨迹字段。
             </p>
@@ -82,6 +82,8 @@
             </p>
             <p>例如，假设您希望在字段  <code>concentration_1</code> 和 <code>concentration_2</code> 的总和大于 <code>concentration_3</code> 时收到警报。为此，请应用条件 <code>($feature[&quot;concentration_1&quot;] +  $feature[&quot;concentration_2&quot;]) &gt; $feature[&quot;concentration_3&quot;])</code>。
             </p>
+            <p>如果您对浓度如何随时间变化感兴趣，并且希望在当前  <code>concentration_1</code> 大于 <code>concentration_2</code> 的之前两个测量值时收到警报，可使用类似 <code>$feature[&quot;concentration_1&quot;] &gt;   $track.field[&quot;concentration_2&quot;].history(-3,-1)</code> 的表达式。
+            </p>
         </div>
     </div>
     <div id="endConditionExpression">
@@ -91,6 +93,8 @@
             <p>可以选择使用表达式构建器来添加条件以确定事件结束。如果您指定的结束条件为 true，则该要素不再为事件。如果未指定结束条件，则开始条件不再为 true 时，事件将结束。
             </p>
             <p>例如，假设您希望在字段  <code>concentration_1</code> 和 <code>concentration_2</code> 的总和大于 <code>concentration_3</code> 时收到警报，并在 <code>concentration_4</code> 小于 <code>concentration_1</code> 时结束事件。为此，请应用开始条件 <code>($feature[&quot;concentration_1&quot;] +  $feature[&quot;concentration_2&quot;]) &gt; ($join[&quot;income&quot;] * .20)</code> 和结束条件 <code>($feature[&quot;concentration_4&quot;] &lt; $feature[&quot;concentration_1&quot;])</code>。
+            </p>
+            <p>如果您希望在当前  <code>concentration_1</code> 和之前四个测量值的平均值大于第一个测量值时结束事件，可使用类似 <code>$track.field[&quot;concentration_1&quot;].history(-5) &gt; $track.field[&quot;concentration_1&quot;].history(0)</code> 的表达式。
             </p>
         </div>
     </div>
@@ -113,7 +117,7 @@
         <div><h2>结果图层名称</h2></div>
         <hr/>
         <div>
-            <p> 在 <b>我的内容</b>中创建并添加到地图中的图层的名称。默认名称基于工具名称以及输入图层名称。如果该图层已存在，将无法使用该工具。
+            <p> 将在 <b>我的内容</b>中创建并添加到地图中的图层的名称。默认名称基于工具名称以及输入图层名称。如果该图层已存在，将无法使用该工具。
             </p>
             <p>使用 <b>将结果保存在</b>下拉框，可以指定 <b>我的内容</b>中的文件夹的名称，结果将保存到该文件夹中。
             </p>

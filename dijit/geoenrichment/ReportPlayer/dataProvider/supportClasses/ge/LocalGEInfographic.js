@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","./LocalGEBase","esri/dijit/geoenrichment/ReportPlayer/core/infographics/InfographicTypes"],function(e,a,i){return e(a,{_fieldNameToFieldInfoCache:null,_variableIdToFieldInfoCache:null,constructor:function(e,a){this._fieldNameToFieldInfoCache={},this._variableIdToFieldInfoCache={},e.fieldInfos.forEach(function(e){this._fieldNameToFieldInfoCache[e.name]=e,this._variableIdToFieldInfoCache[e.variableID]=e},this),this._initGE(e.calcData.variables,a,e.calcData.calculatorName)},_propulateAttributesFromAreaData:function(e,a){for(var i in a){var o=this._fieldNameToFieldInfoCache[i];o?e[o.variableID]=a[i]:e[i]=a[i]}},_createField:function(e,a){var i=this.inherited(arguments),o=this._variableIdToFieldInfoCache[e];return o&&(i.alias=o.alias,i.decimals=o.decimals,i.units=o.showPercent?"pct":o.showCurrency?"currency":i.units,i.type=o.type||i.type),i}})});

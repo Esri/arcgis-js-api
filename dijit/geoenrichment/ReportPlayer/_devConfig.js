@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
-define([],function(){return{showAreaDataUtilUndefinedData:!1,createPlayerCommand:{saveDataJsonAsTextFile:!1},createPDFCommand:{removeUnicodeChars:!1},preview:{bigValues:!1},charts:{showStatisticsInTooltips:!1},emulateErrors:{playerError:!1,contentErrors:!1,themeParseError:!1,metadataParseError:!1,layoutParseError:!1,reportContainerRenderError:!1,areaDataUtilUndefinedData:!1}}});
+define([],function(){var r="https://laci2.esri.com/jenkins/job/report-player-jsapi-pr/lastSuccessfulBuild/artifact/build/report-player/release";return{showAreaDataUtilUndefinedData:!1,createPlayerCommand:{saveDataJsonAsTextFile:!1,useTestBuild:!1,configUrl:r+"/reportPlayer/config.js",baseUrl:r,mainUrl:r+"/reportPlayer/main.js",esriDijitCssUrl:"https://js.arcgis.com/3.24/dijit/themes/claro/claro.css",esriCssUrl:r+"/reportPlayer/esri.css"},createPDFCommand:{removeUnicodeChars:!1},preview:{bigValues:!1},charts:{showStatisticsInTooltips:!1},emulateErrors:{playerError:!1,contentErrors:!1,themeParseError:!1,metadataParseError:!1,layoutParseError:!1,reportContainerRenderError:!1,areaDataUtilUndefinedData:!1}}});

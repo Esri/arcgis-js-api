@@ -44,7 +44,7 @@
         <h2>Atkurti trajektorijas</h2><p/>
         <h2><img src="../images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Atkurti trajektorijas"></h2>
         <hr/>
-    <p>&Scaron;is įrankis veikia kartu su ta&scaron;kiniu arba plotiniu elementų sluoksniu, kuriuose įgalintos laiko žymos, nurodančios konkretų laiko  <code>momentą</code>.   Pirmiausia įrankis pagal identifikatorių nustato, kurie elementai priklauso trajektorijai. Pagal kiekvienos vietos laiką trajektorijos dalys i&scaron;dėstomos nuosekliai, o pati trajektorija i&scaron;rei&scaron;kiama linija arba plotu, parodančiu judėjimo laike kelią. Pasirinktinai įvesties duomenis galima buferizuoti įtraukiant lauką, kuris sukurs plotą aplink kiekvieną vietą. Tada &scaron;ie buferizuoti ta&scaron;kai (arba plotai) nuosekliai sujungiami, kad sukurtų plotinę trajektoriją, kurios plotis nurodo dominantį atributą. Gautos trajektorijos turi pradžios ir pabaigos laiką, kuris laikinai nurodo pirmąjį ir paskutinįjį duotosios trajektorijos elementą. Sukūrus trajektorijas, apskaičiuojama įvesties elementų statistika, kuri priskiriama i&scaron;vesties trajektorijai. Pats paprasčiausias apskaičiuojamas statistinis rodiklis &ndash; ta&scaron;kų skaičius plote, tačiau galite apskaičiuoti ir kitokius rodiklius.
+    <p>&Scaron;is įrankis veikia kartu su ta&scaron;kiniu arba plotiniu elementų sluoksniu, kuriame įgalintos laiko žymos, nurodančios konkretų laiko  <code>momentą</code>.   Pirmiausia įrankis pagal identifikatorių nustato, kurie elementai priklauso trajektorijai. Pagal kiekvienos vietos laiką trajektorijos dalys i&scaron;dėstomos nuosekliai, o pati trajektorija i&scaron;rei&scaron;kiama linija arba.plotu, parodančiu judėjimo laike kelią. Pasirinktinai įvesties duomenis galima buferizuoti įtraukiant lauką, kuris sukurs plotą aplink kiekvieną vietą. Tada &scaron;ie buferizuoti ta&scaron;kai (arba įvesties plotai) nuosekliai sujungiami, kad sukurtų plotinę trajektoriją, kurios plotis nurodo dominantį atributą. Gautos trajektorijos turi pradžios ir pabaigos laiką, kuris laikinai nurodo pirmąjį ir paskutinįjį duotosios trajektorijos elementą. Sukūrus trajektorijas, apskaičiuojama įvesties elementų statistika, kuri priskiriama i&scaron;vesties trajektorijai. Pats paprasčiausias apskaičiuojamas statistinis rodiklis &ndash; ta&scaron;kų skaičius plote, tačiau galite apskaičiuoti ir kitokius rodiklius.
     </p>
     <p>Elementai sluoksniuose, kuriuose palaikomos laiko žymos, gali būti dviejų tipų:
         <ul>
@@ -65,7 +65,7 @@
         <div><h2>Pasirinkite elementus, pagal kuriuos norite atkurti trajektoriją</h2></div>
         <hr/>
         <div>
-            <p>Ta&scaron;kinis ar plotinis sluoksnis, kuriame bus atkurta trajektorija. Įvesties sluoksnis turi būti susietas su laiku ir jame turi būti elementai, kurie nurodo konkretų laiką. Sluoksnis turi būti projekcinėje koordinačių sistemoje arba ji turi būti nustatyta naudojant  <b>Analizės aplinką</b> (jei taikomas buferis).
+            <p>Ta&scaron;kinis arba plotinis sluoksnis, kuriam bus atkurta trajektorija. Įvesties sluoksnis turi būti susietas su laiku ir jame turi būti elementai, kurie nurodo konkretų laiką. Sluoksnis turi būti projekcinėje koordinačių sistemoje arba ji turi būti nustatyta naudojant  <b>Analizės aplinką</b> (jei taikomas buferis).
             </p>
             <p>Galite ne tik nurodyti sluoksnį i&scaron; žemėlapio, bet ir apačioje pasirinkti  <b>Nar&scaron;yti sluoksnius</b>, kad galėtumėte turinyje nar&scaron;yti didelių duomenų rinkinio arba elemento sluoksnio.
             </p>
@@ -97,6 +97,8 @@
             </p>
             <p>Tokia lygtis kaip  <code>$feature.windspeed * 1000</code> taikytų buferį, kuriam 1000 būtų padaugintas i&scaron; lauko <i>windspeed</i>. Buferio skaičiuotuve galite naudoti daugiau negu vieną lauką.
             </p>
+            <p> Taip pat galite nurodyti pokyčių laike i&scaron;rai&scaron;ką. Pavyzdžiui, galite suskaičiuoti lauko <i>windspeed</i> reik&scaron;mių sumą esamam elementui ir ankstesniems dviems elementams naudodami lygtį <code>$track.field(windspeed).history(-3)</code>. Būtų suskaičiuota ir buferizuota dabartinio <i>windspeed</i> ir ankstesnių dviejų matavimų kiekvienai padėčiai suma.
+            </p>
         </div>
     </div>
     <div id="timeSplit">
@@ -125,9 +127,9 @@
         <div><h2>Pridėti statistiką (pasirinktinis nustatymas)</h2></div>
         <hr/>
         <div>
-            <p> Galite apskaičiuoti susumuotų elementų statistiką. Naudodami skaitinius laukus, galite apskaičiuoti:
+            <p> Galite apskaičiuoti susumuotų elementų statistiką. Galite skaičiuoti &scaron;iuos skaitinius laukus:
                 <ul>
-                    <li>Skaičius &ndash; apskaičiuojamas nenulinių reik&scaron;mių skaičius. Galima naudoti skaitiniams laukams arba eilutėms. [nulinis, 0, 2] skaičius yra 2.
+                    <li>Skaičius &ndash; apskaičiuojamas nenulinių reik&scaron;mių skaičius.Galima naudoti skaitiniams laukams arba eilutėms. [nulinis, 0, 2] skaičius yra 2.
                     </li>
                     <li>Suma &ndash; lauke nurodytų skaitinių reik&scaron;mių suma. [nulinis, 0, 3] suma yra 3.
                     </li>
@@ -139,14 +141,14 @@
                     </li>
                     <li>Intervalas  &ndash; skaitinio lauko intervalas. Apskaičiuojamas i&scaron; maksimalios reik&scaron;mės atėmus minimalią reik&scaron;mę. [0, nulinis, 1] intervalas yra 1. [nulinis, 4] intervalas yra 0.
                     </li>
-                    <li>Nuokrypis &ndash; skaitinio laiko nuokrypis trajektorijoje. [1] nuokrypis yra nulinis. [nulinis, 1,1,1] nuokrypis yra 1.
+                    <li>Nuokrypis &ndash; skaitinio laiko nuokrypis trajektorijoje. [1] nuokrypis yra nulinis. [nulinis, 1,0,1,1] nuokrypis yra 0,25.
                     </li>
-                    <li>Standartinis nuokrypis &ndash; skaitinio laiko standartinė deviacija. [1] standartinis nuokrypis yra nulinis. [nulinis, 1,1,1] standartinis nuokrypis yra 1. 
+                    <li>Standartinis nuokrypis &ndash; skaitinio laiko standartinė deviacija. [1] standartinis nuokrypis yra nulinis. [nulinis, 1,0,1,1] standartinis nuokrypis yra 0,5. 
                     </li>
                 </ul>
                 
             </p>
-            <p>Naudodami tekstinius laukus, galite apskaičiuoti:
+            <p>Galite skaičiuoti &scaron;iuos tekstinius laukus:
                 <ul>
                     <li>Skaičius &ndash; nenulinių eilučių skaičius.
                     </li>
@@ -161,16 +163,16 @@
         <div><h2>Pasirinkite ArcGIS Data Store, kad įrašytumėte rezultatus į</h2></div>
         <hr/>
         <div>
-            <p>GeoAnalytics rezultatai yra saugomi ArcGIS duomenų saugykloje ir rodomi kaip   Portal for ArcGIS elementų sluoksnis. Daugeliu atvejų rezultatai turi būti saugomi erdvinių-laiko duomenų saugykloje, ir tai yra numatytasis nustatymas. Kai kuriais atvejais galima rezultatus įra&scaron;yti į releacinę duomenų saugyklą. Toliau pateikiame priežastis, kodėl reikėtų rezultatus įray&scaron;i į releacinių duomenų saugyklą: 
+            <p>GeoAnalytics rezultatai yra saugomi ArcGIS duomenų saugykloje ir rodomi  Portal for ArcGIS kaip elementų sluoksnis. Daugeliu atvejų rezultatai turi būti saugomi erdvinių-laiko duomenų saugykloje, ir tai yra numatytasis nustatymas.  Kai kuriais atvejais, galima rezultatus įra&scaron;yti į releacinę duomenų saugyklą. Toliau pateikiame priežastis, kodėl reikėtų rezultatus įra&scaron;yti į releacinių duomenų saugyklą: 
                 <ul>
-                    <li>Rezultatus galima naudoti dviejuose susietuose portaluose.
+                    <li>Galite rezultatus naudoti dviejų portalų bendradarbiavime.
                     </li>
-                    <li>Rezultatus galima sinchronizuoti.
+                    <li>Galite įjungti savo rezultatų sinchronizavimą.
                     </li>
                 </ul>
                 
             </p>
-            <p>Nenaudokite releacinių duomenų saugyklos, jei jūsų GeoAnalytics rezultatų turėtų padaugėti, ir apdorojant didelius duomenų kiekius reikia pasinaudoti erdvinių-laiko didelių duomenų saugyklos galimybėmis. 
+            <p>Nenaudokite releacinių duomenų saugyklos, jei jūsų GeoAnalytics rezultatų turėtų padaugėti, ir apdorojant didelius duomenų kiekius reikės pasinaudoti erdvės ir laiko didelių duomenų saugyklos galimybėmis.
             </p>
         </div>
     </div>
@@ -178,9 +180,9 @@
         <div><h2>Rezultatų sluoksnio pavadinimas</h2></div>
         <hr/>
         <div>
-            <p> Tai sluoksnio, kuris bus sukurtas ir patalpintas dalyje <b>Mano turinys</b> ir įtrauktas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas pagal įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau yra, įrankis neveiks.
+            <p> Sluoksnio, kuris bus sukurtas puslapyje <b>Turinys</b> ir pridėtas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas pagal įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau yra, įrankis neveiks.
             </p>
-            <p>I&scaron;&scaron;okančiame meniu  <b>Įra&scaron;yti rezultatą į</b> galite nurodyti <b>Mano turinys</b> esančio aplanko, kur bus įra&scaron;yti rezultatai, pavadinimą.
+            <p>I&scaron;&scaron;okančiame meniu  <b>Įra&scaron;yti rezultatą į</b> galite nurodyti <b>Turinyje</b> esančio aplanko, kur bus įra&scaron;yti rezultatai, pavadinimą.
             </p>
         </div>
     </div>

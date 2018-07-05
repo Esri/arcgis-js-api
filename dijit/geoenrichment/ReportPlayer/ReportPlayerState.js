@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
-define([],function(){return{isViewingDataDrillingZoom:!1,isChartAnimationSuspended:!1}});
+define([],function(){return{isViewingDataDrillingZoom:!1,isAnimationSuspended:!1}});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.23/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.25/esri/copyright.txt for details.
 
-define({clustersLabel:"สำหรับชั้นข้อมูล ${inputLayerName} ให้ค้นหากลุ่ม",chooseLayerLabel:"เลือกชั้นข้อมูลที่จะพบกลุ่ม",minClusterPtsLabel:"จำนวนจุดต่ำสุดที่จะถือว่าเป็นกลุ่ม",limitSearchLabel:"จำกัดช่วงการค้นหาเป็น (ไม่บังคับ)",limitSearchReqLabel:"Limit the search range to",outputLayerName:"ค้นหากลุ่มสำหรับ ${inputLayerName}",itemDescription:"ชั้นข้อมูลฟีเจอร์ที่สร้างขึ้นจากการใช้โซลูชัน Find Point Clusters สำหรับ ${inputLayerName}",itemTags:"ผลการวิเคราะห์, Find Point Clusters, ${inputLayerName}",itemSnippet:"ชั้นข้อมูลฟีเจอร์ที่สร้างขึ้นจาก Find Point Clusters"});
+define({clustersLabel:"สำหรับชั้นข้อมูล ${inputLayerName} ให้ค้นหากลุ่ม",chooseLayerLabel:"เลือกชั้นข้อมูลที่จะพบกลุ่ม",minClusterPtsLabel:"จำนวนจุดต่ำสุดที่จะถือว่าเป็นกลุ่ม",limitSearchLabel:"จำกัดช่วงการค้นหาเป็น (ไม่บังคับ)",limitSearchReqLabel:"จำกัดช่วงในการค้นหาที่",outputLayerName:"ค้นหากลุ่มสำหรับ ${inputLayerName}",itemDescription:"ชั้นข้อมูลฟีเจอร์ที่สร้างขึ้นจากการใช้โซลูชัน Find Point Clusters สำหรับ ${inputLayerName}",itemTags:"ผลการวิเคราะห์, Find Point Clusters, ${inputLayerName}",itemSnippet:"ชั้นข้อมูลฟีเจอร์ที่สร้างขึ้นจาก Find Point Clusters"});

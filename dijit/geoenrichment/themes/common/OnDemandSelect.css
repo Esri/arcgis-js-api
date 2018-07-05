@@ -6,7 +6,6 @@
     .esriGEOnDemandSelect .onDemandSelect_openButton {
         border: 1px solid #BCBCBC;
         background-color: #FFFFFF;
-        margin: 0 -1px;
         height: 21px;
         cursor: pointer;
         min-width: 40px;
@@ -133,6 +132,12 @@
 
 
 
+.esriGEOnDemandSelectUnlimitedTallList.esriGEOnDemandSelectFlowList {
+    max-height: 2000px;
+}
+
+
+
 .esriGEOnDemandSelectSpacedOut.esriGEOnDemandSelectFlowList .listItem {
-    padding: 10px 10px 10px 10px;
+    padding: 10px;
 }

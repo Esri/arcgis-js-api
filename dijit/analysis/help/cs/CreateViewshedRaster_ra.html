@@ -41,12 +41,12 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Vytvořit viditelnost</h2><p/>
-        <h2><img src="../images/GUID-BB8B8CAF-330E-4C41-9D94-AF4728D0D0F3-web.png" alt="N&aacute;stroj Vytvořit viditelnost"></h2>
+        <h2>Vytvořit viditelný povrch (Create Viewshed)</h2><p/>
+        <h2><img src="../images/GUID-BB8B8CAF-330E-4C41-9D94-AF4728D0D0F3-web.png" alt="N&aacute;stroj Vytvořit viditeln&yacute; povrch"></h2>
         <hr/>
     <p>Tento n&aacute;stroj identifikuje oblasti, kter&eacute; může pozorovatel vidět, podle povrchov&eacute; topografie. Um&iacute;stěn&iacute; vstupn&iacute;ch bodů mohou představovat buď pozorovatele (např. lid&eacute; na zemi nebo hl&iacute;dky v pož&aacute;rn&iacute; věži), nebo pozorovan&eacute; objekty (např. větrn&eacute; turb&iacute;ny, vodojemy, vozidla nebo lid&eacute;). V&yacute;sledky definuj&iacute; oblasti, kter&eacute; lze vidět z&nbsp;m&iacute;sta pozorovatele.
     </p>
-    <p>Pozorovatel&eacute; i pozorovan&eacute; objekty mohou m&iacute;t udanou v&yacute;&scaron;ku nad zem&iacute; a tyto v&yacute;&scaron;ky se použ&iacute;vaj&iacute; k&nbsp;určen&iacute; viditelnosti. Např&iacute;klad viditelnost vypoč&iacute;tan&aacute; pro 100 metrů vysok&eacute; větrn&eacute; turb&iacute;ny a 1,8 metru vysokou osobu stoj&iacute;c&iacute; na zemi bude zpravidla vět&scaron;&iacute; než viditelnost vypoč&iacute;tan&aacute; pro 60 m vysok&eacute; turb&iacute;ny a osobu vysokou 1,5 metru.
+    <p>Pozorovatel&eacute; i pozorovan&eacute; objekty mohou m&iacute;t udanou v&yacute;&scaron;ku nad zem&iacute; a tyto v&yacute;&scaron;ky se použ&iacute;vaj&iacute; k&nbsp;určen&iacute; viditelnosti. Např&iacute;klad viditeln&yacute; povrch vypoč&iacute;tan&yacute; pro 100 metrů vysok&eacute; větrn&eacute; turb&iacute;ny a 180 cm vysokou osobu stoj&iacute;c&iacute; na zemi bude zpravidla vět&scaron;&iacute; než viditeln&yacute; povrch vypoč&iacute;tan&yacute; pro 60 m vysok&eacute; turb&iacute;ny a osobu vysokou 150 cm.
     </p>
     <p>V&yacute;sledn&aacute; vrstva zaznamen&aacute;v&aacute;, kolikr&aacute;t je možn&eacute; každ&eacute; um&iacute;stěn&iacute; buňky ve vstupn&iacute;m rastru povrchu vidět ze vstupn&iacute;ch pozorovac&iacute;ch bodů. Neviditeln&yacute;m buňk&aacute;m je přidělena hodnota NoData.
     </p>
@@ -58,7 +58,7 @@
         <div><h2>Povrch reprezentující výšku</h2></div>
         <hr/>
         <div>
-            <p>Povrch reprezentuj&iacute;c&iacute; v&yacute;&scaron;ku použit&yacute; pro v&yacute;počet viditelnosti.
+            <p>Povrch reprezentuj&iacute;c&iacute; v&yacute;&scaron;ku použit&yacute; pro v&yacute;počet viditeln&eacute;ho povrchu.
             </p>
             <p>Pokud se vertik&aacute;ln&iacute; jednotky vstupn&iacute;ho povrchu li&scaron;&iacute; od horizont&aacute;ln&iacute;ch jednotek, např. když jsou v&yacute;&scaron;kov&eacute; hodnoty uvedeny ve stop&aacute;ch, ale souřadnicov&yacute; syst&eacute;m je v&nbsp;metrech, mus&iacute; m&iacute;t povrch definov&aacute;n v&yacute;&scaron;kov&yacute; souřadnicov&yacute; syst&eacute;m. Důvodem je, že n&aacute;stroj použ&iacute;v&aacute; vertik&aacute;ln&iacute; (Z) a horizont&aacute;ln&iacute; (XY) jednotky k&nbsp;v&yacute;počtu Z-faktoru pro anal&yacute;zu viditelnosti. Bez v&yacute;&scaron;kov&eacute;ho souřadnicov&eacute;ho syst&eacute;mu a potažmo bez dostupn&yacute;ch informac&iacute; o jednotk&aacute;ch Z bude n&aacute;stroj předpokl&aacute;dat, že jednotky Z jsou stejn&eacute; jako jednotky XY. V&nbsp;důsledku toho bude pro anal&yacute;zu použit vnitřn&iacute; Z-faktor s&nbsp;hodnotou 1,0, což může v&eacute;st k&nbsp;nečekan&yacute;m v&yacute;sledkům.
             </p>
@@ -70,7 +70,7 @@
         <div><h2>Bodové prvky, které budou představovat umístění pozorovatele.</h2></div>
         <hr/>
         <div>
-            <p>Bodov&eacute; prvky představuj&iacute;c&iacute; um&iacute;stěn&iacute; pozorovatelů při v&yacute;počtu viditelnosti.
+            <p>Bodov&eacute; prvky představuj&iacute;c&iacute; um&iacute;stěn&iacute; pozorovatelů při v&yacute;počtu viditeln&eacute;ho povrchu.
             </p>
         </div>
     </div>
@@ -78,7 +78,7 @@
         <div><h2>Optimalizovat pro</h2></div>
         <hr/>
         <div>
-            <p>Metoda optimalizace použit&aacute; pro v&yacute;počet viditelnosti.
+            <p>Metoda optimalizace použit&aacute; pro v&yacute;počet viditeln&eacute;ho povrchu.
             </p>
             <ul>
                 <li>Speed &mdash; 
@@ -93,11 +93,11 @@ Tato metoda optimalizuje přesnost v&yacute;sledků na &uacute;kor doby zpracov&
         </div>
     </div>
     <div id="maximumDistance">
-        <div><h2>Maximální zobrazovací vzdálenost</h2></div>
+        <div><h2>Maximální sledovací vzdálenost</h2></div>
         <hr/>
         <div>
             <p>Zadejte hraničn&iacute; vzd&aacute;lenost, za kterou vypoč&iacute;t&aacute;v&aacute;n&iacute; viditeln&yacute;ch oblast&iacute; skonč&iacute;. Za touto vzd&aacute;lenost&iacute; nebude určeno, zda na sebe pozorovac&iacute; body a jin&eacute; objekty vid&iacute;.
-            </p> 
+            </p>
             <p>Můžete zadat č&iacute;selnou hodnotu představuj&iacute;c&iacute; line&aacute;rn&iacute; vzd&aacute;lenost nebo vybrat č&iacute;seln&eacute; pole ze vstupn&iacute;ch prvků pozorovatele. Když je zad&aacute;no pole, hodnoty v něm obsažen&eacute; mus&iacute; b&yacute;t ve stejn&yacute;ch jednotk&aacute;ch jako jednotky XY vstupn&iacute;ho povrchu nadmořsk&eacute; v&yacute;&scaron;ky.
             </p>
             <p>Mějte na paměti, že vy&scaron;&scaron;&iacute; hodnoty zvy&scaron;uj&iacute; dobu zpracov&aacute;n&iacute;. Pokud nen&iacute; uvedena, bude v&yacute;choz&iacute; maxim&aacute;ln&iacute; vzd&aacute;lenost vypoč&iacute;t&aacute;na na z&aacute;kladě rozli&scaron;en&iacute; a rozsahu vstupn&iacute;ho povrchu reprezentuj&iacute;c&iacute;ho v&yacute;&scaron;ku.
@@ -107,7 +107,7 @@ Tato metoda optimalizuje přesnost v&yacute;sledků na &uacute;kor doby zpracov&
         </div>
     </div>
     <div id="maximumDistanceField">
-        <div><h2>Maximální zobrazovací vzdálenost</h2></div>
+        <div><h2>Maximální sledovací vzdálenost</h2></div>
         <hr/>
         <div>
             
@@ -118,7 +118,7 @@ Tato metoda optimalizuje přesnost v&yacute;sledků na &uacute;kor doby zpracov&
         <hr/>
         <div>
             <p>Zadejte hraničn&iacute; vzd&aacute;lenost, za kterou vypoč&iacute;t&aacute;v&aacute;n&iacute; viditeln&yacute;ch oblast&iacute; začne. Buňky na povrchu bliž&scaron;&iacute; než tato vzd&aacute;lenost nejsou viditeln&eacute; ve v&yacute;stupu, ale st&aacute;le mohou blokovat viditelnost buněk mezi minim&aacute;ln&iacute; a maxim&aacute;ln&iacute; sledovac&iacute; vzd&aacute;lenost&iacute;.
-            </p> 
+            </p>
             <p>Můžete zadat č&iacute;selnou hodnotu představuj&iacute;c&iacute; line&aacute;rn&iacute; vzd&aacute;lenost nebo vybrat č&iacute;seln&eacute; pole ze vstupn&iacute;ch prvků pozorovatele. Když je zad&aacute;no pole, hodnoty v něm obsažen&eacute; mus&iacute; b&yacute;t ve stejn&yacute;ch jednotk&aacute;ch jako jednotky XY vstupn&iacute;ho povrchu nadmořsk&eacute; v&yacute;&scaron;ky.
             </p>
             <p>Tento parametr je užitečn&yacute; pro nastaven&iacute; oblasti anal&yacute;zy viditelnosti na určitou vzd&aacute;lenost od pozorovatele. Pokud např&iacute;klad vyhodnocujete viditelnost ze střechy budovy do vzd&aacute;len&eacute;ho parku, můžete nastavit minim&aacute;ln&iacute; sledovac&iacute; vzd&aacute;lenost, abyste vyloučili bliž&scaron;&iacute; oblasti, kter&eacute; v&aacute;s nezaj&iacute;maj&iacute;, a dos&aacute;hli rychlej&scaron;&iacute;ho zpracov&aacute;n&iacute;.
@@ -165,7 +165,7 @@ Tato metoda optimalizuje přesnost v&yacute;sledků na &uacute;kor doby zpracov&
         <div>
             <p>Zadejte v&yacute;&scaron;ku nad zem&iacute; pro um&iacute;stěn&iacute; pozorovatelů.
             </p> 
-            <p>Můžete zadat č&iacute;selnou hodnotu pro v&yacute;&scaron;ku nebo vybrat č&iacute;seln&eacute; pole ze vstupn&iacute;ch prvků pozorovatele. Když je zad&aacute;no pole, hodnota v něm obsažen&aacute; mus&iacute; b&yacute;t ve stejn&yacute;ch jednotk&aacute;ch jako jednotky Z vstupn&iacute;ho povrchu nadmořsk&eacute; v&yacute;&scaron;ky.
+            <p>Můžete zadat č&iacute;selnou hodnotu pro v&yacute;&scaron;ku nebo vybrat č&iacute;seln&eacute; pole ze vstupn&iacute;ch prvků pozorovatele. Když je zad&aacute;no pole, hodnota v&nbsp;něm obsažen&aacute; mus&iacute; b&yacute;t ve stejn&yacute;ch jednotk&aacute;ch jako jednotky Z vstupn&iacute;ho povrchu reprezentuj&iacute;c&iacute;ho v&yacute;&scaron;ku.
             </p>
             <p>V&yacute;choz&iacute; hodnota je 6 stop (1,8 metru). Pokud se d&iacute;v&aacute;te z&nbsp;vyv&yacute;&scaron;en&eacute;ho um&iacute;stěn&iacute;, např. rozhledny nebo vysok&eacute; budovy, použijte jeho v&yacute;&scaron;ku. Při v&yacute;počtu viditelnosti bude tato hodnota přičtena k&nbsp;nadmořsk&eacute; v&yacute;&scaron;ce pozorovatele, je-li zad&aacute;na. V opačn&eacute;m př&iacute;padě bude přičtena k&nbsp;interpolovan&eacute; hodnotě Z povrchu.
             </p>
@@ -183,8 +183,8 @@ Tato metoda optimalizuje přesnost v&yacute;sledků na &uacute;kor doby zpracov&
         <hr/>
         <div>
             <p>Zadejte v&yacute;&scaron;ku struktur nebo lid&iacute; na zemi použitou pro určen&iacute; viditelnosti.
-            </p> 
-            <p>Můžete zadat č&iacute;selnou hodnotu pro v&yacute;&scaron;ku nebo vybrat č&iacute;seln&eacute; pole ze vstupn&iacute;ch prvků pozorovatele. Když je zad&aacute;no pole, hodnota v něm obsažen&aacute; mus&iacute; b&yacute;t ve stejn&yacute;ch jednotk&aacute;ch jako jednotky Z vstupn&iacute;ho povrchu nadmořsk&eacute; v&yacute;&scaron;ky.
+            </p>
+            <p>Můžete zadat č&iacute;selnou hodnotu pro v&yacute;&scaron;ku nebo vybrat č&iacute;seln&eacute; pole ze vstupn&iacute;ch prvků pozorovatele. Když je zad&aacute;no pole, hodnota v&nbsp;něm obsažen&aacute; mus&iacute; b&yacute;t ve stejn&yacute;ch jednotk&aacute;ch jako jednotky Z vstupn&iacute;ho povrchu reprezentuj&iacute;c&iacute;ho v&yacute;&scaron;ku.
             </p>
             <p>V&yacute;sledn&aacute; viditelnost identifikuje oblasti, ze kter&yacute;ch může pozorovac&iacute; bod vidět tyto objekty na zemi. Plat&iacute; to i obr&aacute;ceně &ndash; objekty na zemi mohou vidět pozorovac&iacute; bod. 
             </p>
@@ -232,7 +232,7 @@ Tato metoda optimalizuje přesnost v&yacute;sledků na &uacute;kor doby zpracov&
         <div>
             <p>N&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce  <b>Můj obsah</b> a přid&aacute; se do mapy. V&yacute;choz&iacute; n&aacute;zev se ř&iacute;d&iacute; n&aacute;zvem n&aacute;stroje a n&aacute;zvem vstupn&iacute; vrstvy. Pokud v&yacute;sledn&aacute; vrstva již existuje, budete pož&aacute;d&aacute;ni o zad&aacute;n&iacute; jin&eacute;ho n&aacute;zvu.
             </p>
-            <p>V rozbalovac&iacute;m seznamu  <b>Uložit v&yacute;sledek do</b> můžete zadat n&aacute;zev složky ve složce <b>Můj obsah</b>, do kter&eacute; se m&aacute; v&yacute;sledek uložit.
+            <p>V&nbsp;rozbalovac&iacute;m seznamu  <b>Uložit v&yacute;sledek do</b> můžete zadat n&aacute;zev složky ve složce <b>Můj obsah</b>, do kter&eacute; se m&aacute; v&yacute;sledek uložit.
             </p>
         </div>
     </div>

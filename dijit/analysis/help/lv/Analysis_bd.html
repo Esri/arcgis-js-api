@@ -45,6 +45,8 @@
             <ul>
                 <li> <b>Apkopot punktus</b>
                 </li>
+                <li> <b>Būvēt režģi ar vairākiem mainīgajiem</b>
+                </li>
                 <li> <b>Savienot elementus</b>
                 </li>
                 <li> <b>Mar&scaron;rutu rekonstruē&scaron;ana</b>
@@ -53,21 +55,27 @@
                 </li>
                 <li> <b>Iek&scaron;ēja apkopo&scaron;ana</b>
                 </li>
+                <li> <b>Ģeokodu novietojumi no tabulas</b>
+                </li>
                 <li> <b>Noteikt negadījumus</b>
                 </li>
                 <li> <b>Atrast līdzīgus novietojumus</b>
                 </li>
                 <li> <b>Aprēķināt blīvumu</b>
                 </li>
+                <li> <b>Atrast punktu klasterus</b>
+                </li>
                 <li> <b>Atrast karstos punktus</b>
                 </li>
                 <li> <b>Izveidot buferzonu</b>
                 </li>
-                <li> <b>Kopēt datu krātuvē</b>
+                <li> <b>Pievienot datus</b>
                 </li>
                 <li> <b>Aprēķināt lauku</b>
                 </li>
-                <li> <b>Ģeokodu novietojumi no tabulas</b>
+                <li> <b>Kopēt datu krātuvē</b>
+                </li>
+                <li> <b>Pārklāt slāņus</b>
                 </li>
             </ul>
             
@@ -76,19 +84,21 @@
         </p>
     </div>
     <div id="SummarizeDataCategory" class="largesize">
-        <h2>Apkopot datus</h2>
+        <h2>Datu kopsavilkums</h2>
         <hr/>
-        <p>Rīku komplektā Apkopot datus ir iekļauti rīki, kas aprēķina elementu kopējo skaitu, garumu, teritoriju un pamata apraksto&scaron;o statistiku un to atribūtus teritorijās vai netālu no citiem elementiem.
+        <p> Datu kopsavilkuma rīku komplektā ir iekļauti rīki, kas aprēķina elementu un to atribūtu kopējo skaitu, garumu, laukumu un pamata apraksto&scaron;o statistiku un to teritorijā vai tuvumā&nbsp; citiem elementiem.
             <ul>
                 <li> <b>Sakopot punktus</b> aprēķina statistiku par punktiem, kas iekrīt norādītajās platībās vai nodalījumos.
                 </li>
-                <li> <b>Savienot elementus</b> aprēķina statistiku par elementiem, kas koplieto telpas, temporālo vai atribūtu saistību ar citiem elementiem.
+                <li>Funkcija  <b>Izveidot tīklu ar vairākiem mainīgajiem</b> ģenerē četrstūra vai se&scaron;stūra nodalījumu tīklu un aprēķina katra nodalījuma vērtību, pamatojoties uz katra ievades slāņa apkārtnes analīzi.
                 </li>
-                <li> <b>Rekonstruēt mar&scaron;rutus</b> aprēķina statistiku par punktiem vai laukumiem, kas pieder vienam mar&scaron;rutam, un rekonstruē mar&scaron;rutus no ievades.
+                <li>Funkcija  <b>Savienot elementus</b> aprēķina statistiku par elementiem, kam kopīga telpas, laika vai atribūtu saistību ar citiem elementiem.
                 </li>
-                <li> <b>Apkopot atribūtus</b> aprēķina statistiku par elementu vai tabulas datiem, kas koplieto atribūtus.
+                <li>Funkcija  <b>Rekonstruēt mar&scaron;rutus</b> aprēķina statistiku par punktiem vai laukumiem, kas pieder vienam mar&scaron;rutam, un rekonstruē mar&scaron;rutus no ievades.
                 </li>
-                <li> <b>Apkopot ietvaros</b> aprēķina apgabala elementu un to atribūtu statistiku, kas viens otru pārklāj.
+                <li>Funkcija  <b>Atribūtu kopsavilkums</b> aprēķina statistiku par elementu vai tabulas datiem, kam kopīgi atribūti.
+                </li>
+                <li>Funkcija  <b>Apkopot ietvaros</b> aprēķina tādu teritorijas elementu un to atribūtu statistiku, kas viens otru pārklāj.
                 </li>
             </ul>
             
@@ -105,13 +115,39 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Lietojot punktu elementu slāni un teritoriju vai nodalījumu slāni, ko definē norādīts attālums, &scaron;is rīks nosaka, kuri punkti ietilpst katrā teritorijā vai nodalījumā, un aprēķina statistiku par visiem punktiem katrā teritorijā vai nodalījumā. Ja vēlaties, ar &scaron;o rīku varat lietot laika sektorus. 
+            <p>Lietojot punktu elementu slāni un laukumu vai nodalījumu slāni, ko definē norādīts attālums, &scaron;is rīks nosaka, kuri punkti ietilpst katrā laukumā vai nodalījumā, un aprēķina statistiku par visiem punktiem katrā laukumā vai nodalījumā. Ja vēlaties, ar &scaron;o rīku varat lietot laika sektorus. 
             </p>
-            <p> Piemērs
+            <p>Tālāk ir sniegti piemēri
                 <ul>
                     <li>Ja ir dotas kriminālnoziegumu veik&scaron;anas vietas, aprēķina noziegumu skaitu apgabalā vai citā administratīvajā vienībā.
                     </li>
-                    <li>Nosaka lielāko un mazāko fran&scaron;īzes ikmēne&scaron;a ieņēmumu vietu, izmantojot 100&nbsp;km nodalījumus.
+                    <li>Nosaka lielāko un mazāko fran&scaron;īzes ikmēne&scaron;a ieņēmumu vietu, izmantojot 100-kilometru nodalījumus.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="BuildMultiVariableGridTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Būvēt režģi ar vairākiem mainīgajiem</h2></td>
+                    <td>
+                    <img src="../images/GUID-B78AB95A-E412-4983-ADBA-3678BF207A79-web.png" class="titleImage" alt="Rīka Pievienot datus darbplūsmas diagramma">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Rīks Būvēt režģi ar vairākiem mainīgajiem ģenerē režģi ar kvadrāta vai se&scaron;stūra nodalījumiem un aprēķina mainīgos katram nodalījumam, ņemot vērā katra ievades slāņa tuvumu.
+            </p>
+            <p>Tālāk ir sniegti piemēri:
+                <ul>
+                    <li>Kura pilsētas daļa ir vismazāk pieejama ar sabiedrisko transportu, pieņemot, ka ir vairāki sabiedriskā transporta infrastruktūras slāņi?
+                    </li>
+                    <li>Kāds ir katrai ASV atra&scaron;anās vietai tuvākās ūdenstilpes nosaukums, ņemot vērā to, ka ir ūdensceļu slāņi, piemēram, ezeri un upes?
+                    </li>
+                    <li>Kāds ir katrai ASV eso&scaron;ajai atra&scaron;anās vietai tuvākā ūdensobjekta nosaukums, pieņemot, ka ir ūdensceļu slāņi, piemēram, ezeri un upes?
                     </li>
                 </ul>
                 
@@ -122,20 +158,20 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Savienot elementus</h2></td>
+                    <td><h2>Elementu savienošana</h2></td>
                     <td>
-                    <img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" class="titleImage" alt="Savienot elementus">
+                    <img src="../images/GUID-900E33CD-3789-45B5-8F0C-92D91E64D2A4-web.png" class="titleImage" alt="Elementu savieno&scaron;ana">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
             <p>Varat savienot elementus un ierakstus, balstoties uz noteiktām ievades slāņu vai tabulu saistībām, izmantojot elementu slāņus vai tabulas datus. Savienojumus nosaka telpiskās, laika un atribūtu saistības. Ja vēlaties, varat aprēķināt kopsavilkuma statistiku.  
             </p>
-            <p>Piemēram:
+            <p>Tālāk ir sniegti piemēri
                 <ul>
                     <li>Ja ir dotas kriminālnoziegumu veik&scaron;anas vietas ar laiku, savienojiet noziegumu datus, norādot telpisku saistību noziegumiem, kas tika veikta 1&nbsp;kilometra attālumā un 1&nbsp;stundas laikā viens no otra, lai noteiktu, vai ir noziegumu secība, kas ir tuva telpā un laikā.
                     </li>
-                    <li>Ja ir dota ASV pasta indeksu tabula ar demogrāfisko informāciju un teritorijas elementiem, kas apzīmē dzīvojamās ēkas, pievienojiet demogrāfisko informāciju dzīvesvietām, lai katrai dzīvesvietai būtu informācija.
+                    <li>Ja ir dota ASV pasta indeksu tabula ar demogrāfisko informāciju un laukums elementiem, kas apzīmē dzīvojamās ēkas, pievienojiet demogrāfisko informāciju dzīvesvietām, lai katrai dzīvesvietai būtu informācija.
                     </li>
                 </ul>
                 
@@ -155,7 +191,7 @@
 <hr/>
             <p>Lietojot punktu vai daudzstūru elementu slāni ar iespējotu laiku, kas apzīmē laika  <code>momentu</code>, &scaron;is rīks nosaka, kuriem ievades elementiem jābūt mar&scaron;rutā, un sakārtos ievades laika secībā. Ja vēlaties, statistiku var aprēķināt katra mar&scaron;ruta ievades elementiem.
             </p>
-            <p> Piemērs
+            <p> Tālāk ir sniegti piemēri:
                 <ul>
                     <li>Ja ir dotas viesuļvētras mērījumu laiks un punktu atra&scaron;anās vietas, aprēķiniet viesuļvētras vidējo vēja ātrumu un maksimālo vēja spiedienu.
                     </li>
@@ -179,33 +215,33 @@
 <hr/>
             <p> Lietojot elementu vai tabulas datus, &scaron;is rīks apkopo norādīto lauku statistiku.
             </p>
-            <p> Piemērs
+            <p>Tālāk ir sniegti piemēri
                 <ul>
-                    <li> Ja ir doti pārtikas preču veikalu novietojumi ar lauku <i>COMPANY_NAME</i>, apkopojiet veikalus pēc uzņēmuma nosaukuma, lai noteiktu katra uzņēmuma statistiku.
+                    <li>Apkopojiet veikalus pēc uzņēmuma nosaukuma, lai noteiktu katra uzņēmuma statistiku no pārtikas preču veikalu atra&scaron;anās vietām ar lauku  <i>COMPANY_NAME</i>.
                     </li>
-                    <li>Ja ir dota pārtikas preču veikalu tabula ar laukiem  <i>COMPANY_NAME</i> un <i>COUNTY</i>, apkopojiet veikalus pēc uzņēmuma nosaukuma un apgabala, lai noteiktu statistiku katram uzņēmumam katrā apgabalā.
+                    <li>Apkopojiet veikalus pēc uzņēmuma nosaukuma un apgabala, lai noteiktu katras kompānijas statistiku katrā apgabalā no pārtikas preču veikalu tabulas ar laukiem  <i>COMPANY_NAME</i> un <i>COUNTY</i>.
                     </li>
                 </ul>
                 
             </p>
             <br/>
         </div>
-        <div id="SummarizeWithinTool" class="largesize">
+        <div id="SummarizeWithinTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
                     <td><h2>Apkopot ietvaros</h2></td>
                     <td>
-                    <img src="../images/GUID-90E0CB1F-EB97-4752-B2EE-452B7B45475E-web.png" class="titleImage" alt="Apkopot ietvaros">
+                    <img src="../images/GUID-9B12DB3F-AA7B-41EB-87C6-D2DEC3D52DA9-web.png" class="titleImage" alt="Apkopot ietvaros">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Atrod teritorijas (un teritoriju daļas), kas pārklājas starp diviem slāņiem un aprēķina statistiku par pārklā&scaron;anos. 
+            <p>Atrod laukumus (un laukumu daļas), kas pārklājas starp diviem slāņiem un aprēķina statistiku par pārklā&scaron;anos. 
             </p>
-            <p> Piemērs
+            <p>Tālāk ir sniegti piemēri:
                 <ul>
-                    <li>Ja ir dots ūdens&scaron;ķirtnes teritoriju slānis un zemes izmanto&scaron;anas slānis pēc zemes izmanto&scaron;anas veida, aprēķina kopējo zemes izmanto&scaron;anas veida platību katrā ūdens&scaron;ķirtnes teritorijā. 
+                    <li>Ja ir dots ūdens&scaron;ķirtnes teritorijas slānis un zemes lietojuma slānis pēc zemes lietojuma veida, aprēķināt kopējo zemes lietojuma veida platību katrā ūdens&scaron;ķirtnes teritorijā. 
                     </li>
                     <li>Ņemot vērā zemes gabalu slāni apgabalā un pilsētas robežu slāni, apkopo  brīvo zemes gabalu vidējo vērtību katrā pilsētā.
                     </li>
@@ -240,11 +276,9 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p> <img src="../images/GUID-E2A3AB39-5151-4972-A988-EBC91C41EB1F-web.png" alt="Noteikt negadījumus">
+            <p>&Scaron;is rīks darbojas ar laika iespējotu punktu, līniju, laukumu vai tabulu elementu slāni, kas apzīmē laika mirkli.  Izmantojot secīgi sakārtotus elementus, ko dēvē par mar&scaron;rutiem, &scaron;is rīks nosaka, kādi elementi ir interesējo&scaron;ie atgadījumi. Negadījumus nosaka pēc jūsu norādītajiem kritērijiem. 
             </p>
-            <p>&Scaron;is rīks darbojas ar laika iespējotu punktu, līniju, teritoriju vai tabulu elementu slāni, kas apzīmē laika mirkli.  Izmantojot secīgi sakārtotus elementus, ko dēvē par mar&scaron;rutiem, &scaron;is rīks nosaka, kādi elementi ir interesējo&scaron;ie atgadījumi. Negadījumus nosaka pēc jūsu norādītajiem apstākļiem. 
-            </p>
-            <p>Piemēram:
+            <p>Tālāk ir sniegti piemēri
                 <ul>
                     <li>Nosakiet viesuļvētras mērījumus, kuru pamatā ir 4. kategorijas viesuļvētras, vadoties pēc vēja ātruma rādītājiem.
                     </li>
@@ -266,8 +300,6 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p> <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" alt="Ģeokodu novietojumi no tabulas">
-            </p>
             <p>Konvertē adreses par koordinātām. Izmantojiet &scaron;o rīku atbilsto&scaron;i Big Data failu koplieto&scaron;anas tabulām.
             </p>
             <br/>
@@ -285,7 +317,7 @@
 <hr/>
             <p>Pamatojoties uz norādītajiem kritērijiem, atrodiet līdzīgus novietojumus, mērot kandidāta meklē&scaron;anas slāņa novietojumu līdzību vienam vai vairākiem atsauces novietojumiem. 
             </p>
-            <p>Piemēram: 
+            <p>Tālāk ir sniegti piemēri. 
                 <ul>
                     <li>Atrodiet desmit līdzīgākos veikalus, pārbaudot darbinieku skaitu un ikgadējo pārdo&scaron;anas apjomu.
                     </li>
@@ -296,14 +328,16 @@
             </p>
             <br/>
         </div>
-    <div id="AnalyzePatternsCategory" class="smallsize">
-        <h2>Analizēt paraugus</h2>
+    <div id="AnalyzePatternsCategory" class="regularsize">
+        <h2>Modeļu analīze</h2>
         <hr/>
-        <p>&Scaron;ie rīki palīdzēs jums identificēt, aprēķināt un vizualizēt jūsu datu telpiskos piemērus.  
+        <p> &Scaron;ie rīki palīdz identificēt, aprēķināt un vizualizēt telpiskos jūsu datu modeļus.
             <ul>
                 <li>Rīks  <b>Aprēķināt blīvumu</b> izmanto kādas parādības zināmo daudzumu un izklāj &scaron;o daudzumu visā kartē.
                 </li>
                 <li> <b>Atrast karstos punktus</b> identificē statistiski nozīmīgu klasterizāciju jūsu datu telpiskajā modelī.
+                </li>
+                <li>Rīks  <b>Atrast punktu klasterus</b> atrod punktu elementu klasterus apkārtējā troksnī, ņemot vērā to telpisko sadalījumu.
                 </li>
             </ul>
             
@@ -322,13 +356,37 @@
 <hr/>
             <p>Rīks Aprēķināt blīvumu izveido blīvuma karti no punktu elementiem, izklājot kartē kādas parādības zināmo daudzumu (attēlots kā punktu atribūti). Rezultāts ir teritoriju slānis, kas apzīmē blīvumu.
             </p>
-            <p>Piemēram:
+            <p>Tālāk ir sniegti piemēri
                 <ul>
                     <li>Slimnīcu blīvuma aprēķinā&scaron;ana valstī. Rezultātu slānī būs redzamas teritorijas ar augstu un zemu piekļuves līmeni slimnīcām, un &scaron;o informāciju var izmantot, lai izvēlētos jaunu slimnīcu atra&scaron;anās vietas.
                     </li>
                     <li>Teritoriju ar augstu meža ugunsgrēku riska līmeni noteik&scaron;ana, pamatojoties uz meža ugunsgrēku vēsturiskajām izcel&scaron;anās vietām.
                     </li>
-                    <li>Apdzīvotu kopienu, kas atrodas tālu no lielajiem autoceļiem, atra&scaron;ana, lai izplānotu jaunu autoceļu būvniecību.
+                    <li>Apdzīvotu teritoriju, kas atrodas tālu no lielajiem autoceļiem, atra&scaron;ana, lai izplānotu jaunu autoceļu būvniecību.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="FindPointClustersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Atrast punktu klasterus</h2></td>
+                    <td>
+                    <img src="../images/GUID-40DA7286-67EA-4333-91C5-4CD527C21B4A-web.png" class="titleImage" alt="Atrast punktu klasterus">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Rīks Atrast punktu klasterus atrod punktu elementu klasterus apkārtējā troksnī, ņemot vērā to telpisko sadalījumu.
+            </p>
+            <p>Tālāk ir sniegti piemēri:
+                <ul>
+                    <li>Atrast klasterus ar kaitēkļu-invadētajām mājsaimniecībām, lai palīdzētu tos mērķtiecīgi izskaust.  
+                    </li>
+                    <li>Informē&scaron;ana un rīcība par glāb&scaron;anas un evakuācijas vajadzībām, ņemot vērā klasteru izmēru un atra&scaron;anās vietu, izmantojot ģeogrāfiski sasaistītus tvītus, informējot pēc dabas katastrofām vai terora aktiem.
                     </li>
                 </ul>
                 
@@ -381,7 +439,7 @@
 <hr/>
             <p>Buferis ir platība, kas aptver noteiktu attālumu no kāda punkta, līnijas vai laukuma elementa.
             </p>
-            <p>Piemēram:
+            <p>Tālāk ir sniegti piemēri.
                 <ul>
                     <li>Lietojot lineāros upes elementus, veidojiet katras upes buferzonu, kas 50&nbsp;reizes pārsniedz upes platumu, lai noteiktu piedāvāto piekrastes robežu.
                     </li>
@@ -392,14 +450,18 @@
             </p>
             <br/>
         </div>
-    <div id="ManageDataCategory" class="smallsize">
+    <div id="ManageDataCategory" class="regularsize">
         <h2>Pārvaldīt datus</h2>
         <hr/>
-        <p>&Scaron;ie rīki tiek izmantoti ikdienas ģeogrāfisko datu un tabulas datu pārvaldībai.
+        <p>&Scaron;ie rīki tiek izmantoti ikdienas ģeogrāfisko datu un tabulu datu pārvaldībai. 
             <ul>
+                <li>Funkcija  <b>Pievienot datus</b> pievieno elementus eso&scaron;am viesotu elementu slānim.
+                </li>
                 <li>Rīks  <b>Aprēķināt lauku</b> aprēķina jaunu lauku vai maina eso&scaron;o, kā arī izveido jaunu slāni jūsu saturā.
                 </li>
-                <li> <b>Kopēt datu krātuvē</b> veic datu kopē&scaron;anu ArcGIS Data Store krātuvē un izveido slāni jūsu saturā.
+                <li>Funkcija  <b>Kopēt datu krātuvē</b> nokopē jūsu ArcGIS Data Store eso&scaron;os datus un izveido slāni saturā. 
+                </li>
+                <li>Funkcija  <b>Pārklājuma slāņi</b> apvieno divus vai vairākus slāņus vienā slānī.
                 </li>
             </ul>
             
@@ -417,7 +479,7 @@
             </table>
 <hr/>
             <p>Kopē ievades elementu slāni vai tabulu  ArcGIS Data Store uz  ArcGIS Enterprise izveido slāni jūsu saturā. </p>
-            <p>Piemēram:
+            <p>Tālāk ir sniegti piemēri:
                 <ul>
                     <li>Kopējiet failu  <code>.csv</code> kolekciju no Big Data faila koplietojuma uz telpas un laika datu krātuvi vizualizācijai.
                     </li>
@@ -440,11 +502,62 @@
             </table>
 <hr/>
             <p>Aprēķina vērtības jaunam vai eso&scaron;am laukam un izveido slāni jūsu saturā programmā  ArcGIS Enterprise. </p>
-            <p>Piemēram:
+            <p>Tālāk ir sniegti piemēri.
                 <ul>
-                    <li>Mainiet eso&scaron;o failu  <i>kopsumma</i>, lai tiktu iegūta <i>total_2016</i>, <i>total_2017</i> un <i>total_2018</i> ieņēmumu summa.
+                    <li>Mainiet eso&scaron;o lauku ar nosaukumu  <i>total</i>, lai tiktu iegūta ieņēmumu summa no laukiem <i>total_2016</i>, <i>total_2017</i> un <i>total_2018</i>.
                     </li>
-                    <li>Izveidojiet jaunu lauku, lai sadalītu pa kategorijām apdraudējuma līmeņus, pamatojoties uz lauka vērtībām, piemēram,  <i>vēja ātrums</i> un <i>piesārņotājs</i>.
+                    <li>Izveidojiet jaunu lauku, lai sadalītu apdraudējuma līmeņus pa kategorijām, ņemot vērā lauka vērtības, piemēram,  <i>windspeed</i> un <i>pollutant</i>.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="OverlayLayersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Pārklājuma slāņi</h2></td>
+                    <td>
+                    <img src="../images/GUID-00A64703-4E97-4398-AE5C-F1885375BC30-web.png" class="titleImage" alt="Pārklāt slāņus">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Pārklā&scaron;ana apvieno divus vai vairāk slāņus vienā slānī. Pārklājums tiek izmantots, lai atbildētu uz vienu no ģeogrāfijas pamatjautājumiem: Kas virs kā atrodas? Tālāk ir sniegti piemēri
+                <ul>
+                    <li>Kuri zemes gabali atrodas 100 gadīgā palienē? (Ietvaros ir tikai vēl viens veids, kā pateikt, kas virs kā atrodas.)
+                          
+                    </li>
+                    <li>Kādi zemes lietojuma veidi atrodas uz kāda augsnes veida?
+                         
+                    </li>
+                    <li>Kādas akas atrodas pamestajās militārajās bāzēs?
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="AppendDataTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Pievienot datus</h2></td>
+                    <td>
+                    <img src="../images/GUID-8C95EAE0-904A-42C4-8C3D-303E74FD6DD7-web.png" class="titleImage" alt="Rīka Pievienot datus darbplūsmas diagramma">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Pievieno elementus eksistējo&scaron;am viesotam slānim jūsu saturā  ArcGIS Enterprise. </p>
+            <p>Tālāk ir sniegti piemēri:
+                <ul>
+                    <li>Katru mēnesi atjaunina elementu slāni 2018_Sales, tikko ir pieejamas jūsu atskaites. 
+                    </li>
+                    <li>Pievieno viesuļvētras izseko&scaron;anas datu kopas no 2016.&nbsp;un 2017.&nbsp;gada galvenajai viesuļvētras datu kopai.
+                    </li>
+                    <li>Savāc un pievieno datu kopas no dažādiem avotiem ar at&scaron;ķirīgām shēmām, kas izmantotas pielāgotai lauku kartē&scaron;anai.
                     </li>
                 </ul>
                 

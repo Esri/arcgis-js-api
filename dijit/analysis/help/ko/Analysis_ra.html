@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>래스터 분석 도구에서는  ArcGIS Image Server를 사용하여 대형 래스터 데이터셋을 분석할 수 있습니다. 또한 서버의 성능을 활용하여 데이터를 좀 더 빠르게 분석할 수 있습니다.  Portal for ArcGIS 웹 UX에서 제공되고 있는 도구모음은  <b>데이터 요약</b>, <b>패턴 분석</b>, <b>이미지 분석</b>, <b>터레인 분석</b>, <b>데이터 관리</b>입니다.
+        <p>래스터 분석 도구에서는  ArcGIS Image Server를 사용하여 대형 래스터 데이터셋을 분석할 수 있습니다. 또한 서버의 성능을 활용하여 데이터를 좀 더 빠르게 분석할 수 있습니다.  Portal for ArcGIS 웹 UX에서 제공되고 있는 도구모음은  <b>데이터 요약</b>, <b>패턴 분석</b>, <b>이미지 분석</b>, <b>지형 분석</b>, <b>데이터 관리</b>입니다.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
@@ -59,7 +59,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>다음 범위 내 래스터 요약</h2></td>
+                    <td><h2>다음 범위 내 래스터 요약(Summarize Raster Within)</h2></td>
                     <td>
                     <img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" class="titleImage" alt="다음 범위 내 래스터 요약 도구">
                     </td>
@@ -106,7 +106,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>밀도 계산</h2></td>
+                    <td><h2>밀도 계산(Calculate Density)</h2></td>
                     <td>
                     <img src="../images/GUID-4EE4838C-E210-43CE-99C7-1A648A18C10B-web.png" class="titleImage" alt="밀도 계산 도구">
                     </td>
@@ -121,14 +121,79 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>포인트 내삽</h2></td>
+                    <td><h2>포인트 보간(Interpolate Points)</h2></td>
                     <td>
-                    <img src="../images/GUID-06D80BB3-7154-4FAA-9C9B-D665450EF3BC-web.png" class="titleImage" alt="포인트 내삽 도구">
+                    <img src="../images/GUID-06D80BB3-7154-4FAA-9C9B-D665450EF3BC-web.png" class="titleImage" alt="포인트 보간 도구">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
             <p>이 도구를 이용하면 여러 포인트에서 발견된 측정값을 기반으로 새 위치에서의 값을 예측할 수 있습니다. 이 도구는 각 포인트에서 값이 있는 포인트 데이터를 가져가 예측 값으로 분류된 영역을 반환합니다. 이 도구를 사용하여 개별 우량계에서 수행된 측정을 기반으로 하천에서 강우량 수준을 예측할 수 있습니다.
+            </p>
+            <br/>
+        </div>
+    <div id="UseProximityCategory" class="smallsize">
+        <h2>인접도 사용 (Use Proximity)</h2>
+        <hr/>
+        <p>공간 분석에서 가장 많이 제기되는 일반 질문 중 하나인 &quot;무엇과 무엇이 인접합니까?&quot;라는 질문에 대한 답을 찾는데 사용하는 도구입니다.
+
+            <ul>
+                <li> <b>거리 계산</b>은 하나 또는 여러 원본으로부터의 유클리드 거리, 방향 및 할당을 계산합니다.
+                    
+
+                </li>
+                <li> <b>최적 이동 비용 네트워크 결정</b>은 입력 영역 집합으로부터의 최적 비용 네트워크를 계산합니다.
+                    
+
+                </li>
+                <li> <b>폴리라인으로의 이동 비용 경로 결정</b>은 원본과 알려진 목적지 간의 최저 비용 폴리라인 경로를 계산합니다.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateDistanceTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>거리 계산(Calculate Distance)</h2></td>
+                    <td>
+                    <img src="../images/GUID-34E2E6F3-2F60-43F5-B499-D5735DE08602-web.png" class="titleImage" alt="거리 계산">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>하나 또는 여러 원본으로부터의 유클리드 거리, 방향 및 할당을 계산합니다. 이 도구를 사용하여 위치에서 도로, 건물 또는 공원까지의 거리를 결정합니다. 가장 직접적인 방법으로 위치에서 원본으로 돌아가야 하는 방향을 결정할 수도 있습니다. 가장 가까운 원본인 연구 영역의 모든 위치를 볼 수 있습니다.
+            </p>
+            <br/>
+        </div>
+        <div id="DetermineOptimumTravelCostNetworkTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>최적 이동 비용 네트워크 결정(Determine Optimum Travel Cost Network)</h2></td>
+                    <td>
+                    <img src="../images/GUID-097BDD6E-0AD8-44F2-BB70-C5395F4B1AF4-web.png" class="titleImage" alt="최적 이동 비용 네트워크 도구 그림 결정">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>입력 영역의 집합으로부터의 최적 비용 네트워크를 계산합니다.
+            </p>
+            <br/>
+        </div>
+        <div id="DetermineTravelCostPathAsPolylineTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>폴리라인으로의 이동 비용 경로 결정</h2></td>
+                    <td>
+                    <img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" class="titleImage" alt="폴리라인 도구 그림으로의 이동 비용 경로 결정">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>원본과 알려진 목적지 간의 최저 비용 폴리라인을 계산합니다.
             </p>
             <br/>
         </div>
@@ -165,7 +230,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>식생 모니터링</h2></td>
+                    <td><h2>식생 모니터링(Monitor Vegetation)</h2></td>
                     <td>
                     <img src="../images/GUID-7763FCC0-2EA1-463B-98D0-4EBDF6150907-web.png" class="titleImage" alt="포털용 식생 모니터링 도구">
                     </td>
@@ -177,11 +242,11 @@
             <br/>
         </div>
     <div id="AnalyzeTerrainCategory" class="smallsize">
-        <h2>터레인 분석</h2>
+        <h2>지형 분석(Analyze Terrain)</h2>
         <hr/>
         <p>이러한 도구는 래스터 표면을 분석하도록 도와줍니다. 
             <ul>
-                <li> <b>경사 계산</b>은 터레인의 기울기를 계산합니다.
+                <li> <b>경사 계산</b>은 지형의 기울기를 계산합니다.
                     
 
                 </li>
@@ -193,6 +258,10 @@
                     
 
                 </li>
+                <li> <b>유역</b>은 표면에서 식별된 위치 위의 기여 영역을 계산합니다.
+                    
+
+                </li>
             </ul>
             
         </p>
@@ -201,14 +270,14 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>경사 계산</h2></td>
+                    <td><h2>경사 계산(Calculate Slope)</h2></td>
                     <td>
                     <img src="../images/GUID-D33862C6-01BB-445E-B0C3-BC8B8C1858DA-web.png" class="titleImage" alt="포털용 경사 계산 도구">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>입력 고도 데이터의 경사를 보여주는 표면을 식별합니다. 경사는 각 디지털 고도 모델(DEM) 셀에 대한 고도의 변경율을 나타냅니다.
+            <p>입력 고도 데이터의 경사를 보여주는 표면을 식별합니다. 경사는 각 수치 표고 모델(DEM) 셀에 대한 고도의 변경율을 나타냅니다.
             </p>
             <br/>
         </div>
@@ -216,7 +285,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>경사면 방향 취득</h2></td>
+                    <td><h2>경사면 방향 취득(Derive Aspect)</h2></td>
                     <td>
                     <img src="../images/GUID-D03FF025-0530-4D0D-87A3-B25D6716F8F0-web.png" class="titleImage" alt="포털용 경사면 방향 취득 도구">
                     </td>
@@ -239,6 +308,21 @@
             </table>
 <hr/>
             <p>관찰자 집합이 볼 수 있는 래스터 표면의 위치를 결정합니다.
+            </p>
+            <br/>
+        </div>
+        <div id="WatershedTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>유역(Watershed)</h2></td>
+                    <td>
+                    <img src="../images/GUID-AF749369-8C2D-46FF-9D74-2CF7CAB7C7B0-web.png" class="titleImage" alt="유역 작업">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>래스터의 셀 집합 위에 기여 영역을 결정합니다.
             </p>
             <br/>
         </div>
@@ -271,7 +355,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>래스터 추출</h2></td>
+                    <td><h2>래스터 추출(Extract Raster)</h2></td>
                     <td>
                     <img src="../images/GUID-DC9CBCB9-A07C-42D3-A0CB-2FB1483CBF4C-web.png" class="titleImage" alt="포털의 래스터 추출 도구">
                     </td>
@@ -286,9 +370,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>값 리맵</h2></td>
+                    <td><h2>값 재배치(Remap Values)</h2></td>
                     <td>
-                    <img src="../images/GUID-4006E442-A60B-469A-891D-5ED442F64CB8-web.png" class="titleImage" alt="포털용 값 리맵 도구">
+                    <img src="../images/GUID-4006E442-A60B-469A-891D-5ED442F64CB8-web.png" class="titleImage" alt="포털용 값 재배치 도구">
                     </td>
                 </tr></tbody>
             </table>

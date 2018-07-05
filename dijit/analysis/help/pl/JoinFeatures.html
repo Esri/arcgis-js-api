@@ -41,14 +41,14 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="regularsize">
-        <h2>Połącz obiekty</h2><p/>
-        <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Połącz obiekty"></h2>
+        <h2>Złącz obiekty</h2><p/>
+        <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Złącz obiekty"></h2>
         <hr/>
-    <p>Operując na dw&oacute;ch warstwach, narzędzie Połącz obiekty umożliwia połączenie atrybut&oacute;w jednego obiektu z innym obiektem na podstawie relacji przestrzennych i atrybutowych. Narzędzie ustala wszystkie obiekty wejściowe, kt&oacute;re spełniają określone warunki połączenia, a następnie dołącza warstwę połączenia do warstwy docelowej. 
+    <p>Operując na dw&oacute;ch warstwach, narzędzie Złącz obiekty umożliwia połączenie atrybut&oacute;w jednego obiektu z innym obiektem na podstawie relacji przestrzennych i atrybutowych. Narzędzie ustala wszystkie obiekty wejściowe, kt&oacute;re spełniają określone warunki złączenia, a następnie dołącza warstwę złączenia do warstwy docelowej. 
     </p>
-    <p>Narzędzie Połącz obiekty można stosować do punkt&oacute;w, linii, obszar&oacute;w i tabel. Połączenie przestrzenne wymaga, aby dane miały geometrię. 
+    <p>Narzędzie Złącz obiekty można stosować do punkt&oacute;w, linii, obszar&oacute;w i tabel. Złączenie przestrzenne wymaga, aby dane miały geometrię. 
     </p>
-    <p>Jeśli zaznaczono opcję  <b>Użyj bieżącego zasięgu mapy</b>, analizowane będą tylko obiekty widoczne w bieżącym zasięgu mapy. Jeśli powyższa opcja nie jest zaznaczona, analizowane będą wszystkie obiekty w&nbsp;warstwie docelowej i warstwie połączenia, nawet jeśli będą znajdować się poza bieżącym zasięgiem mapy.
+    <p>Jeśli zaznaczono opcję  <b>Użyj bieżącego zasięgu mapy</b>, analizowane będą tylko obiekty widoczne w bieżącym zasięgu mapy. Jeśli powyższa opcja nie jest zaznaczona, analizowane będą wszystkie obiekty w&nbsp;warstwie docelowej i warstwie złączenia, nawet jeśli będą znajdować się poza bieżącym zasięgiem mapy.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -56,27 +56,27 @@
         <div><h2>Wybierz warstwę docelową</h2></div>
         <hr/>
         <div>
-            <p>Warstwa docelowa, do tabeli kt&oacute;rej zostaną dołączone atrybuty z warstwy połączenia.
+            <p>Warstwa docelowa, do tabeli kt&oacute;rej zostaną dołączone atrybuty z warstwy złączenia.
             </p>
             <p class="OnlineOnly">Poza wybraniem warstwy na mapie można wybrać opcję  <b>Wybierz warstwę analizy Living Atlas</b> lub <b>Wybierz warstwę analizy</b> dostępną w dolnej części menu rozwijanego. Zostanie wtedy otwarta galeria zawierająca kolekcje warstw przydatnych podczas wielu analiz. 
             </p> 
         </div>
     </div>
     <div id="joinLayer">
-        <div><h2>Wybierz warstwę do przyłączenia do warstwy docelowej</h2></div>
+        <div><h2>Wybierz warstwę do złączenia z warstwą docelową</h2></div>
         <hr/>
         <div>
-            <p>Warstwa połączenia zawierająca atrybuty, kt&oacute;re zostaną dołączone do warstwy docelowej.
+            <p>Warstwa złączenia zawierająca atrybuty, kt&oacute;re zostaną dołączone do warstwy docelowej.
             </p>
             <p class="OnlineOnly">Poza wybraniem warstwy na mapie można wybrać opcję  <b>Wybierz warstwę analizy Living Atlas</b> lub <b>Wybierz warstwę analizy</b> dostępną w dolnej części menu rozwijanego. Zostanie wtedy otwarta galeria zawierająca kolekcje warstw przydatnych podczas wielu analiz. 
             </p>
         </div>
     </div>
     <div id="joinType">
-        <div><h2>Wybierz typ połączenia</h2></div>
+        <div><h2>Wybierz typ złączenia</h2></div>
         <hr/>
         <div>
-            <p>Można zastosować połączenie przestrzenne, połączenie atrybutowe lub kombinację tych dw&oacute;ch typ&oacute;w. 
+            <p>Można zastosować złączenie przestrzenne, złączenie atrybutowe lub kombinację tych dw&oacute;ch typ&oacute;w. 
                 <ul>
                     <li> <b>Przestrzenne</b> &mdash; obiekty są łączone przy użyciu określonych relacji przestrzennych. W tym przypadku obie warstwy muszą mieć geometrię.
                     </li>
@@ -95,15 +95,15 @@
         <div>
             <p>Relacja przestrzenna, kt&oacute;ra decyduje o tym, czy obiekty zostaną ze sobą połączone. Dostępne relacje zależą od typu geometrii (punkt, linia, obszary) używanej w obiektach wejściowych. Dostępne są następujące relacje:
                 <ul>
-                    <li> <b>Takie same jak</b> &mdash; obiekty w warstwie docelowej zostaną dopasowane, jeśli są takie same jak obiekty w warstwie połączenia.
+                    <li> <b>Takie same jak</b> &mdash; obiekty w warstwie docelowej zostaną dopasowane, jeśli są takie same jak obiekty w warstwie złączenia.
                     </li>
-                    <li> <b>Przecina się</b> &mdash; obiekty w warstwie docelowej zostaną dopasowane, jeśli przecinają się z obiektami w warstwie połączenia.
+                    <li> <b>Przecina się</b> &mdash; obiekty w warstwie docelowej zostaną dopasowane, jeśli przecinają się z obiektami w warstwie złączenia.
                     </li>
-                    <li> <b>Całkowicie zawiera</b> &mdash; obiekty zostaną dopasowane, jeśli obiekty w warstwie docelowej całkowicie zawierają obiekty w warstwie połączenia.
+                    <li> <b>Całkowicie zawiera</b> &mdash; obiekty zostaną dopasowane, jeśli obiekty w warstwie docelowej całkowicie zawierają obiekty w warstwie złączenia.
                     </li>
-                    <li> <b>Całkowicie wewnątrz</b> &mdash; obiekty zostaną dopasowane, jeśli obiekty w warstwie docelowej znajdują się całkowicie wewnątrz obiekt&oacute;w w warstwie połączenia.
+                    <li> <b>Całkowicie wewnątrz</b> &mdash; obiekty zostaną dopasowane, jeśli obiekty w warstwie docelowej znajdują się całkowicie wewnątrz obiekt&oacute;w w warstwie złączenia.
                     </li>
-                    <li> <b>W odległości do</b> &mdash; obiekty w warstwie docelowej zostaną dopasowane, jeśli znajdują się w określonym promieniu od obiekt&oacute;w w warstwie połączenia.
+                    <li> <b>W odległości do</b> &mdash; obiekty w warstwie docelowej zostaną dopasowane, jeśli znajdują się w określonym promieniu od obiekt&oacute;w w warstwie złączenia.
                     </li>
                 </ul>
                 
@@ -111,29 +111,29 @@
         </div>
     </div>
     <div id="attributeRelationship">
-        <div><h2>Połączenie atrybutowe</h2></div>
+        <div><h2>Złączenie atrybutowe</h2></div>
         <hr/>
         <div>
-            <p>Relacja atrybutowa, kt&oacute;ra decyduje o tym, czy obiekty zostaną ze sobą połączone. Obiekty są dopasowywane, jeśli wartości w polach warstwy połączenia są r&oacute;wne wartościom w polach warstwy docelowej. 
+            <p>Relacja atrybutowa, kt&oacute;ra decyduje o tym, czy obiekty zostaną ze sobą złączone. Obiekty są dopasowywane, jeśli wartości w polach warstwy połączenia są r&oacute;wne wartościom w polach warstwy docelowej. 
             </p>
-            <p>Zał&oacute;żmy na przykład, że dla całego powiatu istnieje warstwa danych geograficznych z adresami zamieszkania, zwierająca pole  <i>ZIP</i> (kod pocztowy) i tabelaryczny zestaw danych demograficznych dotyczących zdrowia według kod&oacute;w pocztowych zawierający pole o nazwie <i>HEALTHZIP</i> (zdrowie - kod pocztowy). Zestaw danych zdrowotnych można połączyć z danymi na temat adres&oacute;w zamieszkania, dopasowując pole <i>ZIP</i> do pola <i>HEALTHZIP</i>, co spowoduje powstanie warstwy adres&oacute;w zamieszkania z odpowiadającymi im danymi zdrowotnymi.
+            <p>Zał&oacute;żmy na przykład, że dla całego powiatu istnieje warstwa danych geograficznych z adresami zamieszkania, zwierająca pole  <i>ZIP</i> (kod pocztowy) i tabelaryczny zestaw danych demograficznych dotyczących zdrowia według kod&oacute;w pocztowych zawierający pole o nazwie <i>HEALTHZIP</i> (zdrowie - kod pocztowy). Zestaw danych zdrowotnych można złączyć z danymi na temat adres&oacute;w zamieszkania, dopasowując pole <i>ZIP</i> do pola <i>HEALTHZIP</i>, co spowoduje powstanie warstwy adres&oacute;w zamieszkania z odpowiadającymi im danymi zdrowotnymi.
             </p>
         </div>
     </div>
     <div id="joinOperation">
-        <div><h2>Wybierz operację połączenia</h2></div>
+        <div><h2>Wybierz operację złączenia</h2></div>
         <hr/>
         <div>
-            <p>Określa, w jaki spos&oacute;b będą obsługiwane połączenia między warstwą docelową i warstwą połączenia, jeśli w warstwie połączenia zostanie znalezionych wiele obiekt&oacute;w o takich samych relacjach z warstwą docelową.  Można wybrać jedną z dw&oacute;ch następujących operacji łączenia:
+            <p>Określa, w jaki spos&oacute;b będą obsługiwane złączenia między warstwą docelową i warstwą złączenia, jeśli w warstwie złączenia zostanie znalezionych wiele obiekt&oacute;w o takich samych relacjach z warstwą docelową. Można wybrać jedną z dw&oacute;ch następujących operacji złączenia:
                 <ul>
-                    <li> <b>Złączenie jeden do jeden</b> &mdash; ta opcja pozwala połączyć pierwszy pasujący obiekt w warstwie połączenia z pierwszym pasującym obiektem warstwy docelowej. Opcjonalnie, jeśli dodano statystyki, dopasowane połączone obiekty zostaną podsumowane względem poszczeg&oacute;lnych obiekt&oacute;w w warstwie docelowej. Domyślnie zostanie dodana liczba połączonych obiekt&oacute;w.
+                    <li> <b>Złączenie jeden do jeden</b> &mdash; ta opcja pozwala połączyć pierwszy pasujący obiekt w warstwie złączenia z pierwszym pasującym obiektem warstwy docelowej. Opcjonalnie, jeśli dodano statystyki, dopasowane złączone obiekty zostaną podsumowane względem poszczeg&oacute;lnych obiekt&oacute;w w warstwie docelowej. Domyślnie zostanie dodana liczba złączonych obiekt&oacute;w.
                     </li>
-                    <li> <b>Złączenie jeden do wielu</b> &mdash; ta opcja pozwala połączyć wszystkie pasujące obiekty w warstwie połączenia z warstwą docelową. Warstwa wynikowa będzie zawierać wiele rekord&oacute;w obiektu docelowego.
+                    <li> <b>Złączenie jeden do wielu</b> &mdash; ta opcja pozwala złączyć pierwszy pasujący obiekt w warstwie złączenia z pierwszym pasującym obiektem warstwy docelowej. Warstwa wynikowa będzie zawierać wiele rekord&oacute;w obiektu docelowego.
                     </li>
                 </ul>
                 
             </p>
-            <p>Zał&oacute;żmy, że chcesz znaleźć supermarkety w promieniu 5 kilometr&oacute;w od rynku produkt&oacute;w rolnych. W tym przypadku warstwa, do kt&oacute;rej będą dołączane obiekty, zawiera pojedynczy obiekt reprezentujący rynek produkt&oacute;w rolnych, a dołączane obiekty reprezentują lokalne sklepy spożywcze, kt&oacute;re mają atrybuty, takie jak suma rocznej sprzedaży. Używając narzędzia  <b>Połącz obiekty</b>, stwierdzasz, że pięć sklep&oacute;w spożywczych spełnia kryteria. Jeśli zostanie określona operacja połączenia <b>Złączenie jeden do wielu</b>, dane wynikowe będą zawierać pięć obiekt&oacute;w, a każdy wiersz będzie reprezentować rynek produkt&oacute;w rolnych i jeden z supermarket&oacute;w. W przypadku określenia relacji <b>Złączenie jeden do jeden</b> i wybrania statystyki dane wynikowe będą zawierać jeden obiekt reprezentujący rynek produkt&oacute;w rolnych i zbiorcze informacje o supermarketach, takie jak ich liczba (5) i inne dane statystyczne, na przykład suma rocznej sprzedaży.
+            <p>Zał&oacute;żmy, że chcesz znaleźć supermarkety w promieniu 5 kilometr&oacute;w od rynku produkt&oacute;w rolnych. W tym przypadku warstwa, do kt&oacute;rej będą dołączane obiekty, zawiera pojedynczy obiekt reprezentujący rynek produkt&oacute;w rolnych, a dołączane obiekty reprezentują lokalne sklepy spożywcze, kt&oacute;re mają atrybuty, takie jak suma rocznej sprzedaży. Używając narzędzia  <b>Złącz obiekty</b>, stwierdzasz, że pięć sklep&oacute;w spożywczych spełnia kryteria. Jeśli zostanie podana operacja <b>Złączenie jeden do wielu</b>, dane wynikowe będą zawierać pięć obiekt&oacute;w, a każdy wiersz będzie reprezentować rynek produkt&oacute;w rolnych i jeden z supermarket&oacute;w. W przypadku określenia relacji <b>Złączenie jeden do jeden</b> i wybrania statystyki dane wynikowe będą zawierać jeden obiekt reprezentujący rynek produkt&oacute;w rolnych i zbiorcze informacje o supermarketach, takie jak ich liczba (5) i inne dane statystyczne, na przykład suma rocznej sprzedaży.
             </p>
         </div>
     </div>
@@ -141,7 +141,7 @@
         <div><h2>Dodaj statystyki (opcjonalnie)</h2></div>
         <hr/>
         <div>
-            <p>Jeśli została wybrana opcja  <b>Złączenie jeden do jeden</b>, w przypadku p&oacute;l liczbowych można dokonać podsumowania i obliczyć statystyki dotyczące połączonych obiekt&oacute;w. Domyślnie liczba połączonych obiekt&oacute;w zostanie obliczona i dodana do warstwy wynikowej. Jeśli nie zostanie wybrana opcja dodawania statystyk, pierwszy pasujący obiekt w warstwie połączenia zostanie połączony z pierwszym pasującym obiektem w warstwie docelowej. Można obliczyć jedną lub większą liczbę z&nbsp;następujących wartości:
+            <p>Jeśli została wybrana opcja  <b>Złączenie jeden do jeden</b>, w przypadku p&oacute;l liczbowych można dokonać podsumowania i obliczyć statystyki dotyczące złączonych obiekt&oacute;w. Domyślnie liczba złączonych obiekt&oacute;w zostanie obliczona i dodana do warstwy wynikowej. Jeśli nie zostanie wybrana opcja dodawania statystyk, pierwszy pasujący obiekt w warstwie złączenia zostanie połączony z pierwszym pasującym obiektem w warstwie docelowej. Można obliczyć jedną lub większą liczbę z&nbsp;następujących wartości:
             </p>
             <ul>
                 <li>Suma
@@ -167,6 +167,14 @@
             <p>Jest to nazwa warstwy, kt&oacute;ra zostanie utworzona w zakładce  <b>Moje zasoby</b> i zostanie dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, wyświetlony zostanie komunikat z&nbsp;prośbą o&nbsp;podanie innej nazwy.
             </p>
             <p>Używając listy rozwijanej  <b>Zapisz wynik w</b>, można określić nazwę folderu w zakładce <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
+            </p>
+        </div>
+    </div>
+    <div id="isView">
+        <div><h2>Przechowywanie wyników w postaci widoku hostowanej warstwy obiektowej</h2></div>
+        <hr/>
+        <div>
+            <p>Wyniki przechowywane w postaci widoku hostowanej warstwy obiektowej pozostają aktualne, gdy zmienia się źr&oacute;dło danych.  Widoki hostowanej warstwy obiektowej zawierające złączenia są widokami tylko do odczytu, a ich analizowanie i przechowywanie nie powoduje wykorzystania kredyt&oacute;w. 
             </p>
         </div>
     </div>

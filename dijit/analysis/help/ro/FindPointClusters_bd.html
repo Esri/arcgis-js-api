@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Găsiți fascicule de puncte</h2><p/>
+        <h2><img src="../images/GUID-40DA7286-67EA-4333-91C5-4CD527C21B4A-web.png" alt="Găsiți fascicule de puncte"></h2>
+        <hr/>
+    <p>Instrumentul  Găsiți fascicule de puncte găsește obiecte spațiale fascicule de puncte &icirc;n zgomotul &icirc;nconjurător pe baza distribuției lor spațiale.
+    </p>
+    <p>O organizație neguvernamentală studiază o boală purtată de dăunători. Are un set de date de puncte care reprezintă gospodăriile din zona studiată, dintre care unele sunt infestate iar altele nu sunt. Cu ajutorul instrumentului  Găsiți fascicule de puncte, un analist poate stabili fascicule de gospodării infestate pentru a ajuta la indicarea zonei de &icirc;ncepere a tratamentului și de exterminare a dăunătorilor.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Alegeţi stratul tematic pentru care vor fi găsite fasciculele</h2></div>
+        <hr/>
+        <div>
+            <p>Stratul tematic de puncte &icirc;n care se va regăsi fasciculul.  Straturile tematice trebuie să fie &icirc;ntr-o referinţă spaţială proiectată sau să aibă referința spațială de procesare setată pe un sistem de coordonate proiectate utiliz&acirc;nd  <b>Mediile de analiză</b>.
+            </p>
+            <p>&Icirc;n afară de a alege un strat tematic din harta dvs., puteţi selecta opţiunile  <b>Răsfoire straturi tematice</b> &icirc;n partea inferioară a listei verticale pentru a răsfoi conţinutul pentru stratul tematic sau setul de date pentru partajarea de fişiere big data.
+            </p>
+        </div>
+    </div>
+    <div id="minFeaturesCluster">
+        <div><h2>Numărul minim de puncte care vor fi considerate un fascicul</h2></div>
+        <hr/>
+        <div>
+            <p>Numărul minim de obiecte spaţiale pentru generarea unui fascicul.
+            </p>
+        </div>
+    </div>
+    <div id="searchDistance">
+        <div><h2>Limitare interval de căutare la</h2></div>
+        <hr/>
+        <div>
+            <p>Distanța maximă la care se consideră că obiectele spațiale fac parte din același fascicul.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Nume strat tematic rezultat</h2></div>
+        <hr/>
+        <div>
+            <p> Numele stratului tematic care va fi creat &icirc;n <b>Resursele Mele</b> și va fi adăugat pe hartă. Numele implicit se bazează pe numele instrumentului şi numele stratului tematic de intrare. Dacă stratul tematic există deja, instrumentul va eşua.
+            </p>
+            <p>Utiliz&acirc;nd caseta derulantă  <b>Salvare rezultat &icirc;n</b> puteţi specifica numele unui director din <b>Resursele mele</b> &icirc;n care va fi salvat rezultatul.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

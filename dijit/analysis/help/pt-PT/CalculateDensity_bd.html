@@ -70,7 +70,7 @@
         <div>
             <p>A camada de pontos a partir da qual a densidade ser&aacute; calculada.
             </p>
-            <p>Para al&eacute;m de selecionar uma camada do seu mapa, pode selecionar  <b>Explorar Camadas</b> na parte inferior da lista pendente para navegar at&eacute; aos seus conte&uacute;dos de um conjunto de dados de partilha de big data ou camada de elementos.
+            <p>In addition to choosing a layer from your map, you can choose  <b>Browse Layers</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer.
             </p>
         </div>
     </div>
@@ -90,7 +90,7 @@
         <div>
             <p>O formato de caixas &agrave;s quais os pontos est&atilde;o agregados e utilizado para o c&aacute;lculo da densidade.
             </p>
-            <p>An&aacute;lise utilizando caixas  <b>Quadrado</b> ou <b>Hex&aacute;gono</b> requerem um ambiente de coordenadas projetadas. Pode definir o <b>Sistema de coordenadas de processamento</b> nos <b>Ambientes de An&aacute;lise</b>. Se o seu sistema de coordenadas projetado n&atilde;o se encontra definido para um sistema de coordenadas projetado, ser&aacute; instado a defini-lo quando <b>Correr a An&aacute;lise</b>.
+            <p>Analysis using  <b>Square</b> or <b>Hexagon</b> bins requires a projected coordinate system. You can set the <b>Processing coordinate system</b> in <b>Analysis Environments</b>. If your processing coordinate system is not set to a projected coordinate system, you will be prompted to set it when you <b>Run Analysis</b> .
             </p>
         </div>
     </div>
@@ -138,20 +138,20 @@
         <div><h2>Calcular densidade utilizando etapas temporais (opcional)</h2></div>
         <hr/>
         <div>
-            <p>Caso a componente temporal se encontre ativa na camada de pontos de entrada, pode analisar recorrendo a etapas temporais.  Existem tr&ecirc;s par&acirc;metros que pode definir quando utiliza componente temporal:
+            <p>If time is enabled on the input point layer and it is of type instant, you can  analyze using time stepping.  There are three parameters you can set when you use time:
                 <ul>
-                    <li> <b>Intervalo entre etapas temporais</b>
+                    <li> <b>Time step interval</b>
                     </li>
-                    <li> <b>Frequ&ecirc;ncia de repeti&ccedil;&atilde;o da etapa temporal</b>
+                    <li> <b>How often to repeat the time step</b>
                     </li>
-                    <li> <b>Hora &agrave; qual alinhar as etapas temporais</b>
+                    <li> <b>Time to align the time steps to</b>
                     </li>
                 </ul>
                 
             </p>
-            <p>Imagine que tem dados que representam um ano em tempo e que pretende analis&aacute;-los recorrendo a etapas semanais. Para isso, teria de definir o  <b>Intervalo de etapa temporal</b> para <code>1 semana</code>.
+            <p>For example, if you have data that represents a year in time and you want to analyze it using weekly steps, set  <b>Time step interval</b> to <code>1 week</code>. 
             </p>
-            <p>Imagine que tem dados que representam um ano em tempo e que pretende analis&aacute;-los utilizando a primeira semana do m&ecirc;s. Para isso, teria de definir o  <b>Intervalo de etapa temporal</b> para <code>1 semana</code>, <b>Frequ&ecirc;ncia de repeti&ccedil;&atilde;o da etapa temporal</b> para <code>1 m&ecirc;s</code>, e <b>Hora &agrave; qual alinhar as etapas temporais</b> para <code>1 de janeiro, &agrave;s 12:00</code>.
+            <p>For example, if you have data that represents a year in time and you want to analyze it using the first week of the month, set  <b>Time step interval</b> to <code>1 week</code>, <b>How often to repeat the time step</b> to <code>1 month</code>, and <b>Time to align the time steps to</b> to <code>January 1, at 12:00 am</code>.
             </p>
         </div>
     </div>
@@ -159,9 +159,9 @@
         <div><h2>Intervalo entre etapas temporais</h2></div>
         <hr/>
         <div>
-            <p>Intervalo temporal utilizado para gerar etapas temporais. O intervalo de etapas temporais pode ser utilizado isoladamente ou com os par&acirc;metros  <b>Frequ&ecirc;ncia de repeti&ccedil;&atilde;o da etapa temporal</b> ou <b>Hora &agrave; qual alinhar as etapas temporais</b> .
+            <p>The interval of time used for generating time steps.  <b>Time step interval</b> can be used alone or with the <b>How often to repeat the time step</b> or <b>Time to align the time steps to</b> parameter.
             </p>
-            <p>Caso pretendesse criar parcelas temporais que tivessem lugar todas as segundas-feiras entre as 9:00 e as 10:00 da manh&atilde;,  <b>Intervalo de etapa temporal</b> seria <code>1 hora</code>, <b>Frequ&ecirc;ncia de repeti&ccedil;&atilde;o da etapa temporal</b> seria <code>1 semana</code>, e <b>Hora &agrave; qual alinhar as etapas temporais</b> seria <code>9:00:00 de uma segunda-feira</code>.
+            <p>For example, if you want to create time steps that take place every Monday from 9:00 a.m. until 10:00 a.m., set  <b>Time step interval</b> to <code>1 hour</code>, <b>How often to repeat the time step</b> to <code>1 week</code>, and <b>Time to align the time steps to</b> to <code>9:00:00 a.m. on a Monday</code>.
             </p>
         </div>
     </div>
@@ -169,9 +169,9 @@
         <div><h2>Frequência de repetição da etapa temporal</h2></div>
         <hr/>
         <div>
-            <p> A etapa utilizada para calcular uma parcela temporal. <b>Frequ&ecirc;ncia de repeti&ccedil;&atilde;o da etapa temporal</b> pode ser utilizado isoladamente ou com <b>Intervalo de etapa temporal</b>, com <b>Hora de refer&ecirc;ncia</b>, ou, simultaneamente, com os par&acirc;metros <b>Intervalo de etapa temporal</b> e <b>Hora &agrave; qual alinhar as etapas temporais</b>.
+            <p> The step used for calculating a time step. <b>How often to repeat the time step</b> can be used alone, with <b>Time step interval</b>, with <b>Reference Time</b>, or with both <b>Time step interval</b> and <b>Time to align the time steps to</b>.
             </p>
-            <p> Caso pretendesse criar parcelas temporais que tivessem lugar todas as segundas-feiras entre as 9:00 e as 10:00 da manh&atilde;, <b>Intervalo de etapa temporal</b> seria <code>1 hora</code>, <b>Frequ&ecirc;ncia de repeti&ccedil;&atilde;o da etapa temporal</b> seria <code>1 semana</code>, e <b>Hora &agrave; qual alinhar as etapas temporais</b> seria <code>9:00:00 de uma segunda-feira</code>.
+            <p> For example, if you want to create time steps that take place every Monday from 9:00 a.m. until 10:00 a.m., set <b>Time step interval</b> to <code>1 hour</code>, <b>How often to repeat the time step</b> to <code>1 week</code>, and <b>Time to align the time steps to</b> to <code>9:00:00 a.m. on a Monday</code>.
             </p>
         </div>
     </div>
@@ -179,9 +179,9 @@
         <div><h2>Hora à qual alinhar as etapas temporais</h2></div>
         <hr/>
         <div>
-            <p>A data e hora utilizadas para alinhar a divis&atilde;o temporal. A utiliza&ccedil;&atilde;o de etapas temporais ter&aacute; in&iacute;cio a partir desta hora, e continuar&aacute; de forma regressiva at&eacute; &agrave; mesma. Caso n&atilde;o seja selecionada qualquer hora de refer&ecirc;ncia, a etapa temporal ser&aacute; alinhada a 1 de janeiro de 1970. 
+            <p>The date and time used to align time slicing. Time stepping will start at and continue backward from this time. If no reference time is selected, time stepping will align to January 1st, 1970. 
             </p>
-            <p> Caso pretendesse criar parcelas temporais que tivessem lugar todas as segundas-feiras entre as 9:00 e as 10:00 da manh&atilde;, <b>Intervalo de etapa temporal</b> seria <code>1 hora</code>, <b>Frequ&ecirc;ncia de repeti&ccedil;&atilde;o da etapa temporal</b> seria <code>1 semana</code>, e <b>Hora &agrave; qual alinhar as etapas temporais</b> seria <code>9:00:00 de uma segunda-feira</code>.
+            <p> For example, if you want to create time steps that take place every Monday from 9:00 a.m. until 10:00 a.m., set <b>Time step interval</b> to <code>1 hour</code>, <b>How often to repeat the time step</b> to <code>1 week</code>, and <b>Time to align the time steps to</b> to <code>9:00:00 a.m. on a Monday</code>.
             </p>
         </div>
     </div>
@@ -189,7 +189,7 @@
         <div><h2>SpatialReference (wkid)</h2></div>
         <hr/>
         <div>
-            <p>Este &eacute; um par&acirc;metro tempor&aacute;rio de pr&eacute;-lan&ccedil;amento para definir a refer&ecirc;ncia espacial. Muitas ferramentas de big data requerem que o sistema de coordenadas projetado seja utilizado como refer&ecirc;ncia espacial para processamento. Por predefini&ccedil;&atilde;o, a ferramenta utilizar&aacute; o sistema de coordenadas de entrada, mas ir&aacute; falhar no caso de o mesmo se tratar de um sistema de coordenadas geogr&aacute;ficas. Para definir um sistema de coordenadas projetado, introduza o WKID. Por exemplo,  <b>Web Mercator</b> seria introduzido como <code>3857</code>.
+            <p>This is a temporary parameter for prerelease  to set the processing spatial reference. Many big data tools require that a projected coordinate system is used as the spatial reference for processing. By default, the tool will use the input coordinate system but will fail if it's a geographic coordinate system. To set a projected coordinate system, enter the WKID. For example,  <b>Web Mercator</b> would be entered as <code>3857</code>.
             </p>
         </div>
     </div>
@@ -197,16 +197,16 @@
         <div><h2>Selecionar armazenamento de dados</h2></div>
         <hr/>
         <div>
-            <p>Os resultados de GeoAnalytics s&atilde;o armazenados num ArcGIS Data Store e exibidos como uma camada de elementos no  Portal for ArcGIS. Na maioria dos casos, os resultados dever&atilde;o ser armazenados num armazenamento de dados espaciotemporal, sendo este o comportamento predefinido. Em alguns casos, ser&aacute; uma boa op&ccedil;&atilde;o guardar os resultados no armazenamento de dados relacional. As seguintes s&atilde;o raz&otilde;es que justificam o armazenamento de resultados no armazenamento de dados espaciotemporal. 
+            <p>GeoAnalytics results are stored to an ArcGIS Data Store and exposed as a feature layer in   Portal for ArcGIS. In most cases, results should be stored to the spatiotemporal data store and this is the default. In some cases, saving results to the  relational data store is a good option. The following are reasons why you may want to store results to the relational data store: 
                 <ul>
-                    <li>Utilizar resultados em colabora&ccedil;&atilde;o portal to portal.
+                    <li>You can use results in portal-to-portal collaboration.
                     </li>
-                    <li>Ativar funcionalidades de sincroniza&ccedil;&atilde;o com os resultados.
+                    <li>You can enable sync capabilities with your results.
                     </li>
                 </ul>
                 
             </p>
-            <p>N&atilde;o dever&aacute; utilizar o armazenamento de dados relacional caso antecipe um aumento dos seus resultados de GeoAnalytics, e caso necessite de tirar partido das funcionalidades de armazenamento de big data para gerir grandes quantidades de dados. 
+            <p>You should not use the relational data store if you expect your GeoAnalytics results to increase and need to take advantage of the spatiotemporal big data store's capabilities to handle large amounts of data.
             </p>
         </div>
     </div>
@@ -214,9 +214,13 @@
         <div><h2>Nome da camada resultante</h2></div>
         <hr/>
         <div>
-            <p> Este &eacute; o nome da camada que ser&aacute; criada em <b>O Meu Conte&uacute;do</b> e adicionada ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Caso a camada j&aacute; existe, a ferramenta ir&aacute; falhar.
+            <p> The name of the layer that will be created in <b>My
+Content</b> and added to the map. The default name is based on the
+tool name and the input layer name. If the layer already exists, the tool will fail.
             </p>
-            <p>Ao utilizar a caixa suspensa  <b>Guardar resultado em</b> pode definir o nome da pasta em <b>O Meu Conte&uacute;do</b> onde o resultado ser&aacute; guardado.
+            <p>Using the  <b>Save result in</b> drop-down box, you can specify
+the name of a folder in <b>My Content</b> where the result will be
+saved.
             </p>
         </div>
     </div>

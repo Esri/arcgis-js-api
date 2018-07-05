@@ -41,14 +41,14 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="regularsize">
-        <h2>Entités jointes</h2><p/>
-        <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Entit&eacute;s jointes"></h2>
+        <h2>Joindre les entités</h2><p/>
+        <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Joindre des entit&eacute;s"></h2>
         <hr/>
     <p>Entit&eacute;s jointes fonctionne avec deux couches et joint des attributs d'une entit&eacute; &agrave; une autre en fonction des relations spatiales et attributaires. L'outil d&eacute;termine toutes les entit&eacute;s en entr&eacute;e qui r&eacute;pondent &agrave; des conditions de jointure sp&eacute;cifi&eacute;es et ajoute la couche de jointure &agrave; la couche cible. 
     </p>
     <p>L'outil Entit&eacute;s jointes peut s'appliquer aux points, lignes, surfaces et tables. Pour utiliser une jointure spatiale, vos donn&eacute;es doivent poss&eacute;der une g&eacute;om&eacute;trie. 
     </p>
-    <p>Si l'option  <b>Utiliser l'&eacute;tendue courante de la carte</b> est s&eacute;lectionn&eacute;e, seules les entit&eacute;s visibles au sein de l'&eacute;tendue courante de la carte seront analys&eacute;es.  Si l'option n'est pas s&eacute;lectionn&eacute;e, toutes les entit&eacute;s qui se trouvent &agrave; la fois dans la couche cible et dans la couche de jointure seront analys&eacute;es, m&ecirc;me si elles se trouvent en dehors de l'&eacute;tendue courante de la carte.
+    <p>Si l'option  <b>Utiliser l'&eacute;tendue courante de la carte</b> est s&eacute;lectionn&eacute;e, seules les entit&eacute;s visibles au sein de l'&eacute;tendue courante de la carte seront analys&eacute;es. Si l'option n'est pas s&eacute;lectionn&eacute;e, toutes les entit&eacute;s qui se trouvent &agrave; la fois dans la couche cible et dans la couche de jointure seront analys&eacute;es, m&ecirc;me si elles se trouvent en dehors de l'&eacute;tendue courante de la carte.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -114,7 +114,7 @@
         <div><h2>Jointure attributaire</h2></div>
         <hr/>
         <div>
-            <p>La relation attributaire qui va d&eacute;terminer si les entit&eacute;s sont jointes les unes aux autres. Les entit&eacute;s sont appari&eacute;es lorsque les valeurs de champs dans la couche de jointure sont &eacute;gales &agrave; celles de la couche cible. 
+            <p>La relation attributaire qui va d&eacute;terminer si les entit&eacute;s sont jointes les unes aux autres. Les entit&eacute;s sont appari&eacute;es lorsque les valeurs de champ de la couche de jointure sont identiques &agrave; celles de la couche cible. 
             </p>
             <p>Supposons par exemple que vous poss&eacute;dez une couche g&eacute;ographique r&eacute;gionale d'adresses r&eacute;sidentielles (notamment un champ  <i>ZIP</i>) et un jeu de donn&eacute;es tabulaire de donn&eacute;es d&eacute;mographiques sanitaires par code postal (notamment, un champ nomm&eacute; <i>HEALTHZIP</i>). Vous pouvez joindre le jeu de donn&eacute;es concernant la sant&eacute; aux donn&eacute;es r&eacute;sidentielles en appariant le champ <i>ZIP</i> &agrave; <i>HEALTHZIP</i>, ce qui g&eacute;n&egrave;re une couche des r&eacute;sidences comportant les donn&eacute;es sanitaires correspondantes.
             </p>
@@ -126,9 +126,9 @@
         <div>
             <p>D&eacute;termine le mode de traitement des jointures entre la couche cible et la couche de jointure si plusieurs entit&eacute;s dans la couche de jointure pr&eacute;sentent la m&ecirc;me relation &agrave; la couche cible. Vous avez le choix entre les deux op&eacute;rations de jointure suivantes&nbsp;:
                 <ul>
-                    <li> <b>Joindre un vers un</b>&nbsp;: cette option joint la premi&egrave;re entit&eacute; d'appariement de la couche de jointure &agrave; la premi&egrave;re entit&eacute; d'appariement de la couche cible.  Si des statistiques sont ajout&eacute;es, les entit&eacute;s jointes appari&eacute;es peuvent &eacute;galement &ecirc;tre agr&eacute;g&eacute;es sur chaque entit&eacute; de la couche cible.  Le total des entit&eacute;s jointes est ajout&eacute; par d&eacute;faut.
+                    <li> <b>Joindre un vers un</b>&nbsp;: cette option joint la premi&egrave;re entit&eacute; d'appariement de la couche de jointure &agrave; la premi&egrave;re entit&eacute; d'appariement de la couche cible.  Si vous ajoutez des statistiques, les entit&eacute;s appari&eacute;es jointes seront r&eacute;capitul&eacute;es dans chaque entit&eacute; de la couche cible.  Le nombre d&rsquo;entit&eacute;s jointes est ajout&eacute; par d&eacute;faut.
                     </li>
-                    <li> <b>Joindre un vers plusieurs</b>&nbsp;: cette option joint toutes les entit&eacute;s d'appariement de la couche de jointure &agrave; la couche cible.  La couche de r&eacute;sultat contiendra plusieurs enregistrements de la couche cible.
+                    <li> <b>Joindre un vers plusieurs</b>&nbsp;: cette option joint toutes les entit&eacute;s appari&eacute;es de la couche de jointure &agrave; la couche cible.  La couche de r&eacute;sultat contiendra plusieurs enregistrements de l&rsquo;entit&eacute; cible.
                     </li>
                 </ul>
                 
@@ -148,11 +148,11 @@
                 </li>
                 <li>Minimal
                 </li>
-                <li>Maximal
+                <li>Maximum
                 </li>
                 <li>Moyenne
                 </li>
-                <li>Ecart type
+                <li>&Eacute;cart type
                 </li>
             </ul>
             
@@ -167,6 +167,14 @@
             <p>Il s'agit du nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>Mon contenu</b> et ajout&eacute;e &agrave; la carte.  Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom.
             </p>
             <p>La zone de liste d&eacute;roulante  <b>Enregistrer le r&eacute;sultat dans</b> vous permet de sp&eacute;cifier le nom d'un dossier dans <b>Mon contenu</b> o&ugrave; le r&eacute;sultat sera enregistr&eacute;.
+            </p>
+        </div>
+    </div>
+    <div id="isView">
+        <div><h2>Stocker en tant que vue de couche d'entités hébergées</h2></div>
+        <hr/>
+        <div>
+            <p>Le stockage des r&eacute;sultats en tant que vue de couche d'entit&eacute;s h&eacute;berg&eacute;es permet aux donn&eacute;es de rester &agrave; jour en cas de modification&nbsp;des donn&eacute;es source. Les vues de couches d&rsquo;entit&eacute;s h&eacute;berg&eacute;s contenant des jointures seront en lecture seule et ne consomment pas de cr&eacute;dits pour l&rsquo;analyse et le stockage. 
             </p>
         </div>
     </div>

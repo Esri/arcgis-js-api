@@ -243,3 +243,6 @@ div.esriRenderingRuleContainer {
 .esriRenderingRuleVectorTooltip {
   width: 22em;
 }
+.esriRenderingRuleLoadingMsg {
+  font-style: italic;
+}
