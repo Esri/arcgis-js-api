@@ -116,6 +116,8 @@
 
 .esri-scale-menu__content {
   padding: 15px 4px;
+  display: flex;
+  align-items: center;
 }
 
 .esri-scale-menu {

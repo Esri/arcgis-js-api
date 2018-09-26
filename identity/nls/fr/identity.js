@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({lblItem:"élément",title:"Se connecter",info:"Connectez-vous pour accéder à l'élément sur {server} {resource}",oAuthInfo:"Connectez-vous pour continuer.",lblUser:"Nom d'utilisateur :",lblPwd:"Mot de passe :",lblOk:"OK",lblSigning:"Connexion…",lblCancel:"Annuler",errorMsg:"Nom d'utilisateur/mot de passe non valides. Réessayez.",invalidUser:"Le nom d’utilisateur ou le mot de passe que vous avez entré est incorrect.",forbidden:"Le nom d’utilisateur et le mot de passe sont valides, mais vous n’êtes pas autorisé à accéder cette ressource.",noAuthService:"Impossible d’accéder au service d’authentification."});

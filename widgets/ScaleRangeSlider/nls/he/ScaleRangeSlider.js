@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({noLimit:"ללא גבול",preview:"תצוגה מקדימה",currentScaleTooltip:"קנה מידה נוכחי של המפה (${scaleLabel})",customScaleInputTooltip:"הקלד קנה מידה.",current:"נוכחי",setTo:"הגדר ל:",selectOne:"(בחר אחד)",setToSelectOne:"${setTo} ${selectOne}",scaleRangeLabels:{world:"עולם",continent:"יבשה",countries:"ארצות",country:"ארץ",states:"מדינות",state:"מדינה",counties:"מחוזות",county:"מחוז",metropolitanArea:"אזור מטרופולין",cities:"ערים",city:"עיר",town:"עיר",neighborhood:"שכונה",streets:"רחובות",street:"רחוב",buildings:"בנינים",building:"מבנה",smallBuilding:"בנין קטן",rooms:"חדרים",room:"חדר"},featuredScaleLabels:{current:"תצוגת מפה נוכחית (${scaleLabel})",world:"עולם (${scaleLabel})",continent:"יבשת (${scaleLabel})",countriesBig:"ארצות - גדול (${scaleLabel})",countriesSmall:"ארצות - קטן (${scaleLabel})",statesProvinces:"מדינות / מחוזות (${scaleLabel})",stateProvince:"מדינה/מחוז (${scaleLabel})",counties:"מחוזות (${scaleLabel})",county:"מחוז (${scaleLabel})",metropolitanArea:"אזור מטרופולין (${scaleLabel})",cities:"ערים (${scaleLabel})",city:"עיר (${scaleLabel})",town:"עיר (${scaleLabel})",neighborhood:"שכונה (${scaleLabel})",streets:"רחובות (${scaleLabel})",street:"רחוב (${scaleLabel})",buildings:"בנינים (${scaleLabel})",building:"בנין (${scaleLabel})",smallBuilding:"בנין קטן (${scaleLabel})",rooms:"חדרים (${scaleLabel})",room:"חדר (${scaleLabel})"}});

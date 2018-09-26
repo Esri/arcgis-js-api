@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({title:"Měření",hint:"Začněte měření kliknutím na scénu pro umístění prvního bodu",unsupported:"Měření plochy není v MapView podporováno.",perimeterLength:"Obvod",area:"Plocha",unit:"Jednotka",notApplicable:"není k dispozici",newMeasurement:"Nové měření",units:{metric:"Metrické",imperial:"Imperiální","square-kilometers":"Kilometry čtvereční","square-meters":"Metry čtvereční","square-miles":"Čtvereční míle","square-inches":"Čtvereční palce","square-feet":"Čtvereční stopy","square-yards":"Čtvereční yardy","square-us-feet":"Čtvereční stopy (US)",acres:"akry",ares:"ary",hectares:"hektary"}});

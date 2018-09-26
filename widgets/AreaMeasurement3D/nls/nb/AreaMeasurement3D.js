@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({title:"Mål",hint:"Begynn å måle ved å klikke på scenen for å plassere ditt første punkt",unsupported:"MapView har ikke støtte for områdemåling",perimeterLength:"Omkrets",area:"Areal",unit:"Enhet",notApplicable:"–",newMeasurement:"Ny måling",units:{metric:"Metrisk",imperial:"Britiske målenheter","square-kilometers":"Kvadratkilometer","square-meters":"Kvadratmeter","square-miles":"Kvadratmiles","square-inches":"Kvadrattommer","square-feet":"Kvadratfot","square-yards":"Kvadratyard","square-us-feet":"Kvadratfot (USA)",acres:"Acre",ares:"ar",hectares:"Hektar"}});

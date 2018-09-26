@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
-define({widgetLabel:"Aluskaardi galerii",noBasemaps:"Ühtegi aluskaarti pole saadaval"});
+define({widgetLabel:"Aluskaartide galerii",noBasemaps:"Ühtegi aluskaarti pole saadaval"});

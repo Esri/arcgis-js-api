@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
-define(["require","exports"],function(e,r){function f(e,r){for(var f=e.typedBuffer,t=e.typedBufferStride,u=r.typedBuffer,d=r.typedBufferStride,o=r.count,n=0;n<o;n++){var i=n*t,p=n*d;f[i]=u[p],f[i+1]=u[p+1],f[i+2]=u[p+2]}}Object.defineProperty(r,"__esModule",{value:!0}),r.unrolledCopyVec3=f});
+define(["require","exports"],function(e,r){function f(e,r){for(var f=e.typedBuffer,t=e.typedBufferStride,u=r.typedBuffer,d=r.typedBufferStride,n=r.count,o=0;o<n;o++){var p=o*t,y=o*d;f[p]=u[y],f[p+1]=u[y+1],f[p+2]=u[y+2],f[p+3]=u[y+3]}}function t(e,r){for(var f=e.typedBuffer,t=e.typedBufferStride,u=r.typedBuffer,d=r.typedBufferStride,n=r.count,o=0;o<n;o++){var p=o*t,y=o*d;f[p]=u[y],f[p+1]=u[y+1],f[p+2]=u[y+2]}}function u(e,r){for(var f=e.typedBuffer,t=e.typedBufferStride,u=r.typedBuffer,d=r.typedBufferStride,n=r.count,o=0;o<n;o++){var p=o*t,y=o*d;f[p]=u[y],f[p+1]=u[y+1]}}function d(e,r){var f=e.count;r||(r=new e.TypedArrayConstructor(f));for(var t=0;t<f;t++)r[t]=e.get(t);return r}Object.defineProperty(r,"__esModule",{value:!0}),r.unrolledCopyVec4=f,r.unrolledCopyVec3=t,r.unrolledCopyVec2=u,r.makeDenseSingle=d});

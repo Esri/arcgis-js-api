@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({attach:"Fitxers adjunts",fields:"Camps",fieldsSummary:"Llista d'atributs i valors",media:"Multimèdia",next:"Següent",numCharts:"Nombre de gràfics",numImages:"Nombre d'imatges",noTitle:"Sense títol",previous:"Anterior"});

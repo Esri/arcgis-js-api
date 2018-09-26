@@ -36,8 +36,8 @@
  * @beta
  *
  * @see module:esri/widgets/Directions/DirectionsViewModel
- * @see [Directions.tsx]({{ JSAPI_BOWER_URL }}/widgets/Directions.tsx)
- * @see [Directions.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_Directions.scss)
+ * @see [Directions.tsx]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Directions.tsx)
+ * @see [Directions.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Directions.scss)
  * @see [Guide topic - Proxy pages](../guide/proxies/index.html)
  * @see [Sample - Directions widget](../sample-code/widgets-directions/index.html)
  *
@@ -97,7 +97,7 @@ import RouteSections = require("esri/widgets/Directions/support/RouteSections");
 import TimePicker = require("esri/widgets/Directions/support/TimePicker");
 
 // esri.widgets.support
-import { GoToOverride } from "esri/widgets/support/interfaces";
+type GoToOverride = __esri.GoToOverride;
 import { accessibleHandler, renderable, tsx } from "esri/widgets/support/widget";
 
 const NOW = "now";
@@ -169,6 +169,10 @@ const CSS = {
   signInContent: "esri-directions__sign-in-content",
   signInButton: "esri-directions__sign-in-button",
   contentTitle: "esri-directions__content-title",
+  warningCard: "esri-directions__warning-card",
+  warningHeader: "esri-directions__warning-header",
+  warningHeading: "esri-directions__warning-heading",
+  warningMessage: "esri-directions__warning-message",
 
   // icons
   stopsIcon: "esri-icon-radio-unchecked",
@@ -179,6 +183,7 @@ const CSS = {
   reverseStopIcon: "esri-icon-up-down-arrows",
   openIcon: "esri-icon-right-triangle-arrow",
   closeIcon: "esri-icon-down-arrow",
+  warningIcon: "esri-icon-notice-triangle",
   widgetIcon: "esri-icon-directions",
 
   // common
@@ -188,7 +193,7 @@ const CSS = {
   buttonTertiary: "esri-button--tertiary",
   emptyContent: "esri-widget__content--empty",
   emptyIllustration: "esri-widget__content-illustration--empty",
-  header: "esri-widget__header",
+  heading: "esri-widget__heading",
   offscreen: "esri-offscreen",
   select: "esri-select",
   screenReaderText: "esri-icon-font-fallback-text"
@@ -347,7 +352,8 @@ class Directions extends declared(Widget) {
   //  goToOverride
   //----------------------------------
 
-  @aliasOf("viewModel.goToOverride") goToOverride: GoToOverride = null;
+  @aliasOf("viewModel.goToOverride")
+  goToOverride: GoToOverride = null;
 
   //----------------------------------
   //  iconClass
@@ -362,7 +368,8 @@ class Directions extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property() iconClass = CSS.widgetIcon;
+  @property()
+  iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -377,7 +384,8 @@ class Directions extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property() label: string = i18n.widgetLabel;
+  @property()
+  label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  maxStops
@@ -391,7 +399,8 @@ class Directions extends declared(Widget) {
    * @instance
    * @default 50
    */
-  @aliasOf("viewModel.maxStops") maxStops: number = null;
+  @aliasOf("viewModel.maxStops")
+  maxStops: number = null;
 
   //----------------------------------
   //  routeServiceUrl
@@ -406,7 +415,8 @@ class Directions extends declared(Widget) {
    * @default "https://route.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World"
    * @autocast
    */
-  @aliasOf("viewModel.routeServiceUrl") routeServiceUrl: string = null;
+  @aliasOf("viewModel.routeServiceUrl")
+  routeServiceUrl: string = null;
 
   //----------------------------------
   //  routeSymbol
@@ -420,7 +430,8 @@ class Directions extends declared(Widget) {
    * @type {module:esri/symbols/SimpleLineSymbol}
    */
 
-  @aliasOf("viewModel.routeSymbol") routeSymbol: Symbol = null;
+  @aliasOf("viewModel.routeSymbol")
+  routeSymbol: Symbol = null;
 
   //----------------------------------
   //  searchProperties
@@ -438,7 +449,8 @@ class Directions extends declared(Widget) {
    *
    */
 
-  @property() searchProperties: SearchProperties = null;
+  @property()
+  searchProperties: SearchProperties = null;
 
   ////////////////////////////////////////////////////////////
   //
@@ -464,7 +476,7 @@ class Directions extends declared(Widget) {
    * @property {boolean} [resultGraphicEnabled=false] - Indicates whether to show a graphic on the map for the selected source.
    * @property {boolean} [searchAllEnabled] - Indicates whether to display the option to search all sources.
    * @property {string} [searchTerm] - The value of the search box input text string.
-   * @property {module:esri/core/Collection<module:esri/widgets/Search~FeatureLayerSource | module:esri/widgets/Search~LocatorSource>} [sources] - Specifies the sources
+   * @property {module:esri/core/Collection<module:esri/widgets/Search/FeatureLayerSearchSource | module:esri/widgets/Search/LocatorSearchSource>} [sources] - Specifies the sources
    * to search in the [view](#view).
    * @property {boolean} [suggestionsEnabled=true] - Indicates whether to display suggestions as the user enters input text in the widget.
    * @property {module:esri/views/MapView | module:esri/views/SceneView} [view] - The view of the widget.
@@ -489,7 +501,8 @@ class Directions extends declared(Widget) {
    * @property {module:esri/symbols/Symbol} [waypoint] - A waypoint stop symbol.
    *
    */
-  @aliasOf("viewModel.stopSymbols") stopSymbols: StopSymbols = null;
+  @aliasOf("viewModel.stopSymbols")
+  stopSymbols: StopSymbols = null;
 
   //----------------------------------
   //  view
@@ -502,7 +515,8 @@ class Directions extends declared(Widget) {
    * @instance
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
-  @aliasOf("viewModel.view") view: MapView | SceneView = null;
+  @aliasOf("viewModel.view")
+  view: MapView | SceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -567,7 +581,7 @@ class Directions extends declared(Widget) {
       viewModel: { state }
     } = this;
     const initializing = state === "initializing";
-    const failed = state === "error";
+    const failed = state === "error" && !this.viewModel.serviceDescription;
     const signInPending = state === "unauthenticated";
 
     const panelClasses = {
@@ -607,9 +621,9 @@ class Directions extends declared(Widget) {
   private _renderSignIn(): any {
     return (
       <div key="sign-in" class={CSS.signInContent}>
-        <h2 class={this.classes(CSS.header, CSS.contentTitle)}>{i18n.widgetLabel}</h2>
+        <h2 class={this.classes(CSS.heading, CSS.contentTitle)}>{i18n.widgetLabel}</h2>
         {this._renderPlaceholder()}
-        <h3 class={CSS.header}>{i18n.signInRequired}</h3>
+        <h3 class={CSS.heading}>{i18n.signInRequired}</h3>
         <button
           class={this.classes(CSS.button, CSS.buttonSecondary, CSS.signInButton)}
           tabIndex={0}
@@ -1217,13 +1231,25 @@ class Directions extends declared(Widget) {
     return <div class={CSS.loader} key="loader" />;
   }
 
+  private _renderWarningCard(): any {
+    return (
+      <div class={CSS.warningCard} role="alert">
+        <div class={CSS.warningHeader}>
+          <span class={CSS.warningIcon} aria-hidden="true" />
+          <div class={this.classes(CSS.heading, CSS.warningHeading)}>{i18nCommon.warning}</div>
+        </div>
+        <div class={CSS.warningMessage}>{i18n.serviceError}</div>
+      </div>
+    );
+  }
+
   private _renderDirectionsContainerContent(): any {
     const { lastRoute: directions, state } = this.viewModel;
     const hasError = state === "error";
     const isRouting = state === "routing";
 
     if (hasError) {
-      return this._renderMessage(i18n.serviceError, "esri-directions__message");
+      return this._renderWarningCard();
     }
 
     if (isRouting) {
@@ -1243,26 +1269,24 @@ class Directions extends declared(Widget) {
     return (
       <div key="esri-directions__placeholder" class={CSS.emptyContent}>
         {this._renderPlaceholder()}
-        <h3 class={CSS.message}>{i18n.directionsPlaceholder}</h3>
+        <h3 class={this.classes(CSS.message, CSS.heading)}>{i18n.directionsPlaceholder}</h3>
       </div>
     );
   }
 
   private _renderPlaceholder(): any {
     return (
-      <div class={CSS.emptyIllustration}>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-          <path
-            fill="currentcolor"
-            d="M192 36c-15.477 0-24 6.034-24 16.99v45.822l24 24 24-24v-45.82C216 42.033 207.477 36 192 36zm20 61.155l-20 20-20-20V52.99c0-8.62 6.73-12.99 20-12.99s20 4.37 20 12.99zM192 52a12 12 0 1 0 12 12 12.013 12.013 0 0 0-12-12zm0 20a8 8 0 1 1 8-8 8.008 8.008 0 0 1-8 8zM92 140.99C92 130.035 83.477 124 68 124s-24 6.034-24 16.99v45.822l24 24 24-24zm-4 44.165l-20 20-20-20V140.99c0-8.62 6.73-12.99 20-12.99s20 4.37 20 12.99zM68 140a12 12 0 1 0 12 12 12.013 12.013 0 0 0-12-12zm0 20a8 8 0 1 1 8-8 8.008 8.008 0 0 1-8 8zm84-44h16v4h-16zm-24 80h4v12h-12v-4h8zm0-28h4v16h-4zm0-52h12v4h-8v8h-4zm0 24h4v16h-4zm-36 64h16v4H92z"
-          />
-        </svg>
-      </div>
+      <svg class={CSS.emptyIllustration} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+        <path
+          fill="currentcolor"
+          d="M192 36c-15.477 0-24 6.034-24 16.99v45.822l24 24 24-24v-45.82C216 42.033 207.477 36 192 36zm20 61.155l-20 20-20-20V52.99c0-8.62 6.73-12.99 20-12.99s20 4.37 20 12.99zM192 52a12 12 0 1 0 12 12 12.013 12.013 0 0 0-12-12zm0 20a8 8 0 1 1 8-8 8.008 8.008 0 0 1-8 8zM92 140.99C92 130.035 83.477 124 68 124s-24 6.034-24 16.99v45.822l24 24 24-24zm-4 44.165l-20 20-20-20V140.99c0-8.62 6.73-12.99 20-12.99s20 4.37 20 12.99zM68 140a12 12 0 1 0 12 12 12.013 12.013 0 0 0-12-12zm0 20a8 8 0 1 1 8-8 8.008 8.008 0 0 1-8 8zm84-44h16v4h-16zm-24 80h4v12h-12v-4h8zm0-28h4v16h-4zm0-52h12v4h-8v8h-4zm0 24h4v16h-4zm-36 64h16v4H92z"
+        />
+      </svg>
     );
   }
 
-  private _renderMessage(text: string, key?: any): any {
-    return <h3 key={key}>{text}</h3>;
+  private _renderMessage(text: string): any {
+    return <h3>{text}</h3>;
   }
 
   private _renderRouteActions(): any {
@@ -1322,7 +1346,7 @@ class Directions extends declared(Widget) {
                 key="esri-directions__maneuver-section-header"
               >
                 <span aria-hidden="true" class={CSS.lastStopIcon} />
-                <h2 class={this.classes(CSS.header, CSS.maneuverSectionTitle)}>{section.name}</h2>
+                <h2 class={this.classes(CSS.heading, CSS.maneuverSectionTitle)}>{section.name}</h2>
               </header>
             );
           } else {
@@ -1346,7 +1370,9 @@ class Directions extends declared(Widget) {
                   title={title}
                 >
                   <span aria-hidden="true" class={this.classes(sectionHeaderIconClasses)} />
-                  <h2 class={this.classes(CSS.header, CSS.maneuverSectionTitle)}>{section.name}</h2>
+                  <h2 class={this.classes(CSS.heading, CSS.maneuverSectionTitle)}>
+                    {section.name}
+                  </h2>
                 </div>
               </header>
             );

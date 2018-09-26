@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({lblItem:"element",title:"Prijava",info:"Prijavite se za dostop do elementa na {server} {resource}",oAuthInfo:"Za nadaljevanje se prijavite.",lblUser:"Uporabniško ime:",lblPwd:"Geslo:",lblOk:"V redu",lblSigning:"Prijavljanje...",lblCancel:"Prekliči",errorMsg:"Neveljavno uporabniško ime/geslo. Poskusite znova.",invalidUser:"Uporabniško ime in geslo, ki ste ju vnesli, nista pravilni.",forbidden:"Uporabniško ime in geslo sta veljavna, vendar nimate dostopa do tega vira.",noAuthService:"Dostop do storitve za preverjanje pristnosti ni mogoč."});

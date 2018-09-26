@@ -11,7 +11,7 @@
  * @module esri/widgets/Fullscreen
  * @since 4.6
  *
- * @see [Fullscreen.tsx (widget view)]({{ JSAPI_BOWER_URL }}/widgets/Fullscreen.tsx)
+ * @see [Fullscreen.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Fullscreen.tsx)
  * @see [Sample - Animate opacity visual variable](../sample-code/visualization-vv-opacity-animate/index.html)
  * @see [Sample - Animate color visual variable](../sample-code/visualization-vv-color-animate/index.html)
  * @see module:esri/widgets/Fullscreen/FullscreenViewModel
@@ -94,7 +94,8 @@ class Fullscreen extends declared(Widget) {
    * @name element
    * @instance
    */
-  @aliasOf("viewModel.element") element: HTMLElement = null;
+  @aliasOf("viewModel.element")
+  element: HTMLElement = null;
 
   //----------------------------------
   //  view
@@ -108,7 +109,8 @@ class Fullscreen extends declared(Widget) {
    * @name view
    * @instance
    */
-  @aliasOf("viewModel.view") view: View = null;
+  @aliasOf("viewModel.view")
+  view: View = null;
 
   //----------------------------------
   //  viewModel

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({attach:"첨부 파일",fields:"필드",fieldsSummary:"속성 및 값 목록",media:"미디어",next:"다음",numCharts:"차트 수",numImages:"이미지 수",noTitle:"제목 없음",previous:"이전"});

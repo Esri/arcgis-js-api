@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define(["../../Graphic","../../core/JSONSupport","../../geometry/SpatialReference","./DirectionsFeatureSet","./NAMessage"],function(e,r,n,s,t){return r.createSubclass({declaredClass:"esri.tasks.support.ClosestFacilitySolveResult",properties:{directions:{value:null,type:[s]},facilities:{value:null,json:{read:function(e){return e&&this._graphicsFromJson(e)}}},incidents:{value:null,json:{read:function(e){return e&&this._graphicsFromJson(e)}}},messages:{value:null,type:[t]},pointBarriers:{value:null,json:{read:function(e){return e&&this._graphicsFromJson(e)}}},polylineBarriers:{value:null,json:{read:function(e){return e&&this._graphicsFromJson(e)}}},polygonBarriers:{value:null,json:{read:function(e){return e&&this._graphicsFromJson(e)}}},routes:{value:null,json:{read:function(e){return e&&this._graphicsFromJson(e)}}}},_graphicsFromJson:function(r){var s=n.fromJSON(r.spatialReference);return(r.features||[]).map(function(r){var n=e.fromJSON(r);return n.geometry.set("spatialReference",s),n})}})});

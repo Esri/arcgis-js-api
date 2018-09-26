@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({widgetLabel:"Çizim",draw:"Çiz",drawPoint:"Bir nokta çiz",drawPolygon:"Bir alan çiz",drawPolyline:"Bir çizgi çiz",drawMultipoint:"Bir çoklu nokta çiz",drawCircle:"Bir daire çiz",drawRectangle:"Bir dikdörtgen çiz",drawTriangle:"Bir üçgen çiz",drawSquare:"Bir kare çiz",drawEllipse:"Bir elips çiz",pan:"Haritayı kaydır",undo:"Geri Al",redo:"Yinele",updateDrawing:"Çizimi güncelle",clear:"Çizimi sil",completeDrawing:"Çizimi tamamla",pauseDrawing:"Çizimi duraklat",resumeDrawing:"Çizime devam et",rotate:"Döndür",scale:"Ölçeklendir",addPointTooltip:"Nokta eklemek için tıklayın",removePointTooltip:"Bu noktayı kaldırmak için tıklayın",completePolygonTooltip:"Bitirmek için bu noktaya tıklayın",startDrawingTooltip:"Çizmeye başlamak için tıklayın",continueDrawingTooltip:"Çizmeye devam etmek için tıklayın",completeDrawingTooltip:"Tamamlamak için çift tıklayın",addMultipointTooltip:"Nokta eklemeye başlamak için tıklayın",finishMultipointTooltip:"Bitirmek için çift tıklayın",addFreehandTooltip:"Başlatmak için basın ve bitirmek için bırakın",addShapeTooltip:"Şekil eklemek için tıklayın veya başlatmak için basın ve bitirmek için bırakın"});

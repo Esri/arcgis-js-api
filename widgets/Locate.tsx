@@ -3,7 +3,7 @@
  * to the user's current location. The view rotates according to the direction
  * where the tracked device is heading towards. By default the widget looks like the following:
  *
- * ![locate-button](../assets/img/apiref/widgets/widgets-locate.png)
+ * ![locate-button](../../assets/img/apiref/widgets/widgets-locate.png)
  *
  * ::: esri-md class="panel trailer-1"
  * The Locate widget is not supported on insecure origins.
@@ -35,8 +35,8 @@
  * @module esri/widgets/Locate
  * @since 4.0
  *
- * @see [Locate.tsx (widget view)]({{ JSAPI_BOWER_URL }}/widgets/Locate.tsx)
- * @see [button.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_Widget.scss)
+ * @see [Locate.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Locate.tsx)
+ * @see [button.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Widget.scss)
  * @see [Sample - locate widget](../sample-code/widgets-locate/index.html)
  * @see module:esri/widgets/Locate/LocateViewModel
  * @see {@link module:esri/views/View#ui View.ui}
@@ -58,6 +58,7 @@
 /// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
 
 // dojo
+import * as i18nCommon from "dojo/i18n!esri/nls/common";
 import * as i18n from "dojo/i18n!esri/widgets/Locate/nls/Locate";
 
 // esri
@@ -76,7 +77,7 @@ import Widget = require("esri/widgets/Widget");
 import LocateViewModel = require("esri/widgets/Locate/LocateViewModel");
 
 // esri.widgets.support
-import { GoToOverride } from "esri/widgets/support/interfaces";
+type GoToOverride = __esri.GoToOverride;
 import { accessibleHandler, tsx, renderable, vmEvent } from "esri/widgets/support/widget";
 
 const CSS = {
@@ -158,7 +159,8 @@ class Locate extends declared(Widget) {
    * @type {Object}
    * @default { maximumAge: 0, timeout: 15000, enableHighAccuracy: true }
    */
-  @aliasOf("viewModel.geolocationOptions") geolocationOptions: PositionOptions = null;
+  @aliasOf("viewModel.geolocationOptions")
+  geolocationOptions: PositionOptions = null;
 
   //----------------------------------
   //  goToLocationEnabled
@@ -172,13 +174,15 @@ class Locate extends declared(Widget) {
    * @type {boolean}
    * @default true
    */
-  @aliasOf("viewModel.goToLocationEnabled") goToLocationEnabled: boolean = null;
+  @aliasOf("viewModel.goToLocationEnabled")
+  goToLocationEnabled: boolean = null;
 
   //----------------------------------
   //  goToOverride
   //----------------------------------
 
-  @aliasOf("viewModel.goToOverride") goToOverride: GoToOverride = null;
+  @aliasOf("viewModel.goToOverride")
+  goToOverride: GoToOverride = null;
 
   //----------------------------------
   //  graphic
@@ -204,7 +208,8 @@ class Locate extends declared(Widget) {
    *   }
    * });
    */
-  @aliasOf("viewModel.graphic") graphic: Graphic = null;
+  @aliasOf("viewModel.graphic")
+  graphic: Graphic = null;
 
   //----------------------------------
   //  iconClass
@@ -218,7 +223,8 @@ class Locate extends declared(Widget) {
    * @instance
    * @type {string}
    */
-  @property() iconClass = CSS.widgetIcon;
+  @property()
+  iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -233,7 +239,8 @@ class Locate extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property() label: string = i18n.widgetLabel;
+  @property()
+  label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  scale
@@ -274,7 +281,8 @@ class Locate extends declared(Widget) {
    *   })
    * });
    */
-  @aliasOf("viewModel.scale") scale: number = null;
+  @aliasOf("viewModel.scale")
+  scale: number = null;
 
   //----------------------------------
   //  useHeadingEnabled
@@ -292,7 +300,8 @@ class Locate extends declared(Widget) {
    * @type {boolean}
    * @default true
    */
-  @aliasOf("viewModel.useHeadingEnabled") useHeadingEnabled: boolean = null;
+  @aliasOf("viewModel.useHeadingEnabled")
+  useHeadingEnabled: boolean = null;
 
   //----------------------------------
   //  view
@@ -306,7 +315,8 @@ class Locate extends declared(Widget) {
    *
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
-  @aliasOf("viewModel.view") view: View = null;
+  @aliasOf("viewModel.view")
+  view: View = null;
 
   //----------------------------------
   //  viewModel
@@ -335,6 +345,17 @@ class Locate extends declared(Widget) {
   //  Public Methods
   //
   //--------------------------------------------------------------------------
+
+  /**
+   * This function provides the ability to interrupt and cancel the process of
+   * programmatically obtaining the location of the user's device.
+   *
+   * @since 4.9
+   *
+   * @method
+   */
+  @aliasOf("viewModel.cancelLocate")
+  cancelLocate(): void {}
 
   /**
    * Animates the view to the user's location.
@@ -372,6 +393,8 @@ class Locate extends declared(Widget) {
       [CSS.locate]: !isLocating
     };
 
+    const title = state === "locating" ? i18nCommon.cancel : i18n.title;
+
     return (
       <div
         bind={this}
@@ -381,8 +404,8 @@ class Locate extends declared(Widget) {
         onkeydown={this._locate}
         role="button"
         tabIndex={0}
-        aria-label={i18n.title}
-        title={i18n.title}
+        aria-label={title}
+        title={title}
       >
         <span aria-hidden="true" class={this.classes(CSS.icon, CSS.locate, iconClasses)} />
         <span class={CSS.text}>{i18n.title}</span>
@@ -398,7 +421,9 @@ class Locate extends declared(Widget) {
 
   @accessibleHandler()
   private _locate() {
-    this.locate();
+    const { viewModel } = this;
+
+    viewModel.state === "locating" ? viewModel.cancelLocate() : viewModel.locate();
   }
 }
 

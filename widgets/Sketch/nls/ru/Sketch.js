@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({widgetLabel:"Скетч",draw:"Нарисовать",drawPoint:"Нарисовать точку",drawPolygon:"Нарисовать полигон",drawPolyline:"Нарисовать линию",drawMultipoint:"Нарисовать мультиточку",drawCircle:"Нарисовать окружность",drawRectangle:"Нарисовать прямоугольник",drawTriangle:"Нарисовать треугольник",drawSquare:"Нарисовать квадрат",drawEllipse:"Нарисовать эллипс",pan:"Переместить карту",undo:"Отменить",redo:"Повторить",updateDrawing:"Обновить графику",clear:"Очистить графику",completeDrawing:"Завершить графику",pauseDrawing:"Остановить рисование",resumeDrawing:"Продолжить рисование",rotate:"Поворот",scale:"Масштаб",addPointTooltip:"Щелкните, чтобы добавить точку",removePointTooltip:"Щелкните, чтобы удалить эту точку",completePolygonTooltip:"Щелкните это точку, чтобы завершить",startDrawingTooltip:"Щелкните, чтобы начать рисовать",continueDrawingTooltip:"Щелкните, чтобы продолжить рисовать",completeDrawingTooltip:"Дважды щелкните для завершения",addMultipointTooltip:"Щелкните, чтобы начать добавление точек",finishMultipointTooltip:"Завершение двойным щелчком",addFreehandTooltip:"Нажмите кнопку, чтобы начать, и отпустите ее, чтобы завершить",addShapeTooltip:"Щёлкните чтобы добавить форму или нажмите стрелку вниз, чтобы начать и дойти до конца."});

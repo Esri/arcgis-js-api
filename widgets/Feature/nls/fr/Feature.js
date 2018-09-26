@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({attach:"Pièces jointes",fields:"Champs",fieldsSummary:"Liste des attributs et des valeurs",media:"Contenu",next:"Suivant",numCharts:"Nombre de diagrammes",numImages:"Nombre d'images",noTitle:"Sans titre",previous:"Précédent"});

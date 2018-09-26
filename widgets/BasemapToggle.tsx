@@ -3,13 +3,13 @@
  * two basemaps. The toggled basemap is set inside the [view's](#view)
  * {@link module:esri/views/View#map map} object.
  *
- * ![basemap-toggle](../assets/img/apiref/widgets/basemap-toggle.png)
+ * ![basemap-toggle](../../assets/img/apiref/widgets/basemap-toggle.png)
  *
  * @module esri/widgets/BasemapToggle
  * @since 4.0
  *
- * @see [BasemapToggle.tsx (widget view)]({{ JSAPI_BOWER_URL }}/widgets/BasemapToggle.tsx)
- * @see [BasemapToggle.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_BasemapToggle.scss)
+ * @see [BasemapToggle.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/BasemapToggle.tsx)
+ * @see [BasemapToggle.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_BasemapToggle.scss)
  * @see [Sample - Intro to widgets using BasemapToggle](../sample-code/intro-widgets/index.html)
  * @see module:esri/widgets/BasemapToggle/BasemapToggleViewModel
  *

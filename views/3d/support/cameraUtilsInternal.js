@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
-define(["require","exports","../lib/glMatrix","./mathUtils"],function(e,d,t,c){function a(e,d,a,i,o){var l=v;t.vec3d.normalize(e,l);var n=t.vec3d.dot(l,i),s=n>0;(n=Math.abs(n))>.99&&(n=Math.abs(t.vec3d.dot(d,i)),n<.99?(t.vec3d.set(d,l),s&&t.vec3d.scale(l,-1)):l=null);var g=0;if(l){t.vec3d.scale(i,t.vec3d.dot(i,l),r),t.vec3d.subtract(l,r);var h=t.vec3d.dot(l,o),u=h/(t.vec3d.length(l)*t.vec3d.length(o));t.vec3d.cross(l,o,r);g=(t.vec3d.dot(r,i)>0?1:-1)*c.rad2deg(c.acos(u))}var b=c.rad2deg(c.acos(-t.vec3d.dot(i,e)/t.vec3d.length(e)));return a?(a.heading=g,a.tilt=b,a):{heading:g,tilt:b}}Object.defineProperty(d,"__esModule",{value:!0});var v=t.vec3d.create(),r=t.vec3d.create();d.directionToHeadingTilt=a});
+define(["require","exports","../lib/gl-matrix","./mathUtils"],function(e,t,c,d){function a(){return{direction:c.vec3d.create(),up:c.vec3d.create()}}function r(e,t,a,r,n){var o=v;c.vec3d.normalize(e,o);var l=c.vec3d.dot(o,r),s=l>0;(l=Math.abs(l))>.99&&(l=Math.abs(c.vec3d.dot(t,r)),l<.99?(c.vec3d.set(t,o),s&&c.vec3d.scale(o,-1)):o=null);var u=0;if(o){c.vec3d.scale(r,c.vec3d.dot(r,o),i),c.vec3d.subtract(o,i);var g=c.vec3d.dot(o,n),h=g/(c.vec3d.length(o)*c.vec3d.length(n));c.vec3d.cross(o,n,i);u=(c.vec3d.dot(i,r)>0?1:-1)*d.rad2deg(d.acos(h))}var f=d.rad2deg(d.acos(-c.vec3d.dot(r,e)/c.vec3d.length(e)));return a?(a.heading=u,a.tilt=f,a):{heading:u,tilt:f}}Object.defineProperty(t,"__esModule",{value:!0});var v=c.vec3d.create(),i=c.vec3d.create();t.createDirectionUp=a,t.directionToHeadingTilt=r});

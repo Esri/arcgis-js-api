@@ -2,7 +2,7 @@
  * The AreaMeasurement3D widget calculates and displays the area and perimeter of a polygon.
  * This widget can be used in a {@link module:esri/views/SceneView} to measure the area and perimeter of a polygon.
  *
- * [![measurement-line-3d](../assets/img/apiref/widgets/area-measurement-3d.png)](../sample-code/widgets-measurement-3d/index.html)
+ * [![measurement-line-3d](../../assets/img/apiref/widgets/area-measurement-3d.png)](../sample-code/widgets-measurement-3d/index.html)
  *
  * When the widget is active, a horizontal "laser" line is drawn which indicates the height at the current mouse position.
  * This line can help in analyzing the heights of objects relative to each other and the terrain.
@@ -24,8 +24,8 @@
  * @module esri/widgets/AreaMeasurement3D
  * @since 4.7
  *
- * @see [AreaMeasurement3D.tsx (widget view)]({{ JSAPI_BOWER_URL }}/widgets/AreaMeasurement3D.tsx)
- * @see [AreaMeasurement3D.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_AreaMeasurement3D.scss)
+ * @see [AreaMeasurement3D.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/AreaMeasurement3D.tsx)
+ * @see [AreaMeasurement3D.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_AreaMeasurement3D.scss)
  * @see [Sample - Measurement in 3D](../sample-code/widgets-measurement-3d/index.html)
  * @see {@link module:esri/widgets/AreaMeasurement3D/AreaMeasurement3DViewModel}
  * @see {@link module:esri/widgets/DirectLineMeasurement3D}
@@ -119,7 +119,8 @@ class AreaMeasurement3D extends declared(Widget) {
    * @instance
    * @type {module:esri/views/SceneView}
    */
-  @aliasOf("viewModel.view") view: View = null;
+  @aliasOf("viewModel.view")
+  view: View = null;
 
   //----------------------------------
   //  visible
@@ -175,7 +176,8 @@ class AreaMeasurement3D extends declared(Widget) {
    * @default ["metric", "imperial", "square-inches", "square-feet", "square-yards", "square-miles", "square-us-feet", "square-meters", "square-kilometers", "acres", "ares", "hectares"]
    * @type {string[]}
    */
-  @aliasOf("viewModel.unitOptions") unitOptions: Array<AreaMeasurement3DViewModel.Unit> = null;
+  @aliasOf("viewModel.unitOptions")
+  unitOptions: Array<AreaMeasurement3DViewModel.Unit> = null;
 
   //----------------------------------
   //  unit
@@ -191,7 +193,8 @@ class AreaMeasurement3D extends declared(Widget) {
    * @type {string}
    */
 
-  @aliasOf("viewModel.unit") unit: AreaMeasurement3DViewModel.Unit = null;
+  @aliasOf("viewModel.unit")
+  unit: AreaMeasurement3DViewModel.Unit = null;
 
   //--------------------------------------------------------------------------
   //

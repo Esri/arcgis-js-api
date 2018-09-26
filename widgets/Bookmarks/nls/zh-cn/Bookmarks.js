@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({widgetLabel:"书签",goToBookmark:"转至书签",noBookmarksHeading:"无书签",noBookmarksDescription:"向您的地图添加书签后，书签将显示在此处。",disabledHeading:"已禁用书签",disabledDescription:"添加 MapView 以启用书签。"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({attach:"Csatolmányok",fields:"Mezők",fieldsSummary:"Attribútumok és értékek listája",media:"Média",next:"Következő",numCharts:"Diagramok száma",numImages:"Képek száma",noTitle:"Cím nélkül",previous:"Előző"});

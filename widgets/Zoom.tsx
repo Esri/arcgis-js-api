@@ -19,8 +19,8 @@
  * @module esri/widgets/Zoom
  * @since 4.0
  *
- * @see [Zoom.tsx (widget view)]({{ JSAPI_BOWER_URL }}/widgets/Zoom.tsx)
- * @see [Zoom.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_Zoom.scss)
+ * @see [Zoom.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Zoom.tsx)
+ * @see [Zoom.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Zoom.scss)
  * @see module:esri/views/MapView
  * @see module:esri/views/SceneView
  * @see module:esri/widgets/Zoom/ZoomViewModel
@@ -122,7 +122,8 @@ class Zoom extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property() iconClass = CSS.widgetIcon;
+  @property()
+  iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -137,7 +138,8 @@ class Zoom extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property() label: string = i18n.widgetLabel;
+  @property()
+  label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  layout

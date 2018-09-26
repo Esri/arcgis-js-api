@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/Accessor","../../../core/accessorSupport/decorators"],function(e,t,r,o,n,i){Object.defineProperty(t,"__esModule",{value:!0});var u=function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return r(t,e),Object.defineProperty(t.prototype,"quality",{set:function(e){-1!==["low","high"].indexOf(e)&&this._set("quality",e)},enumerable:!0,configurable:!0}),t.prototype.clone=function(){return new(0,this.constructor)({quality:this.quality})},o([i.property({type:String,value:"low"})],t.prototype,"quality",null),t=o([i.subclass("esri.views.3d.environment.SceneViewAtmosphere")],t)}(i.declared(n));t.SceneViewAtmosphere=u,t.default=u});

@@ -48,6 +48,31 @@
     background: url(../base/images/loading-throb.gif) no-repeat center;
   }
 
+  .esri-directions__warning-card {
+    border-top: solid 2px $error_border_color;
+    color: $interactive_text_color;
+    @include defaultBoxShadow();
+    padding: 12px;
+    margin: 20px auto;
+    width: 90%;
+  }
+
+  .esri-directions__warning-header {
+    color: $error_border_color;
+    display: flex;
+    margin-bottom: 6px;
+  }
+
+  .esri-directions__warning-heading {
+    color: inherit;
+    margin: 0 4px;
+  }
+
+  .esri-directions__warning-message {
+    color: inherit;
+    font-weight: $text-weight_bold;
+  }
+
   .esri-directions__departure-time-controls {
     display: flex;
   }

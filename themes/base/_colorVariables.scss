@@ -31,6 +31,7 @@ $selected_background_color: $Calcite_Highlight_Blue_100 !default;
 
 // Offset
 $text_offset_color: offset-foreground-color($text_color, 25%);
+$interactive_text_offset_color: offset-foreground-color($interactive_text_color, 4%);
 $background_offset_color: offset-background-color($background_color, 4%);
 
 // Fade
@@ -51,4 +52,5 @@ $list_header_color: offset-background-color($background_color, 5%) !default;
 $page_menu_background_color: $background_inverse_color !default;
 $focus_outline_color: $Calcite_Highlight_Blue_250 !default;
 
+$error_border_color: $Calcite_Vibrant_Red_200 !default;
 $error_text_color: $Calcite_Red_a250 !default;

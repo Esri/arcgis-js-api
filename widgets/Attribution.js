@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 /**
  * The Attribution displays attribution text for the layers in a map.
@@ -34,7 +34,7 @@
  * {@link module:esri/views/MapView} and {@link module:esri/views/SceneView} by default.
  * See {@link module:esri/views/ui/DefaultUI} for more details.
  *
- * ![attribution](../assets/img/apiref/widgets/attribution.png)
+ * ![attribution](../../assets/img/apiref/widgets/attribution.png)
  *
  * ::: esri-md class="panel trailer-1"
  * Esri requires that when you use an ArcGIS Online basemap in your app, the map must include Esri attribution and you must be licensed to use the content.
@@ -45,8 +45,8 @@
  * @module esri/widgets/Attribution
  * @since 4.0
  *
- * @see [Attribution.tsx (widget view)]({{ JSAPI_BOWER_URL }}/widgets/Attribution.tsx)
- * @see [Attribution.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_Attribution.scss)
+ * @see [Attribution.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Attribution.tsx)
+ * @see [Attribution.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Attribution.scss)
  * @see module:esri/widgets/Attribution/AttributionViewModel
  * @see {@link module:esri/views/View#ui View.ui}
  * @see module:esri/views/ui/DefaultUI

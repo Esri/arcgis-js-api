@@ -1,6 +1,6 @@
 /**
  * The Bookmarks widget allows end users to quickly navigate to a particular area of interest.
- * It displays a list of {@link module:esri/Widgets/Bookmarks/Bookmark bookmarks},
+ * It displays a list of {@link module:esri/webmap/Bookmark bookmarks},
  * which typically are defined inside the {@link module:esri/WebMap#bookmarks WebMap}.
  *
  * ::: esri-md class="panel trailer-1"
@@ -13,8 +13,8 @@
  * @module esri/widgets/Bookmarks
  * @since 4.8
  *
- * @see [Bookmarks.tsx (widget view)]({{ JSAPI_BOWER_URL }}/widgets/Bookmarks.tsx)
- * @see [Bookmarks.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_Bookmarks.scss)
+ * @see [Bookmarks.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Bookmarks.tsx)
+ * @see [Bookmarks.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Bookmarks.scss)
  * @see [Sample - Bookmarks widget](../sample-code/widgets-bookmarks/index.html)
  * @see module:esri/widgets/Bookmarks/BookmarksViewModel
  */
@@ -36,15 +36,17 @@ import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport
 // esri.views
 import MapView = require("esri/views/MapView");
 
+// esri.webmap
+import Bookmark = require("esri/webmap/Bookmark");
+
 // esri.widgets
 import Widget = require("esri/widgets/Widget");
 
 // esri.widgets.Bookmarks
-import Bookmark = require("esri/widgets/Bookmarks/Bookmark");
 import BookmarksViewModel = require("esri/widgets/Bookmarks/BookmarksViewModel");
 
 // esri.widgets.support
-import { GoToOverride } from "esri/widgets/support/interfaces";
+type GoToOverride = __esri.GoToOverride;
 import { accessibleHandler, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
 
 const CSS = {
@@ -69,7 +71,7 @@ const CSS = {
   // common
   esriWidget: "esri-widget",
   widgetIcon: "esri-icon-bookmark",
-  header: "esri-widget__header",
+  header: "esri-widget__heading",
   disabled: "esri-disabled"
 };
 
@@ -82,11 +84,11 @@ class Bookmarks extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   /**
-   * Fires when a {@link module:esri/widgets/Bookmarks/Bookmark} is selected.
+   * Fires when a {@link module:esri/webmap/Bookmark} is selected.
    *
    * @event module:esri/widgets/Bookmarks#select-bookmark
    *
-   * @property {module:esri/widgets/Bookmarks/Bookmark} bookmark - The bookmark selected by the user.
+   * @property {module:esri/webmap/Bookmark} bookmark - The bookmark selected by the user.
    *
    * @example
    * const bookmarksWidget = new Bookmarks({
@@ -149,19 +151,22 @@ class Bookmarks extends declared(Widget) {
   //----------------------------------
 
   /**
-   * A collection of {@link module:esri/widgets/Bookmarks/Bookmark}s.
+   * A collection of {@link module:esri/webmap/Bookmark}s.
    *
    * @name bookmarks
    * @instance
-   * @type {module:esri/core/Collection<module:esri/widgets/Bookmarks/Bookmark>}
+   * @type {module:esri/core/Collection<module:esri/webmap/Bookmark>}
+   * @readonly
    */
-  @aliasOf("viewModel.bookmarks") bookmarks: Collection<Bookmark> = null;
+  @aliasOf("viewModel.bookmarks")
+  bookmarks: Collection<Bookmark> = null;
 
   //----------------------------------
   //  goToOverride
   //----------------------------------
 
-  @aliasOf("viewModel.goToOverride") goToOverride: GoToOverride = null;
+  @aliasOf("viewModel.goToOverride")
+  goToOverride: GoToOverride = null;
 
   //----------------------------------
   //  iconClass
@@ -175,7 +180,8 @@ class Bookmarks extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property() iconClass = CSS.widgetIcon;
+  @property()
+  iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -189,7 +195,8 @@ class Bookmarks extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property() label = i18n.widgetLabel;
+  @property()
+  label = i18n.widgetLabel;
 
   //----------------------------------
   //  view
@@ -202,7 +209,8 @@ class Bookmarks extends declared(Widget) {
    * @instance
    * @type {module:esri/views/MapView}
    */
-  @aliasOf("viewModel.view") view: MapView = null;
+  @aliasOf("viewModel.view")
+  view: MapView = null;
 
   //----------------------------------
   //  viewModel
@@ -222,7 +230,7 @@ class Bookmarks extends declared(Widget) {
   @property({
     type: BookmarksViewModel
   })
-  @renderable(["state"])
+  @renderable(["activeBookmark", "state"])
   @vmEvent(["select-bookmark"])
   viewModel: BookmarksViewModel = new BookmarksViewModel();
 
@@ -235,7 +243,7 @@ class Bookmarks extends declared(Widget) {
   /**
    * Zoom to a specific bookmark.
    *
-   * @param {module:esri/widgets/Bookmarks/Bookmark} Bookmark - The bookmark to zoom to.
+   * @param {module:esri/webmap/Bookmark} Bookmark - The bookmark to zoom to.
    * @return {Promise} Resolves after the animation to specified bookmark finishes.
    */
   @aliasOf("viewModel.goTo")
@@ -291,14 +299,12 @@ class Bookmarks extends declared(Widget) {
   private _renderNoBookmarksContainer(): any {
     return (
       <div class={CSS.noBookmarksContainer} key="no-bookmarks">
-        <div class={CSS.noBookmarksImage}>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-            <path
-              fill="currentColor"
-              d="M26 30.435L16.5 24.1 7 30.435V1h19zm-9.5-7.536l8.5 5.666V2H8v26.565z"
-            />
-          </svg>
-        </div>
+        <svg class={CSS.noBookmarksImage} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+          <path
+            fill="currentColor"
+            d="M26 30.435L16.5 24.1 7 30.435V1h19zm-9.5-7.536l8.5 5.666V2H8v26.565z"
+          />
+        </svg>
         <h1 class={this.classes(CSS.header, CSS.noBookmarksHeader)}>{i18n.noBookmarksHeading}</h1>
         <p class={CSS.noBookmarksDescription}>{i18n.noBookmarksDescription}</p>
       </div>
@@ -324,10 +330,11 @@ class Bookmarks extends declared(Widget) {
   }
 
   private _renderBookmark(bookmark: Bookmark): any {
-    const { active, name, thumbnail } = bookmark;
+    const { activeBookmark } = this.viewModel;
+    const { name, thumbnail } = bookmark;
 
     const bookmarkClasses = {
-      [CSS.bookmarkActive]: active
+      [CSS.bookmarkActive]: activeBookmark === bookmark
     };
 
     const imageSource = (thumbnail && thumbnail.url) || "";

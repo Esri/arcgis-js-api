@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
-define({addTags:"Label(s) toevoegen",noTagsFound:"Geen overeenkomende labels.",required:"Eén of meer tags zijn vereist."});
+define({addTags:"Voeg labels toe",noTagsFound:"Geen overeenkomende labels.",required:"Eén of meer tags zijn vereist."});

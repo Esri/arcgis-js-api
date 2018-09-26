@@ -4,8 +4,8 @@
  * @module esri/widgets/LayerList
  * @since 4.2
  *
- * @see [LayerList.tsx (widget view)]({{ JSAPI_BOWER_URL }}/widgets/LayerList.tsx)
- * @see [LayerList.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_LayerList.scss)
+ * @see [LayerList.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/LayerList.tsx)
+ * @see [LayerList.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_LayerList.scss)
  * @see [Sample - LayerList widget](../sample-code/widgets-layerlist/index.html)
  * @see [Sample - LayerList widget with actions](../sample-code/widgets-layerlist-actions/index.html)
  * @see module:esri/widgets/LayerList/LayerListViewModel
@@ -110,6 +110,7 @@ const CSS = {
   iconRightArrow: "esri-icon-right-triangle-arrow",
   iconLeftArrow: "esri-icon-left-triangle-arrow",
   iconLoading: "esri-icon-loading-indicator",
+  iconDefaultAction: "esri-icon-default-action",
   widgetIcon: "esri-icon-layers"
 };
 
@@ -124,8 +125,6 @@ const VISIBILITY_MODES = {
   inherited: "inherited",
   independent: "independent"
 };
-
-const DEFAULT_ACTION_IMAGE = require.toUrl("./LayerList/images/default-action.svg");
 
 function closeItemActions(item: ListItem): void {
   const { actionsOpen, children } = item;
@@ -212,7 +211,8 @@ class LayerList extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property() iconClass = CSS.widgetIcon;
+  @property()
+  iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  statusIndicatorsVisible
@@ -264,7 +264,8 @@ class LayerList extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property() label: string = i18n.widgetLabel;
+  @property()
+  label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  listItemCreatedFunction
@@ -336,7 +337,9 @@ class LayerList extends declared(Widget) {
    * @name operationalItems
    * @instance
    * @type {module:esri/core/Collection<module:esri/widgets/LayerList/ListItem>}
+   * @readonly
    *
+   * @see {@link module:esri/layers/Layer#listMode Layer.listMode}
    */
   @aliasOf("viewModel.operationalItems")
   @renderable()
@@ -610,7 +613,9 @@ class LayerList extends declared(Widget) {
   }
 
   private _renderPanelButton(panel: ListItemPanel): any {
-    const { className, open, title } = panel;
+    const { className, open, title, image } = panel;
+
+    const actionClass = !image && !className ? CSS.iconDefaultAction : className;
 
     const iconStyles = this._getIconImageStyles(panel);
 
@@ -619,9 +624,12 @@ class LayerList extends declared(Widget) {
     };
 
     const iconClasses = {
-      [className]: !!className,
       [CSS.actionImage]: !!iconStyles["background-image"]
     };
+
+    if (actionClass) {
+      iconClasses[actionClass] = !!actionClass;
+    }
 
     return (
       <div
@@ -783,6 +791,9 @@ class LayerList extends declared(Widget) {
 
     const { active, className, disabled, title } = action;
 
+    const actionClass =
+      action.type === "button" && !action.image && !className ? CSS.iconDefaultAction : className;
+
     const buttonClasses = {
       [CSS.action]: action.type !== "toggle",
       [CSS.actionToggle]: action.type === "toggle",
@@ -796,8 +807,8 @@ class LayerList extends declared(Widget) {
       [CSS.rotating]: active
     };
 
-    if (className) {
-      iconClasses[className] = true;
+    if (actionClass) {
+      iconClasses[actionClass] = true;
     }
 
     return (
@@ -829,16 +840,12 @@ class LayerList extends declared(Widget) {
   }
 
   private _getIconImageStyles(source: Action | ListItemPanel): HashMap<string> {
-    let image = (source.declaredClass =
+    const image = (source.declaredClass =
       "esri.widgets.LayerList.ListItemPanel" ||
       source.declaredClass === "esri.support.Action.ActionButton" ||
       source.declaredClass === "esri.support.Action.ActionToggle"
         ? (source as ActionButton | ActionToggle | ListItemPanel).image
         : null);
-
-    if (!source.className && !image) {
-      image = DEFAULT_ACTION_IMAGE;
-    }
 
     return {
       "background-image": image ? `url("${image}")` : null

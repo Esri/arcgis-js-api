@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define(["dijit/form/Select","dojo/dom-class"],function(t,e){return t.createSubclass({baseClass:"esri-icon-select dijitSelect dijitValidationTextBox",declaredClass:"esri.widgets.SymbolStyler.IconSelect",_extraIconClass:null,_setValueAttr:function(t){this.inherited(arguments);var s=this.containerNode;e.remove(s,this._getAllIconClasses()),e.add(s,this.get("selectedOptions").iconClass)},addIconOptions:function(t,e){e=e||"",t=t||[];var s=t.map(function(t){return{value:t,iconClass:e+" "+t}});this.addOption(s)},_getMenuItemForOption:function(t){var e=this.inherited(arguments);return e.set("iconClass",t.iconClass),e},_getAllIconClasses:function(){return this.options.map(function(t){return t.iconClass})}})});

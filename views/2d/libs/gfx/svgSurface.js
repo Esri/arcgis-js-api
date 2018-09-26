@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define(["require","exports","dojo/dom","./Surface","./svg"],function(e,t,r,d,a){function n(e,t,n){var o=new d.default;o.rawNode=a._createElementNS(a.xmlns.svg,"svg"),o.rawNode.setAttribute("overflow","hidden"),t&&o.rawNode.setAttribute("width",t<0?0:t),n&&o.rawNode.setAttribute("height",n<0?0:n);var i=a._createElementNS(a.xmlns.svg,"defs");return o.rawNode.appendChild(i),o.defNode=i,o._parent=r.byId(e),o._parent.appendChild(o.rawNode),o}Object.defineProperty(t,"__esModule",{value:!0}),t.createSurface=n});

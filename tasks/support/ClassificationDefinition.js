@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/JSONSupport","../../core/kebabDictionary","../../core/accessorSupport/decorators","../../symbols/Symbol","./ColorRamp"],function(e,r,o,t,p,s,a,l,i){var n=s({classBreaksDef:"class-breaks-definition",uniqueValueDef:"unique-value-definition"});return function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.baseSymbol=null,r.colorRamp=null,r.type=null,r}return o(r,e),t([a.property({type:l,json:{write:!0}})],r.prototype,"baseSymbol",void 0),t([a.property({type:i,json:{write:!0}})],r.prototype,"colorRamp",void 0),t([a.property({json:{read:n.read,write:n.write}})],r.prototype,"type",void 0),r=t([a.subclass("esri.tasks.support.ColorRamp")],r)}(a.declared(p))});

@@ -7,7 +7,13 @@
  * ::: esri-md class="panel trailer-1"
  * **Known Limitations**
  *
- * * There is no current support for printing {@link module:esri/views/SceneView SceneViews}.
+ * * There is no current support for printing {@link module:esri/views/SceneView SceneViews}. Instead, see {@link module:esri/views/SceneView#takeScreenshot SceneView.takeScreenshot()}.
+ * * {@link module:esri/layers/VectorTileLayer} printing requires ArcGIS Server 10.5.1 or later.
+ * * For printing secure VectorTileLayers with ArcGIS Server 10.5.1 or 10.6.0,
+ * or for printing VectorTileLayers with ArcGIS Server 10.5.1 or any Printing Service published with [ArcMap](https://desktop.arcgis.com/en/arcmap/),
+ * the {@link module:esri/tasks/PrintTask} will create a client-side image for the VectorTileLayer to use in the printout.
+ * This has some limitations related to large size printing quality and a dependency on browser window height/width ratio.
+ * * Labels currently cannot be printed as part of a FeatureLayer with ArcGIS Server 10.5.1 or any Printing Service published with ArcMap.
  * * The print server does not directly print [SVG](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/symbol) symbols. Rather, they are converted to {@link module:esri/symbols/PictureMarkerSymbol PictureMarkerSymbols} for display.
  * * Make certain that any resources to be printed are accessible by the print server. For example, if printing a map containing {@link module:esri/symbols/PictureMarkerSymbol PictureMarkerSymbols},
  * the URL to these symbols must be accessible to the print server for it to work properly.
@@ -16,8 +22,8 @@
  * @module esri/widgets/Print
  * @since 4.2
  *
- * @see [Print.tsx (widget view)]({{ JSAPI_BOWER_URL }}/widgets/Print.tsx)
- * @see [Print.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_Print.scss)
+ * @see [Print.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Print.tsx)
+ * @see [Print.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Print.scss)
  * @see [Sample - Print widget](../sample-code/widgets-print/index.html)
  * @see module:esri/widgets/Print/PrintViewModel
  * @see [Printing in web applications](https://server.arcgis.com/en/server/latest/create-web-apps/windows/printing-in-web-applications.htm)
@@ -126,7 +132,7 @@ const CSS = {
   widgetButton: "esri-widget--button",
   button: "esri-button",
   select: "esri-select",
-  header: "esri-widget__header",
+  header: "esri-widget__heading",
   input: "esri-input",
   disabled: "esri-disabled",
   anchorDisabled: "esri-widget__anchor--disabled",
@@ -362,7 +368,8 @@ class Print extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property() iconClass = CSS.widgetIcon;
+  @property()
+  iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -377,7 +384,8 @@ class Print extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property() label: string = i18n.widgetLabel;
+  @property()
+  label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  templateOptions
@@ -416,7 +424,8 @@ class Print extends declared(Widget) {
    * @type {EsriError}
    * @ignore
    */
-  @aliasOf("viewModel.error") error: EsriError;
+  @aliasOf("viewModel.error")
+  error: EsriError;
 
   //----------------------------------
   //  printServiceUrl
@@ -430,7 +439,8 @@ class Print extends declared(Widget) {
    * @type {string}
    */
 
-  @aliasOf("viewModel.printServiceUrl") printServiceUrl: string = null;
+  @aliasOf("viewModel.printServiceUrl")
+  printServiceUrl: string = null;
 
   //----------------------------------
   //  view

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define(["require","exports"],function(e,t){Object.defineProperty(t,"__esModule",{value:!0});var i=function(){function e(e){this.gain=e}return e.prototype.update=function(e){if(this.hasLastValue){var t=this.computeDelta(e);this.updateDelta(t)}this.lastValue=e},e.prototype.reset=function(){this.lastValue=void 0,this.filteredDelta=void 0},Object.defineProperty(e.prototype,"hasLastValue",{get:function(){return void 0!==this.lastValue},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"hasFilteredDelta",{get:function(){return void 0!==this.filteredDelta},enumerable:!0,configurable:!0}),e.prototype.computeDelta=function(e){return e-this.lastValue},e.prototype.updateDelta=function(e){this.hasFilteredDelta?this.filteredDelta=(1-this.gain)*this.filteredDelta+this.gain*e:this.filteredDelta=e},e}();t.FilteredFiniteDifference=i});

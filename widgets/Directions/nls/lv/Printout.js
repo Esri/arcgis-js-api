@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({printNotes:"Ievadiet piezīmes šeit",printDisclaimer:"Norādes paredzētas tikai plānošanas nolūkiem un ir atkarīgas no <a href='http://www.esri.com/legal/licensing-translations' target='_blank'>Esri lietošanas noteikumiem</a>. Var pastāvēt ceļa dinamiskie nosacījumi, kas var radīt precizitātes atšķirības no jūsu norādēm un kas jāņem vērā līdztekus ceļa zīmēm un likuma ierobežojumiem. Jūs uzņematies visus ar lietošanu saistītos riskus.",printoutError:"Šķiet, ka ir radusies kļūda."});

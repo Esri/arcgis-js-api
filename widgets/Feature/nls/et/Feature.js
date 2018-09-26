@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({attach:"Manused",fields:"Väljad",fieldsSummary:"Atribuutide ja väärtuste loend",media:"Meedia",next:"Järgmine",numCharts:"Graafikute arv",numImages:"Piltide arv",noTitle:"Pealkirjata",previous:"Eelmine"});

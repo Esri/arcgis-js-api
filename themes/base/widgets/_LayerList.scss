@@ -172,8 +172,8 @@
   }
   .esri-layer-list__item-actions {
     position: relative;
-    background-color: $background_inverse_color;
-    color: $interactive_text_color--inverse;
+    background-color: $background_offset_color;
+    color: $interactive_text_offset_color;
     margin: -1px floor($side_spacing/2) floor($cap_spacing/2);
     height: auto;
   }
@@ -202,7 +202,7 @@
     align-items: flex-start;
     padding: floor($cap_spacing/2) 0;
     list-style: none;
-    border-top: 1px solid $border_inverse_color;
+    border-top: 2px solid $background_color;
   }
   .esri-layer-list__item-actions-list:first-of-type {
     border-top: 0;
@@ -271,13 +271,16 @@
   }
   .esri-layer-list__item-action:hover,
   .esri-layer-list__action-toggle:hover {
-    background-color: $background_active_reverse_color;
+    background-color: $background_active_color;
   }
   .esri-layer-list__item-actions[hidden] .esri-layer-list__item-action {
     opacity: 0;
   }
   .esri-layer-list__item-action-icon {
     flex: 0 0 $side_spacing;
+    display: inline-block;
+    width: $icon_text_size;
+    height: $icon_text_size;
     margin-top: 0.1em;
   }
   .esri-layer-list__item-action-image {

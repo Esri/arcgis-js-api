@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define(["require","exports","../ClassBreaksRenderer","../HeatmapRenderer","../Renderer","../SimpleRenderer","../UniqueValueRenderer"],function(e,r,a,n,s,p,t){Object.defineProperty(r,"__esModule",{value:!0}),r.types={key:"type",base:s,typeMap:{heatmap:n,simple:p,"unique-value":t,"class-breaks":a}}});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
-define(["require","exports","../../lib/glMatrix"],function(i,t,e){Object.defineProperty(t,"__esModule",{value:!0});var n=e.vec3d,r=function(){function i(i,t,e){void 0===i&&(i=n.create()),void 0===t&&(t=n.createFrom(.57735,.57735,.57735)),void 0===e&&(e=!0),this.intensity=i,this.direction=t,this.castShadows=e}return i}();t.MainLight=r;var o=function(){function i(i,t){void 0===i&&(i=n.create()),void 0===t&&(t=n.createFrom(.57735,.57735,.57735)),this.intensity=n.create(),this.direction=n.create(),this.intensity=i,this.direction=t}return i}();t.FillLight=o;var c=function(){function i(i){void 0===i&&(i=n.create()),this.intensity=i}return i}();t.AmbientLight=c;var s=function(){function i(){this.sh={r:[0],g:[0],b:[0]}}return i}();t.SphericalHarmonicsLight=s});
+define(["require","exports","../../lib/gl-matrix"],function(i,t,e){Object.defineProperty(t,"__esModule",{value:!0});var n=function(){function i(i,t,n){void 0===i&&(i=e.vec3d.create()),void 0===t&&(t=e.vec3d.createFrom(.57735,.57735,.57735)),void 0===n&&(n=!0),this.intensity=i,this.direction=t,this.castShadows=n}return i}();t.MainLight=n;var r=function(){function i(i,t){void 0===i&&(i=e.vec3d.create()),void 0===t&&(t=e.vec3d.createFrom(.57735,.57735,.57735)),this.intensity=e.vec3d.create(),this.direction=e.vec3d.create(),this.intensity=i,this.direction=t}return i}();t.FillLight=r;var c=function(){function i(i){void 0===i&&(i=e.vec3d.create()),this.intensity=i}return i}();t.AmbientLight=c;var o=function(){function i(){this.sh={r:[0],g:[0],b:[0]}}return i}();t.SphericalHarmonicsLight=o});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/Accessor","../../core/accessorSupport/decorators"],function(o,r,e,t,n,c){return function(o){function r(){var r=null!==o&&o.apply(this,arguments)||this;return r.canZoomIn=!0,r.canZoomOut=!0,r}return e(r,o),t([c.property({readOnly:!0})],r.prototype,"canZoomIn",void 0),t([c.property({readOnly:!0})],r.prototype,"canZoomOut",void 0),r=t([c.subclass("esri.widgets.Zoom.ZoomConditions3D")],r)}(c.declared(n))});

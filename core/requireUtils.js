@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
-define(["require","exports","dojo/Deferred"],function(e,r,n){function t(e,r){if(Array.isArray(r)){var i=new n;return e(r,function(){for(var e=[],r=0;r<arguments.length;r++)e[r]=arguments[r];i.resolve(e)}),i.promise}return t(e,[r]).then(function(e){return e[0]})}function i(e,r,n){return r.toAbsMid?r.toAbsMid(e):n.id.replace(/\/[^\/]*$/gi,"/")+e}Object.defineProperty(r,"__esModule",{value:!0}),r.when=t,r.getAbsMid=i});
+define(["require","exports","./promiseUtils"],function(e,n,r){function t(e,n){return Array.isArray(n)?r.create(function(r){e(n,function(){for(var e=[],n=0;n<arguments.length;n++)e[n]=arguments[n];r(e)})}):t(e,[n]).then(function(e){return e[0]})}function i(e,n,r){return n.toAbsMid?n.toAbsMid(e):r.id.replace(/\/[^\/]*$/gi,"/")+e}Object.defineProperty(n,"__esModule",{value:!0}),n.when=t,n.getAbsMid=i});

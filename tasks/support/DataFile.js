@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
-define(["../../core/JSONSupport"],function(e){return e.createSubclass({declaredClass:"esri.tasks.support.DataFile",properties:{itemId:{value:null,json:{read:{source:"itemID"},write:{target:"itemID"}}},url:null}})});
+define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/JSONSupport","../../core/accessorSupport/decorators"],function(r,e,t,o,p,s){return function(r){function e(e){var t=r.call(this)||this;return t.itemId=null,t.url=null,t}return t(e,r),o([s.property({json:{read:{source:"itemID"},write:{target:"itemID"}}})],e.prototype,"itemId",void 0),o([s.property()],e.prototype,"url",void 0),e=o([s.subclass("esri.tasks.support.DataFile")],e)}(s.declared(p))});

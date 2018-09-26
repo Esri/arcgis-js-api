@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({widgetLabel:"Esbós",draw:"Dibuixa",drawPoint:"Dibuixa un punt",drawPolygon:"Dibuixa un polígon",drawPolyline:"Dibuixa una línia",drawMultipoint:"Dibuixa un multipunt",drawCircle:"Dibuixa un cercle",drawRectangle:"Dibuixa un rectangle",drawTriangle:"Dibuixa un triangle",drawSquare:"Dibuixa un quadrat",drawEllipse:"Dibuixa una el·lipse",pan:"Aplica la panoràmica al mapa",undo:"Desfés",redo:"Refés",updateDrawing:"Actualitza el dibuix",clear:"Esborra el dibuix",completeDrawing:"Completa el dibuix",pauseDrawing:"Atura temporalment el dibuix",resumeDrawing:"Reprèn el dibuix",rotate:"Gira",scale:"Escala",addPointTooltip:"Feu clic per afegir un punt",removePointTooltip:"Feu clic per eliminar aquest punt",completePolygonTooltip:"Feu clic en aquest punt per finalitzar",startDrawingTooltip:"Feu clic per començar a dibuixar",continueDrawingTooltip:"Feu clic per continuar dibuixant",completeDrawingTooltip:"Feu doble clic per completar",addMultipointTooltip:"Feu clic per començar a afegir punts",finishMultipointTooltip:"Feu doble clic per finalitzar",addFreehandTooltip:"Manteniu pressionat per començar i deixeu anar per finalitzar",addShapeTooltip:"Feu clic per afegir una forma o manteniu pressionat per començar i deixeu anar per finalitzar"});

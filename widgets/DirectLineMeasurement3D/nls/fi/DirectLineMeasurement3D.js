@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({title:"Mittaus",hint:"Aloita mittaus napsauttamalla maisemaa ja sijoita ensimmäinen pisteesi",unsupported:"Suoran viivan mittausta ei tueta MapView-sovelluksessa.",distance:"Etäisyys",direct:"Suora",horizontal:"Vaaka",vertical:"Pysty",unit:"Yksikkö",newMeasurement:"Uusi mittaus",units:{metric:"Metrijärjestelmä",imperial:"Mailijärjestelmä",kilometers:"Kilometriä",meters:"Metriä",miles:"Mailia",inches:"Tuumaa",feet:"Jalkaa",yards:"Jaardia","nautical-miles":"Meripeninkulmaa","us-feet":"Jalkaa (Yhdysvallat)","degrees-minutes-seconds":"DMS",degrees:"Asteet"}});

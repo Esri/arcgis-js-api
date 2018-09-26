@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({widgetLabel:"Eskizas",draw:"Brėžti",drawPoint:"Brėžti tašką",drawPolygon:"Brėžti poligoną",drawPolyline:"Brėžti liniją",drawMultipoint:"Brėžti keletą taškų",drawCircle:"Brėžti apskritimą",drawRectangle:"Brėžti stačiakampį",drawTriangle:"Brėžti trikampį",drawSquare:"Brėžti kvadratą",drawEllipse:"Brėžti elipsę",pan:"Perstumti žemėlapį",undo:"Atšaukti",redo:"Grąžinti",updateDrawing:"Atnaujinti brėžinį",clear:"Išvalyti brėžinį",completeDrawing:"Užbaigti brėžinį",pauseDrawing:"Pristabdyti braižymą",resumeDrawing:"Tęsti braižymą",rotate:"Pasukti",scale:"Mastelis",addPointTooltip:"Spustelėkite taškui pridėti",removePointTooltip:"Spustelėkite taškui pašalinti",completePolygonTooltip:"Spustelėkite taškui užbaigti",startDrawingTooltip:"Spustelėkite pradėti piešimą",continueDrawingTooltip:"Spustelkite piešimui tęsti",completeDrawingTooltip:"Dvikarčiu spustelėjimu baikite",addMultipointTooltip:"Spustelkite įvesti taškams",finishMultipointTooltip:"Dvikarčiu spustelėjimu pabaikite",addFreehandTooltip:"Paspauskite pradėti ir atleiskite pabaigti",addShapeTooltip:"Paspauskite figūrai pridėti, arba paspaudę pradėkite ir pabaikite atleidę"});

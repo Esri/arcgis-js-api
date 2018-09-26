@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({abbreviatedDirections:{north:"N",south:"S",east:"L",west:"O"},addConversion:"Adicionar conversão",captureMode:"Modo de captura",changeCoordinateDisplay:"Alterar exibição de coordenada",convert:"Converter",conversionOutputSuffix:"saída de conversão",copySuccessMessage:"Coordenada copiada para área de transferência",defaultPattern:"Redefinir para padrão",goTo:"Ir para local",inputCoordTitle:"Coordenada de entrada",invalidCoordinate:"Coordenadas inválidas",liveMode:"Modo em tempo real",locationOffBasemap:"A coordenada de entrada está fora da extensão do mapa base",noBasemap:"Nenhum mapa base.",noLocation:"Nenhuma posição",removeConversion:"Remover conversão",selectFormat:"Selecionar formato",settingsTitle:"Configurações de formato"});

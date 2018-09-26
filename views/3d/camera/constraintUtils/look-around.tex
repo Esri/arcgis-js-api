@@ -1,0 +1,135 @@
+\documentclass{paper}
+
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{tikz}
+
+\usetikzlibrary{shapes,calc,through,intersections,angles,quotes}
+
+\title{Tilt constraint for look around}
+
+\begin{document}
+
+\section{Forward}
+
+\begin{tikzpicture}[]
+  \def\r{3}
+  \node at (0, 0)[circle,fill,inner sep=1] (c) {};
+  \node[label=right:eye] at (8, -1.5)[circle,fill,inner sep=1] (p1) {};
+  \coordinate (p2) at (40:\r);
+
+  \node[label=below left:ctr] at (0:\r)[circle,fill,inner sep=1] (p3) {};
+
+  \node [name path=Circle1,draw,circle through=(p2)] at (c) {};
+  \draw (p2) -- (p1);
+  \draw (p2) -- node[above] {$r$} (c);
+  \draw[dashed] (p2) -- (40:\r*2) coordinate (p5);
+  \draw (p1) -- node[below] {$d$} (p3);
+  \draw[] (c) -- node[above] {$r$} (p3);
+  \coordinate (p4) at ($(p3) + (5,0)$);
+  \coordinate (p6) at (intersection of p3--p4 and p1--p2);
+
+  \draw[] (p3) -- node[above] {$L$} (p6);
+  \draw[dashed] (p6) -- (p4);
+
+
+  \pic [draw, <->, "\tiny $\Delta\rho$", angle eccentricity=1.3, angle radius=30] {angle = p2--p1--p3};
+  \pic [draw, <->, "\tiny $\alpha$", angle eccentricity=1.2, angle radius=25] {angle = p1--p3--p4};
+
+  \pic [draw, <->, "\tiny $\Omega$", angle eccentricity=1.5, angle radius=15] {angle = p1--p2--p5};
+
+  \pic [draw, <->, "\tiny $\Delta\rho + \alpha$", angle eccentricity=1.8, angle radius=20] {angle = p1--p6--p4};
+\end{tikzpicture}\vspace{1em}
+
+Calculate center tilt angle measured at the virtual sphere when applying
+a look around tilt angle.
+
+\begin{table}[h!tb]
+  \centering
+  \begin{tabular}{l l}
+  \toprule
+  \textbf{Variable} & \textbf{Description} \\
+  \midrule
+  $r$ & Earth radius \\
+  $d$ & Distance from eye to center \\
+  $\alpha$ & Current tilt angle at center \\
+  $\Delta \rho$ & Look around angle delta \\
+  \bottomrule
+  \end{tabular}
+\end{table}
+
+\begingroup
+\addtolength{\jot}{0.5em}
+\begin{align*}
+  \frac{L}{\sin{\left(\Delta\rho\right)}} & = \frac{d}{\sin{\left(\pi - \Delta\rho - \alpha\right)}} = \frac{d}{\sin{\left(\Delta\rho + \alpha\right)}} \\
+  L & = d \frac{\sin{\left(\Delta\rho\right)}}{\sin{\left(\Delta\rho + \alpha\right)}} \\
+  \frac{\sin{\left(\Omega\right)}}{r + L} & = \frac{\sin{\left(\Delta\rho + \alpha\right)}}{r} \\
+  \Omega & = \sin^{-1}{\left( \sin{\left(\Delta \rho + \alpha\right)} + \frac{d}{r} \sin{\left(\Delta \rho\right)} \right)}
+\end{align*}
+\endgroup
+
+\section{Inverse}
+
+\begin{tikzpicture}[]
+  \def\r{3}
+  \node at (0, 0)[circle,fill,inner sep=1] (c) {};
+  \node[label=right:eye] at (8, -1.5)[circle,fill,inner sep=1] (p1) {};
+  \coordinate (p2) at (40:\r);
+
+  \node[label=below left:ctr] at (0:\r)[circle,fill,inner sep=1] (p3) {};
+
+  \node [name path=Circle1,draw,circle through=(p2)] at (c) {};
+  \draw (p2) -- (p1);
+  \draw (p2) -- node[above] {$r$} (c);
+  \draw[dashed] (p2) -- (40:\r*2) coordinate (p5);
+  \draw (p1) -- (p3);
+  \draw[] (c) -- node[above] {$r$} (p3);
+  \coordinate (p4) at ($(p3) + (5,0)$);
+  \coordinate (p6) at (intersection of p3--p4 and p1--p2);
+
+  \draw[dashed] (p3) -- (p4);
+
+  \draw[] (c) -- node[below] {$e$} (p1);
+
+
+  \pic [draw, <->, "\tiny $\Delta\rho$", angle eccentricity=1.3, angle radius=30] {angle = p2--p1--p3};
+  \pic [draw, <->, "\tiny $\alpha$", angle eccentricity=1.2, angle radius=25] {angle = p1--p3--p4};
+
+  \pic [draw, <->, "\tiny $\Omega$", angle eccentricity=1.5, angle radius=15] {angle = p1--p2--p5};
+
+  \pic [draw, <->, "\tiny $\alpha_2$", angle eccentricity=1.15, angle radius=50] {angle = p2--p1--c};
+  \pic [draw, <->, "\tiny $\alpha_1$", angle eccentricity=1.12, angle radius=64] {angle = p3--p1--c};
+\end{tikzpicture}\vspace{1em}
+
+Calculate look around tilt delta to achieve a specific center tilt angle
+measured at the virtual sphere.
+
+\begin{table}[h!tb]
+  \centering
+  \begin{tabular}{l l}
+  \toprule
+  \textbf{Variable} & \textbf{Description} \\
+  \midrule
+  $r$ & Earth radius \\
+  $d$ & Distance from eye to center \\
+  $e$ & Distance from eye to earth center \\
+  $\alpha$ & Desired tilt angle when meeting constraint \\
+  $\Omega$ & Current tilt angle at center \\
+  \bottomrule
+  \end{tabular}
+\end{table}
+
+\begingroup
+\addtolength{\jot}{1em}
+\begin{align*}
+  \frac{\sin{\left(\alpha_1\right)}}{r} & = \frac{\sin{\left(\alpha\right)}}{e},~~~~
+  \alpha_1 = \sin^{-1}{\left(\frac{r}{e} \sin{\left(\alpha\right)}\right)} \\
+  \frac{\sin{\left(\alpha_2\right)}}{r} & = \frac{\sin{\left(\Omega\right)}}{e},~~~~
+  \alpha_2 = \sin^{-1}{\left(\frac{r}{e} \sin{\left(\Omega\right)}\right)} \\
+  \Delta \rho & = \alpha_2 - \alpha_1 =
+  \sin^{-1}{\left(\frac{r}{e} \sin{\left(\Omega\right)}\right)} - \sin^{-1}{\left(\frac{r}{e} \sin{\left(\alpha\right)}\right)}
+\end{align*}
+\endgroup
+
+\end{document}

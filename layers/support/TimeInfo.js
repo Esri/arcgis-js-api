@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define(["../../core/declare","../../core/lang","../../TimeExtent","./TimeReference","./LayerTimeOptions"],function(e,i,t,n,s){var r=e(null,{declaredClass:"esri.layers.support.TimeInfo",constructor:function(e){null!==e&&(i.mixin(this,e),e.exportOptions&&(this.exportOptions=new s(e.exportOptions)),this.timeExtent=null,e.timeExtent&&2===e.timeExtent.length&&(this.timeExtent=new t(e.timeExtent)),this.timeReference=new n(e.timeReference))}});return i.mixin(r,{UNIT_CENTURIES:"esriTimeUnitsCenturies",UNIT_DAYS:"esriTimeUnitsDays",UNIT_DECADES:"esriTimeUnitsDecades",UNIT_HOURS:"esriTimeUnitsHours",UNIT_MILLISECONDS:"esriTimeUnitsMilliseconds",UNIT_MINUTES:"esriTimeUnitsMinutes",UNIT_MONTHS:"esriTimeUnitsMonths",UNIT_SECONDS:"esriTimeUnitsSeconds",UNIT_UNKNOWN:"esriTimeUnitsUnknown",UNIT_WEEKS:"esriTimeUnitsWeeks",UNIT_YEARS:"esriTimeUnitsYears"}),r});

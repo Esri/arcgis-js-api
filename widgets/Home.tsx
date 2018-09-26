@@ -3,7 +3,7 @@
  * initial {@link module:esri/Viewpoint} or a previously defined [viewpoint](#viewpoint).
  * By default this button looks like the following:
  *
- * ![home-button](../assets/img/apiref/widgets/widgets-home.png)
+ * ![home-button](../../assets/img/apiref/widgets/widgets-home.png)
  *
  * You can use the view's {@link module:esri/views/ui/DefaultUI} to add widgets
  * to the view's user interface via the {@link module:esri/views/View#ui ui} property on the view.
@@ -12,8 +12,8 @@
  * @module esri/widgets/Home
  * @since 4.0
  *
- * @see [Home.tsx (widget view)]({{ JSAPI_BOWER_URL }}/widgets/Home.tsx)
- * @see [button.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_Widget.scss)
+ * @see [Home.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Home.tsx)
+ * @see [button.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Widget.scss)
  * @see [Sample - Home widget](../sample-code/widgets-home/index.html)
  * @see module:esri/widgets/Home/HomeViewModel
  * @see {@link module:esri/views/View#ui View.ui}
@@ -32,6 +32,7 @@
 /// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
 
 // dojo
+import * as i18nCommon from "dojo/i18n!esri/nls/common";
 import * as i18n from "dojo/i18n!esri/widgets/Home/nls/Home";
 
 // esri
@@ -50,7 +51,7 @@ import Widget = require("esri/widgets/Widget");
 import HomeViewModel = require("esri/widgets/Home/HomeViewModel");
 
 // esri.widgets.support
-import { GoToOverride } from "esri/widgets/support/interfaces";
+type GoToOverride = __esri.GoToOverride;
 import { accessibleHandler, tsx, renderable, vmEvent } from "esri/widgets/support/widget";
 
 const CSS = {
@@ -115,7 +116,8 @@ class Home extends declared(Widget) {
   //  goToOverride
   //----------------------------------
 
-  @aliasOf("viewModel.goToOverride") goToOverride: GoToOverride = null;
+  @aliasOf("viewModel.goToOverride")
+  goToOverride: GoToOverride = null;
 
   //----------------------------------
   //  iconClass
@@ -130,7 +132,8 @@ class Home extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property() iconClass = CSS.widgetIcon;
+  @property()
+  iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -145,7 +148,8 @@ class Home extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property() label: string = i18n.widgetLabel;
+  @property()
+  label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  view
@@ -212,13 +216,27 @@ class Home extends declared(Widget) {
    * // Sets the model's viewpoint to the Viewpoint based on a polygon geometry
    * home.viewpoint = vp;
    */
-  @aliasOf("viewModel.viewpoint") viewpoint: Viewpoint = null;
+  @aliasOf("viewModel.viewpoint")
+  viewpoint: Viewpoint = null;
 
   //--------------------------------------------------------------------------
   //
   //  Public Methods
   //
   //--------------------------------------------------------------------------
+
+  /**
+   * This function provides the ability to interrupt and cancel the process
+   * of navigating the view back to the view's initial extent.
+   *
+   * @since 4.9
+   *
+   * @method
+   */
+  @aliasOf("viewModel.cancelGo")
+  cancelGo(): IPromise<void> {
+    return null;
+  }
 
   /**
    * Animates the view to the initial Viewpoint of the view or the
@@ -242,6 +260,8 @@ class Home extends declared(Widget) {
       [CSS.rotatingIcon]: state === "going-home"
     };
 
+    const title = state === "going-home" ? i18nCommon.cancel : i18n.title;
+
     return (
       <div
         bind={this}
@@ -250,8 +270,8 @@ class Home extends declared(Widget) {
         tabIndex={0}
         onclick={this._go}
         onkeydown={this._go}
-        aria-label={i18n.title}
-        title={i18n.title}
+        aria-label={title}
+        title={title}
       >
         <span aria-hidden="true" class={this.classes(CSS.homeIcon, iconClasses)} />
         <span class={CSS.text}>{i18n.button}</span>
@@ -267,7 +287,9 @@ class Home extends declared(Widget) {
 
   @accessibleHandler()
   private _go() {
-    this.go();
+    const { viewModel } = this;
+
+    viewModel.state === "going-home" ? viewModel.cancelGo() : viewModel.go();
   }
 }
 

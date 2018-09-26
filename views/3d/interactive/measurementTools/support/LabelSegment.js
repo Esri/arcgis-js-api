@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
-define(["require","exports","./viewUtils","../../../lib/glMatrix"],function(t,e,i,s){return function(){function t(){this.origin=s.vec3d.create(),this.start=s.vec3d.create(),this.end=s.vec3d.create()}return t.prototype.update=function(t,e,r){if(s.vec3d.set(t,this.start),s.vec3d.set(e,this.end),r)switch(r){case"start":s.vec3d.set(this.start,this.origin);break;case"center":i.midpoint([t,e],this.origin);break;case"end":s.vec3d.set(this.end,this.origin);break;default:s.vec3d.set(r,this.origin)}else i.midpoint([t,e],this.origin)},t}()});
+define(["require","exports","./viewUtils","../../../lib/gl-matrix"],function(t,e,i,s){return function(){function t(){this.origin=s.vec3d.create(),this.start=s.vec3d.create(),this.end=s.vec3d.create()}return t.prototype.update=function(t,e,r){if(s.vec3d.set(t,this.start),s.vec3d.set(e,this.end),r)switch(r){case"start":s.vec3d.set(this.start,this.origin);break;case"center":i.midpoint([t,e],this.origin);break;case"end":s.vec3d.set(this.end,this.origin);break;default:s.vec3d.set(r,this.origin)}else i.midpoint([t,e],this.origin)},t}()});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({title:"Mērīt",hint:"Sāciet mērīt, noklikšķinot scēnā, lai novietotu pirmo punktu",unsupported:"MapView nav atbalstīta tiešo līniju mērīšana.",distance:"Attālums",direct:"Virziens",horizontal:"Horizontāli",vertical:"Vertikāli",unit:"Mērvienība",newMeasurement:"Jauns mērījums",units:{metric:"Metriskā",imperial:"Imperiālā",kilometers:"Kilometri",meters:"Metri",miles:"Jūdzes",inches:"Collas",feet:"Pēdas",yards:"Jardi","nautical-miles":"Jūras jūdzes","us-feet":"Pēdas (ASV)","degrees-minutes-seconds":"GMS",degrees:"Grādi"}});

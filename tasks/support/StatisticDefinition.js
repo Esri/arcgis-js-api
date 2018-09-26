@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/JSONSupport","../../core/accessorSupport/decorators"],function(t,e,o,i,r,n){return function(t){function e(e){var o=t.call(this)||this;return o.maxPointCount=void 0,o.maxRecordCount=void 0,o.maxVertexCount=void 0,o.onStatisticField=null,o.outStatisticFieldName=null,o.statisticType=null,o}o(e,t),r=e,e.prototype.clone=function(){return new r({maxPointCount:this.maxPointCount,maxRecordCount:this.maxRecordCount,maxVertexCount:this.maxVertexCount,onStatisticField:this.onStatisticField,outStatisticFieldName:this.outStatisticFieldName,statisticType:this.statisticType})};var r;return i([n.property({type:Number,json:{write:!0}})],e.prototype,"maxPointCount",void 0),i([n.property({type:Number,json:{write:!0}})],e.prototype,"maxRecordCount",void 0),i([n.property({type:Number,json:{write:!0}})],e.prototype,"maxVertexCount",void 0),i([n.property({type:String,json:{write:!0}})],e.prototype,"onStatisticField",void 0),i([n.property({type:String,json:{write:!0}})],e.prototype,"outStatisticFieldName",void 0),i([n.property({type:String,json:{write:!0}})],e.prototype,"statisticType",void 0),e=r=i([n.subclass("esri.tasks.support.StatisticDefinition")],e)}(n.declared(r))});

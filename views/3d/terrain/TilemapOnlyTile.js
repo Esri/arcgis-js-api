@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
-define(["require","exports","./TerrainConst","./TilePerLayerInfo"],function(e,r,n,t){return function(){function e(e){this.parent=null,this.lij=e,this.layerInfo=new Array(n.LayerClass.LAYER_CLASS_COUNT)}return e.prototype.tileDataAvailable=function(e,r,n){var t=this.layerInfo[n][r].tilemap;return!t||"unavailable"!==t.getAvailability(e.lij[1],e.lij[2])},e.prototype.modifyLayers=function(e,r,n){for(var i=r.length,a=this.layerInfo[n],l=new Array(i),o=0;o<i;o++){var f=r[o];l[o]=f>-1?a[f]:new t(n)}this.layerInfo[n]=l},e}()});
+define(["require","exports","./TerrainConst","./TilePerLayerInfo"],function(r,e,a,n){return function(){function r(r){this.parent=null,this.lij=r,this.layerInfo=new Array(a.LayerClass.COUNT)}return r.prototype.hasDataAvailable=function(r,e,a){var n=this.layerInfo[a][e].tilemap;return!n||"unavailable"!==n.getAvailability(r.lij[1],r.lij[2])},r.prototype.modifyLayers=function(r,e,a){for(var t=this.layerInfo[a],i=e.length,l=new Array(i),o=0;o<i;o++){var y=e[o];l[o]=y>-1?t[y]:n.makeEmptyLayerInfo(a)}this.layerInfo[a]=l},r}()});

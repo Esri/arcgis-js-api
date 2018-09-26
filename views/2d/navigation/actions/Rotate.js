@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define(["require","exports","../../../../core/tsSupport/declareExtendsHelper","../../../../core/tsSupport/decorateHelper","../../../../core/Accessor","../../../../core/accessorSupport/decorators","../../viewpointUtils","../../libs/gl-matrix/vec2"],function(e,t,i,r,n,o,p,a){return function(e){function t(t){var i=e.call(this)||this;return i.animationTime=0,i.viewpoint=p.create(),i}return i(t,e),t.prototype.begin=function(e,t){this.navigation.begin(),this.previousCenter=t.center},t.prototype.update=function(e,t){var i=a.create();a.set(i,t.center.x+e.padding.left-e.padding.right,e.height-t.center.y+e.padding.top-e.padding.bottom);var r=a.create();a.set(r,this.previousCenter.x+e.padding.left-e.padding.right,e.height-this.previousCenter.y+e.padding.top-e.padding.bottom);var n=[e.state.paddedScreenCenter[0]+e.padding.left-e.padding.right,e.state.paddedScreenCenter[1]],o=p.angleBetween(n,i,r);e.viewpoint=p.rotateBy(this.viewpoint,e.content.viewpoint,o),this.previousCenter=t.center},t.prototype.end=function(e,t){this.navigation.end()},r([o.property()],t.prototype,"viewpoint",void 0),r([o.property()],t.prototype,"navigation",void 0),t=r([o.subclass("esri.views.2d.actions.Rotate")],t)}(o.declared(n))});

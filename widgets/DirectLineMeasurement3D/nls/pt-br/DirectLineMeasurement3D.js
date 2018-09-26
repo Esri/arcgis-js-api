@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({title:"Medir",hint:"Inicie a medição clicando na cena para posicionar seu primeiro ponto",unsupported:"Medição de linha direta não é suportada no MapView.",distance:"Distância",direct:"Direto",horizontal:"Horizontal",vertical:"Vertical",unit:"Unidade",newMeasurement:"Nova Medição",units:{metric:"Métrico",imperial:"Imperial",kilometers:"Quilômetros",meters:"Metros",miles:"Milhas",inches:"Polegadas",feet:"Pés",yards:"Jardas","nautical-miles":"Milhas Náuticas","us-feet":"Pés (US)","degrees-minutes-seconds":"DMS",degrees:"Graus"}});

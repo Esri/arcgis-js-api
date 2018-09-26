@@ -691,3 +691,7 @@
   content: "\e903";
   color: inherit;
 }
+.esri-icon-default-action:before {
+  content: "\e904";
+  color: inherit;
+}

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/Accessor","../../core/lang","../../core/Logger","../../core/accessorSupport/decorators","./MeshMaterial","./MeshVertexAttributes"],function(e,r,t,o,s,a,n,c,i,p){var l=n.getLogger("esri.geometry.support.MeshComponent");return function(e){function r(r){var t=e.call(this)||this;return t.faces=null,t.material=null,t.shading="source",t}t(r,e),s=r,r.prototype.castFaces=function(e){var r={loggerTag:".faces=",stride:3};return p.castArray(e,Uint32Array,[Uint16Array],r,l)},r.prototype.clone=function(){return new s({faces:a.clone(this.faces),shading:this.shading,material:a.clone(this.material)})};var s;return o([c.property({json:{write:!0}})],r.prototype,"faces",void 0),o([c.cast("faces")],r.prototype,"castFaces",null),o([c.property({type:i.MeshMaterial,json:{write:!0}})],r.prototype,"material",void 0),o([c.property({type:String,json:{write:!0}})],r.prototype,"shading",void 0),r=s=o([c.subclass("esri.geometry.support.MeshComponent")],r)}(c.declared(s))});

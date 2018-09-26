@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({title:"माप",hint:"अपना पहला बिंदु लगाने के लिए दृश्य में क्लिक करके मापना प्रारंभ करें",unsupported:"क्षेत्र मापन MapView में समर्थित नहीं है।",perimeterLength:"परिमाप",area:"क्षेत्र",unit:"इकाई",notApplicable:"लागू नहीं",newMeasurement:"नया मापन",units:{metric:"मीट्रिक",imperial:"इम्पीरियल","square-kilometers":"वर्ग किलोमीटर","square-meters":"वर्ग मीटर","square-miles":"वर्ग मील","square-inches":"वर्ग इंच","square-feet":"वर्ग फीट","square-yards":"वर्ग गज़","square-us-feet":"वर्ग फीट (US)",acres:"एकड़",ares:"एकड़",hectares:"हेक्टेयर"}});

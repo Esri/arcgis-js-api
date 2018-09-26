@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
-define({addTags:"Adicionar tags",noTagsFound:"Nenhuma combinação de tags existente.",required:"Uma ou mais tags são exigidas."});
+define({addTags:"Adicione tags",noTagsFound:"Nenhuma combinação de tags existente.",required:"Uma ou mais tags são exigidas."});

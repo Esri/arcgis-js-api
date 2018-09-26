@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define(["require","exports","dojo/aspect","dojo/on"],function(t,r,n,e){function o(t,r,n,e){var i;if(Array.isArray(r)?i=r:r.indexOf(",")>-1&&(i=r.split(/\s*,\s*/)),i){for(var u=[],f=0,s=i;f<s.length;f++){var a=s[f];u.push(o(t,a,n,e))}return u.remove=function(){for(var t=0;t<u.length;t++)u[t].remove()},u}return e(t,r)}return function(){function t(){}return t.prototype.emit=function(t,r){if(this.hasEventListener(t))return r=r||{},r.target||(r.target=this),e.emit(this,t,r)},t.prototype.on=function(t,r){return o(this,t,r,function(t,e){return n.after(t,"on"+e,r,!0)})},t.prototype.hasEventListener=function(t){return t="on"+t,!(!this[t]||!this[t].after)},t}()});

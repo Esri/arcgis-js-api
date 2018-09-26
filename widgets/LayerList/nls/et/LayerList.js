@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({widgetLabel:"Kihiloend",noItemsToDisplay:"Kuvamiseks pole praegu ühtki sisuobjekti.",layerInvisibleAtScale:"Praeguses mõõtkavas mittenähtav",layerError:"Selle kihi laadimisel ilmnes tõrge",untitledLayer:"Pealkirjata kiht"});

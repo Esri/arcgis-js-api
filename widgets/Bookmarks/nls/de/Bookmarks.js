@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({widgetLabel:"Lesezeichen",goToBookmark:"Zum Lesezeichen wechseln",noBookmarksHeading:"Keine Lesezeichen",noBookmarksDescription:"Einer Karte hinzugefügte Lesezeichen werden hier angezeigt.",disabledHeading:"Lesezeichen deaktiviert",disabledDescription:"Fügen Sie eine MapView hinzu, um Lesezeichen zu aktivieren."});

@@ -120,7 +120,8 @@ class RasterSymbologyEditor extends declared(Widget) {
   @renderable()
   layer: any = null;
 
-  @property() defaultParams: any = null;
+  @property()
+  defaultParams: any = null;
 
   @property({
     type: RasterSymbologyEditorViewModel

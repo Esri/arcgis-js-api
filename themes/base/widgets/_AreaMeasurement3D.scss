@@ -77,7 +77,15 @@
 
   .esri-area-measurement-3d__units-select {
     width: 100%;
+    padding-left: 0.5em;
     padding-right: 2.7em;
+  }
+
+  html[dir="rtl"] {
+    .esri-area-measurement-3d__units-select {
+      padding-left: 2.7em;
+      padding-right: 0.5em;
+    }
   }
 }
 

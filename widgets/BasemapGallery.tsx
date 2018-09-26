@@ -4,7 +4,7 @@
  * layers are removed and replaced with the basemap layers of the associated basemap selected in the gallery. By default,
  * the BasemapGallery widget looks like the following image.
  *
- * ![basemap-gallery](../assets/img/apiref/widgets/basemap-gallery.png)
+ * ![basemap-gallery](../../assets/img/apiref/widgets/basemap-gallery.png)
  *
  * ::: esri-md class="panel trailer-1"
  * **Known Limitations**
@@ -15,8 +15,8 @@
  * @module esri/widgets/BasemapGallery
  * @since 4.3
  *
- * @see [BasemapGallery.tsx (widget view)]({{ JSAPI_BOWER_URL }}/widgets/BasemapGallery.tsx)
- * @see [BasemapGallery.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_BasemapGallery.scss)
+ * @see [BasemapGallery.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/BasemapGallery.tsx)
+ * @see [BasemapGallery.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_BasemapGallery.scss)
  * @see [Sample - BasemapGallery widget](../sample-code/widgets-basemapgallery/index.html)
  * @see module:esri/widgets/BasemapGallery/BasemapGalleryViewModel
  *
@@ -83,7 +83,7 @@ const CSS = {
 
   // common
   disabled: "esri-disabled",
-  header: "esri-widget__header"
+  header: "esri-widget__heading"
 };
 
 @subclass("esri.widgets.BasemapGallery")
@@ -176,7 +176,8 @@ class BasemapGallery extends declared(Widget) {
    * @instance
    * @type {string}
    */
-  @property() iconClass = CSS.widgetIcon;
+  @property()
+  iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -191,7 +192,8 @@ class BasemapGallery extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property() label: string = i18n.widgetLabel;
+  @property()
+  label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  source

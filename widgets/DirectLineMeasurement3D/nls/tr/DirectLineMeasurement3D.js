@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({title:"Ölçü",hint:"İlk noktanızı yerleştirmek için sahneyi tıklatarak ölçüme başlayın",unsupported:"Doğrudan hat ölçümü MapView'da desteklenmiyor.",distance:"Mesafe",direct:"Doğrudan",horizontal:"Yatay",vertical:"Dikey",unit:"Birim",newMeasurement:"Yeni Ölçüm",units:{metric:"Metrik",imperial:"İngiliz",kilometers:"Kilometre",meters:"Metre",miles:"Mil",inches:"İnç",feet:"Fit",yards:"Yarda","nautical-miles":"Deniz Mili","us-feet":"Feet (ABD)","degrees-minutes-seconds":"DMS",degrees:"Derece"}});

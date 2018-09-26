@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
-define(["require","exports"],function(o,e){function r(o,e,r){if(null==o||"ignore"===e)return r[0]=255,r[1]=255,r[2]=255,void(r[3]=255);r[0]=Math.floor(255*o[0]),r[1]=Math.floor(255*o[1]),r[2]=Math.floor(255*o[2]);var t=Math.floor(85*o[3]);r[3]=0===t?0:"tint"===e?t:"replace"===e?t+85:t+170}Object.defineProperty(e,"__esModule",{value:!0}),e.encodeSymbolColor=r});
+define(["require","exports"],function(o,e){function r(o,e,r,n){if(void 0===n&&(n=0),null==o||"ignore"===e)return r[n+0]=255,r[n+1]=255,r[n+2]=255,void(r[n+3]=255);r[n+0]=Math.floor(255*o[0]),r[n+1]=Math.floor(255*o[1]),r[n+2]=Math.floor(255*o[2]);var a=Math.floor(o[3]*t);r[n+3]=0===a?0:"tint"===e?a:"replace"===e?a+i:a+l}function n(o,e){void 0===e&&(e=0);var r=o[e+3];return r===i||r===l||r===a}Object.defineProperty(e,"__esModule",{value:!0}),e.encodeSymbolColor=r,e.isOpaqueSymbolColor=n;var t=85,i=t,l=2*t,a=3*t});

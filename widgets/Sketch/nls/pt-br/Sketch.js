@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({widgetLabel:"Esboço",draw:"Desenhar",drawPoint:"Desenhar um ponto",drawPolygon:"Desenha um polígono",drawPolyline:"Desenha uma linha",drawMultipoint:"Desenhar um ponto múltiplo",drawCircle:"Desenha um círculo",drawRectangle:"Desenha um retângulo",drawTriangle:"Desenhar um triângulo",drawSquare:"Desenhar um quadrado",drawEllipse:"Desenhar uma elipse",pan:"Mover o mapa",undo:"Desfazer",redo:"Refazer",updateDrawing:"Atualizar desenho",clear:"Limpar desenho",completeDrawing:"Completar desenho",pauseDrawing:"Pausar desenho",resumeDrawing:"Retomar desenho",rotate:"Rotacionar",scale:"Escala",addPointTooltip:"Clique para adicionar um ponto",removePointTooltip:"Clique para remover este ponto",completePolygonTooltip:"Clique neste ponto para finalizar",startDrawingTooltip:"Clique para começar a desenhar",continueDrawingTooltip:"Clique para continuar desenhando",completeDrawingTooltip:"Clique duas vezes para concluir",addMultipointTooltip:"Clique para começar a adicionar pontos",finishMultipointTooltip:"Clique duas vezes para finalizar",addFreehandTooltip:"Pressione para começar e solte para finalizar",addShapeTooltip:"Clique para adicionar um shape, ou pressione para iniciar e finalizar"});

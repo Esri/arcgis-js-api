@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({zoom:"התמקד אל",next:"הישות הבאה",previous:"ישות קודמת",close:"סגור",dock:"עגן",undock:"בטל עיגון",menu:"תפריט",untitled:"ללא כותרת",pageText:"{index} מתוך {total}",selectedFeature:"בחר ישות",selectedFeatures:"{total} תוצאות",loading:"טעינה",collapse:"צמצם",expand:"הרחב"});

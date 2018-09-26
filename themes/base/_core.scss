@@ -21,6 +21,7 @@ $include_DatePicker: $include_widgets !default;
 $include_Directions: $include_widgets !default;
 $include_Expand: $include_widgets !default;
 $include_Feature: $include_widgets !default;
+$include_FeatureForm: $include_widgets !default;
 $include_HorizontalSlider: $include_widgets !default;
 $include_LayerList: $include_widgets !default;
 $include_Legend: $include_widgets !default;
@@ -32,6 +33,7 @@ $include_RasterSymbologyEditor: $include_widgets !default;
 $include_RendererSlider: $include_widgets !default;
 $include_ScaleBar: $include_widgets !default;
 $include_Search: $include_widgets !default;
+$include_Slice: $include_widgets !default;
 $include_Spinner: $include_widgets !default;
 $include_Tags: $include_widgets !default; // TODO : make _Tags.scss use this var.  Currently something around line 251 is causing issues when it's in a mixin
 $include_TimePicker: $include_widgets !default;
@@ -69,6 +71,7 @@ $icomoon-font-path: "../base/icons/fonts"; // Override for esri/themes/base/icon
 @import "widgets/Directions";
 @import "widgets/Expand";
 @import "widgets/Feature";
+@import "widgets/FeatureForm";
 @import "widgets/HorizontalSlider";
 @import "widgets/IdentityDialog";
 @import "widgets/LayerList";
@@ -82,6 +85,7 @@ $icomoon-font-path: "../base/icons/fonts"; // Override for esri/themes/base/icon
 @import "widgets/ScaleBar";
 @import "widgets/Search";
 @import "widgets/SearchResultRenderer";
+@import "widgets/Slice";
 @import "widgets/Spinner";
 @import "widgets/Tags";
 @import "widgets/TimePicker";

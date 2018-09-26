@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 /**
  * Represents an image service resource as a layer. An ImageryLayer retrieves and displays
@@ -29,13 +29,10 @@
  * [mosaic rules](#mosaicRule). This layer is particularly useful when you need to interactively change pixel
  * manipulation criteria and get an immediate response on the client.
  *
- * [![layers-imagery](../assets/img/apiref/layers/layers-imagery.png)](../sample-code/layers-imagery-pixelvalues/index.html)
+ * [![layers-imagery](../../assets/img/apiref/layers/layers-imagery.png)](../sample-code/layers-imagery-pixelvalues/index.html)
  *
- * If the image service is requested from a different domain, a [CORS enabled server](http://enable-cors.org/server.html) or a proxy is
- * required. If CORS is enabled on the server add the image service domain to {@link module:esri/config/request#corsEnabledServers
- * esriConfig.request.corsEnabledServers}. Alternatively, if CORS cannot be enabled on ArcGIS Server you can set up a proxy on your web
- * server and then add it to the proxy rules list in {@link module:esri/config esriConfig} using
- * {@link module:esri/core/urlUtils#addProxyRule addProxyRule()}.
+ * If the image service is requested from a different domain, a [CORS enabled server](https://enable-cors.org/server.html) or a proxy is
+ * required.
  *
  * ::: esri-md class="panel trailer-1"
  * Esri requires that when you use an ArcGIS Online basemap in your app, the map must include Esri attribution and you must be licensed to use the content.

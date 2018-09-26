@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/Collection","../core/collectionUtils","../core/JSONSupport","../core/accessorSupport/decorators","./Slide"],function(e,r,t,s,o,i,n,c,l){var u=o.ofType(l);return function(e){function r(r){var t=e.call(this,r)||this;return t.slides=new u,t}return t(r,e),Object.defineProperty(r.prototype,"slides",{set:function(e){this._set("slides",i.referenceSetter(e,this._get("slides"),u))},enumerable:!0,configurable:!0}),r.prototype.clone=function(){return new(0,this.constructor)({slides:this.slides.clone()})},r.sanitizeJSON=function(e){var r;return r=void 0!==e.slides&&Array.isArray(e.slides)?e.slides.filter(function(e){return e&&!!e.viewpoint}).map(function(e){return l.sanitizeJSON(e)}):[],{slides:r}},s([c.property({type:u,json:{write:!0}}),c.cast(i.castForReferenceSetter)],r.prototype,"slides",null),r=s([c.subclass("esri.webscene.Presentation")],r)}(c.declared(n))});

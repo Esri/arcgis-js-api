@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({attach:"Ataşări",fields:"Câmpuri",fieldsSummary:"Listă de atribute şi valori",media:"Media",next:"Următorul",numCharts:"Număr de diagrame",numImages:"Număr de imagini",noTitle:"Fără titlu",previous:"Anterior"});

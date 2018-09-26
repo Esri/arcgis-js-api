@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({widgetLabel:"書籤",goToBookmark:"移至書籤",noBookmarksHeading:"無書簽",noBookmarksDescription:"將書籤新增至您的地圖，這裡接著會出現這些書籤。",disabledHeading:"已停用書籤",disabledDescription:"新增 MapView 以啟用書籤。"});

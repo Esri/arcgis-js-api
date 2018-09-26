@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
-define({title:"Medir",hint:"Empiece a medir haciendo clic en la escena para colocar su primer punto",unsupported:"La medición de líneas directas no se admite en MapView.",distance:"Distancia",direct:"Direct",horizontal:"Horizontal",vertical:"Vertical",unit:"Unidad",newMeasurement:"Nueva medición",units:{metric:"Sistema métrico",imperial:"Sistema imperial",kilometers:"Kilómetros",meters:"Metros",miles:"Millas",inches:"Pulgadas",feet:"Pies",yards:"Yardas","nautical-miles":"Millas náuticas","us-feet":"Pies (EE. UU.)","degrees-minutes-seconds":"DMS",degrees:"Grados"}});
+define({title:"Medir",hint:"Empiece a medir haciendo clic en la escena para colocar su primer punto",unsupported:"La medición de líneas directas no se admite en MapView.",distance:"Distancia",direct:"Línea recta",horizontal:"Horizontal",vertical:"Vertical",unit:"Unidad",newMeasurement:"Nueva medición",units:{metric:"Sistema métrico",imperial:"Sistema imperial",kilometers:"Kilómetros",meters:"Metros",miles:"Millas",inches:"Pulgadas",feet:"Pies",yards:"Yardas","nautical-miles":"Millas náuticas","us-feet":"Pies (EE. UU.)","degrees-minutes-seconds":"DMS",degrees:"Grados"}});

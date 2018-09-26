@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
-define(["require","exports"],function(e,r){Object.defineProperty(r,"__esModule",{value:!0});var n=function(){function e(e,r,n){this.data=e,this.stride=r,this.vertexCount=n}return e.decode=function(r){return new e(new Uint32Array(r.data),r.stride,r.vertexCount)},e}();r.default=n;var t=function(){function e(e,r,n){this.geometryType=e,this.indexBuffer=new Uint32Array(r),this.namedBuffers=n}return e.decode=function(r){var t=r.geometryType,f=r.indexBuffer,i={};for(var u in r.namedBuffers)i[u]=n.decode(r.namedBuffers[u]);return new e(t,f,i)},e}();r.VertexBuffers=t});
+define(["require","exports","../Utils"],function(e,t,r){Object.defineProperty(t,"__esModule",{value:!0});var n=function(){function e(e,t,r){this.data=e,this.stride=t,this.vertexCount=r}return e.decode=function(t){return new e(r.allocateTypedArrayBufferwithData(t.data,t.stride),t.stride,t.vertexCount)},e}();t.default=n;var f=function(){function e(e,t,r){this.geometryType=e,this.indexBuffer=new Uint32Array(t),this.namedBuffers=r}return e.decode=function(t){var r=t.geometryType,f=t.indexBuffer,i={};for(var u in t.namedBuffers)i[u]=n.decode(t.namedBuffers[u]);return new e(r,f,i)},e}();t.VertexBuffers=f});

@@ -6,8 +6,9 @@
  * @module esri/widgets/Feature
  * @since 4.7
  *
- * @see [Feature.tsx (widget view)]({{ JSAPI_BOWER_URL }}/widgets/Feature.tsx)
- * @see [Feature.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_Feature.scss)
+ * @see [Feature.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Feature.tsx)
+ * @see [Feature.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Feature.scss)
+ * @see [Sample - Feature widget](../sample-code/widgets-feature/index.html)
  * @see module:esri/widgets/Feature/FeatureViewModel
  * @see module:esri/views/ui/DefaultUI
  *
@@ -241,7 +242,8 @@ class Feature extends declared(Widget) {
   //  contentEnabled
   //----------------------------------
 
-  @aliasOf("viewModel.contentEnabled") contentEnabled: boolean = null;
+  @aliasOf("viewModel.contentEnabled")
+  contentEnabled: boolean = null;
 
   //----------------------------------
   //  graphic
@@ -280,7 +282,8 @@ class Feature extends declared(Widget) {
    *
    */
 
-  @aliasOf("viewModel.graphic") graphic: Graphic = null;
+  @aliasOf("viewModel.graphic")
+  graphic: Graphic = null;
 
   //----------------------------------
   //  title
@@ -296,7 +299,8 @@ class Feature extends declared(Widget) {
    * @readonly
    *
    */
-  @aliasOf("viewModel.title") title: string = null;
+  @aliasOf("viewModel.title")
+  title: string = null;
 
   //----------------------------------
   //  view
@@ -311,7 +315,8 @@ class Feature extends declared(Widget) {
    * @default null
    */
 
-  @aliasOf("viewModel.view") view: MapView | SceneView = null;
+  @aliasOf("viewModel.view")
+  view: MapView | SceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -741,7 +746,7 @@ class Feature extends declared(Widget) {
     const { sourceURL, linkURL } = value;
 
     if (type === "image") {
-      const linkOpenInNewTab = !this._shouldOpenInNewTab(linkURL);
+      const linkOpenInNewTab = this._shouldOpenInNewTab(linkURL);
       const linkTarget = linkOpenInNewTab ? "_blank" : "_self";
       const mediaInfo = refreshInterval ? this._mediaInfo.get(contentElementIndex) : null;
       const timestamp = mediaInfo ? mediaInfo.timestamp : 0;

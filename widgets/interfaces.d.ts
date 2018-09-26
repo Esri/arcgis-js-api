@@ -51,7 +51,6 @@ export interface SearchProperties {
   maxSuggestions: number;
   minSuggestCharacters: number;
   popupEnabled: boolean;
-  popupOpenOnSelect: boolean;
   popupTemplate: PopupTemplate;
   resultGraphicEnabled: boolean;
   searchAllEnabled: boolean;

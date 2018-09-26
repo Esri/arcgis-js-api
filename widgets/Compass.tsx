@@ -5,8 +5,8 @@
  * rotates the view to face north (heading = 0). This widget is added to a {@link module:esri/views/SceneView}
  * by default.
  *
- * ![Compass for Web Mercator and WGS84](../assets/img/apiref/widgets/compass.png)
- * ![Compass for other spatial references](../assets/img/apiref/widgets/compass-other-sr.png)
+ * ![Compass for Web Mercator and WGS84](../../assets/img/apiref/widgets/compass.png)
+ * ![Compass for other spatial references](../../assets/img/apiref/widgets/compass-other-sr.png)
  *
  * You can use the view's {@link module:esri/views/ui/DefaultUI} to add the compass widget
  * to a 2D application via the {@link module:esri/views/MapView#ui ui} property on the view.
@@ -28,8 +28,8 @@
  * @module esri/widgets/Compass
  * @since 4.0
  *
- * @see [Compass.tsx (widget view)]({{ JSAPI_BOWER_URL }}/widgets/Compass.tsx)
- * @see [Compass.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_Compass.scss)
+ * @see [Compass.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Compass.tsx)
+ * @see [Compass.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Compass.scss)
  * @see module:esri/widgets/Compass/CompassViewModel
  * @see [Sample - Adding the Compass widget to a MapView](../sample-code/widgets-compass-2d/index.html)
  * @see module:esri/views/ui/DefaultUI
@@ -57,14 +57,11 @@ import Widget = require("esri/widgets/Widget");
 import CompassViewModel = require("esri/widgets/Compass/CompassViewModel");
 
 // esri.widgets.support
-import { GoToOverride } from "esri/widgets/support/interfaces";
+type GoToOverride = __esri.GoToOverride;
 import { tsx, renderable, accessibleHandler } from "esri/widgets/support/widget";
-
-type CompassMode = "device-orientation" | "reset" | "none";
 
 const CSS = {
   base: "esri-compass esri-widget--button esri-widget",
-  active: "esri-compass--active",
   text: "esri-icon-font-fallback-text",
   icon: "esri-compass__icon",
   rotationIcon: "esri-icon-dial",
@@ -103,19 +100,11 @@ class Compass extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   //----------------------------------
-  //  activeMode
-  //----------------------------------
-
-  /**
-   * @todo doc
-   */
-  @aliasOf("viewModel.activeMode") activeMode: CompassMode = null;
-
-  //----------------------------------
   //  goToOverride
   //----------------------------------
 
-  @aliasOf("viewModel.goToOverride") goToOverride: GoToOverride = null;
+  @aliasOf("viewModel.goToOverride")
+  goToOverride: GoToOverride = null;
 
   //----------------------------------
   //  iconClass
@@ -130,7 +119,8 @@ class Compass extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property() iconClass = CSS.widgetIcon;
+  @property()
+  iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -145,16 +135,8 @@ class Compass extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property() label: string = i18n.widgetLabel;
-
-  //----------------------------------
-  //  modes
-  //----------------------------------
-
-  /**
-   * @todo doc
-   */
-  @aliasOf("viewModel.modes") modes: CompassMode[] = null;
+  @property()
+  label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  view
@@ -169,7 +151,8 @@ class Compass extends declared(Widget) {
    * @instance
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
-  @aliasOf("viewModel.view") view: View = null;
+  @aliasOf("viewModel.view")
+  view: View = null;
 
   //----------------------------------
   //  viewModel
@@ -211,8 +194,7 @@ class Compass extends declared(Widget) {
   reset(): void {}
 
   render() {
-    const orientation = this.viewModel.orientation;
-    const state = this.viewModel.state;
+    const { orientation, state } = this.viewModel;
 
     const disabled = state === "disabled",
       showNorth = state === "rotation" ? "rotation" : "compass", // compass is also shown when disabled
@@ -222,7 +204,6 @@ class Compass extends declared(Widget) {
 
     const dynamicRootClasses = {
       [CSS.disabled]: disabled,
-      [CSS.active]: this.viewModel.activeMode === "device-orientation",
       [CSS.interactive]: !disabled
     };
 
@@ -235,8 +216,8 @@ class Compass extends declared(Widget) {
       <div
         bind={this}
         class={this.classes(CSS.base, dynamicRootClasses)}
-        onclick={this._start}
-        onkeydown={this._start}
+        onclick={this._reset}
+        onkeydown={this._reset}
         role="button"
         tabIndex={tabIndex}
         aria-label={i18n.reset}
@@ -259,11 +240,8 @@ class Compass extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   @accessibleHandler()
-  private _start() {
-    const { viewModel } = this;
-
-    viewModel.nextMode();
-    viewModel.startMode();
+  private _reset() {
+    this.viewModel.reset();
   }
 
   private _toRotationTransform(orientation: Axes): HashMap<string> {

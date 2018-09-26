@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({widgetLabel:"Закладки",goToBookmark:"Перейти к закладке",noBookmarksHeading:"Нет закладок",noBookmarksDescription:"Добавьте закладки на карту, и они появятся здесь.",disabledHeading:"Закладки отключены",disabledDescription:"Чтобы включить закладки, добавьте вид карты."});

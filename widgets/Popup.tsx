@@ -8,16 +8,16 @@
  * and [content](#content) properties.
  * When  content is set directly on the Popup instance it is not tied to a specific feature or layer.
  *
- * [![popup-basic-example](../assets/img/apiref/widgets/popup-basic.png)](../sample-code/sandbox/sandbox.html?sample=intro-popup)
+ * [![popup-basic-example](../../assets/img/apiref/widgets/popup-basic.png)](../sample-code/sandbox/sandbox.html?sample=intro-popup)
  *
  * In the image above, the text "Marriage in NY, Zip Code: 11385" is the popup's `title`. The remaining text is
- * its `content`. A dock button ![popup-dock-btn](../assets/img/apiref/widgets/popup-dock.png) may also be available in the
+ * its `content`. A dock button ![popup-dock-btn](../../assets/img/apiref/widgets/popup-dock.png) may also be available in the
  * top right corner of the popup. This allows the user to dock the popup to one of the sides or corners of the view.
  * The options for docking may be set in the [dockOptions](#dockOptions) property.
  *
  * Popups can also contain [actions](#actions) that act like buttons,
  * which execute a function defined by the developer when clicked.
- * By default, every popup has a "Zoom in" action ![popupTemplate-zoom-action](../assets/img/apiref/widgets/popuptemplate-zoom-action.png)
+ * By default, every popup has a "Zoom in" action ![popupTemplate-zoom-action](../../assets/img/apiref/widgets/popuptemplate-zoom-action.png)
  * that allows users to zoom to the selected feature. See the [actions](#actions)
  * property for information about adding custom actions to a popup.
  *
@@ -36,8 +36,8 @@
  * @module esri/widgets/Popup
  * @since 4.0
  *
- * @see [Popup.tsx (widget view)]({{ JSAPI_BOWER_URL }}/widgets/Popup.tsx)
- * @see [Popup.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_Popup.scss)
+ * @see [Popup.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Popup.tsx)
+ * @see [Popup.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Popup.scss)
  * @see module:esri/PopupTemplate
  * @see {@link module:esri/views/View#popup View.popup}
  * @see [Intro to popups](../sample-code/intro-popup/index.html)
@@ -106,8 +106,7 @@ import {
 import PopupViewModel = require("esri/widgets/Popup/PopupViewModel");
 
 // esri.widgets.support
-import widgetUtils = require("esri/widgets/support/widgetUtils");
-import { GoToOverride } from "esri/widgets/support/interfaces";
+type GoToOverride = __esri.GoToOverride;
 import {
   accessibleHandler,
   tsx,
@@ -116,8 +115,7 @@ import {
   isWidgetBase,
   isWidget
 } from "esri/widgets/support/widget";
-
-const DEFAULT_ACTION_IMAGE = require.toUrl("./Popup/images/default-action.svg");
+import widgetUtils = require("esri/widgets/support/widgetUtils");
 
 const SELECTED_INDEX_HANDLE_KEY = "selected-index";
 
@@ -137,6 +135,7 @@ const CSS = {
   iconCheckMark: "esri-icon-check-mark",
   iconLoading: "esri-icon-loading-indicator",
   iconZoom: "esri-icon-zoom-in-magnifying-glass",
+  iconDefaultAction: "esri-icon-default-action",
   rotating: "esri-rotating",
   // base
   base: "esri-popup",
@@ -418,7 +417,7 @@ class Popup extends declared(Widget) {
    * Defines actions that may be executed by clicking the icon
    * or image symbolizing them in the popup. By default, every popup has a `zoom-to`
    * action styled with a magnifying glass icon
-   * ![popupTemplate-zoom-action](../assets/img/apiref/widgets/popuptemplate-zoom-action.png).
+   * ![popupTemplate-zoom-action](../../assets/img/apiref/widgets/popuptemplate-zoom-action.png).
    * When this icon is clicked, the view zooms in four LODs and centers on the selected feature.
    *
    * You may override this action by removing it from the `actions` array or by setting the
@@ -498,7 +497,8 @@ class Popup extends declared(Widget) {
    * // The popup will display to the left of the feature
    * view.popup.alignment = "auto";
    */
-  @property() alignment: Alignment = "auto";
+  @property()
+  alignment: Alignment = "auto";
 
   //----------------------------------
   //  autoCloseEnabled
@@ -515,7 +515,8 @@ class Popup extends declared(Widget) {
    * @type {boolean}
    * @default false
    */
-  @aliasOf("viewModel.autoCloseEnabled") autoCloseEnabled: boolean = null;
+  @aliasOf("viewModel.autoCloseEnabled")
+  autoCloseEnabled: boolean = null;
 
   //----------------------------------
   //  content
@@ -675,8 +676,8 @@ class Popup extends declared(Widget) {
    */
   @property()
   @renderable()
-  get dockOptions() {
-    return this._get<DockOptions>("dockOptions") || DOCK_OPTIONS;
+  get dockOptions(): DockOptions {
+    return this._get("dockOptions") || DOCK_OPTIONS;
   }
   set dockOptions(dockOptions: DockOptions) {
     const dockOptionDefaults = { ...DOCK_OPTIONS };
@@ -819,11 +820,11 @@ class Popup extends declared(Widget) {
    * scroll through various [selected features](#features) using either
    * arrows
    *
-   * ![popup-pagination-arrows](../assets/img/apiref/widgets/popup-pagination-arrows.png)
+   * ![popup-pagination-arrows](../../assets/img/apiref/widgets/popup-pagination-arrows.png)
    *
    * or a menu.
    *
-   * ![popup-feature-menu](../assets/img/apiref/widgets/popup-pagination-menu.png)
+   * ![popup-feature-menu](../../assets/img/apiref/widgets/popup-pagination-menu.png)
    *
    * @name featureNavigationEnabled
    * @instance
@@ -838,7 +839,8 @@ class Popup extends declared(Widget) {
   //  goToOverride
   //----------------------------------
 
-  @aliasOf("viewModel.goToOverride") goToOverride: GoToOverride = null;
+  @aliasOf("viewModel.goToOverride")
+  goToOverride: GoToOverride = null;
 
   //----------------------------------
   //  highlightEnabled
@@ -849,21 +851,14 @@ class Popup extends declared(Widget) {
    * set on the {@link module:esri/views/MapView} or the {@link module:esri/views/SceneView#highlightOptions highlightOptions}
    * set on the {@link module:esri/views/SceneView}.
    *
-   * ::: esri-md class="panel trailer-1"
-   * **Known Limitation**
-   *
-   * Only {@link module:esri/layers/FeatureLayer FeatureLayers} rendered with
-   * [WebGL](esri-layers-FeatureLayer.html#webgl-rendering)
-   * support highlight.
-   * :::
-   *
    * @name highlightEnabled
    * @instance
    *
    * @type {Boolean}
    * @default true
    */
-  @aliasOf("viewModel.highlightEnabled") highlightEnabled: boolean = null;
+  @aliasOf("viewModel.highlightEnabled")
+  highlightEnabled: boolean = null;
 
   //----------------------------------
   //  location
@@ -934,7 +929,8 @@ class Popup extends declared(Widget) {
    *
    * @type {Promise[]}
    */
-  @aliasOf("viewModel.promises") promises: IPromise<Graphic[]>[] = null;
+  @aliasOf("viewModel.promises")
+  promises: IPromise<Graphic[]>[] = null;
 
   //----------------------------------
   //  selectedFeature
@@ -998,7 +994,8 @@ class Popup extends declared(Widget) {
    * @type {boolean}
    * @default
    */
-  @property() spinnerEnabled = true;
+  @property()
+  spinnerEnabled = true;
 
   //----------------------------------
   //  title
@@ -1031,7 +1028,8 @@ class Popup extends declared(Widget) {
   /**
    * @todo document
    */
-  @aliasOf("viewModel.updateLocationEnabled") updateLocationEnabled: boolean = null;
+  @aliasOf("viewModel.updateLocationEnabled")
+  updateLocationEnabled: boolean = null;
 
   //----------------------------------
   //  view
@@ -1045,7 +1043,8 @@ class Popup extends declared(Widget) {
    *
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
-  @aliasOf("viewModel.view") view: MapView | SceneView = null;
+  @aliasOf("viewModel.view")
+  view: MapView | SceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -1183,7 +1182,7 @@ class Popup extends declared(Widget) {
    *
    * @param {Object} [options] - Defines the location and content of the popup when opened.
    * @param {string} [options.title] - Sets the [title](#title) of the popup.
-   * @param {string} [options.content] - Sets the the [content](#content) of the popup.
+   * @param {string | HTMLElement | module:esri/widgets/Widget} [options.content] - Sets the the [content](#content) of the popup.
    * @param {module:esri/geometry/Geometry} [options.location] - Sets the popup's [location](#location), which is the geometry used to position the popup.
    * @param {module:esri/Graphic[]} [options.features] - Sets the popup's [features](#features), which populate the title and content of the popup based on each graphic's {@link module:esri/PopupTemplate}.
    * @param {Promise[]} [options.promises] - Sets pending [promises](#promises) on the popup. The popup will display once the promises resolve. Each promise must resolve to an array of {@link module:esri/Graphic Graphics}.
@@ -1823,18 +1822,18 @@ class Popup extends declared(Widget) {
       action.className = CSS.iconZoom;
     }
 
-    const { title: actionTitle, className: actionClassName } = action;
+    const { title: actionTitle, className: actionClassName, image: actionImage } = action;
 
-    const actionImage = !action.image && !actionClassName ? DEFAULT_ACTION_IMAGE : action.image;
+    const actionClass = !actionImage && !actionClassName ? CSS.iconDefaultAction : actionClassName;
 
     const subActionTitle =
       actionTitle && selectedFeatureAttributes
         ? esriLang.substitute(selectedFeatureAttributes, actionTitle)
         : actionTitle;
     const subActionClass =
-      actionClassName && selectedFeatureAttributes
-        ? esriLang.substitute(selectedFeatureAttributes, actionClassName)
-        : actionClassName;
+      actionClass && selectedFeatureAttributes
+        ? esriLang.substitute(selectedFeatureAttributes, actionClass)
+        : actionClass;
     const subActionImage =
       actionImage && selectedFeatureAttributes
         ? esriLang.substitute(selectedFeatureAttributes, actionImage)
@@ -1843,6 +1842,7 @@ class Popup extends declared(Widget) {
     const iconClasses = {
       [CSS.iconLoading]: action.active,
       [CSS.rotating]: action.active,
+      [CSS.icon]: !!actionClass,
       [CSS.actionImage]: !action.active && !!subActionImage
     };
 

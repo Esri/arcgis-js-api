@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define(["require","exports","./previewSymbol2D","./previewSymbol3D","./previewWebStyleSymbol"],function(e,r,l,i,t){function o(e,r){switch(e.type){case"web-style":return t.previewWebStyleSymbol(e,o,r);case"label-3d":case"line-3d":case"mesh-3d":case"point-3d":case"polygon-3d":return i.previewSymbol3D(e,r);default:return l.previewSymbol2D(e,r)}}Object.defineProperty(r,"__esModule",{value:!0}),r.renderPreviewHTML=o});

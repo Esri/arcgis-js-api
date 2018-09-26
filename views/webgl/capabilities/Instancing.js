@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
-define(["require","exports","./isWebGL2Context"],function(e,n,r){function t(e,n){if(r.default(e))return{drawArraysInstanced:e.drawArraysInstanced.bind(e),drawElementsInstanced:e.drawElementsInstanced.bind(e),vertexAttribDivisor:e.vertexAttribDivisor.bind(e)};if(n.angleInstancedArrays)return null;var t=e.getExtension("ANGLE_instanced_arrays");return t?{drawArraysInstanced:t.drawArraysInstancedANGLE.bind(t),drawElementsInstanced:t.drawElementsInstancedANGLE.bind(t),vertexAttribDivisor:t.vertexAttribDivisorANGLE.bind(t)}:null}Object.defineProperty(n,"__esModule",{value:!0}),n.load=t});
+define(["require","exports","./isWebGL2Context"],function(e,n,r){function t(e){if(r.default(e))return{drawArraysInstanced:e.drawArraysInstanced.bind(e),drawElementsInstanced:e.drawElementsInstanced.bind(e),vertexAttribDivisor:e.vertexAttribDivisor.bind(e)};var n=e.getExtension("ANGLE_instanced_arrays");return n?{drawArraysInstanced:n.drawArraysInstancedANGLE.bind(n),drawElementsInstanced:n.drawElementsInstancedANGLE.bind(n),vertexAttribDivisor:n.vertexAttribDivisorANGLE.bind(n)}:null}Object.defineProperty(n,"__esModule",{value:!0}),n.load=t});

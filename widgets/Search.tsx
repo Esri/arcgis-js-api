@@ -6,7 +6,7 @@
  * [findAddressCandidates](https://developers.arcgis.com/rest/geocode/api-reference/geocoding-find-address-candidates.htm)
  * operation is used, whereas {@link module:esri/tasks/support/Query queries} are used on feature layers.
  *
- * ![search](../assets/img/apiref/widgets/search.png)
+ * ![search](../../assets/img/apiref/widgets/search.png)
  *
  * You can use the view's {@link module:esri/views/ui/DefaultUI} to add widgets
  * to the view's user interface via the {@link module:esri/views/View#ui ui} property on the view.
@@ -26,8 +26,8 @@
  * @module esri/widgets/Search
  * @since 4.0
  *
- * @see [Search.tsx (widget view)]({{ JSAPI_BOWER_URL }}/widgets/Search.tsx)
- * @see [Search.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_Search.scss)
+ * @see [Search.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Search.tsx)
+ * @see [Search.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Search.scss)
  * @see [Sample - Search widget (3D)](../sample-code/widgets-search-3d/index.html)
  * @see [Sample - Search widget with multiple sources](../sample-code/widgets-search-multiplesource/index.html)
  * @see module:esri/tasks/Locator
@@ -67,6 +67,7 @@ import PopupTemplate = require("esri/PopupTemplate");
 
 // esri.core
 import Collection = require("esri/core/Collection");
+import Handles = require("esri/core/Handles");
 import esriLang = require("esri/core/lang");
 import watchUtils = require("esri/core/watchUtils");
 
@@ -98,7 +99,7 @@ import SearchResultRenderer = require("esri/widgets/Search/SearchResultRenderer"
 import SearchViewModel = require("esri/widgets/Search/SearchViewModel");
 
 // esri.widgets.support
-import { GoToOverride } from "esri/widgets/support/interfaces";
+type GoToOverride = __esri.GoToOverride;
 import { accessibleHandler, renderable, tsx, storeNode, vmEvent } from "esri/widgets/support/widget";
 
 const CSS = {
@@ -136,7 +137,7 @@ const CSS = {
   // icons + common
   button: "esri-widget--button",
   fallbackText: "esri-icon-font-fallback-text",
-  header: "esri-widget__header",
+  header: "esri-widget__heading",
   locate: "esri-icon-locate-circled",
   menu: "esri-menu",
   menuHeader: "esri-header",
@@ -156,126 +157,6 @@ const regexContainsHTML = /<[a-z/][\s\S]*>/i;
 
 @subclass("esri.widgets.Search")
 class Search extends declared(Widget) {
-  /**
-   * The following properties define a [source](#sources) pointing to a
-   * {@link module:esri/tasks/Locator} that may be used to geocode locations
-   * with the Search widget.
-   *
-   * @typedef LocatorSource
-   *
-   * @property {boolean} [autoNavigate=true] - Indicates whether to automatically navigate to the
-   *   selected result once selected.
-   * @property {string[]} categories - A string array which limits the results to one
-   *   or more categories. For example "Populated Place" or
-   *   "airport". Only applicable when using the
-   *   World Geocode Service. View the
-   * [World Geocoding Service documentation](https://developers.arcgis.com/rest/geocode/api-reference/geocoding-category-filtering.htm) for more information.
-   * @property {string} countryCode - Constricts search results to a specified country code.
-   *   For example, `US` for United States or `SE` for Sweden.
-   *   Only applies to the World Geocode Service. View the
-   * [World Geocoding Service documentation](https://developers.arcgis.com/rest/geocode/api-reference/geocoding-category-filtering.htm) for more information.
-   * @property {Object} filter - As of version 4.4, this property replaces the now deprecated `searchQueryParams`, `suggestQueryParams`, and `searchExtent`
-   * properties. Please see the object specification table below for details.
-   * @property {string} filter.where - The where clause specified for filtering suggests or search results.
-   * @property {module:esri/geometry/Geometry} filter.geometry - The filter geometry for suggests or search results.
-   * @property {Object} localSearchOptions - Sets the sources for local `distance` and
-   *   `minScale` for searching. See the object specification table below for details.
-   * @property {number} localSearchOptions.distance - The distance to search.
-   * @property {number} localSearchOptions.minScale - The minimum scale used to search locally.
-   * @property {number} [locationToAddressDistance=1500] - When reverse geocoding a result, use
-   *   this distance in meters.
-   * @property {module:esri/tasks/Locator} locator - The locator task used to search. This
-   *   is **required** and defaults to the
-   * [World Geocoding Service](https://developers.arcgis.com/rest/geocode/api-reference/geocoding-category-filtering.htm).
-   * @property {number} [maxResults=6] - Indicates the maximum number of search results
-   *   to return.
-   * @property {number} [maxSuggestions=6] - Indicates the maximum number of suggestions
-   *   to return for the widget's input.
-   * @property {number} [minSuggestCharacters=1] - Indicates the minimum number of characters
-   *   required before querying for a suggestion.
-   * @property {string} name - The name of the source for display.
-   * @property {string[]} outFields - Specifies the fields returned with the search results.
-   * @property {string} placeholder - Used as a hint for the source input text.
-   * @property {module:esri/widgets/Popup} popup - The Popup instance used for the selected result.
-   * @property {boolean} [popupEnabled=true] - Indicates whether to display a
-   *   {@link module:esri/widgets/Popup Popup} when a selected result is clicked.
-   * @property {boolean} [popupOpenOnSelect=true] - Indicates whether to show the
-   *   {@link module:esri/widgets/Popup Popup} when a result is selected.
-   * @property {string} prefix - Specify this to prefix the input for the search text.
-   * @property {boolean} [resultGraphicEnabled=true] - Indicates whether to show a graphic on the
-   *   map for the selected source using the [resultSymbol](#resultSymbol).
-   * @property {module:esri/symbols/Symbol} [resultSymbol] - The symbol used for the
-   *   [resultGraphic](#resultGraphic).
-   * @property {string} [searchTemplate] - A template string used to display multiple
-   *   fields in a defined order when results are displayed,
-   *   e.g. `"{Street}, {City}, {ZIP}"`.
-   * @property {string} singleLineFieldName - The field name of the Single Line Address
-   *   Field in the REST services directory for the locator service.
-   *   Common values are `SingleLine` and `SingleLineFieldName`.
-   * @property {boolean} [suggestionsEnabled=true] - Indicates whether to display suggestions
-   *   as the user enters input text in the widget.
-   * @property {string} [suffix] - Specify this to suffix the input for the search value.
-   * @property {boolean} [withinViewEnabled] - Indicates whether to constrain the search
-   *   results to the view's extent.
-   * @property {number} [zoomScale] - The set zoom scale for the resulting search result. This scale is automatically honored.
-   */
-
-  /**
-   * The following properties define a
-   * {@link module:esri/layers/FeatureLayer}-based [source](#sources) whose
-   * features may be searched by the Search widget.
-   *
-   * @typedef FeatureLayerSource
-   *
-   * @property {boolean} [autoNavigate=true] - Indicates whether to automatically navigate to the
-   *   selected result once selected.
-   * @property {string} displayField - The results are displayed using this field. Defaults
-   *   to the layer's `displayField` or the first string field.
-   * @property {boolean} [exactMatch=false] - Indicates to only return results that match the
-   *   search value exactly.
-   *   This property only applies to `string` field searches. `exactMatch` is always
-   *   `true` when searching fields of type `number`.
-   * @property {module:esri/layers/FeatureLayer} featureLayer - The feature layer queried
-   *   in the search. This is **required**.
-   * @property {Object} filter - As of version 4.4, this property replaces the now deprecated `searchQueryParams`, `suggestQueryParams`, and `searchExtent`
-   * properties. Please see the object specification table below for details.
-   * @property {string} filter.where - The where clause specified for filtering suggests or search results.
-   * @property {module:esri/geometry/Geometry} filter.geometry - The filter geometry for suggests or search results.
-   * @property {number} [maxResults=6] - Indicates the maximum number of search results to
-   *   return.
-   * @property {number} [maxSuggestions=6] - Indicates the maximum number of suggestions to
-   *   return for the widget's input.
-   * @property {number} [minSuggestCharacters=1] - Indicates the minimum number of characters
-   *   required before querying for a suggestion.
-   * @property {string} name - The name of the source for display.
-   * @property {string[]} outFields - Specifies the fields returned with the search results.
-   * @property {string} placeholder - Used as a hint for the source input text.
-   * @property {module:esri/widgets/Popup} popup - The Popup instance used for the selected result.
-   * @property {boolean} [popupEnabled=true] - Indicates whether to display a
-   *   {@link module:esri/widgets/Popup} when a selected result is clicked.
-   * @property {boolean} [popupOpenOnSelect=true] - Indicates whether to show the
-   *   {@link module:esri/widgets/Popup Popup} when a result is selected.
-   * @property {string} prefix - Specify this to prefix the input for the search text.
-   * @property {boolean} [resultGraphicEnabled=true] - Indicates whether to show a graphic on the
-   *   map for the selected source using the [resultSymbol](#resultSymbol).
-   * @property {module:esri/symbols/Symbol} resultSymbol - The symbol used for the
-   *   [resultGraphic](#resultGraphic).
-   * @property {string[]} searchFields - An array of string values representing the
-   *   names of fields in the feature layer to search.
-   * @property {string} suffix - Specify this to suffix the input for the search value.
-   * @property {boolean} [suggestionsEnabled=true] - Indicates whether to display suggestions
-   *   as the user enters input text in the widget.
-   * @property {string} suggestionTemplate - A template string used to display multiple
-   *   fields in a defined order
-   *   when suggestions are displayed. This takes precedence over `displayField`.
-   *   Field names in the template must have the following
-   *   format: `{FieldName}`. An example suggestionTemplate could look something
-   *   like: `Name: {OWNER}, Parcel: {PARCEL_ID}`.
-   * @property {boolean} withinViewEnabled - Indicates whether to constrain the search
-   *   results to the view's extent.
-   * @property {number} zoomScale - The set zoom scale for the resulting search result. This scale is automatically honored.
-   */
-
   /**
    * The result object returned from a [search()](#search).
    *
@@ -495,11 +376,15 @@ class Search extends declared(Widget) {
         if (hideActiveMenu) {
           this.activeMenu = "none";
         }
-      })
+      }),
+      watchUtils.on(this, "viewModel.allSources", "change", () => this._watchSourceChanges())
     );
   }
 
   destroy() {
+    this._handles.destroy();
+    this._handles = null;
+
     this._cancelSuggest();
 
     if (this._searchResultRenderer) {
@@ -514,6 +399,8 @@ class Search extends declared(Widget) {
   //  Variables
   //
   //--------------------------------------------------------------------------
+
+  private _handles = new Handles();
 
   private _inputNode: HTMLInputElement = null;
 
@@ -560,12 +447,12 @@ class Search extends declared(Widget) {
 
   /**
    * The [source](#sources) object currently selected. Can be either a
-   * {@link module:esri/layers/FeatureLayer feature layer} or a {@link module:esri/tasks/Locator locator task}.
+   * {@link module:esri/widgets/Search/FeatureLayerSearchSource} or a {@link module:esri/widget/Search/LocatorSearchSource}.
    *
    * @name activeSource
    * @instance
    * @default null
-   * @type {module:esri/layers/FeatureLayer | module:esri/tasks/Locator}
+   * @type {module:esri/widgets/Search/FeatureLayerSearchSource | module:esri/widgets/Search/LocatorSearchSource}
    * @readonly
    */
   @aliasOf("viewModel.activeSource")
@@ -596,7 +483,7 @@ class Search extends declared(Widget) {
    * String value used as a hint for input text when searching on multiple sources. See
    * the image below to view the location and style of this text in the context of the widget.
    *
-   * ![search-allPlaceholder](../assets/img/apiref/widgets/search-allplaceholder.png)
+   * ![search-allPlaceholder](../../assets/img/apiref/widgets/search-allplaceholder.png)
    *
    * @name allPlaceholder
    * @instance
@@ -617,7 +504,8 @@ class Search extends declared(Widget) {
    * @type {boolean}
    * @ignore
    */
-  @aliasOf("viewModel.autoNavigate") autoNavigate: boolean = null;
+  @aliasOf("viewModel.autoNavigate")
+  autoNavigate: boolean = null;
 
   //----------------------------------
   //  autoSelect
@@ -635,13 +523,15 @@ class Search extends declared(Widget) {
    * @type {boolean}
    * @default true
    */
-  @aliasOf("viewModel.autoSelect") autoSelect: boolean = null;
+  @aliasOf("viewModel.autoSelect")
+  autoSelect: boolean = null;
 
   //----------------------------------
   //  goToOverride
   //----------------------------------
 
-  @aliasOf("viewModel.goToOverride") goToOverride: GoToOverride = null;
+  @aliasOf("viewModel.goToOverride")
+  goToOverride: GoToOverride = null;
 
   //----------------------------------
   //  iconClass
@@ -656,7 +546,8 @@ class Search extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property() iconClass = CSS.widgetIcon;
+  @property()
+  iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  includeDefaultSources
@@ -672,7 +563,8 @@ class Search extends declared(Widget) {
    * @default true
    * @since 4.8
    */
-  @aliasOf("viewModel.includeDefaultSources") includeDefaultSources: boolean = null;
+  @aliasOf("viewModel.includeDefaultSources")
+  includeDefaultSources: boolean = null;
 
   //----------------------------------
   //  label
@@ -687,7 +579,8 @@ class Search extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property() label: string = i18n.widgetLabel;
+  @property()
+  label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  locationEnabled
@@ -696,7 +589,7 @@ class Search extends declared(Widget) {
   /**
    * Enables location services within the widget.
    *
-   * ![locationEnabled](../assets/img/apiref/widgets/search-locationEnabled.png)
+   * ![locationEnabled](../../assets/img/apiref/widgets/search-locationEnabled.png)
    *
    * ::: esri-md class="panel trailer-1"
    * The use of this property is only supported on secure origins.
@@ -727,7 +620,8 @@ class Search extends declared(Widget) {
    * @type {number}
    * @ignore
    */
-  @aliasOf("viewModel.locationToAddressDistance") locationToAddressDistance: number = null;
+  @aliasOf("viewModel.locationToAddressDistance")
+  locationToAddressDistance: number = null;
 
   //----------------------------------
   //  maxResults
@@ -741,7 +635,8 @@ class Search extends declared(Widget) {
    * @type {number}
    * @default 6
    */
-  @aliasOf("viewModel.maxResults") maxResults: number = null;
+  @aliasOf("viewModel.maxResults")
+  maxResults: number = null;
 
   //----------------------------------
   //  maxSuggestions
@@ -759,7 +654,8 @@ class Search extends declared(Widget) {
    * @type {number}
    * @default 6
    */
-  @aliasOf("viewModel.maxSuggestions") maxSuggestions: number = null;
+  @aliasOf("viewModel.maxSuggestions")
+  maxSuggestions: number = null;
 
   //----------------------------------
   //  minSuggestCharacters
@@ -773,7 +669,8 @@ class Search extends declared(Widget) {
    * @type {number}
    * @default 1
    */
-  @aliasOf("viewModel.minSuggestCharacters") minSuggestCharacters: number = null;
+  @aliasOf("viewModel.minSuggestCharacters")
+  minSuggestCharacters: number = null;
 
   //----------------------------------
   //  popupEnabled
@@ -781,38 +678,15 @@ class Search extends declared(Widget) {
 
   /**
    * Indicates whether to display the {@link module:esri/widgets/Popup} on feature click. The graphic can
-   * be clicked to display a {@link module:esri/widgets/Popup}. This is not the same as using
-   * [popupOpenOnSelect](#popupOpenOnSelect) which opens the {@link module:esri/widgets/Popup} any time a
-   * search is performed.
-   *
-   * It is possible to have `popupOpenOnSelect=false` but `popupEnabled=true` so the
-   * {@link module:esri/widgets/Popup}
-   * can be opened by someone but it is not opened by default.
+   * be clicked to display a {@link module:esri/widgets/Popup}.
    *
    * @name popupEnabled
    * @instance
    * @type {boolean}
    * @default true
    */
-  @aliasOf("viewModel.popupEnabled") popupEnabled: boolean = null;
-
-  //----------------------------------
-  //  popupOpenOnSelect
-  //----------------------------------
-
-  /**
-   * Indicates whether to show the {@link module:esri/widgets/Popup} when a result is selected.
-   * Using `popupOpenOnSelect` opens the {@link module:esri/widgets/Popup} any time a search is performed.
-   *
-   * It is possible to have `popupOpenOnSelect=false` but `popupEnabled=true` so the {@link module:esri/widgets/Popup}
-   * can be opened by someone but not opened by default.
-   *
-   * @name popupOpenOnSelect
-   * @instance
-   * @type {boolean}
-   * @default true
-   */
-  @aliasOf("viewModel.popupOpenOnSelect") popupOpenOnSelect: boolean = null;
+  @aliasOf("viewModel.popupEnabled")
+  popupEnabled: boolean = null;
 
   //----------------------------------
   //  popupTemplate
@@ -827,7 +701,8 @@ class Search extends declared(Widget) {
    * @default null
    * @type {module:esri/PopupTemplate}
    */
-  @aliasOf("viewModel.popupTemplate") popupTemplate: PopupTemplate = null;
+  @aliasOf("viewModel.popupTemplate")
+  popupTemplate: PopupTemplate = null;
 
   //----------------------------------
   //  portal
@@ -843,7 +718,8 @@ class Search extends declared(Widget) {
    * @default
    * @since 4.8
    */
-  @aliasOf("viewModel.portal") portal: Portal = null;
+  @aliasOf("viewModel.portal")
+  portal: Portal = null;
 
   //----------------------------------
   //  resultGraphic
@@ -852,12 +728,20 @@ class Search extends declared(Widget) {
   /**
    * The graphic used to highlight the resulting feature or location.
    *
+   * :::esri-md class="panel trailer-1"
+   * A graphic will be placed in the View's
+   * {@link module:esri/views/View#graphics graphics}
+   * for {@link module:esri/views/layers/LayerView layer views}
+   * that do not support the `highlight` method.
+   * :::
+   *
    * @name resultGraphic
    * @instance
    * @type {module:esri/Graphic}
    * @readonly
    */
-  @aliasOf("viewModel.resultGraphic") resultGraphic: Graphic = null;
+  @aliasOf("viewModel.resultGraphic")
+  resultGraphic: Graphic = null;
 
   //----------------------------------
   //  resultGraphicEnabled
@@ -872,7 +756,8 @@ class Search extends declared(Widget) {
    * @type {boolean}
    * @default true
    */
-  @aliasOf("viewModel.resultGraphicEnabled") resultGraphicEnabled: boolean = null;
+  @aliasOf("viewModel.resultGraphicEnabled")
+  resultGraphicEnabled: boolean = null;
 
   //----------------------------------
   //  results
@@ -898,11 +783,11 @@ class Search extends declared(Widget) {
    * Indicates whether to display the option to search all sources. When `true`, the "All" option
    * is displayed by default:
    *
-   * ![search-searchAllEnabled-true](../assets/img/apiref/widgets/search-enablesearchingall-true.png)
+   * ![search-searchAllEnabled-true](../../assets/img/apiref/widgets/search-enablesearchingall-true.png)
    *
    * When `false`, no option to search all sources at once is available:
    *
-   * ![search-searchAllEnabled-false](../assets/img/apiref/widgets/search-enablesearchingall-false.png)
+   * ![search-searchAllEnabled-false](../../assets/img/apiref/widgets/search-enablesearchingall-false.png)
    *
    * @name searchAllEnabled
    * @instance
@@ -943,7 +828,8 @@ class Search extends declared(Widget) {
    * @see [select()](#select)
    * @readonly
    */
-  @aliasOf("viewModel.selectedResult") selectedResult: SearchResult = null;
+  @aliasOf("viewModel.selectedResult")
+  selectedResult: SearchResult = null;
 
   //----------------------------------
   //  sources
@@ -956,22 +842,22 @@ class Search extends declared(Widget) {
    * to search for the [view](#view) specified by the Search widget instance.
    * There are two types of sources:
    *
-   * * [LocatorSource](#LocatorSource)
-   * * [FeatureLayerSource](#FeatureLayerSource)
+   * * {@link module:esri/widgets/Search/FeatureLayerSearchSource}
+   * * {@link module:esri/widgets/Search/LocatorSearchSource}
    *
-   * Any combination of one or more [Locator](#LocatorSource) and
-   * [FeatureLayer](#FeatureLayerSource) sources may be used
+   * Any combination of these sources may be used
    * together in the same instance of the Search widget.
    *
    * @name sources
+   * @autocast
    * @instance
-   * @type {module:esri/core/Collection<module:esri/widgets/Search~FeatureLayerSource | module:esri/widgets/Search~LocatorSource>}
+   * @type {module:esri/core/Collection<module:esri/widgets/Search/FeatureLayerSearchSource | module:esri/widgets/Search/LocatorSearchSource>}
    *
    * @example
    * // Default sources[] when sources is not specified
    * [
    *   {
-   *     locator: new Locator({ url: "//geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer" }),
+   *     locator: new Locator({ url: "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer" }),
    *     singleLineFieldName: "SingleLine",
    *     outFields: ["Addr_type"],
    *     name: "ArcGIS World Geocoding Service",
@@ -996,7 +882,7 @@ class Search extends declared(Widget) {
    * // Example of multiple sources[]
    * var sources = [
    * {
-   *   locator: new Locator({ url: "//geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer" }),
+   *   locator: new Locator({ url: "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer" }),
    *   singleLineFieldName: "SingleLine",
    *   name: "Custom Geocoding Service",
    *   localSearchOptions: {
@@ -1068,9 +954,9 @@ class Search extends declared(Widget) {
   /**
    * An array of results from the [suggest method](#suggest).
    *
-   * This is available if working with a 10.3 geocoding service that has [suggest capability
+   * This is available if working with a 10.3 or greater geocoding service that has [suggest capability
    * loaded](https://developers.arcgis.com/rest/geocode/api-reference/geocoding-suggest.htm) or a
-   * 10.3 feature layer that supports pagination, i.e. `supportsPagination = true`.
+   * 10.3 or greater feature layer that supports pagination, i.e. `supportsPagination = true`.
    *
    * @name suggestions
    * @instance
@@ -1088,15 +974,16 @@ class Search extends declared(Widget) {
   /**
    * Enable suggestions for the widget.
    *
-   * This is only available if working with a 10.3 geocoding service that has [suggest capability
-   * loaded](https://developers.arcgis.com/rest/geocode/api-reference/geocoding-suggest.htm) or a 10.3 feature layer that supports pagination, i.e. `supportsPagination = true`.
+   * This is only available if working with a 10.3 or greater geocoding service that has [suggest capability
+   * loaded](https://developers.arcgis.com/rest/geocode/api-reference/geocoding-suggest.htm) or a 10.3 or greater feature layer that supports pagination, i.e. `supportsPagination = true`.
    *
    * @name suggestionsEnabled
    * @instance
    * @type {boolean}
    * @default true
    */
-  @aliasOf("viewModel.suggestionsEnabled") suggestionsEnabled: boolean = null;
+  @aliasOf("viewModel.suggestionsEnabled")
+  suggestionsEnabled: boolean = null;
 
   //----------------------------------
   //  view
@@ -1227,9 +1114,9 @@ class Search extends declared(Widget) {
    * Performs a suggest() request on the active Locator. It also uses the current value of
    * the widget or one that is passed in.
    *
-   * Suggestions are available if working with a 10.3 geocoding service that has
+   * Suggestions are available if working with a 10.3 or greater geocoding service that has
    * [suggest capability
-   * loaded](https://developers.arcgis.com/rest/geocode/api-reference/geocoding-suggest.htm) or a 10.3 feature layer that supports pagination, i.e.
+   * loaded](https://developers.arcgis.com/rest/geocode/api-reference/geocoding-suggest.htm) or a 10.3 or greater feature layer that supports pagination, i.e.
    * `supportsPagination = true`.
    *
    * @param {string} [value] - The string value used to suggest() on an active Locator or feature layer. If
@@ -1551,6 +1438,20 @@ class Search extends declared(Widget) {
   //  Private Methods
   //
   //--------------------------------------------------------------------------
+
+  private _watchSourceChanges(): void {
+    const {
+      _handles,
+      viewModel: { allSources }
+    } = this;
+
+    const handleKey = "sources";
+    _handles.remove(handleKey);
+
+    allSources.forEach((source) =>
+      _handles.add(watchUtils.watch(source, "name", () => this.scheduleRender()), handleKey)
+    );
+  }
 
   private _handleSourceMenuButtonKeydown(event: KeyboardEvent): void {
     const { keyCode } = event;

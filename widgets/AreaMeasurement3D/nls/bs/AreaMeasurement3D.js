@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({title:"Izmjeri",hint:"Započnite mjerenje tako da kliknete na scenu za postavljanje prve točke",unsupported:"Mjerenje područja nije podržano u pregledniku karte.",perimeterLength:"Opseg",area:"Površina",unit:"Jedinica",notApplicable:"nije dostupno",newMeasurement:"Novo mjerenje",units:{metric:"Metrički",imperial:"Imperijalne","square-kilometers":"Kvadratni kilometri","square-meters":"Kvadratni metri","square-miles":"Kvadratne milje","square-inches":"Kvadratni inči","square-feet":"Kvadratne stope","square-yards":"Kvadratni jardi","square-us-feet":"Kvadratne stope (SAD)",acres:"Rali",ares:"Ari",hectares:"Hektari"}});

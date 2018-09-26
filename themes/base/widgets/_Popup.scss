@@ -141,7 +141,7 @@ $action_size: 16px;
     line-height: 1.3em;
     margin: 0 0 1.2em;
   }
-  .esri-popup__content a {
+  .esri-popup__content a[href] {
     color: $anchor_color;
     text-decoration: underline;
   }
@@ -168,6 +168,11 @@ $action_size: 16px;
   }
   .esri-popup__feature-buttons .esri-popup__action {
     max-width: 50%;
+  }
+  .esri-popup__icon {
+    width: $action_size;
+    height: $action_size;
+    display: inline-block;
   }
   .esri-popup__feature-buttons .esri-popup__action-toggle--on .esri-popup__icon {
     outline: 1px solid $interactive_text_color;

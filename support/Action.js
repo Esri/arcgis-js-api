@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/Logger","../core/accessorSupport/decorators","./actions/ActionButton"],function(r,e,t,o,s,c,n){var i=s.getLogger("esri.support.Action");return function(r){function e(e){var t=r.call(this)||this;return i.warn("DEPRECATED: 'esri/support/Action' -- use 'esri/support/actions/ActionButton' instead."),t}return t(e,r),e=o([c.subclass("esri.support.Action")],e)}(c.declared(n))});

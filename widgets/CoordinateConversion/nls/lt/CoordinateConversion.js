@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({abbreviatedDirections:{north:"N",south:"S",east:"E",west:"W"},addConversion:"Pridėti konvertavimą",captureMode:"Užfiksavimo režimas",changeCoordinateDisplay:"Keisti koordinačių atvaizdavimą",convert:"Konvertuoti",conversionOutputSuffix:"konvertavimo išvestis",copySuccessMessage:"Koordinatė nukopijuota į mainų sritį",defaultPattern:"Grąžinti numatytąją reikšmę",goTo:"Eiti į vietą",inputCoordTitle:"Įvesties koordinatė",invalidCoordinate:"Neteisinga koordinatė",liveMode:"Realaus laiko režimas",locationOffBasemap:"Įvesties koordinatė nepatenka į pagrindo žemėlapio aprėptį",noBasemap:"Nėra pagrindo žemėlapio.",noLocation:"Nėra padėties",removeConversion:"Pašalinti konvertavimą",selectFormat:"Pasirinkti formatą",settingsTitle:"Formato nustatymai"});

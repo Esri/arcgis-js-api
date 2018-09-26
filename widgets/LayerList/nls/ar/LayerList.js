@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({widgetLabel:"قائمة الطبقات",noItemsToDisplay:"لا توجد عناصر لعرضها حاليًا.",layerInvisibleAtScale:"غير مرئي في المقياس الحالي",layerError:"حدث خطأ أثناء تحميل هذه الطبقة",untitledLayer:"طبقة بدون عنوان"});

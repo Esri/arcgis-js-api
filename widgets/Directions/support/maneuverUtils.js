@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define(["require","exports"],function(e,r){function i(e){return r.maneuverTypeJsonToIconName[e]}Object.defineProperty(r,"__esModule",{value:!0}),r.maneuverTypeJsonToIconName={esriDMTBearLeft:"bear-left",esriDMTBearRight:"bear-right",esriDMTDoorPassage:"walk-through-door",esriDMTElevator:"elevator",esriDMTEndOfFerry:"disembark",esriDMTEscalator:"escalator",esriDMTFerry:"embark",esriDMTForkCenter:"fork-middle",esriDMTForkLeft:"fork-left",esriDMTForkRight:"fork-right",esriDMTHighwayChange:"highway-change",esriDMTHighwayExit:"exit-highway-right",esriDMTHighwayMerge:"merge-on-highway",esriDMTPedestrianRamp:"take-pedestrian-ramp",esriDMTRampLeft:"ramp-left",esriDMTRampRight:"ramp-right",esriDMTRoundabout:"roundabout-left",esriDMTSharpLeft:"sharp-left",esriDMTSharpRight:"sharp-right",esriDMTStairs:"stairs",esriDMTStraight:"straight",esriDMTTurnLeft:"left",esriDMTTurnLeftLeft:"left-left",esriDMTTurnLeftRight:"left-right",esriDMTTurnRight:"right",esriDMTTurnRightLeft:"right-left",esriDMTTurnRightRight:"right-right",esriDMTUnknown:"unknown",esriDMTUTurn:"u-turn-left"},r.toIconName=i});

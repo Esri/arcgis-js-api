@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define(["require","exports","../../../../core/tsSupport/declareExtendsHelper"],function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0});var i=function(){function e(e,t,n,i){this.view=e,this.native=t,this.vertexIndex=n,this.vertices=i,this.defaultPrevented=!1,this.type="vertex-add"}return e.prototype.preventDefault=function(){this.defaultPrevented=!0},e}();t.VertexAddEvent=i;var r=function(){function e(e,t,n,i){this.view=e,this.native=t,this.vertexIndex=n,this.vertices=i,this.defaultPrevented=!1,this.type="vertex-update"}return e.prototype.preventDefault=function(){this.defaultPrevented=!0},e}();t.VertexUpdateEvent=r;var v=function(){function e(e,t,n,i){this.view=e,this.native=t,this.vertexIndex=n,this.vertices=i,this.defaultPrevented=!1,this.type="vertex-remove"}return e.prototype.preventDefault=function(){this.defaultPrevented=!0},e}();t.VertexRemoveEvent=v;var s=function(){function e(e,t,n,i){this.view=e,this.native=t,this.vertexIndex=n,this.vertices=i,this.defaultPrevented=!1,this.type="cursor-update"}return e.prototype.preventDefault=function(){this.defaultPrevented=!0},e}();t.CursorUpdateEvent=s;var u=function(){function e(e,t){this.native=e,this.vertices=t,this.defaultPrevented=!1,this.type="draw-complete"}return e.prototype.preventDefault=function(){this.defaultPrevented=!0},e}();t.DrawCompleteEvent=u});

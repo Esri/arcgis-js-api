@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
-define({widgetLabel:"Selite",points:"Pisteet",lines:"Viivat",polygons:"Alueet",creatingLegend:"Selitteen luominen",noLegend:"Ei selitettä",dotValue:"1 piste = {value} {unit}",currentObservations:"Nykyiset havainnot",previousObservations:"Edelliset havainnot",high:"Suuri",low:"Alhainen",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"solmua",esriFeetPerSecond:"ft/s",esriMilesPerHour:"mph",showField:"{field}",showNormField:"{field} jaettuna arvolla {normField}",showNormPct:"{field} kokonaissumman prosenttiosuutena",showRatio:"Arvon {field} suhde arvoon {normField}",showRatioPercent:"{field} arvon {normField} prosenttiosuutena",showRatioPercentTotal:"{field} arvon {field} ja {normField} prosenttiosuutena"});
+define({widgetLabel:"Selite",points:"Pisteet",lines:"Viivat",polygons:"Alueet",creatingLegend:"Selitteen luominen",noLegend:"Ei selitettä",dotValue:"1 piste = {value} {unit}",currentObservations:"Nykyiset havainnot",previousObservations:"Edelliset havainnot",high:"Suuri",low:"Alhainen",esriMetersPerSecond:"m/s",esriKilometersPerHour:"km/h",esriKnots:"solmua",esriFeetPerSecond:"ft/s",esriMilesPerHour:"mph",showNormField:"{field} jaettuna arvolla {normField}",showNormPct:"{field} kokonaissumman prosenttiosuutena",showRatio:"Arvon {field} suhde arvoon {normField}",showRatioPercent:"{field} arvon {normField} prosenttiosuutena",showRatioPercentTotal:"{field} arvon {field} ja {normField} prosenttiosuutena"});

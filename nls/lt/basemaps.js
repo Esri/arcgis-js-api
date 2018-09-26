@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({streets:"Gatvės",satellite:"Aeronuotrauka",hybrid:"Aeronuotrauka su žymėmis",terrain:"Teritorija su žymėmis",topo:"Topografinis",gray:"Šviesiai pilkas fonas","dark-gray":"Tamsiai pilkas fonas",oceans:"Vandenynai","national-geographic":"National Geographic",osm:"OpenStreetMap","streets-night-vector":"Pasaulio kelių ir gatvių žemėlapis (naktinis)","streets-relief-vector":"Pasaulio kelių ir gatvių žemėlapis (su reljefu)","streets-navigation-vector":"Pasaulio navigacijos žemėlapis"});

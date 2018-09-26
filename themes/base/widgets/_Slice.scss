@@ -1,0 +1,18 @@
+@mixin slice() {
+  .esri-slice__container {
+    position: relative;
+    padding: $cap_spacing $side_spacing;
+    overflow-y: auto;
+    a {
+      text-decoration: none;
+    }
+  }
+
+  .esri-slice__hint {
+    padding-bottom: 12px;
+  }
+}
+
+@if $include_Slice == true {
+  @include slice();
+}

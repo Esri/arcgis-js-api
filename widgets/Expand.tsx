@@ -4,8 +4,8 @@
  * @module esri/widgets/Expand
  * @since 4.3
  *
- * @see [Expand.tsx (widget view)]({{ JSAPI_BOWER_URL }}/widgets/Expand.tsx)
- * @see [Expand.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_Expand.scss)
+ * @see [Expand.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Expand.tsx)
+ * @see [Expand.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Expand.scss)
  * @see [Sample - Expand widget](../sample-code/widgets-expand/index.html)
  * @see module:esri/widgets/Expand/ExpandViewModel
  * @see module:esri/views/ui/DefaultUI
@@ -111,7 +111,8 @@ class Expand extends declared(Widget) {
    * @type {boolean}
    * @default false
    */
-  @aliasOf("viewModel.autoCollapse") autoCollapse: boolean = null;
+  @aliasOf("viewModel.autoCollapse")
+  autoCollapse: boolean = null;
 
   //----------------------------------
   //  collapseIconClass
@@ -186,7 +187,7 @@ class Expand extends declared(Widget) {
    * @example
    * // C. specify content with a DOM node
    *    var node = domConstruct.create("div", {
-   *      innerHTML: "I'm a a real node!"
+   *      innerHTML: "I'm a real node!"
    *    });
    *
    *    var expand = new Expand({
@@ -224,13 +225,12 @@ class Expand extends declared(Widget) {
   //----------------------------------
 
   /**
-   * Whether the widget is currently expanded or not.
+   * Indicates whether the widget is currently expanded or not.
    *
    * @name expanded
    * @instance
    * @type {boolean}
    * @default false
-   * @readonly
    */
   @aliasOf("viewModel.expanded")
   @renderable()
@@ -242,6 +242,7 @@ class Expand extends declared(Widget) {
 
   /**
    * Icon font used to style the Expand button.
+   * Will automatically use the [content's](#content) iconClass if it has one.
    *
    * @see [Guide - Esri Icon Font](../guide/esri-icon-font/index.html)
    *
@@ -316,7 +317,8 @@ class Expand extends declared(Widget) {
    *
    * view.ui.add([expand1, expand2], "bottom-right");
    */
-  @aliasOf("viewModel.group") group: string = null;
+  @aliasOf("viewModel.group")
+  group: string = null;
 
   //----------------------------------
   //  iconNumber
@@ -325,7 +327,7 @@ class Expand extends declared(Widget) {
   /**
    * A number to display at the corner of the widget to indicate the number of, for example, open issues or unread notices.
    *
-   * ![expand widget icon number](../assets/img/apiref/widgets/expand-with-iconnumber.png)
+   * ![expand widget icon number](../../assets/img/apiref/widgets/expand-with-iconnumber.png)
    *
    * @name iconNumber
    * @instance

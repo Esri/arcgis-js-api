@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({attach:"Tệp đính kèm",fields:"Trường",fieldsSummary:"Danh sách các thuộc tính và giá trị",media:"Phương tiện truyền thông",next:"Tiếp theo",numCharts:"Số lượng biểu đồ",numImages:"Số lượng hình ảnh",noTitle:"Chưa có tiêu đề",previous:"Trước"});

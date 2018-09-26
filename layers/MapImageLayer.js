@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 /**
  * ## Overview
@@ -72,11 +72,8 @@
  * });
  * ```
  *
- * If the map service is requested from a different domain, a [CORS enabled server](http://enable-cors.org/server.html) or a proxy is
- * required. If CORS is enabled on the server add the map service domain to {@link module:esri/config/request#corsEnabledServers
- * esriConfig.request.corsEnabledServers}. Alternatively, if CORS cannot be enabled on ArcGIS Server you can set up a proxy on your web
- * server and then add it to the proxy rules list in {@link module:esri/config esriConfig} using
- * {@link module:esri/core/urlUtils#addProxyRule addProxyRule()}.
+ * If the map service is requested from a different domain, a [CORS enabled server](https://enable-cors.org/server.html) or a proxy is
+ * required.
  *
  * ### Reference an ArcGIS portal Item ID
  *
@@ -106,7 +103,7 @@
  * To learn more about working with sublayers, see the {@link module:esri/layers/support/Sublayer} API
  * documentation.
  *
- * [![mapimagelayer-renderer](../assets/img/apiref/layers/mapimagelayer-renderer.png)](../sample-code/layers-mapimagelayer-renderers/index.html)
+ * [![mapimagelayer-renderer](../../assets/img/apiref/layers/mapimagelayer-renderer.png)](../sample-code/layers-mapimagelayer-renderers/index.html)
  *
  * <a name="dynamic-layers"></a>
  * ## Dynamic layers
@@ -170,4 +167,4 @@
  * });
  */
 
-define(["require","exports","../core/tsSupport/assignHelper","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/tsSupport/paramHelper","dojo/io-query","../config","../request","../core/Error","../core/promiseUtils","../core/accessorSupport/decorators","../geometry/Extent","./DynamicLayer","./mixins/ArcGISDynamicMapService","./mixins/OperationalLayer","./mixins/PortalLayer","./mixins/RefreshableLayer","./mixins/ScaleRangeLayer"],function(e,r,t,a,o,n,s,i,p,c,l,u,y,d,m,h,f,g,v){return function(e){function r(r,t){var a=e.call(this)||this;return a.alwaysRefetch=!1,a.operationalLayerType="ArcGISMapServiceLayer",a.type="map-image",a}return a(r,e),r.prototype.normalizeCtorArgs=function(e,r){return"string"==typeof e?t({url:e},r):e},r.prototype.load=function(){var e=this;return this.addResolvingPromise(this.loadFromPortal({supportedTypes:["Map Service"]}).then(function(){return e._fetchService()})),this.when()},r.prototype.getImageUrl=function(e,r,a,o){var n=this,u=this.parsedUrl.path+"/export",y=t({},this.parsedUrl.query,this.createExportImageParameters(e,r,a,o),{f:"image",token:this.token,_ts:this.alwaysRefetch?(new Date).getTime():null});if(null!=y.dynamicLayers&&!this.capabilities.exportMap.supportsDynamicLayers)return l.reject(new c("mapimagelayer:dynamiclayer-not-supported","service "+this.url+" doesn't support dynamic layers, which is required to be able to change the sublayer's order, rendering, labeling or source.",{query:y}));var d=u+"?"+s.objectToQuery(y);return d.length>i.request.maxUrlLength?(y.f="json",p(u,{query:y,responseType:"json",callbackParamName:"callback"}).then(function(e){if("imageData"in e.data){var r=e.data,t=r.imageData;return"data:"+(r.contentType||"image")+";base64,"+t}var a=e.data.href;return n.token?a+(-1===a.indexOf("?")?"?token="+n.token:"&token="+n.token):a})):d},r.prototype._fetchService=function(){var e=this;return l.resolve().then(function(){return e.resourceInfo?{ssl:!1,data:e.resourceInfo}:p(e.parsedUrl.path,{query:t({f:"json"},e.parsedUrl.query),responseType:"json",callbackParamName:"callback"})}).then(function(r){r.ssl&&(e.url=e.url.replace(/^http:/i,"https:")),e.read(r.data,{origin:"service",url:e.parsedUrl})})},o([u.property()],r.prototype,"alwaysRefetch",void 0),o([u.property()],r.prototype,"operationalLayerType",void 0),o([u.property({json:{read:!1},readOnly:!0,value:"map-image"})],r.prototype,"type",void 0),o([n(0,u.cast(y))],r.prototype,"getImageUrl",null),r=o([u.subclass("esri.layers.MapImageLayer")],r)}(u.declared(d,m,h,f,g,v))});
+define(["require","exports","../core/tsSupport/assignHelper","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/tsSupport/paramHelper","dojo/io-query","../config","../request","../core/Error","../core/promiseUtils","../core/accessorSupport/decorators","../geometry/Extent","./DynamicLayer","./mixins/ArcGISDynamicMapService","./mixins/OperationalLayer","./mixins/PortalLayer","./mixins/RefreshableLayer","./mixins/ScaleRangeLayer","./mixins/SublayersOwner"],function(e,r,t,a,o,s,n,i,p,l,y,c,u,d,h,m,f,g,v,b){return function(e){function r(r,t){var a=e.call(this)||this;return a.alwaysRefetch=!1,a.labelsVisible=!1,a.operationalLayerType="ArcGISMapServiceLayer",a.sublayers=null,a.type="map-image",a}return a(r,e),r.prototype.normalizeCtorArgs=function(e,r){return"string"==typeof e?t({url:e},r):e},r.prototype.load=function(){var e=this;return this.addResolvingPromise(this.loadFromPortal({supportedTypes:["Map Service"]}).then(function(){return e._fetchService()})),this.when()},r.prototype.getImageUrl=function(e,r,a,o){var s=this,c=this.parsedUrl.path+"/export",u=t({},this.parsedUrl.query,this.createExportImageParameters(e,r,a,o),{f:"image",token:this.token,_ts:this.alwaysRefetch?(new Date).getTime():null});if(null!=u.dynamicLayers&&!this.capabilities.exportMap.supportsDynamicLayers)return y.reject(new l("mapimagelayer:dynamiclayer-not-supported","service "+this.url+" doesn't support dynamic layers, which is required to be able to change the sublayer's order, rendering, labeling or source.",{query:u}));var d=c+"?"+n.objectToQuery(u);return d.length>i.request.maxUrlLength?(u.f="json",p(c,{query:u,responseType:"json"}).then(function(e){if("imageData"in e.data){var r=e.data,t=r.imageData;return"data:"+(r.contentType||"image")+";base64,"+t}var a=e.data.href;return s.token?a+(-1===a.indexOf("?")?"?token="+s.token:"&token="+s.token):a})):d},r.prototype._fetchService=function(){var e=this;return y.resolve().then(function(){return e.resourceInfo?{ssl:!1,data:e.resourceInfo}:p(e.parsedUrl.path,{query:t({f:"json"},e.parsedUrl.query),responseType:"json"})}).then(function(r){r.ssl&&(e.url=e.url.replace(/^http:/i,"https:")),e.read(r.data,{origin:"service",url:e.parsedUrl})})},o([c.property()],r.prototype,"alwaysRefetch",void 0),o([c.property({json:{read:!1,write:!1}})],r.prototype,"labelsVisible",void 0),o([c.property({json:{type:["ArcGISMapServiceLayer"]}})],r.prototype,"operationalLayerType",void 0),o([c.property()],r.prototype,"sublayers",void 0),o([c.property({json:{read:!1},readOnly:!0,value:"map-image"})],r.prototype,"type",void 0),o([s(0,c.cast(u))],r.prototype,"getImageUrl",null),r=o([c.subclass("esri.layers.MapImageLayer")],r)}(c.declared(d,b.default,h,m,f,g,v))});

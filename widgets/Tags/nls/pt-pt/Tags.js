@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
-define({addTags:"Adicionar palavra(s)-chave",noTagsFound:"Não existem palavras-chave correspondentes.",required:"É necessário uma ou mais palavras-chave."});
+define({addTags:"Adicionar palavras-chave",noTagsFound:"Não existem palavras-chave correspondentes.",required:"É necessário uma ou mais palavras-chave."});

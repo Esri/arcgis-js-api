@@ -3,7 +3,7 @@
  * This widget can be used in a {@link module:esri/views/SceneView} to measure the vertical, horizontal,
  * and direct distance between two points.
  *
- * [![measurement-line-3d](../assets/img/samples/direct-line-measurement-3d.gif)](../sample-code/widgets-measurement-3d/index.html)
+ * [![measurement-line-3d](../../assets/img/samples/direct-line-measurement-3d.gif)](../sample-code/widgets-measurement-3d/index.html)
  *
  * When the widget is active, a horizontal "laser" line is drawn which indicates the height at the current mouse position.
  * This line can help in analyzing the heights of objects relative to each other and the terrain.
@@ -14,7 +14,7 @@
  * DirectLineMeasurement3D widget switches to displaying only the Horizontal and Vertical distances taking into consideration
  * the curvature of the earth (i.e. ellipsoid-based geodesic distance).
  *
- * ![measurement-line-3d](../assets/img/apiref/widgets/direct-line-measurement-3d.png)
+ * ![measurement-line-3d](../../assets/img/apiref/widgets/direct-line-measurement-3d.png)
  *
  * ::: esri-md class="panel trailer-1"
  * **Known Limitations**
@@ -33,8 +33,8 @@
  * @module esri/widgets/DirectLineMeasurement3D
  * @since 4.6
  *
- * @see [DirectLineMeasurement3D.tsx (widget view)]({{ JSAPI_BOWER_URL }}/widgets/DirectLineMeasurement3D.tsx)
- * @see [DirectLineMeasurement3D.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_DirectLineMeasurement3D.scss)
+ * @see [DirectLineMeasurement3D.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/DirectLineMeasurement3D.tsx)
+ * @see [DirectLineMeasurement3D.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_DirectLineMeasurement3D.scss)
  * @see [Sample - Measurement in 3D](../sample-code/widgets-measurement-3d/index.html)
  * @see {@link module:esri/widgets/DirectLineMeasurement3D/DirectLineMeasurement3DViewModel}
  * @see {@link module:esri/widgets/AreaMeasurement3D}
@@ -128,7 +128,8 @@ class DirectLineMeasurement3D extends declared(Widget) {
    * @instance
    * @type {module:esri/views/SceneView}
    */
-  @aliasOf("viewModel.view") view: View = null;
+  @aliasOf("viewModel.view")
+  view: View = null;
 
   //----------------------------------
   //  visible
@@ -201,7 +202,8 @@ class DirectLineMeasurement3D extends declared(Widget) {
    * @since 4.8
    * @type {string}
    */
-  @aliasOf("viewModel.unit") unit: DirectLineMeasurement3DViewModel.Unit = null;
+  @aliasOf("viewModel.unit")
+  unit: DirectLineMeasurement3DViewModel.Unit = null;
 
   //--------------------------------------------------------------------------
   //

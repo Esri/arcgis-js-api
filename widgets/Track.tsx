@@ -3,7 +3,7 @@
  * to the user's location when clicked. The view rotates according to the direction where the
  * tracked device is heading towards. While tracking, the default button looks like the following:
  *
- * ![track-button](../assets/img/apiref/widgets/widgets-track.png)
+ * ![track-button](../../assets/img/apiref/widgets/widgets-track.png)
  *
  * You can use the view's {@link module:esri/views/ui/DefaultUI} to add widgets
  * to the view's user interface via the {@link module:esri/views/View#ui ui} property on the view. The snippet below demonstrates this.
@@ -26,8 +26,8 @@
  * @module esri/widgets/Track
  * @since 4.0
  *
- * @see [Track.tsx (widget view)]({{ JSAPI_BOWER_URL }}/widgets/Track.tsx)
- * @see [button.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_Widget.scss)
+ * @see [Track.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Track.tsx)
+ * @see [button.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Widget.scss)
  * @see module:esri/widgets/Track/TrackViewModel
  * @see {@link module:esri/views/View#ui View.ui}
  * @see module:esri/views/ui/DefaultUI
@@ -63,7 +63,7 @@ import Widget = require("esri/widgets/Widget");
 import TrackViewModel = require("esri/widgets/Track/TrackViewModel");
 
 // esri.widgets.support
-import { GoToOverride } from "esri/widgets/support/interfaces";
+type GoToOverride = __esri.GoToOverride;
 import { accessibleHandler, tsx, renderable, vmEvent } from "esri/widgets/support/widget";
 
 const CSS = {
@@ -142,7 +142,8 @@ class Track extends declared(Widget) {
    * @type {Object}
    * @default { maximumAge: 0, timeout: 15000, enableHighAccuracy: true }
    */
-  @aliasOf("viewModel.geolocationOptions") geolocationOptions: PositionOptions = null;
+  @aliasOf("viewModel.geolocationOptions")
+  geolocationOptions: PositionOptions = null;
 
   //----------------------------------
   //  goToLocationEnabled
@@ -159,13 +160,15 @@ class Track extends declared(Widget) {
    * @type {boolean}
    * @default true
    */
-  @aliasOf("viewModel.goToLocationEnabled") goToLocationEnabled: boolean = null;
+  @aliasOf("viewModel.goToLocationEnabled")
+  goToLocationEnabled: boolean = null;
 
   //----------------------------------
   //  goToOverride
   //----------------------------------
 
-  @aliasOf("viewModel.goToOverride") goToOverride: GoToOverride = null;
+  @aliasOf("viewModel.goToOverride")
+  goToOverride: GoToOverride = null;
 
   //----------------------------------
   //  graphic
@@ -189,7 +192,8 @@ class Track extends declared(Widget) {
    *     })
    * });
    */
-  @aliasOf("viewModel.graphic") graphic: Graphic = null;
+  @aliasOf("viewModel.graphic")
+  graphic: Graphic = null;
 
   //----------------------------------
   //  iconClass
@@ -204,7 +208,8 @@ class Track extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property() iconClass = CSS.widgetIcon;
+  @property()
+  iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -219,7 +224,8 @@ class Track extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property() label: string = i18n.widgetLabel;
+  @property()
+  label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  scale
@@ -260,7 +266,8 @@ class Track extends declared(Widget) {
    *   })
    * });
    */
-  @aliasOf("viewModel.scale") scale: number = null;
+  @aliasOf("viewModel.scale")
+  scale: number = null;
 
   //----------------------------------
   //  tracking
@@ -277,7 +284,8 @@ class Track extends declared(Widget) {
    * @default false
    * @readonly
    */
-  @aliasOf("viewModel.tracking") tracking: boolean = null;
+  @aliasOf("viewModel.tracking")
+  tracking: boolean = null;
 
   //----------------------------------
   //  useHeadingEnabled
@@ -295,7 +303,8 @@ class Track extends declared(Widget) {
    * @type {boolean}
    * @default true
    */
-  @aliasOf("viewModel.useHeadingEnabled") useHeadingEnabled: boolean = null;
+  @aliasOf("viewModel.useHeadingEnabled")
+  useHeadingEnabled: boolean = null;
 
   //----------------------------------
   //  view
@@ -390,10 +399,7 @@ class Track extends declared(Widget) {
         aria-label={text}
         title={text}
       >
-        <span
-          aria-hidden="true"
-          class={this.classes(CSS.icon, CSS.startTrackingIcon, iconClasses)}
-        />
+        <span aria-hidden="true" class={this.classes(CSS.icon, iconClasses)} />
         <span class={CSS.text}>{text}</span>
       </div>
     );

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({basic:"צורות בסיסיות",preview:"תצוגה מקדימה",shape:"צורה",fill:"מילוי",outline:"קו תוחם",px:"px",pixels:"פיקסלים",meters:"מטרים",symbolSize:"גודל סמל",symbolSizeTooltip:"קבע את גודל הסמל בין ${min} ל-${max}‏ ${units}.",useImage:"השתמש בתמונה",useImageTooltip:"השתמש בתמונה מותאמת.",imageUrlInputTooltip:"כדי להגיע לתוצאות המיטביות, השתמש בתמונה מרובעת (PNG, ‏GIF או JPEG) בגודל של ‎120 x 120 פיקסלים לכל היותר. גדלים אחרים יעברו התאמה.",imageUrlInputPlaceholder:"http://<image URL>",selectCategoryTooltip:"בחר קטגוריה.",imageLoadError:"לא ניתן לטעון את התמונה.",symbolLoadError:"לא ניתן לטעון את הסמלים",noSymbolsAvailable:"אין סמלים זמינים",noTitle:"אין כותרת זמינה",noFillTooltip:"ללא מילוי",symbolTransparencyTooltip:"שקיפות סמל",lineWidth:"רוחב קו",lineWidthTooltip:"קבע את רוחב השורה בין ${min} ל-${max}‏ ${units}.",pattern:"תבנית",patternTooltip:"סוג קו",flipColors:"הפוך צבעים",flipColorsTooltip:"הפוך מדרג צבעים.",noOutlineTooltip:"ללא קו תוחם",saturation:"רווייה",saturationTooltip:"התאם עוצמת צבע.",selectRampTooltip:"בחר מדרג צבעים.",circle:"מעגל",square:"ריבוע",cross:"צלב",x:"X",kite:"מפרש",sphere:"כדור",cylinder:"גליל‬",tallCylinder:"צילינדר גבוה",cube:"קובייה",tallCube:"קובייה גבוהה",cone:"חרוט",tallCone:"חרוט גבוה",invertedCone:"חרוט הפוך",diamond:"יהלום",tetrahedron:"‏‫פירמידה משולשת"});

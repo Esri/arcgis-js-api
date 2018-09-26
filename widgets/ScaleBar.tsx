@@ -19,8 +19,8 @@
  * @module esri/widgets/ScaleBar
  * @since 4.3
  *
- * @see [ScaleBar.tsx (widget view)]({{ JSAPI_BOWER_URL }}/widgets/ScaleBar.tsx)
- * @see [ScaleBar.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_ScaleBar.scss)
+ * @see [ScaleBar.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/ScaleBar.tsx)
+ * @see [ScaleBar.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_ScaleBar.scss)
  * @see [Sample - ScaleBar widget](../sample-code/widgets-scalebar/index.html)
  * @see module:esri/widgets/ScaleBar/ScaleBarViewModel
  *

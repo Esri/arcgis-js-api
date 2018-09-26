@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({printNotes:"Tukaj vnesite opombe",printDisclaimer:"Navodila za pot so namenjena samo za potrebe načrtovanja, za katere veljajo <a href='http://www.esri.com/legal/licensing-translations' target='_blank'>pogoji uporabe podjetja Esri</a>. Na cestah lahko pride do dinamičnih razmer, kar lahko vpliva na pravilnost navodil za pot, pri čemer morate upoštevati tudi znake in pravne omejitve. Vi prevzemate vsa tveganja uporabe.",printoutError:"Zdi se, da je prišlo do napake."});

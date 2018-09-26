@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({title:"Matuoti",hint:"Spustelėkite norimoje scenos vietoje",unsupported:"Ploto matavimas nepalaikomas žemėlapio peržiūroje.",perimeterLength:"Perimetras",area:"Plotas",unit:"Matavimo vienetai",notApplicable:"netaikoma",newMeasurement:"Matuoti iš naujo",units:{metric:"Metriniai",imperial:"Imperiniai","square-kilometers":"Kvadratiniai kilometrai","square-meters":"Kvadratiniai metrai","square-miles":"Kvadratinės mylios","square-inches":"Kvadratiniai coliai","square-feet":"Kvadratinės pėdos","square-yards":"Kvadratiniai jardai","square-us-feet":"Kvadratinės pėdos (JAV)",acres:"Akrai",ares:"Arai",hectares:"Hektarai"}});

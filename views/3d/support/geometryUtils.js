@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define(["require","exports","./geometryUtils/lineSegment","./geometryUtils/plane","./geometryUtils/triangle"],function(e,t,n,i,l){Object.defineProperty(t,"__esModule",{value:!0}),t.plane=i,t.triangle=l,t.lineSegment=n});

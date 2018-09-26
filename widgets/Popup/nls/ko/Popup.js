@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({zoom:"확대",next:"다음 피처",previous:"이전 피처",close:"닫기",dock:"고정",undock:"고정 해제",menu:"메뉴",untitled:"제목 없음",pageText:"{index}/{total}",selectedFeature:"선택한 피처",selectedFeatures:"{total}개 결과",loading:"불러오는 중",collapse:"축소",expand:"확장"});

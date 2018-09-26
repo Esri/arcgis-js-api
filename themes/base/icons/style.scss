@@ -3,9 +3,9 @@
 @font-face {
   font-family: 'CalciteWebCoreIcons';
   src:
-    url('#{$icomoon-font-path}/CalciteWebCoreIcons.ttf?im9r4h') format('truetype'),
-    url('#{$icomoon-font-path}/CalciteWebCoreIcons.woff?im9r4h') format('woff'),
-    url('#{$icomoon-font-path}/CalciteWebCoreIcons.svg?im9r4h#CalciteWebCoreIcons') format('svg');
+    url('#{$icomoon-font-path}/CalciteWebCoreIcons.ttf?iz9r4h') format('truetype'),
+    url('#{$icomoon-font-path}/CalciteWebCoreIcons.woff?iz9r4h') format('woff'),
+    url('#{$icomoon-font-path}/CalciteWebCoreIcons.svg?iz9r4h#CalciteWebCoreIcons') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -1028,6 +1028,12 @@
 .esri-icon-north-navigation-filled {
   &:before {
     content: unicode($esri-icon-north-navigation-filled);
+    color: $fill-color;
+  }
+}
+.esri-icon-default-action {
+  &:before {
+    content: unicode($esri-icon-default-action);     
     color: $fill-color;
   }
 }

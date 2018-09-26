@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({abbreviatedDirections:{north:"N",south:"S",east:"E",west:"V"},addConversion:"Adaugă transformare",captureMode:"Capturează mod",changeCoordinateDisplay:"Modifică afișarea coordonatelor",convert:"Transformă",conversionOutputSuffix:"rezultatul transformării",copySuccessMessage:"Coordonată copiată în clipboard",defaultPattern:"Resetare la valori implicite",goTo:"Accesare locaţie",inputCoordTitle:"Coordinată de intrare",invalidCoordinate:"Coordonată invalidă",liveMode:"Mod live",locationOffBasemap:"Coordinata de intrare este în exteriorul hărții de fundal",noBasemap:"Nicio hartă fundal.",noLocation:"Nicio poziție",removeConversion:"Eliminați transformarea",selectFormat:"Selectare format",settingsTitle:"Setările formatului"});

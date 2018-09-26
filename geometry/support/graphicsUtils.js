@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define(["require","exports","../../core/Collection","../Extent"],function(e,t,n,r){function o(e){if(!e||!e.length)return null;var t=n.isCollection(e)?e.getItemAt(0).geometry:e[0].geometry,o=t.extent,i=t;null===o&&(o=new r(i.x,i.y,i.x,i.y,t.spatialReference));for(var u=1;u<e.length;u++){t=n.isCollection(e)?e.getItemAt(u).geometry:e[u].geometry,i=t;var l=t.extent;null===l&&(l=new r(i.x,i.y,i.x,i.y,t.spatialReference)),o=o.clone().union(l)}return o.width<0&&o.height<0?null:o}function i(e){return e.map(function(e){return e.geometry})}function u(e,t){var n=[];return e.forEach(function(e,r){var o=e.toJSON(),i={};if(o.geometry){var u=t&&t[r];i.geometry=u&&u.toJSON()||o.geometry}o.attributes&&(i.attributes=o.attributes),n[r]=i}),n}Object.defineProperty(t,"__esModule",{value:!0}),t.graphicsExtent=o,t.getGeometries=i,t._encodeGraphics=u});

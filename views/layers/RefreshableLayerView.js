@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/Accessor","../../core/accessorSupport/decorators"],function(e,r,t,o,s,p){return function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.refreshTimestamp=null,r}return t(r,e),r.prototype.refresh=function(e){void 0===e&&(e=Date.now()),this._set("refreshTimestamp",e),this.doRefresh&&this.doRefresh()},o([p.property()],r.prototype,"layer",void 0),o([p.aliasOf("layer.refreshInterval")],r.prototype,"refreshInterval",void 0),o([p.property({readOnly:!0})],r.prototype,"refreshTimestamp",void 0),r=o([p.subclass("esri.layers.mixins.RefreshableLayerView")],r)}(p.declared(s))});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define(["require","exports","dojo/Deferred","./pe","./SpatialReference","./support/GeographicTransformation"],function(n,e,r,o,t,i){function u(){return!!p&&o.isLoaded()}function a(){return o.isSupported()}function l(){if(v)return v.promise;v=new r;var e=o.load();return n(["./geometryEngine"],function(n){p=n,e.then(function(){p._enableProjection(o),v.resolve()},function(n){v.reject(n)})}),v.promise}function f(n,e,r){return void 0===r&&(r=null),n instanceof Array?0===n.length?[]:c(n,n[0].spatialReference,e,r):c([n],n.spatialReference,e,r)[0]}function c(n,e,r,o,u){if(void 0===o&&(o=null),void 0===u&&(u=!1),null===o){var a=i.cacheKey(e,r);void 0!==m[a]?o=m[a]:(o=s(e,r,null),null===o&&(o=new i),m[a]=o)}return p._project(n,e,r instanceof t||!1===u?r:new t(r),o,u)}function s(n,e,r){void 0===r&&(r=null);var o=p._getTransformation(n,e,r);return null!==o?i.fromGE(o):null}function d(n,e,r){void 0===r&&(r=null);var o=p._getTransformationBySuitability(n,e,r);if(null!==o){for(var t=[],u=0,a=o;u<a.length;u++){var l=a[u];t.push(i.fromGE(l))}return t}return[]}Object.defineProperty(e,"__esModule",{value:!0});var p=null;e.isLoaded=u,e.isSupported=a;var v=null;e.load=l,e.project=f;var m={};e.projectMany=c,e.getTransformation=s,e.getTransformations=d});

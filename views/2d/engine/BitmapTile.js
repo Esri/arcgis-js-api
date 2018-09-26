@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define(["require","exports","../../../core/tsSupport/extendsHelper","../../../core/tsSupport/decorateHelper","../../../core/ObjectPool","../tiling","./Bitmap","./Tiled","../tiling/enums"],function(e,t,r,o,i,n,u,l,s){Object.defineProperty(t,"__esModule",{value:!0});var c=function(e){function t(t){var r=e.call(this,t)||this;return r.key=new n.TileKey(0,0,0,0),r}return r(t,e),t.prototype.acquire=function(e){},t.prototype.release=function(){this.key.set(0,0,0,0),this.status=s.TileStatus.INITIALIZED,this.source=null},t.pool=new i(t,!0),t}(l(u));t.default=c});

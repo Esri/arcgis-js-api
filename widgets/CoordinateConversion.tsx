@@ -3,7 +3,7 @@
  * as any of several popular coordinate notations.  Additionally, the widget provides a way to convert
  * user input coordinates into a {@link module:esri/geometry/Point}.
  *
- * [![coordinate-conversion](../assets/img/apiref/widgets/coordinate-conversion.png)](../sample-code/widgets-coordinateconversion/index.html)
+ * [![coordinate-conversion](../../assets/img/apiref/widgets/coordinate-conversion.png)](../sample-code/widgets-coordinateconversion/index.html)
  *
  * Several common [formats](esri-widgets-CoordinateConversion-support-Format.html) are included by default:
  * * XY - Longitude, Latitude (WGS84)
@@ -21,8 +21,8 @@
  * @module esri/widgets/CoordinateConversion
  * @since 4.7
  *
- * @see [CoordinateConversion.tsx (widget view)]({{ JSAPI_BOWER_URL }}/widgets/CoordinateConversion.tsx)
- * @see [CoordinateConversion.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_CoordinateConversion.scss)
+ * @see [CoordinateConversion.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/CoordinateConversion.tsx)
+ * @see [CoordinateConversion.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_CoordinateConversion.scss)
  * @see [Sample - Coordinate widget](../sample-code/widgets-coordinateconversion/index.html)
  * @see [Sample - Add custom coordinate formats](../sample-code/widgets-coordinateconversion-custom/index.html)
  * @see module:esri/widgets/CoordinateConversion/CoordinateConversionViewModel
@@ -74,7 +74,7 @@ import Conversion = require("esri/widgets/CoordinateConversion/support/Conversio
 import Format = require("esri/widgets/CoordinateConversion/support/Format");
 
 // esri.widgets.support
-import { GoToOverride } from "esri/widgets/support/interfaces";
+type GoToOverride = __esri.GoToOverride;
 import { renderable, tsx, accessibleHandler, storeNode } from "esri/widgets/support/widget";
 
 type Orientation = "expand-up" | "expand-down" | "auto";
@@ -115,7 +115,7 @@ const CSS: any = {
   disabled: "esri-disabled",
   input: "esri-input",
   button: "esri-button",
-  header: "esri-widget__header",
+  header: "esri-widget__heading",
   widgetButton: "esri-widget--button",
   leftArrow: "esri-icon-left-arrow",
   captureButton: "esri-icon-map-pin",
@@ -199,7 +199,8 @@ class CoordinateConversion extends declared(Widget) {
    * @type {module:esri/core/Collection<module:esri/widgets/CoordinateConversion/support/Conversion>}
    * @since 4.7
    */
-  @aliasOf("viewModel.conversions") conversions: Collection<Conversion> = null;
+  @aliasOf("viewModel.conversions")
+  conversions: Collection<Conversion> = null;
 
   //----------------------------------
   //  currentLocation
@@ -240,7 +241,8 @@ class CoordinateConversion extends declared(Widget) {
   //  goToOverride
   //----------------------------------
 
-  @aliasOf("viewModel.goToOverride") goToOverride: GoToOverride = null;
+  @aliasOf("viewModel.goToOverride")
+  goToOverride: GoToOverride = null;
 
   //----------------------------------
   //  mode
@@ -300,7 +302,8 @@ class CoordinateConversion extends declared(Widget) {
    * @since 4.7
    * @default 300
    */
-  @aliasOf("viewModel.requestDelay") requestDelay: number = null;
+  @aliasOf("viewModel.requestDelay")
+  requestDelay: number = null;
 
   //----------------------------------
   //  multipleConversions
@@ -342,7 +345,8 @@ class CoordinateConversion extends declared(Widget) {
    * @instance
    * @type {module:esri/symbols/SimpleMarkerSymbol | module:esri/symbols/PictureMarkerSymbol}
    */
-  @aliasOf("viewModel.locationSymbol") locationSymbol: PictureMarkerSymbol;
+  @aliasOf("viewModel.locationSymbol")
+  locationSymbol: PictureMarkerSymbol;
 
   //----------------------------------
   //  view

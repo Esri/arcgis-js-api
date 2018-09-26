@@ -1,0 +1,25 @@
+// COPYRIGHT © 2018 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
+
+define(["require","exports","dojo/i18n!./nls/Units","dojo/number","./wgs84Constants"],function(e,n,i,t,r){function s(e,n,i){return e*d[i].units[n].inBaseUnits}function a(e,n,i){return e/d[i].units[n].inBaseUnits}var u,o={millimeters:{inBaseUnits:.001},centimeters:{inBaseUnits:.01},decimeters:{inBaseUnits:.1},meters:{inBaseUnits:1},kilometers:{inBaseUnits:1e3},inches:{inBaseUnits:.0254},feet:{inBaseUnits:.3048},yards:{inBaseUnits:.9144},miles:{inBaseUnits:1609.344},"nautical-miles":{inBaseUnits:1852},"us-feet":{inBaseUnits:1200/3937}},c=function(e){return e*e},f={"square-millimeters":{inBaseUnits:c(.001)},"square-centimeters":{inBaseUnits:c(.01)},"square-decimeters":{inBaseUnits:c(.1)},"square-meters":{inBaseUnits:1},"square-kilometers":{inBaseUnits:c(1e3)},"square-inches":{inBaseUnits:c(.0254)},"square-feet":{inBaseUnits:c(.3048)},"square-yards":{inBaseUnits:c(.9144)},"square-miles":{inBaseUnits:c(1609.344)},"square-us-feet":{inBaseUnits:c(1200/3937)},acres:{inBaseUnits:.0015625*c(1609.344)},ares:{inBaseUnits:100},hectares:{inBaseUnits:1e4}},m=function(e){return e*e*e},U={liters:{inBaseUnits:1},"cubic-millimeters":{inBaseUnits:1e3*m(.001)},"cubic-centimeters":{inBaseUnits:1e3*m(.01)},"cubic-decimeters":{inBaseUnits:1e3*m(.1)},"cubic-meters":{inBaseUnits:1e3},"cubic-kilometers":{inBaseUnits:1e3*m(1e3)},"cubic-inches":{inBaseUnits:1e3*m(.0254)},"cubic-feet":{inBaseUnits:1e3*m(.3048)},"cubic-yards":{inBaseUnits:1e3*m(.9144)},"cubic-miles":{inBaseUnits:1e3*m(1609.344)}},l={radians:{inBaseUnits:1},degrees:{inBaseUnits:Math.PI/180}},d={length:{baseUnit:"meters",units:o},area:{baseUnit:"square-meters",units:f},volume:{baseUnit:"liters",units:U},angle:{baseUnit:"radians",units:l}},B=function(){var e={};for(var n in d)for(var i in d[n].units)e[i]=n;return e}();return function(e){function n(e){var n=B[e];if(n)return n;throw new Error("unknown measure")}function u(e){return d[e].baseUnit}function o(e){return u(n(e))}function c(e,i){return void 0===i&&(i=null),i=i||n(e),d[i].baseUnit===e}function f(e,i,t){if(i===t)return e;var r=n(i);if(r!==n(t))throw new Error("incompatible units");var u=c(i,r)?e:s(e,i,r);return c(t,r)?u:a(u,t,r)}function m(e,n){return i.units[e][n]}function U(e,n,i,r){return void 0===i&&(i=2),void 0===r&&(r="abbr"),t.format(e,{places:i})+" "+m(n,r)}function l(e,n){return f(e,n,"meters")<3e3?"meters":"kilometers"}function v(e,n){return f(e,n,"meters")<1e5?"meters":"kilometers"}function b(e,n,i,t){void 0===i&&(i=2),void 0===t&&(t="abbr");var r=l(e,n);return U(f(e,n,r),r,i,t)}function h(e,n,i,t){void 0===i&&(i=2),void 0===t&&(t="abbr");var r=v(e,n);return U(f(e,n,r),r,i,t)}function q(e,n){return f(e,n,"feet")<1e3?"feet":"miles"}function g(e,n){return f(e,n,"feet")<1e5?"feet":"miles"}function p(e,n,i,t){void 0===i&&(i=2),void 0===t&&(t="abbr");var r=q(e,n);return U(f(e,n,r),r,i,t)}function M(e,n,i,t){void 0===i&&(i=2),void 0===t&&(t="abbr");var r=g(e,n);return U(f(e,n,r),r,i,t)}function I(e,n){return f(e,n,"square-meters")<3e6?"square-meters":"square-kilometers"}function L(e,n,i,t){void 0===i&&(i=2),void 0===t&&(t="abbr");var r=I(e,n);return U(f(e,n,r),r,i,t)}function k(e,n){return f(e,n,"square-feet")<1e6?"square-feet":"square-miles"}function w(e,n,i,t){void 0===i&&(i=2),void 0===t&&(t="abbr");var r=k(e,n);return U(f(e,n,r),r,i,t)}function F(e,n,i){return void 0===i&&(i=r.wgs84Radius),f(e,n,"meters")/(i*Math.PI/180)}function x(n,i,t){void 0===t&&(t=2);var r=e.convertUnit(n,i,"degrees"),s=r-Math.floor(r);r-=s,s*=60;var a=s-Math.floor(s);return s-=a,a*=60,r.toFixed()+"° "+s.toFixed()+"' "+a.toFixed(t)+'"'}e.measureForUnit=n,e.baseUnitForMeasure=u,e.baseUnitForUnit=o,e.isBaseUnit=c,e.convertUnit=f,e.unitName=m,e.formatDecimal=U,e.preferredMetricLengthUnit=l,e.preferredMetricVerticalLengthUnit=v,e.formatMetricLength=b,e.formatMetricVerticalLength=h,e.preferredImperialLengthUnit=q,e.preferredImperialVerticalLengthUnit=g,e.formatImperialLength=p,e.formatImperialVerticalLength=M,e.preferredMetricAreaUnit=I,e.formatMetricArea=L,e.preferredImperialAreaUnit=k,e.formatImperialArea=w,e.lengthToDegrees=F,e.formatDMS=x}(u||(u={})),u});

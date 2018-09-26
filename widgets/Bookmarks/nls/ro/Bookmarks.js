@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({widgetLabel:"Semne de carte",goToBookmark:"Accesaţi semnul de carte",noBookmarksHeading:"Niciun semn de carte",noBookmarksDescription:"Adăugați semne de carte pe harta dvs. și vor apărea aici.",disabledHeading:"Semne de carte dezactivate",disabledDescription:"Adaugă un MapView pentru a activa semne de carte."});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
-define(["../../request","../../core/lang","./WMBaseTask"],function(e,r,l){return l.createSubclass({declaredClass:"esri.tasks.workflow.LOILayerTask",properties:{url:{}},_getJobIdField:function(){var l=this.parsedUrl.path,n=this._encode(r.mixin({},this.parsedUrl.query,{f:"json"}));return e(l,{query:n,callbackParamName:"callback"},this.requestOptions).then(function(e){var r=e.data,n=null,a=null,t=r.fields;if(null==t)return new Error(l+", data fields = null");for(var s=0,u=t.length;s<u;s++)null!=(a=t[s].name.toString())&&"JOB_ID"==a.toUpperCase().substring(a.length-"JOB_ID".length)&&(null==n?n=a:-1!=a.toUpperCase().indexOf("JTX_JOBS_AOI")&&(n=a));return null!=n?n:new Error("jobIDField = null")})}})});
+define(["../../request","../../core/lang","./WMBaseTask"],function(e,r,n){return n.createSubclass({declaredClass:"esri.tasks.workflow.LOILayerTask",properties:{url:{}},_getJobIdField:function(){var n=this.parsedUrl.path,l=this._encode(r.mixin({},this.parsedUrl.query,{f:"json"}));return e(n,{query:l},this.requestOptions).then(function(e){var r=e.data,l=null,t=null,s=r.fields;if(null==s)return new Error(n+", data fields = null");for(var a=0,u=s.length;a<u;a++)null!=(t=s[a].name.toString())&&"JOB_ID"==t.toUpperCase().substring(t.length-"JOB_ID".length)&&(null==l?l=t:-1!=t.toUpperCase().indexOf("JTX_JOBS_AOI")&&(l=t));return null!=l?l:new Error("jobIDField = null")})}})});

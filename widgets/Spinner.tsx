@@ -69,13 +69,15 @@ class Spinner extends declared(Widget) {
   //  location
   //----------------------------------
 
-  @aliasOf("viewModel.location") location: Point = null;
+  @aliasOf("viewModel.location")
+  location: Point = null;
 
   //----------------------------------
   //  view
   //----------------------------------
 
-  @aliasOf("viewModel.view") view: MapView | SceneView = null;
+  @aliasOf("viewModel.view")
+  view: MapView | SceneView = null;
 
   //----------------------------------
   //  visible

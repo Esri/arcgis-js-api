@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({zoom:"Aplica el zoom a",next:"Entitat següent",previous:"Entitat anterior",close:"Tanca",dock:"Acobla",undock:"Desacobla",menu:"Menú",untitled:"Sense títol",pageText:"{index} de {total}",selectedFeature:"Entitat seleccionada",selectedFeatures:"{total} resultats",loading:"S'està carregant",collapse:"Redueix",expand:"Amplia"});

@@ -11,7 +11,7 @@
  *  - a layer's `renderer`, `opacity`, or `title` is changed
  *  - the `legendEnabled` property is changed (set to `true` or `false` on the layer)
  *
- * [![widgets-legend-basic](../assets/img/apiref/widgets/widgets-legend-basic.png)](../sample-code/sandbox/sandbox.html?sample=widgets-legend)
+ * [![widgets-legend-basic](../../assets/img/apiref/widgets/widgets-legend-basic.png)](../sample-code/sandbox/sandbox.html?sample=widgets-legend)
  *
  * You can use the view's {@link module:esri/views/ui/DefaultUI} to add widgets
  * to the view's user interface via the {@link module:esri/views/View#ui ui} property on the view.
@@ -47,12 +47,13 @@
  * @since 4.0
  *
  * @see [Sample - Legend widget](../sample-code/widgets-legend/index.html)
- * @see [Legend.tsx (widget view)]({{ JSAPI_BOWER_URL }}/widgets/Legend.tsx)
- * @see [Legend.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_Legend.scss)
+ * @see [Legend.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Legend.tsx)
+ * @see [Legend.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Legend.scss)
  * @see {@link module:esri/views/View#ui View.ui}
  * @see module:esri/views/ui/DefaultUI
  */
 
+/// <amd-dependency path="esri/core/tsSupport/assignHelper" name="__assign" />
 /// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
 /// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
 
@@ -66,6 +67,9 @@ import watchUtils = require("esri/core/watchUtils");
 
 // esri.core.accessorSupport
 import { aliasOf, subclass, declared, property } from "esri/core/accessorSupport/decorators";
+
+// esri.core.accessorSupport.decorators
+import { cast } from "esri/core/accessorSupport/decorators/cast";
 
 // esri.views
 import MapView = require("esri/views/MapView");
@@ -92,7 +96,8 @@ const CSS = {
   widgetIcon: "esri-icon-layer-list"
 };
 
-type Style = "classic" | "card";
+type StyleType = Card["type"] | Classic["type"];
+type LegendStyle = Card | Classic;
 
 @subclass("esri.widgets.Legend")
 class Legend extends declared(Widget) {
@@ -120,11 +125,23 @@ class Legend extends declared(Widget) {
   }
 
   postInitialize() {
-    this._updateStyleRenderer(this.style);
-
     this.own(
       watchUtils.on(this, "activeLayerInfos", "change", () => {
         return this._refreshActiveLayerInfos(this.activeLayerInfos);
+      }),
+
+      watchUtils.init<LegendStyle>(this, "style", (value, oldValue) => {
+        if (oldValue) {
+          oldValue.destroy();
+        }
+
+        if (value) {
+          value.activeLayerInfos = this.activeLayerInfos;
+
+          if (value.type === "card") {
+            value.view = this.view;
+          }
+        }
       })
     );
   }
@@ -141,8 +158,6 @@ class Legend extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   private _handles = new Handles();
-
-  private _styleRenderer: Card | Classic = null;
 
   //--------------------------------------------------------------------------
   //
@@ -213,7 +228,8 @@ class Legend extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property() iconClass = CSS.widgetIcon;
+  @property()
+  iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -228,7 +244,8 @@ class Legend extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property() label: string = i18n.widgetLabel;
+  @property()
+  label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  layerInfos
@@ -263,31 +280,69 @@ class Legend extends declared(Widget) {
 
   /**
    * Indicates the style of the legend. The style determines the legend's layout and behavior.
-   * See the table below for a list of possible values.
+   * You can either specify a string or an object to indicate the style. The known string values are the same values listed in
+   * the table within the `type` property.
+   *
+   * @property {string} type - Specifies the style of the legend. There are two possible values listed in the table below:
    *
    * Value | Description
    * ------|------------
    * classic | The legend has a portrait orientation. The user can scroll vertically when many elements are included in the legend's content.
-   * card | In wide views, the legend has a landscape orientation that allows users to scroll horizontally to view all legend elements. This style is responsive, making it ideal for mobile web apps. In smaller views, the legend collapses to occupy less space. One element is shown at a time in a card-style layout, which the user can navigate horizontally.
+   * card | In wide views, the legend has a landscape orientation that allows users to scroll horizontally to view all legend elements. This style can be responsive, making it ideal for mobile web apps. In smaller views, the legend collapses to occupy less space. One element is shown at a time in a card-style layout, which the user can navigate horizontally.
+   *
+   * @property {string} [layout=stack] - When a `card` type is specified, you can specify one of the following layout options.
+   *
+   * Value | Description
+   * ------|------------
+   * auto | This layout is responsive so that in wide views the legend has a `side-by-side` layout, and a `stack` layout in smaller (mobile) views.
+   * side-by-side | The legend has a landscape orientation that allows users to scroll horizontally to view multiple legend cards at a time.
+   * stack | The legend cards are stacked, which conserves space, but restricts the user to seeing only one card at a time.
    *
    * @name style
    * @instance
-   * @type {string}
+   * @type {Object | string}
    * @default classic
    * @since 4.7
-   * @beta
+   *
+   * @example
+   * // renders the legend in the card style with a "stack" layout
+   * legend.style = "card";
+   *
+   * @example
+   * // renders the legend in the card style with a responsive
+   * // layout that toggles between "stack" and "side-by-side"
+   * legend.style = {
+   *   type: "card",
+   *   layout: "auto"
+   * };
+   *
+   * @example
+   * // renders the legend in the classic layout
+   * legend.style = "classic";
    */
-  @property({
-    value: "classic",
-    dependsOn: ["activeLayerInfos"]
-  })
+  @property()
   @renderable()
-  get style() {
-    return this._get("style");
-  }
-  set style(value: Style) {
-    this._updateStyleRenderer(value);
-    this._set("style", value);
+  style: LegendStyle = new Classic();
+
+  @cast("style")
+  protected castStyle(value: StyleType | LegendStyle | { type: StyleType }): LegendStyle {
+    if (value instanceof Card || value instanceof Classic) {
+      return value;
+    }
+
+    if (typeof value === "string") {
+      return value === "card" ? new Card() : new Classic();
+    }
+
+    if (value && typeof value.type === "string") {
+      const options = { ...value };
+      delete options.type;
+      const StyleClass = value.type === "card" ? Card : Classic;
+
+      return new StyleClass(options);
+    }
+
+    return new Classic();
   }
 
   //----------------------------------
@@ -334,7 +389,7 @@ class Legend extends declared(Widget) {
   //-------------------------------------------------------------------
 
   render() {
-    return this._styleRenderer.render();
+    return this.style.render();
   }
 
   //--------------------------------------------------------------------------
@@ -342,22 +397,6 @@ class Legend extends declared(Widget) {
   //  Private methods
   //
   //-------------------------------------------------------------------
-
-  private _updateStyleRenderer(style: Style): void {
-    if (this._styleRenderer) {
-      this._styleRenderer.destroy();
-    }
-
-    this._styleRenderer =
-      style === "card"
-        ? new Card({
-            activeLayerInfos: this.activeLayerInfos,
-            view: this.view
-          })
-        : new Classic({
-            activeLayerInfos: this.activeLayerInfos
-          });
-  }
 
   private _refreshActiveLayerInfos(activeLayerInfos: Collection<ActiveLayerInfo>): void {
     this._handles.removeAll();

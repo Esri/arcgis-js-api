@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({widgetLabel:"Vázlat",draw:"Rajzolás",drawPoint:"Pont rajzolása",drawPolygon:"Sokszög rajzolása",drawPolyline:"Vonal rajzolása",drawMultipoint:"Multipoint rajzolása",drawCircle:"Kör rajzolása",drawRectangle:"Téglalap rajzolása",drawTriangle:"Háromszög rajzolása",drawSquare:"Négyzet rajzolása",drawEllipse:"Ellipszis rajzolása",pan:"Térkép mozgatása",undo:"Visszavonás",redo:"Újra",updateDrawing:"Rajz frissítése",clear:"Rajz törlése",completeDrawing:"Rajz befejezése",pauseDrawing:"Rajzolás szüneteltetése",resumeDrawing:"Rajzolás folytatása",rotate:"Forgatás",scale:"Méretarány",addPointTooltip:"Kattintson egy pont hozzáadásához",removePointTooltip:"Kattintson ezen pont eltávolításához",completePolygonTooltip:"Kattintson erre a pontra a befejezéshez",startDrawingTooltip:"Kattintson a rajzolás elkezdéséhez",continueDrawingTooltip:"Kattintson a rajzolás folytatásához",completeDrawingTooltip:"Kattintson duplán a befejezéshez",addMultipointTooltip:"Kattintson a pontok hozzáadásának elkezdéséhez",finishMultipointTooltip:"Kattintson duplán a lezáráshoz",addFreehandTooltip:"Tartsa lenyomva a gombot a kezdéshez és engedje el a befejezéshez",addShapeTooltip:"Kattintson egy alakzat hozzáadásához, vagy tartsa lenyomva a gombot a kezdéshez és engedje el a befejezéshez"});

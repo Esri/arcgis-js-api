@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({title:"Misura",hint:"Comincia a misurare cliccando sulla scena per posizionare il primo punto",unsupported:"La misurazione dell’area non è supportata in MapView.",perimeterLength:"Perimetro",area:"Area",unit:"Unità",notApplicable:"n/d",newMeasurement:"Nuova misurazione",units:{metric:"Metrico",imperial:"Imperiale","square-kilometers":"Chilometri quadrati","square-meters":"Metri quadrati","square-miles":"Miglia quadrate","square-inches":"Pollici quadrati","square-feet":"Piedi quadrati","square-yards":"Iarde quadrate","square-us-feet":"Piedi quadrati (USA)",acres:"Acri",ares:"Are",hectares:"Ettari"}});

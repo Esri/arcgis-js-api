@@ -5,7 +5,7 @@
  * {@link module:esri/views/SceneView}. It has no effect on touch navigation and it should not be used
  * with 2D mouse interaction in a {@link module:esri/views/MapView}.
  *
- * ![navigation-toggle](../assets/img/apiref/widgets/navigation-toggle.png)
+ * ![navigation-toggle](../../assets/img/apiref/widgets/navigation-toggle.png)
  *
  * The default navigation mode of the {@link module:esri/views/SceneView} is always
  * `pan`. The various mouse interactions of this mode are outlined
@@ -21,7 +21,7 @@
  * @module esri/widgets/NavigationToggle
  * @since 4.0
  *
- * @see [NavigationToggle.tsx (widget view)]({{ JSAPI_BOWER_URL }}/widgets/NavigationToggle.tsx)
+ * @see [NavigationToggle.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/NavigationToggle.tsx)
  * @see module:esri/widgets/NavigationToggle/NavigationToggleViewModel
  * @see [SceneView navigation](../api-reference/esri-views-SceneView.html)
  * @see {@link module:esri/views/View#ui View.ui}
@@ -119,7 +119,8 @@ class NavigationToggle extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property() iconClass = CSS.widgetIcon;
+  @property()
+  iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -134,7 +135,8 @@ class NavigationToggle extends declared(Widget) {
    * @type {string}
    * @readonly
    */
-  @property() label: string = i18n.widgetLabel;
+  @property()
+  label: string = i18n.widgetLabel;
 
   //----------------------------------
   //  layout
@@ -146,8 +148,8 @@ class NavigationToggle extends declared(Widget) {
    *
    * Possible Value | Example
    * ---------------|--------
-   * vertical | ![navigation-toggle](../assets/img/apiref/widgets/navigation-toggle.png)
-   * horizontal | ![navigation-toggle-horizontal](../assets/img/apiref/widgets/navigation-toggle-horizontal.png)
+   * vertical | ![navigation-toggle](../../assets/img/apiref/widgets/navigation-toggle.png)
+   * horizontal | ![navigation-toggle-horizontal](../../assets/img/apiref/widgets/navigation-toggle-horizontal.png)
    *
    * @name layout
    * @instance

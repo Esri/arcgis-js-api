@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.8/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.9/esri/copyright.txt for details.
 
 define({title:"Messwert",hint:"Beginnen Sie die Messung, indem Sie in die Szene klicken, um den ersten Punkt zu positionieren.",unsupported:"Die direkte Linienmessung wird in MapView nicht unterstützt.",distance:"Abstand",direct:"Direkt",horizontal:"Horizontal",vertical:"Vertikal",unit:"Einheit",newMeasurement:"Neue Messung",units:{metric:"Metrisch",imperial:"Britisch",kilometers:"Kilometer",meters:"Meter",miles:"Meilen",inches:"Zoll",feet:"Fuß",yards:"Yards","nautical-miles":"Seemeilen","us-feet":"Fuß (US)","degrees-minutes-seconds":"DMS",degrees:"Grad"}});

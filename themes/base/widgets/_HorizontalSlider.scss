@@ -5,6 +5,7 @@
 
   .esri-horizontal-slider.dijitSlider .dijitSliderBumper {
     background: #999 none;
+    box-shadow: none;
   }
 
   .esri-horizontal-slider.dijitSlider .dijitSliderBar {
@@ -13,6 +14,9 @@
 
   .esri-horizontal-slider.dijitSlider .dijitSliderProgressBar {
     background: #ddd none;
+  }
+  .esri-horizontal-slider.dijitSlider .dijitSliderRemainingBarH {
+    box-shadow: none;
   }
 
   .esri-horizontal-slider.dijitSlider .dijitSliderImageHandle,
@@ -41,6 +45,23 @@
   .esri-horizontal-slider .dijitRuleLabel {
     z-index: 2;
     font-size: 12px;
+  }
+
+  /* ==========================================================================
+   RTL
+   ========================================================================== */
+  html[dir="rtl"] {
+    .dijitSlider .dijitSliderLeftBumper {
+      border-radius: 0px 2px 2px 0;
+      border-width: 1px 1px 1px 0;
+      margin-left: -1px;
+    }
+    .dijitSlider .dijitSliderRightBumper {
+      border-radius: 2px 0 0 2px;
+      border-width: 1px 0 1px 1px;
+      margin-left: -2px;
+      margin-right: 0;
+    }
   }
 }
 
